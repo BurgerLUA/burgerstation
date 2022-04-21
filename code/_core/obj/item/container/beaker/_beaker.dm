@@ -16,7 +16,7 @@
 
 	var/overide_icon = FALSE
 
-	value = 5
+	value = 10
 
 	drop_sound = 'sound/items/drop/bottle.ogg'
 

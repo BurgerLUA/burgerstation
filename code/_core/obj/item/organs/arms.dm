@@ -4,7 +4,6 @@
 	desc = "A right arm."
 	icon_state = BODY_ARM_RIGHT
 	worn_layer = LAYER_MOB_ARMS
-	break_threshold = 25
 	attach_flag = BODY_TORSO
 
 	enable_wounds = TRUE

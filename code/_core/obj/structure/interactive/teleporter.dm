@@ -58,7 +58,7 @@
 						continue
 					if(!aLiving.health)
 						continue
-					if(aLiving.ckey)
+					if(aLiving.ckey_last)
 						second_cooldown += 15
 					second_cooldown += 3
 				if(istype(A, /obj/structure/interactive/crate))
@@ -80,7 +80,7 @@
 						continue
 					if(!aLiving.health)
 						continue
-					if(aLiving.ckey)
+					if(aLiving.ckey_last)
 						second_cooldown += 15
 					second_cooldown += 3
 				if(istype(A, /obj/structure/interactive/crate))

@@ -4,7 +4,6 @@
 	desc = "So no head?"
 	icon_state = BODY_HEAD_MALE
 	worn_layer = LAYER_MOB_HEAD
-	break_threshold = 25
 	inventories = list(
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,

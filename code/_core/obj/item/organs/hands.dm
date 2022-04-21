@@ -10,7 +10,6 @@
 		/obj/hud/inventory/organs/ring/nw,
 		/obj/hud/inventory/organs/ring/sw
 	)
-	break_threshold = 15
 
 	damage_type = null
 

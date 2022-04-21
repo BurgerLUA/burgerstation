@@ -5,7 +5,6 @@
 	desc = "An organ."
 	icon_state = BODY_FOOT_RIGHT
 	worn_layer = LAYER_MOB_FEET
-	break_threshold = 15
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
 	attach_flag = BODY_LEG_RIGHT

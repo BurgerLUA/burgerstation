@@ -55,17 +55,50 @@
 
 	. = ..()
 
+/mob/living/advanced/rejuvenate()
+
+	. = ..()
+
+	var/list/missing_organs = list()
+	for(var/k in TARGETABLE_LIMBS)
+		if(!labeled_organs[k])
+			missing_organs |= k
+
+	if(length(missing_organs))
+		var/species/S = SPECIES(species)
+		if(S)
+			var/found_skin_color = S.default_color_skin
+			var/found_detail_color = S.default_color_detail
+			var/found_glow_color = S.default_color_glow
+			var/obj/item/organ/OT = labeled_organs[BODY_TORSO]
+			if(OT)
+				if(OT.additional_blends["skin"]) found_skin_color = OT.additional_blends["skin"].color
+				if(OT.additional_blends["skin_detail"]) found_detail_color = OT.additional_blends["skin_detail"].color
+				if(OT.additional_blends["skin_glow"]) found_glow_color = OT.additional_blends["skin_glow"].color
+			var/list/organset_to_use = sex == FEMALE && length(S.spawning_organs_female) ? S.spawning_organs_female : S.spawning_organs_male
+			if(length(organset_to_use))
+				for(var/k in missing_organs)
+					var/obj/item/organ/O = add_organ(organset_to_use[k])
+					if(O.enable_skin && O.additional_blends["skin"])
+						O.add_blend("skin",desired_color = found_skin_color)
+					if(O.enable_detail && O.additional_blends["skin_detail"])
+						O.add_blend("skin_detail",desired_color = found_detail_color)
+					if(O.enable_glow && O.additional_blends["skin_glow"])
+						O.add_blend("skin_glow",desired_color = found_glow_color)
+
+/mob/living/advanced/proc/can_be_revived()
+
+	for(var/k in TARGETABLE_LIMBS)
+		if(!labeled_organs[k])
+			return FALSE
+
+	return TRUE
+
+
 mob/living/advanced/revive()
 
-	var/species/S = SPECIES(species)
-	if(!S)
+	if(!can_be_revived())
 		return FALSE
-	if(sex == FEMALE)
-		if(length(S.spawning_organs_female) > length(labeled_organs))
-			return FALSE
-	else
-		if(length(S.spawning_organs_male) > length(labeled_organs))
-			return FALSE
 
 	. = ..()
 

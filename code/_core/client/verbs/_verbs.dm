@@ -65,7 +65,6 @@
 		verbs += /client/verb/adjust_nightvision
 		verbs += /client/verb/bring_player
 		verbs += /client/verb/ic_announcement
-		verbs += /client/verb/rejuvenate
 		verbs += /client/verb/ooc_announcement
 
 	if(permissions & FLAG_PERMISSION_ADMIN)
@@ -76,6 +75,9 @@
 		verbs += /client/verb/create_explosion
 		verbs += /client/verb/smite_living
 		verbs += /client/verb/spawn_from_path
+		verbs += /client/verb/break_bones
+		verbs += /client/verb/rejuvenate
+		verbs += /client/verb/safe_force_control
 
 	//Dev
 	if(permissions & FLAG_PERMISSION_DEVELOPER)

@@ -11,6 +11,9 @@
 /reagent_container/beaker/bottle
 	volume_max = 30
 
+/reagent_container/beaker/bottle/medium
+	volume_max = 60
+
 
 /reagent_container/beaker/bottle/large
 	volume_max = 90

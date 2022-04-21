@@ -28,6 +28,7 @@
 
 	. = ..()
 
+var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
 
 mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
@@ -37,6 +38,12 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 	var/stamina_mul = 1
 	var/pain_mul = 1
 	var/adrenaline_bonus = 1 + ((get_status_effect_magnitude(ADRENALINE)/100)*(0.5 + (get_status_effect_duration(ADRENALINE)/100))*0.5)
+
+	for(var/k in movement_organs)
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O)
+			if(O.broken)
+				. *= 1.25
 
 	if(health)
 		var/pain_bonus = min(1,get_status_effect_magnitude(PAINKILLER)/100) * min(1,0.5 + (get_status_effect_duration(PAINKILLER)/100)*0.5) * health.health_max
@@ -67,6 +74,21 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		var/obj/item/I = k
 		if(get_dist(src,I) > 1)
 			I.close_inventory(src)
+
+	if(. && isturf(loc))
+		var/obj/item/organ/sent_pain
+		for(var/k in movement_organs)
+			var/obj/item/organ/O = labeled_organs[k]
+			if(O && O.health && O.broken && prob(80))
+				O.health.adjust_loss_smart(pain=1)
+				sent_pain = O
+		if(!prob(80) && sent_pain)
+			if(sent_pain.health.health_current <= 0)
+				src.to_chat(span("danger","Your broken [sent_pain.name] causes you to collapse!"))
+				src.add_status_effect(STUN,30)
+			else
+				src.to_chat(span("danger","Your broken [sent_pain.name] struggles to keep you upright!"))
+				src.add_status_effect(STAGGER,10)
 
 	if(. && isturf(old_loc))
 		var/turf/T = old_loc

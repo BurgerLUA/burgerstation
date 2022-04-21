@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(chunkclean)
 	for(var/k in all_players)
 		sleep(-1)
 		var/mob/living/advanced/player/P = k
-		if(!P.ckey_last)
+		if(!P.ckey_last) //Ignore corpses without players in them.
 			continue
 		var/turf/T = get_turf(P)
 		if(!T)

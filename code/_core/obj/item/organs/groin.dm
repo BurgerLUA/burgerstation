@@ -4,7 +4,6 @@
 	desc = "An organ."
 	icon_state = BODY_GROIN_MALE
 	worn_layer = LAYER_MOB_GROIN
-	break_threshold = 50
 	inventories = list(
 		/obj/hud/inventory/organs/groin,
 		/obj/hud/inventory/organs/groin_o,

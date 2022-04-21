@@ -125,7 +125,7 @@ var/global/world_state = STATE_STARTING
 	return TRUE
 
 /world/proc/save_all_characters()
-	for(var/k in all_players)
+	for(var/k in all_players) ///Players only.
 		var/mob/living/advanced/player/P = k
 		if(P.qdeleting)
 			log_error("Warning: Tried saving [P.get_debug_name()], which was qdeleting!")

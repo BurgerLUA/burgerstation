@@ -338,7 +338,7 @@ mob/living/advanced/Login()
 
 	real_name = name
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 

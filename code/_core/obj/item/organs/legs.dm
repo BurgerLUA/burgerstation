@@ -4,7 +4,6 @@
 	desc = "An organ."
 	icon_state = BODY_LEG_RIGHT
 	worn_layer = LAYER_MOB_LEGS
-	break_threshold = 25
 
 	attach_flag = BODY_GROIN
 

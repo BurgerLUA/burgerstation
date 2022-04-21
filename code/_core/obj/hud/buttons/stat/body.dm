@@ -78,7 +78,7 @@
 		var/obj/hud/I = labeled_overlays[o_id]
 		var/obj/item/organ/O = A.labeled_organs[o_id]
 
-		if(!O || !O.health || !O.hud_id || O.health.health_max <= 0)
+		if(!O || !O.health || !O.hud_id || O.health.health_max <= 0 && O.broken)
 			I.color = "#000000"
 			continue
 

@@ -1,7 +1,7 @@
 /obj/item/storage/kit/
 	name = "first aid kit"
 	desc = "Carries medicine."
-	desc_extended = "A basic first aid kit. Usually contains 4 sets of bandages, two tubes of ointment, a pill bottle filled with dylovene and an epinephrine syringe."
+	desc_extended = "A basic first aid kit."
 	icon = 'icons/obj/item/storage/kits.dmi'
 	icon_state = "firstaid"
 
@@ -21,17 +21,17 @@
 	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/bandage(src)
-	new /obj/item/container/healing/bandage(src)
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/storage/pillbottle/dylovene_small(src)
-	new /obj/item/container/syringe/hypodermic/epinephrine(src)
+	new /obj/item/storage/pillbottle/assprin(src)
+	new /obj/item/container/syringe/medipen/epinephrine(src)
 	. = ..()
 
 
 /obj/item/storage/kit/brute
 	name = "brute first aid kit"
-	desc_extended = "A first aid kit that focuses on healing brute injury. Usually contains a pill bottle filled with bicaridine, two sets of bandages, one set of trauma kits and four sets of styptic powder patches."
+	desc_extended = "A first aid kit that focuses on healing brute injury."
 	icon_state = "brute"
 
 /obj/item/storage/kit/brute/filled/fill_inventory()
@@ -42,7 +42,7 @@
 	new /obj/item/container/healing/patch/brute(src)
 	new /obj/item/container/healing/patch/brute(src)
 	new /obj/item/container/healing/patch/brute(src)
-	new /obj/item/container/healing/patch/brute(src)
+	new /obj/item/container/healing/bone_gel(src)
 	. = ..()
 
 /obj/item/storage/kit/burn
@@ -58,7 +58,7 @@
 	new /obj/item/container/healing/patch/burn(src)
 	new /obj/item/container/healing/patch/burn(src)
 	new /obj/item/container/healing/patch/burn(src)
-	new /obj/item/container/healing/patch/burn(src)
+	//TODO: Add sunscreen
 	. = ..()
 
 /obj/item/storage/kit/toxin
@@ -70,28 +70,43 @@
 	new /obj/item/container/syringe/hypodermic(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
-	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/calomel(src)
 	new /obj/item/container/simple/beaker/bottle/antihol(src)
 	new /obj/item/container/simple/beaker/bottle/charcoal(src)
 	new /obj/item/container/simple/beaker/bottle/epinephrine(src)
+	new /obj/item/container/simple/beaker/vial/zombie_antidote(src)
+	. = ..()
+
+
+/obj/item/storage/kit/oxy
+	name = "oxy first aid kit"
+	desc_extended = "A first aid kit that focuses on healing suffocation and blood loss based injuries."
+	icon_state = "oxy"
+
+/obj/item/storage/kit/oxy/filled/fill_inventory()
+	new /obj/item/container/blood_pack/full/o_negative(src)
+	new /obj/item/container/blood_pack/full/o_negative(src)
+	new /obj/item/container/blood_pack/full/o_negative(src)
+	new /obj/item/container/syringe/medipen/epinephrine(src)
+	new /obj/item/container/syringe/medipen/epinephrine(src)
+	new /obj/item/storage/pillbottle/iron_small(src)
 	. = ..()
 
 /obj/item/storage/kit/syndicate
-	name = "combat medikit"
+	name = "deluxe combat hypospray kit"
 	desc = "I hope you've got insurance."
-	desc_extended = "A combat medical kit for healing when under pressure."
+	desc_extended = "A combat medical kit for combat operatives. Contains a combat hypospray and various medicine for all your combat needs."
 	icon_state = "tactical"
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()
-	new /obj/item/storage/pillbottle/bicaridine(src)
-	new /obj/item/storage/pillbottle/dylovene(src)
-	new /obj/item/storage/pillbottle/kelotane(src)
-	new /obj/item/storage/pillbottle/iron(src)
-	new /obj/item/storage/pillbottle/omnizine(src)
-	new /obj/item/container/syringe/hypodermic/epinephrine(src)
-	new /obj/item/container/syringe/hypodermic/epinephrine(src)
-	new /obj/item/analyzer/health(src)
+	new /obj/item/container/syringe/hypospray/combat(src)
+	new /obj/item/container/simple/beaker/bottle/medium/bicaridine(src)
+	new /obj/item/container/simple/beaker/bottle/medium/kelotane(src)
+	new /obj/item/container/simple/beaker/bottle/medium/dylovene(src)
+	new /obj/item/container/simple/beaker/bottle/medium/epinephrine(src)
+	new /obj/item/container/simple/beaker/bottle/medium/morphine(src)
+	new /obj/item/container/simple/beaker/bottle/medium/calomel(src)
+	new /obj/item/container/simple/beaker/bottle/medium/inaprovaline(src)
 	. = ..()
 
 /obj/item/storage/kit/ai3
@@ -131,11 +146,10 @@
 	new /obj/item/container/healing/trauma_kit/advanced(src)
 	new /obj/item/container/healing/burn_kit/advanced(src)
 	new /obj/item/container/spray/synthflesh(src)
-	new /obj/item/container/spray/synthflesh(src)
-	new /obj/item/storage/pillbottle/charcoal(src)
-	new /obj/item/storage/pillbottle/omnizine(src)
-	new /obj/item/storage/pillbottle/iron(src)
+	new /obj/item/storage/pillbottle/dylovene_small(src)
+	new /obj/item/storage/pillbottle/iron_small(src)
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
+	new /obj/item/container/healing/bone_gel(src)
 	. = ..()
 
 
@@ -143,15 +157,15 @@
 	name = "radiation first aid kit"
 	desc = "For those overly radical moments."
 	desc_extended = "A first aid kit that focuses on healing radiation related injuries."
+	icon_state = "rad"
 
 /obj/item/storage/kit/rad/filled/fill_inventory()
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
 	new /obj/item/storage/pillbottle/potassium_iodide_small(src)
 	new /obj/item/storage/pillbottle/space_prussian_blue_small(src)
-	new /obj/item/container/syringe/hypodermic(src)
-	new /obj/item/container/simple/beaker/bottle/dylovene(src)
-	new /obj/item/container/simple/beaker/bottle/charcoal(src)
+	new /obj/item/container/syringe/medipen/dylovene(src)
+	new /obj/item/container/syringe/medipen/dylovene(src)
 	new /obj/item/container/simple/vodka(src)
 	new /obj/item/container/simple/beaker/shot(src)
 	. = ..()

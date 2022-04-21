@@ -110,7 +110,7 @@
 
 	if(is_living(M))
 		var/mob/living/L = M
-		if(!L.dead || L.ckey)
+		if(!L.dead || L.ckey_last)
 			return TRUE
 
 	return FALSE

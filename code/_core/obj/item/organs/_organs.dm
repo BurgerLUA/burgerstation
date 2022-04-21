@@ -13,8 +13,6 @@
 
 	var/flags_organ = FLAG_ORGAN_NONE
 
-	var/break_threshold = 0 //0 Means it doesn't break. Other values means it breaks.
-
 	var/attach_flag //The organ type that it wishes to attach to. Use FLAG_ORGAN_ flags.
 	var/obj/item/organ/attached_organ //The organ that it is attached to.
 	var/list/obj/item/organ/attached_organs //The organs that are attached to it.
@@ -72,6 +70,9 @@
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
 
+	var/can_be_broken = TRUE
+	var/broken = FALSE
+	var/broken_name //Null basically means generate.
 
 
 /obj/item/organ/get_top_object()
@@ -155,17 +156,35 @@
 	if(is_inventory(old_loc) || is_inventory(loc) || is_advanced(old_loc) || is_advanced(loc))
 		update_sprite()
 
+
+/obj/item/organ/proc/break_bone(var/play_sound=TRUE,var/display_mesage=TRUE)
+	if(!health || !can_be_broken || broken)
+		return FALSE
+	if(!broken_name)
+		broken_name = "[src.name]"
+	if(play_sound) play_sound('sound/effects/bone_crack.ogg',get_turf(src))
+	broken = TRUE
+	if(display_mesage && is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
+		A.visible_message(span("warning","\The [A.name]\s [broken_name] breaks!"),span("danger","Your [broken_name] breaks!"))
+
+	return TRUE
+
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
 	if(is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		if(health && A.blood_type)
-			var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
-			if(total_bleed_damage>0)
-				var/bleed_to_add = total_bleed_damage/50
-				src.bleeding += bleed_to_add
+
+		if(health)
+			if(can_be_broken && !broken && SAFENUM(damage_table[BLUNT]) > health.health_max - health.get_loss(BRUTE))
+				break_bone()
+			if(A.blood_type)
+				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+				if(total_bleed_damage>0)
+					var/bleed_to_add = total_bleed_damage/50
+					src.bleeding += bleed_to_add
 		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
 			if(!A.dead)
 				send_pain(damage_amount)
@@ -177,11 +196,10 @@
 			else
 				gib_chance -= length(attached_organs)*30 //No cheesing torso.
 			if(gib_chance > 0 && prob(gib_chance))
-				if(is_player(A))
-					var/mob/living/advanced/player/P = A
-					if(P.dead && is_player(attacker)) //Only gib if the player is dead
-						var/mob/living/advanced/player/P2 = attacker
-						if(P2.client) //and the person gibbing is an active player
+				if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
+					if(A.dead && is_living(attacker)) //Only gib if the player is dead.
+						var/mob/living/LA = attacker
+						if(LA.client) //And the person doing the gibbing is an active player.
 							gib()
 						//Otherwise, don't gib.
 				else
@@ -220,8 +238,6 @@
 		if(!A.has_status_effect(ZOMBIE))
 			A.death()
 			A.make_unrevivable()
-			if(A.client)
-				A.client.make_ghost(T ? T : locate(128,128,1))
 		if(!A.dead)
 			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
 		if(A.blood_type)
@@ -404,6 +420,11 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 				damage_desc += "<u><b>gushing blood</b></u>"
 			else
 				damage_desc += "<u><b>gushing fluid</b></u>"
+
+	if(broken)
+		damage_desc += "<u><b>broken</b></u>"
+
+
 	return damage_desc
 
 

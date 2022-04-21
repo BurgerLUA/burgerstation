@@ -9,3 +9,5 @@
 	enable_wounds = FALSE
 
 	reagents = null
+
+	can_be_broken = FALSE

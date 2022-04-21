@@ -163,9 +163,7 @@
 	return TRUE
 
 /mob/living/proc/resurrect()
-	rejuvenate()
-	revive()
-	return TRUE
+	return rejuvenate() && revive()
 
 /mob/living/proc/pre_death()
 	alert_overlay.icon_state = "none"

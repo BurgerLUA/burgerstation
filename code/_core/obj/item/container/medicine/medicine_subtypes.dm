@@ -72,18 +72,49 @@
 	desc = "Nanomachines, son!"
 	desc_extended = "A tube of healing nanites that heals any mechanical limb of any brute and burn damage."
 	icon_state = "nanopaste"
-	treatment_time_mul = 1.25
+	treatment_time_mul = 2
 	heal_brute = 80
 	heal_brute_percent = 10
 	heal_burn = 80
 	heal_burn_percent = 10
 	heal_bleeding = TRUE
-	amount_max = 10
+	amount_max = 4
 
 	value = 80
 
-	robotic = TRUE
+	organic = FALSE
 
+/obj/item/container/healing/nanopaste/treat(var/mob/caller,var/atom/A)
+
+	. = ..()
+
+	if(. && is_organ(A))
+		var/obj/item/organ/O = A
+		if(O.health.organic == organic && O.broken)
+			O.broken = FALSE
+
+/obj/item/container/healing/bone_gel
+	name = "bone gel"
+	desc = "Oof ouch my bones."
+	desc_extended = "An advanced gel substance that encourages broken bone growth instantly when applied. Some tissue damage is a side effect."
+	icon_state = "bone_gel"
+	treatment_time_mul = 4
+	heal_brute = 0
+	heal_brute_percent = -2
+	amount_max = 3
+
+	value = 120
+
+	organic = FALSE
+
+/obj/item/container/healing/bone_gel/treat(var/mob/caller,var/atom/A)
+
+	. = ..()
+
+	if(. && is_organ(A))
+		var/obj/item/organ/O = A
+		if(O.health.organic == organic && O.broken)
+			O.broken = FALSE
 
 
 /obj/item/container/healing/burn_kit
@@ -118,7 +149,7 @@
 
 	value = 20
 
-	robotic = TRUE
+	organic = FALSE
 
 /obj/item/container/healing/patch
 	name = "medical patch"

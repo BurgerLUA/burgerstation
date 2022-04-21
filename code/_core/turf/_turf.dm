@@ -146,7 +146,7 @@
 
 /turf/proc/post_move(var/mob/M,var/atom/old_loc)
 
-	if(M.ckey_last)
+	if(M.ckey_last) //Only care about mobs with ckeys.
 		for(var/k in M.parallax)
 			var/obj/parallax/P = M.parallax[k]
 			P.icon = parallax_icon

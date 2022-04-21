@@ -24,7 +24,7 @@
 
 	var/override_icon_state = FALSE
 
-	var/robotic = FALSE //Set to true if heals robotic limbs and not organic limbs.
+	var/organic = TRUE //Set to true if heals robotic limbs and not organic limbs.
 
 /obj/item/container/healing/Initialize(var/desired_loc)
 
@@ -56,10 +56,6 @@
 
 /obj/item/container/healing/proc/treat(var/mob/caller,var/atom/A)
 
-	if(!reagents)
-		CRASH_SAFE("[src.get_debug_name()] had no reagents!")
-		return FALSE
-
 	if(heal_bleeding && is_organ(A))
 		var/obj/item/organ/O = A
 		O.bleeding = 0
@@ -70,26 +66,27 @@
 		var/mob/living/L = caller
 		heal_multiplier += L.get_skill_power(SKILL_MEDICINE,0,1,2)
 
-	. = 0
+	var/total_healed = 0
 
 	var/brute_to_heal = (-heal_brute*heal_multiplier) + (-heal_brute_percent*A.health.get_loss(BRUTE)*heal_multiplier)
 	var/burn_to_heal = (-heal_burn*heal_multiplier) + (-heal_burn_percent*A.health.get_loss(BURN)*heal_multiplier)
 
 	if(brute_to_heal || burn_to_heal)
-		. += A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal,robotic=robotic,organic=!robotic)
+		total_healed += A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal,robotic=!organic,organic=organic)
 
-	if(.)
+	if(total_healed > 0)
 		if(is_organ(A) && is_living(A.loc))
 			var/mob/living/L = A.loc
 			if(is_player(caller) && caller.client)
 				var/mob/living/advanced/player/P = caller
 				if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
-					var/experience_gain = -.*5
+					var/experience_gain = -total_healed*5
 					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 
-	var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
-	reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
-	reagents.volume_max = amount*10
+	if(reagents)
+		var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
+		reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
+		reagents.volume_max = amount*10
 
 	if(caller == A.loc)
 		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
@@ -134,13 +131,13 @@
 				caller.to_chat(span("warning","You'd feel it would be unsafe to treat your fellow man with the dangerous [src.name]..."))
 				return FALSE
 
-	if(robotic)
-		if(target.health.organic)
-			caller.to_chat(span("warning","\The [src.name] can only treat robotic limbs!"))
-			return FALSE
-	else
+	if(organic)
 		if(!target.health.organic)
 			caller.to_chat(span("warning","\The [src.name] can only treat organic limbs!"))
+			return FALSE
+	else
+		if(target.health.organic)
+			caller.to_chat(span("warning","\The [src.name] can only treat non-organic limbs!"))
 			return FALSE
 	return TRUE
 
