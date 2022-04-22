@@ -502,7 +502,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			if(use_iff_tag) iff_tag = L.iff_tag
 			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
 
-
 		if(length(attachment_stats))
 			SET(shoot_sounds_to_use,attachment_stats["shoot_sounds"])
 			SET(shoot_alert_to_use,attachment_stats["shoot_alert"])

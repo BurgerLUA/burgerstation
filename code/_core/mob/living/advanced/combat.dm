@@ -75,13 +75,15 @@
 	return null
 
 /mob/living/proc/get_current_target_cords(params)
+	if(ai)
+		return list(pick(ai.target_distribution_x),pick(ai.target_distribution_x))
 	if(!params)
 		params = list(PARAM_ICON_X = 16, PARAM_ICON_Y = 16)
 	return list(params[PARAM_ICON_X],params[PARAM_ICON_Y])
 
 /mob/living/advanced/player/get_current_target_cords(params)
 	if(!params || !client)
-		return list(16,16)
+		return ..()
 
 	var/click_flags = client.get_click_flags(params,TRUE)
 

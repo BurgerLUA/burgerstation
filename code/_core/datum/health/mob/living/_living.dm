@@ -67,7 +67,7 @@
 
 		if(has_bloodoxygen && L.blood_volume_max)
 			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
-			damage[OXY] = FLOOR(max(0,health_max*(2 - blood_oxygen*2)),HEALTH_PRECISION)
+			damage[OXY] = CEILING(max(0,1 - blood_oxygen)*health_max*2,HEALTH_PRECISION)
 
 		var/should_be_dead = check_death && L.check_death()
 
