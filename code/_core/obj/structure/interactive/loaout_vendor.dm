@@ -64,7 +64,6 @@
 			var/list/v = LOADDATA[k]
 			var/new_name = "[v["name"]] (Cost:[v["cost"]])"
 			found_loadouts[new_name] = v["name"]
-		sortTim(found_loadouts,/proc/cmp_loadout_dsc,associative=TRUE)
 		found_loadouts += "Cancel"
 		var/desired_loadout = input("What loadout do you wish to load?","Load Loadout","Cancel") as null|anything in found_loadouts
 		INTERACT_CHECK_NO_DELAY(caller)

@@ -30,8 +30,8 @@ var/global/list/ai_attacking_players = list()
 	//Measured in ticks.
 	var/objective_delay = DECISECONDS_TO_TICKS(10)
 
-	var/list/target_distribution_x = list(8,16,16,16,24)
-	var/list/target_distribution_y = list(8,16,16,16,24)
+	var/list/target_distribution_x = list(12,16,16,16,20)
+	var/list/target_distribution_y = list(12,16,16,16,20)
 
 	var/turf/start_turf
 

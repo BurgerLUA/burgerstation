@@ -125,14 +125,12 @@
 
 /health/mob/living/advanced/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
-	//Advanceed damage is reset and defered to organs.
+	//Advanced damage is reset and defered to organs.
 	var/mob/living/advanced/A = owner
 	damage[BRUTE] = 0
 	damage[BURN] = 0
 	damage[RAD] = 0
 	damage[PAIN] = 0
-
-	//TODO: MAKE PAIN BLOCK ORGAN DAMAGE.
 
 	for(var/k in A.organs)
 		var/obj/item/organ/O = k
@@ -143,21 +141,21 @@
 		damage[BRUTE] += O.health.damage[BRUTE] * O.damage_coefficient
 		damage[BURN] += O.health.damage[BURN] * O.damage_coefficient
 		damage[RAD] += O.health.damage[RAD] * O.damage_coefficient
-		damage[PAIN] += O.health.damage[PAIN] * O.damage_coefficient
+		damage[PAIN] += max(0, (O.health.damage[PAIN] * O.damage_coefficient) - A.pain_removal)
 
 	. = ..()
 
 	if(.)
-		if(health_current <= 0 && !A.status_effects[ADRENALINE] && !A.status_effects[CRIT])
+		var/should_be_in_crit = health_current <= 0 && !A.status_effects[ADRENALINE]
+		if(!A.status_effects[CRIT] && should_be_in_crit)
 			A.add_status_effect(CRIT,-1,-1,force = TRUE)
-
-		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
+		else if(A.status_effects[CRIT] && !should_be_in_crit)
 			A.remove_status_effect(CRIT)
 
-		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
+		var/should_be_in_paincrit = damage[PAIN] > 0 && damage[PAIN] >= health_current
+		if(!A.status_effects[PAINCRIT] && should_be_in_paincrit)
 			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
-
-		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
+		else if(A.status_effects[PAINCRIT] && !should_be_in_paincrit)
 			A.remove_status_effect(PAINCRIT)
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)

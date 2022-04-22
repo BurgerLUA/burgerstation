@@ -118,7 +118,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 			P.to_chat(span("warning","\The [I.name] could not be equipped. You will not be charged for this item."))
 			qdel(I)
 
-	P.to_chat(span("notice","You were charged [P.adjust_currency(-total_value)] credits for this loadout."))
+	P.to_chat(span("notice","You were charged [-P.adjust_currency(-total_value)] credits for this loadout."))
 	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE

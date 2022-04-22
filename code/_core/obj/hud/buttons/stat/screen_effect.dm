@@ -44,13 +44,13 @@
 		alpha = 0 //Hidden.
 		return FALSE
 
+	var/mob/living/L = owner
+
 	var/max_health = owner.health.health_max
 	var/health = owner.health.health_current
 
 	if(dir==SOUTH) //Master screen blood
 		color = "#FFFFFF"
-
-		var/mob/living/L = owner
 
 		if(L.dead)
 			alpha = 200
@@ -62,7 +62,7 @@
 
 		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
 
-			var/health_loss = 1 - (health - owner.health.damage[PAIN])/max_health
+			var/health_loss = 1 - min(1,(health - (L.health.damage[PAIN]-L.pain_removal))/max_health)
 			var/greyscale_amount = clamp(( (health_loss**2) - 0.6)*3,0,0.9)
 
 			var/light_mod = clamp(0.5 + (health/max_health),0.5,1)
@@ -82,7 +82,7 @@
 	else if(dir in DIRECTIONS_INTERCARDINAL)
 
 		var/max_pain = owner.health.health_max*owner.health.health_regen_cooef
-		var/pain = owner.health.damage[PAIN]
+		var/pain = max(0,owner.health.damage[PAIN] - L.pain_removal)
 
 		var/max_stamina = owner.health.stamina_max*owner.health.stamina_regen_cooef
 		var/stamina = owner.health.stamina_current

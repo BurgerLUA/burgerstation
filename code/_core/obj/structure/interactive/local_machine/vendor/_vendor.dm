@@ -137,12 +137,15 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/modify_item(var/obj/item/I,var/obj/item/base_item)
 	return TRUE
 
-/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/P,var/params,var/obj/item/associated_item,var/item_value=0)
+/obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/caller,var/params,var/obj/item/associated_item,var/item_value=0)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
 
 	if(!powered)
 		return null
 
-	if(!spend_currency(P,item_value))
+	if(!spend_currency(caller,item_value))
 		flick("[initial(icon_state)]-deny",src)
 		return null
 
@@ -153,9 +156,9 @@ var/global/list/equipped_antags = list()
 	GENERATE(new_item)
 	FINALIZE(new_item)
 
-	P.to_chat(span("notice","You vend \the [new_item.name]."))
+	caller.to_chat(span("notice","You vend \the [new_item.name]."))
 
-	P.put_in_hands(new_item)
+	caller.put_in_hands(new_item)
 
 	if(!ignore_economy)
 		SSeconomy.purchases_this_round["[associated_item.type]"] += 1

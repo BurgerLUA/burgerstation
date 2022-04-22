@@ -34,22 +34,17 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	var/health_mul = 1
 	var/stamina_mul = 1
-	var/pain_mul = 1
-	var/adrenaline_bonus = 1 + ((STATUS_EFFECT_MAGNITUDE(src,ADRENALINE)/100)*(min(1,STATUS_EFFECT_DURATION(src,ADRENALINE)/100)))
 
 	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(O)
-			if(O.broken)
-				. *= 1.25
+		if(O && O.broken)
+			. *= 1.25
 
 	if(health)
-		var/pain_bonus = min(1,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)/100) * min(1,0.5 + (STATUS_EFFECT_DURATION(src,PAINKILLER)/100)*0.5) * health.health_max
-		health_mul = clamp(0.5 + ((health.health_current + pain_bonus)/health.health_max),0.5,1)
-		stamina_mul = clamp(0.75 + ((health.stamina_current + pain_bonus)/health.stamina_max),0.75,1)
-		pain_mul = clamp(0.1 + (1 - ((health.damage[PAIN] - pain_bonus)/health.health_max))*0.9,0.1,1)
+		health_mul = 2 - clamp( ((health.health_current - health.damage[PAIN] + pain_removal)/health.health_max) + 0.5,0,1)
+		stamina_mul = 2 - clamp( (health.stamina_current/health.stamina_max) + 0.5,0,1)
 
-	. *= move_delay_multiplier * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
+	. *= move_delay_multiplier * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 

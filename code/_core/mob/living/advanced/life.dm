@@ -31,7 +31,7 @@
 		handle_mood()
 
 /mob/living/advanced/proc/handle_mood()
-	var/target_mood = (200 * 0.5 + get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod()) - (health ? health.damage[PAIN] * max(0,1-get_attribute_power(ATTRIBUTE_ENDURANCE)) : 0 )
+	var/target_mood = (200 * 0.5 + get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod()) - (health ? (health.damage[PAIN] * max(0,1-get_attribute_power(ATTRIBUTE_ENDURANCE))) - pain_removal : 0 )
 	target_mood = FLOOR(target_mood,1)
 	if(mood == null) //Exactly null
 		mood = target_mood

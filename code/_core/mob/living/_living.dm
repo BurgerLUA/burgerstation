@@ -262,6 +262,7 @@
 
 	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
 
+	var/pain_removal = 0 //How much damage to ignore due to pain killers. Calculated every second.
 
 /mob/living/Destroy()
 

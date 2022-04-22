@@ -160,6 +160,7 @@
 		sanity = -health.damage[SANITY],
 		mental = -health.damage[MENTAL]
 	)
+	remove_all_status_effects()
 	return TRUE
 
 /mob/living/proc/resurrect()
@@ -257,6 +258,12 @@
 	if(!dead)
 		handle_natural_regen()
 
+	if(health && !dead)
+		var/old_pain_removal = pain_removal
+		pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
+		if(old_pain_removal != pain_removal)
+			queue_health_update = TRUE
+
 	handle_blocking()
 
 	handle_health_buffer()
@@ -314,6 +321,9 @@
 			desired_heartrate += ((health.health_current - health.damage[PAIN])/health.health_max)*60 //This will be negative
 		if(health.stamina_current < health.stamina_max)
 			desired_heartrate += (1 - health.stamina_current/health.stamina_max)*60
+
+		desired_heartrate -= min(pain_removal,40)
+
 		if(abs(desired_heartrate - 60) > 30)
 			play_sound('sound/effects/heartbeat_single.ogg',src,pitch=0.5 + (60/desired_heartrate)*0.5)
 		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
@@ -453,7 +463,6 @@ mob/living/proc/on_life_slow()
 				to_chat(span("danger","You feel utterly and completely fucking shitfaced."))
 				last_intoxication_message = 4
 			tox_regen_buffer -= 0.25*TICKS_TO_SECONDS(LIFE_TICK_SLOW)
-
 
 	if(should_apply_status_effects && (intoxication/threshold_multiplier) >= 600 && prob((intoxication/threshold_multiplier)/100))
 		var/list/possible_status_effects = list(

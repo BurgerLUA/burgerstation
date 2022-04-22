@@ -78,7 +78,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
-	var/evasion_rating = 0
 
 	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
 	var/last_mood_gain = 0
@@ -236,13 +235,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	. = FLOOR(max(0.25,.),0.01)
 
 	move_delay_multiplier = .
-
-	//Evasion stuff
-	evasion_rating = max(0,0.5 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
-	if(ckey_last) //Player controlled
-		evasion_rating = clamp(evasion_rating,0,75)
-	else
-		evasion_rating = clamp(evasion_rating*0.25,0,25)
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 

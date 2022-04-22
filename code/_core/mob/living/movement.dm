@@ -167,6 +167,9 @@
 	if(has_status_effect(SLOW))
 		. *= 2
 
+	if(has_status_effect(ADRENALINE))
+		. *= 0.75
+
 	if(!horizontal)
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
 

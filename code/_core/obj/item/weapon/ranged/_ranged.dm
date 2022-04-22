@@ -363,12 +363,10 @@ obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,locat
 
 	. = shoot_delay
 
-	if(is_advanced(caller))
+	if(is_advanced(caller) && is_player(target))
 		var/mob/living/advanced/A = caller
 		if(A.ai)
-			. *= max(1,(heat_current*ai_heat_sensitivity)*(get_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
-			if(is_player(target))
-				. *= max(1,length(ai_attacking_players[target])) //Lower firerate.
+			. *= max(1,length(ai_attacking_players[target])) //Lower firerate.
 
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
@@ -603,24 +601,24 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(use_iff_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	if(automatic && is_player(caller) && caller.client)
+	if(automatic && caller.client && is_player(caller)) //Automatic fire.
 		spawn(shoot_delay_to_use)
 			var/mob/living/advanced/player/P = caller
 			if(P && P.client && !P.qdeleting && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
 				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
 				if(!length(screen_loc_parsed))
-					log_error("Warning: [caller] had no screen loc parsed.")
+					log_error("Warning: [caller.get_debug_name()] had no screen loc parsed.")
 					return TRUE
 				var/turf/caller_turf = get_turf(caller)
 				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
 				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller_turf.y - VIEW_RANGE
 				var/turf/T = locate(desired_x,desired_y,caller.z)
+				//TODO: Make it so that shoot doesn't require a turf.
 				if(T)
-					next_shoot_time = 0 //This is needed.
 					if((max_bursts_to_use <= 0 || current_bursts < (max_bursts_to_use-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
 						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
 							current_bursts += 1
-					else if(max_bursts_to_use > 0)
+					else if(max_bursts_to_use > 0) //End of burst.
 						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
 						current_bursts = 0
 				else

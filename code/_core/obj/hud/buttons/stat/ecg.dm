@@ -54,8 +54,8 @@
 		good_color_text = color_scheme[4]
 		bad_color_text = color_scheme[5]
 
-	var/perceived_health_mod = clamp( (L.health.health_current - owner.health.damage[PAIN]) / owner.health.health_max,0,1)
-	var/real_health_mod = clamp(L.health.health_current/owner.health.health_max,0,1)
+	var/perceived_health_mod = clamp( (L.health.health_current - (L.health.damage[PAIN] - L.pain_removal)) / L.health.health_max,0,1)
+	var/real_health_mod = clamp(L.health.health_current/L.health.health_max,0,1)
 
 	var/list/color_mod = list(
 		blend_colors(bad_color,good_color,perceived_health_mod),

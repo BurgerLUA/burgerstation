@@ -16,7 +16,7 @@
 
 	firemodes = list("burst","automatic","semi-automatic")
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_3
 	weight = 8

@@ -67,7 +67,6 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 	if(survival_skill >= 50)
 		var/calculated_speed = (DECISECONDS_TO_TICKS(1.75)/initial(movement_delay))*(1-move_delay_multiplier)*100
 		. += div("notice","Speed: [FLOOR(calculated_speed,0.01)]%")
-		. += div("notice","Evasion Rating: [FLOOR(evasion_rating,0.01)]%")
 
 	if(handcuffed)
 		if(examiner == src)

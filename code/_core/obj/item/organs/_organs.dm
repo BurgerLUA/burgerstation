@@ -366,6 +366,8 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 
 	var/list/damage_desc = list()
 
+	var/mob/living/advanced/A = src.loc
+
 	switch(health.damage[BRUTE])
 		if(5 to 15)
 			damage_desc += "<i>bruised<i/>"
@@ -386,7 +388,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(50 to INFINITY)
 			damage_desc += "<u><b>charred</b></u>"
 
-	switch(health.damage[PAIN])
+	switch(health.damage[PAIN] - (istype(A) ? A.pain_removal : 0))
 		if(5 to 15)
 			damage_desc += "<i>tender<i/>"
 		if(15 to 25)
