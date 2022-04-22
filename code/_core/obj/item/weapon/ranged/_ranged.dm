@@ -327,26 +327,31 @@
 
 /obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(SSclient.queued_automatics[src]) //Already doing something.
+		return TRUE
+
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		change_firemode(caller)
 		return TRUE
 
-	if(object.plane >= PLANE_HUD)
-		return ..()
+	. = ..()
 
-	INTERACT_CHECK
+	if(.)
+		return .
+
+	if(object.plane >= PLANE_HUD || !object.z)
+		return .
 
 	if(wield_only && !wielded)
 		caller.to_chat(span("warning","You can only fire this when wielded! (CTRL+CLICK)"))
-		return ..()
+		return .
+
+	INTERACT_CHECK
 
 	if(istype(object,/obj/parallax))
 		object = object.defer_click_on_object(caller,location,control,params) //Only time defer_click_on_object should be used like this.
 
-	. = ..()
-
-	if(!. && object.z && shoot(caller,object,location,params))
-		return TRUE
+	return shoot(caller,object,location,params,click_called=TRUE)
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
@@ -412,7 +417,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	return TRUE
 
-obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
 	if(!pre_shoot(caller,object,location,params,damage_multiplier))
 		return FALSE
@@ -601,35 +606,57 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(use_iff_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	if(automatic && caller.client && is_player(caller)) //Automatic fire.
-		spawn(shoot_delay_to_use)
-			var/mob/living/advanced/player/P = caller
-			if(P && P.client && !P.qdeleting && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
-				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
-				if(!length(screen_loc_parsed))
-					log_error("Warning: [caller.get_debug_name()] had no screen loc parsed.")
-					return TRUE
-				var/turf/caller_turf = get_turf(caller)
-				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
-				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller_turf.y - VIEW_RANGE
-				var/turf/T = locate(desired_x,desired_y,caller.z)
-				//TODO: Make it so that shoot doesn't require a turf.
-				if(T)
-					if((max_bursts_to_use <= 0 || current_bursts < (max_bursts_to_use-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
-						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
-							current_bursts += 1
-					else if(max_bursts_to_use > 0) //End of burst.
-						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
-						current_bursts = 0
-				else
-					log_error("Warning: [caller] tried shooting in an invalid turf: [desired_x],[desired_y],[caller.z].")
-			else if(max_bursts_to_use > 0)
-				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
-				current_bursts = 0
-
 	update_sprite()
 
 	use_condition(condition_to_use)
+
+	if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
+		SSclient.queued_automatics[src] = list(
+			caller,
+			params,
+			damage_multiplier,
+			max_bursts_to_use,
+			shoot_delay_to_use
+		)
+
+	return TRUE
+
+/obj/item/weapon/ranged/proc/handle_automatic(var/mob/caller,params,var/damage_multiplier=1,var/max_bursts_to_use=0,var/shoot_delay_to_use=1)
+
+	var/mob/living/advanced/player/P = caller
+	if(!P || !P.client || P.qdeleting) //Not even active.
+		return FALSE
+
+	if(!(params["left"] && P.attack_flags & CONTROL_MOD_LEFT || params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) && !max_bursts_to_use) //No trigger.
+		return FALSE
+
+	if(!is_inventory(loc))
+		return FALSE
+	var/obj/hud/inventory/I = loc
+	if(!I.click_flags)
+		return FALSE
+
+	var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
+	if(!length(screen_loc_parsed))
+		log_error("Warning: [caller.get_debug_name()] had no screen loc parsed.")
+		return FALSE
+
+	var/turf/caller_turf = get_turf(caller)
+	var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
+	var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller_turf.y - VIEW_RANGE
+	var/turf/T = locate(desired_x,desired_y,caller.z)
+	if(!T)
+		log_error("Warning: [caller] tried shooting in an invalid turf: [desired_x],[desired_y],[caller.z].")
+		return FALSE
+
+	if(!shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
+		return FALSE
+
+	if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
+		current_bursts += 1
+
+	if(max_bursts_to_use > 0 && current_bursts >= max_bursts_to_use) //End of burst.
+		return FALSE
 
 	return TRUE
 

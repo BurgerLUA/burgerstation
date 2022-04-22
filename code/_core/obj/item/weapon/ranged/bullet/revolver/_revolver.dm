@@ -12,9 +12,9 @@
 
 	tier_type = "revolver"
 
-/obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
-	var/quick_shot = world.time - last_shoot_time < shoot_delay
+	var/quick_shot = click_called && world.time - last_shoot_time < shoot_delay
 
 	. = ..()
 
