@@ -21,13 +21,6 @@
 
 	var/turf_temperature_mod = 0
 
-	var/list/air_contents = list(
-		"oxygen" = 21,
-		"nitrogen" = 80
-	)
-
-	var/blocks_air = 0x0
-
 	var/image/overlay/stored_water_overlay
 	var/water_reagent
 

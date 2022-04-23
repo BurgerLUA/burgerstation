@@ -169,6 +169,7 @@
 /mob/living/proc/pre_death()
 	alert_overlay.icon_state = "none"
 	chat_overlay.icon_state = "none"
+	HOOK_CALL("pre_death")
 	return TRUE
 
 /mob/living/proc/post_death()

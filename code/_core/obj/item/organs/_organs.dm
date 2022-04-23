@@ -5,6 +5,7 @@
 
 	icon = 'icons/mob/living/advanced/species/human.dmi'
 	icon_state = null
+
 	var/has_dropped_icon = FALSE
 	var/has_dropped_icon_underlay = FALSE
 	var/gib_icon_state = null
@@ -21,6 +22,7 @@
 
 	no_held_draw = TRUE
 
+	var/enable_overlay = TRUE
 	var/enable_skin = TRUE
 	var/enable_glow = FALSE
 	var/enable_detail = FALSE
@@ -171,6 +173,12 @@
 		A.visible_message(span("warning","\The [A.name]\s [broken_name] breaks!"),span("danger","Your [broken_name] breaks!"))
 	src.health.adjust_loss_smart(pain=health.health_max*0.25)
 	return TRUE
+
+/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+	. = ..()
+	if(. && is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		A.update_overlay_tracked("\ref[src]")
 
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 

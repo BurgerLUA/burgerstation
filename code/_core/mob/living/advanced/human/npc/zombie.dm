@@ -2,9 +2,7 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-	species = "human"
-
-	var/loadout_to_use = /loadout/zombie
+	var/loadout_to_use
 	health = /health/mob/living/advanced/zombie/
 
 	var/next_talk = 0
@@ -25,6 +23,18 @@
 
 	var/rest_chance = 25
 	var/missing_limb_chance = 10
+
+
+/mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
+	setup_sex()
+	. = ..()
+
+/mob/living/advanced/npc/zombie/proc/setup_sex()
+	if(gender == NEUTER)
+		gender = pick(MALE,FEMALE)
+	if(sex == NEUTER)
+		sex = gender //oh god oh fuck what have i done
+	return TRUE
 
 /mob/living/advanced/npc/zombie/Initialize()
 
@@ -47,7 +57,8 @@
 
 	setup_appearance()
 	update_all_blends()
-	equip_loadout(loadout_to_use)
+
+	if(loadout_to_use) equip_loadout(loadout_to_use)
 
 	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
 	for(var/k in organs)
@@ -58,41 +69,17 @@
 		var/tox_loss = total_loss - (burn_loss + brute_loss)
 		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
 
-
+/mob/living/advanced/npc/zombie/proc/setup_appearance()
+	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
+	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#FFFFFF")
+	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
+	return TRUE
 
 /mob/living/advanced/npc/zombie/Finalize()
 	. = ..()
 	add_status_effect(ZOMBIE,100,-1, force = TRUE)
 	if(prob(rest_chance))
 		add_status_effect(REST,-1,-2, force = TRUE)
-
-/*
-/mob/living/advanced/npc/zombie/get_movement_delay(var/include_stance=TRUE)
-
-	. = ..()
-
-	var/turf/T = get_turf(src)
-	. *= max(1,2 - T.lightness)
-	if(ai && ai.objective_attack)
-		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
-*/
-
-/mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
-	setup_sex()
-	. = ..()
-
-/mob/living/advanced/npc/zombie/proc/setup_sex()
-	if(gender == NEUTER)
-		gender = pick(MALE,FEMALE)
-	if(sex == NEUTER)
-		sex = gender //oh god oh fuck what have i done
-	return TRUE
-
-/mob/living/advanced/npc/zombie/proc/setup_appearance()
-	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#000000")
-	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
-	return TRUE
 
 /mob/living/advanced/npc/zombie/get_emote_sound(var/emote_id)
 

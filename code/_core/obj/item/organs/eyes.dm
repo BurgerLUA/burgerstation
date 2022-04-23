@@ -11,7 +11,7 @@
 	has_dropped_icon = TRUE
 	has_dropped_icon_underlay = TRUE
 
-	enable_wounds = TRUE
+	enable_wounds = FALSE
 
 	var/vision_mod = FLAG_VISION_NONE
 	var/sight_mod = SEE_BLACKNESS

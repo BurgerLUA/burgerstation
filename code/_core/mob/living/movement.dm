@@ -159,7 +159,7 @@
 		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
 	if(intoxication)
-		. += intoxication*0.003
+		. *= 1 + intoxication*0.003
 
 	var/trait/speed/S = get_trait_by_category(/trait/speed/)
 	if(S) . *= S.move_delay_mul
@@ -167,10 +167,9 @@
 	if(has_status_effect(SLOW))
 		. *= 2
 
-	if(has_status_effect(ADRENALINE))
-		. *= 0.75
-
 	if(!horizontal)
+		if(has_status_effect(ADRENALINE))
+			. *= 0.75
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)

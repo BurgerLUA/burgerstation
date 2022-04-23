@@ -499,6 +499,7 @@
 	alert_overlay = new(src)
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
+	alert_overlay.icon_state = "none"
 	alert_overlay.pixel_z = 20
 	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.

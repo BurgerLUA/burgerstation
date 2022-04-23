@@ -32,19 +32,16 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
-	var/health_mul = 1
-	var/stamina_mul = 1
-
 	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
 		if(O && O.broken)
 			. *= 1.25
 
 	if(health)
-		health_mul = 2 - clamp( ((health.health_current - health.damage[PAIN] + pain_removal)/health.health_max) + 0.5,0,1)
-		stamina_mul = 2 - clamp( (health.stamina_current/health.stamina_max) + 0.5,0,1)
+		. *= 2 - clamp( ((health.health_current - health.damage[PAIN] + pain_removal)/health.health_max) + 0.5,0,1)
+		. *= 2 - clamp( (health.stamina_current/health.stamina_max) + 0.5,0,1)
 
-	. *= move_delay_multiplier * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
+	. *= move_delay_multiplier
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 

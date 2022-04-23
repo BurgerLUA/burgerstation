@@ -1,6 +1,5 @@
 var/global/list/debug_verbs = list(
 	/client/verb/print_cleaning_log,
-	/client/verb/air_test,
 	/client/verb/make_war,
 	/client/verb/generate_map_icon,
 	/client/verb/stealth_test,
@@ -97,18 +96,6 @@ var/global/list/debug_verbs = list(
 		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
 
 	src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",final_text)]</body>","window=help")
-
-client/verb/air_test(var/pressure as num)
-	set name = "Air Test (DANGER)"
-	set category = "Debug"
-
-	if(mob)
-		var/turf/simulated/S = get_turf(mob)
-		if(S)
-			S.air_contents["oxygen"] += pressure
-			SSair.update_turf_air(S)
-
-	return TRUE
 
 /client/verb/check_lights()
 	set name = "Check Lights (DANGER)"

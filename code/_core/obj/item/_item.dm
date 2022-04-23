@@ -808,13 +808,6 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-
-/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
-	. = ..()
-	if(. && is_advanced(loc))
-		var/mob/living/advanced/A = loc
-		A.update_overlay_tracked("\ref[src]")
-
 /obj/item/update_icon()
 	. = ..()
 	if(length(polymorphs))

@@ -211,7 +211,7 @@ var/global/list/ai_attacking_players = list()
 		add_to_active_list(T.z)
 		remove_from_inactive_list(T.z)
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
-		HOOK_ADD("post_death","\ref[src]_post_death",owner,src,.proc/post_death)
+		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
 	else
 		add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
@@ -222,7 +222,7 @@ var/global/list/ai_attacking_players = list()
 		attackers.Cut()
 		obstacles.Cut()
 		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
-		HOOK_REMOVE("post_death","\ref[src]_post_death",owner)
+		HOOK_REMOVE("pre_death","\ref[src]_pre_death",owner)
 
 	return TRUE
 
@@ -239,7 +239,7 @@ var/global/list/ai_attacking_players = list()
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	set_active(active,TRUE)
 
-/ai/proc/post_death(var/mob/living/L,args)
+/ai/proc/pre_death(var/mob/living/L,args)
 	set_active(FALSE,TRUE)
 	return TRUE
 

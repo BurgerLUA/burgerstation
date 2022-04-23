@@ -1,5 +1,5 @@
-SUBSYSTEM_DEF(chunkclean)
-	name = "Chunkclean Subsystem"
+SUBSYSTEM_DEF(chunk)
+	name = "Chunk Subsystem"
 	desc = "Handles chunk cleaning."
 	tick_rate = SECONDS_TO_TICKS(300) //JUST LIKE MINECRAFT
 	priority = SS_ORDER_DELETE
@@ -9,10 +9,41 @@ SUBSYSTEM_DEF(chunkclean)
 
 	var/current_z = 0
 
+	var/list/active_chunks //Z, X, Y
 
-/subsystem/chunkclean/Initialize()
+	var/chunk_count_x = 0
+	var/chunk_count_y = 0
+	var/chunk_count_z = 0
 
-	active_chunks = new/list[][]
+
+/subsystem/chunk/Initialize()
+
+	chunk_count_x = CEILING(world.maxx/CHUNK_SIZE,1)
+	chunk_count_y = CEILING(world.maxy/CHUNK_SIZE,1)
+	chunk_count_z = world.maxz
+
+	if(!chunk_count_x || !chunk_count_y || !chunk_count_z)
+		//Something went wrong...
+		return FALSE
+
+	log_debug("Creating multidimensional active_chunks list of [chunk_count_z],[chunk_count_x],[chunk_count_y].")
+
+	active_chunks = new/list(chunk_count_z,chunk_count_x,chunk_count_y)
+
+	for(var/z=1,z<=chunk_count_z,z++)
+		for(var/x=1,x<=chunk_count_x,x++)
+			for(var/y=1,y<=chunk_count_y,y++)
+				active_chunks[z][x][y] = new /chunk/
+
+	for(var/k in all_map_nodes)
+		var/obj/marker/map_node/N = k
+		if(!N.loc || !N.loc.z)
+			continue
+		var/x = CEILING(N.loc.x/CHUNK_SIZE,1)
+		var/y = CEILING(N.loc.y/CHUNK_SIZE,1)
+		var/z = N.loc.z
+		var/chunk/CH = active_chunks[z][x][y]
+		CH.nodes += N
 
 	. = ..()
 
@@ -25,12 +56,12 @@ SUBSYSTEM_DEF(chunkclean)
 			continue
 		var/turf/simulated/T = get_turf(L)
 		if(!istype(T))
-			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and has a mob spawnpoint on it.")
+			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
 			continue
 		var/obj/marker/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.force_spawn)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
 
-/subsystem/chunkclean/on_life()
+/subsystem/chunk/on_life()
 
 	if(current_z == 0)
 		//First time initialize. Don't clean.
@@ -45,24 +76,18 @@ SUBSYSTEM_DEF(chunkclean)
 
 	return TRUE
 
-/subsystem/chunkclean/proc/process_entire_z(var/z)
+/subsystem/chunk/proc/process_entire_z(var/z)
 
 	if(!z)
 		return 0
 
-	var/chunk_count_x = CEILING(world.maxx/CHUNK_SIZE,1)
-	var/chunk_count_y = CEILING(world.maxy/CHUNK_SIZE,1)
-
-	var/list/chunk_data = get_chunk_data(TRUE)
-
 	. = 0
+
 	for(var/x=1,x<=chunk_count_x,x++)
-		CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 		for(var/y=1,y<=chunk_count_y,y++)
-			CHECK_TICK(tick_usage_max,FPS_SERVER*3)
-			if(chunk_data["[x],[y],[z]"])
+			if(length(active_chunks[z][x][y]))
 				continue
-			var/list/chunk_turfs = get_chunk(x,y,z)
+			var/list/chunk_turfs = get_chunk_turfs(x,y,z)
 			for(var/k in chunk_turfs)
 				CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 				var/turf/T = k
@@ -75,32 +100,7 @@ SUBSYSTEM_DEF(chunkclean)
 					if(M.enable_chunk_clean)
 						. += M.on_chunk_clean()
 
-/proc/get_chunk_data(var/adjacent=FALSE)
-
-	. = list()
-
-	for(var/k in all_players)
-		sleep(-1)
-		var/mob/living/advanced/player/P = k
-		if(!P.ckey_last) //Ignore corpses without players in them.
-			continue
-		var/turf/T = get_turf(P)
-		if(!T)
-			continue
-		var/x = CEILING(T.x/CHUNK_SIZE,1)
-		var/y = CEILING(T.y/CHUNK_SIZE,1)
-		.["[x],[y],[T.z]"] = TRUE
-		if(adjacent)
-			.["[x],[y-1],[T.z]"] = TRUE
-			.["[x],[y+1],[T.z]"] = TRUE
-			.["[x-1],[y-1],[T.z]"] = TRUE
-			.["[x-1],[y+1],[T.z]"] = TRUE
-			.["[x-1],[y],[T.z]"] = TRUE
-			.["[x+1],[y-1],[T.z]"] = TRUE
-			.["[x+1],[y+1],[T.z]"] = TRUE
-			.["[x+1],[y],[T.z]"] = TRUE
-
-/proc/get_chunk(var/chunk_x,var/chunk_y,var/chunk_z)
+/proc/get_chunk_turfs(var/chunk_x,var/chunk_y,var/chunk_z)
 
 	var/min_x = max(1,1 + CHUNK_SIZE * (chunk_x-1))
 	var/min_y = max(1,1 + CHUNK_SIZE * (chunk_y-1))
