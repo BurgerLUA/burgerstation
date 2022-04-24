@@ -568,8 +568,13 @@
 			var/obj/hud/button/stat/screen_effect/SE = new(src)
 			SE.set_dir(d)
 			SE.update_owner(src)
-		var/obj/hud/button/stat/ecg/L = new(src)
-		L.update_owner(src)
+		var/obj/hud/button/stat/ecg/H = new(src)
+		H.update_owner(src)
+		var/obj/hud/button/stat/stamina/S = new(src)
+		S.update_owner(src)
+		var/obj/hud/button/stat/mana/M = new(src)
+		M.update_owner(src)
+
 
 /mob/living/Finalize()
 

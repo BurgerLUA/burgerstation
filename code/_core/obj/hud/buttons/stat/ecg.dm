@@ -6,7 +6,7 @@
 	icon = 'icons/hud/ecg.dmi'
 	icon_state = "5"
 
-	screen_loc = "RIGHT,BOTTOM:12+5"
+	screen_loc = "RIGHT,CENTER+1"
 
 	user_colors = FALSE
 
@@ -20,7 +20,7 @@
 
 /obj/hud/button/stat/ecg/update_overlays()
 	. = ..()
-	var/image/I = new/image(icon,"line_overlay")
+	var/image/I = new/image(initial(icon),"line_overlay")
 	I.appearance_flags = appearance_flags | RESET_COLOR
 	I.blend_mode = BLEND_INSET_OVERLAY
 	add_overlay(I)
@@ -45,7 +45,7 @@
 	var/bad_color_outline = "#FFFFFF"
 	var/bad_color_text = "#000000"
 
-	if(owner && owner.client)
+	if(L && L.client)
 		var/color_scheme = L.client.settings.loaded_data["hud_colors"]
 		good_color = color_scheme[3]
 		bad_color = color_scheme[6]
