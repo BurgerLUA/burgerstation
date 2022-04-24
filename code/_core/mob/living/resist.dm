@@ -1,7 +1,6 @@
 /mob/living/proc/can_resist(var/messages = TRUE)
 
 	if(next_resist > world.time)
-		//if(messages) to_chat(span("warning","You don't have enough strength to resist now!"))
 		return FALSE
 
 	if(dead)
@@ -21,12 +20,19 @@
 /mob/living/proc/resist() //Return TRUE means you can resist. //Return FALSE means you can't resist
 
 	if(!src.can_resist())
+		next_resist = world.time + 10 //Prevents spam.
 		return FALSE
 
 	if(grabbing_hand)
 		var/mob/living/advanced/attacker = grabbing_hand.owner
 		if(attacker)
-			var/attacker_power = attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10
+			var/attacker_power = attacker.dead ? -INFINITY : attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10*grabbing_hand.grab_level
+			if(is_organ(grabbing_hand.loc))
+				var/obj/item/organ/O = grabbing_hand.loc
+				if(O.health && O.health.health_max > 0)
+					attacker_power *= max(0,O.health.health_current/O.health.health_max)
+					if(O.broken)
+						attacker_power *= 0.25
 			var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)*5
 			var/difficulty = (attacker_power - src_power) * (is_behind(attacker,src) ? 1 : 5)
 			if(resist_counter >= difficulty)
@@ -43,6 +49,8 @@
 					span("warning","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
 					span("warning","You try to resist!"),
 				)
+			if(attacker.health)
+				attacker.health.adjust_stamina(-20) //Attacker needs the strength to resist too.
 		resist_counter += 1
 		health.adjust_stamina(-20)
 		next_resist = world.time + 10

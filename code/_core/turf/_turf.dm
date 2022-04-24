@@ -65,7 +65,7 @@
 					continue
 				if(M.allow_path)
 					continue
-				if(!M.Cross(crosser,src))
+				if(M.Cross(crosser,src))
 					continue
 				can_cross = FALSE
 				break
@@ -96,7 +96,7 @@
 					continue
 				if(M.allow_path)
 					continue
-				if(!M.Cross(crosser,src))
+				if(M.Cross(crosser,src))
 					continue
 				can_cross = FALSE
 				break
@@ -109,7 +109,7 @@
 					continue
 				if(M.allow_path)
 					continue
-				if(!M.Cross(crosser,T1))
+				if(M.Cross(crosser,T1))
 					continue
 				can_cross = FALSE
 				break

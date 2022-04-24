@@ -37,6 +37,16 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(O && O.broken)
 			. *= 1.25
 
+	if(inventories_by_id[BODY_HAND_LEFT_HELD])
+		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_LEFT_HELD]
+		if(I.grabbed_object)
+			. *= 1.5*I.grab_level
+
+	if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_RIGHT_HELD]
+		if(I.grabbed_object)
+			. *= 1.5*I.grab_level
+
 	if(health)
 		. *= 2 - clamp( ((health.health_current - health.damage[PAIN] + pain_removal)/health.health_max) + 0.5,0,1)
 		. *= 2 - clamp( (health.stamina_current/health.stamina_max) + 0.5,0,1)

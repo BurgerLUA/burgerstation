@@ -144,7 +144,7 @@
 /mob/living/get_stance_movement_mul()
 
 	if(horizontal)
-		return walk_delay_mul*2
+		return walk_delay_mul*4
 
 	. = ..()
 

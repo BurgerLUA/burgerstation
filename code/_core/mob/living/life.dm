@@ -235,7 +235,7 @@
 		M.Turn(stun_angle)
 
 /mob/living/proc/should_be_horizontal()
-	return dead || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
+	return dead || (grabbing_hand && grabbing_hand.grab_level >= 2) || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
 
 /mob/living/proc/handle_horizontal()
 

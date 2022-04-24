@@ -113,18 +113,15 @@
 		return TRUE
 
 	if(grabbed_object && grabbed_object == object && is_living(grabbed_object)) //We click on the hand that grabbed something
-		if(world.time <= grab_time+DECISECONDS_TO_TICKS(20)) //Prevents insta agressive-grab
+		if(world.time <= grab_time+SECONDS_TO_TICKS(2)) //Prevents insta agressive-grab
 			return TRUE
-		caller.to_chat(span("warning","You tighten your grip on [object]!"))
+		var/mob/living/grabbed_living = grabbed_object
+		caller.visible_message(span("warning","\The [caller.name] tightens their grip on \the [object.name]!"),span("warning","You tighten your grip on \the [object.name]!"))
 		grab_level = 2 //Agressive grab
-		grab_time = world.time //We grabbed now. Used in agressive grab
-
-		var/mob/living/A = owner //How can something not alive grab anything?..
-		A.add_status_effect(SLOW,30,30,stealthy=1) //I don't know any better way..
-		var/mob/living/V = grabbed_object //Checked above
-		V.add_status_effect(REST,30,30,stealthy=1)
-		V.add_status_effect(SLOW,30,30)
-
+		grab_time = world.time
+		grabbed_living.handle_horizontal()
+		if(caller.next_move <= 0)
+			caller.Move(get_turf(grabbed_object))
 		update_overlays() //Changing appearnce
 		return TRUE
 

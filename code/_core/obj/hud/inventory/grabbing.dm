@@ -10,9 +10,14 @@
 		caller.to_chat(span("notice","You need an empty hand to grab this!"))
 		return FALSE
 
-	if(grabbed_object == object)
+	if(caller == object)
 		caller.to_chat(span("notice","You cannot grab yourself, ERP is against the rules!"))
 		return FALSE
+
+	if(get_dist(caller,object) > 1)
+		if(next_move > 0 || !caller.Move(get_step(caller.loc,get_dir(caller,object))))
+			caller.to_chat(span("notice","You're too far away!"))
+			return FALSE
 
 	if(grabbed_object)
 		release_object() //Release the old object, if any.

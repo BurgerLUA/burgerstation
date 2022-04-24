@@ -306,7 +306,7 @@
 	if(next_shoot_time > world.time)
 		return FALSE
 
-	if(last_shoot_time - world.time > get_shoot_delay(caller,object,location,params))
+	if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
 		return FALSE
 
 	return TRUE
@@ -365,14 +365,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 
 
 obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
-
-	. = shoot_delay
-
-	if(is_advanced(caller) && is_player(target))
-		var/mob/living/advanced/A = caller
-		if(A.ai)
-			. *= max(1,length(ai_attacking_players[target])) //Lower firerate.
-
+	.return shoot_delay
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 

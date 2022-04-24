@@ -122,8 +122,7 @@
 
 /ai/proc/handle_movement_astar()
 
-	if(current_path_astar && length(current_path_astar))
-		owner.movement_flags = MOVEMENT_NORMAL
+	if(length(current_path_astar))
 		var/turf/T = get_turf(owner)
 		var/turf/desired_turf = current_path_astar[1]
 		if(T == desired_turf)
@@ -143,7 +142,6 @@
 
 /ai/proc/handle_movement_path()
 	if(current_path && length(current_path))
-		owner.movement_flags = MOVEMENT_NORMAL
 		if(path_steps <= length(current_path))
 			var/Vector3D/desired_node = current_path[path_steps]
 			var/turf/T = get_turf(owner)
