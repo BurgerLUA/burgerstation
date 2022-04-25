@@ -6,7 +6,7 @@
 	icon = 'icons/hud/ecg.dmi'
 	icon_state = "5"
 
-	screen_loc = "RIGHT,CENTER+1"
+	screen_loc = "RIGHT,CENTER"
 
 	user_colors = FALSE
 

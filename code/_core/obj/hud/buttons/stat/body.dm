@@ -6,7 +6,7 @@
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "invisible"
 
-	screen_loc = "RIGHT,CENTER+1"
+	screen_loc = "RIGHT,CENTER"
 
 	user_colors = FALSE
 
