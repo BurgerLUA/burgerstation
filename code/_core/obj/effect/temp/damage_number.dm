@@ -41,6 +41,10 @@
 	return TRUE
 
 /obj/effect/damage_number/proc/add_value(var/desired_damage,var/desired_block)
+
+	if(desired_damage) desired_damage = CEILING(desired_damage,1)
+	if(desired_block) desired_block = CEILING(desired_block,1)
+
 	var/desired_color = "#FFFFFF"
 	var/desired_size = 0.5
 	if(current_damage || current_block)

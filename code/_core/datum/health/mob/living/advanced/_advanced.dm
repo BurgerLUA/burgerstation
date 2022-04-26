@@ -1,3 +1,8 @@
+/health/mob/living/advanced/
+	health_regeneration = 1
+	mana_regeneration = 1
+	stamina_regeneration = 1
+
 /health/mob/living/advanced/restore()
 	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 	var/mob/living/advanced/A = owner
@@ -108,17 +113,37 @@
 
 	var/mob/living/advanced/A = owner
 
-	if(health_current <= 0) //In crit.
-		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
-	else
-		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
+	if(is_player(A))
+		var/mob/living/advanced/player/P = A
 
-	if(A.has_status_effects(STAMCRIT,SLEEP,REST))
-		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*27)
-	else
-		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*18)
+		var/actual_difficulty = enable_friendly_fire ? DIFFICULTY_NORMAL : P.difficulty
 
-	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*18)
+		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
+			health_regeneration = 0
+		else
+			health_regeneration = initial(health_regeneration)
+
+		if(actual_difficulty == DIFFICULTY_SURVIVOR)
+			stamina_regen_cooef = 0.5
+			mana_regen_cooef = 0.5
+		else
+			stamina_regen_cooef = initial(stamina_regen_cooef)
+			mana_regen_cooef = initial(mana_regen_cooef)
+
+	if(health_regeneration > 0)
+		if(health_current <= 0) //In crit.
+			health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
+		else
+			health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
+
+	if(stamina_regeneration > 0)
+		if(A.has_status_effects(STAMCRIT,SLEEP,REST))
+			stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*27)
+		else
+			stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*18)
+
+	if(mana_regeneration > 0)
+		mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*18)
 
 
 
