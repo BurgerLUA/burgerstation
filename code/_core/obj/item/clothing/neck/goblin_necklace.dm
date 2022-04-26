@@ -22,9 +22,9 @@
 /obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/neck))
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 /obj/item/clothing/neck/goblin_necklace/think()
 	if(cooldown_effect > world.time)

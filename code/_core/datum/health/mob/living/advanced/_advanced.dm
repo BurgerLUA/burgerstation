@@ -195,5 +195,5 @@
 				else if(C.luck < 50 && prob(50-C.luck))
 					clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
-			.["items"] += C
+		.["items"] += C
 

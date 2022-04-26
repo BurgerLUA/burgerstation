@@ -35,7 +35,7 @@
 
 /obj/structure/interactive/mining_drill/update_icon()
 
-	if(THINKING(src))
+	if(IS_THINKING(src))
 		icon_state = "mining_drill_active"
 	else if(anchored)
 		icon_state = "mining_drill_braced"
@@ -50,7 +50,7 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	if(THINKING(src))
+	if(IS_THINKING(src))
 		deactivate(caller)
 	else
 		activate(caller)
@@ -70,7 +70,7 @@
 	else
 		visible_message(span("warning","\The [src.name] powers up on its own!."))
 	set_anchored(TRUE)
-	start_thinking(src)
+	START_THINKING(src)
 	update_sprite()
 	return TRUE
 
@@ -80,7 +80,7 @@
 	else
 		visible_message(span("warning","\The [src.name] shuts itself down!"))
 	set_anchored(FALSE)
-	stop_thinking(src)
+	STOP_THINKING(src)
 	update_sprite()
 	return TRUE
 

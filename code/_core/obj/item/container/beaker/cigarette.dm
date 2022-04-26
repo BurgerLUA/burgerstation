@@ -60,9 +60,9 @@
 	update_atom_light()
 
 	if(lit)
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 	return TRUE
 

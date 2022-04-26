@@ -234,7 +234,7 @@
 			else
 				caller.to_chat(span("notice","You fail to catch anything. At least your bait is saved..."))
 
-			stop_thinking(src)
+			STOP_THINKING(src)
 			fishing_turf = null
 			nospam = null
 			snagged_fish = null
@@ -242,7 +242,7 @@
 			QDEL_NULL(fishing_alert)
 			return TRUE
 		else //Reel it in without catching anything.
-			stop_thinking(src)
+			STOP_THINKING(src)
 			fishing_turf = null
 			nospam = null
 			QDEL_NULL(fishing_bob)
@@ -271,7 +271,7 @@
 		fishing_bob.icon_state = "[lure.bob_icon_state]_out"
 		animate(fishing_bob,pixel_x=rand(-10,10),pixel_y=rand(-10,10),time=50)
 		nospam = world.time + SECONDS_TO_DECISECONDS(1)
-		start_thinking(src)
+		START_THINKING(src)
 		return TRUE
 
 	return ..()

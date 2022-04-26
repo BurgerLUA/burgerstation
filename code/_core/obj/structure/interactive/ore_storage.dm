@@ -24,7 +24,7 @@
 
 /obj/structure/interactive/ore_storage/update_icon()
 
-	if(THINKING(src))
+	if(IS_THINKING(src))
 		icon_state = "ore_storage_1"
 	else
 		icon_state = "ore_storage"
@@ -33,7 +33,7 @@
 
 /obj/structure/interactive/ore_storage/PostInitialize()
 	. = ..()
-	start_thinking(src)
+	START_THINKING(src)
 	update_sprite()
 
 /obj/structure/interactive/ore_storage/update_icon()

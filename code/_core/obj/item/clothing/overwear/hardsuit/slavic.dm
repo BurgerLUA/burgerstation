@@ -62,9 +62,9 @@
 /obj/item/clothing/overwear/hardsuit/skat/antag/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/torso))
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 /obj/item/clothing/overwear/hardsuit/skat/antag/think()
 	if(cooldown_effect > world.time)

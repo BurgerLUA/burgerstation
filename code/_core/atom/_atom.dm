@@ -93,7 +93,7 @@
 
 /atom/Destroy()
 
-	stop_thinking(src)
+	STOP_THINKING(src)
 	stop_advanced_thinking(src)
 
 	set_light(FALSE)

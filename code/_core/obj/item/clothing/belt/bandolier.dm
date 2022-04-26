@@ -4,7 +4,7 @@
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of shotgun shells. ALT+Click to grab additional shells while already holding a shell."
 
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
-	worn_layer = LAYER_MOB_CLOTHING_COAT
+	worn_layer = LAYER_MOB_CLOTHING_COAT_OVER
 	dyeable = TRUE
 
 

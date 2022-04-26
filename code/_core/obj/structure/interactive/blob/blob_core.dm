@@ -46,7 +46,7 @@
 
 /obj/structure/interactive/blob/core/PostInitialize()
 	. = ..()
-	start_thinking(src)
+	START_THINKING(src)
 
 /obj/structure/interactive/blob/core/think()
 

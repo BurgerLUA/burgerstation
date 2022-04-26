@@ -20,9 +20,9 @@
 	emf_level = desired_level
 
 	if(emf_level > 0)
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 	update_sprite()
 
@@ -94,9 +94,9 @@
 	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.25)
 
 	if(active)
-		if(emf_level) start_thinking(src)
+		if(emf_level) START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 	update_sprite()
 

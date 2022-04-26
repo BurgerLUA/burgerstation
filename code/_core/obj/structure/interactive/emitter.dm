@@ -19,7 +19,7 @@
 
 /obj/structure/interactive/emitter/Finalize()
 	if(active)
-		start_thinking(src)
+		START_THINKING(src)
 		update_sprite()
 	return ..()
 
@@ -77,7 +77,7 @@
 		INTERACT_DELAY(5)
 		active = !active
 		caller.visible_message(span("warning","\The [caller.name] turns \the [src.name] [active ? "on" : "off"]."),span("warning","You turn \the [src.name] [active ? "on" : "off"]."))
-		if(active) start_thinking(src)
+		if(active) START_THINKING(src)
 		update_sprite()
 
 	return ..()

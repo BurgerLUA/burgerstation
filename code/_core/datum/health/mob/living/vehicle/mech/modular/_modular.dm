@@ -1,4 +1,4 @@
-/health/mob/living/vehicle/mech/modular/get_defense(var/atom/attacker,var/atom/hit_object)
+/health/mob/living/vehicle/mech/modular/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
 
@@ -13,5 +13,5 @@
 				.[damage_type] = O_defense_rating[damage_type]
 				continue
 			.[damage_type] += O_defense_rating[damage_type]
-			.["items"] += O
+		.["items"] += O
 

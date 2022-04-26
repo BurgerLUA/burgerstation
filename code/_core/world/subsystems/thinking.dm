@@ -22,19 +22,6 @@ SUBSYSTEM_DEF(thinking)
 			all_thinkers -= A
 			continue
 		if(!A.think())
-			stop_thinking(A)
+			STOP_THINKING(A)
 
 	return TRUE
-
-/proc/start_thinking(var/atom/A)
-	SSthinking.all_thinkers[A] = TRUE
-	return TRUE
-
-/proc/stop_thinking(var/atom/A)
-	if(SSthinking.all_thinkers[A])
-		SSthinking.all_thinkers -= A
-
-	return TRUE
-
-/proc/is_thinking(var/atom/A)
-	return SSthinking.all_thinkers[A]

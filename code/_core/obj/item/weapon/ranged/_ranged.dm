@@ -567,7 +567,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			queued_recoil = heat_per_shot_to_use
 		else
 			heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
-		start_thinking(src)
+		START_THINKING(src)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller

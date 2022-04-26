@@ -118,7 +118,7 @@
 		tracked_atom = object
 		caller.visible_message(span("notice","\The [caller.name] scans \the [object.name] with \the [src.name]."),span("notice","You scan \the [object.name], tracking it."))
 		scan_mode = FALSE
-		start_thinking(src)
+		START_THINKING(src)
 		return TRUE
 
 	return ..()
@@ -190,7 +190,7 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE
 
@@ -278,7 +278,7 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE
 
@@ -325,7 +325,7 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE
 
@@ -369,6 +369,6 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE

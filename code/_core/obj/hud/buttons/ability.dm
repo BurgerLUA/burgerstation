@@ -46,7 +46,7 @@ var/global/list/ability_colors = list(
 
 	if(ability && ability.activate(caller))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
-		start_thinking(src)
+		START_THINKING(src)
 	else
 		animate(src,color="#FF0000",time=1,flags=ANIMATION_PARALLEL)
 

@@ -23,11 +23,11 @@
 	INTERACT_DELAY(1)
 
 	if(!SSthinking.all_thinkers[src])
-		start_thinking(src)
+		START_THINKING(src)
 		caller.to_chat(span("notice","You activate \the [src.name]'s passive healing effect."))
 	else
 		caller.to_chat(span("notice","You deactivate \the [src.name]'s passive healing effect."))
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 	return TRUE
 

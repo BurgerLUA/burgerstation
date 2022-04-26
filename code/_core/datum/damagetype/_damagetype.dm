@@ -488,10 +488,12 @@ var/global/list/all_damage_numbers = list()
 		damage_to_deal[PAIN] += CEILING(pain_damage,1)
 		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
 
+	var/total_damage_dealt = 0
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
 		if(!damage_amount)
 			continue
+		total_damage_dealt += damage_amount
 		var/real_damage_type = attack_damage_conversion[damage_type]
 		if(islist(real_damage_type))
 			var/list_length = length(real_damage_type)
@@ -503,9 +505,18 @@ var/global/list/all_damage_numbers = list()
 			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
-	var/total_damage_dealt = 0
-	if(hit_object.health)
-		total_damage_dealt += hit_object.health.adjust_loss_smart(
+	if(defense_rating_victim && defense_rating_victim["items"])
+		for(var/k in defense_rating_victim["items"])
+			var/obj/item/I = k
+			if(I.uses_until_condition_fall > 0)
+				I.use_condition(total_damage_dealt)
+			world.log << "Checking [I.name]."
+			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
+				total_damage_dealt = 0
+				world.log << "NAH"
+
+	if(total_damage_dealt > 0 && hit_object.health)
+		total_damage_dealt = hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
 			burn = damage_to_deal_main[BURN],
 			tox = damage_to_deal_main[TOX],
@@ -517,9 +528,6 @@ var/global/list/all_damage_numbers = list()
 			mental = damage_to_deal_main[MENTAL],
 			update = FALSE
 		)
-	else
-		for(var/damage_type in damage_to_deal_main)
-			total_damage_dealt += damage_to_deal_main[damage_type]
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
@@ -541,14 +549,6 @@ var/global/list/all_damage_numbers = list()
 	if(!total_damage_dealt)
 		display_glance_message(attacker,victim,weapon,hit_object)
 	else
-		if(defense_rating_victim && defense_rating_victim["items"])
-			var/condition_damage = total_damage_dealt
-			for(var/k in defense_rating_victim["items"])
-				var/obj/item/I = k
-				if(I.uses_until_condition_fall <= 0)
-					continue
-				I.use_condition(condition_damage)
-
 		display_hit_message(attacker,victim,weapon,hit_object)
 		if(is_living(blamed) && is_living(victim))
 			var/mob/living/A = blamed

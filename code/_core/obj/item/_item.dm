@@ -178,6 +178,8 @@
 
 	var/combat_range = 1 //Maximum ideal combat range for the weapon.
 
+	var/can_negate_damage = FALSE
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null
@@ -870,3 +872,7 @@ var/global/list/rarity_to_mul = list(
 /obj/item/dust(var/atom/source)
 	qdel(src)
 	return TRUE
+
+
+/obj/item/proc/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
+	return FALSE

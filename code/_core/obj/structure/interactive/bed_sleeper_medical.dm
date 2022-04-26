@@ -39,7 +39,7 @@
 	opened_time = 0
 	update_icon()
 	check_collisions()
-	stop_thinking(src)
+	STOP_THINKING(src)
 	return TRUE
 
 /obj/structure/interactive/bed/sleeper/medical/on_close(var/mob/caller)
@@ -47,7 +47,7 @@
 	opened_time = 0
 	update_icon()
 	check_collisions()
-	start_thinking(src)
+	START_THINKING(src)
 	return TRUE
 
 /obj/structure/interactive/bed/sleeper/medical/syndicate

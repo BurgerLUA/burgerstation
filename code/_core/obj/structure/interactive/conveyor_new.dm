@@ -47,7 +47,7 @@
 /obj/structure/interactive/conveyor/Crossed(atom/movable/O)
 
 	if(anchored && active)
-		start_thinking(src)
+		START_THINKING(src)
 
 	. = ..()
 
@@ -104,13 +104,13 @@
 
 /obj/structure/interactive/conveyor/proc/enable()
 	active = TRUE
-	start_thinking(src)
+	START_THINKING(src)
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/conveyor/proc/disable()
 	active = FALSE
-	stop_thinking(src)
+	STOP_THINKING(src)
 	update_sprite()
 	return TRUE
 

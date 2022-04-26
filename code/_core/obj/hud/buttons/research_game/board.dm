@@ -157,7 +157,7 @@
 		linked_quit.update_owner(desired_owner)
 
 	if(desired_owner)
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 

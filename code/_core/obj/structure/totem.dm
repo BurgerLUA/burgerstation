@@ -22,7 +22,7 @@
 /obj/structure/totem/Finalize()
 	. = ..()
 	flick("appear", src)
-	start_thinking(src)
+	START_THINKING(src)
 
 /obj/structure/totem/Destroy()
 	if(owner)

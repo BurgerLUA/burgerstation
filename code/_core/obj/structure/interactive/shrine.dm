@@ -53,7 +53,7 @@ var/global/list/possible_ritual_spawns = list(
 	HOOK_REMOVE("post_death","\ref[src]_post_death",L)
 	HOOK_REMOVE("Destroy","\ref[src]_destroy",L)
 	HOOK_REMOVE("post_move","\ref[src]_post_move",L)
-	if(length(tracked_enemies) <= 0 && is_thinking(src))
+	if(length(tracked_enemies) <= 0 && IS_THINKING(src))
 		end_ritual(TRUE)
 	return TRUE
 
@@ -62,7 +62,7 @@ var/global/list/possible_ritual_spawns = list(
 	HOOK_REMOVE("post_death","\ref[src]_post_death",P)
 	HOOK_REMOVE("Destroy","\ref[src]_destroy",P)
 	HOOK_REMOVE("post_move","\ref[src]_post_move",P)
-	if(length(tracked_players) <= 0 && is_thinking(src))
+	if(length(tracked_players) <= 0 && IS_THINKING(src))
 		end_ritual()
 	return TRUE
 
@@ -129,13 +129,13 @@ var/global/list/possible_ritual_spawns = list(
 	enemy_type_to_spawn = pickweight(possible_ritual_spawns)
 	spawns_left = possible_ritual_spawns[enemy_type_to_spawn]
 	create_smoke()
-	start_thinking(src)
+	START_THINKING(src)
 	next_enemy_spawn = world.time + SECONDS_TO_DECISECONDS(6)
 	return TRUE
 
 /obj/structure/interactive/ritual/proc/end_ritual(var/success = FALSE)
 
-	stop_thinking(src)
+	STOP_THINKING(src)
 
 	for(var/k in tracked_players)
 		var/mob/living/advanced/player/P = k
@@ -227,5 +227,5 @@ var/global/list/possible_ritual_spawns = list(
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!is_thinking(src) && !complete)
+	if(!IS_THINKING(src) && !complete)
 		start_ritual()

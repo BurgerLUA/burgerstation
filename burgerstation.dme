@@ -1150,6 +1150,7 @@
 #include "code\_core\obj\item\clothing\belt\_belts.dm"
 #include "code\_core\obj\item\clothing\belt\bandolier.dm"
 #include "code\_core\obj\item\clothing\belt\brass.dm"
+#include "code\_core\obj\item\clothing\belt\damage_deferal_shield.dm"
 #include "code\_core\obj\item\clothing\belt\kilt.dm"
 #include "code\_core\obj\item\clothing\belt\quiver.dm"
 #include "code\_core\obj\item\clothing\belt\skull_codpiece.dm"

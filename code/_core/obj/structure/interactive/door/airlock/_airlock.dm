@@ -195,10 +195,10 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			if(should_lock)
 				lock(caller)
 			opened_time = 0
-			start_thinking(src)
+			START_THINKING(src)
 
 		if(DOOR_STATE_CLOSED)
-			stop_thinking(src)
+			STOP_THINKING(src)
 			if(should_lock)
 				lock(caller)
 

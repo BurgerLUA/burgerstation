@@ -38,4 +38,4 @@
 
 /mob/abstract/observer/menu/PostInitialize()
 	. = ..()
-	start_thinking(src)
+	START_THINKING(src)
