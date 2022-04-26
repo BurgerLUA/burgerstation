@@ -146,3 +146,8 @@
 	name = "golem head"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
 	desc = "An organ."
+
+/obj/item/organ/head/abductor
+	name = "abductor head"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+	desc = "An organ."

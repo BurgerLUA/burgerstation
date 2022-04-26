@@ -283,7 +283,6 @@ var/global/list/all_shuttle_controlers = list()
 	for(var/k in areas_to_upate)
 		var/area/A = k
 		A.generate_average()
-		world.log << "Area: [A.type]."
 
 	if(enable_shuttle_throwing)
 		for(var/k in objects_to_throw)

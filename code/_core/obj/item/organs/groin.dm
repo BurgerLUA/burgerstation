@@ -131,3 +131,10 @@
 /obj/item/organ/groin/golem
 	name = "golem groin"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
+
+
+
+//abductor
+/obj/item/organ/groin/abductor
+	name = "abductor groin"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'

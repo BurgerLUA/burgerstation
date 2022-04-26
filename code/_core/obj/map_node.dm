@@ -8,17 +8,20 @@ var/global/mob/abstract/node_checker
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 	plane = PLANE_AREA
 	layer = LAYER_GHOST
-	invisibility = 100
 	invisibility = 101
 	alpha        = 0
 	opacity      = 0
+	mouse_opacity = 0
 	see_in_dark  = 1e6 // Literally arbitrary.
 	density = TRUE
+
+/mob/abstract/node_checker/Cross(atom/movable/O,atom/oldloc)
+	return TRUE
 
 /mob/abstract/node_checker/Bump(atom/Obstacle)
 	if(istype(Obstacle,/obj/structure/interactive/door))
 		return TRUE
-	return ..()
+	. = ..()
 
 /obj/marker/map_node
 	name = "map node"

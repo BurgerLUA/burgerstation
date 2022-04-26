@@ -25,6 +25,11 @@
 
 	uses_until_condition_fall = 1000
 
+/obj/item/clothing/belt/damage_deferal_shield/use_condition(var/amount_to_use=1)
+	if(!CALLBACK_EXISTS("\ref[src]_disable_shield"))
+		return FALSE
+	. = ..()
+
 /obj/item/clothing/belt/damage_deferal_shield/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -41,6 +46,7 @@
 
 
 /obj/item/clothing/belt/damage_deferal_shield/proc/owner_post_move(var/mob/living/advanced/owner,var/atom/old_loc)
+	shield_overlay.glide_size = owner.glide_size
 	shield_overlay.force_move(owner.loc)
 	return TRUE
 
@@ -81,14 +87,11 @@
 
 	if(CALLBACK_EXISTS("\ref[src]_cooldown_end")) //Shield that is cooling down.
 		icon_state = "[icon_state]_cooling"
-		uses_until_condition_fall = 0
-		damage_limit = 0
 	else if(CALLBACK_EXISTS("\ref[src]_disable_shield")) //Active shield.
 		icon_state = "[icon_state]_active"
-		damage_limit = initial(damage_limit)
-		uses_until_condition_fall = initial(uses_until_condition_fall)
 
 /obj/item/clothing/belt/damage_deferal_shield/proc/disable_shield()
+	damage_limit = initial(damage_limit)
 	CALLBACK("\ref[src]_cooldown_end",cooldown_time,src,.proc/cooldown_end)
 	shield_beep()
 	update_sprite()
@@ -112,6 +115,9 @@
 	if(damage_dealt <= 0) //The damage doesn't exist for some reason.
 		return FALSE
 
+	if(damage_limit <= 0) //No damage can be protected!
+		return FALSE
+
 	if(CALLBACK_EXISTS("\ref[src]_cooldown_end")) //Cooling down, can't do anything right now.
 		return FALSE
 
@@ -119,15 +125,15 @@
 		CALLBACK("\ref[src]_disable_shield",active_time,src,.proc/disable_shield) //Activate the shield!
 		return FALSE
 
-	if(damage_limit <= 0)
-		CALLBACK_REMOVE("\ref[src]_disable_shield")
-		disable_shield()
-		return FALSE
-
 	animate(shield_overlay,alpha=clamp(damage_dealt+100,100,255),time=0,flags=ANIMATION_END_NOW )
 	animate(alpha=0,time=5)
 
 	damage_limit -= damage_dealt
+
+	if(damage_limit <= 0)
+		CALLBACK_REMOVE("\ref[src]_disable_shield")
+		disable_shield()
+		return FALSE
 
 	return TRUE
 

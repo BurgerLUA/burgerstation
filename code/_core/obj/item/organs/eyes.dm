@@ -128,3 +128,14 @@
 	name = "left golem eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
+
+
+//abductor
+/obj/item/organ/eye/abductor
+	name = "right abductor eye"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+/obj/item/organ/eye/abductor/left
+	name = "left abductor eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT

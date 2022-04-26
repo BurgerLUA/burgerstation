@@ -267,3 +267,22 @@
 
 	target_bounds_y_min = 15
 	target_bounds_y_max = 22
+
+
+//Abductor
+/obj/item/organ/arm/abductor
+	name = "abductor right arm"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+/obj/item/organ/arm/abductor/left
+	name = "abductor left arm"
+	id = BODY_ARM_LEFT
+	icon_state = BODY_ARM_LEFT
+
+	hud_id = "body_arm_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 15
+	target_bounds_y_max = 22

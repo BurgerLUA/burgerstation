@@ -510,10 +510,8 @@ var/global/list/all_damage_numbers = list()
 			var/obj/item/I = k
 			if(I.uses_until_condition_fall > 0)
 				I.use_condition(total_damage_dealt)
-			world.log << "Checking [I.name]."
 			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
 				total_damage_dealt = 0
-				world.log << "NAH"
 
 	if(total_damage_dealt > 0 && hit_object.health)
 		total_damage_dealt = hit_object.health.adjust_loss_smart(

@@ -475,3 +475,31 @@
 
 	target_bounds_y_min = 11
 	target_bounds_y_max = 14
+
+
+
+//Abductor
+/obj/item/organ/hand/abductor
+	name = "right abductor hand"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+/obj/item/organ/hand/abductor/left
+	name = "left abductor hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
