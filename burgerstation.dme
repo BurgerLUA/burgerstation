@@ -1196,6 +1196,7 @@
 #include "code\_core\obj\item\clothing\hands\gloves\colored.dm"
 #include "code\_core\obj\item\clothing\hands\gloves\engineering.dm"
 #include "code\_core\obj\item\clothing\hands\gloves\gladiator.dm"
+#include "code\_core\obj\item\clothing\hands\gloves\recall.dm"
 #include "code\_core\obj\item\clothing\hats\light\_light.dm"
 #include "code\_core\obj\item\clothing\head\_head.dm"
 #include "code\_core\obj\item\clothing\head\hats\_hats.dm"
