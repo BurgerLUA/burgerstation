@@ -237,6 +237,7 @@
 #include "code\_core\datum\ai\ai_path.dm"
 #include "code\_core\datum\ai\ai_sight.dm"
 #include "code\_core\datum\ai\advanced\_advanced.dm"
+#include "code\_core\datum\ai\advanced\abductor.dm"
 #include "code\_core\datum\ai\advanced\ashwalker.dm"
 #include "code\_core\datum\ai\advanced\beef.dm"
 #include "code\_core\datum\ai\advanced\clockwork_cult.dm"

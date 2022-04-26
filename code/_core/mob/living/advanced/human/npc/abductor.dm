@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/abductor
 	name = "abductor"
 	desc = "Ayy lmao. The most annoying thing in the known universe."
-	ai = /ai/advanced
+	ai = /ai/advanced/abductor
 
 	var/list/possible_outfits = list(
 		/loadout/abductor = 40,
@@ -17,7 +17,7 @@
 		/loadout/abductor/soldier = 4
 	)
 
-	level = 20
+	level = 10
 
 	species = "abductor"
 
@@ -37,24 +37,5 @@
 	update_all_blends()
 
 	equip_loadout(loadout_to_use)
-
-/mob/living/advanced/npc/abductor/proc/fuckoff()
-	if(qdeleting || dead || has_status_effects(ZOMBIE,STUN,SLEEP,PARALYZE))
-		return FALSE
-	new /obj/effect/temp/phase/out(get_turf(src))
-	src.visible_message(span("danger","\The [src.name] teleports to safety!"))
-	qdel(src)
-	return TRUE
-
-
-/mob/living/advanced/npc/abductor/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
-	. = ..()
-
-	if(!CALLBACK_EXISTS("\ref[src]_fuckoff") && health && !dead && !qdeleting && !stealthy && health.health_current/health.health_max <= 0.5 && !has_status_effects(ZOMBIE,STUN,SLEEP,PARALYZE))
-		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_LEFT]
-		if(istype(I) && istype(I.get_top_object(),/obj/item/clothing/hands/gloves/recall))
-			src.visible_message(span("warning","\The [src.name] quickly presses a series of buttons on their left arm..."))
-			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,2)),src,.proc/fuckoff)
 
 
