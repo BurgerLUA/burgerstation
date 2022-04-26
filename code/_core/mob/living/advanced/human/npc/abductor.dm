@@ -38,9 +38,10 @@
 
 	equip_loadout(loadout_to_use)
 
-/mob/living/advanced/npc/abductor/proc/fuck_off()
+/mob/living/advanced/npc/abductor/proc/fuckoff()
 	if(qdeleting || dead || has_status_effects(ZOMBIE,STUN,SLEEP,PARALYZE))
 		return FALSE
+	new /obj/effect/temp/phase/out(get_turf(src))
 	src.visible_message(span("danger","\The [src.name] teleports to safety!"))
 	qdel(src)
 	return TRUE
@@ -50,10 +51,10 @@
 
 	. = ..()
 
-	if(!CALLBACK_EXISTS("\ref[src]_fuckoff") && health && !dead && !qdeleting && !stealthy && health.health_current/health.health_max <= 0.25 && !has_status_effects(ZOMBIE,STUN,SLEEP,PARALYZE))
+	if(!CALLBACK_EXISTS("\ref[src]_fuckoff") && health && !dead && !qdeleting && !stealthy && health.health_current/health.health_max <= 0.5 && !has_status_effects(ZOMBIE,STUN,SLEEP,PARALYZE))
 		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_LEFT]
 		if(istype(I) && istype(I.get_top_object(),/obj/item/clothing/hands/gloves/recall))
 			src.visible_message(span("warning","\The [src.name] quickly presses a series of buttons on their left arm..."))
-			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,3)),src,.proc/fuck_off)
+			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,2)),src,.proc/fuckoff)
 
 

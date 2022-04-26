@@ -16,7 +16,7 @@
 
 	automatic = TRUE
 
-	firemodes = list("burst")
+	firemodes = list("burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/308/shoot_fat.ogg')
 

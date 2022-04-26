@@ -14,7 +14,7 @@
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
 	dan_mode = TRUE
 	can_wield = TRUE
