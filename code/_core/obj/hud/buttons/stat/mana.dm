@@ -16,6 +16,8 @@
 
 	mouse_opacity = 0
 
+	alpha = 0
+
 /obj/hud/button/stat/mana/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"mana_outline")

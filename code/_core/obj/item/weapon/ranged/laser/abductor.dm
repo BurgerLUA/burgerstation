@@ -4,7 +4,7 @@
 	desc_extended = "A highly advanced self-recharging laser ray gun capable of destroying both armor and flesh."
 	icon = 'icons/obj/item/weapons/ranged/laser/abductor.dmi'
 
-	value = 4000
+	value = 2000
 
 	bullet_color = "#FF66E5"
 
@@ -22,7 +22,7 @@
 
 	override_icon_state = TRUE
 
-	heat_max = 0.04
+	heat_max = 0.02
 
 	size = SIZE_3
 	weight = 12

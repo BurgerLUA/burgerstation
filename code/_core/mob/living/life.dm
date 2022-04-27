@@ -149,17 +149,8 @@
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
-	if(health) health.adjust_loss_smart(
-		brute = -health.damage[BRUTE],
-		burn = -health.damage[BURN],
-		tox = -health.damage[TOX],
-		oxy = -health.damage[OXY],
-		fatigue = -health.damage[FATIGUE],
-		pain = -health.damage[PAIN],
-		rad = -health.damage[RAD],
-		sanity = -health.damage[SANITY],
-		mental = -health.damage[MENTAL]
-	)
+	if(health)
+		health.restore()
 	remove_all_status_effects()
 	return TRUE
 
