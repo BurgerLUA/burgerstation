@@ -558,10 +558,6 @@
 /obj/structure/interactive/potted_plant/bin,
 /turf/simulated/floor/wood/rich,
 /area/wizard)
-"dT" = (
-/obj/marker/lobby,
-/turf/simulated/floor/wood/rich,
-/area/wizard)
 "dV" = (
 /obj/structure/interactive/misc/toilet,
 /turf/simulated/floor/tile/tint,
@@ -50718,7 +50714,7 @@ dI
 cQ
 cQ
 cQ
-dT
+cQ
 cQ
 cQ
 cQ
