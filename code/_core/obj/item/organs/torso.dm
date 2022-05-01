@@ -8,7 +8,8 @@
 		/obj/hud/inventory/organs/torso,
 		/obj/hud/inventory/organs/torso_o,
 		/obj/hud/inventory/organs/torso_b,
-		/obj/hud/inventory/organs/torso_ob
+		/obj/hud/inventory/organs/torso_ob,
+		/obj/hud/inventory/organs/secure
 	)
 
 	enable_wounds = TRUE

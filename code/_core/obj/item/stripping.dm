@@ -30,6 +30,9 @@
 		return FALSE
 
 	var/obj/hud/inventory/I = loc
+	if(I.ultra_persistant)
+		return FALSE
+
 	if(!is_living(I.owner))
 		caller.to_chat(span("warning","That's not there anymore!"))
 		return FALSE

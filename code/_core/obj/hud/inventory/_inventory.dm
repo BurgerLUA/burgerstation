@@ -74,6 +74,8 @@
 	var/grab_level = 1 //Passive grab
 	var/grab_time //Cooldown on upgrading grab
 
+	var/ultra_persistant = FALSE //Saves even after death (but of course, removes the previous instance if unrevivable.)
+
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)

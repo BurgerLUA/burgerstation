@@ -2,6 +2,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 /mob/living/advanced/player/
+
+	var/unique_pid //Snowflake system that generates a md5 hash of the player on character creation.
+
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
@@ -186,8 +189,7 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	dialogue_target = null
 
-	if(src in equipped_antags)
-		equipped_antags -= src
+	equipped_antags -= src
 
 	if(current_squad)
 		current_squad.remove_member(src)

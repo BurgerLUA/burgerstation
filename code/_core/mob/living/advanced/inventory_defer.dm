@@ -43,6 +43,8 @@
 			continue
 		if(I.flags & FLAGS_HUD_CONTAINER) //Organs only.
 			continue
+		if(I.ultra_persistant)
+			continue
 		caller.add_inventory_defer(I,s)
 		s++
 

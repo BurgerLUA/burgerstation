@@ -79,35 +79,15 @@
 	. = ..()
 	SAVEVAR("open")
 	SAVEVAR("spent")
+	SAVEATOM("stored_trigger")
+	SAVELISTATOM("stored_containers")
 
 /obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("open")
 	LOADVAR("spent")
-
-/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-
-	. = ..()
-
-	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(P,save_inventory,died)
-
-	if(length(stored_containers))
-		.["stored_containers"] = list()
-		for(var/k in stored_containers)
-			var/obj/item/container/simple/beaker/B = k
-			.["stored_containers"] += list(B.save_item_data(P,save_inventory,died))
-
-
-/obj/item/grenade/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-
-	. = ..()
-
-	if(object_data["stored_trigger"]) stored_trigger = load_and_create(P,object_data["stored_trigger"],src)
-
-	if(length(object_data["stored_containers"]))
-		for(var/k in object_data["stored_containers"])
-			stored_containers += load_and_create(P,k,src)
-
+	LOADATOM("stored_trigger")
+	LOADLISTATOM("stored_containers")
 
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 

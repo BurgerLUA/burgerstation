@@ -42,3 +42,5 @@
 	priority = 1000
 
 	item_whitelist = list(/obj/item/contract)
+
+	ultra_persistant = TRUE

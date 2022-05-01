@@ -13,3 +13,8 @@
 
 #define SAVELIST(varname) SAVEVAR(varname)
 #define LOADLIST(varname) LOADVAR(varname)
+
+
+
+#define SAVECONTENTS SAVELISTATOM("contents")
+#define LOADCONTENTS if(length(object_data["contents"])) {for(var/k in object_data["contents"]) load_and_create(P,k,src)}

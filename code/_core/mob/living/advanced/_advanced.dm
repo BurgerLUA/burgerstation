@@ -131,7 +131,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 /mob/living/advanced/on_crush(var/message=TRUE)
 	if(driving)
 		return FALSE
-	drop_all_items(get_turf(src))
 	. = ..()
 
 /mob/living/advanced/proc/update_clothes()
@@ -486,9 +485,12 @@ mob/living/advanced/Login()
 		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 /mob/living/advanced/gib(var/hard=FALSE)
-
+	if(qdeleting)
+		return FALSE
+	if(gibbed)
+		return FALSE
+	gibbed = TRUE
 	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
-	if(O)
-		return O.gib(hard)
-
-	. = ..()
+	if(O) return O.gib(hard)
+	gibbed = FALSE //Hacky, but it works.
+	return FALSE

@@ -310,6 +310,8 @@
 	if(T)
 		for(var/k in inventories)
 			var/obj/hud/inventory/I = k
+			if(I.ultra_persistant)
+				continue
 			var/list/dropped_objects = I.drop_objects(T)
 			for(var/j in dropped_objects)
 				var/obj/item/O = j

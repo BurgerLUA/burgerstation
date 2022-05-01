@@ -264,6 +264,8 @@
 
 	var/pain_removal = 0 //How much damage to ignore due to pain killers. Calculated every second.
 
+	var/gibbed = FALSE //Returns true if the cause of death was a gib.
+
 /mob/living/Destroy()
 
 	buckled_object = null
@@ -423,12 +425,21 @@
 	gib(TRUE)
 
 /mob/living/gib(var/hard=FALSE)
-	if(blood_type)
-		var/reagent/R = REAGENT(blood_type)
-		var/turf/T = get_turf(src)
-		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
-	. = ..()
+	if(qdeleting)
+		return FALSE
+	if(gibbed)
+		return FALSE
+	gibbed = TRUE
+	if(death(TRUE))
+		if(blood_type)
+			var/reagent/R = REAGENT(blood_type)
+			var/turf/T = get_turf(src)
+			for(var/i=1,i<=9,i++)
+				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+		qdel(src)
+		return TRUE
+	gibbed = FALSE //Hacky, but it works.
+	return FALSE
 
 /mob/living/on_fall(var/turf/old_loc)
 	. = ..()
