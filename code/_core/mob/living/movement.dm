@@ -166,9 +166,12 @@
 		. *= 2
 
 	if(!horizontal)
-		if(has_status_effect(ADRENALINE))
-			. *= 0.75
+		if(!has_status_effect(ADRENALINE))
+			. *= 1.25
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
+
+	if(grabbing_hand) //Being grabbed.
+		. *= 1.25
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
