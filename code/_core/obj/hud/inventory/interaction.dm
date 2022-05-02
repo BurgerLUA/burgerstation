@@ -119,7 +119,7 @@
 		caller.visible_message(span("warning","\The [caller.name] tightens their grip on \the [object.name]!"),span("warning","You tighten your grip on \the [object.name]!"))
 		grab_level = 2 //Agressive grab
 		grab_time = world.time
-		grabbed_living.handle_horizontal()
+		grabbed_living.handle_transform()
 		if(caller.next_move <= 0)
 			caller.Move(get_turf(grabbed_object))
 		update_overlays() //Changing appearnce

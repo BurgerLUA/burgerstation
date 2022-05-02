@@ -101,6 +101,9 @@
 
 	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
 
+	var/elevation = 0
+	var/turn = 0
+
 	health = /health/mob/living/
 
 	var/force_spawn = FALSE
@@ -511,7 +514,7 @@
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 	alert_overlay.icon_state = "none"
-	alert_overlay.pixel_z = 20
+	alert_overlay.pixel_z = 20 + pixel_z
 	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.
 
@@ -538,8 +541,7 @@
 	water_mask.plane = PLANE_MOB_WATER_MASK
 	water_mask.layer = 0
 	water_mask.pixel_x = -32
-	water_mask.pixel_y = -16
-	water_mask.pixel_z = -16 //I DON'T KNOW WHY THIS IS FUCKING NEEDED BUT IT IS.
+	water_mask.pixel_y = -32
 	water_mask.alpha = 200
 	water_mask.filters += filter(type="alpha",x=0,y=0,render_source="\ref[src]")
 	vis_contents += water_mask

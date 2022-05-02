@@ -362,11 +362,11 @@
 	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.handle_horizontal()
+	old_owner.handle_transform()
 	return TRUE
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
-	new_owner.handle_horizontal()
+	new_owner.handle_transform()
 	return TRUE
 
 obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)

@@ -45,7 +45,7 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	handle_horizontal()
+	handle_transform()
 
 	if(following)
 		following.followers -= src
@@ -134,7 +134,7 @@
 	if(ai) ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
-	handle_horizontal()
+	handle_transform()
 	undelete(src)
 	update_eyes()
 	return TRUE
@@ -219,32 +219,6 @@
 	HOOK_CALL("on_killed")
 	return TRUE
 
-/mob/living/get_base_transform()
-	. = ..()
-	if(horizontal)
-		var/matrix/M = .
-		M.Turn(stun_angle)
-
-/mob/living/proc/should_be_horizontal()
-	return dead || (grabbing_hand && grabbing_hand.grab_level >= 2) || has_status_effects(STUN,STAMCRIT,SLEEP,CRIT,REST,PAINCRIT)
-
-/mob/living/proc/handle_horizontal()
-
-	var/desired_horizontal = should_be_horizontal()
-	if(desired_horizontal != horizontal)
-		horizontal = desired_horizontal
-		if(horizontal)
-			animate(src,transform = get_base_transform(), pixel_z = 0, time = 1)
-			update_collisions(FLAG_COLLISION_CRAWLING)
-			play_sound(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25,range_max=VIEW_RANGE*0.5)
-		else
-			animate(src,transform = get_base_transform(), pixel_z = initial(src.pixel_z), time = 2)
-			update_collisions(initial(collision_flags))
-		update_plane()
-		Move(loc) //Update collisions.
-
-	return horizontal
-
 /mob/living/proc/on_life()
 
 	if(!dead)
@@ -259,8 +233,6 @@
 	handle_blocking()
 
 	handle_health_buffer()
-
-	update_alpha(handle_alpha())
 
 	if(health && queue_health_update)
 		health.update_health()
@@ -379,19 +351,6 @@ mob/living/proc/on_life_slow()
 	handle_intoxication()
 
 	return TRUE
-
-/mob/living/proc/update_alpha(var/desired_alpha)
-
-	if(alpha != desired_alpha)
-		animate(src,alpha=desired_alpha,time=LIFE_TICK)
-
-/mob/living/proc/update_plane()
-	if(alpha != 255)
-		plane = PLANE_MOB_STEALTH
-	else if(horizontal)
-		plane = PLANE_MOB_SMALL
-	else
-		plane = initial(plane)
 
 /mob/living/proc/handle_hunger()
 	var/thirst_mod = 1

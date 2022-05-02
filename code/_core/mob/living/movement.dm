@@ -80,8 +80,6 @@
 	last_move_delay = TICKS_TO_DECISECONDS(next_move)
 	last_move_time = world.time
 
-	update_pixel_z()
-
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
 	. = ..()
@@ -221,29 +219,6 @@
 			add_status_effect(STAGGER,5,5,source = owner)
 
 	return ..()
-
-/mob/living/proc/get_pixel_z()
-
-	. = initial(pixel_z)
-
-	if(on_table)
-		. += 10
-
-	if(on_liquid)
-		var/turf/simulated/liquid/L = loc
-		. -= L.depth
-
-/mob/living/proc/update_pixel_z()
-
-	var/desired_pixel_z = get_pixel_z()
-
-	if(pixel_z != desired_pixel_z)
-		animate(src, pixel_z = desired_pixel_z, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
-		//animate(water_mask,pixel_z=-(16 + desired_pixel_z),time=10,easing = CIRCULAR_EASING | EASE_OUT)
-		next_move = max(DECISECONDS_TO_TICKS(10),next_move)
-		return TRUE
-
-	return FALSE
 
 /mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag)
 

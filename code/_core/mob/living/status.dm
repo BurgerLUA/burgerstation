@@ -63,7 +63,7 @@
 
 	if(.)
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
-		handle_horizontal()
+		handle_transform()
 
 /mob/living/proc/remove_status_effect(var/status_type,var/check_horizontal=TRUE)
 	if(!has_status_effect(status_type))
@@ -75,12 +75,12 @@
 	S.on_effect_removed(src,status_type,status_effects[status_type]["magnitude"],status_effects[status_type]["duration"])
 	status_effects -= status_type
 	if(check_horizontal)
-		handle_horizontal()
+		handle_transform()
 
 /mob/living/proc/remove_all_status_effects()
 	for(var/status in status_effects)
 		remove_status_effect(status,FALSE)
-	handle_horizontal()
+	handle_transform()
 
 /mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 

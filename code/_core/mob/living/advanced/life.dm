@@ -2,7 +2,7 @@
 	src.do_emote("deathgasp")
 	return TRUE
 
-/mob/living/advanced/should_be_horizontal()
+/mob/living/advanced/get_horizontal()
 	if(!(labeled_organs[BODY_FOOT_RIGHT] || labeled_organs[BODY_FOOT_LEFT]))
 		return TRUE
 	. = ..()
