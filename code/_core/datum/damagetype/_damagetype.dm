@@ -691,10 +691,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/list/pixel_offset = get_directional_offsets(attacker,victim)
 
-	var/matrix/attack_matrix = attacker.get_base_transform()
-	attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
-	animate(attacker, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
-	animate(transform = attacker.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
+	animate(attacker, pixel_x = pixel_offset[1]*attack_animation_distance, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
+	animate(pixel_x = -pixel_offset[1]*attack_animation_distance, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
 
 	. = CEILING(attack_delay,1)
 

@@ -45,8 +45,6 @@
 	movement_flags = 0x0
 	attack_flags = 0x0
 
-	handle_transform()
-
 	if(following)
 		following.followers -= src
 		following = null
@@ -97,6 +95,8 @@
 		drops_gold = 0
 
 	update_eyes()
+
+	handle_transform()
 
 	return TRUE
 

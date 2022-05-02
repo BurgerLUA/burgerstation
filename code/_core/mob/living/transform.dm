@@ -21,14 +21,14 @@
 		return PLANE_MOB_SMALL
 	return initial(plane)
 
-/mob/living/proc/handle_transform()
+/mob/living/proc/handle_transform(var/force=FALSE)
 
 	.  = FALSE
 
 	var/time = 1
 
 	var/desired_horizontal = get_horizontal()
-	if(desired_horizontal != horizontal)
+	if(force || desired_horizontal != horizontal)
 		horizontal = desired_horizontal
 		. = TRUE
 		if(horizontal)
@@ -40,12 +40,12 @@
 			stun_angle *= pick(-1,1) //Alternate
 
 	var/desired_turn = get_turn()
-	if(turn != desired_turn)
+	if(force || turn != desired_turn)
 		turn = desired_turn
 		. = TRUE
 
 	var/desired_elevation = get_elevation()
-	if(elevation != desired_elevation)
+	if(force || elevation != desired_elevation)
 		elevation = desired_elevation
 		. = TRUE
 		if(elevation >= 0)
@@ -59,7 +59,7 @@
 		animate(src,transform = M, time = time) //flags = CIRCULAR_EASING | EASE_OUT
 
 	var/desired_plane = get_plane()
-	if(desired_plane != plane)
+	if(force || desired_plane != plane)
 		plane = desired_plane
 
 	return .

@@ -29,6 +29,7 @@
 				A.force_move(current_loc)
 			animate_hit(A)
 			A.on_thrown(owner,hit_atom,hit_wall)
+
 /obj/projectile/thrown/Destroy()
 
 	for(var/k in src.contents)
@@ -49,5 +50,9 @@
 	M.Turn(new_angle)
 	M.Translate(pixel_x % 32,pixel_y % 32)
 	A.transform = M
-	animate(A,transform=A.get_base_transform(),easing=CIRCULAR_EASING|EASE_OUT,time=4)
+	if(is_living(A))
+		var/mob/living/L = A
+		L.handle_transform(TRUE)
+	else
+		animate(A,transform=A.get_base_transform(),easing=CIRCULAR_EASING|EASE_OUT,time=4)
 	A.set_dir(dir)
