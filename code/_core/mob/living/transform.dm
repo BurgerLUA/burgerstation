@@ -6,7 +6,7 @@
 	if(on_table)
 		. += 10
 	if(horizontal)
-		. -= 10
+		. -= 14
 
 /mob/living/proc/get_turn()
 	. = 0
@@ -21,12 +21,7 @@
 		return PLANE_MOB_SMALL
 	return initial(plane)
 
-
 /mob/living/proc/handle_transform()
-
-	var/desired_plane = get_plane() //TODO: Should this be here?
-	if(desired_plane != plane)
-		plane = desired_plane
 
 	.  = FALSE
 
@@ -41,7 +36,7 @@
 			play_sound(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25,range_max=VIEW_RANGE*0.5)
 		else
 			update_collisions(initial(collision_flags))
-		if(!buckled)
+		if(!buckled_object)
 			stun_angle *= pick(-1,1) //Alternate
 
 	var/desired_turn = get_turn()
@@ -59,8 +54,12 @@
 	if(.)
 		var/matrix/M = get_base_transform()
 		M.Turn(turn)
-		if(!buckled)
+		if(!buckled_object)
 			M.Translate(sin(turn)*4,elevation)
 		animate(src,transform = M, time = time) //flags = CIRCULAR_EASING | EASE_OUT
+
+	var/desired_plane = get_plane()
+	if(desired_plane != plane)
+		plane = desired_plane
 
 	return .

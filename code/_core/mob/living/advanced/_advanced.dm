@@ -84,6 +84,8 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
 
+	var/current_mouse_spread = 0
+
 /mob/living/advanced/Destroy()
 
 	remove_all_organs()

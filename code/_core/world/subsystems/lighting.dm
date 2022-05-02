@@ -36,10 +36,6 @@ SUBSYSTEM_DEF(lighting)
 
 	return ..()
 
-#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
-	var/force_queued = TRUE
-	var/force_override = FALSE	// For admins.
-#endif
 
 /subsystem/lighting/Initialize()
 
@@ -62,17 +58,6 @@ SUBSYSTEM_DEF(lighting)
 
 	return TRUE
 
-
-#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
-/subsystem/lighting/proc/handle_roundstart()
-	force_queued = FALSE
-	total_ss_updates = 0
-	total_instant_updates = 0
-
-#endif
-
-
-
 /subsystem/lighting/proc/CreateLobjForZ(zlevel)
 	. = 0
 	for (var/thing in Z_ALL_TURFS(zlevel))
@@ -81,7 +66,6 @@ SUBSYSTEM_DEF(lighting)
 		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
-
 
 /subsystem/lighting/proc/InitializeLightingAtoms(list/atoms)
 	. = 0

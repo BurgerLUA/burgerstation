@@ -130,6 +130,12 @@ var/global/list/spread_icons = list(
 
 /mob/living/advanced/handle_mouse_pointer()
 
+	. = ..()
+
+	if(!.)
+		current_mouse_spread = 0
+		return .
+
 	var/desired_spread = -1
 
 	var/obj/item/weapon/ranged/R = right_item
@@ -141,21 +147,25 @@ var/global/list/spread_icons = list(
 	if(istype(L))
 		desired_spread = max(0,desired_spread,L.heat_current)
 
-	if(desired_spread >= 0)
-		desired_spread *= 75 //Entirely arbitrary.
-		desired_spread = clamp(1+CEILING(desired_spread,1),0,length(spread_icons))
-		if(client.mouse_pointer_icon != spread_icons[desired_spread])
-			set_mouse_pointer(spread_icons[desired_spread])
-		return TRUE
+	desired_spread *= 75 //Entirely arbitrary.
+	var/difference = abs(desired_spread - current_mouse_spread)
 
-	. = ..()
+	if(difference <= 1)
+		current_mouse_spread = desired_spread
+	else
+		if(desired_spread > current_mouse_spread)
+			current_mouse_spread += 1
+		else if(desired_spread < current_mouse_spread)
+			current_mouse_spread -= 1
 
-	if(!.)
-		return .
-
-	var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
-	if(client.mouse_pointer_icon != icon_to_use)
-		set_mouse_pointer(icon_to_use)
+	if(current_mouse_spread > -1)
+		var/final_mouse_spread = clamp(1+CEILING(current_mouse_spread,1),0,length(spread_icons))
+		if(client.mouse_pointer_icon != spread_icons[final_mouse_spread])
+			set_mouse_pointer(spread_icons[final_mouse_spread])
+	else
+		var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
+		if(client.mouse_pointer_icon != icon_to_use)
+			set_mouse_pointer(icon_to_use)
 
 
 

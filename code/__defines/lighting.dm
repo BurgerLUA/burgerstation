@@ -2,7 +2,7 @@
 
 #define LIGHTING_HEIGHT         1 // height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
 #define LIGHTING_Z_FACTOR       10 // Z diff is multiplied by this and LIGHTING_HEIGHT to get the final height of a light source. Affects how much darker A Z light gets with each level transitioned.
-#define LIGHTING_ROUND_VALUE    0.01 //Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
+#define LIGHTING_ROUND_VALUE    0.005 //Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
 
 #define LIGHTING_ICON 'icons/lighting_overlay.dmi' // icon used for lighting shading effects
 #define LIGHTING_BASE_ICON_STATE "matrix"	// icon_state used for normal color-matrix based lighting overlays.
@@ -12,10 +12,6 @@
 #define LIGHTING_SOFT_THRESHOLD 0.01 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
 #define LIGHTING_BLOCKED_FACTOR 0.75 // How much the range of a directional light will be reduced while facing a wall.
 #define LIGHTING_BLOCKED_FACTOR_TURF 0.5
-
-
-// If defined, instant updates will be used whenever server load permits. Otherwise queued updates are always used.
-//#define USE_INTELLIGENT_LIGHTING_UPDATES
 
 #define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && T:dynamic_lighting && T:loc:dynamic_lighting)
 // mostly identical to above, but doesn't make sure T is valid first. Should only be used by lighting code.
