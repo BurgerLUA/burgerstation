@@ -1,5 +1,4 @@
 /damagetype/npc/xeno
-	name = "xeno claw"
 	attack_verbs = list("claw","scratch","maul")
 
 	hit_effect = /obj/effect/temp/impact/combat/claw
@@ -30,7 +29,6 @@
 	attack_delay_max = 10
 
 /damagetype/npc/xeno/queen
-	name = "queen xeno poison claw"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

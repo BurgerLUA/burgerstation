@@ -1,5 +1,4 @@
 /damagetype/npc/cow
-	name = "cow's head"
 	attack_verbs = list("headbutt")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

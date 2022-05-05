@@ -1,4 +1,4 @@
-/turf/proc/change_turf(var/turf/N, var/force_lighting_update = FALSE, var/force_edges_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
+/turf/proc/change_turf(var/turf/N, var/force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
 
 	if(!N)
 		CRASH("change_turf() was provided a null turf!")
@@ -9,18 +9,9 @@
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
 	var/old_disallow_generation = disallow_generation
+	var/old_corner_category = corner_category
 
-	for(var/obj/effect/footprint/F in src.contents)
-		qdel(F)
-
-	for(var/obj/effect/cleanable/C in src.contents)
-		qdel(C)
-
-	for(var/obj/structure/scenery/S in src.contents)
-		qdel(S)
-
-	if(src in SSturf.wet_turfs)
-		SSturf.wet_turfs -= src
+	pre_change()
 
 	var/old_turf_type = src.type
 
@@ -47,10 +38,8 @@
 			else
 				W.lighting_clear_overlay()
 
-	if(force_edges_update)
-		update_edges()
-	else
-		queue_update_edges(W)
+	if((corner_category || old_corner_category) && SSsmoothing.initialized)
+		SSsmoothing.queue_update_edges(W)
 
 	var/area/A = W.loc
 	if(A && A.sunlight_freq > 0 && A.sunlight_color)

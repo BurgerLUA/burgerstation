@@ -1,5 +1,4 @@
 /damagetype/npc/
-	name = "NPC"
 
 	draw_blood = TRUE
 

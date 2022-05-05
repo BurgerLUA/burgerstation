@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(smoothing)
 		var/atom/A = k
 		A.update_sprite()
 
-/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
+/subsystem/smoothing/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
 
 	var/list/valid_directions = DIRECTIONS_ALL
 	if(include_self)

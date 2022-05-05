@@ -1,5 +1,4 @@
 /damagetype/npc/ghost //Needs to do a lot of damage.
-	name = "ghost hunt"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

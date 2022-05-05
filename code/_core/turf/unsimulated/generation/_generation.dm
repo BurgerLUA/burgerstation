@@ -3,6 +3,14 @@
 	var/is_different = FALSE
 	var/no_wall = FALSE
 
+/turf/unsimulated/generation/New(var/desired_loc)
+	. = ..()
+	SSturf.generation_turfs += src
+
+/turf/unsimulated/generation/pre_change()
+	. = ..()
+	SSturf.generation_turfs -= src
+
 /turf/unsimulated/generation/proc/pre_generate()
 
 	for(var/k in list(NORTH,EAST,SOUTH,WEST))

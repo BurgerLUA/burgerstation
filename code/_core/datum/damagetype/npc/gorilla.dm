@@ -1,5 +1,4 @@
 /damagetype/npc/gorilla
-	name = "gorilla punch"
 	attack_verbs = list("punch","pummel")
 
 	impact_sounds = list(

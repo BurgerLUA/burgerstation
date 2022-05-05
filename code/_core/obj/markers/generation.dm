@@ -30,6 +30,14 @@
 
 	var/flags_generation = FLAG_GENERATION_NONE
 
+/obj/marker/generation/New(var/desired_loc)
+	. = ..()
+	SSturf.generation_markers += src
+
+/obj/marker/generation/Destroy()
+	SSturf.generation_markers -= src
+	. = ..()
+
 /obj/marker/generation/proc/grow(var/desired_grow)
 
 	for(var/k in valid_turfs)

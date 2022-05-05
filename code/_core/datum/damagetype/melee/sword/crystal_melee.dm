@@ -1,5 +1,4 @@
 /damagetype/melee/sword/crystal
-	name = "conjuring crystals"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -37,7 +36,6 @@
 	attack_delay_max = 15
 
 /damagetype/melee/sword/crystal/rapier
-	name = "crystal rapier"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -75,7 +73,6 @@
 	attack_delay_max = 10
 
 /damagetype/melee/sword/crystal/longsword
-	name = "crystal longsword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

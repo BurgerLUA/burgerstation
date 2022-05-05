@@ -120,4 +120,4 @@
 	if(shitfix)
 		disallow_generation = TRUE
 
-	return ..()
+	. = ..()

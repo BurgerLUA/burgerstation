@@ -1,5 +1,4 @@
 /damagetype/melee/sword/grazer
-	name = "inactive grazer"
 
 	attack_damage_base = list(
 		BLADE = 15,
@@ -32,7 +31,6 @@
 	attack_delay_max = 8
 
 /damagetype/melee/sword/grazer/on
-	name = "active grazer"
 
 	attack_damage_base = list(
 		LASER = 20,

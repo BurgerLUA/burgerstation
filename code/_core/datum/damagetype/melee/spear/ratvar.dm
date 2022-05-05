@@ -1,5 +1,4 @@
 /damagetype/melee/spear/ratvar/
-	name = "spear"
 
 	attack_damage_base = list(
 		PIERCE = 20,

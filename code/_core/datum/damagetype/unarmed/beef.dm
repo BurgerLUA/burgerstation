@@ -1,5 +1,4 @@
 /damagetype/unarmed/beef/
-	name = "beef"
 	attack_verbs = list("maul")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

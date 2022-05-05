@@ -1,5 +1,4 @@
 /damagetype/melee/club/null_rod
-	name = "null rod"
 
 	attack_damage_base = list(
 		BLUNT = 10,

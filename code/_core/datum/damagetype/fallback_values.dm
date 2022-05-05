@@ -3,7 +3,6 @@
 
 
 /damagetype/item/light
-	name = "light item"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -38,7 +37,6 @@
 
 
 /damagetype/item/medium
-	name = "medium item"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -72,7 +70,6 @@
 	attack_delay_max = 14
 
 /damagetype/item/heavy
-	name = "heavy item"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

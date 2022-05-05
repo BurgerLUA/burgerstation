@@ -16,6 +16,10 @@ SUBSYSTEM_DEF(turf)
 
 	var/list/blood_turfs = list()
 
+	var/list/simulated_turfs = list()
+	var/list/generation_turfs = list()
+	var/list/generation_markers = list()
+
 /subsystem/turf/unclog(var/mob/caller)
 
 	for(var/k in wet_turfs)
@@ -37,14 +41,19 @@ SUBSYSTEM_DEF(turf)
 		G.generate_map()
 	*/
 
-	for(var/turf/simulated/T in world)
+	for(var/k in simulated_turfs)
+		var/turf/simulated/T = k
 		T.world_spawn = TRUE
 
-	for(var/turf/unsimulated/generation/G in world)
+	//First generation pass.
+	for(var/k in generation_turfs)
+		var/turf/unsimulated/generation/G = k
 		G.pre_generate()
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
-	for(var/turf/unsimulated/generation/G in world)
+	//Second generation pass.
+	for(var/k in generation_turfs)
+		var/turf/unsimulated/generation/G = k
 		G.generate()
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
@@ -54,7 +63,8 @@ SUBSYSTEM_DEF(turf)
 		var/list/generations_second = list()
 		var/list/generations_third = list()
 
-		for(var/obj/marker/generation/G in world)
+		for(var/k in generation_markers)
+			var/obj/marker/generation/G = k
 			if(G.bypass_disallow_generation || priority >= 3)
 				generations_third += G
 			else if(priority >= 2)
@@ -78,11 +88,13 @@ SUBSYSTEM_DEF(turf)
 			G.generate_marker()
 			CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
-	for(var/turf/simulated/S in world)
+	for(var/k in simulated_turfs)
+		var/turf/simulated/S = k
 		INITIALIZE(S)
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
-	for(var/turf/simulated/S in world)
+	for(var/k in simulated_turfs)
+		var/turf/simulated/S = k
 		FINALIZE(S)
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 

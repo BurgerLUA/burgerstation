@@ -1,5 +1,4 @@
 /damagetype/npc/bubblegum //When bubblegum runs into someone.
-	name = "bubblegum smash"
 	attack_verbs = list("hit","smack")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

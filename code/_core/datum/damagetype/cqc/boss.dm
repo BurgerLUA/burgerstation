@@ -1,5 +1,4 @@
 /damagetype/cqc/boss/fast_grab
-	name = "fast grab"
 	attack_verbs = list("fast grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
@@ -59,7 +58,6 @@
 
 
 /damagetype/cqc/boss/grab_slam
-	name = "grab slam"
 	attack_verbs = list("grab slam")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
@@ -114,7 +112,6 @@
 
 
 /damagetype/cqc/boss/staggering_punch
-	name = "staggering punch"
 	attack_verbs = list("staggering punch")
 
 	impact_sounds = list(
@@ -170,7 +167,6 @@
 	return ..()
 
 /damagetype/cqc/boss/stunning_punch
-	name = "stunning punch"
 	attack_verbs = list("stunning punch")
 
 	impact_sounds = list(
@@ -228,7 +224,6 @@
 
 
 /damagetype/cqc/boss/disarm_theft
-	name = "stunning punch"
 	attack_verbs = list("stunning punch")
 
 	impact_sounds = list(
@@ -292,7 +287,6 @@
 
 
 /damagetype/cqc/boss/tactical_hug
-	name = "tactical hug"
 	attack_verbs = list("tactical hug")
 
 	impact_sounds = list(

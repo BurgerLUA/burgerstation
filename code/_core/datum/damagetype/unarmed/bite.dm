@@ -1,5 +1,4 @@
 /damagetype/unarmed/bite/
-	name = "bite"
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(

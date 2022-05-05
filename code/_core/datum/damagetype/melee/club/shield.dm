@@ -1,5 +1,4 @@
 /damagetype/melee/club/shield
-	name = "shield"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -33,7 +32,6 @@
 	attack_delay_max = 10
 
 /damagetype/melee/club/shield/energy
-	name = "ianctive energy shield"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -65,7 +63,6 @@
 	attack_delay_max = 10
 
 /damagetype/melee/club/shield/energy/on
-	name = "active energy shield"
 
 
 	//impact_sounds = list('sound/weapon/melee/saberon.ogg')

@@ -142,7 +142,7 @@
 
 	for(var/d in DIRECTIONS_ALL)
 		var/dir_to_text = "[d]"
-		calc_list[dir_to_text] = FALSE
+		calc_list[dir_to_text] = FALSE //Default
 		var/turf/T = get_step(src,d)
 		if(!T)
 			continue

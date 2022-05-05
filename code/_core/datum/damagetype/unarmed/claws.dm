@@ -1,5 +1,4 @@
 /damagetype/unarmed/claw/
-	name = "claw"
 	attack_verbs = list("claw")
 
 	hit_effect = /obj/effect/temp/impact/combat/claw

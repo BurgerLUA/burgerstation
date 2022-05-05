@@ -1,7 +1,6 @@
 var/global/list/all_damage_numbers = list()
 
 /damagetype/
-	var/name //TODO:REMOVE
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
@@ -534,7 +533,7 @@ var/global/list/all_damage_numbers = list()
 		L.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
-	do_attack_sound(attacker,victim,weapon,hit_object)
+	do_attack_sound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
@@ -657,14 +656,16 @@ var/global/list/all_damage_numbers = list()
 			M.client.desired_punch_x += -offsets[1]*multiplier*0.25
 			M.client.desired_punch_y += -offsets[2]*multiplier*0.25
 
-/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+
+	var/desired_volume = 25 + min(75,total_damage_dealt/2)
 
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE)
+		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE,volume=desired_volume)
 
 	if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
-		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE)
+		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
 
 	return TRUE
 

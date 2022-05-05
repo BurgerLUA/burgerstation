@@ -49,6 +49,8 @@
 
 	density = FALSE
 
+/turf/proc/pre_change() //When this turf is removed in favor of a new turf.
+	return TRUE
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
 
@@ -126,15 +128,6 @@
 	var/area/A = loc
 	return istype(A) && A.is_space()
 
-/turf/proc/update_edges()
-
-	for(var/direction in DIRECTIONS_ALL)
-		var/turf/T = get_step(src,direction)
-		if(T && is_simulated(T))
-			T.update_sprite()
-
-	return TRUE
-
 /turf/proc/is_safe_teleport(var/check_contents=TRUE)
 
 	var/area/A = loc
@@ -166,8 +159,8 @@
 
 /turf/Destroy()
 
-	if(corner_category)
-		queue_update_edges(src)
+	if(corner_category && SSsmoothing.initialized)
+		SSsmoothing.queue_update_edges(src)
 
 	if(old_living)
 		old_living.Cut()
@@ -176,7 +169,12 @@
 
 
 /turf/Finalize()
-	if(corner_icons) SSsmoothing.queued_smoothing += src
+	if(corner_category)
+		if(SSsmoothing.initialized)
+			SSsmoothing.queue_update_edges(src)
+		else
+			SSsmoothing.queued_smoothing += src
+
 	. = ..()
 
 /*

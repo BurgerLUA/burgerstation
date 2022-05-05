@@ -1,5 +1,4 @@
 /damagetype/unarmed/slaughter //i sure hope nothing goes wrong
-	name = "demon claw"
 	attack_verbs = list("claw")
 
 	hit_effect = /obj/effect/temp/impact/combat/claw
@@ -61,7 +60,6 @@
 		return ..()
 
 /damagetype/unarmed/slaughter_heavy
-	name = "demon rip"
 	attack_verbs = list("rips and tears")
 
 	hit_effect = /obj/effect/temp/impact/combat/claw

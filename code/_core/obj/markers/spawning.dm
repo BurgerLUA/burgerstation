@@ -73,7 +73,8 @@
 	GENERATE(W)
 	FINALIZE(G)
 	FINALIZE(W)
-	queue_update_edges(T)
+	if(SSsmoothing.initialized)
+		SSsmoothing.queue_update_edges(T)
 
 /obj/marker/spawning/window/reinforced/
 	icon_state = "window_grille_reinforced"

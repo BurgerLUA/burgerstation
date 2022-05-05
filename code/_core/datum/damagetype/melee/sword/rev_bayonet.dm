@@ -1,5 +1,4 @@
 /damagetype/melee/sword/rev_bayonet
-	name = "bayonet"
 
 	attack_damage_base = list(
 		BLADE = 10,
