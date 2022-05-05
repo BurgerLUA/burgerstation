@@ -9,7 +9,7 @@
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
 	var/old_disallow_generation = disallow_generation
-	var/old_corner_category = corner_category
+	var/old_corner_icons = corner_icons
 
 	pre_change()
 
@@ -38,7 +38,7 @@
 			else
 				W.lighting_clear_overlay()
 
-	if((corner_category || old_corner_category) && SSsmoothing.initialized)
+	if((corner_icons || old_corner_icons) && SSsmoothing.initialized)
 		SSsmoothing.queue_update_edges(W)
 
 	var/area/A = W.loc

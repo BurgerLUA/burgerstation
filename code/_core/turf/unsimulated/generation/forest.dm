@@ -31,6 +31,8 @@
 			place_grass = FALSE
 			if(prob(40))
 				new /obj/marker/generation/forest_dirt(src)
+				new /turf/simulated/floor/colored/dirt(src)
+				if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 				place_ground = FALSE
 		else if(!path_only && prob(2))
 			var/list/valid_bushes = list(

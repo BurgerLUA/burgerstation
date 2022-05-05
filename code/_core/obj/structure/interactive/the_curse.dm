@@ -52,7 +52,7 @@
 
 /obj/structure/interactive/the_curse/think()
 
-	var/start_time = world.time
+	var/start_time = true_time()
 
 	var/list/current_viewers = list()
 	var/list/current_targets = list()
@@ -161,6 +161,6 @@
 			else
 				if(debug) log_subsystem("Peanut","Could not find a valid path to a tracked target.")
 
-		if(debug) log_subsystem("Peanut","Took [world.time-start_time] deciseconds to think.")
+		if(debug) log_subsystem("Peanut","Took [true_time()-start_time] deciseconds to think.")
 
 	return TRUE

@@ -68,10 +68,10 @@ SUBSYSTEM_DEF(chunk)
 		current_z++
 		return TRUE
 
-	var/benchmark = world.time
+	var/benchmark = true_time()
 	current_z = (current_z % world.maxz) + 1
 	var/process_count = process_entire_z(current_z)
-	benchmark = world.time - benchmark
+	benchmark = true_time() - benchmark
 	log_subsystem(src.name,"Cleaning zlevel [current_z] took [CEILING(benchmark/10,0.1)] seconds and deleted [process_count] mobs/items..")
 
 	return TRUE
@@ -89,13 +89,12 @@ SUBSYSTEM_DEF(chunk)
 				continue
 			var/list/chunk_turfs = get_chunk_turfs(x,y,z)
 			for(var/k in chunk_turfs)
-				CHECK_TICK(tick_usage_max,FPS_SERVER*3)
+				CHECK_TICK(tick_usage_max,FPS_SERVER*10)
 				var/turf/T = k
 				var/area/A = T.loc
 				if(A.safe_storage)
 					continue
 				for(var/j in T.contents)
-					CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 					var/atom/movable/M = j
 					if(M.enable_chunk_clean)
 						. += M.on_chunk_clean()

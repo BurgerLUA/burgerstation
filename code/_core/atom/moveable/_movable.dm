@@ -65,8 +65,6 @@
 	var/enable_chunk_clean = FALSE
 
 /atom/movable/Destroy()
-	if(corner_category && SSsmoothing.initialized)
-		SSsmoothing.queue_update_edges(get_turf(src))
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()

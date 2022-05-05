@@ -34,9 +34,6 @@
 
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
-	var/corner_icons = FALSE
-	var/corner_category = "none"
-
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.

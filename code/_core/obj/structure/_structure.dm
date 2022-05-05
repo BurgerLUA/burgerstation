@@ -24,6 +24,14 @@
 	var/reinforced_material_id = null
 	var/reinforced_color = "#FFFFFF"
 
+	var/corner_icons = FALSE
+	var/corner_category = "none"
+
+/obj/structure/Destroy()
+	if(corner_icons && SSsmoothing.initialized)
+		SSsmoothing.queue_update_edges(get_turf(src),FALSE)
+	. = ..()
+
 /obj/structure/update_overlays()
 
 	. = ..()
@@ -62,7 +70,11 @@
 		set_light(desired_light_range,desired_light_power,desired_light_color)
 
 /obj/structure/Finalize()
-	if(corner_icons) SSsmoothing.queued_smoothing += src
+	if(corner_icons)
+		if(SSsmoothing.initialized)
+			SSsmoothing.queue_update_edges(get_turf(src))
+		else
+			SSsmoothing.queued_smoothing |= src
 	. = ..()
 
 

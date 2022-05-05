@@ -49,6 +49,9 @@
 
 	density = FALSE
 
+	var/corner_icons = FALSE
+	var/corner_category = "none"
+
 /turf/proc/pre_change() //When this turf is removed in favor of a new turf.
 	return TRUE
 
@@ -158,24 +161,17 @@
 
 
 /turf/Destroy()
-
-	if(corner_category && SSsmoothing.initialized)
-		SSsmoothing.queue_update_edges(src)
-
-	if(old_living)
-		old_living.Cut()
-
-	return ..()
-
+	CRASH("Tried destroying a turf!")
+	return FALSE
 
 /turf/Finalize()
-	if(corner_category)
+	. = ..()
+	if(corner_icons)
 		if(SSsmoothing.initialized)
 			SSsmoothing.queue_update_edges(src)
 		else
-			SSsmoothing.queued_smoothing += src
+			SSsmoothing.queued_smoothing |= src
 
-	. = ..()
 
 /*
 /turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

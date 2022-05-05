@@ -37,7 +37,7 @@
 
 	log_debug("Starting Meteor Event")
 
-	var/start_time = world.time
+	var/start_time = true_time()
 
 	for(var/k in valid_areas)
 		CHECK_TICK(25,FPS_SERVER*10)
@@ -57,7 +57,7 @@
 		sound_to_play = 'sound/voice/announcement/meteors.ogg'
 	)
 
-	log_debug("Took [world.time - start_time] deciseconds to initialize meteor turfs.")
+	log_debug("Took [true_time() - start_time] deciseconds to initialize meteor turfs.")
 
 	return ..()
 
