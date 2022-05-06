@@ -154,27 +154,15 @@
 "mA" = (
 /turf/unsimulated/generation/forest_cave,
 /area/dungeon/z_01/forest)
-"nm" = (
-/obj/marker/drop_pod_location,
-/turf/unsimulated/generation/forest/path,
-/area/lz_001/forest)
 "pj" = (
 /turf/unsimulated/generation/forest/path,
 /area/lz_001/forest)
-"rt" = (
-/obj/marker/drop_pod_location,
-/turf/unsimulated/generation/forest_cave/path,
-/area/lz_001/caves)
 "sj" = (
 /turf/simulated/wall/metal/reinforced,
 /area/lz_001/forest)
 "up" = (
 /turf/simulated/liquid/water/sea,
 /area/lz_001/desert)
-"yr" = (
-/obj/marker/drop_pod_location,
-/turf/unsimulated/generation/snow,
-/area/lz_001/snow)
 "zo" = (
 /turf/unsimulated/generation/forest,
 /area/lz_001/caves)
@@ -196,10 +184,6 @@
 "HL" = (
 /turf/unsimulated/generation/forest_cave/path,
 /area/lz_001/desert)
-"Re" = (
-/obj/marker/drop_pod_location,
-/turf/unsimulated/generation/forest,
-/area/lz_001/forest)
 "So" = (
 /turf/simulated/wall/wood/brown,
 /area/lz_001/caves)
@@ -209,10 +193,6 @@
 "WC" = (
 /turf/unsimulated/generation/forest_cave,
 /area/lz_001/jungle)
-"Yj" = (
-/obj/marker/drop_pod_location,
-/turf/simulated/floor/colored/sand/beach,
-/area/lz_001/forest)
 
 (1,1,1) = {"
 ab
@@ -16208,7 +16188,7 @@ pj
 pj
 pj
 pj
-nm
+pj
 pj
 pj
 pj
@@ -17709,7 +17689,7 @@ ah
 ah
 pj
 pj
-nm
+pj
 pj
 pj
 pj
@@ -28272,7 +28252,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -29760,7 +29740,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -31777,7 +31757,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -32264,7 +32244,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -84748,7 +84728,7 @@ ac
 ah
 ah
 ah
-rt
+ah
 ah
 ah
 ac
@@ -109051,7 +109031,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -109862,7 +109842,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -110051,7 +110031,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -110555,9 +110535,9 @@ aa
 aa
 aa
 aa
-Yj
 aa
-Yj
+aa
+aa
 aa
 aa
 aa
@@ -111290,7 +111270,7 @@ ae
 ae
 ae
 ae
-yr
+ae
 ae
 ae
 ae
@@ -112063,7 +112043,7 @@ aa
 aa
 aa
 aa
-Yj
+aa
 aa
 aa
 aa
@@ -113565,8 +113545,8 @@ lz
 aa
 aa
 aa
-Yj
-Yj
+aa
+aa
 aa
 aa
 aa
@@ -115864,7 +115844,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -122375,7 +122355,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -125335,7 +125315,7 @@ ae
 ae
 ae
 ae
-yr
+ae
 ae
 ae
 ae
@@ -125935,7 +125915,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -131476,7 +131456,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -131934,7 +131914,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -133918,7 +133898,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -134384,7 +134364,7 @@ ae
 ae
 ae
 ae
-yr
+ae
 ae
 ae
 ae
@@ -137444,7 +137424,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -137981,7 +137961,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
@@ -152524,7 +152504,6 @@ lz
 lz
 lz
 lz
-Re
 lz
 lz
 lz
@@ -152554,7 +152533,8 @@ lz
 lz
 lz
 lz
-Re
+lz
+lz
 lz
 lz
 lz
@@ -157095,7 +157075,7 @@ lz
 lz
 lz
 lz
-Re
+lz
 lz
 lz
 lz
