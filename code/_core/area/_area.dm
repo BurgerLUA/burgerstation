@@ -124,6 +124,8 @@ var/global/list/possible_trash = list(
 	. = ..()
 	if(flags_area & FLAG_AREA_DIRTY)
 		for(var/turf/simulated/S in src.contents)
+			var/obj/structure/table/window/W = locate() in S.contents
+			if(W) continue
 			if(prob(80))
 				var/obj/effect/E
 				if(S.density)
