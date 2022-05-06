@@ -12,7 +12,7 @@
 
 	max_slots = 1
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CONTAINER
 
 	should_add_to_advanced = FALSE
 

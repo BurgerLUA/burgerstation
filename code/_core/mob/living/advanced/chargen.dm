@@ -12,7 +12,7 @@
 	/*
 	if(client)
 
-		show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET | FLAGS_HUD_CHARGEN,speed=0)
+		show_hud(FALSE,FLAG_HUD_ALL,FLAG_HUD_WIDGET | FLAG_HUD_CHARGEN,speed=0)
 
 		var/list/lore = list(
 			"In the year 2320, Humankind has advanced their interstellar space travel technology to allow for safe and reliable faster than light travel.",
@@ -55,7 +55,7 @@
 		sleep(20)
 
 
-		show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
+		show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 		client.screen -= S
 		qdel(S)
 
@@ -145,7 +145,7 @@
 
 	update_all_blends()
 
-	show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
+	show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 
 	queue_health_update = TRUE
 

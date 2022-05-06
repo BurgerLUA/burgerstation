@@ -36,7 +36,7 @@
 		update_sprite()
 
 	if(self.intent == INTENT_GRAB && isturf(T) && next_teleport_command <= world.time)
-		if(!T.is_safe_teleport()||A.flags_area & FLAGS_AREA_NO_TELEPORT) //Alright, that's it. No more water-walking!
+		if(!T.is_safe_teleport()||A.flags_area & FLAG_AREA_NO_TELEPORT) //Alright, that's it. No more water-walking!
 			caller.to_chat(span("danger","Can't bloodcrawl there!"))
 			return TRUE
 		if (target_distance > 10)

@@ -15,7 +15,7 @@
 
 	can_rotate = TRUE
 
-	var/flags_placement = FLAGS_PLACEMENT_NONE
+	var/flags_placement = FLAG_PLACEMENT_NONE
 	var/list/structure_blacklist = list() //Things that can't be constructed on the same turf that's occupying this.
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
@@ -143,7 +143,7 @@
 
 /obj/structure/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
 		return FALSE
 	return ..()
 

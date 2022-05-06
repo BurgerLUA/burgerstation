@@ -64,7 +64,7 @@
 		return FALSE
 
 	var/area/A = loc
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
 		caller.to_chat(span("warning","You cannot construct this in this area!"))
 		return FALSE
 
@@ -78,9 +78,9 @@
 			continue
 		if(istype(S,structure_to_make))
 			var/flags_placement = SAFEVAR(structure_to_make,flags_placement)
-			if(flags_placement & FLAGS_PLACEMENT_ALLOW_MULTIPLE)
+			if(flags_placement & FLAG_PLACEMENT_ALLOW_MULTIPLE)
 				continue
-			if(flags_placement & FLAGS_PLACEMENT_DIRECTIONAL)
+			if(flags_placement & FLAG_PLACEMENT_DIRECTIONAL)
 				if(!(S.dir & caller.dir))
 					continue
 			caller.to_chat(span("warning","There is a [S.name] here already!"))

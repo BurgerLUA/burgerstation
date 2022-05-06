@@ -347,7 +347,7 @@
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_EVENTS)
+	if(A.flags_area & FLAG_AREA_NO_EVENTS)
 		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
 		return FALSE
 

@@ -7,7 +7,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_MOB | FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 
@@ -33,7 +33,7 @@
 	icon_state = "view_inventory"
 	screen_loc = "LEFT:1,BOTTOM:12"
 
-	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY
+	flags = FLAG_HUD_MOB | FLAG_HUD_INVENTORY
 
 	has_quick_function = FALSE
 
@@ -43,7 +43,7 @@
 
 	if(. && is_advanced(owner))
 		var/mob/living/advanced/A = owner
-		A.toggle_inventory(FLAGS_HUD_WORN,FLAGS_HUD_SPECIAL,2)
+		A.toggle_inventory(FLAG_HUD_WORN,FLAG_HUD_SPECIAL,2)
 		update_sprite()
 
 
@@ -69,7 +69,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_MOB | FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_MOB | FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 

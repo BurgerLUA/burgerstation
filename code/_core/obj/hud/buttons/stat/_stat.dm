@@ -7,7 +7,7 @@
 
 	layer = LAYER_HUD
 	plane = PLANE_HUD
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 /obj/hud/button/stat/proc/update()
 	return FALSE //Returning false means remove it from update. Returning true means keep it updating.

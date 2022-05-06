@@ -180,7 +180,7 @@
 		if(!(A1 && A2))
 			CRASH_SAFE("Warning: tried attacking without valid areas!")
 			return FALSE
-		if( (A1.flags_area & FLAGS_AREA_NO_DAMAGE) || (A2.flags_area & FLAGS_AREA_NO_DAMAGE) )
+		if( (A1.flags_area & FLAG_AREA_NO_DAMAGE) || (A2.flags_area & FLAG_AREA_NO_DAMAGE) )
 			return FALSE
 
 	return TRUE

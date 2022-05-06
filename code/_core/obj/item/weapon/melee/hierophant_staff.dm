@@ -26,7 +26,7 @@
 	if(isturf(object) && next_teleport_command <= world.time)
 		var/turf/T = object
 		var/area/A = T.loc
-		if(A.flags_area & FLAGS_AREA_NO_TELEPORT)
+		if(A.flags_area & FLAG_AREA_NO_TELEPORT)
 			caller.to_chat(span("danger","\The [src.name]'s magic doesn't seem to work here!"))
 			return TRUE
 		var/obj/effect/temp/hazard/hierophant/targeted/H = new(get_turf(caller),7,caller)

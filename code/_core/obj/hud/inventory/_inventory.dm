@@ -39,7 +39,7 @@
 
 	var/click_flags
 
-	var/flags = FLAGS_HUD_INVENTORY
+	var/flags = FLAG_HUD_INVENTORY
 
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 

@@ -11,7 +11,7 @@
 	max_slots = 3
 	worn = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 50
 
@@ -28,6 +28,6 @@
 	max_slots = 3
 	worn = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 51

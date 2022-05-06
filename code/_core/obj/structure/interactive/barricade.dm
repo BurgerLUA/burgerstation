@@ -15,7 +15,7 @@
 
 	health = /health/construction/barricade
 
-	flags_placement = FLAGS_PLACEMENT_DIRECTIONAL
+	flags_placement = FLAG_PLACEMENT_DIRECTIONAL
 
 	health_base = 800
 

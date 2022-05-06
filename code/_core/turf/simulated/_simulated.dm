@@ -123,7 +123,7 @@
 
 /turf/simulated/Initialize()
 	var/area/A = loc
-	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
+	if(!(A.flags_area & FLAG_AREA_NO_CONSTRUCTION))
 		if(!destruction_turf)
 			if(loc && loc.type != src.type && is_floor(loc))
 				destruction_turf = loc.type

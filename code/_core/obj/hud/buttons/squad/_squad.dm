@@ -6,7 +6,7 @@
 	icon_state = "squad"
 	screen_loc = "LEFT,TOP-2"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	alpha = 100
 
@@ -70,7 +70,7 @@
 			if(answer == "Yes")
 				new_squad(P)
 
-	
+
 /obj/hud/button/squad/main/proc/new_squad(var/mob/living/advanced/player/P)
 	while(P.client)
 		var/squad_name = input("Please enter your squad name. Enter nothing to cancel.","Squad Creation",null) as text|null
@@ -135,20 +135,20 @@
 	if(.)
 		update_sprite()
 
-	
+
 /obj/hud/button/squad/member/update_underlays()
 	. = ..()
 	var/icon/I = new(initial(icon),initial(icon_state))
 	swap_colors(I)
 	underlays += I
-	
+
 /obj/hud/button/squad/member/update_icon()
 	. = ..()
 	if(tracked_mob && tracked_mob.health)
 		var/desired_num = FLOOR((tracked_mob.health.health_current/tracked_mob.health.health_max) * 26, 1)
 		icon_state = "bar_[desired_num]"
 
-	
+
 /obj/hud/button/squad/member/update_sprite()
 	maptext = tracked_mob.name
 	return ..()

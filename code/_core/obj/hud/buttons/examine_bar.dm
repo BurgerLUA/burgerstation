@@ -10,7 +10,7 @@
 
 	maptext = "hello"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	layer = -1000
 

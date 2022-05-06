@@ -83,7 +83,7 @@
 			use_ears(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 			if(speaker.is_player_controlled()) log_chat("TALK: [speaker.get_log_name()]: [text_to_say]")
 			var/area/A = source_turf.loc
-			if(A && !(A.flags_area & FLAGS_AREA_SINGLEPLAYER))
+			if(A && !(A.flags_area & FLAG_AREA_SINGLEPLAYER))
 				new/obj/effect/chat_text(source,language_text_to_say)
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)

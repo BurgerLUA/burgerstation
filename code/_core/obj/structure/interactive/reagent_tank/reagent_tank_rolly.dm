@@ -2,6 +2,8 @@
 	icon = 'icons/obj/structure/rolly_tanks.dmi'
 	icon_state = "tank"
 
+	reagents = /reagent_container/big_tank/color
+
 /obj/structure/interactive/reagent_tank/rolly/update_icon()
 	. = ..()
 	icon_state = "tank_liquid"
@@ -29,7 +31,6 @@
 /obj/structure/interactive/reagent_tank/rolly/water
 	name = "water tank"
 	color = "#44AAE2"
-
 
 /obj/structure/interactive/reagent_tank/rolly/water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)

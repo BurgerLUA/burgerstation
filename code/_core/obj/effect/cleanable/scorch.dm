@@ -1,0 +1,12 @@
+/obj/effect/cleanable/scorch
+	name = "scorch mark"
+	icon = 'icons/obj/effects/scorch.dmi'
+	icon_state = "rust1"
+	enable_chunk_clean = FALSE
+
+	plane = PLANE_WALL
+	layer = 9999
+
+/obj/effect/cleanable/scorch/New(var/desired_loc)
+	icon_state = "[rand(1,6)]"
+	. = ..()

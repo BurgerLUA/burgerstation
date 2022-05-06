@@ -8,7 +8,7 @@
 
 	item_slot = SLOT_TORSO
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 100
 
@@ -22,7 +22,7 @@
 
 	item_slot = SLOT_TORSO_ARMOR
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 90
 
@@ -39,7 +39,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	priority = 10
 
@@ -56,7 +56,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	max_size = SIZE_10
 

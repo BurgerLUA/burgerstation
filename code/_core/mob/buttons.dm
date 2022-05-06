@@ -26,7 +26,7 @@
 		client.known_buttons = buttons.Copy()
 
 //Health
-/mob/proc/toggle_health(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
+/mob/proc/toggle_health(var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	draw_health = !draw_health
 	show_health(draw_health,show_flags_whitelist,show_flags_blacklist,speed)
 
@@ -37,7 +37,7 @@
 			H.show(show,speed)
 
 //Buttons
-/mob/proc/toggle_buttons(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
+/mob/proc/toggle_buttons(var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	draw_buttons = !draw_buttons
 	show_buttons(draw_buttons,show_flags_whitelist,show_flags_blacklist,speed)
 
@@ -48,7 +48,7 @@
 			B.show(show,speed)
 
 //HUD
-/mob/proc/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
+/mob/proc/show_hud(var/show,var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
 	show_buttons(show,show_flags_whitelist,show_flags_blacklist,speed)
 	show_health(show,show_flags_whitelist,show_flags_blacklist,speed)
 

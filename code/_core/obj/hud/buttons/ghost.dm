@@ -4,7 +4,7 @@
 	icon_state = "new_character"
 	screen_loc = "CENTER-0.5,BOTTOM:12"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
 
@@ -31,7 +31,7 @@
 	icon_state = "load_character"
 	screen_loc = "CENTER+0.5,BOTTOM:12"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
 
@@ -60,7 +60,7 @@
 	icon_state = "become_antag"
 	screen_loc = "CENTER+1.5,BOTTOM:12"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
 
@@ -79,7 +79,7 @@
 	icon_state = "square_round_small"
 	screen_loc = "CENTER-1.5,BOTTOM:12"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
 
@@ -120,7 +120,7 @@
 	icon_state = "square_round_small"
 	screen_loc = "CENTER,BOTTOM:12+2"
 
-	flags = FLAGS_HUD_DEAD
+	flags = FLAG_HUD_DEAD
 
 	plane = PLANE_HUD_OBJ
 

@@ -258,7 +258,7 @@
 		if(!I.can_save)
 			//.[i] = list()
 			continue
-		if(died && (src.flags & FLAGS_HUD_MOB) && !src.ultra_persistant && !I.save_on_death)
+		if(died && (src.flags & FLAG_HUD_MOB) && !src.ultra_persistant && !I.save_on_death)
 			//.[i] = list()
 			continue
 

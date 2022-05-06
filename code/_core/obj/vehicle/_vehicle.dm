@@ -230,7 +230,7 @@
 	L.invisibility = 100
 	L.update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	add_buttons(L)
-	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=SECONDS_TO_DECISECONDS(1))
+	L.show_hud(TRUE,FLAG_HUD_VEHICLE,speed=SECONDS_TO_DECISECONDS(1))
 	update_sprite()
 
 	return ..()
@@ -258,7 +258,7 @@
 	L.has_footsteps = initial(L.has_footsteps)
 	L.update_collisions(initial(L.collision_flags),initial(L.collision_bullet_flags))
 	remove_buttons(L)
-	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
+	L.show_hud(FALSE,FLAG_HUD_VEHICLE,speed=0)
 	update_sprite()
 
 	return ..()

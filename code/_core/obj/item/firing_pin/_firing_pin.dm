@@ -55,7 +55,7 @@
 	if(!.) return
 
 	var/area/A = get_area(caller)
-	if(A.flags_area & FLAGS_AREA_TUTORIAL)
+	if(A.flags_area & FLAG_AREA_TUTORIAL)
 		caller.to_chat(span("danger","\The [src.name] refuses to fire in this area!"))
 		return FALSE
 

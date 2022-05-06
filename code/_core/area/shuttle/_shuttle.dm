@@ -1,7 +1,7 @@
 /area/shuttle
 	name = "shuttle area"
 	icon_state = "shuttle"
-	flags_area = FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 	safe_storage = TRUE
 	trackable = TRUE
 	allow_ghost = FALSE

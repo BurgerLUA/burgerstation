@@ -40,7 +40,7 @@
 	var/turf/T = get_turf(object)
 	var/area/A = T.loc
 
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
 		caller.to_chat(span("warning","Invalid landing zone!"))
 		return TRUE
 

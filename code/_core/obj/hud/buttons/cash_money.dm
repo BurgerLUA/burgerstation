@@ -8,7 +8,7 @@
 
 	icon_state = "currency"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	maptext_x = -2
 
@@ -47,7 +47,7 @@
 	screen_loc = "RIGHT,TOP-1:-16"
 	icon_state = "currency"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	mouse_opacity = 1
 
@@ -91,7 +91,7 @@
 	screen_loc = "RIGHT-1,TOP-1"
 	icon_state = "telecrystal"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	mouse_opacity = 1
 
@@ -103,7 +103,7 @@
 	screen_loc = "RIGHT-1,TOP-1:-16"
 	icon_state = "burger"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	mouse_opacity = 1
 
