@@ -12,9 +12,17 @@
 
 	tier_type = "revolver"
 
+	var/has_quickshot = FALSE
+
 /obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
+	if(!has_quickshot)
+		return ..()
+
 	var/quick_shot = click_called && world.time - last_shoot_time < shoot_delay
+
+	if(quick_shot)
+		damage_multiplier *= 0.9
 
 	. = ..()
 
@@ -27,13 +35,13 @@
 
 	. = ..()
 
-	if(!caller.client)
+	if(!caller.client || !has_quickshot)
 		return .
 
 	var/shot_ago = world.time - last_shoot_time
 
-	if(shot_ago >= .*0.25 && shot_ago <= .*0.5) //Can shoot really fast if you time it.
-		return shot_ago * 0.25
+	if(shot_ago >= 1 && shot_ago <= .) //Can shoot really fast, for a penalty.
+		return shot_ago
 
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()

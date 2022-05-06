@@ -51,11 +51,20 @@
 		if(elevation >= 0)
 			time += 2
 
+	var/x_mod = 0
+	var/y_mod = 0
+	if(grabbed)
+		var/list/offsets = get_directional_offsets(src,grabbing_hand.owner)
+		x_mod = offsets[1]*8
+		y_mod = offsets[2]*8
+		. = TRUE
+		grabbed = grabbing_hand?.owner ? TRUE : FALSE
+
 	if(.)
 		var/matrix/M = get_base_transform()
 		M.Turn(turn)
 		if(!buckled_object)
-			M.Translate(sin(turn)*4,elevation)
+			M.Translate(x_mod + sin(turn)*4,y_mod + elevation)
 		animate(src,transform = M, time = time) //flags = CIRCULAR_EASING | EASE_OUT
 
 	var/desired_plane = get_plane()

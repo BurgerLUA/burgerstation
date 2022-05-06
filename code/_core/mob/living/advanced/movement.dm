@@ -89,35 +89,44 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		var/turf/T = old_loc
 		//Right hand
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD]?.grabbed_object)
-			var/distance = get_dist(src,inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object)
-			var/turf/grabbed_turf = get_turf(inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object)
+			var/atom/movable/M = inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object
+			var/distance = get_dist(src,M)
+			var/turf/grabbed_turf = get_turf(M)
 			var/bypass_safe = TRUE
-			if(src.loyalty_tag && is_living(inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object))
-				var/mob/living/L = inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object
+			if(src.loyalty_tag && is_living(M))
+				var/mob/living/L = M
 				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
-					inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object.glide_size = glide_size
-					inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object.Move(T)
+					M.glide_size = glide_size
+					M.Move(T)
 				else
 					inventories_by_id[BODY_HAND_RIGHT_HELD].release_object()
+			if(is_living(M))
+				var/mob/living/L = M
+				L.handle_transform()
 
 		//Left hand
 		if(inventories_by_id[BODY_HAND_LEFT_HELD]?.grabbed_object)
-			var/distance = get_dist(src,inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object)
-			var/turf/grabbed_turf = get_turf(inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object)
+			var/atom/movable/M = inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object
+			var/distance = get_dist(src,M)
+			var/turf/grabbed_turf = get_turf(M)
 			var/bypass_safe = TRUE
-			if(src.loyalty_tag && is_living(inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object))
-				var/mob/living/L = inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object
+			if(src.loyalty_tag && is_living(M))
+				var/mob/living/L = M
 				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
-					inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object.glide_size = glide_size
-					inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object.Move(T)
+					M.glide_size = glide_size
+					M.Move(T)
 				else
 					inventories_by_id[BODY_HAND_LEFT_HELD].release_object()
+			if(is_living(M))
+				var/mob/living/L = M
+				L.handle_transform()
+
 		if(is_simulated(T))
 			var/turf/simulated/S = T
 			if(S.blood_level_hard > 0 && S.blood_level > 0)

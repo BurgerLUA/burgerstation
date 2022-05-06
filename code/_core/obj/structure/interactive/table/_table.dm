@@ -90,6 +90,7 @@
 	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		L.on_table = TRUE
+		L.handle_transform()
 
 	return ..()
 
@@ -98,6 +99,7 @@
 	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		L.on_table = FALSE
+		L.handle_transform()
 
 	return ..()
 

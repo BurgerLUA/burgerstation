@@ -46,7 +46,7 @@
 		if(max_slots <= 0)
 			return FALSE
 
-		if(is_occupied(TRUE,TRUE))
+		if(is_occupied(TRUE))
 			if(messages && src.loc)
 				owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 			return FALSE

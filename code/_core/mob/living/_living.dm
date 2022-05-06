@@ -100,6 +100,7 @@
 	var/allow_experience_gains = FALSE
 
 	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
+	var/grabbed = FALSE //Read only value to check if the mob is grabbed.
 
 	var/elevation = 0
 	var/turn = 0

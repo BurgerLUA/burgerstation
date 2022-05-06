@@ -340,7 +340,8 @@ var/global/zombie_seed = 0
 		/obj/item/clothing/underbottom/underwear/panty,
 		/obj/item/clothing/undertop/underwear/bra,
 		/obj/item/clothing/feet/shoes/colored,
-		/obj/item/clothing/feet/shoes/colored/left
+		/obj/item/clothing/feet/shoes/colored/left,
+		/obj/item/storage/wallet/random_colonist
 	)
 	possible_shirt = list(
 		/obj/item/clothing/shirt/normal = 8,

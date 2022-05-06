@@ -2,12 +2,17 @@
 
 	var/atom/top_object = get_top_object()
 
-	//Test
-	if(is_living(caller)) //TODO: Do you even need this?
+	//Dead can't interact.
+	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
 			L.to_chat(span("warning","You're dead!"))
 			return TRUE
+
+	//Reinforced grabbing. Doesn't matter what your intent is.
+	if(grabbed_object && grabbed_object == object && is_living(object))
+		reinforce_grab(caller)
+		return TRUE
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
 		if(is_item(object))
@@ -112,19 +117,6 @@
 			drop_item_from_inventory(get_turf(src))
 		return TRUE
 
-	if(grabbed_object && grabbed_object == object && is_living(grabbed_object)) //We click on the hand that grabbed something
-		if(world.time <= grab_time+SECONDS_TO_TICKS(2)) //Prevents insta agressive-grab
-			return TRUE
-		var/mob/living/grabbed_living = grabbed_object
-		caller.visible_message(span("warning","\The [caller.name] tightens their grip on \the [object.name]!"),span("warning","You tighten your grip on \the [object.name]!"))
-		grab_level = 2 //Agressive grab
-		grab_time = world.time
-		grabbed_living.handle_transform()
-		if(caller.next_move <= 0)
-			caller.Move(get_turf(grabbed_object))
-		update_overlays() //Changing appearnce
-		return TRUE
-
 	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
@@ -136,6 +128,9 @@
 				if(!allow_hostile_action(L.loyalty_tag,C.loyalty_tag,grabbed_object_turf.loc) && grabbed_object_turf.is_safe_teleport(FALSE) && !desired_move_turf.is_safe_teleport(FALSE))
 					return TRUE
 			grabbed_object.Move(desired_move_turf)
+			if(is_living(grabbed_object))
+				var/mob/living/L = grabbed_object
+				L.handle_transform()
 		return TRUE
 
 	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)

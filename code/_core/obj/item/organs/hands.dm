@@ -66,9 +66,6 @@
 
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim)
 
-	if(damage_type) //Override
-		return damage_type
-
 	if(is_living(attacker))
 		var/mob/living/L = attacker
 		if(L.attack_flags & CONTROL_MOD_KICK)
@@ -77,15 +74,19 @@
 			if(INTENT_HARM)
 				var/trait/unarmed/U = L.get_trait_by_category(/trait/unarmed/)
 				if(U) return U.damage_type
-				return /damagetype/unarmed/fists/
+				. = /damagetype/unarmed/fists/
 			if(INTENT_DISARM)
-				return /damagetype/unarmed/fists/disarm
+				. = /damagetype/unarmed/fists/disarm
 			if(INTENT_HELP)
-				return /damagetype/unarmed/fists/help
+				. = /damagetype/unarmed/fists/help
 			if(INTENT_GRAB)
-				return /damagetype/unarmed/fists/grab
+				. = /damagetype/unarmed/fists/grab
 
-	. = ..()
+	if(!.)
+		. = ..()
+
+	if(. == /damagetype/unarmed/fists/ && damage_type) //Overridden
+		return damage_type
 
 /obj/item/organ/hand/left
 	name = "left hand"
@@ -356,19 +357,25 @@
 
 /obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
 
-	if(is_advanced(attacker))
-		var/mob/living/advanced/A = attacker
-		if(A.horizontal)
-			var/obj/hud/inventory/I = A.inventories_by_id[src.id]
-			if(I && !I.grabbed_object)
-				return /damagetype/unarmed/fists/grab
+	var/mob/living/advanced/A = attacker
+	var/obj/hud/inventory/I = A.inventories_by_id[src.id]
+
+	if(A.horizontal) //Always grab when horizontal.
+		if(I && !I.grabbed_object)
+			return /damagetype/unarmed/fists/grab
 
 	var/list/possible_damage_types = list(
-		/damagetype/unarmed/claw = 6,
-		/damagetype/unarmed/bite = 2,
-		/damagetype/unarmed/fists/grab = 2,
-		/damagetype/unarmed/fists/disarm = 1
+		/damagetype/unarmed/claw = 6
 	)
+
+	if(!I.grabbed_object)
+		possible_damage_types[/damagetype/unarmed/fists/disarm] = 1
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 2
+	else if(I.grab_level >= 2)
+		possible_damage_types[/damagetype/unarmed/bite] = 100
+	else
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 4
+
 	return pickweight(possible_damage_types)
 
 /obj/item/organ/hand/zombie/left
