@@ -56,16 +56,14 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 22 - 16
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 20 - 16
 
-	attachment_sight_offset_x = 23 - 16
-	attachment_sight_offset_y = 23 - 16
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 29 - 16
-	attachment_undermount_offset_y = 17 - 16
-
-
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 15 - 16
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5
@@ -76,9 +74,11 @@
 	icon_state = initial(icon_state)
 
 	if(stored_magazine)
-		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*5, 1)]"
+		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*8, 1)]"
+	else
+		icon_state = "[icon_state]_open"
 
-	return ..()
+	. = ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_static_spread()
 	return 0.001
