@@ -38,24 +38,6 @@
 
 	var/map_color = null //The map color. For drawing maps.
 
-/turf/simulated/New(var/desired_loc)
-	. = ..()
-	SSturf.simulated_turfs += src
-
-/turf/simulated/pre_change()
-	. = ..()
-	SSturf.wet_turfs -= src
-	SSturf.simulated_turfs -= src
-
-	for(var/obj/effect/footprint/F in src.contents) //Remove all footprints
-		qdel(F)
-
-	for(var/obj/effect/cleanable/C in src.contents) //Remove all cleanables.
-		qdel(C)
-
-	for(var/obj/structure/scenery/S in src.contents) //Remove all scenery (like grass).
-		qdel(S)
-
 /turf/simulated/is_safe_teleport(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)
