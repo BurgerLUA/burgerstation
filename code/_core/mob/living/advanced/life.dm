@@ -150,13 +150,13 @@ var/global/list/spread_icons = list(
 	desired_spread *= 75 //Entirely arbitrary.
 	var/difference = abs(desired_spread - current_mouse_spread)
 
-	if(difference <= 1)
+	if(difference <= 2)
 		current_mouse_spread = desired_spread
 	else
 		if(desired_spread > current_mouse_spread)
-			current_mouse_spread += 1
+			current_mouse_spread += 2
 		else if(desired_spread < current_mouse_spread)
-			current_mouse_spread -= 1
+			current_mouse_spread -= 2
 
 	if(current_mouse_spread > -1)
 		var/final_mouse_spread = clamp(1+CEILING(current_mouse_spread,1),0,length(spread_icons))

@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(client)
 			continue
 		if(!R.handle_automatic(caller,params,damage_multiplier,max_bursts_to_use,shoot_delay_to_use))
 			R.next_shoot_time = world.time + (R.burst_delay ? R.burst_delay : R.shoot_delay*R.current_bursts*1.25)
-			R.current_bursts = 0
+			R.current_bursts = 1
 			queued_automatics -= k
 
 

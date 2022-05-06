@@ -8,7 +8,7 @@
 	var/automatic = FALSE
 	var/max_bursts = 0 //Inherint maximum amount of bursts.
 	var/current_maxmium_bursts = 0 //Read only. Controlled by firemode changing.
-	var/current_bursts = 0 //Read only.
+	var/current_bursts = 1 //Read only.
 	var/shoot_delay = 4 //In deciseconds
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
 	var/next_shoot_time = 0
