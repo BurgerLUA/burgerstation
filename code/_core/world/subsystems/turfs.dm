@@ -36,11 +36,6 @@ SUBSYSTEM_DEF(turf)
 	for(var/i=1,i<=10,i++) //Generate 10 seeds.
 		seeds += rand(1,99999)
 
-	/*
-	for(var/obj/map_generator/G in world)
-		G.generate_map()
-	*/
-
 	for(var/k in simulated_turfs)
 		var/turf/simulated/T = k
 		T.world_spawn = TRUE
@@ -100,7 +95,6 @@ SUBSYSTEM_DEF(turf)
 
 	. = ..()
 
-
 /subsystem/turf/on_life()
 
 	for(var/k in wet_turfs)
@@ -112,4 +106,4 @@ SUBSYSTEM_DEF(turf)
 			T.update_overlays()
 		CHECK_TICK(75,FPS_SERVER*3)
 
-	. = ..()
+	return TRUE

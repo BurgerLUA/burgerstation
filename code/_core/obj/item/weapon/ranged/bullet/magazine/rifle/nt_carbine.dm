@@ -16,7 +16,7 @@
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine.ogg')
 
 	can_wield = TRUE
 
@@ -62,10 +62,10 @@
 	attachment_barrel_offset_y = 20 - 16
 
 	attachment_sight_offset_x = 18 - 16
-	attachment_sight_offset_y = 21 - 16
+	attachment_sight_offset_y = 20 - 16
 
 	attachment_undermount_offset_x = 26 - 16
-	attachment_undermount_offset_y = 16 - 16
+	attachment_undermount_offset_y = 17 - 16
 
 	dan_mode = TRUE
 

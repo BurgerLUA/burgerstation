@@ -17,7 +17,7 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/burst.ogg')
 
 	can_wield = TRUE
 
@@ -57,13 +57,13 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_x = 30 - 16
 	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_x = 19 - 16
 	attachment_sight_offset_y = 22 - 16
 
-	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 15 - 16
 
 	dan_mode = TRUE

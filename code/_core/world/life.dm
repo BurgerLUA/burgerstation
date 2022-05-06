@@ -37,8 +37,10 @@ var/global/time_dialation = 0
 		log_subsystem(SS.name,"Initialization took [DECISECONDS_TO_SECONDS((true_time() - local_benchmark))] seconds.")
 		sleep(-1)
 
+	var/final_time_text = "All initializations took [DECISECONDS_TO_SECONDS((true_time() - benchmark))] seconds."
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
-	log_subsystem("Subsystem Controller","All initializations took [DECISECONDS_TO_SECONDS((true_time() - benchmark))] seconds.")
+	log_subsystem("Subsystem Controller",final_time_text)
+	log_debug(final_time_text)
 
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k

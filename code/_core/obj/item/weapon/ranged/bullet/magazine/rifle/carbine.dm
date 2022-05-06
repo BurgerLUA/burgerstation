@@ -16,7 +16,7 @@
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine.ogg')
 
 	can_wield = FALSE
 
@@ -129,7 +129,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
 
 	can_wield = FALSE
 

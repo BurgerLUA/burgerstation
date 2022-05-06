@@ -12,7 +12,7 @@
 
 	firemodes = list("semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/syringe.ogg')
 
 	heat_max = 0.1
 

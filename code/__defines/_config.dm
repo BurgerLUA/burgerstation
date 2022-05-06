@@ -27,7 +27,10 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_LIGHTING FALSE
+
+//Enables/disables turf/obj smoothing.
+#define ENABLE_SMOOTHING TRUE
 
 //Enables/disables turf generation
 #define ENABLE_GENERATION FALSE
