@@ -37,22 +37,21 @@
 
 		if(!O.finalized) return .
 
-		if(is_advanced(O.loc))
+		if(O.enable_wounds && is_advanced(O.loc))
 			var/mob/living/advanced/A = O.loc
-			if(O.enable_wounds)
-				var/should_update_overlay = FALSE
-				for(var/damage_type in O.visual_wounds)
-					var/last_amount = O.visual_wounds[damage_type]
-					var/current_amount = clamp(CEILING((damage[damage_type]/health_max*0.5)*3, 1),0,3)
-					if(last_amount != current_amount)
-						var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
-						O.add_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
-						O.visual_wounds[damage_type] = current_amount
-						should_update_overlay = TRUE
-						if(damage_type == BRUTE && current_amount == 0)
-							O.bleeding = 0
-				if(should_update_overlay)
-					A.update_overlay_tracked("\ref[O]")
+			var/should_update_overlay = FALSE
+			for(var/damage_type in O.visual_wounds)
+				var/last_amount = O.visual_wounds[damage_type]
+				var/current_amount = clamp(CEILING((damage[damage_type]/health_max*0.5)*3, 1),0,3)
+				if(last_amount != current_amount)
+					var/desired_icon_state = current_amount ? "[O.id]_[damage_type]_[current_amount]" : "none"
+					O.add_blend("damage_[damage_type]", desired_icon_state = desired_icon_state)
+					O.visual_wounds[damage_type] = current_amount
+					should_update_overlay = TRUE
+					if(damage_type == BRUTE && current_amount == 0)
+						O.bleeding = 0
+			if(should_update_overlay)
+				A.update_overlay_tracked("\ref[O]")
 
 /health/obj/item/organ/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
 

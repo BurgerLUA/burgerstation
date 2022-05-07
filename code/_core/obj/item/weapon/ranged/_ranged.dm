@@ -574,7 +574,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(is_inventory(src.loc))
 			var/obj/hud/inventory/I = src.loc
 			var/arm_damage = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
-			if(arm_damage >= 1)
+			if(wielded)
+				arm_damage -= 20
+			if(arm_damage >= 5)
 				var/obj/item/organ/O
 				if(I.click_flags & RIGHT_HAND)
 					if(wielded)
@@ -588,9 +590,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						O = A.labeled_organs[BODY_HAND_LEFT]
 				if(O && O.health)
 					if(O.health.organic)
-						O.health.adjust_loss_smart(BRUTE=min(arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
+						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
 					else
-						O.health.adjust_loss_smart(BRUTE=min(arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
+						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
 					if(arm_damage >= 20 && O.send_pain_response(arm_damage))
 						A.to_chat(span("warning","The recoil of \the [src.name] injures your arm!"))
 

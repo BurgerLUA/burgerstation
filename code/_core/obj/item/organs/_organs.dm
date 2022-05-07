@@ -101,10 +101,10 @@
 	attached_organs = list()
 
 /obj/item/organ/Destroy()
-	color = "#000000"
+	color = "#FF00FF"
 	attached_organ = null
 	attached_organs?.Cut()
-	return ..()
+	. = ..()
 
 /obj/item/organ/get_base_transform()
 	. = ..()
@@ -184,9 +184,9 @@
 
 	. = ..()
 
-	if(is_advanced(loc))
+	if(health && is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		if(health)
+		if(A.health && !A.has_status_effect(IMMORTAL))
 			if(broken)
 				health.adjust_loss_smart(pain=damage_amount*0.25)
 			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
@@ -196,24 +196,24 @@
 				if(total_bleed_damage>0)
 					var/bleed_to_add = total_bleed_damage/50
 					src.bleeding += bleed_to_add
-		if(!A.dead && has_pain && atom_damaged == src && (broken || (src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
-			src.send_pain_response(damage_amount)
-		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && !(A.override_butcher || length(A.butcher_contents)))
-			var/gib_chance = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])
-			if(A.dead)
-				gib_chance -= length(attached_organs)*10 //No cheesing torso.
-				if(gib_chance > 0) gib_chance += min(0,health.health_current)*0.5 //More damage means more of a chance to gib.
-			else
-				gib_chance -= length(attached_organs)*30 //No cheesing torso.
-			if(gib_chance > 0 && prob(gib_chance))
-				if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
-					if(A.dead && is_living(attacker)) //Only gib if the player is dead.
-						var/mob/living/LA = attacker
-						if(LA.client) //And the person doing the gibbing is an active player.
-							gib()
-						//Otherwise, don't gib.
+			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
+				src.send_pain_response(damage_amount)
+			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
+				var/gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
+				if(A.dead)
+					gib_chance -= length(attached_organs)*10 //No cheesing torso.
 				else
-					gib()
+					gib_chance -= length(attached_organs)*30 //No cheesing torso.
+				if(gib_chance > 0) gib_chance += min(0,-health.health_current)*0.5*(gib_chance/100) //More damage means more of a chance to gib.
+				if(gib_chance > 0 && prob(gib_chance))
+					if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
+						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
+							var/mob/living/LA = attacker
+							if(LA.client) //And the person doing the gibbing is an active player.
+								gib()
+							//Otherwise, don't gib.
+					else
+						gib()
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)
@@ -324,8 +324,8 @@
 	if(T)
 		if(is_advanced(src.loc))
 			var/mob/living/advanced/A = src.loc
-			A.remove_organ(src,FALSE)
-		if(do_delete)
+			A.remove_organ(src,do_delete)
+		else if(do_delete)
 			qdel(src)
 			return TRUE
 		else

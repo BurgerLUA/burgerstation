@@ -1,9 +1,16 @@
-/mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=null,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+/mob/living/proc/add_status_effect(var/status_type,var/magnitude,var/duration,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+
+	var/status_effect/S = SSstatus.all_status_effects[status_type]
+	if(!S)
+		CRASH_SAFE("Invalid status effect added! ([status_type])")
+		return FALSE
+	. = FALSE
+
+	if(!isnum(magnitude))
+		magnitude = S.default_magnitude
 
 	if(!isnum(duration))
-		duration = magnitude
-
-	PROCESS_LIVING(src)
+		duration = S.default_duration
 
 	//Check immunities first.
 	if(!force && length(status_immune) && status_immune[status_type])
@@ -19,12 +26,6 @@
 			if(duration != -1)
 				duration = duration*0.5
 
-	var/status_effect/S = SSstatus.all_status_effects[status_type]
-	if(!S)
-		CRASH_SAFE("Invalid status effect added! ([status_type])")
-		return FALSE
-	. = FALSE
-
 	if(!S.can_add_status_effect(source,src))
 		return FALSE
 
@@ -37,6 +38,8 @@
 	if(!status_effects[status_type])
 		status_effects[status_type] = list()
 		. = TRUE
+
+	PROCESS_LIVING(src)
 
 	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
 		status_effects[status_type]["duration"] = duration
