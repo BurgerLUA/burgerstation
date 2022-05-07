@@ -244,18 +244,21 @@
 
 	post_move(OldLoc)
 
+	/*
 	if((collision_flags & FLAG_COLLISION_WALKING) && isturf(loc))
 		var/turf/T = loc
 		if(T.friction < 1)
 			var/calculated_speed = SECONDS_TO_TICKS(glide_size/TILE_SIZE)
 			var/calculated_direction = get_dir(OldLoc,loc)
 			start_momentum(calculated_speed,calculated_direction)
+	*/
 
 	return TRUE
 
 /atom/movable/proc/on_fall(var/turf/old_turf)
 	return TRUE
 
+/*
 /atom/movable/proc/start_momentum(var/desired_momentum_speed=0,var/desired_momentum_dir=0x0)
 
 	if(!desired_momentum_speed || !desired_momentum_dir)
@@ -304,3 +307,4 @@
 		Move(desired_turf)
 
 	return TRUE
+*/
