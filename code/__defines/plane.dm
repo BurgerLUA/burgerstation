@@ -35,7 +35,7 @@
 #define PLANE_CURRENCY -29
 
 //Mob
-#define PLANE_MOB_FISH -25
+#define PLANE_MOB_UNDERWATER -25
 
 #define PLANE_WATER -24
 

@@ -58,7 +58,8 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	var/obj/plane_master/walls/plane_master_wall
-	var/obj/plane_master/water/plane_master_water
+	var/obj/plane_master/water_floor/plane_master_water_floor
+	var/obj/plane_master/water_surface/plane_master_water_surface
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/mobs_small/plane_master_mob_small
 	var/obj/plane_master/mobs_large/plane_master_mob_large
@@ -163,7 +164,8 @@
 		observing = null
 
 	QDEL_NULL(plane_master_wall)
-	QDEL_NULL(plane_master_water)
+	QDEL_NULL(plane_master_water_floor)
+	QDEL_NULL(plane_master_water_surface)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_mob_small)
 	QDEL_NULL(plane_master_mob_large)
@@ -220,9 +222,13 @@
 		plane_master_wall = new(src)
 	C.screen += plane_master_wall
 
-	if(!plane_master_water)
-		plane_master_water = new(src)
-	C.screen += plane_master_water
+	if(!plane_master_water_floor)
+		plane_master_water_floor = new(src)
+	C.screen += plane_master_water_floor
+
+	if(!plane_master_water_surface)
+		plane_master_water_surface = new(src)
+	C.screen += plane_master_water_surface
 
 	if(!plane_master_mob)
 		plane_master_mob = new(src)

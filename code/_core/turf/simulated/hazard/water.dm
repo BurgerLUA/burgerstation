@@ -1,5 +1,3 @@
-var/global/obj/water_ground
-
 /turf/simulated/liquid/water
 	name = "water"
 	icon = 'icons/turf/floor/water.dmi'
