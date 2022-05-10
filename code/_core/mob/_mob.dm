@@ -62,7 +62,7 @@
 	var/obj/plane_master/water_surface/plane_master_water_surface
 	var/obj/plane_master/mobs/plane_master_mob
 	var/obj/plane_master/mobs_small/plane_master_mob_small
-	var/obj/plane_master/mobs_large/plane_master_mob_large
+	var/obj/plane_master/mobs_dead/plane_master_mob_dead
 	var/obj/plane_master/mobs_stealth/plane_master_mob_stealth
 	var/obj/plane_master/darkness/plane_master_darkness
 	var/obj/plane_master/objs/plane_master_obj
@@ -168,7 +168,7 @@
 	QDEL_NULL(plane_master_water_surface)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_mob_small)
-	QDEL_NULL(plane_master_mob_large)
+	QDEL_NULL(plane_master_mob_dead)
 	QDEL_NULL(plane_master_mob_stealth)
 	QDEL_NULL(plane_master_darkness)
 	QDEL_NULL(plane_master_obj)
@@ -238,9 +238,9 @@
 		plane_master_mob_small = new(src)
 	C.screen += plane_master_mob_small
 
-	if(!plane_master_mob_large)
-		plane_master_mob_large = new(src)
-	C.screen += plane_master_mob_large
+	if(!plane_master_mob_dead)
+		plane_master_mob_dead = new(src)
+	C.screen += plane_master_mob_dead
 
 	if(!plane_master_mob_stealth)
 		plane_master_mob_stealth = new(src)

@@ -7,6 +7,8 @@
 		. += 10
 	if(horizontal)
 		. -= 14
+	else if(!on_liquid)
+		. += 4
 
 /mob/living/proc/get_turn()
 	. = 0
@@ -15,9 +17,11 @@
 
 
 /mob/living/proc/get_plane()
+	if(dead)
+		return PLANE_MOB_DEAD
 	if(is_sneaking)
 		return PLANE_MOB_STEALTH
-	else if(horizontal)
+	if(horizontal)
 		return PLANE_MOB_SMALL
 	return initial(plane)
 

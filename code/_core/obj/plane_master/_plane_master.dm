@@ -98,16 +98,8 @@
 	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
 
 
-/obj/plane_master/mobs_large
-	plane = PLANE_MOB_LARGE
-
-/obj/plane_master/mobs_large/apply_post_processing()
-	. = ..()
-	//Depth
-	if(owner?.client?.settings?.loaded_data["enable_depth"])
-		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
-		filters += filter(type="drop_shadow", x=0, y=-6, size=5, offset=0, color=rgb(0,0,0,200))
-	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
+/obj/plane_master/mobs_dead
+	plane = PLANE_MOB_DEAD
 
 /obj/plane_master/mobs_stealth
 	plane = PLANE_MOB_STEALTH
