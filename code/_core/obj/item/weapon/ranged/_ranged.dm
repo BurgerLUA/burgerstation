@@ -325,13 +325,17 @@
 
 	return . && (heat_current > 0 || (recoil_delay > 0 && queued_recoil > 0))
 
-/obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-	if(SSclient.queued_automatics[src]) //Already doing something.
-		return TRUE
+/obj/item/weapon/ranged/click_self(var/mob/caller)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		change_firemode(caller)
+		return TRUE
+
+	. = ..()
+
+/obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(SSclient.queued_automatics[src]) //Already doing something.
 		return TRUE
 
 	. = ..()
@@ -346,7 +350,7 @@
 		caller.to_chat(span("warning","You can only fire this when wielded! (CTRL+CLICK)"))
 		return .
 
-	INTERACT_CHECK
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(istype(object,/obj/parallax))
 		object = object.defer_click_on_object(caller,location,control,params) //Only time defer_click_on_object should be used like this.
@@ -771,7 +775,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		else
 			. *= min(1,total_zoom_mul*0.35)/1
 
-	. *= max(0.1,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1)) //Based on skill
+	. *= max(0.1,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,0.9)) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 
@@ -805,3 +809,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)
 
+/obj/item/weapon/ranged/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
+
+	if(attachment_undermount)
+		return attachment_undermount.click_on_object_alt(caller,object,location,control,params)
+
+	return TRUE

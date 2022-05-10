@@ -251,13 +251,17 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/weapon/ranged/bullet/G = object
+		if(caller.attack_flags & CONTROL_MOD_DISARM && istype(G.attachment_undermount,/obj/item/attachment/undermount/gun))
+			var/obj/item/attachment/undermount/gun/AG = G.attachment_undermount
+			G = AG.stored_gun
+
 		if(G.accept_bullet(caller,src))
 			var/turf/T = get_turf(src)
 			play_sound(bullet_insert_sound,T,range_max=VIEW_RANGE*0.25)
-			if(istype(object,/obj/item/weapon/ranged/bullet/magazine/))
+			if(istype(G,/obj/item/weapon/ranged/bullet/magazine/))
 				var/obj/item/weapon/ranged/bullet/magazine/M = G
 				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
-			return TRUE
+		return TRUE
 
 	. = ..()
 

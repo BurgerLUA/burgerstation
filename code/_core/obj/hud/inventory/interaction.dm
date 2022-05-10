@@ -1,7 +1,5 @@
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	var/atom/top_object = get_top_object()
-
 	//Dead can't interact.
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -9,10 +7,18 @@
 			L.to_chat(span("warning","You're dead!"))
 			return TRUE
 
+	if(parent_inventory) //Wielding an object.
+		var/atom/top_object = parent_inventory.get_top_object()
+		if(object != top_object)
+			top_object.click_on_object_alt(caller,object,location,control,params)
+			return TRUE
+
 	//Reinforced grabbing. Doesn't matter what your intent is.
 	if(grabbed_object && grabbed_object == object && is_living(object))
 		reinforce_grab(caller)
 		return TRUE
+
+	var/atom/top_object = get_top_object()
 
 	//Alt click a corpse with an empty hand.
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && is_advanced(object))

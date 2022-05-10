@@ -73,3 +73,13 @@
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.12 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount
+	attachment_whitelist = list() //no
+	value = -1
+	open = TRUE
+	can_shoot_while_open = TRUE
+
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount/click_self(var/mob/caller)
+	return TRUE
