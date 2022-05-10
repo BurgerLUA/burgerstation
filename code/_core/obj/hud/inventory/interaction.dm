@@ -14,6 +14,13 @@
 		reinforce_grab(caller)
 		return TRUE
 
+	//Alt click a corpse with an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && is_advanced(object))
+		var/mob/living/advanced/A = object
+		if(A.dead)
+			A.examine_body_inventory(caller)
+			return TRUE
+
 	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
 		if(is_item(object))
 			var/obj/item/I = object
