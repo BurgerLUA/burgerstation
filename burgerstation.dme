@@ -148,6 +148,7 @@
 #include "code\_core\area\_area.dm"
 #include "code\_core\area\dungeon.dm"
 #include "code\_core\area\ghost.dm"
+#include "code\_core\area\range.dm"
 #include "code\_core\area\strange.dm"
 #include "code\_core\area\wizard.dm"
 #include "code\_core\area\burgerstation\_burgerstation.dm"

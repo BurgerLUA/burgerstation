@@ -17,8 +17,8 @@
 "ae" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 4
+	dir = 4;
+	icon_state = "smes_map"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
@@ -192,8 +192,8 @@
 	dir = 1
 	},
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 9
+	dir = 9;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
@@ -224,8 +224,8 @@
 "aX" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 8
+	dir = 8;
+	icon_state = "smes_map"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
@@ -549,8 +549,8 @@
 /area/burgerstation/armory/shooting_range)
 "cf" = (
 /obj/structure/interactive/atm{
-	icon_state = "atm_map";
-	dir = 4
+	dir = 4;
+	icon_state = "atm_map"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
@@ -611,8 +611,8 @@
 /area/burgerstation/armory/shooting_range)
 "cs" = (
 /obj/structure/interactive/atm{
-	icon_state = "atm_map";
-	dir = 4
+	dir = 4;
+	icon_state = "atm_map"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/hall/west)
@@ -652,8 +652,8 @@
 "cz" = (
 /obj/structure/interactive/wire/red,
 /obj/structure/interactive/power/smes/industrial{
-	icon_state = "smes_map";
-	dir = 4
+	dir = 4;
+	icon_state = "smes_map"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering)
@@ -663,8 +663,8 @@
 /area/burgerstation/chapel)
 "cB" = (
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 1
+	dir = 1;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
@@ -770,8 +770,8 @@
 /area/burgerstation/armory)
 "cQ" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
@@ -838,8 +838,8 @@
 /area/burgerstation/cargo)
 "de" = (
 /obj/structure/interactive/intercom/active/poly{
-	icon_state = "intercom";
-	dir = 4
+	dir = 4;
+	icon_state = "intercom"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/engineering/ce)
@@ -1238,16 +1238,16 @@
 /area/burgerstation/maint/disposals)
 "eH" = (
 /obj/structure/sign/department/b/sci{
-	icon_state = "direction_sci";
-	dir = 8
+	dir = 8;
+	icon_state = "direction_sci"
 	},
 /obj/structure/sign/department/b/evac{
-	icon_state = "direction_evac";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_evac"
 	},
 /obj/structure/sign/department/b/sec{
-	icon_state = "direction_sec";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_sec"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe)
@@ -1953,8 +1953,8 @@
 /area/burgerstation/cargo)
 "hd" = (
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/dark,
@@ -1993,8 +1993,8 @@
 	icon_state = "conveyor"
 	},
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/morphing/cargo,
 /area/burgerstation/cargo)
@@ -2005,16 +2005,16 @@
 /area/burgerstation/cargo)
 "hl" = (
 /obj/structure/sign/department/a/engineering{
-	icon_state = "direction_eng";
-	dir = 8
+	dir = 8;
+	icon_state = "direction_eng"
 	},
 /obj/structure/sign/department/a/med{
-	icon_state = "direction_med";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_med"
 	},
 /obj/structure/sign/department/a/supply{
-	icon_state = "direction_supply";
-	dir = 8
+	dir = 8;
+	icon_state = "direction_supply"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe)
@@ -2583,8 +2583,8 @@
 	icon_state = "conveyor"
 	},
 /obj/structure/interactive/diverter/living{
-	icon_state = "diverter";
-	dir = 1
+	dir = 1;
+	icon_state = "diverter"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering/supermatter)
@@ -2808,8 +2808,8 @@
 "ki" = (
 /obj/structure/interactive/crate/closet/freezer,
 /mob/living/advanced/npc/beefman{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen/freezer)
@@ -2834,8 +2834,8 @@
 /area/burgerstation/cafe/bar)
 "kn" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
@@ -3115,8 +3115,8 @@
 /area/burgerstation/armory)
 "lt" = (
 /obj/structure/interactive/shield{
-	icon_state = "shieldwall";
-	dir = 4
+	dir = 4;
+	icon_state = "shieldwall"
 	},
 /obj/decal/hazard/black{
 	dir = 1
@@ -3756,8 +3756,8 @@
 "nQ" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
+	dir = 1;
+	icon_state = "smes_map"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
@@ -4289,8 +4289,8 @@
 /area/burgerstation/engineering)
 "pP" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/lobby)
@@ -4507,16 +4507,16 @@
 /area/burgerstation/science)
 "qK" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/engineering/lobby)
 "qL" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 8
+	dir = 8;
+	icon_state = "smes_map"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
@@ -4653,8 +4653,8 @@
 /area/burgerstation/cryo/locker_room)
 "rk" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/botany)
@@ -4743,8 +4743,8 @@
 /area/burgerstation/engineering)
 "rB" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cryo/locker_room)
@@ -4841,8 +4841,8 @@
 "rS" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
+	dir = 1;
+	icon_state = "smes_map"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
@@ -4925,8 +4925,8 @@
 /area/burgerstation/library)
 "sj" = (
 /obj/structure/interactive/chair/office{
-	icon_state = "officechair_white";
-	dir = 1
+	dir = 1;
+	icon_state = "officechair_white"
 	},
 /turf/simulated/floor/tile,
 /area/burgerstation/medical)
@@ -5005,8 +5005,8 @@
 /area/burgerstation/hall/south)
 "sy" = (
 /obj/structure/interactive/chair/office{
-	icon_state = "officechair_white";
-	dir = 4
+	dir = 4;
+	icon_state = "officechair_white"
 	},
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
@@ -5101,8 +5101,8 @@
 /area/burgerstation/cryo/locker_room)
 "sP" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 4
+	dir = 4;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/medical)
@@ -5267,8 +5267,8 @@
 /area/shuttle/debug)
 "ts" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 8
+	dir = 8;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/medical)
@@ -5286,8 +5286,8 @@
 /area/burgerstation/cryo/locker_room)
 "tw" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 8
+	dir = 8;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe)
@@ -5319,36 +5319,36 @@
 /area/burgerstation/armory)
 "tC" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 1
+	dir = 1;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
 "tD" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 4
+	dir = 4;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/science)
 "tE" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 4
+	dir = 4;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/supermatter)
 "tF" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 4
+	dir = 4;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cargo)
 "tG" = (
 /obj/structure/interactive/vending/medical/basic{
-	icon_state = "wallmed";
-	dir = 4
+	dir = 4;
+	icon_state = "wallmed"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/botany)
@@ -5356,15 +5356,6 @@
 /obj/structure/interactive/vending/medical/medicine,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
-"tI" = (
-/obj/structure/interactive/misc/urinal{
-	dir = 4;
-	icon_state = "urinal";
-	pixel_x = -32
-	},
-/obj/marker/backup_spawn,
-/turf/simulated/floor/tile,
-/area/burgerstation/bathrooms)
 "tJ" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
@@ -5400,8 +5391,8 @@
 /area/burgerstation/cryo/locker_room)
 "tQ" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/east)
@@ -5453,8 +5444,8 @@
 /area/burgerstation/hall/central)
 "tZ" = (
 /obj/structure/interactive/computer/console/flight{
-	icon_state = "computer";
-	dir = 4
+	dir = 4;
+	icon_state = "computer"
 	},
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/debug)
@@ -5532,8 +5523,8 @@
 "un" = (
 /obj/structure/carpet/command,
 /obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 4
+	dir = 4;
+	icon_state = "officechair_dark"
 	},
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/medical/cmo)
@@ -5803,8 +5794,8 @@
 	icon_state = "conveyor"
 	},
 /obj/structure/interactive/diverter/butcherable{
-	icon_state = "diverter";
-	dir = 8
+	dir = 8;
+	icon_state = "diverter"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
@@ -5851,8 +5842,8 @@
 /area/burgerstation/science)
 "vw" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/science)
@@ -5874,8 +5865,8 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "vA" = (
-/obj/marker/backup_spawn,
 /obj/structure/interactive/wire/green,
+/obj/marker/backup_spawn,
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "vB" = (
@@ -5913,8 +5904,8 @@
 /obj/structure/interactive/misc/mirror/chargen/limited{
 	pixel_y = 32
 	},
-/obj/marker/spawnpoint/chargen,
 /obj/structure/interactive/wire/green,
+/obj/marker/backup_spawn,
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "vH" = (
@@ -5967,8 +5958,8 @@
 /area/burgerstation/cryo)
 "vP" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
@@ -6274,8 +6265,8 @@
 /area/burgerstation/goblin_shop)
 "wX" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/west)
@@ -6292,8 +6283,8 @@
 /area/burgerstation/maint/east)
 "xa" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/south)
@@ -6417,31 +6408,31 @@
 /area/burgerstation/science)
 "xA" = (
 /obj/structure/sign/department/b/sec{
-	icon_state = "direction_sec";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_sec"
 	},
 /obj/structure/sign/department/b/sci{
-	icon_state = "direction_sci";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_sci"
 	},
 /obj/structure/sign/department/b/evac{
-	icon_state = "direction_evac";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_evac"
 	},
 /turf/simulated/wall/brick/chapel,
 /area/burgerstation/armory)
 "xB" = (
 /obj/structure/sign/department/a/engineering{
-	icon_state = "direction_eng";
-	dir = 8
+	dir = 8;
+	icon_state = "direction_eng"
 	},
 /obj/structure/sign/department/a/med{
-	icon_state = "direction_med";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_med"
 	},
 /obj/structure/sign/department/a/supply{
-	icon_state = "direction_supply";
-	dir = 8
+	dir = 8;
+	icon_state = "direction_supply"
 	},
 /turf/simulated/wall/brick/chapel,
 /area/burgerstation/chapel)
@@ -6450,39 +6441,39 @@
 	dir = 1
 	},
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 5
+	dir = 5;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
 "xD" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 6
+	dir = 6;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
 "xE" = (
 /obj/structure/sign/department/a/engineering,
 /obj/structure/sign/department/a/med{
-	icon_state = "direction_med";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_med"
 	},
 /obj/structure/sign/department/a/supply{
-	icon_state = "direction_supply";
-	dir = 8
+	dir = 8;
+	icon_state = "direction_supply"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/hall/west)
 "xF" = (
 /obj/structure/sign/department/b/evac{
-	icon_state = "direction_evac";
-	dir = 1
+	dir = 1;
+	icon_state = "direction_evac"
 	},
 /obj/structure/sign/department/b/sci,
 /obj/structure/sign/department/b/sec{
-	icon_state = "direction_sec";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_sec"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/hall/west)
@@ -6516,27 +6507,27 @@
 /area/burgerstation/hall/east)
 "xL" = (
 /obj/structure/sign/department/b/evac{
-	icon_state = "direction_evac";
-	dir = 4
+	dir = 4;
+	icon_state = "direction_evac"
 	},
 /obj/structure/sign/department/b/sci,
 /obj/structure/sign/department/b/sec{
-	icon_state = "direction_sec";
-	dir = 1
+	dir = 1;
+	icon_state = "direction_sec"
 	},
 /turf/simulated/wall/metal,
 /area/burgerstation/hall/east)
 "xM" = (
 /obj/structure/sign/department/b/sec{
-	icon_state = "direction_sec";
-	dir = 1
+	dir = 1;
+	icon_state = "direction_sec"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
 "xN" = (
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 10
+	dir = 10;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating/reinforced,
 /area/burgerstation/armory/shooting_range)
@@ -6620,8 +6611,8 @@
 "yc" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
@@ -6629,8 +6620,8 @@
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/table/steel,
 /obj/decal/hazard/black{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
@@ -6649,8 +6640,8 @@
 "yh" = (
 /obj/marker/spawning/window/shuttle,
 /obj/shuttle_controller/debug{
-	icon_state = "shuttle";
-	dir = 8
+	dir = 8;
+	icon_state = "shuttle"
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/debug)
@@ -6682,8 +6673,8 @@
 "yo" = (
 /obj/structure/interactive/wire/yellow,
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering/solars/ne)
@@ -6692,15 +6683,15 @@
 /area/burgerstation/engineering/solars/ne)
 "yq" = (
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
+	dir = 1;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "yr" = (
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
+	dir = 1;
+	icon_state = "smes_map"
 	},
 /obj/structure/interactive/wire/red,
 /turf/simulated/floor/plating,
@@ -6747,8 +6738,8 @@
 /area/burgerstation/engineering/solars/se)
 "yC" = (
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 4
+	dir = 4;
+	icon_state = "smes_map"
 	},
 /obj/structure/interactive/wire/red,
 /turf/simulated/floor/plating,
@@ -6779,8 +6770,8 @@
 /area/burgerstation/engineering/solars/se)
 "yI" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/solars/ne)
@@ -6852,22 +6843,22 @@
 "yY" = (
 /obj/structure/interactive/wire/yellow,
 /obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
+	dir = 4;
+	icon_state = "preview"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering/solars/nw)
 "yZ" = (
 /obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 8
+	dir = 8;
+	icon_state = "apc"
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/solars/nw)
 "za" = (
 /obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
+	dir = 1;
+	icon_state = "smes_map"
 	},
 /obj/structure/interactive/wire/red,
 /turf/simulated/floor/plating,
@@ -7180,8 +7171,8 @@
 /area/burgerstation/hall/north)
 "Ag" = (
 /obj/structure/interactive/disposals/pipe/labeler/partial{
-	icon_state = "pipe-l";
 	dir = 8;
+	icon_state = "pipe-l";
 	sorting_tag_label_partial = "disposals"
 	},
 /obj/marker/map_node,
@@ -48113,7 +48104,7 @@ rP
 sS
 sS
 sS
-tI
+sS
 rO
 td
 td
@@ -49398,7 +49389,7 @@ hE
 vz
 vz
 vz
-vA
+vz
 vB
 tu
 sb
@@ -50927,7 +50918,7 @@ bE
 jq
 jV
 jq
-bE
+bM
 am
 xr
 pM
