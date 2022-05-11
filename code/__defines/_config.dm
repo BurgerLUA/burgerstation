@@ -32,6 +32,9 @@
 //Enables/disables turf/obj smoothing.
 #define ENABLE_SMOOTHING TRUE
 
+//Enable/disables combat testing by forcing a gamemode.
+#define ENABLE_TDM TRUE
+
 //Enables/disables turf generation
 #define ENABLE_GENERATION FALSE
 
