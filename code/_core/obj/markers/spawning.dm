@@ -120,16 +120,34 @@
 
 /obj/marker/spawning/random/do_spawn(var/turf/T)
 	if(!prob(chance_none))
-		var/atom/movable/M = pickweight(possible_objects)
-		if(isturf(M))
-			T.change_turf(M)
-		else
-			if(prob(10) && ispath(M,/obj/structure/table/) || ispath(M,/obj/structure/interactive/crate))
-				var/loot/L = LOOT(/loot/trash_pile)
-				L.do_spawn(T)
-			M = new M(T)
-			LATE_INIT(M)
+		var/datum/D = pickweight(possible_objects)
+		if(ispath(D,/turf/))
+			T.change_turf(D)
+		else if(ispath(D,/loot/))
+			var/loot/L = LOOT(D)
+			L.do_spawn(T)
+		else if(ispath(D,/atom/movable))
+			if(is_item(D))
+				var/obj/item/I = D
+				I = new I(T)
+				if(I.amount_max == 1 && I.amount > I.amount_max)
+					var/tried_amount = I.amount
+					I.amount = 1
+					for(var/i=1,i<=tried_amount,i++)
+						var/obj/item/I2 = new I.type(T)
+						I2.amount = 1
+						LATE_INIT(I2)
+				LATE_INIT(I)
+			else
+				var/atom/movable/A = D
+				A = new A(T)
+				LATE_INIT(A)
 
+/obj/marker/spawning/random/maintenance/do_spawn(var/turf/T)
+	var/datum/D = ..()
+	if((ispath(D,/obj/structure/table/) || ispath(D,/obj/structure/interactive/crate)) && prob(25))
+		var/loot/L = LOOT(/loot/trash_pile)
+		L.do_spawn(T)
 
 /obj/marker/spawning/random/maintenance
 	icon_state = "maint"
@@ -183,3 +201,31 @@
 		/obj/item/supply_crate/medicine = 20
 	)
 	chance_none = 75
+
+/obj/marker/spawning/random/vault_loot
+	name = "random vault loot"
+	icon_state = "vault"
+	possible_objects = list(
+		/loot/supply_crate/syndicate = 200,
+		/obj/item/supply_crate/syndicate{amount=3} = 100,
+		/obj/item/storage/kit/syndicate/filled = 50,
+		/obj/item/clothing/overwear/hardsuit/syndie = 30,
+		/obj/item/clothing/overwear/hardsuit/syndie/advanced = 30,
+		/obj/item/clothing/overwear/hardsuit/syndie/elite = 30
+	)
+
+/obj/marker/spawning/random/vault_loot/secure
+	name = "random secure vault loot"
+	icon_state = "vault_secure"
+	possible_objects = list(
+		/obj/item/currency/telecrystals{amount=50} = 100,
+		/obj/item/currency/gold_bar{amount=5} = 50,
+		/obj/item/currency/gold_coin{amount=500} = 50,
+		/obj/item/currency/dosh{amount=100} = 25,
+		/obj/item/coin/cursed{amount=5} = 25,
+		/obj/item/soulgem/mystic{amount=4} = 20,
+		/obj/item/clothing/back/storage/backpack/bluespace = 10,
+		/obj/item/clothing/belt/damage_deferal_shield = 10,
+		/obj/item/powercell/bluespace = 10,
+		/obj/item/tempering/luck/double = 5
+	)

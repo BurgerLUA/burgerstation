@@ -62,6 +62,7 @@
 	health = null
 
 /turf/simulated/wall/metal/reinforced/syndicate
+	icon = 'icons/turf/wall/metal/syndicate.dmi'
 	color = COLOR_IRON
 	reinforced_color = "#FF0000"
 
