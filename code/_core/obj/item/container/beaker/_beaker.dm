@@ -122,12 +122,6 @@
 	reagents.add_reagent(/reagent/phosphorous,40)
 	return ..()
 
-/obj/item/container/simple/beaker/flashbang_01/Generate()
-	reagents.add_reagent(/reagent/ammonia,20)
-	reagents.add_reagent(/reagent/nitrogen,40)
-	return ..()
-
-/obj/item/container/simple/beaker/flashbang_02/Generate()
-	reagents.add_reagent(/reagent/ammonia,20)
-	reagents.add_reagent(/reagent/fuel/hydrogen,40)
+/obj/item/container/simple/beaker/flashbang/Generate()
+	reagents.add_reagent(/reagent/fuel/flash_powder,reagents.volume_max)
 	return ..()

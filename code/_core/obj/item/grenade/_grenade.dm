@@ -309,13 +309,3 @@
 	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_01(src)
 	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_02(src)
 	return ..()
-
-/obj/item/grenade/timed/flashbang
-	name = "timed flashbang grenade"
-	desc = "Kab-"
-	desc_extended = "A prebuilt timed flashbang grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/flashbang/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/flashbang_01(src)
-	stored_containers += new /obj/item/container/simple/beaker/flashbang_02(src)
-	return ..()
