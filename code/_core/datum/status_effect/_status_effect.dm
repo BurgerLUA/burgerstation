@@ -225,7 +225,7 @@
 			owner.add_status_effect(STUN,stun_time,stun_time)
 			animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
-
+	play_sound('sound/weapons/fists/grab.ogg',get_turf(owner))
 
 /status_effect/staggered
 	name = "Staggered"
@@ -402,7 +402,7 @@
 
 	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
 
-
+	play_sound('sound/weapons/fists/grab.ogg',get_turf(owner))
 
 	. = ..()
 

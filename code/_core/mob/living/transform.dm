@@ -42,6 +42,7 @@
 			update_collisions(initial(collision_flags))
 		if(!buckled_object)
 			stun_angle *= pick(-1,1) //Alternate
+		handle_blocking()
 
 	var/desired_turn = get_turn()
 	if(force || turn != desired_turn)

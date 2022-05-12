@@ -381,6 +381,8 @@ var/global/list/all_damage_numbers = list()
 		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
 
 	var/block_multiplier = 0 //Different from damage_multiplier.
+	var/atom/block_atom = null
+
 	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
 		//Getting the damage
@@ -399,12 +401,11 @@ var/global/list/all_damage_numbers = list()
 				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
 		//Blocking
-		if(L.attack_flags & CONTROL_MOD_BLOCK && is_facing(L,attacker))
-			block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
-			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier,block_multiplier)
-		else
-			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier)
-
+		if(L.blocking)
+			var/list/block_data = L.get_block_data(attacker,weapon,hit_object,blamed,src)
+			if(block_data)
+				block_atom = block_data[1]
+				block_multiplier = block_data[2]
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 	var/list/damage_to_deal_main = list(
@@ -422,7 +423,8 @@ var/global/list/all_damage_numbers = list()
 	var/fatigue_damage = 0
 	var/pain_damage = 0
 
-	var/damage_blocked = 0
+	var/damage_blocked_with_armor = 0
+	var/damage_blocked_with_shield = 0
 	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
@@ -442,6 +444,7 @@ var/global/list/all_damage_numbers = list()
 			var/blocked_damage = block_multiplier * old_damage_amount
 			old_damage_amount -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
+			damage_blocked_with_shield += blocked_damage
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
@@ -462,7 +465,7 @@ var/global/list/all_damage_numbers = list()
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
-		damage_blocked += damage_to_block
+		damage_blocked_with_armor += damage_to_block
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 		if(damage_type_to_fatigue[damage_type])
 			var/fatigue_damage_to_convert = damage_to_block*damage_type_to_fatigue[damage_type]
@@ -602,18 +605,25 @@ var/global/list/all_damage_numbers = list()
 						final_experience += "[v] [k] xp"
 					A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(block_multiplier > 0)
+			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,block_atom,block_multiplier,damage_blocked_with_shield)
+		else
+			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
+
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (total_damage_dealt > 0 || damage_blocked > 0) && isturf(victim.loc))
+	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
 		var/turf/T = victim.loc
 		if(T)
 			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
 			var/obj/effect/damage_number/DN
 			if(length(all_damage_numbers) && all_damage_numbers[desired_id])
 				DN = all_damage_numbers[desired_id]
-				DN.add_value(total_damage_dealt,damage_blocked)
+				DN.add_value(total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
 			else
-				DN = new(T,total_damage_dealt,damage_blocked,desired_id)
+				DN = new(T,total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,desired_id)
 
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon

@@ -145,6 +145,7 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
+	var/block_sound //The sound made when this item blocks an attack.
 	var/list/block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.25,
 		ATTACK_TYPE_MELEE = 0.5,

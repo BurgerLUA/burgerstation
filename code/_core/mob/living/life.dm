@@ -64,7 +64,7 @@
 	if(master)
 		dust()
 	else if(!is_player_controlled() && soul_size && has_status_effect(SOULTRAP))
-		var/obj/effect/temp/soul/S = new(get_turf(src),SECONDS_TO_DECISECONDS(20))
+		var/obj/effect/temp/soul/S = new(T,SECONDS_TO_DECISECONDS(20))
 		S.appearance = src.appearance
 		S.transform = get_base_transform()
 		S.color = "#000000"
@@ -97,6 +97,9 @@
 	update_eyes()
 
 	handle_transform()
+
+	if(health && health.health_current <= -health.health_max*3 && health.health_max >= 100)
+		play_sound('sound/effects/impacts/superhit.ogg',T)
 
 	return TRUE
 
@@ -229,8 +232,6 @@
 		pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
 		if(old_pain_removal != pain_removal)
 			queue_health_update = TRUE
-
-	handle_blocking()
 
 	handle_health_buffer()
 

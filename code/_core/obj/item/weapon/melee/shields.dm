@@ -17,6 +17,8 @@
 
 	value = 100
 
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
+
 var/global/list/shield_price_mul = list(
 	ATTACK_TYPE_UNARMED = 0.75,
 	ATTACK_TYPE_MELEE = 0.5,
@@ -57,6 +59,8 @@ var/global/list/shield_price_mul = list(
 
 	value = 500
 
+	block_sound = 'sound/effects/impacts/shield_metal.ogg'
+
 /obj/item/weapon/melee/shield/glass
 	name = "magic glass shield"
 	icon = 'icons/obj/item/shields/glass.dmi'
@@ -67,6 +71,8 @@ var/global/list/shield_price_mul = list(
 		ATTACK_TYPE_RANGED = 0,
 		ATTACK_TYPE_MAGIC = 0.9
 	)
+
+	block_sound = 'sound/effects/impacts/shield_metal.ogg'
 
 	value = 800
 
@@ -102,6 +108,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(4,0,-4,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	block_sound = 'sound/effects/impacts/shield_metal.ogg'
+
 	value = 900
 
 /obj/item/weapon/melee/shield/heartstone
@@ -118,6 +126,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(5,0,-5,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
+
+	block_sound = 'sound/effects/impacts/shield_polymer.ogg'
 
 	value = 600
 
@@ -139,6 +149,8 @@ var/global/list/shield_price_mul = list(
 
 	dan_mode = TRUE
 
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
+
 	value = 600
 
 /obj/item/weapon/melee/shield/leather
@@ -155,6 +167,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(5,0,-5,0)
 	dan_offset_pixel_y = list(-1,-1,-1,-1)
+
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 200
 
@@ -173,6 +187,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	block_sound = 'sound/effects/impacts/shield_polymer.ogg'
+
 	value = 1200
 
 /obj/item/weapon/melee/shield/redstar
@@ -189,6 +205,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(5,0,-5,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
+
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 300
 
@@ -207,6 +225,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
+
 	value = 300
 
 /obj/item/weapon/melee/shield/sun
@@ -223,6 +243,8 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-1,-1,-1,-1)
+
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 400
 
@@ -241,6 +263,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
+	block_sound = 'sound/effects/impacts/shield_metal.ogg'
+
 	value = 300
 
 /obj/item/weapon/melee/shield/whitewood
@@ -257,5 +281,7 @@ var/global/list/shield_price_mul = list(
 	dan_mode = TRUE
 	dan_offset_pixel_x = list(6,0,-6,0)
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
+
+	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 400

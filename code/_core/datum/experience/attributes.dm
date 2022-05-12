@@ -34,15 +34,15 @@
 
 /experience/attribute/constitution/ //0% complete
 	//Leveled up by taking damage.
-	//Each time hit = 1xp
-	//level 100 is 10000xp
+	//Each point of damage taken = 1xp
+	//level 100 is 2 million xp.
 	name = "Constitution"
 	id = ATTRIBUTE_CONSTITUTION
 	desc = "Not the worst stat!"
 	desc_extended = "A measure of how resistant you are to this world. Affects resistances to all physical (blade, blunt, pierce) damage types."
 	flags = ATTRIBUTE_STAT
 	experience_power = 1.9
-	experience_multiplier = 0.8
+	experience_multiplier = 10.4
 
 /experience/attribute/vitality/ //100% complete
 	//Leveled by increasing Strength, Fortitude, and Constitution.

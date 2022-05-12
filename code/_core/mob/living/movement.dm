@@ -46,10 +46,17 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(intent == INTENT_HARM || attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
+	if(intent == INTENT_HARM || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..()
+
+/mob/living/set_dir(var/desired_dir,var/force=FALSE)
+
+	. = ..()
+
+	if(.)
+		handle_blocking(TRUE)
 
 /mob/living/post_move(var/atom/old_loc)
 
@@ -74,6 +81,8 @@
 				var/obj/item/wet_floor_sign/WFS = locate() in range(1,S)
 				if(!WFS || move_mod > 2)
 					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+		if(!isturf(loc))
+			handle_blocking()
 
 	climb_counter = 0
 
@@ -144,6 +153,9 @@
 	if(horizontal)
 		return walk_delay_mul*4
 
+	if(blocking)
+		return walk_delay_mul
+
 	. = ..()
 
 /mob/living/get_movement_delay(var/include_stance=TRUE)
@@ -211,7 +223,6 @@
 			return FALSE
 
 	. = ..()
-
 
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
 

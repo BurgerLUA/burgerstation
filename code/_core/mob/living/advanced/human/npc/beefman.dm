@@ -17,7 +17,7 @@
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/soulgem/rare,
+		/obj/item/soulgem/rare
 	)
 
 	has_hard_crit = FALSE

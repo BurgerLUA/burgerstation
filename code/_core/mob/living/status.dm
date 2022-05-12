@@ -67,6 +67,7 @@
 	if(.)
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
 		handle_transform()
+		//handle_blocking is not needed here as it is in handle_transform()
 
 /mob/living/proc/remove_status_effect(var/status_type,var/check_horizontal=TRUE)
 	if(!has_status_effect(status_type))

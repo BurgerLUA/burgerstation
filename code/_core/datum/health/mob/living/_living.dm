@@ -150,7 +150,10 @@
 		if(fatigue && (L.ai || !L.has_status_effect(STAMCRIT)))
 			. += -adjust_stamina(-fatigue)
 			if(stamina_current <= 0)
-				L.add_status_effect(STAMCRIT,-1,-1)
+				if(L.has_status_effect(STAGGER))
+					L.add_status_effect(STAMCRIT,-1,-1)
+				else
+					L.add_status_effect(STAGGER,10,10)
 		if(mental)
 			. += -adjust_mana(-mental)
 		fatigue = 0

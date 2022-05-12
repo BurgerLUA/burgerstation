@@ -3,10 +3,6 @@
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
-
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		FATIGUE = 0
@@ -61,10 +57,6 @@
 	attack_verbs = list("grab slam")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -226,10 +218,6 @@
 /damagetype/cqc/boss/disarm_theft
 	attack_verbs = list("stunning punch")
 
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
-
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -288,10 +276,6 @@
 
 /damagetype/cqc/boss/tactical_hug
 	attack_verbs = list("tactical hug")
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
