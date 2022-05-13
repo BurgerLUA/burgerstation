@@ -57,8 +57,8 @@
 	attachment_barrel_offset_x = 32
 	attachment_barrel_offset_y = 0
 
-	attachment_sight_offset_x = 7 - 16
-	attachment_sight_offset_y = 17 - 16
+	attachment_sight_offset_x = 6
+	attachment_sight_offset_y = 2
 
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 14 - 16
@@ -90,6 +90,11 @@
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
+
+	attachment_barrel = new /obj/item/attachment/barrel/sniper_20(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)
 
 	. = ..()
 
