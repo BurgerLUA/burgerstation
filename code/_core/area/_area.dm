@@ -4,7 +4,6 @@
 	icon_state = ""
 	layer = LAYER_AREA
 	plane = PLANE_AREA //This should never be changed. Just use interior=TRUE
-	invisibility = 101
 	alpha = 150
 
 	mouse_opacity = 0
@@ -33,8 +32,6 @@
 	var/cheese_type = /reagent/nutrition/cheese/
 
 	var/turf/destruction_turf //The destruction turf of the area, if any.
-
-	var/list/turf/sunlight_turfs = list()
 
 	var/safe_storage = FALSE //Set to true if items don't ever delete due to chunk cleaning. This means mobs don't get spawned as well.
 	var/interior = FALSE
@@ -74,9 +71,6 @@
 
 /area/Destroy()
 
-	if(sunlight_turfs)
-		sunlight_turfs.Cut()
-
 	SSarea.all_areas -= src.type
 	SSarea.areas_by_identifier[area_identifier] -= src
 
@@ -102,12 +96,58 @@
 		powered_lights = list()
 		light_switches = list()
 
-	if(interior)
+	if(interior || src.weather)
 		plane = PLANE_AREA_INTERIOR
 	else
 		plane = PLANE_AREA_EXTERIOR
 
+	if(sunlight_freq > 1) //Odd sunlight freqs greater than 1 must be even.
+		sunlight_freq = CEILING(sunlight_freq,2)
+
+var/global/list/possible_dirty_floor = list(
+	/obj/effect/cleanable/tile_rot = 100,
+	/obj/effect/cleanable/blood/dried_random = 20,
+	/obj/effect/cleanable/blood/splatter/grease = 10,
+	/obj/effect/cleanable/scorch = 5,
+	/obj/effect/cleanable/cobweb = 10
+)
+
+var/global/list/possible_dirty_wall = list(
+	/obj/effect/cleanable/rust = 100
+)
+
+var/global/list/possible_trash = list(
+	/obj/item/trash/random = 100
+)
+
+/area/Generate()
+	. = ..()
+	if(flags_area & FLAG_AREA_DIRTY)
+		for(var/turf/simulated/S in src.contents)
+			var/obj/structure/table/window/W = locate() in S.contents
+			if(W) continue
+			if(prob(80))
+				var/obj/effect/E
+				if(S.density)
+					E = pickweight(possible_dirty_wall)
+				else
+					E = pickweight(possible_dirty_floor)
+				E = new E(S)
+			if(!S.density && prob(30))
+				var/obj/item/I = pickweight(possible_trash)
+				I = new I(S)
+
+
+
 /area/Initialize()
+
+	SSarea.all_areas[src.type] = src
+	if(src.area_identifier)
+		if(!SSarea.areas_by_identifier[src.area_identifier])
+			SSarea.areas_by_identifier[src.area_identifier] = list()
+		SSarea.areas_by_identifier[src.area_identifier] += src
+
+	. = ..()
 
 	if(plane == PLANE_AREA_EXTERIOR)
 		icon = 'icons/area/area.dmi'
@@ -117,6 +157,28 @@
 		invisibility = 101
 
 	alpha = 255
+
+	if(length(src.random_sounds))
+		SSarea.areas_ambient += src
+
+	if(ENABLE_WEATHERGEN && src.weather)
+		src.invisibility = 0
+		src.alpha = 0
+		switch(src.weather)
+			if(WEATHER_SNOW)
+				SSarea.areas_snow += src
+			if(WEATHER_RAIN)
+				SSarea.areas_rain += src
+			if(WEATHER_SANDSTORM)
+				SSarea.areas_sandstorm += src
+			if(WEATHER_VOLCANIC)
+				SSarea.areas_volcanic += src
+
+/area/Finalize()
+	. = ..()
+	generate_average()
+
+/area/proc/generate_average()
 
 	var/area_count = 0
 	average_x = 0
@@ -135,24 +197,26 @@
 		average_x = CEILING(average_x/area_count,1)
 		average_y = CEILING(average_y/area_count,1)
 
-	return ..()
+	return TRUE
 
 /area/proc/setup_sunlight(var/turf/T)
 
-	if(sunlight_freq == 0)
+	if(sunlight_freq <= 0)
 		return FALSE
-
-	if(T.desired_light_power && T.desired_light_range)
-		return FALSE //Already has a light.
 
 	if(T.setup_turf_light(sunlight_freq))
 		return TRUE
 
-	if((T.x % sunlight_freq) || (T.y % sunlight_freq))
-		return FALSE
+	if(sunlight_freq > 1)
+		if(T.x % sunlight_freq)
+			return FALSE
+		var/bonus = !(T.x % (sunlight_freq*2)) && sunlight_freq > 1 ? sunlight_freq*0.5 : 0
+		T.name = "[T.x].[T.y]: [bonus]."
+		if((T.y+bonus) % sunlight_freq)
+			return FALSE
 
 	T.desired_light_power = 1
-	T.desired_light_range = sunlight_freq
+	T.desired_light_range = 1 + sunlight_freq
 	T.desired_light_color = sunlight_color
 	T.update_atom_light()
 
@@ -179,7 +243,7 @@
 	//Machines
 	//Lights
 
-	//Getting Power
+	//Getting power.
 	var/available_charge = 0
 	var/max_charge = 1
 	if(apc && apc.cell)
@@ -189,8 +253,8 @@
 	//Doors
 	if(enable_power_doors & AUTO)
 		if(available_charge/max_charge >= 0.1)
-			toggle_power_doors(ON|AUTO)
-		else
+			if(!(enable_power_doors & ON)) toggle_power_doors(ON|AUTO)
+		else if(!(enable_power_doors & OFF))
 			toggle_power_doors(OFF|AUTO)
 	else if(available_charge <= 0 && !(enable_power_doors & OFF))
 		toggle_power_doors(OFF|AUTO)
@@ -198,16 +262,17 @@
 	//Machines
 	if(enable_power_machines & AUTO)
 		if(available_charge/max_charge >= 0.2)
-			toggle_power_machines(ON|AUTO)
-		else
-			toggle_power_doors(OFF|AUTO)
+			if(!(enable_power_machines & ON)) toggle_power_machines(ON|AUTO)
+		else if(!(enable_power_machines & OFF))
+			toggle_power_machines(OFF|AUTO)
 	else if(available_charge <= 0 && !(enable_power_machines & OFF))
 		toggle_power_machines(OFF|AUTO)
 
+	//Lights
 	if(enable_power_lights & AUTO)
 		if(available_charge/max_charge >= 0.3)
-			toggle_power_lights(ON|AUTO)
-		else
+			if(!(enable_power_lights & ON)) toggle_power_lights(ON|AUTO)
+		else if(!(enable_power_lights & OFF))
 			toggle_power_lights(OFF|AUTO)
 	else if(available_charge <= 0 && !(enable_power_lights & OFF))
 		toggle_power_lights(OFF|AUTO)
@@ -223,6 +288,9 @@
 
 	if(!requires_power)
 		CRASH("Called toggle_power_doors on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
 
 	enable_power_doors = enable
 
@@ -247,6 +315,9 @@
 	if(!requires_power)
 		CRASH("Called toggle_power_machines on an [src.type] that doesn't require power.")
 
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
+
 	enable_power_machines = enable
 
 	for(var/k in powered_machines)
@@ -268,6 +339,9 @@
 
 	if(!requires_power)
 		CRASH("Called toggle_power_lights on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
 
 	enable_power_lights = enable
 

@@ -24,12 +24,12 @@
 		/obj/item/magazine/pistol_50,
 		/obj/item/magazine/pistol_50,
 
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana,
-		/obj/item/magazine/smg_9mm_banana
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/magazine/smg_9mm
 
 	)

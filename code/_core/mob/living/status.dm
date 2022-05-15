@@ -1,6 +1,16 @@
-/mob/living/proc/add_status_effect(var/status_type,var/magnitude=100,var/duration=-1,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+/mob/living/proc/add_status_effect(var/status_type,var/magnitude,var/duration,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
 
-	PROCESS_LIVING(src)
+	var/status_effect/S = SSstatus.all_status_effects[status_type]
+	if(!S)
+		CRASH_SAFE("Invalid status effect added! ([status_type])")
+		return FALSE
+	. = FALSE
+
+	if(!isnum(magnitude))
+		magnitude = S.default_magnitude
+
+	if(!isnum(duration))
+		duration = S.default_duration
 
 	//Check immunities first.
 	if(!force && length(status_immune) && status_immune[status_type])
@@ -16,18 +26,20 @@
 			if(duration != -1)
 				duration = duration*0.5
 
-	var/status_effect/S = SSstatus.all_status_effects[status_type]
-	if(!S)
-		CRASH_SAFE("Invalid status effect added! ([status_type])")
-		return FALSE
-	. = FALSE
-
 	if(!S.can_add_status_effect(source,src))
 		return FALSE
+
+	if(!force)
+		if(magnitude != -1)
+			magnitude = S.modify_magnitude(source,src,magnitude,force)
+		if(duration != -1)
+			duration = S.modify_duration(source,src,duration)
 
 	if(!status_effects[status_type])
 		status_effects[status_type] = list()
 		. = TRUE
+
+	PROCESS_LIVING(src)
 
 	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
 		status_effects[status_type]["duration"] = duration
@@ -54,7 +66,8 @@
 
 	if(.)
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
-		handle_horizontal()
+		handle_transform()
+		//handle_blocking is not needed here as it is in handle_transform()
 
 /mob/living/proc/remove_status_effect(var/status_type,var/check_horizontal=TRUE)
 	if(!has_status_effect(status_type))
@@ -66,12 +79,12 @@
 	S.on_effect_removed(src,status_type,status_effects[status_type]["magnitude"],status_effects[status_type]["duration"])
 	status_effects -= status_type
 	if(check_horizontal)
-		handle_horizontal()
+		handle_transform()
 
 /mob/living/proc/remove_all_status_effects()
 	for(var/status in status_effects)
 		remove_status_effect(status,FALSE)
-	handle_horizontal()
+	handle_transform()
 
 /mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
 
@@ -100,9 +113,3 @@
 		if(src.status_effects[status_type])
 			return TRUE
 	return FALSE
-
-/mob/living/proc/get_status_effect_duration(var/status_type)
-	return status_effects[status_type] ? status_effects[status_type]["duration"] : 0
-
-/mob/living/proc/get_status_effect_magnitude(var/status_type)
-	return status_effects[status_type] ? status_effects[status_type]["magnitude"] : 0

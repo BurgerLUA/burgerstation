@@ -163,7 +163,6 @@
 		if(5)
 			L.to_chat(span("danger","Oh no I hope I don't-"))
 			L.death(TRUE)
-			L.health?.update_health()
 		if(6)
 			L.to_chat(span("danger","I'M ON FIRE!"))
 			L.ignite(60)

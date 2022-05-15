@@ -71,7 +71,7 @@
 
 	min = 0
 	max = current_boss.health.health_max
-	current = max - current_boss.health.get_total_loss()
+	current = current_boss.health.health_current
 	update_sprite()
 
 	return TRUE

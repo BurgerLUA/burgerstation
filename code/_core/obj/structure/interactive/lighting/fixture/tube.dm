@@ -60,3 +60,10 @@
 /obj/structure/interactive/lighting/fixture/tube/station/stronger
 	desired_light_power = 0.75
 	desired_light_range = VIEW_RANGE
+
+
+
+/obj/structure/interactive/lighting/fixture/tube/fluorescent
+	desired_light_power = 1
+	color = COLOR_LIGHT_STRANGE
+	color_frame = COLOR_GREY

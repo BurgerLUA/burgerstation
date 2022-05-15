@@ -51,7 +51,7 @@
 
 
 //Inventory
-/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
+/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	show_inventory(!draw_inventory,show_flags_whitelist,show_flags_blacklist,speed)
 
 /mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
@@ -61,6 +61,6 @@
 		if(I.flags & show_flags_whitelist && !(I.flags & show_flags_blacklist))
 			I.show(show,speed)
 
-/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
+/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
 	. = ..()
 	show_inventory(show,show_flags_whitelist,show_flags_blacklist,speed)

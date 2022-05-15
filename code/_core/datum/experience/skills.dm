@@ -35,13 +35,13 @@
 	experience_multiplier = 43
 
 /experience/skill/block/ //FORTITUDE
-	//Each time you block = 1xp
-	//Must block 7600 times.
+	//Each point of damage blocked = 1xp
+	//Level 100 is 1 million xp.
 	name = "Block"
 	id = SKILL_BLOCK
 	desc = "Your skill in blocking attacks with a weapon or a shield. Affects the chance of a successful block of swords, bucklers, or even your fists."
 	experience_power = 1.6
-	experience_multiplier = 1.3
+	experience_multiplier = 28
 
 /experience/skill/armor/ //???
 	//Each point of damage blocked by armor = 1xp

@@ -44,7 +44,8 @@
 		/obj/item/attachment/sight/scope = TRUE,
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16

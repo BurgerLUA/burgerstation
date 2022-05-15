@@ -5,7 +5,16 @@
 	var/maximum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 	var/minimum = -1 //Maximium time, in deciseconds, that someone can have this effect. Set to -1 to ignore.
 
+	var/default_magnitude = 100
+	var/default_duration = -1
+
 	var/affects_dead = TRUE
+
+/status_effect/proc/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	return duration
+
+/status_effect/proc/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	return magnitude
 
 /status_effect/proc/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
 
@@ -32,8 +41,9 @@
 	name = "Soul Trap"
 	desc = "You've been soul trapped!"
 	id = SOULTRAP
-	minimum = 10
-	maximum = 600
+	minimum = SECONDS_TO_DECISECONDS(4)
+	maximum = SECONDS_TO_DECISECONDS(60)
+	default_duration = SECONDS_TO_DECISECONDS(30)
 
 	affects_dead = FALSE
 
@@ -42,50 +52,98 @@
 	if(victim.is_player_controlled())
 		return FALSE
 
-	return ..()
+	. = ..()
 
 
 /status_effect/stun
 	name = "Stunned"
 	desc = "You're stunned!"
 	id = STUN
-	minimum = 5
-	maximum = 40
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(4)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
+
+/status_effect/stun/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	if(owner.stun_immunity > 0)
+		duration *= 0.25
+	return duration
+
+/status_effect/stun/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	if(owner.stun_immunity > 0)
+		magnitude *= 0.25
+	return magnitude
 
 /status_effect/stun/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	owner.remove_status_effect(STAGGER)
 	owner.remove_status_effect(PARRIED)
 	owner.remove_status_effect(SHOVED)
-
+	if(duration > 0 && magnitude > 0)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
 
 
 /status_effect/sleeping
 	name = "Sleeping"
 	desc = "You're sleeping!"
 	id = SLEEP
-	minimum = 30
-	maximum = 600
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(60)
+	default_duration = -1
 
 	affects_dead = FALSE
+
+/status_effect/sleeping/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(duration > 0 && magnitude > 0)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
+
+/status_effect/sleeping/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	if(owner.stun_immunity > 0)
+		duration *= 0.25
+	return duration
+
+/status_effect/sleeping/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	if(owner.stun_immunity > 0)
+		magnitude *= 0.25
+	return magnitude
 
 /status_effect/paralyzed
 	name = "Paralyzed"
 	desc = "You're paralyzed!"
 	id = PARALYZE
-	minimum = 10
-	maximum = 80
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(30)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 
-/status_effect/fire
+/status_effect/paralyzed/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+	if(owner.stun_immunity > 0)
+		duration *= 0.25
+	return duration
+
+/status_effect/paralyzed/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+	if(owner.stun_immunity > 0)
+		magnitude *= 0.25
+	return magnitude
+
+/status_effect/paralyzed/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+	. = ..()
+	if(duration > 0 && magnitude > 0)
+		owner.stun_immunity = max(owner.stun_immunity,owner.stun_immunity + duration*1.25 + SECONDS_TO_DECISECONDS(1))
+
+/status_effect/fire //This is entirely cosmetic.
 	name = "Fire"
 	desc = "You're on fire!"
 	id = FIRE
 	minimum = 0
 	maximum = 300
+
+	minimum = SECONDS_TO_DECISECONDS(5)
+	maximum = SECONDS_TO_DECISECONDS(5)
+	default_duration = SECONDS_TO_DECISECONDS(5)
 
 /status_effect/fire/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
@@ -100,8 +158,9 @@
 	name = "Parried"
 	desc = "You're parried!"
 	id = PARRIED
-	minimum = 1
-	maximum = 10
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(4)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 
@@ -136,8 +195,9 @@
 	name = "Shoved"
 	desc = "You're shoved!"
 	id = SHOVED
-	minimum = 1
-	maximum = 10
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(4)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 
@@ -165,15 +225,15 @@
 			owner.add_status_effect(STUN,stun_time,stun_time)
 			animate(owner,pixel_x = 0, pixel_y = 0,time = max(0,stun_time - 1))
 
-
+	play_sound('sound/weapons/fists/grab.ogg',get_turf(owner))
 
 /status_effect/staggered
 	name = "Staggered"
 	desc = "You're staggered!"
 	id = STAGGER
-	minimum = 1
-	maximum = 10
-
+	minimum = SECONDS_TO_DECISECONDS(0.25)
+	maximum = SECONDS_TO_DECISECONDS(1)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 	affects_dead = FALSE
 
 /status_effect/staggered/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
@@ -191,8 +251,9 @@
 	name = "Slipped"
 	desc = "You slipped!"
 	id = SLIP
-	minimum = 1
-	maximum = 100
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(4)
+	default_duration = SECONDS_TO_DECISECONDS(1)
 
 	affects_dead = FALSE
 
@@ -209,8 +270,9 @@
 	name = "Confused"
 	desc = "You're confused!"
 	id = CONFUSED
-	minimum = 10
-	maximum = 100
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(30)
+	default_duration = SECONDS_TO_DECISECONDS(10)
 
 	affects_dead = FALSE
 
@@ -218,6 +280,9 @@
 	name = "Critical"
 	desc = "You're in critical condition!"
 	id = CRIT
+
+	default_magnitude = 100
+	default_duration = -1
 
 	affects_dead = FALSE
 
@@ -230,6 +295,9 @@
 	desc = "You're in pain!"
 	id = PAINCRIT
 
+	default_magnitude = 100
+	default_duration = -1
+
 	affects_dead = FALSE
 
 /status_effect/paincrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
@@ -240,8 +308,9 @@
 	name = "Stamcrit"
 	desc = "You're too tired!"
 	id = STAMCRIT
-	minimum = 10
-	maximum = 30
+
+	default_magnitude = 100
+	default_duration = -1
 
 	affects_dead = FALSE
 
@@ -254,12 +323,14 @@
 	name = "Adrenaline"
 	desc = "You're filled with adrenaline!"
 	id = ADRENALINE
-	minimum = 100 // 10 seconds
-	maximum = 3 * 60 * 10 //5 minutes.
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(30)
 
 /status_effect/adrenaline/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	if(owner.health) owner.health.update_health(check_death=FALSE)
+	owner.queue_health_update = TRUE
 	owner.remove_status_effect(STAMCRIT)
 	owner.stamina_regen_delay = 0
 
@@ -267,17 +338,23 @@
 	name = "Undying"
 	desc = "You refuse to die!"
 	id = UNDYING
-	minimum = 10 //1 mecond.
-	maximum = 60 * 10 //1 minute.
+
+	minimum = -1
+	maximum = -1
+	default_duration = -1
 
 /status_effect/undying/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	if(owner.health) owner.health.update_health(check_death=FALSE)
+	owner.queue_health_update = TRUE
 
 /status_effect/resting
 	name = "Resting"
 	desc = "You're resting!"
 	id = REST
+
+	minimum = -1
+	maximum = -1
+	default_duration = -1
 
 	affects_dead = FALSE
 
@@ -285,8 +362,9 @@
 	name = "Disarmed"
 	desc = "You're disarmed!"
 	id = DISARM
-	minimum = 10
-	maximum = 10
+	minimum = 0
+	maximum = 0
+	default_duration = 0
 
 /status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
@@ -308,6 +386,7 @@
 	id = GRAB
 	minimum = 0
 	maximum = 0
+	default_duration = 0
 
 /status_effect/grab/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
@@ -323,7 +402,7 @@
 
 	owner.add_status_effect(PARALYZE,10,10,source = source,stealthy = TRUE)
 
-
+	play_sound('sound/weapons/fists/grab.ogg',get_turf(owner))
 
 	. = ..()
 
@@ -331,8 +410,10 @@
 	name = "Druggy"
 	desc = "You're druggy!"
 	id = DRUGGY
-	minimum = 100
-	maximum = 3000
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(60)
 
 	affects_dead = FALSE
 
@@ -361,8 +442,10 @@
 	name = "Stressed"
 	desc = "You're stressed!"
 	id = STRESSED
-	minimum = 10
-	maximum = 30
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(60)
 
 	affects_dead = FALSE
 
@@ -388,8 +471,10 @@
 	name = "Painkiller"
 	desc = "You're under the influence of painkillers!"
 	id = PAINKILLER
-	minimum = 10
-	maximum = 600
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(60)
 
 	affects_dead = TRUE
 
@@ -397,8 +482,9 @@
 	name = "Mana Void"
 	desc = "You've been mana voided!"
 	id = MANAVOID
-	minimum = 10
-	maximum = 100
+	minimum = 0
+	maximum = 0
+	default_duration = 0
 
 /status_effect/mana_void/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	owner.mana_regen_buffer = -1000
@@ -410,15 +496,19 @@
 	name = "Slowed"
 	desc = "You've been slowed!"
 	id = SLOW
-	minimum = 10
-	maximum = 300
+
+	minimum = SECONDS_TO_DECISECONDS(4)
+	maximum = SECONDS_TO_DECISECONDS(30)
+	default_duration = SECONDS_TO_DECISECONDS(10)
 
 /status_effect/consencrated
 	name = "Consencrated"
 	desc = "You've been consencrated!"
 	id = CONSECRATED
-	minimum = 50
-	maximum = 600
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(60)
 
 
 /status_effect/consencrated/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
@@ -446,8 +536,10 @@
 	name = "Cursed"
 	desc = "You've been cursed!"
 	id = CURSED
-	minimum = 50
-	maximum = 600
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(60)
 
 /status_effect/cursed/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
 
@@ -476,8 +568,10 @@
 	name = "Blighted"
 	desc = "You've been blighted!"
 	id = BLIGHTED
-	minimum = 50
-	maximum = 600
+
+	minimum = SECONDS_TO_DECISECONDS(10)
+	maximum = SECONDS_TO_DECISECONDS(300)
+	default_duration = SECONDS_TO_DECISECONDS(60)
 
 /status_effect/blighted/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
@@ -497,3 +591,7 @@
 	id = IMMORTAL
 
 	affects_dead = TRUE
+
+	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = SECONDS_TO_DECISECONDS(10)
+	default_duration = -1

@@ -1,5 +1,4 @@
 /damagetype/npc/slime
-	name = "slime touch"
 	attack_verbs = list("blob","pounce","absorb","slime")
 
 

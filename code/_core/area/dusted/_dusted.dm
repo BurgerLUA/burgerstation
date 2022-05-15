@@ -1,7 +1,7 @@
 /area/dusted
 	trackable = TRUE
 	area_identifier = "Virtual Reality"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION
 
 	sunlight_freq = 4
 	sunlight_color = "#C1AA7C"

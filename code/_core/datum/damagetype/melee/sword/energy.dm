@@ -1,5 +1,4 @@
 /damagetype/melee/sword/energy
-	name = "inactive energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -34,7 +33,6 @@
 
 
 /damagetype/melee/sword/energy/on
-	name = "energy sword"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

@@ -4,7 +4,6 @@
 	desc = "An organ."
 	icon_state = BODY_LEG_RIGHT
 	worn_layer = LAYER_MOB_LEGS
-	break_threshold = 25
 
 	attach_flag = BODY_GROIN
 
@@ -249,6 +248,25 @@
 
 /obj/item/organ/leg/golem/left
 	name = "left golem leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
+
+
+/obj/item/organ/leg/abductor
+	name = "right abductor leg"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+
+/obj/item/organ/leg/abductor/left
+	name = "left abductor leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
 

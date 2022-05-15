@@ -67,7 +67,7 @@
 	tracked_movables[O] = world.time + 4
 
 	if(!think_timer)
-		start_thinking(src)
+		START_THINKING(src)
 
 	think_timer = 10
 
@@ -110,7 +110,7 @@
 
 	if(is_living(M))
 		var/mob/living/L = M
-		if(!L.dead || L.ckey)
+		if(!L.dead || L.ckey_last)
 			return TRUE
 
 	return FALSE

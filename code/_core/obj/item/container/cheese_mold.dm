@@ -59,7 +59,7 @@
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE
 	cheese_mix.Cut()
-	stop_thinking(src)
+	STOP_THINKING(src)
 
 	return TRUE
 
@@ -110,7 +110,7 @@
 			allow_reagent_transfer_from = FALSE
 			var/turf/T = get_turf(src)
 			T.visible_message(span("notice","The milk starts to curdle!"))
-			start_thinking(src)
+			START_THINKING(src)
 
 	return ..()
 

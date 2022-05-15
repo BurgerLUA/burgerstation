@@ -108,12 +108,12 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/weapon/melee/energy/sword/green,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre,
-		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308,
+		/obj/item/magazine/sniper_308,
+		/obj/item/magazine/sniper_308,
+		/obj/item/magazine/sniper_308,
+		/obj/item/magazine/sniper_308,
 		/obj/item/magazine/pistol_12mm,
 		/obj/item/magazine/pistol_12mm,
-		/obj/item/grenade/fuse/fragmentation,
 		/obj/item/grenade/fuse/fragmentation,
 		/obj/item/grenade/fuse/fragmentation
 	)

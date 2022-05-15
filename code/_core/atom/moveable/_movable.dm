@@ -14,8 +14,8 @@
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
 	var/tmp/next_move = 0 //How long until you can move again, in ticks.
 
-	var/momentum_speed = 0 //Tiles per second. Maximum 10.
-	var/momentum_dir = 0x0
+	// var/momentum_speed = 0 //Tiles per second. Maximum 10.
+	// var/momentum_dir = 0x0
 
 	var/size = SIZE_0
 
@@ -39,8 +39,6 @@
 	var/throwable = TRUE
 
 	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
-
-	var/blocks_air = 0x0
 
 	var/acceleration_value = 0 //No touch.
 
@@ -67,8 +65,6 @@
 	var/enable_chunk_clean = FALSE
 
 /atom/movable/Destroy()
-	if(corner_category)
-		queue_update_edges(get_turf(src))
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
@@ -111,7 +107,7 @@
 	light_sprite_sources = list()
 	return ..()
 
-/atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
+/atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/force = FALSE)
 
 	. = FALSE
 
@@ -126,20 +122,6 @@
 	if(isnum(c_dir) && (force || collision_dir != c_dir))
 		collision_dir = c_dir
 		. = TRUE
-
-	if(isnum(a_dir) && (force || a_dir != blocks_air))
-		var/turf/simulated/T = get_turf(src)
-		if(T && is_simulated(T))
-			T.blocks_air &= ~blocks_air
-			T.blocks_air |= a_dir
-			QUEUE_AIR_TURF(T)
-		blocks_air = a_dir
-		. = TRUE
-	else if(force)
-		var/turf/simulated/T = get_turf(src)
-		T.blocks_air |= blocks_air
-		if(T && is_simulated(T))
-			QUEUE_AIR_TURF(T)
 
 /atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
 
@@ -156,12 +138,6 @@
 		return FALSE
 
 	return TRUE
-
-/atom/movable/Finalize()
-	. = ..()
-	if(blocks_air && is_simulated(loc))
-		var/turf/simulated/T = loc
-		T.blocks_air |= blocks_air
 
 /atom/movable/Finalize()
 	set_anchored(anchored,TRUE)

@@ -1,5 +1,4 @@
 /damagetype/melee/sword/chainsaw
-	name = "chainsaw"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -28,7 +27,6 @@
 	attack_delay_max = 20
 
 /damagetype/melee/sword/chainsaw/on
-	name = "chainsaw"
 
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

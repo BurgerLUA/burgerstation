@@ -1,5 +1,4 @@
 /damagetype/ranged/bullet/honey
-	name = ".300 CCA subsonic rifle bullet"
 
 	stealthy = TRUE
 

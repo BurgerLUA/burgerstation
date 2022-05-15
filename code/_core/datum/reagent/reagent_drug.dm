@@ -85,6 +85,23 @@
 
 	particle_size = 0.4
 
+/reagent/drug/supermatter
+	name = "supermatter dust"
+	desc = "Dust harvested directly from a supermatter. Neat."
+	color = "#FFFA7C"
+	alpha = 255
+
+	flavor = "cheese"
+
+	strength = 500
+	duration_mod = 15
+
+	value = 12
+
+	liquid = -0.6
+
+	particle_size = 0.4
+
 
 /reagent/drug/lithium
 	name = "lithium"

@@ -122,7 +122,7 @@
 	opened_time = 0
 	icon_state = "opened"
 	check_collisions()
-	start_thinking(src)
+	START_THINKING(src)
 	return TRUE
 
 /obj/structure/interactive/bed/sleeper/proc/on_close(var/mob/caller)
@@ -145,7 +145,7 @@
 	door_state = SLEEPER_CLOSING
 	flick("closing",src)
 	CALLBACK("on_close_\ref[src]",close_time,src,.proc/on_close,caller)
-	stop_thinking(src)
+	STOP_THINKING(src)
 
 /obj/structure/interactive/bed/sleeper/think()
 

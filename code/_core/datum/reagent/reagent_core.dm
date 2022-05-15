@@ -49,10 +49,10 @@
 
 	overdose_threshold = 40
 
-/reagent/iron/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty) //What happens when this reagent is hit by an explosive.
+/reagent/iron/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 	var/volume_amount = container.remove_reagent(src.type,container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
 	var/shrapnel_amount = min(20,CEILING(volume_amount/3,1))
-	container.owner.shoot_projectile(owner,epicenter,null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.5,shrapnel_amount,"#FFFFFF",0,0,1,null,desired_loyalty,0,1)
+	container.owner.shoot_projectile(owner,epicenter,null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.5,shrapnel_amount,"#FFFFFF",0,0,1,null,desired_loyalty_tag,0,1)
 
 
 /reagent/iron/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)

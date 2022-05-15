@@ -15,7 +15,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg') //Need a fire sound that only lasts 0.5 seconds.
+	shoot_sounds = list('sound/weapons/223/sentry.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

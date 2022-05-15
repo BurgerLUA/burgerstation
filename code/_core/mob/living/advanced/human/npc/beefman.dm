@@ -17,7 +17,7 @@
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
-		/obj/item/soulgem/rare,
+		/obj/item/soulgem/rare
 	)
 
 	has_hard_crit = FALSE
@@ -40,8 +40,8 @@
 /mob/living/advanced/npc/beefman/proc/beef()
 	if(!health)
 		return FALSE
-	var/brute_to_remove = health.get_loss(BRUTE)*0.5
-	var/burn_to_remove = health.get_loss(BURN)*0.5
+	var/brute_to_remove = health.damage[BRUTE]*0.5
+	var/burn_to_remove = health.damage[BURN]*0.5
 	if(health.health_current + brute_to_remove + burn_to_remove <= 0)
 		return FALSE
 	health.adjust_loss_smart(brute=-brute_to_remove,burn=-burn_to_remove)

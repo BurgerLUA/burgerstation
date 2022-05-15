@@ -6,7 +6,7 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 		var/obj/hud/button/message/M = k
 		if(desired_text && M.owner)
 			var/area/A = get_area(M.owner)
-			if(!A || (A.flags_area & FLAGS_AREA_NO_ROUND_INFORMATION))
+			if(!A || (A.flags_area & FLAG_AREA_NO_ROUND_INFORMATION))
 				M.set_text(null,instant)
 				continue
 		M.set_text(desired_text,instant)
@@ -19,7 +19,7 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	icon_state = "invisible"
 	screen_loc = "CENTER,TOP"
 
-	flags = FLAGS_HUD_MOB | FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
 
 	maptext_x = -(TILE_SIZE*VIEW_RANGE) + 16
 	maptext_width = TILE_SIZE*VIEW_RANGE*2

@@ -2,9 +2,24 @@
 	src.do_emote("deathgasp")
 	return TRUE
 
-/mob/living/advanced/should_be_horizontal()
+/mob/living/advanced/get_horizontal()
 	if(!(labeled_organs[BODY_FOOT_RIGHT] || labeled_organs[BODY_FOOT_LEFT]))
 		return TRUE
+	. = ..()
+
+/mob/living/advanced/on_life()
+
+	if(health && length(queue_organ_health_update))
+		for(var/k in queue_organ_health_update)
+			var/obj/item/organ/O = k
+			if(!labeled_organs[O.id])
+				continue
+			if(!O.health)
+				continue
+			O.health.update_health()
+		queue_organ_health_update.Cut()
+		queue_health_update = TRUE //If organs were updated, then the main body should be updated (which is done below in the . = ..())
+
 	. = ..()
 
 /mob/living/advanced/on_life_slow()
@@ -16,7 +31,7 @@
 		handle_mood()
 
 /mob/living/advanced/proc/handle_mood()
-	var/target_mood = (200 * 0.5 + get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod()) - (health ? health.get_loss(PAIN) * max(0,1-get_attribute_power(ATTRIBUTE_ENDURANCE)) : 0 )
+	var/target_mood = (200 * 0.5 + get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod()) - (health ? (health.damage[PAIN] * max(0,1-get_attribute_power(ATTRIBUTE_ENDURANCE))) - pain_removal : 0 )
 	target_mood = FLOOR(target_mood,1)
 	if(mood == null) //Exactly null
 		mood = target_mood
@@ -40,17 +55,50 @@
 
 	. = ..()
 
+/mob/living/advanced/rejuvenate()
+
+	. = ..()
+
+	var/list/missing_organs = list()
+	for(var/k in TARGETABLE_LIMBS)
+		if(!labeled_organs[k])
+			missing_organs |= k
+
+	if(length(missing_organs))
+		var/species/S = SPECIES(species)
+		if(S)
+			var/found_skin_color = S.default_color_skin
+			var/found_detail_color = S.default_color_detail
+			var/found_glow_color = S.default_color_glow
+			var/obj/item/organ/OT = labeled_organs[BODY_TORSO]
+			if(OT)
+				if(OT.additional_blends["skin"]) found_skin_color = OT.additional_blends["skin"].color
+				if(OT.additional_blends["skin_detail"]) found_detail_color = OT.additional_blends["skin_detail"].color
+				if(OT.additional_blends["skin_glow"]) found_glow_color = OT.additional_blends["skin_glow"].color
+			var/list/organset_to_use = sex == FEMALE && length(S.spawning_organs_female) ? S.spawning_organs_female : S.spawning_organs_male
+			if(length(organset_to_use))
+				for(var/k in missing_organs)
+					var/obj/item/organ/O = add_organ(organset_to_use[k])
+					if(O.enable_skin && O.additional_blends["skin"])
+						O.add_blend("skin",desired_color = found_skin_color)
+					if(O.enable_detail && O.additional_blends["skin_detail"])
+						O.add_blend("skin_detail",desired_color = found_detail_color)
+					if(O.enable_glow && O.additional_blends["skin_glow"])
+						O.add_blend("skin_glow",desired_color = found_glow_color)
+
+/mob/living/advanced/proc/can_be_revived()
+
+	for(var/k in TARGETABLE_LIMBS)
+		if(!labeled_organs[k])
+			return FALSE
+
+	return TRUE
+
+
 mob/living/advanced/revive()
 
-	var/species/S = SPECIES(species)
-	if(!S)
+	if(!can_be_revived())
 		return FALSE
-	if(sex == FEMALE)
-		if(length(S.spawning_organs_female) > length(labeled_organs))
-			return FALSE
-	else
-		if(length(S.spawning_organs_male) > length(labeled_organs))
-			return FALSE
 
 	. = ..()
 
@@ -82,6 +130,12 @@ var/global/list/spread_icons = list(
 
 /mob/living/advanced/handle_mouse_pointer()
 
+	. = ..()
+
+	if(!.)
+		current_mouse_spread = 0
+		return .
+
 	var/desired_spread = -1
 
 	var/obj/item/weapon/ranged/R = right_item
@@ -93,21 +147,25 @@ var/global/list/spread_icons = list(
 	if(istype(L))
 		desired_spread = max(0,desired_spread,L.heat_current)
 
-	if(desired_spread >= 0)
-		desired_spread *= 75 //Entirely arbitrary.
-		desired_spread = clamp(1+CEILING(desired_spread,1),0,length(spread_icons))
-		if(client.mouse_pointer_icon != spread_icons[desired_spread])
-			set_mouse_pointer(spread_icons[desired_spread])
-		return TRUE
+	desired_spread *= 75 //Entirely arbitrary.
+	var/difference = abs(desired_spread - current_mouse_spread)
 
-	. = ..()
+	if(difference <= 2)
+		current_mouse_spread = desired_spread
+	else
+		if(desired_spread > current_mouse_spread)
+			current_mouse_spread += 2
+		else if(desired_spread < current_mouse_spread)
+			current_mouse_spread -= 2
 
-	if(!.)
-		return .
-
-	var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
-	if(client.mouse_pointer_icon != icon_to_use)
-		set_mouse_pointer(icon_to_use)
+	if(current_mouse_spread > -1)
+		var/final_mouse_spread = clamp(1+CEILING(current_mouse_spread,1),0,length(spread_icons))
+		if(client.mouse_pointer_icon != spread_icons[final_mouse_spread])
+			set_mouse_pointer(spread_icons[final_mouse_spread])
+	else
+		var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
+		if(client.mouse_pointer_icon != icon_to_use)
+			set_mouse_pointer(icon_to_use)
 
 
 

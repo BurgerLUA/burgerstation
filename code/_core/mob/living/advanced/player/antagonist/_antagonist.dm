@@ -48,7 +48,7 @@
 
 	. = ..()
 
-	if(client) //Sometimes antags go afk.
+	if(added_xp > 0 && client) //Don't give rewards to afk players.
 		var/savedata/client/globals/GD = GLOBALDATA(client.ckey)
 		if(!GD) return FALSE
 		if(!GD.loaded_data["stored_experience"])
@@ -59,7 +59,7 @@
 
 	. = ..()
 
-	if(currency_to_add > 0 && client)
+	if(currency_to_add > 0 && client) //Don't give rewards to afk players.
 		var/savedata/client/globals/GD = GLOBALDATA(client.ckey)
 		if(GD) GD.loaded_data["stored_currency"] += currency_to_add
 

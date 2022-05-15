@@ -340,7 +340,8 @@ var/global/zombie_seed = 0
 		/obj/item/clothing/underbottom/underwear/panty,
 		/obj/item/clothing/undertop/underwear/bra,
 		/obj/item/clothing/feet/shoes/colored,
-		/obj/item/clothing/feet/shoes/colored/left
+		/obj/item/clothing/feet/shoes/colored/left,
+		/obj/item/storage/wallet/random_colonist
 	)
 	possible_shirt = list(
 		/obj/item/clothing/shirt/normal = 8,
@@ -359,18 +360,20 @@ var/global/zombie_seed = 0
 
 /loadout/zombie/civilian/get_spawning_items()
 
-	. = ..()
+	. = list()
+
+	if(length(possible_socks))
+		var/chosen_sock = pickweight(possible_socks)
+		. += chosen_sock
+		. += chosen_sock
+
+	. += ..()
 
 	if(length(possible_shirt))
 		. += pickweight(possible_shirt)
 
 	if(length(possible_pants))
 		. += pickweight(possible_pants)
-
-	if(length(possible_socks))
-		var/chosen_sock = pickweight(possible_socks)
-		. += chosen_sock
-		. += chosen_sock
 
 /loadout/zombie/civilian/post_add(var/mob/living/advanced/A,var/list/added_items = list())
 	. = ..()

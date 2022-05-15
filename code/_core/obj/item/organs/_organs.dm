@@ -5,6 +5,7 @@
 
 	icon = 'icons/mob/living/advanced/species/human.dmi'
 	icon_state = null
+
 	var/has_dropped_icon = FALSE
 	var/has_dropped_icon_underlay = FALSE
 	var/gib_icon_state = null
@@ -12,8 +13,6 @@
 	var/damage_icon = 'icons/mob/living/advanced/overlays/damage/organic.dmi'
 
 	var/flags_organ = FLAG_ORGAN_NONE
-
-	var/break_threshold = 0 //0 Means it doesn't break. Other values means it breaks.
 
 	var/attach_flag //The organ type that it wishes to attach to. Use FLAG_ORGAN_ flags.
 	var/obj/item/organ/attached_organ //The organ that it is attached to.
@@ -23,6 +22,7 @@
 
 	no_held_draw = TRUE
 
+	var/enable_overlay = TRUE
 	var/enable_skin = TRUE
 	var/enable_glow = FALSE
 	var/enable_detail = FALSE
@@ -72,6 +72,9 @@
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
 
+	var/can_be_broken = TRUE
+	var/broken = FALSE
+	var/broken_name //Null basically means generate.
 
 
 /obj/item/organ/get_top_object()
@@ -98,10 +101,10 @@
 	attached_organs = list()
 
 /obj/item/organ/Destroy()
-	color = "#000000"
+	color = "#FF00FF"
 	attached_organ = null
 	attached_organs?.Cut()
-	return ..()
+	. = ..()
 
 /obj/item/organ/get_base_transform()
 	. = ..()
@@ -138,9 +141,11 @@
 /obj/item/organ/proc/get_defense_rating()
 	return defense_rating
 
-/obj/item/organ/proc/send_pain(var/pain_amount=50)
+/obj/item/organ/proc/send_pain_response(var/pain_amount=50)
+	if(!has_pain)
+		return FALSE
 	var/mob/living/advanced/A = loc
-	if(!A.send_pain(pain_amount))
+	if(!A.send_pain_response(pain_amount))
 		return FALSE
 	on_pain()
 	for(var/k in attached_organs)
@@ -155,37 +160,60 @@
 	if(is_inventory(old_loc) || is_inventory(loc) || is_advanced(old_loc) || is_advanced(loc))
 		update_sprite()
 
+
+/obj/item/organ/proc/break_bone(var/play_sound=TRUE,var/display_mesage=TRUE)
+	if(!health || !can_be_broken || broken)
+		return FALSE
+	if(!broken_name)
+		broken_name = "[src.name]"
+	if(play_sound) play_sound('sound/effects/bone_crack.ogg',get_turf(src))
+	broken = TRUE
+	if(display_mesage && is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
+		A.visible_message(span("warning","\The [A.name]\s [broken_name] breaks!"),span("danger","Your [broken_name] breaks!"))
+	src.health.adjust_loss_smart(pain=health.health_max*0.25)
+	return TRUE
+
+/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+	. = ..()
+	if(. && is_advanced(loc))
+		var/mob/living/advanced/A = loc
+		A.update_overlay_tracked("\ref[src]")
+
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
-	if(is_advanced(loc))
+	if(health && is_advanced(loc))
 		var/mob/living/advanced/A = loc
-		if(health && A.blood_type)
-			var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
-			if(total_bleed_damage>0)
-				var/bleed_to_add = total_bleed_damage/50
-				src.bleeding += bleed_to_add
-		if(has_pain && atom_damaged == src && ((src.health && src.health.health_current <= 0) || critical_hit_multiplier > 1))
-			if(!A.dead)
-				send_pain(damage_amount)
-		if(!A.boss && health && health.health_max <= damage_amount && A.health.health_current <= 0 && !(A.override_butcher || length(A.butcher_contents)))
-			var/gib_chance = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[BLUNT])
-			if(A.dead)
-				gib_chance -= length(attached_organs)*10 //No cheesing torso.
-				if(gib_chance > 0) gib_chance += min(0,health.health_current)*0.5 //More damage means more of a chance to gib.
-			else
-				gib_chance -= length(attached_organs)*30 //No cheesing torso.
-			if(gib_chance > 0 && prob(gib_chance))
-				if(is_player(A))
-					var/mob/living/advanced/player/P = A
-					if(P.dead && is_player(attacker)) //Only gib if the player is dead
-						var/mob/living/advanced/player/P2 = attacker
-						if(P2.client) //and the person gibbing is an active player
-							gib()
-						//Otherwise, don't gib.
+		if(A.health && !A.has_status_effect(IMMORTAL))
+			if(broken)
+				health.adjust_loss_smart(pain=damage_amount*0.25)
+			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
+				break_bone()
+			if(A.blood_type)
+				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+				if(total_bleed_damage>0)
+					var/bleed_to_add = total_bleed_damage/50
+					src.bleeding += bleed_to_add
+			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
+				src.send_pain_response(damage_amount)
+			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
+				var/gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
+				if(A.dead)
+					gib_chance -= length(attached_organs)*10 //No cheesing torso.
 				else
-					gib()
+					gib_chance -= length(attached_organs)*30 //No cheesing torso.
+				if(gib_chance > 0) gib_chance += min(0,-health.health_current)*0.5*(gib_chance/100) //More damage means more of a chance to gib.
+				if(gib_chance > 0 && prob(gib_chance))
+					if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
+						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
+							var/mob/living/LA = attacker
+							if(LA.client) //And the person doing the gibbing is an active player.
+								gib()
+							//Otherwise, don't gib.
+					else
+						gib()
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)
@@ -220,8 +248,6 @@
 		if(!A.has_status_effect(ZOMBIE))
 			A.death()
 			A.make_unrevivable()
-			if(A.client)
-				A.client.make_ghost(T ? T : locate(128,128,1))
 		if(!A.dead)
 			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
 		if(A.blood_type)
@@ -284,6 +310,8 @@
 	if(T)
 		for(var/k in inventories)
 			var/obj/hud/inventory/I = k
+			if(I.ultra_persistant)
+				continue
 			var/list/dropped_objects = I.drop_objects(T)
 			for(var/j in dropped_objects)
 				var/obj/item/O = j
@@ -296,8 +324,8 @@
 	if(T)
 		if(is_advanced(src.loc))
 			var/mob/living/advanced/A = src.loc
-			A.remove_organ(src,FALSE)
-		if(do_delete)
+			A.remove_organ(src,do_delete)
+		else if(do_delete)
 			qdel(src)
 			return TRUE
 		else
@@ -334,11 +362,11 @@
 	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.handle_horizontal()
+	old_owner.handle_transform()
 	return TRUE
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
-	new_owner.handle_horizontal()
+	new_owner.handle_transform()
 	return TRUE
 
 obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
@@ -347,6 +375,8 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		return list()
 
 	var/list/damage_desc = list()
+
+	var/mob/living/advanced/A = src.loc
 
 	switch(health.damage[BRUTE])
 		if(5 to 15)
@@ -368,7 +398,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(50 to INFINITY)
 			damage_desc += "<u><b>charred</b></u>"
 
-	switch(health.damage[PAIN])
+	switch(health.damage[PAIN] - (istype(A) ? A.pain_removal : 0))
 		if(5 to 15)
 			damage_desc += "<i>tender<i/>"
 		if(15 to 25)
@@ -404,11 +434,16 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 				damage_desc += "<u><b>gushing blood</b></u>"
 			else
 				damage_desc += "<u><b>gushing fluid</b></u>"
+
+	if(broken)
+		damage_desc += "<u><b>broken</b></u>"
+
+
 	return damage_desc
 
 
-/obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	. = ..()
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)

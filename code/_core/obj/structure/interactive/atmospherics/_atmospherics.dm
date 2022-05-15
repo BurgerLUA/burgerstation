@@ -64,5 +64,3 @@ obj/structure/interactive/atmospherics/fan
 	icon_state = "fan_tiny"
 
 	plane = PLANE_FLOOR
-
-	blocks_air = NORTH | EAST | SOUTH | WEST

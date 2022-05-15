@@ -14,7 +14,7 @@
 
 	shoot_sounds = list('sound/weapons/12gauge/shoot.ogg')
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_4
 	weight = 16

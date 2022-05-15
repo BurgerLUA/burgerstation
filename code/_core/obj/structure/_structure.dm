@@ -15,7 +15,7 @@
 
 	can_rotate = TRUE
 
-	var/flags_placement = FLAGS_PLACEMENT_NONE
+	var/flags_placement = FLAG_PLACEMENT_NONE
 	var/list/structure_blacklist = list() //Things that can't be constructed on the same turf that's occupying this.
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL
@@ -23,6 +23,14 @@
 	var/material_id = /material/steel
 	var/reinforced_material_id = null
 	var/reinforced_color = "#FFFFFF"
+
+	var/corner_icons = FALSE
+	var/corner_category = "none"
+
+/obj/structure/Destroy()
+	if(corner_icons && SSsmoothing.initialized)
+		SSsmoothing.queue_update_edges(get_turf(src),FALSE)
+	. = ..()
 
 /obj/structure/update_overlays()
 
@@ -62,7 +70,11 @@
 		set_light(desired_light_range,desired_light_power,desired_light_color)
 
 /obj/structure/Finalize()
-	if(corner_icons) SSsmoothing.queued_smoothing += src
+	if(corner_icons)
+		if(SSsmoothing.initialized)
+			SSsmoothing.queue_update_edges(get_turf(src))
+		else
+			SSsmoothing.queued_smoothing |= src
 	. = ..()
 
 
@@ -131,7 +143,7 @@
 
 /obj/structure/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
 		return FALSE
 	return ..()
 
@@ -142,7 +154,7 @@
 
 	for(var/d in DIRECTIONS_ALL)
 		var/dir_to_text = "[d]"
-		calc_list[dir_to_text] = FALSE
+		calc_list[dir_to_text] = FALSE //Default
 		var/turf/T = get_step(src,d)
 		if(!T)
 			continue

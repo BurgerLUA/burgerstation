@@ -17,7 +17,7 @@
 
 	item_bypass = list()
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
@@ -42,3 +42,5 @@
 	priority = 1000
 
 	item_whitelist = list(/obj/item/contract)
+
+	ultra_persistant = TRUE

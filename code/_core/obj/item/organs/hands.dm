@@ -10,7 +10,6 @@
 		/obj/hud/inventory/organs/ring/nw,
 		/obj/hud/inventory/organs/ring/sw
 	)
-	break_threshold = 15
 
 	damage_type = null
 
@@ -67,9 +66,6 @@
 
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim)
 
-	if(damage_type) //Override
-		return damage_type
-
 	if(is_living(attacker))
 		var/mob/living/L = attacker
 		if(L.attack_flags & CONTROL_MOD_KICK)
@@ -78,15 +74,19 @@
 			if(INTENT_HARM)
 				var/trait/unarmed/U = L.get_trait_by_category(/trait/unarmed/)
 				if(U) return U.damage_type
-				return /damagetype/unarmed/fists/
+				. = /damagetype/unarmed/fists/
 			if(INTENT_DISARM)
-				return /damagetype/unarmed/fists/disarm
+				. = /damagetype/unarmed/fists/disarm
 			if(INTENT_HELP)
-				return /damagetype/unarmed/fists/help
+				. = /damagetype/unarmed/fists/help
 			if(INTENT_GRAB)
-				return /damagetype/unarmed/fists/grab
+				. = /damagetype/unarmed/fists/grab
 
-	. = ..()
+	if(!.)
+		. = ..()
+
+	if(. == /damagetype/unarmed/fists/ && damage_type) //Overridden
+		return damage_type
 
 /obj/item/organ/hand/left
 	name = "left hand"
@@ -114,12 +114,6 @@
 /obj/item/organ/hand/reptile
 	name = "right reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = REPTILE_ARMOR
 
@@ -148,12 +142,6 @@
 /obj/item/organ/hand/reptile_advanced
 	name = "right advanced reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = REPTILE_ARMOR
 
@@ -183,12 +171,6 @@
 /obj/item/organ/hand/diona
 	name = "right diona hand"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	enable_glow = TRUE
 	enable_detail = TRUE
@@ -222,12 +204,6 @@
 /obj/item/organ/hand/cyborg
 	name = "right cyborg hand"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = CYBORG_ARMOR
 	health = /health/obj/item/organ/synthetic
@@ -258,12 +234,6 @@
 /obj/item/organ/hand/beefman
 	name = "right beef hand"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 	damage_type = /damagetype/unarmed/beef/
 
 	defense_rating = MEATMEN_ARMOR
@@ -325,12 +295,6 @@
 /obj/item/organ/hand/skeleton
 	name = "right skeleton hand"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = SKELETON_ARMOR
 
@@ -362,12 +326,6 @@
 /obj/item/organ/hand/monkey
 	name = "right monkey hand"
 	icon = 'icons/mob/living/advanced/species/monkey.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/monkey/left
 	name = "left monkey hand"
@@ -396,28 +354,28 @@
 //Zombie
 /obj/item/organ/hand/zombie
 	name = "right zombie hand"
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
 
-	if(is_advanced(attacker))
-		var/mob/living/advanced/A = attacker
-		if(A.horizontal)
-			var/obj/hud/inventory/I = A.inventories_by_id[src.id]
-			if(I && !I.grabbed_object)
-				return /damagetype/unarmed/fists/grab
+	var/mob/living/advanced/A = attacker
+	var/obj/hud/inventory/I = A.inventories_by_id[src.id]
+
+	if(A.horizontal) //Always grab when horizontal.
+		if(I && !I.grabbed_object)
+			return /damagetype/unarmed/fists/grab
 
 	var/list/possible_damage_types = list(
-		/damagetype/unarmed/claw = 6,
-		/damagetype/unarmed/bite = 2,
-		/damagetype/unarmed/fists/grab = 2,
-		/damagetype/unarmed/fists/disarm = 1
+		/damagetype/unarmed/claw = 6
 	)
+
+	if(!I.grabbed_object)
+		possible_damage_types[/damagetype/unarmed/fists/disarm] = 1
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 2
+	else if(I.grab_level >= 2)
+		possible_damage_types[/damagetype/unarmed/bite] = 100
+	else
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 4
+
 	return pickweight(possible_damage_types)
 
 /obj/item/organ/hand/zombie/left
@@ -446,12 +404,6 @@
 /obj/item/organ/hand/goblin
 	name = "right goblin hand"
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 	defense_rating = GOBLIN_ARMOR
 
@@ -480,12 +432,6 @@
 /obj/item/organ/hand/moth
 	name = "right moth hand"
 	icon = 'icons/mob/living/advanced/species/moth.dmi'
-	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
-		/obj/hud/inventory/organs/ring/ne,
-		/obj/hud/inventory/organs/ring/se
-	)
 
 /obj/item/organ/hand/moth/left
 	name = "left moth hand"
@@ -515,15 +461,37 @@
 /obj/item/organ/hand/golem
 	name = "right golem hand"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
+
+/obj/item/organ/hand/golem/left
+	name = "left golem hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
 	inventories = list(
-		/obj/hud/inventory/organs/right_hand_worn,
-		/obj/hud/inventory/organs/right_hand_held,
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held,
 		/obj/hud/inventory/organs/ring/ne,
 		/obj/hud/inventory/organs/ring/se
 	)
 
-/obj/item/organ/hand/golem/left
-	name = "left golem hand"
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+
+
+//Abductor
+/obj/item/organ/hand/abductor
+	name = "right abductor hand"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+/obj/item/organ/hand/abductor/left
+	name = "left abductor hand"
 	id = BODY_HAND_LEFT
 	icon_state = BODY_HAND_LEFT
 	inventories = list(

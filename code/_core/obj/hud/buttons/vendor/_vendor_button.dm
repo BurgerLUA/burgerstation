@@ -7,7 +7,7 @@
 	icon_state = "vendor_base"
 	screen_loc = "CENTER,CENTER"
 
-	flags = FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_SPECIAL
 
 	user_colors = TRUE
 
@@ -121,7 +121,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 

@@ -94,12 +94,10 @@
 		icon_state = LIGHTING_DARKNESS_ICON_STATE
 		color = null
 		alpha = 255
-	/* Can't get this to work. Don't know why but it's inaccurate, somehow.
 	else if(ALL_EQUAL)
 		icon_state = LIGHTING_TRANSPARENT_ICON_STATE
-		color = rgb(ca.cache_r,ca.cache_g,ca.cache_b)
-		alpha = 255 - ca.cache_mx*255
-	*/
+		color = rgb(cr.cache_r*255,cg.cache_g*255,cb.cache_b*255)
+		alpha = 255
 	else
 		icon_state = LIGHTING_BASE_ICON_STATE
 		if (islist(color))

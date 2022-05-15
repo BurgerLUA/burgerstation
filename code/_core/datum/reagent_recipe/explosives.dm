@@ -1,5 +1,5 @@
 /reagent_recipe/explosion/
-	category = "Chemistry"
+	category = "Explosives"
 	results = list()
 
 /reagent_recipe/explosion/water_potassium
@@ -32,49 +32,24 @@
 
 	return TRUE
 
-/reagent_recipe/explosion/smoke
-	name = "Smoke"
-	category = "Explosions"
+/reagent_recipe/explosion/potassium_perchlorate
+	name = "Potassium Perchlorate"
 	required_reagents = list(
-		/reagent/nutrition/sugar = 1,
-		/reagent/phosphorous = 1,
-		/reagent/potassium = 1
+		/reagent/potassium = 1,
+		/reagent/chlorine = 1,
+		/reagent/fuel/oxygen = 1
 	)
 
-	results = list()
-
-/reagent_recipe/explosion/smoke/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
-	var/turf/smoke_location = get_turf(container.owner)
-	smoke(smoke_location,magnitude*1.2,max(40,magnitude*7.5),container,caller)
-	return TRUE
-
-
-/reagent_recipe/explosion/flashbang
-	name = "Flashbang"
-	category = "Explosions"
-	required_reagents = list(
-		/reagent/ammonia = 1,
-		/reagent/nitrogen = 1,
-		/reagent/fuel/hydrogen = 1
+	results = list(
+		/reagent/fuel/potassium_perchlorate = 3,
 	)
 
-	results = list()
-
-/reagent_recipe/explosion/flashbang/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
-
-	var/turf/T = get_turf(container.owner)
-
-	var/flash_range = min(2,magnitude/40)*VIEW_RANGE
-
-	var/list/hearers = list()
-	for(var/mob/living/L in view(flash_range,T))
-		var/sound_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
-		var/duration = SECONDS_TO_DECISECONDS(10)*sound_mod
-		L.flash(duration)
-		L.bang(duration*2)
-		hearers += L
-
-	play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=flash_range*0.5,range_max=flash_range*2,channel=SOUND_CHANNEL_FLASHBANG)
-	play_sound_global('sound/effects/flashring.ogg',hearers=hearers,volume=75,channel=SOUND_CHANNEL_FLASHBANG)
-
-	return TRUE
+/reagent_recipe/explosion/flash_powder
+	name = "Aluminium Flash Powder"
+	required_reagents = list(
+		/reagent/fuel/potassium_perchlorate = 1,
+		/reagent/aluminium = 1
+	)
+	results = list(
+		/reagent/fuel/flash_powder = 3,
+	)

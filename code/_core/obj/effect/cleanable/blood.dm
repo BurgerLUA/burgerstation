@@ -17,6 +17,16 @@
 
 	density = FALSE
 
+/obj/effect/cleanable/blood/proc/dry()
+	blood_level = -1
+	color = blend_colors(color,"#2B2400",0.75)
+	return TRUE
+
+/obj/effect/cleanable/blood/dried_random/Generate()
+	icon_state = pick(icon_states(icon))
+	dry()
+	. = ..()
+
 /obj/effect/cleanable/blood/New(var/desired_location,var/desired_color)
 
 	if(desired_color) color = desired_color
@@ -62,10 +72,8 @@
 	icon_state = "splatter_1"
 	blood_level = 10
 
-/obj/effect/cleanable/blood/splatter/grease //Used for a meme and not in game.
+/obj/effect/cleanable/blood/splatter/grease
 	color = "#955746"
-	plane = PLANE_OBJ
-	layer = 9999
 
 /obj/effect/cleanable/blood/splatter/New(var/desired_location,var/desired_color,var/desired_x,var/desired_y)
 	icon_state = "splatter_[rand(1,12)]"
@@ -113,7 +121,7 @@
 	var/flesh_color = "#FFFFFF"
 
 /obj/effect/cleanable/blood/body_gib/update_overlays()
-
+	. = ..()
 	var/image/I = new/image(icon,"[icon_state]_flesh")
 	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	I.color = flesh_color

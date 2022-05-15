@@ -46,7 +46,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/magic/spellblade/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/magic/spellblade/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
 	if(get_dist(caller,object) <= 1)
 		return FALSE

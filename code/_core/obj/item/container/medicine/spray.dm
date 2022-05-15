@@ -44,9 +44,6 @@
 
 	if(istype(object,/obj/item/container/healing))
 		var/obj/item/container/healing/M = object
-		if(M.robotic)
-			caller.to_chat(span("warning","\The [M.name] cannot be infused!"))
-			return TRUE
 		var/reagent_transfer = min(5,reagents.volume_current)
 		if(reagent_transfer <= 0)
 			caller.to_chat(span("warning","\The [src.name] is empty!"))

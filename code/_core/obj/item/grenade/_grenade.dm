@@ -71,7 +71,7 @@
 
 	src.click_self(caller)
 	src.drop_item(get_turf(L),silent=TRUE)
-	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_loyalty = L.loyalty_tag)
+	src.throw_self(L,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_loyalty_tag = L.loyalty_tag)
 
 	return TRUE
 
@@ -79,37 +79,17 @@
 	. = ..()
 	SAVEVAR("open")
 	SAVEVAR("spent")
+	SAVEATOM("stored_trigger")
+	SAVELISTATOM("stored_containers")
 
 /obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("open")
 	LOADVAR("spent")
+	LOADATOM("stored_trigger")
+	LOADLISTATOM("stored_containers")
 
-/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-
-	. = ..()
-
-	if(stored_trigger) .["stored_trigger"] = stored_trigger.save_item_data(P,save_inventory,died)
-
-	if(length(stored_containers))
-		.["stored_containers"] = list()
-		for(var/k in stored_containers)
-			var/obj/item/container/simple/beaker/B = k
-			.["stored_containers"] += list(B.save_item_data(P,save_inventory,died))
-
-
-/obj/item/grenade/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-
-	. = ..()
-
-	if(object_data["stored_trigger"]) stored_trigger = load_and_create(P,object_data["stored_trigger"],src)
-
-	if(length(object_data["stored_containers"]))
-		for(var/k in object_data["stored_containers"])
-			stored_containers += load_and_create(P,k,src)
-
-
-/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(alpha == 0) //Already gone.
 		return FALSE
@@ -328,14 +308,4 @@
 /obj/item/grenade/timed/lube_smoke/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_01(src)
 	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_02(src)
-	return ..()
-
-/obj/item/grenade/timed/flashbang
-	name = "timed flashbang grenade"
-	desc = "Kab-"
-	desc_extended = "A prebuilt timed flashbang grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/flashbang/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/flashbang_01(src)
-	stored_containers += new /obj/item/container/simple/beaker/flashbang_02(src)
 	return ..()

@@ -39,7 +39,7 @@
 
 	var/click_flags
 
-	var/flags = FLAGS_HUD_INVENTORY
+	var/flags = FLAG_HUD_INVENTORY
 
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 
@@ -73,6 +73,8 @@
 
 	var/grab_level = 1 //Passive grab
 	var/grab_time //Cooldown on upgrading grab
+
+	var/ultra_persistant = FALSE //Saves even after death (but of course, removes the previous instance if unrevivable.)
 
 /obj/hud/inventory/Destroy()
 
@@ -482,13 +484,13 @@
 	return TRUE
 	*/
 
-/obj/hud/inventory/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/hud/inventory/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	. = ..()
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 

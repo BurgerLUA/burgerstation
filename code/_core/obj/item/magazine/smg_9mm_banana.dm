@@ -1,4 +1,4 @@
-/obj/item/magazine/smg_9mm_banana
+/obj/item/magazine/smg_9mm
 	name = "\improper 9x19mm banana magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
@@ -28,6 +28,6 @@
 	value = 10
 
 
-/obj/item/magazine/smg_9mm_banana/update_icon()
+/obj/item/magazine/smg_9mm/update_icon()
 	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"
 	return ..()

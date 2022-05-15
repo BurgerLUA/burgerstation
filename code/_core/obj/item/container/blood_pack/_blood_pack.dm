@@ -75,7 +75,7 @@
 	else
 		T.visible_message(span("notice","\The [src.name] detaches itself from \the [attached_to.name]."))
 	attached_to = null
-	stop_thinking(src)
+	STOP_THINKING(src)
 	update_sprite()
 	return TRUE
 
@@ -84,7 +84,7 @@
 	var/turf/T = get_turf(src)
 	attached_to = target
 	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."),span("notice","You attach \the [src.name] to \the [attached_to.name]."))
-	start_thinking(src)
+	START_THINKING(src)
 	update_sprite()
 	return TRUE
 

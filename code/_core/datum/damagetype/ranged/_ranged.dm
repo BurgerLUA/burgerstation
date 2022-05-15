@@ -1,5 +1,4 @@
 /damagetype/ranged/
-	name = "ranged weapon"
 
 	draw_blood = TRUE
 

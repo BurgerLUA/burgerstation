@@ -34,7 +34,7 @@
 	var/nutrition_fast = 0
 	var/hydration = 1000
 	var/hydration_max = 1000
-	var/nutrition_quality = 1000 //0 to 2000. 2000 means super health, 0 means absolutely fucking obese unfit and all that.
+	var/nutrition_quality = 1000 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that.
 	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
@@ -97,11 +97,13 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
-	var/list/obj/hud/screen_blood/screen_blood
-
 	var/allow_experience_gains = FALSE
 
 	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
+	var/grabbed = FALSE //Read only value to check if the mob is grabbed.
+
+	var/elevation = 0
+	var/turn = 0
 
 	health = /health/mob/living/
 
@@ -128,6 +130,8 @@
 	var/image/medical_hud_image
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
+
+	var/obj/effect/water_mask
 
 	var/has_footsteps = TRUE
 
@@ -217,8 +221,8 @@
 		"help"
 	)
 
-	var/tabled = FALSE
-	var/currently_tabled = FALSE
+	var/on_table = FALSE
+	var/on_liquid = FALSE
 
 	density = TRUE
 
@@ -257,8 +261,14 @@
 
 	var/next_heartbeat = 0
 
-	var/list/health_icons_to_update = list()
+	var/list/stat_elements = list() //Assoc list.
+	var/list/stat_buttons_to_update = list()
 
+	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
+
+	var/pain_removal = 0 //How much damage to ignore due to pain killers. Calculated every second.
+
+	var/gibbed = FALSE //Returns true if the cause of death was a gib.
 
 /mob/living/Destroy()
 
@@ -290,9 +300,6 @@
 
 	QDEL_NULL(ai)
 
-	if(screen_blood)
-		QDEL_CUT(screen_blood)
-
 	hit_logs?.Cut()
 
 	SSliving.all_living -= src
@@ -316,6 +323,7 @@
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
 	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(water_mask)
 
 	QDEL_NULL(flash_overlay)
 
@@ -328,6 +336,8 @@
 
 	status_effects?.Cut()
 
+	stat_buttons_to_update?.Cut()
+
 	QDEL_NULL(stand)
 
 	return ..()
@@ -338,7 +348,7 @@
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_EVENTS)
+	if(A.flags_area & FLAG_AREA_NO_EVENTS)
 		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
 		return FALSE
 
@@ -419,12 +429,21 @@
 	gib(TRUE)
 
 /mob/living/gib(var/hard=FALSE)
-	if(blood_type)
-		var/reagent/R = REAGENT(blood_type)
-		var/turf/T = get_turf(src)
-		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
-	. = ..()
+	if(qdeleting)
+		return FALSE
+	if(gibbed)
+		return FALSE
+	gibbed = TRUE
+	if(death(TRUE))
+		if(blood_type)
+			var/reagent/R = REAGENT(blood_type)
+			var/turf/T = get_turf(src)
+			for(var/i=1,i<=9,i++)
+				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+		qdel(src)
+		return TRUE
+	gibbed = FALSE //Hacky, but it works.
+	return FALSE
 
 /mob/living/on_fall(var/turf/old_loc)
 	. = ..()
@@ -454,6 +473,8 @@
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
 
+	render_target = "\ref[src]"
+
 	blood_volume_max = blood_volume
 
 	if(desired_level_multiplier > 0)
@@ -470,52 +491,63 @@
 		medical_hud_image.loc = src
 		medical_hud_image.layer = PLANE_AUGMENTED
 		medical_hud_image.pixel_y = 4
-		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
 		medical_hud_image_advanced.loc = src
 		medical_hud_image_advanced.layer = PLANE_AUGMENTED
-		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 	if(enable_security_hud)
 		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 		security_hud_image.loc = src
 		security_hud_image.layer = PLANE_AUGMENTED
-		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
-	chat_overlay = new(src.loc)
+	chat_overlay = new(src)
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
 	chat_overlay.alpha = 0
+	src.vis_contents += chat_overlay
 	//This is initialized somewhere else.
 
-	alert_overlay = new(src.loc)
+	alert_overlay = new(src)
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
-	alert_overlay.pixel_z = 20
+	alert_overlay.icon_state = "none"
+	alert_overlay.pixel_z = 20 + pixel_z
+	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.
 
-	fire_overlay = new(src.loc)
+	fire_overlay = new(src)
 	fire_overlay.layer = LAYER_MOB_FIRE
 	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
 	fire_overlay.icon_state = "0"
+	src.vis_contents += fire_overlay
 	//This is initialized somewhere else.
 
-	shield_overlay = new(src.loc)
+	shield_overlay = new(src)
 	shield_overlay.layer = LAYER_EFFECT
 	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
 	shield_overlay.icon_state = "block"
 	shield_overlay.alpha = 0
+	src.vis_contents += shield_overlay
+	//This is initialized somewhere else.
+
+	//Create the water mask effect.
+	water_mask = new(src) //Blend mode doesn't work here.
+	water_mask.icon = 'icons/water_mask.dmi'
+	water_mask.icon_state = "water_mask"
+	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
+	water_mask.plane = PLANE_MOB_WATER_MASK
+	water_mask.layer = 0
+	water_mask.pixel_x = -32
+	water_mask.pixel_y = -32
+	water_mask.alpha = 200
+	water_mask.filters += filter(type="alpha",x=0,y=0,render_source="\ref[src]")
+	vis_contents += water_mask
 
 	. = ..()
-
-	if(desired_client)
-		screen_blood = list()
-		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,NORTHEAST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTHEAST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
 
 	SSliving.all_living += src
 
@@ -545,6 +577,19 @@
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
 
+	if(client)
+		for(var/d in DIRECTIONS_INTERCARDINAL + SOUTH)
+			var/obj/hud/button/stat/screen_effect/SE = new(src)
+			SE.set_dir(d)
+			SE.update_owner(src)
+		var/obj/hud/button/stat/ecg/H = new(src)
+		H.update_owner(src)
+		var/obj/hud/button/stat/stamina/S = new(src)
+		S.update_owner(src)
+		var/obj/hud/button/stat/mana/M = new(src)
+		M.update_owner(src)
+
+
 /mob/living/Finalize()
 
 	. = ..()
@@ -562,6 +607,8 @@
 		death()
 
 	update_level(TRUE)
+
+	queue_health_update = TRUE
 
 /mob/living/proc/setup_name()
 	if(boss)
@@ -595,18 +642,11 @@
 	. = ..()
 	PROCESS_LIVING(src)
 
-/mob/living/Logout()
-
-	if(health)
-		health.update_health() //TODO: Find out what the fuck this is for.
-
-	return ..()
-
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(owner != src)
 		var/area/A = get_area(src)
-		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty,A))
+		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty_tag,A))
 			return TRUE
 
 	if(magnitude > 6)
@@ -628,11 +668,11 @@
 		add_status_effect(STAGGER,magnitude,magnitude, source = epicenter)
 
 	if(health)
-		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty)
+		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 	return TRUE
 
-/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	var/list/params = list()
 	params[PARAM_ICON_X] = 16
 	params[PARAM_ICON_Y] = 16

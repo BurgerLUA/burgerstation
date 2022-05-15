@@ -12,7 +12,7 @@
 	var/list/visited_pipes = list()
 
 /obj/disposals_container/PostInitialize()
-	start_thinking(src)
+	START_THINKING(src)
 	return ..()
 
 /obj/disposals_container/Exit(atom/movable/O, atom/newloc)
@@ -106,6 +106,6 @@
 	for(var/atom/movable/M in src.contents)
 		M.force_move(get_turf(src.loc))
 
-	stop_thinking(src)
+	STOP_THINKING(src)
 
 	return FALSE

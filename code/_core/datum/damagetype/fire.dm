@@ -1,5 +1,4 @@
 /damagetype/on_fire/
-	name = "on fire"
 
 	impact_sounds = list()
 	miss_sounds = list()

@@ -11,6 +11,9 @@ SUBSYSTEM_DEF(chunkclean)
 
 
 /subsystem/chunkclean/Initialize()
+
+	active_chunks = new/list[][]
+
 	. = ..()
 
 	tick_rate = initial(tick_rate)
@@ -61,6 +64,7 @@ SUBSYSTEM_DEF(chunkclean)
 				continue
 			var/list/chunk_turfs = get_chunk(x,y,z)
 			for(var/k in chunk_turfs)
+				CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 				var/turf/T = k
 				var/area/A = T.loc
 				if(A.safe_storage)
@@ -78,7 +82,7 @@ SUBSYSTEM_DEF(chunkclean)
 	for(var/k in all_players)
 		sleep(-1)
 		var/mob/living/advanced/player/P = k
-		if(!P.ckey_last)
+		if(!P.ckey_last) //Ignore corpses without players in them.
 			continue
 		var/turf/T = get_turf(P)
 		if(!T)

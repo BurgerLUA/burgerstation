@@ -1,5 +1,3 @@
-var/global/list/area/transit/transit_areas = list()
-
 /area/transit
 	name = "transit"
 	icon_state = "shuttle"

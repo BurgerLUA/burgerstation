@@ -4,7 +4,6 @@
 	desc = "So no head?"
 	icon_state = BODY_HEAD_MALE
 	worn_layer = LAYER_MOB_HEAD
-	break_threshold = 25
 	inventories = list(
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,
@@ -146,4 +145,9 @@
 /obj/item/organ/head/golem
 	name = "golem head"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
+	desc = "An organ."
+
+/obj/item/organ/head/abductor
+	name = "abductor head"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
 	desc = "An organ."

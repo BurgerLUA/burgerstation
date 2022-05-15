@@ -93,7 +93,7 @@
 
 	projectile_speed = BULLET_SPEED_RIFLE_LIGHT
 
-	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/223/lmg.ogg')
 
 	value = 1000
 

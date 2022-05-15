@@ -14,7 +14,7 @@
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic")
 
 	shoot_sounds = list('sound/weapons/308/shoot_sharp.ogg')
 
@@ -55,7 +55,8 @@
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 31 - 16

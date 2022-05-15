@@ -3,6 +3,8 @@
 	desc = "Rolling, rolling, rolling."
 	icon = 'icons/obj/structure/barrel.dmi'
 
+	reagents = /reagent_container/big_tank
+
 
 /obj/structure/interactive/reagent_tank/barrel/oil
 	name = "oil drum"

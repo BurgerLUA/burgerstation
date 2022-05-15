@@ -14,6 +14,8 @@
 
 	var/resist_handcuffs = TRUE
 
+	use_pathfinding = TRUE
+
 	roaming_distance = 0
 
 /ai/advanced/Destroy()
@@ -84,7 +86,7 @@
 	if(!checked_grenades)
 		find_grenade()
 
-	if(found_grenade && objective_attack && prob(5))
+	if(found_grenade && objective_attack && get_dist(owner,objective_attack) > 4 && prob(5))
 		var/turf/T = get_step(A,get_dir(A,objective_attack))
 		if(T.is_safe_teleport(TRUE))
 			if(!handle_grenade(found_grenade))
@@ -126,7 +128,7 @@
 			var/list/offsets = get_directional_offsets(owner,real_target)
 			var/throw_velocity = 10
 			G.drop_item(get_turf(owner))
-			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_iff = owner.iff_tag)
+			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_loyalty_tag = owner.loyalty_tag)
 		next_complex = world.time + 5
 		return FALSE
 	else if(!I.click_flags) //The nade needs to be in our hands.
@@ -203,8 +205,8 @@
 		return FALSE
 
 	var/list/params = list(
-		PARAM_ICON_X = num2text(pick(target_distribution_x)),
-		PARAM_ICON_Y = num2text(pick(target_distribution_y)),
+		PARAM_ICON_X = "16",
+		PARAM_ICON_Y = "16",
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,
@@ -350,4 +352,4 @@
 		else
 			checked_weapons = TRUE //Give up.
 
-	return ..()
+	. = ..()

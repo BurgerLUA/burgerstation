@@ -1,9 +1,11 @@
 /obj/item/organ/tail
 	name = "tail"
-	break_threshold = 0
 	id = BODY_TAIL
 
 	attach_flag = BODY_GROIN
+
+	enable_wounds = FALSE
+	can_be_broken = FALSE
 
 /obj/item/organ/tail/reptile
 	name = "reptile tail"

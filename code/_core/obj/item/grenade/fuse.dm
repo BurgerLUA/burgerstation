@@ -51,3 +51,13 @@
 /obj/item/grenade/fuse/fragmentation/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/tnt_fragments(src)
 	return ..()
+
+
+/obj/item/grenade/fuse/flashbang
+	name = "\improper flashbang grenade"
+	icon_state = "flashbang"
+	desc_extended = "A primitive yet effective very low-explosive yield handheld grenade designed to less than lethally stun or disarm enemy combatants. Pull the pin and throw."
+
+/obj/item/grenade/fuse/flashbang/Generate()
+	stored_containers += new /obj/item/container/simple/beaker/flashbang(src)
+	return ..()

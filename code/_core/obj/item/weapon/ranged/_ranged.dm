@@ -8,10 +8,11 @@
 	var/automatic = FALSE
 	var/max_bursts = 0 //Inherint maximum amount of bursts.
 	var/current_maxmium_bursts = 0 //Read only. Controlled by firemode changing.
-	var/current_bursts = 0 //Read only.
+	var/current_bursts = 1 //Read only.
 	var/shoot_delay = 4 //In deciseconds
 	var/burst_delay = 0 //In deciseconds. Set to 0 to just use shoot_delay*bursts*1.25
 	var/next_shoot_time = 0
+	var/last_shoot_time = 0 //Only used for revolvers but still.
 
 	var/recoil_delay = 0 //As a factor. Lower values mean slower kicks, higher values mean faster kicks.
 	var/queued_recoil = 0
@@ -32,7 +33,6 @@
 	//Dynamic accuracy.
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
-	var/heat_to_remove = 0.01 //Heat to remove per decisecond.
 
 	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
@@ -306,44 +306,56 @@
 	if(next_shoot_time > world.time)
 		return FALSE
 
+	if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
+		return FALSE
+
 	return TRUE
 
 /obj/item/weapon/ranged/think()
 
-	if(recoil_delay > 0 && queued_recoil > 0)
-		var/heat_to_add = CEILING(queued_recoil*recoil_delay,0.001)
+	if(queued_recoil > 0)
+		var/heat_to_add = CEILING(queued_recoil*0.25,0.001)
 		heat_current = min(heat_max,heat_current + heat_to_add)
 		queued_recoil = max(0,queued_recoil - heat_to_add)
-
-	if(heat_max && next_shoot_time + min(10,shoot_delay*1.25) < world.time)
+	else if(heat_max && last_shoot_time + (shoot_delay*(weight/10)) < world.time)
+		var/heat_to_remove = CEILING(0.03/max(1,weight) + heat_current*0.1,0.001)
 		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
 
 	return . && (heat_current > 0 || (recoil_delay > 0 && queued_recoil > 0))
 
-/obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/click_self(var/mob/caller)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		change_firemode(caller)
 		return TRUE
 
-	if(object.plane >= PLANE_HUD)
-		return ..()
+	. = ..()
 
-	INTERACT_CHECK
+/obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(SSclient.queued_automatics[src]) //Already doing something.
+		return TRUE
+
+	. = ..()
+
+	if(.)
+		return .
+
+	if(object.plane >= PLANE_HUD || !object.z)
+		return .
 
 	if(wield_only && !wielded)
 		caller.to_chat(span("warning","You can only fire this when wielded! (CTRL+CLICK)"))
-		return ..()
+		return .
+
+	INTERACT_CHECK_NO_DELAY(src)
 
 	if(istype(object,/obj/parallax))
 		object = object.defer_click_on_object(caller,location,control,params) //Only time defer_click_on_object should be used like this.
 
-	. = ..()
-
-	if(!. && object.z && shoot(caller,object,location,params))
-		return TRUE
+	return shoot(caller,object,location,params,click_called=TRUE)
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
 	return FALSE
@@ -357,16 +369,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 
 
 obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
-
-	. = shoot_delay
-
-	if(is_advanced(caller))
-		var/mob/living/advanced/A = caller
-		if(A.ai)
-			. *= max(1,(heat_current*ai_heat_sensitivity)*(get_dist(caller,target)/VIEW_RANGE)*RAND_PRECISE(0.9,1.1))
-			if(is_player(target))
-				. *= max(1,length(ai_attacking_players[target])) //Lower firerate.
-
+	.return shoot_delay
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 
@@ -411,7 +414,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	return TRUE
 
-obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
 	if(!pre_shoot(caller,object,location,params,damage_multiplier))
 		return FALSE
@@ -461,10 +464,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/mob/living/advanced/A = caller
 		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
 	if(wielded)
-		arm_strength *= 3
+		arm_strength *= 2
 
-	var/heat_per_shot_to_use = max(0.1,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use
-	var/view_punch_to_use = max(0.1,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use
+	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
+	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
+	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
 
 	if(projectile_to_use)
 
@@ -494,7 +498,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			if(L.horizontal) prone = TRUE
 			if(use_iff_tag) iff_tag = L.iff_tag
 			if(use_loyalty_tag) loyalty_tag = L.loyalty_tag
-
 
 		if(length(attachment_stats))
 			SET(shoot_sounds_to_use,attachment_stats["shoot_sounds"])
@@ -561,20 +564,23 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			penetrations_left
 		)
 
-	next_shoot_time = world.time + shoot_delay_to_use
+	last_shoot_time = world.time
+
 	if(heat_max)
-		if(recoil_delay > 0)
+		if(recoil_delay_to_use > 0)
 			queued_recoil = heat_per_shot_to_use
 		else
 			heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
-		start_thinking(src)
+		START_THINKING(src)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(is_inventory(src.loc))
 			var/obj/hud/inventory/I = src.loc
 			var/arm_damage = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
-			if(arm_damage >= 1)
+			if(wielded)
+				arm_damage -= 20
+			if(arm_damage >= 5)
 				var/obj/item/organ/O
 				if(I.click_flags & RIGHT_HAND)
 					if(wielded)
@@ -587,42 +593,68 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 					else
 						O = A.labeled_organs[BODY_HAND_LEFT]
 				if(O && O.health)
-					O.health.adjust_loss_smart(PAIN=arm_damage,organic=TRUE,robotic=FALSE,update=FALSE)
-					A.queue_health_update = TRUE
+					if(O.health.organic)
+						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
+					else
+						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
+					if(arm_damage >= 20 && O.send_pain_response(arm_damage))
+						A.to_chat(span("warning","The recoil of \the [src.name] injures your arm!"))
 
 
 	if(use_iff_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	if(automatic && is_player(caller) && caller.client)
-		spawn(next_shoot_time - world.time)
-			var/mob/living/advanced/player/P = caller
-			if(P && P.client && !P.qdeleting && ((params["left"] && P.attack_flags & CONTROL_MOD_LEFT) || (params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) || max_bursts_to_use) )
-				var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
-				if(!length(screen_loc_parsed))
-					log_error("Warning: [caller] had no screen loc parsed.")
-					return TRUE
-				var/turf/caller_turf = get_turf(caller)
-				var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
-				var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller_turf.y - VIEW_RANGE
-				var/turf/T = locate(desired_x,desired_y,caller.z)
-				if(T)
-					next_shoot_time = 0 //This is needed.
-					if((max_bursts_to_use <= 0 || current_bursts < (max_bursts_to_use-1)) && shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
-						if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
-							current_bursts += 1
-					else if(max_bursts_to_use > 0)
-						next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
-						current_bursts = 0
-				else
-					log_error("Warning: [caller] tried shooting in an invalid turf: [desired_x],[desired_y],[caller.z].")
-			else if(max_bursts_to_use > 0)
-				next_shoot_time = world.time + (burst_delay ? burst_delay : shoot_delay*current_bursts*1.25)
-				current_bursts = 0
-
 	update_sprite()
 
 	use_condition(condition_to_use)
+
+	if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
+		SSclient.queued_automatics[src] = list(
+			caller,
+			params,
+			damage_multiplier,
+			max_bursts_to_use,
+			shoot_delay_to_use
+		)
+
+	return TRUE
+
+/obj/item/weapon/ranged/proc/handle_automatic(var/mob/caller,params,var/damage_multiplier=1,var/max_bursts_to_use=0,var/shoot_delay_to_use=1)
+
+	var/mob/living/advanced/player/P = caller
+	if(!P || !P.client || P.qdeleting) //Not even active.
+		return FALSE
+
+	if(!(params["left"] && P.attack_flags & CONTROL_MOD_LEFT || params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) && !max_bursts_to_use) //No trigger.
+		return FALSE
+
+	if(!is_inventory(loc))
+		return FALSE
+	var/obj/hud/inventory/I = loc
+	if(!I.click_flags)
+		return FALSE
+
+	var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])
+	if(!length(screen_loc_parsed))
+		log_error("Warning: [caller.get_debug_name()] had no screen loc parsed.")
+		return FALSE
+
+	var/turf/caller_turf = get_turf(caller)
+	var/desired_x = FLOOR(screen_loc_parsed[1]/TILE_SIZE,1) + caller_turf.x - VIEW_RANGE
+	var/desired_y = FLOOR(screen_loc_parsed[2]/TILE_SIZE,1) + caller_turf.y - VIEW_RANGE
+	var/turf/T = locate(desired_x,desired_y,caller.z)
+	if(!T)
+		log_error("Warning: [caller] tried shooting in an invalid turf: [desired_x],[desired_y],[caller.z].")
+		return FALSE
+
+	if(!shoot(caller,T,P.client.last_location,P.client.last_params,damage_multiplier))
+		return FALSE
+
+	if(max_bursts_to_use > 0) //Not above because of shoot needing to run.
+		current_bursts += 1
+
+	if(max_bursts_to_use > 0 && current_bursts >= max_bursts_to_use) //End of burst.
+		return FALSE
 
 	return TRUE
 
@@ -741,9 +773,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(L.client.is_zoomed)
 			. *= 1/(1 + total_zoom_mul*0.5)
 		else
-			. *= min(1,total_zoom_mul*0.5)/1
+			. *= min(1,total_zoom_mul*0.35)/1
 
-	. *= max(0.25,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,0.75)) //Based on skill
+	. *= max(0.1,1 - L.get_skill_power(SKILL_PRECISION,0,0.5,0.9)) //Based on skill
 
 /obj/item/weapon/ranged/update_overlays()
 
@@ -777,3 +809,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)
 
+/obj/item/weapon/ranged/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
+
+	if(attachment_undermount)
+		return attachment_undermount.click_on_object_alt(caller,object,location,control,params)
+
+	return TRUE

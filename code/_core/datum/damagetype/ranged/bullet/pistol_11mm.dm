@@ -28,7 +28,6 @@
 	)
 
 /damagetype/ranged/bullet/holybullet
-	name = "Holy Bullet"
 	attack_damage_base = list(
 		BLUNT = 10,
 		PIERCE = 10,
@@ -54,7 +53,6 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/tranq_11mm
-	name = "tranq bullet"
 	stealthy = TRUE
 	attack_damage_base = list(
 		FATIGUE = 90

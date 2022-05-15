@@ -1,6 +1,6 @@
 /ai/proc/can_enter_turf(var/turf/T)
 
-	if(!ignore_hazard_turfs && istype(T,/turf/simulated/hazard/))
+	if(!ignore_hazard_turfs && istype(T,/turf/simulated/liquid/))
 		return FALSE
 
 	return TRUE
@@ -20,7 +20,7 @@
 				frustration_path++
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
-			frustration_move = max(0,frustration_move-1)
+			frustration_move = max(0,frustration_move-0.25)
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
 	if(!new_turf || !old_turf || new_turf.z != old_turf.z)
@@ -47,7 +47,7 @@
 		if(cowardice >= 0)
 			var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
 			if(health_percent <= cowardice)
-				owner.move_dir = get_dir(objective_attack,owner)
+				owner.move_dir = get_dir(objective_attack,owner) //RUN AWAY.
 				owner.movement_flags = MOVEMENT_RUNNING
 				return TRUE
 
@@ -63,13 +63,13 @@
 			var/owner_to_objective_dir = get_dir(owner,objective_attack)
 			var/turf/T1 = get_step(owner,owner_to_objective_dir)
 			if(!T1.is_safe_teleport(FALSE))
-				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90))
+				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90,180))
 				frustration_move++
 				return TRUE
 			var/objective_to_owner_dir = get_dir(objective_attack,owner)
 			var/turf/T2 = get_step(objective_attack,objective_to_owner_dir)
 			if(!T2.is_safe_teleport(FALSE))
-				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90))
+				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90,180))
 				frustration_move++
 				return TRUE
 			if(prob(target_distance <= 1 ? 25 : 5)) //Strafe when close.
@@ -122,8 +122,7 @@
 
 /ai/proc/handle_movement_astar()
 
-	if(current_path_astar && length(current_path_astar))
-		owner.movement_flags = MOVEMENT_NORMAL
+	if(length(current_path_astar))
 		var/turf/T = get_turf(owner)
 		var/turf/desired_turf = current_path_astar[1]
 		if(T == desired_turf)
@@ -143,7 +142,6 @@
 
 /ai/proc/handle_movement_path()
 	if(current_path && length(current_path))
-		owner.movement_flags = MOVEMENT_NORMAL
 		if(path_steps <= length(current_path))
 			var/Vector3D/desired_node = current_path[path_steps]
 			var/turf/T = get_turf(owner)

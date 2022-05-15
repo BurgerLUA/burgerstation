@@ -48,7 +48,7 @@
 	)
 
 	var/list/emote_sounds_male_meme = list(
-		"scream" = list('sound/voice/human/human_male_scream_special_1.ogg','sound/voice/human/human_male_scream_special_2.ogg'),
+		"scream" = list('sound/voice/human/human_male_scream_special_1.ogg','sound/voice/human/human_male_scream_special_2.ogg','sound/voice/human/human_male_scream_special_3.ogg','sound/voice/human/human_male_scream_special_4.ogg'),
 		"pain" = list('sound/voice/human/human_male_pain_special_1.ogg','sound/voice/human/human_male_pain_special_2.ogg'),
 		"deathgasp" = list('sound/voice/human/human_male_deathgasp_special_1.ogg','sound/voice/human/human_male_deathgasp_special_2.ogg'),
 		"medic" = list('sound/voice/human/human_male_medic_special_1.ogg')
@@ -117,12 +117,14 @@
 		/obj/hud/button/ability/D
 	)
 
+	/*
 	var/list/obj/hud/button/spawning_health = list(
 		/obj/hud/button/health/bar/hp,
 		/obj/hud/button/health/bar/sp,
 		/obj/hud/button/health/bar/mp,
 		/obj/hud/button/health/body
 	)
+	*/
 
 	var/list/valid_blood_types = list(
 		/reagent/blood/human/ab_negative,

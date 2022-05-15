@@ -1,7 +1,6 @@
 var/global/list/all_damage_numbers = list()
 
 /damagetype/
-	var/name //TODO:REMOVE
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
@@ -133,7 +132,7 @@ var/global/list/all_damage_numbers = list()
 
 	var/attack_animation_distance = 18
 
-	var/savage_hit_threshold = 0.3 //30%
+	var/savage_hit_threshold = 0.4 //40%
 
 	var/sneak_attack_multiplier = 2 //200%
 
@@ -382,6 +381,8 @@ var/global/list/all_damage_numbers = list()
 		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
 
 	var/block_multiplier = 0 //Different from damage_multiplier.
+	var/atom/block_atom = null
+
 	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
 		//Getting the damage
@@ -400,12 +401,11 @@ var/global/list/all_damage_numbers = list()
 				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
 		//Blocking
-		if(L.attack_flags & CONTROL_MOD_BLOCK && is_facing(L,attacker))
-			block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
-			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier,block_multiplier)
-		else
-			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier)
-
+		if(L.blocking)
+			var/list/block_data = L.get_block_data(attacker,weapon,hit_object,blamed,src)
+			if(block_data)
+				block_atom = block_data[1]
+				block_multiplier = block_data[2]
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 	var/list/damage_to_deal_main = list(
@@ -423,7 +423,8 @@ var/global/list/all_damage_numbers = list()
 	var/fatigue_damage = 0
 	var/pain_damage = 0
 
-	var/damage_blocked = 0
+	var/damage_blocked_with_armor = 0
+	var/damage_blocked_with_shield = 0
 	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
@@ -443,6 +444,7 @@ var/global/list/all_damage_numbers = list()
 			var/blocked_damage = block_multiplier * old_damage_amount
 			old_damage_amount -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
+			damage_blocked_with_shield += blocked_damage
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
@@ -463,7 +465,7 @@ var/global/list/all_damage_numbers = list()
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
-		damage_blocked += damage_to_block
+		damage_blocked_with_armor += damage_to_block
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
 		if(damage_type_to_fatigue[damage_type])
 			var/fatigue_damage_to_convert = damage_to_block*damage_type_to_fatigue[damage_type]
@@ -488,10 +490,12 @@ var/global/list/all_damage_numbers = list()
 		damage_to_deal[PAIN] += CEILING(pain_damage,1)
 		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
 
+	var/total_damage_dealt = 0
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
 		if(!damage_amount)
 			continue
+		total_damage_dealt += damage_amount
 		var/real_damage_type = attack_damage_conversion[damage_type]
 		if(islist(real_damage_type))
 			var/list_length = length(real_damage_type)
@@ -503,9 +507,16 @@ var/global/list/all_damage_numbers = list()
 			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
-	var/total_damage_dealt = 0
-	if(hit_object.health)
-		total_damage_dealt += hit_object.health.adjust_loss_smart(
+	if(defense_rating_victim && defense_rating_victim["items"])
+		for(var/k in defense_rating_victim["items"])
+			var/obj/item/I = k
+			if(I.uses_until_condition_fall > 0)
+				I.use_condition(total_damage_dealt)
+			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
+				total_damage_dealt = 0
+
+	if(total_damage_dealt > 0 && hit_object.health)
+		total_damage_dealt = hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
 			burn = damage_to_deal_main[BURN],
 			tox = damage_to_deal_main[TOX],
@@ -517,9 +528,6 @@ var/global/list/all_damage_numbers = list()
 			mental = damage_to_deal_main[MENTAL],
 			update = FALSE
 		)
-	else
-		for(var/damage_type in damage_to_deal_main)
-			total_damage_dealt += damage_to_deal_main[damage_type]
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
@@ -528,7 +536,7 @@ var/global/list/all_damage_numbers = list()
 		L.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
-	do_attack_sound(attacker,victim,weapon,hit_object)
+	do_attack_sound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
@@ -541,14 +549,6 @@ var/global/list/all_damage_numbers = list()
 	if(!total_damage_dealt)
 		display_glance_message(attacker,victim,weapon,hit_object)
 	else
-		if(defense_rating_victim && defense_rating_victim["items"])
-			var/condition_damage = total_damage_dealt
-			for(var/k in defense_rating_victim["items"])
-				var/obj/item/I = k
-				if(I.uses_until_condition_fall <= 0)
-					continue
-				I.use_condition(condition_damage)
-
 		display_hit_message(attacker,victim,weapon,hit_object)
 		if(is_living(blamed) && is_living(victim))
 			var/mob/living/A = blamed
@@ -605,18 +605,25 @@ var/global/list/all_damage_numbers = list()
 						final_experience += "[v] [k] xp"
 					A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(block_multiplier > 0)
+			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,block_atom,block_multiplier,damage_blocked_with_shield)
+		else
+			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
+
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (total_damage_dealt > 0 || damage_blocked > 0) && isturf(victim.loc))
+	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
 		var/turf/T = victim.loc
 		if(T)
 			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
 			var/obj/effect/damage_number/DN
 			if(length(all_damage_numbers) && all_damage_numbers[desired_id])
 				DN = all_damage_numbers[desired_id]
-				DN.add_value(total_damage_dealt,damage_blocked)
+				DN.add_value(total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
 			else
-				DN = new(T,total_damage_dealt,damage_blocked,desired_id)
+				DN = new(T,total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,desired_id)
 
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon
@@ -659,14 +666,16 @@ var/global/list/all_damage_numbers = list()
 			M.client.desired_punch_x += -offsets[1]*multiplier*0.25
 			M.client.desired_punch_y += -offsets[2]*multiplier*0.25
 
-/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+
+	var/desired_volume = 25 + min(75,total_damage_dealt/2)
 
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE)
+		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE,volume=desired_volume)
 
 	if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
-		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE)
+		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
 
 	return TRUE
 
@@ -693,10 +702,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/list/pixel_offset = get_directional_offsets(attacker,victim)
 
-	var/matrix/attack_matrix = attacker.get_base_transform()
-	attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
-	animate(attacker, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
-	animate(transform = attacker.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
+	animate(attacker, pixel_x = pixel_offset[1]*attack_animation_distance, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
+	animate(pixel_x = -pixel_offset[1]*attack_animation_distance, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
 
 	. = CEILING(attack_delay,1)
 

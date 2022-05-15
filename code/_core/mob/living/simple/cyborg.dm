@@ -107,7 +107,7 @@
 		iff_tag,
 		loyalty_tag
 	)
-	play_sound('sound/weapons/223/shoot.ogg',get_turf(src))
+	play_sound('sound/weapons/223/lmg.ogg',get_turf(src))
 	return TRUE
 
 

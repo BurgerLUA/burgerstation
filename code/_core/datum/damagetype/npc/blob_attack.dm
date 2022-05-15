@@ -1,5 +1,4 @@
 /damagetype/blob_attack/
-	name = "blob"
 
 	impact_sounds = list(
 		'sound/effects/impacts/blob_impact.ogg'

@@ -2,9 +2,7 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-	species = "human"
-
-	var/loadout_to_use = /loadout/zombie
+	var/loadout_to_use
 	health = /health/mob/living/advanced/zombie/
 
 	var/next_talk = 0
@@ -26,54 +24,6 @@
 	var/rest_chance = 25
 	var/missing_limb_chance = 10
 
-/mob/living/advanced/npc/zombie/Initialize()
-
-	. = ..()
-
-	if(prob(missing_limb_chance))
-		var/turf/T = get_turf(src)
-		switch(rand(1,2))
-			if(1)
-				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
-				if(O) O.unattach_from_parent(T,TRUE)
-			if(2)
-				var/obj/item/organ/O1 = labeled_organs[BODY_LEG_RIGHT]
-				var/obj/item/organ/O2 = labeled_organs[BODY_LEG_LEFT]
-				if(O1) O1.unattach_from_parent(T,TRUE)
-				if(O2) O2.unattach_from_parent(T,TRUE)
-
-	setup_appearance()
-	update_all_blends()
-	equip_loadout(loadout_to_use)
-
-	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
-	for(var/k in organs)
-		var/obj/item/organ/O = k
-		var/total_loss = RAND_PRECISE(0.25,0.5) * min(total_loss_limit,O.health.health_max) * (1/max(1,O.damage_coefficient))
-		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
-		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
-		var/tox_loss = total_loss - (burn_loss + brute_loss)
-		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss,update=FALSE)
-	queue_health_update = TRUE
-
-
-
-/mob/living/advanced/npc/zombie/Finalize()
-	. = ..()
-	add_status_effect(ZOMBIE,100,-1, force = TRUE)
-	if(prob(rest_chance))
-		add_status_effect(REST,-1,-2, force = TRUE)
-
-/*
-/mob/living/advanced/npc/zombie/get_movement_delay(var/include_stance=TRUE)
-
-	. = ..()
-
-	var/turf/T = get_turf(src)
-	. *= max(1,2 - T.lightness)
-	if(ai && ai.objective_attack)
-		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
-*/
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 	setup_sex()
@@ -86,11 +36,50 @@
 		sex = gender //oh god oh fuck what have i done
 	return TRUE
 
+/mob/living/advanced/npc/zombie/Initialize()
+
+	. = ..()
+
+	if(prob(missing_limb_chance))
+		var/turf/T = get_turf(src)
+		switch(rand(1,3))
+			if(1)
+				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
+				if(O) O.unattach_from_parent(T,TRUE)
+			if(2)
+				var/obj/item/organ/O1 = labeled_organs[BODY_LEG_RIGHT]
+				var/obj/item/organ/O2 = labeled_organs[BODY_LEG_LEFT]
+				if(O1) O1.unattach_from_parent(T,TRUE)
+				if(O2) O2.unattach_from_parent(T,TRUE)
+			if(3)
+				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
+				if(O) O.broken = TRUE
+
+	setup_appearance()
+	update_all_blends()
+
+	if(loadout_to_use) equip_loadout(loadout_to_use)
+
+	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
+	for(var/k in organs)
+		var/obj/item/organ/O = k
+		var/total_loss = RAND_PRECISE(0.25,0.5) * min(total_loss_limit,O.health.health_max) * (1/max(1,O.damage_coefficient))
+		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
+		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
+		var/tox_loss = total_loss - (burn_loss + brute_loss)
+		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
+
 /mob/living/advanced/npc/zombie/proc/setup_appearance()
 	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#000000")
+	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#FFFFFF")
 	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
 	return TRUE
+
+/mob/living/advanced/npc/zombie/Finalize()
+	. = ..()
+	add_status_effect(ZOMBIE,100,-1, force = TRUE)
+	if(prob(rest_chance))
+		add_status_effect(REST,-1,-2, force = TRUE)
 
 /mob/living/advanced/npc/zombie/get_emote_sound(var/emote_id)
 

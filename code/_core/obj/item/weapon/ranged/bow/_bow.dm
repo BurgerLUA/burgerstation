@@ -79,7 +79,7 @@
 	if(!is_advanced(caller))
 		return ..()
 	current_shooter = caller
-	start_thinking(src)
+	START_THINKING(src)
 	if(world.time >= spam_prevention)
 		play_sound(draw_sound,get_turf(src))
 		spam_prevention = world.time + 5

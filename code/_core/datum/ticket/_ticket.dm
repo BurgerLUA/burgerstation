@@ -68,14 +68,14 @@ var/global/ticket_number_counter = 1
 
 	for(var/k in involved_ckeys)
 		var/client/C2 = CLIENT(k)
-		play_sound('sound/effects/bwoink.ogg',C2)
+		play_sound('sound/effects/bwoink.ogg',C2.mob)
 		if(C2 == C) //We're the person that sent the message.
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR) //We're a moderator who sent the message.
-				C2?.to_chat(span("ahelp","Admin PM sent-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
+				C2?.to_chat(span("ahelp","[ICON_TO_HTML(chat_tags.icon,"PM_OUT",32,10)]Admin PM sent-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
 			else //We're not a moderator who sent the message.
-				C2?.to_chat(span("blue","PM to-Admins-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
-		else if(C2.ckey == victim) //We didn't sent the message, and they're addressing th victim.
-			C2?.to_chat(span("ahelp","Admin PM from-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
+				C2?.to_chat(span("blue","[ICON_TO_HTML(chat_tags.icon,"PM_OUT",32,10)]PM to-Admins-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
+		else if(C2.ckey == victim) //We're the victim and getting an admin PM from an admin.
+			C2?.to_chat(span("ahelp","[ICON_TO_HTML(chat_tags.icon,"PM_IN",32,10)]Admin PM from-<a class='bold' href='?src=\ref[src];password=[password]'>[C.ckey]</a>: [message]"))
 		else //We're just a spectator.
 			C2?.to_chat(span("ahelp","<a class='bold' href='?src=\ref[src];password=[password]'>(Ticket #[ticket_number]) [C.ckey]</a>: [message]"))
 
@@ -84,8 +84,8 @@ var/global/ticket_number_counter = 1
 		for(var/k in all_clients)
 			var/client/C2 = all_clients[k]
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR)
-				C2.to_chat(span("ahelp","New ticket (#[ticket_number]) message from <a href='?src=\ref[src];password=[password]'>[victim]</a>: [message]"))
-				play_sound('sound/effects/bwoink.ogg',C2)
+				C2.to_chat(span("ahelp","[ICON_TO_HTML(chat_tags.icon,"HELP",32,10)]New ticket (#[ticket_number]) message from <a href='?src=\ref[src];password=[password]'>[victim]</a>: [message]"))
+				play_sound('sound/effects/bwoink.ogg',C2.mob)
 				notified_admins++
 		log_admin("[notified_admins] admins were notified of ticket #[ticket_number].")
 		if(!notified_admins)

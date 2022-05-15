@@ -26,7 +26,6 @@
 	if(world.time < cooldown_end)
 		return FALSE
 
-
 	switch(resource_type)
 		if(HEALTH)
 			if(caller.health && caller.health.health_current < cost)

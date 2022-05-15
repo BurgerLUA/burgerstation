@@ -1,6 +1,5 @@
 //something something, this file is here because it needs to be.
 /damagetype/melee/axe
-	name = "axe"
 
 	impact_sounds = list(
 		'sound/weapons/blade/hit_heavy.ogg',

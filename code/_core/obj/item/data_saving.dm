@@ -110,7 +110,7 @@
 			var/obj/hud/inventory/IN = inventories[i]
 			var/list/inventory_data = list()
 			try
-				inventory_data = IN.save_inventory_data(save_inventory)
+				inventory_data = IN.save_inventory_data(P,save_inventory,died)
 			catch(var/exception/e)
 				log_error("Failed to save inventory data of [src.get_debug_name()]. Some information may be lost.")
 				log_error("Save Error: [e] on [e.file]:[e.line]\n[e.desc]!")
@@ -226,10 +226,24 @@
 				log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
 				I.drop_item(get_step(P,P.dir),silent=TRUE)
 
+	if(ultra_persistant)
+		for(var/k in all_players)
+			var/mob/living/advanced/player/P2 = k
+			if(P2.death_ckey != P.ckey_last) //Different ckey.
+				continue
+			if(P2.unique_pid != P.unique_pid) //Different player save.
+				continue
+			if(P2 == P)
+				continue
+			var/obj/hud/inventory/I = P2.inventories_by_id[src.id]
+			for(var/j in I.contents)
+				var/atom/A = j
+				qdel(A)
 
 	return TRUE
 
 /obj/hud/inventory/proc/save_inventory_data(var/mob/living/advanced/player/P,var/save_inventory=TRUE,var/died=FALSE) //Getting the inventory and their contents for saving.
+
 
 	var/content_length = length(contents)
 
@@ -237,17 +251,15 @@
 
 	for(var/i=1,i<=content_length,i++)
 		var/obj/item/I = contents[i]
-
-		if(died && !I.save_on_death)
-			continue
-
 		if(!istype(I))
 			log_error("Tried saving invalid item ([I ? I : "NULL"]) in an inventory!")
-			.[i] = list()
+			//.[i] = list()
 			continue
-
 		if(!I.can_save)
-			.[i] = list()
+			//.[i] = list()
+			continue
+		if(died && (src.flags & FLAG_HUD_MOB) && !src.ultra_persistant && !I.save_on_death)
+			//.[i] = list()
 			continue
 
 		.[i] = I.save_item_data(P,save_inventory,died)

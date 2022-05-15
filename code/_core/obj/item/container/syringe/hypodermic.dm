@@ -1,6 +1,7 @@
 /obj/item/container/syringe/hypodermic/
 	name = "medical syringe"
 	value = 5
+	injection_time = SECONDS_TO_DECISECONDS(1)
 
 /obj/item/container/syringe/hypodermic/update_icon()
 	. = ..()

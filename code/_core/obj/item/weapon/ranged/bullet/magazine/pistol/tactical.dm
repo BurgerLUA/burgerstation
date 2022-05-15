@@ -17,7 +17,7 @@
 	automatic = FALSE
 
 	size = SIZE_2
-	weight = 5
+	weight = 6
 
 	heat_max = 0.07
 

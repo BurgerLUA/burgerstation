@@ -1,5 +1,4 @@
 /damagetype/unarmed/
-	name = "Body"
 	draw_blood = TRUE
 
 	hit_effect = /obj/effect/temp/impact/combat/punch

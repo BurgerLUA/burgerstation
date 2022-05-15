@@ -1,9 +1,11 @@
 /obj/item/organ/wings
 	name = "wings"
-	break_threshold = 0
 	id = BODY_WINGS
 
 	attach_flag = BODY_TORSO
+
+	enable_wounds = FALSE
+	can_be_broken = FALSE
 
 /obj/item/organ/wings/moth
 	name = "moth wings"

@@ -1,9 +1,10 @@
 /obj/item/organ/antennae
 	name = "antennae"
-	break_threshold = 0
 	id = BODY_WINGS
 
 	attach_flag = BODY_TORSO
+
+	can_be_broken = FALSE
 
 /obj/item/organ/antennae/moth
 	name = "moth antennae"

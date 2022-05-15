@@ -45,9 +45,8 @@
 			if(!over_object || !src) return //Extra checks
 			var/mob/living/advanced/player/P = over_object
 			client.control_mob(P)
-			P.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 			P.add_species_buttons()
-			P.add_species_health_elements()
+			P.queue_health_update = TRUE
 
 /mob/abstract/observer/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE

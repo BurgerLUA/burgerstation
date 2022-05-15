@@ -159,7 +159,7 @@
 		src.drop_item(get_turf(A))
 
 /obj/item/powercell/recharging/PostInitialize()
-	start_thinking(src)
+	START_THINKING(src)
 	return ..()
 
 /obj/item/powercell/recharging/think()

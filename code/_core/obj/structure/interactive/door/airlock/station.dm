@@ -124,6 +124,12 @@
 	filler = "fill"
 	fill_color = COLOR_YELLOW
 
+/obj/structure/interactive/door/airlock/station/solars
+	name = "solars access airlock"
+	color = COLOR_ENGINEERING
+	filler = "fill"
+	fill_color = COLOR_BLUE
+
 /obj/structure/interactive/door/airlock/station/engineering/telecomms
 	name = "telecomms airlock"
 	color = COLOR_ENGINEERING
@@ -147,7 +153,6 @@
 	color = COLOR_ENGINEERING
 	filler = "glass"
 	fill_color = COLOR_PINK
-	locked = TRUE
 
 /obj/structure/interactive/door/airlock/station/medical
 	name = "medical airlock"

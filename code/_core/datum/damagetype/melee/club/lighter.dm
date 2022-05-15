@@ -1,5 +1,4 @@
 /damagetype/melee/club/lighter
-	name = "lighter"
 
 	attack_damage_base = list(
 		BLUNT = 10
@@ -23,7 +22,6 @@
 	attack_delay_max = 8
 
 /damagetype/melee/club/lighter/on
-	name = "lighter"
 
 	attack_damage_base = list(
 		FIRE = 15

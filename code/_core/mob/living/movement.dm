@@ -46,28 +46,21 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(intent == INTENT_HARM || attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
+	if(intent == INTENT_HARM || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..()
 
-/mob/living/post_move(var/atom/old_loc)
+/mob/living/set_dir(var/desired_dir,var/force=FALSE)
 
 	. = ..()
 
-	var/turf/current_loc_as_turf = get_turf(src)
-	if(chat_overlay)
-		chat_overlay.glide_size = src.glide_size
-		chat_overlay.force_move(current_loc_as_turf)
-	if(alert_overlay)
-		alert_overlay.glide_size = src.glide_size
-		alert_overlay.force_move(current_loc_as_turf)
-	if(fire_overlay)
-		fire_overlay.glide_size = src.glide_size
-		fire_overlay.force_move(current_loc_as_turf)
-	if(shield_overlay)
-		shield_overlay.glide_size = src.glide_size
-		shield_overlay.force_move(current_loc_as_turf)
+	if(.)
+		handle_blocking(TRUE)
+
+/mob/living/post_move(var/atom/old_loc)
+
+	. = ..()
 
 	if(is_sneaking)
 		on_sneak()
@@ -88,8 +81,10 @@
 				var/obj/item/wet_floor_sign/WFS = locate() in range(1,S)
 				if(!WFS || move_mod > 2)
 					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+		if(!isturf(loc))
+			handle_blocking()
 
-	handle_tabled()
+	climb_counter = 0
 
 	last_move_delay = TICKS_TO_DECISECONDS(next_move)
 	last_move_time = world.time
@@ -113,6 +108,8 @@
 
 /mob/living/on_sprint()
 	add_hydration(-0.4)
+	if(health)
+		health.adjust_stamina(-1)
 	if(client)
 		add_attribute_xp(ATTRIBUTE_AGILITY,1)
 	return ..()
@@ -145,7 +142,7 @@
 		if(grabbing_hand)
 			resist()
 			return FALSE
-		if(get_status_effect_magnitude(SLEEP) == -1)
+		if(STATUS_EFFECT_MAGNITUDE(src,SLEEP) == -1)
 			remove_status_effect(SLEEP)
 			return FALSE
 
@@ -154,7 +151,10 @@
 /mob/living/get_stance_movement_mul()
 
 	if(horizontal)
-		return walk_delay_mul*2
+		return walk_delay_mul*4
+
+	if(blocking)
+		return walk_delay_mul
 
 	. = ..()
 
@@ -169,7 +169,7 @@
 		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
 	if(intoxication)
-		. += intoxication*0.003
+		. *= 1 + intoxication*0.003
 
 	var/trait/speed/S = get_trait_by_category(/trait/speed/)
 	if(S) . *= S.move_delay_mul
@@ -178,7 +178,12 @@
 		. *= 2
 
 	if(!horizontal)
+		if(!has_status_effect(ADRENALINE))
+			. *= 1.25
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
+
+	if(grabbing_hand) //Being grabbed.
+		. *= 1.25
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
@@ -189,15 +194,18 @@
 			S.sneaking = on
 			S.update_sprite()
 
-	if(on && !dead)
+	if(on && !dead && (!health || health.adjust_stamina(-10)))
 		stealth_mod = get_skill_power(SKILL_SURVIVAL,0,1,2)
 		is_sneaking = TRUE
-		return TRUE
 	else
 		is_sneaking = FALSE
-		return FALSE
+
+	return is_sneaking
 
 /mob/living/proc/on_sneak()
+	if(health && !health.adjust_stamina( -(2-stealth_mod)*2.5 ))
+		toggle_sneak(FALSE)
+		return FALSE
 	return TRUE
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
@@ -216,7 +224,6 @@
 
 	. = ..()
 
-
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
 
 	if(!has_status_effects(STUN,STAGGER,PARALYZE))
@@ -227,22 +234,7 @@
 
 	return ..()
 
-/mob/living/proc/handle_tabled()
-
-	climb_counter = 0
-
-	if(tabled != currently_tabled)
-		currently_tabled = tabled
-		if(currently_tabled)
-			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
-			next_move = max(DECISECONDS_TO_TICKS(10),next_move)
-		else
-			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
-			next_move = max(DECISECONDS_TO_TICKS(5),next_move)
-
-	return TRUE
-
-/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty)
+/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag)
 
 	if(buckled_object)
 		return null

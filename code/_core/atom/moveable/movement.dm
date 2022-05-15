@@ -31,7 +31,7 @@
 		var/intercardinal = is_intercardinal_dir(final_move_dir)
 
 		if(intercardinal)
-			final_movement_delay *= HYPOTENUSE(1,1)
+			final_movement_delay *= SQRT2
 
 		if(isturf(loc) && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc
@@ -189,16 +189,6 @@
 	if(src.density && !NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
 		return FALSE
 
-	//Try: Cross the Contents
-	if(src.density)
-		for(var/k in NewLoc.contents)
-			CHECK_TICK(100,FPS_SERVER)
-			var/atom/movable/M = k
-			if(M == src)
-				continue
-			if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
-				return FALSE
-
 	//Try: Uncross the Contents
 	if(src.density && OldLoc)
 		for(var/k in OldLoc.contents)
@@ -209,24 +199,23 @@
 			if(M.density && !M.Uncross(src,NewLoc))
 				return FALSE
 
-	//No going back. We're moving.
-
-	//Do: Enter the turf.
-	if(src.density) NewLoc.Entered(src,OldLoc)
-
-	//Do: Exit the turf.
-	if(src.density) OldLoc.Exited(src,NewLoc)
-
-	//Do: Crossed the contents
+	//Try: Cross the Contents
 	if(src.density)
 		for(var/k in NewLoc.contents)
 			CHECK_TICK(100,FPS_SERVER)
 			var/atom/movable/M = k
 			if(M == src)
 				continue
-			if(!M.density)
-				continue
-			M.Crossed(src)
+			if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
+				return FALSE
+
+	//No going back. We're moving.
+
+	//Do: Exit the turf.
+	if(src.density) OldLoc.Exited(src,NewLoc)
+
+	//Do: Enter the turf.
+	if(src.density) NewLoc.Entered(src,OldLoc)
 
 	//Do: Uncrossed the contents
 	if(src.density && OldLoc)
@@ -239,23 +228,37 @@
 				continue
 			M.Uncrossed(src)
 
+	//Do: Crossed the contents
+	if(src.density)
+		for(var/k in NewLoc.contents)
+			CHECK_TICK(100,FPS_SERVER)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(!M.density)
+				continue
+			M.Crossed(src)
+
 	if(!OldLoc || OldLoc == loc)
 		loc = NewLoc
 
 	post_move(OldLoc)
 
+	/*
 	if((collision_flags & FLAG_COLLISION_WALKING) && isturf(loc))
 		var/turf/T = loc
 		if(T.friction < 1)
 			var/calculated_speed = SECONDS_TO_TICKS(glide_size/TILE_SIZE)
 			var/calculated_direction = get_dir(OldLoc,loc)
 			start_momentum(calculated_speed,calculated_direction)
+	*/
 
 	return TRUE
 
 /atom/movable/proc/on_fall(var/turf/old_turf)
 	return TRUE
 
+/*
 /atom/movable/proc/start_momentum(var/desired_momentum_speed=0,var/desired_momentum_dir=0x0)
 
 	if(!desired_momentum_speed || !desired_momentum_dir)
@@ -304,3 +307,4 @@
 		Move(desired_turf)
 
 	return TRUE
+*/

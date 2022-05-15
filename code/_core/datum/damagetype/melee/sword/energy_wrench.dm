@@ -1,5 +1,4 @@
 /damagetype/melee/sword/energy_wrench
-	name = "inactive wrench"
 
 	attack_damage_base = list(
 		BLUNT = 15,
@@ -32,7 +31,6 @@
 	attack_delay_max = 8
 
 /damagetype/melee/sword/energy_wrench/on
-	name = "active wrench"
 
 	attack_damage_base = list(
 		BLUNT = 10,

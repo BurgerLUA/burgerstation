@@ -1,5 +1,4 @@
 /damagetype/unarmed/fists/stand
-	name = "stand fist"
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch

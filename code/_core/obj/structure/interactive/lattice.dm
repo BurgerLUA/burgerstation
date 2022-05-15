@@ -16,7 +16,7 @@ obj/structure/lattice/should_smooth_with(var/turf/T)
 	. = ..()
 
 	if(.)
-		return
+		return .
 
 	if(istype(T,/turf/simulated/wall))
 		return T

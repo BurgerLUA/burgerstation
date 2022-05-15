@@ -1,6 +1,5 @@
 //Fists
 /damagetype/unarmed/fists/
-	name = "fist"
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -39,7 +38,6 @@
 	attack_delay_max = 10
 
 /damagetype/unarmed/fists/help
-	name = "help fists"
 	attack_verbs = list("tap")
 
 	hit_effect = null
@@ -82,12 +80,7 @@
 	draw_blood = FALSE
 
 /damagetype/unarmed/fists/disarm
-	name = "disarm fists"
 	attack_verbs = list("shove")
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
@@ -149,14 +142,9 @@
 	return ..()
 
 /damagetype/unarmed/fists/grab
-	name = "grab fists"
 	attack_verbs = list("grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -214,7 +202,6 @@
 
 
 /damagetype/unarmed/powerfist/
-	name = "powerfist"
 	attack_verbs = list("pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -253,7 +240,6 @@
 
 
 /damagetype/unarmed/brass/
-	name = "brass knuckle"
 	attack_verbs = list("punch","hit","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -293,7 +279,6 @@
 
 
 /damagetype/unarmed/brass/spiked
-	name = "spiked brass knuckle"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

@@ -12,6 +12,37 @@
 
 	tier_type = "revolver"
 
+	var/has_quickshot = FALSE
+
+/obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
+
+	if(!has_quickshot)
+		return ..()
+
+	var/quick_shot = click_called && world.time - last_shoot_time < shoot_delay
+
+	if(quick_shot)
+		damage_multiplier *= 0.9
+
+	. = ..()
+
+	if(. && quick_shot)
+		var/turf/T = get_turf(src)
+		play_sound('sound/weapons/revolver_timing.ogg',T)
+
+
+/obj/item/weapon/ranged/bullet/revolver/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
+
+	. = ..()
+
+	if(!caller.client || !has_quickshot)
+		return .
+
+	var/shot_ago = world.time - last_shoot_time
+
+	if(shot_ago >= 1 && shot_ago <= .) //Can shoot really fast, for a penalty.
+		return shot_ago
+
 /obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)
@@ -64,6 +95,7 @@
 /obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)
 
 	if(!can_shoot_while_open && open)
+		caller.to_chat(span("warning","Close \the [src.name] before firing!"))
 		return FALSE
 
 	return ..()

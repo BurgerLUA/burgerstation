@@ -63,7 +63,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	icon_state = "color_frame"
 	screen_loc = "CENTER,CENTER"
 
-	flags = FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_SPECIAL
 
 	user_colors = FALSE
 

@@ -157,7 +157,7 @@
 	var/list/valid_ckeys = list()
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
-		if(!P.client)
+		if(!P.client) //Inactive players don't get anything.
 			continue
 		if(get_dist(P,T) > BOSS_RANGE)
 			continue

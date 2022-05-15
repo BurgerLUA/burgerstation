@@ -12,7 +12,7 @@
 
 	max_slots = 1
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CONTAINER
 
 	should_add_to_advanced = FALSE
 
@@ -46,7 +46,7 @@
 		if(max_slots <= 0)
 			return FALSE
 
-		if(is_occupied(TRUE,TRUE))
+		if(is_occupied(TRUE))
 			if(messages && src.loc)
 				owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 			return FALSE

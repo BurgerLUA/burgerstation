@@ -14,9 +14,9 @@
 
 	shoot_sounds = list('sound/weapons/10/shoot.ogg')
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_3
 	weight = 8

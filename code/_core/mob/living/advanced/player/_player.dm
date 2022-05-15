@@ -2,6 +2,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 /mob/living/advanced/player/
+
+	var/unique_pid //Snowflake system that generates a md5 hash of the player on character creation.
+
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
@@ -164,23 +167,7 @@ var/global/list/difficulty_to_damage_mul = list(
 
 
 /mob/living/advanced/player/proc/setup_difficulty()
-
-	var/actual_difficulty = difficulty
-	if(enable_friendly_fire)
-		actual_difficulty = DIFFICULTY_NORMAL
-
-	if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
-		health.health_regeneration = 0
-	else
-		health.health_regeneration = initial(health.health_regeneration)
-
-	if(actual_difficulty == DIFFICULTY_SURVIVOR)
-		health.stamina_regen_cooef = 0.5
-		health.mana_regen_cooef = 0.5
-	else
-		health.stamina_regen_cooef = initial(health.stamina_regen_cooef)
-		health.mana_regen_cooef = initial(health.mana_regen_cooef)
-
+	health.update_health_stats()
 	return TRUE
 
 /mob/living/advanced/player/Destroy()
@@ -202,8 +189,7 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	dialogue_target = null
 
-	if(src in equipped_antags)
-		equipped_antags -= src
+	equipped_antags -= src
 
 	if(current_squad)
 		current_squad.remove_member(src)

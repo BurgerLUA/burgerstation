@@ -2,6 +2,8 @@
 	var/dynamic_lighting = FALSE
 	luminosity           = 1
 
+	var/lightness = 0 //Calculated tile darkness.
+
 	var/tmp/lighting_corners_initialised = FALSE
 
 	var/tmp/list/light_source/affecting_lights       // List of light sources affecting this turf.

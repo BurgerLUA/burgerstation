@@ -24,7 +24,6 @@
 	)
 
 /damagetype/ranged/magic/chaos/canine //Lazy way to stop the cursed canine from leveling magic stats, but still uses them for damage.
-	name = "chaos ball"
 
 	attribute_stats = list(
 		ATTRIBUTE_DEXTERITY = 11.25

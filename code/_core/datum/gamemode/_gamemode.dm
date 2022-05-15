@@ -87,7 +87,6 @@
 					'sound/voice/announcement/code_amber.ogg'\
 				)
 			if(CODE_RED)
-				raid_station()
 				CALLBACK_GLOBAL(\
 					"gamemode_announce_alert",\
 					SECONDS_TO_DECISECONDS(10),\

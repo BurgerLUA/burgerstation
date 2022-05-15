@@ -1,5 +1,4 @@
 /damagetype/melee/club/torch/
-	name = "torch"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -31,7 +30,6 @@
 	attack_delay_max =10
 
 /damagetype/melee/club/torch/on
-	name = "torch"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

@@ -37,7 +37,7 @@
 	uses_until_condition_fall = 0
 
 /obj/item/weapon/ranged/bullet/revolver/rocket/get_base_spread()
-	return 0.2
+	return 0.02
 
 /obj/item/weapon/ranged/bullet/revolver/rocket/get_static_spread()
 	return 0.005

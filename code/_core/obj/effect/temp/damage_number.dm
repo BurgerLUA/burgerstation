@@ -41,6 +41,10 @@
 	return TRUE
 
 /obj/effect/damage_number/proc/add_value(var/desired_damage,var/desired_block)
+
+	if(desired_damage) desired_damage = CEILING(desired_damage,1)
+	if(desired_block) desired_block = CEILING(desired_block,1)
+
 	var/desired_color = "#FFFFFF"
 	var/desired_size = 0.5
 	if(current_damage || current_block)
@@ -58,7 +62,7 @@
 	desired_color = rgb(255,damage_color_math,damage_color_math)
 	desired_color = blend_colors(desired_color,"#808080",current_block/current_damage)
 	var/desired_text = current_damage
-	maptext = "<div style='font-size:[desired_size];color:[desired_color];text-align:center;text-shadow:0px 0px 2px #000000;'>[desired_text]</div>"
+	maptext = "<div style='font-size:[desired_size];color:[desired_color];text-align:center;text-shadow:0px 0px 2px #000000'>[desired_text]</div>"
 	CALLBACK("\ref[src]_fade_damage_number",10,src,.proc/fade)
 	return TRUE
 

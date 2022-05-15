@@ -173,3 +173,11 @@
 	. = ..()
 	for(var/k in polymorphs)
 		polymorphs[k] = random_color()
+
+
+/obj/item/clothing/shirt/normal/reinforced/abductor
+	name = "abductor reinforced shirt"
+	polymorphs = list(
+		"shirt_tee" = "#62869E"
+	)
+

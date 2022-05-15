@@ -1,5 +1,4 @@
 /damagetype/ranged/bullet/gauss_gun
-	name = "2mm steel ball"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -17,12 +16,10 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/gauss_gun/ap
-	name = "2mm depleted uranium ball"
 	damage_mod = SURPLUS_MUL
 	penetration_mod = ARMOR_MUL
 
 /damagetype/ranged/bullet/gauss_gun/explosive
-	name = "2mm gibtonite ball"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -35,7 +32,6 @@
 	)
 
 /damagetype/ranged/bullet/gauss_gun/ion
-	name = "2mm uranium-iron alloy ball"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -50,7 +46,6 @@
 	)
 
 /damagetype/ranged/bullet/gauss_gun/incendiary
-	name = "2mm compressed napalm alloy ball"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

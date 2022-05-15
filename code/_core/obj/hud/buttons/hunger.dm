@@ -11,9 +11,9 @@
 	var/stored_hunger = -1
 	var/stored_thirst = -1
 
-	screen_loc = "RIGHT:-2,BOTTOM:12+4"
+	screen_loc = "RIGHT:-2,CENTER-1"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 
 /obj/hud/button/hunger/update_owner()

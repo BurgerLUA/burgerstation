@@ -99,30 +99,11 @@
 
 	update()
 
-#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
-// Picks either scheduled or instant updates based on current server load.
-#define INTELLIGENT_UPDATE(level)                      \
-	var/_should_update = needs_update == LIGHTING_NO_UPDATE; \
-	if (needs_update < level) {                        \
-		needs_update = level;                          \
-	}                                                  \
-	if (_should_update) {                              \
-		if (world.tick_usage > TICK_LIMIT || SSlighting.force_queued) {	\
-			SSlighting.light_queue += src;              \
-		}                                               \
-		else {                                          \
-			SSlighting.total_instant_updates += 1;      \
-			update_corners(TRUE);                       \
-			needs_update = LIGHTING_NO_UPDATE;          \
-		}                                               \
-	}
-#else
 #define INTELLIGENT_UPDATE(level)           \
 	if (needs_update == LIGHTING_NO_UPDATE) \
 		SSlighting.light_queue += src;      \
 	if (needs_update < level)               \
 		needs_update = level;
-#endif
 
 // This proc will cause the light source to update the top atom, and add itself to the update queue.
 /light_source/proc/update(atom/new_top_atom)
@@ -398,7 +379,11 @@
 	var/Sy = pixel_turf.y
 	var/Sz = pixel_turf.z
 	var/corner_height = LIGHTING_HEIGHT
-	var/actual_range = (light_angle && facing_opaque) ? light_range * LIGHTING_BLOCKED_FACTOR : light_range
+	var/actual_range = 0
+	if(source_atom == source_turf)
+		actual_range = (light_angle && facing_opaque) ? light_range * LIGHTING_BLOCKED_FACTOR_TURF : light_range
+	else
+		actual_range = (light_angle && facing_opaque) ? light_range * LIGHTING_BLOCKED_FACTOR : light_range
 	var/test_x
 	var/test_y
 

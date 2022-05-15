@@ -15,6 +15,8 @@
 
 	color = COLOR_WHITE
 
+	alpha = 100
+
 /obj/structure/interactive/wire/New(var/desired_loc)
 	. = ..()
 	var/wire_count = 0
@@ -28,6 +30,8 @@
 		qdel(src)
 
 	plane = PLANE_FLOOR
+
+	alpha = 255
 
 /obj/structure/interactive/wire/get_examine_list(var/mob/examiner)
 	. = ..()

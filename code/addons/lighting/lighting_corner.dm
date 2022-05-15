@@ -67,10 +67,9 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 	// Diagonal one is easy.
 	T = get_step(new_turf, diagonal)
-	if (T) // In case we're on the map's border.
+	if(T) // In case we're on the map's border.
 		if (!T.corners)
 			T.corners = new(4)
-
 		t2 = T
 		i = REVERSE_LIGHTING_CORNER_DIAGONAL[diagonal]
 		t2i = i
@@ -78,10 +77,9 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 	// Now the horizontal one.
 	T = get_step(new_turf, horizontal)
-	if (T) // Ditto.
+	if(T) // Ditto.
 		if (!T.corners)
 			T.corners = new(4)
-
 		t3 = T
 		i = REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
 		t3i = i
@@ -89,10 +87,9 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 	// And finally the vertical one.
 	T = get_step(new_turf, vertical)
-	if (T)
+	if(T)
 		if (!T.corners)
 			T.corners = new(4)
-
 		t4 = T
 		i = REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
 		t4i = i
@@ -135,27 +132,25 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 /lighting_corner/proc/update_lighting_overlays(now = FALSE)
 
-	var/lr = apparent_r
-	var/lg = apparent_g
-	var/lb = apparent_b
+	//Set the value.
+	cache_r = apparent_r
+	cache_g = apparent_g
+	cache_b = apparent_b
 
-	// Cache these values a head of time so 4 individual lighting overlays don't all calculate them individually.
-	var/mx = max(lr, lg, lb) // Scale it so 1 is the strongest lum, if it is above 1.
-	. = 1 // factor
-	if (mx > 1)
-		. = 1 / mx
-
-	else if (mx < LIGHTING_SOFT_THRESHOLD)
-		. = 0 // 0 means soft lighting.
-
-	if(.)
-		cache_r = round(lr * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-		cache_g = round(lg * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-		cache_b = round(lb * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+	//Check maximiums
+	var/mx = max(cache_r, cache_g, cache_b) // Scale it so 1 is the strongest lum, if it is above 1.
+	if(mx <= LIGHTING_ROUND_VALUE) //We're too dark to care.
+		cache_r = cache_g = cache_b = cache_mx = LIGHTING_ROUND_VALUE
 	else
-		cache_r = cache_g = cache_b = LIGHTING_SOFT_THRESHOLD
-
-	cache_mx = round(mx, LIGHTING_ROUND_VALUE)
+		//Cap values in case they go over.
+		if(mx > 1)
+			cache_r *= 1/mx
+			cache_g *= 1/mx
+			cache_b *= 1/mx
+		cache_r = FLOOR(cache_r,LIGHTING_ROUND_VALUE)
+		cache_g = FLOOR(cache_g,LIGHTING_ROUND_VALUE)
+		cache_b = FLOOR(cache_b,LIGHTING_ROUND_VALUE)
+		cache_mx = max(cache_r,cache_g,cache_b)
 
 	var/turf/T
 	for (var/i in 1 to 4)

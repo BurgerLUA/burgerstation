@@ -4,12 +4,12 @@
 	desc = "An organ."
 	icon_state = BODY_TORSO_MALE
 	worn_layer = LAYER_MOB_TORSO
-	break_threshold = 50
 	inventories = list(
 		/obj/hud/inventory/organs/torso,
 		/obj/hud/inventory/organs/torso_o,
 		/obj/hud/inventory/organs/torso_b,
-		/obj/hud/inventory/organs/torso_ob
+		/obj/hud/inventory/organs/torso_ob,
+		/obj/hud/inventory/organs/secure
 	)
 
 	enable_wounds = TRUE
@@ -146,4 +146,9 @@
 /obj/item/organ/torso/golem
 	name = "golem torso"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
+	desc = "An organ."
+
+/obj/item/organ/torso/abductor
+	name = "abductor torso"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
 	desc = "An organ."

@@ -36,7 +36,7 @@
 			if(path_only)
 				new /turf/simulated/floor/basalt(src)
 			else
-				new /turf/simulated/hazard/lava(src)
+				new /turf/simulated/liquid/lava(src)
 		if(0.1 to 0.11)
 			if(!path_only && prob(1))
 				new /obj/marker/generation/basalt_wall(src)
@@ -120,7 +120,7 @@
 				if(prob(1))
 					new /obj/marker/generation/jungle_wall(src)
 			else
-				new /turf/simulated/hazard/water/jungle(src)
+				new /turf/simulated/liquid/water/jungle(src)
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
 		if(0.44 to 0.45)
@@ -169,7 +169,7 @@
 				if(prob(5))
 					new /obj/marker/generation/foliage/bushes/fern(src)
 			else
-				new /turf/simulated/hazard/water(src)
+				new /turf/simulated/liquid/water(src)
 				if(prob(1))
 					new /obj/marker/generation/jungle_wall(src)
 		if(0.9 to INFINITY)
@@ -178,7 +178,7 @@
 				if(prob(5))
 					new /obj/structure/scenery/rocks(src)
 			else
-				new /turf/simulated/hazard/water(src)
+				new /turf/simulated/liquid/water(src)
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
 

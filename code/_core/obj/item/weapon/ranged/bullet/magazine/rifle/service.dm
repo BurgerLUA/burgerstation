@@ -51,17 +51,18 @@
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 20 - 16
+	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_x = 16 - 16
 	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 28 - 16
-	attachment_undermount_offset_y = 19 - 16
+	attachment_undermount_offset_x = 26 - 16
+	attachment_undermount_offset_y = 17 - 16
 
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1

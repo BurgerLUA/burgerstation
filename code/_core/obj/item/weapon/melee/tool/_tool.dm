@@ -100,13 +100,13 @@
 		active = FALSE
 		update_sprite()
 		caller.to_chat(span("notice","You turn \the [src.name] off."))
-		stop_thinking(src)
+		STOP_THINKING(src)
 	else
 		if(fuel_current > 0)
 			active = TRUE
 			update_sprite()
 			caller.to_chat(span("notice","\The [src.name] turns on."))
-			start_thinking(src)
+			START_THINKING(src)
 		else
 			caller.to_chat(span("warning","\The [src.name] doesn't seem to want to turn on..."))
 

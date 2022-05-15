@@ -1,7 +1,7 @@
 /area/burgerstation
 	name = "\improper NSS Burger"
 	icon_state = "ship"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
@@ -58,7 +58,7 @@
 	name = "\improper East Hallway"
 	icon_state = "hall_e"
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 /area/burgerstation/hall/south
 	name = "\improper South Hallway"
@@ -135,7 +135,7 @@
 /area/burgerstation/dorm
 	name = "\improper Dorm"
 	icon_state = "dorm"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_SAVEZONE
 
 	sound_environment = ENVIRONMENT_ROOM
 
@@ -144,7 +144,7 @@
 /area/burgerstation/contractor
 	name = "Mr. Scratch's Office"
 	icon_state = "dorm"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_SAVEZONE
 
 	map_color = COLOR_RED
 
@@ -154,7 +154,7 @@
 	name = "\improper Prestige Center"
 	icon_state = "dorm"
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_GREEN
 
@@ -162,7 +162,7 @@
 	name = "\improper Soccer Field"
 	icon_state = "dorm"
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_GREEN
 
@@ -170,7 +170,7 @@
 	name = "\improper VR Rooms"
 	icon_state = "dorm"
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_GREEN
 
@@ -178,7 +178,7 @@
 	name = "\improper Help Desk"
 	icon_state = "help"
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_GREEN
 
@@ -191,7 +191,7 @@
 /area/burgerstation/science
 	name = "\improper Science"
 	icon_state = "science"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_SCIENCE
 
@@ -202,7 +202,7 @@
 /area/burgerstation/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "cryo"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_SAVEZONE | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_SAVEZONE | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_GREEN
 
@@ -215,7 +215,7 @@
 /area/burgerstation/arrivals
 	name = "\improper Arrivals Dock"
 	icon_state = "ariv"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 	map_color = COLOR_YELLOW
 
@@ -245,6 +245,24 @@
 
 	map_color = COLOR_ENGINEERING
 
+/area/burgerstation/engineering/solars
+	name = "\improper Solars"
+	icon_state = "solars"
+
+	map_color = COLOR_BLUE
+
+/area/burgerstation/engineering/solars/ne
+	name = "\improper Starboard Bow Solars"
+
+/area/burgerstation/engineering/solars/se
+	name = "\improper Starboard Quarter Solars"
+
+/area/burgerstation/engineering/solars/nw
+	name = "\improper Port Bow Solars"
+
+/area/burgerstation/engineering/solars/sw
+	name = "\improper Port Quarter Solars"
+
 /area/burgerstation/engineering/lobby
 	name = "\improper Engineering Lobby"
 	icon_state = "eng"
@@ -253,21 +271,21 @@
 /area/burgerstation/engineering/ce
 	name = "\improper Chief Engineer's Office"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
 
 	map_color = COLOR_ENGINEERING
 
 /area/burgerstation/engineering/telecomms
 	name = "\improper Telecomms"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
 
 	map_color = COLOR_ENGINEERING
 
 /area/burgerstation/engineering/supermatter
 	name = "\improper Supermatter"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
 
 	map_color = COLOR_ENGINEERING
 
@@ -280,7 +298,7 @@
 /area/burgerstation/medical/cmo
 	name = "\improper Chief Medical Officer's Office"
 	icon_state = "cmd"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
 
 	map_color = COLOR_MEDICAL_LIGHT
 
@@ -364,6 +382,8 @@
 
 	sound_environment = ENVIRONMENT_BATHROOM
 
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_DIRTY
+
 /area/burgerstation/maint/north
 	name = "\improper North Maintenance"
 	icon_state = "maint_n"
@@ -387,7 +407,7 @@
 /area/burgerstation/pvp
 	name = "ERROR"
 	icon_state = "pvp"
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
 
 	sound_environment = ENVIRONMENT_ALLEY
 

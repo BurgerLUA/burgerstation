@@ -41,6 +41,6 @@
 
 /obj/item/clothing/belt/storage/colored/recruit/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count-1,i++)
-		new /obj/item/magazine/rifle_46(src)
+		new /obj/item/magazine/smg_45(src)
 	new /obj/item/weapon/melee/energy/grazer(src)
 	. = ..()

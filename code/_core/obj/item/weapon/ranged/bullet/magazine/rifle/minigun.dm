@@ -14,7 +14,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg')
+	shoot_sounds = list('sound/weapons/223/minigun.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

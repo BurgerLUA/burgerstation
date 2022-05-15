@@ -14,7 +14,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/rifle.ogg')
 
 	can_wield = TRUE
 
@@ -53,16 +53,17 @@
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 19 - 16
 
 	attachment_sight_offset_x = 15 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 17 - 16
 
 	dan_mode = TRUE

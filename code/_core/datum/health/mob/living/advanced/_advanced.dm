@@ -1,9 +1,22 @@
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/update=TRUE,var/organic=TRUE,var/robotic=TRUE)
+/health/mob/living/advanced/
+	health_regeneration = 1
+	mana_regeneration = 1
+	stamina_regeneration = 1
+
+/health/mob/living/advanced/restore()
+	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
+	var/mob/living/advanced/A = owner
+	for(var/k in A.labeled_organs)
+		var/obj/item/organ/O = A.labeled_organs[k]
+		if(!O.health)
+			continue
+		O.health.restore()
+	A.queue_health_update = TRUE
+
+
+/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
 
 	. = 0
-
-	if(!is_advanced(owner))
-		return ..()
 
 	var/mob/living/advanced/A = owner
 
@@ -28,23 +41,19 @@
 		if(rad) . += adjust_loss(RAD,rad)
 		if(sanity)
 			. += adjust_loss(SANITY,sanity)
-			var/sanity_loss = get_loss(SANITY)
+			var/sanity_loss = damage[SANITY]
 			if(sanity_loss >= 100)
 				if(!A.has_status_effect(STRESSED))
 					A.add_status_effect(STRESSED,-1,-1)
 			else if(sanity_loss <= 0)
 				if(A.has_status_effect(STRESSED))
 					A.remove_status_effect(STRESSED)
-		var/mana_adjusted = FALSE
-		var/fatigue_adjusted = FALSE
-		if(fatigue && (A.ai || !A.has_status_effect(STAMCRIT)) && adjust_stamina(-fatigue))
-			fatigue_adjusted = TRUE
+		if(fatigue && (A.ai || !A.has_status_effect(STAMCRIT)))
+			. += -adjust_stamina(-fatigue)
 			if(stamina_current <= 0)
 				A.add_status_effect(STAMCRIT,-1,-1)
-		if(mental > 0 && adjust_mana(-mental))
-			mana_adjusted = TRUE
-		if(mana_adjusted || fatigue_adjusted)
-			A.queue_health_update = TRUE
+		if(mental)
+			. += -adjust_mana(-mental)
 
 	mental = 0
 	fatigue = 0
@@ -52,7 +61,7 @@
 	if(brute < 0 || burn < 0 || pain < 0 || rad < 0) //Heal damage
 		var/list/damaged_organs = list()
 		var/list/damage_totals = list()
-		var/list/desired_heal_amounts = list(
+		var/list/desired_heal_amounts = list( //This inverses the list so its easier to work with.
 			BRUTE = brute < 0 ? -brute : 0,
 			BURN = burn < 0 ? -burn : 0,
 			PAIN = pain < 0 ? -pain : 0,
@@ -84,7 +93,8 @@
 			var/list/heal_list = list(
 				BRUTE = 0,
 				BURN = 0,
-				PAIN = 0
+				PAIN = 0,
+				RAD = 0
 			)
 			for(var/damage_type in damaged_organs[organ_id])
 				var/damage_amount_of_type = damaged_organs[organ_id][damage_type]
@@ -95,38 +105,52 @@
 				heal_list[damage_type] = (damage_amount_of_type / total_damage_of_type) * heal_amount_of_type
 
 			if(heal_list[BRUTE] || heal_list[BURN] || heal_list[PAIN])
-				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],update=FALSE,organic=organic,robotic=robotic)
-
-	if(. && update)
-		A.queue_health_update = TRUE
+				. += O.health.adjust_loss_smart(brute=-heal_list[BRUTE],burn=-heal_list[BURN],pain=-heal_list[PAIN],organic=organic,robotic=robotic)
 
 /health/mob/living/advanced/update_health_stats()
 
-	if(!is_advanced(owner))
-		return ..()
+	. = ..()
 
 	var/mob/living/advanced/A = owner
 
-	if(health_current <= 0) //In crit.
-		health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
-	else
-		health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
+	if(is_player(A))
+		var/mob/living/advanced/player/P = A
 
-	if(A.has_status_effects(STAMCRIT,SLEEP,REST))
-		stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*27)
-	else
-		stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*18)
+		var/actual_difficulty = enable_friendly_fire ? DIFFICULTY_NORMAL : P.difficulty
 
-	mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*18)
+		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
+			health_regeneration = 0
+		else
+			health_regeneration = initial(health_regeneration)
 
-	return ..()
+		if(actual_difficulty == DIFFICULTY_SURVIVOR)
+			stamina_regen_cooef = 0.5
+			mana_regen_cooef = 0.5
+		else
+			stamina_regen_cooef = initial(stamina_regen_cooef)
+			mana_regen_cooef = initial(mana_regen_cooef)
+
+	if(health_regeneration > 0)
+		if(health_current <= 0) //In crit.
+			health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
+		else
+			health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
+
+	if(stamina_regeneration > 0)
+		if(A.has_status_effects(STAMCRIT,SLEEP,REST))
+			stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*27)
+		else
+			stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*18)
+
+	if(mana_regeneration > 0)
+		mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*18)
+
+
 
 
 /health/mob/living/advanced/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
-	if(!is_advanced(owner))
-		return ..()
-
+	//Advanced damage is reset and defered to organs.
 	var/mob/living/advanced/A = owner
 	damage[BRUTE] = 0
 	damage[BURN] = 0
@@ -142,28 +166,28 @@
 		damage[BRUTE] += O.health.damage[BRUTE] * O.damage_coefficient
 		damage[BURN] += O.health.damage[BURN] * O.damage_coefficient
 		damage[RAD] += O.health.damage[RAD] * O.damage_coefficient
-		damage[PAIN] += O.health.damage[PAIN] * O.damage_coefficient
+		damage[PAIN] += max(0, (O.health.damage[PAIN] * O.damage_coefficient) - A.pain_removal)
 
 	. = ..()
 
 	if(.)
-		if(health_current <= 0 && !A.status_effects[ADRENALINE] && !A.status_effects[CRIT])
+		var/should_be_in_crit = health_current <= 0 && !A.status_effects[ADRENALINE]
+		if(!A.status_effects[CRIT] && should_be_in_crit)
 			A.add_status_effect(CRIT,-1,-1,force = TRUE)
-
-		else if( (health_current > 0 || A.status_effects[ADRENALINE]) && A.status_effects[CRIT])
+		else if(A.status_effects[CRIT] && !should_be_in_crit)
 			A.remove_status_effect(CRIT)
 
-		if(damage[PAIN] > 0 && damage[PAIN] >= health_current && !A.status_effects[PAINKILLER] && !A.status_effects[PAINCRIT])
+		var/should_be_in_paincrit = damage[PAIN] > 0 && damage[PAIN] >= health_current
+		if(!A.status_effects[PAINCRIT] && should_be_in_paincrit)
 			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
-
-		else if((damage[PAIN] <= 0 || damage[PAIN] < health_current || A.status_effects[PAINKILLER]) && A.status_effects[PAINCRIT])
+		else if(A.status_effects[PAINCRIT] && !should_be_in_paincrit)
 			A.remove_status_effect(PAINCRIT)
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
 
-	if(!is_advanced(owner) || !is_organ(hit_object))
+	if(!is_organ(hit_object))
 		return .
 
 	var/mob/living/advanced/A = owner
@@ -196,5 +220,5 @@
 				else if(C.luck < 50 && prob(50-C.luck))
 					clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
-			.["items"] += C
+		.["items"] += C
 

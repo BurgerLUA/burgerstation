@@ -1,5 +1,4 @@
 /damagetype/npc/dick_kickem
-	name = "crashing wave kick"
 	attack_verbs = list("dick kick")
 
 	impact_sounds = list(

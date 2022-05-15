@@ -12,19 +12,16 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 	collision_dir = 0x0 //Special stuff.
 
-	value = 1000
+	value = 10000
 
 	density = TRUE
+	anchored = TRUE
 
 	var/last_warning_percent = 1
 	var/last_warning_time = 0
 
 	health = /health/construction/
 	health_base = 2000
-
-	desired_light_power = 0.75
-	desired_light_range = 6
-	desired_light_color = "#FFFF00"
 
 	var/charge = 0
 	var/charge_max = SECONDS_TO_DECISECONDS(60)
@@ -42,6 +39,9 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 	var/queue_power_update = FALSE
 
+/obj/structure/interactive/supermatter/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+	return health && health.health_max && !qdeleting && loc
+
 /obj/structure/interactive/supermatter/Finalize()
 	. = ..()
 	update_sprite()
@@ -54,7 +54,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		update_icon()
 		queue_power_update = FALSE
 
-	var/charge_to_take = min(10,charge)
+	var/charge_to_take = min(1,charge)
 	if(charge_to_take > 0)
 		add_charge(-charge_to_take)
 		if(charge >= charge_max*0.25 && charge <= charge_max*0.5) //Healing sweet spot.
@@ -74,7 +74,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 /obj/structure/interactive/supermatter/update_icon()
 	. = ..()
 	icon = initial(icon)
-	if(!charge)
+	if(charge <= 0)
 		icon_state = "sm_off"
 	else
 		icon_state = "sm_on"
@@ -140,7 +140,23 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 			trigger_warning()
 		//update_map_text()
 
-/obj/structure/interactive/supermatter/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+	if(weapon && DT.get_attack_type() == ATTACK_TYPE_MELEE && get_dist(src,weapon) <= 2)
+		if(weapon.health)
+			weapon.health.adjust_loss_smart(burn=400)
+		else if(is_item(weapon))
+			var/obj/item/I = weapon
+			I.adjust_quality(-200)
+
+		if((damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
+			attacker.visible_message(span("warning","\The [attacker.name] takes a slice of supermatter shard from \the [src.name] using a [weapon.name]."),span("warning","You take a slice of supermatter shard from \the [src.name] using \the [weapon.name]."))
+			var/obj/item/container/edible/supermatter_cheese/SC = new(get_turf(weapon))
+			INITIALIZE(SC)
+			GENERATE(SC)
+			FINALIZE(SC)
+			var/turf/T = get_turf(src)
+			explode(T,100,T,T,"Supermatter")
+
+/obj/structure/interactive/supermatter/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	if(source == src)
 		return FALSE
 	. = ..()
@@ -178,13 +194,14 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 
 /obj/structure/interactive/supermatter/station
-	health_base = 100000
+	name = "stable supermatter crystal"
+	health_base = 10000
 	charge_max = SECONDS_TO_DECISECONDS(60) //60 seconsd of power.
 
 /obj/structure/interactive/supermatter/defense
 	name = "unstable supermatter crystal"
 	desc_extended = "An extremely important and extremely unstable shard of supermatter. You should protect this at all costs if you're NanoTrasen."
-	health_base = 3000
+	health_base = 5000
 	charge_max = SECONDS_TO_DECISECONDS(900) //15 minutes
 
 /obj/structure/interactive/supermatter/defense/Finalize()

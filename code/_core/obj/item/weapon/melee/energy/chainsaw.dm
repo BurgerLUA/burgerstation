@@ -54,7 +54,7 @@
 
 /obj/item/weapon/melee/energy/chainsaw/proc/start(var/mob/caller)
 	enabled = TRUE
-	start_thinking(src)
+	START_THINKING(src)
 	damage_type = damage_type_on
 	play_sound('sound/weapons/chainsaw/start.ogg',get_turf(src),range_max=VIEW_RANGE)
 	update_sprite()
@@ -62,7 +62,7 @@
 
 /obj/item/weapon/melee/energy/chainsaw/proc/stop(var/mob/caller)
 	enabled = FALSE
-	stop_thinking(src)
+	STOP_THINKING(src)
 	damage_type = initial(damage_type)
 	play_sound('sound/weapons/chainsaw/stop.ogg',get_turf(src),range_max=VIEW_RANGE)
 	update_sprite()

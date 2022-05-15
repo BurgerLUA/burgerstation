@@ -1,5 +1,4 @@
 /damagetype/npc/medibot
-	name = "Medibot Ram"
 	attack_verbs = list("ram","drive")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

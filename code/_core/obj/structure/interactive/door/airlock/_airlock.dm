@@ -27,8 +27,6 @@
 	close_sound = 'sound/machines/airlock/close.ogg'
 	deny_sound = 'sound/machines/airlock/deny.ogg'
 
-	blocks_air = NORTH | EAST | SOUTH | WEST
-
 	var/no_access = FALSE
 
 	var/debug = FALSE
@@ -197,10 +195,10 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			if(should_lock)
 				lock(caller)
 			opened_time = 0
-			start_thinking(src)
+			START_THINKING(src)
 
 		if(DOOR_STATE_CLOSED)
-			stop_thinking(src)
+			STOP_THINKING(src)
 			if(should_lock)
 				lock(caller)
 
@@ -220,20 +218,20 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "opening_01"
 			light_state = "opening_01_light"
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			light_color = "#FFFF00"
 
 		if(DOOR_STATE_OPENING_02)
 			icon_state = "opening_02"
 			light_state = "opening_02_light"
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			light_color = "#00FF00"
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_01)
 			icon_state = "closing_01"
 			light_state = "closing_01_light"
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			light_color = "#FFFF00"
 			set_opacity(0)
 
@@ -242,10 +240,10 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			light_state = "closing_02_light"
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_WINDOW,a_dir = 0x0)
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_WINDOW)
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = 0x0)
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC)
 					set_opacity(1)
 			light_color = "#FF0000"
 
@@ -254,7 +252,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			light_state = "open_light"
 			light_color = null
 			desc = "The door is open."
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSED)
@@ -264,10 +262,10 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			desc = "The door is closed."
 			switch(filler)
 				if("glass")
-					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_SOLID,a_dir = initial(blocks_air))
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_SOLID)
 					set_opacity(0)
 				else
-					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC,a_dir = initial(blocks_air))
+					update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC)
 					set_opacity(1)
 			if(locked)
 				light_state = "light_special_static"
@@ -286,7 +284,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			light_state = "broken_light"
 			light_color = "#FF0000"
 			desc = "The door is broken."
-			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE,a_dir = 0x0)
+			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			set_opacity(0)
 
 	if(filler)

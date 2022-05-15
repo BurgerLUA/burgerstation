@@ -1,5 +1,4 @@
 /damagetype/cqc/sleeping_carp/crashing_wave_kick
-	name = "crashing wave kick"
 	attack_verbs = list("crashing wave kick")
 
 	impact_sounds = list(
@@ -55,7 +54,6 @@
 
 
 /damagetype/cqc/sleeping_carp/keelhaul
-	name = "keelhaul"
 
 	impact_sounds = list(
 		'sound/weapons/fists/cqc/keelhaul_01.ogg',
@@ -108,7 +106,6 @@
 
 
 /damagetype/cqc/sleeping_carp/gnashing_teeth
-	name = "gnashing teeth"
 	attack_verbs = list("gnashing teeth punch")
 
 	impact_sounds = list(

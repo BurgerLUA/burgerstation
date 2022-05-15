@@ -24,18 +24,18 @@
 		FINALIZE(disposals_container)
 		for(var/atom/movable/M in src.contents)
 			M.force_move(disposals_container)
-		stop_thinking(src)
+		STOP_THINKING(src)
 		disposals_countdown = initial(disposals_countdown)
 		flick("disposal-flush",src)
 		play_sound('sound/effects/disposals/flush.ogg',get_turf(src))
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 	disposals_countdown--
 
 	return TRUE
 
 /obj/structure/interactive/disposals/machine/chute/Entered(atom/movable/Obj,atom/OldLoc)
-	start_thinking(src)
+	START_THINKING(src)
 	return ..()
 
 /obj/structure/interactive/disposals/machine/chute/Crossed(atom/movable/O)

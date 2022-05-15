@@ -6,13 +6,15 @@
 	ambient_sound = 'sound/ambient/cave_2.ogg'
 
 	sunlight_freq = 4
-	sunlight_color = "#1A3E4C"
+	sunlight_color = "#F8FFFF"
 
 	area_identifier = null
 
-	flags_area = FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
 
 	sound_environment = ENVIRONMENT_UNDERWATER
+
+	dynamic_lighting = FALSE
 
 /area/space/is_space()
 	return TRUE
@@ -30,6 +32,7 @@
 	name = "deep space"
 	icon_state = "deepspess"
 
+	sunlight_color = null
 	sunlight_freq = 0
 
 /area/space/light

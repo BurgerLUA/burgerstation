@@ -45,4 +45,4 @@ var/global/list/possible_materials = list(
 
 /mob/living/advanced/player/antagonist/golem/add_species_languages()
 	. = ..()
-	known_languages[LANGUAGE_CANADIAN] = TRUE //lmao
+	//known_languages[LANGUAGE_GOLEM] = TRUE

@@ -72,7 +72,7 @@ var/global/list/wishgranter_speak_lines = list(
 
 /obj/structure/interactive/boss_loot/Finalize()
 	die_time = world.time + SECONDS_TO_DECISECONDS(120)
-	start_thinking(src)
+	START_THINKING(src)
 	return ..()
 
 /obj/structure/interactive/boss_loot/think()

@@ -8,8 +8,8 @@
 
 	tier = 2
 
-	damage_mod = 1.1
-	shoot_delay = 1
+	damage_mod = 1.3
+	shoot_delay = 1.1
 	burst_delay = 7
 	max_bursts = 3
 
@@ -17,12 +17,12 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/burst.ogg')
 
 	can_wield = TRUE
 
 	size = SIZE_4
-	weight = 12
+	weight = 14
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -54,16 +54,17 @@
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
-	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_x = 30 - 16
 	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_x = 19 - 16
 	attachment_sight_offset_y = 22 - 16
 
-	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 15 - 16
 
 	dan_mode = TRUE

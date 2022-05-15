@@ -30,15 +30,16 @@ var/global/list/ai_attacking_players = list()
 	//Measured in ticks.
 	var/objective_delay = DECISECONDS_TO_TICKS(10)
 
-	var/list/target_distribution_x = list(8,16,16,16,24)
-	var/list/target_distribution_y = list(8,16,16,16,24)
+	var/list/target_distribution_x = list(12,16,16,16,20)
+	var/list/target_distribution_y = list(12,16,16,16,20)
 
 	var/turf/start_turf
 
 	var/roaming_distance = 5
 
-	var/shoot_obstacles = TRUE
+	var/use_pathfinding = FALSE //For frustration.
 
+	var/shoot_obstacles = TRUE
 
 
 	var/left_click_chance = 90
@@ -51,10 +52,10 @@ var/global/list/ai_attacking_players = list()
 	var/frustration_attack_threshold = SECONDS_TO_TICKS(6) //Above this means they'll try to find a new target. THIS IS MEASURED IN TICKS.
 
 	var/frustration_move = 0
-	var/frustration_move_threshold = 5 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_move_threshold = 3 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/frustration_path = 0
-	var/frustration_path_threshold = 20 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_path_threshold = 10 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/turf/path_start_turf
 	var/turf/path_end_turf
@@ -210,7 +211,7 @@ var/global/list/ai_attacking_players = list()
 		add_to_active_list(T.z)
 		remove_from_inactive_list(T.z)
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
-		HOOK_ADD("post_death","\ref[src]_post_death",owner,src,.proc/post_death)
+		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
 	else
 		add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
@@ -221,7 +222,7 @@ var/global/list/ai_attacking_players = list()
 		attackers.Cut()
 		obstacles.Cut()
 		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
-		HOOK_REMOVE("post_death","\ref[src]_post_death",owner)
+		HOOK_REMOVE("pre_death","\ref[src]_pre_death",owner)
 
 	return TRUE
 
@@ -238,7 +239,7 @@ var/global/list/ai_attacking_players = list()
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	set_active(active,TRUE)
 
-/ai/proc/post_death(var/mob/living/L,args)
+/ai/proc/pre_death(var/mob/living/L,args)
 	set_active(FALSE,TRUE)
 	return TRUE
 

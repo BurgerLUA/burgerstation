@@ -18,11 +18,11 @@
 
 /reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 5*.*multiplier
+	owner.brute_regen_buffer += 10*.*multiplier
 
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.*multiplier
+	owner.brute_regen_buffer += 8*.*multiplier
 
 /reagent/medicine/bicaridine_plus
 	name = "Bicaridine+"
@@ -39,11 +39,11 @@
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 10*.*multiplier
+	owner.brute_regen_buffer += 15*.*multiplier
 
 /reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 8*.*multiplier
+	owner.brute_regen_buffer += 12*.*multiplier
 
 /reagent/medicine/caridone
 	name = "Caridone"
@@ -65,11 +65,11 @@
 
 /reagent/medicine/caridone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,10)*.*multiplier
+	owner.brute_regen_buffer += rand(1,20)*.*multiplier
 
 /reagent/medicine/caridone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,10)*.*multiplier
+	owner.brute_regen_buffer += rand(1,20)*.*multiplier
 
 /reagent/medicine/percardone
 	name = "Percardone"
@@ -119,8 +119,8 @@
 
 /reagent/medicine/dicarditane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.*multiplier
-	owner.burn_regen_buffer += 2*.*multiplier
+	owner.brute_regen_buffer += 12*.*multiplier
+	owner.burn_regen_buffer += 6*.*multiplier
 
 /reagent/medicine/dicarditane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -282,11 +282,11 @@
 
 /reagent/medicine/dylovene/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.05 : 0) + 5)*.*multiplier
+	owner.tox_regen_buffer += ((owner.health ? owner.health.damage[TOX]*0.05 : 0) + 5)*.*multiplier
 
 /reagent/medicine/dylovene/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.04 : 0) + 4)*.*multiplier
+	owner.tox_regen_buffer += ((owner.health ? owner.health.damage[TOX]*0.04 : 0) + 4)*.*multiplier
 
 /reagent/medicine/dexalin
 	name = "Dexalin"
@@ -432,7 +432,7 @@
 		container.owner.health.adjust_loss_smart(burn=.*-10,robotic=FALSE)
 		if(is_organ(container.owner))
 			var/obj/item/organ/O = container.owner
-			O.send_pain(50)
+			O.send_pain_response(50)
 
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -471,7 +471,7 @@
 		container.owner.health.adjust_loss_smart(brute=.*-10,robotic=FALSE)
 		if(is_organ(container.owner))
 			var/obj/item/organ/O = container.owner
-			O.send_pain(50)
+			O.send_pain_response(50)
 
 /reagent/medicine/styptic_powder/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -513,7 +513,7 @@
 			if(O.bleeding >= 0.5)
 				tox_to_adjust = .*5
 				O.bleeding = 0
-				O.send_pain(50)
+				O.send_pain_response(100)
 		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=tox_to_adjust,robotic=FALSE)
 
 /reagent/medicine/synthflesh/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -579,12 +579,12 @@
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(UNDYING) <= strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
 		L.add_status_effect(UNDYING,strength,-1)
 
 /reagent/medicine/inaprovaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(L.get_status_effect_magnitude(UNDYING) <= strength)
+	if(STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
 		L.remove_status_effect(UNDYING)

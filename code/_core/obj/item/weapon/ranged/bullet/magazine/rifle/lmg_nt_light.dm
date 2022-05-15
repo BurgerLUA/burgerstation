@@ -14,7 +14,7 @@
 
 	damage_mod = 1.2
 
-	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/223/lmg.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -58,13 +58,13 @@
 	)
 
 	attachment_barrel_offset_x = 31 - 16
-	attachment_barrel_offset_y = 21 - 16
+	attachment_barrel_offset_y = 19 - 16
 
 	attachment_sight_offset_x = 18 - 16
-	attachment_sight_offset_y = 22 - 16
+	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 29 - 16
-	attachment_undermount_offset_y = 16 - 16
+	attachment_undermount_offset_x = 26 - 16
+	attachment_undermount_offset_y = 15 - 16
 
 
 

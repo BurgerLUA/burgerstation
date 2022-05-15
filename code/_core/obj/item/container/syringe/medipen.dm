@@ -13,7 +13,7 @@
 	can_draw = FALSE
 	adjustable = FALSE
 
-	injection_time = 0
+	injection_time = SECONDS_TO_DECISECONDS(0.5)
 	quality_reduction_on_use = 100
 
 	value = 1

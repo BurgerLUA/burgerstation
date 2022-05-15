@@ -1,53 +1,3 @@
-/mob/living/proc/add_health_element(var/obj/hud/button/health/H)
-	health_elements[H.id] = H
-	if(client)
-		client.screen += H
-	update_health_elements()
-
-/mob/living/proc/remove_health_element(var/obj/hud/button/health/H)
-	health_elements -= H.id //H.id is important
-	if(client)
-		client.screen -= H
-	update_health_elements()
-
-/mob/living/proc/restore_health_elements()
-	if(!client)
-		return
-
-	for(var/k in health_elements)
-		var/obj/hud/button/H = health_elements[k]
-		client.screen += H
-
-	update_health_elements()
-
-/mob/living/proc/update_health_elements()
-	if(client)
-		client.known_health_elements = health_elements.Copy()
-
-/mob/living/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
-
-	if(!client)
-		return FALSE
-
-	if(health && health_elements["health"])
-		var/obj/hud/button/health/H = health_elements["health"]
-		H.update_stats(src)
-
-	if(stamina && health_elements["stamina"])
-		var/obj/hud/button/health/S = health_elements["stamina"]
-		S.update_stats(src)
-
-	if(mana && health_elements["mana"])
-		var/obj/hud/button/health/M = health_elements["mana"]
-		M.update_stats(src)
-
-	if(length(screen_blood))
-		for(var/k in screen_blood)
-			var/obj/hud/screen_blood/SB = k
-			SB.update_stats()
-
-	return TRUE
-
 /mob/living/proc/check_death()
 
 	if(!health || has_status_effect(IMMORTAL))
@@ -55,7 +5,7 @@
 
 	var/health_added = 0
 	if(has_status_effect(UNDYING))
-		health_added += get_status_effect_magnitude(UNDYING)
+		health_added += STATUS_EFFECT_MAGNITUDE(src,UNDYING)
 
 	if((health.health_current + health_added) <= death_threshold)
 		return TRUE
@@ -128,8 +78,8 @@
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon,atom_to_butcher)
 
 	if(!dead && has_status_effect(PARRIED))
-		var/stun_duration = get_status_effect_duration(STUN)*2
-		var/stun_magnitude = get_status_effect_magnitude(STUN)*2
+		var/stun_duration = STATUS_EFFECT_DURATION(src,STUN)*2
+		var/stun_magnitude = STATUS_EFFECT_MAGNITUDE(src,STUN)*2
 		remove_status_effect(PARRIED)
 		add_status_effect(STUN,stun_magnitude,stun_duration)
 
@@ -277,6 +227,7 @@
 		if(PAIN)
 			add_status_effect(STUN,30,30)
 			play_sound('sound/effects/impacts/savage_pain.ogg',T,volume=80)
+			send_pain_response(1000)
 		if(ION)
 			add_status_effect(PARALYZE,30,30)
 			play_sound('sound/effects/impacts/savage_ion.ogg',T,volume=80)

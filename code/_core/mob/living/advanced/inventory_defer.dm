@@ -12,8 +12,6 @@
 	var/y_pos = -FLOOR(1 + slot/6,1)
 
 	var/obj/hud/button/inventory_defer/B = new
-	B.icon = initial(I.icon)
-	B.icon_state = initial(I.icon_state)
 	B.screen_loc = "CENTER+[0.5+x_pos],TOP+[y_pos]"
 	B.clone(I)
 	B.update_owner(src)
@@ -41,9 +39,11 @@
 	var/s=0
 	for(var/k in inventories_by_id)
 		var/obj/hud/inventory/I = inventories_by_id[k]
-		if(!(I.flags & (FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB)))
+		if(!(I.flags & (FLAG_HUD_INVENTORY | FLAG_HUD_MOB)))
 			continue
-		if(I.flags & FLAGS_HUD_CONTAINER) //Organs only.
+		if(I.flags & FLAG_HUD_CONTAINER) //Organs only.
+			continue
+		if(I.ultra_persistant)
 			continue
 		caller.add_inventory_defer(I,s)
 		s++

@@ -22,7 +22,7 @@
 /obj/structure/totem/Finalize()
 	. = ..()
 	flick("appear", src)
-	start_thinking(src)
+	START_THINKING(src)
 
 /obj/structure/totem/Destroy()
 	if(owner)
@@ -69,11 +69,11 @@
 			continue
 		if(L.health.health_current >= L.health.health_max)
 			continue
-		if(L.health.get_loss(BRUTE))
+		if(L.health.damage[BRUTE])
 			L.brute_regen_buffer += (3 + (3 * leveled_effect))
-		if(L.health.get_loss(BURN))
+		if(L.health.damage[BURN])
 			L.burn_regen_buffer += (3 + (3 * leveled_effect))
-		if(L.health.get_loss(TOX))
+		if(L.health.damage[TOX])
 			L.tox_regen_buffer += (3 + (3 * leveled_effect))
 		CREATE(/obj/effect/temp/healing,L.loc)
 
@@ -114,8 +114,7 @@
 			continue
 		if(L.health.stamina_current >= L.health.stamina_max)
 			continue
-		if(L.health.get_stamina_loss())
-			L.stamina_regen_buffer += (3 + (3 * leveled_effect))
+		L.stamina_regen_buffer += (3 + (3 * leveled_effect))
 		CREATE(/obj/effect/temp/healing,L.loc)
 
 /obj/structure/totem/stamina_deal
@@ -153,8 +152,7 @@
 			continue
 		if(L.health.mana_current >= L.health.mana_max)
 			continue
-		if(L.health.get_mana_loss())
-			L.mana_regen_buffer += (3 + (3 * leveled_effect))
+		L.mana_regen_buffer += (3 + (3 * leveled_effect))
 		CREATE(/obj/effect/temp/healing,L.loc)
 
 /obj/structure/totem/mana_deal

@@ -16,6 +16,8 @@ SUBSYSTEM_DEF(turf)
 
 	var/list/blood_turfs = list()
 
+
+
 /subsystem/turf/unclog(var/mob/caller)
 
 	for(var/k in wet_turfs)
@@ -32,18 +34,15 @@ SUBSYSTEM_DEF(turf)
 	for(var/i=1,i<=10,i++) //Generate 10 seeds.
 		seeds += rand(1,99999)
 
-	/*
-	for(var/obj/map_generator/G in world)
-		G.generate_map()
-	*/
-
 	for(var/turf/simulated/T in world)
 		T.world_spawn = TRUE
 
+	//First generation pass.
 	for(var/turf/unsimulated/generation/G in world)
 		G.pre_generate()
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
+	//Second generation pass.
 	for(var/turf/unsimulated/generation/G in world)
 		G.generate()
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
@@ -88,7 +87,6 @@ SUBSYSTEM_DEF(turf)
 
 	. = ..()
 
-
 /subsystem/turf/on_life()
 
 	for(var/k in wet_turfs)
@@ -100,4 +98,4 @@ SUBSYSTEM_DEF(turf)
 			T.update_overlays()
 		CHECK_TICK(75,FPS_SERVER*3)
 
-	. = ..()
+	return TRUE

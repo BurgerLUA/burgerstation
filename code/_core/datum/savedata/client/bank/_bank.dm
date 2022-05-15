@@ -43,7 +43,7 @@ var/global/list/ckey_to_bank_storage = list()
 		if(!BS)
 			//No need to save since it's been unchanged.
 			continue
-		D.loaded_data = BS.save_item_data(null)
+		D.loaded_data = BS.save_item_data(null) //Don't check for player because its not needed.
 		D.save()
 		banks_saved++
 

@@ -18,7 +18,7 @@
 
 		var/wound_stealth = get_mob_value("wound_stealth")
 
-		switch(health.damage[TOX] - wound_stealth*health.damage[TOX])
+		switch(health.damage[TOX]/(1 + wound_stealth))
 			if(5 to 15)
 				. += div("warning","<i>[noun] off color.</i>")
 			if(15 to 25)
@@ -28,7 +28,7 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] diseased.</u></b>")
 
-		switch(health.damage[PAIN] - wound_stealth*health.damage[PAIN])
+		switch((health.damage[PAIN] - pain_removal)/(1 + wound_stealth))
 			if(15 to 25)
 				. += div("warning","[noun] sore.")
 			if(25 to 50)

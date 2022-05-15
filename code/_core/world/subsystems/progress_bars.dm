@@ -1,48 +1,101 @@
-var/global/list/all_progress_bars = list()
-
-SUBSYSTEM_DEF(progress_bars)
+SUBSYSTEM_DEF(progressbars)
 	name = "Progress Bar Subsystem"
 	desc = "Controls the display of progress bars."
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 
-/subsystem/progress_bars/on_life()
-	for(var/obj/hud/progress_bar/P in all_progress_bars)
+	var/list/all_progress_bars = list()
 
-		var/failed_first_turf = length(P.callback_list) && P.callback_list["start_turf"]  && P.callback_list["start_turf"] != get_turf(P.loc)
-		var/failed_second_turf = length(P.callback_list) && P.callback_list["target_start_turf"] && P.callback_list["target"]  && P.callback_list["target_start_turf"] != get_turf(P.callback_list["target"])
+	cpu_usage_max = 95
+	tick_usage_max = 95
 
-		if(failed_first_turf || failed_second_turf || !P.loc)
-			all_progress_bars -= P
-			if(P.loc)
-				P.loc.on_progress_bar_failed(P.id,P.callback_list)
-				P.loc.doing_progress = FALSE
+
+/subsystem/progressbars/unclog(var/mob/caller)
+
+	for(var/k in all_progress_bars)
+		var/list/progress_list = all_progress_bars[k]
+		var/obj/hud/progress_bar/P = progress_list["progress_bar"]
+		qdel(P)
+		all_progress_bars -= k
+
+	broadcast_to_clients(span("danger","Removed all progress bars."))
+
+	return ..()
+
+/subsystem/progressbars/proc/process_progress_bar(var/k)
+	var/atom/A = k
+	var/list/progress_list = all_progress_bars[k]
+	var/obj/hud/progress_bar/P = progress_list["progress_bar"]
+
+	P.update_sprite()
+
+	if(progress_list["time"] < world.time)
+		all_progress_bars -= A
+		if(progress_list["src"])
+			call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
+		else
+			call(progress_list["proc"])(arglist(progress_list["args"]))
+		animate(P,alpha=0,time=5)
+		queue_delete(P,10)
+		return FALSE
+
+	if(progress_list["condition_proc"])
+		var/pass = FALSE
+		if(progress_list["condition_src"])
+			if(call(progress_list["condition_src"],progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
+				pass = TRUE
+		else
+			if(call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
+				pass = TRUE
+		if(!pass)
 			animate(P,alpha=0,time=5)
 			queue_delete(P,10)
-			continue
-
-		if(P.end_time < world.time)
-			all_progress_bars -= P
-			P.loc.doing_progress = FALSE
-			animate(P,alpha=0,time=5)
-			P.loc.on_progress_bar_completed(P.id,P.callback_list)
-			queue_delete(P,10)
-			continue
-
-		P.update_icon()
+			all_progress_bars -= A
+			return FALSE
 
 	return TRUE
 
 
-/proc/add_progress_bar(var/atom/A,var/desired_id,var/duration,var/list/callback_list)
 
-	if(A.doing_progress)
-		if(is_living(A))
-			var/mob/living/L = A
-			L.to_chat(span("notice","You're already busy with a task!"))
+/subsystem/progressbars/on_life()
+
+	for(var/k in all_progress_bars)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		if(process_progress_bar(k) == null)
+			var/atom/A = k
+			var/list/progress_list = all_progress_bars[k]
+			var/obj/hud/progress_bar/P = progress_list["progress_bar"]
+			log_error("Warning! A progress bar belonging to [A.get_debug_name()] didn't run properly, and thus was deleted.")
+			qdel(P)
+			all_progress_bars -= A
+
+	return TRUE
+
+/subsystem/progressbars/proc/add_progress_bar(var/atom/owner,var/atom/object,var/desired_time,var/desired_proc,...)
+
+	if(all_progress_bars[owner])
+		if(ismob(owner))
+			var/mob/M = owner
+			M.to_chat(span("notice","You're already busy with a task!"))
 		return FALSE
 
-	var/obj/hud/progress_bar/P = new(A, desired_id, world.time, world.time + duration, callback_list)
-	all_progress_bars += P
-	A.doing_progress = TRUE
+	all_progress_bars[owner] = list(
+		"src" = object,
+		"proc" = desired_proc,
+		"args" = args.Copy(5),
+		"time" = world.time + desired_time,
+		"progress_bar" = new /obj/hud/progress_bar(owner, world.time, world.time + desired_time)
+	)
+
+	return TRUE
+
+/subsystem/progressbars/proc/add_progress_bar_conditions(var/atom/owner,var/atom/object,var/desired_proc,...)
+
+	if(!all_progress_bars[owner])
+		return FALSE
+
+	all_progress_bars[owner]["condition_src"] = object
+	all_progress_bars[owner]["condition_proc"] = desired_proc
+	all_progress_bars[owner]["condition_args"] = args.Copy(4)
+
 	return TRUE

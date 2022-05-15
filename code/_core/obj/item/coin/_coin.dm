@@ -48,6 +48,9 @@
 
 /obj/item/coin/antag_token/click_self(var/mob/caller)
 
+	if(!is_player(caller))
+		return FALSE
+
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 

@@ -176,15 +176,15 @@ client/proc/debug_variables(datum/D in world)
 			body += "<br><font size='1'><a href='?_src_=vars;datumedit=\ref[D];varnameedit=ckey'>[M.ckey ? M.ckey : "No ckey"]</a> / <a href='?_src_=vars;datumedit=\ref[D];varnameedit=real_name'>[M.name ? M.name : "No real name"]</a></font>"
 			body += {"
 			<br><font size='1'>
-			BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brute'>[M.health.get_loss(BRUTE)]</a>
-			FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fire'>[M.health.get_loss(BURN)]</a>
-			TOXIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=toxin'>[M.health.get_loss(TOX)]</a>
-			OXY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=oxygen'>[M.health.get_loss(OXY)]</a>
-			FATIGUE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fatigue'>[M.health.get_loss(FATIGUE)]</a>
-			SANITY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=sanity'>[M.health.get_loss(SANITY)]</a>
-			MENTAL:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mental'>[M.health.get_loss(MENTAL)]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.health.get_stamina_loss()]</a>
-			MANA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mana'>[M.health.get_mana_loss()]</a>
+			BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brute'>[M.health.damage[BRUTE]]</a>
+			FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fire'>[M.health.damage[BURN]]</a>
+			TOXIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=toxin'>[M.health.damage[TOX]]</a>
+			OXY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=oxygen'>[M.health.damage[OXY]]</a>
+			FATIGUE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fatigue'>[M.health.damage[FATIGUE]]</a>
+			SANITY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=sanity'>[M.health.damage[SANITY]]</a>
+			MENTAL:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mental'>[M.health.damage[MENTAL]]</a>
+			STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.health.stamina_max - M.health.stamina_current]</a>
+			MANA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mana'>[M.health.mana_max - M.health.mana_current]</a>
 			</font>
 			"}
 		else
@@ -519,9 +519,8 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(P.client) P.client.make_ghost(P.loc)
 
 		NO.control_mob(P)
-		P.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 		P.add_species_buttons()
-		P.add_species_health_elements()
+		P.queue_health_update = TRUE
 		href_list["datumrefresh"] = href_list["direct_control"]
 
 	else if(href_list["delall"])
@@ -772,12 +771,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			if(S.default_color_skin)
 				O.additional_blends["skin"].color = S.default_color_skin
 				M.update_overlay_tracked("\ref[O]")
-		if(M.health && M.health_elements && M.health_elements["body"])
-			var/obj/hud/button/health/body/B = M.health_elements["body"]
-			B.update_owner(null) //Please, don't question how...It works...
-			B.update_owner(M)
-		M.update_health_element_icons()
-		M.queue_health_update = 1
+		M.queue_health_update = TRUE
 
 	else if(href_list["remorgan"])
 		href_list["datumrefresh"] = href_list["remorgan"]
@@ -806,12 +800,12 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(!ismob(M))
 			to_chat(span("notice",  "This can only be done to instances of type /mob/living/advanced"))
 			return
-		M.update_health_element_icons(TRUE,TRUE,TRUE,TRUE)
 		M.client.update_zoom(initial(M.client.zoom_level))
 		M.client.update_verbs()
 		M.client.update_color_mods()
 		M.restore_inventory()
 		M.restore_buttons()
+		M.queue_health_update = TRUE
 		href_list["datumrefresh"] = href_list["regenerateicons"]
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
@@ -827,19 +821,18 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "Mob doesn't exist anymore"))
 			return
 		switch(Text)
-			if("brute")	L.health.adjust_loss_smart(brute=amount,update=FALSE)
-			if("fire")	L.health.adjust_loss_smart(burn=amount,update=FALSE)
-			if("toxin")	L.health.adjust_loss_smart(tox=amount,update=FALSE)
-			if("oxygen")L.health.adjust_loss_smart(oxy=amount,update=FALSE)
-			if("fatigue")	L.health.adjust_loss_smart(fatigue=amount,update=FALSE)
-			if("sanity")	L.health.adjust_loss_smart(sanity=amount,update=FALSE)
-			if("mental")	L.health.adjust_loss_smart(mental=amount,update=FALSE)
+			if("brute")	L.health.adjust_loss_smart(brute=amount)
+			if("fire")	L.health.adjust_loss_smart(burn=amount)
+			if("toxin")	L.health.adjust_loss_smart(tox=amount)
+			if("oxygen")L.health.adjust_loss_smart(oxy=amount)
+			if("fatigue")	L.health.adjust_loss_smart(fatigue=amount)
+			if("sanity")	L.health.adjust_loss_smart(sanity=amount)
+			if("mental")	L.health.adjust_loss_smart(mental=amount)
 			if("stamina")	L.health.adjust_stamina(amount)
 			if("mana")	L.health.adjust_mana(amount)
 			else
 				to_chat(span("notice",  "You caused an error. DEBUG: Text:[Text] Mob:[L]"))
 				return
-		L.queue_health_update = TRUE
 
 		if(amount != 0)
 			href_list["datumrefresh"] = href_list["mobToDamage"]

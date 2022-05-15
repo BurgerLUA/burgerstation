@@ -1,6 +1,7 @@
 /obj/item/container/simple/
 	icon = 'icons/obj/item/container/alcohol.dmi'
 	reagents = /reagent_container/beaker/large
+	size = SIZE_2
 
 /obj/item/container/simple/fernet
 	name = "Fernet Italiano"

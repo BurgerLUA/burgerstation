@@ -1,5 +1,4 @@
 /damagetype/melee/club/drill
-	name = "drill"
 
 	impact_sounds = list(
 		'sound/items/drill.ogg',

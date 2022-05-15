@@ -31,7 +31,7 @@
 //	if(enabled)
 //		enabled = FALSE
 //		update_sprite()
-//		stop_thinking(src)
+//		STOP_THINKING(src)
 //
 //	else
 //		enabled = TRUE

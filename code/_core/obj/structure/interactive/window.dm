@@ -19,8 +19,6 @@
 
 	health_base = 100
 
-	blocks_air = NORTH | EAST | SOUTH | WEST
-
 	plane = PLANE_WALL
 
 	density = TRUE
@@ -147,5 +145,5 @@
 
 	. = ..()
 
-	update_collisions(c_dir = dir, a_dir = dir)
+	update_collisions(c_dir = dir)
 

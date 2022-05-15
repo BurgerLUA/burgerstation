@@ -34,9 +34,6 @@
 
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
-	var/corner_icons = FALSE
-	var/corner_category = "none"
-
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
@@ -52,6 +49,8 @@
 	var/listener = FALSE //Setting this to true doesn't make it listen after it's been initialized.
 
 	var/dir_offset = TILE_SIZE
+
+	var/list/filter_list
 
 /atom/proc/get_display_name(var/mob/caller)
 	return "[src.name]"
@@ -91,7 +90,7 @@
 
 /atom/Destroy()
 
-	stop_thinking(src)
+	STOP_THINKING(src)
 	stop_advanced_thinking(src)
 
 	set_light(FALSE)
@@ -137,14 +136,10 @@
 	update_atom_light()
 
 /atom/New()
-
 	. = ..()
-
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-	set_dir(dir,TRUE)
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src

@@ -1,5 +1,4 @@
 /damagetype/npc/bull
-	name = "Bull Gore"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

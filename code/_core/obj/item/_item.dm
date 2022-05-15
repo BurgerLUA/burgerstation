@@ -145,6 +145,7 @@
 
 	var/obj/item/clothing/additional_clothing_parent
 
+	var/block_sound //The sound made when this item blocks an attack.
 	var/list/block_defense = list(
 		ATTACK_TYPE_UNARMED = 0.25,
 		ATTACK_TYPE_MELEE = 0.5,
@@ -177,6 +178,8 @@
 	var/no_drop = FALSE //Set to true if you're unable to drop this item via normal means.
 
 	var/combat_range = 1 //Maximum ideal combat range for the weapon.
+
+	var/can_negate_damage = FALSE
 
 /obj/item/Destroy()
 
@@ -533,7 +536,7 @@ var/global/list/rarity_to_mul = list(
 	else
 		undelete(src)
 
-	return ..()
+	. = ..()
 
 /obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
 
@@ -724,7 +727,7 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(magnitude > 3)
 
@@ -808,13 +811,6 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-
-/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
-	. = ..()
-	if(. && is_advanced(loc))
-		var/mob/living/advanced/A = loc
-		A.update_overlay_tracked("\ref[src]")
-
 /obj/item/update_icon()
 	. = ..()
 	if(length(polymorphs))
@@ -877,3 +873,7 @@ var/global/list/rarity_to_mul = list(
 /obj/item/dust(var/atom/source)
 	qdel(src)
 	return TRUE
+
+
+/obj/item/proc/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
+	return FALSE

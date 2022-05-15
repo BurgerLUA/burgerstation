@@ -143,3 +143,9 @@ var/global/list/status_displays = list()
 	desc = "ASS BLAST USA"
 	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the next shuttle launch for delta."
 	status_id = "delta"
+
+/obj/structure/interactive/status_display/global_display/debug
+	name = "debug shuttle status display"
+	desc = "ASS BLAST USA"
+	desc_extended = "Displays text, depending on what it's supposed to display. This one shows status of the next shuttle launch for a debug shuttle."
+	status_id = "debug"

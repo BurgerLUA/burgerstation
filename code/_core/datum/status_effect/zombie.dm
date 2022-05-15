@@ -134,10 +134,10 @@
 		return FALSE
 
 	var/obj/item/organ/head/H = L.labeled_organs[BODY_HEAD]
-	if(!H || !H.health)
+	if(!H || !H.health || H.health.health_current <= 0)
 		return FALSE
 
-	var/extra_health = max(0,-L.health.health_current*1.25)
+	var/extra_health = clamp(-L.health.health_current*1.25,0,L.health.health_max*0.5)
 	L.add_status_effect(UNDYING,extra_health,-1,force=TRUE,stealthy=TRUE)
 
 	if(!L.check_death())
@@ -188,10 +188,9 @@
 	if(!is_advanced(A))
 		return FALSE
 
-
 	if(!A.dead)
-		if(A.health.health_current <= 0)
-			A.death()
+		if(A.health.health_current/A.health.health_max <= 0.5)
+			A.death() //Instant death.
 		else
 			return FALSE
 

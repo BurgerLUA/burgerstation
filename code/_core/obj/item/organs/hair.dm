@@ -4,11 +4,12 @@
 	desc = "Yes. This is hair."
 	icon_state = "none"
 	worn_layer = LAYER_MOB_HAIR_HEAD
-	break_threshold = 5
 
 	attach_flag = BODY_HEAD
 
 	enable_wounds = FALSE
+
+	can_be_broken = FALSE
 
 /obj/item/organ/hair/initialize_blends()
 	. = ..()
@@ -24,11 +25,12 @@
 	desc = "Yes, this is your facial hair."
 	icon_state = "none"
 	worn_layer = LAYER_MOB_HAIR_FACE
-	break_threshold = 5
 
 	attach_flag = BODY_HEAD
 
 	enable_wounds = FALSE
+
+	can_be_broken = FALSE
 
 /obj/item/organ/beard/initialize_blends()
 	. = ..()

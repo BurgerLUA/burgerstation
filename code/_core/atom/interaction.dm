@@ -7,6 +7,9 @@
 /atom/proc/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object. This is called first.
 	return FALSE
 
+/atom/proc/click_on_object_alt(var/mob/caller as mob,var/atom/object,location,control,params) //Basically a special attack. For wielded objects.
+	return FALSE
+
 /atom/proc/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	return FALSE
 

@@ -69,7 +69,7 @@
 
 /obj/hud/button/lockpicking/MouseDown(location,control,params)
 	if(!frozen)
-		start_thinking(src)
+		START_THINKING(src)
 	return TRUE
 
 /obj/hud/button/lockpicking/MouseMove(location,control,params)

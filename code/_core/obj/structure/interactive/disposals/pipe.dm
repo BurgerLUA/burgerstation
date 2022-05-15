@@ -6,6 +6,13 @@
 
 	plane = PLANE_AREA-2 //Layered above stuff in maps.
 
+	alpha = 100
+
+/obj/structure/interactive/disposals/pipe/New(var/desired_loc)
+	. = ..()
+	alpha = 255
+
+
 /obj/structure/interactive/disposals/pipe/get_connections()
 
 	. = list()

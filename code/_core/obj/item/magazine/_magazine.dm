@@ -225,6 +225,8 @@
 	icon = 'icons/obj/item/magazine/golden.dmi'
 	icon_state = "inventory"
 
+	contraband = TRUE
+
 	value = -1
 	value_burgerbux = 1
 

@@ -80,7 +80,7 @@
 	. = list()
 
 	for(var/DT in medicine)
-		var/loss = target.health.get_loss(DT)
+		var/loss = target.health.damage[DT]
 		if(loss < healing_threshold)
 			continue
 		var/reagent/R = REAGENT(medicine[DT])

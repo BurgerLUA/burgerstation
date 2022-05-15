@@ -35,7 +35,7 @@ obj/structure/interactive/door
 
 	powered = FALSE //Set to true if this door is active.
 
-/obj/structure/interactive/door/New(var/desired_loc)
+/obj/structure/interactive/door/Generate()
 
 	if(spawn_signaller)
 		var/obj/item/device/signaller/S = new(src)

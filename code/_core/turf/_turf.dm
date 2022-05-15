@@ -7,6 +7,8 @@
 	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR
 
+	opacity = 0
+
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	collision_flags = FLAG_COLLISION_NONE
 
@@ -29,8 +31,6 @@
 
 	var/world_spawn = FALSE
 
-	var/lightness = 0 //Calculated tile darkness.
-
 	var/list/stored_shuttle_items
 
 	var/safe_fall = FALSE //Set to true if it's safe to fall on this tile.
@@ -43,6 +43,17 @@
 
 	var/parallax_icon = 'icons/obj/effects/parallax.dmi'
 
+	//Stored variables for shuttles
+	var/transit_area
+	var/transit_turf
+
+	density = FALSE
+
+	var/corner_icons = FALSE
+	var/corner_category = "none"
+
+/turf/proc/pre_change() //When this turf is removed in favor of a new turf.
+	return TRUE
 
 /turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
 
@@ -59,7 +70,7 @@
 					continue
 				if(M.allow_path)
 					continue
-				if(!M.Cross(crosser,src))
+				if(M.Cross(crosser,src))
 					continue
 				can_cross = FALSE
 				break
@@ -90,7 +101,7 @@
 					continue
 				if(M.allow_path)
 					continue
-				if(!M.Cross(crosser,src))
+				if(M.Cross(crosser,src))
 					continue
 				can_cross = FALSE
 				break
@@ -103,7 +114,7 @@
 					continue
 				if(M.allow_path)
 					continue
-				if(!M.Cross(crosser,T1))
+				if(M.Cross(crosser,T1))
 					continue
 				can_cross = FALSE
 				break
@@ -120,15 +131,6 @@
 	var/area/A = loc
 	return istype(A) && A.is_space()
 
-/turf/proc/update_edges()
-
-	for(var/direction in DIRECTIONS_ALL)
-		var/turf/T = get_step(src,direction)
-		if(T && is_simulated(T))
-			T.update_sprite()
-
-	return TRUE
-
 /turf/proc/is_safe_teleport(var/check_contents=TRUE)
 
 	var/area/A = loc
@@ -140,7 +142,7 @@
 
 /turf/proc/post_move(var/mob/M,var/atom/old_loc)
 
-	if(M.ckey_last)
+	if(M.ckey_last) //Only care about mobs with ckeys.
 		for(var/k in M.parallax)
 			var/obj/parallax/P = M.parallax[k]
 			P.icon = parallax_icon
@@ -159,19 +161,17 @@
 
 
 /turf/Destroy()
-
-	if(corner_category)
-		queue_update_edges(src)
-
-	if(old_living)
-		old_living.Cut()
-
-	return ..()
-
+	CRASH("Tried destroying a turf!")
+	return FALSE
 
 /turf/Finalize()
-	if(corner_icons) SSsmoothing.queued_smoothing += src
 	. = ..()
+	if(corner_icons)
+		if(SSsmoothing.initialized)
+			SSsmoothing.queue_update_edges(src)
+		else
+			SSsmoothing.queued_smoothing |= src
+
 
 /*
 /turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -269,15 +269,15 @@
 	return ..()
 
 
-/turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	for(var/k in src.contents)
 		var/atom/movable/M = k
-		M.act_explode(owner,source,epicenter,magnitude,desired_loyalty)
+		M.act_explode(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 	return ..()
 
-/turf/proc/setup_turf_light(var/sunlight_freq=VIEW_RANGE*0.5)
+/turf/proc/setup_turf_light(var/sunlight_freq)
 	return FALSE
 
 /turf/should_smooth_with(var/turf/T)

@@ -4,7 +4,7 @@
 
 	max_size = SIZE_8
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CRAFTING
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CRAFTING
 
 	alpha = 0 //Hidden until enabled
 	mouse_opacity = 0 //Off until enabled.

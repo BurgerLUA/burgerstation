@@ -63,7 +63,7 @@
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 18 - 16
+	attachment_sight_offset_x = 19 - 16
 	attachment_sight_offset_y = 20 - 16
 
 	attachment_undermount_offset_x = 25 - 16

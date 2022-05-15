@@ -1,12 +1,30 @@
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	var/atom/top_object = get_top_object()
-
-	//Test
-	if(is_living(caller)) //TODO: Do you even need this?
+	//Dead can't interact.
+	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
 			L.to_chat(span("warning","You're dead!"))
+			return TRUE
+
+	if(parent_inventory) //Wielding an object.
+		var/atom/top_object = parent_inventory.get_top_object()
+		if(object != top_object)
+			top_object.click_on_object_alt(caller,object,location,control,params)
+			return TRUE
+
+	//Reinforced grabbing. Doesn't matter what your intent is.
+	if(grabbed_object && grabbed_object == object && is_living(object))
+		reinforce_grab(caller)
+		return TRUE
+
+	var/atom/top_object = get_top_object()
+
+	//Alt click a corpse with an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && is_advanced(object))
+		var/mob/living/advanced/A = object
+		if(A.dead)
+			A.examine_body_inventory(caller)
 			return TRUE
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
@@ -82,7 +100,7 @@
 
 			var/list/target_cords = L.get_current_target_cords(params)
 			//Throwing it
-			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(target_cords[1]),text2num(target_cords[2]),vel_x,vel_y,steps_allowed = VIEW_RANGE,steps_allowed = VIEW_RANGE,desired_loyalty = L.loyalty_tag)
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(target_cords[1]),text2num(target_cords[2]),vel_x,vel_y,steps_allowed = VIEW_RANGE,steps_allowed = VIEW_RANGE,desired_loyalty_tag = L.loyalty_tag)
 
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))
@@ -112,22 +130,6 @@
 			drop_item_from_inventory(get_turf(src))
 		return TRUE
 
-	if(grabbed_object && grabbed_object == object && is_living(grabbed_object)) //We click on the hand that grabbed something
-		if(world.time <= grab_time+DECISECONDS_TO_TICKS(20)) //Prevents insta agressive-grab
-			return TRUE
-		caller.to_chat(span("warning","You tighten your grip on [object]!"))
-		grab_level = 2 //Agressive grab
-		grab_time = world.time //We grabbed now. Used in agressive grab
-
-		var/mob/living/A = owner //How can something not alive grab anything?..
-		A.add_status_effect(SLOW,30,30,stealthy=1) //I don't know any better way..
-		var/mob/living/V = grabbed_object //Checked above
-		V.add_status_effect(REST,30,30,stealthy=1)
-		V.add_status_effect(SLOW,30,30)
-
-		update_overlays() //Changing appearnce
-		return TRUE
-
 	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
@@ -139,6 +141,9 @@
 				if(!allow_hostile_action(L.loyalty_tag,C.loyalty_tag,grabbed_object_turf.loc) && grabbed_object_turf.is_safe_teleport(FALSE) && !desired_move_turf.is_safe_teleport(FALSE))
 					return TRUE
 			grabbed_object.Move(desired_move_turf)
+			if(is_living(grabbed_object))
+				var/mob/living/L = grabbed_object
+				L.handle_transform()
 		return TRUE
 
 	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)

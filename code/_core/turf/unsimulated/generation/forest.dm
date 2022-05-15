@@ -31,6 +31,8 @@
 			place_grass = FALSE
 			if(prob(40))
 				new /obj/marker/generation/forest_dirt(src)
+				new /turf/simulated/floor/colored/dirt(src)
+				if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 				place_ground = FALSE
 		else if(!path_only && prob(2))
 			var/list/valid_bushes = list(
@@ -93,19 +95,17 @@
 				else
 					new /obj/marker/generation/mob/cow(src)
 
-
 	if(place_ground)
 		new /turf/simulated/floor/colored/grass(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/forest(src)
 		color = blend_colors("#336D31","#426D31",noise)
 		if(prob(1))
 			new /obj/marker/generation/forest_soil(src)
+		if(prob(0.5))
+			new /obj/marker/generation/mob/syndicate(src)
 
 	if(shitfix)
 		disallow_generation = TRUE
-
-	if(prob(0.5))
-		new /obj/marker/generation/mob/syndicate(src)
 
 	return ..()
 

@@ -112,7 +112,7 @@
 					PC.adjust_currency(charged_amount)
 		*/
 	else
-		target.do_emote("scream")
+		target.send_pain_response(100)
 		target.add_status_effect(ADRENALINE,50,100)
 		var/atom/target_to_damage = target
 		if(is_advanced(target))

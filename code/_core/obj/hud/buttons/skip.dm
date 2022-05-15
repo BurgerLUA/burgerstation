@@ -7,7 +7,7 @@
 
 	var/sneaking = 0
 
-	flags = FLAGS_HUD_SPECIAL
+	flags = FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 

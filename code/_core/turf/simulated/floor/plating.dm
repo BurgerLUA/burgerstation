@@ -34,6 +34,7 @@
 	icon = 'icons/turf/floor/spaceship.dmi'
 	icon_state = "plating"
 	plane = PLANE_SHUTTLE
+	color = "#FFFFFF"
 
 
 /turf/simulated/floor/plating/syndicate

@@ -12,15 +12,8 @@ SUBSYSTEM_DEF(smoothing)
 	var/list/seeds = list() //id = value
 
 /subsystem/smoothing/Initialize()
-
-	var/start_time = world.time
-
-	log_subsystem(src.name,"Processing...")
-
+	log_subsystem(src.name,"Processing [length(queued_smoothing)] edges...")
 	process_edges()
-
-	log_subsystem(src.name,"Took [world.time - start_time] deciseconds.")
-
 	. = ..()
 
 /subsystem/smoothing/on_life()
@@ -34,7 +27,7 @@ SUBSYSTEM_DEF(smoothing)
 		var/atom/A = k
 		A.update_sprite()
 
-/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
+/subsystem/smoothing/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
 
 	var/list/valid_directions = DIRECTIONS_ALL
 	if(include_self)
@@ -46,7 +39,7 @@ SUBSYSTEM_DEF(smoothing)
 			continue
 		if(T2.corner_icons)
 			SSsmoothing.queued_smoothing |= T2
-		for(var/obj/O in T2.contents)
+		for(var/obj/structure/O in T2.contents)
 			if(O.corner_icons)
 				SSsmoothing.queued_smoothing |= O
 

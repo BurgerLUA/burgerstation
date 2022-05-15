@@ -53,10 +53,6 @@
 	if(include_stance)
 		. *= get_stance_movement_mul()
 
-	if(health && health.health_max)
-		. *= 2 - (health.health_current/health.health_max)
-
-
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
 	. = ..()
@@ -153,9 +149,6 @@
 /mob/set_dir(var/desired_dir,var/force=FALSE)
 
 	if(!force)
-		if(attack_flags & CONTROL_MOD_BLOCK)
-			return FALSE
-
 		if(client && client.is_zoomed)
 			desired_dir = client.is_zoomed
 

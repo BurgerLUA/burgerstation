@@ -15,7 +15,6 @@ SUBSYSTEM_DEF(cargo)
 		/obj/item/supply_remote/mech/ripley,
 		/obj/item/supply_remote/barbecue,
 		/obj/item/supply_remote/drill,
-		/obj/item/grenade/timed/flashbang,
 		/obj/item/grenade/timed/smoke,
 		/obj/item/fulton_pack,
 		/obj/item/deployable/bodybag

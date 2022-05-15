@@ -1,5 +1,4 @@
 /damagetype/melee/club/broom
-	name = "broom"
 	attack_verbs = list("sweeps")
 
 	attack_damage_base = list(

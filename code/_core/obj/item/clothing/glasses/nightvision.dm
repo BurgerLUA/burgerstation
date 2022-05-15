@@ -123,7 +123,7 @@
 		active = !active
 		if(active)
 			enable(I)
-			start_thinking(src)
+			START_THINKING(src)
 		else
 			disable(I)
 		caller.to_chat(span("notice","You toggle \the [src.name] [active ? "on" : "off"]."))

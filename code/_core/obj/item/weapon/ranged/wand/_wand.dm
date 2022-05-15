@@ -35,10 +35,10 @@
 	. = ..()
 	LOADATOM("socketed_spellgem")
 
-/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
-	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier)
+	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier,click_called)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

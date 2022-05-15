@@ -18,9 +18,6 @@
 
 /obj/item/proc/can_interact_with_inventory(var/mob/living/advanced/caller)
 
-	INTERACT_CHECK
-	INTERACT_DELAY(5)
-
 	if(inventory_user && inventory_user != caller)
 		caller.to_chat(span("warning","\The [inventory_user.name] is using \the [src.name]!"))
 		return FALSE

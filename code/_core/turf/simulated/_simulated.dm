@@ -1,15 +1,16 @@
 /turf/simulated/
 
+	dynamic_lighting = TRUE
+
+	health = null
+	health_base = 100
+
 	var/real_icon
 	var/real_icon_state
-
-	dynamic_lighting = TRUE
 
 	var/tile = FALSE //Set to true if this is a tile.
 
 	var/turf/destruction_turf
-	health = null
-	health_base = 100
 
 	var/reinforced_material_id
 	var/reinforced_color
@@ -19,13 +20,6 @@
 	var/exposed = TRUE //Are pipes and other hidden objects visible?
 
 	var/turf_temperature_mod = 0
-
-	var/list/air_contents = list(
-		"oxygen" = 21,
-		"nitrogen" = 80
-	)
-
-	var/blocks_air = 0x0
 
 	var/image/overlay/stored_water_overlay
 	var/water_reagent
@@ -88,22 +82,6 @@
 		SSturf.blood_turfs -= src
 	return TRUE
 
-/turf/simulated/get_examine_list(var/mob/caller)
-	. = ..()
-	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
-	. += div("notice","The slippery percentage is [get_slip_strength()*100]%.")
-
-/*
-/turf/simulated/New(var/atom/desired_loc)
-
-	if(real_icon)
-		icon = real_icon
-	if(real_icon_state)
-		icon_state = real_icon_state
-
-	return ..()
-*/
-
 /turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	if(!destruction_turf)
@@ -127,7 +105,7 @@
 
 /turf/simulated/Initialize()
 	var/area/A = loc
-	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
+	if(!(A.flags_area & FLAG_AREA_NO_CONSTRUCTION))
 		if(!destruction_turf)
 			if(loc && loc.type != src.type && is_floor(loc))
 				destruction_turf = loc.type
@@ -149,14 +127,10 @@
 
 	for(var/d in DIRECTIONS_ALL)
 		var/dir_to_text = "[d]"
-		var/turf/T = get_step(src,d)
-
 		calc_list[dir_to_text] = FALSE //Default
-
+		var/turf/T = get_step(src,d)
 		if(!T)
-			calc_list[dir_to_text] = FALSE
 			continue
-
 		if(should_smooth_with(T))
 			calc_list[dir_to_text] = TRUE
 			continue

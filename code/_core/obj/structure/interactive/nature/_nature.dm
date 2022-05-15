@@ -66,7 +66,16 @@ obj/structure/scenery/rocks
 
 obj/structure/scenery/rocks/New()
 	..()
-	icon_state = "rock_[rand(1,10)]"
+	icon_state = "basalt_[rand(1,10)]"
+
+obj/structure/interactive/basalt
+	name = "basalt rocks"
+	icon = 'icons/obj/structure/flora/lavaland.dmi'
+	icon_state = "basalt_1"
+
+obj/structure/interactive/basalt/New()
+	..()
+	icon_state = "rock_[rand(1,5)]"
 
 
 obj/structure/scenery/lolipop_tree

@@ -1,5 +1,7 @@
 #define DEFAULT_NAME "Your name here."
 
+var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
+
 /mob/living/advanced
 
 	name = DEFAULT_NAME
@@ -76,10 +78,13 @@
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
-	var/evasion_rating = 0
 
 	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
 	var/last_mood_gain = 0
+
+	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
+
+	var/current_mouse_spread = 0
 
 /mob/living/advanced/Destroy()
 
@@ -108,6 +113,13 @@
 
 	return ..()
 
+/mob/living/advanced/PostInitialize()
+	. = ..()
+
+	if(client)
+		var/obj/hud/button/stat/body/B = new(src)
+		B.update_owner(src)
+
 /mob/living/advanced/Finalize()
 
 	var/species/S = SPECIES(species)
@@ -121,7 +133,6 @@
 /mob/living/advanced/on_crush(var/message=TRUE)
 	if(driving)
 		return FALSE
-	drop_all_items(get_turf(src))
 	. = ..()
 
 /mob/living/advanced/proc/update_clothes()
@@ -226,13 +237,6 @@
 
 	move_delay_multiplier = .
 
-	//Evasion stuff
-	evasion_rating = max(0,0.5 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
-	if(ckey_last) //Player controlled
-		evasion_rating = clamp(evasion_rating,0,75)
-	else
-		evasion_rating = clamp(evasion_rating*0.25,0,25)
-
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
 	real_name = name
@@ -278,9 +282,9 @@ mob/living/advanced/Login()
 	. = ..()
 	restore_buttons()
 	restore_inventory()
-	restore_health_elements()
+	restore_stat_elements()
 	restore_local_machines()
-	update_health_element_icons(TRUE,TRUE,TRUE)
+	queue_health_update = TRUE
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/k in local_machines)
@@ -316,14 +320,6 @@ mob/living/advanced/Login()
 	if(S)
 		S.generate_traits(src)
 
-/mob/living/advanced/PostInitialize()
-
-	. = ..()
-
-	if(client)
-		update_health_element_icons(TRUE,TRUE,TRUE)
-		add_species_health_elements()
-
 /mob/living/advanced/Finalize()
 	. = ..()
 	update_items()
@@ -337,7 +333,7 @@ mob/living/advanced/Login()
 
 	real_name = name
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 
@@ -421,16 +417,9 @@ mob/living/advanced/Login()
 	if(health?.stamina_current <= 0 || has_status_effect(STAMCRIT))
 		return FALSE
 
-	var/list/organs_to_check = list(
-		BODY_FOOT_RIGHT,
-		BODY_FOOT_LEFT,
-		BODY_LEG_LEFT,
-		BODY_LEG_RIGHT
-	)
-
-	for(var/k in organs_to_check)
+	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(!O || !O.health || O.health.health_current <= 0)
+		if(!O || (O.health && (O.health.health_current <= 0 || O.broken)))
 			return FALSE
 
 	return ..()
@@ -479,7 +468,7 @@ mob/living/advanced/Login()
 	text = S.mod_speech(src,text)
 	return ..()
 
-/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	for(var/i=1,i<=5,i++)
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
@@ -489,18 +478,21 @@ mob/living/advanced/Login()
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
 
-/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	. = ..()
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
-		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty)
+		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 /mob/living/advanced/gib(var/hard=FALSE)
-
+	if(qdeleting)
+		return FALSE
+	if(gibbed)
+		return FALSE
+	gibbed = TRUE
 	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
-	if(O)
-		return O.gib(hard)
-
-	. = ..()
+	if(O) return O.gib(hard)
+	gibbed = FALSE //Hacky, but it works.
+	return FALSE

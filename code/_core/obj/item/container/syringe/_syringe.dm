@@ -221,18 +221,20 @@
 			caller.to_chat(span("warning","You can't seem to find a way to inject \the [object.name] with \the [src.name]!"))
 
 	if(is_organ(object))
-		var/mob/living/L = is_living(object.loc) ? object.loc : null
-		L?.to_chat(span("warning","Your [object.name] feels a tiny prick."))
+		var/obj/item/organ/O = object
+		var/mob/living/L = is_living(O.loc) ? O.loc : null
+		L?.to_chat(span("warning","Your [O.name] feels a tiny prick."))
 		var/damage_to_deal = quality > 50 ? 0 : min(1 - quality/100,1)*20
-		if(damage_to_deal > 0 && object.health?.adjust_loss_smart(brute=damage_to_deal*0.25,pain=damage_to_deal) && !stealthy)
+		if(damage_to_deal > 0 && object.health?.adjust_loss_smart(brute=damage_to_deal*0.25,pain=damage_to_deal) && O.send_pain_response(10) && !stealthy)
 			L?.to_chat(span("danger","\The roughness of \the [src.name] hurts!"))
 		adjust_quality(-quality_reduction_on_use)
 	else if(is_living(object))
 		var/mob/living/L = object
 		L.to_chat(span("warning","You feel a tiny prick."))
 		var/damage_to_deal = quality > 50 ? 0 : min(1 - quality/100,1)*20
-		if(damage_to_deal > 0 && L.health?.adjust_loss_smart(brute=damage_to_deal*0.25,pain=damage_to_deal) && !stealthy)
+		if(damage_to_deal > 0 && L.health?.adjust_loss_smart(brute=damage_to_deal*0.25,pain=damage_to_deal) && L.send_pain_response(10) && !stealthy)
 			L.to_chat(span("danger","\The roughness of \the [src.name] hurts!"))
+
 		adjust_quality(-quality_reduction_on_use)
 
 	return FALSE

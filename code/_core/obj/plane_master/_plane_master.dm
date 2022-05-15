@@ -33,6 +33,7 @@
 //FLOORS
 /obj/plane_master/floor
 	plane = PLANE_FLOOR
+	render_target = "plane_floor"
 
 /obj/plane_master/floor/apply_post_processing()
 	. = ..()
@@ -41,6 +42,7 @@
 //WALLS
 /obj/plane_master/walls
 	plane = PLANE_WALL
+	render_target = "plane_wall"
 
 /obj/plane_master/walls/apply_post_processing()
 	. = ..()
@@ -49,6 +51,26 @@
 		filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0,200))
 
 	//filters += filter(type="radial_blur", size= 0.02/VIEW_RANGE)
+
+
+//WATER SURFACE
+/obj/plane_master/water_surface
+	plane = PLANE_WATER
+
+/obj/plane_master/water_surface/apply_post_processing()
+	. = ..()
+	filters += filter(type="alpha", x=0, y=0, render_source="plane_floor", flags=MASK_INVERSE) //Prevent ugly water textures drawing above floors.
+	filters += filter(type="alpha", x=0, y=0, render_source="plane_wall", flags=MASK_INVERSE) //Prevent ugly water textures drawing above floors.
+
+//WATER FLOOR
+/obj/plane_master/water_floor
+	plane = PLANE_WATER_FLOOR
+	render_target = "plane_water_floor"
+
+/obj/plane_master/water_floor/apply_post_processing()
+	. = ..()
+	if(owner?.client?.settings?.loaded_data["enable_depth"])
+		filters += filter(type="drop_shadow", x=0, y=0, size=-3, offset=0, color=rgb(0,0,0,200))
 
 //MOBS
 /obj/plane_master/mobs
@@ -60,6 +82,9 @@
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-4, size=3, offset=0, color=rgb(0,0,0,200))
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
+
+
 
 /obj/plane_master/mobs_small
 	plane = PLANE_MOB_SMALL
@@ -70,24 +95,20 @@
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
 		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,200))
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
 
-/obj/plane_master/mobs_large
-	plane = PLANE_MOB_LARGE
 
-/obj/plane_master/mobs_large/apply_post_processing()
-	. = ..()
-	//Depth
-	if(owner?.client?.settings?.loaded_data["enable_depth"])
-		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
-		filters += filter(type="drop_shadow", x=0, y=-6, size=5, offset=0, color=rgb(0,0,0,200))
-
+/obj/plane_master/mobs_dead
+	plane = PLANE_MOB_DEAD
 
 /obj/plane_master/mobs_stealth
 	plane = PLANE_MOB_STEALTH
+	render_target = "plane_mob_stealth"
 
 /obj/plane_master/mobs_stealth/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha",render_source="*fov_\ref[owner]")
+	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
 
 //DARKNESS
 /obj/plane_master/darkness
@@ -149,7 +170,6 @@
 //Openspace
 /obj/plane_master/openspace
 	plane = PLANE_FLOOR_BELOW
-	appearance_flags = PLANE_MASTER
 	color = "#333333"
 
 /obj/plane_master/openspace/apply_post_processing()
@@ -204,3 +224,13 @@
 /obj/plane_master/weather/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha", x=0, y=0, render_source="*area_exterior")
+
+
+/obj/plane_master/water_mask
+	plane = PLANE_MOB_WATER_MASK
+	render_target = "*plane_water_mask"
+
+/obj/plane_master/water_mask/apply_post_processing()
+	. = ..()
+	src.filters += filter(type="alpha", x=0, y=0, render_source="plane_water_floor") //Masks only draw in water.
+

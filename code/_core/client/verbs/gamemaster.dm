@@ -140,6 +140,42 @@
 	log_admin("[L.get_debug_name()] was smited by [src.get_debug_name()].")
 
 
+/client/verb/break_bones(var/mob/living/advanced/target)
+
+	set name = "Break Bones"
+	set category = "Fun"
+
+	var/mob/living/advanced/L
+
+	if(!target)
+		var/list/valid_targets = list()
+
+		for(var/k in all_players)
+			valid_targets += k
+
+		for(L in view(src.mob,VIEW_RANGE))
+			valid_targets |= L
+
+		L = input("Who do you wish to break?","Break Target") as null|anything in valid_targets
+
+		if(!L) return FALSE
+
+	else
+		L = target
+
+	var/confirm = input("Are you sure you want to break all the bones in [L.name]\s body? This will hurt...","Break Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(confirm != "Yes") return FALSE
+
+	for(var/k in L.labeled_organs)
+		var/obj/item/organ/O = L.labeled_organs[k]
+		O.break_bone(FALSE,FALSE)
+
+	L.visible_message(span("danger","Every bone in [L.name]'s body breaks!"),span("danger","Every bone in your body breaks!"))
+	play_sound('sound/effects/bone_crack.ogg',get_turf(L))
+
+	log_admin("[L.get_debug_name()] was broken by [src.get_debug_name()].")
+
 /client/verb/give_credits(var/dosh_amount as num)
 	set name = "Give Credits"
 	set category = "Cheat"
@@ -177,6 +213,10 @@
 	var/mob/living/L = valid_players[choice]
 
 	if(!L) return FALSE
+
+	if(!L.ckey_last)
+		src.to_chat(span("danger","This player is currently not in this corpse anymore."))
+		return FALSE
 
 	L.resurrect()
 	to_chat(span("notice","You rejuvenated [L.name]."))
@@ -236,72 +276,6 @@
 	log_admin("[src.get_debug_name()] made an OOC announcement: [message]")
 
 	return TRUE
-
-
-
-/client/verb/test_spook_station()
-	set name = "Spook Station (DANGER)"
-	set category = "Fun"
-
-	var/confirm = input("Are you sure you wish to spook the station? This will kill all lights, batton all hatches, and stun everyone on board.","Oh god oh fuck.") as null|anything in list("Yes","No","Cancel")
-
-	if(confirm != "Yes")
-		return FALSE
-
-	spook_station()
-
-	log_admin("[src.get_debug_name()] spooked the station.")
-
-	return TRUE
-
-/proc/spook_station() //Lockdown everything, kill lights, ect.
-
-	for(var/k in subtypesof(/area/burgerstation))
-		CHECK_TICK(75,FPS_SERVER)
-		var/area/A = AREA(k)
-		if(!A) continue
-		var/list/valid_hearers = list()
-		for(var/mob/living/L in A.contents)
-			CHECK_TICK(90,FPS_SERVER)
-			L.add_status_effect(STUN,40,40)
-			if(L.client)
-				valid_hearers += L
-				L.client.queued_shakes += 10
-		play_sound_global('sound/effects/explosion/explosion_far.ogg',valid_hearers)
-		for(var/obj/structure/interactive/lighting/T in A.contents)
-			CHECK_TICK(75,FPS_SERVER)
-			T.on_destruction(null,TRUE)
-		for(var/obj/structure/interactive/door/alarm/D in A.contents)
-			CHECK_TICK(75,FPS_SERVER)
-			D.close(null,TRUE,TRUE)
-
-/client/verb/test_syndicate_raid()
-	set name = "Trigger Syndicate Raid (DANGER)"
-	set category = "Fun"
-
-	var/confirm = input("Are you sure you wish to raid the station? This will kill all lights, batton all hatches, and stun everyone on board.","Oh god oh fuck.") as null|anything in list("Yes","No","Cancel")
-	if(confirm != "Yes")
-		return FALSE
-
-	var/gamemode/G = SSgamemode.active_gamemode
-
-	if(!G)
-		to_chat(span("warning","The game isn't setup yet!"))
-		return FALSE
-
-	G.points = min(G.points,15)
-	G.handle_alert_level()
-
-	log_admin("[src.get_debug_name()] forced a syndicate raid.")
-
-/proc/raid_station()
-	var/obj/shuttle_controller/syndicate_raid/SR = locate() in world
-	var/area/A = get_area(SR)
-	if(A.type == /area/transit/syndicate_raid/ship)
-		log_error("Tried calling raid_station() despite it already being raided.")
-		return FALSE
-	SR.launch()
-
 
 /client/verb/force_vote()
 	set name = "Force Vote End"
@@ -446,3 +420,54 @@
 
 	if(T)
 		create_gold_drop(T,100)
+
+	log_admin("[src.get_debug_name()] made it rain gold at [T.get_debug_name()].")
+
+/client/verb/safe_force_control()
+	set name = "Safe Force Control"
+	set category = "Fun"
+
+	var/list/valid_bodies = list()
+
+	for(var/mob/living/L in view(src.mob,VIEW_RANGE))
+		valid_bodies |= L
+
+	var/mob/living/desired_body = input("What body would you like to take control of?","Control Body") as null|anything in valid_bodies
+
+	if(!desired_body)
+		src.to_chat(span("notice","You decide not to take control of anyone."))
+		return FALSE
+
+	if(desired_body.ckey || desired_body.ckey_last)
+		src.to_chat(span("warning","This body already has a soul!"))
+		return FALSE
+
+	var/C_ckey = input("Who do you want to take over the body?","Control Body") as null|anything in all_clients
+	if(!C_ckey)
+		src.to_chat(span("notice","You decide not to take control of anyone."))
+		return FALSE
+
+	var/client/C = CLIENT(C_ckey)
+
+	if(!C || !istype(C.mob,/mob/abstract/observer/))
+		src.to_chat(span("warning","This client is currently in control of a non-observer mob!"))
+		return FALSE
+
+	if(desired_body.ckey || desired_body.ckey_last) //Double checked.
+		src.to_chat(span("warning","This body already has a soul!"))
+		return FALSE
+
+	if(is_player(desired_body))
+		var/mob/living/advanced/player/P = desired_body
+		if(!P.death_ckey || P.death_ckey != C.ckey)
+			src.to_chat(span("warning","This body does not belong to this soul!"))
+			return FALSE
+
+	if(desired_body.ai)
+		QDEL_NULL(desired_body.ai)
+
+	C.control_mob(desired_body)
+
+	src.to_chat(span("notice","You forced [C.ckey] to take control of [desired_body.name]."))
+
+	log_admin("[src.get_debug_name()] safely forced [C.get_debug_name()] to take control of [desired_body.get_debug_name()].")

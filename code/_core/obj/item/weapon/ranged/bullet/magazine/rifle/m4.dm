@@ -15,7 +15,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot_military.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
 
 	can_wield = TRUE
 
@@ -53,7 +53,8 @@
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16

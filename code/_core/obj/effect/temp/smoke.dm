@@ -57,7 +57,7 @@
 	if(alpha >= 255)
 		opacity = TRUE
 	update_sprite()
-	start_thinking(src)
+	START_THINKING(src)
 
 /obj/effect/temp/smoke/proc/fade_out()
 	var/matrix/M = get_base_transform()

@@ -23,42 +23,22 @@
 	return ..()
 
 /obj/item/container/edible/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-	var/original_volume = reagents.volume_current
 
-	if(icon_state == "wheel")
-		var/pieces = FLOOR(original_volume/10, 1)
-		if(pieces <= 1 || original_volume < pieces)
-			if(is_living(attacker))
-				var/mob/living/L = attacker
-				L.to_chat(span("notice","There isn't enough cheese in \the [src.name] to cut!"))
-			return ..()
+	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 
-		for(var/i=1,i<=pieces,i++)
-			var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
-			C.icon_state = "wheel"
-			INITIALIZE(C)
-			reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
-			FINALIZE(C)
-			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+		var/original_volume = reagents.volume_current
 
-		if(is_living(attacker))
-			var/mob/living/L = attacker
-			L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into several cheese pieces."),span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
-
-		qdel(src)
-
-	else if(has_prefix(icon_state,"block"))
-		if(original_volume > 10)
+		if(icon_state == "wheel")
 			var/pieces = FLOOR(original_volume/10, 1)
 			if(pieces <= 1 || original_volume < pieces)
 				if(is_living(attacker))
 					var/mob/living/L = attacker
-					L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
+					L.to_chat(span("notice","There isn't enough cheese in \the [src.name] to cut!"))
 				return ..()
 
 			for(var/i=1,i<=pieces,i++)
 				var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
-				C.icon_state = "block"
+				C.icon_state = "wheel"
 				INITIALIZE(C)
 				reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
 				FINALIZE(C)
@@ -70,21 +50,44 @@
 
 			qdel(src)
 
-		else if(original_volume <= 1)
-			if(is_living(attacker))
-				var/mob/living/L = attacker
-				L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
-			return ..()
-		else
-			var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
-			C.icon_state = "block"
-			INITIALIZE(C)
-			reagents.transfer_reagents_to(C.reagents,1)
-			FINALIZE(C)
-			animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
-			if(is_living(attacker))
-				var/mob/living/L = attacker
-				L.visible_message(span("notice","\The [L.name] slices a thin slice of cheese off the top of \the [src.name]."),span("notice","You slice a thin slice of cheese off the top of \the [src.name]."))
+		else if(has_prefix(icon_state,"block"))
+			if(original_volume > 10)
+				var/pieces = FLOOR(original_volume/10, 1)
+				if(pieces <= 1 || original_volume < pieces)
+					if(is_living(attacker))
+						var/mob/living/L = attacker
+						L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
+					return ..()
+
+				for(var/i=1,i<=pieces,i++)
+					var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
+					C.icon_state = "block"
+					INITIALIZE(C)
+					reagents.transfer_reagents_to(C.reagents,original_volume/pieces)
+					FINALIZE(C)
+					animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+
+				if(is_living(attacker))
+					var/mob/living/L = attacker
+					L.visible_message(span("notice","\The [L.name] cuts \the [src.name] into several cheese pieces."),span("notice","You cut \the [src.name] into [pieces] cheese pieces."))
+
+				qdel(src)
+
+			else if(original_volume <= 1)
+				if(is_living(attacker))
+					var/mob/living/L = attacker
+					L.to_chat(span("warning","There isn't enough cheese in \the [src.name] to cut!"))
+				return ..()
+			else
+				var/obj/item/container/edible/dynamic/cheese/C = new(get_turf(src))
+				C.icon_state = "block"
+				INITIALIZE(C)
+				reagents.transfer_reagents_to(C.reagents,1)
+				FINALIZE(C)
+				animate(C,pixel_x = rand(-16,16),pixel_y=rand(-16,16),time=SECONDS_TO_DECISECONDS(1))
+				if(is_living(attacker))
+					var/mob/living/L = attacker
+					L.visible_message(span("notice","\The [L.name] slices a thin slice of cheese off the top of \the [src.name]."),span("notice","You slice a thin slice of cheese off the top of \the [src.name]."))
 
 	return ..()
 

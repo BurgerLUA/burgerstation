@@ -1,5 +1,4 @@
 /damagetype/unarmed/holy
-	name = "blessed knuckle"
 	attack_verbs = list("bless","exorcise","smite","beatify","sanctify","proselytizes")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -47,7 +46,6 @@
 
 
 /damagetype/unarmed/holy/spiked
-	name = "cursed knuckle"
 	attack_verbs = list("curse","defile","desecrate","taint","blaspheme","pollute")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

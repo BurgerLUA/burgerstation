@@ -18,13 +18,6 @@
 			F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
 			foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
 
-/mob/living/advanced/on_sprint()
-
-	if(health && health.adjust_stamina(-1))
-		update_health_element_icons(stamina=TRUE)
-
-	return ..()
-
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
 	if(grabbing_hand && handcuffed)
@@ -35,42 +28,30 @@
 
 	. = ..()
 
-
 mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
-	var/health_mul = 1
-	var/stamina_mul = 1
-	var/pain_mul = 1
-	var/adrenaline_bonus = 1 + ((get_status_effect_magnitude(ADRENALINE)/100)*(0.5 + (get_status_effect_duration(ADRENALINE)/100))*0.5)
+	for(var/k in movement_organs)
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O && O.broken)
+			. *= 1.25
+
+	if(inventories_by_id[BODY_HAND_LEFT_HELD])
+		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_LEFT_HELD]
+		if(I.grabbed_object)
+			. *= 1.5*I.grab_level
+
+	if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_RIGHT_HELD]
+		if(I.grabbed_object)
+			. *= 1.5*I.grab_level
 
 	if(health)
-		var/pain_bonus = min(1,get_status_effect_magnitude(PAINKILLER)/100) * min(1,0.5 + (get_status_effect_duration(PAINKILLER)/100)*0.5) * health.health_max
-		health_mul = clamp(0.5 + ((health.health_current + pain_bonus)/health.health_max),0.5,1)
-		stamina_mul = clamp(0.75 + ((health.stamina_current + pain_bonus)/health.stamina_max),0.75,1)
-		pain_mul = clamp(0.1 + (1 - ((health.get_loss(PAIN) - pain_bonus)/health.health_max))*0.9,0.1,1)
+		. *= 2 - clamp( ((health.health_current - health.damage[PAIN] + pain_removal)/health.health_max) + 0.5,0,1)
+		. *= 2 - clamp( (health.stamina_current/health.stamina_max) + 0.5,0,1)
 
-	. *= move_delay_multiplier * (1/adrenaline_bonus) * (1/pain_mul) * (1/stamina_mul) * (1/health_mul)
-
-/mob/living/advanced/toggle_sneak(var/on = TRUE)
-
-	if(on && health && !health.adjust_stamina(-10))
-		update_health_element_icons(stamina=TRUE)
-		return FALSE
-
-	return ..()
-
-/mob/living/advanced/on_sneak()
-
-	if(health)
-		if(health.adjust_stamina( -(2-stealth_mod)*2.5 ))
-			update_health_element_icons(stamina=TRUE)
-		else
-			toggle_sneak(FALSE)
-			return FALSE
-
-	return ..()
+	. *= move_delay_multiplier
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 
@@ -94,39 +75,58 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(get_dist(src,I) > 1)
 			I.close_inventory(src)
 
+	if(. && isturf(loc) && !horizontal)
+		var/obj/item/organ/sent_pain
+		for(var/k in movement_organs)
+			var/obj/item/organ/O = labeled_organs[k]
+			if(O && O.health && O.broken && prob(80))
+				O.health.adjust_loss_smart(pain=1)
+				sent_pain = O
+		if(prob(5) && sent_pain && sent_pain.send_pain_response(20))
+			src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
+
 	if(. && isturf(old_loc))
 		var/turf/T = old_loc
 		//Right hand
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD]?.grabbed_object)
-			var/distance = get_dist(src,inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object)
-			var/turf/grabbed_turf = get_turf(inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object)
+			var/atom/movable/M = inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object
+			var/distance = get_dist(src,M)
+			var/turf/grabbed_turf = get_turf(M)
 			var/bypass_safe = TRUE
-			if(src.loyalty_tag && is_living(inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object))
-				var/mob/living/L = inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object
+			if(src.loyalty_tag && is_living(M))
+				var/mob/living/L = M
 				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
-					inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object.glide_size = glide_size
-					inventories_by_id[BODY_HAND_RIGHT_HELD].grabbed_object.Move(T)
+					M.glide_size = glide_size
+					M.Move(T)
 				else
 					inventories_by_id[BODY_HAND_RIGHT_HELD].release_object()
+			if(is_living(M))
+				var/mob/living/L = M
+				L.handle_transform()
 
 		//Left hand
 		if(inventories_by_id[BODY_HAND_LEFT_HELD]?.grabbed_object)
-			var/distance = get_dist(src,inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object)
-			var/turf/grabbed_turf = get_turf(inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object)
+			var/atom/movable/M = inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object
+			var/distance = get_dist(src,M)
+			var/turf/grabbed_turf = get_turf(M)
 			var/bypass_safe = TRUE
-			if(src.loyalty_tag && is_living(inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object))
-				var/mob/living/L = inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object
+			if(src.loyalty_tag && is_living(M))
+				var/mob/living/L = M
 				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
-					inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object.glide_size = glide_size
-					inventories_by_id[BODY_HAND_LEFT_HELD].grabbed_object.Move(T)
+					M.glide_size = glide_size
+					M.Move(T)
 				else
 					inventories_by_id[BODY_HAND_LEFT_HELD].release_object()
+			if(is_living(M))
+				var/mob/living/L = M
+				L.handle_transform()
+
 		if(is_simulated(T))
 			var/turf/simulated/S = T
 			if(S.blood_level_hard > 0 && S.blood_level > 0)

@@ -35,8 +35,8 @@
 
 /obj/item/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
-	if(stored_radio) .["stored_radio"] = stored_radio.save_item_data(P,save_inventory,died)
+	SAVEATOM("stored_radio")
 
 /obj/item/radio/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-	if(object_data["stored_radio"]) stored_radio = load_and_create(P,object_data["stored_radio"],src)
+	LOADATOM("stored_radio")

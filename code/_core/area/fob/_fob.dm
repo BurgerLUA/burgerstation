@@ -3,7 +3,7 @@
 	area_identifier = "Mission"
 	interior = TRUE
 
-	flags_area = FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_EVENTS
 
 	flags_generation = FLAG_GENERATION_NO_MOB
 

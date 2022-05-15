@@ -142,7 +142,7 @@
 
 
 
-/mob/living/simple/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty)
+/mob/living/simple/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag)
 
 	if(!can_leap)
 		return ..()
@@ -185,7 +185,7 @@
 /mob/living/simple/xeno/update_icon()
 
 	if(dead)
-		if(health && health.get_loss(BRUTE) < health.get_loss(BURN))
+		if(health && health.damage[BRUTE] < health.damage[BURN])
 			icon_state = "husk"
 		else
 			icon_state = "dead"

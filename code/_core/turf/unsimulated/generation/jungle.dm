@@ -81,7 +81,7 @@
 			if(path_only)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
 			else
-				new /turf/simulated/hazard/water/jungle(src)
+				new /turf/simulated/liquid/water/jungle(src)
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
 		if(0.44 to 0.45)
@@ -122,14 +122,14 @@
 			if(path_only)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
 			else
-				new /turf/simulated/hazard/water(src)
+				new /turf/simulated/liquid/water(src)
 		if(0.9 to INFINITY)
 			if(path_only)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
 				if(prob(5))
 					new /obj/structure/scenery/rocks(src)
 			else
-				new /turf/simulated/hazard/water(src)
+				new /turf/simulated/liquid/water(src)
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
 
