@@ -17,25 +17,24 @@
 
 	var/volume_amount = container.remove_reagent(src.type,container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
 
-	if(explosion_strength_per_unit)
+	if(explosion_strength_per_unit > 0)
 		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
 		smoke(epicenter,volume_amount*explosion_strength_per_unit*0.02,SECONDS_TO_DECISECONDS(2*explosion_strength_per_unit),null,owner,alpha=100)
 
-	if(flash_strength_per_unit)
+	if(flash_strength_per_unit > 0)
 		var/flash_range = min(VIEW_RANGE*2,volume_amount*flash_strength_per_unit)
 		for(var/mob/living/L in viewers(flash_range,T))
 			var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
 			var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
 			L.flash(duration)
 
-	if(bang_strength_per_unit)
+	if(bang_strength_per_unit > 0)
 		var/bang_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)
 		var/list/hearing = list()
 		for(var/mob/living/L in hearers(bang_range,T))
 			var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
 			var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
 			L.flash(duration)
-
 			L.bang(duration*2)
 			hearing += L
 		play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=bang_range*0.5,range_max=bang_range*2,channel=SOUND_CHANNEL_FLASHBANG)

@@ -30,11 +30,11 @@
 
 #define PLANE_OBJ -31
 
-#define PLANE_MOB_DEAD -26
+#define PLANE_MOB_DEAD -30
 
-#define PLANE_ITEM -27
+#define PLANE_ITEM -29
 
-#define PLANE_CURRENCY -26
+#define PLANE_CURRENCY -28
 
 //Mob
 #define PLANE_MOB_UNDERWATER -25
