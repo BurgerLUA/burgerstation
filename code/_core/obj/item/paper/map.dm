@@ -8,10 +8,14 @@
 
 /obj/item/map/click_self(var/mob/caller)
 
-	var/obj/hud/button/map/M = locate() in caller.buttons
-	if(!M)
-		M = new(caller)
-		M.update_owner(caller)
+	var/obj/hud/button/map_control/M_control = locate() in caller.buttons
+
+	if(M_control)
+		M_control.update_owner(null)
+		caller.to_chat(span("notice","You close the map."))
+	else
+		M_control = new(caller)
+		M_control.update_owner(caller)
 		caller.to_chat(span("notice","You open the map."))
 
 	return TRUE
