@@ -9,11 +9,7 @@
 
 	mouse_opacity = 2
 
-	layer = 9998 //Top
-
-/obj/hud/button/map/New(var/desired_loc)
-	screen_loc = "CENTER:-[world.maxx/2],CENTER:-[world.maxy/2]"
-	. = ..()
+	layer = -9998 //Bottom
 
 /obj/hud/button/map/update_icon()
 	. = ..()
@@ -32,9 +28,9 @@
 	var/offset_x = 0
 	var/offset_y = 0
 
-	var/current_zoom = 1
+	var/current_zoom = 3
 
-	layer = 9999 //Very Top
+	layer = 9998 //Top
 
 	var/obj/hud/button/map/connected_map
 
@@ -47,13 +43,16 @@
 /obj/hud/button/map_control/New(var/desired_loc)
 	screen_loc = "LEFT+2,BOTTOM+2"
 	connected_map = new(desired_loc)
-	connected_map.screen_loc = "LEFT:[offset_x],BOTTOM:[offset_y] to RIGHT:[offset_x],TOP:[offset_y]"
 	. = ..()
 
 /obj/hud/button/map_control/update_owner(var/mob/desired_owner)
 	. = ..()
 	if(. && connected_map)
 		connected_map.update_owner(desired_owner)
+		if(desired_owner.z)
+			offset_x = desired_owner.x
+			offset_y = desired_owner.y
+		update_map()
 
 /obj/hud/button/map_control/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -78,14 +77,14 @@
 	switch(code)
 		//First Row up.
 		if(11) //Left
-			offset_x -= TILE_SIZE
+			offset_x += VIEW_RANGE
 		if(21) //Down
-			offset_y -= TILE_SIZE
+			offset_y += VIEW_RANGE
 		if(31) //Right
-			offset_x += TILE_SIZE
+			offset_x -= VIEW_RANGE
 		//Second row up.
 		if(22) //Up
-			offset_y += TILE_SIZE
+			offset_y -= VIEW_RANGE
 		if(32) //Zoom Out
 			current_zoom -= 1
 		//Third row up.
@@ -95,21 +94,27 @@
 			current_zoom += 1
 
 
-	world.log << "Code: [code]."
-
-	offset_x = clamp(offset_x,-TILE_SIZE*VIEW_RANGE,TILE_SIZE*VIEW_RANGE)
-	offset_y = clamp(offset_y,-TILE_SIZE*VIEW_RANGE,TILE_SIZE*VIEW_RANGE)
+	offset_x = clamp(offset_x,-world.maxx,world.maxx)
+	offset_y = clamp(offset_y,-world.maxy,world.maxy)
 	current_zoom = clamp(current_zoom,1,4)
 
-	var/new_screen_loc = "LEFT:[offset_x],BOTTOM:[offset_y] to RIGHT:[offset_x],TOP:[offset_y]"
-
-	var/matrix/M = matrix()
-	M.Scale(current_zoom)
-	connected_map.transform = M
-
-	connected_map.screen_loc = new_screen_loc
-
-	world.log << "Zoom: [current_zoom]"
+	update_map()
 
 	. = ..()
+
+
+
+/obj/hud/button/map_control/proc/update_map()
+
+	var/matrix/M = matrix()
+	M.Scale(current_zoom,current_zoom)
+
+	var/translate_x = offset_x + (offset_x-world.maxx*0.5)*(current_zoom-1)
+	var/translate_y = offset_y + (offset_y-world.maxx*0.5)*(current_zoom-1)
+
+	M.Translate(-translate_x,-translate_y)
+	connected_map.transform = M
+	connected_map.screen_loc = "CENTER+0.5,CENTER+0.5"
+
+	return TRUE
 
