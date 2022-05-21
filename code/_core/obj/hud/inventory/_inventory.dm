@@ -84,7 +84,7 @@
 
 	show(FALSE,0)
 
-	update_owner(null)
+	update_owner(null) //This proc is custom to /obj/hud/inventory so it won't cause issues.
 
 	parent_inventory = null
 	child_inventory = null
@@ -297,7 +297,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
+/obj/hud/inventory/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
 		return FALSE

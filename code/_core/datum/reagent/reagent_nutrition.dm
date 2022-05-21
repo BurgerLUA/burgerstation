@@ -4,6 +4,7 @@
 	color = "#FFFFFF"
 	alpha = 255
 
+	metabolism_blood = 1
 	metabolism_stomach = 0.2
 
 	var/nutrition_amount = 0 //Per unit

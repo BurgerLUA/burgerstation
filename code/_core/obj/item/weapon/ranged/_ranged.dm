@@ -467,7 +467,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		arm_strength *= 2
 
 	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
-	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.01*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
+	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
 	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
 
 	if(projectile_to_use)
@@ -715,11 +715,16 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
-			if(i == 1 && view_punch && ismob(caller))
+			if(i == 1 && view_punch && view_punch_time > 0 && ismob(caller))
 				var/mob/M = caller
 				if(M.client)
-					M.client.desired_recoil_x -= normx*view_punch*2
-					M.client.desired_recoil_y -= normy*view_punch*2
+					M.client.add_queued_recoil(
+						"\ref[src]",
+						-view_punch*normx,
+						-view_punch*normy,
+						view_punch * 1/(view_punch_time),
+						view_punch * 1/(view_punch_time*2)
+					)
 
 			var/mod = HYPOTENUSE(normx,normy)
 			var/x_vel = normx * projectile_speed_to_use / mod

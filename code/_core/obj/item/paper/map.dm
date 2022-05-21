@@ -8,7 +8,7 @@
 
 /obj/item/map/click_self(var/mob/caller)
 
-	var/obj/hud/button/map_control/M_control = locate() in caller.buttons
+	var/obj/hud/button/map_background/M_control = locate() in caller.buttons
 
 	if(M_control)
 		M_control.update_owner(null)

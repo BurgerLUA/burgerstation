@@ -7160,9 +7160,6 @@
 /obj/decal/hazard/black,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
-"Ad" = (
-/turf/simulated/liquid/water,
-/area/burgerstation/hall/east)
 "Ae" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
 	dir = 4
@@ -46294,9 +46291,9 @@ do
 kZ
 pq
 ma
-Ad
-Ad
-Ad
+ma
+ma
+ma
 ma
 vJ
 kZ
@@ -46551,9 +46548,9 @@ do
 kZ
 pq
 ma
-Ad
-Ad
-Ad
+ma
+ma
+ma
 lZ
 vJ
 kX
@@ -46808,9 +46805,9 @@ kA
 la
 pq
 ma
-Ad
-Ad
-Ad
+ma
+ma
+ma
 lZ
 vJ
 nZ

@@ -71,14 +71,8 @@ var/global/list/all_clients = list() //Assoc list
 	var/zoom_pixel_x = 0
 	var/zoom_pixel_y = 0
 
-	var/desired_pixel_x = 0
-	var/desired_pixel_y = 0
-
-	var/desired_recoil_x = 0
-	var/desired_recoil_y = 0
-
-	var/desired_punch_x = 0
-	var/desired_punch_y = 0
+	var/final_pixel_x = 0
+	var/final_pixel_y = 0
 
 	var/precise_zoom = FALSE
 
@@ -95,6 +89,8 @@ var/global/list/all_clients = list() //Assoc list
 	show_popup_menus = FALSE
 
 	var/drag_last = 0
+
+	var/list/queued_recoil = list()
 
 /client/proc/is_player_controlled()
 	return TRUE //duh

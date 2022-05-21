@@ -9,6 +9,29 @@
 
 	initialize_type = 0x0 //This type does not get initialized.
 
+	var/delete_on_no_owner = TRUE
+	var/bad_delete = TRUE
+
+/obj/hud/proc/update_owner(var/mob/desired_owner)
+
+	if(owner == desired_owner)
+		return FALSE
+
+	if(owner)
+		owner.remove_button(src)
+
+	if(!desired_owner && delete_on_no_owner)
+		bad_delete = FALSE
+		qdel(src)
+		return TRUE
+
+	owner = desired_owner
+	if(owner)
+		owner.add_button(src)
+		update_sprite()
+
+	return TRUE
+
 /obj/hud/Destroy()
 	owner = null
 	. = ..()

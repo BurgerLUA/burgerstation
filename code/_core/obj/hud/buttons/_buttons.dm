@@ -20,10 +20,6 @@
 
 	has_quick_function = TRUE
 
-	var/delete_on_no_owner = TRUE
-
-	var/bad_delete = TRUE
-
 	var/interact_check = FALSE
 
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
@@ -50,26 +46,6 @@
 	else
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		mouse_opacity = 0
-
-/obj/hud/button/proc/update_owner(var/mob/desired_owner)
-
-	if(owner == desired_owner)
-		return FALSE
-
-	if(owner)
-		owner.remove_button(src)
-
-	if(!desired_owner && delete_on_no_owner)
-		bad_delete = FALSE
-		qdel(src)
-		return TRUE
-
-	owner = desired_owner
-	if(owner)
-		owner.add_button(src)
-		update_sprite()
-
-	return TRUE
 
 /obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	play_sound_target('sound/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)

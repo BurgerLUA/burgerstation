@@ -75,11 +75,13 @@
 #define PLANE_CHAT 12
 
 //Abstract
-#define PLANE_ABSTRACT 98
+#define PLANE_ABSTRACT 50
 
-#define PLANE_ALWAYS_VISIBLE 99
+#define PLANE_ALWAYS_VISIBLE 51
 
 //HUD
+#define PLANE_MAP 99
+
 #define PLANE_HUD 100
 
 #define PLANE_HUD_OBJ 101

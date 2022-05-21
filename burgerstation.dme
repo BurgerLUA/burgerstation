@@ -65,6 +65,7 @@
 #include "code\__defines\math.dm"
 #include "code\__defines\memory_address.dm"
 #include "code\__defines\mob.dm"
+#include "code\__defines\mob_values.dm"
 #include "code\__defines\organ.dm"
 #include "code\__defines\params.dm"
 #include "code\__defines\paths.dm"
