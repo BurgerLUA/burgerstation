@@ -49,8 +49,6 @@
 
 	. += get_damage_description(examiner,FALSE)
 
-	. += div("notice bold","<a href='?src=\ref[examiner];view_inventory=\ref[src]'>(View inventory...)</a>")
-
 mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	var/pronoun = get_pronoun_he_she_it(src)

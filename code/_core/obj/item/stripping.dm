@@ -1,8 +1,8 @@
 /obj/item/proc/try_strip(var/mob/caller)
-	if(!can_strip(caller))
+	if(!can_strip(caller,TRUE))
 		return FALSE
 	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/strip,caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_strip,caller)
+	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_strip,caller,TRUE)
 	return TRUE
 
 /obj/item/proc/strip(var/mob/caller)
@@ -21,12 +21,12 @@
 
 	return TRUE
 
-/obj/item/proc/can_strip(var/mob/caller)
+/obj/item/proc/can_strip(var/mob/caller,var/messages=FALSE)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
 	if(!istype(loc,/obj/hud/inventory/organs/))
-		caller.to_chat(span("warning","That's not there anymore!"))
+		if(messages) caller.to_chat(span("warning","That's not there anymore!"))
 		return FALSE
 
 	var/obj/hud/inventory/I = loc
@@ -34,21 +34,26 @@
 		return FALSE
 
 	if(!is_living(I.owner))
-		caller.to_chat(span("warning","That's not there anymore!"))
+		if(messages) caller.to_chat(span("warning","That's not there anymore!"))
 		return FALSE
 
 	var/mob/living/L = I.owner
 
 	INTERACT_CHECK_OTHER(L)
 
-	if(!L.dead) //Only dead things can be stripped.
-		caller.to_chat(span("warning","You can't remove clothing from living people!"))
-		return FALSE
-
 	if(is_living(caller))
 		var/mob/living/CL = caller
 		var/turf/T = get_turf(CL)
 		if(!allow_hostile_action(CL.loyalty_tag,L.loyalty_tag,T.loc))
 			return FALSE
+
+	if(!L.dead)
+		if(I.worn)
+			if(messages) caller.to_chat(span("warning","You can't remove clothing from living people!"))
+			return FALSE
+		if(!istype(I,/obj/hud/inventory/organs/groin/pocket) && !L.grabbing_hand)
+			if(messages) caller.to_chat(span("warning","You need a better grip to steal this!"))
+			return FALSE
+
 
 	return TRUE
