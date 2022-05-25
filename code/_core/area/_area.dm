@@ -66,6 +66,8 @@
 
 	var/list/obj/structure/interactive/light_switch/light_switches
 
+	var/list/obj/particle_managers = list()
+
 /area/proc/is_space()
 	return FALSE
 

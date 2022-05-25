@@ -8,7 +8,7 @@
 //Snow
 /obj/weather/snow
 	particles = new/particles/snow
-
+/*
 /particles/snow
 	width = SCREEN_SIZE
 	height = SCREEN_SIZE
@@ -22,4 +22,4 @@
 	gravity = list(0,-3)
 	friction = 0.2
 	drift = generator("sphere", 0, 2)
-
+*/

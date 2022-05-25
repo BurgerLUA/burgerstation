@@ -19,6 +19,8 @@
 
 	damage_type = null //Just in case.
 
+	sight = SEE_THRU | SEE_PIXELS
+
 /mob/abstract/observer/on_left_click(var/atom/object,location,control,params)
 	if(src.click_on_object(src,object,location,control,params))
 		return TRUE
@@ -75,10 +77,3 @@
 		B.update_owner(src)
 
 	to_chat(span("notice","Please load a character or create a new character to play using the buttons below."))
-
-/mob/abstract/observer/update_eyes()
-
-	. = ..()
-
-	sight |= SEE_THRU
-
