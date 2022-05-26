@@ -178,6 +178,32 @@
 				return FALSE
 			next_complex = world.time + 5
 			return FALSE
+	else if(istype(R,/obj/item/weapon/ranged/bullet/revolver))
+		var/obj/item/weapon/ranged/bullet/revolver/G = R
+		if(!G.stored_bullets[G.current_chamber] || G.stored_bullets[G.current_chamber].is_spent)
+			if(G.wielded) //We should unwield
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
+			if(!G.open)
+				G.click_self(A) //Open it.
+			next_complex = world.time + 15
+			var/obj/item/bullet_cartridge/B
+			var/obj/item/magazine/clip/C
+			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
+			if(O_groin)
+				C = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip)
+			if(!C)
+				B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet)
+			if(!C && !B)
+				G.drop_item(get_turf(owner)) //IT'S NO USE.
+				return FALSE
+			if(C) C.click_on_object(A,G)
+			if(B) B.click_on_object(A,G)
+			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
+			return FALSE
+		else if(G.open && !G.can_shoot_while_open) //https://www.youtube.com/watch?v=ZiEGi2g1JkA
+			G.click_self(A)
+			next_complex = world.time + 15
 
 	return TRUE
 

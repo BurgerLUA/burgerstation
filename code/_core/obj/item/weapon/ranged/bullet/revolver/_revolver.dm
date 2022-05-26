@@ -14,6 +14,20 @@
 
 	var/has_quickshot = FALSE
 
+/obj/item/weapon/ranged/bullet/revolver/Initialize()
+	if(can_shoot_while_open)
+		open = TRUE
+	. = ..()
+
+/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip(var/obj/item/I)
+
+	if(istype(I,/obj/item/magazine/clip/revolver))
+		var/obj/item/magazine/M = I
+		if(M.weapon_whitelist[src.type])
+			return TRUE
+
+	return FALSE
+
 /obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
 	if(!has_quickshot)
@@ -65,6 +79,9 @@
 
 /obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)
 
+	if(can_shoot_while_open)
+		return TRUE
+
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
@@ -101,8 +118,6 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
-
-
 
 	if(open && is_inventory(object) && src && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
 

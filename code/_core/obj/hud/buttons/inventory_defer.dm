@@ -78,9 +78,9 @@
 	return TRUE
 
 var/global/list/greyscale = list(
-	1,1,1,0,
-	1,1,1,0,
-	1,1,1,0,
+	0.75,0.75,0.75,0,
+	0.75,0.75,0.75,0,
+	0.75,0.75,0.75,0,
 	0,0,0,1
 )
 
@@ -96,7 +96,7 @@ var/global/list/greyscale = list(
 	update_vis_contents()
 
 	var/obj/item/top_object = get_top_vis_object()
-	if(!top_object.can_strip(owner))
+	if(!top_object || !top_object.can_strip(owner))
 		color = greyscale
 
 	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,.proc/update)

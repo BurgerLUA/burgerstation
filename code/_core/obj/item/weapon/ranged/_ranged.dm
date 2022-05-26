@@ -463,7 +463,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
-	if(wielded)
+	if(wielded || !can_wield)
 		arm_strength *= 2
 
 	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
@@ -597,7 +597,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
 					else
 						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
-					if(arm_damage >= 20 && O.send_pain_response(arm_damage))
+					if(arm_damage >= 50 && O.send_pain_response(arm_damage))
 						A.to_chat(span("warning","The recoil of \the [src.name] injures your arm!"))
 
 

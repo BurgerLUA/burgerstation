@@ -178,10 +178,9 @@
 /obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/talk = TRUE)
 
 	if(src == transfer_target)
-		return FALSE //TODO: THIS USED TO BE TRUE, TEST BULLETS TO SEE IF THIS SHOULD BE TRUE
+		return FALSE
 
-	if(type != transfer_target.type)
-		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))
+	if(src.type != transfer_target.type)
 		return FALSE
 
 	var/bullets_to_add = min(amount,transfer_target.amount_max - transfer_target.get_ammo_count())
