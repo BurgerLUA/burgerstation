@@ -1,6 +1,5 @@
 /loadout/that_guy
 	spawning_items = list(
-
 		/obj/item/clothing/shirt/normal/reinforced/merc,
 		/obj/item/clothing/pants/normal/reinforced/space_soldier,
 
@@ -30,5 +29,4 @@
 		/obj/item/bullet_cartridge/shotgun_12/{amount=5},
 		/obj/item/bullet_cartridge/shotgun_12/{amount=5},
 		/obj/item/bullet_cartridge/shotgun_12/{amount=5}
-
 	)

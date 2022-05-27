@@ -191,44 +191,85 @@
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/revolver))
 		var/obj/item/weapon/ranged/bullet/revolver/G = R
-		if(!G.stored_bullets[G.current_chamber] || G.stored_bullets[G.current_chamber].is_spent)
+		if(!G.stored_bullets[G.current_chamber] || G.stored_bullets[G.current_chamber].is_spent || desired_shell_reload > 0)
+			if(desired_shell_reload > 0)
+				var/has_valid_bullet = FALSE
+				for(var/k in G.stored_bullets)
+					var/obj/item/bullet_cartridge/B = G.stored_bullets[k]
+					if(!B || B.is_spent)
+						continue
+					has_valid_bullet = k
+					break
+				if(has_valid_bullet)
+					G.rotate_cylinder(clamp(has_valid_bullet - G.current_chamber,-1,1)) //There is another valid bullet somewhere.
+					next_complex = world.time + rand(3,5)
+					return FALSE
+
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
+				next_complex = world.time + rand(5,15)
+				return FALSE
+
 			if(!G.open)
 				G.click_self(A) //Open it.
-			next_complex = world.time + rand(15,30)
+				next_complex = world.time + rand(5,15)
+				return FALSE
+
 			var/obj/item/bullet_cartridge/B
-			if(last_found_bullet && !last_found_bullet.qdeleting)
+			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent) //Is last_found_bullet even valid?
 				var/obj/hud/inventory/I = last_found_bullet.loc
 				if(istype(I) && I.owner == owner)
 					B = last_found_bullet
-			var/obj/item/magazine/clip/C
-			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
-			if(O_groin)
-				C = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip)
-				if(!C && !B)
-					B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet)
-			if(!C && !B)
-				G.drop_item(get_turf(owner)) //IT'S NO USE.
-				return FALSE
-			if(C) C.click_on_object(A,G)
-			else if(B) B.click_on_object(A,G)
-			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
-				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-				next_complex = world.time + rand(10,15)
+				else
+					last_found_bullet = null
 			else
-				next_complex = world.time + rand(2,6)
+				last_found_bullet = null
+			var/obj/item/magazine/clip/C
+			if(!B) //Why look for a clip if we inserted a bullet previously and found it?
+				var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
+				if(O_groin)
+					C = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip)
+					if(!C)
+						B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet) //It is implied we couldn't find B earlier.
+			if(C)
+				C.click_on_object(A,G)
+				C.drop_item(get_turf(owner))
+				next_complex = world.time + rand(5,10)
+				return FALSE
+			if(B)
+				B.click_on_object(A,G)
+				var/missing_bullets = 0
+				for(var/k in G.stored_bullets)
+					if(k)
+						continue
+					missing_bullets++
+				desired_shell_reload = missing_bullets
+				if(desired_shell_reload > 0)
+					last_found_bullet = B
+				else
+					last_found_bullet = null
+				world.log << "Yeah: [desired_shell_reload]."
+				next_complex = world.time + 1 //Honestly it takes like no time to insert it.
+				return FALSE
+			desired_shell_reload = -desired_shell_reload
+			G.drop_item(get_turf(owner)) //IT'S NO USE.
 			return FALSE
-		else if(G.open && !G.can_shoot_while_open) //https://www.youtube.com/watch?v=ZiEGi2g1JkA
+
+		if(G.open && !G.can_shoot_while_open) //https://www.youtube.com/watch?v=ZiEGi2g1JkA
 			G.click_self(A)
-			next_complex = world.time + rand(15,30)
+			next_complex = world.time + rand(5,15)
 			return FALSE
-		return TRUE
+
+		desired_shell_reload = 0 //All good.
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
+			next_complex = world.time + rand(2,6)
+			return FALSE
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/pump))
 		var/obj/item/weapon/ranged/bullet/pump/G = R
 
-		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent))
+		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent && G.can_fit_bullet(last_found_bullet)))
 			G.click_self(owner) //Chamber a new round in.
 			next_complex = G.next_shoot_time + rand(1,3)
 			return FALSE
@@ -251,10 +292,12 @@
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
 			var/obj/item/bullet_cartridge/B
-			if(last_found_bullet && !last_found_bullet.qdeleting)
+			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent && G.can_fit_bullet(last_found_bullet))
 				var/obj/hud/inventory/I = last_found_bullet.loc
 				if(istype(I) && I.owner == owner)
 					B = last_found_bullet
+			else
+				last_found_bullet = null
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
 			if(O_groin && !B)
 				B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet)
@@ -265,7 +308,7 @@
 			next_complex = world.time + rand(2,6)
 			return FALSE
 
-		desired_shell_reload = 0 //Reset
+		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			next_complex = world.time + rand(2,6)
