@@ -9,10 +9,12 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_tier = list()
 
 	var/list/weapon_to_bullet = list()
+	var/list/weapon_to_magazine = list()
 
 /subsystem/balance/Initialize()
 
 	var/list/created_bullets = list()
+	var/list/created_magazines = list()
 
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = new k(locate(1,1,1))
@@ -23,6 +25,16 @@ SUBSYSTEM_DEF(balance)
 		GENERATE(B)
 		FINALIZE(B)
 		created_bullets += B
+
+	for(var/k in subtypesof(/obj/item/magazine))
+		var/obj/item/magazine/M = new k(locate(1,1,1))
+		if(M.rarity != RARITY_COMMON || M.value <= 0)
+			qdel(M)
+			continue
+		INITIALIZE(M)
+		GENERATE(M)
+		FINALIZE(M)
+		created_magazines += M
 
 	var/imbalanced_weapons = 0
 
@@ -46,6 +58,14 @@ SUBSYSTEM_DEF(balance)
 					continue
 				weapon_to_bullet[B.type] = C.type
 				break
+
+		if(istype(W,/obj/item/weapon/ranged/bullet/magazine))
+			var/obj/item/weapon/ranged/bullet/magazine/B = W
+			for(var/v in created_magazines)
+				var/obj/item/magazine/M = v
+				if(!M.weapon_whitelist[B.type])
+					continue
+				weapon_to_magazine[B.type] = M.type
 
 		var/found_dph = W.get_damage_per_hit()
 		if(found_dph)

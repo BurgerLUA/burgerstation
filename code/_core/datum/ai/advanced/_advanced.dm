@@ -269,7 +269,7 @@
 	if(istype(R,/obj/item/weapon/ranged/bullet/pump))
 		var/obj/item/weapon/ranged/bullet/pump/G = R
 
-		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent && G.can_fit_bullet(last_found_bullet)))
+		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent))
 			G.click_self(owner) //Chamber a new round in.
 			next_complex = G.next_shoot_time + rand(1,3)
 			return FALSE
