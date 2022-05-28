@@ -34,7 +34,7 @@
 	var/heat_current = 0 //Do not change.
 	var/heat_max = 0.2
 
-	var/inaccuracy_modifier = 1 //The modifer for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
+	var/inaccuracy_modifier = 1 //The modifier for target doll inaccuracy. Lower values means more accurate. 1 = 32 pixels, 0.5 = 16 pixels.
 	var/movement_inaccuracy_modifier = 0 //The additional modifier target doll inaccuracy while adding. Lower values means more accurate. This value is added while moving.
 
 	var/movement_spread_base = 0.05 //half this at walking speed, this at running speed, this times two at sprinting speed
@@ -429,7 +429,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/bullet_spread_to_use = 0
 	var/projectile_speed_to_use = projectile_speed*quality_penalty*damage_mod
 	var/bullet_color_to_use = bullet_color
-	var/inaccuracy_modifer_to_use = get_bullet_inaccuracy(caller,object)
+	var/inaccuracy_modifier_to_use = get_bullet_inaccuracy(caller,object)
 	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
 	var/max_bursts_to_use = current_maxmium_bursts
 	var/shoot_alert_to_use = shoot_alert
@@ -449,7 +449,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		ADD(bullet_spread_to_use,spent_bullet.base_spread)
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
-		MUL(inaccuracy_modifer_to_use,spent_bullet.inaccuracy_modifer)
+		MUL(inaccuracy_modifier_to_use,spent_bullet.inaccuracy_modifier)
 		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = spent_bullet.get_power()
 		damage_multiplier_to_use *= quality_bonus
@@ -507,7 +507,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			MUL(bullet_spread_to_use,attachment_stats["bullet_spread"])
 			MUL(projectile_speed_to_use,attachment_stats["projectile_speed"])
 			SET(bullet_color_to_use,attachment_stats["bullet_color"])
-			MUL(inaccuracy_modifer_to_use,attachment_stats["inaccuracy_modifer"])
+			MUL(inaccuracy_modifier_to_use,attachment_stats["inaccuracy_modifier"])
 			MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
 			MUL(static_spread,attachment_stats["static_spread"])
 			MUL(heat_spread,attachment_stats["heat_spread"])
@@ -559,7 +559,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			damage_multiplier_to_use,
 			iff_tag ? iff_tag : null,
 			loyalty_tag ? loyalty_tag : null,
-			inaccuracy_modifer_to_use,
+			inaccuracy_modifier_to_use,
 			get_base_spread(),
 			penetrations_left
 		)
@@ -658,7 +658,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifer=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
 	if(!target) CRASH("There is no valid target defined!")
 
@@ -730,7 +730,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifer,penetrations_left)
+			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifier,penetrations_left)
 			INITIALIZE(P)
 			FINALIZE(P)
 			. += P

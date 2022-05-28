@@ -19,7 +19,7 @@
 	size = 0.04
 	value = 1.6
 
-	inaccuracy_modifer = 1.25
+	inaccuracy_modifier = 1.25
 
 	amount_max = 5
 	amount_max_icon = 5
@@ -75,7 +75,7 @@
 	size = 0.04
 	value = 5
 
-	inaccuracy_modifer = 1
+	inaccuracy_modifier = 1
 
 
 /obj/item/bullet_cartridge/shotgun_12/flechette
@@ -96,7 +96,7 @@
 	size = 0.04
 	value = 1.8
 
-	inaccuracy_modifer = 1.1
+	inaccuracy_modifier = 1.1
 
 	penetrations = 1
 

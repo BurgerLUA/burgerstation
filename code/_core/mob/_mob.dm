@@ -10,7 +10,7 @@
 	var/ckey_last //The person controlling this. Can be null if control is given up.
 	var/ckey_owner //The one who spawned it in. Only null if deleting.
 
-	var/rarity = RARITY_COMMON //Basically a strength modifer for the mob.
+	var/rarity = RARITY_COMMON //Basically a strength modifier for the mob.
 	var/tier = -1 //-1 means not set.
 	var/tier_type = "mob"
 

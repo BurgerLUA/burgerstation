@@ -329,7 +329,7 @@
 	return ..()
 
 
-/mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damage_type/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
 		params = list(PARAM_ICON_X = 16,PARAM_ICON_Y = 16)

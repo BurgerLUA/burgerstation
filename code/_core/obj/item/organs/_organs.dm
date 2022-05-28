@@ -76,6 +76,16 @@
 	var/broken = FALSE
 	var/broken_name //Null basically means generate.
 
+	var/projectile_dodge_chance = 0
+
+/obj/item/organ/proc/check_hit_chance(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+
+	if(projectile_dodge_chance > 0 && !accurate && !find_closest && get_dist(src,attacker) > 1)
+		var/damagetype/DT = all_damage_types[damage_type]
+		if(DT && DT.get_attack_type() == ATTACK_TYPE_RANGED)
+			return !prob(projectile_dodge_chance)
+
+	return TRUE
 
 /obj/item/organ/get_top_object()
 
@@ -101,7 +111,7 @@
 	attached_organs = list()
 
 /obj/item/organ/Destroy()
-	color = "#FF00FF"
+	color = "#C284FF" //Absurd color. This makes it easier to identify issues.
 	attached_organ = null
 	attached_organs?.Cut()
 	. = ..()
@@ -114,12 +124,13 @@
 
 /obj/item/organ/update_sprite()
 	. = ..()
-
 	transform = get_base_transform()
 
-	if(enable_skin && additional_blends["skin"])
+	if(has_dropped_icon && !is_advanced(loc) && enable_skin && additional_blends["skin"])
 		var/icon_blend/IB = additional_blends["skin"]
 		color = IB.color
+	else
+		color = null
 
 /obj/item/organ/update_icon()
 
@@ -255,11 +266,12 @@
 			var/reagent/R = REAGENT(A.blood_type)
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
 				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2),TRUE)
-			if(gib_icon_state)
+			if(gib_icon_state && enable_skin && additional_blends["skin"])
+				var/icon_blend/IB = additional_blends["skin"]
 				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE),TRUE)
 				if(BG)
 					BG.icon_state = gib_icon_state
-					BG.flesh_color = color
+					BG.flesh_color = IB.color
 					BG.update_sprite()
 
 	for(var/k in attached_organs)
@@ -281,13 +293,13 @@
 /obj/item/organ/initialize_blends()
 
 	if(enable_skin)
-		add_blend("skin", desired_color = "#000000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend("skin", desired_color = "#FF0000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)
 
 	if(enable_glow)
-		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#000000", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#00FF00", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 
 	if(enable_detail)
-		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_color", desired_color = "#000000", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_color", desired_color = "#0000FF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
 
 	if(enable_wounds)
 		for(var/damagetype in visual_wounds)
@@ -299,9 +311,11 @@
 	. = ..()
 	initialize_blends(icon_state)
 
+/*
 /obj/item/organ/Finalize()
 	. = ..()
 	update_sprite()
+*/
 
 /obj/item/organ/proc/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
 

@@ -678,7 +678,7 @@
 	var/list/params = list()
 	params[PARAM_ICON_X] = 16
 	params[PARAM_ICON_Y] = 16
-	var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,FALSE,TRUE)
 	var/damagetype/D = all_damage_types[/damagetype/explosion/]
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE

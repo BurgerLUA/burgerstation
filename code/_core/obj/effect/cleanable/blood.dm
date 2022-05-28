@@ -123,6 +123,6 @@
 /obj/effect/cleanable/blood/body_gib/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,"[icon_state]_flesh")
-	I.appearance_flags = src.appearance_flags | RESET_COLOR
-	I.color = flesh_color
+	I.appearance_flags = src.appearance_flags | RESET_COLOR | KEEP_APART
+	I.color = flesh_color ? flesh_color : "#FFFFFF"
 	add_overlay(I)

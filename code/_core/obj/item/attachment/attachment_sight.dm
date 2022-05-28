@@ -10,7 +10,7 @@
 	attachment_stats = list(
 		skill_spread = 0.75,
 		movement_spread = 1.25,
-		inaccuracy_modifer = 0.75,
+		inaccuracy_modifier = 0.75,
 
 	)
 
@@ -24,7 +24,7 @@
 
 	attachment_stats = list(
 		movement_spread = 0.75,
-		inaccuracy_modifer = 0.75,
+		inaccuracy_modifier = 0.75,
 		skill_spread = 1.25
 	)
 
@@ -39,7 +39,7 @@
 	value = 800
 
 	attachment_stats = list(
-		inaccuracy_modifer = 1.25,
+		inaccuracy_modifier = 1.25,
 		heat_spread = 1.25,
 
 		shoot_delay = 0.75
@@ -55,7 +55,7 @@
 		zoom_mul = 1.5,
 		movement_spread = 1.5,
 		heat_spread = 1.25,
-		inaccuracy_modifer = 0.5,
+		inaccuracy_modifier = 0.5,
 	)
 
 	value = 400
@@ -70,7 +70,7 @@
 		zoom_mul = 2,
 		movement_spread = 2,
 		heat_spread = 1.25,
-		inaccuracy_modifer = 0.5,
+		inaccuracy_modifier = 0.5,
 	)
 
 	value = 800
@@ -85,7 +85,7 @@
 		zoom_mul = 4,
 		movement_spread = 3,
 		heat_spread = 1.25,
-		inaccuracy_modifer = 0.25,
+		inaccuracy_modifier = 0.25,
 	)
 
 	value = 1600
@@ -100,7 +100,7 @@
 		zoom_mul = 8,
 		movement_spread = 3,
 		heat_spread = 1.25,
-		inaccuracy_modifer = 0.1,
+		inaccuracy_modifier = 0.1,
 	)
 
 	value = 3200
