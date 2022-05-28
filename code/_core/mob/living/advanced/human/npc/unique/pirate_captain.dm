@@ -34,6 +34,8 @@
 
 	var/next_revive = 0
 
+	blood_type = null
+
 	level = 70
 
 /mob/living/advanced/npc/unique/pirate_captain/on_life_slow()
@@ -80,6 +82,8 @@
 
 	level = 60
 
+	blood_type = null
+
 /mob/living/advanced/npc/unique/pirate_mate/Initialize()
 	. = ..()
 	equip_loadout(/loadout/pirate/mate)
@@ -99,6 +103,8 @@
 	ai = /ai/advanced/skeleton
 
 	level = 18
+
+	blood_type = null
 
 
 /mob/living/advanced/npc/pirate_crew/Initialize()

@@ -154,10 +154,14 @@
 
 //Beefman
 /obj/item/organ/arm/skeleton
-	name = "beef right arm"
+	name = "skeleton right arm"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
 	defense_rating = SKELETON_ARMOR
+
+	projectile_dodge_chance = 20
+
+	can_gib = FALSE
 
 /obj/item/organ/arm/skeleton/left
 	name = "skeleton left arm"

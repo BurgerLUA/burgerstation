@@ -222,7 +222,7 @@
 
 //Skeleton
 /obj/item/organ/foot/skeleton
-	name = "right skeleton foot"
+	name = "skeleton right foot"
 
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
@@ -230,8 +230,12 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 10
+
+	can_gib = FALSE
+
 /obj/item/organ/foot/skeleton/left
-	name = "left skeleton foot"
+	name = "skeleton left foot"
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 

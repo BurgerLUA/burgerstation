@@ -165,6 +165,10 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 20
+
+	can_gib = FALSE
+
 
 /obj/item/organ/leg/skeleton/left
 	name = "left skeleton leg"

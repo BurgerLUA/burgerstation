@@ -111,6 +111,10 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 5
+
+	can_gib = FALSE
+
 
 //skeleton
 /obj/item/organ/head/monkey
