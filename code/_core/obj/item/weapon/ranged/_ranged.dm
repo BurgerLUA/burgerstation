@@ -719,7 +719,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				var/mob/M = caller
 				if(M.client)
 					M.client.add_queued_recoil(
-						"\ref[src]",
 						-view_punch*normx,
 						-view_punch*normy,
 						view_punch * 1/(view_punch_time),

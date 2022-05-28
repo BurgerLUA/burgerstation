@@ -62,6 +62,12 @@
 
 /client/proc/handle_camera()
 
+	if(mob && istype(mob.loc,/obj/projectile/))
+		var/obj/projectile/P = mob.loc
+		pixel_x = round(P.pixel_x_float,1)
+		pixel_y = round(P.pixel_y_float,1)
+		return TRUE
+
 	var/calculated_pixel_x = 0
 	var/calculated_pixel_y = 0
 
@@ -75,20 +81,14 @@
 	var/zoom_offset_x = is_zoomed ? zoom_pixel_x : 0
 	var/zoom_offset_y = is_zoomed ? zoom_pixel_y : 0
 
-	var/desired_pixel_x = final_pixel_x + zoom_offset_x + desired_punch_x
-	var/desired_pixel_y = final_pixel_y + zoom_offset_y + desired_punch_y
-
-	if(mob && istype(mob.loc,/obj/projectile/))
-		var/obj/projectile/P = mob.loc
-		pixel_x = round(P.pixel_x_float,1)
-		pixel_y = round(P.pixel_y_float,1)
-		return TRUE
+	var/desired_pixel_x = zoom_offset_x + desired_punch_x //Where we want to move.
+	var/desired_pixel_y = zoom_offset_y + desired_punch_y //Where we want to move.
 
 	var/total_difference = abs(desired_pixel_x - final_pixel_x) + abs(desired_pixel_y - final_pixel_y)
 	var/diff_mod = clamp(total_difference*0.1,1,20)
 	var/max_speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
-	var/x_mod = clamp(desired_pixel_x - final_pixel_x,-max_speed,max_speed)
-	var/y_mod = clamp(desired_pixel_y - final_pixel_y,-max_speed,max_speed)
+	var/x_mod = clamp(desired_pixel_x - final_pixel_x,-max_speed,max_speed) //How fast we can move.
+	var/y_mod = clamp(desired_pixel_y - final_pixel_y,-max_speed,max_speed) //How fast we can move.
 	final_pixel_x += x_mod
 	final_pixel_y += y_mod
 
@@ -97,8 +97,8 @@
 
 	var/time_mul = TICKS_TO_DECISECONDS(CLIENT_TICK)
 
-	for(var/id in queued_recoil)
-		var/list/data = queued_recoil[id]
+	for(var/k in queued_recoil)
+		var/list/data = k
 		var/current_x = data[1]
 		var/current_y = data[2]
 		var/initial_recoil_x = data[3]
@@ -138,7 +138,7 @@
 
 		if(finished >= 2)
 			if(recovering)
-				queued_recoil -= id
+				queued_recoil -= k
 			else
 				data[9] = TRUE //recovering
 
@@ -153,7 +153,7 @@
 	return TRUE
 
 
-/client/proc/add_queued_recoil(var/id=world.time,var/initial_recoil_x=0,var/initial_recoil_y=0,var/initial_speed=1,var/recovery_speed=1,var/recovering=FALSE)
+/client/proc/add_queued_recoil(var/initial_recoil_x=0,var/initial_recoil_y=0,var/initial_speed=1,var/recovery_speed=1,var/recovering=FALSE)
 
 	initial_speed = abs(initial_speed)
 	recovery_speed = abs(recovery_speed)
@@ -177,54 +177,16 @@
 	else if(desired_speed_y < 0)
 		desired_speed_y = min(-TILE_SIZE*0.5,desired_speed_y) //Get smallest
 
-	if(queued_recoil[id])
-		if(queued_recoil[id][3])
-			var/redund_mul = min(1,abs(initial_recoil_x*0.25 / queued_recoil[id][3]))
-			if(redund_mul > 0.25)
-				initial_recoil_x *= redund_mul
-			else
-				initial_recoil_x *= redund_mul * 0.05
-				initial_recoil_y += initial_recoil_x*RAND_PRECISE(-1,1)*redund_mul*0.5
-		if(queued_recoil[id][4])
-			var/redund_mul = min(1,abs(initial_recoil_y*0.25 / queued_recoil[id][4]))
-			if(redund_mul > 0.25)
-				initial_recoil_y *= redund_mul
-			else
-				initial_recoil_x += initial_recoil_y*RAND_PRECISE(-1,1)*redund_mul*0.5
-				initial_recoil_y *= redund_mul * 0.05
-
-		var/desired_initial_x = queued_recoil[id][3] + initial_recoil_x
-		var/desired_initial_y = queued_recoil[id][4] + initial_recoil_y
-
-		var/chaos_x = 0
-		var/chaos_y = 0
-
-		if(abs(desired_initial_x) > TILE_SIZE*1.5)
-			desired_initial_x = clamp(desired_initial_x,-TILE_SIZE*2,TILE_SIZE*2)
-			chaos_y = pick(-1,1)*TILE_SIZE*RAND_PRECISE(0.5,1)
-
-		if(abs(desired_initial_y) > TILE_SIZE*1.5)
-			desired_initial_y = clamp(desired_initial_y,-TILE_SIZE*2,TILE_SIZE*2)
-			chaos_x = pick(-1,1)*TILE_SIZE*RAND_PRECISE(0.25,0.5)
-
-		queued_recoil[id][3] = desired_initial_x + chaos_x
-		queued_recoil[id][4] = desired_initial_y + chaos_y
-
-		queued_recoil[id][5] = max(abs(desired_speed_x),abs(queued_recoil[id][5])) * -clamp(queued_recoil[id][3],-1,1) - chaos_x
-		queued_recoil[id][6] = max(abs(desired_speed_y),abs(queued_recoil[id][6])) * -clamp(queued_recoil[id][4],-1,1) - chaos_y
-
-		queued_recoil[id][9] = recovering
-	else
-		queued_recoil[id] = list(
-			0,
-			0,
-			clamp(initial_recoil_x,-TILE_SIZE*2,TILE_SIZE*2),
-			clamp(initial_recoil_y,-TILE_SIZE*2,TILE_SIZE*2),
-			desired_speed_x,
-			desired_speed_y,
-			recovery_speed * speed_mul_x,
-			recovery_speed * speed_mul_y,
-			recovering
-		)
+	queued_recoil += list(list(
+		0,
+		0,
+		clamp(initial_recoil_x,-TILE_SIZE*2,TILE_SIZE*2),
+		clamp(initial_recoil_y,-TILE_SIZE*2,TILE_SIZE*2),
+		desired_speed_x,
+		desired_speed_y,
+		recovery_speed * speed_mul_x,
+		recovery_speed * speed_mul_y,
+		recovering
+	))
 
 	return TRUE

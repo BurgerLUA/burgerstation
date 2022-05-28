@@ -657,12 +657,12 @@ var/global/list/all_damage_numbers = list()
 	if(ismob(victim))
 		var/mob/M = victim
 		if(M.client)
-			M.client.add_queued_recoil("\ref[weapon]",offsets[1]*multiplier,offsets[2]*multiplier,attack_delay)
+			M.client.add_queued_recoil(offsets[1]*multiplier,offsets[2]*multiplier,attack_delay)
 
 	if(ismob(attacker))
 		var/mob/M = attacker
 		if(M.client)
-			M.client.add_queued_recoil("\ref[weapon]",offsets[1]*multiplier*0.5,offsets[2]*multiplier*0.5,attack_delay,TRUE)
+			M.client.add_queued_recoil(offsets[1]*multiplier*0.5,offsets[2]*multiplier*0.5,attack_delay,TRUE)
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
@@ -706,7 +706,7 @@ var/global/list/all_damage_numbers = list()
 	if(ismob(attacker))
 		var/mob/M = attacker
 		if(M.client)
-			M.client.add_queued_recoil("\ref[weapon]",pixel_offset[1],pixel_offset[2],attack_delay*0.125,attack_delay)
+			M.client.add_queued_recoil(pixel_offset[1],pixel_offset[2],attack_delay*0.125,attack_delay)
 
 	. = CEILING(attack_delay,1)
 
