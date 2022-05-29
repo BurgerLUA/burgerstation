@@ -6,9 +6,15 @@
 	icon_state = "inventory"
 	value = 1800
 
-	shoot_delay = 2
+	tier = 3
 
-	damage_mod = 1.2
+	shoot_delay = 8
+	burst_delay = 20
+	max_bursts = 3
+
+	firemodes = list("semi-automatic","burst")
+
+	damage_mod = 0.9
 
 	automatic = TRUE
 

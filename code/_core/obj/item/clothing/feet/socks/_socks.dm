@@ -9,7 +9,6 @@
 	item_slot = SLOT_FOOT
 	item_slot_mod = SLOT_MOD_RIGHT | SLOT_MOD_LEFT
 
-
 	ignore_other_slots = TRUE
 
 	slot_icons = TRUE
@@ -18,17 +17,17 @@
 
 	dyeable = TRUE
 
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = 10,
-		HEAT = -10
-	)
+	armor = /armor/cloth/reduced
 
 	size = SIZE_0
 
 	speed_bonus = 0.05
 
 	item_slot_layer = 1
+
+	uses_until_condition_fall = 150
+
+	save_on_death = TRUE
 
 
 

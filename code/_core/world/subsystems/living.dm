@@ -1,12 +1,11 @@
-var/global/list/all_living = list()
-
 SUBSYSTEM_DEF(living)
 	name = "Living Subsystem"
 	desc = "Controls the life of mobs."
-	tick_rate = DECISECONDS_TO_TICKS(LIFE_TICK)
+	tick_rate = LIFE_TICK_FAST
 	priority = SS_ORDER_LIFE
 
-	var/advanced_ticks = 0
+	var/slow_ticks = 0
+	var/normal_ticks = 0
 
 	tick_usage_max = 80
 	cpu_usage_max = 80
@@ -14,54 +13,67 @@ SUBSYSTEM_DEF(living)
 	use_time_dialation = FALSE
 
 	var/list/stored_addictions = list()
+	var/list/mob/living/all_living = list()
+
+	var/list/mob/living/processing_mobs = list()
+
+	var/next_report = SECONDS_TO_DECISECONDS(300)
 
 /subsystem/living/Initialize()
 
+	var/bad_initialize = 0
+
 	for(var/k in all_living)
 		var/mob/living/L = k
-		if(istype(L.loc,/turf/simulated/wall))
+		if(!L.client && istype(L.loc,/turf/simulated/wall))
+			bad_initialize++
 			qdel(L)
 			continue
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
 
+	log_subsystem(name,"Failed to initialize [bad_initialize] living beings as they spawned in walls.")
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 
 	for(var/k in subtypesof(/addiction/))
 		var/addiction/A = new k
 		stored_addictions[k] = A
 
-	return ..()
+	next_report = world.time + initial(next_report)
 
-/subsystem/living/proc/process_living(var/mob/living/L,var/do_slow=FALSE)
-	L.on_life()
-	if(do_slow)
-		L.on_life_slow()
-	return TRUE
+	. = ..()
 
 /subsystem/living/on_life()
 
-	var/do_slow = advanced_ticks >= LIFE_TICKS_PER_SLOW_LIFE_TICKS
+	var/do_slow = slow_ticks >= (LIFE_TICK_SLOW / LIFE_TICK_FAST)
+	var/do_normal = normal_ticks >= (LIFE_TICK / LIFE_TICK_FAST)
 
-	for(var/k in all_living)
+	for(var/k in processing_mobs)
 		var/mob/living/L = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
-		if(!L.initialized || L.qdeleting)
+		CHECK_TICK(tick_usage_max,DECISECONDS_TO_TICKS(1))
+		if(!L.finalized || L.qdeleting)
 			continue
-		if(L.ai && !L.ai.active)
-			continue
-		if(process_living(L,do_slow) == null)
-			if(!L.ckey_last)
-				log_error("Warning! [L.get_debug_name()] is not running process_living() correctly! They will be deleted as a result.")
-				qdel(L)
-			else
-				log_error("Warning! [L.get_debug_name()] is not running process_living() correctly! They currently have a ckey associated, so they will be notified instead of deleted.")
-				L.to_chat(span("danger","It appears your character experienced a script error. If this message persists, please cryo and rejoin while notifying a developer."))
+		L.on_life_fast()
+		if(do_normal)
+			L.on_life()
+		if(do_slow)
+			L.on_life_slow()
 
 	if(do_slow)
-		advanced_ticks = 0
+		slow_ticks = 0
 	else
-		advanced_ticks += 1
+		slow_ticks += 1
+
+	if(do_normal)
+		normal_ticks = 0
+	else
+		normal_ticks += 1
+
+	if(next_report <= world.time)
+		var/processing_count = length(processing_mobs)
+		var/living_count = length(all_living)
+		log_subsystem(src.name,"Processing [processing_count] mobs, with [living_count] living beings active.")
+		next_report = world.time + initial(next_report)
 
 	return TRUE

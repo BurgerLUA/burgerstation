@@ -12,7 +12,7 @@
 
 /obj/item/portal_scroll/click_self(var/mob/caller)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		caller.to_chat(span("warning","You don't know how to use this..."))
 		return TRUE
 
@@ -25,6 +25,10 @@
 	var/area/A = P.loc.loc
 	if(A.area_identifier != "Mission")
 		caller.to_chat(span("warning","You can't use this here!"))
+		return TRUE
+
+	if(enable_friendly_fire)
+		caller.to_chat(span("warning","This doesn't seem to be working for some reason..."))
 		return TRUE
 
 	if(!P.loyalty_tag || !portal_markers[P.loyalty_tag])

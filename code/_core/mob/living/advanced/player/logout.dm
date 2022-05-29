@@ -1,9 +1,9 @@
 mob/living/advanced/player/proc/can_save(var/area/A)
 
-	if(!client)
+	if(!ckey_last)
 		return FALSE
 
-	if(!A || !(A.flags_area & FLAGS_AREA_SAVEZONE))
+	if(!A || !(A.flags_area & FLAG_AREA_SAVEZONE))
 		src.to_chat(span("danger","You cannot save and quit here! Find a suitable zone to rest first!"))
 		return FALSE
 

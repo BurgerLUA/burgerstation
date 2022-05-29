@@ -13,12 +13,12 @@
 	ai = /ai/boss/ash_drake/
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake,
-		/obj/item/container/food/dynamic/meat/raw_ash_drake
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake,
+		/obj/item/container/edible/dynamic/meat/raw_ash_drake
 	)
 
 	stun_angle = 0
@@ -37,24 +37,9 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = 80,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = -40,
-		BIO = 20,
-		RAD = 80,
-		HOLY = -20,
-		DARK = 80,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/drake
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -88,7 +73,9 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 25
+
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 
 /*
@@ -185,12 +172,12 @@
 
 	return TRUE
 
-/mob/living/simple/ash_drake/get_movement_delay()
+/mob/living/simple/ash_drake/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
 	if(boss_state)
-		. *= 0.5
+		. = 1
 
 /mob/living/simple/ash_drake/proc/shoot_fireball(var/atom/desired_target)
 	shoot_projectile(src,desired_target,null,null,/obj/projectile/magic/fireball/lava,/damagetype/ranged/magic/fireball,16,16,0,TILE_SIZE*0.75,1,"#FFFFFF",0,0,1,iff_tag,loyalty_tag)

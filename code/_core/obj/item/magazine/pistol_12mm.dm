@@ -7,6 +7,10 @@
 	bullet_count_max = 8
 
 	weapon_whitelist = list(
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod/equipped = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer = TRUE,
@@ -17,9 +21,9 @@
 	ammo = /obj/item/bullet_cartridge/pistol_12mm
 	ammo_surplus = /obj/item/bullet_cartridge/pistol_12mm/surplus
 
-	bullet_length_min = 27
+	bullet_length_min = 30
 	bullet_length_best = 33
-	bullet_length_max = 34
+	bullet_length_max = 36
 
 	bullet_diameter_min = 12
 	bullet_diameter_best = 12.7

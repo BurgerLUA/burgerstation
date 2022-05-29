@@ -57,10 +57,8 @@
 	var/obj/effect/temp/muzzleflash/muzzleflash_effect
 
 	var/iff_tag
-	var/ignore_iff = FALSE //Set to true if you want it to ignore IFF collision checking.
-
 	var/loyalty_tag
-	var/ignore_loyalty = TRUE //SEt to true if you want to ignore loyalty tag collision checking.
+	var/hostile = TRUE //Set to true if this is a hostile projectile. Set to false if it isn't.
 
 	var/rotate_projectile = TRUE
 
@@ -85,7 +83,7 @@
 	SSprojectiles.all_projectiles -= src
 	. = ..()
 
-/obj/projectile/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff,var/desired_loyalty,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+/obj/projectile/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
 
 	if(!desired_owner)
 		log_error("WARNING: PROJECTILE [src.get_debug_name()] DID NOT HAVE AN OWNER!")
@@ -99,8 +97,8 @@
 	target_atom = desired_target
 	target_turf = desired_turf
 
-	if(desired_iff) iff_tag = desired_iff
-	if(desired_loyalty) loyalty_tag = desired_loyalty
+	if(desired_iff_tag) iff_tag = desired_iff_tag
+	if(desired_loyalty_tag) loyalty_tag = desired_loyalty_tag
 	if(desired_damage_type) damage_type = desired_damage_type
 	if(desired_penetrations_left) penetrations_left = desired_penetrations_left
 
@@ -185,23 +183,23 @@
 		qdel(src)
 		return TRUE
 
-	if(hit_target_turf && new_loc == target_turf)
-		on_projectile_hit(new_loc)
+	if(penetrations_left < 0)
 		qdel(src)
 		return TRUE
 
 	steps_current += 1
+
+	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
+	for(var/k in collide_with)
+		on_projectile_hit(k)
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc)
 		qdel(src)
 		return TRUE
 
-	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
-	for(var/k in collide_with)
-		on_projectile_hit(k)
-
-	if(penetrations_left < 0)
+	if(hit_target_turf && new_loc == target_turf)
+		on_projectile_hit(new_loc)
 		qdel(src)
 		return TRUE
 
@@ -224,7 +222,7 @@
 		last_loc_x = current_loc_x
 		last_loc_y = current_loc_y
 
-	if(!start_time)
+	if(!start_time) //First time running.
 		var/matrix/M = get_base_transform()
 		var/new_angle = -ATAN2(vel_x,vel_y) + 90
 		M.Turn(new_angle)
@@ -233,12 +231,11 @@
 	pixel_x_float += vel_x
 	pixel_y_float += vel_y
 
-
 	var/rounded_x = CEILING(pixel_x_float,1)
 	var/rounded_y = CEILING(pixel_y_float,1)
 
-	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough to animate.
-		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < 20)
+	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough change to animate.
+		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
 			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
 		else
 			pixel_x = rounded_x
@@ -256,36 +253,29 @@
 	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
 
 	if(damage_type && all_damage_types[damage_type])
-
-		if(!owner || owner.qdeleting)
-			return TRUE
-
 		var/damagetype/DT = all_damage_types[damage_type]
+		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner,weapon,null,DT))
+			var/list/params = list()
+			params[PARAM_ICON_X] = num2text(shoot_x)
+			params[PARAM_ICON_Y] = num2text(shoot_y)
 
-		if(!hit_atom.can_be_attacked(owner,weapon,null,DT))
-			return TRUE
+			var/precise = FALSE
+			if(is_living(hit_atom))
+				var/mob/living/L = hit_atom
+				if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+					precise = TRUE
 
-		var/list/params = list()
-		params[PARAM_ICON_X] = shoot_x
-		params[PARAM_ICON_Y] = shoot_y
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,damage_type,params,precise,precise,inaccuracy_modifier)
 
-		var/precise = FALSE
-		if(is_living(hit_atom))
-			var/mob/living/L = hit_atom
-			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
-				precise = TRUE
+			if(!object_to_damage)
+				DT.perform_miss(null,hit_atom,weapon)
+				return FALSE
 
-		var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
+			if(DT.falloff > 0)
+				damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
-		if(!object_to_damage)
-			DT.perform_miss(owner,hit_atom,weapon)
-			return FALSE
-
-		if(DT.falloff > 0)
-			damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
-
-		if(damage_multiplier > 0)
-			DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+			if(damage_multiplier > 0)
+				DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 
@@ -299,15 +289,10 @@
 
 	return TRUE
 
-/obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see projectile.
-
-	. = inaccuracy_modifier
-
+/obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1)
+	if(inaccuracy_modifier <= 0)
+		return 0
 	if(is_living(source))
 		var/mob/living/L = source
-		if(L.ai)
-			. *= max(1,get_dist(start_turf,target)/VIEW_RANGE)
-		if(target_atom)
-			. *= max(1,get_dist(target_atom,target)/(VIEW_RANGE*0.5))
-
-	. *= 10
+		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
+	return 0

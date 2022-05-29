@@ -3,7 +3,7 @@
 	desc = "What the fuck is this?"
 	var/label
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
 
 	var/desc_extended = "Such a strange object. I bet not even the gods themselves know what this thing is. Who knows what mysteries it can hold?"
 
@@ -34,11 +34,6 @@
 
 	var/health/health //The health object. If an object is supposed to take damage, give it a health datum.
 
-	var/corner_icons = FALSE
-	var/corner_category = "none"
-
-	var/immortal = FALSE //Is this object allowed to take damage?
-
 	var/initialize_type = INITIALIZE_NORMAL //TODO: Make this apply to turfs, mobs, and areas.
 
 	var/luck = 50 //The luck of the atom. Affects rolling against or for user luck.
@@ -55,6 +50,11 @@
 
 	var/dir_offset = TILE_SIZE
 
+	var/list/filter_list
+
+/atom/proc/get_display_name(var/mob/caller)
+	return "[src.name]"
+
 /atom/proc/update_name(var/desired_name)
 	name = desired_name
 	if(label)
@@ -66,6 +66,12 @@
 
 /atom/proc/get_consume_sound()
 	return 'sound/items/consumables/eatfood.ogg'
+
+/atom/verb/examine()
+	set name = "Examine"
+	set hidden = TRUE
+	if(usr && usr.client)
+		usr.client.examine(src)
 
 /atom/proc/update_atom_light()
 	if(desired_light_range > 0 && desired_light_power > 0)
@@ -84,7 +90,7 @@
 
 /atom/Destroy()
 
-	stop_thinking(src)
+	STOP_THINKING(src)
 	stop_advanced_thinking(src)
 
 	set_light(FALSE)
@@ -101,22 +107,10 @@
 	mouse_opacity = 0
 	icon = null
 	icon_state = null
-
+	tag = null
 	all_listeners -= src
 
 	. = ..()
-
-/atom/PostInitialize()
-
-	if(health)
-		health = new health(src)
-		INITIALIZE(health)
-		FINALIZE(health)
-
-	update_atom_light()
-
-	return ..()
-
 
 /atom/proc/get_base_transform()
 	return matrix()
@@ -129,21 +123,23 @@
 	if(listener)
 		all_listeners |= src
 
+	if(health)
+		health = new health(src)
+		INITIALIZE(health)
+		FINALIZE(health)
+
 	. = ..()
 
 /atom/Finalize()
 	. = ..()
 	update_name(name) //Setup labels
+	update_atom_light()
 
 /atom/New()
-
 	. = ..()
-
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-	set_dir(dir,TRUE)
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src
@@ -213,10 +209,17 @@
 /atom/get_debug_name()
 	return "[src.name]([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
 
+/atom/movable/get_debug_name()
+	var/turf/T = get_turf(src)
+	var/shown_x = T ? T.x : 0
+	var/shown_y = T ? T.y : 0
+	var/shown_z = T ? T.z : 0
+	return "[src.name]([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[z]'>([shown_x],[shown_y],[shown_z])</a>"
+
 /atom/get_log_name()
 	return "[src.name]([src.type])([x],[y],[z])</a>"
 
-/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod = 1)
+/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod=1)
 	return 0
 
 

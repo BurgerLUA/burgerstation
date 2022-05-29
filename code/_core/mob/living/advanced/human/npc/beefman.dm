@@ -2,28 +2,27 @@
 	name = "meat anomaly"
 	desc = "I told you not to go alone."
 	desc_extended = "A disgusting monster made entirely out of beef. It's unknown where these things came from, but we do know that they're attracted by the rotting corpses of humanoids."
-	enable_AI = TRUE
 	ai = /ai/advanced/beef
 	species = "beefman"
 
-	iff_tag = "beefman"
-	loyalty_tag = "beefman"
+	iff_tag = "Beefman"
+	loyalty_tag = "Beefman"
 
-	movement_delay = 1
+	movement_delay = 1 //Lowest possible.
 
 	health_base = 100
 
 	butcher_contents = list(
-		/obj/item/soulgem/rare,
-		/obj/item/container/food/dynamic/meat/raw_beefman,
-		/obj/item/container/food/dynamic/meat/raw_beefman,
-		/obj/item/container/food/dynamic/meat/raw_beefman,
-		/obj/item/container/food/dynamic/meat/raw_beefman
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/container/edible/dynamic/meat/raw_beefman,
+		/obj/item/soulgem/rare
 	)
 
 	has_hard_crit = FALSE
 
-	level = 20
+	level = 35
 
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()
@@ -36,13 +35,13 @@
 		play_sound('sound/weapons/beef/beef_grab.ogg',get_turf(atom_damaged),range_max=VIEW_RANGE)
 		add_status_effect(STAGGER,5,5,source = attacker)
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/npc/beefman/proc/beef()
 	if(!health)
 		return FALSE
-	var/brute_to_remove = health.get_loss(BRUTE)*0.5
-	var/burn_to_remove = health.get_loss(BURN)*0.5
+	var/brute_to_remove = health.damage[BRUTE]*0.5
+	var/burn_to_remove = health.damage[BURN]*0.5
 	if(health.health_current + brute_to_remove + burn_to_remove <= 0)
 		return FALSE
 	health.adjust_loss_smart(brute=-brute_to_remove,burn=-burn_to_remove)

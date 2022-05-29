@@ -13,9 +13,9 @@
 	QDEL_NULL(stored_magazine)
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
-	if(src.stored_magazine) .["stored_magazine"] = src.stored_magazine.save_item_data(save_inventory)
+	SAVEATOM("stored_magazine")
 
 /obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
 	return stored_magazine
@@ -24,12 +24,9 @@
 /obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 
 	. = ..()
-
-	if(object_data["stored_magazine"])
-		src.stored_magazine = load_and_create(P,object_data["stored_magazine"],src)
+	LOADATOM("stored_magazine")
+	if(stored_magazine)
 		src.open = FALSE
-
-
 
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)
@@ -89,8 +86,6 @@
 		stored_magazine.drop_item(T)
 		play_sound(stored_magazine.get_magazine_eject_sound(),T,range_max=VIEW_RANGE*0.5)
 		if(stored_magazine)
-			if(stored_magazine.regenerate)
-				CALLBACK("regen_\ref[stored_magazine]", stored_magazine.regen_speed, stored_magazine, /obj/item/magazine/proc/regen)
 			stored_magazine.update_sprite()
 			stored_magazine = null
 
@@ -143,15 +138,15 @@
 
 
 
-/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/I)
+/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/magazine/M)
 
-	if(is_magazine(I))
-		var/obj/item/magazine/M = I
-		if(M.weapon_whitelist[src.type])
-			return TRUE
+	if(!istype(M))
+		return FALSE
 
-	return FALSE
+	if(!M.weapon_whitelist[src.type])
+		return FALSE
 
+	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 
@@ -174,4 +169,3 @@
 
 	if(stored_magazine)
 		. += div("notice","[length(stored_magazine.stored_bullets)] bullet\s remaining in the magazine.")
-

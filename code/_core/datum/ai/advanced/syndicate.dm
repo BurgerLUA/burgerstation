@@ -2,9 +2,12 @@
 	enemy_tags = list("NanoTrasen")
 	should_find_weapon = TRUE
 	aggression = 1
+	cowardice = 0.5
 	retaliate = TRUE
 
 	var/language_to_use = LANGUAGE_BASIC
+
+	var/next_talk = 0
 
 
 /ai/advanced/syndicate/stress_test
@@ -13,18 +16,18 @@
 	owner.move_dir = pick(DIRECTIONS_ALL)
 	return TRUE
 
-/ai/advanced/syndicate/russian
-	language_to_use = LANGUAGE_RUSSIAN
+/ai/advanced/syndicate/slavic
+	language_to_use = LANGUAGE_SLAVIC
 
 /ai/advanced/syndicate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
-	if(damage_amount >= 10 && . && prob(25))
+	if(next_talk <= world.time && damage_amount >= 10 && . && prob(25))
 		if(prob(10) && get_dist(owner,attacker) >= 3)
-			var/attack_dir = dir2text(get_dir(owner,attacker))
+			var/attack_dir = dir2text(get_dir_advanced(owner,attacker))
 			owner.do_say("Taking fire from the [attack_dir]!")
-		else
+		else if(atom_damaged)
 			var/list/responses = list(
 				"I'm hit!",
 				"Taking fire!",
@@ -35,12 +38,13 @@
 				"Fuck! I'm hit!"
 			)
 			owner.do_say(pick(responses),language_to_use = language_to_use)
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 
 /ai/advanced/syndicate/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
 	. = ..()
 
-	if(. && prob(25))
+	if(. && next_talk <= world.time && prob(25))
 		var/list/responses = list()
 		if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_CAUTION)
 			responses = list(
@@ -85,4 +89,5 @@
 
 		if(length(responses))
 			owner.do_say(pick(responses),language_to_use = language_to_use)
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 

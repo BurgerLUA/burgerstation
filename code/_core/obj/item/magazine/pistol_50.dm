@@ -10,7 +10,12 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod/equipped = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod/equipped = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod/silenced = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_50

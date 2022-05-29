@@ -13,7 +13,7 @@
 
 	weight = 4
 
-/obj/item/supply_remote/save_item_data(var/save_inventory = TRUE)
+/obj/item/supply_remote/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charges")
 
@@ -40,7 +40,7 @@
 	var/turf/T = get_turf(object)
 	var/area/A = T.loc
 
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
 		caller.to_chat(span("warning","Invalid landing zone!"))
 		return TRUE
 
@@ -80,28 +80,14 @@
 	value = 3000
 	value_burgerbux = 1
 
-/*
+
 /obj/item/supply_remote/mech/
 	value = 1000
 
 /obj/item/supply_remote/mech/ripley
-	name = "drop pod remote - Ripley Mining Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/ripley)
-	value = 1000
-
-/obj/item/supply_remote/mech/gygax
-	name = "drop pod remote - Gygax Combat Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/gygax)
-	value = 2500
-
-/obj/item/supply_remote/mech/durand
-	name = "drop pod remote - Durand Combat Mech"
-	stored_object_types = list(/mob/living/vehicle/mech/durand)
+	name = "drop pod remote - Ripley Mining Mech with Drill + Laser Gun"
+	stored_object_types = list(/mob/living/vehicle/mech/modular/premade/ripley)
 	value = 5000
-*/
-
-/obj/item/supply_remote/crates/
-	value = 2000
 
 /obj/item/supply_remote/crates/nanotrasen
 	name = "drop pod remote - x4 NanoTrasen supply crates"
@@ -122,28 +108,28 @@
 	)
 	supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod/syndicate
 
-/obj/item/supply_remote/crates/russian
-	name = "drop pod remote - x4 Russian supply crates"
+/obj/item/supply_remote/crates/slavic
+	name = "drop pod remote - x4 Slavic supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian,
-		/obj/item/supply_crate/russian
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic,
+		/obj/item/supply_crate/slavic
 	)
 
-/obj/item/supply_remote/crates/american
-	name = "drop pod remote - x4 American supply crates"
+/obj/item/supply_remote/crates/yankee
+	name = "drop pod remote - x4 Yankee supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american,
-		/obj/item/supply_crate/american
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee,
+		/obj/item/supply_crate/yankee
 	)
 
 /obj/item/supply_remote/barbecue
 	name = "drop pod remote - Barbecue Kit"
 	desc_extended = "A special remote designed to drop cool essential things into the battlefield. This one contains a portable barbecue."
 	stored_object_types = list(
-		/obj/structure/smooth/table/grill/barbecue
+		/obj/structure/table/cooking/barbecue
 	)
 	value = 500

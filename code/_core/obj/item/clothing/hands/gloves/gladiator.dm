@@ -9,16 +9,9 @@
 
 	protected_limbs = list(BODY_ARM_RIGHT,BODY_HAND_RIGHT)
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		ARCANE = -40
-	)
+	armor = /armor/brass/gloves
 
 	size = SIZE_3
-
-
 
 	value = 20
 

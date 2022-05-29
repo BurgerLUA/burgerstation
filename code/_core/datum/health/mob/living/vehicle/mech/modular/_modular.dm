@@ -1,11 +1,9 @@
-/health/mob/living/vehicle/mech/modular/get_defense(var/atom/attacker,var/atom/hit_object)
-
-	if(!is_modular_mech(owner))
-		return ..()
+/health/mob/living/vehicle/mech/modular/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 
 	. = ..()
 
-	if(is_mech_part(hit_object))
+	.["items"] = list()
+	if(istype(hit_object,/obj/item/mech_part/))
 		var/obj/item/mech_part/O = hit_object
 		var/list/O_defense_rating = O.armor_base.Copy()
 		for(var/damage_type in O_defense_rating)
@@ -15,5 +13,5 @@
 				.[damage_type] = O_defense_rating[damage_type]
 				continue
 			.[damage_type] += O_defense_rating[damage_type]
+		.["items"] += O
 
-	

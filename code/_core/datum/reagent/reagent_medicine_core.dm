@@ -7,10 +7,10 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 2.5
 
-	value = 1.25
+	value = 0.75
 
 	liquid = 0.6
 
@@ -18,32 +18,32 @@
 
 /reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 5*.
+	owner.brute_regen_buffer += 10*.*multiplier
 
 /reagent/medicine/bicaridine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.
+	owner.brute_regen_buffer += 8*.*multiplier
 
 /reagent/medicine/bicaridine_plus
 	name = "Bicaridine+"
 	color = "#FF0080"
 	alpha = 225
 
-	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_blood = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 5
 
-	value = 3
+	value = 1.25
 
 	particle_size = 0.4
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 10*.
+	owner.brute_regen_buffer += 15*.*multiplier
 
 /reagent/medicine/bicaridine_plus/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 8*.
+	owner.brute_regen_buffer += 12*.*multiplier
 
 /reagent/medicine/caridone
 	name = "Caridone"
@@ -53,11 +53,11 @@
 
 	flavor = "bandaids"
 
-	metabolism_blood = 0.2
-	metabolism_stomach = 0.2
+	metabolism_blood = 0.4
+	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 1
 
 	liquid = 0.75
 
@@ -65,11 +65,11 @@
 
 /reagent/medicine/caridone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,10)*.
+	owner.brute_regen_buffer += rand(1,20)*.*multiplier
 
 /reagent/medicine/caridone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,10)*.
+	owner.brute_regen_buffer += rand(1,20)*.*multiplier
 
 /reagent/medicine/percardone
 	name = "Percardone"
@@ -80,10 +80,10 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.4
-	metabolism_stomach = 0.4
+	metabolism_stomach = 0.1
 	experience_per_unit = 4
 
-	value = 3
+	value = 1
 
 	liquid = 0.5
 
@@ -92,12 +92,12 @@
 /reagent/medicine/percardone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(owner.health)
-		owner.brute_regen_buffer += CEILING(1 + owner.health.damage[BRUTE]*0.01,1)*.
+		owner.brute_regen_buffer += CEILING(1 + owner.health.damage[BRUTE]*0.01,1)*.*multiplier
 
 /reagent/medicine/percardone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(owner.health)
-		owner.brute_regen_buffer += CEILING(1 + owner.health.damage[BRUTE]*0.01,1)*.
+		owner.brute_regen_buffer += CEILING(1 + owner.health.damage[BRUTE]*0.01,1)*.*multiplier
 
 /reagent/medicine/dicarditane
 	name = "Dicarditane"
@@ -108,10 +108,10 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.4
-	metabolism_stomach = 0.4
+	metabolism_stomach = 0.1
 	experience_per_unit = 4
 
-	value = 3
+	value = 1
 
 	liquid = 0.5
 
@@ -119,13 +119,13 @@
 
 /reagent/medicine/dicarditane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.
-	owner.burn_regen_buffer += 2*.
+	owner.brute_regen_buffer += 12*.*multiplier
+	owner.burn_regen_buffer += 6*.*multiplier
 
 /reagent/medicine/dicarditane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 8*.*(owner.nutrition/1000)
-	owner.burn_regen_buffer += 4*.*(owner.nutrition/1000)
+	owner.brute_regen_buffer += 8*.*(owner.nutrition/1000)*multiplier
+	owner.burn_regen_buffer += 4*.*(owner.nutrition/1000)*multiplier
 
 
 /reagent/medicine/kelotane
@@ -137,20 +137,20 @@
 	flavor = "ointment"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 2.5
 
-	value = 1
+	value = 0.5
 
 	particle_size = 0.4
 
 /reagent/medicine/kelotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += 5*.
+	owner.burn_regen_buffer += 5*.*multiplier
 
 /reagent/medicine/kelotane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += 4*.
+	owner.burn_regen_buffer += 4*.*multiplier
 
 /reagent/medicine/arentane
 	name = "Arentane"
@@ -160,11 +160,11 @@
 
 	flavor = "bandaids"
 
-	metabolism_blood = 0.2
-	metabolism_stomach = 0.2
+	metabolism_blood = 1
+	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 0.75
 
 	liquid = 0.75
 
@@ -172,11 +172,11 @@
 
 /reagent/medicine/arentane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(1,10)*.
+	owner.burn_regen_buffer += rand(1,10)*.*multiplier
 
 /reagent/medicine/arentane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(1,10)*.
+	owner.burn_regen_buffer += rand(1,10)*.*multiplier
 
 /reagent/medicine/kenotone
 	name = "Kenotone"
@@ -186,11 +186,11 @@
 
 	flavor = "bandaids"
 
-	metabolism_blood = 0.2
-	metabolism_stomach = 0.2
+	metabolism_blood = 1
+	metabolism_stomach = 0.1
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 0.75
 
 	liquid = 0.75
 
@@ -198,15 +198,15 @@
 
 /reagent/medicine/kenotone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(2,20)*.
-	owner.tox_regen_buffer -= rand(1,10)*.
-	owner.stamina_regen_buffer -= rand(1,10)*.
+	owner.burn_regen_buffer += rand(2,20)*.*multiplier
+	owner.tox_regen_buffer -= rand(1,10)*.*multiplier
+	owner.stamina_regen_buffer -= rand(1,10)*.*multiplier
 
 /reagent/medicine/kenotone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(2,20)*.
-	owner.tox_regen_buffer -= rand(1,10)*.
-	owner.stamina_regen_buffer -= rand(1,10)*.
+	owner.burn_regen_buffer += rand(2,20)*.*multiplier
+	owner.tox_regen_buffer -= rand(1,10)*.*multiplier
+	owner.stamina_regen_buffer -= rand(1,10)*.*multiplier
 
 /reagent/medicine/extinatane
 	name = "Extinatane"
@@ -223,16 +223,16 @@
 
 	value = 1.5
 
-	liquid = 0.75
+	liquid = 0.5
 
 	particle_size = 0.1
 
 /reagent/medicine/extinatane/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(container.owner.health && container.owner.health.organic)
-		container.owner.health.adjust_loss_smart(burn=.*-2,robotic=FALSE)
-		owner.burn_regen_buffer += 2*.
-		owner.adjust_fire_stacks(-5*.)
+		container.owner.health.adjust_loss_smart(burn=.*-2*multiplier,robotic=FALSE)
+		owner.burn_regen_buffer += 2*.*multiplier
+		owner.adjust_fire_stacks(-5*.*multiplier)
 
 /reagent/medicine/carotane
 	name = "Carotane"
@@ -243,10 +243,10 @@
 	flavor = "bandaids"
 
 	metabolism_blood = 0.1
-	metabolism_stomach = 0.1
+	metabolism_stomach = 0.01
 	experience_per_unit = 2
 
-	value = 1.5
+	value = 0.75
 
 	liquid = 0.25
 
@@ -255,14 +255,14 @@
 /reagent/medicine/carotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	var/mul = (container.stored_reagents[type]/starting_volume)
-	owner.brute_regen_buffer += 5*.*mul
-	owner.burn_regen_buffer += 5*.*mul
+	owner.brute_regen_buffer += 5*.*mul*multiplier
+	owner.burn_regen_buffer += 5*.*mul*multiplier
 
 /reagent/medicine/carotane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	var/mul = (container.stored_reagents[type]/starting_volume)
-	owner.brute_regen_buffer += 5*.*mul
-	owner.burn_regen_buffer += 5*.*mul
+	owner.brute_regen_buffer += 5*.*mul*multiplier
+	owner.burn_regen_buffer += 5*.*mul*multiplier
 
 /reagent/medicine/dylovene
 	name = "Dylovene"
@@ -273,20 +273,20 @@
 	flavor = "sweetness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 2.5
 
-	value = 1.25
+	value = 0.5
 
 	particle_size = 0.2
 
 /reagent/medicine/dylovene/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.05 : 0) + 5)*.
+	owner.tox_regen_buffer += ((owner.health ? owner.health.damage[TOX]*0.05 : 0) + 5)*.*multiplier
 
 /reagent/medicine/dylovene/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.tox_regen_buffer += ((owner.health ? owner.health.get_loss(TOX)*0.04 : 0) + 4)*.
+	owner.tox_regen_buffer += ((owner.health ? owner.health.damage[TOX]*0.04 : 0) + 4)*.*multiplier
 
 /reagent/medicine/dexalin
 	name = "Dexalin"
@@ -297,9 +297,9 @@
 	flavor = "bitterness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 
-	value = 1.5
+	value = 0.5
 
 	particle_size = 0.2
 
@@ -320,53 +320,53 @@
 	flavor = "sourness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 4
 
-	value = 1.5
+	value = 0.75
 
 	particle_size = 0.5
 
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 4*.
-	owner.burn_regen_buffer += 4*.
-	owner.tox_regen_buffer += 4*.
+	owner.brute_regen_buffer += 4*.*multiplier
+	owner.burn_regen_buffer += 4*.*multiplier
+	owner.tox_regen_buffer += 4*.*multiplier
 
 /reagent/medicine/tricordrazine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 3*.
-	owner.burn_regen_buffer += 3*.
-	owner.tox_regen_buffer += 3*.
+	owner.brute_regen_buffer += 3*.*multiplier
+	owner.burn_regen_buffer += 3*.*multiplier
+	owner.tox_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/omnizine
 	name = "Omnizine"
 	desc = "Heals everything."
-	desc_extended = "Works just as good when consumed."
+	desc_extended = "Works just as good when consumed, albeit at a slower rate."
 	color = "#F7F7F7"
 	alpha = 255
 
 	flavor = "bitter sourness"
 
 	metabolism_blood = 0.5
-	metabolism_stomach = 0.25
+	metabolism_stomach = 0.1
 	experience_per_unit = 3
 
-	value = 2
+	value = 1
 
 	particle_size = 0.75
 
 /reagent/medicine/omnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 3*.
-	owner.burn_regen_buffer += 3*.
-	owner.tox_regen_buffer += 3*.
+	owner.brute_regen_buffer += 3*.*multiplier
+	owner.burn_regen_buffer += 3*.*multiplier
+	owner.tox_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/omnizine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 3*.
-	owner.burn_regen_buffer += 3*.
-	owner.tox_regen_buffer += 3*.
+	owner.brute_regen_buffer += 3*.*multiplier
+	owner.burn_regen_buffer += 3*.*multiplier
+	owner.tox_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/adminomnizine
 	name = "Adminomnizine"
@@ -377,8 +377,10 @@
 
 	flavor = "god"
 
-	metabolism_blood = 1
-	metabolism_stomach = 1
+	metabolism_blood = 10
+	metabolism_stomach = 10
+	metabolism_skin = 10
+
 	experience_per_unit = 10
 
 	value = 500
@@ -387,16 +389,16 @@
 
 /reagent/medicine/adminomnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer = max(owner.brute_regen_buffer,500*.)
-	owner.burn_regen_buffer = max(owner.burn_regen_buffer,500*.)
-	owner.tox_regen_buffer = max(owner.tox_regen_buffer,500*.)
+	owner.brute_regen_buffer = max(owner.brute_regen_buffer,100*.*multiplier*(1/metabolism_blood))
+	owner.burn_regen_buffer = max(owner.burn_regen_buffer,100*.*multiplier*(1/metabolism_blood))
+	owner.tox_regen_buffer = max(owner.tox_regen_buffer,100*.*multiplier*(1/metabolism_blood))
 	owner.health_regen_delay = 0
 
 /reagent/medicine/adminomnizine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer = max(owner.brute_regen_buffer,500*.)
-	owner.burn_regen_buffer = max(owner.burn_regen_buffer,500*.)
-	owner.tox_regen_buffer = max(owner.tox_regen_buffer,500*.)
+	owner.brute_regen_buffer = max(owner.brute_regen_buffer,100*.*multiplier*(1/metabolism_stomach))
+	owner.burn_regen_buffer = max(owner.burn_regen_buffer,100*.*multiplier*(1/metabolism_stomach))
+	owner.tox_regen_buffer = max(owner.tox_regen_buffer,100*.*multiplier*(1/metabolism_stomach))
 	owner.health_regen_delay = 0
 
 /reagent/medicine/silver_sulfadiazine
@@ -410,7 +412,7 @@
 
 	metabolism_skin = 1
 
-	value = 2.5
+	value = 1
 
 	liquid = -0.5
 
@@ -430,13 +432,13 @@
 		container.owner.health.adjust_loss_smart(burn=.*-10,robotic=FALSE)
 		if(is_organ(container.owner))
 			var/obj/item/organ/O = container.owner
-			O.send_pain(50)
+			O.send_pain_response(50)
 
 /reagent/medicine/silver_sulfadiazine/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(container.owner.health && container.owner.health.organic)
-		container.owner.health.adjust_loss_smart(burn=.*-5,robotic=FALSE)
-		owner.burn_regen_buffer += 3*.
+		container.owner.health.adjust_loss_smart(burn=.*-5*multiplier,robotic=FALSE)
+		owner.burn_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/styptic_powder
 	name = "Styptic Powder"
@@ -449,7 +451,7 @@
 
 	metabolism_skin = 1
 
-	value = 2
+	value = 1.25
 
 	liquid = -0.5
 
@@ -469,13 +471,13 @@
 		container.owner.health.adjust_loss_smart(brute=.*-10,robotic=FALSE)
 		if(is_organ(container.owner))
 			var/obj/item/organ/O = container.owner
-			O.send_pain(50)
+			O.send_pain_response(50)
 
 /reagent/medicine/styptic_powder/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(container.owner.health && container.owner.health.organic)
-		container.owner.health.adjust_loss_smart(brute=.*-5,robotic=FALSE)
-		owner.brute_regen_buffer += 3*.
+		container.owner.health.adjust_loss_smart(brute=.*-5*multiplier,robotic=FALSE)
+		owner.brute_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/synthflesh
 	name = "synthflesh"
@@ -483,7 +485,7 @@
 	color = "#FFEBEB"
 	flavor = "rotten flesh"
 	metabolism_skin = 1
-	value = 5
+	value = 1.5
 	liquid = -0.5
 	alpha = 255
 
@@ -511,13 +513,13 @@
 			if(O.bleeding >= 0.5)
 				tox_to_adjust = .*5
 				O.bleeding = 0
-				O.send_pain(50)
+				O.send_pain_response(100)
 		container.owner.health.adjust_loss_smart(brute=.*-10,burn=.*-10,tox=tox_to_adjust,robotic=FALSE)
 
 /reagent/medicine/synthflesh/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += .*2
-	owner.burn_regen_buffer += .*2
+	owner.brute_regen_buffer += .*2*multiplier
+	owner.burn_regen_buffer += .*2*multiplier
 
 
 
@@ -535,7 +537,7 @@
 	metabolism_stomach = 0.1
 	experience_per_unit = 0
 
-	value = 5
+	value = 2
 
 	liquid = 0.75
 
@@ -548,12 +550,41 @@
 /reagent/medicine/vitamins/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	//Injecting these vitamins is pretty bad and does nothing for you.
-	owner.tox_regen_buffer -= .*2
+	owner.tox_regen_buffer -= .*2*multiplier
 
 /reagent/medicine/vitamins/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 1*.
-	owner.burn_regen_buffer += 1*.
-	owner.tox_regen_buffer += 1*.
-	owner.add_nutrition_quality(30*.)
-	owner.add_nutrition(4*.)
+	owner.brute_regen_buffer += 0.5*.*multiplier
+	owner.burn_regen_buffer += 0.5*.*multiplier
+	owner.tox_regen_buffer += 0.5*.*multiplier
+	owner.add_nutrition_quality(20*.*multiplier)
+
+
+/reagent/medicine/inaprovaline
+	name = "Inaprovaline"
+	desc = "A common stabilizer synthesised from basic elements and compounds. Only works when injected. Has a high overdose threshold."
+	color = "#C291FF"
+	alpha = 200
+	flavor = "sour metal"
+	metabolism_stomach = 5/60 // Lasts a minute per 5u
+	metabolism_blood = 10/60 // Lasts a minute per 10u
+
+	experience_per_unit = 0.5
+
+	overdose_threshold = 50
+
+	var/strength = 200
+
+/reagent/medicine/inaprovaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+
+	. = ..()
+
+	if(STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
+		L.add_status_effect(UNDYING,strength,-1)
+
+/reagent/medicine/inaprovaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
+
+	. = ..()
+
+	if(STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
+		L.remove_status_effect(UNDYING)

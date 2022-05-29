@@ -2,13 +2,14 @@
 	name = "cyborg assistant"
 	desc = "DO YOU REQUIRE HELP?"
 	desc_extended = "A NanoTrasen model Cyborg unit programmed to assist those in asking stupid questions."
-	enable_AI = TRUE
 	ai = null
 	move_mod = 1
 	species = "cyborg"
 
 	dialogue_id = /dialogue/tutorial/front_desk
 	anchored = TRUE
+
+	level = 1
 
 /mob/living/advanced/npc/cyborg_assistant/Initialize()
 

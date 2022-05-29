@@ -1,5 +1,4 @@
 /damagetype/npc/crab
-	name = "crab claw"
 	attack_verbs = list("pinch","snip")
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

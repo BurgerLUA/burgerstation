@@ -1,6 +1,5 @@
 //Foot
 /damagetype/unarmed/foot/
-	name = "foot"
 	attack_verbs = list("kick")
 
 	hit_effect = /obj/effect/temp/impact/combat/kick

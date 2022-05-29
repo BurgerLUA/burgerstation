@@ -6,8 +6,6 @@
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/uniform/miner,
-		/obj/item/clothing/uniform/utility/supply,
 		/obj/item/storage/shoebox/miner,
 		/obj/item/storage/glovebox/brown_padded,
 		/obj/item/clothing/belt/storage/colored/brown,
@@ -38,8 +36,6 @@
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/uniform/miner,
-		/obj/item/clothing/uniform/utility/supply,
 		/obj/item/storage/shoebox/miner,
 		/obj/item/storage/glovebox/brown_padded,
 		/obj/item/clothing/belt/storage/colored/brown,
@@ -62,5 +58,5 @@
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
 		/obj/item/crafting/workbench,
-		/obj/item/clothing/overwear/hardsuit/mining/golem // golem loyalty tag
+		/obj/item/clothing/overwear/hardsuit/mining
 	)

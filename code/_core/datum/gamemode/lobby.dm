@@ -11,8 +11,10 @@
 
 /gamemode/lobby/on_life()
 
+	/*
 	if(state == GAMEMODE_WAITING && round_time_next > 0 && round_time >= round_time_next)
 		SSgamemode.set_active_gamemode(/gamemode/endless,"voting on_result")
+	*/
 
 	/*
 	if(state == GAMEMODE_WAITING && round_time_next > 0 && round_time >= round_time_next)
@@ -24,4 +26,4 @@
 		round_time_next = -1
 	*/
 
-	return ..()
+	. = ..()

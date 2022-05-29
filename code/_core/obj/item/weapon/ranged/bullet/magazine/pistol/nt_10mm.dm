@@ -1,12 +1,13 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power
 	name = "10mm NT Penumbra Pistol"
 	desc = "For when 9mm isn't big enough."
-	desc_extended = "The 10mm NanoTrasen Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
+	desc_extended = "The 10mm NanoTrasen Penumbra Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_nt.dmi'
 	icon_state = "inventory"
 	value = 500
 
-	shoot_delay = 3
+	tier = 1
+	shoot_delay = 2.5
 
 	automatic = FALSE
 
@@ -46,7 +47,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -76,11 +77,11 @@
 	desc_extended = "An extremely powerful prototype of the 10mm NT Penumbra Pistol, before everything was simplified for factory production. Fires 3 round bursts at an absurd firerate. They don't make them like they used to."
 	icon = 'icons/obj/item/weapons/ranged/pistol/robo.dmi'
 
+	tier = 2
+
 	value = 1200
 
-	shoot_delay = 1.5
-	burst_delay = 4
-	max_bursts = 3
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -96,3 +97,4 @@
 
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
+

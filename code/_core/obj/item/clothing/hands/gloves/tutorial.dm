@@ -1,6 +1,6 @@
 /obj/item/clothing/hands/gloves/tutorial
 	name = "right antimagic armwrap"
-	rarity = RARITY_MYTHICAL
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 

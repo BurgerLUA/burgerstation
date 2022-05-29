@@ -3,11 +3,9 @@
 	desc = "A looter's dream."
 	desc_extended = "Some almost magical goggles that allow you to see objects through walls."
 	icon = 'icons/obj/item/clothing/glasses/material.dmi'
-	rarity = RARITY_UNCOMMON
 
-	defense_rating = list(,
-		ARCANE = -20
-	)
+
+	armor = /armor/mechanical
 
 	size = SIZE_1
 

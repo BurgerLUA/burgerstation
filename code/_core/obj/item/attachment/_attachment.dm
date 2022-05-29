@@ -15,7 +15,7 @@
 		skill_spread - Spread from how bad you are at using a gun.
 		heat_spread - Spread from constant firing of the gun.
 		movement_spread - Spread from moving around.
-		inaccuracy_modifer - Target doll inaccuracy.
+		inaccuracy_modifier - Target doll inaccuracy.
 		prone_mod - accuracy improvement from laying prone.
 		view_punch - Basically recoil
 		shoot_delay - Delay of the gun.
@@ -43,4 +43,3 @@
 		var/v = attachment_stats[k]
 		. += span("notice","[k]: [v]")
 
-	

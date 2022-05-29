@@ -20,25 +20,14 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = BOSS_TICK*3
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
 	stun_angle = 0
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		LASER = 80,
-		HEAT = 20,
-		COLD = 10,
-		HOLY = -20,
-		DARK = 60,
-		FATIGUE = 60,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/bubblegum
 
 	status_immune = list(
 		STUN = TRUE,
@@ -56,20 +45,20 @@
 	)
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum,
-		/obj/item/container/food/dynamic/meat/raw_bubblegum
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum,
+		/obj/item/container/edible/dynamic/meat/raw_bubblegum
 	)
 
 	iff_tag = "Bubblegum"
 	loyalty_tag = "Bubblegum"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -91,7 +80,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 30
+	level = 40
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()
@@ -115,19 +104,19 @@
 		var/turf/simulated/T = get_turf(A)
 		if(!istype(T))
 			continue
-		if(T.blood_level == 0)
+		if(T.blood_level_hard == 0)
 			continue
 		new/obj/effect/temp/hazard/bubblefist(T,null,src)
 		. = TRUE
 
 	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
-/mob/living/simple/bubblegum/get_movement_delay()
+/mob/living/simple/bubblegum/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
 	if(charge_steps)
-		. = BOSS_TICK*1
+		. = AI_TICK_FAST
 
 /mob/living/simple/bubblegum/post_move(var/atom/old_loc)
 
@@ -150,7 +139,7 @@
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
+		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,/damagetype/npc/bubblegum,TRUE,TRUE)
 		visible_message(span("danger","\The [src.name] rams into \the [Obstacle.name]!"))
 		DT.process_damage(src,Obstacle,src,object_to_damage,src,1)
 

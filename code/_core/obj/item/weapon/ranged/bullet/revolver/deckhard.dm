@@ -4,10 +4,11 @@
 	desc_extended = "While Semiautos have become standard issue for Space Police, diehard Seargeants still tout the higher reliability of a revolver as a reason to carry these."
 	icon = 'icons/obj/item/weapons/ranged/deckhard_mine.dmi'
 	icon_state = "inventory"
-	value = 800
+	value = 3000
 
-	projectile_speed = 31
-	shoot_delay = 4
+	tier = 2
+
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -43,7 +44,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

@@ -14,7 +14,7 @@
 		qdel(I)
 		return FALSE
 
-	if(is_clothing(I))
+	if(istype(I,/obj/item/clothing))
 		var/obj/item/clothing/C = I
 		if(!C.additional_clothing)
 			return TRUE
@@ -24,20 +24,25 @@
 
 /loadout/proc/post_add(var/mob/living/advanced/A,var/list/added_items = list()) //Added after everything is added.
 
-	var/list/found_magazines = list()
-	for(var/obj/item/magazine/M in added_items)
-		found_magazines += M
-
-	for(var/obj/item/weapon/ranged/bullet/magazine/R in added_items)
-		for(var/obj/item/magazine/M in found_magazines)
-			if(!M.weapon_whitelist[R.type])
-				continue
-			M.drop_item(R)
-			R.stored_magazine = M
-			R.open = FALSE
-			R.load_new_bullet_from_magazine(A)
-			R.update_sprite()
-			found_magazines -= M
-			break
+	for(var/obj/item/weapon/ranged/bullet/W in added_items) //So weapons don't spawn empty.
+		if(SSbalance.weapon_to_bullet[W.type])
+			for(var/i=1,i<=length(W.stored_bullets),i++)
+				var/obj/item/bullet_cartridge/BC = SSbalance.weapon_to_bullet[W.type]
+				BC = new BC(W)
+				BC.amount = 1
+				INITIALIZE(BC)
+				GENERATE(BC)
+				FINALIZE(BC)
+				W.stored_bullets[i] = BC
+		if(SSbalance.weapon_to_magazine[W.type])
+			var/obj/item/weapon/ranged/bullet/magazine/W2 = W
+			var/obj/item/magazine/M = SSbalance.weapon_to_magazine[W2.type]
+			M = new M(W2)
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			W2.stored_magazine = M
+			W2.open = FALSE
+			W2.update_sprite()
 
 	return TRUE

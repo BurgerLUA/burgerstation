@@ -9,8 +9,6 @@ var/global/list/possible_merc_loadouts = list(
 /mob/living/advanced/player/antagonist/merc
 	loadout_to_use = null //Chosen based on the above list
 
-	damage_received_multiplier = 0.25 //Take way less damage, but if they kill a player, it resets to 0.75 (25% penalty, as players get 50% resist)!
-
 	known_cqc = list(
 		/cqc/boss/fast_grab,
 		/cqc/boss/grab_slam,
@@ -51,12 +49,5 @@ var/global/list/possible_merc_loadouts = list(
 
 	do_say("; This is [name]. Kept you waiting, huh?")
 
-/mob/living/advanced/player/antagonist/merc/setup_name() //Don't do anything special
+/mob/living/advanced/player/antagonist/merc/setup_name() //Don't do anything special as it was already generated.
 	return TRUE
-
-/mob/living/advanced/player/antagonist/merc/on_kill_player(var/mob/living/advanced/player/P)
-
-	if(P.loyalty_tag == "NanoTrasen")
-		damage_received_multiplier = 0.75 //Act like an antag, get treated like one :)
-
-	. = ..()

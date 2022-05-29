@@ -11,25 +11,10 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 	plane = initial(plane)
 	mouse_opacity = 0
 
-	var/target_dir = get_dir(get_turf(old_location),get_turf(desired_location))
+	var/list/offsets = get_directional_offsets(get_turf(old_location),get_turf(desired_location))
 
-	var/x_offset = 0
-	var/y_offset = 0
-
-	if(target_dir & NORTH)
-		y_offset = -32
-
-	if(target_dir & SOUTH)
-		y_offset = 32
-
-	if(target_dir & EAST)
-		x_offset = -32
-
-	if(target_dir & WEST)
-		x_offset = 32
-
-	pixel_x = x_offset
-	pixel_y = y_offset
+	pixel_x = -offsets[1]*TILE_SIZE
+	pixel_y = -offsets[2]*TILE_SIZE
 
 	switch(desired_animation_type)
 		if("pickup")

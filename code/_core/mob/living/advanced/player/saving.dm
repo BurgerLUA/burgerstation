@@ -27,6 +27,10 @@
 	if(!real_name)
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 
+	unique_pid = loaded_data["unique_pid"]
+	if(!unique_pid)
+		unique_pid = rustg_hash_string(RUSTG_HASH_MD5,"[ckey_last]_[real_name]_[get_date()]_[get_time()]_[world.time]") //I will be made fun of for making this absurdly secure.
+
 	sex = loaded_data["sex"]
 	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON
 	gender = loaded_data["gender"]
@@ -42,7 +46,7 @@
 		revenue = loaded_data["revenue"] ? loaded_data["revenue"] : 0
 		expenses = loaded_data["expenses"] ? loaded_data["expenses"] : 0
 		partial_tax = loaded_data["partial_tax"] ? loaded_data["partial_tax"] : 0
-		last_tax_payment = loaded_data["last_tax_payment"] ? loaded_data["last_tax_payment"] : world.realtime
+		last_tax_payment = loaded_data["last_tax_payment"] > 0 ? loaded_data["last_tax_payment"] : world.realtime
 		insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 4
 		insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
 		nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
@@ -102,7 +106,7 @@
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 
-	for(var/id in loaded_data["organs"]) //This does not use load_and_create object as organs are special. TODO: IT SHOULD THOUGH.
+	for(var/id in loaded_data["organs"]) //This does not use load_and_create (thus load_item_data_pre and load_item_data) as organs are special. TODO: IT SHOULD THOUGH.
 		var/o_type = loaded_data["organs"][id]["type"]
 		if(appearance_only && ispath(o_type,/obj/item/organ/internal/implant))
 			continue
@@ -116,7 +120,7 @@
 			if(loaded_data["organs"][id]["inventories"])
 				for(var/i=1,i<=length(loaded_data["organs"][id]["inventories"]),i++)
 					var/obj/hud/inventory/I = O.inventories[i]
-					I.set_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
+					I.load_inventory_data(src,loaded_data["organs"][id]["inventories"][i])
 		O.update_sprite()
 
 	//Organ checking
@@ -175,20 +179,21 @@
 			var/obj/marker/failsafe/FS = locate() in world
 			force_move(get_turf(FS))
 
-	if(update_blends)
-		update_all_blends()
-	else
-		update_all_blends() //butts
+
+	update_all_blends()
+
+	health?.update_health_stats()
 
 	last_autosave = world.time
 
 	check_promotion()
 
-/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
+/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
 
 	//Basic Information
+	.["unique_pid"] = unique_pid
 	.["name"] = real_name
 	.["currency"] = currency
 	.["insurance"] = insurance
@@ -224,7 +229,7 @@
 		if(!O)
 			log_error("WARNING: Organ [id] not found while saving! Save corruption possible!")
 			continue
-		final_organ_list[id] = O.save_item_data(save_inventory)
+		final_organ_list[id] = O.save_item_data(src,save_inventory,died)
 	.["organs"] = final_organ_list
 
 	//Skills

@@ -7,8 +7,8 @@
 
 /mob/living/advanced/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(driving && !driving.can_attack(attacker,victim,weapon,params,damage_type))
-		return FALSE
+	if(driving)
+		return driving.can_attack(attacker,victim,weapon,params,damage_type)
 
 	if(attack_flags & CONTROL_MOD_BLOCK)
 		return FALSE
@@ -24,21 +24,19 @@
 		return driving
 	return ..()
 
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
-		params = list(PARAM_ICON_X = num2text(rand(0,32)),PARAM_ICON_Y = num2text(rand(0,32)))
+		params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
 
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
-	if(!accurate && is_living(attacker) && attacker != src)
-		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
-		if(!src.anchored && !src.horizontal)
-			inaccuracy += (evasion_rating*0.01*TILE_SIZE*0.5)
-
-		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
-		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
+	if(!accurate && attacker != src && is_living(attacker))
+		var/inaccuracy = weapon ? weapon.get_inaccuracy(attacker,src,inaccuracy_modifier) : 0
+		if(inaccuracy > 0)
+			x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
+			y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
 
 	var/best_distance = INFINITY
 	var/obj/item/organ/best_organ
@@ -49,6 +47,9 @@
 		var/obj/item/organ/O = k
 
 		if(!O.can_be_targeted)
+			continue
+
+		if(!O.check_hit_chance(attacker,weapon,damage_type,params,accurate,find_closest,inaccuracy_modifier))
 			continue
 
 		if(x_attack >= O.target_bounds_x_min && x_attack <= O.target_bounds_x_max && y_attack >= O.target_bounds_y_min && y_attack <= O.target_bounds_y_max)
@@ -68,23 +69,24 @@
 				best_distance = distance
 				best_distance_organ = O
 
-
 	if(best_organ)
 		return best_organ
 
 	if(best_distance_organ)
 		return best_distance_organ
 
-	return FALSE
+	return null
 
 /mob/living/proc/get_current_target_cords(params)
+	if(ai)
+		return list(pick(ai.target_distribution_x),pick(ai.target_distribution_x))
 	if(!params)
 		params = list(PARAM_ICON_X = 16, PARAM_ICON_Y = 16)
 	return list(params[PARAM_ICON_X],params[PARAM_ICON_Y])
 
 /mob/living/advanced/player/get_current_target_cords(params)
 	if(!params || !client)
-		return list(16,16)
+		return ..()
 
 	var/click_flags = client.get_click_flags(params,TRUE)
 
@@ -92,68 +94,6 @@
 		return attack_right[attack_mode]
 
 	return attack_left[attack_mode]
-
-/*
-/mob/living/advanced/can_block(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-
-	. = ..()
-
-	if(!.)
-		return null
-
-	var/list/possible_blocks = list()
-
-	var/obj/item/IL = get_held_left(DT.get_attack_type())
-	if(IL && IL.can_block(attacker,weapon,target,DT))
-		possible_blocks += IL
-
-	var/obj/item/IR = get_held_right(DT.get_attack_type())
-	if(IR && IR.can_block(attacker,weapon,target,DT))
-		possible_blocks += IR
-
-	if(!length(possible_blocks))
-		if(left_hand && left_hand.loc && left_hand.loc.can_block(attacker,weapon,target,DT))
-			possible_blocks += left_hand.loc
-
-		if(right_hand && right_hand.loc && right_hand.loc.can_block(attacker,weapon,target,DT))
-			possible_blocks += right_hand.loc
-
-	if(length(possible_blocks))
-		return pick(possible_blocks)
-
-	return null
-
-/mob/living/advanced/can_parry(var/atom/attacker,var/atom/weapon,var/atom/target,var/damagetype/DT)
-
-	. = ..()
-
-	if(!.)
-		return null
-
-	var/list/possible_parry = list()
-
-	if(left_item && left_item.can_parry(attacker,weapon,target,DT))
-		possible_parry += left_item
-
-	if(right_item && right_item.can_parry(attacker,weapon,target,DT))
-		possible_parry += right_item
-
-	if(length(possible_parry))
-		return pick(possible_parry)
-
-	if(left_hand && left_hand.can_parry(attacker,weapon,target,DT))
-		possible_parry += left_hand
-
-	if(right_hand && right_hand.can_parry(attacker,weapon,target,DT))
-		possible_parry += right_hand
-
-	if(length(possible_parry))
-		return pick(possible_parry)
-
-	return null
-*/
-
-
 
 /mob/living/advanced/proc/update_protection()
 
@@ -179,69 +119,43 @@
 
 	return TRUE
 
-/*
-/mob/living/advanced/player/proc/get_defence_key()
-	if(attack_flags & CONTROL_MOD_BLOCK)
-		return "block"
-	else if(movement_flags & MOVEMENT_RUNNING)
-		return "dodge"
-	else if(attack_flags & CONTROL_MOD_DISARM)
-		return "parry"
-	return "none"
+/mob/living/advanced/get_block_data(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
-/mob/living/advanced/player/can_parry(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(get_defence_key() != "parry")
-		return null
-
-	return ..()
-
-/mob/living/advanced/player/can_dodge(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(get_defence_key() != "dodge")
-		return null
-
-	return ..()
-
-/mob/living/advanced/player/can_block(var/atom/attacker,var/atom/attacking_weapon,var/atom/victim,var/damagetype/DT)
-
-	if(get_defence_key() != "block")
-		return null
-
-	return ..()
-*/
-
-
-
-/mob/living/advanced/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-
-	. = ..()
-
-	if(is_organ(hit_object))
-		var/obj/item/organ/O = hit_object
-		. *= O.damage_coefficient
-
-/mob/living/advanced/get_block_multiplier(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-	. = ..()
 	var/attack_type = DT.get_attack_type()
+
+	var/obj/item/best_item = null
+	var/best_value = 0
+
+	//Left
 	if(left_item)
-		if(left_item.can_block(attacker,weapon,src,DT))
-			. = max(.,left_item.block_defense[attack_type])
+		if(left_item.block_defense[attack_type] && left_item.block_defense[attack_type] > best_value && left_item.can_block(attacker,weapon,src,DT))
+			best_item = left_item
+			best_value = left_item.block_defense[attack_type]
 	else if(src.labeled_organs[BODY_HAND_LEFT])
 		var/obj/item/organ/O = src.labeled_organs[BODY_HAND_LEFT]
-		if(O.can_block(attacker,weapon,src,DT))
-			. = max(.,O.block_defense[attack_type])
+		if(O.block_defense[attack_type] && O.can_block(attacker,weapon,src,DT))
+			best_item = O
+			best_value = max(.,O.block_defense[attack_type])
+
+	//Right
 	if(right_item)
-		if(right_item.can_block(attacker,weapon,src,DT))
-			. = max(.,right_item.block_defense[attack_type])
+		if((right_item.block_defense[attack_type] > best_value || (best_value > 0 && right_item.block_defense[attack_type] == best_value && prob(50))) && right_item.can_block(attacker,weapon,src,DT) )
+			best_item = right_item
+			best_value = right_item.block_defense[attack_type]
 	else if(src.labeled_organs[BODY_HAND_RIGHT])
 		var/obj/item/organ/O = src.labeled_organs[BODY_HAND_RIGHT]
-		if(O.can_block(attacker,weapon,src,DT))
-			. = max(.,O.block_defense[attack_type])
+		if(O.block_defense[attack_type] > best_value && O.can_block(attacker,weapon,src,DT))
+			best_item = O
+			best_value = O.block_defense[attack_type]
+
+	return list(best_item,best_value)
 
 /mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
 
-	if(last_hold && (world.time - last_hold <= 5 + 5*get_skill_power(SKILL_PARRY,0,1,2)))
-		return TRUE
+	if(!is_facing(src,attacker))
+		return FALSE
 
-	return FALSE
+	if(world.time - last_hold > 5 + 5*get_skill_power(SKILL_PARRY,0,1,2))
+		return FALSE
+
+	return TRUE

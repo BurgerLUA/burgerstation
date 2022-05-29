@@ -1,11 +1,36 @@
 /obj/hud/
-	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE
+	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE | LONG_GLIDE | TILE_BOUND
 
 	var/user_colors = TRUE
 
 	var/mob/owner
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
+	initialize_type = 0x0 //This type does not get initialized.
+
+	var/delete_on_no_owner = TRUE
+	var/bad_delete = TRUE
+
+/obj/hud/proc/update_owner(var/mob/desired_owner)
+
+	if(owner == desired_owner)
+		return FALSE
+
+	if(owner)
+		owner.remove_button(src)
+
+	if(!desired_owner && delete_on_no_owner)
+		bad_delete = FALSE
+		qdel(src)
+		return TRUE
+
+	owner = desired_owner
+	if(owner)
+		owner.add_button(src)
+		update_sprite()
+
+	return TRUE
 
 /obj/hud/Destroy()
 	owner = null
@@ -39,3 +64,16 @@
 	I.SwapColor(rgb(255,255,0),color_scheme[4])
 	I.SwapColor(rgb(255,0,255),color_scheme[5])
 	I.SwapColor(rgb(0,255,255),color_scheme[6])
+
+
+/obj/hud/Initialize()
+	CRASH("HUD objects should never be Initialized!")
+
+/obj/hud/PostInitialize()
+	CRASH("HUD objects should never be PostInitialized!")
+
+/obj/hud/Finalize()
+	CRASH("HUD objects should never be Finalized!")
+
+/obj/hud/Generate()
+	CRASH("HUD objects should never be Generated!")

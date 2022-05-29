@@ -1,5 +1,4 @@
 /damagetype/melee/spear/basic/
-	name = "spear"
 
 	attack_damage_base = list(
 		PIERCE = 15,
@@ -33,8 +32,6 @@
 	attack_delay_max = 12
 
 /damagetype/melee/spear/basic/thrown
-
-	name = "thrown spear"
 
 	attack_damage_base = list(
 		PIERCE = 40,

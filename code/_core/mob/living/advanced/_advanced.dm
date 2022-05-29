@@ -1,5 +1,7 @@
 #define DEFAULT_NAME "Your name here."
 
+var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
+
 /mob/living/advanced
 
 	name = DEFAULT_NAME
@@ -14,20 +16,15 @@
 	gender = MALE
 
 	var/draw_inventory = TRUE
-	var/list/obj/hud/inventory/inventory //List of inventory items
+	var/list/obj/hud/inventory/inventories_by_id //List of inventory items, by id. (Assoc list).
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
 	var/list/obj/item/held_objects //List of held items. For use in an easy read-only list.
-
-	var/obj/hud/inventory/left_hand
-	var/obj/hud/inventory/right_hand
-	var/obj/hud/inventory/holster
-	var/obj/hud/inventory/face
 
 	var/obj/item/left_item
 	var/obj/item/right_item
 	var/obj/item/holster_item
 
-	var/list/obj/hud/button/slot/slot_buttons = list()
+	var/list/obj/hud/button/ability/ability_buttons = list()
 
 	health_base = 100
 	stamina_base = 100
@@ -43,7 +40,7 @@
 
 	has_footprints = TRUE
 
-	var/move_delay_multiplier = 1
+	var/move_delay_multiplier = 1 //Read only.
 
 	var/has_hard_crit = FALSE
 
@@ -53,10 +50,9 @@
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
 	var/list/protection_pressure = TARGETABLE_LIMBS_KV
 
-	health = /health/mob/living/advanced
+	health = null
 
 	var/list/tracked_hidden_organs
-	var/tracked_hidden_clothing = 0x0
 
 	value = 500
 
@@ -72,34 +68,9 @@
 
 	death_threshold = -50
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
-
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs
-
-	armor_base = list()
-
-	armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		ION = 0,
-		PAIN = 0,
-		SANITY = 0
-	)
-
-	var/sanity = 100 //Lower values means more likely to be targed by ghosts. Only is relevant in special areas.
 
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
@@ -107,7 +78,13 @@
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
-	var/evasion_rating = 0
+
+	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
+	var/last_mood_gain = 0
+
+	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
+
+	var/current_mouse_spread = 0
 
 /mob/living/advanced/Destroy()
 
@@ -115,19 +92,14 @@
 	remove_all_buttons()
 
 	inventory_defers?.Cut()
+	inventories_by_id?.Cut()
 
 	overlays_assoc?.Cut()
 	tracked_hidden_organs?.Cut()
-	slot_buttons?.Cut()
+	ability_buttons?.Cut()
 
 	held_objects = null
 	worn_objects = null
-	left_hand = null
-	right_hand = null
-	holster = null
-	left_item = null
-	right_item = null
-	holster_item = null
 	active_inventory = null
 	driving = null
 
@@ -141,6 +113,13 @@
 
 	return ..()
 
+/mob/living/advanced/PostInitialize()
+	. = ..()
+
+	if(client)
+		var/obj/hud/button/stat/body/B = new(src)
+		B.update_owner(src)
+
 /mob/living/advanced/Finalize()
 
 	var/species/S = SPECIES(species)
@@ -151,34 +130,38 @@
 
 	update_items(force=TRUE)
 
-/mob/living/advanced/on_crush()
+/mob/living/advanced/on_crush(var/message=TRUE)
 	if(driving)
 		return FALSE
-	drop_all_items(get_turf(src))
-	return ..()
+	. = ..()
 
 /mob/living/advanced/proc/update_clothes()
 
 	tracked_hidden_organs = list()
 
+	var/list/blocking_clothing = list()
+
 	for(var/obj/item/clothing/C in worn_objects)
-		if(C.hidden_clothing)
-			tracked_hidden_clothing |= C.hidden_clothing
+		if(C.enable_torn_overlay && C.get_damage_icon_number() > 0)
+			continue
 		if(C.hidden_organs)
 			tracked_hidden_organs |= C.hidden_organs
-
-	var/do_organs = length(tracked_hidden_organs)
-	var/do_clothing = tracked_hidden_clothing != 0x0
+			blocking_clothing[C] = TRUE
 
 	for(var/k in overlays_assoc)
 		var/image/overlay/O = overlays_assoc[k]
 		var/obj/item/I = O.attached_object
+		if(!I)
+			continue
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
-			show_overlay(k, (do_organs && tracked_hidden_organs[OR.id]) ? FALSE : TRUE)
-		else if(is_clothing(I))
-			var/obj/item/clothing/C = I
-			show_overlay(k, (do_clothing && C.item_slot & tracked_hidden_clothing) ? FALSE : TRUE)
+			show_overlay(k, !tracked_hidden_organs[OR.id] ? TRUE : FALSE)
+		else
+			var/atom/movable/M = I
+			if(!M.loc || !is_organ(M.loc.loc))
+				continue
+			var/obj/item/organ/OR = M.loc.loc
+			show_overlay(k, (blocking_clothing[M] || !tracked_hidden_organs[OR.id]) ? TRUE : FALSE)
 
 	return TRUE
 
@@ -202,6 +185,8 @@
 
 	if(driving)
 		desired_dir = driving.dir
+	else
+		desired_dir = get_true_4dir_advanced(dir,desired_dir)
 
 	if(!force && grabbing_hand)
 		return FALSE
@@ -209,12 +194,12 @@
 	. = ..()
 
 	if(. || force) //Dan updating.
-		if(left_hand && left_item && left_item.dan_mode)
-			left_hand.update_held_icon(left_item)
-		if(right_hand && right_item && right_item.dan_mode)
-			right_hand.update_held_icon(right_item)
-		if(holster && holster_item && holster_item.dan_mode)
-			holster.update_held_icon(holster_item)
+		if(inventories_by_id[BODY_HAND_LEFT_HELD] && left_item && left_item.dan_mode)
+			inventories_by_id[BODY_HAND_LEFT_HELD].update_held_icon(left_item)
+		if(inventories_by_id[BODY_HAND_RIGHT_HELD] && right_item && right_item.dan_mode)
+			inventories_by_id[BODY_HAND_RIGHT_HELD].update_held_icon(right_item)
+		if(inventories_by_id[BODY_TORSO_OB] && holster_item && holster_item.dan_mode)
+			inventories_by_id[BODY_TORSO_OB].update_held_icon(holster_item)
 
 /mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_speed=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
 
@@ -252,13 +237,6 @@
 
 	move_delay_multiplier = .
 
-	//Evasion stuff
-	evasion_rating = max(0,0.5 - total_weight/max_weight)*100*(0.25 + get_skill_power(SKILL_EVASION,0,1,2)*0.75)
-	if(ckey_last) //Player controlled
-		evasion_rating = clamp(evasion_rating,0,75)
-	else
-		evasion_rating = clamp(evasion_rating*0.25,0,25)
-
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
 	real_name = name
@@ -267,7 +245,7 @@
 	icon_state = "0"
 
 	organs = list()
-	inventory = list()
+	inventories_by_id = list()
 	held_objects = list()
 	worn_objects = list()
 	labeled_organs = list()
@@ -280,7 +258,8 @@
 
 	. = list()
 
-	for(var/obj/hud/inventory/organs/O in inventory)
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/O = inventories_by_id[k]
 		if(exclude_containers && is_item(O.loc))
 			var/obj/item/I = O.loc
 			if(I.is_container)
@@ -290,9 +269,9 @@
 	return .
 
 /mob/living/advanced/proc/delete_all_items()
-	for(var/v in inventory)
-		var/obj/hud/inventory/O = v
-		O.delete_objects()
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/I = inventories_by_id[k]
+		I.delete_objects()
 
 /mob/living/advanced/proc/equip_objects_in_list(var/list/clothing_list)
 	for(var/k in clothing_list)
@@ -303,9 +282,9 @@ mob/living/advanced/Login()
 	. = ..()
 	restore_buttons()
 	restore_inventory()
-	restore_health_elements()
+	restore_stat_elements()
 	restore_local_machines()
-	update_health_element_icons(TRUE,TRUE,TRUE)
+	queue_health_update = TRUE
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/k in local_machines)
@@ -322,10 +301,15 @@ mob/living/advanced/Login()
 
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
+	if(!health)
+		var/species/S = SPECIES(species)
+		if(S && S.health)
+			health = S.health
+
 	. = ..()
 
 	if(client)
-		add_slot_buttons()
+		add_ability_buttons()
 
 	apply_mob_parts(TRUE,TRUE,TRUE)
 
@@ -333,16 +317,8 @@ mob/living/advanced/Login()
 		add_species_buttons()
 
 	var/species/S = SPECIES(species)
-	if(S && S.health)
-		health = S.health
-
-/mob/living/advanced/PostInitialize()
-
-	. = ..()
-
-	if(client)
-		update_health_element_icons(TRUE,TRUE,TRUE)
-		add_species_health_elements()
+	if(S)
+		S.generate_traits(src)
 
 /mob/living/advanced/Finalize()
 	. = ..()
@@ -357,7 +333,7 @@ mob/living/advanced/Login()
 
 	real_name = name
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 
@@ -384,24 +360,6 @@ mob/living/advanced/Login()
 	spawning_outfit.post_add(src,added_items)
 
 	return TRUE
-
-/* UNUSED
-/mob/living/advanced/proc/add_worn_item(var/obj/item/C,var/slient=FALSE)
-	for(var/k in inventory)
-		var/obj/hud/inventory/I = k
-		if(I.add_object(C,FALSE,silent=FALSE))
-			return TRUE
-
-	return FALSE
-
-/mob/living/advanced/proc/remove_worn_item(var/obj/item/C)
-	for(var/k in inventory)
-		var/obj/hud/inventory/I = k
-		if(I.remove_object(C))
-			return TRUE
-
-	return FALSE
-*/
 
 /mob/living/advanced/proc/add_species_languages()
 
@@ -459,50 +417,49 @@ mob/living/advanced/Login()
 	if(health?.stamina_current <= 0 || has_status_effect(STAMCRIT))
 		return FALSE
 
-	var/list/organs_to_check = list(
-		BODY_FOOT_RIGHT,
-		BODY_FOOT_LEFT,
-		BODY_LEG_LEFT,
-		BODY_LEG_RIGHT
-	)
-
-	for(var/k in organs_to_check)
+	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
-		if(!O || !O.health || O.health.health_current <= 0)
+		if(!O || (O.health && (O.health.health_current <= 0 || O.broken)))
 			return FALSE
 
 	return ..()
 
-/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/left = FALSE,var/silent=FALSE)
+/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/params,var/silent=FALSE)
 
-	if(left_hand && right_hand)
-		if(left)
-			if(left_hand.can_slot_object(I,FALSE))
-				return left_hand.add_object(I,silent=silent)
-			else if(right_hand.can_slot_object(I,FALSE))
-				return right_hand.add_object(I,silent=silent)
+	if(client && client.selected_hand)
+		if(client.selected_hand == RIGHT_HAND && inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+		else if(inventories_by_id[BODY_HAND_LEFT_HELD] && inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+	else if(length(params))
+		if(params["left"] && inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+		else if(params["right"] && inventories_by_id[BODY_HAND_LEFT_HELD] && inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+	else if(inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_LEFT_HELD])
+		if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+			if(inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+			else if(inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
 		else
-			if(right_hand.can_slot_object(I,FALSE))
-				return right_hand.add_object(I,silent=silent)
-			else if(left_hand.can_slot_object(I,FALSE))
-				return left_hand.add_object(I,silent=silent)
+			if(inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+			else if(inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
+				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
 	else
-		if(left_hand)
-			return left_hand.add_object(I,silent=silent)
-		else if(right_hand)
-			return right_hand.add_object(I,silent=silent)
+		if(inventories_by_id[BODY_HAND_LEFT_HELD])
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+		else if(inventories_by_id[BODY_HAND_RIGHT_HELD])
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
 
 	return FALSE
 
 /mob/living/advanced/proc/get_held_left()
-	if(left_hand)
-		return left_hand.get_top_object()
-	return null
+	return inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
 /mob/living/advanced/proc/get_held_right()
-	if(right_hand)
-		return right_hand.get_top_object()
-	return null
+	return inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
 
 /mob/living/advanced/mod_speech(var/text)
 	var/species/S = SPECIES(species)
@@ -510,3 +467,32 @@ mob/living/advanced/Login()
 		return text
 	text = S.mod_speech(src,text)
 	return ..()
+
+/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+	for(var/i=1,i<=5,i++)
+		var/list/params = list()
+		params[PARAM_ICON_X] = rand(0,32)
+		params[PARAM_ICON_Y] = rand(0,32)
+		var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,FALSE,TRUE)
+		var/damagetype/D = all_damage_types[/damagetype/explosion/]
+		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
+	return TRUE
+
+/mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+
+	. = ..()
+
+	for(var/k in organs)
+		var/obj/item/organ/O = k
+		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+
+/mob/living/advanced/gib(var/hard=FALSE)
+	if(qdeleting)
+		return FALSE
+	if(gibbed)
+		return FALSE
+	gibbed = TRUE
+	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
+	if(O) return O.gib(hard)
+	gibbed = FALSE //Hacky, but it works.
+	return FALSE

@@ -41,6 +41,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/ice,
 /area/dmm_suite/clear_area)
+"m" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/colored/dirt/snow,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -525,7 +529,7 @@ d
 d
 d
 a
-i
+m
 i
 f
 f

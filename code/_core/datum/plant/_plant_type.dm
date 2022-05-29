@@ -50,7 +50,7 @@
 
 	plant_icon_count = 4
 	reagents = list(
-		/reagent/oxygen = 1,
+		/reagent/fuel/oxygen = 1,
 	)
 
 	typical_volume = 15

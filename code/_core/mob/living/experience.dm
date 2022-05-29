@@ -1,7 +1,7 @@
 //Skills
 /mob/living/proc/get_skill(var/id,var/error_on_null = TRUE)
 	if(!skills[id])
-		if(error_on_null) CRASH_SAFE("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
+		if(error_on_null) CRASH("Warning! Tried getting skill of [id], but it didn't exist for [src.get_debug_name()]!")
 		return null
 	return skills[id]
 
@@ -75,12 +75,13 @@
 
 	if(!C) C = all_classes[/class/]
 
+	var/attribute_amount = length(SSexperience.all_attributes)*0.5
 	for(var/k in SSexperience.all_attributes) //k is the id
 		var/v = SSexperience.all_attributes[k]
 		var/experience/attribute/E = new v(src)
 		if(C.weights_attribute[E.id])
-			var/weight_mod = 10*level*(C.weights_attribute[E.id]/C.total_attribute_weight)
-			E.update_experience(E.level_to_xp(1 + CEILING(weight_mod,1)))
+			var/weight_mod = attribute_amount*level*(C.weights_attribute[E.id]/C.total_attribute_weight)
+			E.update_experience(E.level_to_xp(CEILING(weight_mod,1)))
 		else
 			E.update_experience(E.level_to_xp(E.default_level))
 		attributes[E.id] = E
@@ -91,12 +92,13 @@
 
 	if(!C) C = all_classes[/class/]
 
+	var/skills_amount = length(SSexperience.all_skills)*0.5
 	for(var/k in SSexperience.all_skills) //k is the id
 		var/v = SSexperience.all_skills[k]
 		var/experience/skill/E = new v(src)
 		if(C.weights_skill[E.id])
-			var/weight_mod = 10*level*(C.weights_skill[E.id]/C.total_skill_weight)
-			E.update_experience(E.level_to_xp(1 + CEILING(weight_mod,1)))
+			var/weight_mod = skills_amount*level*(C.weights_skill[E.id]/C.total_skill_weight)
+			E.update_experience(E.level_to_xp(CEILING(weight_mod,1)))
 		else
 			E.update_experience(E.level_to_xp(E.default_level))
 		skills[E.id] = E
@@ -127,7 +129,6 @@
 		return FALSE
 
 	// https://www.desmos.com/calculator/cka4qx8qr0
-
 	level = max(1,CEILING( (total_score/max_score)*(100+CHARGEN_DEFAULT_LEVEL),1) - CHARGEN_DEFAULT_LEVEL)
 
 	if(!first && old_level != level)

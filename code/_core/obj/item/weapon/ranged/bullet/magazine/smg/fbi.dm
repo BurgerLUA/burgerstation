@@ -1,33 +1,35 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi
-	name = "10mm NT-FBI"
+	name = ".45 NT-FBI"
 	desc = "FBI, open up!"
 	desc_extended = "The heavy kick of this SMG is only somewhat offset by its advanced recoil compensation mechanism. Perfect for when you need the power of a Magnum revolver in full-auto."
-	icon = 'icons/obj/item/weapons/ranged/smg/10mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/45.dmi'
 	icon_state = "inventory"
 	value = 1600
 
-	shoot_delay = 1.6
+	tier = 2
+
+	shoot_delay = 1.3
 
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/10/shoot.ogg')
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_3
 	weight = 8
 
 	heat_max = 0.07
 
-	bullet_length_min = 25
-	bullet_length_best = 32
-	bullet_length_max = 33
+	bullet_length_min = 20
+	bullet_length_best = 23
+	bullet_length_max = 24
 
-	bullet_diameter_min = 10
-	bullet_diameter_best = 10.17
-	bullet_diameter_max = 11
+	bullet_diameter_min = 11
+	bullet_diameter_best = 11.43
+	bullet_diameter_max = 12
 
 	ai_heat_sensitivity = 0.5
 
@@ -46,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -55,12 +57,12 @@
 	)
 
 	attachment_barrel_offset_x = 30 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 15 - 16
-	attachment_sight_offset_y = 20 - 16
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 16 - 16
 
 	inaccuracy_modifier = 0.5
@@ -69,17 +71,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi/get_static_spread()
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/fbi/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod
-	name = "10mm NT-FBI MK2"
-	icon = 'icons/obj/item/weapons/ranged/smg/10mm_2.dmi'
-	desc_extended = "The heavy kick of this SMG is only somewhat offset by its advanced recoil compensation mechanism. Perfect for when you need the power of a Magnum revolver in full-auto. This variant has a heavier design which helps with cooling."
-
-	heat_max = 0.06
-
-	value = 1900
-	weight = 10
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))

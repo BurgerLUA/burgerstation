@@ -2,23 +2,14 @@
 	name = "right black boot"
 	desc = "For when you want to turn up the heat a little."
 	desc_extended = "A black combat boot. Shields your feet from shrapnel."
-	rarity = RARITY_UNCOMMON
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT
 
 	icon = 'icons/obj/item/clothing/shoes/boots.dmi'
 
-	defense_rating = list(
-		BLADE = 40,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = -40,
-		ARCANE = -40,
-		COLD = 40,
-		BOMB = 40,
-		PAIN = 40
-	)
+	armor = /armor/leather/hard_boot
 
 	size = SIZE_2
 

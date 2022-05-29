@@ -1,3 +1,7 @@
+var/global/regex/forbidden_characters
+
+
+
 SUBSYSTEM_DEF(config)
 	name = "Config Subsystem"
 	desc = "Controls config options."
@@ -13,14 +17,11 @@ SUBSYSTEM_DEF(config)
 
 	var/file_text = rustg_file_read(CONFIG_DIR)
 	var/list/split_file = splittext(file_text,"\n")
-	var/line_count = 0
 	for(var/line in split_file)
-		line_count++
 		if(copytext(line,1,2) == "#")
 			continue
 		var/list/split_line = splittext(line," ")
-		if(length(split_line) < 2)
-			log_error("Invalid config format for [CONFIG_DIR] on line [line_count]: [line]")
+		if(length(split_line) < 2) //empty string just empty string, not an ERROR.
 			continue
 		var/config_id = uppertext(split_line[1])
 		var/list/config_options = split_line.Copy(2)
@@ -35,5 +36,10 @@ SUBSYSTEM_DEF(config)
 			config[config_id] = jointext(config_options," ")
 
 	log_subsystem(name,"Found [length(config)] config options.")
+
+	if(config["FORBIDDEN_CHARACTERS"])
+		forbidden_characters = regex(config["FORBIDDEN_CHARACTERS"])
+
+
 
 	return ..()

@@ -1,5 +1,4 @@
 /damagetype/melee/club/null_staff
-	name = "null staff"
 
 	attack_damage_base = list(
 		BLUNT = 20,

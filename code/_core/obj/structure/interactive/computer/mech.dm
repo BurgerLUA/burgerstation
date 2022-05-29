@@ -22,7 +22,7 @@
 
 /obj/structure/interactive/computer/console/mech_fabricator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return ..()
 
 	INTERACT_CHECK

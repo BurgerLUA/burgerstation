@@ -46,7 +46,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/magic/spellblade/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/magic/spellblade/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 
 	if(get_dist(caller,object) <= 1)
 		return FALSE
@@ -76,7 +76,7 @@
 	icon_state = "inventory"
 
 	value = 1500
-	rarity = RARITY_RARE
+
 
 	projectile_speed = TILE_SIZE*0.25 - 1
 

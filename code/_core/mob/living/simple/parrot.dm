@@ -27,10 +27,12 @@
 	blood_volume = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/chicken/raw
+		/obj/item/container/edible/dynamic/chicken/raw
 	)
 
 	soul_size = SOUL_SIZE_COMMON
+
+	level = 4
 
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
@@ -53,7 +55,7 @@
 	if(old_sitting != sitting)
 		update_sprite()
 
-	return ..()
+	. = ..()
 
 /mob/living/simple/parrot/post_death()
 	update_sprite()
@@ -116,13 +118,6 @@
 
 	butcher_contents = list()
 
-	armor_base = list(
-		BLADE = 20,
-		PIERCE = 20,
-		ARCANE = 80,
-		HEAT = -20,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = 0,
-		PAIN = INFINITY
-	)
+	armor = /armor/default_organic
+
+	level = 12

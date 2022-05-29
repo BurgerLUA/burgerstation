@@ -37,7 +37,7 @@
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
 		return TRUE
 
-	if(is_paper(object))
+	if(istype(object,/obj/item/paper/))
 
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -128,7 +128,7 @@
 		SC.lock()
 		SC.owner_name = "[found_data["Requisitioner's Name"]]"
 		SC.name = "secure cargo crate ([SC.owner_name] [found_data["Item ID"]])"
-		SC.credits_required = SC.get_value()
+		SC.credits_required = CEILING(SC.get_value(),1)
 		SC.force_move(SC.loc)
 
 	return ..()

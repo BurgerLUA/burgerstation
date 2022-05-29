@@ -17,18 +17,7 @@
 
 	stun_angle = 0
 
-	armor_base = list(
-		LASER = 40,
-		ARCANE = 40,
-		HEAT = 40,
-		COLD = 40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -120,
-		DARK = 120,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/default_organic
 
 	size = SIZE_ANIMAL
 
@@ -40,6 +29,8 @@
 	blood_type = null
 
 	soul_size = SOUL_SIZE_COMMON
+
+	level = 18
 
 /mob/living/simple/halloween_spirit/blue
 	icon_state = "blue"

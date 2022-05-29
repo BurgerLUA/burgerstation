@@ -3,3 +3,5 @@
 	item_slot = SLOT_NECK
 
 	protected_limbs = list(BODY_HEAD)
+
+	uses_until_condition_fall = 250

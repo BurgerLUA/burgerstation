@@ -8,6 +8,23 @@ obj/structure/interactive/chair
 	bullet_block_chance = 25
 
 	density = TRUE
+	anchored = FALSE
+
+	var/armrest = FALSE
+
+obj/structure/interactive/chair/update_overlays()
+	. = ..()
+	if(armrest)
+		var/image/I = new/image(icon,"[icon_state]_armrest")
+		I.appearance_flags = src.appearance_flags
+		I.plane = PLANE_MOB
+		I.layer = LAYER_MOB_ABOVE + 1
+		add_overlay(I)
+
+obj/structure/interactive/chair/Finalize()
+	. = ..()
+	if(armrest)
+		update_sprite()
 
 obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
@@ -38,6 +55,14 @@ obj/structure/interactive/chair/proc/sit_your_ass_down(var/mob/living/L)
 
 	return TRUE
 
+/obj/structure/interactive/chair/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(caller.loc == src.loc)
+		src.buckle(caller)
+		return TRUE
+
+	. = ..()
+
 obj/structure/interactive/chair/stool
 	name = "stool"
 	desc = "Apply butt."
@@ -56,7 +81,21 @@ obj/structure/interactive/chair/stool/bar
 obj/structure/interactive/chair/wood
 	name = "wooden chair"
 	desc = "You will sit in this. By will or by force."
-	desc_extended = "A chair is a peice of furniture with a raised surface supported by legs, commonly used to seat a single person. Buckling is automatic and will be attempted upon walking over something you can buckle into."
+	desc_extended = "A chair is a peice of furniture with a raised surface supported by legs, commonly used to seat a single person."
 	icon_state = "wooden_chair"
 
 	bullet_block_chance = 10
+
+obj/structure/interactive/chair/office
+	name = "office chair"
+	icon_state = "officechair_white"
+
+obj/structure/interactive/chair/office/dark
+	name = "office chair"
+	icon_state = "officechair_dark"
+
+obj/structure/interactive/chair/comfy
+	name = "comfy chair"
+	icon_state = "comfychair"
+
+	armrest = TRUE

@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/misc/browning
-	name = "\improper Browning Gun"
+	name = "mounted.50 machine gun"
 	desc = ""
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/mech.dmi'
@@ -7,7 +7,7 @@
 
 	var/obj/structure/interactive/mountable/browning/linked_gun
 
-	shoot_delay = 2.5
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -38,6 +38,8 @@
 	value_burgerbux = 1
 
 	anchored = TRUE
+
+	tier = 3
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/Destroy()
 	QDEL_NULL(linked_gun)
@@ -71,7 +73,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
-	if(angle2dir_cardinal(get_angle(caller,object)+90)==linked_gun.dir)
+	if(angle2dir_cardinal(get_angle(caller,object))==linked_gun.dir)
 		return TRUE
 	else
 		caller.to_chat(span("warning","Your finger slips!"))

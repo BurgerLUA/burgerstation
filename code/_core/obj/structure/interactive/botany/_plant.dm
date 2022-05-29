@@ -134,9 +134,10 @@
 	SSbotany.all_plants -= src
 	. = ..()
 
-/obj/structure/interactive/plant/proc/on_life()
+/obj/structure/interactive/plant/proc/on_life(var/tick_rate=1) //Measured in game ticks.
+
+	var/rate = TICKS_TO_DECISECONDS(tick_rate)
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
-	var/rate = TICKS_TO_DECISECONDS(SSbotany.tick_rate)
 	var/real_growth_speed = growth_speed * rate * (P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
 
 	if(nutrition >= 10 && hydration >= 10)
@@ -183,14 +184,13 @@
 		if(total_metabolized > 0)
 			reagents.update_container()
 
-	update_sprite()
-
 	//dead plants auto-remove themselves
 	var/health_percent = health.health_current/health.health_max
-	if (health_percent <= 0.01)
+	if(health_percent <= 0.01)
 		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
 		qdel(src)
-
+	else
+		update_sprite()
 
 	return TRUE
 
@@ -272,14 +272,10 @@
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
-			var/obj/item/container/food/plant/P = new(caller_turf)
+			var/obj/item/container/edible/plant/P = new(caller_turf)
 			P.plant_type = associated_plant.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
-			P.name = associated_plant.name
-			P.desc = associated_plant.desc
-			P.icon = associated_plant.harvest_icon
-			P.icon_state = associated_plant.harvest_icon_state
 			P.potency =  child_potency //associated_plant.potency //CEILING(local_potency,1)
 			P.yield_max = child_yield //CEILING(local_yield,1)
 			P.yield_percent = CEILING(yield_percent,1)

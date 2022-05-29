@@ -8,9 +8,9 @@ obj/structure/interactive/atmospherics/vent
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "vent_1"
 
-	desired_light_range = 0.5
+	desired_light_range = 1
 	desired_light_power = 1
-	desired_light_color = "#0094FF"
+	desired_light_color = "#64BEB5"
 
 	plane = PLANE_FLOOR
 
@@ -21,9 +21,9 @@ obj/structure/interactive/atmospherics/scrubber
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "scrubber_1"
 
-	desired_light_range = 0.5
+	desired_light_range = 1
 	desired_light_power = 1
-	desired_light_color = "#0094FF"
+	desired_light_color = "#BE6864"
 
 	plane = PLANE_FLOOR
 
@@ -64,5 +64,3 @@ obj/structure/interactive/atmospherics/fan
 	icon_state = "fan_tiny"
 
 	plane = PLANE_FLOOR
-
-	blocks_air = NORTH | EAST | SOUTH | WEST

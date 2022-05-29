@@ -23,23 +23,8 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 60,
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 60,
-		ARCANE = -20,
-		HEAT = 80,
-		COLD = 80,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = INFINITY,
-		DARK = INFINITY,
-		FATIGUE = INFINITY,
-		PAIN = INFINITY
-	)
-
-	fatigue_from_block_mul = 0
+	armor = /armor/borg/military
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -82,7 +67,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 70
 
 /mob/living/simple/can_man/post_death()
 	. = ..()
@@ -91,7 +76,7 @@
 	icon_state = "dead"
 	update_sprite()
 
-/mob/living/simple/can_man/get_movement_delay()
+/mob/living/simple/can_man/get_movement_delay(var/include_stance=TRUE)
 
 	if(charge_steps)
 		return 1 //Max
@@ -103,7 +88,7 @@
 	if(charge_steps)
 		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
 
-	return ..()
+	. = ..()
 
 
 /mob/living/simple/can_man/Bump(atom/Obstacle)
@@ -113,7 +98,7 @@
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,TRUE,TRUE)
+		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,null,params,TRUE,TRUE)
 		DT.process_damage(src,Obstacle,src,object_to_damage,src,1)
 
 	return ..()

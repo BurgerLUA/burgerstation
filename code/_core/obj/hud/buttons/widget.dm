@@ -4,7 +4,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_WIDGET
+	flags = FLAG_HUD_WIDGET
 
 	mouse_opacity = 1
 
@@ -35,7 +35,7 @@
 			if(J)
 				job_rank = P.job_rank
 				final_text += div("bold underlined","Job:\n")
-				final_text += div("notice","[J.get_rank_title(job_rank)] (Rank: [job_rank])")
+				final_text += div("notice","[J.get_rank_title(job_rank)] (Rank: [job_rank])\n")
 
 		final_text += div("bold underlined","Attributes\n")
 		for(var/k in L.attributes)

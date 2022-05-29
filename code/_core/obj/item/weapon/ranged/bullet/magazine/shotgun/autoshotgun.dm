@@ -2,17 +2,19 @@
 	name = "\improper 20g Bulldog"
 	desc = "For when you want to clear a room."
 	desc_extended = "The 20 Gauge Bulldog is an insanely powerful semiautomatic bullpup shotgun, nicknamed \"Bulldog\" for its bullpup design as well as the fact that it kicks like one too."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/auto.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/semi.dmi'
 	icon_state = "inventory"
 	value = 2900
 
-	shoot_delay = 2
+	tier = 3
 
-	automatic = TRUE
+	shoot_delay = 4
+
+	automatic = FALSE
 
 	shoot_sounds = list('sound/weapons/12gauge/shoot.ogg')
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_4
 	weight = 16
@@ -45,7 +47,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -54,15 +56,13 @@
 	)
 
 	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 20 - 16
+	attachment_barrel_offset_y = 17 - 16
 
-	attachment_sight_offset_x = 16 - 16
-	attachment_sight_offset_y = 23 - 16
+	attachment_sight_offset_x = 18 - 16
+	attachment_sight_offset_y = 20 - 16
 
 	attachment_undermount_offset_x = 27 - 16
-	attachment_undermount_offset_y = 15 - 16
-
-
+	attachment_undermount_offset_y = 12 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25

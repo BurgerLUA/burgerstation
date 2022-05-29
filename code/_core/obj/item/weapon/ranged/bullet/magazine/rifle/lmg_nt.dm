@@ -2,16 +2,18 @@
 	name = "\improper 7.62mm H-LMG"
 	desc = "What's betweeen you and 100 Syndicate? This LMG."
 	desc_extended = "An extremely pricy 7.62mm Light Machine Gun that was originally inteded for use in mounted placements is now available for use in combat situations."
-	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_lmg.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_1.dmi'
 	icon_state = "inventory"
 
 	value = 4000
 
-	shoot_delay = 3
+	tier = 2
+
+	shoot_delay = 2.5
 
 	automatic = TRUE
 
-	damage_mod = 1.1
+	damage_mod = 1.2
 
 	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
 
@@ -50,7 +52,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -61,7 +63,7 @@
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 18 - 16
+	attachment_sight_offset_x = 19 - 16
 	attachment_sight_offset_y = 20 - 16
 
 	attachment_undermount_offset_x = 25 - 16

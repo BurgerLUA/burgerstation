@@ -89,11 +89,11 @@
 
 	if(!ENABLE_LORE)
 		A.force_move(pick(spawnpoints_new_character))
-		A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
+		A.show_hud(TRUE,FLAG_HUD_MOB,FLAG_HUD_SPECIAL,SECONDS_TO_DECISECONDS(3))
 		return TRUE
 
 	spawn(0)
-		A.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,1)
+		A.show_hud(FALSE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL|FLAG_HUD_WIDGET,SECONDS_TO_DECISECONDS(1))
 		var/obj/hud/button/skip/SB = new(A)
 		SB.update_owner(A)
 		A.sight |= SEE_THRU
@@ -141,7 +141,7 @@
 
 		A.sight &= ~SEE_THRU
 		sleep(SECONDS_TO_DECISECONDS(3))
-		A.show_hud(TRUE,FLAGS_HUD_MOB,FLAGS_HUD_SPECIAL,3)
+		A.show_hud(TRUE,FLAG_HUD_MOB,FLAG_HUD_SPECIAL,SECONDS_TO_DECISECONDS(3))
 		A.stun_time = 1
 		A.paralyze_time = 1
 		A.movement_flags = 0x0

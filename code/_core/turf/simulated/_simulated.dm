@@ -1,41 +1,32 @@
-var/global/list/turf_icon_cache = list()
-var/global/saved_icons = 0
-
-var/global/list/blood_turfs = list()
-
 /turf/simulated/
+
+	dynamic_lighting = TRUE
+
+	health = null
+	health_base = 100
 
 	var/real_icon
 	var/real_icon_state
 
-	dynamic_lighting = TRUE
-
-	var/fade = FALSE
-
 	var/tile = FALSE //Set to true if this is a tile.
 
 	var/turf/destruction_turf
-	health = null
-	health_base = 100
 
 	var/reinforced_material_id
 	var/reinforced_color
+	var/reinforced_alpha = 255
+	var/reinforced_blend = BLEND_DEFAULT
 
 	var/exposed = TRUE //Are pipes and other hidden objects visible?
 
 	var/turf_temperature_mod = 0
 
-	var/list/air_contents = list(
-		"oxygen" = 21,
-		"nitrogen" = 80
-	)
-
-	var/blocks_air = 0x0
-
 	var/image/overlay/stored_water_overlay
 	var/water_reagent
 
-	var/blood_level = 0
+	var/blood_level = 0 //How bloody the turf is. Used for footprints.
+	var/blood_level_hard = 0 //How many blood objects. Used for checking if there is blood.
+	var/blood_color //The color of blood.
 	var/wet_level = 0
 
 	var/drying_add = 0.1
@@ -44,6 +35,8 @@ var/global/list/blood_turfs = list()
 	var/slip_factor = 1
 
 	var/organic = FALSE
+
+	var/map_color = null //The map color. For drawing maps.
 
 /turf/simulated/is_safe_teleport(var/check_contents=TRUE)
 
@@ -65,41 +58,29 @@ var/global/list/blood_turfs = list()
 /turf/simulated/proc/add_wet(var/wet_to_add)
 	var/old_wet = wet_level
 	wet_level += wet_to_add
-	SSturfs.wet_turfs |= src
+	SSturf.wet_turfs |= src
 	if(old_wet <= 0)
 		overlays.Cut()
 		update_overlays()
 	return TRUE
 
-/turf/simulated/Entered(var/atom/movable/O,var/atom/new_loc)
 
-	. = ..()
+/turf/simulated/proc/add_blood_level(var/amount_to_add,var/minimus=0,var/desired_color)
+	if(desired_color && desired_color != blood_color)
+		if(!blood_level || !blood_color)
+			blood_color = desired_color
+		else
+			blood_color = blend_colors(blood_color,desired_color,amount_to_add/(amount_to_add+blood_level))
+	blood_level = max(0,minimus,blood_level+amount_to_add)
+	return TRUE
 
-	if(is_living(O))
-		var/mob/living/L = O
-		if(!L.horizontal && L.move_mod > 1)
-			var/slip_strength = get_slip_strength(L)
-			if(slip_strength >= 4 - L.move_mod)
-				var/obj/item/wet_floor_sign/WFS = locate() in range(1,src)
-				if(!WFS || L.move_mod > 2)
-					L.add_status_effect(SLIP,slip_strength*10,slip_strength*10)
-
-
-/turf/simulated/get_examine_list(var/mob/caller)
-	. = ..()
-	. += div("notice","The health of the object is: [health ? health.health_current : "none"].")
-	. += div("notice","The slippery percentage is [get_slip_strength()*100]%.")
-
-/*
-/turf/simulated/New(var/atom/desired_loc)
-
-	if(real_icon)
-		icon = real_icon
-	if(real_icon_state)
-		icon_state = real_icon_state
-
-	return ..()
-*/
+/turf/simulated/proc/add_blood_level_hard(var/amount_to_add,var/minimus=0)
+	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
+	if(blood_level_hard > 0)
+		SSturf.blood_turfs |= src
+	else
+		SSturf.blood_turfs -= src
+	return TRUE
 
 /turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
 
@@ -124,7 +105,7 @@ var/global/list/blood_turfs = list()
 
 /turf/simulated/Initialize()
 	var/area/A = loc
-	if(!(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION))
+	if(!(A.flags_area & FLAG_AREA_NO_CONSTRUCTION))
 		if(!destruction_turf)
 			if(loc && loc.type != src.type && is_floor(loc))
 				destruction_turf = loc.type
@@ -146,14 +127,10 @@ var/global/list/blood_turfs = list()
 
 	for(var/d in DIRECTIONS_ALL)
 		var/dir_to_text = "[d]"
-		var/turf/T = get_step(src,d)
-
 		calc_list[dir_to_text] = FALSE //Default
-
+		var/turf/T = get_step(src,d)
 		if(!T)
-			calc_list[dir_to_text] = FALSE
 			continue
-
 		if(should_smooth_with(T))
 			calc_list[dir_to_text] = TRUE
 			continue
@@ -205,9 +182,9 @@ var/global/list/blood_turfs = list()
 	if(real_icon_state)
 		icon_state = real_icon_state
 
-	return ..()
+	. = ..()
 
-/turf/simulated/proc/smooth_turfs()
+/turf/simulated/proc/smooth_turf()
 
 	var/list/smooth_code = get_smooth_code()
 
@@ -220,9 +197,9 @@ var/global/list/blood_turfs = list()
 
 	var/icon/I
 
-	if(turf_icon_cache[full_icon_string])
-		I = turf_icon_cache[full_icon_string]
-		saved_icons++
+	if(SSturf.icon_cache[full_icon_string])
+		I = SSturf.icon_cache[full_icon_string]
+		SSturf.saved_icons++
 	else
 		I = new /icon(icon,"1-[nw]")
 
@@ -235,11 +212,7 @@ var/global/list/blood_turfs = list()
 		var/icon/SE = new /icon(icon,"4-[se]")
 		I.Blend(SE,ICON_OVERLAY)
 
-		if(fade)
-			var/icon/A = new /icon(icon,"fade")
-			I.Blend(A,ICON_MULTIPLY)
-
-		turf_icon_cache[full_icon_string] = I
+		SSturf.icon_cache[full_icon_string] = I
 
 	icon = I
 	pixel_x = (TILE_SIZE - I.Width())/2
@@ -252,7 +225,7 @@ var/global/list/blood_turfs = list()
 	if(!corner_icons)
 		return ..()
 
-	smooth_turfs()
+	smooth_turf()
 
 	return TRUE
 
@@ -262,10 +235,10 @@ var/global/list/blood_turfs = list()
 
 	if(reinforced_material_id)
 		var/image/I = new/image(initial(icon),"ref")
-		add_overlay(I)
-
-	if(wet_level)
-		var/image/I = new/image('icons/obj/effects/water.dmi',"wet_floor")
+		I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+		I.color = "#FFFFFF"
+		I.alpha = reinforced_alpha
+		I.blend_mode = reinforced_blend
 		add_overlay(I)
 
 

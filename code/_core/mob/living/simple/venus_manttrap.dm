@@ -15,33 +15,21 @@
 
 	value = 50
 
-	armor_base = list(
-		BLADE = -20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = 40,
-		HEAT = -60,
-		COLD = -20,
-		BIO = -80,
-		RAD = 60,
-		FATIGUE = 60,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/plant
 
 	iff_tag = "Jungle"
 	loyalty_tag = "Jungle"
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/plant
 	blood_volume = 400
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 2
+	level = 12
 
 /mob/living/simple/venus_human_trap/post_death()
 	. = ..()

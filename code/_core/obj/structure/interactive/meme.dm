@@ -9,7 +9,7 @@
 	. = ..()
 	CALLBACK("\ref[src]_look_delete",SECONDS_TO_DECISECONDS(60),src,.proc/callback_delete)
 	if(isturf(loc))
-		start_thinking(src)
+		START_THINKING(src)
 
 /obj/structure/interactive/dont_look/proc/callback_delete()
 	qdel(src)
@@ -25,7 +25,7 @@
 /obj/structure/interactive/dont_look/post_move(var/atom/old_loc)
 	. = ..()
 	if(isturf(loc) && !isturf(old_loc))
-		start_thinking(src)
+		START_THINKING(src)
 
 /obj/structure/interactive/dont_look/proc/do_explode()
 	var/turf/T = get_turf(src)

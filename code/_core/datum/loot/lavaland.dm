@@ -5,7 +5,6 @@
 	loot_table = list(
 		/obj/item/clothing/overwear/armor/drake_armor = 1,
 		/obj/item/weapon/melee/energy/plightbringer = 1,
-		/obj/item/weapon/melee/sacred_flame = 1,
 		/obj/item/weapon/ranged/bow/ashen = 1,
 		/obj/item/weapon/ranged/magic/staff/lavaland = 1,
 		/obj/item/tempering/magazine/spellswap/fireball = 1,
@@ -18,7 +17,7 @@
 		/obj/item/clothing/overwear/hardsuit/hammer_of_war = 1,
 		/obj/item/clothing/overwear/hardsuit/ling = 1,
 		/obj/item/storage/blood_box/duum = 1,
-		/obj/item/container/food/meme_pizza = 1,
+		/obj/item/container/edible/meme_pizza = 1,
 		/obj/item/tempering/magazine/spellswap/chaos = 1,
 		/obj/item/tempering/magazine/spellswap/tesla = 1,
 		/obj/item/weapon/melee/slaughterclaws = 1
@@ -63,7 +62,8 @@
 		/obj/item/herald_mirror = 1,
 		/obj/item/weapon/unarmed/brass_knuckles/mod = 1,
 		/obj/item/tempering/magazine/spellswap/magic_missile = 1,
-		/obj/item/tempering/magazine/spellswap/arcblade = 1
+		/obj/item/tempering/magazine/spellswap/arcblade = 1,
+		/obj/item/weapon/ranged/bullet/revolver/fiendish = 0.2
 	)
 
 /loot/lavaland/hierophant

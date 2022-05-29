@@ -52,17 +52,24 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
-		if(!M.ammo_surplus)
+		var/obj/item/bullet_cartridge/bullet_to_create = M.ammo_surplus
+		if(M.regenerate && M.ammo)
+			bullet_to_create = M.ammo
+		if(!bullet_to_create)
 			caller.to_chat(span("warning","That magazine isn't registered in our system!"))
 			return TRUE
 		var/bullets_to_add = M.bullet_count_max - M.get_ammo_count()
 		if(bullets_to_add <= 0)
 			caller.to_chat(span("warning","\The [M.name] is already full!"))
 			return TRUE
-		var/obj/item/bullet_cartridge/B = new M.ammo_surplus(src.loc)
+		if(M.next_regen > world.time)
+			caller.to_chat(span("warning","That magazine was just filled! Please wait [CEILING(DECISECONDS_TO_SECONDS(M.next_regen-world.time),1)] seconds!"))
+			return TRUE
+		M.next_regen = world.time + SECONDS_TO_DECISECONDS(120)
+		var/obj/item/bullet_cartridge/B = new bullet_to_create(src.loc)
 		INITIALIZE(B)
 		FINALIZE(B)
-		B.add_item_count(bullets_to_add - B.item_count_current,TRUE)
+		B.add_item_count(bullets_to_add - B.amount,TRUE)
 		B.transfer_src_to_magazine(caller,M,location,control,params)
 		caller.to_chat(span("notice","\The [M.name] has been restocked with [bullets_to_add] bullets."))
 		return TRUE

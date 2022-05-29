@@ -24,18 +24,7 @@
 
 	value = 100
 
-	armor_base = list(
-		BLADE = -20,
-		BLUNT = 80,
-		LASER = -20,
-		HEAT = 60,
-		COLD = -60,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/slime
 
 	size = SIZE_ANIMAL
 
@@ -52,6 +41,8 @@
 	blood_type = null
 
 	soul_size = SOUL_SIZE_COMMON
+
+	level = 8
 
 
 /mob/living/simple/slime/create_override_contents(var/mob/living/caller)

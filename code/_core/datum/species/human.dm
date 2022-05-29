@@ -18,6 +18,9 @@
 	default_icon_hair = 'icons/mob/living/advanced/hair/human_hair_head.dmi'
 	default_icon_state_hair = "hair_c"
 
+	default_icon_hair_face = 'icons/mob/living/advanced/hair/human_hair_face.dmi'
+	default_icon_state_hair_face = "none"
+
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,
 		BODY_HEAD = /obj/item/organ/head,

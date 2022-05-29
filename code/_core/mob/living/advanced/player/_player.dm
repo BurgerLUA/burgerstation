@@ -2,6 +2,9 @@ var/global/list/mob/living/advanced/player/all_players = list()
 var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 /mob/living/advanced/player/
+
+	var/unique_pid //Snowflake system that generates a md5 hash of the player on character creation.
+
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
@@ -30,6 +33,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	respawn = FALSE
 
 	has_hard_crit = TRUE
+
+	var/difficulty = DIFFICULTY_NORMAL
 
 	var/currency = 8000
 	var/revenue = 0
@@ -71,8 +76,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	value = 0
 
-	damage_received_multiplier = 0.5
-
 	known_cqc = list(
 		/cqc/sleeping_carp/crashing_wave_kick,
 		/cqc/sleeping_carp/keelhaul,
@@ -105,13 +108,33 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	var/job_rank = 1
 	var/job_next_promotion
 
+	expiration_time = SECONDS_TO_DECISECONDS(180)
+
+var/global/list/difficulty_to_damage_mul = list(
+	DIFFICULTY_EASY = 0.5,
+	DIFFICULTY_NORMAL = 0.75,
+	DIFFICULTY_HARD = 1,
+	DIFFICULTY_EXTREME = 1,
+	DIFFICULTY_SURVIVOR = 1
+)
+
+/mob/living/advanced/player/Finalize()
+	. = ..()
+	setup_difficulty()
+
+/mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+
+	if(attacker.is_player_controlled())
+		return 1
+
+	return difficulty_to_damage_mul[difficulty]
+
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
-	INITIALIZE(click_and_drag_icon)
-	FINALIZE(click_and_drag_icon)
 	last_autosave = world.time
 	all_players += src
-	return ..()
+	ai_attacking_players[src] = list()
+	. = ..()
 
 /mob/living/advanced/player/restore_inventory()
 
@@ -142,6 +165,11 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	return TRUE
 
+
+/mob/living/advanced/player/proc/setup_difficulty()
+	health.update_health_stats()
+	return TRUE
+
 /mob/living/advanced/player/Destroy()
 
 	if(is_saving)
@@ -156,18 +184,20 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 		followers.Cut()
 
 	if(client)
-		client.make_ghost(src.loc ? src.loc : FALLBACK_TURF)
+		var/turf/T = get_turf(src)
+		client.make_ghost(T ? T : FALLBACK_TURF)
 
 	dialogue_target = null
 
-	if(src in equipped_antags)
-		equipped_antags -= src
+	equipped_antags -= src
 
 	if(current_squad)
 		current_squad.remove_member(src)
 		current_squad = null
 
 	all_players -= src
+
+	ai_attacking_players -= src
 
 	active_device = null
 	active_structure = null
@@ -231,6 +261,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
+				if(A.owner.dead || A.owner.qdeleting)
+					SSai.inactive_ai_by_z["[src.loc.z]"] -= k
+					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
@@ -244,26 +277,14 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
 						SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
 					continue
+				if(A.owner.dead || A.owner.qdeleting)
+					SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
+					continue
 				var/dist = get_dist(src,A.owner)
 				if(dist > VIEW_RANGE + ZOOM_RANGE)
 					continue
 				A.set_active(TRUE)
 			ai_steps = 0
-
-/mob/living/advanced/player/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
-	// only prevent dead bodies from being grabbed if person grabbing is antag
-	// unfortunately due to code in datum/damagetype/unarmed/fists.dm, a GRAB! message will be displayed anyway
-	if(dead && istype(grabber, /mob/living/advanced/player/antagonist/))
-		if(istype(src, /mob/living/advanced/player/antagonist/))
-			return ..() // person being grabbed is also antag, allows revs and syndies to grab each other (maybe check IFF?)
-
-		if(messages)
-			var/mob/living/grabberMob = grabber
-			grabberMob.to_chat(span("warning", "Ew! Why would I touch a disgusting [name]!"))
-
-		return FALSE
-	return ..()
-
 
 /mob/living/advanced/player/proc/prestige(var/skill_id)
 	if(!prestige_count[skill_id])

@@ -14,12 +14,12 @@
 	ammo_surplus = /obj/item/bullet_cartridge/pistol_45holy/surplus
 
 	bullet_length_min = 20
-	bullet_length_best = 23
+	bullet_length_best = 24
 	bullet_length_max = 24
 
 	bullet_diameter_min = 11
-	bullet_diameter_best = 11.43
-	bullet_diameter_max = 12
+	bullet_diameter_best = 11.77
+	bullet_diameter_max = 11.77
 
 	size = SIZE_2
 

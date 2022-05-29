@@ -1,18 +1,20 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten
-	name = "\improper T20mm Tungsten Carbine"
+	name = "\improper T20mm carbine"
 	desc = "Shoots movable rods."
 	desc_extended = "A special NanoTrasen Research Team tungesten shooting carbine designed to rival the syndicate energy crossbow. This version shoots tungesten rods instead of energy bolts, is more cumbersome than the energy now, and honestly really doesn't have any resemblence the energy crossbow at all."
-	icon = 'icons/obj/item/weapons/ranged/smg/tungsten.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/tungsten.dmi'
 	icon_state = "inventory"
-	shoot_delay = 1
+	shoot_delay = 4
+
+	tier = 2
 
 	value = 1800
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/syringe.ogg')
 
-	heat_max = 0.02
+	heat_max = 0.1
 
 	bullet_length_min = 15
 	bullet_length_best = 20
@@ -22,12 +24,12 @@
 	bullet_diameter_best = 5
 	bullet_diameter_max = 6
 
-	automatic = TRUE
+	automatic = FALSE
 
 	override_icon_state = TRUE
 
 	size = SIZE_3
-	weight = 8
+	weight = 12
 
 	ai_heat_sensitivity = 1.5
 
@@ -46,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -54,16 +56,14 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 22 - 16
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 20 - 16
 
-	attachment_sight_offset_x = 23 - 16
-	attachment_sight_offset_y = 23 - 16
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 29 - 16
-	attachment_undermount_offset_y = 17 - 16
-
-
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 15 - 16
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5
@@ -74,12 +74,14 @@
 	icon_state = initial(icon_state)
 
 	if(stored_magazine)
-		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*5, 1)]"
+		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*8, 1)]"
+	else
+		icon_state = "[icon_state]_open"
 
-	return ..()
+	. = ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_static_spread()
-	return 0.004
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))

@@ -6,8 +6,10 @@
 	icon_state = "crate"
 
 	anchored = FALSE
-	collision_flags = FLAG_COLLISION_WALKING //Not wall because crawling.
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+
+	collision_flags = FLAG_COLLISION_BARICADE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
 	density = TRUE
 	layer = LAYER_OBJ_CRATE
 
@@ -25,7 +27,7 @@
 
 	can_rotate = FALSE
 
-	size = SIZE_LARGE
+	size = SIZE_HUMAN
 
 	pixel_y = 8
 
@@ -43,13 +45,13 @@
 		M.post_move(old_loc)
 
 
-/obj/structure/interactive/crate/on_crush()
+/obj/structure/interactive/crate/on_crush(var/message=TRUE)
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		M.on_crush()
+		M.on_crush(message)
 
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/crate/Exit(atom/movable/O, atom/newloc)
 
@@ -116,6 +118,8 @@
 				continue
 			if(M.loc != src.loc)
 				continue
+			if(can_prevent_close(M))
+				continue
 			M.Move(src)
 
 	update_sprite()
@@ -157,7 +161,7 @@
 		var/atom/movable/M = k
 		if(can_prevent_close(M))
 			blocking = M
-		break
+			break
 
 	if(blocking)
 		caller.to_chat(span("warning","\The [blocking.name] is preventing \the [src.name] from being closed!"))
@@ -202,6 +206,8 @@
 		var/atom/movable/M = k
 		if(!M.force_move(src.loc))
 			log_error("Warning: [M.get_debug_name()] is stuck in a crate!")
+		else if(is_item(M))
+			M.pixel_y = initial(M.pixel_y) + src.pixel_y
 
 	open = TRUE
 
@@ -210,66 +216,3 @@
 	update_sprite()
 
 	return TRUE
-
-
-/obj/structure/interactive/crate/loot
-	name = "abandoned supply crate"
-	desc = "What could be inside?"
-
-/obj/structure/interactive/crate/loot/Generate()
-
-	switch(rand(1,32))
-		if(1 to 2)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,src.loc)
-			for(var/i=1,i<=rand(6,12),i++)
-				CREATE(/obj/item/magazine/pistol_50,src.loc)
-		if(3)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/magazine/rifle/assault,src.loc)
-			for(var/i=1,i<=rand(6,12),i++)
-				CREATE(/obj/item/magazine/rifle_308,src.loc)
-		if(4 to 6)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,src.loc)
-			for(var/i=1,i<=rand(6,12),i++)
-				CREATE(/obj/item/magazine/shotgun_auto,src.loc)
-		if(7)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/revolver/commander,src.loc)
-			for(var/i=1,i<=rand(6,12),i++)
-				CREATE(/obj/item/magazine/clip/revolver/bullet_44,src.loc)
-		if(8 to 10)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/storage/kit/brute/filled,src.loc)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/storage/kit/burn/filled,src.loc)
-		if(10 to 14)
-			for(var/i=1,i<=rand(2,3),i++)
-				CREATE(/obj/item/weapon/ranged/bullet/revolver/big_game,src.loc)
-			for(var/i=1,i<=rand(6,10),i++)
-				CREATE(/obj/item/bullet_cartridge/revolver_300,src.loc)
-		if(14 to 18)
-			for(var/i=1,i<=rand(4,12),i++)
-				CREATE(/obj/item/magazine/rifle_556,src.loc)
-		if(18 to 22)
-			for(var/i=1,i<=rand(1,3),i++)
-				new /mob/living/advanced/npc/beefman(src.loc)
-		if(22 to 26)
-			for(var/i=1,i<=rand(1,2),i++)
-				CREATE(/obj/item/defib,src.loc)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/storage/kit/filled,src.loc)
-		if(26 to 30)
-			for(var/i=1,i<=rand(1,3),i++)
-				CREATE(/obj/item/container/beaker/bottle/large/health_potion,src.loc)
-			for(var/i=1,i<=rand(1,3),i++)
-				CREATE(/obj/item/container/beaker/bottle/large/stamina_potion,src.loc)
-			for(var/i=1,i<=rand(1,3),i++)
-				CREATE(/obj/item/container/beaker/bottle/large/mana_potion,src.loc)
-		if(30 to 32)
-			for(var/i=1,i<=rand(2,4),i++)
-				CREATE(/obj/item/grenade/timed/explosive/,src.loc)
-
-
-	return ..()

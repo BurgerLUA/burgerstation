@@ -1,4 +1,4 @@
-/obj/projectile/thrown/
+/obj/projectile/thrown
 	name = "thrown object"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -13,7 +13,6 @@
 
 	inaccuracy_modifier = 0
 
-
 /obj/projectile/thrown/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()
@@ -23,9 +22,12 @@
 			CHECK_TICK(75,FPS_SERVER)
 			var/atom/movable/A = k
 			var/atom/hit_wall
-			if(current_loc && current_loc.density)
-				if(!A.Move(current_loc))
-					hit_wall = current_loc
+			if(current_loc && !A.can_enter(current_loc,previous_loc))
+				hit_wall = current_loc
+				A.force_move(previous_loc)
+			else
+				A.force_move(current_loc)
+			animate_hit(A)
 			A.on_thrown(owner,hit_atom,hit_wall)
 
 /obj/projectile/thrown/Destroy()
@@ -33,17 +35,24 @@
 	for(var/k in src.contents)
 		CHECK_TICK(75,FPS_SERVER)
 		var/atom/movable/A = k
-		if(A.qdeleting)
-			log_error("Warning: [A.get_debug_name()] was qdeleting in a thrown projectile.")
-			A.force_move(null)
-			continue
-		A.set_dir(dir)
-		if(is_item(A))
-			var/obj/item/I = A
-			I.drop_item(previous_loc)
+		if(current_loc)
+			A.force_move(current_loc)
 		else
 			A.force_move(previous_loc)
-		if(current_loc)
-			A.Move(current_loc)
+		animate_hit(A)
+		A.on_thrown(owner,null,current_loc)
 
 	. = ..()
+
+/obj/projectile/thrown/proc/animate_hit(var/atom/movable/A)
+	var/matrix/M = A.get_base_transform()
+	var/new_angle = -ATAN2(vel_x,vel_y) + 90
+	M.Turn(new_angle)
+	M.Translate(pixel_x % 32,pixel_y % 32)
+	A.transform = M
+	if(is_living(A))
+		var/mob/living/L = A
+		L.handle_transform(TRUE)
+	else
+		animate(A,transform=A.get_base_transform(),easing=CIRCULAR_EASING|EASE_OUT,time=4)
+	A.set_dir(dir)

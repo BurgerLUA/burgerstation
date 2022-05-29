@@ -1,5 +1,4 @@
 /damagetype/unarmed/fists/shock_touch
-	name = "shocking fists"
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -37,7 +36,7 @@
 	attack_delay = 12*0.5
 	attack_delay_max = 12
 
-/damagetype/unarmed/fists/shock_touch/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/unarmed/fists/shock_touch/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	. = ..()
 

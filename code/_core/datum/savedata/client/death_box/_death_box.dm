@@ -46,8 +46,8 @@ var/global/list/ckey_to_death_box_data = list()
 		for(var/j in dropped_items)
 			sleep(-1)
 			var/obj/item/I = j
-			data_list["inventory"] += list(I.save_item_data(TRUE))
-			data_list["value"] += I.get_value()
+			data_list["inventory"] += list(I.save_item_data(P))
+			data_list["value"] += CEILING(I.get_value(),1)
 			total_items_saved++
 		if(length(data_list["inventory"]))
 			DB.loaded_data += list(data_list)
@@ -133,8 +133,7 @@ var/global/list/ckey_to_death_box_data = list()
 	for(var/i=1,i<length(valid_choices[selection]["inventory"]),i++)
 		var/list/k = valid_choices[selection]["inventory"][i]
 		var/obj/item/I = load_and_create(P,k,T)
-		if(I)
-			created_box.add_to_inventory(null,I,FALSE,TRUE,silent=TRUE)
+		if(I) created_box.add_to_inventory(null,I,FALSE,TRUE,silent=TRUE)
 	FINALIZE(created_box)
 
 	P.put_in_hands(created_box)

@@ -8,12 +8,32 @@ obj/structure/interactive/bed
 	var/pixel_offset_x = 0
 	var/pixel_offset_y = 0
 
-	layer = LAYER_MOB_BELOW
+	plane = PLANE_OBJ
 	var/opened_time = 0
 
 	bullet_block_chance = 50
 
 	interaction_flags = FLAG_INTERACTION_LIVING
+
+	pixel_y = 4
+
+	density = TRUE
+
+/obj/structure/interactive/bed/Crossed(atom/movable/O)
+	. = ..()
+	if(loc && src.z != 0 && is_living(O))
+		var/mob/living/L = O
+		if(L.horizontal)
+			var/found = FALSE
+			for(var/mob/living/L2 in loc.contents)
+				if(L == L2)
+					continue
+				if(!L2.horizontal)
+					continue
+				L2.add_disease(/disease/hrp)
+				found = TRUE
+			if(found)
+				L.add_disease(/disease/hrp)
 
 /obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
 
@@ -58,35 +78,37 @@ obj/structure/interactive/bed/clicked_on_by_object(var/mob/caller,var/atom/objec
 
 	return FALSE
 
-obj/structure/interactive/bed/PostInitialize()
+obj/structure/interactive/bed/Finalize()
 	. = ..()
 	update_sprite()
 
-obj/structure/interactive/bed/padded
-	name = "padded bed"
-
-
-obj/structure/interactive/bed/padded/update_overlays()
-
+obj/structure/interactive/bed/sheet/Generate()
 	. = ..()
+	var/obj/item/bedsheet/S = new(src.loc)
+	INITIALIZE(S)
+	GENERATE(S)
+	FINALIZE(S)
 
-	var/image/sheets = new(icon,"bed_padding")
-	sheets.color = secondary_color
-	add_overlay(sheets)
+
+/obj/structure/interactive/bed/double
+	name = "double bed"
+	icon_state = "bed_double"
 
 
-/*
+/obj/structure/interactive/bed/double/Generate()
+	. = ..()
+	icon_state = "bed_double_top"
+	pixel_offset_y = 20
+	var/obj/structure/interactive/bed/B = new(src.loc)
+	B.icon_state = "bed_double_bottom"
+	INITIALIZE(B)
+	GENERATE(B)
+	FINALIZE(B)
 
-obj/structure/interactive/bed/padded/update_icon()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	var/icon/I = new(icon,icon_state)
-	var/icon/I2 = new(icon,"bed_padding")
-
-	I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-*/
-
+/obj/structure/interactive/bed/double/sheet/Generate()
+	. = ..()
+	var/obj/item/bedsheet/S = new(src.loc)
+	S.icon_state = "sheetwhite_double"
+	INITIALIZE(S)
+	GENERATE(S)
+	FINALIZE(S)

@@ -17,11 +17,7 @@
 
 	stun_angle = 180
 
-	armor_base = list(
-		BIO = INFINITY,
-		RAD = INFINITY,
-		ION = INFINITY
-	)
+	armor = /armor/insect
 
 	size = SIZE_CRITTER
 
@@ -34,6 +30,8 @@
 	blood_volume = 50
 
 	soul_size = SOUL_SIZE_COMMON
+
+	level = 8
 
 
 /mob/living/simple/glockroach/post_death()

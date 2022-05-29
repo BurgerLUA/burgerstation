@@ -1,6 +1,4 @@
 /damagetype/ranged/magic/cult
-	name = "cult magic"
-
 	attack_damage_base = list(
 		DARK = 60*0.25
 	)

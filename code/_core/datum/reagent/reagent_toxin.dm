@@ -13,20 +13,21 @@
 	particle_size = 0.6
 
 /reagent/toxin/New(var/desired_loc)
+	blood_toxicity_multiplier = damage_per_unit*5
 	value *= 1+(damage_per_unit*3)
 	return ..()
 
 /reagent/toxin/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	plant?.health?.adjust_loss_smart(tox=-.*damage_per_unit*2)
+	plant?.health?.adjust_loss_smart(tox=-.*damage_per_unit*2*multiplier)
 
 /reagent/toxin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.tox_regen_buffer -= .*damage_per_unit*0.75
+	owner.tox_regen_buffer -= .*damage_per_unit*0.75*multiplier
 
 /reagent/toxin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.tox_regen_buffer -= .*damage_per_unit
+	owner.tox_regen_buffer -= .*damage_per_unit*multiplier
 
 /reagent/toxin/angel_toxin
 	name = "angel toxin"
@@ -79,9 +80,9 @@
 
 	particle_size = 0.2
 
-/reagent/toxin/zombie_toxin
-	name = "zombie toxin"
-	desc = "Toxins from a zombie. Doesn't go away when metabolized in the bloodstream and deals constant toxic damage based on the volume."
+/reagent/toxin/blob_toxin
+	name = "blob toxin"
+	desc = "Toxins from a zombie. Stays in the bloodstream even when metabolized unless treated with an antidote."
 
 	damage_per_unit = 1
 
@@ -123,3 +124,14 @@
 	flavor = "venus"
 
 	particle_size = 1
+
+
+/reagent/toxin/blob_spore
+	name = "blob spores"
+	desc = "Don't breathe this in."
+
+	damage_per_unit = 2
+
+	particle_size = 0.8
+
+	color = "#A06300"

@@ -1,5 +1,4 @@
 /damagetype/melee/club/pickaxe/
-	name = "pickaxe"
 
 	impact_sounds = list(
 		'sound/weapons/pickaxe/picaxe1.ogg',

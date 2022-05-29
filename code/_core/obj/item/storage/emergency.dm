@@ -5,8 +5,8 @@
 
 
 /obj/item/storage/emergency/fill_inventory()
-	new /obj/item/container/medicine/bandage(src)
-	new /obj/item/container/medicine/ointment(src)
-	new /obj/item/container/pill/dylovene(src)
-	new /obj/item/container/syringe/epinephrine(src)
-	return ..()
+	new /obj/item/container/healing/bandage(src)
+	new /obj/item/container/healing/ointment(src)
+	new /obj/item/container/edible/pill/dylovene(src)
+	new /obj/item/container/syringe/hypodermic/epinephrine(src)
+	. = ..()

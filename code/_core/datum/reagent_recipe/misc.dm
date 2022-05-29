@@ -1,5 +1,6 @@
 /reagent_recipe/chemistry/
 	category = "Chemistry"
+	results = list()
 
 /reagent_recipe/chemistry/sodium_chloride
 	name = "Sodium Chloride"
@@ -43,24 +44,6 @@
 		/reagent/carbon = 480
 	)
 
-
-/reagent_recipe/chemistry/sulfur_dioxide/alt
-
-	name = "Sulfur Dioxide"
-
-	required_reagents = list(
-		/reagent/sulfur = 5,
-		/reagent/fuel/oil/carbon = 1
-	)
-
-	results = list(
-		/reagent/toxin/sulfur_dioxide = 5
-	)
-
-	required_temperature_min = list(
-		/reagent/fuel/oil/carbon = 480
-	)
-
 /reagent_recipe/chemistry/space_cleaner
 
 	name = "Space Cleaner"
@@ -79,7 +62,7 @@
 	name = "Space Lube"
 
 	required_reagents = list(
-		/reagent/oxygen = 1,
+		/reagent/fuel/oxygen = 1,
 		/reagent/silicon = 1,
 		/reagent/potassium = 1,
 	)
@@ -95,7 +78,7 @@
 	required_reagents = list(
 		/reagent/fuel/oil = 1,
 		/reagent/fuel/welding = 1,
-		/reagent/oxygen = 1
+		/reagent/fuel/oxygen = 1
 	)
 
 	results = list(
@@ -135,7 +118,7 @@
 	name = "Saltpetre"
 
 	required_reagents = list(
-		/reagent/oxygen = 3,
+		/reagent/fuel/oxygen = 3,
 		/reagent/potassium = 1,
 		/reagent/nitrogen = 1
 	)
@@ -151,8 +134,7 @@
 
 	required_reagents = list(
 		/reagent/sodium = 1,
-		/reagent/fuel/hydrogen = 1,
-		/reagent/oxygen = 1
+		/reagent/fuel/welding = 1
 	)
 
 	results = list(
@@ -167,10 +149,37 @@
 
 	required_reagents = list(
 		/reagent/chlorine = 1,
-		/reagent/oxygen = 1,
+		/reagent/fuel/oxygen = 1,
 		/reagent/nutrition/water = 1
 	)
 
 	results = list(
-		/reagent/hydrogen_peroxide  = 3
+		/reagent/hydrogen_peroxide = 3
 	)
+
+
+/reagent_recipe/chemistry/sugar_breakdown_01
+	name = "Sugar into Glucose"
+
+	required_reagents = list(
+		/reagent/nutrition/sugar = 1,
+		/reagent/enzymes = 1
+	)
+
+	results = list(
+		/reagent/nutrition/sugar/glucose = 1
+	)
+
+/reagent_recipe/chemistry/sugar_breakdown_02
+	name = "Sugar into Glucose"
+
+	required_reagents = list(
+		/reagent/nutrition/sugar/cane = 1,
+		/reagent/enzymes = 1
+	)
+
+	results = list(
+		/reagent/nutrition/sugar/glucose = 1
+	)
+
+	secret = TRUE

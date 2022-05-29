@@ -22,10 +22,6 @@
 
 	var/list/buttons_to_add = list(
 		/obj/hud/button/vehicle/eject,
-		/obj/hud/button/vehicle/weapon,
-		/obj/hud/button/vehicle/weapon/right,
-		/obj/hud/button/vehicle/ammo_display,
-		/obj/hud/button/vehicle/ammo_display/right
 	)
 
 	blood_type = null
@@ -40,14 +36,12 @@
 		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
 
-
-
-/mob/living/vehicle/on_crush()
+/mob/living/vehicle/on_crush(var/message=TRUE)
 
 	for(var/k in passengers)
 		var/mob/living/advanced/A = k
 		exit_vehicle(A,loc)
-		A.on_crush()
+		A.on_crush(message)
 
 	qdel(src)
 
@@ -152,15 +146,6 @@
 					caller.to_chat(span("notice","You choose not to remove anything."))
 				return TRUE
 
-			/*
-			if(istype(I,/obj/item/weapon/ranged/energy/mech))
-				INTERACT_CHECK
-				INTERACT_CHECK_OBJECT
-				INTERACT_DELAY(5)
-				if(can_attach_weapon(caller,I)) attach_equipment(caller,I)
-				return TRUE
-			*/
-
 	if(is_inventory(object))
 		if(!can_enter_vehicle(caller))
 			return TRUE
@@ -170,22 +155,13 @@
 
 	return ..()
 
-/mob/living/vehicle/can_attack(var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(!(get_dir(src,victim) & dir))
-		return FALSE
-
-	return ..()
-
-
 /mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(is_hud(object))
 		return ..()
 
-	if(!params || !length(params))
-		params["right"] = rand(0,1)
-		params["left"] = rand(0,1)
+	if(!length(params))
+		params = list("right" = rand(0,1), "left" = rand(0,1))
 
 	if(params["left"])
 		if(length(equipment) >= 1)
@@ -206,15 +182,15 @@
 	if(ai)
 		return ..()
 
-	if(length(passengers) && passengers[1].move_dir && move_delay <= 0)
+	if(length(passengers) && passengers[1].move_dir && next_move <= 0)
 		var/final_movement_delay = get_movement_delay()
-		move_delay = round(max(final_movement_delay,move_delay + final_movement_delay),0.1)
-		glide_size = step_size/move_delay
+		next_move = round(max(final_movement_delay,next_move + final_movement_delay),0.1)
+		glide_size = step_size/next_move
 		Move(get_step(src,passengers[1].move_dir),passengers[1].move_dir)
 		return TRUE
 
 	if(adjust_delay)
-		move_delay = move_delay - adjust_delay
+		next_move = max(0,next_move - adjust_delay)
 
 	return FALSE
 
@@ -254,8 +230,7 @@
 	L.invisibility = 100
 	L.update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	add_buttons(L)
-	L.show_hud(FALSE,FLAGS_HUD_ALL,FLAGS_HUD_WIDGET|FLAGS_HUD_SPECIAL,speed=0)
-	L.show_hud(TRUE,FLAGS_HUD_VEHICLE,speed=1)
+	L.show_hud(TRUE,FLAG_HUD_VEHICLE,speed=SECONDS_TO_DECISECONDS(1))
 	update_sprite()
 
 	return ..()
@@ -283,8 +258,7 @@
 	L.has_footsteps = initial(L.has_footsteps)
 	L.update_collisions(initial(L.collision_flags),initial(L.collision_bullet_flags))
 	remove_buttons(L)
-	L.show_hud(FALSE,FLAGS_HUD_VEHICLE,speed=0)
-	L.show_hud(TRUE,FLAGS_HUD_ALL,FLAGS_HUD_SPECIAL,speed=0)
+	L.show_hud(FALSE,FLAG_HUD_VEHICLE,speed=0)
 	update_sprite()
 
 	return ..()
@@ -301,10 +275,8 @@
 		caller.to_chat(span("warning","You can't get inside \the [src.name]!"))
 		return FALSE
 
-	var/mob/living/advanced/A = caller
-
-	if(A.iff_tag != iff_tag)
-		A.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
+	if(!check_iff(caller,src,hostile=FALSE))
+		caller.to_chat(span("warning","ERROR: Unrecognized IFF tag."))
 		return FALSE
 
 	return TRUE

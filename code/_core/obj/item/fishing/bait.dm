@@ -5,8 +5,7 @@
 	size = SIZE_0
 	weight = 0.5
 
-	item_count_current = 5
-	item_count_max = 25
+	amount_max = 25
 
 	polymorphs = list(
 		"base" = "#FFFFFF",
@@ -25,7 +24,7 @@
 		"base" = "#3269A8",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/hazard/water/sea
+	valid_turf = /turf/simulated/liquid/water/sea
 	value = 50
 
 /obj/item/fishing/bait/sea/infinite
@@ -34,8 +33,7 @@
 	desc_extended = "Bait for sea fishing. Will get you some salty fish, and will never be consumed on successful catches."
 	value = 700
 	nice_bait = TRUE
-	item_count_current = 1
-	item_count_max = 1
+	amount_max = 1
 
 
 //River
@@ -47,7 +45,7 @@
 		"base" = "#36A2B5",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/hazard/water
+	valid_turf = /turf/simulated/liquid/water
 	value = 50
 
 /obj/item/fishing/bait/river/infinite
@@ -56,8 +54,7 @@
 	desc_extended = "Bait for river fishing. Will get you fresh fish, and will never be consumed on successful catches."
 	value = 700
 	nice_bait = TRUE
-	item_count_current = 1
-	item_count_max = 1
+	amount_max = 1
 
 //Lava
 /obj/item/fishing/bait/lava
@@ -68,6 +65,6 @@
 		"base" = "#DE6A21",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/hazard/lava/
+	valid_turf = /turf/simulated/liquid/lava/
 
 	value = 250

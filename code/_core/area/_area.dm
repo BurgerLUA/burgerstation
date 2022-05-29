@@ -1,10 +1,10 @@
 /area/
-	name = "AREA ERROR"
+	name = "Unknown Area"
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
-	plane = PLANE_AREA
-	invisibility = 101
+	plane = PLANE_AREA //This should never be changed. Just use interior=TRUE
+	alpha = 150
 
 	mouse_opacity = 0
 
@@ -15,21 +15,17 @@
 	var/area_identifier = "Fallback" //The identifier of the area. Useful for simulating seperate levels on the same level, without pinpointer issues. Also used by telecomms.
 	var/trackable = FALSE //Trackable area by the game.
 
-	var/map_color_r = rgb(255,0,0,255)
-	var/map_color_g = rgb(0,255,0,255)
-	var/map_color_b = rgb(0,0,255,255)
-	var/map_color_a = rgb(0,0,0,255)
+	var/map_color //The area's map color. Leave blank to refer to the turf instead.
 
 	var/ambient_sound
 	var/list/random_sounds = list()
 	var/list/tracks = list()
 
+	var/weather = WEATHER_NONE
 	var/hazard //The id of the hazard
 
 	var/sunlight_freq = 0
 	var/sunlight_color = "#FFFFFF"
-
-	var/weather = WEATHER_NONE //Optional weather
 
 	var/ambient_temperature = T0C + 20
 
@@ -37,27 +33,52 @@
 
 	var/turf/destruction_turf //The destruction turf of the area, if any.
 
-	var/list/turf/sunlight_turfs = list()
-
 	var/safe_storage = FALSE //Set to true if items don't ever delete due to chunk cleaning. This means mobs don't get spawned as well.
 	var/interior = FALSE
 
 	var/average_x = 0
 	var/average_y = 0
 
-	var/allow_ghosts = TRUE //Set to false to prevent a ghost from teleporting to this location.
+	var/allow_ghost = FALSE //Allow ghosts to use this area if one spawns in it.
 
+	var/flags_generation = FLAG_GENERATION_NONE
+
+	//Power Code
+	var/default_state_power_lights = OFF
+	var/default_state_power_machines = OFF
+	var/default_state_power_doors = OFF
+
+
+	var/no_apc = FALSE //Used for error checking.
+	var/requires_power = FALSE //Set to true if everything is this area requires power.
+
+	var/obj/structure/interactive/power/apc/apc //The area's APC, if any.
+
+	var/power_draw = 0
+
+	var/enable_power_doors = OFF
+	var/enable_power_machines = OFF
+	var/enable_power_lights = OFF
+
+	var/list/obj/structure/interactive/door/powered_doors
+	var/list/obj/structure/interactive/powered_machines
+	var/list/obj/structure/interactive/lighting/powered_lights
+
+	var/list/obj/structure/interactive/light_switch/light_switches
+
+	var/list/obj/particle_managers = list()
 
 /area/proc/is_space()
 	return FALSE
 
 /area/Destroy()
 
-	if(sunlight_turfs)
-		sunlight_turfs.Cut()
-
 	SSarea.all_areas -= src.type
 	SSarea.areas_by_identifier[area_identifier] -= src
+
+	powered_doors.Cut()
+	powered_machines.Cut()
+	powered_lights.Cut()
 
 	return ..()
 
@@ -69,11 +90,97 @@
 
 	return TRUE
 
+/area/New(var/desired_loc)
+
+	if(requires_power)
+		powered_doors = list()
+		powered_machines = list()
+		powered_lights = list()
+		light_switches = list()
+
+	if(interior || src.weather)
+		plane = PLANE_AREA_INTERIOR
+	else
+		plane = PLANE_AREA_EXTERIOR
+
+	if(sunlight_freq > 1) //Odd sunlight freqs greater than 1 must be even.
+		sunlight_freq = CEILING(sunlight_freq,2)
+
+var/global/list/possible_dirty_floor = list(
+	/obj/effect/cleanable/tile_rot = 100,
+	/obj/effect/cleanable/blood/dried_random = 20,
+	/obj/effect/cleanable/blood/splatter/grease = 10,
+	/obj/effect/cleanable/scorch = 5,
+	/obj/effect/cleanable/cobweb = 10
+)
+
+var/global/list/possible_dirty_wall = list(
+	/obj/effect/cleanable/rust = 100
+)
+
+var/global/list/possible_trash = list(
+	/obj/item/trash/random = 100
+)
+
+/area/Generate()
+	. = ..()
+	if(flags_area & FLAG_AREA_DIRTY)
+		for(var/turf/simulated/S in src.contents)
+			var/obj/structure/table/window/W = locate() in S.contents
+			if(W) continue
+			if(prob(80))
+				var/obj/effect/E
+				if(S.density)
+					E = pickweight(possible_dirty_wall)
+				else
+					E = pickweight(possible_dirty_floor)
+				E = new E(S)
+			if(!S.density && prob(30))
+				var/obj/item/I = pickweight(possible_trash)
+				I = new I(S)
+
+
+
 /area/Initialize()
 
-	if(weather)
-		icon = 'icons/area/weather.dmi'
-		icon_state = weather
+	SSarea.all_areas[src.type] = src
+	if(src.area_identifier)
+		if(!SSarea.areas_by_identifier[src.area_identifier])
+			SSarea.areas_by_identifier[src.area_identifier] = list()
+		SSarea.areas_by_identifier[src.area_identifier] += src
+
+	. = ..()
+
+	if(plane == PLANE_AREA_EXTERIOR)
+		icon = 'icons/area/area.dmi'
+		icon_state = "black"
+		invisibility = 0
+	else
+		invisibility = 101
+
+	alpha = 255
+
+	if(length(src.random_sounds))
+		SSarea.areas_ambient += src
+
+	if(ENABLE_WEATHERGEN && src.weather)
+		src.invisibility = 0
+		src.alpha = 0
+		switch(src.weather)
+			if(WEATHER_SNOW)
+				SSarea.areas_snow += src
+			if(WEATHER_RAIN)
+				SSarea.areas_rain += src
+			if(WEATHER_SANDSTORM)
+				SSarea.areas_sandstorm += src
+			if(WEATHER_VOLCANIC)
+				SSarea.areas_volcanic += src
+
+/area/Finalize()
+	. = ..()
+	generate_average()
+
+/area/proc/generate_average()
 
 	var/area_count = 0
 	average_x = 0
@@ -92,66 +199,36 @@
 		average_x = CEILING(average_x/area_count,1)
 		average_y = CEILING(average_y/area_count,1)
 
-	return ..()
+	return TRUE
 
 /area/proc/setup_sunlight(var/turf/T)
 
-	if(sunlight_freq == 0)
+	if(sunlight_freq <= 0)
 		return FALSE
-
-	if(T.desired_light_power && T.desired_light_range)
-		return FALSE //Already has a light.
 
 	if(T.setup_turf_light(sunlight_freq))
 		return TRUE
 
-	if((T.x % sunlight_freq) || (T.y % sunlight_freq))
-		return FALSE
+	if(sunlight_freq > 1)
+		if(T.x % sunlight_freq)
+			return FALSE
+		var/bonus = !(T.x % (sunlight_freq*2)) && sunlight_freq > 1 ? sunlight_freq*0.5 : 0
+		T.name = "[T.x].[T.y]: [bonus]."
+		if((T.y+bonus) % sunlight_freq)
+			return FALSE
 
 	T.desired_light_power = 1
-	T.desired_light_range = sunlight_freq
+	T.desired_light_range = 1 + sunlight_freq
 	T.desired_light_color = sunlight_color
 	T.update_atom_light()
 
 	return TRUE
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
-
-	if(is_player(enterer))
-
-		var/mob/living/advanced/player/P = enterer
-		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
-			P.see_invisible = INVISIBILITY_NO_PLAYERS
-
-	if(ENABLE_TRACKS && ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
-		var/mob/M = enterer
-		if(M.client && length(tracks) && (!M.client.next_music_track || M.client.next_music_track <= world.time))
-			play_music_track(pick(tracks),M.client)
-
-	if(enterer.area != src)
-		if(ismob(enterer) && !istype(enterer,/mob/abstract/observer/menu))
-			var/mob/M = enterer
-			if(M.client)
-				if(!ambient_sound)
-					stop_ambient_sounds(M)
-				else if(!enterer.area || enterer.area.ambient_sound != ambient_sound)
-					play_ambient_sound(ambient_sound,list(M),environment = sound_environment,loop = TRUE)
-
-		enterer.area = src
-
-		return TRUE
-
 	return FALSE
 
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
-
-	if(is_player(exiter))
-		var/mob/living/advanced/player/P = exiter
-		if(flags_area & FLAGS_AREA_SINGLEPLAYER)
-			P.see_invisible = initial(P.see_invisible)
-
 	return TRUE
-
 
 /area/proc/smash_all_lights()
 	for(var/obj/structure/interactive/lighting/T in src.contents)
@@ -161,28 +238,135 @@
 		T.on_destruction(null,TRUE)
 	return TRUE
 
-/area/proc/toggle_all_lights()
-	var/obj/structure/interactive/light_switch/LS = locate() in src.contents
-	if(LS && LS.on)
-		LS.toggle()
-		return TRUE
-	return FALSE
+/area/proc/apc_process()
 
-/area/proc/sync_lights(var/desired_state = TRUE)
+	//Priority:
+	//Doors
+	//Machines
+	//Lights
 
-	for(var/obj/structure/interactive/lighting/L in src.contents)
-		if(!L.lightswitch)
+	//Getting power.
+	var/available_charge = 0
+	var/max_charge = 1
+	if(apc && apc.cell)
+		available_charge = apc.cell.charge_current
+		max_charge = apc.cell.charge_max
+
+	//Doors
+	if(enable_power_doors & AUTO)
+		if(available_charge/max_charge >= 0.1)
+			if(!(enable_power_doors & ON)) toggle_power_doors(ON|AUTO)
+		else if(!(enable_power_doors & OFF))
+			toggle_power_doors(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_doors & OFF))
+		toggle_power_doors(OFF|AUTO)
+
+	//Machines
+	if(enable_power_machines & AUTO)
+		if(available_charge/max_charge >= 0.2)
+			if(!(enable_power_machines & ON)) toggle_power_machines(ON|AUTO)
+		else if(!(enable_power_machines & OFF))
+			toggle_power_machines(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_machines & OFF))
+		toggle_power_machines(OFF|AUTO)
+
+	//Lights
+	if(enable_power_lights & AUTO)
+		if(available_charge/max_charge >= 0.3)
+			if(!(enable_power_lights & ON)) toggle_power_lights(ON|AUTO)
+		else if(!(enable_power_lights & OFF))
+			toggle_power_lights(OFF|AUTO)
+	else if(available_charge <= 0 && !(enable_power_lights & OFF))
+		toggle_power_lights(OFF|AUTO)
+
+	//Removing power.
+	if(apc && apc.cell)
+		apc.cell.charge_current = max(0,apc.cell.charge_current - power_draw)
+
+	return TRUE
+
+
+/area/proc/toggle_power_doors(var/enable=ON|AUTO,var/force=FALSE)
+
+	if(!requires_power)
+		CRASH("Called toggle_power_doors on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
+
+	enable_power_doors = enable
+
+	for(var/k in powered_doors)
+		var/obj/structure/interactive/door/D = k
+		if(!D.apc_powered)
 			continue
-		if(L.on == desired_state)
+		if(D.powered == (enable_power_doors & ON ? TRUE : FALSE) && !force)
 			continue
-		L.on = desired_state
+		D.powered = enable_power_doors & ON ? TRUE : FALSE
+		if(D.powered)
+			D.update_power_draw(D.get_power_draw())
+		else
+			D.update_power_draw(0)
+		D.update_sprite()
+
+	return TRUE
+
+
+/area/proc/toggle_power_machines(var/enable=ON|AUTO,var/force=FALSE)
+
+	if(!requires_power)
+		CRASH("Called toggle_power_machines on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
+
+	enable_power_machines = enable
+
+	for(var/k in powered_machines)
+		var/obj/structure/interactive/P = k
+		if(!P.apc_powered)
+			continue
+		if(P.powered == (enable_power_machines & ON ? TRUE : FALSE) && !force)
+			continue
+		P.powered = enable_power_machines & ON ? TRUE : FALSE
+		if(P.powered)
+			P.update_power_draw(P.get_power_draw())
+		else
+			P.update_power_draw(0)
+		P.update_sprite()
+
+	return TRUE
+
+/area/proc/toggle_power_lights(var/enable=ON|AUTO,var/force=FALSE)
+
+	if(!requires_power)
+		CRASH("Called toggle_power_lights on an [src.type] that doesn't require power.")
+
+	if((enable & ON) && (enable & OFF))
+		enable &= ~OFF
+
+	enable_power_lights = enable
+
+	for(var/k in powered_lights)
+		var/obj/structure/interactive/lighting/L = k
+		if(!L.apc_powered)
+			continue
+		if(L.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
+			continue
+		L.on = enable_power_lights & ON ? TRUE : FALSE
+		if(L.on)
+			L.update_power_draw(L.get_power_draw())
+		else
+			L.update_power_draw(0)
 		L.update_atom_light()
 		L.update_sprite()
 
-	for(var/obj/structure/interactive/light_switch/LS in src.contents)
-		if(LS.on == desired_state)
+	for(var/k in light_switches)
+		var/obj/structure/interactive/light_switch/LS = k
+		if(LS.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
 			continue
-		LS.on = desired_state
-		LS.update_sprite()
+		LS.on = enable_power_lights & ON ? TRUE : FALSE
+		LS.update_atom_light()
+		LS.update_icon()
 
 	return TRUE

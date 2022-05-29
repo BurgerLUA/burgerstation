@@ -6,7 +6,7 @@ var/global/list/all_fog = list()
 	desc_extended = "A completely and utterly arbitrary anomaly of nature that prevents living beings from passing it."
 	icon = 'icons/obj/effects/fog.dmi'
 	icon_state = "fog"
-	plane = PLANE_AREA
+	plane = PLANE_EFFECT
 	layer = 100
 	alpha = 255
 

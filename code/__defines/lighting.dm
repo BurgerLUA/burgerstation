@@ -2,19 +2,16 @@
 
 #define LIGHTING_HEIGHT         1 // height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
 #define LIGHTING_Z_FACTOR       10 // Z diff is multiplied by this and LIGHTING_HEIGHT to get the final height of a light source. Affects how much darker A Z light gets with each level transitioned.
-#define LIGHTING_ROUND_VALUE    5 / 255 //Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
+#define LIGHTING_ROUND_VALUE    0.005 //Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
 
 #define LIGHTING_ICON 'icons/lighting_overlay.dmi' // icon used for lighting shading effects
 #define LIGHTING_BASE_ICON_STATE "matrix"	// icon_state used for normal color-matrix based lighting overlays.
-#define LIGHTING_STATION_ICON_STATE "tubedefault"	// icon_state used for lighting overlays that are just displaying standard station lighting.
 #define LIGHTING_DARKNESS_ICON_STATE "black"	// icon_state used for lighting overlays with no luminosity.
-#define LIGHTING_TRANSPARENT_ICON_STATE "blank"
+#define LIGHTING_TRANSPARENT_ICON_STATE "blank" //Actually white.
 
 #define LIGHTING_SOFT_THRESHOLD 0.01 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
-#define LIGHTING_BLOCKED_FACTOR 0.5	// How much the range of a directional light will be reduced while facing a wall.
-
-// If defined, instant updates will be used whenever server load permits. Otherwise queued updates are always used.
-//#define USE_INTELLIGENT_LIGHTING_UPDATES
+#define LIGHTING_BLOCKED_FACTOR 0.75 // How much the range of a directional light will be reduced while facing a wall.
+#define LIGHTING_BLOCKED_FACTOR_TURF 0.5
 
 #define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && T:dynamic_lighting && T:loc:dynamic_lighting)
 // mostly identical to above, but doesn't make sure T is valid first. Should only be used by lighting code.
@@ -29,7 +26,7 @@
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
-		0, 0, 0, 0.98  \
+		0, 0, 0, 1  \
 	)               \
 
 // Helpers so we can (more easily) control the colour matrices.
@@ -62,9 +59,9 @@
 
 // This color of overlay is very common - most of the station is this color when lit fully.
 // Tube lights are a bluish-white, so we can't just assume 1-1-1 is full-illumination.
-#define LIGHTING_DEFAULT_TUBE_R 0.96
-#define LIGHTING_DEFAULT_TUBE_G 1
-#define LIGHTING_DEFAULT_TUBE_B 1
+//#define LIGHTING_DEFAULT_TUBE_R 0.96
+//#define LIGHTING_DEFAULT_TUBE_G 1
+//#define LIGHTING_DEFAULT_TUBE_B 1
 
 //Some defines to generalise colours used in lighting.
 //Important note on colors. Colors can end up significantly different from the basic html picture, especially when saturated

@@ -4,6 +4,15 @@
 	layer = LAYER_FLOOR_PIPE
 	under_tile = TRUE
 
+	plane = PLANE_AREA-2 //Layered above stuff in maps.
+
+	alpha = 100
+
+/obj/structure/interactive/disposals/pipe/New(var/desired_loc)
+	. = ..()
+	alpha = 255
+
+
 /obj/structure/interactive/disposals/pipe/get_connections()
 
 	. = list()
@@ -27,14 +36,13 @@
 
 	if(disposals_count > 1)
 		log_error("Multiple disposals pipes ([disposals_count]) detected at [src.loc.get_debug_name()].")
+		qdel(src)
 
 	return ..()
-
-
 
 /obj/structure/interactive/disposals/pipe/New(var/desired_loc)
 	plane = PLANE_FLOOR
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/disposals/pipe/ending
 	name = "connector disposals pipe"

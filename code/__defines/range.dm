@@ -1,4 +1,4 @@
-#define VIEW_RANGE 11
+#define VIEW_RANGE 10
 #define ZOOM_RANGE 5
 
 #define WHISPER_RANGE 2
@@ -13,3 +13,7 @@
 #define AI_DETECTION_RANGE_COMBAT VIEW_RANGE + ZOOM_RANGE*0.25
 
 #define BOSS_RANGE VIEW_RANGE + ZOOM_RANGE*2 //If you're out of this range, you're out of the boss fight.
+
+#define SCREEN_SIZE (TILE_SIZE*(VIEW_RANGE*2 + 1))
+
+#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.

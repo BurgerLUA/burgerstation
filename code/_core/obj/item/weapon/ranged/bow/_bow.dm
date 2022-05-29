@@ -21,6 +21,7 @@
 
 	override_icon_state = TRUE
 
+	ranged_damage_type = /damagetype/ranged/bow/
 
 	heat_max = 0.03
 
@@ -35,6 +36,7 @@
 	size = SIZE_3
 	weight = 10
 
+	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 
 /obj/item/weapon/ranged/bow/post_move(var/atom/old_loc)
@@ -77,7 +79,7 @@
 	if(!is_advanced(caller))
 		return ..()
 	current_shooter = caller
-	start_thinking(src)
+	START_THINKING(src)
 	if(world.time >= spam_prevention)
 		play_sound(draw_sound,get_turf(src))
 		spam_prevention = world.time + 5
@@ -145,6 +147,8 @@
 
 	value = 200
 
+	tier = 1
+
 /obj/item/weapon/ranged/bow/wood/get_static_spread()
 	return 0.005
 
@@ -159,6 +163,8 @@
 
 	value = 300
 
+	tier = 2
+
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
 	desc = "How can light be hard? :flushed:"
@@ -171,8 +177,12 @@
 
 	value = 3000
 
+	ranged_damage_type = /damagetype/ranged/bow/hardlight
+
 	stage_per_decisecond = 10
 	stage_max = 50
+
+	tier = 3
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -193,8 +203,21 @@
 
 	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
 
+	ranged_damage_type = /damagetype/ranged/bow/ashen
+
 	value = 2000
 
 	stage_per_decisecond = 15
 	stage_max = 125
+
+	tier = 4
+
+/obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+	return D.get_damage_per_hit(armor_to_use)
+
+/obj/item/weapon/ranged/bow/get_hits_per_second()
+	return 1 / (1 + (stage_max/(stage_per_decisecond/10))) //How long it takes to fully charge.
+
+
 

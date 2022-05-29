@@ -1,5 +1,6 @@
 obj/effect/alert
 	name = "alert indicator effect"
+	icon_state = "none"
 	icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 
 obj/effect/alert/New(var/desired_location,var/desired_time)

@@ -1,67 +1,11 @@
-/mob/living/proc/add_health_element(var/obj/hud/button/health/H)
-	health_elements[H.id] = H
-	if(client)
-		client.screen += H
-	update_health_elements()
-
-/mob/living/proc/remove_health_element(var/obj/hud/button/health/H)
-	health_elements -= H.id //H.id is important
-	if(client)
-		client.screen -= H
-	update_health_elements()
-
-/mob/living/proc/restore_health_elements()
-	if(!client)
-		return
-
-	for(var/k in health_elements)
-		var/obj/hud/button/H = health_elements[k]
-		client.screen += H
-
-	update_health_elements()
-
-/mob/living/proc/update_health_elements()
-	if(client)
-		client.known_health_elements = health_elements.Copy()
-
-/mob/living/proc/update_health_element_icons(var/health=FALSE,var/stamina=FALSE,var/mana=FALSE)
-
-	if(!src.client)
-		return FALSE
-
-	if(health && health_elements["health"])
-		var/obj/hud/button/health/H = health_elements["health"]
-		H.update_stats(src)
-		H.update_sprite()
-
-	if(stamina && health_elements["stamina"])
-		var/obj/hud/button/health/S = health_elements["stamina"]
-		S.update_stats(src)
-		S.update_sprite()
-
-	if(mana && health_elements["mana"])
-		var/obj/hud/button/health/M = health_elements["mana"]
-		M.update_stats(src)
-		M.update_sprite()
-
-	if(length(screen_blood))
-		for(var/k in screen_blood)
-			var/obj/hud/screen_blood/SB = k
-			SB.update_stats()
-
-	return TRUE
-
 /mob/living/proc/check_death()
 
-	if(!health || immortal)
+	if(!health || has_status_effect(IMMORTAL))
 		return FALSE
 
 	var/health_added = 0
-	if(has_status_effect(ADRENALINE))
-		health_added = get_status_effect_magnitude(ADRENALINE)
-
-	var/trait/death_check/DC = get_trait_by_category(/trait/death_check)
-	if(DC) health_added += DC.extra_health
+	if(has_status_effect(UNDYING))
+		health_added += STATUS_EFFECT_MAGNITUDE(src,UNDYING)
 
 	if((health.health_current + health_added) <= death_threshold)
 		return TRUE
@@ -70,6 +14,8 @@
 
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
+	PROCESS_LIVING(src)
+
 	. = ..()
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
@@ -77,7 +23,7 @@
 	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
 	if(BM) total_bleed_damage *= BM.bleed_multiplier
 
-	var/savage_hit = !immortal && health ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
+	var/savage_hit = health && !has_status_effect(IMMORTAL) ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
 
 	if(savage_hit)
 		total_bleed_damage *= 3
@@ -105,7 +51,7 @@
 				break
 
 		for(var/i=1,i<=total_bleed_damage/10,i++)
-			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-32,32),offset_y + rand(-32,32)))
+			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-TILE_SIZE,TILE_SIZE),offset_y + rand(-TILE_SIZE,TILE_SIZE)))
 				break
 
 		if(health && total_bleed_damage)
@@ -118,58 +64,80 @@
 	if(dead && time_of_death + 30 <= world.time && (override_butcher || length(butcher_contents)) && is_living(attacker) && get_dist(attacker,src) <= 1)
 		var/mob/living/L = attacker
 		var/blade_damage = SAFENUM(damage_table[BLADE]) + SAFENUM(damage_table[LASER])
-		if(blade_damage > 0 && src.can_be_butchered(L,weapon))
-			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [src.name]!"))
-			PROGRESS_BAR(L,L,max(10,src.health.health_max*0.05),.proc/butcher,src)
-			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon)
+
+		var/atom/atom_to_butcher = src
+		if(is_organ(atom_damaged))
+			var/obj/item/organ/O = atom_damaged
+			if(!O.qdeleting && O.loc == src) //Last part is a very safe sanity check.
+				atom_to_butcher = O.get_ending_organ()
+				if(atom_to_butcher == O)
+					atom_to_butcher = src
+		if(atom_to_butcher && blade_damage > 0 && src.can_be_butchered(L,weapon,atom_to_butcher))
+			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [atom_to_butcher.name]!"))
+			PROGRESS_BAR(L,src,max(10,src.health.health_max*0.05),.proc/on_butcher,L,atom_to_butcher)
+			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon,atom_to_butcher)
 
 	if(!dead && has_status_effect(PARRIED))
-		var/stun_duration = get_status_effect_duration(STUN)*2
-		var/stun_magnitude = get_status_effect_magnitude(STUN)*2
+		var/stun_duration = STATUS_EFFECT_DURATION(src,STUN)*2
+		var/stun_magnitude = STATUS_EFFECT_MAGNITUDE(src,STUN)*2
 		remove_status_effect(PARRIED)
 		add_status_effect(STUN,stun_magnitude,stun_duration)
 
-/mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item)
+/mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item,var/atom/atom_to_butcher)
 
-	INTERACT_CHECK_NO_DELAY(src)
-	INTERACT_CHECK_NO_DELAY(butchering_item)
+	if(caller)
+		INTERACT_CHECK_NO_DELAY(src)
+		if(butchering_item)
+			INTERACT_CHECK_NO_DELAY(butchering_item)
 
 	if(!src.dead)
-		to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))
+		caller?.to_chat(span("danger","OH FUCK THEY'RE STILL ALIVE!"))
 		return FALSE
 
 	return TRUE
 
-/mob/living/proc/butcher(var/mob/living/target)
+/mob/living/proc/on_butcher(var/mob/caller,var/atom/movable/atom_to_butcher)
 
-	if(target.qdeleting)
+	if(src.qdeleting)
 		return FALSE
 
-	src.visible_message(span("danger","\The [src.name] butchers \the [target.name]!"),span("danger","You butcher \the [target.name]."))
+	if(atom_to_butcher.qdeleting)
+		return FALSE
 
-	var/turf/T = get_turf(target)
+	. = list()
 
-	if(target.override_butcher)
-		target.create_override_contents(src)
+	var/turf/T = get_turf(src)
+
+	if(src.override_butcher)
+		src.create_override_contents(caller,atom_to_butcher)
+	else if(atom_to_butcher != src)
+		if(length(src.butcher_contents))
+			var/atom/movable/M = src.butcher_contents[1] //Hacky, I know, but it just werks.
+			M = new M(T)
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			. += M
 	else
-		for(var/k in target.butcher_contents)
-			var/obj/O = new k(T)
-			INITIALIZE(O)
-			GENERATE(O)
-			FINALIZE(O)
+		. = list()
+		for(var/k in src.butcher_contents)
+			var/atom/movable/M = new k(T)
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			. += M
 
-	for(var/k in target.contents)
-		var/atom/movable/M = k
-		if(is_organ(M))
+	for(var/obj/item/I in atom_to_butcher.contents)
+		if(is_organ(I))
 			continue
-		M.force_move(T)
+		I.drop_item(T)
+		. += I
 
-	qdel(target)
-
-	return TRUE
+	caller?.visible_message(span("danger","\The [caller.name] butchers \the [atom_to_butcher.name]!"),span("danger","You butcher \the [atom_to_butcher.name]."))
+	atom_to_butcher.gib(hard=TRUE)
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
-	return damage_received_multiplier
+	return 1
 
 /mob/living/proc/create_override_contents(var/mob/living/caller)
 	return TRUE
@@ -198,7 +166,7 @@
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)
 				for(var/i=1,i<=rand(3,5),i++)
-					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*3,TILE_SIZE*3),rand(-TILE_SIZE*3,TILE_SIZE*3))
+					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2))
 		if(BLUNT)
 			add_status_effect(STAGGER,20,20)
 			play_sound('sound/effects/impacts/savage_blunt.ogg',T,volume=80)
@@ -236,6 +204,8 @@
 			add_status_effect(ADRENALINE,100,100)
 			add_status_effect(STUN,10,10)
 			play_sound('sound/effects/impacts/savage_shock.ogg',T,volume=80)
+		if(ACID)
+			//Todo: Sounds and effects.
 		if(BOMB)
 			play_sound('sound/effects/impacts/savage_bomb.ogg',T,volume=80)
 			bang(30)
@@ -257,6 +227,7 @@
 		if(PAIN)
 			add_status_effect(STUN,30,30)
 			play_sound('sound/effects/impacts/savage_pain.ogg',T,volume=80)
+			send_pain_response(1000)
 		if(ION)
 			add_status_effect(PARALYZE,30,30)
 			play_sound('sound/effects/impacts/savage_ion.ogg',T,volume=80)

@@ -3,7 +3,7 @@
 	desc = "Fed action!"
 	desc_extended = "An advanced mining tool that uses phorogenic plasma bursts to penetrate up to 4 meters of rocks and other foes. Not very effective against smaller objects."
 	icon = 'icons/obj/item/weapons/ranged/laser/plasma_cutter.dmi'
-	rarity = RARITY_RARE
+
 	value = 1400 //One hell of a mining tool go cry in the corner.
 
 	shoot_sounds = list('sound/weapons/cutter/fire.ogg')

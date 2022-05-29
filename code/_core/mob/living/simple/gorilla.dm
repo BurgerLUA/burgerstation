@@ -14,7 +14,7 @@
 
 	value = 400
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	movement_delay = DECISECONDS_TO_TICKS(5)
 
@@ -26,4 +26,4 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 12
+	level = 24

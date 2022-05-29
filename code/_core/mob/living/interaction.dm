@@ -13,6 +13,13 @@ mob/living/on_left_down(object,location,control,params)
 	client.mouse_pointer_icon = desired_icon
 	return TRUE
 
+/mob/living/proc/handle_mouse_pointer()
+
+	if(CALLBACK_EXISTS("\ref[src]_intent_switch"))
+		return FALSE
+
+	return TRUE
+
 /mob/living/proc/update_intent(var/force)
 
 	var/desired_intent = selected_intent
@@ -50,5 +57,18 @@ mob/living/on_left_down(object,location,control,params)
 		var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
 		CALLBACK("\ref[src]_intent_switch",10,src,.proc/set_mouse_pointer,icon_to_use)
 
+	for(var/k in src.light_sprite_sources)
+		var/obj/light_sprite/LS = k
+		if(LS.icon_state != "cone")
+			continue
+		LS.set_dir(src.dir)
+		LS.transform = LS.get_base_transform()
 
 	return TRUE
+
+/mob/living/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(caller == src && (object == src || is_inventory(object)) && resist())
+		return TRUE
+
+	. = ..()

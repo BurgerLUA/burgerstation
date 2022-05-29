@@ -4,7 +4,7 @@
 		return FALSE
 
 	if(enter)
-		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(move_delay)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
+		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(next_move)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
 		return FALSE
 
 	do_footstep(T,footsteps_to_use,enter)
@@ -36,7 +36,7 @@
 					footstep_sound = pick(F.footstep_sounds)
 
 			if(footstep_sound)
-				play_sound(footstep_sound, get_turf(src), volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch),range_max=VIEW_RANGE)
+				play_sound(footstep_sound, T, volume = footstep_volume, sound_setting = SOUND_SETTING_FOOTSTEPS, pitch = 1 + RAND_PRECISE(-F.variation_pitch,F.variation_pitch),range_max=VIEW_RANGE)
 
 	return TRUE
 
@@ -46,28 +46,21 @@
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 
-	if(attack_flags & CONTROL_MOD_BLOCK || (client && client.is_zoomed))
+	if(intent == INTENT_HARM || (client && client.is_zoomed))
 		Dir = 0x0
 
 	. = ..()
 
-/mob/living/post_move(var/atom/old_loc)
+/mob/living/set_dir(var/desired_dir,var/force=FALSE)
 
 	. = ..()
 
-	var/turf/current_loc_as_turf = get_turf(src)
-	if(chat_overlay)
-		chat_overlay.glide_size = src.glide_size
-		chat_overlay.force_move(current_loc_as_turf)
-	if(alert_overlay)
-		alert_overlay.glide_size = src.glide_size
-		alert_overlay.force_move(current_loc_as_turf)
-	if(fire_overlay)
-		fire_overlay.glide_size = src.glide_size
-		fire_overlay.force_move(current_loc_as_turf)
-	if(shield_overlay)
-		shield_overlay.glide_size = src.glide_size
-		shield_overlay.force_move(current_loc_as_turf)
+	if(.)
+		handle_blocking(TRUE)
+
+/mob/living/post_move(var/atom/old_loc)
+
+	. = ..()
 
 	if(is_sneaking)
 		on_sneak()
@@ -81,13 +74,24 @@
 			T.old_living = list()
 		T.old_living |= src
 		src.old_turf = T
+		if(is_simulated(old_loc) && !horizontal && move_mod > 1)
+			var/turf/simulated/S = T
+			var/slip_strength = S.get_slip_strength(src)
+			if(slip_strength >= 4 - move_mod)
+				var/obj/item/wet_floor_sign/WFS = locate() in range(1,S)
+				if(!WFS || move_mod > 2)
+					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+		if(!isturf(loc))
+			handle_blocking()
 
-	handle_tabled()
+	climb_counter = 0
+
+	last_move_delay = TICKS_TO_DECISECONDS(next_move)
+	last_move_time = world.time
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
-	return ..()
-
+	. = ..()
 
 /mob/living/proc/can_move()
 
@@ -104,6 +108,8 @@
 
 /mob/living/on_sprint()
 	add_hydration(-0.4)
+	if(health)
+		health.adjust_stamina(-1)
 	if(client)
 		add_attribute_xp(ATTRIBUTE_AGILITY,1)
 	return ..()
@@ -114,13 +120,29 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
+	if(dash_target && dash_target.loc && dash_amount > 0 && !horizontal && can_move() && isturf(src.loc)) //can_move dose not consider delays.
+		var/final_direction = get_dir_advanced(src,dash_target)
+		if(!final_direction)
+			dash_amount = 0
+			return TRUE
+		glide_size = step_size/adjust_delay
+		src.set_dir(final_direction)
+		if(!Move(get_step(src,final_direction)))
+			dash_amount = 0
+		else
+			dash_amount--
+		return TRUE
+	else
+		dash_amount = 0
+		dash_target = null
+
 	if(move_dir) //If you're actuall moving.
 		if(!can_move())
 			return FALSE
 		if(grabbing_hand)
 			resist()
 			return FALSE
-		if(get_status_effect_magnitude(SLEEP) == -1)
+		if(STATUS_EFFECT_MAGNITUDE(src,SLEEP) == -1)
 			remove_status_effect(SLEEP)
 			return FALSE
 
@@ -129,24 +151,25 @@
 /mob/living/get_stance_movement_mul()
 
 	if(horizontal)
-		return walk_delay_mul*2
+		return walk_delay_mul*4
+
+	if(blocking)
+		return walk_delay_mul
 
 	. = ..()
 
-/mob/living/get_movement_delay()
+/mob/living/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
 	if(is_sneaking)
 		. *= max(2 - stealth_mod*0.5,1)
 
-	. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
-
-	if(!has_status_effect(ADRENALINE))
-		. *= 1.1
+	if(ckey_last)
+		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
 
 	if(intoxication)
-		. += intoxication*0.003
+		. *= 1 + intoxication*0.003
 
 	var/trait/speed/S = get_trait_by_category(/trait/speed/)
 	if(S) . *= S.move_delay_mul
@@ -155,7 +178,12 @@
 		. *= 2
 
 	if(!horizontal)
-		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.5)
+		if(!has_status_effect(ADRENALINE))
+			. *= 1.25
+		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
+
+	if(grabbing_hand) //Being grabbed.
+		. *= 1.25
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
@@ -166,69 +194,47 @@
 			S.sneaking = on
 			S.update_sprite()
 
-	if(on && !dead)
+	if(on && !dead && (!health || health.adjust_stamina(-10)))
 		stealth_mod = get_skill_power(SKILL_SURVIVAL,0,1,2)
 		is_sneaking = TRUE
-		return TRUE
 	else
 		is_sneaking = FALSE
-		return FALSE
+
+	return is_sneaking
 
 /mob/living/proc/on_sneak()
+	if(health && !health.adjust_stamina( -(2-stealth_mod)*2.5 ))
+		toggle_sneak(FALSE)
+		return FALSE
 	return TRUE
-
-/mob/living/proc/update_alpha(var/desired_alpha)
-	if(alpha != desired_alpha)
-		animate(src, alpha = desired_alpha, color = rgb(desired_alpha,desired_alpha,desired_alpha), time = SECONDS_TO_DECISECONDS(1))
-		return TRUE
-
-	return FALSE
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.density)
+	if(is_living(O) && O.density) //A living being is crossing us.
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
-			//If the crosser is horizontal, or the src is horizontal, run normal checks.
-			return ..()
-		if(L.loyalty_tag == src.loyalty_tag && (!L.ai || !src.ai))
-			//If the crosser is not an AI and we're on the same team, allow it.
+			//If the crosser is horizontal, or the src is horizontal, you can cross.
 			return TRUE
+		if((!L.ai || !src.ai))
+			if(allow_helpful_action(L.loyalty_tag,src.loyalty_tag)) //If the crosser is not an AI and we're on the same team, allow it.
+				return TRUE
 		if(L.size >= SIZE_ANIMAL)
 			//Can't cross bud. You're an AI. No AI clogging.
 			return FALSE
 
 	. = ..()
 
-
 /mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
 
-	if(has_status_effects(STUN,STAGGER,PARALYZE))
-		return ..()
-
-	if(hit_wall)
-		add_status_effect(STUN,5,5,source = owner)
-	else
-		add_status_effect(STAGGER,2,2,source = owner)
+	if(!has_status_effects(STUN,STAGGER,PARALYZE))
+		if(hit_wall)
+			add_status_effect(STUN,10,10,source = owner)
+		else
+			add_status_effect(STAGGER,5,5,source = owner)
 
 	return ..()
 
-/mob/living/proc/handle_tabled()
-
-	climb_counter = 0
-
-	if(tabled != currently_tabled)
-		currently_tabled = tabled
-		if(currently_tabled)
-			animate(src, pixel_z = initial(pixel_z) + 10, time = 10, easing = CIRCULAR_EASING | EASE_OUT)
-			move_delay = max(10,move_delay)
-		else
-			animate(src, pixel_z = initial(pixel_z), time = 5, easing = CIRCULAR_EASING | EASE_OUT)
-			move_delay = max(5,move_delay)
-
-	return TRUE
-
-/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_iff)
+/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag)
 
 	if(buckled_object)
 		return null

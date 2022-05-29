@@ -14,27 +14,14 @@
 	stamina_base = 2000
 	mana_base = 100
 
-	move_delay = 1
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	stun_angle = 0
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		PIERCE = 20,
-		LASER = 80,
-		ARCANE = 80,
-		HEAT = 80,
-		COLD = 20,
-		BIO = 20,
-		RAD = 20,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = 80,
-		ION = INFINITY,
-		PAIN = 80
-	)
+	armor = /armor/colossus
 
 	status_immune = list(
 		STUN = TRUE,
@@ -54,7 +41,7 @@
 	iff_tag = "Herald"
 	loyalty_tag = "Herald"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -71,17 +58,17 @@
 	blood_volume = 1000
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus
 	)
 
 	soul_size = SOUL_SIZE_RARE
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 15
+	level = 30
 
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
@@ -89,7 +76,7 @@
 	if( (next_teleport - world.time) >= SECONDS_TO_DECISECONDS(2) )
 		return /damagetype/cqc/sleeping_carp/crashing_wave_kick
 
-	if(attacker && victim && get_dir(attacker,victim) == victim.dir )
+	if(attacker && victim && !is_facing(victim,attacker))
 		return /damagetype/cqc/sleeping_carp/keelhaul
 
 	return ..()

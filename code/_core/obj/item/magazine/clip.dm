@@ -5,7 +5,7 @@
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(is_bullet_gun(object))
+	if(istype(object,/obj/item/weapon/ranged/bullet/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
@@ -17,6 +17,9 @@
 		for(var/k in stored_bullets)
 			if(!k) continue
 			var/obj/item/bullet_cartridge/B = k
+			if(!G.can_load_stored(caller,B))
+				caller.to_chat(span("warning","You can't load \the [B.name] into \the [object.name] with \the [src.name]!"))
+				break
 			var/target_point = get_first_missing_value(G.stored_bullets)
 			if(target_point == 0)
 				break
@@ -33,5 +36,5 @@
 			caller.to_chat(span("warning","You can't load anything into \the [object.name] with \the [src.name]!"))
 		return TRUE
 
-	return ..()
+	. = ..()
 

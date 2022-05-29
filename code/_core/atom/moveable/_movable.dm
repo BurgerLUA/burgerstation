@@ -1,5 +1,7 @@
 /atom/movable/
 
+	vis_flags = VIS_INHERIT_ID
+
 	step_size = TILE_SIZE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -7,15 +9,13 @@
 
 	animate_movement = SLIDE_STEPS
 
-	var/area/area //The object's area.
-
 	var/tmp/move_dir = 0x0
 	var/tmp/move_dir_last = 0x0 //Used for momentum and speed.
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
-	var/tmp/move_delay = 0 //How long until you can move again, in ticks.
+	var/tmp/next_move = 0 //How long until you can move again, in ticks.
 
-	var/momentum_speed = 0 //Tiles per second. Maximum 10.
-	var/momentum_dir = 0x0
+	// var/momentum_speed = 0 //Tiles per second. Maximum 10.
+	// var/momentum_dir = 0x0
 
 	var/size = SIZE_0
 
@@ -39,8 +39,6 @@
 	var/throwable = TRUE
 
 	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
-
-	var/blocks_air = 0x0
 
 	var/acceleration_value = 0 //No touch.
 
@@ -70,10 +68,10 @@
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
-	area = null
 	grabbing_hand = null
 	force_move(null)
-	return ..()
+	loc = null
+	. = ..()
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 
@@ -109,7 +107,7 @@
 	light_sprite_sources = list()
 	return ..()
 
-/atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/a_dir,var/force = FALSE)
+/atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/force = FALSE)
 
 	. = FALSE
 
@@ -124,20 +122,6 @@
 	if(isnum(c_dir) && (force || collision_dir != c_dir))
 		collision_dir = c_dir
 		. = TRUE
-
-	if(isnum(a_dir) && (force || a_dir != blocks_air))
-		var/turf/simulated/T = get_turf(src)
-		if(T && is_simulated(T))
-			T.blocks_air &= ~blocks_air
-			T.blocks_air |= a_dir
-			QUEUE_AIR_TURF(T)
-		blocks_air = a_dir
-		. = TRUE
-	else if(force)
-		var/turf/simulated/T = get_turf(src)
-		T.blocks_air |= blocks_air
-		if(T && is_simulated(T))
-			QUEUE_AIR_TURF(T)
 
 /atom/movable/proc/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
 
@@ -155,25 +139,11 @@
 
 	return TRUE
 
-/atom/movable/Initialize()
-
-	if(loc)
-		area = get_area(loc)
-		if(area)
-			area.Entered(src,null)
-		else
-			CRASH_SAFE("ERROR: [get_debug_name()] didn't have an area to initialize in! (Loc: [loc.get_debug_name()].)")
-		if(blocks_air && is_simulated(loc))
-			var/turf/simulated/T = loc
-			T.blocks_air |= blocks_air
-	else
-		CRASH_SAFE("ERROR: [get_debug_name()] didn't have a loc to initialize in!")
-
-	return ..()
-
 /atom/movable/Finalize()
+	set_anchored(anchored,TRUE)
+	. = ..()
 	update_value()
-	return ..()
+
 
 /atom/movable/proc/update_value()
 	value = get_base_value()
@@ -192,18 +162,23 @@
 	return TRUE
 
 
-/atom/movable/proc/set_anchored(var/desired_anchored=TRUE)
+/atom/movable/proc/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
 
-	if(anchored == desired_anchored)
+	if(anchored == desired_anchored && !force)
 		return FALSE
 
 	anchored = desired_anchored
-
-	if(!anchored)
-		force_move(loc)
 
 	return TRUE
 
 
 /atom/movable/proc/on_chunk_clean() //What happens if this object is chunk cleaned.
 	return FALSE
+
+
+/atom/movable/proc/dust(var/atom/source)
+	return FALSE
+
+/atom/movable/proc/gib(var/hard=FALSE)
+	qdel(src)
+	return TRUE

@@ -1,12 +1,12 @@
 //Basic config settings for developers
 #define ENABLE_INSTALOAD FALSE
 
-#define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,2)
+#define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1)
 
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
-#define FPS_SERVER 20
+#define FPS_SERVER 30
 
-#define WORLD_SIZE 255
+#define WORLD_SIZE 500 //This shouldn't be touched unless you know what you're doing.
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 
 #define MAX_MESSAGE_LEN 512
@@ -27,10 +27,16 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_LIGHTING FALSE
+
+//Enables/disables turf/obj smoothing.
+#define ENABLE_SMOOTHING TRUE
+
+//Enable/disables combat testing by forcing a gamemode.
+#define ENABLE_TDM TRUE
 
 //Enables/disables turf generation
-#define ENABLE_GENERATION TRUE
+#define ENABLE_GENERATION FALSE
 
 //Enables/disables atmos.
 #define ENABLE_ATMOS FALSE
@@ -44,3 +50,5 @@
 //Enables/disables wikibot helper functions
 #define ENABLE_WIKIBOT FALSE
 
+//Soft limit to prevent more than any of this amount of being on a single turf at once. THIS INCLUDES EVERYTHING THAT USES move(). forcemove() is intentionally ignored.
+#define TURF_CONTENT_LIMIT 100

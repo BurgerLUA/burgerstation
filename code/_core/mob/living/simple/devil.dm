@@ -15,17 +15,9 @@
 
 	damage_type = /damagetype/unarmed/claw/
 
-	armor_base = list(
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = -20,
-		ARCANE = 20,
-		HOLY = 40,
-		DARK = 40,
-		ION = INFINITY
-	)
+	armor = /armor/demon
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	iff_tag = "Hell"
 	loyalty_tag = "Hell"
@@ -38,7 +30,7 @@
 
 	soul_size = SOUL_SIZE_UNCOMMON
 
-	level = 16
+	level = 22
 
 /mob/living/simple/devil/get_damage_type(var/atom/attacker,var/atom/victim)
 	if(prob(25))

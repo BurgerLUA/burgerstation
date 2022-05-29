@@ -5,8 +5,6 @@
 	desc = "An organ."
 	icon_state = BODY_FOOT_RIGHT
 	worn_layer = LAYER_MOB_FEET
-	break_threshold = 15
-	//health_max = 25
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
 	attach_flag = BODY_LEG_RIGHT
@@ -31,7 +29,7 @@
 
 	has_pain = TRUE
 
-	gib_icon_state = "gibleg"
+	has_life = TRUE
 
 /obj/item/organ/foot/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps
@@ -224,7 +222,7 @@
 
 //Skeleton
 /obj/item/organ/foot/skeleton
-	name = "right skeleton foot"
+	name = "skeleton right foot"
 
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
@@ -232,8 +230,12 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 10
+
+	can_gib = FALSE
+
 /obj/item/organ/foot/skeleton/left
-	name = "left skeleton foot"
+	name = "skeleton left foot"
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 
@@ -331,7 +333,7 @@
 
 
 
-//Monkey
+//Golem
 /obj/item/organ/foot/golem
 	name = "right golem foot"
 
@@ -341,6 +343,33 @@
 
 /obj/item/organ/foot/golem/left
 	name = "left golem foot"
+	id = BODY_FOOT_LEFT
+	icon_state = BODY_FOOT_LEFT
+
+	attach_flag = BODY_LEG_LEFT
+
+	inventories = list(/obj/hud/inventory/organs/left_foot)
+
+	hud_id = "body_foot_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 22
+
+	target_bounds_y_min = 1
+	target_bounds_y_max = 3
+
+
+
+//abductor
+/obj/item/organ/foot/abductor
+	name = "right abductor foot"
+
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+	inventories = list(/obj/hud/inventory/organs/right_foot)
+
+/obj/item/organ/foot/abductor/left
+	name = "left abductor foot"
 	id = BODY_FOOT_LEFT
 	icon_state = BODY_FOOT_LEFT
 

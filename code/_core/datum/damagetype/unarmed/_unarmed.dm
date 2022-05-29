@@ -1,5 +1,4 @@
 /damagetype/unarmed/
-	name = "Body"
 	draw_blood = TRUE
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -32,6 +31,8 @@
 	)
 
 	savage_hit_threshold = 0.2
+
+	sneak_attack_multiplier = 4
 
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED

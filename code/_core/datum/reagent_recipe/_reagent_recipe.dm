@@ -17,5 +17,7 @@
 
 	var/list/required_temperature_max = list()
 
+	var/secret = FALSE //This just means its unlisted in the recipe book.
+
 /reagent_recipe/proc/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
 	return TRUE

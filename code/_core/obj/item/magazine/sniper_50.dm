@@ -4,7 +4,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/50_sniper.dmi'
 	icon_state = "50"
-	bullet_count_max = 4
+	bullet_count_max = 8
 
 	bullet_length_min = 90
 	bullet_length_best = 99

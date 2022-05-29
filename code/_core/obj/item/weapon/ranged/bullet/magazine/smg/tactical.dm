@@ -1,16 +1,18 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical
-	name = "\improper 10mm MTAC"
+	name = "\improper 9x19mm MTAC"
 	desc = "Precision in the palms of your hands."
 	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range."
-	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
 	icon_state = "inventory"
 	value = 1400
 
-	shoot_delay = 2
+	tier = 2
+
+	shoot_delay = 1
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
@@ -21,13 +23,13 @@
 
 	heat_max = 0.03
 
-	bullet_length_min = 25
-	bullet_length_best = 32
-	bullet_length_max = 33
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
 
-	bullet_diameter_min = 10
-	bullet_diameter_best = 10.17
-	bullet_diameter_max = 11
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
 
 	ai_heat_sensitivity = 0.5
 
@@ -46,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -77,7 +79,7 @@
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/equipped/Generate()
@@ -110,13 +112,20 @@
 	if(attachment_sight) attachment_sight = new attachment_sight(src)
 	if(attachment_undermount) attachment_undermount = new attachment_undermount(src)
 
-	update_attachment_stats()
-	update_sprite()
 
 
+/obj/item/weapon/ranged/bullet/magazine/smg/tactical/corporate
+	name = "\improper 9x19mm MTAC Corporate Edition"
+	desc = "Precision in the palms of your hands."
+	desc_extended = "A decently accurate full auto SMG designed to take down targets at medium ranges while still being able to fight in close range. This one is designated as the corporate edition and has a slightly hire firerate."
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm.dmi'
+	icon_state = "inventory"
+	value = 2000
 
-/obj/item/weapon/ranged/bullet/magazine/smg/tactical/nt
-	icon = 'icons/obj/item/weapons/ranged/smg/10mm_3_nt.dmi'
+	tier = 3
+
+	shoot_delay = 0.8
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm_black.dmi'
 
 
 

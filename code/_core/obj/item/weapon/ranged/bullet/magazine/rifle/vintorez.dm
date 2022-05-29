@@ -6,13 +6,15 @@
 	icon_state = "inventory"
 	value = 1200
 
-	shoot_delay = 3
+	tier = 2
+
+	shoot_delay = 2
 
 	automatic = TRUE
 
-	damage_mod = 1.3
+	damage_mod = 2
 
-	shoot_sounds = list('sound/weapons/russia/vintorez.ogg')
+	shoot_sounds = list('sound/weapons/slavic/vintorez.ogg')
 
 	can_wield = TRUE
 	wield_only = FALSE

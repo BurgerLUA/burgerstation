@@ -10,12 +10,9 @@
 
 	protected_limbs = list(BODY_TORSO)
 
-	defense_rating = list(
-		ARCANE = 20
-	)
+	armor = /armor/cloth
 
 	size = SIZE_1
-
 
 	value = 5
 

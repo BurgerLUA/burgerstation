@@ -15,20 +15,9 @@
 
 	damage_type = /damagetype/npc/bio_monster
 
-	armor_base = list(
-		BLUNT = 40,
-		LASER = -40,
-		HEAT = -40,
-		COLD = 40,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/blob
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	movement_delay = DECISECONDS_TO_TICKS(3)
 
@@ -45,7 +34,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 7
+	level = 14
 
 /mob/living/simple/bio_monster/post_death()
 	. = ..()

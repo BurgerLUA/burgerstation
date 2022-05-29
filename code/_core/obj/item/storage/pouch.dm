@@ -30,10 +30,14 @@
 
 /obj/item/storage/pouch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && object.loc == caller && is_pocket(object) && click_self(caller,location,control,params))
-		return TRUE
+	if(is_inventory(object)) //Roughly pockets only.
+		var/obj/hud/inventory/I = object
+		if(I.loc == caller && !I.drag_to_take)
+			return click_self(caller,location,control,params)
 
-	return ..()
+	. = ..()
+
+
 
 /obj/item/storage/pouch/single
 	name = "single large pouch"
@@ -90,3 +94,19 @@
 
 /obj/item/storage/pouch/triple/brown
 	color = COLOR_BROWN
+
+/obj/item/storage/pouch/triple/recruit
+	color = COLOR_RECRUIT_DARK
+	value_burgerbux = 1
+
+/obj/item/storage/pouch/triple/recruit/gun/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/laton(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	. = ..()
+
+/obj/item/storage/pouch/triple/recruit/ammo/fill_inventory()
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	new /obj/item/magazine/pistol_9mm(src)
+	. = ..()

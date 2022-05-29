@@ -37,16 +37,16 @@
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
-	if(!item_table["b1"] || !is_beaker(item_table["b1"]))
-		caller.to_chat(span("warning","There must be a beaker in the left-most slot in order to make a pill!"))
+	if(!item_table["b1"] || !item_table["b1"].allow_reagent_transfer_from || !item_table["b1"].reagents)
+		caller.to_chat(span("warning","There must be a valid reagent container in the left-most slot in order to make a pill!"))
 		return FALSE
 
-	if(item_table["b3"] && !is_beaker(item_table["b3"]))
-		caller.to_chat(span("warning","There must be a beaker in the right-most slot in order to make a double pill!"))
+	if(item_table["b3"] && (!item_table["b3"].allow_reagent_transfer_from || !item_table["b3"].reagents)) //Yes, this needs to be an && operation. I got confused too.
+		caller.to_chat(span("warning","There must be a valid reagent container in the right-most slot in order to make a double pill!"))
 		return FALSE
 
-	var/obj/item/container/beaker/I1 = item_table["b1"]
-	var/obj/item/container/beaker/I2 = item_table["b3"]
+	var/obj/item/container/simple/beaker/I1 = item_table["b1"]
+	var/obj/item/container/simple/beaker/I2 = item_table["b3"]
 
 	if(I1 && (!I1.reagents || !I1.reagents.volume_current))
 		caller.to_chat(span("warning","There is no matter in the left slot to make a pill from!"))
@@ -56,7 +56,7 @@
 		caller.to_chat(span("warning","There is no matter in the right slot to make a double pill from!"))
 		return FALSE
 
-	var/obj/item/container/pill/P = new(get_turf(src))
+	var/obj/item/container/edible/pill/P = new(get_turf(src))
 	INITIALIZE(P)
 	GENERATE(P)
 	FINALIZE(P)

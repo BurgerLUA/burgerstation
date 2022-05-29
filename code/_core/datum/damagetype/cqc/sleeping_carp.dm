@@ -1,5 +1,4 @@
 /damagetype/cqc/sleeping_carp/crashing_wave_kick
-	name = "crashing wave kick"
 	attack_verbs = list("crashing wave kick")
 
 	impact_sounds = list(
@@ -40,7 +39,7 @@
 /damagetype/cqc/sleeping_carp/crashing_wave_kick/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(victim))
-		var/list/offsets = direction_to_pixel_offset(get_dir(attacker,victim))
+		var/list/offsets = get_directional_offsets(attacker,victim)
 		var/mob/living/L = victim
 		if(get_dist(attacker,victim) <= 0)
 			L.add_status_effect(STUN,20,20,source = attacker)
@@ -55,7 +54,6 @@
 
 
 /damagetype/cqc/sleeping_carp/keelhaul
-	name = "keelhaul"
 
 	impact_sounds = list(
 		'sound/weapons/fists/cqc/keelhaul_01.ogg',
@@ -108,7 +106,6 @@
 
 
 /damagetype/cqc/sleeping_carp/gnashing_teeth
-	name = "gnashing teeth"
 	attack_verbs = list("gnashing teeth punch")
 
 	impact_sounds = list(

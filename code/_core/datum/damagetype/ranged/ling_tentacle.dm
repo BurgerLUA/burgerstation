@@ -1,16 +1,12 @@
 /damagetype/ranged/ling_tentacle/pull //I'm sorry.
-	name = "tentacle"
-
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLUNT = 10,
 		BIO = 20,
 		FATIGUE = 10
 	)
 
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 50
 	)
@@ -38,7 +34,7 @@
 /damagetype/ranged/ling_tentacle/pull/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_living(victim))
-		var/list/offsets = direction_to_pixel_offset(get_dir(attacker,victim))
+		var/list/offsets = get_directional_offsets(attacker,victim)
 		var/mob/living/L = victim
 		var/mob/living/A = attacker
 		var/distance = get_dist(A,L)
@@ -48,18 +44,15 @@
 			L.throw_self(attacker,null,16,16,offsets[1]*(-distance*3),offsets[2]*(-distance*3))
 
 /damagetype/ranged/ling_tentacle/warp
-	name = "tentacle"
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLUNT = 10,
 		BIO = 20,
 		FATIGUE = 10
 	)
 
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 50
 	)
@@ -85,7 +78,7 @@
 	throw_mul = 1
 
 /damagetype/ranged/ling_tentacle/warp/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-//Make sure to thank Burger.
+	//Make sure to thank Burger.
 	if(is_living(victim))
 		var/mob/living/L = victim
 		var/mob/living/A = attacker

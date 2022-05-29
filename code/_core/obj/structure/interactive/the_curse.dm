@@ -46,13 +46,13 @@
 		return FALSE
 	if((!L.client || !L.client.is_zoomed) && get_dist(A,L) > VIEW_RANGE)
 		return FALSE
-	if(!L.is_facing(A))
+	if(!is_facing(L,A))
 		return FALSE
 	return TRUE
 
 /obj/structure/interactive/the_curse/think()
 
-	var/start_time = world.time
+	var/start_time = true_time()
 
 	var/list/current_viewers = list()
 	var/list/current_targets = list()
@@ -91,7 +91,6 @@
 					continue
 				src.set_dir(get_dir(src,L))
 				L.death()
-				L.health?.update_health()
 				play_sound('sound/effects/neck_snap.ogg',T)
 				if(debug) log_subsystem("Peanut","Found a target. We've killed them.")
 				break
@@ -162,6 +161,6 @@
 			else
 				if(debug) log_subsystem("Peanut","Could not find a valid path to a tracked target.")
 
-		if(debug) log_subsystem("Peanut","Took [world.time-start_time] deciseconds to think.")
+		if(debug) log_subsystem("Peanut","Took [true_time()-start_time] deciseconds to think.")
 
 	return TRUE

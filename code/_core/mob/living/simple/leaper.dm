@@ -27,24 +27,9 @@
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = 80,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = -40,
-		BIO = 120,
-		RAD = 120,
-		HOLY = -20,
-		DARK = 120,
-		FATIGUE = 120,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/arachnid
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -79,10 +64,10 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 18
+	level = 20
 
 /mob/living/simple/leaper/handle_alpha()
-	if(immortal)
+	if(has_status_effect(IMMORTAL))
 		return 0
 	. = ..()
 
@@ -116,7 +101,7 @@
 
 	var/turf/desired_turf = pick(valid_turfs)
 
-	immortal = TRUE
+	add_status_effect(IMMORTAL)
 	density = FALSE
 	CALLBACK("\ref[src]_leaper_teleport",10,src,.proc/teleport,desired_turf)
 
@@ -125,7 +110,7 @@
 /mob/living/simple/leaper/proc/teleport(var/turf/desired_turf)
 
 	if(desired_turf) src.force_move(desired_turf)
-	immortal = FALSE
+	remove_status_effect(IMMORTAL)
 	density = TRUE
 
 	return TRUE

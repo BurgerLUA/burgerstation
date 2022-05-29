@@ -8,6 +8,6 @@
 	blood_type = /reagent/blood/robot
 	blood_volume = 250
 
-	armor_base = CYBORG_ARMOR
+	armor = /armor/borg
 
 	soul_size = null

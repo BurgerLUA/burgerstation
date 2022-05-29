@@ -22,7 +22,7 @@
 
 	size = SIZE_HUMAN
 
-	armor_base = CYBORG_ARMOR
+	armor = /armor/borg
 
 	soul_size = null
 
@@ -30,7 +30,7 @@
 	return set_dir(get_dir(src,A))
 
 /mob/living/simple/turret/Finalize()
-
+	. = ..()
 	if(stored_weapon)
 		stored_weapon = new stored_weapon(src)
 		INITIALIZE(stored_weapon)
@@ -56,6 +56,8 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/syndicate_turret
 
+	level = 12
+
 /mob/living/simple/turret/syndicate/post_death()
 	icon_state = "dead"
 	return ..()
@@ -71,9 +73,11 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/nanotrasen_turret
 
+	level = 12
+
 /mob/living/simple/turret/nanotrasen/immortal
 	name = "immortal nanotrasen turret"
-	immortal = TRUE
+	health = null
 
 /mob/living/simple/turret/nanotrasen/post_death()
 	icon_state = "dead"
@@ -93,6 +97,8 @@
 	ai = /ai/turret/deployable
 
 	size = SIZE_ANIMAL
+
+	level = 4
 
 /mob/living/simple/turret/deployable/get_examine_list(var/mob/examiner)
 
@@ -235,6 +241,8 @@
 	loyalty_tag = "Clockwork"
 
 	stored_weapon = /obj/item/weapon/ranged/energy/clockwork_turret
+
+	level = 22
 
 /mob/living/simple/turret/clockwork/post_death()
 	icon_state = "dead"

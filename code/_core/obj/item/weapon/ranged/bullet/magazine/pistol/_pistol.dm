@@ -2,9 +2,12 @@
 	override_icon_state = TRUE
 
 	movement_spread_base = 0.01
-	inaccuracy_modifier = 0.75
+	inaccuracy_modifier = 0.5
+	movement_inaccuracy_modifier = 0.25
 
 	damage_mod = 1
+
+	tier_type = "pistol"
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/update_icon()
 

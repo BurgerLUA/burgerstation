@@ -4,8 +4,6 @@
 	desc = "An organ."
 	icon_state = BODY_LEG_RIGHT
 	worn_layer = LAYER_MOB_LEGS
-	break_threshold = 25
-	//health_max = 50
 
 	attach_flag = BODY_GROIN
 
@@ -30,6 +28,8 @@
 	gib_icon_state = "gibleg"
 
 	has_pain = TRUE
+
+	has_life = TRUE
 
 /obj/item/organ/leg/left
 	name = "left leg"
@@ -165,6 +165,10 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 20
+
+	can_gib = FALSE
+
 
 /obj/item/organ/leg/skeleton/left
 	name = "left skeleton leg"
@@ -248,6 +252,25 @@
 
 /obj/item/organ/leg/golem/left
 	name = "left golem leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
+
+
+/obj/item/organ/leg/abductor
+	name = "right abductor leg"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+
+/obj/item/organ/leg/abductor/left
+	name = "left abductor leg"
 	id = BODY_LEG_LEFT
 	icon_state = BODY_LEG_LEFT
 

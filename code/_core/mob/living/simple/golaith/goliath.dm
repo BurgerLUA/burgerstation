@@ -6,9 +6,9 @@
 
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath
 	)
 
 	value = 25
@@ -21,20 +21,7 @@
 
 	stun_angle = 0
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 40,
-		LASER = 60,
-		HEAT = 80,
-		COLD = -20,
-		BOMB = 80,
-		BIO = 20,
-		HOLY = -20,
-		DARK = 100,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/goliath
 
 	status_immune = list(
 		FIRE = TRUE
@@ -43,14 +30,16 @@
 	iff_tag = "Goliath"
 	loyalty_tag = "Goliath"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = /reagent/blood/goliath
 	blood_volume = 750
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 14
+	level = 24
+
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 /mob/living/simple/goliath/post_death()
 	..()
@@ -62,13 +51,13 @@
 	if(dead)
 		return FALSE
 
-	if(get_dist(src,desired_target) > VIEW_RANGE || src.z != desired_target.z)
+	if(src.z != desired_target.z || get_dist(src,desired_target) > VIEW_RANGE)
 		return FALSE
 
-	add_status_effect(PARALYZE,20,20,stealthy = TRUE)
+	add_status_effect(PARALYZE,50,50,stealthy = TRUE)
 	icon_state = "[initial(icon_state)]_attack"
 
-	CALLBACK("\ref[src]_tentacle_attack",10,src,.proc/do_tentacle_attack,desired_target)
+	CALLBACK("\ref[src]_tentacle_attack",30,src,.proc/do_tentacle_attack,desired_target)
 
 	return TRUE
 

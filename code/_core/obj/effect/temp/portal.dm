@@ -69,7 +69,7 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		var/mob/living/L = caller
-		if(L.loyalty_tag == loyalty_tag)
+		if(L.loyalty_tag == loyalty_tag && !enable_friendly_fire)
 			var/turf/destination_turf = get_turf(linked_portal)
 			L.visible_message(span("notice","\The [caller.name] steps into \the [src.name]."),span("notice","You step into \the [src.name]."))
 			L.force_move(destination_turf)

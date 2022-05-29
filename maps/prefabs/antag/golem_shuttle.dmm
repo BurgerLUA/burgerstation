@@ -178,6 +178,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/tile/shuttle,
 /area/dmm_suite/clear_area)
+"K" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/tile/shuttle,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -434,7 +438,7 @@ a
 b
 k
 H
-j
+K
 H
 k
 b

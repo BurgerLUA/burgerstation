@@ -3,7 +3,7 @@
 	desc = "Sticking your head in isn't recommended."
 	desc_extended = "A special backpack that creates its own pocket inside the bluespace dimension to store an absurd amount of items. It's extremely heavy, however, and only practical for hauling items over long distances."
 	icon = 'icons/obj/item/clothing/back/backpack/bluespace.dmi'
-	rarity = RARITY_RARE
+
 
 
 	dynamic_inventory_count = MAX_INVENTORY_X*4
@@ -45,6 +45,6 @@
 	desc_extended = "A prank version of the satchel of holding. It has been cursed to only hold one object."
 
 	dynamic_inventory_count = 1
-	container_max_size = SIZE_10
+	container_max_size = SIZE_9
 
 	size = SIZE_10

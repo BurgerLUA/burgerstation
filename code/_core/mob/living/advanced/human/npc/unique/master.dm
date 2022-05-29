@@ -13,9 +13,11 @@
 
 	dialogue_id = /dialogue/npc/master
 
-	immortal = TRUE
+	health = null
 
 	anchored = TRUE
+
+	level = 100
 
 /mob/living/advanced/npc/unique/master/Initialize()
 

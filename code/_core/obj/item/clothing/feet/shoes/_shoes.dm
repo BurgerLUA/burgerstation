@@ -18,3 +18,4 @@
 
 	item_slot_layer = 2
 
+	uses_until_condition_fall = 450

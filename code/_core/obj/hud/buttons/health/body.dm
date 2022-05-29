@@ -6,7 +6,7 @@
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "invisible"
 
-	screen_loc = "RIGHT,CENTER-2"
+	screen_loc = "RIGHT,BOTTOM:12+5"
 
 	user_colors = FALSE
 
@@ -14,13 +14,18 @@
 
 /obj/hud/button/health/body/Destroy()
 	labeled_overlays?.Cut()
-	return ..()
+	. = ..()
+
+/obj/hud/button/health/body/special_think()
+	update_vis_contents()
+	return FALSE
 
 /obj/hud/button/health/body/update_owner(var/mob/desired_owner)
 
 	. = ..()
 
 	labeled_overlays.Cut()
+	vis_contents.Cut()
 
 	if(.)
 		if(is_advanced(owner)) //Initial Creation.
@@ -35,15 +40,18 @@
 					continue
 				if(!O.health.health_max)
 					continue
-				var/image/I = new/image(icon,O.hud_id)
-				I.color = "#FF0000"
+				var/obj/hud/I = new
+				I.appearance = src.appearance
+				I.icon = icon
+				I.icon_state = O.hud_id
+				I.color = "#FFFFFF"
 				labeled_overlays[o_id] = I
-				add_overlay(I)
+				add_vis_content(I)
 
-		update_sprite()
+		update_vis_contents()
 
 
-/obj/hud/button/health/body/update_overlays()
+/obj/hud/button/health/body/proc/update_vis_contents()
 
 	. = ..()
 
@@ -54,23 +62,11 @@
 
 	for(var/o_id in labeled_overlays)
 
-		var/image/I = labeled_overlays[o_id]
+		var/obj/hud/I = labeled_overlays[o_id]
 		var/obj/item/organ/O = A.labeled_organs[o_id]
 
-		if(!O)
-			labeled_overlays -= o_id
-			continue
-
-		if(!O.health)
-			labeled_overlays -= o_id
-			continue
-
-		if(!O.hud_id)
-			labeled_overlays -= o_id
-			continue
-
-		if(!O.health.health_max)
-			labeled_overlays -= o_id
+		if(!O || !O.health || !O.hud_id || O.health.health_max <= 0)
+			I.color = "#000000"
 			continue
 
 		var/health_mod = (O.health.health_current - O.health.get_loss(PAIN)) / O.health.health_max
@@ -91,9 +87,8 @@
 		else
 			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
 
-		I.color = color_mod
+		animate(I,color=color_mod,time=LIFE_TICK)
 		labeled_overlays[o_id] = I
-		add_overlay(I)
 
 
 /obj/hud/button/health/body/get_examine_list(var/mob/examiner)

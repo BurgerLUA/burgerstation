@@ -20,22 +20,12 @@
 	stamina_base = 500
 	mana_base = 2000
 
-	move_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = 80,
-		ARCANE = 20,
-		HEAT = 80,
-		COLD = 80,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/colossus
 
 	status_immune = list(
 		STUN = TRUE,
@@ -55,7 +45,7 @@
 	iff_tag = "Colossus"
 	loyalty_tag = "Colossus"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -66,12 +56,12 @@
 	blood_volume = 2000
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus,
-		/obj/item/container/food/dynamic/meat/raw_colossus
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus,
+		/obj/item/container/edible/dynamic/meat/raw_colossus
 	)
 
 	soul_size = SOUL_SIZE_RARE
@@ -80,7 +70,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 40
 
 /mob/living/simple/colossus/pre_death()
 	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)
@@ -92,10 +82,7 @@
 	animate(src, pixel_z = 64, time = 30)
 
 /mob/living/simple/colossus/handle_alpha()
-
-	if(dead)
-		return 0
-
-	return ..()
+	if(dead) return 0
+	. = ..()
 
 

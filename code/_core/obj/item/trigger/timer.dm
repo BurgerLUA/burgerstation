@@ -18,7 +18,7 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/timer/save_item_data(var/save_inventory = TRUE)
+/obj/item/device/timer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("time_set")
 
@@ -34,7 +34,7 @@
 
 /obj/item/device/timer/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	last_caller = caller
-	start_thinking(src)
+	START_THINKING(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
 	play_sound('sound/weapons/timer/arm.ogg',T,range_max=VIEW_RANGE)

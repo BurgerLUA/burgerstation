@@ -1,7 +1,5 @@
 /loot/goblin
 	loot_table = list(
-		/obj/item/currency/magic_token/random = 500,
-		/obj/item/currency/telecrystals/goblin = 50,
 		/obj/item/powergem = 50,
 		/obj/item/soulgem/common = 100,
 		/obj/item/soulgem/uncommon = 80,

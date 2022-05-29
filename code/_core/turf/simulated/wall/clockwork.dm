@@ -11,6 +11,8 @@
 
 	health_base = 500
 
+	map_color = "#704326"
+
 /turf/simulated/wall/clockwork/indestructable
 	name = "indestructable clockwork wall"
 	desc = "Tick Tock motherfucker"

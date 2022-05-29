@@ -38,16 +38,15 @@
 	if(caller == target)
 		return TRUE
 
-	if(caller.loyalty_tag != target.loyalty_tag)
-		return TRUE
-
-	if(desired_inject)
-		if(reagents.contains_lethal)
-			if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
+	var/area/A = get_area(target)
+	if(!allow_hostile_action(caller.loyalty_tag,target.loyalty_tag,A))
+		if(desired_inject)
+			if(reagents.contains_lethal)
+				if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))
+				return FALSE
+		else
+			if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
 			return FALSE
-	else
-		if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from draining the blood of allies!"))
-		return FALSE
 
 	return TRUE
 
@@ -76,7 +75,7 @@
 	else
 		T.visible_message(span("notice","\The [src.name] detaches itself from \the [attached_to.name]."))
 	attached_to = null
-	stop_thinking(src)
+	STOP_THINKING(src)
 	update_sprite()
 	return TRUE
 
@@ -85,7 +84,7 @@
 	var/turf/T = get_turf(src)
 	attached_to = target
 	T.visible_message(span("notice","\The [caller.name] attaches \the [src.name] to \the [attached_to.name]."),span("notice","You attach \the [src.name] to \the [attached_to.name]."))
-	start_thinking(src)
+	START_THINKING(src)
 	update_sprite()
 	return TRUE
 
@@ -175,12 +174,12 @@
 /obj/item/container/blood_pack/update_overlays()
 
 	var/image/I = new/image(icon,initial(icon_state))
-	I.appearance_flags = RESET_COLOR
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	add_overlay(I)
 
 	if(src.loc && is_inventory(src.loc))
 		var/image/I2 = image(icon,"action_[injecting]")
-		I2.appearance_flags = RESET_COLOR
+		I2.appearance_flags = src.appearance_flags | RESET_COLOR
 		add_overlay(I2)
 
 	return ..()

@@ -2,7 +2,7 @@
 	name = "power gem"
 	desc = "A gem filled with power."
 	desc_extended = "A special gem used for augmenting magic weapons with damage bonuses. Click on the magic weapon to apply it. Can be removed with a crowbar."
-	rarity = RARITY_COMMON
+
 
 	icon = 'icons/obj/item/powergem.dmi'
 	icon_state = "gem1"
@@ -14,20 +14,20 @@
 
 	value_burgerbux = 1 //Not in rotation, yet.
 
-/obj/item/powergem/save_item_data(var/save_inventory = TRUE)
+/obj/item/powergem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("rarity")
 	SAVEVAR("icon_state")
 	SAVEVAR("damage_type_to_add")
 	SAVEVAR("damage_to_add")
-	
+
 /obj/item/powergem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("rarity")
 	LOADVAR("icon_state")
 	LOADVAR("damage_type_to_add")
 	LOADVAR("damage_to_add")
-	
+
 /obj/item/powergem/Generate()
 
 	icon_state = "gem[rand(1,5)]"
@@ -65,7 +65,7 @@
 
 	. += span("notice","Adds [damage_to_add] [damage_type_to_add] damage to attacks.")
 
-	
+
 /obj/item/powergem/Finalize()
 
 	name = "[rarity] power gem of [damage_type_to_add]"
@@ -76,11 +76,12 @@
 		HEAT = COLOR_ORANGE,
 		COLD = COLOR_CYAN,
 		SHOCK = COLOR_BLUE,
+		ACID = COLOR_GREEN_DARK,
 		BOMB = COLOR_BROWN,
-		BIO = "#92CC00",
+		BIO = COLOR_GREEN_LIGHT,
 		RAD = COLOR_GREEN,
 		HOLY = COLOR_YELLOW,
-		DARK = COLOR_BLOOD,
+		DARK = COLOR_BLACK,
 		FATIGUE = "#00FF00",
 		PAIN = COLOR_WHITE,
 		ION = "#0094FF",
@@ -113,8 +114,7 @@
 /obj/item/powergem/update_overlays()
 	. = ..()
 	var/image/I = new(icon,icon_state)
-	I.appearance_flags = LONG_GLIDE | KEEP_APART
+	I.appearance_flags = src.appearance_flags
 	I.blend_mode = BLEND_ADD
 	I.plane = PLANE_LIGHTING
 	add_overlay(I)
-	

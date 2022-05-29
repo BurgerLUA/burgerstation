@@ -18,14 +18,14 @@
 	iff_tag = "Clockwork"
 	loyalty_tag = "Clockwork"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = null
 	blood_volume = 0
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 12
+	level = 34
 
 /mob/living/simple/clockwork_marauder/post_death()
 	. = ..()

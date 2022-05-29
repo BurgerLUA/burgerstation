@@ -7,7 +7,9 @@
 	gender = MALE
 
 	anchored = TRUE
-	immortal = TRUE
+	health = null
+
+	level = 46
 
 /mob/living/advanced/npc/unique/hos/Initialize()
 	. = ..()

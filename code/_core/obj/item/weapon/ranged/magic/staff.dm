@@ -16,7 +16,7 @@
 		. += span("warning","Overcharged: Uses twice as many charge as it is above capacity.")
 
 
-/obj/item/weapon/ranged/magic/staff/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/magic/staff/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("total_charge")
 

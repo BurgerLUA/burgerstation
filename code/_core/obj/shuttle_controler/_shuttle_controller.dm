@@ -16,12 +16,12 @@ var/global/list/all_shuttle_controlers = list()
 	var/transit_source
 	var/transit_target
 
-	var/transit_start
-	var/transit_bluespace
-	var/transit_end
+	var/obj/marker/shuttle/transit_start //path
+	var/obj/marker/shuttle/transit_bluespace //path
+	var/obj/marker/shuttle/transit_end //path
 
-	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME
-	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME
+	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconsd
+	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME //In seconds.
 
 	anchored = TRUE
 
@@ -37,7 +37,9 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/enable_shuttle_throwing = TRUE
 
-	var/time_restricted = TRUE
+	var/time_restricted = FALSE
+
+	var/area/associated_area
 
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
@@ -49,20 +51,20 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/Initialize()
 
-	var/area/A1 = transit_areas[transit_start]
-	var/area/A2 = transit_areas[transit_bluespace]
-	var/area/A3 = transit_areas[transit_end]
+	var/obj/marker/shuttle/M1 = shuttle_markers[transit_start]
+	var/obj/marker/shuttle/M2 = shuttle_markers[transit_bluespace]
+	var/obj/marker/shuttle/M3 = shuttle_markers[transit_end]
 
-	if(!A1)
-		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit starting area ([transit_start])!")
+	if(!M1)
+		log_error("SHUTTLE ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit starting marker ([transit_start])!")
 
-	if(!A2)
-		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit bluespace area ([transit_bluespace])!")
+	if(!M2)
+		log_error("SHUTTLE ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit bluespace marker ([transit_bluespace])!")
 
-	if(!A3)
-		log_error("ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit ending area ([transit_end])!")
+	if(!M3)
+		log_error("SHUTTLE ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit ending marker ([transit_end])!")
 
-	if(!A1 || !A2 || !A3)
+	if(!M1 || !M2 || !M3)
 		qdel(src)
 		return FALSE
 
@@ -70,10 +72,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
-
-/obj/shuttle_controller/proc/signal_landing(var/area/transit/landing_area)
-	for(var/turf/T in landing_area.contents)
-		new/obj/effect/temp/shuttle_landing(T)
+	associated_area = get_area(src)
 
 /obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds
 
@@ -150,7 +149,7 @@ var/global/list/all_shuttle_controlers = list()
 	if(state == SHUTTLE_STATE_LAUNCHING)
 		display = "IGNT"
 		if(time >= 6) //Needs to be hardcoded as this is based on sound.
-			if(!transit(transit_source,transit_bluespace))
+			if(!transit(transit_bluespace))
 				return FALSE
 			if(progress_sound)
 				play_sound(progress_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
@@ -163,13 +162,13 @@ var/global/list/all_shuttle_controlers = list()
 		display = "Flight\n[get_clock_time(FLOOR((transit_time - time), 1))]"
 		if(time >= transit_time)
 			state = SHUTTLE_STATE_LANDING
-			signal_landing(transit_areas[transit_target])
+			//signal_landing(transit_areas[transit_target]) TODO
 			time = 0
 
 	if(state == SHUTTLE_STATE_LANDING)
 		display = "Land"
 		if(time >= 2) //Needs to be hardcoded as this is based on sound.
-			if(!transit(transit_bluespace,transit_target))
+			if(!transit(transit_target))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 			if(end_sound)
@@ -186,60 +185,79 @@ var/global/list/all_shuttle_controlers = list()
 	return TRUE
 
 
-/obj/shuttle_controller/proc/transit(var/starting_transit_id,var/ending_transit_id)
+/obj/shuttle_controller/proc/transit(var/ending_marker_type,var/accelerating=FALSE)
 
-	var/area/transit/starting_transit = transit_areas[starting_transit_id]
-	var/area/transit/ending_transit = transit_areas[ending_transit_id]
+	var/list/areas_to_upate = list()
 
-	//log_debug("SHUTTLE: [src.get_debug_name()] moving from [starting_transit.get_debug_name()] to [ending_transit.get_debug_name()].")
+	var/turf/starting_turf = get_turf(src)
+	var/area/starting_area = starting_turf.loc
+	areas_to_upate |= starting_area
 
-	var/starting_cord_x = starting_transit.x
-	var/starting_cord_y = starting_transit.y
+	if(!istype(starting_turf.loc,/area/shuttle))
+		CRASH("SHUTTLE ERROR: [src.get_debug_name()] is not in a valid shuttle area!")
+		return FALSE
 
-	var/ending_cord_x = ending_transit.x
-	var/ending_cord_y = ending_transit.y
-	var/ending_cord_z = ending_transit.z
+	var/obj/marker/shuttle/shuttle_marker = shuttle_markers[ending_marker_type] //Shuttle marker to transport to.
+
+	if(!shuttle_marker)
+		CRASH("SHUTTLE ERROR: [src.get_debug_name()] could not find a valid shuttle marker of id [ending_marker_type]!")
+		return FALSE
 
 	var/transit_throw_x = 0
 	var/transit_throw_y = 0
 
-	var/reverse = ending_transit_id != transit_bluespace
-
 	switch(src.dir)
 		if(NORTH)
-			transit_throw_y += reverse ? 1 : -1
+			transit_throw_y += accelerating ? 1 : -1
 		if(EAST)
-			transit_throw_x += reverse ? 1 : -1
+			transit_throw_x += accelerating ? 1 : -1
 		if(SOUTH)
-			transit_throw_y -= reverse ? 1 : -1
+			transit_throw_y -= accelerating ? 1 : -1
 		if(WEST)
-			transit_throw_x -= reverse ? 1 : -1
+			transit_throw_x -= accelerating ? 1 : -1
 
 	var/list/atom/movable/objects_to_throw = list()
 
-	//var/found_turfs = 0
-	for(var/turf/T in starting_transit)
-		CHECK_TICK(75,FPS_SERVER)
+	var/list/valid_turfs = list()
+
+	for(var/turf/simulated/T in starting_area) //This is needed or else thing will be buggy.
 		if(T.plane != PLANE_SHUTTLE)
 			continue
-		var/offset_x = T.x - starting_cord_x
-		var/offset_y = T.y - starting_cord_y
-		var/turf/replacing_turf = locate(ending_cord_x + offset_x, ending_cord_y + offset_y, ending_cord_z)
-		if(!replacing_turf)
-			//log_error("Warning: Could not find a replacing turf for [src.get_debug_name()] at [ending_cord_x + offset_x],[ending_cord_y + offset_y],[ending_cord_z].")
+		valid_turfs += T
+
+	var/original_x = src.x
+	var/original_y = src.y
+
+	for(var/j in valid_turfs)
+		var/turf/T = j
+		CHECK_TICK(75,FPS_SERVER)
+		var/offset_x = T.x - original_x
+		var/offset_y = T.y - original_y
+		var/turf/T_to_replace = locate(shuttle_marker.x + offset_x, shuttle_marker.y + offset_y, shuttle_marker.z)
+		if(!T_to_replace)
+			log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at [shuttle_marker.x + offset_x],[shuttle_marker.y + offset_y],[shuttle_marker.z].")
 			continue
 
-		for(var/k in replacing_turf.contents)
+		for(var/k in T_to_replace.contents)
 			var/atom/movable/M = k
 			M.on_crush()
-		if(!replacing_turf.stored_shuttle_items) replacing_turf.stored_shuttle_items = list()
-		var/list/stored_items = list()
-		for(var/obj/item/I in replacing_turf.contents) //Second pass. Get everything that might've been crushed.
-			stored_items += I
-			I.force_move(src)
-		replacing_turf.change_turf(T.type,TRUE,TRUE)
-		replacing_turf.stored_shuttle_items = stored_items
 
+		if(!T_to_replace.stored_shuttle_items) T_to_replace.stored_shuttle_items = list() //Create the list it needs to store shuttle items.
+
+		for(var/obj/item/I in T_to_replace.contents) //Second pass. Get everything that might've been crushed. The second pass is one here as some containers/mobs/ect may drop items.
+			T_to_replace.stored_shuttle_items += I
+			I.force_move(src) //Stored in the shuttle controller, for now.
+
+		var/turf/old_turf_type = T.type
+		var/area/old_area_type = T.loc.type
+		areas_to_upate |= T.loc
+		T_to_replace.change_turf(T.type,TRUE,TRUE) //From destination turf to shuttle turf.
+		T_to_replace.change_area(T.loc.type) //From destination area to shuttle area.
+		T_to_replace.transit_turf = old_turf_type
+		T_to_replace.transit_area = old_area_type
+		areas_to_upate |= T.loc
+
+		//Okay, time to move everything.
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			CHECK_TICK(75,FPS_SERVER)
@@ -247,15 +265,24 @@ var/global/list/all_shuttle_controlers = list()
 				continue
 			if(M.loc != T)
 				continue
-			M.move_delay = SECONDS_TO_TICKS(3)
-			M.force_move(replacing_turf)
+			M.next_move = max(M.next_move,SECONDS_TO_TICKS(3))
+			M.force_move(T_to_replace)
 			if(enable_shuttle_throwing)
 				objects_to_throw += M
+
 		for(var/k in T.stored_shuttle_items)
 			var/obj/item/I = k
 			I.drop_item(T)
 			T.stored_shuttle_items -= I
-		T.change_turf(starting_transit.transit_turf,TRUE,TRUE)
+
+		var/area/shuttle/A = T.loc
+		T.change_area(T.transit_area ? T.transit_area : A.shuttle_area) //From shuttle area to old turf that existed under.
+		T.change_turf(T.transit_turf ? T.transit_turf : A.shuttle_turf,TRUE,TRUE) //From shuttle turf to old turf that existed under.
+		areas_to_upate |= T.loc
+
+	for(var/k in areas_to_upate)
+		var/area/A = k
+		A.generate_average()
 
 	if(enable_shuttle_throwing)
 		for(var/k in objects_to_throw)

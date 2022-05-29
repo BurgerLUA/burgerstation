@@ -1,5 +1,4 @@
 /damagetype/npc/captain_beepsky
-	name = "Bluespace Stunbaton"
 	attack_verbs = list("stun")
 	weapon_name = "bluespace stunbaton"
 

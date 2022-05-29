@@ -49,9 +49,14 @@
 
 	input = sanitize(input,max_length)
 
-	if(caller && SSbadwords.has_badword(input))
-		caller.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
-		return FALSE
+	if(caller)
+		if(forbidden_characters && forbidden_characters.Find(input)) //Буквально 1984
+			if(SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"])
+				caller.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"]))
+			return FALSE
+		if(SSbadwords.has_badword(input))
+			caller.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
+			return FALSE
 
 	return input
 
@@ -187,3 +192,11 @@ var/global/regex/illegal_name_characters = regex("\[^(A-Z,a-z,\\s,&,',0-9,\\-)\]
 
 	if(has_forbidden)
 		caller?.to_chat(span("warning","Your name contained forbidden characters, and thus was removed of them."))
+
+/proc/ref2num(var/ref)
+	return text2num(copytext(ref,2,-1),16)
+
+// Used to get a sanitized input.
+/proc/stripped_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
+	var/name = input(user, message, title, default) as text|null
+	return html_encode(trim(name, max_length))

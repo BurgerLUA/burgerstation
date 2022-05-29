@@ -10,3 +10,11 @@
 	item_slot_additional = SLOT_GROIN
 
 	item_slot_layer = 2
+
+	hidden_organs = list(
+		BODY_GROIN = TRUE,
+		BODY_LEG_LEFT = TRUE,
+		BODY_LEG_RIGHT = TRUE
+	)
+
+	uses_until_condition_fall = 300

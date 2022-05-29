@@ -7,6 +7,8 @@
 
 	movement_spread_base = 0.03
 
+	var/pump_delay = 1
+
 
 /obj/item/weapon/ranged/bullet/pump/proc/pump(var/mob/caller,var/silent=FALSE)
 
@@ -34,7 +36,10 @@
 
 /obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller)
 
-	if(next_shoot_time > world.time + 1)
+	if(next_shoot_time > world.time + pump_delay)
+		return TRUE
+
+	if(next_shoot_time > world.time + shoot_delay)
 		return TRUE
 
 	INTERACT_CHECK
@@ -42,7 +47,7 @@
 
 	pump()
 
-	next_shoot_time = world.time + 1
+	next_shoot_time = world.time + pump_delay
 
 	return TRUE
 

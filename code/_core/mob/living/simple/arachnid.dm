@@ -16,26 +16,15 @@
 	stun_angle = 0
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid,
-		/obj/item/container/food/dynamic/meat/raw_arachnid
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid,
+		/obj/item/container/edible/dynamic/meat/raw_arachnid
 	)
 
-	armor_base = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 10,
-		LASER = -20,
-		HEAT = 40,
-		COLD = -40,
-		BIO = 60,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 60
-	)
+	armor = /armor/arachnid
 
 	iff_tag = "Jungle"
 	loyalty_tag = "Jungle"
@@ -58,7 +47,7 @@
 
 	object_size = 2
 
-	level = 12
+	level = 22
 
 /mob/living/simple/arachnid/post_death()
 	. = ..()

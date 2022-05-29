@@ -7,9 +7,9 @@
 	damage_type = /damagetype/npc/chicken
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/chicken/raw/,
-		/obj/item/container/food/dynamic/chicken/raw/,
-		/obj/item/container/food/dynamic/chicken/raw/
+		/obj/item/container/edible/dynamic/chicken/raw/,
+		/obj/item/container/edible/dynamic/chicken/raw/,
+		/obj/item/container/edible/dynamic/chicken/raw/
 	)
 	size = SIZE_CRITTER
 

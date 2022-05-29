@@ -40,3 +40,14 @@
 	new /obj/item/weapon/melee/tool/wrench(src)
 	new /obj/item/weapon/melee/torch/flashlight(src)
 	return ..()
+
+/obj/item/weapon/melee/toolbox/gold
+	name = "golden toolbox"
+	desc = "WARNING: Shiny!"
+	desc_extended = "A gold plated toolbox awarded to the most robust of assistants. Can also be used to store tools."
+	icon = 'icons/obj/item/weapons/melee/toolbox/gold.dmi'
+	damage_type = /damagetype/melee/club/gold_toolbox
+
+
+
+	value = 10000

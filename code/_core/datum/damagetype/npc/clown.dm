@@ -1,5 +1,4 @@
 /damagetype/npc/clown
-	name = "clown honk"
 	attack_verbs = list("honk")
 
 	impact_sounds = list('sound/items/bikehorn.ogg')

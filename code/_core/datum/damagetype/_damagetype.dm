@@ -1,5 +1,6 @@
+var/global/list/all_damage_numbers = list()
+
 /damagetype/
-	var/name = "Damage type."
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
 	var/weapon_name
@@ -23,8 +24,6 @@
 
 	var/attack_delay_mod = 1
 
-	var/block_coefficient = 0.25 //The block co-efficient. High values means it penetrates armor easier.
-
 	var/obj/effect/temp/impact/combat/hit_effect = /obj/effect/temp/impact/combat/smash
 
 	var/draw_blood = FALSE //This weapon causes blood visual effects.
@@ -43,6 +42,7 @@
 		HEAT = BURN,
 		COLD = list(BURN,FATIGUE),
 		SHOCK = list(BURN,FATIGUE),
+		ACID = BURN,
 		BOMB = list(BRUTE,BURN),
 		BIO = TOX,
 		RAD = list(RAD,BURN),
@@ -59,6 +59,27 @@
 		BLUNT = 0.15,
 		PIERCE = 0.05,
 		BOMB = 0.5
+	)
+
+	var/list/damage_type_to_pain = list(
+		BLADE = 0.25,
+		BLUNT = 0.25,
+		PIERCE = 0.125,
+		LASER = 0.25,
+		ARCANE = 0.125,
+		HEAT = 0.125,
+		COLD = 0,
+		SHOCK = 0.75,
+		ACID = 0.75,
+		BOMB = 0.25,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0.25,
+		DARK = 0.5,
+		FATIGUE = 0,
+		PAIN = 0,
+		ION = 0,
+		SANITY = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -111,7 +132,9 @@
 
 	var/attack_animation_distance = 18
 
-	var/savage_hit_threshold = 0.3 //30%
+	var/savage_hit_threshold = 0.4 //40%
+
+	var/sneak_attack_multiplier = 2 //200%
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -158,6 +181,8 @@
 	return ATTACK_TYPE_MELEE
 
 /damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
+	if(!victim)
+		victim = get_step(attacker,attacker.dir)
 	. = max(1,do_attack_animation(attacker,victim,weapon))
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
@@ -168,6 +193,9 @@
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
+
+/damagetype/proc/do_sneak_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+	return sneak_attack_multiplier
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
@@ -204,6 +232,15 @@
 
 	return new_attack_damage
 
+/damagetype/proc/get_sneak_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+			return TRUE
+
+	return FALSE
+
 /damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	if(!attacker.is_player_controlled() || victim.is_player_controlled())
@@ -218,11 +255,6 @@
 			var/obj/hud/inventory/I = M.grabbing_hand
 			if(I.owner == attacker)
 				return TRUE
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
-			return TRUE
 
 	var/crit_chance = get_crit_chance(attacker)
 
@@ -240,8 +272,7 @@
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
 	if(!length(victims))
-		CRASH_SAFE("Swing had no victims!")
-		return FALSE
+		return perform_miss(attacker,null,weapon)
 
 	if(!length(hit_objects))
 		return perform_miss(attacker,victims[1],weapon)
@@ -259,13 +290,13 @@
 
 		if(is_advanced(victim))
 			var/mob/living/advanced/A = victim
-			if(i==1 && is_weapon(weapon))
-				if(is_weapon(A.left_item) && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
+			if(i==1 && !ismob(weapon))
+				if(A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]"))
 					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.left_item]")
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.left_item]")
 						return perform_clash(attacker,victim,weapon,A.left_item)
-				if(is_weapon(A.right_item) && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
+				if(A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]"))
 					var/list/callback_data = CALLBACK_EXISTS("hit_\ref[A.right_item]")
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.right_item]")
@@ -328,27 +359,21 @@
 /damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
 	if(!is_valid(attacker))
-		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no attacker!")
 		return FALSE
 
 	if(!is_valid(victim))
-		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim!")
 		return FALSE
 
 	if(!is_valid(weapon))
-		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no weapon!")
 		return FALSE
 
 	if(!is_valid(hit_object))
-		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no hit_object!")
 		return FALSE
 
 	if(!is_valid(hit_object.health))
-		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no hit_object health! (Hitobject: [hit_object])")
 		return FALSE
 
 	if(!is_valid(victim.health))
-		CRASH_SAFE("Could not process damage ([get_debug_name()]) as there was no victim health! (Victim: [victim])")
 		return FALSE
 
 	if(debug)
@@ -356,6 +381,8 @@
 		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
 
 	var/block_multiplier = 0 //Different from damage_multiplier.
+	var/atom/block_atom = null
+
 	if(attacker != victim && is_living(victim))
 		var/mob/living/L = victim
 		//Getting the damage
@@ -374,12 +401,11 @@
 				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
 				return FALSE
 		//Blocking
-		if(L.attack_flags & CONTROL_MOD_BLOCK && abs(get_angle(victim,attacker)) <= 90)
-			block_multiplier = L.get_block_multiplier(attacker,weapon,hit_object,blamed,src)
-			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier,block_multiplier)
-		else
-			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,damage_multiplier)
-
+		if(L.blocking)
+			var/list/block_data = L.get_block_data(attacker,weapon,hit_object,blamed,src)
+			if(block_data)
+				block_atom = block_data[1]
+				block_multiplier = block_data[2]
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 	var/list/damage_to_deal_main = list(
@@ -393,9 +419,12 @@
 		SANITY = 0
 	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
+	critical_hit_multiplier *= get_sneak_hit_condition(attacker,victim,weapon,hit_object) ? do_sneak_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
 	var/fatigue_damage = 0
+	var/pain_damage = 0
 
-	var/damage_blocked = 0
+	var/damage_blocked_with_armor = 0
+	var/damage_blocked_with_shield = 0
 	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
@@ -415,6 +444,7 @@
 			var/blocked_damage = block_multiplier * old_damage_amount
 			old_damage_amount -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
+			damage_blocked_with_shield += blocked_damage
 		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
@@ -422,7 +452,7 @@
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense.")
 			continue
-		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists.
+		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists. Also makes it so that negative armor penetration penalties apply when there is armor.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
@@ -435,24 +465,37 @@
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
-		damage_blocked += damage_to_block
+		damage_blocked_with_armor += damage_to_block
 		damage_to_deal[damage_type] = CEILING(max(0,new_damage_amount),1)
-		if(damage_type != FATIGUE && damage_type_to_fatigue[damage_type])
-			var/fatigue_damage_to_convert = damage_blocked*damage_type_to_fatigue[damage_type]
+		if(damage_type_to_fatigue[damage_type])
+			var/fatigue_damage_to_convert = damage_to_block*damage_type_to_fatigue[damage_type]
 			if(is_living(victim))
 				var/mob/living/L = victim
-				fatigue_damage_to_convert *= L.fatigue_from_block_mul
+				fatigue_damage_to_convert *= L.fatigue_mul
 			if(debug) log_debug("Converting blocked [damage_type] damage into [fatigue_damage_to_convert] fatigue damage.")
 			fatigue_damage += fatigue_damage_to_convert
+		if(damage_type_to_pain[damage_type])
+			var/pain_damage_to_add = damage_to_deal[damage_type]*clamp(damage_type_to_pain[damage_type],0,1)
+			if(is_living(victim))
+				var/mob/living/L = victim
+				pain_damage_to_add *= L.pain_mul
+			if(debug) log_debug("Adding [damage_type] damage into [pain_damage_to_add] pain damage.")
+			pain_damage += pain_damage_to_add
 
 	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
 		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
 		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
 
+	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[PAIN]))
+		damage_to_deal[PAIN] += CEILING(pain_damage,1)
+		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
+
+	var/total_damage_dealt = 0
 	for(var/damage_type in damage_to_deal)
 		var/damage_amount = damage_to_deal[damage_type]
 		if(!damage_amount)
 			continue
+		total_damage_dealt += damage_amount
 		var/real_damage_type = attack_damage_conversion[damage_type]
 		if(islist(real_damage_type))
 			var/list_length = length(real_damage_type)
@@ -464,27 +507,27 @@
 			damage_to_deal_main[real_damage_type] += CEILING(damage_amount,1)
 			if(debug) log_debug("Converting [damage_amount] [damage_type] damage into [damage_amount] [real_damage_type] damage.")
 
-	var/total_damage_dealt = 0
-	if(victim.immortal || hit_object.immortal)
-		for(var/damage_type in damage_to_deal_main)
-			total_damage_dealt += damage_to_deal_main[damage_type]
-	else
-		if(hit_object.health)
-			total_damage_dealt += hit_object.health.adjust_loss_smart(
-				brute = damage_to_deal_main[BRUTE],
-				burn = damage_to_deal_main[BURN],
-				tox = damage_to_deal_main[TOX],
-				oxy = damage_to_deal_main[OXY],
-				fatigue = damage_to_deal_main[FATIGUE],
-				pain = damage_to_deal_main[PAIN],
-				rad = damage_to_deal_main[RAD],
-				sanity = damage_to_deal_main[SANITY],
-				mental = damage_to_deal_main[MENTAL],
-				update = FALSE
-			)
-		else
-			CRASH_SAFE("ERROR: Tried dealing damage to object [hit_object], but it had no health!")
-			return TRUE
+	if(defense_rating_victim && defense_rating_victim["items"])
+		for(var/k in defense_rating_victim["items"])
+			var/obj/item/I = k
+			if(I.uses_until_condition_fall > 0)
+				I.use_condition(total_damage_dealt)
+			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
+				total_damage_dealt = 0
+
+	if(total_damage_dealt > 0 && hit_object.health)
+		total_damage_dealt = hit_object.health.adjust_loss_smart(
+			brute = damage_to_deal_main[BRUTE],
+			burn = damage_to_deal_main[BURN],
+			tox = damage_to_deal_main[TOX],
+			oxy = damage_to_deal_main[OXY],
+			fatigue = damage_to_deal_main[FATIGUE],
+			pain = damage_to_deal_main[PAIN],
+			rad = damage_to_deal_main[RAD],
+			sanity = damage_to_deal_main[SANITY],
+			mental = damage_to_deal_main[MENTAL],
+			update = FALSE
+		)
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
@@ -493,7 +536,7 @@
 		L.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
-	do_attack_sound(attacker,victim,weapon,hit_object)
+	do_attack_sound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
 	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
@@ -562,13 +605,37 @@
 						final_experience += "[v] [k] xp"
 					A.to_chat(span("notice","You gained [english_list(final_experience)]."),CHAT_TYPE_COMBAT)
 
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(block_multiplier > 0)
+			L.on_blocked_hit(attacker,weapon,hit_object,blamed,src,block_atom,block_multiplier,damage_blocked_with_shield)
+		else
+			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
+
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+
+	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
+		var/turf/T = victim.loc
+		if(T)
+			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
+			var/obj/effect/damage_number/DN
+			if(length(all_damage_numbers) && all_damage_numbers[desired_id])
+				DN = all_damage_numbers[desired_id]
+				DN.add_value(total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
+			else
+				DN = new(T,total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,desired_id)
 
 	if(istype(weapon,/obj/item/weapon))
 		var/obj/item/weapon/W = weapon
 		if(W.reagents && victim.reagents)
 			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
 			W.reagents.remove_all_reagents()
+		if(W.enchantment && W.enchantment.charge >= 0)
+			W.enchantment.on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
+			W.enchantment.charge -= W.enchantment.cost
+			if(W.enchantment.charge <= 0)
+				qdel(W.enchantment)
+				W.enchantment = null
 
 	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)
@@ -584,38 +651,29 @@
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
 
-	if(victim.health && victim.health.health_max && ismovable(victim))
-		var/atom/movable/A = victim
-		if(A.anchored)
-			return
+	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+	var/list/offsets = get_directional_offsets(attacker,victim)
 
-		var/multiplier = TILE_SIZE * (damage_dealt / victim.health.health_max) * 2
-		multiplier = clamp(multiplier,0,TILE_SIZE*0.25)
+	if(ismob(victim))
+		var/mob/M = victim
+		if(M.client)
+			M.client.add_queued_recoil(offsets[1]*multiplier,offsets[2]*multiplier,attack_delay)
 
-		var/attack_direction = get_dir(attacker,victim)
-		var/list/offsets = direction_to_pixel_offset(attack_direction)
+	if(ismob(attacker))
+		var/mob/M = attacker
+		if(M.client)
+			M.client.add_queued_recoil(offsets[1]*multiplier*0.5,offsets[2]*multiplier*0.5,attack_delay,TRUE)
 
-		if(ismob(victim))
-			var/mob/M = victim
-			if(M.client)
-				M.client.desired_punch_x += offsets[1]*multiplier
-				M.client.desired_punch_y += offsets[2]*multiplier
+/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
-		else if(victim.health.health_current - damage_dealt <= 0)
-			if(victim.pixel_x == initial(victim.pixel_x) && victim.pixel_y == initial(victim.pixel_y))
-				animate(victim, pixel_x = initial(victim.pixel_x) + offsets[1]*multiplier, pixel_y = initial(victim.pixel_y) + offsets[2]*multiplier,time=2)
-		else
-			animate(victim, pixel_x = initial(victim.pixel_x) + offsets[1]*multiplier, pixel_y = initial(victim.pixel_y) + offsets[2]*multiplier,time=1)
-			animate(pixel_x = initial(victim.pixel_x), pixel_y = initial(victim.pixel_y), time = 5)
-
-/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+	var/desired_volume = 25 + min(75,total_damage_dealt/2)
 
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE)
+		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE,volume=desired_volume)
 
 	if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
-		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE)
+		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
 
 	return TRUE
 
@@ -635,16 +693,20 @@
 
 /damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	if(!attacker)
+		return 0
+
 	var/attack_delay = get_attack_delay(attacker)
 
-	var/list/pixel_offset = direction_to_pixel_offset(get_dir(attacker,victim))
+	var/list/pixel_offset = get_directional_offsets(attacker,victim)
 
-	if(is_living(attacker))
-		var/mob/living/L = attacker
-		var/matrix/attack_matrix = L.get_base_transform()
-		attack_matrix.Translate(pixel_offset[1]*attack_animation_distance,pixel_offset[2]*attack_animation_distance)
-		animate(L, transform = attack_matrix, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL, easing = BACK_EASING) // This does the attack
-		animate(transform = L.get_base_transform(), time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL) //This does the reset.
+	animate(attacker, pixel_x = pixel_offset[1]*attack_animation_distance, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
+	animate(pixel_x = -pixel_offset[1]*attack_animation_distance, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
+
+	if(ismob(attacker))
+		var/mob/M = attacker
+		if(M.client)
+			M.client.add_queued_recoil(pixel_offset[1],pixel_offset[2],attack_delay*0.125,attack_delay)
 
 	. = CEILING(attack_delay,1)
 

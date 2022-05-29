@@ -1,93 +1,68 @@
+var/global/power_id = 1
+
 /power_network/
-	var/list/obj/structure/interactive/powered/connected_machinery = list()
 	var/list/obj/structure/interactive/wire/connected_wires = list()
+	var/list/obj/structure/interactive/wire/connected_wires_with_machines = list()
 	var/power_supply = 0
 	var/power_draw = 0
+	var/id = 0
 
-	var/queue_wire_update = FALSE
+/power_network/New(var/desired_loc)
+	. = ..()
+	SSpower.all_power_networks += src
+	id = power_id
+	power_id++
 
 /power_network/Destroy()
 
-	for(var/k in connected_machinery)
-		var/obj/structure/interactive/powered/P = k
-		src.remove_machine(P)
-
 	for(var/k in connected_wires)
-		var/obj/structure/interactive/wire/W = k
-		src.remove_wire(W)
+		src.remove_wire(k)
 
-	connected_machinery.Cut()
-	connected_wires.Cut()
 	power_supply = null
 	power_draw = null
 
-/power_network/proc/update_wires()
+	SSpower.all_power_networks -= src
 
-	if(!length(connected_wires))
-		qdel(src)
-		return FALSE
+	. = ..()
 
-	var/obj/structure/interactive/wire/master_wire = connected_wires[1]
-	for(var/k in connected_wires - master_wire)
+/power_network/proc/power_process()
+
+	var/power_multiplier = power_supply && power_draw ? min(1,power_supply / power_draw) : 0
+
+	for(var/k in connected_wires_with_machines)
 		var/obj/structure/interactive/wire/W = k
-		src.remove_wire(W)
+		W.connected_machine.power_process(power_multiplier)
 
-	var/list/wires_to_update = master_wire.get_all_connections()
-	for(var/k in wires_to_update)
-		var/obj/structure/interactive/wire/W = k
-		src.add_wire(W)
-
-	return TRUE
-
-/power_network/proc/add_machine(var/obj/structure/interactive/powered/machine)
-
-	if(!machine)
-		return FALSE
-
-	connected_machinery |= machine
-	machine.power_network = src
-
-	machine.update_power_draw(machine.get_power_draw())
-	machine.update_power_supply(machine.get_power_supply())
-
-	return TRUE
-
-/power_network/proc/remove_machine(var/obj/structure/interactive/powered/machine)
-
-	if(!machine)
-		return FALSE
-
-	machine.update_power_draw(0)
-	machine.update_power_supply(0)
-
-	machine.power_network = null
-	connected_machinery -= machine
-
-	return TRUE
-
-
+//Handling wires.
 /power_network/proc/add_wire(var/obj/structure/interactive/wire/wire)
 
-	if(!wire)
-		return FALSE
+	if(src.qdeleting)
+		CRASH("Tried adding a wire to a qdeleting power network!")
+
+	if(wire.power_network) //Removing from existing power network.
+		wire.power_network.remove_wire(wire)
+
+	wire.power_network = src
+	connected_wires |= wire
 
 	if(wire.connected_machine)
-		add_machine(wire.connected_machine)
+		connected_wires_with_machines |= wire
+		wire.connected_machine.update_power_draw(wire.connected_machine.get_power_draw(),reset=TRUE)
+		wire.connected_machine.update_power_supply(wire.connected_machine.get_power_supply(),reset=TRUE)
 
-	connected_wires |= wire
-	wire.power_network = src
+	wire.color = initial(wire.color)
 
 	return TRUE
 
 /power_network/proc/remove_wire(var/obj/structure/interactive/wire/wire)
 
-	if(!wire)
-		return FALSE
-
 	if(wire.connected_machine)
-		remove_machine(wire.connected_machine)
+		wire.connected_machine.update_power_draw(0)
+		wire.connected_machine.update_power_supply(0)
+		connected_wires_with_machines -= wire
 
-	connected_wires -= wire
 	wire.power_network = null
+	connected_wires -= wire
+	wire.color = "#000000"
 
 	return TRUE

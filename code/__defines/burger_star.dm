@@ -1,1 +1,0 @@
-#define BURGER_STAR_LIMIT 255 //Iteration limit

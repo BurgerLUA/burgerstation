@@ -2,7 +2,7 @@ obj/item/clothing/back/storage/backpack/explorer
 	name = "explorer's pack"
 	desc = "Lightweight and reliable!"
 	desc_extended = "A small gear harness designed to carry a small amount of large items. Perfect for looters of the battlefield."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/clothing/back/backpack/explorer_pack.dmi'
 
 	dynamic_inventory_count = MAX_INVENTORY_X*2
@@ -21,9 +21,9 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/grenade(src)
 	new /obj/item/grenade/landmine(src)
 	new /obj/item/grenade/landmine(src)
-	new /obj/item/deployable/barricade/filled(src)
+	new /obj/item/deployable/barricade{amount=10}(src)
 	new /obj/item/storage/kit/filled(src)
-	new /obj/item/supply_crate/russian(src)
+	new /obj/item/supply_crate/slavic(src)
 
 	//1 Weapon
 	new /obj/item/weapon/ranged/bullet/magazine/rifle/ak12(src)
@@ -37,9 +37,9 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/magazine/rifle_545(src)
 
 	//1 Vodka
-	new /obj/item/container/beaker/alcohol/vodka(src)
+	new /obj/item/container/simple/vodka(src)
 
-	return ..()
+	. = ..()
 
 /obj/item/clothing/back/storage/backpack/explorer/medical
 	name = "medical explorer's pack"
@@ -68,9 +68,9 @@ obj/item/clothing/back/storage/backpack/explorer/rev/fill_inventory()
 	new /obj/item/magazine/rifle_545(src)
 
 	//1 Vodka
-	new /obj/item/container/beaker/alcohol/vodka(src)
+	new /obj/item/container/simple/vodka(src)
 
-	return ..()
+	. = ..()
 
 /obj/item/clothing/back/storage/backpack/explorer/black
 	name = "black explorer's pack"

@@ -4,10 +4,7 @@
 	desc = "Poor people wear these."
 	desc_extended = "It's a hat made out of an innocent beaver. It was a vain sacrifice on it's part, since it's ugly as shit."
 
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = 20
-	)
+	armor = /armor/cloth
 
 	size = SIZE_2
 

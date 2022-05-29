@@ -26,39 +26,23 @@
 
 	blood_type = null
 
-	armor_base = list(
-		LASER = 80,
-		ARCANE = 80,
-		HEAT = 80,
-		COLD = 80,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -40,
-		DARK = 40,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/legion
 
 	soul_size = null
 
-	level = 2
+	level = 4
+
+	delete_on_death = TRUE
 
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 
 /mob/living/simple/legionare_head/Destroy()
-
+	. = ..()
 	if(parent_legion)
 		parent_legion.tracked_heads -= src
 		parent_legion = null
 
-	return ..()
-
-/mob/living/simple/legionare_head/post_death()
-	qdel(src)
-	return ..()
 
 /mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
 
@@ -75,6 +59,6 @@
 	GENERATE(L)
 	FINALIZE(L)
 
-	qdel(src)
+	death(TRUE)
 
 	return TRUE

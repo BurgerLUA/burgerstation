@@ -9,7 +9,7 @@
 	container_max_slots = 1
 
 	container_whitelist = list(
-		/obj/item/container/food/egg/chicken,
+		/obj/item/container/edible/egg/chicken,
 	)
 
 	size = SIZE_3
@@ -29,8 +29,8 @@
 
 /obj/item/storage/egg_carton/fill_inventory()
 	for(var/i=1,i<=dynamic_inventory_count,i++)
-		new/obj/item/container/food/egg/chicken(src)
-	return ..()
+		new/obj/item/container/edible/egg/chicken(src)
+	. = ..()
 
 /obj/item/storage/egg_carton/update_inventory()
 	. = ..()

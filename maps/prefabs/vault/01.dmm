@@ -1,0 +1,124 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/plating/syndicate,
+/area)
+"b" = (
+/turf/simulated/wall/metal/reinforced/syndicate,
+/area)
+"c" = (
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"d" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/marker/spawning/random/vault_loot/secure,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"e" = (
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"f" = (
+/mob/living/simple/turret/syndicate,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"g" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/obj/marker/spawning/random/vault_loot/secure,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"h" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/marker/spawning/random/vault_loot,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"i" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/marker/spawning/random/vault_loot,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"j" = (
+/obj/structure/interactive/lighting/fixture/floor/syndicate,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"k" = (
+/obj/structure/interactive/power/apc{
+	icon_state = "apc";
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced/syndicate,
+/area)
+"l" = (
+/obj/structure/interactive/door/vault/syndicate,
+/turf/simulated/floor/plating/syndicate,
+/area)
+"m" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 8
+	},
+/obj/marker/spawning/random/vault_loot,
+/turf/simulated/floor/plating/syndicate,
+/area)
+
+(1,1,1) = {"
+b
+b
+b
+b
+b
+b
+k
+b
+f
+"}
+(2,1,1) = {"
+b
+d
+e
+h
+i
+h
+c
+b
+j
+"}
+(3,1,1) = {"
+b
+g
+e
+a
+a
+a
+c
+l
+a
+"}
+(4,1,1) = {"
+b
+d
+e
+h
+m
+h
+c
+b
+j
+"}
+(5,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+f
+"}

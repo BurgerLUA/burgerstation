@@ -1,13 +1,13 @@
-var/global/list/area/transit/transit_areas = list()
-
 /area/transit
 	name = "transit"
 	icon_state = "shuttle"
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
+	flags_area = FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_TELEPORT
 	var/turf/transit_turf = /turf/simulated/floor/plating
 	safe_storage = TRUE
 	trackable = TRUE
-	allow_ghosts = FALSE
+	allow_ghost = FALSE
+	map_color = COLOR_PINK
+	interior = TRUE
 
 /area/transit/New(var/desired_loc)
 	transit_areas[type] = src

@@ -1,15 +1,14 @@
-/obj/item/container/pill
+/obj/item/container/edible/pill
 	name = "pill"
 	desc = "FLOORPILL"
+	desc_extended = "Hope you remember what the pill is."
 
 	icon = 'icons/obj/item/container/pills.dmi'
 	icon_state = "rectangle"
 
-	desc_extended = "Hope you remember what the pill is."
-
 	size = SIZE_0
 
-	value = 0
+	value = 1
 
 	allow_reagent_transfer_from = FALSE
 
@@ -17,24 +16,34 @@
 
 	reagents = /reagent_container/pill
 
-/obj/item/container/pill/get_consume_verb()
+	has_quick_function = TRUE
+
+	scale_sprite = FALSE
+
+/obj/item/container/edible/pill/get_consume_size(var/mob/living/L)
+	return reagents.volume_current
+
+/obj/item/container/edible/pill/quick(var/mob/caller,var/atom/object,location,params)
+	return try_transfer_reagents(caller,caller,location,null,params)
+
+/obj/item/container/edible/pill/get_consume_verb()
 	return "swallow"
 
-/obj/item/container/pill/get_consume_sound()
+/obj/item/container/edible/pill/get_consume_sound()
 	return null
 
-/obj/item/container/pill/get_examine_list(var/mob/examiner)
+/obj/item/container/edible/pill/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/pill/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/edible/pill/Finalize()
 	. = ..()
-	if(.) qdel(src)
+	if(reagents && reagents.volume_current <= 0) //Pills can't contain nothing.
+		qdel(src)
+	else
+		reagents.volume_max = reagents.volume_current
+		update_sprite()
 
-/obj/item/container/pill/Generate()
-	. = ..()
-	update_sprite()
-
-/obj/item/container/pill/update_sprite()
+/obj/item/container/edible/pill/update_sprite()
 
 	. = ..()
 

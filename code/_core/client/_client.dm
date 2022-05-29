@@ -13,9 +13,11 @@ var/global/list/all_clients = list() //Assoc list
 	view = VIEW_RANGE
 	perspective = EYE_PERSPECTIVE
 
-	var/list/obj/hud/inventory/known_inventory
-	var/list/obj/hud/button/known_buttons
-	var/list/obj/hud/button/known_health_elements
+	var/selected_hand //Set to a value of LEFT_HAND or RIGHT_HAND to enable. Null to disable.
+
+	var/list/obj/hud/inventory/known_inventory = list()
+	var/list/obj/hud/button/known_buttons = list()
+	var/list/obj/hud/button/known_stat_elements = list()
 
 	var/zoom_level = 2
 
@@ -69,14 +71,8 @@ var/global/list/all_clients = list() //Assoc list
 	var/zoom_pixel_x = 0
 	var/zoom_pixel_y = 0
 
-	var/desired_pixel_x = 0
-	var/desired_pixel_y = 0
-
-	var/desired_recoil_x = 0
-	var/desired_recoil_y = 0
-
-	var/desired_punch_x = 0
-	var/desired_punch_y = 0
+	var/final_pixel_x = 0
+	var/final_pixel_y = 0
 
 	var/precise_zoom = FALSE
 
@@ -88,11 +84,21 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/list/icon_request_details
 
+	var/list/tracked_sounds = list()
+
+	show_popup_menus = FALSE
+
+	var/drag_last = 0
+
+	var/list/queued_recoil = list()
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 
 /client/proc/get_debug_name()
-	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[mob.x];y=[mob.y];z=[mob.z]'>([mob.x],[mob.y],[mob.z])</a>" : "NONE"])"
+	var/turf/T
+	if(mob) T = get_turf(mob)
+	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>" : "NONE"])"
 
 /client/proc/get_log_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
@@ -101,17 +107,10 @@ var/global/list/all_clients = list() //Assoc list
 
 	all_clients -= src.ckey
 
-	if(known_inventory)
-		known_inventory.Cut()
-
-	if(known_buttons)
-		known_buttons.Cut()
-
-	if(known_health_elements)
-		known_health_elements.Cut()
-
-	if(stored_hud_images)
-		stored_hud_images.Cut()
+	known_inventory?.Cut()
+	known_buttons?.Cut()
+	known_stat_elements?.Cut()
+	stored_hud_images?.Cut()
 
 	last_location = null
 	last_object = null
@@ -173,13 +172,13 @@ var/global/list/all_clients = list() //Assoc list
 	if(!bankdata)
 		new/savedata/client/bank(ckey)
 
+	var/savedata/client/loadout/loadoutdata = ckey_to_loadout_data[ckey]
+	if(!loadoutdata)
+		new/savedata/client/loadout(ckey)
+
 	var/savedata/client/mob/mobdata = MOBDATA(ckey)
 	if(!mobdata)
 		new/savedata/client/mob(ckey)
-
-	known_health_elements = list()
-	known_inventory = list()
-	known_buttons = list()
 
 	update_zoom(2)
 
@@ -209,7 +208,7 @@ var/global/list/all_clients = list() //Assoc list
 				var/list/possible_music = TRACKS_LOBBY
 				var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
 				play_music_track(possible_music[lobby_track], src)
-				mob.show_hud(TRUE,speed = 2)
+				mob.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
 				mob.force_move(get_turf(lobby_positions[1]))
 
 	if(!restricted)
@@ -222,6 +221,14 @@ var/global/list/all_clients = list() //Assoc list
 				V.show(src)
 		if(SSmenu && SSmenu.initialized)
 			SSmenu.preload_assets(src)
+
+	if(settings && settings.loaded_data["enable_old_right_click"])
+		selected_hand = null
+
+	if(selected_hand)
+		show_popup_menus = TRUE
+	else
+		show_popup_menus = FALSE
 
 	return mob
 

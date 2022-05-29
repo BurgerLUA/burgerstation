@@ -31,7 +31,7 @@
 		animate(src, pixel_z = 0, pixel_w = 0,time = SECONDS_TO_DECISECONDS(2))
 		CALLBACK("pod_land_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/land)
 		if(auto_open)
-			CALLBACK("pod_open_\ref[src]",SECONDS_TO_DECISECONDS(6),src,.proc/open)
+			CALLBACK("pod_open_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.proc/open)
 
 
 /obj/structure/interactive/crate/closet/supply_pod/proc/land()
@@ -90,3 +90,11 @@
 	name = "stray supply pod"
 	icon_state = "squadpod"
 	auto_open = FALSE
+
+/obj/structure/interactive/crate/closet/supply_pod/yankee
+	name = "space yankee supply pod"
+	icon_state = "squadpod"
+
+/obj/structure/interactive/crate/closet/supply_pod/yankee/occupied/Generate()
+	. = ..()
+	CREATE(/mob/living/advanced/npc/space_soldier,src)

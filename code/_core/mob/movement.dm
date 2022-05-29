@@ -46,19 +46,14 @@
 
 	return 1
 
-/mob/get_movement_delay()
+/mob/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
-	. *= get_stance_movement_mul()
-
-	if(health && health.health_max)
-		. *= 2 - (health.health_current/health.health_max)
-
+	if(include_stance)
+		. *= get_stance_movement_mul()
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
-
-	var/atom/old_loc = loc
 
 	. = ..()
 
@@ -70,9 +65,6 @@
 				on_jog()
 			if(3)
 				on_sprint()
-
-		if(loc != old_loc)
-			post_move(old_loc)
 
 
 /mob/get_max_acceleration_value()
@@ -90,25 +82,10 @@
 		CT.glide_size = src.glide_size
 		CT.force_move(src.loc)
 
-
-/mob/proc/update_parallax()
-
-	if(!ckey_last)
-		return FALSE
-
-	var/turf/T = get_turf(src.loc)
-
-	for(var/k in parallax)
-		var/obj/parallax/P = parallax[k]
-		var/desired_x = FLOOR(-(T.x - (WORLD_SIZE*0.5)) * P.ratio,1)
-		var/desired_y = FLOOR(-(T.y - (WORLD_SIZE*0.5)) * P.ratio,1)
-		P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
-
-	return TRUE
-
 /mob/proc/update_z_position()
 
 	if(!ckey_last)
+		if(last_z) all_mobs_with_clients_by_z["[last_z]"] -= src
 		return FALSE
 
 	var/turf/T = get_turf(src)
@@ -129,12 +106,14 @@
 
 /mob/post_move(var/atom/old_loc)
 
-	update_parallax()
-
 	. = ..()
 
 	if(client)
 		client.post_move(loc,old_loc)
+
+	if(loc)
+		var/turf/T = get_turf(src)
+		T.post_move(src,old_loc)
 
 	update_rs_chat()
 
@@ -153,13 +132,24 @@
 		chosenObserver.glide_size = glide_size
 		chosenObserver.force_move(get_turf(loc))
 
+	close_turf_contents()
+
+	if(client && invisibility < INVISIBLITY_GHOST)
+		var/area/new_area = loc ? get_area(loc) : null
+		var/area/old_area = old_loc ? get_area(old_loc) : null
+		if(!new_area || !new_area.ambient_sound)
+			stop_ambient_sounds(src)
+
+		if(new_area)
+			if(new_area.ambient_sound && (!old_area || old_area.ambient_sound != new_area.ambient_sound))
+				play_ambient_sound(new_area.ambient_sound,list(src),environment = new_area.sound_environment,loop = TRUE)
+			if(ENABLE_TRACKS && length(new_area.tracks) && (!client.next_music_track || client.next_music_track <= world.time))
+				play_music_track(pick(new_area.tracks),client)
+
 /mob/set_dir(var/desired_dir,var/force=FALSE)
 
-	if(client && client.is_zoomed)
-		desired_dir = client.is_zoomed
-		return ..()
-
-	if(attack_flags & CONTROL_MOD_BLOCK)
-		return FALSE
+	if(!force)
+		if(client && client.is_zoomed)
+			desired_dir = client.is_zoomed
 
 	. = ..()

@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/tesla
-	name = "tesla ball"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		SHOCK = 60*0.25
 	)
@@ -27,7 +24,6 @@
 	)
 
 /damagetype/ranged/magic/tesla_shock
-	name = "tesla shock"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

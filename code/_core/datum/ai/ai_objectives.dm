@@ -9,10 +9,16 @@
 	if(A && A.qdeleting)
 		return FALSE
 
+	if(owner.dead && A != null)
+		return FALSE
+
 	var/atom/old_attack = objective_attack
 
 	if(old_attack == A)
 		return FALSE
+
+	if(is_player(old_attack))
+		ai_attacking_players[old_attack] -= owner
 
 	attackers -= old_attack
 
@@ -34,6 +40,8 @@
 			objective_move = null
 		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
+		if(is_player(A))
+			ai_attacking_players[A][owner] = TRUE
 		return TRUE
 	else if(istype(A))
 		frustration_attack = 0
@@ -45,7 +53,6 @@
 		return TRUE
 
 	frustration_attack = 0
-
 	objective_attack = null
 	owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
 	owner.update_intent()
@@ -68,7 +75,8 @@
 
 	var/turf/T = get_turf(owner)
 
-	for(var/light_source/LS in T.affecting_lights)
+	for(var/k in T.affecting_lights)
+		var/light_source/LS = k
 		if(!is_player(LS.top_atom))
 			continue
 		var/mob/living/L = LS.top_atom
@@ -87,6 +95,7 @@
 		if(objective_attack.qdeleting || !objective_attack.health)
 			set_objective(null)
 		else if(is_living(objective_attack))
+			var/mob/living/L = objective_attack
 			if(!should_attack_mob(objective_attack,FALSE))
 				set_objective(null)
 			else
@@ -96,8 +105,12 @@
 					frustration_attack = 0
 				else if(sight_chance <= 50)
 					frustration_attack += tick_rate
+					if(L.client)
+						last_combat_location = get_turf(objective_attack)
 				else
 					frustration_attack = 0
+					if(L.client)
+						last_combat_location = get_turf(objective_attack)
 		else if(isturf(objective_attack) && objective_attack.Enter(owner))
 			set_objective(null)
 		else if(get_dist(owner,objective_attack) > attack_distance_max)
@@ -118,11 +131,10 @@
 				best_target = A
 				best_score = local_score
 		if(best_target && best_target != objective_attack)
-			if(reaction_time)
-				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
-			else
-				set_objective(best_target)
-
+			set_objective(best_target)
+		else
+			if(last_combat_location && !length(current_path_astar))
+				set_path_astar(last_combat_location)
 		frustration_attack = 0
 
 	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
@@ -162,6 +174,8 @@
 			. = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			. = radius_find_enemy_combat
+	if(owner.has_status_effect(REST))
+		. *= 0.5
 
 /ai/proc/get_possible_targets()
 
@@ -169,7 +183,6 @@
 
 	if(retaliate && length(attackers))
 		for(var/k in attackers)
-			CHECK_TICK(75,FPS_SERVER*2)
 			var/atom/A = k
 			if(A.qdeleting)
 				attackers -= k
@@ -186,7 +199,6 @@
 		return .
 
 	for(var/mob/living/L in view(range_to_use,owner))
-		CHECK_TICK(75,FPS_SERVER*2)
 		var/sight_chance = get_sight_chance(L,range_to_use)
 		if(sight_chance < 100 && !prob(sight_chance))
 			continue
@@ -215,11 +227,13 @@
 	if(!use_alerts)
 		return FALSE
 
-	if(!owner || owner.dead)
-		alert_level = ALERT_LEVEL_NONE
+	if(!owner)
 		return FALSE
 
-	if(alert_level <= alert_level && alert_source && is_living(alert_source))
+	if(owner.dead && desired_alert_level != ALERT_LEVEL_NONE)
+		return FALSE
+
+	if(alert_level <= alert_level && is_living(alert_source))
 		var/mob/living/L = alert_source
 		if(alert_level == ALERT_LEVEL_CAUTION)
 			if(L == owner)
@@ -235,12 +249,15 @@
 	else
 		alert_level = max(desired_alert_level,alert_level)
 
-	owner.move_dir = 0
+	if(old_alert_level <= alert_level && alert_level != ALERT_LEVEL_NONE)
+		set_active(TRUE)
+		if(owner.has_status_effect(REST))
+			owner.remove_status_effect(REST)
+
+	if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION) && !CALLBACK_EXISTS("investigate_\ref[src]") && (old_alert_level >= alert_level ? TRUE : prob(50)) )
+		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
 
 	if(old_alert_level != alert_level)
-		set_active(TRUE)
-		if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION))
-			if(!CALLBACK_EXISTS("investigate_\ref[src]")) CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)
 		return TRUE
 
@@ -248,7 +265,7 @@
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
-	if(owner.alert_overlay)
+	if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
 		if(new_alert_level == ALERT_LEVEL_COMBAT)
 			owner.alert_overlay.icon_state = "exclaim"
 		else if(new_alert_level == ALERT_LEVEL_CAUTION)

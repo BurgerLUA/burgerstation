@@ -1,6 +1,6 @@
 /obj/item/weapon/melee/slaughterclaws
 	name = "slaughter claws"
-	rarity = RARITY_LEGENDARY
+
 	desc = "HELL IS EMPTY, BLOOD IS FUEL!"
 	desc_extended = "Use Harm intent to rip your enemies a new one! Use disarm intent to punch from afar! Click on a turf on grab intent to bloodcrawl! Then replenish your blood by Helping a corpse!"
 	var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks
@@ -36,14 +36,14 @@
 		update_sprite()
 
 	if(self.intent == INTENT_GRAB && isturf(T) && next_teleport_command <= world.time)
-		if(!T.is_safe_teleport()||A.flags_area & FLAGS_AREA_NO_TELEPORT) //Alright, that's it. No more water-walking!
+		if(!T.is_safe_teleport()||A.flags_area & FLAG_AREA_NO_TELEPORT) //Alright, that's it. No more water-walking!
 			caller.to_chat(span("danger","Can't bloodcrawl there!"))
 			return TRUE
 		if (target_distance > 10)
 			caller.to_chat(span("danger","It's too far to crawl to!"))
 			return TRUE
 		self.blood_volume -= (target_distance*5) //Max distance costs 50. Jumping this far would only be for snacking or retreating, though.
-		self.health.adjust_loss_smart(oxy = target_distance*5) //instant feedback
+		self.queue_health_update = TRUE
 		self.force_move(T)
 		new/obj/effect/temp/impact/blood(T,desired_color = COLOR_BLOOD)
 		play_sound(pick('sound/weapons/magic/bloody_impact.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)
@@ -54,7 +54,7 @@
 		var/turf/simulated/B = get_turf(T)
 		new/obj/effect/temp/hazard/bubblefist(B,desired_owner = self)
 		self.blood_volume -= (20) //10% HP. I sure hope the blood cost disincentivises spam.
-		self.health.adjust_loss_smart(oxy = 20)
+		self.queue_health_update = TRUE
 		next_blood_attack = world.time + SECONDS_TO_DECISECONDS(2)
 		. = TRUE
 

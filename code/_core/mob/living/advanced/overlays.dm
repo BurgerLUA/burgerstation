@@ -4,8 +4,9 @@
 		k = "\ref[object]"
 
 	if(overlays_assoc[k])
-		CRASH_SAFE("An overlay of reference [k] already exists! Removing and replacing...")
 		remove_overlay(k)
+		CRASH("An overlay of reference [k] already exists! Removing and replacing...")
+
 
 	var/image/overlay/O = new /image/overlay
 	if(object)
@@ -15,7 +16,6 @@
 	O.initial_icon = desired_icon ? desired_icon : object.icon
 	O.initial_icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.layer = desired_layer ? desired_layer : object.layer
-	O.plane = desired_plane ? desired_plane : src.plane
 	O.icon = desired_icon ? desired_icon : object.icon
 	O.icon_state = desired_icon_state ? desired_icon_state : object.icon_state
 	O.color = desired_color ? desired_color : object.color
@@ -67,10 +67,10 @@ mob/living/advanced/proc/remove_overlay(var/k)
 
 	if(!istype(O))
 		var/datum/found_ref = locate(k)
-		CRASH_SAFE("Warning: Tried to update the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
-		return FALSE
+		CRASH("Warning: Tried to update the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
 
 	overlays -= O
+	overlays_assoc -= O
 
 	if(isnum(desired_layer))
 		O.layer = desired_layer

@@ -1,5 +1,4 @@
 /damagetype/melee/sword/katana
-	name = "katana"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

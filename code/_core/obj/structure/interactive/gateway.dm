@@ -57,9 +57,9 @@
 
 	. = ..()
 
-	if(enabled && linked_gateway && is_player(O))
-		var/mob/living/advanced/player/P = O
-		if(P.loyalty_tag == "NanoTrasen")
-			O.force_move(get_step(linked_gateway,SOUTH))
+	if(enabled && linked_gateway && is_living(O))
+		var/mob/living/L = O
+		if(L.loyalty_tag == "NanoTrasen")
+			L.force_move(get_step(linked_gateway,SOUTH))
 
 

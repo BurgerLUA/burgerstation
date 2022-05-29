@@ -17,8 +17,12 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod,
-		/obj/item/weapon/ranged/bullet/magazine/smg/fbi/mod,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod,
+		/obj/item/weapon/melee/energy/sword/katana,
+		/obj/item/weapon/melee/energy/stunbaton,
+		/obj/item/weapon/melee/sword/zweihander,
+		/obj/item/weapon/unarmed/brass_knuckles,
+		/obj/item/weapon/unarmed/powerfist
 	)
 
 

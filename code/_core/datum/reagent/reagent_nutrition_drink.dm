@@ -18,6 +18,8 @@
 	cooled_reagent_amount = 1
 	cooled_reagent_mul = 0.25
 
+	value = 0.75
+
 /reagent/nutrition/water/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
 	. = ..()

@@ -1,12 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/groza
-	name = "\improper 9x39mm OTs-14 Groza"
-	desc = "No need to pull the pin now."
-	desc_extended = "This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specifically developed for rapid response units. The main differences are its 9x39 caliber ammunition, bullpup layout and extensive configuration options."
+	name = "\improper 9x39mm OP14"
+	desc = "Compact strength for a compact military."
+	desc_extended = "A fast firing automatic bullpup assault rifle acts as a cheaper alternative to the AKSU Type-13. Ironically, 75% of its parts originate from the AKSU Type-13."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_smg.dmi'
 	icon_state = "inventory"
 	value = 1700
 
-	shoot_delay = 1.5
+	tier = 2
+
+	shoot_delay = 1.25
 
 	damage_mod = 1.1
 

@@ -7,10 +7,17 @@
 		"buckles" = COLOR_WHITE
 	)
 
-/obj/item/clothing/back/storage/backpack/poly/security
+/obj/item/clothing/back/storage/backpack/poly/nanotrasen
 	polymorphs = list(
 		"body" = COLOR_BLACK,
-		"straps" = COLOR_SECURITY,
+		"straps" = COLOR_NANOTRASEN,
+		"buckles" = COLOR_SILVER
+	)
+
+/obj/item/clothing/back/storage/backpack/poly/medical
+	polymorphs = list(
+		"body" = COLOR_WHITE,
+		"straps" = COLOR_MEDICAL,
 		"buckles" = COLOR_SILVER
 	)
 

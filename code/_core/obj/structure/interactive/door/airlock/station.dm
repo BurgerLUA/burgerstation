@@ -17,6 +17,11 @@
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
 
+/obj/structure/interactive/door/airlock/station/command/ce
+	name = "chief engineer's office"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
+
 /obj/structure/interactive/door/airlock/station/chapel
 	name = "chapel airlock"
 	color = "#E1DFD2"
@@ -31,24 +36,27 @@
 	filler = "glass"
 
 
-/obj/structure/interactive/door/airlock/station/security
-	name = "security airlock"
-	color = COLOR_SECURITY
-	fill_color = COLOR_STEEL
 
-/obj/structure/interactive/door/airlock/station/security/glass
+
+
+
+/obj/structure/interactive/door/airlock/station/nanotrasen
+	name = "security airlock"
+	color = COLOR_NANOTRASEN
+	fill_color = COLOR_NANOTRASEN_LIGHT
+
+/obj/structure/interactive/door/airlock/station/nanotrasen/glass
 	fill_color = "#FFFFFF"
 	filler = "glass"
 
-/obj/structure/interactive/door/airlock/station/security/glass/tactical
+/obj/structure/interactive/door/airlock/station/nanotrasen/glass/tactical
 	name = "\improper Tactical Operations airlock"
 
-/obj/structure/interactive/door/airlock/station/security/shop
+/obj/structure/interactive/door/airlock/station/nanotrasen/shop
 	name = "security airlock"
-	color = COLOR_RED
 	allow_manual_close = FALSE
 
-/obj/structure/interactive/door/airlock/station/security/no_access
+/obj/structure/interactive/door/airlock/station/nanotrasen/no_access
 	no_access = TRUE
 
 /obj/structure/interactive/door/airlock/station/maintenance
@@ -110,11 +118,41 @@
 	filler = "fill"
 	fill_color = COLOR_ENGINEERING
 
+/obj/structure/interactive/door/airlock/station/substation
+	name = "power substation airlock"
+	color = COLOR_ENGINEERING
+	filler = "fill"
+	fill_color = COLOR_YELLOW
+
+/obj/structure/interactive/door/airlock/station/solars
+	name = "solars access airlock"
+	color = COLOR_ENGINEERING
+	filler = "fill"
+	fill_color = COLOR_BLUE
+
+/obj/structure/interactive/door/airlock/station/engineering/telecomms
+	name = "telecomms airlock"
+	color = COLOR_ENGINEERING
+	fill_color = COLOR_COMMAND
+
 /obj/structure/interactive/door/airlock/station/engineering/glass
 	name = "engineering airlock"
 	color = COLOR_ENGINEERING
 	filler = "glass"
 	fill_color = COLOR_WHITE
+
+/obj/structure/interactive/door/airlock/station/engineering/glass/ce
+	name = "chief engineer's office airlock"
+	color = COLOR_ENGINEERING
+	filler = "glass"
+	fill_color = COLOR_WHITE
+	no_access = TRUE
+
+/obj/structure/interactive/door/airlock/station/engineering/glass/supermatter
+	name = "supermatter airlock"
+	color = COLOR_ENGINEERING
+	filler = "glass"
+	fill_color = COLOR_PINK
 
 /obj/structure/interactive/door/airlock/station/medical
 	name = "medical airlock"

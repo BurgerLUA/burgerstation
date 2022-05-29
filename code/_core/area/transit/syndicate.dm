@@ -1,5 +1,5 @@
 /area/transit/syndicate/
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/transit/syndicate/centcomm
 	name = "syndicate shuttle - central command"
@@ -17,7 +17,7 @@
 
 
 /area/transit/syndicate_raid/
-	flags_area = FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
 
 /area/transit/syndicate_raid/centcomm
 	name = "syndicate raid shuttle - central command"

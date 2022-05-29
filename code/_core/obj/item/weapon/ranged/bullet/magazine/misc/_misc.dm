@@ -15,13 +15,10 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg') //Need a fire sound that only lasts 0.5 seconds.
+	shoot_sounds = list('sound/weapons/223/sentry.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
-
-
-
 
 	heat_max = 0.01
 
@@ -40,11 +37,11 @@
 
 	attachment_whitelist = list()
 
-
-
 	value = -1
 
 	anchored = TRUE
+
+	tier = 1
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_empty(var/mob/caller)
 	next_shoot_time = world.time + 20

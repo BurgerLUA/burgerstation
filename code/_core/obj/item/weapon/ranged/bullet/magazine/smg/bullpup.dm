@@ -1,10 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup
-	name = ".45 C-20r submachine gun"
+	name = ".45 C-20r"
 	desc = "GET DAT FUKKEN DISK"
 	desc_extended = "Commonly used by Syndicate Operatives for its reliability and light weight, the 45 C-20r was the primary firearm of the Syndicate Nuclear Operatives, before NT figured out having self destruct nukes on their station wasn't a great idea."
-	icon = 'icons/obj/item/weapons/ranged/smg/45_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/syndicate/45.dmi'
 	icon_state = "inventory"
 	value = 1200
+
+	tier = 2
 
 	shoot_delay = 1.5
 
@@ -12,9 +14,10 @@
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
-	can_wield = FALSE
+	dan_mode = TRUE
+	can_wield = TRUE
 
 	override_icon_state = TRUE
 
@@ -36,7 +39,8 @@
 	shoot_alert = ALERT_LEVEL_NONE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -50,40 +54,23 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = TRUE,
-
+		/obj/item/attachment/undermount/angled_grip = FALSE,
+		/obj/item/attachment/undermount/bipod = FALSE,
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 29 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_x = 30 - 16
+	attachment_barrel_offset_y = 17 - 16
 
 	attachment_sight_offset_x = 23 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 0 - 16
-	attachment_undermount_offset_y = 0 - 16
-
-
+	attachment_undermount_offset_x = 28 - 16
+	attachment_undermount_offset_y = 15 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
-
-/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/standard/Generate()
-
-	. = ..()
-
-	var/obj/item/attachment/stock/c20r/S = new(src)
-	attachment_stock = S
-
-	var/obj/item/attachment/sight/red_dot/RD = new(src)
-	attachment_sight = RD
-
-	var/obj/item/attachment/barrel/suppressor/SS = new(src)
-	attachment_barrel = SS
-
-	update_attachment_stats()
-	update_sprite()
-
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
 
@@ -100,3 +87,13 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped/Generate()
+
+	. = ..()
+
+	var/obj/item/attachment/sight/red_dot/RD = new(src)
+	attachment_sight = RD
+
+	var/obj/item/attachment/barrel/suppressor/SS = new(src)
+	attachment_barrel = SS

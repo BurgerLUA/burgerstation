@@ -13,10 +13,13 @@ var/global/list/possible_lavaland_fauna = list(
 	/obj/marker/generation/mob/watcher = 5,
 	/obj/marker/generation/mob/legion = 5
 )
+var/global/list/possible_lavaland_decor = list(
+	/obj/structure/interactive/basalt = 5,
+)
 
 #define PLACE_MUSHROOM var/datum/D__LINE__ = pickweight(possible_mushrooms); new D__LINE__(src)
 #define PLACE_LAVALAND_FAUNA var/datum/D__LINE__ = pickweight(possible_lavaland_fauna); new D__LINE__(src)
-
+#define PLACE_LAVALAND_DECOR var/datum/D__LINE__ =pickweight(possible_lavaland_decor); new D__LINE__(src) //not used, I know!
 
 /turf/unsimulated/generation/lava
 	name = "lava generation"
@@ -28,12 +31,8 @@ var/global/list/possible_lavaland_fauna = list(
 		new /turf/simulated/floor/basalt(src)
 		return ..()
 
-	var/noise = 0
-
-	var/instances = 2
-
 	if(x <= VIEW_RANGE || x >= world.maxx - VIEW_RANGE || y <= VIEW_RANGE || y >= world.maxy - VIEW_RANGE) //Handle corners.
-		new /turf/simulated/hazard/lava(src)
+		new /turf/simulated/liquid/lava(src)
 		if(prob(2))
 			new /obj/marker/generation/lava(src)
 		return ..()
@@ -44,22 +43,15 @@ var/global/list/possible_lavaland_fauna = list(
 			new /obj/marker/generation/basalt(src)
 		return ..()
 
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
+	var/seed_resolution = max(world.maxx,world.maxy)
+	var/x_seed = x / seed_resolution
+	var/y_seed = y / seed_resolution
 
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[1] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances) + rand(-100,100)/10000
+	var/max_instances = 3
+	var/noise = 0
+	for(var/i=1,i<=max_instances,i++)
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+	noise *= 1/max_instances
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
@@ -142,36 +134,25 @@ var/global/list/possible_lavaland_fauna = list(
 		new /turf/simulated/floor/basalt(src)
 		return ..()
 
+	var/seed_resolution = max(world.maxx,world.maxy)
+	var/x_seed = x / seed_resolution
+	var/y_seed = y / seed_resolution
+
+	var/max_instances = 3
 	var/noise = 0
-
-	var/instances = 3
-
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[1] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances) + rand(-100,100)/10000
+	for(var/i=1,i<=max_instances,i++)
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+	noise *= 1/max_instances
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
-			new /turf/simulated/hazard/lava(src)
+			new /turf/simulated/liquid/lava(src)
 		if(0.1 to 0.2)
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
 				new /obj/marker/generation/lava(src)
 		if(0.2 to 0.4)
-			new /turf/simulated/hazard/lava(src)
+			new /turf/simulated/liquid/lava(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt(src)
 		if(0.4 to 0.6)
@@ -179,7 +160,7 @@ var/global/list/possible_lavaland_fauna = list(
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.6 to 0.8)
-			new /turf/simulated/hazard/lava(src)
+			new /turf/simulated/liquid/lava(src)
 			if(prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 		if(0.8 to INFINITY)

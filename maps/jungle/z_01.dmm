@@ -52,7 +52,7 @@
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
 "aq" = (
-/obj/structure/interactive/lighting/bonfire/on/intense,
+/obj/structure/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "ar" = (
@@ -91,7 +91,7 @@
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "aA" = (
-/obj/marker/syndicate,
+/obj/structure/interactive/ritual,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "aB" = (
@@ -103,8 +103,9 @@
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
 "aD" = (
-/turf/unsimulated/generation/surface/surface_turf,
-/area/lz_001/outpost/russian/snow)
+/obj/marker/prefab/antag,
+/turf/unsimulated/generation/surface/cave_turf,
+/area)
 "aE" = (
 /obj/marker/map_node,
 /mob/living/simple/xeno/sentinel,
@@ -175,10 +176,6 @@
 /obj/marker/lobby,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
-"aW" = (
-/obj/marker/prefab/base,
-/turf/unsimulated/generation/jungle/path,
-/area/lz_001/jungle)
 "aX" = (
 /obj/marker/prefab/medium,
 /turf/unsimulated/generation/jungle,
@@ -188,18 +185,14 @@
 /turf/unsimulated/generation/jungle/path,
 /area)
 "aZ" = (
-/obj/structure/interactive/lighting/bonfire/on,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area)
+/obj/structure/interactive/ritual,
+/turf/simulated/floor/colored/sand/desert,
+/area/lz_001/desert)
 "ba" = (
 /obj/marker/map_node,
 /mob/living/simple/xeno/queen,
 /turf/simulated/floor/xeno,
 /area/lz_001/caves/hive)
-"bb" = (
-/obj/marker/prefab/medium,
-/turf/unsimulated/generation/surface/cave_turf,
-/area)
 "bc" = (
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/hive)
@@ -215,33 +208,21 @@
 /mob/living/simple/gorilla,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
-"bg" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/surface_path_turf,
-/area)
 "bh" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/table/cooking/bonfire,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
 "bi" = (
 /turf/simulated/wall/wood/brown,
-/area/lz_001/snow/interior/shack)
-"bj" = (
-/turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/shack)
 "bk" = (
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/shack)
 "bl" = (
-/obj/structure/interactive/lighting/fireplace/fire05,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/shack)
-"bm" = (
-/turf/simulated/floor/carpet,
-/area/lz_001/snow/interior/shack)
 "bn" = (
-/obj/structure/smooth/table/wood,
 /turf/simulated/floor/carpet,
 /area/lz_001/snow/interior/shack)
 "bo" = (
@@ -280,12 +261,10 @@
 /area/lz_001/outpost/syndicate/jungle)
 "by" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "bz" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -347,12 +326,10 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "bN" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/announcement/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "bO" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/grenade/landmine/proximity/explosive,
 /obj/item/grenade/landmine/proximity/explosive,
 /obj/item/grenade/landmine/proximity/explosive,
@@ -372,12 +349,10 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "bS" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/weapon/ranged/energy/iongun,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "bT" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/powercell/industrial,
 /obj/item/powercell/industrial,
 /obj/item/powercell/industrial,
@@ -395,7 +370,6 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/jungle)
 "bX" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/firing_pin/electronic/iff/syndicate,
 /obj/item/firing_pin/electronic/iff/syndicate,
 /obj/item/firing_pin/electronic/iff/syndicate,
@@ -403,16 +377,10 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "bY" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/caves/lagoon)
-"bZ" = (
-/obj/structure/smooth/table/reinforced/dark,
-/turf/simulated/floor/tile/dark,
-/area/lz_001/caves/lagoon)
 "ca" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/caves/lagoon)
@@ -420,13 +388,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/caves/lagoon)
 "cc" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/container/spray/silver_sulfadiazine,
-/turf/simulated/floor/tile/dark,
-/area/lz_001/outpost/syndicate/jungle)
-"cd" = (
-/obj/structure/smooth/table/reinforced/dark,
-/obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "ce" = (
@@ -434,7 +396,6 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "cf" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/grenade/timed/explosive,
 /obj/item/grenade/timed/explosive,
 /turf/simulated/floor/tile/dark,
@@ -451,7 +412,6 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "cj" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/supply_remote/crates/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -463,8 +423,8 @@
 /area/lz_001/outpost/syndicate/jungle)
 "cl" = (
 /mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -488,7 +448,6 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "cr" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/crafting/alchemy,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -522,7 +481,6 @@
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "cz" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/crafting/grinder,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -531,21 +489,15 @@
 /obj/item/defib,
 /obj/item/container/spray/silver_sulfadiazine,
 /obj/item/container/spray/styptic_powder,
-/obj/item/container/medicine/trauma_kit/advanced,
-/obj/item/container/medicine/burn_kit/advanced,
 /obj/item/storage/kit/syndicate/filled,
-/obj/item/container/medicine/burn_kit/advanced,
-/obj/item/container/medicine/trauma_kit/advanced,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "cB" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/pinpointer/boss,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "cC" = (
-/obj/structure/smooth/table/reinforced/dark,
-/obj/item/pinpointer/artifact,
+/obj/item/pinpointer/objective,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "cD" = (
@@ -560,7 +512,6 @@
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
 "cG" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/crafting/pill_press,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
@@ -578,7 +529,6 @@
 /turf/simulated/floor/plating,
 /area/lz_001/caves/lagoon)
 "cK" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/item/handcuffs,
 /obj/item/container/syringe/epinephrine,
 /turf/simulated/floor/tile/dark,
@@ -593,11 +543,7 @@
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/lodge)
-"cN" = (
-/turf/simulated/floor/wood/brown,
-/area/lz_001/snow/interior/lodge)
 "cO" = (
-/obj/structure/smooth/table/wood/poor,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/lodge)
 "cP" = (
@@ -605,7 +551,6 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/lodge)
 "cQ" = (
-/obj/structure/smooth/table/wood/poor,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/snow/interior/lodge)
@@ -620,10 +565,6 @@
 /obj/structure/interactive/supplies,
 /turf/unsimulated/generation/jungle/path,
 /area/lz_001/jungle)
-"cU" = (
-/obj/marker/syndicate,
-/turf/simulated/floor/plating,
-/area/lz_001/outpost/syndicate/jungle)
 "cV" = (
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/cave_path_turf,
@@ -688,15 +629,11 @@
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area)
 "dn" = (
-/obj/structure/smooth/wall/wood,
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/forest/village)
 "do" = (
 /obj/structure/interactive/crate/chest/filled,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/mining)
-"dp" = (
-/obj/structure/smooth/table/wood/poor,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/mining)
 "dq" = (
@@ -704,7 +641,7 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/mining)
 "dr" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/diamond_cave)
 "ds" = (
@@ -727,7 +664,7 @@
 /turf/unsimulated/generation/surface/surface_turf,
 /area/lz_001/forest/village)
 "dy" = (
-/obj/structure/smooth/wall/wood,
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
 /turf/unsimulated/generation/surface/surface_path_turf,
 /area/lz_001/forest/village)
 "dz" = (
@@ -771,7 +708,6 @@
 /turf/simulated/wall/metal/reinforced,
 /area)
 "dK" = (
-/obj/structure/smooth/table/wood/poor,
 /obj/structure/interactive/lighting/candle,
 /turf/unsimulated/generation/surface/surface_turf,
 /area/lz_001/forest/village)
@@ -781,12 +717,12 @@
 /area/lz_001/caves/diamond_cave)
 "dM" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_corner"
 	},
 /area)
 "dN" = (
@@ -797,18 +733,18 @@
 /area/lz_001/forest/village)
 "dP" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area)
 "dQ" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_side"
 	},
 /area)
 "dR" = (
@@ -824,8 +760,8 @@
 /area/lz_001/caves/lagoon)
 "dU" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area)
 "dV" = (
@@ -833,15 +769,15 @@
 /area)
 "dW" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "dX" = (
 /turf/simulated/floor/cobblestone/corner,
 /area/lz_001/forest/village)
 "dY" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/table/cooking/bonfire,
 /turf/unsimulated/generation/surface/surface_path_turf,
 /area/lz_001/forest/village)
 "dZ" = (
@@ -857,8 +793,8 @@
 /area/lz_001/forest/village)
 "ec" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ed" = (
@@ -866,8 +802,8 @@
 /area/lz_001/caves/lagoon)
 "ee" = (
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ef" = (
@@ -876,18 +812,18 @@
 /area/lz_001/forest/village)
 "eg" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_corner"
 	},
 /area)
 "eh" = (
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_corner"
 	},
 /area)
 "ei" = (
@@ -914,8 +850,8 @@
 "eo" = (
 /obj/marker/rift_location,
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ep" = (
@@ -926,10 +862,6 @@
 /mob/living/simple/spacecarp,
 /turf/simulated/hazard/water/sea,
 /area)
-"er" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area/lz_001/caves/knight)
 "es" = (
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/surface_path_turf,
@@ -961,8 +893,8 @@
 /area/lz_001/caves/knight)
 "eA" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_left";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_left"
 	},
 /area)
 "eB" = (
@@ -972,15 +904,15 @@
 "eC" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "eD" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "eE" = (
@@ -996,23 +928,23 @@
 /area)
 "eH" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 6
+	dir = 6;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "eI" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 1
+	dir = 1;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "eJ" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 10
+	dir = 10;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
@@ -1027,8 +959,8 @@
 /area/lz_001/caves/knight)
 "eM" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /obj/structure/interactive/mining_brace,
 /turf/simulated/floor/plating,
@@ -1047,8 +979,8 @@
 /area/lz_001/caves/knight)
 "eQ" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 4
+	dir = 4;
+	icon_state = "line"
 	},
 /obj/structure/interactive/ore_box,
 /turf/simulated/floor/plating,
@@ -1059,8 +991,8 @@
 /area/lz_001/caves/knight)
 "eS" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
+	dir = 8;
+	icon_state = "metal"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/forest/village)
@@ -1070,8 +1002,8 @@
 /area/lz_001/forest/village)
 "eU" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 5
+	dir = 5;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
@@ -1082,16 +1014,16 @@
 /area/lz_001/caves/knight)
 "eW" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 9
+	dir = 9;
+	icon_state = "line"
 	},
 /obj/structure/interactive/lighting/fixture/floor,
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "eX" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_middle";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_middle"
 	},
 /area)
 "eY" = (
@@ -1113,46 +1045,20 @@
 /obj/marker/map_node,
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/knight)
-"fd" = (
-/obj/structure/smooth/table/reinforced,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"fe" = (
-/obj/structure/smooth/table/reinforced,
-/obj/item/container/food/dynamic/cheese/block,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"ff" = (
-/obj/structure/smooth/table/reinforced,
-/obj/item/container/food/dynamic/meat/raw,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
 "fg" = (
-/obj/structure/smooth/table/grill,
+/obj/structure/table/cooking/grill,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fh" = (
-/obj/structure/smooth/table/reinforced,
-/obj/item/container/beaker/bowl,
 /obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fi" = (
 /obj/structure/interactive/crate/closet,
-/obj/item/container/beaker/food/flour,
-/obj/item/container/beaker/food/sugar,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"fj" = (
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fk" = (
 /obj/structure/interactive/crate/chest/filled,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"fl" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/food/package/junkfood/raisins,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fm" = (
@@ -1186,8 +1092,8 @@
 "fs" = (
 /obj/marker/map_node,
 /turf/simulated/floor/cobblestone/side{
-	icon_state = "cobble_side";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_side"
 	},
 /area/lz_001/forest/village)
 "ft" = (
@@ -1195,7 +1101,6 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fu" = (
-/obj/structure/smooth/table/wood,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
@@ -1205,8 +1110,8 @@
 /area/lz_001/forest/village)
 "fw" = (
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "fx" = (
@@ -1217,28 +1122,12 @@
 "fy" = (
 /obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 1
+	dir = 1;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
-"fz" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/glass,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"fA" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/bottle/large/water,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"fB" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/can/grape_soda,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
 "fC" = (
-/obj/structure/smooth/table/wood,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "fD" = (
@@ -1261,8 +1150,8 @@
 /area/lz_001/forest/village/interior/armory)
 "fI" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 4
+	dir = 4;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1271,8 +1160,8 @@
 /area/lz_001/caves/knight)
 "fK" = (
 /obj/decal/hazard{
-	icon_state = "line";
-	dir = 8
+	dir = 8;
+	icon_state = "line"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1294,8 +1183,8 @@
 /area/lz_001/forest/village/interior/bar)
 "fO" = (
 /obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 4
+	dir = 4;
+	icon_state = "sink"
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
@@ -1310,20 +1199,10 @@
 /obj/marker/map_node,
 /turf/simulated/floor/carpet,
 /area/lz_001/forest/village/interior/chemistry)
-"fS" = (
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/chemistry)
 "fT" = (
 /obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
-"fU" = (
-/obj/structure/smooth/table/wood/poor,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/chemistry)
-"fV" = (
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/armory)
 "fW" = (
 /obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
@@ -1333,23 +1212,20 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/armory)
 "fY" = (
-/obj/structure/smooth/table/wood/poor,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/armory)
 "fZ" = (
-/obj/structure/smooth/table/wood/poor,
 /obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/armory)
 "ga" = (
-/obj/structure/smooth/table/wood/poor,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/armory)
 "gb" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair_right";
-	dir = 1
+	dir = 1;
+	icon_state = "stair_right"
 	},
 /area)
 "gc" = (
@@ -1385,11 +1261,6 @@
 /obj/marker/spawnpoint/horde,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
-"gj" = (
-/obj/structure/smooth/table/wood/poor,
-/obj/item/container/beaker/bottle/large/water,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/chemistry)
 "gk" = (
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 4
@@ -1417,16 +1288,8 @@
 /area/lz_001/forest/village/interior/armory)
 "gq" = (
 /obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
-	},
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"gr" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/can/mountain_wind,
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 1
+	dir = 4;
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
@@ -1436,33 +1299,10 @@
 	},
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
-"gt" = (
-/obj/structure/smooth/table/wood,
-/obj/item/container/beaker/glass,
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 1
-	},
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/bar)
-"gu" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	dir = 1
-	},
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/chemistry)
-"gv" = (
-/obj/structure/smooth/table/wood/poor,
-/obj/item/container/beaker/bottle/bicaridine,
-/turf/simulated/floor/wood/brown,
-/area/lz_001/forest/village/interior/chemistry)
 "gw" = (
-/obj/structure/smooth/table/wood/poor,
-/obj/item/container/beaker/bottle/dylovene,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
 "gx" = (
-/obj/structure/smooth/table/wood/poor,
-/obj/item/container/beaker/bottle/epinephrine,
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
@@ -1473,7 +1313,6 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/chemistry)
 "gz" = (
-/obj/structure/smooth/table/wood/poor,
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 1
 	},
@@ -1504,15 +1343,15 @@
 /area)
 "gF" = (
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 1
+	dir = 1;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "gG" = (
 /obj/structure/interactive/barricade,
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 8
+	dir = 8;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "gH" = (
@@ -1522,23 +1361,23 @@
 "gI" = (
 /obj/structure/interactive/barricade,
 /turf/simulated/floor/cobblestone/corner{
-	icon_state = "cobble_corner";
-	dir = 4
+	dir = 4;
+	icon_state = "cobble_corner"
 	},
 /area/lz_001/forest/village)
 "gJ" = (
 /obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 8
+	dir = 8;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
 "gK" = (
 /obj/structure/interactive/lighting/fixture/floor,
 /obj/decal/hazard/corner{
-	icon_state = "corner";
-	dir = 4
+	dir = 4;
+	icon_state = "corner"
 	},
 /turf/simulated/floor/plating,
 /area/lz_001/caves/knight)
@@ -1680,8 +1519,8 @@
 /area/lz_001/desert)
 "hy" = (
 /turf/simulated/floor/stair/wood/dock{
-	icon_state = "stair";
-	dir = 1
+	dir = 1;
+	icon_state = "stair"
 	},
 /area/lz_001/caves/lagoon)
 "hz" = (
@@ -1696,11 +1535,11 @@
 /turf/simulated/hazard/water/sea,
 /area/lz_001/desert)
 "hC" = (
-/obj/structure/smooth/wall/sand,
+/turf/simulated/wall/brick/sand,
 /turf/simulated/floor/colored/sand/desert,
 /area/lz_001/desert)
 "hD" = (
-/obj/structure/smooth/wall/wood,
+/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
 "hE" = (
@@ -1710,27 +1549,27 @@
 /turf/simulated/wall/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "hG" = (
-/obj/structure/smooth/wall/wood/starting,
+/obj/structure/short_wall/wood/starting,
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "hH" = (
 /mob/living/advanced/npc/pirate_crew/ranged{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
 "hI" = (
 /mob/living/advanced/npc/pirate_crew/magic{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
 "hJ" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat,
 /area/lz_001/caves/lagoon/ship)
@@ -1747,8 +1586,8 @@
 /area/lz_001/caves/lagoon/ship)
 "hN" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair";
-	dir = 4
+	dir = 4;
+	icon_state = "stair"
 	},
 /area/lz_001/caves/lagoon/ship)
 "hO" = (
@@ -1761,15 +1600,15 @@
 /area/lz_001/caves/lagoon/ship)
 "hQ" = (
 /mob/living/advanced/npc/pirate_crew/ninja{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "hR" = (
 /mob/living/advanced/npc/pirate_crew/magic{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1779,8 +1618,8 @@
 /area/lz_001/caves/lagoon/ship)
 "hT" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1790,8 +1629,8 @@
 /area/lz_001/caves/lagoon/ship)
 "hV" = (
 /mob/living/advanced/npc/pirate_crew/ranged{
-	icon_state = "directional";
-	dir = 8
+	dir = 8;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1809,15 +1648,15 @@
 /area/lz_001/caves/lagoon/ship)
 "hZ" = (
 /mob/living/advanced/npc/unique/pirate_mate{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "ia" = (
 /turf/simulated/floor/stair/wood{
-	icon_state = "stair";
-	dir = 8
+	dir = 8;
+	icon_state = "stair"
 	},
 /area/lz_001/caves/lagoon/ship)
 "ib" = (
@@ -1825,19 +1664,19 @@
 /area/lz_001/caves/glow_cave)
 "ic" = (
 /mob/living/advanced/npc/unique/pirate_captain{
-	icon_state = "directional";
-	dir = 4
+	dir = 4;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "id" = (
-/obj/structure/smooth/wall/wood/starting,
+/obj/structure/short_wall/wood/starting,
 /turf/simulated/hazard/water/sea,
 /area/lz_001/caves/lagoon)
 "ie" = (
 /mob/living/advanced/npc/pirate_crew/melee{
-	icon_state = "directional";
-	dir = 1
+	dir = 1;
+	icon_state = "directional"
 	},
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
@@ -1851,8 +1690,8 @@
 /area/lz_001/caves/lagoon/ship)
 "ik" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /turf/unsimulated/generation/surface/cave_path_turf,
 /area/lz_001/caves/desert_cave)
@@ -1861,8 +1700,8 @@
 /area/lz_001/caves/desert_cave)
 "im" = (
 /obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 1
+	dir = 1;
+	icon_state = "metal"
 	},
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
@@ -1873,10 +1712,6 @@
 /obj/structure/interactive/lighting/fixture/floor/syndicate,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/desert)
-"ip" = (
-/obj/marker/syndicate,
-/turf/unsimulated/generation/surface/cave_path_turf,
-/area/lz_001/caves/desert_cave)
 "iq" = (
 /obj/marker/map_node,
 /turf/simulated/floor/colored/sand,
@@ -1912,26 +1747,14 @@
 /turf/simulated/hazard/water/sea,
 /area/lz_001/caves/glow_cave)
 "iz" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/marker/spawning/random/supply_crate,
-/turf/simulated/floor/tile/dark,
-/area/lz_001/outpost/syndicate/desert)
-"iA" = (
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "iB" = (
 /obj/marker/map_node,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
-"iE" = (
-/obj/structure/smooth/table/reinforced/dark,
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark,
-/area/lz_001/outpost/syndicate/desert)
 "iJ" = (
-/obj/structure/smooth/table/reinforced/dark,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "iK" = (
@@ -1939,7 +1762,6 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "iM" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
@@ -1950,7 +1772,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "iO" = (
-/obj/structure/interactive/lighting/bonfire/on,
+/obj/structure/table/cooking/bonfire,
 /turf/simulated/floor/colored/sand,
 /area/lz_001/caves/desert_cave)
 "iP" = (
@@ -1991,12 +1813,6 @@
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/lz_001/outpost/syndicate/desert)
-"jc" = (
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	dir = 1
-	},
-/turf/simulated/floor/tile/dark,
-/area/lz_001/outpost/syndicate/desert)
 "jh" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
@@ -2004,7 +1820,6 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/desert)
 "ji" = (
-/obj/structure/smooth/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
@@ -3404,7 +3219,7 @@ ae
 ae
 bU
 bY
-bZ
+cb
 cb
 cb
 cb
@@ -3660,7 +3475,7 @@ ae
 ae
 ae
 bU
-bZ
+cb
 cg
 cb
 cb
@@ -5718,7 +5533,7 @@ aw
 aw
 aw
 aw
-aA
+aw
 aw
 ah
 cx
@@ -12440,7 +12255,7 @@ df
 df
 dv
 dv
-er
+em
 en
 en
 en
@@ -25002,7 +24817,7 @@ bx
 bx
 bM
 cS
-cU
+cS
 cV
 an
 an
@@ -26276,7 +26091,7 @@ bs
 bs
 bQ
 bu
-cd
+ct
 ci
 bx
 bx
@@ -26350,7 +26165,7 @@ aw
 aw
 aw
 aw
-aw
+aA
 aw
 aw
 aw
@@ -27090,7 +26905,7 @@ ah
 ah
 ah
 ah
-bb
+aD
 ah
 ah
 aw
@@ -28076,7 +27891,7 @@ bx
 bx
 bX
 cf
-cd
+ct
 bu
 bs
 br
@@ -33612,7 +33427,7 @@ ah
 ah
 aw
 aw
-aA
+aw
 aw
 dg
 dg
@@ -35742,10 +35557,10 @@ ah
 ah
 ah
 ah
-al
-al
-al
-al
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -35992,18 +35807,18 @@ ah
 ah
 ah
 ah
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -36068,7 +35883,7 @@ aw
 aw
 aw
 aw
-aA
+aw
 aw
 aw
 ah
@@ -36244,24 +36059,24 @@ ah
 ah
 ah
 ah
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -36496,30 +36311,30 @@ ah
 ah
 al
 al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 al
 al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -36754,29 +36569,29 @@ al
 al
 al
 al
+ah
+ah
+ah
+ah
+ah
 al
 al
 al
 al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -37022,18 +36837,18 @@ al
 al
 al
 al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -37283,13 +37098,13 @@ al
 al
 al
 al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -37541,12 +37356,12 @@ al
 al
 al
 al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -37799,11 +37614,11 @@ al
 al
 al
 al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -38057,10 +37872,10 @@ al
 al
 al
 al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -38314,10 +38129,10 @@ al
 al
 al
 al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -38572,9 +38387,9 @@ al
 al
 al
 al
-al
-al
-al
+ah
+ah
+ah
 ah
 ah
 ah
@@ -40426,13 +40241,13 @@ al
 al
 al
 al
-al
-al
-al
-al
-al
-al
-al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
 ah
 ah
 ah
@@ -40687,8 +40502,8 @@ al
 al
 al
 al
-al
-al
+ah
+ah
 ah
 ah
 ah
@@ -41972,7 +41787,7 @@ al
 al
 al
 al
-al
+ah
 ah
 ah
 ah
@@ -42114,7 +41929,7 @@ ah
 ah
 ah
 aw
-aA
+aw
 aw
 ah
 ah
@@ -45338,7 +45153,7 @@ aB
 aw
 aw
 aw
-aA
+aw
 eG
 aB
 ax
@@ -45528,7 +45343,7 @@ ah
 al
 ax
 ax
-bg
+ax
 ax
 al
 al
@@ -47253,7 +47068,7 @@ ah
 ah
 ah
 ah
-al
+ah
 al
 al
 al
@@ -47510,7 +47325,7 @@ ah
 ah
 ah
 ah
-al
+ah
 al
 al
 al
@@ -47767,8 +47582,8 @@ ah
 ah
 ah
 ah
-al
-al
+ah
+ah
 al
 al
 al
@@ -48024,8 +47839,8 @@ ah
 ah
 ah
 ah
-al
-al
+ah
+ah
 al
 al
 al
@@ -48281,9 +48096,9 @@ ah
 ah
 ah
 ah
-al
-al
-al
+ah
+ah
+ah
 al
 al
 al
@@ -48538,9 +48353,9 @@ ah
 ah
 ah
 ah
-al
-al
-al
+ah
+ah
+ah
 al
 al
 al
@@ -48781,8 +48596,8 @@ iv
 iz
 iB
 jh
-iA
-iA
+iJ
+iJ
 iv
 il
 hq
@@ -48795,9 +48610,9 @@ ah
 ah
 ah
 ah
-al
-al
-al
+ah
+ah
+ah
 al
 al
 al
@@ -48957,7 +48772,7 @@ fb
 fN
 gc
 gc
-fj
+fC
 gn
 gA
 fb
@@ -49036,10 +48851,10 @@ hq
 in
 iv
 iJ
-iA
-iA
+iJ
+iJ
 iK
-iA
+iJ
 iv
 il
 hq
@@ -49052,9 +48867,9 @@ ah
 ah
 ah
 ah
-al
-al
-al
+ah
+ah
+ah
 al
 al
 al
@@ -49207,9 +49022,9 @@ dj
 dj
 ds
 fb
-fd
+fC
 fo
-fj
+fC
 fb
 fO
 fO
@@ -49293,10 +49108,10 @@ in
 in
 iv
 iJ
-iA
+iJ
 iB
-iA
-iA
+iJ
+iJ
 iv
 il
 hq
@@ -49309,9 +49124,9 @@ ah
 ah
 ah
 ah
-al
-al
-al
+ah
+ah
+ah
 al
 al
 al
@@ -49387,9 +49202,9 @@ an
 an
 bi
 bk
-bj
-bj
-bj
+bl
+bl
+bl
 bo
 bi
 al
@@ -49464,9 +49279,9 @@ dj
 dj
 ds
 fb
-fe
-fj
-fj
+fC
+fC
+fC
 fb
 fb
 fb
@@ -49566,9 +49381,9 @@ ah
 ah
 ah
 ah
-al
-al
-al
+ah
+ah
+ah
 al
 al
 al
@@ -49643,11 +49458,11 @@ an
 an
 an
 bi
-bj
-bm
-bm
-bm
-bj
+bl
+bn
+bn
+bn
+bl
 bi
 al
 al
@@ -49721,15 +49536,15 @@ dj
 dj
 dx
 fb
-ff
-fj
-fj
+fC
+fC
+fC
 fb
-fj
-fj
-fj
-fj
-fj
+fC
+fC
+fC
+fC
+fC
 gn
 dj
 dw
@@ -49807,7 +49622,7 @@ il
 il
 iv
 ja
-iA
+iJ
 iB
 iJ
 iv
@@ -49823,8 +49638,8 @@ ah
 ah
 ah
 ah
-al
-al
+ah
+ah
 al
 al
 al
@@ -49899,12 +49714,12 @@ ai
 an
 bh
 an
-bj
-bj
-bm
-bm
-bm
-bj
+bl
+bl
+bn
+bn
+bn
+bl
 bi
 al
 al
@@ -49979,9 +49794,9 @@ dj
 dx
 fb
 fg
-fj
-fj
-fz
+fC
+fC
+fC
 fP
 gd
 gd
@@ -50063,9 +49878,9 @@ hq
 il
 in
 iv
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iJ
 iv
 il
@@ -50080,8 +49895,8 @@ ah
 ah
 ah
 ah
-al
-al
+ah
+ah
 al
 al
 al
@@ -50157,11 +49972,11 @@ an
 an
 an
 bi
-bj
-bm
+bl
 bn
 bn
-bj
+bn
+bl
 bi
 al
 al
@@ -50236,14 +50051,14 @@ dj
 dx
 fb
 fh
-fj
-fj
-fA
+fC
+fC
+fC
 fP
 ge
 gd
 gd
-gr
+gA
 fb
 dj
 dw
@@ -50320,9 +50135,9 @@ hq
 il
 in
 iv
-iA
+iJ
 iK
-iA
+iJ
 iJ
 iv
 il
@@ -50337,8 +50152,8 @@ ah
 ah
 ah
 ah
-al
-al
+ah
+ah
 al
 al
 al
@@ -50414,11 +50229,11 @@ an
 an
 an
 bi
-bj
-bm
+bl
 bn
 bn
-bj
+bn
+bl
 bi
 al
 al
@@ -50493,9 +50308,9 @@ dj
 dx
 fb
 fi
-fj
-fj
-fB
+fC
+fC
+fC
 fP
 gd
 gd
@@ -50577,9 +50392,9 @@ in
 il
 in
 iv
-iA
-iA
-iA
+iJ
+iJ
+iJ
 ji
 iv
 il
@@ -50594,7 +50409,7 @@ ah
 ah
 ah
 ah
-al
+ah
 al
 al
 al
@@ -50671,11 +50486,11 @@ an
 an
 ae
 bi
-bj
-bm
-bm
-bm
-bj
+bl
+bn
+bn
+bn
+bl
 bi
 al
 al
@@ -50721,7 +50536,7 @@ ah
 aw
 aw
 aw
-aZ
+aq
 ah
 dx
 dx
@@ -50749,8 +50564,8 @@ ds
 eT
 dx
 fb
-fj
-fj
+fC
+fC
 ft
 fC
 fP
@@ -50834,9 +50649,9 @@ in
 il
 in
 iv
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iz
 iv
 il
@@ -50909,7 +50724,7 @@ ai
 ai
 ai
 ai
-aW
+an
 an
 an
 an
@@ -50929,10 +50744,10 @@ ae
 ae
 bi
 bl
-bm
-bm
-bm
-bj
+bn
+bn
+bn
+bl
 bi
 al
 al
@@ -51007,9 +50822,9 @@ dj
 dx
 fb
 fk
-fj
-fj
-fz
+fC
+fC
+fC
 fP
 gd
 gd
@@ -51092,7 +50907,7 @@ il
 in
 iv
 iB
-iA
+iJ
 iJ
 iJ
 iv
@@ -51185,11 +51000,11 @@ ae
 ae
 ae
 bi
-bj
-bm
-bm
-bm
-bj
+bl
+bn
+bn
+bn
+bl
 bi
 al
 al
@@ -51263,8 +51078,8 @@ ds
 dj
 dx
 fb
-fl
-fj
+fC
+fC
 fu
 fC
 fP
@@ -51442,12 +51257,12 @@ ae
 ae
 ae
 bi
-bj
-bm
-bm
-bm
-bj
-bj
+bl
+bn
+bn
+bn
+bl
+bl
 al
 al
 al
@@ -51521,10 +51336,10 @@ ds
 dx
 fb
 fm
-fj
-fj
-fj
-fj
+fC
+fC
+fC
+fC
 gd
 gd
 go
@@ -51606,7 +51421,7 @@ hq
 in
 iv
 iB
-iA
+iJ
 iv
 il
 il
@@ -51700,9 +51515,9 @@ ae
 ae
 bi
 bk
-bj
-bj
-bj
+bl
+bl
+bl
 bk
 bi
 al
@@ -51777,15 +51592,15 @@ dx
 ds
 dx
 fb
-fj
-fj
-fj
+fC
+fC
+fC
 ft
-fj
+fC
 gd
 gd
 ge
-gt
+gA
 fb
 dj
 dw
@@ -51862,8 +51677,8 @@ hq
 il
 in
 iv
-iA
-iA
+iJ
+iJ
 iv
 il
 hq
@@ -52034,14 +51849,14 @@ dx
 ds
 dx
 fb
-fj
+fC
 fp
-fj
-fj
-fj
+fC
+fC
+fC
 fp
-fj
-fj
+fC
+fC
 gs
 fb
 dj
@@ -52119,8 +51934,8 @@ iv
 iv
 iv
 iv
-iA
-jc
+iJ
+ji
 iv
 il
 hq
@@ -52375,9 +52190,9 @@ in
 iv
 iJ
 iJ
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iv
 il
 hq
@@ -52632,9 +52447,9 @@ in
 iv
 iJ
 iS
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iv
 il
 hq
@@ -52888,10 +52703,10 @@ ik
 il
 iv
 iJ
-iA
+iJ
 iK
-iA
-iA
+iJ
+iJ
 iv
 in
 in
@@ -53145,10 +52960,10 @@ im
 il
 iv
 iJ
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
 iw
 in
 in
@@ -53402,10 +53217,10 @@ im
 in
 iv
 iJ
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
 iw
 in
 in
@@ -53659,10 +53474,10 @@ in
 in
 iv
 iJ
-iA
-iA
+iJ
+iJ
 iK
-iA
+iJ
 iv
 in
 in
@@ -53840,8 +53655,8 @@ fE
 fQ
 gh
 fQ
-fS
-fS
+gw
+gw
 fE
 dx
 dw
@@ -53917,9 +53732,9 @@ in
 iv
 iz
 iT
-iA
+iJ
 iB
-iA
+iJ
 iv
 in
 in
@@ -54098,7 +53913,7 @@ fR
 fQ
 fQ
 gi
-gu
+gx
 fE
 ds
 dw
@@ -54354,8 +54169,8 @@ fE
 fQ
 fQ
 fQ
-fS
-fS
+gw
+gw
 fE
 ds
 dw
@@ -54429,12 +54244,12 @@ in
 in
 iv
 iJ
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iB
-iA
-iA
+iJ
+iJ
 iv
 iQ
 in
@@ -54608,11 +54423,11 @@ dx
 dW
 dZ
 fE
-fS
-fS
-fS
-fS
-fS
+gw
+gw
+gw
+gw
+gw
 fE
 ds
 dw
@@ -54686,12 +54501,12 @@ in
 in
 iv
 iM
-iA
+iJ
 iK
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
 iv
 in
 il
@@ -54865,11 +54680,11 @@ dx
 dW
 dZ
 fE
-fS
-fS
-fS
-fS
-gv
+gw
+gw
+gw
+gw
+gw
 fE
 dx
 dw
@@ -54943,12 +54758,12 @@ in
 in
 iv
 iJ
-iA
-iA
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
 iv
 in
 il
@@ -55122,10 +54937,10 @@ dx
 fs
 dZ
 fE
-fS
+gw
 gi
-fS
-fS
+gw
+gw
 gw
 fE
 dx
@@ -55200,12 +55015,12 @@ in
 in
 iv
 iJ
-iA
-iA
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
 iv
 iQ
 il
@@ -55380,9 +55195,9 @@ dW
 dZ
 fE
 fT
-fS
-fS
-fS
+gw
+gw
+gw
 gx
 fE
 dx
@@ -55458,11 +55273,11 @@ in
 iv
 iJ
 iP
-iA
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
+iJ
 iv
 in
 il
@@ -55568,7 +55383,7 @@ ax
 ax
 ax
 ax
-bg
+ax
 ax
 ax
 ax
@@ -55636,10 +55451,10 @@ dx
 dW
 dZ
 fE
-fU
-gj
-fS
-fS
+gw
+gw
+gw
+gw
 gy
 fE
 dx
@@ -55714,11 +55529,11 @@ in
 in
 iv
 iJ
-iA
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
+iJ
 iK
 iv
 il
@@ -55857,7 +55672,7 @@ ah
 dd
 dd
 dk
-dp
+dt
 du
 dt
 dt
@@ -55975,8 +55790,8 @@ iJ
 iU
 iT
 iB
-iA
-iA
+iJ
+iJ
 iv
 il
 il
@@ -56114,7 +55929,7 @@ dd
 dd
 dd
 dk
-dp
+dt
 dt
 dt
 dt
@@ -56371,7 +56186,7 @@ dd
 dd
 dd
 dk
-dp
+dt
 dt
 dt
 dt
@@ -56482,15 +56297,15 @@ ht
 in
 iv
 iz
-iE
+jh
 iJ
 iN
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iB
-iA
-iA
+iJ
+iJ
 iv
 il
 il
@@ -56610,12 +56425,12 @@ al
 al
 cI
 cM
-cN
+cO
 cQ
-cN
-cN
-cN
-cN
+cO
+cO
+cO
+cO
 cO
 cI
 cZ
@@ -56628,7 +56443,7 @@ dd
 dd
 dd
 dk
-dp
+dt
 dt
 dt
 dt
@@ -56738,16 +56553,16 @@ ht
 in
 in
 iw
-iA
-iA
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
 iK
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iv
 il
 hq
@@ -56866,13 +56681,13 @@ al
 al
 al
 cI
-cN
-cN
 cO
-cN
+cO
+cO
+cO
 cP
-cN
-cN
+cO
+cO
 cQ
 cI
 ax
@@ -56992,19 +56807,19 @@ hg
 hn
 ht
 in
-ip
+in
 ir
 iw
 iB
-iA
+iJ
 iK
-iA
-iA
-iA
-iA
-iA
-iA
-jc
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+ji
 iv
 il
 hq
@@ -57123,13 +56938,13 @@ al
 al
 al
 cI
-cN
-cN
+cO
+cO
 cQ
-cN
-cN
-cN
-cN
+cO
+cO
+cO
+cO
 cO
 cI
 ax
@@ -57252,16 +57067,16 @@ ht
 ik
 in
 iv
-iA
-iA
-iA
-iA
-iA
-iA
-iA
-iA
-iA
-iA
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
 iv
 il
 hq
@@ -57380,13 +57195,13 @@ al
 al
 al
 cI
-cN
 cO
 cO
-cN
-cN
-cN
-cN
+cO
+cO
+cO
+cO
+cO
 cO
 cI
 ax
@@ -57494,7 +57309,7 @@ hg
 hg
 hg
 hg
-hg
+aZ
 hg
 hg
 hg
@@ -57637,13 +57452,13 @@ al
 al
 al
 cI
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+cO
+cO
+cO
+cO
+cO
+cO
+cO
 cQ
 cI
 ax
@@ -57772,9 +57587,9 @@ il
 il
 il
 iv
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iv
 il
 il
@@ -57793,10 +57608,10 @@ ah
 al
 al
 al
-aD
-aD
-aD
-aD
+al
+al
+al
+al
 al
 al
 al
@@ -57894,13 +57709,13 @@ ax
 al
 ax
 cI
-cN
+cO
 cP
-cN
-cN
-cN
-cN
-cN
+cO
+cO
+cO
+cO
+cO
 cO
 cI
 ax
@@ -58029,9 +57844,9 @@ il
 il
 il
 iv
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iv
 il
 hq
@@ -58050,10 +57865,10 @@ ah
 al
 al
 al
-aD
-aD
-aD
-aD
+al
+al
+al
+al
 al
 al
 al
@@ -58156,9 +57971,9 @@ cQ
 cO
 cO
 cO
-cN
+cO
 cP
-cN
+cO
 cI
 ax
 ax
@@ -58286,9 +58101,9 @@ il
 il
 il
 iv
-iA
-iA
-jc
+iJ
+iJ
+ji
 iv
 il
 hq
@@ -58307,20 +58122,20 @@ ah
 al
 al
 al
-aD
-aD
-aD
-aD
 al
 al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -58463,7 +58278,7 @@ dx
 dW
 dZ
 fG
-fV
+fY
 gk
 fY
 fY
@@ -58543,9 +58358,9 @@ hq
 il
 il
 iv
-iA
-iA
-iA
+iJ
+iJ
+iJ
 iv
 il
 hq
@@ -58564,20 +58379,20 @@ ah
 al
 al
 al
-aD
-aD
-aD
-aD
 al
 al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -58722,8 +58537,8 @@ dZ
 fH
 fW
 gl
-fV
-fV
+fY
+fY
 gz
 fG
 dx
@@ -58830,11 +58645,6 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
 al
 al
 al
@@ -58877,36 +58687,6 @@ al
 al
 al
 al
-ax
-ax
-ax
-ax
-ax
-al
-al
-al
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
-ah
 al
 al
 al
@@ -58914,6 +58694,41 @@ al
 al
 ax
 ax
+ax
+ax
+ax
+al
+al
+al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+al
+al
+al
+al
+al
+ax
+ax
 al
 al
 ah
@@ -58924,7 +58739,7 @@ ax
 ax
 ax
 ax
-bg
+ax
 ax
 ax
 ax
@@ -58977,11 +58792,11 @@ dx
 dW
 dZ
 fG
-fV
+fY
 gm
 gm
 gm
-fV
+fY
 fG
 dx
 dw
@@ -59087,11 +58902,11 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -59234,11 +59049,11 @@ dx
 dW
 dZ
 fG
-fV
+fY
 gm
 gm
 gm
-fV
+fY
 fG
 dx
 dw
@@ -59344,11 +59159,11 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -59495,7 +59310,7 @@ fX
 gm
 gm
 gm
-fV
+fY
 fG
 dx
 dw
@@ -59601,11 +59416,11 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -59752,7 +59567,7 @@ fY
 gm
 gm
 gp
-fV
+fY
 fG
 dx
 dw
@@ -59848,11 +59663,11 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -60105,11 +59920,11 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -60263,9 +60078,9 @@ dW
 dZ
 fG
 ga
-fV
-fV
-fV
+fY
+fY
+fY
 ga
 fG
 dx
@@ -60362,11 +60177,11 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -60619,11 +60434,11 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -60876,11 +60691,11 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
 al
 al
 al
@@ -61653,13 +61468,13 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -61910,13 +61725,13 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -62161,19 +61976,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -62418,19 +62233,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -62675,19 +62490,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -62932,19 +62747,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -63189,19 +63004,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -63446,19 +63261,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -63703,19 +63518,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -63960,19 +63775,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -64217,19 +64032,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -64474,19 +64289,19 @@ ah
 ah
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -64737,13 +64552,13 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -64994,13 +64809,13 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -65251,13 +65066,13 @@ al
 al
 al
 al
-aD
-aD
-aD
-aD
-aD
-aD
-aD
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al

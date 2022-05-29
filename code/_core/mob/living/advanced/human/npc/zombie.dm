@@ -2,13 +2,8 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-
-	species = "zombie"
-
-	var/loadout_to_use = /loadout/zombie
+	var/loadout_to_use
 	health = /health/mob/living/advanced/zombie/
-
-	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	var/next_talk = 0
 
@@ -17,86 +12,74 @@
 	loyalty_tag = "Zombie"
 	iff_tag = "Zombie"
 
-	level = 8
+	level = 24
 
-/mob/living/advanced/npc/zombie/get_movement_delay()
+	health_base = 200
+	stamina_base = 100
+	mana_base = 100
 
-	. = ..()
+	sex = NEUTER
+	gender = NEUTER
 
-	var/turf/T = get_turf(src)
-	. *= max(1,2 - T.lightness)
-	if(ai && ai.objective_attack)
-		. *= max(1,1 + get_dist(src,ai.objective_attack)/VIEW_RANGE)
+	var/rest_chance = 25
+	var/missing_limb_chance = 10
 
-/mob/living/advanced/npc/zombie/post_death()
-	CALLBACK("zombie_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/zombie_revive)
-	return ..()
-
-/mob/living/advanced/npc/zombie/proc/zombie_revive() //Stolen from meatmen, partially.
-
-	if(!health)
-		return FALSE
-
-	var/obj/item/organ/head/H = labeled_organs[BODY_HEAD]
-	if(!H || !H.health)
-		return FALSE
-
-	if(H.health.health_current <= 0)
-		return FALSE
-
-	if(!istype(health,/health/mob/living/advanced/zombie/))
-		return FALSE
-
-	var/health/mob/living/advanced/zombie/ZH = health
-	var/extra_health = -health.health_current*1.25
-	ZH.extra_max_health += extra_health
-	ZH.update_health_stats()
-	src.add_status_effect(ADRENALINE,100,100,stealthy=TRUE)
-	ZH.update_health()
-
-
-	if(!check_death())
-		revive()
-
-	return TRUE
-
-/mob/living/advanced/npc/zombie/revive()
-
-	. = ..()
-
-	if(.)
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/revive_01.ogg',
-			'sound/voice/zombie/revive_02.ogg',
-			'sound/voice/zombie/revive_03.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
 /mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
 	setup_sex()
-	return ..()
+	. = ..()
 
 /mob/living/advanced/npc/zombie/proc/setup_sex()
-	gender = pick(MALE,FEMALE)
-	sex = gender //oh god oh fuck what have i done
+	if(gender == NEUTER)
+		gender = pick(MALE,FEMALE)
+	if(sex == NEUTER)
+		sex = gender //oh god oh fuck what have i done
 	return TRUE
-
-/mob/living/advanced/npc/zombie/proc/setup_appearance()
-	var/list/valid_male_hair = list("none","hair_a","hair_c","hair_d","hair_e","hair_f")
-	var/list/valid_female_hair = list("hair_b","hair_ponytail2","hair_ponytail5")
-	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	change_organ_visual("hair_head", desired_icon_state = sex == MALE ? pick(valid_male_hair) : pick(valid_female_hair), desired_color = pick("#111111","#404040","#54341F","#D8BB6A"))
-	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
-	return TRUE
-
 
 /mob/living/advanced/npc/zombie/Initialize()
 
 	. = ..()
 
+	if(prob(missing_limb_chance))
+		var/turf/T = get_turf(src)
+		switch(rand(1,3))
+			if(1)
+				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
+				if(O) O.unattach_from_parent(T,TRUE)
+			if(2)
+				var/obj/item/organ/O1 = labeled_organs[BODY_LEG_RIGHT]
+				var/obj/item/organ/O2 = labeled_organs[BODY_LEG_LEFT]
+				if(O1) O1.unattach_from_parent(T,TRUE)
+				if(O2) O2.unattach_from_parent(T,TRUE)
+			if(3)
+				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
+				if(O) O.broken = TRUE
+
 	setup_appearance()
 	update_all_blends()
-	equip_loadout(loadout_to_use)
+
+	if(loadout_to_use) equip_loadout(loadout_to_use)
+
+	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
+	for(var/k in organs)
+		var/obj/item/organ/O = k
+		var/total_loss = RAND_PRECISE(0.25,0.5) * min(total_loss_limit,O.health.health_max) * (1/max(1,O.damage_coefficient))
+		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
+		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
+		var/tox_loss = total_loss - (burn_loss + brute_loss)
+		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
+
+/mob/living/advanced/npc/zombie/proc/setup_appearance()
+	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
+	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#FFFFFF")
+	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
+	return TRUE
+
+/mob/living/advanced/npc/zombie/Finalize()
+	. = ..()
+	add_status_effect(ZOMBIE,100,-1, force = TRUE)
+	if(prob(rest_chance))
+		add_status_effect(REST,-1,-2, force = TRUE)
 
 /mob/living/advanced/npc/zombie/get_emote_sound(var/emote_id)
 
@@ -105,77 +88,6 @@
 			return null
 
 	return null
-
-
-/mob/living/advanced/npc/zombie/on_life_slow()
-
-	. = ..()
-
-	if(. && ai && ai.active && next_talk <= world.time && prob(25))
-
-		var/sound_to_play
-
-		if(ai.alert_level == ALERT_LEVEL_NONE)
-			var/list/valid_sounds = list(
-				'sound/voice/zombie/generic_01.ogg',
-				'sound/voice/zombie/generic_02.ogg',
-				'sound/voice/zombie/generic_03.ogg',
-				'sound/voice/zombie/generic_04.ogg'
-			)
-			sound_to_play = pick(valid_sounds)
-		else
-			var/list/valid_sounds = list(
-				'sound/voice/zombie/alert_01.ogg',
-				'sound/voice/zombie/alert_02.ogg',
-				'sound/voice/zombie/alert_03.ogg',
-				'sound/voice/zombie/alert_04.ogg',
-				'sound/voice/zombie/alert_05.ogg'
-			)
-			sound_to_play = pick(valid_sounds)
-
-		if(sound_to_play)
-			play_sound(sound_to_play,get_turf(src),range_max=VIEW_RANGE)
-
-		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
-
-/mob/living/advanced/npc/zombie/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
-
-	. = ..()
-
-	if(. && next_talk <= world.time && prob(50))
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/attack_01.ogg',
-			'sound/voice/zombie/attack_02.ogg',
-			'sound/voice/zombie/attack_03.ogg',
-			'sound/voice/zombie/attack_04.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-		next_talk = world.time + SECONDS_TO_DECISECONDS(rand(5,12))
-
-/mob/living/advanced/npc/zombie/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
-	. = ..()
-
-	if(!stealthy && !dead && damage_amount > 20 && prob(50))
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/pain_01.ogg',
-			'sound/voice/zombie/pain_02.ogg',
-			'sound/voice/zombie/pain_03.ogg',
-			'sound/voice/zombie/pain_04.ogg',
-			'sound/voice/zombie/pain_05.ogg',
-			'sound/voice/zombie/pain_06.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
-
-/mob/living/advanced/npc/zombie/post_death()
-
-	. = ..()
-
-	if(prob(50))
-		var/list/valid_sounds = list(
-			'sound/voice/zombie/death_01.ogg'
-		)
-		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 
 /mob/living/advanced/npc/zombie/winter
 	loadout_to_use = /loadout/zombie/winter
@@ -247,10 +159,21 @@
 /mob/living/advanced/npc/zombie/scientist/post_death()
 
 	if(!dropped_vial)
-		var/obj/item/container/beaker/vial/zombie_antidote/ZA = new(get_turf(src))
+		var/obj/item/container/simple/beaker/vial/zombie_antidote/ZA = new(get_turf(src))
 		INITIALIZE(ZA)
 		GENERATE(ZA)
 		FINALIZE(ZA)
 		dropped_vial = TRUE
 
 	return ..()
+
+
+/mob/living/advanced/npc/zombie/civilian
+	loadout_to_use = /loadout/zombie/civilian
+
+/mob/living/advanced/npc/zombie/civilian/setup_sex()
+	. = ..()
+	if(gender == MALE)
+		loadout_to_use = /loadout/zombie/civilian/male
+	else if(gender == FEMALE)
+		loadout_to_use = /loadout/zombie/civilian/female

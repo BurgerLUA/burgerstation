@@ -30,7 +30,7 @@ var/global/list/atom/movable/possible_abnormalities = list(
 	return pick(valid_targets)
 
 /objective/abnormality/get_description()
-	return "Contain the unknown anomaly and bring it shipside into the science containment area. Location: [english_list(get_locations())]."
+	return "Contain the unknown anomaly and bring it shipside into the science containment area. Location: [english_list(get_locations(),"Unknown")]."
 
 /objective/abnormality/setup()
 	if(!length(possible_abnormality_spawns))

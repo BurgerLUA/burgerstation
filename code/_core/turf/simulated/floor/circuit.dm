@@ -15,10 +15,16 @@
 	name = "blue circuit"
 	icon_state = "bcircuit"
 
+	map_color = COLOR_BLUE
+
 /turf/simulated/floor/circuit/red
 	name = "red circuit"
 	icon_state = "rcircuit"
 
+	map_color = COLOR_RED
+
 /turf/simulated/floor/circuit/green
 	name = "green circuit"
 	icon_state = "gcircuit"
+
+	map_color = COLOR_GREEN

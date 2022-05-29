@@ -3,9 +3,7 @@
 	class = /class/player/antagonist
 	allow_save = FALSE
 
-	damage_received_multiplier = 0.5
-
-	level = 20
+	level = 30
 
 /mob/living/advanced/player/antagonist/proc/prepare()
 	INITIALIZE(src)
@@ -24,9 +22,9 @@
 	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
 
 	var/hair_color = random_color()
-	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(S.all_hair_head))
+	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
 	if(sex == MALE && prob(25))
-		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
+		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair_face]))
 
 	update_all_blends()
 
@@ -50,7 +48,7 @@
 
 	. = ..()
 
-	if(client) //Sometimes antags go afk.
+	if(added_xp > 0 && client) //Don't give rewards to afk players.
 		var/savedata/client/globals/GD = GLOBALDATA(client.ckey)
 		if(!GD) return FALSE
 		if(!GD.loaded_data["stored_experience"])
@@ -61,7 +59,7 @@
 
 	. = ..()
 
-	if(currency_to_add > 0 && client)
+	if(currency_to_add > 0 && client) //Don't give rewards to afk players.
 		var/savedata/client/globals/GD = GLOBALDATA(client.ckey)
 		if(GD) GD.loaded_data["stored_currency"] += currency_to_add
 

@@ -1,6 +1,5 @@
 /mob/living/advanced/npc/
 	name = "greytide"
-	enable_AI = TRUE
 	ai = /ai/advanced/
 
 	var/dialogue_id
@@ -12,7 +11,7 @@
 	if(!dialogue_id)
 		return FALSE
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return FALSE
 
 	var/mob/living/L = caller

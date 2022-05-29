@@ -53,7 +53,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 
 	. = ""
 
-	if(is_client(speaker))
+	if(istype(speaker,/client/))
 		var/client/C = speaker
 		if(C.byond_member)
 			. += ICON_TO_HTML(chat_icons.icon,"byond",20,20)
@@ -68,7 +68,7 @@ proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequ
 
 /proc/get_ooc_color(var/datum/speaker) //WIP
 
-	if(is_client(speaker))
+	if(istype(speaker,/client/))
 		var/client/C = speaker
 		if(C.permissions & FLAG_PERMISSION_HOST)
 			return "#B71C00"

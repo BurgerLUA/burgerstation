@@ -2,7 +2,7 @@
 	name = "pocket"
 	id = "pocket"
 	icon_state = "slot_pocket"
-	screen_loc = "CENTER,BOTTOM+3"
+	screen_loc = "CENTER,BOTTOM:10+3"
 	max_slots = 1
 	worn = FALSE
 
@@ -17,21 +17,19 @@
 
 	item_bypass = list()
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"
-	screen_loc = "CENTER+3,BOTTOM"
+	screen_loc = "CENTER+3,BOTTOM:10"
 
 	priority = 11
 
 /obj/hud/inventory/organs/groin/pocket/left
 	name = "right lower pocket"
 	id = "pocket02"
-	screen_loc = "CENTER+4,BOTTOM"
+	screen_loc = "CENTER+4,BOTTOM:10"
 
 	priority = 10
 
@@ -44,3 +42,5 @@
 	priority = 1000
 
 	item_whitelist = list(/obj/item/contract)
+
+	ultra_persistant = TRUE

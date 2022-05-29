@@ -15,8 +15,8 @@
 
 	heated_reagent = /reagent/nutrition/bread
 	heated_reagent_temp = 370
-	heated_reagent_amount = 0.5
-	heated_reagent_mul = 0.01
+	heated_reagent_amount = 1
+	heated_reagent_mul = 0.02
 
 	flavor_strength = 4
 

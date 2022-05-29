@@ -6,3 +6,5 @@
 	corner_icons = TRUE
 
 	destruction_turf = /turf/simulated/floor/cave_dirt
+
+	map_color = "#005108"

@@ -4,7 +4,7 @@ var/global/list/gps_list = list()
 	name = "gps"
 	desc = "Where are you?"
 	desc_extended = "A highly advanced gps and rangefinder that can get the location of where you aim it."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/analyzers/gps.dmi'
 	icon_state = "inventory"
 	value = 700
@@ -39,6 +39,7 @@ var/global/list/gps_list = list()
 		caller.to_chat(span("warning","Invalid target!"))
 		return FALSE
 
+	caller.to_chat(span("notice","Distance: [get_dist_advanced(caller,target)]u."))
 	caller.to_chat(span("notice","Position: ([target.x],[target.y],[target.z])."))
 	caller.to_chat(span("notice","Angle: [get_angle(caller,target)] degrees."))
 	next_scan = world.time + SECONDS_TO_DECISECONDS(2)
@@ -78,7 +79,7 @@ var/global/list/gps_list = list()
 			return
 	return ..()
 
-/obj/item/analyzer/gps/save_item_data(var/save_inventory = TRUE)
+/obj/item/analyzer/gps/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["name"] = name
 	.["assigned_number"] = assigned_number

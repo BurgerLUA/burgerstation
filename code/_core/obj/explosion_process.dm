@@ -98,7 +98,7 @@
 			EP.original_power = original_power
 			EP.power = power_to_give
 			power -= power_to_give
-			EP.velocity_dir = get_dir(src,EP)
+			EP.velocity_dir = get_dir_advanced(src,EP)
 			EP.owner = owner
 			EP.source = source
 			EP.epicenter = epicenter

@@ -49,8 +49,6 @@
 
 	. += get_damage_description(examiner,FALSE)
 
-	. += div("notice bold","<a href='?src=\ref[examiner];view_inventory=\ref[src]'>(View inventory...)</a>")
-
 mob/living/advanced/get_examine_details_list(var/mob/examiner)
 
 	var/pronoun = get_pronoun_he_she_it(src)
@@ -67,7 +65,6 @@ mob/living/advanced/get_examine_details_list(var/mob/examiner)
 	if(survival_skill >= 50)
 		var/calculated_speed = (DECISECONDS_TO_TICKS(1.75)/initial(movement_delay))*(1-move_delay_multiplier)*100
 		. += div("notice","Speed: [FLOOR(calculated_speed,0.01)]%")
-		. += div("notice","Evasion Rating: [FLOOR(evasion_rating,0.01)]%")
 
 	if(handcuffed)
 		if(examiner == src)

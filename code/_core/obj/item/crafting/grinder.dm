@@ -22,21 +22,22 @@
 
 /obj/item/crafting/grinder/attempt_to_craft(var/mob/living/advanced/caller)
 
-	var/obj/item/container/C //Final slot container.
+	var/obj/item/C //Final slot container.
 
 	for(var/obj/hud/inventory/crafting/result/R in src.inventories)
 		var/obj/item/top_object = R.get_top_object()
-		C = top_object
-		break
+		if(top_object.reagents && top_object.allow_reagent_transfer_to)
+			C = top_object
+			break
 
-	if(!C)
+	if(!C) //Try one more time.
 		for(var/obj/hud/inventory/crafting/R in src.inventories)
 			var/obj/item/top_object = R.get_top_object()
-			if(is_beaker(top_object))
+			if(top_object.reagents && top_object.allow_reagent_transfer_to)
 				C = top_object
 				break
 
-	if(!C || !is_beaker(C))
+	if(!C)
 		caller.to_chat(span("warning","You're missing a valid container in the product slot!"))
 		return FALSE
 
@@ -55,7 +56,7 @@
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, caller = caller)
 			success = TRUE
 
-		if(!is_beaker(I))
+		if(!I.allow_reagent_transfer_from)
 			qdel(I)
 		else
 			I.reagents.update_container()

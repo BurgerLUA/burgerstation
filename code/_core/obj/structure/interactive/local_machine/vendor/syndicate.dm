@@ -22,7 +22,7 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
-		/obj/item/magazine/smp_9mm,
+		/obj/item/magazine/smg_9mm,
 		/obj/item/weapon/ranged/bullet/magazine/smg/thompson,
 		/obj/item/magazine/thompson,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
@@ -31,10 +31,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
 		/obj/item/magazine/lmg_223,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
-		/obj/item/magazine/rifle_308,
-		/obj/item/magazine/rifle_308/ap,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/honey,
-		/obj/item/magazine/honey,
+		/obj/item/magazine/sniper_308,
+		/obj/item/magazine/sniper_308/ap,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/magazine/shotgun_auto/buckshot,
 		/obj/item/magazine/shotgun_auto/slug,
@@ -51,7 +49,9 @@
 		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater,
+		/obj/item/grenade/fuse/fragmentation
 	)
 
 /obj/structure/interactive/vending/syndicate/medicine
@@ -65,12 +65,16 @@
 		/obj/item/storage/kit/toxin/filled,
 		/obj/item/storage/kit/ai3/filled,
 		/obj/item/storage/kit/syndicate/filled,
+		/obj/item/container/simple/beaker/bottle/epinephrine,
+		/obj/item/container/simple/beaker/bottle/morphine,
+		/obj/item/container/simple/beaker/bottle/calomel,
+		/obj/item/container/simple/beaker/vial/zombie_antidote,
+		/obj/item/container/syringe/hypodermic,
 		/obj/item/container/blood_pack/full/synthblood,
-		/obj/item/container/beaker/vial/zombie_antidote,
-		/obj/item/container/medicine/nanopaste,
+		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 		/obj/item/storage/pillbottle/assprin,
-		/obj/item/container/syringe/medipen/hypospray
+		/obj/item/container/syringe/hypospray
 
 	)
 	markup = 0.75
@@ -78,6 +82,10 @@
 /obj/structure/interactive/vending/syndicate/attachment
 	name = "syndicate attachment vendor"
 	icon_state = "attachment"
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 	stored_types = list(
 		/obj/item/attachment/barrel/charger,
 		/obj/item/attachment/barrel/compensator,
@@ -101,6 +109,10 @@
 /obj/structure/interactive/vending/syndicate/prize
 	name = "hacked prize vendor"
 	icon_state = "prize_hacked"
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 	stored_types = list(
 		/obj/item/announcement/syndicate,
@@ -115,7 +127,7 @@
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
-		/obj/item/deployable/barricade/filled,
+		/obj/item/deployable/barricade{amount=10},
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
 		/obj/item/supply_crate/syndicate,
@@ -126,14 +138,21 @@
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/rcd,
 		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
+		/obj/item/disk/rcd/conveyor,
+		/obj/item/disk/rcd/diverter,
+		/obj/item/disk/rcd/chair,
+		/obj/item/disk/rcd/table,
+		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,
 		/obj/item/deployable/mob/sentry,
 		/obj/item/magazine/minigun_46,
 		/obj/item/storage/cigarettes/syndicate,
-		/obj/item/lighter
+		/obj/item/lighter,
+		/obj/item/map
 	)
 	markup = 0.75
 
@@ -146,29 +165,34 @@
 		/obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
-		/obj/item/clothing/uniform/antag/rev/officer,
 		/obj/item/clothing/overwear/coat/hos/revfficer,
 		/obj/item/clothing/head/hat/hos/revfficer,
 		/obj/item/clothing/overwear/armor/slavticool,
-		/obj/item/clothing/head/helmet/security/slavticool,
-		/obj/item/clothing/head/helmet/security/slavticool/thermal,
+		/obj/item/clothing/head/helmet/slavticool,
+		/obj/item/clothing/head/helmet/slavticool/thermal,
 		/obj/item/clothing/overwear/hardsuit/exosuit,
 		/obj/item/clothing/overwear/armor/seva/mono,
 		/obj/item/clothing/overwear/hardsuit/skat,
 		/obj/item/clothing/overwear/coat/ghillie/forest,
 		/obj/item/clothing/overwear/coat/ghillie/snow,
 		/obj/item/clothing/overwear/coat/ghillie/lava,
-		/obj/item/deployable/barricade/filled,
+		/obj/item/deployable/barricade{amount=10},
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/explosive,
-		/obj/item/supply_crate/russian,
+		/obj/item/supply_crate/slavic,
 		/obj/item/weapon/melee/toolbox/syndicate,
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/lube,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/clothing/glasses/thermal,
 		/obj/item/rcd,
 		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/metal_plating,
 		/obj/item/disk/rcd/metal_wall,
+		/obj/item/disk/rcd/conveyor,
+		/obj/item/disk/rcd/diverter,
+		/obj/item/disk/rcd/chair,
+		/obj/item/disk/rcd/table,
+		/obj/item/disk/rcd/airlock,
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,
@@ -177,8 +201,9 @@
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/weapon/melee/shield/redstar,
 		/obj/item/weapon/melee/shield/ballistic,
-		/obj/item/storage/cigarettes/russian,
-		/obj/item/lighter
+		/obj/item/storage/cigarettes/slavic,
+		/obj/item/lighter,
+		/obj/item/map
 	)
 
 
@@ -200,6 +225,10 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/magazine/gauss_gun,
+		/obj/item/magazine/gauss_gun/explosive,
+		/obj/item/magazine/gauss_gun/ion,
+		/obj/item/magazine/gauss_gun/incendiary,
+		/obj/item/magazine/gauss_gun/ap,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
@@ -210,6 +239,7 @@
 		/obj/item/storage/ammo/buckshot_23,
 		/obj/item/storage/ammo/slug_23,
 		/obj/item/storage/ammo/fire_23,
+		/obj/item/storage/ammo/rubber_23,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/magazine/shotgun_auto/buckshot,
@@ -227,5 +257,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/magazine/lmg_762_r,
 
-		/obj/item/tempering/quality/ranged/lesser
+		/obj/item/tempering/quality/ranged/lesser,
+		/obj/item/tempering/quality/greater,
+
+		/obj/item/grenade/fuse/he
 	)

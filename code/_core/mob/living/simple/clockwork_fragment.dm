@@ -12,20 +12,19 @@
 	ai = /ai/simple/
 	damage_type = /damagetype/unarmed/fists
 
-
 	stun_angle = 0
 
 	iff_tag = "Clockwork"
 	loyalty_tag = "Clockwork"
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	blood_type = null
 	blood_volume = 0
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 20
 
 /mob/living/simple/clockwork_fragment/post_death()
 	. = ..()

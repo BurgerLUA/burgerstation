@@ -42,11 +42,8 @@
 	if(object.plane >= PLANE_HUD)
 		return ..()
 
-	if(istype(object,/obj/item/container/medicine))
-		var/obj/item/container/medicine/M = object
-		if(M.robotic)
-			caller.to_chat(span("warning","\The [M.name] cannot be infused!"))
-			return TRUE
+	if(istype(object,/obj/item/container/healing))
+		var/obj/item/container/healing/M = object
 		var/reagent_transfer = min(5,reagents.volume_current)
 		if(reagent_transfer <= 0)
 			caller.to_chat(span("warning","\The [src.name] is empty!"))
@@ -69,7 +66,7 @@
 		params[PARAM_ICON_X] = new_x_y[1]
 		params[PARAM_ICON_Y] = new_x_y[2]
 
-		var/obj/item/organ/O = victim.get_object_to_damage(attacker,src,params,TRUE,TRUE)
+		var/obj/item/organ/O = victim.get_object_to_damage(attacker,src,null,params,TRUE,TRUE)
 
 		if(!O || !O.health || !O.reagents)
 			return TRUE

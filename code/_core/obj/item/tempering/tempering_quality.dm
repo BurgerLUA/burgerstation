@@ -10,13 +10,8 @@
 		return FALSE
 
 	var/mob/living/advanced/A = caller
-	var/obj/hud/inventory/I = src.loc
-	var/obj/item/belt_storage = I.loc
-	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
 
-	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
-
-	return A.put_in_hands(src,left = put_in_left)
+	return A.put_in_hands(src,params)
 
 /obj/item/tempering/quality/can_temper(var/mob/caller,var/obj/item/I)
 
@@ -70,7 +65,7 @@
 /obj/item/tempering/quality/ranged/lesser
 	name = "gun cleaning kit"
 	desc = "Help my gun needs cleaning."
-	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 100%. Has unlimited uses."
+	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 75%. Has unlimited uses."
 	icon_state = "gun_cleaning"
 
 	temper_whitelist = /obj/item/weapon/ranged
@@ -104,3 +99,31 @@
 	temper_whitelist = /obj/item/weapon/ranged/energy
 
 	value = 500
+
+/obj/item/tempering/quality/greater
+	name = "repair kit"
+	desc = "Help my equipment needs repairs."
+	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of equipment to 100%."
+	icon_state = "repair_kit"
+
+	temper_whitelist = /obj/item/
+
+	increase = 100
+	limit = 100
+	minimum = 0
+
+	size = SIZE_7
+	weight = WEIGHT_5
+
+	value = 2000
+
+	value_burgerbux = 0
+
+/obj/item/tempering/quality/greater/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(is_item(object) && can_temper(caller,object))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		on_temper(caller,object)
+		return TRUE
+	return ..()

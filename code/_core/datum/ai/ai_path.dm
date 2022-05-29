@@ -17,7 +17,7 @@
 	owner.move_dir = 0
 	path_start_turf = get_turf(owner)
 
-	var/Vector3D/last_path = desired_path[length(desired_path)]
+	var/Vector3D/last_path = current_path[length(current_path)]
 	path_end_turf = locate(last_path.x,last_path.y,last_path.z)
 
 	if(check_for_obstructions) check_obstructions()
@@ -33,7 +33,7 @@
 		current_path_astar = null
 
 	if(destination)
-		var/list/returning_path = AStar_Circle(owner,destination,owner)
+		var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner)
 		if(returning_path)
 			current_path_astar = returning_path
 			set_active(TRUE)

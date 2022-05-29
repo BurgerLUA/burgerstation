@@ -8,12 +8,7 @@
 		BODY_HAIR_HEAD = TRUE
 	)
 
-	defense_rating = list(
-		LASER = -40,
-		ARCANE = 40,
-		HEAT = -40,
-		COLD = 80
-	)
+	armor = /armor/cloth/winter/mask
 
 	protection_cold = list(
 		BODY_HEAD = 5,

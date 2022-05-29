@@ -72,7 +72,7 @@ var/global/list/wishgranter_speak_lines = list(
 
 /obj/structure/interactive/boss_loot/Finalize()
 	die_time = world.time + SECONDS_TO_DECISECONDS(120)
-	start_thinking(src)
+	START_THINKING(src)
 	return ..()
 
 /obj/structure/interactive/boss_loot/think()
@@ -85,6 +85,6 @@ var/global/list/wishgranter_speak_lines = list(
 
 	if(next_speak <= world.time && prob(3))
 		var/line_to_say = pick(wishgranter_speak_lines)
-		do_say(line_to_say, language_to_use = LANGUAGE_RUSSIAN)
+		do_say(line_to_say, language_to_use = LANGUAGE_SLAVIC)
 		next_speak = world.time + SECONDS_TO_DECISECONDS(30)
 

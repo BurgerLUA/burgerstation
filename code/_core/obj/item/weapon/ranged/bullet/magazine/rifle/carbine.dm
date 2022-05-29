@@ -1,18 +1,22 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine
-	name = "\improper .223 Raider Carbine"
+	name = "\improper .223 Space Raider Carbine"
 	desc = "A favorite by pirates."
-	desc_extended = "Leftover surplus guns left by the good ol days of syndicate raiding parties. While old and outdated, it still sees some uses by old and new syndicate forces."
+	desc_extended = "A standard issue bullpup carbine used mostly by Syndicate raiding parties."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223.dmi'
 	icon_state = "inventory"
 	value = 900
 
+	tier = 2
+
 	shoot_delay = 2
+
+	damage_mod = 1.3
 
 	automatic = TRUE
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine.ogg')
 
 	can_wield = FALSE
 
@@ -34,7 +38,8 @@
 	override_icon_state = TRUE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -47,8 +52,6 @@
 		/obj/item/attachment/sight/scope = TRUE,
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
-
-		/obj/item/attachment/stock/c20r = FALSE,
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -64,8 +67,6 @@
 
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 17 - 16
-
-
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25
@@ -108,3 +109,56 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(var/mob/living/L)
 	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype
+	name = "\improper .223 Space Raider Carbine Prototype"
+	desc_extended = "A mass-produced prototype carbine usually only seen in the hands of collectors. Can still be used as a decent weapon."
+
+	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_rifle.dmi'
+
+	value = 1400
+
+	tier = 2
+
+	shoot_delay = 1.5
+
+	damage_mod = 1.2
+
+	automatic = TRUE
+
+	firemodes = list("automatic","semi-automatic")
+
+	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
+
+	can_wield = FALSE
+
+	size = SIZE_3
+	weight = 8
+
+	heat_max = 0.08
+
+	bullet_length_min = 40
+	bullet_length_best = 45
+	bullet_length_max = 46
+
+	bullet_diameter_min = 5.5
+	bullet_diameter_best = 5.56
+	bullet_diameter_max = 5.6
+
+	ai_heat_sensitivity = 0.75
+
+	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 26 - 16
+	attachment_undermount_offset_y = 17 - 16
+
+	inaccuracy_modifier = 0.75
+	movement_inaccuracy_modifier = 0.25
+	movement_spread_base = 0.005
+
+	can_wield = TRUE

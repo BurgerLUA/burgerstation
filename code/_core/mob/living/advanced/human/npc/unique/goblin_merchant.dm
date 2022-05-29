@@ -4,12 +4,9 @@
 
 	ai = /ai/advanced
 
-
-
-
 	species = "goblin"
 
-	pixel_z = -2
+	pixel_z = 1
 
 	blood_type = /reagent/blood/goblin
 
@@ -17,13 +14,13 @@
 
 	dialogue_id = /dialogue/npc/goblin_merchant/
 
-	immortal = TRUE
+	health = null
 
 	anchored = TRUE
 
 	size = SIZE_10
 
-	level = 20
+	level = 28
 
 /mob/living/advanced/npc/unique/goblin_merchant/Initialize()
 

@@ -2,6 +2,7 @@
 
 /obj/hud/button/inventory_defer
 	name = "inventory"
+	icon_state = "square_round"
 	var/obj/hud/inventory/referencing
 	var/obj/hud/button/close_inventory_defers/assoc_button
 	layer = 0
@@ -41,19 +42,26 @@
 /obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!referencing)
-		CRASH_SAFE("Warning: Referenced item not detected!")
+		CRASH_SAFE("Warning: Referenced inventory not detected!")
 		return TRUE
 
 	update_vis_contents()
 
 	var/obj/item/top_object = get_top_vis_object()
 	if(!top_object)
-		caller.to_chat(span("warning","There is nothing to strip!"))
+		caller.to_chat(span("warning","There is nothing to remove!"))
 		return FALSE
 
-	top_object.try_strip(caller)
+	if(is_organ(referencing.loc))
+		top_object.try_strip(caller)
+		return TRUE
 
-	return TRUE
+	if(is_inventory(object))
+		var/obj/hud/inventory/I = object
+		I.add_object(top_object)
+		return TRUE
+
+	return FALSE
 
 /obj/hud/button/inventory_defer/proc/update_vis_contents()
 
@@ -65,6 +73,16 @@
 
 	return TRUE
 
+/obj/hud/button/inventory_defer/proc/update()
+	if(referencing) clone(referencing)
+	return TRUE
+
+var/global/list/greyscale = list(
+	0.75,0.75,0.75,0,
+	0.75,0.75,0.75,0,
+	0.75,0.75,0.75,0,
+	0,0,0,1
+)
 
 
 /obj/hud/button/inventory_defer/proc/clone(var/obj/hud/inventory/I)
@@ -77,6 +95,12 @@
 
 	update_vis_contents()
 
+	var/obj/item/top_object = get_top_vis_object()
+	if(!top_object || !top_object.can_strip(owner))
+		color = greyscale
+
+	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,.proc/update)
+
 	return TRUE
 
 
@@ -84,12 +108,14 @@
 
 	assoc_button?.update_owner(desired_owner)
 
-	if(is_advanced(owner))
+	if(is_advanced(owner)) //Old owner
 		var/mob/living/advanced/A = owner
 		A.inventory_defers -= src
+		HOOK_REMOVE("grab_changed","grab_changed_\ref[src]",A)
 
 	. = ..()
 
-	if(is_advanced(owner))
+	if(is_advanced(owner)) //New owner
 		var/mob/living/advanced/A = owner
 		A.inventory_defers |= src
+		HOOK_ADD("grab_changed","grab_changed_\ref[src]",A,src,.proc/update)

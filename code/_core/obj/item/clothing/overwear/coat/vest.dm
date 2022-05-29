@@ -2,8 +2,6 @@
 	name = "tactical storage vest"
 	icon = 'icons/obj/item/clothing/suit/black_vest.dmi'
 
-	rarity = RARITY_UNCOMMON
-
 	desc = "I NEED MORE POCKETS."
 	desc_extended = "A sturdy vest that protects against bullets and inventory management."
 
@@ -14,12 +12,7 @@
 	dynamic_inventory_count = 6
 	container_max_size = SIZE_1
 
-	defense_rating = list(
-		BLUNT = 20,
-		PIERCE = 20,
-		LASER = -20,
-		ARCANE = -20
-	)
+	armor = /armor/cloth/hard
 
 	protected_limbs = list(BODY_TORSO)
 
@@ -57,10 +50,14 @@
 	name = "merc vest"
 	color = "#BCAC86"
 
+/obj/item/clothing/overwear/coat/vest/colored/black
+	name = "tactical vest"
+	color = "#212121"
+
 /obj/item/clothing/overwear/coat/vest/sleeveless_leather_jacket
 	name = "sleeveless leather jacket"
 	icon = 'icons/obj/item/clothing/suit/leather_jacket_sleeveless.dmi'
-	rarity = RARITY_COMMON
+
 	desc = "For when you need pockets but not many."
 
 	size = SIZE_2*2
@@ -68,15 +65,7 @@
 	dynamic_inventory_count = 2
 	container_max_size = SIZE_1
 
-	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 10,
-		PIERCE = 10,
-		LASER = -10,
-		ARCANE = 10,
-		HEAT = 10,
-		COLD = 25
-	)
+	armor = /armor/leather/coat
 
 	value = 30
 
@@ -120,3 +109,29 @@
 	polymorphs = list(
 		"pockets" = COLOR_BLACK
 	)
+
+/obj/item/clothing/overwear/coat/vest/syndicate
+	name = "syndicate combat webbing"
+	desc = "The pinnacle of torso storaging."
+	desc_extended = "Heavy-duty military webbing designed to hold lots of small (size two) items with ease. Issued to the Syndicate's high-ranking personnel."
+	icon = 'icons/obj/item/clothing/suit/webbing_syndie.dmi'
+
+	size = SIZE_2*5
+
+	dynamic_inventory_count = 6
+	container_max_size = SIZE_2
+	value = 1500
+	value_burgerbux = 1
+
+/obj/item/clothing/overwear/coat/vest/revolutionary
+	name = "revolutionary combat webbing"
+	desc = "The pinnacle of torso storaging."
+	desc_extended = "Ancient military webbing designed to hold lots of small (size two) items with ease. Issued to the revoluionaries' high-ranking personnel."
+	icon = 'icons/obj/item/clothing/suit/webbing_rev.dmi'
+
+	size = SIZE_2*5
+
+	dynamic_inventory_count = 6
+	container_max_size = SIZE_2
+	value = 1500
+	value_burgerbux = 1

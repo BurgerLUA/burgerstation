@@ -1,5 +1,6 @@
 /area/dungeon/
 	area_identifier = "Mission"
+	dynamic_lighting = TRUE
 
 /area/dungeon/z_00
 	name = "\improper Level 0 - Surface Above"
@@ -7,10 +8,10 @@
 
 	interior = TRUE //Well not really but still.
 
-	flags_area = FLAGS_AREA_NO_TELEPORT | FLAGS_AREA_NO_DAMAGE | FLAGS_AREA_NO_CONSTRUCTION | FLAGS_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
 /area/dungeon/z_01
-	name = "\improper Level 1 - Surface Forest"
+	name = "unexplored surface forest"
 	icon_state = "forrest"
 	cheese_type = /reagent/nutrition/cheese/cheddar
 	sunlight_freq = 8
@@ -21,7 +22,7 @@
 	interior = FALSE
 
 /area/dungeon/z_01/snow
-	name = "unexplored surface forest"
+	name = "unexplored surface snow forest"
 	icon_state = "snow"
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20
@@ -60,7 +61,7 @@
 
 
 /area/dungeon/z_02
-	name = "\improper Level 2 - Deep Jungle"
+	name = "unexplored deep jungle"
 	icon_state = "jungle"
 	ambient_temperature = T0C + 40
 
@@ -81,7 +82,7 @@
 	interior = TRUE
 
 /area/dungeon/z_03
-	name = "\improper Level 3 - Lava Chamber"
+	name = "unexplored deep lava caves"
 	icon_state = "lava_cave"
 
 	sunlight_freq = 8

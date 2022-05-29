@@ -31,13 +31,11 @@ var/global/list/valid_antag_colors = list(
 
 	size = SIZE_BOSS
 
-	armor_base = list(
-		ION = INFINITY
-	)
+	armor = /armor/default_organic
 
 	attack_range = 3
 
-	movement_delay = DECISECONDS_TO_TICKS(1.5)
+	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	stun_angle = 0
 
@@ -47,6 +45,8 @@ var/global/list/valid_antag_colors = list(
 	size = SIZE_HUMAN
 
 	soul_size = SOUL_SIZE_COMMON
+
+	level = 4
 
 /mob/living/simple/antag/Initialize()
 	var/image/I = new/image(icon,"shadow")

@@ -1,6 +1,5 @@
 var/global/list/debug_verbs = list(
 	/client/verb/print_cleaning_log,
-	/client/verb/air_test,
 	/client/verb/make_war,
 	/client/verb/generate_map_icon,
 	/client/verb/stealth_test,
@@ -20,10 +19,15 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_load_deathbox,
 	/client/verb/force_save_banks,
 	/client/verb/view_dps,
+	/client/verb/view_dph,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
+	/client/proc/debug_variables,
+	/client/proc/spawn_atom,
 	/client/verb/test_astar,
-	/client/verb/print_garbage
+	/client/verb/print_garbage,
+	/client/verb/set_skill,
+	/client/verb/set_attribute
 )
 
 /client/verb/view_dps()
@@ -35,6 +39,18 @@ var/global/list/debug_verbs = list(
 	for(var/k in SSbalance.stored_dps)
 		var/v = SSbalance.stored_dps[k]
 		text_to_send += "[k]: [v] DPS<br>"
+
+	src << browse("<body>[text_to_send]</body>","window=help")
+
+/client/verb/view_dph()
+	set name = "View DPH of Weapons"
+	set category = "Debug"
+
+	var/text_to_send = ""
+
+	for(var/k in SSbalance.stored_dph)
+		var/v = SSbalance.stored_dph[k]
+		text_to_send += "[k]: [v] DPH<br>"
 
 	src << browse("<body>[text_to_send]</body>","window=help")
 
@@ -80,18 +96,6 @@ var/global/list/debug_verbs = list(
 		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
 
 	src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",final_text)]</body>","window=help")
-
-client/verb/air_test(var/pressure as num)
-	set name = "Air Test (DANGER)"
-	set category = "Debug"
-
-	if(mob)
-		var/turf/simulated/S = get_turf(mob)
-		if(S)
-			S.air_contents["oxygen"] += pressure
-			SSair.update_turf_air(S)
-
-	return TRUE
 
 /client/verb/check_lights()
 	set name = "Check Lights (DANGER)"
@@ -141,8 +145,8 @@ client/verb/air_test(var/pressure as num)
 	var/found_tiles = 0
 	var/error_tiles = 0
 	var/icon/I = new/icon('icons/map_template.dmi',"map_template")
-	for(var/x=1,x<=255,x++)
-		for(var/y=1,y<=255,y++)
+	for(var/x=1,x<=world.maxx,x++)
+		for(var/y=1,y<=world.maxy,y++)
 			var/turf/simulated/S = locate(x,y,src.mob.z)
 			var/found_color = S.color
 			if(!found_color)
@@ -505,3 +509,68 @@ client/verb/air_test(var/pressure as num)
 		T.color = "#FF0000"
 
 	return TRUE
+
+/client/verb/set_attribute(var/mob/mob as mob)
+
+	set name = "Set Attribute Level"
+	set category = "Debug"
+
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
+	var/list/valid_choices = list()
+
+	for(var/k in L.attributes)
+		valid_choices += k
+
+	var/chosen_attribute = input("Which attribute do you wish to modify?","Modify Attribute") as null|anything in valid_choices
+
+	if(!chosen_attribute)
+		return
+
+	var/chosen_value = input("Which value do you wish to set [chosen_attribute] to?","Modify Attribute") as num|null
+
+	if(!chosen_value)
+		return
+
+	var/old_level = L.get_attribute_level(chosen_attribute)
+
+	L.set_attribute_level(chosen_attribute,chosen_value)
+
+	to_chat(span("notice","Your [chosen_attribute] is now [L.get_attribute_level(chosen_attribute)]."))
+
+	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_attribute] from [old_level] to [chosen_value].")
+
+
+/client/verb/set_skill(var/mob/mob as mob)
+
+	set name = "Set Skill Level"
+	set category = "Debug"
+
+	if(!is_living(mob))
+		return
+	var/mob/living/L = mob
+
+	var/list/valid_choices = list()
+
+	for(var/k in L.skills)
+		valid_choices += k
+
+	var/chosen_skill = input("Which skill do you wish to modify?","Modify Skill") as null|anything in valid_choices
+
+	if(!chosen_skill)
+		return
+
+	var/chosen_value = input("Which value do you wish to set [chosen_skill] to?","Modify Skill") as num|null
+
+	if(!chosen_value)
+		return
+
+	var/old_level = L.get_skill_level(chosen_skill)
+
+	L.set_skill_level(chosen_skill,chosen_value)
+
+	to_chat(span("notice","Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."))
+
+	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_skill] from [old_level] to [chosen_value].")

@@ -29,35 +29,42 @@
 #define LAYER_OBJ_DOOR_CLOSED  LAYER_OBJ + 0.3
 #define LAYER_OBJ_ITEM         LAYER_OBJ + 0.4
 
-#define LAYER_BLOOD            LAYER_MOB_DEAD - 0.1
-#define LAYER_MOB_DEAD         6
+#define LAYER_BLOOD            LAYER_MOB_SWIMMING - 0.1
 
-#define LAYER_OBJ_AIRLOCK      7
+#define LAYER_MOB_SWIMMING     6
+
+#define LAYER_MOB_DEAD         7
+
+#define LAYER_OBJ_AIRLOCK      8
 
 #define LAYER_MOB_BELOW        LAYER_MOB - 0.1
-#define LAYER_MOB              8
+#define LAYER_MOB              9
 
-#define LAYER_MOB_FIRE         9
+#define LAYER_MOB_FIRE         10
 
-#define LAYER_MOB_ABOVE        10
+#define LAYER_MOB_ABOVE        11
 
-#define LAYER_PROJECTILE 13
+#define LAYER_MOB_WATER        12
 
-#define LAYER_EFFECT 14
+#define LAYER_MOB_FLYING       13
 
-#define LAYER_GHOST 15
+#define LAYER_PROJECTILE       14
 
-#define LAYER_LARGE_OBJ 16
+#define LAYER_EFFECT           15
 
-#define LAYER_AREA 17 //Weather
+#define LAYER_LARGE_OBJ        16
 
-#define LAYER_LIGHTING 18
-#define LAYER_LIGHTING_DYNAMIC 19
+#define LAYER_GHOST            17
 
-#define LAYER_SCREEN_BLOOD 20
+#define LAYER_AREA 20 //Weather
 
-#define LAYER_HUD 21
-#define LAYER_HUD_ITEMS 22
+#define LAYER_LIGHTING 50
+#define LAYER_LIGHTING_DYNAMIC 51
+
+#define LAYER_SCREEN_BLOOD 99
+
+#define LAYER_HUD 100
+#define LAYER_HUD_ITEMS 101
 
 
 
@@ -94,15 +101,17 @@
 
 #define LAYER_MOB_INJURY               FLOAT_LAYER + 0.51
 #define LAYER_MOB_HANDS                FLOAT_LAYER + 0.52
-#define LAYER_MOB_CLOTHING_GLOVES      FLOAT_LAYER + 0.53
-#define LAYER_MOB_INJURY_HANDS         FLOAT_LAYER + 0.54
+#define LAYER_MOB_CLOTHING_RING        FLOAT_LAYER + 0.53
+#define LAYER_MOB_CLOTHING_GLOVES      FLOAT_LAYER + 0.54
+#define LAYER_MOB_INJURY_HANDS         FLOAT_LAYER + 0.55
 
 #define LAYER_MOB_CLOTHING_HARDSUIT    FLOAT_LAYER + 0.61
 #define LAYER_MOB_CLOTHING_COAT        FLOAT_LAYER + 0.62
-#define LAYER_MOB_CLOTHING_NECK_OVER   FLOAT_LAYER + 0.63
-#define LAYER_MOB_TAIL_FRONT           FLOAT_LAYER + 0.64
-#define LAYER_MOB_WINGS_FRONT          FLOAT_LAYER + 0.65
-#define LAYER_MOB_CLOTHING_BACK        FLOAT_LAYER + 0.66
+#define LAYER_MOB_CLOTHING_COAT_OVER   FLOAT_LAYER + 0.63
+#define LAYER_MOB_CLOTHING_NECK_OVER   FLOAT_LAYER + 0.64
+#define LAYER_MOB_TAIL_FRONT           FLOAT_LAYER + 0.65
+#define LAYER_MOB_WINGS_FRONT          FLOAT_LAYER + 0.66
+#define LAYER_MOB_CLOTHING_BACK        FLOAT_LAYER + 0.67
 
 #define LAYER_MOB_ANTENNAE_FRONT       FLOAT_LAYER + 0.71
 #define LAYER_MOB_HAIR_FACE            FLOAT_LAYER + 0.72
@@ -111,5 +120,7 @@
 #define LAYER_MOB_CLOTHING_MASK        FLOAT_LAYER + 0.75
 #define LAYER_MOB_CLOTHING_HELMET      FLOAT_LAYER + 0.76
 #define LAYER_MOB_CLOTHING_ALL         FLOAT_LAYER + 0.77
+#define LAYER_MOB_BLOB                 FLOAT_LAYER + 0.78
 
 #define LAYER_MOB_HELD                 FLOAT_LAYER + 0.81
+

@@ -1,17 +1,14 @@
 /damagetype/ranged/bow/
-	name = "bow"
-
-	damage_mod = 1
-	penetration_mod = 1
-
 	attack_damage_base = list(
-		PIERCE = 105*0.50,
-		BLADE = 105*0.25
+		PIERCE = 100,
+		BLADE = 40,
+		BLUNT = 30
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = 120*0.75,
-		BLADE = 120*0.25
+		PIERCE = 100,
+		BLADE = 50,
+		BLUNT = 0
 	)
 
 	attribute_stats = list(
@@ -23,18 +20,20 @@
 	)
 
 	skill_stats = list(
-		SKILL_RANGED = 105*0.25
+
 	)
 
 	skill_damage = list(
-		SKILL_RANGED = list(PIERCE,BLADE)
+
 	)
 
 	bonus_experience_skill = list(
-		SKILL_RANGED = 50
+		SKILL_RANGED = 25
 	)
 
 	bonus_experience_attribute = list(
-		ATTRIBUTE_STRENGTH = 25,
-		ATTRIBUTE_DEXTERITY = 25
+		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_DEXTERITY = 10
 	)
+
+	sneak_attack_multiplier = 4

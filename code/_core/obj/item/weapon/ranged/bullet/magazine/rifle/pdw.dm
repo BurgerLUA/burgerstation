@@ -1,12 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/pdw
-	name = "\improper 5.56 PDW"
+	name = "\improper 5.56mm SDW"
 	desc = "For personel defense!"
-	desc_extended = "A small, lightweight personal defense weapon chambered in 5.56. Shoots fast, but isn't that accurate."
+	desc_extended = "A small, lightweight standard defense weapon chambered in 5.56. Shoots relatively fast, but isn't that accurate."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_5.dmi'
 	icon_state = "inventory"
-	value = 1800
+	value = 1000
 
-	shoot_delay = 1.75
+	tier = 2
+
+	shoot_delay = 1.5
 
 	automatic = TRUE
 
@@ -14,7 +16,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine.ogg')
 
 	can_wield = TRUE
 
@@ -48,7 +50,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

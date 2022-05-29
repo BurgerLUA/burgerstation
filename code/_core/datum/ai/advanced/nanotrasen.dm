@@ -4,3 +4,4 @@
 	roaming_distance = 0
 	aggression = 1
 	assistance = 1
+	cowardice = 0.75

@@ -9,10 +9,11 @@
 
 	layer = LAYER_FLOOR_CONVEYOR
 
-	var/obj/structure/interactive/limiter/found_limiter
-	var/turf/move_turf
+	var/turf/start_turf
+	var/turf/end_turf
 
 	density = TRUE
+	anchored = TRUE
 
 /obj/structure/interactive/conveyor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -20,96 +21,102 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(10)
 
-	caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
-	set_dir(turn(dir,90))
+	if(caller.movement_flags & MOVEMENT_WALKING)
+		if(anchored)
+			caller.to_chat(span("warning","You need to unsecure \the [src.name] before rotating it!"))
+		else
+			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+			set_dir(turn(dir,90))
 
-	update_conveyor()
-	update_sprite()
+		update_conveyor()
+		update_sprite()
 
-	for(var/k in DIRECTIONS_CARDINAL)
-		var/turf/T = get_step(src,k)
-		var/obj/structure/interactive/conveyor/C = locate() in T.contents
-		if(C)
-			C.update_conveyor()
-			C.update_sprite()
+		for(var/k in DIRECTIONS_CARDINAL)
+			var/turf/T = get_step(src,k)
+			var/obj/structure/interactive/conveyor/C = locate() in T.contents
+			if(C)
+				C.update_conveyor()
+				C.update_sprite()
 
-	return TRUE
+		return TRUE
+
+	. = ..()
+
+
 
 /obj/structure/interactive/conveyor/Crossed(atom/movable/O)
-	start_thinking(src)
-	return ..()
 
-/obj/structure/interactive/conveyor/post_move()
-	update_conveyor()
-	return ..()
+	if(anchored && active)
+		START_THINKING(src)
 
-/obj/structure/interactive/conveyor/PostInitialize()
+	. = ..()
 
+/obj/structure/interactive/conveyor/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
+	. = ..()
+	if(.)
+		if(anchored)
+			update_conveyor()
+		else
+			disable()
+
+/obj/structure/interactive/conveyor/Finalize()
+	. = ..()
 	if(active)
 		enable()
 	else
 		disable()
 
-	update_conveyor()
-
-	return ..()
-
 /obj/structure/interactive/conveyor/proc/update_conveyor()
-	move_turf = get_step(src,dir)
-	found_limiter = locate() in move_turf.contents
+	start_turf = get_step(src,turn(dir,180))
+	end_turf = get_step(src,dir)
 	return TRUE
-
 
 /obj/structure/interactive/conveyor/update_icon()
 
+	. = ..()
+
 	icon = initial(icon)
-	icon_state = "conveyor"
+	icon_state = initial(icon_state)
 
-	var/turf/start_turf = get_step(src,turn(dir,180))
-	var/obj/structure/interactive/conveyor/start_c = locate() in start_turf.contents
+	if(anchored)
+		var/obj/structure/interactive/conveyor/C = locate() in start_turf
+		if(!C || C.dir != dir)
+			icon_state = "[icon_state]_start"
+		if(active) icon_state = "[icon_state]_on"
 
-	if(!start_c || start_c.dir != dir)
-		icon_state = "conveyor_start"
 
-	if(active) icon_state = "[icon_state]_on"
-
-	return ..()
 
 /obj/structure/interactive/conveyor/update_overlays()
 
-	var/turf/end_turf = get_step(src,dir)
-	var/obj/structure/interactive/conveyor/end_c = locate() in end_turf.contents
+	. = ..()
 
-	if(!end_c || end_c.dir != dir)
-		var/image/I = new/image(initial(icon),"conveyor_end")
-		if(active) I.icon_state = "[I.icon_state]_on"
-		var/list/pixel_offsets = direction_to_pixel_offset(dir)
-		I.pixel_x = pixel_offsets[1]*TILE_SIZE
-		I.pixel_y = pixel_offsets[2]*TILE_SIZE
-		I.layer = layer + 0.1
-		add_overlay(I)
+	if(anchored)
+		var/obj/structure/interactive/conveyor/end_c = locate() in end_turf.contents
+		if(!end_c || end_c.dir != dir)
+			var/image/I = new/image(initial(icon),"conveyor_end")
+			if(active) I.icon_state = "[I.icon_state]_on"
+			var/list/pixel_offsets = direction_to_pixel_offset(dir)
+			I.pixel_x = pixel_offsets[1]*TILE_SIZE
+			I.pixel_y = pixel_offsets[2]*TILE_SIZE
+			I.layer = layer + 0.1
+			add_overlay(I)
 
-	return ..()
 
 /obj/structure/interactive/conveyor/proc/enable()
 	active = TRUE
-	start_thinking(src)
+	START_THINKING(src)
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/conveyor/proc/disable()
 	active = FALSE
-	stop_thinking(src)
+	STOP_THINKING(src)
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/conveyor/think()
 
-	if(found_limiter)
-		var/obj/item/I = locate() in move_turf.contents
-		if(I) return TRUE
-
-	if(move_turf)
+	if(end_turf)
 		var/conveyor_limit = 5
 		var/moved = FALSE
 		for(var/k in loc.contents)
@@ -127,11 +134,11 @@
 				continue
 			if(is_living(M))
 				var/mob/living/L2 = M
-				if(!L2.horizontal && M.move_delay > -1)
+				if(!L2.horizontal && M.next_move > 0)
 					moved = TRUE
 					continue
 			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(16)
-			M.Move(move_turf)
+			M.Move(end_turf)
 			M.next_conveyor = world.time + 16
 			conveyor_limit--
 			moved = TRUE

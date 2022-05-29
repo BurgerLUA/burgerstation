@@ -11,3 +11,5 @@
 	material_id = /material/dirt/
 
 	destruction_turf = /turf/simulated/floor/colored/dirt/snow
+
+	color = "#EDF7F7"

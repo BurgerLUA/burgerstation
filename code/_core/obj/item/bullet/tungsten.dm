@@ -2,10 +2,10 @@
 	name = "tungsten bolt"
 	desc = "I hope using this isn't a war crime..."
 	desc_extended = "A small tungsten rod designed to be shot at heavily armored targets."
-	rarity = RARITY_RARE
+	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/tungsten.dmi'
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 	icon_state = "t"
 
 	bullet_length = 20

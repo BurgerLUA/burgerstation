@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet
 	name = "\improper 20mm GyroPistol"
 	desc = "Overdesigned and a little overpowered."
-	desc_extended = "A prototype syndicate pistol that uses minature rockets as projectiles. As a result, it suffers no inaccuracy due to firing."
+	desc_extended = "A prototype syndicate pistol that uses minature rockets as projectiles."
 	icon = 'icons/obj/item/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
 	value = 800
@@ -44,7 +44,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -61,10 +61,13 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 12 - 16
 
+	tier = 3
+	bypass_balance_check = TRUE
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread()
-	return 0.005
+	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_skill_spread(var/mob/living/L)
 	return max(0,0.10 - (0.15 * L.get_skill_power(SKILL_RANGED)) )

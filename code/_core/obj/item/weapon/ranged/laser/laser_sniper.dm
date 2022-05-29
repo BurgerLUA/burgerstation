@@ -11,9 +11,9 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle/sniper
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 20
+	shoot_delay = 10
 
-	automatic = FALSE
+	automatic = TRUE
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -21,7 +21,7 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	charge_cost = CELL_SIZE_BASIC / 12
+	charge_cost = CELL_SIZE_BASIC / 24
 
 	attachment_whitelist = list()
 
@@ -55,7 +55,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

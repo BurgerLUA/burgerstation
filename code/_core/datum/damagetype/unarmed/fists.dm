@@ -1,6 +1,5 @@
 //Fists
 /damagetype/unarmed/fists/
-	name = "fist"
 	attack_verbs = list("punch","hit","slap","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -39,7 +38,6 @@
 	attack_delay_max = 10
 
 /damagetype/unarmed/fists/help
-	name = "help fists"
 	attack_verbs = list("tap")
 
 	hit_effect = null
@@ -82,12 +80,7 @@
 	draw_blood = FALSE
 
 /damagetype/unarmed/fists/disarm
-	name = "disarm fists"
 	attack_verbs = list("shove")
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
@@ -137,7 +130,8 @@
 
 		if(is_living(attacker))
 			var/mob/living/A = attacker
-			if(L.loyalty_tag != A.loyalty_tag)
+			var/area/A2 = get_area(L)
+			if(allow_hostile_action(A.loyalty_tag,L.loyalty_tag,A2))
 				if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
 					L.add_status_effect(DISARM,5,5, source = attacker)
 				else
@@ -148,14 +142,9 @@
 	return ..()
 
 /damagetype/unarmed/fists/grab
-	name = "grab fists"
 	attack_verbs = list("grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -200,21 +189,19 @@
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(!L.add_status_effect(GRAB, source = A))
-				A.to_chat(span("warning","\The [L.name] is too strong to be grabbed!"))
+			if(!L.add_status_effect(GRAB,100,0,source = A))
 				return ..()
 		if(istype(weapon,/obj/item/organ/hand))
 			var/obj/item/organ/hand/H = weapon
 			if(H.id == BODY_HAND_RIGHT)
-				A.right_hand.grab_object(attacker,victim)
+				A.inventories_by_id[BODY_HAND_RIGHT_HELD].grab_object(attacker,victim)
 			else if(H.id == BODY_HAND_LEFT)
-				A.left_hand.grab_object(attacker,victim)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].grab_object(attacker,victim)
 
 	return ..()
 
 
 /damagetype/unarmed/powerfist/
-	name = "powerfist"
 	attack_verbs = list("pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -253,7 +240,6 @@
 
 
 /damagetype/unarmed/brass/
-	name = "brass knuckle"
 	attack_verbs = list("punch","hit","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -293,7 +279,6 @@
 
 
 /damagetype/unarmed/brass/spiked
-	name = "spiked brass knuckle"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

@@ -23,7 +23,7 @@
 			continue
 		if(A.interior)
 			continue
-		if(A.flags_area & (FLAGS_AREA_NO_EVENTS | FLAGS_AREA_NO_DAMAGE))
+		if(A.flags_area & FLAG_AREA_NO_EVENTS)
 			continue
 		valid_areas += A
 
@@ -37,7 +37,7 @@
 
 	log_debug("Starting Meteor Event")
 
-	var/start_time = world.time
+	var/start_time = true_time()
 
 	for(var/k in valid_areas)
 		CHECK_TICK(25,FPS_SERVER*10)
@@ -57,7 +57,7 @@
 		sound_to_play = 'sound/voice/announcement/meteors.ogg'
 	)
 
-	log_debug("Took [world.time - start_time] deciseconds to initialize meteor turfs.")
+	log_debug("Took [true_time() - start_time] deciseconds to initialize meteor turfs.")
 
 	return ..()
 
@@ -71,7 +71,7 @@
 		var/number_of_players = length(all_players)
 		if(number_of_players >= 10 && prob(number_of_players*0.25))
 			var/mob/living/advanced/player/P = pick(all_players)
-			if(!P.dead)
+			if(!P.dead && P.client)
 				var/turf/T = get_turf(P)
 				if(T && valid_turfs[T])
 					new/obj/effect/falling_meteor(T)

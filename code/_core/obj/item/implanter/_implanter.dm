@@ -52,7 +52,7 @@
 	if(A.labeled_organs[initial_id])
 		if(removes_existing)
 			var/obj/item/organ/O = A.labeled_organs[initial_id]
-			O.unattach_from_parent(A.loc)
+			O.unattach_from_parent(A.loc,do_delete=TRUE)
 		else
 			caller.to_chat(span("warning","You already have an implant of that type!"))
 			return TRUE
@@ -70,6 +70,7 @@
 /obj/item/implanter/IFF
 	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
 	removes_existing = FALSE
+	value_burgerbux = 1000000
 
 /obj/item/implanter/od_purge
 	stored_implant = /obj/item/organ/internal/implant/torso/od_purge

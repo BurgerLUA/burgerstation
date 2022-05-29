@@ -1,5 +1,4 @@
 /damagetype/melee/sword/combat_knife
-	name = "combat knife"
 
 	attack_damage_base = list(
 		BLADE = 20,

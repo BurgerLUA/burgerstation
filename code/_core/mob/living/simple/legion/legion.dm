@@ -9,7 +9,7 @@
 
 	ai = /ai/legion
 
-	health_base = 200
+	health_base = 100
 	stamina_base = 200
 	mana_base = 200
 
@@ -35,24 +35,11 @@
 
 	blood_type = null
 
-	armor_base = list(
-		LASER = 80,
-		ARCANE = 80,
-		HEAT = 80,
-		COLD = 80,
-		BOMB = -40,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -40,
-		DARK = 40,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/legion
 
 	soul_size = null
 
-	level = 4
+	level = 12
 
 /mob/living/simple/legionare/Destroy()
 
@@ -77,6 +64,9 @@
 		return FALSE
 
 	if(clone) //Clones cannot create heads.
+		return FALSE
+
+	if(dead)
 		return FALSE
 
 	var/mob/living/simple/legionare_head/L = new head_type(get_turf(src))
@@ -105,7 +95,7 @@
 		GENERATE(stored_corpse)
 		FINALIZE(stored_corpse)
 		stored_corpse.death()
-		if(stored_corpse.health) stored_corpse.health.adjust_loss_smart(brute=100,burn=100)
+		if(stored_corpse.health) stored_corpse.health.adjust_loss_smart(brute=rand(100,200),burn=rand(100,200))
 
 	return ..()
 
@@ -129,27 +119,9 @@
 
 	stun_angle = 0
 
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -50,
-		ARCANE = 100,
-		HEAT = -200,
-		COLD = INFINITY,
-		BOMB = -50,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		HOLY = -50,
-		DARK = 200,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/legion/snow
 
-
-
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 /mob/living/simple/legionare/snow/post_death()
 	. = ..()

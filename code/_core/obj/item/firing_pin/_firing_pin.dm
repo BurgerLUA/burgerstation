@@ -24,7 +24,7 @@
 	name = "mechanical firing pin"
 	desc = "Oh god oh fuck."
 	desc_extended = "A completely mechanical firing pin that has no digital IFF technology and thus can be shot by anyone and aimed at anybody. These are extremely rare and extremely illegal. Having one may result in contract termination."
-	rarity = RARITY_LEGENDARY
+
 	value = 50000
 	value_burgerbux = 1
 
@@ -36,15 +36,11 @@
 
 	var/mob/living/advanced/A = caller
 
-	if(!A.iff_tag)
-		caller.to_chat(span("danger","The firing pin doesn't detect your IFF signature and refuses to fire!"))
-		return FALSE
-
-	if(A.iff_tag != iff_tag)
+	if(!check_iff(A.iff_tag,src.iff_tag,get_area(weapon),hostile=TRUE))
 		caller.to_chat(span("danger","The firing pin doesn't recognize your IFF signature and refuses to fire!"))
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /obj/item/firing_pin/electronic/iff/nanotrasen
 	name = "electronic nanotrasen firing pin"
@@ -59,7 +55,7 @@
 	if(!.) return
 
 	var/area/A = get_area(caller)
-	if(A.flags_area & FLAGS_AREA_TUTORIAL)
+	if(A.flags_area & FLAG_AREA_TUTORIAL)
 		caller.to_chat(span("danger","\The [src.name] refuses to fire in this area!"))
 		return FALSE
 

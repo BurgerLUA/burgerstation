@@ -9,9 +9,9 @@
 
 	plane = PLANE_FLOOR
 
-	density_down = TRUE
-
 	density = FALSE
+
+	map_color = "#FFFFFF"
 
 /turf/simulated/floor/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
@@ -64,7 +64,7 @@
 		return FALSE
 
 	var/area/A = loc
-	if(A.flags_area & FLAGS_AREA_NO_CONSTRUCTION)
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
 		caller.to_chat(span("warning","You cannot construct this in this area!"))
 		return FALSE
 
@@ -78,9 +78,9 @@
 			continue
 		if(istype(S,structure_to_make))
 			var/flags_placement = SAFEVAR(structure_to_make,flags_placement)
-			if(flags_placement & FLAGS_PLACEMENT_ALLOW_MULTIPLE)
+			if(flags_placement & FLAG_PLACEMENT_ALLOW_MULTIPLE)
 				continue
-			if(flags_placement & FLAGS_PLACEMENT_DIRECTIONAL)
+			if(flags_placement & FLAG_PLACEMENT_DIRECTIONAL)
 				if(!(S.dir & caller.dir))
 					continue
 			caller.to_chat(span("warning","There is a [S.name] here already!"))
@@ -120,7 +120,7 @@
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(R)
 
-	if(R.item_count_current < 2)
+	if(R.amount < 2)
 		caller.to_chat(span("warning","You need 2 rods in order to build a frame!"))
 		return FALSE
 

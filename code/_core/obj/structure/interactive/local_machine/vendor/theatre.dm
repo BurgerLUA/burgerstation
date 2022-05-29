@@ -8,8 +8,8 @@
 		/obj/item/clothing/mask/emoji,
 
 		/obj/item/clothing/mask/clown,
-		/obj/item/clothing/uniform/clown,
 		/obj/item/storage/shoebox/clown,
+		/obj/item/storage/shoebox/duck,
 
 		/obj/item/clothing/overwear/coat/ghost_sheet,
 
@@ -28,7 +28,6 @@
 		/obj/item/clothing/head/hat/witch,
 		/obj/item/clothing/overwear/coat/witch,
 
-		/obj/item/clothing/uniform/mummy,
 		/obj/item/clothing/mask/mummy,
 
 		/obj/item/clothing/head/helmet/full/miner,

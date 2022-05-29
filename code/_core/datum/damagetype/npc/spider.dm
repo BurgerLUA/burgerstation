@@ -1,5 +1,4 @@
 /damagetype/npc/spider
-	name = "spider fang"
 	attack_verbs = list("bite","chomp","scratch")
 
 

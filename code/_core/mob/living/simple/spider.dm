@@ -18,22 +18,14 @@
 	value = 100
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_spider/,
-		/obj/item/container/food/dynamic/meat/raw_spider/,
-		/obj/item/container/food/dynamic/meat/raw_spider/
+		/obj/item/container/edible/dynamic/meat/raw_spider/,
+		/obj/item/container/edible/dynamic/meat/raw_spider/,
+		/obj/item/container/edible/dynamic/meat/raw_spider/
 	)
 
-	armor_base = list(
-		HEAT = -20,
-		COLD = 20,
-		BIO = 80,
-		RAD = 40,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/insect
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
@@ -44,7 +36,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 10
 
 /mob/living/simple/spider/post_death()
 	..()
@@ -55,25 +47,7 @@
 	name = "glowspider"
 	icon_state = "nurse"
 
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = -25,
-		BOMB = 0,
-		BIO = INFINITY,
-		RAD = 25,
-		HOLY = 75,
-		DARK = 50,
-		FATIGUE = 25,
-		ION = INFINITY,
-		PAIN = 25
-	)
-
-	level = 12
+	level = 18
 
 /mob/living/simple/spider/desert/Initialize()
 	. = ..()
@@ -83,23 +57,5 @@
 	name = "twilight spider"
 	icon_state = "hunter"
 
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = 25,
-		ARCANE = 50,
-		HEAT = 75,
-		COLD = -25,
-		BOMB = 0,
-		BIO = 75,
-		RAD = 25,
-		HOLY = 25,
-		DARK = 100,
-		FATIGUE = 25,
-		ION = INFINITY,
-		PAIN = 25
-	)
-
-	level = 8
+	level = 20
 

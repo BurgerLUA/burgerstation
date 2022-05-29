@@ -1,5 +1,4 @@
 /damagetype/melee/sword/
-	name = "sword"
 
 	impact_sounds = list(
 		'sound/weapons/blade/hit_light.ogg',

@@ -3,7 +3,7 @@
 	desc = "Uh oh, salt inbound."
 	desc_extended = "Some antagonist uniform worn by antagonist."
 	icon = 'icons/obj/item/clothing/uniforms/util_gen.dmi'
-	rarity = RARITY_RARE
+
 
 	item_slot = SLOT_TORSO | SLOT_GROIN
 
@@ -29,12 +29,12 @@
 /obj/item/clothing/uniform/antag/rev
 	name = "revolutionary combat uniform"
 	desc = "We're not allowed to die, commissar said so."
-	desc_extended = "Russian combat fatigues worn by high-ranking Revolutionaries' combatants."
+	desc_extended = "Slavic combat fatigues worn by high-ranking Revolutionaries' combatants."
 	icon = 'icons/obj/item/clothing/uniforms/rev_antag.dmi'
 	value = 250
 
 /obj/item/clothing/uniform/antag/rev/officer
 	name = "revolutionary officer uniform"
 	desc = "Red terror."
-	desc_extended = "Russian officer uniform worn by Revolutionaries' officers."
+	desc_extended = "Slavic officer uniform worn by Revolutionaries' officers."
 	icon = 'icons/obj/item/clothing/uniforms/revficer.dmi'

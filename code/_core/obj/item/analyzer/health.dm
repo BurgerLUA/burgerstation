@@ -2,7 +2,7 @@
 	name = "health analyzer"
 	desc = "HOLD STILL AND LET ME TREAT YOU!"
 	desc_extended = "A handheld portable health analyzer that prints the target's total received damage in an arbitary measurement. It also broadcasts the results of the scan for those who can't bother to read."
-	rarity = RARITY_COMMON
+
 	icon = 'icons/obj/item/analyzers/health.dmi'
 	icon_state = "inventory"
 	value = 150
@@ -27,7 +27,7 @@
 
 	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 
-	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.get_loss(BRUTE),1)]</font>|<font color='yellow'>[CEILING(target.health.get_loss(BURN),1)]</font>|<font color='green'>[CEILING(target.health.get_loss(TOX),1)]</font>|<font color='blue'>[CEILING(target.health.get_loss(OXY),1)]</font>"
+	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.damage[BRUTE],1)]</font>|<font color='yellow'>[CEILING(target.health.damage[BURN],1)]</font>|<font color='green'>[CEILING(target.health.damage[TOX],1)]</font>|<font color='blue'>[CEILING(target.health.damage[OXY],1)]</font>"
 	new/obj/effect/chat_text(target,.,TRUE)
 
 	if(advanced)

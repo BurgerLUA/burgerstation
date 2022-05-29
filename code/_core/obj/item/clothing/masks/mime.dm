@@ -4,13 +4,7 @@
 	desc = "Where the mime gets their power."
 	desc_extended = "A flawless mime mask and wig."
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		HOLY = -80,
-		DARK = 80
-	)
+	armor = /armor/dark/arcane/light
 
 	size = SIZE_2
 

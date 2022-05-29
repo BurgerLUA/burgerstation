@@ -1,12 +1,11 @@
 /obj/item/bullet_cartridge/pistol_10mm/
-	name = "\improper 10mm pistol cartridge"
+	name = "\improper 10x32mm pistol cartridge"
 	desc = "At least 1mm bigger than 9mm"
 	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/10mm.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 10.17
 	bullet_length = 32
@@ -43,11 +42,10 @@
 	name = "\improper .50 pistol cartridge"
 	desc = "The cool kids use this."
 	desc_extended = "For pistols that require .50."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/50ae.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -94,11 +92,10 @@
 	name = "\improper 12.7mm pistol catridge"
 	desc = "The pistol round of the future, today!"
 	desc_extended = "For pistols, revolvers, and smgs that require 12.7mm ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/12mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 12.7
 	bullet_length = 33
@@ -134,12 +131,10 @@
 	name = "\improper 9mm pistol cartridge"
 	desc = "The average bullet for the average shooter."
 	desc_extended = "For pistols, revolvers, and smgs that require 9mm ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/9mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
-
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 9
 	bullet_length = 19
@@ -175,11 +170,10 @@
 	name = "\improper 4.6x30mm smg cartridge"
 	desc = "Pierces armor like butter."
 	desc_extended = "For smgs that require 4.6x30mm ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/46mm.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 
 	bullet_diameter = 4.6
@@ -194,9 +188,32 @@
 	size = 0.01
 	value = 0.4
 
+/obj/item/bullet_cartridge/pistol_4mm/smart
+	name = "\improper 4.6x30mm smart cartridge"
+	desc = "Smarter than the average merc."
+	desc_extended = "For smgs that require 4.6x30mm ammo. This bullet variant has fins on the side and a gps in the center that can home in on a target."
+	icon = 'icons/obj/item/bullet/4mm_smart.dmi'
+
+	amount_max = 5
+	amount_max_icon = 5
+
+
+	bullet_diameter = 4.6
+	bullet_length = 30
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol/smart
+	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm
+
+	projectile_speed = TILE_SIZE*0.5 - 1
+
+	size = 0.01
+	value = 2
+
 
 /obj/item/bullet_cartridge/pistol_4mm/toxin
 	name = "\improper toxin 4.6x30mm smg cartridge"
+	rarity = RARITY_UNCOMMON
 	caseless = TRUE
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/toxin
@@ -205,6 +222,7 @@
 
 /obj/item/bullet_cartridge/pistol_4mm/ion
 	name = "\improper ion 4.6x30mm smg cartridge"
+	rarity = RARITY_UNCOMMON
 	caseless = TRUE
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ion
@@ -213,6 +231,7 @@
 
 /obj/item/bullet_cartridge/pistol_4mm/ap
 	name = "\improper AP 4.6x30mm smg cartridge"
+	rarity = RARITY_UNCOMMON
 	caseless = TRUE
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ap
@@ -223,6 +242,7 @@
 
 /obj/item/bullet_cartridge/pistol_4mm/incendiary
 	name = "\improper incendiary 4.6x30mm smg cartridge"
+	rarity = RARITY_UNCOMMON
 	caseless = TRUE
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/incendiary
@@ -237,6 +257,7 @@
 
 /obj/item/bullet_cartridge/pistol_4mm/caseless
 	name = "\improper 4.6x30mm caseless smg cartridge"
+	rarity = RARITY_UNCOMMON
 	caseless = TRUE
 	value = 0.5
 
@@ -250,11 +271,10 @@
 	name = "\improper .40 pistol cartridge"
 	desc = "Different than 9mm!"
 	desc_extended = "For pistols, revolvers, and smgs that require .40 ammo."
-	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/40.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+	amount_max = 5
+	amount_max_icon = 5
 
 	bullet_diameter = 10
 	bullet_length = 22
@@ -303,6 +323,7 @@
 
 /obj/item/bullet_cartridge/pistol_40/tranq/surplus
 	name = "\improper surplus tranq .40 pistol cartridge"
+	rarity = RARITY_UNCOMMON
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/tranq/surplus
 	misfire_chance = 1
 	value = 0
@@ -311,11 +332,10 @@
 	name = "\improper .45 pistol catridge"
 	desc = "Can't go wrong with the classics."
 	desc_extended = "For pistols and smgs that requre .45 ammo."
-	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/45.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
 	bullet_diameter = 11.43
 	bullet_length = 23
@@ -335,11 +355,6 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/pistol_45/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
-
 /obj/item/bullet_cartridge/pistol_45/ap
 	name = "\improper AP .45 pistol catridge"
 	desc_extended = "For pistols and smgs that requre .45 ammo. This one has an armor piercing tip."
@@ -352,41 +367,17 @@
 
 	penetrations = 1
 
-/obj/item/bullet_cartridge/pistol_8mm //TODO: REWORK
-	name = "\improper 8mm pistol bullet"
-	desc = "It's like a baby bullet. Adorable."
-	desc_extended = "For pistols and smgs that requre 8mm ammo. It's subsonic, and small."
-	rarity = RARITY_UNCOMMON
-	icon = 'icons/obj/item/bullet/8mm.dmi'
-
-	item_count_max = 5
-	item_count_max_icon = 5
-
-	bullet_diameter = 8
-	bullet_length = 12
-	bullet_color = COLOR_BULLET
-
-	projectile = /obj/projectile/bullet/firearm/pistol
-	damage_type_bullet = /damagetype/ranged/bullet/pistol_8mm
-
-	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
-
-	size = 0.01
-	value = 1
-
-
 /obj/item/bullet_cartridge/pistol_45holy/
 	name = "\improper Holy .45 pistol cartridge"
 	desc = "Joshua Graham style."
 	desc_extended = "For pistols and smgs that require holy .45 ammo."
-	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/holy45.dmi'
 
-	item_count_max = 6
-	item_count_max_icon = 6
+	amount_max = 6
+	amount_max_icon = 6
 
-	bullet_diameter = 11.43
-	bullet_length = 23
+	bullet_diameter = 11.777
+	bullet_length = 24
 	bullet_color = COLOR_SILVER
 
 	projectile = /obj/projectile/bullet/firearm/smg
@@ -395,7 +386,7 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.015
-	value = 1.5
+	value = 2
 
 /obj/item/bullet_cartridge/pistol_45holy/surplus
 	name = "\improper surplus Holy .45 pistol cartridge"
@@ -403,7 +394,52 @@
 	jam_chance = 1
 	value = 0
 
-/obj/item/bullet_cartridge/pistol_45holy/Generate()
-	item_count_current = 6
-	update_sprite()
-	return ..()
+
+
+/obj/item/bullet_cartridge/pistol_10x24mm
+	name = "\improper 10x24mm caseless pistol cartridge"
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	icon = 'icons/obj/item/bullet/10x24mm.dmi'
+
+	amount_max = 6
+	amount_max_icon = 6
+
+	bullet_diameter = 10
+	bullet_length = 24
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.02
+	value = 1.25
+
+/obj/item/bullet_cartridge/pistol_10x24mm/surplus
+	name = "\improper surplus 10x24mm caseless pistol cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/surplus
+	jam_chance = 1
+	value = 0
+
+/obj/item/bullet_cartridge/pistol_10x24mm/explosive
+	name = "\improper 10x24mm HEAP caseless pistol cartridge"
+	desc = "At least 1mm bigger than 9mm"
+	desc_extended = "For pistols, revolvers, and smgs that require 10mm auto ammo."
+	icon = 'icons/obj/item/bullet/10x24mm.dmi'
+
+	amount_max = 6
+	amount_max_icon = 6
+
+	bullet_diameter = 10
+	bullet_length = 24
+	bullet_color = COLOR_BULLET
+
+	projectile = /obj/projectile/bullet/firearm/pistol
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/explosive
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.02
+	value = 2.4

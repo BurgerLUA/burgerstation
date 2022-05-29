@@ -15,6 +15,7 @@
 	automatic = TRUE
 
 	use_loyalty_tag = TRUE
+	use_iff_tag = FALSE
 	has_quick_function = TRUE
 
 /obj/item/weapon/ranged/spellgem/get_owner()
@@ -61,10 +62,6 @@
 		return ..()
 
 	A.health.adjust_mana(-cost_mana)
-
-	A.update_health_element_icons(mana=TRUE)
-
-	A.mana_regen_delay = max(A.mana_regen_delay,30)
 
 	return null
 

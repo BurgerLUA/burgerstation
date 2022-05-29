@@ -47,7 +47,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -158,11 +158,7 @@
 	GENERATE(attachment_undermount)
 	FINALIZE(attachment_undermount)
 
-	attachment_barrel = new /obj/item/attachment/barrel/laser_charger(src)
+	attachment_barrel = new/obj/item/attachment/barrel/laser_charger(src)
 	INITIALIZE(attachment_barrel)
 	GENERATE(attachment_barrel)
 	FINALIZE(attachment_barrel)
-
-	update_attachment_stats()
-	update_sprite()
-

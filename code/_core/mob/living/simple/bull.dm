@@ -13,9 +13,9 @@
 	value = 50
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw,
-		/obj/item/container/food/dynamic/meat/raw
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw,
+		/obj/item/container/edible/dynamic/meat/raw
 	)
 
 
@@ -23,17 +23,9 @@
 
 	damage_type = /damagetype/npc/bull
 
-	armor_base = list(
-		BLUNT = 20,
-		PIERCE = 40,
-		LASER = -20,
-		ARCANE = 20,
-		HOLY = 40,
-		DARK = 40,
-		ION = INFINITY
-	)
+	armor = /armor/tough_furred
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	iff_tag = "Cow"
 	loyalty_tag = "Cow"
@@ -46,7 +38,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 6
+	level = 12
 
 /mob/living/simple/bull/post_death()
 	..()

@@ -14,15 +14,13 @@
 
 	var/essential = FALSE
 
-	var/flags = FLAGS_HUD_NONE
+	var/flags = FLAG_HUD_NONE
 
 	mouse_opacity = 1
 
 	has_quick_function = TRUE
 
-	var/delete_on_no_owner = TRUE
-
-	var/bad_delete = TRUE
+	var/interact_check = FALSE
 
 /obj/hud/button/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
 
@@ -39,37 +37,18 @@
 		CRASH_SAFE("Warning: [src.get_debug_name()] was deleted incorrectly.")
 	. = ..()
 
-/obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=2)
+/obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=SECONDS_TO_DECISECONDS(1))
 	if(should_show)
 		var/initial_alpha = initial(alpha)
-		animate(src,alpha= initial_alpha ? initial_alpha : 255,time=SECONDS_TO_DECISECONDS(draw_speed))
+		animate(src,alpha= initial_alpha ? initial_alpha : 255,time=draw_speed)
 		var/initial_mouse = initial(mouse_opacity)
 		mouse_opacity = initial_mouse ? initial_mouse : 1
 	else
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		mouse_opacity = 0
 
-/obj/hud/button/proc/update_owner(var/mob/desired_owner)
-
-	if(owner == desired_owner)
-		return FALSE
-
-	if(owner)
-		owner.remove_button(src)
-
-	if(!desired_owner && delete_on_no_owner)
-		bad_delete = FALSE
-		qdel(src)
-		return TRUE
-
-	owner = desired_owner
-	if(owner)
-		owner.add_button(src)
-		update_sprite()
-
-	return TRUE
-
 /obj/hud/button/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	play_sound_target('sound/ui/tap-muted.ogg',caller, sound_setting = SOUND_SETTING_UI)
-	INTERACT_CHECK
+	if(interact_check)
+		INTERACT_CHECK
 	return TRUE

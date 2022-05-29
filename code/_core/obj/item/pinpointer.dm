@@ -76,14 +76,14 @@
 	if(scan_mode)
 		icon_state = "scan"
 	else if(tracked_atom)
-		var/distance = get_dist(src,tracked_atom)
-		var/desired_dir = get_dir(src,tracked_atom)
+		var/distance = get_dist_advanced(src,tracked_atom)
+		var/desired_dir = get_dir_advanced(src,tracked_atom)
 		switch(distance)
 			if(1 to VIEW_RANGE*0.5)
 				icon_state = "[desired_dir]_close"
 			if(VIEW_RANGE*0.5 to VIEW_RANGE)
 				icon_state = "[desired_dir]_med"
-			if(VIEW_RANGE to 255)
+			if(VIEW_RANGE to INFINITY)
 				icon_state = "[desired_dir]_far"
 			else
 				icon_state = "direct"
@@ -118,7 +118,7 @@
 		tracked_atom = object
 		caller.visible_message(span("notice","\The [caller.name] scans \the [object.name] with \the [src.name]."),span("notice","You scan \the [object.name], tracking it."))
 		scan_mode = FALSE
-		start_thinking(src)
+		START_THINKING(src)
 		return TRUE
 
 	return ..()
@@ -147,7 +147,7 @@
 
 	value = 20
 
-	var/desired_loyalty = "NanoTrasen"
+	var/desired_loyalty_tag = "NanoTrasen"
 
 	var/encoded = TRUE
 
@@ -158,18 +158,22 @@
 
 	var/list/possible_crew = list()
 
+	if(enable_friendly_fire)
+		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
+		return FALSE
+
 	if(encoded && is_living(caller))
 		var/mob/living/L = caller
-		if(L.loyalty_tag != desired_loyalty)
+		if(L.loyalty_tag != desired_loyalty_tag)
 			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
 			return FALSE
 
 	for(var/mob/living/advanced/player/P in all_players)
-		if(P.loyalty_tag != desired_loyalty)
+		if(P.loyalty_tag != desired_loyalty_tag)
 			continue
 		if(!can_track(P))
 			continue
-		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir(caller,P))], [get_dist(src,P)]m)"
+		var/name_mod = "[P.real_name] ([P.dead ? "DEAD" : "Alive"], [dir2text(get_dir_advanced(caller,P))], [get_dist_advanced(src,P)]m)"
 		possible_crew[name_mod] = P
 
 	scan_mode = TRUE
@@ -186,7 +190,7 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE
 
@@ -213,7 +217,7 @@
 	name = "syndicate operative pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of Syndicate Raiders."
 	icon_state = "syndicate"
-	desired_loyalty = "Syndicate"
+	desired_loyalty_tag = "Syndicate"
 	value = 1000
 	encoded = TRUE
 
@@ -221,7 +225,7 @@
 	name = "revolutionary soldier pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of Revolutionary Soldiers."
 	icon_state = "rev"
-	desired_loyalty = "Revolutionary"
+	desired_loyalty_tag = "Revolutionary"
 	value = 1000
 	encoded = TRUE
 
@@ -253,7 +257,7 @@
 		if(my_area.area_identifier != A.area_identifier)
 			continue
 		var/turf/T = locate(A.average_x,A.average_y,A.z)
-		var/name_mod = "[A.name] ([dir2text(get_dir(caller,T))], [get_dist(src,T)]m)"
+		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,T))], [get_dist_advanced(src,T)]m)"
 		possible_landmarks[name_mod] = T
 
 	if(!length(possible_landmarks))
@@ -274,18 +278,18 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE
 
-/obj/item/pinpointer/artifact/
+/obj/item/pinpointer/objective/
 	name = "objectives pinpointer"
 	desc_extended = "Use this to track and locate objects. This one tracks positions of your objectives, only works when in the field."
 	icon_state = "yellow"
 
 	value = 20
 
-/obj/item/pinpointer/artifact/click_self(var/mob/caller)
+/obj/item/pinpointer/objective/click_self(var/mob/caller)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -300,7 +304,7 @@
 			var/atom/A = k
 			if(!can_track(A))
 				continue
-			var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"
+			var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
 			possible_artifacts[name_mod] = A
 
 	if(!length(possible_artifacts))
@@ -321,7 +325,7 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE
 
@@ -344,7 +348,7 @@
 		var/atom/A = k
 		if(!can_track(A))
 			continue
-		var/name_mod = "[A.name] ([dir2text(get_dir(caller,A))], [get_dist(src,A)]m)"
+		var/name_mod = "[A.name] ([dir2text(get_dir_advanced(caller,A))], [get_dist_advanced(src,A)]m)"
 		possible_bosses[name_mod] = A
 
 	if(!length(possible_bosses))
@@ -365,6 +369,6 @@
 		tracked_atom = null
 
 	scan_mode = FALSE
-	start_thinking(src)
+	START_THINKING(src)
 
 	return TRUE

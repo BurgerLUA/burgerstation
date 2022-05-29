@@ -1,5 +1,4 @@
 /damagetype/melee/sword/null_dagger
-	name = "null dagger"
 
 	attack_damage_base = list(
 		BLADE = 10,

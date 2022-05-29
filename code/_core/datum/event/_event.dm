@@ -14,10 +14,9 @@
 	var/occurances_current = 0
 	var/occurances_max = 3
 
-	var/list/gamemode_blacklist = list(
+	var/list/gamemode_blacklist = list()
 
-
-	)
+	var/minor_event = FALSE
 
 /event/proc/force_end()
 	end_time = 0

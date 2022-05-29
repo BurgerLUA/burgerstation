@@ -15,12 +15,9 @@
 	dyeable = TRUE
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
+	item_slot_layer = 1
 
-	defense_rating = list(
-		ARCANE = 20,
-		COLD = 40,
-		BIO = 20
-	)
+	armor = /armor/cloth/winter/mask
 
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE,

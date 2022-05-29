@@ -1,18 +1,39 @@
 /obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
 
-	var/atom/top_object = get_top_object()
-
-	//Test
-	if(is_living(caller)) //TODO: Do you even need this?
+	//Dead can't interact.
+	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
 			L.to_chat(span("warning","You're dead!"))
 			return TRUE
 
+	if(parent_inventory) //Wielding an object.
+		var/atom/top_object = parent_inventory.get_top_object()
+		if(object != top_object)
+			top_object.click_on_object_alt(caller,object,location,control,params)
+			return TRUE
+
+	//Reinforced grabbing. Doesn't matter what your intent is.
+	if(grabbed_object && grabbed_object == object && is_living(object))
+		reinforce_grab(caller)
+		return TRUE
+
+	var/atom/top_object = get_top_object()
+
+	//Alt click a corpse with an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && is_advanced(object))
+		var/mob/living/advanced/A = object
+		if(A.dead)
+			A.examine_body_inventory(caller)
+			return TRUE
+
 	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
-		if(is_item(object) && is_inventory(object.loc))
+		if(is_item(object))
 			var/obj/item/I = object
-			if(!I.is_container)
+			if(istype(I.loc,/obj/item/plate))
+				src.add_object(I)
+				return TRUE
+			if(is_inventory(I.loc) && !I.is_container)
 				toggle_wield(caller,object)
 				return TRUE
 		if(is_organ(src.loc) && isturf(object.loc) && get_dist(caller,object) <= 1)
@@ -22,6 +43,9 @@
 			else
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
+
+	if(istype(object.loc,/obj/item/plate)) //Plate fuckery.
+		return src.click_on_object(caller,object.loc,location,control,params)
 
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
 		var/atom/movable/M = object
@@ -37,29 +61,47 @@
 		if(!isturf(caller.loc))
 			return TRUE
 		var/mob/living/L = caller
-		caller.face_atom(object)
-		var/atom/movable/object_to_throw = top_object
+		caller.face_atom(object) //Changing dir
+		var/atom/movable/object_to_throw
+		if(grabbed_object) object_to_throw = grabbed_object //We want to throw something that we pull
+		else object_to_throw = top_object //Else we throw something in our hand
+
 		if(istype(object_to_throw))
-			var/obj/item/I = object_to_throw
-			if(I.additional_clothing_parent)
-				caller.to_chat(span("warning","You can't throw this!"))
-				return TRUE
-			var/vel_x = object.x - caller.x
+			if(ismob(object_to_throw) && grab_level < 2) //To throw mob you need agressive grab
+				caller.to_chat(span("warning","You need a better grip to do that!"))
+				return TRUE //Isn't agressive grab on mob?
+
+			var/vel_x = object.x - caller.x //Caller pos is the same as object anyway
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
 
-			if(!highest)
-				I.drop_item(get_turf(caller)) //Drop if we can't throw.
+			if(is_item(object_to_throw)) //Item needs aditional procedures
+				var/obj/item/I = object_to_throw
+				if(I.additional_clothing_parent || I.no_drop) //Can't throw additional clothing
+					caller.to_chat(span("warning","You can't throw this!"))
+					return TRUE
+				if(!highest) //We want to throw it in us?.. No velocity
+					I.drop_item(get_turf(caller)) //Drop if we can't throw.
+					return TRUE
+				I.drop_item(get_turf(caller),silent=TRUE)
+
+			if(highest == 0) //Our position is the same as target
+				release_object(caller) //Better not to divide by zero
 				return TRUE
 
 			vel_x *= 1/highest
-			vel_y *= 1/highest
-
+			vel_y *= 1/highest //Should it be in two lines instead of four?
 			vel_x *= BULLET_SPEED_LARGE_PROJECTILE
 			vel_y *= BULLET_SPEED_LARGE_PROJECTILE
 
-			I.drop_item(get_turf(caller),silent=TRUE)
-			I.throw_self(caller,get_turf(object),text2num(params[PARAM_ICON_X]),text2num(params[PARAM_ICON_Y]),vel_x,vel_y,steps_allowed = VIEW_RANGE,lifetime = 30,desired_iff = L.iff_tag)
+			if(grabbed_object == object_to_throw)
+				grabbed_object.Move(get_turf(caller)) //Anti-offset
+				release_object(caller)
+
+			var/list/target_cords = L.get_current_target_cords(params)
+			//Throwing it
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,text2num(target_cords[1]),text2num(target_cords[2]),vel_x,vel_y,steps_allowed = VIEW_RANGE,steps_allowed = VIEW_RANGE,desired_loyalty_tag = L.loyalty_tag)
+
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))
 
@@ -70,6 +112,11 @@
 			var/obj/item/I = parent_inventory.get_top_object()
 			unwield(caller,I)
 			return TRUE
+		if(is_item(top_object))
+			var/obj/item/I = top_object
+			if(I.no_drop)
+				caller.to_chat(span("warning","You can't drop this!"))
+				return TRUE
 		if(grabbed_object)
 			release_object(caller)
 			return TRUE
@@ -77,27 +124,26 @@
 			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
-		if(desired_turf && istype(object,/obj/structure/smooth/table) && get_dist(caller_turf,desired_turf) <= 1)
+		if(desired_turf && (istype(object,/obj/structure/table) || istype(object,/obj/item/plate)) && get_dist(caller_turf,desired_turf) <= 1)
 			drop_item_from_inventory(desired_turf,text2num(params[PARAM_ICON_X])-16,text2num(params[PARAM_ICON_Y])-16)
 		else
 			drop_item_from_inventory(get_turf(src))
 		return TRUE
 
-	if(grabbed_object && grabbed_object == object)
-		release_object(caller)
-		return TRUE
-
 	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
-			var/turf/T = get_step(grabbed_object.loc,desired_move_dir)
+			var/turf/desired_move_turf = get_step(grabbed_object.loc,desired_move_dir)
 			if(is_living(grabbed_object) && is_living(caller))
 				var/mob/living/L = grabbed_object
 				var/mob/living/C = caller
 				var/turf/grabbed_object_turf = grabbed_object.loc
-				if(C.loyalty_tag && L.loyalty_tag == C.loyalty_tag && grabbed_object_turf.is_safe_teleport(FALSE) && !T.is_safe_teleport(FALSE))
+				if(!allow_hostile_action(L.loyalty_tag,C.loyalty_tag,grabbed_object_turf.loc) && grabbed_object_turf.is_safe_teleport(FALSE) && !desired_move_turf.is_safe_teleport(FALSE))
 					return TRUE
-			grabbed_object.Move(T)
+			grabbed_object.Move(desired_move_turf)
+			if(is_living(grabbed_object))
+				var/mob/living/L = grabbed_object
+				L.handle_transform()
 		return TRUE
 
 	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)
@@ -108,17 +154,17 @@
 	if(top_object && (object == top_object || caller.attack_flags & CONTROL_MOD_SELF)) //Click on ourself
 		top_object.click_self(caller)
 		return TRUE
-	else if(caller.attack_flags & CONTROL_MOD_SELF)
+	else if(caller.attack_flags & CONTROL_MOD_SELF) //Z click wielding.
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
-			if(src == A.right_hand && A.left_item)
-				A.right_hand.toggle_wield(caller,A.left_item)
+			if(src == A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item)
+				A.inventories_by_id[BODY_HAND_RIGHT_HELD].toggle_wield(caller,A.left_item)
 				return TRUE
-			if(src == A.left_hand && A.right_item)
-				A.left_hand.toggle_wield(caller,A.right_item)
+			if(src == A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].toggle_wield(caller,A.right_item)
 				return TRUE
 
-	if(get_dist(src,object) <= 1 && !(isturf(object.loc) && !isturf(caller.loc)))
+	if(get_dist(src,object) <= 1 && (is_inventory(object) || is_inventory(object.loc) || isturf(object) || isturf(object.loc)) && !(isturf(object.loc) && !isturf(caller.loc)) )
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
 			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.
@@ -129,34 +175,32 @@
 					if(found_item)
 						src.add_object(found_item)
 						return TRUE
-			if(I.anchored) //If it's anchored, we just call click_self on it.
-				I.click_self(caller) //works
-				return TRUE
-			if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
-				var/obj/hud/inventory/INV = I.loc
-				if(!top_object) //We're clicking on an object with an empty hand.
-					if(INV.worn) //We're clicking on a worn object.
-						var/content_length = length(INV.contents)
-						if(content_length > 1 && caller.attack_flags & CONTROL_MOD_DISARM) //Force
-							content_length -= 1
-						for(var/i=content_length,i>0,i--)
-							var/obj/item/ITM = INV.contents[i]
-							if(ITM.click_self(caller))
-								return TRUE
-					if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
-						I.click_self(caller)
-						return TRUE
-					if(!INV.click_flags && (!INV.drag_to_take || is_weapon(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
-						if(caller.attack_flags & CONTROL_MOD_DISARM)
+			if(!I.anchored) //If it's anchored, we just call click_self on it (later in the code).
+				if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
+					var/obj/hud/inventory/INV = I.loc
+					if(!top_object) //We're clicking on an object with an empty hand.
+						if(INV.worn) //We're clicking on a worn object.
+							var/content_length = length(INV.contents)
+							if(content_length > 1 && caller.attack_flags & CONTROL_MOD_DISARM) //Force
+								content_length -= 1
+							for(var/i=content_length,i>0,i--)
+								var/obj/item/ITM = INV.contents[i]
+								if(ITM.click_self(caller))
+									return TRUE
+						if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
 							I.click_self(caller)
-						else
-							src.add_object(object)
+							return TRUE
+						if(!INV.click_flags && (!INV.drag_to_take || !istype(object,/obj/item/clothing))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
+							if(caller.attack_flags & CONTROL_MOD_DISARM)
+								I.click_self(caller)
+							else
+								src.add_object(object)
+							return TRUE
+					else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
 						return TRUE
-				else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
+				else if(!top_object && caller.attack_flags && !(caller.attack_flags & ~(CONTROL_MOD_LEFT|CONTROL_MOD_RIGHT)) ) //If we don't have a top object and we don't have any non-left attack flags, pick it up.
+					src.add_object(object)
 					return TRUE
-			else if(!top_object) //If we don't have a top object, pick it up.
-				src.add_object(object)
-				return TRUE
 		else if(top_object && is_inventory(object)) //We have an object in our hands, clicking on an empty inventory.
 			var/obj/hud/inventory/INV = object
 			INV.add_object(top_object)
@@ -272,7 +316,7 @@
 
 	. = ..()
 
-/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
+/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list(),var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc
 
 obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)

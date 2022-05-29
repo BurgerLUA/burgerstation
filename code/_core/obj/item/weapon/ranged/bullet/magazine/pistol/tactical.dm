@@ -1,14 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
-	name = ".45 1911 Pistol"
+	name = ".45 1984 Pistol"
 	desc = "No rubber rounds here; it's all lethal."
-	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Americans."
+	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Colonists."
 	value = 700
 
+	tier = 2
+
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 3
+	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
-
-
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
@@ -17,7 +17,7 @@
 	automatic = FALSE
 
 	size = SIZE_2
-	weight = 5
+	weight = 6
 
 	heat_max = 0.07
 
@@ -45,7 +45,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -71,16 +71,18 @@
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
-	name = ".45 1911 Pistol MOD"
-	desc = "It's like a Silver Eagle except not."
+	name = ".45 1984 Pistol MOD"
 	desc_extended = "The feeding ramp is polished to a mirror sheen. The slide's been reinforced. And the interlock with the frame is tightened for added precision. \
 	The sight system is original, too. The thumb safety is extended to make it easier on the finger. A long-type trigger with non-slip grooves. A ring hammer... \
 	The base of the trigger guard's been filed down for a higher grip. And not only that, nearly every part of this gun has been expertly crafted and customized. \
 	Where'd you get something like this?"
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
-	shoot_delay = 3
+	shoot_delay = 1.25
 	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
+
+	damage_mod = 1.25
+	tier = 3
 
 	size = SIZE_2
 

@@ -2,13 +2,17 @@ SUBSYSTEM_DEF(events)
 	name = "Event Subsystem"
 	desc = "Handles processing for events."
 	priority = SS_ORDER_NORMAL
-	tick_rate = SECONDS_TO_TICKS(1)
+	tick_rate = SECONDS_TO_TICKS(5)
 
 	var/list/all_events = list()
-	var/list/all_events_prob = list()
+
+	var/list/all_events_minor_prob = list()
+	var/list/all_events_major_prob = list()
+
 	var/list/all_events_active = list()
 
-	var/next_event_time = 0
+	var/next_event_minor = 0 //No announcement.
+	var/next_event_major = 0 //Has announcement.
 
 /subsystem/events/unclog(var/mob/caller)
 
@@ -26,9 +30,13 @@ SUBSYSTEM_DEF(events)
 	for(var/k in subtypesof(/event/))
 		var/event/E = new k
 		all_events[E.type] = E
-		all_events_prob[E.type] = E.probability
+		if(E.minor_event)
+			all_events_minor_prob[E.type] = E.probability
+		else
+			all_events_major_prob[E.type] = E.probability
 
-	next_event_time = world.time + SECONDS_TO_DECISECONDS(600)
+	next_event_minor = world.time + SECONDS_TO_DECISECONDS(300)
+	next_event_major = world.time + SECONDS_TO_DECISECONDS(600)
 
 	return ..()
 
@@ -50,22 +58,35 @@ SUBSYSTEM_DEF(events)
 			qdel(E)
 			log_error("Warning! Event of type [E.type] did not process correctly, thus it was deleted.")
 
-	if(world.time >= next_event_time)
-		next_event_time = world.time + SECONDS_TO_DECISECONDS(600) //Safety
-		trigger_random_event()
+	if(world.time >= next_event_minor)
+		trigger_random_event(TRUE)
+
+	if(world.time >= next_event_major)
+		trigger_random_event(FALSE)
 
 	return TRUE
 
-/subsystem/events/proc/trigger_random_event()
+/subsystem/events/proc/trigger_random_event(var/minor)
 
-	if(!length(all_events_prob))
+	if(!SSgamemode?.active_gamemode?.allow_launch)
 		return FALSE
 
-	var/event_id = pickweight(all_events_prob)
+	var/event_id
+
+	if(minor && length(all_events_minor_prob))
+		event_id = pickweight(all_events_minor_prob)
+	else if(!minor && length(all_events_major_prob))
+		event_id = pickweight(all_events_major_prob)
+
+	if(!event_id)
+		return FALSE
 
 	var/event/E = all_events[event_id]
 
 	log_debug("Triggering [E.get_debug_name()] in 5 seconds...")
+
+	next_event_minor = max(next_event_minor,world.time + 100)
+	next_event_major = max(next_event_major,world.time + 100)
 
 	CALLBACK("trigger_event",50,src,.proc/trigger_event,E)
 
@@ -78,7 +99,8 @@ SUBSYSTEM_DEF(events)
 
 	if(!E.on_start())
 		E.on_fail()
-		next_event_time = world.time + 20
+		next_event_minor = max(next_event_minor,world.time + 30)
+		next_event_major = max(next_event_major,world.time + 30)
 		return FALSE
 
 	if(E.duration)
@@ -92,13 +114,15 @@ SUBSYSTEM_DEF(events)
 	else
 		E.on_end()
 
-	next_event_time = world.time + SECONDS_TO_DECISECONDS(rand(600,900))
+	next_event_minor = E.minor_event ? world.time + SECONDS_TO_DECISECONDS(rand(120,300)) : max(next_event_minor,world.time + SECONDS_TO_DECISECONDS(60))
+	next_event_major = !E.minor_event ? world.time + SECONDS_TO_DECISECONDS(rand(600,900)) : max(next_event_major,world.time + SECONDS_TO_DECISECONDS(60))
 
 	E.occurances_current++
 
 	if(E.occurances_current >= E.occurances_max)
 		all_events -= E.type
-		all_events_prob -= E.type
+		all_events_minor_prob -= E.type
+		all_events_major_prob -= E.type
 
 	return E
 

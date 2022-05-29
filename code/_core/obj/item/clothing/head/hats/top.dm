@@ -3,11 +3,8 @@
 	icon = 'icons/obj/item/clothing/hats/top.dmi'
 	desc = "Classy!"
 	desc_extended = "An expensive top hat."
-	rarity = RARITY_UNCOMMON
 
-	defense_rating = list(
-		ARCANE = 40
-	)
+	armor = /armor/cloth
 
 	size = SIZE_2
 

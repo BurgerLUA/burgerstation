@@ -2,16 +2,20 @@
 	name = "\improper 4.6x30mm WT-550"
 	desc = "Something squeaks that isn't supposed to squeak? Put some WT-500 on it."
 	desc_extended = "A NanoTrasen made and used personal defense weapon designed for security forces on stations. The unique 4.6x30mm ammo type offers a robust array of special rounds for all combat situations."
-	icon = 'icons/obj/item/weapons/ranged/smg/4mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/4mm_pdw.dmi'
 	icon_state = "inventory"
 	value = 1100
+
+	damage_mod = 1
+
+	tier = 2
 
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 1
+	shoot_delay = 0.8
 
-	firemodes = list("burst","automatic","semi-automatic")
+	firemodes = list("automatic","burst","semi-automatic")
 
 	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
 
@@ -28,7 +32,7 @@
 	bullet_diameter_max = 5
 
 	size = SIZE_3
-	weight = 6
+	weight = 5
 
 	ai_heat_sensitivity = 0.5
 
@@ -47,7 +51,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

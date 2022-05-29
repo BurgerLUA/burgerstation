@@ -1,5 +1,4 @@
 /damagetype/melee/club/stunbaton
-	name = "inactive stunbaton"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -28,7 +27,6 @@
 	attack_delay_max = 15
 
 /damagetype/melee/club/stunbaton/on
-	name = "active stunbaton"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -54,7 +52,6 @@
 
 
 /damagetype/melee/club/stunbaton/on/harm
-	name = "active stunbaton"
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(

@@ -10,7 +10,7 @@ var/global/world_state = STATE_STARTING
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
 
-	sleep_offline = TRUE
+	sleep_offline = FALSE
 
 	name = "Burgerstation 13"
 	hub = "Exadv1.spacestation13"
@@ -28,10 +28,11 @@ var/global/world_state = STATE_STARTING
 	loop_checks = 1
 
 /world/New()
-	//sleep_offline = TRUE
+	sleep_offline = FALSE
 	__detect_rust_g()
 	. = ..()
 	life()
+	sleep_offline = initial(sleep_offline)
 
 /world/proc/update_server_status()
 
@@ -41,8 +42,8 @@ var/global/world_state = STATE_STARTING
 	var/server_name = CONFIG("SERVER_NAME","Unofficial Burgerstation 13 Server")
 	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
-	var/duration = get_clock_time(FLOOR(world.time/10,1),FORMAT_HOUR | FORMAT_MINUTE)
-	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "MultiZ (255x255x3)"]</b><br>Duration: <b>[duration]</b>"
+	var/duration = get_clock_time(FLOOR(true_time()/10,1),FORMAT_HOUR | FORMAT_MINUTE)
+	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "Map Name Here ([world.maxx]x[world.maxy])"]</b><br>Duration: <b>[duration]</b>"
 
 	//Format it.
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
@@ -113,8 +114,7 @@ var/global/world_state = STATE_STARTING
 		G.save()
 
 /proc/save_economy()
-	var/subsystem/economy/E = locate() in active_subsystems
-	E.save(TRUE)
+	SSeconomy.save()
 
 /world/proc/save()
 	save_all_globals()
@@ -126,8 +126,14 @@ var/global/world_state = STATE_STARTING
 	return TRUE
 
 /world/proc/save_all_characters()
-	for(var/k in all_players)
+	for(var/k in all_players) ///Players only.
 		var/mob/living/advanced/player/P = k
+		if(P.qdeleting)
+			log_error("Warning: Tried saving [P.get_debug_name()], which was qdeleting!")
+			continue
+		if(!P.ckey_last)
+			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey!")
+			continue
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)
 			continue
@@ -135,6 +141,7 @@ var/global/world_state = STATE_STARTING
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
+		sleep(1)
 		sleep(-1)
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
@@ -170,6 +177,6 @@ var/global/world_state = STATE_STARTING
 		broadcast_to_clients(span("notice","Rebooting world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server reboots."))
 		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,.proc/reboot_server)
 
-	SSdiscord.send_message("Round ended due to [nice_reason].")
+	SSdiscord.send_message("Round ended with [length(all_clients)] players due to [nice_reason].")
 
 	return TRUE

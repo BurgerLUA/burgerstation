@@ -1,7 +1,4 @@
 /damagetype/ranged/magic/chaos
-	name = "chaos ball"
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		DARK = 45*0.5
 	)
@@ -27,7 +24,6 @@
 	)
 
 /damagetype/ranged/magic/chaos/canine //Lazy way to stop the cursed canine from leveling magic stats, but still uses them for damage.
-	name = "chaos ball"
 
 	attribute_stats = list(
 		ATTRIBUTE_DEXTERITY = 11.25

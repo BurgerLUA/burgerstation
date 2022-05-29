@@ -25,6 +25,10 @@
 /obj/marker/lobby,
 /turf/simulated/floor/colored/ash/rocky,
 /area/dmm_suite/clear_area)
+"i" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/colored/ash/rocky,
+/area/dmm_suite/clear_area)
 "C" = (
 /obj/structure/interactive/crate/chest/filled,
 /turf/simulated/floor/colored/ash/rocky,
@@ -659,7 +663,7 @@ g
 g
 g
 f
-b
+i
 a
 b
 b

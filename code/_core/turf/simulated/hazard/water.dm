@@ -1,21 +1,20 @@
-/turf/simulated/hazard/water
+var/global/list/turf/simulated/floor/water_shores = list()
+
+#define MAX_DEPTH (VIEW_RANGE + ZOOM_RANGE)
+
+/turf/simulated/liquid/water
 	name = "water"
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
 
-	collision_flags = FLAG_COLLISION_WALKING | FLAG_COLLISION_CRAWLING
+	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	footstep = /footstep/water
 	fishing_rewards = /loot/fishing/river
 
-	density_north = TRUE
-	density_east = TRUE
-	density_south = TRUE
-	density_west = TRUE
-
-	plane = PLANE_FLOOR
-	layer = 0
+	plane = PLANE_WATER
+	layer = LAYER_MOB_WATER
 
 	desired_light_frequency = 4
 	desired_light_power = 0.5
@@ -25,45 +24,47 @@
 	water_reagent = /reagent/nutrition/water
 	reagents = /reagent_container/turf/
 
-/turf/simulated/hazard/water/jungle/Finalize()
+	var/map_color_max_depth = "#031A44"
+	var/map_color_min_depth = "#3DAEE1"
+
+	map_color = COLOR_BLUE
+
+	depth = 0 // 0 Means generate depth.
+	alpha = 255
+
+/turf/simulated/liquid/water/Initialize()
 	. = ..()
-	if(prob(90))
-		for(var/k in DIRECTIONS_CARDINAL)
-			var/turf/T = get_step(src,k)
-			if(istype(T,/turf/simulated/floor))
-				for(var/j=1,j<=rand(2,3),j++)
-					var/obj/structure/scenery/reeds/R = new(src)
-					R.pixel_x = rand(-8,8)
-					R.pixel_y = rand(-8,8)
-				break
+	if(ENABLE_GENERATION)
+		for(var/k in DIRECTIONS_ALL)
+			var/turf/simulated/floor/T = get_step(src,k)
+			if(!istype(T))
+				continue
+			water_shores |= T
+
+/turf/simulated/liquid/water/Finalize()
+	if(ENABLE_GENERATION)
+		if(depth <= 0)
+			depth = MAX_DEPTH
+			for(var/k in water_shores)
+				var/turf/simulated/floor/T = k
+				depth = min(1 + get_dist(src,T),depth)
+			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
+			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
+	else
+		depth = 8
+		alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
+		map_color = map_color_max_depth
+	. = ..()
+
+/turf/simulated/liquid/water/jungle/Finalize()
+	. = ..()
+	if(depth <= 2 && prob(90))
+		for(var/j=1,j<=rand(2,3),j++)
+			var/obj/structure/scenery/reeds/R = new(src)
+			R.pixel_x = rand(-8,8)
+			R.pixel_y = rand(-8,8)
 
 
-/turf/simulated/hazard/water/sea
+/turf/simulated/liquid/water/sea
 	name = "saltwater"
-	icon = 'icons/turf/floor/ocean_new.dmi'
-	icon_state = "water"
-	color = "#243754"
 	fishing_rewards = /loot/fishing/sea
-
-/turf/simulated/hazard/water/sea/Finalize()
-	. = ..()
-	update_sprite()
-
-/turf/simulated/hazard/water/sea/update_overlays()
-
-	. = ..()
-
-	var/image/I1 = new/image(icon,"scroll_1")
-	I1.appearance_flags = appearance_flags | RESET_COLOR
-	I1.alpha = 225
-	add_overlay(I1)
-
-	var/image/I2 = new/image(icon,"scroll_2")
-	I2.appearance_flags = appearance_flags | RESET_COLOR
-	I2.alpha = 225
-	add_overlay(I2)
-
-	var/image/I3 = new/image(icon,"scroll_3")
-	I3.appearance_flags = appearance_flags | RESET_COLOR
-	I3.alpha = 225
-	add_overlay(I3)

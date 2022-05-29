@@ -6,7 +6,9 @@
 	icon_state = "inventory"
 	value = 5000
 
-	shoot_delay = 10
+	tier = 3
+
+	shoot_delay = 15
 
 	automatic = FALSE
 
@@ -56,17 +58,17 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 48 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_x = 32 + 27 - 16
+	attachment_barrel_offset_y = 20 - 16
 
-	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_x = 25 - 16
 	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 31 - 16
+	attachment_undermount_offset_x = 32 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	attachment_stock_offset_x = 32 - 16
-	attachment_stock_offset_y = 19 - 16
+	attachment_stock_offset_x = 32
+	attachment_stock_offset_y = 0
 
 	requires_cock_each_shot = TRUE
 
@@ -94,5 +96,3 @@
 	FINALIZE(attachment_sight)
 
 	. = ..()
-
-	update_sprite()

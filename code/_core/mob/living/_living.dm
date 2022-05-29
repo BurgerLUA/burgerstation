@@ -4,25 +4,21 @@
 	stamina_base = 50
 	mana_base = 50
 
+	sight = SEE_BLACKNESS | SEE_PIXELS
+
 	enable_chunk_clean = TRUE
-
-	vis_flags = VIS_INHERIT_ID
-
-	var/rarity = RARITY_COMMON
 
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	icon_state = "directional"
 
 	var/class = /class/npc
 	var/level = 1
 
-	var/enable_AI = FALSE
 	var/ai/ai
-	//var/id //Boss ID
 
 	var/iff_tag
 	var/loyalty_tag
@@ -40,10 +36,13 @@
 	var/nutrition_fast = 0
 	var/hydration = 1000
 	var/hydration_max = 1000
-	var/nutrition_quality = 1000 //0 to 2000. 2000 means super health, 0 means absolutely fucking obese unfit and all that.
+	var/nutrition_quality = 1000 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that.
 	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
+
+	var/immune_system_strength = 100 //Read only. Calculated in calculate_immune_system_strength()
+	var/list/diseases = list() //Assoc list of diseases.
 
 	var/blood_type = /reagent/blood
 	var/blood_volume = BLOOD_VOLUME_DEFAULT
@@ -61,6 +60,7 @@
 	var/pain_regen_buffer = 0
 	var/rad_regen_buffer = 0
 	var/sanity_regen_buffer = 0
+	var/mental_regen_buffer = 0
 	var/mana_regen_buffer = 0
 	var/stamina_regen_buffer = 0
 
@@ -99,11 +99,13 @@
 	collision_flags = FLAG_COLLISION_WALKING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
-	var/list/obj/hud/screen_blood/screen_blood
-
 	var/allow_experience_gains = FALSE
 
 	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
+	var/grabbed = FALSE //Read only value to check if the mob is grabbed.
+
+	var/elevation = 0
+	var/turn = 0
 
 	health = /health/mob/living/
 
@@ -112,32 +114,13 @@
 	var/last_flavor = ""
 	var/last_flavor_time = 0
 
-	var/list/armor_base = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0,
-		SANITY = 0
-	)
+	var/armor/armor
 
-	var/list/mob_value
+	var/list/mob_value = list()
 
 	var/list/status_immune = list() //What status effects area they immune to?
 	//STATUS = TRUE //Means it's immune.
 	//STATUS = OTHERSTATUS //Means it will do OTHERSTATUS instead for half the duration.
-
-	var/damage_received_multiplier = 1
 
 	var/dead = FALSE
 	var/time_of_death = -1
@@ -149,6 +132,8 @@
 	var/image/medical_hud_image
 	var/image/security_hud_image
 	var/image/medical_hud_image_advanced
+
+	var/obj/effect/water_mask
 
 	var/has_footsteps = TRUE
 
@@ -192,7 +177,8 @@
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
 
-	var/fatigue_from_block_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/fatigue_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
+	var/pain_mul = 1
 
 	value = 250
 
@@ -237,8 +223,8 @@
 		"help"
 	)
 
-	var/tabled = FALSE
-	var/currently_tabled = FALSE
+	var/on_table = FALSE
+	var/on_liquid = FALSE
 
 	density = TRUE
 
@@ -255,7 +241,7 @@
 
 	can_be_bumped = FALSE
 
-	var/one_time_life = FALSE
+	var/delete_on_death = FALSE
 
 	var/drops_gold = 0 //Set to a value to make this mob drop this amount of gold when it dies.
 
@@ -264,6 +250,27 @@
 	var/deafened_duration = 0
 
 	var/list/hit_logs = list()
+
+	var/expiration_time = -1 //Time at which the mob "expires" after death and cannot be revived. Set to 0 to disable. Set to -1 to make it instant upon death.
+
+	var/atom/dash_target //The target that you're dashing at.
+	var/dash_amount = 0 //Amount of times to move in a direction.
+
+	var/last_move_time = 0
+	var/last_move_delay = 0
+
+	var/processing = FALSE
+
+	var/next_heartbeat = 0
+
+	var/list/stat_elements = list() //Assoc list.
+	var/list/stat_buttons_to_update = list()
+
+	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
+
+	var/pain_removal = 0 //How much damage to ignore due to pain killers. Calculated every second.
+
+	var/gibbed = FALSE //Returns true if the cause of death was a gib.
 
 /mob/living/Destroy()
 
@@ -295,12 +302,10 @@
 
 	QDEL_NULL(ai)
 
-	if(screen_blood)
-		QDEL_CUT(screen_blood)
-
 	hit_logs?.Cut()
 
-	all_living -= src
+	SSliving.all_living -= src
+	SSliving.processing_mobs -= src
 
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
@@ -320,6 +325,7 @@
 	QDEL_NULL(medical_hud_image)
 	QDEL_NULL(security_hud_image)
 	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(water_mask)
 
 	QDEL_NULL(flash_overlay)
 
@@ -332,6 +338,8 @@
 
 	status_effects?.Cut()
 
+	stat_buttons_to_update?.Cut()
+
 	QDEL_NULL(stand)
 
 	return ..()
@@ -342,7 +350,7 @@
 		return FALSE
 
 	var/area/A = get_area(src)
-	if(A.flags_area & FLAGS_AREA_NO_DAMAGE)
+	if(A.flags_area & FLAG_AREA_NO_EVENTS)
 		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
 		return FALSE
 
@@ -350,7 +358,7 @@
 	for(var/turf/simulated/T in view(VIEW_RANGE,src))
 		if(!T.organic)
 			continue
-		if(T.lightness <= 0)
+		if(T.lightness > 0)
 			continue
 		if(!T.is_safe_teleport())
 			continue
@@ -416,16 +424,28 @@
 
 	return TRUE
 
-/mob/living/on_crush() //What happens when this object is crushed by a larger object.
+/mob/living/on_crush(var/message=TRUE) //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
-	visible_message(span("danger","\The [src.name] is violently crushed!"))
-	if(blood_type)
-		var/reagent/R = REAGENT(blood_type)
-		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
-	death(TRUE)
-	if(!qdeleting) qdel(src)
+	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
+	gib(TRUE)
+
+/mob/living/gib(var/hard=FALSE)
+	if(qdeleting)
+		return FALSE
+	if(gibbed)
+		return FALSE
+	gibbed = TRUE
+	if(death(TRUE))
+		if(blood_type)
+			var/reagent/R = REAGENT(blood_type)
+			var/turf/T = get_turf(src)
+			for(var/i=1,i<=9,i++)
+				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+		qdel(src)
+		return TRUE
+	gibbed = FALSE //Hacky, but it works.
+	return FALSE
 
 /mob/living/on_fall(var/turf/old_loc)
 	. = ..()
@@ -437,17 +457,25 @@
 	if(!dead) . *= 3
 
 /mob/living/get_debug_name()
-	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
+	var/turf/T = get_turf(src)
+	var/shown_x = T ? T.x : 0
+	var/shown_y = T ? T.y : 0
+	var/shown_z = T ? T.z : 0
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
 
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
-/mob/living/proc/dust()
-	new /obj/effect/temp/death(src.loc,30)
-	qdel(src)
-	return TRUE
+/mob/living/dust(var/atom/source)
+	if(death(TRUE))
+		new /obj/effect/temp/death(src.loc,30)
+		qdel(src)
+		return TRUE
+	return FALSE
 
 /mob/living/New(loc,desired_client,desired_level_multiplier)
+
+	render_target = "\ref[src]"
 
 	blood_volume_max = blood_volume
 
@@ -465,30 +493,65 @@
 		medical_hud_image.loc = src
 		medical_hud_image.layer = PLANE_AUGMENTED
 		medical_hud_image.pixel_y = 4
-		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
 		medical_hud_image_advanced.loc = src
 		medical_hud_image_advanced.layer = PLANE_AUGMENTED
-		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 	if(enable_security_hud)
 		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 		security_hud_image.loc = src
 		security_hud_image.layer = PLANE_AUGMENTED
-		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
+
+	chat_overlay = new(src)
+	chat_overlay.layer = LAYER_EFFECT
+	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
+	chat_overlay.alpha = 0
+	src.vis_contents += chat_overlay
+	//This is initialized somewhere else.
+
+	alert_overlay = new(src)
+	alert_overlay.layer = LAYER_EFFECT
+	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
+	alert_overlay.icon_state = "none"
+	alert_overlay.pixel_z = 20 + pixel_z
+	src.vis_contents += alert_overlay
+	//This is initialized somewhere else.
+
+	fire_overlay = new(src)
+	fire_overlay.layer = LAYER_MOB_FIRE
+	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
+	fire_overlay.icon_state = "0"
+	src.vis_contents += fire_overlay
+	//This is initialized somewhere else.
+
+	shield_overlay = new(src)
+	shield_overlay.layer = LAYER_EFFECT
+	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
+	shield_overlay.icon_state = "block"
+	shield_overlay.alpha = 0
+	src.vis_contents += shield_overlay
+	//This is initialized somewhere else.
+
+	//Create the water mask effect.
+	water_mask = new(src) //Blend mode doesn't work here.
+	water_mask.icon = 'icons/water_mask.dmi'
+	water_mask.icon_state = "water_mask"
+	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
+	water_mask.plane = PLANE_MOB_WATER_MASK
+	water_mask.layer = 0
+	water_mask.pixel_x = -32
+	water_mask.pixel_y = -32
+	water_mask.alpha = 200
+	water_mask.filters += filter(type="alpha",x=0,y=0,render_source="\ref[src]")
+	vis_contents += water_mask
 
 	. = ..()
 
-	if(desired_client)
-		screen_blood = list()
-		screen_blood += new /obj/hud/screen_blood(src,NORTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,NORTHEAST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTHEAST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTHWEST)
-		screen_blood += new /obj/hud/screen_blood(src,SOUTH) //Actually the center
-
-	all_living += src
+	SSliving.all_living += src
 
 
 /mob/living/Initialize()
@@ -506,45 +569,35 @@
 
 	. = ..()
 
-	chat_overlay = new(src.loc)
-	chat_overlay.layer = LAYER_EFFECT
-	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
-	chat_overlay.alpha = 0
-	//This is initialized somewhere else.
-
-	alert_overlay = new(src.loc)
-	alert_overlay.layer = LAYER_EFFECT
-	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
-	alert_overlay.pixel_z = 20
-	//This is initialized somewhere else.
-
-	fire_overlay = new(src.loc)
-	fire_overlay.layer = LAYER_MOB_FIRE
-	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
-	fire_overlay.icon_state = "0"
-	//This is initialized somewhere else.
-
-	shield_overlay = new(src.loc)
-	shield_overlay.layer = LAYER_EFFECT
-	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
-	shield_overlay.icon_state = "block"
-	shield_overlay.alpha = 0
-
-
 /mob/living/PostInitialize()
 	. = ..()
 	if(health)
-		health.armor_base = armor_base
+		health.armor = armor
 	if(ai)
 		INITIALIZE(ai)
-		FINALIZE(ai)
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
 
+	if(client)
+		for(var/d in DIRECTIONS_INTERCARDINAL + SOUTH)
+			var/obj/hud/button/stat/screen_effect/SE = new(src)
+			SE.set_dir(d)
+			SE.update_owner(src)
+		var/obj/hud/button/stat/ecg/H = new(src)
+		H.update_owner(src)
+		var/obj/hud/button/stat/stamina/S = new(src)
+		S.update_owner(src)
+		var/obj/hud/button/stat/mana/M = new(src)
+		M.update_owner(src)
+
+
 /mob/living/Finalize()
 
 	. = ..()
+
+	if(ai)
+		FINALIZE(ai)
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
@@ -556,6 +609,8 @@
 		death()
 
 	update_level(TRUE)
+
+	queue_health_update = TRUE
 
 /mob/living/proc/setup_name()
 	if(boss)
@@ -585,18 +640,16 @@
 
 	return TRUE
 
+/mob/living/Login()
+	. = ..()
+	PROCESS_LIVING(src)
 
-/mob/living/Logout()
+/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
-	if(health)
-		health.update_health() //TODO: Find out what the fuck this is for.
-
-	return ..()
-
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
-
-	if(desired_loyalty && loyalty_tag && desired_loyalty == loyalty_tag && owner != src)
-		return TRUE
+	if(owner != src)
+		var/area/A = get_area(src)
+		if(!allow_hostile_action(src.loyalty_tag,desired_loyalty_tag,A))
+			return TRUE
 
 	if(magnitude > 6)
 		var/x_mod = src.x - epicenter.x
@@ -617,27 +670,17 @@
 		add_status_effect(STAGGER,magnitude,magnitude, source = epicenter)
 
 	if(health)
-		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty)
+		do_explosion_damage(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 	return TRUE
 
-/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
+/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	var/list/params = list()
 	params[PARAM_ICON_X] = 16
 	params[PARAM_ICON_Y] = 16
-	var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,FALSE,TRUE)
 	var/damagetype/D = all_damage_types[/damagetype/explosion/]
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
-	return TRUE
-
-/mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty)
-	for(var/i=1,i<=5,i++)
-		var/list/params = list()
-		params[PARAM_ICON_X] = rand(0,32)
-		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
-		var/damagetype/D = all_damage_types[/damagetype/explosion/]
-		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
 
 /mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)

@@ -1,12 +1,7 @@
 /damagetype/cqc/boss/fast_grab
-	name = "fast grab"
 	attack_verbs = list("fast grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -45,28 +40,23 @@
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(!L.add_status_effect(GRAB, source = A))
+			if(!L.add_status_effect(GRAB,200,0,source = A))
 				A.to_chat(span("warning","\The [L.name] is too strong to be grabbed!"))
 				return ..()
 		if(istype(weapon,/obj/item/organ/hand))
 			var/obj/item/organ/hand/H = weapon
 			if(H.id == BODY_HAND_RIGHT)
-				A.right_hand.grab_object(attacker,victim)
+				A.inventories_by_id[BODY_HAND_RIGHT_HELD].grab_object(attacker,victim)
 			else if(H.id == BODY_HAND_LEFT)
-				A.left_hand.grab_object(attacker,victim)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].grab_object(attacker,victim)
 
 	return ..()
 
 
 /damagetype/cqc/boss/grab_slam
-	name = "grab slam"
 	attack_verbs = list("grab slam")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
@@ -114,7 +104,6 @@
 
 
 /damagetype/cqc/boss/staggering_punch
-	name = "staggering punch"
 	attack_verbs = list("staggering punch")
 
 	impact_sounds = list(
@@ -170,7 +159,6 @@
 	return ..()
 
 /damagetype/cqc/boss/stunning_punch
-	name = "stunning punch"
 	attack_verbs = list("stunning punch")
 
 	impact_sounds = list(
@@ -228,12 +216,7 @@
 
 
 /damagetype/cqc/boss/disarm_theft
-	name = "stunning punch"
 	attack_verbs = list("stunning punch")
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
@@ -292,12 +275,7 @@
 
 
 /damagetype/cqc/boss/tactical_hug
-	name = "tactical hug"
 	attack_verbs = list("tactical hug")
-
-	impact_sounds = list(
-		'sound/weapons/fists/grab.ogg'
-	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 

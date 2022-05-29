@@ -2,20 +2,13 @@
 	name = "right leather shoe"
 	desc = "Protects your feet from cigarettes."
 	desc_extended = "An expensive brown shoe, fit for a detective."
-	rarity = RARITY_UNCOMMON
+
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
 	icon = 'icons/obj/item/clothing/shoes/brown.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 20,
-		PIERCE = 20,
-		ARCANE = 20,
-		COLD = 20,
-		PAIN = 20
-	)
+	armor = /armor/cloth/hard
 
 	size = SIZE_1
 

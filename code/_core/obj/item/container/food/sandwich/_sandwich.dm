@@ -1,4 +1,4 @@
-/obj/item/container/food/sandwich
+/obj/item/container/edible/sandwich
 	name = "sandwich"
 	desc = "A clusterfuck of food."
 	desc_extended = "SANDWICH MAKES ME STRONG!"
@@ -17,26 +17,26 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/food/sandwich/proc/sync_planes()
+/obj/item/container/edible/sandwich/proc/sync_planes()
 	return TRUE
 
-/obj/item/container/food/sandwich/Finalize()
+/obj/item/container/edible/sandwich/Finalize()
 	update_sprite()
 	return ..()
 
 
-/obj/item/container/food/sandwich/Generate()
+/obj/item/container/edible/sandwich/Generate()
 	reagents.add_reagent(/reagent/nutrition/bread/flour/processed,5)
 	return ..()
 
-/obj/item/container/food/sandwich/update_sprite()
+/obj/item/container/edible/sandwich/update_sprite()
 
 	if(istype(reagents))
 		src.color = reagents.color
 
 	return ..()
 
-/obj/item/container/food/sandwich/update_overlays()
+/obj/item/container/edible/sandwich/update_overlays()
 
 	. = ..()
 
@@ -49,23 +49,23 @@
 			continue
 		var/image/IM = new/image(IT.icon,IT.icon_state)
 		IM.appearance = IT.appearance
-		IM.appearance_flags |= RESET_COLOR
+		IM.appearance_flags = IT.appearance_flags | RESET_COLOR
 		IM.pixel_y = offset_y + IT.pixel_height_offset
 		IM.plane = FLOAT_PLANE
 		add_overlay(IM)
 		offset_y += IT.pixel_height
 
 
-/obj/item/container/food/sandwich/update_inventory()
+/obj/item/container/edible/sandwich/update_inventory()
 	. = ..()
 	if(finalized)
 		update_sprite()
 
-/obj/item/container/food/sandwich/burger
+/obj/item/container/edible/sandwich/burger
 	name = "burger"
 	icon_state = "bun_bottom"
 
 
-/obj/item/container/food/sandwich/bread
+/obj/item/container/edible/sandwich/bread
 	name = "sandwich"
 	icon_state = "bread_slice"

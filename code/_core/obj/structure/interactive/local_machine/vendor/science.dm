@@ -7,7 +7,6 @@
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/shirt/normal/uniform/science,
 		/obj/item/clothing/pants/normal,
-		/obj/item/clothing/uniform/utility/science,
 		/obj/item/storage/shoebox/black,
 		/obj/item/storage/glovebox/white,
 		/obj/item/clothing/back/storage/satchel/poly/science,
@@ -31,4 +30,19 @@
 		/obj/item/light_sensor,
 		/obj/item/ghost_box,
 		/obj/item/paper/book/ghost
+	)
+
+/obj/structure/interactive/vending/experimental
+	name = "experimental vendor"
+	icon_state = "experimental"
+	desc = "For science! (And balance.)"
+	desc_extended = "An experimental vendor that vends even more experimental weapons, armor, and clothing. Use at your own risk!"
+
+	stored_types = list(
+		/obj/item/clothing/head/helmet/full/nanotrasen/light,
+		/obj/item/clothing/head/helmet/full/nanotrasen/medium,
+		/obj/item/clothing/head/helmet/full/nanotrasen/heavy,
+		/obj/item/clothing/overwear/armor/nanotrasen/light,
+		/obj/item/clothing/overwear/armor/nanotrasen/medium,
+		/obj/item/clothing/overwear/armor/nanotrasen/heavy
 	)

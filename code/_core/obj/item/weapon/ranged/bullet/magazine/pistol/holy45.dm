@@ -1,31 +1,31 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/holy45
-	name = "Holy .45 M1911 Pistol"
+	name = "Holy .45 M1984 Pistol"
 	desc = "We can't expect God to do all the work."
-	desc_extended = "The tool to carry out God's will."
+	desc_extended = "A special replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland."
 	value = 2000
 
+	tier = 4
+
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'
-	shoot_delay = 3
+	shoot_delay = 1.75
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
 
-	automatic = TRUE // perversion in burgerstation form
-
 	size = SIZE_2
-	weight = 5
+	weight = 8
 
-	heat_max = 0.07
+	heat_max = 0.1
 
 	bullet_length_min = 20
-	bullet_length_best = 23
+	bullet_length_best = 24
 	bullet_length_max = 24
 
 	bullet_diameter_min = 11
-	bullet_diameter_best = 11.43
-	bullet_diameter_max = 12
+	bullet_diameter_best = 11.777
+	bullet_diameter_max = 11.77
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
@@ -43,7 +43,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

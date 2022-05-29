@@ -232,21 +232,21 @@
 /turf/simulated/wall/metal,
 /area/city/interior/greytide)
 "aQ" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/blue,
 /area/city/interior/greytide)
 "aR" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile/morphing/blue,
 /area/city/interior/greytide)
 "aS" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/traitor_joes)
 "aT" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/red,
 /area/city/interior/die_lab)
 "aU" = (
@@ -254,29 +254,29 @@
 /area/city/interior/harmbaton)
 "aV" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/red,
 /area/city/interior/die_lab)
 "aW" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/orange,
 /area/city/interior/die_lab)
 "aX" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/orange,
 /area/city/interior/die_lab)
 "aY" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/die_lab)
 "aZ" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/die_lab)
 "ba" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/green,
 /area/city/interior/die_lab)
 "bb" = (
@@ -315,7 +315,7 @@
 /area/city/interior/greytide)
 "bi" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/green,
 /area/city/interior/die_lab)
 "bj" = (
@@ -323,7 +323,7 @@
 /turf/simulated/floor/tile/tan,
 /area/city/interior/greytide)
 "bk" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/cyan,
 /area/city/interior/die_lab)
 "bl" = (
@@ -336,20 +336,20 @@
 /area/city/exterior/streets)
 "bm" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/cyan,
 /area/city/interior/die_lab)
 "bn" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/blue,
 /area/city/interior/die_lab)
 "bo" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/blue,
 /area/city/interior/die_lab)
 "bp" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/purple,
 /area/city/interior/die_lab)
 "bq" = (
@@ -381,14 +381,14 @@
 /area/city/interior/chem_lab)
 "bx" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/purple,
 /area/city/interior/die_lab)
 "by" = (
 /turf/simulated/floor/tile/morphing/red,
 /area/city/interior/harmbaton)
 "bz" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /turf/simulated/floor/tile/morphing/red,
 /area/city/interior/harmbaton)
 "bA" = (
@@ -399,7 +399,7 @@
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/city/interior/chem_lab)
 "bC" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/city/interior/chem_lab)
 "bD" = (
@@ -407,7 +407,7 @@
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/city/interior/chem_lab)
 "bE" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	icon_state = "preview";
 	dir = 4
@@ -415,18 +415,18 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/traitor_joes)
 "bF" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/tan,
 /area/city/interior/greytide)
 "bG" = (
 /turf/simulated/floor/tile/dark,
 /area/city/interior/harmbaton)
 "bH" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /turf/simulated/floor/tile/dark,
 /area/city/interior/harmbaton)
 "bI" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 8
@@ -444,7 +444,7 @@
 /turf/simulated/floor/tile,
 /area/city/interior/chem_lab)
 "bL" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile,
 /area/city/interior/chem_lab)
 "bM" = (
@@ -452,7 +452,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/red,
 /area/city/interior/die_lab)
 "bN" = (
@@ -460,7 +460,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/orange,
 /area/city/interior/die_lab)
 "bO" = (
@@ -468,7 +468,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/die_lab)
 "bP" = (
@@ -480,7 +480,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/green,
 /area/city/interior/die_lab)
 "bR" = (
@@ -488,7 +488,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/cyan,
 /area/city/interior/die_lab)
 "bS" = (
@@ -496,7 +496,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/blue,
 /area/city/interior/die_lab)
 "bT" = (
@@ -508,20 +508,20 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/purple,
 /area/city/interior/die_lab)
 "bV" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/morphing/pink,
 /area/city/interior/codebus)
 "bW" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile/morphing/pink,
 /area/city/interior/codebus)
 "bX" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	icon_state = "preview";
 	dir = 4
@@ -529,7 +529,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/combo_cafe)
 "bY" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	icon_state = "preview";
 	dir = 8
@@ -537,7 +537,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/combo_cafe)
 "bZ" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 4
@@ -545,7 +545,7 @@
 /turf/simulated/floor/tile/morphing/pink,
 /area/city/interior/codebus)
 "ca" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 8
@@ -553,7 +553,7 @@
 /turf/simulated/floor/tile/morphing/pink,
 /area/city/interior/codebus)
 "cb" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 4
@@ -561,7 +561,7 @@
 /turf/simulated/floor/tile/tan,
 /area/city/interior/mall)
 "cc" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 8
@@ -569,7 +569,7 @@
 /turf/simulated/floor/tile/tan,
 /area/city/interior/mall)
 "cd" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 1
@@ -577,12 +577,12 @@
 /turf/simulated/floor/tile/morphing/pink,
 /area/city/interior/codebus)
 "ce" = (
-/obj/structure/smooth/table/reinforced/yellow,
+/obj/structure/table/reinforced/yellow,
 /obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/honk)
 "cf" = (
-/obj/structure/smooth/table/reinforced/yellow,
+/obj/structure/table/reinforced/yellow,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 4
@@ -590,7 +590,7 @@
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/honk)
 "cg" = (
-/obj/structure/smooth/table/reinforced/yellow,
+/obj/structure/table/reinforced/yellow,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 8
@@ -605,11 +605,11 @@
 /turf/simulated/floor/circuit/green,
 /area/city/interior/the_net)
 "cj" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /turf/simulated/floor/wood/rich,
 /area/city/interior/scotch)
 "ck" = (
-/obj/structure/smooth/table/dark,
+/obj/structure/table/dark,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 4
@@ -617,7 +617,7 @@
 /turf/simulated/floor/tile/purple/dark,
 /area/city/interior/hive)
 "cl" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 4
@@ -625,7 +625,7 @@
 /turf/simulated/floor/wood/rich,
 /area/city/interior/scotch)
 "cm" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 8
@@ -633,7 +633,7 @@
 /turf/simulated/floor/wood/rich,
 /area/city/interior/scotch)
 "cn" = (
-/obj/structure/smooth/table/dark,
+/obj/structure/table/dark,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 8
@@ -641,7 +641,7 @@
 /turf/simulated/floor/tile/purple/dark,
 /area/city/interior/hive)
 "co" = (
-/obj/structure/smooth/table/reinforced/yellow,
+/obj/structure/table/reinforced/yellow,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 1
@@ -649,7 +649,7 @@
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/honk)
 "cp" = (
-/obj/structure/smooth/table/wood,
+/obj/structure/table/wood,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 1
@@ -657,7 +657,7 @@
 /turf/simulated/floor/wood/rich,
 /area/city/interior/scotch)
 "cq" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 4
@@ -669,7 +669,7 @@
 /turf/simulated/floor/plating,
 /area/city/interior/codebus)
 "cs" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 8
@@ -677,7 +677,7 @@
 /turf/simulated/floor/tile/morphing/chemistry,
 /area/city/interior/chem_lab)
 "ct" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 4
@@ -688,7 +688,7 @@
 /turf/simulated/floor/tile,
 /area/city/interior/codebus)
 "cv" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	icon_state = "preview";
 	dir = 1
@@ -700,7 +700,7 @@
 /turf/simulated/floor/tile,
 /area/city/interior/codebus)
 "cx" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile,
 /area/city/interior/codebus)
 "cy" = (
@@ -723,7 +723,7 @@
 /turf/simulated/floor/road,
 /area/city/interior/warehouse)
 "cE" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/road,
 /area/city/interior/warehouse)
 "cF" = (
@@ -746,7 +746,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/city/interior/traitor_joes)
 "cQ" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /turf/simulated/floor/tile/dark/er,
 /area/city/interior/traitor_joes)
 "cU" = (
@@ -764,7 +764,7 @@
 /turf/simulated/floor/wood/rich,
 /area/city/interior/discount)
 "cY" = (
-/obj/structure/smooth/table/fancy,
+/obj/structure/table/fancy,
 /turf/simulated/floor/wood/rich,
 /area/city/interior/discount)
 "cZ" = (
@@ -793,7 +793,7 @@
 /turf/simulated/floor/tile/tint,
 /area/city/interior/discount)
 "dg" = (
-/obj/structure/smooth/table/grill/barbecue,
+/obj/structure/table/cooking/barbecue,
 /turf/simulated/floor/tile,
 /area/city/interior/discount)
 "dh" = (
@@ -828,7 +828,7 @@
 /turf/simulated/floor/tile/green,
 /area/city/interior/die_lab)
 "dL" = (
-/obj/structure/smooth/table/reinforced,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
 /area/city/interior/discount)
 "dM" = (
@@ -886,7 +886,7 @@
 /turf/simulated/floor/tile/tint,
 /area/city/interior/mall/bathroom)
 "ef" = (
-/obj/structure/smooth/table/dark,
+/obj/structure/table/dark,
 /turf/simulated/floor/circuit/green,
 /area/city/interior/the_net)
 "eg" = (
@@ -897,7 +897,7 @@
 /turf/simulated/floor/plating,
 /area/city/interior/the_net)
 "ei" = (
-/obj/structure/smooth/table/dark,
+/obj/structure/table/dark,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 4
@@ -905,7 +905,7 @@
 /turf/simulated/floor/circuit/green,
 /area/city/interior/the_net)
 "ej" = (
-/obj/structure/smooth/table/dark,
+/obj/structure/table/dark,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	icon_state = "preview";
 	dir = 8
@@ -913,7 +913,7 @@
 /turf/simulated/floor/circuit/green,
 /area/city/interior/the_net)
 "ep" = (
-/obj/structure/smooth/table/reinforced/yellow,
+/obj/structure/table/reinforced/yellow,
 /turf/simulated/floor/tile/yellow,
 /area/city/interior/honk)
 "eq" = (
@@ -946,7 +946,7 @@
 /turf/simulated/floor/tile/dark/er,
 /area/city/interior/combo_cafe)
 "eA" = (
-/obj/structure/smooth/table,
+/obj/structure/table,
 /turf/simulated/floor/tile/tan,
 /area/city/interior/mall)
 "eB" = (
@@ -1043,7 +1043,7 @@
 /turf/simulated/floor/tile/purple/dark,
 /area/city/interior/hive)
 "fc" = (
-/obj/structure/smooth/table/dark,
+/obj/structure/table/dark,
 /turf/simulated/floor/tile/purple/dark,
 /area/city/interior/hive)
 "fe" = (
@@ -1140,7 +1140,7 @@
 /turf/simulated/floor/plating,
 /area/city/interior/greytide)
 "ga" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	icon_state = "preview";
 	dir = 8
@@ -1158,7 +1158,7 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/traitor_joes)
 "ge" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/traitor_joes)
 "gf" = (
@@ -1182,14 +1182,14 @@
 /turf/simulated/floor/road,
 /area/city/interior/warehouse)
 "gk" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /turf/simulated/floor/tile/dark/er,
 /area/city/interior/combo_cafe)
 "gl" = (
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/combo_cafe)
 "gm" = (
-/obj/structure/smooth/table/reinforced/dark,
+/obj/structure/table/reinforced/dark,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/city/interior/combo_cafe)
 "gn" = (
@@ -1209,7 +1209,7 @@
 /turf/simulated/floor/tile,
 /area/city/interior/mall)
 "gr" = (
-/obj/structure/smooth/window,
+/obj/structure/window,
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
 /area/city/interior/mall)

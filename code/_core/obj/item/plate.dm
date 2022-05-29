@@ -1,123 +1,127 @@
-/obj/item/armor_plate
-	name = "armor plate"
-	desc = "Not for eating food off of."
-	desc_extended = "A protective armor plate designed to fit a plate carrier."
+/obj/item/plate
+	name = "plate"
+	desc = "Dinner is served."
+	desc_extended = "A basic plate meant for holding food."
 	icon = 'icons/obj/item/plate.dmi'
-	icon_state = "light"
+	icon_state = "plate_medium"
+	mouse_opacity = 1
+	layer = -1000
+	size = SIZE_4
+	weight = 1
+	value = 10
 
-	var/list/armor_base = list()
+	health = /health/construction/
+	health_base = 1
 
-	size = SIZE_2
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-/obj/item/armor_plate/New(var/desired_loc)
-	weight = calculate_weight()
+	var/max_load = 4
+	var/max_size = SIZE_2
+
+	pixel_y = 4
+
+	var/broken = FALSE
+
+/obj/item/plate/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+	. = ..()
+	SAVEVAR("broken")
+	SAVECONTENTS
+
+/obj/item/plate/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADVAR("broken")
+	LOADCONTENTS
+
+/obj/item/plate/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall)
+
+	if(hit_wall || hit_atom)
+		on_destruction(owner,TRUE)
+
 	return ..()
 
-/obj/item/armor_plate/proc/calculate_weight()
+/obj/item/plate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+	return !broken
 
-	var/init_weight = initial(weight)
+/obj/item/plate/on_destruction(var/mob/caller,var/damage = FALSE)
 
-	if(init_weight != 0)
-		return init_weight
+	var/turf/T = get_turf(src)
 
-	. = 1
+	if(T) play_sound('sound/effects/ceramic_break.ogg',T)
 
-	for(var/k in armor_base)
-		if(IS_INFINITY(armor_base[k]))
-			continue
-		. += armor_base[k] * armor_slowdown_values[k]
-
-	
-/obj/item/armor_plate/get_examine_list(var/mob/examiner)
 	. = ..()
-	var/list/armor_list = list()
-	for(var/damagetype in armor_base)
-		var/damage_rating = armor_base[damagetype]
-		if(damage_rating)
-			armor_list += "[capitalize(damagetype)]: [damage_rating]"
-	. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
-	. += div("notice","<b>Armor rating applies when applied to a plate carrier. Stacking multiple plate carriers gives dimishing returns.</b>")
 
-/obj/item/armor_plate/light
-	name = "light armor plate"
-	icon_state = "light"
-	rarity = RARITY_COMMON
-	armor_base = list(
-		BLADE = 15,
-		BLUNT = 15,
-		PIERCE = 15,
-		LASER = 10
-	)
+	broken = TRUE
+	collision_bullet_flags &= ~FLAG_COLLISION_BULLET_SPECIFIC
+
+	update_sprite()
+
+	if(T)
+		for(var/k in contents)
+			var/atom/movable/M = k
+			M.force_move(T)
 
 
-	value = 90
+/obj/item/plate/update_icon()
+
+	. = ..()
+
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+
+	if(broken)
+		icon_state = "[icon_state]_broken"
 
 
+/obj/item/plate/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += div("notice","This object holds up to [max_load] items that are size [max_size] or lower.")
 
-/obj/item/armor_plate/medium
-	name = "medium armor plate"
-	icon_state = "medium"
-	rarity = RARITY_COMMON
-	armor_base = list(
-		BLADE = 15,
-		BLUNT = 30,
-		PIERCE = 30,
-		LASER = 10,
-		ARCANE = -25
-	)
+/obj/item/plate/Crossed(atom/movable/O)
+	. = ..()
 
+	if(!broken && O.loc == src.loc && is_item(O) && !istype(O,/obj/item/plate) && length(contents) < max_load)
+		var/obj/item/I = O
+		if(I.size <= max_size)
+			I.drop_item(src)
 
-	value = 190
+/obj/item/plate/Entered(var/atom/movable/enterer,var/atom/oldloc)
+	. = ..()
+	enterer.vis_flags &= ~VIS_INHERIT_ID
+	vis_contents |= enterer
 
+/obj/item/plate/Exited(var/atom/movable/exiter,var/atom/newloc)
+	. = ..()
+	vis_contents -= exiter
+	exiter.vis_flags = initial(exiter.vis_flags)
 
+/obj/item/plate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(caller.attack_flags & CONTROL_MOD_DISARM && !broken)
+		INTERACT_CHECK
+		INTERACT_DELAY(30)
+		var/list/byond_is_weird = list()
+		for(var/obj/item/I in contents)
+			byond_is_weird += I
+		var/cooking_recipe/R = get_plate_recipe(byond_is_weird)
+		if(!R) return TRUE
 
-/obj/item/armor_plate/heavy
-	name = "heavy armor plate"
-	icon_state = "heavy"
-	rarity = RARITY_UNCOMMON
-	armor_base = list(
-		BLADE = 15,
-		BLUNT = 45,
-		PIERCE = 45,
-		LASER = 25,
-		ARCANE = -50
-	)
+		var/obj/item/spawned_item
+		if(R.result)
+			var/turf/T = get_turf(src)
+			spawned_item = new R.result(T)
+			INITIALIZE(spawned_item)
+			FINALIZE(spawned_item)
+			spawned_item.force_move(T) //Calls enter exit ect
 
+		for(var/obj/item/I in contents)
+			if(I == spawned_item)
+				continue
+			if(spawned_item && spawned_item.reagents && I.reagents)
+				I.reagents.transfer_reagents_to(spawned_item.reagents,I.reagents.volume_current,caller=caller)
+			qdel(I)
 
+		caller.to_chat(span("notice","You've created \a [R.name]! Bon appétit!"))
 
+		return TRUE
 
-
-	value = 275
-
-/obj/item/armor_plate/super
-	name = "super armor plate"
-	icon_state = "super"
-	rarity = RARITY_RARE
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 65,
-		PIERCE = 65,
-		LASER = 25,
-		ARCANE = -75
-	)
-
-
-
-	value = 500
-
-/obj/item/armor_plate/ultra
-	name = "ultra armor plate"
-	icon_state = "super"
-	rarity = RARITY_MYTHICAL
-	armor_base = list(
-		BLADE = 50,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 50,
-		ARCANE = -75
-	)
-
-
-
-	value = 1000
+	. = ..()

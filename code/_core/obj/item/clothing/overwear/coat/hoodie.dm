@@ -15,11 +15,7 @@
 
 	dyeable = TRUE
 
-	defense_rating = list(
-		ARCANE = 20,
-		HEAT = -20,
-		COLD = 60
-	)
+	armor = /armor/cloth/hoodie
 
 
 /obj/item/clothing/overwear/coat/hoodie/black

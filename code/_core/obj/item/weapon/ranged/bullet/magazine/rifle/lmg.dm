@@ -6,11 +6,13 @@
 	icon_state = "inventory"
 	value = 4500
 
-	shoot_delay = 2
+	tier = 3
+
+	shoot_delay = 1
 
 	automatic = TRUE
 
-	damage_mod = 1.2
+	damage_mod = 1.3
 
 	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
 
@@ -50,7 +52,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

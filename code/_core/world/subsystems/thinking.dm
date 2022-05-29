@@ -16,25 +16,12 @@ SUBSYSTEM_DEF(thinking)
 
 /subsystem/thinking/on_life()
 	for(var/k in all_thinkers)
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		var/atom/A = k
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(!A || A.qdeleting)
 			all_thinkers -= A
 			continue
 		if(!A.think())
-			stop_thinking(A)
+			STOP_THINKING(A)
 
 	return TRUE
-
-/proc/start_thinking(var/atom/A)
-	SSthinking.all_thinkers[A] = TRUE
-	return TRUE
-
-/proc/stop_thinking(var/atom/A)
-	if(SSthinking.all_thinkers[A])
-		SSthinking.all_thinkers -= A
-
-	return TRUE
-
-/proc/is_thinking(var/atom/A)
-	return SSthinking.all_thinkers[A]

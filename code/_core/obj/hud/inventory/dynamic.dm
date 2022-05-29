@@ -12,7 +12,7 @@
 
 	max_slots = 1
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_SPECIAL | FLAGS_HUD_CONTAINER
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CONTAINER
 
 	should_add_to_advanced = FALSE
 
@@ -21,12 +21,10 @@
 	priority = -100 //Very low priority
 
 /obj/hud/inventory/dynamic/New(var/desired_loc)
-
-	if(desired_loc && is_atom(desired_loc))
+	. = ..()
+	if(is_atom(desired_loc))
 		var/atom/A = desired_loc
 		name = "inventory space of [A.name]"
-
-	return ..()
 
 /obj/hud/inventory/dynamic/sandwich //Special logic for buns
 
@@ -36,8 +34,8 @@
 		//No message needed.
 		return FALSE
 
-	if(istype(I,/obj/item/container/food/sandwich/))
-		var/obj/item/container/food/sandwich/S = I
+	if(istype(I,/obj/item/container/edible/sandwich/))
+		var/obj/item/container/edible/sandwich/S = I
 		for(var/obj/hud/inventory/I2 in S.inventories)
 			if(length(I2.contents))
 				if(owner) owner.to_chat(span("warning","You can't put a sandwich inside another sandwich! That's breaking the laws of sandwich!"))
@@ -48,7 +46,7 @@
 		if(max_slots <= 0)
 			return FALSE
 
-		if(is_occupied(TRUE,TRUE))
+		if(is_occupied(TRUE))
 			if(messages && src.loc)
 				owner.to_chat(span("warning","\The [src.loc.name] is already occupied!"))
 			return FALSE
@@ -62,8 +60,10 @@
 	. = ..()
 
 
+/*
 /obj/hud/inventory/dynamic/belt
 	var/obj/hud/button/slot/assoc_slot
+	priority = -99 //Belt goes before anything else.
 
 
 /obj/hud/inventory/dynamic/belt/Destroy()
@@ -78,3 +78,4 @@
 			assoc_slot.store_object(I) //Also calls clear_object()
 		else
 			assoc_slot.clear_object()
+*/

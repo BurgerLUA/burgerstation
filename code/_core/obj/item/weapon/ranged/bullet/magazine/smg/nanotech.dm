@@ -1,14 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech
-	name = "9x19mm NanoTech SMG"
+	name = "\improper 4.6x30mm NanoTech SMG"
 	desc = "For when you can't aim."
 	desc_extended = "Nanotrasen's answer to the fearsome C-20r, this one has a higher firerate at the cost of a smaller round."
-	icon = 'icons/obj/item/weapons/ranged/smg/9mm_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/4mm.dmi'
 	icon_state = "inventory"
 	value = 2200
 
-	damage_mod = 1.2
+	tier = 3
 
-	shoot_delay = 1.5
+	shoot_delay = 1
 
 	automatic = TRUE
 
@@ -21,15 +21,15 @@
 	size = SIZE_3
 	weight = 9
 
-	heat_max = 0.04
+	heat_max = 0.08
 
-	bullet_length_min = 16
-	bullet_length_best = 19
-	bullet_length_max = 20
+	bullet_length_min = 25
+	bullet_length_best = 30
+	bullet_length_max = 31
 
-	bullet_diameter_min = 8.5
-	bullet_diameter_best = 9
-	bullet_diameter_max = 9.5
+	bullet_diameter_min = 4
+	bullet_diameter_best = 4.6
+	bullet_diameter_max = 5
 
 	ai_heat_sensitivity = 0.5
 
@@ -46,9 +46,7 @@
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
-		/obj/item/attachment/sight/targeting_computer = TRUE,
-
-		/obj/item/attachment/stock/c20r = FALSE
+		/obj/item/attachment/sight/targeting_computer = TRUE
 	)
 
 	attachment_barrel_offset_x = 29 - 16

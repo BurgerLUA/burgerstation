@@ -9,6 +9,36 @@
 
 	weight = 0.05
 
+/obj/item/coin/cursed
+	name = "shady coin"
+	desc = "Always pick tails."
+	desc_extended = "An unnerving coin made of unknown material, crushing this coin feels like it can change your fate."
+	icon_state = "coin5"
+	value = 2000
+
+/obj/item/coin/cursed/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
+	if(!caller)
+		return ..()
+
+	var/mob/living/L = caller
+
+	caller.to_chat(span("warning","You crush the coin in your hand, hoping for the best."))
+	if(prob(50))
+		caller.to_chat(span("notice","You feel okay."))
+	else if(prob(50))
+		L.add_attribute_xp(ATTRIBUTE_LUCK,1)
+		caller.to_chat(span("notice","You feel luckier!"))
+	else
+		L.add_attribute_xp(ATTRIBUTE_LUCK, L.get_attribute_level(ATTRIBUTE_LUCK) - (L.get_attribute_level(ATTRIBUTE_LUCK) + 1))
+		caller.to_chat(span("danger","You feel cursed..."))
+	qdel(src)
+
+	return TRUE
+
 /obj/item/coin/antag_token
 	name = "antag token"
 	desc = "Valid or salid?"
@@ -17,6 +47,9 @@
 	value = 4000
 
 /obj/item/coin/antag_token/click_self(var/mob/caller)
+
+	if(!is_player(caller))
+		return FALSE
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

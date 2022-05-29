@@ -2,8 +2,10 @@
 	name = "\improper 9mm SMP"
 	desc = "Spray n' Pray"
 	desc_extended = "Extremely inaccurate, but brute forces that problem with it's high firerate. Dual wield for best results."
-	icon = 'icons/obj/item/weapons/ranged/smg/9mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/smg/syndicate/9mm.dmi'
 	icon_state = "inventory"
+
+	tier = 1
 
 	value = 800
 
@@ -45,7 +47,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -53,14 +55,14 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 28 - 16
-	attachment_barrel_offset_y = 25 - 16
+	attachment_barrel_offset_x = 27 - 16
+	attachment_barrel_offset_y = 21 - 16
 
-	attachment_sight_offset_x = 12 - 16
-	attachment_sight_offset_y = 26 - 16
+	attachment_sight_offset_x = 23 - 16
+	attachment_sight_offset_y = 23 - 16
 
-	attachment_undermount_offset_x = 22 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_y = 19 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0

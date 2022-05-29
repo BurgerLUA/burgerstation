@@ -4,6 +4,8 @@
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
+	appearance_flags = PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
+
 	weight = 0
 
 	can_rename = TRUE
@@ -13,36 +15,7 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
-	var/list/defense_rating = list()
-
-	/*
-	defense_rating = list(
-		BLADE = 0,
-		BLUNT = 0,
-		PIERCE = 0,
-		LASER = 0,
-		ARCANE = 0,
-		HEAT = 0,
-		COLD = 0,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 0,
-		DARK = 0,
-		FATIGUE = 0,
-		SANITY = 0,
-		ION = 0,
-		PAIN = 0
-	)
-	*/
-
-
-	//Armor guide. Uses bullets as an example.
-	//10 is very minor protection, like reinforced clothing.
-	//25 is minor protection, like a makeshift plate vest.
-	//50 is moderate protection, like police grade kevlar.
-	//75 is serious protection, like military grade kevlar.
-	//100 is ultra protection, like syndicate elite space armor.
+	var/armor/armor = /armor/ //GOD THIS SYSTEM IS A PAIN IN THE ASS.
 
 	var/list/protected_limbs = list()
 	var/list/protection_cold = list()
@@ -52,8 +25,7 @@
 	var/list/obj/item/additional_clothing = list()
 	var/list/obj/item/additional_clothing_stored
 
-	var/hidden_clothing = 0x0 //Flags of Clothing slots that it should hide when this object is equipped.
-	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped.
+	var/list/hidden_organs = list() //List of organ IDs that are hidden when this object is equipped. Includes clothing attached to this.
 
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
@@ -63,26 +35,23 @@
 
 	var/speed_bonus = 0
 
-	var/loyalty_tag //Set to a loyalty tag here to restrict this to those who have this tag.
-
 	var/list/ench/clothing_enchantments = list()
+
+	enable_blood_stains = TRUE
+	enable_damage_overlay = TRUE
+	enable_torn_overlay = TRUE
 
 /obj/item/clothing/Destroy()
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 
-/obj/item/clothing/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
-
-	if(loyalty_tag && owner.loyalty_tag != loyalty_tag)
-		if(messages) owner.to_chat(span("warning","<b>\The [src.name]</b> dings, \"Invalid Loyalty Tag detected!\""))
-		return FALSE
-
-	return ..()
-
 /obj/item/clothing/proc/get_defense_rating()
-	return defense_rating.Copy()
+	var/armor/A = ARMOR(armor)
+	if(!A)
+		return list()
+	return A.defense_rating
 
-/obj/item/clothing/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 
@@ -110,8 +79,6 @@
 
 	weight = calculate_weight()
 
-	initialize_blends()
-
 	for(var/k in additional_clothing)
 		var/obj/item/C = new k(src)
 		C.should_save = FALSE
@@ -125,7 +92,6 @@
 
 	. = ..()
 
-
 /obj/item/clothing/initialize_blends(var/desired_icon_state)
 
 	. = ..()
@@ -133,8 +99,6 @@
 	for(var/k in additional_clothing_stored)
 		var/obj/item/C = k
 		C.initialize_blends()
-
-
 
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
 	. = ..()

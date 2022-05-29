@@ -6,13 +6,7 @@
 
 	item_slot = SLOT_TORSO
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10
-	)
+	armor = /armor/cloth
 
 	dyeable = TRUE
 
@@ -39,3 +33,8 @@
 		"blouse" = COLOR_WHITE,
 		"shoulders" = COLOR_BLACK
 	)
+
+/obj/item/clothing/shirt/blouse/random/Generate()
+	. = ..()
+	for(var/k in polymorphs)
+		polymorphs[k] = random_color()

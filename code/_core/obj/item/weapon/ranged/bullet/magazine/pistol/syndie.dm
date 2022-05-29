@@ -1,10 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie
-	name = "10mm Stechkin"
+	name = "10mm Stecharov pistol"
 	desc = "The traitor's second best friend."
 	desc_extended = "The standard Syndicate pistol. Cheap. Reliable. The compactness of the gun makes it useful in assassinations as well as a holdout weapon."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm.dmi'
 	icon_state = "inventory"
 	value = 250
+
+	tier = 1
 
 	shoot_delay = 2
 
@@ -18,7 +20,7 @@
 
 	can_wield = FALSE
 
-	size = SIZE_1
+	size = SIZE_2
 	weight = 3
 
 	heat_max = 0.12
@@ -46,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -72,12 +74,12 @@
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod
-	name = "10mm Stechkin MOD"
+	name = "10mm Stecharov pistol MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
-	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is more compact."
+	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is much more compact and concealable."
 
-	size = SIZE_2
+	size = SIZE_1
 
 	attachment_barrel_offset_x = 25 - 16
 	attachment_barrel_offset_y = 20 - 16

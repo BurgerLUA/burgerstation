@@ -9,30 +9,21 @@
 
 	var/loot/desired_loot = /loot/trash_pile
 
-/obj/item/storage/loot_box/Destroy()
-	return ..()
-
-/obj/item/storage/loot_box/Finalize()
-	prune_inventory()
-	return ..()
-
-/obj/item/storage/loot_box/New(var/desired_loc)
-	. = ..()
-
 /obj/item/storage/loot_box/Generate()
 	if(desired_loot)
 		var/loot/L = SSloot.all_loot[desired_loot]
 		if(L) L.create_loot_table(src)
-	return ..()
+	. = ..()
+
+
+/obj/item/storage/loot_box/Finalize()
+	. = ..()
+	prune_inventory()
 
 /obj/item/storage/loot_box/update_inventory()
 	. = ..()
-	var/filled_slots = 0
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I = k
-		filled_slots += length(I.contents)
-	if(filled_slots <= 0)
-		qdel(src)
-
-/obj/item/storage/loot_box/click_self(var/mob/caller)
-	. = ..()
+		if(length(I.contents))
+			return .
+	qdel(src)

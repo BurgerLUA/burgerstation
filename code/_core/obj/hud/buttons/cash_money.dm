@@ -8,7 +8,7 @@
 
 	icon_state = "currency"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	maptext_x = -2
 
@@ -30,13 +30,13 @@
 	maptext = "<div align='right'>[nice_number(amount)]</div>"
 	return ..()
 
-/obj/hud/button/cash_money/proc/update_stats(var/new_value=0)
+/obj/hud/button/cash_money/proc/update_stats(var/new_value=0,var/silent=FALSE)
 
 	new_value = max(new_value,0)
 
 	if(amount != new_value)
 		amount = new_value
-		play_sound_target('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
+		if(!silent) play_sound_target('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
 		update_sprite()
 
 	return TRUE
@@ -47,7 +47,7 @@
 	screen_loc = "RIGHT,TOP-1:-16"
 	icon_state = "currency"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	mouse_opacity = 1
 
@@ -70,13 +70,13 @@
 	return TRUE
 
 
-/obj/hud/button/microstransactions/proc/update_stats(var/new_value=0)
+/obj/hud/button/microstransactions/proc/update_stats(var/new_value=0,var/silent=FALSE)
 
 	new_value = max(new_value,0)
 
 	if(amount != new_value)
 		amount = new_value
-		play_sound_target('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
+		if(!silent) play_sound_target('sound/ui/tap-metallic.ogg',owner, sound_setting = SOUND_SETTING_UI)
 		update_sprite()
 
 	return TRUE
@@ -91,7 +91,7 @@
 	screen_loc = "RIGHT-1,TOP-1"
 	icon_state = "telecrystal"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	mouse_opacity = 1
 
@@ -103,7 +103,7 @@
 	screen_loc = "RIGHT-1,TOP-1:-16"
 	icon_state = "burger"
 
-	flags = FLAGS_HUD_MOB
+	flags = FLAG_HUD_MOB
 
 	mouse_opacity = 1
 

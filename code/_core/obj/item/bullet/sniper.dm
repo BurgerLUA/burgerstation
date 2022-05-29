@@ -2,7 +2,6 @@
 	name = "\improper .50 sniper round"
 	desc = "For when you want to shoot something so hard it's family will feel it too."
 	desc_extended = "For sniper rifles that require .50 ammo."
-	rarity = RARITY_RARE
 	icon = 'icons/obj/item/bullet/50.dmi'
 
 
@@ -10,8 +9,8 @@
 	bullet_length = 99
 	bullet_color = COLOR_BULLET
 
-	item_count_max = 4
-	item_count_max_icon = 4
+	amount_max = 4
+	amount_max_icon = 4
 
 	projectile = /obj/projectile/bullet/firearm/sniper
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50

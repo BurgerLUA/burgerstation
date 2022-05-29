@@ -4,13 +4,12 @@
 	desc = "An organ."
 	icon_state = BODY_TORSO_MALE
 	worn_layer = LAYER_MOB_TORSO
-	break_threshold = 50
-	//health_max = 100
 	inventories = list(
 		/obj/hud/inventory/organs/torso,
 		/obj/hud/inventory/organs/torso_o,
 		/obj/hud/inventory/organs/torso_b,
-		/obj/hud/inventory/organs/torso_ob
+		/obj/hud/inventory/organs/torso_ob,
+		/obj/hud/inventory/organs/secure
 	)
 
 	enable_wounds = TRUE
@@ -31,14 +30,15 @@
 
 	gib_icon_state = "gibtorso"
 
-	can_gib = FALSE
+	has_life = TRUE
 
-/obj/item/organ/torso/unattach_from_parent(var/turf/T)
+/obj/item/organ/torso/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
+	var/atom/old_loc = src.loc
 	. = ..()
-	if(is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
+	if(is_advanced(old_loc))
+		var/mob/living/advanced/A = old_loc
 		A.death()
-		A.health?.update_health()
+		qdel(A)
 
 /obj/item/organ/torso/female
 	desc = "A torso. Female variant"
@@ -111,6 +111,9 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 30
+
+	can_gib = FALSE
 
 
 /obj/item/organ/torso/monkey
@@ -146,4 +149,9 @@
 /obj/item/organ/torso/golem
 	name = "golem torso"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
+	desc = "An organ."
+
+/obj/item/organ/torso/abductor
+	name = "abductor torso"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
 	desc = "An organ."

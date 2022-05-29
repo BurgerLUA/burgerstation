@@ -4,13 +4,14 @@
 	desc = "A right ear."
 	icon_state = BODY_EAR_RIGHT
 	worn_layer = LAYER_MOB_EAR
-	break_threshold = 5
 
 	attach_flag = BODY_HEAD
 
 	enable_wounds = FALSE
 
 	inventories = list()
+
+	can_be_broken = FALSE
 
 /obj/item/organ/ear/left
 	name = "left ear"

@@ -6,13 +6,14 @@
 	icon_state = "inventory"
 	value = 1200
 
-	shoot_delay = 3
+	tier = 1
+
+	damage_mod = 1.3
+	shoot_delay = 1.75
 
 	automatic = FALSE
 
-	damage_mod = 1.25
-
-	shoot_sounds = list('sound/weapons/223/shoot.ogg')
+	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
 
 	can_wield = TRUE
 
@@ -46,21 +47,22 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 20 - 16
 
-	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_x = 14 - 16
 	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
 
 	dan_mode = TRUE
@@ -71,7 +73,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread()
-	return 0.002
+	return 0
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

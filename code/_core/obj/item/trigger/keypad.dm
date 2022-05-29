@@ -16,14 +16,14 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 	value = 10
 
-/obj/item/device/keypad/save_item_data(var/save_inventory = TRUE)
+/obj/item/device/keypad/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("code")
-	
+
 /obj/item/device/keypad/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADVAR("code")
-	
+
 /obj/item/device/keypad/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(loc && signal_freq == -1 && signal_code == code)
@@ -33,7 +33,7 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 /obj/item/device/keypad/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller))
+	if(!is_player(caller) || !caller.client)
 		return ..()
 
 	INTERACT_CHECK

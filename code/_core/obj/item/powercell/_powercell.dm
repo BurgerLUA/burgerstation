@@ -21,13 +21,8 @@
 		return FALSE
 
 	var/mob/living/advanced/A = caller
-	var/obj/hud/inventory/I = src.loc
-	var/obj/item/belt_storage = I.loc
-	var/real_number = I.id ? text2num(copytext(I.id,-1)) : 0
 
-	var/put_in_left = real_number > belt_storage.dynamic_inventory_count*0.5
-
-	return A.put_in_hands(src,left = put_in_left)
+	return A.put_in_hands(src,params)
 
 /obj/item/powercell/get_battery()
 	return src
@@ -37,7 +32,7 @@
 	. += CEILING(charge_current*0.01,1)
 	. += CEILING(charge_max*0.003,1)
 
-/obj/item/powercell/save_item_data(var/save_inventory = TRUE)
+/obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charge_current")
 
@@ -121,6 +116,19 @@
 
 	weight = 10
 
+/obj/item/powercell/tiny
+	name = "device power cell"
+	desc = "Do not swallow."
+	desc_extended = "A tiny battery used commonly to power small devices."
+	icon_state = "cell_tiny"
+	charge_max = CELL_SIZE_TINY
+
+	size = SIZE_0
+
+	value = 10
+
+	weight = 1
+
 
 /obj/item/powercell/recharging
 	name = "fusion power cell"
@@ -137,8 +145,21 @@
 
 	weight = 6
 
+	value_burgerbux = 1 //Citizens aren't supposed to have recharging power cells.
+
+/obj/item/powercell/recharging/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+	. = ..()
+	if(new_location.click_flags && new_location.owner)
+		var/mob/living/advanced/A = new_location.owner
+		A.to_chat(span("danger","\The intense heat from \the [src.name] burns your hand and forces you to drop it!"))
+		A.add_status_effect(STUN,30,30)
+		if(is_organ(new_location.loc))
+			var/obj/item/organ/O = new_location.loc
+			O.health.adjust_loss_smart(burn=10)
+		src.drop_item(get_turf(A))
+
 /obj/item/powercell/recharging/PostInitialize()
-	start_thinking(src)
+	START_THINKING(src)
 	return ..()
 
 /obj/item/powercell/recharging/think()

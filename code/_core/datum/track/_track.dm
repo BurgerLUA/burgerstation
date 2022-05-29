@@ -116,9 +116,9 @@
 	path = 'sound/music/Rising Bells.ogg'
 	length = 1*60 + 17
 
-/track/russian_heavy //Snow Music
-	name = "Russian Heavy"
-	path = 'sound/music/Russian Heavy.ogg'
+/track/slavic_heavy //Snow Music
+	name = "Slavic Heavy"
+	path = 'sound/music/Slavic Heavy.ogg'
 	length = 2*60 + 49
 
 /track/skeletons //Boss Music
@@ -225,3 +225,28 @@
 	name = "Footsteps"
 	path = 'sound/music/Footsteps.ogg'
 	length = 2*60 + 30
+
+/track/ender_v3 //Snow music
+	name = "Ender v3"
+	path = 'sound/music/Ender v3.ogg'
+	length = 2*60
+
+/track/rise_and_fall //Great landscape music
+	name = "Rise and Fall"
+	path = 'sound/music/Rise and Fall.ogg'
+	length = 2*60 + 10
+
+/track/clown_greeting //Clown music
+	name = "Clown Greeting"
+	path = 'sound/music/Clown Greeting.ogg'
+	length = 10
+
+/track/entrance //Old intro music
+	name = "Entrance"
+	path = 'sound/music/Entrance.ogg'
+	length = 2*60 + 40
+
+/track/second_rise //Menu music
+	name = "Second Rise"
+	path = 'sound/music/Second Rise.ogg'
+	length = 2*60 + 40

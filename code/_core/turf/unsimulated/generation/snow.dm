@@ -4,7 +4,7 @@
 
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
-	if(x <= 10 || y <= 10 || x >= 245 || y >= 245)
+	if(x <= 10 || y <= 10 || x >= world.maxx-10 || y >= world.maxy-10)
 		if(no_wall)
 			new /turf/simulated/floor/cave_dirt(src)
 		else
@@ -19,26 +19,15 @@
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		return ..()
 
+	var/seed_resolution = max(world.maxx,world.maxy)
+	var/x_seed = x / seed_resolution
+	var/y_seed = y / seed_resolution
+
+	var/max_instances = 3
 	var/noise = 0
-
-	var/instances = 4
-
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[2] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances)
+	for(var/i=1,i<=max_instances,i++)
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+	noise *= 1/max_instances
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
@@ -46,7 +35,7 @@
 		if(0.1 to 0.4)
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(4))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
 			else if(prob(2))
 				new /obj/marker/generation/plant/oxygen_fruit(src)
 		if(0.4 to 0.41)
@@ -59,12 +48,12 @@
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(1))
 				new /obj/marker/generation/plant/nitrogen_flower(src)
-			else if(prob(0.5))
-				new /obj/marker/generation/mob/snow_bear(src)
 			else if(prob(1))
-				new /obj/marker/generation/snow_tree(src)
+				new /obj/marker/generation/foliage/tree/snow(src)
 			else if(prob(6))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
+			else if(prob(0.2))
+				new /obj/marker/generation/mob/snow_bear(src)
 		if(0.94 to 0.95)
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.95 to INFINITY)
@@ -86,26 +75,15 @@
 		disallow_generation = TRUE
 		return ..()
 
+	var/seed_resolution = max(world.maxx,world.maxy)
+	var/x_seed = x / seed_resolution
+	var/y_seed = y / seed_resolution
+
+	var/max_instances = 3
 	var/noise = 0
-
-	var/instances = 4
-
-	for(var/i=1,i<=instances,i++) //Use sin/cosine?
-
-		var/used_x = WRAP(x + i*WORLD_SIZE*0.25,1,255)
-		var/used_y = WRAP(y + i*WORLD_SIZE*0.25,1,255)
-
-		var/seed_resolution = WORLD_SIZE * 0.5
-		var/x_seed = used_x / seed_resolution
-		if(x_seed > 1)
-			x_seed = 1 - (x_seed - 1)
-		var/y_seed = used_y / seed_resolution
-		if(y_seed > 1)
-			y_seed = 1 - (y_seed - 1)
-		var/found = text2num(rustg_noise_get_at_coordinates("[SSturfs.seeds[2] + i]","[x_seed]","[y_seed]"))
-		noise += found
-
-	noise = (noise/instances)
+	for(var/i=1,i<=max_instances,i++)
+		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+	noise *= 1/max_instances
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
@@ -113,7 +91,7 @@
 		if(0.1 to 0.4)
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(4))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
 			else if(prob(2))
 				new /obj/marker/generation/plant/oxygen_fruit(src)
 		if(0.4 to 0.41)
@@ -126,10 +104,10 @@
 			new /turf/simulated/floor/colored/snow(src)
 			if(prob(1))
 				new /obj/marker/generation/plant/nitrogen_flower(src)
-			else if(prob(0.5))
-				new /obj/marker/generation/mob/snow_bear(src)
 			else if(prob(6))
-				new /obj/marker/generation/snow_grass(src)
+				new /obj/marker/generation/foliage/grass/snow(src)
+			else if(prob(0.2))
+				new /obj/marker/generation/mob/snow_bear(src)
 		if(0.94 to 0.95)
 			new /turf/simulated/floor/colored/dirt/snow(src)
 		if(0.95 to INFINITY)

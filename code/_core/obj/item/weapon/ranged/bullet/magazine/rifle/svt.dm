@@ -1,10 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/svt
 	name = "\improper 7.62x54mmR SVT-40"
 	desc = "URAAAAAAAAAAA!"
-	desc_extended = "The SVT-40 is a Russian Rifle most well known for killing Nazis. Now you too can carry that legacy in your hands!"
+	desc_extended = "The SVT-40 is a Slavic Rifle most well known for killing Nazis. Now you too can carry that legacy in your hands!"
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_old.dmi'
 	icon_state = "inventory"
 	value = 800
+
+	tier = 1
 
 	shoot_delay = 6
 
@@ -46,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,

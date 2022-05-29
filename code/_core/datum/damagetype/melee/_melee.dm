@@ -18,8 +18,9 @@
 
 	var/condition_on_hit = TRUE
 
-	savage_hit_threshold = 0.1
+	savage_hit_threshold = 0.25
 
+	sneak_attack_multiplier = 4
 
 /damagetype/melee/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	. = ..()

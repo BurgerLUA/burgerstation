@@ -39,5 +39,17 @@
 
 	return ..()
 
-/obj/item/mech_part/can_be_attacked()
+/obj/item/mech_part/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(!src.finalized)
+		return FALSE
+
+	if(!src.health)
+		return FALSE
+
 	return TRUE
+
+
+/obj/item/mech_part/Finalize()
+	. = ..()
+	update_sprite()

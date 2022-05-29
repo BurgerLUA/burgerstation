@@ -7,6 +7,9 @@
 
 	automatic = FALSE
 
+	dan_mode = FALSE
+
+	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 	firing_pin = null
 
@@ -41,7 +44,7 @@
 				stored_powergem.drop_item(get_turf(caller))
 				if(is_advanced(caller))
 					var/mob/living/advanced/A = caller
-					A.put_in_hands(stored_powergem,silent=TRUE)
+					A.put_in_hands(stored_powergem,params,silent=TRUE)
 				stored_powergem = null
 			else
 				caller.to_chat(span("warning","There is nothing to remove from \the [src.name]!"))
@@ -65,7 +68,7 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/magic/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/magic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_powergem")
 

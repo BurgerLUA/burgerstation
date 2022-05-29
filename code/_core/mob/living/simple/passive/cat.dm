@@ -7,8 +7,6 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	icon = 'icons/mob/living/simple/cat_colored.dmi'
 	icon_state = "living"
 
-	immortal = TRUE // :(
-
 	ai = /ai/cat
 
 	var/kittens_left = 20 //Needs to be a limit. Just in case.
@@ -28,6 +26,10 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 
 	soul_size = SOUL_SIZE_COMMON
 
+	health = null //immortal
+
+	level = 2
+
 /mob/living/simple/cat/post_move(var/atom/old_loc)
 
 	var/old_sitting = sitting
@@ -40,7 +42,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	if(sitting != old_sitting)
 		update_sprite()
 
-	return ..()
+	. = ..()
 
 /mob/living/simple/cat/update_icon()
 

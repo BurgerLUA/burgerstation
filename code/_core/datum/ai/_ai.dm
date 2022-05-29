@@ -1,3 +1,5 @@
+var/global/list/ai_attacking_players = list()
+
 /ai/
 
 	var/mob/living/owner
@@ -16,23 +18,29 @@
 	var/radius_find_enemy_caution = AI_DETECTION_RANGE_CAUTION
 	var/radius_find_enemy_combat = AI_DETECTION_RANGE_COMBAT
 
+	var/distance_target_min = 1 //The minimum distance in which the mob can start "clicking" to attack.
+	var/distance_target_max = 1 //The maximum distance in which the mob can start "clicking" to attack.
+
+	var/attack_distance_min = 0 //The minimum distance in which the mob should move to the target to attack.
+	var/attack_distance_max = 1 //The maximum distance in which the mob should move to the target to attack.
+
 	//Measured in ticks.
 	var/objective_ticks = 0
 
 	//Measured in ticks.
 	var/objective_delay = DECISECONDS_TO_TICKS(10)
 
-	var/list/target_distribution_x = list(8,16,16,16,24)
-	var/list/target_distribution_y = list(8,16,16,16,24)
+	var/list/target_distribution_x = list(12,16,16,16,20)
+	var/list/target_distribution_y = list(12,16,16,16,20)
 
 	var/turf/start_turf
 
 	var/roaming_distance = 5
 
+	var/use_pathfinding = FALSE //For frustration.
+
 	var/shoot_obstacles = TRUE
 
-	var/attack_distance_min = 0
-	var/attack_distance_max = 1
 
 	var/left_click_chance = 90
 
@@ -44,10 +52,10 @@
 	var/frustration_attack_threshold = SECONDS_TO_TICKS(6) //Above this means they'll try to find a new target. THIS IS MEASURED IN TICKS.
 
 	var/frustration_move = 0
-	var/frustration_move_threshold = 5 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_move_threshold = 3 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/frustration_path = 0
-	var/frustration_path_threshold = 20 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_path_threshold = 10 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/turf/path_start_turf
 	var/turf/path_end_turf
@@ -63,10 +71,9 @@
 
 	var/list/current_path_astar = list()
 
-	var/list/obstacles = list()
+	var/turf/last_combat_location //last location where there was an objective_attack
 
-	var/distance_target_min = 1
-	var/distance_target_max = 1
+	var/list/obstacles = list()
 
 	var/use_alerts = TRUE
 	var/true_sight = FALSE //Set to true if it can see invisible enemies.
@@ -96,6 +103,8 @@
 	var/assistance = 1
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them.
+	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage (0.00 to 1.00) the NPC will flee at.
+
 	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner.
 
 	var/list/enemy_tags = list()
@@ -115,9 +124,7 @@
 	var/ignore_hazard_turfs = FALSE
 
 	var/boss = FALSE
-	var/list/active_ai_list
-	var/list/inactive_ai_list
-	var/last_z = null
+
 
 /ai/Destroy()
 
@@ -155,30 +162,39 @@
 
 	SSai.path_stuck_ai -= src
 
-	active_ai_list = null
-	inactive_ai_list = null
-
 	return ..()
 
 /ai/proc/add_to_active_list(var/z)
+	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(!active_ai_list["[z]"])
 		active_ai_list["[z]"] = list()
 	active_ai_list["[z]"] |= src
 
 /ai/proc/remove_from_active_list(var/z)
+	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(length(active_ai_list) && active_ai_list["[z]"])
 		active_ai_list["[z]"] -= src
 
 /ai/proc/add_to_inactive_list(var/z)
+	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(!inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] = list()
 	inactive_ai_list["[z]"] |= src
 
 /ai/proc/remove_from_inactive_list(var/z)
+	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(length(inactive_ai_list) && inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] -= src
 
 /ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
+
+	if(desired_active)
+		if(!owner)
+			CRASH("AI was set to active without an owner!")
+		if(owner.qdeleting)
+			CRASH("AI was set to active while the owner was qdeleting!")
+		if(owner.dead)
+			CRASH("AI was set to active while the owner was dead!")
 
 	if(!force && active == desired_active)
 		return FALSE
@@ -187,11 +203,15 @@
 
 	var/turf/T = get_turf(owner)
 
+	if(!T)
+		CRASH("AI had an invalid turf!")
+
 	if(active)
+		PROCESS_LIVING(owner)
 		add_to_active_list(T.z)
 		remove_from_inactive_list(T.z)
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
-		HOOK_ADD("post_death","\ref[src]_post_death",owner,src,.proc/post_death)
+		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
 	else
 		add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
@@ -202,36 +222,24 @@
 		attackers.Cut()
 		obstacles.Cut()
 		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
-		HOOK_REMOVE("post_death","\ref[src]_post_death",owner)
+		HOOK_REMOVE("pre_death","\ref[src]_pre_death",owner)
 
 	return TRUE
 
 /ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
-
 	owner = desired_owner
+	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
+	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
+	. = ..()
 
-	objective_ticks = rand(0,objective_delay)
-
-	start_turf = get_turf(owner)
-
-	if(boss)
-		active_ai_list = SSbossai.active_ai_by_z
-		inactive_ai_list = SSbossai.inactive_ai_by_z
-	else
-		active_ai_list = SSai.active_ai_by_z
-		inactive_ai_list = SSai.inactive_ai_by_z
-
+/ai/Finalize()
+	. = ..()
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
-
-	return ..()
-
-/ai/PostInitialize()
-	. = ..()
 	set_active(active,TRUE)
 
-/ai/proc/post_death(var/mob/living/L,args)
-	set_active(FALSE)
+/ai/proc/pre_death(var/mob/living/L,args)
+	set_active(FALSE,TRUE)
 	return TRUE
 

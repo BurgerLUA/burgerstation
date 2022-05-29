@@ -12,8 +12,8 @@
 	owner.move_dir = 0
 
 	var/list/params = list(
-		PARAM_ICON_X = num2text(pick(target_distribution_x)),
-		PARAM_ICON_Y = num2text(pick(target_distribution_y)),
+		PARAM_ICON_X = "16",
+		PARAM_ICON_Y = "16",
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,
@@ -34,23 +34,38 @@
 /ai/proc/handle_attacking()
 	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
 		var/is_left_click = prob(left_click_chance)
-		spawn do_attack(objective_attack,is_left_click)
+		spawn do_attack(objective_attack,is_left_click) //The spawn here is important as attacking has its own sleeps and whatnot.
 		return TRUE
 	return FALSE
 
+var/global/list/difficulty_to_ai_modifier = list(
+	DIFFICULTY_EASY = 1,
+	DIFFICULTY_NORMAL = 2,
+	DIFFICULTY_HARD = 4,
+	DIFFICULTY_EXTREME = 6,
+	DIFFICULTY_SURVIVOR = 6
+)
 
-/ai/proc/get_attack_score(var/atom/A)
+/ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.
 
 	var/dist = get_dist(A.loc,owner.loc)
 
 	if(dist <= attack_distance_max)
 		if(attackers[A])
-			return 3000 - (A.health ? A.health.health_current : 0)
+			return -2 //Target those who attacked you, but still attack those who are literally touching you.
 		if(is_living(A))
 			var/mob/living/L = A
-			if(L.ai && L.ai.objective_attack == owner)
-				return 2000 - (A.health ? A.health.health_current : 0)
-		return 1000 - (A.health ? A.health.health_current : 0)
+			if(L.ai)
+				if(L.ai.objective_attack == owner)
+					return 9999 //Prioritize AI wars.
+				return -dist*0.25 //Prioritize attacking other AI.
+			if(is_player(A))
+				var/mob/living/advanced/player/P = L
+				var/difficulty_mod = difficulty_to_ai_modifier[P.difficulty]
+				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
+					return -9999 //Wow they're being overwhelmed. Very lowest priority.
+				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
+				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health. Low health will be spared. Higher difficulty will make you more desirable.
 
 	return -dist
 
@@ -68,7 +83,7 @@
 	if(L.dead)
 		return FALSE
 
-	if(L.immortal && !ignore_immortal)
+	if(!L.health && !ignore_immortal)
 		return FALSE
 
 	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
@@ -89,13 +104,11 @@
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
-	/*
 	if(istype(A,/mob/living/vehicle/))
 		var/mob/living/vehicle/V = A
 		if(!length(V.passengers))
 			return FALSE
 		A = V.passengers[1]
-	*/
 
 	if(A == owner)
 		return FALSE
@@ -108,7 +121,7 @@
 					return TRUE
 				if(assistance == 1 && is_living(L.ai.objective_attack))
 					var/mob/living/L2 = L.ai.objective_attack
-					if(L2.loyalty_tag == owner.loyalty_tag)
+					if(allow_helpful_action(L2.loyalty_tag,owner.loyalty_tag))
 						return TRUE
 			if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
 				return TRUE
@@ -128,14 +141,12 @@
 			if(!is_living(A))
 				return TRUE
 			var/mob/living/L = A
-			return owner.loyalty_tag != L.loyalty_tag
+			var/area/A2 = get_area(L)
+			return allow_hostile_action(owner.loyalty_tag,L.loyalty_tag,A2)
 		if(3)
 			return TRUE
 
 	return FALSE
-
-/ai/proc/is_friend(var/mob/living/L)
-	return owner.loyalty_tag && L.loyalty_tag == owner.loyalty_tag
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 

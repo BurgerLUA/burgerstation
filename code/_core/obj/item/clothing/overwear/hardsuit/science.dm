@@ -3,7 +3,7 @@
 	desc = "STAHP! I'M WITH THE SCIENCE TEAM!"
 	desc_extended = "A hardsuit worn by scientist. Lighter plated than most other models."
 	icon = 'icons/obj/item/clothing/suit/hek.dmi'
-	rarity = RARITY_RARE
+
 
 	defense_rating = list(
 		BLADE = 40,

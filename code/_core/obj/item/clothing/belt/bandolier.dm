@@ -2,12 +2,12 @@
 	name = "bandolier"
 	desc = "For the aspiring sweeper."
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of shotgun shells. ALT+Click to grab additional shells while already holding a shell."
-	rarity = RARITY_UNCOMMON
+
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
-	worn_layer = LAYER_MOB_CLOTHING_COAT
+	worn_layer = LAYER_MOB_CLOTHING_COAT_OVER
 	dyeable = TRUE
 
-	rarity = RARITY_UNCOMMON
+
 	value = 200
 	size = SIZE_3
 
@@ -19,13 +19,13 @@
 	var/handful = 0
 
 //only called on Finalise to calculate the shell count from memory
-/obj/item/clothing/belt/bandolier/proc/get_shell_count()
+/obj/item/clothing/belt/bandolier/proc/update_shell_count()
 	shell_count = 0
 	for(var/k in stored_shells)
 		var/v = stored_shells[k]
 		shell_count += v
 
-/obj/item/clothing/belt/bandolier/save_item_data(var/save_inventory = TRUE)
+/obj/item/clothing/belt/bandolier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	.["stored_shells"] = list()
 	for(var/k in stored_shells)
@@ -36,18 +36,18 @@
 	. = ..()
 	for(var/k in object_data["stored_shells"])
 		var/v = object_data["stored_shells"][k]
-		stored_shells[text2path(k)] = v
+		stored_shells[text2path_safe(k)] = v
 
 /obj/item/clothing/belt/bandolier/Finalize()
 	. = ..()
-	get_shell_count()
+	update_shell_count()
 	update_sprite()
 
 /obj/item/clothing/belt/bandolier/update_icon()
+	. = ..()
 	icon_state_worn = initial(icon_state_worn)
 	if(shell_count)
 		icon_state_worn = "[icon_state_worn]_filled"
-	. = ..()
 
 /obj/item/clothing/belt/bandolier/update_overlays()
 	. = ..()
@@ -55,27 +55,6 @@
 	if(shell_count)
 		var/image/I = new/image(icon,"shell_[CEILING(shell_count/step,1)]")
 		add_overlay(I)
-
-/obj/item/clothing/belt/bandolier/shotgun_12
-	desc_extended = "A not-so-fancy bandolier meant to hold a number of 12 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
-	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
-	max_shells = 200
-	shell_type = /obj/item/bullet_cartridge/shotgun_12
-	handful = 5
-
-/obj/item/clothing/belt/bandolier/shotgun_20
-	desc_extended = "A dyed bandolier meant to hold a number of 20 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
-	icon = 'icons/obj/item/clothing/belts/bandolier_20.dmi'
-	max_shells = 240
-	shell_type = /obj/item/bullet_cartridge/shotgun_20
-	handful = 5
-
-/obj/item/clothing/belt/bandolier/shotgun_23
-	desc_extended = "A surplus bandolier meant to hold a number of 23 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
-	icon = 'icons/obj/item/clothing/belts/bandolier_23.dmi'
-	max_shells = 160
-	shell_type = /obj/item/bullet_cartridge/shotgun_23
-	handful = 4
 
 /obj/item/clothing/belt/bandolier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -99,7 +78,7 @@
 				caller.to_chat(span("notice","You add a shell to your hand. There are [stored_shells[S.type]] shells of that type left."))
 				update_sprite()
 		else
-			var/amount_added = -S.add_item_count(-min(S.item_count_current,max(0,max_shells - shell_count)))
+			var/amount_added = -S.add_item_count(-min(S.amount,max(0,max_shells - shell_count)))
 			if(amount_added)
 				if(!stored_shells[S.type])
 					stored_shells[S.type] = amount_added
@@ -127,10 +106,12 @@
 
 		var/obj/hud/inventory/I = object
 		var/obj/item/bullet_cartridge/S = pickweight(stored_shells)
+		if(!S)
+			S = initial(shell_type)
 
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
 			S = new S(get_turf(src))
-			S.item_count_current = 1
+			S.amount = 1
 			stored_shells[S.type] -= 1
 			shell_count -= 1
 			caller.to_chat(span("notice","You take a shell from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
@@ -147,7 +128,7 @@
 			amount = stored_shells[S.type]
 		else
 			amount = handful
-		S.item_count_current = amount
+		S.amount = amount
 		stored_shells[S.type] -= amount
 		shell_count -= amount
 		caller.to_chat(span("notice","You take [amount] shell\s from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
@@ -160,3 +141,24 @@
 		return TRUE
 
 	. = ..()
+
+/obj/item/clothing/belt/bandolier/shotgun_12
+	desc_extended = "A not-so-fancy bandolier meant to hold a number of 12 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
+	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
+	max_shells = 200
+	shell_type = /obj/item/bullet_cartridge/shotgun_12
+	handful = 5
+
+/obj/item/clothing/belt/bandolier/shotgun_20
+	desc_extended = "A dyed bandolier meant to hold a number of 20 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
+	icon = 'icons/obj/item/clothing/belts/bandolier_20.dmi'
+	max_shells = 240
+	shell_type = /obj/item/bullet_cartridge/shotgun_20
+	handful = 5
+
+/obj/item/clothing/belt/bandolier/shotgun_23
+	desc_extended = "A surplus bandolier meant to hold a number of 23 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
+	icon = 'icons/obj/item/clothing/belts/bandolier_23.dmi'
+	max_shells = 160
+	shell_type = /obj/item/bullet_cartridge/shotgun_23
+	handful = 4

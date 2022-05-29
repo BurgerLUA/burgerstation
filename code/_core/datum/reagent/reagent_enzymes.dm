@@ -1,4 +1,4 @@
-/reagent/enzymes/
+/reagent/enzymes
 	name = "all-purpose enzymes"
 	desc = "Enzymes that interact with other food."
 	color = "#267F00"
@@ -9,3 +9,5 @@
 	value = 10
 
 	particle_size = 0.3
+
+	blood_toxicity_multiplier = 3

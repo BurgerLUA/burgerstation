@@ -35,7 +35,7 @@
 	name = "Old Alliance - Stalkeros#1016"
 	desc = "What used to be."
 	icon_state = "Stalkeros#1016_1"
-	desc_extended = "A poster featuring an enlarged old photo depicting a Syndicate Operative and a Russian Operative side by side against the forces of Capitalism."
+	desc_extended = "A poster featuring an enlarged old photo depicting a Syndicate Operative and a Slavic Operative side by side against the forces of Capitalism."
 
 /collectable_poster/see_new
 	name = "See New Worlds - Ghost"

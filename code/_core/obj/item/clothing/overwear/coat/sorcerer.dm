@@ -11,14 +11,7 @@
 		BODY_TORSO = TRUE
 	)
 
-	defense_rating = list(
-		ARCANE = 80,
-		COLD = 20,
-		HOLY = -40,
-		DARK = 40
-	)
-
-	rarity = RARITY_RARE
+	armor = /armor/cloth/arcane/bonus
 
 	size = SIZE_3
 

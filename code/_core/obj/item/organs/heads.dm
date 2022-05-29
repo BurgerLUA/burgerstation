@@ -4,8 +4,6 @@
 	desc = "So no head?"
 	icon_state = BODY_HEAD_MALE
 	worn_layer = LAYER_MOB_HEAD
-	break_threshold = 25
-	//health_max = 50
 	inventories = list(
 		/obj/hud/inventory/organs/head,
 		/obj/hud/inventory/organs/neck,
@@ -37,10 +35,12 @@
 
 	gib_icon_state = "gibhead"
 
-/obj/item/organ/head/initialize_blends()
-	add_blend("blush", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/species/human.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-	add_blend("lips", desired_color = "#00FF00", desired_blend = ICON_MULTIPLY, desired_icon = 'icons/mob/living/advanced/species/human.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
-	return ..()
+	has_life = TRUE
+
+/obj/item/organ/head/get_damage_type(var/atom/attacker,var/atom/victim)
+	if(attached_organ)
+		return /damagetype/unarmed/bite/
+	. = ..()
 
 /obj/item/organ/head/female
 	icon_state = BODY_HEAD_FEMALE
@@ -111,6 +111,10 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 5
+
+	can_gib = FALSE
+
 
 //skeleton
 /obj/item/organ/head/monkey
@@ -145,4 +149,9 @@
 /obj/item/organ/head/golem
 	name = "golem head"
 	icon = 'icons/mob/living/advanced/species/golem.dmi'
+	desc = "An organ."
+
+/obj/item/organ/head/abductor
+	name = "abductor head"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
 	desc = "An organ."

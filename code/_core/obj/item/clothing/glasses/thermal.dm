@@ -3,11 +3,9 @@
 	desc = "Wallhacks that fit on your face!"
 	desc_extended = "Some magical goggles that allow you to see mobs through walls."
 	icon = 'icons/obj/item/clothing/glasses/thermal.dmi'
-	rarity = RARITY_RARE
 
-	defense_rating = list(,
-		ARCANE = -20
-	)
+
+	armor = /armor/mechanical
 
 	size = SIZE_1
 
@@ -34,3 +32,5 @@
 	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	value = 1000
+
+	item_slot_layer = 4

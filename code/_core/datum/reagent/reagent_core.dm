@@ -49,12 +49,18 @@
 
 	overdose_threshold = 40
 
+/reagent/iron/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
+	var/volume_amount = container.remove_reagent(src.type,container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
+	var/shrapnel_amount = min(20,CEILING(volume_amount/3,1))
+	container.owner.shoot_projectile(owner,epicenter,null,null,/obj/projectile/bullet/firearm/shotgun_pellet,/damagetype/ranged/shrapnel,16,16,4,TILE_SIZE*0.5,shrapnel_amount,"#FFFFFF",0,0,1,null,desired_loyalty_tag,0,1)
+
+
 /reagent/iron/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	if(owner.blood_type)
-		owner.blood_volume = clamp(owner.blood_volume + .*4,0,owner.blood_volume_max)
+		owner.blood_volume = clamp(owner.blood_volume + .*4*multiplier,0,owner.blood_volume_max)
 		owner.queue_health_update = TRUE
 		owner.tox_regen_buffer -= . * 0.5
 
@@ -63,7 +69,7 @@
 	. = ..()
 
 	if(owner.blood_type)
-		owner.blood_volume = clamp(owner.blood_volume + .*2,0,owner.blood_volume_max)
+		owner.blood_volume = clamp(owner.blood_volume + .*2*multiplier,0,owner.blood_volume_max)
 		owner.queue_health_update = TRUE
 
 /reagent/steel
@@ -106,16 +112,6 @@
 
 	liquid = -0.25
 
-/reagent/oxygen //Found in the snow biome as a magic plant
-	name = "Liquid Oxygen"
-	desc = "What most lifeforms breathe in.."
-	color = "#E6F2F2"
-	alpha = 200
-
-	flavor = "oxygen"
-
-	liquid = 0.25
-
 /reagent/nitrogen //Found in the snow biome as a magic plant
 	name = "Liquid Nitrogen"
 	desc = "What most lifeforms also breathe in but don't really use."
@@ -148,7 +144,7 @@
 
 	liquid = -0.25
 
-	value = 4
+	value = 2
 
 /reagent/salt
 	name = "ionized table salt"
@@ -163,7 +159,7 @@
 
 /reagent/salt/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.add_hydration(.*-5)
+	owner.add_hydration(.*-5*multiplier)
 
 /reagent/salt/sodium_chloride
 	name = "sodium chloride"
@@ -237,17 +233,19 @@
 
 	liquid = 0.4
 
+	blood_toxicity_multiplier = -0.5 //A meme, but whatever.
+
 /reagent/space_cleaner/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer += .*1
+	owner.tox_regen_buffer += .*1*multiplier
 
 /reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer += .*2
+	owner.tox_regen_buffer += .*2*multiplier
 
 /reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 
@@ -334,6 +332,8 @@
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.5
 	metabolism_skin = 10
+
+	blood_toxicity_multiplier = 3
 
 /reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 

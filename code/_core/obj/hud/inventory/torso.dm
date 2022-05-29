@@ -2,13 +2,13 @@
 	name = "torso slot"
 	icon_state = "slot_torso"
 	id = BODY_TORSO
-	screen_loc = "LEFT+1,BOTTOM+2"
+	screen_loc = "LEFT:2+1,BOTTOM+2:14"
 	max_slots = 2
 	worn = TRUE
 
 	item_slot = SLOT_TORSO
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 100
 
@@ -16,15 +16,13 @@
 	name = "armor slot"
 	icon_state = "slot_torso_o"
 	id = BODY_TORSO_O
-	screen_loc = "LEFT,BOTTOM+2"
+	screen_loc = "LEFT:1,BOTTOM+3:15"
 	max_slots = 2
 	worn = TRUE
 
 	item_slot = SLOT_TORSO_ARMOR
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 90
 
@@ -32,7 +30,7 @@
 	name = "back slot"
 	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
-	screen_loc = "CENTER-4,BOTTOM"
+	screen_loc = "CENTER-4,BOTTOM:10"
 	max_slots = 1
 	worn = TRUE
 
@@ -41,9 +39,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	priority = 10
 
@@ -51,7 +47,7 @@
 	name = "holster"
 	icon_state = "slot_torso_ob"
 	id = BODY_TORSO_OB
-	screen_loc = "CENTER-5,BOTTOM"
+	screen_loc = "CENTER-5,BOTTOM:10"
 	max_slots = 1
 	worn = FALSE
 
@@ -60,7 +56,7 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	max_size = SIZE_10
 

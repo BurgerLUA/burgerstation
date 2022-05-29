@@ -91,3 +91,9 @@
 #define CURSED "cursed"
 
 #define BLIGHTED "blighted"
+
+#define ZOMBIE "zombie"
+
+#define UNDYING "undying"
+
+#define IMMORTAL "immortal"

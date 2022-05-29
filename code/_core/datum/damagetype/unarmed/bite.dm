@@ -1,5 +1,4 @@
 /damagetype/unarmed/bite/
-	name = "bite"
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(
@@ -43,13 +42,11 @@
 	attack_delay = 12*0.5
 	attack_delay_max = 12
 
+/damagetype/unarmed/bite/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
-/damagetype/unarmed/bite/zombie
-	name = "zombie bite"
+	if(is_living(victim) && is_living(attacker) && victim.reagents && total_damage_dealt >= 10)
+		var/mob/living/L = attacker
+		if(L.has_status_effect(ZOMBIE))
+			victim.reagents.add_reagent(/reagent/toxin/zombie_toxin,CEILING(total_damage_dealt*0.05,1),caller = attacker)
 
-/damagetype/unarmed/bite/zombie/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
-
-	if(total_damage_dealt >= 10 && victim && victim.reagents)
-		victim.reagents.add_reagent(/reagent/toxin/zombie_toxin,CEILING(total_damage_dealt*0.05,1),caller = is_living(attacker) ? attacker : null)
-
-	return ..()
+	. = ..()

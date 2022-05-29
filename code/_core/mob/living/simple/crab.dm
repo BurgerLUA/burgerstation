@@ -14,25 +14,19 @@
 	value = 25
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/
 	)
 
 	ai = /ai/
 
 	stun_angle = 180
 
-	armor_base = list(
-		BLADE = 60,
-		PIERCE = 60,
-		HEAT = -60,
-		COLD = -60,
-		ION = INFINITY
-	)
+	armor = /armor/chitin
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	loyalty_tag = "Crab"
 	iff_tag = "Crab"
@@ -42,7 +36,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 12
 
 /mob/living/simple/crab/post_death()
 	..()
@@ -73,13 +67,13 @@
 
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/,
-		/obj/item/container/food/dynamic/fish/raw_crab/
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/,
+		/obj/item/container/edible/dynamic/fish/raw_crab/
 	)
 
 
@@ -91,19 +85,9 @@
 
 	damage_type = /damagetype/npc/crab
 
-	armor_base = list(
-		BLADE = 80,
-		BLUNT = 40,
-		PIERCE = 80,
-		ARCANE = -20,
-		HEAT = -60,
-		COLD = -60,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/chitin
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	status_immune = list(
 		STUN = TRUE,
@@ -127,7 +111,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	level = 12
+	level = 20
 
 
 /mob/living/simple/crab/king/Cross(atom/movable/O)

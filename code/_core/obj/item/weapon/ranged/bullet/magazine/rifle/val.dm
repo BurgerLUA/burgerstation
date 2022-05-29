@@ -6,15 +6,17 @@
 	icon_state = "inventory"
 	value = 2000
 
-	shoot_delay = 1.5
+	tier = 2
 
-	firemodes = list("burst","automatic","semi-automatic")
+	shoot_delay = 1.1
+
+	firemodes = list("automatic","semi-automatic")
 
 	automatic = TRUE
 
-	damage_mod = 1
+	damage_mod = 1.1
 
-	shoot_sounds = list('sound/weapons/russia/val.ogg')
+	shoot_sounds = list('sound/weapons/slavic/val.ogg')
 
 	can_wield = TRUE
 
@@ -42,7 +44,8 @@
 		/obj/item/attachment/sight/scope = TRUE,
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
-		/obj/item/attachment/undermount/burst_adapter = TRUE
+		/obj/item/attachment/undermount/burst_adapter = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16

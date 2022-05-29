@@ -13,29 +13,20 @@
 
 	stun_angle = 90
 
-	armor_base = list(
-		BLADE = 10,
-		BLUNT = 20,
-		LASER = -20,
-		HEAT = -10,
-		COLD = 60,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/tough_furred
 
 	health_base = 200
 	stamina_base = 100
 	mana_base = 50
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_bear/,
-		/obj/item/container/food/dynamic/meat/raw_bear/,
-		/obj/item/container/food/dynamic/meat/raw_bear/,
-		/obj/item/container/food/dynamic/meat/raw_bear/
+		/obj/item/container/edible/dynamic/meat/raw_bear/,
+		/obj/item/container/edible/dynamic/meat/raw_bear/,
+		/obj/item/container/edible/dynamic/meat/raw_bear/,
+		/obj/item/container/edible/dynamic/meat/raw_bear/
 	)
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	var/armored = FALSE
 
@@ -47,7 +38,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 12
 
 /mob/living/simple/bear/update_overlays()
 	. = ..()
@@ -68,101 +59,40 @@
 /mob/living/simple/bear/armored
 	name = "armored bear"
 
-
-	armor_base = list(
-		BLADE = 75,
-		BLUNT = 75,
-		PIERCE = 75,
-		LASER = 25,
-		ARCANE = -50,
-		HEAT = 0,
-		COLD = 25,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0
-	)
+	armor = /armor/tough_furred/armored
 
 	armored = TRUE
 
+	level = 18
+
 /mob/living/simple/bear/armored/revolutionary
-	name = "armored russian bear"
+	name = "armored slavic bear"
 	loyalty_tag = "Revolutionary"
 	iff_tag = "Revolutionary"
 
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 
+	level = 24
+
 /mob/living/simple/bear/snow
 	name = "snow bear"
 	icon_state = "white"
 
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 0,
-		HEAT = -25,
-		COLD = 75,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0
-	)
+	armor = /armor/tough_furred/snow
+
+	level = 14
 
 /mob/living/simple/bear/black
 	name = "black bear"
 	icon_state = "black"
 
-
-
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 0,
-		HEAT = -25,
-		COLD = 75,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0
-	)
+	level = 16
 
 /mob/living/simple/bear/space
 	name = "space bear"
 	icon_state = "space"
 
+	armor = /armor/tough_furred/space
 
-
-	armor_base = list(
-		BLADE = 25,
-		BLUNT = 25,
-		PIERCE = 25,
-		LASER = -25,
-		ARCANE = 0,
-		HEAT = -25,
-		COLD = 75,
-		BOMB = 0,
-		BIO = 0,
-		RAD = 0,
-		HOLY = 100,
-		DARK = 100,
-		FATIGUE = 0,
-		ION = INFINITY,
-		PAIN = 0
-	)
+	level = 18

@@ -32,19 +32,17 @@
 	var/mob/living/simple/slime/self = owner
 
 	for(var/mob/living/advanced/A in view(radius_find_enemy,owner))
-		CHECK_TICK(75,FPS_SERVER)
 		if(should_attack_mob(A))
 			.[A] = TRUE
 
 	if(!length(.) && self.stored_slimes < self.stored_slimes_max)
 		for(var/mob/living/simple/slime/S in viewers(radius_find_enemy,owner))
-			CHECK_TICK(75,FPS_SERVER)
 			if(can_absorb_slime(S))
 				.[S] = TRUE
 
 /ai/slime/do_attack(var/atom/atom_to_attack)
 
-	if(!is_slime(atom_to_attack) || !can_absorb_slime(atom_to_attack))
+	if(!istype(atom_to_attack,/mob/living/simple/slime/) || !can_absorb_slime(atom_to_attack))
 		return ..()
 
 	var/mob/living/simple/slime/self = owner

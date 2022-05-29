@@ -1,5 +1,4 @@
 /damagetype/npc/legion_assault
-	name = "Legion Assault"
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(

@@ -1,5 +1,5 @@
 /obj/item/proc/can_transfer_stacks_to(var/obj/item/I)
-	return (istype(I,src) || istype(src,I)) && I != src && I.item_count_max > 1
+	return (istype(I,src) || istype(src,I)) && I != src && I.amount_max > 1
 
 //Credit goes to Unknown Person
 
@@ -39,13 +39,13 @@
 
 /obj/item/proc/split_stack()
 
-	var/stacks_to_take = FLOOR(item_count_current/2, 1)
+	var/stacks_to_take = FLOOR(amount/2, 1)
 	if(!stacks_to_take)
 		return FALSE
 	var/obj/item/I = copy(src)
 	I.force_move(get_turf(src))
-	I.item_count_current = 0
-	src.transfer_item_count_to(I,stacks_to_take)
+	I.amount = 0
+	src.transfer_amount_to(I,stacks_to_take)
 
 	return I
 
@@ -60,7 +60,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(1)
-			var/stacks_transfered = I.transfer_item_count_to(src)
+			var/stacks_transfered = I.transfer_amount_to(src)
 			if(stacks_transfered)
 				caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
 			else
@@ -71,7 +71,7 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(object == src || item_count_current <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
+	if(object == src || amount <= 1 || !is_inventory(object) || !is_inventory(src.loc) || get_dist(src,object) > 1)
 		return ..()
 
 	INTERACT_CHECK
@@ -81,6 +81,6 @@
 	var/obj/hud/inventory/I = object
 	var/old_item_name = src.name
 	var/obj/item/I2 = split_stack()
-	caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [I2.item_count_current]."))
+	caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [I2.amount]."))
 	I.add_object(I2)
 	return TRUE

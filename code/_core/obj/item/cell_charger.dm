@@ -24,7 +24,7 @@
 /obj/item/cell_charger/get_battery()
 	return battery
 
-/obj/item/cell_charger/save_item_data(var/save_inventory = TRUE)
+/obj/item/cell_charger/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("battery")
 
@@ -89,7 +89,7 @@
 		charging_device.update_sprite()
 		HOOK_REMOVE("post_move","cell_charger_post_move_\ref[src]",charging_device)
 		charging_device = null
-		stop_thinking(src)
+		STOP_THINKING(src)
 		sprite_update_delay = initial(sprite_update_delay)
 		return FALSE
 
@@ -106,7 +106,7 @@
 			charging_device = I
 			HOOK_ADD("post_move","cell_charger_post_move_\ref[src]",I,src,.proc/check_device_move)
 			visible_message(span("notice","\The [src.name] dings as \the [I.name] is placed on top of it."))
-			start_thinking(src)
+			START_THINKING(src)
 
 
 /obj/item/cell_charger/think()

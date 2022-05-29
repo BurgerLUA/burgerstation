@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 3500
 
+	tier = 2
+
 	firemodes = list("automatic","semi-automatic")
 
 	shoot_delay = 3
@@ -47,22 +49,23 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 20 - 16
 
 	attachment_sight_offset_x = 15 - 16
 	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 14 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 23 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 
 

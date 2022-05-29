@@ -136,7 +136,6 @@
 		ND.quick_equip(L)
 		tracked_nuke_disks += ND
 
-
 	return TRUE
 
 /virtual_reality/team/nuke_ops/proc/place_mobs_at_spawn()

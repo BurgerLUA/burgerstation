@@ -15,7 +15,7 @@
 /reagent/nutrition/porcini
 	name = "porcini"
 	desc = "Nutrition and flavor from a porcini mushroom."
-	color = "#444444"
+	color = "#68593E"
 
 	nutrition_amount = 7
 	nutrition_quality_amount = 6
@@ -257,21 +257,22 @@
 
 	lethal = TRUE
 
-/reagent/nutrition/capsaicin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+	metabolism_skin = 10
 
+/reagent/nutrition/capsaicin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.pain_regen_buffer += -starting_volume
-	owner.send_pain(starting_volume)
+	owner.pain_regen_buffer += -.*multiplier
+	owner.send_pain_response(.*multiplier)
 
 
 /reagent/nutrition/capsaicin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
-	owner.pain_regen_buffer += -starting_volume * 0.5
-	owner.send_pain(starting_volume * 0.5)
+	owner.pain_regen_buffer += -. * 0.5*multiplier
+	owner.send_pain_response(. * 0.5*multiplier)
 
 /reagent/nutrition/capsaicin/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
-	owner.pain_regen_buffer += -starting_volume
-	owner.send_pain(starting_volume)
+	owner.pain_regen_buffer += -.*multiplier
+	owner.send_pain_response(.*multiplier)

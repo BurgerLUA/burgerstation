@@ -1,4 +1,4 @@
-/obj/item/container/beaker
+/obj/item/container/simple/beaker
 	name = "glass beaker"
 	desc = "For the mad scientist in all of us."
 	desc_extended = "Holds reagents."
@@ -9,38 +9,42 @@
 
 	reagents = /reagent_container/beaker/
 
-	var/icon_count = 7
+	var/icon_count = 8
 
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE
 
 	var/overide_icon = FALSE
 
-	value = 5
+	value = 10
 
 	drop_sound = 'sound/items/drop/bottle.ogg'
 
 	has_quick_function = TRUE
 
-/obj/item/container/beaker/quick(var/mob/caller,var/atom/object,location,params)
+	value = 0
 
-	if(!is_living(caller))
-		return FALSE
+	size = SIZE_2
 
-	return feed(caller,caller)
+/obj/item/container/simple/beaker/Finalize()
+	. = ..()
+	update_sprite()
 
-/obj/item/container/beaker/get_consume_verb()
-	return "drink"
+/obj/item/container/simple/beaker/quick(var/mob/caller,var/atom/object,location,params)
+	return try_transfer_reagents(caller,caller,location,null,params)
 
-/obj/item/container/beaker/get_consume_sound()
+/obj/item/container/simple/beaker/get_consume_verb()
+	return "drink" //this
+
+/obj/item/container/simple/beaker/get_consume_sound()
 	return 'sound/items/consumables/drink.ogg'
 
-/obj/item/container/beaker/get_examine_list(var/mob/examiner)
+/obj/item/container/simple/beaker/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/beaker/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/simple/beaker/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/weapon/melee))
+	if(allow_reagent_transfer_to && istype(object,/obj/item/weapon/melee))
 		var/obj/item/weapon/melee/M = object
 		if(!M.reagents)
 			caller.to_chat(span("warning","\The [M.name] cannot be coated!"))
@@ -58,82 +62,66 @@
 
 	. = ..()
 
-/obj/item/container/beaker/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/beaker/click_self(var/mob/caller,location,control,params)
 
-	INTERACT_CHECK
-	INTERACT_DELAY(1)
-	if(caller.attack_flags & CONTROL_MOD_DISARM)
-		var/choice = input("How much do you want to transfer at once?","Min: 0.5 Max: [reagents.volume_max]") as null|num
+	if(allow_reagent_transfer_to || allow_reagent_transfer_from)
 		INTERACT_CHECK
-		if(choice)
-			transfer_amount = clamp(choice,0.5,reagents.volume_max)
-			caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
+		INTERACT_DELAY(1)
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
+			var/choice = input("How much do you want to transfer at once?","Min: 0.5 Max: [reagents.volume_max]") as null|num
+			INTERACT_CHECK
+			if(choice)
+				transfer_amount = clamp(choice,0.5,reagents.volume_max)
+				caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
 			return TRUE
-		else return TRUE
 
-	var/initial_amount = initial(transfer_amount)
+		var/initial_amount = initial(transfer_amount)
 
-	transfer_amount += initial_amount
-	if(transfer_amount > reagents.volume_max)
-		transfer_amount = initial_amount
+		transfer_amount += initial_amount
+		if(transfer_amount > reagents.volume_max)
+			transfer_amount = initial_amount
 
-	caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
+		caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
 
-	return TRUE
+		return TRUE
 
-/obj/item/container/beaker/update_icon()
+	. = ..()
 
+/obj/item/container/simple/beaker/update_underlays()
+	. = ..()
 	if(!overide_icon)
-		icon = initial(icon)
-		icon_state = initial(icon_state)
+		var/image/I = new/image(initial(icon),"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
+		I.color = reagents.color
+		add_underlay(I)
 
-		var/icon/I = new/icon(icon,icon_state)
-		var/icon/I2 = new/icon(icon,"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
-
-		I2.Blend(reagents.color,ICON_MULTIPLY)
-		I.Blend(I2,ICON_UNDERLAY)
-
-		icon = I
-
-	return ..()
-
-
-/obj/item/container/beaker/water/Generate()
+/obj/item/container/simple/beaker/water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/potassium/Generate()
+/obj/item/container/simple/beaker/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
 
-/obj/item/container/beaker/smoke_01/Generate()
+/obj/item/container/simple/beaker/tnt/Generate()
+	reagents.add_reagent(/reagent/fuel/tnt,reagents.volume_max)
+	return ..()
+
+/obj/item/container/simple/beaker/tnt_fragments/Generate()
+	reagents.add_reagent(/reagent/fuel/tnt,20)
+	reagents.add_reagent(/reagent/iron,40)
+	return ..()
+
+/obj/item/container/simple/beaker/smoke_01/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/potassium,40)
 	return ..()
 
-/obj/item/container/beaker/smoke_02/Generate()
+/obj/item/container/simple/beaker/smoke_02/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/phosphorous,40)
 	return ..()
 
-/obj/item/container/beaker/large/lube_smoke_01/Generate()
-	reagents.add_reagent(/reagent/nutrition/sugar,20)
-	reagents.add_reagent(/reagent/potassium,40)
-	reagents.add_reagent(/reagent/lube,60)
-	return ..()
-
-/obj/item/container/beaker/large/lube_smoke_02/Generate()
-	reagents.add_reagent(/reagent/nutrition/sugar,20)
-	reagents.add_reagent(/reagent/phosphorous,40)
-	reagents.add_reagent(/reagent/lube,60)
-	return ..()
-
-/obj/item/container/beaker/flashbang_01/Generate()
-	reagents.add_reagent(/reagent/ammonia,20)
-	reagents.add_reagent(/reagent/nitrogen,40)
-	return ..()
-
-/obj/item/container/beaker/flashbang_02/Generate()
-	reagents.add_reagent(/reagent/ammonia,20)
-	reagents.add_reagent(/reagent/fuel/hydrogen,40)
+/obj/item/container/simple/beaker/flashbang/Generate()
+	reagents.add_reagent(/reagent/fuel/flash_powder,reagents.volume_max)
 	return ..()

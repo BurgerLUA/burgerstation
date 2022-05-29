@@ -1,12 +1,13 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
 	name = "\improper 12.7mm Sabre"
-	desc = "12.7mm Sabre Pistol"
-	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives. The stopping power rivals the .50 Eagle guns."
+	desc = "As sharp as a real saber sword, hurts just as much too."
+	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
-	value = 700
+	value = 1100
 
-	shoot_delay = 6
+	tier = 2
+	shoot_delay = 2.5
 
 	automatic = FALSE
 
@@ -46,7 +47,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -64,7 +65,6 @@
 	attachment_undermount_offset_y = 17 - 16
 
 
-
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread()
 	return 0.0025
 
@@ -75,12 +75,14 @@
 	name = "\improper 12.7mm Sabre MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_mod.dmi'
 	desc_extended = "A modded variant very powerful semiautomatic pistol commonly used by the most elite high ranking Syndicate Operatives. \
-	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through other means."
+	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through combat."
 
 	shoot_delay = 2
 
 	heat_max = 0.12
 
-	value = 2000
+	value = 2400
 
 	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
+
+	tier = 3

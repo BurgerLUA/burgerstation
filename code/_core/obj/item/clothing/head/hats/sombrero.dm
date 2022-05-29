@@ -4,10 +4,7 @@
 	desc = "Hola!"
 	desc_extended = "A large brimmed straw hat designed to keep yourself in the shade."
 
-	defense_rating = list(
-		ARCANE = 40,
-		HEAT = 40
-	)
+	armor = /armor/cloth/summer
 
 	size = SIZE_2
 

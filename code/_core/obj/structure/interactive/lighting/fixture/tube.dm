@@ -51,12 +51,19 @@
 	color = COLOR_LIGHT
 	color_frame = COLOR_GREY
 	desired_light_power = 0.75
-	desired_light_range = VIEW_RANGE*0.6
+	desired_light_range = VIEW_RANGE*0.75
 
 /obj/structure/interactive/lighting/fixture/tube/station/strong
 	desired_light_power = 0.75
-	desired_light_range = VIEW_RANGE*0.8
+	desired_light_range = VIEW_RANGE*0.85
 
 /obj/structure/interactive/lighting/fixture/tube/station/stronger
 	desired_light_power = 0.75
-	desired_light_range = VIEW_RANGE*0.9
+	desired_light_range = VIEW_RANGE
+
+
+
+/obj/structure/interactive/lighting/fixture/tube/fluorescent
+	desired_light_power = 1
+	color = COLOR_LIGHT_STRANGE
+	color_frame = COLOR_GREY

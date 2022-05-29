@@ -48,7 +48,7 @@
 	. += max(0,100-growth_max)*0.25
 	. += max(0,200-growth_produce_max)*0.25
 
-/obj/item/seed/save_item_data(var/save_inventory = TRUE)
+/obj/item/seed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 
 	SAVEVAR("icon_state")
@@ -60,7 +60,8 @@
 	SAVEVAR("growth_produce_max")
 
 	SAVEVAR("potency")
-	SAVEVAR("yield")
+	SAVEVAR("yield_max")
+	SAVEVAR("yield_percent")
 	SAVEVAR("growth_speed")
 
 	SAVEVAR("delete_after_harvest")
@@ -78,7 +79,8 @@
 	LOADVAR("growth_produce_max")
 
 	LOADVAR("potency")
-	LOADVAR("yield")
+	LOADVAR("yield_max")
+	LOADVAR("yield_percent")
 	LOADVAR("growth_speed")
 
 	LOADVAR("delete_after_harvest")

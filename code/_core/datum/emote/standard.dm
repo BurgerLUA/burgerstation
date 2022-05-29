@@ -26,7 +26,7 @@
 	name = "Shake Fist"
 	id = "fist"
 	action = "\The #USER shakes their fist."
-	action_target = "\The #USER shakes their fist at #TARGET."
+	action_target = "\The #USER shakes their fist at #TARGET!"
 
 /emote/think
 	name = "Think"
@@ -56,7 +56,7 @@
 	name = "Beckon"
 	id = "beckon"
 	action = "\The #USER beckons."
-	action_target = "\The #USER beckons #TARGET to come."
+	action_target = "\The #USER beckons #TARGET."
 
 /emote/yawn
 	name = "Yawn"
@@ -74,7 +74,7 @@
 	name = "Clap"
 	id = "clap"
 	action = "\The #USER claps!"
-	action_target = "\The #USER claps at #TARGET!"
+	action_target = "\The #USER claps for #TARGET!"
 
 /emote/salute
 	name = "Salute"
@@ -85,23 +85,13 @@
 /emote/inhale
 	name = "Inhale"
 	id = "inhale"
-	action = "\The #USER inhales!"
-
-/emote/inhale/can_emote(var/atom/emoter,var/atom/target)
-	. = ..()
-	if(!.) return FALSE
-	if(is_advanced(emoter))
-		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
-			if(istype(I,/obj/item/container/cigarette))
-				return TRUE
+	action = "\The #USER inhales."
 
 /emote/inhale/on_emote(var/atom/emoter,var/atom/target)
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
+		if(A.inventories_by_id[BODY_FACE])
+			var/obj/item/I = A.inventories_by_id[BODY_FACE].get_top_object()
 			if(istype(I,/obj/item/container/cigarette))
 				var/obj/item/container/cigarette/C = I
 				C.consume(5)
@@ -110,27 +100,37 @@
 /emote/drag
 	name = "Drag"
 	id = "drag"
-	action = "\The #USER takes a drag from their smoke!"
+	action = "\The #USER takes a drag from their smoke."
 
 /emote/drag/can_emote(var/atom/emoter,var/atom/target)
 	. = ..()
 	if(!.) return FALSE
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
+		if(A.inventories_by_id[BODY_FACE])
+			var/obj/item/I = A.inventories_by_id[BODY_FACE].get_top_object()
 			if(istype(I,/obj/item/container/cigarette))
 				return TRUE
 
 /emote/drag/on_emote(var/atom/emoter,var/atom/target)
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
-		if(A.face)
-			var/obj/item/I = A.face.get_top_object()
+		if(A.inventories_by_id[BODY_FACE])
+			var/obj/item/I = A.inventories_by_id[BODY_FACE].get_top_object()
 			if(istype(I,/obj/item/container/cigarette))
 				var/obj/item/container/cigarette/C = I
 				C.consume(10)
 	. = ..()
+
+/emote/exhale
+	name = "Exhale"
+	id = "exhale"
+	action = "\The #USER exhales."
+
+/emote/exhale
+	name = "Blink"
+	id = "blink"
+	action = "\The #USER blinks."
 
 /emote/spin
 	name = "Spin"

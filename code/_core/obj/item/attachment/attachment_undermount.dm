@@ -61,3 +61,47 @@
 	)
 
 	value = 250
+
+
+
+/obj/item/attachment/undermount/gun
+	name = "gun"
+
+	var/obj/item/weapon/ranged/stored_gun
+
+/obj/item/attachment/undermount/gun/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+	return stored_gun.clicked_on_by_object(caller,object,location,control,params)
+
+/obj/item/attachment/undermount/gun/Generate()
+	stored_gun = new stored_gun(src)
+	stored_gun.anchored = TRUE
+	INITIALIZE(stored_gun)
+	GENERATE(stored_gun)
+	FINALIZE(stored_gun)
+	. = ..()
+
+/obj/item/attachment/undermount/gun/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+	. = ..()
+	SAVEATOM("stored_gun")
+
+/obj/item/attachment/undermount/gun/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADATOM("stored_gun")
+
+/obj/item/attachment/undermount/gun/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
+	return stored_gun.click_on_object(caller,object,location,control,params)
+
+
+/obj/item/attachment/undermount/gun/grenade_launcher
+	name = "20mm undermounted grenade launcher"
+	desc = "Thump!"
+	desc_extended = "A compact undermounted grenade launcher capable of shooting 20mm grenades at medium ranges. The added weight to the front makes the weapon bulkier to shoot when moving."
+	icon_state = "grenade_launcher"
+
+	stored_gun = /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount
+
+	attachment_stats = list(
+		movement_spread = 1.75
+	)
+
+	value = 2000

@@ -2,11 +2,17 @@
 
 	. = 0x0
 
-	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("left" in params) :("right" in params))
-		. |= CLICK_RIGHT
+	if(selected_hand)
+		if(selected_hand == LEFT_HAND)
+			. |= CLICK_RIGHT
+		else
+			. |= CLICK_LEFT
+	else
+		if((settings.loaded_data["swap_mouse"] && check_swap) ? ("left" in params) :("right" in params))
+			. |= CLICK_RIGHT
 
-	if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
-		. |= CLICK_LEFT
+		if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
+			. |= CLICK_LEFT
 
 	if("middle" in params)
 		. |= CLICK_MIDDLE
@@ -29,7 +35,7 @@
 	object = object.defer_click_on_object(mob,location,control,new_params)
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
-	return ..()
+	. = ..()
 
 /client/Click(var/atom/object,location,control,params)
 
@@ -56,7 +62,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)
 
-	return ..()
+	. = ..()
 
 /client/MouseDown(var/atom/object,location,control,params)
 
@@ -70,6 +76,9 @@
 	store_new_params(object,location,new_params)
 
 	var/click_flags = get_click_flags(new_params,TRUE)
+	if(examine_mode && (click_flags & CLICK_RIGHT) && (permissions & FLAG_PERMISSION_MODERATOR))
+		debug_variables(object)
+		return TRUE
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= CONTROL_MOD_LEFT
 	if(click_flags & CLICK_RIGHT)
@@ -84,6 +93,8 @@
 		if(mob) mob.display_turf_contents(get_turf(object))
 		examine(object)
 		return TRUE
+
+	drag_last = world.time
 
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_down(object,location,control,new_params)
@@ -108,7 +119,7 @@
 		else
 			examine(object)
 
-	return ..()
+	. = ..()
 
 /client/MouseUp(var/atom/object,location,control,params)
 
@@ -139,7 +150,7 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.on_right_up(object,location,control,new_params)
 
-	return ..()
+	. = ..()
 
 /client/MouseDrop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
@@ -155,7 +166,10 @@
 		return FALSE
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
-	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
+	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < 4)
+		return FALSE
+
+	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
 
 	var/click_flags = get_click_flags(new_params,TRUE)
@@ -169,7 +183,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,new_params)
 
-	return ..()
+	. = ..()
 
 
 /client/MouseDrag(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
@@ -182,8 +196,8 @@
 	var/list/new_params = params2list(params)
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
-	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < TILE_SIZE*0.25)
-		return ..()
+	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < 4)
+		return FALSE
 
 	. = ..()
 
@@ -196,20 +210,30 @@
 	if(!mob)
 		return ..()
 
-	if(object)
-		mob.examine_overlay.maptext = "<center size='3'>[object]</center>"
+	if(istype(object,/atom/))
+		var/atom/A = object
+		mob.examine_overlay.maptext = "<center size='3'>[A.name]</center>"
+		if(mob.examine_bar) mob.examine_bar.maptext = "[A.name]"
 	else
 		mob.examine_overlay.maptext = null
+		if(mob.examine_bar) mob.examine_bar.maptext = null
 
-	if(zoom_held && mob && isturf(location) && (world.time - zoom_time) > 4)
-		var/real_angle = get_angle(mob,location) + 90
-		var/desired_x_offset = sin(real_angle)
-		var/desired_y_offset = cos(real_angle)
-		var/real_dir = angle2dir(real_angle)
-		is_zoomed = real_dir
-		mob.set_dir(real_dir)
-		update_camera_offset(desired_x_offset,desired_y_offset)
-
+	if(mob && isturf(location))
+		if(zoom_held && (world.time - zoom_time) > 4)
+			var/list/offsets = get_directional_offsets(mob,location)
+			is_zoomed = get_dir_advanced(mob,location)
+			mob.set_dir(is_zoomed)
+			update_camera_offset(offsets[1],offsets[2])
+		else if(is_living(mob))
+			var/mob/living/L = mob
+			if(L.intent == INTENT_HARM)
+				mob.set_dir(get_dir_advanced(mob,location))
+				for(var/k in mob.light_sprite_sources)
+					var/obj/light_sprite/LS = k
+					if(LS.icon_state != "cone")
+						continue
+					LS.set_dir(SOUTH)
+					LS.transform = LS.get_base_transform()
 	. = ..()
 
 /client/proc/store_new_params(object,location,params)

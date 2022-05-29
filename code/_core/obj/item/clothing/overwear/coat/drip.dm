@@ -2,8 +2,6 @@
 	name = "drip"
 	icon = 'icons/obj/item/clothing/suit/drip.dmi'
 
-	rarity = RARITY_LEGENDARY
-
 	desc = "By any means necessary."
 	desc_extended = "Probably the most expensive clothing you can find. Does it do anything? Probably not."
 
@@ -13,13 +11,7 @@
 
 	size = SIZE_3
 
-	defense_rating = list(
-		BLADE = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		HEAT = -20,
-		COLD = 20
-	)
+	armor = /armor/cloth/hoodie
 
 /obj/item/clothing/overwear/coat/drip/get_base_value()
 	. = ..()

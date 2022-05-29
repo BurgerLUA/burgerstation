@@ -13,6 +13,8 @@
 
 	var/status_effect = DRUGGY
 
+	blood_toxicity_multiplier = 5
+
 /reagent/drug/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -20,7 +22,7 @@
 	owner.add_status_effect(
 		status_effect,
 		magnitude = strength,
-		duration = . * duration_mod //Every 20 units should last 5 minutes.
+		duration = . * duration_mod*multiplier //Every 20 units should last 5 minutes.
 	)
 
 /reagent/drug/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -30,7 +32,7 @@
 	owner.add_status_effect(
 		status_effect,
 		magnitude = strength*2,
-		duration = . * duration_mod //Every 20 units should last 5 minutes.
+		duration = . * duration_mod*multiplier //Every 20 units should last 5 minutes.
 	)
 
 /reagent/drug/liberty_dust
@@ -75,6 +77,23 @@
 	flavor = "regret"
 
 	strength = 200
+	duration_mod = 15
+
+	value = 12
+
+	liquid = -0.6
+
+	particle_size = 0.4
+
+/reagent/drug/supermatter
+	name = "supermatter dust"
+	desc = "Dust harvested directly from a supermatter. Neat."
+	color = "#FFFA7C"
+	alpha = 255
+
+	flavor = "cheese"
+
+	strength = 500
 	duration_mod = 15
 
 	value = 12

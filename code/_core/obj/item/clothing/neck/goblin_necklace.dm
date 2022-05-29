@@ -7,19 +7,11 @@
 
 	item_slot = SLOT_NECK
 
-
 	protected_limbs = list(BODY_TORSO)
 
-	rarity = RARITY_LEGENDARY
-
-	defense_rating = list(
-		ARCANE = 80,
-		HOLY = -80,
-		DARK = 80
-	)
+	armor = /armor/cloth
 
 	size = SIZE_1
-
 
 	value = 1000
 
@@ -30,9 +22,9 @@
 /obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/neck))
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 /obj/item/clothing/neck/goblin_necklace/think()
 	if(cooldown_effect > world.time)
@@ -42,7 +34,8 @@
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)
 			continue
-		if(affectLiving.health.get_mana_loss())
-			affectLiving.mana_regen_buffer += 3
+		if(affectLiving.health.mana_current >= affectLiving.health.mana_max)
+			continue
+		affectLiving.mana_regen_buffer += 1
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

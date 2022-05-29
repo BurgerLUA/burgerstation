@@ -21,7 +21,7 @@
 
 	update_held_icon()
 
-	return ..()
+	. = ..()
 
 
 /obj/item/clothing/head/light/click_self(var/mob/caller)
@@ -46,15 +46,9 @@
 	icon = 'icons/obj/item/clothing/hats/hardhat.dmi'
 	desc = "THIS IS AN OFFICIAL CONSTRUCTION ZONE! PLEASE REMOVE YOURSELF FROM THE AREA!"
 	desc_extended = "A yellow industrial hardhat. Seems pretty robust against blunt trauma."
-	rarity = RARITY_UNCOMMON
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 60,
-		PIERCE = 20,
-		BOMB = 20,
-		PAIN = 60
-	)
+
+	armor = /armor/military/light
 
 	size = SIZE_2
 

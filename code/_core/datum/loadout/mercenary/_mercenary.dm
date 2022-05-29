@@ -1,13 +1,13 @@
 #define MERC_ESSENTIALS \
 /obj/item/analyzer/health, \
 /obj/item/attachment/barrel/suppressor, \
-/obj/item/container/beaker/can/grey_bull, \
-/obj/item/container/beaker/vial/zombie_antidote, \
+/obj/item/container/simple/can/grey_bull, \
+/obj/item/container/simple/beaker/vial/zombie_antidote, \
 /obj/item/container/blood_pack/full/o_negative, \
 /obj/item/container/blood_pack/full/o_negative, \
-/obj/item/container/food/package/junkfood/jerky, \
-/obj/item/container/food/package/junkfood/jerky, \
-/obj/item/deployable/barricade/filled, \
+/obj/item/container/edible/package/junkfood/jerky, \
+/obj/item/container/edible/package/junkfood/jerky, \
+/obj/item/deployable/barricade{amount=10}, \
 /obj/item/firing_pin/electronic/iff/mercenary, \
 /obj/item/fulton_pack, \
 /obj/item/weapon/melee/tool/screwdriver,\
@@ -30,7 +30,7 @@
 
 		/obj/item/clothing/shirt/normal/reinforced/merc_alt,
 		/obj/item/clothing/pants/normal/reinforced/merc_alt,
-		/obj/item/clothing/overwear/armor/molded_armor/merc,
+		/obj/item/clothing/overwear/armor/medium_armor/merc,
 		/obj/item/clothing/overwear/coat/vest/colored/merc,
 
 		/obj/item/clothing/feet/shoes/workboot,
@@ -78,7 +78,6 @@
 	spawning_items = list(
 		//No underwear
 
-		/obj/item/clothing/uniform/stealth/dyeable/virtual,
 		/obj/item/clothing/feet/shoes/colored/merc,
 		/obj/item/clothing/feet/shoes/colored/merc/left,
 		/obj/item/clothing/hands/gloves/colored/padded/merc,
@@ -120,7 +119,6 @@
 		/obj/item/clothing/feet/socks/ankle,
 		/obj/item/clothing/underbottom/underwear/boxers/heart,
 
-		/obj/item/clothing/uniform/stealth/dyeable/merc,
 		/obj/item/clothing/overwear/armor/sneaking,
 		/obj/item/clothing/overwear/coat/vest/poly/pockets_only,
 
@@ -188,7 +186,7 @@
 
 		/obj/item/clothing/back/storage/satchel/poly/brown,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/merc/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/m4,
 
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,

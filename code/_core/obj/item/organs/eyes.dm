@@ -5,22 +5,24 @@
 	desc = "An eye."
 	icon_state = BODY_EYE_RIGHT
 	worn_layer = LAYER_MOB_EYE
-	break_threshold = 5
 
 	attach_flag = BODY_HEAD
 
 	has_dropped_icon = TRUE
 	has_dropped_icon_underlay = TRUE
 
-	enable_wounds = TRUE
+	enable_wounds = FALSE
 
 	var/vision_mod = FLAG_VISION_NONE
-	var/sight_mod = SEE_BLACKNESS
+	var/sight_mod = 0x0
 	var/see_invisible = 0
 	var/see_in_dark = 1
 
+	can_be_broken = FALSE
+
 
 /obj/item/organ/eye/initialize_blends()
+	. = ..()
 	add_blend("eye", desired_color = "#000000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)
 
 /obj/item/organ/eye/left
@@ -124,5 +126,16 @@
 
 /obj/item/organ/eye/golem/left
 	name = "left golem eye"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT
+
+
+//abductor
+/obj/item/organ/eye/abductor
+	name = "right abductor eye"
+	icon = 'icons/mob/living/advanced/species/abductor.dmi'
+
+/obj/item/organ/eye/abductor/left
+	name = "left abductor eye"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT

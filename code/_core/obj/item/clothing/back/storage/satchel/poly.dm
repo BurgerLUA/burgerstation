@@ -10,15 +10,21 @@
 	)
 
 
-/obj/item/clothing/back/storage/satchel/poly/security
+/obj/item/clothing/back/storage/satchel/poly/nanotrasen
 	polymorphs = list(
 		"body" = COLOR_BLACK,
 		"straps" = COLOR_BLACK,
-		"detail" = COLOR_SECURITY,
+		"detail" = COLOR_NANOTRASEN,
 		"buckle" = COLOR_SILVER
 	)
 
-
+/obj/item/clothing/back/storage/satchel/poly/medical
+	polymorphs = list(
+		"body" = COLOR_WHITE,
+		"straps" = COLOR_MEDICAL,
+		"detail" = COLOR_MEDICAL,
+		"buckle" = COLOR_SILVER
+	)
 
 /obj/item/clothing/back/storage/satchel/poly/syndicate
 	polymorphs = list(

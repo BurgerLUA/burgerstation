@@ -14,37 +14,26 @@
 	value = 400
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/,
-		/obj/item/container/food/dynamic/fish/raw_carp/
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/,
+		/obj/item/container/edible/dynamic/fish/raw_carp/
 	)
 
 	collision_flags = FLAG_COLLISION_FLYING | FLAG_COLLISION_SWIMMING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	armor_base = list(
-		BLADE = 40,
-		HEAT = 100,
-		COLD = 100,
-		BIO = 100,
-		RAD = INFINITY,
-		FATIGUE = 20,
-		ION = INFINITY,
-		PAIN = 20
-	)
+	armor = /armor/carp/shark
 
-	size = SIZE_LARGE
+	size = SIZE_GIANT
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
 	has_footsteps = FALSE
 
 	pixel_x = -16
-
-
 
 	loyalty_tag = "Shark"
 	iff_tag = "Shark"
@@ -54,4 +43,4 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 18
+	level = 30

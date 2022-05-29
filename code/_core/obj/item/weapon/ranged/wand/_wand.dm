@@ -15,6 +15,9 @@
 	dan_mode = TRUE
 
 	use_loyalty_tag = TRUE
+	use_iff_tag = FALSE
+
+	bypass_balance_check = TRUE
 
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)
@@ -24,7 +27,7 @@
 	. = ..()
 	. *= wand_damage_multiplier**2
 
-/obj/item/weapon/ranged/wand/save_item_data(var/save_inventory = TRUE)
+/obj/item/weapon/ranged/wand/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("socketed_spellgem")
 
@@ -32,10 +35,10 @@
 	. = ..()
 	LOADATOM("socketed_spellgem")
 
-/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
-	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier)
+	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier,click_called)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

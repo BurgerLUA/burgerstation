@@ -46,7 +46,7 @@
 		/obj/item/soapstone/orange
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -56,20 +56,22 @@
 	var/list/mob/living/simple/goliath/baby/tracked_babies = list()
 
 	butcher_contents = list(
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath,
-		/obj/item/container/food/dynamic/meat/raw_goliath
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath,
+		/obj/item/container/edible/dynamic/meat/raw_goliath
 	)
 
 	soul_size = SOUL_SIZE_RARE
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
+
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 	level = 30
 

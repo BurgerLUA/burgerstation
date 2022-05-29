@@ -31,42 +31,19 @@
 	var/turf/S = get_step(owner,SOUTH)
 	var/turf/W = get_step(owner,WEST)
 
-	//N
-	if(get_dist(N,start_turf) > roaming_distance)
+	var/area/initial_area = get_area(owner)
+
+	if(get_dist(N,start_turf) > roaming_distance || N.loc != initial_area || locate(/mob/) in N.contents)
 		valid_directions -= NORTH
-	else
-		for(var/k in N.contents)
-			var/atom/movable/A = k
-			if(ismob(A) || is_mob_blocker(A))
-				valid_directions -= NORTH
-				break
 
-	if(get_dist(E,start_turf) > roaming_distance)
+	if(get_dist(E,start_turf) > roaming_distance || E.loc != initial_area || locate(/mob/) in E.contents)
 		valid_directions -= EAST
-	else
-		for(var/k in E.contents)
-			var/atom/movable/A = k
-			if(ismob(A) || is_mob_blocker(A))
-				valid_directions -= EAST
-				break
 
-	if(get_dist(S,start_turf) > roaming_distance)
+	if(get_dist(S,start_turf) > roaming_distance || S.loc != initial_area || locate(/mob/) in S.contents)
 		valid_directions -= SOUTH
-	else
-		for(var/k in S.contents)
-			var/atom/movable/A = k
-			if(ismob(A) || is_mob_blocker(A))
-				valid_directions -= SOUTH
-				break
 
-	if(get_dist(W,start_turf) > roaming_distance)
+	if(get_dist(W,start_turf) > roaming_distance || W.loc != initial_area || locate(/mob/) in W.contents)
 		valid_directions -= WEST
-	else
-		for(var/k in W.contents)
-			var/atom/movable/A = k
-			if(ismob(A) || is_mob_blocker(A))
-				valid_directions -= WEST
-				break
 
 	if(length(valid_directions))
 		owner.move_dir = pick(valid_directions)

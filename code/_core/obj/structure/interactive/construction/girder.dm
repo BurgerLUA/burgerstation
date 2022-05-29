@@ -20,7 +20,7 @@
 	if(istype(src.loc,/turf/simulated/wall/))
 		caller.to_chat(span("warning","There is already a wall here... somehow."))
 		return FALSE
-	if(S.item_count_current < 4)
+	if(S.amount < 4)
 		caller.to_chat(span("warning","You need 4 sheets in order to build a wall!"))
 		return FALSE
 	if(S.material_id != material_id)

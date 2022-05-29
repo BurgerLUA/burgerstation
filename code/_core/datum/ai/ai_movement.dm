@@ -1,6 +1,6 @@
 /ai/proc/can_enter_turf(var/turf/T)
 
-	if(!ignore_hazard_turfs && istype(T,/turf/simulated/hazard/))
+	if(!ignore_hazard_turfs && istype(T,/turf/simulated/liquid/))
 		return FALSE
 
 	return TRUE
@@ -12,27 +12,24 @@
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(L.loc)
 
+	//Frustration
 	if(old_turf && new_turf)
 		if(old_turf == new_turf)
 			frustration_move++
 			if(length(current_path))
 				frustration_path++
-			if(frustration_move >= frustration_move_threshold)
-				sidestep_next = TRUE
-				frustration_move = 0
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
-			frustration_move = 0
+			frustration_move = max(0,frustration_move-0.25)
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
-	if(!new_turf || new_turf.z != last_z)
+	if(!new_turf || !old_turf || new_turf.z != old_turf.z)
 		if(active)
-			if(last_z) remove_from_active_list(last_z)
+			if(old_turf) remove_from_active_list(old_turf.z)
 			if(new_turf) add_to_active_list(new_turf.z)
 		else
-			if(last_z) remove_from_inactive_list(last_z)
-			if(new_turf) add_to_inactive_list(new_turf.z); set_active(TRUE) //Wake up the AI if we can.
-		if(new_turf) last_z = new_turf.z
+			if(old_turf) remove_from_inactive_list(old_turf.z)
+			if(new_turf) add_to_inactive_list(new_turf.z)
 
 	return TRUE
 
@@ -46,17 +43,38 @@
 /ai/proc/handle_movement_attack_objective()
 
 	if(objective_attack)
+
+		if(cowardice >= 0)
+			var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
+			if(health_percent <= cowardice)
+				owner.move_dir = get_dir(objective_attack,owner) //RUN AWAY.
+				owner.movement_flags = MOVEMENT_RUNNING
+				return TRUE
+
 		var/target_distance = get_dist(owner,objective_attack)
-		if(target_distance < attack_distance_min)
+		if(target_distance < attack_distance_min) //Get farther to attack.
 			owner.move_dir = get_dir(objective_attack,owner)
-			owner.movement_flags = MOVEMENT_RUNNING
-		if(target_distance > attack_distance_max)
+			owner.movement_flags = MOVEMENT_NORMAL
+		if(target_distance > attack_distance_max) //Get closer to attack.
 			owner.move_dir = get_dir(owner,objective_attack)
 			owner.movement_flags = MOVEMENT_RUNNING
 		else
 			owner.movement_flags = MOVEMENT_NORMAL
-			if(prob(target_distance <= 1 ? 25 : 5))
-				owner.move_dir = pick(turn(get_dir(owner,objective_attack),90),turn(get_dir(owner,objective_attack),-90))
+			var/owner_to_objective_dir = get_dir(owner,objective_attack)
+			var/turf/T1 = get_step(owner,owner_to_objective_dir)
+			if(!T1.is_safe_teleport(FALSE))
+				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90,180))
+				frustration_move++
+				return TRUE
+			var/objective_to_owner_dir = get_dir(objective_attack,owner)
+			var/turf/T2 = get_step(objective_attack,objective_to_owner_dir)
+			if(!T2.is_safe_teleport(FALSE))
+				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90,180))
+				frustration_move++
+				return TRUE
+			if(prob(target_distance <= 1 ? 25 : 5)) //Strafe when close.
+				owner.move_dir = turn(get_dir(owner,objective_attack),pick(-90,90))
+
 		return TRUE
 
 	return FALSE
@@ -104,8 +122,7 @@
 
 /ai/proc/handle_movement_astar()
 
-	if(current_path_astar && length(current_path_astar))
-		owner.movement_flags = MOVEMENT_NORMAL
+	if(length(current_path_astar))
 		var/turf/T = get_turf(owner)
 		var/turf/desired_turf = current_path_astar[1]
 		if(T == desired_turf)
@@ -125,7 +142,6 @@
 
 /ai/proc/handle_movement_path()
 	if(current_path && length(current_path))
-		owner.movement_flags = MOVEMENT_NORMAL
 		if(path_steps <= length(current_path))
 			var/Vector3D/desired_node = current_path[path_steps]
 			var/turf/T = get_turf(owner)
@@ -223,23 +239,6 @@
 
 	return FALSE
 
-/ai/proc/handle_movement_sidestep()
-
-	if(sidestep_next)
-		if(!owner.move_dir)
-			owner.move_dir = pick(DIRECTIONS_INTERCARDINAL)
-
-		if(prob(50))
-			var/move_cone = pick(45,90)
-			owner.move_dir = turn(owner.dir,pick(-move_cone,move_cone))
-		else
-			owner.move_dir = turn(owner.dir,180)
-		sidestep_next = FALSE
-		frustration_move = 0
-		return TRUE
-
-	return FALSE
-
 /ai/proc/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_NORMAL
 	owner.move_dir = 0x0
@@ -248,9 +247,6 @@
 /ai/proc/handle_movement()
 
 	if(handle_movement_astar())
-		return TRUE
-
-	if(handle_movement_sidestep())
 		return TRUE
 
 	if(handle_movement_path_frustration())

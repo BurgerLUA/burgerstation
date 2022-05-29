@@ -68,13 +68,14 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	if(is_living(victim) && is_living(owner) && owner != victim)
 		var/mob/living/L = victim
 		var/mob/living/L2 = owner
-		if(L.loyalty_tag == L2.loyalty_tag)
+		var/area/A = get_area(L)
+		if(!allow_hostile_action(L.loyalty_tag,L2.loyalty_tag,A))
 			return FALSE
 	var/damagetype/DT = all_damage_types[damage_type]
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(owner,src,params,DT))
 		return FALSE
-	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,params,TRUE,TRUE)
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,damage_type,params,TRUE,TRUE)
 	return DT.process_damage(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()
@@ -168,7 +169,7 @@ obj/effect/temp/hazard/bubblefist/
 obj/effect/temp/hazard/bubblefist/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,overlay_state)
-	I.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	I.appearance_flags = src.appearance_flags
 	I.plane = PLANE_EFFECT
 	add_overlay(I)
 

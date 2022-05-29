@@ -42,7 +42,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -59,11 +59,11 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
+
+	pump_delay = 5
 
 /obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1

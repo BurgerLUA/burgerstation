@@ -5,13 +5,7 @@
 	desc = "Eat Pant."
 	desc_extended = "The peak of fashion."
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		ARCANE = 20,
-		COLD = 10
-	)
+	armor = /armor/cloth
 
 	dyeable = TRUE
 
@@ -34,6 +28,17 @@
 		"stripes" = COLOR_WHITE
 	)
 
+/obj/item/clothing/pants/normal/striped/nanotrasen
+	polymorphs = list(
+		"pants" = COLOR_GREY_DARK,
+		"stripes" = COLOR_NANOTRASEN
+	)
+
+/obj/item/clothing/pants/normal/recruit
+	polymorphs = list(
+		"pants" = COLOR_RECRUIT_DARK
+	)
+
 /obj/item/clothing/pants/normal/chaps
 	name = "chapped pants"
 	desc = "Damn you're double cheeked up on a wednesday afternoon?"
@@ -51,14 +56,6 @@
 		"chaps" = COLOR_WHITE
 	)
 
-/obj/item/clothing/pants/normal/security
-	name = "security pants"
-	desc = "Tacticool!"
-	desc_extended = "Standard issue Security pants. The black colouring doesn't actually provide any tactical advantage whatsoever."
-	polymorphs = list(
-		"pants" = COLOR_SECURITY_DARK
-	)
-
 /obj/item/clothing/pants/normal/wizard
 	name = "wizard pants"
 	desc = "Wizarding!"
@@ -67,7 +64,7 @@
 		"pants" = COLOR_PURPLE
 	)
 
-/obj/item/clothing/pants/normal/security/ancient
+/obj/item/clothing/pants/normal/ancient_security
 	name = "ancient security pants"
 	desc = "From a forgotten age."
 	desc_extended = "An ancient pair of security pants. Rumor is that it's red to hide greytide blood."
@@ -81,6 +78,12 @@
 	desc_extended = "Good pants to wear if you're on your knees a lot. Also good for botany."
 	polymorphs = list(
 		"pants" = COLOR_GREEN
+	)
+
+
+/obj/item/clothing/pants/normal/priest
+	polymorphs = list(
+		"pants" = COLOR_GREY_DARK
 	)
 
 /obj/item/clothing/pants/normal/chef
@@ -164,13 +167,7 @@
 	name = "reinforced pants"
 	icon = 'icons/obj/item/clothing/pants/reinforced.dmi'
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 10,
-		PIERCE = 20,
-		ARCANE = -10,
-		COLD = 10,
-	)
+	armor = /armor/cloth/hard
 
 /obj/item/clothing/pants/normal/reinforced/ntops
 	name = "NT ops reinforced pants"
@@ -191,4 +188,23 @@
 	polymorphs = list(
 		"pants" = "#A39D86",
 		"kneepad" = COLOR_WHITE
+	)
+
+
+/obj/item/clothing/pants/normal/reinforced/space_soldier
+	polymorphs = list(
+		"pants" = COLOR_BLACK
+	)
+
+/obj/item/clothing/pants/normal/random/Generate()
+	. = ..()
+	for(var/k in polymorphs)
+		polymorphs[k] = random_color()
+
+
+
+/obj/item/clothing/pants/normal/reinforced/abductor
+	name = "abductor reinforced pants"
+	polymorphs = list(
+		"pants" = "#62869E"
 	)

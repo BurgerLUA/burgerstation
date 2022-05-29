@@ -3,7 +3,7 @@
 	name = "left glove"
 	icon_state = "slot_hand_left"
 	id = BODY_HAND_LEFT
-	screen_loc = "LEFT+2,BOTTOM+1"
+	screen_loc = "LEFT:3+2,BOTTOM+2:14"
 
 	item_slot = SLOT_HAND
 	item_slot_mod = SLOT_MOD_LEFT
@@ -11,9 +11,7 @@
 	max_slots = 2
 	worn = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 74
 
@@ -21,7 +19,7 @@
 	name = "right glove"
 	icon_state = "slot_hand_right"
 	id = BODY_HAND_RIGHT
-	screen_loc = "LEFT,BOTTOM+1"
+	screen_loc = "LEFT:1,BOTTOM+2:14"
 
 	item_slot = SLOT_HAND
 	item_slot_mod = SLOT_MOD_RIGHT
@@ -29,9 +27,7 @@
 	max_slots = 2
 	worn = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_WORN | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 75
 
@@ -41,7 +37,7 @@
 	id = BODY_HAND_LEFT_HELD
 	icon = 'icons/hud/hud_wide.dmi'
 	icon_state = "left_hand"
-	screen_loc = "CENTER+0.5,BOTTOM"
+	screen_loc = "CENTER+0.5,BOTTOM:12"
 	click_flags = LEFT_HAND
 
 	item_slot = SLOT_NONE
@@ -51,15 +47,19 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	allow_quick_equip = FALSE
 
 	priority = 2
 
 	x_offset = 16
+
+/obj/hud/inventory/organs/left_hand_held/update_overlays()
+	. = ..()
+	if(owner?.client?.selected_hand == click_flags)
+		var/image/I = new/image(initial(icon),"[icon_state]_selected")
+		add_overlay(I)
 
 /obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()
@@ -79,7 +79,7 @@
 	id = BODY_HAND_RIGHT_HELD
 	icon = 'icons/hud/hud_wide.dmi'
 	icon_state = "right_hand"
-	screen_loc = "CENTER-1.5,BOTTOM"
+	screen_loc = "CENTER-1.5:-1,BOTTOM:12"
 	click_flags = RIGHT_HAND
 
 	item_slot = SLOT_NONE
@@ -89,15 +89,19 @@
 
 	essential = TRUE
 
-	flags = FLAGS_HUD_INVENTORY | FLAGS_HUD_MOB
-
-	drop_on_death = TRUE
+	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	allow_quick_equip = FALSE
 
 	priority = 3
 
 	x_offset = 16
+
+/obj/hud/inventory/organs/right_hand_held/update_overlays()
+	. = ..()
+	if(owner?.client?.selected_hand == click_flags)
+		var/image/I = new/image(initial(icon),"[icon_state]_selected")
+		add_overlay(I)
 
 /obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
 	. = ..()

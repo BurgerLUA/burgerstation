@@ -6,13 +6,15 @@
 	icon_state = "inventory"
 	value = 10000
 
-	shoot_delay = 0.2 //Oh god oh fuck
+	tier = 4
 
-	damage_mod = 1.2
+	shoot_delay = 0.5 //Oh god oh fuck
+
+	damage_mod = 1
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/shoot_mini.ogg')
+	shoot_sounds = list('sound/weapons/223/minigun.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

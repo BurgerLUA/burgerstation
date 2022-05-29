@@ -110,22 +110,6 @@
 	loot_count = 6
 	chance_none = 25
 
-/loot/weapon/shotgun/wood
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
-		/obj/item/weapon/ranged/bullet/pump/shotgun/wood,
-		/obj/item/storage/ammo/buckshot,
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/pump/shotgun/wood = 1,
-		/obj/item/storage/ammo/buckshot = 2,
-		/obj/item/storage/ammo/slug = 1,
-		/obj/item/storage/ammo/flechette = 1
-	)
-	loot_count = 6
-	chance_none = 25
-
 /loot/weapon/shotgun/dbarrel
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/revolver/dbarrel,
@@ -138,21 +122,6 @@
 		/obj/item/storage/ammo/buckshot = 2,
 		/obj/item/storage/ammo/slug = 1,
 		/obj/item/storage/ammo/flechette = 1
-	)
-	loot_count = 6
-	chance_none = 25
-
-/loot/weapon/shotgun/tribarrel
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/revolver/tribarrel,
-		/obj/item/weapon/ranged/bullet/revolver/tribarrel,
-		/obj/item/storage/ammo/buckshot_23 = 2
-	)
-
-	loot_table = list(
-		/obj/item/weapon/ranged/bullet/revolver/tribarrel = 1,
-		/obj/item/storage/ammo/buckshot_23 = 2,
-		/obj/item/storage/ammo/slug_23 = 2
 	)
 	loot_count = 6
 	chance_none = 25

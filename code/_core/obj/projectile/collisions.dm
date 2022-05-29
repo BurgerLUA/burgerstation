@@ -3,7 +3,7 @@
 	if(P.owner == src)
 		return null
 
-	if( (collision_bullet_flags & FLAG_COLLISION_SPECIFIC) && P.target_atom == src)
+	if( (collision_bullet_flags & FLAG_COLLISION_BULLET_SPECIFIC) && P.target_atom == src)
 		return src
 
 	if(P.collision_flags_special && P.collision_flags_special & collision_flags)
@@ -48,10 +48,10 @@
 
 /mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
 
-	if(P && !P.ignore_iff && P.iff_tag && src.iff_tag == P.iff_tag)
+	if(P.iff_tag && !check_iff(src.iff_tag,P.iff_tag,new_turf.loc,P.hostile))
 		return null
 
-	if(P && !P.ignore_loyalty && P.loyalty_tag && src.loyalty_tag == P.loyalty_tag)
+	if(P.loyalty_tag && !allow_hostile_action(src.loyalty_tag,P.loyalty_tag,new_turf.loc))
 		return null
 
 	if(!P.hit_laying && dead && get_dist(src,P.target_atom) > 0)
@@ -112,7 +112,7 @@
 		var/mob/living/L = k
 		if(!L.density)
 			continue
-		if(L.mouse_opacity <= 0 || L.dead || L.move_delay <= 0 || get_dist(L,src) > 1)
+		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1)
 			continue
 		if(L.projectile_should_collide(P,new_turf,old_turf))
 			. |= L
@@ -132,8 +132,10 @@
 	if(!.)
 		return null
 
-	var/projectile_dir = get_dir(old_turf,new_turf)
+	if(bullet_block_chance <= 0)
+		return null
 
+	var/projectile_dir = get_dir(old_turf,new_turf)
 	if(projectile_dir & src.collision_dir)
 		if(bullet_block_chance >= 100)
 			return src

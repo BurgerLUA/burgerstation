@@ -1,7 +1,8 @@
-/obj/item/container/food/dynamic/meat
+/obj/item/container/edible/dynamic/meat
 	name = "meat"
 	desc = "IT'S RAW!"
 	desc_extended = "You need plenty of proteins for soldiering, soldier."
+	crafting_id = /obj/item/container/edible/dynamic/meat
 
 	icon = 'icons/obj/item/consumable/food/meat.dmi'
 	icon_state = "meat_1"
@@ -13,10 +14,10 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/food/dynamic/meat/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/meat/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/container/food/dynamic/meat/click_self(var/mob/caller,location,control,params)
+/obj/item/container/edible/dynamic/meat/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
@@ -38,7 +39,7 @@
 
 	return TRUE
 
-/obj/item/container/food/dynamic/meat/update_sprite()
+/obj/item/container/edible/dynamic/meat/update_sprite()
 
 	if(!reagents.volume_current)
 		return FALSE
@@ -73,7 +74,8 @@
 			if(!best_fat || amount > best_fat_volume)
 				best_fat = reagent_type
 				best_fat_volume = amount
-		else if(R.flags_reagent & (FLAG_REAGENT_RAW | FLAG_REAGENT_COOKED))
+			continue
+		if(R.flags_reagent & (FLAG_REAGENT_RAW | FLAG_REAGENT_COOKED))
 			total_meat += amount
 			meat_r += GetRedPart(R.color) * amount
 			meat_g += GetGreenPart(R.color) * amount
@@ -87,13 +89,13 @@
 	if(best_fat)
 		var/reagent/RF = REAGENT(best_fat)
 		var/image/fat_image = new/image(initial(icon),"[icon_state]_fat")
-		fat_image.appearance_flags = RESET_COLOR
+		fat_image.appearance_flags = src.appearance_flags | RESET_COLOR
 		fat_image.color = RF ? RF.color : "#FFFFFF"
 		add_overlay(fat_image)
 
 	if(carbon_amount)
 		var/image/carbon_image = new/image(initial(icon),"[icon_state]_marks")
-		carbon_image.appearance_flags = RESET_COLOR
+		carbon_image.appearance_flags = src.appearance_flags | RESET_COLOR
 		carbon_image.alpha = clamp(carbon_amount*55,0,255)
 		add_overlay(carbon_image)
 
@@ -107,7 +109,7 @@
 	return TRUE
 
 
-/obj/item/container/food/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/meat/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 
@@ -123,7 +125,7 @@
 				return FALSE
 
 			for(var/i=1,i<=pieces-1,i++)
-				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
+				var/obj/item/container/edible/dynamic/meat/M = new(get_turf(src))
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
 				FINALIZE(M)
@@ -144,7 +146,7 @@
 				return FALSE
 
 			for(var/i=1,i<=pieces-1,i++)
-				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
+				var/obj/item/container/edible/dynamic/meat/M = new(get_turf(src))
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
 				FINALIZE(M)
@@ -172,7 +174,7 @@
 
 			src.icon_state = "ground"
 			for(var/i=1,i<=pieces-1,i++)
-				var/obj/item/container/food/dynamic/meat/M = new(get_turf(src))
+				var/obj/item/container/edible/dynamic/meat/M = new(get_turf(src))
 				M.icon_state = "ground"
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
@@ -186,76 +188,76 @@
 
 	return TRUE
 
-/obj/item/container/food/dynamic/meat/raw_arachnid/Generate()
+/obj/item/container/edible/dynamic/meat/raw_arachnid/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/arachnid,15)
 	reagents.add_reagent(/reagent/nutrition/fat/arachnid,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_ash_drake/Generate()
+/obj/item/container/edible/dynamic/meat/raw_ash_drake/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/ash_drake,15)
 	reagents.add_reagent(/reagent/ash,5)
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_bubblegum/Generate()
+/obj/item/container/edible/dynamic/meat/raw_bubblegum/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/bubblegum,15)
 	reagents.add_reagent(/reagent/blood/ancient,5)
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_colossus/Generate()
+/obj/item/container/edible/dynamic/meat/raw_colossus/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/colossus,15)
 	reagents.add_reagent(/reagent/blood/ancient,5)
 	reagents.add_reagent(/reagent/nutrition/fat/ancient,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_monkey/Generate()
+/obj/item/container/edible/dynamic/meat/raw_monkey/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/monkey,15)
 	reagents.add_reagent(/reagent/nutrition/fat/monkey,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw/Generate()
+/obj/item/container/edible/dynamic/meat/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked_steak/Generate()
+/obj/item/container/edible/dynamic/meat/cooked_steak/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked_cutlet/Generate()
+/obj/item/container/edible/dynamic/meat/cooked_cutlet/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,7)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,3)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/cooked_bacon/Generate()
+/obj/item/container/edible/dynamic/meat/cooked_bacon/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow/cooked,3)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,2)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_beefman/Generate()
+/obj/item/container/edible/dynamic/meat/raw_beefman/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/cow,15)
 	reagents.add_reagent(/reagent/nutrition/fat/cow,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_xeno/Generate()
+/obj/item/container/edible/dynamic/meat/raw_xeno/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/xeno,15)
 	reagents.add_reagent(/reagent/nutrition/fat/xeno,5)
 	reagents.add_reagent(/reagent/toxin/xeno_acid,15)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_spider/Generate()
+/obj/item/container/edible/dynamic/meat/raw_spider/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/spider,15)
 	reagents.add_reagent(/reagent/toxin/spider_toxin,5)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_bear/Generate()
+/obj/item/container/edible/dynamic/meat/raw_bear/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/bear,20)
 	reagents.add_reagent(/reagent/nutrition/fat/bear,10)
 	return ..()
 
-/obj/item/container/food/dynamic/meat/raw_goliath/Generate()
+/obj/item/container/edible/dynamic/meat/raw_goliath/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/goliath,15)
 	reagents.add_reagent(/reagent/nutrition/fat/goliath,5)
 	return ..()

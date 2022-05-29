@@ -8,8 +8,8 @@
 	bullet_diameter = 18.5
 	bullet_length = 18.5
 
-	item_count_max = 8
-	item_count_max_icon = 8
+	amount_max = 8
+	amount_max_icon = 8
 
 	projectile = /obj/projectile/bullet/syringe
 	damage_type_bullet = /damagetype/ranged/bullet/syringe

@@ -18,7 +18,7 @@
 	desc_extended = "A measure of how strong you are in this world. Affects damage with some weapons as well as the ability to perform certain actions, such as resisting out of a grab or maintaining a grab."
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/fortitude/ //100% complete
 	//Leveled up by regenerating health.
@@ -30,19 +30,19 @@
 	desc_extended = "A measure of how resilient you are to this world. Affects health regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/constitution/ //0% complete
 	//Leveled up by taking damage.
-	//Each time hit = 1xp
-	//level 100 is 10000xp
+	//Each point of damage taken = 1xp
+	//level 100 is 2 million xp.
 	name = "Constitution"
 	id = ATTRIBUTE_CONSTITUTION
 	desc = "Not the worst stat!"
 	desc_extended = "A measure of how resistant you are to this world. Affects resistances to all physical (blade, blunt, pierce) damage types."
 	flags = ATTRIBUTE_STAT
 	experience_power = 1.9
-	experience_multiplier = 1.3
+	experience_multiplier = 10.4
 
 /experience/attribute/vitality/ //100% complete
 	//Leveled by increasing Strength, Fortitude, and Constitution.
@@ -71,7 +71,7 @@
 	desc_extended = "A measure of how effective you are at using magic. Affects damage with some weapons and magic as well as the ability to perform certain actions."
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/willpower/ //100% complete
 	//Leveled up by regenerating mana.
@@ -83,7 +83,7 @@
 	desc_extended = "A measure of how long your mind can last in this world. Affects magic resistance and and mana regeneration."
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/soul //100% complete
 	//Leveled up by dealing damage with weapons using the soul attribute.
@@ -95,7 +95,7 @@
 	desc_extended = "A measure of how strong your soul is. Affects special soul-based encounters."
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/wisdom/ //100% complete
 	//Leveled up by increasing willpower, intelligence, and soul.
@@ -124,7 +124,7 @@
 	desc_extended = "A measure of how well you can control your body. Affects damage with some weapons as well as the speed of performing actions."
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/resilience/ //100% complete
 	//Leveled up by regenerating stamina.
@@ -136,7 +136,7 @@
 	desc_extended = "A measure of how long your body can last in this world. Affects resistance to stamina damage as well as stamina regeneration"
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
-	experience_multiplier = 20.9
+	experience_multiplier = 10.4
 
 /experience/attribute/endurance/ //100% complete
 	//Leveled up by increasing resilience, dexterity, and agility
@@ -164,7 +164,7 @@
 	desc_extended = "A measure of how fast you move. Affects your movement speed as well as the speed of which you perform movement based actions."
 	flags = ATTRIBUTE_STAT
 	experience_power = 1.9
-	experience_multiplier = 10.4
+	experience_multiplier = 5.2
 
 //None. Everyone starts with 50.
 /experience/attribute/luck/ //50% complete.

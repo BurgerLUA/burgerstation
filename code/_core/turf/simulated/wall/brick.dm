@@ -4,7 +4,7 @@
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks."
 
-	icon = 'icons/turf/wall/rock_preview.dmi'
+	icon = 'icons/turf/wall/rock/preview.dmi'
 	icon_state = "brick"
 
 	real_icon = 'icons/turf/wall/brick.dmi'
@@ -14,6 +14,10 @@
 	corner_category = "brick"
 
 	destruction_turf = /turf/simulated/floor/plating
+
+/turf/simulated/wall/brick/New(var/desired_loc)
+	. = ..()
+	map_color = color
 
 /turf/simulated/wall/brick/red
 	color = "#C66B59"

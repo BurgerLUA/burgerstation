@@ -1,29 +1,23 @@
 /obj/item/clothing/overwear/armor/medium_armor
-	name = "medium armor"
-	desc = "9/10, it's ok."
-	desc_extended = "A very cheap armor. Not very effective, but better than nothing."
+	name = "padded stab vest"
+	desc = "Morning, Mr. Freeman. Looks like you're running late."
+	desc_extended = "A bulky anti-stab vest designed to absorb medium sized bladed weapons. Also offers some decent protection against bullets as well."
 	icon = 'icons/obj/item/clothing/suit/medium_chest_armor.dmi'
 
 	value = 120
+
+	armor = /armor/military/light
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN)
 
 	dyeable = TRUE
 
-/obj/item/clothing/overwear/armor/medium_armor/security
-	name = "padded stab vest"
-	desc = "Morning, Mr. Freeman. Looks like you're running late."
-	desc_extended = "A bulky anti-stab vest designed to absorb medium sized bladed weapons. Also offers some decent protection against bullets as well."
-	color = COLOR_BLACK
-
-	defense_rating = list(
-		BLADE = 80,
-		BLUNT = 40,
-		PIERCE = 40,
-		ARCANE = -40
-	)
-
 	size = SIZE_4
 
+/obj/item/clothing/overwear/armor/medium_armor/black
+	color = COLOR_BLACK
 
-	value = 200
+/obj/item/clothing/overwear/armor/medium_armor/merc
+	color = "#BCAC86"
+
+

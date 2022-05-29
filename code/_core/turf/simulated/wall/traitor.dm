@@ -2,13 +2,15 @@
 	name = "strong wall"
 	desc = "W E W L A D"
 	desc_extended = "A suspicious-looking wall."
-	icon = 'icons/turf/wall/shuttle_dark.dmi'
+	icon = 'icons/turf/wall/metal/shuttle.dmi'
 	icon_state = "wall"
 	corner_icons = TRUE
 	corner_category = "traitor_wall"
 
 	//No destruction turf, immortal
 
+	color = COLOR_GREY_DARK
+	map_color = COLOR_GREY_DARK
 
 /turf/simulated/wall/dark/shuttle
 	name = "syndicate shuttle wall"

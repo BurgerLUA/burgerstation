@@ -56,7 +56,7 @@
 	return ..()
 
 /mob/living/advanced/stand/handle_alpha()
-	return enabled ? 200 : 0
+	return enabled ? 255 : 0
 
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 	. = ..()
@@ -83,14 +83,7 @@
 	var/desired_y = 4
 	layer = LAYER_MOB_ABOVE
 
-	var/desired_dir = dir
-
-	/*
-	if(ai && ai.objective_attack)
-		desired_dir = get_dir(src,ai.objective_attack)
-	*/
-
-	var/list/vector_2d = direction_to_pixel_offset(desired_dir)
+	var/list/vector_2d = direction_to_pixel_offset(get_true_4dir(owner.dir))
 
 	if(owner)
 		if(!enabled || (ai && ai.objective_attack) || src.loc != owner.loc)
@@ -123,11 +116,12 @@
 	if(enabled)
 		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
 		force_move(owner.loc)
-		immortal = FALSE
-		mouse_opacity = initial(mouse_opacity)
+		remove_status_effect(IMMORTAL)
+		var/initial_mouse = initial(mouse_opacity)
+		mouse_opacity = initial_mouse ? initial_mouse : 1
 	else
 		update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
-		immortal = TRUE
+		add_status_effect(IMMORTAL)
 		mouse_opacity = 0
 
 	set_dir(owner.dir,TRUE)
@@ -149,8 +143,11 @@
 	var/skin_color = random_color()
 	var/hair_color = random_color()
 	change_organ_visual("skin", desired_color = skin_color)
-	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(S.all_hair_head))
+	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
 	if(sex == MALE && prob(25))
-		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(S.all_hair_face))
+		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair_face]))
 	update_all_blends()
+
+
+
 

@@ -7,16 +7,11 @@
 
 	alpha = 225
 
-	//icon = 'icons/invisible.dmi'
-	//icon_state = "0"
-
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
 	plane = PLANE_HUD
 	layer = 1
-
-	value = 0
 
 	var/atom/movable/grabbed_object
 
@@ -37,7 +32,6 @@
 	var/priority = 0 //The priority level of the inventory. Item transfer favors inventories with higher values.
 
 	var/inventory_temperature_mod = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature.
-	var/inventory_temperature_mod_mod = 0.5 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower. Zero means don't change from inventory.
 
 	var/list/obj/item/item_blacklist = list() //Items that can't go in this invetory.
 	var/list/obj/item/item_whitelist = list() //Items that can only go in this inventory.
@@ -45,7 +39,7 @@
 
 	var/click_flags
 
-	var/flags = FLAGS_HUD_INVENTORY
+	var/flags = FLAG_HUD_INVENTORY
 
 	var/should_draw = TRUE //Should the item's held icon be displayed?
 
@@ -59,7 +53,7 @@
 	mouse_drop_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drop_zone = 1
 
-	mouse_opacity = 2
+	mouse_opacity = 1
 
 	var/essential = FALSE //Should this be drawn when the inventory is hidden?
 	var/is_container = FALSE //Set to true if it uses the container inventory system.
@@ -69,13 +63,18 @@
 
 	var/draw_extra = FALSE
 
-	var/drop_on_death = FALSE //Set to true if this inventory should drop all its contents when the owner dies.
-
 	var/allow_quick_equip = TRUE
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_DISTANCE | FLAG_INTERACTION_CLICK
 
 	var/inventory_category = "none"
+
+	var/obj/hud/button/close_inventory/assoc_button
+
+	var/grab_level = 1 //Passive grab
+	var/grab_time //Cooldown on upgrading grab
+
+	var/ultra_persistant = FALSE //Saves even after death (but of course, removes the previous instance if unrevivable.)
 
 /obj/hud/inventory/Destroy()
 
@@ -85,13 +84,13 @@
 
 	show(FALSE,0)
 
-	update_owner(null)
+	update_owner(null) //This proc is custom to /obj/hud/inventory so it won't cause issues.
 
 	parent_inventory = null
 	child_inventory = null
 	grabbed_object = null
 
-	return ..()
+	. = ..()
 
 
 /obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
@@ -115,15 +114,16 @@
 
 	return FALSE
 
-/obj/hud/inventory/proc/show(var/should_show,var/speed)
+/obj/hud/inventory/proc/show(var/should_show,var/speed=SECONDS_TO_DECISECONDS(1))
 	if(should_show)
-		animate(src,alpha=initial(alpha),time=SECONDS_TO_DECISECONDS(speed))
-		src.mouse_opacity = 2
+		animate(src,alpha=initial(alpha),time=speed)
+		var/initial_mouse = initial(mouse_opacity)
+		mouse_opacity = initial_mouse ? initial_mouse : 1
 	else
-		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(speed))
+		animate(src,alpha=0,time=speed)
 		src.mouse_opacity = 0
 
-/obj/hud/inventory/New(var/desired_loc)
+/obj/hud/inventory/Finalize()
 	. = ..()
 	update_sprite()
 
@@ -143,12 +143,16 @@
 	if(parent_inventory)
 		color = "#ff0000"
 	else if(grabbed_object)
-		color = "#ffff00"
-		var/image/I = new/image(initial(icon),"grab")
-		add_overlay(I)
+		if(grab_level == 1) //Passive grab
+			color = "#ffff00"
+			var/image/I = new/image(initial(icon),"grab")
+			add_overlay(I)
+		else if(grab_level == 2) //Agressive grab
+			color = COLOR_RIVER_LIGHT
+			var/image/I = new/image(initial(icon),"grab")
+			add_overlay(I)
 	else
 		color = initial(color)
-
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
@@ -293,7 +297,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
+/obj/hud/inventory/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
 		return FALSE
@@ -324,7 +328,6 @@
 		I.drop_item(null)
 		return FALSE
 
-
 	var/atom/old_location = I.loc
 
 	I.drop_item(src,silent=silent)
@@ -344,18 +347,21 @@
 
 
 	update_stats()
-	I.on_pickup(old_location,src)
-	vis_contents |= I
 
 	if(I.loc != src) //Something went wrong.
 		if(!owner)
 			usr.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
 		else
-			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
+			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02"))
 		I.drop_item(get_turf(src))
+		return TRUE
+
+	I.on_pickup(old_location,src)
 
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
+
+	vis_contents |= I
 
 	return TRUE
 
@@ -372,7 +378,7 @@
 
 	item_to_update.initialize_blends(desired_icon_state)
 
-	if(is_wings(item_to_update))
+	if(istype(item_to_update,/obj/item/clothing/back/wings))
 		A.add_overlay_tracked("wings_behind",item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
 		A.add_overlay_tracked("wings_front",item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
 		A.add_overlay_tracked("wings_side",item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
@@ -413,7 +419,7 @@
 	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(worn && is_wings(I))
+			if(worn && istype(I,/obj/item/clothing/back/wings))
 				A.remove_overlay("wings_behind")
 				A.remove_overlay("wings_front")
 				A.remove_overlay("wings_side")
@@ -453,6 +459,8 @@
 		var/obj/item/I2 = src.loc
 		I2.update_inventory()
 
+	HOOK_CALL("update_stats")
+
 /obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
 	return TRUE
 
@@ -475,6 +483,14 @@
 
 	return TRUE
 	*/
+
+/obj/hud/inventory/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+
+	. = ..()
+
+	for(var/k in contents)
+		var/atom/movable/M = k
+		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
@@ -535,7 +551,7 @@
 					if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 					return FALSE
 
-		if(is_clothing(I))
+		if(istype(I,/obj/item/clothing))
 			var/obj/item/clothing/C = I
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner
@@ -578,8 +594,6 @@
 			return FALSE
 
 	return TRUE
-
-
 
 /atom/proc/get_top_object()
 

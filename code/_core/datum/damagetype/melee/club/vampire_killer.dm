@@ -1,5 +1,4 @@
 /damagetype/melee/club/vampire_killer
-	name = "vampire killer"
 
 	attack_damage_base = list(
 		BLUNT = 10,

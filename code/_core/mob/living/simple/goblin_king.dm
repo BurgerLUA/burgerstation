@@ -15,25 +15,14 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	move_delay = BOSS_TICK*3
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 	stun_angle = 0
 
 	force_spawn = TRUE
 	boss = TRUE
 
-	armor_base = list(
-		BLADE = 80,
-		BLUNT = 80,
-		LASER = 80,
-		HEAT = 80,
-		COLD = 80,
-		HOLY = -80,
-		DARK = 80,
-		FATIGUE = 80,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/default_organic/tough
 
 	status_immune = list(
 		STUN = TRUE,
@@ -53,7 +42,7 @@
 	iff_tag = "Goblin"
 	loyalty_tag = "Goblin"
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	size = SIZE_BOSS
 
@@ -71,7 +60,9 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 30
+
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 /mob/living/simple/goblin_king/post_death()
 	. = ..()
@@ -87,7 +78,7 @@
 		var/choose_goblin = pick(/mob/living/advanced/npc/goblin, /mob/living/advanced/npc/goblin/warrior, /mob/living/advanced/npc/goblin/mage)
 		var/turf/turf_to_spawn = get_step(T, pick(NORTH,SOUTH,EAST,WEST))
 		var/mob/living/spawnGoblin = new choose_goblin(turf_to_spawn)
-		spawnGoblin.one_time_life = TRUE
+		spawnGoblin.delete_on_death = TRUE
 		INITIALIZE(spawnGoblin)
 		GENERATE(spawnGoblin)
 		FINALIZE(spawnGoblin)
@@ -117,7 +108,10 @@
 	do_say("Suffer our wraith invaders, suffer!")
 	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 	var/stun_time = angered ? 40 : 20
+	var/area/A = get_area(src)
 	for(var/mob/living/L in view(VIEW_RANGE,src))
-		if(L.loyalty_tag == src.loyalty_tag)
+		if(L.dead)
+			continue
+		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
 			continue
 		L.add_status_effect(STUN,20,stun_time)

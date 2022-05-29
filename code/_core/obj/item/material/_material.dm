@@ -7,9 +7,8 @@
 	var/material_id = /material/steel
 	var/material_multiplier = 1
 
-	item_count_current = 1
-	item_count_max = 50
-	item_count_max_icon = 3
+	amount_max = 50
+	amount_max_icon = 3
 
 	crafting_id = "material"
 
@@ -32,7 +31,7 @@
 
 	. = ..()
 
-/obj/item/material/save_item_data(var/save_inventory = TRUE)
+/obj/item/material/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("material_id")
 
@@ -47,7 +46,7 @@
 		return TRUE
 
 	var/material/M = SSmaterials.all_materials[material_id]
-	crafting_id = "[crafting_id]_[M.name]"
+	crafting_id = "[initial(crafting_id)]_[M.name]"
 
 	return ..()
 

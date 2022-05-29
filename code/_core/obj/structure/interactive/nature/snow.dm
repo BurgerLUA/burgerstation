@@ -32,13 +32,14 @@ obj/structure/scenery/bush/snow/New()
 	mouse_opacity = 1
 	density = TRUE
 
-/obj/structure/interactive/tree/can_be_attacked()
+/obj/structure/interactive/tree/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
 /obj/structure/interactive/tree/New()
 	. = ..()
 	pixel_x += rand(-3,3)
 	pixel_y += rand(-1,2)
+	layer = (world.maxy - y)*10 + (world.maxx - x)*0.1
 
 /obj/structure/interactive/tree/pine
 	name = "pine tree"
@@ -51,7 +52,7 @@ obj/structure/scenery/bush/snow/New()
 	QDEL_NULL(health)
 	icon_state = "pine_stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 /obj/structure/interactive/tree/pine/New(var/desired_loc)
 	icon_state = "pine_[rand(1,3)]"
@@ -72,7 +73,7 @@ obj/structure/scenery/bush/snow/New()
 	QDEL_NULL(health)
 	icon_state = "evergreen_stump"
 	collision_flags = FLAG_COLLISION_NONE
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 /obj/structure/interactive/tree/evergreen/New(var/desired_loc)
 	icon_state = "evergreen_[rand(1,3)]"
@@ -90,7 +91,7 @@ obj/structure/scenery/bush/snow/New()
 	QDEL_NULL(health)
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 /obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
@@ -108,7 +109,7 @@ obj/structure/scenery/bush/snow/New()
 	QDEL_NULL(health)
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
-	collision_bullet_flags = FLAG_COLLISION_SPECIFIC
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"

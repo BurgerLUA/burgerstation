@@ -30,18 +30,7 @@
 	boss = TRUE
 	force_spawn = TRUE
 
-	armor_base = list(
-		BLADE = -20,
-		BLUNT = 80,
-		LASER = -20,
-		HEAT = 60,
-		COLD = -60,
-		BIO = INFINITY,
-		RAD = INFINITY,
-		FATIGUE = INFINITY,
-		ION = INFINITY,
-		PAIN = INFINITY
-	)
+	armor = /armor/slime
 
 	status_immune = list(
 		STUN = TRUE,
@@ -57,7 +46,7 @@
 		DRUGGY = TRUE
 	)
 
-	fatigue_from_block_mul = 0
+	fatigue_mul = 0
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange
@@ -80,6 +69,8 @@
 	soul_size = SOUL_SIZE_RARE
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
+
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	level = 20
 

@@ -1,7 +1,9 @@
-/obj/item/container/food
+/obj/item/container/edible
 	name = "food"
 	desc = "Edible reagent"
 	desc_extended = "Edible."
+
+	allow_reagent_transfer_from = FALSE
 
 	var/bite_count = 0 //How many times someone has taken a bite from this.
 	consume_verb = "take a bite out of"
@@ -15,13 +17,16 @@
 
 	drop_sound = 'sound/items/drop/food.ogg'
 
-	value = 0
+	has_quick_function = TRUE
 
-/obj/item/container/food/Finalize()
-	if(scale_sprite) update_sprite()
-	return ..()
+/obj/item/container/edible/quick(var/mob/caller,var/atom/object,location,params)
+	return try_transfer_reagents(caller,caller,location,null,params)
 
-/obj/item/container/food/get_base_transform()
+/obj/item/container/edible/Finalize()
+	. = ..()
+	update_sprite()
+
+/obj/item/container/edible/get_base_transform()
 	. = ..()
 	if(scale_sprite)
 		if(typical_volume <= 0)
@@ -33,18 +38,18 @@
 			M.Scale(scale_math)
 
 
-/obj/item/container/food/update_sprite()
+/obj/item/container/edible/update_sprite()
 	. = ..()
 	transform = get_base_transform()
 
-/obj/item/container/food/get_examine_list(var/mob/examiner)
+/obj/item/container/edible/get_examine_list(var/mob/examiner)
 	return ..() + div("notice",reagents.get_contents_english())
 
-/obj/item/container/food/proc/on_consumed(var/mob/caller,var/mob/living/target) //When there are no reagents left.
+/obj/item/container/edible/proc/on_consumed(var/mob/caller,var/mob/living/target) //When there are no reagents left.
 	qdel(src)
 	return TRUE
 
-/obj/item/container/food/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/edible/feed(var/mob/caller,var/mob/living/target)
 
 	. = ..()
 
@@ -52,10 +57,10 @@
 		on_consumed(caller,target)
 
 
-/obj/item/container/food/proc/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
+/obj/item/container/edible/proc/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
 	return CEILING(total_reagents/get_consume_size(caller),1)
 
-/obj/item/container/food/get_reagents_to_consume(var/mob/living/consumer)
+/obj/item/container/edible/get_reagents_to_consume(var/mob/living/consumer)
 
 	var/total_reagents = reagents.volume_current
 

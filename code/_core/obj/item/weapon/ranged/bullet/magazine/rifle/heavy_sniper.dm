@@ -1,13 +1,15 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper
 	name = "\improper .50 BFR Sniper"
 	desc = "For when you want to leave a hole the size of a basketball somewhere."
-	desc_extended = "The 50 BFR is technically an Anti-Materiel Rifle, but somehow it works against Personnel just as well."
+	desc_extended = "The BFR was primarily desgined to be an Anti-tank Rifle, however was marketed as a perfect solution to NanoTrasen operatives in hardsuits and/or mining equipment."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/50.dmi'
 	icon_state = "inventory"
 	value = 5000
 
+	tier = 3
+
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 20
+	shoot_delay = 15
 
 	damage_mod = 2
 
@@ -92,6 +94,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/Generate()
 
+	. = ..()
+
 	attachment_stock = new /obj/item/attachment/stock/sniper_50(src)
 	INITIALIZE(attachment_stock)
 	GENERATE(attachment_stock)
@@ -101,7 +105,3 @@
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
-
-	. = ..()
-
-	update_sprite()

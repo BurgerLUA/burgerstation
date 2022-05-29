@@ -43,7 +43,7 @@
 			best_cheese = k
 			best_cheese_value = v
 
-	var/obj/item/container/food/dynamic/cheese/C = new(T)
+	var/obj/item/container/edible/dynamic/cheese/C = new(T)
 	C.icon_state = icon_state
 	INITIALIZE(C)
 	C.reagents.add_reagent(best_cheese,total_milk_volume,original_temperature,FALSE,FALSE)
@@ -59,7 +59,7 @@
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE
 	cheese_mix.Cut()
-	stop_thinking(src)
+	STOP_THINKING(src)
 
 	return TRUE
 
@@ -110,7 +110,7 @@
 			allow_reagent_transfer_from = FALSE
 			var/turf/T = get_turf(src)
 			T.visible_message(span("notice","The milk starts to curdle!"))
-			start_thinking(src)
+			START_THINKING(src)
 
 	return ..()
 
@@ -124,4 +124,3 @@
 		I.color = reagents.color
 		add_overlay(I)
 
-	

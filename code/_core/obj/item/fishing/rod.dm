@@ -20,7 +20,7 @@
 	var/obj/effect/fishing_bob/fishing_bob
 	var/obj/effect/alert/exclaim/fishing_alert
 
-	var/turf/simulated/hazard/fishing_turf
+	var/turf/simulated/liquid/fishing_turf
 
 	var/mob/last_caller
 
@@ -47,7 +47,7 @@
 
 
 
-/obj/item/fishing/rod/save_item_data(var/save_inventory = TRUE)
+/obj/item/fishing/rod/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("lure")
 	SAVEATOM("line")
@@ -98,7 +98,7 @@
 			return TRUE
 		caller.to_chat(span("notice","You remove \the [object_removed.name]."))
 		object_removed.drop_item(get_turf(src))
-		C.put_in_hands(object_removed)
+		C.put_in_hands(object_removed,params)
 		return TRUE
 
 	if(is_item(object))
@@ -234,7 +234,7 @@
 			else
 				caller.to_chat(span("notice","You fail to catch anything. At least your bait is saved..."))
 
-			stop_thinking(src)
+			STOP_THINKING(src)
 			fishing_turf = null
 			nospam = null
 			snagged_fish = null
@@ -242,24 +242,24 @@
 			QDEL_NULL(fishing_alert)
 			return TRUE
 		else //Reel it in without catching anything.
-			stop_thinking(src)
+			STOP_THINKING(src)
 			fishing_turf = null
 			nospam = null
 			QDEL_NULL(fishing_bob)
 			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
 			return TRUE
 
-	if(istype(object,/turf/simulated/hazard/))
+	if(istype(object,/turf/simulated/liquid/))
 		if(compact)
 			caller.to_chat(span("notice","Extend your fishing rod first!"))
 			return TRUE
-		var/turf/simulated/hazard/H = object
+		var/turf/simulated/liquid/H = object
 		if(!H.fishing_rewards)
 			return TRUE
 		if(!line || !lure || !bait || H.type != bait.valid_turf)
 			caller.to_chat(span("warning","You need a line, a lure, and the right bait in order to use \the [src.name]!"))
 			return TRUE
-		if(!line.lavaproof && istype(object,/turf/simulated/hazard/lava))
+		if(!line.lavaproof && istype(object,/turf/simulated/liquid/lava))
 			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))
 			return TRUE
 		INTERACT_CHECK
@@ -271,7 +271,7 @@
 		fishing_bob.icon_state = "[lure.bob_icon_state]_out"
 		animate(fishing_bob,pixel_x=rand(-10,10),pixel_y=rand(-10,10),time=50)
 		nospam = world.time + SECONDS_TO_DECISECONDS(1)
-		start_thinking(src)
+		START_THINKING(src)
 		return TRUE
 
 	return ..()
@@ -306,7 +306,7 @@
 	play_sound('sound/items/drop/accessory.ogg',get_turf(src),range_max=VIEW_RANGE*0.2)
 	return TRUE
 
-/obj/item/fishing/rod/telescopic/save_item_data(var/save_inventory = TRUE)
+/obj/item/fishing/rod/telescopic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("compact")
 

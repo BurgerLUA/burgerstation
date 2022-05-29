@@ -17,12 +17,12 @@
 		if(B.type in color_scheme_buttons)
 			B.update_owner(null)
 
-/mob/living/advanced/proc/add_slot_buttons()
+/mob/living/advanced/proc/add_ability_buttons()
 
 	var/species/S = SPECIES(species)
 
-	for(var/v in S.spawning_slots)
-		var/obj/hud/button/B = new v
+	for(var/v in S.spawning_ability_buttons)
+		var/obj/hud/button/ability/B = new v
 		B.update_owner(src)
 
 /mob/living/advanced/proc/add_chargen_buttons(var/list/blacklist=list())
@@ -51,16 +51,16 @@
 
 
 //Inventory
-/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed = 1)
+/mob/living/advanced/proc/toggle_inventory(var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed = SECONDS_TO_DECISECONDS(1))
 	show_inventory(!draw_inventory,show_flags_whitelist,show_flags_blacklist,speed)
 
-/mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed)
+/mob/living/advanced/proc/show_inventory(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
 	draw_inventory = show
-	for(var/v in inventory)
-		var/obj/hud/inventory/O = v
-		if(O.flags & show_flags_whitelist && !(O.flags & show_flags_blacklist))
-			O.show(show,speed)
+	for(var/k in inventories_by_id)
+		var/obj/hud/inventory/I = inventories_by_id[k]
+		if(I.flags & show_flags_whitelist && !(I.flags & show_flags_blacklist))
+			I.show(show,speed)
 
-/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAGS_HUD_ALL,var/show_flags_blacklist=FLAGS_HUD_NONE,var/speed=1)
+/mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))
 	. = ..()
 	show_inventory(show,show_flags_whitelist,show_flags_blacklist,speed)

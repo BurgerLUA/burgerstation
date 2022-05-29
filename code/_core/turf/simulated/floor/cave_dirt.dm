@@ -22,6 +22,8 @@
 
 	organic = TRUE
 
+	map_color = COLOR_BROWN
+
 
 /turf/simulated/floor/bedrock
 
@@ -40,6 +42,8 @@
 	health = null
 
 	organic = TRUE
+
+	map_color = COLOR_BROWN
 
 /turf/simulated/floor/bedrock/New(var/desired_loc)
 	var/desired_x = x % 10

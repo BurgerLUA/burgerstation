@@ -87,7 +87,7 @@
 	. = ..()
 	if(!used) icon_state = "blank"
 
-/obj/item/dice/d20/cursed/save_item_data(var/save_inventory = TRUE)
+/obj/item/dice/d20/cursed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("used")
 
@@ -105,7 +105,7 @@
 
 /obj/item/dice/d20/cursed/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
 
-	if(!caller || silent || !is_living(caller))
+	if(!caller || silent || !is_living(caller) || !caller.client)
 		return ..()
 
 	var/mob/living/L = caller
@@ -136,7 +136,7 @@
 			if(L.blood_type)
 				var/reagent/R = REAGENT(L.blood_type)
 				for(var/i=1,i<=9,i++)
-					create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-32,32),rand(-32,32))
+					create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 				L.to_chat(span("danger","Wait, where did all my blood go?!"))
 				L.blood_volume = 0
 			else
@@ -145,25 +145,24 @@
 					var/turf/T = get_turf(L)
 					for(var/i=1,i<=5,i++)
 						CREATE(/mob/living/simple/passive/mouse/grey,T)
-					L.health.adjust_loss_smart(tox=1000)
+					L.health.adjust_loss_smart(tox=L.health.health_max)
 				else
 					L.to_chat(span("danger","My sensors indicate I am overheating!"))
-					L.health.adjust_loss_smart(burn=1000)
+					L.health.adjust_loss_smart(burn=L.health.health_max)
 		if(4)
 			if(L.health.organic)
 				L.to_chat(span("danger","Woe, plague be upon me!"))
 				var/turf/T = get_turf(L)
 				for(var/i=1,i<=5,i++)
 					CREATE(/mob/living/simple/passive/mouse/grey,T)
-				L.health.adjust_loss_smart(tox=1000)
+				L.health.adjust_loss_smart(tox=L.health.health_max)
 
 			else
 				L.to_chat(span("danger","My sensors indicate I am overheating!"))
-				L.health.adjust_loss_smart(burn=1000)
+				L.health.adjust_loss_smart(burn=L.health.health_max)
 		if(5)
 			L.to_chat(span("danger","Oh no I hope I don't-"))
 			L.death(TRUE)
-			L.health?.update_health()
 		if(6)
 			L.to_chat(span("danger","I'M ON FIRE!"))
 			L.ignite(60)
@@ -186,7 +185,7 @@
 			L.add_attribute_xp(ATTRIBUTE_LUCK,50 - L.get_attribute_level(ATTRIBUTE_LUCK))
 		if(11)
 			L.to_chat(span("notice","Egg."))
-			CREATE(/obj/item/container/food/egg/chicken,get_turf(src))
+			CREATE(/obj/item/container/edible/egg/chicken,get_turf(src))
 		if(12)
 			L.to_chat(span("notice","Hey, magic!"))
 			CREATE(/obj/item/supply_crate/magic,get_turf(src))
@@ -195,7 +194,7 @@
 			return TRUE //Don't delete.
 		if(14)
 			L.to_chat(span("notice","Hey, some gems! Wait..."))
-			CREATE(/obj/item/currency/telecrystals/player_antagonist_spawn,get_turf(src))
+			CREATE(/obj/item/currency/telecrystals{amount=10},get_turf(src))
 		if(15)
 			L.to_chat(span("notice","Hey, more magic!"))
 			var/turf/T = get_turf(src)

@@ -19,11 +19,6 @@
 
 #define PERCENT(val) (round((val)*100, 0.1))
 
-//time of day but automatically adjusts to the server going into the next day within the same round.
-//for when you need a reliable time number that doesn't depend on byond time.
-#define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
-#define MIDNIGHT_ROLLOVER_CHECK ( GLOB.rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : GLOB.midnight_rollovers )
-
 #define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
 
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
@@ -85,6 +80,8 @@
 #define ISMULTIPLE(x, y) ((x) % (y) == 0)
 
 #define SCALE(value, min, max) ((value - min) / (max - min))
+
+#define SCALEBELOW(value,threshold,maximum) min(maximum,(value/threshold))*maximum)
 
 // Performs a linear interpolation between a and b.
 // Note that amount=0 returns a, amount=1 returns b, and
@@ -219,10 +216,12 @@
 #define RULE_OF_THREE(a, b, x) ((a*x)/b)
 
 #define BLOCK_DISTANCE(A1,A2) max(abs(A1.x - A2.x),abs(A1.y - A2.y))
-// )
+
 
 #define HYPOTENUSE(a,b) sqrt(a**2 + b**2)
 
 
 
 #define IS_INFINITY(a) (abs(a) >= INFINITY)
+
+#define SQRT2 1.41421356237

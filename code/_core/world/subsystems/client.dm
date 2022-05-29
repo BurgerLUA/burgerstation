@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(client)
 
 	use_time_dialation = FALSE
 
+	var/list/queued_automatics = list()
+
 /subsystem/client/on_life()
 
 	advanced_ticks += 1
@@ -30,5 +32,21 @@ SUBSYSTEM_DEF(client)
 		C.on_life()
 		if(do_slow)
 			C.on_life_slow()
+
+	for(var/k in queued_automatics)
+		var/obj/item/weapon/ranged/R = k
+		var/list/data = queued_automatics[k]
+		var/mob/caller = data[1]
+		var/list/params = data[2]
+		var/damage_multiplier = data[3]
+		var/max_bursts_to_use = data[4]
+		var/shoot_delay_to_use = data[5]
+		if(R.last_shoot_time + shoot_delay_to_use > world.time)
+			continue
+		if(!R.handle_automatic(caller,params,damage_multiplier,max_bursts_to_use,shoot_delay_to_use))
+			R.next_shoot_time = world.time + (R.burst_delay ? R.burst_delay : R.shoot_delay*R.current_bursts*1.25)
+			R.current_bursts = 1
+			queued_automatics -= k
+
 
 	return TRUE

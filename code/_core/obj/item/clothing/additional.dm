@@ -5,8 +5,8 @@
 	for(var/k in additional_clothing_stored)
 		var/obj/item/C = k
 
-		if(!is_clothing(C))
-			if(caller.put_in_hands(C,caller.right_item))
+		if(!istype(C,/obj/item/clothing/)) //Must be a weapon.
+			if(caller.put_in_hands(C))
 				should_deploy = TRUE
 			continue
 

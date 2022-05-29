@@ -27,22 +27,22 @@
 		return stored_weapon.get_battery()
 	return ..()
 
-/obj/item/mech_part/equipment/weapon/save_item_data(var/save_inventory = TRUE)
+/obj/item/mech_part/equipment/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_weapon")
-	
+
 /obj/item/mech_part/equipment/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("stored_weapon")
 	if(stored_weapon) stored_weapon.update_sprite()
 	update_sprite()
-	
+
 /obj/item/mech_part/equipment/weapon/Generate()
-	stored_weapon = new stored_weapon(src)
-	INITIALIZE(stored_weapon)
-	GENERATE(stored_weapon)
-	FINALIZE(stored_weapon)
-	update_sprite()
+	if(ispath(stored_weapon))
+		stored_weapon = new stored_weapon(src)
+		INITIALIZE(stored_weapon)
+		GENERATE(stored_weapon)
+		FINALIZE(stored_weapon)
 	return ..()
 
 /obj/item/mech_part/equipment/weapon/update_sprite()
@@ -55,7 +55,7 @@
 
 		if(istype(src.loc,/mob/living/vehicle/mech/modular))
 			icon = initial(icon)
-			icon_state = "[stored_weapon.icon_state]_[current_slot]"
+			icon_state = "[initial(icon_state)]_[current_slot]"
 		else
 			icon = stored_weapon.icon
 			icon_state = stored_weapon.icon_state
@@ -66,32 +66,42 @@
 	return ..()
 
 /obj/item/mech_part/equipment/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
-	if(stored_weapon && istype(src.loc,/mob/living/vehicle/mech/modular))
-		return stored_weapon.click_on_object(caller,object,location,control,params)
+	if(stored_weapon && istype(src.loc,/mob/living/vehicle/mech/modular) && !stored_weapon.click_on_object(caller,object,location,control,params))
+		return stored_weapon.attack(src.loc,object,params,caller)
+
 	return ..()
 
 /obj/item/mech_part/equipment/weapon/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	DEFER_OBJECT
-	if(stored_weapon && !is_inventory(defer_object))
-		return stored_weapon.clicked_on_by_object(caller,defer_object,location,control,params)
+	if(stored_weapon && !is_inventory(object))
+		return stored_weapon.clicked_on_by_object(caller,object,location,control,params)
 	return ..()
 
 /obj/item/mech_part/equipment/weapon/smg/
 	stored_weapon = /obj/item/weapon/ranged/energy/mech/smg
 	slot = MECH_SLOT_HAND | MECH_SLOT_SHOULDER
+	icon_state = "mech_ballistic"
 
 /obj/item/mech_part/equipment/weapon/rifle
 	stored_weapon = /obj/item/weapon/ranged/energy/mech/lmg
 	slot = MECH_SLOT_HAND
+	icon_state = "mech_ballistic"
 
 /obj/item/mech_part/equipment/weapon/laser
 	stored_weapon = /obj/item/weapon/ranged/energy/mech/laser
 	slot = MECH_SLOT_HAND
+	icon_state = "mech_lasercarbine"
 
 /obj/item/mech_part/equipment/weapon/ion
 	stored_weapon = /obj/item/weapon/ranged/energy/mech/ion
 	slot = MECH_SLOT_HAND
+	icon_state = "mech_ionrifle"
 
 /obj/item/mech_part/equipment/weapon/missile_pod
 	stored_weapon = /obj/item/weapon/ranged/energy/mech/missile_pod
 	slot = MECH_SLOT_SHOULDER
+	icon_state = "mech_missile_pod"
+
+/obj/item/mech_part/equipment/weapon/drill
+	stored_weapon = /obj/item/weapon/melee/mech/drill
+	slot = MECH_SLOT_HAND
+	icon_state = "mech_drill"

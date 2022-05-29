@@ -4,13 +4,7 @@
 	desc_extended = "The loin is imbued with the life essence of the late Goblin King. Greatly desired by mages."
 	icon = 'icons/obj/item/clothing/pants/goblin_loin.dmi'
 
-	defense_rating = list(
-		ARCANE = 80,
-		HOLY = -80,
-		DARK = 80
-	)
-
-	rarity = RARITY_LEGENDARY
+	armor = /armor/cloth
 
 	size = SIZE_2
 
@@ -21,9 +15,9 @@
 /obj/item/clothing/pants/goblin_loin/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/groin))
-		start_thinking(src)
+		START_THINKING(src)
 	else
-		stop_thinking(src)
+		STOP_THINKING(src)
 
 /obj/item/clothing/pants/goblin_loin/think()
 	if(cooldown_effect > world.time)
@@ -33,7 +27,8 @@
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)
 			continue
-		if(affectLiving.health.get_mana_loss())
-			affectLiving.mana_regen_buffer += 3
+		if(affectLiving.health.mana_current >= affectLiving.health.mana_max)
+			continue
+		affectLiving.mana_regen_buffer += 3
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE

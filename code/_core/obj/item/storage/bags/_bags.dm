@@ -36,11 +36,11 @@
 	icon_state = "botany"
 
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_3
+	container_max_size = SIZE_2
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/seed,
-		/obj/item/container/food/plant
+		/obj/item/container/edible/plant
 	)
 
 	value = 30
@@ -70,7 +70,7 @@
 	for(var/k in inventories)
 		CHECK_TICK(50,FPS_SERVER*4)
 		var/obj/hud/inventory/I = k
-		for(var/obj/item/container/food/plant/P in I.contents)
+		for(var/obj/item/container/edible/plant/P in I.contents)
 			CHECK_TICK(50,FPS_SERVER*2)
 			if(!P.plant_type)
 				continue
@@ -110,8 +110,8 @@
 
 	value = 400
 
+	container_max_size = SIZE_2
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_3
 	container_max_slots = 10
 	container_whitelist = list(
 		/obj/item/material/ore,
@@ -126,7 +126,6 @@
 	desc = "I got that bluespace fever and I can't sleep!"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores and ingots."
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_4
 	container_max_slots = 30
 
 	value = 6000
@@ -138,11 +137,11 @@
 	icon_state = "chemistry"
 
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_4
+	container_max_size = SIZE_2
 	container_max_slots = 10
 	container_whitelist = list(
-		/obj/item/container/beaker,
-		/obj/item/container/pill,
+		/obj/item/container/simple/beaker,
+		/obj/item/container/edible/pill,
 		/obj/item/container/syringe
 	)
 
@@ -160,7 +159,7 @@
 	container_max_size = SIZE_0
 	container_max_slots = 30
 	container_whitelist = list(
-		/obj/item/container/pill,
+		/obj/item/container/edible/pill,
 	)
 
 	var/color_lid = "#FFFFFF"
@@ -174,7 +173,7 @@
 	value = 20
 
 
-/obj/item/storage/pillbottle/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
@@ -186,7 +185,7 @@
 	LOADVAR("color_label")
 	LOADVAR("color_canister")
 
-/obj/item/storage/pillbottle/PostInitialize()
+/obj/item/storage/pillbottle/Finalize()
 	. = ..()
 	update_sprite()
 
@@ -238,8 +237,8 @@
 
 /obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/bicaridine(src)
-	return ..()
+		new /obj/item/container/edible/pill/bicaridine(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/bicaridine_small
 	name = "bicaridine pill bottle"
@@ -247,8 +246,8 @@
 
 /obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/bicaridine(src)
-	return ..()
+		new /obj/item/container/edible/pill/bicaridine(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/kelotane
 	name = "kelotane pill bottle"
@@ -256,8 +255,8 @@
 
 /obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/kelotane(src)
-	return ..()
+		new /obj/item/container/edible/pill/kelotane(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/kelotane_small
 	name = "kelotane pill bottle"
@@ -265,8 +264,8 @@
 
 /obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/kelotane(src)
-	return ..()
+		new /obj/item/container/edible/pill/kelotane(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/dylovene
 	name = "dylovene pill bottle"
@@ -274,8 +273,8 @@
 
 /obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/dylovene(src)
-	return ..()
+		new /obj/item/container/edible/pill/dylovene(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/dylovene_small
 	name = "dylovene pill bottle"
@@ -283,8 +282,8 @@
 
 /obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/dylovene(src)
-	return ..()
+		new /obj/item/container/edible/pill/dylovene(src)
+	. = ..()
 
 
 /obj/item/storage/pillbottle/iron
@@ -293,8 +292,8 @@
 
 /obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/iron(src)
-	return ..()
+		new /obj/item/container/edible/pill/iron(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/iron_small
 	name = "iron pill bottle"
@@ -302,8 +301,8 @@
 
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/iron(src)
-	return ..()
+		new /obj/item/container/edible/pill/iron(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/omnizine
 	name = "omnizine pill bottle"
@@ -311,8 +310,8 @@
 
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/omnizine(src)
-	return ..()
+		new /obj/item/container/edible/pill/omnizine(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/charcoal
 	name = "charcoal pill bottle"
@@ -320,8 +319,8 @@
 
 /obj/item/storage/pillbottle/charcoal/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/charcoal(src)
-	return ..()
+		new /obj/item/container/edible/pill/charcoal(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/antihol_small
 	name = "antihol bottle"
@@ -329,8 +328,8 @@
 
 /obj/item/storage/pillbottle/antihol_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
-		new /obj/item/container/pill/antihol(src)
-	return ..()
+		new /obj/item/container/edible/pill/antihol(src)
+	. = ..()
 
 /obj/item/storage/pillbottle/assprin
 	name = "assprin pill bottle"
@@ -338,8 +337,27 @@
 
 /obj/item/storage/pillbottle/assprin/fill_inventory()
 	for(var/i=1,i<=20,i++)
-		new /obj/item/container/pill/assprin(src)
-	return ..()
+		new /obj/item/container/edible/pill/assprin(src)
+	. = ..()
+
+
+/obj/item/storage/pillbottle/potassium_iodide_small
+	name = "potassium iodide pill bottle"
+	desc = "Contains 10 20u potassium iodide pills."
+
+/obj/item/storage/pillbottle/potassium_iodide_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/edible/pill/potassium_iodide(src)
+	. = ..()
+
+/obj/item/storage/pillbottle/space_prussian_blue_small
+	name = "space prussian blue pill bottle"
+	desc = "Contains 10 20u space prussian blue pills."
+
+/obj/item/storage/pillbottle/space_prussian_blue_small/fill_inventory()
+	for(var/i=1,i<=10,i++)
+		new /obj/item/container/edible/pill/space_prussian_blue(src)
+	. = ..()
 
 
 
@@ -356,7 +374,7 @@
 	container_whitelist = list(
 		/obj/item/currency/telecrystals,
 		/obj/item/currency/magic_token,
-		/obj/item/currency/gold,
+		/obj/item/currency/gold_coin,
 		/obj/item/currency/prize_ticket,
 		/obj/item/coin/antag_token
 	)
@@ -365,8 +383,12 @@
 	dyeable = TRUE
 	color = "#D8C1B0"
 
+/obj/item/storage/bagofhoarding/get_value()
+	. = ..()
+	if(goods && hoard > 0)
+		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/save_inventory = TRUE)
+/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")
@@ -377,24 +399,31 @@
 	LOADVAR("hoard")
 	LOADPATH("targetitem")
 	LOADATOM("goods")
+	if(!goods  || !targetitem)
+		targetitem = null
+		goods = null
+		hoard = 0
+
 
 /obj/item/storage/bagofhoarding/get_examine_details_list(var/mob/examiner)
 	. = ..()
-	if(hoard) . += span("notice","It currently holds [hoard] [goods.name]\s.")
-	else . += span("notice","It does not currently hold anything.")
+	if(goods && hoard > 0)
+		. += span("notice","It currently holds [hoard] [initial(goods.name)]\s.")
+	else
+		. += span("notice","It does not currently hold anything.")
 
 /obj/item/storage/bagofhoarding/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(hoard)
 		if(istype(object,/obj/hud/inventory))
 			var/mob/living/advanced/C = caller
-			var/maxstack = goods.item_count_max
+			var/maxstack = goods.amount_max
 			if(hoard <= maxstack)
 				maxstack = hoard
-			if((goods.item_count_max == 1) || (hoard == 1))
+			if((goods.amount_max == 1) || (hoard == 1))
 				var/obj/item/M = new goods.type
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 				C.to_chat(span("notice","You take out a single [M.name]."))
 				hoard--
 				INTERACT_DELAY(1)
@@ -408,18 +437,18 @@
 			if(!choice) return TRUE
 			if(choice >= maxstack)
 				var/obj/item/M = new goods.type
-				M.item_count_current = maxstack
+				M.amount = maxstack
 				M.update_sprite()
 				hoard -= maxstack
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 			else if(choice < maxstack)
 				var/obj/item/M = new goods.type
-				M.item_count_current = choice
+				M.amount = choice
 				M.update_sprite()
 				hoard -= choice
 				M.drop_item(get_turf(caller))
-				C.put_in_hands(M)
+				C.put_in_hands(M,params)
 			if (!hoard)
 				caller.to_chat(span("notice","\The [src.name] is now empty."))
 				goods = null
@@ -428,7 +457,7 @@
 		if(ispath(I.type,targetitem))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			hoard += I.item_count_current
+			hoard += I.amount
 			play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 			qdel(I)
 			return TRUE
@@ -449,14 +478,15 @@
 						targetitem = /obj/item/currency/telecrystals	//otherwise things like obj/.../telecrystals/goblins and /treasure break
 					if(ispath(I.type,/obj/item/currency/magic_token))	//cuz it needs to be shortened back to telecrystals/
 						targetitem = /obj/item/currency/magic_token		//keeping the targetitem var is also important for some shit like the desc
-					if(ispath(I.type,/obj/item/currency/gold))			//works around it so eh good enough absolute shitcode but smiling imp emoji
-						targetitem = /obj/item/currency/gold
+					if(ispath(I.type,/obj/item/currency/gold_coin))			//works around it so eh good enough absolute shitcode but smiling imp emoji
+						targetitem = /obj/item/currency/gold_coin
 					if(ispath(I.type,/obj/item/currency/prize_ticket))
 						targetitem = /obj/item/currency/prize_ticket
 					if(ispath(I.type,/obj/item/coin/antag_token))
 						targetitem = /obj/item/coin/antag_token
 					goods = I
-					hoard = I.item_count_current
+					hoard = I.amount
+					I.amount = 1
 					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 					caller.to_chat(span("notice","The [src.name] now accepts [I.name]\s."))
 					qdel(I)

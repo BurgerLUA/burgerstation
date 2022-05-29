@@ -1,16 +1,18 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt
-	name = "12g Masterstroke Shotgun"
+	name = "12g M2 MasterStroke"
 	desc = "Reliable, cheap, and strong."
-	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/nt.dmi'
+	desc_extended = "A very robust yet affordable short-stroke pump action shotgun made by NanoTrasen for NanoTrasen."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/pump.dmi'
 	icon_state = "inventory"
-	value = 1700
+	value = 800
 
-	shoot_delay = 4
+	tier = 2
+
+	shoot_delay = 5
 
 	automatic = FALSE
 
-	bullet_count_max = 6
+	bullet_count_max = 8
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
@@ -24,7 +26,8 @@
 	dan_mode = TRUE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -38,24 +41,26 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
-	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 9 - 16
+	attachment_sight_offset_x = 21 - 16
 	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 28 - 16
+	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 15 - 16
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
+
+	pump_delay = 3
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
 	return 0.004

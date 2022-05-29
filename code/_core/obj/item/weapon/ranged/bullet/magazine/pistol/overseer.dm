@@ -1,12 +1,14 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer
 	name = "\improper 12.7mm High-Power Auto"
 	desc = "The \"Auto\" is for semiauto."
-	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders. The bulkiness of the pistol rivals submachine guns."
+	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
 	value = 700
 
-	shoot_delay = 4
+	tier = 2
+
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -46,7 +48,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -77,6 +79,7 @@
 	icon_state = "inventory"
 	value = 2000
 
+	tier = 3
 	shoot_delay = 2
 
 	heat_max = 0.05
@@ -97,7 +100,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -120,8 +123,4 @@
 
 	. = ..()
 
-	attachment_barrel = /obj/item/attachment/barrel/suppressor
-	attachment_barrel = new attachment_barrel(src)
-
-	update_attachment_stats()
-	update_sprite()
+	attachment_barrel = new/obj/item/attachment/barrel/suppressor(src)

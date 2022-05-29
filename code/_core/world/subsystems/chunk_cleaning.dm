@@ -1,18 +1,19 @@
-#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.
-
 SUBSYSTEM_DEF(chunkclean)
 	name = "Chunkclean Subsystem"
 	desc = "Handles chunk cleaning."
 	tick_rate = SECONDS_TO_TICKS(300) //JUST LIKE MINECRAFT
 	priority = SS_ORDER_DELETE
 
-	cpu_usage_max = 90
-	tick_usage_max = 90
+	cpu_usage_max = 25
+	tick_usage_max = 25
 
 	var/current_z = 0
 
 
 /subsystem/chunkclean/Initialize()
+
+	active_chunks = new/list[][]
+
 	. = ..()
 
 	tick_rate = initial(tick_rate)
@@ -63,6 +64,7 @@ SUBSYSTEM_DEF(chunkclean)
 				continue
 			var/list/chunk_turfs = get_chunk(x,y,z)
 			for(var/k in chunk_turfs)
+				CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 				var/turf/T = k
 				var/area/A = T.loc
 				if(A.safe_storage)
@@ -80,6 +82,8 @@ SUBSYSTEM_DEF(chunkclean)
 	for(var/k in all_players)
 		sleep(-1)
 		var/mob/living/advanced/player/P = k
+		if(!P.ckey_last) //Ignore corpses without players in them.
+			continue
 		var/turf/T = get_turf(P)
 		if(!T)
 			continue

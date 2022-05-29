@@ -6,7 +6,7 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
 
-	rarity = RARITY_MYTHICAL
+
 
 	defense_rating = list(
 		BLADE = 60,
