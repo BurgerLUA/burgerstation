@@ -111,6 +111,9 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 30
+
+	can_gib = FALSE
 
 
 /obj/item/organ/torso/monkey

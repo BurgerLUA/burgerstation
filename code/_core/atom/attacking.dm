@@ -66,6 +66,10 @@
 	if(attacker != object_to_damage_with && world.time < object_to_damage_with.attack_next)
 		return FALSE
 
+	var/desired_damage_type = damage_type_override ? damage_type_override : object_to_damage_with.get_damage_type(attacker,victim)
+	if(!desired_damage_type)
+		return FALSE
+
 	var/attack_distance = get_dist_advanced(attacker,victim)
 	if(!ignore_distance && attack_distance > object_to_damage_with.attack_range) //Can't attack, weapon isn't long enough.
 		return FALSE
@@ -97,10 +101,6 @@
 			last_turf = next_turf
 			step_check--
 
-	var/desired_damage_type = damage_type_override ? damage_type_override : object_to_damage_with.get_damage_type(attacker,victim)
-	if(!desired_damage_type)
-		return FALSE
-
 	var/damagetype/DT = all_damage_types[desired_damage_type]
 	if(!DT)
 		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
@@ -127,7 +127,7 @@
 		if(victim == v && !(can_attack && can_be_attacked))
 			return FALSE
 		if(can_attack && can_be_attacked)
-			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,params,precise,precise)
+			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,desired_damage_type,params,precise,precise)
 			hit_objects += hit_object //Could be null, but that's fine.
 			if(hit_object)
 				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
@@ -158,10 +158,10 @@
 /atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 0.5
 
-/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
+/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damage_type/damage_type,var/params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
 	return src
 
-/atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params) //Which object should the attacker damage with?
+/atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list()) //Which object should the attacker damage with?
 	return src
 
 /atom/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)

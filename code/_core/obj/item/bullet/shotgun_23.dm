@@ -19,7 +19,7 @@
 	size = 0.04
 	value = 3.5
 
-	inaccuracy_modifer = 1.5
+	inaccuracy_modifier = 1.5
 
 	amount_max = 4
 	amount_max_icon = 4

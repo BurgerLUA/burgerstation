@@ -32,6 +32,21 @@
 
 	return TRUE
 
+/reagent_recipe/explosion/smoke
+	name = "Sugar-Phosphorous-Potassium Smoke"
+	category = "Explosions"
+	required_reagents = list(
+		/reagent/nutrition/sugar = 1,
+		/reagent/phosphorous = 1,
+		/reagent/potassium = 1
+	)
+	results = list()
+
+/reagent_recipe/explosion/smoke/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+	var/turf/T = get_turf(container.owner)
+	smoke(T,magnitude*0.4,40,container,caller)
+	return TRUE
+
 /reagent_recipe/explosion/potassium_perchlorate
 	name = "Potassium Perchlorate"
 	required_reagents = list(

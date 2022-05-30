@@ -24,7 +24,7 @@
 	var/projectile_count = 1 //The amount of projectiles shot out of this bullet. Optional. Overrides the gun's settings.
 	var/projectile_speed = BULLET_SPEED_PISTOL_HEAVY //The speed of the bullet, in pixels per tick. Optional. Overrides the gun's settings.
 	var/bullet_color //The bullet color of the projectile.
-	var/inaccuracy_modifer = 1 //The modifer for target doll inaccuracy. Lower values means more accurate.
+	var/inaccuracy_modifier = 1 //The modifier for target doll inaccuracy. Lower values means more accurate.
 	var/penetrations = 0 //How many additional penetrations this bullet is allowed.
 
 	var/caseless = FALSE
@@ -89,7 +89,7 @@
 
 	. *= 0.75 + max(0.5,1 - base_spread)*0.25
 
-	. *= 0.5 + max(0,1-inaccuracy_modifer)*0.5
+	. *= 0.5 + max(0,1-inaccuracy_modifier)*0.5
 
 	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
 
@@ -178,10 +178,9 @@
 /obj/item/bullet_cartridge/proc/transfer_src_to_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/transfer_target,location,control,params,var/talk = TRUE)
 
 	if(src == transfer_target)
-		return FALSE //TODO: THIS USED TO BE TRUE, TEST BULLETS TO SEE IF THIS SHOULD BE TRUE
+		return FALSE
 
-	if(type != transfer_target.type)
-		caller.to_chat(span("notice","It wouldn't be a good idea to mix different bullet types."))
+	if(src.type != transfer_target.type)
 		return FALSE
 
 	var/bullets_to_add = min(amount,transfer_target.amount_max - transfer_target.get_ammo_count())

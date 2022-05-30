@@ -171,3 +171,8 @@
 	icon = 'icons/obj/projectiles/laser.dmi'
 	icon_state = "ion"
 
+
+/obj/projectile/bullet/flintlock
+	name = "bullet"
+	icon = 'icons/obj/projectiles/flintlock.dmi'
+	icon_state = "iron"

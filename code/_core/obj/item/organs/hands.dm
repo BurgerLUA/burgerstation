@@ -298,6 +298,10 @@
 
 	defense_rating = SKELETON_ARMOR
 
+	projectile_dodge_chance = 10
+
+	can_gib = FALSE
+
 /obj/item/organ/hand/skeleton/left
 	name = "left skeleton hand"
 	id = BODY_HAND_LEFT

@@ -21,7 +21,7 @@
 	size = 0.04
 	value = 1.2
 
-	inaccuracy_modifer = 0.75
+	inaccuracy_modifier = 0.75
 
 /obj/item/bullet_cartridge/rifle_308/surplus
 	name = "\improper surplus .308 rifle cartridge"
@@ -294,7 +294,7 @@
 
 	value = 1.8
 
-	inaccuracy_modifer = 0.75
+	inaccuracy_modifier = 0.75
 
 /obj/item/bullet_cartridge/rifle_939mm/surplus
 	name = "\improper surplus 9x39mm subsonic rifle rifle bullet"

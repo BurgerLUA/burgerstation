@@ -75,7 +75,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(owner,src,params,DT))
 		return FALSE
-	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,params,TRUE,TRUE)
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,damage_type,params,TRUE,TRUE)
 	return DT.process_damage(owner,victim,src,object_to_damage,owner,1)
 
 /obj/effect/temp/hazard/proc/do_hazard()

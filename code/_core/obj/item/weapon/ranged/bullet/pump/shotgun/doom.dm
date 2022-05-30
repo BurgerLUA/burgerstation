@@ -12,10 +12,11 @@
 
 	automatic = FALSE
 
-	shoot_delay = 2
+	shoot_delay = 4
 	damage_mod = 2
 	heat_max = 0
 	bullet_count_max = 6
+	pump_delay = 6
 
 	size = SIZE_4
 	weight = 12
@@ -59,9 +60,6 @@
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
-
-
-	pump_delay = 8
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_static_spread()
 	return 0.005

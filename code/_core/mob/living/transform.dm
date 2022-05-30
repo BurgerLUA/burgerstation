@@ -5,10 +5,11 @@
 	. = 0
 	if(on_table)
 		. += 10
-	if(horizontal)
+
+	if(on_liquid > 0)
+		. -= on_liquid
+	else if(horizontal)
 		. -= 14
-	else if(!on_liquid)
-		. += 4
 
 /mob/living/proc/get_turn()
 	. = 0

@@ -265,7 +265,7 @@
 				if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
 					precise = TRUE
 
-			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,params,precise,precise,inaccuracy_modifier)
+			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,damage_type,params,precise,precise,inaccuracy_modifier)
 
 			if(!object_to_damage)
 				DT.perform_miss(null,hit_atom,weapon)

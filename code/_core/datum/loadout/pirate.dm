@@ -69,9 +69,18 @@
 		/obj/item/clothing/hands/gloves/colored/padded/brown/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/belt/storage/colored/brown,
 		/obj/item/clothing/glasses/eyepatch,
 		/obj/item/weapon/melee/sword/sabre,
-		/obj/item/weapon/ranged/energy/rifle
+		/obj/item/weapon/ranged/bullet/revolver/flintlock,
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3},
+		/obj/item/bullet_cartridge/flintlock{amount=3}
 	)
 
 /loadout/pirate/crew/magic

@@ -30,11 +30,11 @@
 
 #define PLANE_OBJ -31
 
-#define PLANE_MOB_DEAD -26
+#define PLANE_MOB_DEAD -30
 
-#define PLANE_ITEM -27
+#define PLANE_ITEM -29
 
-#define PLANE_CURRENCY -26
+#define PLANE_CURRENCY -28
 
 //Mob
 #define PLANE_MOB_UNDERWATER -25
@@ -75,11 +75,13 @@
 #define PLANE_CHAT 12
 
 //Abstract
-#define PLANE_ABSTRACT 98
+#define PLANE_ABSTRACT 50
 
-#define PLANE_ALWAYS_VISIBLE 99
+#define PLANE_ALWAYS_VISIBLE 51
 
 //HUD
+#define PLANE_MAP 99
+
 #define PLANE_HUD 100
 
 #define PLANE_HUD_OBJ 101

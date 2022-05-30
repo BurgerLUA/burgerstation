@@ -24,7 +24,7 @@
 		return driving
 	return ..()
 
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(!length(params))
 		params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
@@ -47,6 +47,9 @@
 		var/obj/item/organ/O = k
 
 		if(!O.can_be_targeted)
+			continue
+
+		if(!O.check_hit_chance(attacker,weapon,damage_type,params,accurate,find_closest,inaccuracy_modifier))
 			continue
 
 		if(x_attack >= O.target_bounds_x_min && x_attack <= O.target_bounds_x_max && y_attack >= O.target_bounds_y_min && y_attack <= O.target_bounds_y_max)

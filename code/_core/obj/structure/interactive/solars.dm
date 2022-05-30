@@ -13,12 +13,14 @@
 	density = TRUE
 	anchored = TRUE
 
-	layer = LAYER_FLOOR_PIPE + 1
+	layer = 9999
 
 	//health = /health/construction/
 	//health_base = 100
 
 	wire_powered = TRUE
+
+	pixel_z = 6
 
 /obj/structure/interactive/solar_panel/power_process(var/power_multiplier=1)
 	update_power_supply(get_power_supply())

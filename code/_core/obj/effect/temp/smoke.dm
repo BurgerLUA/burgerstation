@@ -5,7 +5,7 @@
 	if(container)
 		T = new(null,1000)
 		T.owner = owner
-		container.transfer_reagents_to(T,container.volume_current,caller=owner)
+		container.transfer_reagents_to(T,container.volume_current,caller=owner) //Transfer everything to this temp container.
 		queue_delete(T,desired_duration)
 
 	var/list/blacklist_turfs = list(T=TRUE)
@@ -20,7 +20,9 @@
 	var/fade_time = SECONDS_TO_DECISECONDS(3)
 	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE | LONG_GLIDE
 
-	var/smoke_volume = 20//in tiles. Not a width. If you want a rough width, get your width and multiply by 4.
+	var/smoke_volume = 20//in tiles. Not a width. If you want a rough width, get your volume and divide by 4.
+	var/smoke_volume_original = 0
+	var/reagent_volume_original = 0
 
 	var/next_think = 0
 
@@ -40,36 +42,49 @@
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
 	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))
-		container.splash(owner,A,1,FALSE,5)
+		var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
+		container.splash(owner,A,amount_to_actually_splash,FALSE,5)
+	return TRUE
 
 /obj/effect/temp/smoke/Crossed(var/atom/movable/O)
 	. = ..()
-	if(O.density) try_splash(O)
+	if(O.density && O.reagents) try_splash(O)
 
-/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255)
+/obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255,var/original_smoke_volume,var/original_reagent_volume)
 	. = ..()
+
 	CALLBACK("fade_out_\ref[src]",duration-fade_time,src,.proc/fade_out)
+
 	container = desired_container
 	if(isnum(desired_volume))
 		smoke_volume = desired_volume
+
+	if(isnum(original_reagent_volume))
+		reagent_volume_original = original_reagent_volume
+	else
+		reagent_volume_original = container.volume_current
+
+	if(isnum(original_smoke_volume))
+		smoke_volume_original = original_smoke_volume
+	else
+		smoke_volume_original = smoke_volume
+
 	blacklist_turfs = desired_blacklist_turfs
 	alpha = desired_alpha
 	if(alpha >= 255)
 		opacity = TRUE
 	update_sprite()
-	START_THINKING(src)
+
+	try_splash(loc)
+
+	spread()
 
 /obj/effect/temp/smoke/proc/fade_out()
 	var/matrix/M = get_base_transform()
 	animate(src,transform=M,alpha=0,time=min(fade_time,duration*0.5))
 	return TRUE
 
-/obj/effect/temp/smoke/think()
-
-	if(next_think > world.time)
-		return TRUE
-
-	next_think = world.time + 10
+/obj/effect/temp/smoke/proc/spread()
 
 	var/list/initial_possible_directions = DIRECTIONS_CARDINAL
 	var/list/possible_turfs = list()
@@ -96,17 +111,11 @@
 		for(var/i=1,i<=max_i,i++)
 			var/turf/T = pick(possible_turfs)
 			possible_turfs -= T
-			new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1),alpha)
+			new /obj/effect/temp/smoke(T,duration,blacklist_turfs,container,owner,FLOOR(smoke_volume/2,1),alpha,smoke_volume_original,reagent_volume_original)
 			blacklist_turfs[T] = TRUE
 			smoke_volume--
 	else
 		smoke_volume--
-
-	var/turf/T = get_turf(src)
-	try_splash(T)
-
-	if(smoke_volume <= 0)
-		return FALSE
 
 /obj/effect/temp/smoke/get_base_transform()
 	. = ..()
@@ -133,7 +142,7 @@
 
 	if(container)
 		color = container.color
-		alpha = container.alpha - 1
+		alpha = min(255,container.alpha) - 1
 		if(alpha >= 255)
 			opacity = TRUE
 

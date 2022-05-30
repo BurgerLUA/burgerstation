@@ -69,7 +69,7 @@ var/global/obj/water_ground
 
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WATER)
 		var/mob/living/L = O
-		L.on_liquid = TRUE
+		L.on_liquid = depth
 		L.handle_transform()
 
 	. = ..()
@@ -78,7 +78,7 @@ var/global/obj/water_ground
 
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WATER)
 		var/mob/living/L = O
-		L.on_liquid = FALSE
+		L.on_liquid = 0
 		L.handle_transform()
 
 	. = ..()

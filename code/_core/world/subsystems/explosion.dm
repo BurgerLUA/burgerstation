@@ -72,5 +72,3 @@ SUBSYSTEM_DEF(explosion)
 		FINALIZE(EP)
 	else
 		EP.power += desired_power
-
-// /proc/smoke(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/reagent_container/desired_reagents)

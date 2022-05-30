@@ -138,15 +138,15 @@
 
 
 
-/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/I)
+/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine(var/obj/item/magazine/M)
 
-	if(istype(I,/obj/item/magazine))
-		var/obj/item/magazine/M = I
-		if(M.weapon_whitelist[src.type])
-			return TRUE
+	if(!istype(M))
+		return FALSE
 
-	return FALSE
+	if(!M.weapon_whitelist[src.type])
+		return FALSE
 
+	return TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 

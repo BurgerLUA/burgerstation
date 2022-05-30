@@ -39,6 +39,9 @@
 	if(next_shoot_time > world.time + pump_delay)
 		return TRUE
 
+	if(next_shoot_time > world.time + shoot_delay)
+		return TRUE
+
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 

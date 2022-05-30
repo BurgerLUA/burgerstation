@@ -316,7 +316,7 @@
 
 	. = ..()
 
-/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,params,var/accurate=FALSE,var/find_closet=FALSE)
+/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list(),var/accurate=FALSE,var/find_closet=FALSE)
 	return src.loc
 
 obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)

@@ -4,6 +4,8 @@
 	stamina_base = 50
 	mana_base = 50
 
+	sight = SEE_BLACKNESS | SEE_PIXELS
+
 	enable_chunk_clean = TRUE
 
 	var/list/experience/attribute/attributes
@@ -114,7 +116,7 @@
 
 	var/armor/armor
 
-	var/list/mob_value
+	var/list/mob_value = list()
 
 	var/list/status_immune = list() //What status effects area they immune to?
 	//STATUS = TRUE //Means it's immune.
@@ -676,7 +678,7 @@
 	var/list/params = list()
 	params[PARAM_ICON_X] = 16
 	params[PARAM_ICON_Y] = 16
-	var/atom/object_to_damage = src.get_object_to_damage(owner,source,params,FALSE,TRUE)
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,FALSE,TRUE)
 	var/damagetype/D = all_damage_types[/damagetype/explosion/]
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE

@@ -45,6 +45,7 @@
 	if(is_living(grabbed_object))
 		var/mob/living/L = grabbed_object
 		L.handle_transform()
+	HOOK_CALL_ADV("grab_changed",owner,args)
 
 	return TRUE
 
@@ -82,6 +83,7 @@
 	update_overlays()
 	if(L)
 		L.handle_transform()
+	HOOK_CALL_ADV("grab_changed",owner,args)
 	return TRUE
 
 /obj/hud/inventory/proc/can_grab(var/mob/caller,var/atom/movable/object)

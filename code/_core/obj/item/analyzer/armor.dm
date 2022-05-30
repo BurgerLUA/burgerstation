@@ -21,7 +21,7 @@
 		params[PARAM_ICON_X] = num2text(attack_coords[1])
 		params[PARAM_ICON_Y] = num2text(attack_coords[2])
 
-	var/atom/object_to_analyze = target.get_object_to_damage(caller,caller,params,TRUE,TRUE,0)
+	var/atom/object_to_analyze = target.get_object_to_damage(caller,caller,null,params,TRUE,TRUE,0)
 
 	if(target == object_to_analyze)
 		caller.to_chat(span("notice bold","Printing armor protection for \the [target.name]..."))

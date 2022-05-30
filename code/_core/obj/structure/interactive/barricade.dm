@@ -117,11 +117,11 @@ obj/structure/interactive/barricade/Finalize()
 
 	var/image/above = new/image(icon,"[icon_state]_above")
 	above.layer = LAYER_MOB_ABOVE
-	above.appearance_flags = LONG_GLIDE | TILE_BOUND | PIXEL_SCALE | KEEP_APART
+	above.appearance_flags = src.appearance_flags | KEEP_APART
 
 	var/image/below = new/image(icon,"[icon_state]_below")
 	below.layer = LAYER_MOB_BELOW
-	below.appearance_flags = LONG_GLIDE | TILE_BOUND | PIXEL_SCALE | KEEP_APART
+	below.appearance_flags = src.appearance_flags | KEEP_APART
 
 	icon = ICON_INVISIBLE
 	add_overlay(below)
