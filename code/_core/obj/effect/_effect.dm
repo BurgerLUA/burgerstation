@@ -7,7 +7,7 @@
 
 	allow_path = TRUE
 
-	allow_shuttle_move = FALSE
+	anchored = 2
 
 /obj/effect/stealth_test
 	plane = PLANE_MOB_STEALTH

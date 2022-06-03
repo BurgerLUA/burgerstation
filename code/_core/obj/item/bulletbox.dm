@@ -49,9 +49,7 @@
 
 /obj/item/bulletbox/click_self(var/mob/caller)
 
-	if(!anchored)
-		drop_item(get_turf(caller))
-		anchored = TRUE
+	if(!anchored && drop_item(get_turf(caller)) && set_anchored(TRUE))
 		update_sprite()
 		return TRUE
 
@@ -84,8 +82,7 @@
 		caller.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
 		return TRUE
 
-	if(anchored && caller.attack_flags & CONTROL_MOD_DISARM)
-		anchored = FALSE
+	if(anchored && caller.attack_flags & CONTROL_MOD_DISARM && src.set_anchored(FALSE))
 		update_sprite()
 		caller.to_chat(span("notice","You pack up \the [src.name]."))
 		return TRUE

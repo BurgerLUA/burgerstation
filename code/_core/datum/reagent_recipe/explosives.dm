@@ -44,7 +44,7 @@
 
 /reagent_recipe/explosion/smoke/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
 	var/turf/T = get_turf(container.owner)
-	smoke(T,magnitude*0.4,40,container,caller)
+	smoke(T,magnitude*0.4,40 + T,magnitude*1.5,container,caller)
 	return TRUE
 
 /reagent_recipe/explosion/potassium_perchlorate

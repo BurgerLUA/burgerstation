@@ -20,7 +20,7 @@
 	var/size = SIZE_0
 
 	var/movement_delay = 4 //Measured in ticks.
-	var/anchored = TRUE
+	var/anchored = 1 // 1 = Anchored to the turf. 2 = Anchored to the universe and will never move.
 	var/ghost = FALSE
 
 	var/damage_type_thrown //Damage type if the object is thrown. If none is provided, it will just use damage_type and double the damage.
@@ -28,8 +28,6 @@
 	var/change_dir_on_move = FALSE
 
 	var/obj/hud/inventory/grabbing_hand //What is grabbing this?
-
-	var/allow_shuttle_move = TRUE
 
 	var/rotation_mod = 1
 	var/can_rotate = FALSE

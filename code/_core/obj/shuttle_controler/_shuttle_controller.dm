@@ -23,7 +23,7 @@ var/global/list/all_shuttle_controlers = list()
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconsd
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME //In seconds.
 
-	anchored = TRUE
+	anchored = 2
 
 	var/status_id
 
@@ -261,7 +261,7 @@ var/global/list/all_shuttle_controlers = list()
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			CHECK_TICK(75,FPS_SERVER)
-			if(!M.allow_shuttle_move) //For things like light.
+			if(M.anchored >= 2)
 				continue
 			if(M.loc != T)
 				continue

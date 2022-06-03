@@ -29,7 +29,7 @@ var/global/mob/abstract/node_checker
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
 	invisibility = 0
-	anchored = TRUE
+	anchored = 2
 
 /obj/marker/map_node/get_examine_list(var/mob/examiner)
 

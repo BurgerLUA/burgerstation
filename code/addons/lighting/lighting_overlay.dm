@@ -1,6 +1,6 @@
 /atom/movable/lighting_overlay
 	name          = "lighting overlay"
-	anchored      = TRUE
+	anchored      = 2
 	icon          = LIGHTING_ICON
 	icon_state    = LIGHTING_BASE_ICON_STATE
 	color         = null
@@ -12,7 +12,7 @@
 
 	var/needs_update = FALSE
 
-	allow_shuttle_move = FALSE
+	anchored = 2
 
 /atom/movable/lighting_overlay/New()
 
