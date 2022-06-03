@@ -94,6 +94,11 @@
 					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 			if(speaker.is_player_controlled()) log_chat("LOOC: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_OOC)
+			if(is_living(speaker))
+				var/mob/living/L = speaker
+				if(L.dead)
+					L.to_chat(span("warning","You cannot use OOC when dead."))
+					return FALSE
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_clients)
 				CHECK_TICK(75,FPS_SERVER)

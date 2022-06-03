@@ -18,7 +18,7 @@
 	icon_state = "layer_1"
 	duration = SECONDS_TO_DECISECONDS(30)
 	var/fade_time = SECONDS_TO_DECISECONDS(3)
-	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE | LONG_GLIDE
+	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
 
 	var/smoke_volume = 20//in tiles. Not a width. If you want a rough width, get your volume and divide by 4.
 	var/smoke_volume_original = 0

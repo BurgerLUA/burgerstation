@@ -265,6 +265,8 @@
 
 /ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 
+	alert_time = initial(alert_time)
+
 	if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
 		if(new_alert_level == ALERT_LEVEL_COMBAT)
 			owner.alert_overlay.icon_state = "exclaim"

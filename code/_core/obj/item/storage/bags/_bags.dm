@@ -198,17 +198,17 @@
 	. = ..()
 
 	var/image/lid = new/image(icon,"lid")
-	lid.appearance_flags = RESET_COLOR
+	lid.appearance_flags = src.appearance_flags | RESET_COLOR
 	lid.color = color_lid
 	add_overlay(lid)
 
 	var/image/canister = new/image(icon,"canister")
-	canister.appearance_flags = RESET_COLOR
+	canister.appearance_flags = src.appearance_flags | RESET_COLOR
 	canister.color = color_canister
 	add_overlay(canister)
 
 	var/image/label = new/image(icon,"label")
-	label.appearance_flags = RESET_COLOR
+	label.appearance_flags = src.appearance_flags | RESET_COLOR
 	label.color = color_label
 	add_overlay(label)
 

@@ -17,7 +17,7 @@
 	. = ..()
 
 	var/image/I = new/image(initial(icon),"handle")
-	I.appearance_flags = RESET_COLOR
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	I.color = COLOR_STEEL
 	add_overlay(I)
 

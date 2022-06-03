@@ -28,7 +28,7 @@
 		if(pattern_icon_state && pattern_color)
 			var/image/I = new/image(icon,pattern_icon_state)
 			I.color = pattern_color
-			I.appearance_flags = appearance_flags | RESET_COLOR
+			I.appearance_flags = src.appearance_flags | RESET_COLOR
 			add_overlay(I)
 
 		if(trim_icon_state && trim_color)
@@ -37,7 +37,7 @@
 				if(C && C.type == src.type) continue
 				var/image/I = new/image(icon,"[trim_icon_state]_[d]")
 				I.color = trim_color
-				I.appearance_flags = appearance_flags | RESET_COLOR
+				I.appearance_flags = src.appearance_flags | RESET_COLOR
 				add_overlay(I)
 
 /obj/structure/carpet/red

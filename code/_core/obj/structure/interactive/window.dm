@@ -32,7 +32,7 @@
 		var/damage_number = 3 - min(3,FLOOR((health.health_current/health.health_max)*3, 1))
 		if(damage_number > 0)
 			var/image/I = new/image('icons/obj/effects/glass_damage.dmi',"damage_[damage_number]")
-			I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
+			I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
 			add_overlay(I)
 
 	if(anchored)
@@ -44,7 +44,7 @@
 			var/image/I = new/image(initial_icon,"window_blend_[d]")
 			I.color = T.color
 			I.dir = d
-			I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
+			I.appearance_flags = T.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
 			add_overlay(I)
 
 /obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)

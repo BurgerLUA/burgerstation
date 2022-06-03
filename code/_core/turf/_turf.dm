@@ -9,6 +9,8 @@
 
 	opacity = 0
 
+	appearance_flags = PIXEL_SCALE | TILE_BOUND
+
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	collision_flags = FLAG_COLLISION_NONE
 

@@ -828,7 +828,7 @@ var/global/list/rarity_to_mul = list(
 
 	if(enable_blood_stains && blood_stain_intensity > 0 && blood_stain_color)
 		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[CEILING(blood_stain_intensity,1)]")
-		I.appearance_flags = RESET_COLOR
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.blend_mode = BLEND_INSET_OVERLAY
 		I.color = blood_stain_color
 		add_overlay(I)

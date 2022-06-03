@@ -58,7 +58,6 @@
 	if(alert_level >= ALERT_LEVEL_NOISE && alert_level <= ALERT_LEVEL_CAUTION)
 		alert_time -= tick_rate
 		if(alert_time <= 0)
-			alert_time = initial(alert_time)
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(!owner.anchored && owner.next_move <= 0)

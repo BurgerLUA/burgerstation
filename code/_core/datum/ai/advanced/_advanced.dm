@@ -18,7 +18,6 @@
 
 	roaming_distance = 0
 
-
 	//Gun handling
 	var/obj/item/bullet_cartridge/last_found_bullet
 	var/desired_shell_reload = 0

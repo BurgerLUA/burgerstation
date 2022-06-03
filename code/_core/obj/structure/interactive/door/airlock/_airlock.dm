@@ -4,8 +4,6 @@
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
-
 	layer = LAYER_WALL
 	plane = PLANE_WALL
 
@@ -289,7 +287,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 	if(filler)
 		var/image/fill = new/image(icon,"[icon_state]_[filler]")
-		fill.appearance_flags = RESET_COLOR
+		fill.appearance_flags = src.appearance_flags | RESET_COLOR
 		fill.color = fill_color
 		if(filler == "glass")
 			fill.alpha = 150
@@ -297,12 +295,12 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 	if(panel)
 		var/image/panel = new /image(icon,"[icon_state]_panel")
-		panel.appearance_flags = RESET_COLOR
+		panel.appearance_flags = src.appearance_flags | RESET_COLOR
 		add_overlay(panel)
 
 	if((!apc_powered || powered) && light_state)
 		var/image/light_fixtures = new /image(icon,light_state)
-		light_fixtures.appearance_flags = RESET_COLOR
+		light_fixtures.appearance_flags = src.appearance_flags | RESET_COLOR
 		light_fixtures.color = light_color ? light_color : "#FFFFFF"
 		add_overlay(light_fixtures)
 
@@ -321,7 +319,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 					I.color = A.color
 				else
 					I.color = COLOR_STEEL
-				I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
+				I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_underlay(I)
 
 /obj/structure/interactive/door/airlock/Cross(atom/movable/O,atom/oldloc)
