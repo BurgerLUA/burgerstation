@@ -20,7 +20,7 @@ var/global/list/all_shuttle_controlers = list()
 	var/obj/marker/shuttle/transit_bluespace //path
 	var/obj/marker/shuttle/transit_end //path
 
-	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconsd
+	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconds
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME //In seconds.
 
 	anchored = 2

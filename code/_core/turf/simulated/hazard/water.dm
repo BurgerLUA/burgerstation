@@ -11,7 +11,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	footstep = /footstep/water
-	fishing_rewards = /loot/fishing/river
+	fishing_rewards = null
 
 	plane = PLANE_WATER
 	layer = LAYER_MOB_WATER
@@ -66,5 +66,10 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 
 /turf/simulated/liquid/water/sea
-	name = "saltwater"
+	name = "salt water"
 	fishing_rewards = /loot/fishing/sea
+
+
+/turf/simulated/liquid/water/river
+	name = "river water"
+	fishing_rewards = /loot/fishing/river
