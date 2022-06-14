@@ -38,12 +38,12 @@ SUBSYSTEM_DEF(turf)
 		T.world_spawn = TRUE
 
 	//First generation pass.
-	for(var/turf/unsimulated/generation/G in world)
+	for(var/turf/generation/G in world)
 		G.pre_generate()
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 	//Second generation pass.
-	for(var/turf/unsimulated/generation/G in world)
+	for(var/turf/generation/G in world)
 		G.generate()
 		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 

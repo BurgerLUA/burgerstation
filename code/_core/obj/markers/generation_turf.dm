@@ -53,7 +53,7 @@
 	objects_max = 15
 	object_to_place = /turf/simulated/liquid/water/jungle
 
-/obj/marker/generation/sand
+/obj/marker/generation/beach_sand
 	object_to_place = /turf/simulated/floor/colored/sand/beach
 	grow_amount_min = 5
 	grow_amount_max = 10

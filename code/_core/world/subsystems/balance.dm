@@ -93,6 +93,11 @@ SUBSYSTEM_DEF(balance)
 		qdel(I)
 	created_bullets.Cut()
 
+	for(var/k in created_magazines)
+		var/obj/item/I = k
+		qdel(I)
+	created_magazines.Cut()
+
 	log_subsystem(src.name,"Found [imbalanced_weapons] imbalanced weapons.")
 
 	. = ..()

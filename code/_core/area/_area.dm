@@ -1,5 +1,5 @@
 /area/
-	name = "Unknown Area"
+	name = "ERROR AREA"
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
@@ -213,7 +213,6 @@ var/global/list/possible_trash = list(
 		if(T.x % sunlight_freq)
 			return FALSE
 		var/bonus = !(T.x % (sunlight_freq*2)) && sunlight_freq > 1 ? sunlight_freq*0.5 : 0
-		T.name = "[T.x].[T.y]: [bonus]."
 		if((T.y+bonus) % sunlight_freq)
 			return FALSE
 

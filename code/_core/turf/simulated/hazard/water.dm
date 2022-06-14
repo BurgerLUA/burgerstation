@@ -34,7 +34,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/Initialize()
 	. = ..()
-	if(ENABLE_GENERATION)
+	if(ENABLE_GENERATION && depth <= 0)
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/simulated/floor/T = get_step(src,k)
 			if(!istype(T))
@@ -42,6 +42,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			water_shores |= T
 
 /turf/simulated/liquid/water/Finalize()
+
 	if(ENABLE_GENERATION)
 		if(depth <= 0)
 			depth = MAX_DEPTH
@@ -54,6 +55,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 		depth = 8
 		alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 		map_color = map_color_max_depth
+
 	. = ..()
 
 /turf/simulated/liquid/water/jungle/Finalize()
@@ -73,3 +75,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 /turf/simulated/liquid/water/river
 	name = "river water"
 	fishing_rewards = /loot/fishing/river
+
+
+/turf/simulated/liquid/water/pond
+	name = "pond water"

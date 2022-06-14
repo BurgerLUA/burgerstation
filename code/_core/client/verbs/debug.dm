@@ -133,6 +133,7 @@ var/global/list/debug_verbs = list(
 		M.ai.debug = TRUE
 		M.ai.set_active(TRUE)
 
+
 /client/verb/generate_map_icon()
 	set name = "Map Test (DANGER)"
 	set category = "Debug"
@@ -144,7 +145,8 @@ var/global/list/debug_verbs = list(
 
 	var/found_tiles = 0
 	var/error_tiles = 0
-	var/icon/I = new/icon('icons/map_template.dmi',"map_template")
+	var/icon/I = ICON_INVISIBLE
+	I.Crop(1,1,world.maxx,world.maxy) //Match it to the world size.
 	for(var/x=1,x<=world.maxx,x++)
 		for(var/y=1,y<=world.maxy,y++)
 			var/turf/simulated/S = locate(x,y,src.mob.z)
@@ -165,7 +167,6 @@ var/global/list/debug_verbs = list(
 	to_chat("Found [found_tiles] tiles, with [error_tiles] errored tiles.")
 	to_chat("Icon: [new/image(I)].")
 	src << ftp(I,"map_[src.mob.z].png")
-
 
 /client/verb/make_war()
 

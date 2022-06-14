@@ -12,6 +12,9 @@
 	var/offset_x = 0
 	var/offset_y = 0
 
+	var/max_x = 0
+	var/max_y = 0
+
 /obj/hud/map/proc/update_map(var/desired_z=0)
 
 	if(desired_z > 0)
