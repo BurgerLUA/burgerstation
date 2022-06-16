@@ -33,10 +33,10 @@
 #define ENABLE_SMOOTHING TRUE
 
 //Enable/disables combat testing by forcing a gamemode.
-#define ENABLE_TDM TRUE
+#define ENABLE_TDM FALSE
 
 //Enables/disables turf generation
-#define ENABLE_GENERATION FALSE
+#define ENABLE_GENERATION TRUE
 
 //Enables/disables atmos.
 #define ENABLE_ATMOS FALSE

@@ -18,8 +18,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/list/valid_prefabs = list()
 
 	var/list/maps_to_load = list(
+		"maps/_core/main_new.dmm",
 		"maps/_core/bluespace.dmm",
-		"generate",
 		"maps/_core/station.dmm"
 	)
 
@@ -30,15 +30,9 @@ SUBSYSTEM_DEF(dmm_suite)
 	//Load all the maps.
 	for(var/i=1,i<=length(maps_to_load),i++)
 		var/k = maps_to_load[i]
-		if(k == "generate")
-			if(world.maxz < i)
-				world.maxz = i
-			generate_world(i)
-			log_subsystem(name,"Generated [k].")
-		else
-			var/map_file = rustg_file_read(k)
-			dmm_suite.read_map(map_file,1,1,i)
-			log_subsystem(name,"Loaded [k].")
+		var/map_file = rustg_file_read(k)
+		dmm_suite.read_map(map_file,1,1,i)
+		log_subsystem(name,"Loaded [k].")
 		z_level_to_file["[i]"] = k
 
 	//Load prefabs
@@ -77,6 +71,9 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	return ..()
 
+//Here lies dead code.
+//Annoying to work with and I don't have time to spend 6 months on this.
+/*
 /subsystem/dmm_suite/proc/generate_world(var/z=0)
 
 	set background = 1 //Expensive.
@@ -166,3 +163,4 @@ SUBSYSTEM_DEF(dmm_suite)
 		desired_generation_type.height = isnum(desired_turf_height) ? desired_turf_height : clamp(noise_profile,desired_turf_height_min,desired_turf_height_max)
 
 	log_subsystem(name,"Finished generating world [z].")
+*/

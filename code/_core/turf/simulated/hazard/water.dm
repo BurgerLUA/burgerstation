@@ -48,7 +48,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			depth = MAX_DEPTH
 			for(var/k in water_shores)
 				var/turf/simulated/floor/T = k
-				depth = min(1 + get_dist(src,T),depth)
+				depth = min(1 + get_dist_real(src,T),depth)
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 	else

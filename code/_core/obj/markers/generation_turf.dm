@@ -198,3 +198,13 @@
 	hole_chance = 0
 
 	color = COLOR_GREY
+
+/obj/marker/generation/desert_wall
+	object_to_place = /turf/simulated/wall/rock/desert
+	grow_amount_min = 5
+	grow_amount_max = 8
+	objects_max = 50
+	skip_chance = 25
+	hole_chance = 0
+
+	color = COLOR_GREY
