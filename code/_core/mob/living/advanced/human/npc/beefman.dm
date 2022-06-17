@@ -1,5 +1,5 @@
 /mob/living/advanced/npc/beefman
-	name = "meat anomaly"
+	name = "meatman"
 	desc = "I told you not to go alone."
 	desc_extended = "A disgusting monster made entirely out of beef. It's unknown where these things came from, but we do know that they're attracted by the rotting corpses of humanoids."
 	ai = /ai/advanced/beef
@@ -56,3 +56,11 @@
 /mob/living/advanced/npc/beefman/Initialize()
 	. = ..()
 	update_all_blends()
+
+
+/mob/living/advanced/npc/beefman/get_plane()
+	if(dead)
+		return PLANE_MOB_DEAD
+	if(horizontal)
+		return PLANE_MOB_SMALL
+	return PLANE_MOB_STEALTH //Always stealth.
