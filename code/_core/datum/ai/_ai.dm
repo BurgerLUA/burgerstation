@@ -2,6 +2,10 @@ var/global/list/ai_attacking_players = list()
 
 /ai/
 
+	var/active = FALSE //Read only to deterimine if this AI is actually active.
+
+	var/debug = FALSE //Enable or disable logging.
+
 	var/mob/living/owner
 
 	var/atom/objective_move
@@ -105,17 +109,13 @@ var/global/list/ai_attacking_players = list()
 	//1 = Helps people with the same loyalty tag as them.
 	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage (0.00 to 1.00) the NPC will flee at.
 
-	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner.
+	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner, if the target is an AI.
 
 	var/list/enemy_tags = list()
 
 	//Roaming Stuff. Mostly read only.
 	var/roam = FALSE
 	var/roam_counter = 10
-
-	var/debug = FALSE
-
-	var/active = FALSE
 
 	var/delete_on_no_path = FALSE
 
@@ -124,6 +124,11 @@ var/global/list/ai_attacking_players = list()
 	var/ignore_hazard_turfs = FALSE
 
 	var/boss = FALSE
+
+	var/hunt_distance = VIEW_RANGE*0.5 //Distance the mob will try to get close to if there is a valid hunt target.
+	var/atom/hunt_target //Will try to chase this target through a combination of astar pathing and node pathing.
+	var/turf/last_hunt_target_turf //Read only. The last turf that the target was on.
+	var/next_node_check_time = 0
 
 /ai/Destroy()
 

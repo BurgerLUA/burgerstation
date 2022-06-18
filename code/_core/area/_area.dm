@@ -122,25 +122,6 @@ var/global/list/possible_trash = list(
 	/obj/item/trash/random = 100
 )
 
-/area/Generate()
-	. = ..()
-	if(flags_area & FLAG_AREA_DIRTY)
-		for(var/turf/simulated/S in src.contents)
-			var/obj/structure/table/window/W = locate() in S.contents
-			if(W) continue
-			if(prob(80))
-				var/obj/effect/E
-				if(S.density)
-					E = pickweight(possible_dirty_wall)
-				else
-					E = pickweight(possible_dirty_floor)
-				E = new E(S)
-			if(!S.density && prob(30))
-				var/obj/item/I = pickweight(possible_trash)
-				I = new I(S)
-
-
-
 /area/Initialize()
 
 	SSarea.all_areas[src.type] = src

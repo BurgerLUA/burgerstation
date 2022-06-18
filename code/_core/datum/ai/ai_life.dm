@@ -61,7 +61,26 @@
 			set_alert_level(max(0,alert_level-1),TRUE)
 
 	if(!owner.anchored && owner.next_move <= 0)
-		if(use_pathfinding && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
+		if(!objective_attack && hunt_target && next_node_check_time <= world.time)
+			next_node_check_time = world.time + SECONDS_TO_DECISECONDS(2)
+			var/turf/desired_target_turf = get_step(hunt_target,turn(hunt_target.dir,180))
+			if(!last_hunt_target_turf || get_dist(last_hunt_target_turf,desired_target_turf) >= VIEW_RANGE*0.5)
+				last_hunt_target_turf = desired_target_turf
+				var/turf/current_turf = get_turf(owner)
+				if(desired_target_turf && current_turf && desired_target_turf.z == current_turf.z)
+					var/target_distance = get_dist(current_turf,desired_target_turf) //Get distance of the AI to the target.
+					if(target_distance >= hunt_distance) //We're too far away. Lets find them.
+						var/found_valid_path = FALSE
+						if(target_distance >= VIEW_RANGE) //Wow we're really far away. Lets use a different pathing system instead.
+							var/obj/marker/map_node/N_start = find_closest_node(current_turf) //Find the closest node to us.
+							var/obj/marker/map_node/N_end = N_start ? find_closest_node(desired_target_turf) : null //Find the closet node to the target.
+							var/list/obj/marker/map_node/found_path = N_end ? N_start.find_path(N_end) : null //Okay. Path time. Maybe.
+							if(found_path)
+								found_valid_path = set_path(found_path)
+						if(!found_valid_path) //Couldn't find a valid path, so we use astar.
+							set_path_astar(desired_target_turf)
+
+		else if(use_pathfinding && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
 			var/path_num = length(current_path)
 			if(path_num)
 				set_path_astar(current_path[path_num])
@@ -69,13 +88,13 @@
 				set_path_astar(objective_attack)
 			else if(objective_move)
 				set_path_astar(objective_move)
-		else
-			var/result = handle_movement()
-			if(result && owner.has_status_effect(REST))
-				owner.remove_status_effect(REST)
 
-			if(!use_pathfinding && result && frustration_move >= frustration_move_threshold)
-				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
+		var/result = src.handle_movement()
+		if(result && owner.has_status_effect(REST))
+			owner.remove_status_effect(REST)
+
+		if(!use_pathfinding && result && frustration_move >= frustration_move_threshold)
+			owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
 
 	owner.handle_movement(tick_rate)
 

@@ -1,5 +1,5 @@
 /mob/living/advanced/npc/beefman
-	name = "meatman"
+	name = "beefman"
 	desc = "I told you not to go alone."
 	desc_extended = "A disgusting monster made entirely out of beef. It's unknown where these things came from, but we do know that they're attracted by the rotting corpses of humanoids."
 	ai = /ai/advanced/beef

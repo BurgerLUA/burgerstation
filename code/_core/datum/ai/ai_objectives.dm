@@ -1,3 +1,19 @@
+/ai/proc/set_hunt_target(var/atom/A)
+
+	if(!owner || owner.qdeleting)
+		return FALSE
+
+	if(A && (A.qdeleting || A == owner || owner.dead))
+		return FALSE
+
+	if(hunt_target == A)
+		return FALSE
+
+	hunt_target = A
+	set_active(TRUE)
+
+	return TRUE
+
 /ai/proc/set_objective(var/atom/A)
 
 	if(!owner || owner.qdeleting)

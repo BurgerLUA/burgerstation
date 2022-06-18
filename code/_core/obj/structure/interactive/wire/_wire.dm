@@ -9,7 +9,7 @@
 
 	layer = LAYER_FLOOR_PIPE
 	under_tile = TRUE
-	plane = PLANE_AREA-1 //Layered above stuff in maps.
+	plane = PLANE_AREA-1 //Layered above stuff in maps. Plane is properly set in New()
 
 	initialize_type = INITIALIZE_LATE
 
@@ -29,7 +29,7 @@
 		log_error("Multiple wire cables ([wire_count]) detected at [src.loc.get_debug_name()].")
 		qdel(src)
 
-	plane = PLANE_FLOOR
+	plane = PLANE_WIRE
 
 	alpha = 255
 

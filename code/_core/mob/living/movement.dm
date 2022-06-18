@@ -136,7 +136,7 @@
 		dash_amount = 0
 		dash_target = null
 
-	if(move_dir) //If you're actuall moving.
+	if(move_dir) //If you're actually moving.
 		if(!can_move())
 			return FALSE
 		if(grabbing_hand)

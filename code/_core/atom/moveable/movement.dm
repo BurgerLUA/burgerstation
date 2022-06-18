@@ -1,7 +1,11 @@
 /atom/movable/proc/get_movement_delay(var/include_stance=TRUE)
 	return movement_delay
 
-/atom/movable/proc/can_enter(var/turf/T,var/loc_overide = src.loc)
+
+/atom/movable/proc/can_enter_turf(var/turf/T,var/loc_overide = src.loc)
+
+	if(!T.has_dense_atom)
+		return TRUE
 
 	if(!T.Enter(src,loc_overide))
 		return FALSE
@@ -12,6 +16,7 @@
 			return FALSE
 
 	return TRUE
+
 
 
 /atom/movable/proc/handle_movement(var/adjust_delay = 1) //Measured in ticks
@@ -53,9 +58,9 @@
 			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
-			if(!first_step || !src.can_enter(first_step))
+			if(!first_step || !src.can_enter_turf(first_step))
 				final_move_dir &= ~first_move_dir_to_use
-			if(!second_step || !src.can_enter(second_step))
+			if(!second_step || !src.can_enter_turf(second_step))
 				final_move_dir &= ~second_move_dir_to_use
 
 		//Storing previous move dir and handling inability to move.
@@ -109,9 +114,12 @@
 
 	var/atom/old_loc = loc
 
+	var/turf/old_loc_as_turf = isturf(old_loc) ? old_loc : null
+	var/turf/new_loc_as_turf = isturf(new_loc) ? new_loc : null
+
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
-		if(old_loc && src.density)
+		if(old_loc && src.density && (!old_loc_as_turf || old_loc_as_turf.has_dense_atom))
 			for(var/k in old_loc.contents)
 				var/atom/movable/M = k
 				if(M == src)
@@ -124,7 +132,7 @@
 
 	if(new_loc)
 		new_loc.Entered(src, old_loc)
-		if(new_loc && src.density)
+		if(new_loc && src.density && (!new_loc_as_turf || new_loc_as_turf.has_dense_atom))
 			for(var/k in new_loc.contents)
 				var/atom/movable/M = k
 				if(M == src)
@@ -176,70 +184,75 @@
 	var/atom/OldLoc = loc
 
 	if(!NewLoc)
+		CRASH("Tried moving [src.get_debug_name()] into nullspace via Move(). Use force_move() instead.")
 		return FALSE
+
+	var/turf/old_loc_as_turf = isturf(OldLoc) ? OldLoc : null
+	var/turf/new_loc_as_turf = isturf(NewLoc) ? NewLoc : null
 
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)
 
-	//Try: Exit the old turf.
-	if(src.density && OldLoc && !OldLoc.Exit(src,NewLoc))
-		return FALSE
-
-	//Try: Enter the new turf.
-	if(src.density && !NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
-		return FALSE
-
-	//Try: Uncross the Contents
-	if(src.density && OldLoc)
-		for(var/k in OldLoc.contents)
-			CHECK_TICK(100,FPS_SERVER)
-			var/atom/movable/M = k
-			if(M == src)
-				continue
-			if(M.density && !M.Uncross(src,NewLoc))
-				return FALSE
-
-	//Try: Cross the Contents
 	if(src.density)
-		for(var/k in NewLoc.contents)
-			CHECK_TICK(100,FPS_SERVER)
-			var/atom/movable/M = k
-			if(M == src)
-				continue
-			if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
-				return FALSE
+		//Try: Exit the old loc.
+		if(OldLoc && !OldLoc.Exit(src,NewLoc))
+			return FALSE
 
-	//No going back. We're moving.
+		//Try: Enter the new loc.
+		if(!NewLoc.Enter(src,OldLoc) && !src.Bump(NewLoc))
+			return FALSE
 
-	//Do: Exit the turf.
-	if(src.density) OldLoc.Exited(src,NewLoc)
+		//Try: Uncross the Contents
+		if(OldLoc && (!old_loc_as_turf || old_loc_as_turf.has_dense_atom))
+			for(var/k in OldLoc.contents)
+				CHECK_TICK(100,FPS_SERVER)
+				var/atom/movable/M = k
+				if(M == src)
+					continue
+				if(M.density && !M.Uncross(src,NewLoc))
+					return FALSE
 
-	//Do: Enter the turf.
-	if(src.density) NewLoc.Entered(src,OldLoc)
+		//Try: Cross the Contents
+		if((!new_loc_as_turf || new_loc_as_turf.has_dense_atom))
+			for(var/k in NewLoc.contents)
+				CHECK_TICK(100,FPS_SERVER)
+				var/atom/movable/M = k
+				if(M == src)
+					continue
+				if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
+					return FALSE
 
-	//Do: Uncrossed the contents
-	if(src.density && OldLoc)
-		for(var/k in OldLoc.contents)
-			CHECK_TICK(100,FPS_SERVER)
-			var/atom/movable/M = k
-			if(M == src)
-				continue
-			if(!M.density)
-				continue
-			M.Uncrossed(src)
+		//No going back. We're moving.
 
-	//Do: Crossed the contents
-	if(src.density)
-		for(var/k in NewLoc.contents)
-			CHECK_TICK(100,FPS_SERVER)
-			var/atom/movable/M = k
-			if(M == src)
-				continue
-			if(!M.density)
-				continue
-			M.Crossed(src)
+		//Do: Exit the turf.
+		OldLoc.Exited(src,NewLoc)
 
-	if(!OldLoc || OldLoc == loc)
+		//Do: Enter the turf.
+		NewLoc.Entered(src,OldLoc)
+
+		//Do: Uncrossed the contents
+		if(OldLoc && (!old_loc_as_turf || old_loc_as_turf.has_dense_atom))
+			for(var/k in OldLoc.contents)
+				CHECK_TICK(100,FPS_SERVER)
+				var/atom/movable/M = k
+				if(M == src)
+					continue
+				if(!M.density)
+					continue
+				M.Uncrossed(src)
+
+		//Do: Crossed the contents
+		if(!new_loc_as_turf || new_loc_as_turf.has_dense_atom)
+			for(var/k in NewLoc.contents)
+				CHECK_TICK(100,FPS_SERVER)
+				var/atom/movable/M = k
+				if(M == src)
+					continue
+				if(!M.density)
+					continue
+				M.Crossed(src)
+
+	if(!OldLoc || OldLoc == loc) //Special code here. the OldLoc check is for if any of the above procs moved the atom while it was being called.
 		loc = NewLoc
 
 	post_move(OldLoc)

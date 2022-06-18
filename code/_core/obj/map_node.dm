@@ -111,22 +111,25 @@ var/global/list/stored_paths = list()
 
 	if(!point_A || !point_B) return .
 
-	var/mob/abstract/node_checker/NC = new /mob/abstract/node_checker(point_A)
+	node_checker.force_move(point_A)
+
 	var/limit = 10
-	while(NC.loc != point_B && limit > 0)
+	while(node_checker.loc != point_B && limit > 0)
 		limit--
 		CHECK_TICK(75,FPS_SERVER)
-		var/desired_dir = get_dir(NC,point_B)
-		var/turf/T = get_step(NC,desired_dir)
-		if(T.density && !T.Enter(NC,NC.loc))
+		var/desired_dir = get_dir(node_checker,point_B)
+		var/turf/T = get_step(node_checker,desired_dir)
+		if(T.density && !T.Enter(node_checker,node_checker.loc))
 			. |= T
 		for(var/k in T.contents)
 			var/atom/movable/M = k
-			if(!M.allow_path && M.density && M.anchored && !M.Cross(NC,NC.loc))
+			if(!M.allow_path && M.density && M.anchored && !M.Cross(node_checker,node_checker.loc))
 				. |= M
-		NC.loc = T
+		node_checker.loc = T
 
-	qdel(NC)
+	node_checker.force_move(null)
+
+
 
 /proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE,var/check_view=FALSE)
 

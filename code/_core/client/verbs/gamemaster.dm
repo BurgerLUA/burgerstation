@@ -471,3 +471,53 @@
 	src.to_chat(span("notice","You forced [C.ckey] to take control of [desired_body.name]."))
 
 	log_admin("[src.get_debug_name()] safely forced [C.get_debug_name()] to take control of [desired_body.get_debug_name()].")
+
+
+/client/verb/send_squad()
+	set name = "Send Squad"
+	set category = "Fun"
+
+	var/desired_victim = input("Who would you like to send the squad towards?","Send Squad") as null|anything in all_players
+
+	if(!desired_victim)
+		return TRUE
+
+	var/list/possible_squads = list(
+		"Syndicate" = /mob/living/advanced/npc/syndicate,
+		"Beefmen" = /mob/living/advanced/npc/beefman,
+		"Xenos" = /mob/living/simple/xeno/drone,
+		"Spacecarp" = /mob/living/simple/spacecarp/,
+		"Abductors" = /mob/living/advanced/npc/abductor,
+		"Ashwalkers" = /mob/living/advanced/npc/ashwalker/hunter,
+		"Pirates" = /mob/living/advanced/npc/pirate_crew/ranged,
+		"Revs" = /mob/living/advanced/npc/rev,
+		"Space Soldiers" = /mob/living/advanced/npc/space_soldier,
+		"Tax Collectors" = /mob/living/advanced/npc/tax_man,
+		"Zombies" = /mob/living/advanced/npc/zombie/civilian,
+		"Custom..." = "Custom...",
+		"Cancel" = "Cancel"
+	)
+
+	var/desired_squad = input("What would you like to send?","Send Squad","Cancel") as null|anything in possible_squads
+
+	if(!desired_squad || desired_squad == "Cancel")
+		return FALSE
+
+	if(desired_squad == "Custom...")
+		desired_squad = input("Enter the path name of the mob that you'd like to send.","Send Squad") as null|text
+
+		if(!desired_squad)
+			return FALSE
+
+		desired_squad = text2path(desired_squad)
+
+		if(!ispath(desired_squad,/mob/))
+			return FALSE
+
+		desired_squad = text2path(desired_squad)
+	else
+		desired_squad = possible_squads[desired_squad]
+
+	if(!SShorde.send_squad(desired_victim,desired_squad,bypass_restrictions=TRUE))
+		src.to_chat(span("warning","Could not send a squad to this player. Could not find a valid path."))
+

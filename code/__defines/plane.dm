@@ -22,7 +22,9 @@
 #define PLANE_AREA_EXTERIOR -38
 
 //Objs
-#define PLANE_DECAL -34
+#define PLANE_DECAL -35
+
+#define PLANE_WIRE -34
 
 #define PLANE_BLOOD -33
 

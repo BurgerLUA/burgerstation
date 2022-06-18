@@ -247,7 +247,6 @@
 					last_found_bullet = B
 				else
 					last_found_bullet = null
-				world.log << "Yeah: [desired_shell_reload]."
 				next_complex = world.time + 1 //Honestly it takes like no time to insert it.
 				return FALSE
 			desired_shell_reload = -desired_shell_reload
