@@ -15,7 +15,6 @@ SUBSYSTEM_DEF(chunk)
 	var/chunk_count_y = 0
 	var/chunk_count_z = 0
 
-
 /subsystem/chunk/Initialize()
 
 	chunk_count_x = CEILING(world.maxx/CHUNK_SIZE,1)
@@ -30,11 +29,22 @@ SUBSYSTEM_DEF(chunk)
 
 	active_chunks = new/list(chunk_count_z,chunk_count_x,chunk_count_y)
 
-	for(var/z=1,z<=chunk_count_z,z++)
-		for(var/x=1,x<=chunk_count_x,x++)
-			for(var/y=1,y<=chunk_count_y,y++)
-				active_chunks[z][x][y] = new /chunk/
+	//Make all the chunks
+	for(var/z=1,z<=chunk_count_z,z++) for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
+		active_chunks[z][x][y] = new /chunk/
 
+	//Link adjacent chunks to eachother.
+	for(var/z=1,z<=chunk_count_z,z++) for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
+		var/chunk/C = active_chunks[z][x][y]
+		//get adjacents
+		for(var/x2=-1,x2<=1,x2++) for(var/y2=-1,y2<=1,y2++).
+			if(x2==0 && y2==0)
+				continue
+			if(chunk_count_x < 1 || chunk_count_y < 1 || x2 > chunk_count_x || y2 > chunk_count_y)
+				continue
+			C.adjacent_chunks += active_chunks[z][x+x2][y+y2]
+
+	//Add existing map nodes to chunks.
 	for(var/k in all_map_nodes)
 		var/obj/marker/map_node/N = k
 		if(!N.loc || !N.loc.z)
@@ -47,11 +57,13 @@ SUBSYSTEM_DEF(chunk)
 
 	. = ..()
 
-	tick_rate = initial(tick_rate)
-	if(world.maxz>=1)
+	tick_rate = initial(tick_rate) //Set the tick rate based on the amount of z-levels.
+	if(world.maxz >= 1)
 		tick_rate = CEILING(tick_rate/world.maxz,1)
 
-	for(var/mob/living/L in world)
+	var/total_spawnpoints = 0
+	for(var/k in SSliving.all_living) //Setup spawnpoints for respawning mobs.
+		var/mob/living/L = k
 		if(!L.respawn)
 			continue
 		var/turf/simulated/T = get_turf(L)
@@ -60,6 +72,9 @@ SUBSYSTEM_DEF(chunk)
 			continue
 		var/obj/marker/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.force_spawn)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
+		total_spawnpoints++
+
+	log_debug(src.name,"Created [total_spawnpoints] mob spawn points.")
 
 /subsystem/chunk/on_life()
 
@@ -78,36 +93,30 @@ SUBSYSTEM_DEF(chunk)
 
 /subsystem/chunk/proc/process_entire_z(var/z)
 
-	if(!z)
-		return 0
-
 	. = 0
 
-	for(var/x=1,x<=chunk_count_x,x++)
-		for(var/y=1,y<=chunk_count_y,y++)
-			if(length(active_chunks[z][x][y]))
-				continue
-			var/list/chunk_turfs = get_chunk_turfs(x,y,z)
-			for(var/k in chunk_turfs)
-				CHECK_TICK(tick_usage_max,FPS_SERVER*10)
-				var/turf/T = k
-				var/area/A = T.loc
-				if(A.safe_storage)
-					continue
-				for(var/j in T.contents)
-					var/atom/movable/M = j
-					if(M.enable_chunk_clean)
-						. += M.on_chunk_clean()
+	if(z <= 0)
+		return .
 
-/proc/get_chunk_turfs(var/chunk_x,var/chunk_y,var/chunk_z)
+	var/list/chunks_to_process = list()
 
-	var/min_x = max(1,1 + CHUNK_SIZE * (chunk_x-1))
-	var/min_y = max(1,1 + CHUNK_SIZE * (chunk_y-1))
+	for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
+		var/chunk/C = active_chunks[z][x][y]
+		chunks_to_process += C
 
-	var/max_x = min(world.maxx,CHUNK_SIZE * chunk_x)
-	var/max_y = min(world.maxy,CHUNK_SIZE * chunk_y)
+	for(var/k in chunks_to_process)
+		var/chunk/C = k
+		if(length(C.players))
+			chunks_to_process -= C
+			chunks_to_process -= C.adjacent_chunks
 
-	var/turf/T1 = locate(min_x,min_y,chunk_z)
-	var/turf/T2 = locate(max_x,max_y,chunk_z)
-
-	return block(T1,T2)
+	for(var/k in chunks_to_process)
+		var/chunk/C = k
+		if(length(C.players) || !length(C.cleanables))
+			continue
+		for(var/j in C.cleanables)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
+			var/atom/movable/M = j
+			qdel(M)
+			. += 1
+		sleep(10) //Forced 1 second delay.

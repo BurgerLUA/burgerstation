@@ -2,6 +2,8 @@
 	name = "MISSION AREA ERROR"
 	area_identifier = "Mission"
 
+	dynamic_lighting = TRUE
+
 
 /area/mission/desert
 	name = "Desert"
@@ -13,8 +15,6 @@
 
 	sunlight_freq = 8
 	sunlight_color = "#724C2B"
-
-
 
 	sound_environment = ENVIRONMENT_PLAIN
 
@@ -147,3 +147,43 @@
 		'sound/ambient/lavacaves_1.ogg',
 		'sound/ambient/lavacaves_2.ogg',
 	)
+
+/area/mission/beach
+	name = "Beach"
+	icon_state = "beach"
+
+	weather = null
+	ambient_temperature = T0C + 30
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sunlight_freq = 8
+	sunlight_color = "#BCA04B"
+
+	sound_environment = ENVIRONMENT_PLAIN
+
+/area/mission/ocean
+	name = "Ocean"
+	icon_state = "ocean"
+
+	weather = null
+	ambient_temperature = T0C + 40
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sunlight_freq = 8
+	sunlight_color = "#6B99C4"
+
+	sound_environment = ENVIRONMENT_PLAIN
+
+
+/area/mission/river
+	name = "River"
+	icon_state = "river"
+
+	weather = null
+	ambient_temperature = T0C + 20
+	cheese_type = /reagent/nutrition/cheese/cheddar
+
+	sunlight_freq = 8
+	sunlight_color = "#93B08C"
+
+	sound_environment = ENVIRONMENT_PLAIN

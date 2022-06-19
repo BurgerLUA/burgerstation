@@ -122,7 +122,7 @@
 
 	if(!M || close)
 		. = ..()
-		update_owner(null)
+		M.update_owner(null)
 		return .
 
 	var/turf/T = get_turf(caller)
@@ -135,8 +135,7 @@
 
 /obj/hud/button/map_control/close
 	name = "close map"
-	icon_state = "arrow"
-	dir = NORTH
+	icon_state = "close"
 	close = 1
 	screen_loc = "CENTER+5,CENTER-4"
 

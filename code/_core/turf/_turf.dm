@@ -259,6 +259,21 @@
 	if(enterer.density)
 		has_dense_atom = TRUE
 
+	if(enterer.enable_chunk_clean)
+
+		var/old_loc_chunk_x = old_loc ? CEILING(old_loc.x/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_y = old_loc ? CEILING(old_loc.y/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_z = old_loc ? old_loc.z : 0
+
+		var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
+		var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
+		var/new_loc_chunk_z = src.z
+
+		if(new_loc_chunk_z && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
+			var/chunk/new_chunk = SSchunk.active_chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
+			if(new_chunk)
+				new_chunk.cleanables += enterer
+
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
@@ -271,6 +286,21 @@
 
 	if(exiter.density)
 		recalculate_atom_density()
+
+	if(exiter.enable_chunk_clean)
+
+		var/old_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
+		var/old_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
+		var/old_loc_chunk_z = src.z
+
+		var/new_loc_chunk_x = new_loc ? CEILING(new_loc.x/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_y = new_loc ? CEILING(new_loc.y/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_z = new_loc ? new_loc.z : 0
+
+		if(new_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
+			var/chunk/old_chunk = SSchunk.active_chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
+			if(old_chunk)
+				old_chunk.cleanables -= exiter
 
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)

@@ -251,6 +251,12 @@
 				if(!M.density)
 					continue
 				M.Crossed(src)
+	else
+		//Do: Exit the turf.
+		OldLoc.Exited(src,NewLoc)
+
+		//Do: Enter the turf.
+		NewLoc.Entered(src,OldLoc)
 
 	if(!OldLoc || OldLoc == loc) //Special code here. the OldLoc check is for if any of the above procs moved the atom while it was being called.
 		loc = NewLoc

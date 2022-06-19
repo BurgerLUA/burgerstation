@@ -141,6 +141,12 @@
 	set_anchored(anchored,TRUE)
 	. = ..()
 	update_value()
+	if(enable_chunk_clean && isturf(loc))
+		var/turf/T = loc
+		var/area/A = T.loc
+		A.chunk_cleanable += src
+
+
 
 
 /atom/movable/proc/update_value()

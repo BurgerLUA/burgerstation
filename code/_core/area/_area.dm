@@ -68,6 +68,8 @@
 
 	var/list/obj/particle_managers = list()
 
+	var/list/atom/movable/chunk_cleanable = list()
+
 /area/proc/is_space()
 	return FALSE
 

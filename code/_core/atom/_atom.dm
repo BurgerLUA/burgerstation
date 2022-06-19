@@ -148,15 +148,13 @@
 	. = ..()
 	update_name(name) //Setup labels
 	update_atom_light()
-
-/atom/New()
-	. = ..()
 	if((opacity || density) && isturf(loc))
 		var/turf/T = loc
 		if(opacity)
 			T.has_opaque_atom = TRUE
 		if(density)
 			T.has_dense_atom = TRUE
+
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src

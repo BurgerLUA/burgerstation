@@ -246,9 +246,13 @@
 
 /obj/structure/interactive/wire/yellow
 	color = "#FFFF00"
+	pixel_x = -4
+	pixel_y = -4
 
 /obj/structure/interactive/wire/green
 	color = "#00FF00"
+	pixel_x = 4
+	pixel_y = 4
 
 
 
