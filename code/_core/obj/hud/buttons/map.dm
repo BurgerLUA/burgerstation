@@ -122,7 +122,7 @@
 
 	if(!M || close)
 		. = ..()
-		M.update_owner(null)
+		connected_background.update_owner(null)
 		return .
 
 	var/turf/T = get_turf(caller)
