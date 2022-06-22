@@ -12,7 +12,8 @@
 
 	var/vision_distance = true_distance
 	if(objective_attack)
-		vision_distance = get_dist(objective_attack,A) //Objective attack is the central focus point, if there is one.
+		vision_distance = get_dist(A,objective_attack) //Objective attack is the central focus point, if there is one.
+		vision_distance = max(vision_distance,0)
 
 	if(true_distance >= min(VIEW_RANGE+ZOOM_RANGE*2,radius_find_enemy_combat))
 		return FALSE //Never be able to see what is impossible for a player.
