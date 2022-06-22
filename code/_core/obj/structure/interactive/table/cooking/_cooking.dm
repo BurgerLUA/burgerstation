@@ -43,7 +43,7 @@
 		INTERACT_DELAY(1)
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WRENCH && !initial(anchored))
-			anchored = !anchored
+			src.set_anchored(!anchored)
 			caller.to_chat(span("notice","You [anchored ? "anchor" : "unachor"] \the [src.name]."))
 			return TRUE
 		I.drop_item(get_turf(src))

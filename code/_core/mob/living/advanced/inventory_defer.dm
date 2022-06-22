@@ -13,8 +13,8 @@
 
 	var/obj/hud/button/inventory_defer/B = new
 	B.screen_loc = "CENTER+[0.5+x_pos],TOP+[y_pos]"
-	B.clone(I)
 	B.update_owner(src)
+	B.clone(I)
 
 	if(slot==0) //Add the close button!
 		var/obj/hud/button/close_inventory_defers/C = new

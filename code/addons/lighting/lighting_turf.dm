@@ -99,10 +99,11 @@
 	var/old = has_opaque_atom
 #endif
 
-	has_opaque_atom = FALSE
 	if (opacity)
 		has_opaque_atom = TRUE
 		return TRUE
+
+	has_opaque_atom = FALSE
 
 	for (var/thing in src) // Loop through every movable atom on our tile
 		var/atom/movable/A = thing
@@ -110,7 +111,7 @@
 			has_opaque_atom = TRUE
 			break 	// No need to continue if we find something opaque.
 
-	return has_opaque_atom
+	return TRUE
 
 #ifdef AO_USE_LIGHTING_OPACITY
 	if (old != has_opaque_atom)

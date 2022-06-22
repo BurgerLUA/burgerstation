@@ -56,7 +56,7 @@
 	M.Scale(size)
 	if(icon_state == "cone" && is_living(top_atom))
 		var/mob/living/L = top_atom
-		if(L.intent == INTENT_HARM)
+		if(L.intent == INTENT_HARM && !L.dead)
 			if(L.client)
 				M.Turn(get_angle(L,L.client.last_location))
 			else if(L.ai?.objective_attack)

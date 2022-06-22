@@ -220,8 +220,9 @@
 
 #define HYPOTENUSE(a,b) sqrt(a**2 + b**2)
 
-
-
 #define IS_INFINITY(a) (abs(a) >= INFINITY)
 
 #define SQRT2 1.41421356237
+
+
+#define COSINE_CURVE(x) (0.5+cos(clamp(x,0,1)*180+180)*0.5) //x is 0 to 1

@@ -11,7 +11,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
 	footstep = /footstep/water
-	fishing_rewards = /loot/fishing/river
+	fishing_rewards = null
 
 	plane = PLANE_WATER
 	layer = LAYER_MOB_WATER
@@ -34,7 +34,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/Initialize()
 	. = ..()
-	if(ENABLE_GENERATION)
+	if(ENABLE_GENERATION && depth <= 0)
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/simulated/floor/T = get_step(src,k)
 			if(!istype(T))
@@ -42,18 +42,20 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			water_shores |= T
 
 /turf/simulated/liquid/water/Finalize()
+
 	if(ENABLE_GENERATION)
 		if(depth <= 0)
 			depth = MAX_DEPTH
 			for(var/k in water_shores)
 				var/turf/simulated/floor/T = k
-				depth = min(1 + get_dist(src,T),depth)
+				depth = min(1 + get_dist_real(src,T),depth)
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 	else
 		depth = 8
 		alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 		map_color = map_color_max_depth
+
 	. = ..()
 
 /turf/simulated/liquid/water/jungle/Finalize()
@@ -66,5 +68,14 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 
 /turf/simulated/liquid/water/sea
-	name = "saltwater"
+	name = "salt water"
 	fishing_rewards = /loot/fishing/sea
+
+
+/turf/simulated/liquid/water/river
+	name = "river water"
+	fishing_rewards = /loot/fishing/river
+
+
+/turf/simulated/liquid/water/pond
+	name = "pond water"

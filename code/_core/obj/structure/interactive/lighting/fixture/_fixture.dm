@@ -63,7 +63,7 @@
 /obj/structure/interactive/lighting/fixture/update_underlays()
 	. = ..()
 	var/image/IS = new/image(initial(icon),"frame")
-	IS.appearance_flags = RESET_COLOR | RESET_ALPHA
+	IS.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA
 	IS.color = color_frame
 	add_underlay(IS)
 

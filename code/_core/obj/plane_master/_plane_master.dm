@@ -3,7 +3,7 @@
 	icon = null
 	plane = 0
 	screen_loc = "CENTER" //Stolen from /tg/
-	appearance_flags = PLANE_MASTER | PIXEL_SCALE
+	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
 	blend_mode = BLEND_OVERLAY
 	alpha = 255
 	var/mob/owner
@@ -165,7 +165,7 @@
 	plane = PLANE_LIGHTING
 	blend_mode = BLEND_MULTIPLY
 	mouse_opacity = 0
-	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | NO_CLIENT_COLOR
 
 //Openspace
 /obj/plane_master/openspace
@@ -197,7 +197,7 @@
 //HUD
 /obj/plane_master/hud
 	plane = PLANE_HUD
-	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
+	appearance_flags = PLANE_MASTER | LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | NO_CLIENT_COLOR
 
 
 /obj/plane_master/hud/apply_post_processing()

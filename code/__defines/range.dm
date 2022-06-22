@@ -1,5 +1,5 @@
 #define VIEW_RANGE 10
-#define ZOOM_RANGE 5
+#define ZOOM_RANGE 4
 
 #define WHISPER_RANGE 2
 #define TALK_RANGE VIEW_RANGE
@@ -16,4 +16,4 @@
 
 #define SCREEN_SIZE (TILE_SIZE*(VIEW_RANGE*2 + 1))
 
-#define CHUNK_SIZE (VIEW_RANGE*2) //In tiles.
+#define CHUNK_SIZE 32 //In tiles.

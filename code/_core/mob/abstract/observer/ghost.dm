@@ -13,7 +13,7 @@
 	invisibility = INVISIBLITY_GHOST
 	see_invisible = INVISIBLITY_GHOST
 
-	density = TRUE
+	density = FALSE
 
 /mob/abstract/observer/ghost/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
 	talk_type_to_use = TEXT_GHOST

@@ -15,15 +15,17 @@
 
 #define PLANE_SHUTTLE -41
 
-#define PLANE_WALL -40
+#define PLANE_DECAL -40
+
+#define PLANE_WIRE -39
+
+#define PLANE_WALL -38
 
 //Areas
-#define PLANE_AREA_INTERIOR -39
-#define PLANE_AREA_EXTERIOR -38
+#define PLANE_AREA_INTERIOR -37
+#define PLANE_AREA_EXTERIOR -36
 
 //Objs
-#define PLANE_DECAL -34
-
 #define PLANE_BLOOD -33
 
 #define PLANE_JUNK -32 //Plane used for junk objects that shouldn't have outlines.

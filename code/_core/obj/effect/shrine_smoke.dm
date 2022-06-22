@@ -23,8 +23,9 @@
 
 /obj/effect/ritual_smoke/proc/remove()
 	animate(src,alpha = 0)
-	density = FALSE
 	mouse_opacity = 0
+	set_density(FALSE)
+	set_opacity(FALSE)
 
 /obj/effect/ritual_smoke/inner
 	icon_state = "inner"

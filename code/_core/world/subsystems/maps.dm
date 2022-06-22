@@ -18,4 +18,3 @@ SUBSYSTEM_DEF(maps)
 
 /proc/get_z_level(var/z_level)
 	return map_2_zlevel[z_level]
-

@@ -113,36 +113,37 @@ var/global/list/difficulty_to_ai_modifier = list(
 	if(A == owner)
 		return FALSE
 
-	if(is_living(A))
-		var/mob/living/L = A
-		if(L.ai)
-			if(L.ai.objective_attack)
-				if(L.ai.objective_attack == owner)
-					return TRUE
-				if(assistance == 1 && is_living(L.ai.objective_attack))
-					var/mob/living/L2 = L.ai.objective_attack
-					if(allow_helpful_action(L2.loyalty_tag,owner.loyalty_tag))
-						return TRUE
-			if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
+	if(!is_living(A))
+		return FALSE
+
+	var/mob/living/L = A
+	if(L.ai)
+		if(L.ai.objective_attack)
+			if(L.ai.objective_attack == owner)
 				return TRUE
+			if(assistance == 1 && is_living(L.ai.objective_attack))
+				var/mob/living/L2 = L.ai.objective_attack
+				if(allow_helpful_action(L2.loyalty_tag,owner.loyalty_tag))
+					return TRUE
+		if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
+			return TRUE
 
-	if(!aggression_check)
-		return TRUE
+	if(aggression_check)
+		return check_aggression(L)
 
-	switch(aggression)
+	return TRUE
+
+/ai/proc/check_aggression(var/mob/living/target,var/aggression_override = src.aggression)
+
+	switch(aggression_override)
 		if(0)
 			return FALSE
 		if(1)
-			if(!is_living(A))
-				return FALSE
-			var/mob/living/L = A
-			return owner.loyalty_tag && L.loyalty_tag && (L.loyalty_tag in enemy_tags)
+			var/area/A = get_area(owner)
+			return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target.loyalty_tag,A) && (target.loyalty_tag in enemy_tags)
 		if(2)
-			if(!is_living(A))
-				return TRUE
-			var/mob/living/L = A
-			var/area/A2 = get_area(L)
-			return allow_hostile_action(owner.loyalty_tag,L.loyalty_tag,A2)
+			var/area/A = get_area(owner)
+			return allow_hostile_action(owner.loyalty_tag,target.loyalty_tag,A)
 		if(3)
 			return TRUE
 

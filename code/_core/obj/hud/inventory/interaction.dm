@@ -9,8 +9,7 @@
 
 	if(parent_inventory) //Wielding an object.
 		var/atom/top_object = parent_inventory.get_top_object()
-		if(object != top_object)
-			top_object.click_on_object_alt(caller,object,location,control,params)
+		if(object != top_object && top_object.click_on_object_alt(caller,object,location,control,params))
 			return TRUE
 
 	//Reinforced grabbing. Doesn't matter what your intent is.

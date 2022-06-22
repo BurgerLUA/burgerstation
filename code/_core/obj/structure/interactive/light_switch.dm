@@ -77,7 +77,7 @@
 /obj/structure/interactive/light_switch/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"base")
-	I.appearance_flags = appearance_flags
+	I.appearance_flags = src.appearance_flags
 	I.plane = initial(plane)
 	add_underlay(I)
 

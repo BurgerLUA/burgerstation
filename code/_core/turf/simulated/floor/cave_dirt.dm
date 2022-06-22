@@ -25,9 +25,9 @@
 	map_color = COLOR_BROWN
 
 
-/turf/simulated/floor/bedrock
+/turf/simulated/floor/desert_rock
 
-	name = "bedrock"
+	name = "desert rock floor"
 
 	icon = 'icons/turf/floor/cave_dirt_new.dmi'
 	icon_state = "0,0"
@@ -45,7 +45,7 @@
 
 	map_color = COLOR_BROWN
 
-/turf/simulated/floor/bedrock/New(var/desired_loc)
+/turf/simulated/floor/desert_rock/New(var/desired_loc)
 	var/desired_x = x % 10
 	var/desired_y = y % 10
 	icon_state = "[desired_x],[desired_y]"

@@ -89,13 +89,15 @@ dmm_suite
 			//
 			var yMax = yLines.len+(coordY-1)
 			if(world.maxy < yMax)
+				var/old_value = world.maxy
 				world.maxy = yMax
-				log_debug("[tag] caused map resize (Y) during prefab placement" )
+				log_debug("[tag] caused map resize (Y [old_value] to [world.maxy]) during prefab placement" )
 			var exampleLine = pick(yLines)
 			var xMax = length(exampleLine)/key_len+(coordX-1)
 			if(world.maxx < xMax)
+				var/old_value = world.maxx
 				world.maxx = xMax
-				log_debug("[tag] caused map resize (X) during prefab placement" )
+				log_debug("[tag] caused map resize (X [old_value] to [world.maxx]) during prefab placement" )
 
 			props.maxX = xMax
 			props.maxY = yMax
@@ -235,7 +237,7 @@ dmm_suite
 									instance = new /turf/simulated/floor/cave_dirt(location)
 						else if(istype(location,/turf/unsimulated/generation))
 							var/turf/unsimulated/generation/G = location
-							G.no_wall = TRUE
+							G.allow_wall = FALSE
 						else
 							instance = new /turf/simulated/floor/cave_dirt(location)
 					else

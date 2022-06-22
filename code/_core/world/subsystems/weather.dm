@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(weather)
 				O.layer = 0
 				O.icon = null
 				O.icon_state = null
-				O.anchored = TRUE
+				O.anchored = 2
 				O.particles = all_weather_particles[/particles/weather/snow]
 				var/area/A = T.loc
 				A.particle_managers += O

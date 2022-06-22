@@ -818,4 +818,4 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(attachment_undermount)
 		return attachment_undermount.click_on_object_alt(caller,object,location,control,params)
 
-	return TRUE
+	return FALSE

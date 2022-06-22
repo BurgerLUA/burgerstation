@@ -6,7 +6,7 @@
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
 #define FPS_SERVER 30
 
-#define WORLD_SIZE 500 //This shouldn't be touched unless you know what you're doing.
+#define WORLD_SIZE 255 //This shouldn't be touched unless you know what you're doing.
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 
 #define MAX_MESSAGE_LEN 512
@@ -33,7 +33,7 @@
 #define ENABLE_SMOOTHING TRUE
 
 //Enable/disables combat testing by forcing a gamemode.
-#define ENABLE_TDM TRUE
+#define ENABLE_TDM FALSE
 
 //Enables/disables turf generation
 #define ENABLE_GENERATION FALSE

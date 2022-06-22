@@ -45,8 +45,8 @@
 	sound_environment = ENVIRONMENT_STONEROOM
 
 
-/area/surface
-	name = "Surface"
+/area/generation
+	name = "?Generation"
 	icon_state = "cmd"
 	flags_area = FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_ROUND_INFORMATION | FLAG_AREA_TUTORIAL | FLAG_AREA_NO_EVENTS | FLAG_AREA_SAVEZONE
 	sunlight_freq = 4

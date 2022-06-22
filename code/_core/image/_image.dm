@@ -25,6 +25,8 @@
 	if(no_update)
 		return
 
+	if(attached_object)	appearance_flags = attached_object.appearance_flags
+
 	overlays.Cut()
 	for(var/k in filters)
 		filters -= k
@@ -51,20 +53,18 @@
 					OI.color = IB.color
 					OI.layer = IB.layer
 					OI.blend_mode = BLEND_INSET_OVERLAY
-					OI.appearance_flags = RESET_COLOR
+					OI.appearance_flags = appearance_flags | RESET_COLOR
 					add_overlay(OI)
 				else if(IB.special_type & ICON_BLEND_OVERLAY)
 					var/image/OI = new/image(IB.icon,IB.icon_state)
 					OI.color = IB.color
 					OI.layer = IB.layer
-					OI.appearance_flags = RESET_COLOR
+					OI.appearance_flags = appearance_flags | RESET_COLOR
 					add_overlay(OI)
 			if(IB.special_type & ICON_BLEND_COLOR)
 				color = IB.color
 	else
 		icon = initial_icon
 		icon_state = initial_icon_state
-
-	if(attached_object)	appearance_flags = attached_object.appearance_flags
 
 	return TRUE

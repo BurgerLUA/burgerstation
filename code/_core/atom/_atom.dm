@@ -52,6 +52,20 @@
 
 	var/list/filter_list
 
+/atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
+
+	if(density == desired_density && !force)
+		return FALSE
+
+	density = desired_density
+
+	if(isturf(loc))
+		var/turf/T = loc
+		if(T.density != density)
+			T.recalculate_atom_density()
+
+	return TRUE
+
 /atom/proc/get_display_name(var/mob/caller)
 	return "[src.name]"
 
@@ -134,12 +148,13 @@
 	. = ..()
 	update_name(name) //Setup labels
 	update_atom_light()
-
-/atom/New()
-	. = ..()
-	if(opacity && isturf(loc))
+	if((opacity || density) && isturf(loc))
 		var/turf/T = loc
-		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+		if(opacity)
+			T.has_opaque_atom = TRUE
+		if(density)
+			T.has_dense_atom = TRUE
+
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src

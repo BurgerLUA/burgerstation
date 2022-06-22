@@ -15,7 +15,7 @@
 		GENERATE(H)
 		FINALIZE(H)
 		tracked_mobs += H
-		HOOK_ADD("post_death","artificer_post_death",H,src,.proc/remove_tracked_mob)
+		HOOK_ADD("post_death","\ref[src]_artificer_attacking",H,src,.proc/remove_tracked_mob)
 		next_spawn = world.time + SECONDS_TO_DECISECONDS(3)
 
 	return ..()

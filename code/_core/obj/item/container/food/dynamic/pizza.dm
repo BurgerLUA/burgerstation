@@ -7,7 +7,7 @@
 	cooked_icon_state = "bread_pizza"
 	raw_icon_state = "dough_pizza"
 
-	appearance_flags = KEEP_TOGETHER | PIXEL_SCALE | LONG_GLIDE
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
 
 	health = /health/obj/item/misc/
 
@@ -192,13 +192,13 @@
 
 	if(color_sauce)
 		var/image/I = new/image(icon,"sauce")
-		I.appearance_flags = appearance_flags | RESET_COLOR
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.color = color_sauce
 		add_overlay(I)
 
 	if(color_cheese)
 		var/image/I = new/image(icon,"cheese")
-		I.appearance_flags = appearance_flags | RESET_COLOR
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.color = color_cheese
 		add_overlay(I)
 
@@ -207,7 +207,7 @@
 		for(var/i=1,i<=length(v),i++)
 			var/local_offset = 1 + (i+offsets[k] % 2)
 			var/image/topping = new/image(icon,"topping_[k]_[local_offset]")
-			topping.appearance_flags = appearance_flags | RESET_COLOR
+			topping.appearance_flags = src.appearance_flags | RESET_COLOR
 			topping.color = v[i]
 			add_overlay(topping)
 
@@ -220,12 +220,12 @@
 
 	var/image/cooked = new/image(icon,"pizza_cooked")
 	cooked.alpha = cooked_alpha
-	cooked.appearance_flags = appearance_flags
+	cooked.appearance_flags = src.appearance_flags
 	add_underlay(cooked)
 
 	var/image/raw = new/image(icon,"pizza_raw")
 	raw.alpha = raw_alpha
-	raw.appearance_flags = appearance_flags
+	raw.appearance_flags = src.appearance_flags
 	add_underlay(raw)
 
 

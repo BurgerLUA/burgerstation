@@ -1,7 +1,7 @@
 /atom/movable/openspace_backdrop
 	icon = 'icons/turf/floor/openspace.dmi'
 	icon_state = "openspace_background"
-	anchored = TRUE
+	anchored = 2
 
 /turf/simulated/openspace
 	name = "hole"

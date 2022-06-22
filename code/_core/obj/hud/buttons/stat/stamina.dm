@@ -21,7 +21,7 @@
 /obj/hud/button/stat/stamina/update_underlays()
 	. = ..()
 	var/image/I = new/image(icon,"stamina_outline")
-	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+	I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_underlay(I)
 
 /obj/hud/button/stat/stamina/update_owner(var/mob/desired_owner)

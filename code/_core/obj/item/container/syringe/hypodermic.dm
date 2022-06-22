@@ -16,7 +16,7 @@
 	//Liquid
 	if(reagents && reagents.volume_current)
 		var/image/I = new/image(icon,"liquid")
-		I.appearance_flags = I.appearance_flags | RESET_COLOR
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.color = reagents.color
 		add_underlay(I)
 
@@ -25,11 +25,11 @@
 	//Action
 	if(src.loc && is_inventory(src.loc))
 		var/image/I = new/image(icon,"action_[injecting]")
-		I.appearance_flags = I.appearance_flags | RESET_COLOR
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		add_overlay(I)
 	//Needle
 	var/image/I = new/image(icon,"needle[quality <= 0 ? "_broken" : ""]")
-	I.appearance_flags = I.appearance_flags | RESET_COLOR
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	add_overlay(I)
 
 
