@@ -36,7 +36,7 @@
 #define ENABLE_TDM FALSE
 
 //Enables/disables turf generation
-#define ENABLE_GENERATION TRUE
+#define ENABLE_GENERATION FALSE
 
 //Enables/disables atmos.
 #define ENABLE_ATMOS FALSE

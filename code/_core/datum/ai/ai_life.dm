@@ -32,7 +32,7 @@
 	if(objective_ticks >= objective_delay)
 		objective_ticks = 0
 		handle_objectives(objective_delay)
-		if(length(current_path) || objective_attack || objective_move || alert_level >= ALERT_LEVEL_NOISE)
+		if(length(current_node_path) || objective_attack || objective_move || alert_level >= ALERT_LEVEL_NOISE)
 			idle_time = 0
 		else
 			if(idle_time && idle_time <= world.time)
@@ -81,9 +81,9 @@
 							set_path_astar(desired_target_turf)
 
 		else if(use_pathfinding && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
-			var/path_num = length(current_path)
+			var/path_num = length(current_node_path)
 			if(path_num)
-				set_path_astar(current_path[path_num])
+				set_path_astar(current_node_path[path_num])
 			else if(objective_attack)
 				set_path_astar(objective_attack)
 			else if(objective_move)

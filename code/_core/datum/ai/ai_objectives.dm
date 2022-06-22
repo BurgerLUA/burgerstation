@@ -9,8 +9,21 @@
 	if(hunt_target == A)
 		return FALSE
 
+	if(ismob(hunt_target))
+		var/mob/M = hunt_target
+		if(M?.ckey && ckeys_being_hunt_by[M.ckey_last])
+			ckeys_being_hunt_by[M.ckey_last] -= src
+
 	hunt_target = A
-	set_active(TRUE)
+
+	if(hunt_target)
+		if(ismob(hunt_target))
+			var/mob/M = hunt_target
+			if(M.ckey_last)
+				if(!ckeys_being_hunt_by[M.ckey_last])
+					ckeys_being_hunt_by[M.ckey_last] = list()
+				ckeys_being_hunt_by[M.ckey_last] += src
+		set_active(TRUE)
 
 	return TRUE
 
@@ -108,25 +121,21 @@
 		return TRUE
 
 	if(objective_attack)
-		if(objective_attack.qdeleting || !objective_attack.health)
+		if(objective_attack.qdeleting || !objective_attack.health || (!is_living(objective_attack) && objective_attack.health.health_current <= 0) )
 			set_objective(null)
 		else if(is_living(objective_attack))
-			var/mob/living/L = objective_attack
 			if(!should_attack_mob(objective_attack,FALSE))
 				set_objective(null)
 			else
-				var/sight_chance = get_sight_chance(objective_attack,view_check=TRUE)
-				if(sight_chance <= 0)
+				last_combat_location = get_turf(objective_attack)
+				var/detection_level = get_detection_level(objective_attack,view_check=TRUE)
+				if(detection_level <= 0) //Gone completely.
 					set_objective(null)
-					frustration_attack = 0
-				else if(sight_chance <= 50)
+				else if(detection_level <= 0.25) //Basically out of combat, but not yet
 					frustration_attack += tick_rate
-					if(L.client)
-						last_combat_location = get_turf(objective_attack)
 				else
 					frustration_attack = 0
-					if(L.client)
-						last_combat_location = get_turf(objective_attack)
+
 		else if(isturf(objective_attack) && objective_attack.Enter(owner))
 			set_objective(null)
 		else if(get_dist(owner,objective_attack) > attack_distance_max)
@@ -140,17 +149,29 @@
 		var/list/possible_targets = get_possible_targets()
 		var/atom/best_target
 		var/best_score = 0
+		var/best_detection_value = 0
 		for(var/k in possible_targets)
 			var/atom/A = k
-			var/local_score = get_attack_score(A)
-			if(!best_score || local_score > best_score)
+			var/detection_value = possible_targets[k]
+			var/score_value = get_attack_score(A)
+			if(!best_score || (score_value > best_score && detection_value >= best_detection_value))
 				best_target = A
-				best_score = local_score
-		if(best_target && best_target != objective_attack)
-			set_objective(best_target)
-		else
-			if(last_combat_location && !length(current_path_astar))
-				set_path_astar(last_combat_location)
+				best_score = score_value
+				best_detection_value = detection_value
+		if(best_target && best_target != objective_attack && best_detection_value > 0.25)
+			if(best_detection_value < 0.5)
+				investigate(best_target)
+			else
+				if(reaction_time > 0)
+					if(debug && ismob(best_target))
+						var/mob/M = best_target
+						if(M.client)
+							M.to_chat(span("debug","Setting delayed objective target ([reaction_time])."))
+					CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
+				else
+					set_objective(best_target)
+		else if(last_combat_location && !length(current_path_astar))
+			set_path_astar(last_combat_location)
 		frustration_attack = 0
 
 	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
@@ -190,22 +211,12 @@
 			. = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			. = radius_find_enemy_combat
-	if(owner.has_status_effect(REST))
+	if(owner.has_status_effect(REST)) //Mostly used for sleeping zombies.
 		. *= 0.5
 
 /ai/proc/get_possible_targets()
 
 	. = list()
-
-	if(retaliate && length(attackers))
-		for(var/k in attackers)
-			var/atom/A = k
-			if(A.qdeleting)
-				attackers -= k
-				continue
-			.[A] = TRUE
-		if(prob(80)) //Optimization
-			return .
 
 	if(aggression <= 0)
 		return .
@@ -215,12 +226,12 @@
 		return .
 
 	for(var/mob/living/L in view(range_to_use,owner))
-		var/sight_chance = get_sight_chance(L,range_to_use)
-		if(sight_chance < 100 && !prob(sight_chance))
-			continue
 		if(!should_attack_mob(L))
 			continue
-		.[L] = TRUE
+		var/detection_level = get_detection_level(L)
+		if(detection_level <= 0)
+			continue
+		.[L] = get_detection_level(L)
 
 /ai/proc/investigate(var/atom/desired_target)
 

@@ -518,6 +518,6 @@
 	else
 		desired_squad = possible_squads[desired_squad]
 
-	if(!SShorde.send_squad(desired_victim,desired_squad,bypass_restrictions=TRUE))
+	if(!SShorde.send_squad(desired_victim,desired_squad,bypass_restrictions=TRUE,debug=TRUE))
 		src.to_chat(span("warning","Could not send a squad to this player. Could not find a valid path."))
 

@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(balance)
 	name = "Balance Subsystem"
 	desc = "Makes a report of weapons."
 
-	priority = SS_ORDER_POSTLOAD
+	priority = SS_ORDER_LAST
 
 	var/list/stored_dps = list()
 	var/list/stored_dph = list()
@@ -16,8 +16,10 @@ SUBSYSTEM_DEF(balance)
 	var/list/created_bullets = list()
 	var/list/created_magazines = list()
 
+	var/turf/T = locate(1,1,1)
+
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
-		var/obj/item/bullet_cartridge/B = new k(locate(1,1,1))
+		var/obj/item/bullet_cartridge/B = new k(T)
 		if(B.rarity != RARITY_COMMON || B.value <= 0)
 			qdel(B)
 			continue
@@ -27,7 +29,7 @@ SUBSYSTEM_DEF(balance)
 		created_bullets += B
 
 	for(var/k in subtypesof(/obj/item/magazine))
-		var/obj/item/magazine/M = new k(locate(1,1,1))
+		var/obj/item/magazine/M = new k(T)
 		if(M.rarity != RARITY_COMMON || M.value <= 0)
 			qdel(M)
 			continue
@@ -43,7 +45,7 @@ SUBSYSTEM_DEF(balance)
 		if(initial(W.value) <= 0)
 			continue
 
-		W = new W(locate(1,1,1))
+		W = new W(T)
 		INITIALIZE(W)
 		GENERATE(W)
 		FINALIZE(W)
@@ -81,7 +83,6 @@ SUBSYSTEM_DEF(balance)
 				log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>![istype(W,/obj/item/weapon/ranged/bullet) ? "(Bullet used: [weapon_to_bullet[W.type]])" : ""]")
 				imbalanced_weapons++
 			stored_tier[W.type] = recommended_tier
-
 
 		qdel(W)
 

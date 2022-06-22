@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(horde)
 	var/list/queued_players = list() //Assoc list.
 	var/list/queued_overdue_players = list() //NOT AN ASSOC LIST
 
+	var/list/ckey_to_current_squads = list() //Assoc list
+
 	var/list/ckey_to_time_to_horde = list() //Assoc list
 
 	tick_usage_max = 25
@@ -37,25 +39,32 @@ SUBSYSTEM_DEF(horde)
 			queued_players[P.ckey] = TRUE
 
 	if(length(queued_players))
-		queued_overdue_players |= queued_players[1] //Lazy and a bit of a misnomer, but it saves code.
+		//It treats the first entry of found players who need an ass kicking as overdue so it sends mobs.
+		//Lazy and a bit of a misnomer, but it saves code.
+		queued_overdue_players |= queued_players[1]
 		queued_players -= queued_players[1]
 
 	for(var/ckey in queued_overdue_players)
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		queued_overdue_players -= ckey
 		var/client/C = CLIENT(ckey)
-		if(!C || !is_player(C.mob))
+		if(!C || !is_player(C.mob)) //They are likely a ghost now.
 			continue
 		var/mob/living/advanced/player/P = C.mob
-		if(!P.ckey || P.loyalty_tag != "NanoTrasen" || P.dead)
+		if(P.loyalty_tag != "NanoTrasen" || P.dead)
+			continue
+		var/area/A = get_area(P)
+		if(A.area_identifier != "Mission")
 			continue
 		if(!send_squad(P,/mob/living/advanced/npc/zombie/civilian/))
 			ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(60)
+			continue
+		log_subsystem(src.name,"Sending horde to [P.get_debug_name()]")
 
 	return TRUE
 
 
-/subsystem/horde/proc/send_squad(var/mob/victim,var/mob/living/attacker_type,var/bypass_restrictions=FALSE)
+/subsystem/horde/proc/send_squad(var/mob/victim,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/debug=FALSE)
 
 	var/turf/T = get_turf(victim)
 	if(!T)
@@ -63,6 +72,7 @@ SUBSYSTEM_DEF(horde)
 
 	var/area/A = T.loc
 	if(!bypass_restrictions && A.area_identifier != "Mission")
+		if(debug) log_debug("Could not send squad: Area identifier was expected to be Mission, but it was [A.area_identifier].")
 		return FALSE
 	//Okay. Here is the fun part. Finding spawns.
 	var/my_chunk_x = CEILING(victim.loc.x/CHUNK_SIZE,1)
@@ -103,6 +113,7 @@ SUBSYSTEM_DEF(horde)
 			valid_nodes |= CH_CENTER.nodes
 
 	if(!length(valid_nodes))
+		if(debug) log_debug("Could not send squad: Found zero valid nodes to place squad at.")
 		return FALSE
 
 	var/obj/marker/map_node/N_start = pick(valid_nodes)
@@ -112,15 +123,39 @@ SUBSYSTEM_DEF(horde)
 		return FALSE
 	var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
 	if(!found_path)
+		if(debug) log_debug("Could not send squad: Could not find a path from the squad selection point to the target.")
 		return FALSE
 
 	var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
 
-	. = TRUE
-	for(var/i=1,i<=5,i++)
-		var/mob/living/Z = new attacker_type(get_step(squad_spawn,valid_directions[i]))
+
+	var/enemies_to_send = 5 //TODO: Implement difficulty.
+	if(!bypass_restrictions && victim.ckey_last)
+		enemies_to_send -= length(ckeys_being_hunt_by[victim.ckey_last])
+
+	if(enemies_to_send <= 0)
+		if(debug) log_debug("Could not send squad: Target already has too many squads being sent after them.")
+		return TRUE //Already being hunted.
+
+	. = 0
+	var/area/sent_area
+	for(var/i=1,i<=enemies_to_send,i++)
+		var/turf/T2 = get_step(squad_spawn,valid_directions[1 + (i % 4)])
+		if(!T) continue
+		var/mob/living/Z = new attacker_type(T2)
 		INITIALIZE(Z)
 		GENERATE(Z)
 		FINALIZE(Z)
-		if(!Z.ai.set_hunt_target(victim))
-			. = FALSE
+		if(!Z.ai?.set_hunt_target(victim))
+			qdel(Z)
+		else
+			. += 1
+			if(debug && !sent_area)
+				sent_area = get_area(Z)
+
+	if(debug)
+		if(. <= 0)
+			log_debug("Could not send squad: AI could not properly set their hunt target.")
+		else
+			log_debug("Sent squad. [.] expected squad members spawned at [sent_area.get_debug_name()].")
+

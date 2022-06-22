@@ -375,17 +375,19 @@
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 
-/turf/proc/is_clear_path_to(var/turf/target_turf)
-
-	if(!isturf(target_turf) || target_turf.has_dense_atom || src.z != target_turf.z)
-		return FALSE
+/turf/proc/is_straight_path_to(var/turf/target_turf,var/check_vision=FALSE,var/check_density=TRUE)
 
 	if(src == target_turf)
-		return target_turf.has_dense_atom
+		return TRUE
 
+	if(!check_vision && !check_density)
+		return FALSE
+
+	if(!isturf(target_turf) || src.z != target_turf.z)
+		return FALSE
 
 	var/limit = get_dist(src,target_turf)
-	if(limit >= 127) //No.
+	if(limit >= 64) //Don't want to path forever.
 		return FALSE
 	limit *= 2 //Compensates for corners.
 
@@ -403,14 +405,13 @@
 		if(diag["[next_direction]"])
 			var/dir1 = get_true_4dir(next_direction)
 			var/turf/T1 = get_step(T,dir1)
-			if(T1.has_dense_atom)
+			if((check_density && T1.has_dense_atom) || (check_vision && T1.has_opaque_atom))
 				var/dir2 = next_direction - dir1
 				var/turf/T2 = get_step(T,dir2)
-				if(T2.has_dense_atom)
+				if((check_density && T2.has_dense_atom) || (check_vision && T2.has_opaque_atom))
 					return FALSE
-
 		T = get_step(T,next_direction)
-		if(T.has_dense_atom)
-			return FALSE
 		if(T == target_turf)
 			return TRUE
+		if((check_density && T.has_dense_atom) || (check_vision && T.has_opaque_atom))
+			return FALSE

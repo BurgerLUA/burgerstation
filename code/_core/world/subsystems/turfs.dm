@@ -53,7 +53,8 @@ SUBSYSTEM_DEF(turf)
 		var/list/generations_second = list()
 		var/list/generations_third = list()
 
-		for(var/obj/marker/generation/G in world)
+		for(var/k in all_generation_markers)
+			var/obj/marker/generation/G = k
 			if(G.bypass_disallow_generation || priority >= 3)
 				generations_third += G
 			else if(priority >= 2)

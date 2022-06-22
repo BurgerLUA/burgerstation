@@ -29,3 +29,5 @@ SUBSYSTEM_DEF(dirty)
 					INITIALIZE(I)
 					GENERATE(I)
 					FINALIZE(I)
+
+	return TRUE

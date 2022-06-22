@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(chunk)
 		for(var/x2=-1,x2<=1,x2++) for(var/y2=-1,y2<=1,y2++).
 			if(x2==0 && y2==0)
 				continue
-			if(chunk_count_x < 1 || chunk_count_y < 1 || x2 > chunk_count_x || y2 > chunk_count_y)
+			if(x+x2 < 1 || y+y2 < 1 || x+x2 > chunk_count_x || y+y2 > chunk_count_y)
 				continue
 			C.adjacent_chunks += active_chunks[z][x+x2][y+y2]
 
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(chunk)
 	current_z = (current_z % world.maxz) + 1
 	var/process_count = process_entire_z(current_z)
 	benchmark = true_time() - benchmark
-	log_subsystem(src.name,"Cleaning zlevel [current_z] took [CEILING(benchmark/10,0.1)] seconds and deleted [process_count] mobs/items..")
+	log_subsystem(src.name,"Cleaning zlevel [current_z] took [CEILING(benchmark/10,0.1)] seconds and deleted [process_count] mobs/items.")
 
 	return TRUE
 
@@ -117,6 +117,5 @@ SUBSYSTEM_DEF(chunk)
 		for(var/j in C.cleanables)
 			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
 			var/atom/movable/M = j
-			qdel(M)
-			. += 1
-		sleep(10) //Forced 1 second delay.
+			if(M.on_chunk_clean())
+				. += 1

@@ -1,4 +1,5 @@
-var/global/list/ai_attacking_players = list()
+var/global/list/ai_attacking_players = list() //Assoc list. key is AI, value is list of players
+var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is list of AI
 
 /ai/
 
@@ -45,10 +46,13 @@ var/global/list/ai_attacking_players = list()
 
 	var/shoot_obstacles = TRUE
 
-
 	var/left_click_chance = 90
 
-	var/night_vision = 0.25 //What level of darkness the mob can see in. Basically if light is above this value, it can see it.
+	var/night_vision = 0.25 //What level of darkness the mob can see in. Basically if light is above this value, it can 100% see it.
+
+	var/see_through_walls = FALSE //Can the ai see through walls?
+
+	var/use_blood_sight = TRUE //Give a bonus chance to see targets if the mob's health is low. This is mostly a balance thing.
 
 	var/timeout_threshold = 600 //Amount of deciseconds of inactivty is required to ignore players. Set to 0 to disable.
 
@@ -71,7 +75,7 @@ var/global/list/ai_attacking_players = list()
 	var/attack_on_block = TRUE
 
 	var/path_steps = 1
-	var/list/Vector3D/current_path = list()
+	var/list/obj/marker/map_node/current_node_path = list()
 
 	var/list/current_path_astar = list()
 
@@ -80,7 +84,7 @@ var/global/list/ai_attacking_players = list()
 	var/list/obstacles = list()
 
 	var/use_alerts = TRUE
-	var/true_sight = FALSE //Set to true if it can see invisible enemies.
+	var/true_sight = FALSE //Set to true if it can see sneaking enemies.
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
 	var/alert_time = SECONDS_TO_TICKS(20) //In ticks
@@ -132,6 +136,8 @@ var/global/list/ai_attacking_players = list()
 
 /ai/Destroy()
 
+	set_active(FALSE,TRUE)
+
 	var/turf/T = get_turf(owner)
 	if(T)
 		remove_from_active_list(T.z)
@@ -156,9 +162,9 @@ var/global/list/ai_attacking_players = list()
 		obstacles.Cut()
 		obstacles = null
 
-	if(current_path)
-		current_path.Cut()
-		current_path = null
+	if(current_node_path)
+		current_node_path.Cut()
+		current_node_path = null
 
 	if(current_path_astar)
 		current_path_astar.Cut()
@@ -222,6 +228,7 @@ var/global/list/ai_attacking_players = list()
 		set_alert_level(ALERT_LEVEL_NONE,TRUE)
 		set_objective(null)
 		set_move_objective(null)
+		set_hunt_target(null)
 		CALLBACK_REMOVE("set_new_objective_\ref[src]")
 		attackers.Cut()
 		obstacles.Cut()
@@ -234,6 +241,8 @@ var/global/list/ai_attacking_players = list()
 	owner = desired_owner
 	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
 	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
+	if(night_vision <= 0)
+		night_vision = 0.5
 	. = ..()
 
 /ai/Finalize()
