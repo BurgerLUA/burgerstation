@@ -9,6 +9,8 @@
 	var/cooldown = SECONDS_TO_DECISECONDS(1)
 	var/cooldown_end = 0
 
+	var/category
+
 /ability/proc/activate(var/mob/caller)
 	var/atom/target
 	if(caller.client)

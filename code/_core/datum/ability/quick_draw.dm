@@ -6,6 +6,8 @@
 	cooldown = SECONDS_TO_DECISECONDS(1)
 	var/attack_too = FALSE
 
+	category = "Quick Draw"
+
 /ability/quick_draw/on_cast_pre(var/mob/caller,var/atom/target)
 
 	if(!is_advanced(caller))

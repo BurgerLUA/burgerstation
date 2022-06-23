@@ -6,6 +6,8 @@
 	cooldown = SECONDS_TO_DECISECONDS(4)
 	var/dash_strength = 3
 
+	category = "Dash"
+
 /ability/dash/on_cast(var/mob/caller,var/atom/target)
 	var/mob/living/L = caller
 	L.dash_target = target
