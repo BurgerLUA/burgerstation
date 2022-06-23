@@ -8,7 +8,7 @@
 
 	category = "Quick Draw"
 
-/ability/quick_draw/on_cast_pre(var/mob/caller,var/atom/target)
+/ability/quick_draw/on_cast_pre(var/mob/caller,var/atom/target,location,params)
 
 	if(!is_advanced(caller))
 		return FALSE
@@ -31,11 +31,6 @@
 			var/obj/hud/inventory/new_inventory = I2.loc
 			if(!new_inventory)
 				return FALSE
-			var/location
-			var/params
-			if(A.client)
-				location = A.client.last_location
-				params = A.client.last_params
 			I2.click_on_object(caller,target,location,null,params)
 		return TRUE
 

@@ -8,7 +8,7 @@
 
 	category = "Dash"
 
-/ability/dash/on_cast(var/mob/caller,var/atom/target)
+/ability/dash/on_cast(var/mob/caller,var/atom/target,location,params)
 	var/mob/living/L = caller
 	L.dash_target = target
 	L.dash_amount = dash_strength
