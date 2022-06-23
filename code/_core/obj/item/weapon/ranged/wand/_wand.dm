@@ -21,7 +21,120 @@
 	bypass_balance_check = TRUE
 
 	var/sockets = 2
-	var/sockets_max = 7
+	var/sockets_max = 7 //Absolute max is 7.
+
+	var/list/stored_socket_overlays = list()
+
+	var/hovering = FALSE //Cosmetic socket effects.
+	var/hovering_alpha = 0
+
+/obj/item/weapon/ranged/wand/MouseEntered(location,control,params)
+
+	. = ..()
+
+	if(!hovering && is_inventory(src.loc))
+		hovering = TRUE
+		START_THINKING(src)
+
+/obj/item/weapon/ranged/wand/MouseExited(location,control,params)
+
+	. = ..()
+
+	if(hovering)
+		hovering = FALSE
+		START_THINKING(src)
+
+/obj/item/weapon/ranged/wand/think()
+
+	if(!is_inventory(src.loc))
+		hovering = FALSE
+		hovering_alpha = 0
+
+	. = ..()
+
+	if(hovering)
+		hovering_alpha = min(hovering_alpha + 30,255)
+	else
+		hovering_alpha = max(hovering_alpha - 30,0)
+
+	name = "[hovering_alpha]"
+
+	for(var/k in stored_socket_overlays)
+		var/image/I = k
+		I.alpha = hovering_alpha
+
+	if(.)
+		return .
+
+	if(!hovering && hovering_alpha > 0)
+		return TRUE
+
+	if(hovering && hovering_alpha < 255)
+		return TRUE
+
+	return FALSE
+
+
+/obj/item/weapon/ranged/wand/update_overlays()
+	. = ..()
+
+	for(var/k in stored_socket_overlays)
+		var/obj/I = k
+		vis_contents -= I
+		qdel(I)
+	stored_socket_overlays.Cut()
+
+	for(var/i=1,i<=sockets,i++)
+		var/x_offset = sin((i/sockets)*360)*14
+		var/y_offset = cos((i/sockets)*360)*14
+		var/obj/I = new(src)
+		I.icon = 'icons/obj/item/spellgem.dmi'
+		I.icon_state = "socket_backing"
+		I.pixel_x = x_offset
+		I.pixel_y = y_offset
+		I.appearance_flags = RESET_COLOR | KEEP_TOGETHER | PIXEL_SCALE | RESET_ALPHA
+		I.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+		if(length(socketed_supportgems) > i && socketed_supportgems[i])
+			var/obj/item/supportgem/stored_gem = socketed_supportgems[i]
+			var/image/G = new/image(stored_gem.icon,stored_gem.icon_state)
+			G.appearance = stored_gem.appearance
+			G.plane = FLOAT_PLANE
+			G.layer = FLOAT_LAYER
+			I.add_overlay(G)
+			var/image/O = new/image('icons/obj/item/spellgem.dmi',"socket")
+			I.add_overlay(O)
+		add_vis_content(I)
+		I.alpha = 0
+		stored_socket_overlays += I
+
+	var/obj/I = new(src)
+	I.icon = 'icons/obj/item/spellgem.dmi'
+	I.icon_state = "socket_backing"
+	I.appearance_flags = RESET_COLOR | KEEP_TOGETHER | PIXEL_SCALE | RESET_ALPHA
+	I.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	if(socketed_spellgem)
+		var/image/G = new/image(socketed_spellgem.icon,socketed_spellgem.icon_state)
+		G.appearance = socketed_spellgem.appearance
+		G.plane = FLOAT_PLANE
+		G.layer = FLOAT_LAYER
+		I.add_overlay(G)
+		var/image/O = new/image('icons/obj/item/spellgem.dmi',"socket")
+		I.add_overlay(O)
+	add_vis_content(I)
+	I.alpha = 0
+	stored_socket_overlays += I
+
+/obj/item/weapon/ranged/wand/Finalize()
+	sockets = min(sockets,sockets_max)
+	. = ..()
+	update_sprite()
+
+/obj/item/weapon/ranged/wand/Initialize()
+	. = ..()
+	sockets_max = 7 * (wand_damage_multiplier/1.6)
+	sockets_max = CEILING(sockets_max,1)
+	if(sockets_max <= 2)
+		sockets_max = 2 //In case there is fuckery afoot.
 
 /obj/item/weapon/ranged/wand/Generate()
 	. = ..()
@@ -68,25 +181,72 @@
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/weapon/ranged/spellgem/))
-		var/obj/item/weapon/ranged/spellgem/SG = object
-		if(socketed_spellgem)
-			caller.to_chat(span("warning","Remove \the [socketed_spellgem.name] before inserting a new spellgem!"))
+	if(is_inventory(object) && caller.attack_flags & CONTROL_MOD_DISARM)
+
+		INTERACT_CHECK
+
+		var/obj/hud/inventory/I = object
+
+		var/list/objects_to_remove = socketed_supportgems + socketed_spellgem + "Cancel" //+no bitches
+
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
+
+		var/desired_removal = input("What gem would you like to remove?","Gem Removal","Cancel") as null|anything in objects_to_remove
+		if(desired_removal == "Cancel")
+			caller.to_chat(span("notice","You decide not to remove anything."))
 			return TRUE
-		socketed_spellgem = SG
-		SG.drop_item(src)
-		caller.to_chat(span("notice","You insert \the [SG.name] into \the [src.name]."))
+		var/obj/item/G = desired_removal
+		if(G.loc != src)
+			caller.to_chat(span("warning","That's not there anymore!"))
+			return TRUE
+		if(G == socketed_spellgem)
+			socketed_spellgem = null
+			G.drop_item(get_turf(caller))
+			I.add_object(G)
+			caller.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
+			update_sprite()
+			return TRUE
+		socketed_supportgems -= G
+		G.drop_item(get_turf(caller))
+		I.add_object(G)
+		caller.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
+		update_sprite()
 		return TRUE
 
-	if(istype(object,/obj/hud/inventory/))
-		var/obj/hud/inventory/I = object
-		if(!socketed_spellgem)
-			caller.to_chat(span("warning","There is no socketed spellgem to remove!"))
-			return TRUE
-		I.add_object(socketed_spellgem)
-		caller.to_chat(span("notice","You remove \the [socketed_spellgem.name] from \the [src.name]."))
-		socketed_spellgem = null
+
+	if(istype(object,/obj/item/weapon/ranged/spellgem/))
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
+		var/obj/item/weapon/ranged/spellgem/SG = object
+		var/obj/hud/inventory/I //Hacky, but it werks.
+		if(socketed_spellgem)
+			I = SG.loc
+			socketed_spellgem.drop_item(get_turf(src))
+		if(I)
+			I.add_object(socketed_spellgem)
+			caller.to_chat(span("notice","You replace \the [socketed_spellgem.name] with \the [SG.name]."))
+		else
+			caller.to_chat(span("notice","You insert \the [SG.name] into \the [src.name]."))
+		socketed_spellgem = SG
+		SG.drop_item(src)
+		update_sprite()
 		return TRUE
+
+	if(istype(object,/obj/item/supportgem))
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
+		var/obj/item/supportgem/G = object
+		if(length(socketed_supportgems) >= sockets)
+			caller.to_chat(span("warning","There aren't enough sockets to support \the [G.name]!"))
+			return TRUE
+		socketed_supportgems += G
+		G.drop_item(src)
+		caller.to_chat(span("notice","You insert \the [G.name] into \the [src.name]."))
+		update_sprite()
+		return TRUE
+
+
 
 	. = ..()
 
@@ -97,9 +257,6 @@
 	wand_damage_multiplier = 1.1
 
 	value = 100
-
-/obj/item/weapon/ranged/wand/branch/socket_test
-	value_burgerbux = 9999
 
 /obj/item/weapon/ranged/wand/crafted
 	name = "crafted wand"
@@ -140,4 +297,8 @@
 	wand_damage_multiplier = 1.6
 
 	value = 100
+
+/obj/item/weapon/ranged/wand/sage/socket_test
+	value_burgerbux = 9999
+	sockets = 0
 
