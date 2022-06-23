@@ -7,6 +7,7 @@
 	value = -1
 
 	var/obj/item/weapon/ranged/spellgem/socketed_spellgem
+	var/list/obj/item/supportgem/socketed_supportgems = list()
 
 	automatic = TRUE
 
@@ -19,21 +20,46 @@
 
 	bypass_balance_check = TRUE
 
+	var/sockets = 2
+	var/sockets_max = 7
+
+/obj/item/weapon/ranged/wand/Generate()
+	. = ..()
+	if(sockets == 0) //Sockets are given in the wild.
+		// https://www.desmos.com/calculator/eomhtrxl2v
+		var/diceroll = rand(1,1000)
+		var/magic_number = (1000/6)**1.25
+		sockets = 1 + (diceroll/magic_number)**3.5
+		sockets = FLOOR(sockets,1)
+
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)
+	QDEL_CUT(socketed_supportgems)
 	. = ..()
 
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = ..()
-	. *= wand_damage_multiplier**2
+	// https://www.desmos.com/calculator/bofczfvcar
+	. += ((sockets*5)**3)*0.25 + (x**(x-1))*0.2
+	. *= wand_damage_multiplier**1.5
+	. = CEILING(.,1)
+
+
+/obj/item/weapon/ranged/wand/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += div("notice","Has <b>1</b> slot(s) for spell gems.")
+	. += div("notice","Has <b>[sockets]</b> slot(s) for support gems.")
+	. += div("notice","This wand type increases the power of support gems by [(wand_damage_multiplier-1)*100]%.")
 
 /obj/item/weapon/ranged/wand/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("socketed_spellgem")
+	SAVELISTATOM("socketed_supportgems")
 
 /obj/item/weapon/ranged/wand/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("socketed_spellgem")
+	LOADLISTATOM("socketed_supportgems")
 
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
@@ -71,6 +97,9 @@
 	wand_damage_multiplier = 1.1
 
 	value = 100
+
+/obj/item/weapon/ranged/wand/branch/socket_test
+	value_burgerbux = 9999
 
 /obj/item/weapon/ranged/wand/crafted
 	name = "crafted wand"
