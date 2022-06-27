@@ -57,8 +57,6 @@
 	else
 		hovering_alpha = max(hovering_alpha - 30,0)
 
-	name = "[hovering_alpha]"
-
 	for(var/k in stored_socket_overlays)
 		var/image/I = k
 		I.alpha = hovering_alpha
@@ -90,11 +88,16 @@
 		var/obj/I = new(src)
 		I.icon = 'icons/obj/item/spellgem.dmi'
 		I.icon_state = "socket_backing"
-		I.pixel_x = x_offset
-		I.pixel_y = y_offset
+		if(sockets == 1)
+			I.pixel_x = -7
+			I.pixel_y = 0
+		else
+			I.pixel_x = x_offset
+			I.pixel_y = y_offset
+
 		I.appearance_flags = RESET_COLOR | KEEP_TOGETHER | PIXEL_SCALE | RESET_ALPHA
 		I.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
-		if(length(socketed_supportgems) > i && socketed_supportgems[i])
+		if(length(socketed_supportgems) >= i && socketed_supportgems[i])
 			var/obj/item/supportgem/stored_gem = socketed_supportgems[i]
 			var/image/G = new/image(stored_gem.icon,stored_gem.icon_state)
 			G.appearance = stored_gem.appearance
@@ -112,6 +115,9 @@
 	I.icon_state = "socket_backing"
 	I.appearance_flags = RESET_COLOR | KEEP_TOGETHER | PIXEL_SCALE | RESET_ALPHA
 	I.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	if(sockets == 1)
+		I.pixel_x = 7
+		I.pixel_y = 0
 	if(socketed_spellgem)
 		var/image/G = new/image(socketed_spellgem.icon,socketed_spellgem.icon_state)
 		G.appearance = socketed_spellgem.appearance
@@ -128,6 +134,7 @@
 	sockets = min(sockets,sockets_max)
 	. = ..()
 	update_sprite()
+	update_attachment_stats()
 
 /obj/item/weapon/ranged/wand/Initialize()
 	. = ..()
@@ -153,7 +160,7 @@
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = ..()
 	// https://www.desmos.com/calculator/bofczfvcar
-	. += ((sockets*5)**3)*0.25 + (x**(x-1))*0.2
+	. += ((sockets*5)**3)*0.25 + (sockets**(sockets-1))*0.2
 	. *= wand_damage_multiplier**1.5
 	. = CEILING(.,1)
 
@@ -201,19 +208,21 @@
 			caller.to_chat(span("warning","That's not there anymore!"))
 			return TRUE
 		if(G == socketed_spellgem)
+			var/obj/item/weapon/ranged/spellgem/old_spellgem = G
 			socketed_spellgem = null
 			G.drop_item(get_turf(caller))
 			I.add_object(G)
 			caller.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
 			update_sprite()
+			old_spellgem.update_attachment_stats()
 			return TRUE
 		socketed_supportgems -= G
 		G.drop_item(get_turf(caller))
 		I.add_object(G)
 		caller.to_chat(span("notice","You remove \the [G.name] from \the [src.name]."))
 		update_sprite()
+		socketed_spellgem?.update_attachment_stats()
 		return TRUE
-
 
 	if(istype(object,/obj/item/weapon/ranged/spellgem/))
 		INTERACT_CHECK
@@ -231,6 +240,7 @@
 		socketed_spellgem = SG
 		SG.drop_item(src)
 		update_sprite()
+		SG.update_attachment_stats()
 		return TRUE
 
 	if(istype(object,/obj/item/supportgem))
@@ -244,6 +254,7 @@
 		G.drop_item(src)
 		caller.to_chat(span("notice","You insert \the [G.name] into \the [src.name]."))
 		update_sprite()
+		socketed_spellgem?.update_attachment_stats()
 		return TRUE
 
 

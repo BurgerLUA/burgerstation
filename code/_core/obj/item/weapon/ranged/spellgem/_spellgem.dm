@@ -18,6 +18,36 @@
 	use_iff_tag = FALSE
 	has_quick_function = TRUE
 
+
+/obj/item/weapon/ranged/spellgem/update_attachment_stats()
+
+	attachment_stats = list()
+
+	if(!istype(src.loc,/obj/item/weapon/ranged/wand))
+		return FALSE
+
+	var/obj/item/weapon/ranged/wand/W = src.loc
+
+	var/list/modifier_count = list()
+
+	for(var/g in W.socketed_supportgems)
+		var/obj/item/supportgem/G = g
+		for(var/support_type in G.support_stats)
+			var/support_value = G.support_stats[support_type]
+			attachment_stats[support_type] += support_value
+			if(isnum(support_value)) modifier_count[support_type] += 1
+
+	for(var/support_type in modifier_count)
+		var/support_value = modifier_count[support_type]
+		if(support_value == 0)
+			log_error("Warning: Support value of [support_type] was [isnum(support_value) ? 0 : "NULL"] for [src.get_debug_name()].")
+			continue
+		attachment_stats[support_type] *= (1/support_value)
+
+	return TRUE
+
+
+
 /obj/item/weapon/ranged/spellgem/get_owner()
 
 	if(istype(src.loc,/obj/item/weapon/ranged/wand/))

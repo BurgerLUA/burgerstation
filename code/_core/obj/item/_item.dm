@@ -866,6 +866,8 @@ var/global/list/rarity_to_mul = list(
 					A.remove_overlay("\ref[src]")
 					I.update_worn_icon(src)
 
+	update_value()
+
 	return TRUE
 
 
