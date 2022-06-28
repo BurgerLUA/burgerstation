@@ -19,6 +19,13 @@
 	has_quick_function = TRUE
 
 
+/obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
+	. = cost_mana
+	if(attachment_stats["mana_cost_multiplier"])
+		. *= attachment_stats["mana_cost_multiplier"]
+
+
+
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
 
 	attachment_stats = list()

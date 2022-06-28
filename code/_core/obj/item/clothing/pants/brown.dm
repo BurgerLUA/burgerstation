@@ -51,3 +51,11 @@
 
 /obj/item/clothing/pants/cloth/black
 	color = COLOR_BLACK
+
+
+/obj/item/clothing/pants/runic
+	name = "runic pants"
+	icon = 'icons/obj/item/clothing/pants/runic.dmi'
+
+	armor = /armor/steel
+

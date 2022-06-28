@@ -58,3 +58,9 @@
 	value = 500
 
 	size = SIZE_2
+
+/obj/item/clothing/head/helmet/full/knight/runic
+	name = "runic helmet"
+	icon = 'icons/obj/item/clothing/hats/runic.dmi'
+
+	value = 160

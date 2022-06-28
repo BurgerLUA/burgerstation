@@ -134,3 +134,15 @@
 	armor = /armor/steel
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
+
+
+
+/obj/item/clothing/overwear/armor/knight/runic
+	name = "runic platebody"
+	desc = "Where's the pants?"
+	desc_extended = "A kinght suit without the pants. Good for short goblins."
+	icon = 'icons/obj/item/clothing/suit/runic.dmi'
+
+	armor = /armor/steel
+
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
