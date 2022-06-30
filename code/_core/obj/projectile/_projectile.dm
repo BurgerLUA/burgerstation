@@ -76,8 +76,11 @@
 
 	throwable = FALSE
 
-	var/ricochets_left = 0
-	var/ricochets_angle = 45 //The angle of incidence needs to be larger than this to trigger a richochete. Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
+	var/ricochets_left = 3 //Amount of richochets this projectile is allowed to have. 0 to disable.
+	var/ricochet_angle = 55 //The angle of incidence needs to be larger than this to trigger a richochete.
+	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
+	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
+	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet
 
 	var/debug = FALSE
 
@@ -306,43 +309,6 @@
 
 	. = TRUE
 
-	//Richochet code is hard. Spelling it correctly is even harder.
-	if(hit_atom && ricochets_left > 0)
-		var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
-		var/angle_of_incidence = abs( ATAN2(face_of_impact[1],face_of_impact[2]) - ATAN2(vel_x,vel_y) )
-		if(angle_of_incidence >= ricochet_angle)
-			var/turf/T = get_turf(hit_atom)
-			if(T)
-				ricochets_left--
-				start_turf = T
-				previous_loc = T
-				current_loc = T
-
-				//Move one step forward.
-				pixel_x_float_physical += vel_x
-				pixel_y_float_physical += vel_y
-				//Reflect the velocity
-				vel_x *= 1 - abs(face_of_impact[1])*2
-				vel_y *= 1 - abs(face_of_impact[2])*2
-
-				//Adjust the position.
-				pixel_x_float_physical -= vel_x*0.5
-				pixel_y_float_physical -= vel_y*0.5
-
-				//Resync everything.
-				pixel_x_float_visual = pixel_x_float_physical
-				pixel_y_float_visual = pixel_y_float_physical
-				pixel_x = CEILING(pixel_x_float_visual,1)
-				pixel_y = CEILING(pixel_y_float_visual,1)
-				if(vel_x <= 0 && vel_y <= 0)
-					//Uh oh.
-					return FALSE
-				var/matrix/M = get_base_transform()
-				var/new_angle = -ATAN2(vel_x,vel_y) + 90
-				M.Turn(new_angle)
-				transform = M
-				. = FALSE
-
 	if(damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
 		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner,weapon,null,DT))
@@ -366,7 +332,74 @@
 				damage_multiplier *= clamp(1 - ((get_dist(hit_atom,start_turf) - DT.falloff)/DT.falloff),0.1,1)
 
 			if(damage_multiplier > 0)
-				DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+				var/list/damage_information = DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
+
+				if(ricochets_left > 0 && damage_information)
+					//1 = damage dealt
+					//2 = damage blocked via armor
+					//3 = damage blocked via shield
+
+					var/local_required_angle = ricochet_angle - (damage_information[3]/max(1,damage_information[1]))*ricochet_angle*0.5
+
+
+					var/block_percent = 1 - (damage_information[1]/(damage_information[1] + damage_information[2] + damage_information[3]))
+
+					//world.log << "Percent: [block_percent] out of [richochet_block_percent_threshold]."
+
+					if(block_percent >= richochet_block_percent_threshold)
+						var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
+						var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(face_of_impact[1],face_of_impact[2])))
+						if(angle_of_incidence >= local_required_angle)
+							var/turf/T = get_turf(hit_atom)
+							if(T)
+
+								ricochets_left--
+
+								if(is_living(hit_atom))
+									var/mob/living/L = owner
+									if(L.ckey_last) //Only convert if it hits a player.
+										var/good_tag = FALSE
+										if(iff_tag && L.iff_tag)
+											iff_tag = L.iff_tag
+											good_tag = TRUE
+										if(loyalty_tag && L.loyalty_tag)
+											loyalty_tag = L.loyalty_tag
+											good_tag = TRUE
+										if(good_tag)
+											owner = L
+											blamed = L
+
+								start_turf = T
+								previous_loc = T
+								current_loc = T
+
+								//Move one step forward.
+								pixel_x_float_physical += vel_x
+								pixel_y_float_physical += vel_y
+								//Reflect the velocity
+								vel_x *= 1 - abs(face_of_impact[1])*2
+								vel_y *= 1 - abs(face_of_impact[2])*2
+
+								//Adjust the position.
+								pixel_x_float_physical -= vel_x*0.5
+								pixel_y_float_physical -= vel_y*0.5
+
+								//Resync everything.
+								pixel_x_float_visual = pixel_x_float_physical
+								pixel_y_float_visual = pixel_y_float_physical
+								pixel_x = CEILING(pixel_x_float_visual,1)
+								pixel_y = CEILING(pixel_y_float_visual,1)
+								var/matrix/M = get_base_transform()
+								var/new_angle = -ATAN2(vel_x,vel_y) + 90
+								M.Turn(new_angle)
+								transform = M
+								. = FALSE
+
+								if(length(DT.impact_sounds))
+									play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
+
+
+
 	else
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 

@@ -641,7 +641,7 @@ var/global/list/all_damage_numbers = list()
 	if(victim != hit_object)
 		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
-	return TRUE
+	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield)
 
 /damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	return TRUE
@@ -671,7 +671,7 @@ var/global/list/all_damage_numbers = list()
 	if(is_living(victim) && length(impact_sounds_flesh))
 		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE,volume=desired_volume)
 
-	if(length(impact_sounds))
+	else if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
 		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
 
