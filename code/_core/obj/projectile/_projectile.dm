@@ -6,8 +6,13 @@
 	var/vel_x = 0 //X velocity, in pixels per decisecond
 	var/vel_y = 0 //Y velocity in pixels per decisecond
 
+	//Cosmsetic
 	var/pixel_x_float = 0
 	var/pixel_y_float = 0
+
+	//Actual
+	var/pixel_x_float_real = 0
+	var/pixel_y_float_real = 0
 
 	var/atom/owner //Who is the one who shot the weapon?
 	var/atom/weapon //What weapon did the projectile come from?
@@ -71,6 +76,8 @@
 
 	var/can_ricochet = TRUE
 
+	var/debug = FALSE
+
 /obj/projectile/Destroy()
 	color = "#000000"
 	owner = null
@@ -124,6 +131,9 @@
 	pixel_x_float = pixel_x
 	pixel_y_float = pixel_y
 
+	pixel_x_float_real = pixel_x
+	pixel_y_float_real = pixel_y
+
 	bullet_color = desired_color
 
 	color = bullet_color
@@ -166,6 +176,11 @@
 	return ..()
 
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+
+	if(debug)
+		var/obj/effect/temp/tile/TE = new(new_loc)
+		TE.maptext = "[steps_current]"
+		TE.alpha = 200
 
 	if(!new_loc)
 		log_error("Warning: Projectile didn't have a new loc.")
@@ -227,32 +242,22 @@
 		on_projectile_hit(current_loc ? current_loc : src.loc,null,null)
 		return FALSE
 
-	var/max_normal = max(abs(vel_x),abs(vel_y))
-	var/x_normal = vel_x/max_normal
-	var/y_normal = vel_y/max_normal
-
-	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float + x_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
-	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float + y_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
-	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
-		current_loc = locate(current_loc_x,current_loc_y,z)
-		if(!current_loc || !on_enter_tile(previous_loc,current_loc))
-			return FALSE
-		previous_loc = current_loc
-		last_loc_x = current_loc_x
-		last_loc_y = current_loc_y
-
 	if(!start_time) //First time running.
 		var/matrix/M = get_base_transform()
 		var/new_angle = -ATAN2(vel_x,vel_y) + 90
 		M.Turn(new_angle)
 		transform = M
+	else
+		pixel_x_float += vel_x
+		pixel_y_float += vel_y
+		pixel_x_float_real += vel_x
+		pixel_y_float_real += vel_y
 
-	pixel_x_float += vel_x
-	pixel_y_float += vel_y
+	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
+	//Visual changes here only.
 	var/rounded_x = CEILING(pixel_x_float,1)
 	var/rounded_y = CEILING(pixel_y_float,1)
-
 	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough change to animate.
 		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
 			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
@@ -260,7 +265,29 @@
 			pixel_x = rounded_x
 			pixel_y = rounded_y
 
-	start_time += TICKS_TO_DECISECONDS(tick_rate)
+	var/max_normal = max(abs(vel_x),abs(vel_y))
+	var/x_normal = vel_x/max_normal
+	var/y_normal = vel_y/max_normal
+	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_real + x_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float_real + y_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
+		//To coders better than me.
+		//There is probably a legitimately better way to handle this.
+		//I remember coding another method accidentally before but I don't remember it.
+		//If you have any legitimate ideas, hit me up.
+		if((last_loc_x != current_loc_x) && (last_loc_y != current_loc_y)) //If both changed at the same time, that's a problem as it is moving in a diaganol.
+			if(prob(50)) //There is really no real way to do this.
+				pixel_x_float_real -= vel_x
+				current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_real + x_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
+			else
+				pixel_y_float_real -= vel_y
+				current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float_real + y_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
+		current_loc = locate(current_loc_x,current_loc_y,z)
+		if(!on_enter_tile(previous_loc,current_loc))
+			return FALSE
+		previous_loc = current_loc
+		last_loc_x = current_loc_x
+		last_loc_y = current_loc_y
 
 	return TRUE
 
@@ -271,23 +298,37 @@
 
 	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
 
-
 	. = TRUE
 
-	//Richochet code is hard.
-	if(can_ricochet && old_loc && new_loc)
+	//Richochet code is hard. Spelling it correctly is even harder.
+	if(hit_atom && can_ricochet)
 		var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
-		var/max_norm = max(abs(face_of_impact[1]),abs(face_of_impact[2]))
-		var/x_norm = face_of_impact[1] / max_norm
-		var/y_norm = face_of_impact[2] / max_norm
-		vel_x -= (y_norm*vel_x*2)
-		vel_y -= (x_norm*vel_y*2)
-		can_ricochet = FALSE
-		. = FALSE
-		var/current_angle = -ATAN2(vel_x,vel_y) + 90
-		var/matrix/M = get_base_transform()
-		M.Turn(current_angle)
-		transform = M
+		var/turf/T = get_turf(hit_atom)
+		if(T)
+			can_ricochet = FALSE
+			start_turf = T
+			previous_loc = T
+			current_loc = T
+			pixel_x_float_real += vel_x
+			pixel_y_float_real += vel_y
+			vel_x *= 1 - abs(face_of_impact[1])*2
+			vel_y *= 1 - abs(face_of_impact[2])*2
+			var/max_normal = max(abs(vel_x),abs(vel_y))
+			var/x_normal = vel_x/max_normal
+			var/y_normal = vel_y/max_normal
+			pixel_x_float_real -= x_normal*TILE_SIZE
+			pixel_y_float_real -= y_normal*TILE_SIZE
+			pixel_x_float = pixel_x_float_real //Resync
+			pixel_y_float = pixel_x_float_real //Resync
+			pixel_x = CEILING(pixel_x_float,1) //Resync
+			pixel_y = CEILING(pixel_y_float,1) //Resync
+			if(vel_x <= 0 && vel_y <= 0)
+				return FALSE
+			var/matrix/M = get_base_transform()
+			var/new_angle = -ATAN2(vel_x,vel_y) + 90
+			M.Turn(new_angle)
+			transform = M
+			. = FALSE
 
 	if(damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
@@ -317,7 +358,7 @@
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 
 	if(impact_effect_turf && isturf(hit_atom))
-		new impact_effect_turf(get_turf(hit_atom),SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
+		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
 
 	else if(impact_effect_movable && ismovable(hit_atom))
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
