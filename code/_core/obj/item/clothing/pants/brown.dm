@@ -57,5 +57,8 @@
 	name = "runic pants"
 	icon = 'icons/obj/item/clothing/pants/runic.dmi'
 
-	armor = /armor/steel
+	layer = LAYER_MOB_CLOTHING_UNIFORM
 
+	armor = /armor/steel/runic
+
+	size = SIZE_3

@@ -14,6 +14,7 @@
 	var/list/abilitiy_buttons = list()
 
 	var/obj/hud/button/close_ability_choice/C = new
+	C.linked_machine = machine
 
 	var/max_x = 0
 	var/y=0
@@ -31,11 +32,12 @@
 		for(var/ability in list_of_abilities)
 			var/ability/AB = ability
 			var/obj/hud/button/ability_choice/B = new
-			B.update_owner(A)
+			B.name = initial(AB.name)
+			B.desc_extended = initial(AB.desc)
 			B.stored_ability = AB
 			B.screen_loc = "LEFT+2+[x],TOP-2-[y]"
 			B.linked_close = C
-			B.update_sprite()
+			B.update_owner(A)
 			abilitiy_buttons += B
 			x += 1.5
 		max_x = max(max_x,x)
@@ -43,7 +45,6 @@
 
 	C.screen_loc = "LEFT+2+[max_x],TOP-2"
 	C.linked_buttons = abilitiy_buttons
-	C.linked_machine = machine
 	C.update_owner(A)
 
 	return TRUE
@@ -94,8 +95,10 @@
 				continue
 			selected = TRUE
 			break
-
-		if(A.ckey)
+		var/obj/structure/interactive/ability_machine/connected_machine = linked_close.linked_machine
+		if(connected_machine.debug)
+			unlocked = TRUE
+		else if(A.ckey)
 			var/savedata/client/globals/GD = GLOBALDATA(A.ckey)
 			if("[src.stored_ability]" in GD.loaded_data["unlocked_abilities"])
 				unlocked = TRUE

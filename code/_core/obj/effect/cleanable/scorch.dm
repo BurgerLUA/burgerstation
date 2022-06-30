@@ -4,7 +4,7 @@
 	icon_state = "rust1"
 	enable_chunk_clean = FALSE
 
-	plane = PLANE_DECAL
+	plane = PLANE_FLOOR_ATTACHMENT
 	layer = 9999
 
 /obj/effect/cleanable/scorch/New(var/desired_loc)

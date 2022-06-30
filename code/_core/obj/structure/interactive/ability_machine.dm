@@ -12,6 +12,8 @@
 
 	pixel_y = 6
 
+	var/debug = FALSE
+
 /obj/structure/interactive/ability_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_advanced(caller))
@@ -52,3 +54,6 @@
 		return TRUE
 
 	. = ..()
+
+/obj/structure/interactive/ability_machine/debug
+	debug = TRUE

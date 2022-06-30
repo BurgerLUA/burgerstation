@@ -120,21 +120,41 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
-	if(dash_target && dash_target.loc && dash_amount > 0 && !horizontal && can_move() && isturf(src.loc)) //can_move dose not consider delays.
-		var/final_direction = get_dir_advanced(src,dash_target)
-		if(!final_direction)
-			dash_amount = 0
+	if(dash_amount > 0 && !horizontal && can_move() && isturf(src.loc))
+		if(dash_target && dash_target.loc) //Targeted dash.
+			var/final_direction = get_dir_advanced(src,dash_target)
+			if(!final_direction)
+				dash_amount = 0
+				return TRUE
+			glide_size = step_size/adjust_delay
+			src.set_dir(final_direction)
+			if(!Move(get_step(src,final_direction)))
+				dash_amount = 0
+			else
+				dash_amount--
 			return TRUE
-		glide_size = step_size/adjust_delay
-		src.set_dir(final_direction)
-		if(!Move(get_step(src,final_direction)))
-			dash_amount = 0
-		else
-			dash_amount--
-		return TRUE
-	else
-		dash_amount = 0
-		dash_target = null
+		else if(dash_direction) //Simple dash.
+			glide_size = step_size/adjust_delay
+			if(!Move(get_step(src,dash_direction)))
+				dash_amount = 0
+			else
+				dash_amount--
+			return TRUE
+		else //Controlled dash.
+			var/final_direction = move_dir ? move_dir : dir
+			if(!final_direction)
+				dash_amount = 0
+				return TRUE
+			glide_size = step_size/adjust_delay
+			if(!Move(get_step(src,final_direction)))
+				dash_amount = 0
+			else
+				dash_amount--
+			return TRUE
+
+	dash_amount = 0
+	dash_target = null
+	dash_direction = 0x0
 
 	if(move_dir) //If you're actually moving.
 		if(!can_move())

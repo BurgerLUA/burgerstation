@@ -5,7 +5,7 @@
 	icon = 'icons/obj/decal/poster.dmi'
 	mouse_opacity = 1
 	icon_state = null
-	plane = PLANE_WALL
+	plane = PLANE_WALL_ATTACHMENT
 	layer = LAYER_WALL_DECAL
 
 	var/collectable_poster/stored_poster

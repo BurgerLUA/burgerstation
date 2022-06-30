@@ -250,3 +250,13 @@
 	name = "Second Rise"
 	path = 'sound/music/Second Rise.ogg'
 	length = 2*60 + 40
+
+/track/as_themselves //Menu music
+	name = "As Themselves"
+	path = 'sound/music/As Themselves.ogg'
+	length = 2*60 + 20
+
+/track/trailer //Menu music
+	name = "Trailer"
+	path = 'sound/music/Trailer.ogg'
+	length = 2*60 + 50

@@ -6,7 +6,7 @@
 	anchored = TRUE
 	density = TRUE
 
-	plane = PLANE_DECAL
+	plane = PLANE_FLOOR_ATTACHMENT
 
 	value = -1
 

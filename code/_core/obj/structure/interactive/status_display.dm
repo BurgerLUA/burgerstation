@@ -24,6 +24,9 @@ var/global/list/status_displays = list()
 	var/screen_color = "#000000"
 	var/frame_color = "#888888"
 
+	maptext_width = TILE_SIZE
+	maptext_height = TILE_SIZE
+
 	maptext_y = -2
 
 	plane = PLANE_OBJ
@@ -31,6 +34,8 @@ var/global/list/status_displays = list()
 	desired_light_power = 0.25
 	desired_light_range = 2
 	desired_light_color = "#FFFFFF"
+
+	plane = PLANE_WALL_ATTACHMENT
 
 /obj/structure/interactive/status_display/update_icon()
 	icon_state = null

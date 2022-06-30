@@ -63,4 +63,8 @@
 	name = "runic helmet"
 	icon = 'icons/obj/item/clothing/hats/runic.dmi'
 
+	armor = /armor/steel/runic
+
+	size = SIZE_2
+
 	value = 160

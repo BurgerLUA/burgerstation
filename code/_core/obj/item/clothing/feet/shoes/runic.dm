@@ -9,7 +9,7 @@
 
 	icon = 'icons/obj/item/clothing/shoes/runic.dmi'
 
-	armor = /armor/leather/hard_boot
+	armor = /armor/steel/runic
 
 	size = SIZE_2
 
