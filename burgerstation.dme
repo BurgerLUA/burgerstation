@@ -831,7 +831,6 @@
 #include "code\_core\mob\living\advanced\human\npc\unique\goblin_merchant.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\hop.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\hos.dm"
-#include "code\_core\mob\living\advanced\human\npc\unique\knights_of.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\master.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\pirate_captain.dm"
 #include "code\_core\mob\living\advanced\human\npc\unique\rogue_crew.dm"
