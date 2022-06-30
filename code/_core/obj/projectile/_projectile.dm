@@ -7,12 +7,12 @@
 	var/vel_y = 0 //Y velocity in pixels per decisecond
 
 	//Cosmsetic
-	var/pixel_x_float = 0
-	var/pixel_y_float = 0
+	var/pixel_x_float_visual = 0
+	var/pixel_y_float_visual = 0
 
 	//Actual
-	var/pixel_x_float_real = 0
-	var/pixel_y_float_real = 0
+	var/pixel_x_float_physical = 0
+	var/pixel_y_float_physical = 0
 
 	var/atom/owner //Who is the one who shot the weapon?
 	var/atom/weapon //What weapon did the projectile come from?
@@ -34,6 +34,8 @@
 	layer = LAYER_PROJECTILE
 
 	plane = PLANE_EFFECT
+
+	var/intercaridnal_fix_switch = TRUE
 
 	var/start_time = 0
 	var/lifetime = SECONDS_TO_DECISECONDS(10) //Just in case.
@@ -74,7 +76,8 @@
 
 	throwable = FALSE
 
-	var/can_ricochet = TRUE
+	var/ricochets_left = 0
+	var/ricochets_angle = 45 //The angle of incidence needs to be larger than this to trigger a richochete. Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
 
 	var/debug = FALSE
 
@@ -98,6 +101,8 @@
 		log_error("WARNING: PROJECTILE [src.get_debug_name()] DID NOT HAVE AN OWNER!")
 		qdel(src)
 		return FALSE
+
+	intercaridnal_fix_switch = prob(50)
 
 	owner = desired_owner
 	weapon = desired_weapon
@@ -128,11 +133,11 @@
 	last_loc_x = x
 	last_loc_y = y
 
-	pixel_x_float = pixel_x
-	pixel_y_float = pixel_y
+	pixel_x_float_visual = pixel_x
+	pixel_y_float_visual = pixel_y
 
-	pixel_x_float_real = pixel_x
-	pixel_y_float_real = pixel_y
+	pixel_x_float_physical = pixel_x
+	pixel_y_float_physical = pixel_y
 
 	bullet_color = desired_color
 
@@ -248,16 +253,16 @@
 		M.Turn(new_angle)
 		transform = M
 	else
-		pixel_x_float += vel_x
-		pixel_y_float += vel_y
-		pixel_x_float_real += vel_x
-		pixel_y_float_real += vel_y
+		pixel_x_float_visual += vel_x
+		pixel_y_float_visual += vel_y
+		pixel_x_float_physical += vel_x
+		pixel_y_float_physical += vel_y
 
 	start_time += TICKS_TO_DECISECONDS(tick_rate)
 
 	//Visual changes here only.
-	var/rounded_x = CEILING(pixel_x_float,1)
-	var/rounded_y = CEILING(pixel_y_float,1)
+	var/rounded_x = CEILING(pixel_x_float_visual,1)
+	var/rounded_y = CEILING(pixel_y_float_visual,1)
 	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough change to animate.
 		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
 			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
@@ -268,20 +273,21 @@
 	var/max_normal = max(abs(vel_x),abs(vel_y))
 	var/x_normal = vel_x/max_normal
 	var/y_normal = vel_y/max_normal
-	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_real + x_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
-	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float_real + y_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_physical + x_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float_physical + y_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		//To coders better than me.
 		//There is probably a legitimately better way to handle this.
 		//I remember coding another method accidentally before but I don't remember it.
 		//If you have any legitimate ideas, hit me up.
 		if((last_loc_x != current_loc_x) && (last_loc_y != current_loc_y)) //If both changed at the same time, that's a problem as it is moving in a diaganol.
-			if(prob(50)) //There is really no real way to do this.
-				pixel_x_float_real -= vel_x
-				current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_real + x_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
+			if(intercaridnal_fix_switch) //There is really no real way to do this.
+				pixel_x_float_physical -= vel_x
+				current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_physical + x_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
 			else
-				pixel_y_float_real -= vel_y
-				current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float_real + y_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
+				pixel_y_float_physical -= vel_y
+				current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float_physical + y_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
+			intercaridnal_fix_switch = !intercaridnal_fix_switch //Alternates so that the offset isn't too crazy.
 		current_loc = locate(current_loc_x,current_loc_y,z)
 		if(!on_enter_tile(previous_loc,current_loc))
 			return FALSE
@@ -301,34 +307,41 @@
 	. = TRUE
 
 	//Richochet code is hard. Spelling it correctly is even harder.
-	if(hit_atom && can_ricochet)
+	if(hit_atom && ricochets_left > 0)
 		var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
-		var/turf/T = get_turf(hit_atom)
-		if(T)
-			can_ricochet = FALSE
-			start_turf = T
-			previous_loc = T
-			current_loc = T
-			pixel_x_float_real += vel_x
-			pixel_y_float_real += vel_y
-			vel_x *= 1 - abs(face_of_impact[1])*2
-			vel_y *= 1 - abs(face_of_impact[2])*2
-			var/max_normal = max(abs(vel_x),abs(vel_y))
-			var/x_normal = vel_x/max_normal
-			var/y_normal = vel_y/max_normal
-			pixel_x_float_real -= x_normal*TILE_SIZE
-			pixel_y_float_real -= y_normal*TILE_SIZE
-			pixel_x_float = pixel_x_float_real //Resync
-			pixel_y_float = pixel_x_float_real //Resync
-			pixel_x = CEILING(pixel_x_float,1) //Resync
-			pixel_y = CEILING(pixel_y_float,1) //Resync
-			if(vel_x <= 0 && vel_y <= 0)
-				return FALSE
-			var/matrix/M = get_base_transform()
-			var/new_angle = -ATAN2(vel_x,vel_y) + 90
-			M.Turn(new_angle)
-			transform = M
-			. = FALSE
+		var/angle_of_incidence = abs( ATAN2(face_of_impact[1],face_of_impact[2]) - ATAN2(vel_x,vel_y) )
+		if(angle_of_incidence >= ricochet_angle)
+			var/turf/T = get_turf(hit_atom)
+			if(T)
+				ricochets_left--
+				start_turf = T
+				previous_loc = T
+				current_loc = T
+
+				//Move one step forward.
+				pixel_x_float_physical += vel_x
+				pixel_y_float_physical += vel_y
+				//Reflect the velocity
+				vel_x *= 1 - abs(face_of_impact[1])*2
+				vel_y *= 1 - abs(face_of_impact[2])*2
+
+				//Adjust the position.
+				pixel_x_float_physical -= vel_x*0.5
+				pixel_y_float_physical -= vel_y*0.5
+
+				//Resync everything.
+				pixel_x_float_visual = pixel_x_float_physical
+				pixel_y_float_visual = pixel_y_float_physical
+				pixel_x = CEILING(pixel_x_float_visual,1)
+				pixel_y = CEILING(pixel_y_float_visual,1)
+				if(vel_x <= 0 && vel_y <= 0)
+					//Uh oh.
+					return FALSE
+				var/matrix/M = get_base_transform()
+				var/new_angle = -ATAN2(vel_x,vel_y) + 90
+				M.Turn(new_angle)
+				transform = M
+				. = FALSE
 
 	if(damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
