@@ -128,7 +128,7 @@
 
 	inaccuracy_modifier = desired_inaccuracy_modifier
 
-	return ..()
+	. = ..()
 
 
 /obj/projectile/Initialize()
@@ -168,24 +168,12 @@
 	if(!new_loc)
 		log_error("Warning: Projectile didn't have a new loc.")
 		on_projectile_hit(src.loc)
-		qdel(src)
-		return TRUE
+		return FALSE
 
 	if(!old_loc)
 		log_error("Warning: Projectile didn't have an old loc.")
 		on_projectile_hit(src.loc)
-		qdel(src)
-		return TRUE
-
-	if(!isturf(old_loc))
-		log_error("Warning: Projectile didn't have a valid old loc.")
-		on_projectile_hit(old_loc)
-		qdel(src)
-		return TRUE
-
-	if(penetrations_left < 0)
-		qdel(src)
-		return TRUE
+		return FALSE
 
 	steps_current += 1
 
@@ -195,28 +183,32 @@
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc)
-		qdel(src)
-		return TRUE
+		return FALSE
 
 	if(hit_target_turf && new_loc == target_turf)
 		on_projectile_hit(new_loc)
-		qdel(src)
-		return TRUE
+		return FALSE
 
-	return FALSE //Do not destroy.
+	if(penetrations_left < 0)
+		return FALSE
+
+	return TRUE //Do not destroy.
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
 	if(!isturf(src.loc) || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
 		on_projectile_hit(current_loc ? current_loc : src.loc)
-		qdel(src)
 		return FALSE
 
-	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
-	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/max_normal = max(abs(vel_x),abs(vel_y))
+	var/x_normal = vel_x/max_normal
+	var/y_normal = vel_y/max_normal
+
+	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float + x_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float + y_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
-		if(!current_loc || on_enter_tile(previous_loc,current_loc) || !current_loc)
+		if(!current_loc || !on_enter_tile(previous_loc,current_loc))
 			return FALSE
 		previous_loc = current_loc
 		last_loc_x = current_loc_x
