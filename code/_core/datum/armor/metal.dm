@@ -13,6 +13,7 @@
 		FATIGUE = 25,
 		PAIN = 50
 	)
+	deflection = 0.75
 
 /armor/steel/heavy
 	defense_rating = list(

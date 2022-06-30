@@ -52,7 +52,7 @@
 
 	flags_organ = FLAG_ORGAN_BEAST_FEET
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/leg/reptile/left
 	name = "left reptile leg"
@@ -73,7 +73,7 @@
 	name = "right advanced reptile leg"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 
 /obj/item/organ/leg/reptile_advanced/left
@@ -99,7 +99,7 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
-	defense_rating = DIONA_ARMOR
+	armor = /armor/diona
 
 /obj/item/organ/leg/diona/left
 	name = "left diona leg"
@@ -120,7 +120,7 @@
 	name = "right cyborg leg"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 
@@ -142,7 +142,7 @@
 	name = "right beef leg"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 
-	defense_rating = MEATMEN_ARMOR
+	armor = /armor/beefman
 
 /obj/item/organ/leg/beefman/left
 	name = "left beef leg"
@@ -163,7 +163,7 @@
 	name = "right skeleton leg"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
-	defense_rating = SKELETON_ARMOR
+	armor = /armor/skeleton
 
 	projectile_dodge_chance = 20
 
@@ -209,7 +209,7 @@
 	name = "right goblin leg"
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
 
-	defense_rating = GOBLIN_ARMOR
+	armor = /armor/goblin
 
 /obj/item/organ/leg/goblin/left
 	name = "left goblin leg"

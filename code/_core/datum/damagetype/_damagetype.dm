@@ -426,6 +426,7 @@ var/global/list/all_damage_numbers = list()
 	var/damage_blocked_with_armor = 0
 	var/damage_blocked_with_shield = 0
 	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
+	var/deflection_rating = defense_rating_victim ? defense_rating_victim["deflection"] : 0
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
@@ -641,7 +642,7 @@ var/global/list/all_damage_numbers = list()
 	if(victim != hit_object)
 		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
-	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield)
+	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 
 /damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	return TRUE

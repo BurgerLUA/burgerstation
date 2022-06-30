@@ -116,7 +116,7 @@
 
 	stored_types = list(
 		/obj/item/announcement/syndicate,
-		/obj/item/clothing/overwear/armor/plate_carrier/black,
+		//obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
 		/obj/item/clothing/belt/bandolier/shotgun_20,
@@ -162,7 +162,7 @@
 		/obj/item/announcement/rev,
 		/obj/item/clothing/back/storage/backpack/explorer,
 		/obj/item/clothing/belt/bandolier/shotgun_23,
-		/obj/item/clothing/overwear/armor/plate_carrier/black,
+		//obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/super,
 		/obj/item/armor_plate/ultra,
 		/obj/item/clothing/overwear/coat/hos/revfficer,

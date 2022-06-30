@@ -58,7 +58,7 @@
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 	desc = "An organ."
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/torso/reptile/female
 	icon_state = BODY_TORSO_FEMALE
@@ -70,7 +70,7 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 	desc = "An organ."
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/torso/reptile_advanced/female
 	icon_state = BODY_TORSO_FEMALE
@@ -84,7 +84,7 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
-	defense_rating = DIONA_ARMOR
+	armor = /armor/diona
 
 
 //Cyborg
@@ -93,7 +93,7 @@
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 	desc = "An organ."
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/torso/beefman
@@ -101,7 +101,7 @@
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	desc = "An organ."
 
-	defense_rating = MEATMEN_ARMOR
+	armor = /armor/beefman
 
 
 /obj/item/organ/torso/skeleton
@@ -109,7 +109,7 @@
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 	desc = "An organ."
 
-	defense_rating = SKELETON_ARMOR
+	armor = /armor/skeleton
 
 	projectile_dodge_chance = 30
 
@@ -130,7 +130,7 @@
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
 	desc = "An organ."
 
-	defense_rating = GOBLIN_ARMOR
+	armor = /armor/goblin
 
 /obj/item/organ/torso/goblin/female
 	icon_state = BODY_TORSO_FEMALE

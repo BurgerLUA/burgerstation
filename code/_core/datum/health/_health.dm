@@ -114,7 +114,9 @@
 	var/armor/A = ARMOR(armor)
 	if(!A)
 		return list()
-	return A.defense_rating.Copy()
+	. = A.defense_rating.Copy()
+	.["deflection"] = A.deflection
+	return
 
 /health/proc/adjust_mana(var/adjust_value)
 	var/old_value = mana_current

@@ -62,8 +62,6 @@
 
 	var/has_pain = FALSE
 
-	var/list/defense_rating = HUMAN_ARMOR
-
 	var/can_gib = TRUE
 
 	mouse_opacity = 0 //For now
@@ -78,6 +76,8 @@
 	var/broken_name //Null basically means generate.
 
 	var/projectile_dodge_chance = 0
+
+	var/armor/armor = /armor/default_organic
 
 /obj/item/organ/proc/check_hit_chance(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
@@ -149,9 +149,6 @@
 	if(has_dropped_icon_underlay && !is_advanced(loc))
 		var/image/I = new/image(initial(icon),"[icon_state]_underlay")
 		add_underlay(I)
-
-/obj/item/organ/proc/get_defense_rating()
-	return defense_rating
 
 /obj/item/organ/proc/send_pain_response(var/pain_amount=50)
 	if(!has_pain)

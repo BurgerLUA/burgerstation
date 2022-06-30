@@ -19,6 +19,7 @@
 		ION = INFINITY,
 		SANITY = INFINITY
 	)
+	deflection = 1
 
 /armor/brass
 	defense_rating = list(
@@ -41,3 +42,4 @@
 		ION = INFINITY,
 		SANITY = INFINITY
 	)
+	deflection = 1

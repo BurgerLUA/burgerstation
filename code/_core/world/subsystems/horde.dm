@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(horde)
 			if(real_y <= 1 || real_y >= SSchunk.chunk_count_y-1)
 				continue
 
-			var/chunk/CH_CENTER = SSchunk.active_chunks[my_chunk_z][real_x][real_y]
+			var/chunk/CH_CENTER = SSchunk.chunks[my_chunk_z][real_x][real_y]
 			if(length(CH_CENTER.players))
 				continue
 			var/valid=TRUE
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(horde)
 					continue
 				if(check_y < 1 || check_y > SSchunk.chunk_count_y) //Corner.
 					continue
-				var/chunk/CH = SSchunk.active_chunks[my_chunk_z][check_x][check_y]
+				var/chunk/CH = SSchunk.chunks[my_chunk_z][check_x][check_y]
 				if(length(CH.players))
 					valid = FALSE
 					break

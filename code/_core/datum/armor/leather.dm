@@ -44,6 +44,7 @@
 		PIERCE = 20,
 		ACID = 50
 	)
+	deflection = 0.25
 
 /armor/leather/goliath
 	defense_rating = list(
@@ -72,6 +73,7 @@
 		ACID = 200,
 		BOMB = 25
 	)
+	deflection = 0.5
 
 
 /armor/leather/drake
@@ -100,6 +102,7 @@
 		BOMB = 20,
 		PAIN = 40
 	)
+	deflection = 0.5
 
 
 /armor/leather/mining //AKA Explorer
@@ -117,6 +120,7 @@
 		RAD = 20,
 		PAIN = 20,
 	)
+	deflection = 0.5
 
 /armor/leather/mining/advanced
 	defense_rating = list(
@@ -133,6 +137,7 @@
 		RAD = 100,
 		PAIN = 20,
 	)
+	deflection = 0.75
 
 /armor/leather/mining/elite
 	defense_rating = list(
@@ -148,6 +153,7 @@
 		BIO = 100,
 		RAD = 100
 	)
+	deflection = 0.75
 
 
 /armor/leather/antimage

@@ -44,7 +44,7 @@
 	name = "reptile groin"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/groin/reptile/female
 	icon_state = BODY_GROIN_FEMALE
@@ -55,7 +55,7 @@
 	name = "reptile groin"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/groin/reptile_advanced/female
 	icon_state = BODY_GROIN_FEMALE
@@ -69,14 +69,14 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
-	defense_rating = DIONA_ARMOR
+	armor = /armor/diona
 
 //cyborg
 /obj/item/organ/groin/cyborg
 	name = "cyborg groin"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 
@@ -85,7 +85,7 @@
 	name = "beef groin"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 
-	defense_rating = MEATMEN_ARMOR
+	armor = /armor/beefman
 
 
 
@@ -95,7 +95,7 @@
 	name = "skeleton groin"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
-	defense_rating = SKELETON_ARMOR
+	armor = /armor/skeleton
 
 	projectile_dodge_chance = 10
 
@@ -116,7 +116,7 @@
 	name = "goblin groin"
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
 
-	defense_rating = GOBLIN_ARMOR
+	armor = /armor/goblin
 
 /obj/item/organ/groin/goblin/female
 	icon_state = BODY_GROIN_FEMALE

@@ -20,6 +20,143 @@
 		SANITY = 0
 	)
 
+/armor/goblin
+	defense_rating = list(
+		BLADE = 0,
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		ARCANE = 75,
+		HEAT = 0,
+		COLD = 0,
+		SHOCK = 0,
+		ACID = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = -50,
+		DARK = 50,
+		FATIGUE = 0,
+		PAIN = -50,
+		ION = INFINITY,
+		SANITY = -100
+	)
+
+/armor/beefman
+	defense_rating = list(
+		BLADE = -50,
+		BLUNT = -50,
+		PIERCE = -50,
+		LASER = -50,
+		ARCANE = 75,
+		HEAT = -50,
+		COLD = -25,
+		SHOCK = 0,
+		ACID = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = -50,
+		DARK = 100,
+		FATIGUE = 0,
+		PAIN = INFINITY,
+		ION = INFINITY,
+		SANITY = INFINITY
+	)
+
+/armor/skeleton
+	defense_rating = list(
+		BLADE = 25,
+		BLUNT = -50,
+		PIERCE = 75,
+		LASER = 0,
+		ARCANE = 50,
+		HEAT = 25,
+		COLD = 25,
+		SHOCK = 100,
+		ACID = -50,
+		BOMB = -100,
+		BIO = 0,
+		RAD = 50,
+		HOLY = -100,
+		DARK = 50,
+		FATIGUE = INFINITY,
+		PAIN = INFINITY,
+		ION = INFINITY,
+		SANITY = 0
+	)
+
+
+/armor/reptile
+	defense_rating = list(
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10,
+		LASER = -10,
+		ARCANE = 10,
+		HEAT = 10,
+		COLD = -50,
+		SHOCK = 0,
+		ACID = 0,
+		BOMB = 0,
+		BIO = 25,
+		RAD = 25,
+		HOLY = -25,
+		DARK = 25,
+		FATIGUE = -50,
+		PAIN = 25,
+		ION = INFINITY,
+		SANITY = -25
+	)
+	deflection = 0.5
+
+/armor/diona
+	defense_rating = list(
+		BLADE = -10,
+		BLUNT = 10,
+		PIERCE = 0,
+		LASER = -10,
+		ARCANE = 25,
+		HEAT = -25,
+		COLD = -25,
+		SHOCK = -25,
+		ACID = -25,
+		BOMB = -50,
+		BIO = 100,
+		RAD = 200,
+		HOLY = 25,
+		DARK = -25,
+		FATIGUE = -50,
+		PAIN = 200,
+		ION = INFINITY,
+		SANITY = 0
+	)
+
+/armor/cyborg
+	defense_rating = list(
+		BLADE = 25,
+		BLUNT = 0,
+		PIERCE = 25,
+		LASER = -25,
+		ARCANE = -75,
+		HEAT = -50,
+		COLD = 25,
+		SHOCK = -50,
+		ACID = -25,
+		BOMB = 0,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = -50,
+		DARK = -50,
+		FATIGUE = INFINITY,
+		PAIN = INFINITY,
+		ION = 0,
+		SANITY = INFINITY
+	)
+	deflection = 0.25
+
+
+
 /armor/insect
 	defense_rating = list(
 		BLADE = 0,
@@ -63,6 +200,7 @@
 		ION = INFINITY,
 		SANITY = 0
 	)
+	deflection = 1
 
 /armor/plant
 	defense_rating = list(
@@ -177,6 +315,7 @@
 		ION = INFINITY,
 		SANITY = 0
 	)
+	deflection = 0.25
 
 
 /armor/tough_furred
@@ -291,6 +430,8 @@
 		ION = INFINITY,
 		SANITY = INFINITY
 	)
+	deflection = 0.25
+
 
 /armor/blob/armored
 	defense_rating = list(
@@ -313,6 +454,7 @@
 		ION = INFINITY,
 		SANITY = INFINITY
 	)
+	deflection = 1
 
 /armor/blob/spore
 	defense_rating = list(
@@ -379,6 +521,7 @@
 		ION = INFINITY,
 		SANITY = 100
 	)
+	deflection = 0.5
 
 /armor/colossus
 	defense_rating = list(
@@ -401,6 +544,7 @@
 		ION = INFINITY,
 		SANITY = 0
 	)
+	deflection = 0.5
 
 /armor/chitin
 	defense_rating = list(
@@ -423,6 +567,7 @@
 		ION = INFINITY,
 		SANITY = 0
 	)
+	deflection = 0.5
 
 /armor/cult_construct
 	defense_rating = list(
@@ -445,6 +590,7 @@
 		ION = 100,
 		SANITY = INFINITY
 	)
+	deflection = 0.5
 
 /armor/brass_construct
 	defense_rating = list(
@@ -467,6 +613,7 @@
 		ION = 0,
 		SANITY = INFINITY
 	)
+	deflection = 0.5
 
 
 /armor/bubblegum
@@ -490,6 +637,7 @@
 		ION = INFINITY,
 		SANITY = 100
 	)
+	deflection = 0.5
 
 
 
@@ -514,6 +662,7 @@
 		ION = INFINITY,
 		SANITY = 0
 	)
+	deflection = 0.1
 
 /armor/carp/shark
 	defense_rating = list(
@@ -536,6 +685,7 @@
 		ION = INFINITY,
 		SANITY = 50
 	)
+	deflection = 0.1
 
 
 /armor/borg
@@ -559,6 +709,7 @@
 		ION = 0,
 		SANITY = INFINITY
 	)
+	deflection = 0.25
 
 /armor/borg/military
 	defense_rating = list(
@@ -581,6 +732,7 @@
 		ION = 0,
 		SANITY = INFINITY
 	)
+	deflection = 0.5
 
 /armor/legion
 	defense_rating = list(
@@ -603,6 +755,7 @@
 		ION = INFINITY,
 		SANITY = INFINITY
 	)
+	deflection = 0.1
 
 /armor/legion/snow
 	defense_rating = list(
@@ -648,3 +801,4 @@
 		ION = INFINITY,
 		SANITY = 0
 	)
+	deflection = 0.25

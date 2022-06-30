@@ -2,7 +2,7 @@
 	var/dynamic_lighting = FALSE
 	luminosity           = 1
 
-	var/lightness = 0 //Calculated tile darkness.
+	var/lightness = 1 //Calculated tile darkness.
 
 	var/tmp/lighting_corners_initialised = FALSE
 

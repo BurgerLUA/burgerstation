@@ -80,7 +80,7 @@
 	var/ricochet_angle = 55 //The angle of incidence needs to be larger than this to trigger a richochete.
 	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
 	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
-	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet
+	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
 
 	var/debug = FALSE
 
@@ -338,13 +338,13 @@
 					//1 = damage dealt
 					//2 = damage blocked via armor
 					//3 = damage blocked via shield
+					//4 = best armor deflection
 
-					var/local_required_angle = ricochet_angle - (damage_information[3]/max(1,damage_information[1]))*ricochet_angle*0.5
+					var/local_required_angle = ricochet_angle - (damage_information[3]*2/max(1,damage_information[1]))*ricochet_angle*0.5
 
 
 					var/block_percent = 1 - (damage_information[1]/(damage_information[1] + damage_information[2] + damage_information[3]))
-
-					//world.log << "Percent: [block_percent] out of [richochet_block_percent_threshold]."
+					block_percent *= damage_information[4]
 
 					if(block_percent >= richochet_block_percent_threshold)
 						var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)

@@ -15,6 +15,10 @@
 		FATIGUE = 75,
 		PAIN = 75
 	)
+	deflection = 0.75
+
+/armor/hardsuit/combat
+	deflection = 1
 
 /armor/hardsuit/combat/ling
 	defense_rating = list(

@@ -50,7 +50,7 @@
 	name = "reptile right arm"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/arm/reptile/left
 	name = "reptile left arm"
@@ -70,7 +70,7 @@
 	name = "reptile advanced right arm"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/arm/reptile_advanced/left
 	name = "reptile advanced left arm"
@@ -92,7 +92,7 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
-	defense_rating = DIONA_ARMOR
+	armor = /armor/diona
 
 /obj/item/organ/arm/diona/left
 	name = "diona left arm"
@@ -112,7 +112,7 @@
 	name = "cyborg right arm"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/arm/cyborg/left
@@ -135,7 +135,7 @@
 	name = "beef right arm"
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 
-	defense_rating = MEATMEN_ARMOR
+	armor = /armor/beefman
 
 /obj/item/organ/arm/beefman/left
 	name = "beef left arm"
@@ -157,7 +157,7 @@
 	name = "skeleton right arm"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
-	defense_rating = SKELETON_ARMOR
+	armor = /armor/skeleton
 
 	projectile_dodge_chance = 20
 
@@ -220,7 +220,7 @@
 	name = "goblin right arm"
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
 
-	defense_rating = GOBLIN_ARMOR
+	armor = /armor/goblin
 
 /obj/item/organ/arm/goblin/left
 	name = "goblin left arm"

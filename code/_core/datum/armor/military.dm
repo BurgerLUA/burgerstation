@@ -1,3 +1,6 @@
+/armor/military/
+	deflection = 0.75
+
 /armor/military/light
 	defense_rating = list(
 		BLADE = 50,
