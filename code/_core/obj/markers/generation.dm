@@ -1,3 +1,6 @@
+var/global/list/all_generation_markers = list()
+
+
 /obj/marker/generation
 	name = "generation marker"
 	icon = 'icons/obj/markers/generation.dmi'
@@ -29,6 +32,14 @@
 	var/priority = 1
 
 	var/flags_generation = FLAG_GENERATION_NONE
+
+/obj/marker/generation/New(var/desired_loc)
+	. = ..()
+	all_generation_markers += src
+
+all_generation_markers/Destroy()
+	. = ..()
+	all_generation_markers -= src
 
 /obj/marker/generation/proc/grow(var/desired_grow)
 
@@ -82,11 +93,8 @@
 		if(!grow(desired_grow))
 			break
 
+	qdel(src)
+
 	return TRUE
 
-
-
-/obj/marker/generation/PostInitialize()
-	. = ..()
-	qdel(src)
 

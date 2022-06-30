@@ -22,7 +22,7 @@
 			CHECK_TICK(75,FPS_SERVER)
 			var/atom/movable/A = k
 			var/atom/hit_wall
-			if(current_loc && !A.can_enter(current_loc,previous_loc))
+			if(current_loc && !A.can_enter_turf(current_loc,previous_loc))
 				hit_wall = current_loc
 				A.force_move(previous_loc)
 			else

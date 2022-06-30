@@ -21,7 +21,7 @@
 /obj/hud/button/stat/ecg/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"line_overlay")
-	I.appearance_flags = appearance_flags | RESET_COLOR
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	I.blend_mode = BLEND_INSET_OVERLAY
 	add_overlay(I)
 

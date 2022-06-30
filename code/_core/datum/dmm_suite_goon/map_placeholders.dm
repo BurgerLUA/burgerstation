@@ -8,7 +8,7 @@
 	icon_state = "comment"
 	invisibility = 101
 	plane = PLANE_HUD
-	anchored = 1
+	anchored = 2
 	var/coordinates
 	var/dimensions
 	New()

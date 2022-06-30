@@ -88,7 +88,7 @@ var/global/list/valid_antag_colors = list(
 	//Custom snowflake code.
 	overlays.Cut()
 	var/image/I = new/image(icon,"[icon_state]_visor")
-	I.appearance_flags = RESET_COLOR
+	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	add_overlay(I)
 	return TRUE
 

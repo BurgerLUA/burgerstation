@@ -4,8 +4,8 @@
 	icon_state = "rust1"
 	enable_chunk_clean = FALSE
 
-	plane = FLOAT_PLANE
-	layer = FLOAT_LAYER
+	plane = PLANE_FLOOR_ATTACHMENT
+	layer = 0
 
 /obj/effect/cleanable/rust/New(var/desired_loc)
 	icon_state = pick("rust1","rust2","rust3","rust4")

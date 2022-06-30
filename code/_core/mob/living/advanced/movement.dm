@@ -10,12 +10,14 @@
 			F.set_dir(dir)
 			F.icon_state = "human_left[enter ? "_enter" : "_exit"]"
 			F.alpha = clamp(((foot_left.blood_stain_intensity-2)/2)*255,10,255)
+			F.color = foot_left.blood_stain_color
 			foot_left.set_bloodstain(max(2,foot_left.blood_stain_intensity - 0.1))
 		if(foot_right?.blood_stain_intensity > 2)
 			var/obj/effect/cleanable/blood/footprint/F = new(T)
 			F.set_dir(dir)
 			F.icon_state = "human_right[enter ? "_enter" : "_exit"]"
 			F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
+			F.color = foot_right.blood_stain_color
 			foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)

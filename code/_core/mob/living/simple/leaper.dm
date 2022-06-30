@@ -102,7 +102,7 @@
 	var/turf/desired_turf = pick(valid_turfs)
 
 	add_status_effect(IMMORTAL)
-	density = FALSE
+	set_density(FALSE)
 	CALLBACK("\ref[src]_leaper_teleport",10,src,.proc/teleport,desired_turf)
 
 	return TRUE
@@ -111,7 +111,7 @@
 
 	if(desired_turf) src.force_move(desired_turf)
 	remove_status_effect(IMMORTAL)
-	density = TRUE
+	set_density(TRUE)
 
 	return TRUE
 

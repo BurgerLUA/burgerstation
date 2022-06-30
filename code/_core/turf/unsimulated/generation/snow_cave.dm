@@ -23,7 +23,7 @@
 
 	var/shitfix = path_only
 
-	if(no_wall)
+	if(!allow_wall)
 		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow/interior(src)
 		disallow_generation = TRUE
@@ -62,7 +62,7 @@
 		if(0.2 to 0.23)
 			new /turf/simulated/floor/cave_dirt(src)
 		if(0.23 to 0.28)
-			new /turf/simulated/floor/bedrock(src)
+			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(3))
 				new /obj/marker/generation/cave_dirt_colored(src)
 		if(0.28 to 0.38)
@@ -77,7 +77,7 @@
 					if(prob(1))
 						new /obj/marker/generation/rock_wall(src)
 		if(0.38 to 0.5)
-			new /turf/simulated/floor/bedrock(src)
+			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(3))
 				new /obj/marker/generation/cave_dirt_colored(src)
 		if(0.5 to 0.53)
@@ -99,7 +99,7 @@
 			else
 				new /turf/simulated/liquid/water(src)
 		if(0.75 to 0.8)
-			new /turf/simulated/floor/bedrock(src)
+			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(3))
 				new /obj/marker/generation/cave_dirt_colored(src)
 		if(0.8 to 1)

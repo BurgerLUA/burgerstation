@@ -4,8 +4,6 @@
 	icon = 'icons/obj/structure/airlock/new_airlock.dmi'
 	icon_state = "closed"
 
-	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND
-
 	layer = LAYER_WALL
 	plane = PLANE_WALL
 
@@ -38,6 +36,8 @@
 	health_base = 500
 
 	apc_powered = TRUE
+
+	corner_category = "wall"
 
 /obj/structure/interactive/door/airlock/locked
 	locked = TRUE
@@ -289,7 +289,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 	if(filler)
 		var/image/fill = new/image(icon,"[icon_state]_[filler]")
-		fill.appearance_flags = RESET_COLOR
+		fill.appearance_flags = src.appearance_flags | RESET_COLOR
 		fill.color = fill_color
 		if(filler == "glass")
 			fill.alpha = 150
@@ -297,32 +297,32 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 	if(panel)
 		var/image/panel = new /image(icon,"[icon_state]_panel")
-		panel.appearance_flags = RESET_COLOR
+		panel.appearance_flags = src.appearance_flags | RESET_COLOR
 		add_overlay(panel)
 
 	if((!apc_powered || powered) && light_state)
 		var/image/light_fixtures = new /image(icon,light_state)
-		light_fixtures.appearance_flags = RESET_COLOR
+		light_fixtures.appearance_flags = src.appearance_flags | RESET_COLOR
 		light_fixtures.color = light_color ? light_color : "#FFFFFF"
 		add_overlay(light_fixtures)
 
 	if(anchored)
-		var/image/frame = new /icon(icon,"frame")
+		var/image/frame = new/image(icon,"frame")
 		add_underlay(frame)
 
 		for(var/d in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(src,d)
 			if(!T)
 				continue
-			var/atom/A = should_smooth_with(T)
-			if(A && !istype(A,/obj/structure/interactive/door/airlock/))
+			var/atom/A = src.should_smooth_with(T)
+			if(A )
 				var/image/I = new/image(icon,"metal_frame_[d]")
 				if(A == T)
 					I.color = A.color
 				else
 					I.color = COLOR_STEEL
-				I.appearance_flags = RESET_COLOR | RESET_ALPHA | KEEP_APART
-				add_underlay(I)
+				I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
+				add_overlay(I)
 
 /obj/structure/interactive/door/airlock/Cross(atom/movable/O,atom/oldloc)
 

@@ -38,7 +38,7 @@
 
 	if(reinforced_material_id)
 		var/image/I = new/image(initial(icon),"ref")
-		I.appearance_flags = RESET_COLOR | RESET_ALPHA
+		I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA
 		I.color = reinforced_color
 		I.alpha = 100
 		add_overlay(I)
@@ -86,6 +86,13 @@
 
 /obj/structure/proc/buckle(var/mob/living/victim,var/mob/caller,var/silent = FALSE)
 
+	if(victim.anchored)
+		if(caller && !silent) caller.to_chat(span("notice","You cannot buckle \the [victim.name] to \the [src.name]!"))
+		return FALSE
+
+	if(!victim.set_anchored(TRUE))
+		return FALSE
+
 	if(!silent)
 		if(!caller || caller == victim)
 			victim.visible_message(span("notice","\The [caller.name] buckles themselves to \the [src.name]."),span("notice","You buckle yourself to \the [src.name]."))
@@ -94,13 +101,15 @@
 
 	buckled = victim
 	buckled.buckled_object = src
-	buckled.anchored = TRUE
 
 	return TRUE
 
 /obj/structure/proc/unbuckle(var/mob/caller,var/silent=FALSE)
 
 	if(!buckled)
+		return FALSE
+
+	if(!buckled.set_anchored(FALSE))
 		return FALSE
 
 	if(!silent)
@@ -110,11 +119,9 @@
 			buckled.visible_message(span("notice","\The [buckled.name] is unbuckled from \the [src.name] by \the [caller.name]."),span("notice","You were unbuckled from \the [src.name] by \the [caller.name]."))
 
 	buckled.buckled_object = null
-	buckled.anchored = initial(buckled.anchored)
 	buckled = null
 
 	return TRUE
-
 
 /obj/structure/Cross(atom/movable/O,atom/oldloc)
 

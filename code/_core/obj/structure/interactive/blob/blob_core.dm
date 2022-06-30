@@ -72,5 +72,5 @@
 /obj/structure/interactive/blob/core/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,"core_overlay")
-	I.appearance_flags = RESET_COLOR | KEEP_APART
+	I.appearance_flags = src.appearance_flags | RESET_COLOR | KEEP_APART
 	add_overlay(I)

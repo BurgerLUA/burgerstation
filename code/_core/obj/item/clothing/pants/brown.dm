@@ -51,3 +51,14 @@
 
 /obj/item/clothing/pants/cloth/black
 	color = COLOR_BLACK
+
+
+/obj/item/clothing/pants/runic
+	name = "runic pants"
+	icon = 'icons/obj/item/clothing/pants/runic.dmi'
+
+	layer = LAYER_MOB_CLOTHING_UNIFORM
+
+	armor = /armor/steel/runic
+
+	size = SIZE_3

@@ -76,6 +76,23 @@
 
 	var/ultra_persistant = FALSE //Saves even after death (but of course, removes the previous instance if unrevivable.)
 
+/obj/hud/inventory/MouseEntered(location,control,params)
+
+	. = ..()
+
+	var/atom/A = get_top_object()
+	if(A)
+		A.MouseEntered(location,control,params)
+
+/obj/hud/inventory/MouseExited(location,control,params)
+
+	. = ..()
+
+	var/atom/A = get_top_object()
+	if(A)
+		A.MouseExited(location,control,params)
+
+
 /obj/hud/inventory/Destroy()
 
 	if(grabbed_object)

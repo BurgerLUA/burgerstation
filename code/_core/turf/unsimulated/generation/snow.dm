@@ -5,7 +5,7 @@
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
 	if(x <= 10 || y <= 10 || x >= world.maxx-10 || y >= world.maxy-10)
-		if(no_wall)
+		if(!allow_wall)
 			new /turf/simulated/floor/cave_dirt(src)
 		else
 			new /turf/simulated/wall/rock/snow(src)
@@ -14,7 +14,7 @@
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow/interior(src)
 		return ..()
 
-	if(no_wall)
+	if(!allow_wall)
 		new /turf/simulated/floor/colored/snow(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		return ..()
@@ -69,7 +69,7 @@
 
 /turf/unsimulated/generation/snow/path/generate(var/size = WORLD_SIZE)
 
-	if(no_wall)
+	if(!allow_wall)
 		new /turf/simulated/floor/colored/snow(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		disallow_generation = TRUE

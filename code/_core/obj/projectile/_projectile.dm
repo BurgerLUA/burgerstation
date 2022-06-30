@@ -69,6 +69,8 @@
 
 	throwable = FALSE
 
+	var/can_ricochet = TRUE
+
 /obj/projectile/Destroy()
 	color = "#000000"
 	owner = null
@@ -128,7 +130,7 @@
 
 	inaccuracy_modifier = desired_inaccuracy_modifier
 
-	return ..()
+	. = ..()
 
 
 /obj/projectile/Initialize()
@@ -167,56 +169,73 @@
 
 	if(!new_loc)
 		log_error("Warning: Projectile didn't have a new loc.")
-		on_projectile_hit(src.loc)
-		qdel(src)
-		return TRUE
+		on_projectile_hit(src.loc,old_loc,new_loc)
+		return FALSE
 
 	if(!old_loc)
 		log_error("Warning: Projectile didn't have an old loc.")
-		on_projectile_hit(src.loc)
-		qdel(src)
-		return TRUE
-
-	if(!isturf(old_loc))
-		log_error("Warning: Projectile didn't have a valid old loc.")
-		on_projectile_hit(old_loc)
-		qdel(src)
-		return TRUE
-
-	if(penetrations_left < 0)
-		qdel(src)
-		return TRUE
+		on_projectile_hit(src.loc,old_loc,new_loc)
+		return FALSE
 
 	steps_current += 1
 
-	var/list/atom/collide_with = new_loc.projectile_should_collide(src,new_loc,old_loc)
-	for(var/k in collide_with)
-		on_projectile_hit(k)
+	if(old_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(old_loc,old_loc,new_loc))
+		penetrations_left--
+		if(penetrations_left < 0)
+			return FALSE
+
+	if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
+		penetrations_left--
+		if(penetrations_left < 0)
+			return FALSE
+
+	//Handle atoms in turf.
+	//Take priority of existing targets on a turf before ones that existed before.
+	for(var/k in new_loc.contents)
+		var/atom/movable/A = k
+		if(!A.density)
+			continue
+		if(A.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(A,old_loc,new_loc))
+			penetrations_left--
+			if(penetrations_left < 0)
+				return FALSE
+
+	for(var/k in new_loc.old_living)
+		var/mob/living/L = k
+		if(!L.density)
+			continue
+		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions.
+			continue
+		if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
+			penetrations_left--
+			if(penetrations_left < 0)
+				return FALSE
 
 	if(steps_allowed && steps_allowed <= steps_current)
-		on_projectile_hit(new_loc)
-		qdel(src)
-		return TRUE
+		on_projectile_hit(new_loc,old_loc,new_loc)
+		return FALSE
 
-	if(hit_target_turf && new_loc == target_turf)
-		on_projectile_hit(new_loc)
-		qdel(src)
-		return TRUE
+	if(hit_target_turf && old_loc == target_turf)
+		on_projectile_hit(old_loc,old_loc,new_loc)
+		return FALSE
 
-	return FALSE //Do not destroy.
+	return TRUE //No hits. Do not destroy.
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
 	if(!isturf(src.loc) || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
-		on_projectile_hit(current_loc ? current_loc : src.loc)
-		qdel(src)
+		on_projectile_hit(current_loc ? current_loc : src.loc,null,null)
 		return FALSE
 
-	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
-	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/max_normal = max(abs(vel_x),abs(vel_y))
+	var/x_normal = vel_x/max_normal
+	var/y_normal = vel_y/max_normal
+
+	var/current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float + x_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
+	var/current_loc_y = y + FLOOR(((TILE_SIZE/2) + pixel_y_float + y_normal*TILE_SIZE) / TILE_SIZE, 1) //DON'T REMOVE (TILE_SIZE/2). IT MAKES SENSE.
 	if((last_loc_x != current_loc_x) || (last_loc_y != current_loc_y))
 		current_loc = locate(current_loc_x,current_loc_y,z)
-		if(!current_loc || on_enter_tile(previous_loc,current_loc) || !current_loc)
+		if(!current_loc || !on_enter_tile(previous_loc,current_loc))
 			return FALSE
 		previous_loc = current_loc
 		last_loc_x = current_loc_x
@@ -245,12 +264,30 @@
 
 	return TRUE
 
-/obj/projectile/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	if(projectile_blacklist[hit_atom])
 		return FALSE
 
 	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
+
+
+	. = TRUE
+
+	//Richochet code is hard.
+	if(can_ricochet && old_loc && new_loc)
+		var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
+		var/max_norm = max(abs(face_of_impact[1]),abs(face_of_impact[2]))
+		var/x_norm = face_of_impact[1] / max_norm
+		var/y_norm = face_of_impact[2] / max_norm
+		vel_x -= (y_norm*vel_x*2)
+		vel_y -= (x_norm*vel_y*2)
+		can_ricochet = FALSE
+		. = FALSE
+		var/current_angle = -ATAN2(vel_x,vel_y) + 90
+		var/matrix/M = get_base_transform()
+		M.Turn(current_angle)
+		transform = M
 
 	if(damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
@@ -285,9 +322,9 @@
 	else if(impact_effect_movable && ismovable(hit_atom))
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
 
-	weapon.on_projectile_hit(src,hit_atom)
+	weapon.on_projectile_hit(src,hit_atom,old_loc,new_loc)
 
-	return TRUE
+	return .
 
 /obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1)
 	if(inaccuracy_modifier <= 0)

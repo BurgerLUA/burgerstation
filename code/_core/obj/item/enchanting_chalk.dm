@@ -43,7 +43,7 @@
 		var/turf/T = object
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/T2 = get_step(T,k)
-			var/atom/occupied = T2.is_occupied(PLANE_DECAL)
+			var/atom/occupied = T2.is_occupied(PLANE_FLOOR_ATTACHMENT)
 			if(occupied)
 				caller.to_chat(span("warning","You can't draw an enchantment circle here, \the [occupied.name] is in the way!"))
 				return TRUE

@@ -14,6 +14,7 @@ var/global/list/all_fog = list()
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
 	density = TRUE
+	opacity = TRUE
 
 	mouse_opacity = 2
 
@@ -29,5 +30,6 @@ var/global/list/all_fog = list()
 
 /obj/effect/fog_of_war/proc/remove()
 	animate(src,alpha = 0)
-	density = FALSE
+	set_density(FALSE)
+	set_opacity(FALSE)
 	mouse_opacity = 0

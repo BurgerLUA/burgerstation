@@ -9,6 +9,8 @@
 
 	opacity = 0
 
+	appearance_flags = PIXEL_SCALE | TILE_BOUND
+
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	collision_flags = FLAG_COLLISION_NONE
 
@@ -51,6 +53,24 @@
 
 	var/corner_icons = FALSE
 	var/corner_category = "none"
+
+	var/has_dense_atom = FALSE
+
+/turf/proc/recalculate_atom_density()
+
+	has_dense_atom = FALSE
+
+	if(density)
+		has_dense_atom = TRUE
+		return TRUE
+
+	for(var/k in src.contents)
+		var/atom/movable/M = k
+		if(M.density)
+			has_dense_atom = TRUE
+			break
+
+	return TRUE
 
 /turf/proc/pre_change() //When this turf is removed in favor of a new turf.
 	return TRUE
@@ -159,6 +179,9 @@
 	if(opacity)
 		has_opaque_atom = TRUE
 
+	if(density)
+		has_dense_atom = TRUE
+
 
 /turf/Destroy()
 	CRASH("Tried destroying a turf!")
@@ -233,6 +256,24 @@
 		if(T && !T.density_up && enterer.Move(T) && !T.safe_fall)
 			enterer.on_fall(src)
 
+	if(enterer.density)
+		has_dense_atom = TRUE
+
+	if(enterer.enable_chunk_clean)
+
+		var/old_loc_chunk_x = old_loc ? CEILING(old_loc.x/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_y = old_loc ? CEILING(old_loc.y/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_z = old_loc ? old_loc.z : 0
+
+		var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
+		var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
+		var/new_loc_chunk_z = src.z
+
+		if(new_loc_chunk_z && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
+			var/chunk/new_chunk = SSchunk.active_chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
+			if(new_chunk)
+				new_chunk.cleanables += enterer
+
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
@@ -243,13 +284,31 @@
 	if(!exiter.qdeleting && is_living(exiter))
 		do_footstep(exiter,FALSE)
 
+	if(exiter.density)
+		recalculate_atom_density()
+
+	if(exiter.enable_chunk_clean)
+
+		var/old_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
+		var/old_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
+		var/old_loc_chunk_z = src.z
+
+		var/new_loc_chunk_x = new_loc ? CEILING(new_loc.x/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_y = new_loc ? CEILING(new_loc.y/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_z = new_loc ? new_loc.z : 0
+
+		if(new_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
+			var/chunk/old_chunk = SSchunk.active_chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
+			if(old_chunk)
+				old_chunk.cleanables -= exiter
+
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return istype(health)
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
-	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT)
+	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT && !ismob(enterer))
 		return FALSE
 
 	if(density && (!enterer || (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags)))
@@ -316,17 +375,19 @@
 	caller.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 
-/turf/proc/is_clear_path_to(var/turf/target_turf)
-
-	if(!isturf(target_turf) || target_turf.has_opaque_atom || src.z != target_turf.z)
-		return FALSE
+/turf/proc/is_straight_path_to(var/turf/target_turf,var/check_vision=FALSE,var/check_density=TRUE)
 
 	if(src == target_turf)
-		return target_turf.has_opaque_atom
+		return TRUE
 
+	if(!check_vision && !check_density)
+		return FALSE
+
+	if(!isturf(target_turf) || src.z != target_turf.z)
+		return FALSE
 
 	var/limit = get_dist(src,target_turf)
-	if(limit >= 127) //No.
+	if(limit >= 64) //Don't want to path forever.
 		return FALSE
 	limit *= 2 //Compensates for corners.
 
@@ -344,14 +405,13 @@
 		if(diag["[next_direction]"])
 			var/dir1 = get_true_4dir(next_direction)
 			var/turf/T1 = get_step(T,dir1)
-			if(T1.has_opaque_atom)
+			if((check_density && T1.has_dense_atom) || (check_vision && T1.has_opaque_atom))
 				var/dir2 = next_direction - dir1
 				var/turf/T2 = get_step(T,dir2)
-				if(T2.has_opaque_atom)
+				if((check_density && T2.has_dense_atom) || (check_vision && T2.has_opaque_atom))
 					return FALSE
-
 		T = get_step(T,next_direction)
-		if(T.has_opaque_atom)
-			return FALSE
 		if(T == target_turf)
 			return TRUE
+		if((check_density && T.has_dense_atom) || (check_vision && T.has_opaque_atom))
+			return FALSE

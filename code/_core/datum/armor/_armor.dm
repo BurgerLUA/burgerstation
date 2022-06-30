@@ -1,10 +1,10 @@
 // https://www.desmos.com/calculator/lor9o5vzic
-var/global/list/defense_rating_to_value = list(
+var/global/list/defense_rating_to_value = list( //Lower values are more expensive.
 	BLADE = 8.1,
 	BLUNT = 8.1,
 	PIERCE = 8.1,
 	LASER = 8.1,
-	ARCANE = 20,
+	ARCANE = 6,
 	HEAT = 16.2,
 	COLD = 16.2,
 	SHOCK = 16.2,
@@ -12,8 +12,8 @@ var/global/list/defense_rating_to_value = list(
 	BOMB = 16.2,
 	BIO = 17.9,
 	RAD = 16.2,
-	HOLY = 20,
-	DARK = 20,
+	HOLY = 6,
+	DARK = 6,
 	FATIGUE = 50,
 	ION = 50,
 	PAIN = 50

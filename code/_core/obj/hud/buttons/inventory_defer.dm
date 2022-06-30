@@ -56,7 +56,7 @@
 		top_object.try_strip(caller)
 		return TRUE
 
-	if(is_inventory(object))
+	if(is_inventory(object) && get_dist(caller,top_object) <= 1)
 		var/obj/hud/inventory/I = object
 		I.add_object(top_object)
 		return TRUE
@@ -74,13 +74,25 @@
 	return TRUE
 
 /obj/hud/button/inventory_defer/proc/update()
+
+	if(get_dist(owner,referencing) >= 3)
+		update_owner(null)
+		return TRUE
+
 	if(referencing) clone(referencing)
 	return TRUE
 
 var/global/list/greyscale = list(
-	0.75,0.75,0.75,0,
-	0.75,0.75,0.75,0,
-	0.75,0.75,0.75,0,
+	0.5,0.25,0.25,0,
+	0.25,0.5,0.25,0,
+	0.25,0.25,0.5,0,
+	0,0,0,1
+)
+
+var/global/list/redscale = list(
+	0.5,0.25,0.25,0,
+	0.33,0.5,0.25,0,
+	0.33,0.25,0.5,0,
 	0,0,0,1
 )
 
@@ -95,14 +107,25 @@ var/global/list/greyscale = list(
 
 	update_vis_contents()
 
-	var/obj/item/top_object = get_top_vis_object()
-	if(!top_object || !top_object.can_strip(owner))
-		color = greyscale
+	var/desired_color = "#FFFFFF"
+	var/obj/item/top_object = src.get_top_vis_object()
+	if(top_object)
+		if(is_organ(top_object.loc))
+			if(!top_object.can_strip(owner))
+				desired_color = greyscale
+			else
+				desired_color = "#FFFFFF"
+		else
+			if(get_dist(owner,top_object) > 1)
+				desired_color = greyscale
+			else
+				desired_color = "#FFFFFF"
 
-	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,.proc/update)
+	animate(src,color=desired_color,time=SECONDS_TO_DECISECONDS(1))
+
+	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,.proc/update) //This doesn't need to be removed in another call.
 
 	return TRUE
-
 
 /obj/hud/button/inventory_defer/update_owner(var/mob/desired_owner)
 
@@ -112,6 +135,7 @@ var/global/list/greyscale = list(
 		var/mob/living/advanced/A = owner
 		A.inventory_defers -= src
 		HOOK_REMOVE("grab_changed","grab_changed_\ref[src]",A)
+		HOOK_REMOVE("post_move","update_stats_\ref[src]",A)
 
 	. = ..()
 
@@ -119,3 +143,4 @@ var/global/list/greyscale = list(
 		var/mob/living/advanced/A = owner
 		A.inventory_defers |= src
 		HOOK_ADD("grab_changed","grab_changed_\ref[src]",A,src,.proc/update)
+		HOOK_ADD("post_move","update_stats_\ref[src]",A,src,.proc/update)

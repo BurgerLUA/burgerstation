@@ -105,12 +105,10 @@ var/global/list/ability_colors = list(
 /obj/hud/button/ability/A
 	id = "1"
 	screen_loc = "LEFT,TOP"
-	ability = /ability/quick_draw
 
 /obj/hud/button/ability/B
 	id = "2"
 	screen_loc = "LEFT+1,TOP"
-	ability = /ability/dash
 
 /obj/hud/button/ability/C
 	id = "3"

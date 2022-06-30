@@ -12,6 +12,9 @@
 	var/offset_x = 0
 	var/offset_y = 0
 
+	var/max_x = 0
+	var/max_y = 0
+
 /obj/hud/map/proc/update_map(var/desired_z=0)
 
 	if(desired_z > 0)
@@ -119,7 +122,7 @@
 
 	if(!M || close)
 		. = ..()
-		update_owner(null)
+		connected_background.update_owner(null)
 		return .
 
 	var/turf/T = get_turf(caller)
@@ -132,8 +135,7 @@
 
 /obj/hud/button/map_control/close
 	name = "close map"
-	icon_state = "arrow"
-	dir = NORTH
+	icon_state = "close"
 	close = 1
 	screen_loc = "CENTER+5,CENTER-4"
 

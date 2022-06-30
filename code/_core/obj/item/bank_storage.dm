@@ -2,7 +2,7 @@
 	name = "bank storage"
 	icon = null
 	icon_state = null
-	anchored = TRUE
+	anchored = 2
 	size = INFINITY
 	weight = INFINITY
 	var/owner //Ckey that owns it.

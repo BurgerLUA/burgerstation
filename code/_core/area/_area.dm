@@ -1,5 +1,5 @@
 /area/
-	name = "Unknown Area"
+	name = "ERROR AREA"
 	icon = 'icons/area/area.dmi'
 	icon_state = ""
 	layer = LAYER_AREA
@@ -68,6 +68,8 @@
 
 	var/list/obj/particle_managers = list()
 
+	var/list/atom/movable/chunk_cleanable = list()
+
 /area/proc/is_space()
 	return FALSE
 
@@ -121,25 +123,6 @@ var/global/list/possible_dirty_wall = list(
 var/global/list/possible_trash = list(
 	/obj/item/trash/random = 100
 )
-
-/area/Generate()
-	. = ..()
-	if(flags_area & FLAG_AREA_DIRTY)
-		for(var/turf/simulated/S in src.contents)
-			var/obj/structure/table/window/W = locate() in S.contents
-			if(W) continue
-			if(prob(80))
-				var/obj/effect/E
-				if(S.density)
-					E = pickweight(possible_dirty_wall)
-				else
-					E = pickweight(possible_dirty_floor)
-				E = new E(S)
-			if(!S.density && prob(30))
-				var/obj/item/I = pickweight(possible_trash)
-				I = new I(S)
-
-
 
 /area/Initialize()
 
@@ -213,7 +196,6 @@ var/global/list/possible_trash = list(
 		if(T.x % sunlight_freq)
 			return FALSE
 		var/bonus = !(T.x % (sunlight_freq*2)) && sunlight_freq > 1 ? sunlight_freq*0.5 : 0
-		T.name = "[T.x].[T.y]: [bonus]."
 		if((T.y+bonus) % sunlight_freq)
 			return FALSE
 

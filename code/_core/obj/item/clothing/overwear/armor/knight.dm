@@ -133,4 +133,35 @@
 
 	armor = /armor/steel
 
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT)
+
+	size = SIZE_4
+
+	hidden_organs = list(
+		BODY_TORSO = TRUE,
+		BODY_GROIN = TRUE,
+		BODY_ARM_RIGHT = TRUE,
+		BODY_ARM_LEFT = TRUE,
+		BODY_HAND_RIGHT = TRUE,
+		BODY_HAND_LEFT = TRUE
+	)
+
+
+/obj/item/clothing/overwear/armor/knight/runic
+	name = "runic platebody"
+	desc = "Where's the pants?"
+	desc_extended = "A kinght suit without the pants. Good for short goblins."
+	icon = 'icons/obj/item/clothing/suit/runic.dmi'
+
+	worn_layer = LAYER_MOB_CLOTHING_ARMOR
+
+	armor = /armor/steel/runic
+
+	size = SIZE_4
+
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT)
+
+	hidden_organs = list(
+		BODY_TORSO = TRUE,
+		BODY_GROIN = TRUE
+	)

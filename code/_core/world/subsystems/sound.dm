@@ -158,7 +158,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 	created_sound.channel = SOUND_CHANNEL_MUSIC
 	created_sound.priority = 0
-	created_sound.environment = ENVIRONMENT_NONE
 	created_sound.status = 0
 	created_sound.volume = volume * (volume_mod/100)
 	created_sound.status = SOUND_STREAM
@@ -227,7 +226,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		SSsound.active_sounds[created_sound] = -1
 
 	if(!created_sound)
-		log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
+		log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as the sound is deleted!")
 		return FALSE
 
 	if(invisibility_check && M.see_invisible < invisibility_check)
@@ -256,9 +255,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	if(local_volume <= 0)
 		return null
 
-	created_sound.x = 0
-	created_sound.z = 0
-	created_sound.y = 0
 	created_sound.volume = local_volume
 
 	C << created_sound
@@ -280,9 +276,6 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	SSsound.channel_hack++
 	if(SSsound.channel_hack > 1024)
 		SSsound.channel_hack = 100
-	created_sound.x = 0
-	created_sound.z = 0
-	created_sound.y = 0
 
 	if(duration > 0)
 		SSsound.active_sounds[created_sound] = duration
@@ -300,7 +293,8 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 		var/client/C = M.client
 
-		created_sound.environment = M.get_sound_environment()
+		if(channel == SOUND_CHANNEL_AMBIENT || channel == SOUND_CHANNEL_FOOTSTEPS || channel == SOUND_CHANNEL_FX)
+			created_sound.environment = M.get_sound_environment()
 
 		var/local_volume = volume
 		if(C && C.settings)
@@ -374,6 +368,9 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 			continue
 
 		var/turf/mob_turf = get_turf(M)
+		if(!mob_turf)
+			continue
+
 		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
 			var/distance = max(0,get_dist(mob_turf,source_turf)-(VIEW_RANGE*0.5)) - range_min
 			if(sound_setting == SOUND_SETTING_FOOTSTEPS && distance <= 0)
@@ -382,11 +379,12 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 			if(local_volume <= 0)
 				continue
 
-		created_sound.x = source_turf.x - mob_turf.x
-		created_sound.z = source_turf.y - mob_turf.y
-		created_sound.y = 0
 		created_sound.volume = local_volume
-		created_sound.environment = M.get_sound_environment()
+		if(channel == SOUND_CHANNEL_AMBIENT || channel == SOUND_CHANNEL_FOOTSTEPS || channel == SOUND_CHANNEL_FX)
+			created_sound.environment = M.get_sound_environment()
+			created_sound.x = source_turf.x - mob_turf.x
+			created_sound.z = source_turf.y - mob_turf.y
+			created_sound.y = 0
 
 		if(tracked)
 			if(M.client.tracked_sounds[tracked])
@@ -401,142 +399,3 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		M << created_sound
 
 	return created_sound
-
-
-
-/*
-/proc/play(var/sound_path = null, var/location_or_list = null, var/sound_source = null, var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0)
-
-	if(!SSsound)
-		log_error("Tried playing a sound without the sound subsystem active!")
-		return FALSE
-
-	if(!sound_path)
-		CRASH_SAFE("Tried playing a sound without a sound path!")
-		return FALSE
-
-	if(!location_or_list)
-		CRASH_SAFE("Tried playing a sound \"[sound_path]\" without a target!")
-		return FALSE
-
-	var/list/hearers = list()
-	var/list/pos = list()
-
-	if(islist(location_or_list))
-		var/list/NL = location_or_list
-		hearers = NL.Copy()
-	else if(ismob(location_or_list))
-		hearers += location_or_list
-	else if(is_atom(location_or_list))
-		var/atom/A = location_or_list
-		var/turf/AT = get_turf(A)
-		hearers += get_clients_in_range(range_max,AT)
-		if(!sound_source)
-			sound_source = AT
-	else
-		CRASH_SAFE("Tried playing a sound without a valid ([location_or_list]) target!")
-		return FALSE
-
-	if(islist(sound_source))
-		pos = sound_source
-	else if(ismob(sound_source))
-		var/mob/M = sound_source
-		if(!M.client)
-			log_error("Tried playing a sound to a mob ([M.get_debug_name()], but it had no client!")
-			return FALSE
-	else if(sound_source)
-		if(isturf(sound_source))
-			var/turf/T = sound_source
-			pos = vector(T.x,T.y,T.z)
-		else
-			CRASH_SAFE("sound_source ([sound_source]) is not a turf or a list so it cannot play.")
-			return FALSE
-	else if(is_atom(location_or_list))
-		var/turf/T = get_turf(location_or_list)
-		if(!T)
-			CRASH_SAFE("Could not find a turf to play sound ([sound_path])!")
-			return FALSE
-		pos = vector(T.x,T.y,T.z)
-
-	var/sound/created_sound = sound(sound_path)
-	if(!created_sound)
-		CRASH_SAFE("Invalid sound: [sound_path].")
-		return FALSE
-
-	created_sound.frequency = pitch
-	created_sound.repeat = loop
-	created_sound.priority = priority
-	created_sound.echo = echo
-	created_sound.status = 0
-	created_sound.wait = 0
-	created_sound.channel = SSsound.channel_hack
-	SSsound.channel_hack++
-	if(SSsound.channel_hack > 1024)
-		SSsound.channel_hack = initial(SSsound.channel_hack)
-
-	if(duration > 0)
-		SSsound.active_sounds[created_sound] = duration
-	else if(loop)
-		SSsound.active_sounds[created_sound] = -1
-
-	for(var/k in hearers)
-		var/mob/M = k
-
-		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
-
-		if(!created_sound)
-			log_error("WARNING: For some reason, [M] cannot hear the sound ([sound_path]) as it is deleted!")
-			return FALSE
-
-		if(!M.client || !M.client.eye) continue
-		var/client/C = M.client
-
-		var/turf/T = get_turf(M)
-		if(!T) continue
-
-		if(length(pos) && pos[3] != T.z) continue
-
-		if(invisibility_check && M.see_invisible < invisibility_check) continue
-
-		created_sound.environment = M.get_sound_environment()
-
-		var/local_volume = volume
-		if(length(pos))
-			created_sound.x = pos[1] - T.x
-			created_sound.z = pos[2] - T.y
-			created_sound.y = 0
-			if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
-				if(created_sound.x > range_max || created_sound.y > range_max)
-					continue
-				var/distance = max(0,sqrt(created_sound.x**2 + created_sound.y**2)-(VIEW_RANGE*0.5)) - range_min
-				local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
-				if(local_volume <= 0)
-					continue
-		else
-			created_sound.x = 0
-			created_sound.y = 0
-			created_sound.z = 0
-
-		if(C && C.settings)
-			local_volume *= C.settings.loaded_data["volume_master"] / 100
-			switch(channel)
-				if(SOUND_CHANNEL_MUSIC)
-					local_volume *= C.settings.loaded_data["volume_music"] / 100
-				if(SOUND_CHANNEL_AMBIENT)
-					local_volume *= C.settings.loaded_data["volume_ambient"] / 100
-				if(SOUND_CHANNEL_FOOTSTEPS)
-					local_volume *= C.settings.loaded_data["volume_footsteps"] / 100
-				if(SOUND_CHANNEL_UI)
-					local_volume *= C.settings.loaded_data["volume_ui"] / 100
-				if(SOUND_CHANNEL_FX)
-					local_volume *= C.settings.loaded_data["volume_fx"] / 100
-
-		if(local_volume <= 0)
-			continue
-
-		created_sound.volume = local_volume
-
-		if(C) C.receive_sound(created_sound)
-
-	return created_sound
-*/

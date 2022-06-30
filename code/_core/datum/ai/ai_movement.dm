@@ -16,7 +16,7 @@
 	if(old_turf && new_turf)
 		if(old_turf == new_turf)
 			frustration_move++
-			if(length(current_path))
+			if(length(current_node_path))
 				frustration_path++
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
 		else
@@ -98,23 +98,29 @@
 
 /ai/proc/check_obstructions()
 
-	if(length(current_path) < path_steps)
+	if(length(current_node_path) < path_steps)
 		return FALSE
 
-	if(!current_path[path_steps])
+	if(!current_node_path[path_steps])
 		return FALSE
 
-	var/Vector3D/desired_node = current_path[path_steps]
+	var/obj/marker/map_node/desired_node = current_node_path[path_steps]
 	var/turf/T1 = get_turf(owner)
 	var/turf/T2 = locate(desired_node.x,desired_node.y,desired_node.z)
 	var/list/obstructions = get_obstructions(T1,T2)
 
-	for(var/k in obstructions)
+	if(!length(obstructions)) //All good.
+		return TRUE
+
+	if(set_path_astar(T2)) //Okay we found obstructions, but we can path through it.
+		return TRUE
+
+	for(var/k in obstructions) //Can't path though it, so we destroy it.
 		var/atom/A = k
-		if(!A.health) //Can't destroy.
+		if(!A.can_be_attacked(owner)) //Can't even destroy it. Just give up.
 			obstacles.Cut()
 			set_path(null)
-			break
+			break //Give up.
 		obstacles[A] = TRUE
 
 	return TRUE
@@ -141,12 +147,16 @@
 	return FALSE
 
 /ai/proc/handle_movement_path()
-	if(current_path && length(current_path))
-		if(path_steps <= length(current_path))
-			var/Vector3D/desired_node = current_path[path_steps]
+	if(length(current_node_path))
+		if(path_steps <= length(current_node_path))
+			var/obj/marker/map_node/desired_node = current_node_path[path_steps]
+			var/desired_precision = desired_node.precision
+			if(path_steps - 1 >= 1)
+				var/obj/marker/map_node/last_node = current_node_path[path_steps-1]
+				desired_precision = min(desired_precision,last_node.precision)
 			var/turf/T = get_turf(owner)
 			var/calc_distance = abs(desired_node.x - T.x) + abs(desired_node.y - T.y)
-			if(calc_distance <= 2)
+			if(calc_distance <= desired_precision) //We've made it to the next node.
 				path_steps++
 				owner.move_dir = 0
 				if(check_for_obstructions) check_obstructions()

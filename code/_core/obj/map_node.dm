@@ -29,7 +29,9 @@ var/global/mob/abstract/node_checker
 	icon_state = "path"
 	var/list/adjacent_map_nodes = list()
 	invisibility = 0
-	anchored = TRUE
+	anchored = 2
+
+	var/precision = 4 //Lower precision must mean mobs need to be very close to the node in order to count as a pass.
 
 /obj/marker/map_node/get_examine_list(var/mob/examiner)
 
@@ -48,6 +50,16 @@ var/global/mob/abstract/node_checker
 /obj/marker/map_node/proc/initialize_node()
 
 	var/found = FALSE
+
+	for(var/d in DIRECTIONS_ALL)
+		var/turf/T = src
+		for(var/i=1,i<=precision,i++)
+			T = get_step(T,d)
+			if(T.has_dense_atom)
+				precision = i
+				break
+		if(precision <= 1)
+			break
 
 	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src))
 		var/mob/abstract/node_checker/NC = node_checker
@@ -111,22 +123,26 @@ var/global/list/stored_paths = list()
 
 	if(!point_A || !point_B) return .
 
-	var/mob/abstract/node_checker/NC = new /mob/abstract/node_checker(point_A)
+	node_checker.force_move(point_A)
+
 	var/limit = 10
-	while(NC.loc != point_B && limit > 0)
+	while(node_checker.loc != point_B && limit > 0)
 		limit--
 		CHECK_TICK(75,FPS_SERVER)
-		var/desired_dir = get_dir(NC,point_B)
-		var/turf/T = get_step(NC,desired_dir)
-		if(T.density && !T.Enter(NC,NC.loc))
+		var/desired_dir = get_dir(node_checker,point_B)
+		var/turf/T = get_step(node_checker,desired_dir)
+		if(T.density && !T.Enter(node_checker,node_checker.loc))
 			. |= T
-		for(var/k in T.contents)
-			var/atom/movable/M = k
-			if(!M.allow_path && M.density && M.anchored && !M.Cross(NC,NC.loc))
-				. |= M
-		NC.loc = T
+		if(T.has_dense_atom)
+			for(var/k in T.contents)
+				var/atom/movable/M = k
+				if(!M.allow_path && M.density && M.anchored && !M.Cross(node_checker,node_checker.loc))
+					. |= M
+		node_checker.loc = T
 
-	qdel(NC)
+	node_checker.force_move(null)
+
+
 
 /proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE,var/check_view=FALSE)
 
