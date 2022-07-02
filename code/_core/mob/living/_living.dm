@@ -167,6 +167,8 @@
 	var/obj/effect/fire_overlay
 	var/obj/effect/shield_overlay
 
+	var/resist_percent = 0
+
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
 
@@ -265,7 +267,7 @@
 	var/next_heartbeat = 0
 
 	var/list/stat_elements = list() //Assoc list.
-	var/list/stat_buttons_to_update = list()
+	var/list/stat_elements_to_update = list()
 
 	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
 
@@ -339,7 +341,7 @@
 
 	status_effects?.Cut()
 
-	stat_buttons_to_update?.Cut()
+	stat_elements_to_update?.Cut()
 
 	QDEL_NULL(stand)
 
@@ -591,7 +593,8 @@
 		S.update_owner(src)
 		var/obj/hud/button/stat/mana/M = new(src)
 		M.update_owner(src)
-
+		var/obj/hud/button/stat/resist_bar/RB = new(src)
+		RB.update_owner(src)
 
 /mob/living/Finalize()
 

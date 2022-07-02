@@ -32,11 +32,14 @@
 	var/x_attack = text2num(params[PARAM_ICON_X])
 	var/y_attack = text2num(params[PARAM_ICON_Y])
 
-	if(!accurate && attacker != src && is_living(attacker))
+	if(!accurate && attacker != src)
 		var/inaccuracy = weapon ? weapon.get_inaccuracy(attacker,src,inaccuracy_modifier) : 0
+		var/damagetype/DT = all_damage_types[damage_type]
+		if(DT)
+			inaccuracy *= DT.inaccuracy_mod
 		if(inaccuracy > 0)
-			x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
-			y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
+			x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+			y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
 
 	var/best_distance = INFINITY
 	var/obj/item/organ/best_organ

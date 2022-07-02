@@ -43,7 +43,11 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAMCRIT,STUN,STAGGER,PARRIED))
 		return FALSE
 
-	if(grabbing_hand && grabbing_hand.owner && is_behind(grabbing_hand.owner,src))
+	if(grabbing_hand && grabbing_hand.owner)
+		if(horizontal)
+			return FALSE
+		if(is_behind(grabbing_hand.owner,src))
+			return FALSE
 		return FALSE
 
 	. = ..()

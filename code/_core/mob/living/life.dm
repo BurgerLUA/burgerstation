@@ -226,12 +226,11 @@
 
 	if(!dead)
 		handle_natural_regen()
-
-	if(health && !dead)
-		var/old_pain_removal = pain_removal
-		pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
-		if(old_pain_removal != pain_removal)
-			queue_health_update = TRUE
+		if(health)
+			var/old_pain_removal = pain_removal
+			pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
+			if(old_pain_removal != pain_removal)
+				queue_health_update = TRUE
 
 	handle_health_buffer()
 
@@ -266,10 +265,10 @@
 
 /mob/living/proc/on_life_fast()
 
-	for(var/k in stat_buttons_to_update)
+	for(var/k in stat_elements_to_update)
 		var/obj/hud/button/stat/B = k
 		if(!B.update())
-			stat_buttons_to_update -= k
+			stat_elements_to_update -= k
 
 	if(stun_immunity > 0)
 		stun_immunity = max(stun_immunity - TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)

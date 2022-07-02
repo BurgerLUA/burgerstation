@@ -1039,6 +1039,7 @@
 #include "code\_core\obj\hud\buttons\stat\body.dm"
 #include "code\_core\obj\hud\buttons\stat\ecg.dm"
 #include "code\_core\obj\hud\buttons\stat\mana.dm"
+#include "code\_core\obj\hud\buttons\stat\resist_bar.dm"
 #include "code\_core\obj\hud\buttons\stat\screen_effect.dm"
 #include "code\_core\obj\hud\buttons\stat\stamina.dm"
 #include "code\_core\obj\hud\buttons\vehicle\_vehicle.dm"

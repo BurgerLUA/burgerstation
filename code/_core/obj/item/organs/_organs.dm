@@ -263,8 +263,8 @@
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
 			var/list/base_normals = direction_to_pixel_offset(gib_direction)
-			base_normals[1] += RAND_PRECISE(-0.25,0.25)
-			base_normals[2] += RAND_PRECISE(-0.25,0.25)
+			base_normals[1] += RAND_PRECISE(-0.25,0.25) //Variation
+			base_normals[2] += RAND_PRECISE(-0.25,0.25) //Variation
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
 				create_blood(
 					/obj/effect/cleanable/blood/gib,

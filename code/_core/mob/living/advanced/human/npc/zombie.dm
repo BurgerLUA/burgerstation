@@ -177,3 +177,5 @@
 		loadout_to_use = /loadout/zombie/civilian/male
 	else if(gender == FEMALE)
 		loadout_to_use = /loadout/zombie/civilian/female
+
+

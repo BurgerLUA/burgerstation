@@ -12,10 +12,10 @@ proc/direction_to_pixel_offset(var/dir)
 	return MODULUS(ATAN2(A2.x - A1.x,A1.y - A2.y) + 90,360) //The 90 offset is needed.
 
 /proc/is_behind(var/atom/A,var/atom/B) //Returns the facing direction if A is directly behind B.
-	return get_true_4dir(B.dir) & get_dir_advanced(A,B)
+	return A.loc != B.loc && (get_true_4dir(B.dir) & get_dir_advanced(A,B))
 
 /proc/is_facing(var/atom/A,var/atom/B) //Returns the facing direction if A is facing B.
-	return get_true_4dir(A.dir) & get_dir_advanced(A,B)
+	return A.loc != B.loc && (get_true_4dir(A.dir) & get_dir_advanced(A,B))
 
 /proc/get_directional_offsets(var/atom/A,var/atom/B)
 	var/angle = get_angle(A,B)

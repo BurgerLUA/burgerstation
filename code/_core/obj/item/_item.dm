@@ -326,11 +326,15 @@ var/global/list/rarity_to_mul = list(
 	)
 	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
 
-/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+
+	. = 0
+
 	if(is_living(source))
 		var/mob/living/L = source
-		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
-	return 0
+		. += (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
+		if(L.health)
+			. *= 1 + max(0,1 - (L.health.stamina_current/L.health.stamina_max)*2)
 
 /obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
 

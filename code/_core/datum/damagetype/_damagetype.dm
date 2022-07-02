@@ -125,6 +125,7 @@ var/global/list/all_damage_numbers = list()
 
 	var/damage_mod = 1 //Simple multiplier for all damage of this type
 	var/penetration_mod = 1 //Simple multiplier for all penetration of this type
+	var/inaccuracy_mod = 1 //Simple multiplier for inaccuracy. Only applies to melee/unarmed.
 
 	var/experience_mod = 1 //Simple multiplier for all experience gains via this type.
 
