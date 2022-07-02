@@ -67,8 +67,8 @@
 	attachment_undermount_offset_x = 32 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	attachment_stock_offset_x = 32
-	attachment_stock_offset_y = 0
+	attachment_stock_offset_x = 0
+	attachment_stock_offset_y = 32
 
 	requires_cock_each_shot = TRUE
 
