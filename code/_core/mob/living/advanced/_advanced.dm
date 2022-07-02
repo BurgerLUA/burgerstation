@@ -486,13 +486,13 @@ mob/living/advanced/Login()
 		var/obj/item/organ/O = k
 		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
-/mob/living/advanced/gib(var/hard=FALSE)
+/mob/living/advanced/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)
 		return FALSE
 	if(gibbed)
 		return FALSE
 	gibbed = TRUE
 	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
-	if(O) return O.gib(hard)
+	if(O) return O.gib(gib_direction,hard)
 	gibbed = FALSE //Hacky, but it works.
 	return FALSE

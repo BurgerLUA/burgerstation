@@ -431,7 +431,7 @@
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
 	gib(TRUE)
 
-/mob/living/gib(var/hard=FALSE)
+/mob/living/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)
 		return FALSE
 	if(gibbed)

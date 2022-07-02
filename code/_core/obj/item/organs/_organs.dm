@@ -219,10 +219,10 @@
 						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
 							var/mob/living/LA = attacker
 							if(LA.client) //And the person doing the gibbing is an active player.
-								gib()
+								gib(get_dir(attacker,src))
 							//Otherwise, don't gib.
 					else
-						gib()
+						gib(get_dir(attacker,src))
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)
@@ -243,7 +243,7 @@
 	limit--
 	return O.get_ending_organ(limit)
 
-/obj/item/organ/gib(var/hard=FALSE) //Hard gib destroys the limb.
+/obj/item/organ/gib(var/gib_direction=0x0,var/hard=FALSE) //Hard gib destroys the limb.
 
 	if(!can_gib)
 		return FALSE
@@ -262,11 +262,28 @@
 		if(A.blood_type)
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
+			var/list/base_normals = direction_to_pixel_offset(gib_direction)
+			base_normals[1] += RAND_PRECISE(-0.25,0.25)
+			base_normals[2] += RAND_PRECISE(-0.25,0.25)
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
-				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2),TRUE)
+				create_blood(
+					/obj/effect/cleanable/blood/gib,
+					T,
+					R.color,
+					base_normals[1]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					base_normals[2]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					TRUE
+				)
 			if(gib_icon_state && enable_skin && additional_blends["skin"])
 				var/icon_blend/IB = additional_blends["skin"]
-				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE),TRUE)
+				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(
+					/obj/effect/cleanable/blood/body_gib,
+					T,
+					R.color,
+					base_normals[1]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					base_normals[2]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					TRUE
+				)
 				if(BG)
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = IB.color
@@ -274,7 +291,7 @@
 
 	for(var/k in attached_organs)
 		var/obj/item/organ/O = k
-		O.gib(hard)
+		O.gib(gib_direction,hard)
 
 	unattach_from_parent(T,hard)
 
