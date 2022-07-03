@@ -96,7 +96,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/ignore_immortal = FALSE
 
-	var/reaction_time = 4 //In Deciseconds.
+	var/reaction_time = 8 //In Deciseconds.
 
 	var/stored_sneak_power = 0
 

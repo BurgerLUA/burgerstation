@@ -12,7 +12,7 @@
 			continue
 		if(alert_source && !AI.is_enemy(alert_source,FALSE))
 			continue
-		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time*0.1,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter,alert_source)
+		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter,alert_source)
 
 /proc/create_alert(var/range = VIEW_RANGE,var/turf/epicenter,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
 

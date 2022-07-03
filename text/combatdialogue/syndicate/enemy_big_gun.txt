@@ -1,0 +1,3 @@
+alert! Enemy has superior firepower.
+BFG in enemy hands, I repeat BFG in enemy hands!
+high-value weapon in possession of combatant.

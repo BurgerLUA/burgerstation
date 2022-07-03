@@ -19,7 +19,7 @@
 
 	var/mob/living/advanced/player/P = user
 
-	var/dialogue/D = all_dialogue[P.dialogue_target_id]
+	var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
 	if(D)
 		D.add_stored_topics_if_exist(P)
 		run_function(usr,"set_name","'[P.dialogue_target.name]'")
@@ -41,7 +41,7 @@
 		if(href_list["topic"] == "goodbye")
 			close(usr)
 			return
-		var/dialogue/D = all_dialogue[P.dialogue_target_id]
+		var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
 		D.set_topic(P,href_list["topic"])
 
 	return ..()
