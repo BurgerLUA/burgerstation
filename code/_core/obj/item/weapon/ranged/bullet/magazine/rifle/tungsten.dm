@@ -31,6 +31,8 @@
 	size = SIZE_3
 	weight = 12
 
+	can_wield = TRUE
+
 	ai_heat_sensitivity = 1.5
 
 	attachment_whitelist = list(
