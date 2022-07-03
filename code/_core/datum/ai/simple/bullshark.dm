@@ -4,9 +4,6 @@
 	assistance = 1
 	retaliate = TRUE
 
-
-	var/next_talk = 0
-
 /ai/bullshark/handle_attacking()
 
 	if(objective_attack && next_talk <= world.time)

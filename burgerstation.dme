@@ -233,6 +233,7 @@
 #include "code\_core\datum\addiction\addiction_opium.dm"
 #include "code\_core\datum\ai\_ai.dm"
 #include "code\_core\datum\ai\ai_combat.dm"
+#include "code\_core\datum\ai\ai_dialogue.dm"
 #include "code\_core\datum\ai\ai_life.dm"
 #include "code\_core\datum\ai\ai_movement.dm"
 #include "code\_core\datum\ai\ai_objectives.dm"

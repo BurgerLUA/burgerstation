@@ -120,7 +120,7 @@
 /proc/periodize(var/t as text)
 	var/last_char = t[length(t)]
 
-	var/static/list/valid_ends = make_associative(list(".",",","?","!"))
+	var/static/list/valid_ends = make_associative(list("~","-",".",",","?","!"))
 
 	if(!valid_ends[last_char])
 		t += "."

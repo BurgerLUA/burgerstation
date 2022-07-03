@@ -134,6 +134,11 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/turf/last_hunt_target_turf //Read only. The last turf that the target was on.
 	var/next_node_check_time = 0
 
+	//Dialogue related.
+	var/language_to_use = LANGUAGE_BASIC
+	var/next_talk = 0
+	var/combat_dialogue/combat_dialogue
+
 /ai/Destroy()
 
 	set_active(FALSE,TRUE)

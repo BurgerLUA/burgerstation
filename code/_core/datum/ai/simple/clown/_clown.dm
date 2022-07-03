@@ -6,8 +6,6 @@
 
 	var/list/jokes = list()
 
-	var/next_talk = 0
-
 /ai/clown/handle_attacking()
 
 	if(length(jokes) && objective_attack && next_talk <= world.time)

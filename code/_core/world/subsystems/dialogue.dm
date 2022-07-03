@@ -57,3 +57,37 @@ SUBSYSTEM_DEF(dialogue)
 			lines_of_dialogue++
 
 	log_subsystem(src.name,"Initialized and found [categories_of_dialogue] categories of dialogue with [lines_of_dialogue] total lines for [CD.type].")
+
+
+/subsystem/dialogue/proc/get_combat_dialogue(var/combat_dialogue/cd_id,var/desired_category,var/swear_chance=25)
+
+	if(!desired_category)
+		return FALSE
+
+	var/combat_dialogue/CD = src.all_combat_dialogue[cd_id]
+	if(!CD)
+		log_error("Error: Could not find valid combat dialogue id [cd_id]!")
+		return FALSE
+
+	if(!CD.dialogue_data[desired_category])
+		return FALSE
+
+	if(prob(swear_chance))
+		. = "[pick(CD.dialogue_data["swearing"])]"
+		if(swear_chance >= 50)
+			. += "! [capitalize(pick(CD.dialogue_data[desired_category]))]"
+		else
+			. += ", [pick(CD.dialogue_data[desired_category])]"
+
+	if(swear_chance >= 90)
+		. = uppertext(.)
+	else
+		. = capitalize(.)
+
+	. = periodize(.)
+
+
+
+
+
+

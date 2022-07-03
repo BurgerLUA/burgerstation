@@ -3,8 +3,7 @@
 	var/next_shot = 0
 	aggression = 2
 	assistance = 1
-	var/language_to_use = LANGUAGE_BINARY
-	var/next_talk = 0
+	language_to_use = LANGUAGE_BINARY
 	use_cone_vision = FALSE //they see all around them
 
 	var/mob/living/simple/swarmer/console/parent_console
