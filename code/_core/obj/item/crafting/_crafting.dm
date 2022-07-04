@@ -59,8 +59,8 @@
 		CHECK_TICK(100,FPS_SERVER*0.5)
 		I.update_owner(A)
 		if(opening || !I.alpha)
-			animate(I,alpha=255,time=4)
-			I.mouse_opacity = 2
+			animate(I,alpha=initial(I.alpha),time=4)
+			I.mouse_opacity = initial(I.mouse_opacity)
 			opening = TRUE
 		else
 			animate(I,alpha=0,time=4)
@@ -72,8 +72,8 @@
 
 	for(var/obj/hud/button/crafting/B in A.buttons)
 		if(opening)
-			animate(B,alpha=255,time=4)
-			B.mouse_opacity = 2
+			animate(B,alpha=initial(B.alpha),time=4)
+			B.mouse_opacity = initial(B.mouse_opacity)
 			B.stored_crafting_table = src
 		else
 			animate(B,alpha=0,time=4)

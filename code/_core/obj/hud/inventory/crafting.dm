@@ -6,8 +6,6 @@
 
 	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CRAFTING
 
-	alpha = 0 //Hidden until enabled
-	mouse_opacity = 0 //Off until enabled.
 	should_draw = FALSE
 	drag_to_take = FALSE
 

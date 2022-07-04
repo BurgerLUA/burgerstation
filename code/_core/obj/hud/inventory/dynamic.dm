@@ -2,9 +2,6 @@
 	name = "inventory space"
 	icon_state = "square_round"
 
-	alpha = 0 //Hidden until enabled
-	mouse_opacity = 0 //Off until enabled.
-
 	max_size = -1
 
 	should_draw = FALSE
@@ -25,6 +22,8 @@
 	if(is_atom(desired_loc))
 		var/atom/A = desired_loc
 		name = "inventory space of [A.name]"
+	alpha = 0
+	mouse_opacity = 0
 
 /obj/hud/inventory/dynamic/sandwich //Special logic for buns
 

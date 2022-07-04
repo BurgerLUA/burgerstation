@@ -21,12 +21,15 @@
 
 	var/current_boss_music
 
-	alpha = 0
-	mouse_opacity = 0
-
 	user_colors = FALSE
 
 	has_quick_function = FALSE
+
+
+/obj/hud/button/boss_health/New(var/desired_loc)
+	. = ..()
+	alpha = 0
+	mouse_opacity = 0
 
 /obj/hud/button/boss_health/Destroy()
 	target_bosses.Cut()

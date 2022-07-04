@@ -39,10 +39,8 @@
 
 /obj/hud/button/proc/show(var/should_show=TRUE,var/draw_speed=SECONDS_TO_DECISECONDS(1))
 	if(should_show)
-		var/initial_alpha = initial(alpha)
-		animate(src,alpha= initial_alpha ? initial_alpha : 255,time=draw_speed)
-		var/initial_mouse = initial(mouse_opacity)
-		mouse_opacity = initial_mouse ? initial_mouse : 1
+		animate(src,alpha= initial(alpha),time=draw_speed)
+		mouse_opacity = initial(mouse_opacity)
 	else
 		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(draw_speed))
 		mouse_opacity = 0

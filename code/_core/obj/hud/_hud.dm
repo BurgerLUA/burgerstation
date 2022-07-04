@@ -86,14 +86,19 @@
 		var/list/split_screen_loc = splittext(src.screen_loc,",")
 		if(length(split_screen_loc) == 2)
 
-			var/x_offset = 1
-			var/y_offset = 1
+			var/x_offset = 0
+			var/y_offset = 0
 
 			if(findtext(screen_loc,"TOP"))
 				y_offset = -1
+			else if(findtext(screen_loc,"BOTTOM"))
+				y_offset = 1
+
 
 			if(findtext(screen_loc,"RIGHT"))
 				x_offset = -1
+			else if(findtext(screen_loc,"LEFT"))
+				x_offset = 1
 
 			var/desired_screen_loc = "[split_screen_loc[1]]+[x_offset],[split_screen_loc[2]]+[y_offset]"
 			usr.tooltip?.set_text("[src.name]\n\n[src.desc_extended]",desired_screen_loc)

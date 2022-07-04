@@ -2,8 +2,6 @@
 	name = "close inventory"
 	icon_state = "close_inventory"
 	screen_loc = "CENTER,CENTER"
-	alpha = 0
-	mouse_opacity = 0
 
 	essential = TRUE
 
