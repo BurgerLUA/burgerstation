@@ -76,9 +76,9 @@
 	name = "custom Jaeger armor"
 	icon = 'icons/obj/item/clothing/suit/nano.dmi'
 	polymorphs = list(
-		"base" = "#404040",
-		"chest" = "#FFD7AD",
-		"shoulders" = "#B54A4A"
+		"base" = COLOR_BLACK,
+		"chest" = COLOR_BLACK,
+		"shoulders" = COLOR_NANOTRASEN
 	)
 
 	worn_layer = LAYER_MOB_CLOTHING_ARMOR

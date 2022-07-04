@@ -27,7 +27,9 @@ var/global/list/obj/hud/button/chargen_buttons = list(
 	/obj/hud/button/chargen/eye_color,
 
 	/obj/hud/button/chargen/detail,
-	/obj/hud/button/chargen/glow
+	/obj/hud/button/chargen/glow,
+
+	/obj/hud/button/chargen/difficulty
 )
 
 /obj/hud/button/chargen

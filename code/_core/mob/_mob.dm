@@ -78,6 +78,7 @@
 	var/obj/plane_master/water_mask/plane_master_water_mask
 
 	var/obj/hud/button/examine_bar/examine_bar
+	var/obj/hud/button/tooltip/tooltip
 
 	var/obj/fov/fov
 
@@ -147,6 +148,11 @@
 
 	if(examine_bar)
 		examine_bar.update_owner(null)
+		examine_bar = null
+
+	if(tooltip)
+		tooltip.update_owner(null)
+		tooltip = null
 
 	stored_chat_text?.Cut()
 
@@ -297,6 +303,10 @@
 	if(!examine_bar)
 		examine_bar = new(src)
 	examine_bar.update_owner(src)
+
+	if(!tooltip)
+		tooltip = new(src)
+	tooltip.update_owner(src)
 
 	if(!parallax["A"])
 		var/obj/parallax/layer1/P = new(src)

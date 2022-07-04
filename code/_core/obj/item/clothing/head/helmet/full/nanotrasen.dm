@@ -63,9 +63,9 @@
 	name = "custom Jaeger helmet"
 	icon = 'icons/obj/item/clothing/hats/nano.dmi'
 	polymorphs = list(
-		"base" = "#404040",
-		"visor" = "#FFD7AD",
-		"stripe" = "#B54A4A"
+		"base" = COLOR_BLACK,
+		"visor" = "#B1D3D8",
+		"stripe" = COLOR_NANOTRASEN
 	)
 
 	armor = /armor/military/heavy/hard

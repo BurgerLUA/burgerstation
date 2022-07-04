@@ -230,6 +230,8 @@ var/global/list/all_clients = list() //Assoc list
 	else
 		show_popup_menus = FALSE
 
+	winset(src,"map.tooltip","size=50x50")
+
 	return mob
 
 /client/proc/get_ranks()

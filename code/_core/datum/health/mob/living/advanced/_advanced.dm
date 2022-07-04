@@ -118,12 +118,12 @@
 
 		var/actual_difficulty = enable_friendly_fire ? DIFFICULTY_NORMAL : P.difficulty
 
-		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
+		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_NIGHTMARE)
 			health_regeneration = 0
 		else
 			health_regeneration = initial(health_regeneration)
 
-		if(actual_difficulty == DIFFICULTY_SURVIVOR)
+		if(actual_difficulty == DIFFICULTY_NIGHTMARE)
 			stamina_regen_cooef = 0.5
 			mana_regen_cooef = 0.5
 		else

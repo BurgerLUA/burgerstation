@@ -77,3 +77,28 @@
 
 /obj/hud/Generate()
 	CRASH("HUD objects should never be Generated!")
+
+
+
+/obj/hud/MouseEntered(location,control,params)
+	. = ..()
+	if(desc_extended && mouse_opacity > 0)
+		var/list/split_screen_loc = splittext(src.screen_loc,",")
+		if(length(split_screen_loc) == 2)
+
+			var/x_offset = 1
+			var/y_offset = 1
+
+			if(findtext(screen_loc,"TOP"))
+				y_offset = -1
+
+			if(findtext(screen_loc,"RIGHT"))
+				x_offset = -1
+
+			var/desired_screen_loc = "[split_screen_loc[1]]+[x_offset],[split_screen_loc[2]]+[y_offset]"
+			usr.tooltip?.set_text("[src.name]\n\n[src.desc_extended]",desired_screen_loc)
+
+
+/obj/hud/MouseExited(location,control,params)
+	. = ..()
+	usr.tooltip?.set_text(null)

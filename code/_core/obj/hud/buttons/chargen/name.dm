@@ -7,6 +7,7 @@
 	screen_loc = "CENTER-1,CENTER+2"
 
 	maptext = "<center>Invalid Name</center>"
+	maptext_y = 5
 	maptext_height = TILE_SIZE
 	maptext_width = TILE_SIZE*3
 

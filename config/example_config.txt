@@ -12,6 +12,7 @@ SERVER_DISCORD https://discord.gg/a2wHSqu
 PLAYER_LIMIT 100
 
 # Pathing
+ENABLE_LOGGING 1
 GARBAGE_LOGS_PATH data/server/garbage_logs.txt
 
 # Performance
