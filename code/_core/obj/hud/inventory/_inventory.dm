@@ -473,6 +473,8 @@
 		name = initial(name)
 		desc_extended = initial(desc_extended)
 
+	tooltip_text = get_tooltip_text()
+
 	if(is_item(src.loc))
 		var/obj/item/I2 = src.loc
 		I2.update_inventory()

@@ -94,6 +94,8 @@
 	name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
 	desc_extended = associated_item.desc_extended
 
+	tooltip_text = get_tooltip_text()
+
 	maptext = name
 	maptext_width = 96*2
 	maptext_x = 2

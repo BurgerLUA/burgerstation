@@ -161,4 +161,4 @@
 		desc = initial(desc)
 		desc_extended = initial(desc_extended)
 		maptext = null
-
+	tooltip_text = get_tooltip_text()

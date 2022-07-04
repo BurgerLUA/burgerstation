@@ -47,10 +47,13 @@
 	if(!associated_object)
 		name = "missing object"
 		color = "#888888"
+		desc_extended = initial(desc_extended)
 	else
 		color = "#FFFFFF"
 		name = associated_object.name
 		desc_extended = associated_object.desc_extended
+
+	tooltip_text = get_tooltip_text()
 
 	vis_contents |= associated_object
 
