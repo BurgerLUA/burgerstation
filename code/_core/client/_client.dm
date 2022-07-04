@@ -132,10 +132,10 @@ var/global/list/all_clients = list() //Assoc list
 /client/proc/examine(var/datum/object)
 
 	for(var/v in object.get_examine_list(src.mob))
-		src.mob.to_chat(v)
+		if(v) src.mob.to_chat(v)
 
 	for(var/v in object.get_examine_details_list(src.mob))
-		src.mob.to_chat(v)
+		if(v) src.mob.to_chat(v)
 
 	return TRUE
 

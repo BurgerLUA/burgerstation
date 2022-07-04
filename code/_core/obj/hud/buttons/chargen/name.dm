@@ -1,6 +1,7 @@
 /obj/hud/button/chargen/change_name
 	name = "change name"
-	desc = "Click to change your name."
+	desc = "What's in a name?"
+	desc_extended = "Your current character's name. Click here to change it. Names are limited to latin characters only, with no numbers."
 	icon = 'icons/hud/nameplate.dmi'
 	icon_state = "nameplate"
 

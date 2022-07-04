@@ -50,6 +50,7 @@
 	else
 		color = "#FFFFFF"
 		name = associated_object.name
+		desc_extended = associated_object.desc_extended
 
 	vis_contents |= associated_object
 

@@ -468,8 +468,10 @@
 	var/obj/item/I = get_top_object()
 	if(I)
 		name = I.name
+		desc_extended = I.desc_extended
 	else
 		name = initial(name)
+		desc_extended = initial(desc_extended)
 
 	if(is_item(src.loc))
 		var/obj/item/I2 = src.loc

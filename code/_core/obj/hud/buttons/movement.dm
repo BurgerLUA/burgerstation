@@ -1,7 +1,7 @@
 /obj/hud/button/sneak
 	name = "sneak"
 	desc = "sneaker no sneaking"
-	desc_extended = "Press to sneak."
+	desc_extended = "Click here to toggle sneak. Sneaking makes it much harder to be detected by NPCs, and prevents players from seeing you unless you are in their character's line of sight. Moving while sneaking costs stamina."
 	icon_state = "sneak_0"
 	screen_loc = "RIGHT-3,BOTTOM:12"
 
@@ -24,9 +24,9 @@
 	..()
 
 /obj/hud/button/move
-	name = "move"
+	name = "change movement"
 	desc = "who fucking walks lmao"
-	desc_extended = "Where you press determines where you click"
+	desc_extended = "Changes your default movement stance."
 	icon_state = "move_1"
 	screen_loc = "RIGHT:1-3,BOTTOM:11"
 
@@ -65,7 +65,7 @@
 /obj/hud/button/rest
 	name = "rest"
 	desc = "No sleeping on the job!"
-	desc_extended = "Press to toggle laying down."
+	desc_extended = "Click here to allow your character to rest. Resting makes it much more unlikely to be hit by stray projectiles and makes it harder to be detected by NPCs."
 	icon_state = "rest"
 	screen_loc = "RIGHT-2:8,BOTTOM:10+1"
 

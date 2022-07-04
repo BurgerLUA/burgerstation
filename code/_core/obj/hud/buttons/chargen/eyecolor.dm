@@ -8,8 +8,9 @@ mob/living/advanced/proc/handle_eyecolor_chargen(var/desired_color,var/update_bl
 	return TRUE
 
 /obj/hud/button/chargen/eye_color
-	name = "eye color"
+	name = "change eye color"
 	icon_state = "change_eyecolor"
+	desc_extended = "Click here to change your character's eye color."
 
 	screen_loc = "CENTER+1.5,CENTER-2"
 

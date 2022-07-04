@@ -10,7 +10,8 @@ mob/living/advanced/proc/handle_glow_chargen(var/desired_color,var/update_blends
 	return TRUE
 
 /obj/hud/button/chargen/glow
-	name = "glow color"
+	name = "change glow color"
+	desc_extended = "Click here to change your character's glow color."
 	icon_state = "change_glowcolor"
 
 	screen_loc = "CENTER-2.5,CENTER-2"

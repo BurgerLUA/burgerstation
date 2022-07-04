@@ -18,6 +18,7 @@
 
 /obj/hud/button/exchange/sell
 	name = "sell"
+	desc_extended = "Clicking here will sell the currently slotted object for currency. Items sold cannot be recovered."
 
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "sell"

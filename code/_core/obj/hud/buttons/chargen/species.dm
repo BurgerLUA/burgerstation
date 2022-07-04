@@ -1,5 +1,6 @@
 /obj/hud/button/chargen/species/
 	name = "change species"
+	desc_extended = "Click here to change your character's species. Note that changing your character's species will cause you to lose your previous changes."
 	icon_state = "change_species"
 	screen_loc = "CENTER+2,CENTER+0"
 

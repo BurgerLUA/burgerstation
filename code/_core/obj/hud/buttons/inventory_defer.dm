@@ -79,7 +79,13 @@
 		update_owner(null)
 		return TRUE
 
-	if(referencing) clone(referencing)
+	if(referencing)
+		clone(referencing)
+	else
+		name = initial(name)
+		desc_extended = initial(desc_extended)
+
+
 	return TRUE
 
 var/global/list/greyscale = list(

@@ -10,8 +10,9 @@ mob/living/advanced/proc/handle_detail_chargen(var/desired_color,var/update_blen
 	return TRUE
 
 /obj/hud/button/chargen/detail
-	name = "detail color"
+	name = "change detail color"
 	icon_state = "change_detailcolor"
+	desc_extended = "Click here to change your character's visual detail color."
 
 	screen_loc = "CENTER-3.5,CENTER-2"
 

@@ -1,8 +1,6 @@
 /obj/hud/button/vendor
 
 	name = "vending button"
-	desc = "Press this."
-	desc_extended = "Press this button."
 	icon = 'icons/hud/vendor.dmi'
 	icon_state = "vendor_base"
 	screen_loc = "CENTER,CENTER"
@@ -94,6 +92,7 @@
 	. = ..()
 
 	name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
+	desc_extended = associated_item.desc_extended
 
 	maptext = name
 	maptext_width = 96*2

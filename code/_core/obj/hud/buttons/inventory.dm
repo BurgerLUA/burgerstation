@@ -27,7 +27,7 @@
 /obj/hud/button/hide_show_inventory
 	name = "toggle inventory"
 	desc = "Need more space? Click this button."
-	desc_extended = "Hides your inventory from view. Inventories such as pockets, belts, backpacks, and hands are not hidden."
+	desc_extended = "Hides your inventory from view. Inventories such as pockets, belts, backpacks, and hands will still be shown."
 	icon_state = "view_inventory"
 	screen_loc = "LEFT:1,BOTTOM:12"
 

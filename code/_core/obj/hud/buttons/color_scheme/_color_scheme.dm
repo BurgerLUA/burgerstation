@@ -27,7 +27,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 
 /obj/hud/button/default_color_scheme
-	name = "close color scheme"
+	name = "default color scheme"
+	desc_extended = "Clicking here will reset the color scheme to the original burgerstation blue color scheme."
 	icon_state = "default"
 	screen_loc = "CENTER-3.5,CENTER+2"
 
@@ -57,9 +58,8 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 
 /obj/hud/button/color_scheme
-	name = "color scheme button changer"
-	desc = "Press this."
-	desc_extended = "Press this button."
+	name = "change color scheme"
+	desc = "Pretty colors."
 	icon_state = "color_frame"
 	screen_loc = "CENTER,CENTER"
 

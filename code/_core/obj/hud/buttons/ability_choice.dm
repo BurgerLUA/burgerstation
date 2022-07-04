@@ -75,6 +75,11 @@
 	if(stored_ability)
 		var/image/I = new/image(initial(stored_ability.icon),initial(stored_ability.icon_state))
 		add_overlay(I)
+		name = initial(stored_ability.name)
+		desc_extended = initial(stored_ability.desc)
+	else
+		name = initial(src.name)
+		desc_extended = initial(src.desc_extended)
 
 	if(selected)
 		var/image/I = new/image(initial(icon),"square_round_selected")

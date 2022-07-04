@@ -1,7 +1,7 @@
 /obj/hud/button/targeting_new
 	name = "limb targeting"
 	desc = "Aim for the head!"
-	desc_extended = "Where you press determines where you attack."
+	desc_extended = "Click here to change where your character will target. Note that the accuracy of where you target is affected by many variables such as skill level, movement, and the enemy's evasiveness."
 	icon = 'icons/hud/paperdoll.dmi'
 	icon_state = "base"
 	screen_loc = "RIGHT,BOTTOM:11"

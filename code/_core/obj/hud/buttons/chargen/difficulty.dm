@@ -4,6 +4,8 @@
 	icon_state = "hud_outline"
 	screen_loc = "CENTER+2.5,CENTER+2:-8"
 
+	desc_extended = "Click here to change your difficulty. Higher difficulties give more rewards and experience at the cost of fighting against a stronger force. The recommended experience is \"Normal\"."
+
 	user_colors = TRUE
 
 	chargen_flags = CHARGEN_NONE

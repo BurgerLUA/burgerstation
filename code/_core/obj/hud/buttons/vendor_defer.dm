@@ -14,6 +14,8 @@
 	if(associated_vendor)
 		var/image/I = new/image(initial(associated_vendor.icon),initial(associated_vendor.icon_state))
 		add_overlay(I)
+		name = associated_vendor.name
+		desc_extended = associated_vendor.desc_extended
 
 /obj/hud/button/vendor_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	..()

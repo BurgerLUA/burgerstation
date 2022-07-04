@@ -12,6 +12,8 @@
 	var/delete_on_no_owner = TRUE
 	var/bad_delete = TRUE
 
+	desc_extended = null
+
 /obj/hud/proc/update_owner(var/mob/desired_owner)
 
 	if(owner == desired_owner)
