@@ -206,7 +206,7 @@
 
 	return list(region_x1 & region_x2, region_y1 & region_y2)
 
-#define RAND_PRECISE(min, max) (rand(min*100,max*100) / 100)
+#define RAND_PRECISE(a,b) (a + (b - a) * rand())
 
 #define EXP_DISTRIBUTION(desired_mean) ( -(1/(1/desired_mean)) * log(rand(1, 1000) * 0.001) )
 
