@@ -13,7 +13,6 @@
 
 	priority = -101
 
-
 /obj/hud/inventory/dynamic/bank/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
 	if(!bypass && length(I.inventories) && I.size >= SIZE_3)

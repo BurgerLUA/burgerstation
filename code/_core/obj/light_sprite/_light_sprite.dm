@@ -12,6 +12,7 @@
 	var/atom/movable/owner //What actually owns this. (ie a flare)
 	var/atom/movable/top_atom //What the top atom actually is. (ie the person carrying the flare)
 
+	var/power = 0
 	size = 1 //Transform multiplier
 
 /obj/light_sprite/Destroy()
@@ -28,12 +29,7 @@
 	return dir
 
 /obj/light_sprite/force_move(var/atom/new_loc)
-
 	if(top_atom) glide_size = top_atom.glide_size
-
-	if(is_inventory(src.loc))
-		CRASH("Fuck off?")
-
 	. = ..()
 
 /obj/light_sprite/proc/set_top_atom(var/atom/movable/new_top_atom)
@@ -44,14 +40,12 @@
 	if(top_atom) //Remove existing top_atom
 		top_atom.light_sprite_sources -= src
 		top_atom = null
-		world.log << "Changing top_atom to null."
 
 	if(new_top_atom)
 		var/turf/T = get_turf(new_top_atom)
 		if(!T)
 			CRASH("Invalid set_top_atom ([new_top_atom.get_debug_name()])!")
 			return FALSE
-		world.log << "Changing top_atom to [new_top_atom.type]."
 		top_atom = new_top_atom
 		top_atom.light_sprite_sources |= src
 		force_move(T)
@@ -75,4 +69,13 @@
 /obj/light_sprite/update_sprite()
 	. = ..()
 	transform = get_base_transform()
+	pixel_x = owner.light_offset_x
+	pixel_y = owner.light_offset_y
+	var/light_mod = 1
+	if(is_inventory(owner.loc))
+		var/obj/hud/inventory/I = owner.loc
+		if(!I.worn)
+			light_mod = I.light_mod
+
+	alpha = power*255*light_mod
 

@@ -1055,7 +1055,6 @@
 #include "code\_core\obj\hud\inventory\bank.dm"
 #include "code\_core\obj\hud\inventory\crafting.dm"
 #include "code\_core\obj\hud\inventory\dynamic.dm"
-#include "code\_core\obj\hud\inventory\dynamic_belt.dm"
 #include "code\_core\obj\hud\inventory\feet.dm"
 #include "code\_core\obj\hud\inventory\grabbing.dm"
 #include "code\_core\obj\hud\inventory\groin.dm"

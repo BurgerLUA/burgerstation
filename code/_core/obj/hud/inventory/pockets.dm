@@ -19,6 +19,8 @@
 
 	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
+	light_mod = 0.5
+
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"

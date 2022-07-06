@@ -79,7 +79,7 @@
 		light_sprite.icon_state = angle == LIGHT_OMNI || angle == NONSENSICAL_VALUE ? "radial" : "cone"
 		light_sprite.size = max(1,l_range*(TILE_SIZE/96))
 		light_sprite.owner = src
-		light_sprite.alpha = l_power*255
+		light_sprite.power = l_power
 		if(l_color != NONSENSICAL_VALUE)
 			light_sprite.color = l_color
 		light_sprite.update_sprite()

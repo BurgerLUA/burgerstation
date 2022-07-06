@@ -519,6 +519,7 @@ var/global/list/rarity_to_mul = list(
 
 	light?.set_top_atom(desired_atom)
 	light_sprite?.set_top_atom(desired_atom)
+	light_sprite?.update_sprite()
 
 	return TRUE
 
@@ -573,9 +574,6 @@ var/global/list/rarity_to_mul = list(
 
 	if(additional_clothing_parent)
 		drop_item(additional_clothing_parent) //This retracts the clothing.
-
-	if(light)
-		light.set_top_atom(src)
 
 	if(old_inventory && loc)
 		var/turf/old_turf = get_turf(old_inventory)

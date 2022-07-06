@@ -12,7 +12,9 @@ obj/effect/temp/muzzleflash
 
 obj/effect/temp/muzzleflash/update_atom_light()
 	if(desired_light_power > 0)
-		set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle,offset_x=pixel_x*2,offset_y=pixel_y*2)
+		light_offset_x = pixel_x*2
+		light_offset_y = pixel_y*2
+		set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	return TRUE
 
 obj/effect/temp/muzzleflash/laser

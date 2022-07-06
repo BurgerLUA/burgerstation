@@ -238,4 +238,3 @@
 /obj/plane_master/projectiles/apply_post_processing()
 	. = ..()
 	filters += filter(type="bloom",threshold="#000000",size=8,offset=1,alpha=200)
-	world.log << "IT WAS ADDED, OKAY?"

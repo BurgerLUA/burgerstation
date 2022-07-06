@@ -76,6 +76,8 @@
 
 	var/ultra_persistant = FALSE //Saves even after death (but of course, removes the previous instance if unrevivable.)
 
+	var/light_mod = 0 //Power multiplier for lights for being in this inventory. Worn inventories will always have this at 1.
+
 /obj/hud/inventory/MouseEntered(location,control,params)
 
 	. = ..()
