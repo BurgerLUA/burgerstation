@@ -13,6 +13,8 @@
 
 	inaccuracy_modifier = 0
 
+	plane = PLANE_PROJECTILE_NO_EFFECTS
+
 /obj/projectile/thrown/on_projectile_hit(var/atom/hit_atom)
 
 	. = ..()

@@ -187,12 +187,8 @@
 /obj/plane_master/currency/apply_post_processing()
 	. = ..()
 	//Currency bloom
-	#if DM_VERSION >= 514
 	if(owner?.client?.settings?.loaded_data["enable_currency_bloom"])
-		filters += filter(type="bloom",threshold="#888888",size=2,offset=0,alpha=255)
-		animate(filters[length(filters)],alpha=150,loop=-1,time=8)
-		animate(alpha=255,time=8)
-	#endif
+		filters += filter(type="bloom",threshold="#888888",size=2,offset=1,alpha=255)
 
 //HUD
 /obj/plane_master/hud
@@ -232,5 +228,14 @@
 
 /obj/plane_master/water_mask/apply_post_processing()
 	. = ..()
-	src.filters += filter(type="alpha", x=0, y=0, render_source="plane_water_floor") //Masks only draw in water.
+	filters += filter(type="alpha", x=0, y=0, render_source="plane_water_floor") //Masks only draw in water.
 
+
+
+/obj/plane_master/projectiles
+	plane = PLANE_PROJECTILE
+
+/obj/plane_master/projectiles/apply_post_processing()
+	. = ..()
+	filters += filter(type="bloom",threshold="#000000",size=8,offset=1,alpha=200)
+	world.log << "IT WAS ADDED, OKAY?"

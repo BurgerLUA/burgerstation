@@ -116,7 +116,7 @@
 	if(is_player(A))
 		var/mob/living/advanced/player/P = A
 
-		var/actual_difficulty = enable_friendly_fire ? DIFFICULTY_NORMAL : P.difficulty
+		var/actual_difficulty = P.get_difficulty()
 
 		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_NIGHTMARE)
 			health_regeneration = 0

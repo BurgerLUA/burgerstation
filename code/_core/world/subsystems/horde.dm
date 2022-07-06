@@ -14,6 +14,14 @@ SUBSYSTEM_DEF(horde)
 	tick_usage_max = 25
 	cpu_usage_max = 25
 
+	var/list/enemies_to_send_per_difficulty = list(
+		DIFFICULTY_EASY = 3,
+		DIFFICULTY_NORMAL = 4,
+		DIFFICULTY_HARD = 5,
+		DIFFICULTY_EXTREME = 8,
+		DIFFICULTY_NIGHTMARE = 10
+	)
+
 
 //The way that this works is that once every 10 seconds, it checks a single player to see if there are any valid spawns for it.
 //It's better this way so that the system is staggered out and 30 players don't get processed on a single tick.
@@ -23,13 +31,11 @@ SUBSYSTEM_DEF(horde)
 
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
-		/*
 		if(P.dead || !P.ckey || P.loyalty_tag != "NanoTrasen")
 			continue
 		var/area/A = get_area(P)
 		if(A.area_identifier != "Mission")
 			continue
-		*/
 		if(ckey_to_time_to_horde[P.ckey] && ckey_to_time_to_horde[P.ckey] > world.time)
 			continue
 		ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(300)
@@ -56,12 +62,35 @@ SUBSYSTEM_DEF(horde)
 		var/area/A = get_area(P)
 		if(A.area_identifier != "Mission")
 			continue
-		if(!send_squad(P,/mob/living/advanced/npc/zombie/civilian/))
+
+		var/list/mob/living/squads_to_send = get_squads_to_send(P)
+		if(!squads_to_send)
+			ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(60)
+			continue
+		var/mob/living/squad_to_send = pickweight(squads_to_send)
+		if(!squad_to_send || !send_squad(P,squad_to_send))
 			ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(60)
 			continue
 		log_subsystem(src.name,"Sending horde to [P.get_debug_name()]")
 
 	return TRUE
+
+/subsystem/horde/proc/get_squads_to_send(var/mob/living/advanced/player/victim)
+
+	. = list()
+
+	if(SStax.check_delinquent(victim))
+		.[/mob/living/advanced/npc/tax_collector] = 100
+
+	.[/mob/living/advanced/npc/zombie/civilian] = 100
+	.[/mob/living/advanced/npc/syndicate] = 20
+	.[/mob/living/advanced/npc/abductor] = 10
+	.[/mob/living/advanced/npc/beefman] = 10
+	.[/mob/living/advanced/npc/rev] = 10
+	.[/mob/living/advanced/npc/space_soldier] = 5
+
+	return .
+
 
 
 /subsystem/horde/proc/send_squad(var/mob/victim,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/debug=FALSE)
@@ -129,7 +158,11 @@ SUBSYSTEM_DEF(horde)
 	var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
 
 
-	var/enemies_to_send = 5 //TODO: Implement difficulty.
+	var/enemies_to_send = 4
+	if(is_player(victim))
+		var/mob/living/advanced/player/P = victim
+		enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
+
 	if(!bypass_restrictions && victim.ckey_last)
 		enemies_to_send -= length(ckeys_being_hunt_by[victim.ckey_last])
 

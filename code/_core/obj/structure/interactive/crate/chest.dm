@@ -35,6 +35,14 @@
 	return TRUE
 
 
+var/global/list/lockpick_difficulty_mul = list(
+	DIFFICULTY_EASY = 0.5,
+	DIFFICULTY_NORMAL = 1,
+	DIFFICULTY_HARD = 1.25,
+	DIFFICULTY_EXTREME = 1.5,
+	DIFFICULTY_NIGHTMARE = 2
+)
+
 /obj/structure/interactive/crate/chest/proc/create_lockpicker(var/mob/living/advanced/A)
 	current_user = A
 	var/obj/hud/button/lockpicking/L = new
@@ -42,6 +50,11 @@
 	L.associated_chest = src
 	L.sweet_spot = rand(1,179)
 	L.difficulty = difficulty
+	if(is_player(A))
+		var/mob/living/advanced/player/P = A
+		L.difficulty *= 1/lockpick_difficulty_mul[P.get_difficulty()] //Reminder that lower difficulty (for Lockpick) means harder.
+		L.difficulty = round(L.difficulty+1,1)
+
 	HOOK_ADD("post_move","\ref[src]_post_move",A,src,.proc/boot_lockpicker)
 	visible_message(span("notice","\The [A.name] starts picking \the [src.name]'s lock..."))
 	return TRUE
@@ -71,7 +84,7 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		if(current_user)
-			if(current_user.dead || current_user.qdeleting)
+			if(current_user.dead || current_user.qdeleting || current_user.horizontal)
 				boot_lockpicker()
 			else
 				caller.to_chat(span("notice","\The [current_user.name] is currently lockpicking this!"))

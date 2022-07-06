@@ -1,5 +1,7 @@
 /obj/projectile/
 	name = "Projectile"
+	plane = PLANE_PROJECTILE
+	layer = LAYER_PROJECTILE
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
@@ -30,10 +32,6 @@
 	var/inaccuracy_modifier = 1
 
 	mouse_opacity = 0
-
-	layer = LAYER_PROJECTILE
-
-	plane = PLANE_EFFECT
 
 	var/intercaridnal_fix_switch = TRUE
 
@@ -404,7 +402,7 @@
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 
 	if(impact_effect_turf && isturf(hit_atom))
-		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),rand(-8,8),rand(-8,8),bullet_color)
+		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),MODULUS(src.pixel_x,32) - 16, MODULUS(src.pixel_y,32) - 16,bullet_color)
 
 	else if(impact_effect_movable && ismovable(hit_atom))
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)

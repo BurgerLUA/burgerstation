@@ -14,7 +14,7 @@
 // Incoming damage multiplied by x0.25.
 // AI Target priority multiplied by 1
 // Maximium enemies allowed to target you at once before modifiers are applied: 1
-// Maximum enemies hunting you down at once: 2.
+// Maximum enemies hunting you down at once: 3.
 // XP multiplied by x1
 
 // Normal:
@@ -28,7 +28,7 @@
 // Incoming damage multiplied by x0.75
 // AI Target priority multiplied by 4
 // Maximium enemies allowed to target you at once before modifiers are applied: 4
-// Maximum enemies hunting you down at once: 6.
+// Maximum enemies hunting you down at once: 5.
 // XP multiplied by x1.5
 
 // Extreme:
@@ -36,7 +36,7 @@
 // AI Target priority multiplied by 6.
 // No natural health regeneration.
 // Maximium enemies allowed to target you at once before modifiers are applied: 6
-// Maximum enemies hunting you down at once: 6.
+// Maximum enemies hunting you down at once: 8.
 // XP multiplied by x1.75
 
 // Nightmare:
@@ -45,5 +45,5 @@
 // No natural health regeneration.
 // No natural stamina/mana regeneration past 50%.
 // Maximium enemies allowed to target you at once before modifiers are applied: 6
-// Maximum enemies hunting you down at once: 6.
+// Maximum enemies hunting you down at once: 10.
 // XP multiplied by x2

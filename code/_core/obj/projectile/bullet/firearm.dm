@@ -1,6 +1,5 @@
 /obj/projectile/bullet/firearm
 	icon = 'icons/obj/projectiles/bullet.dmi'
-	plane = PLANE_EFFECT_LIGHTING
 
 /obj/projectile/bullet/firearm/revolver
 	name = "revolver bullet"
@@ -14,11 +13,6 @@
 	. = ..()
 	if(.)
 		explode(get_turf(hit_atom),5,owner,weapon,iff_tag)
-
-
-/obj/projectile/bullet/revolver_large
-	name = "revolver bullet"
-	icon_state = "bullet_large"
 
 /obj/projectile/bullet/firearm/rifle
 	name = "rifle bullet"

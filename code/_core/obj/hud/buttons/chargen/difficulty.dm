@@ -16,6 +16,12 @@
 	maptext_y = -10
 	maptext_width = TILE_SIZE*2
 
+/obj/hud/button/chargen/difficulty/update_owner(var/mob/desired_owner)
+	. = ..()
+	if(is_player(desired_owner))
+		var/mob/living/advanced/player/P = desired_owner
+		chosen_difficulty = P.difficulty
+
 /obj/hud/button/chargen/difficulty/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -49,13 +55,12 @@
 	var/icon/mask = new/icon(initial_icon,"hud_mask")
 	I.filters += filter(type="alpha",icon=mask)
 
-
 	var/list/alpha_mod = list(
-		"Easy" = 0,
-		"Normal" = 0,
-		"Hard" = 90,
-		"Extreme" = 180,
-		"Nightmare" = 255
+		DIFFICULTY_EASY = 0,
+		DIFFICULTY_NORMAL = 0,
+		DIFFICULTY_HARD = 90,
+		DIFFICULTY_EXTREME = 180,
+		DIFFICULTY_NIGHTMARE = 255
 	)
 
 	var/chosen_alpha = alpha_mod[chosen_difficulty]

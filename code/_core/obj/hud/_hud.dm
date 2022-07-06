@@ -102,6 +102,8 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 	I.SwapColor(rgb(255,0,255),color_scheme[5])
 	I.SwapColor(rgb(0,255,255),color_scheme[6])
 
+	return TRUE
+
 
 /obj/hud/Initialize()
 	CRASH("HUD objects should never be Initialized!")
@@ -132,7 +134,6 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 				y_offset = 1
 			else if(findtext(split_screen_loc[2],"CENTER"))
 				y_offset = 1
-
 
 			if(findtext(screen_loc,"RIGHT"))
 				x_offset = -1
