@@ -426,7 +426,7 @@
 		log_error("Error: Tried to remove null object from an inventory!")
 		return null
 
-	I.force_move(drop_loc ? drop_loc : get_turf(src.loc)) //THIS SHOULD NOT BE ON DROP
+	I.force_move(drop_loc ? drop_loc : get_turf(src.loc))
 	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
 	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
@@ -453,7 +453,7 @@
 
 	vis_contents -= I
 
-	I.on_drop(src,drop_loc,silent)
+	I.on_drop(src,silent)
 
 	return I
 

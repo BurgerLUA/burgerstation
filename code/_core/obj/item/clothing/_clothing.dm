@@ -94,7 +94,7 @@
 		var/obj/item/C = k
 		C.initialize_blends()
 
-/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
+/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()
 	remove_additonal_clothing()
 

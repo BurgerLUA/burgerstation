@@ -192,7 +192,6 @@
 #include "code\_core\atom\moveable\attacking.dm"
 #include "code\_core\atom\moveable\direction.dm"
 #include "code\_core\atom\moveable\gibbing.dm"
-#include "code\_core\atom\moveable\light_sprite.dm"
 #include "code\_core\atom\moveable\movement.dm"
 #include "code\_core\atom\moveable\throwing.dm"
 #include "code\_core\atom\moveable\value.dm"

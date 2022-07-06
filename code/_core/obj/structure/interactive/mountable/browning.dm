@@ -120,19 +120,17 @@
 
 	return ..()
 
-/obj/item/browning_handle/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=TRUE)
-	if(!istype(new_loc, /obj/hud/inventory/organs/)) //juggling between hands 'drops' and fucks it
-		wielded = FALSE
-		if(old_inventory.child_inventory) //from weapons, deals with dropping the wield
-			old_inventory.child_inventory.parent_inventory = null
-			old_inventory.child_inventory.update_sprite()
-			old_inventory.child_inventory = null
-		if(linked_gun == null)
+/obj/item/browning_handle/on_drop(var/obj/hud/inventory/old_inventory,var/silent=TRUE)
+
+	. = ..()
+
+	if(!istype(loc, /obj/hud/inventory/organs/)) //juggling between hands 'drops' and fucks it
+		if(!linked_gun)
 			qdel(src)
 		else
 			src.force_move(linked_gun)
-		return TRUE
-	return ..()
+
+
 
 //taken from chairs, sits down if you move onto it, but only once
 /obj/structure/interactive/mountable/browning/Crossed(atom/movable/O)

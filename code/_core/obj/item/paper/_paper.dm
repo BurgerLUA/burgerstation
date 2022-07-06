@@ -40,9 +40,9 @@
 
 	return TRUE
 
-/obj/item/paper/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
+/obj/item/paper/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 
-	if(old_inventory && old_inventory.owner && is_player(old_inventory.owner) && old_inventory.owner.client)
+	if(old_inventory && is_player(old_inventory.owner) && old_inventory.owner.client)
 		var/mob/living/advanced/player/P = old_inventory.owner
 		if(P.active_paper == src)
 			close_menu(P,/menu/paper/)
