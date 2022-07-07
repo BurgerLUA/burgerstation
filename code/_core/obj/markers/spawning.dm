@@ -124,8 +124,7 @@
 		if(ispath(D,/turf/))
 			T.change_turf(D)
 		else if(ispath(D,/loot/))
-			var/loot/L = LOOT(D)
-			L.do_spawn(T)
+			SPAWN_LOOT(D,T)
 		else if(ispath(D,/atom/movable))
 			if(is_item(D))
 				var/obj/item/I = D
@@ -146,8 +145,7 @@
 /obj/marker/spawning/random/maintenance/do_spawn(var/turf/T)
 	var/datum/D = ..()
 	if((ispath(D,/obj/structure/table/) || ispath(D,/obj/structure/interactive/crate)) && prob(25))
-		var/loot/L = LOOT(/loot/trash_pile)
-		L.do_spawn(T)
+		SPAWN_LOOT(/loot/trash_pile,T)
 
 /obj/marker/spawning/random/maintenance
 	icon_state = "maint"

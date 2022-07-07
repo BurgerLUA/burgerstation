@@ -30,10 +30,13 @@
 		return TRUE
 
 	if(stored_loot)
-		var/loot/L = SSloot.all_loot[stored_loot]
 		stored_loot = null
 		var/turf/T = get_turf(src)
-		var/list/spawned_loot = L.do_spawn(T)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
+		var/list/spawned_loot = SPAWN_LOOT(stored_loot,T,rarity)
 		for(var/obj/item/I in spawned_loot)
 			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 

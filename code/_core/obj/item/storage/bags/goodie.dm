@@ -27,14 +27,13 @@
 		INTERACT_DELAY(1)
 
 		loot_generated = TRUE
-
-		var/loot/L = LOOT(loot_to_generate)
-		var/list/generated_loot = L.create_loot_table(get_turf(src))
-		for(var/obj/item/I in generated_loot)
-			INITIALIZE(I)
-			GENERATE(I)
-			FINALIZE(I)
-			add_to_inventory(null,I,FALSE,TRUE,silent=TRUE)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
+		var/list/generated_loot = SPAWN_LOOT(loot_to_generate,get_turf(src),rarity)
+		for(var/k in generated_loot)
+			add_to_inventory(null,k,FALSE,TRUE,silent=TRUE)
 
 		caller.to_chat(span("notice","You unwrap \the [src.name]."))
 		return TRUE

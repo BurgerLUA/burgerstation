@@ -41,7 +41,7 @@
 		var/loot/L = LOOT(intial_loot)
 		if(L)
 			var/turf/T = get_turf(src)
-			var/list/spawned_loot = CREATE_LOOT(intial_loot,T)
+			var/list/spawned_loot = SPAWN_LOOT(intial_loot,T)
 			for(var/k in spawned_loot)
 				var/atom/movable/I = k
 				add_to_bag(I,silent=TRUE)

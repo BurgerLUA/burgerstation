@@ -11,8 +11,7 @@
 
 /obj/item/storage/loot_box/Generate()
 	if(desired_loot)
-		var/loot/L = SSloot.all_loot[desired_loot]
-		if(L) L.create_loot_table(src)
+		SPAWN_LOOT(desired_loot,src)
 	. = ..()
 
 

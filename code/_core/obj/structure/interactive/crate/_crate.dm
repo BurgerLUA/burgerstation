@@ -197,8 +197,11 @@
 		return FALSE
 
 	if(loot)
-		var/loot/L = LOOT(loot)
-		L.do_spawn(src.loc)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
+		SPAWN_LOOT(loot,src.loc,rarity)
 		loot = null
 
 	for(var/k in contents)

@@ -300,3 +300,18 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/proc/get_difficulty()
 	return enable_friendly_fire ? DIFFICULTY_NORMAL : src.difficulty
+
+
+
+var/global/list/difficulty_to_rarity = list(
+	DIFFICULTY_EASY = 0,
+	DIFFICULTY_NORMAL = 0,
+	DIFFICULTY_HARD = 0.05,
+	DIFFICULTY_EXTREME = 0.1,
+	DIFFICULTY_NIGHTMARE = 0.2
+)
+
+
+/mob/living/advanced/player/proc/get_rarity()
+	. = src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1)*0.2
+	. += difficulty_to_rarity[src.get_difficulty()]

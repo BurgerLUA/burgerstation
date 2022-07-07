@@ -59,8 +59,12 @@ var/global/list/stored_bookcase_phrases = list(
 /obj/structure/interactive/bookcase/proc/search_case(var/mob/caller)
 
 	if(prob(chance_of_scroll))
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
 		var/turf/T = get_turf(src)
-		CREATE_LOOT(/loot/skill_scroll,T)
+		SPAWN_LOOT(/loot/skill_scroll,T,rarity)
 		caller.to_chat(span("notice","Huh. You found a scroll!"))
 	else
 		caller.to_chat(span("warning","...You didn't find anything."))

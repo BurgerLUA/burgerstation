@@ -6,14 +6,25 @@
 	var/chance_none = 0 //Applies on a per item basis.
 	var/loot_multiplier = 1 //How much of the loot to duplicate.
 
-/loot/proc/create_loot(var/type_to_spawn,var/spawn_loc) //Don't use this.
+/loot/proc/do_spawn(var/atom/spawn_loc,var/rarity=0) //Use this to spawn the loot. rarity is optional
+	. = create_loot_table(spawn_loc,rarity)
+	for(var/k in .)
+		var/atom/movable/M = k
+		pre_spawn(M)
+		INITIALIZE(M)
+		GENERATE(M)
+		FINALIZE(M)
+		post_spawn(M)
+		//animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
+
+/loot/proc/create_loot(var/type_to_spawn,var/spawn_loc,var/rarity=0) //Don't use this. Use do_spawn to spawn loot.
 
 	. = list()
 
 	if(ispath(type_to_spawn,/loot/))
 		var/loot/L = LOOT(type_to_spawn)
 		for(var/i=1,i<=loot_multiplier,i++)
-			. += L.create_loot_table(spawn_loc)
+			. += L.create_loot_table(spawn_loc,rarity)
 		return
 
 	for(var/i=1,i<=loot_multiplier,i++)
@@ -25,25 +36,14 @@
 /loot/proc/post_spawn(var/atom/movable/M)
 	return TRUE
 
-/loot/proc/do_spawn(var/atom/spawn_loc)
-	. = create_loot_table(spawn_loc)
-	for(var/k in .)
-		var/atom/movable/M = k
-		pre_spawn(M)
-		INITIALIZE(M)
-		GENERATE(M)
-		FINALIZE(M)
-		post_spawn(M)
-		//animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
+/loot/proc/create_loot_table(var/spawn_loc,var/rarity=0) //rarity is optional
 
-/loot/proc/create_loot_table(var/spawn_loc) //Use this to spawn the loot.
-
-	var/list/new_table = loot_table.Copy()
+	var/list/new_table = allow_duplicates ? loot_table : loot_table.Copy()
 
 	. = list()
 
 	for(var/k in loot_table_guaranteed)
-		. += create_loot(k,spawn_loc)
+		. += create_loot(k,spawn_loc,rarity)
 
 	if(length(loot_table))
 		for(var/i=1,i<=loot_count,i++)
@@ -51,7 +51,7 @@
 				break
 			if(prob(chance_none))
 				continue
-			var/selection = pickweight(loot_table)
+			var/selection = pickweight(loot_table,rarity)
 			if(!allow_duplicates)
 				new_table -= selection
-			. += create_loot(selection,spawn_loc)
+			. += create_loot(selection,spawn_loc,rarity)
