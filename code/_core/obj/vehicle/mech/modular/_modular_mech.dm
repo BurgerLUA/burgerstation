@@ -331,16 +331,9 @@
 
 /mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damage_type/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
-	if(!length(params))
-		params = list(PARAM_ICON_X = 16,PARAM_ICON_Y = 16)
 
-	var/x_attack = text2num(params[PARAM_ICON_X])
-	var/y_attack = text2num(params[PARAM_ICON_Y])
-
-	if(!accurate && is_living(attacker) && attacker != src)
-		var/inaccuracy = !weapon ? 0 : weapon.get_inaccuracy(attacker,src,inaccuracy_modifier)
-		x_attack = clamp(x_attack + rand(-inaccuracy,inaccuracy),0,32)
-		y_attack = clamp(y_attack + rand(-inaccuracy,inaccuracy),0,32)
+	var/x_attack = params[PARAM_ICON_X] ? params[PARAM_ICON_X] : 16
+	var/y_attack = params[PARAM_ICON_Y] ? params[PARAM_ICON_Y] : 16
 
 	if(mech_arms && (x_attack < 12 || x_attack > 16) && y_attack > 12 && y_attack < 23)
 		return mech_arms

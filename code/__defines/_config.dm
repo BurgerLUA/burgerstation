@@ -1,5 +1,5 @@
 //Basic config settings for developers
-#define ENABLE_INSTALOAD FALSE
+#define ENABLE_INSTALOAD TRUE
 
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1)
 
@@ -27,10 +27,10 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_LIGHTING FALSE
 
 //Enables/disables turf/obj smoothing.
-#define ENABLE_SMOOTHING TRUE
+#define ENABLE_SMOOTHING FALSE
 
 //Enable/disables combat testing by forcing a gamemode.
 #define ENABLE_TDM FALSE

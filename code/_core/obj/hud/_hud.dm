@@ -81,7 +81,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 		swap_colors(I)
 		icon = I
 
-	return ..()
+	. = ..()
 
 /obj/hud/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)
 	CRASH_SAFE("WARNING: [attacker] TRIED TO ATTACK [victim] WITH A HUD OBJECT!")

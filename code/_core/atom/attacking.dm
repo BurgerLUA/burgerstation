@@ -127,6 +127,13 @@
 		if(victim == v && !(can_attack && can_be_attacked))
 			return FALSE
 		if(can_attack && can_be_attacked)
+			var/hit_x = text2num(params[PARAM_ICON_X])
+			var/hit_y = text2num(params[PARAM_ICON_Y])
+			var/inaccuracy = DT.inaccuracy_mod
+			if(!precise && inaccuracy > 0)
+				inaccuracy *= src.get_inaccuracy(attacker,victim,1)
+				hit_x = clamp(hit_x + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+				hit_y = clamp(hit_y + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,desired_damage_type,params,precise,precise)
 			hit_objects += hit_object //Could be null, but that's fine.
 			if(hit_object)

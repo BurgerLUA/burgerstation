@@ -309,16 +309,28 @@
 
 	if(damage_type && all_damage_types[damage_type])
 		var/damagetype/DT = all_damage_types[damage_type]
+
+
+		var/precise = FALSE
+		if(is_living(hit_atom))
+			var/mob/living/L = hit_atom
+			if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
+				precise = TRUE
+
+		if(!precise)
+			var/inaccuracy = DT.inaccuracy_mod
+			if(inaccuracy > 0)
+				inaccuracy *= src.get_inaccuracy(owner,hit_atom,inaccuracy_modifier)
+				shoot_x = clamp(shoot_x + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+				shoot_y = clamp(shoot_y + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+
+
+
 		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner,weapon,null,DT))
 			var/list/params = list()
-			params[PARAM_ICON_X] = num2text(shoot_x)
-			params[PARAM_ICON_Y] = num2text(shoot_y)
 
-			var/precise = FALSE
-			if(is_living(hit_atom))
-				var/mob/living/L = hit_atom
-				if(L.ai && L.ai.alert_level <= ALERT_LEVEL_NOISE)
-					precise = TRUE
+			params[PARAM_ICON_X] = shoot_x
+			params[PARAM_ICON_Y] = shoot_y
 
 			var/atom/object_to_damage = hit_atom.get_object_to_damage(owner,src,damage_type,params,precise,precise,inaccuracy_modifier)
 
@@ -402,7 +414,7 @@
 		log_error("Warning: [damage_type] is an invalid damagetype!.")
 
 	if(impact_effect_turf && isturf(hit_atom))
-		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),MODULUS(src.pixel_x,32) - 16, MODULUS(src.pixel_y,32) - 16,bullet_color)
+		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*3,-20,20),clamp((shoot_y-16)*3,-20,20),bullet_color)
 
 	else if(impact_effect_movable && ismovable(hit_atom))
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)

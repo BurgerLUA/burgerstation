@@ -267,7 +267,7 @@
 
 	for(var/k in stat_elements_to_update)
 		var/obj/hud/button/stat/B = k
-		if(!B.update())
+		if(!B || !B.update())
 			stat_elements_to_update -= k
 
 	if(stun_immunity > 0)
