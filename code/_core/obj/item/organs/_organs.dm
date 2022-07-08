@@ -386,7 +386,7 @@
 			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),R.color,A.pixel_x + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1),A.pixel_y + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1))
 			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
 			bleeding = CEILING(max(0,bleeding - (0.02 + bleed_amount*0.075)),0.01)
-			A.queue_health_update = TRUE
+			QUEUE_HEALTH_UPDATE(A)
 
 	return TRUE
 

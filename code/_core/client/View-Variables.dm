@@ -520,7 +520,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 		NO.control_mob(P)
 		P.add_species_buttons()
-		P.queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(P)
 		href_list["datumrefresh"] = href_list["direct_control"]
 
 	else if(href_list["delall"])
@@ -771,7 +771,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			if(S.default_color_skin)
 				O.additional_blends["skin"].color = S.default_color_skin
 				M.update_overlay_tracked("\ref[O]")
-		M.queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(M)
 
 	else if(href_list["remorgan"])
 		href_list["datumrefresh"] = href_list["remorgan"]
@@ -792,7 +792,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		var/obj/item/organ/O = rem_organ
 		to_chat(span("notice","Removed [rem_organ] from [M]."))
 		O.unattach_from_parent(M.loc)
-		M.queue_health_update = 1
+		QUEUE_HEALTH_UPDATE(M)
 
 	else if(href_list["regenerateicons"])
 
@@ -805,7 +805,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		M.client.update_color_mods()
 		M.restore_inventory()
 		M.restore_buttons()
-		M.queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(M)
 		href_list["datumrefresh"] = href_list["regenerateicons"]
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])

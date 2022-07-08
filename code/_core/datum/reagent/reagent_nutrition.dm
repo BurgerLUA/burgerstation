@@ -79,7 +79,7 @@
 				owner.add_nutrition_fast(-nutrition_quality_amount*.*multiplier)
 			if(owner.blood_volume < owner.blood_volume_max)
 				owner.blood_volume = clamp(owner.blood_volume + nutrition_amount*.*0.3*multiplier,0,owner.blood_volume_max)
-				owner.queue_health_update = TRUE
+				QUEUE_HEALTH_UPDATE(owner)
 			if(owner.client)
 				if(length(attribute_experience_per_nutrition))
 					for(var/k in attribute_experience_per_nutrition)

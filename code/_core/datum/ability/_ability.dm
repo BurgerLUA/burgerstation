@@ -49,7 +49,7 @@
 			caller.health.adjust_mana(-cost)
 	if(resource_type && is_living(caller))
 		var/mob/living/L = caller
-		L.queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(L)
 
 	cooldown_end = world.time + cooldown
 
@@ -84,8 +84,8 @@
 
 /ability/projectile/on_cast(var/mob/caller,var/atom/target,location,params)
 
-	var/icon_pos_x = text2num(params[PARAM_ICON_X])
-	var/icon_pos_y = text2num(params[PARAM_ICON_Y])
+	var/icon_pos_x = params[PARAM_ICON_X]
+	var/icon_pos_y = params[PARAM_ICON_Y]
 
 	var/desired_iff_tag
 	var/desired_loyalty_tag

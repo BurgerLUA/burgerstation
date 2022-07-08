@@ -614,7 +614,7 @@
 
 	update_level(TRUE)
 
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/proc/setup_name()
 	if(boss)
@@ -695,7 +695,7 @@
 
 	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
 	blood_volume -= amount_added
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 	if(messages)
 		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))

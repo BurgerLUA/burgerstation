@@ -30,6 +30,9 @@
 
 	.  = FALSE
 
+	if(qdeleting)
+		return .
+
 	var/time = 1
 
 	var/desired_horizontal = get_horizontal()

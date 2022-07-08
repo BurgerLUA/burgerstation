@@ -41,8 +41,8 @@
 		var/mob/living/advanced/player/P = caller
 		var/click_flags = P.client.get_click_flags(params,TRUE)
 		if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y]) return
-		var/x_click = text2num(params[PARAM_ICON_X])/2
-		var/y_click = text2num(params[PARAM_ICON_Y])/2
+		var/x_click = params[PARAM_ICON_X]/2
+		var/y_click = params[PARAM_ICON_Y]/2
 
 		if(x_click <= 26)
 			if(click_flags & CLICK_LEFT)

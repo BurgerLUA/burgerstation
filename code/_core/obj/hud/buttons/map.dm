@@ -64,8 +64,8 @@
 
 	. = ..()
 
-	var/x_pos = text2num(params[PARAM_ICON_X])
-	var/y_pos = text2num(params[PARAM_ICON_Y])
+	var/x_pos = params[PARAM_ICON_X]
+	var/y_pos = params[PARAM_ICON_Y]
 	var/z_pos = current_z
 
 	if(connected_background?.linked_pod)

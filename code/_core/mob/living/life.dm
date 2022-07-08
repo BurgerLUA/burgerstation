@@ -213,7 +213,7 @@
 		CALLBACK("\ref[src]_make_unrevivable",expiration_time,src,.proc/make_unrevivable)
 
 	if(delete_on_death)
-		dust()
+		qdel(src)
 
 	return TRUE
 
@@ -236,13 +236,9 @@
 			var/old_pain_removal = pain_removal
 			pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
 			if(old_pain_removal != pain_removal)
-				queue_health_update = TRUE
+				QUEUE_HEALTH_UPDATE(src)
 
 	handle_health_buffer()
-
-	if(health && queue_health_update)
-		health.update_health()
-		queue_health_update = FALSE
 
 	if(flash_overlay && flash_overlay.duration > 0)
 		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
@@ -343,7 +339,7 @@ mob/living/proc/on_life_slow()
 		if(BR) consume_multiplier *= BR.regen_multiplier
 		var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
-		queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(src)
 	else if(blood_volume > blood_volume_max)
 		blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
 		if(blood_volume >= blood_volume_max*1.05)

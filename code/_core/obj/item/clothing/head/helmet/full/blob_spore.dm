@@ -14,7 +14,7 @@
 
 	var/next_feed = 0
 
-	var/damage_ramp = 0
+	var/damage_ramp = 2
 
 	can_save = FALSE
 
@@ -82,7 +82,7 @@
 	if(next_feed <= world.time)
 		var/turf/T = get_turf(src)
 		if(O.health.adjust_loss_smart(brute=damage_ramp))
-			damage_ramp += 2
+			damage_ramp += initial(damage_ramp)
 			play_sound('sound/effects/blob_infection.ogg',T)
 			if(A.blood_type)
 				var/reagent/R = REAGENT(A.blood_type)
@@ -109,7 +109,7 @@
 		qdel(src)
 		return .
 
-	damage_ramp = 0
+	damage_ramp = initial(damage_ramp)
 
 	if(new_location && is_advanced(new_location.owner))
 		new_location.owner.visible_message(span("warning","\The [src.name] consumes \the [new_location.owner.name]'s [new_location.loc.name]!"),span("danger","\The [src.name] tries to consume your [new_location.loc.name]! GET IT OFF!"))

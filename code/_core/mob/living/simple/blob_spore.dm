@@ -40,6 +40,8 @@
 
 	var/idle = FALSE
 
+	delete_on_death = TRUE
+
 /mob/living/simple/blob_spore/post_move(var/atom/old_loc)
 	if(idle)
 		idle = FALSE
@@ -50,12 +52,15 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		reagents.add_reagent(/reagent/toxin/blob_spore,50)
-		smoke(T,10,SECONDS_TO_DECISECONDS(3),reagents,src,255)
+		smoke(T,5,SECONDS_TO_DECISECONDS(3),reagents,src,255)
 		var/reagent/R = REAGENT(blood_type)
-		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+		for(var/i=1,i<=4,i++)
+			create_blood(
+				/obj/effect/cleanable/blood/splatter,
+				T,
+				R.color,
+				rand(-TILE_SIZE,TILE_SIZE),
+				rand(-TILE_SIZE,TILE_SIZE)
+			)
 
 	. = ..()
-
-	qdel(src)
-

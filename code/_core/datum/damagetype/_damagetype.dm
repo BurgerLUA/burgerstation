@@ -517,6 +517,10 @@ var/global/list/all_damage_numbers = list()
 			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
 				total_damage_dealt = 0
 
+	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+	if(victim != hit_object)
+		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+
 	if(total_damage_dealt > 0 && hit_object.health)
 		total_damage_dealt = hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
@@ -638,10 +642,6 @@ var/global/list/all_damage_numbers = list()
 			if(W.enchantment.charge <= 0)
 				qdel(W.enchantment)
 				W.enchantment = null
-
-	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-	if(victim != hit_object)
-		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 

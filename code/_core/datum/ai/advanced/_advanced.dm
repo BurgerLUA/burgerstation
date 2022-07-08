@@ -340,8 +340,8 @@
 		return FALSE
 
 	var/list/params = list(
-		PARAM_ICON_X = "16",
-		PARAM_ICON_Y = "16",
+		PARAM_ICON_X = 16,
+		PARAM_ICON_Y = 16,
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,

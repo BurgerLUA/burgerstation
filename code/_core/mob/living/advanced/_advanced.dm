@@ -284,7 +284,7 @@ mob/living/advanced/Login()
 	restore_inventory()
 	restore_stat_elements()
 	restore_local_machines()
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/k in local_machines)

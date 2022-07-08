@@ -56,7 +56,7 @@
 
 		if(health && total_bleed_damage)
 			blood_volume -= FLOOR(total_bleed_damage*0.02,1)
-			queue_health_update = TRUE
+			QUEUE_HEALTH_UPDATE(src)
 
 	if(ai)
 		ai.on_damage_received(atom_damaged,attacker,weapon,DT,damage_table,damage_amount,stealthy)

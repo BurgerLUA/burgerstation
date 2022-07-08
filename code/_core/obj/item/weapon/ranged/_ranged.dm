@@ -475,8 +475,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(!length(params))
 			params = list(PARAM_ICON_X=16,PARAM_ICON_Y=16)
 
-		var/icon_pos_x = text2num(params[PARAM_ICON_X])
-		var/icon_pos_y = text2num(params[PARAM_ICON_Y])
+		var/icon_pos_x = params[PARAM_ICON_X]
+		var/icon_pos_y = params[PARAM_ICON_Y]
 
 		var/prone = FALSE
 		var/static_spread = get_static_spread() * quality_penalty

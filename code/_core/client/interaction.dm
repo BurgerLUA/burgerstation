@@ -20,6 +20,8 @@
 /client/MouseWheel(var/atom/object,delta_x,delta_y,location,control,params)
 
 	var/list/new_params = params2list(params)
+	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	if((mob.attack_flags & CONTROL_MOD_GRAB) && allow_zoom_controls)
 		var/precise_zoom = mob.attack_flags & CONTROL_MOD_DISARM
@@ -35,11 +37,13 @@
 	object = object.defer_click_on_object(mob,location,control,new_params)
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
-	. = ..()
+	return TRUE
 
 /client/Click(var/atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
+	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 
@@ -62,11 +66,13 @@
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)
 
-	. = ..()
+	return TRUE
 
 /client/MouseDown(var/atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
+	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	var/list/screen_loc = parse_screen_loc(new_params["screen-loc"])
 	if(screen_loc)
@@ -106,8 +112,8 @@
 		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (isturf(object) || isturf(object.loc)))
 			if(spam_protection_interact <= 10)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
-				A.pixel_x = text2num(new_params[PARAM_ICON_X]) - 16
-				A.pixel_y = text2num(new_params[PARAM_ICON_Y]) - 16
+				A.pixel_x = new_params[PARAM_ICON_X] - 16
+				A.pixel_y = new_params[PARAM_ICON_Y] - 16
 				A.invisibility = mob.invisibility
 				INITIALIZE(A)
 				FINALIZE(A)
@@ -119,11 +125,13 @@
 		else
 			examine(object)
 
-	. = ..()
+	return TRUE
 
 /client/MouseUp(var/atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
+	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 	if(click_flags & CLICK_LEFT)
@@ -150,7 +158,7 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.on_right_up(object,location,control,new_params)
 
-	. = ..()
+	return TRUE
 
 /client/MouseDrop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
@@ -158,6 +166,9 @@
 
 	if(!src_object || !over_object || src_object.qdeleting || over_object.qdeleting)
 		return FALSE
+
+	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	src_object = src_object.defer_click_on_object(mob,src_location,src_control,new_params)
 	over_object = over_object.defer_click_on_object(mob,over_location,over_control,new_params)
@@ -183,7 +194,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,new_params)
 
-	. = ..()
+	return TRUE
 
 
 /client/MouseDrag(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
@@ -199,16 +210,18 @@
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < 4)
 		return FALSE
 
-	. = ..()
+	return TRUE
 
 /client/MouseEntered(object,location,control,params)
 
 	var/list/new_params = params2list(params)
+	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	store_new_params(object,location,new_params)
 
 	if(!mob)
-		return ..()
+		return TRUE
 
 	if(istype(object,/atom/))
 		var/atom/A = object
@@ -234,7 +247,7 @@
 						continue
 					LS.set_dir(SOUTH)
 					LS.transform = LS.get_base_transform()
-	. = ..()
+	return TRUE
 
 /client/proc/store_new_params(object,location,params)
 	last_params = params

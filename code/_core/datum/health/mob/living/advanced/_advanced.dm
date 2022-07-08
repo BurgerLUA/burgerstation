@@ -11,7 +11,7 @@
 		if(!O.health)
 			continue
 		O.health.restore()
-	A.queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(A)
 
 
 /health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)

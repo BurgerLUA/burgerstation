@@ -2,6 +2,9 @@
 
 /proc/create_blood(var/obj/effect/cleanable/blood/desired_effect, var/turf/simulated/desired_loc,var/desired_color = "#FFFFFF",var/desired_x=0,var/desired_y=0,var/bypass_blood_limit=FALSE)
 
+
+	//var/turf/actual_turf = desired_loc
+
 	//Limit to a distance of 1 tile.
 
 	if(desired_x >= TILE_SIZE)

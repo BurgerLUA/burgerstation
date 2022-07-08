@@ -48,7 +48,7 @@
 			var/mob/living/advanced/player/P = over_object
 			client.control_mob(P)
 			P.add_species_buttons()
-			P.queue_health_update = TRUE
+			QUEUE_HEALTH_UPDATE(P)
 
 /mob/abstract/observer/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE

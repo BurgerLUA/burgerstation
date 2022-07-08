@@ -18,7 +18,7 @@
 				continue
 			O.health.update_health()
 		queue_organ_health_update.Cut()
-		queue_health_update = TRUE //If organs were updated, then the main body should be updated (which is done below in the . = ..())
+		QUEUE_HEALTH_UPDATE(src) //If organs were updated, then the main body should be updated (which is done below in the . = ..())
 
 	. = ..()
 

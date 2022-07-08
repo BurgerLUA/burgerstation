@@ -43,8 +43,8 @@
 	. = ..()
 
 	if(.)
-		if(params[PARAM_ICON_X] && params[PARAM_ICON_Y] && text2num(params[PARAM_ICON_Y]) >= 10)
-			switch(text2num(params[PARAM_ICON_X]))
+		if(params[PARAM_ICON_X] && params[PARAM_ICON_Y] && params[PARAM_ICON_Y] >= 10)
+			switch(params[PARAM_ICON_X])
 				if(1 to 10)
 					caller.move_mod_button = -1
 				if(12 to 21)

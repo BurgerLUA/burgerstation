@@ -61,8 +61,8 @@
 
 	if(owner.blood_type)
 		owner.blood_volume = clamp(owner.blood_volume + .*4*multiplier,0,owner.blood_volume_max)
-		owner.queue_health_update = TRUE
 		owner.tox_regen_buffer -= . * 0.5
+		QUEUE_HEALTH_UPDATE(owner)
 
 /reagent/iron/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -70,7 +70,7 @@
 
 	if(owner.blood_type)
 		owner.blood_volume = clamp(owner.blood_volume + .*2*multiplier,0,owner.blood_volume_max)
-		owner.queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(owner)
 
 /reagent/steel
 	name = "Steel"
