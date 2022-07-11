@@ -1,4 +1,4 @@
-/obj/item/clothing/head/hat/bandana //s
+/obj/item/clothing/head/hat/bandana
 	name = "bandana"
 	desc = "Damn, it feels good to be a gangsta."
 	desc_extended = "Can be worn both as a mask to cover up your face, or as a hat."

@@ -37,7 +37,7 @@
 	START_THINKING(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
-	play_sound('sound/items/fuse_start.ogg',T,range_max=VIEW_RANGE*0.5)
+	play_sound('sound/items/fuse_start.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,src,ALERT_LEVEL_NOISE)
 	return ..()
 
@@ -51,3 +51,16 @@
 			active = FALSE
 			time_set = 0
 			return FALSE
+
+/obj/item/device/fuse/hehe
+	name = "hehe fuse"
+
+	value_burgerbux = 1
+
+	var/sound_played = FALSE
+
+/obj/item/device/fuse/hehe/think()
+	. = ..()
+	if(. && active && !sound_played && time_set <= 8)
+		play_sound('sound/meme/hehe.ogg',get_turf(src),range_max=VIEW_RANGE)
+		sound_played = TRUE

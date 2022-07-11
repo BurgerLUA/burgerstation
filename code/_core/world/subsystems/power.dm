@@ -17,7 +17,21 @@ SUBSYSTEM_DEF(power)
 		var/area/A = SSarea.all_areas[k]
 		if(!A.requires_power)
 			continue
-		if(!A.apc)
+		if(!A.linked_apc && A.link_to_parent_apc)
+			var/area/PA = SSarea.all_areas[A.parent_type]
+			while(TRUE)
+				if(!PA)
+					break
+				if(PA.type == /area/)
+					break
+				if(!PA.requires_power)
+					break
+				if(PA.linked_apc)
+					PA.linked_apc.link_area(A)
+					break
+				PA = SSarea.all_areas[PA.parent_type] //Keep going until we find one.
+
+		if(!A.linked_apc)
 			if(!A.no_apc) log_error("WARNING: area of type [A.type] did not find an APC. Set area.no_apc to TRUE to remove this warning.")
 			continue
 		A.toggle_power_lights(A.default_state_power_lights,force=TRUE)

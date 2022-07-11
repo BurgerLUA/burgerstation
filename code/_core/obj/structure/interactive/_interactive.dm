@@ -177,11 +177,11 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 	if(wire_powered)
 		if(!connected_wire)
 			desired_power_draw = 0
-		if(!connected_wire.power_network)
+		else if(!connected_wire.power_network)
 			desired_power_draw = 0
 	else if(apc_powered)
 		A = get_area(src)
-		if(!A.apc)
+		if(!A.linked_apc)
 			desired_power_draw = 0
 
 	desired_power_draw = max(0,desired_power_draw)

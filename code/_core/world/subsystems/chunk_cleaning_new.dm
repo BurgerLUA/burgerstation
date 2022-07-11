@@ -75,6 +75,9 @@ SUBSYSTEM_DEF(chunk)
 		if(!istype(T))
 			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
 			continue
+		var/area/A = T.loc
+		if(A.safe_storage)
+			continue
 		var/obj/marker/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.force_spawn)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
 		total_spawnpoints++

@@ -3,6 +3,8 @@
 	area_identifier = "Mission"
 	trackable = TRUE
 
+	link_to_parent_apc = TRUE
+
 /area/prefab/clockwork_cult
 	name = "Clockwork Hideout"
 	icon_state = "yellow"

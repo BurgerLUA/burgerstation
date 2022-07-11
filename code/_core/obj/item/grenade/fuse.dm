@@ -4,9 +4,11 @@
 	desc_extended = "A non-electronic fuse-based grenade that sends a small explosive shockwave to the contents of the grenade. Cannot be tampered with."
 	max_containers = 1
 
+	var/obj/item/device/fuse/fuse_type = /obj/item/device/fuse
+
 /obj/item/grenade/fuse/Generate()
 	. = ..()
-	var/obj/item/device/fuse/T = new(src)
+	var/obj/item/device/fuse/T = new fuse_type(src)
 	T.time_set = 50
 	stored_trigger = T
 	open = FALSE
@@ -43,6 +45,15 @@
 	stored_containers += new /obj/item/container/simple/beaker/tnt(src)
 	return ..()
 
+/obj/item/grenade/fuse/he/he
+	name = "\improper HEHE grenade"
+	icon_state = "he"
+	desc_extended = "A primitive yet effective high-explosive yield handheld grenade designed to take out large groups of infantry. Pull the pin and throw. Something seems off about this..."
+
+	value_burgerbux = 1
+	fuse_type = /obj/item/device/fuse/hehe
+
+
 /obj/item/grenade/fuse/fragmentation
 	name = "\improper fragmentation grenade"
 	icon_state = "fragmentation"
@@ -61,3 +72,6 @@
 /obj/item/grenade/fuse/flashbang/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/flashbang(src)
 	return ..()
+
+
+

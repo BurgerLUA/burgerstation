@@ -17,7 +17,10 @@
 		post_spawn(M)
 		//animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
 
-/loot/proc/create_loot(var/type_to_spawn,var/spawn_loc,var/rarity=0) //Don't use this. Use do_spawn to spawn loot.
+	//Order of operations
+	//do_spawn -> create_loot_table -> create_loot_single
+
+/loot/proc/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity=0) //Don't use this. Use do_spawn to spawn loot.
 
 	. = list()
 
@@ -43,7 +46,7 @@
 	. = list()
 
 	for(var/k in loot_table_guaranteed)
-		. += create_loot(k,spawn_loc,rarity)
+		. += create_loot_single(k,spawn_loc,rarity)
 
 	if(length(loot_table))
 		for(var/i=1,i<=loot_count,i++)
@@ -54,4 +57,4 @@
 			var/selection = pickweight(loot_table,rarity)
 			if(!allow_duplicates)
 				new_table -= selection
-			. += create_loot(selection,spawn_loc,rarity)
+			. += create_loot_single(selection,spawn_loc,rarity)

@@ -259,7 +259,9 @@
 	if(enterer.density)
 		has_dense_atom = TRUE
 
-	if(enterer.enable_chunk_clean && SSchunk.initialized)
+	var/area/A = src.loc
+
+	if(enterer.enable_chunk_clean && SSchunk.initialized && !A.safe_storage)
 		var/old_loc_chunk_x = old_loc ? CEILING(old_loc.x/CHUNK_SIZE,1) : 0
 		var/old_loc_chunk_y = old_loc ? CEILING(old_loc.y/CHUNK_SIZE,1) : 0
 		var/old_loc_chunk_z = old_loc ? old_loc.z : 0

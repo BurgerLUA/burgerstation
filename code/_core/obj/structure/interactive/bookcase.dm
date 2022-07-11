@@ -20,6 +20,8 @@ var/global/list/stored_bookcase_phrases = list(
 
 	density = TRUE
 
+	pixel_y = 6
+
 /obj/structure/interactive/bookcase/no_scrolls
 	chance_of_scroll = FALSE
 

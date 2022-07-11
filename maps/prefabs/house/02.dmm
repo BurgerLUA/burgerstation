@@ -1,0 +1,74 @@
+"aa" = (/turf/space,/area)
+"ab" = (/turf/simulated/wall/wood,/area)
+"ac" = (/turf/simulated/floor/wood/brown,/area)
+"ad" = (/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"ae" = (/obj/structure/carpet/brown,/turf/simulated/floor/wood/brown,/area)
+"af" = (/turf/simulated/floor/tile,/area)
+"ag" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area)
+"ah" = (/obj/structure/carpet/red,/obj/structure/interactive/bed/double/sheet,/obj/item/clothing/neck/tie/black,/turf/simulated/floor/wood/brown,/area)
+"ai" = (/obj/structure/carpet/red,/obj/structure/interactive/bookcase,/turf/simulated/floor/wood/brown,/area)
+"aj" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/brown,/area)
+"ak" = (/obj/structure/interactive/chair/comfy{icon_state = "comfychair"; dir = 8},/turf/simulated/floor/wood/brown,/area)
+"al" = (/obj/structure/carpet/red,/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/brown,/area)
+"am" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/wood/brown,/area)
+"an" = (/obj/structure/interactive/chair/wood{dir = 4},/turf/simulated/floor/wood/brown,/area)
+"ao" = (/obj/structure/carpet/brown,/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/wood/brown,/area)
+"ap" = (/obj/structure/interactive/crate/closet/freezer,/turf/simulated/floor/wood/brown,/area)
+"aq" = (/obj/structure/interactive/crate/closet,/turf/simulated/floor/wood/brown,/area)
+"ar" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/wood/brown,/area)
+"as" = (/obj/structure/interactive/door/airlock/wood,/turf/simulated/floor/wood/brown,/area)
+"at" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/wood/brown,/area)
+"au" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/wood,/area)
+"av" = (/obj/structure/interactive/light_switch{dir = 4; icon_state = "setup"},/turf/simulated/wall/wood,/area)
+"aw" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/wood,/area)
+"ax" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/wood,/area)
+"ay" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/wood/brown,/area)
+"az" = (/obj/structure/carpet/red,/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/wood/brown,/area)
+"aA" = (/obj/structure/interactive/wire/yellow,/turf/space,/area)
+"aB" = (/obj/structure/interactive/reagent_tank/rolly/water,/obj/structure/interactive/wire/red,/turf/simulated/floor/wood/brown,/area)
+"aC" = (/obj/structure/interactive/storage/trash_pile,/turf/space,/area)
+"aD" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 8},/obj/structure/interactive/wire/red,/turf/simulated/wall/wood,/area)
+"aE" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/wood/brown,/area)
+"aF" = (/obj/structure/carpet/red,/obj/structure/table/rack/grey,/obj/item/broom,/turf/simulated/floor/wood/brown,/area)
+"aG" = (/obj/structure/table/reinforced/steel,/turf/simulated/floor/wood/brown,/area)
+"aH" = (/obj/structure/table/wood,/turf/simulated/floor/wood/brown,/area)
+"aI" = (/obj/structure/carpet/brown,/obj/structure/table/wood,/obj/item/plate,/turf/simulated/floor/wood/brown,/area)
+"aJ" = (/obj/structure/carpet/red,/obj/item/clothing/overwear/armor/bulletproof,/obj/item/bullet_cartridge/shotgun_12/surplus,/turf/simulated/floor/wood/brown,/area)
+"aK" = (/obj/structure/interactive/misc/shower{icon_state = "shower"; dir = 4},/turf/simulated/floor/tile,/area)
+"aL" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/turf/simulated/floor/tile,/area)
+"aM" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile,/area)
+"aN" = (/obj/structure/interactive/misc/tv,/turf/simulated/floor/wood/brown,/area)
+"aO" = (/obj/structure/interactive/reagent_tank/barrel/water,/turf/space,/area)
+"aP" = (/obj/structure/interactive/lighting/fireplace,/turf/simulated/floor/wood/brown,/area)
+"aQ" = (/obj/structure/carpet/red,/obj/structure/table/wood,/obj/item/weapon/ranged/bullet/pump/shotgun/lever,/obj/item/bullet_cartridge/shotgun_12/surplus,/turf/simulated/floor/wood/brown,/area)
+"aR" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area)
+"aS" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile,/area)
+"aT" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile,/area)
+"aU" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown,/area)
+"aV" = (/obj/structure/table/wood,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/item/ball/soccer,/turf/simulated/floor/wood/brown,/area)
+"aW" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/wood/brown,/area)
+"aX" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area)
+"aY" = (/obj/structure/carpet/brown,/obj/structure/table/wood,/obj/item/cell_charger,/turf/simulated/floor/wood/brown,/area)
+"aZ" = (/obj/structure/carpet/red,/obj/item/clothing/back/storage/backpack/black,/turf/simulated/floor/wood/brown,/area)
+"ba" = (/obj/item/clothing/feet/shoes/black_boots,/obj/item/clothing/feet/shoes/black_boots/left,/turf/simulated/floor/wood/brown,/area)
+"bb" = (/obj/structure/table/reinforced/steel,/obj/item/clothing/mask/gas,/turf/simulated/floor/wood/brown,/area)
+"bc" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/obj/item/bullet_cartridge/shotgun_12/surplus,/turf/simulated/floor/wood/brown,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaababagagagabababaAaAaAaaaaaCaC
+aaabajaHaHamaUaBaDaAababagagabab
+aaaganaYaIaoacaxabababalaZazaiab
+aaagacaeaeaeacaqapaGabahadaJaRab
+aaagaNaeaeaeacacacaEavaQadadaFab
+aaabaVaeaeaeacaGacbbabaracbcakab
+aOabauaeaeaeacacaXababawasababab
+aCabayacacacacacacaPacacacacayab
+aCabbaacacacacaWacacacacacacacab
+aaababagabatabababababababacacab
+aaaaaaaaaaaaaaabaKafaSafaxacaXab
+aaaaaaaaaaaaaaabaTafafafafacacab
+aaaaaaaaaaaaaaabaMafafaLabacacab
+aaaaaaaaaaaaaaababababababacayab
+aaaaaaaaaaaaaaaaaaaaaaaaabababab
+"}

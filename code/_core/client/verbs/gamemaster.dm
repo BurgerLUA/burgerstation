@@ -254,7 +254,7 @@
 	if(!header)
 		return FALSE
 
-	announce(sender,header,message,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
+	announce(sender,header,message,sound_to_play='sound/alert/airplane.ogg')
 
 	log_admin("[src.get_debug_name()] made an IC announcement from [sender].")
 

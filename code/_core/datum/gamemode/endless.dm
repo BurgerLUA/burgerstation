@@ -55,8 +55,7 @@
 					"Central Command Update",
 					"Prepare for Landfall",
 					"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 8 minutes.",
-					ANNOUNCEMENT_STATION,
-					'sound/voice/announcement/landfall_crew_8_minutes.ogg'
+					sound_to_play = 'sound/voice/announcement/landfall_crew_8_minutes.ogg'
 				)
 				add_objectives()
 			if(2)
@@ -67,8 +66,7 @@
 					"Central Command Update",
 					"Shuttle Boarding",
 					"All landfall crew are ordered to proceed to the hanger bay and prep for shuttle launch. Shuttles will be allowed to launch in 2 minutes.",
-					ANNOUNCEMENT_STATION,
-					'sound/voice/announcement/landfall_crew_2_minutes.ogg'
+					sound_to_play = 'sound/voice/announcement/landfall_crew_2_minutes.ogg'
 				)
 			if(3)
 				status_display_text = "RDY"
@@ -78,8 +76,7 @@
 					"Central Command Mission Update",
 					"Mission is a Go",
 					"Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",
-					ANNOUNCEMENT_STATION,
-					'sound/voice/announcement/landfall_crew_0_minutes.ogg'
+					sound_to_play = 'sound/voice/announcement/landfall_crew_0_minutes.ogg'
 				)
 				last_vote = world.time
 

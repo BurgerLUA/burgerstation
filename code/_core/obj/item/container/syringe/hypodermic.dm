@@ -58,7 +58,7 @@
 /obj/item/container/syringe/hypodermic/opium/
 	name = "medical syringe (opium)"
 
-/obj/item/container/syringe/opium/hypodermic/Generate()
+/obj/item/container/syringe/hypodermic/opium/Generate()
 	reagents.add_reagent(/reagent/medicine/painkiller/opium,reagents.volume_max)
 	return ..()
 

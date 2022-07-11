@@ -18,4 +18,4 @@ obj/structure/interactive/blocker/New(var/desired_loc,var/obj/structure/desired_
 
 	update_collisions(owned_object.collision_flags,owned_object.collision_bullet_flags,collision_dir)
 
-	return ..()
+	. = ..()

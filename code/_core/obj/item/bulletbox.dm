@@ -15,6 +15,8 @@
 
 	value = 200
 
+	pixel_y = 4
+
 /obj/item/bulletbox/Finalize()
 	. = ..()
 	update_sprite()

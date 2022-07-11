@@ -13,6 +13,8 @@
 
 	map_color = "#FFFFFF"
 
+	exposed = FALSE
+
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"
 

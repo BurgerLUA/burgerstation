@@ -75,7 +75,7 @@ var/global/next_announcement = 0
 		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
-	announce(sender,title,message,ANNOUNCEMENT_STATION,sound_to_play)
+	announce(sender,title,message,sound_to_play=sound_to_play)
 
 	next_announcement = world.time + SECONDS_TO_DECISECONDS(60)
 
@@ -201,7 +201,7 @@ var/global/next_announcement = 0
 		caller.to_chat(span("warning","Please wait [DECISECONDS_TO_SECONDS(CEILING(next_announcement - world.time,10))] seconds before sending an announcement!"))
 		return FALSE
 
-	announce(sender,title,message,ANNOUNCEMENT_STATION,pick(sounds_to_play))
+	announce(sender,title,message,sound_to_play=pick(sounds_to_play))
 
 	next_announcement = world.time + SECONDS_TO_DECISECONDS(60)
 

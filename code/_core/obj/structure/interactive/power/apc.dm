@@ -13,12 +13,18 @@
 
 	wire_powered = TRUE
 
+	var/list/area/linked_areas = list()
+
 /obj/structure/interactive/power/apc/get_examine_list(var/mob/examiner)
 	. = ..()
 	. += div("notice","Area Power Draw: [src.power_draw]w.")
 	. += div("notice","\The [cell.name] has [cell.charge_current] out of [cell.charge_max] charge remaining.")
 
 /obj/structure/interactive/power/apc/Destroy()
+
+	for(var/k in linked_areas)
+		var/area/A = k
+		src.unlink_area(A)
 
 	if(istype(cell))
 		QDEL_NULL(cell)
@@ -41,16 +47,29 @@
 /obj/structure/interactive/power/apc/Finalize()
 	. = ..()
 	var/area/A = get_area(src)
-	if(A.apc)
+	if(A.linked_apc)
 		log_error("Warning: Duplicate [src.get_debug_name()] created in [A.type].")
 		qdel(src)
 	else if(!A.requires_power)
 		log_error("Warning: Created [src.get_debug_name()] in an [A.type] that doesn't require power.")
 		qdel(src)
 	else
-		A.apc = src
-		SSpower.all_apc_areas |= A
-		update_sprite()
+		link_area(A)
+
+/obj/structure/interactive/power/apc/proc/link_area(var/area/A)
+	if(A.linked_apc)
+		A.linked_apc.unlink_area(A)
+	A.linked_apc = src
+	src.linked_areas += A
+	update_sprite()
+	return TRUE
+
+/obj/structure/interactive/power/apc/proc/unlink_area(var/area/A)
+	src.linked_areas -= A
+	if(A.linked_apc == src)
+		A.linked_apc = null
+	update_sprite()
+	return TRUE
 
 /obj/structure/interactive/power/apc/Generate()
 	. = ..()

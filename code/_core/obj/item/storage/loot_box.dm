@@ -7,7 +7,12 @@
 
 	value = 1500
 
-	var/loot/desired_loot = /loot/trash_pile
+	var/loot/desired_loot = /loot/value/medium
+
+	is_container = TRUE
+	container_max_size = SIZE_3
+	size = SIZE_10
+	dynamic_inventory_count = 5
 
 /obj/item/storage/loot_box/Generate()
 	if(desired_loot)

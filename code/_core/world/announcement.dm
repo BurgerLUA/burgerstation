@@ -1,4 +1,4 @@
-/proc/announce(var/announcement_sender = "Unknown", var/announcement_title = "Untitled",var/annoumcent_text = "NULL",var/announcement_type = ANNOUNCEMENT_STATION,var/sound_to_play = null, var/language = LANGUAGE_BASIC, var/frequency = RADIO_FREQ_SHIP,var/list/valid_mobs)
+/proc/announce(var/announcement_sender = "Unknown", var/announcement_title = "Untitled",var/annoumcent_text = "NULL",var/announcement_type = ANNOUNCEMENT_STATION, var/language = LANGUAGE_BASIC, var/sound_to_play = null, var/frequency = RADIO_FREQ_SHIP, var/list/valid_mobs)
 
 	var/language/LA = SSlanguage.all_languages[language]
 
@@ -8,7 +8,7 @@
 	var/text_to_announce = "<br><div class='announcement [announcement_type]'><h2>[announcement_sender]</h2><h3>[announcement_title]</h3><p>[annoumcent_text]</p></div>"
 	var/text_to_announce_language = "<br><div class='announcement [announcement_type]'><h2>[announcement_sender]</h2><h3>[announcement_title_language]</h3><p>[annoumcent_text_language]</p></div>"
 
-	if(!length(valid_mobs))
+	if(!valid_mobs)
 		if(announcement_type & ANNOUNCEMENT_STATION)
 			for(var/k in all_mobs_with_clients)
 				var/mob/M = k
@@ -17,6 +17,9 @@
 					valid_mobs += M
 		else
 			valid_mobs = all_mobs_with_clients
+
+	if(!length(valid_mobs))
+		return FALSE
 
 	for(var/k in valid_mobs)
 		var/mob/M = k

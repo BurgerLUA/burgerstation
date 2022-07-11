@@ -75,7 +75,7 @@
 	announce(
 		"Central Command Space Biology Division",
 		"[the_name] Migration",
-		"A [the_name] migration has been detected near the area of operations. Predicted migration areas: [english_list(announce_areas)].",
+		"\A [the_name] migration has been detected near the area of operations. Predicted migration areas: [english_list(announce_areas)].",
 		sound_to_play = 'sound/voice/announcement/migration.ogg'
 	)
 

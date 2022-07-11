@@ -19,7 +19,6 @@
 	loot_table = list(
 		/obj/item/container/edible/package/junkfood/halloween/coconut_joy = 1,
 		/obj/item/container/edible/package/junkfood/halloween/credit = 1,
-		/obj/item/container/edible/package/junkfood/halloween/elon_musk_bar = 1,
 		/obj/item/container/edible/package/junkfood/halloween/hurr_bar = 1,
 		/obj/item/container/edible/package/junkfood/halloween/kit_catgirl_metaclique_bar = 1,
 		/obj/item/container/edible/package/junkfood/halloween/malf_way = 1,

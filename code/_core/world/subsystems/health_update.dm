@@ -19,6 +19,6 @@ SUBSYSTEM_DEF(healthupdate)
 		src.queued_mobs -= k
 		if(L.health && !L.health.qdeleting) L.health.update_health()
 		if(L.queue_health_update)
-			log_error("WARNING: [L.get_debug_name()] was added to the health update subsystem twice!")
+			log_error("WARNING: [L.get_debug_name()] was added to the health update subsystem twice after being processed!")
 
 	return TRUE

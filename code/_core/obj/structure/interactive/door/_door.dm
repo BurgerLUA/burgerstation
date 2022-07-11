@@ -184,31 +184,6 @@ obj/structure/interactive/door/metal
 	icon_state = "silver"
 	color = "#888888"
 
-
-obj/structure/interactive/door/closet
-	name = "wall closet door"
-	icon_state = "closet"
-	color = COLOR_WOOD
-	dir_offset = -5
-
-obj/structure/interactive/door/closet/Finalize()
-	. = ..()
-	setup_dir_offsets()
-
-obj/structure/interactive/door/closet/setup_dir_offsets()
-	var/matrix/M = matrix()
-	switch(dir)
-		if(NORTH)
-			M.Turn(180)
-		if(EAST)
-			M.Turn(270)
-		if(WEST)
-			M.Turn(90)
-	transform = M
-	icon_state = "closet"
-	. = ..()
-	dir = SOUTH
-
 /obj/structure/interactive/door/get_power_draw()
 	return 10
 
@@ -217,7 +192,7 @@ obj/structure/interactive/door/closet/setup_dir_offsets()
 	var/area/A = null
 
 	A = get_area(src)
-	if(!A.apc)
+	if(!A.linked_apc)
 		desired_power_draw = 0
 	if(!A.requires_power)
 		desired_power_draw = 0

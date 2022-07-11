@@ -1,4 +1,5 @@
 var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
+var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 
 /obj/structure/interactive/drop_pod
 	name = "orbital drop pod"
@@ -117,6 +118,7 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 			icon_state = "none"
 			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,caller,POD_LANDING,desired_loc)
 		if(POD_LANDING)
+			drop_pod_turfs += get_turf(src)
 			force_move(desired_loc)
 			pixel_z = TILE_SIZE*20
 			icon_state = "pod_air"

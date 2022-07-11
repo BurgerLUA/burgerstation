@@ -21,13 +21,42 @@ SUBSYSTEM_DEF(area)
 
 /subsystem/area/Initialize()
 
+	set background = 1
+
 	var/area_count = 0
+
+	var/area/null_area
 
 	for(var/area/A in world)
 		INITIALIZE(A)
 		GENERATE(A)
 		FINALIZE(A)
 		area_count++
+		if(A.type == /area/)
+			null_area = A
+
+	var/changed_areas = 0
+	while(TRUE)
+		var/found_turf = FALSE
+		for(var/turf/simulated/T in null_area.contents) //This checks simulated turfs only.
+			for(var/d in DIRECTIONS_CARDINAL)
+				var/turf/nt = get_step(T,d)
+				if(!nt)
+					new/area/mission/out_of_bounds(T)
+					changed_areas++
+					break
+				var/area/A = nt.loc
+				if(A.type != /area/)
+					new A.type(T)
+					changed_areas++
+					break
+			found_turf = TRUE
+			sleep(-1)
+
+		if(!found_turf)
+			break
+
+	log_subsystem(src.name,"Changed [changed_areas] turfs with bad areas into good areas.")
 
 	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 

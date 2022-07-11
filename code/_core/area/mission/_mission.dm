@@ -187,3 +187,10 @@
 	sunlight_color = "#93B08C"
 
 	sound_environment = ENVIRONMENT_PLAIN
+
+
+/area/mission/out_of_bounds
+	name = "Out of Bounds"
+	icon_state = "error"
+
+	interior = TRUE
