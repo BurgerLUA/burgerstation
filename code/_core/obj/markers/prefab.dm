@@ -40,6 +40,7 @@
 
 /obj/marker/prefab/house
 	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	category = "house"
 	chance_none = 0
 
 /obj/marker/prefab/boss

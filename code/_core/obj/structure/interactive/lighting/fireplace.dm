@@ -11,7 +11,7 @@
 	desired_light_range = 2
 	desired_light_color = "#FFFFB5"
 
-	plane = PLANE_OBJ
+	plane = PLANE_WALL_ATTACHMENT
 
 /obj/structure/interactive/lighting/fireplace/Finalize()
 	. = ..()

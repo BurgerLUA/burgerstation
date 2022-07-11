@@ -13,7 +13,7 @@
 "am" = (/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house_01/bathroom_01)
 "an" = (/obj/marker/spawning/random/valuable,/obj/structure/interactive/crate/closet,/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/master_bedroom)
 "ao" = (/obj/structure/interactive/misc/shower{icon_state = "shower"; dir = 4},/obj/structure/interactive/misc/curtain_open,/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house_01/bathroom_02)
-"ap" = (/obj/marker/spawning/random/misc,/obj/marker/spawning/random/misc,/obj/structure/interactive/crate/closet,/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01)
+"ap" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/house_01)
 "aq" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/boys_bedroom)
 "ar" = (/obj/marker/spawning/random/misc,/obj/marker/spawning/random/misc,/obj/structure/interactive/crate/closet,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01)
 "as" = (/obj/structure/interactive/misc/dresser,/obj/structure/carpet/blue,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/boys_bedroom)
@@ -22,6 +22,7 @@
 "av" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/girls_bedroom)
 "aw" = (/obj/structure/interactive/bed/sheet,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/girls_bedroom)
 "ax" = (/obj/structure/table/wood,/obj/structure/carpet/brown,/obj/marker/spawning/random/misc,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/master_bedroom)
+"ay" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 8},/obj/structure/interactive/wire/red,/turf/simulated/floor/plating,/area/mission/prefab/house_01)
 "aB" = (/obj/structure/carpet/red,/obj/structure/interactive/bookcase,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/girls_bedroom)
 "aC" = (/obj/structure/interactive/misc/dresser,/obj/structure/carpet/brown,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/master_bedroom)
 "aD" = (/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house_01/bathroom_02)
@@ -79,7 +80,6 @@
 "bF" = (/obj/structure/interactive/wire/red,/turf/simulated/wall/wood/brown,/area/mission/prefab/house_01)
 "bH" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/kitchen)
 "bI" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/house_01)
-"bJ" = (/obj/structure/interactive/wire/yellow,/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/house_01)
 "bK" = (/obj/structure/carpet/blue,/obj/structure/interactive/chair/wood,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/boys_bedroom)
 "bL" = (/obj/structure/interactive/misc/dresser,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/girls_bedroom)
 "bM" = (/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/girls_bedroom)
@@ -112,7 +112,7 @@ aWbdbebUbfaSbgbhbgbibjbYbgbkbaba
 blaSaSaSaSaSbgbmbnbnbnbnbpbqbaba
 brbTaSbsbsbtbgbmbubnbvbnbnbwbaba
 aWaWbWaSaSaSbgbmbnbnbnbnbZbqbaba
-bxaWbybzbzbAbgbXbBbBbCbgbgbVbaba
-bxaWbybzbzbAbqbqbEbFbqaparbqbaba
-bxaWaWbHbHaWbqbIbIbJbqbqbqbqbaba
+bxaWbybzbzbAbgbXbBbBbBbCbgbVbaba
+bxaWbybzbzbAbqbqbEbFbFbqarbqbaba
+bxaWaWbHbHaWbqbIbIapaybqbqbqbaba
 "}

@@ -38,6 +38,9 @@
 /turf/simulated/floor/brick/grey
 	color = "#728072"
 
+/turf/simulated/floor/brick/red
+	color = "#C66B59"
+
 /turf/simulated/floor/brick/grey/dark
 	color = COLOR_GREY_DARK
 
