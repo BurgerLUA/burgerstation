@@ -56,7 +56,7 @@
 "bd" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/hallway)
 "be" = (/turf/simulated/wall/wood,/area/mission/prefab/house_02/bathroom)
 "bf" = (/obj/structure/interactive/misc/shower{icon_state = "shower"; dir = 4},/obj/structure/interactive/misc/curtain_open,/turf/simulated/floor/tile,/area/mission/prefab/house_02/bathroom)
-"bg" = (/turf/simulated/floor/tile,/area/mission/prefab/house_02/bathroom)
+"bg" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/kitchen)
 "bh" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/wood,/area/mission/prefab/house_02/hallway)
 "bi" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/wood,/area/mission/prefab/house_02/bathroom)
 "bj" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/hallway)
@@ -70,22 +70,26 @@
 "br" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/house_02/bathroom)
 "bs" = (/obj/structure/interactive/crate/closet,/obj/marker/spawning/random/misc,/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/hallway)
 "bt" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/obj/structure/table/wood,/obj/marker/spawning/random/misc,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/hallway)
+"bu" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/hallway)
+"bv" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bw" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/bedroom)
+"bx" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/house_02/bathroom)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaababacacacabababadbabaaaaaaeae
 aaabafazagahaiajakbnalalamamalal
 aaacanaoaKaqarasababalatbqavawal
-aaacaraxaxaxarayaLaAalapaCaCaEal
-aaacaFaxaxaxarararaGaHauaCaCaBal
+aaacaraxaxaxbgayaLaAalapaCaCaEal
+aaacaFaxaxaxarararaGaHaubwaCaBal
 aaabaDaxaxaxaraMaraAalaJaOaIaQal
 aNabaRaxaxaxaraMaSabalaTaUalalal
-aeaVaWaYaYaYaYaYaYaZaYaYaYaYaWaV
-aeaVaPaYaYaYbbbtaYaYaYaYaYaYaYaV
+aeaVaWaYaYbuaYaYbuaZaYaYaYaYaWaV
+aeaVaPaYaYaYbbbtaYaYaYaYbuaYbuaV
 aaaVaVbcbhbdaVaVaVbebebebeaYaYaV
-aXaXaXaXaXaXaaaaaabebfbrbiaYbjaV
-aXaXaXaXaXaXaXaaaabebkbgblaYaYaV
+aXaXaXaXaXbvaaaaaabebfbrbiaYbjaV
+aXaXaXaXaXaXaXaaaabebkbxblaYbuaV
 aXaXaXaXaXaXaXaXaabebobmbpaYaYaV
 aXaXaXaXaXaXaXaXaXbebebebebsaWaV
-aXaXaXaXaXaXaXaXaXaaaaaaaVaVaVaV
+bvaXaXaXaXaXaXaXaXaaaaaaaVaVaVaV
 "}

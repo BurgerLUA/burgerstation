@@ -44,6 +44,7 @@
 "aR" = (/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03/kitchen)
 "aS" = (/obj/structure/interactive/misc/grave2,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "aT" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 8},/turf/simulated/wall/brick/red/dark,/area/mission/prefab/house_03/backroom)
+"aU" = (/obj/structure/carpet/brown,/obj/marker/map_node,/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03/bedroom)
 "aV" = (/obj/structure/interactive/crate/closet/freezer,/obj/marker/spawning/random/kitchen,/obj/marker/spawning/random/kitchen,/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03/kitchen)
 "aW" = (/obj/marker/spawning/random/maintenance,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "aX" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/brick/red,/area/mission/prefab/house_03/backroom)
@@ -67,20 +68,25 @@
 "bp" = (/obj/structure/carpet/brown,/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03/entrance)
 "bq" = (/turf/simulated/floor/colored/dirt/soil,/area/dmm_suite/clear_area)
 "br" = (/obj/structure/short_wall/wood,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bs" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03/entrance)
+"bt" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bu" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03/kitchen)
+"bv" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat,/area/mission/prefab/house_03)
+"bw" = (/obj/marker/map_node,/turf/simulated/floor/brick/red,/area/mission/prefab/house_03/backroom)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaOaOaO
 aaaOaOaOaOafafagafafababababaOaO
-aaaPaOaSaOafajakamafacbpadaeaOaO
+aaaPaOaSaOafajaUamafacbpadaeaOaO
 aaaOaOaOaWafanakaoapadadadabaOaO
-aaaaauauauauauahaZaZalalalaqaOaO
-aaaaauaDaEaraQaRbnasalalalataOaO
+aaaaauauauauauahaZaZbsalalaqaObt
+aaaaauaDaEaraQbubnaRbsalalataOaO
 aaaaaLaNaNaQaQaRaRasalavawaeaOaO
 aaaaaLaNaNaQaQaRaRaVaiabababaOaO
-aaaBbabbaNaQaQaRaRbcaZaOaOaOaOaO
+aaaBbabbaNbvaQaRaRbcaZaOaOaOaOaO
 aaaBbdbebmaQbfbgbobhaZaOaOaOaOaO
 aaaBaxbibjblbjbkbkaZaZaOaOaOaObr
-aaaGaxazaAaAaCaFaxaWbqaybqaybqbr
+aaaGaxazaAbwaCaFaxaWbqaybqaybqbr
 aOaHaJaKaAaAaAaMaTaObqaybqaybqbr
 aOaIaxaXaAaAaAaYaxaObqaybqaybqbr
 aOaIaxaxaxaxaxaxaxaObqaybqaybqbr
