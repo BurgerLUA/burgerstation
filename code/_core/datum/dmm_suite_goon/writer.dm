@@ -365,12 +365,12 @@ dmm_suite/prefab_saving/makeTemplate(turf/model as turf, flags as num)
 	// Add Area Template
 	var areaTemplate = ""
 	if(empty_area)
-		areaTemplate = "[/area/dmm_suite/allow_generate]"
+		areaTemplate = "[/area/dmm_suite/clear_area]"
 	else if(!(flags & DMM_IGNORE_AREAS))
 		var /area/mArea = model.loc
 		areaTemplate = "[mArea.type][checkAttributes(mArea)]"
 	else
-		areaTemplate = "[/area/dmm_suite/no_generate]"
+		areaTemplate = "[/area/dmm_suite/clear_area]"
 	//
 	var template = "[objTemplate][mobTemplate][turfTemplate][areaTemplate]"
 	return template
