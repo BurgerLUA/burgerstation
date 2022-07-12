@@ -32,7 +32,7 @@
 "aF" = (/obj/structure/interactive/misc/tv,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/kitchen)
 "aG" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/kitchen)
 "aH" = (/obj/structure/interactive/light_switch{dir = 4; icon_state = "setup"},/turf/simulated/wall/wood,/area/mission/prefab/house_02/bedroom)
-"aI" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/bedroom)
+"aI" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/bedroom)
 "aJ" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/bedroom)
 "aK" = (/obj/structure/carpet/brown,/obj/structure/table/wood,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/kitchen)
 "aL" = (/obj/structure/interactive/crate/closet/freezer,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/kitchen)
@@ -74,6 +74,7 @@
 "bv" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bw" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/bedroom)
 "bx" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/house_02/bathroom)
+"by" = (/mob/living/advanced/npc/survivor,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_02/kitchen)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -81,7 +82,7 @@ aaababacacacabababadbabaaaaaaeae
 aaabafazagahaiajakbnalalamamalal
 aaacanaoaKaqarasababalatbqavawal
 aaacaraxaxaxbgayaLaAalapaCaCaEal
-aaacaFaxaxaxarararaGaHaubwaCaBal
+aaacaFaxaxaxarbyaraGaHaubwaCaBal
 aaabaDaxaxaxaraMaraAalaJaOaIaQal
 aNabaRaxaxaxaraMaSabalaTaUalalal
 aeaVaWaYaYbuaYaYbuaZaYaYaYaYaWaV

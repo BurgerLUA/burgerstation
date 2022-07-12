@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(events)
 	var/next_event_minor = 0 //No announcement.
 	var/next_event_major = 0 //Has announcement.
 
+	var/enable = FALSE
+
 /subsystem/events/unclog(var/mob/caller)
 
 	for(var/k in all_events_active)
@@ -50,6 +52,11 @@ SUBSYSTEM_DEF(events)
 	return TRUE
 
 /subsystem/events/on_life()
+
+	if(!enable)
+		next_event_minor = world.time + SECONDS_TO_DECISECONDS(300)
+		next_event_major = world.time + SECONDS_TO_DECISECONDS(600)
+		return TRUE
 
 	for(var/k in all_events_active)
 		var/event/E = k

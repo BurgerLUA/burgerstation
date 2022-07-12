@@ -60,6 +60,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 
+	can_wield = TRUE
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread()
 	return 0.001
 

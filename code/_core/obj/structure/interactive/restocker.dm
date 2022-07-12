@@ -9,6 +9,8 @@
 
 	density = TRUE
 
+	pixel_y = 10
+
 /obj/structure/interactive/restocker/Crossed(atom/movable/O)
 	store(O)
 	return ..()

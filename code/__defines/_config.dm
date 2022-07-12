@@ -27,13 +27,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING FALSE
-
-//Enables/disables turf/obj smoothing.
-#define ENABLE_SMOOTHING FALSE
-
-//Enable/disables combat testing by forcing a gamemode.
-#define ENABLE_TDM FALSE
+#define ENABLE_LIGHTING TRUE
 
 //Enables/disables turf generation
 #define ENABLE_GENERATION TRUE

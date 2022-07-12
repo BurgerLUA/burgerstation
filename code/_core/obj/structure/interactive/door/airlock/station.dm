@@ -22,6 +22,12 @@
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
 
+/obj/structure/interactive/door/airlock/station/command/cmo
+	name = "chief medical officer's office"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
+
+
 /obj/structure/interactive/door/airlock/station/chapel
 	name = "chapel airlock"
 	color = "#E1DFD2"

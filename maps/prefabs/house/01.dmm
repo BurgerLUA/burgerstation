@@ -79,7 +79,7 @@
 "bA" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/kitchen)
 "bB" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01)
 "bC" = (/obj/structure/interactive/chair/comfy{icon_state = "comfychair"; dir = 1},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01)
-"bD" = (/obj/marker/map_node,/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house_01/bathroom_01)
+"bD" = (/obj/marker/map_node,/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house_01/bathroom_01)
 "bE" = (/obj/structure/interactive/power/apc{dir = 1},/turf/simulated/wall/wood/brown,/area/mission/prefab/house_01)
 "bF" = (/obj/structure/interactive/wire/red,/turf/simulated/wall/wood/brown,/area/mission/prefab/house_01)
 "bG" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/hallway)
@@ -104,7 +104,8 @@
 "bZ" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01)
 "ca" = (/obj/structure/carpet/brown,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/master_bedroom)
 "cb" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/girls_bedroom)
-"cc" = (/obj/structure/carpet/blue,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/boys_bedroom)
+"cc" = (/obj/structure/carpet/blue,/obj/marker/map_node,/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01/boys_bedroom)
+"cd" = (/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house_01)
 
 (1,1,1) = {"
 bxadadadadababagaqagagagacacacbx
@@ -118,7 +119,7 @@ aeaGaKaLaeaUaVahaMaNaOahaJboboac
 aeaeaeaeaeaVaVahahahahahbQbRacac
 aWbdbebUbfaSbgbhbgbibjbYbgbkbaba
 blaSaSaSaSbJbgbmbnbnbnbnbpbqbaba
-brbTaSbsbsbtbgbmbubnbvbnaAbwaPba
+brbTaSbsbsbtcdbmbubnbvbnaAbwaPba
 aWaWbWaSaSaSbgbmbnbnbnbnbZbqbaba
 bxaWbybzbzbAbgbXbBbBbBbCbgbVbaba
 bxaWbybzbzbAbqbqbEbFbFbqarbqbaba

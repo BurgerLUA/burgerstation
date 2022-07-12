@@ -39,7 +39,6 @@
 			if(1)
 				status_display_text = "GEAR"
 				round_time_next = 6*60
-				SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(6*60)
 				announce(
 					"Central Command Mission Update",
 					"Prepare for Landfall",
@@ -49,7 +48,6 @@
 			if(2)
 				status_display_text = "PREP"
 				round_time_next = 1*60
-				SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60)
 				announce(
 					"Central Command Mission Update",
 					"Drop Pod Boarding",
@@ -58,8 +56,10 @@
 				)
 			if(3)
 				status_display_text = "RDY"
-				SSshuttle.next_pod_launch = world.time
 				round_time_next = 3*60
+				allow_launch = TRUE
+				SShorde.enable = TRUE
+				SSevents.enable = TRUE
 				announce(
 					"Central Command Mission Update",
 					"Mission is a Go",
@@ -87,8 +87,10 @@
 					sound_to_play = 'sound/voice/announcement/landfall_crew_evac_notice.ogg'
 				)
 			if(6)
+				SShorde.enable = FALSE
+				SSevents.enable = FALSE
+				allow_launch = FALSE
 				status_display_text = "UNSAFE"
-				SSshuttle.next_pod_launch = -1
 				var/number_of_players = 0
 				for(var/k in all_players)
 					var/mob/living/advanced/player/P = k
@@ -104,7 +106,7 @@
 						continue
 					number_of_players++
 
-				if( number_of_players <= 1)
+				if(number_of_players <= 1 && world.port != 0)
 					if(number_of_players == 1)
 						announce(
 							"Syndicate Command Mission Update",

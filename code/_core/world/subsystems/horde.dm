@@ -22,12 +22,17 @@ SUBSYSTEM_DEF(horde)
 		DIFFICULTY_NIGHTMARE = 10
 	)
 
+	var/enable = FALSE
+
 
 //The way that this works is that once every 10 seconds, it checks a single player to see if there are any valid spawns for it.
 //It's better this way so that the system is staggered out and 30 players don't get processed on a single tick.
 //There is a "failsafe" for when the player is overdue for an ass kinking.
 
 /subsystem/horde/on_life()
+
+	if(!enable)
+		return TRUE
 
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k

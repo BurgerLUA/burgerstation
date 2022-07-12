@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 	cpu_usage_max = 50
 	tick_usage_max = 50
 
-	var/next_pod_launch = -1 //Set to a value about 0 to allow pod launch.
+	var/next_pod_respawn_time = 0
 
 /subsystem/shuttle/Initialize()
 	log_subsystem(src.name,"Found [length(all_shuttle_controlers)] shuttle controllers.")
@@ -24,6 +24,14 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 			all_shuttle_controlers -= SC
 			qdel(SC)
 
+	if(next_pod_respawn_time <= world.time)
+		for(var/k in drop_pod_turfs)
+			var/turf/T = k
+			CREATE(/obj/structure/interactive/drop_pod,T)
+			drop_pod_turfs -= k
+		next_pod_respawn_time = world.time + SECONDS_TO_DECISECONDS(120)
+
+	/*
 	if(next_pod_launch > 0)
 
 		var/time_left = DECISECONDS_TO_SECONDS(next_pod_launch - world.time)
@@ -68,6 +76,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 					var/obj/structure/interactive/drop_pod/DP = k
 					CALLBACK("set_state_\ref[DP]",10 + i*5,DP,/obj/structure/interactive/drop_pod/proc/set_state,POD_LAUNCHING,T)
 					i++
+	*/
 
 
 
