@@ -128,6 +128,8 @@
 		ACID = 40
 	)
 
+	deflection = 0.1
+
 /armor/cloth/hard/winter
 	defense_rating = list(
 		BLADE = 20,

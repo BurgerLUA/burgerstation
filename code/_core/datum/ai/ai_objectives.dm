@@ -294,14 +294,49 @@
 
 	alert_time = initial(alert_time)
 
-	if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
-		if(new_alert_level == ALERT_LEVEL_COMBAT)
-			owner.alert_overlay.icon_state = "exclaim"
-		else if(new_alert_level == ALERT_LEVEL_CAUTION)
-			owner.alert_overlay.icon_state = "question"
+	if(debug)
+		if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
+			if(new_alert_level == ALERT_LEVEL_COMBAT)
+				owner.alert_overlay.icon_state = "exclaim"
+			else if(new_alert_level == ALERT_LEVEL_CAUTION)
+				owner.alert_overlay.icon_state = "question"
+			else if(new_alert_level == ALERT_LEVEL_NOISE)
+				owner.alert_overlay.icon_state = "huh"
+			else
+				owner.alert_overlay.icon_state = "none"
+
+	if(combat_dialogue && next_talk <= world.time && prob(25))
+
+		var/response_type
+		var/swear_chance = 0
+		if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_CAUTION)
+			//Lost the enemy, going to investigate.
+			response_type = "lost_enemy"
+			swear_chance = 25
+		else if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_NONE)
+			//Threat neutralized.
+			response_type = "enemy_down"
+			swear_chance = 0
+		else if(old_alert_level == ALERT_LEVEL_CAUTION && new_alert_level == ALERT_LEVEL_COMBAT)
+			//Found the enemy again.
+			response_type = "enemy_found"
+			swear_chance = 90
+		else if(old_alert_level == ALERT_LEVEL_NONE && (new_alert_level == ALERT_LEVEL_NOISE || new_alert_level == ALERT_LEVEL_CAUTION))
+			//A weird noise was made.
+			response_type = "noise"
+			swear_chance = owner.health ? (1 - owner.health.health_current/owner.health.health_max)*150 : 0
 		else if(new_alert_level == ALERT_LEVEL_NOISE)
-			owner.alert_overlay.icon_state = "huh"
-		else
-			owner.alert_overlay.icon_state = "none"
+			//losing interest in the search
+			response_type = "losing_interest"
+			swear_chance = 10
+		else if(new_alert_level == ALERT_LEVEL_NONE)
+			//Investigated and determined there is nothing around.
+			response_type = "lost_interest"
+			swear_chance = 25
+		if(response_type)
+			var/returning_dialogue = SSdialogue.get_combat_dialogue(combat_dialogue,response_type,swear_chance)
+			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+
 
 	return TRUE

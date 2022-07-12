@@ -5,6 +5,8 @@
 
 	var/loot/stored_loot
 
+	anchored = TRUE
+
 /obj/structure/interactive/storage/Initialize()
 	. = ..()
 	storage = new(src)
@@ -30,12 +32,15 @@
 		return TRUE
 
 	if(stored_loot)
-		var/loot/L = SSloot.all_loot[stored_loot]
-		stored_loot = null
 		var/turf/T = get_turf(src)
-		var/list/spawned_loot = L.do_spawn(T)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
+		var/list/spawned_loot = SPAWN_LOOT(stored_loot,T,rarity)
 		for(var/obj/item/I in spawned_loot)
 			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
+		stored_loot = null
 
 	caller.clear_inventory_defers() //Remove existing ones.
 
@@ -53,6 +58,7 @@
 	if(is_inventory(object) && is_advanced(caller))
 		examine_storage(caller)
 		return TRUE
+
 	. = ..()
 
 
@@ -63,7 +69,7 @@
 	icon = 'icons/obj/structure/trash_piles.dmi'
 	icon_state = "trash"
 
-	stored_loot = /loot/trash_pile
+	stored_loot = /loot/value/low
 
 	var/mob/living/stored_threat
 
@@ -74,3 +80,30 @@
 /obj/structure/interactive/storage/trash_pile/Destroy()
 	. = ..()
 	QDEL_NULL(stored_threat)
+
+
+/obj/structure/interactive/storage/safe
+	name = "safe"
+	desc = "The contents are quite safe indeed."
+	desc_extended = "A secure safe designed to hold heavy objects."
+	icon = 'icons/obj/structure/safe.dmi'
+	icon_state = "safe"
+
+	stored_loot = /loot/misc/safe
+
+	plane = PLANE_FLOOR_ATTACHMENT
+	layer = 1000
+
+	var/chance_none = 70
+
+/obj/structure/interactive/storage/safe/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	. = ..()
+
+	if(. && is_inventory(object) && is_advanced(caller))
+		icon_state = "safe_open"
+
+/obj/structure/interactive/storage/safe/Finalize()
+	. = ..()
+	var/obj/structure/interactive/storage/safe/O_safe = locate() in orange(8,src)
+	if(O_safe) qdel(src)

@@ -14,6 +14,7 @@
 
 /obj/hud/button/widget/experience
 	name = "Check Experience"
+	desc_extended = "Click here to check your character's experience."
 	icon_state = "xp_new"
 	screen_loc = "RIGHT-1,TOP"
 
@@ -79,6 +80,7 @@
 
 /obj/hud/button/widget/logout
 	name = "Logout"
+	desc_extended = "Click here to force your character to logout. You can only logout while in a slepper. You can rejoin as the same character or a new character any time after logging out."
 	icon_state = "logout_new"
 	screen_loc = "RIGHT,TOP"
 
@@ -93,6 +95,7 @@
 
 /obj/hud/button/widget/change_theme
 	name = "Change Theme"
+	desc_extended = "Click here to change your HUD's theme."
 	icon_state = "theme_new"
 	screen_loc = "RIGHT-2,TOP"
 

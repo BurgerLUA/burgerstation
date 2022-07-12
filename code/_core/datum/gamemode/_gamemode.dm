@@ -66,7 +66,7 @@
 		switch(alert_level)
 			if(CODE_BLUE)
 				CALLBACK_GLOBAL(\
-					"gamemode_announce_alert",\
+					"gamemode_announce_code",\
 					SECONDS_TO_DECISECONDS(10),\
 					.proc/announce,\
 					"Station Alert System",\
@@ -77,7 +77,7 @@
 				)
 			if(CODE_AMBER)
 				CALLBACK_GLOBAL(
-					"gamemode_announce_alert",\
+					"gamemode_announce_code",\
 					SECONDS_TO_DECISECONDS(10),\
 					.proc/announce,\
 					"Station Alert System",\
@@ -88,7 +88,7 @@
 				)
 			if(CODE_RED)
 				CALLBACK_GLOBAL(\
-					"gamemode_announce_alert",\
+					"gamemode_announce_code",\
 					SECONDS_TO_DECISECONDS(10),\
 					.proc/announce,\
 					"Station Alert System",\
@@ -99,7 +99,7 @@
 				)
 			if(CODE_DELTA)
 				CALLBACK_GLOBAL(\
-					"gamemode_announce_alert",\
+					"gamemode_announce_code",\
 					SECONDS_TO_DECISECONDS(10),\
 					.proc/announce,\
 					"Station Alert System",\
@@ -180,7 +180,11 @@
 		if(O.is_new) has_new = TRUE
 		O.is_new = FALSE
 
-	announce("Central Command Mission Update",has_new ? "New Objectives Added" : "Objectives Updated",objective_text,ANNOUNCEMENT_STATION,'sound/alert/airplane.ogg')
+	announce(
+		"Central Command Mission Update",
+		has_new ? "New Objectives Added" : "Objectives Updated",
+		objective_text,
+		sound_to_play = 'sound/alert/airplane.ogg')
 
 	next_objective_update = -1
 

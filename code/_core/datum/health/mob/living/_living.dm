@@ -5,7 +5,7 @@
 /health/mob/living/restore()
 	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 	var/mob/living/L = owner
-	L.queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(L)
 	return TRUE
 
 /health/mob/living/get_damage_multiplier()
@@ -95,7 +95,7 @@
 		if(update_hud)
 			for(var/k in L.stat_elements)
 				var/obj/hud/button/stat/S = L.stat_elements[k]
-				L.stat_buttons_to_update |= S
+				L.stat_elements_to_update |= S
 			L.update_boss_health()
 
 /health/mob/living/update_health_stats()
@@ -113,32 +113,32 @@
 		health_max += V.health_add
 		health_max *= V.health_mul
 
-	L.queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_loss(var/loss_type,var/value)
 	. = ..()
 	if(.)
 		var/mob/living/L = owner
-		L.queue_health_update = TRUE
 		if(. > 0) //Increase damage
 			L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
+		QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_mana(var/adjust_value)
 	. = ..()
 	if(.)
 		var/mob/living/L = owner
-		L.queue_health_update = TRUE
 		if(. < 0) //Reduce mana.
 			L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
+		QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_stamina(var/adjust_value)
 	. = ..()
 	if(.)
 		var/mob/living/L = owner
-		L.queue_health_update = TRUE
 		if(stamina_current >= stamina_max*0.25 && L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
 		if(. < 0) //Reduce stamina.
 			L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
+		QUEUE_HEALTH_UPDATE(L)
 
 
 /health/mob/living/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)

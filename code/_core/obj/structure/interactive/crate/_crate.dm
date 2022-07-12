@@ -152,6 +152,12 @@
 
 /obj/structure/interactive/crate/proc/close(var/mob/caller)
 
+	if(qdeleting)
+		return FALSE
+
+	if(src.health && src.health.health_current <= 0)
+		return FALSE
+
 	if(!isturf(loc))
 		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being closed!"))
 		return FALSE
@@ -197,8 +203,11 @@
 		return FALSE
 
 	if(loot)
-		var/loot/L = LOOT(loot)
-		L.do_spawn(src.loc)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
+		SPAWN_LOOT(loot,src.loc,rarity)
 		loot = null
 
 	for(var/k in contents)

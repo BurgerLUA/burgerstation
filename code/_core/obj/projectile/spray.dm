@@ -8,6 +8,8 @@
 	hit_target_turf = TRUE
 	hit_laying = TRUE
 
+	plane = PLANE_PROJECTILE_NO_EFFECTS
+
 /obj/projectile/spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(!.)
@@ -40,6 +42,8 @@
 	icon = 'icons/obj/projectiles/spray.dmi'
 	icon_state = "spray"
 	reagents = /reagent_container/chem_spray
+
+	plane = PLANE_PROJECTILE_NO_EFFECTS
 
 	hit_target_turf = TRUE
 	hit_laying = TRUE

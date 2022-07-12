@@ -40,7 +40,7 @@
 
 /experience/proc/xp_to_level(var/xp) //Convert xp to level
 	if(xp < 0)
-		owner.to_chat(span("danger","Your [src.name] experience is negative! Report this bug on discord!"))
+		owner.to_chat(span("danger","Your [src.name] level is negative! Report this bug on discord!"))
 		return 1
 	return FLOOR((xp ** (1/experience_power)) / (experience_multiplier * (1 + src.get_prestige_count()*0.1)), 1)
 
@@ -63,6 +63,15 @@
 /experience/proc/get_xp()
 	return experience
 
+
+var/global/list/difficulty_to_xp_mod = list(
+	DIFFICULTY_EASY = 1,
+	DIFFICULTY_NORMAL = 1.25,
+	DIFFICULTY_HARD = 1.5,
+	DIFFICULTY_EXTREME = 2,
+	DIFFICULTY_NIGHTMARE = 3
+)
+
 /experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE)
 
 	if(!(bypass_checks || owner.allow_experience_gains))
@@ -71,7 +80,12 @@
 	if(!ENABLE_XP)
 		return FALSE
 
+	if(xp_to_add > 0 && !(flags & ATTRIBUTE_NO_XP_MUL) && is_player(owner))
+		var/mob/living/advanced/player/P = owner
+		xp_to_add *= difficulty_to_xp_mod[P.get_difficulty()]
+
 	experience += xp_to_add
+	experience = CEILING(experience,1)
 
 	var/current_level = get_current_level()
 	if(last_level != current_level)

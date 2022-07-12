@@ -96,7 +96,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/ignore_immortal = FALSE
 
-	var/reaction_time = 4 //In Deciseconds.
+	var/reaction_time = 8 //In Deciseconds.
 
 	var/stored_sneak_power = 0
 
@@ -133,6 +133,13 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/atom/hunt_target //Will try to chase this target through a combination of astar pathing and node pathing.
 	var/turf/last_hunt_target_turf //Read only. The last turf that the target was on.
 	var/next_node_check_time = 0
+
+	//Dialogue related.
+	var/language_to_use = LANGUAGE_BASIC
+	var/next_talk = 0
+	var/combat_dialogue/combat_dialogue
+
+	var/knows_about_lockers = FALSE
 
 /ai/Destroy()
 

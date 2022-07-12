@@ -125,6 +125,7 @@ var/global/list/all_damage_numbers = list()
 
 	var/damage_mod = 1 //Simple multiplier for all damage of this type
 	var/penetration_mod = 1 //Simple multiplier for all penetration of this type
+	var/inaccuracy_mod = 1 //Simple multiplier for inaccuracy. Only applies to melee/unarmed.
 
 	var/experience_mod = 1 //Simple multiplier for all experience gains via this type.
 
@@ -426,6 +427,7 @@ var/global/list/all_damage_numbers = list()
 	var/damage_blocked_with_armor = 0
 	var/damage_blocked_with_shield = 0
 	var/defense_rating_victim = victim.health.get_defense(attacker,hit_object,FALSE)
+	var/deflection_rating = defense_rating_victim ? defense_rating_victim["deflection"] : 0
 	var/atom/object_to_check = null
 	if(is_organ(hit_object))
 		var/obj/item/organ/O = hit_object
@@ -515,6 +517,10 @@ var/global/list/all_damage_numbers = list()
 			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
 				total_damage_dealt = 0
 
+	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+	if(victim != hit_object)
+		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
+
 	if(total_damage_dealt > 0 && hit_object.health)
 		total_damage_dealt = hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
@@ -530,10 +536,6 @@ var/global/list/all_damage_numbers = list()
 		)
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		L.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object,total_damage_dealt)
@@ -563,6 +565,8 @@ var/global/list/all_damage_numbers = list()
 				hit_log_format["critical"] = victim_health_final - total_damage_dealt < 0
 				hit_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
 				V.hit_logs += list(hit_log_format)
+				if(V.is_player_controlled())
+					V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 			if(attacker != victim && total_damage_dealt && !V.dead && A.is_player_controlled())
 				var/list/experience_gained = list()
@@ -637,11 +641,7 @@ var/global/list/all_damage_numbers = list()
 				qdel(W.enchantment)
 				W.enchantment = null
 
-	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-	if(victim != hit_object)
-		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
-
-	return TRUE
+	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 
 /damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	return TRUE
@@ -671,7 +671,7 @@ var/global/list/all_damage_numbers = list()
 	if(is_living(victim) && length(impact_sounds_flesh))
 		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE,volume=desired_volume)
 
-	if(length(impact_sounds))
+	else if(length(impact_sounds))
 		var/turf/T = get_turf(hit_object)
 		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
 

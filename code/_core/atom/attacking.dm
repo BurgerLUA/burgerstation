@@ -55,8 +55,8 @@
 		var/mob/living/advanced/player/P = attacker
 		if(P.client)
 			var/list/attack_coords = P.get_current_target_cords(params)
-			params[PARAM_ICON_X] = num2text(attack_coords[1])
-			params[PARAM_ICON_Y] = num2text(attack_coords[2])
+			params[PARAM_ICON_X] = attack_coords[1]
+			params[PARAM_ICON_Y] = attack_coords[2]
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 
@@ -127,6 +127,11 @@
 		if(victim == v && !(can_attack && can_be_attacked))
 			return FALSE
 		if(can_attack && can_be_attacked)
+			var/inaccuracy = DT.inaccuracy_mod
+			if(!precise && inaccuracy > 0)
+				inaccuracy *= src.get_inaccuracy(attacker,victim,1)
+				params[PARAM_ICON_X] = clamp(params[PARAM_ICON_X] + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+				params[PARAM_ICON_Y] = clamp(params[PARAM_ICON_Y] + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
 			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,desired_damage_type,params,precise,precise)
 			hit_objects += hit_object //Could be null, but that's fine.
 			if(hit_object)
@@ -173,7 +178,7 @@
 		return FALSE
 
 	if(victim)
-		if(!isturf(victim) && !isturf(victim.loc))
+		if(!victim.z)
 			return FALSE
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)

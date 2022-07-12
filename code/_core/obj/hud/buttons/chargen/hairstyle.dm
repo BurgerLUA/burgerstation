@@ -144,6 +144,8 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	return TRUE
 
 /obj/hud/button/chargen/hairstyle/main
+	name = "change hair style"
+	desc_extended = "Your currently selected hair style. Clicking here will change the color."
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+4"
 

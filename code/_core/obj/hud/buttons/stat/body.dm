@@ -1,6 +1,7 @@
 /obj/hud/button/stat/body
 	name = "limb health"
 	desc = "Health for your limbs."
+	desc_extended = "A general representation of your current health. Falling below 0 health will put you into a critical state which makes you vulnerable to lethal blows. Health can be restored over time, or by medicine and food."
 	id = "body"
 
 	icon = 'icons/hud/hud.dmi'

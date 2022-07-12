@@ -10,7 +10,8 @@ mob/living/advanced/proc/handle_skincolor_chargen(var/desired_color,var/update_b
 	return TRUE
 
 /obj/hud/button/chargen/skin_color
-	name = "skin color"
+	name = "change skin color"
+	desc_extended = "Click here to change your character's skin color."
 	icon_state = "change_skincolor"
 
 	screen_loc = "CENTER-1.5,CENTER-2"

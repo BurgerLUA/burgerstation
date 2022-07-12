@@ -115,7 +115,7 @@
 	name = "right reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/hand/reptile/left
 	name = "left reptile hand"
@@ -143,7 +143,7 @@
 	name = "right advanced reptile hand"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/hand/reptile_advanced/left
 	name = "left advanced reptile hand"
@@ -175,7 +175,7 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
-	defense_rating = DIONA_ARMOR
+	armor = /armor/diona
 
 
 /obj/item/organ/hand/diona/left
@@ -205,7 +205,7 @@
 	name = "right cyborg hand"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/hand/cyborg/left
@@ -236,7 +236,7 @@
 	icon = 'icons/mob/living/advanced/species/beefman.dmi'
 	damage_type = /damagetype/unarmed/beef/
 
-	defense_rating = MEATMEN_ARMOR
+	armor = /armor/beefman
 
 /obj/item/organ/hand/beefman/get_damage_type(var/atom/attacker,var/atom/victim)
 	return damage_type
@@ -296,7 +296,7 @@
 	name = "right skeleton hand"
 	icon = 'icons/mob/living/advanced/species/skeleton.dmi'
 
-	defense_rating = SKELETON_ARMOR
+	armor = /armor/skeleton
 
 	projectile_dodge_chance = 10
 
@@ -409,7 +409,7 @@
 	name = "right goblin hand"
 	icon = 'icons/mob/living/advanced/species/goblin.dmi'
 
-	defense_rating = GOBLIN_ARMOR
+	armor = /armor/goblin
 
 /obj/item/organ/hand/goblin/left
 	name = "left goblin hand"

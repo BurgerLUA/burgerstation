@@ -10,8 +10,14 @@
 
 	var/override_overlays = FALSE
 
-	plane = PLANE_JUNK
-	layer = -1000
+	plane = PLANE_WIRE
+	layer = 1000
+
+	health = /health/construction/
+
+/obj/structure/carpet/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	qdel(src)
 
 /obj/structure/carpet/Finalize()
 	. = ..()

@@ -42,7 +42,11 @@
 	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(loot)
-		var/list/spawned_loot = CREATE_LOOT(loot,T)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
+		var/list/spawned_loot = SPAWN_LOOT(loot,T,rarity)
 		for(var/k in spawned_loot)
 			var/obj/item/I = k
 			animate(I,pixel_x = rand(-8,8),pixel_y = rand(-8,8),time=5)
@@ -66,7 +70,7 @@
 
 /obj/item/supply_crate/yankee
 	loot = /loot/supply_crate/yankee
-	icon_state = "supply_freedomn"
+	icon_state = "supply_freedom"
 
 /obj/item/supply_crate/nanotrasen
 	loot = /loot/supply_crate/nanotrasen

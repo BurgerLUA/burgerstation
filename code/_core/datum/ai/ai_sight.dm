@@ -1,25 +1,26 @@
 /ai/proc/get_detection_level(var/atom/A,var/view_check=FALSE) //Returns a value 0 to 1.
 
-	if(owner.z != A.z)
+	var/turf/T_owner = get_turf(owner)
+	var/turf/T_atom = get_turf(A)
+
+	if(T_owner.z != T_atom.z)
 		return 0 //Cannot see people who aren't even on your z-level.
 
 	if(use_cone_vision && alert_level != ALERT_LEVEL_COMBAT && !is_facing(owner,A))
 		return 0 //Cannot see those not in your cone range, unless you're in combat.
 
-	var/true_distance = get_dist(owner,A)
+	var/true_distance = get_dist(T_owner,T_atom)
 	if(true_distance <= 1)
 		return 1 //Can always see people right next to them (unless above says otherwise)
 
 	var/vision_distance = true_distance
 	if(objective_attack)
-		vision_distance = get_dist(A,objective_attack) //Objective attack is the central focus point, if there is one.
+		var/turf/T_objective = A == objective_attack ? T_atom : get_turf(objective_attack)
+		vision_distance = get_dist(T_atom,T_objective) //Objective attack is the central focus point, if there is one.
 		vision_distance = max(vision_distance,0)
 
 	if(true_distance >= min(VIEW_RANGE+ZOOM_RANGE*2,radius_find_enemy_combat))
 		return FALSE //Never be able to see what is impossible for a player.
-
-	var/turf/T_owner = get_turf(owner)
-	var/turf/T_atom = get_turf(A)
 
 	if(!see_through_walls && view_check && !T_owner.is_straight_path_to(T_atom,check_vision=TRUE,check_density=FALSE))
 		return 0 //Never be able to see through walls.
@@ -41,6 +42,8 @@
 		var/mob/living/L = A
 		if(L.is_sneaking)
 			. *= 0.75
+		if(!L.z && L != objective_attack && !knows_about_lockers)
+			. *= 0.25
 
 	if(debug && ismob(A))
 		var/mob/M = A

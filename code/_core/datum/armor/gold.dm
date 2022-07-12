@@ -12,3 +12,4 @@
 		DARK = 50,
 		SANITY = 25
 	)
+	deflection = 0.5

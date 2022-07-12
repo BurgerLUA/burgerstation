@@ -107,7 +107,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
+/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 

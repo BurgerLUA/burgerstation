@@ -1,7 +1,7 @@
 /obj/hud/button/squad/main
 	name = "squad button"
 	desc = "We ARMA now."
-	desc_extended = "Press this button to open the squad menu."
+	desc_extended = "Click here to open the squad menu."
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "squad"
 	screen_loc = "LEFT,TOP-2"

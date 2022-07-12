@@ -79,10 +79,25 @@
 		update_owner(null)
 		return TRUE
 
-	if(referencing) clone(referencing)
+	if(referencing)
+		clone(referencing)
+	else
+		name = initial(name)
+		desc_extended = initial(desc_extended)
+
+	tooltip_text = get_tooltip_text()
+
+
 	return TRUE
 
 var/global/list/greyscale = list(
+	0.5,0.25,0.25,0,
+	0.25,0.5,0.25,0,
+	0.25,0.25,0.5,0,
+	0,0,0,1
+)
+
+var/global/list/redscale = list(
 	0.5,0.25,0.25,0,
 	0.33,0.5,0.25,0,
 	0.33,0.25,0.5,0,

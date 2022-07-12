@@ -18,8 +18,8 @@
 	if(is_player(caller))
 		var/mob/living/advanced/player/P = caller
 		var/list/attack_coords = P.get_current_target_cords(params)
-		params[PARAM_ICON_X] = num2text(attack_coords[1])
-		params[PARAM_ICON_Y] = num2text(attack_coords[2])
+		params[PARAM_ICON_X] = attack_coords[1]
+		params[PARAM_ICON_Y] = attack_coords[2]
 
 	var/atom/object_to_analyze = target.get_object_to_damage(caller,caller,null,params,TRUE,TRUE,0)
 

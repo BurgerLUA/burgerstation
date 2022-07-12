@@ -330,9 +330,9 @@
 
 /status_effect/adrenaline/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	owner.queue_health_update = TRUE
 	owner.remove_status_effect(STAMCRIT)
 	owner.stamina_regen_delay = 0
+	QUEUE_HEALTH_UPDATE(owner)
 
 /status_effect/undying
 	name = "Undying"
@@ -345,7 +345,7 @@
 
 /status_effect/undying/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	owner.queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(owner)
 
 /status_effect/resting
 	name = "Resting"

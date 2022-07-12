@@ -100,14 +100,14 @@
 
 	return ..()
 
-/obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
+/obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	wielded = FALSE
 	if(old_inventory.child_inventory)
 		old_inventory.child_inventory.parent_inventory = null
 		old_inventory.child_inventory.update_sprite()
 		old_inventory.child_inventory = null
 	update_sprite()
-	return ..()
+	. = ..()
 
 /obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()

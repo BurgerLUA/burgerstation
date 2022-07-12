@@ -64,8 +64,8 @@
 
 	if(mob && istype(mob.loc,/obj/projectile/))
 		var/obj/projectile/P = mob.loc
-		pixel_x = round(P.pixel_x_float,1)
-		pixel_y = round(P.pixel_y_float,1)
+		pixel_x = round(P.pixel_x_float_visual,1)
+		pixel_y = round(P.pixel_y_float_visual,1)
 		return TRUE
 
 	var/calculated_pixel_x = 0

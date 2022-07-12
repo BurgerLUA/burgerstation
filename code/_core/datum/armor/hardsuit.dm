@@ -15,6 +15,10 @@
 		FATIGUE = 75,
 		PAIN = 75
 	)
+	deflection = 0.75
+
+/armor/hardsuit/combat
+	deflection = 1
 
 /armor/hardsuit/combat/ling
 	defense_rating = list(
@@ -93,6 +97,25 @@
 		FATIGUE = 75,
 		PAIN = 75
 	)
+
+/armor/hardsuit/combat/syndicate/ultra
+	defense_rating = list(
+		BLADE = 150,
+		BLUNT = 150,
+		PIERCE = 150,
+		LASER = -50,
+		ARCANE = -100,
+		HEAT = 150,
+		COLD = 150,
+		SHOCK = 25,
+		ACID = 50,
+		BOMB = 150,
+		BIO = 100,
+		RAD = 50,
+		FATIGUE = 200,
+		PAIN = 200
+	)
+
 
 
 /armor/hardsuit/combat/slavic

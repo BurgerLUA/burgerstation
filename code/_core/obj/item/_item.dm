@@ -326,11 +326,15 @@ var/global/list/rarity_to_mul = list(
 	)
 	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
 
-/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+
+	. = 0
+
 	if(is_living(source))
 		var/mob/living/L = source
-		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
-	return 0
+		. += (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
+		if(L.health)
+			. *= 1 + max(0,1 - (L.health.stamina_current/L.health.stamina_max)*2)
 
 /obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
 
@@ -503,20 +507,22 @@ var/global/list/rarity_to_mul = list(
 	. += div("examine_description_long",src.desc_extended)
 
 
-/obj/item/proc/update_lighting_for_owner(var/obj/hud/inventory/inventory_override)
+/obj/item/proc/update_lighting_for_owner()
 
-	var/obj/hud/inventory/I = inventory_override || src.loc
+	var/atom/desired_atom = src
 
-	if(!I || !is_inventory(I))
-		return FALSE
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		var/mob/living/advanced/A = I.owner
+		if(is_advanced(A))
+			desired_atom = A
 
-	if(!I.owner || !is_advanced(I.owner))
-		return FALSE
-
-	var/mob/living/advanced/A = I.owner
-	A.update_single_lighting(src)
+	light?.set_top_atom(desired_atom)
+	light_sprite?.set_top_atom(desired_atom)
+	light_sprite?.update_sprite()
 
 	return TRUE
+
 
 /obj/item/post_move(var/atom/old_loc)
 
@@ -529,25 +535,26 @@ var/global/list/rarity_to_mul = list(
 		else if(!can_interact_with_inventory(inventory_user))
 			close_inventory(null)
 
-	if(isturf(loc) && is_inventory(old_loc))
-		if(delete_on_drop)
+	if(is_inventory(old_loc))
+		if(isturf(loc) && delete_on_drop)
 			qdel(src)
 			return TRUE
-	else
 		undelete(src)
+
+	update_lighting_for_owner()
 
 	. = ..()
 
-/obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+/obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn to the new_location.
 
 	if(old_location && new_location)
-		var/turf/OL = get_turf(old_location)
-		var/turf/NL = get_turf(new_location)
-		if(OL != NL)
-			new/obj/effect/temp/item_pickup(NL,2,OL,src,"pickup")
+		var/turf/old_turf = get_turf(old_location)
+		var/turf/new_turf = get_turf(new_location)
+		if(old_turf != new_turf)
+			new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,"pickup")
 
 	if(new_location)
-		update_lighting_for_owner(new_location)
+		update_lighting_for_owner()
 		last_interacted = new_location.owner
 
 	return TRUE
@@ -562,21 +569,17 @@ var/global/list/rarity_to_mul = list(
 /obj/item/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
 	update_lighting_for_owner()
-/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
+
+/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
 
 	if(additional_clothing_parent)
 		drop_item(additional_clothing_parent) //This retracts the clothing.
 
-	if(light)
-		light.update(src)
-
-	if(old_inventory && new_loc)
-		var/turf/OL = get_turf(old_inventory)
-		var/turf/NL = get_turf(new_loc)
-		if(OL != NL)
-			new/obj/effect/temp/item_pickup(NL,2,OL,src,isturf(new_loc) ? "drop" : "transfer")
-
-	update_lighting_for_owner(old_inventory)
+	if(old_inventory && loc)
+		var/turf/old_turf = get_turf(old_inventory)
+		var/turf/new_turf = get_turf(loc)
+		if(old_turf != new_turf)
+			new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,isturf(loc) ? "drop" : "transfer")
 
 	return TRUE
 
@@ -865,6 +868,8 @@ var/global/list/rarity_to_mul = list(
 					var/mob/living/advanced/A = I.owner
 					A.remove_overlay("\ref[src]")
 					I.update_worn_icon(src)
+
+	update_value()
 
 	return TRUE
 

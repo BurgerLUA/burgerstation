@@ -47,3 +47,26 @@
 	value = 1200
 
 	speed_bonus = 0.1
+
+	contraband = TRUE
+
+
+/obj/item/clothing/overwear/hardsuit/syndie/ultra
+	name = "mauler hardsuit mk4 ULTRA"
+	desc = "May I make a suggestion? Run."
+	desc_extended = "A prototype suit in use by the best of the best of Syndicate Operatives. Lightweight and agile but still heavily armored. Don't attempt to face someone wearing this alone."
+	icon = 'icons/obj/item/clothing/suit/syndie_ultra.dmi'
+
+
+	armor = /armor/hardsuit/combat/syndicate/ultra
+
+	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie/ultra)
+
+	size = SIZE_6
+	weight = 10.
+
+	value = 1200
+
+	speed_bonus = 0.4
+
+	contraband = TRUE

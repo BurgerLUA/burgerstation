@@ -13,6 +13,7 @@
 		FATIGUE = 25,
 		PAIN = 50
 	)
+	deflection = 0.75
 
 /armor/steel/heavy
 	defense_rating = list(
@@ -77,4 +78,23 @@
 		SHOCK = -25,
 		HOLY = -75,
 		DARK = -75
+	)
+
+
+/armor/steel/runic
+	defense_rating = list(
+		BLADE = 100,
+		BLUNT = 75,
+		PIERCE = 100,
+		LASER = 0,
+		ARCANE = -75,
+		HEAT = -25,
+		COLD = -25,
+		SHOCK = -50,
+		ACID = -25,
+		BOMB = 50,
+		HOLY = -25,
+		DARK = 50,
+		FATIGUE = 25,
+		PAIN = 50
 	)

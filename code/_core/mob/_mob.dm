@@ -76,8 +76,10 @@
 	var/obj/plane_master/weather/plane_master_weather
 	var/obj/plane_master/area_exterior/plane_master_area_exterior
 	var/obj/plane_master/water_mask/plane_master_water_mask
+	var/obj/plane_master/projectiles/plane_master_projectiles
 
 	var/obj/hud/button/examine_bar/examine_bar
+	var/obj/hud/button/tooltip/tooltip
 
 	var/obj/fov/fov
 
@@ -147,6 +149,11 @@
 
 	if(examine_bar)
 		examine_bar.update_owner(null)
+		examine_bar = null
+
+	if(tooltip)
+		tooltip.update_owner(null)
+		tooltip = null
 
 	stored_chat_text?.Cut()
 
@@ -182,6 +189,7 @@
 	QDEL_NULL(plane_master_weather)
 	QDEL_NULL(plane_master_area_exterior)
 	QDEL_NULL(plane_master_water_mask)
+	QDEL_NULL(plane_master_projectiles)
 
 	QDEL_NULL(fov)
 
@@ -290,6 +298,10 @@
 		plane_master_water_mask = new(src)
 	C.screen += plane_master_water_mask
 
+	if(!plane_master_projectiles)
+		plane_master_projectiles = new(src)
+	C.screen += plane_master_projectiles
+
 	if(!examine_overlay)
 		examine_overlay = new(src)
 	C.screen += examine_overlay
@@ -297,6 +309,10 @@
 	if(!examine_bar)
 		examine_bar = new(src)
 	examine_bar.update_owner(src)
+
+	if(!tooltip)
+		tooltip = new(src)
+	tooltip.update_owner(src)
 
 	if(!parallax["A"])
 		var/obj/parallax/layer1/P = new(src)

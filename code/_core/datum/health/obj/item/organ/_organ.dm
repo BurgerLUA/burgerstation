@@ -61,6 +61,8 @@
 	if(!src.organic && !robotic) // I know these are technically called twice but it's to prevent the below snowflake code from running.
 		return 0
 
+	. = 0
+
 	if(pain > 0 && is_advanced(owner.loc))
 		var/obj/item/organ/O = owner
 		var/mob/living/advanced/A = owner.loc

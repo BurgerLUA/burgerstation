@@ -25,23 +25,35 @@
 		log_debug("[dir2text(text2num(k))]: [v]")
 
 /proc/log_subsystem(var/subsystem_name,var/log_text)
-	//world_log("<span class='subsystem'><b>[subsystem_name]</b>: [log_text]</span>")
+	if(SSconfig?.initialized && !SSconfig.config["ENABLE_LOGGING"])
+		return FALSE
+	world_log("<span class='subsystem'><b>[subsystem_name]</b>: [log_text]</span>")
 	SSlogging.buffered_log_subsystem += "[subsystem_name]: [log_text]"
 
 /proc/log_error(var/log_text)
+	if(SSconfig?.initialized && !SSconfig.config["ENABLE_LOGGING"])
+		return FALSE
 	world_log("<span class='error'>[log_text]</span>")
 	SSlogging.buffered_log_error += log_text
 
 /proc/log_debug(var/log_text)
+	if(SSconfig?.initialized && !SSconfig.config["ENABLE_LOGGING"])
+		return FALSE
 	world_log("<span class='debug'>[log_text]</span>")
 	SSlogging.buffered_log_debug += log_text
 
 /proc/log_admin(var/log_text)
+	if(SSconfig?.initialized && !SSconfig.config["ENABLE_LOGGING"])
+		return FALSE
 	world_log("<span class='admin'>[log_text]</span>")
 	SSlogging.buffered_log_admin += log_text
 
 /proc/log_chat(var/log_text)
+	if(SSconfig?.initialized && !SSconfig.config["ENABLE_LOGGING"])
+		return FALSE
 	SSlogging.buffered_log_chat += log_text
 
 /proc/world_log(var/log_text)
+	if(SSconfig?.initialized && !SSconfig.config["ENABLE_LOGGING"])
+		return FALSE
 	world.log << log_text

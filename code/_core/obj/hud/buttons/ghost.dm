@@ -1,6 +1,7 @@
 /obj/hud/button/new_character/
 	name = "create a new character"
 	desc = ""
+	desc_extended = "Click here to create a new character."
 	icon_state = "new_character"
 	screen_loc = "CENTER-0.5,BOTTOM:12"
 
@@ -28,6 +29,7 @@
 /obj/hud/button/load_character/
 	name = "load an existing character"
 	desc = ""
+	desc_extended = "Click here to load an existing character."
 	icon_state = "load_character"
 	screen_loc = "CENTER+0.5,BOTTOM:12"
 
@@ -56,7 +58,8 @@
 
 /obj/hud/button/become_antag/
 	name = "become antagonist"
-	desc = ""
+	desc = "Help maint."
+	desc_extended = "Become an antagonist, if possible. Antagonists can spawn near the end of the round after the mission. Requires an antagonist token."
 	icon_state = "become_antag"
 	screen_loc = "CENTER+1.5,BOTTOM:12"
 
@@ -76,6 +79,7 @@
 /obj/hud/button/teleport_to_player/
 	name = "spectate player"
 	desc = ""
+	desc_extended = "Click here to spectate a player."
 	icon_state = "square_round_small"
 	screen_loc = "CENTER-1.5,BOTTOM:12"
 
@@ -115,8 +119,9 @@
 
 
 /obj/hud/button/dead_ghost/
-	name = "ghost"
-	desc = ""
+	name = "leave corpse"
+	desc = "Goodbye cruel world."
+	desc_extended = "Clicking here will abandon your body and allow you to spectate or rejoin the round as the same character or a different character. Note that you cannot be revived after ghosting!"
 	icon_state = "square_round_small"
 	screen_loc = "CENTER,BOTTOM:12+2"
 

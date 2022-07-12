@@ -55,6 +55,8 @@
 
 	x_offset = 16
 
+	light_mod = 1
+
 /obj/hud/inventory/organs/left_hand_held/update_overlays()
 	. = ..()
 	if(owner?.client?.selected_hand == click_flags)
@@ -96,6 +98,8 @@
 	priority = 3
 
 	x_offset = 16
+
+	light_mod = 1
 
 /obj/hud/inventory/organs/right_hand_held/update_overlays()
 	. = ..()

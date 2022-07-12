@@ -83,7 +83,7 @@
 
 /obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
 	var/area/A = get_area(src)
-	if(!A || !A.apc || !A.apc.cell || !A.apc.cell.charge_current)
+	if(!A || !A.linked_apc || !A.linked_apc.cell || !A.linked_apc.cell.charge_current)
 		caller.to_chat(span("warning","This doesn't seem to be working..."))
 		return FALSE
 	play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE*0.5)

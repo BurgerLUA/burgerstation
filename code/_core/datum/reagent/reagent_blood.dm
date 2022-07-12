@@ -38,11 +38,11 @@
 		var/reagent/blood/R = REAGENT(owner.blood_type)
 		if(R.compatible_blood[src.type])
 			owner.blood_volume += .*multiplier
-			owner.queue_health_update = TRUE
 		else
 			owner.blood_volume += . *0.5*multiplier
 			owner.tox_regen_buffer += .*0.5*multiplier
 			owner.blood_toxicity += .
+		QUEUE_HEALTH_UPDATE(owner)
 
 /reagent/blood/human/ab_negative
 	name = "AB Negative Human Blood"

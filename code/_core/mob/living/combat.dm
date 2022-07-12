@@ -43,15 +43,16 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAMCRIT,STUN,STAGGER,PARRIED))
 		return FALSE
 
-	if(grabbing_hand && grabbing_hand.owner && is_behind(grabbing_hand.owner,src))
+	if(grabbing_hand && grabbing_hand.owner)
+		if(horizontal)
+			return FALSE
+		if(is_behind(grabbing_hand.owner,src))
+			return FALSE
 		return FALSE
 
 	. = ..()
 
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-
-	if(!isturf(src.loc))
-		return FALSE
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

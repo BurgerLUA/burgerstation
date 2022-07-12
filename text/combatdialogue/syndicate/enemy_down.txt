@@ -1,0 +1,6 @@
+target down.
+target neutralized.
+target has been destroyed.
+target eliminated.
+targeted destroyed, mission accomplished.
+wilco-echo-wilco lima-alpha-delta.

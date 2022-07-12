@@ -1,24 +1,24 @@
-/atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+/atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
 	if(P.owner == src)
-		return null
+		return FALSE
 
 	if( (collision_bullet_flags & FLAG_COLLISION_BULLET_SPECIFIC) && P.target_atom == src)
-		return src
+		return TRUE
 
 	if(P.collision_flags_special && P.collision_flags_special & collision_flags)
-		return src
+		return TRUE
 
 	if(!src.collision_bullet_flags || !P.collision_bullet_flags)
-		return null
+		return FALSE
 
 	if(!(P.collision_bullet_flags & src.collision_bullet_flags))
-		return null
+		return FALSE
 
-	return src
+	return TRUE
 
 
-/obj/structure/interactive/scanner/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+/obj/structure/interactive/scanner/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
 	. = ..()
 
@@ -28,119 +28,94 @@
 	for(var/k in P.contents)
 		var/atom/movable/M = k
 		if(!src.Cross(M,old_turf))
-			return src
+			return TRUE
 
-/atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+	return FALSE
+
+/atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 	return null
 
-/mob/living/vehicle/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+/mob/living/vehicle/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
 	if(is_advanced(P.owner))
 		var/mob/living/advanced/A = P.owner
 		if(A.driving == src)
-			return null
+			return FALSE
 
-	return ..()
+	. = ..()
 
-/obj/effect/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-	return null
+/obj/effect/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+	return FALSE
 
 
-/mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+/mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
 	if(P.iff_tag && !check_iff(src.iff_tag,P.iff_tag,new_turf.loc,P.hostile))
-		return null
+		return FALSE
 
 	if(P.loyalty_tag && !allow_hostile_action(src.loyalty_tag,P.loyalty_tag,new_turf.loc))
-		return null
+		return FALSE
 
 	if(!P.hit_laying && dead && get_dist(src,P.target_atom) > 0)
-		return null
+		return FALSE
 
-	return ..()
+	. = ..()
 
-/turf/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+/turf/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+
+	if(src.allow_bullet_pass)
+		return FALSE
 
 	. = ..()
 
 	if(.)
-		if(P.vel_y > 0)
-			if(!old_turf.allow_bullet_pass && old_turf.density_north)
-				P.penetrations_left = -1
-				return list(old_turf)
-			if(!new_turf.allow_bullet_pass && new_turf.density_south)
-				P.penetrations_left = -1
-				return list(new_turf)
-		else if(P.vel_y < 0)
-			if(!old_turf.allow_bullet_pass && old_turf.density_south)
-				P.penetrations_left = -1
-				return list(old_turf)
-			if(!new_turf.allow_bullet_pass && new_turf.density_north)
-				P.penetrations_left = -1
-				return list(new_turf)
-		if(P.vel_x > 0)
-			if(!old_turf.allow_bullet_pass && old_turf.density_east)
-				P.penetrations_left = -1
-				return list(old_turf)
-			if(!new_turf.allow_bullet_pass && new_turf.density_west)
-				P.penetrations_left = -1
-				return list(new_turf)
-		else if(P.vel_x < 0)
-			if(!old_turf.allow_bullet_pass && old_turf.density_west)
-				P.penetrations_left = -1
-				return list(old_turf)
-			if(!new_turf.allow_bullet_pass && new_turf.density_east)
-				P.penetrations_left = -1
-				return list(new_turf)
-		P.penetrations_left = -1
-		return list(src) //Weird.
-	else
-		. = list()
+		if(src == old_turf)
+			if(P.vel_y > 0 && old_turf.density_north)
+				return TRUE
+			else if(P.vel_y < 0 && old_turf.density_south)
+				return TRUE
+			if(P.vel_x > 0 && old_turf.density_east)
+				return TRUE
+			else if(P.vel_x < 0 && old_turf.density_west)
+				return TRUE
+		if(src == new_turf)
+			if(P.vel_y > 0 && new_turf.density_south)
+				return TRUE
+			else if(P.vel_y < 0 && new_turf.density_north)
+				return TRUE
+			if(P.vel_x > 0 && new_turf.density_west)
+				return TRUE
+			else if(P.vel_x < 0 && new_turf.density_east)
+				return TRUE
 
-	//Take priority of existing targets on a turf before ones that existed before.
-	for(var/k in src.contents)
-		var/atom/movable/A = k
-		if(!A.density)
-			continue
-		if(A.projectile_should_collide(P,new_turf,old_turf) && P.on_projectile_hit(A))
-			. |= A
-			P.penetrations_left--
-			if(P.penetrations_left < 0)
-				return .
+	return FALSE
 
-	for(var/k in src.old_living)
-		var/mob/living/L = k
-		if(!L.density)
-			continue
-		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1)
-			continue
-		if(L.projectile_should_collide(P,new_turf,old_turf))
-			. |= L
-			P.penetrations_left--
-			if(P.penetrations_left < 0)
-				return .
+/obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+	return FALSE
 
-	return .
+/obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
-/obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
-	return null
-
-/obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+	if(bullet_block_chance <= 0)
+		return FALSE
 
 	. = ..()
 
 	if(!.)
-		return null
-
-	if(bullet_block_chance <= 0)
-		return null
+		return FALSE
 
 	var/projectile_dir = get_dir(old_turf,new_turf)
-	if(projectile_dir & src.collision_dir)
-		if(bullet_block_chance >= 100)
-			return src
-		else if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
-			return null
-		else if(luck(P.owner,bullet_block_chance,FALSE))
-			return null
+	if(!(projectile_dir & src.collision_dir))
+		return FALSE
+
+	if(bullet_block_chance >= 100) //Intentionally placed before distance checking in order to prevent exploits.
+		return TRUE
+
+	if(P.start_turf && get_dist(P.start_turf,src) <= 1 )
+		return FALSE
+
+	return !luck(P.owner,bullet_block_chance,FALSE)
+
+
+
+
 

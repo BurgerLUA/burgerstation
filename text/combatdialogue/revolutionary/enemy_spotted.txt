@@ -1,0 +1,6 @@
+enemy spotted!
+enemy loyalists spotted!
+hostile here!
+hostile found!
+enemy sighted!
+loyalist spotted!

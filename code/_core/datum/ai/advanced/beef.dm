@@ -8,4 +8,4 @@
 	if(target == hunt_target)
 		return is_facing(target,owner)
 
-	return check_aggression(target)
+	return ..()

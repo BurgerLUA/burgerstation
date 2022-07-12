@@ -12,6 +12,6 @@
 
 	markup = rand(4,8)
 
-	CREATE_LOOT(/loot/trash_pile,src.loc)
+	SPAWN_LOOT(/loot/value/medium,src.loc)
 
 	return ..()

@@ -86,6 +86,16 @@
 	name = "syndicate supply pod"
 	icon_state = "syndiepod"
 
+
+/obj/structure/interactive/crate/closet/supply_pod/syndicate/elite_operatives
+	name = "elite operative supply pod"
+	auto_open = TRUE
+
+/obj/structure/interactive/crate/closet/supply_pod/syndicate/elite_operatives/Generate()
+	. = ..()
+
+
+
 /obj/structure/interactive/crate/closet/supply_pod/stray
 	name = "stray supply pod"
 	icon_state = "squadpod"

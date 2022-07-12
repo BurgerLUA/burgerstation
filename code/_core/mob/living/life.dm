@@ -170,20 +170,6 @@
 
 	var/turf/T = get_turf(src)
 
-	if(boss && T)
-		var/list/loot_spawned = CREATE_LOOT(/loot/treasure/boss,T)
-		for(var/k in loot_spawned)
-			var/obj/item/I = k
-			var/item_move_dir = pick(DIRECTIONS_ALL)
-			var/turf/turf_to_move_to = get_step(T,item_move_dir)
-			if(!turf_to_move_to)
-				turf_to_move_to = T
-			I.force_move(turf_to_move_to)
-			var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
-			I.pixel_x = -pixel_offsets[1]*TILE_SIZE
-			I.pixel_y = -pixel_offsets[2]*TILE_SIZE
-			animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
-
 	//Was it a kill?
 	if(!suicide)
 		var/list/people_who_contributed = list()
@@ -199,6 +185,26 @@
 		if(length(people_who_killed))
 			on_killed(people_who_killed)
 
+		if(boss && T)
+			var/rarity = 0
+			var/rarity_count = 0
+			for(var/mob/living/advanced/player/P in people_who_killed)
+				rarity += P.get_rarity()
+				rarity_count++
+			rarity *= 1/rarity_count
+			var/list/loot_spawned = SPAWN_LOOT(/loot/treasure/boss,T,rarity)
+			for(var/k in loot_spawned)
+				var/obj/item/I = k
+				var/item_move_dir = pick(DIRECTIONS_ALL)
+				var/turf/turf_to_move_to = get_step(T,item_move_dir)
+				if(!turf_to_move_to)
+					turf_to_move_to = T
+				I.force_move(turf_to_move_to)
+				var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
+				I.pixel_x = -pixel_offsets[1]*TILE_SIZE
+				I.pixel_y = -pixel_offsets[2]*TILE_SIZE
+				animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
 	HOOK_CALL("post_death")
 
 	if(expiration_time == -1)
@@ -207,7 +213,7 @@
 		CALLBACK("\ref[src]_make_unrevivable",expiration_time,src,.proc/make_unrevivable)
 
 	if(delete_on_death)
-		dust()
+		qdel(src)
 
 	return TRUE
 
@@ -226,18 +232,13 @@
 
 	if(!dead)
 		handle_natural_regen()
-
-	if(health && !dead)
-		var/old_pain_removal = pain_removal
-		pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
-		if(old_pain_removal != pain_removal)
-			queue_health_update = TRUE
+		if(health)
+			var/old_pain_removal = pain_removal
+			pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
+			if(old_pain_removal != pain_removal)
+				QUEUE_HEALTH_UPDATE(src)
 
 	handle_health_buffer()
-
-	if(health && queue_health_update)
-		health.update_health()
-		queue_health_update = FALSE
 
 	if(flash_overlay && flash_overlay.duration > 0)
 		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
@@ -266,10 +267,10 @@
 
 /mob/living/proc/on_life_fast()
 
-	for(var/k in stat_buttons_to_update)
+	for(var/k in stat_elements_to_update)
 		var/obj/hud/button/stat/B = k
-		if(!B.update())
-			stat_buttons_to_update -= k
+		if(!B || !B.update())
+			stat_elements_to_update -= k
 
 	if(stun_immunity > 0)
 		stun_immunity = max(stun_immunity - TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
@@ -338,7 +339,7 @@ mob/living/proc/on_life_slow()
 		if(BR) consume_multiplier *= BR.regen_multiplier
 		var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
 		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
-		queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(src)
 	else if(blood_volume > blood_volume_max)
 		blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
 		if(blood_volume >= blood_volume_max*1.05)

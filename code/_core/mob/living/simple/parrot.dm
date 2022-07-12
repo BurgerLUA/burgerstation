@@ -95,7 +95,7 @@
 	return TRUE
 
 /mob/living/simple/parrot/clockwork
-	name = "clock hark"
+	name = "clock hawk"
 	desc = "ROBOTIC SQUAWK!"
 	desc_extended = "A basic brass hawk."
 	icon = 'icons/mob/living/simple/clockwork_hawk.dmi'

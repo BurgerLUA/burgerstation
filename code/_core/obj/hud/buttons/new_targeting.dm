@@ -1,7 +1,7 @@
 /obj/hud/button/targeting_new
 	name = "limb targeting"
 	desc = "Aim for the head!"
-	desc_extended = "Where you press determines where you attack."
+	desc_extended = "Click here to change where your character will target. Note that the accuracy of where you target is affected by many variables such as skill level, movement, and the enemy's evasiveness."
 	icon = 'icons/hud/paperdoll.dmi'
 	icon_state = "base"
 	screen_loc = "RIGHT,BOTTOM:11"
@@ -41,8 +41,8 @@
 		var/mob/living/advanced/player/P = caller
 		var/click_flags = P.client.get_click_flags(params,TRUE)
 		if(!params || !params[PARAM_ICON_X] || !params[PARAM_ICON_Y]) return
-		var/x_click = text2num(params[PARAM_ICON_X])/2
-		var/y_click = text2num(params[PARAM_ICON_Y])/2
+		var/x_click = params[PARAM_ICON_X]/2
+		var/y_click = params[PARAM_ICON_Y]/2
 
 		if(x_click <= 26)
 			if(click_flags & CLICK_LEFT)

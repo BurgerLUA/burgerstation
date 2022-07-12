@@ -10,8 +10,8 @@
 	var/mob/living/vehicle/V = owner
 
 	var/list/params = list(
-		PARAM_ICON_X = num2text(pick(target_distribution_x)),
-		PARAM_ICON_Y = num2text(pick(target_distribution_y)),
+		PARAM_ICON_X = pick(target_distribution_x),
+		PARAM_ICON_Y = pick(target_distribution_y),
 		"left" = left_click,
 		"right" = !left_click,
 		"middle" = 0,

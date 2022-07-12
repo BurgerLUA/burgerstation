@@ -64,7 +64,7 @@
 		/obj/item/clothing/mask/gas/tactical,
 		/obj/item/clothing/head/hat/beret/armored,
 		/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops,
-		/obj/item/clothing/overwear/armor/plate_carrier/black,
+		//obj/item/clothing/overwear/armor/plate_carrier/black,
 		/obj/item/armor_plate/light,
 		/obj/item/armor_plate/medium,
 		/obj/item/armor_plate/heavy,

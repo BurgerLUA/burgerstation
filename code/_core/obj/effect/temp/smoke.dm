@@ -61,7 +61,7 @@
 
 	if(isnum(original_reagent_volume))
 		reagent_volume_original = original_reagent_volume
-	else
+	else if(container)
 		reagent_volume_original = container.volume_current
 
 	if(isnum(original_smoke_volume))

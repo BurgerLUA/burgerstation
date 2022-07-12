@@ -55,7 +55,7 @@
 	name = "right cyborg sensor"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/ear/cyborg/left

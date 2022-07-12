@@ -284,7 +284,7 @@ mob/living/advanced/Login()
 	restore_inventory()
 	restore_stat_elements()
 	restore_local_machines()
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/advanced/proc/restore_local_machines()
 	for(var/k in local_machines)
@@ -473,7 +473,7 @@ mob/living/advanced/Login()
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,FALSE,TRUE)
+		var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,TRUE,TRUE)
 		var/damagetype/D = all_damage_types[/damagetype/explosion/]
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
@@ -486,13 +486,13 @@ mob/living/advanced/Login()
 		var/obj/item/organ/O = k
 		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
-/mob/living/advanced/gib(var/hard=FALSE)
+/mob/living/advanced/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)
 		return FALSE
 	if(gibbed)
 		return FALSE
 	gibbed = TRUE
 	var/obj/item/organ/O = labeled_organs[BODY_TORSO]
-	if(O) return O.gib(hard)
+	if(O) return O.gib(gib_direction,hard)
 	gibbed = FALSE //Hacky, but it works.
 	return FALSE

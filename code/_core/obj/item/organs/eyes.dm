@@ -59,7 +59,7 @@
 	name = "right cyborg optical sensor"
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/eye/cyborg/left

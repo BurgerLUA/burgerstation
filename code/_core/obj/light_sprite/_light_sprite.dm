@@ -9,13 +9,14 @@
 
 	appearance_flags = LONG_GLIDE | TILE_BOUND
 
-	var/atom/movable/owner //Who actually owns this.
-	var/atom/movable/top_atom //What the top atom actually is.
+	var/atom/movable/owner //What actually owns this. (ie a flare)
+	var/atom/movable/top_atom //What the top atom actually is. (ie the person carrying the flare)
 
+	var/power = 0
 	size = 1 //Transform multiplier
 
 /obj/light_sprite/Destroy()
-	update(null) //kills top_atom
+	set_top_atom(null) //kills top_atom
 	owner = null
 	return ..()
 
@@ -29,26 +30,28 @@
 
 /obj/light_sprite/force_move(var/atom/new_loc)
 	if(top_atom) glide_size = top_atom.glide_size
-	return ..()
+	. = ..()
 
-/obj/light_sprite/proc/update(var/atom/movable/new_source)
+/obj/light_sprite/proc/set_top_atom(var/atom/movable/new_top_atom)
 
-	if(!new_source)
-		if(top_atom)
-			top_atom.light_sprite_sources -= src
-			top_atom = null
-		return TRUE
+	if(top_atom == new_top_atom)
+		return FALSE //No need. Even if it's null.
 
-	if(top_atom != new_source)
-		if(top_atom)
-			top_atom.light_sprite_sources -= src
-		top_atom = new_source
+	if(top_atom) //Remove existing top_atom
+		top_atom.light_sprite_sources -= src
+		top_atom = null
+
+	if(new_top_atom)
+		var/turf/T = get_turf(new_top_atom)
+		if(!T)
+			CRASH("Invalid set_top_atom ([new_top_atom.get_debug_name()])!")
+			return FALSE
+		top_atom = new_top_atom
 		top_atom.light_sprite_sources |= src
-		force_move(get_turf(top_atom))
+		force_move(T)
 		set_dir(top_atom.dir)
-		return TRUE
 
-	return FALSE
+	return TRUE
 
 /obj/light_sprite/get_base_transform()
 	. = ..()
@@ -66,4 +69,13 @@
 /obj/light_sprite/update_sprite()
 	. = ..()
 	transform = get_base_transform()
+	pixel_x = owner.light_offset_x
+	pixel_y = owner.light_offset_y
+	var/light_mod = 1
+	if(is_inventory(owner.loc))
+		var/obj/hud/inventory/I = owner.loc
+		if(!I.worn)
+			light_mod = I.light_mod
+
+	alpha = power*255*light_mod
 

@@ -112,7 +112,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype
-	name = "\improper .223 Space Raider Carbine Prototype"
+	name = "\improper .223 Space Raider Carbine PROTO"
 	desc_extended = "A mass-produced prototype carbine usually only seen in the hands of collectors. Can still be used as a decent weapon."
 
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/223_rifle.dmi'
@@ -162,3 +162,25 @@
 	movement_spread_base = 0.005
 
 	can_wield = TRUE
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype/equipped
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype/equipped/Generate()
+
+	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
+	INITIALIZE(attachment_sight)
+	GENERATE(attachment_sight)
+	FINALIZE(attachment_sight)
+
+	attachment_undermount = new /obj/item/attachment/undermount/angled_grip(src)
+	INITIALIZE(attachment_undermount)
+	GENERATE(attachment_undermount)
+	FINALIZE(attachment_undermount)
+
+	attachment_barrel = new /obj/item/attachment/barrel/charger(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)
+
+	. = ..()

@@ -45,12 +45,6 @@
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 
-/obj/item/clothing/proc/get_defense_rating()
-	var/armor/A = ARMOR(armor)
-	if(!A)
-		return list()
-	return A.defense_rating
-
 /obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
@@ -100,7 +94,7 @@
 		var/obj/item/C = k
 		C.initialize_blends()
 
-/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc,var/silent=FALSE)
+/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()
 	remove_additonal_clothing()
 

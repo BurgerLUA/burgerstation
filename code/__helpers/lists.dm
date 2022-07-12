@@ -88,19 +88,29 @@
 		return "[output][and_text][quote][input[index]][quote]"
 
 
-/proc/pickweight(var/list/L) //Credit to Nanako for most of this code.
+/proc/pickweight(var/list/L,var/rarity=0) //Credit to Nanako for some of this code. Rarity should be between 0 and 1. Higher rarities mean that lower weights are picked more.
+	if(!L) CRASH("pickweight() invalid list provided!")
+	rarity = clamp(rarity,0,1)
 	var/total = 0
+	var/highest = 0
+	var/lowest = -1
 	var/item
 	for (item in L)
-		if (isnull(L[item]))
+		if(isnull(L[item]))
 			L[item] = 1
+		if(L[item] <= 0)
+			continue
 		total += L[item]
-	total = rand() * total
+		if(lowest == -1)
+			lowest = L[item]
+		else
+			lowest = min(lowest,L[item])
+		highest = max(highest,L[item])
+	total = rand() * total //rand() is precise
 	for (item in L)
-		total -= L[item]
+		total -= (L[item] * (1 - L[item]/highest) * (highest/lowest))*rarity + L[item]*(1-rarity)
 		if (total <= 0)
 			return item
-
 	return null
 
 #define value_or_null(the_list,key) the_list[key] ? the_list[key] : null

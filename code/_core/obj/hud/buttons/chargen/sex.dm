@@ -1,5 +1,6 @@
 /obj/hud/button/chargen/sex/
 	name = "change sex"
+	desc_extended = "Click here to change your character's sex. Note that changing your character's sex will cause you to lose your previous changes."
 	icon_state = "change_sex"
 	screen_loc = "CENTER-2,CENTER+0"
 	user_colors = TRUE

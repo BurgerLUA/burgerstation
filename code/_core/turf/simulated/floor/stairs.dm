@@ -11,6 +11,8 @@
 
 	map_color = "#FFFFFF"
 
+	exposed = FALSE
+
 /turf/simulated/floor/stair/ztravel/Exit(atom/movable/O, atom/newloc)
 
 	. = ..()

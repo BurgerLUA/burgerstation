@@ -50,7 +50,10 @@
 				owner.move_dir = get_dir(objective_attack,owner) //RUN AWAY.
 				owner.movement_flags = MOVEMENT_RUNNING
 				return TRUE
-
+		if(!objective_attack.z) //Inside something. Get close to it.
+			owner.move_dir = get_dir(owner,get_turf(objective_attack))
+			owner.movement_flags = MOVEMENT_RUNNING
+			return TRUE
 		var/target_distance = get_dist(owner,objective_attack)
 		if(target_distance < attack_distance_min) //Get farther to attack.
 			owner.move_dir = get_dir(objective_attack,owner)

@@ -16,5 +16,5 @@
 
 	if(. && update && istype(owner.loc,/mob/living/vehicle/mech/modular/))
 		var/mob/living/vehicle/mech/modular/A = owner.loc
-		A.queue_health_update = TRUE
+		QUEUE_HEALTH_UPDATE(A)
 

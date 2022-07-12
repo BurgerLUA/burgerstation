@@ -3,8 +3,6 @@
 	target_distribution_x = list(16)
 	target_distribution_y = list(11)
 
-	var/next_talk = 0
-
 /ai/dick_kickem/handle_attacking()
 
 	if(objective_attack && next_talk <= world.time)

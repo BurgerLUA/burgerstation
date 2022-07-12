@@ -37,7 +37,9 @@ var/global/list/wishgranter_speak_lines = list(
 	INTERACT_DELAY(10)
 	SPAM_CHECK(10)
 
-	if(is_inventory(object))
+	if(is_inventory(object) && is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		var/rarity = P.get_rarity()
 		caller.to_chat(span("warning","You carefully reach in to gently touch \the [src.name]..."))
 		if(icon_state == "wishranter_off")
 			caller.to_chat(span("warning","The power of \the [src.name] seems to have faded..."))
@@ -46,7 +48,7 @@ var/global/list/wishgranter_speak_lines = list(
 			caller.to_chat(span("warning","\The [src.name] seems to find you unworthy of its reward..."))
 			return TRUE
 		var/turf/T = get_turf(caller)
-		var/list/atom/created_loot = CREATE_LOOT(loot_to_give,T)
+		var/list/atom/created_loot = SPAWN_LOOT(loot_to_give,T,rarity)
 		if(!length(created_loot))
 			log_error("Warning: Wishgranter had invalid loot ([loot_to_give]).")
 			return TRUE

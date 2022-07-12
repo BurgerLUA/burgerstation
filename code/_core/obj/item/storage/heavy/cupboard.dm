@@ -7,7 +7,7 @@
 	max_inventory_x = 6
 	dynamic_inventory_count = 6*2
 
-	pixel_y = 24
+	pixel_y = 32
 
 	color = "#A05120"
 

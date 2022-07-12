@@ -9,7 +9,7 @@ var/global/list/ability_colors = list(
 	name = "ERROR"
 	var/id = null
 	desc = "Slot button for quick actions."
-	desc_extended = "Press this button to activate that item on the tile you're pointing."
+	desc_extended = "Press this button to activate that item on the tile you're pointing. New abilities can be slotted at the ability machine in Science."
 	icon_state = "square_trim"
 	screen_loc = "LEFT,TOP"
 	alpha = 200
@@ -65,6 +65,13 @@ var/global/list/ability_colors = list(
 		I2.maptext = "<div align='right' style='color:[ability_colors[ability.resource_type]]'>[ability.cost]</div>"
 		I2.maptext_x = -5
 		add_overlay(I2)
+		name = ability.name
+		desc_extended = ability.desc
+	else
+		name = initial(name)
+		desc_extended = initial(desc_extended)
+
+	tooltip_text = get_tooltip_text()
 
 /obj/hud/button/ability/think()
 
@@ -93,11 +100,6 @@ var/global/list/ability_colors = list(
 
 	. = ..()
 
-	if(ability)
-		name = ability.name
-	else
-		name = "empty ability"
-
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		A.ability_buttons[id] = src
@@ -105,12 +107,10 @@ var/global/list/ability_colors = list(
 /obj/hud/button/ability/A
 	id = "1"
 	screen_loc = "LEFT,TOP"
-	ability = /ability/quick_draw
 
 /obj/hud/button/ability/B
 	id = "2"
 	screen_loc = "LEFT+1,TOP"
-	ability = /ability/dash
 
 /obj/hud/button/ability/C
 	id = "3"

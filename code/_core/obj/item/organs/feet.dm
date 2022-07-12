@@ -83,7 +83,7 @@
 
 	flags_organ = FLAG_ORGAN_BEAST_FEET
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/foot/reptile/left
 	name = "left reptile foot"
@@ -110,7 +110,7 @@
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
-	defense_rating = REPTILE_ARMOR
+	armor = /armor/reptile
 
 /obj/item/organ/foot/reptile_advanced/left
 	name = "left advanced reptile foot"
@@ -142,7 +142,7 @@
 	enable_glow = TRUE
 	enable_detail = TRUE
 
-	defense_rating = DIONA_ARMOR
+	armor = /armor/diona
 
 /obj/item/organ/foot/diona/left
 	name = "left diona foot"
@@ -172,7 +172,7 @@
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
-	defense_rating = CYBORG_ARMOR
+	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/foot/cyborg/left
@@ -200,7 +200,7 @@
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
-	defense_rating = MEATMEN_ARMOR
+	armor = /armor/beefman
 
 /obj/item/organ/foot/beefman/left
 	name = "left beef foot"
@@ -228,7 +228,7 @@
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
-	defense_rating = SKELETON_ARMOR
+	armor = /armor/skeleton
 
 	projectile_dodge_chance = 10
 
@@ -286,7 +286,7 @@
 
 	inventories = list(/obj/hud/inventory/organs/right_foot)
 
-	defense_rating = GOBLIN_ARMOR
+	armor = /armor/goblin
 
 /obj/item/organ/foot/goblin/left
 	name = "left goblin foot"

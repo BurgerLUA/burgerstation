@@ -124,8 +124,7 @@
 		if(ispath(D,/turf/))
 			T.change_turf(D)
 		else if(ispath(D,/loot/))
-			var/loot/L = LOOT(D)
-			L.do_spawn(T)
+			SPAWN_LOOT(D,T)
 		else if(ispath(D,/atom/movable))
 			if(is_item(D))
 				var/obj/item/I = D
@@ -146,8 +145,7 @@
 /obj/marker/spawning/random/maintenance/do_spawn(var/turf/T)
 	var/datum/D = ..()
 	if((ispath(D,/obj/structure/table/) || ispath(D,/obj/structure/interactive/crate)) && prob(25))
-		var/loot/L = LOOT(/loot/trash_pile)
-		L.do_spawn(T)
+		SPAWN_LOOT(/loot/value/low,T)
 
 /obj/marker/spawning/random/maintenance
 	icon_state = "maint"
@@ -213,6 +211,56 @@
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced = 30,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite = 30
 	)
+
+/obj/marker/spawning/random/misc
+	name = "misc loot"
+	icon_state = "misc"
+	possible_objects = list(
+		/loot/misc = 1
+	)
+
+/obj/marker/spawning/random/dangerous
+	name = "dangerous loot"
+	icon_state = "misc"
+	possible_objects = list(
+		/loot/misc/dangerous = 1
+	)
+	color = COLOR_CRIMSON
+
+/obj/marker/spawning/random/valuable
+	name = "valuable loot"
+	icon_state = "misc"
+	possible_objects = list(
+		/loot/misc/safe = 1
+	)
+	color = COLOR_GOLD
+
+/obj/marker/spawning/random/trash
+	name = "trash(?) loot"
+	icon_state = "misc"
+	possible_objects = list(
+		/loot/value/low = 1000,
+		/loot/value/medium = 250,
+		/loot/value/high = 100,
+		/loot/value/extreme =1
+
+	)
+	color = COLOR_GREY
+
+/obj/marker/spawning/random/kitchen
+	name = "kitchen loot"
+	icon_state = "kitchen"
+	possible_objects = list(
+		/loot/misc/kitchen = 1
+	)
+
+/obj/marker/spawning/random/food
+	name = "food and drink loot"
+	icon_state = "food"
+	possible_objects = list(
+		/loot/misc/food = 1
+	)
+
 
 /obj/marker/spawning/random/vault_loot/secure
 	name = "random secure vault loot"

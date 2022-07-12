@@ -16,7 +16,7 @@
 	id = ATTRIBUTE_STRENGTH
 	desc = "Gronk smash!"
 	desc_extended = "A measure of how strong you are in this world. Affects damage with some weapons as well as the ability to perform certain actions, such as resisting out of a grab or maintaining a grab."
-	flags = ATTRIBUTE_DAMAGE
+	flags = ATTRIBUTE_DAMAGE | ATTRIBUTE_COMBAT
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -28,7 +28,7 @@
 	id = ATTRIBUTE_FORTITUDE
 	desc = "Cock and Ball Torture (also known as CBT) is a German goregrind band formed on 22 February 1997. The group is known for its groove-heavy riffing and pitchshifted vocals. The band is noted for its pornography-themed imagery and song titles and are one of the more noteworthy acts in the pornogrind subgenre."
 	desc_extended = "A measure of how resilient you are to this world. Affects health regeneration."
-	flags = ATTRIBUTE_RESISTANCE
+	flags = ATTRIBUTE_RESISTANCE | ATTRIBUTE_COMBAT | ATTRIBUTE_NO_XP_MUL
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -40,7 +40,7 @@
 	id = ATTRIBUTE_CONSTITUTION
 	desc = "Not the worst stat!"
 	desc_extended = "A measure of how resistant you are to this world. Affects resistances to all physical (blade, blunt, pierce) damage types."
-	flags = ATTRIBUTE_STAT
+	flags = ATTRIBUTE_STAT | ATTRIBUTE_COMBAT
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -69,7 +69,7 @@
 	id = ATTRIBUTE_INTELLIGENCE
 	desc = "Different from wisdom!"
 	desc_extended = "A measure of how effective you are at using magic. Affects damage with some weapons and magic as well as the ability to perform certain actions."
-	flags = ATTRIBUTE_DAMAGE
+	flags = ATTRIBUTE_DAMAGE | ATTRIBUTE_COMBAT
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -81,7 +81,7 @@
 	id = ATTRIBUTE_WILLPOWER
 	desc = "Where there is a will, there is a way."
 	desc_extended = "A measure of how long your mind can last in this world. Affects magic resistance and and mana regeneration."
-	flags = ATTRIBUTE_RESISTANCE
+	flags = ATTRIBUTE_RESISTANCE | ATTRIBUTE_COMBAT | ATTRIBUTE_NO_XP_MUL
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -93,7 +93,7 @@
 	id = ATTRIBUTE_SOUL
 	desc = "Not how good you are at music."
 	desc_extended = "A measure of how strong your soul is. Affects special soul-based encounters."
-	flags = ATTRIBUTE_RESISTANCE
+	flags = ATTRIBUTE_RESISTANCE | ATTRIBUTE_COMBAT
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -104,7 +104,7 @@
 	id = ATTRIBUTE_WISDOM
 	desc = "Different from intelligence!"
 	desc_extended = "A measure of how wise you are. Affects maximum mana."
-	flags = ATTRIBUTE_STAT
+	flags = ATTRIBUTE_STAT | ATTRIBUTE_NO_XP_MUL
 	experience_power = 1
 	experience_multiplier = 2
 
@@ -122,7 +122,7 @@
 	id = ATTRIBUTE_DEXTERITY
 	desc = "Weebs max this skill."
 	desc_extended = "A measure of how well you can control your body. Affects damage with some weapons as well as the speed of performing actions."
-	flags = ATTRIBUTE_DAMAGE
+	flags = ATTRIBUTE_DAMAGE | ATTRIBUTE_COMBAT
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -134,7 +134,7 @@
 	id = ATTRIBUTE_RESILIENCE
 	desc = "Resist!"
 	desc_extended = "A measure of how long your body can last in this world. Affects resistance to stamina damage as well as stamina regeneration"
-	flags = ATTRIBUTE_RESISTANCE
+	flags = ATTRIBUTE_RESISTANCE | ATTRIBUTE_COMBAT | ATTRIBUTE_NO_XP_MUL
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
@@ -162,7 +162,7 @@
 	id = ATTRIBUTE_AGILITY
 	desc = "Agile!"
 	desc_extended = "A measure of how fast you move. Affects your movement speed as well as the speed of which you perform movement based actions."
-	flags = ATTRIBUTE_STAT
+	flags = ATTRIBUTE_STAT | ATTRIBUTE_NO_XP_MUL
 	experience_power = 1.9
 	experience_multiplier = 5.2
 
@@ -172,7 +172,7 @@
 	id = ATTRIBUTE_LUCK
 	desc = "This attribute is the reason why casinos don't exist."
 	desc_extended = "A measure of how gosh darn lucky you are to be alive. Luck affects everything you do in small or, sometimes big, ways."
-	flags = ATTRIBUTE_STAT
+	flags = ATTRIBUTE_STAT | ATTRIBUTE_NO_XP_MUL
 	chargen_min_level = 40
 	chargen_max_level = 50
 	default_level = 50

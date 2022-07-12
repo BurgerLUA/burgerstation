@@ -1,6 +1,7 @@
 /obj/hud/button/cash_money
 	name = "credits"
 	desc = "Currency of the universe."
+	desc_extended = "The amount of credits your character has in their intergalatic NanoTrasen bank account. Credits can be earned by completing objectives or by selling items."
 
 	var/amount = 0
 
@@ -43,7 +44,8 @@
 
 
 /obj/hud/button/microstransactions
-	name = "burger buxs"
+	name = "burgerbux"
+	desc_extended = "The amount of burgerbux your account has. Burgerbux is bound to your ckey, and cannot be traded. You can gain burgerbux by playing the game, and spend it on (almost) useless cosmetics in the theatre."
 	screen_loc = "RIGHT,TOP-1:-16"
 	icon_state = "currency"
 

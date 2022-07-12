@@ -78,9 +78,11 @@
 
 	if(!frozen && linked_pick)
 		var/list/new_params = params2list(params)
+		new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
+		new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
-		var/icon_x = text2num(new_params["icon-x"]) - 80
-		var/icon_y = text2num(new_params["icon-y"]) - 80
+		var/icon_x = new_params[PARAM_ICON_X] - 80
+		var/icon_y = new_params[PARAM_ICON_Y] - 80
 
 		icon_y = max(1,icon_y)
 

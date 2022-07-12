@@ -56,7 +56,7 @@
 		QDEL_NULL(light)
 	else
 		if(light)
-			light.update()
+			light.set_top_atom()
 			if(debug) log_debug("Light for [src.get_debug_name()] is being updated.")
 		else
 			light = new /light_source(src)

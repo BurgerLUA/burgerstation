@@ -147,7 +147,7 @@
 
 	show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 
 

@@ -102,11 +102,15 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	screen_loc = "CENTER-3,CENTER+3"
 
 /obj/hud/button/chargen/beardstyle/
+	name = "change bearstyle"
+	desc_extended = "This will change your beardstyle."
 	icon_state = "square_round"
 	var/hair_num = 0
 	var/hair_color = "#000000"
 
 	chargen_flags = CHARGEN_BEARD
+
+
 
 /obj/hud/button/chargen/beardstyle/update_icon()
 
@@ -143,6 +147,8 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		A.handle_beardstyle_chargen(hair_num)
 
 /obj/hud/button/chargen/beardstyle/main
+	name = "change beard color"
+	desc_extended = "Your currently selected beard style. Clicking here will change the color."
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+3"
 
@@ -152,7 +158,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
-		var/desired_color = input("Hair Color","Hair Color",hair_color) as color|null
+		var/desired_color = input("Beard Color","Beard Color",hair_color) as color|null
 		if(desired_color)
 			A.handle_beardstyle_chargen(hair_num,desired_color)
 

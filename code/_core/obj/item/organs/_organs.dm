@@ -62,8 +62,6 @@
 
 	var/has_pain = FALSE
 
-	var/list/defense_rating = HUMAN_ARMOR
-
 	var/can_gib = TRUE
 
 	mouse_opacity = 0 //For now
@@ -78,6 +76,8 @@
 	var/broken_name //Null basically means generate.
 
 	var/projectile_dodge_chance = 0
+
+	var/armor/armor = /armor/default_organic
 
 /obj/item/organ/proc/check_hit_chance(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
@@ -150,9 +150,6 @@
 		var/image/I = new/image(initial(icon),"[icon_state]_underlay")
 		add_underlay(I)
 
-/obj/item/organ/proc/get_defense_rating()
-	return defense_rating
-
 /obj/item/organ/proc/send_pain_response(var/pain_amount=50)
 	if(!has_pain)
 		return FALSE
@@ -213,19 +210,18 @@
 			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
 				var/gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
 				if(A.dead)
-					gib_chance -= length(attached_organs)*10 //No cheesing torso.
+					gib_chance -= length(attached_organs)*20 //No cheesing torso.
 				else
-					gib_chance -= length(attached_organs)*30 //No cheesing torso.
-				if(gib_chance > 0) gib_chance += min(0,-health.health_current)*0.5*(gib_chance/100) //More damage means more of a chance to gib.
+					gib_chance -= length(attached_organs)*50 //No cheesing torso.
 				if(gib_chance > 0 && prob(gib_chance))
 					if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
 						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
 							var/mob/living/LA = attacker
 							if(LA.client) //And the person doing the gibbing is an active player.
-								gib()
+								gib(get_dir(attacker,src))
 							//Otherwise, don't gib.
 					else
-						gib()
+						gib(get_dir(attacker,src))
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)
@@ -246,7 +242,7 @@
 	limit--
 	return O.get_ending_organ(limit)
 
-/obj/item/organ/gib(var/hard=FALSE) //Hard gib destroys the limb.
+/obj/item/organ/gib(var/gib_direction=0x0,var/hard=FALSE) //Hard gib destroys the limb.
 
 	if(!can_gib)
 		return FALSE
@@ -265,11 +261,28 @@
 		if(A.blood_type)
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
+			var/list/base_normals = direction_to_pixel_offset(gib_direction)
+			base_normals[1] += RAND_PRECISE(-0.25,0.25) //Variation
+			base_normals[2] += RAND_PRECISE(-0.25,0.25) //Variation
 			for(var/i=1,i<=clamp(organ_size,1,4),i++)
-				create_blood(/obj/effect/cleanable/blood/gib,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2),TRUE)
+				create_blood(
+					/obj/effect/cleanable/blood/gib,
+					T,
+					R.color,
+					base_normals[1]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					base_normals[2]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					TRUE
+				)
 			if(gib_icon_state && enable_skin && additional_blends["skin"])
 				var/icon_blend/IB = additional_blends["skin"]
-				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(/obj/effect/cleanable/blood/body_gib,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE),TRUE)
+				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(
+					/obj/effect/cleanable/blood/body_gib,
+					T,
+					R.color,
+					base_normals[1]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					base_normals[2]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
+					TRUE
+				)
 				if(BG)
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = IB.color
@@ -277,7 +290,7 @@
 
 	for(var/k in attached_organs)
 		var/obj/item/organ/O = k
-		O.gib(hard)
+		O.gib(gib_direction,hard)
 
 	unattach_from_parent(T,hard)
 
@@ -372,7 +385,7 @@
 			create_blood(/obj/effect/cleanable/blood/drip,get_turf(A),R.color,A.pixel_x + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1),A.pixel_y + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1))
 			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
 			bleeding = CEILING(max(0,bleeding - (0.02 + bleed_amount*0.075)),0.01)
-			A.queue_health_update = TRUE
+			QUEUE_HEALTH_UPDATE(A)
 
 	return TRUE
 

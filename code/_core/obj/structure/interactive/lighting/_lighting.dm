@@ -44,7 +44,7 @@
 	var/area/A = null
 
 	A = get_area(src)
-	if(!A.apc)
+	if(!A.linked_apc)
 		desired_power_draw = 0
 	if(!A.requires_power)
 		desired_power_draw = 0

@@ -43,7 +43,7 @@
 
 		var/number_selected = 0
 
-		switch(text2num(params[PARAM_ICON_X]))
+		switch(params[PARAM_ICON_X])
 			if(1 to 10)
 				number_selected = 1
 			if(12 to 21)
@@ -53,7 +53,7 @@
 			else
 				number_selected = -100
 
-		switch(text2num(params[PARAM_ICON_Y]))
+		switch(params[PARAM_ICON_Y])
 			if(12 to 21)
 				number_selected *= 1
 			if(1 to 10)
@@ -88,7 +88,7 @@
 
 		var/number_selected = 0
 
-		switch(text2num(params[PARAM_ICON_X]))
+		switch(params[PARAM_ICON_X])
 			if(1 to 10)
 				number_selected = 7
 			if(12 to 21)
@@ -98,7 +98,7 @@
 			else
 				number_selected = -100
 
-		switch(text2num(params[PARAM_ICON_Y]))
+		switch(params[PARAM_ICON_Y])
 			if(22 to 32)
 				number_selected *= 1
 			if(11 to 20)

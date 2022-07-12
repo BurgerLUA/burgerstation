@@ -1,9 +1,6 @@
 /ai/proc/attack_message()
 	return TRUE
 
-/ai/proc/can_owner_attack(var/atom/target,var/left_click=FALSE)
-	return target.can_be_attacked(owner)
-
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
 
 	if(!owner || !target)
@@ -12,8 +9,8 @@
 	owner.move_dir = 0
 
 	var/list/params = list(
-		PARAM_ICON_X = "16",
-		PARAM_ICON_Y = "16",
+		PARAM_ICON_X = pick(target_distribution_x),
+		PARAM_ICON_Y = pick(target_distribution_y),
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,
@@ -21,6 +18,8 @@
 		"shift" = 0,
 		"alt" = 0
 	)
+
+	if(debug) log_debug("Do attack: [target].")
 
 	if(left_click)
 		params["left"] = TRUE
@@ -32,11 +31,26 @@
 	return TRUE
 
 /ai/proc/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
-		var/is_left_click = prob(left_click_chance)
-		spawn do_attack(objective_attack,is_left_click) //The spawn here is important as attacking has its own sleeps and whatnot.
-		return TRUE
-	return FALSE
+
+	if(!objective_attack)
+		return FALSE
+
+	if(get_dist(owner,objective_attack) > distance_target_max)
+		return FALSE
+
+	var/atom/objective_to_attack = objective_attack
+	if(!objective_to_attack.z) //Inside something.
+		objective_to_attack = objective_to_attack.loc
+		knows_about_lockers = TRUE
+		if(debug) log_debug("Knows about lockers")
+
+	if(!objective_to_attack) //Must be a null loc or something.
+		if(debug) log_debug("Null loc!")
+		return FALSE
+
+	spawn do_attack(objective_to_attack,prob(left_click_chance)) //The spawn here is important as attacking has its own sleeps and whatnot.
+	return TRUE
+
 
 var/global/list/difficulty_to_ai_modifier = list(
 	DIFFICULTY_EASY = 1,
@@ -61,7 +75,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 				return -dist*0.25 //Prioritize attacking other AI.
 			if(is_player(A))
 				var/mob/living/advanced/player/P = L
-				var/difficulty_mod = difficulty_to_ai_modifier[P.difficulty]
+				var/difficulty_mod = difficulty_to_ai_modifier[P.get_difficulty()]
 				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
 					return -9999 //Wow they're being overwhelmed. Very lowest priority.
 				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
@@ -70,9 +84,6 @@ var/global/list/difficulty_to_ai_modifier = list(
 	return -dist
 
 /ai/proc/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
-
-	if(L.z != owner.z)
-		return FALSE
 
 	if(L == owner)
 		return FALSE
@@ -163,5 +174,11 @@ var/global/list/difficulty_to_ai_modifier = list(
 		else if(alert_level != ALERT_LEVEL_COMBAT)
 			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
+
+	if(combat_dialogue && !stealthy && next_talk <= world.time && damage_amount >= 30 && prob(20+damage_amount))
+		var/returning_dialogue = SSdialogue.get_combat_dialogue(combat_dialogue,"self_hit",damage_amount)
+		if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
+		next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+
 
 	return TRUE

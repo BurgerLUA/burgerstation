@@ -17,3 +17,5 @@
 	item_slot_mod = SLOT_MOD_NONE
 
 	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
+
+	light_mod = 0.75

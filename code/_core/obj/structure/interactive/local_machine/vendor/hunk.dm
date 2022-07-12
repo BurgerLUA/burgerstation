@@ -10,7 +10,6 @@
 	stored_types = list(
 		/obj/item/container/edible/package/junkfood/halloween/coconut_joy,
 		/obj/item/container/edible/package/junkfood/halloween/credit,
-		/obj/item/container/edible/package/junkfood/halloween/elon_musk_bar,
 		/obj/item/container/edible/package/junkfood/halloween/hurr_bar,
 		/obj/item/container/edible/package/junkfood/halloween/kit_catgirl_metaclique_bar,
 		/obj/item/container/edible/package/junkfood/halloween/malf_way,

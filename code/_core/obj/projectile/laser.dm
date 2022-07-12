@@ -9,8 +9,6 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
-	plane = PLANE_EFFECT_LIGHTING
-
 /obj/projectile/bullet/laser/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"[icon_state]_outline")
@@ -81,7 +79,6 @@
 	name = "flames"
 	icon = 'icons/obj/projectiles/spray.dmi'
 	icon_state = "flamer"
-	plane = PLANE_EFFECT_LIGHTING
 
 /obj/projectile/bullet/flamer/update_projectile(var/tick_rate=1)
 	. = ..()

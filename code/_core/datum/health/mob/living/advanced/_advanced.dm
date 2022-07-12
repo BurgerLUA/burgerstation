@@ -11,7 +11,7 @@
 		if(!O.health)
 			continue
 		O.health.restore()
-	A.queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(A)
 
 
 /health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
@@ -116,14 +116,14 @@
 	if(is_player(A))
 		var/mob/living/advanced/player/P = A
 
-		var/actual_difficulty = enable_friendly_fire ? DIFFICULTY_NORMAL : P.difficulty
+		var/actual_difficulty = P.get_difficulty()
 
-		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_SURVIVOR)
+		if(actual_difficulty == DIFFICULTY_EXTREME || actual_difficulty == DIFFICULTY_NIGHTMARE)
 			health_regeneration = 0
 		else
 			health_regeneration = initial(health_regeneration)
 
-		if(actual_difficulty == DIFFICULTY_SURVIVOR)
+		if(actual_difficulty == DIFFICULTY_NIGHTMARE)
 			stamina_regen_cooef = 0.5
 			mana_regen_cooef = 0.5
 		else
@@ -192,28 +192,32 @@
 
 	var/mob/living/advanced/A = owner
 	var/obj/item/organ/O = hit_object
-	var/list/O_defense_rating = O.get_defense_rating()
-
-	for(var/damage_type in O_defense_rating)
-		if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
-			continue
-		if(IS_INFINITY(O_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
-			.[damage_type] = O_defense_rating[damage_type]
-			continue
-		.[damage_type] += O_defense_rating[damage_type]
+	var/armor/ARM_O = ARMOR(O.armor)
+	if(ARM_O)
+		.["deflection"] = max(.["deflection"],ARM_O.deflection)
+		for(var/damage_type in ARM_O.defense_rating)
+			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
+				continue
+			if(IS_INFINITY(ARM_O.defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+				.[damage_type] = ARM_O.defense_rating[damage_type]
+				continue
+			.[damage_type] += ARM_O.defense_rating[damage_type]
 
 	.["items"] = list()
 	for(var/obj/item/clothing/C in A.worn_objects)
 		if(!(O.id in C.protected_limbs))
 			continue
-		var/list/C_defense_rating = C.get_defense_rating()
-		for(var/damage_type in C_defense_rating)
+		var/armor/ARM_C = ARMOR(C.armor)
+		if(!ARM_C)
+			continue
+		.["deflection"] = max(.["deflection"],ARM_C.deflection)
+		for(var/damage_type in ARM_C.defense_rating)
 			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
 				continue
-			if(IS_INFINITY(C_defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
-				.[damage_type] = C_defense_rating[damage_type]
+			if(IS_INFINITY(ARM_C.defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+				.[damage_type] = ARM_C.defense_rating[damage_type]
 				continue
-			var/clothing_defense = C_defense_rating[damage_type]
+			var/clothing_defense = ARM_C.defense_rating[damage_type]
 			if(!ignore_luck)
 				if(C.luck > 50 && prob(C.luck-50))
 					clothing_defense *= 2

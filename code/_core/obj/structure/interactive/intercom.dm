@@ -11,7 +11,7 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/nanotrasen
 
-	plane = PLANE_OBJ
+	plane = PLANE_WALL_ATTACHMENT
 
 /obj/structure/interactive/intercom/Destroy()
 	QDEL_NULL(stored_radio)

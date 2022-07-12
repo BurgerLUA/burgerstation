@@ -25,6 +25,8 @@
 
 	ultra_persistant = TRUE
 
+	light_mod = 0
+
 /obj/hud/inventory/dynamic/secure
 	name = "secure space"
 	icon_state = "square_round"

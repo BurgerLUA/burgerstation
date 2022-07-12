@@ -15,15 +15,17 @@
 
 #define PLANE_SHUTTLE -41
 
-#define PLANE_DECAL -40
+#define PLANE_FLOOR_ATTACHMENT -40 //Decals, basically.
 
 #define PLANE_WIRE -39
 
 #define PLANE_WALL -38
 
+#define PLANE_WALL_ATTACHMENT -37 //Light fixtures, apcs, ect
+
 //Areas
-#define PLANE_AREA_INTERIOR -37
-#define PLANE_AREA_EXTERIOR -36
+#define PLANE_AREA_INTERIOR -36
+#define PLANE_AREA_EXTERIOR -35
 
 //Objs
 #define PLANE_BLOOD -33
@@ -57,14 +59,18 @@
 #define PLANE_EFFECT -10
 
 //Weather
-#define PLANE_WEATHER -4
+#define PLANE_WEATHER -6
+
+#define PLANE_PROJECTILE_NO_EFFECTS -5
 
 //Lighting
-#define PLANE_LIGHTING -3
+#define PLANE_LIGHTING -4
 
-#define PLANE_PARALLAX_LIGHTING -2
+#define PLANE_PARALLAX_LIGHTING -3
 
-#define PLANE_EFFECT_LIGHTING -1
+#define PLANE_EFFECT_LIGHTING -2
+
+#define PLANE_PROJECTILE -1
 
 #define PLANE_DARKNESS 0 // This is always 0. There is no way to change this.
 

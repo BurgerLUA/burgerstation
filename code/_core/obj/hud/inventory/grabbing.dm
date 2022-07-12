@@ -45,6 +45,7 @@
 	if(is_living(grabbed_object))
 		var/mob/living/L = grabbed_object
 		L.handle_transform()
+		L.stat_elements_to_update |= L.stat_elements["resist"]
 	HOOK_CALL_ADV("grab_changed",owner,args)
 
 	return TRUE
@@ -102,6 +103,9 @@
 /obj/hud/inventory/proc/reinforce_grab(var/mob/caller)
 
 	if(world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
+		return FALSE
+
+	if(grab_level > 1)
 		return FALSE
 
 	var/mob/living/grabbed_living = grabbed_object

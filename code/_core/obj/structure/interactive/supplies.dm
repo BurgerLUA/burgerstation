@@ -37,9 +37,13 @@
 	update_sprite()
 
 	if(loot)
+		var/rarity = 0
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			rarity = P.get_rarity()
 		for(var/i=1,i<=3,i++)
 			var/turf/actual_turf = locate(x+(i-1),y,z)
-			CREATE_LOOT(loot,actual_turf)
+			SPAWN_LOOT(loot,actual_turf,rarity)
 
 	return TRUE
 

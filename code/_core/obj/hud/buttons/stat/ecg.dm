@@ -14,6 +14,8 @@
 
 	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
 
+	mouse_opacity = 0
+
 /obj/hud/button/stat/ecg/New(var/desired_loc)
 	. = ..()
 	filters += filter(type="drop_shadow",x=0,y=0,size=2,offset=1,color=rgb(0,255,0,100))

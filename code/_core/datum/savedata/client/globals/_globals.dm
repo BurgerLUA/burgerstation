@@ -7,7 +7,8 @@ var/global/list/ckey_to_globaldata = list()
 		"burgerbux" = 0,
 		"stored_experience" = list(),
 		"stored_currency" = 0,
-		"new_player" = TRUE
+		"new_player" = TRUE,
+		"unlocked_abilities" = list("/ability/dash")
 	)
 
 /savedata/client/globals/get_file(var/file_id)

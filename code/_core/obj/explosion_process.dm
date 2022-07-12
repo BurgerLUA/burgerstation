@@ -21,6 +21,9 @@
 	icon_state = "[clamp(FLOOR(power/30,1),1,3)]"
 	if(velocity_dir)
 		dir = velocity_dir
+	var/turf/T = get_turf(src)
+	if(T)
+		blacklist[T] = TRUE
 	return ..()
 
 /obj/explosion_process/Destroy()
@@ -75,7 +78,6 @@
 
 		valid_turfs[T] = direction_mod
 		total_direction_mod += direction_mod
-		blacklist[T] = TRUE
 
 	var/has_existing = length(valid_existing)
 

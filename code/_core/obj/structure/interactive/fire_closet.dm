@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structure/fire_closet_new.dmi'
 	icon_state = "extinguisher"
 
-	plane = PLANE_OBJ
+	plane = PLANE_WALL_ATTACHMENT
 
 	var/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/stored_extinguisher
 

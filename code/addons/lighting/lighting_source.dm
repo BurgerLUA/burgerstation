@@ -97,7 +97,7 @@
 
 	parse_light_color()
 
-	update()
+	set_top_atom()
 
 #define INTELLIGENT_UPDATE(level)           \
 	if (needs_update == LIGHTING_NO_UPDATE) \
@@ -106,7 +106,7 @@
 		needs_update = level;
 
 // This proc will cause the light source to update the top atom, and add itself to the update queue.
-/light_source/proc/update(atom/new_top_atom)
+/light_source/proc/set_top_atom(atom/new_top_atom)
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)
 		if(top_atom != source_atom) // Remove ourselves from the light sources of that top atom.

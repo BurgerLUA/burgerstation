@@ -1,12 +1,5 @@
-#define POD_IDLE 0
-#define POD_PRE_LAUNCH 1
-#define POD_LAUNCHING 2
-#define POD_LAUNCHED 3
-#define POD_LANDING 4
-#define POD_LANDED 5
-#define POD_OPENING 6
-
 var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
+var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 
 /obj/structure/interactive/drop_pod
 	name = "orbital drop pod"
@@ -67,10 +60,10 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 	INTERACT_DELAY(10)
 
 	if(state == POD_IDLE) //Lets rock!
-		set_state(POD_PRE_LAUNCH)
+		set_state(caller,POD_PRE_LAUNCH)
 		return TRUE
 	else if(state == POD_PRE_LAUNCH && (caller in contents)) //OH GOD OH FUCK CANCEL.
-		set_state(POD_IDLE)
+		set_state(caller,POD_IDLE)
 		return TRUE
 
 	return ..()
@@ -90,45 +83,52 @@ var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
 	return ..()
 
 
-/obj/structure/interactive/drop_pod/proc/set_state(var/desired_state,var/turf/desired_loc) //desired_loc is optional
+/obj/structure/interactive/drop_pod/proc/set_state(var/mob/caller,var/desired_state,var/turf/desired_loc) //desired_loc is optional, same with caller.
 
 	if(state == desired_state)
 		return FALSE
 
+	if(caller && !is_advanced(caller))
+		return FALSE
+
 	switch(desired_state)
-		if(POD_IDLE)
+		if(POD_IDLE) //Pod is set to IDLE if whoever is inside it cancels.
 			icon_state = "pod"
-			for(var/k in contents)
+			for(var/k in contents) //Eject everything.
 				var/atom/movable/M = k
 				M.force_move(src.loc)
-		if(POD_PRE_LAUNCH)
-			var/turf/T = get_turf(src)
-			for(var/mob/living/advanced/A in T.contents)
-				if(!A.Move(src))
-					continue
-				state = desired_state
-				icon_state = "pod_closed"
-				return TRUE
-			return FALSE
-		if(POD_LAUNCHING)
+		if(POD_PRE_LAUNCH) //Someone tries to move inside.
+			if(!caller || caller.loc != src.loc)
+				return FALSE
+			var/obj/hud/button/map_background/M_background = locate() in caller.buttons
+			if(M_background)
+				caller.to_chat(span("warning","Close your current map to enter \the [src.name]!"))
+				return FALSE
+			if(!caller.Move(src))
+				return FALSE
+			M_background = new(caller,src)
+			M_background.update_owner(caller)
+			icon_state = "pod_closed"
+		if(POD_LAUNCHING) //IT BEGINS. We're launching now.
 			icon_state = "none"
 			flick("drop_anim",src)
-			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,POD_LAUNCHED,desired_loc)
+			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,caller,POD_LAUNCHED,desired_loc)
 			play_sound('sound/machines/blastdoor.ogg',get_turf(src))
 		if(POD_LAUNCHED)
 			icon_state = "none"
-			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,POD_LANDING,desired_loc)
+			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,caller,POD_LANDING,desired_loc)
 		if(POD_LANDING)
+			drop_pod_turfs += get_turf(src)
 			force_move(desired_loc)
 			pixel_z = TILE_SIZE*20
 			icon_state = "pod_air"
 			animate(src,pixel_z = 0,time=20)
-			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,POD_LANDED,desired_loc)
+			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,caller,POD_LANDED,desired_loc)
 			play_sound('sound/machines/droppod_landing.ogg',get_turf(src))
 		if(POD_LANDED)
 			icon_state = "pod_closed"
 			flick("land_anim",src)
-			CALLBACK("set_state_\ref[src]",50,src,.proc/set_state,POD_OPENING,desired_loc)
+			CALLBACK("set_state_\ref[src]",50,src,.proc/set_state,caller,POD_OPENING,desired_loc)
 			explode(desired_loc,20,src,src,"NanoTrasen")
 		if(POD_OPENING)
 			play_sound('sound/machines/droppod_land.ogg',get_turf(src))

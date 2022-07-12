@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(config)
 		if(length(config_options) == 1)
 			var/value = config_options[1]
 			var/config_num = text2num(value) //TODO Also do the other text2 values
-			if(config_num)
+			if(isnum(config_num))
 				config[config_id] = config_num
 				continue
 			config[config_id] = value

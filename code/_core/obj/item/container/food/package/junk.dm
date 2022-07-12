@@ -149,7 +149,7 @@
 
 
 /obj/item/container/edible/package/junkfood/halloween/candy_bar
-	name = "candy bar"
+	name = "laughter bar"
 	icon_state = "candy_bar"
 
 /obj/item/container/edible/package/junkfood/halloween/candy_bar/Generate()
@@ -179,6 +179,7 @@
 	reagents.add_reagent(/reagent/nutrition/sugar/caramel,7)
 	return ..()
 
+/* why
 /obj/item/container/edible/package/junkfood/halloween/elon_musk_bar
 	name = "elon \"husky musk\" bar"
 	icon_state = "elon_musk_bar"
@@ -187,6 +188,7 @@
 	reagents.add_reagent(/reagent/nutrition/junk/chocolate,5)
 	reagents.add_reagent(/reagent/nutrition/junk/nougat,10)
 	return ..()
+*/
 
 /obj/item/container/edible/package/junkfood/halloween/malf_way
 	name = "\improper MALF way bar"

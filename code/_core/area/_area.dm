@@ -51,8 +51,8 @@
 
 	var/no_apc = FALSE //Used for error checking.
 	var/requires_power = FALSE //Set to true if everything is this area requires power.
-
-	var/obj/structure/interactive/power/apc/apc //The area's APC, if any.
+	var/obj/structure/interactive/power/apc/linked_apc //The area's APC, if any. Can be an APC from another area.
+	var/link_to_parent_apc = FALSE //Set to true if APCs for this area can be linked to its parent. Only used on map load.
 
 	var/power_draw = 0
 
@@ -207,7 +207,7 @@ var/global/list/possible_trash = list(
 	return TRUE
 
 /area/Entered(var/atom/movable/enterer,var/atom/old_loc)
-	return FALSE
+	return TRUE
 
 /area/Exited(var/atom/movable/exiter,var/atom/old_loc)
 	return TRUE
@@ -227,12 +227,18 @@ var/global/list/possible_trash = list(
 	//Machines
 	//Lights
 
+	if(!linked_apc || !linked_apc.cell)
+		toggle_power_doors(OFF|AUTO)
+		toggle_power_machines(OFF|AUTO)
+		toggle_power_lights(OFF|AUTO)
+		return FALSE
+
 	//Getting power.
 	var/available_charge = 0
 	var/max_charge = 1
-	if(apc && apc.cell)
-		available_charge = apc.cell.charge_current
-		max_charge = apc.cell.charge_max
+	if(linked_apc && linked_apc.cell)
+		available_charge = linked_apc.cell.charge_current
+		max_charge = linked_apc.cell.charge_max
 
 	//Doors
 	if(enable_power_doors & AUTO)
@@ -262,8 +268,7 @@ var/global/list/possible_trash = list(
 		toggle_power_lights(OFF|AUTO)
 
 	//Removing power.
-	if(apc && apc.cell)
-		apc.cell.charge_current = max(0,apc.cell.charge_current - power_draw)
+	linked_apc.cell.charge_current = max(0,linked_apc.cell.charge_current - power_draw)
 
 	return TRUE
 

@@ -97,14 +97,15 @@
 				found_grenade = null
 				checked_grenades = FALSE
 			return TRUE
-	if(istype(A.left_item,/obj/item/weapon/ranged/))
-		if(!handle_gun(A.left_item))
-			return FALSE
-	if(istype(A.right_item,/obj/item/weapon/ranged/))
-		if(!handle_gun(A.right_item))
-			return FALSE
 
-	return TRUE
+	. = TRUE
+
+	if(istype(A.left_item,/obj/item/weapon/ranged/) && !handle_gun(A.left_item))
+		. = FALSE
+	if(istype(A.right_item,/obj/item/weapon/ranged/) && !handle_gun(A.right_item))
+		. = FALSE
+
+	return .
 
 /ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)
 
@@ -334,14 +335,16 @@
 		return FALSE
 
 	if(next_complex > world.time)
+		if(debug) log_debug("Complex fail.")
 		return FALSE
 
 	if(!handle_gunplay())
+		if(debug) log_debug("Gunplay fail.")
 		return FALSE
 
 	var/list/params = list(
-		PARAM_ICON_X = "16",
-		PARAM_ICON_Y = "16",
+		PARAM_ICON_X = 16,
+		PARAM_ICON_Y = 16,
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,
@@ -350,12 +353,24 @@
 		"alt" = 0
 	)
 
+	if(debug) log_debug("Do attack: [target].")
+
+	if(left_click)
+		params["left"] = TRUE
+		owner.on_left_down(target,null,null,params)
+	else
+		params["right"] = TRUE
+		owner.on_right_down(target,null,null,params)
+
+
+	/*
 	if(left_click && A.inventories_by_id[BODY_HAND_RIGHT_HELD])
 		A.inventories_by_id[BODY_HAND_RIGHT_HELD].click_on_object(A,target,null,null,params)
 	else if (A.inventories_by_id[BODY_HAND_LEFT_HELD])
 		A.inventories_by_id[BODY_HAND_LEFT_HELD].click_on_object(A,target,null,null,params)
 	else if (A.labeled_organs[BODY_HEAD])
 		A.labeled_organs[BODY_HEAD].attack(A,target,params)
+	*/
 
 	return TRUE
 

@@ -183,6 +183,8 @@
 
 	allow_friendly_fire = TRUE
 
+	inaccuracy_mod = 2
+
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && ismovable(victim) && isturf(victim.loc))

@@ -56,7 +56,6 @@
 /damagetype/ranged/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return FALSE
 
-
 /damagetype/ranged/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
 
 	if(allow_glancing_blows && is_living(attacker))
@@ -66,6 +65,22 @@
 			damage_multiplier *= 0.5
 
 	. = ..()
+
+
+/damagetype/ranged/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+
+	if(hit_effect)
+		new hit_effect(get_turf(victim))
+
+	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+	var/list/offsets = get_directional_offsets(attacker,victim)
+
+	if(ismob(victim))
+		var/mob/M = victim
+		if(M.client)
+			M.client.add_queued_recoil(offsets[1]*multiplier,offsets[2]*multiplier,attack_delay)
+
+
 
 
 /*

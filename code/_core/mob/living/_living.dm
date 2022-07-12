@@ -167,6 +167,8 @@
 	var/obj/effect/fire_overlay
 	var/obj/effect/shield_overlay
 
+	var/resist_percent = 0
+
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
 
@@ -253,7 +255,8 @@
 
 	var/expiration_time = -1 //Time at which the mob "expires" after death and cannot be revived. Set to 0 to disable. Set to -1 to make it instant upon death.
 
-	var/atom/dash_target //The target that you're dashing at.
+	var/atom/dash_target //The target that you're dashing at (advanced dash).
+	var/dash_direction = 0x0 //The direction you're dashing in (simple dash).
 	var/dash_amount = 0 //Amount of times to move in a direction.
 
 	var/last_move_time = 0
@@ -264,7 +267,7 @@
 	var/next_heartbeat = 0
 
 	var/list/stat_elements = list() //Assoc list.
-	var/list/stat_buttons_to_update = list()
+	var/list/stat_elements_to_update = list()
 
 	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
 
@@ -338,7 +341,7 @@
 
 	status_effects?.Cut()
 
-	stat_buttons_to_update?.Cut()
+	stat_elements_to_update?.Cut()
 
 	QDEL_NULL(stand)
 
@@ -430,7 +433,7 @@
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
 	gib(TRUE)
 
-/mob/living/gib(var/hard=FALSE)
+/mob/living/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)
 		return FALSE
 	if(gibbed)
@@ -590,7 +593,8 @@
 		S.update_owner(src)
 		var/obj/hud/button/stat/mana/M = new(src)
 		M.update_owner(src)
-
+		var/obj/hud/button/stat/resist_bar/RB = new(src)
+		RB.update_owner(src)
 
 /mob/living/Finalize()
 
@@ -610,7 +614,7 @@
 
 	update_level(TRUE)
 
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/proc/setup_name()
 	if(boss)
@@ -676,9 +680,9 @@
 
 /mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	var/list/params = list()
-	params[PARAM_ICON_X] = 16
-	params[PARAM_ICON_Y] = 16
-	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,FALSE,TRUE)
+	params[PARAM_ICON_X] = rand(0,32)
+	params[PARAM_ICON_Y] = rand(0,32)
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,TRUE,TRUE)
 	var/damagetype/D = all_damage_types[/damagetype/explosion/]
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE
@@ -691,7 +695,7 @@
 
 	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
 	blood_volume -= amount_added
-	queue_health_update = TRUE
+	QUEUE_HEALTH_UPDATE(src)
 
 	if(messages)
 		caller?.visible_message(span("notice","\The [caller.name] draws some blood from \the [src.name]."),span("notice","You drew [amount_added]u of blood from \the [src.name]."))

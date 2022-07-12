@@ -63,6 +63,7 @@
 		DARK = 75,
 		SANITY = -50
 	)
+	deflection = 0.25
 
 /armor/dark/arcane/sanity
 	defense_rating = list(
@@ -119,3 +120,4 @@
 		DARK = 100,
 		SANITY = -100
 	)
+	deflection = 0.5

@@ -25,6 +25,14 @@
 
 	var/no_queue = FALSE
 
+/obj/structure/window/should_smooth_with(var/turf/T)
+	. = ..()
+
+	if(istype(.,/turf/simulated/wall))
+		var/turf/simulated/wall/S = .
+		if(!S.window_blend)
+			return FALSE
+
 /obj/structure/window/update_overlays()
 	. = ..()
 
@@ -37,15 +45,18 @@
 
 	if(anchored)
 		for(var/d in DIRECTIONS_CARDINAL)
-			var/turf/simulated/wall/T = get_step(loc,d)
-			if(!istype(T) || !T.window_blend)
+			var/turf/T = get_step(src,d)
+			if(!T)
 				continue
-			var/initial_icon = initial(T.icon)
-			var/image/I = new/image(initial_icon,"window_blend_[d]")
-			I.color = T.color
-			I.dir = d
-			I.appearance_flags = T.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
-			add_overlay(I)
+			var/atom/A = src.should_smooth_with(T)
+			var/is_a_turf = isturf(A)
+			var/is_an_airlock = istype(A,/obj/structure/interactive/door/airlock)
+			if(is_a_turf || is_an_airlock)
+				var/image/I = new/image(initial(A.icon),is_a_turf ? "window_blend_[d]" : "metal_frame_[d]")
+				I.color = is_a_turf ? T.color : COLOR_STEEL
+				I.dir = d
+				I.appearance_flags = T.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
+				add_overlay(I)
 
 /obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()

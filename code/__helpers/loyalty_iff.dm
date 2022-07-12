@@ -15,7 +15,7 @@ var/global/enable_friendly_fire = FALSE
 
 /proc/check_iff(var/iff_tag_1,var/iff_tag_2,var/area/A,var/hostile=TRUE) //Returns true if the tags are allowed to attack eachother.
 
-	if(A && hostile && enable_friendly_fire && (A.area_identifier & (FLAG_AREA_ALLOW_DEATHMATCH|FLAG_AREA_NO_IFF)))
+	if(hostile && A && enable_friendly_fire && (A.area_identifier & (FLAG_AREA_ALLOW_DEATHMATCH|FLAG_AREA_NO_IFF)))
 		return TRUE //Allow anything.
 
 	if(iff_tag_1 != iff_tag_2 || iff_tag_1 == null) //Unfriendly.
@@ -25,7 +25,7 @@ var/global/enable_friendly_fire = FALSE
 
 /proc/check_loyalty(var/loyalty_tag_1,var/loyalty_tag_2,var/area/A,var/hostile=TRUE) //Returns true if the tags are allowed to attack eachother.
 
-	if(A && hostile && enable_friendly_fire && (A.area_identifier & (FLAG_AREA_ALLOW_DEATHMATCH|FLAG_AREA_NO_LOYALTY)))
+	if(hostile && A && enable_friendly_fire && (A.area_identifier & (FLAG_AREA_ALLOW_DEATHMATCH|FLAG_AREA_NO_LOYALTY)))
 		return TRUE //Allow anything.
 
 	if(loyalty_tag_1 != loyalty_tag_2 || loyalty_tag_1 == null) //Unfriendly.

@@ -227,12 +227,13 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 
 	. = ..()
 
-/obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/new_turf,var/turf/old_turf)
+/obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
 	if(is_living(P.owner))
 		var/mob/living/L = P.owner
 		if(L.iff_tag == "NanoTrasen")
 			return FALSE
+
 	. = ..()
 
 /obj/structure/interactive/supermatter/defense/get_examine_list(var/mob/examiner)

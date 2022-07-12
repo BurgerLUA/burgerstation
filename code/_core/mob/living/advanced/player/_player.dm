@@ -111,9 +111,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 var/global/list/difficulty_to_damage_mul = list(
-	DIFFICULTY_EASY = 0.5,
-	DIFFICULTY_NORMAL = 0.75,
-	DIFFICULTY_HARD = 1,
+	DIFFICULTY_EASY = 0.25,
+	DIFFICULTY_NORMAL = 0.5,
+	DIFFICULTY_HARD = 0.75,
 	DIFFICULTY_EXTREME = 1,
 	DIFFICULTY_SURVIVOR = 1
 )
@@ -124,10 +124,10 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
-	if(attacker.is_player_controlled())
+	if(attacker.is_player_controlled()) //PvP is always 1.
 		return 1
 
-	return difficulty_to_damage_mul[difficulty]
+	return difficulty_to_damage_mul[src.get_difficulty()]
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
@@ -166,7 +166,7 @@ var/global/list/difficulty_to_damage_mul = list(
 	return TRUE
 
 
-/mob/living/advanced/player/proc/setup_difficulty()
+/mob/living/advanced/player/proc/setup_difficulty() //When the difficulty is changed.
 	health.update_health_stats()
 	return TRUE
 
@@ -296,3 +296,22 @@ var/global/list/difficulty_to_damage_mul = list(
 	src.to_chat(span("notice","You have prestiged your [skill_id]. It is now at prestige level [prestige_count[skill_id]], requiring skill level [100 + prestige_count[skill_id]*5] to prestige again."))
 	//broadcast_to_clients(span("notice","[src.real_name] prestiged their [skill_id] to level [prestige_count[skill_id]]!"))
 	return TRUE
+
+
+/mob/living/advanced/player/proc/get_difficulty()
+	return enable_friendly_fire ? DIFFICULTY_NORMAL : src.difficulty
+
+
+
+var/global/list/difficulty_to_rarity = list(
+	DIFFICULTY_EASY = 0,
+	DIFFICULTY_NORMAL = 0,
+	DIFFICULTY_HARD = 0.05,
+	DIFFICULTY_EXTREME = 0.1,
+	DIFFICULTY_NIGHTMARE = 0.2
+)
+
+
+/mob/living/advanced/player/proc/get_rarity()
+	. = src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1)*0.2
+	. += difficulty_to_rarity[src.get_difficulty()]

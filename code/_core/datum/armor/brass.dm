@@ -8,6 +8,8 @@
 		ACID = 20
 	)
 
+	deflection = 0.25
+
 /armor/brass/gloves
 	defense_rating = list(
 		BLADE = 50,

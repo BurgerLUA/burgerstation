@@ -18,8 +18,6 @@
 
 	inventory_category = "bank"
 
-	mouse_opacity = 0
-	alpha = 0
 	invisibility = 101
 
 	queue_delete_immune = TRUE

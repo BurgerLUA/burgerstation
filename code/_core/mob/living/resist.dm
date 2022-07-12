@@ -1,8 +1,5 @@
 /mob/living/proc/can_resist(var/messages = TRUE)
 
-	if(next_resist > world.time)
-		return FALSE
-
 	if(dead)
 		if(messages) to_chat(span("warning","You can't resist while dead!"))
 		return FALSE
@@ -19,15 +16,18 @@
 
 /mob/living/proc/resist() //Return TRUE means you can resist. //Return FALSE means you can't resist
 
+	if(next_resist > world.time)
+		return FALSE
+
 	if(!src.can_resist())
-		next_resist = world.time + 10 //Prevents spam.
+		next_resist = world.time + 5 //Prevents spam.
 		return FALSE
 
 	if(grabbing_hand && grabbing_hand.owner)
 		var/mob/living/advanced/attacker = grabbing_hand.owner
 
 		var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)*5
-		var/attacker_power = attacker.dead ? 0 : attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10*grabbing_hand.grab_level
+		var/attacker_power = !attacker.dead ? attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10*grabbing_hand.grab_level : 0
 
 		if(attacker.horizontal && !src.horizontal)
 			attacker_power *= 0.5
@@ -38,26 +38,32 @@
 			var/obj/item/organ/O = grabbing_hand.loc
 			if(O.health && O.health.health_max > 0)
 				attacker_power *= max(0,O.health.health_current/O.health.health_max)
-				if(O.broken)
-					attacker_power *= 0.25
+				if(O.broken) attacker_power *= 0.25
 
-		//Intent mods.
-		if(src.intent == INTENT_HARM)
-			src_power *= 1.25
-		if(src.intent == INTENT_DISARM)
-			attacker_power *= 0.75
-		if(src.intent == INTENT_GRAB && is_advanced(src))
-			src_power *= 0.75
+		var/difficulty = (attacker_power - src_power)*2
 
-		var/difficulty = (attacker_power - src_power)
+		if(difficulty)
+			resist_percent = clamp(resist_counter/difficulty,0,1)
+		else
+			resist_percent = 1
+
+		stat_elements_to_update |= stat_elements["resist"]
+
 		if(resist_counter >= difficulty)
 			src.visible_message(
 				span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),
-				span("danger","You resist out of the grip of \the [attacker.name]!")
+				span("warning","You resist out of the grip of \the [attacker.name]!")
 			)
 			grabbing_hand.release_object()
-			attacker.add_status_effect(STAGGER,10,10,source = src)
-			resist_counter = 0
+			if(grabbing_hand.grab_level <= 1)
+				attacker.add_status_effect(STAGGER,20,20,source=src)
+			else
+				attacker.add_status_effect(STUN,30,30,source=src)
+			if(attacker.health)
+				attacker.health.adjust_stamina(-src_power*4)
+			resist_counter = -1
+			next_resist = 0
+			/*
 			if(src.intent == INTENT_GRAB && is_advanced(src))
 				var/mob/living/advanced/A = src
 				var/obj/hud/inventory/valid_inventory
@@ -78,17 +84,19 @@
 					valid_inventory.grab_level = 2 //Instant agressive grab
 					valid_inventory.grab_time = world.time
 					attacker.handle_transform()
+			*/
 			return TRUE
-		else
-			src.visible_message(
-				span("warning","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
-				span("warning","You try to resist!"),
-			)
+		src.visible_message(
+			span("danger","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
+			span("warning","You try to resist!"),
+		)
 		if(attacker.health)
 			attacker.health.adjust_stamina(-src_power) //Attacker needs the strength to resist too.
+		if(resist_counter < 0)
+			resist_counter = 0
 		resist_counter += 1
 		health.adjust_stamina(-attacker_power)
-		next_resist = world.time + 10
+		next_resist = world.time + 5
 		return FALSE
 
 	else if(on_fire)

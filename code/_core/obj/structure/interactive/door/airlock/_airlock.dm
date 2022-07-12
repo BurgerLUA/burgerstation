@@ -37,6 +37,8 @@
 
 	apc_powered = TRUE
 
+	corner_category = "wall"
+
 /obj/structure/interactive/door/airlock/locked
 	locked = TRUE
 
@@ -305,22 +307,22 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		add_overlay(light_fixtures)
 
 	if(anchored)
-		var/image/frame = new /icon(icon,"frame")
+		var/image/frame = new/image(icon,"frame")
 		add_underlay(frame)
 
 		for(var/d in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(src,d)
 			if(!T)
 				continue
-			var/atom/A = should_smooth_with(T)
-			if(A && !istype(A,/obj/structure/interactive/door/airlock/))
+			var/atom/A = src.should_smooth_with(T)
+			if(A )
 				var/image/I = new/image(icon,"metal_frame_[d]")
 				if(A == T)
 					I.color = A.color
 				else
 					I.color = COLOR_STEEL
 				I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
-				add_underlay(I)
+				add_overlay(I)
 
 /obj/structure/interactive/door/airlock/Cross(atom/movable/O,atom/oldloc)
 

@@ -183,3 +183,51 @@
 	metal_color = "#FFE38F"
 	value_burgerbux = 1
 	value = 10000
+
+
+/obj/item/disk/genetic
+	name = "genetic data disk"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use for altering genetic data. Inserting it into an Ability machine will unlock the stored ability."
+	frame_color = COLOR_PURPLE
+	writing_color = COLOR_BLACK
+	metal_color = COLOR_GOLD
+
+	data = list(
+		"ability" = null
+	)
+
+/obj/item/disk/genetic/Finalize()
+
+	. = ..()
+
+	desc_extended = initial(desc_extended)
+
+	var/ability/A = data["ability"]
+	if(!A)
+		desc_extended = "[desc_extended] This one is blank."
+		return .
+
+	var/ability_name = initial(A.name)
+	var/ability_desc = initial(A.desc)
+
+	desc_extended = "[desc_extended] This one unlocks the ability \"[ability_name]\" which will apparantly \"[ability_desc]\" Neat."
+
+
+/obj/item/disk/genetic/update_overlays()
+
+	. = ..()
+
+	var/ability/A = data["ability"]
+	if(A)
+		var/image/I = new(initial(A.icon),initial(A.icon_state))
+		var/matrix/M = matrix()
+		M.Scale(0.5,0.5)
+		I.transform = M
+		add_overlay(I)
+
+/obj/item/disk/genetic/dash
+	name = "genetic data disk (dash)"
+	data = list(
+		"ability" = /ability/dash
+	)

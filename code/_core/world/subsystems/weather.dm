@@ -10,6 +10,9 @@ SUBSYSTEM_DEF(weather)
 
 /subsystem/weather/Initialize()
 
+	if(!ENABLE_WEATHERGEN)
+		return FALSE
+
 	//Initialize weather
 	for(var/k in subtypesof(/particles/weather/))
 		var/particles/weather/W = new k
@@ -30,9 +33,7 @@ SUBSYSTEM_DEF(weather)
 				var/area/A = T.loc
 				A.particle_managers += O
 
-	. = ..()
-
-
+	return TRUE
 
 /particles/weather/
 	width = TILE_SIZE*WEATHER_SPACING*2
