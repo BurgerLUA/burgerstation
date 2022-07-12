@@ -376,7 +376,7 @@
 	amount_max = 6
 	amount_max_icon = 6
 
-	bullet_diameter = 11.777
+	bullet_diameter = 11.77
 	bullet_length = 24
 	bullet_color = COLOR_SILVER
 
