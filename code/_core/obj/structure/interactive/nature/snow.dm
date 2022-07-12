@@ -106,7 +106,7 @@ obj/structure/scenery/bush/snow/New()
 
 /obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
-	QDEL_NULL(health)
+	QDEL_NULL(health) //Important
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC

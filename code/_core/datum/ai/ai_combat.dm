@@ -1,9 +1,6 @@
 /ai/proc/attack_message()
 	return TRUE
 
-/ai/proc/can_owner_attack(var/atom/target,var/left_click=FALSE)
-	return target.can_be_attacked(owner)
-
 /ai/proc/do_attack(var/atom/target,var/left_click=FALSE)
 
 	if(!owner || !target)
@@ -22,6 +19,8 @@
 		"alt" = 0
 	)
 
+	if(debug) log_debug("Do attack: [target].")
+
 	if(left_click)
 		params["left"] = TRUE
 		owner.on_left_down(target,null,null,params)
@@ -32,11 +31,26 @@
 	return TRUE
 
 /ai/proc/handle_attacking()
-	if(objective_attack && get_dist(owner,objective_attack) <= distance_target_max && objective_attack.can_be_attacked())
-		var/is_left_click = prob(left_click_chance)
-		spawn do_attack(objective_attack,is_left_click) //The spawn here is important as attacking has its own sleeps and whatnot.
-		return TRUE
-	return FALSE
+
+	if(!objective_attack)
+		return FALSE
+
+	if(get_dist(owner,objective_attack) > distance_target_max)
+		return FALSE
+
+	var/atom/objective_to_attack = objective_attack
+	if(!objective_to_attack.z) //Inside something.
+		objective_to_attack = objective_to_attack.loc
+		knows_about_lockers = TRUE
+		if(debug) log_debug("Knows about lockers")
+
+	if(!objective_to_attack) //Must be a null loc or something.
+		if(debug) log_debug("Null loc!")
+		return FALSE
+
+	spawn do_attack(objective_to_attack,prob(left_click_chance)) //The spawn here is important as attacking has its own sleeps and whatnot.
+	return TRUE
+
 
 var/global/list/difficulty_to_ai_modifier = list(
 	DIFFICULTY_EASY = 1,
@@ -70,9 +84,6 @@ var/global/list/difficulty_to_ai_modifier = list(
 	return -dist
 
 /ai/proc/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
-
-	if(L.z != owner.z)
-		return FALSE
 
 	if(L == owner)
 		return FALSE

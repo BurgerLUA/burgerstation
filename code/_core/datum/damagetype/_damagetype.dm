@@ -537,10 +537,6 @@ var/global/list/all_damage_numbers = list()
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
-	if(is_living(victim))
-		var/mob/living/L = victim
-		L.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
-
 	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
 	do_attack_sound(attacker,victim,weapon,hit_object,total_damage_dealt)
 
@@ -569,6 +565,8 @@ var/global/list/all_damage_numbers = list()
 				hit_log_format["critical"] = victim_health_final - total_damage_dealt < 0
 				hit_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
 				V.hit_logs += list(hit_log_format)
+				if(V.is_player_controlled())
+					V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 
 			if(attacker != victim && total_damage_dealt && !V.dead && A.is_player_controlled())
 				var/list/experience_gained = list()

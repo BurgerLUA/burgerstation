@@ -69,3 +69,24 @@
 	loadout_to_level = list(/loadout/syndicate/scientist=1)
 
 	level = 16
+
+
+/mob/living/advanced/npc/syndicate/ultra
+	name = "\improper ULTRA syndicate operative"
+	level = 200
+
+	health_base = 100
+	stamina_base = 100
+	mana_base = 100
+
+	possible_outfits = list(
+		/loadout/syndicate/ultra = 1
+	)
+
+	loadout_to_level = list(
+		/loadout/syndicate/ultra = 1
+	)
+
+/mob/living/advanced/npc/syndicate/ultra/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+	. = ..()
+	. *= 0.5

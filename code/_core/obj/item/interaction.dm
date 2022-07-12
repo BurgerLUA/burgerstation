@@ -7,6 +7,8 @@
 		return FALSE
 
 	if(can_interact_with_inventory(caller))
+		INTERACT_CHECK
+		INTERACT_DELAY(1)
 		if(caller == inventory_user)
 			close_inventory(inventory_user)
 		else

@@ -28,3 +28,14 @@
 	armor = /armor/hardsuit/combat/syndicate/fast
 
 	size = SIZE_3
+
+
+/obj/item/clothing/head/helmet/full/hardsuit/syndie/ultra
+	name = "mauler helmet mk4 ULTRA"
+	desc = "May I make a suggestion? Run."
+	desc_extended = "A prototype suit in use by the best of the best of Syndicate Operatives. Lightweight and agile but still heavily armored. Don't attempt to face someone wearing this alone."
+	icon = 'icons/obj/item/clothing/hats/syndie_ultra.dmi'
+
+	armor = /armor/hardsuit/combat/syndicate/ultra
+
+	size = SIZE_3

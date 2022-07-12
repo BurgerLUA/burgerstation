@@ -178,7 +178,7 @@
 		return FALSE
 
 	if(victim)
-		if(!isturf(victim) && !isturf(victim.loc))
+		if(!victim.z)
 			return FALSE
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)

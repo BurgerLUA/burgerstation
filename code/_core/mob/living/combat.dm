@@ -54,9 +54,6 @@
 
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(!isturf(src.loc))
-		return FALSE
-
 	if(is_living(attacker))
 		var/mob/living/L = attacker
 		if(!damage_type || !damage_type.allow_friendly_fire)

@@ -152,6 +152,12 @@
 
 /obj/structure/interactive/crate/proc/close(var/mob/caller)
 
+	if(qdeleting)
+		return FALSE
+
+	if(src.health && src.health.health_current <= 0)
+		return FALSE
+
 	if(!isturf(loc))
 		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being closed!"))
 		return FALSE

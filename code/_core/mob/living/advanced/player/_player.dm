@@ -124,7 +124,7 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
-	if(attacker.is_player_controlled())
+	if(attacker.is_player_controlled()) //PvP is always 1.
 		return 1
 
 	return difficulty_to_damage_mul[src.get_difficulty()]

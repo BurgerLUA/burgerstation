@@ -132,8 +132,44 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
 		/obj/item/magazine/lmg_223,
 		/obj/item/magazine/lmg_223,
-		/obj/item/clothing/belt/storage/colored/black
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/grenade/fuse/fragmentation
 	)
+
+/loadout/syndicate/ultra
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/boxers,
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/shirt/syndicate,
+		/obj/item/clothing/pants/syndicate,
+		/obj/item/clothing/feet/shoes/black_boots,
+		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/overwear/hardsuit/syndie/ultra,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black/,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype/equipped,
+		/obj/item/magazine/carbine_223/ap,
+		/obj/item/magazine/carbine_223/ap,
+		/obj/item/magazine/carbine_223/ap,
+		/obj/item/magazine/carbine_223/ap,
+		/obj/item/magazine/carbine_223/ap,
+		/obj/item/magazine/carbine_223/ap,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/grenade/fuse/fragmentation,
+		/obj/item/weapon/melee/energy/sword/red
+	)
+
+
+
+
+
 
 /loadout/syndicate/player_antagonist
 	spawning_items = list(

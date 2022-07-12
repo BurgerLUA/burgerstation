@@ -210,10 +210,9 @@
 			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
 				var/gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
 				if(A.dead)
-					gib_chance -= length(attached_organs)*10 //No cheesing torso.
+					gib_chance -= length(attached_organs)*20 //No cheesing torso.
 				else
-					gib_chance -= length(attached_organs)*30 //No cheesing torso.
-				if(gib_chance > 0) gib_chance += min(0,-health.health_current)*0.5*(gib_chance/100) //More damage means more of a chance to gib.
+					gib_chance -= length(attached_organs)*50 //No cheesing torso.
 				if(gib_chance > 0 && prob(gib_chance))
 					if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
 						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
