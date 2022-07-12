@@ -99,6 +99,9 @@
 					var/area/A = get_area(src)
 					if(A.area_identifier != "Mission")
 						continue
+					var/turf/T = get_turf(P)
+					if(!T)
+						continue
 					number_of_players++
 
 				if( number_of_players <= 1)
@@ -125,6 +128,25 @@
 					set_friendly_fire(TRUE)
 					round_time_next = 10*60
 					pvp_start_time = world.time
+					for(var/k in all_players)
+						var/mob/living/advanced/player/P = k
+						if(P.dead)
+							continue
+						if(P.loyalty_tag != "NanoTrasen")
+							continue
+						var/area/A = get_area(src)
+						if(A.area_identifier != "Mission")
+							continue
+						var/turf/T = get_turf(P)
+						if(!T)
+							continue
+						var/obj/structure/interactive/crate/closet/supply_pod/syndicate/S = new(T)
+						INITIALIZE(S)
+						GENERATE(S)
+						CREATE(/obj/item/pinpointer/deathmatch,S)
+						FINALIZE(S)
+
+
 			if(7) //7 is the checking stage.
 				status_display_text = "UNSAFE"
 				var/number_of_players = 0
@@ -175,7 +197,7 @@
 				announce(
 					"Syndicate Command Mission Update",
 					"Zzzz.",
-					"John Syndicate here. I'm starting to get bored, so I'm going to send in my worst best operatives to speed things up. Hope you like drop pods that land directly on you."
+					"John Syndicate here. I'm starting to get bored, so I'm going to occassionally send in my worst best operatives to speed things up. Hope you like drop pods that land directly on you."
 				)
 			else
 				for(var/k in all_players)
@@ -187,7 +209,8 @@
 					var/area/A = get_area(src)
 					if(A.area_identifier != "Mission")
 						continue
-
+					var/turf/T = get_turf(P)
+					CREATE(/obj/structure/interactive/crate/closet/supply_pod/syndicate/ultra/occupied,T)
 
 
 	if(stage < 3)

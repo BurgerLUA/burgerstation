@@ -35,7 +35,7 @@
 
 
 /obj/structure/interactive/crate/closet/supply_pod/proc/land()
-	//explode(get_turf(src),1,src,src)
+	explode(get_turf(src),1,src,src)
 	return TRUE
 
 /obj/structure/interactive/crate/closet/supply_pod/close(var/mob/caller)
@@ -87,13 +87,13 @@
 	icon_state = "syndiepod"
 
 
-/obj/structure/interactive/crate/closet/supply_pod/syndicate/elite_operatives
-	name = "elite operative supply pod"
+/obj/structure/interactive/crate/closet/supply_pod/syndicate/ultra
+	name = "ULTRA operative supply pod"
 	auto_open = TRUE
 
-/obj/structure/interactive/crate/closet/supply_pod/syndicate/elite_operatives/Generate()
+/obj/structure/interactive/crate/closet/supply_pod/syndicate/ultra/occupied/Generate()
 	. = ..()
-
+	CREATE(/mob/living/advanced/npc/syndicate/ultra,src)
 
 
 /obj/structure/interactive/crate/closet/supply_pod/stray
