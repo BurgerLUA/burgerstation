@@ -79,7 +79,7 @@
 
 
 /turf/simulated/wall/brick/grey
-	color = "#647064"
+	color = "#4B544B"
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks. These are grey."
 

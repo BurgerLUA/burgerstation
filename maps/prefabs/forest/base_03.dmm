@@ -2,9 +2,8 @@
 "b" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "c" = (/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
 "d" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
-"e" = (/turf/space,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/carpet/brown,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "f" = (/mob/living/advanced/npc/goblin/warrior,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
-"g" = (/mob/living/advanced/npc/goblin/warrior,/turf/space,/area/dmm_suite/clear_area)
 "h" = (/mob/living/advanced/npc/goblin/mage{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "i" = (/mob/living/advanced/npc/goblin/mage{icon_state = "directional"; dir = 4},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "j" = (/mob/living/advanced/npc/goblin/mage,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
@@ -18,20 +17,20 @@ aaaaaaaaabbbaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaabbbaaaaaaaaaaaaaaaaaaaa
 aaaaaccccdddcccccaaaaaaaaaaaaaaa
 aaaaacmfmmmmmmmmccccccccccccaaaa
-aaaaacmeeeeeeeemcmmmfmmmmmmcaaaa
-aaaaacmeeeeeeeemcmeeeeeeeemcaaaa
-aaaaacmeeeeeeeemdmeeeeeeeemcaaaa
-acccccmeeeeeeeehcmeeeeeeeemcaaaa
+aaaaacmmmeeeeemmcmmmfmmmmmmcaaaa
+aaaaacmmmeeeeemmcmeeeeeeeemcaaaa
+aaaaacmmmeeeeemmdmeeeeeeeemcaaaa
+acccccmmmmmmmmmhcmeeeeeeeemcaaaa
 acmmmmmmmmmmmmmmcmmmmmmmmmmcaaaa
-acmeeeeemeeeemcccccccccccdcccaaa
-acieeeeemeeeemcimmmmjmmmmmmmcaaa
-acmeeeeemeeeemdmmmeeeeemmmmkcaaa
-acmmmmmmmmmmmmcmmmeeeeemmmmmcaaa
+acmmmmeeeeeemmcccccccccccdcccaaa
+acimmmeeeeeemmcimmmmjmmmmmmmcaaa
+acmmmmeeeeeemmdmmeeeeeeeemmkcaaa
+acmmmmmmmmmmmmcmmeeeeeeeemmmcaaa
 acccddcccccddccccmmmmmmmmmmmcaaa
 acfmmmmmcmmmmmmocccdddcccmmmcaaa
-acmeeeemlmmeeemmcimmmmmmcmmmcaaa
-acmeeeemcmmeeemmdmeeeeemcmmmcaaa
-acmeeeemcmmegemmdmeeeeemceeecaaa
+acmeeeemlmmmmmmmcimmmmmmcmmmcaaa
+acmeeeemcmmmmmmmdmeeeeemcmmmcaaa
+acmeeeemcmmmfmmmdmeeeeemcmmmcaaa
 acmmmmmmcmmmmmmmcmeeeeemceeecaaa
 acccddccccccddcccmeeeeekceeecaaa
 aacmmmmmmmcmmmmfcmeeeeemccccccaa
@@ -39,9 +38,9 @@ aacmeeeeemdmeeemdmeeeeemcmmmmcaa
 aacieeeeemdmeeemdmeeeeemdmeemcaa
 aacmeeeeemmmeeemcmmmmmmmcmeekcaa
 aacmeeeeemcmmmmmcccddccccmeemcaa
-aacmeeeeekccddcccmmmmmmcmmmmmcaa
-aacmmmmmmmcbbbbcmeeeeemcmeeemcaa
-aacccccccccbbbbcmeeeeekcmeeemcaa
+aacmeeeeekccddcccmmmmmmcmmeemcaa
+aacmmmmmmmcbbbbcmeeeeemcmmeemcaa
+aacccccccccbbbbcmeeeeekcmmeemcaa
 aaaaaaaaaaabbbbcmeeeeemcmmmmmcaa
 aaaaaaaaabbbbbbcmmmmmmmcccccccaa
 aaaaaaabbbbbbbbcccccccccaaaaaaaa

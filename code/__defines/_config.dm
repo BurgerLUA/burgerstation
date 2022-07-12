@@ -15,7 +15,7 @@
 
 #define MAX_INVENTORY_X 8
 
-#define ROT_DELAY 3000 //300 seconds, 5 minutes
+#define STARTING_CREDITS 50000
 
 //Enables/disables biome music.
 #define ENABLE_TRACKS FALSE

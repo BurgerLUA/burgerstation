@@ -25,6 +25,10 @@
 		/obj/item/weapon/unarmed/powerfist
 	)
 
+	health = null
+
+	apc_powered = FALSE
+
 
 /obj/structure/interactive/vending/contract/New(var/desired_loc)
 
@@ -67,9 +71,11 @@
 		var/chosen_reward = pick(possible_rewards)
 		possible_rewards -= chosen_reward
 		I.reward = chosen_reward
+
 	INITIALIZE(I)
 	GENERATE(I)
 	FINALIZE(I)
+
 	return I
 
 /obj/structure/interactive/vending/contract/modify_item(var/obj/item/I,var/obj/item/base_item)

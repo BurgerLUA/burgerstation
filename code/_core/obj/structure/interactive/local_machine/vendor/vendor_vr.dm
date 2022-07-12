@@ -88,6 +88,8 @@
 
 	ignore_economy = TRUE
 
+	apc_powered = FALSE
+
 /obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
 	return CEILING(desired_price,10)
 

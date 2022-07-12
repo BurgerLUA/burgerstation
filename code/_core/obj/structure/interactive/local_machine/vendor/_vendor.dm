@@ -186,7 +186,7 @@ var/global/list/equipped_antags = list()
 
 	. = ..()
 
-/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn)
+/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn) //Create item for the vendor.
 	var/obj/item/I = new item_path(turf_spawn)
 	INITIALIZE(I)
 	GENERATE(I)

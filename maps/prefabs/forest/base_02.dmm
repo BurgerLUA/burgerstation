@@ -1,49 +1,52 @@
 "a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "b" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "c" = (/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"d" = (/obj/structure/interactive/crate/chest/filled,/turf/space,/area/dmm_suite/clear_area)
-"e" = (/turf/space,/area/dmm_suite/clear_area)
-"f" = (/mob/living/advanced/npc/goblin/mage{icon_state = "directional"; dir = 8},/turf/space,/area/dmm_suite/clear_area)
+"d" = (/obj/structure/carpet/blue,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/carpet/blue,/mob/living/advanced/npc/goblin/mage{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/carpet/blue,/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
 "g" = (/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "h" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "i" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"j" = (/mob/living/advanced/npc/goblin/warrior{icon_state = "directional"; dir = 1},/turf/space,/area/dmm_suite/clear_area)
+"j" = (/obj/structure/carpet/blue,/mob/living/advanced/npc/goblin/warrior{icon_state = "directional"; dir = 1},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "k" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 8},/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
 "l" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 4},/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"m" = (/mob/living/advanced/npc/goblin/warrior{icon_state = "directional"; dir = 8},/turf/space,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 8},/obj/structure/carpet/blue,/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
 "n" = (/mob/living/advanced/npc/goblin/mage,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "o" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
-"p" = (/mob/living/advanced/npc/goblin/warrior,/turf/space,/area/dmm_suite/clear_area)
+"p" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 4},/obj/structure/carpet/blue,/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
 "q" = (/obj/marker/lobby,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"r" = (/obj/structure/carpet/blue,/mob/living/advanced/npc/goblin/warrior,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "s" = (/mob/living/advanced/npc/goblin/warrior{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "t" = (/mob/living/advanced/npc/goblin/mage{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "u" = (/obj/marker/objective_spawn,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"v" = (/obj/structure/carpet/blue,/mob/living/advanced/npc/goblin/mage,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"w" = (/obj/structure/carpet/blue,/mob/living/advanced/npc/goblin/warrior{icon_state = "directional"; dir = 8},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaabbbbaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaabbaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaabbaaaaaccccccaaaaa
-aaaaaaaaaaaaabbbaaaaacgdegcaaaaa
-aaaaaaaaaaaabbbbbaaaacgeegcaaaaa
-aaaaaaaaaaabbbbbbbaaacggggcaaaaa
-aaaaaaaaaccchhccccccicgeegcaaaaa
-aaaaaaaaacggggggcggggggefgkaaaaa
-aaaaaaaaacggeeggcggggggeegcaaaaa
-aaaaaaaaalggjeggkgeeggggggcaaaaa
-aaaaaaaaacggeegglgefgccccccaaaaa
-aaaaaaaaacggejggcgeegcaaaaaaaaaa
+aaaaaaaaaaaaabbbaaaaacgoggcaaaaa
+aaaaaaaaaaaabbbbbaaaacgddgcaaaaa
+aaaaaaaaaaabbbbbbbaaacgddgcaaaaa
+aaaaaaaaaccchhccccccicgddgcaaaaa
+aaaaaaaaacggggggcggggggdegkaaaaa
+aaaaaaaaacgdddddfdddgggddgcaaaaa
+aaaaaaaaalgdjdddmdddggggggcaaaaa
+aaaaaaaaacgdddddpddegccccccaaaaa
+aaaaaaaaacgddjddfdddgcaaaaaaaaaa
 aaaaaaaaacgnggggcggggcaaaaaaaaaa
 aaaabccccigggcccichhccaaaaaaaaaa
 bbbbbcggoggggluogggggcaaaaaaaaaa
-bbbbbhggmeeeghqgepeggcaaaaaaaaaa
-bbbbbhggeeeeghggeeeggcaaaaaaaaaa
-bbbbblgggsgggkgggggtgcaaaaaaaaaa
+bbbbbhgdwdddghqddrdggcaaaaaaaaaa
+bbbbbhgdddddghgddddggcaaaaaaaaaa
+bbbbblgggsgggkgddddtgcaaaaaaaaaa
 aaaabccccchhicccccchccaaaaaaaaaa
 aaaaaaacggggogggcogggcaaaaaaaaaa
-aaaaaaacggnggggglgeegkaaaaaaaaaa
-aaaaaaalggeeeeeghgemgcaaaaaaaaaa
-aaaaaaacggeeepegcggggcaaaaaaaaaa
-aaaaaaacggepeeegkcccccaaaaaaaaaa
+aaaaaaacgdvddddglgddgkaaaaaaaaaa
+aaaaaaalgddddddghgdwgcaaaaaaaaaa
+aaaaaaacgddddrdgcggggcaaaaaaaaaa
+aaaaaaacgddrdddgkcccccaaaaaaaaaa
 aaaaaaacggggggggcaaaaaaaaaaaaaaa
 aaaaaaacccchhccccaaaaaaaaaaaaaaa
 aaaaaaaabbbbbbbbaaaaaaaaaaaaaaaa

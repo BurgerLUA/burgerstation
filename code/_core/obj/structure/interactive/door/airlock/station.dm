@@ -166,6 +166,13 @@
 	filler = "fill"
 	fill_color = COLOR_WHITE
 
+/obj/structure/interactive/door/airlock/station/mining
+	name = "mining airlock"
+	color = COLOR_BROWN
+	filler = "fill"
+	fill_color = COLOR_PURPLE
+
+
 /obj/structure/interactive/door/airlock/station/medical/glass
 	name = "medical airlock"
 	color = COLOR_MEDICAL

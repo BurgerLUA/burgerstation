@@ -1,22 +1,22 @@
 "a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "b" = (/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"c" = (/turf/space,/area/dmm_suite/clear_area)
+"c" = (/obj/structure/carpet/red,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "d" = (/obj/structure/interactive/door/wood,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "e" = (/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "f" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "g" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "h" = (/obj/structure/interactive/crate/chest/filled,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "i" = (/obj/structure/interactive/lighting/mounted_torch{dir = 4; icon_state = "torch"},/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"j" = (/mob/living/advanced/npc/goblin/warrior{dir = 1; icon_state = "directional"},/turf/space,/area/dmm_suite/clear_area)
+"j" = (/obj/structure/carpet/red,/mob/living/advanced/npc/goblin/warrior{dir = 1; icon_state = "directional"},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "k" = (/obj/structure/interactive/lighting/mounted_torch{dir = 8; icon_state = "torch"},/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
 "l" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"m" = (/mob/living/advanced/npc/goblin/mage{dir = 1; icon_state = "directional"},/turf/space,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/carpet/red,/mob/living/advanced/npc/goblin/mage{dir = 1; icon_state = "directional"},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "n" = (/obj/structure/interactive/lighting/mounted_torch{dir = 1; icon_state = "torch"},/turf/simulated/wall/brick/grey,/area/dmm_suite/clear_area)
-"o" = (/mob/living/advanced/npc/goblin/mage,/turf/space,/area/dmm_suite/clear_area)
-"p" = (/mob/living/advanced/npc/goblin/warrior{dir = 1; icon_state = "directional"},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
-"q" = (/mob/living/advanced/npc/goblin/warrior,/turf/space,/area/dmm_suite/clear_area)
+"o" = (/obj/structure/carpet/red,/mob/living/advanced/npc/goblin/mage,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"p" = (/obj/structure/carpet/red,/mob/living/advanced/npc/goblin/warrior,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
+"q" = (/obj/structure/carpet/red,/mob/living/advanced/npc/goblin/mage{dir = 8; icon_state = "directional"},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "r" = (/mob/living/advanced/npc/goblin/warrior{dir = 8; icon_state = "directional"},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
-"s" = (/mob/living/advanced/npc/goblin/mage{dir = 8; icon_state = "directional"},/turf/space,/area/dmm_suite/clear_area)
+"s" = (/obj/structure/carpet/red,/mob/living/advanced/npc/goblin/warrior{dir = 8; icon_state = "directional"},/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "v" = (/obj/marker/lobby,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 "w" = (/obj/marker/objective_spawn,/turf/simulated/floor/brick/grey,/area/dmm_suite/clear_area)
 
@@ -28,28 +28,28 @@ aaaaaaaaaaafffffffaaaaaaafffffff
 aaaaaaaaaaafffffffaaaaaafffffffa
 aaaaaaaaabbbbddbbbbaaaaafffffffa
 aaaaaaaaabeeeeeegebaaaaafffffaaa
-aaaaaaaaaieeeeeeeebaaaaffffaaaaa
-aaaaaaaaabeecjcceebaaaaffffaaaaa
-aaaaaaaaabeecccceebaaaaffffaaaaa
-aaaaaaaaabeecccjeekaaaaffffaaaaa
-aaaaaaaaabeemccceebaaaaffffaaaaa
-aaaaaaaaaieecccceebaaaaffffaaaaa
+aaaaaaaaaieccccccebaaaaffffaaaaa
+aaaaaaaaabeccjcccebaaaaffffaaaaa
+aaaaaaaaabeccccccebaaaaffffaaaaa
+aaaaaaaaabeccccjcekaaaaffffaaaaa
+aaaaaaaaabecmccccebaaaaffffaaaaa
+aaaaaaaaaieccccccebaaaaffffaaaaa
 aaaaaaaaabeeeeeeeebaaaaffffaaaaa
-aaaaaaaaabeeccbbbbbaaaaffffaaaaa
-aaaaaaaaabeeccbfhfffbbbbddlbbbaa
-aaaaaaaaabeeccbfffffbeegeeeeebaa
-aaabbbbblbeecckfffffbeeeeeeeekaa
-aaabeeegeeeeccbfffffieeeeeeeebaa
-aaabeeeeeeeeeebfffffbweeepeeebaa
-aaaieecocccceebbblbbbeeeccccebaa
-aaabeeqccqccevgeeeeeeeeeccccebaa
-aaabeeeeeeeeeeeeeeeeeeeecccmebaa
-aaabeeeeeeeeeeeeereeeeepccccebaa
-aaabbbddbbbeeecccccseeeeccccebaa
-aaafffffffieercccccceeeeccccekaa
-ffffffffffbeeecccccceeeeeeeeebaa
-ffffffffffbeeecccccceeebnbbbbbaa
-ffffffffffbeeecccccceeebaaaaaaaa
+aaaaaaaaabeeeebbbbbaaaaffffaaaaa
+aaaaaaaaabeeeebfhfffbbbbddlbbbaa
+aaaaaaaaabeeeebfffffbeegeeeeebaa
+aaabbbbblbeeeekfffffbeeeeeeeekaa
+aaabeeegeeeeeebfffffieecccccebaa
+aaabeccccccccebfffffbweccjccebaa
+aaaieccocccccebbblbbbeecccccebaa
+aaabecpccpcccvgeeeeeeeecccccebaa
+aaabecccccccceeeeeeeeeeccccmebaa
+aaabeeeeeeeeeeeeereeeeejccccebaa
+aaabbbddbbbeeccccccqceecccccebaa
+aaafffffffieesccccccceeeeeeeekaa
+ffffffffffbeecccccccceeeeeeeebaa
+ffffffffffbeecccccccceebnbbbbbaa
+ffffffffffbeecccccccceebaaaaaaaa
 ffffffffffbeeeeeeeeeeeebaaaaaaaa
 aaafffffffbbbnbbbbbbbnbbaaaaaaaa
 aaaafffffaaaaaaaaaaaaaaaaaaaaaaa

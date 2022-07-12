@@ -89,7 +89,11 @@
 /loot/misc/kitchen
 	loot_table = list(
 		/loot/misc/food_drink = 25,
-		/loot/misc/baking = 100
+		/loot/misc/baking = 100,
+		/obj/item/weapon/melee/sword/spoon = 10,
+		/obj/item/weapon/melee/sword/fork = 10,
+		/obj/item/weapon/melee/sword/chef_knife = 3,
+		/obj/item/weapon/melee/sword/butcher_cleaver = 1
 	)
 
 /loot/misc/food_drink

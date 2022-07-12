@@ -2,8 +2,8 @@
 	name = "LIGHT ERROR"
 	icon_state = "preview"
 
+	plane = PLANE_WALL_ATTACHMENT
 	layer = LAYER_LARGE_OBJ
-	plane = PLANE_OBJ
 
 	color = COLOR_LIGHT
 	var/color_frame = COLOR_GREY

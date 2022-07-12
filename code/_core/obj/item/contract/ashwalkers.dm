@@ -5,17 +5,17 @@
 	objective_text = "Ashwalkers killed"
 
 /obj/item/contract/ashwalker/low
-	amount_max = 10
+	value_max = 10
 	burgerbux_reward = 1
 	reward = /obj/item/currency/credits{amount=10*50}
 
 /obj/item/contract/ashwalker/mid
-	amount_max = 25
+	value_max = 25
 	burgerbux_reward = 5
 	reward = /obj/item/currency/credits{amount=25*50*1.5}
 
 /obj/item/contract/ashwalker/high
-	amount_max = 50
+	value_max = 50
 	burgerbux_reward = 10
 	reward = /obj/item/currency/credits{amount=50*50*2}
 
@@ -26,17 +26,17 @@
 	objective_text = "Syndicate killed"
 
 /obj/item/contract/syndicate/low
-	amount_max = 10
+	value_max = 10
 	burgerbux_reward = 1
 	reward = /obj/item/currency/credits{amount=10*50}
 
 /obj/item/contract/syndicate/mid
-	amount_max = 25
+	value_max = 25
 	burgerbux_reward = 5
 	reward = /obj/item/currency/credits{amount=25*50*1.5}
 
 /obj/item/contract/syndicate/high
-	amount_max = 50
+	value_max = 50
 	burgerbux_reward = 10
 	reward = /obj/item/currency/credits{amount=50*50*2}
 
@@ -51,17 +51,17 @@
 	objective_text = "Arachnids killed"
 
 /obj/item/contract/arachnids/low
-	amount_max = 5
+	value_max = 5
 	reward = /obj/item/currency/credits{amount=5*200}
 	burgerbux_reward = 1
 
 /obj/item/contract/arachnids/mid
-	amount_max = 10
+	value_max = 10
 	reward = /obj/item/currency/credits{amount=10*200*1.5}
 	burgerbux_reward = 5
 
 /obj/item/contract/arachnids/high
-	amount_max = 25
+	value_max = 25
 	reward = /obj/item/currency/credits{amount=25*200*2}
 	burgerbux_reward = 10
 
@@ -71,7 +71,7 @@
 	desc = "Kill Ash Drake."
 	type_to_check = /mob/living/simple/ash_drake
 	objective_text = "Ash Drakes killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/bubblegum
@@ -79,7 +79,7 @@
 	desc = "Kill Bubblegum."
 	type_to_check = /mob/living/simple/bubblegum
 	objective_text = "Bubblegums killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/can_man
@@ -87,7 +87,7 @@
 	desc = "Kill Can Man."
 	type_to_check = /mob/living/simple/can_man
 	objective_text = "Can Men killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/colossus
@@ -95,7 +95,7 @@
 	desc = "Kill Colossus."
 	type_to_check = /mob/living/simple/colossus
 	objective_text = "Colossus killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/goblin_king
@@ -103,7 +103,7 @@
 	desc = "Kill the Goblin King."
 	type_to_check = /mob/living/simple/goblin_king
 	objective_text = "Goblin Kings killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/herald
@@ -111,7 +111,7 @@
 	desc = "Kill the Herald."
 	type_to_check = /mob/living/simple/herald
 	objective_text = "Heralds killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/hierophant
@@ -119,7 +119,7 @@
 	desc = "Kill the Hierophant."
 	type_to_check = /mob/living/simple/hierophant
 	objective_text = "Hierophants killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/leaper
@@ -127,7 +127,7 @@
 	desc = "Kill the Leaper."
 	type_to_check = /mob/living/simple/leaper
 	objective_text = "Leapers killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/queen
@@ -135,7 +135,7 @@
 	desc = "Kill the Xeno Queen."
 	type_to_check = /mob/living/simple/xeno/queen
 	objective_text = "Xeno Queens killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5
 
 /obj/item/contract/broodmother
@@ -143,5 +143,5 @@
 	desc = "Kill the Broodmother."
 	type_to_check = /mob/living/simple/goliath/broodmother
 	objective_text = "XBroodmothers killed"
-	amount_max = 1
+	value_max = 1
 	burgerbux_reward = 5

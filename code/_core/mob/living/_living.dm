@@ -347,6 +347,8 @@
 
 	return ..()
 
+
+/*
 /mob/living/proc/try_rot()
 
 	if(!isturf(src.loc))
@@ -380,6 +382,7 @@
 	B.ai.set_path_astar(src.loc)
 
 	return TRUE
+*/
 
 /mob/living/proc/bang(var/duration=100)
 

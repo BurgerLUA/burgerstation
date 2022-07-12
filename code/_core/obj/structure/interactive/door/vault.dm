@@ -11,8 +11,6 @@ obj/structure/interactive/door/vault
 	health = null
 
 	allow_manual_open = FALSE
-	allow_manual_open = FALSE
-
 
 obj/structure/interactive/door/vault/syndicate
 	icon = 'icons/obj/structure/airlock/vault_door_dark.dmi'

@@ -12,6 +12,8 @@
 
 	dan_mode = FALSE
 
+	value = 200
+
 /obj/item/weapon/melee/sword/butcher_cleaver
 	name = "butcher's cleaver"
 	desc = "What every burcher needs."
@@ -25,6 +27,8 @@
 	weight = 6
 
 	dan_mode = FALSE
+
+	value = 800
 
 
 /obj/item/weapon/melee/sword/fork
@@ -41,6 +45,8 @@
 
 	dan_mode = FALSE
 
+	value = 5
+
 
 /obj/item/weapon/melee/sword/spoon
 	name = "spoon"
@@ -55,3 +61,5 @@
 	weight = 1
 
 	dan_mode = FALSE
+
+	value = 5

@@ -72,10 +72,6 @@ obj/structure/interactive/misc/mirror
 
 obj/structure/interactive/misc/mirror/chargen
 	var/limited = FALSE
-	maptext = "<center>Change your appearance here!</center>"
-	maptext_x = -TILE_SIZE
-	maptext_width = TILE_SIZE*3
-	maptext_y = TILE_SIZE
 
 obj/structure/interactive/misc/mirror/chargen/limited
 	limited = TRUE

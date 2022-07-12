@@ -2007,6 +2007,7 @@
 #include "code\_core\obj\structure\interactive\local_machine\vendor\contract.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\enchanting.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\engineering.dm"
+#include "code\_core\obj\structure\interactive\local_machine\vendor\essentials.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\fishing.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\hunk.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\hydroponics.dm"

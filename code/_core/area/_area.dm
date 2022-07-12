@@ -108,22 +108,6 @@
 	if(sunlight_freq > 1) //Odd sunlight freqs greater than 1 must be even.
 		sunlight_freq = CEILING(sunlight_freq,2)
 
-var/global/list/possible_dirty_floor = list(
-	/obj/effect/cleanable/tile_rot = 100,
-	/obj/effect/cleanable/blood/dried_random = 20,
-	/obj/effect/cleanable/blood/splatter/grease = 10,
-	/obj/effect/cleanable/scorch = 5,
-	/obj/effect/cleanable/cobweb = 10
-)
-
-var/global/list/possible_dirty_wall = list(
-	/obj/effect/cleanable/rust = 100
-)
-
-var/global/list/possible_trash = list(
-	/obj/item/trash/random = 100
-)
-
 /area/Initialize()
 
 	SSarea.all_areas[src.type] = src
