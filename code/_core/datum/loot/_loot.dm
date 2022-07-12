@@ -39,7 +39,7 @@
 /loot/proc/post_spawn(var/atom/movable/M)
 	return TRUE
 
-/loot/proc/create_loot_table(var/spawn_loc,var/rarity=0) //rarity is optional
+/loot/proc/create_loot_table(var/atom/spawn_loc,var/rarity=0) //rarity is optional
 
 	var/list/new_table = allow_duplicates ? loot_table : loot_table.Copy()
 
@@ -48,13 +48,15 @@
 	for(var/k in loot_table_guaranteed)
 		. += create_loot_single(k,spawn_loc,rarity)
 
-	if(length(loot_table))
-		for(var/i=1,i<=loot_count,i++)
+	if(length(new_table) <= 0)
+		return .
+
+	for(var/i=1,i<=loot_count,i++)
+		if(prob(chance_none))
+			continue
+		var/selection = pickweight(loot_table,rarity)
+		. += create_loot_single(selection,spawn_loc,rarity)
+		if(!allow_duplicates)
+			new_table -= selection
 			if(length(new_table) <= 0)
 				break
-			if(prob(chance_none))
-				continue
-			var/selection = pickweight(loot_table,rarity)
-			if(!allow_duplicates)
-				new_table -= selection
-			. += create_loot_single(selection,spawn_loc,rarity)

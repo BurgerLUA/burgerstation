@@ -1,5 +1,5 @@
 /gamemode/endless
-	name = "Freeroam"
+	name = "Endless"
 	desc = "No missions right now. Do anything you want."
 	hidden = FALSE
 
@@ -215,9 +215,13 @@
 					CREATE(/obj/structure/interactive/crate/closet/supply_pod/syndicate/ultra/occupied,T)
 
 
-	if(stage < 3)
-		var/time_left = round_time_next - round_time
+
+	var/time_left = round_time_next - round_time
+	if(time_left >= 0)
 		status_display_time = get_clock_time(FLOOR(time_left,1))
+	else
+		status_display_time = null
+
 
 	if(status_display_text && status_display_time)
 		set_status_display("mission","[status_display_text ? status_display_text : "HI"]\n[status_display_time ? status_display_time : "THERE"]")

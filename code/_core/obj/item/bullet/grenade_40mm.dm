@@ -16,11 +16,13 @@
 
 	projectile_speed = TILE_SIZE * 0.9
 
-
-
 	size = 0.1
-	value = 15
+	value = 100
 
+	caseless = TRUE
 
+/obj/item/bullet_cartridge/grenade_40mm/get_base_value()
+	. = ..()
+	. += 300
 
 

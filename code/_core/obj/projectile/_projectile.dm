@@ -428,5 +428,7 @@
 		return 0
 	if(is_living(source))
 		var/mob/living/L = source
+		if(L.qdeleting)
+			return 100
 		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*8
 	return 0

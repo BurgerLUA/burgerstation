@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(horde)
 	var/list/queued_players = list() //Assoc list.
 	var/list/queued_overdue_players = list() //NOT AN ASSOC LIST
 
-	var/list/ckey_to_current_squads = list() //Assoc list
+	//var/list/ckey_to_current_squads = list() //Assoc list
 
 	var/list/ckey_to_time_to_horde = list() //Assoc list
 

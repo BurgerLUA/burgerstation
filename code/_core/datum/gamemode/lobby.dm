@@ -7,7 +7,7 @@
 
 /gamemode/lobby/New()
 	. = ..()
-	round_time_next = 30
+	round_time_next = 60 //Wait 60 seconds after load.
 
 /gamemode/lobby/on_life()
 
