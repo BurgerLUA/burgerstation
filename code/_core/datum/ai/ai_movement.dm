@@ -198,7 +198,7 @@
 				SSai.path_stuck_ai |= src
 			return FALSE
 
-		var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
+		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 		if(!found_path)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
 			set_path(null)

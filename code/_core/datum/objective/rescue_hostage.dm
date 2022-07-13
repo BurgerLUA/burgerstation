@@ -78,7 +78,7 @@ var/global/list/possible_hostage_types = list(
 				if(N_start)
 					var/obj/marker/map_node/N_end = find_closest_node(T)
 					if(N_end)
-						var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
+						var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 						if(found_path)
 							H.ai.set_path(found_path)
 

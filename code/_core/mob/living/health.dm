@@ -54,8 +54,8 @@
 			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-TILE_SIZE,TILE_SIZE),offset_y + rand(-TILE_SIZE,TILE_SIZE)))
 				break
 
-		if(health && total_bleed_damage)
-			blood_volume -= FLOOR(total_bleed_damage*0.02,1)
+		if(health && total_bleed_damage && blood_type && blood_volume_max)
+			blood_volume = max(0,blood_volume-FLOOR(total_bleed_damage*0.02,1))
 			QUEUE_HEALTH_UPDATE(src)
 
 	if(ai)

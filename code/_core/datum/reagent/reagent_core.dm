@@ -60,7 +60,7 @@
 	. = ..()
 
 	if(owner.blood_type)
-		owner.blood_volume = clamp(owner.blood_volume + .*4*multiplier,0,owner.blood_volume_max)
+		owner.blood_volume += .*4*multiplier
 		owner.tox_regen_buffer -= . * 0.5
 		QUEUE_HEALTH_UPDATE(owner)
 
@@ -69,7 +69,7 @@
 	. = ..()
 
 	if(owner.blood_type)
-		owner.blood_volume = clamp(owner.blood_volume + .*2*multiplier,0,owner.blood_volume_max)
+		owner.blood_volume += .*2*multiplier
 		QUEUE_HEALTH_UPDATE(owner)
 
 /reagent/steel

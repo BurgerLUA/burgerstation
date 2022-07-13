@@ -344,7 +344,7 @@
 			if(damage_multiplier > 0)
 				var/list/damage_information = DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 
-				if(ricochets_left > 0 && damage_information)
+				if(ricochets_left > 0 && length(damage_information))
 					//1 = damage dealt
 					//2 = damage blocked via armor
 					//3 = damage blocked via shield

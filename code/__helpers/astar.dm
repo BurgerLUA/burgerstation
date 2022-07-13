@@ -14,6 +14,7 @@ Credit:
 Some code modified to work with Burgerstation.
 */
 
+/*
 /proc/AStar(turf/start, turf/end, atom/movable/walker, maxtraverse = 30)
 	if(!isturf(start) || !isturf(end))
 		return
@@ -48,6 +49,7 @@ Some code modified to work with Burgerstation.
 
 		if (traverseNum > maxtraverse)
 			return null // if we reach this part, there's no more nodes left to explore
+*/
 
 
 /proc/AStar_Circle(turf/start, turf/goal, atom/movable/walker, min_dist=0, maxtraverse=30)
@@ -85,7 +87,6 @@ Some code modified to work with Burgerstation.
 		traverse += 1
 		if(traverse > maxtraverse)
 			return null // it's taking too long, abandon
-		CHECK_TICK(50,FPS_SERVER)
 	return null // if we reach this part, there's no more nodes left to explore
 
 
@@ -100,7 +101,7 @@ Some code modified to work with Burgerstation.
 				lowestScore = score
 				. = option
 
-/proc/reconstruct_path(list/cameFrom, turf/current)
+/proc/reconstruct_path(list/cameFrom, current)
 	var/list/totalPath = list(current)
 	while(current in cameFrom)
 		current = cameFrom[current]
@@ -110,3 +111,47 @@ Some code modified to work with Burgerstation.
 	for(var/i = length(totalPath) to 1 step -1)
 		. += totalPath[i]
 	return .
+
+
+
+/proc/AStar_Circle_node(var/obj/marker/map_node/start, var/obj/marker/map_node/goal, var/atom/movable/walker, min_dist=0, maxtraverse=100,var/debug=FALSE)
+
+	var/list/obj/marker/map_node/closedSet = list()
+	var/list/obj/marker/map_node/openSet = list(start)
+	var/list/obj/marker/map_node/cameFrom = list()
+
+	var/list/gScore = list()
+	var/list/fScore = list()
+	gScore[start] = 0
+	fScore[start] = get_dist(start, goal)
+	var/traverse = 0
+
+	while(length(openSet))
+		var/obj/marker/map_node/current = pick_lowest(openSet, fScore)
+		if(get_dist(current, goal) <= min_dist)
+			if(debug) log_debug("AStar_Circle_node: Reconstructing path...")
+			return reconstruct_path(cameFrom, current)
+
+		openSet -= current
+		closedSet += current
+		var/list/obj/marker/map_node/neighbors = list()
+		for(var/d in current.adjacent_map_nodes)
+			neighbors += current.adjacent_map_nodes[d]
+
+		for(var/obj/marker/map_node/neighbor as anything in neighbors)
+			if(neighbor in closedSet)
+				continue // already checked this one
+			var/tentativeGScore = gScore[current] + get_dist(current, neighbor)
+			if(!(neighbor in openSet))
+				openSet += neighbor
+			else if(tentativeGScore >= (gScore[neighbor] || 1.#INF))
+				continue // this is not a better route to this node
+
+			cameFrom[neighbor] = current
+			gScore[neighbor] = tentativeGScore
+			fScore[neighbor] = gScore[neighbor] + get_dist(neighbor, goal)
+		traverse += 1
+		if(traverse > maxtraverse)
+			if(debug) log_debug("AStar_Circle_node: Maximum traverse reached...")
+			return null // it's taking too long, abandon
+	return null // if we reach this part, there's no more nodes left to explore

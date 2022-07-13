@@ -313,7 +313,8 @@ mob/living/proc/on_life_slow()
 
 	if(immune_system_strength > 0)
 		immune_system_strength *= get_nutrition_quality_mod()
-		immune_system_strength *= min(1,blood_volume/blood_volume_max)
+		if(blood_type && blood_volume_max > 0)
+			immune_system_strength *= min(1,blood_volume/blood_volume_max)
 		immune_system_strength *= chem_power
 		if(health && health.health_max > 0) immune_system_strength *= health.health_current/health.health_max
 	immune_system_strength = max(0,FLOOR(immune_system_strength,1))
@@ -333,17 +334,18 @@ mob/living/proc/on_life_slow()
 	else
 		chem_power = 1
 
-	if(blood_volume < blood_volume_max)
-		var/consume_multiplier = 1
-		var/trait/blood_regen/BR = get_trait_by_category(/trait/blood_regen/)
-		if(BR) consume_multiplier *= BR.regen_multiplier
-		var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
-		blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
-		QUEUE_HEALTH_UPDATE(src)
-	else if(blood_volume > blood_volume_max)
-		blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
-		if(blood_volume >= blood_volume_max*1.05)
-			tox_regen_buffer -= 0.25*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
+	if(blood_type && blood_volume_max > 0)
+		if(blood_volume < blood_volume_max)
+			var/consume_multiplier = 1
+			var/trait/blood_regen/BR = get_trait_by_category(/trait/blood_regen/)
+			if(BR) consume_multiplier *= BR.regen_multiplier
+			var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
+			blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
+			QUEUE_HEALTH_UPDATE(src)
+		else if(blood_volume > blood_volume_max)
+			blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
+			if(blood_volume >= blood_volume_max*1.05)
+				tox_regen_buffer -= 0.25*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
 
 	if(reagents)
 		reagents.metabolize(src)

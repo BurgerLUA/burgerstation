@@ -98,7 +98,7 @@
 						continue
 					if(P.loyalty_tag != "NanoTrasen")
 						continue
-					var/area/A = get_area(src)
+					var/area/A = get_area(P)
 					if(A.area_identifier != "Mission")
 						continue
 					var/turf/T = get_turf(P)
@@ -136,7 +136,7 @@
 							continue
 						if(P.loyalty_tag != "NanoTrasen")
 							continue
-						var/area/A = get_area(src)
+						var/area/A = get_area(P)
 						if(A.area_identifier != "Mission")
 							continue
 						var/turf/T = get_turf(P)
@@ -159,7 +159,7 @@
 						continue
 					if(P.loyalty_tag != "NanoTrasen")
 						continue
-					var/area/A = get_area(src)
+					var/area/A = get_area(P)
 					if(A.area_identifier != "Mission")
 						continue
 					number_of_players++
@@ -208,7 +208,7 @@
 						continue
 					if(P.loyalty_tag != "NanoTrasen")
 						continue
-					var/area/A = get_area(src)
+					var/area/A = get_area(P)
 					if(A.area_identifier != "Mission")
 						continue
 					var/turf/T = get_turf(P)

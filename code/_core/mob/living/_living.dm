@@ -697,7 +697,7 @@
 		return FALSE
 
 	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
-	blood_volume -= amount_added
+	blood_volume = max(0,blood_volume-amount_added)
 	QUEUE_HEALTH_UPDATE(src)
 
 	if(messages)

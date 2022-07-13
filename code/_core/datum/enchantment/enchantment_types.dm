@@ -59,7 +59,7 @@
 	if(is_living(attacker) && is_living(victim))
 		var/mob/living/V = victim
 		var/mob/living/A = attacker
-		if(!A.dead && !V.dead)
+		if(!A.dead && !V.dead && V.blood_type && V.blood_volume_max)
 			var/blood_to_steal = min(total_damage_dealt*0.1*strength,V.blood_volume,A.blood_volume_max - A.blood_volume)
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal

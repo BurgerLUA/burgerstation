@@ -154,8 +154,9 @@ SUBSYSTEM_DEF(horde)
 	var/turf/squad_spawn = N_start.loc
 	var/obj/marker/map_node/N_end = find_closest_node(T)
 	if(!N_end)
+		if(debug) log_debug("Could not send squad: Could not find a closest node to the player..")
 		return FALSE
-	var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
+	var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
 	if(!found_path)
 		if(debug) log_debug("Could not send squad: Could not find a path from the squad selection point to the target.")
 		return FALSE

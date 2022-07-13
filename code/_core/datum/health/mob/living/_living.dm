@@ -65,7 +65,7 @@
 
 		var/mob/living/L = owner
 
-		if(has_bloodoxygen && L.blood_volume_max)
+		if(has_bloodoxygen && L.blood_volume_max && L.blood_type)
 			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
 			damage[OXY] = CEILING(max(0,1 - blood_oxygen)*health_max*2,HEALTH_PRECISION)
 
