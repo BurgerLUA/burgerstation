@@ -210,7 +210,7 @@
 			continue
 		if(!istype(L.health))
 			continue
-		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
+		if(!L.z) //if a living thing is somewhere that isnt in a turf, skip them
 			continue
 		if(L.loc == loc) //if they are on the same turf, skip them
 			continue
@@ -234,7 +234,7 @@
 			continue
 		if(!istype(L.health))
 			continue
-		if(!isturf(L.loc)) //if a living thing is somewhere that isnt in a turf, skip them
+		if(!L.z)
 			continue
 		if(L.loc == loc) //if they are on the same turf, skip them
 			continue

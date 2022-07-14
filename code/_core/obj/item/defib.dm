@@ -132,7 +132,7 @@
 
 	var/mob/living/advanced/A = caller
 
-	if((is_inventory(object) && is_inventory(src.loc)) || (isturf(src.loc) && A.attack_flags & CONTROL_MOD_DISARM))
+	if((is_inventory(object) && is_inventory(src.loc)) || (src.z && A.attack_flags & CONTROL_MOD_DISARM))
 		var/obj/hud/inventory/I = src.loc
 		if(src in I.contents)
 			var/obj/hud/inventory/I2 = object
@@ -218,6 +218,6 @@
 
 	. = ..()
 
-	if(. && linked_defib && isturf(loc))
+	if(. && linked_defib && src.z)
 		placed_target_ref = null
 		src.drop_item(linked_defib)

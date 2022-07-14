@@ -167,7 +167,7 @@
 
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(qdeleting || !isturf(src.loc))
+	if(qdeleting || !src.z)
 		caller.to_chat(span("warning","You can't pack up \the [src.name] here!"))
 		return FALSE
 

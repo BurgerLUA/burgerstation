@@ -110,7 +110,7 @@
 	queue_delete(src,60)
 
 	if(source == src)
-		if(!isturf(src.loc)) drop_item(get_turf(src))
+		if(!src.z) drop_item(get_turf(src))
 		if(stored_trigger) stored_trigger.active = FALSE
 	else
 		trigger(owner,source,-1,-1)

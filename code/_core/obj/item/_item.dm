@@ -361,7 +361,7 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
 
-	if(!isturf(src.loc))
+	if(!src.z)
 		if(messages && is_living(grabber))
 			var/mob/living/L = grabber
 			L.to_chat(span("warning","\The [src.name] needs to be out in the open before you can grab it!"))
@@ -536,7 +536,7 @@ var/global/list/rarity_to_mul = list(
 			close_inventory(null)
 
 	if(is_inventory(old_loc))
-		if(isturf(loc) && delete_on_drop)
+		if(src.z && delete_on_drop)
 			qdel(src)
 			return TRUE
 		undelete(src)
@@ -579,7 +579,7 @@ var/global/list/rarity_to_mul = list(
 		var/turf/old_turf = get_turf(old_inventory)
 		var/turf/new_turf = get_turf(loc)
 		if(old_turf != new_turf)
-			new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,isturf(loc) ? "drop" : "transfer")
+			new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,src.z ? "drop" : "transfer")
 
 	return TRUE
 

@@ -20,7 +20,7 @@
 
 /mob/living/simple/gutlunch/post_move(var/atom/old_loc)
 	. = ..()
-	if(!dead && loc && (!ai || !ai.objective_attack) && isturf(loc))
+	if(!dead && loc && (!ai || !ai.objective_attack) && src.z)
 		consume_turf(loc)
 
 /mob/living/simple/gutlunch/update_icon()

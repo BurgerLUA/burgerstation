@@ -9,7 +9,7 @@
 	if(!can_move())
 		return FALSE
 
-	if(!isturf(loc))
+	if(!src.z)
 		return FALSE
 
 	return TRUE

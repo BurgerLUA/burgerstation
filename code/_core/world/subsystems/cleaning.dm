@@ -94,21 +94,16 @@ SUBSYSTEM_DEF(delete)
 		return TRUE
 
 	var/atom/A = D
-	if(!A.is_safe_to_delete())
+	if(!A.z || !A.is_safe_to_delete())
 		return FALSE
 
-	if(!isturf(A.loc))
-		return FALSE
-
-	var/turf/atom_turf = A.loc
-	for(var/k in all_mobs_with_clients_by_z["[atom_turf.z]"])
+	for(var/k in all_mobs_with_clients_by_z["[A.z]"])
 		var/mob/M = k
 		if(is_observer(M))
 			continue
 		var/regisred_distance = get_dist(A,M)
 		if(regisred_distance <= VIEW_RANGE + ZOOM_RANGE)
 			return FALSE
-
 
 	return TRUE
 

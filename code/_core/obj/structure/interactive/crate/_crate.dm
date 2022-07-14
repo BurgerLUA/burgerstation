@@ -158,7 +158,7 @@
 	if(src.health && src.health.health_current <= 0)
 		return FALSE
 
-	if(!isturf(loc))
+	if(!src.z)
 		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being closed!"))
 		return FALSE
 
@@ -198,7 +198,7 @@
 
 /obj/structure/interactive/crate/proc/open(var/mob/caller)
 
-	if(!isturf(loc))
+	if(!src.z)
 		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being opened!"))
 		return FALSE
 

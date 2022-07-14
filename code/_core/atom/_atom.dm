@@ -59,7 +59,7 @@
 
 	density = desired_density
 
-	if(isturf(loc))
+	if(src.z)
 		var/turf/T = loc
 		if(T.density != density)
 			T.recalculate_atom_density()
@@ -148,7 +148,7 @@
 	. = ..()
 	update_name(name) //Setup labels
 	update_atom_light()
-	if((opacity || density) && isturf(loc))
+	if((opacity || density) && src.z)
 		var/turf/T = loc
 		if(opacity)
 			T.has_opaque_atom = TRUE
@@ -211,7 +211,7 @@
 	if(is_player_controlled())
 		return FALSE
 
-	if(check_loc && loc && !isturf(loc))
+	if(check_loc && loc && !src.z)
 		return FALSE
 
 	for(var/k in contents)

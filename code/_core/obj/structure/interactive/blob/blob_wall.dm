@@ -11,7 +11,7 @@
 	CALLBACK("make_spore_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/make_spore)
 
 /obj/structure/interactive/blob/wall/proc/make_spore()
-	if(qdeleting || !isturf(src.loc))
+	if(qdeleting || !src.z)
 		return FALSE
 	var/mob/living/simple/blob_spore/BS = new(src.loc)
 	INITIALIZE(BS)

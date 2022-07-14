@@ -597,8 +597,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
 					else
 						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
-					if(arm_damage >= 50 && O.send_pain_response(arm_damage))
-						A.to_chat(span("warning","The recoil of \the [src.name] injures your arm!"))
 
 
 	if(use_iff_tag && firing_pin)

@@ -84,10 +84,16 @@
 
 	opacity = new_opacity
 
-	if (!isturf(loc))
-		return
+	return TRUE
+
+/atom/movable/set_opacity(var/new_opacity,var/force=FALSE)
+
+	. = ..()
 
 	var/turf/T = loc
+
+	if(!istype(T))
+		return FALSE
 
 	if (new_opacity) //We're opaque for sure.
 		T.has_opaque_atom = TRUE
@@ -102,7 +108,7 @@
 			T.reconsider_lights()
 
 
-	return TRUE
+
 
 /atom/set_dir(var/desired_dir,var/force = FALSE)
 

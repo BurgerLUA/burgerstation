@@ -94,7 +94,7 @@
 
 	. = ..()
 
-	if(isturf(src.loc))
+	if(src.z)
 		for(var/k in light_sprite_sources)
 			var/obj/light_sprite/LS = k
 			if(LS == src)
@@ -141,7 +141,7 @@
 	set_anchored(anchored,TRUE)
 	. = ..()
 	update_value()
-	if(enable_chunk_clean && isturf(loc))
+	if(enable_chunk_clean && src.z)
 		var/turf/T = loc
 		var/area/A = T.loc
 		A.chunk_cleanable += src

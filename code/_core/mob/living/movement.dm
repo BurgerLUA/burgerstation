@@ -81,7 +81,7 @@
 				var/obj/item/wet_floor_sign/WFS = locate() in range(1,S)
 				if(!WFS || move_mod > 2)
 					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
-		if(!isturf(loc))
+		if(!src.z)
 			handle_blocking()
 
 	climb_counter = 0
@@ -120,7 +120,8 @@
 
 /mob/living/handle_movement(var/adjust_delay = 1)
 
-	if(dash_amount > 0 && !horizontal && can_move() && isturf(src.loc))
+	//Dashing
+	if(dash_amount > 0 && !horizontal && src.z && can_move())
 		if(dash_target && dash_target.loc) //Targeted dash.
 			var/final_direction = get_dir_advanced(src,dash_target)
 			if(!final_direction)

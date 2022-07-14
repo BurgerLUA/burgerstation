@@ -103,7 +103,7 @@
 
 	. = ..()
 
-	if(!sliced && isturf(loc))
+	if(!sliced && src.z)
 		var/turf/T = loc
 		var/original_reagents_amount = reagents.volume_current
 		var/original_reagents_toppings_amount = reagents_toppings.volume_current

@@ -244,7 +244,7 @@
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
-	if(!isturf(src.loc) || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
+	if(!src.z || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
 		on_projectile_hit(current_loc ? current_loc : src.loc,null,null)
 		return FALSE
 

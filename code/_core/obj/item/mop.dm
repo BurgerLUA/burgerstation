@@ -34,13 +34,18 @@
 		play_sound('sound/effects/watersplash.ogg',T,range_max=VIEW_RANGE)
 		return TRUE
 
-	if(isturf(object))
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
+	var/turf/T = get_turf(object)
+
+	if(T)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(4)
-		caller.set_dir(get_dir(caller,object))
+		caller.set_dir(get_dir(caller,T))
 		var/damagetype/DT = all_damage_types[damage_type]
-		DT.do_attack_visuals(caller,object,src,object,0)
+		DT.do_attack_visuals(caller,T,src,T,0)
 		if(src.reagents.volume_current <= 0)
 			caller.to_chat(span("warning","\The [src.name] is dry!"))
 			return TRUE
@@ -50,8 +55,8 @@
 			'sound/effects/water_wade3.ogg',
 			'sound/effects/water_wade4.ogg'
 		)
-		play_sound(pick(valid_sounds),object,range_max=VIEW_RANGE)
-		src.reagents.splash(caller,object,5,TRUE,1)
+		play_sound(pick(valid_sounds),T,range_max=VIEW_RANGE)
+		src.reagents.splash(caller,T,5,TRUE,1)
 		return TRUE
 
 	return ..()

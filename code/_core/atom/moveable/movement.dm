@@ -38,7 +38,7 @@
 		if(intercardinal)
 			final_movement_delay *= SQRT2
 
-		if(isturf(loc) && (collision_flags & FLAG_COLLISION_WALKING))
+		if(src.z && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc
 			final_movement_delay *= T.move_delay_modifier
 
@@ -263,7 +263,7 @@
 	post_move(OldLoc)
 
 	/*
-	if((collision_flags & FLAG_COLLISION_WALKING) && isturf(loc))
+	if((collision_flags & FLAG_COLLISION_WALKING) && src.z)
 		var/turf/T = loc
 		if(T.friction < 1)
 			var/calculated_speed = SECONDS_TO_TICKS(glide_size/TILE_SIZE)
@@ -302,7 +302,7 @@
 	if(momentum_speed <= 0 || !momentum_dir)
 		return FALSE
 
-	if(!isturf(loc))
+	if(!src.z)
 		momentum_speed = 0
 		momentum_dir = 0x0
 		return FALSE

@@ -81,7 +81,7 @@ obj/structure/interactive/door
 			if(A.requires_power)
 				update_power_draw(0)
 				A.powered_doors -= src
-		if(isturf(loc))
+		if(src.z)
 			var/area/A = loc.loc
 			if(A.requires_power)
 				A.powered_doors |= src

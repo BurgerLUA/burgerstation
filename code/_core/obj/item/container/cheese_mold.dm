@@ -65,7 +65,7 @@
 
 /obj/item/container/cheese_mold/think()
 
-	if(isturf(loc))
+	if(src.z)
 		process_count++
 		var/area/A = get_area(src)
 		if(cheese_mix[A.cheese_type])

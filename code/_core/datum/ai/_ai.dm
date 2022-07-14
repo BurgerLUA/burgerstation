@@ -177,8 +177,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		current_path_astar.Cut()
 		current_path_astar = null
 
-	SSai.path_stuck_ai -= src
-
 	return ..()
 
 /ai/proc/add_to_active_list(var/z)

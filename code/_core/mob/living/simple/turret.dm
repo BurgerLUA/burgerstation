@@ -189,7 +189,7 @@
 		caller.to_chat(span("warning","You're too far away to pack up \the [src.name]!"))
 		return FALSE
 
-	if(qdeleting || !isturf(src.loc))
+	if(qdeleting || !src.z)
 		caller.to_chat(span("warning","You can't pack up \the [src.name] here!"))
 		return FALSE
 

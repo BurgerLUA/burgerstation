@@ -22,6 +22,9 @@
 
 /obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
 	if(istype(object,/obj/structure/interactive/enchantment_circle/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -30,17 +33,18 @@
 		qdel(object)
 		return TRUE
 
-	if(isturf(object))
+	var/turf/T = get_turf(object)
+
+	if(T)
 
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 
-		if(caller.loc != object)
-			caller.to_chat(span("warning","You must draw the rune at your feet!"))
+		if(caller.loc != T)
+			caller.to_chat(span("warning","You must draw the rune at your location!"))
 			return TRUE
 
-		var/turf/T = object
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/T2 = get_step(T,k)
 			var/atom/occupied = T2.is_occupied(PLANE_FLOOR_ATTACHMENT)

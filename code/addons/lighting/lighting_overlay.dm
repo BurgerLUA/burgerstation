@@ -47,7 +47,7 @@
 /atom/movable/lighting_overlay/update_overlays()
 
 	var/turf/T = loc
-	if(!isturf(T)) // Erm...
+	if(!istype(T)) // Erm...
 		if(loc)
 			log_error("A lighting overlay realised its loc was NOT a turf (actual loc: [loc.get_debug_name()]) in update_overlay() and got deleted!")
 		else

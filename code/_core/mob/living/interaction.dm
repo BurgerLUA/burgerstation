@@ -13,12 +13,10 @@ mob/living/on_left_down(object,location,control,params)
 	client.mouse_pointer_icon = desired_icon
 	return TRUE
 
-/mob/living/proc/handle_mouse_pointer()
-
+/mob/living/handle_mouse_pointer()
 	if(CALLBACK_EXISTS("\ref[src]_intent_switch"))
 		return FALSE
-
-	return TRUE
+	. = ..()
 
 /mob/living/proc/update_intent(var/force)
 

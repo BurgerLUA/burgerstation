@@ -3,7 +3,7 @@
 	anchored = TRUE
 
 /obj/structure/interactive/lighting/Destroy()
-	if(apc_powered && isturf(loc))
+	if(apc_powered && src.z)
 		var/area/A = loc.loc
 		if(A.requires_power)
 			update_power_draw(0)
@@ -13,7 +13,7 @@
 
 /obj/structure/interactive/lighting/Finalize()
 	. = ..()
-	if(apc_powered && isturf(loc))
+	if(apc_powered && src.z)
 		var/area/A = loc.loc
 		if(A.requires_power)
 			A.powered_lights |= src
@@ -29,7 +29,7 @@
 			if(A.requires_power)
 				update_power_draw(0)
 				A.powered_lights -= src
-		if(isturf(loc))
+		if(src.z)
 			var/area/A = loc.loc
 			if(A.requires_power)
 				A.powered_lights |= src
