@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(horde)
 	var/list/queued_players = list() //Assoc list.
 	var/list/queued_overdue_players = list() //NOT AN ASSOC LIST
 
-	var/list/ckey_to_current_squads = list() //Assoc list
+	//var/list/ckey_to_current_squads = list() //Assoc list
 
 	var/list/ckey_to_time_to_horde = list() //Assoc list
 
@@ -22,12 +22,17 @@ SUBSYSTEM_DEF(horde)
 		DIFFICULTY_NIGHTMARE = 10
 	)
 
+	var/enable = FALSE
+
 
 //The way that this works is that once every 10 seconds, it checks a single player to see if there are any valid spawns for it.
 //It's better this way so that the system is staggered out and 30 players don't get processed on a single tick.
 //There is a "failsafe" for when the player is overdue for an ass kinking.
 
 /subsystem/horde/on_life()
+
+	if(!enable)
+		return TRUE
 
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
@@ -149,8 +154,9 @@ SUBSYSTEM_DEF(horde)
 	var/turf/squad_spawn = N_start.loc
 	var/obj/marker/map_node/N_end = find_closest_node(T)
 	if(!N_end)
+		if(debug) log_debug("Could not send squad: Could not find a closest node to the player..")
 		return FALSE
-	var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
+	var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
 	if(!found_path)
 		if(debug) log_debug("Could not send squad: Could not find a path from the squad selection point to the target.")
 		return FALSE

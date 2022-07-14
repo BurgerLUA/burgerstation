@@ -127,6 +127,10 @@
 						attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
 						return FALSE
 				else
+					if(!victim.blood_type || !victim.blood_volume_max)
+						attacker.to_chat(span("notice","There is nothing to extract from \the [victim.name]!"))
+						return FALSE
+
 					if((victim.blood_volume-inject_amount_desired)/victim.blood_volume_max < 0.9)
 						attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
 						return FALSE

@@ -1,13 +1,4 @@
 /area/mission/prefab
-	link_to_parent_apc = TRUE
-
-
-
-
-
-
-
-
 
 
 
@@ -15,6 +6,9 @@
 /area/mission/prefab/house_01
 	name = "house 01"
 	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
 
 /area/mission/prefab/house_01/bathroom_01
 	icon_state = "red"
@@ -42,6 +36,9 @@
 /area/mission/prefab/house_02
 	name = "house 02"
 	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
 
 /area/mission/prefab/house_02/bathroom
 	icon_state = "red"
@@ -59,6 +56,9 @@
 /area/mission/prefab/house_03
 	name = "house 03"
 	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
 
 /area/mission/prefab/house_03/kitchen
 	icon_state = "green"
@@ -76,6 +76,9 @@
 /area/mission/prefab/house_04
 	name = "house 04"
 	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
 
 /area/mission/prefab/house_04/kitchen
 	icon_state = "green"

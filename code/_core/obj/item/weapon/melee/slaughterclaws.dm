@@ -42,7 +42,7 @@
 		if (target_distance > 10)
 			caller.to_chat(span("danger","It's too far to crawl to!"))
 			return TRUE
-		self.blood_volume -= (target_distance*5) //Max distance costs 50. Jumping this far would only be for snacking or retreating, though.
+		self.blood_volume -= max(0,self.blood_volume - target_distance*5) //Max distance costs 50. Jumping this far would only be for snacking or retreating, though.
 		QUEUE_HEALTH_UPDATE(self)
 		self.force_move(T)
 		new/obj/effect/temp/impact/blood(T,desired_color = COLOR_BLOOD)
@@ -53,7 +53,7 @@
 	if(self.intent == INTENT_DISARM && isturf(T) && next_blood_attack <= world.time && target_distance <= 10) //hacky solution to the range problem
 		var/turf/simulated/B = get_turf(T)
 		new/obj/effect/temp/hazard/bubblefist(B,desired_owner = self)
-		self.blood_volume -= (20) //10% HP. I sure hope the blood cost disincentivises spam.
+		self.blood_volume = max(0,self.blood_volume - 20) //10% HP. I sure hope the blood cost disincentivises spam.
 		QUEUE_HEALTH_UPDATE(self)
 		next_blood_attack = world.time + SECONDS_TO_DECISECONDS(2)
 		. = TRUE

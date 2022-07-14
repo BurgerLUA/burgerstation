@@ -1,10 +1,10 @@
 //Basic config settings for developers
-#define ENABLE_INSTALOAD TRUE
+#define ENABLE_INSTALOAD FALSE
 
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1)
 
 #define FPS_CLIENT 60 //0 Means synced. Also this is default, players can change this for themselves.
-#define FPS_SERVER 30
+#define FPS_SERVER 20
 
 #define WORLD_SIZE 500 //This shouldn't be touched unless you know what you're doing.
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
@@ -15,7 +15,7 @@
 
 #define MAX_INVENTORY_X 8
 
-#define ROT_DELAY 3000 //300 seconds, 5 minutes
+#define STARTING_CREDITS 50000
 
 //Enables/disables biome music.
 #define ENABLE_TRACKS FALSE
@@ -27,13 +27,7 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING FALSE
-
-//Enables/disables turf/obj smoothing.
-#define ENABLE_SMOOTHING FALSE
-
-//Enable/disables combat testing by forcing a gamemode.
-#define ENABLE_TDM FALSE
+#define ENABLE_LIGHTING TRUE
 
 //Enables/disables turf generation
 #define ENABLE_GENERATION TRUE

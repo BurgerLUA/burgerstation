@@ -1,5 +1,5 @@
 /gamemode/endless
-	name = "Freeroam"
+	name = "Endless"
 	desc = "No missions right now. Do anything you want."
 	hidden = FALSE
 
@@ -39,7 +39,6 @@
 			if(1)
 				status_display_text = "GEAR"
 				round_time_next = 6*60
-				SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(6*60)
 				announce(
 					"Central Command Mission Update",
 					"Prepare for Landfall",
@@ -49,7 +48,6 @@
 			if(2)
 				status_display_text = "PREP"
 				round_time_next = 1*60
-				SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(60)
 				announce(
 					"Central Command Mission Update",
 					"Drop Pod Boarding",
@@ -58,8 +56,10 @@
 				)
 			if(3)
 				status_display_text = "RDY"
-				SSshuttle.next_pod_launch = world.time
 				round_time_next = 3*60
+				allow_launch = TRUE
+				SShorde.enable = TRUE
+				SSevents.enable = TRUE
 				announce(
 					"Central Command Mission Update",
 					"Mission is a Go",
@@ -87,8 +87,10 @@
 					sound_to_play = 'sound/voice/announcement/landfall_crew_evac_notice.ogg'
 				)
 			if(6)
+				SShorde.enable = FALSE
+				SSevents.enable = FALSE
+				allow_launch = FALSE
 				status_display_text = "UNSAFE"
-				SSshuttle.next_pod_launch = -1
 				var/number_of_players = 0
 				for(var/k in all_players)
 					var/mob/living/advanced/player/P = k
@@ -96,12 +98,15 @@
 						continue
 					if(P.loyalty_tag != "NanoTrasen")
 						continue
-					var/area/A = get_area(src)
+					var/area/A = get_area(P)
 					if(A.area_identifier != "Mission")
+						continue
+					var/turf/T = get_turf(P)
+					if(!T)
 						continue
 					number_of_players++
 
-				if( number_of_players <= 1)
+				if(number_of_players <= 1 && world.port != 0)
 					if(number_of_players == 1)
 						announce(
 							"Syndicate Command Mission Update",
@@ -125,6 +130,25 @@
 					set_friendly_fire(TRUE)
 					round_time_next = 10*60
 					pvp_start_time = world.time
+					for(var/k in all_players)
+						var/mob/living/advanced/player/P = k
+						if(P.dead)
+							continue
+						if(P.loyalty_tag != "NanoTrasen")
+							continue
+						var/area/A = get_area(P)
+						if(A.area_identifier != "Mission")
+							continue
+						var/turf/T = get_turf(P)
+						if(!T)
+							continue
+						var/obj/structure/interactive/crate/closet/supply_pod/syndicate/S = new(T)
+						INITIALIZE(S)
+						GENERATE(S)
+						CREATE(/obj/item/pinpointer/deathmatch,S)
+						FINALIZE(S)
+
+
 			if(7) //7 is the checking stage.
 				status_display_text = "UNSAFE"
 				var/number_of_players = 0
@@ -135,7 +159,7 @@
 						continue
 					if(P.loyalty_tag != "NanoTrasen")
 						continue
-					var/area/A = get_area(src)
+					var/area/A = get_area(P)
 					if(A.area_identifier != "Mission")
 						continue
 					number_of_players++
@@ -175,7 +199,7 @@
 				announce(
 					"Syndicate Command Mission Update",
 					"Zzzz.",
-					"John Syndicate here. I'm starting to get bored, so I'm going to send in my worst best operatives to speed things up. Hope you like drop pods that land directly on you."
+					"John Syndicate here. I'm starting to get bored, so I'm going to occassionally send in my worst best operatives to speed things up. Hope you like drop pods that land directly on you."
 				)
 			else
 				for(var/k in all_players)
@@ -184,15 +208,20 @@
 						continue
 					if(P.loyalty_tag != "NanoTrasen")
 						continue
-					var/area/A = get_area(src)
+					var/area/A = get_area(P)
 					if(A.area_identifier != "Mission")
 						continue
+					var/turf/T = get_turf(P)
+					CREATE(/obj/structure/interactive/crate/closet/supply_pod/syndicate/ultra/occupied,T)
 
 
 
-	if(stage < 3)
-		var/time_left = round_time_next - round_time
+	var/time_left = round_time_next - round_time
+	if(time_left >= 0)
 		status_display_time = get_clock_time(FLOOR(time_left,1))
+	else
+		status_display_time = null
+
 
 	if(status_display_text && status_display_time)
 		set_status_display("mission","[status_display_text ? status_display_text : "HI"]\n[status_display_time ? status_display_time : "THERE"]")

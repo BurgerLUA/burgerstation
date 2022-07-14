@@ -85,38 +85,6 @@ var/global/mob/abstract/node_checker
 
 	return found
 
-var/global/list/stored_paths = list()
-
-/obj/marker/map_node/proc/find_path(var/list/obj/marker/map_node/desired_node,var/list/obj/marker/map_node/checked_nodes = list(),var/list/obj/marker/map_node/current_path=list())
-
-	if(stored_paths["\ref[src],\ref[desired_node]"])
-		return stored_paths["\ref[src],\ref[desired_node]"]
-
-	var/is_first = !length(checked_nodes) && !length(current_path)
-
-	current_path = current_path.Copy()
-
-	checked_nodes[src] = TRUE
-	current_path += src
-
-	sort_by_closest_assoc(adjacent_map_nodes,desired_node)
-
-	for(var/k in adjacent_map_nodes)
-		var/obj/marker/map_node/M = adjacent_map_nodes[k]
-		if(M == desired_node)
-			return current_path
-		if(checked_nodes[M])
-			continue
-		var/found_path = M.find_path(desired_node,checked_nodes,current_path)
-		if(found_path)
-			if(is_first)
-				found_path += desired_node
-				stored_paths["\ref[src],\ref[desired_node]"] = found_path
-			return found_path
-		sleep(-1)
-
-	return null
-
 /proc/get_obstructions(var/turf/point_A,var/turf/point_B)
 
 	. = list()

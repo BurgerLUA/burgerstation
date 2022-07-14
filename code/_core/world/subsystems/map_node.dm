@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(map_node)
 				log_error("Could not find a valid path end location near [RF.get_debug_name()]!")
 				error_paths++
 				continue
-			var/list/obj/marker/map_node/found_path = N_start.find_path(N_end)
+			var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 			if(!found_path)
 				log_error("Could not find a valid path between  [M.get_debug_name()] and [RF.get_debug_name()]!")
 				error_paths++

@@ -38,7 +38,7 @@
 		CRASH_SAFE("Tried passing a non-mob ([caller.get_debug_name()]) as a caller when interacting with [src.get_debug_name()]!")
 		return FALSE
 
-	. = FALSE
+	. = FALSE //TODO: Fix this convoluted bullshit when I am not sleep deprived.
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -58,7 +58,7 @@
 	if(turf_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_TURF_CHECKING) && src.plane < PLANE_HUD && isturf(src.loc) && !isturf(caller.loc))
 		return FALSE
 
-	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(src,caller) > interact_distance)
+	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(caller,src) > interact_distance)
 		return FALSE
 
 /atom/proc/click_self(var/mob/caller as mob,location,control,params)

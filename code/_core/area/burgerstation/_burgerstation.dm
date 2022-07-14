@@ -237,6 +237,14 @@
 
 	map_color = COLOR_RED_DARK
 
+/area/burgerstation/janitor
+	name = "\improper Janitor's Closet"
+	icon_state = "janitor"
+
+	sound_environment = ENVIRONMENT_ROOM
+
+	map_color = COLOR_PURPLE
+
 /area/burgerstation/engineering
 	name = "\improper Engineering"
 	icon_state = "eng"

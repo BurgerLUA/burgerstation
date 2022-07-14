@@ -36,7 +36,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/difficulty = DIFFICULTY_NORMAL
 
-	var/currency = 8000
+	var/currency = STARTING_CREDITS
 	var/revenue = 0
 	var/expenses = 0
 	var/partial_tax = 0 //Taxes you couldn't pay.

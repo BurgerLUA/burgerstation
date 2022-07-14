@@ -9,6 +9,7 @@
 	var/text_to_announce_language = "<br><div class='announcement [announcement_type]'><h2>[announcement_sender]</h2><h3>[announcement_title_language]</h3><p>[annoumcent_text_language]</p></div>"
 
 	if(!valid_mobs)
+		valid_mobs = list()
 		if(announcement_type & ANNOUNCEMENT_STATION)
 			for(var/k in all_mobs_with_clients)
 				var/mob/M = k

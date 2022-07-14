@@ -110,6 +110,22 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			M_background.update_owner(caller)
 			icon_state = "pod_closed"
 		if(POD_LAUNCHING) //IT BEGINS. We're launching now.
+			if(!SSgamemode.active_gamemode.allow_launch)
+				caller.to_chat(span("warning","Invalid drop location: NanoTrasen has deemed it's unsafe to launch at this time!"))
+				return FALSE
+			if(!desired_loc)
+				return FALSE
+			if(!desired_loc.is_safe_teleport())
+				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+				return FALSE
+			var/turf/T2 = get_step(desired_loc,SOUTH)
+			if(!T2.is_safe_teleport())
+				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+				return FALSE
+			var/area/A = desired_loc.loc
+			if(A.interior)
+				caller.to_chat(span("warning","Invalid drop location: This area has a roof."))
+				return FALSE
 			icon_state = "none"
 			flick("drop_anim",src)
 			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,caller,POD_LAUNCHED,desired_loc)

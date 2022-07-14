@@ -30,6 +30,8 @@
 		/obj/item/clothing/mask/gas/poly/nanotrasen,
 		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
 		/obj/item/clothing/overwear/armor/medium_armor/black,
+		/obj/item/clothing/overwear/armor/nanotrasen/custom,
+		/obj/item/clothing/head/helmet/full/nanotrasen/custom,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/flare,
 		/obj/item/map
@@ -64,10 +66,7 @@
 		/obj/item/clothing/mask/gas/tactical,
 		/obj/item/clothing/head/hat/beret/armored,
 		/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops,
-		//obj/item/clothing/overwear/armor/plate_carrier/black,
-		/obj/item/armor_plate/light,
-		/obj/item/armor_plate/medium,
-		/obj/item/armor_plate/heavy,
+		/obj/item/clothing/overwear/armor/bulletproof,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/clothing/head/helmet/full/eod_helm,
 		/obj/item/clothing/overwear/armor/eod,
@@ -100,10 +99,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
-		/obj/item/weapon/ranged/energy/hybrid/carbine,
-
-		/obj/item/tempering/quality/ranged/lesser,
-		/obj/item/tempering/quality/greater
+		/obj/item/weapon/ranged/energy/hybrid/carbine
 	)
 
 /obj/structure/interactive/vending/nanotrasen/gundrobe/ops
@@ -136,10 +132,7 @@
 		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
 		/obj/item/deployable/mob/sentry,
-		/obj/item/deployable/mountable/browning,
-
-		/obj/item/tempering/magazine/bluespace,
-		/obj/item/tempering/magazine/refiller
+		/obj/item/deployable/mountable/browning
 	)
 
 /obj/structure/interactive/vending/nanotrasen/gundrobe/dip
@@ -204,6 +197,7 @@
 		/obj/item/bullet_cartridge/rocket_70mm,
 		/obj/item/bullet_cartridge/rocket_70mm/wp,
 		/obj/item/bullet_cartridge/rocket_70mm/ap,
+		/obj/item/bullet_cartridge/grenade_40mm,
 		/obj/item/powercell,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger
@@ -252,7 +246,8 @@
 		/obj/item/attachment/undermount/angled_grip,
 		/obj/item/attachment/undermount/bipod,
 		/obj/item/attachment/undermount/burst_adapter,
-		/obj/item/attachment/undermount/vertical_grip
+		/obj/item/attachment/undermount/vertical_grip,
+		/obj/item/attachment/undermount/gun/grenade_launcher
 	)
 
 

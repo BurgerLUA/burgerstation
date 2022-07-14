@@ -347,6 +347,8 @@
 
 	return ..()
 
+
+/*
 /mob/living/proc/try_rot()
 
 	if(!isturf(src.loc))
@@ -380,6 +382,7 @@
 	B.ai.set_path_astar(src.loc)
 
 	return TRUE
+*/
 
 /mob/living/proc/bang(var/duration=100)
 
@@ -694,7 +697,7 @@
 		return FALSE
 
 	var/amount_added = needle.reagents.add_reagent(blood_type,min(amount,blood_volume),caller = caller)
-	blood_volume -= amount_added
+	blood_volume = max(0,blood_volume-amount_added)
 	QUEUE_HEALTH_UPDATE(src)
 
 	if(messages)

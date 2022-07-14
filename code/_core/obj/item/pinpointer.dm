@@ -15,6 +15,8 @@
 	weight = 2
 	has_quick_function = TRUE
 
+	var/unreliable = FALSE
+
 /obj/item/pinpointer/quick(var/mob/caller,var/atom/object,location,params)
 	return click_self(caller)
 
@@ -77,6 +79,10 @@
 		icon_state = "scan"
 	else if(tracked_atom)
 		var/distance = get_dist_advanced(src,tracked_atom)
+		if(unreliable)
+			var/rand_num = rand(5,10)
+			distance = 	CEILING(distance,rand_num)
+			distance += rand(5,10)
 		var/desired_dir = get_dir_advanced(src,tracked_atom)
 		switch(distance)
 			if(1 to VIEW_RANGE*0.5)
@@ -365,6 +371,60 @@
 	if(choice)
 		var/atom/A = possible_bosses[choice]
 		tracked_atom = A
+	else
+		tracked_atom = null
+
+	scan_mode = FALSE
+	START_THINKING(src)
+
+	return TRUE
+
+
+
+/obj/item/pinpointer/deathmatch
+	name = "deathmatch pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks everyone, but not that well.."
+	icon_state = "syndicate"
+	value = 1000
+	value_burgerbux = 1
+	contraband = TRUE
+	unreliable = TRUE
+
+
+var/global/signal_offset = rand(0,10000)
+
+/obj/item/pinpointer/deathmatch/click_self(var/mob/caller)
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
+	var/list/possible_crew = list()
+
+	if(!enable_friendly_fire)
+		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
+		return FALSE
+
+	for(var/mob/living/advanced/player/P in all_players)
+		if(!can_track(P))
+			continue
+		var/signal_num = text2num("\ref[P]",16)
+		signal_num += signal_offset
+		signal_num = 1 + (signal_num % 200)
+		var/rand_num = rand(5,10)
+		var/distance_to_show = 	CEILING(get_dist_advanced(src,P),rand_num)
+		var/name_mod = "Signal #[signal_num] ([P.dead ? "DEAD" : "Alive"], ~[distance_to_show]m)"
+		possible_crew[name_mod] = P
+
+	scan_mode = TRUE
+	update_sprite()
+
+	var/choice = input("Who do you want to track?","Deathmatch Pinpointer Tracking",null) as null|anything in possible_crew
+
+	INTERACT_CHECK_OTHER(src) //Hacky
+
+	if(choice)
+		var/mob/living/advanced/player/P = possible_crew[choice]
+		tracked_atom = P
 	else
 		tracked_atom = null
 

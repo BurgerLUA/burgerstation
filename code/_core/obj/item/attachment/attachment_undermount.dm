@@ -104,4 +104,4 @@
 		movement_spread = 1.75
 	)
 
-	value = 2000
+	value = 800

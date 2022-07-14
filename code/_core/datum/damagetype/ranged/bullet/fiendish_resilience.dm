@@ -29,12 +29,13 @@
 		var/reagent_to_add = /reagent/medicine/adrenaline
 		var/volume_to_add = 1
 		if(!A.dead && V.dead)
+			if (V.blood_volume <= 0 || V.blood_volume_max <= 0 || !V.blood_type)
+				A.to_chat(span("danger","That enemy has no blood to steal!"))
+				return ..()
 			var/blood_to_steal = min(V.blood_volume,(A.blood_volume_max - A.blood_volume)) //it took blood, sweat and tears, but...
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.reagents.add_reagent(reagent_to_add,volume_to_add,caller=attacker) //I successfully stole stolen bloodsteal code!
 				play_sound(pick('sound/effects/demon_consume.ogg'),get_turf(V),range_max=VIEW_RANGE*0.5)
-			else if (V.blood_volume <= 0)
-				A.to_chat(span("danger","That enemy has no vigor to steal!"))
 
 		return ..()

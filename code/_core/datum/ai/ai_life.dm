@@ -74,7 +74,7 @@
 						if(target_distance >= VIEW_RANGE) //Wow we're really far away. Lets use a different pathing system instead.
 							var/obj/marker/map_node/N_start = find_closest_node(current_turf) //Find the closest node to us.
 							var/obj/marker/map_node/N_end = N_start ? find_closest_node(desired_target_turf) : null //Find the closet node to the target.
-							var/list/obj/marker/map_node/found_path = N_end ? N_start.find_path(N_end) : null //Okay. Path time. Maybe.
+							var/list/obj/marker/map_node/found_path = N_end ? AStar_Circle_node(N_start,N_end) : null //Okay. Path time. Maybe.
 							if(found_path)
 								found_valid_path = set_path(found_path)
 						if(!found_valid_path) //Couldn't find a valid path, so we use astar.

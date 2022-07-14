@@ -1,5 +1,5 @@
 /obj/item/bullet_cartridge/grenade_40mm/
-	name = "40mm High explosive grenade"
+	name = "40mm high explosive grenade"
 	desc = "What makes ME a good demoman?"
 	desc_extended = "For Grenade launchers, High explosive."
 	icon = 'icons/obj/item/bullet/40mm_HE.dmi'
@@ -16,11 +16,13 @@
 
 	projectile_speed = TILE_SIZE * 0.9
 
-
-
 	size = 0.1
-	value = 15
+	value = 100
 
+	caseless = TRUE
 
+/obj/item/bullet_cartridge/grenade_40mm/get_base_value()
+	. = ..()
+	. += 300
 
 

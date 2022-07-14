@@ -20,7 +20,13 @@
 
 	size = 2
 
+	caseless = TRUE
+
 	bullet_insert_sound = 'sound/weapons/rocket/rocket_insert.ogg'
+
+/obj/item/bullet_cartridge/rocket_70mm/get_base_value()
+	. = ..()
+	. += 400
 
 /obj/item/bullet_cartridge/rocket_70mm/wp
 	name = "70mm White Phosphorous Warhead"
@@ -44,6 +50,10 @@
 
 	size = 2
 
+/obj/item/bullet_cartridge/rocket_70mm/wp/get_base_value()
+	. = ..()
+	. += 200
+
 /obj/item/bullet_cartridge/rocket_70mm/ap
 	name = "70mm Armor Piercing Warhead"
 	desc = "I'm a Rocket Man."
@@ -65,3 +75,7 @@
 	projectile_speed = TILE_SIZE * 0.9
 
 	size = 2
+
+/obj/item/bullet_cartridge/rocket_70mm/ap/get_base_value()
+	. = ..()
+	. += 200

@@ -76,6 +76,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 			if(is_player(A))
 				var/mob/living/advanced/player/P = L
 				var/difficulty_mod = difficulty_to_ai_modifier[P.get_difficulty()]
+				if(!difficulty_mod)
+					difficulty_mod = 1
 				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
 					return -9999 //Wow they're being overwhelmed. Very lowest priority.
 				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)

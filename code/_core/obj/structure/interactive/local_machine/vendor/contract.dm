@@ -25,13 +25,21 @@
 		/obj/item/weapon/unarmed/powerfist
 	)
 
+	health = null
+
+	apc_powered = FALSE //Does not require power.
+
+	interact_distance = VIEW_RANGE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL | FLAG_INTERACTION_NO_TURF_CHECKING
+
 
 /obj/structure/interactive/vending/contract/New(var/desired_loc)
 
 	var/list/possible_contracts = subtypesof(/obj/item/contract)
 	for(var/k in possible_contracts) //First pass
 		var/obj/item/contract/C = k
-		if(initial(C.amount_max))
+		if(initial(C.value_max)) //This is a valid contract.
 			continue
 		possible_contracts -= k
 
@@ -67,9 +75,11 @@
 		var/chosen_reward = pick(possible_rewards)
 		possible_rewards -= chosen_reward
 		I.reward = chosen_reward
+
 	INITIALIZE(I)
 	GENERATE(I)
 	FINALIZE(I)
+
 	return I
 
 /obj/structure/interactive/vending/contract/modify_item(var/obj/item/I,var/obj/item/base_item)

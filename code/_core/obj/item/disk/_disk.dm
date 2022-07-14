@@ -231,3 +231,39 @@
 	data = list(
 		"ability" = /ability/dash
 	)
+
+/obj/item/disk/genetic/dash/controlled
+	name = "genetic data disk (controlled dash)"
+	data = list(
+		"ability" = /ability/dash/controlled
+	)
+
+/obj/item/disk/genetic/dash/targeted
+	name = "genetic data disk (targeted dash)"
+	data = list(
+		"ability" = /ability/dash/targeted
+	)
+
+/obj/item/disk/genetic/dash/random
+	name = "genetic data disk (random dash)"
+	data = list(
+		"ability" = /ability/dash/random
+	)
+
+/obj/item/disk/genetic/dash/fleeting
+	name = "genetic data disk (fleeting dash)"
+	data = list(
+		"ability" = /ability/dash/fleeting
+	)
+
+/obj/item/disk/genetic/quick_draw
+	name = "genetic data disk (quick draw)"
+	data = list(
+		"ability" = /ability/quick_draw
+	)
+
+/obj/item/disk/genetic/quick_draw/plus
+	name = "genetic data disk (quick draw plus)"
+	data = list(
+		"ability" = /ability/quick_draw/plus
+	)

@@ -77,3 +77,6 @@
 		B.update_owner(src)
 
 	to_chat(span("notice","Please load a character or create a new character to play using the buttons below."))
+
+	for(var/k in SSlanguage.all_languages)
+		src.known_languages |= k
