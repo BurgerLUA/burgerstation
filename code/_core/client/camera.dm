@@ -62,10 +62,10 @@
 
 /client/proc/handle_camera()
 
-	if(mob && istype(mob.loc,/obj/projectile/))
-		var/obj/projectile/P = mob.loc
-		pixel_x = round(P.pixel_x_float_visual,1)
-		pixel_y = round(P.pixel_y_float_visual,1)
+	if(mob && !mob.z && mob.loc)
+		var/atom/A = mob.loc
+		pixel_x = round(A.pixel_x,1)
+		pixel_y = round(A.pixel_y,1)
 		return TRUE
 
 	var/calculated_pixel_x = 0
