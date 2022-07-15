@@ -16,7 +16,7 @@
 
 /obj/structure/interactive/storage/Finalize()
 	. = ..()
-	if(storage && src.z)
+	if(storage && isturf(src.loc))
 		for(var/obj/item/I in loc.contents)
 			storage.add_to_inventory(null,I)
 

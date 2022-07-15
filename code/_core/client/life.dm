@@ -6,7 +6,7 @@
 	if(spam_protection_interact > 0)
 		spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK))
 
-	if(queued_chat_messages && queued_chat_messages[1])
+	if(length(queued_chat_messages) && queued_chat_messages[1])
 		var/list/queued_message = queued_chat_messages[1]
 		var/text = queued_message["text"]
 		var/list/targets = queued_message["output_target_list"]

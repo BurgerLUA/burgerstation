@@ -18,8 +18,8 @@
 	dir_offset = TILE_SIZE - 8
 
 /obj/structure/interactive/light_switch/Destroy()
-	if(src.z)
-		var/area/A = loc.loc
+	if(isturf(src.loc))
+		var/area/A = src.loc.loc
 		if(A.requires_power)
 			A.light_switches -= src
 	. = ..()
@@ -31,8 +31,8 @@
 
 /obj/structure/interactive/light_switch/Finalize()
 	. = ..()
-	if(src.z)
-		var/area/A = loc.loc
+	if(isturf(src.loc))
+		var/area/A = src.loc.loc
 		if(A.requires_power)
 			A.light_switches |= src
 		else
@@ -47,8 +47,8 @@
 		var/area/A = old_loc.loc
 		if(A.requires_power)
 			A.light_switches -= src
-	if(src.z)
-		var/area/A = loc.loc
+	if(isturf(src.loc))
+		var/area/A = src.loc.loc
 		if(A.requires_power)
 			A.light_switches |= src
 

@@ -305,8 +305,8 @@
 	if (!light_range || !light_power)
 		update = TRUE
 
-	if (top_atom.z)
-		if (source_turf != top_atom)
+	if (isturf(top_atom))
+		if(source_turf != top_atom)
 			source_turf = top_atom
 			UPDATE_APPROXIMATE_PIXEL_TURF
 			update = TRUE

@@ -148,7 +148,7 @@
 	. = ..()
 	update_name(name) //Setup labels
 	update_atom_light()
-	if((opacity || density) && src.z)
+	if((opacity || density) && isturf(loc))
 		var/turf/T = loc
 		if(opacity)
 			T.has_opaque_atom = TRUE

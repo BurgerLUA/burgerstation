@@ -61,7 +61,7 @@
 
 	. = ..()
 
-	if(. && smart && target_atom && (target_atom.z != 0))
+	if(. && smart && target_atom && target_atom.z == src.z)
 		var/lock_mod = 0.1
 		var/list/offsets = get_directional_offsets(current_loc,target_atom)
 		vel_x = round(offsets[1]*TILE_SIZE*0.5*lock_mod + vel_x*(1-lock_mod),0.001)

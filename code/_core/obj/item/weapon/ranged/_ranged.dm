@@ -343,7 +343,7 @@
 	if(.)
 		return .
 
-	if(object.plane >= PLANE_HUD || !object.z)
+	if(!object.z || object.plane >= PLANE_HUD)
 		return .
 
 	if(wield_only && !wielded)
@@ -395,9 +395,6 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 	var/turf/object_turf = get_turf(object)
 
 	if(!object_turf)
-		return FALSE
-
-	if(object_turf.x == null || object_turf.y == null || object_turf.z == null)
 		return FALSE
 
 	caller.face_atom(object)

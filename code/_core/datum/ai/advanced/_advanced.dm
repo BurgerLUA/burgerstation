@@ -84,7 +84,8 @@
 
 	return TRUE
 
-/ai/advanced/proc/handle_gunplay()
+/ai/advanced/proc/handle_equipment()
+
 	var/mob/living/advanced/A = owner
 
 	if(!checked_grenades)
@@ -98,14 +99,15 @@
 				checked_grenades = FALSE
 			return TRUE
 
-	. = TRUE
+	if(istype(A.left_item,/obj/item/weapon/ranged/) && handle_gun(A.left_item))
+		return TRUE
 
-	if(istype(A.left_item,/obj/item/weapon/ranged/) && !handle_gun(A.left_item))
-		. = FALSE
-	if(istype(A.right_item,/obj/item/weapon/ranged/) && !handle_gun(A.right_item))
-		. = FALSE
+	if(istype(A.right_item,/obj/item/weapon/ranged/) && handle_gun(A.right_item))
+		return TRUE
 
-	return .
+	return FALSE
+
+
 
 /ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)
 
@@ -115,7 +117,7 @@
 	var/obj/hud/inventory/I = G.loc
 
 	var/mob/living/advanced/A = owner
-	if(!G.stored_trigger) //Bad grenad, doesn't even work. Drop it.
+	if(!G.stored_trigger) //Bad grenade, doesn't even work. Drop it.
 		G.drop_item(get_turf(A))
 		return FALSE
 
@@ -338,7 +340,7 @@
 		if(debug) log_debug("Complex fail.")
 		return FALSE
 
-	if(!handle_gunplay())
+	if(!handle_equipment())
 		if(debug) log_debug("Gunplay fail.")
 		return FALSE
 
@@ -361,16 +363,6 @@
 	else
 		params["right"] = TRUE
 		owner.on_right_down(target,null,null,params)
-
-
-	/*
-	if(left_click && A.inventories_by_id[BODY_HAND_RIGHT_HELD])
-		A.inventories_by_id[BODY_HAND_RIGHT_HELD].click_on_object(A,target,null,null,params)
-	else if (A.inventories_by_id[BODY_HAND_LEFT_HELD])
-		A.inventories_by_id[BODY_HAND_LEFT_HELD].click_on_object(A,target,null,null,params)
-	else if (A.labeled_organs[BODY_HEAD])
-		A.labeled_organs[BODY_HEAD].attack(A,target,params)
-	*/
 
 	return TRUE
 
