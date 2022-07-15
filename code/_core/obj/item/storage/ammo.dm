@@ -22,7 +22,7 @@
 
 /obj/item/storage/ammo/bullet_22/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/pistol_22(src)
+		new /obj/item/bullet_cartridge/pistol_22{amount=5}(src)
 	. = ..()
 
 
@@ -37,7 +37,7 @@
 
 /obj/item/storage/ammo/slug/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_12/slug(src)
+		new /obj/item/bullet_cartridge/shotgun_12/slug{amount=5}(src)
 	. = ..()
 
 /obj/item/storage/ammo/buckshot
@@ -51,7 +51,7 @@
 
 /obj/item/storage/ammo/buckshot/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_12(src)
+		new /obj/item/bullet_cartridge/shotgun_12{amount=5}(src)
 	. = ..()
 
 
@@ -66,7 +66,7 @@
 
 /obj/item/storage/ammo/flechette/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_12/flechette(src)
+		new /obj/item/bullet_cartridge/shotgun_12/flechette{amount=5}(src)
 	. = ..()
 
 
@@ -82,7 +82,7 @@
 
 /obj/item/storage/ammo/fire/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_12/fire(src)
+		new /obj/item/bullet_cartridge/shotgun_12/fire{amount=5}(src)
 	. = ..()
 
 
@@ -97,7 +97,7 @@
 
 /obj/item/storage/ammo/buckshot_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_23(src)
+		new /obj/item/bullet_cartridge/shotgun_23{amount=5}(src)
 	. = ..()
 
 /obj/item/storage/ammo/slug_23
@@ -111,7 +111,7 @@
 
 /obj/item/storage/ammo/slug_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_23/slug(src)
+		new /obj/item/bullet_cartridge/shotgun_23/slug{amount=5}(src)
 	. = ..()
 
 /obj/item/storage/ammo/fire_23
@@ -125,7 +125,7 @@
 
 /obj/item/storage/ammo/fire_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_23/fire(src)
+		new /obj/item/bullet_cartridge/shotgun_23/fire{amount=5}(src)
 	. = ..()
 
 /obj/item/storage/ammo/rubber_23
@@ -139,7 +139,7 @@
 
 /obj/item/storage/ammo/rubber_23/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/shotgun_23/rubber(src)
+		new /obj/item/bullet_cartridge/shotgun_23/rubber{amount=5}(src)
 	. = ..()
 
 /obj/item/storage/ammo/grenade_40mm
@@ -153,7 +153,7 @@
 
 /obj/item/storage/ammo/grenade_40mm/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/grenade_40mm/(src)
+		new /obj/item/bullet_cartridge/grenade_40mm(src)
 	. = ..()
 
 /obj/item/storage/ammo/bullet_762/
@@ -168,7 +168,7 @@
 
 /obj/item/storage/ammo/bullet_762/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/revolver_762(src)
+		new /obj/item/bullet_cartridge/revolver_762{amount=6}(src)
 	. = ..()
 
 /obj/item/storage/ammo/bullet_38/
@@ -183,7 +183,7 @@
 
 /obj/item/storage/ammo/bullet_38/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/revolver_38(src)
+		new /obj/item/bullet_cartridge/revolver_38{amount=6}(src)
 	. = ..()
 
 /obj/item/storage/ammo/bullet_357/
@@ -198,7 +198,7 @@
 
 /obj/item/storage/ammo/bullet_357/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/revolver_357(src)
+		new /obj/item/bullet_cartridge/revolver_357{amount=6}(src)
 	. = ..()
 
 /obj/item/storage/ammo/bullet_44/
@@ -213,7 +213,7 @@
 
 /obj/item/storage/ammo/bullet_44/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/revolver_44(src)
+		new /obj/item/bullet_cartridge/revolver_44{amount=6}(src)
 	. = ..()
 
 /obj/item/storage/ammo/bullet_300/
@@ -228,5 +228,5 @@
 
 /obj/item/storage/ammo/bullet_300/fill_inventory()
 	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
-		new /obj/item/bullet_cartridge/revolver_300(src)
+		new /obj/item/bullet_cartridge/revolver_300{amount=5}(src)
 	. = ..()

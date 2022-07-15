@@ -64,7 +64,7 @@
 
 		/obj/item/weapon/ranged/bow/steel,
 		/obj/item/weapon/ranged/bow/wood,
-		/obj/item/bullet_cartridge/arrow,
+		/obj/item/bullet_cartridge/arrow{amount=5},
 		/obj/item/clothing/belt/belt_quiver,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/holy45,
