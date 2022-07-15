@@ -36,6 +36,9 @@
 	gender = loaded_data["gender"]
 	species = loaded_data["species"]
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
+	difficulty = loaded_data["difficulty"] ? difficulty["difficulty"] : DIFFICULTY_NORMAL
+
+	// setup_difficulty() does not need to be called here as it is called in Finalize()
 
 	if(!loaded_data["known_topics"])
 		loaded_data["known_topics"] = list()
@@ -217,6 +220,7 @@
 	.["prestige_count"] = prestige_count
 	.["job"] = job
 	.["job_rank"] = job_rank
+	.["difficulty"] = difficulty
 
 	if(length(traits))
 		.["traits"] = list()
