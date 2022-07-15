@@ -138,16 +138,24 @@
 	return TRUE
 
 /atom/movable/Finalize()
+
 	set_anchored(anchored,TRUE)
+
 	. = ..()
-	update_value()
+
 	if(enable_chunk_clean && src.z)
 		var/turf/T = loc
 		var/area/A = T.loc
 		A.chunk_cleanable += src
 
+	if((opacity || density) && src.z && isturf(src.loc))
+		var/turf/T = src.loc
+		if(opacity)
+			T.has_opaque_atom = TRUE
+		if(density)
+			T.has_dense_atom = TRUE
 
-
+	update_value()
 
 /atom/movable/proc/update_value()
 	value = get_base_value()
@@ -164,6 +172,21 @@
 		return FALSE
 
 	return TRUE
+
+/atom/movable/get_debug_name()
+
+	var/shown_x = src.x
+	var/shown_y = src.y
+	var/shown_z = src.z
+
+	if(!src.z)
+		var/turf/T = get_turf(src)
+		if(T)
+			shown_x = T.x
+			shown_y = T.y
+			shown_z = T.z
+
+	return "[src.name]([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
 
 
 /atom/movable/proc/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
@@ -185,4 +208,30 @@
 
 /atom/movable/proc/gib(var/gib_direction=0x0,var/hard=FALSE)
 	qdel(src)
+	return TRUE
+
+/atom/movable/proc/is_safe_to_delete(var/check_loc = TRUE)
+
+	if(check_loc && loc && !src.z)
+		return FALSE
+
+	if(is_player_controlled())
+		return FALSE
+
+	for(var/k in contents)
+		var/atom/movable/A = k
+		if(!A.is_safe_to_delete(FALSE))
+			return FALSE
+
+	return ..()
+
+/atom/movable/set_density(var/desired_density=TRUE,var/force=FALSE)
+
+	. = ..()
+
+	if(. && isturf(loc))
+		var/turf/T = loc
+		if(T.density != density)
+			T.recalculate_atom_density()
+
 	return TRUE

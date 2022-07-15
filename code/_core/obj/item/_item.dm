@@ -539,7 +539,6 @@ var/global/list/rarity_to_mul = list(
 		if(src.z && delete_on_drop)
 			qdel(src)
 			return TRUE
-		undelete(src)
 
 	update_lighting_for_owner()
 

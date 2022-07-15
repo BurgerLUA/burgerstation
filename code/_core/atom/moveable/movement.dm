@@ -38,7 +38,7 @@
 		if(intercardinal)
 			final_movement_delay *= SQRT2
 
-		if(src.z && (collision_flags & FLAG_COLLISION_WALKING))
+		if(src.z && isturf(src.loc) && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc
 			final_movement_delay *= T.move_delay_modifier
 

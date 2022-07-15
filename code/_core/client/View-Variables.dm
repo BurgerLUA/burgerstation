@@ -454,7 +454,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		smite_living(M)
 
 	else if(href_list["delete"])
-		var/atom/M = locate(href_list["delete"])
+		var/atom/movable/M = locate(href_list["delete"])
 		spawn(1)
 		if(!M) return
 		if(M.is_safe_to_delete())

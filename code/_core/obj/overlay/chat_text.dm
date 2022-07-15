@@ -46,5 +46,5 @@
 
 /obj/effect/chat_text/proc/fade_out()
 	animate(src,alpha=0,time=10)
-	queue_delete(src,20)
+	CALLBACK("delete_\ref[src]",10,src,.datum/proc/delete)
 	return TRUE

@@ -49,7 +49,7 @@
 	caller.client.images -= cached_coin
 	caller.client.images -= cached_sparkle
 	if(length(valid_ckeys) <= 0)
-		queue_delete(src,10)
+		qdel(src)
 
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

@@ -6,6 +6,10 @@ SUBSYSTEM_DEF(progressbars)
 
 	var/list/all_progress_bars = list()
 
+	var/list/progress_bars_to_delete = list() //Assoc list (bar, time)
+
+
+
 	cpu_usage_max = 95
 	tick_usage_max = 95
 
@@ -31,12 +35,12 @@ SUBSYSTEM_DEF(progressbars)
 
 	if(progress_list["time"] < world.time)
 		all_progress_bars -= A
+		progress_bars_to_delete[P] = world.time + 5
+		animate(P,alpha=0,time=5)
 		if(progress_list["src"])
 			call(progress_list["src"],progress_list["proc"])(arglist(progress_list["args"]))
 		else
 			call(progress_list["proc"])(arglist(progress_list["args"]))
-		animate(P,alpha=0,time=5)
-		queue_delete(P,10)
 		return FALSE
 
 	if(progress_list["condition_proc"])
@@ -48,9 +52,9 @@ SUBSYSTEM_DEF(progressbars)
 			if(call(progress_list["condition_proc"])(arglist(progress_list["condition_args"])))
 				pass = TRUE
 		if(!pass)
-			animate(P,alpha=0,time=5)
-			queue_delete(P,10)
 			all_progress_bars -= A
+			progress_bars_to_delete[P] = world.time + 5
+			animate(P,alpha=0,time=5)
 			return FALSE
 
 	return TRUE
@@ -68,6 +72,13 @@ SUBSYSTEM_DEF(progressbars)
 			log_error("Warning! A progress bar belonging to [A.get_debug_name()] didn't run properly, and thus was deleted.")
 			qdel(P)
 			all_progress_bars -= A
+
+	for(var/k in progress_bars_to_delete)
+		var/obj/hud/progress_bar/PB = k
+		var/time = progress_bars_to_delete[k]
+		if(time <= world.time)
+			qdel(PB)
+			progress_bars_to_delete -= k
 
 	return TRUE
 

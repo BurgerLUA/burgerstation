@@ -13,4 +13,6 @@
 		qdel(src)
 		return FALSE
 
-	
+
+/reagent_container/temp/smoke
+	var/obj/effect/temp/smoke/linked_smoke = list()

@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(reward)
 	for(var/k in subtypesof(/reward/))
 		var/reward/R = new k
 		stored_rewards[R.type] = R
-		log_subsystem(src.name,"Created reward [R.name]([R.type]).")
+		existing_rewards++
 
 	if(fexists(REWARD_DIR))
 		var/loaded = file2text(REWARD_DIR)
@@ -36,7 +36,6 @@ SUBSYSTEM_DEF(reward)
 			code = sanitize(code) //So it's always the same.
 			reward_code_to_reward[code] = stored_rewards[reward]
 			var/debug_reward = sanitize("[reward_code_to_reward[code]] = [reward]")
-			log_subsystem(src.name,"Found reward: [debug_reward].")
 	else
 		log_subsystem(src.name,"Reward directory \"[REWARD_DIR]\" does not exist.")
 

@@ -32,7 +32,7 @@
 /obj/effect/falling_meteor/proc/land()
 	explode(get_turf(src),20,src,src,multiplier = 5)
 	src.alpha = 0
-	queue_delete(src,10)
+	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
 	return TRUE
 
 /obj/effect/falling_fireball
@@ -61,5 +61,5 @@
 /obj/effect/falling_fireball/proc/land()
 	explode(get_turf(src),10,src,src)
 	src.alpha = 0
-	queue_delete(src,10)
+	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
 	return TRUE

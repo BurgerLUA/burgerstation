@@ -2153,7 +2153,6 @@
 #include "code\_core\world\subsystems\cargo.dm"
 #include "code\_core\world\subsystems\chunk_cleaning_new.dm"
 #include "code\_core\world\subsystems\classes.dm"
-#include "code\_core\world\subsystems\cleaning.dm"
 #include "code\_core\world\subsystems\client.dm"
 #include "code\_core\world\subsystems\config.dm"
 #include "code\_core\world\subsystems\cqc.dm"

@@ -55,7 +55,7 @@
 		if(enable_message) caller.to_chat(span("warning","The dead cannot interact with \the [src.name]!"))
 		return FALSE
 
-	if(turf_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_TURF_CHECKING) && src.plane < PLANE_HUD && src.z && !isturf(caller.loc))
+	if(turf_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_TURF_CHECKING) && src.plane < PLANE_HUD && src.z && !caller.loc?.z)
 		return FALSE
 
 	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(caller,src) > interact_distance)

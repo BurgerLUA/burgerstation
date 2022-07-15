@@ -5,6 +5,8 @@
 
 	var/emf_range = VIEW_RANGE*0.5
 
+	var/time_to_delete = 0
+
 	invisibility = 101
 	alpha = 0
 	mouse_opacity = 0
@@ -20,7 +22,7 @@
 	if(desired_range)
 		emf_range = desired_range
 
-	
+
 /obj/emf/Destroy()
 	SSghost.all_emfs -= src
 	return ..()

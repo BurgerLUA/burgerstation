@@ -138,7 +138,6 @@
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
 	handle_transform()
-	undelete(src)
 	update_eyes()
 	return TRUE
 
@@ -244,8 +243,6 @@
 		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 		if(flash_overlay.duration <= 0)
 			animate(flash_overlay,alpha=0,time=SECONDS_TO_DECISECONDS(5))
-			queue_delete(flash_overlay,SECONDS_TO_DECISECONDS(10))
-			flash_overlay = null
 
 	if(deafened_duration && deafened_duration > 0)
 		deafened_duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
