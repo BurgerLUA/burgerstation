@@ -17,7 +17,6 @@ SUBSYSTEM_DEF(reward)
 	for(var/k in subtypesof(/reward/))
 		var/reward/R = new k
 		stored_rewards[R.type] = R
-		existing_rewards++
 
 	if(fexists(REWARD_DIR))
 		var/loaded = file2text(REWARD_DIR)
@@ -35,7 +34,7 @@ SUBSYSTEM_DEF(reward)
 				log_error("Reward Subsystem: Invalid reward type \"[code_type_pair[2]]\" for line [current_line] of [REWARD_DIR].")
 			code = sanitize(code) //So it's always the same.
 			reward_code_to_reward[code] = stored_rewards[reward]
-			var/debug_reward = sanitize("[reward_code_to_reward[code]] = [reward]")
+			//var/debug_reward = sanitize("[reward_code_to_reward[code]] = [reward]")
 	else
 		log_subsystem(src.name,"Reward directory \"[REWARD_DIR]\" does not exist.")
 

@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		z_level_to_file["[i]"] = k
 		maps_loaded++
 
-	log_subsyste(src.name,"Loaded [maps_loaded] z-levels.")
+	log_subsystem(src.name,"Loaded [maps_loaded] z-levels.")
 
 	//Load prefabs
 	for(var/category in flist(PREFABS_DIR))
