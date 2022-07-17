@@ -30,17 +30,17 @@
 		/obj/item/storage/pouch/triple/brown,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/lever,
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12,
+		/obj/item/bullet_cartridge/shotgun_12{amount=5},
+		/obj/item/bullet_cartridge/shotgun_12{amount=5},
+		/obj/item/bullet_cartridge/shotgun_12{amount=5},
+		/obj/item/bullet_cartridge/shotgun_12{amount=5},
+		/obj/item/bullet_cartridge/shotgun_12{amount=5},
+		/obj/item/bullet_cartridge/shotgun_12{amount=5},
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
-		/obj/item/bullet_cartridge/pistol_40/,
-		/obj/item/bullet_cartridge/pistol_40/,
-		/obj/item/bullet_cartridge/pistol_40/,
+		/obj/item/magazine/pistol_40,
+		/obj/item/magazine/pistol_40/,
+		/obj/item/magazine/pistol_40/,
 
 		/obj/item/grenade/fuse/flashbang,
 

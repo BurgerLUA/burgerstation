@@ -186,7 +186,7 @@
 	)
 
 	loot_table = list(
-		/obj/item/bullet_cartridge/revolver_300 = 1
+		/obj/item/bullet_cartridge/revolver_300{amount=5} = 1
 	)
 	loot_count = 4
 	chance_none = 25
@@ -241,13 +241,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/revolver/horse,
 		/obj/item/weapon/ranged/bullet/revolver/horse,
-		/obj/item/bullet_cartridge/pistol_45,
-		/obj/item/bullet_cartridge/pistol_45
+		/obj/item/bullet_cartridge/pistol_45{amount=6},
+		/obj/item/bullet_cartridge/pistol_45{amount=6}
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/revolver/horse = 1,
-		/obj/item/bullet_cartridge/pistol_45 = 4
+		/obj/item/bullet_cartridge/pistol_45{amount=6} = 4
 	)
 	loot_count = 4
 	chance_none = 25
@@ -256,13 +256,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
-		/obj/item/bullet_cartridge/rifle_308/short,
-		/obj/item/bullet_cartridge/rifle_308/short
+		/obj/item/bullet_cartridge/rifle_308/short{amount=5},
+		/obj/item/bullet_cartridge/rifle_308/short{amount=5}
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant = 1,
-		/obj/item/bullet_cartridge/rifle_308/short = 4
+		/obj/item/bullet_cartridge/rifle_308/short{amount=5} = 4
 	)
 	loot_count = 4
 	chance_none = 25

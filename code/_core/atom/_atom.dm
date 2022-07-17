@@ -59,11 +59,6 @@
 
 	density = desired_density
 
-	if(isturf(loc))
-		var/turf/T = loc
-		if(T.density != density)
-			T.recalculate_atom_density()
-
 	return TRUE
 
 /atom/proc/get_display_name(var/mob/caller)
@@ -148,13 +143,6 @@
 	. = ..()
 	update_name(name) //Setup labels
 	update_atom_light()
-	if((opacity || density) && isturf(loc))
-		var/turf/T = loc
-		if(opacity)
-			T.has_opaque_atom = TRUE
-		if(density)
-			T.has_dense_atom = TRUE
-
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src
@@ -206,37 +194,14 @@
 /atom/proc/is_player_controlled()
 	return FALSE
 
-/atom/is_safe_to_delete(var/check_loc = TRUE)
-
-	if(is_player_controlled())
-		return FALSE
-
-	if(check_loc && loc && !isturf(loc))
-		return FALSE
-
-	for(var/k in contents)
-		var/atom/movable/A = k
-		if(!A.is_safe_to_delete(FALSE))
-			return FALSE
-
-	return ..()
-
 /atom/get_debug_name()
 	return "[src.name]([src.type])<a href='?spectate=1;x=[x];y=[y];z=[z]'>([x],[y],[z])</a>"
-
-/atom/movable/get_debug_name()
-	var/turf/T = get_turf(src)
-	var/shown_x = T ? T.x : 0
-	var/shown_y = T ? T.y : 0
-	var/shown_z = T ? T.z : 0
-	return "[src.name]([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[z]'>([shown_x],[shown_y],[shown_z])</a>"
 
 /atom/get_log_name()
 	return "[src.name]([src.type])([x],[y],[z])</a>"
 
 /atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod=1)
 	return 0
-
 
 /atom/proc/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
 	return TRUE

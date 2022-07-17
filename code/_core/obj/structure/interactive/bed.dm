@@ -21,7 +21,7 @@ obj/structure/interactive/bed
 
 /obj/structure/interactive/bed/Crossed(atom/movable/O)
 	. = ..()
-	if(loc && src.z != 0 && is_living(O))
+	if(src.z && is_living(O))
 		var/mob/living/L = O
 		if(L.horizontal)
 			var/found = FALSE

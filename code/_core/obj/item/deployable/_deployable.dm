@@ -39,15 +39,20 @@
 
 /obj/item/deployable/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(isturf(object) && can_deploy_to(caller,object))
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
+	var/turf/T = get_turf(object)
+
+	if(can_deploy_to(caller,T))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		if(caller.loc != object)
-			caller.face_atom(object) //Only face the atom if we're not on the tile.
+		if(caller.loc != T)
+			caller.face_atom(T) //Only face the atom if we're not on the tile.
 		caller.visible_message(span("warning","\The [caller.name] starts to deploy \the [src.name]..."),span("notice","You start to deploy \the [src.name]..."))
-		PROGRESS_BAR(caller,src,get_deploy_time(caller),.proc/deploy,caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_deploy_to,caller,object)
+		PROGRESS_BAR(caller,src,get_deploy_time(caller),.proc/deploy,caller,T)
+		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_deploy_to,caller,T)
 		return TRUE
 
 	return ..()

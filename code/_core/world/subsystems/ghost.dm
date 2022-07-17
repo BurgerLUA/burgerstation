@@ -28,4 +28,9 @@ SUBSYSTEM_DEF(ghost)
 		var/obj/item/emf/E = k
 		E.on_emf_think()
 
+	for(var/k in all_emfs)
+		var/obj/emf/E = k
+		if(E.time_to_delete <= world.time)
+			qdel(E)
+
 	return TRUE

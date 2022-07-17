@@ -1,12 +1,11 @@
 /proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255)
 	if(!desired_turf)
 		return FALSE
-	var/reagent_container/temp/T
+	var/reagent_container/temp/smoke/T
 	if(container)
 		T = new(null,1000)
 		T.owner = owner
 		container.transfer_reagents_to(T,container.volume_current,caller=owner) //Transfer everything to this temp container.
-		queue_delete(T,desired_duration)
 
 	var/list/blacklist_turfs = list(T=TRUE)
 	. = new/obj/effect/temp/smoke(desired_turf,desired_duration,blacklist_turfs,T,owner,desired_power,alpha)
@@ -28,7 +27,7 @@
 
 	var/list/blacklist_turfs
 
-	var/reagent_container/container
+	var/reagent_container/temp/smoke/container
 
 	var/mob/owner
 
@@ -38,7 +37,11 @@
 	. = ..()
 	blacklist_turfs?.Cut()
 	owner = null
-	container = null //The container is a shared list
+	if(container)
+		container.linked_smoke -= src
+		if(length(container.linked_smoke) <= 0)
+			qdel(container) //delete the smoke container if there is no smoke left.
+		container = null
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
 	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))

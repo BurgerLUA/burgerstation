@@ -36,7 +36,7 @@
         caller.to_chat(span("warning","You can't pack up \the [src.name] while its full!"))
         return FALSE
 
-    if(qdeleting || !isturf(src.loc))
+    if(qdeleting || !src.z)
         caller.to_chat(span("warning","You can't pack up \the [src.name] here!"))
         return FALSE
 

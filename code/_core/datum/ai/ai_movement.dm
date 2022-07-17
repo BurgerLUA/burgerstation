@@ -182,30 +182,18 @@
 		var/obj/marker/map_node/N_start = find_closest_node(owner,check_view=TRUE)
 		if(!N_start)
 			set_path(null)
-			if(delete_on_no_path)
-				queue_delete(owner,0,TRUE)
-			else
-				SSai.path_stuck_ai |= src
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
 		if(!N_end)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path end!")
 			set_path(null)
-			if(delete_on_no_path)
-				queue_delete(owner,0,TRUE)
-			else
-				SSai.path_stuck_ai |= src
 			return FALSE
 
 		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 		if(!found_path)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
 			set_path(null)
-			if(delete_on_no_path)
-				queue_delete(owner,0,TRUE)
-			else
-				SSai.path_stuck_ai |= src
 			return FALSE
 
 		set_path_astar(get_turf(N_start))

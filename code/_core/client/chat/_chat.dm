@@ -130,7 +130,7 @@
 
 	var/turf/T = get_turf(src)
 
-	if(!T || (T.x == 0 && T.y == 0 && T.z == 0)) //Void
+	if(!T || !T.z) //Void
 		return
 
 	if(!first_person_text)

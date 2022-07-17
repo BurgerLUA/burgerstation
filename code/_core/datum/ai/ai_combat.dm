@@ -57,7 +57,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 	DIFFICULTY_NORMAL = 2,
 	DIFFICULTY_HARD = 4,
 	DIFFICULTY_EXTREME = 6,
-	DIFFICULTY_SURVIVOR = 6
+	DIFFICULTY_NIGHTMARE = 6
 )
 
 /ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.

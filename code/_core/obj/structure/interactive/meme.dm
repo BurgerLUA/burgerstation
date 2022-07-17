@@ -8,7 +8,7 @@
 /obj/structure/interactive/dont_look/Finalize()
 	. = ..()
 	CALLBACK("\ref[src]_look_delete",SECONDS_TO_DECISECONDS(60),src,.proc/callback_delete)
-	if(isturf(loc))
+	if(isturf(src.loc))
 		START_THINKING(src)
 
 /obj/structure/interactive/dont_look/proc/callback_delete()
@@ -16,7 +16,7 @@
 	return TRUE
 
 /obj/structure/interactive/dont_look/think()
-	if(!isturf(loc))
+	if(!isturf(src.loc))
 		..()
 		return FALSE
 	check_look() //I mean, it's an admin item. Who care if it's intensive?
@@ -24,7 +24,7 @@
 
 /obj/structure/interactive/dont_look/post_move(var/atom/old_loc)
 	. = ..()
-	if(isturf(loc) && !isturf(old_loc))
+	if(isturf(src.loc) && !isturf(old_loc))
 		START_THINKING(src)
 
 /obj/structure/interactive/dont_look/proc/do_explode()

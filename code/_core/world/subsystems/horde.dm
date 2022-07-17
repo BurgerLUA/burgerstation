@@ -177,8 +177,8 @@ SUBSYSTEM_DEF(horde)
 		return TRUE //Already being hunted.
 
 	. = 0
-	var/area/sent_area
-	for(var/i=1,i<=enemies_to_send,i++)
+	var/area/sent_area //debug only
+	for(var/i=1,i<=min(enemies_to_send,4),i++) //Send at most only 4 at a time.
 		var/turf/T2 = get_step(squad_spawn,valid_directions[1 + (i % 4)])
 		if(!T) continue
 		var/mob/living/Z = new attacker_type(T2)
@@ -187,7 +187,9 @@ SUBSYSTEM_DEF(horde)
 		FINALIZE(Z)
 		if(!Z.ai?.set_hunt_target(victim))
 			qdel(Z)
+			break
 		else
+			Z.ai.delete_on_no_path = TRUE
 			. += 1
 			if(debug && !sent_area)
 				sent_area = get_area(Z)

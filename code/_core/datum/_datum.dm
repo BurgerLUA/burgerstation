@@ -35,9 +35,6 @@
 		return TRUE
 	return TRUE
 
-/datum/proc/is_safe_to_delete(var/check_loc = FALSE)
-	return TRUE
-
 /datum/proc/delete()
 	qdel(src)
 	return TRUE

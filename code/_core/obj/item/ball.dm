@@ -28,7 +28,7 @@
 /obj/item/ball/Finalize()
 	. = ..()
 	update_sprite()
-	if(isturf(loc))
+	if(src.z)
 		SSball.all_balls |= src
 
 /obj/item/ball/Destroy()
@@ -37,7 +37,7 @@
 
 /obj/item/ball/post_move(var/atom/old_loc)
 	. = ..()
-	if(isturf(loc))
+	if(src.z)
 		SSball.all_balls |= src
 	else
 		SSball.all_balls -= src

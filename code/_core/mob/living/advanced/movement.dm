@@ -77,7 +77,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(get_dist(src,I) > 1)
 			I.close_inventory(src)
 
-	if(. && isturf(loc) && !horizontal)
+	if(. && src.z && !horizontal)
 		var/obj/item/organ/sent_pain
 		for(var/k in movement_organs)
 			var/obj/item/organ/O = labeled_organs[k]

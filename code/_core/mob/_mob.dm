@@ -376,3 +376,7 @@
 		return TRUE
 
 	return FALSE
+
+
+/mob/proc/handle_mouse_pointer()
+	return TRUE

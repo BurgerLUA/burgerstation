@@ -115,7 +115,7 @@ var/global/list/difficulty_to_damage_mul = list(
 	DIFFICULTY_NORMAL = 0.5,
 	DIFFICULTY_HARD = 0.75,
 	DIFFICULTY_EXTREME = 1,
-	DIFFICULTY_SURVIVOR = 1
+	DIFFICULTY_NIGHTMARE = 1
 )
 
 /mob/living/advanced/player/Finalize()

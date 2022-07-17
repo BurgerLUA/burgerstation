@@ -66,8 +66,9 @@
 	if(pain > 0 && is_advanced(owner.loc))
 		var/obj/item/organ/O = owner
 		var/mob/living/advanced/A = owner.loc
-		A.mood -= pain*0.05
-		O.send_pain_response(pain)
+		A.mood -= pain*0.03
+		if(pain >= health_current)
+			O.send_pain_response(pain)
 
 	if(tox || oxy || fatigue || sanity || mental) //These types should be dealt to the owner.
 		if(is_advanced(owner.loc))

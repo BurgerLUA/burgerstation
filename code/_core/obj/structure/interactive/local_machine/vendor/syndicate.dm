@@ -212,7 +212,7 @@
 	icon_state = "sovietsoda"
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
-		/obj/item/bullet_cartridge/revolver_762,
+		/obj/item/bullet_cartridge/revolver_762{amount=5},
 		/obj/item/storage/ammo/bullet_762/,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,

@@ -18,8 +18,8 @@ obj/structure/interactive/
 
 /obj/structure/interactive/Destroy()
 
-	if(apc_powered && isturf(loc))
-		var/area/A = loc.loc
+	if(apc_powered && isturf(src.loc))
+		var/area/A = src.loc.loc
 		if(A && A.requires_power)
 			update_power_draw(0)
 			A.powered_machines -= src
@@ -33,8 +33,8 @@ obj/structure/interactive/
 
 /obj/structure/interactive/Finalize()
 
-	if(apc_powered && isturf(loc))
-		var/area/A = loc.loc
+	if(apc_powered && isturf(src.loc))
+		var/area/A = src.loc.loc
 		if(A && A.requires_power)
 			A.powered_machines |= src
 
@@ -50,8 +50,8 @@ obj/structure/interactive/
 			if(A.requires_power)
 				update_power_draw(0)
 				A.powered_machines -= src
-		if(isturf(loc))
-			var/area/A = loc.loc
+		if(isturf(src.loc))
+			var/area/A = src.loc.loc
 			if(A.requires_power)
 				A.powered_machines |= src
 

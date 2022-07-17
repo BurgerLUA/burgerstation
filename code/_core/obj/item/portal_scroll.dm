@@ -18,7 +18,7 @@
 
 	var/mob/living/advanced/player/P = caller
 
-	if(!isturf(P.loc))
+	if(!P.z)
 		caller.to_chat(span("warning","You can't use this here!"))
 		return TRUE
 

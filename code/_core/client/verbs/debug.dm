@@ -1,5 +1,4 @@
 var/global/list/debug_verbs = list(
-	/client/verb/print_cleaning_log,
 	/client/verb/make_war,
 	/client/verb/generate_map_icon,
 	/client/verb/stealth_test,
@@ -13,7 +12,6 @@ var/global/list/debug_verbs = list(
 	/client/verb/var_edit,
 	/client/verb/change_variable,
 	/client/verb/set_mob_to_null,
-	/client/verb/should_delete_atom,
 	/client/verb/add_loadout_to_mob,
 	/client/verb/force_save_deathbox,
 	/client/verb/force_load_deathbox,
@@ -70,32 +68,6 @@ var/global/list/debug_verbs = list(
 		verbs -= debug_verbs
 	verbs += /client/verb/show_debug_verbs
 	verbs -= /client/verb/hide_debug_verbs
-
-/client/verb/print_cleaning_log()
-
-	set name = "Print Cleaning Log (DANGER)"
-	set category = "Debug"
-
-	var/final_text = "<h1>Cleaned Objects</h1>"
-
-	for(var/k in SSdelete.cleaning_log)
-		final_text += "[k]<br>"
-
-	final_text += "<h1>Queued Objects</h1>"
-
-	for(var/k in SSdelete.objects_to_delete)
-		var/datum/D = k
-		var/value = SSdelete.objects_to_delete[k]
-		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
-
-	final_text += "<h1>Queued Objects (SAFE)</h1>"
-
-	for(var/k in SSdelete.objects_to_delete_safe)
-		var/datum/D = k
-		var/value = SSdelete.objects_to_delete_safe[k]
-		final_text += "[D.get_debug_name()] ([ (value - world.time)/10] seconds left)<br>"
-
-	src << browse("<head><style>[STYLESHEET]</style></head><body style='font-size:75%'>[span("debug",final_text)]</body>","window=help")
 
 /client/verb/check_lights()
 	set name = "Check Lights (DANGER)"
@@ -385,21 +357,6 @@ var/global/list/debug_verbs = list(
 		mob = null
 	else
 		to_chat(span("notice","You decide not to do anything."))
-
-/client/verb/should_delete_atom(O=usr as obj|mob in view())
-	set name = "Should Delete Atom"
-	set category = "Debug"
-
-	if(!O)
-		return
-
-	var/result = SSdelete.should_delete(O)
-
-	if(result)
-		src.to_chat(span("notice","The games considers [O] safe for deletion."))
-	else
-		src.to_chat(span("notice","The game does not consider [O] safe for deletion."))
-
 
 /client/verb/add_loadout_to_mob()
 	set name = "Add Loadout to Mob"

@@ -14,11 +14,16 @@
 
 /obj/item/broom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(isturf(object))
+
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
+	var/turf/T = get_turf(object)
+
+	if(T)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		var/turf/T = object
 		var/broom_limit = 10
 		for(var/obj/item/I in oview(T,broom_range))
 			CHECK_TICK(50,FPS_SERVER)

@@ -351,7 +351,7 @@
 /*
 /mob/living/proc/try_rot()
 
-	if(!isturf(src.loc))
+	if(!src.z)
 		return FALSE
 
 	var/area/A = get_area(src)

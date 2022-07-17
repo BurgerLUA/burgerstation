@@ -28,12 +28,15 @@ SUBSYSTEM_DEF(dmm_suite)
 	dmm_suite = new()
 
 	//Load all the maps.
+	var/maps_loaded = 0
 	for(var/i=1,i<=length(maps_to_load),i++)
 		var/k = maps_to_load[i]
 		var/map_file = rustg_file_read(k)
 		dmm_suite.read_map(map_file,1,1,i)
-		log_subsystem(name,"Loaded [k].")
 		z_level_to_file["[i]"] = k
+		maps_loaded++
+
+	log_subsystem(src.name,"Loaded [maps_loaded] z-levels.")
 
 	//Load prefabs
 	for(var/category in flist(PREFABS_DIR))
@@ -43,7 +46,6 @@ SUBSYSTEM_DEF(dmm_suite)
 				continue
 			if(!valid_prefabs[category])
 				valid_prefabs[category] = list()
-			log_subsystem(src.name,"Adding prefab [PREFABS_DIR][category]/[file] to [category].")
 			valid_prefabs[category] += "[PREFABS_DIR][category]/[file]"
 
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")
@@ -62,7 +64,6 @@ SUBSYSTEM_DEF(dmm_suite)
 				var/chosen_file = pick(local_prefabs)
 				valid_prefabs[category] -= chosen_file
 				var/map_contents = file2text(chosen_file)
-				log_subsystem(name,"Loading [chosen_file]...")
 				dmm_suite.read_map(map_contents,M.x,M.y,M.z)
 				loaded_prefabs++
 			qdel(M)

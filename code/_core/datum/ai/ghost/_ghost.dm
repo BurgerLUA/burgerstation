@@ -158,11 +158,10 @@
 		return FALSE
 
 	var/obj/emf/E = new(loc,desired_level,desired_range)
+	E.time_to_delete = world.time + SECONDS_TO_DECISECONDS(20)
 	INITIALIZE(E)
 	GENERATE(E)
 	FINALIZE(E)
-
-	queue_delete(E,SECONDS_TO_DECISECONDS(20))
 
 	return E
 

@@ -16,7 +16,7 @@
 
 	if(!istype(Obj,/mob/abstract/))
 		if(Obj.mouse_opacity) Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"),span("danger","You flash violently!"))
-		if(is_safe_to_delete(Obj))
+		if(Obj.is_safe_to_delete())
 			qdel(Obj)
 		else if(length(rift_markers))
 			Obj.force_move(get_turf(pick(rift_markers)))

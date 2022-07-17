@@ -99,7 +99,7 @@
 
 	. = ..()
 
-	if(!charging_device && is_item(O) && isturf(src.loc))
+	if(!charging_device && is_item(O) && src.z)
 		var/obj/item/I = O
 		var/obj/item/powercell/B = I.get_battery()
 		if(istype(B))

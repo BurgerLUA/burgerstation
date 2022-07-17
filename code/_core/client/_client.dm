@@ -80,7 +80,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/queued_shakes = 0
 
-	var/restricted //Set to a string to prevent this person from making a character or joining as one.
+	var/restricted //Set to a string to prevent this person from making a character or joining as one. This string is displayed to the player as the reason for them getting kicked.
 
 	var/list/icon_request_details
 

@@ -36,6 +36,7 @@
 	if(linked_marker)
 		portal_markers[loyalty_tag] |= linked_marker //This is intentional. Don't fall for this.
 		linked_marker = null
+	CALLBACK_REMOVE("delete_\ref[src]")
 	. = ..()
 
 /obj/effect/temp/portal/update_atom_light()
@@ -59,9 +60,7 @@
 
 	update_atom_light()
 
-	queue_delete(src,SECONDS_TO_DECISECONDS(300))
-
-
+	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(300),src,.datum/proc/delete)
 
 /obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

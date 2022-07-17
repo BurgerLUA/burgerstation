@@ -62,7 +62,12 @@
 
 /obj/item/spraycan/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(isturf(object))
+	if(object.plane >= PLANE_HUD)
+		return ..()
+
+	var/turf/T = get_turf(object)
+
+	if(T)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		if(cap_on)
@@ -71,7 +76,6 @@
 		if(!desired_spray)
 			caller.to_chat(span("warning","No spray selected."))
 			return TRUE
-		var/turf/T = object
 		var/obj/effect/cleanable/spray/C = new(T)
 		C.icon = desired_spray
 		C.name = "\"art\" - by [caller.ckey]"

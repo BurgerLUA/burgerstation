@@ -40,7 +40,7 @@
 
 /mob/living/simple/parrot/post_move(var/atom/old_loc)
 
-	if(dead || !isturf(src.loc))
+	if(dead || !src.z)
 		return ..()
 
 	var/old_sitting = sitting

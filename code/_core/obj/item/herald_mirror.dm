@@ -57,7 +57,7 @@
 		A.to_chat(span("warning","Something went wrong... tell Burger on discord."))
 		return FALSE
 
-	if(isturf(loc))
+	if(!is_inventory(loc))
 		A.to_chat(span("warning","You need to be holding \the [src.name] in order to teleport!"))
 		return FALSE
 

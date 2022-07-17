@@ -1,22 +1,23 @@
 /client/proc/on_life()
 
-	spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK))
-	spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK))
+	if(spam_protection_chat > 0)
+		spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK))
 
-	if(queued_chat_messages && length(queued_chat_messages) && queued_chat_messages[1])
+	if(spam_protection_interact > 0)
+		spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK))
 
+	if(length(queued_chat_messages) && queued_chat_messages[1])
 		var/list/queued_message = queued_chat_messages[1]
 		var/text = queued_message["text"]
 		var/list/targets = queued_message["output_target_list"]
-
 		for(var/target in targets)
 			src << output(text,target)
-
 		queued_chat_messages.Cut(1,2)
 
 	if(mob)
 		mob.on_life_client()
 		handle_camera()
+		mob.handle_mouse_pointer()
 
 	if(!eye)
 		spectate(null)
@@ -28,10 +29,6 @@
 			var/atom/A = D
 			if(A.loc == null)
 				spectate(null)
-
-	if(is_advanced(mob))
-		var/mob/living/advanced/A = mob
-		A.handle_mouse_pointer()
 
 	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
 		del(src)

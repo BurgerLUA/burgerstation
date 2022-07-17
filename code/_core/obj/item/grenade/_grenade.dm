@@ -104,16 +104,15 @@
 	if(alpha == 0) //Already gone.
 		return FALSE
 
-	alpha = 0
-	mouse_opacity = 0
-	queue_delete_immune = FALSE
-	queue_delete(src,60)
-
 	if(source == src)
-		if(!isturf(src.loc)) drop_item(get_turf(src))
+		if(!src.z) drop_item(get_turf(src))
 		if(stored_trigger) stored_trigger.active = FALSE
 	else
 		trigger(owner,source,-1,-1)
+
+	alpha = 0
+	mouse_opacity = 0
+	anchored = 2
 
 /obj/item/grenade/New(var/desired_loc)
 	. = ..()

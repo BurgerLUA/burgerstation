@@ -382,7 +382,7 @@
 	if(!check_vision && !check_density)
 		return FALSE
 
-	if(!isturf(target_turf) || src.z != target_turf.z)
+	if(src.z != target_turf.z)
 		return FALSE
 
 	var/limit = get_dist(src,target_turf)
