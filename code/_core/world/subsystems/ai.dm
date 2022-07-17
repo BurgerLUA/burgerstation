@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(ai)
 	var/list/active_ai_by_z = list()
 	var/list/inactive_ai_by_z = list()
 
+	var/list/tracked_avoidance_by_z = list()
+
 	use_time_dialation = FALSE
 
 	tick_rate = AI_TICK

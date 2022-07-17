@@ -22,6 +22,8 @@
 	var/obj/item/bullet_cartridge/last_found_bullet
 	var/desired_shell_reload = 0
 
+	var/grenade_chance = 5 //Percent change to use a grenade each combat tick.
+
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()
@@ -47,6 +49,55 @@
 
 	return FALSE
 
+
+/ai/advanced/proc/handle_movement_avoidance()
+
+	if(!objective_attack) //Combat only.
+		return FALSE
+
+	if(!owner.z)
+		return FALSE
+
+	var/directions_to_avoid = 0x0
+	var/list/avoidance_list = SSai.tracked_avoidance_by_z["[owner.z]"]
+
+	if(debug) log_debug("Avoidance list length: [length(avoidance_list)].")
+
+	for(var/k in avoidance_list)
+		var/atom/movable/M = k
+		if(M.qdeleting)
+			log_error("Warning: Qdeleting object [M.get_debug_name()] was found in tracked ai avoidances.")
+			avoidance_list -= k
+			continue
+		if(owner.z != M.z)
+			log_error("Warning: Object [M.get_debug_name()] was found in a mismatched z-list in tracked ai avoidances.")
+			avoidance_list -= k
+			continue
+		if(get_dist(M,owner) >= VIEW_RANGE*0.75)
+			continue
+		directions_to_avoid |= get_dir(owner,M)
+
+	if(!directions_to_avoid)
+		return FALSE
+
+	var/good_direction = (NORTH | EAST | SOUTH | WEST) & ~directions_to_avoid
+
+	if((good_direction & NORTH) && (good_direction && SOUTH))
+		good_direction &= ~(prob(50) ? NORTH : SOUTH)
+
+	if((good_direction & EAST) && (good_direction && WEST))
+		good_direction &= ~(prob(50) ? EAST : WEST)
+
+	if(debug)
+		log_debug("Running away to the [dir2text(good_direction)] due to avoidance.")
+
+	owner.move_dir = good_direction
+	owner.movement_flags = MOVEMENT_RUNNING
+
+	return TRUE
+
+
+/*
 /ai/advanced/proc/find_weapon_on_ground()
 
 	var/mob/living/advanced/A = owner
@@ -83,21 +134,21 @@
 		objective_weapon = pickweight(possible_weapons)
 
 	return TRUE
+*/
 
 /ai/advanced/proc/handle_equipment()
 
 	var/mob/living/advanced/A = owner
 
-	if(!checked_grenades)
-		find_grenade()
+	if(!found_grenade && !checked_grenades && objective_attack && prob(grenade_chance) && get_dist(owner,objective_attack) >= VIEW_RANGE*0.5)
+		if(!find_grenade()) //Find a grenade to throw.
+			checked_grenades = TRUE //Stop checking grenades as we can't find anymore.
+		return TRUE
 
-	if(found_grenade && objective_attack && get_dist(owner,objective_attack) > 4 && prob(5))
-		var/turf/T = get_step(A,get_dir(A,objective_attack))
-		if(T.is_safe_teleport(TRUE))
-			if(!handle_grenade(found_grenade))
-				found_grenade = null
-				checked_grenades = FALSE
-			return TRUE
+	if(found_grenade)
+		if(!handle_grenade(found_grenade))
+			found_grenade = null
+		return TRUE
 
 	if(istype(A.left_item,/obj/item/weapon/ranged/) && handle_gun(A.left_item))
 		return TRUE
@@ -106,8 +157,6 @@
 		return TRUE
 
 	return FALSE
-
-
 
 /ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)
 
@@ -123,6 +172,10 @@
 
 	if(G.stored_trigger.active) //Live nade, throw it!
 		var/atom/real_target = objective_attack
+		if(real_target)
+			var/turf/T = get_step(owner,real_target)
+			if(T.density && (T.density_north || T.density_south || T.density_east || T.density_west))
+				real_target = null
 		if(!real_target)
 			var/list/valid_turfs = list()
 			for(var/turf/simulated/floor/F in view(VIEW_RANGE,A))
@@ -131,11 +184,16 @@
 				valid_turfs += F
 			if(length(valid_turfs))
 				real_target = pick(valid_turfs)
+
 		if(real_target)
 			var/list/offsets = get_directional_offsets(owner,real_target)
 			var/throw_velocity = 10
 			G.drop_item(get_turf(owner))
 			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_loyalty_tag = owner.loyalty_tag)
+		else
+			G.drop_item(get_turf(A)) //Bad grenade. This will rarely happen due to the above turf checking but this is for weird cases.
+
+		//The whole real_target checking multiple times seems ugly but what can you do.
 		next_complex = world.time + rand(5,10)
 		return FALSE
 	else if(!I.click_flags) //The nade needs to be in our hands.
@@ -148,7 +206,7 @@
 		next_complex = world.time + rand(5,30)
 		return TRUE
 
-/ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R)
+/ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
 
 	//Returning FALSE means to don't shoot. It's good to return false if you want the shooter to wait before firing.
 
@@ -321,6 +379,9 @@
 
 /ai/advanced/handle_movement()
 
+	if(handle_movement_avoidance())
+		return TRUE
+
 	if(handle_movement_weapon())
 		return TRUE
 
@@ -334,14 +395,6 @@
 	var/mob/living/advanced/A = owner
 
 	if(!A)
-		return FALSE
-
-	if(next_complex > world.time)
-		if(debug) log_debug("Complex fail.")
-		return FALSE
-
-	if(!handle_equipment())
-		if(debug) log_debug("Gunplay fail.")
 		return FALSE
 
 	var/list/params = list(
@@ -379,8 +432,6 @@
 		found_grenade = G
 	else
 		if(debug) log_debug("AI debug: Did not find a grenade!")
-
-	checked_grenades = TRUE
 
 	return TRUE
 
@@ -481,7 +532,7 @@
 
 	distance_target_max = min(VIEW_RANGE,attack_distance_max)
 
-	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4)
+	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4) //Find a new weapon to use if our enemy is far.
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
 		if(W)
 			if(A.right_item == W)
@@ -493,5 +544,12 @@
 			equip_weapon(W)
 		else
 			checked_weapons = TRUE //Give up.
+
+
+	if(next_complex > world.time)
+		return FALSE
+
+	if(!handle_equipment())
+		return FALSE
 
 	. = ..()
