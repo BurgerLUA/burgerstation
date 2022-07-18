@@ -2078,7 +2078,6 @@
 #include "code\_core\turf\simulated\floor\hierophant.dm"
 #include "code\_core\turf\simulated\floor\openspace.dm"
 #include "code\_core\turf\simulated\floor\plating.dm"
-#include "code\_core\turf\simulated\floor\river.dm"
 #include "code\_core\turf\simulated\floor\road.dm"
 #include "code\_core\turf\simulated\floor\snow.dm"
 #include "code\_core\turf\simulated\floor\space.dm"

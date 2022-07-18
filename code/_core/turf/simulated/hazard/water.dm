@@ -3,7 +3,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 #define MAX_DEPTH (VIEW_RANGE + ZOOM_RANGE)
 
 /turf/simulated/liquid/water
-	name = "water"
+	name = "stagnant water"
 	icon = 'icons/turf/floor/water.dmi'
 	icon_state = "riverwater_static"
 
@@ -58,7 +58,23 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 	. = ..()
 
-/turf/simulated/liquid/water/jungle/Finalize()
+/turf/simulated/liquid/water/sea
+	name = "sea water"
+	fishing_rewards = /loot/fishing/sea
+
+/turf/simulated/liquid/water/river
+	name = "forest river water"
+	fishing_rewards = /loot/fishing/river
+
+/turf/simulated/liquid/water/river/ice
+	name = "ice river water"
+	fishing_rewards = /loot/fishing/river
+
+/turf/simulated/liquid/water/river/jungle
+	name = "jungle river water"
+	fishing_rewards = /loot/fishing/river
+
+/turf/simulated/liquid/water/river/jungle/Finalize()
 	. = ..()
 	if(depth <= 2 && prob(90))
 		for(var/j=1,j<=rand(2,3),j++)
@@ -66,16 +82,8 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			R.pixel_x = rand(-8,8)
 			R.pixel_y = rand(-8,8)
 
-
-/turf/simulated/liquid/water/sea
-	name = "salt water"
-	fishing_rewards = /loot/fishing/sea
-
-
-/turf/simulated/liquid/water/river
-	name = "river water"
-	fishing_rewards = /loot/fishing/river
-
+/turf/simulated/liquid/water/cave
+	name = "stagnant cave water"
 
 /turf/simulated/liquid/water/pond
-	name = "pond water"
+	name = "stagnant pond water"

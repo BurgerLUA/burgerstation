@@ -12,7 +12,7 @@
 		"logo" = "#FFFFFF"
 	)
 
-	var/valid_turf
+	var/loot/valid_loot_type
 	var/nice_bait = FALSE
 
 //Sea
@@ -24,7 +24,7 @@
 		"base" = "#3269A8",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/liquid/water/sea
+	valid_loot_type = /loot/fishing/sea
 	value = 50
 
 /obj/item/fishing/bait/sea/infinite
@@ -45,7 +45,7 @@
 		"base" = "#36A2B5",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/liquid/water
+	valid_loot_type = /loot/fishing/river
 	value = 50
 
 /obj/item/fishing/bait/river/infinite
@@ -65,6 +65,6 @@
 		"base" = "#DE6A21",
 		"logo" = "#FFFFFF"
 	)
-	valid_turf = /turf/simulated/liquid/lava/
+	valid_loot_type = /loot/fishing/lava
 
 	value = 250

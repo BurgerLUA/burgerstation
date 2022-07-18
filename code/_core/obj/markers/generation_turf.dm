@@ -40,7 +40,7 @@
 	color = COLOR_CYAN
 
 /obj/marker/generation/water
-	object_to_place = /turf/simulated/liquid/water
+	object_to_place = /turf/simulated/liquid/water/river
 	grow_amount_min = 15
 	grow_amount_max = 30
 	objects_max = 10
@@ -51,7 +51,7 @@
 
 /obj/marker/generation/water/jungle
 	objects_max = 15
-	object_to_place = /turf/simulated/liquid/water/jungle
+	object_to_place = /turf/simulated/liquid/water/river/jungle
 
 /obj/marker/generation/beach_sand
 	object_to_place = /turf/simulated/floor/colored/sand/beach
