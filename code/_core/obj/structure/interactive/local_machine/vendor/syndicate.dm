@@ -34,7 +34,7 @@
 		/obj/item/magazine/sniper_308,
 		/obj/item/magazine/sniper_308/ap,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
-		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto,
 		/obj/item/magazine/shotgun_auto/slug,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper,
 		/obj/item/magazine/sniper_50,
@@ -242,7 +242,7 @@
 		/obj/item/storage/ammo/rubber_23,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
-		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto,
 		/obj/item/magazine/shotgun_auto/slug,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
