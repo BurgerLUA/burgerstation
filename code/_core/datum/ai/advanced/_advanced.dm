@@ -136,7 +136,7 @@
 	return TRUE
 */
 
-/ai/advanced/proc/handle_equipment()
+/ai/advanced/proc/handle_equipment() //Return true to avoid regular attack.
 
 	var/mob/living/advanced/A = owner
 
@@ -208,7 +208,7 @@
 
 /ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
 
-	//Returning FALSE means to don't shoot. It's good to return false if you want the shooter to wait before firing.
+	//Returning TRUE means don't attack on the same tick. It's good to return true if you want the shooter to wait before firing.
 
 	var/mob/living/advanced/A = owner
 
@@ -232,12 +232,12 @@
 			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 				next_complex = world.time + rand(2,6)
-			return FALSE
+			return TRUE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
 			G.eject_magazine(A)
 			next_complex = world.time + rand(10,20)
-			return FALSE
+			return TRUE
 
 		if(!G.chambered_bullet || G.chambered_bullet.is_spent)
 			G.click_self(A)
@@ -245,9 +245,9 @@
 				G.drop_item(get_turf(owner)) //IT'S NO USE.
 				return FALSE
 			next_complex = world.time + rand(5,10)
-			return FALSE
+			return TRUE
 
-		return TRUE
+		return FALSE //All good.
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/revolver))
 		var/obj/item/weapon/ranged/bullet/revolver/G = R
@@ -263,17 +263,17 @@
 				if(has_valid_bullet)
 					G.rotate_cylinder(clamp(has_valid_bullet - G.current_chamber,-1,1)) //There is another valid bullet somewhere.
 					next_complex = world.time + rand(3,5)
-					return FALSE
+					return TRUE
 
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
 				next_complex = world.time + rand(5,15)
-				return FALSE
+				return TRUE
 
 			if(!G.open)
 				G.click_self(A) //Open it.
 				next_complex = world.time + rand(5,15)
-				return FALSE
+				return TRUE
 
 			var/obj/item/bullet_cartridge/B
 			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent) //Is last_found_bullet even valid?
@@ -295,7 +295,7 @@
 				C.click_on_object(A,G)
 				C.drop_item(get_turf(owner))
 				next_complex = world.time + rand(5,10)
-				return FALSE
+				return TRUE
 			if(B)
 				B.click_on_object(A,G)
 				var/missing_bullets = 0
@@ -310,20 +310,22 @@
 					last_found_bullet = null
 				next_complex = world.time + 1 //Honestly it takes like no time to insert it.
 				return FALSE
-			desired_shell_reload = -desired_shell_reload
-			G.drop_item(get_turf(owner)) //IT'S NO USE.
-			return FALSE
+			desired_shell_reload = 0 //Can't find anything.
+			G.drop_item(get_turf(owner)) //So drop it.
+			return TRUE
 
 		if(G.open && !G.can_shoot_while_open) //https://www.youtube.com/watch?v=ZiEGi2g1JkA
 			G.click_self(A)
 			next_complex = world.time + rand(5,15)
-			return FALSE
+			return TRUE
 
 		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			next_complex = world.time + rand(2,6)
-			return FALSE
+			return TRUE
+
+		return FALSE
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/pump))
 		var/obj/item/weapon/ranged/bullet/pump/G = R
@@ -331,7 +333,7 @@
 		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent))
 			G.click_self(owner) //Chamber a new round in.
 			next_complex = G.next_shoot_time + rand(1,3)
-			return FALSE
+			return TRUE
 
 		var/max_length = length(G.stored_bullets)
 		if(!G.stored_bullets[1] || max_length < desired_shell_reload)
@@ -347,7 +349,7 @@
 				max_length
 			) //Get a new value of how much we should load in.
 
-		if(desired_shell_reload && !G.stored_bullets[desired_shell_reload])
+		if(desired_shell_reload > 0 && !G.stored_bullets[desired_shell_reload])
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
 			var/obj/item/bullet_cartridge/B
@@ -365,17 +367,17 @@
 				return FALSE
 			B.click_on_object(A,G)
 			next_complex = world.time + rand(2,6)
-			return FALSE
+			return TRUE
 
 		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			next_complex = world.time + rand(2,6)
-			return FALSE
+			return TRUE
 
-		return TRUE
+		return FALSE
 
-	return TRUE
+	return FALSE //Weird but okay
 
 /ai/advanced/handle_movement()
 
@@ -549,7 +551,7 @@
 	if(next_complex > world.time)
 		return FALSE
 
-	if(!handle_equipment())
+	if(handle_equipment())
 		return FALSE
 
 	. = ..()
