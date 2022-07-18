@@ -24,6 +24,7 @@
 		/obj/item/clothing/head/helmet/welding,
 
 		/obj/item/clothing/back/storage/dufflebag/poly/grey,
+		/obj/item/storage/bags/goodie/kitbag/survivor,
 		/obj/item/clothing/belt/storage/tool,
 
 		/obj/item/storage/pouch/triple/brown,

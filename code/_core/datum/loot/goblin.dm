@@ -1,5 +1,6 @@
 /loot/goblin
 	loot_table = list(
+		/obj/item/container/simple/beaker/flask/onion = 100,
 		/obj/item/powergem = 50,
 		/obj/item/soulgem/common = 100,
 		/obj/item/soulgem/uncommon = 80,

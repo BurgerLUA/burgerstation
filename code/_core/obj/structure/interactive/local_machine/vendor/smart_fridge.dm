@@ -28,6 +28,7 @@
 	stored_types = list(
 		/obj/item/container/simple/beaker/glass,
 		/obj/item/container/simple/beaker/shot,
+		/obj/item/container/simple/beaker/flask,
 		/obj/item/container/simple/absinthe,
 		/obj/item/container/simple/ale,
 		/obj/item/container/simple/beer,

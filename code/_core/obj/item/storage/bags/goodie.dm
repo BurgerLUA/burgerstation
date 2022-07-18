@@ -47,3 +47,27 @@
 	loot_to_generate = /loot/halloween
 
 	value = 50
+
+/obj/item/storage/bags/goodie/kitbag
+	name = "kitbag"
+	desc = "Green bag for a green(?) fatigue."
+	desc_extended = "Green kitbag for holding various tactical equipment. Or junk."
+	icon = 'icons/obj/item/clothing/back/kitbag.dmi'
+	icon_state = "inventory"
+
+	loot_to_generate = null
+
+	size = MAX_INVENTORY_X*2*SIZE_3
+
+	dynamic_inventory_count = 8
+	container_max_size = SIZE_4
+	container_max_slots = 1
+
+/obj/item/storage/bags/goodie/kitbag/rev
+	loot_to_generate = /loot/rev
+
+/obj/item/storage/bags/goodie/kitbag/syndie
+	loot_to_generate = /loot/syndie
+
+/obj/item/storage/bags/goodie/kitbag/survivor
+	loot_to_generate = /loot/survivor

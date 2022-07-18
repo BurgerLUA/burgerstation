@@ -11,6 +11,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/storage/bags/goodie/kitbag/rev,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
@@ -22,7 +23,8 @@
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he
+		/obj/item/grenade/fuse/he,
+		/loot/rev
 	)
 
 /loadout/rev/solider/alt
@@ -36,6 +38,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/storage/bags/goodie/kitbag/rev,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
@@ -47,9 +50,9 @@
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he
+		/obj/item/grenade/fuse/he,
+		/loot/rev
 	)
-
 
 
 /loadout/rev/skat
@@ -61,6 +64,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/storage/bags/goodie/kitbag/rev,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
@@ -72,7 +76,8 @@
 		/obj/item/magazine/bizon_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he
+		/obj/item/grenade/fuse/he,
+		/loot/rev
 	)
 
 /loadout/rev/exo
@@ -84,6 +89,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/storage/bags/goodie/kitbag/rev,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/storage/pouch/single/black,
@@ -95,9 +101,9 @@
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he
+		/obj/item/grenade/fuse/he,
+		/loot/rev
 	)
-
 
 /loadout/rev/sniper
 	spawning_items = list(
@@ -108,6 +114,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/storage/bags/goodie/kitbag/rev,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
@@ -121,7 +128,6 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/grenade/fuse/he
 	)
-
 
 /loadout/rev/player_antagonist/researcher
 	spawning_items = list(
@@ -162,6 +168,7 @@
 		/obj/item/container/edible/package/junkfood/chips,
 		/obj/item/container/simple/can/grey_bull,
 		/obj/item/container/simple/vodka,
+		/obj/item/container/simple/beaker/flask/russian,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
 	)
@@ -206,6 +213,7 @@
 		/obj/item/container/edible/package/junkfood/chips,
 		/obj/item/container/simple/can/grey_bull,
 		/obj/item/container/simple/vodka,
+		/obj/item/container/simple/beaker/flask/russian,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
 	)
