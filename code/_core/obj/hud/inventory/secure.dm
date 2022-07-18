@@ -45,8 +45,17 @@
 
 /obj/hud/inventory/dynamic/secure/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
-	if(!bypass && length(I.inventories) && I.size >= SIZE_2)
-		if(messages) owner.to_chat(span("warning","The secure storage does not allow the storage of large containers."))
-		return FALSE
+	if(!bypass)
+		if(length(I.inventories) && I.size >= SIZE_2)
+			if(messages) owner.to_chat(span("warning","The secure storage does not allow the storage of large containers."))
+			return FALSE
+
+		if(I.can_save)
+			if(messages) owner.to_chat(span("warning","This type of object cannot be stored."))
+			return FALSE
+
+		if(I.contraband)
+			if(messages) owner.to_chat(span("warning","This type of object cannot be stored."))
+			return FALSE
 
 	. = ..()

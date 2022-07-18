@@ -1,7 +1,7 @@
 /obj/item/storage/death_box
 	name = "death box"
 	desc = "I died, please restart."
-	desc_extended = "A special bluespace box containing items lost on a previous shift. Note that it can only be purchased this shift, after that it's gone forever."
+	desc_extended = "A special bluespace box containing items lost on a previous shift."
 
 	icon = 'icons/obj/item/storage/death_box.dmi'
 	icon_state = "locked"
@@ -26,6 +26,11 @@
 
 	value_burgerbux = 1
 
+/obj/item/storage/death_box/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += div("danger","Death boxes cannot be stored in banks.")
+	. += div("danger","Anyone can open a death box, even if they don't own it.")
+
 /obj/item/storage/death_box/update_inventory()
 	. = ..()
 	for(var/k in src.inventories)
@@ -33,18 +38,6 @@
 		if(length(I.contents))
 			return .
 	qdel(src)
-
-/obj/item/storage/death_box/click_self(var/mob/caller)
-
-	if(owning_mob_ckey && owning_mob_ckey != caller.ckey)
-		caller.to_chat(span("warning","You don't have the right authorization to open this!"))
-		return FALSE
-
-	. = ..()
-
-	if(.)
-		used = TRUE
-		update_sprite()
 
 /obj/item/storage/death_box/Finalize()
 	. = ..()
