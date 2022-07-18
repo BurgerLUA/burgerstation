@@ -374,7 +374,7 @@
 
 	if(!I.grabbed_object)
 		possible_damage_types[/damagetype/unarmed/fists/disarm] = 1
-		possible_damage_types[/damagetype/unarmed/fists/grab] = 2
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 1000
 	else if(I.grab_level >= 2)
 		possible_damage_types[/damagetype/unarmed/bite] = 100
 	else

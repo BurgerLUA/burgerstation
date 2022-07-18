@@ -39,9 +39,23 @@
 	stored_line.pixel_x = FLOOR(L.resist_percent * 27,1)
 
 	if(L.next_resist > 0)
-		src.alpha = clamp(src.alpha + 40,0,255)
+		src.alpha = clamp(src.alpha + 80,0,255)
 	else
-		src.alpha = clamp(src.alpha - 20,0,255)
+		src.alpha = clamp(src.alpha - 40,0,255)
+
+	/*
+	if(L.next_resist < world.time)
+		var/x_mod = 0
+		var/y_mod = 0
+		animate(src)
+		for(var/i=1,i<=5,i++)
+			x_mod = clamp(-x_mod + pick(-1,1),-1,1)*RAND_PRECISE(0.25,1)
+			y_mod = clamp(-y_mod + pick(-1,1),-1,1)*RAND_PRECISE(0.25,1)
+			var/matrix/M = matrix()
+			M.Translate(x_mod*TILE_SIZE,y_mod*TILE_SIZE)
+			animate(src,transform=M,time=0.5)
+		animate(transform=matrix(),time=1)
+	*/
 
 	. = ..()
 
