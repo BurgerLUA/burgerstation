@@ -156,16 +156,22 @@
 
 	value = 250
 
+	size = SIZE_2
+
 /obj/item/container/simple/beaker/flask/get_consume_size(var/mob/living/L)
 	return ..() * 3
+
+/obj/item/container/simple/beaker/flask/Generate()
+	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
+	return ..()
 
 /obj/item/container/simple/beaker/flask/russian
 	name = "pouched flask"
 	desc = "Portable comfy alcoholism."
-	desc_extended = "Square metallic flask stuffed into a canvas-like material made for holding liquids. You might be able to drink a little more liquid from these."
+	desc_extended = "Square metallic flask stuffed into a canvas-like material made for holding liquids. You might be able to down one in a single sip!"
 	icon_state = "russian_flask"
 
-	reagents = /reagent_container/beaker/bottle/medium
+	reagents = /reagent_container/beaker/bottle/large
 
 	value = 450
 
@@ -175,10 +181,10 @@
 /obj/item/container/simple/beaker/flask/engraved
 	name = "engraved flask"
 	desc = "Portable beautiful alcoholism."
-	desc_extended = "Square metallic flask with a cartoonish-looking face made for holding liquids. You might be able to drink a little more liquid from these."
+	desc_extended = "Square metallic flask with a cartoonish-looking face made for holding liquids. You might be able to down one in a single sip!"
 	icon_state = "face_flask"
 
-	reagents = /reagent_container/beaker/bottle/medium
+	reagents = /reagent_container/beaker/bottle/large
 
 	value = 450
 
@@ -191,9 +197,8 @@
 	desc_extended = "Round metallic flask with an onion-resembling shape and a very tight neck made for holding liquids. Despite looking fairly generic and smaller than most other flasks, survivalist craftsmanship allows it to hold way more liquid than any other one. Tighter neck won't allow you to drink as much as from any other flask, though."
 	icon_state = "onion_flask"
 
-	reagents = /reagent_container/beaker/bottle/large
+	reagents = /reagent_container/beaker/large
 
 	value = 600
 
-/obj/item/container/simple/beaker/flask/onion/get_consume_size(var/mob/living/L)
-	return ..() * 2
+	size = SIZE_1

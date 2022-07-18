@@ -57,6 +57,8 @@
 
 	loot_to_generate = null
 
+	value = 250
+
 	size = MAX_INVENTORY_X*2*SIZE_3
 
 	dynamic_inventory_count = 8

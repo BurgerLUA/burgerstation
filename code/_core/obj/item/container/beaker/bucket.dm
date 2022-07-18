@@ -1,7 +1,7 @@
 /obj/item/container/simple/beaker/bucket
 	name = "bucket"
 	desc = "A big bucket"
-	desc_extended = "A very large bucket that can hold up to 500u of reagents."
+	desc_extended = "A very large bucket that can hold up to 250u of reagents."
 	icon = 'icons/obj/item/container/bucket.dmi'
 	icon_state = "bucket"
 	icon_count = 9
