@@ -74,7 +74,7 @@
 	var/mob/living/stored_threat
 
 /obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
-	icon_state = "[initial(icon_state)]_[rand(1,11)]"
+	icon_state = "[initial(icon_state)]_[rand(1,10)]"
 	. = ..()
 
 /obj/structure/interactive/storage/trash_pile/Destroy()
