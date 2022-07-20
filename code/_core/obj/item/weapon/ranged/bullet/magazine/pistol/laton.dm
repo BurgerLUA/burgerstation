@@ -8,6 +8,8 @@
 	tier = 1
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
+	company_type = "NanoTrasen"
+
 	movement_spread_base = 0.002
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0

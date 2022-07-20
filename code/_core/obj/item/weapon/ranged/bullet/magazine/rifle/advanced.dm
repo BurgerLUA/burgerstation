@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 3500
 
+	company_type = "Solarian"
+
 	tier = 2
 
 	firemodes = list("automatic","semi-automatic")

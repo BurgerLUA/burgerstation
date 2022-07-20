@@ -33,6 +33,8 @@
 
 	block_sound = 'sound/effects/impacts/shield_metal_weak.ogg'
 
+	var/company_type
+
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(tier == -1 && SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))

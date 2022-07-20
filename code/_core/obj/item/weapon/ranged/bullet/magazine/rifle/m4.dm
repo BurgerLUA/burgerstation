@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1800
 
+	company_type = "Solarian"
+
 	tier = 2
 
 	damage_mod = 1.15

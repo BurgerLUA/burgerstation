@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 900
 
+	company_type = "Solarian"
+
 	tier = 3
 
 	movement_spread_base = 0

@@ -10,6 +10,8 @@
 
 	shoot_delay = 1.5
 
+	company_type = "Syndicate"
+
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')

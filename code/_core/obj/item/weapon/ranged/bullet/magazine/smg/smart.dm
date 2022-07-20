@@ -1,10 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/smart
 	name = "\improper 4.6x30mm Smart SMG"
 	desc = "Now that's smarts!"
-	desc_extended = "A solarian protoype SMG that uses expensive smart-microchip heat-seeking guided bullets to assist in idiots hitting targets. Has a tendency to actually still miss."
+	desc_extended = "A Solarian protoype SMG that uses expensive smart-microchip heat-seeking guided bullets to assist in idiots hitting targets. Has a tendency to actually still miss."
 	icon = 'icons/obj/item/weapons/ranged/smg/sol/smart.dmi'
 	icon_state = "inventory"
 	value = 3000
+
+	company_type = "Solarian"
 
 	damage_mod = 1
 

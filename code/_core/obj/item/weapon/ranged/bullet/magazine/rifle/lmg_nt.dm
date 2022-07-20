@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_1.dmi'
 	icon_state = "inventory"
 
+	company_type = "NanoTrasen"
+
 	value = 4000
 
 	tier = 2

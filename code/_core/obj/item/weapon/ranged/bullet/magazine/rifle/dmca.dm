@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 3000
 
+	company_type = "Solarian"
+
 	tier = 3
 
 	shoot_delay = 0.6

@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 2900
 
+	company_type = "Syndicate"
+
 	tier = 3
 
 	shoot_delay = 4

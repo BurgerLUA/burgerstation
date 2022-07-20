@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/semi.dmi'
 	icon_state = "inventory"
 
+	company_type = "NanoTrasen"
+
 	value = 3000
 
 	tier = 3

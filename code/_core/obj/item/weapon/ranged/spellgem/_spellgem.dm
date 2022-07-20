@@ -18,6 +18,7 @@
 	use_iff_tag = FALSE
 	has_quick_function = TRUE
 
+	company_type = "Wizard Federation"
 
 /obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
 	. = cost_mana

@@ -4,6 +4,8 @@
 	desc_extended = "A special replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland."
 	value = 2000
 
+	company_type = "Solarian"
+
 	tier = 4
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'

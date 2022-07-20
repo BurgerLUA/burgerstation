@@ -8,6 +8,8 @@
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 	tier = 1
 
+	company_type = "NanoTrasen"
+
 	firemodes = list("automatic","burst","semi-automatic")
 
 	movement_spread_base = 0.005

@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1800
 
+	company_type = "NanoTrasen"
+
 	tier = 2
 
 	damage_mod = 1.3

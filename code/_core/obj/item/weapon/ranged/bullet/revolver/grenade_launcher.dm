@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1200
 
+	company_type = "Solarian"
+
 	tier = 1
 	bypass_balance_check = TRUE
 

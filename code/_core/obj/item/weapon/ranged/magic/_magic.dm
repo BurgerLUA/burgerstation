@@ -19,6 +19,8 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.05
 
+	company_type = "Wizard Federation"
+
 /obj/item/weapon/ranged/magic/Destroy()
 	QDEL_NULL(stored_powergem)
 	. = ..()

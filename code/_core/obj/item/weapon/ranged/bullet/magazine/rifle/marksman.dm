@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 1900
 
+	company_type = "Syndicate"
+
 	tier = 2
 
 	firemodes = list("automatic","semi-automatic")

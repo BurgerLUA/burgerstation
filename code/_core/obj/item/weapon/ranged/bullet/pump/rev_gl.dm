@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 4300
 
+	company_type = "Slavic"
+
 	shoot_delay = 20
 
 	automatic = FALSE

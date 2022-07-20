@@ -22,6 +22,8 @@
 	weight = 6
 	var/toggle = FALSE
 
+	company_type = "Hell"
+
 /obj/item/weapon/ranged/stamina_use/tentacle/update_icon()
 
 	if(toggle)

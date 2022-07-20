@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/modular.dmi'
 	value = 2000
 
+	company_type = "NanoTrasen"
+
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/rifle
 

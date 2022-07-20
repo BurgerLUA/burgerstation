@@ -4,6 +4,8 @@
 	desc_extended = "A fancier version of the laser rifle that self-charges. It has become innacurate due to its age."
 	icon = 'icons/obj/item/weapons/ranged/laser/captain.dmi'
 
+	company_type = "NanoTrasen"
+
 	value = 4000
 
 	projectile = /obj/projectile/bullet/laser
