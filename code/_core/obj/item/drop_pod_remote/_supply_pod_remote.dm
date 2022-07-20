@@ -118,12 +118,12 @@
 	)
 
 /obj/item/supply_remote/crates/yankee
-	name = "drop pod remote - x4 Yankee supply crates"
+	name = "drop pod remote - x4 Solarian supply crates"
 	stored_object_types = list(
-		/obj/item/supply_crate/yankee,
-		/obj/item/supply_crate/yankee,
-		/obj/item/supply_crate/yankee,
-		/obj/item/supply_crate/yankee
+		/obj/item/supply_crate/solarian,
+		/obj/item/supply_crate/solarian,
+		/obj/item/supply_crate/solarian,
+		/obj/item/supply_crate/solarian
 	)
 
 /obj/item/supply_remote/barbecue

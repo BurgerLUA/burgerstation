@@ -73,7 +73,7 @@
 
 /mob/living/advanced/npc/syndicate/ultra
 	name = "\improper ULTRA syndicate operative"
-	level = 200
+	level = 100
 
 	health_base = 100
 	stamina_base = 100

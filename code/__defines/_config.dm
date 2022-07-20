@@ -27,10 +27,10 @@
 #define ENABLE_BULLET_CASINGS FALSE
 
 //Enables/disables lighting.
-#define ENABLE_LIGHTING TRUE
+#define ENABLE_LIGHTING FALSE
 
 //Enables/disables turf generation
-#define ENABLE_GENERATION TRUE
+#define ENABLE_GENERATION FALSE
 
 //Enables/disables atmos.
 #define ENABLE_ATMOS FALSE
