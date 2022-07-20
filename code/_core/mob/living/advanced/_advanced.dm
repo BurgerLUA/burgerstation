@@ -345,8 +345,9 @@ mob/living/advanced/Login()
 
 	var/list/added_items = list()
 
+	var/turf/T = get_turf(src)
 	for(var/key in items_to_add)
-		var/obj/item/I = new key(get_turf(src))
+		var/obj/item/I = new key(T)
 		if(istype(I))
 			spawning_outfit.pre_add(src,I)
 			INITIALIZE(I)
@@ -356,6 +357,10 @@ mob/living/advanced/Login()
 				added_items += I
 		else
 			log_error("Warning! Tried to spawn object [key] in equip_loadout(), but something went wrong!")
+
+	for(var/k in spawning_outfit.spawning_loot)
+		var/loot/L = k
+		added_items += L.do_spawn(T)
 
 	spawning_outfit.post_add(src,added_items)
 

@@ -52,7 +52,7 @@
 			if(messages) caller.to_chat(span("warning","You can't remove clothing from living people!"))
 			return FALSE
 		if(I.anchored)
-			if(messeages) caller.to_chat(span("warning","You can't remove this!"))
+			if(messages) caller.to_chat(span("warning","You can't remove this!"))
 		if(!istype(I,/obj/hud/inventory/organs/groin/pocket) && !L.grabbing_hand)
 			if(messages) caller.to_chat(span("warning","You need a better grip to steal this!"))
 			return FALSE
