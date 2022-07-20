@@ -22,10 +22,10 @@
 			var/loot/spawning_loot = LOOT(k)
 			var/list/loot_table = spawning_loot.create_loot_table()
 			for(var/j in loot_table) //Items only.
-				if(!is_item(j))
+				if(!ispath(j,/obj/item/))
 					CREATE(j,T)
 					continue
-				var/obj/item/I = j
+				var/obj/item/I = new j(T)
 				spawning_loot.pre_spawn(I)
 				spawning_outfit.pre_add(src,I)
 				INITIALIZE(I)

@@ -95,20 +95,31 @@
 	var/highest = 0
 	var/lowest = -1
 	var/item
-	for (item in L)
+
+	//First pass.
+	for(item in L)
 		if(isnull(L[item]))
 			L[item] = 1
 		if(L[item] <= 0)
 			continue
-		total += L[item]
 		if(lowest == -1)
 			lowest = L[item]
+			highest = L[item]
 		else
 			lowest = min(lowest,L[item])
-		highest = max(highest,L[item])
+			highest = max(highest,L[item])
+
+	//Second pass.
+	if(rarity > 0 && highest != lowest)
+		for(item in L)
+			var/rarity_mod = 1 - (L[item]/highest)*rarity
+			L[item] = L[item]*rarity_mod
+			total += L[item]
+
+	//Final pass.
 	total = rand() * total //rand() is precise
 	for (item in L)
-		total -= (L[item] * (1 - L[item]/highest) * (highest/lowest))*rarity + L[item]*(1-rarity)
+		total -= L[item]
 		if (total <= 0)
 			return item
 	return null

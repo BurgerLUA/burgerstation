@@ -812,6 +812,7 @@
 #include "code\_core\mob\living\advanced\inventory_defer.dm"
 #include "code\_core\mob\living\advanced\life.dm"
 #include "code\_core\mob\living\advanced\lighting.dm"
+#include "code\_core\mob\living\advanced\loadout.dm"
 #include "code\_core\mob\living\advanced\movement.dm"
 #include "code\_core\mob\living\advanced\oldcode.dm"
 #include "code\_core\mob\living\advanced\organs.dm"

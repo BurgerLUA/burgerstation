@@ -50,6 +50,7 @@
 	. = list()
 
 	for(var/k in loot_table_guaranteed)
+		if(!k) CRASH("Error: Improper selection in loot_table_guaranteed!")
 		. += create_loot_single(k,spawn_loc,rarity)
 
 	if(length(new_table) <= 0)
@@ -58,7 +59,8 @@
 	for(var/i=1,i<=loot_count,i++)
 		if(prob(chance_none))
 			continue
-		var/selection = pickweight(loot_table,rarity)
+		var/selection = pickweight(new_table,rarity)
+		if(!selection) CRASH("Error: Improper selection in loot_table!")
 		. += create_loot_single(selection,spawn_loc,rarity)
 		if(!allow_duplicates)
 			new_table -= selection
