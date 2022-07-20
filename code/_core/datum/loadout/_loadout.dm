@@ -1,6 +1,5 @@
 /loadout/
 	var/list/obj/item/spawning_items = list() //Remember, order matters!
-	var/list/loot/spawning_loot = list() //Remember, order matters!
 
 /loadout/proc/get_spawning_items()
 	return spawning_items.Copy() //Copy is needed.
