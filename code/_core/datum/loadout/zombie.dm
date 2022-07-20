@@ -375,6 +375,8 @@ var/global/zombie_seed = 0
 	if(length(possible_pants))
 		. += pickweight(possible_pants)
 
+	. += /loot/random_value
+
 /loadout/zombie/civilian/post_add(var/mob/living/advanced/A,var/list/added_items = list())
 	. = ..()
 	zombie_seed = null

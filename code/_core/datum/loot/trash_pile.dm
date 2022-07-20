@@ -44,3 +44,14 @@
 	value_max = 5000
 	loot_count = 1
 	chance_none = 0
+
+
+/loot/random_value
+	loot_table = list(
+		/loot/value/low = 1000,
+		/loot/value/medium = 100,
+		/loot/value/high = 10,
+		/loot/value/extreme = 1
+	)
+	chance_none = 25
+
