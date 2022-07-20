@@ -111,7 +111,7 @@
 "aB" = (
 /obj/structure/table/wood,
 /obj/structure/carpet/command,
-/mob/living/simple/parrot/poly,
+/mob/living/simple/parrot/mono,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering/ce)
 "aC" = (
