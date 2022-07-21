@@ -1,16 +1,16 @@
-/ai/advanced/ranged/wizard
+/ai/advanced/wizard
 
 	var/list/turf/teleport_locations = list()
 
 	left_click_chance = 70
 
-/ai/advanced/ranged/wizard/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/advanced/wizard/New(var/desired_loc,var/mob/living/desired_owner)
 	. = ..()
 
 	for(var/obj/marker/boss/wizard/W in world)
 		teleport_locations += get_turf(W)
 
-/ai/advanced/ranged/wizard/handle_attacking()
+/ai/advanced/wizard/handle_attacking()
 
 	. = ..()
 

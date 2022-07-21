@@ -107,3 +107,11 @@
 	. = ..()
 	var/obj/structure/interactive/storage/safe/O_safe = locate() in orange(8,src)
 	if(O_safe) qdel(src)
+
+
+
+/obj/structure/interactive/storage/ammo_pile
+	name = "assorted ammo pile"
+	desc = "What an assorted and unsorted mess."
+	desc_extended = "Well, they gotta get their ammo from somewhere."
+	stored_loot = /loot/ammo

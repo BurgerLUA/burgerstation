@@ -18,10 +18,6 @@
 
 	value = 1
 
-/obj/item/container/syringe/medipen/adjust_quality(var/quality_to_add=0)
-	. = ..()
-	if(.) update_sprite()
-
 /obj/item/container/syringe/medipen/update_sprite()
 	. = ..()
 	name = initial(name)

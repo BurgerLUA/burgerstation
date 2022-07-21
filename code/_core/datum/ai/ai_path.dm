@@ -20,20 +20,20 @@
 	var/obj/marker/map_node/last_node = current_node_path[length(current_node_path)]
 	path_end_turf = locate(last_node.x,last_node.y,last_node.z)
 
-	if(check_for_obstructions) check_obstructions()
+	if(check_for_obstructions) check_node_path_obstructions()
 
 	HOOK_CALL("set_path")
 
 	return TRUE
 
-/ai/proc/set_path_astar(var/turf/destination)
+/ai/proc/set_path_astar(var/turf/destination,var/min_distance=0)
 
 	if(current_path_astar)
 		current_path_astar.Cut()
 		current_path_astar = null
 
 	if(destination)
-		var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner)
+		var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner,min_distance)
 		if(returning_path)
 			current_path_astar = returning_path
 			set_active(TRUE)

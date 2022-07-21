@@ -352,8 +352,9 @@
 
 					var/local_required_angle = ricochet_angle - (damage_information[3]*2/max(1,damage_information[1]))*ricochet_angle*0.5
 
+					var/total_unblocked = damage_information[1] + damage_information[2] + damage_information[3]
 
-					var/block_percent = 1 - (damage_information[1]/(damage_information[1] + damage_information[2] + damage_information[3]))
+					var/block_percent = total_unblocked > 0 ? 1 - (damage_information[1]/total_unblocked) : 1
 					block_percent *= damage_information[4]
 
 					if(block_percent >= richochet_block_percent_threshold)

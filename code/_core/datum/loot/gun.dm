@@ -1,3 +1,31 @@
+/loot/ammo
+	loot_count = 12
+
+/loot/ammo/New(var/desired_loc)
+	. = ..()
+	for(var/k in subtypesof(/obj/item/magazine/))
+		var/obj/item/magazine/M = k
+		if(initial(M.value_burgerbux))
+			continue
+		if(initial(M.value) <= 0)
+			continue
+		loot_table[M] = 10
+	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
+		var/obj/item/bullet_cartridge/BC = k
+		if(initial(BC.value_burgerbux))
+			continue
+		if(initial(BC.value) <= 0)
+			continue
+		loot_table[BC] = 100
+
+/loot/ammo/pre_spawn(var/atom/movable/M)
+
+	if(istype(M,/obj/item/bullet_cartridge/))
+		var/obj/item/bullet_cartridge/B = M
+		B.amount = B.amount_max
+
+	. = ..()
+
 /loot/gun/
 	var/company_type
 

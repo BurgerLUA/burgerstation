@@ -2,7 +2,7 @@
 	name = "hostile survivor"
 	desc = "Get off my lawn!"
 
-	ai = /ai/advanced/guarding
+	ai = /ai/advanced/suvivor
 
 	level = 40
 

@@ -72,7 +72,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/kick_chance = 10
 
-	var/attack_on_block = TRUE
+	var/attack_movement_obstructions = TRUE //Should attack ALL obstructions if blocked.
 
 	var/path_steps = 1
 	var/list/obj/marker/map_node/current_node_path = list()

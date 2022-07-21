@@ -83,6 +83,7 @@
 	if(permissions & FLAG_PERMISSION_DEVELOPER)
 		verbs += /client/verb/show_debug_verbs
 		verbs += /client/verb/add_new_wikibot_entry
+		verbs += /client/verb/horde_test_preview
 
 	if(permissions & FLAG_PERMISSION_GAMEMASTER)
 		verbs += /client/verb/speed_up_setup

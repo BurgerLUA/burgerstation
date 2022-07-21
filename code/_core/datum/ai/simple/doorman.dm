@@ -17,13 +17,6 @@
 	beepsky_marker = null
 	return ..()
 
-/ai/doorman/can_enter_turf(var/turf/T)
-
-	if(T.plane != PLANE_SHUTTLE)
-		return FALSE
-
-	return ..()
-
 
 /ai/doorman/should_attack_mob(var/mob/living/L)
 
