@@ -72,4 +72,4 @@
 	loot_to_generate = /loot/syndie
 
 /obj/item/storage/bags/goodie/kitbag/survivor
-	loot_to_generate = /loot/survivor
+	loot_to_generate = /loot/survivor/reward

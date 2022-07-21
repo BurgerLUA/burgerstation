@@ -461,7 +461,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/mob/living/advanced/A = caller
 		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
 	if(wielded || !can_wield)
-		arm_strength *= 2
+		arm_strength *= 10
 
 	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
 	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)

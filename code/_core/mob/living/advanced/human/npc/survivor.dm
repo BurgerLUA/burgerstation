@@ -25,4 +25,7 @@
 
 	update_all_blends()
 
-	equip_loadout(/loadout/survivor)
+	if(gender == FEMALE)
+		equip_loadout(/loadout/survivor/female)
+	else
+		equip_loadout(/loadout/survivor/male)

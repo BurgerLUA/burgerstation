@@ -35,11 +35,11 @@
 	name = "soccer uniform vendor"
 	stored_types = list(
 		/obj/item/clothing/pants/shorts/red_soccer,
-		/obj/item/clothing/shirt/normal/uniform/red_soccer,
+		/obj/item/clothing/shirt/normal/tee/soccer/red,
 		/obj/item/clothing/pants/shorts/blue_soccer,
-		/obj/item/clothing/shirt/normal/uniform/blue_soccer,
+		/obj/item/clothing/shirt/normal/tee/soccer/blue,
 		/obj/item/clothing/pants/shorts/ref_soccer,
-		/obj/item/clothing/shirt/normal/uniform/ref_soccer,
+		/obj/item/clothing/shirt/normal/tee/soccer/ref,
 		/obj/item/clothing/feet/socks/knee,
 		/obj/item/storage/shoebox/colored,
 		/obj/item/whistle

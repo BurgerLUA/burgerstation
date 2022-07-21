@@ -40,6 +40,8 @@
 // Real modulus that handles decimals
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
 
+#define PSUEDO_RAND(x,y,z) ( (y) + MODULUS( (x) , (z)-(y)))
+
 // Cotangent
 #define COT(x) (1 / tan(x))
 

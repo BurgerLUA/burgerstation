@@ -21,7 +21,7 @@
 				continue
 			if(value > value_max)
 				continue
-			loot_table[R] = 1 + (value_max-(value-value_min))
+			loot_table[R] = 1 + (value_max-(value-value_min)) //R is already a type.
 
 /loot/gun/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity=0)
 

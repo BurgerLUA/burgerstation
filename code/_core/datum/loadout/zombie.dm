@@ -309,8 +309,6 @@
 	extra_weapon_chance = 80
 	extra_clothing_chance = 75
 
-var/global/zombie_seed = 0
-
 /loadout/zombie/civilian
 	var/list/possible_shirt = list()
 	var/list/possible_pants = list()
@@ -375,18 +373,16 @@ var/global/zombie_seed = 0
 	if(length(possible_pants))
 		. += pickweight(possible_pants)
 
+	if(prob(20))
+		. += /obj/item/clothing/overwear/coat/polymorphic
+
 	. += /loot/random_value
 
-/loadout/zombie/civilian/post_add(var/mob/living/advanced/A,var/list/added_items = list())
-	. = ..()
-	zombie_seed = null
-
 /loadout/zombie/civilian/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-	if(!zombie_seed)
-		zombie_seed = rand(1,100000)
 	. = ..()
 	var/p_length = length(I.polymorphs)
 	if(p_length && I.item_slot_layer > 1)
-		rand_seed(zombie_seed + length(I.desc))
+		var/turf/T = get_turf(I)
+		var/pseudo_rand_num = T.x + T.y + T.z + p_length + length(I.desc)
 		for(var/k in I.polymorphs)
-			I.polymorphs[k] = random_color()
+			I.polymorphs[k] = rgb(PSUEDO_RAND(pseudo_rand_num + T.x*pseudo_rand_num,0,255),PSUEDO_RAND(pseudo_rand_num + T.y*pseudo_rand_num,0,255),PSUEDO_RAND(pseudo_rand_num + (T.x + T.y)*pseudo_rand_num,0,255))

@@ -3,7 +3,7 @@
 	var/list/loot_table_guaranteed = list()
 	var/loot_count = 1 //How much of this loot to spawn.
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
-	var/chance_none = 0 //Applies on a per item basis.
+	var/chance_none = 0 //Applies on a per loot_count basis.
 	var/loot_multiplier = 1 //How much of the loot to duplicate.
 
 /loot/proc/do_spawn(var/atom/spawn_loc,var/rarity=0) //Use this to spawn the loot. rarity is optional.
@@ -25,11 +25,16 @@
 
 	. = list()
 
+	if(islist(type_to_spawn))
+		for(var/k in type_to_spawn)
+			. += create_loot_single(k,spawn_loc,rarity)
+		return .
+
 	if(ispath(type_to_spawn,/loot/))
 		var/loot/L = LOOT(type_to_spawn)
 		for(var/i=1,i<=loot_multiplier,i++)
 			. += L.create_loot_table(spawn_loc,rarity)
-		return
+		return .
 
 	for(var/i=1,i<=loot_multiplier,i++)
 		if(spawn_loc)
