@@ -60,7 +60,7 @@
 		src.attack_next = world.time + shoot_delay
 
 
-/obj/item/weapon/ranged/magic/spellblade/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/spellblade/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 	if(caller.attack_next > world.time)
 		return FALSE
 	if(!active)

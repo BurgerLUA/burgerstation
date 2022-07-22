@@ -44,8 +44,13 @@
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
-	sunlight_freq = 2
-	sunlight_color = "#BCB996"
+	requires_power = FALSE
+
+	default_state_power_lights = ON
+	default_state_power_machines = ON
+	default_state_power_doors = ON
+
+	dynamic_lighting = TRUE
 
 
 /area/generation

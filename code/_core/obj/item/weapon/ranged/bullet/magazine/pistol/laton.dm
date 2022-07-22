@@ -96,6 +96,8 @@ var/global/list/kitchen_gun_slogans = list(
 	value = 800
 	var/slogan_number = 1
 
+	value_burgerbux = 1
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()
 	if(.)

@@ -244,7 +244,6 @@
 	if(desired_target == objective_attack)
 		return FALSE
 
-	owner.set_dir(get_dir(owner,desired_target))
 	objective_investigate = desired_target
 
 	return TRUE

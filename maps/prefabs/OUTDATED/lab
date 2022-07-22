@@ -1,0 +1,271 @@
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/metal/reinforced,/area/ghost/maint/north)
+"ac" = (/turf/simulated/wall/metal/reinforced,/area/ghost/maint/east)
+"ad" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/ghost/maint/north)
+"ae" = (/turf/simulated/floor/plating,/area/ghost/maint/north)
+"af" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/maint/north)
+"ag" = (/turf/simulated/floor/tile/grey,/area/ghost/hall/north)
+"ah" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/hall/north)
+"ai" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/maint/east)
+"aj" = (/turf/simulated/floor/plating,/area/ghost/maint/east)
+"ak" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/ghost/maint/east)
+"al" = (/turf/simulated/wall/metal,/area/ghost/maint/north)
+"am" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 4},/turf/simulated/wall/metal,/area/ghost/maint/north)
+"an" = (/turf/simulated/wall/metal,/area/ghost/medical)
+"ao" = (/obj/structure/interactive/fire_alarm,/turf/simulated/wall/metal,/area/ghost/medical)
+"ap" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/medical)
+"aq" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/ghost/medical)
+"ar" = (/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"as" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"at" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal,/area/ghost/maint/north)
+"au" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/grey,/area/ghost/hall/north)
+"av" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile,/area/ghost/medical)
+"aw" = (/turf/simulated/floor/tile,/area/ghost/medical)
+"ax" = (/turf/simulated/wall/metal/reinforced,/area/dmm_suite/clear_area)
+"ay" = (/obj/structure/interactive/fire_alarm,/turf/simulated/wall/metal,/area/ghost/maint/north)
+"az" = (/obj/structure/interactive/vending/science/equipment,/turf/simulated/floor/tile/morphing/dark,/area/ghost/hall/entrance)
+"aA" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/morphing/dark,/area/ghost/hall/entrance)
+"aB" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/tile/morphing/dark,/area/ghost/hall/entrance)
+"aC" = (/turf/simulated/floor/tile/morphing/dark,/area/ghost/hall/entrance)
+"aD" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/ghost/hall/entrance)
+"aE" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/plating,/area/ghost/maint/north)
+"aF" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"aG" = (/obj/structure/scenery/fake_door/nocolide/blast_door{icon_state = "blast_opened"; dir = 4},/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aH" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aI" = (/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aJ" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 4},/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aK" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aL" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/ghost/maint/north)
+"aM" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile,/area/ghost/medical)
+"aN" = (/obj/structure/interactive/door/airlock/lz_420/basement/glass,/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aO" = (/obj/structure/scenery/fake_door/nocolide/blast_door{icon_state = "blast_opened"; dir = 4},/turf/simulated/floor/tile/morphing/dark,/area/ghost/hall/entrance)
+"aP" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/grey,/area/ghost/hall/north)
+"aQ" = (/turf/simulated/floor/tile/morphing/medical,/area/ghost/hall/north)
+"aR" = (/obj/structure/interactive/bed/sleeper/medical,/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"aS" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aT" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/grey,/area/ghost/hall/north)
+"aU" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/medical,/area/ghost/hall/north)
+"aV" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"aW" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"aX" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/grey,/area/ghost/hall/entrance)
+"aY" = (/turf/simulated/floor/tile/grey,/area/ghost/hall/west)
+"aZ" = (/turf/simulated/wall/metal,/area/ghost/cafe)
+"ba" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/ghost/cafe)
+"bb" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/ghost/cafe)
+"bc" = (/obj/structure/interactive/lighting/fixture/tube{dir = 4},/turf/simulated/floor/tile/grey,/area/ghost/hall/east)
+"bd" = (/turf/simulated/floor/tile/morphing/medical,/area/ghost/hall/east)
+"be" = (/obj/structure/interactive/bed/sleeper/medical,/turf/simulated/floor/tile,/area/ghost/medical)
+"bf" = (/turf/simulated/wall/metal/reinforced,/area/ghost/maint/west)
+"bg" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/maint/west)
+"bh" = (/turf/simulated/wall/metal,/area/ghost/maint/west)
+"bi" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/morphing/dark,/area/ghost/hall/entrance)
+"bj" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/red,/area/ghost/cafe)
+"bk" = (/turf/simulated/floor/tile/tint,/area/ghost/cafe)
+"bl" = (/turf/simulated/floor/tile/red,/area/ghost/cafe)
+"bm" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/tile/tint,/area/ghost/cafe)
+"bn" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 4},/turf/simulated/wall/metal,/area/ghost/cafe)
+"bo" = (/turf/simulated/floor/tile/grey,/area/ghost/hall/east)
+"bp" = (/turf/simulated/floor/plating,/area/ghost/maint/west)
+"bq" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/grey,/area/ghost/hall/west)
+"br" = (/obj/structure/interactive/lighting/fixture/tube{dir = 4},/obj/structure/interactive/vending/coffee,/turf/simulated/floor/tile/tint,/area/ghost/cafe)
+"bs" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/tile/red,/area/ghost/cafe)
+"bt" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/tint,/area/ghost/cafe)
+"bu" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/ghost/maint/west)
+"bv" = (/obj/structure/interactive/vending/junk/full,/turf/simulated/floor/tile/red,/area/ghost/cafe)
+"bw" = (/obj/marker/map_node,/turf/simulated/floor/tile/tint,/area/ghost/cafe)
+"bx" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal,/area/ghost/cafe)
+"by" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"bz" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile,/area/ghost/medical)
+"bA" = (/turf/simulated/wall/metal/reinforced,/area/ghost/command)
+"bB" = (/turf/simulated/wall/metal,/area/ghost/command)
+"bC" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal,/area/ghost/maint/west)
+"bD" = (/obj/structure/interactive/vending/soda/full,/turf/simulated/floor/tile/tint,/area/ghost/cafe)
+"bE" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/morphing/medical,/area/ghost/medical)
+"bF" = (/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bG" = (/obj/structure/interactive/misc/computer3,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bH" = (/obj/structure/interactive/misc/computer4,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bI" = (/obj/structure/interactive/misc/computer1,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bJ" = (/obj/structure/interactive/crate/closet,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bK" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bL" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bM" = (/obj/structure/interactive/crate/open,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"bN" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 8},/turf/simulated/wall/metal,/area/ghost/command)
+"bO" = (/turf/simulated/floor/tile/morphing/command,/area/ghost/hall/west)
+"bP" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/cafe)
+"bQ" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile/grey,/area/ghost/command)
+"bR" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/grey,/area/ghost/command)
+"bS" = (/turf/simulated/floor/tile/grey,/area/ghost/command)
+"bT" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/ghost/command)
+"bU" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/hall/west)
+"bV" = (/turf/simulated/wall/metal,/area/ghost/maint/central)
+"bW" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/ghost/maint/central)
+"bX" = (/turf/simulated/floor/plating,/area/ghost/maint/central)
+"bY" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/maint/central)
+"bZ" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/hall/east)
+"ca" = (/turf/simulated/wall/metal,/area/ghost/bathrooms/male)
+"cb" = (/turf/simulated/floor/tile/morphing/science,/area/ghost/hall/east)
+"cc" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 8},/turf/simulated/wall/metal,/area/ghost/science)
+"cd" = (/turf/simulated/wall/metal,/area/ghost/science)
+"ce" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal,/area/ghost/science)
+"cf" = (/obj/structure/interactive/fire_alarm,/turf/simulated/wall/metal,/area/ghost/science)
+"cg" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/command)
+"ch" = (/obj/structure/interactive/crate/closet,/turf/simulated/floor/plating,/area/ghost/maint/central)
+"ci" = (/obj/structure/interactive/crate/open,/turf/simulated/floor/plating,/area/ghost/maint/central)
+"cj" = (/obj/structure/interactive/misc/toilet,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/male)
+"ck" = (/obj/structure/interactive/misc/urinal{pixel_y = 32},/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/male)
+"cl" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"cm" = (/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"cn" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"co" = (/obj/marker/objective_spawn,/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"cp" = (/obj/structure/interactive/lighting/fixture/tube{dir = 4},/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"cq" = (/obj/structure/interactive/door/airlock/lz_420/basement/bathroom,/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/male)
+"cr" = (/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/male)
+"cs" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/male)
+"ct" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/science,/area/ghost/hall/east)
+"cu" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"cv" = (/turf/simulated/floor/tile/grey,/area/ghost/science)
+"cw" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/science)
+"cx" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/science)
+"cy" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal/reinforced,/area/ghost/command)
+"cz" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"cA" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"cB" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal,/area/ghost/bathrooms/male)
+"cC" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/male)
+"cD" = (/obj/structure/sign/restroom/male{icon_state = "male"; dir = 4},/turf/simulated/wall/metal,/area/ghost/bathrooms/male)
+"cE" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal,/area/ghost/science)
+"cF" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/ghost/command)
+"cG" = (/obj/structure/interactive/fire_alarm,/turf/simulated/wall/metal,/area/ghost/command)
+"cH" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal,/area/ghost/maint/central)
+"cI" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 4},/turf/simulated/wall/metal,/area/ghost/bathrooms/male)
+"cJ" = (/turf/simulated/floor/tile/morphing/blue,/area/ghost/bathrooms/male)
+"cK" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/blue,/area/ghost/bathrooms/male)
+"cL" = (/obj/structure/interactive/door/airlock/lz_420/basement/bathroom,/turf/simulated/floor/tile/morphing/blue,/area/ghost/bathrooms/male)
+"cM" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/morphing/science,/area/ghost/hall/east)
+"cN" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"cO" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile/morphing/science,/area/ghost/science)
+"cP" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/plating,/area/ghost/maint/central)
+"cQ" = (/turf/simulated/wall/metal,/area/ghost/bathrooms/female)
+"cR" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/ghost/science)
+"cS" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"cT" = (/mob/living/simple/ghost,/turf/simulated/floor/tile/grey,/area/ghost/hall/west)
+"cU" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal,/area/ghost/maint/central)
+"cV" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/plating,/area/ghost/maint/central)
+"cW" = (/turf/simulated/floor/tile/morphing/red,/area/ghost/bathrooms/female)
+"cX" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red,/area/ghost/bathrooms/female)
+"cY" = (/obj/structure/interactive/misc/sink{pixel_y = 32},/turf/simulated/floor/tile/morphing/red,/area/ghost/bathrooms/female)
+"cZ" = (/obj/structure/interactive/door/airlock/lz_420/basement/bathroom,/turf/simulated/floor/tile/morphing/red,/area/ghost/bathrooms/female)
+"da" = (/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/female)
+"db" = (/obj/structure/sign/restroom/female{icon_state = "female"; dir = 4},/turf/simulated/wall/metal,/area/ghost/bathrooms/female)
+"dc" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/grey,/area/ghost/science)
+"dd" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"de" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"df" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/obj/marker/map_node,/turf/simulated/floor/plating,/area/ghost/maint/central)
+"dg" = (/obj/structure/interactive/door/airlock/lz_420/basement/bathroom,/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/female)
+"dh" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/ghost/science)
+"di" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile/morphing/command,/area/ghost/command)
+"dj" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/grey,/area/ghost/hall/west)
+"dk" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 1},/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/tint,/area/ghost/bathrooms/female)
+"dl" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/command)
+"dm" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 8},/turf/simulated/wall/metal,/area/ghost/maint/central)
+"dn" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/metal,/area/ghost/science)
+"do" = (/turf/simulated/wall/metal/reinforced,/area/ghost/maint/south)
+"dp" = (/turf/simulated/floor/plating,/area/ghost/maint/south)
+"dq" = (/obj/structure/interactive/construction/grille,/turf/simulated/floor/plating,/area/ghost/maint/south)
+"dr" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/ghost/maint/south)
+"ds" = (/obj/structure/interactive/crate/closet,/turf/simulated/floor/plating,/area/ghost/maint/south)
+"dt" = (/turf/simulated/wall/metal,/area/ghost/maint/south)
+"du" = (/obj/structure/interactive/fire_alarm,/turf/simulated/wall/metal,/area/ghost/maint/central)
+"dv" = (/turf/simulated/wall/metal,/area/ghost/maint/east)
+"dw" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/maint/south)
+"dx" = (/turf/simulated/floor/tile/grey,/area/ghost/hall/south)
+"dy" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/ghost/hall/south)
+"dz" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/grey,/area/ghost/hall/south)
+"dA" = (/obj/structure/interactive/crate/closet,/turf/simulated/floor/plating,/area/ghost/maint/east)
+"dB" = (/obj/structure/interactive/construction/grille,/turf/simulated/floor/plating,/area/ghost/maint/east)
+"dC" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/tile/morphing/engineering,/area/ghost/hall/south)
+"dD" = (/turf/simulated/floor/tile/morphing/engineering,/area/ghost/hall/south)
+"dE" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/morphing/engineering,/area/ghost/hall/south)
+"dF" = (/turf/simulated/wall/metal/reinforced,/area/ghost/engineering)
+"dG" = (/turf/simulated/wall/metal,/area/ghost/engineering)
+"dH" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/morphing/engineering,/area/ghost/engineering)
+"dI" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/ghost/engineering)
+"dJ" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/dark,/area/ghost/engineering)
+"dK" = (/obj/structure/interactive/crate/open,/turf/simulated/floor/plating,/area/ghost/maint/east)
+"dL" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/morphing/engineering,/area/ghost/engineering)
+"dM" = (/turf/simulated/floor/tile/morphing/engineering,/area/ghost/engineering)
+"dN" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal/reinforced,/area/ghost/engineering)
+"dO" = (/turf/simulated/floor/tile/dark,/area/ghost/engineering)
+"dP" = (/obj/structure/interactive/lighting/fixture/tube{dir = 8},/turf/simulated/floor/tile/morphing/engineering,/area/ghost/engineering)
+"dQ" = (/obj/structure/interactive/door/airlock/lz_420/maintenance,/turf/simulated/floor/plating,/area/ghost/engineering)
+"dR" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/ghost/engineering)
+"dS" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/dark,/area/ghost/engineering)
+"dT" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile/dark,/area/ghost/engineering)
+"dU" = (/obj/structure/interactive/chair,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/ghost/engineering)
+"dV" = (/obj/structure/interactive/lighting/fixture/tube{dir = 1},/turf/simulated/floor/tile/morphing/engineering,/area/ghost/engineering)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababacacacacacacacacacacacacacacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababacacacacacacacacacacacacacacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababadaeaeaeaeaeadaeaeafagahaiajajajajakajajajajajakacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababaealalafalalafalalamagaganananaoananananapananajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababadaeaeaeaeaeaeaeaeaeadalagagalaeaeaeaealagagaqarararararararararanajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasasababaealalalalalatalalalafalagaualaeadaeaealagagaqaravawawawawawawaranajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasaxababafayazaAaBaCaCaAaBaCaCaDagagalaEaeaeaealagagaqararararararararaFanajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasaDaGaHaIaCaCaIaJaIaIaKaJaIaCaDagagayalaLalatalagagaqaqaqananaManaqaqaoanajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasaNaGaIaIaCaCaIaIaIaJaIaIaIaCaOagagagagagagagaPagagagagaQanaFarararaRaranakacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaSasaNaGaIaKaCaCaIaIaKaJaIaIaKaCaOagahagaTahagagagagahagagaUaVarawawawawaWanajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasaDaGaXaIaCaCaIaJaIaIaKaJaIaCaDaYaYaZaZbaaZbbbbbbaZaZbcbdanarawawawbearanajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasaxbfbfbgbhaCbiaBaCaCbiaBaCaCaDaYaYaZbjbkblbkblbmblbnbobdaqarawawawawaranajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaasasasbfbfbpbhbhbhbhbhbhbhbhbhbgbhaYbqaZbrblbkblbkbsbtaZbobdaqarawawawbearanajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabfbfbubpbpbpbpbpbpbpbpbpbubhaYaYaZbvbwblbkblbkblbxbobdaqbyavbzawawarapajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbBbBbBbBbBbBbBbBbBbCbhbhaYaYaZbDblbkblbkblbkaZbobdanarbEararbEaranajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbFbGbHbIbJbKbLbMbNbOaYaYaYaYaZaZbPaZaZaZaZaZaZbcbdananananananananajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbFbQbRbSbSbSbSbFbTbObUaYaYbUbVbWbXbXbXbWbXbXbYbobZaiajajajajajajajakacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbFbSbSbSbSbSbSbFbTbOaYbVbVbVbVbXcacacacacacacabocbcccdcdcdcecfcdcdajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbFbQbSbScgbSbSbFbTbOaYbVchchcibXcacjcackckckcabocbcdclcmcncmcmcocdajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAcpbSbSbSbSbSbSbFbTbOaYbYbXbXbWbWcacqcacrcrcscaboctcucmcvcvcvcwcmcxajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAcybFbFbFbFbFbFczcAbBbOaYbVbXbXbXbXcBcrcrcrcrcCcDbocbcdcmcvcvcvcvcmcEajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbBbTbTbBcFbBbBbBcGbObUbVbVcHbYbVcIcJcJcKcJcJcLbZcMcdcmcmcNcOcmcmcdakacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbMbFbFbFbFcAbBbObObOaYbVcPbXbXbXcQcQcQcQcQcQcQbocbcdcdcRcRcdcmcmcdajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAcpbSbSbSbScSbBbOcTaYaYcUbXbXcVbXcQcWcWcXcYcYcZbZcbccclcmcmcmcmcmcdajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAcybFbSbSbSbSbFbBbOaYaYaYbVbXbXbXbXcQdadadadadadbbocbcdcvcvdccvcvcmcEajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAddbSbSbScgbFdebObUaYbUbYbXbXdfbXcQdgcQdgcQdgcQboctdhcvcvcvcvcwcmcxajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbFbFbFdibFbFbBbOaYdjaYbVbXbXbXbXcQdkcQdkcQdkcQbccbcdcmcmcNcmcmcmcdajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabAbAbAbAbAbAdlbBbBbOaYdmbYbVbVbVbYbVcQcQcQcQcQcQcQbocbcddncdcdcdcdcdcdajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadododpdpdpdqdrdsdtaYaYbVbWbXbXbXbWbXbXbXbWbXbXbXbYbobZaiakajajajajajajakacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadododpdodododpdpdtaYaYbVbVbVducHbVbVbVbVbVbVbVbVbVbobodvajdvdvajajajajajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodpdpdpdododpdrdwdxdydzdxdxdxdxdxdydxdxdxdxdxdxdzdydxdvajdAdvajajdBajajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodpdododododqdpdtdCdDdDdDdDdDdDdEdDdDdDdDdDdDdDdDdDdDdvajdAdvajajdBajajacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodqdodododododpdFdGdHdGdIdIdIdGdGdGdGdGdIdIdIdIdGdJdGdGajacacacacacacajdKacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodpdpdpdodododpdFdLdMdMdMdMdMdMdMdMdMdMdMdMdMdMdMdMdLdGajajacacacacacajajacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodpdodpdodododpdNdMdOdOdOdOdOdOdOdOdOdOdOdOdOdOdOdOdPdGajajacacajajacajajacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodpdodpdodododrdQdMdRdOdOdOdOdOdOdRdOdOdOdSdTdOdOdUdMdQakajajdBajajacajajacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodododpdpdpdqdpdFdMdMdMdMdVdMdMdMdMdMdMdMdMdMdVdMdMdMdGajajajacacdBacajajacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodododpdodododpdFdGdGdGdGdGdGdGdGdQdGdGdGdGdGdGdGdGdGdGajacacacacajajajajacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodododpdpdpdpdrdpdpdpdpdrdpdpdpdpdrdpdpdpdpdpdrdpdpdpdpakacacacacajajacacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaadodododododododododododododododododododododododododododoacacacacacacacacacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

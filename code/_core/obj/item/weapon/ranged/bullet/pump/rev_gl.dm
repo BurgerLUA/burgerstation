@@ -67,6 +67,8 @@
 
 	pump_delay = 5
 
+	value_burgerbux = 1
+
 /obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1
 

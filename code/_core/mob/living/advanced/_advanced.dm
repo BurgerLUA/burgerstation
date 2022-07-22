@@ -111,7 +111,7 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	QDEL_NULL(stored_handcuffs)
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/PostInitialize()
 	. = ..()

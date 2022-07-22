@@ -7,4 +7,8 @@
 	cowardice = 0.5
 
 	roam = TRUE
-	find_ammo_pile_on_empty = TRUE
+	should_find_ammo_pile_on_empty = TRUE
+
+	should_find_weapon_on_ground = TRUE
+
+	use_cone_vision = FALSE

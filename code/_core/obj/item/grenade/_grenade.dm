@@ -79,7 +79,7 @@
 		vel_x,
 		vel_y,
 		steps_allowed = VIEW_RANGE,
-		lifetime = 30,
+		lifetime = 10,
 		desired_loyalty_tag = L.loyalty_tag
 	)
 

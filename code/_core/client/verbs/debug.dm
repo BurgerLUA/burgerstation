@@ -25,7 +25,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_astar,
 	/client/verb/print_garbage,
 	/client/verb/set_skill,
-	/client/verb/set_attribute
+	/client/verb/set_attribute,
+	/client/verb/horde_test_preview
 )
 
 /client/verb/view_dps()
@@ -549,11 +550,15 @@ var/global/list/debug_verbs = list(
 	if(confirmation != "CONFIRM")
 		return
 
-	var/time_to_stop = world.time + SECONDS_TO_DECISECONDS(120)
+	var/time_to_stop = world.time + SECONDS_TO_DECISECONDS(240)
 
 	var/turf/target_turf = pick(horde_test_target_turfs)
 
 	if(mob) mob.force_move(target_turf)
+
+	if(is_observer(mob))
+		var/mob/abstract/observer/O = mob
+		O.show_hud(FALSE)
 
 	for(var/k in horde_test_survivor_spawn_turfs)
 		var/turf/T = k
@@ -564,7 +569,14 @@ var/global/list/debug_verbs = list(
 		if(S.ai)
 			S.ai.set_active(TRUE)
 
+	var/list/tracked_zombies = list()
 	spawn while(world.time <= time_to_stop)
+		for(var/k in tracked_zombies)
+			var/mob/living/advanced/npc/zombie/civilian/Z = k
+			if(Z.dead) tracked_zombies -= Z
+		sleep(SECONDS_TO_DECISECONDS(5))
+		if(length(tracked_zombies) >= 8)
+			continue
 		var/turf/T = pick(horde_test_turfs)
 		var/mob/living/advanced/npc/zombie/civilian/Z = new(T)
 		INITIALIZE(Z)
@@ -572,7 +584,8 @@ var/global/list/debug_verbs = list(
 		FINALIZE(Z)
 		if(Z.ai)
 			Z.ai.set_move_objective(target_turf)
-		sleep(SECONDS_TO_DECISECONDS(5))
+		tracked_zombies += Z
+
 
 
 

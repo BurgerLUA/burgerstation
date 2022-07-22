@@ -14,8 +14,8 @@
 	. = ..()
 	if(!.)
 		reagents.splash(owner,new_loc,2.5,TRUE,0.25)
-		if(reagents.volume_current <= 0)
-			qdel(src)
+		if(reagents.volume_current <= 0 && !qdeleting)
+			on_projectile_hit(new_loc,old_loc,new_loc)
 
 /obj/projectile/spray/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
@@ -31,7 +31,6 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
-			qdel(src)
 			return FALSE
 
 
@@ -52,8 +51,8 @@
 	. = ..()
 	if(!.)
 		reagents.splash(owner,new_loc,1,TRUE,0.25)
-		if(reagents.volume_current <= 0)
-			qdel(src)
+		if(reagents.volume_current <= 0 && !qdeleting)
+			on_projectile_hit(new_loc,old_loc,new_loc)
 
 /obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
@@ -70,5 +69,4 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
-			qdel(src)
 			return FALSE

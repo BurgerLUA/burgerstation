@@ -113,7 +113,7 @@
 		PC.charge_current -= charge_cost
 	return null
 
-/obj/item/weapon/ranged/energy/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/energy/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(!..())
 		return FALSE
@@ -121,7 +121,7 @@
 	var/obj/item/powercell/PC = get_battery()
 
 	if(!istype(PC))
-		caller.to_chat(span("warning","\The [src.name] doesn't have a battery installed!"))
+		if(messages) caller.to_chat(span("warning","\The [src.name] doesn't have a battery installed!"))
 		return FALSE
 
 	if(PC.charge_current - charge_cost < 0)

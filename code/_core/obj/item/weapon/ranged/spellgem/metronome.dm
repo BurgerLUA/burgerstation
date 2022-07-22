@@ -26,13 +26,12 @@
 
 	value = 2700
 
-/obj/item/weapon/ranged/spellgem/metronome/can_gun_shoot(var/mob/caller) //Shuffle properties, then check.
-    cost_mana = rand(3, 17)
-    ranged_damage_type = pick(damage_list)
-    projectile = pick(projectile_list)
-    shoot_delay = rand(8, 40) / 10
-    bullet_count = rand(1, 4)
-    spread_per_shot = rand(0, 6)
-    projectile_speed = rand(12, TILE_SIZE - 1)
-
-    return ..()
+/obj/item/weapon/ranged/spellgem/metronome/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+	cost_mana = rand(3, 17)
+	ranged_damage_type = pick(damage_list)
+	projectile = pick(projectile_list)
+	shoot_delay = rand(8, 40) / 10
+	bullet_count = rand(1, 4)
+	spread_per_shot = rand(0, 6)
+	projectile_speed = rand(12, TILE_SIZE - 1)
+	. = ..()

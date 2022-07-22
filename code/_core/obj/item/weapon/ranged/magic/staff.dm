@@ -25,7 +25,7 @@
 	LOADVAR("total_charge")
 
 
-/obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(total_charge < cost_charge)
 		handle_empty(caller)

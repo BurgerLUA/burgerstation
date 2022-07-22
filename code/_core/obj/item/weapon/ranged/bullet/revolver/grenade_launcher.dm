@@ -4,7 +4,7 @@
 	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
 	icon_state = "inventory"
-	value = 1200
+	value = 2400
 
 	company_type = "Solarian"
 
@@ -61,11 +61,11 @@
 	attachment_undermount_offset_x = 0 - 16
 	attachment_undermount_offset_y = 0 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.04
+
+	value_burgerbux = 1
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.1

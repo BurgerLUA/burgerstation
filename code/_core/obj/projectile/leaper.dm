@@ -25,7 +25,6 @@
 		alpha -= 10
 		if(alpha <= 0)
 			on_projectile_hit(current_loc)
-			qdel(src)
 			return FALSE
 		return .
 

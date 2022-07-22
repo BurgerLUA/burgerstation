@@ -115,3 +115,7 @@
 	desc = "What an assorted and unsorted mess."
 	desc_extended = "Well, they gotta get their ammo from somewhere."
 	stored_loot = /loot/ammo
+	icon = 'icons/obj/item/bulletbox.dmi'
+	icon_state = "ammo"
+
+	pixel_y = 6

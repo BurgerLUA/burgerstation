@@ -25,7 +25,14 @@
 
 	update_all_blends()
 
-	if(gender == FEMALE)
-		equip_loadout(/loadout/survivor/female)
+	if(prob(25))
+		if(gender == FEMALE)
+			equip_loadout(/loadout/survivor/female/melee)
+		else
+			equip_loadout(/loadout/survivor/male/melee)
+
 	else
-		equip_loadout(/loadout/survivor/male)
+		if(gender == FEMALE)
+			equip_loadout(/loadout/survivor/female)
+		else
+			equip_loadout(/loadout/survivor/male)

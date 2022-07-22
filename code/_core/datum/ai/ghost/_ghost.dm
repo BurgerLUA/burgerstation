@@ -380,6 +380,8 @@
 				var/area/AF = TF.loc
 				if(AF.area_identifier != origin_area_identifier)
 					continue
+				if(!AF.allow_ghost)
+					continue
 				if(!TF.is_safe_teleport(FALSE))
 					continue
 				possible_turfs += TF

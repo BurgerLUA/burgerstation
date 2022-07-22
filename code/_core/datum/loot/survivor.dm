@@ -1,5 +1,3 @@
-
-
 /loot/survivor
 	var/chance_blood = 0
 	var/chance_quality = 0
@@ -222,3 +220,25 @@
 	apply_poly = FALSE
 	chance_blood = 0
 	chance_quality = 0
+
+
+/loot/survivor/melee
+	loot_table = list(
+		/obj/item/weapon/melee/axe/fireaxe = 75,
+		/obj/item/weapon/melee/energy/chainsaw = 25,
+		/obj/item/weapon/melee/spear = 100,
+		/obj/item/weapon/melee/sword/butcher_cleaver = 75,
+	)
+	chance_none = 0
+	apply_poly = FALSE
+	chance_blood = 100
+	chance_quality = 0
+
+
+/loot/survivor/melee/small
+	loot_table = list(
+		/obj/item/weapon/unarmed/brass_knuckles = 50,
+		/obj/item/weapon/melee/combat_knife = 25,
+		/obj/item/weapon/melee/sword/chef_knife = 75,
+		/obj/item/weapon/melee/null_rod/dagger = 25,
+	)

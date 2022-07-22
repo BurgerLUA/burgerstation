@@ -284,7 +284,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(quality <= 0)
 		caller.to_chat(span("warning","\The [src.name] is completely broken!"))
@@ -303,11 +303,12 @@
 			//Messages are handled in the above proc.
 			return FALSE
 
-	if(next_shoot_time > world.time)
-		return FALSE
+	if(check_time)
+		if(next_shoot_time > world.time)
+			return FALSE
 
-	if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
-		return FALSE
+		if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
+			return FALSE
 
 	return TRUE
 

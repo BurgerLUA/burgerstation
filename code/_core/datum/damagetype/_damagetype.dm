@@ -137,6 +137,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/sneak_attack_multiplier = 2 //200%
 
+	var/alert_on_impact = ALERT_LEVEL_NONE
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -644,6 +646,10 @@ var/global/list/all_damage_numbers = list()
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 
 /damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	if(alert_on_impact != ALERT_LEVEL_NONE)
+		create_alert(2,get_turf(hit_object),blamed,alert_level = alert_on_impact)
+
 	return TRUE
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)

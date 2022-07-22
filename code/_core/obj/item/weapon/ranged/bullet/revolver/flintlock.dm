@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 800
 
-	company_type = "Solarian"
+	company_type = "Pirate"
 
 	tier = 1
 
