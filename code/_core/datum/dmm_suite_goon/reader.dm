@@ -79,7 +79,7 @@ dmm_suite
 			//all_mobs_with_clients_by_z["[world.maxz]"] = list()
 			log_debug("Z levels increased to [world.maxz].")
 		for(var/posZ = 1 to gridLevels.len)
-			CHECK_TICK(50,FPS_SERVER)
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 			var zGrid = gridLevels[posZ]
 			// Reverse Y coordinate
 			var /list/yReversed = text2list(zGrid, "\n")
@@ -111,10 +111,10 @@ dmm_suite
 				for(var/posY = 1 to yLines.len)
 					var yLine = yLines[posY]
 					for(var/posX = 1 to length(yLine)/key_len)
-						CHECK_TICK(50,FPS_SERVER)
+						CHECK_TICK_SAFE(50,FPS_SERVER)
 						var/turf/T = locate(posX + gridCoordX - 1, posY+gridCoordY - 1, gridCoordZ)
 						for(var/k in T)
-							CHECK_TICK(50,FPS_SERVER)
+							CHECK_TICK_SAFE(50,FPS_SERVER)
 							var/datum/x = k
 							if(overwrite & DMM_OVERWRITE_OBJS && istype(x, /obj))
 								qdel(x)
@@ -127,7 +127,7 @@ dmm_suite
 			for(var/posY = 1 to yLines.len)
 				var yLine = yLines[posY]
 				for(var/posX = 1 to length(yLine)/key_len)
-					CHECK_TICK(50,FPS_SERVER)
+					CHECK_TICK_SAFE(50,FPS_SERVER)
 					var keyPos = ((posX-1)*key_len)+1
 					var modelKey = copytext(yLine, keyPos, keyPos+key_len)
 					parse_grid(

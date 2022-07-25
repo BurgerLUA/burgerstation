@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(map)
 
 			I.DrawBox(found_color,x,y)
 
-			CHECK_TICK(tick_usage_max,FPS_SERVER)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		z_icons += I
 
 	. = ..()

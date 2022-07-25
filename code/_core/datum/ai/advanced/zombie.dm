@@ -10,6 +10,8 @@
 
 	attack_movement_obstructions = TRUE
 
+	use_alert_overlays = FALSE
+
 /ai/blob_spore
 	target_distribution_x = list(16)
 	target_distribution_y = list(25)

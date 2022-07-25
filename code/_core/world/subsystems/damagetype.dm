@@ -3,7 +3,7 @@ var/global/list/all_damage_types = list()
 SUBSYSTEM_DEF(damagetype)
 	name = "Damage Type Subsystem"
 	desc = "Stores all the known damage types in a list."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	//tick_rate = DECISECONDS_TO_TICKS(1)
 

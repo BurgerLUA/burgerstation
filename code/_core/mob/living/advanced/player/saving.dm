@@ -128,46 +128,51 @@
 
 	//Organ checking
 	var/species/S = SPECIES(species)
-	if(S)
-		var/list/organ_list_to_use = list()
-		if(S.genderless || sex == MALE)
-			organ_list_to_use = S.spawning_organs_male
-		else
-			organ_list_to_use = S.spawning_organs_female
-		var/list/missing_organs = list()
-		for(var/organ_id in organ_list_to_use)
-			if(labeled_organs[organ_id])
-				continue
-			missing_organs += organ_list_to_use[organ_id]
-		if(length(missing_organs))
-			log_error("WARNING: [src.get_debug_name()] had [length(missing_organs)] missing organs when loading!")
-			to_chat(span("danger","WARNING: You had missing organs when loading, this is a result of save corruption. Please inform Burger on discord when you saved last and how you saved last with as much details as possible."))
-			var/list/blend_data = list()
-			if(labeled_organs[BODY_TORSO])
-				var/obj/item/organ/O = labeled_organs[BODY_TORSO]
-				blend_data = O.get_blend_data()
-			for(var/o_path in missing_organs)
-				var/obj/item/organ/O = add_organ(o_path)
-				if(length(blend_data))
-					if(O.enable_skin && blend_data["skin"])
-						O.add_blend("skin", desired_color = blend_data["skin"]["color"])
-					if(O.enable_skin && blend_data["skin_glow"])
-						O.add_blend("skin_glow", desired_color = blend_data["skin_glow"]["color"])
-					if(O.enable_skin && blend_data["skin_detail"])
-						O.add_blend("skin_detail", desired_color = blend_data["skin_detail"]["color"])
-				O.update_sprite()
-		if(!labeled_organs["implant_hand_left"])
-			add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
-		if(!labeled_organs["implant_head"])
-			add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+	if(!S)
+		log_error("ERROR: INVALID SPECIES: [species]!")
+	species = "human"
+	S = SPECIES(species)
 
+	var/list/organ_list_to_use = list()
+	if(S.genderless || sex == MALE)
+		organ_list_to_use = S.spawning_organs_male
 	else
-		log_error("WARNING: INVALID SPECIES: [species]")
+		organ_list_to_use = S.spawning_organs_female
+	var/list/missing_organs = list()
+	for(var/organ_id in organ_list_to_use)
+		if(labeled_organs[organ_id])
+			continue
+		missing_organs += organ_list_to_use[organ_id]
+	if(length(missing_organs))
+		log_error("WARNING: [src.get_debug_name()] had [length(missing_organs)] missing organs when loading!")
+		to_chat(span("danger","WARNING: You had missing organs when loading, this is a result of save corruption. Please inform Burger on discord when you saved last and how you saved last with as much details as possible."))
+		var/list/blend_data = list()
+		if(labeled_organs[BODY_TORSO])
+			var/obj/item/organ/O = labeled_organs[BODY_TORSO]
+			blend_data = O.get_blend_data()
+		for(var/o_path in missing_organs)
+			var/obj/item/organ/O = add_organ(o_path)
+			if(length(blend_data))
+				if(O.enable_skin && blend_data["skin"])
+					O.add_blend("skin", desired_color = blend_data["skin"]["color"])
+				if(O.enable_skin && blend_data["skin_glow"])
+					O.add_blend("skin_glow", desired_color = blend_data["skin_glow"]["color"])
+				if(O.enable_skin && blend_data["skin_detail"])
+					O.add_blend("skin_detail", desired_color = blend_data["skin_detail"]["color"])
+			O.update_sprite()
+	if(!labeled_organs["implant_hand_left"])
+		add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
+	if(!labeled_organs["implant_head"])
+		add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
 	if(do_teleport)
-		var/obj/marker/dev/D = locate() in world
-		if(D && ENABLE_INSTALOAD)
-			force_move(get_turf(D))
+		if(CONFIG("ENABLE_INSTALOAD",FALSE))
+			var/obj/marker/dev/D = locate() in world
+			if(D)
+				force_move(get_turf(D))
+			else
+				var/obj/marker/failsafe/FS = locate() in world
+				force_move(get_turf(FS))
 		else if(length(cryo_spawnpoints))
 			var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
 			force_move(get_turf(C))

@@ -293,7 +293,7 @@
 
 	alert_time = initial(alert_time)
 
-	if(debug)
+	if(use_alert_overlays)
 		if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
 			if(new_alert_level == ALERT_LEVEL_COMBAT)
 				owner.alert_overlay.icon_state = "exclaim"

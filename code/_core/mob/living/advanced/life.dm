@@ -109,7 +109,7 @@ mob/living/advanced/revive()
 
 	for(var/k in labeled_organs)
 		var/obj/item/organ/O = labeled_organs[k]
-		CHECK_TICK(75,FPS_SERVER*2)
+		CHECK_TICK_SAFE(75,FPS_SERVER*2)
 		if(O.has_life) O.on_life()
 
 	return TRUE

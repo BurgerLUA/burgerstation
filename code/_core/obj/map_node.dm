@@ -96,7 +96,7 @@ var/global/mob/abstract/node_checker
 	var/limit = 10
 	while(node_checker.loc != point_B && limit > 0)
 		limit--
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/desired_dir = get_dir(node_checker,point_B)
 		var/turf/T = get_step(node_checker,desired_dir)
 		if(T.density && !T.Enter(node_checker,node_checker.loc))

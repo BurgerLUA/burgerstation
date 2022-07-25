@@ -47,11 +47,6 @@
 
 	value = 3
 
-/obj/item/clothing/feet/socks/knee/white
-	polymorphs = list(
-		"sock" = COLOR_WHITE
-	)
-
 /obj/item/clothing/feet/socks/knee/striped
 	polymorphs = list(
 		"sock" = COLOR_WHITE,

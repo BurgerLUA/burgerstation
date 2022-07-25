@@ -128,7 +128,7 @@
 		CRASH("ERROR: FOUND [total_score] VALID ATTRIBUTES/SKILLS.")
 
 	// https://www.desmos.com/calculator/cka4qx8qr0
-	level = max(1,CEILING( (total_score/max_score)*(100+CHARGEN_DEFAULT_LEVEL),1) - CHARGEN_DEFAULT_LEVEL)
+	level = max(1,CEILING( (total_score/max_score)*(100),1))
 
 	if(!first && old_level != level)
 		var/decrease = old_level > level

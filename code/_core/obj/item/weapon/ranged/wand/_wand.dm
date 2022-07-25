@@ -12,6 +12,7 @@
 	automatic = TRUE
 
 	var/wand_damage_multiplier = 1
+	var/wand_mana_multiplier = 1
 
 	dan_mode = TRUE
 
@@ -20,7 +21,7 @@
 
 	bypass_balance_check = TRUE
 
-	var/sockets = 2
+	var/sockets = 0
 	var/sockets_max = 7 //Absolute max is 7.
 
 	var/list/stored_socket_overlays = list()
@@ -138,10 +139,10 @@
 
 /obj/item/weapon/ranged/wand/Initialize()
 	. = ..()
-	sockets_max = 7 * (wand_damage_multiplier/1.6)
+	sockets_max = 7 * (wand_damage_multiplier/2.5)
 	sockets_max = CEILING(sockets_max,1)
 	if(sockets_max <= 2)
-		sockets_max = 2 //In case there is fuckery afoot.
+		sockets_max = 2
 
 /obj/item/weapon/ranged/wand/Generate()
 	. = ..()
@@ -184,7 +185,7 @@
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
-	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier*wand_damage_multiplier,click_called)
+	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier,click_called)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -265,7 +266,8 @@
 	name = "branch wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/branch.dmi'
 
-	wand_damage_multiplier = 1.1
+	wand_damage_multiplier = 1
+	wand_mana_multiplier = 0.5
 
 	value = 100
 
@@ -273,7 +275,8 @@
 	name = "crafted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
-	wand_damage_multiplier = 1.2
+	wand_damage_multiplier = 1.25
+	wand_mana_multiplier = 0.75
 
 	value = 100
 
@@ -281,7 +284,8 @@
 	name = "crafted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
-	wand_damage_multiplier = 1.3
+	wand_damage_multiplier = 1.5
+	wand_mana_multiplier = 1
 
 	value = 100
 
@@ -289,7 +293,9 @@
 	name = "twisted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/twisted.dmi'
 
-	wand_damage_multiplier = 1.4
+	wand_damage_multiplier = 2
+	wand_mana_multiplier = 2
+
 
 	value = 100
 
@@ -297,7 +303,8 @@
 	name = "profane wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/profane.dmi'
 
-	wand_damage_multiplier = 1.5
+	wand_damage_multiplier = 2.25
+	wand_mana_multiplier = 2.25
 
 	value = 100
 
@@ -305,11 +312,7 @@
 	name = "sage wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/sage.dmi'
 
-	wand_damage_multiplier = 1.6
+	wand_damage_multiplier = 2.5
+	wand_mana_multiplier = 2.5
 
 	value = 100
-
-/obj/item/weapon/ranged/wand/sage/socket_test
-	value_burgerbux = 9999
-	sockets = 0
-

@@ -18,6 +18,6 @@
 /obj/item/storage/underwear/fill_inventory()
 	new /obj/item/clothing/underbottom/underwear/boxers/random(src)
 	new /obj/item/clothing/undertop/underwear/shirt/random(src)
-	new /obj/item/clothing/feet/socks/knee/white(src)
-	new /obj/item/clothing/feet/socks/knee/white(src)
+	new /obj/item/clothing/feet/socks/knee(src)
+	new /obj/item/clothing/feet/socks/knee(src)
 	. = ..()

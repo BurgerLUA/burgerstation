@@ -71,22 +71,16 @@ var/global/antag_count = 0
 
 		var/character_id = mobdata.get_next_character_id()
 
-		if(text2num(character_id) > MAX_CHARACTERS)
-			src.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
+		var/maximum_characters = CONFIG("MAXIMUM_PLAYER_SAVES",10)
+		if(text2num(character_id) > maximum_characters)
+			src.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[maximum_characters])"))
 			return FALSE
 
 		if(mobdata.create_new_character(character_id))
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
 			var/mob/living/advanced/player/P = new(T,client)
-			var/obj/marker/dev/D = locate() in world
-			if(D && ENABLE_INSTALOAD)
-				P.force_move(get_turf(D))
-				P.start_chargen()
-				P.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
-				P.adjust_currency(10000)
-			else
-				P.force_move(T)
-				P.start_chargen()
+			P.force_move(T)
+			P.start_chargen()
 			P.save_id = character_id
 			P.tutorial = TRUE
 			P.update_premiums()

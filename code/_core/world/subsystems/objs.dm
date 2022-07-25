@@ -14,6 +14,9 @@ SUBSYSTEM_DEF(obj)
 /subsystem/obj/Initialize()
 
 	for(var/obj/O in world)
+		if(!O.loc)
+			initialize_none += O
+			continue
 		if(O.initialize_type == INITIALIZE_EARLY)
 			initialize_early += O
 		else if(O.initialize_type == INITIALIZE_LATE)

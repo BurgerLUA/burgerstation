@@ -24,6 +24,7 @@
 	value = 1800
 	value_burgerbux = 1
 
+/*
 /obj/item/weapon/ranged/spellgem/rift/revive
 	name = "revival rift spell gem"
 	desc = "The source of all magic."
@@ -49,3 +50,4 @@
 
 	value = 3600
 	value_burgerbux = 1
+*/

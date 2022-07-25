@@ -12,6 +12,9 @@
 
 	dyeable = TRUE
 
+/obj/item/clothing/head/hat/wizard/brown
+	color = COLOR_BROWN
+
 /obj/item/clothing/head/hat/wizard/gold
 	color = COLOR_GOLD
 
@@ -21,8 +24,17 @@
 /obj/item/clothing/head/hat/wizard/red
 	color = "#FF0000"
 
-/obj/item/clothing/head/hat/wizard/purple
+/obj/item/clothing/head/hat/wizard/real
 	name = "authentic wizard hat"
 	desc = "The real deal."
 
 	armor = /armor/cloth/arcane/bonus
+
+/obj/item/clothing/head/hat/wizard/real/blue
+	color = "#0751C0"
+
+/obj/item/clothing/head/hat/wizard/real/purple
+	color = "#B05FE2"
+
+/obj/item/clothing/head/hat/wizard/real/red
+	color = "#F62A12"

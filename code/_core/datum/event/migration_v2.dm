@@ -80,7 +80,7 @@
 	)
 
 	for(var/i=1,i<=20,i++)
-		CHECK_TICK(50,FPS_SERVER*10)
+		CHECK_TICK_SAFE(50,FPS_SERVER*10)
 		if(!length(valid_turfs))
 			break
 		var/turf/T = pick(valid_turfs)

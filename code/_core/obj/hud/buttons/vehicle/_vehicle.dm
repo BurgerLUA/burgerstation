@@ -5,7 +5,7 @@
 	icon_state = ""
 	screen_loc = "CENTER,CENTER"
 
-	flags = FLAG_HUD_VEHICLE
+	flags_hud = FLAG_HUD_VEHICLE
 
 	has_quick_function = FALSE
 

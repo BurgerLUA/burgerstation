@@ -277,7 +277,7 @@ var/global/list/debug_verbs = list(
 	var/list/spawned_mobs = list()
 
 	for(var/i=1,i<=50,i++)
-		CHECK_TICK(50,FPS_SERVER)
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 		var/mob/living/advanced/npc/nanotrasen/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)

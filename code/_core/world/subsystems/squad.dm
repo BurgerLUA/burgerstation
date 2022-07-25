@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(squad)
 	for(var/squad/S in all_squads)
 		for(var/k in S.members)
 			var/mob/living/advanced/player/M = k
-			CHECK_TICK(tick_usage_max,FPS_SERVER)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 			M.update_squad_buttons()
 
 	return TRUE

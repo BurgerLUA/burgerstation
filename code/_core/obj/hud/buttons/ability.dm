@@ -14,7 +14,7 @@ var/global/list/ability_colors = list(
 	screen_loc = "LEFT,TOP"
 	alpha = 200
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 	plane = PLANE_HUD
 	layer = 1

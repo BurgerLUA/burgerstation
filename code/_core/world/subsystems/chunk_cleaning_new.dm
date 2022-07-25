@@ -129,7 +129,7 @@ SUBSYSTEM_DEF(chunk)
 		if(length(C.players) || !length(C.cleanables))
 			continue
 		for(var/j in C.cleanables)
-			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
 			var/atom/movable/M = j
 			if(M.z)
 				var/chunk_x = CEILING(M.x/CHUNK_SIZE,1)

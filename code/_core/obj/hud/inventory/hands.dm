@@ -11,7 +11,7 @@
 	max_slots = 2
 	worn = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 74
 
@@ -27,7 +27,7 @@
 	max_slots = 2
 	worn = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 75
 
@@ -47,7 +47,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	allow_quick_equip = FALSE
 
@@ -91,7 +91,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	allow_quick_equip = FALSE
 

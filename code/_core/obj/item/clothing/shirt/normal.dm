@@ -71,7 +71,7 @@
 		"shoulders" = COLOR_CHEMISTRY
 	)
 
-/obj/item/clothing/shirt/normal/tee/
+/obj/item/clothing/shirt/normal/tee
 	polymorphs = list(
 		"shirt_tee" = COLOR_WHITE
 	)

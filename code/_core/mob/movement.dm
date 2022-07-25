@@ -143,7 +143,7 @@
 		if(new_area)
 			if(new_area.ambient_sound && (!old_area || old_area.ambient_sound != new_area.ambient_sound))
 				play_ambient_sound(new_area.ambient_sound,list(src),environment = new_area.sound_environment,loop = TRUE)
-			if(ENABLE_TRACKS && length(new_area.tracks) && (!client.next_music_track || client.next_music_track <= world.time))
+			if(CONFIG("ENABLE_AREA_TRACKS",FALSE) && length(new_area.tracks) && (!client.next_music_track || client.next_music_track <= world.time))
 				play_music_track(pick(new_area.tracks),client)
 
 /mob/set_dir(var/desired_dir,var/force=FALSE)

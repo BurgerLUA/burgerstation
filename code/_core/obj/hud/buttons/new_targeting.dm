@@ -6,7 +6,7 @@
 	icon_state = "base"
 	screen_loc = "RIGHT,BOTTOM:11"
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 	var/mode = 1
 

@@ -6,7 +6,7 @@
 	icon_state = "squad"
 	screen_loc = "LEFT,TOP-2"
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 	alpha = 100
 

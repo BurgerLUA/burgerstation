@@ -39,7 +39,10 @@
 
 	return text
 
-/proc/police_input(var/client/caller,var/input, var/max_length = MAX_MESSAGE_LEN, var/capitalize = FALSE, var/periodize = FALSE)
+/proc/police_input(var/client/caller,var/input, var/max_length, var/capitalize = FALSE, var/periodize = FALSE)
+
+	if(!max_length)
+		max_length = CONFIG("MAX_MESSAGE_LENGTH",512)
 
 	if(capitalize)
 		input = capitalize(input)
@@ -70,9 +73,11 @@
 
     return returning_list.Join("")
 
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
+/proc/sanitize(var/input, var/max_length, var/encode = 1, var/trim = 1, var/extra = 1)
 	if(!input)
 		return
+
+	if(!max_length) max_length = CONFIG("MAX_MESSAGE_LENGTH",512)
 
 	if(max_length)
 		input = copytext(input,1,max_length)
@@ -197,6 +202,7 @@ var/global/regex/illegal_name_characters = regex("\[^(A-Z,a-z,\\s,&,',0-9,\\-)\]
 	return text2num(copytext(ref,2,-1),16)
 
 // Used to get a sanitized input.
-/proc/stripped_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
+/proc/stripped_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length)
+	if(!max_length) max_length = CONFIG("MAX_MESSAGE_LENGTH",512)
 	var/name = input(user, message, title, default) as text|null
 	return html_encode(trim(name, max_length))

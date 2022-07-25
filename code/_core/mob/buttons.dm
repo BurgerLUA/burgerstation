@@ -33,7 +33,7 @@
 /mob/proc/show_health(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
 	for(var/k in health_elements)
 		var/obj/hud/button/H = health_elements[k]
-		if(H.flags & show_flags_whitelist && !(H.flags & show_flags_blacklist))
+		if(H.flags_hud & show_flags_whitelist && !(H.flags_hud & show_flags_blacklist))
 			H.show(show,speed)
 
 //Buttons
@@ -44,7 +44,7 @@
 /mob/proc/show_buttons(var/show=TRUE,var/show_flags_whitelist,var/show_flags_blacklist,var/speed=SECONDS_TO_DECISECONDS(1))
 	for(var/k in buttons)
 		var/obj/hud/button/B = k
-		if(B.flags & show_flags_whitelist && !(B.flags & show_flags_blacklist))
+		if(B.flags_hud & show_flags_whitelist && !(B.flags_hud & show_flags_blacklist))
 			B.show(show,speed)
 
 //HUD

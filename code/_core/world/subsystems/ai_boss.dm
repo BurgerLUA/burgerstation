@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(bossai)
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])
 			var/ai/AI = k
-			CHECK_TICK(tick_usage_max,FPS_SERVER)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 			if(AI.qdeleting)
 				log_error("WARNING: AI of type [AI.type] was dqeleting!")
 				active_ai_by_z[z] -= k

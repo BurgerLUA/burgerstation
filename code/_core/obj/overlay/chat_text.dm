@@ -16,7 +16,7 @@
 
 	return ..()
 
-#define CHAT_TEXT_CHARACTER_LIMIT 288
+#define CHAT_TEXT_CHARACTER_LIMIT 288 //maximum displayed for above character text
 
 /obj/effect/chat_text/New(var/atom/desired_loc,var/desired_text,var/bypass_length=FALSE)
 
@@ -37,7 +37,7 @@
 	maptext_x = -(maptext_width-TILE_SIZE)*0.5
 	maptext_y = TILE_SIZE
 
-	if(!bypass_length && length(desired_text) > CHAT_TEXT_CHARACTER_LIMIT) //52 is a magic number because reasons.
+	if(!bypass_length && length(desired_text) > CHAT_TEXT_CHARACTER_LIMIT)
 		desired_text = copytext(desired_text,1,CHAT_TEXT_CHARACTER_LIMIT) + "..."
 
 	maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>[html_decode(desired_text)]</font></center>"

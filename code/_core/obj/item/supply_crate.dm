@@ -70,7 +70,7 @@
 
 /obj/item/supply_crate/solarian
 	loot = /loot/supply_crate/solarian
-	icon_state = "supply_freedom"
+	icon_state = "supply_solarian"
 
 /obj/item/supply_crate/nanotrasen
 	loot = /loot/supply_crate/nanotrasen

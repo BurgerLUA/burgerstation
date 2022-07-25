@@ -40,7 +40,7 @@
 
 	if(length(valid_areas))
 		while(TRUE && chances > 0)
-			CHECK_TICK(50,FPS_SERVER*10)
+			CHECK_TICK_SAFE(50,FPS_SERVER*10)
 			A = pick(valid_areas)
 			var/mob/living/advanced/player/P = locate() in A.contents
 			if(!P) break

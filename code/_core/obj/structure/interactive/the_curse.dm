@@ -59,7 +59,7 @@
 
 	if(debug) log_subsystem("Peanut","We're going through our think loop...")
 	for(var/mob/living/L in viewers(VIEW_RANGE + ZOOM_RANGE,src))
-		CHECK_TICK(50,FPS_SERVER)
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 		if(L.dead)
 			continue
 		if(!L.ai && !L.client)
@@ -76,14 +76,14 @@
 		if(length(current_targets)) //Murder time!
 			if(debug) log_subsystem("Peanut","We have targets in view. Going to try and murder.")
 			for(var/k in current_targets)
-				CHECK_TICK(75,FPS_SERVER)
+				CHECK_TICK_SAFE(75,FPS_SERVER)
 				var/mob/living/L = k
 				if(get_dist(src,L) > 1) //Failsafe
 					continue
 				var/turf/T = get_turf(L)
 				var/someone_is_watching_L = FALSE
 				for(var/mob/living/L2 in viewers(T,VIEW_RANGE + ZOOM_RANGE))
-					CHECK_TICK(75,FPS_SERVER)
+					CHECK_TICK_SAFE(75,FPS_SERVER)
 					if(is_seen_by(L,L2))
 						someone_is_watching_L = TRUE
 						break
@@ -100,7 +100,7 @@
 			var/list/best_path
 			var/best_path_was_interupted = FALSE
 			for(var/k in tracked_targets)
-				CHECK_TICK(75,FPS_SERVER)
+				CHECK_TICK_SAFE(75,FPS_SERVER)
 				var/mob/living/L = k
 				if(L.qdeleting || L.dead)
 					tracked_targets -= k
@@ -127,11 +127,11 @@
 					was_interupted = TRUE
 					path_length = 10
 				for(var/i=1,i<=path_length,i++)
-					CHECK_TICK(75,FPS_SERVER)
+					CHECK_TICK_SAFE(75,FPS_SERVER)
 					var/turf/PT = path[i]
 					var/is_turf_being_watched = FALSE
 					for(var/mob/living/L2 in viewers(VIEW_RANGE*ZOOM_RANGE,PT))
-						CHECK_TICK(75,FPS_SERVER)
+						CHECK_TICK_SAFE(75,FPS_SERVER)
 						if(is_seen_by(PT,L2))
 							is_turf_being_watched = TRUE
 							break

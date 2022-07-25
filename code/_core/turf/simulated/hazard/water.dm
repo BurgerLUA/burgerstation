@@ -34,7 +34,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/Initialize()
 	. = ..()
-	if(ENABLE_GENERATION && depth <= 0)
+	if(!CONFIG("ENABLE_INSTALOAD",FALSE) && depth <= 0)
 		for(var/k in DIRECTIONS_ALL)
 			var/turf/simulated/floor/T = get_step(src,k)
 			if(!istype(T))
@@ -43,7 +43,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/Finalize()
 
-	if(ENABLE_GENERATION)
+	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
 		if(depth <= 0)
 			depth = MAX_DEPTH
 			for(var/k in water_shores)

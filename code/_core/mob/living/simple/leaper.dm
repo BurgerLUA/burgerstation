@@ -86,7 +86,7 @@
 
 	var/turf_limit = (VIEW_RANGE*VIEW_RANGE)*0.25
 	for(var/turf/simulated/floor/T in view(VIEW_RANGE,src))
-		CHECK_TICK(50,FPS_SERVER)
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 		turf_limit--
 		if(turf_limit <= 0)
 			break

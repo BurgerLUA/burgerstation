@@ -14,7 +14,7 @@
 
 	var/essential = FALSE
 
-	var/flags = FLAG_HUD_NONE
+	flags_hud = FLAG_HUD_NONE
 
 	mouse_opacity = 1
 

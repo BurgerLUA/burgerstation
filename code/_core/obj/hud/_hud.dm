@@ -5,6 +5,8 @@
 
 	var/user_colors = TRUE
 
+	var/flags_hud = 0x0
+
 	var/mob/owner
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE

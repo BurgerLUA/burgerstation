@@ -28,13 +28,18 @@
 
 #define BOMB "bomb"
 #define BIO "bioweapon"
-
-#define ION "ion"
+//Rad is defined above.
 
 #define HOLY "holy"
 #define DARK "dark"
 
-#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,SHOCK,ACID,BOMB,BIO,RAD,HOLY,DARK,FATIGUE,PAIN,ION,SANITY)
+//Fatigue is defined above.
+//Pain is defined above.
+#define ION "ion"
+//Sanity is defined above.
+//Mental is defined above.
+
+#define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,SHOCK,ACID,BOMB,BIO,RAD,HOLY,DARK,FATIGUE,PAIN,ION,SANITY,MENTAL)
 
 
 //Melee Balance

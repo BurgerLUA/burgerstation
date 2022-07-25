@@ -37,7 +37,7 @@ var/global/list/obj/hud/button/chargen_buttons = list(
 	icon_state = "square"
 	screen_loc = "CENTER,CENTER"
 
-	flags = FLAG_HUD_CHARGEN
+	flags_hud = FLAG_HUD_CHARGEN
 
 	user_colors = FALSE
 

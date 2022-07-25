@@ -4,7 +4,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_WIDGET
+	flags_hud = FLAG_HUD_WIDGET
 
 	mouse_opacity = 1
 

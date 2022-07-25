@@ -13,7 +13,7 @@
 
 	screen_loc = "RIGHT:-2,CENTER-1"
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 
 /obj/hud/button/hunger/update_owner()

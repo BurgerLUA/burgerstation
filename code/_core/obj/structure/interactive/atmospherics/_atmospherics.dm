@@ -8,7 +8,7 @@ obj/structure/interactive/atmospherics/vent
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "vent_1"
 
-	desired_light_range = 1
+	desired_light_range = 2
 	desired_light_power = 1
 	desired_light_color = "#64BEB5"
 
@@ -21,7 +21,7 @@ obj/structure/interactive/atmospherics/scrubber
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "scrubber_1"
 
-	desired_light_range = 1
+	desired_light_range = 2
 	desired_light_power = 1
 	desired_light_color = "#BE6864"
 
@@ -34,7 +34,7 @@ obj/structure/interactive/atmospherics/air_alarm
 	icon = 'icons/obj/structure/atmos.dmi'
 	icon_state = "air_alarm"
 
-	desired_light_range = 1
+	desired_light_range = 2
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 

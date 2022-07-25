@@ -84,6 +84,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/list/obstacles = list()
 
 	var/use_alerts = TRUE
+	var/use_alert_overlays = FALSE //Funny MGS alert overlays.
 	var/true_sight = FALSE //Set to true if it can see sneaking enemies.
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system

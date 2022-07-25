@@ -3,7 +3,7 @@
 
 	var/stored_keypad = 0
 
-	flags = FLAG_HUD_SPECIAL
+	flags_hud = FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 

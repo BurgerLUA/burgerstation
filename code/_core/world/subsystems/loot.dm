@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(loot)
 	name = "Loot Subsystem"
 	desc = "Yes."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_POSTLOAD
 	var/list/all_loot = list()
 
 /subsystem/loot/Initialize()

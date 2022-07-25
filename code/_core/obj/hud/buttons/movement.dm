@@ -7,7 +7,7 @@
 
 	var/sneaking = 0
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 /obj/hud/button/sneak/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -32,7 +32,7 @@
 
 	var/move_mod_button = 0
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 /obj/hud/button/move/update_icon()
 	icon_state = "move_[move_mod_button+2]"
@@ -69,7 +69,7 @@
 	icon_state = "rest"
 	screen_loc = "RIGHT-2:8,BOTTOM:10+1"
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 /obj/hud/button/rest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -87,7 +87,7 @@
 	icon_state = "stand"
 	screen_loc = "RIGHT-2:8,BOTTOM:12+1"
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 /obj/hud/button/stand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

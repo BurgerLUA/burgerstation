@@ -26,6 +26,7 @@
 	icon_state = "streetlamp_snow"
 
 /obj/structure/interactive/lighting/streetlamp/jungle
+	name = "floor torch"
 	icon_state = "torch"
 
 /obj/structure/interactive/lighting/streetlamp/jungle/dark

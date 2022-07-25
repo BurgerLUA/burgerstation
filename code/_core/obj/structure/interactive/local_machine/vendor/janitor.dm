@@ -2,7 +2,7 @@
 	name = "janitor equipment vendor"
 	icon_state = "janidrobe"
 	stored_types = list(
-		/obj/item/clothing/feet/socks/knee/white,
+		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/janitor,

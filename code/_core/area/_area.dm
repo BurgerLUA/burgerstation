@@ -130,7 +130,7 @@
 	if(length(src.random_sounds))
 		SSarea.areas_ambient += src
 
-	if(ENABLE_WEATHERGEN && src.weather)
+	if(src.weather && CONFIG("ENABLE_WEATHER",FALSE))
 		src.invisibility = 0
 		src.alpha = 0
 		switch(src.weather)
@@ -198,7 +198,7 @@
 
 /area/proc/smash_all_lights()
 	for(var/obj/structure/interactive/lighting/T in src.contents)
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		if(!T.desired_light_color)
 			continue
 		T.on_destruction(null,TRUE)

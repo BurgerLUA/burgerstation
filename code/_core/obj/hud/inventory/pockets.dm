@@ -17,7 +17,7 @@
 
 	item_bypass = list()
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	light_mod = 0.5
 

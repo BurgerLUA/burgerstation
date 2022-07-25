@@ -35,10 +35,12 @@
 	var/value_min = 1
 	var/value_max = 8000
 
+	var/base_type = /obj/item/weapon/ranged/
+
 /loot/gun/New(var/desired_loc)
 	. = ..()
 	if(company_type && !length(loot_table))
-		for(var/k in subtypesof(/obj/item/weapon/ranged/))
+		for(var/k in subtypesof(base_type))
 			var/obj/item/weapon/ranged/R = k
 			if(initial(R.company_type) != src.company_type)
 				continue
@@ -49,6 +51,12 @@
 				continue
 			if(value > value_max)
 				continue
+			if(ispath(R,/obj/item/weapon/ranged/bullet))
+				if(!SSbalance.weapon_to_bullet[R])
+					continue
+				if(ispath(R,/obj/item/weapon/ranged/bullet/magazine))
+					if(!SSbalance.weapon_to_magazine[R])
+						continue
 			loot_table[R] = 1 + (value_max-(value-value_min)) //R is already a type.
 
 /loot/gun/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity=0)
@@ -102,6 +110,7 @@
 
 /loot/gun/solarian
 	company_type = "Solarian"
+	base_type = /obj/item/weapon/ranged/bullet
 
 /loot/gun/slavic
 	company_type = "Slavic"

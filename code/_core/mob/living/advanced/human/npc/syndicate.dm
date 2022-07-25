@@ -65,8 +65,12 @@
 /mob/living/advanced/npc/syndicate/scientist
 	name = "syndicate scientist"
 
-	possible_outfits = list(/loadout/syndicate/scientist)
-	loadout_to_level = list(/loadout/syndicate/scientist=1)
+	possible_outfits = list(
+		/loadout/syndicate/scientist = 1
+	)
+	loadout_to_level = list(
+		/loadout/syndicate/scientist = 1
+	)
 
 	level = 16
 

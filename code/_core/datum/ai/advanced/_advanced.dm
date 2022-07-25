@@ -31,6 +31,8 @@
 
 	var/avoid_threats = TRUE
 
+	use_alert_overlays = FALSE
+
 	attack_movement_obstructions = FALSE
 
 /ai/advanced/Destroy()

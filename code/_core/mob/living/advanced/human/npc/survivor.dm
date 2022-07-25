@@ -25,7 +25,7 @@
 
 	update_all_blends()
 
-	if(prob(25))
+	if(prob(10))
 		if(gender == FEMALE)
 			equip_loadout(/loadout/survivor/female/melee)
 		else

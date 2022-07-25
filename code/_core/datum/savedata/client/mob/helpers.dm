@@ -77,8 +77,9 @@ var/global/allow_loading = TRUE
 		owner?.mob?.to_chat(span("warning","The round is currently ending! Wait until next round!"))
 		return FALSE
 
-	if(text2num(character_id) > MAX_CHARACTERS)
-		owner?.mob?.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[MAX_CHARACTERS])"))
+	var/max_characters = CONFIG("MAXIMUM_PLAYER_SAVES",10)
+	if(text2num(character_id) > max_characters)
+		owner?.mob?.to_chat(span("warning","You exceed the maximum allocated characters! ([text2num(character_id)-1]/[max_characters])"))
 		return FALSE
 
 	reset_data()

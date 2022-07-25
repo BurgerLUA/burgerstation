@@ -19,7 +19,7 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	icon_state = "invisible"
 	screen_loc = "CENTER,TOP"
 
-	flags = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
+	flags_hud = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
 
 	maptext_x = -(TILE_SIZE*VIEW_RANGE) + 16
 	maptext_width = TILE_SIZE*VIEW_RANGE*2

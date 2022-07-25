@@ -25,8 +25,6 @@
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
 
-
-
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
 
 	attachment_stats = list()
@@ -42,15 +40,28 @@
 		var/obj/item/supportgem/G = g
 		for(var/support_type in G.support_stats)
 			var/support_value = G.support_stats[support_type]
-			attachment_stats[support_type] += support_value
-			if(isnum(support_value)) modifier_count[support_type] += 1
+			if(isnum(support_value))
+				attachment_stats[support_type] += support_value
+				modifier_count[support_type] += 1
+			else
+				attachment_stats[support_type] = support_value
 
 	for(var/support_type in modifier_count)
 		var/support_value = modifier_count[support_type]
-		if(support_value == 0)
+		if(!support_value)
 			log_error("Warning: Support value of [support_type] was [isnum(support_value) ? 0 : "NULL"] for [src.get_debug_name()].")
 			continue
 		attachment_stats[support_type] *= (1/support_value)
+
+	if(attachment_stats["mana_cost_multiplier"])
+		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
+	else
+		attachment_stats["mana_cost_multiplier"] = W.wand_mana_multiplier
+
+	if(attachment_stats["damage_multiplier"])
+		attachment_stats["damage_multiplier"] *= W.wand_damage_multiplier
+	else
+		attachment_stats["damage_multiplier"] = W.wand_damage_multiplier
 
 	return TRUE
 

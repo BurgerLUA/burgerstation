@@ -25,7 +25,7 @@
 
 /status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 
-	if(ENABLE_DAMAGE_NUMBERS && !stealthy)
+	if(!stealthy)
 		var/turf/T = get_turf(owner)
 		if(T) new/obj/effect/temp/status_effect(T,clamp(duration,10,100),"[uppertext(name)]!")
 

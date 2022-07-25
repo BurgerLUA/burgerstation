@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(explosion)
 				continue
 			var/list/explosion_data = damage_to_process[k]
 			for(var/j in explosion_data)
-				CHECK_TICK(tick_usage_max,FPS_SERVER)
+				CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 				var/atom/owner = j
 				var/list/explosion_subdata = explosion_data[j]
 				victim.act_explode(owner,explosion_subdata["source"],explosion_subdata["epicenter"],explosion_subdata["magnitude"],explosion_subdata["loyalty_tag"])
@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(explosion)
 		explosion_ticks = 0
 
 	for(var/k in active_explosions)
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/obj/explosion_process/EP = k
 		EP.process()
 
