@@ -1,7 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/carpet/blue,
+/obj/structure/interactive/storage/ammo_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_07/guest_bedroom)
 "ab" = (
 /turf/dmm_suite/clear_turf,
-/area)
+/area/dmm_suite/clear_area)
 "ac" = (
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/house_07/master_bedroom)
@@ -88,6 +93,10 @@
 /obj/structure/carpet/red,
 /obj/structure/interactive/lighting/fixture/bulb{
 	icon_state = "preview";
+	dir = 8
+	},
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
 	dir = 8
 	},
 /turf/simulated/floor/wood/brown,
@@ -232,7 +241,7 @@
 "aW" = (
 /obj/structure/carpet/brown,
 /obj/structure/table/wood,
-/obj/marker/spawning/random/misc,
+/obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_07/entrance)
 "aX" = (
@@ -332,28 +341,30 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_07/bathroom_02)
 "bp" = (
-/obj/structure/carpet/blue,
+/obj/structure/interactive/wire/red,
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 8
+	},
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_07/guest_bedroom)
+/area/mission/prefab/house_07)
 "bq" = (
 /obj/structure/carpet/blue,
 /obj/structure/interactive/storage/safe,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_07/guest_bedroom)
 "br" = (
+/obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_07/guest_bedroom)
+/area/mission/prefab/house_07/master_bedroom)
 "bs" = (
 /obj/structure/interactive/door/airlock/wood,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_07/guest_bedroom)
 "bt" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house_07/bathroom_02)
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_07/entrance)
 "bu" = (
 /obj/structure/carpet/blue,
 /obj/structure/interactive/misc/dresser,
@@ -370,6 +381,10 @@
 "bw" = (
 /obj/structure/interactive/chair/wood{
 	icon_state = "wooden_chair";
+	dir = 8
+	},
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
 	dir = 8
 	},
 /turf/simulated/floor/wood/brown,
@@ -419,8 +434,9 @@
 /turf/simulated/floor/plating,
 /area)
 "bF" = (
+/obj/marker/spawning/random/maintenance,
 /turf/simulated/floor/plating,
-/area)
+/area/dmm_suite/clear_area)
 "bG" = (
 /obj/structure/carpet/brown,
 /obj/structure/interactive/lighting/fixture/bulb{
@@ -452,6 +468,48 @@
 	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_07/entrance)
+"bL" = (
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/tile,
+/area/mission/prefab/house_07/bathroom_02)
+"bM" = (
+/obj/structure/carpet/brown,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_07/entrance)
+"bN" = (
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bO" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_07)
+"bP" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_07/guest_bedroom)
+"bQ" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 8
+	},
+/obj/marker/map_node,
+/turf/simulated/floor/tile,
+/area/mission/prefab/house_07/bathroom_02)
+"bR" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile,
+/area/mission/prefab/house_07/bathroom_01)
+"bS" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bT" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 ab
@@ -503,7 +561,7 @@ aP
 aP
 bd
 bk
-bp
+aa
 bu
 bd
 "}
@@ -536,10 +594,10 @@ aI
 aI
 aI
 aI
-aI
+bp
 be
 bm
-br
+bP
 bw
 bd
 "}
@@ -548,10 +606,10 @@ ac
 ah
 al
 as
-ax
+br
 aF
 aL
-aL
+bO
 aL
 aL
 aL
@@ -575,7 +633,7 @@ aZ
 aL
 aL
 aL
-aL
+bO
 by
 bD
 "}
@@ -590,7 +648,7 @@ aA
 bI
 bJ
 bK
-aA
+bt
 aL
 bH
 aL
@@ -600,10 +658,10 @@ bD
 (9,1,1) = {"
 ae
 aj
-an
+bR
 an
 az
-aA
+bt
 aM
 aS
 aW
@@ -635,7 +693,7 @@ bh
 "}
 (11,1,1) = {"
 ab
-bE
+bF
 ap
 au
 aA
@@ -643,17 +701,17 @@ aA
 aM
 aM
 aM
-aM
+bM
 aA
 bj
-bo
-bt
+bL
+bQ
 bB
 bh
 "}
 (12,1,1) = {"
 ab
-bE
+bF
 ap
 av
 aB
@@ -671,14 +729,14 @@ bh
 "}
 (13,1,1) = {"
 ab
-bF
+bN
 ap
 au
 aC
 aA
 aM
 aM
-aM
+bM
 bG
 aC
 au
@@ -708,17 +766,17 @@ ab
 (15,1,1) = {"
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+bS
+bS
+bS
+bS
+bS
+bS
+bT
+bS
+bS
+bS
+bS
 ab
 ab
 ab
@@ -726,17 +784,17 @@ ab
 (16,1,1) = {"
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
 ab
 ab
 ab

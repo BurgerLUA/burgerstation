@@ -2,7 +2,7 @@
 	name = "LIGHT ERROR"
 	icon_state = "preview"
 
-	plane = PLANE_WALL_ATTACHMENT
+	plane = PLANE_LIGHT_FIXTURE
 	layer = LAYER_LARGE_OBJ
 
 	color = COLOR_LIGHT

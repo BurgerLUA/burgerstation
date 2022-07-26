@@ -123,7 +123,7 @@
 "az" = (
 /obj/structure/carpet/brown,
 /obj/structure/table/wood,
-/obj/marker/spawning/random/food,
+/obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_02)
 "aA" = (
@@ -412,6 +412,10 @@
 /obj/structure/interactive/door/airlock,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_02)
+"bB" = (
+/obj/structure/interactive/storage/ammo_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_02/hallway)
 
 (1,1,1) = {"
 aa
@@ -656,7 +660,7 @@ aC
 aC
 aI
 al
-aY
+bB
 aY
 aY
 aY

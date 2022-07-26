@@ -79,8 +79,14 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_06/bathroom_01)
 "aq" = (
-/turf/simulated/floor/tile,
-/area/mission/prefab/house_06/bathroom_01)
+/obj/structure/carpet/blue,
+/obj/marker/map_node,
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/guest_bedroom)
 "ar" = (
 /obj/structure/interactive/door/airlock,
 /turf/simulated/floor/tile,
@@ -206,8 +212,13 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_06/bathroom_02)
 "aN" = (
+/obj/marker/map_node,
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 4
+	},
 /turf/simulated/floor/tile,
-/area/mission/prefab/house_06/bathroom_02)
+/area/mission/prefab/house_06/bathroom_01)
 "aO" = (
 /obj/structure/interactive/door/airlock,
 /turf/simulated/floor/tile,
@@ -396,6 +407,58 @@
 /obj/marker/spawning/random/kitchen,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06)
+"bz" = (
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06)
+"bA" = (
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/kitchen)
+"bB" = (
+/obj/structure/carpet/red,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/master_bedroom)
+"bC" = (
+/obj/structure/carpet/red,
+/obj/structure/table/wood,
+/obj/structure/interactive/storage/ammo_pile,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/master_bedroom)
+"bD" = (
+/obj/structure/table/wood,
+/obj/structure/interactive/storage/ammo_pile,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/kitchen)
+"bE" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06)
+"bF" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bG" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile,
+/area/mission/prefab/house_06/bathroom_02)
+"bH" = (
+/obj/structure/carpet/brown,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06)
+"bI" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/kitchen)
 
 (1,1,1) = {"
 aa
@@ -460,7 +523,7 @@ ag
 av
 ab
 aH
-aN
+bG
 aY
 aF
 bh
@@ -492,12 +555,12 @@ ba
 ba
 ab
 ai
-ag
+aq
 ag
 aC
+bE
 aJ
-aJ
-aJ
+bz
 bc
 bc
 bk
@@ -514,14 +577,14 @@ ab
 ax
 ab
 bu
+bH
 aP
 aP
 aP
 aP
-aP
-aJ
+bE
 bs
-ba
+bF
 "}
 (8,1,1) = {"
 aa
@@ -546,7 +609,7 @@ aa
 aa
 ad
 ak
-aq
+aN
 az
 ad
 aK
@@ -585,13 +648,13 @@ al
 as
 am
 aD
-aD
+bC
 aR
 ae
 bd
-aZ
+bI
 bl
-bo
+bD
 bt
 ba
 "}
@@ -600,7 +663,7 @@ aa
 aa
 ae
 am
-as
+bB
 as
 aE
 as
@@ -626,7 +689,7 @@ aW
 ae
 bd
 bv
-aZ
+bA
 bp
 bf
 ba
