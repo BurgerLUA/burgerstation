@@ -1821,7 +1821,6 @@
 #include "code\_core\obj\markers\antag.dm"
 #include "code\_core\obj\markers\ban.dm"
 #include "code\_core\obj\markers\boss.dm"
-#include "code\_core\obj\markers\chargen.dm"
 #include "code\_core\obj\markers\dev_info.dm"
 #include "code\_core\obj\markers\drop_pod_locations.dm"
 #include "code\_core\obj\markers\explosion_point.dm"

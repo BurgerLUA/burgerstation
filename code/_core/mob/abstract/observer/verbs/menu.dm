@@ -78,17 +78,18 @@ var/global/antag_count = 0
 
 		if(mobdata.create_new_character(character_id))
 			var/turf/T = get_turf(pick(chargen_spawnpoints))
-			var/mob/living/advanced/player/P = new(T,client)
-			P.force_move(T)
-			P.start_chargen()
-			P.save_id = character_id
-			P.tutorial = TRUE
-			P.update_premiums()
-			return TRUE
-		else
-			to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this."))
-			log_error("WARNING: [ckey] was unable to create a new character!")
-			return FALSE
+			if(T)
+				var/mob/living/advanced/player/P = new(T,client)
+				P.force_move(T)
+				P.start_chargen()
+				P.save_id = character_id
+				P.tutorial = TRUE
+				P.update_premiums()
+				return TRUE
+
+		to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this."))
+		log_error("WARNING: [ckey] was unable to create a new character!")
+		return FALSE
 
 
 

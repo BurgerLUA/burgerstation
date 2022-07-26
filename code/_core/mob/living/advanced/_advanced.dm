@@ -169,6 +169,10 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	. = ..()
 
+	var/area/A = get_area(src)
+	if(A && !(A.flags_area & FLAG_AREA_SINGLEPLAYER))
+		see_invisible = max(see_invisible,INVISIBILITY_PLAYERS)
+
 	for(var/obj/item/organ/eye/E in organs)
 		sight |= E.sight_mod
 		vision |= E.vision_mod

@@ -29,3 +29,8 @@
 			if(new_chunk_z)
 				var/chunk/C = SSchunk.chunks[new_chunk_z][new_chunk_x][new_chunk_y]
 				C.players |= src
+
+		var/area/A_old = get_area(old_loc)
+		var/area/A_new = get_area(loc)
+		if(!A_old || !A_new || ((A_old != A_new) && ( (A_old.flags_area & FLAG_AREA_SINGLEPLAYER) != (A_new.flags_area & FLAG_AREA_SINGLEPLAYER) )))
+			src.update_eyes()
