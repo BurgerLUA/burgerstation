@@ -49,6 +49,11 @@
 		I.color = reagents.color
 		add_underlay(I)
 
+/obj/item/container/syringe/medipen/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+	return
+
+/obj/item/container/syringe/medipen/click_self(var/mob/caller,location,control,params)
+	return
 
 /obj/item/container/syringe/medipen/adminomnizine
 	name = "god's butterfly pen"
@@ -98,4 +103,20 @@
 
 /obj/item/container/syringe/medipen/iron/Generate()
 	reagents.add_reagent(/reagent/iron,reagents.volume_max)
+	return ..()
+
+/obj/item/container/syringe/medipen/mining
+	name = "mining butterfly pen"
+	desc = "The only thing that keeps you alive during ash storms. Besides mining capsules."
+	desc_extended = "An incredibly beneficial and expensive butterfly pen with a potent mix of chemicals that should keep you standing even in the harshest of environments. It is recommended not to use more than two in a quick succession."
+	value = 2000
+
+	reagents = /reagent_container/syringe/medipen/hypospray
+
+/obj/item/container/syringe/medipen/mining/Generate()
+	reagents.add_reagent(/reagent/medicine/inaprovaline,20)
+	reagents.add_reagent(/reagent/medicine/omnizine,10)
+	reagents.add_reagent(/reagent/medicine/adrenaline,10)
+	reagents.add_reagent(/reagent/medicine/synthflesh,10)
+	reagents.add_reagent(/reagent/medicine/painkiller/morphine,10)
 	return ..()
