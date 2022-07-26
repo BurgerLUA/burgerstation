@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 2000
 
+	company_type = "Slavic"
+
 	tier = 2
 
 	shoot_delay = 1.1
@@ -79,6 +81,8 @@
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/545.dmi'
 	icon_state = "inventory"
 	value = 2400
+
+	company_type = "Syndicate"
 
 	tier = 3
 	shoot_delay = 1

@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(area)
 
 	log_subsystem(name,"Initialized [area_count] total areas.")
 
-	if(ENABLE_WEATHERGEN)
+	if(CONFIG("ENABLE_WEATHER",FALSE))
 		set_weather(WEATHER_RAIN,is_raining,areas_rain)
 		set_weather(WEATHER_SNOW,is_snowing,areas_snow)
 		set_weather(WEATHER_SANDSTORM,is_sandstorming,areas_sandstorm)
@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(area)
 
 	for(var/k in areas_ambient)
 		var/area/A = k
-		CHECK_TICK(tick_usage_max,0)
+		CHECK_TICK_SAFE(tick_usage_max,0)
 		var/sound_to_play = pick(A.random_sounds)
 		var/list/valid_players = list()
 		for(var/mob/living/advanced/player/P in A.contents)
@@ -105,7 +105,7 @@ SUBSYSTEM_DEF(area)
 /subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/affected_areas)
 	for(var/k in affected_areas)
 		var/area/A = k
-		CHECK_TICK(tick_usage_max,0)
+		CHECK_TICK_SAFE(tick_usage_max,0)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'
 			A.icon_state = weather_type

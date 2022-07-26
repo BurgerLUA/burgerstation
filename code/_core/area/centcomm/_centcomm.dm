@@ -36,13 +36,21 @@
 
 
 /area/debug
-	name = "!Pathfinding Debug"
+	name = "Debug Area"
 	icon_state = "cmd"
-	flags_area = FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_ROUND_INFORMATION | FLAG_AREA_NO_EVENTS
+	flags_area = FLAG_AREA_NO_ROUND_INFORMATION | FLAG_AREA_NO_EVENTS
 
-	area_identifier = "Pathing Debug"
+	area_identifier = "Debug"
 
 	sound_environment = ENVIRONMENT_STONEROOM
+
+	requires_power = FALSE
+
+	default_state_power_lights = ON
+	default_state_power_machines = ON
+	default_state_power_doors = ON
+
+	dynamic_lighting = TRUE
 
 
 /area/generation

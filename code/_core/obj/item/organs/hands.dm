@@ -369,16 +369,19 @@
 			return /damagetype/unarmed/fists/grab
 
 	var/list/possible_damage_types = list(
-		/damagetype/unarmed/claw = 6
+		/damagetype/unarmed/claw = 100
 	)
 
 	if(!I.grabbed_object)
-		possible_damage_types[/damagetype/unarmed/fists/disarm] = 1
-		possible_damage_types[/damagetype/unarmed/fists/grab] = 2
+		possible_damage_types[/damagetype/unarmed/fists/disarm] = 10
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 50
 	else if(I.grab_level >= 2)
-		possible_damage_types[/damagetype/unarmed/bite] = 100
+		possible_damage_types[/damagetype/unarmed/claw] = 0
+		possible_damage_types[/damagetype/unarmed/bite] = 100 //Start biting for sure if the grab is reinforced.
 	else
-		possible_damage_types[/damagetype/unarmed/fists/grab] = 4
+		possible_damage_types[/damagetype/unarmed/claw] = 50
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 25 //Reinforce grab.
+		possible_damage_types[/damagetype/unarmed/bite] = 10
 
 	return pickweight(possible_damage_types)
 

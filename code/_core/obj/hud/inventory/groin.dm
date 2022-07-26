@@ -12,7 +12,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	priority = 25
 
@@ -27,7 +27,7 @@
 
 	item_slot = SLOT_GROIN
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 40
 
@@ -42,7 +42,7 @@
 
 	item_slot = SLOT_GROIN_BLUESPACE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	priority = 1
 */

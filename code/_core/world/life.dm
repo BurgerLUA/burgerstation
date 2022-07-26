@@ -73,7 +73,7 @@ var/global/time_dialation = 0
 
 	world_state = STATE_RUNNING
 
-	if(ENABLE_INSTALOAD)
+	if(CONFIG("ENABLE_INSTALOAD",FALSE))
 		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			if(!O.load_most_recent_character())
 				O.new_character()

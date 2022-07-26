@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 800
 
+	company_type = "Syndicate"
+
 	shoot_delay = 8
 
 	movement_spread_base = 0.01

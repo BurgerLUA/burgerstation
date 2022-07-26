@@ -25,7 +25,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_astar,
 	/client/verb/print_garbage,
 	/client/verb/set_skill,
-	/client/verb/set_attribute
+	/client/verb/set_attribute,
+	/client/verb/horde_test_preview
 )
 
 /client/verb/view_dps()
@@ -276,7 +277,7 @@ var/global/list/debug_verbs = list(
 	var/list/spawned_mobs = list()
 
 	for(var/i=1,i<=50,i++)
-		CHECK_TICK(50,FPS_SERVER)
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 		var/mob/living/advanced/npc/nanotrasen/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
@@ -532,3 +533,60 @@ var/global/list/debug_verbs = list(
 	to_chat(span("notice","Your [chosen_skill] is now [L.get_skill_level(chosen_skill)]."))
 
 	log_admin("[src.get_debug_name()] set [L.get_debug_name()]'s  [chosen_skill] from [old_level] to [chosen_value].")
+
+
+/client/verb/horde_test_preview()
+
+	set name = "Horde Test Preview (DANGER)"
+	set category = "Debug"
+
+	var/desired_choice = input("Are you sure you wish to start the Horde Test preview? This cannot be reversed.","Horde Test Preview","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(desired_choice != "Yes")
+		return
+
+	var/confirmation = input("Type \"CONFIRM\" to confirm you wish to start a Horde Test Prewiew.") as text
+
+	if(confirmation != "CONFIRM")
+		return
+
+	var/time_to_stop = world.time + SECONDS_TO_DECISECONDS(240)
+
+	var/turf/target_turf = pick(horde_test_target_turfs)
+
+	if(mob) mob.force_move(target_turf)
+
+	if(is_observer(mob))
+		var/mob/abstract/observer/O = mob
+		O.show_hud(FALSE)
+
+	for(var/k in horde_test_survivor_spawn_turfs)
+		var/turf/T = k
+		var/mob/living/advanced/npc/survivor/S = new(T)
+		INITIALIZE(S)
+		GENERATE(S)
+		FINALIZE(S)
+		if(S.ai)
+			S.ai.set_active(TRUE)
+
+	var/list/tracked_zombies = list()
+	spawn while(world.time <= time_to_stop)
+		for(var/k in tracked_zombies)
+			var/mob/living/advanced/npc/zombie/civilian/Z = k
+			if(Z.dead) tracked_zombies -= Z
+		sleep(SECONDS_TO_DECISECONDS(5))
+		if(length(tracked_zombies) >= 8)
+			continue
+		var/turf/T = pick(horde_test_turfs)
+		var/mob/living/advanced/npc/zombie/civilian/Z = new(T)
+		INITIALIZE(Z)
+		GENERATE(Z)
+		FINALIZE(Z)
+		if(Z.ai)
+			Z.ai.set_move_objective(target_turf)
+		tracked_zombies += Z
+
+
+
+
+

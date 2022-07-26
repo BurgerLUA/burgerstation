@@ -17,9 +17,8 @@
 	if(!final_topic_string)
 		return FALSE
 
-	for(var/topic in dialogue_options)
-		if(topic in known_options)
-			final_topic_string += "_[topic]"
+	for(var/topic in dialogue_options & known_options)
+		final_topic_string += "_[topic]"
 
 	final_topic_string = url_encode(final_topic_string)
 
@@ -36,7 +35,7 @@
 	var/list/chosen_dialogue = dialogue_options[topic]
 
 	if(!length(chosen_dialogue))
-		log_error("ERROR: [P] cannot access chosen topic [topic] for dialogue [type]!")
+		log_error("ERROR: [P.get_debug_name()] cannot access chosen topic \"[topic ? topic : "NULL VALUE"]\" for dialogue [type]!")
 		P.to_chat(span("error","Dialogue Error: Cannot access chosen topic [topic] for dialogue [type]. Please report this bug on discord."))
 		return FALSE
 

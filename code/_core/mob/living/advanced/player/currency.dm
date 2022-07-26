@@ -21,6 +21,9 @@
 	return -adjust_currency(-currency_to_spend)
 
 
+/mob/living/advanced/player/start_chargen()
+	. = ..()
+	adjust_currency(CONFIG("CHARGEN_STARTING_CREDITS",10000))
 
 /mob/living/advanced/player/proc/adjust_burgerbux(var/currency_to_add,var/silent=FALSE)
 	if(!currency_to_add)

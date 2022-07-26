@@ -8,6 +8,8 @@
 	tier = 1
 	shoot_sounds = list('sound/weapons/40/shoot.ogg')
 
+	company_type = "NanoTrasen"
+
 	movement_spread_base = 0.002
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
@@ -93,6 +95,8 @@ var/global/list/kitchen_gun_slogans = list(
 	heat_max = 0.03
 	value = 800
 	var/slogan_number = 1
+
+	value_burgerbux = 1
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()

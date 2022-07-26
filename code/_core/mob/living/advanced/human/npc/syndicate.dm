@@ -65,15 +65,19 @@
 /mob/living/advanced/npc/syndicate/scientist
 	name = "syndicate scientist"
 
-	possible_outfits = list(/loadout/syndicate/scientist)
-	loadout_to_level = list(/loadout/syndicate/scientist=1)
+	possible_outfits = list(
+		/loadout/syndicate/scientist = 1
+	)
+	loadout_to_level = list(
+		/loadout/syndicate/scientist = 1
+	)
 
 	level = 16
 
 
 /mob/living/advanced/npc/syndicate/ultra
 	name = "\improper ULTRA syndicate operative"
-	level = 200
+	level = 100
 
 	health_base = 100
 	stamina_base = 100

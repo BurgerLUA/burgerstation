@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 5000
 
+	company_type = "Syndicate"
+
 	tier = 3
 
 	projectile_speed = TILE_SIZE - 1

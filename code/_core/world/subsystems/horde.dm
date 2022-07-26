@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(horde)
 		queued_players -= queued_players[1]
 
 	for(var/ckey in queued_overdue_players)
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		queued_overdue_players -= ckey
 		var/client/C = CLIENT(ckey)
 		if(!C || !is_player(C.mob)) //They are likely a ghost now.

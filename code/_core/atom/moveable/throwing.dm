@@ -1,4 +1,4 @@
-/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag)
+/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = VIEW_RANGE,var/desired_loyalty_tag)
 
 	if(!thrower)
 		CRASH_SAFE("No thrower exists!")
@@ -42,7 +42,7 @@
 	P.pixel_y = src.pixel_y
 	//P.pixel_x_float = src.pixel_x
 	//P.pixel_y_float = src.pixel_y
-	P.lifetime = lifetime == -1 ? (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*6 : lifetime
+	P.lifetime = lifetime < 0 ? (max(abs(vel_x),abs(vel_y))/TILE_SIZE)*6 : lifetime
 	P.steps_allowed = steps_allowed
 	P.mouse_opacity = 0
 	INITIALIZE(P)

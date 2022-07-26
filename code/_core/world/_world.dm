@@ -23,7 +23,7 @@ var/global/world_state = STATE_STARTING
 
 	maxx = WORLD_SIZE
 	maxy = WORLD_SIZE
-	maxz = 0
+	maxz = 1
 
 	loop_checks = 1
 

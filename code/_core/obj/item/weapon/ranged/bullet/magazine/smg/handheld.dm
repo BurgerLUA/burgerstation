@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/smg/syndicate/9mm.dmi'
 	icon_state = "inventory"
 
+	company_type = "Syndicate"
+
 	tier = 1
 
 	value = 800

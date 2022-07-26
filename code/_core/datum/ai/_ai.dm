@@ -72,7 +72,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/kick_chance = 10
 
-	var/attack_on_block = TRUE
+	var/attack_movement_obstructions = TRUE //Should attack ALL obstructions if blocked.
 
 	var/path_steps = 1
 	var/list/obj/marker/map_node/current_node_path = list()
@@ -84,6 +84,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/list/obstacles = list()
 
 	var/use_alerts = TRUE
+	var/use_alert_overlays = FALSE //Funny MGS alert overlays.
 	var/true_sight = FALSE //Set to true if it can see sneaking enemies.
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system

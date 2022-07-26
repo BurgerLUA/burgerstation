@@ -113,7 +113,7 @@
 			else
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
-				new /turf/simulated/liquid/water/jungle(src)
+				new /turf/simulated/liquid/water/river/jungle(src)
 		if(0.44 to 0.45)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
 		if(0.45 to 0.47)
@@ -162,7 +162,7 @@
 			else
 				if(prob(1))
 					new /obj/marker/generation/jungle_wall(src)
-				new /turf/simulated/liquid/water(src)
+				new /turf/simulated/liquid/water/river/jungle(src)
 		if(0.9 to INFINITY)
 			if(!allow_wall)
 				if(prob(5))
@@ -171,7 +171,7 @@
 			else
 				if(prob(5))
 					new /obj/marker/generation/water/jungle(src)
-				new /turf/simulated/liquid/water(src)
+				new /turf/simulated/liquid/water/river/jungle(src)
 
 	if(src.loc.type == /area/)
 		new /area/mission/jungle/interior(src)

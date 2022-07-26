@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 
 	for(var/k in all_shuttle_controlers)
 		var/obj/shuttle_controller/SC = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		SC.time++
 		if(SC.on_shuttle_think() == null)
 			log_error("Shutting down controller for [SC]([SC.x])([SC.y])([SC.z]) as on_shuttle_think returned NULL!")
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 
 			var/list/valid_pods = list()
 			for(var/k in all_drop_pods)
-				CHECK_TICK(75,FPS_SERVER)
+				CHECK_TICK_SAFE(75,FPS_SERVER)
 				var/obj/structure/interactive/drop_pod/DP = k
 				if(DP.state == POD_PRE_LAUNCH)
 					valid_pods += DP
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 				var/list/valid_turfs = list()
 				for(var/x=-drop_radius,x<=drop_radius,x+=2)
 					for(var/y=-drop_radius,y<=drop_radius,y+=2)
-						CHECK_TICK(75,FPS_SERVER)
+						CHECK_TICK_SAFE(75,FPS_SERVER)
 						var/turf/T = locate(chosen_epicenter.x + x, chosen_epicenter.y + y, chosen_epicenter.z)
 						if(!T)
 							continue
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 
 				var/i=0
 				for(var/k in valid_pods)
-					CHECK_TICK(75,FPS_SERVER)
+					CHECK_TICK_SAFE(75,FPS_SERVER)
 					if(!length(valid_turfs))
 						break
 					var/turf/T = pick(valid_turfs)

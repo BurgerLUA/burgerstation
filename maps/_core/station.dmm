@@ -65,8 +65,8 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/east)
 "ap" = (
-/turf/simulated/wall/wood,
-/area/burgerstation/hall/north)
+/turf/simulated/wall/plastic/wizard,
+/area/burgerstation/library)
 "aq" = (
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
@@ -75,21 +75,26 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/cargo)
 "as" = (
-/turf/simulated/wall/wood,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "at" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/plating,
+/obj/structure/carpet/red,
+/mob/living/advanced/npc/wizard_federation_guard,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "au" = (
-/turf/simulated/floor/wood/rich,
+/obj/structure/table/wood/magic,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "av" = (
 /turf/simulated/wall/metal/shuttle,
 /area)
 "aw" = (
-/obj/structure/carpet/brown,
-/turf/simulated/floor/wood/rich,
+/mob/living/advanced/npc/unique/wizard_ambassador{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "ax" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
@@ -111,7 +116,7 @@
 "aB" = (
 /obj/structure/table/wood,
 /obj/structure/carpet/command,
-/mob/living/simple/parrot/poly,
+/mob/living/simple/parrot/mono,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering/ce)
 "aC" = (
@@ -319,17 +324,14 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/west)
 "bn" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
+/turf/simulated/wall/plastic/wizard,
+/area/burgerstation/hall/north)
 "bo" = (
+/obj/structure/interactive/disposals/machine/chute,
 /obj/structure/interactive/disposals/pipe/ending{
 	dir = 8
 	},
-/obj/structure/interactive/disposals/machine/chute,
-/turf/simulated/floor/wood/rich,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "bp" = (
 /turf/simulated/floor/tile/morphing/engineering,
@@ -1422,10 +1424,11 @@
 /turf/simulated/floor/wood/rich,
 /area/burgerstation/chapel)
 "fp" = (
-/obj/structure/interactive/disposals/pipe,
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
+/obj/structure/interactive/power/apc{
+	icon_state = "apc";
+	dir = 8
+	},
+/turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "fq" = (
 /obj/structure/table/steel,
@@ -1504,8 +1507,11 @@
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "fC" = (
-/obj/structure/carpet/red,
-/turf/simulated/floor/wood/rich,
+/obj/structure/interactive/lighting/mounted_torch{
+	icon_state = "torch";
+	dir = 4
+	},
+/turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "fD" = (
 /obj/structure/interactive/diverter/high_value{
@@ -1554,9 +1560,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
 "fJ" = (
-/obj/structure/table/wood,
-/obj/structure/carpet/red,
-/turf/simulated/floor/wood/rich,
+/obj/structure/interactive/lighting/mounted_torch,
+/turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "fK" = (
 /obj/structure/table/steel,
@@ -1587,8 +1592,11 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
 "fP" = (
-/obj/structure/interactive/disposals/pipe/junction/flipped,
-/turf/simulated/floor/wood/rich,
+/obj/structure/interactive/disposals/pipe{
+	dir = 6
+	},
+/obj/structure/carpet/blue/magic,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "fQ" = (
 /obj/structure/interactive/wire/green,
@@ -1725,11 +1733,11 @@
 /turf/simulated/floor/tile/morphing/cargo,
 /area/burgerstation/cargo)
 "gq" = (
-/obj/structure/interactive/disposals/pipe/ending{
-	dir = 4
+/obj/structure/interactive/lighting/mounted_torch{
+	icon_state = "torch";
+	dir = 8
 	},
-/obj/structure/interactive/disposals/machine/chute,
-/turf/simulated/floor/wood/rich,
+/turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "gr" = (
 /obj/structure/table/steel,
@@ -1763,11 +1771,8 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "gx" = (
-/obj/structure/interactive/disposals/machine/chute,
-/obj/structure/interactive/disposals/pipe/ending{
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/blue/magic,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "gy" = (
 /obj/structure/interactive/disposals/machine/outlet{
@@ -1793,17 +1798,18 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/arrivals)
 "gC" = (
-/obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "gD" = (
-/obj/structure/interactive/door/airlock/wood,
-/obj/structure/interactive/disposals/pipe,
-/turf/simulated/floor/wood/rich,
+/obj/structure/interactive/wire/green,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "gE" = (
-/obj/structure/interactive/door/airlock/wood,
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/red,
+/obj/structure/interactive/vending/magic/spellgem,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "gF" = (
 /obj/structure/interactive/disposals/pipe/junction{
@@ -2000,8 +2006,9 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/bathrooms)
 "hp" = (
-/obj/structure/interactive/disposals/pipe/junction,
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/red,
+/obj/structure/interactive/vending/magic/magicdrobe,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "hq" = (
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
@@ -4888,8 +4895,9 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/bathrooms)
 "si" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/wood/rich,
+/obj/structure/interactive/vending/magic/enchanting,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "sj" = (
 /obj/structure/interactive/chair/office{
@@ -5519,10 +5527,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/arrivals)
 "ut" = (
-/obj/structure/interactive/power/apc{
+/obj/structure/carpet/red,
+/mob/living/advanced/npc/wizard_federation_guard{
+	icon_state = "directional";
 	dir = 4
 	},
-/turf/simulated/wall/wood,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "uu" = (
 /obj/structure/interactive/disposals/machine/chute,
@@ -6146,9 +6156,11 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "wC" = (
-/obj/structure/interactive/disposals/pipe,
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
+/mob/living/advanced/npc/wizard_federation_guard{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "wD" = (
 /obj/structure/interactive/wire/red,
@@ -6377,8 +6389,8 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory/shooting_range)
 "xx" = (
-/obj/structure/sign/no_smoking,
-/turf/simulated/wall/wood,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "xy" = (
 /obj/marker/spawning/window,
@@ -6931,62 +6943,42 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
 "zu" = (
-/obj/structure/table/wood,
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
-/obj/structure/carpet/red,
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/blue/magic,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "zv" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
-/obj/structure/carpet/red,
-/turf/simulated/floor/wood/rich,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "zw" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 6
-	},
-/obj/structure/carpet/brown,
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/red,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "zx" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/structure/carpet/brown,
-/turf/simulated/floor/wood/rich,
+/obj/structure/carpet/red,
+/obj/structure/interactive/vending/magic/enchanting,
+/turf/simulated/floor/wood/magic,
 /area/burgerstation/library)
 "zy" = (
-/obj/structure/interactive/disposals/pipe,
-/obj/structure/carpet/brown,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
+/obj/structure/interactive/atm{
+	icon_state = "atm_map";
+	dir = 4
+	},
+/turf/simulated/wall/brick/chapel,
+/area/burgerstation/goblin_shop)
 "zz" = (
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"zA" = (
-/obj/structure/interactive/wire/green,
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"zB" = (
-/obj/structure/interactive/atmospherics/vent,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"zC" = (
-/obj/structure/interactive/atmospherics/scrubber,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"zD" = (
-/obj/structure/interactive/wire/green,
-/obj/structure/interactive/atmospherics/vent,
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
+/obj/structure/interactive/atm{
+	icon_state = "atm_map";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced,
+/area/burgerstation/armory/shooting_range)
 "zE" = (
 /obj/structure/interactive/atmospherics/scrubber,
 /turf/simulated/floor/brick/grey/dark/ish,
@@ -7531,14 +7523,6 @@
 /obj/structure/interactive/vending/chaplain/wardrobe,
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel)
-"Bw" = (
-/obj/structure/interactive/disposals/pipe{
-	dir = 8
-	},
-/obj/structure/carpet/brown,
-/obj/structure/interactive/vending/enchanting,
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 "Bx" = (
 /obj/structure/interactive/vending/fishing,
 /turf/simulated/floor/brick/grey/dark/ish,
@@ -8097,25 +8081,6 @@
 	},
 /turf/simulated/wall/wood/rich,
 /area/burgerstation/contractor)
-"Dr" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"Ds" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
-"Dt" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/burgerstation/library)
 
 (1,1,1) = {"
 aa
@@ -33152,19 +33117,19 @@ yU
 yZ
 yU
 sr
-as
-as
-as
+cq
+ap
+ap
 pi
-as
-as
-ut
-as
-as
-as
-as
-as
-as
+fC
+ap
+ap
+ap
+ap
+ap
+fC
+ap
+ap
 cS
 iI
 iI
@@ -33409,19 +33374,19 @@ ak
 ak
 xW
 sr
-as
-au
-zC
-au
-Dr
-zz
-zA
-zz
-gq
-as
-zB
-au
+cq
+ap
 at
+gC
+hp
+zx
+gE
+fC
+gE
+si
+hp
+ut
+fJ
 cS
 zJ
 je
@@ -33666,19 +33631,19 @@ ab
 ak
 xW
 sr
-at
-aw
-aw
-si
-zA
-zA
-zA
-zz
-bn
-Ds
+cq
+ap
 au
-au
-at
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 cS
 iU
 jg
@@ -33923,19 +33888,19 @@ ys
 tO
 xW
 sr
+cq
+fJ
+au
 as
-zw
-zy
-fp
-gC
-gC
+gx
+gx
+gx
+gx
+gx
+gx
 fP
-gC
-hp
-gC
-wC
-gC
-gD
+xx
+xx
 cT
 zN
 jg
@@ -34180,19 +34145,19 @@ ab
 ak
 xW
 sr
-at
-Bw
-aw
-si
+cq
+ap
 au
-au
-bn
-au
-au
-au
-au
-au
-at
+as
+gx
+gx
+gx
+gx
+gx
+gx
+zu
+as
+as
 cS
 iU
 jg
@@ -34437,19 +34402,19 @@ ab
 ak
 xW
 sr
-at
-Bw
-aw
-si
-fC
-fJ
-zu
-fJ
-fJ
-fJ
-fC
+cq
+ap
 au
-gE
+as
+as
+as
+as
+as
+as
+as
+zv
+as
+as
 cS
 iU
 jg
@@ -34694,19 +34659,19 @@ ab
 ak
 xW
 sr
-as
-zx
-aw
-si
-fC
+cq
 fJ
-zv
-fC
-fC
-fJ
-fC
 au
-at
+as
+as
+au
+au
+au
+au
+au
+zv
+as
+as
 cS
 iU
 jg
@@ -34951,19 +34916,19 @@ ab
 ak
 xW
 sr
-at
-zx
+cq
+ap
+au
+as
+as
+au
+as
 aw
-si
+as
 au
-Dt
-bn
-au
-au
-xx
-zC
-au
-at
+bo
+wC
+fJ
 cS
 iU
 jg
@@ -35208,19 +35173,19 @@ ab
 ak
 xW
 sr
-as
-bo
-zD
-si
-au
-as
-gx
-au
-au
-as
-as
+cq
 ap
+at
+gD
+zw
+zw
+zw
+gC
+gC
 ap
+gq
+bn
+bn
 fm
 bq
 jg
@@ -35465,18 +35430,18 @@ ab
 ak
 xW
 sr
-as
-as
-se
-as
-as
-as
-as
-as
-as
-as
-wN
+cq
 ap
+ap
+se
+gq
+ap
+fp
+gq
+ap
+ap
+wN
+bn
 jL
 aI
 bq
@@ -35724,8 +35689,8 @@ aV
 AX
 cq
 cq
+cq
 Bb
-rT
 rT
 rT
 rT
@@ -36246,7 +36211,7 @@ aA
 aA
 aA
 aA
-aA
+zy
 aA
 gX
 aI
@@ -42139,7 +42104,7 @@ aD
 aD
 aL
 aD
-ah
+zz
 aY
 aD
 bH

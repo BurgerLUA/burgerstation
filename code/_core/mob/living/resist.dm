@@ -42,13 +42,6 @@
 
 		var/difficulty = (attacker_power - src_power)*2
 
-		if(difficulty)
-			resist_percent = clamp(resist_counter/difficulty,0,1)
-		else
-			resist_percent = 1
-
-		stat_elements_to_update |= stat_elements["resist"]
-
 		if(resist_counter >= difficulty)
 			src.visible_message(
 				span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),
@@ -63,40 +56,30 @@
 				attacker.health.adjust_stamina(-src_power*4)
 			resist_counter = -1
 			next_resist = 0
-			/*
-			if(src.intent == INTENT_GRAB && is_advanced(src))
-				var/mob/living/advanced/A = src
-				var/obj/hud/inventory/valid_inventory
-				if(A.inventories_by_id[BODY_HAND_LEFT_HELD])
-					var/obj/hud/inventory/I = A.inventories_by_id[BODY_HAND_LEFT_HELD]
-					if(!I.is_occupied())
-						valid_inventory = I
-				if(A.inventories_by_id[BODY_HAND_RIGHT_HELD])
-					var/obj/hud/inventory/I = A.inventories_by_id[BODY_HAND_RIGHT_HELD]
-					if(!I.is_occupied())
-						if(!valid_inventory || prob(50))
-							valid_inventory = I
-				if(valid_inventory && valid_inventory.grab_object(src,attacker))
-					src.visible_message(
-						span("danger","\The [src.name] pulls a reversal on \the [attacker.name]!"),
-						span("danger","You pull a reversal on \the [attacker.name]!")
-					)
-					valid_inventory.grab_level = 2 //Instant agressive grab
-					valid_inventory.grab_time = world.time
-					attacker.handle_transform()
-			*/
-			return TRUE
-		src.visible_message(
-			span("danger","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
-			span("warning","You try to resist!"),
-		)
-		if(attacker.health)
-			attacker.health.adjust_stamina(-src_power) //Attacker needs the strength to resist too.
-		if(resist_counter < 0)
-			resist_counter = 0
-		resist_counter += 1
-		health.adjust_stamina(-attacker_power)
-		next_resist = world.time + 5
+		else
+			src.visible_message(
+				span("danger","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
+				span("warning","You try to resist!"),
+			)
+			if(attacker.health)
+				attacker.health.adjust_stamina(-src_power) //Attacker needs the strength to resist too.
+			if(resist_counter < 0)
+				resist_counter = 0
+			resist_counter += 1
+			if(difficulty)
+				resist_percent = clamp(resist_counter/difficulty,0,1)
+			else
+				resist_percent = 1
+			health.adjust_stamina(-attacker_power)
+			next_resist = world.time + 5
+
+		if(difficulty)
+			resist_percent = clamp(resist_counter/difficulty,0,1)
+		else
+			resist_percent = 1
+
+		stat_elements_to_update |= stat_elements["resist"]
+
 		return FALSE
 
 	else if(on_fire)

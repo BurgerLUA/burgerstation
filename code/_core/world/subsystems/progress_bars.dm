@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(progressbars)
 /subsystem/progressbars/on_life()
 
 	for(var/k in all_progress_bars)
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		if(process_progress_bar(k) == null)
 			var/atom/A = k
 			var/list/progress_list = all_progress_bars[k]

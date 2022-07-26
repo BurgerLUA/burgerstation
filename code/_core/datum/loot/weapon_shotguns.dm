@@ -4,13 +4,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
-		/obj/item/magazine/shotgun_auto/buckshot,
-		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto,
+		/obj/item/magazine/shotgun_auto,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog = 1,
-		/obj/item/magazine/shotgun_auto/buckshot = 4,
+		/obj/item/magazine/shotgun_auto = 4,
 	)
 	loot_count = 6
 	chance_none = 25
@@ -19,13 +19,13 @@
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
-		/obj/item/magazine/shotgun_auto/buckshot,
-		/obj/item/magazine/shotgun_auto/buckshot,
+		/obj/item/magazine/shotgun_auto,
+		/obj/item/magazine/shotgun_auto,
 	)
 
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20 = 1,
-		/obj/item/magazine/shotgun_auto/buckshot = 4,
+		/obj/item/magazine/shotgun_auto = 4,
 	)
 	loot_count = 6
 	chance_none = 25

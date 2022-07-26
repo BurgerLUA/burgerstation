@@ -1,49 +1,64 @@
 /loadout/survivor
+
+/loadout/survivor/male
 	spawning_items = list(
+		/loot/survivor/socks/male,
+		/loot/survivor/pants/male,
+		/loot/survivor/shirt/male,
+		/loot/survivor/shoes,
+		/loot/survivor/armor,
+		/loot/survivor/coat,
+		/loot/survivor/head,
+		/loot/survivor/back_storage,
+		/loot/survivor/belt_storage,
+		/obj/item/storage/wallet/random_colonist,
+		/loot/survivor/melee/small,
+		/loot/gun/solarian
+	)
 
-		/obj/item/clothing/feet/socks/ankle,
-		/obj/item/clothing/feet/socks/ankle,
-		/obj/item/clothing/underbottom/underwear/boxers/random,
-		/obj/item/clothing/undertop/underwear/shirt/random,
+/loadout/survivor/male/melee
+	spawning_items = list(
+		/loot/survivor/socks/male,
+		/loot/survivor/pants/male,
+		/loot/survivor/shirt/male,
+		/loot/survivor/shoes,
+		/loot/survivor/armor,
+		/loot/survivor/coat,
+		/loot/survivor/head,
+		/loot/survivor/back_storage,
+		/loot/survivor/belt_storage,
+		/obj/item/storage/wallet/random_colonist,
+		/loot/survivor/melee
+	)
+
+/loadout/survivor/female
+	spawning_items = list(
+		/loot/survivor/socks/female,
+		/loot/survivor/pants/female,
+		/loot/survivor/shirt/female,
+		/loot/survivor/shoes,
+		/loot/survivor/armor,
+		/loot/survivor/coat,
+		/loot/survivor/head,
+		/loot/survivor/back_storage,
+		/loot/survivor/belt_storage,
+		/obj/item/storage/wallet/random_colonist,
+		/loot/survivor/melee/small,
+		/loot/gun/solarian
+	)
 
 
-		/obj/item/clothing/pants/normal/random,
-		/obj/item/clothing/shirt/normal/random,
-
-
-		/obj/item/clothing/feet/shoes/colored/black,
-		/obj/item/clothing/feet/shoes/colored/black/left,
-
-		/obj/item/clothing/overwear/armor/shit_armor,
-		/obj/item/clothing/overwear/coat/vest/colored/black,
-
-		/obj/item/clothing/hands/gloves/colored/insulated,
-		/obj/item/clothing/hands/gloves/colored/insulated/left,
-
-		/obj/item/clothing/mask/sterile,
-		/obj/item/clothing/head/helmet/welding,
-
-		/obj/item/clothing/back/storage/dufflebag/poly/grey,
-		/obj/item/clothing/belt/storage/tool,
-
-		/obj/item/storage/pouch/triple/brown,
-		/obj/item/storage/pouch/triple/brown,
-
-		/obj/item/weapon/ranged/bullet/pump/shotgun/lever,
-		/obj/item/bullet_cartridge/shotgun_12{amount=5},
-		/obj/item/bullet_cartridge/shotgun_12{amount=5},
-		/obj/item/bullet_cartridge/shotgun_12{amount=5},
-		/obj/item/bullet_cartridge/shotgun_12{amount=5},
-		/obj/item/bullet_cartridge/shotgun_12{amount=5},
-		/obj/item/bullet_cartridge/shotgun_12{amount=5},
-
-		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
-		/obj/item/magazine/pistol_40,
-		/obj/item/magazine/pistol_40/,
-		/obj/item/magazine/pistol_40/,
-
-		/obj/item/grenade/fuse/flashbang,
-
-		/obj/item/storage/wallet/random_colonist
-
+/loadout/survivor/female/melee
+	spawning_items = list(
+		/loot/survivor/socks/female,
+		/loot/survivor/pants/female,
+		/loot/survivor/shirt/female,
+		/loot/survivor/shoes,
+		/loot/survivor/armor,
+		/loot/survivor/coat,
+		/loot/survivor/head,
+		/loot/survivor/back_storage,
+		/loot/survivor/belt_storage,
+		/obj/item/storage/wallet/random_colonist,
+		/loot/survivor/melee
 	)

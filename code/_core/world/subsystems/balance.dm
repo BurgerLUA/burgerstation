@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(balance)
 	name = "Balance Subsystem"
 	desc = "Makes a report of weapons."
 
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_PRELOAD
 
 	var/list/stored_dps = list()
 	var/list/stored_dph = list()
@@ -58,6 +58,8 @@ SUBSYSTEM_DEF(balance)
 					continue
 				if(C.bullet_diameter != B.bullet_diameter_best)
 					continue
+				if(C.parent_type != /obj/item/bullet_cartridge) //First level types only. This means no special bullets.
+					continue
 				weapon_to_bullet[B.type] = C.type
 				break
 
@@ -66,6 +68,8 @@ SUBSYSTEM_DEF(balance)
 			for(var/v in created_magazines)
 				var/obj/item/magazine/M = v
 				if(!M.weapon_whitelist[B.type])
+					continue
+				if(M.parent_type != /obj/item/magazine) //First level types only. This means no special magazines.
 					continue
 				weapon_to_magazine[B.type] = M.type
 

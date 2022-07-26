@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 4300
 
+	company_type = "Slavic"
+
 	shoot_delay = 20
 
 	automatic = FALSE
@@ -64,6 +66,8 @@
 	movement_spread_base = 0.1
 
 	pump_delay = 5
+
+	value_burgerbux = 1
 
 /obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1

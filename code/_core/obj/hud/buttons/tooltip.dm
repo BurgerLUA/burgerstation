@@ -13,7 +13,7 @@
 	maptext_width = TILE_SIZE*4 - 4
 	maptext_height = TILE_SIZE*2 - 6
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 	layer = 1000
 

@@ -1,9 +1,11 @@
+/*
 /ai/proc/can_enter_turf(var/turf/T)
 
 	if(!ignore_hazard_turfs && istype(T,/turf/simulated/liquid/))
 		return FALSE
 
 	return TRUE
+*/
 
 /ai/proc/post_move(var/mob/living/L,args)
 
@@ -99,7 +101,7 @@
 		return TRUE
 	return FALSE
 
-/ai/proc/check_obstructions()
+/ai/proc/check_node_path_obstructions()
 
 	if(length(current_node_path) < path_steps)
 		return FALSE
@@ -162,7 +164,7 @@
 			if(calc_distance <= desired_precision) //We've made it to the next node.
 				path_steps++
 				owner.move_dir = 0
-				if(check_for_obstructions) check_obstructions()
+				if(check_for_obstructions) check_node_path_obstructions()
 				frustration_path = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
@@ -274,14 +276,17 @@
 
 /ai/proc/Bump(var/atom/obstacle,var/trigger_other_bump=TRUE)
 
-	if(obstacle && is_living(obstacle))
-		var/mob/living/L = obstacle
-		if(is_enemy(L))
-			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
-			if(attack_on_block)
+	if(obstacle)
+		if(is_living(obstacle))
+			var/mob/living/L = obstacle
+			if(is_enemy(L))
+				set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
 				spawn do_attack(obstacle,prob(left_click_chance))
+			if(trigger_other_bump && L.ai)
+				L.ai.Bump(owner,FALSE)
+		else if(attack_movement_obstructions)
+			spawn do_attack(obstacle,prob(left_click_chance))
 
-		if(trigger_other_bump && L.ai)
-			L.ai.Bump(owner,FALSE)
+
 
 	return TRUE

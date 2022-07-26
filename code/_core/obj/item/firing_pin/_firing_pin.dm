@@ -10,7 +10,7 @@
 
 	weight = 0.25
 
-/obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 	return TRUE
 
 /obj/item/firing_pin/proc/on_shoot(var/mob/caller,var/obj/item/weapon)
@@ -28,16 +28,16 @@
 	value = 50000
 	value_burgerbux = 1
 
-/obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 
 	if(!is_living(caller))
-		caller.to_chat(span("danger","The firing pin doesn't detect your IFF signature and refuses to fire!"))
+		if(messages) caller.to_chat(span("danger","The firing pin doesn't detect your IFF signature and refuses to fire!"))
 		return FALSE
 
 	var/mob/living/advanced/A = caller
 
 	if(!check_iff(A.iff_tag,src.iff_tag,get_area(weapon),hostile=TRUE))
-		caller.to_chat(span("danger","The firing pin doesn't recognize your IFF signature and refuses to fire!"))
+		if(messages) caller.to_chat(span("danger","The firing pin doesn't recognize your IFF signature and refuses to fire!"))
 		return FALSE
 
 	. = ..()

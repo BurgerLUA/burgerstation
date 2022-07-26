@@ -40,14 +40,12 @@ SUBSYSTEM_DEF(turf)
 	//First generation pass.
 	for(var/turf/unsimulated/generation/G in world)
 		G.pre_generate()
-		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 	//Second generation pass.
 	for(var/turf/unsimulated/generation/G in world)
 		G.generate()
-		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
-	if(ENABLE_GENERATION)
+	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
 
 		var/list/generations_first = list()
 		var/list/generations_second = list()
@@ -61,30 +59,24 @@ SUBSYSTEM_DEF(turf)
 				generations_second += G
 			else
 				generations_first += G
-			CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 		for(var/k in generations_first)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
-			CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 		for(var/k in generations_second)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
-			CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 		for(var/k in generations_third)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
-			CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 	for(var/turf/simulated/S in world)
 		INITIALIZE(S)
-		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 	for(var/turf/simulated/S in world)
 		FINALIZE(S)
-		CHECK_TICK(cpu_usage_max,FPS_SERVER)
 
 	. = ..()
 
@@ -97,6 +89,6 @@ SUBSYSTEM_DEF(turf)
 			wet_turfs -= T
 			T.overlays.Cut()
 			T.update_overlays()
-		CHECK_TICK(75,FPS_SERVER*3)
+		CHECK_TICK_SAFE(75,FPS_SERVER*3)
 
 	return TRUE

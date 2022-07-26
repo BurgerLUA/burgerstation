@@ -67,7 +67,7 @@
 		/obj/item/handcuffs = 3,
 		/obj/item/matter_cartridge = 5,
 		/obj/item/storage/secure = 1,
-		/loot/supply_crate/yankee = 10
+		/loot/supply_crate/solarian = 10
 
 )
 

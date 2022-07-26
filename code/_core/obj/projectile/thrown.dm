@@ -21,7 +21,7 @@
 
 	if(.)
 		for(var/k in src.contents)
-			CHECK_TICK(75,FPS_SERVER)
+			CHECK_TICK_SAFE(75,FPS_SERVER)
 			var/atom/movable/A = k
 			var/atom/hit_wall
 			if(current_loc && !A.can_enter_turf(current_loc,previous_loc))
@@ -35,7 +35,7 @@
 /obj/projectile/thrown/Destroy()
 
 	for(var/k in src.contents)
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/atom/movable/A = k
 		if(current_loc)
 			A.force_move(current_loc)

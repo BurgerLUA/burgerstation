@@ -15,16 +15,13 @@
 
 	value = 40
 
-
-
-
-/obj/item/clothing/back/storage/backpack/white
-	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'
-	color = COLOR_GREY_LIGHT
-
 /obj/item/clothing/back/storage/backpack/grey
 	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'
 	color = COLOR_GREY
+
+/obj/item/clothing/back/storage/backpack/grey/light
+	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'
+	color = COLOR_GREY_LIGHT
 
 /obj/item/clothing/back/storage/backpack/black
 	icon = 'icons/obj/item/clothing/back/backpack/white.dmi'

@@ -230,7 +230,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	for(var/j in valid_turfs)
 		var/turf/T = j
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/offset_x = T.x - original_x
 		var/offset_y = T.y - original_y
 		var/turf/T_to_replace = locate(shuttle_marker.x + offset_x, shuttle_marker.y + offset_y, shuttle_marker.z)
@@ -260,7 +260,7 @@ var/global/list/all_shuttle_controlers = list()
 		//Okay, time to move everything.
 		for(var/k in T.contents)
 			var/atom/movable/M = k
-			CHECK_TICK(75,FPS_SERVER)
+			CHECK_TICK_SAFE(75,FPS_SERVER)
 			if(M.anchored >= 2)
 				continue
 			if(M.loc != T)
@@ -287,7 +287,7 @@ var/global/list/all_shuttle_controlers = list()
 	if(enable_shuttle_throwing)
 		for(var/k in objects_to_throw)
 			var/atom/movable/M = k
-			CHECK_TICK(75,FPS_SERVER)
+			CHECK_TICK_SAFE(75,FPS_SERVER)
 			if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 				continue
 			if(istype(M,/obj/structure/))

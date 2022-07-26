@@ -87,31 +87,61 @@
 
 		return "[output][and_text][quote][input[index]][quote]"
 
-
+/* old shit that didn't work
 /proc/pickweight(var/list/L,var/rarity=0) //Credit to Nanako for some of this code. Rarity should be between 0 and 1. Higher rarities mean that lower weights are picked more.
 	if(!L) CRASH("pickweight() invalid list provided!")
 	rarity = clamp(rarity,0,1)
-	var/total = 0
 	var/highest = 0
 	var/lowest = -1
 	var/item
-	for (item in L)
+
+	//First pass.
+	for(item in L)
 		if(isnull(L[item]))
 			L[item] = 1
 		if(L[item] <= 0)
 			continue
-		total += L[item]
 		if(lowest == -1)
 			lowest = L[item]
+			highest = L[item]
 		else
 			lowest = min(lowest,L[item])
-		highest = max(highest,L[item])
-	total = rand() * total //rand() is precise
+			highest = max(highest,L[item])
+
+	//Second pass.
+	var/total = 0
+	if(rarity > 0 && highest != lowest)
+		for(item in L)
+			var/rarity_mod = 1 - (L[item]/highest)*rarity
+			L[item] = L[item]*rarity_mod
+			total += L[item]
+
+	//Final pass.
+	total *= rand() //rand() is precise
 	for (item in L)
-		total -= (L[item] * (1 - L[item]/highest) * (highest/lowest))*rarity + L[item]*(1-rarity)
+		total -= L[item]
 		if (total <= 0)
 			return item
 	return null
+*/
+
+
+/proc/pickweight(list/list_to_pick,var/rarity=0) //Stolen from /tg/
+	var/total = 0
+	var/item
+	for(item in list_to_pick)
+		if(!isnum(list_to_pick[item]))
+			list_to_pick[item] = 1
+		total += list_to_pick[item]
+	total = rand(0, total)
+	for(item in list_to_pick)
+		total -= list_to_pick[item]
+		if(total <= 0 && list_to_pick[item])
+			return item
+
+	return null
+
+
 
 #define value_or_null(the_list,key) the_list[key] ? the_list[key] : null
 

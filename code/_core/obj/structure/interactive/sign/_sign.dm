@@ -24,6 +24,11 @@
 	icon_state = "space"
 	desc_extended = "A sign designating the area ahead as space."
 
+/obj/structure/sign/closed
+	name = "shop closed"
+	icon_state = "closed"
+	desc_extended = "A sign indicating that the shop is currently closed. Maybe this will change in the future."
+
 /obj/structure/sign/fire
 	name = "fire warning"
 	icon_state = "fire"

@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/gatling.dmi'
 	value = 10000
 
+	company_type = "NanoTrasen"
+
 	shoot_delay = 0.75
 
 	damage_mod = 0.6

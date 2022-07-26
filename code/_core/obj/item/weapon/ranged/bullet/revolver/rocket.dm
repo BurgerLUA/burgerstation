@@ -1,10 +1,12 @@
 /obj/item/weapon/ranged/bullet/revolver/rocket
-	name = "70mm NT Anti Armor Weapon System"
+	name = "70mm NT-AAWS"
 	desc = "I'm a Rocket Man."
-	desc_extended = "NT's answer to the Syndicate Mechs and Borgs: NT AAWS. Single-shot portable anti-tank weapon, though if you're brave enough you can try to use it more than once."
+	desc_extended = "NT's answer to the Syndicate Mechs and Borgs: NT Anti Armor Weapon System. Single-shot portable anti-tank weapon, though if you're brave enough you can try to use it more than once."
 	icon = 'icons/obj/item/weapons/ranged/misc/rocket.dmi'
 	icon_state = "inventory"
 	value = 6000
+
+	company_type = "NanoTrasen"
 
 	tier = 3
 	bypass_balance_check = TRUE

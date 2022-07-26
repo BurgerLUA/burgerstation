@@ -6,6 +6,8 @@
 
 	tier = 2
 
+	company_type = "Solarian"
+
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
 	shoot_delay = 1.5
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')

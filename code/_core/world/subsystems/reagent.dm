@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(reagent)
 /subsystem/reagent/on_life()
 
 	for(var/k in all_temperature_reagent_containers)
-		CHECK_TICK(tick_usage_max,FPS_SERVER)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/reagent_container/R = k
 		R.process_temperature()
 

@@ -31,4 +31,4 @@
 
 
 /reagent_container/beaker/bucket
-	volume_max = 500
+	volume_max = 250

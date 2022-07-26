@@ -43,6 +43,7 @@
 /area/mission/prefab/house_03/bedroom)
 "ak" = (
 /obj/structure/carpet/brown,
+/mob/living/advanced/npc/survivor,
 /turf/simulated/floor/wood/boat,
 /area/mission/prefab/house_03/bedroom)
 "al" = (
@@ -281,7 +282,7 @@
 /area/mission/prefab/house_03)
 "bg" = (
 /obj/structure/table/reinforced/steel,
-/obj/marker/spawning/random/food,
+/obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/boat,
 /area/mission/prefab/house_03/kitchen)
 "bh" = (

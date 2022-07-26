@@ -23,7 +23,7 @@
 
 	weight = 1
 
-	var/spent=FALSE
+	var/spent = FALSE
 
 	has_quick_function = TRUE
 
@@ -79,7 +79,7 @@
 		vel_x,
 		vel_y,
 		steps_allowed = VIEW_RANGE,
-		lifetime = 30,
+		lifetime = 10,
 		desired_loyalty_tag = L.loyalty_tag
 	)
 
@@ -99,10 +99,28 @@
 	LOADATOM("stored_trigger")
 	LOADLISTATOM("stored_containers")
 
+/obj/item/grenade/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(stored_trigger?.active && (!old_loc || !loc || old_loc.z != loc.z))
+
+		if(old_loc?.z && SSai.tracked_avoidance_by_z["[old_loc.z]"])
+			SSai.tracked_avoidance_by_z["[old_loc.z]"] -= src
+
+		if(loc?.z)
+			if(!SSai.tracked_avoidance_by_z["[loc.z]"])
+				SSai.tracked_avoidance_by_z["[loc.z]"] = list()
+			SSai.tracked_avoidance_by_z["[loc.z]"] += src
+
+
 /obj/item/grenade/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(alpha == 0) //Already gone.
 		return FALSE
+
+	if(z && SSai.tracked_avoidance_by_z["[z]"])
+		SSai.tracked_avoidance_by_z["[z]"] -= src
 
 	if(source == src)
 		if(!src.z) drop_item(get_turf(src))
@@ -231,7 +249,10 @@
 			else
 				caller.to_chat(span("warning","You need an empty hand in ordet to remove \the [selected_beaker.name]!"))
 		else if(stored_trigger)
-			if(I.add_object(stored_trigger))
+			if(stored_trigger.active)
+				caller.to_chat(span("danger","You must defuse \the [stored_trigger.name] first before removing \the [stored_trigger.name]!"))
+				return TRUE
+			else if(I.add_object(stored_trigger))
 				caller.visible_message(span("notice","\The [caller.name] removes \the [stored_trigger.name] from \the [src.name]."),span("notice","You remove \the [stored_trigger.name] from \the [src.name]."))
 				stored_trigger = null
 				update_sprite()
@@ -243,11 +264,7 @@
 
 	return ..()
 
-
 /obj/item/grenade/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
-
-	if(!src.reagents)
-		return ..()
 
 	if(is_inventory(loc))
 		drop_item()
@@ -263,10 +280,14 @@
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
 		B.reagents.update_container()
 
+	if(src.z && SSai.tracked_avoidance_by_z["[src.z]"])
+		SSai.tracked_avoidance_by_z["[src.z]"] -= src
+
 	spent = TRUE
 
-	src.reagents.update_container()
-	src.reagents.process_recipes(caller)
+	if(src.reagents)
+		src.reagents.update_container()
+		src.reagents.process_recipes(caller)
 
 	update_sprite()
 

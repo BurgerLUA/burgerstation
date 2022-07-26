@@ -46,12 +46,8 @@
 		offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
 		offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-		for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT),i++)
+		for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT_HARD),i++)
 			if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
-				break
-
-		for(var/i=1,i<=total_bleed_damage/10,i++)
-			if(!create_blood(/obj/effect/cleanable/blood/splatter_small,T,R.color,offset_x + rand(-TILE_SIZE,TILE_SIZE),offset_y + rand(-TILE_SIZE,TILE_SIZE)))
 				break
 
 		if(health && total_bleed_damage && blood_type && blood_volume_max)

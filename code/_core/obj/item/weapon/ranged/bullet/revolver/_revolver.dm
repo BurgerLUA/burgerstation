@@ -109,10 +109,10 @@
 	rotate_cylinder(1)
 	return B
 
-/obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(!can_shoot_while_open && open)
-		caller.to_chat(span("warning","Close \the [src.name] before firing!"))
+		if(messages) caller.to_chat(span("warning","Close \the [src.name] before firing!"))
 		return FALSE
 
 	return ..()

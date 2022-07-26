@@ -2,8 +2,10 @@
 	name = "12g SolTact-S"
 	desc = "When you're too lazy to pump."
 	desc_extended = "A lightweight 12 gauge auto-cycling semi-automatic shotgun designed to clear rooms very fast without the effort of pumping; except when you load a new round in for the first time."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/semi.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/sol/tactical.dmi'
 	icon_state = "inventory"
+
+	company_type = "Solarian"
 
 	value = 2500
 

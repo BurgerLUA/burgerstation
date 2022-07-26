@@ -5,7 +5,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_MOB | FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL
+	flags_hud = FLAG_HUD_MOB | FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 
@@ -31,7 +31,7 @@
 	icon_state = "view_inventory"
 	screen_loc = "LEFT:1,BOTTOM:12"
 
-	flags = FLAG_HUD_MOB | FLAG_HUD_INVENTORY
+	flags_hud = FLAG_HUD_MOB | FLAG_HUD_INVENTORY
 
 	has_quick_function = FALSE
 
@@ -67,7 +67,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_MOB | FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL
+	flags_hud = FLAG_HUD_MOB | FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL
 
 	has_quick_function = FALSE
 

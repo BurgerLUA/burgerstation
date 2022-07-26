@@ -7,7 +7,7 @@
 
 	drag_to_take = FALSE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CONTAINER
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CONTAINER
 
 	should_add_to_advanced = FALSE
 
@@ -15,8 +15,17 @@
 
 /obj/hud/inventory/dynamic/bank/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
-	if(!bypass && length(I.inventories) && I.size >= SIZE_3)
-		if(messages) owner.to_chat(span("warning","The bank does not allow the storage of large containers."))
-		return FALSE
+	if(!bypass)
+		if(length(I.inventories) && I.size >= SIZE_2)
+			if(messages) owner.to_chat(span("warning","The bank does not allow the storage of large containers."))
+			return FALSE
+
+		if(I.can_save)
+			if(messages) owner.to_chat(span("warning","This type of object cannot be stored."))
+			return FALSE
+
+		if(I.contraband)
+			if(messages) owner.to_chat(span("warning","The bank refuses to store contraband."))
+			return FALSE
 
 	. = ..()

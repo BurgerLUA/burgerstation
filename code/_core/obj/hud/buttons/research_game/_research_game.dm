@@ -3,7 +3,7 @@
 #define RESEARCH_POSSIBLE_COLORS_BONUS list(COLOR_PURPLE,COLOR_CYAN,COLOR_YELLOW)
 
 /obj/hud/button/research/
-	flags = FLAG_HUD_SPECIAL
+	flags_hud = FLAG_HUD_SPECIAL
 	has_quick_function = FALSE
 	maptext_width = TILE_SIZE
 	maptext_height = TILE_SIZE

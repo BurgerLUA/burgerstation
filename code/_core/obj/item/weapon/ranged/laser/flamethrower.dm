@@ -4,8 +4,9 @@
 	desc_extended = "Bioweapons are fun, but they leave one hell of a mess. Why not make the cleanup fun too?"
 	icon = 'icons/obj/item/weapons/ranged/flamethrower.dmi'
 
-	value = 0 //This is, after all, part of the Flamethrower Pack
-	value_burgerbux = 1
+	company_type = "Solarian"
+
+	value = -1 //This is, after all, part of the Flamethrower Pack
 
 	shoot_sounds = list('sound/weapons/magic/fractal.ogg') //sounds more fire-y
 

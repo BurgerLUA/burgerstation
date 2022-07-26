@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 700
 
+	company_type = "Solarian"
+
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 

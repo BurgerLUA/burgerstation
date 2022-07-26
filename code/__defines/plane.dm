@@ -56,6 +56,8 @@
 //Special Objs
 #define PLANE_SCENERY -15
 
+#define PLANE_LIGHT_FIXTURE -14
+
 #define PLANE_EFFECT -10
 
 //Weather

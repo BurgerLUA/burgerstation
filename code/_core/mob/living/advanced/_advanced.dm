@@ -111,7 +111,7 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	QDEL_NULL(stored_handcuffs)
 
-	return ..()
+	. = ..()
 
 /mob/living/advanced/PostInitialize()
 	. = ..()
@@ -334,32 +334,6 @@ mob/living/advanced/Login()
 	real_name = name
 
 	. = ..()
-
-/mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
-
-	var/loadout/spawning_outfit = all_loadouts[loadout_id]
-	if(!spawning_outfit)
-		return FALSE
-
-	var/list/items_to_add = spawning_outfit.get_spawning_items()
-
-	var/list/added_items = list()
-
-	for(var/key in items_to_add)
-		var/obj/item/I = new key(get_turf(src))
-		if(istype(I))
-			spawning_outfit.pre_add(src,I)
-			INITIALIZE(I)
-			GENERATE(I)
-			FINALIZE(I)
-			if(spawning_outfit.on_add(src,I))
-				added_items += I
-		else
-			log_error("Warning! Tried to spawn object [key] in equip_loadout(), but something went wrong!")
-
-	spawning_outfit.post_add(src,added_items)
-
-	return TRUE
 
 /mob/living/advanced/proc/add_species_languages()
 

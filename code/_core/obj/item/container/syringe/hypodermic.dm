@@ -35,7 +35,7 @@
 
 /obj/item/container/syringe/hypodermic/adjust_quality(var/quality_to_add=0)
 	. = ..()
-	if(.) update_sprite()
+	if(. && finalized) update_sprite()
 
 
 /obj/item/container/syringe/hypodermic/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.

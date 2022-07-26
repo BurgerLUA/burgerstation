@@ -71,19 +71,30 @@
 		"shoulders" = COLOR_CHEMISTRY
 	)
 
-/obj/item/clothing/shirt/normal/uniform/red_soccer
+/obj/item/clothing/shirt/normal/tee
+	polymorphs = list(
+		"shirt_tee" = COLOR_WHITE
+	)
+
+/obj/item/clothing/shirt/normal/tee/soccer
+	polymorphs = list(
+		"shirt_tee" = COLOR_WHITE,
+		"shoulders" = COLOR_BLACK
+	)
+
+/obj/item/clothing/shirt/normal/tee/soccer/red
 	polymorphs = list(
 		"shirt_tee" = COLOR_RED,
 		"shoulders" = COLOR_WHITE
 	)
 
-/obj/item/clothing/shirt/normal/uniform/blue_soccer
+/obj/item/clothing/shirt/normal/tee/soccer/blue
 	polymorphs = list(
 		"shirt_tee" = COLOR_BLUE,
 		"shoulders" = COLOR_BLACK
 	)
 
-/obj/item/clothing/shirt/normal/uniform/ref_soccer
+/obj/item/clothing/shirt/normal/tee/soccer/ref
 	polymorphs = list(
 		"shirt_tee" = COLOR_YELLOW,
 	)

@@ -82,7 +82,7 @@
 	stored_types = list(
 		/obj/item/clothing/underbottom/underwear/boxers/medical,
 		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/feet/socks/knee/white,
+		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/shirt/normal/medical,
 		/obj/item/clothing/pants/normal/medical,
 		/obj/item/clothing/overwear/coat/labcoat/medical,

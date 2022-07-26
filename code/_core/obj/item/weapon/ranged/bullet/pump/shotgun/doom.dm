@@ -4,6 +4,8 @@
 	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/sol/classic.dmi'
 
+	company_type = "Solarian"
+
 	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
 	pump_sound = 'sound/weapons/shotgun_pump_old.ogg'
 

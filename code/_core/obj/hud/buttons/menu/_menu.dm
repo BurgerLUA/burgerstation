@@ -3,7 +3,7 @@
 	icon = 'icons/hud/menu.dmi'
 	mouse_opacity = 1
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 /obj/hud/button/menu/title
 	name = "Burgerstation 13"

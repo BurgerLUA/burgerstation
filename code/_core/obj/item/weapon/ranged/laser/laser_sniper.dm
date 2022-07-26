@@ -1,9 +1,11 @@
 /obj/item/weapon/ranged/energy/sniper
-	name = "Multifocal Laser Sniper"
+	name = "\improper Multifocal Laser Sniper"
 	desc = "Shine bright."
 	desc_extended = "Pinnacle of Syndicate engineering, this laser sniper is outfitted with the best lens you can get in the entire sector, resulting in a laser bolt capable of catastrophic damage. Not exactly power friendly."
 	icon = 'icons/obj/item/weapons/ranged/laser/sniper.dmi'
 	value = 6000
+
+	company_type = "NanoTrasen"
 
 	bullet_color = "#FFFFFF"
 

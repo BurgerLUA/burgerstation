@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(ghost)
 /subsystem/ghost/on_life()
 
 	for(var/k in all_emf_trackers)
-		CHECK_TICK(cpu_usage_max,FPS_SERVER)
+		CHECK_TICK_SAFE(cpu_usage_max,FPS_SERVER)
 		var/obj/item/emf/E = k
 		E.on_emf_think()
 

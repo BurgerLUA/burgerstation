@@ -68,8 +68,6 @@
 
 /obj/structure/interactive/barricade/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-
-
 	if(is_advanced(caller) && is_inventory(object) && can_climb_over(caller))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

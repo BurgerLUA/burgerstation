@@ -3,7 +3,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
+	flags_hud = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
 
 	var/obj/item/crafting/stored_crafting_table
 

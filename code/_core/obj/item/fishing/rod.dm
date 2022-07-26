@@ -255,9 +255,13 @@
 			return TRUE
 		var/turf/simulated/liquid/H = object
 		if(!H.fishing_rewards)
+			caller.to_chat(span("warning","There seems to be no fish here..."))
 			return TRUE
-		if(!line || !lure || !bait || H.type != bait.valid_turf)
-			caller.to_chat(span("warning","You need a line, a lure, and the right bait in order to use \the [src.name]!"))
+		if(H.fishing_rewards != bait.valid_loot_type)
+			caller.to_chat(span("warning","This doesn't seem to be the right bait..."))
+			return TRUE
+		if(!line || !lure || !bait)
+			caller.to_chat(span("warning","You need a line, a lure, and bait to use \the [src.name]!"))
 			return TRUE
 		if(!line.lavaproof && istype(object,/turf/simulated/liquid/lava))
 			caller.to_chat(span("warning","You need a lavaproof fishing line in order to fish in lava!"))

@@ -16,7 +16,10 @@ SUBSYSTEM_DEF(badwords)
 		var/r_file = trim(rustg_file_read(BADWORDS))
 		if(r_file)
 			for(var/r_text in splittext(r_file,"\n"))
-				bad_word_regex += regex(r_text,"i")
+				try
+					bad_word_regex += regex(r_text,"i")
+				catch
+					log_error("Failed to parse regex string \"[r_text]\"!")
 			log_subsystem(name,"Found bad words file and created a regex list of [length(bad_word_regex)] bad words.")
 		else
 			log_subsystem(name,"Found bad words file, but it was empty.")
@@ -39,4 +42,3 @@ SUBSYSTEM_DEF(badwords)
 			. = result
 			break
 
-	

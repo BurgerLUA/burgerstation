@@ -82,15 +82,15 @@
 
 	return TRUE
 
-/mob/living/simple/parrot/poly
-	name = "Poly"
+/mob/living/simple/parrot/mono
+	name = "Mono"
 	desc = "SQUAWK! WIRE THE SOLARS! SQUAWK!"
 	desc_extended = "The CE's trusted pet bird."
 
 	loyalty_tag = "NanoTrasen"
 	iff_tag = "NanoTrasen"
 
-/mob/living/simple/parrot/poly/setup_name()
+/mob/living/simple/parrot/mono/setup_name()
 	name = initial(name)
 	return TRUE
 

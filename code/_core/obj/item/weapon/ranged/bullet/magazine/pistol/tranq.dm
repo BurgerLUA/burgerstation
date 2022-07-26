@@ -4,7 +4,9 @@
 	desc_extended = "A versatile silenced tranquilver pistol that fires specialised subsonic 11.43mm chemical rounds. The weapon must be cycled manually after firing. The laser pointer attached makes it extremely precise."
 	icon = 'icons/obj/item/weapons/ranged/pistol/tranq.dmi'
 	icon_state = "inventory"
-	value = 900
+	value = 1900
+
+	company_type = "Solarian"
 
 	tier = 3
 
@@ -35,7 +37,7 @@
 
 	shoot_alert = ALERT_LEVEL_NONE
 
-
+	value_burgerbux = 1
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tranq/get_static_spread()
 	return 0

@@ -74,6 +74,15 @@
 	pattern_icon_state = "p2"
 	pattern_color = "#17697A"
 
+/obj/structure/carpet/blue/magic
+	name = "magic carpet"
+	color = "#3E32AD"
+
+	trim_icon_state = "t1"
+	trim_color = "#D3A741"
+	pattern_icon_state = "p1"
+	pattern_color = "#6F69AA"
+
 /obj/structure/carpet/brown
 	name = "brown carpet"
 	color = "#7F3300"
@@ -92,3 +101,4 @@
 	trim_color = COLOR_GOLD
 	pattern_icon_state = "p3"
 	pattern_color = COLOR_BLUE
+

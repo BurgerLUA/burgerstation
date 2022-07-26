@@ -284,7 +284,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(quality <= 0)
 		caller.to_chat(span("warning","\The [src.name] is completely broken!"))
@@ -303,11 +303,12 @@
 			//Messages are handled in the above proc.
 			return FALSE
 
-	if(next_shoot_time > world.time)
-		return FALSE
+	if(check_time)
+		if(next_shoot_time > world.time)
+			return FALSE
 
-	if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
-		return FALSE
+		if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
+			return FALSE
 
 	return TRUE
 
@@ -461,7 +462,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/mob/living/advanced/A = caller
 		arm_strength = A.get_attribute_power(ATTRIBUTE_STRENGTH)*0.75 + A.get_skill_power(SKILL_RANGED)*0.25
 	if(wielded || !can_wield)
-		arm_strength *= 2
+		arm_strength *= 10
 
 	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
 	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
@@ -512,6 +513,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			MUL(movement_spread,attachment_stats["movement_spread"])
 			MUL(view_punch_to_use,attachment_stats["view_punch"])
 			MUL(shoot_delay_to_use,attachment_stats["shoot_delay"])
+			ADD(penetrations_left,attachment_stats["penetrations"])
 			if(max_bursts_to_use > 1)
 				ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
 			MUL(prone_mod,attachment_stats["prone_mod"])

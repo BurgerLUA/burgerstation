@@ -1,8 +1,10 @@
 /ai/advanced/
 
 	var/should_find_weapon = TRUE //Set to true if you want this AI to find a weapon if it has none.
+	var/should_find_weapon_on_ground = FALSE //Set to true if you want the AI to find a weapon on the ground if it has none.
 	var/checked_weapons = FALSE
 	var/checked_grenades = FALSE
+	var/checked_weapons_on_ground = FALSE
 
 	var/found_grenade = null
 
@@ -22,6 +24,17 @@
 	var/obj/item/bullet_cartridge/last_found_bullet
 	var/desired_shell_reload = 0
 
+	var/grenade_chance = 5 //Percent change to use a grenade each combat tick.
+
+	var/should_find_ammo_pile_on_empty = FALSE //Set to true if this AI should find an ammo pile if the NPC has no ammo.
+	var/obj/structure/interactive/storage/ammo_pile/found_ammo_pile
+
+	var/avoid_threats = TRUE
+
+	use_alert_overlays = FALSE
+
+	attack_movement_obstructions = FALSE
+
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()
@@ -32,11 +45,75 @@
 	if(resist_handcuffs && A.handcuffed && owner.next_resist <= world.time)
 		owner.resist()
 
+	if(found_ammo_pile)
+		var/obj/item/weapon/ranged/bullet/left_hand_weapon = A.left_item
+		var/obj/item/weapon/ranged/bullet/right_hand_weapon = A.right_item
+		if(!istype(left_hand_weapon))
+			left_hand_weapon = null
+		if(!istype(right_hand_weapon))
+			right_hand_weapon = null
+		if(!left_hand_weapon && !right_hand_weapon)
+			found_ammo_pile = null //Didn't have a valid weapon.
+		else
+			if(!length(current_path_astar)) //Couldn't path properly. Try again.
+				found_ammo_pile = null
+				find_ammo_pile()
+			if(found_ammo_pile && get_dist(owner,found_ammo_pile) <= 1)
+				//Restock
+				if(right_hand_weapon)
+					create_ammo_for_weapon(right_hand_weapon)
+				if(left_hand_weapon)
+					create_ammo_for_weapon(left_hand_weapon)
+				found_ammo_pile = null
+
 	return ..()
+
+/ai/advanced/proc/create_ammo_for_weapon(var/obj/item/weapon/ranged/bullet/W,var/desired_amount=5,var/drop_on_fail=TRUE)
+
+	. = FALSE
+
+	var/mob/living/advanced/A = owner
+
+	if(SSbalance.weapon_to_magazine[W.type]) //Magazines.
+		for(var/i=1,i<=desired_amount,i++)
+			var/obj/item/magazine/M = SSbalance.weapon_to_magazine[W.type]
+			M = new M (found_ammo_pile.loc)
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			if(!M.quick_equip(A,ignore_hands=TRUE))
+				qdel(M)
+				break
+			. = TRUE
+		return .
+
+	if(SSbalance.weapon_to_bullet[W.type]) //Bullets.
+		for(var/i=1,i<=desired_amount,i++)
+			var/obj/item/bullet_cartridge/B = SSbalance.weapon_to_bullet[W.type]
+			B = new B (found_ammo_pile.loc)
+			B.amount = B.amount_max
+			INITIALIZE(B)
+			GENERATE(B)
+			FINALIZE(B)
+			if(!B.quick_equip(A,ignore_hands=TRUE))
+				qdel(B)
+				break
+			. = TRUE
+
+	if(!. && drop_on_fail)
+		W.drop_item(get_turf(owner))
+
+
+
+
 
 /ai/advanced/proc/handle_movement_weapon()
 
 	if(!objective_weapon)
+		return FALSE
+
+	if(!isturf(objective_weapon.loc))
+		objective_weapon = null
 		return FALSE
 
 	if(get_dist(owner,objective_weapon) > 1)
@@ -44,60 +121,98 @@
 		return TRUE
 
 	equip_weapon(objective_weapon)
+	objective_weapon = null
 
 	return FALSE
 
-/ai/advanced/proc/find_weapon_on_ground()
 
-	var/mob/living/advanced/A = owner
-	if(A.right_item || A.left_item || !should_find_weapon)
+/ai/advanced/proc/handle_movement_avoidance()
+
+	if(!objective_attack) //Combat only.
 		return FALSE
 
-	var/list/possible_items = list()
-	for(var/obj/item/weapon/I in A.held_objects)
-		possible_items += I
-	for(var/obj/item/weapon/I in A.worn_objects)
-		possible_items += I
-
-	if(length(possible_items))
-		var/obj/item/I = pick(possible_items)
-		equip_weapon(I)
+	if(!owner.z)
 		return FALSE
 
-	if(!objective_weapon || !isturf(objective_weapon.loc) || get_dist(A,objective_weapon.loc) > 6) //Find a wepapon on the ground.
-		var/list/possible_weapons = list()
-		for(var/obj/item/weapon/W in view(6,A))
-			if(istype(W,/obj/item/weapon/ranged/))
-				var/obj/item/weapon/ranged/R = W
-				if(!R.firing_pin || R.firing_pin.iff_tag != A.iff_tag)
-					continue
-			if(istype(W,/obj/item/weapon/ranged/bullet/))
-				var/obj/item/weapon/ranged/bullet/B = W
-				if(!B.chambered_bullet)
-					continue
-			if(!isturf(W.loc))
-				continue
-			possible_weapons[W] = max(1,(6 + 1) - get_dist(A,W.loc))
-		if(!length(possible_weapons))
-			return FALSE
-		objective_weapon = pickweight(possible_weapons)
+	var/directions_to_avoid = 0x0
+	var/list/avoidance_list = SSai.tracked_avoidance_by_z["[owner.z]"]
+
+	if(debug) log_debug("Avoidance list length: [length(avoidance_list)].")
+
+	for(var/k in avoidance_list)
+		var/atom/movable/M = k
+		if(M.qdeleting)
+			log_error("Warning: Qdeleting object [M.get_debug_name()] was found in tracked ai avoidances.")
+			avoidance_list -= k
+			continue
+		if(owner.z != M.z)
+			log_error("Warning: Object [M.get_debug_name()] was found in a mismatched z-list in tracked ai avoidances.")
+			avoidance_list -= k
+			continue
+		if(get_dist(M,owner) >= VIEW_RANGE*0.75)
+			continue
+		directions_to_avoid |= get_dir(owner,M)
+
+	if(!directions_to_avoid)
+		return FALSE
+
+	var/good_direction = (NORTH | EAST | SOUTH | WEST) & ~directions_to_avoid
+
+	if((good_direction & NORTH) && (good_direction && SOUTH))
+		good_direction &= ~(prob(50) ? NORTH : SOUTH)
+
+	if((good_direction & EAST) && (good_direction && WEST))
+		good_direction &= ~(prob(50) ? EAST : WEST)
+
+	if(debug)
+		log_debug("Running away to the [dir2text(good_direction)] due to avoidance.")
+
+	owner.move_dir = good_direction
+	owner.movement_flags = MOVEMENT_RUNNING
 
 	return TRUE
 
-/ai/advanced/proc/handle_equipment()
+/ai/advanced/proc/find_nearby_weapon()
+	var/list/possible_weapons = list()
+	for(var/obj/item/weapon/W in view(VIEW_RANGE/2,owner))
+		if(!W.z)
+			continue
+		var/weight_multiplier = 1
+		if(istype(W,/obj/item/weapon/ranged/))
+			var/obj/item/weapon/ranged/R = W
+			if(!R.can_gun_shoot(owner,check_time=FALSE,messages=FALSE))
+				continue
+			weight_multiplier = 2
+		if(istype(W,/obj/item/weapon/ranged/bullet/))
+			var/obj/item/weapon/ranged/bullet/B = W
+			if(!B.chambered_bullet)
+				continue
+			weight_multiplier = 3
+		possible_weapons[W] = (max(1,(VIEW_RANGE + 1) - get_dist(owner,W.loc)))*weight_multiplier
+	if(!length(possible_weapons))
+		return null
+	return pickweight(possible_weapons)
+
+/ai/advanced/proc/handle_equipment() //Return true to avoid regular attack.
 
 	var/mob/living/advanced/A = owner
 
-	if(!checked_grenades)
-		find_grenade()
+	if(!found_grenade && !checked_grenades && objective_attack && prob(grenade_chance) && get_dist(owner,objective_attack) >= VIEW_RANGE*0.5)
+		if(!find_grenade()) //Find a grenade to throw.
+			checked_grenades = TRUE //Stop checking grenades as we can't find anymore.
+		return TRUE
 
-	if(found_grenade && objective_attack && get_dist(owner,objective_attack) > 4 && prob(5))
-		var/turf/T = get_step(A,get_dir(A,objective_attack))
-		if(T.is_safe_teleport(TRUE))
-			if(!handle_grenade(found_grenade))
-				found_grenade = null
-				checked_grenades = FALSE
-			return TRUE
+	if(found_grenade)
+		if(!handle_grenade(found_grenade))
+			found_grenade = null
+		return TRUE
+
+	if(found_ammo_pile) //Likely fleeing to an ammo pile. Probably. Hopefully.
+		return TRUE
+
+	if(should_find_weapon_on_ground && !A.left_item && !A.right_item && !objective_weapon)
+		objective_weapon = find_nearby_weapon()
+		if(!objective_weapon) checked_weapons_on_ground = TRUE
 
 	if(istype(A.left_item,/obj/item/weapon/ranged/) && handle_gun(A.left_item))
 		return TRUE
@@ -105,9 +220,10 @@
 	if(istype(A.right_item,/obj/item/weapon/ranged/) && handle_gun(A.right_item))
 		return TRUE
 
+
+
+
 	return FALSE
-
-
 
 /ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)
 
@@ -123,6 +239,10 @@
 
 	if(G.stored_trigger.active) //Live nade, throw it!
 		var/atom/real_target = objective_attack
+		if(real_target)
+			var/turf/T = get_step(owner,real_target)
+			if(T.density && (T.density_north || T.density_south || T.density_east || T.density_west))
+				real_target = null
 		if(!real_target)
 			var/list/valid_turfs = list()
 			for(var/turf/simulated/floor/F in view(VIEW_RANGE,A))
@@ -131,11 +251,16 @@
 				valid_turfs += F
 			if(length(valid_turfs))
 				real_target = pick(valid_turfs)
+
 		if(real_target)
 			var/list/offsets = get_directional_offsets(owner,real_target)
 			var/throw_velocity = 10
 			G.drop_item(get_turf(owner))
-			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = get_dist(owner,real_target), desired_loyalty_tag = owner.loyalty_tag)
+			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
+		else
+			G.drop_item(get_turf(A)) //Bad grenade. This will rarely happen due to the above turf checking but this is for weird cases.
+
+		//The whole real_target checking multiple times seems ugly but what can you do.
 		next_complex = world.time + rand(5,10)
 		return FALSE
 	else if(!I.click_flags) //The nade needs to be in our hands.
@@ -148,9 +273,9 @@
 		next_complex = world.time + rand(5,30)
 		return TRUE
 
-/ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R)
+/ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
 
-	//Returning FALSE means to don't shoot. It's good to return false if you want the shooter to wait before firing.
+	//Returning TRUE means don't attack on the same tick. It's good to return true if you want the shooter to wait before firing.
 
 	var/mob/living/advanced/A = owner
 
@@ -159,37 +284,40 @@
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
-			next_complex = world.time + rand(15,30)
+				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				return TRUE
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
 			if(O_groin)
 				M = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/magazine/proc/can_fit_magazine)
 			if(!M)
-				G.drop_item(get_turf(owner)) //IT'S NO USE.
-				return FALSE
+				if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
+					G.drop_item(get_turf(owner)) //IT'S NO USE. No magazines left.
+				return TRUE
 			M.click_on_object(A,G)
 			if(!G.stored_magazine)
-				G.drop_item(get_turf(owner)) //IT'S NO USE.
-				return FALSE
+				G.drop_item(get_turf(owner)) //IT'S NO USE. Something went wrong with reloading the magazine.
+				return TRUE
 			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-				next_complex = world.time + rand(2,6)
-			return FALSE
+				next_complex = max(world.time,G.next_shoot_time) + rand(2,6)
+				return TRUE
+			return TRUE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
 			G.eject_magazine(A)
-			next_complex = world.time + rand(10,20)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(10,20)
+			return TRUE
 
 		if(!G.chambered_bullet || G.chambered_bullet.is_spent)
 			G.click_self(A)
 			if(!G.chambered_bullet)
-				G.drop_item(get_turf(owner)) //IT'S NO USE.
+				G.drop_item(get_turf(owner)) //IT'S NO USE. Something went wrong with chambering the bullet.
 				return FALSE
-			next_complex = world.time + rand(5,10)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(5,10)
+			return TRUE
 
-		return TRUE
+		return FALSE //All good.
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/revolver))
 		var/obj/item/weapon/ranged/bullet/revolver/G = R
@@ -204,18 +332,18 @@
 					break
 				if(has_valid_bullet)
 					G.rotate_cylinder(clamp(has_valid_bullet - G.current_chamber,-1,1)) //There is another valid bullet somewhere.
-					next_complex = world.time + rand(3,5)
-					return FALSE
+					next_complex = max(world.time,G.next_shoot_time) + rand(3,5)
+					return TRUE
 
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
-				next_complex = world.time + rand(5,15)
-				return FALSE
+				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				return TRUE
 
 			if(!G.open)
 				G.click_self(A) //Open it.
-				next_complex = world.time + rand(5,15)
-				return FALSE
+				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				return TRUE
 
 			var/obj/item/bullet_cartridge/B
 			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent) //Is last_found_bullet even valid?
@@ -235,9 +363,9 @@
 						B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet) //It is implied we couldn't find B earlier.
 			if(C)
 				C.click_on_object(A,G)
-				C.drop_item(get_turf(owner))
-				next_complex = world.time + rand(5,10)
-				return FALSE
+				C.drop_item(get_turf(owner)) //We have no use for the clip; drop it.
+				next_complex = max(world.time,G.next_shoot_time) + rand(5,10)
+				return TRUE
 			if(B)
 				B.click_on_object(A,G)
 				var/missing_bullets = 0
@@ -250,30 +378,33 @@
 					last_found_bullet = B
 				else
 					last_found_bullet = null
-				next_complex = world.time + 1 //Honestly it takes like no time to insert it.
+				next_complex = max(world.time,G.next_shoot_time) + rand(2,5)
 				return FALSE
-			desired_shell_reload = -desired_shell_reload
-			G.drop_item(get_turf(owner)) //IT'S NO USE.
-			return FALSE
+			desired_shell_reload = 0
+			if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
+				G.drop_item(get_turf(owner)) //Can't find anything, so drop it.
+			return TRUE
 
 		if(G.open && !G.can_shoot_while_open) //https://www.youtube.com/watch?v=ZiEGi2g1JkA
 			G.click_self(A)
-			next_complex = world.time + rand(5,15)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+			return TRUE
 
 		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-			next_complex = world.time + rand(2,6)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(2,6)
+			return TRUE
+
+		return FALSE
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/pump))
 		var/obj/item/weapon/ranged/bullet/pump/G = R
 
 		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent))
 			G.click_self(owner) //Chamber a new round in.
-			next_complex = G.next_shoot_time + rand(1,3)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(1,3)
+			return TRUE
 
 		var/max_length = length(G.stored_bullets)
 		if(!G.stored_bullets[1] || max_length < desired_shell_reload)
@@ -289,9 +420,11 @@
 				max_length
 			) //Get a new value of how much we should load in.
 
-		if(desired_shell_reload && !G.stored_bullets[desired_shell_reload])
+		if(desired_shell_reload > 0 && !G.stored_bullets[desired_shell_reload])
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
+				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				return TRUE
 			var/obj/item/bullet_cartridge/B
 			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent && G.can_fit_bullet(last_found_bullet))
 				var/obj/hud/inventory/I = last_found_bullet.loc
@@ -303,23 +436,27 @@
 			if(O_groin && !B)
 				B = recursive_find_item(O_groin,G,/obj/item/weapon/ranged/bullet/proc/can_fit_bullet)
 			if(!B)
-				G.drop_item(get_turf(owner)) //IT'S NO USE.
+				if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
+					G.drop_item(get_turf(owner)) //IT'S NO USE. Can't find any shells to put in.
 				return FALSE
 			B.click_on_object(A,G)
-			next_complex = world.time + rand(2,6)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(5,8)
+			return TRUE
 
 		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-			next_complex = world.time + rand(2,6)
-			return FALSE
+			next_complex = max(world.time,G.next_shoot_time) + rand(5,8)
+			return TRUE
 
-		return TRUE
+		return FALSE
 
-	return TRUE
+	return FALSE //Weird but okay
 
 /ai/advanced/handle_movement()
+
+	if(avoid_threats && handle_movement_avoidance())
+		return TRUE
 
 	if(handle_movement_weapon())
 		return TRUE
@@ -328,20 +465,14 @@
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
+
+
 	if(!target)
 		return FALSE
 
 	var/mob/living/advanced/A = owner
 
 	if(!A)
-		return FALSE
-
-	if(next_complex > world.time)
-		if(debug) log_debug("Complex fail.")
-		return FALSE
-
-	if(!handle_equipment())
-		if(debug) log_debug("Gunplay fail.")
 		return FALSE
 
 	var/list/params = list(
@@ -379,8 +510,6 @@
 		found_grenade = G
 	else
 		if(debug) log_debug("AI debug: Did not find a grenade!")
-
-	checked_grenades = TRUE
 
 	return TRUE
 
@@ -481,7 +610,7 @@
 
 	distance_target_max = min(VIEW_RANGE,attack_distance_max)
 
-	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4)
+	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4) //Find a new weapon to use if our enemy is far.
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
 		if(W)
 			if(A.right_item == W)
@@ -494,4 +623,21 @@
 		else
 			checked_weapons = TRUE //Give up.
 
+	if(next_complex > world.time)
+		return FALSE
+
+	if(handle_equipment())
+		return FALSE
+
 	. = ..()
+
+/ai/advanced/proc/find_ammo_pile()
+
+	for(var/obj/structure/interactive/storage/ammo_pile/AP in range(VIEW_RANGE,owner))
+		if(!AP.stored_loot)
+			continue
+		if(set_path_astar(get_turf(AP),1))
+			found_ammo_pile = AP
+			return TRUE
+
+	return FALSE

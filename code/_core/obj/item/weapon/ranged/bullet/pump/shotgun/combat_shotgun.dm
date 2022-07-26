@@ -1,9 +1,11 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat
 	name = "12g Hunter-Killer Combat Shotgun"
 	desc = "Reliable and strong"
-	desc_extended = "A very robust pump action shotgun for Private Military Corporations."
+	desc_extended = "A very robust pump action shotgun for Syndicate boarding parties."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/pump.dmi'
 	icon_state = "inventory"
+
+	company_type = "Syndicate"
 
 	tier = 3
 

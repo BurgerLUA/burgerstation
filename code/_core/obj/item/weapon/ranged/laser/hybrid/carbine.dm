@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/carbine.dmi'
 	value = 1900
 
+	company_type = "NanoTrasen"
+
 	projectile_kill = /obj/projectile/bullet/laser/weak
 	projectile_stun = /obj/projectile/bullet/laser/weak
 

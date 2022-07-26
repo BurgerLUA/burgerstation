@@ -48,7 +48,6 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
-			qdel(src)
 			return FALSE
 
 /obj/projectile/bullet/laser/plasma_cutter
@@ -89,7 +88,6 @@
 
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
-			qdel(src)
 			return FALSE
 
 /obj/projectile/bullet/flamer/on_enter_tile(var/turf/old_loc,var/turf/new_loc) //stolen from cult.

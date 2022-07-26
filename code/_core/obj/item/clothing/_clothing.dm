@@ -15,7 +15,7 @@
 	icon_state = "inventory"
 	icon_state_worn = "worn"
 
-	var/armor/armor = /armor/ //GOD THIS SYSTEM IS A PAIN IN THE ASS.
+	var/armor/armor = /armor/ //GOD THIS SYSTEM IS A PAIN IN THE ASS, BUT IT WERKS.
 
 	var/list/protected_limbs = list()
 	var/list/protection_cold = list()

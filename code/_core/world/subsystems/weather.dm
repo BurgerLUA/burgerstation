@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(weather)
 
 /subsystem/weather/Initialize()
 
-	if(!ENABLE_WEATHERGEN)
+	if(!CONFIG("ENABLE_WEATHER",FALSE))
 		return FALSE
 
 	//Initialize weather

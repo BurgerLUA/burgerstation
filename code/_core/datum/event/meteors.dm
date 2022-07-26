@@ -40,10 +40,10 @@
 	var/start_time = true_time()
 
 	for(var/k in valid_areas)
-		CHECK_TICK(25,FPS_SERVER*10)
+		CHECK_TICK_SAFE(25,FPS_SERVER*10)
 		var/area/A = k
 		for(var/turf/T in A.contents)
-			CHECK_TICK(25,FPS_SERVER*10)
+			CHECK_TICK_SAFE(25,FPS_SERVER*10)
 			if(T.is_safe_teleport(FALSE))
 				valid_turfs[T] = TRUE
 
@@ -64,7 +64,7 @@
 /event/meteors/on_life()
 
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
-		CHECK_TICK(50,FPS_SERVER*10)
+		CHECK_TICK_SAFE(50,FPS_SERVER*10)
 		for(var/i=1,i<=3,i++)
 			var/turf/T = pick(valid_turfs)
 			new/obj/effect/falling_meteor(T)

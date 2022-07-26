@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 3800
 
+	company_type = "Syndicate"
+
 	tier = 4
 
 	damage_mod = 1.2
@@ -71,10 +73,10 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/smg/chris/get_static_spread()
 	return 0.001
 
-/obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/smg/chris/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 

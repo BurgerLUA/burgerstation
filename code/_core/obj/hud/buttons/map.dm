@@ -210,6 +210,17 @@
 				if(!T)
 					caller.to_chat(span("warning","Error: Invalid launch location."))
 					return FALSE
+				if(!T.is_safe_teleport())
+					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+					return FALSE
+				var/turf/T2 = get_step(T,SOUTH)
+				if(!T2.is_safe_teleport())
+					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+					return FALSE
+				var/area/A = T.loc
+				if(A.interior)
+					caller.to_chat(span("warning","Invalid drop location: This area has a roof."))
+					return FALSE
 				connected_background.linked_pod.set_state(caller,POD_LAUNCHING,T)
 			if(close)
 				connected_background.linked_pod.set_state(caller,POD_IDLE)

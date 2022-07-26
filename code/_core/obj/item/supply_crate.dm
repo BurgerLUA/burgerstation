@@ -68,9 +68,9 @@
 	loot = /loot/supply_crate/syndicate
 	icon_state = "supply_syndicate"
 
-/obj/item/supply_crate/yankee
-	loot = /loot/supply_crate/yankee
-	icon_state = "supply_freedom"
+/obj/item/supply_crate/solarian
+	loot = /loot/supply_crate/solarian
+	icon_state = "supply_solarian"
 
 /obj/item/supply_crate/nanotrasen
 	loot = /loot/supply_crate/nanotrasen

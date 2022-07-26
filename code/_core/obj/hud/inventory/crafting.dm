@@ -4,7 +4,7 @@
 
 	max_size = SIZE_8
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CRAFTING
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_SPECIAL | FLAG_HUD_CRAFTING
 
 	should_draw = FALSE
 	drag_to_take = FALSE

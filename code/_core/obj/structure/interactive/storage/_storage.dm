@@ -74,7 +74,7 @@
 	var/mob/living/stored_threat
 
 /obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
-	icon_state = "[initial(icon_state)]_[rand(1,11)]"
+	icon_state = "[initial(icon_state)]_[rand(1,10)]"
 	. = ..()
 
 /obj/structure/interactive/storage/trash_pile/Destroy()
@@ -107,3 +107,15 @@
 	. = ..()
 	var/obj/structure/interactive/storage/safe/O_safe = locate() in orange(8,src)
 	if(O_safe) qdel(src)
+
+
+
+/obj/structure/interactive/storage/ammo_pile
+	name = "assorted ammo pile"
+	desc = "What an assorted and unsorted mess."
+	desc_extended = "Well, they gotta get their ammo from somewhere."
+	stored_loot = /loot/ammo
+	icon = 'icons/obj/item/bulletbox.dmi'
+	icon_state = "ammo"
+
+	pixel_y = 6

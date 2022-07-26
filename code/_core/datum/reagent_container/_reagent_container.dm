@@ -284,7 +284,7 @@
 	var/reagent_recipe/found_recipe = null
 	for(var/k in recipes_to_check)
 
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 
 		var/reagent_recipe/recipe = SSreagent.all_reagent_recipes[k]
 
@@ -296,7 +296,7 @@
 		var/good_recipe = TRUE
 
 		for(var/reagent_type in recipe.required_reagents)
-			CHECK_TICK(50,FPS_SERVER)
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 			if(recipe.required_container && !istype(owner,recipe.required_container))
 				if(debug) log_debug("Recipe [recipe.name] invalid because of wrong container type.")
 				good_recipe = FALSE
@@ -331,7 +331,7 @@
 	var/portions_to_make
 
 	for(var/k in found_recipe.required_reagents)
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/required_amount = found_recipe.required_reagents[k]
 		var/current_volume = c_id_to_volume[k]
 		var/math_to_do = current_volume / required_amount
@@ -345,7 +345,7 @@
 	var/desired_temperature = average_temperature
 
 	for(var/k in found_recipe.required_reagents)
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
 		remove_reagent(k,amount_to_remove,FALSE,FALSE)
@@ -354,7 +354,7 @@
 	update_container(FALSE)
 
 	for(var/k in found_recipe.results)
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE,caller)
 
@@ -363,7 +363,7 @@
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(FALSE)
 		while(volume_current > 0)
-			CHECK_TICK(75,FPS_SERVER)
+			CHECK_TICK_SAFE(75,FPS_SERVER)
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
 			FINALIZE(A)

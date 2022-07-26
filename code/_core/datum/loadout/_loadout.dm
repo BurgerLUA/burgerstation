@@ -1,8 +1,8 @@
 /loadout/
-	var/list/obj/item/spawning_items = list() //Remember, order matters!
+	var/list/spawning_items = list() //Remember, order matters! Also accepts loot.
 
 /loadout/proc/get_spawning_items()
-	return spawning_items.Copy()
+	return spawning_items.Copy() //Copy is needed.
 
 /loadout/proc/pre_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
 	return TRUE

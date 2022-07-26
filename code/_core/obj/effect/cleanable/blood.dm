@@ -18,7 +18,7 @@
 	density = FALSE
 
 /obj/effect/cleanable/blood/proc/dry()
-	blood_level = -1
+	blood_level = 0
 	color = blend_colors(color,"#2B2400",0.75)
 	return TRUE
 
@@ -79,11 +79,6 @@
 	icon_state = "splatter_[rand(1,12)]"
 	return ..()
 
-/obj/effect/cleanable/blood/splatter_small/
-	name = "small blood splatter"
-	icon_state = "micro"
-	blood_level = 0 //Trivial to clean.
-
 /obj/effect/cleanable/blood/gib/
 	name = "giblet splatter"
 	icon_state = "gib_1"
@@ -98,7 +93,7 @@
 	icon = 'icons/obj/effects/footprints.dmi'
 	icon_state = "human"
 	randomize_angle = FALSE
-	blood_level = -1
+	blood_level = 1
 
 /obj/effect/cleanable/blood/line/
 	name = "blood line"

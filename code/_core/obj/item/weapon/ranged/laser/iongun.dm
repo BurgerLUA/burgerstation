@@ -4,6 +4,8 @@
 	desc_extended = "A powerful energy weapon that shoots strong ionized bursts of electricity. Excellent for destroying mechs."
 	icon = 'icons/obj/item/weapons/ranged/laser/ion.dmi'
 
+	company_type = "NanoTrasen"
+
 	value = 3000
 
 	projectile = /obj/projectile/bullet/laser/ion

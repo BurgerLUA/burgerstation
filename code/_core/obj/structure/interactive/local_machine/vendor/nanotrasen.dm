@@ -12,7 +12,7 @@
 	icon_state_panel = null
 
 	stored_types = list(
-		/obj/item/clothing/feet/socks/knee/white,
+		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/underbottom/underwear/boxers/nanotrasen,
 		/obj/item/clothing/undertop/underwear/shirt/black,
 		/obj/item/clothing/pants/normal/striped/nanotrasen,
@@ -47,7 +47,7 @@
 	icon_state_panel = null
 
 	stored_types = list(
-		/obj/item/clothing/feet/socks/knee/white,
+		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
 		/obj/item/clothing/pants/normal/reinforced/ntops,

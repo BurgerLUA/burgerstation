@@ -51,12 +51,12 @@
 
 	var/opening = FALSE
 	for(var/obj/hud/inventory/crafting/I in A.inventories_by_id) //Hide other inventory buttons
-		CHECK_TICK(100,FPS_SERVER*0.5)
+		CHECK_TICK_SAFE(100,FPS_SERVER*0.5)
 		I.alpha = 0
 		I.mouse_opacity = 0
 
 	for(var/obj/hud/inventory/crafting/I in inventories)
-		CHECK_TICK(100,FPS_SERVER*0.5)
+		CHECK_TICK_SAFE(100,FPS_SERVER*0.5)
 		I.update_owner(A)
 		if(opening || !I.alpha)
 			animate(I,alpha=initial(I.alpha),time=4)

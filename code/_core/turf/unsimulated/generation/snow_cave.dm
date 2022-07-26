@@ -97,7 +97,7 @@
 			if(path_only)
 				new /turf/simulated/floor/cave_dirt(src)
 			else
-				new /turf/simulated/liquid/water(src)
+				new /turf/simulated/liquid/water/river/ice(src)
 		if(0.75 to 0.8)
 			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(3))

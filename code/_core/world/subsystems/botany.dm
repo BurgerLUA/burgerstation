@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(botany)
 
 	for(var/k in all_plants)
 		var/obj/structure/interactive/plant/P = k
-		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
 		if(P.on_life(tick_rate) == null)
 			log_error("Warning! Plant [P.get_debug_name()] did not complete on_life() properly and thus was deleted.")
 			qdel(P)

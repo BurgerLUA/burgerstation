@@ -15,6 +15,10 @@
 
 	value = 0
 
+	color = "#FFFFFF"
+	var/color_2 = "#FFFFFF"
+	var/color_3 = "#FFFFFF"
+
 	var/list/support_stats = list()
 
 
@@ -25,9 +29,28 @@
 	return power_base + (quality-100)*power_per_quality
 
 
+/obj/item/supportgem/update_overlays()
+	. = ..()
+
+	if(color_2)
+		var/image/I = new(icon,"[icon_state]_grad")
+		I.appearance_flags = appearance_flags | RESET_COLOR
+		I.alpha = 200
+		I.color = color_2
+		add_overlay(I)
+
+	if(color_3)
+		var/image/I = new(icon,"[icon_state]_outline")
+		I.appearance_flags = appearance_flags | RESET_COLOR
+		I.alpha = 200
+		I.color = color_3
+		add_overlay(I)
+
+
 /obj/item/supportgem/Finalize()
 	. = ..()
 	update_support_stats()
+	update_sprite()
 
 /obj/item/supportgem/adjust_quality(var/quality_to_add=0)
 	. = ..()
@@ -46,6 +69,10 @@
 	power_per_quality = 1/100 //100% more damage per 100 quality
 	value = 250
 
+	color = COLOR_RED
+	color_2 = COLOR_ORANGE
+	color_3 = COLOR_GOLD
+
 
 /obj/item/supportgem/damage/update_support_stats()
 	var/damage_mul = power_base + (quality-100)*power_per_quality
@@ -62,6 +89,10 @@
 	power_per_quality = 0.5/100 //50% reduced mana cost per 100 quality
 	value = 250
 
+	color = COLOR_BLUE
+	color_2 = COLOR_WHITE
+	color_3 = COLOR_GREEN
+
 /obj/item/supportgem/cost/update_support_stats()
 	var/mana_mul = min(0.75,power_base + (quality-100)*power_per_quality)
 	support_stats = list(
@@ -77,10 +108,14 @@
 	power_per_quality = 5/100 //5 extra projectiles per 100 quality
 	value = 250
 
+	color = COLOR_GREEN
+	color_2 = COLOR_GREEN_DARK
+	color_3 = COLOR_GOLD
+
 /obj/item/supportgem/projectiles/update_support_stats()
 	var/projectile_count = power_base + (quality-100)*power_per_quality
 	support_stats = list(
-		"additional_projectiles" = projectile_count,
+		"bullet_count" = projectile_count,
 		"mana_cost_multiplier" = 3,
 		"bullet_spread" = 3
 	)
@@ -93,6 +128,10 @@
 	power_per_quality = 0.2 / 100 //20% less spread per 100 quality
 	value = 250
 
+	color = COLOR_GREEN
+	color_2 = COLOR_BLUE
+	color_3 = COLOR_RED
+
 /obj/item/supportgem/spread/update_support_stats()
 	var/bullet_spread = min(0.75,power_base + (quality-100)*power_per_quality)
 	support_stats = list(
@@ -102,3 +141,59 @@
 		"shoot_delay" = 2
 	)
 	support_desc = "Decreases projectile spread by <b>[bullet_spread*100]</b>%.\nIncreases projectile accuracy by 25%.\nIncreases projectile speed by 25%.\nIncreases shoot delay by 100%."
+
+/obj/item/supportgem/penetrations
+	name = "penetrator support gem"
+	power_base = 1 //1 extra penetration
+	power_per_quality = 3/100 //3 extra penetrations per 100 quality
+	value = 250
+
+	color = COLOR_PINK
+	color_2 = COLOR_PURPLE
+	color_3 = COLOR_WHITE
+
+/obj/item/supportgem/penetrations/update_support_stats()
+	var/penetration_count = power_base + (quality-100)*power_per_quality
+	support_stats = list(
+		"bullet_count" = penetration_count,
+		"mana_cost_multiplier" = 1.5
+	)
+	support_desc = "Increases penetrations count by <b>[penetration_count]</b>.\nIncreases mana cost by 50%."
+
+
+/obj/item/supportgem/speed
+	name = "speed support gem"
+	power_base = 0.2 //20% increased speed.
+	power_per_quality = 0.4/100 //40% increased speed per 100 quality.
+	value = 250
+
+	color = COLOR_GOLD
+	color_2 = COLOR_RED
+	color_3 = COLOR_WHITE
+
+/obj/item/supportgem/speed/update_support_stats()
+	var/projectile_speed = power_base + (quality-100)*power_per_quality
+	support_stats = list(
+		"projectile_speed" = 1 + projectile_speed,
+		"mana_cost_multiplier" = 1.5
+	)
+	support_desc = "Increases speed count by <b>[projectile_speed*100]%</b>.\nIncreases mana cost by 50%.\nNote: Projectile speed is capped to a certain amount."
+
+
+/obj/item/supportgem/precision
+	name = "precision support gem"
+	power_base = 0.2 //20% increased accuracy.
+	power_per_quality = 0.4/100 //40% increased accuracy per 100 quality.
+	value = 250
+
+	color = COLOR_GREEN
+	color_2 = COLOR_RED
+	color_3 = COLOR_RED
+
+/obj/item/supportgem/precision/update_support_stats()
+	var/precision = power_base + (quality-100)*power_per_quality
+	support_stats = list(
+		"inaccuracy_modifier" = 1 - precision,
+		"mana_cost_multiplier" = 1.3
+	)
+	support_desc = "Increases accuracy by <b>[precision*100]%</b>.\nIncreases mana cost by 30%."

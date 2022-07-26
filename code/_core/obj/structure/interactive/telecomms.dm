@@ -60,7 +60,7 @@ var/global/list/all_telecomms = list()
 /obj/structure/interactive/telecomms/proc/process_data(var/list/data_to_process = list())
 
 	for(var/k in SSradio.all_radios)
-		CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/obj/item/device/radio/R = k
 		if(!R || R.qdeleting)
 			continue

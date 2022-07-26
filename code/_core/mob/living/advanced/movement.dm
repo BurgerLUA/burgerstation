@@ -2,23 +2,25 @@
 
 	. = ..()
 
-	if(.)
-		var/obj/item/foot_left = labeled_organs[BODY_FOOT_LEFT]?.get_top_object()
-		var/obj/item/foot_right = labeled_organs[BODY_FOOT_RIGHT]?.get_top_object()
-		if(foot_left?.blood_stain_intensity > 2)
-			var/obj/effect/cleanable/blood/footprint/F = new(T)
-			F.set_dir(dir)
-			F.icon_state = "human_left[enter ? "_enter" : "_exit"]"
-			F.alpha = clamp(((foot_left.blood_stain_intensity-2)/2)*255,10,255)
-			F.color = foot_left.blood_stain_color
-			foot_left.set_bloodstain(max(2,foot_left.blood_stain_intensity - 0.1))
-		if(foot_right?.blood_stain_intensity > 2)
-			var/obj/effect/cleanable/blood/footprint/F = new(T)
-			F.set_dir(dir)
-			F.icon_state = "human_right[enter ? "_enter" : "_exit"]"
-			F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
-			F.color = foot_right.blood_stain_color
-			foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
+	if(. && is_simulated(T))
+		var/turf/simulated/S = T
+		if(S.blood_level_hard < BLOOD_LIMIT_HARD && S.blood_level < BLOOD_LIMIT)
+			var/obj/item/foot_left = labeled_organs[BODY_FOOT_LEFT]?.get_top_object()
+			var/obj/item/foot_right = labeled_organs[BODY_FOOT_RIGHT]?.get_top_object()
+			if(foot_left?.blood_stain_intensity > 2)
+				var/obj/effect/cleanable/blood/footprint/F = new(S)
+				F.set_dir(dir)
+				F.icon_state = "human_left_[enter ? "enter" : "exit"]"
+				F.alpha = clamp(((foot_left.blood_stain_intensity-2)/2)*255,10,255)
+				F.color = foot_left.blood_stain_color
+				foot_left.set_bloodstain(max(2,foot_left.blood_stain_intensity - 0.1))
+			if(foot_right?.blood_stain_intensity > 2)
+				var/obj/effect/cleanable/blood/footprint/F = new(S)
+				F.set_dir(dir)
+				F.icon_state = "human_right_[enter ? "enter" : "exit"]"
+				F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
+				F.color = foot_right.blood_stain_color
+				foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
@@ -131,8 +133,8 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 		if(is_simulated(T))
 			var/turf/simulated/S = T
-			if(S.blood_level_hard > 0 && S.blood_level > 0)
-				S.add_blood_level(-1)
+			if(S.blood_level_hard > 0 && S.blood_level > 0) //Has blood.
+				//S.add_blood_level(-1)
 				//Step 1: Get the bodypart defines that are supposed to get messy.
 				var/list/blood_items = list()
 				if(horizontal) //Crawling.

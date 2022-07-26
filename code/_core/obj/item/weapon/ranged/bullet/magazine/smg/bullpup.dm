@@ -10,6 +10,8 @@
 
 	shoot_delay = 1.5
 
+	company_type = "Syndicate"
+
 	automatic = TRUE
 
 	shoot_sounds = list('sound/weapons/45/shoot.ogg')
@@ -71,15 +73,6 @@
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
-
-/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/update_icon()
-
-	icon_state = initial(icon_state)
-
-	if(stored_magazine)
-		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*5, 1)]"
-
-	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_static_spread()
 	return 0.01

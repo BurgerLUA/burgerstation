@@ -59,7 +59,7 @@
 /obj/item/clothing/pants/normal/wizard
 	name = "wizard pants"
 	desc = "Wizarding!"
-	desc_extended = "Standard issue Wizard pants."
+	desc_extended = "Standard issue Wizard Federation pants."
 	polymorphs = list(
 		"pants" = COLOR_PURPLE
 	)

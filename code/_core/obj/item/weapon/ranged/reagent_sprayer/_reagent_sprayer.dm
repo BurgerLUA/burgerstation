@@ -24,7 +24,7 @@
 /obj/item/weapon/ranged/reagent_sprayer/get_ammo_count()
 	return CEILING(reagents.volume_current / (reagent_per_shot*bullet_count),1)
 
-/obj/item/weapon/ranged/reagent_sprayer/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/reagent_sprayer/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(get_ammo_count() <= 0)
 		handle_empty(caller)

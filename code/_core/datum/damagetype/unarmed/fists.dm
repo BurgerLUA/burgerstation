@@ -191,8 +191,9 @@
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim
-			if(!L.add_status_effect(GRAB,100,0,source = A))
+			if(!L.add_status_effect(GRAB,100,0,source = A)) //If we can't grab, return.
 				return ..()
+
 		if(istype(weapon,/obj/item/organ/hand))
 			var/obj/item/organ/hand/H = weapon
 			if(H.id == BODY_HAND_RIGHT)

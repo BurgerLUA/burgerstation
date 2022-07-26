@@ -2,7 +2,7 @@
 	name = "hostile survivor"
 	desc = "Get off my lawn!"
 
-	ai = /ai/advanced/guarding
+	ai = /ai/advanced/suvivor
 
 	level = 40
 
@@ -25,4 +25,14 @@
 
 	update_all_blends()
 
-	equip_loadout(/loadout/survivor)
+	if(prob(10))
+		if(gender == FEMALE)
+			equip_loadout(/loadout/survivor/female/melee)
+		else
+			equip_loadout(/loadout/survivor/male/melee)
+
+	else
+		if(gender == FEMALE)
+			equip_loadout(/loadout/survivor/female)
+		else
+			equip_loadout(/loadout/survivor/male)

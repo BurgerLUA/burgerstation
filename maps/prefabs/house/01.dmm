@@ -218,6 +218,7 @@
 	icon_state = "preview";
 	dir = 4
 	},
+/obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/girls_bedroom)
 "aR" = (
@@ -584,6 +585,22 @@
 	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01)
+"ce" = (
+/obj/structure/table/wood,
+/obj/structure/interactive/storage/ammo_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01)
+"cf" = (
+/obj/structure/carpet/brown,
+/obj/structure/table/wood,
+/obj/structure/interactive/storage/ammo_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01/master_bedroom)
+"cg" = (
+/obj/structure/carpet/brown,
+/mob/living/advanced/npc/survivor,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01/master_bedroom)
 
 (1,1,1) = {"
 bx
@@ -722,7 +739,7 @@ ah
 ah
 ah
 bh
-bm
+ce
 bm
 bm
 bX
@@ -823,7 +840,7 @@ bq
 ac
 an
 aJ
-aJ
+cg
 aJ
 aJ
 aJ
@@ -845,7 +862,7 @@ aR
 aJ
 aJ
 aJ
-bo
+cf
 ac
 ba
 ba

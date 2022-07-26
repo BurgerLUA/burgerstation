@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/freezegun.dmi'
 	value = 4000
 
+	company_type = "NanoTrasen"
+
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/freezegun
 

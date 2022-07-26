@@ -6,6 +6,8 @@
 	value = 1000
 	tier = 2
 
+	company_type = "Solarian"
+
 	damage_mod = 1.1
 	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')

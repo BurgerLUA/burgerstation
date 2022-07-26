@@ -76,10 +76,11 @@ var/regex/vowels = new("\[aeiou\]", "i")
 	if(!length(text_to_say))
 		return FALSE
 
-	text_to_say = copytext(text_to_say,1,MAX_MESSAGE_LEN)
+	var/max_message_length = CONFIG("MAX_MESSAGE_LENGTH",1024)
+	if(max_message_length > 0)
+		text_to_say = copytext(text_to_say,1,max_message_length)
 
 	var/first_character = copytext(text_to_say,1,2)
-	//var/last_character = copytext(text_to_say,-1,0)
 
 	if(first_character == "/" || first_character == "!") //OOC commands.
 		if(client)

@@ -4,7 +4,7 @@
 	icon_state = "intent"
 	screen_loc = "RIGHT:1-2,BOTTOM:11"
 
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 
 	var/intent = INTENT_HELP
 

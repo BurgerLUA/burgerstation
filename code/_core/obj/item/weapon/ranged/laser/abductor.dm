@@ -1,8 +1,10 @@
 /obj/item/weapon/ranged/energy/abductor
-	name = "ray gun"
+	name = "alien ray gun"
 	desc = "Pew pew."
 	desc_extended = "A highly advanced self-recharging laser ray gun capable of destroying both armor and flesh."
 	icon = 'icons/obj/item/weapons/ranged/laser/abductor_new.dmi'
+
+	company_type = "Abductor"
 
 	value = 2000
 

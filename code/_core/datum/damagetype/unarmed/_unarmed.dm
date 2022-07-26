@@ -34,6 +34,8 @@
 
 	sneak_attack_multiplier = 4
 
+	alert_on_impact = ALERT_LEVEL_NOISE
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 

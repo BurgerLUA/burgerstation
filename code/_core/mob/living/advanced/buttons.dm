@@ -58,7 +58,7 @@
 	draw_inventory = show
 	for(var/k in inventories_by_id)
 		var/obj/hud/inventory/I = inventories_by_id[k]
-		if(I.flags & show_flags_whitelist && !(I.flags & show_flags_blacklist))
+		if(I.flags_hud & show_flags_whitelist && !(I.flags_hud & show_flags_blacklist))
 			I.show(show,speed)
 
 /mob/living/advanced/show_hud(var/show,var/show_flags_whitelist=FLAG_HUD_ALL,var/show_flags_blacklist=FLAG_HUD_NONE,var/speed=SECONDS_TO_DECISECONDS(1))

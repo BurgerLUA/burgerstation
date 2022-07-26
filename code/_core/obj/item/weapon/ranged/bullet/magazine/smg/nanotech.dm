@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 2200
 
+	company_type = "NanoTrasen"
+
 	tier = 3
 
 	shoot_delay = 1

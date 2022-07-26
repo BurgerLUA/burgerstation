@@ -22,7 +22,7 @@
 		return FALSE
 
 	while(TRUE)
-		CHECK_TICK(25,FPS_SERVER*5)
+		CHECK_TICK_SAFE(25,FPS_SERVER*5)
 		var/chosen_objective = pickweight(possible_objectives)
 		if(G.add_objective(chosen_objective))
 			break

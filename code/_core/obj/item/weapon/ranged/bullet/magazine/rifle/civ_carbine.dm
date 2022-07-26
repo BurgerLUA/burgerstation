@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 2000
 
+	company_type = "Solarian"
+
 	tier = 3
 
 	damage_mod = 1
@@ -17,7 +19,7 @@
 
 	shoot_sounds = list('sound/weapons/223/carbine.ogg')
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_3
 	weight = 12

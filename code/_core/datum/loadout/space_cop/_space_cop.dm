@@ -50,7 +50,7 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/moar,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
-		/obj/item/weapon/melee/powerfist,
+		/obj/item/weapon/unarmed/powerfist,
 
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,
@@ -79,7 +79,7 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
-		/obj/item/weapon/melee/powerfist,
+		/obj/item/weapon/unarmed/powerfist,
 
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,
@@ -107,7 +107,7 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/dmca,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
-		/obj/item/weapon/melee/powerfist,
+		/obj/item/weapon/unarmed/powerfist,
 
 		/obj/item/magazine/minigun_46,
 		/obj/item/magazine/minigun_46,

@@ -82,3 +82,68 @@
 	value = 2000
 
 	overlay_color = COLOR_GREEN
+
+/obj/item/experience_scroll/attribute/lesser
+	name = "atrribute manual"
+	desc = "Knowledge in the palms of your hands."
+	desc_extended = "A special manual that increases the reader's experience by a certain amount. One time use."
+
+	icon = 'icons/obj/item/books.dmi'
+	icon_state = "book"
+
+	attribute = null
+	value = 1000
+
+	overlay_icon_state = null
+	overlay_color = null
+
+/obj/item/experience_scroll/attribute/lesser/Initialize()
+	. = ..()
+	icon_state = pick(icon_states(icon))
+
+/obj/item/experience_scroll/attribute/lesser/gain_knowledge(var/mob/living/advanced/A)
+
+	if(!attribute)
+		return FALSE
+
+	var/experience/E = A.get_attribute(attribute)
+	var/experience_to_add = E.level_to_xp(5) - E.level_to_xp(4)
+	A.add_attribute_xp(attribute,experience_to_add)
+
+	return ..()
+
+/obj/item/experience_scroll/attribute/lesser/strength
+	name = "bodybuilding manual"
+	attribute = ATTRIBUTE_STRENGTH
+
+/obj/item/experience_scroll/attribute/lesser/fortitude
+	name = "fortitude guidelines"
+	attribute = ATTRIBUTE_FORTITUDE
+
+/obj/item/experience_scroll/attribute/lesser/vitality
+	name = "vitality manual"
+	attribute = ATTRIBUTE_VITALITY
+
+/obj/item/experience_scroll/attribute/lesser/intelligence
+	name = "encyclopedia"
+	attribute = ATTRIBUTE_INTELLIGENCE
+
+/obj/item/experience_scroll/attribute/lesser/willpower
+	name = "motivational quotes and phrases"
+	attribute = ATTRIBUTE_WILLPOWER
+
+/obj/item/experience_scroll/attribute/lesser/wisdom
+	name = "book of wisdom"
+	attribute = ATTRIBUTE_WISDOM
+
+/obj/item/experience_scroll/attribute/lesser/dexterity
+	name = "acrobatics manual"
+	attribute = ATTRIBUTE_DEXTERITY
+
+/obj/item/experience_scroll/attribute/lesser/resilience
+	name = "interrogation tactics book"
+	attribute = ATTRIBUTE_RESILIENCE
+
+/obj/item/experience_scroll/attribute/lesser/endurance
+	name = "fitness manual"
+	attribute = ATTRIBUTE_ENDURANCE

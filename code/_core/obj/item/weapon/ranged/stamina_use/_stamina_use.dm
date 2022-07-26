@@ -13,7 +13,7 @@
 	use_loyalty_tag = TRUE
 	use_iff_tag = FALSE
 
-/obj/item/weapon/ranged/stamina_use/can_gun_shoot(var/mob/caller)
+/obj/item/weapon/ranged/stamina_use/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
 
 	if(get_ammo_count() < 1)
 		return FALSE

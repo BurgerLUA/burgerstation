@@ -40,19 +40,15 @@
 		/obj/item/attachment/barrel/charger/advanced = 1,
 		/obj/item/attachment/barrel/laser_charger/advanced = 1,
 		/obj/item/armor_plate/ultra = 1,
-		/loot/weapon/rifle/minigun = 1,
 		/obj/item/weapon/ranged/bow/hardlight = 1,
 		/obj/item/tempering/magazine/spellswap/magic_missile = 1,
-		/obj/item/tempering/magazine/spellswap/tesla = 1,
-		/loot/weapon/rifle/gauss_carbine = 1,
-		/obj/item/weapon/ranged/energy/gatling = 1
+		/obj/item/tempering/magazine/spellswap/tesla = 1
 	)
 
 /loot/lavaland/broodmother
 	loot_table = list(
 		/obj/item/clothing/head/hat/pete = 1,
 		/obj/item/weapon/melee/staff_of_healing = 1,
-		/loot/weapon/explosive/grenade_launcher = 1,
 		/obj/item/tempering/magazine/spellswap/chaos = 1,
 		/obj/item/tempering/magazine/spellswap/fireball =1
 	)

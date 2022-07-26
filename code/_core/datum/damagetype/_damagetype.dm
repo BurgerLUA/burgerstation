@@ -137,6 +137,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/sneak_attack_multiplier = 2 //200%
 
+	var/alert_on_impact = ALERT_LEVEL_NONE
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -614,7 +616,7 @@ var/global/list/all_damage_numbers = list()
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	if(ENABLE_DAMAGE_NUMBERS && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
+	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
 		var/turf/T = victim.loc
 		if(T)
 			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
@@ -644,6 +646,10 @@ var/global/list/all_damage_numbers = list()
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 
 /damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+
+	if(alert_on_impact != ALERT_LEVEL_NONE)
+		create_alert(2,get_turf(hit_object),blamed,alert_level = alert_on_impact)
+
 	return TRUE
 
 /damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
@@ -782,7 +788,7 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	if(!ENABLE_HIT_MESSAGES)
+	if(!CONFIG("ENABLE_HIT_MESSAGES",FALSE))
 		return FALSE
 
 	attacker.visible_message(\
@@ -794,7 +800,7 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
-	if(!ENABLE_HIT_MESSAGES)
+	if(!CONFIG("ENABLE_HIT_MESSAGES",FALSE))
 		return FALSE
 
 	attacker.visible_message(\
@@ -806,7 +812,7 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
 
-	if(!ENABLE_HIT_MESSAGES)
+	if(!CONFIG("ENABLE_HIT_MESSAGES",FALSE))
 		return FALSE
 
 	attacker.visible_message(\

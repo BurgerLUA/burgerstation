@@ -305,8 +305,8 @@
 /area/mission/prefab/house_04/bedroom)
 "bj" = (
 /obj/structure/table/wood,
-/obj/marker/spawning/random/misc,
 /obj/structure/carpet/red,
+/obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_04/entrance)
 "bk" = (
@@ -376,6 +376,10 @@
 	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_04/bathroom)
+"bv" = (
+/obj/structure/interactive/storage/ammo_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_04)
 
 (1,1,1) = {"
 aa
@@ -528,7 +532,7 @@ ae
 aj
 bi
 ac
-aq
+bv
 aq
 aq
 aE

@@ -5,7 +5,7 @@
 	icon = 'icons/hud/mood.dmi'
 	icon_state = "100"
 	screen_loc = "RIGHT-1,CENTER"
-	flags = FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_MOB
 	layer = 100 //Makes it above the hunger meter.
 	screen_loc = "RIGHT,CENTER-1"
 	var/last_mood = 0

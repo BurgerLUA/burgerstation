@@ -68,10 +68,10 @@
 	var/turf/T = get_turf(src)
 
 	for(var/k in inventories)
-		CHECK_TICK(50,FPS_SERVER*4)
+		CHECK_TICK_SAFE(50,FPS_SERVER*4)
 		var/obj/hud/inventory/I = k
 		for(var/obj/item/container/edible/plant/P in I.contents)
-			CHECK_TICK(50,FPS_SERVER*2)
+			CHECK_TICK_SAFE(50,FPS_SERVER*2)
 			if(!P.plant_type)
 				continue
 			if(P.loc != I)

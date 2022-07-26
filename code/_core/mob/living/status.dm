@@ -15,7 +15,7 @@
 	//Check immunities first.
 	if(!force && length(status_immune) && status_immune[status_type])
 		if(isnum(status_immune[status_type]))
-			if(ENABLE_DAMAGE_NUMBERS && !stealthy)
+			if(!stealthy)
 				var/turf/T = get_turf(src)
 				if(T) new/obj/effect/temp/status_effect(T,duration,"IMMUNE!")
 			return FALSE

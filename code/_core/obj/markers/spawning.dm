@@ -191,7 +191,7 @@
 	name = "random supply crate"
 	icon_state = "supply"
 	possible_objects = list(
-		/obj/item/supply_crate/yankee = 1,
+		/obj/item/supply_crate/solarian = 1,
 		/obj/item/supply_crate/magic = 2,
 		/obj/item/supply_crate/nanotrasen = 3,
 		/obj/item/supply_crate/slavic = 2,

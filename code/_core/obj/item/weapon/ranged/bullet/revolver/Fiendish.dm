@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 3000
 
+	company_type = "Hell"
+
 	tier = 3
 
 	damage_mod = 1.5

@@ -39,8 +39,8 @@
 	owner = null
 	if(container)
 		container.linked_smoke -= src
-		if(length(container.linked_smoke) <= 0)
-			qdel(container) //delete the smoke container if there is no smoke left.
+		if(!container.qdeleting && length(container.linked_smoke) <= 0)
+			qdel(container) //delete the smoke container if there is no smoke left to spread it, as long as it hasn't been deleted already for having no reagents left.
 		container = null
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)

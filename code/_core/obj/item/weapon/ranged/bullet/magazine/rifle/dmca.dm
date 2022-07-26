@@ -4,7 +4,9 @@
 	desc_extended = "The 10x24mm DMCA is an extremely robust automatic weapon capable of sending a volley of high impact rounds at long ranges."
 	icon = 'icons/obj/item/weapons/ranged/rifle/sol/dmca.dmi'
 	icon_state = "inventory"
-	value = 3000
+	value = 5000
+
+	company_type = "Solarian"
 
 	tier = 3
 

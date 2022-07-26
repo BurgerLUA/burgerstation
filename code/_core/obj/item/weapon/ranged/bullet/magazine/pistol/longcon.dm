@@ -4,6 +4,8 @@
 	desc_extended = "A lightweight and compact Syndicate pistol chambered in .45. Tiny, but still gets the job done."
 	value = 800
 
+	company_type = "Syndicate"
+
 	tier = 2
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_4.dmi'
@@ -62,8 +64,8 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread()
+/obj/item/weapon/ranged/bullet/magazine/pistol/longcon/get_static_spread()
 	return 0.0045
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/longcon/get_skill_spread(var/mob/living/L)
 	return max(0,0.0075 - (0.02 * L.get_skill_power(SKILL_RANGED)))

@@ -8,7 +8,7 @@
 
 	item_slot = SLOT_TORSO
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 100
 
@@ -22,9 +22,11 @@
 
 	item_slot = SLOT_TORSO_ARMOR
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_WORN | FLAG_HUD_MOB
 
 	priority = 90
+
+	advanced_layering = TRUE
 
 /obj/hud/inventory/organs/torso_b
 	name = "back slot"
@@ -39,7 +41,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	priority = 10
 
@@ -56,7 +58,7 @@
 
 	essential = TRUE
 
-	flags = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
+	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	max_size = SIZE_10
 

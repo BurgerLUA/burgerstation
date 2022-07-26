@@ -160,3 +160,25 @@
 
 /area/mission/prefab/house_07/guest_bedroom
 	icon_state = "blue"
+
+
+
+//House 08
+/area/mission/prefab/house_08
+	name = "house 08"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house_08/bathroom
+	icon_state = "green"
+
+/area/mission/prefab/house_08/master_bedroom
+	icon_state = "red"
+
+/area/mission/prefab/house_08/entrance
+	icon_state = "purple"
+
+/area/mission/prefab/house_08/closet
+	icon_state = "blue"

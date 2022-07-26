@@ -11,6 +11,8 @@
 	projectile = /obj/projectile/thrown //Something here.
 	shoot_sounds = list('sound/effects/fwoosh.ogg')
 
+	company_type = "Black Spider Clan"
+
 /obj/item/weapon/ranged/thrown/update_icon()
 	. = ..()
 	icon = initial(icon)
