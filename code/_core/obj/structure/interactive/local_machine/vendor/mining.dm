@@ -57,7 +57,7 @@
 		/obj/item/weapon/melee/tool/wrench,
 		/obj/item/supply_remote/drill,
 		/obj/item/flare,
-		/obj/item/container/syringe/medipen/mining
+		/obj/item/container/syringe/medipen/mining,
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
 		/obj/item/crafting/workbench,
