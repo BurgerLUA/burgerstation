@@ -15,6 +15,13 @@
 
 	armor = /armor/leather/mining/elite
 
+/obj/item/clothing/head/helmet/full/seva/mono/mowo
+	name = "cutestom SEWA suwut"
+	desc_extended = "An eastewn euwopean modew of hazawdous enviwoments suit, favowed by scientists, scavengews awnd anomawy wowshipping fanatics awike! thiws iws wevowutionawies' modification fow uwban combat."
+	icon = 'icons/obj/item/clothing/hats/sevamowo_suit.dmi'
+
+	armor = /armor/leather/mining/advanced
+
 /obj/item/clothing/head/helmet/full/seva/syndie
 	name = "fireproof SEVA suit"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike! This is revolutionaries' modification for high temperatures, exported to the Syndicate."
