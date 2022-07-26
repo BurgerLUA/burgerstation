@@ -29,7 +29,7 @@
 
 	unique_pid = loaded_data["unique_pid"]
 	if(!unique_pid)
-		unique_pid = rustg_hash_string(RUSTG_HASH_MD5,"[ckey_last]_[real_name]_[get_date()]_[get_time()]_[world.time]") //I will be made fun of for making this absurdly secure.
+		unique_pid = md5("[ckey_last]_[real_name]_[get_date()]_[get_time()]_[world.time]") //I will be made fun of for making this absurdly detailed.
 
 	sex = loaded_data["sex"]
 	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON

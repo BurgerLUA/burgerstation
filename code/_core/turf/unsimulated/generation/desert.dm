@@ -22,6 +22,8 @@
 	for(var/i=1,i<=max_instances,i++)
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
+	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+
 
 	var/interior = FALSE
 	switch(noise) //0.5 is most common. 0 and 1 is least common.

@@ -49,6 +49,10 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			for(var/k in water_shores)
 				var/turf/simulated/floor/T = k
 				depth = min(1 + get_dist_real(src,T),depth)
+			var/noise = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z]]","[x/world.maxx]","[y/world.maxy]"))
+			noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+
+			depth = depth*0.5 + depth*noise*0.5
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 	else

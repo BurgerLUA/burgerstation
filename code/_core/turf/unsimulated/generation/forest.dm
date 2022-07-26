@@ -22,6 +22,8 @@
 	for(var/i=1,i<=max_instances,i++)
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
+	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+
 
 	var/place_grass = TRUE //Allow placement of tall grass or flowers.
 	var/place_ground = TRUE //Allow placement of ground turfs.
@@ -29,7 +31,7 @@
 	if(noise <= 40) //Forest half.
 		if(prob(10))
 			new /obj/marker/generation/foliage/tree(src)
-			if(prob(40))
+			if(prob(10))
 				new /obj/marker/generation/forest_dirt(src)
 				new /turf/simulated/floor/colored/dirt(src)
 				place_ground = FALSE
