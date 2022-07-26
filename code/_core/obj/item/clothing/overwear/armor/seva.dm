@@ -37,7 +37,7 @@
 
 /obj/item/clothing/overwear/armor/seva/mono/mowo
 	name = "cutestom SEWA suwut"
-	desc_extended = "An eastewn euwopean modew of hazawdous enviwoments suit, favowed by scientists, scavengews awnd anomawy wowshipping fanatics awike! thiws iws wevowutionawies' modification fow uwban combat."
+	desc_extended = "An eawtewn euwopean modew of hawzawdous enviwoments suit, fawvowed by scienwisws, scawengews awnd anomawy wowshipping fanatics awike! thiws iws wevowutionawies' modification fow uwban combat."
 	icon = 'icons/obj/item/clothing/suit/sevamowo_suit.dmi'
 
 	armor = /armor/leather/mining/advanced
