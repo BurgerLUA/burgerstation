@@ -37,9 +37,10 @@
 	.["magic"] = list(
 		"Ohoho, #1 is our specialty. We seek to spread the knowledge of these ancient arcane arts to as many #2s as possible. \
 		We found that we can spread chaos- er I mean corporate profits if we just gave out magic to everyone. \
-		You can purchase magic here out of the convenient vendors here. GOLD ONLY, NO CHECKS OR CREDIT!",
+		You can purchase magic here out of the convenient vendors here. We accept #3 only! NO CHECKS OR CREDIT!",
 		"magic",
-		"Simpleton"
+		"Simpleton",
+		"gold"
 	)
 
 	.["Simpleton"] = list(
@@ -47,4 +48,9 @@
 		we at the #2 don't consider it to be REAL #1 that comes from the SOUL, not the body. We still call it #1 so you all feel better about it!",
 		"magic",
 		"Wizard Federation"
+	)
+
+	.["gold"] = list(
+		"You can get #1 from the goblin merchant just north of the bar from selling items or other currencies. They accept literally anything, including junk!",
+		"gold"
 	)

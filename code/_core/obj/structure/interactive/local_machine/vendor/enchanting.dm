@@ -42,7 +42,10 @@
 		/obj/item/supportgem/cost,
 		/obj/item/supportgem/damage,
 		/obj/item/supportgem/projectiles,
-		/obj/item/supportgem/spread
+		/obj/item/supportgem/spread,
+		/obj/item/supportgem/penetrations,
+		/obj/item/supportgem/speed,
+		/obj/item/supportgem/precision
 	)
 
 	accepts_item = /obj/item/currency/gold_coin

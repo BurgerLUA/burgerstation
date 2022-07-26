@@ -156,9 +156,13 @@
 			maptext = "[nice_number(stored_value)] cr"
 		else
 			maptext = "[nice_number(stored_value)] g"
+		maptext_x = 70
+		maptext_y = 16
 	else
 		name = initial(name)
 		desc = initial(desc)
 		desc_extended = initial(desc_extended)
-		maptext = null
+		maptext = "Click and drag an item here."
+		maptext_x = 5
+		maptext_y = 16
 	tooltip_text = get_tooltip_text()

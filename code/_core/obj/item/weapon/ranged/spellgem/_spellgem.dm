@@ -10,7 +10,7 @@
 
 	var/cost_mana = 0
 
-	var/spread_per_shot = 1 //Angle to add per shot.
+	var/spread_per_shot = 5 //Angle to add per shot.
 
 	automatic = TRUE
 
