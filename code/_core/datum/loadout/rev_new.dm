@@ -23,8 +23,7 @@
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he,
-		/loot/rev
+		/obj/item/grenade/fuse/he
 	)
 
 /loadout/rev/solider/alt
@@ -50,8 +49,7 @@
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he,
-		/loot/rev
+		/obj/item/grenade/fuse/he
 	)
 
 
@@ -76,8 +74,7 @@
 		/obj/item/magazine/bizon_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he,
-		/loot/rev
+		/obj/item/grenade/fuse/he
 	)
 
 /loadout/rev/exo
@@ -101,8 +98,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/grenade/fuse/he,
-		/loot/rev
+		/obj/item/grenade/fuse/he
 	)
 
 /loadout/rev/sniper
