@@ -7,20 +7,20 @@
 		if(S.blood_level_hard < BLOOD_LIMIT_HARD && S.blood_level < BLOOD_LIMIT)
 			var/obj/item/foot_left = labeled_organs[BODY_FOOT_LEFT]?.get_top_object()
 			var/obj/item/foot_right = labeled_organs[BODY_FOOT_RIGHT]?.get_top_object()
-			if(foot_left?.blood_stain_intensity > 2)
+			if(foot_left && foot_left.blood_stain_intensity > 2)
 				var/obj/effect/cleanable/blood/footprint/F = new(S)
 				F.set_dir(dir)
 				F.icon_state = "human_left_[enter ? "enter" : "exit"]"
 				F.alpha = clamp(((foot_left.blood_stain_intensity-2)/2)*255,10,255)
 				F.color = foot_left.blood_stain_color
-				foot_left.set_bloodstain(max(2,foot_left.blood_stain_intensity - 0.1))
-			if(foot_right?.blood_stain_intensity > 2)
+				foot_left.set_bloodstain(max(foot_left.blood_stain_intensity - 0.3,2)) //Lower the bloodstain to 2.
+			if(foot_right && foot_right.blood_stain_intensity > 2)
 				var/obj/effect/cleanable/blood/footprint/F = new(S)
 				F.set_dir(dir)
 				F.icon_state = "human_right_[enter ? "enter" : "exit"]"
 				F.alpha = clamp(((foot_right.blood_stain_intensity-2)/2)*255,10,255)
 				F.color = foot_right.blood_stain_color
-				foot_right.set_bloodstain(max(2,foot_right.blood_stain_intensity - 0.1))
+				foot_right.set_bloodstain(max(foot_right.blood_stain_intensity - 0.3,2)) //Lower the bloodstain to 2.
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
@@ -134,7 +134,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(is_simulated(T))
 			var/turf/simulated/S = T
 			if(S.blood_level_hard > 0 && S.blood_level > 0) //Has blood.
-				//S.add_blood_level(-1)
+				S.add_blood_level(-1) //So blood stops leaving footprints if it gets crossed over too much.
 				//Step 1: Get the bodypart defines that are supposed to get messy.
 				var/list/blood_items = list()
 				if(horizontal) //Crawling.

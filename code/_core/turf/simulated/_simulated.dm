@@ -64,7 +64,6 @@
 		update_overlays()
 	return TRUE
 
-
 /turf/simulated/proc/add_blood_level(var/amount_to_add,var/minimus=0,var/desired_color)
 	if(desired_color && desired_color != blood_color)
 		if(!blood_level || !blood_color)
@@ -76,10 +75,6 @@
 
 /turf/simulated/proc/add_blood_level_hard(var/amount_to_add,var/minimus=0)
 	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
-	if(blood_level_hard > 0)
-		SSturf.blood_turfs |= src
-	else
-		SSturf.blood_turfs -= src
 	return TRUE
 
 /turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)

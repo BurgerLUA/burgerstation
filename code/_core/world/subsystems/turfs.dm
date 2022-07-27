@@ -14,10 +14,6 @@ SUBSYSTEM_DEF(turf)
 	var/list/icon_cache = list()
 	var/saved_icons = 0
 
-	var/list/blood_turfs = list()
-
-
-
 /subsystem/turf/unclog(var/mob/caller)
 
 	for(var/k in wet_turfs)
