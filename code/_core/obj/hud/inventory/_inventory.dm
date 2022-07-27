@@ -333,18 +333,22 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE)
+/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/error_on_fail=FALSE)
 
 	if(!I)
+		if(error_on_fail) log_error("add_object() fail: Item didn't exist!")
 		return FALSE
 
 	if(bypass_checks && max_slots <= 0)
+		if(error_on_fail) log_error("add_object() fail: No max slots!")
 		return FALSE
 
 	if(!bypass_checks && !can_slot_object(I,messages))
+		if(error_on_fail) log_error("add_object() fail: Could not slot object!")
 		return FALSE
 
 	if(I.qdeleting)
+		if(error_on_fail) log_error("add_object() fail: Object was qdeleting!")
 		I.drop_item(null)
 		return FALSE
 
@@ -364,7 +368,6 @@
 				A.held_objects += I
 				update_held_icon(I)
 			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
-
 
 	update_stats()
 

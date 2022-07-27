@@ -323,10 +323,9 @@
 /mob/living/vehicle/mech/modular/set_dir(var/desired_dir,var/force=FALSE)
 
 	if(!mech_body)
-		dir = SOUTH
-		return TRUE
+		desired_dir = SOUTH
 
-	return ..()
+	. = ..()
 
 
 /mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damage_type/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)

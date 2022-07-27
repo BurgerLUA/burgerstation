@@ -59,7 +59,6 @@
 	zoom_pixel_y = desired_y_offset*TILE_SIZE*ZOOM_RANGE*zoom_mul
 
 
-
 /client/proc/handle_camera()
 
 	//Burger here.
@@ -79,29 +78,16 @@
 			pixel_y = final_pixel_y
 		return TRUE
 
-	var/desired_smoothed_pixel_x = 0
-	var/desired_smoothed_pixel_y = 0
-
 	//Camera punching. Things like explosions.
 	if(queued_shakes > 0)
-		desired_smoothed_pixel_x += rand(-TILE_SIZE*4,TILE_SIZE*4)
-		desired_smoothed_pixel_y += rand(-TILE_SIZE*4,TILE_SIZE*4)
+		final_pixel_x += rand(-TILE_SIZE*4,TILE_SIZE*4)
+		final_pixel_y += rand(-TILE_SIZE*4,TILE_SIZE*4)
 		queued_shakes--
 
 	//Zooming.
 	if(is_zoomed)
-		desired_smoothed_pixel_x -= zoom_pixel_x
-		desired_smoothed_pixel_y -= zoom_pixel_y
-
-	//Do the smoothing.
-	var/total_difference = abs(desired_smoothed_pixel_x - pixel_x) + abs(desired_smoothed_pixel_y - pixel_y)
-	if(total_difference > 0)
-		var/diff_mod = clamp(total_difference*0.1,1,20)
-		var/max_speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
-		var/x_mod = clamp(desired_smoothed_pixel_x - pixel_x,-max_speed,max_speed) //Difference
-		var/y_mod = clamp(desired_smoothed_pixel_y - pixel_y,-max_speed,max_speed) //Difference
-		final_pixel_x -= x_mod
-		final_pixel_y -= y_mod
+		final_pixel_x += zoom_pixel_x
+		final_pixel_y += zoom_pixel_y
 
 	//Do recoil
 	if(recoil_pixel_x != 0)
@@ -114,11 +100,11 @@
 		final_pixel_y += recoil_pixel_y
 
 	//Done.
-	var/rounded_pixel_x = final_pixel_x ? round(final_pixel_x,1) : 0
-	var/rounded_pixel_y = final_pixel_y ? round(final_pixel_y,1) : 0
-	if(pixel_x != rounded_pixel_x)
-		pixel_x = rounded_pixel_x
-	if(pixel_y != rounded_pixel_y)
-		pixel_y = rounded_pixel_y
+	final_pixel_x = final_pixel_x ? round(final_pixel_x,1) : 0
+	final_pixel_y = final_pixel_y ? round(final_pixel_y,1) : 0
+	if(pixel_x != final_pixel_x)
+		pixel_x = final_pixel_x
+	if(pixel_y != final_pixel_y)
+		pixel_y = final_pixel_y
 
 	return TRUE

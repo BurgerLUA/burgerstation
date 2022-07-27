@@ -148,8 +148,7 @@
 
 /mob/set_dir(var/desired_dir,var/force=FALSE)
 
-	if(!force)
-		if(client && client.is_zoomed)
-			desired_dir = client.is_zoomed
+	if(!force && client && client.is_zoomed)
+		desired_dir = client.is_zoomed
 
 	. = ..()

@@ -187,13 +187,12 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
-	if(driving)
+	if(!force && grabbing_hand)
+		desired_dir = dir
+	else if(driving)
 		desired_dir = driving.dir
 	else
 		desired_dir = get_true_4dir_advanced(dir,desired_dir)
-
-	if(!force && grabbing_hand)
-		return FALSE
 
 	. = ..()
 

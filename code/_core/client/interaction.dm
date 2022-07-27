@@ -237,10 +237,10 @@
 			is_zoomed = get_dir_advanced(mob,location)
 			mob.set_dir(is_zoomed)
 			update_camera_offset(offsets[1],offsets[2])
-		else if(is_living(mob))
+		if(is_living(mob))
 			var/mob/living/L = mob
 			if(L.intent == INTENT_HARM)
-				mob.set_dir(get_dir_advanced(mob,location))
+				if(!is_zoomed) mob.set_dir(get_dir_advanced(mob,location))
 				for(var/k in mob.light_sprite_sources)
 					var/obj/light_sprite/LS = k
 					if(LS.icon_state != "cone")
