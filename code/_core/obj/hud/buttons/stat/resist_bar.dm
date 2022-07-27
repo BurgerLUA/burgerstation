@@ -17,8 +17,8 @@
 	alpha = 0
 
 /obj/hud/button/stat/resist_bar/Destroy()
-	. = ..()
 	QDEL_NULL(stored_line)
+	. = ..()
 
 /obj/hud/button/stat/resist_bar/New(var/desired_loc)
 	. = ..()

@@ -7,6 +7,15 @@
 /mob/proc/clear_color_mods()
 	color_mods = list()
 
+/mob/proc/add_lighting_mod(var/id,var/lighting_mod)
+	lighting_mods[id] = lighting_mod
+
+/mob/proc/remove_lighting_mod(var/id)
+	lighting_mods -= id
+
+/mob/proc/clear_lighting_mods()
+	lighting_mods = list()
+
 /client/proc/update_color_mods()
 
 	if(!mob)
@@ -31,18 +40,6 @@
 	animate(src,color = desired_color,time = TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	return TRUE
-
-
-
-
-/mob/proc/add_lighting_mod(var/id,var/lighting_mod)
-	lighting_mods[id] = lighting_mod
-
-/mob/proc/remove_lighting_mod(var/id)
-	lighting_mods -= id
-
-/mob/proc/clear_lighting_mods()
-	lighting_mods = list()
 
 /client/proc/update_lighting_mods()
 

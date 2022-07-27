@@ -165,7 +165,7 @@
 	to_chat(span("notice","You jumped to [A]'s location."))
 	log_admin("[src] jumped to [A]'s (area) location.")
 
-
+/*
 /client/verb/adjust_nightvision()
 	set name = "Adjust Nightvision"
 	set category = "View"
@@ -180,3 +180,4 @@
 		mob.add_lighting_mod("verb",desired_nightvision)
 	else
 		mob.remove_lighting_mod("verb")
+*/

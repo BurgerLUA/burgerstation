@@ -16,6 +16,7 @@
 
 	item_slot_layer = 1
 
+/*
 /obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
@@ -35,4 +36,5 @@
 		)
 		new_location.owner.add_color_mod("eyes",desired_color)
 		new_location.owner.add_lighting_mod("\ref[src]",100)
+*/
 

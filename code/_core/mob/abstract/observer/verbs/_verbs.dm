@@ -11,7 +11,6 @@
 		client.verbs += /client/verb/jump_to_area
 		client.verbs += /client/verb/jump_to_mob
 		client.verbs += /client/verb/orbit_mob
-		client.verbs += /client/verb/adjust_nightvision
 
 	return ..()
 

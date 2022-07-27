@@ -66,8 +66,8 @@
 				stored_hud_images += L.medical_hud_image_advanced
 				images += L.medical_hud_image_advanced
 
-	update_color_mods()
-	update_lighting_mods()
+	//update_color_mods()
+	//update_lighting_mods()
 
 	return TRUE
 
