@@ -116,7 +116,7 @@
 /obj/item/container/syringe/medipen/mining/Generate()
 	reagents.add_reagent(/reagent/medicine/inaprovaline,20)
 	reagents.add_reagent(/reagent/medicine/omnizine,10)
+	reagents.add_reagent(/reagent/medicine/tricordrazine,10)
 	reagents.add_reagent(/reagent/medicine/adrenaline,10)
-	reagents.add_reagent(/reagent/medicine/synthflesh,10)
 	reagents.add_reagent(/reagent/medicine/painkiller/morphine,10)
 	return ..()
