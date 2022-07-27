@@ -66,7 +66,24 @@
 
 	if(!. && objective_attack && objective_distance <= VIEW_RANGE && is_living(objective_attack))
 		if(X.ranged && world.time >= next_shot && objective_distance >= 2)
-			X.shoot_projectile(X,objective_attack,null,null,/obj/projectile/bullet/laser,/damagetype/ranged/swarmerstun,16,16,0,TILE_SIZE*0.5,1,"#0aa7ce",0,0,1,X.iff_tag,X.loyalty_tag)
+			X.shoot_projectile(
+				X,
+				objective_attack,
+				null,
+				null,
+				/obj/projectile/bullet/laser,
+				/damagetype/ranged/swarmerstun,
+				16,
+				16,
+				0,
+				TILE_SIZE*0.5,
+				1,
+				"#0aa7ce",
+				0,
+				1,
+				X.iff_tag,
+				X.loyalty_tag
+			)
 			next_shot = world.time + SECONDS_TO_DECISECONDS(1)
 			return TRUE
 

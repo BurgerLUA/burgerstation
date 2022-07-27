@@ -36,6 +36,6 @@ SUBSYSTEM_DEF(discord)
 		"Content-Type" = "application/json"
 	)
 
-	rustg_http_request_blocking(RUSTG_HTTP_METHOD_POST,"https://discordapp.com/api/webhooks/[discord_webhook_key]",json_encode(webhook_forum_params),json_encode(webhook_header_params))
+	rustg_http_request_async(RUSTG_HTTP_METHOD_POST,"https://discordapp.com/api/webhooks/[discord_webhook_key]",json_encode(webhook_forum_params),json_encode(webhook_header_params),"")
 
 	return TRUE

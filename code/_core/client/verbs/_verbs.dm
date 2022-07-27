@@ -62,7 +62,6 @@
 		verbs += /client/verb/jump_to_area
 		verbs += /client/verb/jump_to_client
 		verbs += /client/verb/jump_to_mob
-		verbs += /client/verb/adjust_nightvision
 		verbs += /client/verb/bring_player
 		verbs += /client/verb/ic_announcement
 		verbs += /client/verb/ooc_announcement

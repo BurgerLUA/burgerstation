@@ -25,7 +25,24 @@
 			return TRUE
 
 		if(X.can_spit && world.time >= next_spit && objective_distance >= 4)
-			X.shoot_projectile(X,objective_attack,null,null,/obj/projectile/bullet/spit,/damagetype/ranged/spit/,16,16,0,TILE_SIZE*0.5,1,"#FFFFFF",0,0,1,X.iff_tag,X.loyalty_tag)
+			X.shoot_projectile(
+				X,
+				objective_attack,
+				null,
+				null,
+				/obj/projectile/bullet/spit,
+				/damagetype/ranged/spit,
+				16,
+				16,
+				0,
+				TILE_SIZE*0.5,
+				1,
+				"#FFFFFF",
+				0,
+				1,
+				X.iff_tag,
+				X.loyalty_tag
+			)
 			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 

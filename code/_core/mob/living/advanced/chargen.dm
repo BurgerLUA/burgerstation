@@ -6,8 +6,8 @@
 	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)
 
-	nutrition *= RAND_PRECISE(0.5,0.75)
-	hydration *= RAND_PRECISE(0.5,0.75)
+	nutrition *= 0.75
+	hydration *= 0.75
 
 	/*
 	if(client)

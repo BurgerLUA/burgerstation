@@ -78,7 +78,8 @@
 	if(ismob(victim))
 		var/mob/M = victim
 		if(M.client)
-			M.client.add_queued_recoil(offsets[1]*multiplier,offsets[2]*multiplier,attack_delay)
+			M.client.recoil_pixel_x -= offsets[1]*multiplier
+			M.client.recoil_pixel_y -= offsets[2]*multiplier
 
 
 

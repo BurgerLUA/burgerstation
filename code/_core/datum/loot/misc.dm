@@ -117,7 +117,6 @@
 		/obj/item/clothing/mask/gas/poly/grey = 50,
 		/obj/item/clothing/glasses/medical_hud = 10,
 		/obj/item/clothing/glasses/medical_hud/advanced = 5,
-		/obj/item/clothing/glasses/nightvision = 5,
 		/obj/item/clothing/glasses/sun = 20,
 		/obj/item/clothing/head/hat/bandana/red = 20,
 		/obj/item/clothing/head/hat/beret/armored = 10,

@@ -417,27 +417,6 @@
 
 	affects_dead = FALSE
 
-/status_effect/druggy/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
-
-	if(owner && owner.client)
-		var/power = 1 + clamp(duration*0.1,0,min(5,magnitude*0.1))
-		var/list/desired_color_mod = list(
-			power,0,0,0,
-			0,power,0,0,
-			0,0,power,0,
-			0,0,0,1,
-			0,0,0,0
-		)
-		owner.update_eyes()
-		owner.add_color_mod("druggy",desired_color_mod)
-
-	return TRUE
-
-/status_effect/druggy/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
-	if(owner && owner.client)
-		owner.remove_color_mod("druggy")
-	return TRUE
-
 /status_effect/stressed
 	name = "Stressed"
 	desc = "You're stressed!"
@@ -448,24 +427,6 @@
 	default_duration = SECONDS_TO_DECISECONDS(60)
 
 	affects_dead = FALSE
-
-/status_effect/stressed/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
-
-	if(owner && owner.client)
-		var/list/desired_color_mod = list(
-			0.33,0.33,0.33,0,
-			0.33,0.33,0.33,0,
-			0.33,0.33,0.33,0,
-			0,0,0,1,
-			0,0,0,0
-		)
-		owner.update_eyes()
-		owner.add_color_mod("stressed",desired_color_mod)
-
-/status_effect/stressed/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
-	if(owner && owner.client)
-		owner.remove_color_mod("stressed")
-	return TRUE
 
 /status_effect/painkiller
 	name = "Painkiller"

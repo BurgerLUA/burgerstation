@@ -26,7 +26,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/print_garbage,
 	/client/verb/set_skill,
 	/client/verb/set_attribute,
-	/client/verb/horde_test_preview
+	/client/verb/horde_test_preview,
+	/client/verb/test_rust_g
 )
 
 /client/verb/view_dps()
@@ -587,6 +588,12 @@ var/global/list/debug_verbs = list(
 		tracked_zombies += Z
 
 
+/client/verb/test_rust_g()
+	set name = "Test rust-g"
+	set category = "Debug"
+	src.to_chat(span("notice","rust-g version: [rustg_get_version()]"))
+	var/noise_result = rustg_noise_get_at_coordinates("[rand(1,10000)]","0.5","0.5")
+	src.to_chat(span("notice","Example noise: [noise_result]"))
 
 
 

@@ -102,7 +102,6 @@
 		1,
 		COLOR_BULLET,
 		0,
-		0,
 		1,
 		iff_tag,
 		loyalty_tag

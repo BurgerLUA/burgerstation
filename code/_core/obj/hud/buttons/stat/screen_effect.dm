@@ -60,6 +60,7 @@
 			alpha = clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
 			maptext = null
 
+		/*
 		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
 
 			var/health_loss = 1 - min(1,(health - (L.health.damage[PAIN]-L.pain_removal))/max_health)
@@ -78,6 +79,7 @@
 			)
 
 			owner.add_color_mod("health",desired_color)
+		*/
 
 	else if(dir in DIRECTIONS_INTERCARDINAL)
 

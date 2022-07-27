@@ -22,11 +22,11 @@
 	var/frozen = FALSE
 
 /obj/hud/button/lockpicking/Destroy()
-	. = ..()
-	associated_chest = null
 	QDEL_NULL(linked_lock)
 	QDEL_NULL(linked_pick)
 	QDEL_NULL(linked_wedge)
+	associated_chest = null
+	. = ..()
 
 /obj/hud/button/lockpicking/update_owner(var/mob/desired_owner)
 

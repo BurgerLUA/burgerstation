@@ -11,6 +11,7 @@
 
 	item_slot_layer = 2
 
+/*
 /obj/item/clothing/glasses/sun/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
@@ -28,6 +29,7 @@
 			0,0,0,0
 		)
 		new_location.owner.add_color_mod("eyes",desired_color)
+*/
 
 
 /obj/item/clothing/glasses/sun/big

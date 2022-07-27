@@ -58,7 +58,24 @@
 		if(length(possible_targets))
 			var/mob/living/advanced/A = pick(possible_targets)
 
-			src.shoot_projectile(src,A,null,null,/obj/projectile/magic/rift/revive,/damagetype/ranged/magic/fireball,16,16,0,TILE_SIZE*0.25,1,"#FFFFFF",0,0,1,null,src.loyalty_tag)
+			src.shoot_projectile(
+				src,
+				A,
+				null,
+				null,
+				/obj/projectile/magic/rift/revive,
+				/damagetype/ranged/magic/fireball,
+				16,
+				16,
+				0,
+				TILE_SIZE*0.25,
+				1,
+				"#FFFFFF",
+				0,
+				1,
+				null,
+				src.loyalty_tag
+			)
 
 			next_revive = world.time + SECONDS_TO_DECISECONDS(5)
 

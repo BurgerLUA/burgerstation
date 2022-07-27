@@ -802,7 +802,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			return
 		M.client.update_zoom(initial(M.client.zoom_level))
 		M.client.update_verbs()
-		M.client.update_color_mods()
+		//M.client.update_color_mods()
 		M.restore_inventory()
 		M.restore_buttons()
 		QUEUE_HEALTH_UPDATE(M)

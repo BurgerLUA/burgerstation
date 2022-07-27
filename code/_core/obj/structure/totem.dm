@@ -262,7 +262,24 @@
 	if(!length(chooseEnemies))
 		return
 	for(var/i in 1 to leveled_effect)
-		shoot_projectile(src, pick(chooseEnemies), null, null, chosenProjectile, chosenDamageType, 16, 16, 0, TILE_SIZE*0.5, 1, "#FFFFFF", 0, 0, 1, affecting_faction, affecting_faction)
+		shoot_projectile(
+			src,
+			pick(chooseEnemies),
+			null,
+			null,
+			chosenProjectile,
+			chosenDamageType,
+			16,
+			16,
+			0,
+			TILE_SIZE*0.5,
+			1,
+			"#FFFFFF",
+			0,
+			1,
+			affecting_faction,
+			affecting_faction
+		)
 
 /obj/structure/totem/projectile/frost_spray
 	name = "totem of frost spray"

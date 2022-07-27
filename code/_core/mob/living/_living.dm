@@ -4,7 +4,7 @@
 	stamina_base = 50
 	mana_base = 50
 
-	sight = SEE_BLACKNESS //| SEE_PIXELS
+	sight = SEE_BLACKNESS | SEE_SELF//| SEE_PIXELS
 
 	enable_chunk_clean = TRUE
 

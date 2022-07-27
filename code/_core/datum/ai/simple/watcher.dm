@@ -23,7 +23,24 @@
 
 	if(projectile_count > 0)
 		play_sound('sound/weapons/freeze.ogg',get_turf(owner))
-		owner.shoot_projectile(owner,objective_attack,null,null,/obj/projectile/magic/crystal/ice,/damagetype/ranged/laser/freezegun,16,16,0,TILE_SIZE*0.5,1,"#FFFFFF",0,0,1,owner.iff_tag,owner.loyalty_tag)
+		owner.shoot_projectile(
+			owner,
+			objective_attack,
+			null,
+			null,
+			/obj/projectile/magic/crystal/ice,
+			/damagetype/ranged/laser/freezegun,
+			16,
+			16,
+			0,
+			TILE_SIZE*0.5,
+			1,
+			"#FFFFFF",
+			0,
+			1,
+			owner.iff_tag,
+			owner.loyalty_tag
+		)
 		owner.set_dir(get_dir(owner,objective_attack))
 		projectile_count--
 	else
@@ -47,7 +64,24 @@
 
 	if(projectile_count > 0)
 		play_sound('sound/weapons/freeze.ogg',get_turf(owner))
-		owner.shoot_projectile(owner,objective_attack,null,null,/obj/projectile/bullet/laser,/damagetype/ranged/laser/rifle,16,16,0,TILE_SIZE*0.9,1,"#FF0000",0,0,1,owner.iff_tag,owner.loyalty_tag)
+		owner.shoot_projectile(
+			owner,
+			objective_attack,
+			null,
+			null,
+			/obj/projectile/bullet/laser,
+			/damagetype/ranged/laser/rifle,
+			16,
+			16,
+			0,
+			TILE_SIZE*0.9,
+			1,
+			"#FF0000",
+			0,
+			1,
+			owner.iff_tag,
+			owner.loyalty_tag
+		)
 		owner.set_dir(get_dir(owner,objective_attack))
 		projectile_count--
 	else

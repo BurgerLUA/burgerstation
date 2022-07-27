@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(cargo)
 		if(P.qdeleting)
 			log_error("Invalid cargo entry: [P.get_debug_name()].")
 			continue
-		var/md5_hash = copytext(rustg_hash_string(RUSTG_HASH_MD5,"[P.type]"),1,6)
+		var/md5_hash = copytext(md5("[P.type]"),1,6)
 		cargo_id_to_type[md5_hash] = P
 
 	sortTim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)

@@ -20,7 +20,7 @@
 	if(all_telecomms[A.area_identifier])
 		for(var/k in all_telecomms[A.area_identifier])
 			var/obj/structure/interactive/telecomms/TC = k
-			TC.add_data(rustg_hash_string(RUSTG_HASH_SHA1,"\ref[speaker],\ref[source],[text_to_say]"),radio_data)
+			TC.add_data(md5("\ref[speaker],\ref[source],[text_to_say]"),radio_data)
 
 	play_sound('sound/items/radio.ogg',get_turf(source),range_max=VIEW_RANGE)
 

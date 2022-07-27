@@ -19,6 +19,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	var/dialogue_target_id
 	var/atom/dialogue_target
 
+	see_invisible = INVISIBILITY_NO_PLAYERS
 	invisibility = INVISIBILITY_PLAYERS
 
 	var/spam_protection_command = 0
@@ -219,10 +220,6 @@ var/global/list/difficulty_to_damage_mul = list(
 		linked_portals = null
 
 	return TRUE
-
-/mob/living/advanced/player/on_life_client()
-	. = ..()
-	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
 
 /mob/living/advanced/player/post_move(var/atom/old_loc)
 

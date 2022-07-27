@@ -23,7 +23,24 @@
 	if(!. && objective_attack)
 
 		if(world.time >= next_spit && get_dist(objective_attack,owner) >= 4)
-			owner_as_queen.shoot_projectile(owner_as_queen,objective_attack,null,null,/obj/projectile/bullet/spit,/damagetype/ranged/spit/,16,16,0,TILE_SIZE*0.5,1,"#FFFFFF",0,0,1,owner_as_queen.iff_tag,owner_as_queen.loyalty_tag)
+			owner_as_queen.shoot_projectile(
+				owner_as_queen,
+				objective_attack,
+				null,
+				null,
+				/obj/projectile/bullet/spit,
+				/damagetype/ranged/spit/,
+				16,
+				16,
+				0,
+				TILE_SIZE*0.5,
+				1,
+				"#FFFFFF",
+				0,
+				1,
+				owner_as_queen.iff_tag,
+				owner_as_queen.loyalty_tag
+			)
 			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
 			return TRUE
 

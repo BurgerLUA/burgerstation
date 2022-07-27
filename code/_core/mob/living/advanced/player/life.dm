@@ -34,3 +34,6 @@
 	return TRUE
 
 
+/mob/living/advanced/player/on_life_client()
+	. = ..()
+	if(spam_protection_command > 0) spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))

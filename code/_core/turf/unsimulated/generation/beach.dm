@@ -22,6 +22,8 @@
 	for(var/i=1,i<=max_instances,i++)
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
+	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+
 
 	new /turf/simulated/floor/colored/sand/beach(src) //Not sure what the noise profile should be so its this for now.
 
