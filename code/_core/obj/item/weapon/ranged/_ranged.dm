@@ -539,7 +539,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		if(prone) accuracy_loss *= prone_mod
 		projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE - 1)
 
-		var/view_punch_time = shoot_delay
 		shoot_projectile(
 			caller,
 			object,
@@ -554,7 +553,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			bullet_count_to_use,
 			bullet_color_to_use,
 			view_punch_to_use,
-			view_punch_time,
 			damage_multiplier_to_use,
 			iff_tag ? iff_tag : null,
 			loyalty_tag ? loyalty_tag : null,
@@ -655,7 +653,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/view_punch_time=2,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
 	if(!target) CRASH("There is no valid target defined!")
 
@@ -712,15 +710,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 			projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE-1)
 
-			if(i == 1 && view_punch && view_punch_time > 0 && ismob(caller))
+			if(i == 1 && view_punch && ismob(caller))
 				var/mob/M = caller
 				if(M.client)
-					M.client.add_queued_recoil(
-						-view_punch*normx,
-						-view_punch*normy,
-						view_punch * 1/(view_punch_time),
-						view_punch * 1/(view_punch_time*2)
-					)
+					M.client.recoil_pixel_x -= view_punch*normx
+					M.client.recoil_pixel_y -= view_punch*normy
 
 			var/mod = HYPOTENUSE(normx,normy)
 			var/x_vel = normx * projectile_speed_to_use / mod

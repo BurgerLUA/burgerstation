@@ -6,8 +6,8 @@ SUBSYSTEM_DEF(client)
 
 	var/advanced_ticks = 0
 
-	cpu_usage_max = 0 //Uncapped.
-	tick_usage_max = 0 //Uncapped.
+	cpu_usage_max = 100
+	tick_usage_max = 100
 
 	use_time_dialation = FALSE
 
@@ -23,6 +23,7 @@ SUBSYSTEM_DEF(client)
 		do_slow = TRUE
 		advanced_ticks = 0
 
+	//This handles life ticks for all players.
 	for(var/ckey in all_clients) //This should never be tick checked.
 		var/client/C = all_clients[ckey]
 		if(!C)
@@ -32,6 +33,7 @@ SUBSYSTEM_DEF(client)
 		C.on_life()
 		if(do_slow)
 			C.on_life_slow()
+		sleep(-1)
 
 	for(var/k in queued_automatics)
 		var/obj/item/weapon/ranged/R = k

@@ -221,10 +221,6 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	return TRUE
 
-/mob/living/advanced/player/on_life_client()
-	. = ..()
-	spam_protection_command = max(0,spam_protection_command-TICKS_TO_SECONDS(1))
-
 /mob/living/advanced/player/post_move(var/atom/old_loc)
 
 	. = ..()

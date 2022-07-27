@@ -62,131 +62,63 @@
 
 /client/proc/handle_camera()
 
+	//Burger here.
+	//I suspect setting the client's pixel_x and pixel_y causes lag, so they're checked.
+
+	var/final_pixel_x = 0
+	var/final_pixel_y = 0
+
+	//For when the mob is in a projectile or something. The code below it doesn't need to run so it returns.
 	if(mob && !mob.z && mob.loc)
 		var/atom/A = mob.loc
-		pixel_x = round(A.pixel_x,1)
-		pixel_y = round(A.pixel_y,1)
+		final_pixel_x = round(A.pixel_x,1)
+		final_pixel_y = round(A.pixel_y,1)
+		if(pixel_x != final_pixel_x)
+			pixel_x = final_pixel_x
+		if(pixel_y != final_pixel_y)
+			pixel_y = final_pixel_y
 		return TRUE
 
-	var/calculated_pixel_x = 0
-	var/calculated_pixel_y = 0
+	var/desired_smoothed_pixel_x = 0
+	var/desired_smoothed_pixel_y = 0
 
-	var/desired_punch_x = 0
-	var/desired_punch_y = 0
+	//Camera punching. Things like explosions.
 	if(queued_shakes > 0)
-		desired_punch_x = rand(-TILE_SIZE*4,TILE_SIZE*4)
-		desired_punch_y = rand(-TILE_SIZE*4,TILE_SIZE*4)
+		desired_smoothed_pixel_x += rand(-TILE_SIZE*4,TILE_SIZE*4)
+		desired_smoothed_pixel_y += rand(-TILE_SIZE*4,TILE_SIZE*4)
 		queued_shakes--
 
-	var/zoom_offset_x = is_zoomed ? zoom_pixel_x : 0
-	var/zoom_offset_y = is_zoomed ? zoom_pixel_y : 0
+	//Zooming.
+	if(is_zoomed)
+		desired_smoothed_pixel_x -= zoom_pixel_x
+		desired_smoothed_pixel_y -= zoom_pixel_y
 
-	var/desired_pixel_x = zoom_offset_x + desired_punch_x //Where we want to move.
-	var/desired_pixel_y = zoom_offset_y + desired_punch_y //Where we want to move.
+	//Do the smoothing.
+	var/total_difference = abs(desired_smoothed_pixel_x - pixel_x) + abs(desired_smoothed_pixel_y - pixel_y)
+	if(total_difference > 0)
+		var/diff_mod = clamp(total_difference*0.1,1,20)
+		var/max_speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
+		var/x_mod = clamp(desired_smoothed_pixel_x - pixel_x,-max_speed,max_speed) //Difference
+		var/y_mod = clamp(desired_smoothed_pixel_y - pixel_y,-max_speed,max_speed) //Difference
+		final_pixel_x -= x_mod
+		final_pixel_y -= y_mod
 
-	var/total_difference = abs(desired_pixel_x - final_pixel_x) + abs(desired_pixel_y - final_pixel_y)
-	var/diff_mod = clamp(total_difference*0.1,1,20)
-	var/max_speed = CEILING(TILE_SIZE * 0.1 * diff_mod,1)
-	var/x_mod = clamp(desired_pixel_x - final_pixel_x,-max_speed,max_speed) //How fast we can move.
-	var/y_mod = clamp(desired_pixel_y - final_pixel_y,-max_speed,max_speed) //How fast we can move.
-	final_pixel_x += x_mod
-	final_pixel_y += y_mod
+	//Do recoil
+	if(recoil_pixel_x != 0)
+		var/math_mod_x = recoil_pixel_x*0.5
+		recoil_pixel_x -= clamp(recoil_pixel_x,-math_mod_x,math_mod_x)
+		final_pixel_x += recoil_pixel_x
+	if(recoil_pixel_y != 0)
+		var/math_mod_y = recoil_pixel_y*0.5
+		recoil_pixel_y -= clamp(recoil_pixel_y,-math_mod_y,math_mod_y)
+		final_pixel_y += recoil_pixel_y
 
-	calculated_pixel_x += final_pixel_x
-	calculated_pixel_y += final_pixel_y
-
-	var/time_mul = TICKS_TO_DECISECONDS(CLIENT_TICK)
-
-	for(var/k in queued_recoil)
-		var/list/data = k
-		var/current_x = data[1]
-		var/current_y = data[2]
-		var/initial_recoil_x = data[3]
-		var/initial_recoil_y = data[4]
-
-		var/initial_speed_mul_x = data[5]
-		var/initial_speed_mul_y = data[6]
-
-		var/recovery_speed_mul_x = data[7] * time_mul
-		var/recovery_speed_mul_y = data[8] * time_mul
-
-		var/recovering = data[9]
-
-		var/finished = 0
-
-		//x
-		var/x_diff = 0
-		if(!recovering) // Going forward. Initial.
-			x_diff = clamp(initial_recoil_x - current_x,-initial_speed_mul_x,initial_speed_mul_x)
-		else
-			x_diff = clamp(0 - current_x,-recovery_speed_mul_x,recovery_speed_mul_x)
-		if(x_diff)
-			data[1] += x_diff
-		else
-			finished++
-
-		//y
-		var/y_diff = 0
-		if(!recovering) // Going forward. Initial.
-			y_diff = clamp(initial_recoil_y - current_y,-initial_speed_mul_y,initial_speed_mul_y)
-		else
-			y_diff = clamp(0 - current_y,-recovery_speed_mul_y,recovery_speed_mul_y)
-		if(y_diff)
-			data[2] = data[2] + y_diff
-		else
-			finished++
-
-		if(finished >= 2)
-			if(recovering)
-				queued_recoil -= k
-			else
-				data[9] = TRUE //recovering
-
-		calculated_pixel_x += data[1]
-		calculated_pixel_y += data[2]
-
-	//animate(src,pixel_x = calculated_pixel_x, pixel_y = calculated_pixel_y, time = TICKS_TO_DECISECONDS(CLIENT_TICK))
-
-	pixel_x = round(calculated_pixel_x,1)
-	pixel_y = round(calculated_pixel_y,1)
-
-	return TRUE
-
-
-/client/proc/add_queued_recoil(var/initial_recoil_x=0,var/initial_recoil_y=0,var/initial_speed=1,var/recovery_speed=1,var/recovering=FALSE)
-
-	initial_speed = abs(initial_speed)
-	recovery_speed = abs(recovery_speed)
-
-	var/abs_initial_recoil_x = abs(initial_recoil_x)
-	var/abs_initial_recoil_y = abs(initial_recoil_y)
-
-	var/speed_mul_x = abs_initial_recoil_x < abs_initial_recoil_y ? abs_initial_recoil_x/abs_initial_recoil_y : 1
-	var/speed_mul_y = abs_initial_recoil_y < abs_initial_recoil_x ? abs_initial_recoil_y/abs_initial_recoil_x : 1
-
-	var/desired_speed_x = initial_speed * speed_mul_x
-	var/desired_speed_y = initial_speed * speed_mul_y
-
-	if(desired_speed_x > 0)
-		desired_speed_x = max(TILE_SIZE*0.5,desired_speed_x) //Get largest.
-	else if(desired_speed_x < 0)
-		desired_speed_x = min(-TILE_SIZE*0.5,desired_speed_x) //Get smallest
-
-	if(desired_speed_y > 0)
-		desired_speed_y = max(TILE_SIZE*0.5,desired_speed_y) //Get largest.
-	else if(desired_speed_y < 0)
-		desired_speed_y = min(-TILE_SIZE*0.5,desired_speed_y) //Get smallest
-
-	queued_recoil += list(list(
-		0,
-		0,
-		clamp(initial_recoil_x,-TILE_SIZE*2,TILE_SIZE*2),
-		clamp(initial_recoil_y,-TILE_SIZE*2,TILE_SIZE*2),
-		desired_speed_x,
-		desired_speed_y,
-		recovery_speed * speed_mul_x,
-		recovery_speed * speed_mul_y,
-		recovering
-	))
+	//Done.
+	var/rounded_pixel_x = final_pixel_x ? round(final_pixel_x,1) : 0
+	var/rounded_pixel_y = final_pixel_y ? round(final_pixel_y,1) : 0
+	if(pixel_x != rounded_pixel_x)
+		pixel_x = rounded_pixel_x
+	if(pixel_y != rounded_pixel_y)
+		pixel_y = rounded_pixel_y
 
 	return TRUE

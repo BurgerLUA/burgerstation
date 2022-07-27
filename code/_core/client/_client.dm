@@ -68,12 +68,6 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/permissions = FLAG_PERMISSION_NONE
 
-	var/zoom_pixel_x = 0
-	var/zoom_pixel_y = 0
-
-	var/final_pixel_x = 0
-	var/final_pixel_y = 0
-
 	var/precise_zoom = FALSE
 
 	var/byond_member = FALSE
@@ -90,7 +84,11 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/drag_last = 0
 
-	var/list/queued_recoil = list()
+	var/zoom_pixel_x = 0
+	var/zoom_pixel_y = 0
+
+	var/recoil_pixel_x = 0
+	var/recoil_pixel_y = 0
 
 /client/proc/is_player_controlled()
 	return TRUE //duh

@@ -74,7 +74,6 @@
 	var/bullet_count = 1
 	var/bullet_color = "#FFFFFF"
 	var/view_punch = 0
-	var/view_punch_time = 0
 	var/damage_multiplier = 1
 	var/inaccuracy_modifier = 1
 	var/penetrations = 0
@@ -111,7 +110,6 @@
 		bullet_count,
 		bullet_color,
 		view_punch,
-		view_punch_time,
 		damage_multiplier,
 		desired_iff_tag,
 		desired_loyalty_tag,

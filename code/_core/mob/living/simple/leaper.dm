@@ -166,7 +166,6 @@
 		1,
 		"#FFFFFF",
 		0,
-		0,
 		1,
 		iff_tag,
 		loyalty_tag
