@@ -797,7 +797,7 @@ var/global/list/rarity_to_mul = list(
 	if(desired_color)
 		blood_stain_color = desired_color
 
-	//If the old values are the same as the new levels, don't even bother doing an update.
+	//If the old values are the same as the new levels, don't even bother doing a visual update.
 	if(!force && CEILING(old_level,1) == CEILING(blood_stain_intensity,1) && old_color == desired_color)
 		return FALSE
 

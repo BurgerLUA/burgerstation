@@ -144,8 +144,7 @@
 			continue
 		missing_organs += organ_list_to_use[organ_id]
 	if(length(missing_organs))
-		log_error("WARNING: [src.get_debug_name()] had [length(missing_organs)] missing organs when loading!")
-		to_chat(span("danger","WARNING: You had missing organs when loading, this is a result of save corruption. Please inform Burger on discord when you saved last and how you saved last with as much details as possible."))
+		log_error("WARNING: [src.get_debug_name()] had [length(missing_organs)] missing organs ([english_list(missing_organs)]) when loading!")
 		var/list/blend_data = list()
 		if(labeled_organs[BODY_TORSO])
 			var/obj/item/organ/O = labeled_organs[BODY_TORSO]

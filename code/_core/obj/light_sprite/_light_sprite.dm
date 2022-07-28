@@ -20,7 +20,7 @@
 	owner = null
 	return ..()
 
-/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE)
+/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE) //Override default.
 	if(icon_state == "cone" && is_living(top_atom))
 		var/mob/living/L = top_atom
 		if(L.intent == INTENT_HARM && (L.client || L.ai?.objective_attack))

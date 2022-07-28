@@ -43,15 +43,14 @@
 
 /obj/effect/cleanable/blood/proc/update_blood_level(var/turf/simulated/new_loc,var/turf/simulated/old_loc)
 
-	if(blood_level < 0)
-		return FALSE
+
 
 	if(istype(new_loc))
-		new_loc.add_blood_level(blood_level,desired_color=color)
+		if(blood_level > 0) new_loc.add_blood_level(blood_level,desired_color=color)
 		new_loc.add_blood_level_hard(1)
 
 	if(istype(old_loc))
-		old_loc.add_blood_level(-blood_level)
+		if(blood_level > 0) old_loc.add_blood_level(-blood_level)
 		old_loc.add_blood_level_hard(-1)
 
 	return TRUE
@@ -93,7 +92,7 @@
 	icon = 'icons/obj/effects/footprints.dmi'
 	icon_state = "human"
 	randomize_angle = FALSE
-	blood_level = 1
+	blood_level = -1
 
 /obj/effect/cleanable/blood/line/
 	name = "blood line"

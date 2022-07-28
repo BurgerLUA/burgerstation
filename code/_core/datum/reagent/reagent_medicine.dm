@@ -110,8 +110,6 @@
 	owner.burn_regen_buffer += 3*.*multiplier
 	owner.tox_regen_buffer += 3*.*multiplier
 
-	owner << 2*.*multiplier
-
 /reagent/medicine/stamina_potion
 	name = "Stamina Juice"
 	desc = "Restores your energy. Magical!"

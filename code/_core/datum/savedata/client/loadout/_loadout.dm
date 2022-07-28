@@ -111,7 +111,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 			P.to_chat(span("danger","Could not load item of type [data["type"]] as it doesn't exist anymore!"))
 			continue
 		var/obj/hud/inventory/I2 = data["original_slot"] ? P.inventories_by_id[data["original_slot"]] : null
-		var/success = I2 ? I2.add_object(I,messages=FALSE,silent=TRUE) : I.quick_equip(P,silent=TRUE)
+		var/success = I2 ? I2.add_object(I,messages=FALSE,silent=TRUE,error_on_fail=FALSE) : I.quick_equip(P,silent=TRUE)
 		if(success)
 			total_value += I.get_value()
 		else

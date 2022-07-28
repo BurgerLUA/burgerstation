@@ -38,7 +38,8 @@
 /proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE)
 
 	if(!object_data)
-		log_error("Tried to create an object with a null object_data list!")
+		//log_error("Tried to create an object with a null object_data list!")
+		//Not actually an error. It is intentional to load/save blank spots in order to preserve inventory item location.
 		return FALSE
 
 	if(length(object_data) <= 0 )
@@ -189,11 +190,11 @@
 	if(length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
-			var/reagent/R = text2path(r_id)
-			if(!R)
-				log_error("Load item error: Tried loading an invalid reagent [r_id]!")
+			var/R_path = text2path(r_id)
+			if(!R_path)
+				log_error("LOAD ERROR: Tried loading an invalid reagent [r_id]!")
 				continue
-			reagents.add_reagent(R,volume,TNULL,FALSE)
+			reagents.add_reagent(R_path,volume,TNULL,FALSE)
 		reagents.update_container()
 	return TRUE
 
@@ -209,22 +210,22 @@
 		if(inventory_data["held"])
 			for(var/i=1,i<=length(inventory_data["held"]),i++)
 				var/obj/item/I = load_and_create(P,inventory_data["held"][i],T)
-				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
-					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
-					I.drop_item(get_step(P,P.dir),silent=TRUE)
+				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE,error_on_fail=TRUE))
+					log_error("LOAD ERROR: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
+					if(!I.qdeleting) I.drop_item(get_step(P,P.dir),silent=TRUE)
 
 		if(inventory_data["worn"])
 			for(var/i=1,i<=length(inventory_data["worn"]),i++)
 				var/obj/item/I = load_and_create(P,inventory_data["worn"][i],T)
-				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
-					log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
-					I.drop_item(get_step(P,P.dir),silent=TRUE)
+				if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE,error_on_fail=TRUE))
+					log_error("LOAD ERROR: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
+					if(!I.qdeleting) I.drop_item(get_step(P,P.dir),silent=TRUE)
 	else
 		for(var/i=1,i<=length(inventory_data),i++)
 			var/obj/item/I = load_and_create(P,inventory_data[i],T)
-			if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE))
-				log_error("WARNING: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
-				I.drop_item(get_step(P,P.dir),silent=TRUE)
+			if(I && !src.add_object(I,TRUE,TRUE,silent=TRUE,error_on_fail=TRUE))
+				log_error("LOAD ERROR: Could not add \the [I.get_debug_name()] to \the [src.get_debug_name()]!")
+				if(!I.qdeleting) I.drop_item(get_step(P,P.dir),silent=TRUE)
 
 	if(ultra_persistant)
 		for(var/k in all_players)

@@ -75,11 +75,11 @@
 	if(length(object_data["reagents_toppings"]))
 		for(var/r_id in object_data["reagents_toppings"])
 			var/volume = object_data["reagents_toppings"][r_id]
-			var/reagent/R = text2path(r_id)
-			if(!R)
+			var/R_path = text2path(r_id)
+			if(!R_path)
 				log_error("Load item error: Tried loading an invalid reagent [r_id]!")
 				continue
-			reagents_toppings.add_reagent(R,volume,TNULL,FALSE)
+			reagents_toppings.add_reagent(R_path,volume,TNULL,FALSE)
 		reagents_toppings.update_container()
 
 /obj/item/container/edible/dynamic/pizza/Initialize()
