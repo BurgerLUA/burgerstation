@@ -67,7 +67,7 @@
 	new /obj/item/container/blood_pack/full/rad_be_gone(src)
 	new /obj/item/storage/pillbottle/potassium_iodide_small(src)
 	new /obj/item/container/syringe/medipen/dylovene(src)
-	new /obj/item/container/simple/vodka(src)
+	new /obj/item/container/simple/alcohol/vodka(src)
 	. = ..()
 
 

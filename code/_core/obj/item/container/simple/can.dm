@@ -1,11 +1,3 @@
-/obj/item/container/simple/
-	var/initial_reagent = null
-
-/obj/item/container/simple/Generate()
-	. = ..()
-	if(initial_reagent)
-		reagents.add_reagent(initial_reagent,reagents.volume_max)
-
 /obj/item/container/simple/can
 	name = "generic soda can"
 	desc = "ERROR."
@@ -149,8 +141,3 @@
 	reagents.add_reagent(/reagent/nutrition/soda/space_up,reagents.volume_max)
 	open = FALSE
 	return ..()
-
-/obj/item/container/simple/can/get_consume_verb()
-	return "drink"
-/obj/item/container/simple/can/get_consume_sound()
-	return 'sound/items/consumables/drink.ogg'

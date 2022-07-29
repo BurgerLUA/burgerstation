@@ -278,8 +278,8 @@
 	)
 
 	possible_extra_weapon = list(
-		/obj/item/container/simple/whiskey = 3,
-		/obj/item/container/simple/beer = 4,
+		/obj/item/container/simple/alcohol/whiskey = 3,
+		/obj/item/container/simple/alcohol/beer = 4,
 		/obj/item/container/simple/beaker/glass = 1,
 		/obj/item/container/simple/beaker/shot = 1
 	)

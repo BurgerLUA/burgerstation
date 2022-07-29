@@ -167,7 +167,7 @@
 		/obj/item/container/edible/package/junkfood/jerky,
 		/obj/item/container/edible/package/junkfood/chips,
 		/obj/item/container/simple/can/grey_bull,
-		/obj/item/container/simple/vodka,
+		/obj/item/container/simple/alcohol/vodka,
 		/obj/item/container/simple/beaker/flask/russian,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
@@ -212,7 +212,7 @@
 		/obj/item/container/edible/package/junkfood/jerky,
 		/obj/item/container/edible/package/junkfood/chips,
 		/obj/item/container/simple/can/grey_bull,
-		/obj/item/container/simple/vodka,
+		/obj/item/container/simple/alcohol/vodka,
 		/obj/item/container/simple/beaker/flask/russian,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
 		/obj/item/fulton_pack
