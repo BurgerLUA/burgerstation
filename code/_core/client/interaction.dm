@@ -37,7 +37,7 @@
 	object = object.defer_click_on_object(mob,location,control,new_params)
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
-	return TRUE
+	. = ..()
 
 /client/Click(var/atom/object,location,control,params)
 
@@ -66,7 +66,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		examine(object)
 
-	return TRUE
+	. = ..()
 
 /client/MouseDown(var/atom/object,location,control,params)
 
@@ -125,7 +125,7 @@
 		else
 			examine(object)
 
-	return TRUE
+	. = ..()
 
 /client/MouseUp(var/atom/object,location,control,params)
 
@@ -158,7 +158,7 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.on_right_up(object,location,control,new_params)
 
-	return TRUE
+	. = ..()
 
 /client/MouseDrop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
 
@@ -194,7 +194,7 @@
 	if(click_flags & CLICK_MIDDLE)
 		mob.on_middle_drop(src_object,over_object,src_location,over_location,src_control,over_control,new_params)
 
-	return TRUE
+	. = ..()
 
 
 /client/MouseDrag(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
@@ -210,7 +210,7 @@
 	if(!screen_loc || abs(mouse_down_x - screen_loc[1]) + abs(mouse_down_y - screen_loc[2]) < 4)
 		return FALSE
 
-	return TRUE
+	. = ..()
 
 /client/MouseEntered(object,location,control,params)
 
@@ -247,7 +247,8 @@
 						continue
 					LS.set_dir(SOUTH)
 					LS.transform = LS.get_base_transform()
-	return TRUE
+
+	. = ..()
 
 /client/proc/store_new_params(object,location,params)
 	last_params = params

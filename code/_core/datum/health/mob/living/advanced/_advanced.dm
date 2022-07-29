@@ -132,18 +132,18 @@
 
 	if(health_regeneration > 0)
 		if(health_current <= 0) //In crit.
-			health_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
+			health_regeneration = 2 + (A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*18)
 		else
-			health_regeneration = (1 + A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
+			health_regeneration = 1 + (A.get_attribute_power(ATTRIBUTE_FORTITUDE,0,1,5)*9)
 
 	if(stamina_regeneration > 0)
 		if(A.has_status_effects(STAMCRIT,SLEEP,REST))
-			stamina_regeneration = (3 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*27)
+			stamina_regeneration = 20 + (A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*30)
 		else
-			stamina_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*18)
+			stamina_regeneration = 10 + (A.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,5)*20)
 
 	if(mana_regeneration > 0)
-		mana_regeneration = (2 + A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*18)
+		mana_regeneration = 10 + (A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*20)
 
 
 
