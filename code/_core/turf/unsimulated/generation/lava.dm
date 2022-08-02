@@ -25,6 +25,10 @@ var/global/list/possible_lavaland_decor = list(
 	name = "lava generation"
 	icon_state = "lava"
 
+/turf/unsimulated/generation/lava/path
+	icon_state = "lava_path"
+	allow_wall = FALSE
+
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
 	if(!allow_wall)
@@ -33,17 +37,10 @@ var/global/list/possible_lavaland_decor = list(
 		if(src.loc.type == /area/) new /area/mission/lava(src)
 		return ..()
 
-	if(x <= VIEW_RANGE || x >= size - VIEW_RANGE || y <= VIEW_RANGE || y >= size - VIEW_RANGE) //Handle corners.
+	if(x <= VIEW_RANGE || x >= size - VIEW_RANGE || y <= VIEW_RANGE || y >= size - VIEW_RANGE) //Handle edges.
 		new /turf/simulated/liquid/lava(src)
 		if(prob(2))
 			new /obj/marker/generation/lava(src)
-		if(src.loc.type == /area/) new /area/mission/lava(src)
-		return ..()
-
-	if(y <= VIEW_RANGE*4 && prob(y - VIEW_RANGE*4)) //Handle spacious lower section.
-		new /turf/simulated/floor/basalt(src)
-		if(prob(1))
-			new /obj/marker/generation/basalt(src)
 		if(src.loc.type == /area/) new /area/mission/lava(src)
 		return ..()
 
@@ -56,10 +53,6 @@ var/global/list/possible_lavaland_decor = list(
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
-
-
-	//More likely to get lava at edges.
-	noise -= (abs(x - x/2)/size + abs(y - y/2)/size)*0.5
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)
