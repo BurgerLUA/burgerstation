@@ -249,11 +249,11 @@
 
 /loot/misc/baking
 	loot_table = list(
-		/obj/item/container/simple/flour = 200,
-		/obj/item/container/simple/sugar = 50,
-		/obj/item/container/simple/corn_flour = 25,
-		/obj/item/container/simple/cream = 25,
-		/obj/item/container/simple/milk = 50,
+		/obj/item/container/simple/baking/flour = 200,
+		/obj/item/container/simple/baking/sugar = 50,
+		/obj/item/container/simple/baking/corn_flour = 25,
+		/obj/item/container/simple/baking/cream = 25,
+		/obj/item/container/simple/baking/milk = 50,
 		/obj/item/storage/egg_carton = 20,
 
 

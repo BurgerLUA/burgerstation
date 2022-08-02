@@ -8,11 +8,11 @@
 	name = "kitchen smart fridge"
 	stored_types = list(
 		/obj/item/container/simple/beaker/vial/enzymes,
-		/obj/item/container/simple/flour,
-		/obj/item/container/simple/sugar,
-		/obj/item/container/simple/milk,
-		/obj/item/container/simple/cream,
-		/obj/item/container/simple/corn_flour,
+		/obj/item/container/simple/baking/flour,
+		/obj/item/container/simple/baking/sugar,
+		/obj/item/container/simple/baking/milk,
+		/obj/item/container/simple/baking/cream,
+		/obj/item/container/simple/baking/corn_flour,
 		/obj/item/storage/egg_carton,
 		/obj/item/container/edible/dynamic/meat/raw,
 		/obj/item/container/simple/beaker/bottle/large/water,
