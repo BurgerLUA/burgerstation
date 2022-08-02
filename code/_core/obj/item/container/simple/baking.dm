@@ -2,6 +2,7 @@
 	name = "sack of white flour"
 	icon = 'icons/obj/item/container/cooking.dmi'
 	icon_state = "flour"
+	reagents = /reagent_container/beaker/large
 
 /obj/item/container/simple/flour/Generate()
 	reagents.add_reagent(/reagent/nutrition/wheat_grain/flour/processed,reagents.volume_max)

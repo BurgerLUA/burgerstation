@@ -4,7 +4,7 @@
 
 /turf/unsimulated/generation/jungle_deep/path
 	icon_state = "jungle_deep_path"
-	allow_wall = FALSE
+	density = FALSE
 
 /turf/unsimulated/generation/jungle_deep/generate(var/size = WORLD_SIZE)
 
@@ -17,24 +17,21 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
-
-
-	//More likely to get lava at edges.
-	noise -= (abs(x - x/2)/size + abs(y - y/2)/size)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 	switch(noise)
 		if(-INFINITY to 0.05)
-			if(!allow_wall)
+			if(!density)
 				new /turf/simulated/floor/basalt(src)
 			else
 				new /turf/simulated/wall/rock/basalt(src)
 		if(0.05 to 0.1)
-			if(!allow_wall)
+			if(!density)
 				new /turf/simulated/floor/basalt(src)
 			else
 				new /turf/simulated/liquid/lava(src)
 		if(0.1 to 0.11)
-			if(!allow_wall && prob(1))
+			if(!density && prob(1))
 				new /obj/marker/generation/basalt_wall(src)
 			else if(prob(2))
 				new /obj/marker/generation/mob/ash_walker(src)
@@ -80,11 +77,11 @@
 				new /obj/marker/generation/foliage/jungle_light/mine(src)
 			else if(prob(1))
 				new /obj/marker/generation/foliage/grass/jungle(src)
-			else if(allow_wall && prob(3))
+			else if(density && prob(3))
 				new /obj/marker/generation/foliage/tree/jungle(src)
 				if(prob(0.5))
 					new /obj/marker/generation/jungle_dirt(src)
-			else if(allow_wall && prob(1))
+			else if(density && prob(1))
 				new  /obj/marker/generation/foliage/tree/jungle(src)
 				if(prob(1))
 					new /obj/marker/generation/jungle_dirt(src)
@@ -108,7 +105,7 @@
 				new /obj/marker/generation/mob/venus_human_trap(src)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 		if(0.42 to 0.44)
-			if(!allow_wall)
+			if(!density)
 				if(prob(1))
 					new /obj/marker/generation/jungle_wall(src)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
@@ -119,7 +116,7 @@
 		if(0.44 to 0.45)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
 		if(0.45 to 0.47)
-			if(!allow_wall)
+			if(!density)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
 			else
 				if(prob(1))
@@ -138,7 +135,7 @@
 				new /obj/marker/generation/mob/arachnid(src)
 			else if(prob(2))
 				new /obj/marker/generation/foliage/jungle_light/mine(src)
-			else if(allow_wall)
+			else if(density)
 				if(prob(3))
 					new /obj/marker/generation/foliage/tree/jungle(src)
 					if(prob(0.5))
@@ -157,7 +154,7 @@
 				new /obj/marker/generation/foliage/jungle_light/stick(src)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 		if(0.85 to 0.9)
-			if(!allow_wall)
+			if(!density)
 				if(prob(5))
 					new /obj/marker/generation/foliage/bushes/fern(src)
 				new /turf/simulated/floor/colored/dirt/jungle(src)
@@ -166,7 +163,7 @@
 					new /obj/marker/generation/jungle_wall(src)
 				new /turf/simulated/liquid/water/river/jungle(src)
 		if(0.9 to INFINITY)
-			if(!allow_wall)
+			if(!density)
 				if(prob(5))
 					new /obj/structure/scenery/rocks(src)
 				new /turf/simulated/floor/colored/dirt/jungle(src)

@@ -4,11 +4,11 @@
 
 /turf/unsimulated/generation/desert/path
 	icon_state = "desert_path"
-	allow_wall = FALSE
+	density = FALSE
 
 /turf/unsimulated/generation/desert/generate(var/size = WORLD_SIZE)
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/sand/desert(src)
 		if(src.loc.type == /area/) new /area/mission/desert(src)
 		disallow_generation = TRUE
@@ -23,6 +23,7 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 
 	var/interior = FALSE

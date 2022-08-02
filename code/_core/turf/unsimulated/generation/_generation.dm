@@ -5,7 +5,9 @@ var/global/list/turf_check_directions = list(NORTH,EAST,SOUTH,WEST)
 	var/is_different = FALSE
 	var/is_next_to_interior = FALSE
 	var/is_next_to_null_area = FALSE
-	var/allow_wall = TRUE
+	var/is_next_to_dense_turf = FALSE
+	density = TRUE
+
 
 /turf/unsimulated/generation/proc/pre_generate()
 
@@ -17,6 +19,8 @@ var/global/list/turf_check_directions = list(NORTH,EAST,SOUTH,WEST)
 			is_next_to_interior = TRUE
 			break
 		var/area/A = T.loc
+		if(T.density)
+			is_next_to_dense_turf = TRUE
 		if(T.parent_type != src.type && T.type != src.parent_type)
 			is_different = TRUE
 		if(A.interior)

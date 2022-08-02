@@ -1,7 +1,6 @@
 /obj/item/container/simple/
 	var/initial_reagent = null
 
-
 /obj/item/container/simple/quick(var/mob/caller,var/atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 
@@ -40,10 +39,11 @@
 		INTERACT_CHECK
 		INTERACT_DELAY(1)
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			var/choice = input("How much do you want to transfer at once?","Min: 0.5 Max: [reagents.volume_max]") as null|num
+			var/choice = input("How much do you want to transfer at once?","Min: 1, Max: [reagents.volume_max]") as null|num
 			INTERACT_CHECK
 			if(choice)
-				transfer_amount = clamp(choice,0.5,reagents.volume_max)
+				transfer_amount = clamp(choice,1,reagents.volume_max)
+				transfer_amount = CEILING(transfer_amount,1)
 				caller.to_chat(span("notice","You will now transfer [transfer_amount] units at a time with \the [src]."))
 			return TRUE
 

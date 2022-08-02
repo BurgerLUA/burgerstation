@@ -4,11 +4,11 @@
 
 /turf/unsimulated/generation/beach/path
 	icon_state = "beach_path"
-	allow_wall = FALSE
+	density = FALSE
 
 /turf/unsimulated/generation/beach/generate(var/size = WORLD_SIZE)
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/sand/beach(src)
 		if(src.loc.type == /area/) new /area/mission/beach(src)
 		disallow_generation = TRUE
@@ -23,6 +23,7 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 
 	new /turf/simulated/floor/colored/sand/beach(src) //Not sure what the noise profile should be so its this for now.

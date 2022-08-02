@@ -237,7 +237,7 @@ dmm_suite
 									instance = new /turf/simulated/floor/cave_dirt(location)
 						else if(istype(location,/turf/unsimulated/generation))
 							var/turf/unsimulated/generation/G = location
-							G.allow_wall = FALSE
+							G.density = FALSE
 						else
 							instance = new /turf/simulated/floor/cave_dirt(location)
 					else

@@ -27,11 +27,11 @@ var/global/list/possible_lavaland_decor = list(
 
 /turf/unsimulated/generation/lava/path
 	icon_state = "lava_path"
-	allow_wall = FALSE
+	density = FALSE
 
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/basalt(src)
 		disallow_generation = TRUE
 		if(src.loc.type == /area/) new /area/mission/lava(src)
@@ -53,6 +53,7 @@ var/global/list/possible_lavaland_decor = list(
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)

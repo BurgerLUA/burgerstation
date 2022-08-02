@@ -5,7 +5,7 @@
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
 	if(x <= 10 || y <= 10 || x >= world.maxx-10 || y >= world.maxy-10)
-		if(!allow_wall)
+		if(!density)
 			new /turf/simulated/floor/cave_dirt(src)
 		else
 			new /turf/simulated/wall/rock/snow(src)
@@ -14,7 +14,7 @@
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow/interior(src)
 		return ..()
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/snow(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		return ..()
@@ -29,6 +29,7 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 
 	switch(noise) //Lower values means deeper.
@@ -71,7 +72,7 @@
 
 /turf/unsimulated/generation/snow/path/generate(var/size = WORLD_SIZE)
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/snow(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		disallow_generation = TRUE

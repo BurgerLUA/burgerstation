@@ -4,11 +4,11 @@
 
 /turf/unsimulated/generation/forest_cave/path
 	icon_state = "caves_path"
-	allow_wall = FALSE
+	density = FALSE
 
 /turf/unsimulated/generation/forest_cave/generate(var/size = WORLD_SIZE)
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
 		disallow_generation = TRUE
@@ -33,6 +33,7 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 
 	switch(noise)
@@ -78,7 +79,7 @@
 			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(3))
 				new /obj/marker/generation/cave_dirt_colored(src)
-		if(0.8 to 1)
+		if(0.8 to INFINITY)
 			if(prob(1))
 				new /turf/simulated/floor/cave_dirt(src)
 				new /obj/marker/generation/cave_dirt(src)

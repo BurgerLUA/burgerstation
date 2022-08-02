@@ -4,11 +4,11 @@
 
 /turf/unsimulated/generation/jungle/path
 	icon_state = "jungle_path"
-	allow_wall = FALSE
+	density = FALSE
 
 /turf/unsimulated/generation/jungle/generate(var/size = WORLD_SIZE)
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/dirt/jungle(src)
 		if(src.loc.type == /area/) new /area/mission/jungle(src)
 		disallow_generation = TRUE
@@ -29,6 +29,7 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 
 
@@ -62,7 +63,7 @@
 		if(0.13 to 0.15)
 			if(prob(10))
 				new /obj/marker/generation/foliage/grass/jungle/rock(src)
-			if(allow_wall &&prob(1))
+			if(density &&prob(1))
 				new /obj/marker/generation/mob/venus_human_trap(src)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 		if(0.15 to 0.4)
@@ -79,14 +80,14 @@
 					new /obj/marker/generation/jungle_dirt(src)
 			else if(prob(2))
 				new /obj/marker/generation/foliage/bushes/fern(src)
-			if(allow_wall && prob(1))
+			if(density && prob(1))
 				new /obj/marker/generation/mob/venus_human_trap(src)
 		if(0.4 to 0.42)
 			if(prob(5))
 				new /obj/marker/generation/foliage/grass/jungle/rock(src)
 				if(prob(5))
 					new /obj/marker/generation/jungle_dirt(src)
-			if(allow_wall &&prob(1))
+			if(density &&prob(1))
 				new /obj/marker/generation/mob/venus_human_trap(src)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 		if(0.42 to 0.44)
@@ -102,7 +103,7 @@
 			if(prob(1))
 				new /obj/marker/generation/jungle_wall(src)
 		if(0.47 to 0.48)
-			if(allow_wall &&prob(1))
+			if(density &&prob(1))
 				new /obj/marker/generation/mob/arachnid(src)
 			new /turf/simulated/floor/colored/dirt/jungle(src)
 		if(0.48 to 0.85)
@@ -117,13 +118,13 @@
 				new /obj/marker/generation/foliage/grass/jungle/rock(src)
 			else if(prob(2))
 				new /obj/marker/generation/foliage/bushes/fern(src)
-			if(allow_wall && prob(1))
+			if(density && prob(1))
 				new /obj/marker/generation/mob/venus_human_trap(src)
 		if(0.85 to 0.87)
 			new /turf/simulated/floor/colored/grass/jungle(src)
 			if(prob(5))
 				new /obj/marker/generation/foliage/grass/jungle/rock(src)
-			if(allow_wall && prob(1))
+			if(density && prob(1))
 				new /obj/marker/generation/mob/venus_human_trap(src)
 		if(0.87 to 0.9)
 			new /turf/simulated/liquid/water/river/jungle(src)
