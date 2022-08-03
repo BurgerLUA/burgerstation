@@ -14,6 +14,12 @@
 #define TURF_CONTENT_LIMIT 100
 
 
-// #define MAX_MESSAGE_LEN 512
-// #define MAX_SAVED_CHARACTERS 10 //Maximum amount of saved characters a player can have at once.
-// #define CHARGEN_DEFAULT_LEVEL 1 //Every skill, except luck, starts at this level.
+// https://www.desmos.com/calculator/wdafgsn1tz
+#define NOISE_CURVES 1
+#define NOISE_INSTANCES 10
+
+#define GENERATION_SEGMENT_LOWEST 0.1
+#define GENERATION_SEGMENT_LOW 0.3
+#define GENERATION_SEGMENT_MID 0.5
+#define GENERATION_SEGMENT_HIGH 0.7
+#define GENERATION_SEGMENT_HIGHEST 0.9

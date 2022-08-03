@@ -1,12 +1,11 @@
 /mob/living/simple/spacecarp/
-	name = "space carp"
+	name = "giant carp"
 	desc = "Wait, where is the space?"
 	icon = 'icons/mob/living/simple/carp.dmi'
 	icon_state = "living"
 
 	ai = /ai/carp
 	damage_type = /damagetype/unarmed/bite/
-
 
 	health_base = 150
 	stamina_base = 100
@@ -87,7 +86,7 @@
 	update_sprite()
 
 /mob/living/simple/spacecarp/leader
-	name = "alpha space carp"
+	name = "alpha giant carp"
 
 	level = 30
 

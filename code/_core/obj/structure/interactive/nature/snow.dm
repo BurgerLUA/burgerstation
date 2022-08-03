@@ -32,6 +32,12 @@ obj/structure/scenery/bush/snow/New()
 	mouse_opacity = 1
 	density = TRUE
 
+/obj/structure/interactive/tree/Finalize()
+	. = ..()
+	if(is_simulated(src.loc))
+		var/turf/simulated/T = src.loc
+		T.map_color = blend_colors((T.map_color ? T.map_color : "#FFFFFF"),"#597F0C",0.5)
+
 /obj/structure/interactive/tree/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 

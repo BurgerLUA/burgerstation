@@ -1,3 +1,21 @@
+
+
+/*
+	switch(noise)
+		if(-INFINITY to GENERATION_SEGMENT_LOWEST)
+
+		if(GENERATION_SEGMENT_LOWEST to GENERATION_SEGMENT_LOW)
+
+		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_MID)
+
+		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH)
+
+		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
+
+		if(GENERATION_SEGMENT_HIGHEST to INFINITY)
+
+*/
+
 var/global/list/turf_check_directions = list(NORTH,EAST,SOUTH,WEST)
 
 /turf/unsimulated/generation
@@ -21,7 +39,7 @@ var/global/list/turf_check_directions = list(NORTH,EAST,SOUTH,WEST)
 		var/area/A = T.loc
 		if(T.density)
 			is_next_to_dense_turf = TRUE
-		if(T.parent_type != src.type && T.type != src.parent_type)
+		if(src.type != T.type && src.parent_type != T.type && src.type != T.parent_type)
 			is_different = TRUE
 		if(A.interior)
 			is_next_to_interior = TRUE

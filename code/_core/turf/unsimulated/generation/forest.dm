@@ -14,61 +14,95 @@
 		disallow_generation = TRUE
 		return ..()
 
+	if(!is_next_to_interior && is_different && !is_next_to_dense_turf)
+		new /turf/simulated/wall/rock(src)
+		if(src.loc.type == /area/) new /area/mission/forest(src)
+		disallow_generation = TRUE
+		return ..()
+
 	var/x_seed = x / size
 	var/y_seed = y / size
 
-	var/max_instances = 3
+	var/max_instances = NOISE_INSTANCES
 	var/noise = 0
 	for(var/i=1,i<=max_instances,i++)
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
-	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
-	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
+	if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
 
 
-	var/place_grass = TRUE //Allow placement of tall grass or flowers.
-	var/place_ground = TRUE //Allow placement of ground turfs.
-
-	if(noise <= 40) //Forest half.
-		if(prob(10))
-			new /obj/marker/generation/foliage/tree(src)
-			if(prob(10))
-				new /obj/marker/generation/forest_dirt(src)
-				new /turf/simulated/floor/colored/dirt(src)
-				place_ground = FALSE
-				place_grass = FALSE
-		else if(prob(2))
-			var/atom/chosen_bush = pick(/obj/marker/generation/foliage/bushes/leafy,/obj/marker/generation/foliage/bushes/stalk)
-			new chosen_bush(src)
-	else //Grass half. Less trees.
-		if(prob(1))
-			new /obj/marker/generation/foliage/tree(src)
+	switch(noise)
+		if(-INFINITY to GENERATION_SEGMENT_LOWEST)
+			new /turf/simulated/liquid/water/river(src)
+		if(GENERATION_SEGMENT_LOWEST to GENERATION_SEGMENT_LOW)
+			new /turf/simulated/floor/colored/dirt(src)
+		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_MID) //Low, place grass.
+			new /turf/simulated/floor/colored/grass(src)
 			if(prob(1))
-				new /obj/marker/generation/forest_dirt(src)
-				new /turf/simulated/floor/colored/dirt(src)
-				place_ground = FALSE
-				place_grass = FALSE
-		else if(prob(2))
-			place_grass = FALSE
-			new /obj/marker/generation/plant/wheat(src)
-		else if(prob(3))
-			var/atom/chosen_bush = pick(/obj/marker/generation/foliage/bushes/generic,/obj/marker/generation/foliage/bushes/grass,/obj/marker/generation/foliage/bushes/sun)
-			new chosen_bush(src)
-			place_grass = FALSE
-
-	if(place_grass)
-		if(prob(2))
-			new /obj/marker/generation/foliage/flowers(src)
-		else if(prob(2))
-			new /obj/marker/generation/foliage/flowers/lavender(src)
-		else if(prob(10))
-			new /obj/marker/generation/foliage/grass(src)
-
-	if(place_ground)
-		new /turf/simulated/floor/colored/grass(src)
-		color = blend_colors("#336D31","#426D31",noise)
-		if(prob(1))
-			new /obj/marker/generation/forest_soil(src)
+				new /obj/marker/generation/foliage/grass(src)
+				if(prob(1))
+					new /obj/marker/generation/mob/cow(src)
+			else if(prob(1))
+				if(prob(1))
+					new /obj/marker/generation/plant/wheat(src)
+					if(prob(1))
+						new /obj/marker/generation/mob/chicken(src)
+				else
+					new /obj/marker/generation/foliage/flowers/lavender(src)
+			else if(prob(1))
+				new /obj/marker/generation/foliage/bushes/grass(src)
+			else if(prob(1))
+				new /obj/marker/generation/foliage/bushes/pointy(src)
+			else if(prob(1))
+				new /obj/marker/generation/foliage/bushes/stick(src)
+			else if(prob(1))
+				new /obj/marker/generation/foliage/bushes/sun(src)
+			else if(prob(1))
+				new /obj/marker/generation/forest_soil(src)
+				new /obj/marker/generation/plant/tomato(src)
+			else if(prob(0.25))
+				new /obj/marker/generation/mob/goblin(src)
+			else if(prob(1))
+				new /obj/marker/generation/foliage/tree(src)
+			else if(prob(5))
+				new /obj/marker/generation/foliage/grass(src)
+		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH) //High, place trees.
+			new /turf/simulated/floor/colored/grass(src)
+			if(prob(2))
+				new /obj/marker/generation/foliage/tree(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/chanterelle(src)
+			else if(prob(1))
+				new /obj/marker/generation/foliage/flowers(src)
+				if(prob(1))
+					new /obj/marker/generation/mob/bee(src)
+			else if(prob(1))
+				if(prob(75))
+					new /obj/marker/generation/forest_dirt(src)
+				else
+					new /obj/marker/generation/forest_soil(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/cabbage(src)
+			else if(prob(5))
+				new /obj/marker/generation/foliage/grass(src)
+		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
+			new /turf/simulated/floor/colored/dirt(src)
+			if(prob(1))
+				new /obj/marker/generation/rock_wall(src)
+			else if(prob(0.25))
+				new /obj/marker/generation/water(src)
+			else
+				if(prob(1))
+					new /obj/marker/generation/plant/fly_amanita(src)
+				if(prob(1))
+					if(prob(90))
+						new /obj/marker/generation/mob/goat(src)
+					else
+						new /obj/marker/generation/mob/black_bear(src)
+		if(GENERATION_SEGMENT_HIGHEST to INFINITY)
+			new /turf/simulated/wall/rock/moss(src)
+			if(prob(1))
+				new /obj/marker/generation/rock_wall(src)
 
 	if(src.loc.type == /area/) new /area/mission/forest(src)
 

@@ -2,8 +2,8 @@
 	grow_amount_min = 50
 	grow_amount_max = 10
 	objects_max = 3
-	skip_chance = 50
-	hole_chance = 0
+	skip_chance = 90
+	hole_chance = 50
 
 	color = COLOR_RED
 
@@ -53,6 +53,7 @@
 /obj/marker/generation/mob/watcher
 	object_to_place = /mob/living/simple/watcher
 	objects_max = 1
+	turf_whitelist = /turf/simulated/liquid/lava/
 
 /obj/marker/generation/mob/syndicate
 	object_to_place = /mob/living/advanced/npc/syndicate
@@ -74,6 +75,10 @@
 	object_to_place = /mob/living/simple/bear/black
 	objects_max = 1
 
+/obj/marker/generation/mob/brown_bear
+	object_to_place = /mob/living/simple/bear
+	objects_max = 1
+
 /obj/marker/generation/mob/snow_bear
 	object_to_place = /mob/living/simple/bear/snow
 	objects_max = 1
@@ -85,6 +90,11 @@
 /obj/marker/generation/mob/cow
 	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
+
+/obj/marker/generation/mob/carp
+	object_to_place = /mob/living/simple/spacecarp/
+	objects_max = 1
+	turf_whitelist = /turf/simulated/liquid/water
 
 /obj/marker/generation/mob/goblin
 	object_to_place = /mob/living/advanced/npc/goblin
@@ -102,6 +112,12 @@
 	object_to_place = /mob/living/simple/legionare
 	objects_max = 1
 
+/obj/marker/generation/mob/legion/snow
+	object_to_place = /mob/living/simple/legionare/snow
+	objects_max = 1
+
+
 /obj/marker/generation/mob/ash_walker
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter
 	objects_max = 1
+	turf_whitelist = /turf/simulated/wall/ash

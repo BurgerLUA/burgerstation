@@ -32,6 +32,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	depth = 0 // 0 Means generate depth.
 	alpha = 255
 
+/*
 /turf/simulated/liquid/water/Initialize()
 	. = ..()
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE) && depth <= 0)
@@ -50,7 +51,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 				var/turf/simulated/floor/T = k
 				depth = min(1 + get_dist_real(src,T),depth)
 			var/noise = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z]]","[x/world.maxx]","[y/world.maxy]"))
-			noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+			if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
 
 			depth = depth*0.5 + depth*noise*0.5
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
@@ -61,6 +62,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 		map_color = map_color_max_depth
 
 	. = ..()
+*/
 
 /turf/simulated/liquid/water/sea
 	name = "sea water"
@@ -91,3 +93,6 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/pond
 	name = "stagnant pond water"
+
+/turf/simulated/liquid/water/desert
+	name = "oasis water"

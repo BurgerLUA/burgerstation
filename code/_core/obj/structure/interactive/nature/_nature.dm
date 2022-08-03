@@ -2,6 +2,12 @@
 	mouse_opacity = 0
 	plane = PLANE_JUNK
 
+obj/structure/scenery/bush/Finalize()
+	. = ..()
+	if(is_simulated(src.loc))
+		var/turf/simulated/T = src.loc
+		T.map_color = blend_colors((T.map_color ? T.map_color : "#FFFFFF"),"#597F0C",0.25)
+
 obj/structure/scenery/bush/grass
 	name = "grassy bush"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
@@ -27,9 +33,21 @@ obj/structure/scenery/flowers/New()
 		if(3)
 			icon_state = "brflowers_[rand(1,3)]"
 
+obj/structure/scenery/flowers/Finalize()
+	. = ..()
+	if(is_simulated(src.loc))
+		var/turf/simulated/T = src.loc
+		T.map_color = blend_colors((T.map_color ? T.map_color : "#FFFFFF"),"#597F0C",0.1)
+
 obj/structure/scenery/grass
 	name = "grass type"
 
+
+obj/structure/scenery/grass/Finalize()
+	. = ..()
+	if(is_simulated(src.loc))
+		var/turf/simulated/T = src.loc
+		T.map_color = blend_colors((T.map_color ? T.map_color : "#FFFFFF"),"#597F0C",0.1)
 
 
 /obj/structure/scenery/grass/normal/

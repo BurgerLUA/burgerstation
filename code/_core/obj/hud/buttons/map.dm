@@ -88,6 +88,8 @@
 			caller.to_chat(span("warning","Failed to give valid information on coords ([x_pos],[y_pos],[z_pos])."))
 		else
 			caller.to_chat(span("notice","Coords: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
+			if(istype(caller,/mob/abstract/observer))
+				caller.force_move(T)
 
 /obj/hud/button/map_background
 	name = "map background"
@@ -238,52 +240,52 @@
 	name = "close map"
 	icon_state = "close"
 	close = 1
-	screen_loc = "CENTER+5,CENTER-4"
+	screen_loc = "CENTER+3,BOTTOM+1"
 
 /obj/hud/button/map_control/launch
 	name = "launch"
 	icon_state = "launch"
 	launch = 1
-	screen_loc = "CENTER+5,CENTER-5"
+	screen_loc = "CENTER-2,BOTTOM+1"
 
 /obj/hud/button/map_control/up
 	name = "scroll up"
 	icon_state = "arrow"
 	dir = NORTH
 	offset_y = 1
-	screen_loc = "CENTER,CENTER-4"
+	screen_loc = "CENTER,BOTTOM+3"
 
 /obj/hud/button/map_control/down
 	name = "scroll down"
 	icon_state = "arrow"
 	dir = SOUTH
 	offset_y = -1
-	screen_loc = "CENTER,CENTER-5"
+	screen_loc = "CENTER,BOTTOM+2"
 
 /obj/hud/button/map_control/right
 	name = "scroll right"
 	icon_state = "arrow"
 	dir = EAST
 	offset_x = 1
-	screen_loc = "CENTER+1,CENTER-5"
+	screen_loc = "CENTER+1,BOTTOM+2"
 
 /obj/hud/button/map_control/left
 	name = "scroll left"
 	icon_state = "arrow"
 	dir = WEST
 	offset_x = -1
-	screen_loc = "CENTER-1,CENTER-5"
+	screen_loc = "CENTER-1,BOTTOM+2"
 
 /obj/hud/button/map_control/zoom_in
 	name = "zoom in"
 	icon_state = "plus"
 	dir = NORTH
 	zoom = 1
-	screen_loc = "CENTER+2,CENTER-4"
+	screen_loc = "CENTER+2,BOTTOM+3"
 
 /obj/hud/button/map_control/zoom_out
 	name = "zoom out"
 	icon_state = "minus"
 	dir = NORTH
 	zoom = -1
-	screen_loc = "CENTER+2,CENTER-5"
+	screen_loc = "CENTER+2,BOTTOM+2"

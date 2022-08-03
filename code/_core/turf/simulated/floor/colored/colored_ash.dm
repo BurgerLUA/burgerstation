@@ -29,7 +29,7 @@
 
 /turf/simulated/floor/colored/ash/dark
 	name = "volcanic ash"
-	color = "#3F3F3F"
+	color = "#606060"
 
 /turf/simulated/floor/colored/ash/rocky
 	name = "rocky ash"
