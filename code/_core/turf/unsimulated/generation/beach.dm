@@ -14,17 +14,13 @@
 		disallow_generation = TRUE
 		return ..()
 
-	var/x_seed = x / size
-	var/y_seed = y / size
+	//No noise profile because of how simple it is.
+	if(prob(2))
+		new /obj/marker/generation/mob/crab(src)
+	else if(prob(0.5))
+		new /obj/marker/generation/mob/lobster(src)
 
-	var/max_instances = NOISE_INSTANCES
-	var/noise = 0
-	for(var/i=1,i<=max_instances,i++)
-		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
-	noise *= 1/max_instances
-	if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
-
-	new /turf/simulated/floor/colored/sand/beach(src) //Not sure what the noise profile should be so its this for now.
+	new /turf/simulated/floor/colored/sand/beach(src)
 
 	if(src.loc.type == /area/)
 		new /area/mission/beach(src)

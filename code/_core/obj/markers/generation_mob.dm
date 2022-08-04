@@ -2,8 +2,8 @@
 	grow_amount_min = 50
 	grow_amount_max = 10
 	objects_max = 3
-	skip_chance = 90
-	hole_chance = 50
+	skip_chance = 50
+	hole_chance = 75
 
 	color = COLOR_RED
 
@@ -13,6 +13,8 @@
 
 	flags_generation = FLAG_GENERATION_NO_MOB
 
+	priority = 3
+
 
 /obj/marker/generation/mob/arachnid
 	object_to_place = /mob/living/simple/arachnid
@@ -21,6 +23,10 @@
 /obj/marker/generation/mob/bat
 	object_to_place = /mob/living/simple/bat
 	objects_max = 3
+
+/obj/marker/generation/mob/lizard
+	object_to_place = /mob/living/simple/passive/lizard
+	objects_max = 1
 
 /obj/marker/generation/mob/bee
 	object_to_place = /mob/living/simple/bee
@@ -42,6 +48,22 @@
 /obj/marker/generation/mob/mouse/grey
 	object_to_place = /mob/living/simple/passive/mouse/grey
 
+/obj/marker/generation/mob/chicken
+	objects_max = 3
+
+/obj/marker/generation/mob/chicken/brown
+	object_to_place = /mob/living/simple/passive/chicken/brown
+
+/obj/marker/generation/mob/chicken/white
+	object_to_place = /mob/living/simple/passive/chicken
+
+/obj/marker/generation/mob/chicken/black
+	object_to_place = /mob/living/simple/passive/chicken/black
+
+
+/obj/marker/generation/mob/penguin
+	object_to_place = /mob/living/simple/passive/penguin
+	objects_max = 4
 
 
 /obj/marker/generation/mob/venus_human_trap
@@ -71,21 +93,17 @@
 	object_to_place = /mob/living/simple/goliath/ancient
 	objects_max = 1
 
-/obj/marker/generation/mob/black_bear
+/obj/marker/generation/mob/bear/black
 	object_to_place = /mob/living/simple/bear/black
 	objects_max = 1
 
-/obj/marker/generation/mob/brown_bear
+/obj/marker/generation/mob/bear/brown
 	object_to_place = /mob/living/simple/bear
 	objects_max = 1
 
-/obj/marker/generation/mob/snow_bear
+/obj/marker/generation/mob/bear/snow
 	object_to_place = /mob/living/simple/bear/snow
 	objects_max = 1
-
-/obj/marker/generation/mob/chicken
-	object_to_place = /mob/living/simple/passive/chicken
-	objects_max = 3
 
 /obj/marker/generation/mob/cow
 	object_to_place = /mob/living/simple/passive/cow
@@ -96,6 +114,16 @@
 	objects_max = 1
 	turf_whitelist = /turf/simulated/liquid/water
 
+/obj/marker/generation/mob/lobster
+	object_to_place = /mob/living/simple/lobster
+	objects_max = 1
+	turf_whitelist = /turf/simulated/liquid/water
+
+/obj/marker/generation/mob/snow_legion
+	object_to_place = /mob/living/simple/legionare/snow
+	objects_max = 1
+	turf_whitelist = /turf/simulated/floor/colored/snow
+
 /obj/marker/generation/mob/goblin
 	object_to_place = /mob/living/advanced/npc/goblin
 	objects_max = 3
@@ -103,6 +131,7 @@
 /obj/marker/generation/mob/crab
 	object_to_place = /mob/living/simple/crab
 	objects_max = 3
+	turf_whitelist = /turf/simulated/floor/colored/sand
 
 /obj/marker/generation/mob/cave_spider
 	object_to_place = /mob/living/simple/spider
@@ -115,7 +144,6 @@
 /obj/marker/generation/mob/legion/snow
 	object_to_place = /mob/living/simple/legionare/snow
 	objects_max = 1
-
 
 /obj/marker/generation/mob/ash_walker
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter

@@ -59,6 +59,11 @@
 	reagents.add_reagent(/reagent/nutrition/fat/crab,5)
 	return ..()
 
+/obj/item/container/edible/dynamic/fish/raw_lobster/Generate()
+	reagents.add_reagent(/reagent/nutrition/meat/lobster,10)
+	reagents.add_reagent(/reagent/nutrition/fat/lobster,10)
+	return ..()
+
 /obj/item/container/edible/dynamic/fish/raw_carp/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/fish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)

@@ -90,11 +90,11 @@
 /mob/living/simple/legionare/Finalize()
 
 	if(ispath(stored_corpse))
-		stored_corpse = new /mob/living/advanced/npc/nanotrasen/shaft_miner(src)
+		stored_corpse = new stored_corpse(src)
 		INITIALIZE(stored_corpse)
 		GENERATE(stored_corpse)
 		FINALIZE(stored_corpse)
-		stored_corpse.death()
+		stored_corpse.death(silent=TRUE)
 		if(stored_corpse.health) stored_corpse.health.adjust_loss_smart(brute=rand(100,200),burn=rand(100,200))
 
 	return ..()
@@ -122,6 +122,10 @@
 	armor = /armor/legion/snow
 
 	size = SIZE_GIANT
+
+	head_type = /mob/living/simple/legionare_head/snow
+
+	stored_corpse = null
 
 /mob/living/simple/legionare/snow/post_death()
 	. = ..()

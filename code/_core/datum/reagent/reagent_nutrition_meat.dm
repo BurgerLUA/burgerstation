@@ -129,6 +129,15 @@
 
 	flavor = "fat"
 
+/reagent/nutrition/fat/lobster
+	name = "lobster fat"
+	desc = "Nutrition and flavor from lobster fat."
+	color = "#EAD5A4"
+
+	nutrition_amount = 20
+
+	flavor = "fat"
+
 /reagent/nutrition/fat/arachnid
 	name = "arachnid fat"
 	desc = "Nutrition and flavor from arachnid fat."
@@ -661,6 +670,37 @@
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
 
+
+/reagent/nutrition/meat/lobster
+	name = "raw lobster meat"
+	desc = "Nutrition and flavor from raw crab meat."
+	color = "#EAD8CE"
+
+	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
+
+	nutrition_amount = 20
+	heal_factor = 0
+
+	flavor = "seashells"
+
+	heated_reagent = /reagent/nutrition/meat/lobster/cooked
+
+/reagent/nutrition/meat/lobster/cooked
+	name = "cooked lobster meat"
+	desc = "Nutrition and flavor from cooked crab meat."
+	color = "#E8BAA2"
+
+	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
+
+	nutrition_amount = 18
+	heal_factor = 5
+
+	flavor = "the ocean"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
 
 /reagent/nutrition/egg_white
 	name = "egg whites"

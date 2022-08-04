@@ -58,6 +58,8 @@
 				new /obj/marker/generation/jungle_dirt(src)
 				if(prob(80))
 					new /obj/marker/generation/foliage/grass/jungle/rock(src)
+					if(prob(1))
+						new /obj/marker/generation/mob/lizard(src)
 				else
 					new /obj/marker/generation/plant/destroying_angel(src)
 			else if(prob(0.25))

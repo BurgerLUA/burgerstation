@@ -1,3 +1,6 @@
+/ai/snow_legion_head
+	use_alerts = FALSE
+
 /ai/legion_head
 	var/mob/living/simple/legionare_head/owner_as_legion_head
 	use_alerts = FALSE

@@ -34,9 +34,9 @@
 	loyalty_tag = "Bear"
 
 	blood_type = /reagent/blood/bear
-	blood_volume = 1000
+	blood_volume = 700
 
-	soul_size = SOUL_SIZE_COMMON
+	soul_size = SOUL_SIZE_UNCOMMON
 
 	level = 12
 

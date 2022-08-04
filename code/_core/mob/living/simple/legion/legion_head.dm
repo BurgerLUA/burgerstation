@@ -6,7 +6,7 @@
 	damage_type = /damagetype/npc/legion_assault
 
 
-	icon = 'icons/mob/living/simple/lavaland/legioner.dmi'
+	icon = 'icons/mob/living/simple/lavaland/legion.dmi'
 	icon_state = "legion_head"
 
 	var/mob/living/simple/legionare/parent_legion
@@ -34,6 +34,16 @@
 
 	delete_on_death = TRUE
 
+	var/can_convert = TRUE
+
+/mob/living/simple/legionare_head/snow
+	name = "snowlegion head"
+	ai = /ai/snow_legion_head
+	damage_type = /damagetype/npc/snowlegion_asault
+	icon = 'icons/mob/living/simple/snowlegion.dmi'
+	icon_state = "head"
+	can_convert = FALSE
+
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 
@@ -46,8 +56,8 @@
 
 /mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
 
-	if(!A.dead || A.qdeleting || src.qdeleting || !isturf(A.loc) )
-		return FALSE //Wew.
+	if(!can_convert || !A.dead || A.qdeleting || src.qdeleting || !isturf(A.loc) )
+		return FALSE
 
 	A.force_move(src) //Store it before it is stolen.
 

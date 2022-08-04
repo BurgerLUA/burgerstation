@@ -10,6 +10,8 @@
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
 
+	priority = 2
+
 /obj/marker/generation/foliage/bushes/
 	objects_max = 2
 	hole_chance = 95
