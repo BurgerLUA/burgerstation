@@ -18,12 +18,12 @@
 		return ..()
 
 	if(!density)
-		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(is_different)
 			if(prob(1))
 				new /obj/marker/generation/cave_dirt(src)
 			else if(prob(2))
 				new /obj/marker/generation/rock_wall(src)
+		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
 		disallow_generation = TRUE
 		return ..()

@@ -15,7 +15,7 @@
 
 
 // https://www.desmos.com/calculator/wdafgsn1tz
-#define NOISE_CURVES 1
+#define NOISE_CURVES 2
 #define NOISE_INSTANCES 10
 
 #define GENERATION_SEGMENT_LOWEST 0.1
