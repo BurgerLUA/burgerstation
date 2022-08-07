@@ -82,6 +82,8 @@ dmm_suite
 			world.maxz = coordZ+maxZFound-1
 			//all_mobs_with_clients_by_z["[world.maxz]"] = list()
 			log_debug("Z levels increased to [world.maxz].")
+		var/xMax = 0
+		var/yMax = 0
 		for(var/posZ = 1 to gridLevels.len)
 			CHECK_TICK_SAFE(50,FPS_SERVER)
 			var zGrid = gridLevels[posZ]
@@ -91,13 +93,13 @@ dmm_suite
 			for(var/posY = yReversed.len to 1 step -1)
 				yLines.Add(yReversed[posY])
 			//
-			var yMax = yLines.len+(coordY-1)
+			yMax = max(yMax,yLines.len+(coordY-1))
 			if(world.maxy < yMax)
 				var/old_value = world.maxy
 				world.maxy = yMax
 				log_debug("[tag] caused map resize (Y [old_value] to [world.maxy]) during prefab placement" )
 			var exampleLine = pick(yLines)
-			var xMax = length(exampleLine)/key_len+(coordX-1)
+			xMax = max(xMax,length(exampleLine)/key_len+(coordX-1))
 			if(world.maxx < xMax)
 				var/old_value = world.maxx
 				world.maxx = xMax
@@ -115,10 +117,15 @@ dmm_suite
 				for(var/posY = 1 to yLines.len)
 					var yLine = yLines[posY]
 					for(var/posX = 1 to length(yLine)/key_len)
-						CHECK_TICK_SAFE(50,FPS_SERVER)
-						var/turf/T = locate(posX + gridCoordX - 1, posY+gridCoordY - 1, gridCoordZ)
+
+						var/grid_x = gridCoordX - 1
+						var/grid_y = gridCoordY - 1
+
+						var/offset_x = posX
+						var/offset_y = posY
+
+						var/turf/T = locate(grid_x + offset_x,grid_y + offset_y, gridCoordZ)
 						for(var/k in T)
-							CHECK_TICK_SAFE(50,FPS_SERVER)
 							var/datum/x = k
 							if(overwrite & DMM_OVERWRITE_OBJS && istype(x, /obj))
 								qdel(x)
@@ -126,38 +133,44 @@ dmm_suite
 									qdel(x)
 							else if(overwrite & DMM_OVERWRITE_MOBS && istype(x, /mob))
 								qdel(x)
+							CHECK_TICK_SAFE(50,FPS_SERVER)
 
 			var/y_length = length(yLines)
-			for(var/posY = 1 to y_length)
+			for(var/posY=1,posY<=y_length,posY++)
 				var yLine = yLines[posY]
 				var/x_length = length(yLine)/key_len
-				for(var/posX = 1 to x_length)
-					CHECK_TICK_SAFE(50,FPS_SERVER)
-					var keyPos = ((posX-1)*key_len)+1
-					var modelKey = copytext(yLine, keyPos, keyPos+key_len)
+				for(var/posX=1,posX<=x_length,posX++)
 
-					var/grid_x = (gridCoordX - 1)
-					var/grid_y = (gridCoordY - 1)
+					var/grid_x = (gridCoordX - 1) //Origin loc.
+					var/grid_y = (gridCoordY - 1) //Origin loc
 
-					var/final_x = grid_x + posX
-					var/final_y = grid_y + posY
+					var/offset_x = posX
+					var/offset_y = posY
 
 					switch(angleOffset)
+						if(0)
+							offset_x = posX
+							offset_y = posY
 						if(90)
-							final_x = grid_y + posY //Positive y
-							final_y = (grid_x+x_length) - posX //Negative x
-						if(180)
-							final_x = (grid_x+x_length) - posX //Negative x
-							final_y = (grid_y+y_length) - posY //Negative y
+							offset_x = posY
+							offset_y = x_length - posX
+						if(180) //Works
+							offset_x = x_length - posX //Negative x
+							offset_y = y_length - posY //Negative y
+
 						if(270)
-							final_x = (grid_y+y_length) - posY //Negative y
-							final_y = grid_x + posX //Positive x
+							offset_x = y_length - posY
+							offset_y = posX
 
+					var keyPos = ((posX-1)*key_len)+1
+					var modelKey = copytext(yLine, keyPos, keyPos+key_len)
 					parse_grid(
-						grid_models[modelKey], final_x, final_y, gridCoordZ, angleOffset
+						grid_models[modelKey], grid_x + offset_x, grid_y + offset_y, gridCoordZ, angleOffset
 					)
+					CHECK_TICK_SAFE(50,FPS_SERVER)
 
-
+		if(tag)
+			log_debug("dmm_suite loaded: [tag] ([xMax - coordX],[yMax - coordY]).")
 		//
 		return props
 

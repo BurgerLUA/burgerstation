@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(dmm_suite)
 				var/chosen_file = pick(local_prefabs)
 				valid_prefabs[category] -= chosen_file
 				var/map_contents = file2text(chosen_file)
-				dmm_suite.read_map(map_contents,M.x,M.y,M.z,angleOffset = pick(90,180,270))
+				dmm_suite.read_map(map_contents,M.x,M.y,M.z,angleOffset = 0,overwrite=TRUE,tag="[chosen_file]")
 				loaded_prefabs++
 			qdel(M)
 
