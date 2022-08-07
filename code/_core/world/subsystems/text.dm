@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(text)
 
 	log_subsystem(name,"Found [length(adjectives)] adjectives.")
 	log_subsystem(name,"Found [length(verbs)] verbs.")
-	log_subsystem(name,"Found [length(wisdoms)] verbs.")
+	log_subsystem(name,"Found [length(wisdoms)] wisdoms.")
 
 	log_subsystem(name,"Found [length(first_names_male)] male first names.")
 	log_subsystem(name,"Found [length(first_names_female)] female first names.")

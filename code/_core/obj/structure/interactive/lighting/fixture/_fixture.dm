@@ -72,7 +72,7 @@
 	if(on && light_color && light_range > 0 && light_power > 0)
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
-		IS.plane = PLANE_EFFECT_LIGHTING
+		IS.plane = PLANE_LIGHTING_EFFECT
 		IS.layer = 99
 		IS.color = desired_light_color
 		IS.alpha = 255*(light_power/1)

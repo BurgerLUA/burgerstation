@@ -77,11 +77,14 @@
 	var/obj/plane_master/area_exterior/plane_master_area_exterior
 	var/obj/plane_master/water_mask/plane_master_water_mask
 	var/obj/plane_master/projectiles/plane_master_projectiles
+	var/obj/plane_master/ambient_lighting/plane_master_ambient_lighting
 
 	var/obj/hud/button/examine_bar/examine_bar
 	var/obj/hud/button/tooltip/tooltip
 
 	var/obj/fov/fov
+
+	var/obj/ambient_lighting/ambient_lighting
 
 	var/list/parallax
 
@@ -306,6 +309,11 @@
 		examine_overlay = new(src)
 	C.screen += examine_overlay
 
+	if(!fov)
+		fov = new(src)
+		fov.render_target = "*fov_\ref[src]"
+		overlays += fov
+
 	if(!examine_bar)
 		examine_bar = new(src)
 	examine_bar.update_owner(src)
@@ -345,9 +353,6 @@
 /mob/Finalize()
 	. = ..()
 	update_z_position()
-	fov = new(src)
-	fov.render_target = "*fov_\ref[src]"
-	overlays += fov
 
 /mob/New(var/desired_loc,var/client/C)
 

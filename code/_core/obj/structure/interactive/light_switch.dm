@@ -63,7 +63,7 @@
 
 /obj/structure/interactive/light_switch/update_sprite()
 	. = ..()
-	plane = PLANE_EFFECT_LIGHTING
+	plane = PLANE_LIGHTING_EFFECT
 
 /obj/structure/interactive/light_switch/update_icon()
 	. = ..()

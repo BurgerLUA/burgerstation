@@ -18,7 +18,11 @@ dmm_suite
 	coordinates saved with the map will be used. Otherwise, coordinates will
 	default to (1, 1, world.maxz+1)
 	*/
-	read_map(dmm_text as text, coordX as num, coordY as num, coordZ as num, tag as text, overwrite as num)
+	read_map(dmm_text as text, coordX as num, coordY as num, coordZ as num, tag as text, overwrite as num, angleOffset as num)
+		if(angleOffset)
+			angleOffset = MODULUS(round(angleOffset,90), 360)
+		else
+			angleOffset = 0
 		var/datum/loadedProperties/props = new()
 		props.sourceX = coordX
 		props.sourceY = coordY
@@ -104,8 +108,8 @@ dmm_suite
 			props.maxZ = world.maxz
 
 			var/gridCoordX = text2num(coordShifts[posZ][1]) + coordX - 1
-			var/gridCoordY = text2num(coordShifts[posZ][2])  + coordY - 1
-			var/gridCoordZ = text2num(coordShifts[posZ][3])  + coordZ - 1
+			var/gridCoordY = text2num(coordShifts[posZ][2]) + coordY - 1
+			var/gridCoordZ = text2num(coordShifts[posZ][3]) + coordZ - 1
 
 			if(overwrite)
 				for(var/posY = 1 to yLines.len)
@@ -123,29 +127,39 @@ dmm_suite
 							else if(overwrite & DMM_OVERWRITE_MOBS && istype(x, /mob))
 								qdel(x)
 
-
-			for(var/posY = 1 to yLines.len)
+			var/y_length = length(yLines)
+			for(var/posY = 1 to y_length)
 				var yLine = yLines[posY]
-				for(var/posX = 1 to length(yLine)/key_len)
+				var/x_length = length(yLine)/key_len
+				for(var/posX = 1 to x_length)
 					CHECK_TICK_SAFE(50,FPS_SERVER)
 					var keyPos = ((posX-1)*key_len)+1
 					var modelKey = copytext(yLine, keyPos, keyPos+key_len)
+
+					var/grid_x = (gridCoordX - 1)
+					var/grid_y = (gridCoordY - 1)
+
+					var/final_x = grid_x + posX
+					var/final_y = grid_y + posY
+
+					switch(angleOffset)
+						if(90)
+							final_x = grid_y + posY //Positive y
+							final_y = (grid_x+x_length) - posX //Negative x
+						if(180)
+							final_x = (grid_x+x_length) - posX //Negative x
+							final_y = (grid_y+y_length) - posY //Negative y
+						if(270)
+							final_x = (grid_y+y_length) - posY //Negative y
+							final_y = grid_x + posX //Positive x
+
 					parse_grid(
-						grid_models[modelKey], posX + gridCoordX - 1, posY + gridCoordY - 1, gridCoordZ
+						grid_models[modelKey], final_x, final_y, gridCoordZ, angleOffset
 					)
 
 
 		//
 		return props
-
-	/*-- load_map ------------------------------------
-	Deprecated. Use read_map instead.
-	*/
-	load_map(dmm_file as file, z_offset as num)
-		if(!z_offset) z_offset = world.maxz+1
-		var dmmText = file2text(dmm_file)
-		return read_map(dmmText, 1, 1, z_offset)
-
 
 //-- Supplemental Methods ------------------------------------------------------
 
@@ -156,7 +170,7 @@ dmm_suite
 		regex/key_value_regex = new("^\[\\s\\r\\n\]*(\[^=\]*?)\[\\s\\r\\n\]*=\[\\s\\r\\n\]*(.*?)\[\\s\\r\\n\]*$")
 
 	proc
-		parse_grid(models as text, xcrd, ycrd, zcrd)
+		parse_grid(models as text, xcrd, ycrd, zcrd, angleOffset)
 			/* Method parse_grid() - Accepts a text string containing a comma separated list
 				of type paths of the same construction as those contained in a .dmm file, and
 				instantiates them.*/
@@ -189,26 +203,31 @@ dmm_suite
 						key_value_regex.Find(paddedAttribute)
 						attributes[key_value_regex.group[1]] = key_value_regex.group[2]
 				if(!ispath(atomPath, /turf))
-					loadModel(atomPath, attributes, originalStrings, xcrd, ycrd, zcrd)
+					loadModel(atomPath, attributes, originalStrings, xcrd, ycrd, zcrd, angleOffset)
 				else
 					turfStackTypes.Insert(1, atomPath)
 					turfStackAttributes.Insert(1, null)
 					turfStackAttributes[1] = attributes
 			// Layer all turf appearances into final turf
 			if(!turfStackTypes.len) return
-			var /turf/topTurf = loadModel(turfStackTypes[1], turfStackAttributes[1], originalStrings, xcrd, ycrd, zcrd)
+			var /turf/topTurf = loadModel(turfStackTypes[1], turfStackAttributes[1], originalStrings, xcrd, ycrd, zcrd, angleOffset)
 			for(var/turfIndex = 2 to turfStackTypes.len)
 				var /mutable_appearance/underlay = new(turfStackTypes[turfIndex])
-				loadModel(underlay, turfStackAttributes[turfIndex], originalStrings, xcrd, ycrd, zcrd)
+				loadModel(underlay, turfStackAttributes[turfIndex], originalStrings, xcrd, ycrd, zcrd, angleOffset)
 				topTurf.underlays.Add(underlay)
 
-		loadModel(atomPath, list/attributes, list/strings, xcrd, ycrd, zcrd)
+		loadModel(atomPath, list/attributes, list/strings, xcrd, ycrd, zcrd, angleOffset)
 			// Cancel if atomPath is a placeholder (DMM_IGNORE flags used to write file)
 			if(ispath(atomPath, /turf/dmm_suite/clear_turf) || ispath(atomPath, /area/dmm_suite/clear_area))
 				return
 			// Parse all attributes and create preloader
 			var /list/attributesMirror = list()
 			var /turf/location = locate(xcrd, ycrd, zcrd)
+			if(!location)
+				log_error("dmm_suite reader bad loc! ([xcrd],[ycrd],[zcrd]).")
+				return null
+
+
 			for(var/attributeName in attributes)
 				attributesMirror[attributeName] = loadAttribute(attributes[attributeName], strings)
 			var /dmm_suite/preloader/preloader = new(location, attributesMirror)
@@ -244,8 +263,10 @@ dmm_suite
 						instance = new atomPath(location)
 						//instance = location.ReplaceWith(atomPath, keep_old_material = 0, handle_air = 0, handle_dir = 0)
 				else
-					if (atomPath)
+					if(atomPath)
 						instance = new atomPath(location)
+						if(angleOffset)
+							instance.dir = turn(instance.dir,-angleOffset)
 			// Handle cases where Atom/New was redifined without calling Super()
 			if(preloader && instance) // Atom could delete itself in New()
 				preloader.load(instance)
