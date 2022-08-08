@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	for(var/i=1,i<=length(maps_to_load),i++)
 		var/k = maps_to_load[i]
 		var/map_file = rustg_file_read(k)
-		dmm_suite.read_map(map_file,1,1,i)
+		dmm_suite.read_map(map_file,1,1,i,tag="[k]")
 		z_level_to_file["[i]"] = k
 		maps_loaded++
 
