@@ -84,7 +84,7 @@ SUBSYSTEM_DEF(balance)
 		if(!W.bypass_balance_check)
 			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
 			if(W.tier >= 0 && recommended_tier != W.tier)
-				log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>![istype(W,/obj/item/weapon/ranged/bullet) ? "(Bullet used: [weapon_to_bullet[W.type]])" : ""]")
+				//log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>![istype(W,/obj/item/weapon/ranged/bullet) ? "(Bullet used: [weapon_to_bullet[W.type]])" : ""]")
 				imbalanced_weapons++
 			stored_tier[W.type] = recommended_tier
 
