@@ -150,7 +150,7 @@ var/global/datum/sortInstance/sortInstance = new()
 			if(call(cmp)(current, last) >= 0)
 				break
 			++runHi
-		reverseRange(L, lo, runHi)
+		reverseList(L, lo, runHi)
 	else
 		while(runHi < hi)
 			last = current

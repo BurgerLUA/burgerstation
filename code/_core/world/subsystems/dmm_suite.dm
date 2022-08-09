@@ -18,8 +18,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/list/valid_prefabs = list()
 
 	var/list/maps_to_load = list(
-		"maps/_core/mission.dmm",
-		"maps/_core/bluespace.dmm",
+		//"maps/_core/mission.dmm",
+		//"maps/_core/bluespace.dmm",
 		"maps/_core/station.dmm"
 	)
 

@@ -90,19 +90,26 @@ SUBSYSTEM_DEF(turf)
 	var/list/type_to_time = list()
 
 	log_subsystem(src.name,"Finalizing turfs...")
+	var/turfs_finalized = 0
 	for(var/turf/simulated/S in world)
 		var/benchmark = true_time()
 		FINALIZE(S)
 		type_to_time[S.type] += true_time() - benchmark
+		turfs_finalized++
 		sleep(-1)
+
+	log_subsystem(src.name,"Finalized [turfs_finalized] simulated turfs.")
 
 	sortInsert(type_to_time, /proc/cmp_numeric_dsc, associative=TRUE)
 
-	type_to_time.Cut(5)
-	log_debug("5 Most Expensive Turfs:")
-	for(var/k in type_to_time)
-		var/v = type_to_time[k]
-		log_debug("[k]: [DECISECONDS_TO_SECONDS(v)] seconds")
+	var/turf_length = length(type_to_time)
+	if(turf_length >= 1)
+		var/num_turfs = min(turf_length,5)
+		type_to_time.Cut(num_turfs)
+		log_debug("[num_turfs] Most Expensive Turfs:")
+		for(var/k in type_to_time)
+			var/v = type_to_time[k]
+			log_debug("[k]: [DECISECONDS_TO_SECONDS(v)] seconds")
 
 	. = ..()
 

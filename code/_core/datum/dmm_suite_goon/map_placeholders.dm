@@ -2,25 +2,8 @@
 
 //-- Map Placeholders ----------------------------------------------------------
 
-//-- Used to store meta data in dmm files --------
-/obj/dmm_suite/comment
-	icon = 'icons/obj/markers/map_editor.dmi'
-	icon_state = "comment"
-	invisibility = 101
-	plane = PLANE_HUD
-	anchored = 2
-	var/coordinates
-	var/dimensions
-	New()
-		. = ..()
-		// Must assign at runtime so initial() != runtime when saving
-		icon = null
-	Finalize()
-		qdel(src)
-
 /turf/dmm_suite/
 	invisibility = 0
-
 
 //-- Used in generating turf underlay stacks -----
 /turf/dmm_suite/underlay

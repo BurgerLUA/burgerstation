@@ -216,7 +216,7 @@
 //Move elements from [fromIndex, fromIndex+len) to [toIndex, toIndex+len)
 //Move any elements being overwritten by the move to the now-empty elements, preserving order
 //Note: if the two ranges overlap, only the destination order will be preserved fully, since some elements will be within both ranges ~Carnie
-/proc/swapRange(var/list/L, var/fromIndex, var/toIndex, var/len=1)
+/proc/swapList(var/list/L, var/fromIndex, var/toIndex, var/len=1)
 	var/distance = abs(toIndex - fromIndex)
 	if(len > distance)	//there is an overlap, therefore swapping each element will require more swaps than inserting new elements
 		if(fromIndex < toIndex)
@@ -237,8 +237,8 @@
 		for(var/i=0, i<len, ++i)
 			L.Swap(fromIndex++, toIndex++)
 
-//replaces reverseList ~Carnie
-/proc/reverseRange(var/list/L, var/start=1, var/end=0)
+//replaces old reverseList ~Carnie
+/proc/reverseList(var/list/L, var/start=1, var/end=0)
 	if(L.len)
 		start = start % L.len
 		end = end % (L.len+1)

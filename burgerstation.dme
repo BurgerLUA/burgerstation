@@ -510,7 +510,6 @@
 #include "code\_core\datum\dmm_suite_goon\file_cache.dm"
 #include "code\_core\datum\dmm_suite_goon\map_placeholders.dm"
 #include "code\_core\datum\dmm_suite_goon\reader.dm"
-#include "code\_core\datum\dmm_suite_goon\writer.dm"
 #include "code\_core\datum\emote\_emote.dm"
 #include "code\_core\datum\emote\sound.dm"
 #include "code\_core\datum\emote\standard.dm"
