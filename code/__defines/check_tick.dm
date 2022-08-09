@@ -3,6 +3,9 @@
 		while(world.tick_usage > limit) {\
 			sleep(TICK_LAG * (world.tick_usage/limit)); \
 		}\
+	}\
+	else {\
+		sleep(-1)\
 	}
 
 #define CHECK_TICK_SAFE(limit,max_delays) \
@@ -12,4 +15,6 @@
 			safety_count++; \
 			sleep(TICK_LAG * (world.tick_usage/limit)); \
 		}\
+	} else {\
+		sleep(-1)\
 	}

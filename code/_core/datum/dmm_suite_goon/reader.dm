@@ -28,7 +28,6 @@ dmm_suite
 			var/modelKey = copytext(modelLine, 1, endQuote)
 			if(!key_len)
 				key_len = length(modelKey)
-				log_debug("Setting key length to [key_len].")
 			var/modelsStart = findtextEx(modelLine, "/") // Skip key and first three characters: "aa" = (
 			var/modelContents = copytext(modelLine, modelsStart, length(modelLine)) // Skip last character: )
 			grid_models[modelKey] = modelContents //We have now stored the key representing the turf.
@@ -38,12 +37,6 @@ dmm_suite
 		if(!coordZ) coordZ = world.maxz+1
 		// Store quoted portions of text in text_strings, and replaces them with an index to that list.
 		var/gridText = copytext(dmm_text, startGridPos)
-
-		// WIP
-		// \(([0-9]*),([0-9]*),([0-9]*)\) = \{"\s*([A-z\s]+)"\}
-		// \(([0-9]*),([0-9]*),([0-9]*)\) = \{"((?:[^\}]*))
-
-		//Positioned Keys:             1        2        3                  4
 		if(key_len < 1) CRASH("key_len was impossibly less than 1 ([key_len])!")
 		var/maxXFound = 0
 		var/maxYFound = 0
@@ -58,35 +51,28 @@ dmm_suite
 		var/list/gridLevels = list()
 		var/list/coordShifts = list()
 		var/regex/grid = regex(@{"\(([0-9]*),([0-9]*),([0-9]*)\) = \{"\n((?:[A-z]*\n)*)"\}"}, "g") //Retrieve the coord line thing.
+		//Positioned Keys:             1        2        3                  4
 		var/grid_instances = 0
 		while(grid.Find(gridText))
 			grid.group[1] = text2num(grid.group[1])
 			grid.group[2] = text2num(grid.group[2])
 			grid.group[3] = text2num(grid.group[3])
-			/*
-			if(tgm_format && last_x && grid.group[1] != last_x && last_z && grid.group[3] == last_z)
-				tgm_format = FALSE
-			last_x = grid.group[1]
-			last_z = grid.group[3]
-			*/
-			gridLevels.Add(copytext(grid.group[4], 1, -1)) // Strip last \n. TGM Format would add the y-axis. Non-TGM format would add the entire z-axis.
+			gridLevels.Add(copytext(grid.group[4], 1, -1)) // Strip last \n.
+			//TGM Format would add the y-axis. Non-TGM format would add the entire z-axis.
 			coordShifts.Add(
 				list(
 					list(grid.group[1], grid.group[2], grid.group[3])
 				)
 			)
 			maxZFound = max(maxZFound, grid.group[3]) //z. Will always be 1 unless the map has a second z-level for some reason.
-			grid_instances ++
-
-		log_debug("Found [grid_instances] grid instances.")
+			grid_instances++
 
 		if(maxZFound+(coordZ-1) > world.maxz)
 			world.maxz = maxZFound+(coordZ-1)
 			log_debug("Z levels increased to [world.maxz].")
 
 		var/turfs_loaded = 0
-		for(var/posZ=1,posZ<=maxZFound,posZ++)
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+		for(var/posZ=1,posZ<=length(gridLevels),posZ++)
 			var/zGrid = reverseList(text2list(gridLevels[posZ], "\n"))
 
 			maxXFound = max(length(pick(zGrid))/key_len,length(gridLevels))
@@ -102,8 +88,6 @@ dmm_suite
 			var/gridCoordX = coordShifts[posZ][1] + (coordX - 1)
 			var/gridCoordY = coordShifts[posZ][2] + (coordY - 1)
 			var/gridCoordZ = coordShifts[posZ][3] + (coordZ - 1)
-
-			log_debug("coordShifts\[posZ\]\[3\]: [coordShifts[posZ][3]], coordZ: [coordZ], gridCoordZ: [gridCoordZ].")
 
 			if(overwrite)
 				for(var/posY = 1 to maxXFound)
@@ -123,9 +107,9 @@ dmm_suite
 								qdel(x)
 							CHECK_TICK_SAFE(50,FPS_SERVER)
 
-			for(var/posY=1,posY<=maxYFound,posY++)
+			for(var/posY=1,posY<=length(zGrid),posY++)
 				var/y_line = zGrid[posY]
-				for(var/posX=1,posX<=maxXFound,posX++)
+				for(var/posX=1,posX<=length(y_line)/key_len,posX++) //Don't use maxXFound for this.
 
 
 					var/grid_x = (gridCoordX - 1) //Origin loc.
@@ -154,14 +138,20 @@ dmm_suite
 					var/turf/location = locate(grid_x + offset_x,grid_y + offset_y,gridCoordZ)
 					if(!location)
 						CRASH("dmm_suite: Invalid location! ([grid_x + offset_x],[grid_y + offset_y],[gridCoordZ])")
-					turfs_loaded++
-					. += parse_grid(
+					var/result = parse_grid(
 						grid_models[modelKey],
 						location,
 						angleOffset,
 						overwrite
 
 					)
+					if(!result)
+						log_error("Could not parse modelKey \"[html_encode(modelKey)]\" in coords ([posX],[posY],[gridCoordZ])!\nLine: \"[y_line]\"")
+						break
+					else
+						turfs_loaded++
+						. += result
+
 					CHECK_TICK_SAFE(50,FPS_SERVER)
 
 		if(tag)
@@ -217,11 +207,11 @@ dmm_suite
 			// Cancel if atomPath is a placeholder (DMM_IGNORE flags used to write file)
 			if(ispath(atomPath, /turf/dmm_suite/clear_turf) || ispath(atomPath, /area/dmm_suite/clear_area))
 				if(debug) log_debug("Canceling due to clear area/turf...")
-				return 0
+				return 1
 			// Parse all attributes and create preloader
 			var/list/attributesMirror = list()
 			if(!location)
-				if(debug) log_debug("Invalid loadModel location!")
+				CRASH("Invalid loadModel location!")
 				return 0
 
 			for(var/attributeName in attributes)
@@ -233,8 +223,10 @@ dmm_suite
 			if(ispath(atomPath, /area)) //Don't set instances for areas.
 				new atomPath(location)
 				location.dmm_preloader = null
+				return 1
+
 			// Handle Underlay Turfs
-			else if(ispath(atomPath, /turf))
+			if(ispath(atomPath, /turf))
 				if(ispath(atomPath, /turf/dmm_suite/no_wall))
 					if(is_simulated(location))
 						var/turf/simulated/S = location
@@ -256,7 +248,6 @@ dmm_suite
 					instance.dir = turn(instance.dir,-angleOffset)
 			if(preloader && instance) // Atom could delete itself in New(), or the instance could be an area.
 				preloader.load(instance)
-			//
 			return (instance ? 1 : 0)
 
 		loadAttribute(value, list/strings)
