@@ -21,8 +21,8 @@ var/global/world_state = STATE_STARTING
 	turf = /turf/space
 	area = /area/
 
-	maxx = WORLD_SIZE
-	maxy = WORLD_SIZE
+	maxx = 1
+	maxy = 1
 	maxz = 1
 
 	loop_checks = 1

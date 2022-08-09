@@ -165,14 +165,7 @@
 		add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
 	if(do_teleport)
-		if(CONFIG("ENABLE_INSTALOAD",FALSE))
-			var/obj/marker/dev/D = locate() in world
-			if(D)
-				force_move(get_turf(D))
-			else
-				var/obj/marker/failsafe/FS = locate() in world
-				force_move(get_turf(FS))
-		else if(length(cryo_spawnpoints))
+		if(length(cryo_spawnpoints))
 			var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
 			force_move(get_turf(C))
 			C.door_state = SLEEPER_OPENED
@@ -184,8 +177,13 @@
 			force_move(get_turf(BS))
 		else
 			var/obj/marker/failsafe/FS = locate() in world
-			force_move(get_turf(FS))
-
+			if(FS && FS.loc)
+				force_move(FS.loc)
+			else
+				var/desired_x = CEILING(world.maxx/2,1)
+				var/desired_y = CEILING(world.maxy/2,1)
+				var/desired_z = CEILING(world.maxz/2,1)
+				force_move(locate(desired_x,desired_y,desired_z))
 
 	update_all_blends()
 

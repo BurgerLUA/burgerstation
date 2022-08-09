@@ -240,13 +240,13 @@
 	name = "close map"
 	icon_state = "close"
 	close = 1
-	screen_loc = "CENTER+3,BOTTOM+1"
+	screen_loc = "CENTER+3,BOTTOM+2"
 
 /obj/hud/button/map_control/launch
 	name = "launch"
 	icon_state = "launch"
 	launch = 1
-	screen_loc = "CENTER-2,BOTTOM+1"
+	screen_loc = "CENTER-2,BOTTOM+2"
 
 /obj/hud/button/map_control/up
 	name = "scroll up"

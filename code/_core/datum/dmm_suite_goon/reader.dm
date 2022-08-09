@@ -7,7 +7,7 @@ dmm_suite
 	default to (1, 1, world.maxz+1)
 	*/
 	read_map(dmm_text as text, coordX as num, coordY as num, coordZ as num, tag as text, overwrite as num, angleOffset as num)
-		if(tag) log_debug("Attempting to load map [tag] at ([coordX],[coordY],[coordZ])...")
+		if(tag) log_debug("Attempting to load map [tag] at ([coordX],[coordY],[coordZ]) with offset [angleOffset]...")
 		. = 0
 		if(angleOffset)
 			angleOffset = MODULUS(round(angleOffset,90), 360)
@@ -51,28 +51,29 @@ dmm_suite
 		var/list/gridLevels = list()
 		var/list/coordShifts = list()
 		var/regex/grid = regex(@{"\(([0-9]*),([0-9]*),([0-9]*)\) = \{"\n((?:[A-z]*\n)*)"\}"}, "g") //Retrieve the coord line thing.
-		//Positioned Keys:             1        2        3                  4
-		var/grid_instances = 0
+		//Positioned Keys:             1        2        3                    4
 		while(grid.Find(gridText))
-			grid.group[1] = text2num(grid.group[1])
-			grid.group[2] = text2num(grid.group[2])
-			grid.group[3] = text2num(grid.group[3])
+			grid.group[1] = text2num(grid.group[1]) - 1
+			grid.group[2] = text2num(grid.group[2]) - 1
+			grid.group[3] = text2num(grid.group[3]) - 1
 			gridLevels.Add(copytext(grid.group[4], 1, -1)) // Strip last \n.
-			//TGM Format would add the y-axis. Non-TGM format would add the entire z-axis.
 			coordShifts.Add(
 				list(
 					list(grid.group[1], grid.group[2], grid.group[3])
 				)
 			)
-			maxZFound = max(maxZFound, grid.group[3]) //z. Will always be 1 unless the map has a second z-level for some reason.
-			grid_instances++
+			maxZFound = max(maxZFound, grid.group[3]+1)
 
 		if(maxZFound+(coordZ-1) > world.maxz)
 			world.maxz = maxZFound+(coordZ-1)
 			log_debug("Z levels increased to [world.maxz].")
 
 		var/turfs_loaded = 0
+		var/debug_x = 0
+		var/debug_y = 0
+		var/debug_z = 0
 		for(var/posZ=1,posZ<=length(gridLevels),posZ++)
+			debug_z = max(debug_z,posZ)
 			var/zGrid = reverseList(text2list(gridLevels[posZ], "\n"))
 
 			maxXFound = max(length(pick(zGrid))/key_len,length(gridLevels))
@@ -85,59 +86,50 @@ dmm_suite
 				world.maxy = maxYFound+(coordY-1)
 				log_debug("Y level increased to [world.maxy].")
 
-			var/gridCoordX = coordShifts[posZ][1] + (coordX - 1)
-			var/gridCoordY = coordShifts[posZ][2] + (coordY - 1)
-			var/gridCoordZ = coordShifts[posZ][3] + (coordZ - 1)
+			var/coord_shift_x = coordShifts[posZ][1]
+			var/coord_shift_y = coordShifts[posZ][2]
+			var/coord_shift_z = coordShifts[posZ][3]
 
-			if(overwrite)
-				for(var/posY = 1 to maxXFound)
-					for(var/posX = 1 to maxYFound)
-						var/grid_x = gridCoordX - 1
-						var/grid_y = gridCoordY - 1
-						var/offset_x = posX
-						var/offset_y = posY
-						var/turf/T = locate(grid_x + offset_x,grid_y + offset_y, gridCoordZ)
-						for(var/k in T)
-							var/datum/x = k
-							if(overwrite & DMM_OVERWRITE_OBJS && istype(x, /obj))
-								qdel(x)
-								if(overwrite & DMM_OVERWRITE_MARKERS && istype(x,/obj/marker/))
-									qdel(x)
-							else if(overwrite & DMM_OVERWRITE_MOBS && istype(x, /mob))
-								qdel(x)
-							CHECK_TICK_SAFE(50,FPS_SERVER)
-
+			//posX and posY represent the location WITHIN THE DMM GRID SYSTEM and NOT the actual location
 			for(var/posY=1,posY<=length(zGrid),posY++)
 				var/y_line = zGrid[posY]
-				for(var/posX=1,posX<=length(y_line)/key_len,posX++) //Don't use maxXFound for this.
+				debug_y = max(debug_y,posY)
+				for(var/posX=1,posX<=length(y_line)/key_len,posX++)
+					debug_x = max(debug_x,posX)
 
-
-					var/grid_x = (gridCoordX - 1) //Origin loc.
-					var/grid_y = (gridCoordY - 1) //Origin loc
-
-					var/offset_x = posX
-					var/offset_y = posY
+					var/offset_x = 0
+					var/offset_y = 0
+					var/offset_z = coord_shift_z
 
 					switch(angleOffset)
 						if(0)
-							offset_x = posX
-							offset_y = posY
+							offset_x = posX + coord_shift_x
+							offset_y = posY + coord_shift_y
 						if(90)
-							offset_x = posY
-							offset_y = maxXFound - posX
-						if(180) //Works
-							offset_x = maxXFound - posX //Negative x
-							offset_y = maxYFound - posY //Negative y
-
+							offset_x = posY + coord_shift_y
+							offset_y = maxXFound - (posX + coord_shift_x)
+						if(180)
+							offset_x = maxXFound - (posX + coord_shift_x)
+							offset_y = maxYFound - (posY + coord_shift_y)
 						if(270)
-							offset_x = maxYFound - posY
-							offset_y = posX
+							offset_x = maxYFound - (posY + coord_shift_y)
+							offset_y = posX + coord_shift_x
 
 					var/keyPos = ((posX-1)*key_len)+1
 					var/modelKey = copytext(y_line, keyPos, keyPos+key_len)
-					var/turf/location = locate(grid_x + offset_x,grid_y + offset_y,gridCoordZ)
+
+					var/loc_x = (coordX-1) + offset_x
+					var/loc_y = (coordY-1) + offset_y
+					var/loc_z = (coordZ) + offset_z
+
+
+					var/turf/location = locate(
+						loc_x,
+						loc_y,
+						loc_z
+					)
 					if(!location)
-						CRASH("dmm_suite: Invalid location! ([grid_x + offset_x],[grid_y + offset_y],[gridCoordZ])")
+						CRASH("dmm_suite: Invalid location! ([loc_x],[loc_y],[loc_z])")
 					var/result = parse_grid(
 						grid_models[modelKey],
 						location,
@@ -146,13 +138,14 @@ dmm_suite
 
 					)
 					if(!result)
-						log_error("Could not parse modelKey \"[html_encode(modelKey)]\" in coords ([posX],[posY],[gridCoordZ])!\nLine: \"[y_line]\"")
+						log_error("Could not parse modelKey \"[html_encode(modelKey)]\" in coords ([posX],[posY],[posZ])!\nLine: \"[y_line]\"")
 						break
 					else
 						turfs_loaded++
 						. += result
 
 					CHECK_TICK_SAFE(50,FPS_SERVER)
+		log_debug("DEBUG: ([debug_x],[debug_y],[debug_z]).")
 
 		if(tag)
 			log_debug("dmm_suite loaded [turfs_loaded] turfs and [.] total objects for [tag] ([maxXFound],[maxYFound],[maxZFound]).")
@@ -244,10 +237,12 @@ dmm_suite
 					instance = new atomPath(location)
 			else if(atomPath)
 				instance = new atomPath(location)
+			if(instance)
+				if(preloader) // Atom could delete itself in New(), or the instance could be an area.
+					preloader.load(instance)
 				if(angleOffset)
 					instance.dir = turn(instance.dir,-angleOffset)
-			if(preloader && instance) // Atom could delete itself in New(), or the instance could be an area.
-				preloader.load(instance)
+
 			return (instance ? 1 : 0)
 
 		loadAttribute(value, list/strings)
