@@ -17,6 +17,14 @@
 	. = ..()
 	update_sprite()
 
+/obj/structure/interactive/lighting/fireplace/set_dir(var/desired_dir,var/force=FALSE)
+	. = ..()
+	if(.)
+		if(dir == SOUTH)
+			pixel_x = -16
+		else
+			pixel_x = 0
+
 /obj/structure/interactive/lighting/fireplace/update_overlays()
 	. = ..()
 

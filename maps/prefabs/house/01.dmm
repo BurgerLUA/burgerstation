@@ -126,10 +126,8 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/master_bedroom)
 "aA" = (
-/obj/structure/carpet/red,
-/obj/marker/map_node,
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01)
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house_01/entrance)
 "aB" = (
 /obj/structure/carpet/red,
 /obj/structure/interactive/bookcase,
@@ -209,9 +207,10 @@
 /turf/simulated/floor/tile/coldroom,
 /area/mission/prefab/house_01/bathroom_02)
 "aP" = (
-/obj/marker/map_node,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
+/obj/structure/carpet/red,
+/obj/structure/table/wood,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01)
 "aQ" = (
 /obj/structure/carpet/red,
 /obj/structure/interactive/lighting/fixture/bulb{
@@ -373,7 +372,7 @@
 /obj/structure/interactive/crate/trash,
 /obj/marker/spawning/random/trash,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
+/area/mission/prefab/house_01/hallway)
 "bu" = (
 /obj/structure/carpet/red,
 /obj/structure/interactive/chair/wood{
@@ -384,35 +383,32 @@
 /area/mission/prefab/house_01)
 "bv" = (
 /obj/structure/carpet/red,
-/obj/structure/table/glass,
+/obj/structure/interactive/chair/wood,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01)
 "bw" = (
-/obj/structure/interactive/door/airlock/station,
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01)
+/obj/structure/interactive/storage/trash_pile,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 "bx" = (
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "by" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
-	},
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
+/area/mission/prefab/house_01/entrance)
 "bz" = (
 /obj/structure/table/wood,
-/obj/marker/spawning/random/food,
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
-"bA" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 4
 	},
+/obj/marker/spawning/random/misc,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
+/area/mission/prefab/house_01/entrance)
+"bA" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01/entrance)
 "bB" = (
 /obj/structure/interactive/wire/red,
 /turf/simulated/floor/wood/brown,
@@ -447,18 +443,21 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/hallway)
 "bH" = (
-/obj/marker/spawning/window,
+/obj/structure/interactive/door/airlock/station,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
+/area/mission/prefab/house_01/entrance)
 "bI" = (
 /obj/structure/interactive/solar_panel,
 /obj/structure/interactive/wire/yellow,
 /turf/simulated/floor/plating,
 /area/mission/prefab/house_01)
 "bJ" = (
-/obj/marker/map_node,
+/mob/living/advanced/npc/survivor{
+	icon_state = "directional";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
+/area/mission/prefab/house_01/hallway)
 "bK" = (
 /obj/structure/carpet/blue,
 /obj/structure/interactive/chair/wood,
@@ -510,10 +509,10 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/hallway)
 "bT" = (
-/obj/item/storage/heavy/fridge,
 /obj/marker/spawning/random/food,
 /obj/marker/spawning/random/food,
 /obj/marker/spawning/random/food,
+/obj/structure/interactive/crate/closet/freezer,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/kitchen)
 "bU" = (
@@ -530,17 +529,11 @@
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/house_01)
 "bW" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
-	},
+/obj/marker/map_node,
+/obj/structure/carpet/brown,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01/kitchen)
+/area/mission/prefab/house_01/entrance)
 "bX" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
-	},
 /obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01)
@@ -579,12 +572,12 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/boys_bedroom)
 "cd" = (
-/mob/living/advanced/npc/survivor{
-	icon_state = "directional";
-	dir = 4
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 1
 	},
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_01)
+/area/mission/prefab/house_01/entrance)
 "ce" = (
 /obj/structure/table/wood,
 /obj/structure/interactive/storage/ammo_pile,
@@ -601,6 +594,26 @@
 /mob/living/advanced/npc/survivor,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_01/master_bedroom)
+"ch" = (
+/obj/structure/interactive/wire/red,
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01)
+"ci" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"cj" = (
+/obj/structure/interactive/potted_plant/office,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01/entrance)
+"ck" = (
+/mob/living/advanced/npc/survivor,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_01/hallway)
 
 (1,1,1) = {"
 bx
@@ -634,9 +647,9 @@ bd
 aS
 bT
 aW
-aW
-aW
-aW
+aA
+aA
+bx
 "}
 (3,1,1) = {"
 ad
@@ -651,10 +664,10 @@ ae
 be
 aS
 aS
-bW
-by
-by
-aW
+aS
+bz
+aA
+bx
 "}
 (4,1,1) = {"
 ad
@@ -670,9 +683,9 @@ bU
 aS
 bs
 aS
-bz
-bz
-bH
+cj
+bA
+ba
 "}
 (5,1,1) = {"
 ad
@@ -688,9 +701,9 @@ bf
 aS
 bs
 aS
-bz
-bz
+bW
 bH
+ci
 "}
 (6,1,1) = {"
 ab
@@ -702,31 +715,31 @@ aV
 bG
 aU
 aV
-aS
-bJ
+aV
+bG
 bt
-aS
+aV
+by
 bA
-bA
-aW
+ba
 "}
 (7,1,1) = {"
 ab
 aa
-aV
+ck
 aV
 aV
 bS
 aV
 aV
 aV
-bg
-bg
+aV
+aV
+bJ
+aV
 cd
-bg
-bg
-bq
-bq
+aA
+aA
 "}
 (8,1,1) = {"
 ag
@@ -776,7 +789,7 @@ aN
 ah
 bi
 bn
-bn
+aP
 bn
 bB
 bF
@@ -793,10 +806,10 @@ aD
 aO
 ah
 bj
-bn
 bv
+aP
 bn
-bB
+ch
 bF
 ay
 "}
@@ -812,7 +825,7 @@ ah
 ah
 bY
 bn
-bn
+aP
 bn
 bC
 bq
@@ -830,7 +843,7 @@ aJ
 bQ
 bg
 bp
-aA
+bn
 bZ
 bg
 ar
@@ -846,9 +859,9 @@ aJ
 aJ
 bo
 bR
-bk
 bq
-bw
+bk
+bk
 bq
 bV
 bq
@@ -866,11 +879,11 @@ cf
 ac
 ba
 ba
-aP
 ba
-ba
-ba
-ba
+bx
+bx
+bx
+bx
 "}
 (16,1,1) = {"
 bx
@@ -882,11 +895,11 @@ aY
 ac
 ac
 ac
+bw
 ba
 ba
-ba
-ba
-ba
-ba
-ba
+bx
+bx
+bx
+bx
 "}

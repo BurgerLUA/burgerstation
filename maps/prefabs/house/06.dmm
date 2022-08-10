@@ -88,9 +88,8 @@
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06/guest_bedroom)
 "ar" = (
-/obj/structure/interactive/door/airlock,
 /turf/simulated/floor/tile,
-/area/mission/prefab/house_06/master_bedroom)
+/area/mission/prefab/house_06/bathroom_01)
 "as" = (
 /obj/structure/carpet/red,
 /turf/simulated/floor/wood/rich,
@@ -137,16 +136,18 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_06/bathroom_01)
 "az" = (
-/obj/structure/interactive/potted_plant/bin,
-/turf/simulated/floor/tile,
-/area/mission/prefab/house_06/bathroom_01)
+/obj/structure/interactive/crate/trash,
+/obj/marker/spawning/random/trash,
+/obj/structure/carpet/blue,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06)
 "aA" = (
 /obj/structure/interactive/light_switch{
 	icon_state = "setup";
 	dir = 8
 	},
 /turf/simulated/wall/wood/rich,
-/area/mission/prefab/house_06/master_bedroom)
+/area/mission/prefab/house_06/bathroom_01)
 "aB" = (
 /obj/marker/spawning/window,
 /turf/simulated/floor/wood/rich,
@@ -312,17 +313,19 @@
 /turf/simulated/wall/wood/rich,
 /area/mission/prefab/house_06)
 "bh" = (
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
+/obj/structure/interactive/lighting/fixture/bulb,
+/obj/structure/interactive/wire/green,
+/obj/structure/carpet/blue,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06)
 "bi" = (
-/obj/structure/interactive/lighting/fixture/bulb,
-/obj/structure/interactive/wire/green,
+/obj/structure/interactive/misc/tv,
+/obj/structure/carpet/blue,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06)
 "bj" = (
-/obj/structure/interactive/misc/tv,
+/obj/structure/interactive/wire/green,
+/obj/structure/carpet/blue,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06)
 "bk" = (
@@ -356,12 +359,9 @@
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06/kitchen)
 "bp" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house_06/kitchen)
+/obj/structure/interactive/door/airlock,
+/turf/simulated/floor/tile,
+/area/mission/prefab/house_06/bathroom_01)
 "bq" = (
 /obj/structure/interactive/wire/green,
 /turf/simulated/wall/wood/rich,
@@ -404,7 +404,7 @@
 /area/mission/prefab/house_06/master_bedroom)
 "by" = (
 /obj/structure/table/wood,
-/obj/marker/spawning/random/kitchen,
+/obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06)
 "bz" = (
@@ -459,6 +459,16 @@
 /obj/marker/map_node,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house_06/kitchen)
+"bJ" = (
+/obj/structure/carpet/red,
+/obj/structure/interactive/potted_plant/bin,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06/master_bedroom)
+"bK" = (
+/obj/structure/interactive/potted_plant/bin,
+/obj/structure/carpet/blue,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house_06)
 
 (1,1,1) = {"
 aa
@@ -470,20 +480,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 "}
 (2,1,1) = {"
 aa
 aa
 ab
 ab
-ab
+ac
 ab
 ab
 aF
@@ -497,7 +507,7 @@ aV
 aX
 "}
 (3,1,1) = {"
-ba
+aa
 ba
 ab
 af
@@ -509,7 +519,7 @@ aM
 aF
 aF
 bg
-bg
+br
 bg
 bg
 aX
@@ -526,9 +536,9 @@ aH
 bG
 aY
 aF
-bh
-bj
-aK
+az
+bi
+bK
 bg
 aX
 "}
@@ -544,14 +554,14 @@ aI
 aO
 aF
 bb
-bi
-bc
-bc
+bh
+bj
+bj
 bq
 aX
 "}
 (6,1,1) = {"
-ba
+aa
 ba
 ab
 ai
@@ -609,13 +619,13 @@ aa
 aa
 ad
 ak
+ar
 aN
-az
 ad
 aK
 aJ
 bm
-aJ
+aK
 aJ
 aJ
 aK
@@ -625,11 +635,11 @@ aa
 (10,1,1) = {"
 aa
 aa
-ae
-ae
-ar
+ad
+ad
 aA
-ae
+bp
+ad
 aL
 aQ
 bx
@@ -642,11 +652,11 @@ ba
 "}
 (11,1,1) = {"
 aa
-aa
+ba
+ba
 ae
 al
 as
-am
 aD
 bC
 aR
@@ -659,12 +669,12 @@ bt
 ba
 "}
 (12,1,1) = {"
-aa
-aa
-ae
+ba
+ba
+ba
+aB
 am
 bB
-as
 aE
 as
 aT
@@ -678,38 +688,38 @@ ba
 "}
 (13,1,1) = {"
 aa
-aa
+ba
+ba
 ae
 an
 at
 as
-as
-as
+bJ
 aW
 ae
 bd
 bv
 bA
-bp
+bf
 bf
 ba
 "}
 (14,1,1) = {"
 aa
 aa
+ba
 ae
 ae
 ae
 aB
 aB
-aB
 ae
 ae
 bf
 bf
+bt
 bf
-bf
-bf
+aa
 aa
 "}
 (15,1,1) = {"
@@ -717,16 +727,16 @@ aa
 aa
 aa
 aa
-ba
+aa
 ba
 ba
 ba
 ba
 aa
 aa
-aa
-aa
-aa
+ba
+ba
+ba
 aa
 aa
 "}
@@ -735,15 +745,15 @@ aa
 aa
 aa
 aa
-ba
-ba
-ba
+aa
+aa
 ba
 ba
 aa
 aa
 aa
 aa
+ba
 aa
 aa
 aa

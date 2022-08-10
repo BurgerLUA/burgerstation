@@ -31,6 +31,10 @@
 /area/mission/prefab/house_01/hallway
 	icon_state = "orange"
 
+/area/mission/prefab/house_01/entrance
+	icon_state = "brown"
+
+
 
 //House 02
 /area/mission/prefab/house_02
@@ -45,6 +49,9 @@
 
 /area/mission/prefab/house_02/kitchen
 	icon_state = "green"
+
+/area/mission/prefab/house_02/dining
+	icon_state = "blue"
 
 /area/mission/prefab/house_02/bedroom
 	icon_state = "purple"
@@ -71,6 +78,9 @@
 
 /area/mission/prefab/house_03/entrance
 	icon_state = "red"
+
+/area/mission/prefab/house_03/closet
+	icon_state = "blue"
 
 //House 04
 /area/mission/prefab/house_04
@@ -150,7 +160,7 @@
 	icon_state = "green"
 
 /area/mission/prefab/house_07/bathroom_02
-	icon_state = "green"
+	icon_state = "pink"
 
 /area/mission/prefab/house_07/entrance
 	icon_state = "purple"
@@ -160,6 +170,9 @@
 
 /area/mission/prefab/house_07/guest_bedroom
 	icon_state = "blue"
+
+/area/mission/prefab/house_07/living_area
+	icon_state = "brown"
 
 
 

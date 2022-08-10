@@ -118,4 +118,4 @@
 	icon = 'icons/obj/item/bulletbox.dmi'
 	icon_state = "ammo"
 
-	pixel_y = 6
+	pixel_y = 7

@@ -244,10 +244,9 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_05/bathroom)
 "aY" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
-	},
+/obj/structure/table/wood,
+/obj/marker/spawning/random/trash,
+/obj/structure/carpet/red,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_05/entrance)
 "aZ" = (
@@ -262,6 +261,7 @@
 /area/mission/prefab/house_05/bathroom)
 "bb" = (
 /obj/structure/carpet/brown,
+/obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_05/entrance)
 "bc" = (
@@ -308,19 +308,20 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house_05/bathroom)
 "bk" = (
-/obj/structure/interactive/misc/tv,
+/obj/structure/carpet/red,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_05/entrance)
 "bl" = (
+/obj/structure/interactive/misc/tv,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_05/entrance)
+"bm" = (
 /obj/structure/interactive/chair/comfy{
 	icon_state = "comfychair";
 	dir = 8
 	},
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house_05/entrance)
-"bm" = (
-/obj/structure/table/wood,
-/obj/marker/spawning/random/trash,
+/obj/structure/carpet/red,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_05/entrance)
 "bn" = (
@@ -383,6 +384,14 @@
 /obj/marker/map_node,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"by" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_05/entrance)
 
 (1,1,1) = {"
 aa
@@ -407,8 +416,8 @@ aa
 ad
 ad
 ad
-ad
-ad
+ae
+ae
 ad
 ad
 aR
@@ -448,11 +457,11 @@ ay
 at
 ak
 aS
-bm
-bk
 aY
+bl
+by
 bn
-aR
+ae
 aK
 aK
 "}
@@ -466,9 +475,9 @@ ak
 ak
 ak
 aS
-aS
-bl
-aS
+bk
+bm
+bk
 aS
 aR
 aK
@@ -539,7 +548,7 @@ aN
 be
 bc
 aT
-aR
+aU
 bg
 aK
 aK
@@ -557,7 +566,7 @@ aB
 bf
 aT
 aT
-aR
+aU
 bg
 aK
 aK
@@ -640,7 +649,7 @@ aa
 aK
 af
 af
-af
+ah
 af
 af
 af

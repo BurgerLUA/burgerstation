@@ -319,10 +319,8 @@
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "bm" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 8
-	},
+/obj/structure/carpet/brown,
+/obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_04/entrance)
 "bn" = (
@@ -350,9 +348,13 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_04/entrance)
 "br" = (
-/obj/marker/map_node,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/obj/structure/carpet/brown,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house_04/entrance)
 "bs" = (
 /obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
@@ -380,6 +382,10 @@
 /obj/structure/interactive/storage/ammo_pile,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house_04)
+"bw" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aa
@@ -391,13 +397,13 @@ aa
 aa
 aa
 aa
+az
+az
+az
+az
+az
+az
 aa
-az
-az
-az
-az
-az
-az
 "}
 (2,1,1) = {"
 aa
@@ -407,7 +413,6 @@ aa
 aa
 aa
 aa
-aa
 az
 az
 az
@@ -416,12 +421,12 @@ bl
 bl
 bl
 az
+aa
 "}
 (3,1,1) = {"
 aa
 aa
 aa
-aa
 az
 ad
 ad
@@ -434,9 +439,9 @@ ay
 ay
 ay
 az
+aa
 "}
 (4,1,1) = {"
-aa
 aa
 aa
 az
@@ -452,9 +457,9 @@ ay
 bc
 ay
 aa
+aa
 "}
 (5,1,1) = {"
-aa
 aa
 az
 aN
@@ -470,9 +475,9 @@ ay
 bd
 ay
 aa
+aa
 "}
 (6,1,1) = {"
-aa
 aa
 ac
 ac
@@ -488,9 +493,9 @@ ba
 aU
 ay
 aa
+aa
 "}
 (7,1,1) = {"
-aa
 az
 ac
 af
@@ -506,11 +511,11 @@ aU
 aU
 bh
 aa
+aa
 "}
 (8,1,1) = {"
-aa
 az
-ac
+ae
 aj
 aj
 al
@@ -524,9 +529,9 @@ aU
 bs
 aI
 aI
+az
 "}
 (9,1,1) = {"
-aa
 az
 ae
 aj
@@ -542,9 +547,9 @@ aV
 aE
 aO
 bg
+az
 "}
 (10,1,1) = {"
-aa
 az
 ac
 ah
@@ -558,11 +563,11 @@ bp
 aW
 bj
 aE
-aE
-bg
+bm
+aZ
+bw
 "}
 (11,1,1) = {"
-aa
 az
 ac
 ai
@@ -576,11 +581,11 @@ aE
 aX
 aW
 aE
-bm
+br
 bg
+az
 "}
 (12,1,1) = {"
-aa
 aa
 ac
 ac
@@ -594,11 +599,11 @@ aE
 bq
 aY
 bs
+bb
 aI
-aI
+az
 "}
 (13,1,1) = {"
-aa
 aa
 aa
 aa
@@ -614,9 +619,9 @@ aE
 be
 aI
 aa
+aa
 "}
 (14,1,1) = {"
-aa
 aa
 aa
 aa
@@ -632,6 +637,7 @@ aE
 bf
 aI
 aa
+aa
 "}
 (15,1,1) = {"
 aa
@@ -642,13 +648,13 @@ aa
 aa
 aa
 aa
-aa
 aI
 aI
-aZ
-bb
+bg
 bg
 aI
+aI
+aa
 aa
 "}
 (16,1,1) = {"
@@ -661,11 +667,11 @@ aa
 aa
 aa
 aa
+az
+az
+az
+az
+az
 aa
-az
-br
-az
-az
-az
 aa
 "}
