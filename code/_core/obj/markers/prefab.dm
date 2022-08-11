@@ -5,6 +5,18 @@
 	var/chance_none = 50
 	var/list/prefabs = null
 
+/obj/marker/prefab/proc/get_prefab_dir()
+	var/list/possible_offsets = list()
+	if(dir & NORTH)
+		possible_offsets += 180
+	if(dir & EAST)
+		possible_offsets += 270
+	if(dir & SOUTH)
+		possible_offsets += 0
+	if(dir & WEST)
+		possible_offsets += 90
+	return pick(possible_offsets)
+
 /obj/marker/prefab/New(var/desired_loc)
 
 	if(!category) category = "none"
@@ -35,13 +47,32 @@
 
 /obj/marker/prefab/small
 	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	icon_state = "nodir"
 	category = "16x16"
 	chance_none = 70
 
 /obj/marker/prefab/house
 	icon = 'icons/obj/markers/prefab_16x16.dmi'
 	category = "house"
+	chance_none = 20
+
+/obj/marker/prefab/alley
+	icon = 'icons/obj/markers/prefab_8x8.dmi'
+	icon_state = "alley"
+	category = "alley"
 	chance_none = 0
+
+/obj/marker/prefab/alley_end
+	icon = 'icons/obj/markers/prefab_8x8.dmi'
+	icon_state = "alley_end"
+	category = "alley_end"
+	chance_none = 0
+
+/obj/marker/prefab/yard
+	icon = 'icons/obj/markers/prefab_8x8.dmi'
+	icon_state = "yard"
+	category = "yard"
+	chance_none = 10
 
 /obj/marker/prefab/boss
 	category = "boss"

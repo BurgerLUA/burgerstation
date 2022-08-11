@@ -1926,6 +1926,7 @@
 #include "code\_core\obj\structure\interactive\stacker.dm"
 #include "code\_core\obj\structure\interactive\statue.dm"
 #include "code\_core\obj\structure\interactive\status_display.dm"
+#include "code\_core\obj\structure\interactive\stopsign.dm"
 #include "code\_core\obj\structure\interactive\supermatter.dm"
 #include "code\_core\obj\structure\interactive\supplies.dm"
 #include "code\_core\obj\structure\interactive\telecomms.dm"
