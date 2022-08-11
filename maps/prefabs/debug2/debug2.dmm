@@ -1,0 +1,14 @@
+"a" = (/obj/debug/x1,/obj/debug/x2,/obj/debug/x3,/turf/simulated/wall/cult,/area/dmm_suite/clear_area)
+"b" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/wall/strange,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+bbbbbbbc
+bbbbbbbb
+bbbbbbbb
+bbbbbbbb
+bbbbbbbb
+bbbbbbbb
+bbbbbbbb
+abbbbbbb
+"}

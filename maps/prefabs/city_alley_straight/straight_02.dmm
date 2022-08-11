@@ -1,0 +1,19 @@
+"a" = (/turf/simulated/wall/brick/red,/area/dmm_suite/clear_area)
+"b" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"c" = (/obj/item/trash/random,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 4},/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"g" = (/obj/structure/interactive/fence/door,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 8},/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+abddcdba
+abddddba
+abdcddba
+abddddba
+aeffgfha
+abdcddba
+abddddba
+abccdcba
+"}

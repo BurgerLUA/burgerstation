@@ -50,23 +50,45 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")
 	var/loaded_prefabs = 0
-	for(var/category in prefab_markers)
-		log_subsystem(name,"Found [length(prefab_markers[category])] valid maps for dimension set [category].")
-		for(var/k in prefab_markers[category]) //For each maker...
-			var/obj/marker/prefab/M = k
-			if(!length(valid_prefabs[category]))
-				log_error("Warning: Not enough prefabs of type [category] to satisfy all prefab markers.")
-				break
-			var/list/local_prefabs = valid_prefabs[category]
-			if(length(M.prefabs))
-				local_prefabs = local_prefabs & M.prefabs
-			if(length(local_prefabs))
-				var/chosen_file = pick(local_prefabs)
-				valid_prefabs[category] -= chosen_file
-				var/map_contents = file2text(chosen_file)
-				dmm_suite.read_map(map_contents,M.x,M.y,M.z,angleOffset = 0,tag="[chosen_file]",angleOffset=M.get_prefab_dir())
-				loaded_prefabs++
-			qdel(M)
+
+	var/list/not_enough = list()
+
+	while(length(prefab_markers))
+		var/obj/marker/prefab/M = prefab_markers[1]
+		prefab_markers -= M
+		M.prepare_prefab()
+		if(!length(valid_prefabs[M.category]))
+			not_enough |= M.category
+			continue
+		var/list/local_prefabs = valid_prefabs[M.category]
+		if(length(M.prefabs)) local_prefabs = local_prefabs & M.prefabs
+		if(length(local_prefabs))
+			var/chosen_file = pick(local_prefabs)
+			if(M.unique)
+				valid_prefabs[M.category] -= chosen_file
+			var/map_contents = file2text(chosen_file)
+			var/desired_angle = 0
+			switch(M.dir)
+				if(SOUTH)
+					desired_angle = 0
+				if(WEST)
+					desired_angle = 270
+				if(NORTH)
+					desired_angle = 180
+				if(EAST)
+					desired_angle = 90
+			dmm_suite.read_map(
+				map_contents,
+				M.x + M.offset_x,
+				M.y + M.offset_y,
+				M.z,
+				tag="[chosen_file]",
+				angleOffset = -SIMPLIFY_DEGREES(desired_angle)
+			)
+			loaded_prefabs++
+
+	if(length(not_enough))
+		log_error("Warning: Not enough prefabs of type(s) [english_list(not_enough)] to satisfy all prefab markers.")
 
 	log_subsystem(name,"Loaded [loaded_prefabs] prefabs.")
 

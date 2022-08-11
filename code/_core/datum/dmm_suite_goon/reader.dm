@@ -107,12 +107,12 @@ dmm_suite
 							offset_y = posY + coord_shift_y
 						if(90)
 							offset_x = posY + coord_shift_y
-							offset_y = maxXFound - (posX + coord_shift_x)
+							offset_y = maxXFound - (posX + coord_shift_x) + 1
 						if(180)
-							offset_x = maxXFound - (posX + coord_shift_x)
-							offset_y = maxYFound - (posY + coord_shift_y)
+							offset_x = maxXFound - (posX + coord_shift_x) + 1
+							offset_y = maxYFound - (posY + coord_shift_y) + 1
 						if(270)
-							offset_x = maxYFound - (posY + coord_shift_y)
+							offset_x = maxYFound - (posY + coord_shift_y) + 1
 							offset_y = posX + coord_shift_x
 
 					var/keyPos = ((posX-1)*key_len)+1

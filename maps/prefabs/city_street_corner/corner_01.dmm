@@ -1,0 +1,97 @@
+"a" = (/turf/simulated/wall/brick/red,/area/dmm_suite/clear_area)
+"b" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"d" = (/obj/marker/prefab/alley{icon_state = "alley"; dir = 10},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"e" = (/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
+"f" = (/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"g" = (/obj/marker/prefab/small,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"h" = (/obj/marker/prefab/alley,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"i" = (/obj/marker/prefab/yard,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"j" = (/obj/marker/prefab/alley{icon_state = "alley"; dir = 6},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"k" = (/obj/marker/prefab/alley{icon_state = "alley"; dir = 4},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"l" = (/obj/marker/prefab/alley{icon_state = "alley"; dir = 9},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"m" = (/obj/marker/prefab/house{icon_state = ""; dir = 8},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"n" = (/turf/simulated/wall/bananium,/area/dmm_suite/clear_area)
+"o" = (/obj/marker/prefab/alley_end{icon_state = "alley_end"; dir = 4},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"p" = (/obj/marker/prefab/house{icon_state = ""; dir = 4},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"q" = (/obj/decal/road_marking/solid_line,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"r" = (/obj/decal/road_marking/dotted_line,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"s" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"t" = (/obj/decal/road_marking/dotted_line{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"u" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 6},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"v" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"w" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 10},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"x" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 9},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"y" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"z" = (/obj/decal/road_marking/solid_stop{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"A" = (/obj/structure/interactive/lighting/roadlamp,/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
+"B" = (/obj/decal/road_marking/solid_line/yellow{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"C" = (/obj/structure/interactive/stopsign{icon_state = "sign"; dir = 8},/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
+"D" = (/obj/structure/interactive/lighting/roadlamp{icon_state = "lamp"; dir = 1},/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+naaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbn
+abbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbcccccccaadbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbbbbbbbbbbaccccccabbbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbbbbbbbbbbeeeeeeeeebbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbbbbbbbbbbeuvvvvvwebbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbbbbbbbbbbeqfffffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbbbbbbbbbbeqfffffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbbbbbbbbbbeqfffffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+abgbbbbbbbbbbbbbbbbbbbbbbbbbeqfffffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+abbbbbbbbbbbbbbbbbbhbbbbbbbbeqfffffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+aaabbbbbbbbbbbbbbbbbbbbbbbbbeqfffffqebbbbbbbbbbbbbbbbibbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbjbbbbbbbkbbbbbbblbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbacccccccabbbbbbbbbbbbbbbbeqffrffqembbbbbbbbbbbbbbbibbbbbbbbbb
+eeeeeeeeeeeeeeeeeeeAeeeeeeeeeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+ssssssssssssssssssssssssssssyxffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+ffffffffffffffffffffffffffffyfffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+ffffffffffffffffffffffffffffyfffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+ttttttttttttttttttBBBBBBBBBzyfffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+fffffffffffffffffffffffffffzyfffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+fffffffffffffffffffffffffffzyfffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+ssssssssssssssssssssssssssszywffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+eeeeeeeeeeeeeeeeeeeeeeeeeeCDeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbibbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbobbbbbbbkbbbbbbbkbbbbbbbeqffrffqembbbbbbbbbbbbbbbibbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbibbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbibbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbeqffrffqebbbbbbbbbbbbbbbbbbbbbbbbbbb
+nbbbibbbbbbbpbbbbbbbbbbbbbbbeqffrffqembbbbbbbbbbbbbbbibbbbbbbbbn
+"}

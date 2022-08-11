@@ -945,6 +945,7 @@
 #include "code\_core\mob\verbs\_verbs.dm"
 #include "code\_core\mob\verbs\chat.dm"
 #include "code\_core\obj\_obj.dm"
+#include "code\_core\obj\debug.dm"
 #include "code\_core\obj\explosion_process.dm"
 #include "code\_core\obj\fov.dm"
 #include "code\_core\obj\map_node.dm"

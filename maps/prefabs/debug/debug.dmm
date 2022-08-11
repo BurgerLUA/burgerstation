@@ -1,0 +1,16 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/obj/debug/x1,/obj/debug/x2,/obj/debug/x3,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/wall/bananium,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaa
+aaaaccaaaa
+aaaaccaaaa
+aaaaccaaaa
+aaaaccaaaa
+acccccccca
+aaccccccaa
+aaaccccaaa
+aaaaccaaaa
+baaaaaaaaa
+"}

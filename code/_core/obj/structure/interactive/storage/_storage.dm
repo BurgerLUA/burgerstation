@@ -73,6 +73,20 @@
 
 	var/mob/living/stored_threat
 
+	var/chance_none = 0
+
+/obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
+
+	if(prob(chance_none))
+		qdel(src)
+		return
+
+	. = ..()
+
+
+/obj/structure/interactive/storage/trash_pile/low_chance
+	chance_none = 80
+
 /obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
 	icon_state = "[initial(icon_state)]_[rand(1,10)]"
 	. = ..()
@@ -95,6 +109,14 @@
 	layer = 1000
 
 	var/chance_none = 70
+
+/obj/structure/interactive/storage/safe/New(var/desired_loc)
+
+	if(prob(chance_none))
+		qdel(src)
+		return
+
+	. = ..()
 
 /obj/structure/interactive/storage/safe/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

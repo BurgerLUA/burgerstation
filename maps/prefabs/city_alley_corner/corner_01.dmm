@@ -1,0 +1,15 @@
+"a" = (/turf/simulated/wall/brick/red,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"c" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"d" = (/obj/item/trash/random,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaa
+ccccccca
+bbbbbbca
+bbdbdbca
+bbbbbbca
+bbbbbbca
+ddbdbdca
+bbbbbbca
+"}
