@@ -237,3 +237,6 @@
 	talk(src,src,text_to_say,talk_type_to_use,null,language_to_use,talk_range)
 
 	return TRUE
+
+/atom/proc/on_dmm_suite_rotate(var/angle_offset=0)
+	return TRUE

@@ -72,18 +72,18 @@ SUBSYSTEM_DEF(dmm_suite)
 				if(SOUTH)
 					desired_angle = 0
 				if(WEST)
-					desired_angle = 270
+					desired_angle = 90
 				if(NORTH)
 					desired_angle = 180
 				if(EAST)
-					desired_angle = 90
+					desired_angle = 270
 			dmm_suite.read_map(
 				map_contents,
 				M.x + M.offset_x,
 				M.y + M.offset_y,
 				M.z,
 				tag="[chosen_file]",
-				angleOffset = -SIMPLIFY_DEGREES(desired_angle)
+				angleOffset = SIMPLIFY_DEGREES(desired_angle)
 			)
 			loaded_prefabs++
 

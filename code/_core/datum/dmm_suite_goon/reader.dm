@@ -242,6 +242,7 @@ dmm_suite
 					preloader.load(instance)
 				if(angleOffset)
 					instance.dir = turn(instance.dir,-angleOffset)
+					instance.on_dmm_suite_rotate(angleOffset)
 
 			return (instance ? 1 : 0)
 
