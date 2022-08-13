@@ -1,0 +1,506 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/plastic/tan,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/structure/interactive/door/airlock/station/maintenance,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"c" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"d" = (
+/obj/structure/table/wood,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"e" = (
+/obj/structure/carpet/grey,
+/obj/structure/table/wood,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"f" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent,
+/obj/structure/carpet/grey,
+/obj/structure/table/wood,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"g" = (
+/obj/structure/carpet/grey,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"h" = (
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"i" = (
+/obj/structure/interactive/door/airlock,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 8
+	},
+/turf/simulated/floor/tile/tint,
+/area/dmm_suite/clear_area)
+"k" = (
+/turf/simulated/floor/tile/tint,
+/area/dmm_suite/clear_area)
+"l" = (
+/obj/structure/interactive/misc/toilet,
+/turf/simulated/floor/tile/tint,
+/area/dmm_suite/clear_area)
+"m" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"n" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"o" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 8
+	},
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"p" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"q" = (
+/obj/structure/interactive/door/airlock/station/bathroom/toilet,
+/turf/simulated/floor/tile/tint,
+/area/dmm_suite/clear_area)
+"r" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 1
+	},
+/turf/simulated/floor/tile/tint,
+/area/dmm_suite/clear_area)
+"s" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"t" = (
+/turf/simulated/floor/tile/purple,
+/area/dmm_suite/clear_area)
+"u" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/structure/table/rack/grey/light,
+/obj/item/storage/lighting/tube,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"v" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 8
+	},
+/obj/structure/table/rack/grey/light,
+/obj/item/storage/lighting/tube,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"w" = (
+/turf/simulated/floor/tile/coldroom,
+/area/dmm_suite/clear_area)
+"x" = (
+/obj/structure/interactive/lighting/fixture/tube/color/turf{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/tile/purple,
+/area/dmm_suite/clear_area)
+"y" = (
+/obj/structure/table/rack/grey/light,
+/obj/item/storage/lighting/tube,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"z" = (
+/obj/structure/table/reinforced/steel,
+/obj/item/storage/lighting/tube,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"A" = (
+/obj/structure/table/reinforced/steel,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"B" = (
+/obj/structure/interactive/lighting/fixture/tube/color/turf{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/tile/coldroom,
+/area/dmm_suite/clear_area)
+"C" = (
+/obj/structure/table/reinforced/steel,
+/obj/item/light/tube,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"D" = (
+/turf/simulated/floor/tile/orange,
+/area/dmm_suite/clear_area)
+"E" = (
+/turf/simulated/floor/tile/green,
+/area/dmm_suite/clear_area)
+"F" = (
+/obj/structure/interactive/lighting/fixture/tube/color/turf{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/tile/orange,
+/area/dmm_suite/clear_area)
+"G" = (
+/obj/structure/interactive/lighting/fixture/tube/color/turf{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/tile/green,
+/area/dmm_suite/clear_area)
+"H" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/structure/carpet/grey,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"I" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 8
+	},
+/obj/structure/carpet/grey,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"J" = (
+/obj/structure/interactive/lighting/fixture/tube/color/turf,
+/turf/simulated/floor/tile/tint,
+/area/dmm_suite/clear_area)
+"K" = (
+/obj/structure/carpet/grey,
+/obj/structure/carpet/grey,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"L" = (
+/turf/simulated/floor/tile/medical,
+/area/dmm_suite/clear_area)
+"M" = (
+/obj/structure/interactive/lighting/fixture/tube/color/turf,
+/turf/simulated/floor/tile/medical,
+/area/dmm_suite/clear_area)
+"N" = (
+/obj/structure/interactive/door/airlock/glass,
+/turf/simulated/floor/tile/tan,
+/area/dmm_suite/clear_area)
+"O" = (
+/obj/structure/interactive/bar_sign/the_lightbulb,
+/turf/simulated/wall/metal,
+/area/dmm_suite/clear_area)
+"P" = (
+/turf/simulated/wall/metal,
+/area/dmm_suite/clear_area)
+"Q" = (
+/turf/simulated/floor/sidewalk,
+/area/dmm_suite/clear_area)
+"R" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+s
+s
+s
+a
+s
+s
+s
+a
+a
+Q
+"}
+(2,1,1) = {"
+a
+d
+h
+m
+a
+h
+t
+x
+t
+h
+D
+F
+D
+h
+a
+Q
+"}
+(3,1,1) = {"
+a
+e
+g
+n
+a
+b
+a
+a
+a
+a
+a
+a
+a
+k
+s
+Q
+"}
+(4,1,1) = {"
+a
+f
+g
+o
+a
+h
+u
+y
+y
+y
+u
+y
+a
+J
+s
+Q
+"}
+(5,1,1) = {"
+a
+g
+g
+h
+a
+h
+h
+h
+h
+h
+h
+h
+a
+k
+s
+Q
+"}
+(6,1,1) = {"
+a
+h
+h
+h
+a
+h
+h
+h
+h
+h
+h
+h
+a
+a
+a
+Q
+"}
+(7,1,1) = {"
+a
+a
+i
+a
+a
+h
+h
+z
+C
+A
+h
+h
+H
+g
+N
+Q
+"}
+(8,1,1) = {"
+R
+a
+h
+p
+h
+h
+h
+h
+h
+A
+h
+h
+g
+g
+O
+Q
+"}
+(9,1,1) = {"
+R
+b
+h
+h
+h
+h
+h
+A
+h
+A
+h
+h
+g
+g
+P
+Q
+"}
+(10,1,1) = {"
+R
+a
+h
+h
+h
+h
+h
+A
+A
+A
+h
+h
+I
+K
+N
+Q
+"}
+(11,1,1) = {"
+R
+a
+a
+q
+a
+h
+h
+h
+h
+h
+h
+h
+a
+a
+a
+Q
+"}
+(12,1,1) = {"
+c
+a
+j
+k
+a
+h
+h
+h
+h
+h
+h
+h
+a
+L
+s
+Q
+"}
+(13,1,1) = {"
+c
+a
+k
+r
+a
+h
+v
+y
+y
+y
+v
+y
+a
+M
+s
+Q
+"}
+(14,1,1) = {"
+c
+a
+l
+k
+a
+b
+a
+a
+a
+a
+a
+a
+a
+L
+s
+Q
+"}
+(15,1,1) = {"
+c
+a
+a
+a
+a
+h
+w
+B
+w
+h
+E
+G
+E
+h
+a
+Q
+"}
+(16,1,1) = {"
+c
+c
+c
+c
+a
+a
+s
+s
+s
+a
+s
+s
+s
+a
+a
+Q
+"}

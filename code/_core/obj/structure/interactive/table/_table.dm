@@ -119,6 +119,9 @@ obj/structure/table/rack
 obj/structure/table/rack/grey
 	color = COLOR_GREY
 
+obj/structure/table/rack/grey/light
+	color = COLOR_GREY_LIGHT
+
 obj/structure/table/rack/steel
 	color = COLOR_STEEL
 

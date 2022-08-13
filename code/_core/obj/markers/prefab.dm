@@ -156,6 +156,15 @@
 	chance_none = 0
 	rotational_offset = 64
 
+/obj/marker/prefab/city/store
+	name = "city store prefab"
+	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	category = "city"
+	icon_state = null
+	unique = TRUE
+	chance_none = 0
+	rotational_offset = 16
+
 /obj/marker/prefab/city/line
 	icon = 'icons/obj/markers/prefab_64x64_city.dmi'
 	icon_state = null
@@ -199,3 +208,26 @@
 	category = "city_street_end"
 
 
+
+/obj/marker/prefab/city/parking
+	icon = 'icons/obj/markers/prefab_10x10.dmi'
+	icon_state = "parking"
+	category = "city_parking_straight" //or "city_parkingstreet_corner"
+
+/obj/marker/prefab/city/parking/prepare_prefab()
+
+	if(dir in DIRECTIONS_INTERCARDINAL) //Corner
+		category = "city_parking_straight"
+		switch(dir)
+			if(SOUTHWEST)
+				dir = SOUTH
+			if(NORTHWEST)
+				dir = WEST
+			if(NORTHEAST)
+				dir = NORTH
+			if(SOUTHEAST)
+				dir = EAST
+	else
+		category = "city_parking_straight"
+
+	. = ..()

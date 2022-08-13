@@ -1,10 +1,27 @@
-obj/structure/interactive/bar_sign
+/obj/structure/interactive/bar_sign
 	name = "bar sign"
 	desc = "Come on in!"
 	icon = 'icons/obj/structure/store_signs.dmi'
 	icon_state = "blank"
 	plane = PLANE_WALL
 	layer = 99
+
+
+
+/obj/structure/interactive/bar_sign/the_lightbulb
+	name = "The Lightbulb"
+	desc = "For all your lighting needs!"
+	icon_state = "the_lightbulb"
+
+
+
+
+
+
+
+
+
+
 
 obj/structure/interactive/bar_sign/assistant
 	name = "The Greytide"
@@ -69,11 +86,6 @@ obj/structure/interactive/bar_sign/adminbus
 	name = "The adminbus"
 	desc = "Wait what?"
 	icon_state = "theadminbus"
-
-obj/structure/interactive/bar_sign/the_lightbulb
-	name = "The lightbulb"
-	desc = "Wait what?"
-	icon_state = "the_lightbulb"
 
 obj/structure/interactive/bar_sign/thenet
 	name = "The net"
