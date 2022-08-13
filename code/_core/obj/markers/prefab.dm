@@ -190,7 +190,7 @@
 /obj/marker/prefab/city/t_junction
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "t"
-	category = "city_street_t_intersection"
+	category = "city_street_t"
 
 
 /obj/marker/prefab/city/end
