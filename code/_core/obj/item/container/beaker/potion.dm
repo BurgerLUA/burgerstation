@@ -51,3 +51,14 @@
 /obj/item/container/simple/beaker/bottle/large/mana_potion/Generate()
 	reagents.add_reagent(/reagent/medicine/mana_potion,reagents.volume_max)
 	return ..()
+
+
+/obj/item/container/simple/beaker/bottle/tiny
+	name = "tiny bottle"
+	desc = "Potion seller, i'm going into battle and I only need your STRONGEST potions."
+	desc_extended = "A tiny bottle, usually used to store potent chemicals. Be sure to not drink unlabeled ones, they might kill you, or turn you into a frog."
+	icon = 'icons/obj/item/container/cup/bottle_tiny.dmi'
+	icon_state = "potion"
+	icon_count = 6
+
+	reagents = /reagent_container/beaker/vial

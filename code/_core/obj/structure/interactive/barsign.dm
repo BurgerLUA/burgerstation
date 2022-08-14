@@ -13,6 +13,15 @@
 	desc = "For all your lighting needs!"
 	icon_state = "the_lightbulb"
 
+obj/structure/interactive/bar_sign/dan
+	name = "Discount Dan's"
+	desc = "Stay awhile, and listen!"
+	icon_state = "discount_dan"
+
+obj/structure/interactive/bar_sign/the_net
+	name = "The Net"
+	desc = "NTNet Browsing at a premium price!"
+	icon_state = "the_net"
 
 
 
@@ -44,10 +53,6 @@ obj/structure/interactive/bar_sign/bawse_loot
 	desc = "Nothing is stolen*! We promise!"
 	icon_state = "bawse_loot"
 
-obj/structure/interactive/bar_sign/dan
-	name = "Discount Dan's"
-	desc = "Stay awhile, and listen!"
-	icon_state = "dan"
 
 
 obj/structure/interactive/bar_sign/narsie
@@ -96,11 +101,6 @@ obj/structure/interactive/bar_sign/combocafe
 	name = "combo cafe"
 	desc = "Wait what?"
 	icon_state = "combocafe"
-
-obj/structure/interactive/bar_sign/thenest
-	name = "The Nest"
-	desc = "Wait what?"
-	icon_state = "thenest"
 
 obj/structure/interactive/bar_sign/scotchservinwill
 	name = "Scotch Servin' Willy's"

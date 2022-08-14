@@ -12,8 +12,6 @@
 	material_id = /material/wood
 	health_base = 500
 
-	color = COLOR_WOOD
-
 /turf/simulated/wall/wood/New(var/desired_loc)
 	. = ..()
 	map_color = color

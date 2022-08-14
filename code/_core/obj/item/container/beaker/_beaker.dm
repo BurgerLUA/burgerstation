@@ -9,7 +9,7 @@
 
 	reagents = /reagent_container/beaker/
 
-	var/icon_count = 8
+	var/icon_count = 10
 
 	allow_reagent_transfer_to = TRUE
 	allow_reagent_transfer_from = TRUE

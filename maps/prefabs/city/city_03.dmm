@@ -1,0 +1,40 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/wall/metal/circuit,/area)
+"c" = (/turf/simulated/floor/plating/reinforced,/area)
+"d" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/morphing/green,/area)
+"e" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area)
+"f" = (/turf/simulated/floor/tile/morphing/green,/area)
+"g" = (/turf/simulated/floor/tile/dark/single,/area)
+"h" = (/obj/structure/table/steel/dark,/turf/simulated/floor/tile/dark/single,/area)
+"i" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/green,/area)
+"j" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area)
+"k" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/dark/single,/area)
+"l" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area)
+"m" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area)
+"n" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/dark/single,/area)
+"o" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/dark/single,/area)
+"p" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area)
+"q" = (/obj/structure/interactive/bar_sign/the_net,/turf/simulated/wall/metal/circuit,/area)
+"r" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/dark/single,/area)
+"s" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 4},/turf/simulated/wall/metal/circuit,/area)
+"t" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 8},/turf/simulated/wall/metal/circuit,/area)
+"u" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/circuit,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+eeburuuuuuuuubee
+eceifdlmmdlfiece
+ecejghhhhhhgpece
+eesjgnknonkgptee
+ecejghhhhhhgpece
+ecejgokoknngpece
+eesjghhhhhhgptee
+ecejggggggggpece
+ecejggggggggpece
+eesjgghnkhggptee
+ecejgghhhhggpece
+eceiffggggffiece
+eeqbbfggggfbqbee
+aaaabffffffbaaaa
+aaaabeerreebaaaa
+"}

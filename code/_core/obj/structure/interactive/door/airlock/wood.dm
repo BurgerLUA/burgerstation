@@ -2,6 +2,8 @@
 	color = "#6F4533"
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/wood/dark
+	color = "#4C3323"
 
 /obj/structure/interactive/door/airlock/magic
 	name = "magic airlock"

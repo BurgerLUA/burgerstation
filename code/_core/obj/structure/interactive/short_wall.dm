@@ -28,9 +28,12 @@
 
 /obj/structure/short_wall/wood
 	name = "short wood wall"
-	color = "#4C3323"
+	color = "#6F4533"
 	corner_category = "wood_wall"
 	material_id = /material/wood
+
+/obj/structure/short_wall/wood/dark
+	color = "#4C3323"
 
 /obj/structure/short_wall/wood/starting
 	color = "#60402C"

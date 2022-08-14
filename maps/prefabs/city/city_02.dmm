@@ -1,0 +1,49 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/wall/wood/brown,/area)
+"c" = (/turf/simulated/floor/wood/brown/dark,/area)
+"d" = (/turf/simulated/floor/wood/brown,/area)
+"e" = (/obj/structure/short_wall/wood,/turf/simulated/floor/wood/brown/dark,/area)
+"f" = (/obj/structure/interactive/door/airlock/wood/dark,/turf/simulated/floor/wood/brown/dark,/area)
+"g" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area)
+"h" = (/turf/simulated/floor/tile,/area)
+"i" = (/obj/structure/table/wood,/turf/simulated/floor/wood/brown/dark,/area)
+"j" = (/obj/structure/table/reinforced/steel,/turf/simulated/floor/wood/brown,/area)
+"k" = (/obj/structure/interactive/chair/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"l" = (/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"m" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"n" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"o" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"p" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"q" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"r" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/tile,/area)
+"s" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"t" = (/obj/structure/interactive/chair/stool/bar,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area)
+"u" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/wood/brown,/area)
+"v" = (/obj/structure/interactive/door/airlock/station/bathroom/male,/turf/simulated/floor/tile,/area)
+"w" = (/obj/structure/interactive/door/airlock/station/bathroom/female,/turf/simulated/floor/tile,/area)
+"x" = (/obj/structure/interactive/bar_sign/dan,/turf/simulated/wall/wood/brown,/area)
+"y" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/tile,/area)
+"z" = (/obj/structure/table/reinforced/steel,/turf/simulated/floor/tile,/area)
+"A" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown/dark,/area)
+"B" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/wood/brown/dark,/area)
+"C" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/brown/dark,/area)
+"D" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/turf/simulated/floor/wood/brown/dark,/area)
+
+(1,1,1) = {"
+brbbbbbbbbbbbbbb
+bhhzyyyzbddbhhhb
+bhhhhhhhuddvhhhb
+bhhhhhhhbddbbbbb
+bbjjjjjjbddwhhhb
+bllllllllddbhhhb
+bmmmmmmmmddbbbbb
+bnnsnnttnddbaaaa
+gddddddddddgaaaa
+glkklddlkklgaaaa
+bommoddpmmqbaaaa
+bbggxbfbggbbaaaa
+eAiBccccBiCeaaaa
+ecccccccccceaaaa
+eDiBccccAiDeaaaa
+eeeeecceeeeeaaaa
+"}
