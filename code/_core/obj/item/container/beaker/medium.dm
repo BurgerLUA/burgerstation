@@ -4,7 +4,7 @@
 	desc_extended = "A bottle used by chemists to contain medicines and other reagents."
 	icon = 'icons/obj/item/container/cup/bottle_medium.dmi'
 	icon_state = "bottle"
-	icon_count = 8
+	icon_count = 10
 
 	reagents = /reagent_container/beaker/bottle/medium
 
