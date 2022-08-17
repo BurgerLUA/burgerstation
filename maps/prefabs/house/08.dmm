@@ -3,10 +3,14 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "ab" = (
-/turf/simulated/wall/wood,
-/area/mission/prefab/house/house_08/closet)
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_08)
 "ac" = (
-/turf/simulated/wall/wood,
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 8
+	},
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08)
 "ad" = (
 /turf/simulated/floor/plating,
@@ -55,15 +59,15 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/closet)
 "an" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/wood,
-/area/mission/prefab/house/house_08)
-"ao" = (
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
+"ao" = (
+/obj/structure/interactive/power/apc{
+	icon_state = "apc";
+	dir = 1
+	},
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_08)
 "ap" = (
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/brown,
@@ -161,16 +165,12 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "aH" = (
-/obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 1
-	},
-/turf/simulated/wall/wood,
+/obj/structure/interactive/wire/red,
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08)
 "aI" = (
-/obj/structure/interactive/wire/red,
-/turf/simulated/wall/wood,
-/area/mission/prefab/house/house_08)
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_08/closet)
 "aJ" = (
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
@@ -187,7 +187,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "aM" = (
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08/master_bedroom)
 "aN" = (
 /obj/structure/interactive/lighting/fixture/bulb{
@@ -199,8 +199,12 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "aO" = (
-/turf/simulated/wall/wood,
-/area/mission/prefab/house/house_08/bathroom)
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 1
+	},
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_08/closet)
 "aP" = (
 /obj/structure/interactive/storage/safe,
 /obj/structure/interactive/potted_plant/bin,
@@ -253,11 +257,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "ba" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
-	},
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08/bathroom)
 "bb" = (
 /obj/structure/interactive/misc/toilet{
@@ -302,7 +302,7 @@
 	icon_state = "setup";
 	dir = 8
 	},
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "bi" = (
 /obj/structure/carpet/brown,
@@ -327,10 +327,10 @@
 "bn" = (
 /obj/structure/interactive/light_switch{
 	icon_state = "setup";
-	dir = 1
+	dir = 4
 	},
-/turf/simulated/wall/wood,
-/area/mission/prefab/house/house_08/closet)
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_08/bathroom)
 "bo" = (
 /obj/structure/table/wood,
 /obj/marker/spawning/random/valuable,
@@ -389,7 +389,7 @@
 	icon_state = "setup";
 	dir = 4
 	},
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "by" = (
 /obj/structure/carpet/brown,
@@ -467,11 +467,11 @@ aJ
 aa
 aJ
 aJ
-ac
-ac
-ac
-ac
-ac
+ab
+ab
+ab
+ab
+ab
 aB
 ad
 aM
@@ -489,7 +489,7 @@ ae
 ap
 av
 aC
-ac
+ab
 aB
 aR
 aM
@@ -501,13 +501,13 @@ aJ
 "}
 (4,1,1) = {"
 aa
-ac
-ac
-ac
+ab
+ab
+ab
 br
 al
 al
-ac
+ab
 aB
 aR
 aM
@@ -519,13 +519,13 @@ aJ
 "}
 (5,1,1) = {"
 aa
-ac
+ab
 af
 al
 al
 al
 aE
-aH
+ao
 aB
 aR
 aM
@@ -537,13 +537,13 @@ aJ
 "}
 (6,1,1) = {"
 aJ
-ac
+ab
 ag
 bk
 aq
 aq
 bB
-aI
+aH
 aD
 ax
 aM
@@ -561,10 +561,10 @@ al
 ar
 ar
 bC
-ab
-ab
-ab
-ab
+aI
+aI
+aI
+aI
 aU
 aY
 bg
@@ -579,14 +579,14 @@ al
 as
 aF
 bD
-ab
+aI
 ah
 am
-bn
+aO
 bh
 aZ
 bx
-ao
+an
 aJ
 "}
 (9,1,1) = {"
@@ -597,10 +597,10 @@ al
 at
 ar
 bC
-ab
-ab
+aI
+aI
 aA
-ab
+aI
 au
 bi
 bu
@@ -609,7 +609,7 @@ bF
 "}
 (10,1,1) = {"
 aJ
-ac
+ab
 aj
 al
 aw
@@ -627,7 +627,7 @@ aJ
 "}
 (11,1,1) = {"
 aa
-ac
+ab
 ak
 al
 al
@@ -640,14 +640,14 @@ az
 az
 bq
 bz
-ao
+an
 aJ
 "}
 (12,1,1) = {"
 aa
+ab
+ab
 ac
-ac
-an
 al
 az
 bt
@@ -665,36 +665,36 @@ aJ
 aa
 aa
 aa
-ao
+an
 au
 aK
 bG
 bG
 aK
 au
-aO
-aO
 ba
+ba
+bn
 bj
-aO
+ba
 aJ
 "}
 (14,1,1) = {"
 aa
 aa
 aa
-ao
+an
 aL
-ao
+an
 aL
 aL
-ao
+an
 aL
-aO
+ba
 aV
 bb
 bl
-aO
+ba
 aJ
 "}
 (15,1,1) = {"
@@ -708,11 +708,11 @@ aJ
 aJ
 aJ
 aJ
-aO
+ba
 aW
 bc
 bw
-aO
+ba
 aa
 "}
 (16,1,1) = {"
@@ -726,10 +726,10 @@ aJ
 aJ
 aJ
 aJ
-aO
-aO
-aO
-aO
-aO
+ba
+ba
+ba
+ba
+ba
 aa
 "}

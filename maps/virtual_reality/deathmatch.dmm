@@ -26,6 +26,9 @@
 "i" = (
 /turf/simulated/wall/rock/moss,
 /area)
+"j" = (
+/turf/simulated/wall/wood/brown,
+/area)
 "k" = (
 /turf/simulated/floor/tile/dark/er,
 /area)
@@ -60,9 +63,6 @@
 /area)
 "t" = (
 /turf/simulated/floor/stair/wood,
-/area)
-"u" = (
-/turf/simulated/wall/wood,
 /area)
 "v" = (
 /turf/simulated/floor/wood/brown,
@@ -23286,11 +23286,11 @@ b
 b
 b
 b
-u
-u
-u
-u
-u
+j
+j
+j
+j
+j
 b
 b
 b
@@ -23543,11 +23543,11 @@ d
 d
 b
 b
-u
+j
 v
 v
 v
-u
+j
 b
 b
 b
@@ -23800,11 +23800,11 @@ d
 d
 b
 b
-u
+j
 v
 v
 v
-u
+j
 b
 b
 b
@@ -24057,11 +24057,11 @@ d
 d
 b
 b
-u
+j
 v
 v
 v
-u
+j
 b
 b
 b
@@ -24314,14 +24314,14 @@ d
 d
 d
 b
-u
-u
-u
+j
+j
+j
 v
-u
-u
-u
-u
+j
+j
+j
+j
 b
 b
 b
@@ -24573,12 +24573,12 @@ d
 b
 b
 b
-u
+j
 v
 v
 v
 v
-u
+j
 b
 b
 b
@@ -24830,7 +24830,7 @@ d
 b
 b
 b
-u
+j
 v
 v
 v
@@ -25087,12 +25087,12 @@ d
 b
 b
 b
-u
+j
 v
 v
 v
 v
-u
+j
 b
 b
 b
@@ -25344,12 +25344,12 @@ d
 b
 b
 b
-u
+j
 v
 v
 v
 v
-u
+j
 b
 b
 b
@@ -25601,12 +25601,12 @@ d
 b
 b
 b
-u
+j
 v
 v
 v
 v
-u
+j
 b
 b
 b
@@ -25858,12 +25858,12 @@ d
 b
 b
 b
-u
-u
-u
-u
-u
-u
+j
+j
+j
+j
+j
+j
 b
 b
 b

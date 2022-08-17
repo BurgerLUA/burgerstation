@@ -1,40 +1,393 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"c" = (/turf/simulated/wall/metal/circuit,/area/dmm_suite/clear_area)
-"d" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/circuit,/area/dmm_suite/clear_area)
-"e" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
-"f" = (/turf/simulated/floor/plating/reinforced,/area/dmm_suite/clear_area)
-"g" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"h" = (/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"i" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"j" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"k" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"l" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"m" = (/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
-"n" = (/obj/structure/table/steel/dark,/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
-"o" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/dmm_suite/clear_area)
-"p" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 4},/turf/simulated/wall/metal/circuit,/area/dmm_suite/clear_area)
-"q" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
-"r" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
-"s" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
-"t" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 8},/turf/simulated/wall/metal/circuit,/area/dmm_suite/clear_area)
-"u" = (/obj/structure/interactive/bar_sign/the_net,/turf/simulated/wall/metal/circuit,/area/dmm_suite/clear_area)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"c" = (
+/turf/simulated/wall/metal/circuit,
+/area/dmm_suite/clear_area)
+"d" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/circuit,
+/area/dmm_suite/clear_area)
+"e" = (
+/obj/structure/interactive/door/airlock/dark,
+/turf/simulated/floor/tile/dark/single,
+/area/dmm_suite/clear_area)
+"f" = (
+/turf/simulated/floor/plating/reinforced,
+/area/dmm_suite/clear_area)
+"g" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"h" = (
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"i" = (
+/obj/structure/interactive/chair/office/dark,
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"k" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"l" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"m" = (
+/turf/simulated/floor/tile/dark/single,
+/area/dmm_suite/clear_area)
+"n" = (
+/obj/structure/table/steel/dark,
+/turf/simulated/floor/tile/dark/single,
+/area/dmm_suite/clear_area)
+"o" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/dmm_suite/clear_area)
+"p" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal/circuit,
+/area/dmm_suite/clear_area)
+"q" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark/single,
+/area/dmm_suite/clear_area)
+"r" = (
+/obj/structure/interactive/chair/office/dark,
+/turf/simulated/floor/tile/dark/single,
+/area/dmm_suite/clear_area)
+"s" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark/single,
+/area/dmm_suite/clear_area)
+"t" = (
+/obj/decal/poster/nanotrasen{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/metal/circuit,
+/area/dmm_suite/clear_area)
+"u" = (
+/obj/structure/interactive/bar_sign/the_net,
+/turf/simulated/wall/metal/circuit,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaa
-bbcdeddddddddcbb
-bfbghijkkijhgbfb
-bfblmnnnnnnmobfb
-bbplmqrqsqrmotbb
-bfblmnnnnnnmobfb
-bfblmsrsrqqmobfb
-bbplmnnnnnnmotbb
-bfblmmmmmmmmobfb
-bfblmmmmmmmmobfb
-bbplmmnqrnmmotbb
-bfblmmnnnnmmobfb
-bfbghhmmmmhhgbfb
-bbucchmmmmhcucbb
-aaaachhhhhhcaaaa
-aaaacbbeebbcaaaa
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+a
+"}
+(2,1,1) = {"
+a
+b
+f
+f
+b
+f
+f
+b
+f
+f
+b
+f
+f
+b
+a
+a
+"}
+(3,1,1) = {"
+a
+c
+b
+b
+p
+b
+b
+p
+b
+b
+p
+b
+b
+u
+a
+a
+"}
+(4,1,1) = {"
+a
+d
+g
+l
+l
+l
+l
+l
+l
+l
+l
+l
+g
+c
+a
+a
+"}
+(5,1,1) = {"
+a
+e
+h
+m
+m
+m
+m
+m
+m
+m
+m
+m
+h
+c
+c
+c
+"}
+(6,1,1) = {"
+a
+d
+i
+n
+q
+n
+s
+n
+m
+m
+m
+m
+h
+h
+h
+b
+"}
+(7,1,1) = {"
+a
+d
+j
+n
+r
+n
+r
+n
+m
+m
+n
+n
+m
+m
+h
+b
+"}
+(8,1,1) = {"
+a
+d
+k
+n
+q
+n
+s
+n
+m
+m
+q
+n
+m
+m
+h
+e
+"}
+(9,1,1) = {"
+a
+d
+k
+n
+s
+n
+r
+n
+m
+m
+r
+n
+m
+m
+h
+e
+"}
+(10,1,1) = {"
+a
+d
+i
+n
+q
+n
+q
+n
+m
+m
+n
+n
+m
+m
+h
+b
+"}
+(11,1,1) = {"
+a
+d
+j
+n
+r
+n
+q
+n
+m
+m
+m
+m
+h
+h
+h
+b
+"}
+(12,1,1) = {"
+a
+d
+h
+m
+m
+m
+m
+m
+m
+m
+m
+m
+h
+c
+c
+c
+"}
+(13,1,1) = {"
+a
+d
+g
+o
+o
+o
+o
+o
+o
+o
+o
+o
+g
+u
+a
+a
+"}
+(14,1,1) = {"
+a
+c
+b
+b
+t
+b
+b
+t
+b
+b
+t
+b
+b
+c
+a
+a
+"}
+(15,1,1) = {"
+a
+b
+f
+f
+b
+f
+f
+b
+f
+f
+b
+f
+f
+b
+a
+a
+"}
+(16,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+a
 "}

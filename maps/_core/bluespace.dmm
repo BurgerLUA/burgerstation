@@ -262,6 +262,34 @@
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area)
+"bb" = (
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"bc" = (
+/obj/decal/poster/collectable,
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"bd" = (
+/obj/decal/poster/collectable{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"be" = (
+/obj/decal/poster/collectable{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"bf" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 8
+	},
+/turf/simulated/wall/wood/brown,
+/area/debug)
 "bg" = (
 /turf/space,
 /area/vr)
@@ -372,7 +400,11 @@
 /turf/simulated/floor/grass,
 /area/debug)
 "bC" = (
-/turf/simulated/wall/wood,
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 1
+	},
+/turf/simulated/wall/wood/brown,
 /area/debug)
 "bD" = (
 /turf/simulated/floor/wood/brown,
@@ -392,6 +424,28 @@
 "bH" = (
 /obj/structure/interactive/potted_plant/office,
 /turf/simulated/floor/wood/brown,
+/area/debug)
+"bI" = (
+/obj/structure/interactive/light_switch,
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"bJ" = (
+/obj/structure/interactive/fire_closet,
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"bK" = (
+/obj/decal/poster/painting{
+	icon_state = "";
+	dir = 8
+	},
+/turf/simulated/wall/wood/brown,
+/area/debug)
+"bL" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 4
+	},
+/turf/simulated/wall/wood/brown,
 /area/debug)
 "bM" = (
 /obj/structure/table/wood,
@@ -543,33 +597,11 @@
 /turf/simulated/floor/wood/brown,
 /area/debug)
 "cq" = (
-/obj/structure/interactive/fire_closet,
-/turf/simulated/wall/wood,
-/area/debug)
-"cr" = (
-/obj/structure/interactive/light_switch,
-/turf/simulated/wall/wood,
-/area/debug)
-"cs" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/wood,
-/area/debug)
-"ct" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
+/obj/decal/poster/painting{
+	icon_state = "";
 	dir = 1
 	},
-/turf/simulated/wall/wood,
-/area/debug)
-"cu" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
-	},
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/debug)
 "cv" = (
 /obj/structure/table/wood,
@@ -657,38 +689,6 @@
 "cR" = (
 /obj/structure/interactive/door/airlock/wood,
 /turf/simulated/floor/tile,
-/area/debug)
-"cS" = (
-/obj/decal/poster/collectable{
-	icon_state = "";
-	dir = 4
-	},
-/turf/simulated/wall/wood,
-/area/debug)
-"cT" = (
-/obj/decal/poster/painting{
-	icon_state = "";
-	dir = 1
-	},
-/turf/simulated/wall/wood,
-/area/debug)
-"cU" = (
-/obj/decal/poster/painting{
-	icon_state = "";
-	dir = 8
-	},
-/turf/simulated/wall/wood,
-/area/debug)
-"cV" = (
-/obj/decal/poster/collectable,
-/turf/simulated/wall/wood,
-/area/debug)
-"cW" = (
-/obj/decal/poster/collectable{
-	icon_state = "";
-	dir = 8
-	},
-/turf/simulated/wall/wood,
 /area/debug)
 "cX" = (
 /obj/item/ball/soccer,
@@ -59828,11 +59828,11 @@ aS
 aS
 aS
 aS
-bC
-bC
-bC
-bC
-bC
+bb
+bb
+bb
+bb
+bb
 aS
 aS
 aS
@@ -60085,11 +60085,11 @@ aS
 aS
 aS
 aS
-bC
+bb
 cz
 cC
 cO
-bC
+bb
 aS
 aS
 aS
@@ -60346,7 +60346,7 @@ bF
 cB
 cD
 cC
-bC
+bb
 aS
 aS
 aS
@@ -60597,19 +60597,19 @@ aS
 aS
 aS
 aS
-bC
-cS
-bC
-cs
-bC
+bb
+bd
+bb
+bf
+bb
 cR
-bC
-bC
+bb
+bb
 bF
 bF
-bC
-bC
-bC
+bb
+bb
+bb
 aS
 aS
 aS
@@ -60854,11 +60854,11 @@ aS
 aS
 aS
 aS
-bC
+bb
 bV
 cm
 bM
-bC
+bb
 bD
 cw
 cH
@@ -60866,7 +60866,7 @@ cH
 cH
 cG
 cn
-bC
+bb
 aS
 aS
 aS
@@ -61115,7 +61115,7 @@ bF
 bD
 bQ
 bS
-ct
+bC
 bD
 bG
 bD
@@ -61123,7 +61123,7 @@ bD
 bD
 bD
 bD
-cT
+cq
 aS
 aS
 aS
@@ -61380,7 +61380,7 @@ bX
 bT
 bT
 cx
-bC
+bb
 aS
 aS
 aS
@@ -61625,11 +61625,11 @@ aS
 aS
 aS
 aS
-cV
+bc
 bW
 cE
 ck
-cr
+bI
 bD
 cX
 cv
@@ -61882,11 +61882,11 @@ aS
 aS
 aS
 aS
-bC
-bC
-cW
-bC
-cq
+bb
+bb
+be
+bb
+bJ
 bD
 bD
 bM
@@ -62139,7 +62139,7 @@ aS
 aS
 aS
 aS
-bC
+bb
 bM
 bM
 bM
@@ -62151,7 +62151,7 @@ bM
 bT
 bT
 bH
-bC
+bb
 aS
 aS
 aS
@@ -62396,7 +62396,7 @@ aS
 aS
 aS
 aS
-bC
+bb
 bM
 bO
 bO
@@ -62408,7 +62408,7 @@ cc
 bD
 cZ
 bM
-bC
+bb
 aS
 aS
 aS
@@ -62665,7 +62665,7 @@ bD
 cy
 bG
 bH
-bC
+bb
 aS
 aS
 aS
@@ -62916,13 +62916,13 @@ bO
 bO
 bO
 cx
-cU
-bC
+bK
+bb
 co
-cu
-bC
-cS
-bC
+bL
+bb
+bd
+bb
 aS
 aS
 aS
@@ -63173,13 +63173,13 @@ bO
 cA
 bO
 bD
-ct
+bC
 bN
 bD
 bD
 cw
 bD
-bC
+bb
 aS
 aS
 aS
@@ -63424,19 +63424,19 @@ aS
 aS
 aS
 aS
-bC
+bb
 bH
 bD
 bD
 bG
 bH
-bC
+bb
 bM
 bD
 bG
 bD
 bH
-bC
+bb
 aS
 aS
 aS
@@ -63681,19 +63681,19 @@ aS
 aS
 aS
 aS
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
 bF
 bF
 bF
-bC
-bC
+bb
+bb
 aS
 aS
 aS

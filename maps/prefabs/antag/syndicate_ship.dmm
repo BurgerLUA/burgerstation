@@ -16,29 +16,24 @@
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "e" = (
-/obj/structure/smooth/table/dark,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "f" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
-/obj/structure/smooth/table/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "g" = (
-/obj/structure/smooth/table/dark,
 /obj/item/radio,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "h" = (
-/obj/structure/smooth/table/dark,
 /obj/item/grenade/timed/explosive,
 /obj/item/grenade/timed/explosive,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "i" = (
-/obj/structure/smooth/table/dark,
 /obj/item/grenade/landmine/proximity/explosive,
 /obj/item/grenade/landmine/proximity/explosive,
 /obj/item/grenade/landmine/proximity/explosive,
@@ -62,33 +57,23 @@
 /area/prefab/syndicate_ship)
 "n" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
-/obj/structure/smooth/table/dark,
 /obj/item/soapstone/red,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "o" = (
-/obj/structure/smooth/table/dark,
 /obj/item/announcement/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
-/area/prefab/syndicate_ship)
-"p" = (
-/turf/simulated/floor/tile/shuttle/red,
-/area/prefab/syndicate_ship)
-"q" = (
-/turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
 "r" = (
 /obj/structure/interactive/door/airlock/shuttle/dark,
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
 "s" = (
-/obj/structure/smooth/table/dark,
 /obj/item/firing_pin/electronic/iff/syndicate,
 /obj/item/firing_pin/electronic/iff/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "t" = (
-/obj/structure/smooth/table/dark,
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
 "u" = (
@@ -96,23 +81,19 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
 "v" = (
-/obj/structure/smooth/table/dark,
 /obj/item/weapon/melee/toolbox/syndicate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "w" = (
-/obj/structure/smooth/table/dark,
 /obj/item/cross,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "x" = (
-/obj/structure/smooth/table/dark,
 /obj/item/cell_charger,
 /obj/item/powercell/advanced,
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
 "y" = (
-/obj/structure/smooth/table/dark,
 /obj/item/bikehorn,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
@@ -120,7 +101,6 @@
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
-/obj/structure/smooth/table/dark,
 /obj/item/handcuffs,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
@@ -164,17 +144,13 @@
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
-/obj/structure/smooth/table/dark,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "I" = (
-/obj/structure/smooth/table/dark,
 /obj/item/rcd,
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
 "J" = (
-/obj/structure/smooth/table/dark,
-/obj/item/deployable/barricade/filled,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "K" = (
@@ -182,7 +158,6 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "L" = (
-/obj/structure/smooth/table/dark,
 /obj/item/weapon/melee/energy/sword/red,
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndicate_ship)
@@ -191,12 +166,10 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "N" = (
-/obj/structure/smooth/table/dark,
 /obj/item/analyzer/health,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "O" = (
-/obj/structure/smooth/table/dark,
 /obj/item/defib,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
@@ -204,27 +177,22 @@
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
-/obj/structure/smooth/table/dark,
 /obj/marker/spawning/random/supply_crate,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "Q" = (
-/obj/structure/smooth/table/dark,
 /obj/item/storage/kit/syndicate/filled,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "R" = (
-/obj/structure/smooth/table/dark,
 /obj/item/storage/kit/burn/filled,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "S" = (
-/obj/structure/smooth/table/dark,
 /obj/item/storage/kit/brute/filled,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "T" = (
-/obj/structure/smooth/table/dark,
 /obj/item/storage/kit/advanced/filled,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
@@ -232,12 +200,10 @@
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 1
 	},
-/obj/structure/smooth/table/dark,
 /obj/item/implanter/death_alarm,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
 "V" = (
-/obj/structure/smooth/table/dark,
 /obj/item/implanter/od_purge,
 /turf/simulated/floor/tile/shuttle/red,
 /area/prefab/syndicate_ship)
@@ -508,11 +474,11 @@ c
 c
 w
 z
-p
-p
-p
-p
-p
+J
+J
+J
+J
+J
 H
 e
 c
@@ -541,13 +507,13 @@ c
 t
 c
 x
-q
-q
-p
-q
-p
-q
-q
+t
+t
+J
+t
+J
+t
+t
 I
 c
 L
@@ -571,21 +537,21 @@ a
 a
 c
 e
-p
-p
-c
-y
-p
-p
-p
-F
-p
-p
-p
+J
 J
 c
-p
-p
+y
+J
+J
+J
+F
+J
+J
+J
+J
+c
+J
+J
 e
 c
 a
@@ -605,8 +571,8 @@ a
 a
 c
 f
-q
-q
+t
+t
 c
 c
 r
@@ -618,8 +584,8 @@ c
 r
 c
 c
-q
-q
+t
+t
 P
 c
 a
@@ -639,21 +605,21 @@ a
 a
 c
 g
-q
-q
-p
-q
-q
-q
-p
-q
-p
-q
-q
-q
-p
-q
-q
+t
+t
+J
+t
+t
+t
+J
+t
+J
+t
+t
+t
+J
+t
+t
 e
 c
 a
@@ -673,21 +639,21 @@ a
 a
 c
 h
-q
-q
-p
-q
-q
-q
-p
-q
-p
-q
-q
-q
-p
-q
-q
+t
+t
+J
+t
+t
+t
+J
+t
+J
+t
+t
+t
+J
+t
+t
 e
 c
 a
@@ -707,21 +673,21 @@ a
 a
 c
 i
-q
-q
-p
-p
+t
+t
+J
+J
 A
-p
-p
+J
+J
 G
-p
-p
+J
+J
 A
-p
-p
-q
-q
+J
+J
+t
+t
 e
 c
 a
@@ -747,9 +713,9 @@ c
 c
 c
 c
-p
-q
-p
+J
+t
+J
 c
 c
 c
@@ -775,8 +741,8 @@ a
 a
 c
 j
-q
-q
+t
+t
 X
 c
 d
@@ -788,8 +754,8 @@ c
 d
 c
 m
-q
-q
+t
+t
 Q
 c
 a
@@ -809,21 +775,21 @@ a
 a
 c
 k
-q
+t
 u
 X
 c
 d
 c
-p
-q
-p
+J
+t
+J
 c
 d
 c
 m
-q
-q
+t
+t
 R
 c
 a
@@ -843,21 +809,21 @@ a
 a
 c
 l
-q
+t
 u
 X
 c
 d
 c
 E
-q
-p
+t
+J
 c
 d
 c
 K
-q
-q
+t
+t
 S
 c
 a
@@ -877,21 +843,21 @@ a
 a
 c
 m
-q
+t
 u
 X
 c
 d
 c
-p
-q
-p
+J
+t
+J
 c
 d
 c
-p
-q
-q
+J
+t
+t
 T
 c
 a
@@ -911,9 +877,9 @@ a
 a
 c
 n
-q
+t
 u
-p
+J
 c
 d
 c
@@ -924,8 +890,8 @@ c
 d
 c
 K
-q
-q
+t
+t
 U
 c
 a
@@ -945,9 +911,9 @@ a
 a
 c
 o
-p
-p
-p
+J
+J
+J
 c
 d
 d
@@ -957,9 +923,9 @@ d
 d
 d
 c
-p
-p
-p
+J
+J
+J
 V
 c
 a
@@ -979,8 +945,8 @@ a
 a
 c
 c
-p
-p
+J
+J
 c
 c
 d

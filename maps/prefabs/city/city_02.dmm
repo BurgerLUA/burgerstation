@@ -1,49 +1,437 @@
-"a" = (/turf/simulated/wall/wood/brown,/area/dmm_suite/clear_area)
-"b" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
-"c" = (/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
-"d" = (/obj/structure/table/reinforced/steel,/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
-"e" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
-"f" = (/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"g" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"h" = (/obj/structure/interactive/door/airlock/station/bathroom/male,/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
-"i" = (/obj/structure/table/reinforced/steel,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"j" = (/obj/structure/interactive/door/airlock/station/bathroom/female,/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
-"k" = (/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"l" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"m" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"n" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"o" = (/obj/structure/interactive/chair/stool/bar,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"p" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"q" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"r" = (/obj/structure/interactive/chair/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"s" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"t" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"u" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/dmm_suite/clear_area)
-"v" = (/obj/structure/interactive/bar_sign/dan,/turf/simulated/wall/wood/brown,/area/dmm_suite/clear_area)
-"w" = (/obj/structure/interactive/door/airlock/wood/dark,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"x" = (/obj/structure/short_wall/wood,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"y" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"z" = (/obj/structure/table/wood,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"A" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"B" = (/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"C" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
-"D" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/wood/brown,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/structure/interactive/door/airlock/station/maintenance,
+/turf/simulated/floor/tile,
+/area/dmm_suite/clear_area)
+"c" = (
+/turf/simulated/floor/tile,
+/area/dmm_suite/clear_area)
+"d" = (
+/obj/structure/table/reinforced/steel,
+/turf/simulated/floor/tile,
+/area/dmm_suite/clear_area)
+"e" = (
+/obj/structure/table/cooking/grill,
+/turf/simulated/floor/tile,
+/area/dmm_suite/clear_area)
+"f" = (
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"g" = (
+/obj/structure/interactive/door/airlock/glass,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"h" = (
+/obj/structure/interactive/door/airlock/station/bathroom/male,
+/turf/simulated/floor/tile,
+/area/dmm_suite/clear_area)
+"i" = (
+/obj/structure/table/reinforced/steel,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/structure/interactive/door/airlock/station/bathroom/female,
+/turf/simulated/floor/tile,
+/area/dmm_suite/clear_area)
+"k" = (
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"l" = (
+/obj/structure/table/wood,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"m" = (
+/obj/structure/interactive/chair/stool/bar{
+	icon_state = "bar";
+	dir = 1
+	},
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"n" = (
+/obj/structure/interactive/chair/stool/bar{
+	icon_state = "bar";
+	dir = 8
+	},
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"o" = (
+/obj/structure/interactive/chair/stool/bar,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"p" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"q" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"r" = (
+/obj/structure/interactive/chair/wood,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"s" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"t" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 1
+	},
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"u" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/dmm_suite/clear_area)
+"v" = (
+/obj/structure/interactive/bar_sign/dan,
+/turf/simulated/wall/wood/brown,
+/area/dmm_suite/clear_area)
+"w" = (
+/obj/structure/interactive/door/airlock/wood/dark,
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"x" = (
+/obj/structure/short_wall/wood,
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"y" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"z" = (
+/obj/structure/table/wood,
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"A" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"B" = (
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"C" = (
+/obj/structure/interactive/chair/wood,
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
+"D" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown/dark,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-abaaaaaaaaaaaaaa
-accdeeedaffaccca
-acccccccgffhccca
-acccccccaffaaaaa
-aaiiiiiiaffjccca
-akkkkkkkkffaccca
-allllllllffaaaaa
-ammnmmoomffapppp
-qffffffffffqpppp
-qkrrkffkrrkqpppp
-asllsfftlluapppp
-aaqqvawaqqaapppp
-xyzABBBBAzCxpppp
-xBBBBBBBBBBxpppp
-xDzABBBByzDxpppp
-xxxxxBBxxxxxpppp
+a
+a
+a
+a
+a
+a
+a
+a
+q
+q
+a
+a
+x
+x
+x
+x
+"}
+(2,1,1) = {"
+b
+c
+c
+c
+a
+k
+l
+m
+f
+k
+s
+a
+y
+B
+D
+x
+"}
+(3,1,1) = {"
+a
+c
+c
+c
+i
+k
+l
+m
+f
+r
+l
+q
+z
+B
+z
+x
+"}
+(4,1,1) = {"
+a
+d
+c
+c
+i
+k
+l
+n
+f
+r
+l
+q
+A
+B
+A
+x
+"}
+(5,1,1) = {"
+a
+e
+c
+c
+i
+k
+l
+m
+f
+k
+s
+v
+B
+B
+B
+x
+"}
+(6,1,1) = {"
+a
+e
+c
+c
+i
+k
+l
+m
+f
+f
+f
+a
+B
+B
+B
+B
+"}
+(7,1,1) = {"
+a
+e
+c
+c
+i
+k
+l
+o
+f
+f
+f
+w
+B
+B
+B
+B
+"}
+(8,1,1) = {"
+a
+d
+c
+c
+i
+k
+l
+o
+f
+k
+t
+a
+B
+B
+B
+x
+"}
+(9,1,1) = {"
+a
+a
+g
+a
+a
+k
+l
+m
+f
+r
+l
+q
+A
+B
+y
+x
+"}
+(10,1,1) = {"
+a
+f
+f
+f
+f
+f
+f
+f
+f
+r
+l
+q
+z
+B
+z
+x
+"}
+(11,1,1) = {"
+a
+f
+f
+f
+f
+f
+f
+f
+f
+k
+u
+a
+C
+B
+D
+x
+"}
+(12,1,1) = {"
+a
+a
+h
+a
+j
+a
+a
+a
+q
+q
+a
+a
+x
+x
+x
+x
+"}
+(13,1,1) = {"
+a
+c
+c
+a
+c
+c
+a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+"}
+(14,1,1) = {"
+a
+c
+c
+a
+c
+c
+a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+"}
+(15,1,1) = {"
+a
+c
+c
+a
+c
+c
+a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+p
+p
+p
+p
+p
+p
+p
+p
+p
 "}

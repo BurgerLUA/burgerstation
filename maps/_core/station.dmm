@@ -1523,7 +1523,7 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "fE" = (
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/burgerstation/tax)
 "fF" = (
 /obj/decal/hazard/corner{
@@ -7753,7 +7753,7 @@
 /obj/structure/interactive/power/apc{
 	dir = 1
 	},
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/burgerstation/tax)
 "Cg" = (
 /obj/structure/interactive/chair/wood{

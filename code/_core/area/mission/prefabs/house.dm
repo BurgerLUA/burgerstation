@@ -50,7 +50,7 @@
 /area/mission/prefab/house/house_02/kitchen
 	icon_state = "green"
 
-/area/mission/prefab/house/house_02/dining
+/area/mission/prefab/house/house_02/entrance
 	icon_state = "blue"
 
 /area/mission/prefab/house/house_02/bedroom
