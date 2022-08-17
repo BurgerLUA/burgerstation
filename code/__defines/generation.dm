@@ -11,5 +11,5 @@
 #define GENERATION_SEGMENT_HIGHEST 0.9
 
 // https://www.desmos.com/calculator/dwjvcmwyk6
-#define NOISE_INSTANCES 4
-#define NOISE_CURVES 3
+#define NOISE_INSTANCES 12
+#define NOISE_CURVES 7.3

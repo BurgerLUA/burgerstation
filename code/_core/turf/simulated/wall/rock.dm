@@ -23,7 +23,7 @@
 
 	organic = TRUE
 
-	map_color = COLOR_GREY_DARK
+	map_color = "#56563A"
 
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
 	create_destruction(src,list(/obj/item/material/sandstone/ = 5),material_id)
@@ -42,7 +42,7 @@
 	corner_icons = TRUE
 	corner_category = "rock_snow"
 
-	map_color = COLOR_GREY
+	map_color = "#365151"
 
 /turf/simulated/wall/rock/basalt
 	real_icon = 'icons/turf/wall/rock/basalt.dmi'
@@ -58,7 +58,7 @@
 
 	destruction_turf = /turf/simulated/floor/basalt
 
-	map_color = COLOR_BLACK
+	map_color = "#513C38"
 
 
 /turf/simulated/wall/rock/brown
@@ -73,7 +73,7 @@
 	corner_icons = TRUE
 	corner_category = "rock_brown"
 
-	map_color = COLOR_BROWN_DARK
+	map_color = "#352B21"
 
 /turf/simulated/wall/rock/moss
 	real_icon = 'icons/turf/wall/rock/moss.dmi'
@@ -87,7 +87,7 @@
 	corner_icons = TRUE
 	corner_category = "rock_moss"
 
-	map_color = COLOR_BROWN_DARK
+	map_color = "#3A4931"
 
 /turf/simulated/wall/rock/desert
 	real_icon = 'icons/turf/wall/rock/desert.dmi'
@@ -101,9 +101,7 @@
 	corner_icons = TRUE
 	corner_category = "rock_desert"
 
-
-
-	map_color = COLOR_BROWN_DARK
+	map_color = "#6B5C42"
 
 /turf/simulated/wall/rock/ice
 	real_icon = 'icons/turf/wall/rock/ice.dmi'
@@ -119,7 +117,7 @@
 
 	destruction_turf = /turf/simulated/floor/ice
 
-	map_color = "#004A7F"
+	map_color = "#4F6060"
 
 /turf/simulated/wall/rock/indestructable
 	name = "bedrock wall"
