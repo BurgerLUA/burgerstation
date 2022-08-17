@@ -19,6 +19,10 @@
 		new /obj/marker/generation/mob/crab(src)
 	else if(prob(0.5))
 		new /obj/marker/generation/mob/lobster(src)
+	else if(prob(0.25))
+		new /obj/marker/generation/mob/slime/sand(src)
+	else if(prob(0.1))
+		new /obj/marker/generation/mob/slime/water(src)
 
 	new /turf/simulated/floor/colored/sand/beach(src)
 

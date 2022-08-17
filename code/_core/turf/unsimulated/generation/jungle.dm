@@ -29,18 +29,6 @@
 		disallow_generation = TRUE
 		return ..()
 
-	var/x_seed = x / size
-	var/y_seed = y / size
-
-	var/max_instances = 1
-	var/noise = 0
-	for(var/i=1,i<=max_instances,i++)
-		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
-	noise *= 1/max_instances
-	if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
-
-
-
 	if(src.loc.type == /area/) new /area/mission/jungle(src)
 	switch(noise)
 		if(-INFINITY to GENERATION_SEGMENT_LOWEST*0.5)
@@ -75,7 +63,10 @@
 			else if(prob(10))
 				new /obj/marker/generation/foliage/grass/jungle(src)
 				if(prob(1))
-					new /obj/marker/generation/mob/venus_human_trap(src)
+					if(prob(25))
+						new /obj/marker/generation/mob/slime/jungle(src)
+					else
+						new /obj/marker/generation/mob/monkey(src)
 		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH)
 			new /turf/simulated/floor/grass/jungle(src)
 			if(prob(1))

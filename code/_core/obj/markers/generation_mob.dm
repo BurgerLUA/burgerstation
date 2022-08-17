@@ -109,6 +109,10 @@
 	object_to_place = /mob/living/simple/passive/cow
 	objects_max = 2
 
+/obj/marker/generation/mob/monkey
+	object_to_place = /mob/living/advanced/npc/monkey
+	objects_max = 2
+
 /obj/marker/generation/mob/carp
 	object_to_place = /mob/living/simple/spacecarp/
 	objects_max = 1
@@ -149,3 +153,47 @@
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter
 	objects_max = 1
 	turf_whitelist = /turf/simulated/wall/ash
+
+
+
+
+/obj/marker/generation/mob/slime/
+	object_to_place = /mob/living/simple/slime/
+	objects_max = 2
+	turf_whitelist = /turf/simulated/floor
+
+/obj/marker/generation/mob/slime/basalt
+	object_to_place = /mob/living/simple/slime/basalt
+
+/obj/marker/generation/mob/slime/blood
+	object_to_place = /mob/living/simple/slime/blood
+
+/obj/marker/generation/mob/slime/bluespace
+	object_to_place = /mob/living/simple/slime/bluespace
+
+/obj/marker/generation/mob/slime/cave
+	object_to_place = /mob/living/simple/slime/cave
+
+/obj/marker/generation/mob/slime/forest
+	object_to_place = /mob/living/simple/slime/forest
+
+/obj/marker/generation/mob/slime/ice
+	object_to_place = /mob/living/simple/slime/ice
+
+/obj/marker/generation/mob/slime/jungle
+	object_to_place = /mob/living/simple/slime/jungle
+
+/obj/marker/generation/mob/slime/magma
+	object_to_place = /mob/living/simple/slime/magma
+
+/obj/marker/generation/mob/slime/oil
+	object_to_place = /mob/living/simple/slime/oil
+
+/obj/marker/generation/mob/slime/sand
+	object_to_place = /mob/living/simple/slime/sand
+
+/obj/marker/generation/mob/slime/snow
+	object_to_place = /mob/living/simple/slime/snow
+
+/obj/marker/generation/mob/slime/water
+	object_to_place = /mob/living/simple/slime/water

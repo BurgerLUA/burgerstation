@@ -1,6 +1,7 @@
 /mob/living/simple/slime/
-	name = "slime"
+	name = "grey slime"
 	desc = "Oh no. They're here too."
+	desc_extended = "A strange gel-based canibalising lifeform that adapts their colors based on the surrounding environments. Diet typically includes fresh blood."
 
 	icon = 'icons/mob/living/simple/slimes_new.dmi'
 	icon_state = "small_neutral"
@@ -30,6 +31,8 @@
 
 	damage_type = /damagetype/npc/slime
 
+	movement_delay = DECISECONDS_TO_TICKS(1)
+
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
@@ -40,10 +43,119 @@
 
 	blood_type = null
 
-	soul_size = SOUL_SIZE_COMMON
+	soul_size = SOUL_SIZE_NONE //Prevents farming.
 
 	level = 8
 
+	alpha = 0 //0 means set automatically based on level
+
+	var/slime_traits = SLIME_TRAIT_NONE
+
+/mob/living/simple/slime/on_life_slow()
+	. = ..()
+	if((slime_traits & SLIME_TRAIT_UNSTABLE) && !qdeleting && !dead && !prob(80))
+		var/list/valid_turfs = list()
+		for(var/turf/simulated/floor/F in orange(src,VIEW_RANGE*0.5))
+			if(!F.is_safe_teleport(check_contents=FALSE))
+				continue
+			valid_turfs += F
+		if(length(valid_turfs))
+			var/turf/T = pick(valid_turfs)
+			src.force_move(T)
+
+/mob/living/simple/slime/proc/update_traits()
+
+	//Canceling out
+	if((slime_traits & SLIME_TRAIT_FAST) && (slime_traits & SLIME_TRAIT_SLOW))
+		slime_traits &= ~(SLIME_TRAIT_FAST|SLIME_TRAIT_SLOW)
+
+	if(slime_traits & SLIME_TRAIT_GLOW)
+		set_light_sprite(stored_slimes + (alpha/255)*2, alpha/255, src.color,LIGHT_OMNI)
+	else
+		set_light_sprite(null)
+
+	if(slime_traits & SLIME_TRAIT_FIRE)
+		src.status_immune[FIRE] = TRUE
+	else
+		src.status_immune[FIRE] = FALSE
+
+	if(ai && slime_traits & SLIME_TRAIT_AGGRESSIVE)
+		ai.aggression = 2
+	else
+		ai.aggression = initial(ai.aggression)
+
+	handle_transform() //SLIME_TRAIT_STEALTH
+
+	return TRUE
+
+/mob/living/simple/slime/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+	. = ..()
+	if(slime_traits & SLIME_TRAIT_DEFENSIVE)
+		. *= 0.5
+	if(stored_slimes > 1)
+		. *= 1/stored_slimes
+
+/mob/living/simple/slime/get_movement_delay(var/include_stance=TRUE)
+
+	. = ..()
+
+	if(slime_traits & SLIME_TRAIT_SLOW)
+		. *= 4
+
+	if(!(slime_traits & SLIME_TRAIT_FAST))
+		. *= 2
+
+/mob/living/simple/slime/get_plane()
+	if(slime_traits & SLIME_TRAIT_STEALTH)
+		return PLANE_MOB_STEALTH
+	. = ..()
+
+
+
+/mob/living/simple/slime/post_move(var/atom/old_loc)
+	. = ..()
+	if(. && loc)
+		if(ai && ai.objective_attack && (slime_traits & SLIME_TRAIT_THORNS))
+			var/turf/T = get_turf(src)
+			if(T)
+				shoot_projectile(
+					src,
+					ai.objective_attack,
+					null,
+					null,
+					/obj/projectile/bio/thorn,
+					/damagetype/ranged/thorn,
+					16,
+					16,
+					0,
+					TILE_SIZE*0.5,
+					1,
+					"#FFFFFF",
+					0,
+					1,
+					iff_tag,
+					loyalty_tag
+				)
+				play_sound('sound/weapons/spike.ogg',T)
+
+		if(length(src.contents) < 5)
+			var/absorbed = FALSE
+			for(var/obj/item/I in loc.contents)
+				absorbed = TRUE
+				I.drop_item(src)
+			if(absorbed)
+				update_sprite()
+		if((slime_traits & SLIME_TRAIT_WET) && isturf(loc))
+			var/turf/T = loc
+			var/cleaning_power = 100
+			for(var/obj/effect/cleanable/C in T.contents)
+				if(cleaning_power <= 0)
+					break
+				qdel(C)
+				cleaning_power -= 10
+			if(is_simulated(T))
+				var/turf/simulated/S = T
+				S.add_wet(100)
 
 /mob/living/simple/slime/create_override_contents(var/mob/living/caller) //What gets created when this mob is butchered.
 	var/obj/item/slime_core/SC = new(src.loc)
@@ -54,12 +166,23 @@
 	return TRUE
 
 /mob/living/simple/slime/Finalize()
+	if(alpha == 0)
+		alpha = min(255,150 + (level/50)*105)
 	. = ..()
+	update_traits()
 	update_sprite()
 
 /mob/living/simple/slime/post_death()
+
 	. = ..()
+
+	for(var/obj/item/I in contents)
+		I.drop_item(loc)
+
 	update_sprite()
+
+	if(slime_traits & SLIME_TRAIT_EXPLOSIVE)
+		explode(get_turf(src),100,src,src,src.loyalty_tag)
 
 /mob/living/simple/slime/check_death()
 
@@ -77,7 +200,14 @@
 		for(var/i=1,i<=stored_slimes-1,i++) //Big slimes split.
 			var/mob/living/simple/slime/S = new(get_turf(src))
 			S.color = color
+			S.alpha = alpha
+			S.level = src.level
+			S.slime_traits = src.slime_traits
 			S.stored_slimes = 1
+			if(src.color != initial(src.color))
+				S.name = "hybrid slime"
+			else
+				S.name = initial(src.name)
 			INITIALIZE(S)
 			FINALIZE(S)
 			if(S.health)
@@ -131,6 +261,27 @@
 		I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 		add_overlay(I)
 
+/mob/living/simple/slime/update_underlays()
+
+	. = ..()
+
+	if(!dead)
+		var/image/I = new/image(initial(icon),"slime_core")
+		I.appearance_flags = appearance_flags | RESET_ALPHA
+		add_underlay(I)
+		for(var/obj/item/O in contents)
+			var/image/I2 = new/image(O.icon,O.icon_state)
+			I2.appearance = O.appearance
+			I2.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
+			var/matrix/M = matrix()
+			M.Scale(0.25,0.25)
+			I2.transform = M
+			add_underlay(I2)
+	if(stored_slimes <= 1 && slime_traits & SLIME_TRAIT_THORNS)
+		var/image/I = new/image(initial(icon),"[src.icon_state]_thorns")
+		I.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
+		src.add_underlay(I)
+
 /mob/living/simple/slime/proc/absorb_slime(var/mob/living/simple/slime/desired_slime)
 
 	if(desired_slime == src) //Can't absorb self.
@@ -152,6 +303,10 @@
 	animate(src,alpha=new_a,color=new_color,time=SECONDS_TO_DECISECONDS(2))
 	src.alpha = new_a
 	src.color = new_color
+	src.slime_traits |= desired_slime.slime_traits
+
+	name = "hybrid slime"
+	setup_name()
 
 	src.update_sprite()
 
@@ -166,53 +321,94 @@
 
 	return TRUE
 
-//Black
-/mob/living/simple/slime/grey
-	color = "#888888"
+/mob/living/simple/slime/forest
+	name = "forest slime"
+	color = "#69A333"
+	level = 6
 
-/mob/living/simple/slime/grey/pure
-	color = "#FFFFFF"
+	slime_traits = SLIME_TRAIT_NONE
 
-/mob/living/simple/slime/grey/dark
-	color = "#444444"
+/mob/living/simple/slime/water
+	name = "water slime"
+	color = "#52A7C6"
+	level = 12
 
+	slime_traits = SLIME_TRAIT_FAST | SLIME_TRAIT_WET
 
-//Red
-/mob/living/simple/slime/red
-	color = "#880000"
+/mob/living/simple/slime/snow
+	name = "snow slime"
+	color = "#E8ECF4"
+	level = 8
 
-/mob/living/simple/slime/red/dark
-	color = "#440000"
-/mob/living/simple/slime/red/pure
-	color = "#FF0000"
+	slime_traits = SLIME_TRAIT_COLD
 
-//Green
-/mob/living/simple/slime/green
-	color = "#008800"
+/mob/living/simple/slime/sand
+	name = "sand slime"
+	color = "#F4CD9F"
+	level = 22
 
-/mob/living/simple/slime/green/dark
-	color = "#004400"
+	slime_traits = SLIME_TRAIT_FAST
 
-/mob/living/simple/slime/green/pure
-	color = "#00FF00"
+/mob/living/simple/slime/jungle
+	name = "jungle slime"
+	color = "#6D8756"
+	level = 30
 
-//Blue
-/mob/living/simple/slime/blue
-	color = "#000088"
+	slime_traits = SLIME_TRAIT_TOXIC | SLIME_TRAIT_GLOW | SLIME_TRAIT_THORNS
 
-/mob/living/simple/slime/blue/dark
-	color = "#000044"
+/mob/living/simple/slime/cave
+	name = "cave slime"
+	color = "#936952"
+	level = 14
 
-/mob/living/simple/slime/blue/pure
-	color = "#0000FF"
+	slime_traits = SLIME_TRAIT_STEALTH
 
+/mob/living/simple/slime/ice
+	name = "ice slime"
+	color = "#93DDE2"
+	level = 24
 
-//Cyan
-/mob/living/simple/slime/cyan
-	color = "#008888"
+	slime_traits = SLIME_TRAIT_COLD | SLIME_TRAIT_SLOW | SLIME_TRAIT_DEFENSIVE
 
-/mob/living/simple/slime/cyan/dark
-	color = "#004444"
+/mob/living/simple/slime/basalt
+	name = "basalt slime"
+	color = "#382323"
+	level = 28
 
-/mob/living/simple/slime/cyan/pure
-	color = "#00FFFF"
+	slime_traits = SLIME_TRAIT_SLOW | SLIME_TRAIT_DEFENSIVE
+
+/mob/living/simple/slime/magma
+	name = "magma slime"
+	color = "#E86518"
+	level = 34
+
+	slime_traits = SLIME_TRAIT_GLOW | SLIME_TRAIT_FIRE
+
+/mob/living/simple/slime/blood
+	name = "blood slime"
+	color = "#C2230C"
+	level = 50
+
+	slime_traits = SLIME_TRAIT_AGGRESSIVE
+
+/mob/living/simple/slime/oil
+	name = "oil slime"
+	color = "#332633"
+	level = 50
+
+	slime_traits = SLIME_TRAIT_SLOW | SLIME_TRAIT_EXPLOSIVE
+
+/mob/living/simple/slime/bluespace
+	name = "bluespace slime"
+	color = "#9FB6FF"
+	level = 60
+
+	slime_traits = SLIME_TRAIT_UNSTABLE
+
+/mob/living/simple/slime/bluespace/New(var/desired_loc)
+	. = ..()
+	if(prob(50))
+		if(prob(50))
+			slime_traits |= SLIME_TRAIT_FAST
+		else
+			slime_traits |= SLIME_TRAIT_SLOW

@@ -4,13 +4,7 @@
 
 /turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
 
-	if(!density)
-		new /turf/simulated/floor/colored/snow(src)
-		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
-		disallow_generation = TRUE
-		return ..()
-
-	if(is_different && is_next_to_dense_turf)
+	if(density && is_different && is_next_to_dense_turf)
 		new /turf/simulated/wall/rock/snow(src)
 		if(prob(0.25))
 			new /obj/marker/generation/snow_wall(src)
@@ -18,73 +12,88 @@
 		disallow_generation = TRUE
 		return ..()
 
-	var/seed_resolution = max(world.maxx,world.maxy)
-	var/x_seed = x / seed_resolution
-	var/y_seed = y / seed_resolution
-
-	var/max_instances = NOISE_INSTANCES
-	var/noise = 0
-	for(var/i=1,i<=max_instances,i++)
-		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
-	noise *= 1/max_instances
-	if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
-
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to GENERATION_SEGMENT_LOWEST)
 			new /turf/simulated/floor/ice(src)
-			if(prob(1))
-				new /obj/marker/generation/snow_wall/small(src)
-			if(prob(1))
-				new /obj/marker/generation/mob/penguin(src)
+			if(density)
+				if(prob(1))
+					new /obj/marker/generation/snow_wall/small(src)
+				if(prob(1))
+					new /obj/marker/generation/mob/penguin(src)
+				else if(prob(1))
+					new /obj/marker/generation/mob/slime/ice(src)
+			else
+				disallow_generation = TRUE
 		if(GENERATION_SEGMENT_LOWEST to GENERATION_SEGMENT_LOW)
-			new /turf/simulated/liquid/water/river/ice(src)
-			if(prob(1))
-				new /obj/marker/generation/ice(src)
+			if(density)
+				new /turf/simulated/liquid/water/river/ice(src)
+				if(prob(1))
+					new /obj/marker/generation/ice(src)
+					if(prob(0.5))
+						new /obj/marker/generation/mob/slime/ice(src)
+			else
+				new /turf/simulated/floor/ice(src)
+				disallow_generation = TRUE
 		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_MID)
 			new /turf/simulated/floor/colored/snow(src)
-			if(prob(1))
-				new /obj/marker/generation/snow_dirt(src)
+			if(density)
+				if(prob(1))
+					new /obj/marker/generation/snow_dirt(src)
+					if(prob(0.25))
+						new /obj/marker/generation/snow_wall(src)
+						if(prob(1))
+							new /obj/marker/generation/mob/bear/snow(src)
+				else if(prob(1))
+					new /obj/marker/generation/foliage/bushes/snow(src)
+				else if(prob(4))
+					new /obj/marker/generation/foliage/grass/snow(src)
+					if(prob(1))
+						new /obj/marker/generation/mob/mouse/white(src)
+				else if(prob(1))
+					new /obj/marker/generation/foliage/tree/snow(src)
+					if(prob(1))
+						new /obj/marker/generation/snow_dirt(src)
+					if(prob(1))
+						new /obj/marker/generation/mob/rev(src)
+				else if(prob(1))
+					new /obj/marker/generation/mob/snow_legion(src)
+			else
+				disallow_generation = TRUE
+		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH)
+			new /turf/simulated/floor/colored/snow(src)
+			if(density)
+				if(prob(1))
+					new /obj/marker/generation/foliage/tree/snow(src)
+					if(prob(1))
+						new /obj/marker/generation/snow_dirt(src)
+					if(prob(1))
+						new /obj/marker/generation/mob/rev(src)
+			else
+				disallow_generation = TRUE
+		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
+			new /turf/simulated/floor/colored/snow(src)
+			if(density)
 				if(prob(0.25))
+					new /obj/marker/generation/mob/slime/snow(src)
+				else if(prob(0.25))
 					new /obj/marker/generation/snow_wall(src)
 					if(prob(1))
 						new /obj/marker/generation/mob/bear/snow(src)
-			else if(prob(1))
-				new /obj/marker/generation/foliage/bushes/snow(src)
-			else if(prob(4))
-				new /obj/marker/generation/foliage/grass/snow(src)
-				if(prob(1))
-					new /obj/marker/generation/mob/mouse/white(src)
-			else if(prob(1))
-				new /obj/marker/generation/foliage/tree/snow(src)
-				if(prob(1))
+				else if(prob(1))
 					new /obj/marker/generation/snow_dirt(src)
-				if(prob(1))
-					new /obj/marker/generation/mob/rev(src)
-			else if(prob(1))
-				new /obj/marker/generation/mob/snow_legion(src)
-		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH)
-			new /turf/simulated/floor/colored/snow(src)
-			if(prob(1))
-				new /obj/marker/generation/foliage/tree/snow(src)
-				if(prob(1))
-					new /obj/marker/generation/snow_dirt(src)
-				if(prob(1))
-					new /obj/marker/generation/mob/rev(src)
-		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
-			new /turf/simulated/floor/colored/snow(src)
-			if(prob(0.25))
-				new /obj/marker/generation/snow_wall(src)
-				if(prob(1))
-					new /obj/marker/generation/mob/bear/snow(src)
-			else if(prob(1))
-				new /obj/marker/generation/snow_dirt(src)
+			else
+				disallow_generation = TRUE
 		if(GENERATION_SEGMENT_HIGHEST to INFINITY)
-			new /turf/simulated/wall/rock/snow(src)
-			if(prob(2))
-				new /obj/marker/generation/snow_wall(src)
-			else if(prob(1))
-				new /obj/marker/generation/mob/legion/snow(src)
-				new /obj/marker/generation/snow(src)
+			if(density)
+				new /turf/simulated/wall/rock/snow(src)
+				if(prob(2))
+					new /obj/marker/generation/snow_wall(src)
+				else if(prob(1))
+					new /obj/marker/generation/mob/legion/snow(src)
+					new /obj/marker/generation/snow(src)
+			else
+				new /turf/simulated/floor/colored/dirt/snow(src)
+				disallow_generation = TRUE
 
 	if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 
@@ -101,18 +110,6 @@
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 		disallow_generation = TRUE
 		return ..()
-
-	var/seed_resolution = max(world.maxx,world.maxy)
-	var/x_seed = x / seed_resolution
-	var/y_seed = y / seed_resolution
-
-	var/max_instances = NOISE_INSTANCES
-	var/noise = 0
-	for(var/i=1,i<=max_instances,i++)
-		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
-	noise *= 1/max_instances
-	if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
-
 
 	switch(noise) //Lower values means deeper.
 		if(-INFINITY to 0.1)

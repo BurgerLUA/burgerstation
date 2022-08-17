@@ -1,11 +1,20 @@
 /ai/slime/
 	roaming_distance = 32
 
+	aggression = 1
+	assistance = 1
+
 /ai/slime/proc/can_absorb_slime(var/mob/living/simple/slime/S)
 
 	var/mob/living/simple/slime/self = owner
 
 	if(!S || !self || S == self)
+		return FALSE
+
+	if(self.slime_traits & SLIME_TRAIT_THORNS) //Spiky slimes can't absorb.
+		return FALSE
+
+	if(S.slime_traits & SLIME_TRAIT_THORNS) //Spiky slimes can't absorb.
 		return FALSE
 
 	if(S.color == self.color) //Can't absorb relatives.
