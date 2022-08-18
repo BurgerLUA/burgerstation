@@ -884,6 +884,7 @@
 #include "code\_core\mob\living\simple\bull.dm"
 #include "code\_core\mob\living\simple\bullshark.dm"
 #include "code\_core\mob\living\simple\can_man.dm"
+#include "code\_core\mob\living\simple\chess_piece.dm"
 #include "code\_core\mob\living\simple\clockwork_fragment.dm"
 #include "code\_core\mob\living\simple\clockwork_marauder.dm"
 #include "code\_core\mob\living\simple\colossus.dm"
