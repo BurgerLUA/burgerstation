@@ -396,6 +396,7 @@
 #include "code\_core\datum\damagetype\npc\blobbernaut.dm"
 #include "code\_core\datum\damagetype\npc\bubblegum.dm"
 #include "code\_core\datum\damagetype\npc\bull.dm"
+#include "code\_core\datum\damagetype\npc\chess.dm"
 #include "code\_core\datum\damagetype\npc\chicken.dm"
 #include "code\_core\datum\damagetype\npc\clown.dm"
 #include "code\_core\datum\damagetype\npc\cow.dm"

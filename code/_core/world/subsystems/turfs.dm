@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(turf)
 	set background = 1 //Needed because it thinks it's doing an infinite loop.
 
 	log_subsystem(src.name,"Generating seeds...")
-	for(var/i=1,i<=20,i++) //Generate 10 seeds.
+	for(var/i=1,i<=50,i++) //Generate 50 seeds.
 		seeds += rand(1,99999)
 
 	log_subsystem(src.name,"Setting worldspawn...")

@@ -98,9 +98,6 @@
 
 	handle_transform()
 
-	if(health && health.health_current <= -health.health_max*3 && health.health_max >= 100)
-		play_sound('sound/effects/impacts/superhit.ogg',T)
-
 	return TRUE
 
 

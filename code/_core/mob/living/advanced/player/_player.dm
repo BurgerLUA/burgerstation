@@ -221,6 +221,42 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	return TRUE
 
+/mob/living/advanced/player/proc/wake_chunk()
+
+	for(var/k in SSai.inactive_ai_by_z["[src.loc.z]"])
+		var/ai/A = k
+		if(!A.owner)
+			log_error("Warning! [A.get_debug_name()] had no owner!")
+			qdel(A)
+			if(SSai.inactive_ai_by_z["[src.loc.z]"])
+				log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
+				SSai.inactive_ai_by_z["[src.loc.z]"] -= k
+			continue
+		if(A.owner.dead || A.owner.qdeleting)
+			SSai.inactive_ai_by_z["[src.loc.z]"] -= k
+			continue
+		var/dist = get_dist(src,A.owner)
+		if(dist > VIEW_RANGE + ZOOM_RANGE)
+			continue
+		A.set_active(TRUE)
+	for(var/k in SSbossai.inactive_ai_by_z["[src.loc.z]"])
+		var/ai/A = k
+		if(!A.owner)
+			log_error("Warning! [A.get_debug_name()] had no owner!")
+			qdel(A)
+			if(SSbossai.inactive_ai_by_z["[src.loc.z]"])
+				log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
+				SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
+			continue
+		if(A.owner.dead || A.owner.qdeleting)
+			SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
+			continue
+		var/dist = get_dist(src,A.owner)
+		if(dist > VIEW_RANGE + ZOOM_RANGE)
+			continue
+		A.set_active(TRUE)
+
+
 /mob/living/advanced/player/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -248,39 +284,8 @@ var/global/list/difficulty_to_damage_mul = list(
 
 		ai_steps++
 
-		if(src.loc && (ai_steps >= VIEW_RANGE || (old_loc && old_loc.z != src.loc.z)))
-			for(var/k in SSai.inactive_ai_by_z["[src.loc.z]"])
-				var/ai/A = k
-				if(!A.owner)
-					log_error("Warning! [A.get_debug_name()] had no owner!")
-					qdel(A)
-					if(SSai.inactive_ai_by_z["[src.loc.z]"])
-						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
-						SSai.inactive_ai_by_z["[src.loc.z]"] -= k
-					continue
-				if(A.owner.dead || A.owner.qdeleting)
-					SSai.inactive_ai_by_z["[src.loc.z]"] -= k
-					continue
-				var/dist = get_dist(src,A.owner)
-				if(dist > VIEW_RANGE + ZOOM_RANGE)
-					continue
-				A.set_active(TRUE)
-			for(var/k in SSbossai.inactive_ai_by_z["[src.loc.z]"])
-				var/ai/A = k
-				if(!A.owner)
-					log_error("Warning! [A.get_debug_name()] had no owner!")
-					qdel(A)
-					if(SSbossai.inactive_ai_by_z["[src.loc.z]"])
-						log_error("Error: [A.get_debug_name()] wasn't deleted properly!")
-						SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
-					continue
-				if(A.owner.dead || A.owner.qdeleting)
-					SSbossai.inactive_ai_by_z["[src.loc.z]"] -= k
-					continue
-				var/dist = get_dist(src,A.owner)
-				if(dist > VIEW_RANGE + ZOOM_RANGE)
-					continue
-				A.set_active(TRUE)
+		if(src.loc && (ai_steps >= (VIEW_RANGE + ZOOM_RANGE) || (old_loc && old_loc.z != src.loc.z)))
+			wake_chunk()
 			ai_steps = 0
 
 /mob/living/advanced/player/proc/prestige(var/skill_id)
