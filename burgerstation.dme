@@ -1755,6 +1755,7 @@
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\gauss.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\grenade_launcher.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\horse.dm"
+#include "code\_core\obj\item\weapon\ranged\bullet\revolver\musket.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\nagant.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\rocket.dm"
 #include "code\_core\obj\item\weapon\ranged\bullet\revolver\traitor.dm"

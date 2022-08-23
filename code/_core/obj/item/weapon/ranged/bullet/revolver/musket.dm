@@ -1,17 +1,20 @@
-/obj/item/weapon/ranged/bullet/revolver/flintlock
-	name = "\improper .62 flintlock pistol"
+/obj/item/weapon/ranged/bullet/revolver/musket
+	name = "\improper .62 musket rifle"
 	desc = "Just like the founding fathers intended."
-	desc_extended = "An incredibly ancient and severely outdated flintlock pistol. Only an idiot or a badass would use one of these; a genius would use several."
-	icon = 'icons/obj/item/weapons/ranged/revolver/flintlock.dmi'
+	desc_extended = "A smoothbore muzzle-loading rifle that your great-great-great-great-great-great-great-great-great-grandfather used. Only an idiot or a badass would use one of these."
+	icon = 'icons/obj/item/weapons/ranged/revolver/musket.dmi'
 	icon_state = "inventory"
-	value = 400
+	value = 800
 
 	company_type = "Pirate"
 
 	tier = 1
 
-	damage_mod = 1
-	shoot_delay = 5
+	damage_mod = 2
+	shoot_delay = 10
+
+	can_wield = TRUE
+	wield_only = TRUE
 
 	automatic = FALSE
 
@@ -55,24 +58,43 @@
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+
+		/obj/item/attachment/stock/musket = TRUE
 	)
 
-	attachment_barrel_offset_x = 29 - 16
-	attachment_barrel_offset_y = 18 - 16
+	attachment_barrel_offset_x = 31
+	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 21 - 16
+	attachment_sight_offset_x = 18 - 16
 	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 22 - 16
+	attachment_undermount_offset_x = 16
 	attachment_undermount_offset_y = 17 - 16
+
+	attachment_stock_offset_x = 16
+	attachment_stock_offset_y = 0
 
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
 
-/obj/item/weapon/ranged/bullet/revolver/flintlock/get_static_spread()
-	return 0.01 //Smoothbore
+	pixel_x = -8
+
+
+
+/obj/item/weapon/ranged/bullet/revolver/musket/get_static_spread()
+	return 0.005 //Smoothbore
 
 /obj/item/weapon/ranged/bullet/revolver/flintlock/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.02 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.012 - (0.012 * L.get_skill_power(SKILL_RANGED)))
+
+
+/obj/item/weapon/ranged/bullet/revolver/musket/Generate()
+
+	attachment_stock = new /obj/item/attachment/stock/musket(src)
+	INITIALIZE(attachment_stock)
+	GENERATE(attachment_stock)
+	FINALIZE(attachment_stock)
+
+	. = ..()

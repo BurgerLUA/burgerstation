@@ -38,11 +38,11 @@
 
 	removable = FALSE
 
-/obj/item/attachment/stock/sniper_20
-	name = "20mm stock"
+/obj/item/attachment/barrel/sniper_20
+	name = "20mm barrel"
 	desc = "Extendong."
 	desc_extended = ""
-	icon_state = "stock_sniper_20" //didnt have an icon..... does it even need one?
+	icon_state = "barrel_sniper_20"
 
 	attachment_stats = list()
 
@@ -50,11 +50,12 @@
 
 	removable = FALSE
 
-/obj/item/attachment/barrel/sniper_20
-	name = "20mm barrel"
+
+/obj/item/attachment/stock/musket
+	name = "musket barrel"
 	desc = "Extendong."
 	desc_extended = ""
-	icon_state = "barrel_sniper_20"
+	icon_state = "barrel_musket"
 
 	attachment_stats = list()
 
