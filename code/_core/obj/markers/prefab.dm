@@ -2,7 +2,7 @@
 	name = "prefab marker"
 	var/category
 	icon_state = null
-	var/chance_none = 50
+	var/chance_none = 0
 	var/list/prefabs = null
 	var/unique = TRUE //Only allow one prefab of type.
 
@@ -27,8 +27,6 @@
 
 /obj/marker/prefab/New(var/desired_loc)
 
-	alpha = 100
-
 	if(prob(chance_none))
 		qdel(src)
 		return
@@ -37,8 +35,7 @@
 
 	. = ..()
 
-	if(!qdeleting && !prob(chance_none))
-		SSdmm_suite.prefab_markers += src
+	if(!qdeleting) SSdmm_suite.prefab_markers += src
 
 /obj/marker/prefab/Destroy()
 	SSdmm_suite.prefab_markers -= src
@@ -65,6 +62,7 @@
 	rotational_offset = 16
 
 //Special Prefabs
+
 /obj/marker/prefab/antag
 	icon = 'icons/obj/markers/prefab_antag.dmi'
 	category = "antag"
@@ -126,22 +124,12 @@
 	rotational_offset = 8
 
 
-/obj/marker/prefab/debug
-	icon = 'icons/obj/markers/prefab_10x10.dmi'
-	category = "debug"
-	chance_none = 0
+/obj/marker/prefab/landing
+	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	icon_state = "nodir"
+	category = "landing"
+	rotational_offset = 16
 	unique = FALSE
-	rotational_offset = 10
-
-/obj/marker/prefab/debug2
-	icon = 'icons/obj/markers/prefab_8x8.dmi'
-	icon_state = "yard"
-	category = "debug2"
-	chance_none = 0
-	unique = FALSE
-	rotational_offset = 8
-
-
 
 /obj/marker/prefab/yard
 	icon = 'icons/obj/markers/prefab_8x8.dmi'
@@ -231,3 +219,12 @@
 		category = "city_parking_straight"
 
 	. = ..()
+
+
+/obj/marker/prefab/fob
+	name = "FOB prefab"
+	icon = 'icons/obj/markers/prefab_64x64_fob.dmi'
+	category = "fob"
+	unique = TRUE
+	chance_none = 0
+	rotational_offset = 64

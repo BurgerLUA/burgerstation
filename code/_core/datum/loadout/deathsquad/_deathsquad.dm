@@ -14,8 +14,8 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/overwear/armor/nanotrasen/light/deathsquad,
-		/obj/item/clothing/head/helmet/full/nanotrasen/light/deathsquad
+		/obj/item/clothing/overwear/armor/nanotrasen/deathsquad,
+		/obj/item/clothing/head/helmet/full/nanotrasen/deathsquad
 	)
 
 /loadout/deathsquad/medium
@@ -25,8 +25,8 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/overwear/armor/nanotrasen/medium/deathsquad,
-		/obj/item/clothing/head/helmet/full/nanotrasen/medium/deathsquad
+		/obj/item/clothing/overwear/armor/nanotrasen/deathsquad,
+		/obj/item/clothing/head/helmet/full/nanotrasen/deathsquad
 	)
 
 /loadout/deathsquad/heavy
@@ -36,6 +36,6 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/overwear/armor/nanotrasen/heavy/deathsquad,
-		/obj/item/clothing/head/helmet/full/nanotrasen/heavy/deathsquad
+		/obj/item/clothing/overwear/armor/nanotrasen/deathsquad,
+		/obj/item/clothing/head/helmet/full/nanotrasen/deathsquad
 	)

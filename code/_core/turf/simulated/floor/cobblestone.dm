@@ -49,3 +49,9 @@
 
 /turf/simulated/floor/brick/sand
 	color = "#AE8A67"
+
+/turf/simulated/floor/brick/city
+	color = "#AF9580"
+
+/turf/simulated/floor/brick/city/clean
+	color = "#CCBAAD"

@@ -4,11 +4,8 @@
 	desc = "Like a brick to the head"
 	desc_extended = "A wall made of bricks."
 
-	icon = 'icons/turf/wall/rock/preview.dmi'
-	icon_state = "brick"
-
-	real_icon = 'icons/turf/wall/brick.dmi'
-	real_icon_state = "wall"
+	icon = 'icons/turf/wall/brick_new.dmi'
+	icon_state = "wall"
 
 	corner_icons = TRUE
 	corner_category = "brick"
@@ -44,6 +41,12 @@
 /turf/simulated/wall/brick/sand
 	name = "sandstone wall"
 	color = "#FFC68C"
+	desc = "It gets everywhere"
+	desc_extended = "A wall made of sandstone bricks."
+
+/turf/simulated/wall/brick/city
+	name = "city wall"
+	color = "#F0E8D9"
 	desc = "It gets everywhere"
 	desc_extended = "A wall made of sandstone bricks."
 

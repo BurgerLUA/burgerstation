@@ -7,7 +7,6 @@ dmm_suite
 	default to (1, 1, world.maxz+1)
 	*/
 	read_map(dmm_text as text, coordX as num, coordY as num, coordZ as num, tag as text, overwrite as num, angleOffset as num)
-		if(tag) log_debug("Attempting to load map [tag] at ([coordX],[coordY],[coordZ]) with offset [angleOffset]...")
 		. = 0
 		if(angleOffset)
 			angleOffset = MODULUS(round(angleOffset,90), 360)
@@ -68,7 +67,6 @@ dmm_suite
 			world.maxz = maxZFound+(coordZ-1)
 			log_debug("Z levels increased to [world.maxz].")
 
-		var/turfs_loaded = 0
 		var/debug_x = 0
 		var/debug_y = 0
 		var/debug_z = 0
@@ -141,14 +139,9 @@ dmm_suite
 						log_error("Could not parse modelKey \"[html_encode(modelKey)]\" in coords ([posX],[posY],[posZ])!\nLine: \"[y_line]\"")
 						break
 					else
-						turfs_loaded++
 						. += result
 
 					CHECK_TICK_SAFE(50,FPS_SERVER)
-		log_debug("DEBUG: ([debug_x],[debug_y],[debug_z]).")
-
-		if(tag)
-			log_debug("dmm_suite loaded [turfs_loaded] turfs and [.] total objects for [tag] ([maxXFound],[maxYFound],[maxZFound]).")
 
 		return .
 

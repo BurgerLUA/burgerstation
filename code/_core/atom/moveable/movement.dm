@@ -252,7 +252,7 @@
 				M.Crossed(src)
 	else
 		//Do: Exit the turf.
-		OldLoc.Exited(src,NewLoc)
+		if(OldLoc) OldLoc.Exited(src,NewLoc) //Can be null.
 
 		//Do: Enter the turf.
 		NewLoc.Entered(src,OldLoc)

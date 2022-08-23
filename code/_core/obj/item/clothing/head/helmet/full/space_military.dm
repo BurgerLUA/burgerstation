@@ -18,6 +18,6 @@
 	dyeable = TRUE
 
 	polymorphs = list(
-		"armor" = "#303030",
-		"visor" = "#00137F"
+		"armor" = "#726858",
+		"visor" = "#D6EEE4"
 	)

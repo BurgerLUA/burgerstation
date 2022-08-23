@@ -2,6 +2,28 @@
 
 
 
+/area/mission/prefab/city/city_hall
+	name = "city hall"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/city_hall/north_office
+	icon_state = "red"
+
+/area/mission/prefab/city/city_hall/east_office
+	icon_state = "green"
+
+/area/mission/prefab/city/city_hall/west_office
+	icon_state = "blue"
+
+/area/mission/prefab/city/city_hall/exterior
+	icon_state = "pink"
+	interior = FALSE
 
 /area/mission/prefab/city/city_01
 	name = "city 01"

@@ -60,32 +60,35 @@ SUBSYSTEM_DEF(dmm_suite)
 		if(!length(valid_prefabs[M.category]))
 			not_enough |= M.category
 			continue
-		var/list/local_prefabs = valid_prefabs[M.category]
-		if(length(M.prefabs)) local_prefabs = local_prefabs & M.prefabs
-		if(length(local_prefabs))
-			var/chosen_file = pick(local_prefabs)
-			if(M.unique)
-				valid_prefabs[M.category] -= chosen_file
-			var/map_contents = file2text(chosen_file)
-			var/desired_angle = 0
-			switch(M.dir)
-				if(SOUTH)
-					desired_angle = 0
-				if(WEST)
-					desired_angle = 90
-				if(NORTH)
-					desired_angle = 180
-				if(EAST)
-					desired_angle = 270
-			dmm_suite.read_map(
-				map_contents,
-				M.x + M.offset_x,
-				M.y + M.offset_y,
-				M.z,
-				tag="[chosen_file]",
-				angleOffset = SIMPLIFY_DEGREES(desired_angle)
-			)
-			loaded_prefabs++
+		var/list/local_prefabs = valid_prefabs[M.category].Copy()
+		if(length(M.prefabs))
+			local_prefabs = local_prefabs & M.prefabs
+		if(!length(local_prefabs))
+			not_enough |= M.category
+			continue
+
+		var/chosen_file = pick(local_prefabs)
+		if(M.unique) valid_prefabs[M.category] -= chosen_file
+		var/map_contents = file2text(chosen_file)
+		var/desired_angle = 0
+		switch(M.dir)
+			if(SOUTH)
+				desired_angle = 0
+			if(WEST)
+				desired_angle = 90
+			if(NORTH)
+				desired_angle = 180
+			if(EAST)
+				desired_angle = 270
+		dmm_suite.read_map(
+			map_contents,
+			M.x + M.offset_x,
+			M.y + M.offset_y,
+			M.z,
+			tag="[chosen_file]",
+			angleOffset = SIMPLIFY_DEGREES(desired_angle)
+		)
+		loaded_prefabs++
 
 	if(length(not_enough))
 		log_error("Warning: Not enough prefabs of type(s) [english_list(not_enough)] to satisfy all prefab markers.")

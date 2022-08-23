@@ -44,3 +44,29 @@
 /turf/simulated/floor/plating/rev
 	name = "tinted steel floor plating"
 	color = "#626A3B"
+
+
+/turf/simulated/floor/landing
+	name = "aluminium landing platform"
+
+	icon = 'icons/turf/floor/landing.dmi'
+	icon_state = "1"
+
+	footstep = /footstep/plating
+
+	color = COLOR_GREY_LIGHT
+	material_id = /material/aluminium
+
+	layer = LAYER_FLOOR_PLATING
+
+	desc = "The plating underneath the floor"
+	desc_extended = "A floor found underneath an actual floor."
+
+	color = COLOR_GREY
+
+/turf/simulated/floor/landing/New(var/desired_loc)
+	. = ..()
+	icon_state = "[rand(1,10)]"
+
+/turf/simulated/floor/landing/dark
+	color = COLOR_GREY_DARK
