@@ -59,7 +59,7 @@
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/belt/storage/colored/brown,
 		/obj/item/weapon/melee/sword/sabre,
-		/obj/item/clothing/head/hat/bandana/red
+		/obj/item/clothing/head/hat/bandana/red,
 		/obj/item/weapon/ranged/bullet/revolver/flintlock,
 		/obj/item/bullet_cartridge/flintlock{amount=3},
 		/obj/item/bullet_cartridge/flintlock{amount=3},
