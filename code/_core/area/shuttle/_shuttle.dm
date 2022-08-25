@@ -10,11 +10,5 @@
 
 	area_identifier = "Burgerstation"
 
-	var/area/shuttle_area = /area/ //REQUIRED
-
-	var/area/shuttle_turf = /turf/ //REQUIRED
-
-/area/shuttle/debug
-	name = "debug shuttle"
-	shuttle_area = /area/burgerstation/hanger
-	shuttle_turf = /turf/simulated/floor/plating
+/area/shuttle/flounder
+	name = "\improper NTS Flounder"

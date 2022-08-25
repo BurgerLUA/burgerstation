@@ -61,6 +61,13 @@
 	chance_none = 70
 	rotational_offset = 16
 
+/obj/marker/prefab/shuttle
+	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	icon_state = null
+	category = "shuttle"
+	chance_none = 0
+	rotational_offset = 16
+
 //Special Prefabs
 
 /obj/marker/prefab/antag

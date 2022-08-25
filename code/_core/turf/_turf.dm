@@ -46,8 +46,8 @@
 	var/parallax_icon = 'icons/obj/effects/parallax.dmi'
 
 	//Stored variables for shuttles
-	var/transit_area
-	var/transit_turf
+	var/area/transit_area
+	var/turf/transit_turf
 
 	density = FALSE
 

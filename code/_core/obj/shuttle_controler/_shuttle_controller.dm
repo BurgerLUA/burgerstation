@@ -221,8 +221,6 @@ var/global/list/all_shuttle_controlers = list()
 	var/list/valid_turfs = list()
 
 	for(var/turf/simulated/T in starting_area) //This is needed or else thing will be buggy.
-		if(T.plane != PLANE_SHUTTLE)
-			continue
 		valid_turfs += T
 
 	var/original_x = src.x
@@ -251,8 +249,8 @@ var/global/list/all_shuttle_controlers = list()
 		var/turf/old_turf_type = T.type
 		var/area/old_area_type = T.loc.type
 		areas_to_upate |= T.loc
-		T_to_replace.change_turf(T.type,TRUE,TRUE) //From destination turf to shuttle turf.
-		T_to_replace.change_area(T.loc.type) //From destination area to shuttle area.
+		if(T.plane == PLANE_SHUTTLE) T_to_replace.change_turf(T.type,TRUE,TRUE) //Change to shuttle turf.
+		T_to_replace.change_area(T.loc.type) //Change to shuttle area.
 		T_to_replace.transit_turf = old_turf_type
 		T_to_replace.transit_area = old_area_type
 		areas_to_upate |= T.loc
@@ -275,9 +273,8 @@ var/global/list/all_shuttle_controlers = list()
 			I.drop_item(T)
 			T.stored_shuttle_items -= I
 
-		var/area/shuttle/A = T.loc
-		T.change_area(T.transit_area ? T.transit_area : A.shuttle_area) //From shuttle area to old turf that existed under.
-		T.change_turf(T.transit_turf ? T.transit_turf : A.shuttle_turf,TRUE,TRUE) //From shuttle turf to old turf that existed under.
+		T.change_area(T.transit_area) //From shuttle area to old turf that existed under.
+		if(T.plane == PLANE_SHUTTLE) T.change_turf(T.transit_turf) //From shuttle turf to old turf that existed under.
 		areas_to_upate |= T.loc
 
 	for(var/k in areas_to_upate)
@@ -294,6 +291,6 @@ var/global/list/all_shuttle_controlers = list()
 				continue
 			if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 				continue
-			M.throw_self(M,null,null,null,transit_throw_x*8,transit_throw_y*8)
+			M.throw_self(M,vel_x=transit_throw_x*8,vel_y=transit_throw_y*8)
 
 	return TRUE

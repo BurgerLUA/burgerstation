@@ -207,6 +207,8 @@ dmm_suite
 			// Handle Areas (not created every time)
 			var/atom/instance
 			if(ispath(atomPath, /area)) //Don't set instances for areas.
+				if(ispath(atomPath,/area/shuttle))
+					location.transit_area = location.loc.type //Old area type.
 				new atomPath(location)
 				location.dmm_preloader = null
 				return 1
@@ -227,7 +229,10 @@ dmm_suite
 					else
 						instance = new /turf/simulated/floor/cave_dirt(location)
 				else
+					var/turf/old_turf_type = location.type
 					instance = new atomPath(location)
+					if(instance.plane == PLANE_SHUTTLE)
+						location.transit_turf = old_turf_type
 			else if(atomPath)
 				instance = new atomPath(location)
 			if(instance)
@@ -237,7 +242,7 @@ dmm_suite
 					instance.dir = turn(instance.dir,-angleOffset)
 					instance.on_dmm_suite_rotate(angleOffset)
 
-			return (instance ? 1 : 0)
+			return (instance ? TRUE : FALSE)
 
 		loadAttribute(value, list/strings)
 			//Check for string

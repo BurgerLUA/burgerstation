@@ -1,0 +1,38 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
+"c" = (/obj/structure/shuttle/wing/left{icon_state = "2,4"},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/wall/shuttle,/area/shuttle/flounder)
+"e" = (/obj/structure/shuttle_engine/burst/right{icon_state = "burst_r"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
+"f" = (/obj/structure/shuttle_engine/propulsion{icon_state = "propulsion"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
+"g" = (/obj/structure/shuttle_engine/burst/left{icon_state = "burst_l"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
+"h" = (/obj/structure/shuttle_engine/heater{icon_state = "heater"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
+"i" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
+"j" = (/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
+"k" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
+"l" = (/obj/structure/shuttle/wing/right{icon_state = "2,2"},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"m" = (/obj/structure/shuttle/wing/left{icon_state = "2,2"},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"n" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"o" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"p" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"; dir = 8},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"q" = (/obj/structure/shuttle/wing/left{icon_state = "2,2"; dir = 8},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"r" = (/obj/structure/shuttle/wing/right{icon_state = "2,2"; dir = 4},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+"s" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"; dir = 4},/turf/dmm_suite/clear_turf,/area/shuttle/flounder)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaa
+aaaabbdefgdbbaaa
+aaaabdddhdddbaaa
+aaaabijdddjibaaa
+aaaaddjjjjjddaaa
+aaaakjjjjjjjkcaa
+aaaddjjjjjjjddaa
+aaaldjjjjjjjdmaa
+aaanddjjjjjddoaa
+aaaaakjjjjjkaaaa
+aaaaadddjdddaaaa
+aaaaapqdkdrsaaaa
+aaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaa
+"}
