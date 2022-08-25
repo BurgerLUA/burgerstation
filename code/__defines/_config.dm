@@ -2,6 +2,7 @@
 // #define ENABLE_INSTALOAD FALSE
 
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1) //This shouldn't be touched unless you know what you're doing.
+
 #define WORLD_SIZE 500 //This shouldn't be touched unless you know what you're doing.
 #define TILE_SIZE 32 //This shouldn't be touched unless you know what you're doing
 

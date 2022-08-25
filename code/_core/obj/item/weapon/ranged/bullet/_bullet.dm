@@ -32,6 +32,8 @@
 
 	use_iff_tag = TRUE
 
+	var/bullet_time = 0 //Not slow-mo, but how long it takes to insert a bullet into the gun.
+
 /obj/item/weapon/ranged/bullet/Finalize()
 	. = ..()
 	uses_until_condition_fall = 50 * (1/shoot_delay)
@@ -103,6 +105,9 @@
 	if(.)
 		var/turf/T = get_turf(src)
 		play_sound(B.bullet_insert_sound,T,range_max=VIEW_RANGE*0.25)
+		if(istype(src,/obj/item/weapon/ranged/bullet/magazine/))
+			var/obj/item/weapon/ranged/bullet/magazine/M = src
+			play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
 	else
 		caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
 

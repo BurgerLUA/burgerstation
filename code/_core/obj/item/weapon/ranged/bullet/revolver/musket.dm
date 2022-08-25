@@ -22,8 +22,8 @@
 
 	shoot_sounds = list('sound/weapons/308/big_game.ogg')
 
-	size = SIZE_2
-	weight = 8
+	size = SIZE_4
+	weight = 20
 
 	bullet_length_min = 15.7
 	bullet_length_best = 15.7
@@ -34,6 +34,8 @@
 	bullet_diameter_max = 15.7
 
 	heat_max = 0.1
+
+	bullet_time = SECONDS_TO_DECISECONDS(3)
 
 	open = TRUE
 	can_shoot_while_open = TRUE

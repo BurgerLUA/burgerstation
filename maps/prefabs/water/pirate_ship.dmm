@@ -1,0 +1,54 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/obj/structure/short_wall/wood/starting,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"c" = (/obj/structure/short_wall/wood,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"e" = (/turf/simulated/wall/wood/boat,/area/dmm_suite/clear_area)
+"f" = (/turf/simulated/floor/stair/wood,/area/dmm_suite/clear_area)
+"g" = (/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/short_wall/wood/starting,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"i" = (/turf/simulated/floor/stair/wood{icon_state = "stair"; dir = 1},/area/dmm_suite/clear_area)
+"j" = (/obj/structure/short_wall/wood/starting,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"k" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 8},/obj/item/cannonball,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"l" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 4},/obj/item/cannonball,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 8},/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"n" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 4},/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"o" = (/obj/structure/interactive/cannon,/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"p" = (/obj/item/cannonball,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"q" = (/obj/item/cannon_fuse,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"r" = (/obj/item/cannon_fuse,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"s" = (/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaacccccaaaaaaaaaaaaaa
+aaaaaaaaaaaaacdddcaaaaaaaaaaaaaa
+aaaaaaaaaaaaaeefeeaaaaaaaaaaaaaa
+aaaaaaaaaaaeeegggeeeaaaaaaaaaaaa
+aaaaaaaaaaaegggggggeaaaaaaaaaaaa
+aaaaaaaaaaahggggggghaaaaaaaaaaaa
+aaaaaaaaaaahggggggghaaaaaaaaaaaa
+aaaaaaaaaaaegggggggeaaaaaaaaaaaa
+aaaaaaaaaaaeeieeeieeaaaaaaaaaaaa
+aaaaaaaaaaackdpqddlcaaaaaaaaaaaa
+aaaaaaaaaaacqdddddpcaaaaaaaaaaaa
+aaaaaaaaaaackdddddlcaaaaaaaaaaaa
+aaaaaaaaaaacpddjqdpcaaaaaaaaaaaa
+aaaaaaaaaaackdddddlcaaaaaaaaaaaa
+aaaaaaaaaaacqdddddqcaaaaaaaaaaaa
+aaaaaaaaaaackdqjddlcaaaaaaaaaaaa
+aaaaaaaaaaacpdddddpcaaaaaaaaaaaa
+aaaaaaaaaaackdqqpdlcaaaaaaaaaaaa
+aaaaaaaaaaahhfhhhfhhaaaaaaaaaaaa
+aaaaaaaaaaahrsggggrhaaaaaaaaaaaa
+aaaaaaaaaaahmgggggnhaaaaaaaaaaaa
+aaaaaaaaaaahhsgggghhaaaaaaaaaaaa
+aaaaaaaaaaaahrsggshaaaaaaaaaaaaa
+aaaaaaaaaaaahhorohhaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

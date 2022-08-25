@@ -10,15 +10,7 @@
 
 	var/turf/T = get_turf(src)
 	for(var/k in items_to_add)
-		if(ispath(k,/obj/item/))
-			var/obj/item/I = new k(T)
-			spawning_outfit.pre_add(src,I)
-			INITIALIZE(I)
-			GENERATE(I)
-			FINALIZE(I)
-			if(spawning_outfit.on_add(src,I))
-				added_items += I
-		else if(ispath(k,/loot/))
+		if(ispath(k,/loot/))
 			var/loot/spawning_loot = LOOT(k)
 			var/list/loot_table = spawning_loot.create_loot_table()
 			for(var/j in loot_table) //Items only.
@@ -34,6 +26,14 @@
 				spawning_loot.post_spawn(I)
 				if(spawning_outfit.on_add(src,I))
 					added_items += I
+		else
+			var/atom/movable/I = new k(T)
+			spawning_outfit.pre_add(src,I)
+			INITIALIZE(I)
+			GENERATE(I)
+			FINALIZE(I)
+			if(spawning_outfit.on_add(src,I))
+				added_items += I
 
 	spawning_outfit.post_add(src,added_items)
 

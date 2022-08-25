@@ -354,7 +354,9 @@
 
 	var/atom/old_location = I.loc
 
-	I.drop_item(src,silent=silent)
+	if(!I.drop_item(src,silent=silent))
+		return FALSE
+
 	I.pre_pickup(old_location,src)
 
 	if(owner)

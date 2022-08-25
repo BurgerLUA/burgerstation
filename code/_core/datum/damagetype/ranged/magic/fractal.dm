@@ -1,7 +1,7 @@
 /damagetype/ranged/magic/fractal
 	attack_damage_base = list(
 		BLADE = 30*0.4,
-		FIRE = 30*0.1
+		HEAT = 30*0.1
 	)
 
 	attribute_stats = list(
@@ -9,7 +9,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(FIRE,BLADE)
+		ATTRIBUTE_INTELLIGENCE = list(HEAT,BLADE)
 	)
 
 	skill_stats = list(
@@ -17,7 +17,7 @@
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = FIRE
+		SKILL_MAGIC_OFFENSIVE = HEAT
 	)
 
 	bonus_experience_skill = list(

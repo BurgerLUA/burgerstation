@@ -28,7 +28,7 @@
 /damagetype/ranged/magic/fire
 	attack_damage_base = list(
 		PIERCE = 60*0.2,
-		FIRE = 60*0.3
+		HEAT = 60*0.3
 	)
 
 	attribute_stats = list(
@@ -36,7 +36,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = FIRE
+		ATTRIBUTE_INTELLIGENCE = HEAT
 	)
 
 	skill_stats = list(
@@ -44,7 +44,7 @@
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = FIRE
+		SKILL_MAGIC_OFFENSIVE = HEAT
 	)
 
 	bonus_experience_skill = list(

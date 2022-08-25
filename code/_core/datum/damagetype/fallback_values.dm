@@ -1,12 +1,11 @@
 /damagetype/item
 
 
-
-/damagetype/item/light
+/damagetype/item/trivial
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 30*0.1,
+		BLUNT = 2,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -16,7 +15,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 30*0.6
+		ATTRIBUTE_STRENGTH = 5
 	)
 
 	attribute_damage = list(
@@ -24,7 +23,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 30*0.3,
+		SKILL_MELEE = 5,
 	)
 
 	skill_damage = list(
@@ -32,15 +31,50 @@
 	)
 
 	//BALANCE EXCEPTION: SPEED PENALTY
-	attack_delay = 12*0.5
-	attack_delay_max = 12
+	attack_delay = 10
+	attack_delay_max = 10
+
+
+
+/damagetype/item/light
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 5,
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	//BALANCE EXCEPTION: NO AP
+	attack_damage_penetration = list(
+		BLUNT = 0
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 20
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = BLUNT,
+	)
+
+	skill_stats = list(
+		SKILL_MELEE = 10,
+	)
+
+	skill_damage = list(
+		SKILL_MELEE = BLUNT
+	)
+
+	//BALANCE EXCEPTION: SPEED PENALTY
+	attack_delay = 10
+	attack_delay_max = 10
 
 
 /damagetype/item/medium
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 45*0.1,
+		BLUNT = 15,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -50,7 +84,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 45*0.6
+		ATTRIBUTE_STRENGTH = 30
 	)
 
 	attribute_damage = list(
@@ -58,7 +92,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 45*0.3,
+		SKILL_MELEE = 10,
 	)
 
 	skill_damage = list(
@@ -66,14 +100,14 @@
 	)
 
 	//BALANCE EXCEPTION: SPEED PENALTY
-	attack_delay = 14*0.5
-	attack_delay_max = 14
+	attack_delay = 15
+	attack_delay_max = 15
 
 /damagetype/item/heavy
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 60*0.1,
+		BLUNT = 20,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -83,7 +117,7 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 60*0.6
+		ATTRIBUTE_STRENGTH = 50
 	)
 
 	attribute_damage = list(
@@ -91,7 +125,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 60*0.3,
+		SKILL_MELEE = 10,
 	)
 
 	skill_damage = list(
@@ -99,5 +133,38 @@
 	)
 
 	//BALANCE EXCEPTION: SPEED PENALTY
-	attack_delay = 16*0.5
-	attack_delay_max = 16
+	attack_delay = 20
+	attack_delay_max = 20
+
+/damagetype/item/super
+
+	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
+	attack_damage_base = list(
+		BLUNT = 20,
+	)
+
+	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
+	//BALANCE EXCEPTION: NO AP
+	attack_damage_penetration = list(
+		BLUNT = 0
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 70
+	)
+
+	attribute_damage = list(
+		ATTRIBUTE_STRENGTH = BLUNT,
+	)
+
+	skill_stats = list(
+		SKILL_MELEE = 10,
+	)
+
+	skill_damage = list(
+		SKILL_MELEE = BLUNT
+	)
+
+	//BALANCE EXCEPTION: SPEED PENALTY
+	attack_delay = 30
+	attack_delay_max = 30

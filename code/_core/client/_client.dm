@@ -198,7 +198,10 @@ var/global/list/all_clients = list() //Assoc list
 			if(!rank_value && !byond_member)
 				restricted = "The server is currently experiencing a massive influx of players, and is currently restricted to [player_limit_config] players. Come back another time when the population is reduced!"
 				src << "<h1>[restricted]</h1>"
-		make_observer(FALLBACK_TURF)
+		if(world_state == STATE_RUNNING)
+			make_observer(locate(1,1,1))
+		else
+			make_observer(null)
 		if(!restricted)
 			welcome()
 			mob.show_hud(FALSE,speed = 0)

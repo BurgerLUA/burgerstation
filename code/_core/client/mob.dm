@@ -33,9 +33,6 @@
 
 /client/proc/make_observer(var/turf/desired_loc)
 
-	if(!desired_loc)
-		desired_loc = FALLBACK_TURF
-
 	if(mob)
 		mob.ckey_last = null
 
