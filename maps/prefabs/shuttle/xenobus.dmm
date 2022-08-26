@@ -1,0 +1,44 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/obj/decal/hazard/box,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"c" = (/obj/decal/hazard{dir = 1},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"d" = (/obj/decal/hazard{dir = 8; icon_state = "line"},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"e" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"f" = (/obj/decal/hazard{dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"g" = (/obj/structure/shuttle_engine/propulsion/right{icon_state = "propulsion_r"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
+"h" = (/obj/structure/shuttle_engine/propulsion{icon_state = "propulsion"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
+"i" = (/obj/structure/shuttle_engine/propulsion/left{icon_state = "propulsion_l"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
+"j" = (/turf/simulated/wall/shuttle,/area/shuttle/xeno)
+"k" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
+"l" = (/obj/structure/shuttle_engine/heater{icon_state = "heater"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
+"m" = (/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
+"n" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
+"o" = (/obj/structure/shuttle/wing/right{icon_state = "2,2"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"p" = (/obj/structure/shuttle/wing/left{icon_state = "2,2"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"q" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"r" = (/obj/structure/shuttle/wing/right{icon_state = "1,1"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"s" = (/obj/structure/shuttle/wing/left{icon_state = "1,1"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"t" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"u" = (/obj/structure/shuttle/wing/right{icon_state = "1,0"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"v" = (/obj/structure/shuttle/wing/left{icon_state = "1,0"},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"w" = (/obj/decal/hazard,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"x" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"; dir = 1},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"y" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"; dir = 1},/turf/simulated/floor/plating,/area/shuttle/xeno)
+
+(1,1,1) = {"
+abcccbccccbcccba
+adeeeeeeeeeeeefa
+adeghijkkjghiefa
+adejljjmmjjljefa
+adjjjjmmmmjjjjfa
+abnmmmmmmmmmmnba
+adnmmmmmmmmmmnfa
+adnmmmmmmmmmmnfa
+adnnjjmmmmjjnnfa
+adeeojjmmjjpeefa
+abeeqrjmmjsteeba
+adeeeujmmjveeefa
+adeeexjnnjyeeefa
+adeeeqjeejteeefa
+adeeeeeeeeeeeefa
+abwwwbwwwwbwwwba
+"}

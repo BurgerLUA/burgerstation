@@ -1,0 +1,42 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/obj/decal/hazard/box,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"c" = (/obj/decal/hazard{dir = 1},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"d" = (/obj/decal/hazard{dir = 8; icon_state = "line"},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"e" = (/obj/decal/hazard{dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"f" = (/obj/decal/hazard,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"g" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/shuttle_engine/propulsion/right{icon_state = "propulsion_r"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/shuttlebus)
+"i" = (/obj/structure/shuttle_engine/propulsion{icon_state = "propulsion"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/shuttlebus)
+"j" = (/obj/structure/shuttle_engine/propulsion/left{icon_state = "propulsion_l"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/shuttlebus)
+"k" = (/turf/simulated/wall/metal/shuttle,/area/shuttle/shuttlebus)
+"l" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/shuttle/shuttlebus)
+"m" = (/obj/structure/shuttle_engine/heater{icon_state = "heater"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/shuttlebus)
+"n" = (/turf/simulated/floor/tile/shuttle,/area/shuttle/shuttlebus)
+"o" = (/obj/structure/shuttle/wing/right{icon_state = "2,2"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"p" = (/obj/structure/shuttle/wing/left{icon_state = "2,2"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"q" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"r" = (/obj/structure/shuttle/wing/right{icon_state = "1,1"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"s" = (/obj/structure/shuttle/wing/left{icon_state = "1,1"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"t" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"u" = (/obj/structure/shuttle/wing/right{icon_state = "1,0"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"v" = (/obj/structure/shuttle/wing/left{icon_state = "1,0"},/turf/simulated/floor/plating,/area/shuttle/shuttlebus)
+"w" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/tile/shuttle,/area/shuttle/shuttlebus)
+
+(1,1,1) = {"
+abcccbccccbcccba
+adggggggggggggea
+adhijkllllkhijea
+adkmkknnnnkkmkea
+adkkknnnnnnkkkea
+abokknnnnnnkkpba
+adqrknnnnnnkstea
+adguknnnnnnkvgea
+adggwnnnnnnwggea
+adggwnnnnnnwggea
+abggwnnnnnnwggba
+adggwnnnnnnwggea
+adggkknnnnkkggea
+adggukwnnwkvggea
+adggggwwwwggggea
+abfffbffffbfffba
+"}

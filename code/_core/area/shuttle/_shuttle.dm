@@ -12,3 +12,9 @@
 
 /area/shuttle/flounder
 	name = "\improper NTS Flounder"
+
+/area/shuttle/shuttlebus
+	name = "\improper NTS Shuttlebus"
+
+/area/shuttle/xeno
+	name = "\improper NTS Xenobus"
