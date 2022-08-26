@@ -7,6 +7,7 @@
 	allow_ghost = FALSE
 	map_color = COLOR_PINK
 	interior = TRUE
+	dynamic_lighting = TRUE
 
 	area_identifier = "Burgerstation"
 
@@ -18,3 +19,6 @@
 
 /area/shuttle/xeno
 	name = "\improper NTS Xenobus"
+
+/area/shuttle/minivan
+	name = "\improper NTS Minivan"
