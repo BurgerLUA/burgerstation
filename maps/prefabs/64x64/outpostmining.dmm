@@ -126,7 +126,7 @@
 /turf/simulated/floor/plating,
 /area/prefab/syndimining)
 "cU" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/morphing/library,
 /area/prefab/syndimining)
 "df" = (
@@ -335,7 +335,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndimining)
 "kj" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/morphing/library,
 /area/prefab/syndimining)
 "kl" = (

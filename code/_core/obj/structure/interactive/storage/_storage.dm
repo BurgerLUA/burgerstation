@@ -141,3 +141,17 @@
 	icon_state = "ammo"
 
 	pixel_y = 7
+
+
+/obj/structure/interactive/storage/cash_register
+	name = "cash register"
+	desc = "It's not stealing if everyone is dead."
+	desc_extended = "A basic cash register used for processing transactions through an archaic method known as \"paying cash\"."
+	icon = 'icons/obj/structure/register.dmi'
+	icon_state = "register"
+
+	stored_loot = /loot/misc/cash_register
+
+	layer = 1000
+
+	pixel_y = 16

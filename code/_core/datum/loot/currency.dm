@@ -14,6 +14,8 @@
 		I.amount =  FLOOR(I.amount*rng_result,1)
 		if(I.amount < 1)
 			I.amount = 1
+		if(I.amount > I.amount_max)
+			I.amount = I.amount_max
 
 
 /loot/currency/dosh

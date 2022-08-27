@@ -625,7 +625,7 @@
 /turf/simulated/floor/xeno,
 /area/hellscape/interior/caves/hive)
 "dn" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "do" = (
@@ -1012,7 +1012,7 @@
 /turf/simulated/floor/colored/dirt/jungle,
 /area/hellscape/interior/caves/watersource)
 "eW" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/rev)
 "eX" = (

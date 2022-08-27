@@ -152,7 +152,7 @@
 "dD" = (/obj/structure/interactive/lighting/fixture/tube/station/strong{dir = 1},/turf/simulated/floor/tile,/area/space/deep)
 "dE" = (/obj/structure/interactive/lighting/fixture/tube/station/strong,/turf/simulated/floor/tile,/area/space/deep)
 "dF" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 1},/turf/simulated/floor/wood/rich,/area/wizard)
-"dH" = (/obj/structure/interactive/vending/soda/full,/turf/simulated/floor/wood/rich,/area/wizard)
+"dH" = (/obj/structure/interactive/vending/soda/nanotrasen,/turf/simulated/floor/wood/rich,/area/wizard)
 "dI" = (/obj/structure/interactive/door/airlock/wizard/glass,/turf/simulated/floor/wood/rich,/area/wizard)
 "dJ" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/rich,/area/wizard)
 "dL" = (/obj/structure/interactive/vending/wizard,/turf/simulated/floor/wood/rich,/area/wizard)

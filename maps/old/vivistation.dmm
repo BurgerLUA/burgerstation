@@ -97,7 +97,7 @@
 /turf/simulated/wall/rock/indestructable,
 /area/lz_001/jungle)
 "aq" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/arrivals)
 "ar" = (
@@ -1859,7 +1859,7 @@
 /turf/simulated/floor/tile/shuttle/green,
 /area/transit/dropship/bravo/station)
 "gC" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
 "gD" = (
@@ -2772,7 +2772,7 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/cafe/kitchen)
 "ke" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/west)
 "kf" = (
@@ -3207,7 +3207,7 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "lL" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
@@ -3218,7 +3218,7 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe)
 "lN" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe)
 "lO" = (
@@ -3703,12 +3703,12 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/armory)
 "nE" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /obj/structure/table,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/armory)
 "nF" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/armory)
 "nG" = (
@@ -4827,7 +4827,7 @@
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/arrivals)
 "rH" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/morphing/cryo,
 /area/burgerstation/arrivals)
 "rI" = (

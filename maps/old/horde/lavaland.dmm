@@ -535,12 +535,12 @@
 /area/lavaland/interior/base/dorm)
 "cA" = (
 /obj/decal/tile/cross/red,
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cafe/kitchen)
 "cB" = (
 /obj/decal/tile/cross/red,
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/grey,
 /area/lavaland/interior/base/cafe/kitchen)
 "cC" = (
