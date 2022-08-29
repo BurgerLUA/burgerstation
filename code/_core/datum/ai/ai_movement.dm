@@ -206,12 +206,12 @@
 	return FALSE
 
 /ai/proc/handle_movement_roaming()
-	if(roaming_distance)
-		if(get_dist(owner,start_turf) >= roaming_distance)
+	if(roaming_distance >= 1)
+		if(get_dist(owner,start_turf) >= roaming_distance-1)
 			owner.movement_flags = MOVEMENT_WALKING
 			owner.move_dir = get_dir(owner,start_turf)
 			return TRUE
-		else
+		else if(roaming_distance > 1)
 			if(roam)
 				if(prob(5))
 					owner.movement_flags = MOVEMENT_WALKING

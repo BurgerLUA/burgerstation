@@ -17,33 +17,44 @@
 "q" = (/obj/item/cannon_fuse,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
 "r" = (/obj/item/cannon_fuse,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
 "s" = (/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"t" = (/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 1},/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"u" = (/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"v" = (/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"w" = (/obj/item/cannonball,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"x" = (/obj/item/cannonball,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"y" = (/obj/item/cannon_fuse,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"z" = (/obj/item/cannonball,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"A" = (/mob/living/advanced/npc/pirate_crew/melee,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"B" = (/mob/living/advanced/npc/pirate_crew/melee,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"C" = (/mob/living/advanced/npc/unique/pirate_captain,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"D" = (/mob/living/advanced/npc/unique/pirate_mate,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaacccccaaaaaaaaaaaaaa
-aaaaaaaaaaaaacdddcaaaaaaaaaaaaaa
+aaaaaaaaaaaaactddcaaaaaaaaaaaaaa
 aaaaaaaaaaaaaeefeeaaaaaaaaaaaaaa
 aaaaaaaaaaaeeegggeeeaaaaaaaaaaaa
 aaaaaaaaaaaegggggggeaaaaaaaaaaaa
-aaaaaaaaaaahggggggghaaaaaaaaaaaa
-aaaaaaaaaaahggggggghaaaaaaaaaaaa
+aaaaaaaaaaahggCgDgghaaaaaaaaaaaa
+aaaaaaaaaaahugggggvhaaaaaaaaaaaa
 aaaaaaaaaaaegggggggeaaaaaaaaaaaa
 aaaaaaaaaaaeeieeeieeaaaaaaaaaaaa
 aaaaaaaaaaackdpqddlcaaaaaaaaaaaa
-aaaaaaaaaaacqdddddpcaaaaaaaaaaaa
+aaaaaaaaaaacqdAdddwcaaaaaaaaaaaa
 aaaaaaaaaaackdddddlcaaaaaaaaaaaa
-aaaaaaaaaaacpddjqdpcaaaaaaaaaaaa
+aaaaaaaaaaacxddjqdpcaaaaaaaaaaaa
 aaaaaaaaaaackdddddlcaaaaaaaaaaaa
-aaaaaaaaaaacqdddddqcaaaaaaaaaaaa
+aaaaaaaaaaacqdddAdqcaaaaaaaaaaaa
 aaaaaaaaaaackdqjddlcaaaaaaaaaaaa
-aaaaaaaaaaacpdddddpcaaaaaaaaaaaa
+aaaaaaaaaaacxdddddwcaaaaaaaaaaaa
 aaaaaaaaaaackdqqpdlcaaaaaaaaaaaa
 aaaaaaaaaaahhfhhhfhhaaaaaaaaaaaa
 aaaaaaaaaaahrsggggrhaaaaaaaaaaaa
-aaaaaaaaaaahmgggggnhaaaaaaaaaaaa
+aaaaaaaaaaahmggBggnhaaaaaaaaaaaa
 aaaaaaaaaaahhsgggghhaaaaaaaaaaaa
-aaaaaaaaaaaahrsggshaaaaaaaaaaaaa
+aaaaaaaaaaaahysggzhaaaaaaaaaaaaa
 aaaaaaaaaaaahhorohhaaaaaaaaaaaaa
 aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa

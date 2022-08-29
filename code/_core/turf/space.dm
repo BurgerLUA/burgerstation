@@ -18,8 +18,8 @@
 		if(Obj.mouse_opacity) Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"),span("danger","You flash violently!"))
 		if(Obj.is_safe_to_delete())
 			qdel(Obj)
-		else if(length(rift_markers))
-			Obj.force_move(get_turf(pick(rift_markers)))
+		else if(length(bluepace_rift_markers))
+			Obj.force_move(get_turf(pick(bluepace_rift_markers)))
 			if(Obj.mouse_opacity) Obj.visible_message(span("danger","\The [Obj.name] appears out of nowhere!"),span("warning","You appear in some location..."))
 		return TRUE
 

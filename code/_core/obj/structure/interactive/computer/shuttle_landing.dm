@@ -122,6 +122,5 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 	if(best_computer)
 		best_computer.linked_marker = src
 		src.linked_computer = best_computer
-		all_shuttle_landing_markers += src
-	else
-		qdel(src)
+
+	all_shuttle_landing_markers += src

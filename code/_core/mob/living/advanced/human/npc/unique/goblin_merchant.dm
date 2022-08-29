@@ -2,8 +2,6 @@
 	name = "goblin merchant"
 	desc = "Profitting from raiding settlements since 4506 BC."
 
-	ai = /ai/advanced
-
 	species = "goblin"
 
 	pixel_z = 1

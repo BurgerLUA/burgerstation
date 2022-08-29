@@ -1,9 +1,7 @@
 /ai/advanced/guarding
-	roaming_distance = 4
+	roaming_distance = 1
 	reaction_time = 3
 
-	aggression = 2
-	assistance = 0
-	cowardice = 0.5
-
-	roam = TRUE
+	aggression = 1
+	assistance = 1
+	cowardice = 0.25

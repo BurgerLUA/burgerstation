@@ -9,6 +9,7 @@
 	alpha = 100
 
 /obj/structure/interactive/disposals/pipe/New(var/desired_loc)
+	plane = PLANE_FLOOR
 	. = ..()
 	alpha = 255
 
@@ -39,10 +40,6 @@
 		qdel(src)
 
 	return ..()
-
-/obj/structure/interactive/disposals/pipe/New(var/desired_loc)
-	plane = PLANE_FLOOR
-	. = ..()
 
 /obj/structure/interactive/disposals/pipe/ending
 	name = "connector disposals pipe"

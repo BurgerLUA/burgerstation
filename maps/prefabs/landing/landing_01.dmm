@@ -33,20 +33,20 @@
 "H" = (/obj/marker/landing_decal_right,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaa
-aacCCCCCCCCCcaaa
-aaDGHbbbbbGHEaaa
-aaDbbbbbbbbbEaaa
-aaDbbbbbbbbbEaaa
-aaDbbefghebbEbbb
-aaDbbijGlmbbEbkb
-aacbbnodqrbbcbbb
-aaDbbstuvwbbEbbb
-aaDbbxyzABbbEbbb
-aaDbbbbbbbbbEaaa
-aaDbbbbbbbbbEaaa
-aaDGHbbbbbGHEaaa
-aacFFFFFFFFFcaaa
-aaaaaaaaaaaaaaaa
+cCCCCCCCCCCCCCca
+DGHbbbbbbbbbGHEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbefghebbbbEb
+DbbbbijGlmbbbbEk
+cbbbbnodqrbbbbcb
+DbbbbstuvwbbbbEb
+DbbbbxyzABbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DGHbbbbbbbbbGHEa
+cFFFFFFFFFFFFFca
 aaaaaaaaaaaaaaaa
 "}

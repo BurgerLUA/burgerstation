@@ -3,7 +3,6 @@
 	sex = FEMALE
 	gender = FEMALE
 	dir = EAST
-	ai = /ai/advanced/
 
 	level = 20
 

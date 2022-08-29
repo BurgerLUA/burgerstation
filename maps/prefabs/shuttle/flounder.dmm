@@ -30,7 +30,6 @@
 "D" = (/obj/structure/shuttle/wing/right{icon_state = "2,2"; dir = 4},/turf/simulated/floor/plating,/area/shuttle/flounder)
 "E" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"; dir = 4},/turf/simulated/floor/plating,/area/shuttle/flounder)
 "F" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
-"H" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
 "J" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 8},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
 "K" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
 "M" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/plating/shuttle,/area/shuttle/flounder)
@@ -44,7 +43,7 @@ avcbbdeffgdbbcxa
 aucsdddhhdddMcua
 avcbiJddddKibcxa
 avcddjjjjjjddcxa
-avckjjjjjjjjHrxa
+avckjjjjjjjjkrxa
 avddzjjjFjjAddxa
 aumdjjjjjjjjdnua
 avoddzjjjjAddpxa

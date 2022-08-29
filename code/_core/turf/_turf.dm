@@ -33,7 +33,7 @@
 
 	var/world_spawn = FALSE
 
-	var/list/stored_shuttle_items
+	var/list/stored_shuttle_items //List of movables
 
 	var/safe_fall = FALSE //Set to true if it's safe to fall on this tile.
 

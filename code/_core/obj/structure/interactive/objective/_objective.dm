@@ -22,7 +22,7 @@ obj/structure/interactive/artifact/Finalize()
 	return ..()
 
 obj/structure/interactive/artifact/on_crush(var/message=TRUE)
-	var/turf/T = get_turf(pick(rift_markers))
+	var/turf/T = get_turf(pick(bluepace_rift_markers))
 	if(message) src.visible_message(span("danger","\The [name] strains as it disappears in a large flash!"))
 	src.force_move(T)
 	return FALSE

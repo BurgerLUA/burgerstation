@@ -41,11 +41,12 @@
 				var/obj/marker/shuttle_landing/SL = k
 				if(SL.z != current_z)
 					continue
-				var/desired_icon_state = SL == connected_background.linked_shuttle_controller ? "shuttle_target" : "shuttle_marker"
+				var/desired_icon_state = SL == connected_background.linked_shuttle_controller.transit_marker_destination ? "shuttle_target" : "shuttle_marker"
 				var/image/I = new/image('icons/hud/hud.dmi',desired_icon_state)
 				I.pixel_x = SL.x - 16
 				I.pixel_y = SL.y - 16
-				I.maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>Landing Zone [SL.linked_computer.shuttle_number]</center>"
+				if(SL.linked_computer)
+					I.maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>Landing Zone [SL.linked_computer.shuttle_number]</center>"
 				add_overlay(I)
 			for(var/k in all_shuttle_controlers)
 				var/obj/shuttle_controller/SC = k
@@ -232,13 +233,14 @@
 				z_drop = map_z
 
 			connected_map.update_map(map_z)
-			update_sprite()
+			connected_map.update_sprite()
 
 		for(var/k in connected_controls)
 			var/obj/hud/button/B = k
 			B.update_owner(owner)
 			if(owner == null)
 				connected_controls -= k
+
 
 /obj/hud/button/map_control/
 	name = "map control"
@@ -293,6 +295,7 @@
 					return TRUE
 			else if(close)
 				connected_background.update_owner(null)
+				return TRUE
 
 		if(connected_background.linked_pod)
 			if(launch)
@@ -316,9 +319,12 @@
 					return FALSE
 				connected_background.linked_pod.set_state(caller,POD_LAUNCHING,T)
 				connected_background.update_owner(null)
+				return TRUE
 			else if(close)
 				connected_background.linked_pod.set_state(caller,POD_IDLE)
 				connected_background.update_owner(null)
+				return TRUE
+
 		return .
 
 	M.offset_x += (offset_x*VIEW_RANGE*3) / M.current_zoom

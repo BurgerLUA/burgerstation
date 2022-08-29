@@ -16,10 +16,10 @@ var/global/list/shuttle_controller_to_icon = list()
 
 	var/display
 
-	var/obj/marker/shuttle/transit_marker_base //The shuttle's base location. Created at new. Doesn't change past load.
-	var/obj/marker/shuttle/transit_marker_bluespace //The shuttle's bluespace location. Doesn't change past load.
+	var/obj/marker/shuttle_landing/transit_marker_base //The shuttle's base location. Created at new. Doesn't change past load.
+	var/obj/marker/shuttle_landing/transit_marker_bluespace //The shuttle's bluespace location. Doesn't change past load.
 
-	var/obj/marker/shuttle/transit_marker_destination //The shuttle's desired location to transit to.
+	var/obj/marker/shuttle_landing/transit_marker_destination //The shuttle's desired location to transit to.
 
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconds
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME //In seconds.
@@ -207,7 +207,7 @@ var/global/list/shuttle_controller_to_icon = list()
 	return TRUE
 
 
-/obj/shuttle_controller/proc/transit(var/obj/marker/shuttle/desired_marker,var/accelerating=FALSE)
+/obj/shuttle_controller/proc/transit(var/obj/marker/shuttle_landing/desired_marker,var/accelerating=FALSE)
 
 	var/list/areas_to_upate = list()
 
@@ -253,15 +253,18 @@ var/global/list/shuttle_controller_to_icon = list()
 
 			continue
 
-		for(var/k in T_to_replace.contents) //Crush everything in the destination turf.
+		for(var/k in T_to_replace.contents) //Crush everything in the destination turf. First pass.
 			var/atom/movable/M = k
-			M.on_crush()
+			if(M.density)
+				M.on_crush()
 
 		if(!T_to_replace.stored_shuttle_items) T_to_replace.stored_shuttle_items = list() //Create the list it needs to store shuttle items.
 
-		for(var/obj/item/I in T_to_replace.contents) //Second pass. Get everything that might've been crushed. The second pass is one here as some containers/mobs/ect may drop items.
-			T_to_replace.stored_shuttle_items += I
-			I.force_move(src) //Stored in the shuttle controller, for now.
+		for(var/k in T_to_replace.contents) //Second pass. Get everything that might've been crushed. The second pass is one here as some containers/mobs/ect may drop items.
+			var/atom/movable/M = k
+			if(M.anchored < 2 && !M.qdeleting)
+				T_to_replace.stored_shuttle_items += M
+				M.force_move(src) //Stored in the shuttle controller, for now.
 
 		var/turf/old_turf_type = T_to_replace.type
 		var/area/old_area_type = T_to_replace.loc.type
@@ -270,7 +273,7 @@ var/global/list/shuttle_controller_to_icon = list()
 		T_to_replace.change_area(T.loc.type) //Change to shuttle area.
 		T_to_replace.transit_turf = old_turf_type
 		T_to_replace.transit_area = old_area_type
-		areas_to_upate |= T.loc
+		areas_to_upate |= T_to_replace.loc
 
 		//Okay, time to move everything.
 		for(var/k in T.contents)
@@ -286,9 +289,13 @@ var/global/list/shuttle_controller_to_icon = list()
 				objects_to_throw += M
 
 		for(var/k in T.stored_shuttle_items)
-			var/obj/item/I = k
-			I.drop_item(T)
-			T.stored_shuttle_items -= I
+			var/atom/movable/M = k
+			if(is_item(M))
+				var/obj/item/I = M
+				I.drop_item(T)
+			else
+				M.force_move(T)
+			T.stored_shuttle_items -= M
 
 		T.change_area(T.transit_area) //From shuttle area to old turf that existed under.
 		if(T.plane == PLANE_SHUTTLE) T.change_turf(T.transit_turf) //From shuttle turf to old turf that existed under.
@@ -309,6 +316,9 @@ var/global/list/shuttle_controller_to_icon = list()
 			if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 				continue
 			M.throw_self(M,vel_x=transit_throw_x*8,vel_y=transit_throw_y*8)
+
+	var/obj/marker/shuttle_landing/SL = locate() in starting_turf
+	if(SL) SL.reserved = FALSE
 
 	return TRUE
 

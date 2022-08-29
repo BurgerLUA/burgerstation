@@ -2,8 +2,6 @@
 	name = "Master-General of the Ordnance Mills"
 	desc = "The master of everything."
 
-	ai = /ai/advanced
-
 	sex = MALE
 	gender = MALE
 

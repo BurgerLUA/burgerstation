@@ -2,8 +2,6 @@
 	name = "Mr. Scratch"
 	desc = "Gives out contracts. Kinda suspicious, but NT says they're okay."
 
-	ai = /ai/advanced
-
 	sex = MALE
 	gender = MALE
 

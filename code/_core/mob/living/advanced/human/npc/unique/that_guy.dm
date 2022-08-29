@@ -2,8 +2,6 @@
 	name = "That Guy"
 	desc = "Hey, it's that guy."
 
-	ai = /ai/advanced
-
 	sex = MALE
 	gender = MALE
 
