@@ -123,7 +123,7 @@
 		icon_state = "black"
 		invisibility = 0
 	else
-		invisibility = 101
+		invisibility = 0
 
 	alpha = 255
 

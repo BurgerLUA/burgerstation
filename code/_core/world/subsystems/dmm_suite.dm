@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/map_name
 	var/map_path
 	var/list/z_level_to_file = list()
+	var/list/file_to_z_level = list()
 
 	var/list/prefab_markers = list()
 
@@ -33,7 +34,8 @@ SUBSYSTEM_DEF(dmm_suite)
 		var/k = maps_to_load[i]
 		var/map_file = rustg_file_read(k)
 		dmm_suite.read_map(map_file,1,1,i,tag="[k]")
-		z_level_to_file["[i]"] = k
+		z_level_to_file += k
+		file_to_z_level["[k]"] = i
 		maps_loaded++
 
 	log_subsystem(src.name,"Loaded [maps_loaded] z-levels.")

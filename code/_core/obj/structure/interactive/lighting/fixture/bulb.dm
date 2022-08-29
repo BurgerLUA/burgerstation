@@ -13,3 +13,7 @@
 	desired_light_angle = LIGHT_OMNI
 
 	dir_offset = 2
+
+
+/obj/structure/interactive/lighting/fixture/bulb/green
+	color = COLOR_GREEN_LIGHT

@@ -106,7 +106,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 				return FALSE
 			if(!caller.Move(src))
 				return FALSE
-			M_background = new(caller,src)
+			M_background = new(caller,desired_pod=src)
 			M_background.update_owner(caller)
 			icon_state = "pod_closed"
 		if(POD_LAUNCHING) //IT BEGINS. We're launching now.

@@ -2,7 +2,7 @@
 	name = "smart fridge"
 	icon_state = "smartfridge"
 	plane = PLANE_OBJ
-	pixel_y = 0
+	pixel_y = 4
 
 /obj/structure/interactive/vending/smart_fridge/kitchen
 	name = "kitchen smart fridge"
@@ -21,6 +21,8 @@
 		/obj/item/container/edible/plant/lettuce
 	)
 
+/obj/structure/interactive/vending/smart_fridge/kitchen/solarian
+	accepts_item = /obj/item/currency/dosh
 
 /obj/structure/interactive/vending/smart_fridge/bar
 	name = "bar smart fridge"
@@ -56,3 +58,14 @@
 		/obj/item/container/simple/can/space_up,
 		/obj/item/container/simple/beaker/large/ice
 	)
+
+/obj/structure/interactive/vending/smart_fridge/bar/solarian
+	stored_types = list(
+		/obj/item/container/simple/beaker/glass,
+		/obj/item/container/simple/beaker/shot,
+		/obj/item/container/simple/beaker/flask,
+		/obj/item/container/simple/alcohol/beer,
+		/obj/item/container/simple/alcohol/whiskey,
+	)
+
+	accepts_item = /obj/item/currency/dosh

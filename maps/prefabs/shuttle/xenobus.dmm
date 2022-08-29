@@ -23,6 +23,8 @@
 "w" = (/obj/decal/hazard,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "x" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"; dir = 1},/turf/simulated/floor/plating,/area/shuttle/xeno)
 "y" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"; dir = 1},/turf/simulated/floor/plating,/area/shuttle/xeno)
+"z" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
+"A" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
 
 (1,1,1) = {"
 abcccbccccbcccba
@@ -31,12 +33,12 @@ adeghijkkjghiefa
 adejljjmmjjljefa
 adjjjjmmmmjjjjfa
 abnmmmmmmmmmmnba
-adnmmmmmmmmmmnfa
+adnmmmmmAmmmmnfa
 adnmmmmmmmmmmnfa
 adnnjjmmmmjjnnfa
 adeeojjmmjjpeefa
 abeeqrjmmjsteeba
-adeeeujmmjveeefa
+adeeeujzzjveeefa
 adeeexjnnjyeeefa
 adeeeqjeejteeefa
 adeeeeeeeeeeeefa

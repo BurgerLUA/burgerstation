@@ -19,6 +19,8 @@
 "s" = (/obj/structure/shuttle/wing/left{icon_state = "2,2"},/turf/simulated/floor/plating,/area/shuttle/minivan)
 "t" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"},/turf/simulated/floor/plating,/area/shuttle/minivan)
 "u" = (/obj/structure/shuttle/wing/left{icon_state = "2,1"},/turf/simulated/floor/plating,/area/shuttle/minivan)
+"v" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/minivan)
+"w" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle,/area/shuttle/minivan)
 
 (1,1,1) = {"
 abcccbccccbcccba
@@ -28,12 +30,12 @@ aderjkjlljkjsefa
 adetjjjmmjjjuefa
 abeenmmmmmmneeba
 adeenmmmmmmneefa
-adeenmmmmmmneefa
+adeenmmmwmmneefa
 adeejjjmmjjjeefa
 adeeeplmmlpeeefa
 abeeejjmmjjeeeba
 adeeenmmmmneeefa
-adeeenmmmmneeefa
+adeeenmvvmneeefa
 adeeennjjnneeefa
 adeeeeeeeeeeeefa
 abgggbggggbgggba

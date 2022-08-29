@@ -31,6 +31,8 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 	alpha = 200
 	initialize_type = INITIALIZE_LATE
 
+	var/obj/structure/interactive/computer/console/shuttle_landing/linked_computer
+
 /obj/marker/landing_decal_left/Finalize()
 
 	. = ..()
@@ -88,11 +90,18 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 	FINALIZE(SN)
 
 
+
+var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
+
 /obj/marker/shuttle_landing
 	name = "landing zone"
 	icon = 'icons/obj/markers/markers.dmi'
 	icon_state = "spawn"
 	initialize_type = INITIALIZE_NORMAL
+
+	var/obj/structure/interactive/computer/console/shuttle_landing/linked_computer
+
+	var/reserved = FALSE
 
 /obj/marker/shuttle_landing/PostInitialize()
 	. = ..()
@@ -112,3 +121,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 	if(best_computer)
 		best_computer.linked_marker = src
+		src.linked_computer = best_computer
+		all_shuttle_landing_markers += src
+	else
+		qdel(src)

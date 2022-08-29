@@ -25,9 +25,11 @@
 "y" = (/obj/decal/hazard,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "z" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
 "A" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
+"B" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
 "C" = (/obj/structure/shuttle/wing/left{icon_state = "2,2"; dir = 8},/turf/simulated/floor/plating,/area/shuttle/flounder)
 "D" = (/obj/structure/shuttle/wing/right{icon_state = "2,2"; dir = 4},/turf/simulated/floor/plating,/area/shuttle/flounder)
 "E" = (/obj/structure/shuttle/wing/right{icon_state = "2,1"; dir = 4},/turf/simulated/floor/plating,/area/shuttle/flounder)
+"F" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
 "H" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
 "J" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 8},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
 "K" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/shuttle,/area/shuttle/flounder)
@@ -43,11 +45,11 @@ aucsdddhhdddMcua
 avcbiJddddKibcxa
 avcddjjjjjjddcxa
 avckjjjjjjjjHrxa
-avddzjjjjjjAddxa
+avddzjjjFjjAddxa
 aumdjjjjjjjjdnua
 avoddzjjjjAddpxa
 avcckjjjjjjkccxa
-avccdddjjdddccxa
+avccdddBBdddccxa
 avcctCdkkdDEccxa
 auyyyuyyyyuyyyua
 "}

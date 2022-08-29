@@ -154,4 +154,4 @@
 
 	layer = 1000
 
-	pixel_y = 16
+	pixel_y = 10

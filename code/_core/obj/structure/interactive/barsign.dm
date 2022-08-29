@@ -23,7 +23,10 @@ obj/structure/interactive/bar_sign/the_net
 	desc = "NTNet Browsing at a premium price!"
 	icon_state = "the_net"
 
-
+obj/structure/interactive/bar_sign/toolbox_tavern
+	name = "\improper Toolbox Tavern"
+	desc = "For all your robust construction needs!"
+	icon_state = "toolbox_tavern"
 
 
 
@@ -91,11 +94,6 @@ obj/structure/interactive/bar_sign/adminbus
 	name = "The adminbus"
 	desc = "Wait what?"
 	icon_state = "theadminbus"
-
-obj/structure/interactive/bar_sign/thenet
-	name = "The net"
-	desc = "Wait what?"
-	icon_state = "thenet"
 
 obj/structure/interactive/bar_sign/combocafe
 	name = "combo cafe"

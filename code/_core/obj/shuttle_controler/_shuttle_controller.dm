@@ -1,5 +1,8 @@
 var/global/list/all_shuttle_controlers = list()
 
+
+var/global/list/shuttle_controller_to_icon = list()
+
 /obj/shuttle_controller
 	name = "shuttle controller"
 	desc = "Controls what happens when the shuttle moves."
@@ -13,17 +16,15 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/display
 
-	var/transit_source
-	var/transit_target
+	var/obj/marker/shuttle/transit_marker_base //The shuttle's base location. Created at new. Doesn't change past load.
+	var/obj/marker/shuttle/transit_marker_bluespace //The shuttle's bluespace location. Doesn't change past load.
 
-	var/obj/marker/shuttle/transit_start //path
-	var/obj/marker/shuttle/transit_bluespace //path
-	var/obj/marker/shuttle/transit_end //path
+	var/obj/marker/shuttle/transit_marker_destination //The shuttle's desired location to transit to.
 
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconds
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME //In seconds.
 
-	anchored = 2
+	anchored = 1
 
 	var/status_id
 
@@ -39,42 +40,69 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/time_restricted = FALSE
 
-	var/area/associated_area
-
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
 	return ..()
 
 /obj/shuttle_controller/New(var/desired_loc)
 	all_shuttle_controlers += src
+
+	var/turf/T = get_turf(src) //Not needed but whatever.
+	var/turf/T2 = locate(T.x,T.y,SSdmm_suite.file_to_z_level["maps/_core/bluespace.dmm"])
+
+	if(!T2)
+		log_error("ERROR: [src.get_debug_name()] could not find a valid bluespace turf.")
+		qdel(src)
+
+	transit_marker_base = new(T)
+	transit_marker_bluespace = new(T2)
+
 	return ..()
 
-/obj/shuttle_controller/Initialize()
+/obj/shuttle_controller/Finalize()
 
-	var/obj/marker/shuttle/M1 = shuttle_markers[transit_start]
-	var/obj/marker/shuttle/M2 = shuttle_markers[transit_bluespace]
-	var/obj/marker/shuttle/M3 = shuttle_markers[transit_end]
+	. = ..()
 
-	if(!M1)
-		log_error("SHUTTLE ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit starting marker ([transit_start])!")
+	var/min_x = 0
+	var/min_y = 0
+	var/max_x = 0
+	var/max_y = 0
 
-	if(!M2)
-		log_error("SHUTTLE ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit bluespace marker ([transit_bluespace])!")
+	var/area/A = get_area(src)
 
-	if(!M3)
-		log_error("SHUTTLE ERROR: Transit shuttle [get_debug_name()] doesn't have a valid transit ending marker ([transit_end])!")
+	var/list/found_turfs = list()
+	var/failure = FALSE
+	for(var/turf/T in A.contents)
+		min_x = min(min_x,T.x)
+		min_y = min(min_y,T.y)
+		max_x = max(max_x,T.x)
+		max_y = max(max_y,T.y)
+		if(abs(min_x - max_x) > 32)
+			failure = TRUE
+			break
 
-	if(!M1 || !M2 || !M3)
-		qdel(src)
-		return FALSE
+		if(abs(min_y - max_y) > 32)
+			failure = TRUE
+			break
+		found_turfs += T
 
-	. =..()
+	if(failure)
+		log_error("Error: [src.get_debug_name()] was placed in an area larger than 32x32!")
+	else
+		var/icon/I = ICON_INVISIBLE
+		for(var/k in found_turfs)
+			var/turf/T = k
+			var/local_x = T.x - src.x
+			var/local_y = T.y - src.y
+			I.DrawBox("#FFFFFF",local_x + 16,local_y + 16)
+		shuttle_controller_to_icon[src] = I
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
-	associated_area = get_area(src)
 
-/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds
+
+
+/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds. This proc will always be called to bluespace.
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //Something blocking?
 		return FALSE
@@ -83,20 +111,14 @@ var/global/list/all_shuttle_controlers = list()
 	state = SHUTTLE_STATE_LAUNCHING
 	time = 0
 
-	if(start_sound)
+	if(!desired_transit_time) desired_transit_time = default_transit_time
+	transit_time = max(1,desired_transit_time)
+
+	if(start_sound) //Play shuttle sound.
 		play_sound(start_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
 		if(last_caller)
 			create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 
-	var/area/A = get_area(src)
-	if(!desired_transit_time) desired_transit_time = default_transit_time
-	transit_time = max(1,desired_transit_time)
-	if(A.type == transit_start)
-		transit_target = transit_end
-		transit_source = transit_start
-	else
-		transit_target = transit_start
-		transit_source = transit_end
 	return TRUE
 
 /obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE,var/force = FALSE)
@@ -148,8 +170,8 @@ var/global/list/all_shuttle_controlers = list()
 
 	if(state == SHUTTLE_STATE_LAUNCHING)
 		display = "IGNT"
-		if(time >= 6) //Needs to be hardcoded as this is based on sound.
-			if(!transit(transit_bluespace))
+		if(time >= 6) //Needs to be a hardcoded time as this is based on sound.
+			if(!transit(transit_marker_bluespace,accelerating=TRUE))
 				return FALSE
 			if(progress_sound)
 				play_sound(progress_sound,src.loc,range_min=VIEW_RANGE,range_max=VIEW_RANGE*3)
@@ -161,14 +183,16 @@ var/global/list/all_shuttle_controlers = list()
 	if(state == SHUTTLE_STATE_TRANSIT)
 		display = "Flight\n[get_clock_time(FLOOR((transit_time - time), 1))]"
 		if(time >= transit_time)
+			if(!transit_marker_destination)
+				transit_marker_destination = transit_marker_base
 			state = SHUTTLE_STATE_LANDING
-			//signal_landing(transit_areas[transit_target]) TODO
+			signal_landing(transit_marker_destination)
 			time = 0
 
 	if(state == SHUTTLE_STATE_LANDING)
 		display = "Land"
 		if(time >= 2) //Needs to be hardcoded as this is based on sound.
-			if(!transit(transit_target))
+			if(!transit(transit_marker_destination,accelerating=FALSE))
 				return FALSE
 			set_doors(TRUE,TRUE,TRUE) //Open all the doors!
 			if(end_sound)
@@ -177,15 +201,13 @@ var/global/list/all_shuttle_controlers = list()
 					create_alert(VIEW_RANGE*3,src.loc,last_caller,ALERT_LEVEL_CAUTION)
 			state = SHUTTLE_STATE_LANDED
 			time = 0
-			transit_source = null
-			transit_target = null
 
 	if(status_id) set_status_display(status_id,display)
 
 	return TRUE
 
 
-/obj/shuttle_controller/proc/transit(var/ending_marker_type,var/accelerating=FALSE)
+/obj/shuttle_controller/proc/transit(var/obj/marker/shuttle/desired_marker,var/accelerating=FALSE)
 
 	var/list/areas_to_upate = list()
 
@@ -193,28 +215,21 @@ var/global/list/all_shuttle_controlers = list()
 	var/area/starting_area = starting_turf.loc
 	areas_to_upate |= starting_area
 
-	if(!istype(starting_turf.loc,/area/shuttle))
+	if(!istype(starting_turf.loc,/area/shuttle)) //marker exists outside a shuttle area
 		CRASH("SHUTTLE ERROR: [src.get_debug_name()] is not in a valid shuttle area!")
-		return FALSE
-
-	var/obj/marker/shuttle/shuttle_marker = shuttle_markers[ending_marker_type] //Shuttle marker to transport to.
-
-	if(!shuttle_marker)
-		CRASH("SHUTTLE ERROR: [src.get_debug_name()] could not find a valid shuttle marker of id [ending_marker_type]!")
 		return FALSE
 
 	var/transit_throw_x = 0
 	var/transit_throw_y = 0
-
 	switch(src.dir)
 		if(NORTH)
-			transit_throw_y += accelerating ? 1 : -1
+			transit_throw_y += accelerating ? -1 : 1
 		if(EAST)
-			transit_throw_x += accelerating ? 1 : -1
+			transit_throw_x += accelerating ? -1 : 1
 		if(SOUTH)
-			transit_throw_y -= accelerating ? 1 : -1
+			transit_throw_y -= accelerating ? -1 : 1
 		if(WEST)
-			transit_throw_x -= accelerating ? 1 : -1
+			transit_throw_x -= accelerating ? -1 : 1
 
 	var/list/atom/movable/objects_to_throw = list()
 
@@ -223,20 +238,22 @@ var/global/list/all_shuttle_controlers = list()
 	for(var/turf/simulated/T in starting_area) //This is needed or else thing will be buggy.
 		valid_turfs += T
 
-	var/original_x = src.x
-	var/original_y = src.y
+	var/original_src_x = src.x
+	var/original_src_y = src.y
 
-	for(var/j in valid_turfs)
+	for(var/j in valid_turfs) //Valid turfs are all the turfs in the shuttle area.
 		var/turf/T = j
 		CHECK_TICK_SAFE(75,FPS_SERVER)
-		var/offset_x = T.x - original_x
-		var/offset_y = T.y - original_y
-		var/turf/T_to_replace = locate(shuttle_marker.x + offset_x, shuttle_marker.y + offset_y, shuttle_marker.z)
+		var/offset_x = T.x - original_src_x
+		var/offset_y = T.y - original_src_y
+		var/turf/T_to_replace = locate(desired_marker.x + offset_x, desired_marker.y + offset_y, desired_marker.z) //The destination turf!
 		if(!T_to_replace)
-			log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at [shuttle_marker.x + offset_x],[shuttle_marker.y + offset_y],[shuttle_marker.z].")
+			//log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at [desired_marker.x] + [offset_x],[desired_marker.y] + [offset_y],[desired_marker.z]. (Marker: [desired_marker.get_debug_name()]).")
+			log_error("T: [T.x],[T.y], SRC: [original_src_x],[original_src_y].")
+
 			continue
 
-		for(var/k in T_to_replace.contents)
+		for(var/k in T_to_replace.contents) //Crush everything in the destination turf.
 			var/atom/movable/M = k
 			M.on_crush()
 
@@ -246,8 +263,8 @@ var/global/list/all_shuttle_controlers = list()
 			T_to_replace.stored_shuttle_items += I
 			I.force_move(src) //Stored in the shuttle controller, for now.
 
-		var/turf/old_turf_type = T.type
-		var/area/old_area_type = T.loc.type
+		var/turf/old_turf_type = T_to_replace.type
+		var/area/old_area_type = T_to_replace.loc.type
 		areas_to_upate |= T.loc
 		if(T.plane == PLANE_SHUTTLE) T_to_replace.change_turf(T.type,TRUE,TRUE) //Change to shuttle turf.
 		T_to_replace.change_area(T.loc.type) //Change to shuttle area.
@@ -292,5 +309,25 @@ var/global/list/all_shuttle_controlers = list()
 			if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 				continue
 			M.throw_self(M,vel_x=transit_throw_x*8,vel_y=transit_throw_y*8)
+
+	return TRUE
+
+
+
+/obj/shuttle_controller/proc/signal_landing(var/obj/marker/shuttle)
+
+	var/area/A = get_area(src)
+
+	var/turf_limt = 32*32
+	for(var/turf/T in A.contents)
+		turf_limt--
+		if(turf_limt < 0)
+			log_error("Warning : [src.get_debug_name()] exceeded reasonable shuttle turf limit when landing.")
+			break
+		var/local_x = T.x - src.x
+		var/local_y = T.y - src.y
+		var/turf/T2 = locate(shuttle.x + local_x,shuttle.y + local_y,shuttle.z)
+		if(T2)
+			new/obj/effect/temp/shuttle_landing(T2)
 
 	return TRUE

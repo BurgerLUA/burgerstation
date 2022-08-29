@@ -101,5 +101,5 @@
 /obj/structure/sign/restroom/female
 	icon_state = "female"
 
-/obj/structure/sign/restroom/female
+/obj/structure/sign/restroom/unisex
 	icon_state = "unisex"

@@ -285,7 +285,8 @@
 		desired_heartrate -= min(pain_removal,40)
 
 		if(abs(desired_heartrate - 60) > 30)
-			play_sound('sound/effects/heartbeat_single.ogg',src.client,pitch=0.5 + (60/desired_heartrate)*0.5,volume=25)
+			var/turf/T = get_turf(src)
+			play_sound('sound/effects/heartbeat_single.ogg',T,list(src),pitch=0.5 + (60/desired_heartrate)*0.5,volume=10)
 		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
 
 
