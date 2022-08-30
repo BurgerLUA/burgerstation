@@ -78,12 +78,14 @@
 	if(scan_mode)
 		icon_state = "scan"
 	else if(tracked_atom)
-		var/distance = get_dist_advanced(src,tracked_atom)
+		var/turf/T1 = get_turf(src)
+		var/turf/T2 = get_turf(tracked_atom)
+		var/distance = get_dist_advanced(T1,T2)
 		if(unreliable)
 			var/rand_num = rand(5,10)
 			distance = 	CEILING(distance,rand_num)
 			distance += rand(5,10)
-		var/desired_dir = get_dir_advanced(src,tracked_atom)
+		var/desired_dir = get_dir_advanced(T1,T2)
 		switch(distance)
 			if(1 to VIEW_RANGE*0.5)
 				icon_state = "[desired_dir]_close"
