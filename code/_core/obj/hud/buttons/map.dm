@@ -280,6 +280,9 @@
 					return TRUE
 			else if(launch) //Go to target.
 				if(connected_background.linked_shuttle_controller)
+					if(!SSgamemode.active_gamemode.allow_launch)
+						caller.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+						return FALSE
 					if(connected_background.linked_shuttle_controller.state != SHUTTLE_STATE_LANDED)
 						caller.to_chat(span("warning","Error: Flight plan already set."))
 						return FALSE
@@ -299,6 +302,9 @@
 
 		if(connected_background.linked_pod)
 			if(launch)
+				if(!SSgamemode.active_gamemode.allow_launch)
+					caller.to_chat(span("warning","Error: Drop pods are not ready to launch yet."))
+					return FALSE
 				if(!connected_background || !connected_background.z_drop)
 					caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
 					return FALSE
