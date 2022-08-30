@@ -28,9 +28,8 @@
 	//Stats
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
-	var/yield_percent = 100 //Harvest chance per yield.
-	var/growth_speed = 40 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
-// no, it was just high ^
+	var/yield_percent = 100 //Base harvest chance per yield.
+	var/growth_speed = 10 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
@@ -260,8 +259,8 @@
 		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
 		var/health_mod  = health.health_current/health.health_max
 
-		var/child_yield = yield_max
-		var/child_potency = potency
+		var/child_yield = CEILING(yield_max*(0.5 + min(skill_power,1)*0.5),1)
+		var/child_potency = CEILING(potency*(0.5 + min(skill_power,1)*0.5),1)
 
 		var/local_potency = (potency  + (skill_power * 10)) * health_mod //10 skill gives +1 potency, up to 10 extra at lv.100
 		var/local_yield = (yield_max  + (skill_power * 2)) * health_mod  //50 skill gives +1 yield, up to 2 extra at lv100
@@ -272,12 +271,15 @@
 
 		var/list/harvest_contents = list()
 		for(var/i=1,i<=local_yield,i++)
+			var/local_yield_percent = yield_percent - yield_percent*((i-1)/local_yield)
+			if(!prob(local_yield_percent))
+				continue
 			var/obj/item/container/edible/plant/P = new(caller_turf)
 			P.plant_type = associated_plant.type
 			P.pixel_x = animation_offset_x
 			P.pixel_y = animation_offset_y
-			P.potency =  child_potency //associated_plant.potency //CEILING(local_potency,1)
-			P.yield_max = child_yield //CEILING(local_yield,1)
+			P.potency =  child_potency
+			P.yield_max = child_yield
 			P.yield_percent = CEILING(yield_percent,1)
 			P.growth_speed = growth_speed
 			INITIALIZE(P)

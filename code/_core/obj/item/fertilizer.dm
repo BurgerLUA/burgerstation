@@ -31,6 +31,9 @@
 
 /obj/item/fertilizer/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(istype(object,/obj/structure/interactive/plant))
+		object = object.loc
+
 	if(!istype(object,/turf/simulated/floor/))
 		return ..()
 
