@@ -55,6 +55,11 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
+	. = ..()
+
+	if(.)
+		return .
+
 	var/cock_type // = "flacid"
 
 	if(eject_chambered_bullet(caller,caller ? caller.loc : get_turf(src),TRUE))
