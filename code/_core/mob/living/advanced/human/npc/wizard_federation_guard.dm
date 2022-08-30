@@ -2,7 +2,7 @@
 	name = "wizard federation guard"
 	desc = "Investigating warcrimes since 2068."
 
-	ai = /ai/advanced/space_cop
+	ai = /ai/advanced/guarding
 
 	dialogue_id = /dialogue/npc/soldier/
 

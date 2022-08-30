@@ -8,8 +8,6 @@
 
 	blood_type = /reagent/blood/goblin
 
-	dir = SOUTH
-
 	dialogue_id = /dialogue/npc/goblin_merchant/
 
 	health = null

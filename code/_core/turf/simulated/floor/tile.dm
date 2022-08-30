@@ -14,7 +14,12 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-	map_color = "#FFFFFF"
+	map_color = null
+
+/turf/simulated/floor/tile/Finalize()
+	. = ..()
+	if(!map_color)
+		map_color = color
 
 /turf/simulated/floor/tile/chapel/
 	color = COLOR_GREY_DARK

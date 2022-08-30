@@ -235,10 +235,17 @@
 	. = ..()
 
 
-/obj/marker/prefab/fob
-	name = "FOB prefab"
-	icon = 'icons/obj/markers/prefab_64x64_fob.dmi'
+/obj/marker/prefab/city_special
+	name = "special city prefab"
+	icon = 'icons/obj/markers/prefab_64x64_city_special.dmi'
 	category = "fob"
 	unique = TRUE
 	chance_none = 0
 	rotational_offset = 64
+
+
+/obj/marker/prefab/fob
+	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	category = "fob"
+	chance_none = 0
+	rotational_offset = 16

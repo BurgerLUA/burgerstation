@@ -119,7 +119,7 @@
 		/obj/item/clothing/glasses/medical_hud/advanced = 5,
 		/obj/item/clothing/glasses/sun = 20,
 		/obj/item/clothing/head/hat/bandana/red = 20,
-		/obj/item/clothing/head/hat/beret/armored = 10,
+		/obj/item/clothing/head/hat/beret/armored/syndicate = 10,
 		/obj/item/clothing/head/hat/headband/dark_grey = 5,
 		/obj/item/clothing/head/hat/skimask/black = 5,
 		/obj/item/clothing/head/helmet/polymorphic/space_military = 5,

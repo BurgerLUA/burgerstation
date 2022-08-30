@@ -48,7 +48,7 @@
 
 	sound_environment = ENVIRONMENT_ALLEY
 
-	map_color = COLOR_YELLOW
+	map_color = COLOR_GREY_LIGHT
 
 /area/burgerstation/hall/north
 	name = "\improper North Hallway"

@@ -16,13 +16,12 @@
 
 	pixel_y = 4
 
-/obj/structure/interactive/power/smes/New(var/desired_loc)
-	. = ..()
+/obj/structure/interactive/power/smes/Initialize()
 	terminal = new(get_step(src,dir))
 	terminal.connected_smes = src
 	terminal.dir = turn(dir,180)
-
-/obj/structure/interactive/power/smes/Initialize()
+	INITIALIZE(terminal)
+	FINALIZE(terminal)
 	setup_dir_offsets()
 	dir = SOUTH
 	. = ..()

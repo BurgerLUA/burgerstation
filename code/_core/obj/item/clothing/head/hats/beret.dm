@@ -17,11 +17,12 @@
 	name = "armored beret"
 	desc_extended = "A fashionable beret with extra padding and protection built into it."
 
-	color = COLOR_BLACK
-
 	armor = /armor/leather/hard
 
 	value = 200
+
+/obj/item/clothing/head/hat/beret/armored/black
+	color = COLOR_BLACK
 
 /obj/item/clothing/head/hat/beret/armored/syndicate
 	color = COLOR_CRIMSON

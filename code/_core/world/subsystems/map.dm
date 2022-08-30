@@ -21,24 +21,26 @@ SUBSYSTEM_DEF(map)
 				continue
 			var/area/A = S.loc
 
-			var/real_map_color = S.map_color
-			var/real_area_color = A.map_color
-			if(real_map_color && S.density && (S.density_north || S.density_east || S.density_west || S.density_south))
-				real_map_color = blend_colors(real_map_color,"#000000",0.5)
 			var/found_color
-			if(real_area_color && real_map_color)
-				found_color = blend_colors(real_area_color,real_map_color,0.5)
-			else if(real_area_color)
-				found_color = real_area_color
-			else if(real_map_color)
-				found_color = real_map_color
+			if(A.map_color)
+				found_color = A.map_color
+			else if(S.map_color)
+				found_color = S.map_color
+
+			if(found_color)
+				if(S.density && (S.density_north || S.density_east || S.density_west || S.density_south))
+					found_color = blend_colors(found_color,"#000000",0.25)
+				else if(S.has_dense_atom)
+					found_color = blend_colors(found_color,"#000000",0.1)
+
 
 			if(!found_color)
 				found_color = (x+y)%2 ? "#000000" : "#FF00DC"
 
 			I.DrawBox(found_color,x,y)
 
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			sleep(-1)
+
 		z_icons += I
 
 	. = ..()
