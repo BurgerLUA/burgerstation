@@ -15,7 +15,7 @@
 		return ..()
 
 	switch(noise)
-		if(-INFINITY to GENERATION_SEGMENT_LOWEST)
+		if(-INFINITY to GENERATION_SEGMENT_LOW - 0.1)
 			if(!density)
 				new /turf/simulated/floor/grass(src)
 				disallow_generation = TRUE
@@ -29,7 +29,7 @@
 				new /obj/structure/scenery/grass/jungle(src)
 				if(prob(0.25))
 					new /obj/marker/generation/mob/slime/sand(src)
-		if(GENERATION_SEGMENT_LOWEST to GENERATION_SEGMENT_LOW)
+		if(GENERATION_SEGMENT_LOW - 0.1 to GENERATION_SEGMENT_LOW)
 			new /turf/simulated/floor/grass(src)
 			if(density)
 				if(prob(0.25))

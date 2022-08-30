@@ -325,6 +325,8 @@
 				connected_background.update_owner(null)
 				return TRUE
 
+		connected_background.update_owner(null)
+
 		return .
 
 	M.offset_x += (offset_x*VIEW_RANGE*3) / M.current_zoom

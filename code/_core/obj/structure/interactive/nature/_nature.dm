@@ -86,10 +86,15 @@ obj/structure/scenery/rocks/New()
 	..()
 	icon_state = "basalt_[rand(1,10)]"
 
-obj/structure/interactive/basalt
+/obj/structure/interactive/basalt
 	name = "basalt rocks"
 	icon = 'icons/obj/structure/flora/lavaland.dmi'
 	icon_state = "basalt_1"
+
+	collision_flags = FLAG_COLLISION_BARICADE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
+	density = TRUE
 
 obj/structure/interactive/basalt/New()
 	..()

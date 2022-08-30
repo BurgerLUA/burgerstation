@@ -11,7 +11,7 @@
 	//2 = mana
 	//3 = stamina
 
-	var/filled = TRUE
+	var/filled = FALSE
 
 	desired_light_range = 0.5
 	desired_light_power = 1
@@ -21,6 +21,8 @@
 
 	if(!fountain_type)
 		fountain_type = rand(1,3)
+
+	filled = TRUE
 
 	return ..()
 

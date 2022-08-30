@@ -7,6 +7,8 @@
 
 	loyalty_tag = "Gutlunch"
 
+	ai = /ai/passive
+
 	damage_type = /damagetype/npc/cow
 
 	blood_type = /reagent/blood/gutlunch

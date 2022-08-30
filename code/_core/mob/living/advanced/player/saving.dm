@@ -34,7 +34,7 @@
 	sex = loaded_data["sex"]
 	rarity = loaded_data["rarity"] ? loaded_data["rarity"] : RARITY_COMMON
 	gender = loaded_data["gender"]
-	species = loaded_data["species"]
+	species = loaded_data["species"] ? loaded_data["species"] : "human"
 	blood_type = loaded_data["blood_type"] ? text2path(loaded_data["blood_type"]) : /reagent/blood //This should generate a new blood type.
 	difficulty = loaded_data["difficulty"] ? loaded_data["difficulty"] : DIFFICULTY_NORMAL
 
@@ -130,7 +130,7 @@
 	var/species/S = SPECIES(species)
 	if(!S)
 		log_error("ERROR: INVALID SPECIES: [species]!")
-	species = "human"
+		species = "human"
 	S = SPECIES(species)
 
 	var/list/organ_list_to_use = list()

@@ -61,6 +61,13 @@
 	chance_none = 70
 	rotational_offset = 16
 
+/obj/marker/prefab/ashwalker_village
+	icon = 'icons/obj/markers/prefab_16x16.dmi'
+	icon_state = null
+	category = "ashwalker_village"
+	chance_none = 10
+	rotational_offset = 16
+
 /obj/marker/prefab/shuttle
 	icon = 'icons/obj/markers/prefab_16x16.dmi'
 	icon_state = null

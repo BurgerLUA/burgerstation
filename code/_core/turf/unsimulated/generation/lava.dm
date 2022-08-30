@@ -127,6 +127,9 @@ var/global/list/possible_lavaland_decor = list(
 				new /turf/simulated/floor/basalt(src)
 				disallow_generation = TRUE
 
+	if(!density && !disallow_generation && prob(3))
+		new/obj/structure/interactive/basalt(src)
+
 	if(src.loc.type == /area/) new /area/mission/lava(src)
 
 	return ..()

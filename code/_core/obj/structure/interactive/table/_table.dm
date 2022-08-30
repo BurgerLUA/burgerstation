@@ -196,3 +196,6 @@ obj/structure/table/cult
 
 
 	corner_category = "table_cult"
+
+
+

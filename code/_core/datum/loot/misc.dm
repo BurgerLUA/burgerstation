@@ -283,3 +283,31 @@
 			I.amount = 1
 		if(I.amount > I.amount_max)
 			I.amount = I.amount_max
+
+
+
+
+
+
+/loot/misc/ashwalker //Stuff found in ashwalker camps
+	loot_table = list(
+		/loot/currency/gold_coin = 100,
+		/loot/scroll/lesser = 5,
+		/loot/soulgem = 50,
+		/loot/soulgem/filled = 10,
+		/loot/supply_crate/all = 5,
+		/loot/enchanting_book = 5,
+		/obj/item/bullet_cartridge/arrow/ashen{amount=5} = 70,
+		/obj/item/clothing/belt/belt_quiver = 30,
+		/obj/item/cannonball = 5,
+		/obj/item/cannon_fuse = 5,
+		/obj/item/coin/cursed = 1,
+		/obj/item/cross = 1,
+		/obj/item/legion_core = 20,
+		/obj/item/portal_scroll = 30,
+		/obj/item/soapstone/green = 1
+	)
+
+
+	chance_none = 20
+	loot_count = 1

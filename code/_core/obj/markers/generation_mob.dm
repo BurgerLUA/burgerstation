@@ -93,6 +93,11 @@
 	object_to_place = /mob/living/simple/goliath/ancient
 	objects_max = 1
 
+/obj/marker/generation/mob/gutlunch
+	object_to_place = /mob/living/simple/gutlunch
+	objects_max = 2
+
+
 /obj/marker/generation/mob/bear/black
 	object_to_place = /mob/living/simple/bear/black
 	objects_max = 1

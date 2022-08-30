@@ -32,7 +32,9 @@
 	flags_area = FLAG_AREA_NO_DAMAGE | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_ROUND_INFORMATION | FLAG_AREA_TUTORIAL | FLAG_AREA_NO_EVENTS | FLAG_AREA_SAVEZONE | FLAG_AREA_SINGLEPLAYER
 
 	sunlight_freq = 2
-	sunlight_color = "#576168"
+	sunlight_color = "#FFFFFF"
+
+	dynamic_lighting = FALSE
 
 
 /area/debug

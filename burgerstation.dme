@@ -2071,6 +2071,7 @@
 #include "code\_core\turf\simulated\_simulated.dm"
 #include "code\_core\turf\simulated\floor\_floor.dm"
 #include "code\_core\turf\simulated\floor\basalt.dm"
+#include "code\_core\turf\simulated\floor\boss.dm"
 #include "code\_core\turf\simulated\floor\cave_dirt.dm"
 #include "code\_core\turf\simulated\floor\chargen.dm"
 #include "code\_core\turf\simulated\floor\chasm.dm"
