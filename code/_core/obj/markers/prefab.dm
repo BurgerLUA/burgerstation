@@ -238,7 +238,7 @@
 /obj/marker/prefab/city_special
 	name = "special city prefab"
 	icon = 'icons/obj/markers/prefab_64x64_city_special.dmi'
-	category = "fob"
+	category = "city_special"
 	unique = TRUE
 	chance_none = 0
 	rotational_offset = 64

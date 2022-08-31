@@ -25,10 +25,6 @@
 
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(src.anchored)
-		if(messages) caller.to_chat(span("warning","\The [I.name] is on \the [L.name] too securely!"))
-		return FALSE
-
 	if(!istype(loc,/obj/hud/inventory/organs/))
 		if(messages) caller.to_chat(span("warning","That's not there anymore!"))
 		return FALSE
@@ -45,6 +41,10 @@
 	var/mob/living/L = I.owner
 
 	INTERACT_CHECK_OTHER(L)
+
+	if(src.anchored)
+		if(messages) caller.to_chat(span("warning","\The [I.name] is on \the [L.name] too securely!"))
+		return FALSE
 
 	if(is_living(caller))
 		var/mob/living/CL = caller
