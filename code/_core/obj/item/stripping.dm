@@ -25,6 +25,10 @@
 
 	INTERACT_CHECK_NO_DELAY(src)
 
+	if(src.anchored)
+		if(messages) caller.to_chat(span("warning","\The [I.name] is on \the [L.name] too securely!"))
+		return FALSE
+
 	if(!istype(loc,/obj/hud/inventory/organs/))
 		if(messages) caller.to_chat(span("warning","That's not there anymore!"))
 		return FALSE
@@ -55,9 +59,5 @@
 		if(!istype(I,/obj/hud/inventory/organs/groin/pocket) && !L.grabbing_hand)
 			if(messages) caller.to_chat(span("warning","You need a better grip to steal this!"))
 			return FALSE
-
-	if(I.anchored)
-		if(messages) caller.to_chat(span("warning","You can't remove this!"))
-		return FALSE
 
 	return TRUE
