@@ -405,4 +405,22 @@
 	return ret
 
 
+//Credit to /tg/station for these shuffle procs.
+///Randomize: Return the list in a random order
+/proc/shuffle(list/inserted_list)
+	if(!inserted_list)
+		return
+	inserted_list = inserted_list.Copy()
 
+	for(var/i in 1 to inserted_list.len - 1)
+		inserted_list.Swap(i, rand(i, inserted_list.len))
+
+	return inserted_list
+
+///same as shuffle, but returns nothing and acts on list in place
+/proc/shuffle_inplace(list/inserted_list)
+	if(!inserted_list)
+		return
+
+	for(var/i in 1 to inserted_list.len - 1)
+		inserted_list.Swap(i, rand(i, inserted_list.len))

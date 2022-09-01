@@ -95,6 +95,10 @@
 	chance_none = 25
 	rotational_offset = 32
 
+/obj/marker/prefab/forest/New(var/desired_loc)
+	. = ..()
+	dir = pick(DIRECTIONS_CARDINAL)
+
 /obj/marker/prefab/base
 	icon = 'icons/obj/markers/prefab_64x64.dmi'
 	category = "base"
@@ -247,5 +251,12 @@
 /obj/marker/prefab/fob
 	icon = 'icons/obj/markers/prefab_16x16.dmi'
 	category = "fob"
+	chance_none = 0
+	rotational_offset = 16
+
+/obj/marker/prefab/vault
+	icon = 'icons/obj/markers/prefab_10x10.dmi'
+	icon_state = null
+	category = "vault"
 	chance_none = 0
 	rotational_offset = 16

@@ -3,6 +3,7 @@
 	area_identifier = "Mission"
 
 	dynamic_lighting = TRUE
+	trackable = FALSE
 
 
 /area/mission/desert

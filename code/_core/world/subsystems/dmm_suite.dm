@@ -2,8 +2,6 @@ var/global/dmm_suite/dmm_suite
 
 #define PREFABS_DIR "maps/prefabs/"
 
-#define AVERAGE_STRENGTH 1
-
 SUBSYSTEM_DEF(dmm_suite)
 	name = ".dmm Suite Subsystem"
 	desc = "Map loading and saving."
@@ -54,6 +52,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/loaded_prefabs = 0
 
 	var/list/not_enough = list()
+
+	shuffle_inplace(prefab_markers)
 
 	while(length(prefab_markers))
 		var/obj/marker/prefab/M = prefab_markers[1]
