@@ -62,7 +62,7 @@ var/global/list/equipped_antags = list()
 
 	for(var/i=1,i<=count,i++)
 		var/obj/item/stored_object = pick(stored_objects)
-		var/obj/item/created = new stored_objects.type(T)
+		var/obj/item/created = new stored_object.type(T)
 		modify_item(created,stored_object)
 		if(created.uses_until_condition_fall > 0)
 			created.quality = max(0,created.quality - rand(25,75))

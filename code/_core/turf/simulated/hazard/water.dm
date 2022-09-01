@@ -17,7 +17,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	layer = LAYER_MOB_WATER
 
 	desired_light_frequency = 4
-	desired_light_power = 0.5
+	desired_light_power = 0.25
 	desired_light_range = 8
 	desired_light_color = "#158996"
 
@@ -36,8 +36,6 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	. = ..()
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE) && depth <= 0)
 		for(var/k in DIRECTIONS_CARDINAL)
-			if(!prob(80)) //Optimization
-				continue
 			var/turf/simulated/floor/T = get_step(src,k)
 			if(!istype(T))
 				continue
@@ -50,11 +48,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			depth = MAX_DEPTH
 			for(var/k in water_shores)
 				var/turf/simulated/floor/T = k
-				depth = min(1 + get_dist(src,T),depth)
-			var/noise = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z]]","[x/world.maxx]","[y/world.maxy]"))
-			if(NOISE_CURVES) noise = 0.5 + sin((noise+0.5)*NOISE_CURVES*180)*0.5
-
-			depth = depth*0.5 + depth*noise*0.5
+				depth = min(1 + get_dist_real(src,T),depth)
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 	else

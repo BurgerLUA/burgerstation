@@ -5,7 +5,7 @@
 	icon_state = "radial"
 	plane = PLANE_LIGHTING
 	layer = 999
-	blend_mode = BLEND_ADD
+	//blend_mode = BLEND_ADD
 
 	appearance_flags = LONG_GLIDE | TILE_BOUND
 

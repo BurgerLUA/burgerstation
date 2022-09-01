@@ -21,6 +21,9 @@
 	var/tile_offset_x = FLOOR(desired_x/TILE_SIZE,1)
 	var/tile_offset_y = FLOOR(desired_y/TILE_SIZE,1)
 
+	desired_x = FLOOR(desired_x,1)
+	desired_y = FLOOR(desired_y,1)
+
 	if(tile_offset_x || tile_offset_y)
 		desired_loc = locate(desired_loc.x + tile_offset_x, desired_loc.y + tile_offset_y, desired_loc.z)
 
