@@ -26,10 +26,4 @@ SUBSYSTEM_DEF(holiday)
 		if(day >= 31 - 7 && day <= 31)
 			holidays[/holiday/halloween] = new /holiday/halloween
 
-	for(var/k in holidays)
-		var/holiday/H = holidays[k]
-		INITIALIZE(H)
-		GENERATE(H)
-		FINALIZE(H)
-
 	. = ..()

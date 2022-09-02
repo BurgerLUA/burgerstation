@@ -19,7 +19,7 @@ var/global/list/possible_merc_loadouts = list(
 	)
 
 
-/mob/living/advanced/player/antagonist/merc/default_appearance()
+/mob/living/advanced/player/antagonist/merc/setup_appearance(var/set_default=FALSE)
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/merc)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/merc)

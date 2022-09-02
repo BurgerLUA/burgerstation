@@ -9,7 +9,7 @@
 
 	level = 10
 
-/mob/living/advanced/npc/nanotrasen/Initialize()
+/mob/living/advanced/npc/nanotrasen/Finalize()
 
 	. = ..()
 

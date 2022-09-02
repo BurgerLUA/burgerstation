@@ -562,8 +562,6 @@
 
 /mob/living/Initialize()
 
-	if(ai) ai = new ai(null,src)
-
 	if(boss)
 		SSbosses.tracked_bosses += src
 		SSbosses.living_bosses += src
@@ -575,12 +573,12 @@
 
 	. = ..()
 
+	if(health) health.armor = armor
+
 /mob/living/PostInitialize()
+
 	. = ..()
-	if(health)
-		health.armor = armor
-	if(ai)
-		INITIALIZE(ai)
+
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
 	setup_name()
@@ -603,9 +601,6 @@
 
 	. = ..()
 
-	if(ai)
-		FINALIZE(ai)
-
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))
 			for(var/obj/hud/button/boss_health/B in P.buttons)
@@ -616,6 +611,11 @@
 		death()
 
 	update_level(TRUE)
+
+	if(ai)
+		ai = new ai(null,src)
+		ai.set_active(ai.active,TRUE)
+		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
 
 	QUEUE_HEALTH_UPDATE(src)
 

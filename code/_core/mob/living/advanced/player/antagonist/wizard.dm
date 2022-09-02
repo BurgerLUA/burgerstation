@@ -2,7 +2,7 @@
 	loadout_to_use = /loadout/wizard_federation
 
 
-/mob/living/advanced/player/antagonist/wizard/default_appearance()
+/mob/living/advanced/player/antagonist/wizard/setup_appearance(var/set_default=FALSE)
 	. = ..()
 	loyalty_tag = "Wizard Federation"
 	iff_tag = "Wizard Federation"

@@ -1780,7 +1780,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		var/turf/T = get_turf(usr.loc)
 		T.ChangeTurf(chosen)
 	else*/
-	var/datum/A = new chosen(usr.loc)
+	var/atom/A = new chosen(usr.loc)
 	INITIALIZE(A)
 	if(is_atom(A))
 		var/atom/O = A

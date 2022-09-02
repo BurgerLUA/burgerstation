@@ -9,7 +9,7 @@ var/global/list/possible_materials = list(
 /mob/living/advanced/player/antagonist/golem
 	loadout_to_use = /loadout/golem
 
-/mob/living/advanced/player/antagonist/golem/default_appearance()
+/mob/living/advanced/player/antagonist/golem/setup_appearance(var/set_default=FALSE)
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/golem)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/golem)
 
@@ -42,7 +42,3 @@ var/global/list/possible_materials = list(
 	update_all_blends()
 
 	return TRUE
-
-/mob/living/advanced/player/antagonist/golem/add_species_languages()
-	. = ..()
-	//known_languages[LANGUAGE_GOLEM] = TRUE

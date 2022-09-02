@@ -40,17 +40,13 @@
 	owner = desired_owner
 	return ..()
 
-/health/Initialize()
-
+/health/proc/Finalize()
 	update_health_stats()
-
 	health_current = health_max
 	stamina_current = stamina_max
 	mana_current = mana_max
-
 	update_health(update_hud = FALSE)
-
-	return ..()
+	return TRUE
 
 /health/proc/update_health_stats()
 	health_max = owner.health_base

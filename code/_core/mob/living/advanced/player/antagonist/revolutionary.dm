@@ -6,7 +6,7 @@ var/global/list/possible_rev_loadouts = list(
 /mob/living/advanced/player/antagonist/revolutionary
 	loadout_to_use = null // chosen based on the above stuff
 
-/mob/living/advanced/player/antagonist/revolutionary/default_appearance()
+/mob/living/advanced/player/antagonist/revolutionary/setup_appearance(var/set_default=FALSE)
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/revolutionary)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/revolutionary)
@@ -27,6 +27,6 @@ var/global/list/possible_rev_loadouts = list(
 	name = "Comrade [real_name]"
 	return TRUE
 
-/mob/living/advanced/player/antagonist/revolutionary/add_species_languages()
+/mob/living/advanced/player/antagonist/revolutionary/species_initialize(var/set_default=FALSE)
 	. = ..()
 	known_languages[LANGUAGE_SLAVIC] = TRUE

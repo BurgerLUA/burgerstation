@@ -113,77 +113,16 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	. = ..()
 
-/mob/living/advanced/PostInitialize()
-	. = ..()
-
+/mob/living/advanced/proc/add_stat_buttons()
 	if(client)
 		var/obj/hud/button/stat/body/B = new(src)
 		B.update_owner(src)
-
-/mob/living/advanced/Finalize()
-
-	var/species/S = SPECIES(species)
-	if(!(blood_type in S.valid_blood_types))
-		blood_type = S.generate_blood_type()
-
-	. = ..()
-
-	update_items(force=TRUE)
+	return TRUE
 
 /mob/living/advanced/on_crush(var/message=TRUE)
 	if(driving)
 		return FALSE
 	. = ..()
-
-/mob/living/advanced/proc/update_clothes()
-
-	tracked_hidden_organs = list()
-
-	var/list/blocking_clothing = list()
-
-	for(var/obj/item/clothing/C in worn_objects)
-		if(C.enable_torn_overlay && C.get_damage_icon_number() > 0)
-			continue
-		if(C.hidden_organs)
-			tracked_hidden_organs |= C.hidden_organs
-			blocking_clothing[C] = TRUE
-
-	for(var/k in overlays_assoc)
-		var/image/overlay/O = overlays_assoc[k]
-		var/obj/item/I = O.attached_object
-		if(!I)
-			continue
-		if(is_organ(I))
-			var/obj/item/organ/OR = I
-			show_overlay(k, !tracked_hidden_organs[OR.id] ? TRUE : FALSE)
-		else
-			var/atom/movable/M = I
-			if(!M.loc || !is_organ(M.loc.loc))
-				continue
-			var/obj/item/organ/OR = M.loc.loc
-			show_overlay(k, (blocking_clothing[M] || !tracked_hidden_organs[OR.id]) ? TRUE : FALSE)
-
-	return TRUE
-
-/mob/living/advanced/update_eyes()
-
-	. = ..()
-
-	var/area/A = get_area(src)
-	if(A && !(A.flags_area & FLAG_AREA_SINGLEPLAYER))
-		see_invisible = max(see_invisible,INVISIBILITY_PLAYERS)
-
-	for(var/obj/item/organ/eye/E in organs)
-		sight |= E.sight_mod
-		vision |= E.vision_mod
-		see_invisible = max(E.see_invisible,see_invisible)
-		see_in_dark = max(see_in_dark,E.see_in_dark)
-
-	for(var/obj/item/clothing/glasses/G in worn_objects)
-		sight |= G.sight_mod
-		vision |= G.vision_mod
-		see_invisible = max(G.see_invisible,see_invisible)
-		see_in_dark = max(see_in_dark,G.see_in_dark)
 
 /mob/living/advanced/set_dir(var/desired_dir,var/force=FALSE)
 
@@ -203,42 +142,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 			inventories_by_id[BODY_HAND_RIGHT_HELD].update_held_icon(right_item)
 		if(inventories_by_id[BODY_TORSO_OB] && holster_item && holster_item.dan_mode)
 			inventories_by_id[BODY_TORSO_OB].update_held_icon(holster_item)
-
-/mob/living/advanced/proc/update_items(var/force=FALSE,var/should_update_speed=TRUE,var/should_update_eyes=TRUE,var/should_update_protection=TRUE,var/should_update_clothes=TRUE) //Sent when an item needs to update.
-
-	if(qdeleting) //Bandaid fix.
-		return FALSE
-
-	if(!force && !finalized)
-		return FALSE //Don't want to call this too much during initializations.
-
-	if(should_update_speed) //Weight too.
-		update_speed()
-	if(should_update_eyes)
-		update_eyes()
-	if(should_update_protection)
-		update_protection()
-	if(should_update_clothes)
-		update_clothes()
-
-	return TRUE
-
-/mob/living/advanced/proc/update_speed()
-
-	var/total_weight = 0
-	var/max_weight = 50 + get_attribute_power(ATTRIBUTE_ENDURANCE)*450
-
-	. = 1 //The lower the value, the faster you are.
-
-	for(var/obj/item/clothing/C in worn_objects)
-		. -= C.speed_bonus
-		total_weight += C.weight
-
-	. *= 1 + (total_weight/max_weight)
-
-	. = FLOOR(max(0.25,.),0.01)
-
-	move_delay_multiplier = .
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)
 
@@ -294,38 +197,13 @@ mob/living/advanced/Login()
 		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
 
-/mob/living/advanced/proc/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
-	add_species_languages()
-	add_species_organs()
-	add_species_colors()
-	return TRUE
-
 /mob/living/advanced/Initialize()
-
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
-
-	if(!health)
-		var/species/S = SPECIES(species)
-		if(S && S.health)
-			health = S.health
-
 	. = ..()
-
-	if(client)
-		add_ability_buttons()
-
-	apply_mob_parts(TRUE,TRUE,TRUE)
-
-	if(client)
-		add_species_buttons()
-
-	var/species/S = SPECIES(species)
-	if(S)
-		S.generate_traits(src)
 
 /mob/living/advanced/Finalize()
+	species_initialize()
 	. = ..()
-	update_items()
 
 /mob/living/advanced/setup_name()
 
@@ -338,35 +216,6 @@ mob/living/advanced/Login()
 
 	. = ..()
 
-/mob/living/advanced/proc/add_species_languages()
-
-	known_languages.Cut()
-
-	var/species/S = SPECIES(species)
-
-	for(var/language in S.languages)
-		known_languages[language] = TRUE
-
-/mob/living/advanced/proc/add_species_colors()
-
-	var/species/S = SPECIES(species)
-
-	if(S.default_color_skin)
-		change_organ_visual("skin", desired_color = S.default_color_skin)
-
-	if(S.default_color_eye)
-		change_organ_visual("eye", desired_color = S.default_color_eye)
-
-	if(S.default_color_hair && S.default_icon_hair && S.default_icon_state_hair)
-		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = S.default_icon_state_hair, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
-		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = S.default_icon_state_hair_face, desired_color = S.default_color_hair, desired_layer = LAYER_MOB_HAIR_HEAD)
-
-	if(S.default_color_detail)
-		change_organ_visual("skin_detail", desired_color = S.default_color_detail)
-
-	if(S.default_color_glow)
-		change_organ_visual("skin_glow", desired_color = S.default_color_glow)
-
 /mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
 	for(var/k in organs)
 		var/obj/item/organ/O = k
@@ -374,20 +223,6 @@ mob/living/advanced/Login()
 			continue
 		if(O.additional_blends[desired_id])
 			O.add_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
-
-/mob/living/advanced/proc/update_gender()
-	remove_all_organs()
-	add_species_organs()
-	add_species_colors()
-
-/mob/living/advanced/proc/update_species()
-
-	var/species/S = SPECIES(species)
-
-	if(S.genderless)
-		gender = NEUTER
-
-	update_gender()
 
 /mob/living/advanced/can_sprint()
 

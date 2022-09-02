@@ -80,8 +80,6 @@
 
 	if(A.ai) qdel(A.ai)
 	A.ai = new /ai/advanced/zombie(null,A)
-	INITIALIZE(A.ai)
-	FINALIZE(A.ai)
 
 	if(A.client)
 		var/turf/T = get_turf(A)

@@ -250,9 +250,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	if(night_vision <= 0)
 		night_vision = 0.5
 	. = ..()
-
-/ai/Finalize()
-	. = ..()
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)

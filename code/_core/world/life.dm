@@ -74,12 +74,7 @@ var/global/time_dialation = 0
 
 	world_state = STATE_RUNNING
 
-	if(CONFIG("ENABLE_INSTALOAD",FALSE))
-		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
-			if(!O.load_most_recent_character())
-				O.new_character()
-
-	else if(length(lobby_positions))
+	if(length(lobby_positions))
 		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
 			var/list/possible_music = TRACKS_LOBBY
 			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))

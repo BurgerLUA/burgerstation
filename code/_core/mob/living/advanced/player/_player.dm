@@ -123,6 +123,34 @@ var/global/list/difficulty_to_damage_mul = list(
 	. = ..()
 	setup_difficulty()
 
+
+
+/mob/living/advanced/player/proc/default_nanotrasen_move()
+	if(length(cryo_spawnpoints))
+		var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
+		force_move(get_turf(C))
+		C.door_state = SLEEPER_OPENED
+		C.buckle(src,silent=TRUE)
+		C.door_state = SLEEPER_CLOSED
+		C.update_icon()
+	else if(length(backup_spawnpoints))
+		var/obj/marker/backup_spawn/BS = pick(backup_spawnpoints)
+		force_move(get_turf(BS))
+	else
+		var/obj/marker/failsafe/FS = locate() in world
+		if(FS && FS.loc)
+			force_move(FS.loc)
+		else
+			var/desired_x = CEILING(world.maxx/2,1)
+			var/desired_y = CEILING(world.maxy/2,1)
+			var/desired_z = CEILING(world.maxz/2,1)
+			force_move(locate(desired_x,desired_y,desired_z))
+
+
+
+
+
+
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
 	if(attacker.is_player_controlled()) //PvP is always 1.
@@ -143,19 +171,6 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	if(.)
 		client.screen += click_and_drag_icon
-
-/mob/living/advanced/player/apply_mob_parts(var/teleport=TRUE,var/do_load=TRUE,var/update_blends=TRUE)
-
-	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
-
-	if(!mobdata || !length(mobdata.loaded_data["organs"]) || !do_load)
-		return ..()
-
-	add_species_languages()
-
-	set_mob_data(mobdata["loaded_data"],teleport && allow_save,update_blends,!allow_save)
-
-	return TRUE
 
 /mob/living/advanced/player/setup_name()
 

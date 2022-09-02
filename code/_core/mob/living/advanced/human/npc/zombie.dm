@@ -55,9 +55,6 @@
 				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
 				if(O) O.broken = TRUE
 
-	setup_appearance()
-	update_all_blends()
-
 	if(loadout_to_use) equip_loadout(loadout_to_use)
 
 	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
@@ -69,11 +66,11 @@
 		var/tox_loss = total_loss - (burn_loss + brute_loss)
 		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
 
-/mob/living/advanced/npc/zombie/proc/setup_appearance()
+/mob/living/advanced/npc/zombie/setup_appearance(var/set_default=FALSE)
+	. = ..()
 	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
 	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#FFFFFF")
 	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
-	return TRUE
 
 /mob/living/advanced/npc/zombie/Finalize()
 	. = ..()
@@ -105,11 +102,11 @@
 	gender = MALE
 	return TRUE
 
-/mob/living/advanced/npc/zombie/greytide/setup_appearance()
+/mob/living/advanced/npc/zombie/setup_appearance(var/set_default=FALSE)
+	. = ..()
 	change_organ_visual("skin", desired_color = "#5D7F00")
 	change_organ_visual("hair_head", desired_icon_state = "hair_a", desired_color = "#111111")
 	change_organ_visual("eye", desired_color = "#FF0000")
-	return TRUE
 
 /mob/living/advanced/npc/zombie/captain
 	loadout_to_use = /loadout/zombie/captain

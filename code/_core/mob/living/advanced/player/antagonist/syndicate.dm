@@ -1,7 +1,7 @@
 /mob/living/advanced/player/antagonist/syndicate
 	loadout_to_use = /loadout/syndicate/player_antagonist
 
-/mob/living/advanced/player/antagonist/syndicate/default_appearance()
+/mob/living/advanced/player/antagonist/syndicate/setup_appearance(var/set_default=FALSE)
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
@@ -22,6 +22,6 @@
 	return TRUE
 
 
-/mob/living/advanced/player/antagonist/syndicate/add_species_languages()
+/mob/living/advanced/player/antagonist/syndicate/species_initialize(var/set_default=FALSE)
 	. = ..()
 	known_languages[LANGUAGE_CODESPEAK] = TRUE

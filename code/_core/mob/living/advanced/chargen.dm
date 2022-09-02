@@ -1,8 +1,10 @@
-/mob/living/advanced/proc/start_chargen()
+/mob/living/advanced/player/proc/start_chargen()
 
 	INITIALIZE(src)
 	FINALIZE(src)
-	default_appearance()
+	setup_appearance(set_default=TRUE)
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)
 
@@ -64,8 +66,6 @@
 	*/
 
 
-
-
 /mob/living/advanced/proc/perform_specieschange(var/desired_species,var/keep_clothes,var/chargen)
 
 	if(!desired_species)
@@ -111,43 +111,22 @@
 
 	return kept_items
 
-/mob/living/advanced/proc/default_appearance()
-	var/species/S = SPECIES(species)
-	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
-	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
-	handle_skincolor_chargen(S.default_color_skin,FALSE)
-	handle_eyecolor_chargen(S.default_color_eye,FALSE)
-	handle_detail_chargen(S.default_color_detail,FALSE)
-	handle_glow_chargen(S.default_color_glow,FALSE)
-	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
-	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
-	update_all_blends()
-
 /mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
 
-	if(chargen)
-		add_chargen_buttons()
-
-	add_ability_buttons()
-
-	apply_mob_parts(FALSE,FALSE,FALSE)
-	default_appearance()
-	add_species_buttons()
-	//add_species_health_elements()
+	species_initialize(set_default=TRUE)
 
 	if(length(kept_items))
 		equip_objects_in_list(kept_items)
 	else
 		equip_loadout(/loadout/new_player,TRUE)
 
-	for(var/obj/hud/button/hide_show_inventory/B in buttons)
-		B.update_sprite()
-
-	update_all_blends()
+	if(chargen) add_chargen_buttons()
 
 	show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 
-	QUEUE_HEALTH_UPDATE(src)
+	for(var/obj/hud/button/hide_show_inventory/B in buttons)
+		B.update_sprite()
 
+	QUEUE_HEALTH_UPDATE(src)
 
 
