@@ -195,3 +195,85 @@
 
 /area/mission/prefab/house/house_08/closet
 	icon_state = "blue"
+
+
+
+
+//davidthtthird house 01
+/area/mission/prefab/house/house_D01
+	name = "house D01"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_D01/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_D01/kitchen
+	icon_state = "green"
+
+/area/mission/prefab/house/house_D01/main_hallway
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_D01/bedroom01
+	icon_state = "cyan"
+
+/area/mission/prefab/house/house_D01/bedroom02
+	icon_state = "pink"
+
+
+
+	//davidthtthird house 02 homless person barracks
+/area/mission/prefab/house/house_D02
+	name = "house D02"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_D02/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_D02/kitchen
+	icon_state = "green"
+
+/area/mission/prefab/house/house_D02/hallway
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_D02/officer_bedroom
+	icon_state = "cyan"
+
+/area/mission/prefab/house/house_D02/bunks
+	icon_state = "pink"
+
+
+
+		//davidthtthird house 03 "boxxed in"
+/area/mission/prefab/house/house_D03
+	name = "house D03"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_D03/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_D03/sec
+	icon_state = "green"
+
+/area/mission/prefab/house/house_D03/engi
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_D03/science
+	icon_state = "cyan"
+
+/area/mission/prefab/house/house_D03/hallway
+	icon_state = "pink"
+
+/area/mission/prefab/house/house_D03/command
+	icon_state = "red"
+
+/area/mission/prefab/house/house_D03/chapple
+	icon_state = "brown"
