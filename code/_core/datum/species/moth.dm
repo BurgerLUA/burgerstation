@@ -16,13 +16,10 @@
 	default_color_hair = "#FFFFFF"
 
 	default_icon_hair = 'icons/mob/living/advanced/hair/moth_hair_face.dmi' //doing this was cursed but I wanted things to be consistent
-	default_icon_state_hair = "none"
+	default_icon_state_hair = "wings_monarch"
 
 	default_icon_hair_face = 'icons/mob/living/advanced/hair/moth_hair_head.dmi' //second verse same as the first
-	default_icon_state_hair_face = "none"
-
-	default_hairstyle_chargen_male = 1
-	default_hairstyle_chargen_female = 1
+	default_icon_state_hair_face = "fluff_plain"
 
 
 	accent = list(
