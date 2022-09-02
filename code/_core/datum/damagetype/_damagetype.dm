@@ -359,16 +359,17 @@ var/global/list/all_damage_numbers = list()
 			var/obj/item/organ/hand/H
 			if(istype(weapon,/obj/item/organ/hand))
 				H = weapon
-			else if(istype(weapon.loc,/obj/item/organ/hand))
-				H = weapon.loc
-			if(A.attack_flags & CONTROL_MOD_LEFT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_LEFT : BODY_HAND_RIGHT))
-				damage_multiplier *= 2
-				A.health?.adjust_stamina(-25)
-				play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
-			else if(A.attack_flags & CONTROL_MOD_RIGHT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_RIGHT : BODY_HAND_LEFT))
-				damage_multiplier *= 2
-				A.health?.adjust_stamina(-25)
-				play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+			else if(weapon.loc && istype(weapon.loc.loc,/obj/item/organ/hand))
+				H = weapon.loc.loc
+			if(H)
+				if(A.attack_flags & CONTROL_MOD_LEFT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_LEFT : BODY_HAND_RIGHT))
+					damage_multiplier *= 2
+					A.health?.adjust_stamina(-25)
+					play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+				else if(A.attack_flags & CONTROL_MOD_RIGHT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_RIGHT : BODY_HAND_LEFT))
+					damage_multiplier *= 2
+					A.health?.adjust_stamina(-25)
+					play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
 
 	for(var/k in victims)
 		var/atom/victim = k
