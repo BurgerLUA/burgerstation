@@ -146,7 +146,7 @@
 	if(!is_facing(src,attacker))
 		return FALSE
 
-	if(world.time - last_hold > 5 + 5*get_skill_power(SKILL_PARRY,0,1,2))
+	if( (world.time - last_hold) > (5 + 5*get_skill_power(SKILL_PARRY,0,1,2)) )
 		return FALSE
 
 	return TRUE

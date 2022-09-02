@@ -139,6 +139,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/alert_on_impact = ALERT_LEVEL_NONE
 
+	var/allow_heavy_attack = TRUE
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -350,6 +352,23 @@ var/global/list/all_damage_numbers = list()
 	return .
 
 /damagetype/proc/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
+
+	if(allow_heavy_attack && is_advanced(attacker))
+		var/mob/living/advanced/A = attacker
+		if(A.client && (!A.health || A.health.stamina_current >= 25))
+			var/obj/item/organ/hand/H
+			if(istype(weapon,/obj/item/organ/hand))
+				H = weapon
+			else if(istype(weapon.loc,/obj/item/organ/hand))
+				H = weapon.loc
+			if(A.attack_flags & CONTROL_MOD_LEFT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_LEFT : BODY_HAND_RIGHT))
+				damage_multiplier *= 2
+				A.health?.adjust_stamina(-25)
+				play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+			else if(A.attack_flags & CONTROL_MOD_RIGHT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_RIGHT : BODY_HAND_LEFT))
+				damage_multiplier *= 2
+				A.health?.adjust_stamina(-25)
+				play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
 
 	for(var/k in victims)
 		var/atom/victim = k

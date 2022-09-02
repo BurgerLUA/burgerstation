@@ -34,9 +34,12 @@
 
 	var/bullet_time = 0 //Not slow-mo, but how long it takes to insert a bullet into the gun.
 
+	var/sound_pitch = 1
+
 /obj/item/weapon/ranged/bullet/Finalize()
 	. = ..()
 	uses_until_condition_fall = 50 * (1/shoot_delay)
+	sound_pitch = get_sound_pitch()
 
 /obj/item/weapon/ranged/bullet/Destroy()
 	QDEL_NULL(chambered_bullet)
@@ -67,8 +70,21 @@
 	. += (bullet_length_max * bullet_diameter_max)/(9*19)*100
 */
 
+obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
+	if(length(empty_sounds))
+		var/turf/T = get_turf(src)
+		play_sound(pick(empty_sounds),T,range_max = VIEW_RANGE*0.5,pitch=sound_pitch)
+	return FALSE
 
 
+/obj/item/weapon/ranged/bullet/proc/get_sound_pitch() //For cocking and reloads.
+
+	var/low_end = 4.6*30
+	var/high_end = 20*117
+
+	var/result = SCALE(bullet_length_best*bullet_diameter_best,low_end,high_end)
+
+	return 0.25 + clamp(1-result,0.25,1)*0.75
 
 /obj/item/weapon/ranged/bullet/proc/accept_bullet(var/mob/caller as mob,var/obj/item/bullet_cartridge/B,var/silent=FALSE)
 
@@ -104,10 +120,10 @@
 
 	if(.)
 		var/turf/T = get_turf(src)
-		play_sound(B.bullet_insert_sound,T,range_max=VIEW_RANGE*0.25)
+		play_sound(B.bullet_insert_sound,T,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 		if(istype(src,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = src
-			play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
+			play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
 	else
 		caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
 
@@ -188,7 +204,7 @@
 	else
 		if(B.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
 			if(B.drop_sound)
-				play_sound(B.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25)
+				play_sound(B.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 			qdel(B)
 		else
 			B.drop_item(new_loc)
@@ -213,7 +229,7 @@
 	else
 		if(bullet_to_remove.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
 			if(bullet_to_remove.drop_sound)
-				play_sound(bullet_to_remove.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25)
+				play_sound(bullet_to_remove.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 			qdel(bullet_to_remove)
 		else
 			bullet_to_remove.drop_item(new_loc)
@@ -227,7 +243,7 @@
 	for(var/k in stored_bullets)
 		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
-		eject_stored_bullet(caller,B,new_loc,play_sound)
+		eject_stored_bullet(caller,B,new_loc,play_sound,pitch=sound_pitch)
 
 	return TRUE
 
@@ -238,7 +254,7 @@
 		var/obj/item/bullet_cartridge/B = k
 		if(!B.is_spent)
 			continue
-		eject_stored_bullet(caller,B,new_loc,play_sound)
+		eject_stored_bullet(caller,B,new_loc,play_sound,pitch=sound_pitch)
 
 	return TRUE
 

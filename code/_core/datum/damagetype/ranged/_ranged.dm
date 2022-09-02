@@ -43,6 +43,8 @@
 
 	var/allow_glancing_blows = FALSE
 
+	allow_heavy_attack = FALSE
+
 /damagetype/ranged/calculate_value(var/obj/item/I)
 	. = ..()
 	. *= 2
