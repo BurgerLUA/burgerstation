@@ -109,6 +109,7 @@
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
 
+//diona
 /obj/item/organ/eye/diona
 	name = "right diona eye"
 	icon = 'icons/mob/living/advanced/species/diona.dmi'

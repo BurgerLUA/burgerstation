@@ -5,14 +5,25 @@
 	flags_species = SPECIES_MOTH
 	bite_size = 5
 
-	flags_chargen = CHARGEN_SKIN | CHARGEN_SEX | CHARGEN_MARKINGS | CHARGEN_WINGS
+	flags_chargen = CHARGEN_SKIN | CHARGEN_SEX | CHARGEN_HAIR | CHARGEN_BEARD //CHARGEN_MARKINGS | CHARGEN_WINGS maybe when these actually matter I will uncomment 'em -V
 
 	flags_flavor_love = FLAG_FLAVOR_COOKED | FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_MEAT | FLAG_FLAVOR_FISH | FLAG_FLAVOR_LOVE | FLAG_FLAVOR_JUNK | FLAG_FLAVOR_FAT | FLAG_FLAVOR_DAIRY
 	flags_flavor_hate = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW | FLAG_FLAVOR_NECRO | FLAG_FLAVOR_MEDICINE
 
+
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#F7D896"
 	default_color_hair = "#FFFFFF"
+
+	default_icon_hair = 'icons/mob/living/advanced/hair/moth_hair_face.dmi' //doing this was cursed but I wanted things to be consistent
+	default_icon_state_hair = "none"
+
+	default_icon_hair_face = 'icons/mob/living/advanced/hair/moth_hair_head.dmi' //second verse same as the first
+	default_icon_state_hair_face = "none"
+
+	default_hairstyle_chargen_male = 1
+	default_hairstyle_chargen_female = 1
+
 
 	accent = list(
 		"o" = "ø",
@@ -38,6 +49,9 @@
 		BODY_EAR_LEFT = /obj/item/organ/ear/moth/left,
 		BODY_WINGS = /obj/item/organ/wings/moth,
 		BODY_ANTENNAE = /obj/item/organ/antennae/moth,
+
+		BODY_HAIR_HEAD = /obj/item/organ/hair,
+		BODY_HAIR_FACE = /obj/item/organ/beard,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_HEART = /obj/item/organ/internal/heart,
@@ -67,6 +81,9 @@
 		BODY_EAR_LEFT = /obj/item/organ/ear/moth/left,
 		BODY_WINGS = /obj/item/organ/wings/moth,
 		BODY_ANTENNAE = /obj/item/organ/antennae/moth,
+
+		BODY_HAIR_HEAD = /obj/item/organ/hair,
+		BODY_HAIR_FACE = /obj/item/organ/beard,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
 		BODY_HEART = /obj/item/organ/internal/heart,
