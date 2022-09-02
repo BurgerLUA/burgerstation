@@ -112,16 +112,20 @@
 					PC.adjust_currency(charged_amount)
 		*/
 	else
-		target.send_pain_response(100)
-		target.add_status_effect(ADRENALINE,50,100)
 		var/atom/target_to_damage = target
 		if(is_advanced(target))
 			var/mob/living/advanced/A = target
 			if(A.labeled_organs[BODY_TORSO])
 				target_to_damage = A.labeled_organs[BODY_TORSO]
-		var/damage_to_deal = caller == target ? 50 : 20
-		target_to_damage?.health?.adjust_loss_smart(pain=damage_to_deal,fatigue=damage_to_deal)
-		target.add_status_effect(STUN,20,20)
+		if(target_to_damage.health)
+			var/damage_to_deal = (caller == target) ? 50 : 20
+			target.add_status_effect(ADRENALINE,50,100)
+			target.add_status_effect(STUN,20,20)
+			if(target_to_damage.health.organic)
+				target_to_damage?.health?.adjust_loss_smart(pain=damage_to_deal,fatigue=damage_to_deal,organic=TRUE,robotic=FALSE)
+			else
+				target_to_damage?.health?.adjust_loss_smart(burn=damage_to_deal*2,organic=FALSE,robotic=TRUE)
+
 
 	return TRUE
 
