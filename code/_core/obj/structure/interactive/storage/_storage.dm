@@ -73,6 +73,20 @@
 
 	var/mob/living/stored_threat
 
+	var/chance_none = 0
+
+/obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
+
+	if(prob(chance_none))
+		qdel(src)
+		return
+
+	. = ..()
+
+
+/obj/structure/interactive/storage/trash_pile/low_chance
+	chance_none = 80
+
 /obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
 	icon_state = "[initial(icon_state)]_[rand(1,10)]"
 	. = ..()
@@ -96,6 +110,14 @@
 
 	var/chance_none = 70
 
+/obj/structure/interactive/storage/safe/New(var/desired_loc)
+
+	if(prob(chance_none))
+		qdel(src)
+		return
+
+	. = ..()
+
 /obj/structure/interactive/storage/safe/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
@@ -118,4 +140,18 @@
 	icon = 'icons/obj/item/bulletbox.dmi'
 	icon_state = "ammo"
 
-	pixel_y = 6
+	pixel_y = 7
+
+
+/obj/structure/interactive/storage/cash_register
+	name = "cash register"
+	desc = "It's not stealing if everyone is dead."
+	desc_extended = "A basic cash register used for processing transactions through an archaic method known as \"paying cash\"."
+	icon = 'icons/obj/structure/register.dmi'
+	icon_state = "register"
+
+	stored_loot = /loot/misc/cash_register
+
+	layer = 1000
+
+	pixel_y = 10

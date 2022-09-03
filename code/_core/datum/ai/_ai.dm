@@ -111,7 +111,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//3 = Attacks literally everyone in sight, including friends if possible.
 	var/assistance = 1
 	//0 = Helps no one but themselves.
-	//1 = Helps people with the same loyalty tag as them.
+	//1 = Helps people with the same loyalty tag as them. Note that aggression needs to be equal or greater to 1 in order for this to work.
 	var/cowardice = -1 //Set to a value equal or greater than 0 to enable. Acts as a value of what health percentage (0.00 to 1.00) the NPC will flee at.
 
 	var/predict_attack = TRUE //Set to true if you want to predict if the target will attack the owner, if the target is an AI.

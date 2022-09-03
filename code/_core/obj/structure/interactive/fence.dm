@@ -8,7 +8,7 @@ obj/structure/interactive/fence
 
 	bullet_block_chance = 0
 
-	pixel_y = 14
+	pixel_y = 0
 
 	health = /health/construction/
 

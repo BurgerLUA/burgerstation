@@ -588,7 +588,7 @@
 /area/lz_420/interior/nexus/armory)
 "cz" = (
 /obj/decal/tile/cross/red,
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/kitchen)
 "cA" = (
@@ -667,7 +667,7 @@
 /area/lz_420/interior/nexus/armory)
 "cS" = (
 /obj/decal/tile/cross/red,
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/tan,
 /area/lz_420/interior/nexus/kitchen)
 "cT" = (
@@ -705,11 +705,11 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/exterior)
 "dc" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/exterior)
 "dd" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/exterior)
@@ -882,11 +882,11 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_420/interior/nexus/armory)
 "dN" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/west)
 "dO" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/west)
 "dP" = (
@@ -1721,11 +1721,11 @@
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/cargo)
 "hh" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/central)
 "hi" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/morphing/grey,
 /area/lz_420/interior/nexus/central)
 "hj" = (

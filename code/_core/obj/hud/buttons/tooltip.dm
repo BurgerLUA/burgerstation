@@ -20,10 +20,10 @@
 /obj/hud/button/tooltip/proc/set_text(var/desired_text,var/desired_screen_loc)
 
 	if(!desired_text || !desired_screen_loc)
-		alpha = 0
+		animate(src,alpha=0,flags=ANIMATION_PARALLEL,time=2)
 		return FALSE
 
-	alpha = 255
+	animate(src,alpha=255,flags=ANIMATION_PARALLEL,time=2)
 	screen_loc = desired_screen_loc
 	maptext = "<font valign='top'>[desired_text]</font>"
 

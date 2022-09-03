@@ -365,7 +365,6 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)
 		play_sound(pick(empty_sounds),T,range_max = VIEW_RANGE*0.5)
-
 	return FALSE
 
 

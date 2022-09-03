@@ -102,3 +102,13 @@
 	pattern_icon_state = "p3"
 	pattern_color = COLOR_BLUE
 
+
+
+/obj/structure/carpet/grey
+	name = "grey carpet"
+	color = COLOR_GREY_DARK
+
+	trim_icon_state = "t2"
+	trim_color = COLOR_BLACK
+	pattern_icon_state = "p2"
+	pattern_color = COLOR_GREY

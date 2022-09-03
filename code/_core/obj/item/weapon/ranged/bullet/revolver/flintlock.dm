@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/revolver/flintlock
 	name = "\improper .62 flintlock pistol"
 	desc = "Just like the founding fathers intended."
-	desc_extended = "An incredibly ancient and severely outdated flintlock pistol. Only an idiot or a badass would use one of these."
+	desc_extended = "An incredibly ancient and severely outdated flintlock pistol. Only an idiot or a badass would use one of these; a genius would use several."
 	icon = 'icons/obj/item/weapons/ranged/revolver/flintlock.dmi'
 	icon_state = "inventory"
-	value = 800
+	value = 400
 
 	company_type = "Pirate"
 
@@ -32,8 +32,11 @@
 
 	heat_max = 0.1
 
+	bullet_time = SECONDS_TO_DECISECONDS(2)
+
 	open = TRUE
 	can_shoot_while_open = TRUE
+	open_icon = FALSE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE,

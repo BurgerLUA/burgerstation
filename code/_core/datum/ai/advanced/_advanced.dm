@@ -18,7 +18,7 @@
 
 	use_pathfinding = TRUE
 
-	roaming_distance = 0
+	roaming_distance = VIEW_RANGE
 
 	//Gun handling
 	var/obj/item/bullet_cartridge/last_found_bullet

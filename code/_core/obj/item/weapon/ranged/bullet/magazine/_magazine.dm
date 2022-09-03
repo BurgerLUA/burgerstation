@@ -55,6 +55,11 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
+	. = ..()
+
+	if(.)
+		return .
+
 	var/cock_type // = "flacid"
 
 	if(eject_chambered_bullet(caller,caller ? caller.loc : get_turf(src),TRUE))
@@ -67,7 +72,7 @@
 
 	if(cock_type)
 		if(T)
-			play_sound(get_cock_sound(cock_type),T,range_max=VIEW_RANGE*0.5)
+			play_sound(get_cock_sound(cock_type),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
 		update_sprite()
 
 	return TRUE
@@ -84,7 +89,7 @@
 		qdel(src)
 	else
 		stored_magazine.drop_item(T)
-		play_sound(stored_magazine.get_magazine_eject_sound(),T,range_max=VIEW_RANGE*0.5)
+		play_sound(stored_magazine.get_magazine_eject_sound(),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
 		if(stored_magazine)
 			stored_magazine.update_sprite()
 			stored_magazine = null
@@ -160,7 +165,7 @@
 			sound_strength = 1 - clamp(capacity/empty_warning_percent,0,1)
 
 		if(sound_strength > 0)
-			play_sound('sound/effects/gun_empty_sound.ogg',get_turf(src), pitch = 1 + sound_strength*0.5, volume = 100 * sound_strength,range_max=VIEW_RANGE)
+			play_sound('sound/effects/gun_empty_sound.ogg',get_turf(src), pitch = sound_pitch + sound_strength*0.5, volume = 100 * sound_strength,range_max=VIEW_RANGE)
 
 
 /obj/item/weapon/ranged/bullet/magazine/get_examine_list(var/mob/caller)

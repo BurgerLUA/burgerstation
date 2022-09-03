@@ -12,17 +12,8 @@
 	desired_light_color = null //Set in update_icon
 	desired_light_angle = LIGHT_OMNI
 
-/obj/structure/interactive/lighting/fixture/bulb/New()
+	dir_offset = 2
 
-	. = ..()
 
-	switch(dir)
-		if(NORTH)
-			pixel_y = 1
-		if(SOUTH)
-			pixel_y = -1
-		if(EAST)
-			pixel_x = 1
-		if(WEST)
-			pixel_x = -1
-
+/obj/structure/interactive/lighting/fixture/bulb/green
+	color = COLOR_GREEN_LIGHT

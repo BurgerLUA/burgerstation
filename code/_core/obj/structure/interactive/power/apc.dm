@@ -85,10 +85,10 @@
 	. = ..()
 
 	var/image/I1 = new/image(initial(icon),"apc_light_1")
-	I1.plane = PLANE_EFFECT_LIGHTING
+	I1.plane = PLANE_LIGHTING_EFFECT
 
 	var/image/I2 = new/image(initial(icon),"apc_light_2")
-	I2.plane = PLANE_EFFECT_LIGHTING
+	I2.plane = PLANE_LIGHTING_EFFECT
 
 	add_overlay(I1)
 	add_overlay(I2)

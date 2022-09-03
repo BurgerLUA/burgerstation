@@ -247,6 +247,19 @@
 	)
 	color = COLOR_GREY
 
+/obj/marker/spawning/random/ashwalker
+	name = "ashwalker(?) loot"
+	icon_state = "misc"
+	possible_objects = list(
+		/loot/misc/ashwalker = 100,
+		/loot/misc/dangerous = 20,
+		/obj/marker/spawning/random/valuable = 10,
+		/obj/marker/spawning/random/vault_loot = 1
+	)
+	color = COLOR_GREEN
+
+
+
 /obj/marker/spawning/random/kitchen
 	name = "kitchen loot"
 	icon_state = "kitchen"

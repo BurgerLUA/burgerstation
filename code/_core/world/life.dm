@@ -29,7 +29,8 @@ var/global/time_dialation = 0
 		var/subsystem/SS = k
 		var/local_benchmark = true_time()
 		if(SS.priority < current_priority)
-			log_error("Wait, what the fuck? [last_subsystem] wasn't sorted properly!")
+			log_error("Wait, what the fuck? [last_subsystem] wasn't sorted properly! This is a fatal error, so everything is being stopped.")
+			return FALSE
 		current_priority = SS.priority
 		last_subsystem = SS.name
 		log_subsystem(SS.name,"Initializing...")

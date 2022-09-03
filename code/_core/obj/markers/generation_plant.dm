@@ -9,7 +9,7 @@
 
 	turf_whitelist = /turf/simulated/floor/
 
-	priority = 3
+	priority = 2
 
 /obj/marker/generation/plant/cabbage
 	object_to_place = /obj/structure/interactive/plant/cabbage

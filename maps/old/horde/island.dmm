@@ -839,7 +839,7 @@
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "dR" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "dS" = (
@@ -928,7 +928,7 @@
 /turf/simulated/floor/tile/overlapping/dark,
 /area/lz_001/outpost/russian/snow)
 "ei" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/dark,
 /area/lz_001/outpost/syndicate/jungle)
 "ej" = (
@@ -1778,11 +1778,11 @@
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "hO" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "hP" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/wood/brown,
 /area/lz_001/forest/village/interior/bar)
 "hQ" = (

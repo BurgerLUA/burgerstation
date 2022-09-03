@@ -70,14 +70,14 @@
 /obj/structure/interactive/vr_shop/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"vr_[vendor_type]")
-	I.plane = PLANE_EFFECT_LIGHTING
+	I.plane = PLANE_LIGHTING_EFFECT
 	I.layer = 1000
 	I.pixel_z = TILE_SIZE*0.5
 	I.alpha = 200
 	add_overlay(I)
 
 	var/image/I2 = new/image(initial(icon),"vr_gem")
-	I2.plane = PLANE_EFFECT_LIGHTING
+	I2.plane = PLANE_LIGHTING_EFFECT
 	I2.layer = 999
 	I2.alpha = 200
 	add_overlay(I2)

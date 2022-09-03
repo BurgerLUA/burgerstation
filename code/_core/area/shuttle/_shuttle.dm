@@ -7,14 +7,18 @@
 	allow_ghost = FALSE
 	map_color = COLOR_PINK
 	interior = TRUE
+	dynamic_lighting = TRUE
 
 	area_identifier = "Burgerstation"
 
-	var/area/shuttle_area = /area/ //REQUIRED
+/area/shuttle/flounder
+	name = "\improper NTS Flounder"
 
-	var/area/shuttle_turf = /turf/ //REQUIRED
+/area/shuttle/shuttlebus
+	name = "\improper NTS Shuttlebus"
 
-/area/shuttle/debug
-	name = "debug shuttle"
-	shuttle_area = /area/burgerstation/hanger
-	shuttle_turf = /turf/simulated/floor/plating
+/area/shuttle/xeno
+	name = "\improper NTS Xenobus"
+
+/area/shuttle/minivan
+	name = "\improper NTS Minivan"

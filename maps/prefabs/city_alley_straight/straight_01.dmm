@@ -1,0 +1,96 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/brick/red,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/structure/interactive/storage/trash_pile/low_chance,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+"c" = (
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+"d" = (
+/obj/item/trash/random,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(3,1,1) = {"
+d
+c
+d
+c
+c
+d
+c
+d
+"}
+(4,1,1) = {"
+c
+c
+c
+c
+d
+c
+c
+c
+"}
+(5,1,1) = {"
+c
+d
+c
+c
+c
+c
+c
+c
+"}
+(6,1,1) = {"
+c
+c
+d
+c
+c
+d
+c
+d
+"}
+(7,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+"}

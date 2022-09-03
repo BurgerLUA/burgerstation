@@ -1,22 +1,21 @@
 /reagent_container/beaker
 
-	volume_max = 60
+	volume_max = 50
 
 	should_update_owner = TRUE
 
 /reagent_container/beaker/large
-	volume_max = 120
+	volume_max = 100
 
 
 /reagent_container/beaker/bottle
 	volume_max = 30
 
 /reagent_container/beaker/bottle/medium
-	volume_max = 60
-
+	volume_max = 50
 
 /reagent_container/beaker/bottle/large
-	volume_max = 90
+	volume_max = 100
 
 
 /reagent_container/beaker/vial/
@@ -31,4 +30,4 @@
 
 
 /reagent_container/beaker/bucket
-	volume_max = 250
+	volume_max = 200

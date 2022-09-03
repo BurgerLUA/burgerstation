@@ -1,0 +1,43 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/brick/city,/area/mission/prefab/fob/contractor)
+"c" = (/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"d" = (/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"e" = (/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
+"g" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 1},/obj/structure/interactive/wire/yellow,/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 8},/turf/simulated/wall/brick/city,/area/mission/prefab/fob/contractor)
+"i" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"j" = (/obj/marker/spawning/window,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"k" = (/obj/marker/spawning/window,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"l" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"m" = (/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"n" = (/obj/structure/interactive/chair/comfy,/obj/structure/carpet/red,/mob/living/advanced/npc/unique/contractor,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"o" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"p" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"q" = (/obj/structure/carpet/red,/obj/structure/table/wood,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"r" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"s" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/brick/city,/area/dmm_suite/clear_area)
+"t" = (/obj/structure/interactive/door/airlock/glass,/obj/structure/interactive/wire/green,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"u" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"v" = (/obj/structure/carpet/red,/mob/living/advanced/npc/contractor_guard,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"w" = (/mob/living/advanced/npc/contractor_guard,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"x" = (/mob/living/advanced/npc/contractor_guard,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+
+(1,1,1) = {"
+aaaabbbbbbbaaaaa
+aaaabvmmmvbaaaaa
+aaaaimmnmmiaaaaa
+aaaaimooomiaaaaa
+ebjjbmmpmmbjjbfa
+ebqqbcccccbqqbfa
+ebmmbiblbibmmbfa
+ebccccxcxccccbfa
+ebccccmmmccccbfa
+ebccccmmmccrrhga
+ebbcccmmmccrbbsa
+edkcccmmmccrkdsa
+edkcccccrrrrkdsa
+edkkkbccrbkkkdsa
+edddwblltbwdddsa
+eddddddduuuuuusa
+"}

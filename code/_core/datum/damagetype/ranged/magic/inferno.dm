@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/inferno
 	attack_damage_base = list(
-		FIRE = 45*0.5,
+		HEAT = 45*0.5,
 	)
 
 	attribute_stats = list(
@@ -8,7 +8,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(FIRE)
+		ATTRIBUTE_INTELLIGENCE = list(HEAT)
 	)
 
 	skill_stats = list(
@@ -16,7 +16,7 @@
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = FIRE
+		SKILL_MAGIC_OFFENSIVE = HEAT
 	)
 
 	bonus_experience_skill = list(

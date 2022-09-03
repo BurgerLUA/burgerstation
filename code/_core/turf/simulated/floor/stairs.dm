@@ -64,3 +64,7 @@
 	src.change_turf(/turf/simulated/openspace)
 */
 
+
+/turf/simulated/floor/stair/city
+	color = "#CCBAAD"
+

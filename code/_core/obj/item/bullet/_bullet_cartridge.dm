@@ -254,15 +254,18 @@
 			var/obj/item/attachment/undermount/gun/AG = G.attachment_undermount
 			G = AG.stored_gun
 
-		if(G.accept_bullet(caller,src))
-			var/turf/T = get_turf(src)
-			play_sound(bullet_insert_sound,T,range_max=VIEW_RANGE*0.25)
-			if(istype(G,/obj/item/weapon/ranged/bullet/magazine/))
-				var/obj/item/weapon/ranged/bullet/magazine/M = G
-				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5)
+		if(G.bullet_time > 0)
+			PROGRESS_BAR(caller,G,G.bullet_time,/obj/item/weapon/ranged/bullet/proc/accept_bullet,caller,src)
+			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_load_bullet_into,caller,G)
+		else
+			G.accept_bullet(caller,src)
+
 		return TRUE
 
 	. = ..()
+
+/obj/item/bullet_cartridge/proc/can_load_bullet_into(var/mob/caller,var/obj/item/weapon/ranged/bullet/G) //Only used for bullettime. This feels like shitcode but whatever.
+	return src.can_caller_interact_with(caller,delay_checks=FALSE) && G.can_caller_interact_with(caller,delay_checks=FALSE)
 
 
 /obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)

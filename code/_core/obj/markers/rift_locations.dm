@@ -1,11 +1,11 @@
-var/global/list/rift_markers = list()
+var/global/list/bluepace_rift_markers = list()
 
-/obj/marker/rift_location
+/obj/marker/bluepace_rift_location
 	name = "rift location"
 
-/obj/marker/rift_location/New(var/desired_loc)
+/obj/marker/bluepace_rift_location/New(var/desired_loc)
 	. = ..()
-	rift_markers += src
+	bluepace_rift_markers += src
 
 var/global/list/wizard_rift_markers = list()
 
@@ -15,4 +15,3 @@ var/global/list/wizard_rift_markers = list()
 /obj/marker/wizard_rift_location/New(var/desired_loc)
 	. = ..()
 	wizard_rift_markers += src
-	

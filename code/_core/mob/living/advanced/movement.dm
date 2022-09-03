@@ -84,8 +84,11 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		for(var/k in movement_organs)
 			var/obj/item/organ/O = labeled_organs[k]
 			if(O && O.health && O.broken && prob(80))
-				O.health.adjust_loss_smart(pain=1)
-				sent_pain = O
+				if(O.health.organic)
+					O.health.adjust_loss_smart(pain=1,organic=TRUE,robotic=FALSE)
+					sent_pain = O
+				else
+					O.health.adjust_loss_smart(brute=1,organic=FALSE,robotic=TRUE)
 		if(prob(5) && sent_pain && sent_pain.send_pain_response(20))
 			src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
 

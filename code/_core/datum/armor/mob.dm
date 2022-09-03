@@ -569,6 +569,29 @@
 	)
 	deflection = 0.5
 
+/armor/chitin/heavy
+	defense_rating = list(
+		BLADE = 100,
+		BLUNT = 25,
+		PIERCE = 50,
+		LASER = -25,
+		ARCANE = 0,
+		HEAT = -50,
+		COLD = -50,
+		SHOCK = 0,
+		ACID = -25,
+		BOMB = -25,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0,
+		PAIN = 0,
+		ION = INFINITY,
+		SANITY = 0
+	)
+	deflection = 0.5
+
 /armor/cult_construct
 	defense_rating = list(
 		BLADE = 75,

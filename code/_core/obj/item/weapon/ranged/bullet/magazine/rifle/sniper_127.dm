@@ -69,8 +69,8 @@
 	attachment_undermount_offset_x = 32 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	attachment_stock_offset_x = 0
-	attachment_stock_offset_y = 32
+	attachment_stock_offset_x = 16
+	attachment_stock_offset_y = 0
 
 	requires_cock_each_shot = TRUE
 
@@ -78,6 +78,8 @@
 	movement_inaccuracy_modifier = 2
 
 	movement_spread_base = 0.2
+
+	pixel_x = -8
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0

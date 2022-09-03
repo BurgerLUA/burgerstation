@@ -116,10 +116,8 @@
 			if(!owner.is_zoomed)
 				owner.is_zoomed = owner.mob.dir
 				owner.zoom_time = world.time
-				var/real_angle = dir2angle(owner.mob.dir)
-				var/desired_x_offset = sin(real_angle)
-				var/desired_y_offset = cos(real_angle)
-				owner.update_camera_offset(desired_x_offset,desired_y_offset)
+				var/list/directional_offsets = owner.last_location ? get_directional_offsets(owner.eye,owner.last_location) : direction_to_pixel_offset(owner.mob.dir)
+				owner.update_camera_offset(directional_offsets[1],directional_offsets[2])
 		else
 			winset(owner, null, "command='[command]'")
 

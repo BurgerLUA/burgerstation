@@ -21,19 +21,12 @@ SUBSYSTEM_DEF(living)
 
 /subsystem/living/Initialize()
 
-	var/bad_initialize = 0
-
 	for(var/k in all_living)
 		var/mob/living/L = k
-		if(!L.client && istype(L.loc,/turf/simulated/wall))
-			bad_initialize++
-			qdel(L)
-			continue
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
 
-	log_subsystem(name,"Failed to initialize [bad_initialize] living beings as they spawned in walls.")
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 
 	for(var/k in subtypesof(/addiction/))

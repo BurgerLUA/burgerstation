@@ -1,35 +1,22 @@
 /turf/unsimulated/generation/snow_cave
 	name = "snow cave generation"
 	icon_state = "snow_caves"
-	var/path_only = FALSE
-
-/turf/unsimulated/generation/snow_cave/pre_generate()
-
-	for(var/k in list(NORTH,EAST,SOUTH,WEST))
-		var/turf/T = get_step(src,k)
-		if(T.density)
-			continue
-		if(T && !istype(T,src))
-			is_different = TRUE
-			break
-
-	return TRUE
 
 /turf/unsimulated/generation/snow_cave/path
 	icon_state = "snow_caves_path"
-	path_only = TRUE
+	density = FALSE
 
 /turf/unsimulated/generation/snow_cave/generate(var/size = WORLD_SIZE)
 
 	var/shitfix = path_only
 
-	if(!allow_wall)
+	if(!density)
 		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow/interior(src)
 		disallow_generation = TRUE
 		return ..()
 
-	if(is_different && !path_only)
+	if(!is_next_to_interior && is_different && density && !is_next_to_dense_turf)
 		new /turf/simulated/wall/rock/snow(src)
 		if(src.loc.type == /area/) new /area/dungeon/z_01/snow/interior(src)
 		disallow_generation = TRUE
@@ -45,13 +32,14 @@
 		noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
 	noise *= 1/max_instances
 	noise = 0.5 + sin((noise+0.5)*3*180)*0.5
+	noise += (x/world.maxx + y/world.maxy)/2 - 0.5
 
 
-	var/needs_bear = path_only
+	var/needs_bear = !density
 
 	switch(noise)
 		if(-INFINITY to 0.2)
-			if(path_only)
+			if(!density)
 				new /turf/simulated/floor/cave_dirt(src)
 			else
 				if(prob(1))
@@ -68,7 +56,7 @@
 			if(prob(3))
 				new /obj/marker/generation/cave_dirt_colored(src)
 		if(0.28 to 0.38)
-			if(path_only)
+			if(!density)
 				new /turf/simulated/floor/cave_dirt(src)
 			else
 				if(prob(1))
@@ -85,7 +73,7 @@
 		if(0.5 to 0.53)
 			new /turf/simulated/floor/cave_dirt(src)
 		if(0.53 to 0.6)
-			if(path_only)
+			if(!density)
 				new /turf/simulated/floor/cave_dirt(src)
 			else
 				if(prob(1))
@@ -96,7 +84,7 @@
 					if(prob(1))
 						new /obj/marker/generation/rock_wall(src)
 		if(0.6 to 0.75)
-			if(path_only)
+			if(!density)
 				new /turf/simulated/floor/cave_dirt(src)
 			else
 				new /turf/simulated/liquid/water/river/ice(src)
@@ -104,8 +92,8 @@
 			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(3))
 				new /obj/marker/generation/cave_dirt_colored(src)
-		if(0.8 to 1)
-			if(path_only)
+		if(0.8 to INFINITY)
+			if(!density)
 				new /turf/simulated/floor/cave_dirt(src)
 			else
 				if(prob(1))

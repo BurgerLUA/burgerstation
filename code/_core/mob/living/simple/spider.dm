@@ -49,7 +49,7 @@
 
 	level = 18
 
-/mob/living/simple/spider/desert/Initialize()
+/mob/living/simple/spider/glow/Initialize()
 	. = ..()
 	set_light(4,0.25,"#00FF00")
 

@@ -178,6 +178,6 @@
 	new /obj/item/storage/pillbottle/space_prussian_blue_small(src)
 	new /obj/item/container/syringe/medipen/dylovene(src)
 	new /obj/item/container/syringe/medipen/dylovene(src)
-	new /obj/item/container/simple/vodka(src)
+	new /obj/item/container/simple/alcohol/vodka(src)
 	new /obj/item/container/simple/beaker/shot(src)
 	. = ..()

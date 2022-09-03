@@ -86,17 +86,17 @@
 	if(burn) . += adjust_loss(BURN,burn); should_update = TRUE
 	if(tox) . += adjust_loss(TOX,tox); should_update = TRUE
 	if(oxy) . += adjust_loss(OXY,oxy); should_update = TRUE
+	if(sanity) . += adjust_loss(SANITY,sanity); should_update = TRUE
+	if(mental) . += adjust_loss(MENTAL,mental); should_update = TRUE
 	if(pain) . += adjust_loss(PAIN,pain); should_update = TRUE
 	if(rad) . += adjust_loss(RAD,rad); should_update = TRUE
 	if(fatigue) . += adjust_loss(FATIGUE,fatigue); should_update = TRUE
-	if(sanity) . += adjust_loss(SANITY,sanity); should_update = TRUE
-	if(mental) . += adjust_loss(MENTAL,mental); should_update = TRUE
 
 	if(update && should_update)
 		update_health()
 
 /health/proc/adjust_loss(var/loss_type,var/value)
-	if(resistance[loss_type] && value > 0)
+	if(isnum(resistance[loss_type]) && value > 0)
 		value *= resistance[loss_type]
 	var/old_value = damage[loss_type]
 	var/new_value = clamp(damage[loss_type] + value,0,max_damage[loss_type] ? max_damage[loss_type] : INFINITY)

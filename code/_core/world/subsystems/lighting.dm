@@ -40,7 +40,8 @@ SUBSYSTEM_DEF(lighting)
 /subsystem/lighting/Initialize()
 
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))
-		return FALSE
+		active_subsystems -= src
+		return TRUE
 
 	log_debug("Initializing lighting... this may take a while...")
 
@@ -88,7 +89,7 @@ SUBSYSTEM_DEF(lighting)
 	while (length(curr_lights) && lq_idex <= length(curr_lights))
 		CHECK_TICK_SAFE(tick_usage_max,0)
 		var/light_source/L = curr_lights[lq_idex]
-		if (L.needs_update != LIGHTING_NO_UPDATE)
+		if(L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1
 			L.update_corners()
 			L.needs_update = LIGHTING_NO_UPDATE
@@ -106,9 +107,9 @@ SUBSYSTEM_DEF(lighting)
 	while (length(curr_corners) && cq_idex <= length(curr_corners))
 		CHECK_TICK_SAFE(tick_usage_max,0)
 		var/lighting_corner/C = curr_corners[cq_idex]
-		if (C.needs_update)
+		if(C.needs_update != LIGHTING_NO_UPDATE)
 			C.update_lighting_overlays()
-			C.needs_update = FALSE
+			C.needs_update = LIGHTING_NO_UPDATE
 			processed_corners++
 		cq_idex++
 
@@ -126,7 +127,7 @@ SUBSYSTEM_DEF(lighting)
 			log_error("Lighting Error: List index out of bounds! Data: [length(curr_overlays)], [oq_idex].")
 			break
 		var/atom/movable/lighting_overlay/O = curr_overlays[oq_idex]
-		if (!O.qdeleting && O.needs_update)
+		if (!O.qdeleting && O.needs_update != LIGHTING_NO_UPDATE)
 			O.update_overlays()
 			O.needs_update = FALSE
 			processed_overlays++

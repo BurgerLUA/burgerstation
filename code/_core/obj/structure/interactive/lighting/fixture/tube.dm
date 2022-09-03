@@ -12,20 +12,7 @@
 	desired_light_color = null //Set in update_icon
 	desired_light_angle = LIGHT_TUBE
 
-/obj/structure/interactive/lighting/fixture/tube/New() //SETUP_DIR_OFFSETS
-
-	. = ..()
-
-	switch(dir)
-		if(NORTH)
-			pixel_y = -2
-		if(SOUTH)
-			pixel_y = 2
-		if(EAST)
-			pixel_x = -2
-		if(WEST)
-			pixel_x = 2
-
+	dir_offset = 2
 
 
 /obj/structure/interactive/lighting/fixture/tube/color

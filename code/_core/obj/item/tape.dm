@@ -84,7 +84,7 @@
 			A.put_in_hands(stored_tape,params)
 		return TRUE
 
-	if(is_inventory(object))
+	if(stored_tape && is_inventory(object))
 		disable()
 		var/obj/hud/inventory/I = object
 		caller.to_chat(span("notice","You eject \the [stored_tape.name] from \the [src.name]."))

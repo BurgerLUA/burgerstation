@@ -1,4 +1,4 @@
-/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = VIEW_RANGE,var/desired_loyalty_tag)
+/atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = VIEW_RANGE,var/desired_loyalty_tag,var/damage_multiplier=1)
 
 	if(!thrower)
 		CRASH_SAFE("No thrower exists!")
@@ -31,7 +31,7 @@
 		desired_target = desired_target,
 		desired_color ="#FFFFFF",
 		desired_blamed = thrower,
-		desired_damage_multiplier = 1,
+		desired_damage_multiplier = damage_multiplier,
 		desired_iff_tag = null,
 		desired_loyalty_tag = desired_loyalty_tag,
 		desired_inaccuracy_modifier = 0,

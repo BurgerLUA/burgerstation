@@ -3,7 +3,7 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/turf/simulated/wall/wood,
+/turf/simulated/wall/wood/brown,
 /area/dmm_suite/clear_area)
 "c" = (
 /turf/simulated/floor/wood/brown,

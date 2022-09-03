@@ -27,7 +27,7 @@
 /obj/structure/interactive/intercom/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"intercom_light")
-	I.plane = PLANE_EFFECT_LIGHTING
+	I.plane = PLANE_LIGHTING_EFFECT
 	add_overlay(I)
 
 /obj/structure/interactive/intercom/Initialize()

@@ -165,6 +165,23 @@
 	to_chat(span("notice","You jumped to [A]'s location."))
 	log_admin("[src] jumped to [A]'s (area) location.")
 
+/client/verb/view_map()
+	set name = "View Map"
+	set category = "View"
+
+	var/obj/hud/button/map_background/M_control = locate() in mob.buttons
+
+	if(!mob)
+		return
+
+	if(M_control)
+		M_control.update_owner(null)
+		src.to_chat(span("notice","You close the map."))
+	else
+		M_control = new(mob)
+		M_control.update_owner(mob)
+		src.to_chat(span("notice","You open the map."))
+
 /*
 /client/verb/adjust_nightvision()
 	set name = "Adjust Nightvision"

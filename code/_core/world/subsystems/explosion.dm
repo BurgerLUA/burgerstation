@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(explosion)
 
 	return TRUE
 
-/proc/explode(var/turf/desired_turf,var/desired_power,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+/proc/explode(var/turf/desired_turf,var/desired_power,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/velocity_dir=0x0,var/multiplier=1)
 
 	var/obj/explosion_process/EP = locate() in desired_turf
 
@@ -67,6 +67,7 @@ SUBSYSTEM_DEF(explosion)
 		EP.source = desired_source
 		EP.epicenter = desired_turf
 		EP.loyalty_tag = desired_loyalty_tag
+		EP.velocity_dir = velocity_dir
 		INITIALIZE(EP)
 		GENERATE(EP)
 		FINALIZE(EP)

@@ -1,0 +1,52 @@
+"a" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/landing,/area/dmm_suite/clear_area)
+"c" = (/obj/decal/hazard/box,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"d" = (/obj/marker/landing_decal_right,/obj/marker/shuttle_landing,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"e" = (/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"f" = (/obj/decal/shuttle_landing{icon_state = "1,4"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"g" = (/obj/decal/shuttle_landing{icon_state = "2,4"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"h" = (/obj/decal/shuttle_landing{icon_state = "3,4"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"i" = (/obj/decal/shuttle_landing{icon_state = "0,3"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"j" = (/obj/decal/shuttle_landing{icon_state = "1,3"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"k" = (/obj/structure/interactive/computer/console/shuttle_landing,/turf/simulated/floor/landing,/area/dmm_suite/clear_area)
+"l" = (/obj/decal/shuttle_landing{icon_state = "3,3"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"m" = (/obj/decal/shuttle_landing{icon_state = "4,3"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"n" = (/obj/decal/shuttle_landing{icon_state = "0,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"o" = (/obj/decal/shuttle_landing{icon_state = "1,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"q" = (/obj/decal/shuttle_landing{icon_state = "3,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"r" = (/obj/decal/shuttle_landing{icon_state = "4,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"s" = (/obj/decal/shuttle_landing{icon_state = "0,1"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"t" = (/obj/decal/shuttle_landing{icon_state = "1,1"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"u" = (/obj/decal/shuttle_landing{icon_state = "2,1"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"v" = (/obj/decal/shuttle_landing{icon_state = "3,1"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"w" = (/obj/decal/shuttle_landing{icon_state = "4,1"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"x" = (/obj/decal/shuttle_landing,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"y" = (/obj/decal/shuttle_landing{icon_state = "1,0"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"z" = (/obj/decal/shuttle_landing{icon_state = "2,0"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"A" = (/obj/decal/shuttle_landing{icon_state = "3,0"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"B" = (/obj/decal/shuttle_landing{icon_state = "4,0"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"C" = (/obj/decal/hazard{icon_state = "line"; dir = 1},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"D" = (/obj/decal/hazard{icon_state = "line"; dir = 8},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"E" = (/obj/decal/hazard{icon_state = "line"; dir = 4},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"F" = (/obj/decal/hazard,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"G" = (/obj/marker/landing_decal_left,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"H" = (/obj/marker/landing_decal_right,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+cCCCCCCCCCCCCCca
+DGHbbbbbbbbbGHEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbefghebbbbEb
+DbbbbijGlmbbbbEk
+cbbbbnodqrbbbbcb
+DbbbbstuvwbbbbEb
+DbbbbxyzABbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEa
+DGHbbbbbbbbbGHEa
+cFFFFFFFFFFFFFca
+aaaaaaaaaaaaaaaa
+"}

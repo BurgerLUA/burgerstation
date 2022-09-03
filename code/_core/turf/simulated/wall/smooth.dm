@@ -25,3 +25,7 @@
 	desc = "Flexible"
 	desc_extended = " A wall made of plastic. This one seems magical."
 	color = "#8034B2"
+
+
+/turf/simulated/wall/plastic/tan
+	color = "#686558"

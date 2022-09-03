@@ -30,8 +30,8 @@
 		/obj/item/clothing/mask/gas/poly/nanotrasen,
 		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
 		/obj/item/clothing/overwear/armor/medium_armor/black,
-		/obj/item/clothing/overwear/armor/nanotrasen/custom,
-		/obj/item/clothing/head/helmet/full/nanotrasen/custom,
+		/obj/item/clothing/overwear/armor/nanotrasen,
+		/obj/item/clothing/head/helmet/full/nanotrasen,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/flare,
 		/obj/item/map

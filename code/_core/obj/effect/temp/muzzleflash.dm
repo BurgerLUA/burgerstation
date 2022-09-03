@@ -3,7 +3,7 @@ obj/effect/temp/muzzleflash
 	icon = 'icons/obj/effects/muzzleflash.dmi'
 	icon_state = "muzzle_bullet"
 	duration = 1
-	plane = PLANE_EFFECT_LIGHTING
+	plane = PLANE_LIGHTING_EFFECT
 
 	desired_light_range = VIEW_RANGE*0.4
 	desired_light_power = 0.75

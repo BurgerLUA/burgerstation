@@ -95,7 +95,7 @@
 
 	if(!silent)
 		if(!caller || caller == victim)
-			victim.visible_message(span("notice","\The [caller.name] buckles themselves to \the [src.name]."),span("notice","You buckle yourself to \the [src.name]."))
+			victim.visible_message(span("notice","\The [victim.name] buckles themselves to \the [src.name]."),span("notice","You buckle yourself to \the [src.name]."))
 		else
 			victim.visible_message(span("notice","\The [caller.name] buckles \the [victim.name] into \the [src.name]."),span("notice","You buckle \the [victim.name] to \the [src.name]."))
 

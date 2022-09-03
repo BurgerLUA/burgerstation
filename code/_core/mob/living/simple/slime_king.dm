@@ -77,26 +77,23 @@
 /mob/living/simple/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
-	if(!dead && prob(damage_amount))
-		var/mob/living/simple/slime/S = new(src.loc)
-
-		var/xvel = rand(-1,1)
-		var/yvel = rand(-1,1)
-
-		if(xvel == 0 && yvel == 0)
-			xvel = pick(-1,1)
-			yvel = pick(-1,1)
-
-		var/atom/defer_attacker = attacker.defer_click_on_object()
-
-		S.throw_self(src,defer_attacker,16,16,xvel*10,yvel*10)
-		S.color = rgb(rand(0,255),rand(0,255),rand(0,255))
-		S.alpha = rand(50,200)
-		S.slime_color = S.color
-		INITIALIZE(S)
-		FINALIZE(S)
+	if(!dead && prob(damage_amount) && attacker)
+		var/turf/T = get_step(src,get_dir(src,attacker))
+		if(T)
+			var/mob/living/simple/slime/S = new(T)
+			S.color = rgb(rand(0,255),rand(0,255),rand(0,255))
+			S.alpha = rand(50,200)
+			INITIALIZE(S)
+			FINALIZE(S)
+			var/xvel = rand(-1,1)
+			var/yvel = rand(-1,1)
+			if(xvel == 0 && yvel == 0)
+				xvel = pick(-1,1)
+				yvel = pick(-1,1)
+			S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
+			if(S.ai)
+				S.ai.set_objective(attacker)
 
 /mob/living/simple/slime_king/post_death()
 	..()
 	icon_state = "death"
-	update_sprite()

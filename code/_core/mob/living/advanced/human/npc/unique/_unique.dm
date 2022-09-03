@@ -4,6 +4,8 @@
 
 	level = 40
 
+	ai = /ai/advanced/guarding
+
 /mob/living/advanced/npc/unique/setup_name()
 
 	if(name == DEFAULT_NAME) //Give a human name

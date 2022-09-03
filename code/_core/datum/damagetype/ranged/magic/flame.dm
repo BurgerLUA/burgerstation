@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/flame
 	attack_damage_base = list(
-		FIRE = 45*0.4,
+		HEAT = 45*0.4,
 		ARCANE = 45*0.1
 	)
 
@@ -9,7 +9,7 @@
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(FIRE,ARCANE)
+		ATTRIBUTE_INTELLIGENCE = list(HEAT,ARCANE)
 	)
 
 	skill_stats = list(

@@ -19,7 +19,7 @@
 
 
 /turf/simulated/floor/tile/shuttle/black
-	color = COLOR_IRON
+	color = COLOR_GREY_DARK
 
 /turf/simulated/floor/tile/shuttle/cyan
 	color = COLOR_CYAN

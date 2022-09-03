@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(turf)
 	cpu_usage_max = 50
 	tick_usage_max = 50
 
-	var/list/seeds = list() //id = value
+	var/list/seeds = list()
 
 	var/list/icon_cache = list()
 	var/saved_icons = 0
@@ -27,19 +27,26 @@ SUBSYSTEM_DEF(turf)
 
 	set background = 1 //Needed because it thinks it's doing an infinite loop.
 
-	for(var/i=1,i<=10,i++) //Generate 10 seeds.
+	log_subsystem(src.name,"Generating seeds...")
+	for(var/i=1,i<=50,i++) //Generate 50 seeds.
 		seeds += rand(1,99999)
 
+	log_subsystem(src.name,"Setting worldspawn...")
 	for(var/turf/simulated/T in world)
 		T.world_spawn = TRUE
+		sleep(-1)
 
 	//First generation pass.
+	log_subsystem(src.name,"Pregenerating turfs...")
 	for(var/turf/unsimulated/generation/G in world)
 		G.pre_generate()
+		sleep(-1)
 
 	//Second generation pass.
+	log_subsystem(src.name,"Generating turfs...")
 	for(var/turf/unsimulated/generation/G in world)
 		G.generate()
+		sleep(-1)
 
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
 
@@ -47,6 +54,7 @@ SUBSYSTEM_DEF(turf)
 		var/list/generations_second = list()
 		var/list/generations_third = list()
 
+		log_subsystem(src.name,"Sorting generation markers...")
 		for(var/k in all_generation_markers)
 			var/obj/marker/generation/G = k
 			if(G.bypass_disallow_generation || priority >= 3)
@@ -56,23 +64,52 @@ SUBSYSTEM_DEF(turf)
 			else
 				generations_first += G
 
+		log_subsystem(src.name,"Generating first markers...")
 		for(var/k in generations_first)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
+			sleep(-1)
 
+		log_subsystem(src.name,"Generating second markers...")
 		for(var/k in generations_second)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
+			sleep(-1)
 
+		log_subsystem(src.name,"Generating third markers...")
 		for(var/k in generations_third)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
+			sleep(-1)
 
+	log_subsystem(src.name,"Initializing turfs...")
 	for(var/turf/simulated/S in world)
 		INITIALIZE(S)
+		sleep(-1)
 
+	var/list/type_to_time = list()
+
+	log_subsystem(src.name,"Finalizing turfs...")
+	var/turfs_finalized = 0
 	for(var/turf/simulated/S in world)
+		var/benchmark = true_time()
 		FINALIZE(S)
+		type_to_time[S.type] += true_time() - benchmark
+		turfs_finalized++
+		sleep(-1)
+
+	log_subsystem(src.name,"Finalized [turfs_finalized] simulated turfs.")
+
+	sortInsert(type_to_time, /proc/cmp_numeric_dsc, associative=TRUE)
+
+	var/turf_length = length(type_to_time)
+	if(turf_length >= 1)
+		var/num_turfs = min(turf_length,5)
+		type_to_time.Cut(num_turfs)
+		log_debug("[num_turfs] Most Expensive Turfs:")
+		for(var/k in type_to_time)
+			var/v = type_to_time[k]
+			log_debug("[k]: [DECISECONDS_TO_SECONDS(v)] seconds")
 
 	. = ..()
 

@@ -19,38 +19,42 @@ SUBSYSTEM_DEF(obj)
 			continue
 		if(O.initialize_type == INITIALIZE_EARLY)
 			initialize_early += O
-		else if(O.initialize_type == INITIALIZE_LATE)
-			initialize_late += O
 		else if(O.initialize_type == INITIALIZE_NORMAL)
 			initialize_normal += O
+		else if(O.initialize_type == INITIALIZE_LATE)
+			initialize_late += O
 		else
 			initialize_none += O
 
 	for(var/k in initialize_early)
 		var/obj/O = k
 		INITIALIZE(O)
+	for(var/k in initialize_early)
+		var/obj/O = k
 		GENERATE(O)
+	for(var/k in initialize_early)
+		var/obj/O = k
 		FINALIZE(O)
-
-	log_subsystem(name,"Early: Initialized and spawned [length(initialize_early)] objects in world.")
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
 		INITIALIZE(O)
+	for(var/k in initialize_normal)
+		var/obj/O = k
 		GENERATE(O)
+	for(var/k in initialize_normal)
+		var/obj/O = k
 		FINALIZE(O)
-
-	log_subsystem(name,"Normal: Initialized and spawned [length(initialize_normal)] objects in world.")
 
 	for(var/k in initialize_late)
 		var/obj/O = k
 		INITIALIZE(O)
+	for(var/k in initialize_late)
+		var/obj/O = k
 		GENERATE(O)
+	for(var/k in initialize_late)
+		var/obj/O = k
 		FINALIZE(O)
-
-	log_subsystem(name,"Late: Initialized and spawned [length(initialize_late)] objects in world.")
-
-	log_subsystem(name,"NULL: Could not initialize [length(initialize_none)] objects.")
 
 	initialize_early.Cut()
 	initialize_normal.Cut()

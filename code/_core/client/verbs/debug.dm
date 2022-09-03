@@ -1,6 +1,5 @@
 var/global/list/debug_verbs = list(
 	/client/verb/make_war,
-	/client/verb/generate_map_icon,
 	/client/verb/stealth_test,
 	/client/verb/check_lights,
 	/client/verb/subsystem_report,
@@ -27,7 +26,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_skill,
 	/client/verb/set_attribute,
 	/client/verb/horde_test_preview,
-	/client/verb/test_rust_g
+	/client/verb/test_rust_g,
+	/client/verb/view_map
 )
 
 /client/verb/view_dps()
@@ -107,7 +107,7 @@ var/global/list/debug_verbs = list(
 		M.ai.debug = TRUE
 		M.ai.set_active(TRUE)
 
-
+/*
 /client/verb/generate_map_icon()
 	set name = "Map Test (DANGER)"
 	set category = "Debug"
@@ -141,6 +141,7 @@ var/global/list/debug_verbs = list(
 	to_chat("Found [found_tiles] tiles, with [error_tiles] errored tiles.")
 	to_chat("Icon: [new/image(I)].")
 	src << ftp(I,"map_[src.mob.z].png")
+*/
 
 /client/verb/make_war()
 
@@ -597,3 +598,6 @@ var/global/list/debug_verbs = list(
 
 
 
+/client/verb/download_map()
+	set name = "Download Map"
+	set category = "Debug"

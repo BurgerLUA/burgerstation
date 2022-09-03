@@ -10,7 +10,12 @@
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
 
+	priority = 2
+
 /obj/marker/generation/foliage/bushes/
+	objects_max = 2
+	hole_chance = 95
+	skip_chance = 50
 
 /obj/marker/generation/foliage/bushes/fern
 	object_to_place = /obj/structure/scenery/bush/fern
@@ -94,7 +99,7 @@
 
 	color = COLOR_GREEN
 
-	turf_whitelist = /turf/simulated/floor/colored/grass
+	turf_whitelist = /turf/simulated/floor/colored/dirt
 
 	bypass_disallow_generation = TRUE
 

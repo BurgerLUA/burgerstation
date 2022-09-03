@@ -31,6 +31,7 @@
 
 	var/obj/hud/inventory/I = loc
 	if(I.ultra_persistant)
+		if(messages) caller.to_chat(span("warning","You can't remove this!"))
 		return FALSE
 
 	if(!is_living(I.owner))
@@ -41,21 +42,22 @@
 
 	INTERACT_CHECK_OTHER(L)
 
+	if(src.anchored)
+		if(messages) caller.to_chat(span("warning","\The [I.name] is on \the [L.name] too securely!"))
+		return FALSE
+
 	if(is_living(caller))
 		var/mob/living/CL = caller
 		var/turf/T = get_turf(CL)
-		if(!allow_hostile_action(CL.loyalty_tag,L.loyalty_tag,T.loc))
+		if(L.ckey_owner != CL.ckey_owner && !allow_hostile_action(CL.loyalty_tag,L.loyalty_tag,T.loc))
 			return FALSE
 
 	if(!L.dead)
 		if(I.worn)
 			if(messages) caller.to_chat(span("warning","You can't remove clothing from living people!"))
 			return FALSE
-		if(I.anchored)
-			if(messages) caller.to_chat(span("warning","You can't remove this!"))
 		if(!istype(I,/obj/hud/inventory/organs/groin/pocket) && !L.grabbing_hand)
 			if(messages) caller.to_chat(span("warning","You need a better grip to steal this!"))
 			return FALSE
-
 
 	return TRUE

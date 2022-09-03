@@ -409,13 +409,17 @@ var/global/list/rarity_to_mul = list(
 		size = container_max_size + 1
 
 	if(!damage_type)
-		switch(size)
-			if(0 to SIZE_3)
+		switch(weight)
+			if(-INFINITY to 5)
+				damage_type = /damagetype/item/trivial
+			if(5 to 10)
 				damage_type = /damagetype/item/light
-			if(SIZE_3 to SIZE_5)
+			if(10 to 20)
 				damage_type = /damagetype/item/medium
-			if(SIZE_5 to INFINITY)
+			if(20 to 40)
 				damage_type = /damagetype/item/heavy
+			if(40 to INFINITY)
+				damage_type = /damagetype/item/super
 
 	for(var/i=1, i <= length(inventories), i++)
 		var/obj/hud/inventory/new_inv = inventories[i]

@@ -24,9 +24,9 @@
 /damagetype/melee/club/lighter/on
 
 	attack_damage_base = list(
-		FIRE = 15
+		HEAT = 15
 	)
 
 	attack_damage_penetration = list(
-		FIRE = 10
+		HEAT = 10
 	)

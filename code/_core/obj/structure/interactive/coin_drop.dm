@@ -58,8 +58,10 @@
 
 	if(!caller || !caller.client)
 		return TRUE
+
 	if(!(caller.client.ckey in valid_ckeys))
 		return TRUE
+
 	if(!istype(object,/obj/item/currency/gold_coin/) && !is_inventory(object))
 		return TRUE
 

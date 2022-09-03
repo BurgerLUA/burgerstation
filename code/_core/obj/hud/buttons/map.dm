@@ -27,12 +27,40 @@
 	connected_background = null
 
 /obj/hud/map/update_overlays()
+
 	. = ..()
-	if(connected_background?.linked_pod)
-		var/image/I = new/image('icons/hud/hud.dmi',"drop_pod_target")
-		I.pixel_x = connected_background.x_drop - 16
-		I.pixel_y = connected_background.y_drop - 16
-		add_overlay(I)
+
+	if(connected_background)
+		if(connected_background.linked_pod)
+			var/image/I = new/image('icons/hud/hud.dmi',"drop_pod_target")
+			I.pixel_x = connected_background.x_drop - 16
+			I.pixel_y = connected_background.y_drop - 16
+			add_overlay(I)
+		if(connected_background.linked_shuttle_controller)
+			for(var/k in all_shuttle_landing_markers)
+				var/obj/marker/shuttle_landing/SL = k
+				if(SL.z != current_z)
+					continue
+				var/desired_icon_state = SL == connected_background.linked_shuttle_controller.transit_marker_destination ? "shuttle_target" : "shuttle_marker"
+				var/image/I = new/image('icons/hud/hud.dmi',desired_icon_state)
+				I.pixel_x = SL.x - 16
+				I.pixel_y = SL.y - 16
+				if(SL.linked_computer)
+					I.maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>Landing Zone [SL.linked_computer.shuttle_number]</center>"
+				add_overlay(I)
+			for(var/k in all_shuttle_controlers)
+				var/obj/shuttle_controller/SC = k
+				if(SC.z != current_z)
+					continue
+				if(!shuttle_controller_to_icon[SC])
+					continue
+				var/image/I = new/image(shuttle_controller_to_icon[SC])
+				I.pixel_x = SC.x - 16
+				I.pixel_y = SC.y - 16
+				var/area/A = get_area(SC)
+				I.maptext = "[A.name]"
+				add_overlay(I)
+
 
 /obj/hud/map/proc/update_map(var/desired_z=0)
 
@@ -68,6 +96,28 @@
 	var/y_pos = params[PARAM_ICON_Y]
 	var/z_pos = current_z
 
+	if(connected_background?.linked_shuttle_controller) //Find the closet marker.
+		var/turf/T = locate(x_pos,y_pos,z_pos)
+		var/obj/marker/shuttle_landing/best_marker
+		var/obj/marker/shuttle_landing/best_distance = VIEW_RANGE*2
+		for(var/k in all_shuttle_landing_markers)
+			var/obj/marker/shuttle_landing/SL = k
+			if(SL.z != current_z)
+				continue
+			var/distance = get_dist(T,SL)
+			if(distance > best_distance)
+				continue
+			best_marker = SL
+			best_distance = distance
+
+		if(best_marker)
+			connected_background.linked_shuttle_controller.transit_marker_destination = best_marker
+			update_sprite()
+			caller.to_chat(span("notice","New shuttle destination selected: [best_marker.]."))
+
+		return TRUE
+
+
 	if(connected_background?.linked_pod)
 		var/turf/T = locate(x_pos,y_pos,z_pos)
 		if(!T)
@@ -82,12 +132,16 @@
 				connected_background.z_drop = z_pos
 				update_sprite()
 				caller.to_chat(span("notice","Coords set to: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
+		return TRUE
+
+
+	var/turf/T = locate(x_pos,y_pos,z_pos)
+	if(!T)
+		caller.to_chat(span("warning","Failed to give valid information on coords ([x_pos],[y_pos],[z_pos])."))
 	else
-		var/turf/T = locate(x_pos,y_pos,z_pos)
-		if(!T)
-			caller.to_chat(span("warning","Failed to give valid information on coords ([x_pos],[y_pos],[z_pos])."))
-		else
-			caller.to_chat(span("notice","Coords: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
+		caller.to_chat(span("notice","Coords: ([x_pos],[y_pos],[z_pos]); Area: [T.loc.name]."))
+		if(istype(caller,/mob/abstract/observer))
+			caller.force_move(T)
 
 /obj/hud/button/map_background
 	name = "map background"
@@ -109,17 +163,21 @@
 
 	mouse_opacity = 2
 
-	var/obj/structure/interactive/drop_pod/linked_pod //Optional.
+	//Drop Pod Stuff
+	var/obj/structure/interactive/drop_pod/linked_pod
 	var/x_drop = 0
 	var/y_drop = 0
 	var/z_drop = 0
+
+	//Shuttle stuff.
+	var/obj/shuttle_controller/linked_shuttle_controller
 
 	var/map_z = 1
 
 /obj/hud/button/map_background/clicked_on_by_object(var/mob/caller,var/atom/caller,location,control,params)
 	return TRUE
 
-/obj/hud/button/map_background/New(var/desired_loc,var/desired_pod)
+/obj/hud/button/map_background/New(var/desired_loc,var/desired_pod,var/desired_shuttle_controller)
 
 	connected_map = new(desired_loc)
 	connected_map.connected_background = src
@@ -134,6 +192,12 @@
 	if(desired_pod)
 		linked_pod = desired_pod
 		connected_controls += new /obj/hud/button/map_control/launch(desired_loc)
+
+	if(desired_shuttle_controller)
+		linked_shuttle_controller = desired_shuttle_controller
+		connected_controls += new /obj/hud/button/map_control/launch(desired_loc)
+		connected_controls += new /obj/hud/button/map_control/base(desired_loc)
+
 
 	for(var/k in connected_controls)
 		var/obj/hud/button/map_control/B = k
@@ -151,7 +215,7 @@
 			connected_map = null
 		else
 			var/turf/T = get_turf(owner)
-			if(linked_pod)
+			if(linked_pod || linked_shuttle_controller)
 				map_z = 1
 			else
 				map_z = T.z
@@ -168,15 +232,15 @@
 				y_drop = connected_map.offset_y
 				z_drop = map_z
 
-
-
 			connected_map.update_map(map_z)
+			connected_map.update_sprite()
 
 		for(var/k in connected_controls)
 			var/obj/hud/button/B = k
 			B.update_owner(owner)
 			if(owner == null)
 				connected_controls -= k
+
 
 /obj/hud/button/map_control/
 	name = "map control"
@@ -204,27 +268,71 @@
 
 	if(!M || close || launch)
 		. = ..()
+		if(connected_background.linked_shuttle_controller)
+			if(launch && close) //Return to base.
+				if(connected_background.linked_shuttle_controller)
+					if(connected_background.linked_shuttle_controller.state != SHUTTLE_STATE_LANDED)
+						caller.to_chat(span("warning","Error: Flight plan already set."))
+						return FALSE
+					connected_background.linked_shuttle_controller.transit_marker_destination = connected_background.linked_shuttle_controller.transit_marker_base
+					connected_background.linked_shuttle_controller.state = SHUTTLE_STATE_WAITING
+					connected_background.update_owner(null)
+					return TRUE
+			else if(launch) //Go to target.
+				if(connected_background.linked_shuttle_controller)
+					if(!SSgamemode.active_gamemode.allow_launch)
+						caller.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+						return FALSE
+					if(connected_background.linked_shuttle_controller.state != SHUTTLE_STATE_LANDED)
+						caller.to_chat(span("warning","Error: Flight plan already set."))
+						return FALSE
+					if(!connected_background || !connected_background.linked_shuttle_controller.transit_marker_destination)
+						caller.to_chat(span("warning","Invalid launch destination: No destination selected."))
+						return FALSE
+					if(connected_background.linked_shuttle_controller.transit_marker_destination.reserved)
+						caller.to_chat(span("warning","Invalid launch destination: Landing area is reserved."))
+						return FALSE
+					connected_background.linked_shuttle_controller.transit_marker_destination.reserved = TRUE
+					connected_background.linked_shuttle_controller.state = SHUTTLE_STATE_WAITING
+					connected_background.update_owner(null)
+					return TRUE
+			else if(close)
+				connected_background.update_owner(null)
+				return TRUE
+
 		if(connected_background.linked_pod)
 			if(launch)
+				if(!SSgamemode.active_gamemode.allow_launch)
+					caller.to_chat(span("warning","Error: Drop pods are not ready to launch yet."))
+					return FALSE
+				if(!connected_background || !connected_background.z_drop)
+					caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
+					return FALSE
 				var/turf/T = locate(connected_background.x_drop,connected_background.y_drop,connected_background.z_drop)
 				if(!T)
-					caller.to_chat(span("warning","Error: Invalid launch location."))
+					caller.to_chat(span("warning","Invalid drop location: Out of bounds."))
 					return FALSE
 				if(!T.is_safe_teleport())
 					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
 					return FALSE
 				var/turf/T2 = get_step(T,SOUTH)
-				if(!T2.is_safe_teleport())
+				if(!T2 || !T2.is_safe_teleport())
 					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
 					return FALSE
 				var/area/A = T.loc
 				if(A.interior)
-					caller.to_chat(span("warning","Invalid drop location: This area has a roof."))
+					caller.to_chat(span("warning","Invalid drop location: Obstructed area."))
 					return FALSE
 				connected_background.linked_pod.set_state(caller,POD_LAUNCHING,T)
-			if(close)
+				connected_background.update_owner(null)
+				return TRUE
+			else if(close)
 				connected_background.linked_pod.set_state(caller,POD_IDLE)
+				connected_background.update_owner(null)
+				return TRUE
+
 		connected_background.update_owner(null)
+
 		return .
 
 	M.offset_x += (offset_x*VIEW_RANGE*3) / M.current_zoom
@@ -238,52 +346,59 @@
 	name = "close map"
 	icon_state = "close"
 	close = 1
-	screen_loc = "CENTER+5,CENTER-4"
+	screen_loc = "CENTER+3,BOTTOM+2"
 
 /obj/hud/button/map_control/launch
 	name = "launch"
 	icon_state = "launch"
 	launch = 1
-	screen_loc = "CENTER+5,CENTER-5"
+	screen_loc = "CENTER-2,BOTTOM+2"
+
+/obj/hud/button/map_control/base
+	name = "return to base"
+	icon_state = "base"
+	launch = 1
+	close = 1
+	screen_loc = "CENTER-3,BOTTOM+2"
 
 /obj/hud/button/map_control/up
 	name = "scroll up"
 	icon_state = "arrow"
 	dir = NORTH
 	offset_y = 1
-	screen_loc = "CENTER,CENTER-4"
+	screen_loc = "CENTER,BOTTOM+3"
 
 /obj/hud/button/map_control/down
 	name = "scroll down"
 	icon_state = "arrow"
 	dir = SOUTH
 	offset_y = -1
-	screen_loc = "CENTER,CENTER-5"
+	screen_loc = "CENTER,BOTTOM+2"
 
 /obj/hud/button/map_control/right
 	name = "scroll right"
 	icon_state = "arrow"
 	dir = EAST
 	offset_x = 1
-	screen_loc = "CENTER+1,CENTER-5"
+	screen_loc = "CENTER+1,BOTTOM+2"
 
 /obj/hud/button/map_control/left
 	name = "scroll left"
 	icon_state = "arrow"
 	dir = WEST
 	offset_x = -1
-	screen_loc = "CENTER-1,CENTER-5"
+	screen_loc = "CENTER-1,BOTTOM+2"
 
 /obj/hud/button/map_control/zoom_in
 	name = "zoom in"
 	icon_state = "plus"
 	dir = NORTH
 	zoom = 1
-	screen_loc = "CENTER+2,CENTER-4"
+	screen_loc = "CENTER+2,BOTTOM+3"
 
 /obj/hud/button/map_control/zoom_out
 	name = "zoom out"
 	icon_state = "minus"
 	dir = NORTH
 	zoom = -1
-	screen_loc = "CENTER+2,CENTER-5"
+	screen_loc = "CENTER+2,BOTTOM+2"

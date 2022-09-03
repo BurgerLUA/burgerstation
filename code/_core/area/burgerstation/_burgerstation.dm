@@ -48,7 +48,7 @@
 
 	sound_environment = ENVIRONMENT_ALLEY
 
-	map_color = COLOR_YELLOW
+	map_color = COLOR_GREY_LIGHT
 
 /area/burgerstation/hall/north
 	name = "\improper North Hallway"
@@ -411,6 +411,22 @@
 /area/burgerstation/maint/disposals
 	name = "\improper Disposals Maintenance"
 	icon_state = "disposals"
+
+/area/burgerstation/chess
+	name = "\improper Chess"
+	icon_state = "disposals"
+	ambient_sound = 'sound/ambient/vents_loop.ogg'
+
+	random_sounds = list(
+		'sound/ambient/maint_1.ogg',
+		'sound/ambient/maint_2.ogg'
+	)
+
+	default_state_power_lights = OFF
+
+	map_color = COLOR_ORANGE
+
+	sound_environment = ENVIRONMENT_BATHROOM
 
 /area/burgerstation/pvp
 	name = "ERROR"

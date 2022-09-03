@@ -7,7 +7,7 @@
 	name = "large beaker"
 	icon = 'icons/obj/item/container/cup/beaker_large.dmi'
 	icon_state = "beaker"
-	icon_count = 12
+	icon_count = 10
 
 	reagents = /reagent_container/beaker/large
 

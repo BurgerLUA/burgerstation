@@ -7,6 +7,9 @@ SUBSYSTEM_DEF(ore)
 
 	set background = 1
 
+	if(CONFIG("ENABLE_INSTALOAD",FALSE))
+		return FALSE
+
 	var/spawned_ore_chunks = 0
 
 	for(var/turf/simulated/floor/S in world)
@@ -18,6 +21,7 @@ SUBSYSTEM_DEF(ore)
 		INITIALIZE(GOD)
 		GENERATE(GOD)
 		spawned_ore_chunks++
+		sleep(-1)
 
 	for(var/turf/simulated/wall/rock/S in world)
 		if(!S.organic || !S.health)
@@ -29,6 +33,7 @@ SUBSYSTEM_DEF(ore)
 		GENERATE(WOD)
 		FINALIZE(WOD)
 		spawned_ore_chunks++
+		sleep(-1)
 
 	log_subsystem(name,"Spawned [spawned_ore_chunks] ore chunks.")
 

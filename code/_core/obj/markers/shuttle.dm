@@ -4,16 +4,11 @@ var/global/list/shuttle_markers = list()
 	name = "shuttle transit position"
 	icon = 'icons/obj/markers/markers.dmi'
 	icon_state = "shuttle"
+	var/reserved = FALSE
+	invisibility = 0
+	mouse_opacity = 2
+	alpha = 255
 
 /obj/marker/shuttle/New(var/desired_loc)
 	. = ..()
-	shuttle_markers[src.type] = src
-
-/obj/marker/shuttle/station/
-	name = "station shuttle position"
-
-/obj/marker/shuttle/station/transit
-	name = "transit position"
-
-/obj/marker/shuttle/station/destination
-	name = "station shuttle position"
+	shuttle_markers += src

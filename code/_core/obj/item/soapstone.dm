@@ -29,6 +29,9 @@
 /obj/item/soapstone/blue
 	color = "#0094FF"
 
+/obj/item/soapstone/green
+	color = "#527F46"
+
 /obj/item/soapstone/update_icon()
 	. = ..()
 	icon = initial(icon)

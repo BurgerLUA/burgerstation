@@ -98,9 +98,6 @@
 
 	handle_transform()
 
-	if(health && health.health_current <= -health.health_max*3 && health.health_max >= 100)
-		play_sound('sound/effects/impacts/superhit.ogg',T)
-
 	return TRUE
 
 
@@ -288,7 +285,8 @@
 		desired_heartrate -= min(pain_removal,40)
 
 		if(abs(desired_heartrate - 60) > 30)
-			play_sound('sound/effects/heartbeat_single.ogg',src,pitch=0.5 + (60/desired_heartrate)*0.5)
+			var/turf/T = get_turf(src)
+			play_sound('sound/effects/heartbeat_single.ogg',T,list(src),pitch=0.5 + (60/desired_heartrate)*0.5,volume=10)
 		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
 
 
@@ -536,7 +534,7 @@ mob/living/proc/on_life_slow()
 	stamina_regen_delay = max(0,stamina_regen_delay - delay_mod)
 	mana_regen_delay = max(0,mana_regen_delay - delay_mod)
 
-	var/nutrition_hydration_mod = 0.25 + get_nutrition_quality_mod()*0.75
+	var/nutrition_hydration_mod = 1 + get_nutrition_quality_mod()
 	var/player_controlled = is_player_controlled()
 
 	var/trait/general_regen/GR = get_trait_by_category(/trait/general_regen/)

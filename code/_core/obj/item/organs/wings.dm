@@ -9,5 +9,5 @@
 
 /obj/item/organ/wings/moth
 	name = "moth wings"
-	icon = 'icons/mob/living/advanced/hair/moth_wings.dmi'
-	icon_state = "m_moth_wings_plain"
+	icon = 'icons/mob/living/advanced/hair/moth_hair_face.dmi'
+	icon_state = "none"

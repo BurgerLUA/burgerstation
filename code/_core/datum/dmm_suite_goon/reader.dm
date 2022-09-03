@@ -1,15 +1,3 @@
-
-
-//-- Reader for loading DMM files at runtime -----------------------------------
-/datum/loadedProperties
-	var/info = ""
-	var/sourceX = 0
-	var/sourceY = 0
-	var/sourceZ = 0
-	var/maxX = 0
-	var/maxY = 0
-	var/maxZ = 0
-
 dmm_suite
 
 	/*-- read_map ------------------------------------
@@ -18,134 +6,144 @@ dmm_suite
 	coordinates saved with the map will be used. Otherwise, coordinates will
 	default to (1, 1, world.maxz+1)
 	*/
-	read_map(dmm_text as text, coordX as num, coordY as num, coordZ as num, tag as text, overwrite as num)
-		var/datum/loadedProperties/props = new()
-		props.sourceX = coordX
-		props.sourceY = coordY
-		props.sourceZ = coordZ
-		props.info = tag
+	read_map(dmm_text as text, coordX as num, coordY as num, coordZ as num, tag as text, overwrite as num, angleOffset as num)
+		. = 0
+		if(angleOffset)
+			angleOffset = MODULUS(round(angleOffset,90), 360)
+		else
+			angleOffset = 0
 		// Split Key/Model list into lines
-		var key_len
-		var /list/grid_models[0]
-		var startGridPos = findtext(dmm_text, "\n\n(1,1,") // Safe because \n not allowed in strings in dmm
-		var startData = findtext(dmm_text, "\"")
-		var linesText = copytext(dmm_text, startData + 1, startGridPos)
-		var /list/modelLines = splittext(linesText, regex(@{"\n\""}))
+		var/key_len
+		var/list/grid_models[0]
+		var/startGridPos = findtext(dmm_text, "\n\n(1,1,") // Safe because \n not allowed in strings in dmm
+		var/startData = findtext(dmm_text, "\"")
+		var/linesText = copytext(dmm_text, startData + 1, startGridPos)
+		var/list/modelLines = splittext(linesText, regex(@{"\n\""}))
+		//Go through all the map keys and set them up properly.
 		for(var/modelLine in modelLines) // "aa" = (/path{key = value; key = value},/path,/path)\n
-			var endQuote = findtext(modelLine, quote, 2, 0)
+			var/endQuote = findtext(modelLine, quote, 2, 0)
 			if(endQuote <= 1)
 				continue
-			var modelKey = copytext(modelLine, 1, endQuote)
-			if(isnull(key_len))
+			var/modelKey = copytext(modelLine, 1, endQuote)
+			if(!key_len)
 				key_len = length(modelKey)
-			var modelsStart = findtextEx(modelLine, "/") // Skip key and first three characters: "aa" = (
-			var modelContents = copytext(modelLine, modelsStart, length(modelLine)) // Skip last character: )
-			grid_models[modelKey] = modelContents
+			var/modelsStart = findtextEx(modelLine, "/") // Skip key and first three characters: "aa" = (
+			var/modelContents = copytext(modelLine, modelsStart, length(modelLine)) // Skip last character: )
+			grid_models[modelKey] = modelContents //We have now stored the key representing the turf.
 			sleep(-1)
-		// Retrieve Comments, Determine map position (if not specified)
-		var commentModel = modelLines[1] // The comment key will always be first.
-		var bracketPos = findtextEx(commentModel, "}")
-		commentModel = copytext(commentModel, findtextEx(commentModel, "=")+3, bracketPos) // Skip opening bracket
-		var commentPathText = "[/obj/dmm_suite/comment]"
-		if(copytext(commentModel, 1, length(commentPathText)+1) == commentPathText)
-			var attributesText = copytext(commentModel, length(commentPathText)+2, -1) // Skip closing bracket
-			var /list/paddedAttributes = splittext(attributesText, semicolon_delim) // "Key = Value"
-			for(var/paddedAttribute in paddedAttributes)
-				var equalPos = findtextEx(paddedAttribute, "=")
-				var attributeKey = copytext(paddedAttribute, 1, equalPos-1)
-				var attributeValue = copytext(paddedAttribute, equalPos+3, -1) // Skip quotes
-				switch(attributeKey)
-					if("coordinates")
-						var /list/coords = splittext(attributeValue, comma_delim)
-						if(!coordX) coordX = text2num(coords[1])
-						if(!coordY)	coordY = text2num(coords[2])
-						if(!coordZ) coordZ = text2num(coords[3])
 		if(!coordX) coordX = 1
 		if(!coordY) coordY = 1
 		if(!coordZ) coordZ = world.maxz+1
 		// Store quoted portions of text in text_strings, and replaces them with an index to that list.
-		var gridText = copytext(dmm_text, startGridPos)
-		var /list/gridLevels = list()
-		var /regex/grid = regex(@{"\(([0-9]*),([0-9]*),([0-9]*)\) = \{"\n((?:\l*\n)*)"\}"}, "g")
-		var /list/coordShifts = list()
-		var/maxZFound = 1
+		var/gridText = copytext(dmm_text, startGridPos)
+		if(key_len < 1) CRASH("key_len was impossibly less than 1 ([key_len])!")
+		var/maxXFound = 0
+		var/maxYFound = 0
+		var/maxZFound = 0
+		//TGM AND DMM ARE NOT THE SAME IN TERMS OF (1,1,1) COORDS. GOD HELP ME.
+		//Below 3 vars help with determining the format.
+		/*
+		var/tgm_format = TRUE
+		var/last_x
+		var/last_z
+		*/
+		var/list/gridLevels = list()
+		var/list/coordShifts = list()
+		var/regex/grid = regex(@{"\(([0-9]*),([0-9]*),([0-9]*)\) = \{"\n((?:[A-z]*\n)*)"\}"}, "g") //Retrieve the coord line thing.
+		//Positioned Keys:             1        2        3                    4
 		while(grid.Find(gridText))
-			gridLevels.Add(copytext(grid.group[4], 1, -1)) // Strip last \n
-			coordShifts.Add(list(list(grid.group[1], grid.group[2], grid.group[3])))
-			maxZFound = max(maxZFound, text2num(grid.group[3]))
-		// Create all Atoms at map location, from model key
-		if ((coordZ+maxZFound-1) > world.maxz)
-			world.maxz = coordZ+maxZFound-1
-			//all_mobs_with_clients_by_z["[world.maxz]"] = list()
+			grid.group[1] = text2num(grid.group[1]) - 1
+			grid.group[2] = text2num(grid.group[2]) - 1
+			grid.group[3] = text2num(grid.group[3]) - 1
+			gridLevels.Add(copytext(grid.group[4], 1, -1)) // Strip last \n.
+			coordShifts.Add(
+				list(
+					list(grid.group[1], grid.group[2], grid.group[3])
+				)
+			)
+			maxZFound = max(maxZFound, grid.group[3]+1)
+
+		if(maxZFound+(coordZ-1) > world.maxz)
+			world.maxz = maxZFound+(coordZ-1)
 			log_debug("Z levels increased to [world.maxz].")
-		for(var/posZ = 1 to gridLevels.len)
-			CHECK_TICK_SAFE(50,FPS_SERVER)
-			var zGrid = gridLevels[posZ]
-			// Reverse Y coordinate
-			var /list/yReversed = text2list(zGrid, "\n")
-			var /list/yLines = list()
-			for(var/posY = yReversed.len to 1 step -1)
-				yLines.Add(yReversed[posY])
-			//
-			var yMax = yLines.len+(coordY-1)
-			if(world.maxy < yMax)
-				var/old_value = world.maxy
-				world.maxy = yMax
-				log_debug("[tag] caused map resize (Y [old_value] to [world.maxy]) during prefab placement" )
-			var exampleLine = pick(yLines)
-			var xMax = length(exampleLine)/key_len+(coordX-1)
-			if(world.maxx < xMax)
-				var/old_value = world.maxx
-				world.maxx = xMax
-				log_debug("[tag] caused map resize (X [old_value] to [world.maxx]) during prefab placement" )
 
-			props.maxX = xMax
-			props.maxY = yMax
-			props.maxZ = world.maxz
+		var/debug_x = 0
+		var/debug_y = 0
+		var/debug_z = 0
+		for(var/posZ=1,posZ<=length(gridLevels),posZ++)
+			debug_z = max(debug_z,posZ)
+			var/zGrid = reverseList(text2list(gridLevels[posZ], "\n"))
 
-			var/gridCoordX = text2num(coordShifts[posZ][1]) + coordX - 1
-			var/gridCoordY = text2num(coordShifts[posZ][2])  + coordY - 1
-			var/gridCoordZ = text2num(coordShifts[posZ][3])  + coordZ - 1
+			maxXFound = max(length(pick(zGrid))/key_len,length(gridLevels))
+			if(world.maxx < maxXFound+(coordX-1))
+				world.maxx = maxXFound+(coordX-1)
+				log_debug("X level increased to [world.maxx].")
 
-			if(overwrite)
-				for(var/posY = 1 to yLines.len)
-					var yLine = yLines[posY]
-					for(var/posX = 1 to length(yLine)/key_len)
-						CHECK_TICK_SAFE(50,FPS_SERVER)
-						var/turf/T = locate(posX + gridCoordX - 1, posY+gridCoordY - 1, gridCoordZ)
-						for(var/k in T)
-							CHECK_TICK_SAFE(50,FPS_SERVER)
-							var/datum/x = k
-							if(overwrite & DMM_OVERWRITE_OBJS && istype(x, /obj))
-								qdel(x)
-								if(overwrite & DMM_OVERWRITE_MARKERS && istype(x,/obj/marker/))
-									qdel(x)
-							else if(overwrite & DMM_OVERWRITE_MOBS && istype(x, /mob))
-								qdel(x)
+			maxYFound = length(zGrid)
+			if(world.maxy < maxYFound+(coordY-1))
+				world.maxy = maxYFound+(coordY-1)
+				log_debug("Y level increased to [world.maxy].")
+
+			var/coord_shift_x = coordShifts[posZ][1]
+			var/coord_shift_y = coordShifts[posZ][2]
+			var/coord_shift_z = coordShifts[posZ][3]
+
+			//posX and posY represent the location WITHIN THE DMM GRID SYSTEM and NOT the actual location
+			for(var/posY=1,posY<=length(zGrid),posY++)
+				var/y_line = zGrid[posY]
+				debug_y = max(debug_y,posY)
+				for(var/posX=1,posX<=length(y_line)/key_len,posX++)
+					debug_x = max(debug_x,posX)
+
+					var/offset_x = 0
+					var/offset_y = 0
+					var/offset_z = coord_shift_z
+
+					switch(angleOffset)
+						if(0)
+							offset_x = posX + coord_shift_x
+							offset_y = posY + coord_shift_y
+						if(90)
+							offset_x = posY + coord_shift_y
+							offset_y = maxXFound - (posX + coord_shift_x) + 1
+						if(180)
+							offset_x = maxXFound - (posX + coord_shift_x) + 1
+							offset_y = maxYFound - (posY + coord_shift_y) + 1
+						if(270)
+							offset_x = maxYFound - (posY + coord_shift_y) + 1
+							offset_y = posX + coord_shift_x
+
+					var/keyPos = ((posX-1)*key_len)+1
+					var/modelKey = copytext(y_line, keyPos, keyPos+key_len)
+
+					var/loc_x = (coordX-1) + offset_x
+					var/loc_y = (coordY-1) + offset_y
+					var/loc_z = (coordZ) + offset_z
 
 
-			for(var/posY = 1 to yLines.len)
-				var yLine = yLines[posY]
-				for(var/posX = 1 to length(yLine)/key_len)
-					CHECK_TICK_SAFE(50,FPS_SERVER)
-					var keyPos = ((posX-1)*key_len)+1
-					var modelKey = copytext(yLine, keyPos, keyPos+key_len)
-					parse_grid(
-						grid_models[modelKey], posX + gridCoordX - 1, posY + gridCoordY - 1, gridCoordZ
+					var/turf/location = locate(
+						loc_x,
+						loc_y,
+						loc_z
 					)
+					if(!location)
+						CRASH("dmm_suite: Invalid location! ([loc_x],[loc_y],[loc_z])")
+					var/result = parse_grid(
+						grid_models[modelKey],
+						location,
+						angleOffset,
+						overwrite
 
+					)
+					if(!result)
+						log_error("Could not parse modelKey \"[html_encode(modelKey)]\" in coords ([posX],[posY],[posZ])!\nLine: \"[y_line]\"")
+						break
+					else
+						. += result
 
-		//
-		return props
+					CHECK_TICK_SAFE(50,FPS_SERVER)
 
-	/*-- load_map ------------------------------------
-	Deprecated. Use read_map instead.
-	*/
-	load_map(dmm_file as file, z_offset as num)
-		if(!z_offset) z_offset = world.maxz+1
-		var dmmText = file2text(dmm_file)
-		return read_map(dmmText, 1, 1, z_offset)
-
+		return .
 
 //-- Supplemental Methods ------------------------------------------------------
 
@@ -156,108 +154,102 @@ dmm_suite
 		regex/key_value_regex = new("^\[\\s\\r\\n\]*(\[^=\]*?)\[\\s\\r\\n\]*=\[\\s\\r\\n\]*(.*?)\[\\s\\r\\n\]*$")
 
 	proc
-		parse_grid(models as text, xcrd, ycrd, zcrd)
+		parse_grid(models as text, var/turf/location, angleOffset, overwrite, debug)
+			if(debug)
+				log_debug("Parsing grid: \"[models]\" at [location ? location.get_debug_name() : "NULL"]")
+			. = 0
 			/* Method parse_grid() - Accepts a text string containing a comma separated list
 				of type paths of the same construction as those contained in a .dmm file, and
 				instantiates them.*/
 			// Store quoted portions of text in text_strings, and replace them with an index to that list.
-			var /list/originalStrings = list()
-			var /regex/noStrings = regex("(\[\"\])(?:(?=(\\\\?))\\2(.|\\n))*?\\1")
-			var stringIndex = 1
-			var found
+			var/list/originalStrings = list()
+			var/regex/noStrings = regex("(\[\"\])(?:(?=(\\\\?))\\2(.|\\n))*?\\1")
+			var/stringIndex = 1
+			var/found
 			do
 				found = noStrings.Find(models, noStrings.next)
 				if(found)
-					var indexText = {""[stringIndex]""}
+					var/indexText = {""[stringIndex]""}
 					stringIndex++
-					var match = copytext(noStrings.match, 2, -1) // Strip quotes
+					var/match = copytext(noStrings.match, 2, -1) // Strip quotes
 					models = noStrings.Replace(models, indexText, found)
 					originalStrings[indexText] = (match)
 			while(found)
 			// Identify each object's data, instantiate it, & reconstitues its fields.
-			var /list/turfStackTypes = list()
-			var /list/turfStackAttributes = list()
 			for(var/atomModel in splittext(models, comma_delim))
-				var bracketPos = findtext(atomModel, "{")
-				var atomPath = text2path(copytext(atomModel, 1, bracketPos))
-				var /list/attributes
+				var/bracketPos = findtext(atomModel, "{")
+				var/atomPath = text2path(copytext(atomModel, 1, bracketPos))
+				var/list/attributes
 				if(bracketPos)
 					attributes = new()
-					var attributesText = copytext(atomModel, bracketPos+1, -1)
-					var /list/paddedAttributes = splittext(attributesText, semicolon_delim) // "Key = Value"
+					var/attributesText = copytext(atomModel, bracketPos+1, -1)
+					var/list/paddedAttributes = splittext(attributesText, semicolon_delim) // "Key = Value"
 					for(var/paddedAttribute in paddedAttributes)
 						key_value_regex.Find(paddedAttribute)
 						attributes[key_value_regex.group[1]] = key_value_regex.group[2]
-				if(!ispath(atomPath, /turf))
-					loadModel(atomPath, attributes, originalStrings, xcrd, ycrd, zcrd)
-				else
-					turfStackTypes.Insert(1, atomPath)
-					turfStackAttributes.Insert(1, null)
-					turfStackAttributes[1] = attributes
-			// Layer all turf appearances into final turf
-			if(!turfStackTypes.len) return
-			var /turf/topTurf = loadModel(turfStackTypes[1], turfStackAttributes[1], originalStrings, xcrd, ycrd, zcrd)
-			for(var/turfIndex = 2 to turfStackTypes.len)
-				var /mutable_appearance/underlay = new(turfStackTypes[turfIndex])
-				loadModel(underlay, turfStackAttributes[turfIndex], originalStrings, xcrd, ycrd, zcrd)
-				topTurf.underlays.Add(underlay)
+				. += loadModel(atomPath, attributes, originalStrings, location, angleOffset, debug)
 
-		loadModel(atomPath, list/attributes, list/strings, xcrd, ycrd, zcrd)
+		loadModel(atomPath, list/attributes, list/strings, var/turf/location, angleOffset, debug)
 			// Cancel if atomPath is a placeholder (DMM_IGNORE flags used to write file)
 			if(ispath(atomPath, /turf/dmm_suite/clear_turf) || ispath(atomPath, /area/dmm_suite/clear_area))
-				return
+				if(debug) log_debug("Canceling due to clear area/turf...")
+				return 1
 			// Parse all attributes and create preloader
-			var /list/attributesMirror = list()
-			var /turf/location = locate(xcrd, ycrd, zcrd)
+			var/list/attributesMirror = list()
+			if(!location)
+				CRASH("Invalid loadModel location!")
+				return 0
+
 			for(var/attributeName in attributes)
 				attributesMirror[attributeName] = loadAttribute(attributes[attributeName], strings)
-			var /dmm_suite/preloader/preloader = new(location, attributesMirror)
+			var/dmm_suite/preloader/preloader = new(location, attributesMirror)
 			// Begin Instanciation
 			// Handle Areas (not created every time)
-			var /atom/instance
-			if(ispath(atomPath, /area))
-				//instance = locate(atomPath)
-				//instance.contents.Add(locate(xcrd, ycrd, zcrd))
-				new atomPath(locate(xcrd, ycrd, zcrd))
+			var/atom/instance
+			if(ispath(atomPath, /area)) //Don't set instances for areas.
+				if(ispath(atomPath,/area/shuttle))
+					location.transit_area = location.loc.type //Old area type.
+				new atomPath(location)
 				location.dmm_preloader = null
+				return 1
+
 			// Handle Underlay Turfs
-			else if(istype(atomPath, /mutable_appearance))
-				instance = atomPath // Skip to preloader manual loading.
-				preloader.load(instance)
-			// Handle Turfs & Movable Atoms
-			else
-				if(ispath(atomPath, /turf))
-					if(ispath(atomPath, /turf/dmm_suite/no_wall))
-						if(is_simulated(location))
-							var/turf/simulated/S = location
-							if(S.density)
-								if(S.destruction_turf)
-									instance = new S.destruction_turf(location)
-								else
-									instance = new /turf/simulated/floor/cave_dirt(location)
-						else if(istype(location,/turf/unsimulated/generation))
-							var/turf/unsimulated/generation/G = location
-							G.allow_wall = FALSE
-						else
-							instance = new /turf/simulated/floor/cave_dirt(location)
+			if(ispath(atomPath, /turf))
+				if(ispath(atomPath, /turf/dmm_suite/no_wall))
+					if(is_simulated(location))
+						var/turf/simulated/S = location
+						if(S.density)
+							if(S.destruction_turf)
+								instance = new S.destruction_turf(location)
+							else
+								instance = new /turf/simulated/floor/cave_dirt(location)
+					else if(istype(location,/turf/unsimulated/generation))
+						var/turf/unsimulated/generation/G = location
+						G.density = FALSE
 					else
-						instance = new atomPath(location)
-						//instance = location.ReplaceWith(atomPath, keep_old_material = 0, handle_air = 0, handle_dir = 0)
+						instance = new /turf/simulated/floor/cave_dirt(location)
 				else
-					if (atomPath)
-						instance = new atomPath(location)
-			// Handle cases where Atom/New was redifined without calling Super()
-			if(preloader && instance) // Atom could delete itself in New()
-				preloader.load(instance)
-			//
-			return instance
+					var/turf/old_turf_type = location.type
+					instance = new atomPath(location)
+					if(instance.plane == PLANE_SHUTTLE)
+						location.transit_turf = old_turf_type
+			else if(atomPath)
+				instance = new atomPath(location)
+			if(instance)
+				if(preloader) // Atom could delete itself in New(), or the instance could be an area.
+					preloader.load(instance)
+				if(angleOffset)
+					instance.dir = turn(instance.dir,-angleOffset)
+					instance.on_dmm_suite_rotate(angleOffset)
+
+			return (instance ? TRUE : FALSE)
 
 		loadAttribute(value, list/strings)
 			//Check for string
 			if(copytext(value, 1, 2) == "\"")
 				return strings[value]
 			//Check for number
-			var num = text2num(value)
+			var/num = text2num(value)
 			if(isnum(num))
 				return num
 			//Check for file
@@ -276,7 +268,7 @@ turf
 
 atom/New(turf/newLoc)
     if(isturf(newLoc))
-        var /dmm_suite/preloader/preloader = newLoc.dmm_preloader
+        var/dmm_suite/preloader/preloader = newLoc.dmm_preloader
         if(preloader)
             newLoc.dmm_preloader = null
             preloader.load(src)
@@ -293,6 +285,6 @@ dmm_suite
 			. = ..()
 		proc
 			load(atom/newAtom)
-				var /list/attributesMirror = attributes // apparently this is faster
+				var/list/attributesMirror = attributes // apparently this is faster
 				for(var/attributeName in attributesMirror)
 					newAtom.vars[attributeName] = attributesMirror[attributeName]

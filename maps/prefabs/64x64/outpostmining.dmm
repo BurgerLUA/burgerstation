@@ -126,7 +126,7 @@
 /turf/simulated/floor/plating,
 /area/prefab/syndimining)
 "cU" = (
-/obj/structure/interactive/vending/junk/full,
+/obj/structure/interactive/vending/junk/nanotrasen,
 /turf/simulated/floor/tile/morphing/library,
 /area/prefab/syndimining)
 "df" = (
@@ -289,11 +289,6 @@
 /mob/living/simple/bot/medibot/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/prefab/syndimining)
-"js" = (
-/obj/structure/table,
-/obj/item/container/simple/hearty_punch,
-/turf/simulated/floor/tile/morphing/library,
-/area/prefab/syndimining)
 "jH" = (
 /obj/structure/interactive/chair{
 	dir = 1
@@ -340,7 +335,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/prefab/syndimining)
 "kj" = (
-/obj/structure/interactive/vending/soda/full,
+/obj/structure/interactive/vending/soda/nanotrasen,
 /turf/simulated/floor/tile/morphing/library,
 /area/prefab/syndimining)
 "kl" = (
@@ -867,10 +862,6 @@
 /obj/structure/interactive/plastic_flaps,
 /turf/simulated/floor/plating,
 /area/prefab/syndimining)
-"Bx" = (
-/obj/structure/table,
-/turf/simulated/floor/tile/morphing/library,
-/area/prefab/syndimining)
 "BB" = (
 /obj/decal/tile/cross/red,
 /obj/structure/interactive/chair/stool/bar,
@@ -1149,7 +1140,6 @@
 /area/prefab/syndimining)
 "LJ" = (
 /obj/structure/table,
-/obj/item/container/simple/coffee_liqueur,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 8
 	},
@@ -1433,7 +1423,6 @@
 /area/prefab/syndimining)
 "Vt" = (
 /obj/structure/table,
-/obj/item/container/simple/absinthe/premium,
 /turf/simulated/floor/tile/morphing/library,
 /area/prefab/syndimining)
 "Vv" = (
@@ -3701,7 +3690,7 @@ ew
 ew
 bh
 Vt
-js
+Vt
 hX
 Wg
 Wg
@@ -3965,9 +3954,9 @@ aa
 ew
 bh
 Wg
-Bx
+Vt
 LJ
-Bx
+Vt
 Wg
 Wg
 BB

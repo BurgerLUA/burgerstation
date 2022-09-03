@@ -42,8 +42,8 @@
 				announce(
 					"Central Command Mission Update",
 					"Prepare for Landfall",
-					"All landfall crew are ordered to gear up for planetside combat. Estimated time until drop pod functionality: 6 minutes.",
-					sound_to_play = 'sound/voice/announcement/landfall_crew_6_minutes.ogg'
+					"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 6 minutes.",
+					sound_to_play = 'sound/voice/announcement/landfall_crew_6_minutes_shuttle.ogg'
 				)
 			if(2)
 				status_display_text = "PREP"
@@ -52,7 +52,7 @@
 					"Central Command Mission Update",
 					"Drop Pod Boarding",
 					"All landfall crew are ordered to proceed to the hanger bay and prep for drop pod launch. Drop pods will be allowed to launch in 1 minute.",
-					sound_to_play = 'sound/voice/announcement/landfall_crew_1_minute.ogg'
+					sound_to_play = 'sound/voice/announcement/landfall_crew_1_minute_shuttle.ogg'
 				)
 			if(3)
 				status_display_text = "RDY"
@@ -63,29 +63,30 @@
 				announce(
 					"Central Command Mission Update",
 					"Mission is a Go",
-					"Drop pods are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",
-					sound_to_play = 'sound/voice/announcement/landfall_crew_0_minutes.ogg'
+					"Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",
+					sound_to_play = 'sound/voice/announcement/landfall_crew_0_minutes_shuttle.ogg'
 				)
 			if(4)
 				status_display_text = "BTTLE"
 				round_time_next = 40*60
+				/*
 				announce(
 					"Central Command Mission Update",
 					"Threat Detected",
 					"Unusual enemy combatants detected in the Area of Operations. All crew are instructed to remove the threat as needed.",
 					sound_to_play = 'sound/voice/announcement/landfall_crew_enemy_detected.ogg'
 				)
+				*/
 			if(5)
 				status_display_text = "EVAC"
 				round_time_next = 5*60
 				announce(
 					"Central Command Mission Update",
 					"Evacuation Orders",
-					"Incoming Ion Storm detected. All crew are recommended to evacuate the area. Failure to evacuate may result in-\n%@&^#*#^&STREAM INTERUPTED%&#(&#\n\
-					Hey, John Syndicate here. Ever wanted to kill your co-workers? How about blow their fucking brains out? Well, stick around and I'll disable those pesky\
-					IFF implants for you so you can beat the shit out of eachother. Want an incentive? Last person standing gets 80,000 credits.",
+					"Incoming Ion Storm detected. All crew are recommended to evacuate the area. Failure to evacuate may result in-\n%@&^#*#^&STREAM INTERUPTED%&#(&#",
 					sound_to_play = 'sound/voice/announcement/landfall_crew_evac_notice.ogg'
 				)
+				broadcast_to_clients(span("danger","PvP will be enabled in 5 minutes!"))
 			if(6)
 				SShorde.enable = FALSE
 				SSevents.enable = FALSE
@@ -107,26 +108,11 @@
 					number_of_players++
 
 				if(number_of_players <= 1 && world.port != 0)
-					if(number_of_players == 1)
-						announce(
-							"Syndicate Command Mission Update",
-							"Wow.",
-							"John Syndicate here. There is a bit of slight problem; only one of you decided to stay. We can't have brutal corporate sabotage deathmatch with just one person, so that's lame. OH WELL, time to move onto the next unsanctioned mission to sabotage."
-						)
-					else
-						announce(
-							"Syndicate Command Mission Update",
-							"Wow.",
-							"John Syndicate here. There is a bit ofa slight problem; none of you decided to stay. We can't have brutal corporate sabotage deathmatch with literally no one, so that's lame. OH WELL, time to move onto the next unsanctioned mission to sabotage."
-						)
+					broadcast_to_clients(span("danger","Not enough players for PvP. Ending round..."))
 					round_time_next = 0
 					world.end(WORLD_END_NANOTRASEN_VICTORY)
 				else
-					announce(
-						"Syndicate Command Mission Update",
-						"IFF Implants Disabled",
-						"John Syndicate here. I've disabled all IFF implants. We're sending drop pods containing premium tracking equipment to your location to speed this up. Don't stand under it. You have 10 minutes to kill eachother before I get bored and start sending Elite Operatives to take everyone out. I'll be checking every minute to see if you're all dead."
-					)
+					broadcast_to_clients(span("danger","PvP has been enabled!"))
 					set_friendly_fire(TRUE)
 					round_time_next = 10*60
 					pvp_start_time = world.time
@@ -166,18 +152,10 @@
 					last_person = P
 				if(number_of_players <= 1) //Last person standing.
 					if(number_of_players <= 0 || !last_person)
-						announce(
-							"Syndicate Command Mission Update",
-							"Uhh...",
-							"John Syndicate here. I don't know what the hell happened, but it appears that there is no one left. Did you kill eachother at once? Did you both leave? Fuck if I know, I'll have to look at the replays or some shit. Regardless, no one gets any money. OH WELL, time to move onto the next unsanctioned mission to sabotage."
-						)
+						broadcast_to_clients(span("danger","PvP ended due to all players leaving the area. No winner awarded."))
 						world.end(WORLD_END_NANOTRASEN_VICTORY)
 					else
-						announce(
-							"Syndicate Command Mission Update",
-							"We have a winner!",
-							"John Syndicate here. Seems we found ourselves a victor. [last_person.real_name], was it? Who the hell came up with that name? Whatever, they get the 80,000 credits- and a crown, why the hell not?"
-						)
+						broadcast_to_clients(span("danger","PvP ended due to one person left standing. [last_person.real_name] was awarded 80,000 credits."))
 						world.end(WORLD_END_NANOTRASEN_VICTORY)
 						last_person.adjust_currency(80000)
 						var/turf/T = get_turf(last_person)
@@ -196,11 +174,7 @@
 
 		if(stage == 6 && pvp_start_time > 0 && world.time >= pvp_start_time + SECONDS_TO_DECISECONDS(600))
 			if(!boredom_warning)
-				announce(
-					"Syndicate Command Mission Update",
-					"Zzzz.",
-					"John Syndicate here. I'm starting to get bored, so I'm going to occassionally send in my worst best operatives to speed things up. Hope you like drop pods that land directly on you."
-				)
+				broadcast_to_clients(span("danger","PvP has lasted more than 10 minutes; sending Syndicate deathsquads."))
 			else
 				for(var/k in all_players)
 					var/mob/living/advanced/player/P = k

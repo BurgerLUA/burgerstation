@@ -3,6 +3,8 @@
 
 /proc/create_blood(var/obj/effect/cleanable/blood/desired_effect, var/turf/simulated/desired_loc,var/desired_color = "#FFFFFF",var/desired_x=0,var/desired_y=0,var/bypass_blood_limit=FALSE)
 
+	if(!desired_loc)
+		CRASH("No desired_loc provided!")
 
 	//var/turf/actual_turf = desired_loc
 
@@ -20,6 +22,9 @@
 
 	var/tile_offset_x = FLOOR(desired_x/TILE_SIZE,1)
 	var/tile_offset_y = FLOOR(desired_y/TILE_SIZE,1)
+
+	desired_x = FLOOR(desired_x,1)
+	desired_y = FLOOR(desired_y,1)
 
 	if(tile_offset_x || tile_offset_y)
 		desired_loc = locate(desired_loc.x + tile_offset_x, desired_loc.y + tile_offset_y, desired_loc.z)

@@ -142,3 +142,16 @@
 
 	color = "#FFFFFF"
 	map_color = "#AAAAAA"
+
+
+/turf/simulated/wall/metal/circuit
+	name = "techno steel wall"
+	icon = 'icons/turf/wall/metal/circuit.dmi'
+	icon_state = "wall"
+	corner_icons = TRUE
+
+	destruction_turf = /turf/simulated/floor/plating
+
+	color = COLOR_STEEL
+	material_id = /material/steel
+	health_base = 1000

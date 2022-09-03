@@ -38,9 +38,7 @@
 	dan_mode = TRUE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/stock/sniper_20 = TRUE,
 		/obj/item/attachment/barrel/sniper_20 = TRUE,
-
 
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
@@ -75,6 +73,8 @@
 
 	dan_mode = TRUE
 
+	pixel_x = -8
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_static_spread()
 	return 0
 
@@ -82,11 +82,6 @@
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/Generate()
-
-	attachment_stock = new /obj/item/attachment/stock/sniper_20(src)
-	INITIALIZE(attachment_stock)
-	GENERATE(attachment_stock)
-	FINALIZE(attachment_stock)
 
 	attachment_sight = new /obj/item/attachment/sight/scope/massive/sniper_20(src)
 	INITIALIZE(attachment_sight)

@@ -18,6 +18,9 @@
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"
 
+/turf/simulated/floor/wood/brown/dark
+	color = "#513225"
+
 /turf/simulated/floor/wood/rich
 	color = "#53331E"
 

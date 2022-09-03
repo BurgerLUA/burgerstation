@@ -1,0 +1,43 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"c" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"d" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 4},/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"e" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/portal_scroll,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"f" = (/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"g" = (/obj/structure/table/wood,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"h" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/fulton_pack,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"i" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 8},/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"j" = (/obj/marker/spawning/window,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"k" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/pinpointer/boss,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"l" = (/obj/structure/carpet/red,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"m" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/handcuffs,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"n" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/map,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"o" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/analyzer/value,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"p" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/deployable/barricade,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"q" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/flare,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"r" = (/obj/structure/interactive/bar_sign/bawse_loot,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"s" = (/obj/structure/short_wall/wood/dark,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"t" = (/turf/simulated/floor/colored/dirt/soil,/area/dmm_suite/clear_area)
+"u" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"v" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"w" = (/obj/structure/carpet/red,/mob/living/advanced/npc/unique/goblin_merchant,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"x" = (/obj/structure/interactive/atm,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+aasssssssssssssa
+aastttttttttttsa
+aasuuuuuuuuuuuuu
+aastuuttttttttsa
+aastuuttttttttsa
+aastuuttttttttsa
+aabbfcbbbbbcxbba
+aadeffgfffgffhia
+aajkflvlwlvlfmja
+aajnflvvvvvlfoja
+aajpflllllllfqja
+aajfflllllllffja
+aajfffffffffffja
+aadfffffffffffia
+aabbjjjjcfffrbba
+"}

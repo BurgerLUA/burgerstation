@@ -180,7 +180,7 @@
 	if(display_mesage && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		A.visible_message(span("warning","\The [A.name]\s [broken_name] breaks!"),span("danger","Your [broken_name] breaks!"))
-	src.health.adjust_loss_smart(pain=health.health_max*0.25)
+	src.health.adjust_loss_smart(pain=health.health_max*0.25,organic=TRUE,robotic=FALSE)
 	return TRUE
 
 /obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
@@ -197,7 +197,7 @@
 		var/mob/living/advanced/A = loc
 		if(A.health && !A.has_status_effect(IMMORTAL))
 			if(broken)
-				health.adjust_loss_smart(pain=damage_amount*0.25)
+				health.adjust_loss_smart(pain=damage_amount*0.25,organic=TRUE,robotic=FALSE)
 			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
 				break_bone()
 			if(A.blood_type)

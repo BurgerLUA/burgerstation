@@ -119,35 +119,39 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 /obj/hud/Generate()
 	CRASH("HUD objects should never be Generated!")
 
+/obj/hud/proc/set_tooltip(var/mob/caller)
+
+	var/list/split_screen_loc = splittext(src.screen_loc,",")
+
+	if(length(split_screen_loc) == 2)
+
+		var/x_offset = 0
+		var/y_offset = 0
+
+		if(findtext(screen_loc,"TOP"))
+			y_offset = -1
+		else if(findtext(screen_loc,"BOTTOM"))
+			y_offset = 1
+		else if(findtext(split_screen_loc[2],"CENTER"))
+			y_offset = 1
+
+		if(findtext(screen_loc,"RIGHT"))
+			x_offset = -1
+		else if(findtext(screen_loc,"LEFT"))
+			x_offset = 1
+		else if(findtext(split_screen_loc[2],"CENTER"))
+			x_offset = 1
+
+		var/desired_screen_loc = "[split_screen_loc[1]]+[x_offset],[split_screen_loc[2]]+[y_offset]"
+		caller?.tooltip?.set_text("[src.name]\n\n[src.tooltip_text]",desired_screen_loc)
 
 
 /obj/hud/MouseEntered(location,control,params)
 	. = ..()
 	if(tooltip_text && mouse_opacity > 0)
-		var/list/split_screen_loc = splittext(src.screen_loc,",")
-		if(length(split_screen_loc) == 2)
-
-			var/x_offset = 0
-			var/y_offset = 0
-
-			if(findtext(screen_loc,"TOP"))
-				y_offset = -1
-			else if(findtext(screen_loc,"BOTTOM"))
-				y_offset = 1
-			else if(findtext(split_screen_loc[2],"CENTER"))
-				y_offset = 1
-
-			if(findtext(screen_loc,"RIGHT"))
-				x_offset = -1
-			else if(findtext(screen_loc,"LEFT"))
-				x_offset = 1
-			else if(findtext(split_screen_loc[2],"CENTER"))
-				x_offset = 1
-
-			var/desired_screen_loc = "[split_screen_loc[1]]+[x_offset],[split_screen_loc[2]]+[y_offset]"
-			usr.tooltip?.set_text("[src.name]\n\n[src.tooltip_text]",desired_screen_loc)
-
+		CALLBACK("tooltip_\ref[src]",SECONDS_TO_DECISECONDS(1),src,.proc/set_tooltip,usr)
 
 /obj/hud/MouseExited(location,control,params)
 	. = ..()
+	CALLBACK_REMOVE("tooltip_\ref[src]")
 	usr.tooltip?.set_text(null)

@@ -20,7 +20,7 @@
 			if(messages) owner.to_chat(span("warning","The bank does not allow the storage of large containers."))
 			return FALSE
 
-		if(I.can_save)
+		if(!I.can_save)
 			if(messages) owner.to_chat(span("warning","This type of object cannot be stored."))
 			return FALSE
 

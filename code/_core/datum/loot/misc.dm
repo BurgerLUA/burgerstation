@@ -119,7 +119,7 @@
 		/obj/item/clothing/glasses/medical_hud/advanced = 5,
 		/obj/item/clothing/glasses/sun = 20,
 		/obj/item/clothing/head/hat/bandana/red = 20,
-		/obj/item/clothing/head/hat/beret/armored = 10,
+		/obj/item/clothing/head/hat/beret/armored/syndicate = 10,
 		/obj/item/clothing/head/hat/headband/dark_grey = 5,
 		/obj/item/clothing/head/hat/skimask/black = 5,
 		/obj/item/clothing/head/helmet/polymorphic/space_military = 5,
@@ -215,24 +215,24 @@
 
 /loot/misc/drink
 	loot_table = list(
-		/obj/item/container/simple/absinthe = 10,
-		/obj/item/container/simple/ale = 50,
-		/obj/item/container/simple/beer = 100,
-		/obj/item/container/simple/brandy = 20,
-		/obj/item/container/simple/cider = 10,
-		/obj/item/container/simple/coffee_liqueur = 20,
-		/obj/item/container/simple/fernet = 5,
-		/obj/item/container/simple/gin = 10,
-		/obj/item/container/simple/grappa = 5,
-		/obj/item/container/simple/hearty_punch = 5,
-		/obj/item/container/simple/nothing = 10,
-		/obj/item/container/simple/rum = 50,
-		/obj/item/container/simple/schnapps/gold = 10,
-		/obj/item/container/simple/tequila = 10,
-		/obj/item/container/simple/vodka = 75,
-		/obj/item/container/simple/whiskey = 75,
-		/obj/item/container/simple/wine = 75,
-		/obj/item/container/simple/wine/vermouth = 50,
+		/obj/item/container/simple/alcohol/absinthe = 10,
+		/obj/item/container/simple/alcohol/ale = 50,
+		/obj/item/container/simple/alcohol/beer = 100,
+		/obj/item/container/simple/alcohol/brandy = 20,
+		/obj/item/container/simple/alcohol/cider = 10,
+		/obj/item/container/simple/alcohol/coffee_liqueur = 20,
+		/obj/item/container/simple/alcohol/fernet = 5,
+		/obj/item/container/simple/alcohol/gin = 10,
+		/obj/item/container/simple/alcohol/grappa = 5,
+		/obj/item/container/simple/alcohol/hearty_punch = 5,
+		/obj/item/container/simple/alcohol/nothing = 10,
+		/obj/item/container/simple/alcohol/rum = 50,
+		/obj/item/container/simple/alcohol/schnapps/gold = 10,
+		/obj/item/container/simple/alcohol/tequila = 10,
+		/obj/item/container/simple/alcohol/vodka = 75,
+		/obj/item/container/simple/alcohol/whiskey = 75,
+		/obj/item/container/simple/alcohol/wine = 75,
+		/obj/item/container/simple/alcohol/wine/vermouth = 50,
 
 		/obj/item/container/simple/can/coffee/freedomno = 100,
 		/obj/item/container/simple/can/coffee/black = 100,
@@ -249,16 +249,65 @@
 
 /loot/misc/baking
 	loot_table = list(
-		/obj/item/container/simple/flour = 200,
-		/obj/item/container/simple/sugar = 50,
-		/obj/item/container/simple/corn_flour = 25,
-		/obj/item/container/simple/cream = 25,
-		/obj/item/container/simple/milk = 50,
+		/obj/item/container/simple/baking/flour = 200,
+		/obj/item/container/simple/baking/sugar = 50,
+		/obj/item/container/simple/baking/corn_flour = 25,
+		/obj/item/container/simple/baking/cream = 25,
+		/obj/item/container/simple/baking/milk = 50,
 		/obj/item/storage/egg_carton = 20,
-
-
-
-
-
-
 	)
+
+/loot/misc/cash_register
+	loot_table = list(
+		/obj/item/coin/cursed = 1,
+		/obj/item/currency/telecrystals = 1,
+		/obj/item/currency/credits = 5,
+		/obj/item/currency/gold_coin = 5,
+		/obj/item/currency/dosh = 200
+	)
+	chance_none = 80
+	loot_count = 6
+	var/desired_value = 100 //on average.
+
+/loot/misc/cash_register/pre_spawn(var/atom/movable/M)
+	. = ..()
+	// https://www.desmos.com/calculator/o2npnuupqr
+	if(istype(M,/obj/item/))
+		var/obj/item/I = M
+		var/value = I.get_base_value()
+		if(value <= 0)
+			value = 1
+		var/rng_result = rand()**(value/desired_value)
+		I.amount =  FLOOR(I.amount*rng_result,1)
+		if(I.amount < 1)
+			I.amount = 1
+		if(I.amount > I.amount_max)
+			I.amount = I.amount_max
+
+
+
+
+
+
+/loot/misc/ashwalker //Stuff found in ashwalker camps
+	loot_table = list(
+		/loot/currency/gold_coin = 100,
+		/loot/scroll/lesser = 5,
+		/loot/soulgem = 50,
+		/loot/soulgem/filled = 10,
+		/loot/supply_crate/all = 5,
+		/loot/enchanting_book = 5,
+		/obj/item/bullet_cartridge/arrow/ashen{amount=5} = 70,
+		/obj/item/clothing/belt/belt_quiver = 30,
+		/obj/item/cannonball = 5,
+		/obj/item/cannon_fuse = 5,
+		/obj/item/coin/cursed = 1,
+		/obj/item/cross = 1,
+		/obj/item/legion_core = 20,
+		/obj/item/portal_scroll = 30,
+		/obj/item/soapstone/green = 1
+	)
+
+
+	chance_none = 20
+	loot_count = 1
