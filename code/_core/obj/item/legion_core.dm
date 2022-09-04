@@ -53,6 +53,10 @@
 
 	return ..()
 
+/obj/item/legion_core/click_self(var/mob/caller)
+	click_on_object(caller,caller)
+	return TRUE
+
 /obj/item/legion_core/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_living(object))
