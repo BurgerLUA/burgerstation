@@ -35,3 +35,5 @@
 /area/mission/prefab/vault/vault_09
 
 /area/mission/prefab/vault/vault_10
+
+/area/mission/prefab/vault/vault_11

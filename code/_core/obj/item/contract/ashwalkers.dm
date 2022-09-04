@@ -145,3 +145,26 @@
 	objective_text = "XBroodmothers killed"
 	value_max = 1
 	burgerbux_reward = 5
+
+/// Players
+
+/obj/item/contract/players
+	name = "Kill Nanotrasen Operatives"
+	desc = "Kill other players."
+	type_to_check = /mob/living/advanced/player
+	objective_text = "Operatives killed"
+
+/obj/item/contract/players/low
+	value_max = 2
+	reward = /obj/item/currency/dosh{amount=50}
+	burgerbux_reward = 5
+
+/obj/item/contract/players/mid
+	value_max = 3
+	reward = /obj/item/currency/dosh{amount=100}
+	burgerbux_reward = 10
+
+/obj/item/contract/players/high
+	value_max = 5
+	reward = /obj/item/currency/dosh{amount=200}
+	burgerbux_reward = 15

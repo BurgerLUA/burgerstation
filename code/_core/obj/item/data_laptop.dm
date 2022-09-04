@@ -1,6 +1,6 @@
 var/global/list/all_vault_doors = list()
 
-//5 to 10 random syndicate vaults are placed on the map.
+//5 to 11 random syndicate vaults are placed on the map.
 //The laptop can give you access to it by giving you the coords of the vault as well as the keyphrase.
 
 

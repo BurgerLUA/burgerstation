@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/currency/dosh.dmi'
 	icon_state = "null"
 
-	amount_max = 200
+	amount_max = 1000
 
 	value = 50
 

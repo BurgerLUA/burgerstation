@@ -1,0 +1,76 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_11)
+"c" = (/obj/marker/spawning/random/vault_loot,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"d" = (/turf/simulated/floor/colored/dirt/soil/rich,/area/mission/prefab/vault/vault_11)
+"e" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"f" = (/obj/marker/spawning/random/vault_loot/secure,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"g" = (/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_11)
+"h" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"i" = (/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"j" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 4},/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_11)
+"k" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4},/obj/structure/interactive/crate/closet/anchored,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"l" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/interactive/door/vault/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_11)
+"n" = (/mob/living/simple/turret/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_11)
+"o" = (/obj/structure/interactive/lighting/fixture/floor/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_11)
+"p" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_11)
+"q" = (/obj/structure/interactive/vending/medical/medicine,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"r" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_11)
+"s" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"u" = (/obj/marker/spawning/window/extra,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"v" = (/obj/structure/table/rack/steel,/obj/item/supply_remote/crates/slavic,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"w" = (/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"x" = (/obj/structure/interactive/chair/office/dark{dir = 4},/mob/living/advanced/npc/unique/sidorovich{dir = 4},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"y" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"z" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"A" = (/obj/structure/interactive/vending/hydroponics/seeds,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"B" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"C" = (/obj/structure/interactive/atm,/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_11)
+"D" = (/obj/structure/interactive/reagent_tank/barrel/water,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"E" = (/obj/structure/interactive/vending/exchange,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"F" = (/obj/structure/interactive/vending/junk/solarian,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"G" = (/obj/structure/interactive/door/airlock/dark,/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_11)
+"H" = (/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"I" = (/obj/structure/interactive/door/airlock/locked,/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/vault/vault_11)
+"J" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"K" = (/obj/structure/table/reinforced/steel/dark,/obj/structure/interactive/computer/console/laptop,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"L" = (/obj/structure/interactive/vending/medical/basic{pixel_y = 32},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"M" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4},/turf/simulated/floor/colored/dirt/soil/rich,/area/mission/prefab/vault/vault_11)
+"N" = (/obj/structure/interactive/vending/medical/equipment,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"O" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"P" = (/obj/structure/interactive/door/airlock/dark,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"Q" = (/obj/structure/interactive/vending/soda/solarian,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"R" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"S" = (/obj/structure/interactive/chair{dir = 8},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"T" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1},/obj/structure/interactive/crate/closet/anchored,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"V" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8},/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"W" = (/obj/structure/interactive/bed/sleeper/medical/syndicate,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+"X" = (/obj/structure/interactive/intercom,/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_11)
+"Y" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/vault/vault_11)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaabbbbbbbbbbbbbbbbbbaaa
+aaabddARNqWibkLiHiiibaaa
+aaabMhhhhhhhPhhhhhhibaaa
+aaabdddRDihTbkiiJihYbaaa
+aaabbbrbCbGbbbbbbihibaaa
+aaabiHhEiQhFbaaabihibaaa
+aaabiKhhhhhibaaabihibaaa
+aaabxwShiihVbaaabyhYbaaa
+aaabvXBhiihObaaabihibaaa
+aaabbbbIuuubbaaajhhhpaaa
+aaabeeeseeeebaaabbmbbaaa
+aaabceeseeecbaalnogonlaa
+aaabceeseeecbaalggggglaa
+aaabceeseeecbaalllllllaa
+aaabezffffzebaaaaaaaaaaa
+aaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaa
+"}

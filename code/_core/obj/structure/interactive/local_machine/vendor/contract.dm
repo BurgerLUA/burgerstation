@@ -36,7 +36,7 @@
 
 /obj/structure/interactive/vending/contract/New(var/desired_loc)
 
-	var/list/possible_contracts = subtypesof(/obj/item/contract)
+	var/list/possible_contracts = subtypesof(/obj/item/contract) && !typesof(/obj/item/contract/players)
 	for(var/k in possible_contracts) //First pass
 		var/obj/item/contract/C = k
 		if(initial(C.value_max)) //This is a valid contract.
