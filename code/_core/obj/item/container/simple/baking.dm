@@ -2,6 +2,8 @@
 	icon = 'icons/obj/item/container/cooking.dmi'
 	reagents = /reagent_container/beaker/large
 
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = TRUE
 
 /obj/item/container/simple/baking/flour
 	name = "sack of white flour"

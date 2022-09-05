@@ -132,6 +132,8 @@
 	for(item in list_to_pick)
 		if(!isnum(list_to_pick[item]))
 			list_to_pick[item] = 1
+		else
+			list_to_pick[item] = CEILING(list_to_pick[item],1)
 		total += list_to_pick[item]
 	total = rand(0, total)
 	for(item in list_to_pick)

@@ -19,7 +19,14 @@
 
 	if(explosion_strength_per_unit > 0)
 		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
-		smoke(epicenter,volume_amount*explosion_strength_per_unit*0.02,SECONDS_TO_DECISECONDS(2*explosion_strength_per_unit),null,owner,alpha=100)
+		smoke(
+			epicenter,
+			volume_amount*explosion_strength_per_unit*0.02,
+			SECONDS_TO_DECISECONDS(2*explosion_strength_per_unit),
+			null,
+			owner,
+			alpha=100
+		)
 
 	if(flash_strength_per_unit > 0)
 		var/flash_range = min(VIEW_RANGE*2,volume_amount*flash_strength_per_unit)

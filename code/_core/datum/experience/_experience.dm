@@ -45,7 +45,7 @@
 		owner.to_chat(span("danger","Your [src.name] level is negative! Report this bug on discord!"))
 		log_error("Warning: [src.name] xp was negative for [owner.get_debug_name()].")
 		return 1
-	return CEILING((xp ** (1/experience_power)) / (experience_multiplier * (1 + src.get_prestige_count()*0.1)), 1)
+	return FLOOR((xp ** (1/experience_power)) / (experience_multiplier * (1 + src.get_prestige_count()*0.1)), 1)
 
 /experience/proc/level_to_xp(var/level) //Convert level to xp
 	if(level < 0)
