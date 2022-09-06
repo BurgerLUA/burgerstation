@@ -1,7 +1,5 @@
 var/global/list/obj/marker/map_node/all_map_nodes = list()
 
-var/global/mob/abstract/node_checker
-
 /mob/abstract/node_checker
 	name = "node checker"
 	collision_flags = FLAG_COLLISION_WALKING
@@ -25,13 +23,63 @@ var/global/mob/abstract/node_checker
 
 /obj/marker/map_node
 	name = "map node"
-	icon = 'icons/obj/node.dmi'
-	icon_state = "path"
+	icon = 'icons/obj/node/node_1.dmi'
+	icon_state = null
 	var/list/adjacent_map_nodes = list()
 	invisibility = 0
+	alpha = 255
 	anchored = 2
 
-	var/precision = 4 //Lower precision must mean mobs need to be very close to the node in order to count as a pass.
+	var/precision = 1 //Lower precision must mean mobs need to be very close to the node in order to count as a pass.
+
+/* RIP failed code.
+/obj/marker/map_node/proc/get_dir_to_this(var/atom/M,var/obj/marker/map_node/source_node)
+
+	var/lowest_precision = src.precision - 1
+	if(source_node)
+		lowest_precision = min(source_node.precision - 1,lowest_precision)
+
+	var/x_offset = M.x - src.x
+	var/y_offset = M.y - src.y
+
+	if(x_offset > 0)
+		x_offset = max(0,x_offset - lowest_precision)
+	else
+		x_offset = min(0,x_offset + lowest_precision)
+
+	if(y_offset > 0)
+		y_offset = max(0,y_offset - lowest_precision)
+	else
+		y_offset = min(0,y_offset + lowest_precision)
+
+	if(!x_offset && !y_offset)
+		return null
+
+	var/found_angle = MODULUS(ATAN2(x_offset,y_offset) + 90,360)
+
+	return angle2dir_cardinal(found_angle)
+
+
+/obj/marker/map_node/proc/get_dist_to(var/atom/M)
+
+	var/lowest_precision = src.precision - 1
+
+	var/x_offset = M.x - src.x
+	var/y_offset = M.y - src.y
+
+	if(x_offset > 0)
+		x_offset = max(0,x_offset - lowest_precision)
+	else
+		x_offset = min(0,x_offset + lowest_precision)
+
+	if(y_offset > 0)
+		y_offset = max(0,y_offset - lowest_precision)
+	else
+		y_offset = min(0,y_offset + lowest_precision)
+
+	return max(abs(x_offset),abs(y_offset))
+*/
+
 
 /obj/marker/map_node/get_examine_list(var/mob/examiner)
 
@@ -42,40 +90,18 @@ var/global/mob/abstract/node_checker
 		. += div("notice",MN.get_debug_name())
 
 /obj/marker/map_node/New(var/desired_loc)
-	plane = PLANE_HIDDEN
-	alpha = 0
+	. = ..()
 	all_map_nodes += src
-	return ..()
 
 /obj/marker/map_node/proc/initialize_node()
 
 	var/found = FALSE
-
-	for(var/d in DIRECTIONS_ALL)
-		var/turf/T = src
-		for(var/i=1,i<=precision,i++)
-			T = get_step(T,d)
-			if(T.has_dense_atom)
-				precision = i
-				break
-		if(precision <= 1)
-			break
-
-	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src))
-		var/mob/abstract/node_checker/NC = node_checker
-		NC.loc = src.loc
-		var/invalid = FALSE
-		while(TRUE)
-			var/desired_dir = get_dir(NC,M)
-			if(!step(NC,desired_dir))
-				invalid = TRUE
-				break
-			if(NC.loc == M.loc)
-				break
-		if(invalid)
-			continue
+	for(var/obj/marker/map_node/M in orange(VIEW_RANGE*2,src))
 		var/direction = dir2text(get_dir(src,M))
-		if(src.adjacent_map_nodes[direction] && get_dist(src,M) > get_dist(src,src.adjacent_map_nodes[direction]))
+		if(src.adjacent_map_nodes[direction] && get_dist_real(src,M) > get_dist_real(src,src.adjacent_map_nodes[direction]))
+			continue
+		var/list/obstructions = get_obstructions(src,M) + get_obstructions(M,src)
+		if(length(obstructions) > 0)
 			continue
 		src.adjacent_map_nodes[direction] = M
 		found = TRUE
@@ -85,30 +111,53 @@ var/global/mob/abstract/node_checker
 
 	return found
 
-/proc/get_obstructions(var/turf/point_A,var/turf/point_B)
+
+/proc/get_obstructions(var/atom/point_A,var/atom/point_B,var/check_contents=TRUE) //Supports point_B being a node
 
 	. = list()
 
 	if(!point_A || !point_B) return .
 
-	node_checker.force_move(point_A)
+	var/mob/abstract/node_checker/node_checker = new(get_turf(point_A))
 
-	var/limit = 10
-	while(node_checker.loc != point_B && limit > 0)
+	var/desired_distance = 0
+	if(istype(point_B,/obj/marker/map_node))
+		var/obj/marker/map_node/MN = point_B
+		desired_distance = MN.precision
+
+	var/limit = VIEW_RANGE*2
+	while(get_dist(node_checker,point_B) > desired_distance && limit > 0)
 		limit--
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/desired_dir = get_dir(node_checker,point_B)
-		var/turf/T = get_step(node_checker,desired_dir)
+		var/turf/T
+		if(is_intercardinal_dir(desired_dir))
+			var/first_move_dir_to_use = get_true_4dir(desired_dir)
+			var/second_move_dir_to_use = desired_dir & ~first_move_dir_to_use
+			var/turf/first_step = get_step(node_checker,first_move_dir_to_use)
+			var/turf/second_step = get_step(node_checker,second_move_dir_to_use)
+			if(!first_step || !node_checker.can_enter_turf(first_step))
+				desired_dir &= ~first_move_dir_to_use
+			if(!second_step || !node_checker.can_enter_turf(second_step))
+				desired_dir &= ~second_move_dir_to_use
+			if(!desired_dir)
+				T = pick(first_step,second_step)
+			else
+				T = get_step(node_checker,desired_dir)
+		else
+			T = get_step(node_checker,desired_dir)
+		if(!T) break
 		if(T.density && !T.Enter(node_checker,node_checker.loc))
 			. |= T
-		if(T.has_dense_atom)
+		if(check_contents && T.has_dense_atom)
 			for(var/k in T.contents)
 				var/atom/movable/M = k
 				if(!M.allow_path && M.density && M.anchored && !M.Cross(node_checker,node_checker.loc))
 					. |= M
+
 		node_checker.loc = T
 
-	node_checker.force_move(null)
+	qdel(node_checker)
 
 
 
@@ -119,15 +168,40 @@ var/global/mob/abstract/node_checker
 
 	if(check_view)
 		for(var/obj/marker/map_node/N in view(distance,A))
-			var/N_distance = get_dist_real(A,N)
+			var/N_distance = get_dist(A,N)
 			if(!best_node || best_distance > N_distance)
 				best_node = N
 				best_distance = N_distance
 	else
 		for(var/obj/marker/map_node/N in range(distance,A))
-			var/N_distance = get_dist_real(A,N)
+			var/N_distance = get_dist(A,N)
 			if(!best_node || best_distance > N_distance)
 				best_node = N
 				best_distance = N_distance
 
 	return best_node
+
+
+/obj/marker/map_node/x2
+	icon = 'icons/obj/node/node_2.dmi'
+	precision = 2
+	pixel_x = -TILE_SIZE*(2-1)
+	pixel_y = -TILE_SIZE*(2-1)
+
+/obj/marker/map_node/x3
+	icon = 'icons/obj/node/node_3.dmi'
+	precision = 3
+	pixel_x = -TILE_SIZE*(3-1)
+	pixel_y = -TILE_SIZE*(3-1)
+
+/obj/marker/map_node/x4
+	icon = 'icons/obj/node/node_4.dmi'
+	precision = 4
+	pixel_x = -TILE_SIZE*(4-1)
+	pixel_y = -TILE_SIZE*(4-1)
+
+/obj/marker/map_node/x5
+	icon = 'icons/obj/node/node_5.dmi'
+	precision = 5
+	pixel_x = -TILE_SIZE*(5-1)
+	pixel_y = -TILE_SIZE*(5-1)

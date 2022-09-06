@@ -14,11 +14,14 @@
 "n" = (/obj/structure/table/simple/boss,/obj/marker/spawning/random/ashwalker,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "o" = (/obj/marker/spawning/random/ashwalker,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
 "p" = (/mob/living/advanced/npc/ashwalker/assassin,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
-"q" = (/mob/living/advanced/npc/ashwalker/warrior,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
+"q" = (/obj/marker/map_node,/mob/living/advanced/npc/ashwalker/warrior,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "r" = (/mob/living/advanced/npc/ashwalker,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "s" = (/mob/living/advanced/npc/ashwalker/hunter,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "t" = (/mob/living/advanced/npc/ashwalker/warrior,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
 "u" = (/obj/structure/table/cooking/bonfire,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"v" = (/obj/marker/map_node,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
+"w" = (/obj/marker/map_node,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"x" = (/obj/marker/map_node,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
@@ -26,14 +29,14 @@ adddddddddddddda
 adbbbbbbbbbbbbda
 adbccccccccccbda
 adbcpelmmnndcbda
-adbcdeeeeddqcbda
-aebccccceccccbda
+adbcxeeeeddqcbda
+aebcccccvccccbda
 aebbbbbbfbbbbbda
-aedrddddeddsddda
-aaeeddeeedddddda
+aedrddddvddsddda
+aaveddveedxdddxa
 aaggggetheebbbba
-aaiiiieeeeebuoba
-aajjkkaaaaeecoba
+aaiiiiveeevbuoba
+aajjkkaaaavewoba
 aaaaaaaaaaabocba
 aaaaaaaaaaabbbba
 aaaaaaaaaaaaaaaa

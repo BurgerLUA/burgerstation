@@ -22,6 +22,11 @@
 "v" = (/obj/structure/carpet/red,/mob/living/advanced/npc/contractor_guard,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
 "w" = (/mob/living/advanced/npc/contractor_guard,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
 "x" = (/mob/living/advanced/npc/contractor_guard,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"y" = (/obj/marker/map_node/x2,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"z" = (/obj/structure/carpet/red,/obj/marker/map_node/x2,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
+"A" = (/obj/marker/map_node,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"B" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/brick/city,/area/mission/prefab/fob/contractor)
+"C" = (/obj/marker/map_node,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/fob/contractor)
 
 (1,1,1) = {"
 aaaabbbbbbbaaaaa
@@ -29,15 +34,15 @@ aaaabvmmmvbaaaaa
 aaaaimmnmmiaaaaa
 aaaaimooomiaaaaa
 ebjjbmmpmmbjjbfa
-ebqqbcccccbqqbfa
+ebqqbccCccbqqbfa
 ebmmbiblbibmmbfa
-ebccccxcxccccbfa
+ebccccxCxccccbfa
 ebccccmmmccccbfa
-ebccccmmmccrrhga
+ebccycmzmcyrrhga
 ebbcccmmmccrbbsa
 edkcccmmmccrkdsa
-edkcccccrrrrkdsa
+edkccccyrrrrkdsa
 edkkkbccrbkkkdsa
 edddwblltbwdddsa
-eddddddduuuuuusa
+edddddAABuuuuusa
 "}

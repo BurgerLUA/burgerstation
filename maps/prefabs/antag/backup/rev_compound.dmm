@@ -1,0 +1,1507 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"ab" = (
+/turf/simulated/wall/brick/red/rev,
+/area/prefab/rev_base)
+"ac" = (
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"ad" = (
+/obj/structure/scenery/flowers,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"ae" = (
+/obj/structure/scenery/rocks,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"af" = (
+/obj/structure/interactive/tree/evergreen,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"ag" = (
+/obj/structure/scenery/bush/grass,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"ah" = (
+/obj/item/storage/heavy/trash_pile,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"ai" = (
+/turf/simulated/wall/brick/red/dark/rev,
+/area/prefab/rev_base)
+"aj" = (
+/obj/structure/interactive/misc/shower,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"ak" = (
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"al" = (
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"am" = (
+/obj/structure/interactive/crate/trash,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"an" = (
+/obj/structure/interactive/tree/evergreen,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"ao" = (
+/obj/structure/smooth/table/dark,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"ap" = (
+/obj/structure/interactive/vending/syndicate/medicine,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aq" = (
+/obj/structure/interactive/vending/syndicate/attachment,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"ar" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"as" = (
+/obj/structure/interactive/vending/syndicate/guns/rev,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"at" = (
+/obj/structure/interactive/vending/syndicate/prize/rev,
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"au" = (
+/obj/structure/interactive/restocker/ammo,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"av" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aw" = (
+/obj/structure/interactive/misc/toilet{
+	dir = 8;
+	icon_state = "toilet"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"ax" = (
+/obj/marker/antag/revolutionary,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"ay" = (
+/obj/structure/interactive/door/metal,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"az" = (
+/obj/structure/interactive/misc/sink{
+	dir = 8;
+	icon_state = "sink"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aA" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aB" = (
+/obj/structure/interactive/lighting/streetlamp,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"aC" = (
+/mob/living/advanced/npc/rev{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aD" = (
+/obj/structure/interactive/light_switch{
+	dir = 8;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/brick/red/dark/rev,
+/area/prefab/rev_base)
+"aE" = (
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"aF" = (
+/obj/structure/interactive/lighting/streetlamp,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"aG" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/mob/living/advanced/npc/rev{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aH" = (
+/obj/structure/interactive/light_switch{
+	dir = 1;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/brick/red/dark/rev,
+/area/prefab/rev_base)
+"aI" = (
+/obj/structure/interactive/misc/mirror/cracked/chargen{
+	pixel_x = 32
+	},
+/obj/structure/interactive/misc/sink{
+	dir = 4;
+	icon_state = "sink"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aJ" = (
+/obj/structure/interactive/chair{
+	dir = 4;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/rev{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aK" = (
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"aL" = (
+/obj/structure/interactive/chair{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aM" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"aN" = (
+/turf/simulated/wall/wood/rev,
+/area/prefab/rev_base)
+"aO" = (
+/obj/item/storage/heavy/trash_pile,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"aP" = (
+/obj/structure/interactive/crate/closet,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aQ" = (
+/obj/structure/interactive/crate/closet,
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aR" = (
+/obj/structure/smooth/table/reinforced,
+/obj/structure/interactive/misc/tv,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aS" = (
+/obj/structure/smooth/table/cooking/grill,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aT" = (
+/obj/structure/smooth/table/reinforced,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aU" = (
+/obj/structure/interactive/light_switch{
+	dir = 4;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/brick/red/dark/rev,
+/area/prefab/rev_base)
+"aV" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aW" = (
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aX" = (
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aY" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"aZ" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/food/plant/wheat,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"ba" = (
+/obj/structure/smooth/table/wood,
+/obj/item/container/food/plant/wheat,
+/obj/item/container/food/plant/wheat,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bb" = (
+/obj/structure/smooth/table/wood,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bc" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"bd" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"be" = (
+/obj/structure/smooth/table/dark,
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"bf" = (
+/obj/structure/interactive/chair/stool/bar,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bg" = (
+/obj/structure/smooth/wall/wood,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"bh" = (
+/obj/structure/interactive/plant/wheat,
+/turf/simulated/floor/colored/dirt/soil,
+/area/prefab/rev_base)
+"bi" = (
+/turf/simulated/floor/colored/dirt/soil,
+/area/prefab/rev_base)
+"bj" = (
+/obj/structure/interactive/chair/wood{
+	dir = 4;
+	icon_state = "wooden_chair"
+	},
+/mob/living/advanced/npc/rev{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bk" = (
+/obj/structure/interactive/chair/wood{
+	dir = 8;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bl" = (
+/obj/structure/interactive/light_switch{
+	dir = 8;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/wood/rev,
+/area/prefab/rev_base)
+"bm" = (
+/obj/structure/interactive/chair/wood{
+	dir = 4;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bn" = (
+/obj/structure/interactive/door/wood,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bo" = (
+/obj/structure/interactive/potted_plant/bin,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bp" = (
+/obj/structure/interactive/chair/wood{
+	dir = 1;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bq" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"br" = (
+/obj/structure/interactive/crate/trash,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+"bs" = (
+/mob/living/advanced/npc/rev{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"bt" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bu" = (
+/mob/living/advanced/npc/rev{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"bv" = (
+/obj/structure/interactive/barricade,
+/mob/living/advanced/npc/rev,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"bw" = (
+/obj/marker/lobby,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"bx" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"lq" = (
+/obj/structure/scenery/grass/lavender,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"nl" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/rev{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/brick/grey/dark,
+/area/prefab/rev_base)
+"Fy" = (
+/obj/structure/scenery/grass/normal,
+/turf/simulated/floor/grass/jungle,
+/area/prefab/rev_base)
+"Ul" = (
+/obj/structure/scenery/rocks,
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/colored/dirt,
+/area/prefab/rev_base)
+"Zo" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
+/area/prefab/rev_base)
+
+(1,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aK
+aK
+aK
+aK
+ac
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+aK
+aK
+an
+ac
+aK
+aK
+aK
+aK
+aK
+aO
+aO
+aO
+aO
+aK
+aK
+aK
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+ab
+ac
+ac
+ai
+ai
+ai
+ai
+ai
+ai
+aB
+aK
+lq
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+an
+aK
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+ab
+ac
+ac
+ai
+aj
+av
+az
+ak
+ai
+an
+aK
+aK
+aN
+Zo
+aV
+aW
+aW
+aW
+aW
+aV
+bo
+aN
+aK
+aK
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+ab
+ac
+aK
+ai
+ak
+ak
+ak
+ak
+aH
+aK
+aK
+aK
+aN
+aP
+aW
+aZ
+bf
+aW
+bj
+bm
+aW
+aN
+aK
+aK
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+ab
+ac
+aK
+ai
+al
+ak
+ak
+ak
+ay
+aK
+aK
+an
+aN
+aP
+aW
+ba
+bf
+aW
+bb
+bb
+bp
+aN
+Fy
+bu
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+ab
+ac
+aK
+ai
+am
+aw
+aA
+ak
+ai
+aK
+Fy
+aK
+aN
+aQ
+aW
+aZ
+bf
+aW
+bb
+bb
+bp
+aN
+aB
+aK
+ac
+ab
+aa
+bt
+aa
+bt
+aa
+aa
+"}
+(9,1,1) = {"
+ab
+ac
+af
+ai
+ai
+ai
+ai
+ai
+ai
+aB
+aK
+ad
+aN
+aR
+aX
+bb
+bf
+aW
+bb
+bb
+bp
+aN
+aK
+aK
+ac
+ab
+aa
+bt
+bt
+bt
+aa
+aa
+"}
+(10,1,1) = {"
+ab
+ac
+ac
+aK
+an
+aK
+aK
+Fy
+aK
+aK
+aK
+aK
+aN
+aS
+aW
+bb
+bf
+aW
+bk
+bk
+aW
+aN
+aK
+aK
+ac
+ab
+bt
+bt
+bt
+bt
+aa
+aa
+"}
+(11,1,1) = {"
+ab
+ac
+aK
+ag
+ag
+aK
+lq
+aK
+ac
+an
+aK
+aK
+aN
+aT
+aX
+bb
+bf
+aW
+aW
+aW
+bq
+aN
+aK
+aK
+ac
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(12,1,1) = {"
+ab
+ac
+ag
+ag
+ag
+aK
+aB
+ac
+ac
+ac
+ac
+aK
+aN
+aT
+aY
+bb
+bf
+aW
+aW
+aW
+br
+aN
+aK
+aK
+ac
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(13,1,1) = {"
+ab
+ac
+ag
+ag
+ag
+aK
+ac
+ac
+ac
+ac
+ac
+Fy
+aN
+aN
+aN
+aN
+aN
+aN
+bl
+bn
+aN
+aN
+aK
+ag
+ac
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(14,1,1) = {"
+ab
+ad
+ag
+ag
+aK
+aK
+ac
+ac
+ac
+ac
+ac
+aK
+aB
+aK
+ac
+ac
+aK
+aK
+an
+aK
+aK
+aB
+aK
+ac
+bv
+ac
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(15,1,1) = {"
+ab
+aK
+aK
+aK
+an
+ac
+ac
+aE
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+bv
+ac
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(16,1,1) = {"
+ab
+aK
+aK
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+bw
+aE
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(17,1,1) = {"
+ab
+an
+aK
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(18,1,1) = {"
+ab
+aK
+ac
+ah
+ah
+ah
+ac
+aF
+ac
+ac
+ac
+ac
+aF
+ac
+ac
+aK
+aK
+lq
+aK
+aK
+ac
+ac
+ac
+ac
+bv
+ac
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(19,1,1) = {"
+ab
+ac
+ac
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+aU
+ay
+ai
+ai
+bg
+bg
+bg
+bg
+aB
+ac
+ac
+bv
+ac
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(20,1,1) = {"
+ab
+ac
+ac
+ai
+am
+ak
+aC
+aG
+aC
+ak
+ak
+ak
+av
+ak
+ak
+am
+ai
+bh
+bi
+bh
+bg
+aK
+aK
+ac
+ac
+ab
+bt
+bt
+bt
+bt
+bt
+aa
+"}
+(21,1,1) = {"
+ab
+ac
+ac
+ai
+ao
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ai
+bh
+bh
+bh
+bg
+Fy
+aK
+ac
+ac
+ab
+bt
+bt
+bt
+bt
+aa
+aa
+"}
+(22,1,1) = {"
+ab
+ac
+ac
+ai
+ap
+ax
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+bd
+ai
+bh
+bh
+bi
+bg
+aK
+an
+ac
+ac
+ab
+bt
+bt
+bt
+bt
+aa
+aa
+"}
+(23,1,1) = {"
+ab
+ac
+ah
+ai
+aq
+ax
+ak
+ai
+ak
+aJ
+aL
+aL
+ak
+ak
+ak
+ak
+ai
+bh
+bh
+bi
+bg
+aK
+ag
+ac
+ac
+ab
+bt
+aa
+bt
+bt
+aa
+aa
+"}
+(24,1,1) = {"
+ab
+ac
+ah
+ai
+ar
+ak
+ak
+ai
+ak
+ao
+ao
+ao
+ak
+ak
+ak
+bx
+ai
+bi
+bh
+bh
+bg
+aK
+aK
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+ab
+ac
+ah
+ai
+as
+ax
+ak
+ai
+ak
+aM
+aM
+nl
+ak
+ak
+ak
+ak
+ai
+bi
+bi
+bi
+bg
+aK
+aK
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,1) = {"
+ab
+ac
+ac
+ai
+at
+ax
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+be
+ai
+Fy
+aK
+bg
+bg
+an
+aK
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+ab
+ae
+ac
+ai
+ao
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ao
+ai
+aK
+lq
+aK
+aK
+aK
+ac
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+ab
+ae
+ac
+ai
+au
+ak
+ak
+aA
+aI
+aI
+aI
+aI
+aA
+ak
+ak
+ao
+ai
+bc
+Fy
+aK
+aK
+ac
+ac
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+ab
+ae
+ac
+ai
+ai
+ay
+aD
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+aK
+an
+aK
+ac
+ac
+ac
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+ab
+ae
+ae
+ac
+ac
+ah
+ah
+ah
+ac
+ac
+ac
+ah
+aO
+aO
+aO
+aK
+aK
+aK
+aK
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+ab
+Ul
+ae
+ae
+ae
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aK
+ag
+aK
+ad
+aK
+ac
+ac
+ac
+bs
+ac
+ac
+ac
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}

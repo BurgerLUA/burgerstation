@@ -28,32 +28,36 @@
 "B" = (/mob/living/advanced/npc/pirate_crew/melee,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
 "C" = (/mob/living/advanced/npc/unique/pirate_captain,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
 "D" = (/mob/living/advanced/npc/unique/pirate_mate,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"E" = (/obj/structure/short_wall/wood/starting,/obj/marker/map_node,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"F" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+"G" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
+"H" = (/obj/item/cannonball,/obj/marker/map_node,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaacccccaaaaaaaaaaaaaa
-aaaaaaaaaaaaactddcaaaaaaaaaaaaaa
+aaaaaaaaaaaaactGdcaaaaaaaaaaaaaa
 aaaaaaaaaaaaaeefeeaaaaaaaaaaaaaa
-aaaaaaaaaaaeeegggeeeaaaaaaaaaaaa
+aaaaaaaaaaaeeegFgeeeaaaaaaaaaaaa
 aaaaaaaaaaaegggggggeaaaaaaaaaaaa
-aaaaaaaaaaahggCgDgghaaaaaaaaaaaa
-aaaaaaaaaaahugggggvhaaaaaaaaaaaa
-aaaaaaaaaaaegggggggeaaaaaaaaaaaa
+aaaaaaaaaaaEggCgDggEaaaaaaaaaaaa
+aaaaaaaaaaaEugggggvEaaaaaaaaaaaa
+aaaaaaaaaaaegFgggFgeaaaaaaaaaaaa
 aaaaaaaaaaaeeieeeieeaaaaaaaaaaaa
-aaaaaaaaaaackdpqddlcaaaaaaaaaaaa
+aaaaaaaaaaackGpqdGlcaaaaaaaaaaaa
 aaaaaaaaaaacqdAdddwcaaaaaaaaaaaa
 aaaaaaaaaaackdddddlcaaaaaaaaaaaa
 aaaaaaaaaaacxddjqdpcaaaaaaaaaaaa
-aaaaaaaaaaackdddddlcaaaaaaaaaaaa
+aaaaaaaaaaackGdddGlcaaaaaaaaaaaa
 aaaaaaaaaaacqdddAdqcaaaaaaaaaaaa
 aaaaaaaaaaackdqjddlcaaaaaaaaaaaa
 aaaaaaaaaaacxdddddwcaaaaaaaaaaaa
-aaaaaaaaaaackdqqpdlcaaaaaaaaaaaa
+aaaaaaaaaaackGqqpGlcaaaaaaaaaaaa
 aaaaaaaaaaahhfhhhfhhaaaaaaaaaaaa
-aaaaaaaaaaahrsggggrhaaaaaaaaaaaa
+aaaaaaaaaaahrHgggFrhaaaaaaaaaaaa
 aaaaaaaaaaahmggBggnhaaaaaaaaaaaa
-aaaaaaaaaaahhsgggghhaaaaaaaaaaaa
+aaaaaaaaaaahhsgFgghhaaaaaaaaaaaa
 aaaaaaaaaaaahysggzhaaaaaaaaaaaaa
 aaaaaaaaaaaahhorohhaaaaaaaaaaaaa
 aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa

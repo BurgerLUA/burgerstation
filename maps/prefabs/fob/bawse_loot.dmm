@@ -22,22 +22,26 @@
 "v" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 "w" = (/obj/structure/carpet/red,/mob/living/advanced/npc/unique/goblin_merchant,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 "x" = (/obj/structure/interactive/atm,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"y" = (/obj/marker/map_node,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"z" = (/obj/marker/map_node,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"A" = (/obj/structure/carpet/red,/obj/marker/map_node/x2,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"B" = (/obj/marker/map_node/x2,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
 aasssssssssssssa
 aastttttttttttsa
-aasuuuuuuuuuuuuu
+aasuyuuuyuuuuyuy
 aastuuttttttttsa
 aastuuttttttttsa
-aastuuttttttttsa
+aastyuttttttttsa
 aabbfcbbbbbcxbba
-aadeffgfffgffhia
+aadezfgfffgffhia
 aajkflvlwlvlfmja
 aajnflvvvvvlfoja
 aajpflllllllfqja
-aajfflllllllffja
-aajfffffffffffja
-aadfffffffffffia
+aajffAllllllffja
+aajffffBffffffja
+aadfffffffBfffia
 aabbjjjjcfffrbba
 "}
