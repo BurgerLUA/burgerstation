@@ -315,28 +315,22 @@ var/global/list/all_damage_numbers = list()
 						hit_object = A.labeled_organs[O.id]
 
 		if(!is_valid(attacker))
-			CRASH_SAFE("Could not swing as there was no attacker!")
-			return FALSE
+			CRASH("Could not swing as there was no attacker!")
 
 		if(!is_valid(weapon))
-			CRASH_SAFE("Could not swing as there was no weapon!")
-			return FALSE
+			CRASH("Could not swing as there was no weapon!")
 
 		if(!is_valid(victim))
-			CRASH_SAFE("Could not swing as there was no victim!")
-			return FALSE
+			CRASH("Could not swing as there was no victim!")
 
 		if(!is_valid(victim.health))
-			CRASH_SAFE("Could not swing as there was no victim health! (Victim: [victim])")
-			return FALSE
+			CRASH("Could not swing as there was no victim health! (Victim: [victim])")
 
 		if(!is_valid(hit_object))
-			CRASH_SAFE("Could not swing as there was no hit_object!")
-			return FALSE
+			CRASH("Could not swing as there was no hit_object!")
 
 		if(!is_valid(hit_object.health))
-			CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
-			return FALSE
+			CRASH("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
 
 		if(!did_animation)
 			. = max(1,do_attack_animation(attacker,victim,weapon,hit_object))

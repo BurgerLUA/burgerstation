@@ -26,8 +26,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 	icon = 'icons/obj/node/node_1.dmi'
 	icon_state = null
 	var/list/adjacent_map_nodes = list()
-	invisibility = 0
-	alpha = 255
+	invisibility = 100
 	anchored = 2
 
 	var/precision = 1 //Lower precision must mean mobs need to be very close to the node in order to count as a pass.

@@ -4,29 +4,36 @@
 		"markdown.js" = 'html/markdown.js'
 	)
 
-/menu/paper/open(var/user)
+/menu/paper/open(var/mob/user)
 	winset(user, "map.paper","is-visible=true")
 	sleep(1)
 	user << output(file, "map.paper")
 
-/menu/paper/on_load(var/user)
-
-	run_function(usr,"set_reference",list2params(list("\ref[src]")))
+/menu/paper/on_load(var/mob/user)
 
 	if(!is_player(user))
 		return FALSE
 
 	var/mob/living/advanced/player/P = user
 
-	if(P.active_paper && length(P.active_paper.data))
-		set_text(P,sanitize(P.active_paper.data[P.active_paper.last_page],3000,extra = FALSE),P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
+	if(!P.active_paper)
+		log_error("Warning: Tried loading an active paper for [P.get_debug_name()] when they didn't have any active paper set!")
+		return FALSE
 
-/menu/paper/close(var/user)
+	if(!length(P.active_paper.data))
+		log_error("Warning: Tried loading an active paper for [P.get_debug_name()] when [P.active_paper.get_debug_name()] didn't have any paper data!")
+		return FALSE
+
+	run_function(P,"set_reference",list2params(list("\ref[src]")))
+
+	set_text(P,sanitize(P.active_paper.data[P.active_paper.last_page],3000,extra = FALSE),P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
+
+/menu/paper/close(var/mob/user)
 	winset(user,"map.paper","is-visible=false")
 	winset(user,"map.map","focus=true")
 	winset(user,"control.input","focus=false")
 
-/menu/paper/proc/set_text(var/user,var/text,var/title,var/page_current,var/page_max,var/editable=FALSE)
+/menu/paper/proc/set_text(var/mob/user,var/text,var/title,var/page_current,var/page_max,var/editable=FALSE)
 
 	var/function_name = "set_text"
 	var/function_args = list2params(list(text,title,page_current,page_max,editable))
@@ -37,12 +44,12 @@
 		if(P.active_paper)
 			P.active_paper.last_page = page_current
 
-/menu/paper/run_function(var/user, var/function_name,var/args)
+/menu/paper/run_function(var/mob/user, var/function_name,var/args)
 	user << output(args, "map.paper:[function_name]")
 
 /menu/paper/Topic(href,href_list)
 
-	if(href_list && usr && is_player(usr))
+	if(href_list && is_player(usr))
 
 		var/mob/living/advanced/player/P = usr
 

@@ -2,7 +2,7 @@
 
 	. = ..()
 
-	if(. && is_simulated(T))
+	if(. && is_simulated(T)) //This handles footprints
 		var/turf/simulated/S = T
 		if(S.blood_level_hard < BLOOD_LIMIT_HARD && S.blood_level < BLOOD_LIMIT)
 			var/obj/item/foot_left = labeled_organs[BODY_FOOT_LEFT]?.get_top_object()
@@ -74,12 +74,15 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
 
+	if(!.)
+		return .
+
 	for(var/k in using_inventories)
 		var/obj/item/I = k
 		if(get_dist(src,I) > 1)
 			I.close_inventory(src)
 
-	if(. && src.z && !horizontal)
+	if(src.z && !horizontal)
 		var/obj/item/organ/sent_pain
 		for(var/k in movement_organs)
 			var/obj/item/organ/O = labeled_organs[k]
@@ -92,7 +95,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(prob(5) && sent_pain && sent_pain.send_pain_response(20))
 			src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
 
-	if(. && isturf(old_loc))
+	if(isturf(old_loc))
 		var/turf/T = old_loc
 		//Right hand
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD]?.grabbed_object)
@@ -134,14 +137,16 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 				var/mob/living/L = M
 				L.handle_transform()
 
-		if(is_simulated(T))
-			var/turf/simulated/S = T
-			if(S.blood_level_hard > 0 && S.blood_level > 0) //Has blood.
-				S.add_blood_level(-1) //So blood stops leaving footprints if it gets crossed over too much.
-				//Step 1: Get the bodypart defines that are supposed to get messy.
-				var/list/blood_items = list()
-				if(horizontal) //Crawling.
-					blood_items = list(
+	if(is_simulated(loc))
+		var/turf/simulated/S = loc
+		if(S.blood_level_hard > 0 && S.blood_level > 0) //Has blood.
+			S.add_blood_level(-1) //So blood stops leaving footprints if it gets crossed over too much.
+			var/list/dirt_items = list()
+			if(horizontal) //Crawling.
+				if(intent == INTENT_HARM)
+					dirt_items = TARGETABLE_LIMBS
+				else
+					dirt_items = list(
 						BODY_TORSO = FALSE,
 						BODY_GROIN = FALSE,
 						BODY_ARM_LEFT = FALSE,
@@ -149,34 +154,87 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 						BODY_LEG_LEFT = FALSE,
 						BODY_LEG_RIGHT = FALSE
 					)
-				else
-					blood_items = list(
-						BODY_FOOT_LEFT = FALSE,
-						BODY_FOOT_RIGHT = FALSE
-					)
-				//Step 2: Get the clothing to mess up.
-				for(var/obj/item/clothing/C in worn_objects)
-					for(var/p in C.protected_limbs)
-						if(blood_items[p])
-							var/obj/item/clothing/C2 = blood_items[p]
-							var/obj/hud/inventory/I = C.loc
-							var/obj/item/organ/O = I.loc
-							if(O.id != p)
-								continue
-							if(C.worn_layer >= C2.worn_layer)
-								blood_items[p] = C
-						else if(blood_items[p] == FALSE)
-							blood_items[p] = C
-				//Step 3: Go through all the clothing to mess up. If there is none, mess up the organ instead.
-				for(var/k in blood_items)
-					var/obj/item/clothing/C = blood_items[k]
-					if(!C) //Give the organ a bloodstain instead.
-						var/obj/item/organ/ORG = src.labeled_organs[k]
-						if(!ORG)
-							continue
-						ORG.set_bloodstain(ORG.blood_stain_intensity + S.blood_level,S.blood_color)
-					else //Give the clothing a bloodstain.
-						C.set_bloodstain(C.blood_stain_intensity + S.blood_level,S.blood_color)
+			else
+				dirt_items = list(
+					BODY_FOOT_LEFT = FALSE,
+					BODY_FOOT_RIGHT = FALSE
+				)
+			make_dirty(dirt_items,S.blood_level,S.blood_color)
+
+
+/mob/living/advanced/proc/make_dirty(var/list/dirt_items,var/dirt_strength=1,var/dirt_color="#FFFFFF")
+
+	if(dirt_strength <= 0)
+		return FALSE
+
+	if(!dirt_items)
+		dirt_items = TARGETABLE_LIMBS
+	else
+		dirt_items = dirt_items.Copy() //New list.
+
+	//Step 1: Get the clothing to mess up.
+	for(var/obj/item/clothing/C in worn_objects)
+		for(var/p in C.protected_limbs) //p would be what was protected for the C object
+			if(dirt_items[p]) //Existing clothing found.
+				var/obj/item/clothing/C2 = dirt_items[p] //Existing clothing.
+				var/obj/hud/inventory/I = C.loc
+				var/obj/item/organ/O = I.loc
+				if(O.id != p)
+					continue
+				if(C.worn_layer >= C2.worn_layer)
+					dirt_items[p] = C
+			else if(dirt_items[p] == FALSE)
+				dirt_items[p] = C
+
+	//Step 2: Go through all the clothing to mess up. If there is none, mess up the organ instead.
+	for(var/k in dirt_items)
+		var/obj/item/I = dirt_items[k] ? dirt_items[k] : src.labeled_organs[k]
+		if(I)
+			var/new_strength = I.blood_stain_intensity + dirt_strength
+			var/ratio = dirt_strength / new_strength
+			if(ratio < 1)
+				dirt_color = blend_colors(I.blood_stain_color,dirt_color,ratio)
+			I.set_bloodstain(new_strength,dirt_color)
+
+
+	return TRUE
+
+/mob/living/advanced/proc/make_clean(var/list/clean_items,var/clean_strength=1)
+
+	if(clean_strength <= 0)
+		return FALSE
+
+	if(!clean_items)
+		clean_items = TARGETABLE_LIMBS
+	else
+		clean_items = clean_items.Copy() //New list.
+
+	//Step 1: Get the clothing to clean up.
+	for(var/obj/item/clothing/C in worn_objects)
+		for(var/p in C.protected_limbs) //p would be what was protected for the C object
+			if(clean_items[p]) //Existing clothing found.
+				var/obj/item/clothing/C2 = clean_items[p] //Existing clothing.
+				var/obj/hud/inventory/I = C.loc
+				var/obj/item/organ/O = I.loc
+				if(O.id != p)
+					continue
+				if(C.worn_layer >= C2.worn_layer)
+					clean_items[p] = C
+			else if(clean_items[p] == FALSE)
+				clean_items[p] = C
+
+	//Step 2: Go through all the clothing to clean up. If there is none, clean up the organ instead.
+	for(var/k in clean_items)
+		var/obj/item/I = clean_items[k] ? clean_items[k] : src.labeled_organs[k]
+		if(I) //Give the clothing a stain if it exists (dirt)
+			var/new_strength = I.blood_stain_intensity - clean_strength
+			if(new_strength <= 0)
+				I.set_bloodstain(0)
+			else
+				I.set_bloodstain(new_strength,I.blood_stain_color)
+
+	return TRUE
+
 
 /mob/living/advanced/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 

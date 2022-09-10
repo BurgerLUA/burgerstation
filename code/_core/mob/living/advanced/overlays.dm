@@ -40,7 +40,6 @@
 mob/living/advanced/proc/remove_overlay(var/k)
 
 	if(!overlays_assoc[k]) //It is normal not to find any.
-		//CRASH_SAFE("Tried to remove non-existant overlay! ([k]).")
 		return FALSE
 
 	var/image/overlay/O = overlays_assoc[k]
@@ -54,7 +53,7 @@ mob/living/advanced/proc/remove_overlay(var/k)
 		var/image/overlay/O = overlays_assoc[k]
 		if(!istype(O))
 			var/datum/found_ref = locate(k)
-			CRASH_SAFE("Warning: Tried to get the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
+			log_error("Warning: Tried to get the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
 			continue
 		overlays -= O
 		O.update()

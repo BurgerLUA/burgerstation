@@ -1,6 +1,6 @@
-/obj/hud/inventory/MouseDrag(over_object,src_location,over_location,src_control,over_control,params)
+/obj/hud/inventory/MouseDrag(var/atom/src_object,var/atom/over_object,var/atom/src_location,var/atom/over_location,src_control,over_control,params)
 
-	if(!is_advanced(usr) || !is_inventory(over_object))
+	if(!is_player(usr) || !is_inventory(over_object))
 		return ..()
 
 	var/mob/living/advanced/player/A = usr

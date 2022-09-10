@@ -56,7 +56,7 @@
 			if(key == "quit")
 				var/confirm = input("Are you sure you want to quit? All unsaved changes will be lost.","Quit Macro Editor","No") in list("Yes","No","Cancel")
 				if(confirm == "Yes")
-					winset(usr, "browser(edit_macros)","is-visible:false")
+					winset(mob, "browser(edit_macros)","is-visible:false")
 			else if(key == "load")
 				var/confirm = input("Are you sure you want to clear your changes?","Clear Changes","No") in list("Yes","No","Cancel")
 				if(confirm == "Yes")
@@ -114,4 +114,3 @@
 
 	next_allowed_topic = world.time + 1
 
-	

@@ -24,17 +24,22 @@
 
 	. = ..()
 
-	if(. && isturf(target))
-		var/turf/T = target
-		var/cleaning_power = volume_to_splash*5*strength_mod
-		for(var/obj/effect/cleanable/C in T.contents)
-			if(cleaning_power <= 0)
-				break
-			qdel(C)
-			cleaning_power -= 10
-		if(is_simulated(target))
-			var/turf/simulated/S = target
-			S.add_wet(volume_to_splash*10*strength_mod)
+	if(.)
+		if(isturf(target))
+			var/turf/T = target
+			var/cleaning_power = volume_to_splash*5*strength_mod
+			for(var/obj/effect/cleanable/C in T.contents)
+				if(cleaning_power <= 0)
+					break
+				qdel(C)
+				cleaning_power -= 10
+			if(is_simulated(target))
+				var/turf/simulated/S = target
+				S.add_wet(volume_to_splash*10*strength_mod)
+		else if(is_advanced(target))
+			var/cleaning_power = volume_to_splash*strength_mod*0.2
+			var/mob/living/advanced/A = target
+			A.make_clean(clean_strength=cleaning_power)
 
 /reagent/nutrition/ice
 	name = "ice"

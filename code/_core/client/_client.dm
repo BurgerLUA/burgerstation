@@ -257,7 +257,7 @@ var/global/list/all_clients = list() //Assoc list
 	for(var/k in ranks)
 		var/rank/R = k
 		if(!R)
-			CRASH_SAFE("Invalid rank for [src]: [k]")
+			log_error("Invalid rank for [ckey]: [k]")
 			continue
 		to_chat(span("notice","Adding [R.name] permissions..."))
 		permissions |= R.permissions

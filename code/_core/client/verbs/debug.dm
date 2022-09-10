@@ -193,7 +193,7 @@ var/global/list/debug_verbs = list(
 	set name = "Print Garbage Collection"
 
 	if(!length(qdel_refs_to_type))
-		usr.to_chat("Nothing has been found in the garbage collection system.")
+		src.to_chat("Nothing has been found in the garbage collection system.")
 		return TRUE
 
 	var/final_text = ""
@@ -218,7 +218,7 @@ var/global/list/debug_verbs = list(
 
 	final_text = "<h1>Found [bad_qdels] objects that refused to be deleted.</h1>[final_text]"
 
-	usr << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
+	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
 
 	qdel(dummy_datum)
 

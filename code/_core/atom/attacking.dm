@@ -25,16 +25,13 @@
 		params = list()
 
 	if(!victim)
-		CRASH_SAFE("[src.get_debug_name()] tried attacking without a victim!")
-		return FALSE
+		CRASH("[src.get_debug_name()] tried attacking without a victim!")
 
 	if(qdeleting)
-		CRASH_SAFE("[src.get_debug_name()] tried attacking, but it was deleting!")
-		return FALSE
+		CRASH("[src.get_debug_name()] tried attacking, but it was deleting!")
 
 	if(attacker.qdeleting)
-		CRASH_SAFE("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
-		return FALSE
+		CRASH("[attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it was deleting!")
 
 	if(world.time < attacker.attack_next)
 		return FALSE
@@ -183,8 +180,7 @@
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)
 		if(!(A1 && A2))
-			CRASH_SAFE("Warning: tried attacking without valid areas!")
-			return FALSE
+			CRASH("Warning: tried attacking without valid areas!")
 		if( (A1.flags_area & FLAG_AREA_NO_DAMAGE) || (A2.flags_area & FLAG_AREA_NO_DAMAGE) )
 			return FALSE
 

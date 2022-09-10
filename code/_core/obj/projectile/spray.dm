@@ -3,12 +3,24 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 	icon = 'icons/obj/projectiles/spray.dmi'
 	icon_state = "placeholder"
-	reagents = /reagent_container/chem_spray
+	reagents = /reagent_container/spray/bottle
 
 	hit_target_turf = TRUE
+	hit_target_atom = TRUE
 	hit_laying = TRUE
 
 	plane = PLANE_PROJECTILE_NO_EFFECTS
+
+	hostile = FALSE
+
+	debug = TRUE
+
+/obj/projectile/spray/update_sprite()
+	. = ..()
+	if(reagents)
+		color = reagents.color
+		hostile = reagents.contains_lethal
+
 
 /obj/projectile/spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
@@ -19,7 +31,7 @@
 
 /obj/projectile/spray/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
-	if(. && reagents.volume_current)
+	if(. && reagents.volume_current > 0)
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
 
 /obj/projectile/spray/update_projectile(var/tick_rate=1)
@@ -40,7 +52,7 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 	icon = 'icons/obj/projectiles/spray.dmi'
 	icon_state = "spray"
-	reagents = /reagent_container/chem_spray
+	reagents = /reagent_container/spray/bottle
 
 	plane = PLANE_PROJECTILE_NO_EFFECTS
 

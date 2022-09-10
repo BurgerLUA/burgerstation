@@ -37,7 +37,7 @@
 /mob/abstract/observer/on_left_down(var/atom/object,location,control,params)
 	return on_left_click(object,location,control,params)
 
-/mob/abstract/observer/MouseDrop(over_object, src_location, over_location, src_control, over_control, params)
+/mob/abstract/observer/MouseDrop(var/atom/over_object, var/atom/src_location, var/atom/over_location, src_control, over_control, params)
 	. = ..()
 	if(over_object)
 		if(is_player(over_object))
@@ -67,8 +67,7 @@
 
 	if(!client)
 		qdel(src)
-		CRASH_SAFE("Tired to initialize an observer without a client!")
-		return FALSE
+		CRASH("Tired to initialize an observer without a client!")
 
 	name = "ghost of [ckey]"
 

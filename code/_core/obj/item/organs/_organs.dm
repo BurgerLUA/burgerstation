@@ -68,8 +68,8 @@
 
 	enable_blood_stains = TRUE
 
-	//appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
-	//SHOULD THE ABOVE USE KEEP_TOGETHER?
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE | TILE_BOUND | KEEP_TOGETHER
+	//SHOULD THE ABOVE USE KEEP_TOGETHER? YES.
 
 	var/can_be_broken = TRUE
 	var/broken = FALSE

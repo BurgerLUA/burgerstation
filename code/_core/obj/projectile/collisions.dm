@@ -1,9 +1,9 @@
 /atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
-	if(P.owner == src)
+	if(P.owner == src && P.target_atom != P.owner)
 		return FALSE
 
-	if( (collision_bullet_flags & FLAG_COLLISION_BULLET_SPECIFIC) && P.target_atom == src)
+	if((collision_bullet_flags & FLAG_COLLISION_BULLET_SPECIFIC) && P.target_atom == src)
 		return TRUE
 
 	if(P.collision_flags_special && P.collision_flags_special & collision_flags)
@@ -56,7 +56,7 @@
 	if(P.loyalty_tag && !allow_hostile_action(src.loyalty_tag,P.loyalty_tag,new_turf.loc))
 		return FALSE
 
-	if(!P.hit_laying && dead && get_dist(src,P.target_atom) > 0)
+	if(!P.hit_laying && dead && get_dist(src,P.target_turf) > 0)
 		return FALSE
 
 	. = ..()
@@ -107,7 +107,7 @@
 	if(!(projectile_dir & src.collision_dir))
 		return FALSE
 
-	if(bullet_block_chance >= 100) //Intentionally placed before distance checking in order to prevent exploits.
+	if(P.target_atom == src || bullet_block_chance >= 100) //Intentionally placed before distance checking in order to prevent exploits.
 		return TRUE
 
 	if(P.start_turf && get_dist(P.start_turf,src) <= 1 )

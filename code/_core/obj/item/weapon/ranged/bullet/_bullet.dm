@@ -174,7 +174,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		. += div("notice","There is a bullet loaded in the chamber.")
 
 /obj/item/weapon/ranged/bullet/get_ranged_damage_type()
-	return chambered_bullet ? chambered_bullet.damage_type : damage_type
+	return chambered_bullet ? chambered_bullet.damage_type : null
 
 
 /obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc,var/play_sound=FALSE)

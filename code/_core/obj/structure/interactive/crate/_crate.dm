@@ -136,7 +136,7 @@
 		return FALSE
 	if(!is_living(M) && !is_item(M))
 		return FALSE
-	if(istype(M, /mob/living/advanced/player/))
+	if(is_player(M))
 		var/mob/living/advanced/player/playerCorpse = M
 		if(playerCorpse.dead)
 			visible_message(span("warning", "\The [playerCorpse.name] hilariously looses balance and falls out of the crate!"))

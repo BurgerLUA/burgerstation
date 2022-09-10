@@ -16,9 +16,7 @@
 // The proc you should always use to set the light of this atom.
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 
-	if(!isnum(l_range))
-		CRASH_SAFE("Light range set to null!")
-		return
+	if(!isnum(l_range)) CRASH("Light range set to null!")
 
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4, which is the lowest value that you can really see.

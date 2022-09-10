@@ -270,14 +270,19 @@
 
 	. = ..()
 
-	if(. && isturf(target))
-		var/turf/T = target
-		var/cleaning_power = volume_to_splash*10*strength_mod
-		for(var/obj/effect/cleanable/C in T.contents)
-			if(cleaning_power <= 0)
-				break
-			qdel(C)
-			cleaning_power -= 10
+	if(.)
+		if(isturf(target))
+			var/turf/T = target
+			var/cleaning_power = volume_to_splash*10*strength_mod
+			for(var/obj/effect/cleanable/C in T.contents)
+				if(cleaning_power <= 0)
+					break
+				qdel(C)
+				cleaning_power -= 10
+		else if(is_advanced(target))
+			var/cleaning_power = volume_to_splash*strength_mod
+			var/mob/living/advanced/A = target
+			A.make_clean(clean_strength=cleaning_power)
 
 /reagent/phenol
 	name = "Phenol"

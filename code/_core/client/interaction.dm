@@ -197,7 +197,7 @@
 	. = ..()
 
 
-/client/MouseDrag(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
+/client/MouseDrag(var/atom/src_object,var/atom/over_object,var/atom/src_location,var/atom/over_location,src_control,over_control,params)
 
 	if(!src_object || !over_object || src_object.qdeleting || over_object.qdeleting)
 		return FALSE

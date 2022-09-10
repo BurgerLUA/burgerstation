@@ -382,11 +382,9 @@
 	var/reagent/R = REAGENT(reagent_type)
 
 	if(!R)
-		CRASH_SAFE("Reagent Error: Tried to add/remove an invalid reagent ([reagent_type]) to [owner.get_debug_name()]!")
-		return 0
+		CRASH("Reagent Error: Tried to add/remove an invalid reagent ([reagent_type]) to [owner.get_debug_name()]!")
 
-	if(amount == 0)
-		//CRASH_SAFE("Reagent Error: Tried to add/remove 0 units of [reagent_type] to [owner.get_debug_name()]!")
+	if(!amount)
 		return 0
 
 	if(temperature == TNULL || R.abstract)
@@ -460,8 +458,7 @@
 /reagent_container/proc/transfer_reagents_to(var/reagent_container/target_container,var/amount=src.volume_current,var/should_update=TRUE,var/check_recipes = TRUE,var/mob/living/caller,var/include_abstract=FALSE) //Transfer all the reagents.
 
 	if(!target_container)
-		CRASH_SAFE("Tried to transfer reagents from [owner], but there was no target_container!")
-		return 0
+		CRASH("Tried to transfer reagents from [owner], but there was no target_container!")
 
 	if(amount == 0)
 		return 0
@@ -563,14 +560,12 @@
 		return FALSE
 
 	if(!target)
-		CRASH_SAFE("Tried to splash with no target!")
-		return FALSE
+		CRASH("Tried to splash with no target!")
 
 	target = target.change_victim(caller,owner)
 
 	if(!target)
-		CRASH_SAFE("Tried to splash with invalid target!")
-		return FALSE
+		CRASH("Tried to splash with invalid target!")
 
 	return target.on_splash(caller,src,splash_amount,silent,strength_mod)
 
@@ -589,11 +584,20 @@
 
 	return FALSE
 
+/mob/living/on_splash(var/mob/caller,var/reagent_container/source,var/splash_amount,var/silent = FALSE,var/strength_mod=1)
+
+	if(source.contains_lethal && caller != src && is_living(caller))
+		var/mob/living/L = caller
+		var/area/A = get_area(src)
+		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
+			return FALSE
+
+	. = ..()
+
 /reagent_container/proc/consume(var/mob/caller,var/mob/living/consumer)
 
 	if(!owner)
-		CRASH_SAFE("[src.get_debug_name()] had no owner!")
-		return FALSE
+		CRASH("[src.get_debug_name()] had no owner!")
 
 	var/consume_verb = owner.get_consume_verb()
 	var/consume_sound = owner.get_consume_sound()

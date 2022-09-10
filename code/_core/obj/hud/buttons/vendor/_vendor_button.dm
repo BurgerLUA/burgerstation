@@ -107,7 +107,7 @@
 	. = ..()
 
 	if(!associated_item)
-		CRASH_SAFE("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
+		log_error("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
 		update_owner(null)
 		return
 

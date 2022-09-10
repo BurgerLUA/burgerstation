@@ -788,10 +788,6 @@ var/global/list/rarity_to_mul = list(
 
 	desired_level = clamp(desired_level,0,5)
 
-	if(!enable_blood_stains || desired_level <= 0)
-		remove_blend("bloodstain")
-		return TRUE
-
 	//Store the old values.
 	var/old_level = blood_stain_intensity
 	var/old_color = blood_stain_color
@@ -805,7 +801,11 @@ var/global/list/rarity_to_mul = list(
 	if(!force && CEILING(old_level,1) == CEILING(blood_stain_intensity,1) && old_color == desired_color)
 		return FALSE
 
-	add_blend("bloodstain", desired_icon_state = blood_stain_intensity > 0 ? "[CEILING(blood_stain_intensity,1)]" : null, desired_color = blood_stain_color)
+	if(!enable_blood_stains || blood_stain_intensity <= 0)
+		remove_blend("bloodstain")
+	else
+		add_blend("bloodstain", desired_icon_state = "[CEILING(blood_stain_intensity,1)]", desired_color = blood_stain_color)
+
 	update_sprite()
 
 	if(is_inventory(loc))

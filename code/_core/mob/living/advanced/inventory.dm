@@ -1,7 +1,7 @@
 /mob/living/advanced/proc/add_inventory(var/obj/hud/inventory/I)
 
 	if(!I.id)
-		CRASH_SAFE("[I.get_debug_name()] didn't have an ID!")
+		log_error("[I.get_debug_name()] didn't have an ID!")
 		return FALSE
 
 	inventories_by_id[I.id] = I
@@ -17,7 +17,7 @@
 /mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
 
 	if(!I.id)
-		CRASH_SAFE("[I.get_debug_name()] didn't have an ID!")
+		log_error("[I.get_debug_name()] didn't have an ID!")
 		return FALSE
 
 	inventories_by_id -= I.id
