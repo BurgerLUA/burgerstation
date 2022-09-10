@@ -27,6 +27,7 @@
 		/obj/item/flare,
 		/obj/item/fulton_pack,
 		/obj/item/container/syringe/medipen/mining,
+		/obj/item/legion_core_stabilizer,
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
 		/obj/item/crafting/workbench,
