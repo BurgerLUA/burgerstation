@@ -74,13 +74,7 @@
 			T.old_living = list()
 		T.old_living |= src
 		src.old_turf = T
-		if(is_simulated(old_loc) && !horizontal && move_mod > 1)
-			var/turf/simulated/S = T
-			var/slip_strength = S.get_slip_strength(src)
-			if(slip_strength >= 4 - move_mod)
-				var/obj/item/wet_floor_sign/WFS = locate() in range(1,S)
-				if(!WFS || move_mod > 2)
-					add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+
 		if(!src.z)
 			handle_blocking()
 
@@ -88,6 +82,14 @@
 
 	last_move_delay = TICKS_TO_DECISECONDS(next_move)
 	last_move_time = world.time
+
+	if(is_simulated(loc) && !horizontal && move_mod > 1)
+		var/turf/simulated/S = loc
+		var/slip_strength = S.get_slip_strength(src)
+		if(slip_strength >= 4 - move_mod)
+			var/obj/item/wet_floor_sign/WFS = locate() in range(2,S)
+			if(!WFS || move_mod > 2)
+				add_status_effect(SLIP,slip_strength*10,slip_strength*10)
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)

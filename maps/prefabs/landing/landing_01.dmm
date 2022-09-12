@@ -13,6 +13,7 @@
 "m" = (/obj/decal/shuttle_landing{icon_state = "4,3"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "n" = (/obj/decal/shuttle_landing{icon_state = "0,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "o" = (/obj/decal/shuttle_landing{icon_state = "1,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"p" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "q" = (/obj/decal/shuttle_landing{icon_state = "3,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "r" = (/obj/decal/shuttle_landing{icon_state = "4,2"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "s" = (/obj/decal/shuttle_landing{icon_state = "0,1"},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
@@ -31,22 +32,23 @@
 "F" = (/obj/decal/hazard,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "G" = (/obj/marker/landing_decal_left,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "H" = (/obj/marker/landing_decal_right,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"I" = (/obj/marker/map_node,/turf/simulated/floor/landing,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-cCCCCCCCCCCCCCca
+cCCCCCCCCCCCCCcp
 DGHbbbbbbbbbGHEa
+DbbbbbbbbbbbbbEp
 DbbbbbbbbbbbbbEa
-DbbbbbbbbbbbbbEa
-DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEp
 DbbbbefghebbbbEb
 DbbbbijGlmbbbbEk
-cbbbbnodqrbbbbcb
+cbbbbnodqrbbbbcI
 DbbbbstuvwbbbbEb
 DbbbbxyzABbbbbEa
+DbbbbbbbbbbbbbEp
 DbbbbbbbbbbbbbEa
-DbbbbbbbbbbbbbEa
-DbbbbbbbbbbbbbEa
+DbbbbbbbbbbbbbEp
 DGHbbbbbbbbbGHEa
 cFFFFFFFFFFFFFca
-aaaaaaaaaaaaaaaa
+paapaapaapaapaap
 "}

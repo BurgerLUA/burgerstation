@@ -14,16 +14,19 @@
 "n" = (/mob/living/simple/turret/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_06)
 "o" = (/obj/structure/interactive/lighting/fixture/floor/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_06)
 "p" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_06)
+"q" = (/obj/marker/map_node,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_06)
+"r" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_06)
+"s" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaabbbbbaa
 aaabcdcbaa
 aaabeeebaa
-aaabfgfbaa
+aaabfqfbaa
 aaabhgibaa
 aaabfgfbaa
-aaajkkkpaa
+aaajkrkpaa
 aalbbmbbla
-aalnogonla
-aallllllla
+aalnoqonla
+aalllsllla
 "}

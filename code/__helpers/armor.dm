@@ -71,8 +71,7 @@
 // https://www.desmos.com/calculator/11gydjmfmd
 /proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
 	if(damage_dealt < 0)
-		CRASH_SAFE("Damage [damage_dealt] was negative!")
-		return 0
+		CRASH("Damage [damage_dealt] was negative!")
 	if(!damage_dealt || !armor_rating)
 		return damage_dealt
 	if(IS_INFINITY(armor_rating))

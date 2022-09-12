@@ -13,7 +13,7 @@
 
 /obj/structure/interactive/ground_ore_deposit/Initialize(var/desired_loc)
 
-	if(!istype(loc,/turf/simulated/floor/))
+	if(!is_floor(loc))
 		qdel(src)
 		return TRUE
 

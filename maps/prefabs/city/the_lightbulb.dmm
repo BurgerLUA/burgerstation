@@ -21,7 +21,7 @@
 "au" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "av" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
 "aw" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
-"ax" = (/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
+"ax" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "ay" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "az" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/the_lightbulb)
 "aA" = (/turf/simulated/floor/tile/purple,/area/mission/prefab/city/the_lightbulb)
@@ -42,10 +42,10 @@
 "aP" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "aQ" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/obj/structure/carpet/grey,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "aR" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"aS" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aS" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aT" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aU" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"aV" = (/obj/structure/interactive/fence/door{icon_state = "door_opened"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aV" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "aW" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aX" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aY" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 5},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
@@ -54,7 +54,7 @@
 "bb" = (/obj/structure/interactive/fence/end,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bc" = (/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
 "bd" = (/obj/structure/interactive/lighting/fixture/tube/color/turf,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
-"be" = (/obj/structure/carpet/grey,/obj/structure/carpet/grey,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"be" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "bf" = (/turf/simulated/floor/tile/medical,/area/mission/prefab/city/the_lightbulb)
 "bg" = (/obj/structure/interactive/lighting/fixture/tube/color/turf,/turf/simulated/floor/tile/medical,/area/mission/prefab/city/the_lightbulb)
 "bh" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
@@ -64,22 +64,32 @@
 "bl" = (/obj/structure/carpet/grey,/obj/structure/interactive/vending/soda/solarian,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "bm" = (/obj/structure/interactive/vending/junk/solarian,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "bn" = (/obj/structure/table/reinforced/steel,/obj/structure/interactive/storage/cash_register,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bo" = (/obj/structure/carpet/grey,/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bp" = (/obj/marker/map_node,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
+"bq" = (/obj/marker/map_node,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"br" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bs" = (/obj/marker/map_node,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
+"bt" = (/obj/structure/interactive/fence/door,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bu" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bv" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bw" = (/obj/marker/map_node,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
+"bx" = (/obj/marker/map_node/x2,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 
 (1,1,1) = {"
-acacacacacacacaRaRaRaRaRaWaXaXaY
-acacacacacacacaRaRaRaRaRaVaRaRaZ
-abababababababaRbababababbbaaSaZ
+acacacacacacacaRaRaRaRaRaWaXbtaY
+abababababababaRaxbabababbaSbuaZ
 abadaeafblbmabaiajakalalalalaTaZ
-ayahagagagahamanaoaoalapaqalaTaZ
-abarasatahahaaauananavaxawalaTaU
+aybpagagagbpambqbraoalapaqalaTaZ
+abarasatahahaaaubxbqavbsawalaTaU
 abababababababanananalbkalalaiai
-aianayananananananananananayanai
+aibqaybqbqananbqbqananbqbqaybqai
 azaAaiaBananananananananaCaiaDaz
 azaEaiaFananaGanbnaHananaFaiaIaz
 azaAaiaFananaJananaHananaFaiaDaz
-azaKaiaBananananananananaCaiaLaz
+azaKaiaBbqanbqbqanbqanbqaCaiaLaz
 azaMaiaFananananananananaFaiaNaz
 azaKaiaiaiaiaOaPaPaQaiaiaiaiaLaz
-aianbcbdbcaiaPaPaPbeaibfbgbfanai
+aibqbcbdbwaibeaPaPboaibfbgbfbqai
 aiaiazazazaibhbibjbhaiazazazaiai
+aVaVaVaVaVaVbvaVaVbvaVaVaVaVaVaV
 "}

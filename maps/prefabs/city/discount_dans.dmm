@@ -7,7 +7,7 @@
 "ag" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "ah" = (/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "ai" = (/obj/structure/interactive/door/airlock/station/bathroom/female,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
-"aj" = (/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
+"aj" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "ak" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
 "al" = (/obj/structure/sign/restroom/female,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/bathroom_female)
 "am" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
@@ -29,15 +29,14 @@
 "aC" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown/dark,/area/mission/prefab/city/discount_dans)
 "aD" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
 "aE" = (/obj/structure/interactive/door/airlock/station/bathroom/male,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
-"aF" = (/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
+"aF" = (/obj/structure/interactive/lighting/fixture/tube,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "aG" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "aH" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"aI" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "aJ" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"aK" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aK" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
 "aL" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aM" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 1},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"aN" = (/obj/structure/interactive/power/smes,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aN" = (/obj/structure/interactive/power/smes,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aO" = (/obj/structure/interactive/fence,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aP" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aQ" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
@@ -64,29 +63,37 @@
 "bl" = (/obj/structure/interactive/crate/closet/freezer,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "bm" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bn" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"bo" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bo" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bp" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bq" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"br" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
+"br" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "bs" = (/obj/structure/interactive/chair/wood,/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown/dark,/area/mission/prefab/city/discount_dans)
 "bt" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
 "bu" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
+"bv" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bw" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
+"bx" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"by" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bz" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
+"bA" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bB" = (/obj/marker/map_node/x2,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bC" = (/obj/marker/map_node/x2,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-aaabaaaaaaaaaaaaaaacacadbdadadaI
-aaaebkblagagagafaaahboaiajbtadaI
-aabraeaeaeaeaeaeakahahalamanadaI
-aaaaaaaoaoaoaobcaqarahasasasasaI
-acbgbjatatatatbqatarahauavawasaI
-acbmatatatatatatatarahaEaFbuasaI
-acbhbfaGaGaGaGbhaGarahasbeasasaI
-acaHaHaJaHaHaRaRaHararaTaKaLaMaI
-aVahahahahahahahahahbpacaNaLaOaI
-aVataWaWatahahataWaWatacaPaLaOaI
-acaXbhaGaXbnahaYbibhaZacaPaLaOaI
-acacaVaVbaacbbacaVaVacacaQaSaUaI
-axaCazaAaBaBaBaBaAazbsaxapapapaI
-axaBaBaBaBaBaBaBaBaBaBaxapapapaI
-axaDazaAaBaBaBaBayazaDaxapapapaI
-axaxaxaxaxaBaBaxaxaxaxaxapapapaI
+aaabaaaaaaaaaaaaaaacacadbdadadap
+aaajbkblagagagafaaahaFaiaKbtadap
+aabraeaeaeaeaeajakboahalamanadap
+aaaaaaaoaoaoaobcaqarahasasasasap
+acbgbjatatatatbqatarahauavawasap
+acbmatatatatatatatarboaEbwbuasap
+acbhbfaGaGaGaGbhaGarahasbeasasap
+acaHaHaJaHaHaRaRaHarbxaTbyaLaMap
+aVahahahahahbBahahahbpacaNaLaOap
+aVataWaWatahahataWaWatacbvaLaOap
+acaXbhaGaXbnboaYbibhaZacaPaLaOap
+acacaVaVbaacbbacaVaVacacaQaSaUap
+axaCazaAaBaBbzaBaAazbsaxapbAapap
+axaBaBaBaBaBaBaBaBaBaBaxapapapap
+axaDazaAaBaBaBaBayazaDaxapbCapap
+axaxaxaxaxaBbzaxaxaxaxaxapapapap
 "}

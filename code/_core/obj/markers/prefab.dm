@@ -259,4 +259,4 @@
 	icon_state = null
 	category = "vault"
 	chance_none = 0
-	rotational_offset = 16
+	rotational_offset = 10

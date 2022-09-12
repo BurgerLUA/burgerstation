@@ -1,10 +1,7 @@
-/reagent_container/medical_spray
+/reagent_container/spray/medical
 	volume_max = 60
 	should_update_owner = TRUE
 
-
-
-
-/reagent_container/chem_spray
-	volume_max = 30
+/reagent_container/spray/bottle
+	volume_max = 100
 	should_update_owner = TRUE

@@ -1,8 +1,7 @@
 /atom/movable/proc/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = VIEW_RANGE,var/desired_loyalty_tag,var/damage_multiplier=1)
 
 	if(!thrower)
-		CRASH_SAFE("No thrower exists!")
-		return FALSE
+		CRASH("No thrower exists!")
 
 	if(!throwable || anchored)
 		if(ismob(thrower))

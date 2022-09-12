@@ -174,7 +174,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		. += div("notice","There is a bullet loaded in the chamber.")
 
 /obj/item/weapon/ranged/bullet/get_ranged_damage_type()
-	return chambered_bullet ? chambered_bullet.damage_type : damage_type
+	return chambered_bullet ? chambered_bullet.damage_type : null
 
 
 /obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc,var/play_sound=FALSE)
@@ -243,7 +243,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	for(var/k in stored_bullets)
 		if(!k) continue
 		var/obj/item/bullet_cartridge/B = k
-		eject_stored_bullet(caller,B,new_loc,play_sound,pitch=sound_pitch)
+		eject_stored_bullet(caller,B,new_loc,play_sound)
 
 	return TRUE
 
@@ -254,7 +254,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		var/obj/item/bullet_cartridge/B = k
 		if(!B.is_spent)
 			continue
-		eject_stored_bullet(caller,B,new_loc,play_sound,pitch=sound_pitch)
+		eject_stored_bullet(caller,B,new_loc,play_sound)
 
 	return TRUE
 

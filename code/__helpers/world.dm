@@ -21,29 +21,29 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 
 #define INITIALIZE(D)																								\
 	if(D.initialized) {																								\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was initialized more than once!");										\
+		CRASH("ERROR: [D.get_debug_name()] was initialized more than once!");										\
 	}																												\
 	else {																											\
-		if(!D.Initialize()) {CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Initialize() properly!")};				\
-		if(!D.PostInitialize()) {CRASH_SAFE("ERROR: [D.get_debug_name()] did not run PostInitialize() properly!")};		\
+		if(!D.Initialize()) {log_error("ERROR: [D.get_debug_name()] did not run Initialize() properly!")};				\
+		if(!D.PostInitialize()) {log_error("ERROR: [D.get_debug_name()] did not run PostInitialize() properly!")};		\
 		D.initialized = TRUE;																						\
 	}
 
 #define GENERATE(D)																									\
 	if(D.generated)	{																								\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was generated more than once!");											\
+		CRASH("ERROR: [D.get_debug_name()] was generated more than once!");											\
 	}																												\
 	else {																											\
-		if(!D.Generate()) {CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Generate() properly!")};					\
+		if(!D.Generate()) {log_error("ERROR: [D.get_debug_name()] did not run Generate() properly!")};					\
 		D.generated = TRUE;																							\
 	}
 
 #define FINALIZE(D)																									\
 	if(D.finalized) {																								\
-		CRASH_SAFE("ERROR: [D.get_debug_name()] was finalized more than once!");											\
+		CRASH("ERROR: [D.get_debug_name()] was finalized more than once!");											\
 	}																												\
 	else {																											\
-		if(!D.Finalize()) {CRASH_SAFE("ERROR: [D.get_debug_name()] did not run Finalize() properly!")};					\
+		if(!D.Finalize()) {log_error("ERROR: [D.get_debug_name()] did not run Finalize() properly!")};					\
 		D.finalized = TRUE;																							\
 	}
 

@@ -15,6 +15,9 @@
 "o" = (/obj/structure/interactive/plant/embershroom_mushroom,/turf/simulated/floor/colored/ash/dark,/area/dmm_suite/clear_area)
 "p" = (/obj/structure/table/simple/boss,/obj/marker/spawning/random/ashwalker,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
 "q" = (/obj/structure/table/simple/boss,/obj/marker/spawning/random/ashwalker,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
+"r" = (/obj/marker/map_node/x2,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
+"s" = (/obj/marker/map_node/x2,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"t" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
@@ -22,15 +25,15 @@ aaaeeeeeeeeeaaaa
 aaeebbbbbbbeeeaa
 aeeebpdcdcbeoooa
 aeeebkccccbefffa
-aeeebqheeebennna
+aeeebqhreebennna
 aaeebleeimbeeeea
 aaaebbeggbbeeaaa
 aaaajjjjjjjaaaaa
-aaajjjjjjjjjaaaa
+aaajjjjsjjjjaaaa
 aajjjjjjjjjjjaaa
-jjjjjjjjjjjjjjjj
-jjjjjjjjjjjjjjjj
-aajjjjjjjjjjjaaa
+tjjjjjjjjjjjjjjt
+jjjjtjjjjjjtjjjj
+aajjjjjsjjjjjaaa
 aaajjjjjjjjjaaaa
 aaaajjjjjjjaaaaa
 "}

@@ -17,7 +17,7 @@
 	var/recoil_delay = 0 //As a factor. Lower values mean slower kicks, higher values mean faster kicks.
 	var/queued_recoil = 0
 
-	var/ranged_damage_type
+	var/damagetype/ranged_damage_type
 	var/projectile_speed = TILE_SIZE - 1 //Fallback value
 	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
@@ -652,7 +652,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
 	if(!target) CRASH("There is no valid target defined!")
 
@@ -719,7 +719,25 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			var/x_vel = normx * projectile_speed_to_use / mod
 			var/y_vel = normy * projectile_speed_to_use / mod
 
-			var/obj/projectile/P = new projectile_to_use(T,caller,src,x_vel,y_vel,final_pixel_target_x,final_pixel_target_y, isturf(target) ? target : get_turf(target), damage_type_to_use, target, bullet_color, caller, damage_multiplier, desired_iff_tag, desired_loyalty_tag, desired_inaccuracy_modifier,penetrations_left)
+			var/obj/projectile/P = new projectile_to_use(
+				T,
+				caller,
+				src,
+				x_vel,
+				y_vel,
+				final_pixel_target_x,
+				final_pixel_target_y,
+				location ? location : (isturf(target) ? target : get_turf(target)),
+				damage_type_to_use,
+				target,
+				bullet_color,
+				caller,
+				damage_multiplier,
+				desired_iff_tag,
+				desired_loyalty_tag,
+				desired_inaccuracy_modifier,
+				penetrations_left
+			)
 			INITIALIZE(P)
 			FINALIZE(P)
 			. += P

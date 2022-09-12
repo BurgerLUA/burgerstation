@@ -261,10 +261,8 @@
 
 	var/obj/hud/inventory/holding = item_to_wield.loc
 
-	if(holding && is_inventory(holding))
+	if(is_inventory(holding))
 		holding.child_inventory = null
-	else
-		CRASH_SAFE("ERRROR: unwield() variable holding wasn't valid ([holding])!")
 
 	src.parent_inventory = null
 	item_to_wield.wielded = null

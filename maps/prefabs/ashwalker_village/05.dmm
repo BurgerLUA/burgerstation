@@ -6,9 +6,13 @@
 "f" = (/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
 "g" = (/obj/structure/table/simple/boss,/obj/marker/spawning/random/ashwalker,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
 "h" = (/obj/structure/table/simple/boss,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
+"i" = (/obj/marker/map_node,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
+"j" = (/obj/marker/map_node/x2,/turf/simulated/floor/colored/ash/rocky,/area/dmm_suite/clear_area)
+"k" = (/obj/marker/map_node/x2,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "l" = (/mob/living/advanced/npc/ashwalker,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "m" = (/mob/living/advanced/npc/ashwalker/hunter,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "n" = (/obj/structure/interactive/plant/cactus_fruit,/turf/simulated/floor/colored/ash/dark,/area/dmm_suite/clear_area)
+"o" = (/obj/marker/map_node,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
 "q" = (/turf/simulated/floor/colored/ash/dark,/area/dmm_suite/clear_area)
 "t" = (/obj/structure/interactive/plant/embershroom_mushroom,/turf/simulated/floor/colored/ash/dark,/area/dmm_suite/clear_area)
 "u" = (/obj/structure/interactive/plant/inocybe_mushroom,/turf/simulated/floor/colored/ash/dark,/area/dmm_suite/clear_area)
@@ -19,12 +23,12 @@ abbbbbbbbbbbbbba
 abccccccaaaaaaaa
 abcddghhaaaaaaaa
 abcdefaaaaaaaaaa
-abcdbffaaaaaaaaa
-afcffffffaaaaaaa
+abcdkffaaaaaaaaa
+afcfffiffaaaaaaa
 afcccffffffffcba
-afblbbbbfbbmbbba
-aaffbbfffbbbbbba
-aannnnttuufffffa
+afblobbkfbkmbbba
+aaifbbfffbbbbbba
+aannnnttuufffjfa
 aaqqqqqqqqfffffa
 aaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaa

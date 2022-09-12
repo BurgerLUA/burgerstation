@@ -3,6 +3,9 @@
 	reagents = /reagent_container/beaker/large
 	size = SIZE_2
 
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = TRUE
+
 /obj/item/container/simple/alcohol/fernet
 	name = "Fernet Italiano"
 	icon_state = "fernet"

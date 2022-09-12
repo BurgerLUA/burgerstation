@@ -32,7 +32,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/pump/get_ranged_damage_type()
-	return stored_bullets[1] ? stored_bullets[1].damage_type : damage_type
+	return stored_bullets[1] ? stored_bullets[1].damage_type : null
 
 /obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller)
 

@@ -42,6 +42,7 @@
 	. = ..()
 
 /obj/parallax/defer_click_on_object(var/mob/caller,location,control,params)
+
 	if(owner && params && length(params) && params["screen-loc"])
 		var/turf/T = get_turf(owner)
 		if(T)
@@ -51,7 +52,8 @@
 			var/z_c = FLOOR(T.z,1)
 			var/turf/T2 = locate(x_c,y_c,z_c)
 			if(T2) return T2
-	return ..()
+
+	. = ..()
 
 /obj/parallax/layer1
 	icon_state = "layer1"

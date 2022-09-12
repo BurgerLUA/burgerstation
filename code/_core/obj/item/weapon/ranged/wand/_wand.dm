@@ -201,7 +201,7 @@
 		INTERACT_DELAY(5)
 
 		var/desired_removal = input("What gem would you like to remove?","Gem Removal","Cancel") as null|anything in objects_to_remove
-		if(desired_removal == "Cancel")
+		if(desired_removal == "Cancel" || !desired_removal)
 			caller.to_chat(span("notice","You decide not to remove anything."))
 			return TRUE
 		var/obj/item/G = desired_removal

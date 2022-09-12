@@ -11,7 +11,7 @@
 	var/base_color = "#FFFFFF"
 	var/glass_color = "#FFFFFF"
 
-	reagents = /reagent_container/medical_spray
+	reagents = /reagent_container/spray/medical
 
 	value = 5
 

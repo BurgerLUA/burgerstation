@@ -41,9 +41,7 @@
 
 /obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!referencing)
-		CRASH_SAFE("Warning: Referenced inventory not detected!")
-		return TRUE
+	if(!referencing) CRASH("Referenced inventory not found!")
 
 	update_vis_contents()
 

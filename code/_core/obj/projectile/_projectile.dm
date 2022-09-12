@@ -3,6 +3,8 @@
 	plane = PLANE_PROJECTILE
 	layer = LAYER_PROJECTILE
 
+	damage_type = null //Default is /damage_type/error. Sometimes projectiles don't need to do damage.
+
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
 	var/vel_x = 0 //X velocity, in pixels per decisecond
@@ -42,7 +44,8 @@
 	var/turf/target_turf
 	var/atom/target_atom
 
-	var/hit_target_turf = FALSE
+	var/hit_target_turf = FALSE //The target atom can still be hit when false. Setting to true just gives priority.
+	var/hit_target_atom = FALSE //The target atom can still be hit when false. Setting to true just gives priority.
 	var/hit_laying = FALSE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -63,6 +66,7 @@
 
 	var/iff_tag
 	var/loyalty_tag
+
 	var/hostile = TRUE //Set to true if this is a hostile projectile. Set to false if it isn't.
 
 	var/rotate_projectile = TRUE
@@ -80,7 +84,7 @@
 	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
 	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
 
-	var/debug = FALSE
+	var/debug = TRUE
 
 /obj/projectile/Destroy()
 	color = "#000000"
@@ -134,12 +138,6 @@
 	last_loc_x = x
 	last_loc_y = y
 
-	pixel_x_float_visual = pixel_x
-	pixel_y_float_visual = pixel_y
-
-	pixel_x_float_physical = pixel_x
-	pixel_y_float_physical = pixel_y
-
 	bullet_color = desired_color
 
 	color = bullet_color
@@ -154,39 +152,40 @@
 	//Calculate visual bullet offsets.
 	var/normal_x = vel_x
 	var/normal_y = vel_y
-	var/bullet_offset = FLOOR(TILE_SIZE * 0.5, 1)
+	var/bullet_offset = TILE_SIZE * 0.25 //Cannot be greater or equal to TILE_SIZE*0.5
+	var/muzzle_offset = TILE_SIZE
 	if(vel_x || vel_y)
-		normal_x *= 1/max(abs(vel_x),abs(vel_y))
-		normal_y *= 1/max(abs(vel_x),abs(vel_y))
-	pixel_x = (owner.pixel_x - initial(owner.pixel_x)) + (normal_x * bullet_offset)
-	pixel_y = (owner.pixel_y - initial(owner.pixel_y)) + (normal_y * bullet_offset)
-	pixel_z = owner.pixel_z - initial(owner.pixel_z)
+		var/norm = max(abs(vel_x),abs(vel_y))
+		normal_x *= 1/norm
+		normal_y *= 1/norm
+		if(muzzleflash_effect)
+			var/obj/effect/temp/muzzleflash/M = new muzzleflash_effect(src.loc)
+			M.pixel_x = pixel_x + muzzle_offset*normal_x
+			M.pixel_y = pixel_y + muzzle_offset*normal_y
+			M.pixel_z = pixel_z
+			var/new_angle = ATAN2(vel_x,vel_y) - 90
+			M.transform = turn(M.transform,-new_angle)
+			INITIALIZE(M)
+			FINALIZE(M)
+
+	var/desired_pixel_x = (owner.pixel_x - initial(owner.pixel_x)) + (normal_x * bullet_offset)
+	var/desired_pixel_y = (owner.pixel_y - initial(owner.pixel_y)) + (normal_y * bullet_offset)
+	var/desired_pixel_z = owner.pixel_z - initial(owner.pixel_z)
+	pixel_x = FLOOR(desired_pixel_x,1)
+	pixel_y = FLOOR(desired_pixel_y,1)
+	pixel_z = FLOOR(desired_pixel_z,1)
+	pixel_x_float_visual = pixel_x
+	pixel_y_float_visual = pixel_y
+	pixel_x_float_physical = pixel_x
+	pixel_y_float_physical = pixel_y
 
 	return ..()
 
 /obj/projectile/Finalize()
-
-	//Muzzleflash Effect
-	if(muzzleflash_effect)
-		var/obj/effect/temp/muzzleflash/M = new muzzleflash_effect(src.loc)
-		M.pixel_x = pixel_x
-		M.pixel_y = pixel_y
-		M.pixel_z = pixel_z
-		var/new_angle = ATAN2(vel_x,vel_y) - 90
-		M.transform = turn(M.transform,-new_angle)
-		INITIALIZE(M)
-		FINALIZE(M)
-
+	. = ..()
 	SSprojectiles.all_projectiles += src
 
-	return ..()
-
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
-
-	if(debug)
-		var/obj/effect/temp/tile/TE = new(new_loc)
-		TE.maptext = "[steps_current]"
-		TE.alpha = 200
 
 	if(!new_loc)
 		log_error("Warning: Projectile didn't have a new loc.")
@@ -198,51 +197,67 @@
 		on_projectile_hit(src.loc,old_loc,new_loc)
 		return FALSE
 
-	steps_current += 1
+	//Handle atoms in turf.
+	//Take priority of existing targets on a turf before ones that existed before.
+
+	if(hit_target_atom && old_loc == target_atom.loc && target_atom.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(target_atom,old_loc,new_loc))
+		if(debug) log_debug("[src.get_debug_name()] hit target atom.")
+		return FALSE
+
+	if(hit_target_turf && old_loc == target_turf)
+		on_projectile_hit(target_turf,old_loc,new_loc)
+		if(debug) log_debug("[src.get_debug_name()] hit target turf.")
+		return FALSE
 
 	if(old_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(old_loc,old_loc,new_loc))
 		penetrations_left--
 		if(penetrations_left < 0)
 			return FALSE
 
-	if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
-		penetrations_left--
-		if(penetrations_left < 0)
-			return FALSE
+	if(debug)
+		var/obj/effect/temp/tile/TE = new(new_loc)
+		TE.maptext = "[steps_current]"
+		TE.alpha = 200
 
-	//Handle atoms in turf.
-	//Take priority of existing targets on a turf before ones that existed before.
-	for(var/k in new_loc.contents)
-		var/atom/movable/A = k
-		if(!A.density)
-			continue
-		if(A.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(A,old_loc,new_loc))
+	if(old_loc != new_loc)
+		for(var/k in new_loc.contents)
+			var/atom/movable/A = k
+			if(!A.density || (hit_target_atom && A == target_atom))
+				continue
+			if(A.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(A,old_loc,new_loc))
+				penetrations_left--
+				if(penetrations_left < 0)
+					return FALSE
+
+		if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
 			penetrations_left--
 			if(penetrations_left < 0)
 				return FALSE
 
-	for(var/k in new_loc.old_living)
-		var/mob/living/L = k
-		if(!L.density)
-			continue
-		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions.
-			continue
-		if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
-			penetrations_left--
-			if(penetrations_left < 0)
-				return FALSE
+		for(var/k in new_loc.old_living)
+			var/mob/living/L = k
+			if(!L.density|| (hit_target_atom && L == target_atom))
+				continue
+			if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions.
+				continue
+			if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
+				penetrations_left--
+				if(penetrations_left < 0)
+					return FALSE
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc,old_loc,new_loc)
 		return FALSE
 
-	if(hit_target_turf && old_loc == target_turf)
-		on_projectile_hit(old_loc,old_loc,new_loc)
-		return FALSE
+	steps_current += 1
 
 	return TRUE //No hits. Do not destroy.
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
+
+	if(qdeleting)
+		log_error("Warning: [src.get_debug_name()] called update_projectile() while qdeleting!")
+		return FALSE
 
 	if(!src.z || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
 		on_projectile_hit(current_loc ? current_loc : src.loc,null,null)
@@ -295,6 +310,8 @@
 		previous_loc = current_loc
 		last_loc_x = current_loc_x
 		last_loc_y = current_loc_y
+	else if(steps_current == 0 && !on_enter_tile(loc,loc))
+		return FALSE
 
 	return TRUE
 
@@ -308,8 +325,8 @@
 	. = TRUE
 
 	if(damage_type && all_damage_types[damage_type])
-		var/damagetype/DT = all_damage_types[damage_type]
 
+		var/damagetype/DT = all_damage_types[damage_type]
 
 		var/precise = FALSE
 		if(is_living(hit_atom))
@@ -323,8 +340,6 @@
 				inaccuracy *= src.get_inaccuracy(owner,hit_atom,inaccuracy_modifier)
 				shoot_x = clamp(shoot_x + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
 				shoot_y = clamp(shoot_y + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
-
-
 
 		if(owner && !owner.qdeleting && hit_atom.can_be_attacked(owner,weapon,null,DT))
 			var/list/params = list()
@@ -408,11 +423,6 @@
 
 								if(length(DT.impact_sounds))
 									play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
-
-
-
-	else
-		log_error("Warning: [damage_type] is an invalid damagetype!.")
 
 	if(impact_effect_turf && isturf(hit_atom))
 		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*3,-20,20),clamp((shoot_y-16)*3,-20,20),bullet_color)

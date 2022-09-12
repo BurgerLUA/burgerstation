@@ -315,28 +315,22 @@ var/global/list/all_damage_numbers = list()
 						hit_object = A.labeled_organs[O.id]
 
 		if(!is_valid(attacker))
-			CRASH_SAFE("Could not swing as there was no attacker!")
-			return FALSE
+			CRASH("Could not swing as there was no attacker!")
 
 		if(!is_valid(weapon))
-			CRASH_SAFE("Could not swing as there was no weapon!")
-			return FALSE
+			CRASH("Could not swing as there was no weapon!")
 
 		if(!is_valid(victim))
-			CRASH_SAFE("Could not swing as there was no victim!")
-			return FALSE
+			CRASH("Could not swing as there was no victim!")
 
 		if(!is_valid(victim.health))
-			CRASH_SAFE("Could not swing as there was no victim health! (Victim: [victim])")
-			return FALSE
+			CRASH("Could not swing as there was no victim health! (Victim: [victim])")
 
 		if(!is_valid(hit_object))
-			CRASH_SAFE("Could not swing as there was no hit_object!")
-			return FALSE
+			CRASH("Could not swing as there was no hit_object!")
 
 		if(!is_valid(hit_object.health))
-			CRASH_SAFE("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
-			return FALSE
+			CRASH("Could not swing as there was no hit_object health! (Hitobject: [hit_object])")
 
 		if(!did_animation)
 			. = max(1,do_attack_animation(attacker,victim,weapon,hit_object))
@@ -359,16 +353,17 @@ var/global/list/all_damage_numbers = list()
 			var/obj/item/organ/hand/H
 			if(istype(weapon,/obj/item/organ/hand))
 				H = weapon
-			else if(istype(weapon.loc,/obj/item/organ/hand))
-				H = weapon.loc
-			if(A.attack_flags & CONTROL_MOD_LEFT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_LEFT : BODY_HAND_RIGHT))
-				damage_multiplier *= 2
-				A.health?.adjust_stamina(-25)
-				play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
-			else if(A.attack_flags & CONTROL_MOD_RIGHT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_RIGHT : BODY_HAND_LEFT))
-				damage_multiplier *= 2
-				A.health?.adjust_stamina(-25)
-				play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+			else if(weapon.loc && istype(weapon.loc.loc,/obj/item/organ/hand))
+				H = weapon.loc.loc
+			if(H)
+				if(A.attack_flags & CONTROL_MOD_LEFT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_LEFT : BODY_HAND_RIGHT))
+					damage_multiplier *= 2
+					A.health?.adjust_stamina(-25)
+					play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+				else if(A.attack_flags & CONTROL_MOD_RIGHT && H.id == (A.client.settings.loaded_data["swap_mouse"] ? BODY_HAND_RIGHT : BODY_HAND_LEFT))
+					damage_multiplier *= 2
+					A.health?.adjust_stamina(-25)
+					play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
 
 	for(var/k in victims)
 		var/atom/victim = k

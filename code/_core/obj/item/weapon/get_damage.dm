@@ -26,11 +26,12 @@
 
 /obj/item/weapon/ranged/get_damage_per_hit(var/armor_to_use=0)
 
-	if(!ranged_damage_type)
-		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
+	var/damagetype/damage_type_to_use = get_ranged_damage_type()
+
+	if(!damage_type_to_use)
 		return 0
 
-	var/damagetype/D = all_damage_types[ranged_damage_type]
+	var/damagetype/D = all_damage_types[damage_type_to_use]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
 		return 0

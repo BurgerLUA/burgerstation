@@ -141,9 +141,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	stop_music_track(hearer)
 
 	var/track/T = SStrack.all_tracks[music_track_id]
-	if(!T)
-		CRASH_SAFE("WARNING: INVALID MUSIC TRACK: [music_track_id].")
-		return FALSE
+	if(!T) CRASH("WARNING: INVALID MUSIC TRACK: [music_track_id].")
 
 	var/volume_mod = 50
 
@@ -197,9 +195,8 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 		created_sound = SSsound.sound_cache[sound_path]
 	else
 		created_sound = sound(sound_path)
-		if(!created_sound)
-			CRASH_SAFE("Error: Invalid sound! [sound_path].")
-			return null
+		if(!created_sound) CRASH("Invalid sound! [sound_path].")
+
 		SSsound.sound_cache[sound_path] = created_sound
 
 	return created_sound

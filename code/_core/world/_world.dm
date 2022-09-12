@@ -30,6 +30,21 @@ var/global/world_state = STATE_STARTING
 /world/New()
 	sleep_offline = FALSE
 	__detect_rust_g()
+	//TODO: Unfuck this.
+	createtypecache(/mob/living/)
+	createtypecache(/mob/living/advanced)
+	createtypecache(/mob/living/advanced/player)
+	createtypecache(/mob/abstract/observer)
+	createtypecache(/obj/structure/)
+	createtypecache(/obj/item/)
+	createtypecache(/obj/item/currency)
+	createtypecache(/obj/item/organ/)
+	createtypecache(/obj/hud/)
+	createtypecache(/obj/hud/inventory/)
+	createtypecache(/turf/simulated/floor/)
+	createtypecache(/turf/simulated/wall/)
+	createtypecache(/turf/simulated/)
+	createtypecache(/turf/unsimulated/)
 	. = ..()
 	life()
 	sleep_offline = initial(sleep_offline)
@@ -147,7 +162,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/end(var/reason,var/shutdown=FALSE)
 
 	if(world_state != STATE_RUNNING)
-		CRASH_SAFE("Can't restart now!")
+		log_error("Can't restart now!")
 		return FALSE
 
 	var/nice_reason = "Unknown reason."

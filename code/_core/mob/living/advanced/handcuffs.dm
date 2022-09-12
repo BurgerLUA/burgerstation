@@ -1,8 +1,7 @@
 /mob/living/advanced/proc/set_handcuffs(var/desired_handcuffs = TRUE,var/obj/item/handcuffs/handcuff_item)
 
 	if(!overlays_assoc["handcuffs"])
-		CRASH_SAFE("WARNING: [src.get_debug_name()] didn't have a handcuff overlay!")
-		return FALSE
+		CRASH("WARNING: [src.get_debug_name()] didn't have a handcuff overlay!")
 
 	if(handcuffed == desired_handcuffs)
 		return FALSE

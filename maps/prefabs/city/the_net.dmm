@@ -30,29 +30,38 @@
 "D" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "E" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 5},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "F" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"G" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"G" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "H" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "I" = (/obj/structure/interactive/door/airlock/dark,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
 "J" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
 "K" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
-"L" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"L" = (/obj/structure/interactive/power/apc{dir = 1},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
 "M" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"N" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"O" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"P" = (/obj/structure/interactive/wire/green,/obj/marker/map_node/x2,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"Q" = (/obj/marker/map_node/x2,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"R" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"S" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"T" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"U" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"V" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaMMABCDDDDDDEaa
-aaMMAFAGHHHHHFaa
+aaMMSFAGUHHHHFaa
 bbcdIddddddddcbb
-bfbgJijkkijhgbfb
+bfbgTijkkijRgbfb
 bvblKnnnnnnmobvb
-bcpxKqrqsqrmytcb
+bcpxOqrqsqrNytcb
 bwblKnnnnnnmobwb
-bvblKsrsrqqmobvb
+bvblOsrsrqqNobvb
 bcpxKnnnnnnmytcb
-bwblKmmmmmmmobwb
+bwblOmmmmmmNobwb
 bvblKmmmmmmmobvb
 bcpxKmnqrnmmytcb
-bwblKmnznnmmobwb
-bfbgJhmmmmhhgbfb
-bbucLhmmmmhcucbb
-MMMMcbbeebbcMMMM
+bwblPmnznnmQobwb
+bfbgJRmNNmRhgbfb
+bbucLbbeebbcucbb
+MMMMMMMVVMMMMMMM
 "}

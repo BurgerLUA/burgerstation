@@ -7,8 +7,6 @@ SUBSYSTEM_DEF(map_node)
 
 	log_subsystem(name,"Node graph out of date. Rebuilding...")
 
-	node_checker = new /mob/abstract/node_checker(locate(1,1,1))
-
 	var/map_nodes = 0
 	var/adjacent_map_nodes = 0
 

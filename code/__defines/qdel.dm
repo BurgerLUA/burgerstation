@@ -1,11 +1,11 @@
 #define qdel(object)																								\
 	if (!object) {																									\
-		CRASH_SAFE("Tried to qdel null object!");																	\
+		CRASH("Tried to qdel null object!");																	\
 	}																												\
 	else if (object.qdeleting) {																					\
 		if (!object.qdel_warning) {														\
 			var/warning_message = "[object.get_debug_name()] was queued for delete more than once!";				\
-			CRASH_SAFE(warning_message);																			\
+			CRASH(warning_message);																			\
 			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");															\
 		}																											\
 		object.qdel_warning = TRUE;																					\
@@ -15,7 +15,7 @@
 		qdel_refs_to_type["\ref[object]"] = object.type;															\
 		if (!object.Destroy()) {																					\
 			var/warning_message = "[object.get_debug_name()] did not have a proper destroy call!";					\
-			CRASH_SAFE(warning_message);																			\
+			log_error(warning_message);																			\
 			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");															\
 		}																											\
 	}

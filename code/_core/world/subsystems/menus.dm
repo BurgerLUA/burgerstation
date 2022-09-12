@@ -13,37 +13,37 @@ SUBSYSTEM_DEF(menu)
 
 	log_subsystem(name,"Initialized [length(all_menus)] menus.")
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
-		preload_assets(C)
+	. = ..()
 
-	return ..()
+	for(var/k in all_mobs_with_clients)
+		var/mob/M = k
+		preload_assets(M)
 
 
-/subsystem/menu/proc/preload_assets(var/client/C)
+/subsystem/menu/proc/preload_assets(var/mob/M)
 
 	for(var/k in all_menus)
-		var/menu/M = all_menus[k]
-		M.cache_resources(C)
+		var/menu/E = all_menus[k]
+		E.cache_resources(M)
 
 	return TRUE
 
-/proc/open_menu(var/client/C,var/menu_id)
+/proc/open_menu(var/mob/M,var/menu_id)
 	spawn
-		var/menu/M = SSmenu.all_menus[menu_id]
-		M.open(C)
+		var/menu/E = SSmenu.all_menus[menu_id]
+		E.open(M)
 
-/proc/close_menu(var/client/C,var/menu_id)
+/proc/close_menu(var/mob/M,var/menu_id)
 	spawn
-		var/menu/M = SSmenu.all_menus[menu_id]
-		M.close(C)
+		var/menu/E = SSmenu.all_menus[menu_id]
+		E.close(M)
 
-proc/get_menu(menu_id)
+proc/get_menu(var/menu_id)
 	return SSmenu.all_menus[menu_id]
 
-/proc/send_load(var/client/C,menu_id) //A common command I use every time I visit your mom.
-	var/menu/M = SSmenu.all_menus[menu_id]
-	if(!M)
-		log_error("Warning: Could not load menu [menu_id ? menu_id : "NULL"] for [C.get_debug_name()]!")
+/proc/send_load(var/mob/M,menu_id) //A common command I use every time I visit your mom.
+	var/menu/E = SSmenu.all_menus[menu_id]
+	if(!E)
+		log_error("Warning: Could not load menu [menu_id ? menu_id : "NULL"] for [M.get_debug_name()]!")
 		return FALSE
-	M.on_load(C)
+	E.on_load(M)

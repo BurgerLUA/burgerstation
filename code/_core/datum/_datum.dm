@@ -15,7 +15,6 @@
 	qdel(src)
 	return TRUE
 
-
 /datum/Destroy()
 	HOOK_CALL("Destroy")
 	hooks?.Cut()

@@ -7,8 +7,7 @@
 	var/client/owner = CLIENT(desired_ckey)
 
 	if(!owner)
-		CRASH_SAFE("FATAL ERROR: Savedata did not have a valid owner!")
-		return FALSE
+		CRASH("SAVE ERROR: savedata did not have a valid owner!")
 
 	ckey = desired_ckey
 
