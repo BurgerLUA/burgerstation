@@ -88,13 +88,6 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 		A.handle_beardstyle_chargen(hair_num)
 
 
-/obj/hud/button/chargen/change_beardstyle/main/update_owner(var/mob/desired_owner)
-	. = ..()
-	if(. && is_advanced(desired_owner))
-		var/mob/living/advanced/A = desired_owner
-		A.handle_beardstyle_chargen(1)
-
-
 /obj/hud/button/chargen/change_beardstyle/left
 	name = "cycle beardstyle left"
 	dir = WEST
@@ -110,18 +103,13 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 	chargen_flags = CHARGEN_BEARD
 
+	user_colors = TRUE
 
 
-/obj/hud/button/chargen/beardstyle/update_icon()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+/obj/hud/button/chargen/beardstyle/update_overlays()
 
-	var/icon/I = new/icon(icon,icon_state)
-	swap_colors(I)
-
-	if(!is_advanced(owner))
-		return ..()
+	. = TRUE
 
 	var/mob/living/advanced/A = owner
 	var/species/S = SPECIES(A.species)
@@ -129,16 +117,18 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	if(hair_num >= 1 && hair_num <= length(SSspecies.all_hair_files[S.default_icon_hair_face]))
 		var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair_face][hair_num]
 		if(hair_icon)
-			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
-			var/icon/I3 = new/icon(S.default_icon_hair_face,hair_icon)
-			I3.Blend(hair_color,ICON_MULTIPLY)
-			I2.Blend(I3,ICON_OVERLAY)
-			I2.Shift(SOUTH,9)
-			I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	..()
+			var/obj/item/organ/head/H
+			if(A.sex == FEMALE && length(S.spawning_organs_female) && S.spawning_organs_female[BODY_HEAD])
+				H = S.spawning_organs_female[BODY_HEAD]
+			else
+				H = S.spawning_organs_male[BODY_HEAD]
+			var/image/I_head = new/image(initial(H.icon),initial(H.icon_state))
+			var/image/I_hair = new/image(S.default_icon_hair_face,hair_icon)
+			I_head.pixel_y = -9
+			I_hair.pixel_y = -9
+			I_hair.color = hair_color
+			add_overlay(I_head)
+			add_overlay(I_hair)
 
 /obj/hud/button/chargen/beardstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()

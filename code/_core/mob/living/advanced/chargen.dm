@@ -113,14 +113,14 @@
 
 /mob/living/advanced/proc/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
 
+	if(chargen) add_chargen_buttons()
+
 	species_initialize(set_default=TRUE)
 
 	if(length(kept_items))
 		equip_objects_in_list(kept_items)
 	else
 		equip_loadout(/loadout/new_player,TRUE)
-
-	if(chargen) add_chargen_buttons()
 
 	show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 

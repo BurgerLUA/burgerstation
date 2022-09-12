@@ -26,7 +26,7 @@
 	var/default_icon_state_hair_face = "none"
 
 	var/default_hairstyle_chargen_male = 2
-	var/default_hairstyle_chargen_female = 16
+	var/default_hairstyle_chargen_female = 3
 
 	var/genderless = FALSE
 

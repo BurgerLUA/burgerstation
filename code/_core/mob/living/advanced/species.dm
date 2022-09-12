@@ -1,6 +1,7 @@
 /mob/living/advanced/proc/setup_appearance(var/set_default=FALSE)
 	var/species/S = SPECIES(species)
 	add_species_organs() //Base
+
 	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
 	handle_skincolor_chargen(S.default_color_skin,FALSE)
@@ -91,17 +92,11 @@
 	if(sex == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
 		for(var/key in S.spawning_organs_female)
 			add_organ(S.spawning_organs_female[key])
-			if(world_state == STATE_RUNNING)
-				CHECK_TICK_SAFE(50,FPS_SERVER)
-			else
-				sleep(-1)
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 	else
 		for(var/key in S.spawning_organs_male)
 			add_organ(S.spawning_organs_male[key])
-			if(world_state == STATE_RUNNING)
-				CHECK_TICK_SAFE(50,FPS_SERVER)
-			else
-				sleep(-1)
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(client)
 		if(B)
