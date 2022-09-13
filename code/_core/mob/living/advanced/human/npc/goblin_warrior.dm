@@ -17,17 +17,18 @@
 
 	level = 5
 
-/mob/living/advanced/npc/goblin/Initialize()
-
-	. = ..()
+/mob/living/advanced/npc/goblin/setup_appearance(var/set_default=FALSE)
 
 	sex = MALE
 	gender = sex
 
-	change_organ_visual("skin", desired_color = pick("#3D6300","#425125","#4E5B0E","#686342"))
+	. = ..()
 
+	change_organ_visual("skin", desired_color = pick("#3D6300","#425125","#4E5B0E","#686342"))
 	update_all_blends()
 
+/mob/living/advanced/npc/goblin/Finalize()
+	. = ..()
 	equip_loadout(loadout_to_use)
 
 /mob/living/advanced/npc/goblin/warrior

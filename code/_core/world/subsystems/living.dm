@@ -14,12 +14,17 @@ SUBSYSTEM_DEF(living)
 
 	var/list/stored_addictions = list()
 	var/list/mob/living/all_living = list()
+	var/list/dna/all_dna = list()
 
 	var/list/mob/living/processing_mobs = list()
 
 	var/next_report = SECONDS_TO_DECISECONDS(300)
 
 /subsystem/living/Initialize()
+
+	for(var/k in subtypesof(/dna/))
+		var/dna/D = new k
+		all_dna[k] = D
 
 	for(var/k in all_living)
 		var/mob/living/L = k

@@ -9,6 +9,8 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/species = "human"
 
+	var/dna/dna //This is for NPC generation only.
+
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
 

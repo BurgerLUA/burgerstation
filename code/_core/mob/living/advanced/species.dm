@@ -1,13 +1,42 @@
+/mob/living/advanced/proc/setup_visuals()
+
+	var/species/S = SPECIES(species)
+
+	var/dna/D
+	if(dna)
+		D = SSliving.all_dna[dna]
+
+	var/desired_hair_color = S.default_color_hair
+	var/desired_eye_color = S.default_color_eye
+	var/desired_skin_color = S.default_color_skin
+	var/desired_hair_style = sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female
+	var/desired_beard_style = 1
+	var/desired_detail_color = S.default_color_detail
+	var/desired_glow_color = S.default_color_glow
+
+	if(D)
+		desired_hair_color = D.generate_hair_color()
+		desired_eye_color = D.generate_eye_color()
+		desired_skin_color = D.generate_skin_color()
+		desired_hair_style = D.generate_hair_style(gender)
+		desired_beard_style = D.generate_beard_style(gender)
+
+	handle_hairstyle_chargen(desired_hair_style,desired_hair_color,FALSE)
+	handle_beardstyle_chargen(desired_beard_style,desired_hair_color,FALSE)
+	handle_skincolor_chargen(desired_skin_color,FALSE)
+	handle_eyecolor_chargen(desired_eye_color,FALSE)
+	handle_detail_chargen(desired_detail_color,FALSE)
+	handle_glow_chargen(desired_glow_color,FALSE)
+
+	return TRUE
+
+
 /mob/living/advanced/proc/setup_appearance(var/set_default=FALSE)
+
 	var/species/S = SPECIES(species)
 	add_species_organs() //Base
 
-	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
-	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)
-	handle_skincolor_chargen(S.default_color_skin,FALSE)
-	handle_eyecolor_chargen(S.default_color_eye,FALSE)
-	handle_detail_chargen(S.default_color_detail,FALSE)
-	handle_glow_chargen(S.default_color_glow,FALSE)
+	setup_visuals()
 
 	for(var/language in S.languages)
 		known_languages[language] = TRUE

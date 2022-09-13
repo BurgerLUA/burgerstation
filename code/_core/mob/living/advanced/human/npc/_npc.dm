@@ -6,6 +6,8 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
+	dna = /dna/human
+
 /mob/living/advanced/npc/proc/can_talk_to(var/mob/caller)
 
 	if(!dialogue_id)

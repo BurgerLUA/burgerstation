@@ -7,12 +7,14 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 			var/obj/item/organ/beard/O = labeled_organs[BODY_HAIR_FACE]
 			if(O.additional_blends["hair_face"])
 				var/icon_blend/IB = O.additional_blends["hair_face"]
-				var/found_value = SSspecies.all_hair_files[S.default_icon_hair_face].Find(IB.icon_state)
-				if(found_value)
-					hair_num = found_value
-				else
-					hair_num = 1
+				hair_num = IB.icon_state
 				desired_color = IB.color
+	if(!isnum(hair_num))
+		var/found_value = SSspecies.all_hair_files[S.default_icon_hair_face].Find(hair_num)
+		if(found_value)
+			hair_num = found_value
+		else
+			hair_num = 1
 
 	var/choice01 = hair_num - 2
 	var/choice02 = hair_num - 1
