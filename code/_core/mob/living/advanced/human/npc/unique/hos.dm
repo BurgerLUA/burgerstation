@@ -11,13 +11,14 @@
 
 	level = 46
 
-/mob/living/advanced/npc/unique/hos/Initialize()
-	. = ..()
-	change_organ_visual("skin", desired_color = "#8E675C")
-	change_organ_visual("hair_head", desired_color = "#6E543C", desired_icon_state = "hair_topknot_s")
+	loadout = /loadout/hos
 
+/mob/living/advanced/npc/unique/hos/setup_visuals()
+	. = ..()
+	change_organ_visual("skin", desired_color = "#B48E7A")
+	change_organ_visual("hair_head", desired_color = "#634933", desired_icon_state = "hair_long")
+
+/mob/living/advanced/npc/unique/hos/Finalize()
+	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
-
-	update_all_blends()
-	equip_loadout(/loadout/hos)

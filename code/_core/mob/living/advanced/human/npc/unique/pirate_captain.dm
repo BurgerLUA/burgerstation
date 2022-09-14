@@ -38,6 +38,8 @@
 
 	level = 70
 
+	loadout = /loadout/pirate/captain
+
 /mob/living/advanced/npc/unique/pirate_captain/on_life_slow()
 
 	. = ..()
@@ -79,10 +81,6 @@
 
 			next_revive = world.time + SECONDS_TO_DECISECONDS(5)
 
-/mob/living/advanced/npc/unique/pirate_captain/Initialize()
-	. = ..()
-	equip_loadout(/loadout/pirate/captain)
-
 /mob/living/advanced/npc/unique/pirate_mate
 	name = "HOS COOL"
 	desc = "THE FUCKING COOLEST."
@@ -101,9 +99,8 @@
 
 	blood_type = null
 
-/mob/living/advanced/npc/unique/pirate_mate/Initialize()
-	. = ..()
-	equip_loadout(/loadout/pirate/mate)
+	loadout = /loadout/pirate/mate
+
 
 /mob/living/advanced/npc/pirate_crew
 	name = "skeleton crew"
@@ -112,7 +109,7 @@
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
-	var/desired_loadout = /loadout/pirate/crew
+	loadout = /loadout/pirate/crew
 
 
 	loyalty_tag = "Skeleton"
@@ -124,31 +121,27 @@
 	blood_type = null
 
 
-/mob/living/advanced/npc/pirate_crew/Initialize()
-	. = ..()
-	equip_loadout(desired_loadout)
-
 /mob/living/advanced/npc/pirate_crew/ranged
 	name = "skeleton crew marksman"
-	desired_loadout = /loadout/pirate/crew/ranged
+	loadout = /loadout/pirate/crew/ranged
 
 	level = 24
 
 /mob/living/advanced/npc/pirate_crew/magic
 	name = "skeleton crew mage"
-	desired_loadout = /loadout/pirate/crew/magic
+	loadout = /loadout/pirate/crew/magic
 
 	level = 32
 
 /mob/living/advanced/npc/pirate_crew/melee
 	name = "skeleton crew brawler"
-	desired_loadout = /loadout/pirate/crew/melee
+	loadout = /loadout/pirate/crew/melee
 
 	level = 24
 
 
 /mob/living/advanced/npc/pirate_crew/ninja
 	name = "skeleton crew ninja"
-	desired_loadout = /loadout/pirate/crew/ninja
+	loadout = /loadout/pirate/crew/ninja
 
 	level = 32
