@@ -27,16 +27,10 @@
 	loyalty_tag = "Abductor"
 	iff_tag = "Abductor"
 
-	var/loadout/loadout_to_use
-
 /mob/living/advanced/npc/abductor/Initialize()
-	loadout_to_use = pickweight(possible_outfits)
-	level *= loadout_to_level[loadout_to_use]
+	loadout = pickweight(possible_outfits)
+	level *= loadout_to_level[loadout]
 	. = ..()
 
-
-/mob/living/advanced/npc/abductor/Finalize()
-	. = ..()
-	if(loadout_to_use) equip_loadout(loadout_to_use)
 
 

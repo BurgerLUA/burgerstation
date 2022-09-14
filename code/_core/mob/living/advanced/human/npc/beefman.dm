@@ -5,6 +5,8 @@
 	ai = /ai/advanced/beef
 	species = "beefman"
 
+	dna = /dna/beef
+
 	iff_tag = "Beefman"
 	loyalty_tag = "Beefman"
 
@@ -23,11 +25,6 @@
 	has_hard_crit = FALSE
 
 	level = 35
-
-/mob/living/advanced/npc/beefman/Initialize()
-	. = ..()
-	change_organ_visual("skin", desired_color = pick("#C42F36","#A02518","#742210","#541900","#261007"))
-	update_all_blends()
 
 /mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -52,11 +49,6 @@
 /mob/living/advanced/npc/beefman/post_death()
 	CALLBACK("beef_revive_\ref[src]",SECONDS_TO_DECISECONDS(rand(3,8)),src,.proc/beef)
 	return ..()
-
-/mob/living/advanced/npc/beefman/Initialize()
-	. = ..()
-	update_all_blends()
-
 
 /mob/living/advanced/npc/beefman/get_plane()
 	if(dead)

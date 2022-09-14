@@ -6,10 +6,12 @@
 
 	level = 25
 
+	loadout = /loadout/crystal_guardian
 
-/mob/living/advanced/npc/crystal_guardian/Initialize()
-	. = ..()
+
+/mob/living/advanced/npc/crystal_guardian/Generate()
 	sex = pick(MALE,FEMALE)
-	gender = sex
-	equip_loadout(/loadout/crystal_guardian)
+	gender = prob(1) ? pick(MALE,FEMALE) : sex
+	. = ..()
+
 

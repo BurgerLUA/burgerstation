@@ -11,6 +11,8 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/dna/dna //This is for NPC generation only.
 
+	var/loadout/loadout //This is for NPC generation only.
+
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
 
@@ -205,6 +207,8 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/Finalize()
 	species_initialize()
+	if(loadout)
+		equip_loadout(loadout)
 	. = ..()
 
 /mob/living/advanced/setup_name()

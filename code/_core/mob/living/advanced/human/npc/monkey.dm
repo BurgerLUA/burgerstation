@@ -4,7 +4,6 @@
 
 	ai = /ai/advanced/monkey
 
-
 	species = "monkey"
 
 	loyalty_tag = "Monkey"

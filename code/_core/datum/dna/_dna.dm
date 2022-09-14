@@ -4,37 +4,45 @@
 /dna/
 
 	var/list/eye_color_rarity = list(
-		"#000000" = 50,
-		"#FFFFFF" = 50
+
 	)
 
 	var/list/skin_color_rarity = list(
-		"#000000" = 50,
-		"#FFFFFF" = 50
+
 	)
 
 	var/list/hair_color_rarity = list(
-		"#000000" = 50,
-		"#FFFFFF" = 50
+
+	)
+
+	var/list/beard_color_rarity = list(
+
 	)
 
 	var/list/hair_style_rarity_male = list(
-		"none" = 100
+
 	)
 
 	var/list/hair_style_rarity_female = list(
-		"none" = 100
+
 	)
 
 	var/list/beard_style_rarity_male = list(
-		"none" = 100
+
 	)
 
 	var/list/beard_style_rarity_female = list(
-		"none" = 100
+
 	)
 
-/dna/proc/generate_eye_color()
+	var/hair_color_same_as_skin_color = FALSE
+	var/beard_color_same_as_skin_color = FALSE
+	var/has_seperate_beard_color = FALSE
+
+/dna/proc/generate_eye_color(var/fallback="#FFFFFF")
+
+	if(!length(eye_color_rarity))
+		return fallback
 
 	var/chosen_color_01 = pickweight(eye_color_rarity)
 	var/chosen_color_02 = pickweight(eye_color_rarity)
@@ -43,7 +51,10 @@
 	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
 	return blend_colors(final_color,tint_mod,0.1)
 
-/dna/proc/generate_skin_color()
+/dna/proc/generate_skin_color(var/fallback="#FFFFFF")
+
+	if(!length(skin_color_rarity))
+		return fallback
 
 	var/chosen_color_01 = pickweight(skin_color_rarity)
 	var/chosen_color_02 = pickweight(skin_color_rarity)
@@ -52,7 +63,10 @@
 	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
 	return blend_colors(final_color,tint_mod,0.1)
 
-/dna/proc/generate_hair_color()
+/dna/proc/generate_hair_color(var/fallback="#FFFFFF")
+
+	if(!length(hair_color_rarity))
+		return fallback
 
 	var/chosen_color_01 = pickweight(hair_color_rarity)
 	var/chosen_color_02 = pickweight(hair_color_rarity)
@@ -61,35 +75,47 @@
 	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
 	return blend_colors(final_color,tint_mod,0.1)
 
+/dna/proc/generate_beard_color(var/fallback="#FFFFFF")
 
-/dna/proc/generate_hair_style(var/gender=NEUTER)
+	if(!length(beard_color_rarity))
+		return generate_hair_color(fallback)
+
+	var/chosen_color_01 = pickweight(beard_color_rarity)
+	var/chosen_color_02 = pickweight(beard_color_rarity)
+	var/final_color = blend_colors(chosen_color_01,chosen_color_02,rand())
+	var/brightness = rand(10,245)
+	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
+	return blend_colors(final_color,tint_mod,0.1)
+
+
+/dna/proc/generate_hair_style(var/gender=NEUTER,var/fallback="#FFFFFF")
 
 	switch(gender)
 		if(MALE)
-			return pickweight(hair_style_rarity_male)
+			return length(hair_style_rarity_male) ? pickweight(hair_style_rarity_male) : fallback
 		if(FEMALE)
-			return pickweight(hair_style_rarity_female)
+			return length(hair_style_rarity_female) ? pickweight(hair_style_rarity_female) : fallback
 		if(NEUTER)
 			if(prob(50))
-				return pickweight(hair_style_rarity_male)
+				return length(hair_style_rarity_male) ? pickweight(hair_style_rarity_male) : fallback
 			else
-				return pickweight(hair_style_rarity_female)
+				return length(hair_style_rarity_female) ? pickweight(hair_style_rarity_female) : fallback
 
 	return "none"
 
 
-/dna/proc/generate_beard_style(var/gender=NEUTER)
+/dna/proc/generate_beard_style(var/gender=NEUTER,var/fallback="#FFFFFF")
 
 	switch(gender)
 		if(MALE)
-			return pickweight(beard_style_rarity_male)
+			return length(beard_style_rarity_male) ? pickweight(beard_style_rarity_male) : fallback
 		if(FEMALE)
-			return pickweight(beard_style_rarity_female)
+			return length(beard_style_rarity_female) ? pickweight(beard_style_rarity_female) : fallback
 		if(NEUTER)
 			if(prob(50))
-				return pickweight(beard_style_rarity_male)
+				return length(beard_style_rarity_male) ? pickweight(beard_style_rarity_male) : fallback
 			else
-				return pickweight(beard_style_rarity_female)
+				return length(beard_style_rarity_female) ? pickweight(beard_style_rarity_female) : fallback
 
 	return "none"
 
@@ -182,7 +208,26 @@
 		"facial_fullbeard_s" = 50,
 	)
 
+/dna/human/wizard
+
+	hair_color_rarity = list(
+		"#FFFFFF" = 100
+	)
+
+	beard_style_rarity_male = list(
+		"facial_wise" = 100
+	)
+	hair_style_rarity_female = list(
+		"hair_drillhairextended" = 100,
+		"hair_long_bedhead" = 100,
+		"hair_floorlength_bedhead" = 100,
+		"hair_wisp" = 100
+	)
+
 /dna/lizard
+
+	hair_color_same_as_skin_color = TRUE
+	has_seperate_beard_color = TRUE
 
 	skin_color_rarity = list(
 		//Red
@@ -217,3 +262,52 @@
 		//Red
 		"#D54E00" = 10
 	)
+
+	beard_color_rarity = list(
+		"#404040" = 25,
+		"#BCB47C" = 50,
+		"#D8B072" = 75,
+		"#FFE2BA" = 100
+	)
+
+	beard_style_rarity_male = list(
+		"horns_short" = 25,
+		"horns_simple" = 25,
+		"horns_curled" = 25,
+		"horns_ram" = 10,
+		"horns_big" = 100
+	)
+
+	hair_style_rarity_male = list(
+		"none" = 100,
+		"frills" = 10,
+	)
+
+	hair_style_rarity_female = list(
+		"none" = 10,
+		"frills" = 10,
+		"frills_long" = 100,
+		"frills_short" = 50
+	)
+
+
+
+
+/dna/beef
+	skin_color_rarity = list(
+		"#C42F36" = 1,
+		"#A02518" = 1,
+		"#742210" = 1,
+		"#541900" = 1,
+		"#261007" = 1
+	)
+
+
+/dna/goblin
+	skin_color_rarity = list(
+		"#3D6300" = 1,
+		"#425125" = 1,
+		"#4E5B0E" = 1,
+		"#686342" = 1
+	)
+

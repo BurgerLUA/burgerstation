@@ -2,7 +2,6 @@
 	name = "zombie"
 	ai = /ai/advanced/zombie
 
-	var/loadout_to_use
 	health = /health/mob/living/advanced/zombie/
 
 	var/next_talk = 0
@@ -24,21 +23,15 @@
 	var/rest_chance = 25
 	var/missing_limb_chance = 10
 
+	dna = /dna/human
 
-/mob/living/advanced/npc/zombie/New(loc,desired_client,desired_level_multiplier)
-	setup_sex()
+
+/mob/living/advanced/npc/zombie/Generate()
+	sex = pick(MALE,FEMALE)
+	gender = prob(1) ? pick(MALE,FEMALE) : sex
 	. = ..()
 
-/mob/living/advanced/npc/zombie/proc/setup_sex()
-	if(gender == NEUTER)
-		gender = pick(MALE,FEMALE)
-	if(sex == NEUTER)
-		sex = gender //oh god oh fuck what have i done
-	return TRUE
-
-/mob/living/advanced/npc/zombie/Initialize()
-
-	. = ..()
+/mob/living/advanced/npc/zombie/Finalize()
 
 	if(prob(missing_limb_chance))
 		var/turf/T = get_turf(src)
@@ -55,8 +48,6 @@
 				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
 				if(O) O.broken = TRUE
 
-	if(loadout_to_use) equip_loadout(loadout_to_use)
-
 	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
 	for(var/k in organs)
 		var/obj/item/organ/O = k
@@ -66,14 +57,8 @@
 		var/tox_loss = total_loss - (burn_loss + brute_loss)
 		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
 
-/mob/living/advanced/npc/zombie/setup_appearance(var/set_default=FALSE)
 	. = ..()
-	change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
-	change_organ_visual("hair_head", desired_icon_state = "none", desired_color = "#FFFFFF")
-	change_organ_visual("eye", desired_color = pick("#FF0000","#FF3A00","#FF5500"))
 
-/mob/living/advanced/npc/zombie/Finalize()
-	. = ..()
 	add_status_effect(ZOMBIE,100,-1, force = TRUE)
 	if(prob(rest_chance))
 		add_status_effect(REST,-1,-2, force = TRUE)
@@ -87,69 +72,57 @@
 	return null
 
 /mob/living/advanced/npc/zombie/winter
-	loadout_to_use = /loadout/zombie/winter
+	loadout = /loadout/zombie/winter
 
 /mob/living/advanced/npc/zombie/desert
-	loadout_to_use = /loadout/zombie/desert
+	loadout = /loadout/zombie/desert
 
 
 /mob/living/advanced/npc/zombie/greytide
-	loadout_to_use = /loadout/zombie/greytide
-
-
-/mob/living/advanced/npc/zombie/greytide/setup_sex()
-	sex = MALE
-	gender = MALE
-	return TRUE
-
-/mob/living/advanced/npc/zombie/setup_appearance(var/set_default=FALSE)
-	. = ..()
-	change_organ_visual("skin", desired_color = "#5D7F00")
-	change_organ_visual("hair_head", desired_icon_state = "hair_a", desired_color = "#111111")
-	change_organ_visual("eye", desired_color = "#FF0000")
+	loadout = /loadout/zombie/greytide
 
 /mob/living/advanced/npc/zombie/captain
-	loadout_to_use = /loadout/zombie/captain
+	loadout = /loadout/zombie/captain
 
 
 /mob/living/advanced/npc/zombie/botanist
-	loadout_to_use = /loadout/zombie/botanist
+	loadout = /loadout/zombie/botanist
 
 
 /mob/living/advanced/npc/zombie/chaplain
-	loadout_to_use = /loadout/zombie/chaplain
+	loadout = /loadout/zombie/chaplain
 
 
 /mob/living/advanced/npc/zombie/security
-	loadout_to_use = /loadout/zombie/security
+	loadout = /loadout/zombie/security
 
 
 /mob/living/advanced/npc/zombie/librarian
-	loadout_to_use = /loadout/zombie/librarian
+	loadout = /loadout/zombie/librarian
 
 
 /mob/living/advanced/npc/zombie/clown
-	loadout_to_use = /loadout/zombie/clown
+	loadout = /loadout/zombie/clown
 
 
 /mob/living/advanced/npc/zombie/medical
-	loadout_to_use = /loadout/zombie/medical
+	loadout = /loadout/zombie/medical
 
 
 /mob/living/advanced/npc/zombie/chemist
-	loadout_to_use = /loadout/zombie/chemist
+	loadout = /loadout/zombie/chemist
 
 
 /mob/living/advanced/npc/zombie/bartender
-	loadout_to_use = /loadout/zombie/bartender
+	loadout = /loadout/zombie/bartender
 
 
 /mob/living/advanced/npc/zombie/chef
-	loadout_to_use = /loadout/zombie/chef
+	loadout = /loadout/zombie/chef
 
 
 /mob/living/advanced/npc/zombie/scientist
-	loadout_to_use = /loadout/zombie/scientist
+	loadout = /loadout/zombie/scientist
 
 	var/dropped_vial = FALSE
 
@@ -166,13 +139,13 @@
 
 
 /mob/living/advanced/npc/zombie/civilian
-	loadout_to_use = /loadout/zombie/civilian
+	loadout = /loadout/zombie/civilian
 
-/mob/living/advanced/npc/zombie/civilian/setup_sex()
+/mob/living/advanced/npc/zombie/civilian/Generate()
+	if(gender == FEMALE)
+		loadout = /loadout/zombie/civilian/female
+	else
+		loadout = /loadout/zombie/civilian/male
 	. = ..()
-	if(gender == MALE)
-		loadout_to_use = /loadout/zombie/civilian/male
-	else if(gender == FEMALE)
-		loadout_to_use = /loadout/zombie/civilian/female
 
 

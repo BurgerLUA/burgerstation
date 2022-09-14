@@ -2,7 +2,7 @@
 	name = "space soldier"
 	desc = "Spreading democracy since 1775."
 
-	ai = /ai/advanced
+	ai = /ai/advanced/space_cop
 
 	dialogue_id = /dialogue/npc/soldier/
 
@@ -14,24 +14,16 @@
 		/loadout/space_soldier/dmca = 1
 	)
 
-/mob/living/advanced/npc/space_soldier/Initialize()
-
-	. = ..()
-
-	var/species/S = SPECIES(species)
-
+/mob/living/advanced/npc/space_soldier/Generate()
 	sex = pick(MALE,FEMALE)
 	gender = sex
+	. = ..()
 
-	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
+/mob/living/advanced/npc/space_soldier/Initialize()
+	loadout = pickweight(possible_loadouts)
+	. = ..()
 
-	var/hair_color = random_color()
-	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
-
+/mob/living/advanced/npc/space_soldier/Finalize()
+	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/space_cop)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/space_cop)
-
-	update_all_blends()
-
-	equip_loadout(pickweight(possible_loadouts))
-

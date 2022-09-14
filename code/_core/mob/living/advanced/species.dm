@@ -7,6 +7,7 @@
 		D = SSliving.all_dna[dna]
 
 	var/desired_hair_color = S.default_color_hair
+	var/desired_beard_color = S.default_color_hair
 	var/desired_eye_color = S.default_color_eye
 	var/desired_skin_color = S.default_color_skin
 	var/desired_hair_style = sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female
@@ -15,14 +16,19 @@
 	var/desired_glow_color = S.default_color_glow
 
 	if(D)
-		desired_hair_color = D.generate_hair_color()
-		desired_eye_color = D.generate_eye_color()
-		desired_skin_color = D.generate_skin_color()
-		desired_hair_style = D.generate_hair_style(gender)
-		desired_beard_style = D.generate_beard_style(gender)
+		desired_skin_color = D.generate_skin_color(fallback=desired_skin_color)
+		desired_hair_color = D.hair_color_same_as_skin_color ? desired_skin_color : D.generate_hair_color(fallback=desired_hair_color)
+		desired_beard_color = D.has_seperate_beard_color ? D.generate_beard_color(fallback=desired_beard_color) : desired_hair_color
+		desired_beard_style = D.beard_color_same_as_skin_color ? desired_skin_color : D.generate_beard_style(gender,fallback=desired_beard_style)
+		desired_eye_color = D.generate_eye_color(fallback=desired_eye_color)
+		desired_hair_style = D.generate_hair_style(gender,fallback=desired_hair_style)
+		//TODO
+		//desired_detail_color
+		//desired_glow_color
+
 
 	handle_hairstyle_chargen(desired_hair_style,desired_hair_color,FALSE)
-	handle_beardstyle_chargen(desired_beard_style,desired_hair_color,FALSE)
+	handle_beardstyle_chargen(desired_beard_style,desired_beard_color,FALSE)
 	handle_skincolor_chargen(desired_skin_color,FALSE)
 	handle_eyecolor_chargen(desired_eye_color,FALSE)
 	handle_detail_chargen(desired_detail_color,FALSE)
