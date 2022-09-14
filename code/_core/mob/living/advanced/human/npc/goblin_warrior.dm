@@ -18,11 +18,6 @@
 
 	level = 5
 
-/mob/living/advanced/npc/goblin/setup_appearance(var/set_default=FALSE)
-	sex = MALE
-	gender = sex
-	. = ..()
-
 /mob/living/advanced/npc/goblin/warrior
 	name = "goblin warrior"
 	loadout = /loadout/goblin/warrior

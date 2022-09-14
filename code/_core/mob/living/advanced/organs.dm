@@ -43,11 +43,13 @@
 
 /mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_delete = FALSE)
 
-	if(length(O.inventories))
-		for(var/k in O.inventories)
-			var/obj/hud/inventory/I = k
-			I.delete_objects()
-			I.update_owner(null)
+	var/turf/T = get_turf(src)
+
+	for(var/k in O.inventories)
+		var/obj/hud/inventory/I = k
+		I.drop_objects(T)
+
+	O.update_owner(null)
 
 	if(O.enable_overlay) //TODO: Unfuck this shitcode.
 		if(istype(O,/obj/item/organ/antennae))

@@ -5,6 +5,8 @@
 	ai = null
 	move_mod = 1
 
+	dna = /dna/human
+
 	dialogue_id = /dialogue/npc/taxman/
 	anchored = TRUE
 

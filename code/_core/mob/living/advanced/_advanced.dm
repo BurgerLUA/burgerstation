@@ -16,8 +16,8 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	var/list/obj/item/organ/organs
 	var/list/obj/item/organ/labeled_organs
 
-	var/sex = MALE
-	gender = MALE
+	var/sex = PLURAL
+	gender = PLURAL
 
 	var/draw_inventory = TRUE
 	var/list/obj/hud/inventory/inventories_by_id //List of inventory items, by id. (Assoc list).
@@ -117,12 +117,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	. = ..()
 
-/mob/living/advanced/proc/add_stat_buttons()
-	if(client)
-		var/obj/hud/button/stat/body/B = new(src)
-		B.update_owner(src)
-	return TRUE
-
 /mob/living/advanced/on_crush(var/message=TRUE)
 	if(driving)
 		return FALSE
@@ -202,14 +196,13 @@ mob/living/advanced/Login()
 		L.update_for_mob(src)
 
 /mob/living/advanced/Initialize()
-	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 	. = ..()
+	species_initialize()
+	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
 /mob/living/advanced/Finalize()
-	species_initialize()
-	if(loadout)
-		equip_loadout(loadout)
 	. = ..()
+	if(loadout) equip_loadout(loadout)
 
 /mob/living/advanced/setup_name()
 

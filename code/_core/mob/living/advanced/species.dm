@@ -2,6 +2,8 @@
 
 	var/species/S = SPECIES(species)
 
+	dna = S.dna
+
 	var/dna/D
 	if(dna)
 		D = SSliving.all_dna[dna]
@@ -17,15 +19,24 @@
 
 	if(D)
 		desired_skin_color = D.generate_skin_color(fallback=desired_skin_color)
-		desired_hair_color = D.hair_color_same_as_skin_color ? desired_skin_color : D.generate_hair_color(fallback=desired_hair_color)
-		desired_beard_color = D.has_seperate_beard_color ? D.generate_beard_color(fallback=desired_beard_color) : desired_hair_color
-		desired_beard_style = D.beard_color_same_as_skin_color ? desired_skin_color : D.generate_beard_style(gender,fallback=desired_beard_style)
-		desired_eye_color = D.generate_eye_color(fallback=desired_eye_color)
+
 		desired_hair_style = D.generate_hair_style(gender,fallback=desired_hair_style)
+		desired_hair_color = D.hair_color_same_as_skin_color ? desired_skin_color : D.generate_hair_color(fallback=desired_hair_color)
+
+
+		desired_beard_style = D.beard_color_same_as_skin_color ? desired_skin_color : D.generate_beard_style(gender,fallback=desired_beard_style)
+		if(D.beard_color_same_as_skin_color)
+			desired_beard_color = desired_skin_color
+		else if (D.has_seperate_beard_color)
+			desired_beard_color = D.generate_beard_color(fallback=desired_beard_color)
+		else
+			desired_beard_color = desired_hair_color
+
+		desired_eye_color = D.generate_eye_color(fallback=desired_eye_color)
+
 		//TODO
 		//desired_detail_color
 		//desired_glow_color
-
 
 	handle_hairstyle_chargen(desired_hair_style,desired_hair_color,FALSE)
 	handle_beardstyle_chargen(desired_beard_style,desired_beard_color,FALSE)
@@ -38,6 +49,10 @@
 
 
 /mob/living/advanced/proc/setup_appearance(var/set_default=FALSE)
+
+	if(sex == PLURAL)
+		sex = pick(MALE,FEMALE)
+		gender = prob(99) ? sex : pick(MALE,FEMALE,NEUTER)
 
 	var/species/S = SPECIES(species)
 	add_species_organs() //Base
@@ -61,23 +76,29 @@
 /mob/living/advanced/proc/species_initialize(var/set_default=FALSE)
 
 	var/species/S = SPECIES(species)
-	setup_appearance(set_default) //Either set the default appearance or load in a saved appearance.
 
 	if(!initial(health))
-		if(src.initialized && istype(health))
+
+		if(src.finalized)
 			qdel(health)
 			health = null
+
 		if(S && S.health)
 			health = S.health
 		else
 			health = /health/mob/living/advanced/ //Fallback
-		if(src.initialized && health)
+
+		if(health)
 			health = new health(src)
-			health.armor = armor
-			health.Finalize()
+			health.armor = src.armor
+			if(src.finalized)
+				health.Finalize()
+				QUEUE_HEALTH_UPDATE(src)
+
+	setup_appearance(set_default) //Either set the default appearance or load in a saved appearance.
 
 	//Buttons
-	if(is_player_controlled())
+	if(!src.finalized && is_player_controlled())
 		add_species_buttons()
 		add_ability_buttons()
 		add_stat_buttons()
@@ -124,14 +145,17 @@
 		B.layer = 99 //I DON'T GIFE A FUKC
 		client.screen += B
 		client.update_zoom(3)
-	if(sex == FEMALE) //I wonder when feminism will leak into programming. In about 99% of games, females are the exception in games while males are the default.
-		for(var/key in S.spawning_organs_female)
-			add_organ(S.spawning_organs_female[key])
-			CHECK_TICK_SAFE(50,FPS_SERVER)
-	else
-		for(var/key in S.spawning_organs_male)
-			add_organ(S.spawning_organs_male[key])
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+
+	var/list/organs_to_use = sex == FEMALE && length(S.spawning_organs_female) ? S.spawning_organs_female : S.spawning_organs_male
+
+	if(!length(organs_to_use))
+		log_error("ERROR: Species [S.get_debug_name()] didn't have any valid organs to spawn!")
+		qdel(src)
+		return FALSE
+
+	for(var/key in organs_to_use)
+		add_organ(S.spawning_organs_male[key])
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(client)
 		if(B)

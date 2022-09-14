@@ -2,7 +2,6 @@
 
 	INITIALIZE(src)
 	FINALIZE(src)
-	setup_appearance(set_default=TRUE)
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	equip_loadout(/loadout/new_player,TRUE)
@@ -97,6 +96,8 @@
 
 /mob/living/advanced/proc/pre_perform_change(var/keep_items)
 
+	remove_chargen_buttons()
+
 	var/list/kept_items = list()
 
 	if(keep_items)
@@ -107,7 +108,6 @@
 			I.delete_objects()
 
 	remove_all_organs()
-	remove_all_buttons()
 
 	return kept_items
 

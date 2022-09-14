@@ -4,14 +4,8 @@
 	species = "human"
 	ai = /ai/advanced/
 
+	dna = /dna/human
+
 	level = 25
 
 	loadout = /loadout/crystal_guardian
-
-
-/mob/living/advanced/npc/crystal_guardian/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
-
-

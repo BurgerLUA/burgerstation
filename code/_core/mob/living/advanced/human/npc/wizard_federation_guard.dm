@@ -2,6 +2,8 @@
 	name = "wizard federation guard"
 	desc = "Investigating warcrimes since 2068."
 
+	dna = /dna/human
+
 	ai = /ai/advanced/guarding
 
 	level = 16

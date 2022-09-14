@@ -16,15 +16,13 @@
 
 	level = 8
 
-/mob/living/advanced/npc/ashwalker/Generate()
+/mob/living/advanced/npc/ashwalker/Initialize()
+	. = ..()
 	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold)
-	gender = pick(MALE,FEMALE)
-	sex = gender
 	if(gender == FEMALE)
 		loadout = loadout_to_use_female
 	else
 		loadout = loadout_to_use_male
-	. = ..()
 
 /mob/living/advanced/npc/ashwalker/hunter
 	name = "ashwalker hunter"

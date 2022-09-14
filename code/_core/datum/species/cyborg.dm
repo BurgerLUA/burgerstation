@@ -8,7 +8,7 @@
 
 	bite_size = 20
 
-	default_color_eye = "#FFFFFF"
+	default_color_eye = "#000000"
 	default_color_skin = "#FFFFFF"
 	default_color_hair = "#FFFFFF"
 	default_color_detail = "#FFFFFF"

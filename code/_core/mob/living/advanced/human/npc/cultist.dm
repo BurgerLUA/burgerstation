@@ -4,6 +4,7 @@
 	desc_extended = "A cultist of Nar'sie."
 	ai = /ai/advanced/cult
 
+	dna = /dna/human
 
 	loadout = /loadout/cultist
 
@@ -12,11 +13,6 @@
 	stamina_base = 100
 
 	level = 12
-
-/mob/living/advanced/npc/cultist/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
 
 /mob/living/advanced/npc/cultist/Finalize()
 	. = ..()

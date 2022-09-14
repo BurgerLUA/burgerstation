@@ -6,6 +6,8 @@
 	sex = FEMALE
 	gender = FEMALE
 
+	dna = /dna/human
+
 	anchored = TRUE
 	health = null
 

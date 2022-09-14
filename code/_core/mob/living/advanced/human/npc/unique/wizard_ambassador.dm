@@ -9,6 +9,8 @@
 	anchored = TRUE
 	health = null
 
+	dna = /dna/human
+
 	level = 99
 
 	loadout = /loadout/wizard_ambassador

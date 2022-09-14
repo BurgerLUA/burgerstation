@@ -5,6 +5,8 @@
 	sex = MALE
 	gender = MALE
 
+	dna = /dna/human
+
 	species = "stand"
 
 	blood_type = /reagent/blood/human/ab_negative

@@ -8,6 +8,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	desc = "Seems a little smarter than most, you think."
 	desc_extended = "This is a player."
 
+	dna = /dna/human
+
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
 	health_base = 200

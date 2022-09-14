@@ -18,6 +18,8 @@
 
 	var/obj/structure/interactive/vending/stored_vendor = /obj/structure/interactive/vending/contract
 
+	dna = /dna/human
+
 	loadout = /loadout/contractor
 
 /mob/living/advanced/npc/unique/contractor/Initialize()

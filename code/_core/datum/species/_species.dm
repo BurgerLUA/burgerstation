@@ -4,6 +4,8 @@
 	var/desc_extended = "Extended species description."
 	var/id = null
 
+	var/dna/dna = null
+
 	var/bite_size = 5 //How large bites are.
 
 	var/flags_flavor_love = 0x0

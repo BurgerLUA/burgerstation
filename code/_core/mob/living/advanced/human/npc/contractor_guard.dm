@@ -2,6 +2,8 @@
 	name = "nanotrasen elite guard"
 	desc = "The very best assigned to guard this old man."
 
+	dna = /dna/human
+
 	ai = /ai/advanced/guarding
 
 	dialogue_id = null
@@ -9,11 +11,6 @@
 	loadout = /loadout/nanotrasen/elite
 
 	level = 80
-
-/mob/living/advanced/npc/contractor_guard/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
 
 /mob/living/advanced/npc/clockwork_cultist/Finalize()
 	. = ..()

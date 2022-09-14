@@ -3,16 +3,13 @@
 	desc = "An elite member of the Deathsquad. They are tasked to leave no witnesses."
 	ai = /ai/advanced/syndicate
 
+	dna = /dna/human
+
 	dialogue_id = /dialogue/npc/soldier
 
 	loadout = /loadout/deathsquad
 
 	level = 80
-
-/mob/living/advanced/npc/deathsquad/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
 
 /mob/living/advanced/npc/deathsquad/Finalize()
 	. = ..()

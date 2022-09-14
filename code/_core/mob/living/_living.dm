@@ -557,6 +557,9 @@
 
 	. = ..()
 
+	initialize_attributes()
+	initialize_skills()
+
 	SSliving.all_living += src
 
 
@@ -566,14 +569,9 @@
 		SSbosses.tracked_bosses += src
 		SSbosses.living_bosses += src
 
-	initialize_attributes()
-	initialize_skills()
-
 	update_intent(TRUE)
 
 	. = ..()
-
-	if(health) health.armor = armor
 
 /mob/living/PostInitialize()
 
@@ -581,7 +579,6 @@
 
 	set_loyalty_tag(loyalty_tag,TRUE)
 	set_iff_tag(iff_tag,TRUE)
-	setup_name()
 
 	if(client)
 		for(var/d in DIRECTIONS_INTERCARDINAL + SOUTH)
@@ -600,6 +597,10 @@
 /mob/living/Finalize()
 
 	. = ..()
+
+	if(health) health.armor = armor
+
+	setup_name()
 
 	if(boss)
 		for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE,src))

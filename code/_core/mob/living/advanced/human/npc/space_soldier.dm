@@ -2,6 +2,8 @@
 	name = "space soldier"
 	desc = "Spreading democracy since 1775."
 
+	dna = /dna/human
+
 	ai = /ai/advanced/space_cop
 
 	dialogue_id = /dialogue/npc/soldier/
@@ -13,11 +15,6 @@
 		/loadout/space_soldier/battle_rifle = 2,
 		/loadout/space_soldier/dmca = 1
 	)
-
-/mob/living/advanced/npc/space_soldier/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = sex
-	. = ..()
 
 /mob/living/advanced/npc/space_soldier/Initialize()
 	loadout = pickweight(possible_loadouts)

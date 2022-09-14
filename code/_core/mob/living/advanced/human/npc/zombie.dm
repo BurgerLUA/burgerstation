@@ -17,19 +17,10 @@
 	stamina_base = 100
 	mana_base = 100
 
-	sex = NEUTER
-	gender = NEUTER
-
 	var/rest_chance = 25
 	var/missing_limb_chance = 10
 
 	dna = /dna/human
-
-
-/mob/living/advanced/npc/zombie/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
 
 /mob/living/advanced/npc/zombie/Finalize()
 
@@ -141,11 +132,12 @@
 /mob/living/advanced/npc/zombie/civilian
 	loadout = /loadout/zombie/civilian
 
-/mob/living/advanced/npc/zombie/civilian/Generate()
+/mob/living/advanced/npc/zombie/civilian/Initialize()
+	. = ..()
 	if(gender == FEMALE)
 		loadout = /loadout/zombie/civilian/female
 	else
 		loadout = /loadout/zombie/civilian/male
-	. = ..()
+
 
 

@@ -4,6 +4,7 @@
 	desc_extended = "A cultist of Ratvar."
 	ai = /ai/advanced/clockwork_cult
 
+	dna = /dna/human
 
 	loadout = /loadout/clockwork_cult
 
@@ -12,11 +13,6 @@
 	stamina_base = 100
 
 	level = 40
-
-/mob/living/advanced/npc/clockwork_cultist/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
 
 /mob/living/advanced/npc/clockwork_cultist/Finalize()
 	. = ..()

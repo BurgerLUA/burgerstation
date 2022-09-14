@@ -14,6 +14,8 @@
 
 	level = 60
 
+	dna = /dna/human
+
 	loadout = /loadout/that_guy
 
 

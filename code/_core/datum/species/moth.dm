@@ -5,6 +5,8 @@
 	flags_species = SPECIES_MOTH
 	bite_size = 5
 
+	dna = null
+
 	flags_chargen = CHARGEN_SKIN | CHARGEN_SEX | CHARGEN_HAIR | CHARGEN_BEARD //CHARGEN_MARKINGS | CHARGEN_WINGS maybe when these actually matter I will uncomment 'em -V
 
 	flags_flavor_love = FLAG_FLAVOR_COOKED | FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_MEAT | FLAG_FLAVOR_FISH | FLAG_FLAVOR_LOVE | FLAG_FLAVOR_JUNK | FLAG_FLAVOR_FAT | FLAG_FLAVOR_DAIRY

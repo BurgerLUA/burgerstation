@@ -4,6 +4,8 @@
 	id = "goblin"
 	flags_species = SPECIES_GOBLIN
 
+	dna = /dna/goblin
+
 	bite_size = 5
 
 	flags_chargen = CHARGEN_EYE | CHARGEN_SKIN

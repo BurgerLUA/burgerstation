@@ -45,7 +45,7 @@ var/global/time_dialation = 0
 
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k
-		spawn while(SS.tick_rate >= 0 && world_state != STATE_SHUTDOWN)
+		spawn while(SS.tick_rate > 0 && world_state != STATE_SHUTDOWN)
 			if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
 				if(SS.cpu_usage_max > 0 && world.cpu > SS.cpu_usage_max)
 					SS.overtime_count++
@@ -63,6 +63,7 @@ var/global/time_dialation = 0
 				sleep(10)
 				continue
 			else if(result == FALSE || SS.tick_rate <= 0)
+				SS.tick_rate = 0
 				log_subsystem(SS.name,"Shutting down.")
 				break
 			SS.last_run_duration = FLOOR(true_time() - start_time,0.01)

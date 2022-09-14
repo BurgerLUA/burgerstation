@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(smoothing)
 		return FALSE
 	log_subsystem(src.name,"Processing [length(queued_smoothing)] edges...")
 	process_edges()
-	. = ..()
+	return TRUE
 
 /subsystem/smoothing/on_life()
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))

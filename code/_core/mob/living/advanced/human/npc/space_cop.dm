@@ -2,6 +2,8 @@
 	name = "space cop"
 	desc = "Investigating galactic warcrimes since 2068."
 
+	dna = /dna/human
+
 	ai = /ai/advanced/space_cop
 
 	dialogue_id = /dialogue/npc/soldier/
@@ -10,12 +12,6 @@
 
 	loadout = /loadout/space_cop
 
-
-
-/mob/living/advanced/npc/space_cop/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = sex
-	. = ..()
 
 /mob/living/advanced/npc/space_soldier/Finalize()
 	. = ..()

@@ -5,6 +5,8 @@
 
 	dialogue_id = /dialogue/npc/soldier
 
+	dna = /dna/human
+
 	var/list/possible_outfits = list(
 		/loadout/syndicate/soldier = 90,
 		/loadout/syndicate/shotgunnner = 20,
@@ -23,15 +25,10 @@
 
 	level = 20
 
-/mob/living/advanced/npc/syndicate/Generate()
-	sex = pick(MALE,FEMALE)
-	gender = prob(1) ? pick(MALE,FEMALE) : sex
-	. = ..()
-
 /mob/living/advanced/npc/syndicate/Initialize()
 
-	var/loadout_to_use = pickweight(possible_outfits)
-	level *= loadout_to_level[loadout_to_use]
+	loadout = pickweight(possible_outfits)
+	level *= loadout_to_level[loadout]
 
 	. = ..()
 
