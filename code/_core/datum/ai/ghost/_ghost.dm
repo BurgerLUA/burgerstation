@@ -61,7 +61,7 @@
 	setup_appearance()
 
 
-/ai/ghost/Finalize()
+/ai/ghost/New()
 	. = ..()
 	var/turf/T2 = find_new_location()
 	if(T2)

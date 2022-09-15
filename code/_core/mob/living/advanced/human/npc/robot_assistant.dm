@@ -11,20 +11,16 @@
 
 	level = 1
 
-/mob/living/advanced/npc/cyborg_assistant/Initialize()
-
+/mob/living/advanced/npc/cyborg_assistant/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
-	update_all_blends()
 
-/mob/living/advanced/npc/cyborg_assistant/bartender/Initialize()
-	. = ..()
-	equip_loadout(/loadout/cyborg_assistant/bartender)
+/mob/living/advanced/npc/cyborg_assistant/bartender
+	loadout = /loadout/cyborg_assistant/bartender
 
-/mob/living/advanced/npc/cyborg_assistant/help_desk/Initialize()
-	. = ..()
-	equip_loadout(/loadout/cyborg_assistant/help_desk)
+/mob/living/advanced/npc/cyborg_assistant/help_desk
+	loadout = /loadout/cyborg_assistant/help_desk
 
 /mob/living/advanced/npc/cyborg_assistant/debug
 	dialogue_id = null

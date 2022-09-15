@@ -4,15 +4,17 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	if(hair_num == -1)
 		if(labeled_organs[BODY_HAIR_HEAD])
-			var/obj/item/organ/hair/O = labeled_organs[BODY_HAIR_HEAD]
+			var/obj/item/organ/beard/O = labeled_organs[BODY_HAIR_HEAD]
 			if(O.additional_blends["hair_head"])
 				var/icon_blend/IB = O.additional_blends["hair_head"]
-				var/found_value = SSspecies.all_hair_files[S.default_icon_hair].Find(IB.icon_state)
-				if(found_value)
-					hair_num = found_value
-				else
-					hair_num = 1
+				hair_num = IB.icon_state
 				desired_color = IB.color
+	if(!isnum(hair_num))
+		var/found_value = SSspecies.all_hair_files[S.default_icon_hair].Find(hair_num)
+		if(found_value)
+			hair_num = found_value
+		else
+			hair_num = 1
 
 	var/choice01 = hair_num - 2
 	var/choice02 = hair_num - 1
@@ -84,15 +86,8 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		var/species/S = SPECIES(A.species)
-		hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair]))
-		A.handle_hairstyle_chargen(hair_num)
-
-
-/obj/hud/button/chargen/change_hairstyle/main/update_owner(var/mob/desired_owner)
-	. = ..()
-	if(. && is_advanced(desired_owner))
-		var/mob/living/advanced/A = desired_owner
-		A.handle_hairstyle_chargen(A.sex == MALE ? 2 : 16)
+		var/desired_hair_num = clamp(hair_num + (dir == EAST ? 1 : -1),1,length(SSspecies.all_hair_files[S.default_icon_hair]))
+		A.handle_hairstyle_chargen(desired_hair_num)
 
 /obj/hud/button/chargen/change_hairstyle/left
 	name = "cycle hairstyle left"
@@ -107,16 +102,11 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 
 	chargen_flags = CHARGEN_HAIR
 
-/obj/hud/button/chargen/hairstyle/update_icon()
+	user_colors = TRUE
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+/obj/hud/button/chargen/hairstyle/update_overlays()
 
-	var/icon/I = new/icon(icon,icon_state)
-	swap_colors(I)
-
-	if(!is_advanced(owner))
-		return ..()
+	. = ..()
 
 	var/mob/living/advanced/A = owner
 	var/species/S = SPECIES(A.species)
@@ -124,16 +114,18 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	if(hair_num >= 1 && hair_num <= length(SSspecies.all_hair_files[S.default_icon_hair]))
 		var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair][hair_num]
 		if(hair_icon)
-			var/icon/I2 = new/icon('icons/mob/living/advanced/species/human.dmi',"head_m")
-			var/icon/I3 = new/icon(S.default_icon_hair,hair_icon)
-			I3.Blend(hair_color,ICON_MULTIPLY)
-			I2.Blend(I3,ICON_OVERLAY)
-			I2.Shift(SOUTH,9)
-			I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	..()
+			var/obj/item/organ/head/H
+			if(A.sex == FEMALE && length(S.spawning_organs_female) && S.spawning_organs_female[BODY_HEAD])
+				H = S.spawning_organs_female[BODY_HEAD]
+			else
+				H = S.spawning_organs_male[BODY_HEAD]
+			var/image/I_head = new/image(initial(H.icon),initial(H.icon_state))
+			var/image/I_hair = new/image(S.default_icon_hair,hair_icon)
+			I_head.pixel_y = -9
+			I_hair.pixel_y = -9
+			I_hair.color = hair_color
+			add_overlay(I_head)
+			add_overlay(I_hair)
 
 /obj/hud/button/chargen/hairstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	. = ..()

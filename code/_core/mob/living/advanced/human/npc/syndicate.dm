@@ -5,6 +5,8 @@
 
 	dialogue_id = /dialogue/npc/soldier
 
+	dna = /dna/human
+
 	var/list/possible_outfits = list(
 		/loadout/syndicate/soldier = 90,
 		/loadout/syndicate/shotgunnner = 20,
@@ -25,29 +27,17 @@
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
-	var/loadout_to_use = pickweight(possible_outfits)
-	level *= loadout_to_level[loadout_to_use]
+	loadout = pickweight(possible_outfits)
+	level *= loadout_to_level[loadout]
 
 	. = ..()
 
-	var/species/S = SPECIES(species)
-
-	sex = pick(MALE,FEMALE)
-	gender = sex
-
-	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
-
-	var/hair_color = random_color()
-	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
-	if(sex == MALE && prob(25))
-		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair_face]))
-
+/mob/living/advanced/npc/syndicate/Finalize()
+	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
 
-	update_all_blends()
 
-	equip_loadout(loadout_to_use)
 
 /mob/living/advanced/npc/syndicate/double
 	level = 40

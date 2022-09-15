@@ -20,7 +20,7 @@
 		if(messages) to_chat(span("notice","Your insurance premiums have decreased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>!"))
 		insurance_premiums = desired_premium_amount
 
-/mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/do_teleport = TRUE,var/update_blends=TRUE,var/appearance_only=FALSE)
+/mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/appearance_only=FALSE)
 
 	//Name
 	real_name = sanitize_name(client,loaded_data["name"])
@@ -131,7 +131,7 @@
 	if(!S)
 		log_error("ERROR: INVALID SPECIES: [species]!")
 		species = "human"
-	S = SPECIES(species)
+		S = SPECIES(species)
 
 	var/list/organ_list_to_use = list()
 	if(S.genderless || sex == MALE)
@@ -159,31 +159,11 @@
 				if(O.enable_skin && blend_data["skin_detail"])
 					O.add_blend("skin_detail", desired_color = blend_data["skin_detail"]["color"])
 			O.update_sprite()
+
 	if(!labeled_organs["implant_hand_left"])
 		add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	if(!labeled_organs["implant_head"])
 		add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
-
-	if(do_teleport)
-		if(length(cryo_spawnpoints))
-			var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
-			force_move(get_turf(C))
-			C.door_state = SLEEPER_OPENED
-			C.buckle(src,silent=TRUE)
-			C.door_state = SLEEPER_CLOSED
-			C.update_icon()
-		else if(length(backup_spawnpoints))
-			var/obj/marker/backup_spawn/BS = pick(backup_spawnpoints)
-			force_move(get_turf(BS))
-		else
-			var/obj/marker/failsafe/FS = locate() in world
-			if(FS && FS.loc)
-				force_move(FS.loc)
-			else
-				var/desired_x = CEILING(world.maxx/2,1)
-				var/desired_y = CEILING(world.maxy/2,1)
-				var/desired_z = CEILING(world.maxz/2,1)
-				force_move(locate(desired_x,desired_y,desired_z))
 
 	update_all_blends()
 
@@ -192,6 +172,9 @@
 	last_autosave = world.time
 
 	check_promotion()
+
+	if(!appearance_only)
+		default_nanotrasen_move()
 
 /mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/died=FALSE)
 

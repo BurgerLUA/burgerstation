@@ -27,6 +27,31 @@
 	//0 means failure.
 	var/alert_level = CODE_GREEN
 
+	var/initialized = FALSE
+	var/generated = FALSE
+	var/finalized = FALSE
+
+/gamemode/proc/Initialize()
+	if(initialized)
+		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
+		return TRUE
+	return TRUE
+
+/gamemode/proc/PostInitialize()
+	return TRUE
+
+/gamemode/proc/Generate() //Generate the atom, giving it stuff if needed.
+	if(generated)
+		CRASH("WARNING: [src.get_debug_name()] was generated twice!")
+		return TRUE
+	return TRUE
+
+/gamemode/proc/Finalize() //We're good to go.
+	if(finalized)
+		CRASH("WARNING: [src.get_debug_name()] was finalized twice!")
+		return TRUE
+	return TRUE
+
 /gamemode/Destroy()
 
 	QDEL_CUT(crew_active_objectives)

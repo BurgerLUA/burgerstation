@@ -28,14 +28,9 @@
 	iff_tag = "Abductor"
 
 /mob/living/advanced/npc/abductor/Initialize()
-
-	var/loadout_to_use = pickweight(possible_outfits)
-	level *= loadout_to_level[loadout_to_use]
-
+	loadout = pickweight(possible_outfits)
+	level *= loadout_to_level[loadout]
 	. = ..()
 
-	update_all_blends()
-
-	equip_loadout(loadout_to_use)
 
 

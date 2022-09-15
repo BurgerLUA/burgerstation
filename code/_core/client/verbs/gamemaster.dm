@@ -91,7 +91,7 @@
 	if(!T)
 		T = get_turf(src.mob)
 
-	var/datum/A = selection
+	var/atom/A = selection
 	A = new A(T)
 	INITIALIZE(A)
 	if(is_atom(A))

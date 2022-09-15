@@ -7,9 +7,9 @@
 	flags_species = SPECIES_DUMMY
 	flags_chargen = CHARGEN_SEX
 
-	default_color_eye = "#000000"
-	default_color_skin = "#FFE121"
-	default_color_hair = "#000000"
+	default_color_eye = "#C0C0C0"
+	default_color_skin = "#C0C0C0"
+	default_color_hair = "#C0C0C0"
 
 	spawning_organs_male = list(
 		BODY_TORSO = /obj/item/organ/torso,

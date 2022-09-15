@@ -17,8 +17,6 @@
 	sex = pick(MALE,FEMALE)
 	gender = sex
 
-	default_appearance()
-
 	change_organ_visual("skin", desired_color = pick("#E0BCAA","#BC9E8F","#967F73","#7A675E"))
 
 	var/hair_color = random_color()
@@ -32,7 +30,7 @@
 
 	return TRUE
 
-/mob/living/advanced/player/antagonist/default_appearance()
+/mob/living/advanced/player/antagonist/setup_appearance(var/set_default=FALSE)
 	var/species/S = SPECIES(species)
 	handle_hairstyle_chargen(sex == MALE ? S.default_hairstyle_chargen_male : S.default_hairstyle_chargen_female,S.default_color_hair,FALSE)
 	handle_beardstyle_chargen(1,S.default_color_hair,FALSE)

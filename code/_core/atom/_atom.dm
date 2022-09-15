@@ -52,6 +52,10 @@
 
 	var/list/filter_list
 
+	var/initialized = FALSE
+	var/generated = FALSE
+	var/finalized = FALSE
+
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 
 	if(density == desired_density && !force)
@@ -129,13 +133,11 @@
 	if(reagents)
 		reagents = new reagents(src)
 
-	if(listener)
-		all_listeners |= src
-
 	if(health)
 		health = new health(src)
-		INITIALIZE(health)
-		FINALIZE(health)
+
+	if(listener)
+		all_listeners |= src
 
 	. = ..()
 
@@ -143,6 +145,8 @@
 	. = ..()
 	update_name(name) //Setup labels
 	update_atom_light()
+	if(health)
+		health.Finalize()
 
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src

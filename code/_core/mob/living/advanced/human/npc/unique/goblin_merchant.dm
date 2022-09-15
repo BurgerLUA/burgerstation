@@ -18,18 +18,11 @@
 
 	level = 28
 
-/mob/living/advanced/npc/unique/goblin_merchant/Initialize()
+	dna = /dna/goblin
 
+	loadout = /loadout/goblin/merchant
+
+/mob/living/advanced/npc/unique/goblin_merchant/Finalize()
 	. = ..()
-
-	sex = MALE
-	gender = sex
-
-	change_organ_visual("skin", desired_color = pick("#3D6300","#425125","#4E5B0E","#686342"))
-
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
-
-	update_all_blends()
-
-	equip_loadout(/loadout/goblin/merchant)

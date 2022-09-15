@@ -5,12 +5,3 @@
 	level = 40
 
 	ai = /ai/advanced/guarding
-
-/mob/living/advanced/npc/unique/setup_name()
-
-	if(name == DEFAULT_NAME) //Give a human name
-		name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
-
-	real_name = SStext.check_duplicate_player_name(ckey_last,name)
-
-	return TRUE

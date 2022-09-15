@@ -20,6 +20,8 @@
 
 	pixel_y = 6
 
+	initialize_type = INITIALIZE_SUPERLATE
+
 /obj/structure/interactive/statue/Destroy()
 	QDEL_NULL(stored_object)
 	. = ..()
@@ -62,9 +64,8 @@
 	offset_x = 0
 	offset_y = 17
 	var/mob/living/advanced/A = new(src)
+	A.loadout = /loadout/new_player
 	INITIALIZE(A)
-	A.equip_loadout(/loadout/new_player)
-	A.update_all_blends()
 	GENERATE(A)
 	FINALIZE(A)
 	set_stored_object(A)
@@ -88,9 +89,8 @@
 	offset_x = 0
 	offset_y = 17
 	var/mob/living/advanced/A = new(src)
+	A.loadout = /loadout/research_director
 	INITIALIZE(A)
-	A.equip_loadout(/loadout/research_director)
-	A.update_all_blends()
 	GENERATE(A)
 	FINALIZE(A)
 	set_stored_object(A)

@@ -4,6 +4,8 @@
 	id = "human"
 	flags_species = SPECIES_HUMAN
 
+	dna = /dna/human
+
 	bite_size = 5
 
 	flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX

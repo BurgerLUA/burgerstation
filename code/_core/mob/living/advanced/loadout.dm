@@ -2,7 +2,16 @@
 
 	var/loadout/spawning_outfit = all_loadouts[loadout_id]
 	if(!spawning_outfit)
-		return FALSE
+		CRASH("Tried adding an invalid spawnoutfit ([loadout_id]) to [src.get_debug_name()]!")
+
+	if(src.qdeleting)
+		CRASH("Tried adding a loadout to to [src.get_debug_name()], which was qdeleting!")
+
+	if(!src.initialized)
+		CRASH("Tried adding a loadout to to [src.get_debug_name()], which wasn't initialized!")
+
+	if(!length(src.labeled_organs))
+		CRASH("Tried adding a loadout to to [src.get_debug_name()], which didn't have any organs!")
 
 	var/list/items_to_add = spawning_outfit.get_spawning_items()
 

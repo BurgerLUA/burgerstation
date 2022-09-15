@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(weather)
 /subsystem/weather/Initialize()
 
 	if(!CONFIG("ENABLE_WEATHER",FALSE))
-		return FALSE
+		return TRUE
 
 	//Initialize weather
 	for(var/k in subtypesof(/particles/weather/))

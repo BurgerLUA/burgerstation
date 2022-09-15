@@ -10,7 +10,7 @@
 /loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I) //added after initialize and spawn
 
 	if(!I.quick_equip(A,silent=TRUE))
-		log_error("Loadout Error: Could not add \the [I] to \the [A.get_debug_name()]!")
+		log_error("Loadout Error: Could not add \the [I.type] to \the [A.get_debug_name()]!")
 		qdel(I)
 		return FALSE
 

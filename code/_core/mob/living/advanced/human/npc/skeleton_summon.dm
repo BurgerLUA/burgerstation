@@ -4,12 +4,8 @@
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
-	var/desired_loadout = /loadout/skeleton_summon/summoned
+	loadout = /loadout/skeleton_summon/summoned
 
 	ai = /ai/advanced
 
 	level = 1
-
-/mob/living/advanced/npc/skeleton_summon/Initialize()
-	. = ..()
-	equip_loadout(desired_loadout)

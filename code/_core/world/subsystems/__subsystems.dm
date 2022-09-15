@@ -23,6 +23,32 @@
 
 	var/use_time_dialation = TRUE
 
+	var/initialized = FALSE
+	var/generated = FALSE
+	var/finalized = FALSE
+
+/subsystem/proc/Initialize()
+	if(initialized)
+		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
+		return TRUE
+	return TRUE
+
+/subsystem/proc/PostInitialize()
+	return TRUE
+
+/subsystem/proc/Generate() //Generate the atom, giving it stuff if needed.
+	if(generated)
+		CRASH("WARNING: [src.get_debug_name()] was generated twice!")
+		return TRUE
+	return TRUE
+
+/subsystem/proc/Finalize() //We're good to go.
+	if(finalized)
+		CRASH("WARNING: [src.get_debug_name()] was finalized twice!")
+		return TRUE
+	return TRUE
+
+
 
 /subsystem/proc/unclog(var/mob/caller)
 	broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [caller.ckey].")

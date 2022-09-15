@@ -25,7 +25,15 @@ SUBSYSTEM_DEF(species)
 				S.desc = file2text(file_to_check)
 
 	for(var/k in hair_files_to_generate)
-		all_hair_files[k] = icon_states(k)
+		var/list/found_icon_states = icon_states(k)
+		all_hair_files[k] = list()
+		for(var/j in found_icon_states)
+			if(j)
+				all_hair_files[k] += j
+
+
+
+
 
 	log_subsystem(name,"Initialized [length(all_species)] species.")
 

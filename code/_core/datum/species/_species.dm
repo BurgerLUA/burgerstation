@@ -4,6 +4,8 @@
 	var/desc_extended = "Extended species description."
 	var/id = null
 
+	var/dna/dna = null
+
 	var/bite_size = 5 //How large bites are.
 
 	var/flags_flavor_love = 0x0
@@ -26,7 +28,7 @@
 	var/default_icon_state_hair_face = "none"
 
 	var/default_hairstyle_chargen_male = 2
-	var/default_hairstyle_chargen_female = 16
+	var/default_hairstyle_chargen_female = 3
 
 	var/genderless = FALSE
 
