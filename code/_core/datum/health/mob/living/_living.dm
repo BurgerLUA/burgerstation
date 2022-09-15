@@ -76,17 +76,6 @@
 				L.add_status_effect(CRIT,-1,-1,force = TRUE)
 				if(!L.dead && !L.status_effects[CRITPROTECTION])
 					L.add_status_effect(CRITPROTECTION,stealthy=TRUE)
-					var/overkill_amount = (damage[BRUTE] + damage[BURN] + damage[TOX] + damage[RAD]) - health_max
-					if(overkill_amount > 0)
-						var/brute_amount = (damage[BRUTE]/overkill_amount)*damage[BRUTE]
-						var/burn_amount = (damage[BURN]/overkill_amount)*damage[BURN]
-						var/tox_amount = (damage[TOX]/overkill_amount)*damage[TOX]
-						var/rad_amount = (damage[RAD]/overkill_amount)*damage[RAD]
-						L.health.adjust_loss_smart(brute=-brute_amount,burn=-burn_amount,tox=-tox_amount,rad=-rad_amount)
-						L.brute_regen_buffer -= brute_amount
-						L.burn_regen_buffer -= burn_amount
-						L.tox_regen_buffer -= tox_amount
-						L.rad_regen_buffer -= rad_amount
 			else if(L.status_effects[CRIT] && !should_be_in_crit)
 				L.remove_status_effect(CRIT)
 
