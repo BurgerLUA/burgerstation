@@ -1,0 +1,38 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/wall/boss,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
+aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+"}

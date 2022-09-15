@@ -1,3 +1,5 @@
+// WIP PvP: https://www.desmos.com/calculator/a2kvmtgx80
+
 /turf/unsimulated/generation/snow
 	name = "snow generation"
 	icon_state = "snow"

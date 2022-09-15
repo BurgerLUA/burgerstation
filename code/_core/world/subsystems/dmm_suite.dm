@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(dmm_suite)
 
 /subsystem/dmm_suite/Initialize()
 
+	set background = TRUE
+
 	dmm_suite = new()
 
 	//Load all the maps.
@@ -96,6 +98,70 @@ SUBSYSTEM_DEF(dmm_suite)
 		log_error("Warning: Not enough prefabs of type(s) [english_list(not_enough)] to satisfy all prefab markers.")
 
 	log_subsystem(name,"Loaded [loaded_prefabs] prefabs.")
+
+
+	//https://www.desmos.com/calculator/c64q75jvne
+
+	if(CONFIG("ENABLE_PVP_AREA",FALSE))
+
+		var/random_coef_01 = 400+rand(0,50)
+		var/random_coef_02 = random_coef_01*0.0015
+
+		var/z = file_to_z_level["maps/_core/mission.dmm"]
+		if(z)
+			for(var/y=1,y<=500,y++)
+				for(var/x=1,x<=500,x++)
+					if(y < random_coef_01 - (x * 0.05 + sin(x*3))**(random_coef_02*2) - 3) //Bottom line
+						continue
+					if(y > random_coef_01 - (x * 0.05 + sin(x*3))**(random_coef_02*2) + 3) //Top line
+						continue
+					var/turf/T = locate(x,y,z)
+					for(var/k in T.contents)
+						var/atom/movable/M = k
+						qdel(M)
+					new /turf/simulated/floor/chasm(T)
+					new /area(T)
+
+			var/bridge_prefab = file2text("maps/prefabs/pvp_bridge/bridge.dmm")
+
+			var/marker_01_x = rand(50,150)
+			var/marker_01_y = random_coef_01 - (marker_01_x * 0.05)**(random_coef_02*2)
+			marker_01_x = round(marker_01_x-16)
+			marker_01_y = round(marker_01_y-16)
+			dmm_suite.read_map(
+				bridge_prefab,
+				marker_01_x,
+				marker_01_y,
+				z,
+				tag="pvp_bridge"
+			)
+
+
+			/*
+			var/marker_02_x = rand(200,300)
+			var/marker_02_y = random_coef_01 - (marker_02_x * 0.05)**(random_coef_02*2)
+			marker_02_x = round(marker_02_x-16)
+			marker_02_y = round(marker_02_y-16)
+			dmm_suite.read_map(
+				bridge_prefab,
+				marker_02_x,
+				marker_02_y,
+				z,
+				tag="pvp_bridge"
+			)
+			*/
+
+			var/marker_03_x = rand(350,450)
+			var/marker_03_y = random_coef_01 - (marker_03_x * 0.05)**(random_coef_02*2)
+			marker_03_x = round(marker_03_x-16)
+			marker_03_y = round(marker_03_y-16)
+			dmm_suite.read_map(
+				bridge_prefab,
+				marker_03_x,
+				marker_03_y,
+				z,
+				tag="pvp_bridge"
+			)
 
 	return ..()
 

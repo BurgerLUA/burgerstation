@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(lighting)
 
 /subsystem/lighting/Initialize()
 
-	if(CONFIG("ENABLE_INSTALOAD",FALSE))
+	if(CONFIG("ENABLE_INSTALOAD",FALSE) || !CONFIG("ENABLE_LIGHTING",TRUE))
 		active_subsystems -= src
 		return TRUE
 

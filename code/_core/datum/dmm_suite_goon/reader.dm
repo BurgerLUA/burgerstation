@@ -112,6 +112,9 @@ dmm_suite
 						if(270)
 							offset_x = maxYFound - (posY + coord_shift_y) + 1
 							offset_y = posX + coord_shift_x
+						else
+							log_error("WARNING: Incorrect angleOffset of [angleOffset]!")
+							break
 
 					var/keyPos = ((posX-1)*key_len)+1
 					var/modelKey = copytext(y_line, keyPos, keyPos+key_len)

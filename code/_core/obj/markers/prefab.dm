@@ -10,17 +10,20 @@
 	var/offset_x = 0
 	var/offset_y = 0
 
-	//invisibility = 0
+	//invisibility = 101
 
 	var/rotational_offset = 0 //For when the prefab gets rotated by dmm_suite.
 
 /obj/marker/prefab/on_dmm_suite_rotate(var/angle_offset=0)
 	. = ..()
-	if(rotational_offset)
-		var/movement_x = FLOOR(cos(angle_offset),1)*rotational_offset
-		var/movement_y = FLOOR(-sin(angle_offset),1)*rotational_offset
-		offset_x += movement_x
-		offset_y += movement_y
+	switch(angle_offset)
+		if(90)
+			offset_y -= (rotational_offset-1)
+		if(180)
+			offset_x -= (rotational_offset-1)
+			offset_y -= (rotational_offset-1)
+		if(270)
+			offset_x -= (rotational_offset-1)
 
 /obj/marker/prefab/proc/prepare_prefab()
 	return TRUE
@@ -260,3 +263,22 @@
 	category = "vault"
 	chance_none = 0
 	rotational_offset = 10
+
+
+
+/obj/marker/prefab/debug1
+	icon = 'icons/obj/markers/prefab_10x10.dmi'
+	icon_state = null
+	category = "debug"
+	chance_none = 0
+	rotational_offset = 10
+	unique = FALSE
+
+
+/obj/marker/prefab/debug2
+	icon = 'icons/obj/markers/prefab_10x10.dmi'
+	icon_state = null
+	category = "debug2"
+	chance_none = 0
+	rotational_offset = 10
+	unique = FALSE
