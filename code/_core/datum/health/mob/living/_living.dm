@@ -59,18 +59,46 @@
 
 /health/mob/living/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 
+	var/mob/living/L = owner
+
+	if(has_bloodoxygen && L.blood_volume_max && L.blood_type)
+		var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
+		damage[OXY] = CEILING(max(0,1 - blood_oxygen)*health_max*2,HEALTH_PRECISION)
+
 	. = ..()
 
 	if(.)
 
-		var/mob/living/L = owner
+		//Regularcrit
+		if(L.death_threshold < 0)
+			var/should_be_in_crit = (health_current <= 0) && !L.status_effects[ADRENALINE]
+			if(!L.status_effects[CRIT] && should_be_in_crit)
+				L.add_status_effect(CRIT,-1,-1,force = TRUE)
+				if(!L.dead && !L.status_effects[CRITPROTECTION])
+					L.add_status_effect(CRITPROTECTION,stealthy=TRUE)
+					var/overkill_amount = (damage[BRUTE] + damage[BURN] + damage[TOX] + damage[RAD]) - health_max
+					if(overkill_amount > 0)
+						var/brute_amount = (damage[BRUTE]/overkill_amount)*damage[BRUTE]
+						var/burn_amount = (damage[BURN]/overkill_amount)*damage[BURN]
+						var/tox_amount = (damage[TOX]/overkill_amount)*damage[TOX]
+						var/rad_amount = (damage[RAD]/overkill_amount)*damage[RAD]
+						L.health.adjust_loss_smart(brute=-brute_amount,burn=-burn_amount,tox=-tox_amount,rad=-rad_amount)
+						L.brute_regen_buffer -= brute_amount
+						L.burn_regen_buffer -= burn_amount
+						L.tox_regen_buffer -= tox_amount
+						L.rad_regen_buffer -= rad_amount
+			else if(L.status_effects[CRIT] && !should_be_in_crit)
+				L.remove_status_effect(CRIT)
 
-		if(has_bloodoxygen && L.blood_volume_max && L.blood_type)
-			var/blood_oxygen = (L.blood_volume/L.blood_volume_max) + L.blood_oxygen
-			damage[OXY] = CEILING(max(0,1 - blood_oxygen)*health_max*2,HEALTH_PRECISION)
+		//Paincrit
+		var/should_be_in_paincrit = damage[PAIN] > 0 && damage[PAIN] >= health_current
+		if(!L.status_effects[PAINCRIT] && should_be_in_paincrit)
+			L.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
+		else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
+			L.remove_status_effect(PAINCRIT)
+
 
 		var/should_be_dead = check_death && L.check_death()
-
 		if(check_death && should_be_dead)
 			L.death()
 

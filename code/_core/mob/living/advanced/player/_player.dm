@@ -35,8 +35,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	respawn = FALSE
 
-	has_hard_crit = TRUE
-
 	var/difficulty = DIFFICULTY_NORMAL
 
 	var/currency = 0

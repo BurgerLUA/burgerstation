@@ -97,3 +97,5 @@
 #define UNDYING "undying"
 
 #define IMMORTAL "immortal"
+
+#define CRITPROTECTION "critprotection"

@@ -170,18 +170,14 @@
 
 	. = ..()
 
-	if(.)
-		var/should_be_in_crit = health_current <= 0 && !A.status_effects[ADRENALINE]
-		if(!A.status_effects[CRIT] && should_be_in_crit)
-			A.add_status_effect(CRIT,-1,-1,force = TRUE)
-		else if(A.status_effects[CRIT] && !should_be_in_crit)
-			A.remove_status_effect(CRIT)
+/health/mob/living/advanced/get_overall_health()
 
-		var/should_be_in_paincrit = damage[PAIN] > 0 && damage[PAIN] >= health_current
-		if(!A.status_effects[PAINCRIT] && should_be_in_paincrit)
-			A.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
-		else if(A.status_effects[PAINCRIT] && !should_be_in_paincrit)
-			A.remove_status_effect(PAINCRIT)
+	. = ..()
+
+	var/mob/living/advanced/A = owner
+
+	if(A.is_player_controlled() && A.has_status_effect(CRITPROTECTION))
+		. = max(0,.)
 
 /health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
 

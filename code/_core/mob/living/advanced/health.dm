@@ -16,3 +16,9 @@
 
 	HOOK_CALL("on_damage_received") //For hulking and whatnot.
 
+/mob/living/advanced/check_death()
+
+	if(src.has_status_effect(CRITPROTECTION))
+		return FALSE
+
+	. = ..()

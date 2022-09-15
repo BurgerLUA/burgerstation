@@ -84,7 +84,7 @@
 	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
 	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
 
-	var/debug = TRUE
+	var/debug = FALSE
 
 /obj/projectile/Destroy()
 	color = "#000000"

@@ -98,6 +98,16 @@
 
 	handle_transform()
 
+	brute_regen_buffer = 0
+	burn_regen_buffer = 0
+	tox_regen_buffer = 0
+	pain_regen_buffer = 0
+	rad_regen_buffer = 0
+	sanity_regen_buffer = 0
+	mental_regen_buffer = 0
+	mana_regen_buffer = 0
+	stamina_regen_buffer = 0
+
 	return TRUE
 
 
@@ -151,6 +161,15 @@
 	if(health)
 		health.restore()
 	remove_all_status_effects()
+	brute_regen_buffer = 0
+	burn_regen_buffer = 0
+	tox_regen_buffer = 0
+	pain_regen_buffer = 0
+	rad_regen_buffer = 0
+	sanity_regen_buffer = 0
+	mental_regen_buffer = 0
+	mana_regen_buffer = 0
+	stamina_regen_buffer = 0
 	return TRUE
 
 /mob/living/proc/resurrect()

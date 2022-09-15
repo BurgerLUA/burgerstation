@@ -46,8 +46,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/move_delay_multiplier = 1 //Read only.
 
-	var/has_hard_crit = FALSE
-
 	var/list/overlays_assoc
 
 	var/list/protection_heat = TARGETABLE_LIMBS_KV

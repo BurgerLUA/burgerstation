@@ -14,4 +14,4 @@
 /turf/simulated/wall/cult/New()
 	..()
 	if(prob(5))
-		new/obj/effect/cult_decor/wall(src.loc)
+		new/obj/effect/cult_decor/wall(src)

@@ -22,7 +22,7 @@
 		/obj/item/soulgem/rare
 	)
 
-	has_hard_crit = FALSE
+	death_threshold = 0
 
 	level = 35
 

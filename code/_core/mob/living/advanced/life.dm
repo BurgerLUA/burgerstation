@@ -170,5 +170,10 @@ var/global/list/spread_icons = list(
 			set_mouse_pointer(icon_to_use)
 
 
+/mob/living/advanced/can_buffer_health()
+	if(src.status_effects[CRITPROTECTION])
+		return FALSE
+	. = ..()
+
 
 
