@@ -2,53 +2,13 @@
 	name = "Meteor Shower"
 
 	probability = 10 //relative
-	duration = SECONDS_TO_DECISECONDS(60)
-
-	var/list/turf/valid_turfs = list()
-	var/list/area/valid_areas = list()
+	duration = SECONDS_TO_DECISECONDS(30)
 
 	occurances_max = 5
 
-/event/meteors/Destroy()
-	valid_turfs?.Cut()
-	valid_areas?.Cut()
-	return ..()
-
-/event/meteors/New()
-
-	for(var/area/A in world)
-		if(!A)
-			continue
-		if(A.area_identifier != "Mission")
-			continue
-		if(A.interior)
-			continue
-		if(A.flags_area & FLAG_AREA_NO_EVENTS)
-			continue
-		valid_areas += A
-
-	log_debug("Found [length(valid_turfs)] valid turfs for meteors event.")
-
-	return ..()
-
 /event/meteors/on_start()
 
-	valid_turfs.Cut()
-
 	log_debug("Starting Meteor Event")
-
-	var/start_time = true_time()
-
-	for(var/k in valid_areas)
-		CHECK_TICK_SAFE(25,FPS_SERVER*10)
-		var/area/A = k
-		for(var/turf/T in A.contents)
-			CHECK_TICK_SAFE(25,FPS_SERVER*10)
-			if(T.is_safe_teleport(FALSE))
-				valid_turfs[T] = TRUE
-
-	if(!length(valid_turfs))
-		return FALSE
 
 	announce(
 		"Central Command Meteorology Division",
@@ -57,24 +17,27 @@
 		sound_to_play = 'sound/voice/announcement/meteors.ogg'
 	)
 
-	log_debug("Took [true_time() - start_time] deciseconds to initialize meteor turfs.")
-
 	return ..()
 
 /event/meteors/on_life()
 
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
-		for(var/i=1,i<=3,i++)
-			var/turf/T = pick(valid_turfs)
-			new/obj/effect/falling_meteor(T)
-		var/number_of_players = length(all_players)
-		if(number_of_players >= 10 && prob(number_of_players*0.25))
+		for(var/i=1,i<=5,i++)
+			CHECK_TICK_SAFE(50,FPS_SERVER*10)
 			var/mob/living/advanced/player/P = pick(all_players)
-			if(!P.dead && P.client)
-				var/turf/T = get_turf(P)
-				if(T && valid_turfs[T])
-					new/obj/effect/falling_meteor(T)
+			if(P.dead || !P.ckey)
+				continue
+			var/list/valid_turfs = list()
+			for(var/turf/simulated/floor/F in range(VIEW_RANGE*0.75,P))
+				CHECK_TICK_SAFE(50,FPS_SERVER*10)
+				var/area/A = F.loc
+				if(A.interior)
+					continue
+				if(A.flags_area & FLAG_AREA_NO_EVENTS)
+					continue
+				valid_turfs += F
+			var/turf/T = pick(valid_turfs)
+			new /obj/effect/falling_meteor(T)
 
 	. = ..()
 

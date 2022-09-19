@@ -35,3 +35,29 @@
 
 /event/proc/on_fail()
 	return TRUE
+
+
+
+/proc/find_safe_turf_for_event(var/desired_z=1,var/attempts=10)
+
+	while(attempts > 0)
+		attempts--
+
+		var/turf/T = locate(rand(1,world.maxx),rand(1,world.maxy),desired_z)
+
+		if(T.is_safe_teleport())
+			var/area/A = T.loc
+			if(!(A.flags_area & FLAG_AREA_NO_EVENTS))
+				return T
+
+		for(var/turf/T2 in range(VIEW_RANGE,T))
+			if(T2.is_safe_teleport())
+				var/area/A = T2.loc
+				if(!(A.flags_area & FLAG_AREA_NO_EVENTS))
+					return T2
+
+
+
+
+
+

@@ -344,7 +344,7 @@
 	if(.)
 		return .
 
-	if(!object.z || object.plane >= PLANE_HUD)
+	if(!object || !object.z || object.plane >= PLANE_HUD)
 		return .
 
 	if(wield_only && !wielded)
