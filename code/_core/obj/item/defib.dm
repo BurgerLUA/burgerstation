@@ -2,7 +2,7 @@
 	name = "defibrillator"
 	icon = 'icons/obj/item/defib.dmi'
 	desc = "A spaceman's last hope."
-	desc_extended = "A heavy-duty auto-charging defibrillator designed to restart a patient's heart. Put it on your back to be able to take out the paddles, and then apply them to a recently dead person."
+	desc_extended = "A heavy-duty auto-charging defibrillator designed to restart a patient's heart. Put it on your back to be able to take out the paddles, and then apply them to a recently dead person. Alt-click to remove the paddles."
 
 	var/obj/item/defib_paddle/paddle_left
 	var/obj/item/defib_paddle/paddle_right
@@ -20,7 +20,7 @@
 /obj/item/defib/belt
 	name = "compact defibrillator"
 	icon = 'icons/obj/item/clothing/belts/compact_defib.dmi'
-	desc_extended = "A auto-charging defibrillator designed to restart a patient's heart. Put it on your belt slot to be able to take out the paddles, and then apply them to a recently dead person. Now in a smaller size!"
+	desc_extended = "A auto-charging defibrillator designed to restart a patient's heart. Put it on your belt slot to be able to take out the paddles, and then apply them to a recently dead person. Now in a smaller size! Alt-click to remove the paddles."
 
 	size = SIZE_2
 	item_slot = SLOT_GROIN_BELT
@@ -136,22 +136,20 @@
 
 	var/mob/living/advanced/A = caller
 
-	if((is_inventory(object) && is_inventory(src.loc)) || (src.z && A.attack_flags & CONTROL_MOD_DISARM))
-		var/obj/hud/inventory/I = src.loc
-		if(src in I.contents)
-			var/obj/hud/inventory/I2 = object
-			if(paddle_left in src.contents)
-				INTERACT_CHECK
-				INTERACT_CHECK_OBJECT
-				INTERACT_DELAY(1)
-				I2.add_object(paddle_left)
-				return TRUE
-			else if(paddle_right in src.contents)
-				INTERACT_CHECK
-				INTERACT_CHECK_OBJECT
-				INTERACT_DELAY(1)
-				I2.add_object(paddle_right)
-				return TRUE
+	if(src.anchored || A.attack_flags & CONTROL_MOD_DISARM)
+		var/obj/hud/inventory/I = object
+		if(paddle_left in src.contents)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(1)
+			I.add_object(paddle_left)
+			return TRUE
+		else if(paddle_right in src.contents)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(1)
+			I.add_object(paddle_right)
+			return TRUE
 
 	return ..()
 
@@ -222,6 +220,33 @@
 
 	. = ..()
 
-	if(. && linked_defib && src.z)
+	if(.)
 		placed_target_ref = null
-		src.drop_item(linked_defib)
+		if(is_inventory(old_loc))
+			var/obj/hud/inventory/I = old_loc
+			if(I.owner)
+				HOOK_REMOVE("post_move","\ref[src]_post_move_defib",I.owner)
+		if(is_inventory(src.loc))
+			var/obj/hud/inventory/I = src.loc
+			if(!I.click_flags || !I.owner)
+				src.drop_item(linked_defib)
+			else
+				HOOK_ADD("post_move","\ref[src]_post_move_defib",I.owner,src,.proc/check_distance)
+		else if(linked_defib && src.z)
+			src.drop_item(linked_defib)
+
+/obj/item/defib_paddle/proc/check_distance()
+
+	var/turf/T1 = get_turf(src)
+
+	if(!linked_defib)
+		src.drop_item(T1)
+		return FALSE
+
+	var/turf/T2 = get_turf(linked_defib)
+
+	if(get_dist(T1,T2) > 2)
+		src.drop_item(T1)
+		return FALSE
+
+	return TRUE

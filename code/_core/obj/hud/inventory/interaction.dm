@@ -26,7 +26,8 @@
 			A.examine_body_inventory(caller)
 			return TRUE
 
-	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB) //Grabbing with an empty hand.
+	//Grabbing with an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_GRAB)
 		if(is_item(object))
 			var/obj/item/I = object
 			if(istype(I.loc,/obj/item/plate))
@@ -43,10 +44,12 @@
 				src.grab_object(caller,object,location,control,params)
 			return TRUE
 
+	//Snowflake code for plates.
 	if(istype(object.loc,/obj/item/plate)) //Plate fuckery.
 		return src.click_on_object(caller,object.loc,location,control,params)
 
-	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object)) //Alt clicking with an empty hand.
+	//Alt clicking with an empty hand.
+	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object))
 		var/atom/movable/M = object
 		if(!M.anchored && M.can_rotate)
 			var/rotation = -90
@@ -56,7 +59,8 @@
 			caller.to_chat(span("notice","You rotate \the [M.name] [rotation == -90 ? "clockwise" : "counter-clockwise"]."))
 			return TRUE //Needs to be here. At this level.
 
-	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller)) //Throw the object if we are telling it to throw.
+	//Throw the object if we are telling it to throw.
+	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller))
 		if(!isturf(caller.loc))
 			return TRUE
 		var/mob/living/L = caller
