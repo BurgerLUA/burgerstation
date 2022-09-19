@@ -29,9 +29,15 @@ obj/structure/interactive/bar_sign/toolbox_tavern
 	icon_state = "toolbox_tavern"
 
 
+obj/structure/interactive/bar_sign/honked_and_loaded
+	name = "\improper HONKed and Loaded"
+	desc = "For all your robust construction needs!"
+	icon_state = "honked_and_loaded"
 
-
-
+obj/structure/interactive/bar_sign/the_harmbaton
+	name = "\improper The harmbaton"
+	desc = "For all your robust batoning needs!"
+	icon_state = "the_harmbaton"
 
 
 
@@ -74,11 +80,6 @@ obj/structure/interactive/bar_sign/security
 	name = "The Harm Baton"
 	desc = "SHITSEC"
 	icon_state = "security"
-
-obj/structure/interactive/bar_sign/clown
-	name = "HONKed'n and LOADED"
-	desc = "HONK"
-	icon_state = "clown"
 
 obj/structure/interactive/bar_sign/debug
 	name = "Coderbus"

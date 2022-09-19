@@ -22,11 +22,38 @@
 	desired_light_power = 1
 	desired_light_range = 3
 
+/obj/structure/interactive/lighting/fixture/tube/color/random
+	name = "colored light"
+	color = "#FFFFFF"
+
+	desired_light_power = 0.8
+	desired_light_range = 7
+
+/obj/structure/interactive/lighting/fixture/tube/color/random/Initialize()
+
+	var/list/valid_list = list(255,pick(0,255),0)
+
+
+	var/r = pick(valid_list)
+	valid_list -= r
+
+	var/g = pick(valid_list)
+	valid_list -= g
+
+	var/b = pick(valid_list)
+	valid_list -= b
+
+	color = rgb(r,g,b)
+
+	. = ..()
+
 /obj/structure/interactive/lighting/fixture/tube/color/turf/Initialize()
+
 	if(loc)
 		color = loc.color
 		name = loc.color
-	return ..()
+
+	. = ..()
 
 /obj/structure/interactive/lighting/fixture/tube/syndicate
 	color = "#FFBABA"

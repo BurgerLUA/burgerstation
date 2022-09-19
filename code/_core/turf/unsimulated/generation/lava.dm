@@ -40,7 +40,8 @@ var/global/list/possible_lavaland_decor = list(
 			new /turf/simulated/liquid/lava(src)
 			new /obj/marker/generation/turf/lava/floor_only(src)
 		else
-			new /turf/simulated/liquid/lava(src)
+			new /turf/simulated/wall/rock/basalt(src)
+			new /obj/marker/generation/turf/basalt_wall(src)
 
 		if(src.loc.type == /area/) new /area/mission/lava(src)
 		return ..()

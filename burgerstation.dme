@@ -1173,6 +1173,7 @@
 #include "code\_core\obj\item\clothing\back\storage\_storage.dm"
 #include "code\_core\obj\item\clothing\back\storage\flamethrower.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\_backpack.dm"
+#include "code\_core\obj\item\clothing\back\storage\backpack\clown.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\explorer_pack.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\poly.dm"
 #include "code\_core\obj\item\clothing\back\storage\backpack\rucksack.dm"
