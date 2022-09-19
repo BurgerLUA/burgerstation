@@ -32,7 +32,6 @@
 
 /turf/simulated/floor/brick/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"
-	map_color = color
 	. = ..()
 
 /turf/simulated/floor/brick/grey

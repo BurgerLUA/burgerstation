@@ -95,7 +95,7 @@
 	return FALSE
 
 /atom/proc/should_smooth_with(var/turf/T)
-	return FALSE
+	return null
 
 /atom/proc/on_destruction(var/mob/caller,var/damage = FALSE) //Called when destructed by tools or damage.
 	HOOK_CALL("on_destruction")

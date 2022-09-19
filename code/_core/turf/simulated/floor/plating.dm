@@ -20,10 +20,6 @@
 	icon_state = "filled3"
 	exposed = FALSE
 
-/turf/simulated/floor/plating/New(var/desired_loc)
-	. = ..()
-	map_color = color
-
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"
 	icon = 'icons/turf/floor/plating.dmi'

@@ -26,17 +26,22 @@ var/global/obj/water_ground
 
 	. = ..()
 
-	if(!water_ground)
-		water_ground = new(null)
-		water_ground.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
-		water_ground.vis_flags = VIS_INHERIT_ID
-		water_ground.icon = 'icons/turf/floor/icons.dmi'
-		water_ground.icon_state = "dirt"
-		water_ground.plane = PLANE_WATER_FLOOR
-		water_ground.layer = -1000
-
 	if(alpha < 255)
+		plane = PLANE_WATER
+		mouse_opacity = 0
+		if(!water_ground)
+			water_ground = new(null)
+			water_ground.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
+			water_ground.vis_flags = VIS_INHERIT_ID
+			water_ground.icon = 'icons/turf/floor/icons.dmi'
+			water_ground.icon_state = "dirt"
+			water_ground.plane = PLANE_WATER_FLOOR
+			water_ground.layer = -1000
+			water_ground.mouse_opacity = 1
 		vis_contents += water_ground
+	else
+		plane = PLANE_FLOOR
+		mouse_opacity = 1
 
 /turf/simulated/liquid/Exit(atom/movable/O,atom/newloc)
 
@@ -44,7 +49,7 @@ var/global/obj/water_ground
 		return FALSE
 	else if(is_living(O) && (O.collision_flags & FLAG_COLLISION_WATER) && newloc.type != src.type)
 		var/mob/living/L = O
-		if(L.climb_counter < 3)
+		if(L.climb_counter < 1 + depth*0.4)
 			L.climb_counter++
 			return FALSE
 		L.climb_counter = 0
@@ -57,7 +62,7 @@ var/global/obj/water_ground
 	if(is_living(O) && O.collision_flags & FLAG_COLLISION_WATER)
 		var/mob/living/L = O
 		if(!L.on_liquid)
-			if(L.climb_counter < 3)
+			if(L.climb_counter < 2)
 				L.climb_counter++
 				return FALSE
 		L.climb_counter = 0

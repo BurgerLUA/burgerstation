@@ -100,7 +100,7 @@
 	. = ..()
 
 	if(istype(.,/obj/structure/interactive/door/airlock/))
-		return FALSE
+		return null
 
 obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
 

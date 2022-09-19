@@ -12,10 +12,6 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-/turf/simulated/wall/brick/New(var/desired_loc)
-	. = ..()
-	map_color = color
-
 /turf/simulated/wall/brick/red
 	color = "#C66B59"
 	desc = "Like a brick to the head"

@@ -22,6 +22,9 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/_core/station.dmm"
 	)
 
+	var/pvp_y
+	var/pvp_coef
+
 /subsystem/dmm_suite/Initialize()
 
 	set background = TRUE
@@ -104,16 +107,16 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	if(CONFIG("ENABLE_PVP_AREA",FALSE))
 
-		var/random_coef_01 = 400+rand(0,50)
-		var/random_coef_02 = random_coef_01*0.0015
+		pvp_y = 400+rand(0,50)
+		pvp_coef = pvp_y*0.0015
 
 		var/z = file_to_z_level["maps/_core/mission.dmm"]
 		if(z)
-			for(var/y=1,y<=500,y++)
-				for(var/x=1,x<=500,x++)
-					if(y < random_coef_01 - (x * 0.05 + sin(x*3))**(random_coef_02*2) - 3) //Bottom line
+			for(var/y=2,y<=499,y++)
+				for(var/x=2,x<=499,x++)
+					if(y < pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) - 3) //Bottom line
 						continue
-					if(y > random_coef_01 - (x * 0.05 + sin(x*3))**(random_coef_02*2) + 3) //Top line
+					if(y > pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) + 3) //Top line
 						continue
 					var/turf/T = locate(x,y,z)
 					for(var/k in T.contents)
@@ -124,46 +127,64 @@ SUBSYSTEM_DEF(dmm_suite)
 
 			var/bridge_prefab = file2text("maps/prefabs/pvp_bridge/bridge.dmm")
 
-			var/marker_01_x = rand(50,150)
-			var/marker_01_y = random_coef_01 - (marker_01_x * 0.05)**(random_coef_02*2)
-			marker_01_x = round(marker_01_x-16)
-			marker_01_y = round(marker_01_y-16)
-			dmm_suite.read_map(
-				bridge_prefab,
-				marker_01_x,
-				marker_01_y,
-				z,
-				tag="pvp_bridge"
-			)
+			var/desired_bridges = 3
+			var/marker_attempts_left = 30
+
+			while(marker_attempts_left > 0 && desired_bridges > 0)
+				sleep(-1)
+				marker_attempts_left--
 
 
-			/*
-			var/marker_02_x = rand(200,300)
-			var/marker_02_y = random_coef_01 - (marker_02_x * 0.05)**(random_coef_02*2)
-			marker_02_x = round(marker_02_x-16)
-			marker_02_y = round(marker_02_y-16)
-			dmm_suite.read_map(
-				bridge_prefab,
-				marker_02_x,
-				marker_02_y,
-				z,
-				tag="pvp_bridge"
-			)
-			*/
+				var/marker_x = rand(50,450)
+				var/marker_y = pvp_y - (marker_x * 0.05 + sin(marker_x*3))**(pvp_coef*2)
+				marker_x = round(marker_x)
+				marker_y = round(marker_y)
 
-			var/marker_03_x = rand(350,450)
-			var/marker_03_y = random_coef_01 - (marker_03_x * 0.05)**(random_coef_02*2)
-			marker_03_x = round(marker_03_x-16)
-			marker_03_y = round(marker_03_y-16)
-			dmm_suite.read_map(
-				bridge_prefab,
-				marker_03_x,
-				marker_03_y,
-				z,
-				tag="pvp_bridge"
-			)
+				var/turf/T1 = locate(marker_x-16,marker_y-16*2,z)
+				if(!T1 || T1.loc.type != /area/)
+					continue
+				var/turf/T2 = locate(marker_x+16,marker_y+16*2,z)
+				if(!T2 || T2.loc.type != /area/)
+					continue
+
+				var/bad_block=FALSE
+				var/list/block_turfs = block(T1,T2)
+				for(var/k in block_turfs)
+					var/turf/T = k
+					if(T.loc.type != /area/)
+						bad_block = TRUE
+						break
+					if(T.density && !T.organic)
+						break
+				if(bad_block)
+					continue
+
+				dmm_suite.read_map(
+					bridge_prefab,
+					marker_x-16,
+					marker_y-16,
+					z,
+					tag="pvp_bridge"
+				)
+				desired_bridges--
+
+
 
 	return ..()
+
+
+/subsystem/dmm_suite/proc/is_pvp_coord(var/x,var/y,var/z)
+
+	if(!pvp_y)
+		return FALSE
+
+	var/mission_z = file_to_z_level["maps/_core/mission.dmm"]
+
+	if(!mission_z || z != mission_z)
+		return FALSE
+
+	if(y >= pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2))
+		return TRUE
 
 //Here lies dead code.
 //Annoying to work with and I don't have time to spend 6 months on this.

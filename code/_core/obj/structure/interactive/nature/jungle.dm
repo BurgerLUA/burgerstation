@@ -46,7 +46,7 @@ obj/structure/scenery/reeds
 	name = "water reeds"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "reedbush_1"
-	layer = LAYER_FLOOR_SCENERY
+	layer = LAYER_MOB_WATER+1
 	plane = PLANE_WATER
 
 obj/structure/scenery/reeds/New()

@@ -57,11 +57,11 @@ SUBSYSTEM_DEF(turf)
 		log_subsystem(src.name,"Sorting generation markers...")
 		for(var/k in all_generation_markers)
 			var/obj/marker/generation/G = k
-			if(G.bypass_disallow_generation || priority >= 3)
+			if(G.priority == 3)
 				generations_third += G
-			else if(priority >= 2)
+			else if(G.priority == 2)
 				generations_second += G
-			else
+			else if(G.priority == 1)
 				generations_first += G
 
 		log_subsystem(src.name,"Generating first markers...")
@@ -94,7 +94,9 @@ SUBSYSTEM_DEF(turf)
 	for(var/turf/simulated/S in world)
 		var/benchmark = true_time()
 		FINALIZE(S)
-		type_to_time[S.type] += true_time() - benchmark
+		benchmark = true_time() - benchmark
+		if(benchmark > 0)
+			type_to_time[S.type] += benchmark
 		turfs_finalized++
 		sleep(-1)
 
@@ -110,6 +112,19 @@ SUBSYSTEM_DEF(turf)
 		for(var/k in type_to_time)
 			var/v = type_to_time[k]
 			log_debug("[k]: [DECISECONDS_TO_SECONDS(v)] seconds")
+
+
+	log_subsystem(src.name,"Processing [length(smart_clear_turfs)] smart clear turf markers...")
+	var/benchmark = true_time()
+	for(var/k in smart_clear_turfs)
+		var/obj/marker/smart_clear_turf/M = k
+		INITIALIZE(M)
+		GENERATE(M)
+		FINALIZE(M)
+		qdel(M)
+		sleep(-1)
+	benchmark = true_time() - benchmark
+	log_subsystem(src.name,"Clear turf markers took [DECISECONDS_TO_SECONDS(benchmark)] seconds.")
 
 	. = ..()
 

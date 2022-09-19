@@ -74,6 +74,19 @@
 	set_light(2,0.25,"#00FF00")
 	return ..()
 
+/obj/structure/interactive/plant/glowcap
+	plant_type = /plant_type/glowcap
+	icon_state = "glowcap"
+
+	potency = 20
+	yield_max = 2
+	growth_speed = 0.2
+
+/obj/structure/interactive/plant/glowcap/Initialize()
+	set_light(2,0.25,"#FF0000")
+	return ..()
+
+
 
 /obj/structure/interactive/plant/tomato
 	plant_type = /plant_type/tomato

@@ -51,7 +51,7 @@
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/xeno)
 "j" = (
-/turf/simulated/wall/shuttle,
+/turf/simulated/wall/metal/shuttle,
 /area/shuttle/xeno)
 "k" = (
 /obj/structure/interactive/door/airlock/shuttle,

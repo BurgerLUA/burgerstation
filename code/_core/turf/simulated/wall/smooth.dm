@@ -9,11 +9,6 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-/turf/simulated/wall/plastic/New(var/desired_loc)
-	. = ..()
-	map_color = color
-
-
 /turf/simulated/wall/plastic/office
 	name = "office wall"
 	desc = "Flexible"

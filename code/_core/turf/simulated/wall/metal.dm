@@ -16,10 +16,6 @@
 	window_blend = TRUE
 	reinforced_blend = BLEND_MULTIPLY
 
-/turf/simulated/wall/metal/New(var/desired_loc)
-	. = ..()
-	map_color = color
-
 /turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)
@@ -142,7 +138,6 @@
 
 	color = "#FFFFFF"
 	map_color = "#AAAAAA"
-
 
 /turf/simulated/wall/metal/circuit
 	name = "techno steel wall"

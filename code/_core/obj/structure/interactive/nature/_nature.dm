@@ -96,9 +96,11 @@ obj/structure/scenery/rocks/New()
 
 	density = TRUE
 
+	bullet_block_chance = 50
+
 obj/structure/interactive/basalt/New()
 	..()
-	icon_state = "rock_[rand(1,5)]"
+	icon_state = "basalt_[rand(1,4)]"
 
 
 obj/structure/scenery/lolipop_tree

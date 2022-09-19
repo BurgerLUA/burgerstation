@@ -607,7 +607,7 @@ mob/living/proc/on_life_slow()
 	if(client)
 		var/client/C = client
 		var/turf/T = get_turf(src)
-		C.make_ghost(T ? T : locate(128,128,1))
+		C.make_ghost(T ? T : locate(FLOOR(world.maxx/2,1),FLOOR(world.maxy/2,1),1))
 		C.to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
 	else
 		ckey_last = null

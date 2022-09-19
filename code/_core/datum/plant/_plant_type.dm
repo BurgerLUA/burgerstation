@@ -146,13 +146,25 @@
 	plant_icon_state = "glowshroom"
 	harvest_icon_state = "glowshroom"
 	seed_icon_state = "glowshroom"
-	plant_icon_count = 2
+	plant_icon_count = 3
 	reagents = list(
 		/reagent/radioactive/radium = 1,
 	)
 
 	typical_volume = 10
 
+/plant_type/glowcap
+	name = "glowcap"
+	desc = "A radioactive, glowing mushroom."
+	plant_icon_state = "glowcap"
+	harvest_icon_state = "glowcap"
+	seed_icon_state = "glowcap"
+	plant_icon_count = 4
+	reagents = list(
+		/reagent/radioactive/radium = 1,
+	)
+
+	typical_volume = 10
 
 /plant_type/tomato
 	name = "tomato"

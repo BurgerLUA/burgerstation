@@ -32,6 +32,10 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	depth = 0 // 0 Means generate depth.
 	alpha = 255
 
+	mouse_opacity = 0
+
+	var/shore = FALSE
+
 /turf/simulated/liquid/water/Initialize()
 	. = ..()
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE) && depth <= 0)
@@ -39,16 +43,25 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			var/turf/simulated/floor/T = get_step(src,k)
 			if(!istype(T))
 				continue
-			water_shores |= T
+			water_shores += src
+			shore = TRUE
+			break
 
 /turf/simulated/liquid/water/Finalize()
 
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
 		if(depth <= 0)
-			depth = MAX_DEPTH
-			for(var/k in water_shores)
-				var/turf/simulated/floor/T = k
-				depth = min(1 + get_dist_real(src,T),depth)
+			if(shore)
+				depth = 1
+			else
+				depth = MAX_DEPTH
+				for(var/k in water_shores)
+					var/turf/simulated/floor/T = k
+					if(get_dist(src,T) > MAX_DEPTH*2)
+						continue
+					depth = clamp(get_dist_real(src,T)*0.5,1,depth)
+					if(depth == 1)
+						break
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
 	else

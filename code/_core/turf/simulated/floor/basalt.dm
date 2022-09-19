@@ -43,3 +43,8 @@
 		return TRUE
 
 	. = ..()
+
+/turf/simulated/floor/basalt/Finalize()
+	. = ..()
+	if(prob(2))
+		new/obj/structure/interactive/basalt(src)

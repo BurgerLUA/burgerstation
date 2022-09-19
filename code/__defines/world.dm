@@ -1,5 +1,5 @@
-#define STATE_STARTING "starting"
-#define STATE_INITIALIZING "initializing"
-#define STATE_RUNNING "running"
-#define STATE_ROUND_END "ending round"
-#define STATE_SHUTDOWN "shutting down"
+#define STATE_STARTING        0
+#define STATE_INITIALIZING    1
+#define STATE_RUNNING         2
+#define STATE_ROUND_END       3
+#define STATE_SHUTDOWN        4

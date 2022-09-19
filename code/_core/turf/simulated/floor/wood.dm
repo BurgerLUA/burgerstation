@@ -11,8 +11,6 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-	map_color = "#FFFFFF"
-
 	exposed = FALSE
 
 /turf/simulated/floor/wood/brown

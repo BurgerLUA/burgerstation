@@ -7,20 +7,20 @@
 	density = FALSE
 
 
-//https://www.desmos.com/calculator/o0vwzlgpsw
+//https://www.desmos.com/calculator/u1xlukfjrf
 var/global/snow_line = rand(330,410)
-var/global/snow_num = 0.1+rand()*0.8
+var/global/snow_num = 0.6+rand()*0.2
 
 /turf/unsimulated/generation/forest/generate(var/size = WORLD_SIZE)
 
-	var/is_snow = y >= snow_line - (x*0.05)**(snow_num*2)
+	var/is_snow = y >= snow_line - (x*0.05)**(snow_num*2) + sin(x)*10
 
 	if(is_snow)
 
-		if(density && is_different && is_next_to_dense_turf)
+		if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
 			new /turf/simulated/wall/rock/snow(src)
 			if(prob(0.25))
-				new /obj/marker/generation/snow_wall(src)
+				new /obj/marker/generation/turf/snow_wall(src)
 			if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
 			disallow_generation = TRUE
 			return ..()
@@ -30,8 +30,8 @@ var/global/snow_num = 0.1+rand()*0.8
 				new /turf/simulated/floor/ice(src)
 				if(density)
 					if(prob(1))
-						new /obj/marker/generation/snow_wall/small(src)
-					if(prob(1))
+						new /obj/marker/generation/turf/snow_wall/small(src)
+					else if(prob(5))
 						new /obj/marker/generation/mob/penguin(src)
 					else if(prob(1))
 						new /obj/marker/generation/mob/slime/ice(src)
@@ -41,8 +41,10 @@ var/global/snow_num = 0.1+rand()*0.8
 				if(density)
 					new /turf/simulated/liquid/water/river/ice(src)
 					if(prob(1))
-						new /obj/marker/generation/ice(src)
-						if(prob(0.5))
+						new /obj/marker/generation/turf/ice(src)
+						if(prob(5))
+							new /obj/marker/generation/mob/penguin(src)
+						if(prob(1))
 							new /obj/marker/generation/mob/slime/ice(src)
 				else
 					new /turf/simulated/floor/ice(src)
@@ -51,9 +53,9 @@ var/global/snow_num = 0.1+rand()*0.8
 				new /turf/simulated/floor/colored/snow(src)
 				if(density)
 					if(prob(1))
-						new /obj/marker/generation/snow_dirt(src)
+						new /obj/marker/generation/turf/snow_dirt(src)
 						if(prob(0.25))
-							new /obj/marker/generation/snow_wall(src)
+							new /obj/marker/generation/turf/snow_wall(src)
 							if(prob(1))
 								new /obj/marker/generation/mob/bear/snow(src)
 					else if(prob(1))
@@ -65,7 +67,7 @@ var/global/snow_num = 0.1+rand()*0.8
 					else if(prob(1))
 						new /obj/marker/generation/foliage/tree/snow(src)
 						if(prob(1))
-							new /obj/marker/generation/snow_dirt(src)
+							new /obj/marker/generation/turf/snow_dirt(src)
 						if(prob(1))
 							new /obj/marker/generation/mob/rev(src)
 					else if(prob(1))
@@ -78,7 +80,7 @@ var/global/snow_num = 0.1+rand()*0.8
 					if(prob(1))
 						new /obj/marker/generation/foliage/tree/snow(src)
 						if(prob(1))
-							new /obj/marker/generation/snow_dirt(src)
+							new /obj/marker/generation/turf/snow_dirt(src)
 						if(prob(1))
 							new /obj/marker/generation/mob/rev(src)
 				else
@@ -89,21 +91,21 @@ var/global/snow_num = 0.1+rand()*0.8
 					if(prob(0.25))
 						new /obj/marker/generation/mob/slime/snow(src)
 					else if(prob(0.25))
-						new /obj/marker/generation/snow_wall(src)
+						new /obj/marker/generation/turf/snow_wall(src)
 						if(prob(1))
 							new /obj/marker/generation/mob/bear/snow(src)
 					else if(prob(1))
-						new /obj/marker/generation/snow_dirt(src)
+						new /obj/marker/generation/turf/snow_dirt(src)
 				else
 					disallow_generation = TRUE
 			if(GENERATION_SEGMENT_HIGHEST to INFINITY)
 				if(density)
 					new /turf/simulated/wall/rock/snow(src)
 					if(prob(2))
-						new /obj/marker/generation/snow_wall(src)
+						new /obj/marker/generation/turf/snow_wall(src)
 					else if(prob(1))
 						new /obj/marker/generation/mob/legion/snow(src)
-						new /obj/marker/generation/snow(src)
+						new /obj/marker/generation/turf/snow(src)
 				else
 					new /turf/simulated/floor/colored/dirt/snow(src)
 					disallow_generation = TRUE
@@ -113,7 +115,7 @@ var/global/snow_num = 0.1+rand()*0.8
 	else
 
 
-		if(density && !is_next_to_interior && is_different && !is_next_to_dense_turf)
+		if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
 			new /turf/simulated/wall/rock(src)
 			if(src.loc.type == /area/) new /area/mission/forest(src)
 			disallow_generation = TRUE
@@ -134,7 +136,7 @@ var/global/snow_num = 0.1+rand()*0.8
 					new /turf/simulated/floor/colored/grass(src)
 					if(prob(0.25))
 						new /obj/marker/generation/mob/slime/water(src)
-						new /obj/marker/generation/water(src)
+						new /obj/marker/generation/turf/water(src)
 					if(prob(1))
 						new /obj/marker/generation/foliage/grass(src)
 						if(prob(1))
@@ -155,7 +157,7 @@ var/global/snow_num = 0.1+rand()*0.8
 					else if(prob(1))
 						new /obj/marker/generation/foliage/bushes/sun(src)
 					else if(prob(1))
-						new /obj/marker/generation/forest_soil(src)
+						new /obj/marker/generation/turf/forest_soil(src)
 						new /obj/marker/generation/plant/tomato(src)
 						if(prob(0.25))
 							new /obj/marker/generation/mob/goblin(src)
@@ -184,9 +186,9 @@ var/global/snow_num = 0.1+rand()*0.8
 							new /obj/marker/generation/mob/bee(src)
 					else if(prob(1))
 						if(prob(75))
-							new /obj/marker/generation/forest_dirt(src)
+							new /obj/marker/generation/turf/forest_dirt(src)
 						else
-							new /obj/marker/generation/forest_soil(src)
+							new /obj/marker/generation/turf/forest_soil(src)
 						if(prob(1))
 							new /obj/marker/generation/plant/cabbage(src)
 							if(prob(1))
@@ -199,10 +201,10 @@ var/global/snow_num = 0.1+rand()*0.8
 			if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
 				new /turf/simulated/floor/colored/dirt(src)
 				if(density)
-					if(prob(1))
-						new /obj/marker/generation/rock_wall(src)
+					if(prob(20))
+						new /obj/marker/generation/turf/rock_wall(src)
 					else if(prob(0.25))
-						new /obj/marker/generation/water(src)
+						new /obj/marker/generation/turf/water(src)
 					else
 						if(prob(1))
 							new /obj/marker/generation/plant/fly_amanita(src)
@@ -213,8 +215,8 @@ var/global/snow_num = 0.1+rand()*0.8
 			if(GENERATION_SEGMENT_HIGHEST to INFINITY)
 				if(density)
 					new /turf/simulated/wall/rock/moss(src)
-					if(prob(1))
-						new /obj/marker/generation/rock_wall(src)
+					if(prob(5))
+						new /obj/marker/generation/turf/rock_wall(src)
 				else
 					new /turf/simulated/floor/cave_dirt(src)
 					disallow_generation = TRUE

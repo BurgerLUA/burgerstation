@@ -61,8 +61,6 @@
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
 
-	bypass_disallow_generation = TRUE
-
 /obj/marker/generation/foliage/grass/snow
 	object_to_place = /obj/structure/scenery/grass/snow
 	grow_amount_min = 5
@@ -87,7 +85,6 @@
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
-	bypass_disallow_generation = TRUE
 
 /obj/marker/generation/foliage/grass/jungle/rock
 	object_to_place = /obj/structure/scenery/grass/jungle_rock
@@ -100,8 +97,6 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/colored/dirt
-
-	bypass_disallow_generation = TRUE
 
 	priority = 2
 
@@ -159,7 +154,6 @@
 
 	turf_whitelist = /turf/simulated/floor/colored/grass
 
-	bypass_disallow_generation = TRUE
 
 /obj/marker/generation/foliage/flowers/lavender
 	object_to_place = /obj/structure/scenery/grass/lavender
@@ -200,7 +194,6 @@
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
-	bypass_disallow_generation = TRUE
 
 
 /obj/marker/generation/foliage/jungle_light/stick
@@ -215,7 +208,6 @@
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
-	bypass_disallow_generation = TRUE
 
 
 /obj/marker/generation/foliage/jungle_light/lamp
@@ -230,7 +222,6 @@
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
-	bypass_disallow_generation = TRUE
 
 
 /obj/marker/generation/foliage/jungle_light/mine
@@ -244,5 +235,3 @@
 	color = COLOR_PINK
 
 	turf_whitelist = /turf/simulated/floor/grass/jungle
-
-	bypass_disallow_generation = TRUE

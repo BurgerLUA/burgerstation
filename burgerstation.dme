@@ -2115,7 +2115,6 @@
 #include "code\_core\turf\simulated\wall\light.dm"
 #include "code\_core\turf\simulated\wall\metal.dm"
 #include "code\_core\turf\simulated\wall\rock.dm"
-#include "code\_core\turf\simulated\wall\shuttle.dm"
 #include "code\_core\turf\simulated\wall\smooth.dm"
 #include "code\_core\turf\simulated\wall\strange.dm"
 #include "code\_core\turf\simulated\wall\traitor.dm"

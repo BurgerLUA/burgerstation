@@ -50,15 +50,16 @@
 
 /obj/structure/should_smooth_with(var/turf/T)
 
-	if(T.plane == plane && T.corner_category == corner_category)
-		return T
+	if(corner_category)
+		if(T.plane == plane && T.corner_category == corner_category)
+			return T
 
-	for(var/obj/structure/O in T.contents)
-		if(O.corner_category != corner_category)
-			continue
-		if(O.plane != plane)
-			continue
-		return O
+		for(var/obj/structure/O in T.contents)
+			if(O.corner_category != corner_category)
+				continue
+			if(O.plane != plane)
+				continue
+			return O
 
 	. = ..()
 

@@ -26,6 +26,7 @@
 	var/no_queue = FALSE
 
 /obj/structure/window/should_smooth_with(var/turf/T)
+
 	. = ..()
 
 	if(istype(.,/turf/simulated/wall))

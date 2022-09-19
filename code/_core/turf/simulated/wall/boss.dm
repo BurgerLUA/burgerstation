@@ -7,4 +7,4 @@
 	corner_category = "boss"
 	corner_icons = TRUE
 
-	map_color = "#381600"
+	map_color = "#211811"

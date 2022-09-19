@@ -1,3 +1,4 @@
+/*
 var/global/list/possible_mushrooms = list(
 	/obj/structure/interactive/plant/cactus_fruit = 6,
 	/obj/structure/interactive/plant/polypore_mushroom = 1,
@@ -20,6 +21,7 @@ var/global/list/possible_lavaland_decor = list(
 #define PLACE_MUSHROOM var/datum/D__LINE__ = pickweight(possible_mushrooms); new D__LINE__(src)
 #define PLACE_LAVALAND_FAUNA var/datum/D__LINE__ = pickweight(possible_lavaland_fauna); new D__LINE__(src)
 #define PLACE_LAVALAND_DECOR var/datum/D__LINE__ =pickweight(possible_lavaland_decor); new D__LINE__(src) //not used, I know!
+*/
 
 /turf/unsimulated/generation/lava
 	name = "lava generation"
@@ -31,26 +33,31 @@ var/global/list/possible_lavaland_decor = list(
 
 /turf/unsimulated/generation/lava/generate(var/size = WORLD_SIZE)
 
-	if(density && (x <= VIEW_RANGE*2 || x >= size - VIEW_RANGE*2 || y <= VIEW_RANGE*2 || y >= size - VIEW_RANGE*2)) //Handle edges.
-		new /turf/simulated/wall/rock/basalt(src)
-		if(prob(2))
-			new /obj/marker/generation/basalt_wall(src)
-		else if(prob(0.5))
-			new /obj/marker/generation/lava(src)
+	if(density && (x <= VIEW_RANGE || x >= size - VIEW_RANGE || y <= VIEW_RANGE || y >= size - VIEW_RANGE)) //Handle edges.
+		if(x<=2 || y<=2 || x>=size-2 || y>=size-2)
+			new /turf/simulated/wall/rock/basalt(src)
+		else if(x == VIEW_RANGE || x == size - VIEW_RANGE || y == VIEW_RANGE || y == size - VIEW_RANGE)
+			new /turf/simulated/liquid/lava(src)
+			new /obj/marker/generation/turf/lava/floor_only(src)
+		else
+			new /turf/simulated/liquid/lava(src)
+
 		if(src.loc.type == /area/) new /area/mission/lava(src)
 		return ..()
 
-	if(density && is_different)
-		if(is_next_to_dense_turf)
+	if(is_different)
+		if(density && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
 			new /turf/simulated/wall/rock/basalt(src)
 			if(prob(2))
-				new /obj/marker/generation/basalt_wall(src)
+				new /obj/marker/generation/turf/basalt_wall(src)
 			else if(prob(2))
-				new /obj/marker/generation/lava(src)
+				new /obj/marker/generation/turf/lava(src)
 		else
 			new /turf/simulated/floor/basalt(src)
 			if(prob(1))
-				new /obj/marker/generation/basalt(src)
+				new /obj/marker/generation/turf/basalt(src)
+			if(prob(1))
+				new /obj/marker/generation/plant/glowcap(src)
 		if(src.loc.type == /area/) new /area/mission/lava(src)
 		return ..()
 
@@ -62,6 +69,10 @@ var/global/list/possible_lavaland_decor = list(
 					new /obj/marker/generation/mob/slime/magma(src)
 			else
 				new /turf/simulated/floor/basalt(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/embershroom_mushroom(src)
+				else if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
 		if(GENERATION_SEGMENT_LOWEST to GENERATION_SEGMENT_LOW)
 			if(density)
@@ -70,66 +81,123 @@ var/global/list/possible_lavaland_decor = list(
 					new /obj/marker/generation/mob/watcher(src)
 				else if(prob(0.25))
 					new /obj/marker/generation/mob/slime/magma(src)
+					if(prob(1))
+						new /obj/marker/generation/plant/embershroom_mushroom(src)
 			else
 				new /turf/simulated/floor/basalt(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/embershroom_mushroom(src)
+				else if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
 		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_MID)
 			new /turf/simulated/floor/basalt(src)
 			if(density)
-				if(prob(1))
-					new /obj/marker/generation/lava(src)
+				if(prob(5))
+					new /obj/marker/generation/turf/lava(src)
 					new /obj/marker/generation/mob/watcher(src)
+					if(prob(1))
+						new /obj/marker/generation/plant/embershroom_mushroom(src)
 				else if(prob(2))
 					new /obj/marker/generation/mob/ash_walker(src)
-					new /obj/marker/generation/ash_floor(src)
+					new /obj/marker/generation/turf/ash_floor(src)
+					if(prob(1))
+						new /obj/marker/generation/plant/polypore_mushroom(src)
 				else if(prob(0.25))
 					new /obj/marker/generation/mob/slime/basalt(src)
+					if(prob(1))
+						new /obj/marker/generation/plant/cactus_fruit(src)
 			else
+				if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
-		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH)
+		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH - 0.1)
 			new /turf/simulated/floor/basalt(src)
 			if(density)
-				if(prob(1))
-					new /obj/marker/generation/lava/small(src)
+				if(prob(5))
+					new /obj/marker/generation/turf/lava/small(src)
 					new /obj/marker/generation/mob/watcher(src)
-				if(prob(1))
-					new /obj/marker/generation/basalt(src)
+					if(prob(1))
+						new /obj/marker/generation/plant/embershroom_mushroom(src)
+				else if(prob(1))
+					new /obj/marker/generation/turf/basalt(src)
+					if(prob(1))
+						new /obj/marker/generation/plant/cactus_fruit(src)
 					if(prob(1))
 						new /obj/marker/generation/mob/goliath_ancient(src)
+						if(prob(1))
+							new /obj/marker/generation/plant/porcini_mushroom(src)
 					else
 						new /obj/marker/generation/mob/goliath(src)
+						if(prob(1))
+							new /obj/marker/generation/plant/porcini_mushroom(src)
 				else if(prob(1))
-					new /obj/marker/generation/basalt_wall(src)
+					new /obj/marker/generation/turf/basalt_wall(src)
 				else if(prob(0.25))
 					if(prob(1))
-						new /obj/marker/generation/ash_wall(src)
+						new /obj/marker/generation/turf/ash_wall(src)
 					else
 						new /obj/marker/generation/mob/ash_walker(src)
-					new /obj/marker/generation/ash_floor(src)
+						if(prob(1))
+							new /obj/marker/generation/plant/polypore_mushroom(src)
+					new /obj/marker/generation/turf/ash_floor(src)
+
 			else
+				if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
+		if(GENERATION_SEGMENT_HIGH - 0.1 to GENERATION_SEGMENT_HIGH)
+			if(density)
+				new /turf/simulated/wall/ash/volcanic(src)
+				if(prob(1))
+					new /obj/marker/generation/turf/ash_wall(src)
+			else
+				new /turf/simulated/floor/colored/ash/volcanic(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/polypore_mushroom(src)
+				else if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
+				if(prob(1))
+					new /obj/marker/generation/turf/ash_floor(src)
+					if(prob(20))
+						new /obj/marker/generation/mob/ash_walker(src)
+
 		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
 			if(density)
 				if(prob(1))
+					if(prob(1))
+						new /obj/marker/generation/plant/cactus_fruit(src)
 					new /turf/simulated/floor/basalt(src)
 					new /obj/marker/generation/mob/legion(src)
-					new /obj/marker/generation/basalt(src)
+					new /obj/marker/generation/turf/basalt(src)
 				else
 					new /turf/simulated/wall/rock/basalt(src)
-					new /obj/marker/generation/basalt_wall(src)
+					new /obj/marker/generation/turf/basalt_wall(src)
 			else
 				new /turf/simulated/floor/basalt(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
 		if(GENERATION_SEGMENT_HIGHEST to INFINITY)
 			if(density)
 				new /turf/simulated/wall/rock/basalt(src)
 			else
 				new /turf/simulated/floor/basalt(src)
+				if(prob(1))
+					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
-
-	if(!density && !disallow_generation && prob(3))
-		new/obj/structure/interactive/basalt(src)
 
 	if(src.loc.type == /area/) new /area/mission/lava(src)
 
 	return ..()
+
+
+/turf/unsimulated/generation/lava/pre_generate()
+
+	var/x_seed = x / world.maxx
+	var/y_seed = y / world.maxy
+
+	. = ..()
+
+	noise += text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+10]]","[x_seed]","[y_seed]"))
+	noise = MODULUS(noise,1)

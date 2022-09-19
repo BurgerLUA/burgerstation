@@ -92,6 +92,10 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 	. = ..()
 	all_map_nodes += src
 
+/obj/marker/map_node/Destroy()
+	. = ..()
+	all_map_nodes -= src
+
 /obj/marker/map_node/proc/initialize_node()
 
 	var/found = FALSE

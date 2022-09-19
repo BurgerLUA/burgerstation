@@ -11,9 +11,9 @@
 	if(density && (x <= VIEW_RANGE*2 || x >= size - VIEW_RANGE*2 || y <= VIEW_RANGE*2 || y >= size - VIEW_RANGE*2)) //Handle edges.
 		new /turf/simulated/wall/rock(src)
 		if(prob(5))
-			new /obj/marker/generation/rock_wall(src)
+			new /obj/marker/generation/turf/rock_wall(src)
 		else
-			new /obj/marker/generation/rock_wall/small(src)
+			new /obj/marker/generation/turf/rock_wall/small(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
 		disallow_generation = TRUE
 		return ..()
@@ -21,20 +21,20 @@
 	if(!density) //path subtype.
 		if(is_different)
 			if(prob(1))
-				new /obj/marker/generation/cave_dirt(src)
+				new /obj/marker/generation/turf/cave_dirt(src)
 			else if(prob(2))
-				new /obj/marker/generation/rock_wall(src)
+				new /obj/marker/generation/turf/rock_wall(src)
 		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
 		disallow_generation = TRUE
 		return ..()
 
-	if(is_different && is_next_to_null_area)
+	if(is_different && is_next_to_null_areas)
 		new /turf/simulated/wall/rock(src)
 		if(prob(1))
-			new /obj/marker/generation/rock_wall(src)
+			new /obj/marker/generation/turf/rock_wall(src)
 		else
-			new /obj/marker/generation/rock_wall/small(src)
+			new /obj/marker/generation/turf/rock_wall/small(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
 		disallow_generation = TRUE
 		return ..()
@@ -61,15 +61,15 @@
 			if(prob(0.25))
 				new /obj/marker/generation/mob/slime/cave(src)
 			else if(prob(0.5))
-				new /obj/marker/generation/rock_wall(src)
+				new /obj/marker/generation/turf/rock_wall(src)
 		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
 			new /turf/simulated/wall/rock(src)
 			if(prob(1))
-				new /obj/marker/generation/rock_wall(src)
+				new /obj/marker/generation/turf/rock_wall(src)
 		if(GENERATION_SEGMENT_HIGHEST to INFINITY)
 			new /turf/simulated/wall/rock(src)
 			if(prob(1))
-				new /obj/marker/generation/rock_wall(src)
+				new /obj/marker/generation/turf/rock_wall(src)
 
 	if(src.loc.type == /area/)
 		new /area/mission/caves(src)

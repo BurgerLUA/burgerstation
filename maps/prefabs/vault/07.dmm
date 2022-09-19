@@ -1,32 +1,215 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_07)
-"c" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/vault_loot/secure,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"d" = (/obj/structure/table/reinforced/steel/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate,/obj/marker/spawning/random/vault_loot/secure,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"e" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"f" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/vault_loot,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"g" = (/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"h" = (/obj/structure/table/reinforced/steel/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/obj/marker/spawning/random/vault_loot,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"i" = (/obj/structure/table/reinforced/steel/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/obj/marker/spawning/random/vault_loot,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"j" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 4},/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_07)
-"k" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"l" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"m" = (/obj/structure/interactive/door/vault/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"n" = (/mob/living/simple/turret/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"o" = (/obj/structure/interactive/lighting/fixture/floor/syndicate,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"p" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/metal/reinforced/syndicate,/area/mission/prefab/vault/vault_07)
-"q" = (/obj/marker/map_node,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"r" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating/syndicate,/area/mission/prefab/vault/vault_07)
-"s" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/turf/simulated/wall/metal/reinforced/syndicate,
+/area/mission/prefab/vault/vault_07)
+"c" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/marker/spawning/random/vault_loot/secure,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"d" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/obj/marker/spawning/random/vault_loot/secure,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"e" = (
+/obj/marker/spawning/window/reinforced,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"f" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/marker/spawning/random/vault_loot,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"g" = (
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"h" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/marker/spawning/random/vault_loot,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"i" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 8
+	},
+/obj/marker/spawning/random/vault_loot,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"j" = (
+/obj/structure/interactive/power/apc{
+	icon_state = "apc";
+	dir = 4
+	},
+/turf/simulated/wall/metal/reinforced/syndicate,
+/area/mission/prefab/vault/vault_07)
+"k" = (
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"l" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"m" = (
+/obj/structure/interactive/door/vault/syndicate,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"n" = (
+/mob/living/simple/turret/syndicate,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"o" = (
+/obj/structure/interactive/lighting/fixture/floor/syndicate,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"p" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 8
+	},
+/turf/simulated/wall/metal/reinforced/syndicate,
+/area/mission/prefab/vault/vault_07)
+"q" = (
+/obj/marker/map_node,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"r" = (
+/obj/structure/interactive/wire/red,
+/obj/marker/map_node,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_07)
+"s" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-aaabbbbbaa
-aaabcdcbaa
-aaabeeebaa
-aaabfqfbaa
-aaabhgibaa
-aaabfgfbaa
-aaajkrkpaa
-aalbbmbbla
-aalnoqonla
-aalllsllla
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+l
+l
+l
+"}
+(4,1,1) = {"
+b
+b
+b
+b
+b
+b
+j
+b
+n
+l
+"}
+(5,1,1) = {"
+b
+c
+e
+f
+h
+f
+k
+b
+o
+l
+"}
+(6,1,1) = {"
+b
+d
+e
+q
+g
+g
+r
+m
+q
+s
+"}
+(7,1,1) = {"
+b
+c
+e
+f
+i
+f
+k
+b
+o
+l
+"}
+(8,1,1) = {"
+b
+b
+b
+b
+b
+b
+p
+b
+n
+l
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+l
+l
+l
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}

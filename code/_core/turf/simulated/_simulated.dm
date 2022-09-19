@@ -34,8 +34,6 @@
 
 	var/slip_factor = 1
 
-	var/organic = FALSE
-
 	var/map_color = null //The map color. For drawing maps.
 
 /turf/simulated/is_safe_teleport(var/check_contents=TRUE)
@@ -113,6 +111,11 @@
 	. = ..()
 	if(istype(health))
 		health.organic = organic
+
+/turf/simulated/Finalize()
+	. = ..()
+	if(!map_color)
+		map_color = color ? color : "#FFFFFF"
 
 /turf/simulated/proc/get_smooth_code()
 

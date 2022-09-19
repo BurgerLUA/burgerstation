@@ -4,7 +4,7 @@
 	desc = "Gotta catch em all"
 	desc_extended = "A solid wall of ash."
 
-	real_icon = 'icons/turf/floor/ash.dmi'
+	real_icon = 'icons/turf/floor/rocky_ash.dmi'
 	real_icon_state = "floor"
 
 	icon = 'icons/turf/wall/rock/preview.dmi'
@@ -15,23 +15,29 @@
 
 	destruction_turf = /turf/simulated/floor/colored/ash
 
+	layer = 600
+
+/*
 /turf/simulated/wall/ash/update_overlays()
 	. = ..()
 
-	var/x_icon = x % 12
-	var/y_icon = y % 12
+	var/x_icon = x % 7
+	var/y_icon = y % 7
 
 	var/odd = ((y % 2) + x) % 2
 	layer = odd ? 10 : 20
 
 	var/image/I = new/image('icons/turf/wall/ash_overlays.dmi',"[x_icon],[y_icon]")
-	I.blend_mode = BLEND_MULTIPLY
-	I.appearance_flags = RESET_COLOR
+	I.blend_mode = BLEND_INSET_OVERLAY
 	add_overlay(I)
+*/
 
 
-/turf/simulated/wall/ash/dark
+/turf/simulated/wall/ash/volcanic
 	name = "volcanic ash wall"
 	desc = "Gotta catch em all"
 	desc_extended = "A solid wall of volcanic ash."
-	color = "#262626"
+	color = "#705F5F"
+	map_color = "#1C1714"
+
+	destruction_turf = /turf/simulated/floor/colored/ash/volcanic

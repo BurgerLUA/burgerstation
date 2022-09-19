@@ -8,7 +8,7 @@
 
 /turf/unsimulated/generation/desert/generate(var/size = WORLD_SIZE)
 
-	if(density && !is_next_to_interior && is_different && !is_next_to_dense_turf)
+	if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
 		new /turf/simulated/wall/rock/desert(src)
 		if(src.loc.type == /area/) new /area/mission/desert/interior(src)
 		disallow_generation = TRUE
@@ -21,7 +21,7 @@
 				disallow_generation = TRUE
 			else if(prob(0.5))
 				new /turf/simulated/liquid/water/desert(src)
-				new /obj/marker/generation/water/desert(src)
+				new /obj/marker/generation/turf/water/desert(src)
 				if(prob(0.25))
 					new /obj/marker/generation/mob/slime/water(src)
 			else
@@ -50,7 +50,7 @@
 			if(!density)
 				disallow_generation = TRUE
 			else if(prob(0.5))
-				new /obj/marker/generation/desert_wall(src)
+				new /obj/marker/generation/turf/desert_wall(src)
 		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
 			new /turf/simulated/floor/cave_dirt(src)
 			if(!density)

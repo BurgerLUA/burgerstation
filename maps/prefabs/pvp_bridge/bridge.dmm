@@ -1,16 +1,15 @@
 "a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "b" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
 "c" = (/turf/simulated/wall/boss,/area/dmm_suite/clear_area)
+"d" = (/obj/marker/smart_clear_turf,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaacccbdbbbbbbdbcccaaaaaaaa
 aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
 aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
-aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
-aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
-aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
-aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
-aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
-aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
 aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
 aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
 aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
@@ -34,5 +33,7 @@ aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
 aaaaaaaaaaabbbbbbbbbbaaaaaaaaaaa
 aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
 aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
-aaaaaaaacccbbbbbbbbbbcccaaaaaaaa
+aaaaaaaacccbdbbbbbbdbcccaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

@@ -1,69 +1,1267 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/obj/structure/short_wall/wood/starting,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"c" = (/obj/structure/short_wall/wood,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"d" = (/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"e" = (/turf/simulated/wall/wood/boat,/area/dmm_suite/clear_area)
-"f" = (/turf/simulated/floor/stair/wood,/area/dmm_suite/clear_area)
-"g" = (/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"h" = (/obj/structure/short_wall/wood/starting,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"i" = (/turf/simulated/floor/stair/wood{icon_state = "stair"; dir = 1},/area/dmm_suite/clear_area)
-"j" = (/obj/structure/short_wall/wood/starting,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"k" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 8},/obj/item/cannonball,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"l" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 4},/obj/item/cannonball,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"m" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 8},/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"n" = (/obj/structure/interactive/cannon{icon_state = "map"; dir = 4},/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"o" = (/obj/structure/interactive/cannon,/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"p" = (/obj/item/cannonball,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"q" = (/obj/item/cannon_fuse,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"r" = (/obj/item/cannon_fuse,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"s" = (/obj/item/cannonball,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"t" = (/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 1},/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"u" = (/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"v" = (/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"w" = (/obj/item/cannonball,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"x" = (/obj/item/cannonball,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"y" = (/obj/item/cannon_fuse,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"z" = (/obj/item/cannonball,/mob/living/advanced/npc/pirate_crew/ranged{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"A" = (/mob/living/advanced/npc/pirate_crew/melee,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"B" = (/mob/living/advanced/npc/pirate_crew/melee,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"C" = (/mob/living/advanced/npc/unique/pirate_captain,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"D" = (/mob/living/advanced/npc/unique/pirate_mate,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"E" = (/obj/structure/short_wall/wood/starting,/obj/marker/map_node,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"F" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
-"G" = (/obj/marker/map_node,/turf/simulated/floor/wood/boat,/area/dmm_suite/clear_area)
-"H" = (/obj/item/cannonball,/obj/marker/map_node,/turf/simulated/floor/wood/boat/starting,/area/dmm_suite/clear_area)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/structure/short_wall/wood/starting,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"c" = (
+/obj/structure/short_wall/wood,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"d" = (
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"e" = (
+/turf/simulated/wall/wood/boat,
+/area/dmm_suite/clear_area)
+"f" = (
+/turf/simulated/floor/stair/wood,
+/area/dmm_suite/clear_area)
+"g" = (
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"h" = (
+/obj/structure/short_wall/wood/starting,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"i" = (
+/turf/simulated/floor/stair/wood{
+	icon_state = "stair";
+	dir = 1
+	},
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/structure/short_wall/wood/starting,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"k" = (
+/obj/structure/interactive/cannon{
+	icon_state = "map";
+	dir = 8
+	},
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"l" = (
+/obj/structure/interactive/cannon{
+	icon_state = "map";
+	dir = 4
+	},
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"m" = (
+/obj/structure/interactive/cannon{
+	icon_state = "map";
+	dir = 8
+	},
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"n" = (
+/obj/structure/interactive/cannon{
+	icon_state = "map";
+	dir = 4
+	},
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"o" = (
+/obj/structure/interactive/cannon,
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"p" = (
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"q" = (
+/obj/item/cannon_fuse,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"r" = (
+/obj/item/cannon_fuse,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"s" = (
+/obj/item/cannonball,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"t" = (
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"u" = (
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"v" = (
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"w" = (
+/obj/item/cannonball,
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"x" = (
+/obj/item/cannonball,
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"y" = (
+/obj/item/cannon_fuse,
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 8
+	},
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"z" = (
+/obj/item/cannonball,
+/mob/living/advanced/npc/pirate_crew/ranged{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"A" = (
+/mob/living/advanced/npc/pirate_crew/melee,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"B" = (
+/mob/living/advanced/npc/pirate_crew/melee,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"C" = (
+/mob/living/advanced/npc/unique/pirate_captain,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"D" = (
+/mob/living/advanced/npc/unique/pirate_mate,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"E" = (
+/obj/structure/short_wall/wood/starting,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"F" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"G" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"H" = (
+/obj/item/cannonball,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaacccccaaaaaaaaaaaaaa
-aaaaaaaaaaaaactGdcaaaaaaaaaaaaaa
-aaaaaaaaaaaaaeefeeaaaaaaaaaaaaaa
-aaaaaaaaaaaeeegFgeeeaaaaaaaaaaaa
-aaaaaaaaaaaegggggggeaaaaaaaaaaaa
-aaaaaaaaaaaEggCgDggEaaaaaaaaaaaa
-aaaaaaaaaaaEugggggvEaaaaaaaaaaaa
-aaaaaaaaaaaegFgggFgeaaaaaaaaaaaa
-aaaaaaaaaaaeeieeeieeaaaaaaaaaaaa
-aaaaaaaaaaackGpqdGlcaaaaaaaaaaaa
-aaaaaaaaaaacqdAdddwcaaaaaaaaaaaa
-aaaaaaaaaaackdddddlcaaaaaaaaaaaa
-aaaaaaaaaaacxddjqdpcaaaaaaaaaaaa
-aaaaaaaaaaackGdddGlcaaaaaaaaaaaa
-aaaaaaaaaaacqdddAdqcaaaaaaaaaaaa
-aaaaaaaaaaackdqjddlcaaaaaaaaaaaa
-aaaaaaaaaaacxdddddwcaaaaaaaaaaaa
-aaaaaaaaaaackGqqpGlcaaaaaaaaaaaa
-aaaaaaaaaaahhfhhhfhhaaaaaaaaaaaa
-aaaaaaaaaaahrHgggFrhaaaaaaaaaaaa
-aaaaaaaaaaahmggBggnhaaaaaaaaaaaa
-aaaaaaaaaaahhsgFgghhaaaaaaaaaaaa
-aaaaaaaaaaaahysggzhaaaaaaaaaaaaa
-aaaaaaaaaaaahhorohhaaaaaaaaaaaaa
-aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+e
+e
+E
+E
+e
+e
+c
+c
+c
+c
+c
+c
+c
+c
+c
+h
+h
+h
+h
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+e
+g
+g
+u
+g
+e
+k
+q
+k
+x
+k
+q
+k
+x
+k
+h
+r
+m
+h
+h
+h
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+c
+c
+e
+e
+g
+g
+g
+F
+i
+G
+d
+d
+d
+G
+d
+d
+d
+G
+f
+H
+g
+s
+y
+h
+h
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+c
+t
+e
+g
+g
+C
+g
+g
+e
+p
+A
+d
+d
+d
+d
+q
+d
+q
+h
+g
+g
+g
+s
+o
+h
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+c
+G
+f
+F
+g
+g
+g
+g
+e
+q
+d
+d
+j
+d
+d
+j
+d
+q
+h
+g
+B
+F
+g
+r
+h
+b
+b
+b
+b
+a
+"}
+(17,1,1) = {"
+a
+a
+c
+d
+e
+g
+g
+D
+g
+g
+e
+d
+d
+d
+q
+d
+A
+d
+d
+p
+h
+g
+g
+g
+g
+o
+h
+a
+a
+a
+a
+a
+"}
+(18,1,1) = {"
+a
+a
+c
+c
+e
+e
+g
+g
+g
+F
+i
+G
+d
+d
+d
+G
+d
+d
+d
+G
+f
+F
+g
+g
+z
+h
+h
+a
+a
+a
+a
+a
+"}
+(19,1,1) = {"
+a
+a
+a
+a
+a
+e
+g
+g
+v
+g
+e
+l
+w
+l
+p
+l
+q
+l
+w
+l
+h
+r
+n
+h
+h
+h
+a
+a
+a
+a
+a
+a
+"}
+(20,1,1) = {"
+a
+a
+a
+a
+a
+e
+e
+E
+E
+e
+e
+c
+c
+c
+c
+c
+c
+c
+c
+c
+h
+h
+h
+h
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(21,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(22,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(23,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(24,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(25,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(26,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(27,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(28,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(29,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(30,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(31,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(32,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}

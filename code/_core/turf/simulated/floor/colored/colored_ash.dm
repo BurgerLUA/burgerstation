@@ -25,18 +25,10 @@
 	corner_category = "ash_necro"
 	layer = LAYER_FLOOR_WEATHER + 0.2
 
-/turf/simulated/floor/colored/ash/dark
+/turf/simulated/floor/colored/ash/volcanic
 	name = "volcanic ash"
-	color = "#545454"
+	color = "#544842"
 	corner_category = "ash_volcanic"
 	layer = LAYER_FLOOR_WEATHER + 0.3
 
-/turf/simulated/floor/colored/ash/rocky
-	name = "rocky ash"
-	color = "#563F2D"
-	icon_state = "ash_rocky"
-	corner_category = "ash_rocky"
-
-	real_icon = 'icons/turf/floor/rocky_ash.dmi'
-
-	layer = LAYER_FLOOR_WEATHER + 0
+	destruction_turf = /turf/simulated/floor/basalt

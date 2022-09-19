@@ -7,7 +7,7 @@
 
 	color = COLOR_RED
 
-	turf_whitelist = /turf/simulated/floor/
+	turf_whitelist = /turf/simulated/floor
 
 	ignore_existing = TRUE
 

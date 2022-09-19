@@ -9,7 +9,7 @@
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "d" = (
-/turf/simulated/wall/shuttle,
+/turf/simulated/wall/metal/shuttle,
 /area/shuttle/flounder)
 "e" = (
 /obj/structure/shuttle_engine/burst/right{

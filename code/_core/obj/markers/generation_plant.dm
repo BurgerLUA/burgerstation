@@ -3,13 +3,43 @@
 	grow_amount_max = 20
 	objects_max = 6
 	skip_chance = 90
-	hole_chance = 0
+	hole_chance = 20
 
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/
 
 	priority = 2
+
+/obj/marker/generation/plant/cactus_fruit
+	object_to_place = /obj/structure/interactive/plant/cactus_fruit
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/polypore_mushroom
+	object_to_place = /obj/structure/interactive/plant/polypore_mushroom
+	turf_whitelist = /turf/simulated/floor/colored/ash
+	objects_max = 4
+
+/obj/marker/generation/plant/porcini_mushroom
+	object_to_place = /obj/structure/interactive/plant/porcini_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/inocybe_mushroom
+	object_to_place = /obj/structure/interactive/plant/inocybe_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/embershroom_mushroom
+	object_to_place = /obj/structure/interactive/plant/embershroom_mushroom
+	turf_whitelist = /turf/simulated/floor/basalt
+	objects_max = 4
+
+/obj/marker/generation/plant/glowcap
+	object_to_place = /obj/structure/interactive/plant/glowcap
+	turf_whitelist = /turf/simulated/floor
+	objects_max = 4
 
 /obj/marker/generation/plant/cabbage
 	object_to_place = /obj/structure/interactive/plant/cabbage
@@ -33,6 +63,11 @@
 
 /obj/marker/generation/plant/glowshroom
 	object_to_place = /obj/structure/interactive/plant/glowshroom
+	turf_whitelist = /turf/simulated/floor
+	objects_max = 2
+
+/obj/marker/generation/plant/glowcap
+	object_to_place = /obj/structure/interactive/plant/glowcap
 	turf_whitelist = /turf/simulated/floor
 	objects_max = 2
 

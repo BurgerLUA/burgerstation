@@ -21,6 +21,14 @@
 /mob/abstract/observer/menu/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
 	return FALSE
 
+
+/mob/abstract/observer/menu/New(var/desired_loc,var/client/C)
+
+	. = ..()
+
+	if(world_state < STATE_RUNNING)
+		force_move(null)
+
 /mob/abstract/observer/menu/think()
 
 	. = ..()
