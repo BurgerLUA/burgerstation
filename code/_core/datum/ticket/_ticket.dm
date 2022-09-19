@@ -14,6 +14,8 @@ var/global/ticket_number_counter = 1
 /ticket/Topic(href,href_list[])
 
 	if(href_list["password"] && usr.client)
+		if(!involved_ckeys[usr.client.ckey])
+			src.join(usr.client)
 		var/desired_message = input("Adminhelp") as message
 		if(desired_message)
 			desired_message = police_input(usr.client,desired_message)
