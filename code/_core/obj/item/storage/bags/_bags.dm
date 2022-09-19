@@ -152,7 +152,7 @@
 	desc = "Be sure to read the label before eating the contents."
 	desc_extended = "A pill bottle that can hold up to 30 pills."
 	icon = 'icons/obj/item/storage/bottles.dmi'
-	icon_state = "pill_canister"
+	icon_state = "base"
 
 	size = SIZE_1
 	dynamic_inventory_count = 1

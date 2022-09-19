@@ -47,7 +47,7 @@
 
 	level = 8
 
-	alpha = 0 //0 means set automatically based on level
+	alpha = 255 //255 means set automatically based on level
 
 	var/slime_traits = SLIME_TRAIT_NONE
 
@@ -141,8 +141,11 @@
 		if(length(src.contents) < 5)
 			var/absorbed = FALSE
 			for(var/obj/item/I in loc.contents)
+				if(I.size > SIZE_2)
+					continue
 				absorbed = TRUE
 				I.drop_item(src)
+				I.pixel_x = initial(I.pixel_x) - 8
 			if(absorbed)
 				update_sprite()
 		if((slime_traits & SLIME_TRAIT_WET) && isturf(loc))
@@ -166,8 +169,8 @@
 	return TRUE
 
 /mob/living/simple/slime/Finalize()
-	if(alpha == 0)
-		alpha = min(255,150 + (level/50)*105)
+	if(alpha == 255)
+		alpha = min(255,150 + min(1,level/50)*105)
 	. = ..()
 	update_traits()
 	update_sprite()
@@ -266,9 +269,6 @@
 	. = ..()
 
 	if(!dead)
-		var/image/I = new/image(initial(icon),"slime_core")
-		I.appearance_flags = appearance_flags | RESET_ALPHA
-		add_underlay(I)
 		for(var/obj/item/O in contents)
 			var/image/I2 = new/image(O.icon,O.icon_state)
 			I2.appearance = O.appearance

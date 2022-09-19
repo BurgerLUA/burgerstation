@@ -40,10 +40,10 @@ obj/structure/interactive/bar_sign/assistant
 	desc = "The most robust prices in town!"
 	icon_state = "assistant"
 
-obj/structure/interactive/bar_sign/chemistry
+obj/structure/interactive/bar_sign/the_chem_lab
 	name = "The Chem Lab"
 	desc = "The only thing that won't explode is your wallet!"
-	icon_state = "chemistry"
+	icon_state = "the_chem_lab"
 
 
 obj/structure/interactive/bar_sign/traitor
@@ -64,10 +64,10 @@ obj/structure/interactive/bar_sign/narsie
 	icon_state = "cult"
 
 
-obj/structure/interactive/bar_sign/dye
+obj/structure/interactive/bar_sign/die_lab
 	name = "DIE LAB"
 	desc = "When you want to look fabulous when killing people."
-	icon_state = "dying"
+	icon_state = "die_lab"
 
 
 obj/structure/interactive/bar_sign/security

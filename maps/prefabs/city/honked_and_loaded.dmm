@@ -1,0 +1,34 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/brick/banana,/area/dmm_suite/clear_area)
+"c" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
+"e" = (/turf/simulated/floor/tile/orange,/area/dmm_suite/clear_area)
+"f" = (/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
+"g" = (/turf/simulated/floor/tile/blue,/area/dmm_suite/clear_area)
+"h" = (/turf/simulated/floor/tile/yellow,/area/dmm_suite/clear_area)
+"i" = (/turf/simulated/floor/tile/red,/area/dmm_suite/clear_area)
+"j" = (/obj/structure/table/reinforced/yellow,/turf/simulated/floor/tile/orange,/area/dmm_suite/clear_area)
+"k" = (/obj/structure/table/reinforced/yellow,/turf/simulated/floor/tile,/area/dmm_suite/clear_area)
+"l" = (/obj/structure/table/reinforced/yellow,/turf/simulated/floor/tile/yellow,/area/dmm_suite/clear_area)
+"m" = (/obj/structure/table/reinforced/yellow,/obj/item/storage/shoebox/clown,/obj/item/storage/shoebox/clown,/obj/item/storage/shoebox/clown,/turf/simulated/floor/tile/orange,/area/dmm_suite/clear_area)
+"n" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/mask/clown,/obj/item/clothing/mask/clown,/obj/item/clothing/mask/clown,/turf/simulated/floor/tile/orange,/area/dmm_suite/clear_area)
+"o" = (/obj/structure/table/reinforced/yellow,/obj/item/storage/glovebox/white,/obj/item/storage/glovebox/white,/obj/item/storage/glovebox/white,/turf/simulated/floor/tile/orange,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+abbbbbbbbbbbbbba
+abjooooeejjjjjba
+acmeeeeeeeeeenca
+acmeeejeejeeenca
+acmeffkkkkffenca
+acmefggffggfenca
+abmehggffgghenba
+abccbhffffhbccba
+acddclfffflcddca
+acddchfiifhcddca
+abccblfiiflbccba
+aaaachffffhcaaaa
+aaaaclhhhhlcaaaa
+aaaabcbhhbcbaaaa
+aaaaaaaaaaaaaaaa
+"}

@@ -97,3 +97,28 @@
 
 /area/mission/prefab/city/toolbox_tavern/backroom
 	icon_state = "red"
+
+
+/area/mission/prefab/city/die_lab
+	name = "\improper Die Lab"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/die_lab/backroom
+	icon_state = "blue"
+
+
+/area/mission/prefab/city/the_chem_lab
+	name = "\improper The Chem Lab"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
