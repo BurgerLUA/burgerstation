@@ -167,9 +167,6 @@
 
 	//Abilities
 	var/ability_length = min(length(ability_buttons),length(loaded_data["abilities"]))
-	world.log << "Ability length: [ability_length]."
-	world.log << "Button length: [length(ability_buttons)]."
-	world.log << "Data length: [length(loaded_data["abilities"])]."
 
 	for(var/i=1,i<=ability_length,i++)
 		var/b_index = ability_buttons[i]
