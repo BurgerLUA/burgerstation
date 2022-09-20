@@ -1,4 +1,4 @@
-/armor/plasteel
+/armor/structure/plasteel
 	defense_rating = list(
 		BLADE = 150,
 		BLUNT = 50,
@@ -21,7 +21,7 @@
 	)
 	deflection = 1
 
-/armor/brass
+/armor/structure/brass
 	defense_rating = list(
 		BLADE = 150,
 		BLUNT = 50,

@@ -53,7 +53,7 @@
 	name = "clockwork helmet"
 	icon = 'icons/obj/item/clothing/hats/clockwork.dmi'
 
-	armor = /armor/brass
+	armor = /armor/brass/armor
 
 	value = 500
 
