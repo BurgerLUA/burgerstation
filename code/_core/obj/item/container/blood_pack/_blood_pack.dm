@@ -153,7 +153,7 @@
 		detach()
 		return FALSE
 
-	if(attached_to.is_afk())
+	if(!is_living(last_interacted) || !is_safe_to_attach(last_interacted,attached_to))
 		detach()
 		return FALSE
 
