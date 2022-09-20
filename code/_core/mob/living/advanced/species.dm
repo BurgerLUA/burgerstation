@@ -95,12 +95,14 @@
 				health.Finalize()
 				QUEUE_HEALTH_UPDATE(src)
 
+	if(!src.finalized)
+		add_ability_buttons()
+
 	setup_appearance(set_default) //Either set the default appearance or load in a saved appearance.
 
 	//Buttons
 	if(!src.finalized && is_player_controlled())
 		add_species_buttons()
-		add_ability_buttons()
 		add_stat_buttons()
 
 	update_items(force=TRUE)

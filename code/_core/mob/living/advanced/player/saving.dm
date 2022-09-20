@@ -165,6 +165,21 @@
 	if(!labeled_organs["implant_head"])
 		add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
+	//Abilities
+	var/ability_length = min(length(ability_buttons),length(loaded_data["abilities"]))
+	world.log << "Ability length: [ability_length]."
+	world.log << "Button length: [length(ability_buttons)]."
+	world.log << "Data length: [length(loaded_data["abilities"])]."
+
+	for(var/i=1,i<=ability_length,i++)
+		var/b_index = ability_buttons[i]
+		var/obj/hud/button/ability/B = ability_buttons[b_index]
+		if(loaded_data["abilities"][i])
+			var/ability_type = text2path(loaded_data["abilities"][i])
+			if(ability_type)
+				B.ability = new ability_type
+				B.update_sprite()
+
 	update_all_blends()
 
 	health?.update_health_stats()
@@ -236,5 +251,14 @@
 		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.chargen_max_level)
 		final_attribute_list[id] = desired_experience
 	.["attributes"] = final_attribute_list
+
+	//Abilities
+	var/ability_length = length(ability_buttons)
+	.["abilities"] = new/list(ability_length)
+	for(var/i=1,i<=ability_length,i++)
+		var/ability_num_as_string = ability_buttons[i]
+		var/obj/hud/button/ability/B = ability_buttons[ability_num_as_string]
+		if(B && B.ability)
+			.["abilities"][i] = "[B.ability.type]"
 
 	last_autosave = world.time

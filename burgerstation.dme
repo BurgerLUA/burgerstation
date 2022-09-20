@@ -806,7 +806,6 @@
 #include "code\_core\mob\living\advanced\lighting.dm"
 #include "code\_core\mob\living\advanced\loadout.dm"
 #include "code\_core\mob\living\advanced\movement.dm"
-#include "code\_core\mob\living\advanced\oldcode.dm"
 #include "code\_core\mob\living\advanced\organs.dm"
 #include "code\_core\mob\living\advanced\overlays.dm"
 #include "code\_core\mob\living\advanced\species.dm"
