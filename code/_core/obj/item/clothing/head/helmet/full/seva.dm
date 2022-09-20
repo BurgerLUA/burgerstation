@@ -8,6 +8,8 @@
 
 	size = SIZE_3
 
+	can_save = FALSE
+
 /obj/item/clothing/head/helmet/full/seva/mono
 	name = "custom SEVA suit"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike! This is revolutionaries' modification for urban combat."

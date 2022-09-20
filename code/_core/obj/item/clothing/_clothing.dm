@@ -75,8 +75,6 @@
 
 	for(var/k in additional_clothing)
 		var/obj/item/C = new k(src)
-		C.should_save = FALSE
-		C.size = 0
 		INITIALIZE(C)
 		FINALIZE(C)
 		C.additional_clothing_parent = src

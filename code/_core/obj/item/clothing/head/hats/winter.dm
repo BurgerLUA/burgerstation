@@ -18,3 +18,5 @@
 
 
 	value = 30
+
+	can_save = FALSE

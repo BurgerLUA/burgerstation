@@ -10,7 +10,7 @@
 		caller.to_chat(span("warning","\The [src.name] cannot be dyed."))
 		return FALSE
 
-	if(!should_save)
+	if(!can_save)
 		caller.to_chat(span("warning","You can't dye \the [src.name]! Try dying the main part of this clothing set."))
 		return FALSE
 

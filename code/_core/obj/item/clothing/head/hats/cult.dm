@@ -13,6 +13,8 @@
 
 	size = SIZE_2
 
+	can_save = FALSE
+
 /obj/item/clothing/head/hat/cult/old
 
 	name = "ancient cult hood"

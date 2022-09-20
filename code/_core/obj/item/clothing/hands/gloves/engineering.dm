@@ -17,6 +17,8 @@
 
 	value = 230
 
+	can_save = FALSE
+
 /obj/item/clothing/hands/gloves/engineering/left
 	name = "left engineering rig glove"
 	desc = "Spacewalk with theese."
@@ -32,3 +34,5 @@
 	protection_cold = list(
 		BODY_HAND_LEFT = 2
 	)
+
+	can_save = FALSE

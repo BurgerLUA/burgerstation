@@ -24,6 +24,8 @@
 
 	company_type = "Hell"
 
+	can_save = FALSE
+
 /obj/item/weapon/ranged/stamina_use/tentacle/update_icon()
 
 	if(toggle)

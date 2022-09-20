@@ -14,3 +14,5 @@
 	protection_cold = list(
 		BODY_HAND_LEFT = 3
 	)
+
+	contraband = TRUE

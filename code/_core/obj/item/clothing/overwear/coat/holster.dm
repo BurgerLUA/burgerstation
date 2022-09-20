@@ -4,7 +4,7 @@
 	desc_extended = "A regular holster that can hold nearly any pistol."
 	icon = 'icons/obj/item/clothing/suit/holster.dmi'
 
-	size = SIZE_2
+	size = SIZE_3
 
 	is_container = TRUE
 

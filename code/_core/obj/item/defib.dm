@@ -174,7 +174,7 @@
 
 	weight = 2
 
-	should_save = FALSE
+	can_save = FALSE
 
 /obj/item/defib_paddle/Destroy()
 	linked_defib = null

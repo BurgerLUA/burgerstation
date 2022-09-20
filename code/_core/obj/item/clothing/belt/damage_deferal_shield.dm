@@ -25,6 +25,8 @@
 
 	uses_until_condition_fall = 1000
 
+	contraband = TRUE
+
 /obj/item/clothing/belt/damage_deferal_shield/use_condition(var/amount_to_use=1)
 	if(!CALLBACK_EXISTS("\ref[src]_disable_shield"))
 		return FALSE

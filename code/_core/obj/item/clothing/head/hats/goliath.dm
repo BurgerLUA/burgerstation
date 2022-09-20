@@ -15,3 +15,5 @@
 	value = 300
 
 	dyeable = FALSE
+
+	can_save = FALSE

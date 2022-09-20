@@ -16,6 +16,8 @@
 
 	var/next_scream = 0
 
+	can_save = FALSE
+
 /obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller)
 
 	INTERACT_CHECK

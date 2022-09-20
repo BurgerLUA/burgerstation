@@ -34,3 +34,5 @@
 	value = 1000
 
 	item_slot_layer = 4
+
+	can_save = FALSE

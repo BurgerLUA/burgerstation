@@ -8,7 +8,7 @@
 
 	var/list/additional_blends
 
-	var/should_save = TRUE
+	var/can_save = TRUE
 
 	var/under_tile = FALSE
 

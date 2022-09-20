@@ -16,3 +16,5 @@
 	hidden_organs = list(
 		BODY_HAIR_HEAD = TRUE
 	)
+
+	can_save = FALSE

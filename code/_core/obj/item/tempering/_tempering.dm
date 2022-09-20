@@ -39,7 +39,7 @@
 		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]!"))
 		return FALSE
 
-	if(!I.should_save)
+	if(!I.can_save)
 		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
 		return FALSE
 

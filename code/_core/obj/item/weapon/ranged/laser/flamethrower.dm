@@ -27,6 +27,7 @@
 
 	battery = /obj/item/powercell/recharging //I'm sorry!
 
+	can_save = FALSE
 
 /obj/item/weapon/ranged/energy/flamethrower/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

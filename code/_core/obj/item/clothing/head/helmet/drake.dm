@@ -12,3 +12,5 @@
 
 
 	value = 400
+
+	can_save = FALSE

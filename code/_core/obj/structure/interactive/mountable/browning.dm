@@ -76,7 +76,7 @@
 
 	var/obj/structure/interactive/mountable/browning/linked_gun
 
-	should_save = FALSE
+	can_save = FALSE
 	throwable = FALSE
 	can_wield = TRUE
 

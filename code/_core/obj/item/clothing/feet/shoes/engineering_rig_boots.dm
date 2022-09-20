@@ -23,6 +23,8 @@
 
 	item_slot_layer = 3
 
+	can_save = FALSE
+
 /obj/item/clothing/feet/shoes/engineering/left
 	name = "left engineering boot"
 	icon_state = "inventory_left"
@@ -32,3 +34,4 @@
 	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
 
+	can_save = FALSE

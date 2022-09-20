@@ -6,7 +6,7 @@
 
 		var/icon_blend/IB = additional_blends[id]
 
-		if(IB.should_save)
+		if(IB.can_save)
 			.[id] = list()
 		else
 			continue
@@ -73,23 +73,24 @@
 	FINALIZE(I)
 	I.drop_item(loc,silent=TRUE)
 
+	if(!I.can_save)
+		qdel(I)
+		return null
+
+	if(I.contraband)
+		if(P)
+			var/value_to_give = FLOOR(I.get_value()*0.5,1)
+			if(value_to_give > 0)
+				P.to_chat(span("notice","Due to \the [I.name] being contraband, the cryo system cannot grant you this object. You were given [value_to_give] credits as compensation."))
+				P.adjust_currency(value_to_give,silent=TRUE)
+		qdel(I)
+		return null
+
 	return I
 
 /obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
 	. = list()
-
-	if(contraband)
-		if(P)
-			var/value_to_give = FLOOR(src.get_value()*0.5,1)
-			if(value_to_give > 0)
-				P.to_chat(span("notice","Due to \the [src.name] being contraband, it cannot be stored. You were given [value_to_give] credits as compensation."))
-				P.adjust_currency(value_to_give,silent=TRUE)
-			qdel(src) //Prevents any possible exploits.
-		return
-
-	if(!should_save)
-		return
 
 	if(name != initial(name))
 		.["name"] = name
@@ -245,7 +246,6 @@
 
 /obj/hud/inventory/proc/save_inventory_data(var/mob/living/advanced/player/P,var/save_inventory=TRUE,var/died=FALSE) //Getting the inventory and their contents for saving.
 
-
 	var/content_length = length(contents)
 
 	. = new/list(content_length)
@@ -254,15 +254,9 @@
 		var/obj/item/I = contents[i]
 		if(!istype(I))
 			log_error("Tried saving invalid item ([I ? I : "NULL"]) in an inventory!")
-			//.[i] = list()
-			continue
-		if(!I.can_save)
-			//.[i] = list()
 			continue
 		if(died && (src.flags_hud & FLAG_HUD_MOB) && !src.ultra_persistant && !I.save_on_death)
-			//.[i] = list()
 			continue
-
 		.[i] = I.save_item_data(P,save_inventory,died)
 
 

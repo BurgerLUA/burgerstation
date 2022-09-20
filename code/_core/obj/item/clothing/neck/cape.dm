@@ -58,8 +58,6 @@
 	desc = "Is it a bird? Is it a plane? No, it's a Shaft Miner!"
 	desc_extended = "A protective cloak made from goliath hide."
 
-	additional_clothing = list(/obj/item/clothing/head/helmet/)
-
 	armor = /armor/leather/goliath
 
 	additional_clothing = list(/obj/item/clothing/head/hat/goliath)

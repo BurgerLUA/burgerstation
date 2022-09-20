@@ -35,6 +35,8 @@
 
 	value = 10
 
+	can_save = FALSE
+
 /obj/item/clothing/head/helmet/full/miner
 	name = "blocky helmet"
 	desc = "micheal soft pls no sue"

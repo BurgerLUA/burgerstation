@@ -80,7 +80,7 @@
 			IB.special_type = desired_type
 
 		if(desired_should_save)
-			IB.should_save = desired_should_save
+			IB.can_save = desired_should_save
 
 		if(desired_layer)
 			IB.layer = desired_layer

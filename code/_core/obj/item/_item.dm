@@ -162,8 +162,6 @@
 
 	allow_path = TRUE
 
-	var/can_save = TRUE
-
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable. For clothing it's "How much damage equals -1% quality."
 
 	enable_chunk_clean = TRUE

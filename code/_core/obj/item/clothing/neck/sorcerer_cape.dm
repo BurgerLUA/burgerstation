@@ -23,3 +23,5 @@
 	value = 200
 
 	item_slot_layer = 3
+
+	can_save = FALSE
