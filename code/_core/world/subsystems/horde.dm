@@ -18,12 +18,21 @@ SUBSYSTEM_DEF(horde)
 		DIFFICULTY_EASY = 3,
 		DIFFICULTY_NORMAL = 4,
 		DIFFICULTY_HARD = 5,
-		DIFFICULTY_EXTREME = 8,
-		DIFFICULTY_NIGHTMARE = 10
+		DIFFICULTY_EXTREME = 6,
+		DIFFICULTY_NIGHTMARE = 8
 	)
 
 	var/enable = FALSE
 
+	var/list/all_horde_data_types = list()
+
+/subsystem/horde/Initialize()
+
+	for(var/k in subtypesof(/horde_data/))
+		var/horde_data/HD = new k
+		all_horde_data_types[k] = HD
+
+	return TRUE
 
 //The way that this works is that once every 10 seconds, it checks a single player to see if there are any valid spawns for it.
 //It's better this way so that the system is staggered out and 30 players don't get processed on a single tick.
@@ -68,11 +77,7 @@ SUBSYSTEM_DEF(horde)
 		if(A.area_identifier != "Mission")
 			continue
 
-		var/list/mob/living/squads_to_send = get_squads_to_send(P)
-		if(!squads_to_send)
-			ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(60)
-			continue
-		var/mob/living/squad_to_send = pickweight(squads_to_send)
+		var/mob/living/squad_to_send = get_squad_to_send(P)
 		if(!squad_to_send || !send_squad(P,squad_to_send))
 			ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(60)
 			continue
@@ -80,23 +85,24 @@ SUBSYSTEM_DEF(horde)
 
 	return TRUE
 
-/subsystem/horde/proc/get_squads_to_send(var/mob/living/advanced/player/victim)
+/subsystem/horde/proc/get_squad_to_send(var/mob/living/advanced/player/victim)
 
-	. = list()
+	if(prob(20) && SStax.check_delinquent(victim))
+		return /mob/living/advanced/npc/tax_collector
 
-	if(SStax.check_delinquent(victim))
-		.[/mob/living/advanced/npc/tax_collector] = 100
+	var/area/A = get_area(victim)
 
-	.[/mob/living/advanced/npc/zombie/civilian] = 100
-	.[/mob/living/advanced/npc/syndicate] = 20
-	.[/mob/living/advanced/npc/abductor] = 10
-	.[/mob/living/advanced/npc/beefman] = 10
-	.[/mob/living/advanced/npc/rev] = 10
-	.[/mob/living/advanced/npc/space_soldier] = 5
+	if(!A || !A.horde_data)
+		return null
 
-	return .
+	var/horde_data/found_horde_data = src.all_horde_data_types[A.horde_data]
 
+	var/chosen_key = pickweight(found_horde_data.horde_weights)
 
+	if(istext(chosen_key))
+		return found_horde_data.horde_squads[chosen_key]
+	else
+		return chosen_key
 
 /subsystem/horde/proc/send_squad(var/mob/victim,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/debug=FALSE)
 
@@ -181,7 +187,8 @@ SUBSYSTEM_DEF(horde)
 	for(var/i=1,i<=min(enemies_to_send,4),i++) //Send at most only 4 at a time.
 		var/turf/T2 = get_step(squad_spawn,valid_directions[1 + (i % 4)])
 		if(!T) continue
-		var/mob/living/Z = new attacker_type(T2)
+		var/local_attacker_type = islist(attacker_type) ? pickweight(attacker_type) : attacker_type
+		var/mob/living/Z = new local_attacker_type(T2)
 		INITIALIZE(Z)
 		GENERATE(Z)
 		FINALIZE(Z)

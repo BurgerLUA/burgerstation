@@ -19,6 +19,8 @@
 
 	sound_environment = ENVIRONMENT_PLAIN
 
+	horde_data = /horde_data/desert
+
 /area/mission/desert/interior
 	name = "\improper Desert Caves"
 	icon_state = "desert_cave"
@@ -57,6 +59,8 @@
 
 	//Note: No such thing as forest interior. See caves for this.
 
+	horde_data = /horde_data/forest
+
 
 /area/mission/caves
 	name = "\improper Unexplored Caves"
@@ -76,6 +80,8 @@
 		'sound/ambient/cave_1.ogg',
 		'sound/ambient/cave_2.ogg',
 	)
+
+	horde_data = /horde_data/cave
 
 
 /area/mission/jungle
@@ -103,6 +109,8 @@
 		'sound/ambient/ambiruin_7.ogg',
 	)
 
+	horde_data = /horde_data/jungle
+
 /area/mission/jungle/interior
 	name = "\improper Deep Vinetangle Jungle"
 	icon_state = "jungle_interior"
@@ -128,8 +136,6 @@
 		'sound/ambient/ambiruin_7.ogg',
 	)
 
-
-
 /area/mission/lava
 	name = "\improper The Magmachamber"
 	icon_state = "lava_cave"
@@ -149,6 +155,8 @@
 		'sound/ambient/lavacaves_2.ogg',
 	)
 
+	horde_data = /horde_data/lava
+
 /area/mission/beach
 	name = "Beach"
 	icon_state = "beach"
@@ -161,6 +169,8 @@
 	sunlight_color = "#BCA04B"
 
 	sound_environment = ENVIRONMENT_PLAIN
+
+	horde_data = /horde_data/beach
 
 /area/mission/ocean
 	name = "Ocean"
@@ -175,6 +185,7 @@
 
 	sound_environment = ENVIRONMENT_PLAIN
 
+	horde_data = /horde_data/beach
 
 /area/mission/river
 	name = "River"

@@ -1,6 +1,6 @@
 /area/mission/prefab/fob
 	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
-
+	horde_data = /horde_data/forest
 
 
 /area/mission/prefab/fob/bawse_loot

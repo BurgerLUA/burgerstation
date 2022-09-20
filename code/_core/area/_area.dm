@@ -70,6 +70,8 @@
 
 	var/list/atom/movable/chunk_cleanable = list()
 
+	var/horde_data/horde_data
+
 /area/proc/is_space()
 	return FALSE
 

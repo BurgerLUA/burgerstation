@@ -1,6 +1,6 @@
 /area/mission/prefab
 	trackable = TRUE
-
+	horde_data = /horde_data/syndicate
 
 
 

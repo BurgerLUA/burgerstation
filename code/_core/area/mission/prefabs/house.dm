@@ -1,5 +1,5 @@
 /area/mission/prefab/house
-
+	horde_data = /horde_data/city
 
 
 //House 01
