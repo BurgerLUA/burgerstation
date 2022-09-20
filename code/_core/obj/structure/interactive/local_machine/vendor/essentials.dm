@@ -22,5 +22,7 @@
 		/obj/item/storage/kit/small/filled,
 
 		/obj/item/weapon/ranged/bullet/revolver/detective,
-		/obj/item/bullet_cartridge/revolver_38{amount=6}
+		/obj/item/bullet_cartridge/revolver_38{amount=6},
+
+		/obj/item/storage/secure
 	)
