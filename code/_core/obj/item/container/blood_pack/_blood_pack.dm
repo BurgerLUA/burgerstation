@@ -160,7 +160,7 @@
 	if(draw_delay <= 0)
 		if(reagents)
 			if(injecting)
-				if(attacked_to.blood_volume/attached_to.blood_volume_max >= 1.1)
+				if(attached_to.blood_volume/attached_to.blood_volume_max >= 1.1)
 					detach()
 					return FALSE
 				if(!reagents.volume_current || !src.reagents.transfer_reagents_to(attached_to.reagents,1))
