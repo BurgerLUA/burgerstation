@@ -22,7 +22,7 @@
 /mob/living/advanced/npc/unique/that_guy/setup_visuals()
 	. = ..()
 	change_organ_visual("skin", desired_color = "#CB7F4F")
-	change_organ_visual("hair_head", desired_color = "#8A5B34", desired_icon_state = "hair_crewcut_s")
+	change_organ_visual("hair_head", desired_color = "#8A5B34", desired_icon_state = "hair_crewcut")
 
 /mob/living/advanced/npc/unique/that_guy/Finalize()
 	. = ..()

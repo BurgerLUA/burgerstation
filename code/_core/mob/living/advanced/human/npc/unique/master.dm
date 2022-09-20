@@ -24,7 +24,7 @@
 /mob/living/advanced/npc/unique/master/setup_visuals()
 	. = ..()
 	change_organ_visual("skin", desired_color = "#BC9E8F")
-	change_organ_visual("hair_head", desired_color = "#E3D5AF", desired_icon_state = "hair_pompadour_s")
+	change_organ_visual("hair_head", desired_color = "#E3D5AF", desired_icon_state = "hair_pompadour")
 
 /mob/living/advanced/npc/unique/master/Finalize()
 	. = ..()

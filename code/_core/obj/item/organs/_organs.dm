@@ -202,7 +202,9 @@
 				break_bone()
 			if(A.blood_type)
 				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
-				if(total_bleed_damage>0)
+				if(!health || !health.organic)
+					total_bleed_damage *= 0.5
+				if(total_bleed_damage > 0)
 					var/bleed_to_add = total_bleed_damage/50
 					src.bleeding += bleed_to_add
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))

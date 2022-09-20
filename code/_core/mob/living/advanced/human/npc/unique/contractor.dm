@@ -36,7 +36,7 @@
 	. = ..()
 	change_organ_visual("skin", desired_color = "#C6A9A9")
 	change_organ_visual("eye", desired_color = "#880000")
-	change_organ_visual("hair_head", desired_color = "#404040", desired_icon_state = "hair_shavedpart_s")
+	change_organ_visual("hair_head", desired_color = "#404040", desired_icon_state = "hair_shavedpart")
 	change_organ_visual("hair_face", desired_color = "#404040", desired_icon_state = "facial_vandyke")
 
 

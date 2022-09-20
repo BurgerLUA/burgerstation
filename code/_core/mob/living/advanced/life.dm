@@ -55,6 +55,16 @@
 
 	. = ..()
 
+
+
+/mob/living/advanced/post_death()
+
+	. = ..()
+
+	for(var/k in src.using_inventories)
+		var/obj/item/I = k
+		I.close_inventory(A)
+
 /mob/living/advanced/rejuvenate()
 
 	. = ..()

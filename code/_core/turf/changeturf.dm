@@ -11,6 +11,8 @@
 	var/old_disallow_generation = disallow_generation
 	var/old_corner_icons = corner_icons
 
+	var/list/old_stored_shuttle_items = src.stored_shuttle_items
+
 	pre_change()
 
 	var/old_turf_type = src.type
@@ -44,6 +46,8 @@
 	var/area/A = W.loc
 	if(A && A.sunlight_freq > 0 && A.sunlight_color)
 		A.setup_sunlight(W)
+
+	stored_shuttle_items = old_stored_shuttle_items
 
 	W.post_change_turf(old_turf_type)
 

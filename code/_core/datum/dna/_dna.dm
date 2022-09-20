@@ -205,7 +205,7 @@
 		"facial_3oclock" = 100,
 		"facial_fiveoclock" = 100,
 		"facial_7oclock" = 100,
-		"facial_fullbeard_s" = 50,
+		"facial_fullbeard" = 50,
 	)
 
 /dna/human/wizard
