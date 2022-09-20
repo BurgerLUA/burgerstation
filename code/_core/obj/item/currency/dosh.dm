@@ -20,8 +20,10 @@
 			icon_state = "[amount]"
 		if(5 to 25)
 			icon_state = "[FLOOR(amount,5)]"
-		if(25 to 200)
+		if(25 to 100)
 			icon_state = "[FLOOR(amount,25)]"
+		if(100 to 200)
+			icon_state = "[FLOOR(amount,50)]"
 		if(200 to INFINITY)
 			icon_state = "200"
 
