@@ -1593,7 +1593,6 @@
 #include "code\_core\obj\item\storage\emergency.dm"
 #include "code\_core\obj\item\storage\gloves.dm"
 #include "code\_core\obj\item\storage\lighting.dm"
-#include "code\_core\obj\item\storage\loot_box.dm"
 #include "code\_core\obj\item\storage\pouch.dm"
 #include "code\_core\obj\item\storage\secure.dm"
 #include "code\_core\obj\item\storage\shoes.dm"

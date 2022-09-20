@@ -14,11 +14,10 @@
 	size = SIZE_10
 	dynamic_inventory_count = 5
 
-/obj/item/storage/loot_box/Generate()
-	if(desired_loot)
-		SPAWN_LOOT(desired_loot,src)
-	. = ..()
 
+/obj/item/storage/shoebox/black/fill_inventory()
+	if(desired_loot) SPAWN_LOOT(desired_loot,src)
+	. = ..()
 
 /obj/item/storage/loot_box/Finalize()
 	. = ..()
