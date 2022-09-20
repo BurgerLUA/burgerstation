@@ -358,8 +358,8 @@ mob/living/proc/on_life_slow()
 			QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)
 			blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
-			if(blood_volume >= blood_volume_max*1.05)
-				tox_regen_buffer -= 0.25*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
+			if(blood_volume >= blood_volume_max*1.1)
+				tox_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25*0.25
 
 	if(reagents)
 		reagents.metabolize(src)

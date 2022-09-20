@@ -1,7 +1,7 @@
 /obj/item/container/blood_pack
 	name = "blood pack"
 	desc = "Keep away from Vampires."
-	desc_extended = "A special plastic blood pack that comes with it's own butterfly needle. Can be attached to living beings to draw or inject blood at a steady rate. Alt-Click to toggle mode."
+	desc_extended = "A special plastic blood pack that comes with it's own butterfly needle. Can be attached to living beings to draw or inject blood at a steady rate. When injecting, it auto-detaches if the patient's blood level is 10% greater than normal. Alt-Click to toggle mode."
 	icon = 'icons/obj/item/container/bloodpack.dmi'
 	icon_state = "regular"
 	var/icon_count = 15
@@ -29,6 +29,10 @@
 /obj/item/container/blood_pack/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
 	update_sprite()
 	return ..()
+
+/obj/item/container/blood_pack/Finalize()
+	. = ..()
+	update_sprite()
 
 /obj/item/container/blood_pack/proc/is_safe_to_attach(var/mob/living/caller,var/mob/living/target,var/messages=TRUE,var/desired_inject)
 
@@ -146,19 +150,26 @@
 		return FALSE
 
 	if(attached_to.dead)
+		detach()
 		return FALSE
 
 	if(attached_to.is_afk())
+		detach()
 		return FALSE
 
 	if(draw_delay <= 0)
 		if(reagents)
 			if(injecting)
 				if(!reagents.volume_current || !src.reagents.transfer_reagents_to(attached_to.reagents,1))
+					detach()
+					return FALSE
+				if(attacked_to.blood_volume/attached_to.blood_volume_max >= 1.1)
+					detach()
 					return FALSE
 				draw_delay = initial(draw_delay)*0.25
 			else
 				if(!attached_to.draw_blood(null,src,1))
+					detach()
 					return FALSE
 				draw_delay = initial(draw_delay)
 	else
