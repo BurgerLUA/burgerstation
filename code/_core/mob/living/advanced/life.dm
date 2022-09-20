@@ -63,7 +63,7 @@
 
 	for(var/k in src.using_inventories)
 		var/obj/item/I = k
-		I.close_inventory(A)
+		I.close_inventory(src)
 
 /mob/living/advanced/rejuvenate()
 
