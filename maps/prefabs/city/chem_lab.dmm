@@ -1,7 +1,7 @@
 "aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "ab" = (/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
 "ac" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
-"ad" = (/obj/structure/table/rack/grey,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
+"ad" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "ae" = (/obj/structure/table/rack/grey,/obj/item/storage/kit/small/advanced/filled,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "af" = (/obj/structure/table/rack/grey,/obj/item/storage/kit/small/brute/filled,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "ag" = (/obj/structure/table/rack/grey,/obj/item/storage/kit/small/burn/filled,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
@@ -9,28 +9,28 @@
 "ai" = (/obj/structure/table/rack/grey,/obj/item/storage/kit/small/rad/filled,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "aj" = (/obj/structure/table/rack/grey,/obj/item/storage/kit/small/oxy/filled,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "ak" = (/obj/structure/table/rack/grey,/obj/item/storage/kit/small/filled,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
-"al" = (/obj/structure/sign/restroom/unisex,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
-"am" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
-"an" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
-"ao" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
+"al" = (/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/bathroom)
+"am" = (/obj/decal/poster/off_station,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/bathroom)
+"an" = (/obj/structure/sign/restroom/unisex,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/bathroom)
+"ao" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
 "ap" = (/obj/structure/table/rack/grey,/obj/item/container/healing/nanopaste,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "aq" = (/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "ar" = (/turf/simulated/floor/tile/green,/area/mission/prefab/city/the_chem_lab)
-"as" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
+"as" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
 "at" = (/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
-"au" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
+"au" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
 "av" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/antihol_small,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "aw" = (/obj/structure/table/rack/grey,/obj/item/container/healing/bone_gel,/turf/simulated/floor/tile/green,/area/mission/prefab/city/the_chem_lab)
 "ax" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/obj/structure/table/rack/grey,/obj/item/defib,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
-"ay" = (/obj/structure/table,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
-"az" = (/obj/structure/table,/obj/structure/interactive/lighting/fixture/tube/fluorescent,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
-"aA" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
+"ay" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
+"az" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
+"aA" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
 "aB" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/charcoal,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "aC" = (/obj/structure/table/rack/grey,/obj/item/container/healing/gauze,/turf/simulated/floor/tile/green,/area/mission/prefab/city/the_chem_lab)
 "aD" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/dylovene,/turf/simulated/floor/tile/green,/area/mission/prefab/city/the_chem_lab)
 "aE" = (/obj/structure/table/rack/grey,/obj/item/defib,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "aF" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/iron_small,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
-"aG" = (/obj/structure/sign/secure,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
+"aG" = (/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/bathroom)
 "aH" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
 "aI" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
 "aJ" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/space_prussian_blue_small,/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
@@ -57,7 +57,7 @@
 "be" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
 "bf" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
 "bg" = (/obj/structure/carpet/grey,/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
-"bh" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
+"bh" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "bi" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "bj" = (/obj/structure/interactive/bar_sign/the_chem_lab,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
 "bk" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 6},/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
@@ -68,22 +68,38 @@
 "bp" = (/obj/marker/map_node,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "bq" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "br" = (/obj/marker/map_node,/turf/simulated/floor/tile/green,/area/mission/prefab/city/the_chem_lab)
+"bs" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/bathroom)
+"bt" = (/obj/decal/poster/off_station{icon_state = ""; dir = 8},/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
+"bu" = (/obj/marker/spawning/random/maintenance,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bv" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/bathroom)
+"bw" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
+"bx" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab)
+"by" = (/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/backroom)
+"bz" = (/obj/structure/table,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bA" = (/obj/structure/table,/obj/structure/interactive/lighting/fixture/tube/fluorescent,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bB" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bC" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bD" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bE" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bF" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/backroom)
+"bG" = (/obj/structure/sign/secure,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/backroom)
+"bH" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
 
 (1,1,1) = {"
 aablblblblblblblblaaaaaaaaaaaaaa
-ababacacacacacacababababababaaaa
-abadaeafagahaiajakalamanaoabaaaa
-acapaqararararaqbpasaVauatabaaaa
-acaparbrararbraraqabababababblaa
-acavararawawararaxabayazaAabblbl
-acaBararaCaDararaEabanaVatabblbl
-abaFararaCaDararaEabaGasababaHaI
+ababacacacacacacabalamamamalaaaa
+abadaeafagahaiajakanaoasaualaaaa
+acapaqararararaqbpayazaAaGalaaaa
+acaparbrararbraraqalbsalbvalbuaa
+acavararawawararaxbybzbAbBbybubl
+acaBararaCaDararaEbybCbDbEbFbubl
+abaFararaCaDararaEbybGbHbybyaHaI
 abaJataVaKaLaVataMaMaNaWaOaPaQaR
 acaSatataKaLatataMaMaNaWbmaUbnbo
-acaXatataYaZatataMaMbaaMaTabbbaR
+acaXatataYaZatataMaMbaaMaTbtbbaR
 acaXatataYaZatataMaMbcaMaTbdbeaR
-acaXaqatatatataqaMaMbcaMaMabbfaR
-abaXaqbpaqbgaWaMaqaqaqbpbhabbfaR
+acaXaqatatatataqaMaMbcaMaMbwbfaR
+bxadaqbpaqbgaWaMaqaqaqbpbhabbfaR
 abacacacacaPbibjabacacacacabaHbk
 blblblblblblbqblblblblblblblblbl
 "}

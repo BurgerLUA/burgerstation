@@ -90,6 +90,12 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 /mob/living/advanced/Destroy()
 
+	for(var/k in using_inventories)
+		var/obj/item/I = k
+		I.close_inventory(src)
+
+	using_inventories?.Cut()
+
 	remove_all_organs()
 	remove_all_buttons()
 
@@ -104,12 +110,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	worn_objects = null
 	active_inventory = null
 	driving = null
-
-	for(var/k in using_inventories)
-		var/obj/item/I = k
-		I.close_inventory(src)
-
-	using_inventories?.Cut()
 
 	QDEL_NULL(stored_handcuffs)
 

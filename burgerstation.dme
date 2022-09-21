@@ -850,6 +850,7 @@
 #include "code\_core\mob\living\advanced\human\npc\unique\wizard_ambassador.dm"
 #include "code\_core\mob\living\advanced\player\_player.dm"
 #include "code\_core\mob\living\advanced\player\bank.dm"
+#include "code\_core\mob\living\advanced\player\chargen.dm"
 #include "code\_core\mob\living\advanced\player\currency.dm"
 #include "code\_core\mob\living\advanced\player\experience.dm"
 #include "code\_core\mob\living\advanced\player\flavortext.dm"

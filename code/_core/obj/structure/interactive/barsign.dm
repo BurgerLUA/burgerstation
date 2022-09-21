@@ -39,6 +39,10 @@ obj/structure/interactive/bar_sign/the_harmbaton
 	desc = "For all your robust batoning needs!"
 	icon_state = "the_harmbaton"
 
+obj/structure/interactive/bar_sign/robusta_cafe
+	name = "\improper Robusta Cafe"
+	desc = "The most robust coffee in town!"
+	icon_state = "robusta_cafe"
 
 
 obj/structure/interactive/bar_sign/assistant

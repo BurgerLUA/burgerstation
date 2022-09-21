@@ -4,6 +4,8 @@
 		var/obj/item/organ/O = k
 		remove_organ(O,do_delete)
 
+	return TRUE
+
 /mob/living/advanced/proc/add_organ(var/obj/item/organ/O)
 	O = new O(src)
 	if(!health) O.health = null
@@ -47,7 +49,10 @@
 
 	for(var/k in O.inventories)
 		var/obj/hud/inventory/I = k
-		I.drop_objects(T)
+		if(do_delete)
+			I.delete_objects()
+		else
+			I.drop_objects(T)
 
 	O.update_owner(null)
 

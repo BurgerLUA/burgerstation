@@ -123,6 +123,12 @@
 	default_state_power_machines = ON|AUTO
 	default_state_power_doors = ON|AUTO
 
+/area/mission/prefab/city/the_chem_lab/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/city/the_chem_lab/backroom
+	icon_state = "red"
+
 
 /area/mission/prefab/city/honked_and_loaded
 	name = "\improper Honked and Loaded"
@@ -147,4 +153,20 @@
 	default_state_power_doors = ON|AUTO
 
 /area/mission/prefab/city/the_harmbaton/armory
+	icon_state = "blue"
+
+/area/mission/prefab/city/the_harmbaton/firing_range
+	icon_state = "red"
+
+/area/mission/prefab/city/robusta_cafe
+	name = "\improper Robusta Cafe"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/robusta_cafe/bathroom
 	icon_state = "blue"

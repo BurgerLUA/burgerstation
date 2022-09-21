@@ -11,7 +11,7 @@
 "ak" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/wire/green,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
 "al" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 4},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/toolbox_tavern/bathroom)
 "am" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/toolbox_tavern/bathroom)
-"an" = (/obj/structure/table/wood,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
+"an" = (/obj/structure/table/wood,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
 "ao" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
 "ap" = (/obj/structure/table/wood,/obj/item/weapon/melee/toolbox/blue,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
 "aq" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
@@ -67,22 +67,32 @@
 "bo" = (/obj/structure/interactive/wire/yellow,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bp" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bq" = (/obj/marker/map_node,/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"br" = (/obj/decal/poster/off_station,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bs" = (/obj/structure/table/wood,/obj/structure/carpet/grey,/obj/marker/spawning/random/misc,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bt" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bu" = (/obj/structure/interactive/crate/engineering,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bv" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bw" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bx" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
+"by" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
+"bz" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
+"bA" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern)
 
 (1,1,1) = {"
-abababababaqatauavatawacacacacac
+ababbzbxabaqatauavatawacacacacac
 abadbfazakbjayayboaPaPacagbgagac
 abahaeafabaiaiajaOaiaiacalbkamac
-abanaoblbaapaiaiaiaiaracasaxaZac
-abababaWabaAaBararapaAaiaAbmaiaa
+abanaoblbaapbrbrbrbraracasaxaZac
+abababaWbyaAaBararapaAbwaAbmaiaa
 aaaYaXbnbcbmaAaAbmaAbmbcbmaAaiaa
 biaCaDaAaAaEaAaAaAaAaFaAaAaGaCbi
 bpaCaHaAaAaIaAaAaAaAaFaAaAaGaCbp
 aaaCaJbmaKbdaKaAbmaKbdaKbmaGaCaa
-aaaiaLaAaKaMaMaAaAaMaMaKaAaNaiaa
+aaaiaLaAaKaMbsaAaAaMaMaKaAaNaiaa
 biaiaQaAaKaRaKaAbmaKaSaKaAbbaibi
-aaaCaAaAaAaTaAaAaAaAaTaAaAaAaCaa
-aaaCaAaKaKaiaiaUaiaiaiaKaKaAaCaa
-aaaCaAaKbdaVbhbebebhaVbdaKaAaCaa
-aaaiaCaCaCaibebebebeaiaCaCaCaiaa
+aaaCbuaAaAaTaAaAaAaAaTaAaAbuaCaa
+aaaCaAaKaKaibvaUaiaiaiaKaKaAaCaa
+aaaCbtaKbdaVbhbebebhaVbdaKaAaCaa
+aaaiaCaCaCbAbebebebebAaCaCaCaiaa
 bqaaaaaaaaaabiaabpbiaaaaaaaaaabq
 "}
