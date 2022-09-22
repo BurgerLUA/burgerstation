@@ -12,7 +12,8 @@
 		"enable_depth" = 1,
 		"enable_smooth_shadows" = 1,
 		"enable_currency_bloom" = 1,
-		"enable_old_right_click" = 1
+		"enable_old_right_click" = 1,
+		"compact_mode" = 0
 	)
 
 /savedata/client/settings/get_file(var/file_id)

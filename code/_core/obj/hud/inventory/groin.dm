@@ -2,7 +2,7 @@
 	name = "belt slot"
 	icon_state = "slot_groin_o"
 	id = BODY_GROIN_O
-	screen_loc = "CENTER-3,BOTTOM:10"
+	screen_loc = "CENTER-3,BOTTOM:11"
 
 	max_slots = 1
 	worn = TRUE
@@ -15,6 +15,17 @@
 	flags_hud = FLAG_HUD_INVENTORY | FLAG_HUD_MOB
 
 	priority = 25
+
+/obj/hud/inventory/organs/groin_o/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "LEFT+4:2,BOTTOM:11"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
 
 /obj/hud/inventory/organs/groin //Underwear + Pants
 	name = "pants slot"

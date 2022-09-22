@@ -55,7 +55,7 @@
 "bc" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
 "bd" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
 "be" = (/turf/dmm_suite/no_wall,/area/mission/prefab/city/toolbox_tavern)
-"bf" = (/obj/structure/carpet/grey,/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
+"bf" = (/obj/structure/carpet/grey,/obj/structure/interactive/lighting/fixture/bulb,/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
 "bg" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/toolbox_tavern/bathroom)
 "bh" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent,/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/mission/prefab/city/toolbox_tavern)
 "bi" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
@@ -77,20 +77,22 @@
 "by" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
 "bz" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern/backroom)
 "bA" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bB" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/toolbox_tavern)
+"bC" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/toolbox_tavern/bathroom)
 
 (1,1,1) = {"
 ababbzbxabaqatauavatawacacacacac
-abadbfazakbjayayboaPaPacagbgagac
+abadbfazakbjayayboaPaPacagbgbCac
 abahaeafabaiaiajaOaiaiacalbkamac
 abanaoblbaapbrbrbrbraracasaxaZac
 abababaWbyaAaBararapaAbwaAbmaiaa
-aaaYaXbnbcbmaAaAbmaAbmbcbmaAaiaa
+aaaYaXbnbcbmaAbBbmaAbmbcbmaAaiaa
 biaCaDaAaAaEaAaAaAaAaFaAaAaGaCbi
-bpaCaHaAaAaIaAaAaAaAaFaAaAaGaCbp
+bpaCaHaAaAaIaAaAaAaAaFaAbBaGaCbp
 aaaCaJbmaKbdaKaAbmaKbdaKbmaGaCaa
 aaaiaLaAaKaMbsaAaAaMaMaKaAaNaiaa
 biaiaQaAaKaRaKaAbmaKaSaKaAbbaibi
-aaaCbuaAaAaTaAaAaAaAaTaAaAbuaCaa
+aaaCbubBaAaTaAaAaAaAaTaAaAbuaCaa
 aaaCaAaKaKaibvaUaiaiaiaKaKaAaCaa
 aaaCbtaKbdaVbhbebebhaVbdaKaAaCaa
 aaaiaCaCaCbAbebebebebAaCaCaCaiaa

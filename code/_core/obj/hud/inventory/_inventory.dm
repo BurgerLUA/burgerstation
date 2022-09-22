@@ -162,17 +162,19 @@
 
 	if(parent_inventory)
 		color = "#ff0000"
-	else if(grabbed_object)
-		if(grab_level == 1) //Passive grab
-			color = "#ffff00"
-			var/image/I = new/image(initial(icon),"grab")
-			add_overlay(I)
-		else if(grab_level == 2) //Agressive grab
-			color = COLOR_RIVER_LIGHT
-			var/image/I = new/image(initial(icon),"grab")
-			add_overlay(I)
 	else
 		color = initial(color)
+
+	if(grabbed_object)
+		if(grab_level == 1) //Passive grab
+			var/image/I = new/image(initial(icon),"grab")
+			I.pixel_x = x_offset
+			add_overlay(I)
+		else if(grab_level == 2) //Agressive grab
+			var/image/I = new/image(initial(icon),"grab_aggressive")
+			I.pixel_x = x_offset
+			add_overlay(I)
+
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 

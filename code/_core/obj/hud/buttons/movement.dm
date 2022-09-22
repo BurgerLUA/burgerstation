@@ -3,7 +3,7 @@
 	desc = "sneaker no sneaking"
 	desc_extended = "Click here to toggle sneak. Sneaking makes it much harder to be detected by NPCs, and prevents players from seeing you unless you are in their character's line of sight. Moving while sneaking costs stamina."
 	icon_state = "sneak_0"
-	screen_loc = "RIGHT-3,BOTTOM:12"
+	screen_loc = "RIGHT-3:1,BOTTOM:12"
 
 	var/sneaking = 0
 
@@ -19,6 +19,17 @@
 		sneaking = L.is_sneaking
 
 
+/obj/hud/button/sneak/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "RIGHT:1,BOTTOM+2:10"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
+
 /obj/hud/button/sneak/update_icon()
 	icon_state = "sneak_[sneaking]"
 	..()
@@ -33,6 +44,17 @@
 	var/move_mod_button = 0
 
 	flags_hud = FLAG_HUD_MOB
+
+/obj/hud/button/move/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "RIGHT,BOTTOM+2:10"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
 
 /obj/hud/button/move/update_icon()
 	icon_state = "move_[move_mod_button+2]"
@@ -67,7 +89,7 @@
 	desc = "No sleeping on the job!"
 	desc_extended = "Click here to allow your character to rest. Resting makes it much more unlikely to be hit by stray projectiles and makes it harder to be detected by NPCs."
 	icon_state = "rest"
-	screen_loc = "RIGHT-2:8,BOTTOM:10+1"
+	screen_loc = "RIGHT-2:11,BOTTOM:10+1"
 
 	flags_hud = FLAG_HUD_MOB
 

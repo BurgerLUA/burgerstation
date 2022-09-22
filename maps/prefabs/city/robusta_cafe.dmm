@@ -51,21 +51,25 @@
 "aY" = (/obj/structure/interactive/reagent_tank/barrel/water,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aZ" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/robusta_cafe)
 "ba" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bb" = (/obj/structure/carpet/red,/mob/living/advanced/npc/zombie/bartender,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/robusta_cafe)
+"bc" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile,/area/mission/prefab/city/robusta_cafe/bathroom)
+"bd" = (/mob/living/advanced/npc/zombie/librarian,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/robusta_cafe)
+"be" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/robusta_cafe)
 
 (1,1,1) = {"
 baababababaNaNaNaYafagahajajajaa
 baabaWaoabaKaKadabafagaeaeaeaeaa
 baaiacacakacacalamagagaeaSaraeaa
 baaiacacaoacacaQaTaVaKaeapanaeaa
-baaiacacaOaCaCaCaCaDaRaeaIanaqaa
+baaiacacaOaCaCbbaCaDaRaeaIbcaqaa
 baaiacacaBaBaBaBaBaZaPaeaeaJaeaa
 baabasacaCaCaCaCaCaCaCaWacacabaa
-baaiacacacacacacacacacacacatabba
+baaiacacacbdacacacacbeacacatabba
 baaiauaxaGaCaHaFaGaCaCaCaCaWaiba
 baaiacaCaCaCaCaCaCaCaCaXaCaoaiba
 baaiacaHaFaGaCaHaxaGaCaXaXaoaiba
 baaUacaCaCaCaCaCaCaCaCaCaCaWaiba
-baabauaMawacauavawacayacacacaiba
+baabauaMawbeauavawacayacacacaiba
 baabababaiaiaiaiaiabababaEacaLba
 bababababababababababaazaEaWaLba
 bababababababababababaabaAababba

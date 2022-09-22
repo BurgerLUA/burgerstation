@@ -53,7 +53,7 @@
 "ba" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bb" = (/obj/structure/interactive/fence/end,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bc" = (/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
-"bd" = (/obj/structure/interactive/lighting/fixture/tube/color/turf,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
+"bd" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "be" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "bf" = (/turf/simulated/floor/tile/medical,/area/mission/prefab/city/the_lightbulb)
 "bg" = (/obj/structure/interactive/lighting/fixture/tube/color/turf,/turf/simulated/floor/tile/medical,/area/mission/prefab/city/the_lightbulb)
@@ -82,22 +82,25 @@
 "bD" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb)
 "bE" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "bF" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb)
+"bG" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bH" = (/obj/structure/interactive/lighting/fixture/tube/color/turf,/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
+"bI" = (/obj/structure/carpet/grey,/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 
 (1,1,1) = {"
 acacacacacacacaRbvaRaRbBaWaXbtaY
 abbAbAbAabababbBaxbabababbaSbuaZ
 abadaeafblbmabbDajakalalalalaTaZ
-bybpagagagbpambqbraoalapaqalaTaZ
+bybpagagbIbpambqbraoalapaqalaTaZ
 abarasatahbCaaaubxbqavbsawalaTaU
 ababababbEababanananalbkalalaiai
-aibqaybqbqananbqbqananbqbqaybqai
-azaAaiaBananananananananaCaiaDaz
+aibqaybqbqbdanbqbqananbqbqaybqai
+azaAaiaBanananananananbGaCaiaDaz
 azaEaiaFananaGanbnaHananaFaiaIaz
 azaAaiaFananaJananaHananaFaiaDaz
 azaKaiaBbqanbqbqanbqanbqaCaiaLaz
 azaMaiaFananananananananaFaiaNaz
 azaKaiaibFaiaOaPaPaQaiaiaiaiaLaz
-aibqbcbdbwaibeaPaPboaibfbgbfbqai
+aibqbcbHbwaibeaPaPboaibfbgbfbqai
 aiaiazazazaibhbibjbhaiazazazaiai
 aVaVaVaVaVaVbzaVaVbzaVaVaVaVaVaV
 "}

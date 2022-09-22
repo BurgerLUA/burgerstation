@@ -79,11 +79,13 @@
 "bA" = (/obj/structure/table,/obj/structure/interactive/lighting/fixture/tube/fluorescent,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
 "bB" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
 "bC" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
-"bD" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bD" = (/mob/living/advanced/npc/zombie/chemist,/turf/simulated/floor/tile/green,/area/mission/prefab/city/the_chem_lab)
 "bE" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
 "bF" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/backroom)
 "bG" = (/obj/structure/sign/secure,/turf/simulated/wall/metal,/area/mission/prefab/city/the_chem_lab/backroom)
 "bH" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bI" = (/obj/marker/map_node,/mob/living/advanced/npc/zombie/chemist,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab/backroom)
+"bJ" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
 
 (1,1,1) = {"
 aablblblblblblblblaaaaaaaaaaaaaa
@@ -91,13 +93,13 @@ ababacacacacacacabalamamamalaaaa
 abadaeafagahaiajakanaoasaualaaaa
 acapaqararararaqbpayazaAaGalaaaa
 acaparbrararbraraqalbsalbvalbuaa
-acavararawawararaxbybzbAbBbybubl
-acaBararaCaDararaEbybCbDbEbFbubl
+acavbDarawawararaxbybzbAbBbybubl
+acaBararaCaDararaEbybCbIbEbFbubl
 abaFararaCaDararaEbybGbHbybyaHaI
 abaJataVaKaLaVataMaMaNaWaOaPaQaR
-acaSatataKaLatataMaMaNaWbmaUbnbo
+acaSatataKaLatbJaMaMaNaWbmaUbnbo
 acaXatataYaZatataMaMbaaMaTbtbbaR
-acaXatataYaZatataMaMbcaMaTbdbeaR
+acaXatbJaYaZatataMaMbcaMaTbdbeaR
 acaXaqatatatataqaMaMbcaMaMbwbfaR
 bxadaqbpaqbgaWaMaqaqaqbpbhabbfaR
 abacacacacaPbibjabacacacacabaHbk

@@ -98,6 +98,11 @@ menu "menu"
 		category = "Graphics Settings"
 		saved-params = "is-checked"
 	elem 
+		name = "Toggle Co&mpact Mode"
+		command = "change-compact-mode"
+		category = "Graphics Settings"
+		saved-params = "is-checked"
+	elem 
 		name = "Volume"
 		command = ""
 		saved-params = "is-checked"

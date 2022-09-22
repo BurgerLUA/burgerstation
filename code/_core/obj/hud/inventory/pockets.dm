@@ -24,25 +24,48 @@
 /obj/hud/inventory/organs/groin/pocket/right
 	name = "left lower pocket"
 	id = "pocket01"
-	screen_loc = "CENTER+3,BOTTOM:10"
+	screen_loc = "CENTER+3,BOTTOM:11"
 
 	priority = 11
+
+/obj/hud/inventory/organs/groin/pocket/right/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "RIGHT-3,BOTTOM:11"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
 
 /obj/hud/inventory/organs/groin/pocket/left
 	name = "right lower pocket"
 	id = "pocket02"
-	screen_loc = "CENTER+4,BOTTOM:10"
+	screen_loc = "CENTER+4,BOTTOM:11"
 
 	priority = 10
+
+/obj/hud/inventory/organs/groin/pocket/left/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "RIGHT-4,BOTTOM:11"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
 
 /obj/hud/inventory/organs/groin/pocket/contract
 	name = "contract slot"
 	icon_state = "slot_contract"
 	id = "contract"
-	screen_loc = "RIGHT,CENTER+4"
+	screen_loc = "RIGHT,TOP-3"
 
 	priority = 1000
 
 	item_whitelist = list(/obj/item/contract)
 
 	ultra_persistant = TRUE
+

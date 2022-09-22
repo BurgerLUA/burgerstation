@@ -65,8 +65,9 @@
 
 
 	var/image/I_hunger = new/image(initial_icon,"hunger_bar_[hunger_icon]")
+	I_hunger.pixel_y = -2
 	var/image/I_thirst = new/image(initial_icon,"thirst_bar_[thirst_icon]")
-
+	I_thirst.pixel_y = -2
 
 	if(visual_hunger_mod > 1 && hunger_mod < 1) //Fat
 		I_hunger.color = blend_colors("#000000","#808080",hunger_mod)

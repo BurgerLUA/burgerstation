@@ -57,6 +57,27 @@
 
 	light_mod = 1
 
+/obj/hud/inventory/organs/left_hand_held/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			icon = initial(icon)
+			icon_state = "left_hand_small"
+			screen_loc = "CENTER+0.5,BOTTOM:12"
+			x_offset = 0
+		else
+			icon = initial(icon)
+			icon_state = initial(icon_state)
+			screen_loc = initial(screen_loc)
+			x_offset = initial(x_offset)
+		for(var/obj/item/I in src.vis_contents)
+			I.pixel_x = initial(I.pixel_x) + x_offset
+			I.pixel_y = initial(I.pixel_y) + y_offset
+
+
+	. = ..()
+
 /obj/hud/inventory/organs/left_hand_held/update_overlays()
 	. = ..()
 	if(owner?.client?.selected_hand == click_flags)
@@ -100,6 +121,27 @@
 	x_offset = 16
 
 	light_mod = 1
+
+/obj/hud/inventory/organs/right_hand_held/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			icon = initial(icon)
+			icon_state = "right_hand_small"
+			screen_loc = "CENTER-0.5,BOTTOM:12"
+			x_offset = 0
+		else
+			icon = initial(icon)
+			icon_state = initial(icon_state)
+			screen_loc = initial(screen_loc)
+			x_offset = initial(x_offset)
+		for(var/obj/item/I in src.vis_contents)
+			I.pixel_x = initial(I.pixel_x) + x_offset
+			I.pixel_y = initial(I.pixel_y) + y_offset
+
+	. = ..()
+
 
 /obj/hud/inventory/organs/right_hand_held/update_overlays()
 	. = ..()

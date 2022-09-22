@@ -5,7 +5,7 @@
 
 	var/amount = 0
 
-	screen_loc = "RIGHT,TOP-1"
+	screen_loc = "RIGHT,TOP-1:-16"
 
 	icon_state = "currency"
 
@@ -26,10 +26,15 @@
 
 /obj/hud/button/cash_money/update_sprite()
 	amount = round(amount)
-
-
 	maptext = "<div align='right'>[nice_number(amount)]</div>"
 	return ..()
+
+/obj/hud/button/cash_money/update_overlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"credits")
+	I.pixel_x = -32
+	I.mouse_opacity = 0
+	add_overlay(I)
 
 /obj/hud/button/cash_money/proc/update_stats(var/new_value=0,var/silent=FALSE)
 
@@ -46,7 +51,7 @@
 /obj/hud/button/microstransactions
 	name = "burgerbux"
 	desc_extended = "The amount of burgerbux your account has. Burgerbux is bound to your ckey, and cannot be traded. You can gain burgerbux by playing the game, and spend it on (almost) useless cosmetics in the theatre."
-	screen_loc = "RIGHT,TOP-1:-16"
+	screen_loc = "RIGHT,TOP-1:-32"
 	icon_state = "currency"
 
 	flags_hud = FLAG_HUD_MOB
@@ -58,6 +63,13 @@
 	var/amount = 0
 
 	maptext_x = -2
+
+/obj/hud/button/microstransactions/update_overlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"burger")
+	I.pixel_x = -32
+	I.mouse_opacity = 0
+	add_overlay(I)
 
 /obj/hud/button/microstransactions/update_owner(var/mob/desired_owner)
 
@@ -87,27 +99,3 @@
 	amount = round(amount)
 	maptext = "<div align='right'>[nice_number(amount)]</div>"
 	return ..()
-
-/obj/hud/button/toggle_cash_money
-	name = "credits"
-	screen_loc = "RIGHT-1,TOP-1"
-	icon_state = "telecrystal"
-
-	flags_hud = FLAG_HUD_MOB
-
-	mouse_opacity = 1
-
-	has_quick_function = FALSE
-
-
-/obj/hud/button/toggle_microtransactions
-	name = "burger bux"
-	screen_loc = "RIGHT-1,TOP-1:-16"
-	icon_state = "burger"
-
-	flags_hud = FLAG_HUD_MOB
-
-	mouse_opacity = 1
-
-	has_quick_function = FALSE
-

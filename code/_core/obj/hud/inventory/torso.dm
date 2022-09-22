@@ -32,7 +32,7 @@
 	name = "back slot"
 	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
-	screen_loc = "CENTER-4,BOTTOM:10"
+	screen_loc = "CENTER-4,BOTTOM:11"
 	max_slots = 1
 	worn = TRUE
 
@@ -45,11 +45,22 @@
 
 	priority = 10
 
+/obj/hud/inventory/organs/torso_b/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "LEFT+3:2,BOTTOM:11"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
+
 /obj/hud/inventory/organs/torso_ob
 	name = "holster"
 	icon_state = "slot_torso_ob"
 	id = BODY_TORSO_OB
-	screen_loc = "CENTER-5,BOTTOM:10"
+	screen_loc = "CENTER-5,BOTTOM:11"
 	max_slots = 1
 	worn = FALSE
 
@@ -69,6 +80,17 @@
 	)
 
 	priority = 1
+
+/obj/hud/inventory/organs/torso_ob/update_sprite()
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			screen_loc = "LEFT+2:2,BOTTOM:11"
+		else
+			screen_loc = initial(screen_loc)
+
+	. = ..()
 
 /obj/hud/inventory/organs/torso_ob/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/error_on_fail=FALSE)
 

@@ -54,19 +54,21 @@
 "bb" = (/obj/structure/interactive/chair/office/dark,/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
 "bc" = (/obj/structure/table/steel/dark,/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
 "bd" = (/obj/structure/table/steel/dark,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"be" = (/mob/living/advanced/npc/zombie/librarian,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bf" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
 
 (1,1,1) = {"
 aaaaaMaMaAaBaCaDaDaDaDaDaDaEaaaa
 aaaaaMaMaSaFaAaGaUaHaHaHaHaFaaaa
 ababacadaIadadadadadadadadacabab
 abafabagaTaiajakakaiajaRagabafab
-abavabalaKaXananaYananamaoabavab
+abavabalaKaXananaYananbeaoabavab
 abacapaxaOaqaraqasaqaraNayatacab
 abawabalaKanaXananaXanamaoabawab
 abavabalaOasarasaraqaqaNaoabavab
 abacapaxaKaXanananaXanamayatacab
-abawabalaOamamamamamamaNaoabawab
-abavabalaKamazazazazamamaoabavab
+abawabalaObfambeamamamaNaoabawab
+abavabalaKamazazazazbfamaoabavab
 abacapaxaKamaZbabbbcamamayatacab
 abawabalaPambcbdbcbcaNaNaoabawab
 abafabagaJaRamaNaNamaRahagabafab

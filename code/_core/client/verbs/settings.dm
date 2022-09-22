@@ -94,6 +94,20 @@
 	set hidden = TRUE
 	settings.change_setting("swap_mouse",!settings.loaded_data["swap_mouse"])
 
+/client/verb/change_compact_mode()
+	set hidden = TRUE
+	SPAM_CHECK_CLIENT(10)
+	settings.change_setting("compact_mode",!settings.loaded_data["compact_mode"])
+	src << "Compact mode changed."
+	for(var/k in mob.buttons)
+		var/obj/hud/button/B = k
+		B.update_sprite()
+	if(is_advanced(src.mob))
+		var/mob/living/advanced/A = src.mob
+		for(var/k in A.inventories_by_id)
+			var/obj/hud/inventory/I = A.inventories_by_id[k]
+			I.update_sprite()
+
 /client/verb/toggle_zoom_view_lock()
 	set hidden = TRUE
 	settings.change_setting("enable_zoom_view_lock",!settings.loaded_data["enable_zoom_view_lock"])

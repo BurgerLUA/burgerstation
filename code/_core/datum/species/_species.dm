@@ -87,10 +87,8 @@
 		/obj/hud/button/intent/grab,
 		/obj/hud/button/sneak,
 
-		/obj/hud/button/toggle_cash_money,
 		/obj/hud/button/cash_money,
 		/obj/hud/button/microstransactions,
-		/obj/hud/button/toggle_microtransactions,
 
 		/obj/hud/button/crafting/craft,
 		/obj/hud/button/crafting/close,

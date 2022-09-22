@@ -69,22 +69,25 @@
 "bq" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab/backroom)
 "br" = (/obj/structure/sign/shock,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab/backroom)
 "bs" = (/obj/structure/sign/secure,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab/backroom)
+"bt" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab)
+"bu" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab)
+"bv" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab/backroom)
 
 (1,1,1) = {"
 ababababababacaZacacabababababab
 abaeafagahaibhajbrabakahagalamab
-abauanaoapbkbobgadaqarbiasaubjab
+abauanaobvbkbobgadaqarbiasaubjab
 abatanasapapapapapapapapaobjauab
 abalavawaGaxapbbapbqaxbiawayazab
 abababbhbhabbmaAbsaiababbhababab
 aaaBaCaDaEaFblbcaEaEaEbdaDaHaBaa
-aaaBaIaDaEaJaEaEaEaFaEaDaDaKaBaa
+aaaBaIaDaEaJaEaEaEaFaEaDbtaKaBaa
 aaaLaMaDaEaFaFaFaNaNaEaDaDaOaLaa
 aaaLaMaDaEaEaEaEaEaEaEaDaDaPaLaa
 aaaLaQaDaDaDaDaDaDaDaDbaaDaPaLaa
-aaaLaQaDaDaDaDbaaDaDaDaDaDaRaLaa
+aaaLaQaDbuaDaDbaaDaDaDaDaDaRaLaa
 aaaBaSaDaDaDaTaTaTaDaDaDaDaUaBaa
-aaaBaVaDaDaDaTbeaTbpaDaDaDaWaBaa
+aaaBaVaDaDaDaTbeaTbpaDbtaDaWaBaa
 aaaBaLaLaLaLbnaXaYaBaLaLaLaLaBaa
 aaaaaaaaaaaaaabfaaaaaaaaaaaaaaaa
 "}

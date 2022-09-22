@@ -38,7 +38,7 @@
 "aL" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
 "aM" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
 "aN" = (/obj/structure/table/simple,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_45,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
-"aO" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aO" = (/obj/structure/interactive/chair/office/dark,/mob/living/advanced/npc/zombie/security,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
 "aP" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "aQ" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
 "aR" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 4},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
@@ -65,22 +65,27 @@
 "bm" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
 "bn" = (/obj/structure/sign/secure,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
 "bo" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"bp" = (/mob/living/advanced/npc/zombie/security{icon_state = "directional"; dir = 4},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"bq" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/zombie/security{icon_state = "directional"; dir = 8},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"br" = (/mob/living/advanced/npc/zombie/security{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bs" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bt" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
 
 (1,1,1) = {"
 aPaPacacacacacacacacafafafafafac
 asaqacahahahahahaiakaHaIaIaNaVac
-aravacahahahahahahaXaYbabababaac
-aravacahahahahahahbdaYbabababaac
+aravacahahahahahahaXaYbababrbaac
+aravacahahahahahahbdaYbrbababaac
 arawacahahahahahbeakaYbabababfac
 arauacacacacacacacbgbmbjbhbiacac
 atagamanananananananaFaeaeaeaZab
 apaobbaeanaMaeaeaeaeaeaeaeaeaeab
 axaxaxaEaybnazaxaxaQaQabalababab
-axaAaBaBaCaCaCaAaRbkaeaFaeaeabaa
-axaAaBaBaBaBaBaAaRaeaOaUaeaeaSaa
+axaAbpaBaCaCbqaAaRbkaeaFaeaeabaa
+axaAaBaBaBaBaBaAaRaeaOaUaebsaSaa
 axaJaBaBaBaBaBaKaxaGajajaeaebcaa
 axaAaBaBaBaBaBaAaxaeaeaWaWaWaSaa
-axaTaBblaLaBaBaTaxaeaeaWaWaWboaa
+axaTaBblaLaBaBaTaxbtaeaWaWaWboaa
 axaxaxaxaxaxaxaDaxadadadaladabaa
 aaaaaaaaaaaaaaaaaoaoaoaoaoaoaoaa
 "}

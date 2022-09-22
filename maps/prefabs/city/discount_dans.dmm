@@ -92,22 +92,26 @@
 "bN" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
 "bO" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/bathroom_male)
 "bP" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans)
+"bQ" = (/obj/structure/carpet/red,/mob/living/advanced/npc/zombie/bartender,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bR" = (/mob/living/advanced/npc/zombie/chef,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
+"bS" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bT" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaabaaaaaaaaaaaaaaacacadbdadadap
 bNajbkafagagagblaabLaFaiaKbtadap
-aabraeaeaeaeaeajakboahalamanadap
+aabraebRaeaebRajakboahalamanadap
 aabDbDbGaobGaobcaqarahbOasasasap
 bEbgbjatatatatbqatarahauavawasap
-bPbmatatatatatatatarboaEbwbuasap
+bPbmatatatbQatatatarboaEbwbuasap
 acbhbfaGbHaGbIbhaGarahasbeasasap
 acbMaHaJaHaHaRaRaHarbxaTbybJaMap
-aVahahahahahbBahahahbpacaNaLaOap
+aVahahbSahahbBahahahbpacaNaLaOap
 aVataWaWatahahataWaWatacbvaLaOap
 acaXbhbHaXbnboaYbibhaZacaPbJaOap
 acacaVaVbaacbbbFaVaVbFacaQaSaUap
 axaCbKaAaBaBbzaBaAazbsaxapbAaIap
-axaBaBaBaBaBaBaBaBaBaBaxapapapap
+axaBaBaBbTaBaBaBaBaBaBaxapapapap
 axaDazaAaBaBaBaBaybKaDaxapbCapap
 axaxaxaxaxaBbzaxaxaxaxaxapapapap
 "}

@@ -29,6 +29,7 @@
 	verbs += /client/verb/toggle_smooth_shadows
 	verbs += /client/verb/toggle_depth
 	verbs += /client/verb/toggle_currency_bloom
+	verbs += /client/verb/change_compact_mode
 
 	//Controls
 	verbs += /client/verb/button_release
