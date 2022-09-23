@@ -14,9 +14,7 @@
 	//2 = prepping
 	//3 = allowed to launch
 	//4 = enemies are spawning
-	//5 = evac time
-	//6 = pvp
-	//7 = victory
+	//5 = voting
 
 	var/status_display_text
 	var/status_display_time
@@ -27,6 +25,50 @@
 /gamemode/endless/New()
 	. = ..()
 	round_time_next = 30
+
+
+/gamemode/endless/proc/add_objectives()
+
+	var/player_count = length(all_clients)
+
+	log_debug("Current player count: [player_count].")
+
+	//Base Objectives.
+	add_objective(/objective/artifact)
+	add_objective(/objective/hostage)
+	add_objective(/objective/hostage)
+	add_objective(/objective/kill_boss)
+
+	if(player_count >= 10)
+		add_objective(/objective/hostage)
+		log_debug("Adding player count 10 objectives.")
+
+	if(player_count >= 30)
+		add_objective(/objective/kill_boss)
+		log_debug("Adding player count 30 objectives.")
+
+	if(player_count >= 50)
+		add_objective(/objective/kill_boss)
+		log_debug("Adding player count 50 objectives.")
+
+	if(player_count >= 70)
+		add_objective(/objective/kill_boss)
+		log_debug("Adding player count 70 objectives.")
+
+	next_objective_update = world.time + 100
+	return TRUE
+
+
+/gamemode/endless/on_continue()
+
+	add_objective(/objective/artifact)
+	add_objective(/objective/kill_boss)
+
+	round_time = 0
+	round_time_next = 60*30
+	stage = 4
+
+	return ..()
 
 /gamemode/endless/on_life()
 
@@ -56,7 +98,7 @@
 				)
 			if(3)
 				status_display_text = "RDY"
-				round_time_next = 3*60
+				round_time_next = 10
 				allow_launch = TRUE
 				SShorde.enable = TRUE
 				SSevents.enable = TRUE
@@ -68,127 +110,11 @@
 				)
 			if(4)
 				status_display_text = "BTTLE"
-				round_time_next = 40*60
-				/*
-				announce(
-					"Central Command Mission Update",
-					"Threat Detected",
-					"Unusual enemy combatants detected in the Area of Operations. All crew are instructed to remove the threat as needed.",
-					sound_to_play = 'sound/voice/announcement/landfall_crew_enemy_detected.ogg'
-				)
-				*/
+				round_time_next = 60*60
+				add_objectives()
 			if(5)
-				status_display_text = "EVAC"
-				round_time_next = 5*60
-				announce(
-					"Central Command Mission Update",
-					"Evacuation Orders",
-					"Incoming Ion Storm detected. All crew are recommended to evacuate the area. Failure to evacuate may result in-\n%@&^#*#^&STREAM INTERUPTED%&#(&#",
-					sound_to_play = 'sound/voice/announcement/landfall_crew_evac_notice.ogg'
-				)
-				broadcast_to_clients(span("danger","PvP will be enabled in 5 minutes!"))
-			if(6)
-				SShorde.enable = FALSE
-				SSevents.enable = FALSE
-				allow_launch = FALSE
-				status_display_text = "UNSAFE"
-				var/number_of_players = 0
-				for(var/k in all_players)
-					var/mob/living/advanced/player/P = k
-					if(P.dead)
-						continue
-					if(P.loyalty_tag != "NanoTrasen")
-						continue
-					var/area/A = get_area(P)
-					if(A.area_identifier != "Mission")
-						continue
-					var/turf/T = get_turf(P)
-					if(!T)
-						continue
-					number_of_players++
-
-				if(number_of_players <= 1 && world.port != 0)
-					broadcast_to_clients(span("danger","Not enough players for PvP. Ending round..."))
-					round_time_next = 0
-					world.end(WORLD_END_NANOTRASEN_VICTORY)
-				else
-					broadcast_to_clients(span("danger","PvP has been enabled!"))
-					set_friendly_fire(TRUE)
-					round_time_next = 10*60
-					pvp_start_time = world.time
-					for(var/k in all_players)
-						var/mob/living/advanced/player/P = k
-						if(P.dead)
-							continue
-						if(P.loyalty_tag != "NanoTrasen")
-							continue
-						var/area/A = get_area(P)
-						if(A.area_identifier != "Mission")
-							continue
-						var/turf/T = get_turf(P)
-						if(!T)
-							continue
-						var/obj/structure/interactive/crate/closet/supply_pod/syndicate/S = new(T)
-						INITIALIZE(S)
-						GENERATE(S)
-						CREATE(/obj/item/pinpointer/deathmatch,S)
-						FINALIZE(S)
-
-
-			if(7) //7 is the checking stage.
-				status_display_text = "UNSAFE"
-				var/number_of_players = 0
-				var/mob/living/advanced/player/last_person
-				for(var/k in all_players)
-					var/mob/living/advanced/player/P = k
-					if(P.dead)
-						continue
-					if(P.loyalty_tag != "NanoTrasen")
-						continue
-					var/area/A = get_area(P)
-					if(A.area_identifier != "Mission")
-						continue
-					number_of_players++
-					last_person = P
-				if(number_of_players <= 1) //Last person standing.
-					if(number_of_players <= 0 || !last_person)
-						broadcast_to_clients(span("danger","PvP ended due to all players leaving the area. No winner awarded."))
-						world.end(WORLD_END_NANOTRASEN_VICTORY)
-					else
-						broadcast_to_clients(span("danger","PvP ended due to one person left standing. [last_person.real_name] was awarded 80,000 credits."))
-						world.end(WORLD_END_NANOTRASEN_VICTORY)
-						last_person.adjust_currency(80000)
-						var/turf/T = get_turf(last_person)
-						var/obj/item/clothing/head/hat/crown/C = new(T)
-						C.winner_name = lowertext(last_person.real_name)
-						INITIALIZE(C)
-						GENERATE(C)
-						FINALIZE(C)
-						C.quick_equip(last_person)
-					world.end(WORLD_END_NANOTRASEN_VICTORY)
-					round_time_next = 0
-				else
-					stage = 6 //Go back to stage 6 by default
-					round_time_next = 30 //Check every half-minute.
-
-
-		if(stage == 6 && pvp_start_time > 0 && world.time >= pvp_start_time + SECONDS_TO_DECISECONDS(600))
-			if(!boredom_warning)
-				broadcast_to_clients(span("danger","PvP has lasted more than 10 minutes; sending Syndicate deathsquads."))
-			else
-				for(var/k in all_players)
-					var/mob/living/advanced/player/P = k
-					if(P.dead)
-						continue
-					if(P.loyalty_tag != "NanoTrasen")
-						continue
-					var/area/A = get_area(P)
-					if(A.area_identifier != "Mission")
-						continue
-					var/turf/T = get_turf(P)
-					CREATE(/obj/structure/interactive/crate/closet/supply_pod/syndicate/ultra/occupied,T)
-
-
+				status_display_text = "VOTE"
+				round_time_next = -1
 
 	var/time_left = round_time_next - round_time
 	if(time_left >= 0)

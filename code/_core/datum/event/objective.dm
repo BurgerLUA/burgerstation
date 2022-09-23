@@ -7,8 +7,7 @@
 
 	var/list/possible_objectives = list(
 		/objective/artifact = 100,
-		/objective/kill_boss = 25,
-		/objective/hostage = 10
+		/objective/kill_boss = 25
 	)
 
 /event/objective/on_start()
