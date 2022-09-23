@@ -119,7 +119,7 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-
+	automatic = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod/silenced/Generate()
 
