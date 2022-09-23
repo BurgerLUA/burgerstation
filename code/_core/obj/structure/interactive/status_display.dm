@@ -60,6 +60,8 @@ var/global/list/status_displays = list()
 	maptext = "<center valign='middle'>[desired_text]</center>"
 	return TRUE
 
+/obj/structure/interactive/status_display/local_display/
+
 /obj/structure/interactive/status_display/global_display/
 	var/status_id
 

@@ -1839,7 +1839,6 @@
 #include "code\_core\obj\projectile\bullet\firearm.dm"
 #include "code\_core\obj\shadow\_shadow.dm"
 #include "code\_core\obj\shuttle_controler\_shuttle_controller.dm"
-#include "code\_core\obj\shuttle_controler\debug.dm"
 #include "code\_core\obj\spawn\_spawn.dm"
 #include "code\_core\obj\structure\_structure.dm"
 #include "code\_core\obj\structure\render_target_test.dm"

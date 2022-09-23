@@ -9,6 +9,8 @@
 
 	uses_until_condition_fall = 450
 
+	container_priority = -10
+
 
 /*
 /obj/item/clothing/belt/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)

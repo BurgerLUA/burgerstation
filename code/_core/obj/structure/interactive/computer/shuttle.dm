@@ -27,3 +27,10 @@ obj/structure/interactive/computer/console/flight_control/clicked_on_by_object(v
 
 	M_background = new(caller,desired_shuttle_controller=SC)
 	M_background.update_owner(caller)
+
+obj/structure/interactive/computer/console/flight_control/Finalize()
+	. = ..()
+	var/obj/shuttle_controller/SC = locate() in get_area(src)
+	if(SC)
+		var/area/A = get_area(SC)
+		name = "\improper [A.name] [initial(name)]"

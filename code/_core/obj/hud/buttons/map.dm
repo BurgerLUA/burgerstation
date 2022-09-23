@@ -36,30 +36,31 @@
 			I.pixel_x = connected_background.x_drop - 16
 			I.pixel_y = connected_background.y_drop - 16
 			add_overlay(I)
-		if(connected_background.linked_shuttle_controller)
-			for(var/k in all_shuttle_landing_markers)
-				var/obj/marker/shuttle_landing/SL = k
-				if(SL.z != current_z)
-					continue
-				var/desired_icon_state = SL == connected_background.linked_shuttle_controller.transit_marker_destination ? "shuttle_target" : "shuttle_marker"
-				var/image/I = new/image('icons/hud/hud.dmi',desired_icon_state)
-				I.pixel_x = SL.x - 16
-				I.pixel_y = SL.y - 16
-				if(SL.linked_computer)
-					I.maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>Landing Zone [SL.linked_computer.shuttle_number]</center>"
-				add_overlay(I)
-			for(var/k in all_shuttle_controlers)
-				var/obj/shuttle_controller/SC = k
-				if(SC.z != current_z)
-					continue
-				if(!shuttle_controller_to_icon[SC])
-					continue
-				var/image/I = new/image(shuttle_controller_to_icon[SC])
-				I.pixel_x = SC.x - 16
-				I.pixel_y = SC.y - 16
-				var/area/A = get_area(SC)
-				I.maptext = "[A.name]"
-				add_overlay(I)
+
+		for(var/k in all_shuttle_landing_markers)
+			var/obj/marker/shuttle_landing/SL = k
+			if(SL.z != current_z)
+				continue
+			var/desired_icon_state = connected_background.linked_shuttle_controller && SL == connected_background.linked_shuttle_controller.transit_marker_destination ? "shuttle_target" : "shuttle_marker"
+			var/image/I = new/image('icons/hud/hud.dmi',desired_icon_state)
+			I.pixel_x = SL.x - 16
+			I.pixel_y = SL.y - 16
+			if(SL.linked_computer)
+				I.maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>Landing Zone [SL.linked_computer.shuttle_number]</center>"
+			add_overlay(I)
+
+		for(var/k in all_shuttle_controlers)
+			var/obj/shuttle_controller/SC = k
+			if(SC.z != current_z)
+				continue
+			if(!SC.stored_icon)
+				continue
+			var/image/I = new/image(SC.stored_icon)
+			I.pixel_x = SC.x - 16
+			I.pixel_y = SC.y - 16
+			var/area/A = get_area(SC)
+			I.maptext = "[A.name]"
+			add_overlay(I)
 
 
 /obj/hud/map/proc/update_map(var/desired_z=0)
@@ -274,6 +275,7 @@
 					if(connected_background.linked_shuttle_controller.state != SHUTTLE_STATE_LANDED)
 						caller.to_chat(span("warning","Error: Flight plan already set."))
 						return FALSE
+					connected_background.linked_shuttle_controller.time = 0
 					connected_background.linked_shuttle_controller.transit_marker_destination = connected_background.linked_shuttle_controller.transit_marker_base
 					connected_background.linked_shuttle_controller.state = SHUTTLE_STATE_WAITING
 					connected_background.update_owner(null)
@@ -292,6 +294,7 @@
 					if(connected_background.linked_shuttle_controller.transit_marker_destination.reserved)
 						caller.to_chat(span("warning","Invalid launch destination: Landing area is reserved."))
 						return FALSE
+					connected_background.linked_shuttle_controller.time = 0
 					connected_background.linked_shuttle_controller.transit_marker_destination.reserved = TRUE
 					connected_background.linked_shuttle_controller.state = SHUTTLE_STATE_WAITING
 					connected_background.update_owner(null)

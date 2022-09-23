@@ -22,6 +22,86 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 	all_shuttle_landing_consoles += src
 	. = ..()
 
+/obj/structure/interactive/computer/console/shuttle_landing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	var/mob/living/L = caller
+
+	if(!linked_marker)
+		return ..()
+
+	INTERACT_CHECK
+
+	if(linked_marker.reserved)
+		L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
+		return TRUE
+
+	if(!SSgamemode.active_gamemode.allow_launch)
+		L.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+		return TRUE
+
+	while(TRUE)
+		var/list/choices = list("Cancel" = "Cancel")
+		for(var/k in all_shuttle_controlers)
+			var/obj/shuttle_controller/SC = k
+			if(SC.loyalty_owner != L.loyalty_tag)
+				continue
+			var/area/A = get_area(SC)
+			var/shuttle_text = "[A.name]: [SC.state]"
+			choices[shuttle_text] = SC
+
+		var/desired_choice = input("Select a shuttle to call.","Shuttle calling","Cancel") as null|anything in choices
+
+		INTERACT_CHECK
+
+		if(!desired_choice || desired_choice == "Cancel")
+			return TRUE
+
+		if(!SSgamemode.active_gamemode.allow_launch)
+			L.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+			return TRUE
+
+		var/obj/shuttle_controller/SC = choices[desired_choice]
+		if(SC.state != SHUTTLE_STATE_LANDED)
+			caller.to_chat(span("notice","That shuttle is currently [SC.state]."))
+			continue
+
+		if(linked_marker.reserved)
+			L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
+			return TRUE
+
+		desired_choice = input("Are you sure you wish to call this shuttle?","Call shuttle","Cancel") as null|anything in list("Yes","No","Cancel")
+
+		INTERACT_CHECK
+
+		if(!desired_choice || desired_choice == "Cancel")
+			return TRUE
+
+		if(desired_choice == "No")
+			continue
+
+		//Only choice: Yes.
+
+		if(!SSgamemode.active_gamemode.allow_launch)
+			L.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+			return TRUE
+
+		if(linked_marker.reserved)
+			L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
+			return TRUE
+
+		if(SC.state != SHUTTLE_STATE_LANDED)
+			caller.to_chat(span("notice","That shuttle is currently [SC.state]."))
+			continue
+
+		SC.time = 0
+		SC.transit_marker_destination = linked_marker
+		SC.transit_marker_destination.reserved = TRUE
+		SC.state = SHUTTLE_STATE_WAITING
+
+		return TRUE
+
+	. = ..()
+
 
 
 /obj/marker/landing_decal_left
@@ -103,24 +183,27 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 
 	var/reserved = FALSE
 
-/obj/marker/shuttle_landing/PostInitialize()
+/obj/marker/shuttle_landing/Finalize()
 	. = ..()
-	var/obj/structure/interactive/computer/console/shuttle_landing/best_computer
-	var/best_distance = INFINITY
-	for(var/k in all_shuttle_landing_consoles)
-		var/obj/structure/interactive/computer/console/shuttle_landing/SL = k
-		if(!best_computer)
+	if(!SSdmm_suite.is_pvp_coord(loc.x,loc.y,loc.z,32))
+		var/obj/structure/interactive/computer/console/shuttle_landing/best_computer
+		var/best_distance = INFINITY
+		for(var/k in all_shuttle_landing_consoles)
+			var/obj/structure/interactive/computer/console/shuttle_landing/SL = k
+			if(SL.z != src.z)
+				continue
+			if(!best_computer)
+				best_computer = SL
+				best_distance = get_dist(SL,src)
+				continue
+			var/distance = get_dist(SL,src)
+			if(distance > best_distance)
+				continue
+			best_distance = distance
 			best_computer = SL
-			best_distance = get_dist(SL,src)
-			continue
-		var/distance = get_dist(SL,src)
-		if(distance > best_distance)
-			continue
-		best_distance = distance
-		best_computer = SL
 
-	if(best_computer)
-		best_computer.linked_marker = src
-		src.linked_computer = best_computer
+		if(best_computer)
+			best_computer.linked_marker = src
+			src.linked_computer = best_computer
 
-	all_shuttle_landing_markers += src
+		all_shuttle_landing_markers += src

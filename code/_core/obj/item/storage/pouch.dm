@@ -17,6 +17,8 @@
 		/obj/hud/inventory/organs/groin/pocket/left
 	)
 
+	container_priority = -20
+
 /obj/item/storage/pouch/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(caller == object && is_advanced(caller))

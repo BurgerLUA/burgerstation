@@ -15,3 +15,5 @@ obj/item/clothing/back/storage
 	item_slot_layer = 1
 
 	uses_until_condition_fall = 0
+
+	container_priority = -102

@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	return ..()
 
 
-/subsystem/dmm_suite/proc/is_pvp_coord(var/x,var/y,var/z)
+/subsystem/dmm_suite/proc/is_pvp_coord(var/x,var/y,var/z,var/distance=0)
 
 	if(!pvp_y)
 		return FALSE
@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	if(!mission_z || z != mission_z)
 		return FALSE
 
-	if(y >= pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2))
+	if(y+distance >= pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2))
 		return TRUE
 
 //Here lies dead code.

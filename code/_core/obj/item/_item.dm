@@ -50,6 +50,7 @@
 	var/inventory_category = "dynamic"
 	var/starting_inventory_y = "BOTTOM:12+1.25"
 	var/inventory_y_multiplier = 1
+	var/container_priority = 0 //Good idea to be negative as non-dynamic inventories (hend, worn, ect) are above 0. Default for dynamic inventories is -101.
 
 	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod = 1 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
@@ -450,6 +451,8 @@ var/global/list/rarity_to_mul = list(
 			D.item_whitelist = container_whitelist
 		if(container_temperature)
 			D.inventory_temperature_mod = container_temperature
+		if(container_priority)
+			D.priority = container_priority
 		inventories += D
 
 	. = ..()

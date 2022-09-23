@@ -29,7 +29,7 @@
 /mob/living/advanced/npc/tax_collector
 	name = "tax collector"
 	desc = "PAY YOUR TAXES."
-	desc_extended = "One of the most lethal accountants in the galaxy."
+	desc_extended = "One of the most lethal accountants in the galaxy. Hunts you down and kills you until you pay your taxes."
 
 	ai = /ai/advanced/taxman
 

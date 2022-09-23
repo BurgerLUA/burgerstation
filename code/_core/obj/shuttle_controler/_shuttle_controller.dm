@@ -1,8 +1,5 @@
 var/global/list/all_shuttle_controlers = list()
 
-
-var/global/list/shuttle_controller_to_icon = list()
-
 /obj/shuttle_controller
 	name = "shuttle controller"
 	desc = "Controls what happens when the shuttle moves."
@@ -40,11 +37,16 @@ var/global/list/shuttle_controller_to_icon = list()
 
 	var/time_restricted = FALSE
 
+	var/loyalty_owner = "NanoTrasen"
+
+	var/icon/stored_icon
+
 /obj/shuttle_controller/Destroy()
 	all_shuttle_controlers -= src
 	return ..()
 
 /obj/shuttle_controller/New(var/desired_loc)
+
 	all_shuttle_controlers += src
 
 	var/turf/T = get_turf(src) //Not needed but whatever.
@@ -56,6 +58,8 @@ var/global/list/shuttle_controller_to_icon = list()
 
 	transit_marker_base = new(T)
 	transit_marker_bluespace = new(T2)
+
+	transit_marker_base.reserved = TRUE
 
 	return ..()
 
@@ -80,7 +84,6 @@ var/global/list/shuttle_controller_to_icon = list()
 		if(abs(min_x - max_x) > 32)
 			failure = TRUE
 			break
-
 		if(abs(min_y - max_y) > 32)
 			failure = TRUE
 			break
@@ -95,12 +98,9 @@ var/global/list/shuttle_controller_to_icon = list()
 			var/local_x = T.x - src.x
 			var/local_y = T.y - src.y
 			I.DrawBox("#FFFFFF",local_x + 16,local_y + 16)
-		shuttle_controller_to_icon[src] = I
+		src.stored_icon = I
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
-
-
-
 
 /obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds. This proc will always be called to bluespace.
 
@@ -203,6 +203,11 @@ var/global/list/shuttle_controller_to_icon = list()
 			time = 0
 
 	if(status_id) set_status_display(status_id,display)
+
+	if(display)
+		var/area/A = get_area(src)
+		for(var/obj/structure/interactive/status_display/local_display/LD in A.contents)
+			LD.set_text(display)
 
 	return TRUE
 
@@ -317,8 +322,11 @@ var/global/list/shuttle_controller_to_icon = list()
 				continue
 			M.throw_self(M,vel_x=transit_throw_x*8,vel_y=transit_throw_y*8)
 
-	var/obj/marker/shuttle_landing/SL = locate() in starting_turf
-	if(SL) SL.reserved = FALSE
+	var/obj/marker/shuttle_landing/SL = locate() in starting_turf.contents
+	if(!SL)
+		log_error("Shuttle error: Could not find a shuttle landing marker!")
+	else
+		SL.reserved = FALSE
 
 	return TRUE
 

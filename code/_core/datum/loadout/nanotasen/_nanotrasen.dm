@@ -49,11 +49,11 @@
 
 		/obj/item/clothing/overwear/armor/bulletproof,
 
-		/obj/item/clothing/glasses/sun/security,
 		/obj/item/clothing/ears/headset/nanotrasen,
 
 		/obj/item/clothing/head/hat/beret/armored,
 		/obj/item/clothing/head/hat/skimask/black,
+		/obj/item/clothing/glasses/sun/security,
 
 		/obj/item/clothing/neck/cloak/nanotrasen,
 
