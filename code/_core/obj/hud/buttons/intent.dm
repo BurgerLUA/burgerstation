@@ -28,6 +28,14 @@
 		L.selected_intent = intent
 		L.update_intent()
 
+/obj/hud/button/intent/update_overlays()
+
+	. = ..()
+
+	if(active)
+		var/image/I = new/image(initial(icon),"[initial(icon_state)]_active")
+		add_overlay(I)
+
 //The reason why this isn't one button is to support button binds.
 /obj/hud/button/intent/help
 	name = "help intent"

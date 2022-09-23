@@ -38,9 +38,7 @@ mob/living/on_left_down(object,location,control,params)
 
 	for(var/obj/hud/button/intent/I in buttons)
 		I.active = (I.intent == intent)
-		I.icon_state = initial(icon_state)
-		if(I.active)
-			I.icon_state = "[I.icon_state]_active"
+		I.overlays.Cut()
 		I.update_overlays()
 
 	if(client)
