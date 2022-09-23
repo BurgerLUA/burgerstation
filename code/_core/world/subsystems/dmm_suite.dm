@@ -105,7 +105,7 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	//https://www.desmos.com/calculator/c64q75jvne
 
-	if(CONFIG("ENABLE_PVP_AREA",FALSE))
+	if(CONFIG("ENABLE_PVP_AREA",TRUE))
 
 		pvp_y = 400+rand(0,50)
 		pvp_coef = pvp_y*0.0015
