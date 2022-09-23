@@ -8,7 +8,7 @@
 
 	level = 40
 
-/mob/living/advanced/npc/survivor/Initialize()
+/mob/living/advanced/npc/survivor/setup_appearance(var/set_default=FALSE)
 
 	. = ..()
 

@@ -65,7 +65,7 @@
 	var/bad_color = "#FF0000"
 	if(owner && owner.client)
 		var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
-		good_color = color_scheme[2]
+		good_color = color_scheme[4]
 		bad_color = color_scheme[6]
 
 	icon = initial(icon)

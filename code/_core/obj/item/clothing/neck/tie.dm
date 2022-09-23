@@ -25,3 +25,6 @@
 
 /obj/item/clothing/neck/tie/black
 	color = "#050505"
+
+/obj/item/clothing/neck/tie/nanotrasen
+	color = COLOR_NANOTRASEN_DARK

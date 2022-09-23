@@ -26,6 +26,18 @@
 		"frill" = COLOR_WHITE
 	)
 
+/obj/item/clothing/shirt/blouse/frill/black
+	polymorphs = list(
+		"blouse" = COLOR_BLACK,
+		"frill" = COLOR_WHITE
+	)
+
+/obj/item/clothing/shirt/blouse/frill/nanotrasen
+	polymorphs = list(
+		"blouse" = COLOR_NANOTRASEN,
+		"frill" = COLOR_WHITE
+	)
+
 /obj/item/clothing/shirt/blouse/uniform
 	name = "uniformed blouse"
 	desc_extended = "A uniformed blouse. Are they really standard issue for any department...?"

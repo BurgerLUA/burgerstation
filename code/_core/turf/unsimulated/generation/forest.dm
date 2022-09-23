@@ -21,7 +21,7 @@ var/global/snow_num = 0.6+rand()*0.2
 			new /turf/simulated/wall/rock/snow(src)
 			if(prob(0.25))
 				new /obj/marker/generation/turf/snow_wall(src)
-			if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
+			if(src.loc.type == /area/) new /area/mission/snow(src)
 			disallow_generation = TRUE
 			return ..()
 
@@ -110,7 +110,7 @@ var/global/snow_num = 0.6+rand()*0.2
 					new /turf/simulated/floor/colored/dirt/snow(src)
 					disallow_generation = TRUE
 
-		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
+		if(src.loc.type == /area/) new /area/mission/snow(src)
 
 	else
 

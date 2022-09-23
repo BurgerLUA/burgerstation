@@ -5,7 +5,8 @@ var/global/list/possible_objective_spawns = list()
 	icon_state = "goal"
 
 /obj/marker/objective_spawn/New(var/desired_loc)
-	possible_objective_spawns += src
+	if(!SSdmm_suite.is_pvp_coord(loc.x,loc.y,loc.z))
+		possible_objective_spawns += src
 	return ..()
 
 

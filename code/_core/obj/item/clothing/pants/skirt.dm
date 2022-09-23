@@ -18,6 +18,16 @@
 
 	value = 10
 
+/obj/item/clothing/pants/skirt/black
+	polymorphs = list(
+		"skirt" = COLOR_BLACK
+	)
+
+/obj/item/clothing/pants/skirt/nanotrasen_dark
+	polymorphs = list(
+		"skirt" = COLOR_NANOTRASEN_DARK
+	)
+
 /obj/item/clothing/pants/skirt/striped
 	name = "striped skirt"
 	desc = "*me waves"

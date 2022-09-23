@@ -1,9 +1,3 @@
-var/global/list/possible_hostage_types = list(
-	/mob/living/advanced/npc/unique/hostage/clown,
-	/mob/living/advanced/npc/unique/hostage/assistant,
-	/mob/living/advanced/npc/unique/hostage/scientist
-)
-
 /objective/hostage
 	name = "Rescue Hostage"
 
@@ -25,11 +19,7 @@ var/global/list/possible_hostage_types = list(
 	if(!S)
 		return FALSE
 	possible_hostage_spawns -= S
-	var/mob/living/advanced/npc/unique/hostage/L = pick(possible_hostage_types)
-	if(!L)
-		return FALSE
-	possible_hostage_types -= L
-	L = new L(get_turf(S))
+	var/mob/living/advanced/npc/hostage/L = new(get_turf(S))
 	INITIALIZE(L)
 	FINALIZE(L)
 	var/obj/item/handcuffs/H = new(get_turf(L))
@@ -66,7 +56,7 @@ var/global/list/possible_hostage_types = list(
 	return ACTIVE
 
 
-/objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/unique/hostage/H,args)
+/objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/hostage/H,args)
 
 	if(!completed && !H.dead)
 		var/area/A = get_area(H)
@@ -86,11 +76,11 @@ var/global/list/possible_hostage_types = list(
 
 	return TRUE
 
-/objective/hostage/proc/hostage_Destroy(var/mob/living/advanced/npc/unique/hostage/H,args)
+/objective/hostage/proc/hostage_Destroy(var/mob/living/advanced/npc/hostage/H,args)
 	update()
 	return TRUE
 
-/objective/hostage/proc/hostage_post_death(var/mob/living/advanced/npc/unique/hostage/H,args)
+/objective/hostage/proc/hostage_post_death(var/mob/living/advanced/npc/hostage/H,args)
 	update()
 	return TRUE
 

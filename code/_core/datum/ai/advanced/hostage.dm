@@ -6,7 +6,7 @@
 
 /ai/advanced/hostage/is_enemy(var/atom/A,var/safety_check=TRUE)
 	if(!is_living(A))
-		return FALSE
+		return ..()
 	var/mob/living/L = A
 	return L.ai && L.ai.objective_attack == owner
 

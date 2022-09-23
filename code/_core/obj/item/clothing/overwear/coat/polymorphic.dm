@@ -22,3 +22,14 @@
 	)
 
 	value = 40
+
+
+/obj/item/clothing/overwear/coat/polymorphic/black
+	polymorphs = list(
+		"base" = COLOR_BLACK
+	)
+
+/obj/item/clothing/overwear/coat/polymorphic/nanotrasen_dark
+	polymorphs = list(
+		"base" = COLOR_NANOTRASEN_DARK
+	)

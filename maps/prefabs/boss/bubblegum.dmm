@@ -3,7 +3,7 @@
 /turf/simulated/wall/boss,
 /area/dmm_suite/clear_area)
 "b" = (
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "c" = (
 /obj/marker/map_node/x2,
@@ -20,15 +20,15 @@
 /area/dmm_suite/clear_area)
 "g" = (
 /obj/marker/map_node/x2,
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "h" = (
 /obj/marker/lobby,
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "i" = (
 /obj/marker/objective_spawn,
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "j" = (
 /turf/simulated/liquid/lava,
@@ -36,11 +36,11 @@
 "k" = (
 /obj/marker/map_node/x2,
 /mob/living/simple/bubblegum,
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "l" = (
 /obj/marker/map_node,
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "m" = (
 /obj/marker/map_node,
@@ -60,7 +60,7 @@
 /area/dmm_suite/clear_area)
 "C" = (
 /obj/structure/interactive/crate/chest/filled,
-/turf/simulated/floor/colored/ash/rocky,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "O" = (
 /obj/structure/interactive/crate/chest/filled,

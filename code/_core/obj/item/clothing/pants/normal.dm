@@ -128,6 +128,14 @@
 		"pants" = COLOR_BLACK
 	)
 
+/obj/item/clothing/pants/normal/nanotrasen_dark
+	name = "fancy pants"
+	desc = "Eat pant."
+	desc_extended = "The signature black pants of someone fancy."
+	polymorphs = list(
+		"pants" = COLOR_NANOTRASEN_DARK
+	)
+
 /obj/item/clothing/pants/normal/military_green
 	name = "military pants"
 	desc = "Eat pant."

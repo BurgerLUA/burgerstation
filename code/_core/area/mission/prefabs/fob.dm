@@ -7,7 +7,6 @@
 	name = "Bawse Loot"
 	icon_state = "yellow"
 	requires_power = TRUE
-	link_to_parent_apc = TRUE
 	interior = TRUE
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO
@@ -18,7 +17,6 @@
 	name = "Mr. Scratch's building"
 	icon_state = "yellow"
 	requires_power = TRUE
-	link_to_parent_apc = TRUE
 	interior = TRUE
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO

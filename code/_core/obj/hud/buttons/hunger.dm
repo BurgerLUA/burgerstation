@@ -70,7 +70,7 @@
 	var/fat_color = "#EAEAEA"
 	if(owner && owner.client)
 		var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
-		good_color = color_scheme[2]
+		good_color = color_scheme[4]
 		fat_color = color_scheme[5]
 		bad_color = color_scheme[6]
 

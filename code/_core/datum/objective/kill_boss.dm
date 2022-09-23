@@ -1,4 +1,4 @@
-var/list/tracked_bosses = list()
+var/global/list/tracked_bosses = list()
 
 /objective/kill_boss
 	name = "Kill Boss"
@@ -15,7 +15,19 @@ var/list/tracked_bosses = list()
 	return ..()
 
 /objective/kill_boss/proc/get_valid_targets()
-	return SSbosses.living_bosses - tracked_bosses
+
+	var/list/possible_bosses = SSbosses.living_bosses - tracked_bosses
+
+	for(var/k in possible_bosses)
+		var/mob/living/L = k
+		if(!L.z || L.z != SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"])
+			possible_bosses -= k
+			continue
+		if(SSdmm_suite.is_pvp_coord(L.x,L.y,L.z))
+			possible_bosses -= k
+			continue
+
+	return possible_bosses
 
 /objective/kill_boss/proc/has_valid_targets()
 	return length(get_valid_targets()) ? TRUE : FALSE

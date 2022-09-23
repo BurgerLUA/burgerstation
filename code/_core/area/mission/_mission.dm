@@ -7,7 +7,7 @@
 
 
 /area/mission/desert
-	name = "Desert"
+	name = "\improper Cliffside Sea Desert"
 	icon_state = "desert"
 
 	weather = WEATHER_SANDSTORM
@@ -21,8 +21,25 @@
 
 	horde_data = /horde_data/desert
 
+/area/mission/snow
+	name = "\improper Snow Line"
+	icon_state = "snow"
+	weather = WEATHER_SNOW
+	ambient_temperature = T0C - 20
+	hazard = "cold"
+	sunlight_freq = 8
+	sunlight_color = "#898989"
+
+	cheese_type = /reagent/nutrition/cheese/raclette
+
+	tracks = TRACKS_MOUNTAIN
+
+	sound_environment = ENVIRONMENT_PLAIN
+
+	interior = FALSE
+
 /area/mission/desert/interior
-	name = "\improper Desert Caves"
+	name = "\improper Cliffside Sea Desert Caves"
 	icon_state = "desert_cave"
 
 	weather = null
@@ -44,7 +61,7 @@
 
 
 /area/mission/forest
-	name = "Forest"
+	name = "Rael Forest"
 	icon_state = "forest"
 
 	weather = null
@@ -173,7 +190,7 @@
 	horde_data = /horde_data/beach
 
 /area/mission/ocean
-	name = "Ocean"
+	name = "\improper Spannic Ocean"
 	icon_state = "ocean"
 
 	weather = null
@@ -188,7 +205,7 @@
 	horde_data = /horde_data/beach
 
 /area/mission/river
-	name = "River"
+	name = "\improper Riverways"
 	icon_state = "river"
 
 	weather = null

@@ -10,7 +10,7 @@
 		new /turf/simulated/wall/rock/snow(src)
 		if(prob(0.25))
 			new /obj/marker/generation/turf/snow_wall(src)
-		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
+		if(src.loc.type == /area/) new /area/mission/snow(src)
 		disallow_generation = TRUE
 		return ..()
 
@@ -97,7 +97,7 @@
 				new /turf/simulated/floor/colored/dirt/snow(src)
 				disallow_generation = TRUE
 
-	if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
+	if(src.loc.type == /area/) new/area/mission/snow(src)
 
 	return ..()
 
@@ -109,7 +109,7 @@
 
 	if(!density)
 		new /turf/simulated/floor/colored/snow(src)
-		if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
+		if(src.loc.type == /area/) new /area/mission/snow(src)
 		disallow_generation = TRUE
 		return ..()
 
@@ -141,7 +141,7 @@
 		if(0.95 to INFINITY)
 			new /turf/simulated/floor/cave_dirt(src)
 
-	if(src.loc.type == /area/) new /area/dungeon/z_01/snow(src)
+	if(src.loc.type == /area/) new /area/mission/snow(src)
 	disallow_generation = TRUE
 
 	if(prob(0.5))
