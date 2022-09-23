@@ -153,14 +153,25 @@
 	var/area/A = loc
 	return istype(A) && A.is_space()
 
-/turf/proc/is_safe_teleport(var/check_contents=TRUE)
+/turf/proc/is_safe()
+
+	if(SSdmm_suite.is_pvp_coord(x,y,z))
+		return FALSE
 
 	var/area/A = loc
 	if(A && A.flags_area & FLAG_AREA_NO_LOYALTY)
 		return FALSE
 
-	return !is_space()
+	return TRUE
 
+/turf/proc/is_safe_teleport(var/check_contents=TRUE)
+	var/area/A = loc
+	if(A && A.flags_area & FLAG_AREA_NO_TELEPORT)
+		return FALSE
+	return is_safe_move(check_contents)
+
+/turf/proc/is_safe_move(var/check_contents=TRUE)
+	return !is_space()
 
 /turf/proc/post_move(var/mob/M,var/atom/old_loc)
 

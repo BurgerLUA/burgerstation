@@ -26,7 +26,6 @@
 	if(!T)
 		return FALSE
 
-	var/area/A = T.loc
 	var/target_distance = get_dist(L,T)
 
 	if(L.intent == INTENT_HARM)
@@ -35,8 +34,8 @@
 		damage_type = initial(damage_type)
 
 	if(L.intent == INTENT_GRAB && next_teleport_command <= world.time)
-		if(!T.is_safe_teleport()||A.flags_area & FLAG_AREA_NO_TELEPORT) //Alright, that's it. No more water-walking!
-			L.to_chat(span("danger","Can't bloodcrawl there!"))
+		if(!T.is_safe_move()) //Alright, that's it. No more water-walking!
+			L.to_chat(span("danger","You can't bloodcrawl there!"))
 			return TRUE
 		if (target_distance > 10)
 			L.to_chat(span("danger","It's too far to crawl to!"))

@@ -19,7 +19,10 @@ var/global/enable_friendly_fire = FALSE
 /proc/check_iff_against(var/iff_attacker,var/mob/living/victim,var/hostile=TRUE)
 
 	if(hostile)
-		var/area/A = get_area(victim)
+		var/turf/T = get_turf(victim)
+		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+			return TRUE
+		var/area/A = T.loc
 		if(A)
 			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
 				return TRUE //Allow anything.
@@ -33,10 +36,11 @@ var/global/enable_friendly_fire = FALSE
 
 /proc/check_loyalty_aggainst(var/loyalty_attacker,var/mob/living/victim,var/hostile=TRUE)
 
-
-
 	if(hostile)
-		var/area/A = get_area(victim)
+		var/turf/T = get_turf(victim)
+		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+			return TRUE
+		var/area/A = T.loc
 		if(A)
 			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
 				return TRUE //Allow anything.

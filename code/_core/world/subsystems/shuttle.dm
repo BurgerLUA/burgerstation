@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 						var/turf/T = locate(chosen_epicenter.x + x, chosen_epicenter.y + y, chosen_epicenter.z)
 						if(!T)
 							continue
-						if(!T.is_safe_teleport())
+						if(!T.is_safe_move())
 							continue
 						if(T.is_occupied())
 							continue

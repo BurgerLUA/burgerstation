@@ -20,6 +20,9 @@
 
 	depth = 4
 
+/turf/simulated/liquid/lava/is_safe()
+	return FALSE
+
 /turf/simulated/liquid/lava/Enter(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/mob/abstract/node_checker))

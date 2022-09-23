@@ -181,7 +181,7 @@
 				var/desired_direction = get_dir(weapon,src)
 				for(var/i=1,i<=4,i++)
 					T = get_step(T,desired_direction)
-					if(!T.is_safe_teleport())
+					if(!T.is_safe_move(check_contents=FALSE))
 						break
 					var/obj/effect/cleanable/blood/line/L = create_blood(/obj/effect/cleanable/blood/line,T,R.color,0,0)
 					if(L) L.dir = desired_direction

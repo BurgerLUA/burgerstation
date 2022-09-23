@@ -51,7 +51,7 @@
 		if(found_enemy)
 			if(!can_attack_enemies)
 				return FALSE
-			if(!T.is_safe_teleport(check_contents=FALSE))
+			if(!T.is_safe() || !T.is_safe_move(check_contents=FALSE))
 				return FALSE
 			if(found_player)
 				return 100 //Player.
@@ -60,7 +60,7 @@
 			return FALSE
 		if(found_ally)
 			return FALSE
-	return T.is_safe_teleport(check_contents=FALSE) ? 1 : null
+	return T.is_safe() && T.is_safe_move(check_contents=FALSE) ? 1 : null
 	//returns either FALSE, "enemy", or "unoccupied"
 
 

@@ -67,13 +67,13 @@
 			owner.movement_flags = MOVEMENT_NORMAL
 			var/owner_to_objective_dir = get_dir(owner,objective_attack)
 			var/turf/T1 = get_step(owner,owner_to_objective_dir)
-			if(!T1.is_safe_teleport(FALSE))
+			if(!T1.is_safe() || !T1.is_safe_move(FALSE))
 				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90,180))
 				frustration_move++
 				return TRUE
 			var/objective_to_owner_dir = get_dir(objective_attack,owner)
 			var/turf/T2 = get_step(objective_attack,objective_to_owner_dir)
-			if(!T2.is_safe_teleport(FALSE))
+			if(!T2.is_safe() || !T2.is_safe_move(FALSE))
 				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90,180))
 				frustration_move++
 				return TRUE

@@ -312,11 +312,11 @@
 				if(!T)
 					caller.to_chat(span("warning","Invalid drop location: Out of bounds."))
 					return FALSE
-				if(!T.is_safe_teleport())
+				if(!T.is_safe() || !T.is_safe_move())
 					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
 					return FALSE
 				var/turf/T2 = get_step(T,SOUTH)
-				if(!T2 || !T2.is_safe_teleport())
+				if(!T2 || !T2.is_safe() || !T2.is_safe_move())
 					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
 					return FALSE
 				var/area/A = T.loc

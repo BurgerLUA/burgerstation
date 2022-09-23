@@ -366,7 +366,7 @@
 			continue
 		if(T.lightness > 0)
 			continue
-		if(!T.is_safe_teleport())
+		if(!T.is_safe_move())
 			continue
 		possible_turfs += T
 

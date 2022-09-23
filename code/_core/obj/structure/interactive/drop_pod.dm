@@ -115,11 +115,11 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 				return FALSE
 			if(!desired_loc)
 				return FALSE
-			if(!desired_loc.is_safe_teleport())
+			if(!desired_loc.is_safe() || !desired_loc.is_safe_move())
 				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
 				return FALSE
 			var/turf/T2 = get_step(desired_loc,SOUTH)
-			if(!T2.is_safe_teleport())
+			if(!T2.is_safe() || !T2.is_safe_move())
 				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
 				return FALSE
 			var/area/A = desired_loc.loc

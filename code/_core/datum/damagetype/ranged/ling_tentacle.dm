@@ -85,7 +85,7 @@
 		var/list/valid_turfs = list()
 		for(var/d in DIRECTIONS_ALL)
 			var/turf/T = get_step(L,d)
-			if(!T || !T.is_safe_teleport())
+			if(!T || !T.is_safe_move())
 				continue
 			valid_turfs += T
 			A.force_move(T)

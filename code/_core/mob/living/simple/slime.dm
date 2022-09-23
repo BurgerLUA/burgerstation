@@ -56,7 +56,7 @@
 	if((slime_traits & SLIME_TRAIT_UNSTABLE) && !qdeleting && !dead && !prob(80))
 		var/list/valid_turfs = list()
 		for(var/turf/simulated/floor/F in orange(src,VIEW_RANGE*0.5))
-			if(!F.is_safe_teleport(check_contents=FALSE))
+			if(!F.is_safe() || !F.is_safe_move(check_contents=FALSE))
 				continue
 			valid_turfs += F
 		if(length(valid_turfs))

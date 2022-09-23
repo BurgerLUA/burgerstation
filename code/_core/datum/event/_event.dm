@@ -45,16 +45,18 @@
 
 		var/turf/T = locate(rand(1,world.maxx),rand(1,world.maxy),desired_z)
 
-		if(T.is_safe_teleport())
+		if(T.is_safe() && T.is_safe_move())
 			var/area/A = T.loc
 			if(!(A.flags_area & FLAG_AREA_NO_EVENTS))
 				return T
 
 		for(var/turf/T2 in range(VIEW_RANGE,T))
-			if(T2.is_safe_teleport())
-				var/area/A = T2.loc
-				if(!(A.flags_area & FLAG_AREA_NO_EVENTS))
-					return T2
+			if(!T2.is_safe() || !T2.is_safe_move())
+				continue
+			var/area/A = T2.loc
+			if(A.flags_area & FLAG_AREA_NO_EVENTS)
+				continue
+			return T2
 
 
 
