@@ -10,7 +10,7 @@
 	is_container = TRUE
 
 	dynamic_inventory_count = 6
-	container_max_size = SIZE_1
+	container_max_size = SIZE_2
 
 	armor = /armor/cloth/hard
 
