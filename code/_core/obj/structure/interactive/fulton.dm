@@ -59,7 +59,7 @@
 
 	if(!stored_movable)
 		qdel(src)
-		return
+		return 0
 
 	if(is_living(stored_movable))
 		var/mob/living/L = stored_movable
@@ -71,18 +71,22 @@
 				if(delinq)
 					has_tax = TRUE
 			if(has_tax)
-				L.to_chat(span("danger","You were forced to pay your taxes and sold back to NanoTrasen!"))
+				L.to_chat(span("danger","You were forced to pay your taxes!"))
 				. = SStax.pay_taxes(L)*0.25
-			else
-				L.to_chat(span("danger","You were sold back to NanoTrasen!"))
-				. = 3000
+
+			L.to_chat(span("danger","You were sold back to NanoTrasen!"))
+			if(is_player(L))
+				var/mob/living/advanced/player/P = L
+				. += -P.adjust_currency(-3000)
+
 			//Teleport to station.
 			var/obj/structure/interactive/fulton_beacon/FB = locate() in world
 			if(FB)
 				L.force_move(get_turf(FB))
 			else
 				log_error("FATAL WARNING: No fulton beacon was found in world!")
-				L.force_move(locate(pick(rand(1,world.maxx),rand(1,world.maxy),1)))
+				do_invalid_fulton()
+				return 0
 			return .
 		else
 			L.to_chat(span("danger","You were captured and sold to a prison! Better luck next time!"))
@@ -102,8 +106,18 @@
 	qdel(src)
 
 /obj/structure/interactive/fulton/proc/can_be_extracted(var/mob/caller,var/atom/movable/M)
-	if(!M.is_player_controlled() && !M.is_safe_to_delete(check_loc = FALSE))
+
+	if(is_player(M))
+		var/mob/living/advanced/player/P = M
+		if(P.loyalty_tag == "NanoTrasen" && P.dead)
+			caller.to_chat(span("warning","NanoTrasen doesn't accept dead crewmembers!"))
+			return FALSE
+		return TRUE
+
+	if(!M.is_safe_to_delete(check_loc = FALSE))
+		caller.to_chat(span("warning","Something seems to be preventing \the [M.name] from being extracted..."))
 		return FALSE
+
 	return TRUE
 
 /obj/structure/interactive/fulton/proc/add_movable(var/mob/caller,var/atom/movable/M)
@@ -119,6 +133,10 @@
 	caller.visible_message(span("danger","\The [caller.name] attaches \the [src.name] to \the [M.name]."),span("warning","You attach \the [src.name] to \the [M.name]."))
 
 	if(can_be_extracted(caller,M))
+		if(is_living(M))
+			var/mob/living/L = M
+			if(!L.dead)
+				L.rejuvenate() //Might as well.
 		CALLBACK("\ref[src]_fly",SECONDS_TO_DECISECONDS(3),src,.proc/fly_away) //CLIFF RACEEEEEEEEEEEER
 	else
 		CALLBACK("\ref[src]_fail",SECONDS_TO_DECISECONDS(3),src,.proc/do_invalid_fulton)

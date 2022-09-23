@@ -64,14 +64,11 @@
 
 /obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && linked_portal)
+	if(is_inventory(object) && linked_portal && src.invisiblity < 101)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		var/mob/living/L = caller
-		if(enable_friendly_fire)
-			caller.to_chat(span("notice","The portal seems to be not working from the Ion storm..."))
-			return TRUE
-		if(L.loyalty_tag == loyalty_tag && !enable_friendly_fire)
+		if(L.loyalty_tag == loyalty_tag)
 			var/turf/destination_turf = get_turf(linked_portal)
 			L.visible_message(span("notice","\The [caller.name] steps into \the [src.name]."),span("notice","You step into \the [src.name]."))
 			L.force_move(destination_turf)
