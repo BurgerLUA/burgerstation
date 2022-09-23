@@ -136,7 +136,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 				return TRUE
 			if(assistance == 1 && is_living(L.ai.objective_attack))
 				var/mob/living/L2 = L.ai.objective_attack
-				if(allow_helpful_action(L2.loyalty_tag,owner.loyalty_tag))
+				if(allow_helpful_action(owner.loyalty_tag,L2))
 					return TRUE
 		if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
 			return TRUE
@@ -152,11 +152,9 @@ var/global/list/difficulty_to_ai_modifier = list(
 		if(0)
 			return FALSE
 		if(1)
-			var/area/A = get_area(owner)
-			return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target.loyalty_tag,A) && (target.loyalty_tag in enemy_tags)
+			return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)
 		if(2)
-			var/area/A = get_area(owner)
-			return allow_hostile_action(owner.loyalty_tag,target.loyalty_tag,A)
+			return allow_hostile_action(owner.loyalty_tag,target)
 		if(3)
 			return TRUE
 

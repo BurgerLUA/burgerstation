@@ -30,7 +30,7 @@
 		return FALSE
 	if(!istype(L.health) || !L.health.organic)
 		return FALSE
-	if(allow_helpful_action(owner.loyalty_tag,L.loyalty_tag))
+	if(!allow_helpful_action(owner.loyalty_tag,L))
 		return FALSE
 	if(L.dead)
 		return FALSE

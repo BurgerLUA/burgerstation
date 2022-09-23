@@ -48,8 +48,7 @@
 
 	if(is_living(caller))
 		var/mob/living/CL = caller
-		var/turf/T = get_turf(CL)
-		if(L.ckey_owner != CL.ckey_owner && !allow_hostile_action(CL.loyalty_tag,L.loyalty_tag,T.loc))
+		if(L.ckey_owner != CL.ckey_owner && !allow_hostile_action(CL.loyalty_tag,L))
 			return FALSE
 
 	if(!L.dead)

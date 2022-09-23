@@ -134,8 +134,7 @@
 			return FALSE
 
 		if(caller_as_living != target_as_living)
-			var/area/A = get_area(target_as_living)
-			if(!allow_hostile_action(caller_as_living.loyalty_tag,target_as_living.loyalty_tag,A))
+			if(!allow_hostile_action(caller_as_living.loyalty_tag,target_as_living))
 				caller.to_chat(span("warning","You'd feel it would be unsafe to treat your fellow man with the dangerous [src.name]..."))
 				return FALSE
 

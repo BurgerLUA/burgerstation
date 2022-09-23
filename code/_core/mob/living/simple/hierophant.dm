@@ -72,14 +72,12 @@
 
 	var/teleport_num = rand(1,8)
 
-	var/area/A = get_area(src)
-
 
 	var/i=1
 	for(var/mob/living/L in view(VIEW_RANGE,src))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
+		if(!allow_hostile_action(src.loyalty_tag,L))
 			continue
 		var/desired_dir = DIRECTIONS_ALL[i]
 		var/turf/T = get_step(src,desired_dir)

@@ -106,12 +106,10 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	play_sound('sound/voice/xeno/queen_screech.ogg',T, range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 
-	var/area/A = T.loc
-
 	for(var/mob/living/L in view(VIEW_RANGE,src))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
+		if(!allow_hostile_action(src.loyalty_tag,L))
 			continue
 		L.add_status_effect(STUN,20,20)
 

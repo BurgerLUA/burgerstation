@@ -17,7 +17,7 @@
 	if(is_living(owner))
 		var/mob/living/L = owner
 		active = L.intent == intent
-		update_overlays()
+		update_sprite()
 
 /obj/hud/button/intent/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -27,15 +27,6 @@
 		var/mob/living/L = caller
 		L.selected_intent = intent
 		L.update_intent()
-
-/obj/hud/button/intent/update_overlays()
-
-	. = ..()
-
-	if(active)
-		var/image/I = new/image(initial(icon),"[icon_state]_active")
-		add_overlay(I)
-
 
 //The reason why this isn't one button is to support button binds.
 /obj/hud/button/intent/help

@@ -30,15 +30,16 @@
 
 /obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 
-	if(!is_living(caller))
-		if(messages) caller.to_chat(span("danger","The firing pin doesn't detect your IFF signature and refuses to fire!"))
-		return FALSE
+	if(src.iff_tag)
+		if(!is_living(caller))
+			if(messages) caller.to_chat(span("danger","The firing pin doesn't detect your IFF signature and refuses to fire!"))
+			return FALSE
 
-	var/mob/living/advanced/A = caller
+		var/mob/living/L = caller
 
-	if(!check_iff(A.iff_tag,src.iff_tag,get_area(weapon),hostile=TRUE))
-		if(messages) caller.to_chat(span("danger","The firing pin doesn't recognize your IFF signature and refuses to fire!"))
-		return FALSE
+		if(L.iff_tag != src.iff_tag)
+			if(messages) caller.to_chat(span("danger","The firing pin doesn't recognize your IFF signature and refuses to fire!"))
+			return FALSE
 
 	. = ..()
 

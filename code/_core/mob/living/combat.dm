@@ -57,8 +57,7 @@
 	if(is_living(attacker))
 		var/mob/living/L = attacker
 		if(!damage_type || !damage_type.allow_friendly_fire)
-			var/area/A = get_area(src)
-			if(!allow_hostile_action(src.loyalty_tag,L.loyalty_tag,A))
+			if(!allow_hostile_action(L.loyalty_tag,src))
 				return FALSE
 
 	return ..()

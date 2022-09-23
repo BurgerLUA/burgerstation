@@ -105,7 +105,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 			var/bypass_safe = TRUE
 			if(src.loyalty_tag && is_living(M))
 				var/mob/living/L = M
-				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
+				if(!allow_hostile_action(src.loyalty_tag,L))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))
@@ -125,7 +125,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 			var/bypass_safe = TRUE
 			if(src.loyalty_tag && is_living(M))
 				var/mob/living/L = M
-				if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,T.loc))
+				if(!allow_hostile_action(src.loyalty_tag,L))
 					bypass_safe = FALSE
 			if(distance > 1)
 				if(bypass_safe || T.is_safe_teleport(FALSE) || !grabbed_turf.is_safe_teleport(FALSE))

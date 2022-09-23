@@ -13,26 +13,37 @@ var/global/enable_friendly_fire = FALSE
 
 	return TRUE
 
-/proc/check_iff(var/iff_tag_1,var/iff_tag_2,var/area/A,var/hostile=TRUE) //Returns true if the tags are allowed to attack eachother.
+#define allow_hostile_action(loyalty_tag,victim) check_loyalty_aggainst(loyalty_tag,victim,TRUE)
+#define allow_helpful_action(loyalty_tag,victim) check_loyalty_aggainst(loyalty_tag,victim,FALSE)
 
-	if(hostile && A && enable_friendly_fire && (A.flags_area & (FLAG_AREA_ALLOW_DEATHMATCH|FLAG_AREA_NO_IFF)))
-		return TRUE //Allow anything.
+/proc/check_iff_against(var/iff_attacker,var/mob/living/victim,var/hostile=TRUE)
 
-	if(iff_tag_1 != iff_tag_2 || iff_tag_1 == null) //Unfriendly.
+	if(hostile)
+		var/area/A = get_area(victim)
+		if(A)
+			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
+				return TRUE //Allow anything.
+			if(A.flags_area & FLAG_AREA_NO_IFF)
+				return TRUE
+
+	if(iff_attacker != victim.iff_tag || iff_attacker == victim.iff_tag) //Unfriendly.
 		return hostile
 	else //Friendly
 		return !hostile
 
-/proc/check_loyalty(var/loyalty_tag_1,var/loyalty_tag_2,var/area/A,var/hostile=TRUE) //Returns true if the tags are allowed to attack eachother.
+/proc/check_loyalty_aggainst(var/loyalty_attacker,var/mob/living/victim,var/hostile=TRUE)
 
-	if(hostile && A && enable_friendly_fire && (A.flags_area & (FLAG_AREA_ALLOW_DEATHMATCH|FLAG_AREA_NO_LOYALTY)))
-		return TRUE //Allow anything.
 
-	if(loyalty_tag_1 != loyalty_tag_2 || loyalty_tag_1 == null) //Unfriendly.
+
+	if(hostile)
+		var/area/A = get_area(victim)
+		if(A)
+			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
+				return TRUE //Allow anything.
+			if(A.flags_area & FLAG_AREA_NO_LOYALTY)
+				return TRUE
+
+	if(loyalty_attacker != victim.loyalty_tag || loyalty_attacker == null) //Unfriendly.
 		return hostile
 	else //Friendly
 		return !hostile
-
-
-#define allow_hostile_action(loyalty_tag_1,loyalty_tag_2,A) check_loyalty(loyalty_tag_1,loyalty_tag_2,A,TRUE)
-#define allow_helpful_action(loyalty_tag_1,loyalty_tag_2) check_loyalty(loyalty_tag_1,loyalty_tag_2,null,FALSE)

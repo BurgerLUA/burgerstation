@@ -141,7 +141,7 @@
 				var/mob/living/L = grabbed_object
 				var/mob/living/C = caller
 				var/turf/grabbed_object_turf = grabbed_object.loc
-				if(!allow_hostile_action(L.loyalty_tag,C.loyalty_tag,grabbed_object_turf.loc) && grabbed_object_turf.is_safe_teleport(FALSE) && !desired_move_turf.is_safe_teleport(FALSE))
+				if(!allow_hostile_action(C.loyalty_tag,L) && grabbed_object_turf.is_safe_teleport(FALSE) && !desired_move_turf.is_safe_teleport(FALSE))
 					return TRUE
 			grabbed_object.Move(desired_move_turf)
 			if(is_living(grabbed_object))

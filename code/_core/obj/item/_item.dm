@@ -720,9 +720,8 @@ var/global/list/rarity_to_mul = list(
 		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
 			return FALSE
 		if(reagents.contains_lethal && L != C)
-			var/area/A = get_area(L)
-			if(!allow_hostile_action(C.loyalty_tag,L.loyalty_tag,A))
-				caller.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
+			if(!allow_hostile_action(C.loyalty_tag,L))
+				C.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
 				return FALSE
 
 	if(L.dead)

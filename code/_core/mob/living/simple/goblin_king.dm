@@ -108,10 +108,9 @@
 	do_say("Suffer our wraith invaders, suffer!")
 	play_sound('sound/voice/xeno/queen_screech.ogg',get_turf(src), range_min = VIEW_RANGE, range_max = VIEW_RANGE*3)
 	var/stun_time = angered ? 40 : 20
-	var/area/A = get_area(src)
 	for(var/mob/living/L in view(VIEW_RANGE,src))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
+		if(!allow_hostile_action(src.loyalty_tag,L))
 			continue
 		L.add_status_effect(STUN,20,stun_time)

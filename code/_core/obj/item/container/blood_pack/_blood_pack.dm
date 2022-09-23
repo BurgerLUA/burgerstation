@@ -42,8 +42,7 @@
 	if(caller == target)
 		return TRUE
 
-	var/area/A = get_area(target)
-	if(!allow_hostile_action(caller.loyalty_tag,target.loyalty_tag,A))
+	if(!allow_hostile_action(caller.loyalty_tag,target))
 		if(desired_inject)
 			if(reagents.contains_lethal)
 				if(messages) caller.to_chat(span("warning","Your loyalty tag prevents you from injecting lethal reagents!"))

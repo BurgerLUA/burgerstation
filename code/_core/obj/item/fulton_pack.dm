@@ -42,9 +42,8 @@
 			return FALSE
 		if(is_living(caller))
 			var/mob/living/L2 = caller
-			var/area/A = get_area(L)
-			if(!allow_hostile_action(L.loyalty_tag,L2.loyalty_tag,A))
-				caller.to_chat(span("warning","Your loyalty tag prevents you from extracting \the [L.name]!"))
+			if(!allow_hostile_action(L2.loyalty_tag,L))
+				L2.to_chat(span("warning","Your loyalty tag prevents you from extracting \the [L.name]!"))
 				return FALSE
 		if(L.boss)
 			caller.to_chat(span("warning","\The [L.name] is too large to be extracted!"))

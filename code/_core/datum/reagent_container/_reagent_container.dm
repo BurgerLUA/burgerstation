@@ -478,8 +478,7 @@
 			L2 = target_container.owner.loc
 
 		if(src.contains_lethal && L2 && L1 != L2)
-			var/area/A = get_area(L2)
-			if(!allow_hostile_action(L1.loyalty_tag,L2.loyalty_tag,A))
+			if(!allow_hostile_action(L1.loyalty_tag,L2))
 				L1.to_chat(span("warning","Your loyalty tag prevents you from giving lethal reagents to your allies!"))
 				return 0
 
@@ -588,8 +587,7 @@
 
 	if(source.contains_lethal && caller != src && is_living(caller))
 		var/mob/living/L = caller
-		var/area/A = get_area(src)
-		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
+		if(!allow_hostile_action(L.loyalty_tag,src))
 			return FALSE
 
 	. = ..()

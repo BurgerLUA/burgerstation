@@ -63,7 +63,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_helpful_action(L.loyalty_tag,affecting_faction))
+		if(!allow_helpful_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -88,7 +88,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -108,7 +108,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_helpful_action(L.loyalty_tag,affecting_faction))
+		if(!allow_helpful_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -128,7 +128,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -146,7 +146,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_helpful_action(L.loyalty_tag,affecting_faction))
+		if(!allow_helpful_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -166,7 +166,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -185,7 +185,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -206,7 +206,7 @@
 			continue
 		if(L.boss) //yea, no repelling bosses, sorry
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -230,7 +230,7 @@
 			continue
 		if(L.boss) //yea, no attracting bosses, sorry
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -254,7 +254,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -340,7 +340,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_helpful_action(L.loyalty_tag,affecting_faction))
+		if(!allow_helpful_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue
@@ -360,7 +360,7 @@
 	for(var/mob/living/L in viewers(4,T))
 		if(L.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,affecting_faction,T.loc))
+		if(!allow_hostile_action(affecting_faction,L))
 			continue
 		if(!istype(L.health))
 			continue

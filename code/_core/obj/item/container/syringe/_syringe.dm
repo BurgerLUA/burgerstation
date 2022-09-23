@@ -120,8 +120,7 @@
 			victim = target.loc
 
 		if(victim != attacker)
-			var/area/A = get_area(victim)
-			if(!allow_hostile_action(victim.loyalty_tag,attacker.loyalty_tag,A))
+			if(!allow_hostile_action(attacker.loyalty_tag,victim))
 				if(injecting)
 					if(reagents.contains_lethal)
 						attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))

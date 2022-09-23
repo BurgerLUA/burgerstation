@@ -130,18 +130,6 @@
 
 	update_sprite()
 
-/mob/living/simple/xeno/Cross(atom/movable/O,atom/oldloc)
-
-	if(is_living(O))
-		var/mob/living/L = O
-		var/area/A = get_area(L)
-		if(!allow_hostile_action(L.loyalty_tag,src.loyalty_tag,A))
-			return TRUE
-
-	return ..()
-
-
-
 /mob/living/simple/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag,var/damage_multiplier=1)
 
 	if(!can_leap)
