@@ -18,8 +18,8 @@
 
 /obj/item/light_sensor/update_underlays()
 	. = ..()
-	var/icon/I = new/icon(initial(icon),initial(icon_state))
-	underlays += I
+	var/image/I = new/image(initial(icon),initial(icon_state))
+	add_underlay(I)
 
 /obj/item/light_sensor/click_self(var/mob/caller)
 
@@ -37,12 +37,13 @@
 		START_THINKING(src)
 	else
 		STOP_THINKING(src)
-		update_icon()
+
+	update_icon()
 
 	return TRUE
 
 /obj/item/light_sensor/think()
-	update_sprite()
+	update_icon() //Not update_sprite
 	return TRUE
 
 /obj/item/light_sensor/update_icon()

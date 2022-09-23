@@ -39,10 +39,10 @@
 	. = ..()
 	var/obj/item/powercell/PC = get_battery()
 	if(!istype(PC) || PC.charge_current < charge_cost)
-		var/image/I = new/icon(initial(icon),"charge_0")
+		var/image/I = new/image(initial(icon),"charge_0")
 		add_overlay(I)
 	else
-		var/image/I = new/icon(initial(icon),"charge_[FLOOR((PC.charge_current/PC.charge_max) * 5, 1)]")
+		var/image/I = new/image(initial(icon),"charge_[FLOOR((PC.charge_current/PC.charge_max) * 5, 1)]")
 		add_overlay(I)
 
 /obj/item/weapon/ranged/energy/abductor/get_static_spread()

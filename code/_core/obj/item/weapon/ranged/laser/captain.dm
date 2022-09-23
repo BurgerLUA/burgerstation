@@ -37,10 +37,10 @@
 	. = ..()
 	var/obj/item/powercell/PC = get_battery()
 	if(!istype(PC))
-		var/image/I = new/icon(initial(icon),"charge0")
+		var/image/I = new/image(initial(icon),"charge0")
 		add_overlay(I)
 	else
-		var/image/I = new/icon(initial(icon),"charge[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]")
+		var/image/I = new/image(initial(icon),"charge[FLOOR((PC.charge_current/PC.charge_max) * 4, 1)]")
 		add_overlay(I)
 
 

@@ -30,12 +30,10 @@
 
 /obj/hud/button/intent/update_overlays()
 
-	overlays.Cut()
-
 	. = ..()
 
 	if(active)
-		var/icon/I = new/icon(initial(icon),"[icon_state]_active")
+		var/image/I = new/image(initial(icon),"[icon_state]_active")
 		add_overlay(I)
 
 

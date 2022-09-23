@@ -78,8 +78,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 /obj/hud/update_icon()
 
 	if(user_colors)
-		icon = initial(icon)
-		var/icon/I = new/icon(icon,icon_state)
+		var/icon/I = new/icon(initial(icon),icon_state)
 		swap_colors(I)
 		icon = I
 

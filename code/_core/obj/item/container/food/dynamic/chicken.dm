@@ -10,49 +10,76 @@
 
 	scale_sprite = FALSE
 
-/obj/item/container/edible/dynamic/chicken/update_icon()
+/obj/item/container/edible/dynamic/chicken/update_sprite()
 
-	var/total_raw = 0
-	var/total_cooked = 0
+	if(!reagents.volume_current)
+		return FALSE
 
-	var/best_meat
-	var/best_meat_volume
+	overlays.Cut()
+
+	/*
+	if(has_prefix(icon_state,"meat_"))
+		if(reagents.volume_current <= 5)
+			icon_state = "bacon"
+		else if(reagents.volume_current <= 10)
+			icon_state = "cutlet"
+	*/
+
+	var/total_fat = 0
+	var/best_fat
+	var/best_fat_volume
+
+	var/total_meat = 0
+	var/meat_r
+	var/meat_g
+	var/meat_b
+
+	var/carbon_amount = 0
 
 	for(var/reagent_type in reagents.stored_reagents)
-		var/amount = reagents.stored_reagents[reagent_type]
 		var/reagent/R = REAGENT(reagent_type)
+		var/amount = reagents.stored_reagents[reagent_type]
+		if(reagent_type == /reagent/carbon)
+			carbon_amount += amount
+			continue
+		if(R.flags_reagent & FLAG_REAGENT_FAT)
+			total_fat += amount
+			if(!best_fat || amount > best_fat_volume)
+				best_fat = reagent_type
+				best_fat_volume = amount
+			continue
+		if(R.flags_reagent & (FLAG_REAGENT_RAW | FLAG_REAGENT_COOKED))
+			total_meat += amount
+			meat_r += GetRedPart(R.color) * amount
+			meat_g += GetGreenPart(R.color) * amount
+			meat_b += GetBluePart(R.color) * amount
 
-		if(R.flags_reagent & FLAG_REAGENT_COOKED)
-			total_cooked += amount
-			if(!best_meat || amount > best_meat_volume)
-				best_meat = reagent_type
-				best_meat_volume = amount
+	if(total_meat)
+		meat_r *= (1/total_meat)
+		meat_g *= (1/total_meat)
+		meat_b *= (1/total_meat)
 
-		else if(R.flags_reagent & FLAG_REAGENT_RAW)
-			total_raw += amount
-			if(!best_meat || amount > best_meat_volume)
-				best_meat = reagent_type
-				best_meat_volume = amount
+	if(best_fat)
+		var/reagent/RF = REAGENT(best_fat)
+		var/image/fat_image = new/image(initial(icon),"[icon_state]_fat")
+		fat_image.appearance_flags = src.appearance_flags | RESET_COLOR
+		fat_image.color = RF ? RF.color : "#FFFFFF"
+		add_overlay(fat_image)
 
-	if(!best_meat)
-		return ..()
+	if(carbon_amount)
+		var/image/carbon_image = new/image(initial(icon),"[icon_state]_marks")
+		carbon_image.appearance_flags = src.appearance_flags | RESET_COLOR
+		carbon_image.alpha = clamp(carbon_amount*55,0,255)
+		add_overlay(carbon_image)
 
-	icon = initial(icon)
+	color = blend_colors(rgb(meat_r,meat_g,meat_b),"#000000",carbon_amount/(reagents.volume_current*0.5))
 
-	var/icon/I = new/icon(icon,icon_state)
-	var/reagent/R = REAGENT(best_meat)
-	I.Blend(R.color,ICON_MULTIPLY)
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		I.overlays.Cut()
+		I.update_overlays()
 
-	if(R.flags_reagent & FLAG_REAGENT_COOKED)
-		var/icon/I3 = new/icon(icon,"grill_marks")
-		var/icon/I4 = new/icon(I)
-		I4.Blend(rgb(0,0,0,200),ICON_MULTIPLY)
-		I3.Blend(I4,ICON_ADD)
-		I.Blend(I3,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
+	return TRUE
 
 /obj/item/container/edible/dynamic/chicken/raw/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/chicken,15)

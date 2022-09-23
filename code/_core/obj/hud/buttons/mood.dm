@@ -7,7 +7,7 @@
 	screen_loc = "RIGHT-1,CENTER"
 	flags_hud = FLAG_HUD_MOB
 	layer = 100 //Makes it above the hunger meter.
-	screen_loc = "RIGHT,CENTER-1"
+	screen_loc = "RIGHT:-1,CENTER-1:-4"
 	var/last_mood = 0
 
 

@@ -65,13 +65,11 @@
 	var/mob/living/advanced/A = owner
 
 	var/good_color = "#00FF00"
-
 	var/bad_color = "#FF0000"
 
 	if(owner && owner.client)
 		var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
 		good_color = color_scheme[2]
-
 		bad_color = color_scheme[6]
 
 	for(var/o_id in labeled_overlays)

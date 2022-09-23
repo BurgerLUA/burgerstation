@@ -1,6 +1,6 @@
 /obj/item/container/spray/silver_sulfadiazine
 	name = "medical spray (silver sulfadiazine)"
-	base_color = "#FFBD7F"
+	color = "#FFBD7F"
 	glass_color = "#FFFF00"
 
 /obj/item/container/spray/silver_sulfadiazine/Generate()
@@ -9,7 +9,7 @@
 
 /obj/item/container/spray/mustard
 	name = "medical spray (mustard)"
-	base_color = "#FFBD7F"
+	color = "#FFBD7F"
 	glass_color = "#FFFF00"
 
 /obj/item/container/spray/mustard/Generate()
@@ -18,7 +18,7 @@
 
 /obj/item/container/spray/styptic_powder
 	name = "medical spray (styptic powder)"
-	base_color = "#FF7F7F"
+	color = "#FF7F7F"
 	glass_color = "#FF0000"
 
 /obj/item/container/spray/styptic_powder/Generate()
@@ -27,7 +27,7 @@
 
 /obj/item/container/spray/ketchup
 	name = "medical spray (ketchup)"
-	base_color = "#FF7F7F"
+	color = "#FF7F7F"
 	glass_color = "#FF0000"
 
 /obj/item/container/spray/ketchup/Generate()
@@ -36,7 +36,7 @@
 
 /obj/item/container/spray/synthflesh
 	name = "medical spray (synthflesh)"
-	base_color = "#FFEBEB"
+	color = "#FFEBEB"
 	glass_color = "#FFFFFF"
 
 /obj/item/container/spray/synthflesh/Generate()

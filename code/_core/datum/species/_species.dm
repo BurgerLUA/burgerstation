@@ -104,6 +104,7 @@
 		/obj/hud/button/rest,
 
 		/obj/hud/button/hunger,
+		/obj/hud/button/thirst,
 		/obj/hud/button/mood,
 
 

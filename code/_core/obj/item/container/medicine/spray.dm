@@ -8,33 +8,26 @@
 
 	var/icon_count = 8
 
-	var/base_color = "#FFFFFF"
 	var/glass_color = "#FFFFFF"
 
 	reagents = /reagent_container/spray/medical
 
 	value = 5
 
-/obj/item/container/spray/update_icon()
+/obj/item/container/spray/update_overlays()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
+	. = ..()
 
-	var/icon/I = new/icon(icon,icon_state)
-	I.Blend(base_color,ICON_MULTIPLY)
+	var/image/I_liquid = new/image(initial(icon),"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
+	I_liquid.appearance_flags = RESET_COLOR
+	I_liquid.color = reagents.color
+	add_overlay(I_liquid)
 
-	var/icon/I2 = new/icon(icon,"liquid_[CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)]")
-	I2.Blend(reagents.color,ICON_MULTIPLY)
+	var/image/I_glass = new/image(icon,"glass")
+	I_glass.appearance_flags = RESET_COLOR
+	I_glass.color = glass_color
+	add_overlay(I_glass)
 
-	var/icon/I3 = new/icon(icon,"glass")
-	I3.Blend(glass_color,ICON_MULTIPLY)
-
-	I.Blend(I2,ICON_UNDERLAY)
-	I.Blend(I3,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
 
 
 /obj/item/container/spray/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)

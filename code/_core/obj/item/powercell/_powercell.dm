@@ -45,21 +45,13 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/powercell/update_icon()
 
-	icon = initial(icon)
-	icon_state = initial(icon_state)
 
-	var/icon/I = new/icon(icon,icon_state)
+/obj/item/powercell/update_overlays()
+	. = ..()
 	var/charge_number = FLOOR(min(charge_current/charge_max,1) * 7, 1)
-	var/desired_icon = "charge_[charge_number]"
-	var/icon/I2 = new/icon(icon,desired_icon)
-
-	I.Blend(I2,ICON_OVERLAY)
-
-	icon = I
-
-	return ..()
+	var/image/I = new/image(initial(icon),"charge_[charge_number]")
+	add_overlay(I)
 
 /obj/item/powercell/advanced
 	name = "advanced power cell"

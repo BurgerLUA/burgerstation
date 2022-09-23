@@ -22,7 +22,7 @@
 
 /obj/item/ball/update_overlays()
 	. = ..()
-	var/image/I = new/icon(initial(icon),"[initial(icon_state)]_shading")
+	var/image/I = new/image(initial(icon),"[initial(icon_state)]_shading")
 	add_overlay(I)
 
 /obj/item/ball/Finalize()

@@ -62,7 +62,7 @@
 /mob/living/simple/silicon/squats/update_overlays()
 	. = ..()
 	if(!dead && health && health.health_current >= health.health_max * 0.5)
-		var/icon/I = new/icon(initial(icon),"squats-shield")
+		var/image/I = new/image(initial(icon),"squats-shield")
 		add_overlay(I)
 
 /mob/living/simple/silicon/syndieborg

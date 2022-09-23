@@ -384,9 +384,11 @@ mob/living/proc/on_life_slow()
 		add_nutrition_fast(-0.08*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 		add_hydration(-0.13*thirst_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
-	if(client)
+	if(client) //TODO: FIX THIS SHITCODE.
 		for(var/obj/hud/button/hunger/B in buttons)
-			B.update_sprite()
+			B.update_icon()
+		for(var/obj/hud/button/thirst/B in buttons)
+			B.update_icon()
 
 /mob/living/proc/handle_intoxication()
 
