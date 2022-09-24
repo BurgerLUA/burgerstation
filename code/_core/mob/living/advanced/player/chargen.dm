@@ -69,7 +69,5 @@
 
 
 /mob/living/advanced/player/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
-
 	. = ..()
-
 	setup_iff()

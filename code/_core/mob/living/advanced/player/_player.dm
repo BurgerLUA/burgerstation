@@ -122,6 +122,7 @@ var/global/list/difficulty_to_damage_mul = list(
 /mob/living/advanced/player/Finalize()
 	. = ..()
 	setup_difficulty()
+	setup_iff()
 
 
 

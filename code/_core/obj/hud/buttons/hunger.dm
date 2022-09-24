@@ -18,7 +18,8 @@
 
 /obj/hud/button/hunger/update_owner()
 	. = ..()
-	update_sprite()
+	if(owner)
+		update_sprite()
 
 /obj/hud/button/hunger/get_examine_list(var/mob/caller)
 
