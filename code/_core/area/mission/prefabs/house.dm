@@ -10,7 +10,7 @@
 /area/mission/prefab/house/Finalize()
 	. = ..()
 	if(parent_type != /area/mission/prefab/house)
-		var/area/A = locate(parent_type)
+		var/area/A = SSarea.all_areas[parent_type]
 		name = A.name
 
 //House 01

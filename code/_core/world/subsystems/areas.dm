@@ -27,7 +27,8 @@ SUBSYSTEM_DEF(area)
 
 	var/area/null_area
 
-	for(var/area/A in world)
+	for(var/k in all_areas)
+		var/area/A = all_areas[k]
 		INITIALIZE(A)
 		GENERATE(A)
 		FINALIZE(A)

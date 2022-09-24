@@ -30,6 +30,7 @@ obj/structure/interactive/computer/arcade/bubbletwist/clicked_on_by_object(var/m
 	INTERACT_DELAY(5)
 
 	var/mob/living/L = caller
-	L.toggle_research_game(FALSE,TRUE)
+	if(L.client)
+		L.toggle_research_game(FALSE,TRUE)
 
 	return TRUE

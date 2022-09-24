@@ -110,9 +110,10 @@
 	if(sunlight_freq > 1) //Odd sunlight freqs greater than 1 must be even.
 		sunlight_freq = CEILING(sunlight_freq,2)
 
+	SSarea.all_areas[src.type] = src
+
 /area/Initialize()
 
-	SSarea.all_areas[src.type] = src
 	if(src.area_identifier)
 		if(!SSarea.areas_by_identifier[src.area_identifier])
 			SSarea.areas_by_identifier[src.area_identifier] = list()
