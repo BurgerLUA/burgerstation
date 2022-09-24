@@ -39,7 +39,8 @@
 		status_effects[status_type] = list()
 		. = TRUE
 
-	PROCESS_LIVING(src)
+	if(src.finalized)
+		PROCESS_LIVING(src)
 
 	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
 		status_effects[status_type]["duration"] = duration

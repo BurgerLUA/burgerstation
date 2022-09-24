@@ -1,6 +1,17 @@
 /area/mission/prefab/house
 	horde_data = /horde_data/city
 
+/area/mission/prefab/house/Initialize()
+	. = ..()
+	if(parent_type == /area/mission/prefab/house)
+		name = "\improper [pick(SStext.last_names)] Residence"
+
+
+/area/mission/prefab/house/Finalize()
+	. = ..()
+	if(parent_type != /area/mission/prefab/house)
+		var/area/A = locate(parent_type)
+		name = A.name
 
 //House 01
 /area/mission/prefab/house/house_01

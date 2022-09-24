@@ -64,7 +64,7 @@
 
 /obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_inventory(object) && linked_portal && src.invisiblity < 101)
+	if(is_inventory(object) && linked_portal && src.invisibility < 101)
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		var/mob/living/L = caller

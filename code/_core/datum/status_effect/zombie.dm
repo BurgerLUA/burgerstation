@@ -93,7 +93,7 @@
 
 /status_effect/zombie/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
-	if(. && !owner.has_status_effect(REST) && !owner.dead && owner.ai && prob(3))
+	if(. && !owner.dead && owner.ai && owner.ai.active && !owner.has_status_effect(REST) && prob(1))
 		var/sound_to_play
 		if(owner.ai.alert_level == ALERT_LEVEL_NONE)
 			var/list/valid_sounds = list(
