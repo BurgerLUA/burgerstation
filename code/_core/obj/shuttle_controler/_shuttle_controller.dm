@@ -253,9 +253,7 @@ var/global/list/all_shuttle_controlers = list()
 		var/offset_y = T.y - original_src_y
 		var/turf/T_to_replace = locate(desired_marker.x + offset_x, desired_marker.y + offset_y, desired_marker.z) //The destination turf!
 		if(!T_to_replace)
-			//log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at [desired_marker.x] + [offset_x],[desired_marker.y] + [offset_y],[desired_marker.z]. (Marker: [desired_marker.get_debug_name()]).")
-			log_error("T: [T.x],[T.y], SRC: [original_src_x],[original_src_y].")
-
+			log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at T: [T.x],[T.y],[T.z] | SRC: [original_src_x],[original_src_y],[T.z].")
 			continue
 
 		for(var/k in T_to_replace.contents) //Crush everything in the destination turf. First pass.
