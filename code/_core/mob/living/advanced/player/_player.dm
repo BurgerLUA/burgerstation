@@ -122,9 +122,6 @@ var/global/list/difficulty_to_damage_mul = list(
 /mob/living/advanced/player/Finalize()
 	. = ..()
 	setup_difficulty()
-	setup_iff()
-
-
 
 /mob/living/advanced/player/proc/default_nanotrasen_move()
 	if(length(cryo_spawnpoints))

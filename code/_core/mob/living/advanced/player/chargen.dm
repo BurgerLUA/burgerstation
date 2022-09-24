@@ -2,8 +2,10 @@
 
 	INITIALIZE(src)
 	FINALIZE(src)
+	setup_iff()
 	equip_loadout(/loadout/new_player,TRUE)
 	stop_music_track(client)
+
 
 	nutrition *= 0.75
 	hydration *= 0.75

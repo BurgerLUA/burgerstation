@@ -28,8 +28,8 @@
 
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
-	var/x_attack = params[PARAM_ICON_X] ? params[PARAM_ICON_X] : 16
-	var/y_attack = params[PARAM_ICON_Y] ? params[PARAM_ICON_Y] : 16
+	var/x_attack = params && params[PARAM_ICON_X] ? params[PARAM_ICON_X] : 16
+	var/y_attack = params && params[PARAM_ICON_Y] ? params[PARAM_ICON_Y] : 16
 
 	var/best_distance = INFINITY
 	var/obj/item/organ/best_organ
