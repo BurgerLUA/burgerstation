@@ -10,6 +10,8 @@
 
 	var/scan_mode = FALSE
 
+	var/signal_offset
+
 	value = 10
 
 	weight = 2
@@ -392,9 +394,6 @@
 	contraband = TRUE
 	unreliable = TRUE
 
-
-var/global/signal_offset = rand(0,10000)
-
 /obj/item/pinpointer/deathmatch/click_self(var/mob/caller)
 
 	INTERACT_CHECK
@@ -427,6 +426,48 @@ var/global/signal_offset = rand(0,10000)
 	if(choice)
 		var/mob/living/advanced/player/P = possible_crew[choice]
 		tracked_atom = P
+	else
+		tracked_atom = null
+
+	scan_mode = FALSE
+	START_THINKING(src)
+
+	return TRUE
+
+
+
+/obj/item/pinpointer/mobs
+	name = "enemy pinpointer"
+	desc_extended = "Use this to track and locate objects. This one tracks things to kill."
+	icon_state = "syndicate"
+	value = 1000
+	value_burgerbux = 1
+
+/obj/item/pinpointer/mobs/click_self(var/mob/caller, var/mob/living/advanced/npc/a, var/mob/living/simple/a)
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
+
+	var/list/mobs = list()
+	for(a in all_mobs)
+		if(!can_track(a))
+			continue
+		var/signal_num = text2num("\ref[a]",16)
+		signal_num += signal_offset
+		signal_num = 1 + (signal_num % 200)
+		var/distance_to_show = get_dist_advanced(src,a)
+		var/name_mod = "[a.name] ([a.dead ? "DEAD" : "Alive"], ~[distance_to_show]m)"
+		mobs[name_mod] = a
+
+	scan_mode = TRUE
+	update_sprite()
+
+	var/choice = input("Who do you want to track?","Mob Pinpointer Tracking",null) as null|anything in mobs
+
+	INTERACT_CHECK_OTHER(src) //Hacky
+
+	if(choice)
+		a = mobs[choice]
+		tracked_atom = a
 	else
 		tracked_atom = null
 
