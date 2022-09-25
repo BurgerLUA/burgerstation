@@ -4,6 +4,9 @@ SUBSYSTEM_DEF(gamemode)
 	priority = SS_ORDER_LAST
 	tick_rate = SECONDS_TO_TICKS(1)
 
+	cpu_usage_max = 90
+	tick_usage_max = 90
+
 	var/list/all_gamemodes = list()
 	var/gamemode/active_gamemode
 

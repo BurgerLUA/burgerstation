@@ -81,24 +81,8 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 		//Only choice: Yes.
 
-		if(!SSgamemode.active_gamemode.allow_launch)
-			L.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+		if(SC.try_launch(caller,linked_marker))
 			return TRUE
-
-		if(linked_marker.reserved)
-			L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
-			return TRUE
-
-		if(SC.state != SHUTTLE_STATE_LANDED)
-			caller.to_chat(span("notice","That shuttle is currently [SC.state]."))
-			continue
-
-		SC.time = 0
-		SC.transit_marker_destination = linked_marker
-		SC.transit_marker_destination.reserved = TRUE
-		SC.state = SHUTTLE_STATE_WAITING
-
-		return TRUE
 
 	. = ..()
 
@@ -182,6 +166,8 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 	var/obj/structure/interactive/computer/console/shuttle_landing/linked_computer
 
 	var/reserved = FALSE
+
+	anchored = 2
 
 /obj/marker/shuttle_landing/Finalize()
 	. = ..()

@@ -206,19 +206,20 @@
 			for(var/mob/living/advanced/player/P in people_who_killed)
 				rarity += P.get_rarity()
 				rarity_count++
-			rarity *= 1/rarity_count
-			var/list/loot_spawned = SPAWN_LOOT(/loot/treasure/boss,T,rarity)
-			for(var/k in loot_spawned)
-				var/obj/item/I = k
-				var/item_move_dir = pick(DIRECTIONS_ALL)
-				var/turf/turf_to_move_to = get_step(T,item_move_dir)
-				if(!turf_to_move_to)
-					turf_to_move_to = T
-				I.force_move(turf_to_move_to)
-				var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
-				I.pixel_x = -pixel_offsets[1]*TILE_SIZE
-				I.pixel_y = -pixel_offsets[2]*TILE_SIZE
-				animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+			if(rarity_count > 0)
+				rarity *= 1/rarity_count
+				var/list/loot_spawned = SPAWN_LOOT(/loot/treasure/boss,T,rarity)
+				for(var/k in loot_spawned)
+					var/obj/item/I = k
+					var/item_move_dir = pick(DIRECTIONS_ALL)
+					var/turf/turf_to_move_to = get_step(T,item_move_dir)
+					if(!turf_to_move_to)
+						turf_to_move_to = T
+					I.force_move(turf_to_move_to)
+					var/list/pixel_offsets = direction_to_pixel_offset(item_move_dir)
+					I.pixel_x = -pixel_offsets[1]*TILE_SIZE
+					I.pixel_y = -pixel_offsets[2]*TILE_SIZE
+					animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
 
 	HOOK_CALL("post_death")
 

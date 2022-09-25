@@ -2,7 +2,7 @@
 	name = "Meteor Shower"
 
 	probability = 10 //relative
-	duration = SECONDS_TO_DECISECONDS(30)
+	duration = SECONDS_TO_DECISECONDS(60)
 
 	occurances_max = 5
 
@@ -36,6 +36,8 @@
 				if(A.flags_area & FLAG_AREA_NO_EVENTS)
 					continue
 				valid_turfs += F
+			if(!length(valid_turfs))
+				continue
 			var/turf/T = pick(valid_turfs)
 			new /obj/effect/falling_meteor(T)
 

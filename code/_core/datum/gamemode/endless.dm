@@ -115,6 +115,7 @@
 			if(5)
 				status_display_text = "VOTE"
 				round_time_next = -1
+				SSvote.create_vote(/vote/continue_round)
 
 	var/time_left = round_time_next - round_time
 	if(time_left >= 0)

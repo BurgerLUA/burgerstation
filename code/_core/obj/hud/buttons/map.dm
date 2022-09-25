@@ -111,8 +111,7 @@
 			best_marker = SL
 			best_distance = distance
 
-		if(best_marker)
-			connected_background.linked_shuttle_controller.transit_marker_destination = best_marker
+		if(best_marker && connected_background.linked_shuttle_controller.set_destination(caller,best_marker))
 			update_sprite()
 			caller.to_chat(span("notice","New shuttle destination selected: [best_marker.]."))
 
@@ -271,34 +270,13 @@
 		. = ..()
 		if(connected_background.linked_shuttle_controller)
 			if(launch && close) //Return to base.
-				if(connected_background.linked_shuttle_controller)
-					if(connected_background.linked_shuttle_controller.state != SHUTTLE_STATE_LANDED)
-						caller.to_chat(span("warning","Error: Flight plan already set."))
-						return FALSE
-					connected_background.linked_shuttle_controller.time = 0
-					connected_background.linked_shuttle_controller.transit_marker_destination = connected_background.linked_shuttle_controller.transit_marker_base
-					connected_background.linked_shuttle_controller.state = SHUTTLE_STATE_WAITING
+				if(connected_background.linked_shuttle_controller.try_launch(caller,connected_background.linked_shuttle_controller.transit_marker_base))
 					connected_background.update_owner(null)
-					return TRUE
+				return TRUE
 			else if(launch) //Go to target.
-				if(connected_background.linked_shuttle_controller)
-					if(!SSgamemode.active_gamemode.allow_launch)
-						caller.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
-						return FALSE
-					if(connected_background.linked_shuttle_controller.state != SHUTTLE_STATE_LANDED)
-						caller.to_chat(span("warning","Error: Flight plan already set."))
-						return FALSE
-					if(!connected_background || !connected_background.linked_shuttle_controller.transit_marker_destination)
-						caller.to_chat(span("warning","Invalid launch destination: No destination selected."))
-						return FALSE
-					if(connected_background.linked_shuttle_controller.transit_marker_destination.reserved)
-						caller.to_chat(span("warning","Invalid launch destination: Landing area is reserved."))
-						return FALSE
-					connected_background.linked_shuttle_controller.time = 0
-					connected_background.linked_shuttle_controller.transit_marker_destination.reserved = TRUE
-					connected_background.linked_shuttle_controller.state = SHUTTLE_STATE_WAITING
+				if(connected_background.linked_shuttle_controller.try_launch(caller))
 					connected_background.update_owner(null)
-					return TRUE
+				return TRUE
 			else if(close)
 				connected_background.update_owner(null)
 				return TRUE

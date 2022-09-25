@@ -347,3 +347,44 @@ var/global/list/all_shuttle_controlers = list()
 			new/obj/effect/temp/shuttle_landing(T2)
 
 	return TRUE
+
+/obj/shuttle_controller/proc/set_destination(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
+
+	if(state != SHUTTLE_STATE_LANDED)
+		caller?.to_chat(span("notice","The shuttle is already in transit!"))
+		return FALSE
+
+	if(!desired_marker)
+		caller?.to_chat(span("warning","Error: Invalid shuttle destination!"))
+		return FALSE
+
+	if(desired_marker.reserved)
+		caller?.to_chat(span("warning","Error: Shuttle destination already is reserved or occupied!"))
+		return FALSE
+
+	src.transit_marker_destination = desired_marker
+
+	return TRUE
+
+/obj/shuttle_controller/proc/try_launch(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
+
+	if(!SSgamemode.active_gamemode.allow_launch)
+		caller?.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+		return FALSE
+
+	if(state != SHUTTLE_STATE_LANDED)
+		caller?.to_chat(span("warning","Error: Shuttle is currently [src.state]."))
+		return FALSE
+
+	if(desired_marker)
+		if(!set_destination(caller,desired_marker))
+			return FALSE
+	else if(!src.transit_marker_destination)
+		caller?.to_chat(span("warning","Error: No transit destination set!"))
+		return FALSE
+
+	src.time = 0
+	src.transit_marker_destination.reserved = TRUE
+	src.state = SHUTTLE_STATE_WAITING
+
+	return TRUE
