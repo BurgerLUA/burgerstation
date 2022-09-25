@@ -12,7 +12,7 @@
 
 	level = 80
 
-/mob/living/advanced/npc/clockwork_cultist/Finalize()
+/mob/living/advanced/npc/contractor_guard/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
