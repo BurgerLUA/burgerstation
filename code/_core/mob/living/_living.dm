@@ -445,10 +445,11 @@
 	gibbed = TRUE
 	if(death(TRUE))
 		if(blood_type)
-			var/reagent/R = REAGENT(blood_type)
 			var/turf/T = get_turf(src)
-			for(var/i=1,i<=9,i++)
-				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+			if(T)
+				var/reagent/R = REAGENT(blood_type)
+				for(var/i=1,i<=9,i++)
+					create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 		qdel(src)
 		return TRUE
 	gibbed = FALSE //Hacky, but it works.

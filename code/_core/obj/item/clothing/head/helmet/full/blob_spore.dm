@@ -41,12 +41,12 @@
 			BS.ai.set_objective(caller)
 		else
 			BS.ai.set_active(TRUE)
-		BS.add_status_effect(STUN,30,30,stealthy=TRUE) //So it doesn't latch immediately after being removed.
+		BS.add_status_effect(STUN,40,40,stealthy=TRUE) //So it doesn't latch immediately after being removed.
 	qdel(src)
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller)
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/remove_blob,caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/remove_blob,caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_remove_blob,caller)
 	return TRUE
 
@@ -84,7 +84,7 @@
 		if(O.health.adjust_loss_smart(brute=damage_ramp))
 			damage_ramp += initial(damage_ramp)
 			play_sound('sound/effects/blob_infection.ogg',T)
-			if(A.blood_type)
+			if(T && A.blood_type)
 				var/reagent/R = REAGENT(A.blood_type)
 				for(var/i=1,i<=2,i++)
 					create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))

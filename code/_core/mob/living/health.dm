@@ -33,22 +33,24 @@
 
 	if(blood_type && total_bleed_damage > 0 && blood_volume > 0)
 		var/turf/T = get_turf(src)
-		var/reagent/R = REAGENT(blood_type)
-		new /obj/effect/temp/impact/blood(T,3,R.color)
-		var/offset_x = (src.x - attacker.x)
-		var/offset_y = (src.y - attacker.y)
 
-		if(!offset_x && !offset_y)
-			offset_x = pick(-1,1)
-			offset_y = pick(-1,1)
+		if(T)
+			var/reagent/R = REAGENT(blood_type)
+			new /obj/effect/temp/impact/blood(T,3,R.color)
+			var/offset_x = (src.x - attacker.x)
+			var/offset_y = (src.y - attacker.y)
 
-		var/norm_offset = max(abs(offset_x),abs(offset_y),1)
-		offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
-		offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
+			if(!offset_x && !offset_y)
+				offset_x = pick(-1,1)
+				offset_y = pick(-1,1)
 
-		for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT_HARD),i++)
-			if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
-				break
+			var/norm_offset = max(abs(offset_x),abs(offset_y),1)
+			offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
+			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
+
+			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT_HARD),i++)
+				if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
+					break
 
 		if(health && total_bleed_damage && blood_type && blood_volume_max)
 			blood_volume = max(0,blood_volume-FLOOR(total_bleed_damage*0.02,1))
@@ -141,6 +143,11 @@
 
 /mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
+	var/turf/T = get_turf(src)
+
+	if(!T)
+		return FALSE
+
 	var/best_attribute = null
 	var/best_damage = 0
 
@@ -152,8 +159,6 @@
 
 	if(!best_attribute)
 		return FALSE
-
-	var/turf/T = get_turf(src)
 
 	switch(best_attribute)
 		if(BLADE)
@@ -181,7 +186,7 @@
 				var/desired_direction = get_dir(weapon,src)
 				for(var/i=1,i<=4,i++)
 					T = get_step(T,desired_direction)
-					if(!T.is_safe_move(check_contents=FALSE))
+					if(!T || !T.is_safe_move(check_contents=FALSE))
 						break
 					var/obj/effect/cleanable/blood/line/L = create_blood(/obj/effect/cleanable/blood/line,T,R.color,0,0)
 					if(L) L.dir = desired_direction
