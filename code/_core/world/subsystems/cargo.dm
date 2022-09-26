@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(cargo)
 		/obj/item/bulletbox/rifle_762,
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/barricade,
-		/obj/item/supply_remote/mech/ripley,
+		///obj/item/supply_remote/mech/ripley, super fucking bugged right now, overlays are fucked, zombies and other melee mobs cant target them, etc
 		/obj/item/supply_remote/barbecue,
 		/obj/item/supply_remote/drill,
 		/obj/item/grenade/timed/smoke,
