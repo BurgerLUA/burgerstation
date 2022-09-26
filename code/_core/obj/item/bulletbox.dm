@@ -193,3 +193,13 @@
 	. = ..()
 	set_stored_bullet(/obj/item/bullet_cartridge/rifle_308/nato/premium)
 	bullet_count = bullet_max
+
+/obj/item/bulletbox/rifle_127/Generate()
+	. = ..()
+	set_stored_bullet(/obj/item/bullet_cartridge/sniper_127/premium)
+	bullet_count = bullet_max
+
+/obj/item/bulletbox/rifle_127/ap/Generate()
+	. = ..()
+	set_stored_bullet(/obj/item/bullet_cartridge/sniper_127/ap)
+	bullet_count = bullet_max

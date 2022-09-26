@@ -13,6 +13,14 @@
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
 
+/damagetype/ranged/bullet/sniper_127/ap
+	damage_mod = SURPLUS_MUL
+	penetration_mod = ARMOR_MUL
+
+/damagetype/ranged/bullet/sniper_127/premium
+	damage_mod = PREMIUM_MUL
+	penetration_mod = PREMIUM_MUL
+
 /damagetype/ranged/bullet/sniper_50
 	attack_damage_base = list(
 		PIERCE = 50,
