@@ -172,6 +172,7 @@
 					set_objective(best_target)
 		else if(last_combat_location && !length(current_path_astar))
 			set_path_astar(last_combat_location)
+			last_combat_location = null
 		frustration_attack = 0
 
 	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))

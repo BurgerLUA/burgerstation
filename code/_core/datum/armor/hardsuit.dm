@@ -47,7 +47,7 @@
 		BLADE = 50,
 		BLUNT = 50,
 		PIERCE = 100,
-		LASER = -50,
+		LASER = -25,
 		ARCANE = -150,
 		HEAT = 50,
 		COLD = 100,
@@ -61,12 +61,33 @@
 	)
 
 
+/armor/hardsuit/combat/nanotrasen
+	defense_rating = list(
+		BLADE = 25,
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = -50,
+		ARCANE = -100,
+		HEAT = 25,
+		COLD = 125,
+		SHOCK = -75,
+		ACID = 50,
+		BOMB = 100,
+		BIO = 50,
+		RAD = 25,
+		FATIGUE = 25,
+		PAIN = 25
+	)
+
+
+
+
 /armor/hardsuit/combat/syndicate/plus
 	defense_rating = list(
 		BLADE = 75,
 		BLUNT = 75,
 		PIERCE = 100,
-		LASER = -75,
+		LASER = -50,
 		ARCANE = -175,
 		HEAT = 75,
 		COLD = 75,
@@ -79,13 +100,32 @@
 		PAIN = 50
 	)
 
+/armor/hardsuit/combat/nanotrasen/plus
+	defense_rating = list(
+		BLADE = 50,
+		BLUNT = 100,
+		PIERCE = 100,
+		LASER = -50,
+		ARCANE = -150,
+		HEAT = 50,
+		COLD = 125,
+		SHOCK = -75,
+		ACID = 50,
+		BOMB = 100,
+		BIO = 50,
+		RAD = 25,
+		FATIGUE = 25,
+		PAIN = 25
+	)
+
+
 
 /armor/hardsuit/combat/syndicate/fast
 	defense_rating = list(
 		BLADE = 75,
 		BLUNT = 50,
 		PIERCE = 75,
-		LASER = -75,
+		LASER = -50,
 		ARCANE = -150,
 		HEAT = 100,
 		COLD = 50,
@@ -103,7 +143,7 @@
 		BLADE = 150,
 		BLUNT = 150,
 		PIERCE = 150,
-		LASER = -50,
+		LASER = -25,
 		ARCANE = -100,
 		HEAT = 150,
 		COLD = 150,

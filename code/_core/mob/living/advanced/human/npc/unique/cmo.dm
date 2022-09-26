@@ -19,7 +19,7 @@
 /mob/living/advanced/npc/unique/cmo/setup_visuals()
 	. = ..()
 	change_organ_visual("skin", desired_color = "#D3B09E")
-	change_organ_visual("hair_head", desired_color = "#7C7068", desired_icon_state = "hair_medfade_s")
+	change_organ_visual("hair_head", desired_color = "#7C7068", desired_icon_state = "hair_medfade")
 
 
 /mob/living/advanced/npc/unique/cmo/Finalize()

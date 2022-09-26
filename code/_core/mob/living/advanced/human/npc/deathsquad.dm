@@ -1,6 +1,6 @@
 /mob/living/advanced/npc/deathsquad
 	name = "deathsquad commando"
-	desc = "An elite member of the Deathsquad. They are tasked to leave no witnesses."
+	desc = "An elite member of NanoTrasen's Deathsquad division. They are tasked to leave no witnesses and aren't supposed to actually exist."
 	ai = /ai/advanced/syndicate
 
 	dna = /dna/human
@@ -15,14 +15,3 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/deathsquad)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/deathsquad)
-
-/mob/living/advanced/npc/deathsquad/light
-	loadout = /loadout/deathsquad/light
-
-
-/mob/living/advanced/npc/deathsquad/medium
-	loadout = /loadout/deathsquad/medium
-
-
-/mob/living/advanced/npc/deathsquad/heavy
-	loadout = /loadout/deathsquad/heavy

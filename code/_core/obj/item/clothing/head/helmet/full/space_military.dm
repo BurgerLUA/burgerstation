@@ -11,8 +11,7 @@
 	value = 500
 
 	hidden_organs = list(
-		BODY_HAIR_HEAD = TRUE,
-		BODY_HAIR_FACE = TRUE
+		BODY_HAIR_HEAD = TRUE
 	)
 
 	dyeable = TRUE

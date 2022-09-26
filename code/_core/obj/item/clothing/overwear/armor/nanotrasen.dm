@@ -9,13 +9,17 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_ARMOR
 
-	armor = /armor/military/heavy/hard
+	armor = /armor/hardsuit/combat/nanotrasen
 
 	value = 1200
 
 /obj/item/clothing/overwear/armor/nanotrasen/deathsquad
+
+	armor = /armor/hardsuit/combat/nanotrasen/plus
+
 	polymorphs = list(
 		"base" = COLOR_GREY_DARK,
 		"chest" = COLOR_NANOTRASEN,
-		"shoulders" = COLOR_BLOOD
+		"shoulders" = COLOR_BLACK,
+		"extra" = "#910000"
 	)

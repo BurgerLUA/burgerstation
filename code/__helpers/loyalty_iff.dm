@@ -13,14 +13,14 @@ var/global/enable_friendly_fire = FALSE
 
 	return TRUE
 
-#define allow_hostile_action(loyalty_tag,victim) check_loyalty_aggainst(loyalty_tag,victim,TRUE)
-#define allow_helpful_action(loyalty_tag,victim) check_loyalty_aggainst(loyalty_tag,victim,FALSE)
+#define allow_hostile_action(loyalty_tag,victim) check_loyalty_against(loyalty_tag,victim,TRUE)
+#define allow_helpful_action(loyalty_tag,victim) check_loyalty_against(loyalty_tag,victim,FALSE)
 
 /proc/check_iff_against(var/iff_attacker,var/mob/living/victim,var/hostile=TRUE)
 
 	if(hostile)
 		var/turf/T = get_turf(victim)
-		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+		if(is_player(victim) && SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
 			return TRUE
 		var/area/A = T.loc
 		if(A)
@@ -34,11 +34,11 @@ var/global/enable_friendly_fire = FALSE
 	else //Friendly
 		return !hostile
 
-/proc/check_loyalty_aggainst(var/loyalty_attacker,var/mob/living/victim,var/hostile=TRUE)
+/proc/check_loyalty_against(var/loyalty_attacker,var/mob/living/victim,var/hostile=TRUE)
 
 	if(hostile)
 		var/turf/T = get_turf(victim)
-		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+		if(is_player(victim) && SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
 			return TRUE
 		var/area/A = T.loc
 		if(A)

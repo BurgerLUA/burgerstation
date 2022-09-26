@@ -201,6 +201,7 @@ mob/living/advanced/Login()
 /mob/living/advanced/Finalize()
 	. = ..()
 	if(loadout) equip_loadout(loadout)
+	update_items(force=TRUE)
 
 /mob/living/advanced/setup_name()
 

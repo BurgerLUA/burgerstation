@@ -11,6 +11,8 @@
 
 	can_be_broken = FALSE
 
+	enable_skin = FALSE
+
 /obj/item/organ/hair/initialize_blends()
 	. = ..()
 	add_blend("hair_head", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi', desired_icon_state = "hair_b", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = FLOAT_LAYER)
@@ -31,6 +33,8 @@
 	enable_wounds = FALSE
 
 	can_be_broken = FALSE
+
+	enable_skin = FALSE
 
 /obj/item/organ/beard/initialize_blends()
 	. = ..()

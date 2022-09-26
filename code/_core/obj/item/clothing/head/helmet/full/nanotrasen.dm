@@ -7,13 +7,14 @@
 		"stripe" = COLOR_NANOTRASEN
 	)
 
-	armor = /armor/military/heavy/hard
+	armor = /armor/hardsuit/combat/nanotrasen
 
 	value = 400
 
 /obj/item/clothing/head/helmet/full/nanotrasen/deathsquad
 	polymorphs = list(
 		"base" = COLOR_GREY_DARK,
-		"visor" = "#7CBAD6",
-		"stripe" = COLOR_BLOOD
+		"visor" = "#2472C0",
+		"stripe" = "#910000"
 	)
+	armor = /armor/hardsuit/combat/nanotrasen/plus

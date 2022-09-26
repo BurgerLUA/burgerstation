@@ -1,8 +1,12 @@
+#define HORDE_DELAY SECONDS_TO_DECISECONDS(120)
+#define HORDE_DELAY_RECHECK SECONDS_TO_DECISECONDS(30)
+
+
 SUBSYSTEM_DEF(horde)
 	name = "Horde Subsystem"
 	desc = "Spawns hoards for each player to fight."
 	priority = SS_ORDER_LAST
-	tick_rate = SECONDS_TO_TICKS(30)
+	tick_rate = SECONDS_TO_TICKS(10)
 
 	var/list/queued_players = list() //Assoc list.
 	var/list/queued_overdue_players = list() //NOT AN ASSOC LIST
@@ -19,7 +23,7 @@ SUBSYSTEM_DEF(horde)
 		DIFFICULTY_NORMAL = 4,
 		DIFFICULTY_HARD = 5,
 		DIFFICULTY_EXTREME = 6,
-		DIFFICULTY_NIGHTMARE = 8
+		DIFFICULTY_NIGHTMARE = 7
 	)
 
 	var/enable = FALSE
@@ -52,7 +56,7 @@ SUBSYSTEM_DEF(horde)
 			continue
 		if(ckey_to_time_to_horde[P.ckey] && ckey_to_time_to_horde[P.ckey] > world.time)
 			continue
-		ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(300)
+		ckey_to_time_to_horde[P.ckey] = world.time + HORDE_DELAY
 		if(queued_players[P.ckey]) //Overdue
 			queued_overdue_players |= P.ckey
 		else
@@ -73,13 +77,20 @@ SUBSYSTEM_DEF(horde)
 		var/mob/living/advanced/player/P = C.mob
 		if(P.loyalty_tag != "NanoTrasen" || P.dead)
 			continue
-		var/area/A = get_area(P)
+		var/turf/T = get_turf(P)
+		if(!T)
+			continue
+		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+			continue
+		var/area/A = T.loc
 		if(A.area_identifier != "Mission")
 			continue
-
+		if(P.health && rand() < 1 - (P.health.health_current/P.health.health_max))
+			ckey_to_time_to_horde[P.ckey] = world.time + HORDE_DELAY_RECHECK //Forgiveness.
+			continue
 		var/mob/living/squad_to_send = get_squad_to_send(P)
 		if(!squad_to_send || !send_squad(P,squad_to_send))
-			ckey_to_time_to_horde[P.ckey] = world.time + SECONDS_TO_DECISECONDS(60)
+			ckey_to_time_to_horde[P.ckey] = world.time + HORDE_DELAY_RECHECK
 			continue
 		log_subsystem(src.name,"Sending horde to [P.get_debug_name()]")
 

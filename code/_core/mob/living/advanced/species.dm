@@ -105,10 +105,6 @@
 		add_species_buttons()
 		add_stat_buttons()
 
-	update_items(force=TRUE)
-
-	update_all_blends()
-
 	return TRUE
 
 /mob/living/advanced/player/setup_appearance(var/set_default=FALSE)
