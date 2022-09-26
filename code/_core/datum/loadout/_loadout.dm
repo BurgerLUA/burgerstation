@@ -14,7 +14,7 @@
 		qdel(I)
 		return FALSE
 
-	if(istype(I,/obj/item/clothing))
+	if(is_clothing(I))
 		var/obj/item/clothing/C = I
 		if(!C.additional_clothing)
 			return TRUE

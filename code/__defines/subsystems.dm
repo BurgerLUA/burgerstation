@@ -28,3 +28,8 @@
 #define SS_ORDER_AIR 18
 #define SS_ORDER_DELETE 19
 #define SS_ORDER_REPORT 20
+
+
+
+
+#define queue_smoothing(A) if(!A.queued_smoothing) {A.queued_smoothing = TRUE; SSsmoothing.queued_smoothing += A}

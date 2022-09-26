@@ -8,6 +8,9 @@
 
 /event/meteors/on_start()
 
+	if(!length(all_players))
+		return FALSE
+
 	log_debug("Starting Meteor Event")
 
 	announce(
@@ -21,15 +24,16 @@
 
 /event/meteors/on_life()
 
+	if(!length(all_players))
+		return FALSE
+
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
 		for(var/i=1,i<=5,i++)
-			CHECK_TICK_SAFE(50,FPS_SERVER*10)
 			var/mob/living/advanced/player/P = pick(all_players)
 			if(P.dead || !P.ckey)
 				continue
 			var/list/valid_turfs = list()
 			for(var/turf/simulated/floor/F in range(VIEW_RANGE*0.75,P))
-				CHECK_TICK_SAFE(50,FPS_SERVER*10)
 				var/area/A = F.loc
 				if(A.interior)
 					continue
@@ -40,6 +44,7 @@
 				continue
 			var/turf/T = pick(valid_turfs)
 			new /obj/effect/falling_meteor(T)
+			CHECK_TICK_SAFE(50,FPS_SERVER*10)
 
 	. = ..()
 

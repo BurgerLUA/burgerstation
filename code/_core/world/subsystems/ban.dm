@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(ban)
 
 	var/ckey_sanitized = ckey(key)
 
-	log_admin("New [type] connection from [address](key: [key], ckey: [ckey_sanitized], computer_id: [computer_id]).")
+	log_debug("New [type] connection from [address](key: [key], ckey: [ckey_sanitized], computer_id: [computer_id]).")
 
 	if(!SSban || !SSban.initialized)
 		return list("Login" = FALSE, "reason" = "Server isn't setup!",message = "Try rejoining again in a minute!")

@@ -1,4 +1,5 @@
 //Here be shitcode.
+//Not really used anymore. I had plans but...
 
 #define FILTER_ADD(A,id,filterargs...)\
 	if(!A.filter_list) {A.filter_list = list()};\

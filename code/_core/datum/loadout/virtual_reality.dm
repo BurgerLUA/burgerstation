@@ -3,7 +3,7 @@
 
 /loadout/virtual_reality/on_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
 	. = ..()
-	if(istype(I,/obj/item/clothing))
+	if(is_clothing(I))
 		var/obj/item/clothing/C = I
 		C.armor = /armor/
 		C.anchored = TRUE

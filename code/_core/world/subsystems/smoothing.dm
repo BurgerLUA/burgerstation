@@ -27,8 +27,9 @@ SUBSYSTEM_DEF(smoothing)
 /subsystem/smoothing/proc/process_edges()
 	for(var/k in queued_smoothing)
 		CHECK_TICK_SAFE(cpu_usage_max,FPS_SERVER)
-		queued_smoothing -= k
+		src.queued_smoothing -= k
 		var/atom/A = k
+		A.queued_smoothing = FALSE
 		A.update_sprite()
 
 /subsystem/smoothing/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
@@ -43,11 +44,11 @@ SUBSYSTEM_DEF(smoothing)
 		if(!T2)
 			continue
 		if(T2.corner_icons)
-			SSsmoothing.queued_smoothing |= T2
+			queue_smoothing(T2)
 		for(var/obj/structure/O in T2.contents)
 			CHECK_TICK_SAFE(cpu_usage_max,FPS_SERVER)
 			if(O.corner_icons)
-				SSsmoothing.queued_smoothing |= O
+				queue_smoothing(O)
 
 
 	return TRUE

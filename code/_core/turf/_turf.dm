@@ -206,7 +206,7 @@
 		if(SSsmoothing.initialized)
 			SSsmoothing.queue_update_edges(src)
 		else
-			SSsmoothing.queued_smoothing |= src
+			queue_smoothing(src)
 
 
 /*

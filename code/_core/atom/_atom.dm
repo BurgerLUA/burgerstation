@@ -50,11 +50,13 @@
 
 	var/dir_offset = TILE_SIZE
 
-	var/list/filter_list
+	//var/list/filter_list
 
 	var/initialized = FALSE
 	var/generated = FALSE
 	var/finalized = FALSE
+
+	var/queued_smoothing = FALSE
 
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 

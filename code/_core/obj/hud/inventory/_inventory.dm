@@ -588,7 +588,7 @@
 					if(messages) owner.to_chat(span("warning","You cannot wear \the [I.name] and \the [I2.name] at the same time!"))
 					return FALSE
 
-		if(istype(I,/obj/item/clothing))
+		if(is_clothing(I))
 			var/obj/item/clothing/C = I
 			if(is_advanced(owner))
 				var/mob/living/advanced/A = owner

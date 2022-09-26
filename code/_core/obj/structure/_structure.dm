@@ -75,7 +75,7 @@
 		if(SSsmoothing.initialized)
 			SSsmoothing.queue_update_edges(get_turf(src))
 		else
-			SSsmoothing.queued_smoothing |= src
+			queue_smoothing(src)
 	. = ..()
 
 

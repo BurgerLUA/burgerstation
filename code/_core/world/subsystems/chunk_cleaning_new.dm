@@ -60,8 +60,6 @@ SUBSYSTEM_DEF(chunk)
 		var/chunk/CH = chunks[z][x][y]
 		CH.nodes += N
 
-	. = ..()
-
 	tick_rate = initial(tick_rate) //Set the tick rate based on the amount of z-levels.
 	if(world.maxz >= 1)
 		tick_rate = CEILING(tick_rate/world.maxz,1)
@@ -78,11 +76,18 @@ SUBSYSTEM_DEF(chunk)
 		var/area/A = T.loc
 		if(A.safe_storage)
 			continue
-		var/obj/marker/mob_spawn/M = new(T,L.type,L,L.respawn_time,L.force_spawn)
+		var/x = CEILING(T.x/CHUNK_SIZE,1)
+		var/y = CEILING(T.y/CHUNK_SIZE,1)
+		var/z = T.z
+		var/chunk/CH = chunks[z][x][y]
+		var/obj/marker/mob_spawn/M = new(T,L)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
+		CH.spawning_markers += M
 		total_spawnpoints++
 
 	log_subsystem(src.name,"Created [total_spawnpoints] mob spawnpoints.")
+
+	return TRUE
 
 /subsystem/chunk/on_life()
 
@@ -129,7 +134,6 @@ SUBSYSTEM_DEF(chunk)
 		if(length(C.players) || !length(C.cleanables))
 			continue
 		for(var/j in C.cleanables)
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
 			var/atom/movable/M = j
 			if(M.z)
 				var/chunk_x = CEILING(M.x/CHUNK_SIZE,1)
@@ -139,3 +143,8 @@ SUBSYSTEM_DEF(chunk)
 					log_error("Chunk error! [M.get_debug_name()] was found in the wrong chunk!")
 			if(M.on_chunk_clean())
 				. += 1
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
+		for(var/j in C.spawning_markers)
+			var/obj/marker/mob_spawn/MS = j
+			MS.process()
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)

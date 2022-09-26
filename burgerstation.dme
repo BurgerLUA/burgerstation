@@ -112,7 +112,6 @@
 #include "code\__helpers\debug.dm"
 #include "code\__helpers\direction.dm"
 #include "code\__helpers\dview.dm"
-#include "code\__helpers\filter_management.dm"
 #include "code\__helpers\garbage.dm"
 #include "code\__helpers\general.dm"
 #include "code\__helpers\get.dm"

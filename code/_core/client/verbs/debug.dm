@@ -167,7 +167,7 @@ var/global/list/debug_verbs = list(
 			continue
 		possible_SY += F
 
-	for(var/i=1,i<=8,i++)
+	for(var/i=1,i<=20,i++)
 		var/turf/S = pick(possible_SY)
 		possible_SY -= S
 

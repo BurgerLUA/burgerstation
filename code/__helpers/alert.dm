@@ -2,13 +2,16 @@
 
 /proc/create_alert_process(var/list/list_to_use,var/range = VIEW_RANGE,var/atom/epicenter,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
 
+	if(!epicenter)
+		CRASH("No epicenter provided for create_alert_process()!")
+
 	for(var/k in list_to_use)
 		var/ai/AI = k
 		if(!AI || AI.qdeleting || !AI.owner || AI.owner.qdeleting || AI.owner.dead || AI.objective_attack)
 			continue
 		if(!within_range(AI.owner,epicenter,VIEW_RANGE+ZOOM_RANGE))
 			continue
-		if(visual && !is_facing(AI.owner,epicenter))
+		if(visual && !is_facing_cheap(AI.owner,epicenter))
 			continue
 		if(alert_source && !AI.is_enemy(alert_source,FALSE))
 			continue

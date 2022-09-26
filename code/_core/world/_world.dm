@@ -37,6 +37,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/mob/abstract/observer)
 	createtypecache(/obj/structure/)
 	createtypecache(/obj/item/)
+	createtypecache(/obj/item/clothing)
 	createtypecache(/obj/item/currency)
 	createtypecache(/obj/item/organ/)
 	createtypecache(/obj/hud/)
