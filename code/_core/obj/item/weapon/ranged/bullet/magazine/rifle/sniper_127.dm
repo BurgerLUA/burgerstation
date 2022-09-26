@@ -60,7 +60,7 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 32 + 27 - 16
+	attachment_barrel_offset_x = 22
 	attachment_barrel_offset_y = 20 - 16
 
 	attachment_sight_offset_x = 25 - 16
