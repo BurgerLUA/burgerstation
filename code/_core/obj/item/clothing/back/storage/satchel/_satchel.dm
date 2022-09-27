@@ -21,6 +21,7 @@
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/storage/emergency(src)
 	new /obj/item/pinpointer/landmark(src)
+	new /obj/item/pinpointer/mobs(src)
 	new /obj/item/clothing/overwear/coat/hoodie/grey(src)
 	new /obj/item/weapon/melee/torch/flashlight(src)
 	new /obj/item/weapon/ranged/bullet/revolver/detective(src)
