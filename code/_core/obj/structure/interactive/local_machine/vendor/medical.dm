@@ -119,5 +119,6 @@
 		/obj/item/storage/kit/burn/filled,
 		/obj/item/storage/kit/toxin/filled,
 		/obj/item/storage/kit/advanced/filled,
-		/obj/item/storage/kit/rad/filled
+		/obj/item/storage/kit/rad/filled,
+		/obj/item/implanter/death_alarm
 	)

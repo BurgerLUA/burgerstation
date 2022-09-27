@@ -26,7 +26,7 @@
 /obj/item/organ/internal/implant/torso/death_alarm
 	name = "death alarm implant"
 	desc = "I died, please restart."
-	desc_extended = "A special implant that detects if the user has died, then broadcasts the message to the common frequency."
+	desc_extended = "A special implant that detects if the user has died, then broadcasts the message to the medical frequency. Only has enough charge to broadcast one death."
 
 /obj/item/organ/internal/implant/torso/death_alarm/on_organ_add(var/mob/living/advanced/new_owner)
 	. = ..()
@@ -40,8 +40,11 @@
 
 	if(loc && is_advanced(loc) && loc.loc)
 		var/mob/living/advanced/A = loc
-		A.to_chat(span("danger","Your [src.name] in your [attached_organ.name] beeps..."))
-		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_COMMON,talk_range = YELL_RANGE)
+		var/turf/T = get_turf(src)
+		play_sound('sound/effects/death_alarm_beep.ogg',T)
+		A.to_chat(span("danger","\The [src.name] in your [attached_organ.name] beeps..."))
+		talk(src,src,"Medical Alert: [A.real_name] has died!",TEXT_RADIO,RADIO_FREQ_MEDICAL,talk_range = YELL_RANGE)
+		qdel(src)
 		return TRUE
 
 	return FALSE

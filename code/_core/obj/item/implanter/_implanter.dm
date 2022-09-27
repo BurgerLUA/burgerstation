@@ -32,6 +32,11 @@
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 	update_sprite()
 
+
+/obj/item/implanter/get_examine_details_list(var/mob/examiner)
+	. = ..()
+	. += div("notice","Details: [initial(stored_implant.desc_extended)]")
+
 /obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(caller != object || !is_advanced(caller))
@@ -79,3 +84,4 @@
 /obj/item/implanter/death_alarm
 	stored_implant = /obj/item/organ/internal/implant/torso/death_alarm
 	removes_existing = TRUE
+	value = 500
