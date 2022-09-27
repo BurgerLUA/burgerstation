@@ -64,7 +64,7 @@
 		. += div("warning","This secure crate belongs to [owner_name]. Those who do not have a matching name cannot open it.")
 
 	if(credits_required)
-		. += div("warning","This secure crate will charge [credits_required] credits onec unlocked.")
+		. += div("warning","This secure crate will charge [credits_required] credits once unlocked.")
 
 	var/list/contents_to_display = list()
 	for(var/k in contents)

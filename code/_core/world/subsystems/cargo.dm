@@ -7,18 +7,22 @@ SUBSYSTEM_DEF(cargo)
 	var/list/cargo_id_to_type = list()
 	var/list/catalog_data = list() //What the catalog should look like (paper stuff)
 	var/list/possible_orders = list(
-		/obj/item/bulletbox,
+		///obj/item/bulletbox,                  //Dunno why this is here Actually a useless item -v
 		/obj/item/bulletbox/rifle_556,
 		/obj/item/bulletbox/rifle_762,
+		/obj/item/bulletbox/rifle_127,          //Crime against humanity right here -v
+		/obj/item/bulletbox/rifle_127/ap,
 		/obj/item/deployable/mob/sentry,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
+		/obj/item/magazine/rifle_tungsten,
 		/obj/item/deployable/barricade,
-		/obj/item/supply_remote/mech/ripley,
+		///obj/item/supply_remote/mech/ripley,  //Super fucking bugged right now, overlays are fucked, zombies and other melee mobs cant target them, etc -v
 		/obj/item/supply_remote/barbecue,
 		/obj/item/supply_remote/drill,
 		/obj/item/grenade/timed/smoke,
 		/obj/item/fulton_pack,
 		/obj/item/deployable/bodybag
-	)
+	)                                           // I'll add more down the line, as im sure a lot of other people will. I dont want to add anything unbalanced -v
 
 /subsystem/cargo/Initialize()
 
