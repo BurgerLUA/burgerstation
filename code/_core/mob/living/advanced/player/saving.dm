@@ -100,12 +100,6 @@
 				var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.chargen_max_level)
 				S.update_experience(xp)
 
-
-	if(loaded_data["traits"])
-		for(var/k in loaded_data["traits"])
-			k = text2path(k)
-			if(k) src.add_trait(k,FALSE,FALSE)
-
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 

@@ -341,60 +341,6 @@
 
 	return TRUE
 
-
-/client/verb/add_trait()
-	set name = "Add Trait"
-	set category = "Cheat"
-
-	var/mob/living/advanced/player/P = input("Who do you want to add a trait to?","Add Trait") as null|mob in all_players
-
-	if(!P)
-		return FALSE
-
-	var/list/valid_traits = list()
-
-	for(var/k in SStraits.all_traits)
-		var/trait/T = SStraits.all_traits[k]
-		valid_traits += T
-
-	var/trait/T = input("What trait do you wish to add to \the [P.name]?","Add Trait") as null|anything in valid_traits
-
-	if(!T)
-		return FALSE
-
-	P.add_trait(T.type)
-
-	log_admin("[src.get_debug_name()] added the trait [T.get_debug_name()] to [P.get_debug_name()].")
-
-	return TRUE
-
-
-/client/verb/remove_trait()
-	set name = "Remove Trait"
-	set category = "Cheat"
-
-	var/mob/living/advanced/player/P = input("Who do you want to remove a trait from?","Remove Trait") as null|mob in all_players
-
-	if(!P)
-		return FALSE
-
-	var/list/valid_traits = list()
-
-	for(var/k in P.traits)
-		var/trait/T = SStraits.all_traits[k]
-		valid_traits += T
-
-	var/trait/T = input("What trait do you wish to remove from \the [P.name]?","Remove Trait") as null|anything in valid_traits
-
-	if(!T)
-		return FALSE
-
-	P.remove_trait(T.type)
-
-	log_admin("[src.get_debug_name()] removed the trait [T.get_debug_name()] to [P.get_debug_name()].")
-
-	return TRUE
-
 /client/verb/create_explosion()
 	set name = "Create Explosion"
 	set category = "Fun"

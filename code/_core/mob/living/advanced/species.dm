@@ -66,10 +66,6 @@
 	blood_type = initial(blood_type)
 	if(!(blood_type in S.valid_blood_types))
 		blood_type = S.generate_blood_type()
-
-	//Inherit Species traits
-	S.generate_traits(src)
-
 	return TRUE
 
 

@@ -20,9 +20,6 @@
 
 	var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
 
-	var/trait/bleed_multiplier/BM = get_trait_by_category(/trait/bleed_multiplier)
-	if(BM) total_bleed_damage *= BM.bleed_multiplier
-
 	var/savage_hit = health && !has_status_effect(IMMORTAL) ? damage_amount >= health.health_max*DT.savage_hit_threshold : FALSE
 
 	if(savage_hit)

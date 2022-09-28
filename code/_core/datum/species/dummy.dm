@@ -39,13 +39,6 @@
 		BODY_HAND_LEFT = /obj/item/organ/hand/left
 	)
 
-	inherent_traits = list(
-		/trait/pain_tolerant,
-		/trait/metabolism/none,
-		/trait/flamability/fire_retardant,
-		/trait/blood_regen/none
-	)
-
 	emote_sounds_male = list()
 	emote_sounds_male_meme = list()
 	emote_sounds_female = list()

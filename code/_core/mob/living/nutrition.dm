@@ -26,6 +26,4 @@
 
 /mob/living/proc/get_nutrition_quality_mod()
 	. = nutrition_quality
-	var/trait/nutrition/N = get_trait_by_category(/trait/nutrition/)
-	if(N) . *= N.nutrition_multiplier
 	return clamp(. / nutrition_quality_max,0,1.25)

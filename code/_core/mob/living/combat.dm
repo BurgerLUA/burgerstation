@@ -63,11 +63,10 @@
 	return ..()
 
 /mob/living/proc/send_pain_response(var/pain_strength=50)
-	if(!has_trait(/trait/pain_tolerant))
-		if(pain_strength < 75)
-			do_emote("pain")
-		else
-			do_emote("scream")
+	if(pain_strength < 75)
+		do_emote("pain")
+	else
+		do_emote("scream")
 	return TRUE
 
 /mob/living/proc/get_block_data(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)

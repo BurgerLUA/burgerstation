@@ -31,12 +31,3 @@
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
 		BODY_EYE_LEFT = /obj/item/organ/eye/left
 	)
-
-	inherent_traits = list(
-		/trait/pain_tolerant,
-		/trait/metabolism/slow,
-		/trait/flamability/fire_retardant,
-		/trait/death_check/tenacious,
-		/trait/bleed_multiplier/hard_skin,
-		/trait/blood_regen/none
-	)

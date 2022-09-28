@@ -72,8 +72,6 @@
 			return /damagetype/unarmed/foot
 		switch(L.intent)
 			if(INTENT_HARM)
-				var/trait/unarmed/U = L.get_trait_by_category(/trait/unarmed/)
-				if(U) return U.damage_type
 				. = /damagetype/unarmed/fists/
 			if(INTENT_DISARM)
 				. = /damagetype/unarmed/fists/disarm

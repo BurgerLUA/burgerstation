@@ -351,10 +351,7 @@ mob/living/proc/on_life_slow()
 
 	if(blood_type && blood_volume_max > 0)
 		if(blood_volume < blood_volume_max)
-			var/consume_multiplier = 1
-			var/trait/blood_regen/BR = get_trait_by_category(/trait/blood_regen/)
-			if(BR) consume_multiplier *= BR.regen_multiplier
-			var/blood_volume_to_add = -(add_hydration(-0.05*consume_multiplier) + add_nutrition(-0.3*consume_multiplier))*0.5
+			var/blood_volume_to_add = -(add_hydration(-0.05) + add_nutrition(-0.3))*0.5
 			blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 			QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)
@@ -372,13 +369,9 @@ mob/living/proc/on_life_slow()
 	return TRUE
 
 /mob/living/proc/handle_hunger()
-	var/thirst_mod = 1
-	var/hunger_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*3
 
-	var/trait/metabolism/M = get_trait_by_category(/trait/metabolism/)
-	if(M)
-		hunger_mod *= M.hunger_multiplier
-		thirst_mod *= M.thirst_multiplier
+	var/hunger_mod = 1 + clamp(1 - get_nutrition_quality_mod(),0,1)*3
+	var/thirst_mod = 1 //Should this be based on something?
 
 	if(hunger_mod > 0)
 		add_nutrition(-0.04*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
@@ -398,45 +391,38 @@ mob/living/proc/on_life_slow()
 
 	var/threshold_multiplier = 1
 	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
-	var/should_apply_status_effects = TRUE
-	var/reverse_intoxication = FALSE
 
-	var/trait/intoxication_regen/IR = get_trait_by_category(/trait/intoxication_regen/)
-	if(IR)
-		intoxication_to_remove *= IR.intoxication_removal_multiplier
-		threshold_multiplier *= IR.alcohol_threshold_multiplier
-		should_apply_status_effects = IR.should_apply_drunk_status_effects
-		reverse_intoxication = IR.reverse_intoxication
-
-	if(reverse_intoxication)
-		intoxication = min(1000,intoxication+(0.1*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)))
-	else
-		intoxication = max(0,intoxication-intoxication_to_remove)
+	intoxication = max(0,intoxication-intoxication_to_remove)
 
 	switch(intoxication/threshold_multiplier)
 		if(0 to 200)
 			if(last_intoxication_message != 0)
 				to_chat(span("notice","You feel sober."))
+				intoxication_to_remove *= 0.5
 				last_intoxication_message = 0
 		if(200 to 400)
 			if(last_intoxication_message != 1)
 				to_chat(span("notice","You feel buzzed."))
+				intoxication_to_remove *= 0.5
 				last_intoxication_message = 1
 		if(400 to 800)
 			if(last_intoxication_message != 2)
 				to_chat(span("warning","You feel drunk."))
+				intoxication_to_remove *= 0.75
 				last_intoxication_message = 2
 		if(800 to 1600)
 			if(last_intoxication_message != 3)
 				to_chat(span("danger","You feel seriously inebriated."))
+				intoxication_to_remove *= 0.5
 				last_intoxication_message = 3
 		if(1600 to INFINITY)
 			if(last_intoxication_message != 4)
 				to_chat(span("danger","You feel utterly and completely fucking shitfaced."))
+				intoxication_to_remove *= 0.25
 				last_intoxication_message = 4
 			tox_regen_buffer -= 0.25*TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
-	if(should_apply_status_effects && (intoxication/threshold_multiplier) >= 600 && prob((intoxication/threshold_multiplier)/100))
+	if((intoxication/threshold_multiplier) >= 600 && prob((intoxication/threshold_multiplier)/100))
 		var/list/possible_status_effects = list(
 			STAGGER,
 			CONFUSED,
@@ -559,10 +545,8 @@ mob/living/proc/on_life_slow()
 	var/nutrition_hydration_mod = 1 + get_nutrition_quality_mod()
 	var/player_controlled = is_player_controlled()
 
-	var/trait/general_regen/GR = get_trait_by_category(/trait/general_regen/)
-
 	if(health.health_regen_cooef > 0 && health_regen_delay <= 0 && health.health_regeneration > 0)
-		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod*(GR ? GR.health_regen_mul : 1)
+		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod
 		var/brute_to_adjust = min(max(0,health.damage[BRUTE]*health.health_regen_cooef - brute_regen_buffer),health_mod)
 		var/burn_to_adjust = min(max(0,health.damage[BURN]*health.health_regen_cooef - burn_regen_buffer),health_mod)
 		var/pain_to_adjust = min(max(0,health.damage[PAIN]*health.health_regen_cooef - pain_regen_buffer),health_mod)
@@ -575,7 +559,7 @@ mob/living/proc/on_life_slow()
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,total_adjust)
 
 	if(health.stamina_regen_cooef > 0 && stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
-		var/stamina_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.stamina_regeneration*nutrition_hydration_mod*(GR ? GR.stamina_regen_mul : 1)
+		var/stamina_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.stamina_regeneration*nutrition_hydration_mod
 		var/stamina_adjust = min(max(0,(health.stamina_max - health.stamina_current)*health.stamina_regen_cooef - stamina_regen_buffer),stamina_to_regen)
 		if(stamina_adjust != 0)
 			stamina_regen_buffer += stamina_adjust
@@ -583,7 +567,7 @@ mob/living/proc/on_life_slow()
 				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust)
 
 	if(health.mana_regen_cooef > 0 && mana_regen_delay <= 0 && health.mana_regeneration > 0)
-		var/mana_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.mana_regeneration*nutrition_hydration_mod*(1+(health.mana_current/health.mana_max)*3)*(GR ? GR.mana_regen_mul : 1)
+		var/mana_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.mana_regeneration*nutrition_hydration_mod*(1+(health.mana_current/health.mana_max)*3)
 		var/mana_adjust = min(max(0,(health.mana_max - health.mana_current)*health.mana_regen_cooef - mana_regen_buffer),mana_to_regen)
 		if(mana_adjust != 0)
 			mana_regen_buffer += mana_adjust

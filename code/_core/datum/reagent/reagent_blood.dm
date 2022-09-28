@@ -183,13 +183,8 @@
 	owner.burn_regen_buffer += .*2*multiplier
 	owner.pain_regen_buffer += .*5*multiplier
 	owner.add_hydration(.*-5*multiplier)
-	if(owner.health)
-		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
-		if(IR && IR.reverse_intoxication)
-			owner.intoxication -= 12*.*multiplier
-		else
-			owner.intoxication += 12*.*multiplier
-		owner.sanity_regen_buffer -= 12*.*multiplier
+	owner.intoxication += 12*.*multiplier
+	owner.sanity_regen_buffer -= 12*.*multiplier
 
 /reagent/blood/alien/red
 	name = "Red Alien Blood"

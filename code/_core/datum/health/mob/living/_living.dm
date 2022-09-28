@@ -125,11 +125,6 @@
 	stamina_max = L.stamina_base + L.get_attribute_power(ATTRIBUTE_ENDURANCE,0,1,10)*min(500,L.stamina_base)
 	mana_max = L.mana_base + L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,10)*min(500,L.mana_base)
 
-	var/trait/vitality/V = L.get_trait_by_category(/trait/vitality)
-	if(V)
-		health_max += V.health_add
-		health_max *= V.health_mul
-
 	QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_loss(var/loss_type,var/value)

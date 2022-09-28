@@ -38,11 +38,7 @@
 	. = ..()
 
 	if(owner.health)
-		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
-		if(IR && IR.reverse_intoxication)
-			owner.intoxication -= power*.
-		else
-			owner.intoxication += power*.
+		owner.intoxication += power*.
 		owner.sanity_regen_buffer += power*.
 
 /reagent/nutrition/ethanol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -50,11 +46,7 @@
 	. = ..()
 
 	if(owner.health)
-		var/trait/intoxication_regen/IR = owner.get_trait_by_category(/trait/intoxication_regen/)
-		if(IR && IR.reverse_intoxication)
-			owner.intoxication -= power*.*multiplier
-		else
-			owner.intoxication += power*.*0.5*multiplier
+		owner.intoxication += power*.*0.5*multiplier
 		owner.sanity_regen_buffer += power*.*multiplier
 
 /reagent/nutrition/ethanol/fernet

@@ -89,8 +89,6 @@
 		verbs += /client/verb/give_credits
 		verbs += /client/verb/add_language
 		verbs += /client/verb/remove_language
-		verbs += /client/verb/remove_trait
-		verbs += /client/verb/add_trait
 		verbs += /client/verb/rain_gold
 		verbs += /client/verb/send_squad
 

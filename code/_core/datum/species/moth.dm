@@ -92,9 +92,3 @@
 		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
-
-	inherent_traits = list(
-		/trait/flamability/fire_retardant,
-		/trait/intoxication_regen/light_drinker
-
-	)
