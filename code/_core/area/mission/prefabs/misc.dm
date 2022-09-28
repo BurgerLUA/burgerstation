@@ -24,6 +24,11 @@
 	interior = TRUE
 	requires_power = FALSE
 
+/area/mission/prefab/misc/syndicate_antag_ship
+	name = "syndicate ship"
+	requires_power = FALSE
+	interior = TRUE
+
 /area/mission/prefab/misc/syndicate_mining_outpost
 	name = "syndicate mining outpost"
 	requires_power = TRUE
