@@ -11,7 +11,6 @@
 		BOMB = -25,
 		HOLY = -100,
 		DARK = 100,
-		FATIGUE = 50,
 		PAIN = -50,
 		SANITY = -100
 	)

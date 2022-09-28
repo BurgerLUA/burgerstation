@@ -11,9 +11,7 @@
 		ACID = 50,
 		BOMB = 25,
 		BIO = 100,
-		RAD = 25,
-		FATIGUE = 75,
-		PAIN = 75
+		RAD = 25
 	)
 	deflection = 0.75
 
@@ -55,9 +53,7 @@
 		ACID = 25,
 		BOMB = 100,
 		BIO = 50,
-		RAD = 25,
-		FATIGUE = 50,
-		PAIN = 50
+		RAD = 25
 	)
 
 
@@ -74,9 +70,7 @@
 		ACID = 50,
 		BOMB = 100,
 		BIO = 50,
-		RAD = 25,
-		FATIGUE = 25,
-		PAIN = 25
+		RAD = 25
 	)
 
 
@@ -95,9 +89,7 @@
 		ACID = 25,
 		BOMB = 125,
 		BIO = 25,
-		RAD = 25,
-		FATIGUE = 50,
-		PAIN = 50
+		RAD = 25
 	)
 
 /armor/hardsuit/combat/nanotrasen/plus
@@ -113,9 +105,7 @@
 		ACID = 50,
 		BOMB = 100,
 		BIO = 50,
-		RAD = 25,
-		FATIGUE = 25,
-		PAIN = 25
+		RAD = 25
 	)
 
 
@@ -133,9 +123,7 @@
 		ACID = 25,
 		BOMB = 75,
 		BIO = 25,
-		RAD = 25,
-		FATIGUE = 75,
-		PAIN = 75
+		RAD = 25
 	)
 
 /armor/hardsuit/combat/syndicate/ultra
@@ -151,9 +139,7 @@
 		ACID = 50,
 		BOMB = 150,
 		BIO = 100,
-		RAD = 50,
-		FATIGUE = 200,
-		PAIN = 200
+		RAD = 50
 	)
 
 
@@ -171,9 +157,7 @@
 		ACID = 25,
 		BOMB = 75,
 		BIO = 75,
-		RAD = 75,
-		FATIGUE = 50,
-		PAIN = 50
+		RAD = 75
 	)
 
 /armor/hardsuit/combat/slavic/plus
@@ -189,9 +173,7 @@
 		ACID = 25,
 		BOMB = 100,
 		BIO = 50,
-		RAD = 75,
-		FATIGUE = 50,
-		PAIN = 50
+		RAD = 75
 	)
 
 /armor/hardsuit/combat/hammer
@@ -207,9 +189,7 @@
 		ACID = 50,
 		BOMB = 50,
 		BIO = 75,
-		RAD = 25,
-		FATIGUE = 50,
-		PAIN = 50
+		RAD = 25
 	)
 
 /armor/hardsuit/env
@@ -222,9 +202,7 @@
 		ACID = 50,
 		BOMB = 25,
 		BIO = 100,
-		RAD = 50,
-		FATIGUE = 100,
-		PAIN = 100
+		RAD = 50
 	)
 
 
@@ -241,9 +219,7 @@
 		ACID = 50,
 		BOMB = 50,
 		BIO = 100,
-		RAD = 100,
-		FATIGUE = 75,
-		PAIN = 75
+		RAD = 100
 	)
 
 /armor/hardsuit/mining
@@ -259,9 +235,7 @@
 		ACID = 25,
 		BOMB = 75,
 		BIO = 50,
-		RAD = 50,
-		FATIGUE = 75,
-		PAIN = 75
+		RAD = 50
 	)
 
 /armor/hardsuit/medical
@@ -277,9 +251,7 @@
 		ACID = 75,
 		BOMB = 25,
 		BIO = 150,
-		RAD = 75,
-		FATIGUE = 50,
-		PAIN = 100
+		RAD = 75
 	)
 
 /armor/hardsuit/mechanical
@@ -294,7 +266,5 @@
 		ACID = 50,
 		BOMB = 25,
 		BIO = 25,
-		RAD = 25,
-		FATIGUE = 100,
-		PAIN = 100
+		RAD = 25
 	)

@@ -38,7 +38,7 @@
 
 /damagetype/ranged/bullet/pistol_40/tranq
 	attack_damage_base = list(
-		FATIGUE = 90
+		FATIGUE = 70
 	)
 	attack_damage_penetration = list(
 		FATIGUE = 100

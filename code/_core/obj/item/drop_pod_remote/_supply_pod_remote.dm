@@ -84,10 +84,12 @@
 /obj/item/supply_remote/mech/
 	value = 1000
 
+/*
 /obj/item/supply_remote/mech/ripley
 	name = "drop pod remote - Ripley Mining Mech with Drill + Laser Gun"
 	stored_object_types = list(/mob/living/vehicle/mech/modular/premade/ripley)
 	value = 5000
+*/
 
 /obj/item/supply_remote/crates/nanotrasen
 	name = "drop pod remote - x4 NanoTrasen supply crates"

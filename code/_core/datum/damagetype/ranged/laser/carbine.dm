@@ -10,7 +10,7 @@
 
 /damagetype/ranged/laser/carbine/stun
 	attack_damage_base = list(
-		FATIGUE = 30
+		FATIGUE = 15
 	)
 	attack_damage_penetration = list(
 		FATIGUE = 20

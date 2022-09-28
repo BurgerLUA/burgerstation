@@ -55,7 +55,7 @@
 /damagetype/ranged/bullet/tranq_11mm
 	stealthy = TRUE
 	attack_damage_base = list(
-		FATIGUE = 90
+		FATIGUE = 70
 	)
 	attack_damage_penetration = list(
 		FATIGUE = 100

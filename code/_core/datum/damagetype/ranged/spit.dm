@@ -1,13 +1,11 @@
 /damagetype/ranged/spit/
 	attack_damage_base = list(
 		HEAT = 40,
-		BIO = 10,
-		FATIGUE = 30
+		BIO = 10
 	)
 	attack_damage_penetration = list(
 		HEAT = 50,
-		BIO = 0,
-		FATIGUE = 0
+		BIO = 0
 	)
 
 	attribute_stats = list()
