@@ -13,13 +13,20 @@
 	name = "clockwork hall"
 	interior = TRUE
 
+	requires_power = FALSE
+
 /area/mission/prefab/misc/cult
 	name = "cultist section"
 	interior = TRUE
 
+/area/mission/prefab/misc/golem
+	name = "golem ship"
+	interior = TRUE
+	requires_power = FALSE
+
 /area/mission/prefab/misc/syndicate_mining_outpost
 	name = "syndicate mining outpost"
-	requires_power = FALSE //TODO: Add power to this prefab.
+	requires_power = TRUE
 	interior = TRUE
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO
@@ -51,7 +58,7 @@
 
 /area/mission/prefab/misc/syndicate_research_outpost
 	name = "syndicate research outpost"
-	requires_power = FALSE //TODO: Add power to this prefab.
+	requires_power = TRUE
 	interior = TRUE
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO
