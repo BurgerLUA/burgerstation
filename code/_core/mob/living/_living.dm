@@ -150,7 +150,7 @@
 	use_momentum = TRUE
 
 	var/override_butcher = FALSE //Set to true for custom butcher contents.
-	var/list/obj/butcher_contents = list()
+	var/list/obj/butcher_contents
 
 	var/next_resist = 0
 	var/resist_counter = 0
@@ -443,7 +443,7 @@
 	if(gibbed)
 		return FALSE
 	gibbed = TRUE
-	if(death(TRUE))
+	if(dead || death(TRUE))
 		if(blood_type)
 			var/turf/T = get_turf(src)
 			if(T)

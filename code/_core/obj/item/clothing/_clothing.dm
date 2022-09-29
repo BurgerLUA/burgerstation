@@ -41,6 +41,30 @@
 	enable_damage_overlay = TRUE
 	enable_torn_overlay = TRUE
 
+	var/list/mob_values_add
+	var/list/mob_values_mul
+
+
+/obj/item/clothing/post_move(var/atom/old_loc)
+	. = ..()
+	if(. && (length(mob_values_add) || length(mob_values_mul)))
+		if(is_inventory(old_loc))
+			var/obj/hud/inventory/IO = old_loc
+			if(IO.worn && is_living(IO.owner))
+				var/mob/living/L = IO.owner
+				for(var/k in mob_values_add)
+					L.remove_mob_value("\ref[src]_[k]",ADDITION)
+				for(var/k in mob_values_mul)
+					L.remove_mob_value("\ref[src]_[k]",MULTIPLICATION)
+		if(is_inventory(loc))
+			var/obj/hud/inventory/IN = loc
+			if(IN.worn && is_living(IN.owner))
+				var/mob/living/L = IN.owner
+				for(var/k in mob_values_add)
+					L.add_mob_value("\ref[src]_[k]",mob_values_add[k],ADDITION)
+				for(var/k in mob_values_mul)
+					L.add_mob_value("\ref[src]_[k]",mob_values_mul[k],MULTIPLICATION)
+
 /obj/item/clothing/Destroy()
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
