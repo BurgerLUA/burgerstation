@@ -376,6 +376,7 @@
 		/obj/item/currency/magic_token,
 		/obj/item/currency/gold_coin,
 		/obj/item/currency/prize_ticket,
+		/obj/item/currency/dosh,
 		/obj/item/coin/antag_token
 	)
 	dynamic_inventory_count = 0
