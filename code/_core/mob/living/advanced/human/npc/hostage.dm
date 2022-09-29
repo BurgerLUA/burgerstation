@@ -10,6 +10,8 @@
 
 	var/hostage = TRUE
 
+	damage_multiplier = 0.5 //Extra damage resist because why not.
+
 /mob/living/advanced/npc/hostage/setup_appearance(var/set_default=FALSE)
 	. = ..()
 	if(gender == FEMALE && !prob(10))
