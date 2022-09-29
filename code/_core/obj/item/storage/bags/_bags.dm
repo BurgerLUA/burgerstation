@@ -483,6 +483,8 @@
 						targetitem = /obj/item/currency/gold_coin
 					if(ispath(I.type,/obj/item/currency/prize_ticket))
 						targetitem = /obj/item/currency/prize_ticket
+					if(ispath(I.type,/obj/item/currency/dosh))
+						targetitem = /obj/item/currency/dosh
 					if(ispath(I.type,/obj/item/coin/antag_token))
 						targetitem = /obj/item/coin/antag_token
 					goods = I
