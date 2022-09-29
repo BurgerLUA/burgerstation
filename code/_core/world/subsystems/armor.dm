@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(armor)
 	name = "Armor Subsystem"
 	desc = "Stores all the known armor datums in a list."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	var/list/all_armors = list()
 

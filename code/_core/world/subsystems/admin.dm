@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(admin)
 	name = "Admin Management"
 	desc = "Handles admin management and what verbs players get."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/stored_ranks = list()
 	var/list/stored_user_ranks = list()
 

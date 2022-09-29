@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(soapstone)
 	name = "Soapstone Subsystem"
 	desc = "Subsystem dedicated to loading and saving soapstone messages."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_LAST
 
 	var/savedata/server/soapstone/save_soapstone
 

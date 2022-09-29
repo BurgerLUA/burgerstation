@@ -6,7 +6,7 @@
 SUBSYSTEM_DEF(discord)
 	name = "Discord API"
 	desc = "Handles the discord API."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_CONFIG
 
 	var/discord_webhook_key
 
@@ -26,6 +26,9 @@ SUBSYSTEM_DEF(discord)
 		return FALSE
 
 	if(!world.visibility)
+		return FALSE
+
+	if(!discord_webhook_key)
 		return FALSE
 
 	var/list/webhook_forum_params = list(

@@ -21,8 +21,6 @@ SUBSYSTEM_DEF(area)
 
 /subsystem/area/Initialize()
 
-	set background = 1
-
 	var/area_count = 0
 
 	var/area/null_area

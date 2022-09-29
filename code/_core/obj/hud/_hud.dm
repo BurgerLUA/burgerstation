@@ -28,8 +28,6 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 
 /obj/hud/proc/get_tooltip_text()
 
-	set background = TRUE
-
 	var/init_tooltip = initial(tooltip_text)
 
 	if(init_tooltip)

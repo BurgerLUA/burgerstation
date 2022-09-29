@@ -110,7 +110,8 @@
 	if(sunlight_freq > 1) //Odd sunlight freqs greater than 1 must be even.
 		sunlight_freq = CEILING(sunlight_freq,2)
 
-	SSarea.all_areas[src.type] = src
+	if(SSarea) SSarea.all_areas[src.type] = src
+	//Reason for above: The literal /area/ type will try to initialize here basically.
 
 /area/Initialize()
 

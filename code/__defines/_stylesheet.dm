@@ -49,7 +49,6 @@ body {
 }
 .subsystem{
 	color:blue;
-	font-weight: bold;
 	font-size: 10px;
 }
 .warning{

@@ -31,3 +31,5 @@
 /obj/item/magazine/shotgun_auto/slug
 	name = "\improper 20g bulldog magazine magazine (slug)"
 	ammo = /obj/item/bullet_cartridge/shotgun_20/slug
+
+	rarity = RARITY_UNCOMMON

@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(status)
 	name = "Status Effect Subsystem"
 	desc = "Controls the status effects of mobs."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	var/list/all_status_effects = list()
 

@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(enchanting)
 	name = "Enchanting Subsystem"
 	desc = "Store all the enchantments."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/all_prefix_enchantments = list()
 	var/list/all_suffix_enchantments = list()
 

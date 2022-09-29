@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(ai)
 	name = "AI Subsystem"
 	desc = "Controls the AI of mobs."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	var/list/active_ai_by_z = list()
 	var/list/inactive_ai_by_z = list()

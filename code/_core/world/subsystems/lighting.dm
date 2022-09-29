@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(lighting)
 
 /subsystem/lighting/Initialize()
 
-	if(CONFIG("ENABLE_INSTALOAD",FALSE) || !CONFIG("ENABLE_LIGHTING",TRUE))
+	if(!CONFIG("ENABLE_LIGHTING",TRUE))
 		active_subsystems -= src
 		return TRUE
 
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(lighting)
 	. = 0
 	for (var/turf/T in atoms)
 		CHECK_TICK_SAFE(tick_usage_max,0)
-		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
 

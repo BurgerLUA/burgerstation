@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(cqc)
 	name = "CQC Subsystem"
 	desc = "Stores all the known cqc moves."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	var/list/all_cqc = list()
 

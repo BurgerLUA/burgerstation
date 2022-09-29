@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(tax)
 	name = "Tax Subsystem"
 	desc = "Handles taxes and other memes."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_CONFIG
 
 	var/revenue_tax = 4
 	var/sales_tax = 6

@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(ball) //Finally. A subsystem dedicated to BALLS.
 	name = "Ball Subsystem"
 	desc = "Controls how balls behave."
 	tick_rate = 1
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_LAST
 
 	cpu_usage_max = 95
 	tick_usage_max = 95

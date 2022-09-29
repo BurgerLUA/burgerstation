@@ -25,8 +25,6 @@ SUBSYSTEM_DEF(turf)
 
 /subsystem/turf/Initialize()
 
-	set background = 1 //Needed because it thinks it's doing an infinite loop.
-
 	log_subsystem(src.name,"Generating seeds...")
 	for(var/i=1,i<=50,i++) //Generate 50 seeds.
 		seeds += rand(1,99999)

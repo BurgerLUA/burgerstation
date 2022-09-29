@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(squad)
 	name = "Squad Subsystem"
 	desc = "Manages Squads"
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	tick_rate = SECONDS_TO_TICKS(1)
 
 	tick_usage_max = 50

@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(badwords)
 	name = "Badwords Subsystem"
 	desc = "Stores all the badwords for use in LIBERAL CENSORSHIP."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/regex/bad_word_regex = list()
 
 /subsystem/badwords/Initialize()

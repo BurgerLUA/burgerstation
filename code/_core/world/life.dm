@@ -14,11 +14,9 @@ var/global/time_dialation = 0
 		S = new subsystem
 		active_subsystems += S
 
-	log_subsystem("Subsystem Controller","Created [length(active_subsystems)] subsystems.")
-
 	sortMerge(active_subsystems, /proc/cmp_subsystem_priority)
 
-	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems sorted.")
+	log_subsystem("Subsystem Controller","Created and sorted [length(active_subsystems)] subsystems sorted.")
 
 	var/benchmark = true_time()
 
@@ -29,16 +27,25 @@ var/global/time_dialation = 0
 		var/subsystem/SS = k
 		var/local_benchmark = true_time()
 		if(SS.priority < current_priority)
-			log_error("Wait, what the fuck? [last_subsystem] wasn't sorted properly! This is a fatal error, so everything is being stopped.")
+			log_error("Wait, what the fuck? [last_subsystem] wasn't sorted properly! This is a fatal error, so everything is being stopped!")
 			return FALSE
 		current_priority = SS.priority
 		last_subsystem = SS.name
 		log_subsystem(SS.name,"Initializing...")
 		INITIALIZE(SS)
-		log_subsystem(SS.name,"Initialization took [DECISECONDS_TO_SECONDS((true_time() - local_benchmark))] seconds.")
+		var/benchmark_time = DECISECONDS_TO_SECONDS((true_time() - local_benchmark))
+		switch(benchmark_time)
+			if(1 to 10)
+				log_subsystem(SS.name,"Initialization took [benchmark_time] seconds.")
+			if(10 to 30)
+				log_subsystem(SS.name,"Initialization took <b>[benchmark_time]</b> seconds.")
+			if(30 to 60)
+				log_subsystem(SS.name,"Initialization took <b style=style='color:red'>[benchmark_time]</b> seconds.")
+			if(60 to INFINITY)
+				log_subsystem(SS.name,"<b style=style='color:red'>Initialization took [benchmark_time] seconds.</b>")
 		sleep(-1)
 
-	var/final_time_text = "All initializations took [DECISECONDS_TO_SECONDS((true_time() - benchmark))] seconds."
+	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
 	log_subsystem("Subsystem Controller",final_time_text)
 	log_debug(final_time_text)

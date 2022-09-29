@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(holiday)
 	name = "Holiday Subsystem"
 	desc = "Calculates if it's a holiday or not."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_CONFIG
 	tick_rate = SECONDS_TO_TICKS(1)
 
 	var/list/all_events = list()

@@ -27,8 +27,6 @@ SUBSYSTEM_DEF(dmm_suite)
 
 /subsystem/dmm_suite/Initialize()
 
-	set background = TRUE
-
 	dmm_suite = new()
 
 	//Load all the maps.
@@ -190,8 +188,6 @@ SUBSYSTEM_DEF(dmm_suite)
 //Annoying to work with and I don't have time to spend 6 months on this.
 /*
 /subsystem/dmm_suite/proc/generate_world(var/z=0)
-
-	set background = 1 //Expensive.
 
 	log_subsystem(name,"Generating world [z]...")
 

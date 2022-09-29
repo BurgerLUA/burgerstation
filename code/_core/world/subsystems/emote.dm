@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(emote)
 	name = "Emote Subsystem"
 	desc = "Store all the emotes."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/all_emotes = list()
 
 /subsystem/emote/Initialize()

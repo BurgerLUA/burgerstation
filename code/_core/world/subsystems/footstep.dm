@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(footstep)
 	name = "Footstep Subsystem"
 	desc = "Store all the footstep effects."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/footstep/all_footsteps = list()
 
 /subsystem/footstep/Initialize()

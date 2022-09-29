@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(reagent)
 	name = "Reagent Subsystem"
 	desc = "Store all the reagents."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	tick_rate = SECONDS_TO_TICKS(4)
 
 	var/list/all_reagents = list()

@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(botany)
 	name = "Botany Subsystem"
 	desc = "Handle botany related matters."
 	tick_rate = SECONDS_TO_TICKS(10)
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	tick_usage_max = 50
 	cpu_usage_max = 50

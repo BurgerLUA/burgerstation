@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(vote)
 	name = "Voting Subsystem"
 	desc = "Controls voting timers and other memes."
-	priority = SS_ORDER_TURFS
+	priority = SS_ORDER_LAST
 	tick_rate = SECONDS_TO_TICKS(1)
 
 	cpu_usage_max = 100

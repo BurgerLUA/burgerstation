@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(dialogue)
 	name = "Dialogue Subsystem"
 	desc = "Stores all the known dialogue in a list."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/all_dialogue = list()
 	var/list/all_combat_dialogue = list()
 

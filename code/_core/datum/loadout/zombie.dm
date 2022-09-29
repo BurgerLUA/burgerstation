@@ -15,10 +15,10 @@
 
 	. = ..()
 
-	if(prob(extra_weapon_chance))
+	if(length(possible_extra_weapon) && prob(extra_weapon_chance))
 		. += pickweight(possible_extra_weapon)
 
-	if(prob(extra_clothing_chance))
+	if(length(extra_clothing_chance) && prob(extra_clothing_chance))
 		. += pickweight(possible_extra_clothing)
 
 /loadout/zombie/winter

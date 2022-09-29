@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(language)
 	name = "Language Subsystem"
 	desc = "Controls languages."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/all_languages = list()
 
 /subsystem/language/Initialize()

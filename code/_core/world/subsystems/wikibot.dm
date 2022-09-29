@@ -5,7 +5,7 @@ var/global/list/wikibot_list = list()
 SUBSYSTEM_DEF(wikibot)
 	name = "Wikibot Subsystem"
 	desc = "A 'bot' that answers questions."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_CONFIG
 
 	cpu_usage_max = 50
 	tick_usage_max = 50

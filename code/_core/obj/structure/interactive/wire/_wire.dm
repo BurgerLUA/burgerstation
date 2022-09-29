@@ -122,8 +122,6 @@
 
 /obj/structure/interactive/wire/proc/get_new_connections(var/list/existing_list)
 
-	set background = 1
-
 	if(!existing_list)
 		existing_list = list()
 

@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(events)
 	name = "Event Subsystem"
 	desc = "Handles processing for events."
-	priority = SS_ORDER_NORMAL
+	priority = SS_ORDER_FIRST
 	tick_rate = SECONDS_TO_TICKS(5)
 
 	var/list/all_events = list()

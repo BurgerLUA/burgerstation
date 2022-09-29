@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(job)
 	name = "Job Subsystem"
 	desc = "Stores all the known jobs in a list."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	var/list/all_jobs = list()
 

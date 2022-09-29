@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(sound)
 	name = "Sound Subsystem"
 	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/channel_hack = 100
 
 	cpu_usage_max = 75

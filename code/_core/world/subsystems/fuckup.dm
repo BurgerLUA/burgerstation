@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(fuckup)
 	name = "Fuckup Subsystem"
 	desc = "Fixes savedata fuckups that are caused via bugs."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_CONFIG
 
 	var/list/all_fuckups = list()
 

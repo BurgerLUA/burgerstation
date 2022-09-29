@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(smoothing)
 	name = "Smoothing Subsystem"
 	desc = "Smooths turfs and objects."
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_SMOOTHING
 	tick_rate = DECISECONDS_TO_TICKS(1)
 
 	var/list/queued_smoothing = list()

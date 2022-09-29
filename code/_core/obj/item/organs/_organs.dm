@@ -227,7 +227,7 @@
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)
-	set background = 1
+
 	var/list/valid_organs = list()
 	for(var/k in src.attached_organs)
 		var/obj/item/organ/AO = k

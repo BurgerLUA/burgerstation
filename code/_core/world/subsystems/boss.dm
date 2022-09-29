@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(bosses)
 	name = "Boss Subsystem"
 	desc = "Tracks which players are bossfighting someone."
 	tick_rate = SECONDS_TO_TICKS(4)
-	priority = SS_ORDER_IMPORTANT
+	priority = SS_ORDER_FIRST
 	var/list/tracked_bosses = list()
 	var/list/living_bosses = list()
 

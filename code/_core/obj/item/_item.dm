@@ -403,7 +403,7 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/New(var/desired_loc)
 
-	if(is_container && size <= container_max_size)
+	if(is_container && size <= container_max_size && !length(container_whitelist))
 		log_error("Warning: [get_debug_name()] had a size ([size]) less than its container max size ([container_max_size]).")
 		size = container_max_size + 1
 

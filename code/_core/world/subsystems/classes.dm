@@ -3,7 +3,7 @@ var/global/list/all_classes = list()
 SUBSYSTEM_DEF(classes)
 	name = "Class Subsystem"
 	desc = "Stores all the known classes in a list."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 /subsystem/classes/Initialize()
 

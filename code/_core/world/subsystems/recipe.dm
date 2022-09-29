@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(recipe)
 	name = "Recipe Subsystem"
 	desc = "Store all the recipes."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/recipe/all_recipes = list()
 	var/list/cooking_recipe/all_cooking_recipes_plate = list()
 

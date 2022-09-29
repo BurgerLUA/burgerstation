@@ -6,7 +6,7 @@
 SUBSYSTEM_DEF(economy)
 	name = "Economy Subsystem"
 	desc = "Handles economy saving/processing/ect."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_CONFIG
 
 	var/credits_per_gold = 10 //This value is not saved.
 	var/gold_in_circulation = 1000000

@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(text)
 	name = "text Subsystem"
 	desc = "Stores random names in a list and keeps track of possibly duplicate names."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_CONFIG
 
 	var/list/first_names_male = list()
 	var/list/first_names_female = list()

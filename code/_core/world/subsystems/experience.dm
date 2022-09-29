@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(experience)
 	name = "Experience Subsystem"
 	desc = "Stores all the known experiences."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 
 	var/list/all_skills = list()
 	var/list/all_attributes = list()

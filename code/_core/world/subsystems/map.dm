@@ -9,7 +9,6 @@ SUBSYSTEM_DEF(map)
 	var/list/z_icons = list()
 
 /subsystem/map/Initialize()
-	set background = 1
 	log_subsystem(src.name,"Creating maps...")
 	for(var/z=1,z<=world.maxz,z++)
 		var/icon/I = ICON_INVISIBLE

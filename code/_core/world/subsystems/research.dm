@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(research)
 	name = "Research Subsystem"
 	desc = "Constrols research."
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_CONFIG
 	var/list/quadrant_high_scores = list(
 		list("Marcus Burgs",80),
 		list("Pedro Johnson",50),

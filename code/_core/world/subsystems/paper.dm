@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(paper)
 	name = "Paper Loader Subsystem"
 	desc = "Loads html files and books."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/all_paper_data = list()
 
 /subsystem/paper/Initialize()

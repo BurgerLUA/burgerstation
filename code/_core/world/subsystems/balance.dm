@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(balance)
 	name = "Balance Subsystem"
 	desc = "Makes a balance report of weapons."
 
-	priority = SS_ORDER_REPORT
+	priority = SS_ORDER_PRELOAD
 
 	var/list/stored_dps = list()
 	var/list/stored_dph = list()
@@ -19,10 +19,11 @@ SUBSYSTEM_DEF(balance)
 	var/turf/T = locate(1,1,1)
 
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
-		var/obj/item/bullet_cartridge/B = new k(T)
-		if(B.rarity != RARITY_COMMON || B.value <= 0)
-			qdel(B)
+		var/obj/item/bullet_cartridge/B = k
+		if(initial(B.value) <= 0 || initial(B.rarity) != RARITY_COMMON)
 			continue
+		B = new k(T)
+		B.initialize_type = INITIALIZE_NONE
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
@@ -30,9 +31,10 @@ SUBSYSTEM_DEF(balance)
 
 	for(var/k in subtypesof(/obj/item/magazine))
 		var/obj/item/magazine/M = new k(T)
-		if(M.rarity != RARITY_COMMON || M.value <= 0)
-			qdel(M)
+		if(initial(M.value) <= 0 || initial(M.rarity) != RARITY_COMMON)
 			continue
+		M = new k(T)
+		M.initialize_type = INITIALIZE_NONE
 		INITIALIZE(M)
 		GENERATE(M)
 		FINALIZE(M)
@@ -44,8 +46,8 @@ SUBSYSTEM_DEF(balance)
 		var/obj/item/weapon/W = k
 		if(initial(W.value) <= 0)
 			continue
-
-		W = new W(T)
+		W = new k(T)
+		W.initialize_type = INITIALIZE_NONE
 		INITIALIZE(W)
 		GENERATE(W)
 		FINALIZE(W)

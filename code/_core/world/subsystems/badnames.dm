@@ -2,7 +2,7 @@
 SUBSYSTEM_DEF(badnames)
 	name = "Bad names Subsystem"
 	desc = "Stores all the badwords for use in LIBERAL CENSORSHIP."
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_FIRST
 	var/list/all_badnames = list()
 
 /subsystem/badnames/Initialize()

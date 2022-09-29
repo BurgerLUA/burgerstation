@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(callback)
 	name = "Callback Subsystem"
 	desc = "Controls callbacks."
 	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_IMPORTANT
+	priority = SS_ORDER_IMPORTANT //Doesn't really matter.
 	var/list/all_callbacks = list()
 
 	cpu_usage_max = 100
