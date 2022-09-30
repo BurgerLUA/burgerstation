@@ -2037,6 +2037,7 @@
 #include "code\_core\turf\simulated\floor\cobblestone.dm"
 #include "code\_core\turf\simulated\floor\cult.dm"
 #include "code\_core\turf\simulated\floor\diona.dm"
+#include "code\_core\turf\simulated\floor\disco.dm"
 #include "code\_core\turf\simulated\floor\fake_space.dm"
 #include "code\_core\turf\simulated\floor\grass.dm"
 #include "code\_core\turf\simulated\floor\hierophant.dm"

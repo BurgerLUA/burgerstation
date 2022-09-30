@@ -8,3 +8,7 @@
 	corner_category = "hierophant"
 
 	map_color = "#470068"
+
+/turf/simulated/wall/hierophant/Finalize()
+	. = ..()
+	src.set_light(4,0.25,"#FFFFFF")

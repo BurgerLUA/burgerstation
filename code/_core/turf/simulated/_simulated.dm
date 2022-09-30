@@ -175,6 +175,7 @@
 
 	if(real_icon)
 		icon = real_icon
+
 	if(real_icon_state)
 		icon_state = real_icon_state
 
