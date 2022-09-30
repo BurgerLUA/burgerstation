@@ -10,8 +10,6 @@
 
 	var/hostage = TRUE
 
-	damage_multiplier = 0.5 //Extra damage resist because why not.
-
 /mob/living/advanced/npc/hostage/setup_appearance(var/set_default=FALSE)
 	. = ..()
 	if(gender == FEMALE && !prob(10))
@@ -23,3 +21,7 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+
+
+/mob/living/advanced/npc/hostage/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+	return 0.5
