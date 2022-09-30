@@ -187,6 +187,7 @@
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
 	stored_arrow = new stored_arrow(src)
+	stored_arrow.initialize_type = INITIALIZE_NONE
 	INITIALIZE(stored_arrow)
 	GENERATE(stored_arrow)
 	FINALIZE(stored_arrow)
