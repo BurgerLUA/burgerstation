@@ -1,5 +1,3 @@
-var/global/image/disco_underlay
-
 /turf/simulated/floor/disco
 	name = "disco floor"
 	desc = "Pretty colors!"
@@ -9,13 +7,12 @@ var/global/image/disco_underlay
 	icon_state = "disco"
 
 	real_icon = 'icons/turf/floor/disco.dmi'
-	real_icon_state = "disco_light"
+	real_icon_state = "disco_frame"
 
 	footstep = /footstep/tile
 
-	color = COLOR_GREY
-
-	var/back_color = "#FFFFFF"
+	plane = PLANE_FLOOR_ATTACHMENT
+	layer = 1000
 
 /turf/simulated/floor/disco/Initialize()
 	. = ..()
@@ -28,22 +25,24 @@ var/global/image/disco_underlay
 /turf/simulated/floor/disco/Finalize()
 	. = ..()
 	update_sprite()
-	src.set_light(4,0.25,"#FFFFFF")
+	src.set_light(1,0.5,"#FFFFFF")
 
-/turf/simulated/floor/disco/update_underlays()
+
+var/global/list/disco_images = list()
+
+/turf/simulated/floor/disco/update_overlays()
 
 	. = ..()
 
-	if(!disco_underlay)
-		disco_underlay = new/image(real_icon,"disco_frame")
-		disco_underlay.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
-		disco_underlay.plane = src.plane
-		disco_underlay.layer = src.layer - 0.01
-		disco_underlay.color = back_color
+	var/desired_icon_state = "disco_light_[1 + ((x+y) % 4)]"
 
-	add_underlay(disco_underlay)
+	if(!disco_images[desired_icon_state])
+		var/image/I = new/image(real_icon,"disco_frame")
+		I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
+		I.blend_mode = BLEND_ADD
+		I.plane = PLANE_WIRE
+		I.layer = 1000
+		disco_images[desired_icon_state] = I
 
+	add_overlay(disco_images[desired_icon_state])
 
-/turf/simulated/floor/disco/hierophant
-	color = COLOR_PURPLE
-	back_color = COLOR_GREY_LIGHT
