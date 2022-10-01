@@ -7,7 +7,11 @@
 	corner_icons = TRUE
 	corner_category = "hierophant"
 
-	map_color = "#470068"
+	desired_light_frequency = 1
+	desired_light_power = 0.5
+	desired_light_range = 8
+	desired_light_color = "#AA00DC"
+	map_color = "#AA00DC"
 
 /turf/simulated/wall/hierophant/Finalize()
 	. = ..()

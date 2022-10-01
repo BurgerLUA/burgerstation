@@ -1,41 +1,40 @@
 "a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "b" = (/turf/simulated/wall/hierophant,/area/dmm_suite/clear_area)
-"c" = (/turf/simulated/floor/disco,/area/dmm_suite/clear_area)
-"d" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
-"e" = (/mob/living/simple/hierophant,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
-"f" = (/turf/simulated/wall/boss,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/floor/tile/dark/single,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
+"e" = (/mob/living/simple/hierophant,/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aafffffbbdddbbfffbbdddbbfffffaaa
-aafbbbbbbdddbbbbbbbdddbbbbbbfaaa
-aafbbbbbbdddbbbbbbbdddbbbbbbfaaa
-aafbbdddddddbbdddbbdddddddbbfaaa
-aafbbdccccdccccdccccdccccdbbfaaa
-aabbbdccccdccccdccccdccccdbbbaaa
-aabbbdccccdccccdccccdccccdbbbaaa
-aaddddccccdccccdccccdccccddddaaa
-aadddddddddddddddddddddddddddaaa
-aaddddccccdcccccccccdccccddddaaa
-aabbbbccccdcccccccccdccccbbbbaaa
-aabbbbccccdcccccccccdccccbbbbaaa
-aafbbdccccdcccdddcccdccccdbbfaaa
-aafbbddddddcccdedcccddddddbbfaaa
-aafbbdccccdcccdddcccdccccdbbfaaa
-aabbbbccccdcccccccccdccccbbbbaaa
-aabbbbccccdcccccccccdccccbbbbaaa
-aaddddccccdcccccccccdccccddddaaa
-aadddddddddddddddddddddddddddaaa
-aaddddccccdccccdccccdccccddddaaa
-aabbbdccccdccccdccccdccccdbbbaaa
-aabbbdccccdccccdccccdccccdbbbaaa
-aafbbdccccdccccdccccdccccdbbfaaa
-aafbbdddddddbbdddbbdddddddbbfaaa
-aafbbbbbbdddbbbbbbbdddbbbbbbfaaa
-aafbbbbbbdddbbbbbbbdddbbbbbbfaaa
-aafffffbbdddbbfffbbdddbbfffffaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaacccccccccccccccccccaaaaaaa
+aacccccbbdddbbcccbbdddbbcccccaaa
+aacbbbbbbdddbbbbbbbdddbbbbbbcaaa
+aacbbbbbbdddbbbbbbbdddbbbbbbcaaa
+aacbbbddddddbbdddbbddddddbbbcaaa
+accbbdddddddddddddddddddddbbccaa
+acbbbdddddddddddddddddddddbbbcaa
+acbbbdddddddddddddddddddddbbbcaa
+acdddddddbbbdddddddbbbdddddddcaa
+acdddddddbbbdddddddbbbdddddddcaa
+acdddddddbbbdddddddbbbdddddddcaa
+acbbbbdddddddddddddddddddbbbbcaa
+acbbbbdddddddddddddddddddbbbbcaa
+accbbdddddddddddddddddddddbbccaa
+accbbddddddddddeddddddddddbbccaa
+accbbdddddddddddddddddddddbbccaa
+acbbbbdddddddddddddddddddbbbbcaa
+acbbbbdddddddddddddddddddbbbbcaa
+acdddddddbbbdddddddbbbdddddddcaa
+acdddddddbbbdddddddbbbdddddddcaa
+acdddddddbbbdddddddbbbdddddddcaa
+acbbbdddddddddddddddddddddbbbcaa
+acbbbdddddddddddddddddddddbbbcaa
+accbbdddddddddddddddddddddbbccaa
+aacbbbddddddbbdddbbddddddbbbcaaa
+aacbbbbbbdddbbbbbbbdddbbbbbbcaaa
+aacbbbbbbdddbbbbbbbdddbbbbbbcaaa
+aacccccbbdddbbcccbbdddbbcccccaaa
+aaaaaacccccccccccccccccccaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

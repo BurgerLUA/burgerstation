@@ -2,20 +2,22 @@
 	name = "hierophant floor"
 
 	icon = 'icons/turf/floor/hierophant.dmi'
-	icon_state = "floor"
-
-	corner_icons = TRUE
-	corner_category = "hierophant"
+	icon_state = "floor1"
 
 	layer = LAYER_FLOOR_TILE
 
 	footstep = /footstep/concrete
 
-	move_delay_modifier = 0.75
+/turf/simulated/floor/hierophant/New(var/desired_loc)
 
-	desired_light_frequency = 2
-	desired_light_power = 0.5
-	desired_light_range = 8
-	desired_light_color = "#FF00DC"
-
-	map_color = COLOR_PURPLE
+	if((x+y) % 2)
+		desired_light_frequency = 1
+		desired_light_power = 0.5
+		desired_light_range = 8
+		desired_light_color = "#FF00DC"
+		map_color = "#FF00DC"
+		icon_state = "floor1"
+		//move_delay_modifier = 0.5
+	else
+		icon_state = "floor2"
+		//move_delay_modifier = 2
