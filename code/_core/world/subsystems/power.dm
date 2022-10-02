@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(power)
 		if(!A.linked_apc && A.link_to_parent_apc)
 			var/area/PA = SSarea.all_areas[A.parent_type]
 			while(TRUE)
+				CHECK_TICK_HARD(95)
 				if(!PA)
 					break
 				if(PA.type == /area/)
@@ -37,15 +38,18 @@ SUBSYSTEM_DEF(power)
 		A.toggle_power_lights(A.default_state_power_lights,force=TRUE)
 		A.toggle_power_machines(A.default_state_power_machines,force=TRUE)
 		A.toggle_power_doors(A.default_state_power_doors,force=TRUE)
+		CHECK_TICK_HARD(95)
 
 /subsystem/power/on_life()
 
 	for(var/k in all_apc_areas)
 		var/area/A = k
 		A.apc_process()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in all_power_networks)
 		var/power_network/PN = k
 		PN.power_process()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE

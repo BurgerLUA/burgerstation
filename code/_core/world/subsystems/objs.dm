@@ -24,36 +24,46 @@ SUBSYSTEM_DEF(obj)
 			initialize_late += O
 		else if(O.initialize_type == INITIALIZE_SUPERLATE)
 			initialize_superlate += O
+		CHECK_TICK_HARD(95)
 
 	for(var/k in initialize_early)
 		var/obj/O = k
 		INITIALIZE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_early)
 		var/obj/O = k
 		GENERATE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_early)
 		var/obj/O = k
 		FINALIZE(O)
+		CHECK_TICK_HARD(95)
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
 		INITIALIZE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_normal)
 		var/obj/O = k
 		GENERATE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_normal)
 		var/obj/O = k
 		FINALIZE(O)
+		CHECK_TICK_HARD(95)
 
 	for(var/k in initialize_late)
 		var/obj/O = k
 		INITIALIZE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_late)
 		var/obj/O = k
 		GENERATE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_late)
 		var/obj/O = k
 		FINALIZE(O)
+		CHECK_TICK_HARD(95)
 
 	initialize_early.Cut()
 	initialize_normal.Cut()
@@ -66,12 +76,15 @@ SUBSYSTEM_DEF(obj)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		INITIALIZE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		GENERATE(O)
+		CHECK_TICK_HARD(95)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		FINALIZE(O)
+		CHECK_TICK_HARD(95)
 
 	initialize_superlate.Cut()
 

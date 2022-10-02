@@ -19,9 +19,9 @@ SUBSYSTEM_DEF(reagent)
 /subsystem/reagent/on_life()
 
 	for(var/k in all_temperature_reagent_containers)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/reagent_container/R = k
 		R.process_temperature()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 
@@ -40,6 +40,7 @@ SUBSYSTEM_DEF(reagent)
 		var/reagent_recipe/RR = new k
 		all_reagent_recipes[RR.type] = RR
 		for(var/k2 in RR.required_reagents)
+			CHECK_TICK_HARD(95)
 			var/reagent/R = REAGENT(k2)
 			if(!R)
 				log_error("WARNING: Non reagent ([k2]) detected in recipe [RR]!")
@@ -59,6 +60,7 @@ SUBSYSTEM_DEF(reagent)
 	var/list/item_counts = list()
 
 	for(var/recipe_id in all_reagent_recipes)
+		CHECK_TICK_HARD(95)
 		var/reagent_recipe/RR = all_reagent_recipes[recipe_id]
 		if(!RR.result && !RR.results) //The reason it's not length(RR.results) is because the dev who made the recipe acknowledges that it's not supposed to have a recipe result.
 			log_error("Warning: [RR.get_debug_name()] had no reagent result(s)!")

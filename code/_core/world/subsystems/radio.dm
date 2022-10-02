@@ -28,10 +28,12 @@ SUBSYSTEM_DEF(radio)
 		for(var/k in area_list)
 			var/obj/structure/interactive/telecomms/TC = k
 			queued_telecomms |= TC
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in queued_telecomms)
 		var/obj/structure/interactive/telecomms/TC = k
 		TC.process_all_data()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

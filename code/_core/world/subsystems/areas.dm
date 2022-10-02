@@ -33,6 +33,7 @@ SUBSYSTEM_DEF(area)
 		area_count++
 		if(A.type == /area/)
 			null_area = A
+		CHECK_TICK_HARD(95)
 
 	var/changed_areas = 0
 	while(TRUE)
@@ -50,7 +51,7 @@ SUBSYSTEM_DEF(area)
 					changed_areas++
 					break
 			found_turf = TRUE
-			sleep(-1)
+			CHECK_TICK_HARD(95)
 
 		if(!found_turf)
 			break

@@ -18,7 +18,8 @@
 
 /obj/hud/button/thirst/update_owner()
 	. = ..()
-	update_sprite()
+	if(. && owner)
+		update_sprite()
 
 /obj/hud/button/thirst/get_examine_list(var/mob/caller)
 

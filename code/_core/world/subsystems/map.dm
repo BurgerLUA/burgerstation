@@ -15,11 +15,10 @@ SUBSYSTEM_DEF(map)
 		I.Crop(1,1,world.maxx,world.maxy) //Match it to the world size.
 		log_subsystem(src.name,"Creating maps of level [z]...")
 		for(var/x=1,x<=world.maxx,x++) for(var/y=1,y<=world.maxy,y++)
+			CHECK_TICK_HARD(95)
 			var/turf/simulated/S = locate(x,y,z)
-
 			if(!istype(S))
 				continue
-
 			var/found_color
 			var/area/A = S.loc
 			if(A.map_color) //Mapped out area.
@@ -40,8 +39,6 @@ SUBSYSTEM_DEF(map)
 				found_color = blend_colors(found_color,"#FF0000",0.25)
 
 			I.DrawBox(found_color,x,y)
-
-			sleep(-1)
 
 		z_icons += I
 

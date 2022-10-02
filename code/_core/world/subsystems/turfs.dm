@@ -32,19 +32,19 @@ SUBSYSTEM_DEF(turf)
 	log_subsystem(src.name,"Setting worldspawn...")
 	for(var/turf/simulated/T in world)
 		T.world_spawn = TRUE
-		sleep(-1)
+		CHECK_TICK_HARD(95)
 
 	//First generation pass.
 	log_subsystem(src.name,"Pregenerating turfs...")
 	for(var/turf/unsimulated/generation/G in world)
 		G.pre_generate()
-		sleep(-1)
+		CHECK_TICK_HARD(95)
 
 	//Second generation pass.
 	log_subsystem(src.name,"Generating turfs...")
 	for(var/turf/unsimulated/generation/G in world)
 		G.generate()
-		sleep(-1)
+		CHECK_TICK_HARD(95)
 
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
 
@@ -66,24 +66,24 @@ SUBSYSTEM_DEF(turf)
 		for(var/k in generations_first)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
-			sleep(-1)
+			CHECK_TICK_HARD(95)
 
 		log_subsystem(src.name,"Generating second markers...")
 		for(var/k in generations_second)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
-			sleep(-1)
+			CHECK_TICK_HARD(95)
 
 		log_subsystem(src.name,"Generating third markers...")
 		for(var/k in generations_third)
 			var/obj/marker/generation/G = k
 			G.generate_marker()
-			sleep(-1)
+			CHECK_TICK_HARD(95)
 
 	log_subsystem(src.name,"Initializing turfs...")
 	for(var/turf/simulated/S in world)
 		INITIALIZE(S)
-		sleep(-1)
+		CHECK_TICK_HARD(95)
 
 	var/list/type_to_time = list()
 
@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(turf)
 		if(benchmark > 0)
 			type_to_time[S.type] += benchmark
 		turfs_finalized++
-		sleep(-1)
+		CHECK_TICK_HARD(95)
 
 	log_subsystem(src.name,"Finalized [turfs_finalized] simulated turfs.")
 
@@ -120,7 +120,8 @@ SUBSYSTEM_DEF(turf)
 		GENERATE(M)
 		FINALIZE(M)
 		qdel(M)
-		sleep(-1)
+		CHECK_TICK_HARD(95)
+
 	benchmark = true_time() - benchmark
 	log_subsystem(src.name,"Clear turf markers took [DECISECONDS_TO_SECONDS(benchmark)] seconds.")
 

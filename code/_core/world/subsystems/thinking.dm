@@ -17,11 +17,11 @@ SUBSYSTEM_DEF(thinking)
 /subsystem/thinking/on_life()
 	for(var/k in all_thinkers)
 		var/atom/A = k
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		if(!A || A.qdeleting)
 			all_thinkers -= A
 			continue
 		if(!A.think())
 			STOP_THINKING(A)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE

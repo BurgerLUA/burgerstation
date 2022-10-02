@@ -140,7 +140,7 @@ SUBSYSTEM_DEF(chunk)
 				var/chunk_y = CEILING(M.y/CHUNK_SIZE,1)
 				var/chunk/C2 = SSchunk.chunks[M.z][chunk_x][chunk_y]
 				if(C != C2)
-					log_error("Chunk error! [M.get_debug_name()] was found in the wrong chunk!")
+					continue //It was moved.
 			if(M.on_chunk_clean())
 				. += 1
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)

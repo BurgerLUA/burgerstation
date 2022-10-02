@@ -56,11 +56,12 @@ var/global/list/turf/simulated/floor/water_shores = list()
 			else
 				depth = MAX_DEPTH
 				for(var/k in water_shores)
+					CHECK_TICK_SAFE(75,FPS_SERVER)
 					var/turf/simulated/floor/T = k
 					if(get_dist(src,T) > MAX_DEPTH*2)
 						continue
 					depth = clamp(get_dist_real(src,T)*0.5,1,depth)
-					if(depth == 1)
+					if(depth <= 1)
 						break
 			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))

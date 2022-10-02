@@ -38,6 +38,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		z_level_to_file += k
 		file_to_z_level["[k]"] = i
 		maps_loaded++
+		CHECK_TICK_HARD(95)
 
 	log_subsystem(src.name,"Loaded [maps_loaded] z-levels.")
 
@@ -94,6 +95,7 @@ SUBSYSTEM_DEF(dmm_suite)
 			angleOffset = SIMPLIFY_DEGREES(desired_angle)
 		)
 		loaded_prefabs++
+		CHECK_TICK_HARD(95)
 
 	if(length(not_enough))
 		log_error("Warning: Not enough prefabs of type(s) [english_list(not_enough)] to satisfy all prefab markers.")
@@ -112,6 +114,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		if(z)
 			for(var/y=2,y<=499,y++)
 				for(var/x=2,x<=499,x++)
+					CHECK_TICK_HARD(95)
 					if(y < pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) - 3) //Bottom line
 						continue
 					if(y > pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) + 3) //Top line
@@ -129,10 +132,8 @@ SUBSYSTEM_DEF(dmm_suite)
 			var/marker_attempts_left = 30
 
 			while(marker_attempts_left > 0 && desired_bridges > 0)
-				sleep(-1)
+				CHECK_TICK_HARD(95)
 				marker_attempts_left--
-
-
 				var/marker_x = rand(50,450)
 				var/marker_y = pvp_y - (marker_x * 0.05 + sin(marker_x*3))**(pvp_coef*2)
 				marker_x = round(marker_x)

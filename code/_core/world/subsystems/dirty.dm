@@ -33,6 +33,7 @@ var/global/list/possible_trash = list(
 						INITIALIZE(E)
 						GENERATE(E)
 						FINALIZE(E)
+					CHECK_TICK_HARD(95)
 					continue
 				if(S.has_opaque_atom)
 					continue
@@ -48,5 +49,6 @@ var/global/list/possible_trash = list(
 					INITIALIZE(I)
 					GENERATE(I)
 					FINALIZE(I)
+				CHECK_TICK_HARD(95)
 
 	return TRUE

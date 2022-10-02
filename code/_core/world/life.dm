@@ -4,6 +4,8 @@ var/global/time_dialation = 0
 
 	world_log("Starting world...")
 
+	Profile(PROFILE_START)
+
 	world_state = STATE_INITIALIZING
 
 	for(var/subsystem in subtypesof(/subsystem/))
@@ -93,5 +95,20 @@ var/global/time_dialation = 0
 	log_subsystem("Subsystem Controller","Life initializations complete.")
 
 	update_server_status()
+
+	var/list/all_profile_data = Profile(PROFILE_STOP)
+
+	var/list/expensive_procs = list()
+
+	for(var/k in all_profile_data)
+		var/list/profile_data = all_profile_data[k]
+		if(profile_data["self"] <= 0)
+			continue
+		expensive_procs[profile_data["name"]] = profile_data["self"]
+
+	sortInsert(expensive_procs, /proc/cmp_numeric_asc, associative=TRUE)
+
+	var/data_to_log = json_encode(expensive_procs)
+	SSlogging.raw_log("profiler",data_to_log)
 
 	return TRUE

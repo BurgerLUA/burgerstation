@@ -25,18 +25,15 @@ SUBSYSTEM_DEF(logging)
 	start_date = lowertext(time2text(world.realtime,"YYYY-MMM-DD"))
 	return ..()
 
-/*
-/subsystem/logging/proc/log_chat(var/data_to_log)
-	buffered_log_chat += data_to_log
-	return TRUE
-
-/subsystem/logging/proc/log_admin(var/data_to_log)
-	buffered_log_admin += data_to_log
-	return TRUE
-*/
-
 /subsystem/logging/proc/get_logging_dir(var/type)
 	return "data/server/logging/[round_id]-[start_date]/[type].txt"
+
+
+/subsystem/logging/proc/raw_log(var/file_name,var/text_data,var/timestamps=FALSE)
+	if(!file_name || !text_data)
+		return FALSE
+	rustg_log_write(get_logging_dir(file_name),text_data, timestamps ? "true" : null)
+	return TRUE
 
 /subsystem/logging/proc/log_from_list(var/identifier,var/list/desired_list)
 	if(!length(desired_list))
