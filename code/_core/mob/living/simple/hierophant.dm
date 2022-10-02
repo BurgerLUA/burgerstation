@@ -9,7 +9,7 @@
 
 	ai = /ai/boss/hierophant/
 
-	stun_angle = 90
+	stun_angle = 0
 
 	health_base = 10000
 
@@ -115,6 +115,16 @@
 	return TRUE
 
 
+
+/mob/living/simple/hierophant/pre_death()
+	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)
+	return ..()
+
 /mob/living/simple/hierophant/post_death()
 	icon_state = "dead"
-	return ..()
+	. = ..()
+	animate(src, pixel_z = 64, time = 30)
+
+/mob/living/simple/hierophant/handle_alpha()
+	if(dead) return 0
+	. = ..()

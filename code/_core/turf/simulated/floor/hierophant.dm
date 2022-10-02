@@ -10,14 +10,14 @@
 
 /turf/simulated/floor/hierophant/New(var/desired_loc)
 
+	. = ..()
+
 	if((x+y) % 2)
+		icon_state = "floor2"
+	else
 		desired_light_frequency = 1
-		desired_light_power = 0.5
-		desired_light_range = 8
+		desired_light_power = 0.25
+		desired_light_range = 2
 		desired_light_color = "#FF00DC"
 		map_color = "#FF00DC"
-		icon_state = "floor1"
-		//move_delay_modifier = 0.5
-	else
-		icon_state = "floor2"
-		//move_delay_modifier = 2
+		icon_state = "floor3"

@@ -8,8 +8,8 @@
 	corner_category = "hierophant"
 
 	desired_light_frequency = 1
-	desired_light_power = 0.5
-	desired_light_range = 8
+	desired_light_power = 0.25
+	desired_light_range = 2
 	desired_light_color = "#AA00DC"
 	map_color = "#AA00DC"
 
