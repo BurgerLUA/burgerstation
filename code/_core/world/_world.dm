@@ -52,9 +52,6 @@ var/global/world_state = STATE_STARTING
 
 /world/proc/update_server_status()
 
-	if(world_state == STATE_STARTING)
-		return FALSE
-
 	var/server_name = CONFIG("SERVER_NAME","Unofficial Burgerstation 13 Server")
 	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
@@ -163,7 +160,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/end(var/reason,var/shutdown=FALSE)
 
 	if(world_state != STATE_RUNNING)
-		log_error("Can't restart now!")
+		log_error("Can't end now!")
 		return FALSE
 
 	var/nice_reason = "Unknown reason."

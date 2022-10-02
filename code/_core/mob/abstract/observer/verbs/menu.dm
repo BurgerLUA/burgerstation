@@ -24,8 +24,12 @@ var/global/antag_count = 0
 	set name = "Load Character"
 	set category = "Menu"
 
-	if(world_state != STATE_RUNNING)
-		to_chat(span("danger","The round is currently ending! Wait until next round!"))
+	if(world_state < STATE_RUNNING)
+		to_chat(span("warning","The round is currently loading! Wait a bit!"))
+		return FALSE
+
+	if(world_state > STATE_RUNNING)
+		to_chat(span("warning","The round is currently ending! Wait until next round!"))
 		return FALSE
 
 	var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
@@ -58,7 +62,11 @@ var/global/antag_count = 0
 	set category = "Menu"
 
 	if(client)
-		if(world_state != STATE_RUNNING)
+		if(world_state < STATE_RUNNING)
+			to_chat(span("warning","The round is currently loading! Wait a bit!"))
+			return FALSE
+
+		if(world_state > STATE_RUNNING)
 			to_chat(span("warning","The round is currently ending! Wait until next round!"))
 			return FALSE
 
@@ -114,12 +122,12 @@ var/global/antag_count = 0
 		src.to_chat(span("danger","You don't have any antag tokens! To earn antag tokens, play the game normally and purchase them in a secret location in maintenance."))
 		return FALSE
 
-	if(world_state != STATE_RUNNING)
-		src.to_chat(span("warning","The game has not loaded yet!"))
+	if(world_state < STATE_RUNNING)
+		to_chat(span("warning","The round is currently loading! Wait a bit!"))
 		return FALSE
 
-	if(!SSgamemode || !SSgamemode.active_gamemode)
-		src.to_chat(span("warning","The game has not started yet!"))
+	if(world_state > STATE_RUNNING)
+		to_chat(span("warning","The round is currently ending! Wait until next round!"))
 		return FALSE
 
 	var/gamemode_state = SSgamemode.active_gamemode.state

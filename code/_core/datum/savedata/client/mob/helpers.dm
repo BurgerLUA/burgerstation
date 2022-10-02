@@ -73,7 +73,11 @@ var/global/allow_loading = TRUE
 		owner?.mob?.to_chat(span("danger","Loading is currently disabled due to cleaning feature. Please wait."))
 		return FALSE
 
-	if(world_state != STATE_RUNNING)
+	if(world_state < STATE_RUNNING)
+		owner?.mob?.to_chat(span("warning","The round is currently loading! Wait a bit!"))
+		return FALSE
+
+	if(world_state > STATE_RUNNING)
 		owner?.mob?.to_chat(span("warning","The round is currently ending! Wait until next round!"))
 		return FALSE
 
@@ -107,7 +111,7 @@ var/global/allow_loading = TRUE
 
 
 	if(!force && world_state != STATE_RUNNING)
-		usr?.to_chat(span("danger","Your character was not saved as the round just ended!"))
+		usr?.to_chat(span("danger","Your character was not saved as the round is not running!"))
 		return FALSE
 
 	if(!A.allow_save)

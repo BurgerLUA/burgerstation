@@ -7,8 +7,8 @@
 
 	var/area/A = get_area(src)
 
-	if(world_state == STATE_ROUND_END)
-		src.to_chat(span("warning","You can't logout now, the round has already ended!"))
+	if(world_state >= STATE_ROUND_END)
+		src.to_chat(span("warning","You can't logout now, the round has already ended! You'll automatically logout soon."))
 		return FALSE
 
 	if(world_state != STATE_RUNNING)
@@ -24,10 +24,9 @@
 	else if(can_save(A))
 		var/question = input("Are you sure you want to save and quit?") in list("Yes","No")
 		if(question == "Yes" && can_save(A))
-			if(world_state == STATE_ROUND_END)
-				src.to_chat(span("warning","You can't logout now, the round has already ended!"))
+			if(world_state >= STATE_ROUND_END)
+				src.to_chat(span("warning","You can't logout now, the round has already ended! You'll automatically logout soon."))
 				return FALSE
-
 			if(world_state != STATE_RUNNING)
 				src.to_chat(span("warning","You can't logout now! The game isn't running!"))
 				return FALSE

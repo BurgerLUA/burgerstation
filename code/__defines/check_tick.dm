@@ -7,7 +7,7 @@
 
 
 #define CHECK_TICK_SAFE(limit,max_delays) \
-	if(world_state != STATE_STARTING) {\
+	if(world_state < STATE_RUNNING) {\
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)\
 	}\
 	else if(world.tick_usage > limit) { \

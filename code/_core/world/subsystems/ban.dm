@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(ban)
 			var/mob/living/advanced/player/P = C.mob
 			var/obj/marker/ban/B = locate() in world
 			if(B) P.force_move(get_turf(B))
-			if(world_state == STATE_RUNNING) P.force_logout()
+			if(world_state >= STATE_RUNNING) P.force_logout()
 		//Todo: Make it load their connections history and ban all the ips/computer ids from their connection.
 		bans_computer_ids[C.computer_id] = bans_keys[desired_ckey]
 		bans_address[C.address] = bans_keys[desired_ckey]

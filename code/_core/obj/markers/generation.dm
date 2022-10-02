@@ -45,6 +45,8 @@ var/global/list/all_generation_markers = list()
 
 	for(var/k in valid_turfs)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		if(!length(valid_turfs))
+			return FALSE
 		if(objects_placed > objects_max)
 			return FALSE
 		var/turf/T = k
@@ -85,7 +87,9 @@ var/global/list/all_generation_markers = list()
 					continue
 			valid_turfs += T2
 
-	return length(valid_turfs)
+
+
+	return TRUE
 
 /obj/marker/generation/proc/generate_marker()
 

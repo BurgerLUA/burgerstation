@@ -18,7 +18,7 @@
 			caller.to_chat(span("notice","You cannot create a new character while your character is currently loaded!"))
 			return TRUE
 
-		if(world_state != STATE_RUNNING)
+		if(world_state < STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
@@ -45,7 +45,7 @@
 		if(!is_observer(caller))
 			caller.to_chat(span("notice","You cannot load a new character while your character is currently loaded!"))
 			return TRUE
-		if(world_state != STATE_RUNNING)
+		if(world_state < STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 		if(!allow_loading)
@@ -100,7 +100,7 @@
 		if(!is_observer(caller))
 			caller.to_chat(span("notice","You cannot teleport as a non-observer!"))
 			return TRUE
-		if(world_state != STATE_RUNNING)
+		if(world_state < STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
