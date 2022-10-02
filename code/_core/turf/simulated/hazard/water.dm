@@ -47,7 +47,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	shore = FALSE
 	for(var/d in DIRECTIONS_CARDINAL)
 		var/turf/simulated/floor/T = get_step(src,d)
-		if(istype(T))
+		if(istype(T) && T.organic)
 			shore = TRUE
 			break
 	if(shore)
@@ -57,12 +57,12 @@ var/global/list/turf/simulated/floor/water_shores = list()
 /turf/simulated/liquid/water/Finalize()
 
 	alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
-	if(depth == MAX_DEPTH)
+	if(depth >= MAX_DEPTH)
 		map_color = map_color_max_depth
-	else if(depth <= 1)
+	else if(depth <= 0)
 		map_color = map_color_min_depth
 	else
-		map_color = blend_colors(map_color_min_depth,map_color_max_depth,(depth-1)/MAX_DEPTH)
+		map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
 
 	. = ..()
 
