@@ -136,7 +136,7 @@ var/global/list/debug_verbs = list(
 			else
 				error_tiles++
 
-			sleep(-1)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	to_chat("Found [found_tiles] tiles, with [error_tiles] errored tiles.")
 	to_chat("Icon: [new/image(I)].")

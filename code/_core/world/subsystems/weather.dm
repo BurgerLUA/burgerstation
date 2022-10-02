@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(weather)
 				O.particles = all_weather_particles[/particles/weather/snow]
 				var/area/A = T.loc
 				A.particle_managers += O
-				CHECK_TICK_HARD(95)
+				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	return TRUE
 

@@ -89,7 +89,7 @@ var/global/world_state = STATE_STARTING
 	return ..()
 
 /world/proc/play_round_end_sound()
-	sleep(-1)
+	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	var/chosen_sound = pick(SSsound.round_end_sounds)
 	play_sound_global(chosen_sound,all_mobs_with_clients)
 	sleep(30)
@@ -113,7 +113,7 @@ var/global/world_state = STATE_STARTING
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
-	sleep(-1)
+	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	Reboot(0)
 	return TRUE
 
@@ -158,7 +158,7 @@ var/global/world_state = STATE_STARTING
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
 		sleep(1)
-		sleep(-1)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
 

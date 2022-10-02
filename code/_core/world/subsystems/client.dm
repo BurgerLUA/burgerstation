@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(client)
 		C.on_life()
 		if(do_slow)
 			C.on_life_slow()
-		sleep(-1)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in queued_automatics)
 		var/obj/item/weapon/ranged/R = k

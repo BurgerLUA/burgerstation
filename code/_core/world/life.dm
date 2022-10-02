@@ -4,7 +4,8 @@ var/global/time_dialation = 0
 
 	world_log("Starting world...")
 
-	Profile(PROFILE_START)
+	if(world.port == 0)
+		Profile(PROFILE_START)
 
 	world_state = STATE_INITIALIZING
 
@@ -45,7 +46,7 @@ var/global/time_dialation = 0
 				log_subsystem(SS.name,"Initialization took <b style=style='color:red'>[benchmark_time]</b> seconds.")
 			if(60 to INFINITY)
 				log_subsystem(SS.name,"<b style=style='color:red'>Initialization took [benchmark_time] seconds.</b>")
-		sleep(-1)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
@@ -96,19 +97,7 @@ var/global/time_dialation = 0
 
 	update_server_status()
 
-	var/list/all_profile_data = Profile(PROFILE_STOP)
-
-	var/list/expensive_procs = list()
-
-	for(var/k in all_profile_data)
-		var/list/profile_data = all_profile_data[k]
-		if(profile_data["self"] <= 0)
-			continue
-		expensive_procs[profile_data["name"]] = profile_data["self"]
-
-	sortInsert(expensive_procs, /proc/cmp_numeric_asc, associative=TRUE)
-
-	var/data_to_log = json_encode(expensive_procs)
-	SSlogging.raw_log("profiler",data_to_log)
+	if(world.port == 0)
+		Profile(PROFILE_STOP)
 
 	return TRUE

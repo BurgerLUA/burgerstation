@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(balance)
 		GENERATE(B)
 		FINALIZE(B)
 		created_bullets += B
-		CHECK_TICK_HARD(95)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in subtypesof(/obj/item/magazine))
 		var/obj/item/magazine/M = new k(T)
@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(balance)
 		GENERATE(M)
 		FINALIZE(M)
 		created_magazines += M
-		CHECK_TICK_HARD(95)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	var/imbalanced_weapons = 0
 
@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(balance)
 			stored_tier[W.type] = recommended_tier
 
 		qdel(W)
-		CHECK_TICK_HARD(95)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	sortInsert(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
 	sortInsert(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
@@ -101,13 +101,13 @@ SUBSYSTEM_DEF(balance)
 	for(var/k in created_bullets)
 		var/obj/item/I = k
 		qdel(I)
-		CHECK_TICK_HARD(95)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	created_bullets.Cut()
 
 	for(var/k in created_magazines)
 		var/obj/item/I = k
 		qdel(I)
-		CHECK_TICK_HARD(95)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	created_magazines.Cut()
 
 	log_subsystem(src.name,"Found [imbalanced_weapons] imbalanced weapons.")

@@ -57,11 +57,11 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 			continue
 		if(!T.organic)
 			is_next_to_organic_turfs = FALSE
-		var/area/A = T.loc
 		if(src.type != T.type && src.parent_type != T.type && src.type != T.parent_type)
 			is_different = TRUE
 			if(!T.density)
 				is_next_to_dense_turfs = FALSE
+		var/area/A = T.loc
 		if(A.interior)
 			is_next_to_interior = TRUE
 		if(A.type != /area/)

@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(map)
 		I.Crop(1,1,world.maxx,world.maxy) //Match it to the world size.
 		log_subsystem(src.name,"Creating maps of level [z]...")
 		for(var/x=1,x<=world.maxx,x++) for(var/y=1,y<=world.maxy,y++)
-			CHECK_TICK_HARD(95)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			var/turf/simulated/S = locate(x,y,z)
 			if(!istype(S))
 				continue

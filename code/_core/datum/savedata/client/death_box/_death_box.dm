@@ -11,7 +11,7 @@ var/global/list/ckey_to_death_box_data = list()
 
 	var/total_items_saved = 0
 	for(var/k in dead_player_mobs)
-		sleep(-1)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		var/mob/living/advanced/player/P = k
 		if(!P.allow_save)
 			continue
@@ -44,7 +44,7 @@ var/global/list/ckey_to_death_box_data = list()
 		data_list["inventory"] = list()
 		data_list["value"] = 0
 		for(var/j in dropped_items)
-			sleep(-1)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			var/obj/item/I = j
 			data_list["inventory"] += list(I.save_item_data(P))
 			data_list["value"] += CEILING(I.get_value(),1)
@@ -57,7 +57,7 @@ var/global/list/ckey_to_death_box_data = list()
 	log_debug("Saving [length(db_data_to_save)] death box instances with [total_items_saved] items saved.")
 
 	for(var/k in db_data_to_save)
-		sleep(-1)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		var/savedata/client/death_box/DB = k
 		DB.save()
 

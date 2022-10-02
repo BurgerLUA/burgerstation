@@ -30,7 +30,7 @@ var/global/list/stored_boss_floor_icons
 	if(!stored_boss_floor_icons)
 		stored_boss_floor_icons = list()
 		for(var/i=1,i<=50,i++)
-			sleep(-1)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			var/icon/I = new /icon(icon,icon_state)
 			if(prob(10))
 				var/icon/N = new /icon(icon,get_quad_icon_state(),NORTH)

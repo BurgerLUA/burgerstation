@@ -1,6 +1,6 @@
 var/global/list/turf/simulated/floor/water_shores = list()
 
-#define MAX_DEPTH (VIEW_RANGE + ZOOM_RANGE)
+#define MAX_DEPTH (VIEW_RANGE)
 
 /turf/simulated/liquid/water
 	name = "stagnant water"
@@ -36,39 +36,33 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 	var/shore = FALSE
 
+/turf/simulated/liquid/water/New(var/desired_loc)
+	. = ..()
+	if(depth == 0)
+		depth = MAX_DEPTH
+
 /turf/simulated/liquid/water/Initialize()
 	. = ..()
-	if(!CONFIG("ENABLE_INSTALOAD",FALSE) && depth <= 0)
-		for(var/k in DIRECTIONS_CARDINAL)
-			var/turf/simulated/floor/T = get_step(src,k)
-			if(!istype(T))
-				continue
-			water_shores += src
+
+	shore = FALSE
+	for(var/d in DIRECTIONS_CARDINAL)
+		var/turf/simulated/floor/T = get_step(src,d)
+		if(istype(T))
 			shore = TRUE
 			break
+	if(shore)
+		for(var/turf/simulated/liquid/water/W in oview(src,MAX_DEPTH))
+			W.depth = min(W.depth,get_dist_real(W,src))
 
 /turf/simulated/liquid/water/Finalize()
 
-	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
-		if(depth <= 0)
-			if(shore)
-				depth = 1
-			else
-				depth = MAX_DEPTH
-				for(var/k in water_shores)
-					CHECK_TICK_SAFE(75,FPS_SERVER)
-					var/turf/simulated/floor/T = k
-					if(get_dist(src,T) > MAX_DEPTH*2)
-						continue
-					depth = clamp(get_dist_real(src,T)*0.5,1,depth)
-					if(depth <= 1)
-						break
-			map_color = blend_colors(map_color_min_depth,map_color_max_depth,depth/MAX_DEPTH)
-			alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
-	else
-		depth = 8
-		alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
+	alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
+	if(depth == MAX_DEPTH)
 		map_color = map_color_max_depth
+	else if(depth <= 1)
+		map_color = map_color_min_depth
+	else
+		map_color = blend_colors(map_color_min_depth,map_color_max_depth,(depth-1)/MAX_DEPTH)
 
 	. = ..()
 
@@ -90,7 +84,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/river/jungle/Finalize()
 	. = ..()
-	if(depth <= 2 && prob(90))
+	if(depth <= 2 && ( (shore&&prob(90)) || prob(40)) )
 		for(var/j=1,j<=rand(2,3),j++)
 			var/obj/structure/scenery/reeds/R = new(src)
 			R.pixel_x = rand(-8,8)

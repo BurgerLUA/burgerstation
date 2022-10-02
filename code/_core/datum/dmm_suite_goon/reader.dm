@@ -30,7 +30,7 @@ dmm_suite
 			var/modelsStart = findtextEx(modelLine, "/") // Skip key and first three characters: "aa" = (
 			var/modelContents = copytext(modelLine, modelsStart, length(modelLine)) // Skip last character: )
 			grid_models[modelKey] = modelContents //We have now stored the key representing the turf.
-			sleep(-1)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		if(!coordX) coordX = 1
 		if(!coordY) coordY = 1
 		if(!coordZ) coordZ = world.maxz+1
@@ -62,6 +62,7 @@ dmm_suite
 				)
 			)
 			maxZFound = max(maxZFound, grid.group[3]+1)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 		if(maxZFound+(coordZ-1) > world.maxz)
 			world.maxz = maxZFound+(coordZ-1)
@@ -143,8 +144,7 @@ dmm_suite
 						break
 					else
 						. += result
-
-					CHECK_TICK_SAFE(50,FPS_SERVER)
+					CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 		return .
 

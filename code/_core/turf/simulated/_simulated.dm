@@ -127,9 +127,9 @@
 		var/turf/T = get_step(src,d)
 		if(!T)
 			continue
-		if(should_smooth_with(T))
-			calc_list[dir_to_text] = TRUE
+		if(!should_smooth_with(T))
 			continue
+		calc_list[dir_to_text] = TRUE
 
 	var/ne = ""
 	var/nw = ""
