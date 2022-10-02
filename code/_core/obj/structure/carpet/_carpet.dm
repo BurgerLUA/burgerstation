@@ -15,6 +15,8 @@
 
 	health = /health/construction/
 
+	mouse_opacity = 0
+
 /obj/structure/carpet/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
 	qdel(src)
