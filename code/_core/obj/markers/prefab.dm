@@ -78,6 +78,10 @@
 	chance_none = 0
 	rotational_offset = 16
 
+/obj/marker/prefab/shuttle/prepare_prefab()
+	. = ..()
+	dir = SOUTH //Force south dir.
+
 //Special Prefabs
 
 /obj/marker/prefab/antag
@@ -221,12 +225,13 @@
 /obj/marker/prefab/city/parking
 	icon = 'icons/obj/markers/prefab_10x10.dmi'
 	icon_state = "parking"
-	category = "city_parking_straight" //or "city_parkingstreet_corner"
+	category = "city_parking_straight" //or "city_parking_corner"
+	alpha = 150
 
 /obj/marker/prefab/city/parking/prepare_prefab()
 
 	if(dir in DIRECTIONS_INTERCARDINAL) //Corner
-		category = "city_parking_straight"
+		category = "city_parking_corner"
 		switch(dir)
 			if(SOUTHWEST)
 				dir = SOUTH
