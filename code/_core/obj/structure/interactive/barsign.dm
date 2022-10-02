@@ -5,6 +5,7 @@
 	icon_state = "blank"
 	plane = PLANE_WALL
 	layer = 99
+	dir_offset = 64
 
 
 
@@ -110,4 +111,12 @@ obj/structure/interactive/bar_sign/scotchservinwill
 	desc = "Wait what?"
 	icon_state = "scotchservinwill"
 
+obj/structure/interactive/bar_sign/newmed_clinic
+	name = "Dr. Newmed's (TM) Clinic"
+	desc = "Wait what?"
+	icon_state = "newmed_clinic"
 
+obj/structure/interactive/bar_sign/chess
+	name = "Chess"
+	desc = "Wait what?"
+	icon_state = "chess"

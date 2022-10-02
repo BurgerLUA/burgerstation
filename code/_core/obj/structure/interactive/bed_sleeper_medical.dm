@@ -7,20 +7,33 @@
 	secondary_color = "#0094FF"
 	tertiary_color = "#0094FF"
 	var/advanced = FALSE
+	var/heal_multiplier = 1
+
+/obj/structure/interactive/bed/sleeper/medical/weak
+	name = "consumer grade medical sleeper"
+	base_color = "#A59FBC"
+	secondary_color = "#009469"
+	tertiary_color = "#D8D8EC"
+	heal_multiplier = 0.25
 
 /obj/structure/interactive/bed/sleeper/medical/think()
+
 	if(door_state == SLEEPER_CLOSED && buckled && is_living(buckled))
 		var/mob/living/L = buckled
-		L.brute_regen_buffer = min(L.brute_regen_buffer+1,10)
-		L.burn_regen_buffer = min(L.burn_regen_buffer+1,10)
-		L.tox_regen_buffer = min(L.tox_regen_buffer+1,10)
-		L.pain_regen_buffer = min(L.pain_regen_buffer+1,10)
+		L.brute_regen_buffer = min(L.brute_regen_buffer+heal_multiplier,10*heal_multiplier)
+		L.burn_regen_buffer = min(L.burn_regen_buffer+heal_multiplier,10*heal_multiplier)
+		L.tox_regen_buffer = min(L.tox_regen_buffer+heal_multiplier,10*heal_multiplier)
+		L.pain_regen_buffer = min(L.pain_regen_buffer+heal_multiplier,10*heal_multiplier)
 		if(advanced)
-			L.rad_regen_buffer = min(L.rad_regen_buffer+1,1)
-			L.sanity_regen_buffer = min(L.sanity_regen_buffer+1,10)
-			L.mental_regen_buffer = min(L.mental_regen_buffer+1,10)
+			L.rad_regen_buffer = min(L.rad_regen_buffer+heal_multiplier,1)
+			L.sanity_regen_buffer = min(L.sanity_regen_buffer+heal_multiplier,10*heal_multiplier)
+			L.mental_regen_buffer = min(L.mental_regen_buffer+heal_multiplier,10*heal_multiplier)
 			if(L.blood_type)
-				L.blood_volume = min(L.blood_volume + 1,L.blood_volume_max)
+				if(L.blood_volume > L.blood_volume_max)
+					L.blood_volume = max(L.blood_volume - heal_multiplier,L.blood_volume_max)
+				else if(L.blood_volume < L.blood_volume_max)
+					L.blood_volume = min(L.blood_volume + heal_multiplier,L.blood_volume_max)
+
 	return TRUE
 
 /obj/structure/interactive/bed/sleeper/medical/close(var/mob/caller)

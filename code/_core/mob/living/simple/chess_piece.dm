@@ -1,7 +1,7 @@
 /mob/living/simple/chess_piece
 	name = "chess piece"
 	icon = 'icons/mob/living/simple/chess.dmi'
-	ai = null //Custom AI.
+	ai = null //Custom AI embedded in mob life.
 
 	stun_angle = 90
 
@@ -10,6 +10,13 @@
 	var/mob/living/simple/chess_piece/king/linked_king
 
 	pixel_z = 4
+
+/mob/living/simple/chess_piece/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(!processing)
+		return FALSE
+
+	. = ..()
 
 /mob/living/simple/chess_piece/post_move(var/atom/old_loc)
 

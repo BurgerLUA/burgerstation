@@ -170,3 +170,34 @@
 
 /area/mission/prefab/city/robusta_cafe/bathroom
 	icon_state = "blue"
+
+
+/area/mission/prefab/city/newmed_clinic
+	name = "\improper Dr Newmed's Clinic"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/newmed_clinic/furnace
+	icon_state = "blue"
+
+/area/mission/prefab/city/newmed_clinic/lobby
+	icon_state = "red"
+
+
+/area/mission/prefab/city/chess
+	name = "Chess!"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/chess/bathroom
+	icon_state = "blue"
