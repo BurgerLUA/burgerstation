@@ -39,9 +39,6 @@
 		status_effects[status_type] = list()
 		. = TRUE
 
-	if(src.finalized)
-		PROCESS_LIVING(src)
-
 	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
 		status_effects[status_type]["duration"] = duration
 	else //Duration exists.
@@ -68,6 +65,7 @@
 	if(.)
 		S.on_effect_added(src,source,magnitude,duration,stealthy)
 		handle_transform()
+		PROCESS_LIVING(src)
 		//handle_blocking is not needed here as it is in handle_transform()
 
 /mob/living/proc/remove_status_effect(var/status_type,var/check_horizontal=TRUE)

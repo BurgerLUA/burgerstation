@@ -1,99 +1,680 @@
-"aa" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"ab" = (/turf/simulated/wall/metal,/area/dmm_suite/clear_area)
-"ac" = (/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/furnace)
-"ad" = (/obj/structure/sign/fire,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/furnace)
-"ae" = (/obj/structure/interactive/crate/coffin,/obj/marker/spawning/random/valuable,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"af" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"ag" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"ah" = (/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 4},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"ai" = (/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 4},/obj/structure/interactive/plastic_flaps,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"aj" = (/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 4},/turf/simulated/liquid/lava,/area/mission/prefab/city/newmed_clinic/furnace)
-"ak" = (/obj/structure/interactive/conveyor,/turf/simulated/liquid/lava,/area/mission/prefab/city/newmed_clinic/furnace)
-"al" = (/obj/structure/interactive/crate/bodybag,/obj/marker/spawning/random/trash,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"am" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"an" = (/obj/structure/interactive/atmospherics/fan,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"ao" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"ap" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"aq" = (/obj/structure/interactive/fence/door,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"ar" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"as" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"at" = (/obj/structure/interactive/fence,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"au" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"av" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"aw" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"ax" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"ay" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"az" = (/turf/simulated/liquid/lava,/area/mission/prefab/city/newmed_clinic/furnace)
-"aA" = (/obj/structure/interactive/crate/bodybag,/obj/marker/spawning/random/misc,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"aB" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"aC" = (/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 8},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"aD" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"aE" = (/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 8},/obj/structure/interactive/plastic_flaps,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"aF" = (/obj/structure/interactive/conveyor{icon_state = "conveyor"; dir = 8},/turf/simulated/liquid/lava,/area/mission/prefab/city/newmed_clinic/furnace)
-"aG" = (/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic)
-"aH" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/furnace)
-"aI" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/newmed_clinic/furnace)
-"aJ" = (/obj/structure/sign/secure,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/furnace)
-"aK" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/furnace)
-"aL" = (/obj/structure/interactive/crate/medical,/obj/marker/spawning/random/valuable,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aM" = (/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aN" = (/obj/structure/table/simple,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aO" = (/obj/structure/interactive/crate/medical,/obj/marker/spawning/random/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aP" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aQ" = (/mob/living/simple/bot/medibot/rogue,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aR" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic)
-"aS" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/plating,/area/mission/prefab/city/newmed_clinic)
-"aT" = (/mob/living/simple/bot/medibot/rogue,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"aU" = (/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"aV" = (/obj/structure/table/simple,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"aW" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aX" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aY" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"aZ" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"ba" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"bb" = (/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/lobby)
-"bc" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/lobby)
-"bd" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic/lobby)
-"be" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/lobby)
-"bf" = (/obj/structure/interactive/bed/sleeper/medical/weak,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"bg" = (/obj/structure/table/simple,/obj/marker/spawning/random/misc,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"bh" = (/obj/structure/interactive/bed/sleeper/medical/weak,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"bi" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bj" = (/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bk" = (/obj/structure/table/simple,/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bl" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bm" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/lobby)
-"bn" = (/mob/living/simple/bot/medibot/rogue,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic/lobby)
-"bo" = (/obj/structure/table/simple,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 8},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic/lobby)
-"bp" = (/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic/lobby)
-"bq" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"br" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bs" = (/obj/structure/interactive/chair/office{icon_state = "officechair_white"; dir = 8},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic/lobby)
-"bt" = (/obj/structure/table/simple,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic/lobby)
-"bu" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bv" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"bw" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)
-"bx" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"by" = (/obj/structure/interactive/crate/medical,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
-"bz" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
-"bA" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/newmed_clinic/lobby)
-"bB" = (/obj/structure/interactive/bar_sign/newmed_clinic,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/lobby)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/interactive/storage/trash_pile/low_chance,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"ab" = (
+/turf/simulated/wall/metal,
+/area/dmm_suite/clear_area)
+"ac" = (
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ad" = (
+/obj/structure/sign/fire,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ae" = (
+/obj/structure/interactive/crate/coffin,
+/obj/marker/spawning/random/valuable,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"af" = (
+/obj/structure/interactive/storage/trash_pile/low_chance,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ag" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ah" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ai" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aj" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 4
+	},
+/turf/simulated/liquid/lava,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ak" = (
+/obj/structure/interactive/conveyor,
+/turf/simulated/liquid/lava,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"al" = (
+/obj/structure/interactive/crate/bodybag,
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"am" = (
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"an" = (
+/obj/structure/interactive/atmospherics/fan,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"ao" = (
+/obj/structure/interactive/fence/end{
+	icon_state = "end";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"ap" = (
+/obj/structure/interactive/fence{
+	icon_state = "straight";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"aq" = (
+/obj/structure/interactive/fence/door,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"ar" = (
+/obj/structure/interactive/fence/corner{
+	icon_state = "corner";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"as" = (
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"at" = (
+/obj/structure/interactive/fence,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"au" = (
+/obj/structure/interactive/fence/end,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"av" = (
+/obj/structure/interactive/solar_panel,
+/obj/structure/interactive/wire/yellow,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"aw" = (
+/obj/structure/interactive/power/smes{
+	icon_state = "smes_map";
+	dir = 1
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"ax" = (
+/obj/structure/interactive/wire/yellow,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"ay" = (
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"az" = (
+/turf/simulated/liquid/lava,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aA" = (
+/obj/structure/interactive/crate/bodybag,
+/obj/marker/spawning/random/misc,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aB" = (
+/obj/structure/interactive/crate/trash,
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aC" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 8
+	},
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aD" = (
+/obj/structure/interactive/storage/trash_pile/low_chance,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"aE" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 8
+	},
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aF" = (
+/obj/structure/interactive/conveyor{
+	icon_state = "conveyor";
+	dir = 8
+	},
+/turf/simulated/liquid/lava,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aG" = (
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic)
+"aH" = (
+/obj/structure/interactive/light_switch{
+	icon_state = "setup";
+	dir = 1
+	},
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aI" = (
+/obj/structure/interactive/door/airlock/dark,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aJ" = (
+/obj/structure/sign/secure,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aK" = (
+/obj/structure/interactive/light_switch,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/furnace)
+"aL" = (
+/obj/structure/interactive/crate/medical,
+/obj/marker/spawning/random/valuable,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aM" = (
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aN" = (
+/obj/structure/table/simple,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aO" = (
+/obj/structure/interactive/crate/medical,
+/obj/marker/spawning/random/trash,
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aP" = (
+/obj/structure/interactive/lighting/fixture/tube,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aQ" = (
+/mob/living/simple/bot/medibot/rogue,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aR" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic)
+"aS" = (
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/door/airlock/dark,
+/turf/simulated/floor/plating,
+/area/mission/prefab/city/newmed_clinic)
+"aT" = (
+/mob/living/simple/bot/medibot/rogue,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"aU" = (
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"aV" = (
+/obj/structure/table/simple,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"aW" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aX" = (
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/lighting/fixture/tube,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aY" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"aZ" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"ba" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"bb" = (
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bc" = (
+/obj/structure/interactive/light_switch,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bd" = (
+/obj/structure/interactive/door/airlock/glass,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"be" = (
+/obj/structure/sign/no_smoking,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bf" = (
+/obj/structure/interactive/bed/sleeper/medical/weak,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"bg" = (
+/obj/structure/table/simple,
+/obj/marker/spawning/random/misc,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"bh" = (
+/obj/structure/interactive/bed/sleeper/medical/weak,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"bi" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bj" = (
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bk" = (
+/obj/structure/table/simple,
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bl" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bm" = (
+/obj/structure/interactive/fire_closet{
+	icon_state = "extinguisher";
+	dir = 8
+	},
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bn" = (
+/mob/living/simple/bot/medibot/rogue,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bo" = (
+/obj/structure/table/simple,
+/obj/structure/interactive/storage/cash_register{
+	icon_state = "register";
+	dir = 8
+	},
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bp" = (
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bq" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"br" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bs" = (
+/obj/structure/interactive/chair/office{
+	icon_state = "officechair_white";
+	dir = 8
+	},
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bt" = (
+/obj/structure/table/simple,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bu" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 8
+	},
+/obj/structure/interactive/lighting/fixture/tube{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bv" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"bw" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile/tint,
+/area/mission/prefab/city/newmed_clinic)
+"bx" = (
+/obj/structure/interactive/chair{
+	icon_state = "chair";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"by" = (
+/obj/structure/interactive/crate/medical,
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"bz" = (
+/obj/structure/carpet/grey,
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bA" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bB" = (
+/obj/structure/interactive/bar_sign/newmed_clinic,
+/turf/simulated/wall/metal,
+/area/mission/prefab/city/newmed_clinic/lobby)
 
 (1,1,1) = {"
-aaacacacacadacacacacacacaoapaqar
-aaacaeafagahaiajajajakacavavasat
-aaacalamanamacazazazakacavavasat
-aaacaAamaBaCaEaFaFaFakacaxasasau
-aGacaHaIaJacaKacacacacacawayaDab
-aGaLaMaMaNaOaMaPaMaQaOaRaGaSaGaG
-aGaMaTaUaVaVaVaVaUaUaMaWaXaWaYaG
-aGaZaUaUbaaUaUaMaMaMaMaMaMaMaMaG
-aGaMaUaUaUaUaTaMbbbcbdbbbebdbbbb
-aGbfaUbgaUaVbhaMbbbibjbkblbjbibb
-aGaMaUaUaUaUaUaMbmbjbnbobpbpbqbb
-aGbfaUaVaUaVbhaMbbbrbsbtbpbpbubb
-aGaZaUaTaUaUaUbvbbbkbtbtbpbnbqbb
-aGbfaUaVbwaVbhaMbbbxbpbpbpbpbqbb
-aGaYaMaMaMaMaMbybbbxbjbzbzbzbqbb
-aGaGaGaGaGaGaGaGbbbAbAbAbdbBbbbb
+aa
+aa
+aa
+aa
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+"}
+(2,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+aL
+aM
+aZ
+aM
+bf
+aM
+bf
+aZ
+bf
+aY
+aG
+"}
+(3,1,1) = {"
+ac
+ae
+al
+aA
+aH
+aM
+aT
+aU
+aU
+aU
+aU
+aU
+aU
+aU
+aM
+aG
+"}
+(4,1,1) = {"
+ac
+af
+am
+am
+aI
+aM
+aU
+aU
+aU
+bg
+aU
+aV
+aT
+aV
+aM
+aG
+"}
+(5,1,1) = {"
+ac
+ag
+an
+aB
+aJ
+aN
+aV
+ba
+aU
+aU
+aU
+aU
+aU
+bw
+aM
+aG
+"}
+(6,1,1) = {"
+ad
+ah
+am
+aC
+ac
+aO
+aV
+aU
+aU
+aV
+aU
+aV
+aU
+aV
+aM
+aG
+"}
+(7,1,1) = {"
+ac
+ai
+ac
+aE
+aK
+aM
+aV
+aU
+aT
+bh
+aU
+bh
+aU
+bh
+aM
+aG
+"}
+(8,1,1) = {"
+ac
+aj
+az
+aF
+ac
+aP
+aV
+aM
+aM
+aM
+aM
+aM
+bv
+aM
+by
+aG
+"}
+(9,1,1) = {"
+ac
+aj
+az
+aF
+ac
+aM
+aU
+aM
+bb
+bb
+bm
+bb
+bb
+bb
+bb
+bb
+"}
+(10,1,1) = {"
+ac
+aj
+az
+aF
+ac
+aQ
+aU
+aM
+bc
+bi
+bj
+br
+bk
+bx
+bx
+bA
+"}
+(11,1,1) = {"
+ac
+ak
+ak
+ak
+ac
+aO
+aM
+aM
+bd
+bj
+bn
+bs
+bt
+bp
+bj
+bA
+"}
+(12,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+aR
+aW
+aM
+bb
+bk
+bo
+bt
+bt
+bp
+bz
+bA
+"}
+(13,1,1) = {"
+ao
+av
+av
+ax
+aw
+aG
+aX
+aM
+be
+bl
+bp
+bp
+bp
+bp
+bz
+bd
+"}
+(14,1,1) = {"
+ap
+av
+av
+as
+ay
+aS
+aW
+aM
+bd
+bj
+bp
+bp
+bn
+bp
+bz
+bB
+"}
+(15,1,1) = {"
+aq
+as
+as
+as
+aD
+aG
+aY
+aM
+bb
+bi
+bq
+bu
+bq
+bq
+bq
+bb
+"}
+(16,1,1) = {"
+ar
+at
+at
+au
+ab
+aG
+aG
+aG
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
 "}

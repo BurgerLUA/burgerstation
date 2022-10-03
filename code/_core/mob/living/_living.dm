@@ -278,6 +278,8 @@
 
 /mob/living/Destroy()
 
+	UNPROCESS_LIVING(src)
+
 	buckled_object = null
 
 	if(minion)
@@ -309,7 +311,6 @@
 	hit_logs?.Cut()
 
 	SSliving.all_living -= src
-	SSliving.processing_mobs -= src
 
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
