@@ -5,12 +5,17 @@
 	icon = 'icons/turf/wall/wood.dmi'
 	icon_state = "wall"
 	corner_icons = TRUE
-	corner_category = "wood_wall"
+	corner_category = "wall"
+
+	color = "#A07D5E"
 
 	destruction_turf = /turf/simulated/floor/plating
 
 	material_id = /material/wood
 	health_base = 500
+
+	window_blend = TRUE
+	reinforced_blend = BLEND_MULTIPLY
 
 /turf/simulated/wall/wood/on_destruction(var/mob/caller,var/damage = FALSE)
 

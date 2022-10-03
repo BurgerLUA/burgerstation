@@ -1,146 +1,146 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/sidewalk,
-/area)
+/area/dmm_suite/clear_area)
 "b" = (
-/obj/structure/scenery/flowers,
-/turf/simulated/floor/colored/grass,
-/area)
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "c" = (
 /obj/decal/road_marking/solid_line/offset{
 	icon_state = "1";
 	dir = 1
 	},
 /turf/simulated/floor/road,
-/area)
+/area/dmm_suite/clear_area)
 "d" = (
-/turf/simulated/floor/road,
-/area)
-"e" = (
 /obj/decal/road_marking/hazard/yellow,
 /turf/simulated/floor/road,
-/area)
-"f" = (
+/area/dmm_suite/clear_area)
+"e" = (
 /obj/decal/road_marking/solid_line/offset{
 	icon_state = "1";
 	dir = 5
 	},
 /turf/simulated/floor/road,
-/area)
-"g" = (
+/area/dmm_suite/clear_area)
+"f" = (
 /obj/decal/road_marking/solid_line/offset{
 	icon_state = "1";
 	dir = 8
 	},
 /turf/simulated/floor/road,
-/area)
+/area/dmm_suite/clear_area)
+"g" = (
+/obj/structure/scenery/flowers,
+/turf/simulated/floor/colored/grass,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
 a
 a
-d
-d
-d
-d
+b
+b
+b
+b
 a
-b
-b
+g
+g
 "}
 (2,1,1) = {"
 a
-d
-d
-d
-d
-d
-d
+b
+b
+b
+b
+b
+b
 a
-b
-b
+g
+g
 "}
 (3,1,1) = {"
 a
 c
 c
-d
-d
-d
-d
+b
+b
+b
+b
 a
 a
 a
 "}
 (4,1,1) = {"
 a
-d
-d
-d
-d
-d
-d
-d
-d
-d
+b
+b
+b
+b
+b
+b
+b
+b
+b
 "}
 (5,1,1) = {"
 a
 c
 c
-d
-d
-d
-d
-d
-d
-d
+b
+b
+b
+b
+b
+b
+b
 "}
 (6,1,1) = {"
 a
-d
-d
-d
-d
-d
-d
-d
-d
-d
+b
+b
+b
+b
+b
+b
+b
+b
+b
 "}
 (7,1,1) = {"
 a
 c
 c
-f
-d
-d
-d
-d
-d
-d
+e
+b
+b
+b
+b
+b
+b
 "}
 (8,1,1) = {"
 a
-e
-e
-g
 d
-g
 d
-g
-d
+f
+b
+f
+b
+f
+b
 a
 "}
 (9,1,1) = {"
 a
-e
-e
-g
 d
-g
 d
-g
-d
+f
+b
+f
+b
+f
+b
 a
 "}
 (10,1,1) = {"

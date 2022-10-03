@@ -81,10 +81,7 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "p" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 5
-	},
+/obj/marker/prefab/alley,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "q" = (
@@ -156,10 +153,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/sidewalk,
-/area/dmm_suite/clear_area)
-"B" = (
-/obj/marker/prefab/alley,
-/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "C" = (
 /obj/marker/prefab/alley_end{
@@ -374,7 +367,6 @@ a
 a
 a
 a
-B
 a
 a
 a
@@ -382,7 +374,8 @@ a
 a
 a
 a
-p
+a
+a
 a
 a
 a
@@ -762,7 +755,7 @@ a
 a
 a
 a
-k
+a
 a
 a
 a
@@ -828,7 +821,7 @@ a
 a
 a
 a
-k
+a
 a
 a
 a
@@ -1534,7 +1527,7 @@ a
 a
 a
 a
-B
+p
 e
 t
 j

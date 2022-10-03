@@ -177,11 +177,13 @@
 	unique = TRUE
 	chance_none = 0
 	rotational_offset = 16
+	color = COLOR_GOLD
 
 /obj/marker/prefab/city/line
 	icon = 'icons/obj/markers/prefab_64x64_city.dmi'
 	icon_state = null
 	category = "city_street_straight" //or "city_street_corner"
+
 
 /obj/marker/prefab/city/line/prepare_prefab()
 
@@ -227,6 +229,7 @@
 	icon_state = "parking"
 	category = "city_parking_straight" //or "city_parking_corner"
 	alpha = 150
+	rotational_offset = 10
 
 /obj/marker/prefab/city/parking/prepare_prefab()
 

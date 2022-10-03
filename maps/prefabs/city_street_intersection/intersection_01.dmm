@@ -79,23 +79,12 @@
 	},
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
-"p" = (
-/obj/marker/prefab/alley_end,
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "q" = (
 /obj/structure/interactive/stopsign{
 	icon_state = "sign";
 	dir = 1
 	},
 /turf/simulated/floor/sidewalk,
-/area/dmm_suite/clear_area)
-"r" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 8
-	},
-/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "s" = (
 /obj/decal/road_marking/solid_stop{
@@ -188,13 +177,6 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"H" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 6
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "I" = (
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
@@ -228,13 +210,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"N" = (
-/obj/marker/prefab/alley_end{
-	icon_state = "alley_end";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -349,14 +324,14 @@ a
 a
 a
 a
-H
 a
 a
 a
 a
 a
 a
-N
+a
+a
 a
 a
 a
@@ -877,7 +852,7 @@ a
 a
 a
 a
-r
+a
 a
 a
 a
@@ -1442,7 +1417,7 @@ a
 a
 a
 a
-p
+a
 a
 a
 a

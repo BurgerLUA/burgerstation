@@ -2,10 +2,6 @@
 "a" = (
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
-"b" = (
-/obj/decal/road_marking/solid_cross,
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
 "c" = (
 /obj/decal/road_marking/solid_line/offset{
 	icon_state = "1";
@@ -89,7 +85,7 @@ e
 a
 "}
 (4,1,1) = {"
-b
+d
 f
 d
 d
@@ -98,10 +94,9 @@ d
 d
 d
 h
-b
+d
 "}
 (5,1,1) = {"
-b
 d
 d
 d
@@ -110,10 +105,10 @@ d
 d
 d
 d
-b
+d
+d
 "}
 (6,1,1) = {"
-b
 d
 d
 d
@@ -122,10 +117,11 @@ d
 d
 d
 d
-b
+d
+d
 "}
 (7,1,1) = {"
-b
+d
 g
 d
 d
@@ -134,7 +130,7 @@ d
 d
 d
 i
-b
+d
 "}
 (8,1,1) = {"
 a

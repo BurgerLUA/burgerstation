@@ -1,18 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/simulated/wall/brick/red,
-/area/dmm_suite/clear_area)
 "b" = (
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"c" = (
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"d" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 10
-	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "e" = (
@@ -516,9 +503,9 @@ b
 b
 b
 b
-b
-b
-b
+e
+e
+e
 b
 b
 b
@@ -2057,8 +2044,8 @@ b
 b
 b
 b
-d
-a
+b
+b
 e
 e
 e
@@ -2124,7 +2111,7 @@ b
 b
 b
 b
-c
+b
 e
 u
 q
@@ -2190,7 +2177,7 @@ b
 b
 b
 b
-c
+b
 e
 v
 f
@@ -2256,7 +2243,7 @@ b
 b
 b
 b
-c
+b
 e
 v
 f
@@ -2322,7 +2309,7 @@ b
 b
 b
 b
-c
+b
 e
 F
 f
@@ -2388,7 +2375,7 @@ b
 b
 b
 b
-c
+b
 e
 v
 f
@@ -2454,7 +2441,7 @@ b
 b
 b
 b
-c
+b
 e
 w
 q
@@ -2520,7 +2507,7 @@ b
 b
 b
 b
-a
+b
 e
 e
 e

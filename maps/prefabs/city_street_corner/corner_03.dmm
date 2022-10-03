@@ -67,20 +67,6 @@
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"o" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 8
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"p" = (
-/obj/marker/prefab/alley_end{
-	icon_state = "alley_end";
-	dir = 8
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "q" = (
 /obj/marker/prefab/city/parking{
 	icon_state = "parking";
@@ -2562,7 +2548,7 @@ a
 a
 a
 a
-o
+a
 a
 a
 a
@@ -3090,7 +3076,7 @@ a
 a
 a
 a
-o
+a
 a
 a
 a
@@ -3618,7 +3604,7 @@ a
 a
 a
 a
-p
+a
 a
 a
 a

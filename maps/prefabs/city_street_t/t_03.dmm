@@ -109,40 +109,6 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"u" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 6
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"v" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 8
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"w" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 10
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"x" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"y" = (
-/turf/simulated/wall/brick/red,
-/area/dmm_suite/clear_area)
-"z" = (
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
 "A" = (
 /obj/decal/road_marking/solid_line{
 	icon_state = "1";
@@ -344,7 +310,6 @@ a
 a
 a
 a
-u
 a
 a
 a
@@ -352,7 +317,8 @@ a
 a
 a
 a
-x
+a
+a
 c
 f
 i
@@ -872,7 +838,7 @@ a
 a
 a
 a
-v
+a
 a
 a
 a
@@ -1400,7 +1366,7 @@ a
 a
 a
 a
-v
+a
 a
 a
 a
@@ -1921,14 +1887,14 @@ a
 a
 a
 a
-y
-z
-z
-z
-z
-z
-z
-y
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -1987,14 +1953,14 @@ a
 a
 a
 a
-y
-z
-z
-z
-z
-z
-z
-y
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -2060,7 +2026,7 @@ a
 a
 a
 a
-v
+a
 a
 a
 a
@@ -2581,14 +2547,14 @@ a
 a
 a
 a
-y
-z
-z
-z
-z
-z
-z
-y
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -2647,14 +2613,14 @@ a
 a
 a
 a
-y
-z
-z
-z
-z
-z
-z
-y
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -2720,7 +2686,7 @@ a
 a
 a
 a
-v
+a
 a
 a
 a
@@ -3248,7 +3214,7 @@ a
 a
 a
 a
-v
+a
 a
 a
 a
@@ -3769,14 +3735,14 @@ a
 a
 a
 a
-y
-z
-z
-z
-z
-z
-z
-y
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -3835,14 +3801,14 @@ a
 a
 a
 a
-y
-z
-z
-z
-z
-z
-z
-y
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -3908,7 +3874,6 @@ a
 a
 a
 a
-w
 a
 a
 a
@@ -3916,7 +3881,8 @@ a
 a
 a
 a
-x
+a
+a
 c
 c
 c

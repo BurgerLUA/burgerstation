@@ -13,11 +13,11 @@
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "e" = (
-/obj/marker/prefab/city/store{
-	icon_state = "";
-	dir = 4
+/obj/marker/prefab/city/parking{
+	icon_state = "parking";
+	dir = 6
 	},
-/turf/dmm_suite/clear_turf,
+/turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
 "f" = (
 /obj/marker/prefab/city/parking,
@@ -40,6 +40,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/sidewalk,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/marker/prefab/city/parking{
+	icon_state = "parking";
+	dir = 10
+	},
+/turf/simulated/floor/sidewalk,
+/area/dmm_suite/clear_area)
+"k" = (
+/obj/marker/prefab/house/low_chance,
+/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "m" = (
 /obj/structure/interactive/lighting/roadlamp{
@@ -220,7 +231,7 @@ a
 a
 a
 a
-b
+e
 w
 d
 M
@@ -342,7 +353,7 @@ a
 a
 a
 a
-a
+h
 a
 a
 a
@@ -814,7 +825,7 @@ a
 a
 a
 a
-b
+j
 w
 d
 M
@@ -945,7 +956,7 @@ a
 a
 a
 a
-h
+a
 b
 w
 d
@@ -2661,7 +2672,7 @@ a
 a
 a
 a
-h
+k
 t
 w
 d
@@ -2752,7 +2763,7 @@ a
 a
 a
 a
-e
+h
 b
 w
 d

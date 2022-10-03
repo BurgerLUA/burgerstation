@@ -2,40 +2,6 @@
 "a" = (
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"b" = (
-/turf/simulated/wall/brick/red,
-/area/dmm_suite/clear_area)
-"c" = (
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"d" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 6
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"e" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 8
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"f" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 10
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"g" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "h" = (
 /obj/marker/prefab/yard,
 /turf/dmm_suite/clear_turf,
@@ -268,10 +234,6 @@ a
 a
 a
 a
-d
-b
-b
-b
 a
 a
 a
@@ -279,7 +241,6 @@ a
 a
 a
 a
-g
 a
 a
 a
@@ -287,7 +248,12 @@ a
 a
 a
 a
-g
+a
+a
+a
+a
+a
+a
 j
 m
 p
@@ -303,7 +269,6 @@ a
 a
 a
 a
-g
 a
 a
 a
@@ -311,7 +276,8 @@ a
 a
 a
 a
-g
+a
+a
 a
 a
 a
@@ -335,9 +301,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -401,9 +367,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -467,9 +433,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -533,9 +499,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -599,9 +565,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -665,9 +631,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -731,9 +697,9 @@ a
 a
 a
 a
-b
-b
-b
+a
+a
+a
 a
 a
 a
@@ -796,7 +762,7 @@ a
 a
 a
 a
-e
+a
 a
 a
 a
@@ -1317,14 +1283,14 @@ a
 "}
 (18,1,1) = {"
 a
-b
-c
-c
-c
-c
-c
-c
-b
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -1390,7 +1356,7 @@ a
 a
 a
 a
-e
+a
 a
 a
 a
@@ -1911,14 +1877,14 @@ a
 "}
 (27,1,1) = {"
 a
-b
-c
-c
-c
-c
-c
-c
-b
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -1984,7 +1950,7 @@ a
 a
 a
 a
-e
+a
 a
 a
 a
@@ -2505,14 +2471,14 @@ u
 "}
 (36,1,1) = {"
 a
-b
-c
-c
-c
-c
-c
-c
-b
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -2571,14 +2537,14 @@ j
 "}
 (37,1,1) = {"
 a
-b
-c
-c
-c
-c
-c
-c
-b
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -2644,7 +2610,7 @@ a
 a
 a
 a
-e
+a
 a
 a
 a
@@ -3172,7 +3138,7 @@ a
 a
 a
 a
-e
+a
 a
 a
 a
@@ -3693,14 +3659,14 @@ a
 "}
 (54,1,1) = {"
 a
-b
-c
-c
-c
-c
-c
-c
-b
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -3759,14 +3725,14 @@ a
 "}
 (55,1,1) = {"
 a
-b
-c
-c
-c
-c
-c
-c
-b
+a
+a
+a
+a
+a
+a
+a
+a
 a
 a
 a
@@ -3832,10 +3798,6 @@ a
 a
 a
 a
-f
-b
-b
-b
 a
 a
 a
@@ -3843,7 +3805,6 @@ a
 a
 a
 a
-g
 a
 a
 a
@@ -3851,7 +3812,12 @@ a
 a
 a
 a
-g
+a
+a
+a
+a
+a
+a
 j
 m
 p
@@ -3867,7 +3833,6 @@ a
 a
 a
 a
-g
 a
 a
 a
@@ -3875,7 +3840,8 @@ a
 a
 a
 a
-g
+a
+a
 a
 a
 a
@@ -3899,9 +3865,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -3965,9 +3931,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -4031,9 +3997,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -4097,9 +4063,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -4163,9 +4129,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -4229,9 +4195,9 @@ a
 a
 a
 a
-c
-c
-c
+a
+a
+a
 a
 a
 a
@@ -4295,9 +4261,9 @@ a
 a
 a
 a
-b
-b
-b
+a
+a
+a
 a
 a
 a
