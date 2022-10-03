@@ -173,18 +173,6 @@
 /turf/proc/is_safe_move(var/check_contents=TRUE)
 	return !is_space()
 
-/turf/proc/post_move(var/mob/M,var/atom/old_loc)
-
-	if(M.ckey_last) //Only care about mobs with ckeys.
-		for(var/k in M.parallax)
-			var/obj/parallax/P = M.parallax[k]
-			P.icon = parallax_icon
-			var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
-			var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
-			P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
-
-	return TRUE
-
 /turf/New(loc)
 
 	. = ..()

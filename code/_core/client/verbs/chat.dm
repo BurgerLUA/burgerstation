@@ -34,11 +34,8 @@
 	if(is_living(mob))
 		var/mob/living/L = mob
 		if(L.dead)
-			to_chat(span("warning","The dead cannot use OOC!"))
+			to_chat(span("warning","You cannot use OOC when dead."))
 			return FALSE
-	else if(istype(mob,/mob/abstract/observer/ghost))
-		to_chat(span("warning","The dead cannot use OOC!"))
-		return FALSE
 
 	if(!check_spam(src))
 		return FALSE

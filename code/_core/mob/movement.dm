@@ -111,9 +111,14 @@
 	if(client)
 		client.post_move(loc,old_loc)
 
-	if(loc)
+	if(loc && src.ckey_last)
 		var/turf/T = get_turf(src)
-		T.post_move(src,old_loc)
+		for(var/k in src.parallax)
+			var/obj/parallax/P = src.parallax[k]
+			P.icon = T.parallax_icon //TODO: Different z-levels should have the icon.
+			var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
+			var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
+			P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
 
 	update_rs_chat()
 
