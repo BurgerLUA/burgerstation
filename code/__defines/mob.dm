@@ -10,5 +10,6 @@
 
 
 
-#define PROCESS_LIVING(x) if(!x.processing && x.finalized) SSliving.processing_mobs |= x; x.processing = TRUE
-#define UNPROCESS_LIVING(x) if(x.processing) SSliving.processing_mobs -= x; x.processing = FALSE
+#define PROCESS_LIVING(x) if(!x.processing && x.finalized) {SSliving.processing_mobs |= x; x.processing = TRUE}
+#define PROCESS_LIVING_FORCE(x) if(!x.processing) {SSliving.processing_mobs |= x; x.processing = TRUE}
+#define UNPROCESS_LIVING(x) if(x.processing) {SSliving.processing_mobs -= x; x.processing = FALSE}

@@ -653,7 +653,7 @@
 
 /mob/living/Login()
 	. = ..()
-	PROCESS_LIVING(src)
+	PROCESS_LIVING_FORCE(src)
 
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
