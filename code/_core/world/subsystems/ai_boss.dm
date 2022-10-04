@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(bossai)
 	desc = "Controls the AI of bosses."
 	tick_rate = AI_TICK_FAST
 	priority = SS_ORDER_FIRST
-	cpu_usage_max = 100
+
 	tick_usage_max = 100
 
 	var/list/active_ai_by_z = list()

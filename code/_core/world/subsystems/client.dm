@@ -6,12 +6,13 @@ SUBSYSTEM_DEF(client)
 
 	var/advanced_ticks = 0
 
-	cpu_usage_max = 100
 	tick_usage_max = 100
 
 	use_time_dialation = FALSE
 
 	var/list/queued_automatics = list()
+
+	preloop = TRUE
 
 /subsystem/client/on_life()
 
@@ -33,7 +34,8 @@ SUBSYSTEM_DEF(client)
 		C.on_life()
 		if(do_slow)
 			C.on_life_slow()
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		if(world_state >= STATE_RUNNING)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in queued_automatics)
 		var/obj/item/weapon/ranged/R = k
@@ -49,6 +51,7 @@ SUBSYSTEM_DEF(client)
 			R.next_shoot_time = world.time + (R.burst_delay ? R.burst_delay : R.shoot_delay*R.current_bursts*1.25)
 			R.current_bursts = 1
 			queued_automatics -= k
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 
 	return TRUE

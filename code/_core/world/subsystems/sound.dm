@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(sound)
 	priority = SS_ORDER_FIRST
 	var/channel_hack = 100
 
-	cpu_usage_max = 75
 	tick_usage_max = 75
 
 	var/list/round_end_sounds = list()
@@ -14,6 +13,8 @@ SUBSYSTEM_DEF(sound)
 	var/list/active_sounds = list()
 
 	var/list/sound_cache = list()
+
+	preloop = TRUE
 
 /subsystem/sound/unclog(var/mob/caller)
 	for(var/k in src.active_sounds)
@@ -44,12 +45,13 @@ SUBSYSTEM_DEF(sound)
 	return TRUE
 
 /subsystem/sound/on_life()
+
 	for(var/F in active_sounds)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/sound/S = F
 		if(!process_sound(S))
 			log_error("Warning! Could not properly process an active sound!")
 			active_sounds -= F
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

@@ -16,7 +16,6 @@ SUBSYSTEM_DEF(horde)
 	var/list/ckey_to_time_to_horde = list() //Assoc list
 
 	tick_usage_max = 25
-	cpu_usage_max = 25
 
 	var/list/enemies_to_send_per_difficulty = list(
 		DIFFICULTY_EASY = 3,
@@ -49,6 +48,7 @@ SUBSYSTEM_DEF(horde)
 
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		if(P.dead || !P.ckey || P.loyalty_tag != "NanoTrasen")
 			continue
 		var/area/A = get_area(P)

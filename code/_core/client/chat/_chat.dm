@@ -101,7 +101,7 @@
 					return FALSE
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_clients)
-				CHECK_TICK_SAFE(75,FPS_SERVER)
+				CHECK_TICK_SAFE(90,FPS_SERVER)
 				var/client/C = all_clients[k]
 				if(!C || !C.mob)
 					continue

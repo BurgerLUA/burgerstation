@@ -12,7 +12,6 @@ SUBSYSTEM_DEF(ai)
 
 	tick_rate = AI_TICK
 
-	cpu_usage_max = 95
 	tick_usage_max = 95
 
 /subsystem/ai/unclog(var/mob/caller)

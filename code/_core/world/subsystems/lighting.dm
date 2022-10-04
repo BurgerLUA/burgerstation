@@ -23,7 +23,6 @@ SUBSYSTEM_DEF(lighting)
 	var/total_instant_updates = 0
 
 	tick_usage_max = 75
-	cpu_usage_max = 75
 
 /subsystem/lighting/unclog(var/mob/caller)
 
@@ -87,7 +86,7 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: lq_idex is at [lq_idex].")
 
 	while (length(curr_lights) && lq_idex <= length(curr_lights))
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/light_source/L = curr_lights[lq_idex]
 		if(L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1
@@ -105,7 +104,7 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: cq_idex is at [cq_idex].")
 
 	while (length(curr_corners) && cq_idex <= length(curr_corners))
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/lighting_corner/C = curr_corners[cq_idex]
 		if(C.needs_update != LIGHTING_NO_UPDATE)
 			C.update_lighting_overlays()
@@ -122,7 +121,7 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: oq_idex is at [oq_idex].")
 
 	while (length(curr_overlays) && oq_idex <= length(curr_overlays))
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		if(oq_idex < 0 || oq_idex > length(curr_overlays))
 			log_error("Lighting Error: List index out of bounds! Data: [length(curr_overlays)], [oq_idex].")
 			break

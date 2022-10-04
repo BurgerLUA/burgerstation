@@ -4,10 +4,11 @@ SUBSYSTEM_DEF(vote)
 	priority = SS_ORDER_LAST
 	tick_rate = SECONDS_TO_TICKS(1)
 
-	cpu_usage_max = 100
 	tick_usage_max = 100
 
 	var/list/active_votes = list()
+
+	preloop = TRUE
 
 /subsystem/vote/unclog(var/mob/caller)
 
@@ -33,6 +34,7 @@ SUBSYSTEM_DEF(vote)
 		if(proces_vote(V) == null)
 			qdel(V)
 			active_votes -= k
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

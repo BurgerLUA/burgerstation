@@ -5,7 +5,6 @@ SUBSYSTEM_DEF(healthupdate)
 
 	tick_rate = 1
 
-	cpu_usage_max = 100
 	tick_usage_max = 100
 
 	var/list/queued_mobs = list()
@@ -20,5 +19,6 @@ SUBSYSTEM_DEF(healthupdate)
 		if(L.health && !L.health.qdeleting) L.health.update_health()
 		if(L.queue_health_update)
 			log_error("WARNING: [L.get_debug_name()] was added to the health update subsystem twice after being processed!")
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE

@@ -8,9 +8,6 @@ SUBSYSTEM_DEF(progressbars)
 
 	var/list/progress_bars_to_delete = list() //Assoc list (bar, time)
 
-
-
-	cpu_usage_max = 95
 	tick_usage_max = 95
 
 
@@ -64,7 +61,6 @@ SUBSYSTEM_DEF(progressbars)
 /subsystem/progressbars/on_life()
 
 	for(var/k in all_progress_bars)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		if(process_progress_bar(k) == null)
 			var/atom/A = k
 			var/list/progress_list = all_progress_bars[k]
@@ -72,6 +68,7 @@ SUBSYSTEM_DEF(progressbars)
 			log_error("Warning! A progress bar belonging to [A.get_debug_name()] didn't run properly, and thus was deleted.")
 			qdel(P)
 			all_progress_bars -= A
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in progress_bars_to_delete)
 		var/obj/hud/progress_bar/PB = k
@@ -79,6 +76,7 @@ SUBSYSTEM_DEF(progressbars)
 		if(time <= world.time)
 			qdel(PB)
 			progress_bars_to_delete -= k
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

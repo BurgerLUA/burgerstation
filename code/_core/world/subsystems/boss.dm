@@ -38,6 +38,7 @@ SUBSYSTEM_DEF(bosses)
 			tracked_bosses -= L
 			qdel(L)
 			log_error("WARNING! Boss [L.get_debug_name()] didn't complete tracked_bosses() and thus was deleted.")
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

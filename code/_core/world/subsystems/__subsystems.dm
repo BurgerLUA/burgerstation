@@ -1,4 +1,3 @@
-#define DEFAULT_CPU_USAGE 75
 #define DEFAULT_TICK_USAGE 75
 
 /subsystem/
@@ -10,7 +9,6 @@
 	var/next_run = 0 //When the subsystem should run next
 	var/life_time = 0 //Time it takes for it to complete a life cycle.
 
-	var/cpu_usage_max = DEFAULT_CPU_USAGE
 	var/tick_usage_max = DEFAULT_TICK_USAGE
 
 	var/debug = FALSE
@@ -26,6 +24,8 @@
 	var/initialized = FALSE
 	var/generated = FALSE
 	var/finalized = FALSE
+
+	var/preloop = FALSE
 
 /subsystem/proc/Initialize()
 	if(initialized)

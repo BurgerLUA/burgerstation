@@ -223,19 +223,22 @@ var/global/list/debug_verbs = list(
 	qdel(dummy_datum)
 
 /client/verb/subsystem_report()
+
 	set name = "Subsystem Report"
 	set category = "Debug"
 
-	var/report_string = "<h2>Subsystem Report</h2>CPU Usage: [CEILING(world.cpu,1)]%<br>Tick Usage: [CEILING(world.tick_usage,1)]%<br>"
+	var/report_string = "<h2>Subsystem Report</h2>"
 
 	for(var/k in active_subsystems)
 		var/subsystem/S = k
 		if(S.last_run_duration || S.total_run_duration)
 			report_string += "<b>[S.name]</b>: <pre>LAST: [S.last_run_duration], TOTAL: [S.total_run_duration].</pre><br>"
 
-	report_string += "Subsystems that aren't listed have no registered overtime.."
+	report_string += "Subsystems that aren't listed have no registered overtime."
 
 	to_chat(report_string)
+
+	SSreport.make_report()
 
 /client/verb/reload_badwords()
 	set name = "Reload Badwords"

@@ -5,8 +5,9 @@ SUBSYSTEM_DEF(thinking)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	var/list/all_thinkers = list() //associative list
 
-	cpu_usage_max = 100
 	tick_usage_max = 100
+
+	preloop = TRUE
 
 /subsystem/thinking/unclog(var/mob/caller)
 	for(var/k in src.all_thinkers)

@@ -195,6 +195,10 @@
 
 	map_color = COLOR_SCIENCE
 
+/area/burgerstation/science/research_director
+	name = "\improper Research Director's Office"
+	icon_state = "cmd"
+
 /area/burgerstation/science/containment
 	name = "\improper Science Containment Area"
 	icon_state = "red"
@@ -228,6 +232,11 @@
 	sound_environment = ENVIRONMENT_STONEROOM
 
 	map_color = COLOR_BROWN
+
+/area/burgerstation/chapel/office
+	name = "\improper Chapel Office"
+	icon_state = "cmd"
+
 
 /area/burgerstation/library
 	name = "\improper Library"
@@ -315,6 +324,10 @@
 	icon_state = "chem"
 
 	map_color = COLOR_CHEMISTRY
+
+/area/burgerstation/medical/lobby
+	name = "\improper Medical Lobby"
+	icon_state = "lobby"
 
 /area/burgerstation/briefing
 	name = "\improper Briefing"

@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/all_reagents = list()
 
-	cpu_usage_max = 75
 	tick_usage_max = 75
 
 	var/list/all_reagent_recipes = list()

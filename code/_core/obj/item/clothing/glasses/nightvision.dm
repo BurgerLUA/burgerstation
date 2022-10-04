@@ -21,6 +21,14 @@
 
 	var/next_think = 0
 
+/obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+	. = ..()
+	SAVEATOM("stored_cell")
+
+/obj/item/clothing/glasses/nightvision/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	LOADATOM("stored_cell")
+
 /obj/item/clothing/glasses/nightvision/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(stored_cell)
@@ -138,22 +146,22 @@
 
 
 /obj/item/clothing/glasses/nightvision/proc/enable(var/obj/hud/inventory/I)
-	var/list/desired_color = list(
-		1,1,0,0,
-		0,1,0,0,
-		0,1,1,0,
-		0,0,0,1,
-		0,0,0,0
-	)
-	if(I && I.worn)
-		I.owner?.add_color_mod("\ref[src]",desired_color)
-		I.owner?.add_lighting_mod("\ref[src]",100)
+
+	if(I && I.worn && I.owner && is_living(I.owner))
+		var/mob/living/L = I.owner
+		L.add_mob_value("\ref[src]","nightvision",150,ADDITION)
+		L.handle_lighting_alpha()
+
 	return TRUE
 
 
 /obj/item/clothing/glasses/nightvision/proc/disable(var/obj/hud/inventory/I)
-	I?.owner?.remove_color_mod("\ref[src]")
-	I?.owner?.remove_lighting_mod("\ref[src]")
+
+	if(I && I.worn && I.owner && is_living(I.owner))
+		var/mob/living/L = I.owner
+		L.remove_mob_value("\ref[src]","nightvision",ADDITION)
+		L.handle_lighting_alpha()
+
 	return TRUE
 
 /obj/item/clothing/glasses/nightvision/post_move(var/atom/old_loc)
@@ -163,7 +171,6 @@
 	if(active)
 		if(is_inventory(old_loc))
 			disable(old_loc)
-
 		if(is_inventory(loc))
 			var/obj/hud/inventory/I = loc
 			if(I.item_slot & SLOT_FACE)

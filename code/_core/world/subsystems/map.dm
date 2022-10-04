@@ -3,7 +3,6 @@ SUBSYSTEM_DEF(map)
 	desc = "Initialize the maps for the game."
 	priority = SS_ORDER_LAST
 
-	cpu_usage_max = 75
 	tick_usage_max = 75
 
 	var/list/z_icons = list()

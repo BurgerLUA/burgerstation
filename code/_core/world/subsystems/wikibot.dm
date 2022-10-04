@@ -7,7 +7,6 @@ SUBSYSTEM_DEF(wikibot)
 	desc = "A 'bot' that answers questions."
 	priority = SS_ORDER_CONFIG
 
-	cpu_usage_max = 50
 	tick_usage_max = 50
 
 /subsystem/wikibot/Initialize()

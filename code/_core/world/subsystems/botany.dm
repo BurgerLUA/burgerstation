@@ -5,7 +5,6 @@ SUBSYSTEM_DEF(botany)
 	priority = SS_ORDER_FIRST
 
 	tick_usage_max = 50
-	cpu_usage_max = 50
 
 	var/list/obj/structure/interactive/plant/all_plants = list()
 	var/list/plant_type/all_plant_types = list()

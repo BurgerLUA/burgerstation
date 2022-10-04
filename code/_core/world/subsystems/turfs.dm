@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(turf)
 
 	var/list/wet_turfs = list()
 
-	cpu_usage_max = 50
 	tick_usage_max = 50
 
 	var/list/seeds = list()
@@ -136,6 +135,6 @@ SUBSYSTEM_DEF(turf)
 			wet_turfs -= T
 			T.overlays.Cut()
 			T.update_overlays()
-		CHECK_TICK_SAFE(75,FPS_SERVER*3)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*3)
 
 	return TRUE

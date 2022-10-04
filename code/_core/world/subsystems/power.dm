@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(power)
 	tick_rate = SECONDS_TO_TICKS(1)
 
 	tick_usage_max = 50
-	cpu_usage_max = 50
 
 	var/list/power_network/all_power_networks = list()
 	var/list/area/all_apc_areas = list()

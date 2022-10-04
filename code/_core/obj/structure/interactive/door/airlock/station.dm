@@ -27,6 +27,10 @@
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
 
+/obj/structure/interactive/door/airlock/station/command/rd
+	name = "research director's office"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
 
 /obj/structure/interactive/door/airlock/station/chapel
 	name = "chapel airlock"

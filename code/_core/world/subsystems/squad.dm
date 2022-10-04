@@ -5,7 +5,6 @@ SUBSYSTEM_DEF(squad)
 	tick_rate = SECONDS_TO_TICKS(1)
 
 	tick_usage_max = 50
-	cpu_usage_max = 50
 
 /subsystem/squad/Initialize()
 

@@ -33,17 +33,13 @@
 			if(message_data["text"] == text)
 				return FALSE
 
-	if(world_state < STATE_RUNNING)
-		for(var/target in output_target_list)
-			src << output(text,target)
-	else
-		queued_chat_messages.Add(
+	queued_chat_messages.Add(
+		list(
 			list(
-				list(
-					"text" = text,
-					"output_target_list" = output_target_list
-				)
+				"text" = text,
+				"output_target_list" = output_target_list
 			)
 		)
+	)
 
 	return TRUE

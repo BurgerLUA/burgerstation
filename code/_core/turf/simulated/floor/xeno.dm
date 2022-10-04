@@ -30,5 +30,6 @@
 		real_icon = pick('icons/turf/floor/resin_1.dmi','icons/turf/floor/resin_2.dmi','icons/turf/floor/resin_3.dmi')
 	if(glow)
 		set_light(VIEW_RANGE*0.5,0.25,"#A49EFF")
-	return ..()
+
+	. = ..()
 

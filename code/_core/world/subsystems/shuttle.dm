@@ -4,7 +4,6 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 	tick_rate = SECONDS_TO_TICKS(1)
 	priority = SS_ORDER_NORMAL
 
-	cpu_usage_max = 50
 	tick_usage_max = 50
 
 	var/next_pod_respawn_time = 0
@@ -17,12 +16,12 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 
 	for(var/k in all_shuttle_controlers)
 		var/obj/shuttle_controller/SC = k
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		SC.time++
 		if(SC.on_shuttle_think() == null)
 			log_error("Shutting down controller for [SC]([SC.x])([SC.y])([SC.z]) as on_shuttle_think returned NULL!")
 			all_shuttle_controlers -= SC
 			qdel(SC)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	if(next_pod_respawn_time <= world.time)
 		for(var/k in drop_pod_turfs)

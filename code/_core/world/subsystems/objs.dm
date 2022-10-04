@@ -76,15 +76,15 @@ SUBSYSTEM_DEF(obj)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		INITIALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		GENERATE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		FINALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	initialize_superlate.Cut()
 

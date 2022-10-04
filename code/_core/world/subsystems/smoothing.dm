@@ -6,8 +6,7 @@ SUBSYSTEM_DEF(smoothing)
 
 	var/list/queued_smoothing = list()
 
-	cpu_usage_max = 25
-	tick_usage_max = 25
+	tick_usage_max = 75
 
 	var/list/seeds = list() //id = value
 
@@ -15,23 +14,20 @@ SUBSYSTEM_DEF(smoothing)
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))
 		return FALSE
 	log_subsystem(src.name,"Processing [length(queued_smoothing)] edges...")
-	process_edges()
+	on_life()
 	return TRUE
 
 /subsystem/smoothing/on_life()
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))
 		return FALSE
-	process_edges()
-	return TRUE
-
-/subsystem/smoothing/proc/process_edges()
-
 	for(var/k in queued_smoothing)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		src.queued_smoothing -= k
 		var/atom/A = k
 		A.queued_smoothing = FALSE
 		A.update_sprite()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+	return TRUE
+
 
 /subsystem/smoothing/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
 

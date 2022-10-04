@@ -8,7 +8,6 @@ SUBSYSTEM_DEF(living)
 	var/normal_ticks = 0
 
 	tick_usage_max = 80
-	cpu_usage_max = 80
 
 	use_time_dialation = FALSE
 

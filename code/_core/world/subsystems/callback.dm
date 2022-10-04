@@ -5,8 +5,9 @@ SUBSYSTEM_DEF(callback)
 	priority = SS_ORDER_IMPORTANT //Doesn't really matter.
 	var/list/all_callbacks = list()
 
-	cpu_usage_max = 100
 	tick_usage_max = 100
+
+	preloop = TRUE
 
 
 /subsystem/callback/unclog(var/mob/caller)
@@ -42,7 +43,7 @@ SUBSYSTEM_DEF(callback)
 				log_error("Warning! Callback of id [callback_id] belonging to [stored_object] did not complete try_call() correctly, thus it was removed.")
 			else
 				log_error("Warning! Callback of id [callback_id] belonging to world did not complete try_call() correctly, thus it was removed.")
-
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

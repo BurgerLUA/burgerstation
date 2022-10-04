@@ -4,7 +4,6 @@ SUBSYSTEM_DEF(radio)
 	tick_rate = SECONDS_TO_TICKS(1)
 	priority = SS_ORDER_POSTLOAD
 
-	cpu_usage_max = 50
 	tick_usage_max = 50
 
 	var/radio_syn

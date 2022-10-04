@@ -16,6 +16,8 @@ SUBSYSTEM_DEF(logging)
 	var/list/buffered_log_debug = list()
 	var/list/buffered_log_subsystem = list()
 
+	preloop = TRUE
+
 /subsystem/logging/Initialize()
 	if(fexists(ROUND_ID_DIR))
 		var/file_text = rustg_file_read(ROUND_ID_DIR)

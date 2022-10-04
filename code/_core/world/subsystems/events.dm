@@ -64,6 +64,7 @@ SUBSYSTEM_DEF(events)
 			all_events_active -= E
 			qdel(E)
 			log_error("Warning! Event of type [E.type] did not process correctly, thus it was deleted.")
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	if(world.time >= next_event_minor)
 		trigger_random_event(TRUE)

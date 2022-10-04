@@ -1185,6 +1185,7 @@
 #include "code\_core\obj\item\clothing\glasses\eyes_of_god.dm"
 #include "code\_core\obj\item\clothing\glasses\material.dm"
 #include "code\_core\obj\item\clothing\glasses\medical_hud.dm"
+#include "code\_core\obj\item\clothing\glasses\nightvision.dm"
 #include "code\_core\obj\item\clothing\glasses\ninja.dm"
 #include "code\_core\obj\item\clothing\glasses\prescription.dm"
 #include "code\_core\obj\item\clothing\glasses\science.dm"

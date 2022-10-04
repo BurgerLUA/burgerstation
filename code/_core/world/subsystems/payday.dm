@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(payday)
 	var/stored_payday = 0
 
 	tick_usage_max = 50
-	cpu_usage_max = 50
 
 /subsystem/payday/Initialize()
 	next_payday = world.time + SECONDS_TO_DECISECONDS(180)

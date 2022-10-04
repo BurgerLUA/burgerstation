@@ -31,10 +31,6 @@ SUBSYSTEM_DEF(species)
 			if(j)
 				all_hair_files[k] += j
 
-
-
-
-
 	log_subsystem(name,"Initialized [length(all_species)] species.")
 
 	return ..()
