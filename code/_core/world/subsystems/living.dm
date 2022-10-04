@@ -49,7 +49,6 @@ SUBSYSTEM_DEF(living)
 
 	for(var/k in processing_mobs)
 		var/mob/living/L = k
-		CHECK_TICK_SAFE(tick_usage_max,DECISECONDS_TO_TICKS(1))
 		if(!L.finalized || L.qdeleting)
 			continue
 		L.on_life_fast()
@@ -57,6 +56,7 @@ SUBSYSTEM_DEF(living)
 			L.on_life()
 		if(do_slow)
 			L.on_life_slow()
+		CHECK_TICK_SAFE(tick_usage_max,DECISECONDS_TO_TICKS(1))
 
 	if(do_slow)
 		slow_ticks = 0

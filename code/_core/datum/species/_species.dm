@@ -107,7 +107,7 @@
 		/obj/hud/button/thirst,
 		/obj/hud/button/mood,
 
-
+		/obj/hud/button/boss_health
 
 	)
 

@@ -172,10 +172,9 @@
 
 /health/mob/living/advanced/get_overall_health()
 
-	. = ..()
-
 	var/mob/living/advanced/A = owner
 
+	. = ..()
 	if(A.is_player_controlled() && A.has_status_effect(CRITPROTECTION))
 		. = max(0,.)
 

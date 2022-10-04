@@ -86,9 +86,7 @@
 		else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
 			L.remove_status_effect(PAINCRIT)
 
-
-		var/should_be_dead = check_death && L.check_death()
-		if(check_death && should_be_dead)
+		if(check_death && L.check_death())
 			L.death()
 
 		if(L.medical_hud_image)
