@@ -18,6 +18,10 @@
 
 	dyeable = TRUE
 
+	mob_values_add = list(
+		SKILL_MEDICINE = 5
+	)
+
 
 /obj/item/clothing/overwear/coat/labcoat/chemist
 	polymorphs = list(

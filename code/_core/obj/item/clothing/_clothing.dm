@@ -35,8 +35,6 @@
 
 	var/speed_bonus = 0
 
-	var/list/ench/clothing_enchantments = list()
-
 	enable_blood_stains = TRUE
 	enable_damage_overlay = TRUE
 	enable_torn_overlay = TRUE
@@ -46,24 +44,28 @@
 
 
 /obj/item/clothing/post_move(var/atom/old_loc)
+
 	. = ..()
+
 	if(. && (length(mob_values_add) || length(mob_values_mul)))
+
 		if(is_inventory(old_loc))
 			var/obj/hud/inventory/IO = old_loc
 			if(IO.worn && is_living(IO.owner))
 				var/mob/living/L = IO.owner
 				for(var/k in mob_values_add)
-					L.remove_mob_value("\ref[src]_[k]",ADDITION)
+					L.remove_mob_value("\ref[src]",k,ADDITION)
 				for(var/k in mob_values_mul)
-					L.remove_mob_value("\ref[src]_[k]",MULTIPLICATION)
+					L.remove_mob_value("\ref[src]",k,MULTIPLICATION)
+
 		if(is_inventory(loc))
 			var/obj/hud/inventory/IN = loc
 			if(IN.worn && is_living(IN.owner))
 				var/mob/living/L = IN.owner
 				for(var/k in mob_values_add)
-					L.add_mob_value("\ref[src]_[k]",mob_values_add[k],ADDITION)
+					L.add_mob_value("\ref[src]",k,mob_values_add[k],ADDITION)
 				for(var/k in mob_values_mul)
-					L.add_mob_value("\ref[src]_[k]",mob_values_mul[k],MULTIPLICATION)
+					L.add_mob_value("\ref[src]",k,mob_values_mul[k],MULTIPLICATION)
 
 /obj/item/clothing/Destroy()
 	QDEL_CUT(additional_clothing_stored)
@@ -73,21 +75,25 @@
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 
+	/*
 	if(length(clothing_enchantments))
 		.["clothing_enchantments"] = list()
 		for(var/k in clothing_enchantments)
 			var/ench/E = k
 			.["clothing_enchantments"][E.type] = E.magnitude
+	*/
 
 
 /obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	/*
 	if(object_data["clothing_enchantments"])
 		for(var/k in object_data["clothing_enchantments"])
 			var/ench/E = new k
 			E.magnitude = object_data["clothing_enchantments"][k]
 			clothing_enchantments += E
+	*/
 
 /obj/item/clothing/New(var/desired_loc)
 	additional_clothing_stored = list()

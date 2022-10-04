@@ -24,7 +24,7 @@
 
 	if(. && is_living(caller))
 
-		var/final_text = ""
+		var/final_text = list()
 
 		var/mob/living/L = caller
 
@@ -46,13 +46,17 @@
 			var/last_xp = A.level_to_xp(current_level)
 			var/next_xp = A.level_to_xp(min(current_level+1,A.get_max_level()))
 			var/information_link = "<a href='?examine=\ref[A]'>?</a>"
-			var/bonus = ""
+			var/bonus = L.get_mob_value(k)
 			if(J && J.bonus_attributes[k])
-				bonus = "<b>(+[J.bonus_attributes[k]*job_rank])</b>"
-			if(next_xp - last_xp > 0)
-				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)][bonus] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
+				bonus += J.bonus_attributes[k]*job_rank
+			if(bonus)
+				bonus = "<b>(+[bonus])</b>"
 			else
-				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)][bonus]</b>\n")
+				bonus = ""
+			if(next_xp - last_xp > 0)
+				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)][bonus] ([current_xp - last_xp]/[next_xp - last_xp]xp)")
+			else
+				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)][bonus]</b>")
 
 		final_text += div("bold underlined","Skills\n")
 		for(var/k in L.skills)
@@ -63,19 +67,25 @@
 			var/next_xp = A.level_to_xp(min(current_level+1,A.get_max_level()))
 			var/information_link = "<a href='?examine=\ref[A]'>?</a>"
 			var/prestige_text = ""
-			var/bonus = ""
+			var/bonus = L.get_mob_value(k)
 			if(J && J.bonus_skills[k])
-				bonus = "<b>(+[J.bonus_skills[k]*job_rank])</b>"
+				bonus += J.bonus_skills[k]*job_rank
+			if(bonus)
+				bonus = "<b>(+[bonus])</b>"
+			else
+				bonus = ""
 			if(is_player(L))
 				var/mob/living/advanced/player/P = L
 				if(P.prestige_count[k])
 					prestige_text = " Prestige [P.prestige_count[k]]\Roman"
 
 			if(next_xp - last_xp > 0)
-				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)][bonus][prestige_text] ([current_xp - last_xp]/[next_xp - last_xp]xp)\n")
+				final_text += div("notice","[A.name] ([information_link]): [A.get_current_level(current_level)][bonus][prestige_text] ([current_xp - last_xp]/[next_xp - last_xp]xp)")
 			else
-				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)][bonus][prestige_text]</b>\n")
-		L.to_chat(final_text)
+				final_text += div("notice","[A.name] ([information_link]): <b>[A.get_current_level(current_level)][bonus][prestige_text]</b>")
+
+		for(var/k in final_text)
+			L.to_chat(k)
 
 
 /obj/hud/button/widget/logout

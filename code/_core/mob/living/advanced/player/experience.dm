@@ -10,6 +10,8 @@
 		if(length(J.bonus_skills) && J.bonus_skills[id])
 			bonus += J.bonus_skills[id]*job_rank
 
+	bonus += get_mob_value(id)
+
 	return S.get_power(min_power,max_power,absolute_max_power,bonus)
 
 /mob/living/advanced/player/get_attribute_power(var/id,var/min_power=0.25,var/max_power=1,var/absolute_max_power)
@@ -23,5 +25,7 @@
 		var/job/J = JOB(job)
 		if(length(J.bonus_attributes) && J.bonus_attributes[id])
 			bonus += J.bonus_attributes[id]*job_rank
+
+	bonus += get_mob_value(id)
 
 	return A.get_power(min_power,max_power,absolute_max_power,bonus)

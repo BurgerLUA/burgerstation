@@ -117,7 +117,8 @@
 
 	var/armor/armor
 
-	var/list/mob_value = list()
+	var/list/mob_value_add = list()
+	var/list/mob_value_mul = list()
 
 	var/list/status_immune = list() //What status effects area they immune to?
 	//STATUS = TRUE //Means it's immune.

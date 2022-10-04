@@ -3,29 +3,32 @@
 
 /mob/living/proc/add_mob_value(var/id,var/value_type,var/value=0,var/math_type=ADDITION)
 
-	if(!mob_value["[value_type]_[math_type]"])
-		mob_value["[value_type]_[math_type]"] = list()
+	. = FALSE
 
-	mob_value["[value_type]_[math_type]"][id] = value
+	if(math_type == ADDITION)
+		if(!mob_value_add[value_type])
+			mob_value_add[value_type] = list()
+		mob_value_add[value_type][id] = value
+		. = TRUE
 
-	return TRUE
+	else if(math_type == MULTIPLICATION)
+		if(!mob_value_mul[value_type])
+			mob_value_mul[value_type] = list()
+		mob_value_mul[value_type][id] = value
+		. = TRUE
 
-/mob/living/proc/remove_mob_value(var/id,var/value_type)
+	return .
+
+/mob/living/proc/remove_mob_value(var/id,var/value_type,var/math_type=ADDITION)
 
 	. = FALSE
 
-	if(!mob_value)
-		return .
-
-	var/add_text = "[value_type]_[ADDITION]"
-	if(mob_value[add_text])
-		mob_value[add_text] -= id
-		. = TRUE
-
-	var/mul_text = "[value_type]_[MULTIPLICATION]"
-	if(mob_value[mul_text])
-		mob_value[mul_text] -= id
-		. = TRUE
+	if(math_type == ADDITION)
+		if(mob_value_add[value_type])
+			mob_value_add[value_type] -= id
+	else if(math_type == MULTIPLICATION)
+		if(mob_value_mul[value_type])
+			mob_value_mul[value_type] -= id
 
 	return .
 
@@ -35,16 +38,12 @@
 	var/add = 0
 	var/mul = 1
 
-	var/add_text = "[value_type]_[ADDITION]"
-	if(mob_value[add_text])
-		for(var/id in mob_value[add_text])
-			var/value = mob_value[add_text][id]
-			add += value
+	if(mob_value_add[value_type])
+		for(var/id in mob_value_add[value_type])
+			add += mob_value_add[value_type][id]
 
-	var/mul_text = "[value_type]_[MULTIPLICATION]"
-	if(mob_value[mul_text])
-		for(var/id in mob_value[mul_text])
-			var/value = mob_value[mul_text][id]
-			mul += value
+	if(mob_value_mul[value_type])
+		for(var/id in mob_value_mul[value_type])
+			mul += mob_value_mul[value_type][id] = value
 
 	return add * mul
