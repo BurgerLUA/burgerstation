@@ -2,7 +2,7 @@
 	name = "Holy .45 M1984 Pistol"
 	desc = "We can't expect God to do all the work."
 	desc_extended = "A special replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland."
-	value = 2000
+	value = 4000
 
 	company_type = "Solarian"
 

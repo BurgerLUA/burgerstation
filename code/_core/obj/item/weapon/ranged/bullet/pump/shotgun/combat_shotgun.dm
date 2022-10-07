@@ -80,6 +80,8 @@
 	icon = 'icons/obj/item/weapons/ranged/shotgun/syndicate/pump_mod.dmi'
 	icon_state = "inventory"
 
+	value = 3200
+
 	tier = 4
 
 	automatic = FALSE

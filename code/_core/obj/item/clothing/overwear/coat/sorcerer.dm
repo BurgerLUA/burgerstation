@@ -23,3 +23,10 @@
 		/obj/item/clothing/head/hat/sorcerer_hood,
 		/obj/item/clothing/neck/sorcerer
 	)
+
+	mob_values_add = list(
+		SKILL_MAGIC_DEFENSIVE = 3,
+		SKILL_MAGIC_OFFENSIVE = 3,
+		SKILL_MAGIC_SUMMONING = 3,
+		SKILL_MAGIC_ENCHANTING = 3
+	)

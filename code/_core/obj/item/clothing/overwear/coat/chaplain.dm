@@ -11,6 +11,10 @@
 
 	value = 90
 
+	mob_values_add = list(
+		SKILL_PRAYER = 3
+	)
+
 /obj/item/clothing/overwear/coat/chaplain/witchunter
 	name = "witchunter garb"
 	icon = 'icons/obj/item/clothing/suit/witchunter.dmi'

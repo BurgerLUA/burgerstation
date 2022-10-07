@@ -1,5 +1,11 @@
 /damagetype/ranged/bullet/shotgun_20/
 
+	attack_damage_base = list(
+		BLADE = 2,
+		BLUNT = 10,
+		PIERCE = 3
+	)
+
 	damage_type_to_fatigue = list(
 		BLADE = 0.20,
 		BLUNT = 0.3,
@@ -7,11 +13,6 @@
 		BOMB = 1
 	)
 
-	attack_damage_base = list(
-		BLADE = 5,
-		BLUNT = 10,
-		PIERCE = 5
-	)
 	attack_damage_penetration = list(
 		BLADE = 0,
 		BLUNT = 0,
@@ -39,7 +40,7 @@
 /damagetype/ranged/bullet/shotgun_20/flechette
 	attack_damage_base = list(
 		BLADE = 5,
-		PIERCE = 15
+		PIERCE = 10
 	)
 	attack_damage_penetration = list(
 		BLADE = 25,

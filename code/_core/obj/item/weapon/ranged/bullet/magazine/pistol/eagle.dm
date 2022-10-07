@@ -9,7 +9,7 @@
 	company_type = "Solarian"
 
 	damage_mod = 1.1
-	shoot_delay = 3
+	shoot_delay = 5
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	movement_spread_base = 0.01
@@ -76,7 +76,7 @@
 	tier = 4
 
 	damage_mod = 2
-	shoot_delay = 3
+	shoot_delay = 5
 
 	weight = 20
 	value_burgerbux = 1
@@ -90,7 +90,7 @@
 	value = 2000
 	tier = 3
 
-	shoot_delay = 2
+	shoot_delay = 4
 
 	heat_max = 0.075
 

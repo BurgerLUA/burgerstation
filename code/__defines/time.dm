@@ -1,4 +1,4 @@
-#define TICK_LAG (10 / FPS_SERVER)
+#define TICK_LAG world.tick_lag
 
 #define DECISECONDS_TO_TICKS(x) ((x) * FPS_SERVER * 0.1)
 #define TICKS_TO_DECISECONDS(x) (((x) / FPS_SERVER) * 10)

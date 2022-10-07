@@ -4,7 +4,7 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_6.dmi'
 	icon_state = "inventory"
-	value = 3500
+	value = 3000
 
 	company_type = "NanoTrasen"
 

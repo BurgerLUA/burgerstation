@@ -230,7 +230,7 @@ var/global/list/all_damage_numbers = list()
 					new_attack_damage[damage_type] += attack_damage
 					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/final_damage_multiplier = RAND_PRECISE(1,1.1)*(hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
+	var/final_damage_multiplier = (hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
 	if(debug) log_debug("Multiplying final damage by [final_damage_multiplier] from bonuses.")
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= final_damage_multiplier
@@ -347,6 +347,7 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
 
+	/* Disabled for now.
 	if(allow_heavy_attack && is_advanced(attacker))
 		var/mob/living/advanced/A = attacker
 		if(A.client && (!A.health || A.health.stamina_current >= 25))
@@ -364,6 +365,7 @@ var/global/list/all_damage_numbers = list()
 					damage_multiplier *= 2
 					A.health?.adjust_stamina(-25)
 					play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+	*/
 
 	for(var/k in victims)
 		var/atom/victim = k
@@ -400,29 +402,29 @@ var/global/list/all_damage_numbers = list()
 	var/block_multiplier = 0 //Different from damage_multiplier.
 	var/atom/block_atom = null
 
-	if(attacker != victim && is_living(victim))
+	if(is_living(victim))
 		var/mob/living/L = victim
-		//Getting the damage
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
-		//Parrying
-		if(is_advanced(victim) && can_be_parried)
-			var/mob/living/advanced/A = victim
-			if(A.parry(attacker,weapon,hit_object,src))
-				A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
-				play_sound('sound/effects/parry.ogg',get_turf(A),range_max=VIEW_RANGE)
-				if(is_living(attacker))
-					var/mob/living/LA = attacker
-					LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
-					if(get_dist(A,LA) <= 1)
-						LA.add_status_effect(PARRIED,30,30, source = A)
-				A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
-				return FALSE
-		//Blocking
-		if(L.blocking)
-			var/list/block_data = L.get_block_data(attacker,weapon,hit_object,blamed,src)
-			if(block_data)
-				block_atom = block_data[1]
-				block_multiplier = block_data[2]
+		if(attacker != victim)
+			//Parrying
+			if(is_advanced(victim) && can_be_parried)
+				var/mob/living/advanced/A = victim
+				if(A.parry(attacker,weapon,hit_object,src))
+					A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
+					play_sound('sound/effects/parry.ogg',get_turf(A),range_max=VIEW_RANGE)
+					if(is_living(attacker))
+						var/mob/living/LA = attacker
+						LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
+						if(get_dist(A,LA) <= 1)
+							LA.add_status_effect(PARRIED,30,30, source = A)
+					A.on_parried_hit(attacker,weapon,hit_object,blamed,damage_multiplier)
+					return FALSE
+			//Blocking
+			if(L.blocking)
+				var/list/block_data = L.get_block_data(attacker,weapon,hit_object,blamed,src)
+				if(block_data)
+					block_atom = block_data[1]
+					block_multiplier = block_data[2]
 
 	var/list/damage_to_deal = get_attack_damage(use_blamed_stats ? blamed : attacker,victim,weapon,hit_object,damage_multiplier)
 	var/list/damage_to_deal_main = list(

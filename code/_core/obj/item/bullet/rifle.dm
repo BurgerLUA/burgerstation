@@ -79,6 +79,7 @@
 	icon = 'icons/obj/item/bullet/762_short.dmi'
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/short
 
+	bullet_diameter = 7.62
 	bullet_length = 39
 
 	projectile_speed = BULLET_SPEED_RIFLE_HEAVY*0.9

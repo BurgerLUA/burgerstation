@@ -37,10 +37,10 @@
 		if(!T.is_safe_move()) //Alright, that's it. No more water-walking!
 			L.to_chat(span("danger","You can't bloodcrawl there!"))
 			return TRUE
-		if (target_distance > 10)
+		if (target_distance > VIEW_RANGE)
 			L.to_chat(span("danger","It's too far to crawl to!"))
 			return TRUE
-		L.blood_volume -= max(0,L.blood_volume - target_distance*5) //Max distance costs 50. Jumping this far would only be for snacking or retreating, though.
+		L.blood_volume = max(0,L.blood_volume - target_distance*5) //Max distance costs 50. Jumping this far would only be for snacking or retreating, though.
 		QUEUE_HEALTH_UPDATE(L)
 		L.force_move(T)
 		new/obj/effect/temp/impact/blood(T,desired_color = COLOR_BLOOD)

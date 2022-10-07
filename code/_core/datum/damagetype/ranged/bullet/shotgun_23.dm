@@ -2,9 +2,9 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 15,
+		BLADE = 10,
 		BLUNT = 20,
-		PIERCE = 15
+		PIERCE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -42,8 +42,8 @@
 
 /damagetype/ranged/bullet/shotgun_23/flechette
 	attack_damage_base = list(
-		BLADE = 20,
-		PIERCE = 30
+		BLADE = 15,
+		PIERCE = 20
 	)
 	attack_damage_penetration = list(
 		BLADE = 25,

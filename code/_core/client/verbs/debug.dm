@@ -17,6 +17,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/force_save_banks,
 	/client/verb/view_dps,
 	/client/verb/view_dph,
+	/client/verb/view_killtime,
+	/client/verb/view_value,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
 	/client/proc/debug_variables,
@@ -29,6 +31,19 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_rust_g,
 	/client/verb/view_map
 )
+
+/client/verb/view_value()
+	set name = "View Recommended Value of Weapons"
+	set category = "Debug"
+
+	var/text_to_send = ""
+
+	for(var/k in SSbalance.stored_value)
+		var/v = SSbalance.stored_value[k]
+		var/t = SSbalance.stored_tier[k]
+		text_to_send += "[k]: $[v] (Tier: [t])<br>"
+
+	src << browse("<body>[text_to_send]</body>","window=help")
 
 /client/verb/view_dps()
 	set name = "View DPS of Weapons"
@@ -51,6 +66,18 @@ var/global/list/debug_verbs = list(
 	for(var/k in SSbalance.stored_dph)
 		var/v = SSbalance.stored_dph[k]
 		text_to_send += "[k]: [v] DPH<br>"
+
+	src << browse("<body>[text_to_send]</body>","window=help")
+
+/client/verb/view_killtime()
+	set name = "View Killtime of Weapons"
+	set category = "Debug"
+
+	var/text_to_send = ""
+
+	for(var/k in SSbalance.stored_killtime)
+		var/v = SSbalance.stored_killtime[k]
+		text_to_send += "[k]: [v] seconds<br>"
 
 	src << browse("<body>[text_to_send]</body>","window=help")
 

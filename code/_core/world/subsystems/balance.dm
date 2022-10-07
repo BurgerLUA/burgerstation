@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_dps = list()
 	var/list/stored_dph = list()
 	var/list/stored_tier = list()
+	var/list/stored_killtime = list()
+	var/list/stored_value = list()
 
 	var/list/weapon_to_bullet = list()
 	var/list/weapon_to_magazine = list()
@@ -81,9 +83,12 @@ SUBSYSTEM_DEF(balance)
 		if(found_dph)
 			stored_dph[W.type] = CEILING(found_dph,1)
 
-		var/found_dps = W.get_dps(0, found_dph)
+		var/found_dps = W.get_dps(found_dph)
 		if(found_dps)
 			stored_dps[W.type] = CEILING(found_dps,1)
+
+		var/found_killtime = W.get_kill_time()
+		stored_killtime[W.type] = CEILING(found_killtime,0.01)
 
 		if(!W.bypass_balance_check)
 			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
@@ -92,11 +97,16 @@ SUBSYSTEM_DEF(balance)
 				imbalanced_weapons++
 			stored_tier[W.type] = recommended_tier
 
+		var/found_value = W.get_recommended_value(100) //The 100 is the armor value. This makes it so that pistols are generally cheaper than rifles that have armor penetration.
+		stored_value[W.type] = found_value
+
 		qdel(W)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	sortInsert(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
 	sortInsert(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
+	sortInsert(stored_killtime, /proc/cmp_numeric_asc, associative=TRUE)
+	sortInsert(stored_value, /proc/cmp_numeric_asc, associative=TRUE)
 
 	for(var/k in created_bullets)
 		var/obj/item/I = k

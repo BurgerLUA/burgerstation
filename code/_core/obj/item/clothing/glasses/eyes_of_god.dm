@@ -16,6 +16,10 @@
 
 	item_slot_layer = 1
 
+	mob_values_add = list(
+		ATTRIBUTE_WISDOM = 5
+	)
+
 /*
 /obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 

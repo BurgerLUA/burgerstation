@@ -1,4 +1,4 @@
-/obj/item/weapon/proc/get_damage_per_hit(var/armor_to_use)
+/obj/item/weapon/proc/get_damage_per_hit(var/armor_to_use=0)
 
 	if(!damage_type)
 		log_error("Warning: [src.type] did not have a valid damage_type.")

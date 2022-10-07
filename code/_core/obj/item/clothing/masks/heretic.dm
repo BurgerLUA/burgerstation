@@ -12,3 +12,8 @@
 
 	size = SIZE_2
 
+	mob_values_add = list(
+		ATTRIBUTE_SOUL = 5,
+		SKILL_PRAYER = 5
+	)
+

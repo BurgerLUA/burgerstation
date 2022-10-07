@@ -14,4 +14,6 @@
 
 	value = 40
 
-	speed_bonus = 0.1
+	mob_values_add = list(
+		ATTRIBUTE_AGILITY = 5
+	)

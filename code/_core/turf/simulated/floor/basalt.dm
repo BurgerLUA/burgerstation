@@ -33,7 +33,7 @@
 /turf/simulated/floor/basalt/smooth_turf()
 
 	var/code = get_smooth_code()
-	if(code == "ffff")
+	if(!code)
 		icon = initial(icon)
 		if(prob(3))
 			light_turf = TRUE

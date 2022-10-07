@@ -4,16 +4,16 @@
 	desc_extended = "A lightweight fast-firing Syndicate tactical submachinegun carbine designed to send a lot of bullets down-range at once. Uses 9mm pistol magazines."
 	icon = 'icons/obj/item/weapons/ranged/smg/syndicate/9mm_2.dmi'
 	icon_state = "inventory"
-	value = 3800
+	value = 2800
 
 	company_type = "Syndicate"
 
 	tier = 4
 
-	damage_mod = 1.2
+	damage_mod = 1
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0.5
-	shoot_delay = 0.5
+	shoot_delay = 0.75
 
 	automatic = TRUE
 
@@ -23,7 +23,7 @@
 
 	can_wield = TRUE
 
-	size = SIZE_4
+	size = SIZE_3
 	weight = 14
 
 	dan_mode = TRUE

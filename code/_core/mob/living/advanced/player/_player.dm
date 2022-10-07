@@ -112,10 +112,10 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 var/global/list/difficulty_to_damage_mul = list(
-	DIFFICULTY_EASY = 0.25,
-	DIFFICULTY_NORMAL = 0.5,
-	DIFFICULTY_HARD = 0.75,
-	DIFFICULTY_EXTREME = 1,
+	DIFFICULTY_EASY = 0.1,
+	DIFFICULTY_NORMAL = 0.25,
+	DIFFICULTY_HARD = 0.5,
+	DIFFICULTY_EXTREME = 0.75,
 	DIFFICULTY_NIGHTMARE = 1
 )
 
@@ -143,11 +143,6 @@ var/global/list/difficulty_to_damage_mul = list(
 			var/desired_y = CEILING(world.maxy/2,1)
 			var/desired_z = CEILING(world.maxz/2,1)
 			force_move(locate(desired_x,desired_y,desired_z))
-
-
-
-
-
 
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
@@ -315,8 +310,6 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/proc/get_difficulty()
 	return enable_friendly_fire ? DIFFICULTY_NORMAL : src.difficulty
-
-
 
 var/global/list/difficulty_to_rarity = list(
 	DIFFICULTY_EASY = 0,

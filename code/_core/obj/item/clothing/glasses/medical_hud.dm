@@ -13,6 +13,11 @@
 
 	item_slot_layer = 2
 
+	mob_values_add = list(
+		SKILL_MEDICINE = 3
+	)
+
+
 /obj/item/clothing/glasses/medical_hud/advanced
 	name = "advanced medical hud"
 
@@ -22,3 +27,7 @@
 	vision_mod = FLAG_VISION_MEDICAL | FLAG_VISION_MEDICAL_ADVANCED
 
 	value = 200
+
+	mob_values_add = list(
+		SKILL_MEDICINE = 5
+	)

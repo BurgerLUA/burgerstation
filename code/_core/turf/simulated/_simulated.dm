@@ -122,14 +122,13 @@
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
-		var/dir_to_text = "[d]"
-		calc_list[dir_to_text] = FALSE //Default
 		var/turf/T = get_step(src,d)
-		if(!T)
+		if(!T || !should_smooth_with(T))
 			continue
-		if(!should_smooth_with(T))
-			continue
-		calc_list[dir_to_text] = TRUE
+		calc_list["[d]"] = TRUE
+
+	if(!length(calc_list))
+		return list("i","i","i","i")
 
 	var/ne = ""
 	var/nw = ""

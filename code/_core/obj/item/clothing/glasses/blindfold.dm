@@ -14,6 +14,11 @@
 
 	item_slot_layer = 2
 
+	mob_values_add = list(
+		SKILL_PRECISION = -10
+	)
+
+
 /obj/item/clothing/glasses/blindfold/white
 	name = "white blindfold"
 	desc_extended = "A white blindfold that is designed to blind the wearer. Provides excellent magic protection."

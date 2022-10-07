@@ -47,19 +47,13 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 13 - 16
 
-
-
 	dan_mode = TRUE
 	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.3
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
-	return 0.03
+	return (heat_max - heat_current)*0.5
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
-	. = ..()
-	. += (heat_max - heat_current)*5

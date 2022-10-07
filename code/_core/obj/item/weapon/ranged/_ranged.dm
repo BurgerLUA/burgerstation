@@ -534,7 +534,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			play_sound('sound/effects/bullet_crack.ogg', get_turf(src), pitch=RAND_PRECISE(0.95,1.05)-min(0.5,bullet_size*0.25),volume= 30 + bullet_size*25 + (projectile_speed_to_use/TILE_SIZE)*0.10)
 		*/
 
-		var/accuracy_loss = clamp(static_spread + heat_spread + skill_spread + movement_spread,0,0.5)
+		var/accuracy_loss = clamp(static_spread + heat_spread + max(skill_spread,0) + movement_spread,0,0.5)
 		if(prone) accuracy_loss *= prone_mod
 		projectile_speed_to_use = min(projectile_speed_to_use,TILE_SIZE - 1)
 

@@ -11,6 +11,8 @@
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE*3
 
+	debug = TRUE
+
 /damagetype/ranged/bullet/gauss_gun/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL

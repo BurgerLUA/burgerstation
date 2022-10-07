@@ -1,11 +1,5 @@
 /client/proc/on_life()
 
-	if(spam_protection_chat > 0)
-		spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK))
-
-	if(spam_protection_interact > 0)
-		spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK))
-
 	if(length(queued_chat_messages) && queued_chat_messages[1])
 		var/list/queued_message = queued_chat_messages[1]
 		var/text = queued_message["text"]
@@ -16,8 +10,22 @@
 
 	if(mob)
 		mob.on_life_client()
-		handle_camera()
 		mob.handle_mouse_pointer()
+		handle_camera()
+
+	return TRUE
+
+/client/proc/on_life_slow()
+
+	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
+		del(src)
+		return TRUE
+
+	if(!mob)
+		src << span("danger","Uhh... it seems like your mob was deleted unexpectedly. Contact Burger on Discord to tell them how you encountered this.")
+		src << span("danger","As a precaution, you were kicked. You can rejoin again.")
+		del(src)
+		return FALSE
 
 	if(!eye)
 		spectate(null)
@@ -30,18 +38,11 @@
 			if(A.loc == null)
 				spectate(null)
 
-	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
-		del(src)
+	if(spam_protection_chat > 0)
+		spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
-	return TRUE
-
-/client/proc/on_life_slow()
-
-	if(!mob)
-		src << span("danger","Uhh... it seems like your mob was deleted unexpectedly. Contact Burger on Discord to tell them how you encountered this.")
-		src << span("danger","As a precaution, you were kicked. You can rejoin again.")
-		del(src)
-		return FALSE
+	if(spam_protection_interact > 0)
+		spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
 
 	for(var/k in stored_hud_images)
 		var/image/I = k

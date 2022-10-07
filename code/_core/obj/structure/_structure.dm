@@ -161,14 +161,13 @@
 	var/list/calc_list = list()
 
 	for(var/d in DIRECTIONS_ALL)
-		var/dir_to_text = "[d]"
-		calc_list[dir_to_text] = FALSE //Default
 		var/turf/T = get_step(src,d)
-		if(!T)
+		if(!T || should_smooth_with(T))
+			calc_list["[d]"] = TRUE
 			continue
-		if(should_smooth_with(T))
-			calc_list[dir_to_text] = TRUE
-			continue
+
+	if(!length(calc_list))
+		return list("i","i","i","i")
 
 	var/ne = ""
 	var/nw = ""
@@ -178,6 +177,7 @@
 	if(calc_list["[NORTH]"])
 		ne += "n"
 		nw += "n"
+
 	if(calc_list["[SOUTH]"])
 		se += "s"
 		sw += "s"
@@ -185,20 +185,21 @@
 	if(calc_list["[EAST]"])
 		ne += "e"
 		se += "e"
+
 	if(calc_list["[WEST]"])
 		nw += "w"
 		sw += "w"
 
-	if(nw == "nw" && calc_list["[NORTHWEST]"])
+	if(calc_list["[NORTH]"] && calc_list["[WEST]"] && calc_list["[NORTHWEST]"])
 		nw = "f"
 
-	if(ne == "ne" && calc_list["[NORTHEAST]"])
+	if(calc_list["[NORTH]"] && calc_list["[EAST]"] && calc_list["[NORTHEAST]"])
 		ne = "f"
 
-	if(sw == "sw" && calc_list["[SOUTHWEST]"])
+	if(calc_list["[SOUTH]"] && calc_list["[WEST]"] && calc_list["[SOUTHWEST]"])
 		sw = "f"
 
-	if(se == "se" && calc_list["[SOUTHEAST]"])
+	if(calc_list["[SOUTH]"] && calc_list["[EAST]"] && calc_list["[SOUTHEAST]"])
 		se = "f"
 
 	if(!ne) ne = "i"

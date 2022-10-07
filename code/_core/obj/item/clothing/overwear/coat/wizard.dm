@@ -13,6 +13,13 @@
 
 	dyeable = TRUE
 
+	mob_values_add = list(
+		SKILL_MAGIC_DEFENSIVE = 3,
+		SKILL_MAGIC_OFFENSIVE = 3,
+		SKILL_MAGIC_SUMMONING = 3,
+		SKILL_MAGIC_ENCHANTING = 3
+	)
+
 /obj/item/clothing/overwear/coat/wizard/red
 	color = "#FF0000"
 

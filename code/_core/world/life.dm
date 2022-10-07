@@ -1,10 +1,10 @@
 var/global/time_dialation = 0
 
 /world/proc/subsystem_life_loop(var/subsystem/SS)
-	//set background = TRUE
+	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
-			if( (!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && max(world.cpu,world.tick_usage) > SS.tick_usage_max)
+			if( (!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 				SS.overtime_count++
 				sleep(TICK_LAG)
 				continue
@@ -28,7 +28,7 @@ var/global/time_dialation = 0
 			sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
 
 /world/proc/subsystem_initialize(var/subsystem/SS)
-	//No background processing.
+	//No background processing. Everything needs to run in order.
 	var/local_benchmark = true_time()
 	log_subsystem(SS.name,"Initializing...")
 	INITIALIZE(SS)
@@ -74,11 +74,12 @@ var/global/time_dialation = 0
 			continue
 		subsystem_life_loop(SS)
 
-
 	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
 	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
 	log_subsystem("Subsystem Controller",final_time_text)
 	log_debug(final_time_text)
+
+	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k
@@ -86,6 +87,7 @@ var/global/time_dialation = 0
 			continue
 		subsystem_life_loop(SS)
 
+	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	world_state = STATE_RUNNING
 

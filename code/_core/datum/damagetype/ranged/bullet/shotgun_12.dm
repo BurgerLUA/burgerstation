@@ -1,8 +1,8 @@
 /damagetype/ranged/bullet/shotgun_12/
 
 	attack_damage_base = list(
-		BLADE = 10,
-		BLUNT = 20,
+		BLADE = 5,
+		BLUNT = 15,
 		PIERCE = 5
 	)
 	attack_damage_penetration = list(
@@ -40,7 +40,7 @@
 /damagetype/ranged/bullet/shotgun_12/flechette
 	attack_damage_base = list(
 		BLADE = 10,
-		PIERCE = 25
+		PIERCE = 15
 	)
 	attack_damage_penetration = list(
 		BLADE = 25,

@@ -12,3 +12,8 @@
 	value = 10
 
 	item_slot_layer = 2
+
+	mob_values_add = list(
+		SKILL_PRECISION = -3,
+		SKILL_SURVIVAL = 3,
+	)

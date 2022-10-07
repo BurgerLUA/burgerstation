@@ -56,19 +56,13 @@
 
 	return A.put_in_hands(src,params)
 
-/* Price calculation is hard.
+
 /obj/item/weapon/get_base_value()
 
-	if(!damage_type)
+	if(!SSbalance || !SSbalance.stored_value[src.type])
 		return ..()
 
-	var/damagetype/D = all_damage_types[damage_type]
-
-	if(!D)
-		return ..()
-
-	return D.calculate_value(src)
-*/
+	return SSbalance.stored_value[src.type]
 
 /obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
 	return FALSE

@@ -24,7 +24,7 @@
 			. = possible
 
 	if("semi-automatic" in firemodes)
-		var/possible = (10/max(1,shoot_delay))
+		var/possible = (10/max(2,shoot_delay))
 		if(possible > .)
 			. = possible
 
@@ -46,7 +46,7 @@
 			. = possible
 
 	if("semi-automatic" in firemodes)
-		var/possible = (10/((pump_delay*2)+max(1,shoot_delay)))
+		var/possible = (10/((pump_delay*2)+max(2,shoot_delay)))
 		if(possible > .)
 			. = possible
 
