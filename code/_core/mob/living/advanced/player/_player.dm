@@ -124,6 +124,7 @@ var/global/list/difficulty_to_damage_mul = list(
 	setup_difficulty()
 
 /mob/living/advanced/player/proc/default_nanotrasen_move()
+	src.last_tax_payment = world.realtime
 	if(length(cryo_spawnpoints))
 		var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
 		force_move(get_turf(C))

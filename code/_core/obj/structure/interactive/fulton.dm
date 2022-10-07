@@ -31,7 +31,9 @@
 
 /obj/structure/interactive/fulton/proc/do_invalid_fulton()
 
-	stored_movable.force_move(get_turf(src))
+	var/turf/T = get_turf(src)
+
+	stored_movable.force_move(T)
 
 	if(is_living(stored_movable))
 		var/mob/living/L = stored_movable
@@ -40,6 +42,9 @@
 	visible_message(span("danger","\The [src.name] fails to extract \the [stored_movable.name]!"))
 
 	stored_movable = null
+
+	CREATE(/obj/item/fulton_pack,T)
+
 	qdel(src)
 
 	return TRUE

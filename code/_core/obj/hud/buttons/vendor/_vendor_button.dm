@@ -111,8 +111,21 @@
 		update_owner(null)
 		return
 
+
 	if(.)
-		associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
+		var/obj/item/I = associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
+
+		if(I && !I.qdeleting)
+			if(I.can_transfer_stacks_to(object))
+				var/stacks_transfered = I.transfer_amount_to(object)
+				if(stacks_transfered)
+					caller.to_chat(span("notice","You restock \the [object.name] with [stacks_transfered] stacks."))
+				else
+					caller.to_chat(span("warning","You can't restock \the [src.name], it's full!"))
+
+			if(!I.qdeleting && is_advanced(caller))
+				var/mob/living/advanced/A = caller
+				A.put_in_hands(I)
 
 
 /obj/hud/button/close_vendor

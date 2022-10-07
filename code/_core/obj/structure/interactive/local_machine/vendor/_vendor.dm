@@ -158,8 +158,6 @@ var/global/list/equipped_antags = list()
 
 	caller.to_chat(span("notice","You vend \the [new_item.name]."))
 
-	caller.put_in_hands(new_item)
-
 	if(!ignore_economy)
 		SSeconomy.purchases_this_round["[associated_item.type]"] += 1
 

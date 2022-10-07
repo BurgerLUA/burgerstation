@@ -88,7 +88,7 @@
 	if(!ismovable(object))
 		return ..()
 
-	if(object.plane >= PLANE_HUD)
+	if(!isturf(object.loc))
 		return ..()
 
 	INTERACT_CHECK
