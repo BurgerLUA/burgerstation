@@ -13,6 +13,7 @@
 	health = null
 
 	anchored = TRUE
+	density = TRUE
 
 	size = SIZE_10
 
@@ -26,3 +27,4 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+	add_status_effect(IMMORTAL)

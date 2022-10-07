@@ -18,14 +18,17 @@ SUBSYSTEM_DEF(smoothing)
 	return TRUE
 
 /subsystem/smoothing/on_life()
+
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))
 		return FALSE
+
 	for(var/k in queued_smoothing)
 		src.queued_smoothing -= k
 		var/atom/A = k
 		A.queued_smoothing = FALSE
 		A.update_sprite()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+
 	return TRUE
 
 

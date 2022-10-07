@@ -86,7 +86,13 @@ var/global/list/ability_colors = list(
 		return FALSE
 
 	var/display_number = DECISECONDS_TO_SECONDS(ability.cooldown_end - world.time)
-	display_number = CEILING(display_number,0.1)
+
+	if(display_number <= 5)
+		display_number = CEILING(display_number,0.1)
+		if(!MODULUS(display_number,1))
+			display_number = "[display_number].0]"
+	else
+		display_number = CEILING(display_number,1)
 
 	src.maptext = "<div align = 'center'>[display_number]</align>"
 

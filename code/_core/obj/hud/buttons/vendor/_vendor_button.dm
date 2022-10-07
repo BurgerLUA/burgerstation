@@ -125,7 +125,10 @@
 
 			if(!I.qdeleting && is_advanced(caller))
 				var/mob/living/advanced/A = caller
-				A.put_in_hands(I)
+				if(A.movement_flags & MOVEMENT_RUNNING)
+					I.quick_equip(A)
+				else
+					A.put_in_hands(I)
 
 
 /obj/hud/button/close_vendor

@@ -39,21 +39,30 @@
 					caller.to_chat(span("warning","\The [I.name] cannot be sold!"))
 				else
 					if(istype(B.stored_object,/obj/item/currency/gold_coin))
-						A.adjust_currency(B.stored_value)
+						var/currency_added = A.adjust_currency(B.stored_value)
+						A.to_chat(span("notice","You exchange \the [B.stored_object] for [currency_added] credits."))
 						SSeconomy.goblin_economy += B.stored_value
 						SSeconomy.gold_in_circulation -= B.stored_object.amount
+						B.set_stored_object(null)
 						qdel(I)
 					else
-						var/turf/T = get_turf(A)
+						var/turf/T = get_step(A,A.dir)
+						if(!T)
+							T = get_turf(A)
 						var/obj/item/currency/gold_coin/G = new(T)
 						INITIALIZE(G)
 						G.amount = B.stored_value
 						FINALIZE(G)
 						SSeconomy.gold_in_circulation += G.amount
 						SSeconomy.goblin_economy -= G.amount
-						qdel(I)
+						A.to_chat(span("notice","You sell \the [B.stored_object] for [G.amount] gold."))
 						B.set_stored_object(null)
-						A.put_in_hands(G,params)
+						qdel(I)
+						if(!G.qdeleting && G.can_transfer_stacks_to(object))
+							G.transfer_amount_to(object)
+						if(!G.qdeleting)
+							A.put_in_hands(G,params)
+
 					SSeconomy.update_stats()
 			else
 				B.set_stored_object(null)

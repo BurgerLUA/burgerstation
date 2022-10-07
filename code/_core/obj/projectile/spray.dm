@@ -13,8 +13,6 @@
 
 	hostile = FALSE
 
-	debug = TRUE
-
 /obj/projectile/spray/update_sprite()
 	. = ..()
 	if(reagents)

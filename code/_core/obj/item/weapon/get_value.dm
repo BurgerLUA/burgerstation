@@ -3,8 +3,10 @@
 
 /obj/item/weapon/proc/get_recommended_value(var/armor_to_use=0)
 
+	var/reliability = get_reliability()
+
 	var/kill_time = get_kill_time(armor_to_use)
-	var/kill_time_mod = ((5-min(kill_time,5))**5)*0.05
+	var/kill_time_mod = ((5-min(kill_time,5)*reliability)**5)*0.4
 
 	var/stopping_power = get_stopping_power(armor_to_use)
 	var/stopping_power_mod = (stopping_power**1.2)*1000
@@ -12,7 +14,7 @@
 	var/dps = get_dps(get_damage_per_hit(armor_to_use))
 	var/dps_mod = (dps**1.3)*1.1
 
-	. = ( (kill_time_mod + stopping_power_mod + dps_mod)*get_reliability() )**1.04
+	. = ( (kill_time_mod + stopping_power_mod + dps_mod)*reliability )**1.04
 
 	switch(.)
 		if(0 to 100)

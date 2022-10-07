@@ -239,9 +239,6 @@
 	iff_tag = "ChessBlack"
 	loyalty_tag = "ChessBlack"
 
-	debug = TRUE
-
-
 /mob/living/simple/chess_piece/queen/get_valid_move_turfs()
 
 	. = list()

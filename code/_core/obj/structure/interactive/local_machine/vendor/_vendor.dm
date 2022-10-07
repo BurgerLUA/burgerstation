@@ -140,7 +140,7 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/purchase_item(var/mob/living/advanced/player/caller,var/params,var/obj/item/associated_item,var/item_value=0)
 
 	INTERACT_CHECK
-	INTERACT_DELAY(5)
+	INTERACT_DELAY(3)
 
 	if(!powered && apc_powered) //Items can't be purchased if the vendor requires power and its not powered.
 		return null
