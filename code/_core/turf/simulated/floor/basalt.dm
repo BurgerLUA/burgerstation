@@ -40,7 +40,10 @@
 			light_turf = TRUE
 			icon_state = "basalt[rand(1,5)]"
 		else if(prob(6))
-			icon_state = "basalt[rand(6,15)]"
+			icon_state = "basalt[rand(6,12)]"
+		else
+			icon_state = "basalt0"
+
 		return TRUE
 
 /turf/simulated/floor/basalt/Finalize()
