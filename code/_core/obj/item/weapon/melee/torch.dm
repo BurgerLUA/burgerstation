@@ -13,7 +13,7 @@
 	override_icon_state_held = TRUE
 
 	desired_light_range = VIEW_RANGE*0.5
-	desired_light_power = 0.5
+	desired_light_power = 0.7
 	desired_light_color = "#FFD175"
 	desired_light_angle = LIGHT_OMNI
 
@@ -91,7 +91,7 @@
 	override_icon_state_held = TRUE
 
 	desired_light_range = VIEW_RANGE*0.75
-	desired_light_power = 0.45
+	desired_light_power = 0.6
 	desired_light_color = "#FFF0C6"
 	desired_light_angle = LIGHT_WIDE
 
@@ -111,7 +111,7 @@
 	override_icon_state_held = TRUE
 
 	desired_light_range = VIEW_RANGE
-	desired_light_power = 0.6
+	desired_light_power = 0.8
 	desired_light_color = "#FFF0C6"
 	desired_light_angle = LIGHT_NARROW
 

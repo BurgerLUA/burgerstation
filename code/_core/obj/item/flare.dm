@@ -10,7 +10,7 @@
 	var/ignited = FALSE
 	var/has_fuel = TRUE
 
-	desired_light_range = VIEW_RANGE*0.75
+	desired_light_range = VIEW_RANGE
 	desired_light_power = 1
 	desired_light_color = "#FF7777"
 

@@ -129,29 +129,28 @@
 
 	return TRUE
 
-/obj/item/defib/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/defib/click_self(var/mob/caller)
 
 	if(!is_advanced(caller))
-		return ..()
+		return FALSE
+
+	INTERACT_CHECK
+	INTERACT_DELAY(1)
 
 	var/mob/living/advanced/A = caller
 
-	if(src.anchored || A.attack_flags & CONTROL_MOD_DISARM)
-		var/obj/hud/inventory/I = object
-		if(paddle_left in src.contents)
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(1)
-			I.add_object(paddle_left)
-			return TRUE
-		else if(paddle_right in src.contents)
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(1)
-			I.add_object(paddle_right)
-			return TRUE
+	. = FALSE
+	if(paddle_left in src.contents)
+		A.put_in_hands(paddle_left)
+		. = TRUE
 
-	return ..()
+	if(paddle_right in src.contents)
+		A.put_in_hands(paddle_right)
+		. = TRUE
+
+	if(!.)
+		return ..()
+
 
 /obj/item/defib/post_move(var/atom/old_loc)
 	. = ..()

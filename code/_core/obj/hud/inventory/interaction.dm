@@ -110,7 +110,8 @@
 
 		return TRUE
 
-	if(caller.attack_flags & CONTROL_MOD_DROP) //Drop the object if we are telling it to drop.
+	//Drop the object if we are telling it to drop.
+	if(caller.attack_flags & CONTROL_MOD_DROP)
 		if(parent_inventory)
 			var/obj/item/I = parent_inventory.get_top_object()
 			unwield(caller,I)
@@ -133,7 +134,8 @@
 			drop_item_from_inventory(get_turf(src))
 		return TRUE
 
-	if(grabbed_object && isturf(grabbed_object.loc)) //Handle moving grabbed objects
+	//Handle moving grabbed objects
+	if(grabbed_object && isturf(grabbed_object.loc))
 		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
 			var/turf/desired_move_turf = get_step(grabbed_object.loc,desired_move_dir)
@@ -149,6 +151,7 @@
 				L.handle_transform()
 		return TRUE
 
+	//Special owner-clicking shortcut.
 	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)
 		top_object.click_on_object(caller,caller,location,control,params)
 		return TRUE
