@@ -9,7 +9,6 @@
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
 	var/old_disallow_generation = disallow_generation
-	var/old_corner_icons = corner_icons
 
 	var/list/old_stored_shuttle_items = src.stored_shuttle_items
 
@@ -40,9 +39,6 @@
 			else
 				W.lighting_clear_overlay()
 
-	if((corner_icons || old_corner_icons) && SSsmoothing.initialized)
-		SSsmoothing.queue_update_edges(W)
-
 	var/area/A = W.loc
 	if(A && A.sunlight_freq > 0 && A.sunlight_color)
 		A.setup_sunlight(W)
@@ -50,6 +46,19 @@
 	stored_shuttle_items = old_stored_shuttle_items
 
 	W.post_change_turf(old_turf_type)
+
+
+/turf/simulated/change_turf(var/turf/N, var/force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
+
+	var/old_corner_icons = corner_icons
+
+	. = ..()
+
+	if(. && (corner_icons || old_corner_icons) && SSsmoothing.initialized)
+		if(corner_icons != old_corner_icons)
+			SSsmoothing.queue_update_edges(src)
+		else
+			queue_smoothing_turf(src)
 
 /turf/proc/change_area(var/area/N) //Remember to call A.generate_average() when done changing areas.
 

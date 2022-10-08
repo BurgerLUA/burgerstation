@@ -27,6 +27,13 @@
 	var/corner_icons = FALSE
 	var/corner_category = "none"
 
+	var/smooth_code_1
+	var/smooth_code_2
+	var/smooth_code_3
+	var/smooth_code_4
+
+	var/queued_smoothing = FALSE
+
 /obj/structure/Destroy()
 	if(corner_icons && SSsmoothing.initialized)
 		SSsmoothing.queue_update_edges(get_turf(src),FALSE)
@@ -48,21 +55,6 @@
 	if(message) loc.visible_message(span("warning","\The [src.name] is crushed under \the [src.loc.name]!"))
 	qdel(src)
 
-/obj/structure/should_smooth_with(var/turf/T)
-
-	if(corner_category)
-		if(T.plane == plane && T.corner_category == corner_category)
-			return T
-
-		for(var/obj/structure/O in T.contents)
-			if(O.corner_category != corner_category)
-				continue
-			if(O.plane != plane)
-				continue
-			return O
-
-	. = ..()
-
 /obj/structure/Initialize()
 
 	. = ..()
@@ -75,8 +67,38 @@
 		if(SSsmoothing.initialized)
 			SSsmoothing.queue_update_edges(get_turf(src))
 		else
-			queue_smoothing(src)
+			queue_smoothing_obj(src)
 	. = ..()
+
+/obj/structure/update_icon()
+
+	. = ..()
+
+	var/full_icon_string = "[type]_[icon_state]_[smooth_code_1][smooth_code_2][smooth_code_3][smooth_code_4]"
+
+	var/icon/I
+	if(SSobj.icon_cache[full_icon_string])
+		I = SSobj.icon_cache[full_icon_string]
+		SSobj.saved_icons++
+	else
+		I = new/icon(icon,"1-[smooth_code_1]")
+
+		var/icon/NE = new /icon(icon,"2-[smooth_code_2]")
+		I.Blend(NE,ICON_OVERLAY)
+
+		var/icon/SW = new /icon(icon,"3-[smooth_code_3]")
+		I.Blend(SW,ICON_OVERLAY)
+
+		var/icon/SE = new /icon(icon,"4-[smooth_code_4]")
+		I.Blend(SE,ICON_OVERLAY)
+
+		SSobj.icon_cache[full_icon_string] = I
+
+	icon = I
+	pixel_x = (TILE_SIZE - I.Width())/2 + initial(pixel_x)
+	pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
+
+
 
 
 /obj/structure/proc/on_active(var/mob/living/advanced/player/P)
@@ -156,100 +178,3 @@
 	return ..()
 
 
-/obj/structure/proc/get_smooth_code()
-
-	var/list/calc_list = list()
-
-	for(var/d in DIRECTIONS_ALL)
-		var/turf/T = get_step(src,d)
-		if(!T || should_smooth_with(T))
-			calc_list["[d]"] = TRUE
-			continue
-
-	if(!length(calc_list))
-		return list("i","i","i","i")
-
-	var/ne = ""
-	var/nw = ""
-	var/sw = ""
-	var/se = ""
-
-	if(calc_list["[NORTH]"])
-		ne += "n"
-		nw += "n"
-
-	if(calc_list["[SOUTH]"])
-		se += "s"
-		sw += "s"
-
-	if(calc_list["[EAST]"])
-		ne += "e"
-		se += "e"
-
-	if(calc_list["[WEST]"])
-		nw += "w"
-		sw += "w"
-
-	if(calc_list["[NORTH]"] && calc_list["[WEST]"] && calc_list["[NORTHWEST]"])
-		nw = "f"
-
-	if(calc_list["[NORTH]"] && calc_list["[EAST]"] && calc_list["[NORTHEAST]"])
-		ne = "f"
-
-	if(calc_list["[SOUTH]"] && calc_list["[WEST]"] && calc_list["[SOUTHWEST]"])
-		sw = "f"
-
-	if(calc_list["[SOUTH]"] && calc_list["[EAST]"] && calc_list["[SOUTHEAST]"])
-		se = "f"
-
-	if(!ne) ne = "i"
-	if(!nw) nw = "i"
-	if(!se) se = "i"
-	if(!sw) sw = "i"
-
-	return list(ne,nw,sw,se)
-
-/obj/structure/proc/smooth_structure()
-
-	var/list/code = get_smooth_code()
-
-	var/ne = code[1]
-	var/nw = code[2]
-	var/sw = code[3]
-	var/se = code[4]
-
-	var/full_icon_string = "[type]_[icon_state]_[ne][nw][se][sw]"
-
-	var/icon/I
-	if(SSobj.icon_cache[full_icon_string])
-		I = SSobj.icon_cache[full_icon_string]
-		SSobj.saved_icons++
-	else
-		I = new/icon(icon,"1-[nw]")
-
-		var/icon/NE = new /icon(icon,"2-[ne]")
-		I.Blend(NE,ICON_OVERLAY)
-
-		var/icon/SW = new /icon(icon,"3-[sw]")
-		I.Blend(SW,ICON_OVERLAY)
-
-		var/icon/SE = new /icon(icon,"4-[se]")
-		I.Blend(SE,ICON_OVERLAY)
-
-		SSobj.icon_cache[full_icon_string] = I
-
-	icon = I
-	pixel_x = (32 - I.Width())/2 + initial(pixel_x)
-	pixel_y = (32 - I.Height())/2 + initial(pixel_y)
-
-	return TRUE
-
-
-/obj/structure/update_icon()
-
-	if(!corner_icons || !anchored)
-		return ..()
-
-	smooth_structure()
-
-	return TRUE

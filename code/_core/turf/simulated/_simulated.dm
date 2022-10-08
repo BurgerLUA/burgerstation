@@ -36,6 +36,16 @@
 
 	var/map_color = null //The map color. For drawing maps.
 
+	var/corner_icons = FALSE
+	var/corner_category = "none"
+
+	var/smooth_code_1
+	var/smooth_code_2
+	var/smooth_code_3
+	var/smooth_code_4
+
+	var/queued_smoothing = FALSE
+
 /turf/simulated/is_safe_move(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)
@@ -116,58 +126,11 @@
 	. = ..()
 	if(!map_color)
 		map_color = color ? color : "#FFFFFF"
-
-/turf/simulated/proc/get_smooth_code()
-
-	var/list/calc_list = list()
-
-	for(var/d in DIRECTIONS_ALL)
-		var/turf/T = get_step(src,d)
-		if(!T || !should_smooth_with(T))
-			continue
-		calc_list["[d]"] = TRUE
-
-	if(!length(calc_list))
-		return list("i","i","i","i")
-
-	var/ne = ""
-	var/nw = ""
-	var/sw = ""
-	var/se = ""
-
-	if(!tile)
-		if(calc_list["[NORTH]"])
-			ne += "n"
-			nw += "n"
-		if(calc_list["[SOUTH]"])
-			se += "s"
-			sw += "s"
-
-		if(calc_list["[EAST]"])
-			ne += "e"
-			se += "e"
-		if(calc_list["[WEST]"])
-			nw += "w"
-			sw += "w"
-
-	if(nw == "nw" && calc_list["[NORTHWEST]"])
-		nw = "f"
-
-	if(ne == "ne" && calc_list["[NORTHEAST]"])
-		ne = "f"
-
-	if(sw == "sw" && calc_list["[SOUTHWEST]"])
-		sw = "f"
-
-	if(se == "se" && calc_list["[SOUTHEAST]"])
-		se = "f"
-
-	if(!ne) ne = "i"
-	if(!nw) nw = "i"
-	if(!se) se = "i"
-	if(!sw) sw = "i"
-
-	return list(ne,nw,se,sw)
+	if(corner_icons)
+		if(SSsmoothing.initialized)
+			SSsmoothing.queue_update_edges(src)
+		else
+			queue_smoothing_turf(src)
 
 
 /turf/simulated/update_sprite()
@@ -180,50 +143,37 @@
 
 	. = ..()
 
-/turf/simulated/proc/smooth_turf()
 
-	var/list/smooth_code = get_smooth_code()
 
-	var/ne = smooth_code[1]
-	var/nw = smooth_code[2]
-	var/se = smooth_code[3]
-	var/sw = smooth_code[4]
 
-	var/full_icon_string = "[type]_[icon_state]_[ne][nw][se][sw]"
+
+/turf/simulated/update_icon()
+
+	. = ..()
+
+	var/full_icon_string = "[type]_[icon_state]_[smooth_code_1][smooth_code_2][smooth_code_3][smooth_code_4]"
 
 	var/icon/I
-
 	if(SSturf.icon_cache[full_icon_string])
 		I = SSturf.icon_cache[full_icon_string]
 		SSturf.saved_icons++
 	else
-		I = new /icon(icon,"1-[nw]")
+		I = new/icon(icon,"1-[smooth_code_1]")
 
-		var/icon/NE = new /icon(icon,"2-[ne]")
+		var/icon/NE = new /icon(icon,"2-[smooth_code_2]")
 		I.Blend(NE,ICON_OVERLAY)
 
-		var/icon/SW = new /icon(icon,"3-[sw]")
+		var/icon/SW = new /icon(icon,"3-[smooth_code_3]")
 		I.Blend(SW,ICON_OVERLAY)
 
-		var/icon/SE = new /icon(icon,"4-[se]")
+		var/icon/SE = new /icon(icon,"4-[smooth_code_4]")
 		I.Blend(SE,ICON_OVERLAY)
 
 		SSturf.icon_cache[full_icon_string] = I
 
 	icon = I
-	pixel_x = (TILE_SIZE - I.Width())/2
-	pixel_y = (TILE_SIZE - I.Height())/2
-
-	return TRUE
-
-/turf/simulated/update_icon()
-
-	if(!corner_icons)
-		return ..()
-
-	smooth_turf()
-
-	return TRUE
+	pixel_x = (TILE_SIZE - I.Width())/2 + initial(pixel_x)
+	pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
 
 /turf/simulated/update_overlays()
 

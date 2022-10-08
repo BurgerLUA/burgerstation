@@ -56,8 +56,6 @@
 	var/generated = FALSE
 	var/finalized = FALSE
 
-	var/queued_smoothing = FALSE
-
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 
 	if(density == desired_density && !force)
@@ -95,9 +93,6 @@
 		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
 		return TRUE
 	return FALSE
-
-/atom/proc/should_smooth_with(var/turf/T)
-	return null
 
 /atom/proc/on_destruction(var/mob/caller,var/damage = FALSE) //Called when destructed by tools or damage.
 	HOOK_CALL("on_destruction")

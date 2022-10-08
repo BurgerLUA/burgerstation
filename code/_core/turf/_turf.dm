@@ -51,9 +51,6 @@
 
 	density = FALSE
 
-	var/corner_icons = FALSE
-	var/corner_category = "none"
-
 	var/has_dense_atom = FALSE
 
 	var/organic = FALSE
@@ -187,15 +184,6 @@
 /turf/Destroy()
 	CRASH("Tried destroying a turf!")
 	return FALSE
-
-/turf/Finalize()
-	. = ..()
-	if(corner_icons)
-		if(SSsmoothing.initialized)
-			SSsmoothing.queue_update_edges(src)
-		else
-			queue_smoothing(src)
-
 
 /*
 /turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -338,21 +326,6 @@
 
 /turf/proc/setup_turf_light(var/sunlight_freq)
 	return FALSE
-
-/turf/should_smooth_with(var/turf/T)
-
-	if(corner_category)
-		if(T.plane == plane && T.corner_category == corner_category)
-			return T
-
-		for(var/obj/structure/O in T.contents)
-			if(O.corner_category != corner_category)
-				continue
-			if(O.plane != plane)
-				continue
-			return O
-
-	return null
 
 /turf/proc/is_occupied(var/plane_min=-INFINITY,var/plane_max=INFINITY,var/check_under_tile=FALSE)
 

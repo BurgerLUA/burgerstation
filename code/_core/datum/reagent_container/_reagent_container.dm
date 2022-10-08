@@ -1,4 +1,4 @@
-#define REAGENT_ROUNDING 0.01
+#define REAGENT_ROUNDING 0.001
 
 /reagent_container/
 
@@ -374,7 +374,10 @@
 
 /reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
-	amount = round(amount,REAGENT_ROUNDING) //TODO: Check if floor or ceiling is better.
+	if(amount > 0)
+		amount = FLOOR(amount,REAGENT_ROUNDING)
+	else if(amount < 0)
+		amount = CEILING(amount,REAGENT_ROUNDING)
 
 	var/reagent/R = REAGENT(reagent_type)
 
@@ -444,7 +447,14 @@
 		update_container()
 
 /reagent_container/proc/remove_reagent(var/reagent_type,var/amount=0,var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
-	return -add_reagent(reagent_type,-amount,TNULL,should_update,check_recipes,caller)
+	return -add_reagent(
+		reagent_type,
+		-amount,
+		TNULL,
+		should_update = should_update,
+		check_recipes = check_recipes,
+		caller = caller
+	)
 
 /reagent_container/proc/remove_all_reagents()
 	stored_reagents.Cut()
@@ -466,6 +476,7 @@
 	amount = min(amount,volume_current)
 
 	if(caller && target_container.owner)
+
 		var/mob/living/L1 = caller
 		var/mob/living/L2
 
@@ -491,8 +502,15 @@
 		var/ratio = volume / old_volume
 		var/temp = stored_reagents_temperature[r_id]
 
-		var/amount_transfered = target_container.add_reagent(r_id,ratio*amount,temp,FALSE,FALSE,caller = caller)
-		remove_reagent(r_id,amount_transfered,FALSE)
+		var/amount_transfered = target_container.add_reagent(
+			r_id,
+			ratio*amount,
+			temp,
+			should_update=FALSE,
+			check_recipes=FALSE,
+			caller = caller
+		)
+		remove_reagent(r_id,amount_transfered,FALSE,FALSE,caller=caller)
 		total_amount_transfered += amount_transfered
 
 	if(should_update)

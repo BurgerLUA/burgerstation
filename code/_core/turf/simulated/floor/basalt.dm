@@ -30,10 +30,11 @@
 	if(light_turf) src.set_light(4,0.5,"#FF8300")
 	return TRUE
 
-/turf/simulated/floor/basalt/smooth_turf()
+/turf/simulated/floor/basalt/update_icon()
 
-	var/code = get_smooth_code()
-	if(!code)
+	. = ..()
+
+	if(smooth_code_1 == smooth_code_2 && smooth_code_3 == smooth_code_4 && smooth_code_1 == smooth_code_4)
 		icon = initial(icon)
 		if(prob(3))
 			light_turf = TRUE
@@ -42,9 +43,7 @@
 			icon_state = "basalt[rand(6,15)]"
 		return TRUE
 
-	. = ..()
-
 /turf/simulated/floor/basalt/Finalize()
 	. = ..()
-	if(prob(2))
+	if(!light_turf && prob(2))
 		new/obj/structure/interactive/basalt(src)

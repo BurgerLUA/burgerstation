@@ -12,6 +12,7 @@
 		/obj/item/container/healing/ointment,
 		/obj/item/container/healing/trauma_kit,
 		/obj/item/container/healing/burn_kit,
+		/obj/item/container/healing/bone_gel,
 		/obj/item/container/spray/silver_sulfadiazine,
 		/obj/item/container/spray/styptic_powder,
 		/obj/item/container/simple/beaker/bottle/epinephrine,
@@ -26,8 +27,8 @@
 		/obj/item/storage/pillbottle/assprin,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/reptile,
-		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
+		/obj/item/container/healing/nanopaste
 	)
 
 /obj/structure/interactive/vending/medical/basic
@@ -39,8 +40,9 @@
 		/obj/item/container/healing/ointment,
 		/obj/item/container/healing/trauma_kit,
 		/obj/item/container/healing/burn_kit,
-		/obj/item/container/healing/nanopaste,
+		/obj/item/container/healing/bone_gel,
 		/obj/item/container/blood_pack/full/rad_be_gone,
+		/obj/item/container/healing/nanopaste
 	)
 	pixel_x = 0
 	pixel_y = 0

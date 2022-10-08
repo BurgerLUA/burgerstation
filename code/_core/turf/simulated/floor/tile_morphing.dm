@@ -15,6 +15,7 @@
 	original_color = color ? color : "#FFFFFF"
 	return ..()
 
+/* todo
 /turf/simulated/floor/tile/morphing/smooth_turf()
 
 	icon = initial(icon)
@@ -106,6 +107,7 @@
 	icon = I
 
 	return TRUE
+*/
 
 
 /turf/simulated/floor/tile/morphing/nanotrasen
