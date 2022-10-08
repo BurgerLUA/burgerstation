@@ -16,9 +16,10 @@
 
 	if(turf_check)
 		if(!isturf(caller.loc))
+			caller.to_chat(span("warning","We couldn't get your signal!"))
 			return FALSE
-
 		if(!isturf(object.loc))
+			caller.to_chat(span("warning","We couldn't get the object's signal!"))
 			return FALSE
 
 	if(object.anchored)

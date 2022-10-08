@@ -182,7 +182,8 @@
 		return ..()
 
 	var/turf/T = src.loc
-	linked_core.lost_turfs |= T
+	if(linked_core)
+		linked_core.lost_turfs |= T
 	. = ..()
 	var/state_code = update_health_state()
 	if(state_code)
