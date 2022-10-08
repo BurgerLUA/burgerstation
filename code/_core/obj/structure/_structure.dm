@@ -63,42 +63,41 @@
 		set_light(desired_light_range,desired_light_power,desired_light_color)
 
 /obj/structure/Finalize()
+	. = ..()
 	if(corner_icons)
 		if(SSsmoothing.initialized)
 			SSsmoothing.queue_update_edges(get_turf(src))
 		else
 			queue_smoothing_obj(src)
-	. = ..()
 
 /obj/structure/update_icon()
 
 	. = ..()
 
-	var/full_icon_string = "[type]_[icon_state]_[smooth_code_1][smooth_code_2][smooth_code_3][smooth_code_4]"
+	if(corner_icons)
+		var/full_icon_string = "[type]_[icon_state]_[smooth_code_1][smooth_code_2][smooth_code_3][smooth_code_4]"
 
-	var/icon/I
-	if(SSobj.icon_cache[full_icon_string])
-		I = SSobj.icon_cache[full_icon_string]
-		SSobj.saved_icons++
-	else
-		I = new/icon(icon,"1-[smooth_code_1]")
+		var/icon/I
+		if(SSobj.icon_cache[full_icon_string])
+			I = SSobj.icon_cache[full_icon_string]
+			SSobj.saved_icons++
+		else
+			I = new/icon(icon,"1-[smooth_code_1]")
 
-		var/icon/NE = new /icon(icon,"2-[smooth_code_2]")
-		I.Blend(NE,ICON_OVERLAY)
+			var/icon/NE = new /icon(icon,"2-[smooth_code_2]")
+			I.Blend(NE,ICON_OVERLAY)
 
-		var/icon/SW = new /icon(icon,"3-[smooth_code_3]")
-		I.Blend(SW,ICON_OVERLAY)
+			var/icon/SW = new /icon(icon,"3-[smooth_code_3]")
+			I.Blend(SW,ICON_OVERLAY)
 
-		var/icon/SE = new /icon(icon,"4-[smooth_code_4]")
-		I.Blend(SE,ICON_OVERLAY)
+			var/icon/SE = new /icon(icon,"4-[smooth_code_4]")
+			I.Blend(SE,ICON_OVERLAY)
 
-		SSobj.icon_cache[full_icon_string] = I
+			SSobj.icon_cache[full_icon_string] = I
 
-	icon = I
-	pixel_x = (TILE_SIZE - I.Width())/2 + initial(pixel_x)
-	pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
-
-
+		icon = I
+		pixel_x = (TILE_SIZE - I.Width())/2 + initial(pixel_x)
+		pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
 
 
 /obj/structure/proc/on_active(var/mob/living/advanced/player/P)
