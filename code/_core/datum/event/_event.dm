@@ -53,7 +53,7 @@
 				return T
 
 		for(var/turf/T2 in range(VIEW_RANGE,T))
-			if(!T.density && !T2.is_safe() || !T2.is_safe_move())
+			if(T.density || !T2.is_safe() || !T2.is_safe_move())
 				continue
 			var/area/A = T2.loc
 			if(A.flags_area & FLAG_AREA_NO_EVENTS)
