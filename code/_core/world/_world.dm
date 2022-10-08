@@ -45,7 +45,9 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/simulated/floor/)
 	createtypecache(/turf/simulated/wall/)
 	createtypecache(/turf/simulated/)
+	createtypecache(/turf/simulated/floor/tile)
 	createtypecache(/turf/unsimulated/)
+
 	. = ..()
 	life()
 	sleep_offline = initial(sleep_offline)

@@ -60,3 +60,5 @@ var/global/list/all_typecaches = list()
 #define is_simulated(A) istypecache(A, /turf/simulated/)
 
 #define is_unsimulated(A) istypecache(A, /turf/unsimulated)
+
+#define is_tile(A) istypecache(A,/turf/simulated/floor/tile)

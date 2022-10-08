@@ -149,8 +149,6 @@
 
 /turf/simulated/update_icon()
 
-	. = ..()
-
 	var/full_icon_string = "[type]_[icon_state]_[smooth_code_1][smooth_code_2][smooth_code_3][smooth_code_4]"
 
 	var/icon/I
@@ -174,6 +172,8 @@
 	icon = I
 	pixel_x = (TILE_SIZE - I.Width())/2 + initial(pixel_x)
 	pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
+
+	return TRUE
 
 /turf/simulated/update_overlays()
 
