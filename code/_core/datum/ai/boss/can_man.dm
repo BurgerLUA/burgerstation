@@ -11,6 +11,9 @@
 	var/strafe_count = 10
 	var/strafe_delay = 30
 
+
+	var/projectile_ramp = 10
+
 /ai/boss/can_man/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_can_man = desired_owner
 	return ..()
@@ -74,7 +77,7 @@
 	if(!objective_attack)
 		return FALSE
 
-	if(projectile_delay > 0)
+	if(projectile_delay+projectile_ramp > 0)
 		projectile_delay--
 		return FALSE
 
@@ -100,8 +103,10 @@
 		)
 		owner.set_dir(get_dir(owner,objective_attack))
 		projectile_count--
+		projectile_ramp++
 	else
 		projectile_count = initial(projectile_count)
 		projectile_delay = initial(projectile_delay)
+		projectile_ramp = 0
 
 	return TRUE

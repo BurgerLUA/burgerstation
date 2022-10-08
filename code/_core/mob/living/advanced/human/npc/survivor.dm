@@ -23,3 +23,9 @@
 			loadout = /loadout/survivor/female
 		else
 			loadout = /loadout/survivor/male
+
+
+/mob/living/advanced/npc/survivor/Finalize()
+	. = ..()
+	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/space_cop)
+	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/space_cop)

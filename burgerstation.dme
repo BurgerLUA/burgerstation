@@ -1089,6 +1089,7 @@
 #include "code\_core\obj\item\powergem.dm"
 #include "code\_core\obj\item\radio.dm"
 #include "code\_core\obj\item\sheet.dm"
+#include "code\_core\obj\item\shell.dm"
 #include "code\_core\obj\item\soapstone.dm"
 #include "code\_core\obj\item\spraycan.dm"
 #include "code\_core\obj\item\stacks.dm"

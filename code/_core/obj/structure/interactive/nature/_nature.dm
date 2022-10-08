@@ -25,7 +25,7 @@ obj/structure/scenery/flowers
 
 obj/structure/scenery/flowers/New()
 	..()
-	switch(rand(1,4))
+	switch(rand(1,3))
 		if(1)
 			icon_state = "ywflowers_[rand(1,4)]"
 		if(2)
@@ -84,7 +84,7 @@ obj/structure/scenery/rocks
 
 obj/structure/scenery/rocks/New()
 	..()
-	icon_state = "basalt_[rand(1,10)]"
+	icon_state = "rock_[rand(1,10)]"
 
 /obj/structure/interactive/basalt
 	name = "basalt rocks"

@@ -14,17 +14,23 @@
 		disallow_generation = TRUE
 		return ..()
 
-	//No noise profile because of how simple it is.
-	if(prob(2))
-		new /obj/marker/generation/mob/crab(src)
-	else if(prob(0.5))
-		new /obj/marker/generation/mob/lobster(src)
-	else if(prob(0.25))
-		new /obj/marker/generation/mob/slime/sand(src)
-	else if(prob(0.1))
-		new /obj/marker/generation/mob/slime/water(src)
-
-	new /turf/simulated/floor/colored/sand/beach(src)
+	if(prob(1))
+		new /turf/simulated/floor/colored/sand/beach/shallow(src)
+	else
+		new /turf/simulated/floor/colored/sand/beach(src)
+		switch(rand(1,200))
+			if(1)
+				new /obj/structure/interactive/tree/palm(src)
+			if(1 to 3)
+				new /obj/structure/scenery/grass/normal(src)
+			if(3 to 10)
+				new /obj/structure/scenery/rocks(src)
+			if(10 to 25)
+				new /obj/item/shell(src)
+			if(25 to 27)
+				new /obj/marker/generation/mob/crab(src)
+			if(27 to 28)
+				new /obj/marker/generation/mob/lobster(src)
 
 	if(src.loc.type == /area/)
 		new /area/mission/beach(src)

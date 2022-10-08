@@ -117,3 +117,14 @@ obj/structure/scenery/bush/snow/New()
 /obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
 	icon_state = "tree[rand(1,6)]"
 	return ..()
+
+
+
+/obj/structure/interactive/tree/palm
+	name = "palm tree"
+	icon = 'icons/obj/structure/flora/palm.dmi'
+	icon_state = "palm1"
+
+/obj/structure/interactive/tree/palm/New(var/desired_loc)
+	icon_state = "palm[rand(1,2)]"
+	return ..()

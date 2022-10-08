@@ -51,6 +51,8 @@
 
 	level = 50
 
+	pixel_x = -16
+
 
 /mob/living/simple/hierophant/proc/chain_blast_random()
 

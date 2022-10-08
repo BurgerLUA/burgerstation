@@ -18,20 +18,25 @@
 /turf/simulated/floor/colored/sand/oasis
 	name = "sand"
 	color = "#CCBC8A"
-	layer = LAYER_FLOOR + 0.141 //can't +n LAYER_FLOOR_[whatever] for some reason
+	layer = LAYER_FLOOR + 0.143
 
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"
 	color = "#DED1BD"
+	layer = LAYER_FLOOR + 0.142
+
+/turf/simulated/floor/colored/sand/beach/shallow
+	name = "shallow beach"
+	color = "#C6D1BD"
 	layer = LAYER_FLOOR + 0.141
 
 /turf/simulated/floor/colored/sand/underwater
 	name = "bed sand"
 	color = "#AECA91"
-	layer = LAYER_FLOOR + 0.141
+	layer = LAYER_FLOOR + 0.140
 
 /turf/simulated/floor/colored/sand/desert
 	name = "sand"
 	//color = "#FFC68C"
 	color = "#AE8A67"
-	layer = LAYER_FLOOR + 0.141
+	layer = LAYER_FLOOR + 0.144

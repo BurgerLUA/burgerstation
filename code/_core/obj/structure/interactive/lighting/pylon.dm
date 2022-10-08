@@ -4,8 +4,8 @@
 	icon = 'icons/obj/structure/cult/cult.dmi'
 	icon_state = "pylon"
 
-	desired_light_power = 0.5
-	desired_light_range = 4
+	desired_light_power = 0.75
+	desired_light_range = 8
 	desired_light_color = "#FF0000"
 
 	layer = LAYER_LARGE_OBJ

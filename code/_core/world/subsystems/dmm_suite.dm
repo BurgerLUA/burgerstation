@@ -107,7 +107,7 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	if(CONFIG("ENABLE_PVP_AREA",TRUE))
 
-		pvp_y = 400+rand(0,50)
+		pvp_y = 450+rand(0,25)
 		pvp_coef = pvp_y*0.0015
 
 		var/z = file_to_z_level["maps/_core/mission.dmm"]
