@@ -55,7 +55,7 @@
 	new /obj/item/container/syringe/hypodermic(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/charcoal(src)
-	new /obj/item/container/simple/beaker/vial/zombie_antidote(src)
+	new /obj/item/container/simple/beaker/bottle/calomel(src)
 	. = ..()
 
 /obj/item/storage/kit/small/rad

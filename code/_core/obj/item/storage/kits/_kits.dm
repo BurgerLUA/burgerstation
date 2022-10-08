@@ -79,10 +79,10 @@
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/dylovene(src)
 	new /obj/item/container/simple/beaker/bottle/calomel(src)
+	new /obj/item/container/simple/beaker/bottle/calomel(src)
 	new /obj/item/container/simple/beaker/bottle/antihol(src)
 	new /obj/item/container/simple/beaker/bottle/charcoal(src)
 	new /obj/item/container/simple/beaker/bottle/epinephrine(src)
-	new /obj/item/container/simple/beaker/vial/zombie_antidote(src)
 	. = ..()
 
 

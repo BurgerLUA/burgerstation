@@ -230,7 +230,7 @@
 
 	experience_per_unit = 2
 
-	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
+	var/list/purge_blacklist = list()
 
 	particle_size = 0.8
 
@@ -265,7 +265,7 @@
 	alpha = 255
 	flavor = "old shoes"
 
-	var/list/purge_blacklist = list(/reagent/toxin/zombie_toxin = TRUE)
+	var/list/purge_blacklist = list()
 
 	experience_per_unit = 2
 
@@ -299,27 +299,6 @@
 		container.remove_reagent(reagent_id,.*2*multiplier)
 		owner.tox_regen_buffer += 2*.*multiplier
 
-/reagent/medicine/zombie_antidote
-	name = "zombie antidote"
-	desc = "An zombie bite immunity injection that automatically counter-acts zombie poison as long as the volume of the antidote exceeds the poison volume. Does not actually purge the medicine."
-	color = "#9FFF2A"
-	alpha = 225
-	flavor = "not brains"
-	value = 10
-
-	experience_per_unit = 3
-
-	liquid = 0.25
-
-	particle_size = 0.5
-
-/reagent/medicine/zombie_antidote/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.reagents.remove_reagent(/reagent/toxin/zombie_toxin,.*multiplier)
-
-/reagent/medicine/zombie_antidote/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.reagents.add_reagent(/reagent/medicine/zombie_antidote/,.*0.75*multiplier)
 
 /reagent/medicine/mitogen
 	name = "Mitogen"

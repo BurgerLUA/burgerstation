@@ -30,17 +30,6 @@
 	return ..()
 */
 
-/obj/item/container/simple/beaker/vial/zombie_antidote
-	name = "vial of zombie antidote"
-	desc = "Finally, a zombie antidote."
-	desc_extended = "A vial containing an antidote to a zombie's toxic bites. Does not actually purge the toxic, but it prevents it from metabolizing if the antidote volume exceeds the toxin volume."
-
-/obj/item/container/simple/beaker/vial/zombie_antidote/Generate()
-	reagents.add_reagent(/reagent/medicine/zombie_antidote,reagents.volume_max)
-	return ..()
-
-
-
 /obj/item/container/simple/beaker/vial/health_potion
 	name = "vial of health"
 

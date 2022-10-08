@@ -18,7 +18,6 @@
 		/obj/item/container/simple/beaker/bottle/calomel,
 		/obj/item/container/simple/beaker/bottle/charcoal,
 		/obj/item/container/simple/beaker/bottle/morphine,
-		/obj/item/container/simple/beaker/vial/zombie_antidote,
 		/obj/item/storage/pillbottle/bicaridine_small,
 		/obj/item/storage/pillbottle/kelotane_small,
 		/obj/item/storage/pillbottle/dylovene_small,

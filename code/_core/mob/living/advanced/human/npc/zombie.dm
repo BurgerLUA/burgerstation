@@ -115,20 +115,6 @@
 /mob/living/advanced/npc/zombie/scientist
 	loadout = /loadout/zombie/scientist
 
-	var/dropped_vial = FALSE
-
-/mob/living/advanced/npc/zombie/scientist/post_death()
-
-	if(!dropped_vial)
-		var/obj/item/container/simple/beaker/vial/zombie_antidote/ZA = new(get_turf(src))
-		INITIALIZE(ZA)
-		GENERATE(ZA)
-		FINALIZE(ZA)
-		dropped_vial = TRUE
-
-	return ..()
-
-
 /mob/living/advanced/npc/zombie/civilian
 	loadout = /loadout/zombie/civilian
 

@@ -47,6 +47,6 @@
 	if(is_living(victim) && is_living(attacker) && victim.reagents && total_damage_dealt >= 10)
 		var/mob/living/L = attacker
 		if(L.has_status_effect(ZOMBIE))
-			victim.reagents.add_reagent(/reagent/toxin/zombie_toxin,CEILING(total_damage_dealt*0.05,1),caller = attacker)
+			victim.reagents.add_reagent(/reagent/toxin/blob_spore,CEILING(total_damage_dealt*0.05,1),caller = attacker)
 
 	. = ..()

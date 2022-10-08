@@ -112,5 +112,4 @@
 /obj/item/container/edible/fishing/shark/Generate()
 	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,10)
-	reagents.add_reagent(/reagent/medicine/zombie_antidote,5)
 	return ..()

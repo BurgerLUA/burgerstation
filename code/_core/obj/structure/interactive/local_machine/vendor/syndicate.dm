@@ -68,7 +68,6 @@
 		/obj/item/container/simple/beaker/bottle/epinephrine,
 		/obj/item/container/simple/beaker/bottle/morphine,
 		/obj/item/container/simple/beaker/bottle/calomel,
-		/obj/item/container/simple/beaker/vial/zombie_antidote,
 		/obj/item/container/syringe/hypodermic,
 		/obj/item/container/blood_pack/full/synthblood,
 		/obj/item/container/healing/nanopaste,
