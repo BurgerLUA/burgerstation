@@ -10,7 +10,7 @@
 
 /obj/structure/sign/Initialize()
 	if(use_dir_offsets)
-		setup_dir_offsets(src)
+		setup_dir_offsets()
 		dir = SOUTH
 	return ..()
 

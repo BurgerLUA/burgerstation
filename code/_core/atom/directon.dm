@@ -36,6 +36,7 @@
 
 
 /atom/movable/proc/setup_dir_offsets()
+
 	var/x_offset = 0
 	var/y_offset = 0
 
@@ -45,7 +46,7 @@
 		if(dir_offset >= 16)
 			y_offset++
 
-	if(dir & SOUTH)
+	else if(dir & SOUTH)
 		pixel_y += dir_offset
 		light_offset_y += dir_offset*0.5
 		if(dir_offset >= 16)
@@ -57,7 +58,7 @@
 		if(dir_offset >= 16)
 			x_offset++
 
-	if(dir & WEST)
+	else if(dir & WEST)
 		pixel_x += dir_offset
 		light_offset_x += dir_offset*0.5
 		if(dir_offset >= 16)

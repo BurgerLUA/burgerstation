@@ -31,7 +31,6 @@
 				C -= cached_sparkle
 		cached_coin = null
 		cached_sparkle = null
-	valid_ckeys?.Cut()
 	. = ..()
 
 /obj/structure/interactive/coin_drop/proc/get_pickup_amount(var/mob/caller,var/loop_turf=TRUE)
@@ -74,8 +73,8 @@
 	SSeconomy.gold_in_circulation += pickup_amount
 	INITIALIZE(G)
 	FINALIZE(G)
-	G.pixel_x = pixel_x
-	G.pixel_y = pixel_y
+	G.pixel_x = src.pixel_x
+	G.pixel_y = src.pixel_y
 	object.click_on_object(caller,G,location,control,params)
 	return TRUE
 
@@ -154,7 +153,7 @@
 
 /proc/create_gold_drop(var/turf/T,var/amount=5)
 
-	amount = min(amount,100)
+	amount = min(amount,100) //Enforce a limit, just in case.
 
 	var/list/valid_ckeys = list()
 	for(var/k in all_players)
@@ -165,11 +164,27 @@
 			continue
 		valid_ckeys |= P.client.ckey
 
+	var/list/valid_turfs = list()
+
+	for(var/d in DIRECTIONS_ALL)
+		var/turf/T2 = get_step(T,d)
+		if(!T2)
+			continue
+		if(T2.density)
+			continue
+		valid_turfs += T2
+
+	if(!length(valid_turfs))
+		valid_turfs += T
+
 	spawn while(amount>0)
-		var/obj/structure/interactive/coin_drop/G = new(get_step(T,pick(DIRECTIONS_ALL)))
+		var/obj/structure/interactive/coin_drop/G = new(pick(valid_turfs))
 		G.pixel_x = rand(-4,4)
 		G.pixel_y = rand(-4,4)
-		G.amount = min(amount,rand(min(5,CEILING(amount/10,1)),5))
+		var/desired_value = rand(CEILING(amount/20,1),CEILING(amount/10,1))
+		desired_value = max(desired_value,rand(3,5))
+		desired_value = min(desired_value,amount)
+		G.amount = desired_value
 		amount -= G.amount
 		G.valid_ckeys = valid_ckeys.Copy()
 		INITIALIZE(G)

@@ -48,8 +48,6 @@
 
 	var/listener = FALSE //Setting this to true doesn't make it listen after it's been initialized.
 
-	var/dir_offset = TILE_SIZE
-
 	//var/list/filter_list
 
 	var/initialized = FALSE

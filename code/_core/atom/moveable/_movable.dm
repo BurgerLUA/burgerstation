@@ -62,6 +62,8 @@
 
 	var/enable_chunk_clean = FALSE
 
+	var/dir_offset = TILE_SIZE
+
 /atom/movable/Destroy()
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()

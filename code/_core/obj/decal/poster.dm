@@ -25,7 +25,7 @@
 	. = ..()
 
 /obj/decal/poster/Initialize()
-	setup_dir_offsets(src)
+	setup_dir_offsets()
 	dir = SOUTH
 	return ..()
 

@@ -18,6 +18,8 @@
 	var/smooth_code_4_old = smooth_code_4
 
 	var/default_color = initial(color)
+	if(!default_color)
+		default_color = "#FFFFFF"
 
 	var/turf/T_n = get_step(src,NORTH)
 	var/turf/T_e = get_step(src,EAST)
@@ -32,7 +34,6 @@
 		T_s = null
 	if(!is_tile(T_w))
 		T_w = null
-
 
 	if(T_n && T_w && initial(T_n.color) == initial(T_w.color))
 		smooth_code_1 = initial(T_n.color)
@@ -71,6 +72,11 @@
 			smooth_code_4 = default_color
 
 		. = FALSE
+
+	if(!smooth_code_1) smooth_code_1 = "#FFFFFF"
+	if(!smooth_code_2) smooth_code_2 = "#FFFFFF"
+	if(!smooth_code_3) smooth_code_3 = "#FFFFFF"
+	if(!smooth_code_4) smooth_code_4 = "#FFFFFF"
 
 	if(smooth_code_1_old != smooth_code_1)
 		. = TRUE
@@ -118,109 +124,6 @@
 	pixel_y = (TILE_SIZE - I.Height())/2 + initial(pixel_y)
 
 	return TRUE
-
-
-
-
-
-
-
-
-
-/* todo
-/turf/simulated/floor/tile/morphing/smooth_turf()
-
-	icon = initial(icon)
-	icon_state = initial(icon_state)
-
-	var/list/calc_list = list()
-
-	for(var/d in DIRECTIONS_ALL)
-		var/dir_to_text = "[d]"
-		var/turf/T = get_step(src,d)
-
-		calc_list[dir_to_text] = FALSE //Default
-
-		if(!T)
-			calc_list[dir_to_text] = FALSE
-			continue
-
-		var/atom/A = should_smooth_with(T)
-		if(A)
-			calc_list[dir_to_text] = A.color ? A.color : "#FFFFFF"
-			continue
-
-	var/ne = 0
-	var/nw = 0
-	var/sw = 0
-	var/se = 0
-
-	if(calc_list["[NORTH]"])
-		ne = calc_list["[NORTH]"]
-		nw = calc_list["[NORTH]"]
-	if(calc_list["[SOUTH]"])
-		se = calc_list["[SOUTH]"]
-		sw = calc_list["[SOUTH]"]
-	if(calc_list["[EAST]"])
-		ne = calc_list["[EAST]"]
-		se = calc_list["[EAST]"]
-	if(calc_list["[WEST]"])
-		nw = calc_list["[WEST]"]
-		sw = calc_list["[WEST]"]
-
-	if(calc_list["[NORTHEAST]"])
-		ne = calc_list["[NORTHEAST]"]
-	if(calc_list["[SOUTHEAST]"])
-		se = calc_list["[SOUTHEAST]"]
-	if(calc_list["[NORTHWEST]"])
-		nw = calc_list["[NORTHWEST]"]
-	if(calc_list["[SOUTHWEST]"])
-		sw = calc_list["[SOUTHWEST]"]
-
-	if(!ne & !nw & !sw & !se)
-		color = original_color
-		return TRUE
-
-	color = "#FFFFFF"
-
-	var/full_icon_string = "[type]_[ne]_[nw]_[se]_[sw]"
-
-	var/icon/I
-
-	if(SSturf.icon_cache[full_icon_string])
-		I = SSturf.icon_cache[full_icon_string]
-		SSturf.saved_icons++
-	else
-		I = new/icon(icon,icon_state)
-		I.Blend(original_color,ICON_MULTIPLY)
-
-		if(ne)
-			var/icon/NE = new /icon(icon,"ne")
-			NE.Blend(ne,ICON_MULTIPLY)
-			I.Blend(NE,ICON_OVERLAY)
-
-		if(nw)
-			var/icon/NW = new /icon(icon,"nw")
-			NW.Blend(nw,ICON_MULTIPLY)
-			I.Blend(NW,ICON_OVERLAY)
-
-		if(se)
-			var/icon/SE = new /icon(icon,"se")
-			SE.Blend(se,ICON_MULTIPLY)
-			I.Blend(SE,ICON_OVERLAY)
-
-		if(sw)
-			var/icon/SW = new /icon(icon,"sw")
-			SW.Blend(sw,ICON_MULTIPLY)
-			I.Blend(SW,ICON_OVERLAY)
-
-		SSturf.icon_cache[full_icon_string] = I
-
-	icon = I
-
-	return TRUE
-*/
-
 
 /turf/simulated/floor/tile/morphing/nanotrasen
 	color = COLOR_NANOTRASEN
