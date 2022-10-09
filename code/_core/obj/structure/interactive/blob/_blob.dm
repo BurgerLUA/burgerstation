@@ -29,6 +29,8 @@
 
 	var/last_state = 0
 
+	var/super = FALSE //Only really applies to walls.
+
 /obj/structure/interactive/blob/Destroy()
 
 	if(linked_core)
@@ -57,6 +59,7 @@
 	if(update_health_state())
 		update_sprite()
 	var/list/possible_options = list()
+	var/list/possible_options_super = list()
 	for(var/k in adjacent_blobs)
 		var/obj/structure/interactive/blob/B = k
 		var/d = get_dir_advanced(src,B)
@@ -65,18 +68,28 @@
 		if(priority_turf) //Prioritize blobs getting attacked.
 			if(d & get_dir_advanced(src,priority_turf))
 				possible_options |= B
+				if(B.super)
+					possible_options_super |= B
 				continue
 		else //Not getting attacked? Move away from the core to expand.
 			if(prefered_dir_2 && d & prefered_dir_2)
 				possible_options |= B
+				if(B.super)
+					possible_options_super |= B
 				continue
 			if(prefered_dir && d & prefered_dir) //Looks like we're kinda stuck. Float around in circles if possible.
 				possible_options |= B
+				if(B.super)
+					possible_options_super |= B
 				continue
 
 	var/options = length(possible_options)
 	if(options >= tolerance)
-		var/obj/structure/interactive/blob/chosen_blob = pick(possible_options)
+		var/obj/structure/interactive/blob/chosen_blob
+		if(length(possible_options_super))
+			chosen_blob = pick(possible_options_super)
+		else
+			chosen_blob = pick(possible_options)
 		CALLBACK("blob_grow_\ref[src]",1,chosen_blob,.proc/grow_charge,original_blob,src,tolerance,priority_turf)
 	else
 		var/list/possible_spawns = list()
@@ -98,17 +111,25 @@
 			else //Turf is clear. Add it to a possible spawn.
 				possible_spawns += T
 
-		if(length(possible_spawns))
+		if(length(possible_spawns) && !src.super) //Supers can't make super walls.
+
+			var/make_super = length(linked_core.linked_walls) > linked_core.blob_limit
+
 			var/turf/T = pick(possible_spawns)
-			var/obj/structure/interactive/blob/node/found_node = locate() in range(4,T)
+			var/obj/structure/interactive/blob/node/found_node = !make_super ? locate() in range(4,T) : TRUE //Pretend we found it.
 
 			var/obj/structure/interactive/blob/B
 			if(found_node)
 				B = new/obj/structure/interactive/blob/wall(T,linked_core) //Already a node nearby. Make one.
+				if(make_super)
+					B.super = TRUE
+					B.name = "super [initial(B.name)]"
 			else
 				B = new/obj/structure/interactive/blob/node(T,linked_core) //Make a node if there is none.
 			B.color = color
 			INITIALIZE(B)
+			if(!make_super)
+				B.health.adjust_loss_smart(brute = B.health.health_current - linked_core.heal_amount)
 			FINALIZE(B)
 
 			var/list/direction_offsets = get_directional_offsets(T,src)
@@ -140,8 +161,6 @@
 			adjacent_blobs |= B
 			B.adjacent_blobs |= src
 
-	if(linked_core)
-		health.adjust_loss_smart(brute = health.health_current - linked_core.heal_amount)
 	update_health_state()
 	update_sprite()
 

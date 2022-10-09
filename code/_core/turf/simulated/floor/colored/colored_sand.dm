@@ -15,28 +15,31 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt //TODO: Change to sandstone.
 
-/turf/simulated/floor/colored/sand/oasis
-	name = "sand"
-	color = "#CCBC8A"
-	layer = LAYER_FLOOR + 0.143
-
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"
 	color = "#DED1BD"
 	layer = LAYER_FLOOR + 0.142
+	corner_category = "sand_beach"
 
 /turf/simulated/floor/colored/sand/beach/shallow
 	name = "shallow beach"
 	color = "#C6D1BD"
 	layer = LAYER_FLOOR + 0.141
+	corner_category = "sand_beach_shallow"
 
 /turf/simulated/floor/colored/sand/underwater
 	name = "bed sand"
 	color = "#AECA91"
 	layer = LAYER_FLOOR + 0.140
+	corner_category = "sand_underwater"
 
 /turf/simulated/floor/colored/sand/desert
 	name = "sand"
 	//color = "#FFC68C"
 	color = "#AE8A67"
 	layer = LAYER_FLOOR + 0.144
+	corner_category = "sand_desert"
+
+/turf/simulated/floor/colored/sand/desert/lighter
+	corner_category = "sand_desert_lighter"
+	color = "#CCBC8A"

@@ -159,9 +159,10 @@
 	. = ..()
 
 /obj/item/weapon/ranged/wand/get_base_value()
-	. = ..()
+	. = initial(value)
 	// https://www.desmos.com/calculator/bofczfvcar
-	. += ((sockets*5)**3)*0.25 + (sockets**(sockets-1))*0.2
+	if(sockets > 1)
+		. += ((sockets*5)**3)*0.25 + (sockets**(sockets-1))*0.2
 	. *= wand_damage_multiplier**1.5
 	. = CEILING(.,1)
 

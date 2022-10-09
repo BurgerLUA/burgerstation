@@ -1,0 +1,44 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/wall/hierophant,/area/dmm_suite/clear_area)
+"d" = (/obj/marker/map_node/x2,/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
+"e" = (/obj/marker/map_node/x3,/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
+"f" = (/mob/living/simple/hierophant,/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
+"g" = (/obj/marker/map_node,/turf/simulated/floor/hierophant,/area/dmm_suite/clear_area)
+"h" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"i" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahihihaaaaaaaaaaaaaa
+aaaaaaaaaaaaahbbbhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahbcbhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahggghaaaaaaaaaaaaaa
+aaaaaaaacccccccbcccccccaaaaaaaaa
+aaaaaaaacbbbbbbbbbbbbbcaaaaaaaaa
+aaaaaaaacbbbbbbdbbbbbbcaaaaaaaaa
+aaaaaaaacbbebbbbbbbebbcaaaaaaaaa
+aaaaaaaacbbbbbbbbbbbbbcaaaaaaaaa
+hhhhhhhhcbbbbbbbbbbbbbchhhhhhhhh
+hhhhibbgcbbbbbbbbbbbbbcgbbihhhhh
+hhhhhbcgbbdbbbbfbbbbdbbgcbhhhhhh
+hhhhibbgcbbbbbbbbbbbbbcgbbihhhhh
+hhhhhhhhcbbbbbbbbbbbbbchhhhhhhhh
+aaaaaaaacbbbbbbbbbbbbbcaaaaaaaaa
+aaaaaaaacbbebbbbbbbebbcaaaaaaaaa
+aaaaaaaacbbbbbbdbbbbbbcaaaaaaaaa
+aaaaaaaacbbbbbbbbbbbbbcaaaaaaaaa
+aaaaaaaacccccccbcccccccaaaaaaaaa
+aaaaaaaaaaaaahggghaaaaaaaaaaaaaa
+aaaaaaaaaaaaahbcbhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahbbbhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahihihaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+aaaaaaaaaaaaahhhhhaaaaaaaaaaaaaa
+"}

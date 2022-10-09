@@ -63,7 +63,8 @@
 
 /obj/marker/generation/mob/penguin
 	object_to_place = /mob/living/simple/passive/penguin
-	objects_max = 4
+	objects_max = 3
+	turf_whitelist = /turf/simulated/floor/ice
 
 
 /obj/marker/generation/mob/venus_human_trap
@@ -142,8 +143,12 @@
 	objects_max = 3
 	turf_whitelist = /turf/simulated/floor/colored/sand
 
-/obj/marker/generation/mob/cave_spider
+/obj/marker/generation/mob/spider
 	object_to_place = /mob/living/simple/spider
+	objects_max = 3
+
+/obj/marker/generation/mob/spider/glow
+	object_to_place = /mob/living/simple/spider/glow
 	objects_max = 3
 
 /obj/marker/generation/mob/legion
@@ -158,9 +163,6 @@
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter
 	objects_max = 1
 	turf_whitelist = /turf/simulated/wall/ash
-
-
-
 
 /obj/marker/generation/mob/slime/
 	object_to_place = /mob/living/simple/slime/
@@ -202,3 +204,11 @@
 
 /obj/marker/generation/mob/slime/water
 	object_to_place = /mob/living/simple/slime/water
+
+
+/obj/marker/generation/mob/zombie
+	object_to_place = /mob/living/advanced/npc/zombie/civilian
+	objects_max = 2
+
+/obj/marker/generation/mob/zombie/desert
+	object_to_place = /mob/living/advanced/npc/zombie/desert

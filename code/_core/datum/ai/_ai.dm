@@ -229,6 +229,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
 		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
 	else
+		if(owner && owner.processing)
+			UNPROCESS_LIVING(owner)
 		add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
 		set_alert_level(ALERT_LEVEL_NONE,TRUE)

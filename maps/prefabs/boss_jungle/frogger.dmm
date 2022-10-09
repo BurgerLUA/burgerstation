@@ -1,0 +1,42 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/boss,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/liquid/water/river/jungle,/area/dmm_suite/clear_area)
+"e" = (/obj/marker/map_node/x2,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"f" = (/mob/living/simple/leaper,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"g" = (/obj/marker/map_node/x2,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaabbbbbbbbbbbbbbbbaaaaaaaaaa
+aaaabbbbbbbbbbbbbbbbbbbbbaaaaaaa
+aaabbbbbbbbbbbbbbbbbbbbbbbaaaaaa
+aabbaaaaaaaaaaaaaaaaaaaaabbaaaaa
+aabbacccccccccccccccccccabbbaaaa
+abbbacdddddddddddddddddcabbbaaaa
+abbbacdddddddddddddddddcabbbaaaa
+abbbacdddddddddddddddddcabbbaaaa
+abbbacddddddcccccddddddcabbbaaaa
+abbbacddddddcaaacddddddcabbaaaaa
+abbbacdddddccaeaccdddddcabaaaaaa
+abbbacdddcccaaaaacccdddcaaaaaaaa
+abbbacdddcaaaaaaaaacdddccccccccc
+abbbacdddcaeaafaaeacdddcgcccccgc
+abbbacdddcaaaaaaaaacdddccccccccc
+abbbacdddcccaaaaacccdddcaaaaaaaa
+abbbacdddddccaeaccdddddcabaaaaaa
+abbbacddddddcaaacddddddcabbaaaaa
+abbbacddddddcccccddddddcabbbaaaa
+abbbacdddddddddddddddddcabbbaaaa
+abbbacdddddddddddddddddcabbbaaaa
+abbbacdddddddddddddddddcabbbaaaa
+aabbacccccccccccccccccccabbbaaaa
+aabbaaaaaaaaaaaaaaaaaaaaabbaaaaa
+aaabbbbbbbbbbbbbbbbbbbbbbbaaaaaa
+aaaabbbbbbbbbbbbbbbbbbbbbaaaaaaa
+aaaaaabbbbbbbbbbbbbbbbbaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

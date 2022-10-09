@@ -1,0 +1,46 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"c" = (/obj/effect/cleanable/blood/splatter,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"d" = (/obj/effect/cleanable/blood/splatter,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"e" = (/obj/effect/cleanable/blood/splatter,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"f" = (/obj/marker/map_node,/obj/effect/cleanable/blood/splatter,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"g" = (/obj/marker/map_node/x2,/obj/effect/cleanable/blood/splatter,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/interactive/lighting/cult_pylon,/obj/effect/cleanable/blood/splatter,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"i" = (/obj/effect/cleanable/blood/splatter,/mob/living/simple/bubblegum,/turf/simulated/floor/cult,/area/dmm_suite/clear_area)
+"j" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"k" = (/obj/effect/cleanable/blood/splatter,/obj/marker/map_node,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaabbjbbaaaaaaaaaaaaaa
+aaaaaaaaaaaaacccccaaaaaaaaaaaaaa
+aaaaaaaaaaaaaceeecaaaaaaaaaaaaaa
+aaaaaaaabbbbbceeecbbbbbaaaaaaaaa
+aaaccccccccccceeecccccccccccaaaa
+aaaceeeeeeeeeeeeeeeeeeeeeeecaaaa
+aaacegeeeeeeeeegeeeeeeeeegecaaaa
+aaaceeeeeeeeeeeeeeeeeeeeeeecaaaa
+aabceeeccccccccccccccccceeecaaaa
+aabceeechccccccccccccchceeecbaaa
+aabceeeccccccccccccccccceeecbaaa
+aabceeeccceeeeeeeeeeeccceeecbaaa
+aabceeeccceeeeegeeeeeccceeecbaaa
+cccceeeccceeeeeeeeeeeccceeeccccb
+ceeeeeeccceeeeeeeeeeeccceeeeeecb
+keeeegecccegeeeeeeegecccegeeeecj
+ceeeeeeccceeeeeieeeeeccceeeeeecb
+cccceeeccceeeeeeeeeeeccceeeccccb
+aabceeeccceeeeeeeeeeeccceeecbaaa
+aabceeeccceeeeegeeeeeccceeecbaaa
+aabceeeccceeeeeeeeeeeccceeecbaaa
+aabceeeccccccccccccccccceeecbaaa
+aabceeechccccccccccccchceeecbaaa
+aaaceeeccccccccccccccccceeecaaaa
+aaaceeeeeeeeeeeeeeeeeeeeeeecaaaa
+aaacegeeeeeeeeegeeeeeeeeegecaaaa
+aaaceeeeeeeeeeeeeeeeeeeeeeecaaaa
+aaaccccccccccceeecccccccccccaaaa
+aaaaaaabbbbbbceeecbbbbbbaaaaaaaa
+aaaaaaaaaaaaaceeecaaaaaaaaaaaaaa
+aaaaaaaaaaaaacdddcaaaaaaaaaaaaaa
+aaaaaaaaaaaaabbfbbaaaaaaaaaaaaaa
+"}

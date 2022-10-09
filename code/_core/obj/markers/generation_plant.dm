@@ -13,7 +13,7 @@
 
 /obj/marker/generation/plant/cactus_fruit
 	object_to_place = /obj/structure/interactive/plant/cactus_fruit
-	turf_whitelist = /turf/simulated/floor/basalt
+	turf_whitelist = /turf/simulated/floor
 	objects_max = 4
 
 /obj/marker/generation/plant/polypore_mushroom
@@ -93,7 +93,7 @@
 
 /obj/marker/generation/plant/tomato
 	object_to_place = /obj/structure/interactive/plant/tomato
-	turf_whitelist = /turf/simulated/floor/colored/grass
+	turf_whitelist = /turf/simulated/floor/colored
 	objects_max = 1
 
 /obj/marker/generation/plant/wheat

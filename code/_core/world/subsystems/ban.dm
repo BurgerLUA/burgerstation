@@ -5,7 +5,7 @@
 SUBSYSTEM_DEF(ban)
 	name = "Ban Subsystem"
 	desc = "Handle banning and ban checks."
-	priority = SS_ORDER_FIRST
+	priority = SS_ORDER_BAN
 
 	var/list/bans_keys = list("example_ckey" = list("admin" = "burgerbb", "reason" = "For being an example.", "expires" = -1))
 	var/list/bans_address = list("192.167.255.256" = list("admin" = "burgerbb", "reason" = "For being an example.", "expires" = -1))

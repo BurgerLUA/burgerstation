@@ -19,30 +19,39 @@
 
 /obj/marker/generation/foliage/bushes/fern
 	object_to_place = /obj/structure/scenery/bush/fern
+	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 /obj/marker/generation/foliage/bushes/generic
 	object_to_place = /obj/structure/scenery/bush/generic
+	turf_whitelist = /turf/simulated/floor/colored/grass
 
 /obj/marker/generation/foliage/bushes/grass
 	object_to_place = /obj/structure/scenery/bush/grass
+	turf_whitelist = /turf/simulated/floor/colored/grass
 
 /obj/marker/generation/foliage/bushes/leafy
 	object_to_place = /obj/structure/scenery/bush/leafy
+	turf_whitelist = /turf/simulated/floor/colored/grass
 
 /obj/marker/generation/foliage/bushes/pale
 	object_to_place = /obj/structure/scenery/bush/pale
+	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 /obj/marker/generation/foliage/bushes/pointy
 	object_to_place = /obj/structure/scenery/bush/pointy
+	turf_whitelist = /turf/simulated/floor/colored/grass
 
 /obj/marker/generation/foliage/bushes/snow
 	object_to_place = /obj/structure/scenery/bush/snow
+	turf_whitelist = /turf/simulated/floor
 
 /obj/marker/generation/foliage/bushes/stalk
 	object_to_place = /obj/structure/scenery/bush/stalk
+	turf_whitelist = /turf/simulated/liquid/water
 
-/obj/marker/generation/foliage/bushes/stick
+/obj/marker/generation/foliage/bushes/stick //firstbush
 	object_to_place = /obj/structure/scenery/bush/stick
+	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 /obj/marker/generation/foliage/bushes/sun
 	object_to_place = /obj/structure/scenery/bush/sun
@@ -116,11 +125,6 @@
 
 /obj/marker/generation/foliage/tree/snow
 	object_to_place = /obj/structure/interactive/tree/pine
-	grow_amount_min = 10
-	grow_amount_max = 20
-	objects_max = 12
-	skip_chance = 0
-	hole_chance = 90
 
 	color = COLOR_GREEN
 

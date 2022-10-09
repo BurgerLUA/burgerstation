@@ -49,7 +49,27 @@
 
 	level = 22
 
+/mob/living/simple/arachnid/Finalize()
+	. = ..()
+	update_sprite()
+
 /mob/living/simple/arachnid/post_death()
 	. = ..()
-	icon_state = "dead"
 	update_sprite()
+
+/mob/living/simple/arachnid/handle_transform()
+	. = ..()
+	if(.)
+		update_sprite()
+
+/mob/living/simple/arachnid/update_icon()
+
+	. = ..()
+
+	if(dead)
+		icon_state = "dead"
+	else if(horizontal)
+		icon_state = "stun"
+	else if(ai && !ai.active)
+		icon_state = "inactive"
+

@@ -24,18 +24,18 @@
 				new /obj/marker/generation/turf/cave_dirt(src)
 			else if(prob(2))
 				new /obj/marker/generation/turf/rock_wall(src)
-		new /turf/simulated/floor/colored/dirt/cave(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
+		new /turf/simulated/floor/colored/dirt/cave(src)
 		disallow_generation = TRUE
 		return ..()
 
 	if(is_different && is_next_to_null_areas)
-		new /turf/simulated/wall/rock(src)
 		if(prob(1))
 			new /obj/marker/generation/turf/rock_wall(src)
 		else
 			new /obj/marker/generation/turf/rock_wall/small(src)
 		if(src.loc.type == /area/) new /area/mission/caves(src)
+		new /turf/simulated/wall/rock(src)
 		disallow_generation = TRUE
 		return ..()
 
@@ -55,7 +55,7 @@
 		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_MID)
 			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(1))
-				new /obj/marker/generation/mob/cave_spider(src)
+				new /obj/marker/generation/mob/spider(src)
 		if(GENERATION_SEGMENT_MID to GENERATION_SEGMENT_HIGH)
 			new /turf/simulated/floor/cave_dirt(src)
 			if(prob(0.25))

@@ -1,0 +1,42 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+"c" = (/obj/marker/map_node/x2,/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"e" = (/mob/living/simple/colossus,/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+"f" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"g" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaafgfaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaabbbbbbbbbbbbbbbbbbbaaaaaaa
+aaaaaabcbbbbbbbcbbbbbbbcbaaaaaaa
+aaaaaabbbbbbbbbbbbbbbbbbbaaaaaaa
+aaaaaabbbdddddddddddddbbbaaaaaaa
+aaaaaabbbdbbbbbbbbbbbdbbbaaaaaaa
+aaaaaabbbdbdddddddddbdbbbaaaaaaa
+aaaaaabbbdbdbbbbbbbdbdbbbaaaaaaa
+aaaaaabbbdbdbdddddbdbdbbbaaaaaaa
+ffffffbbbdbdbdbbbdbdbdbbbfffffff
+gfffffbcbdbdbdbbbdbdbdbcbffffffg
+ffffffbbbdbdbdbebdbdbdbbbfffffff
+aaaaaabbbdbdbdddddbdbdbbbaaaaaaa
+aaaaaabbbdbdbbbbbbbdbdbbbaaaaaaa
+aaaaaabbbdbdddddddddbdbbbaaaaaaa
+aaaaaabbbdbbbbbbbbbbbdbbbaaaaaaa
+aaaaaabbbdddddddddddddbbbaaaaaaa
+aaaaaabbbbbbbbbbbbbbbbbbbaaaaaaa
+aaaaaabcbbbbbbbcbbbbbbbcbaaaaaaa
+aaaaaabbbbbbbbbbbbbbbbbbbaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafffaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaafgfaaaaaaaaaaaaaaa
+"}

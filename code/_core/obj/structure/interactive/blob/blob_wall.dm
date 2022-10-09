@@ -3,10 +3,9 @@
 	icon_state = "wall"
 	health_states = 4
 
-
 /obj/structure/interactive/blob/wall/Finalize()
 	. = ..()
-	if(!prob(80)) //Blob optimization
+	if(prob(10)) //Blob optimization
 		CALLBACK("make_spore_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/make_spore)
 
 /obj/structure/interactive/blob/wall/proc/make_spore()

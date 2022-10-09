@@ -13,6 +13,8 @@
 
 	var/list/lost_turfs = list()
 
+	var/blob_limit = 700
+
 /obj/structure/interactive/blob/core/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
 	color = random_color()
 	. = ..()

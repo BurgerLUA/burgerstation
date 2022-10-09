@@ -94,9 +94,7 @@ obj/structure/scenery/rocks/New()
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
-	density = TRUE
-
-	bullet_block_chance = 50
+	pixel_x = 8
 
 obj/structure/interactive/basalt/New()
 	..()

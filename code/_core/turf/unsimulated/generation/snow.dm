@@ -20,9 +20,9 @@
 			if(density)
 				if(prob(1))
 					new /obj/marker/generation/turf/snow_wall/small(src)
-				if(prob(1))
+				if(prob(0.25))
 					new /obj/marker/generation/mob/penguin(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/slime/ice(src)
 			else
 				disallow_generation = TRUE
@@ -31,7 +31,7 @@
 				new /turf/simulated/liquid/water/river/ice(src)
 				if(prob(1))
 					new /obj/marker/generation/turf/ice(src)
-					if(prob(0.5))
+					if(prob(0.25))
 						new /obj/marker/generation/mob/slime/ice(src)
 			else
 				new /turf/simulated/floor/ice(src)
@@ -142,6 +142,7 @@
 			new /turf/simulated/floor/cave_dirt(src)
 
 	if(src.loc.type == /area/) new /area/mission/snow(src)
+
 	disallow_generation = TRUE
 
 	if(prob(0.5))

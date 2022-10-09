@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(living)
 	if(next_report <= world.time)
 		var/processing_count = length(processing_mobs)
 		var/living_count = length(all_living)
-		log_subsystem(src.name,"Processing [processing_count] mobs, with [living_count] living beings active.")
+		log_subsystem(src.name,"Processing [processing_count] active mobs, with [living_count] living beings existing.")
 		next_report = world.time + initial(next_report)
 
 	return TRUE

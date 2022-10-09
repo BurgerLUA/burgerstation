@@ -18,7 +18,7 @@ obj/structure/scenery/bush/snow
 
 obj/structure/scenery/bush/snow/New()
 	..()
-	icon_state = "snowbush[rand(1,3)]"
+	icon_state = "snowbush[rand(1,3)][prob(20) ? "_empty" : ""]"
 
 
 

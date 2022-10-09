@@ -6,7 +6,7 @@
 	damage_type = /damagetype/npc/legion_assault
 
 
-	icon = 'icons/mob/living/simple/lavaland/legion.dmi'
+	icon = 'icons/mob/living/simple/lavaland/legioner.dmi'
 	icon_state = "legion_head"
 
 	var/mob/living/simple/legionare/parent_legion

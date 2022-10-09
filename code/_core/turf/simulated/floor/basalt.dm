@@ -43,6 +43,8 @@
 			icon_state = "basalt[rand(6,12)]"
 		else
 			icon_state = "basalt0"
+		pixel_x = 0
+		pixel_y = 0
 
 		return TRUE
 

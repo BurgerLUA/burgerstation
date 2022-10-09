@@ -18,19 +18,23 @@
 		new /turf/simulated/floor/colored/sand/beach/shallow(src)
 	else
 		new /turf/simulated/floor/colored/sand/beach(src)
-		switch(rand(1,200))
-			if(1)
-				new /obj/structure/interactive/tree/palm(src)
+		var/allow_grass = TRUE
+		switch(rand(1,100))
 			if(1 to 3)
-				new /obj/structure/scenery/grass/normal(src)
+				new /obj/structure/interactive/tree/palm(src)
 			if(3 to 10)
 				new /obj/structure/scenery/rocks(src)
+				allow_grass = FALSE
 			if(10 to 25)
 				new /obj/item/shell(src)
 			if(25 to 27)
 				new /obj/marker/generation/mob/crab(src)
 			if(27 to 28)
 				new /obj/marker/generation/mob/lobster(src)
+
+		if(allow_grass && prob(20))
+			new /obj/structure/scenery/grass/normal(src)
+
 
 	if(src.loc.type == /area/)
 		new /area/mission/beach(src)

@@ -1,0 +1,45 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/rock/basalt,/area/dmm_suite/clear_area)
+"c" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"e" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"f" = (/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+"g" = (/mob/living/simple/goliath/ancient,/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+"h" = (/obj/marker/map_node,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
+"i" = (/mob/living/simple/goliath/broodmother{icon_state = "broodmother"; dir = 4},/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+"j" = (/obj/marker/map_node,/turf/simulated/floor/basalt,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaabbbbbbbbbaaaaaaaaaaaaaa
+aaaaaaabbbbbbbbbbbbbaaaaaaaaaaaa
+aaaaabbbbbbbbbbbbbbbbbbaaaaaaaaa
+aaaabbbbbbbbbbbbbbbbbbbbbaaaaaaa
+aaaabbbbbbbbbbbbbbbbbbbbbccccccc
+aaabbbbbbdddddbbbbbbbbbbbdddccec
+aabbbbbbdfffffdbbbbbbbbbdddddccc
+abbbbbbdfgdfdgfdbbbbddddddhdddcc
+abbbbbbdfddfddfdddddddhddddddddc
+aabbbbbdfffiffjdddhdddddddbbbbcc
+aabbbbbdfddfddfddddddbbbbbbbbbaa
+aaabbbbdfgdfdgfdbbbbbbbbbbbbbbaa
+aaabbbbbdfffffdbbbbbbbbbbbaaaaaa
+aaaabbbbbdddddbbbbbbbbaaaaaaaaaa
+aaaaabbbbbbbbbbbbbbaaaaaaaaaaaaa
+aaaaabbbbbbbbbbbbbbaaaaaaaaaaaaa
+aaaaaaaabbbbbbbbbaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
