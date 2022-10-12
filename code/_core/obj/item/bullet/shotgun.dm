@@ -106,3 +106,15 @@
 	jam_chance = 1
 	value = 0
 
+/obj/item/bullet_cartridge/shotgun_12/rubber // yes i literally just copied the ks-23's rubber slugs shut up
+	name = "\improper 12 gauge rubber slug shell"
+	desc = "Because real men use the concussive force of a huge fucking piece of rubber."
+	desc_extended = "A rubber slug shell, supposedly less lethal. Causes a lot of pain, but not much damage."
+	rarity = RARITY_RARE
+	icon_state = "rubber"
+
+	projectile_count = 1
+	base_spread = 0.03
+
+	projectile = /obj/projectile/bullet/firearm/shotgun_slug
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/rubber_slug

@@ -85,6 +85,19 @@
 		new /obj/item/bullet_cartridge/shotgun_12/fire{amount=5}(src)
 	. = ..()
 
+/obj/item/storage/ammo/rubber
+	name = "box of shotgun rubber slugs"
+	desc_extended = "An ammo box that can hold 24 shotgun rubber slugs."
+	icon_state = "rubber"
+
+	dynamic_inventory_count = 4
+	container_max_size = SIZE_1
+	container_max_slots = 4
+
+/obj/item/storage/ammo/rubber/fill_inventory()
+	for(var/i=1, i <= container_max_slots*dynamic_inventory_count, i++)
+		new /obj/item/bullet_cartridge/shotgun_12/rubber{amount=5}(src)
+	. = ..()
 
 /obj/item/storage/ammo/buckshot_23
 	name = "box of slavic shotgun buckshot"
