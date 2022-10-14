@@ -1,7 +1,3 @@
-#define DEATHSQUAD_CLOTHES \
-
-
-
 /loadout/deathsquad
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers/random,

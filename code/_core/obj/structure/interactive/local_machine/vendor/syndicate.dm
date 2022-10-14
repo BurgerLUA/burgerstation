@@ -47,6 +47,7 @@
 		/obj/item/cell_charger,
 		/obj/item/clothing/back/flamethrower,
 		/obj/item/crafting/ingredient/part/p_tank,
+		/obj/item/weapon/melee/sword/combat_knife,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield/red,
 		/obj/item/tempering/quality/ranged/lesser,

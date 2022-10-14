@@ -239,7 +239,7 @@
 /loot/survivor/melee/small
 	loot_table = list(
 		/obj/item/weapon/unarmed/brass_knuckles = 50,
-		/obj/item/weapon/melee/combat_knife = 25,
+		/obj/item/weapon/melee/sword/combat_knife = 25,
 		/obj/item/weapon/melee/sword/chef_knife = 75,
 		/obj/item/weapon/melee/null_rod/dagger = 25,
 	)

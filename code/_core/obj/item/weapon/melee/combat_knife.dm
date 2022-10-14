@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/combat_knife
+/obj/item/weapon/melee/sword/combat_knife
 	name = "tactical combat knife"
 	desc = "For professionals."
 	desc_extended = "A high quality combat knife designed to seriously fuck the other person's day up."

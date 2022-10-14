@@ -18,11 +18,11 @@ SUBSYSTEM_DEF(horde)
 	tick_usage_max = 25
 
 	var/list/enemies_to_send_per_difficulty = list(
-		DIFFICULTY_EASY = 3,
-		DIFFICULTY_NORMAL = 4,
-		DIFFICULTY_HARD = 5,
-		DIFFICULTY_EXTREME = 6,
-		DIFFICULTY_NIGHTMARE = 7
+		DIFFICULTY_EASY = 1,
+		DIFFICULTY_NORMAL = 2,
+		DIFFICULTY_HARD = 3,
+		DIFFICULTY_EXTREME = 4,
+		DIFFICULTY_NIGHTMARE = 5
 	)
 
 	var/enable = FALSE

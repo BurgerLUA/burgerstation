@@ -25,7 +25,7 @@
 		/obj/item/clothing/back/storage/satchel/poly/syndicate,
 		/obj/item/clothing/neck/cloak/red,
 		/obj/item/pinpointer/landmark,
-		/obj/item/weapon/melee/combat_knife
+		/obj/item/weapon/melee/sword/combat_knife
 
 	)
 
@@ -47,5 +47,5 @@
 		/obj/item/clothing/back/storage/satchel/poly/nanotrasen,
 		/obj/item/clothing/neck/cloak/nanotrasen,
 		/obj/item/pinpointer/landmark,
-		/obj/item/weapon/melee/combat_knife
+		/obj/item/weapon/melee/sword/combat_knife
 	)

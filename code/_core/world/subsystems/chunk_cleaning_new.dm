@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(chunk)
 	current_z = (current_z % world.maxz) + 1
 	var/process_count = process_entire_z(current_z)
 	benchmark = true_time() - benchmark
-	log_subsystem(src.name,"Cleaning zlevel [current_z] took [CEILING(benchmark/10,0.1)] seconds and deleted [process_count] mobs/items.")
+	log_subsystem(src.name,"Cleaning zlevel [current_z] took [CEILING(benchmark/10,0.1)] seconds and processed [process_count] cleanable atoms.")
 
 	return TRUE
 
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(chunk)
 
 	for(var/k in chunks_to_process)
 		var/chunk/C = k
-		if(length(C.players) || !length(C.cleanables))
+		if(length(C.players))
 			continue
 		for(var/j in C.cleanables)
 			var/atom/movable/M = j

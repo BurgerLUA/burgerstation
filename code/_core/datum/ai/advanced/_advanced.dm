@@ -528,7 +528,7 @@
 		if(istype(W,/obj/item/weapon/ranged/bullet/magazine/))
 			var/obj/item/weapon/ranged/bullet/magazine/M = W
 			if(!M.stored_magazine) continue
-		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check > 1 ? 4 : 1)
+		var/weapon_value = (istype(W,/obj/item/weapon/ranged) && distance_check >= 3 ? 1 : 0.2)
 		weapon_value *= W.value
 		if(!best_weapon || weapon_value > best_weapon_value)
 			best_weapon = W
