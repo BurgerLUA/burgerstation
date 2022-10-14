@@ -23,18 +23,10 @@
 
 	has_quick_function = FALSE
 
-	var/image/bar
-
-
 /obj/hud/button/boss_health/New(var/desired_loc)
 	. = ..()
 	alpha = 0
 	mouse_opacity = 0
-
-	var/icon/bar_mask = new/icon(icon,"bar_mask")
-
-	bar = new/image(icon,"bar")
-	bar.filters += filter(type="alpha",icon=bar_mask)
 
 /obj/hud/button/boss_health/Destroy()
 	target_bosses.Cut()
@@ -97,9 +89,14 @@
 	if(boss_changed)
 		update_sprite()
 
-	var/ratio = (current/max)*90
+	var/icon_num = (current/max)*45
 
-	animate(bar.filters[1],x=CEILING(ratio,1),time=1)
+	if(icon_num > 45*0.5)
+		icon_num = FLOOR(icon_num,1)
+	else
+		icon_num = CEILING(icon_num,1)
+
+	icon_state = "bar_[icon_num]"
 
 	return TRUE
 
@@ -108,5 +105,9 @@
 	if(current_boss && current_boss.boss_icon_state)
 		var/image/I = new/image(icon,current_boss.boss_icon_state)
 		add_overlay(I)
-	add_overlay(bar)
+
+/obj/hud/button/boss_health/update_underlays()
+	. = ..()
+	var/image/I = new/image(icon,initial(icon_state))
+	add_underlay(I)
 

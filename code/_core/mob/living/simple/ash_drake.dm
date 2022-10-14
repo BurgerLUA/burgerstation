@@ -24,8 +24,8 @@
 	stun_angle = 0
 
 	health_base = 10000
-	stamina_base = 500
-	mana_base = 2000
+	stamina_base = 5000
+	mana_base = 5000
 
 	boss_loot = /loot/lavaland/ash_drake
 
@@ -47,12 +47,6 @@
 		PARALYZE = TRUE,
 		STAMCRIT = TRUE,
 		STAGGER = TRUE,
-		CONFUSED = TRUE,
-		CRIT = TRUE,
-		REST = TRUE,
-		ADRENALINE = TRUE,
-		DISARM = TRUE,
-		DRUGGY = TRUE,
 		FIRE = TRUE
 	)
 
@@ -73,19 +67,25 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 25
+	level = 50
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
 
-/*
-/mob/living/simple/ash_drake/get_miss_chance(var/atom/attacker,var/atom/weapon,var/atom/target)
+
+/mob/living/simple/ash_drake/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 
 	if(boss_state)
-		return 1000
+		return FALSE
 
-	return ..()
-*/
+	. = ..()
+
+/mob/living/simple/ash_drake/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+
+	if(boss_state)
+		return FALSE
+
+	. = ..()
 
 /mob/living/simple/ash_drake/proc/fly()
 
@@ -95,62 +95,57 @@
 	if(prob(50))
 		fire_rain()
 
-	new/obj/effect/temp/ash_drake/swoop_up(src.loc)
+	var/turf/T = get_turf(src)
+
+	new/obj/effect/temp/ash_drake/swoop_up(T)
 
 	boss_state = 1
 	update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 	interaction_flags = 0x0
 	icon_state = "shadow"
+	play_sound('sound/mob/ash_drake/fly.ogg',T)
 	update_sprite()
 
-/mob/living/simple/ash_drake/proc/land()
+/mob/living/simple/ash_drake/proc/start_land()
 
 	if(boss_state != 1)
-		return
-
-	new/obj/effect/temp/ash_drake/swoop_down(src.loc)
-	boss_state = 2
-
-	spawn(SECONDS_TO_DECISECONDS(1))
-		boss_state = 0
-		icon_state = "living"
-		update_collisions(initial(collision_flags),initial(collision_bullet_flags))
-		interaction_flags = initial(interaction_flags)
-		update_sprite()
-
-		for(var/turf/T in range(2,src))
-			new/obj/effect/temp/impact/combat/smash(T)
-
-		for(var/mob/living/L in range(2,src))
-			if(L == src)
-				continue
-
-			var/is_center = get_dist(src,L) == 0
-
-			step(L,get_dir(src,L))
-			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)
-
-		fire_cross()
-
-
-/mob/living/simple/ash_drake/proc/fire_cross()
+		return FALSE
 
 	var/turf/T = get_turf(src)
-	var/starting_x = T.x
-	var/starting_y = T.y
-	var/starting_z = T.z
 
-	spawn()
-		for(var/i=1,i<=10,i++)
-			var/turf/desired_turf1 = locate(starting_x+i,starting_y,starting_z)
-			var/turf/desired_turf2 = locate(starting_x-i,starting_y,starting_z)
-			var/turf/desired_turf3 = locate(starting_x,starting_y+i,starting_z)
-			var/turf/desired_turf4 = locate(starting_x,starting_y-i,starting_z)
-			new/obj/effect/temp/hazard/fire/(desired_turf1)
-			new/obj/effect/temp/hazard/fire/(desired_turf2)
-			new/obj/effect/temp/hazard/fire/(desired_turf3)
-			new/obj/effect/temp/hazard/fire/(desired_turf4)
-			sleep(1)
+	new/obj/effect/temp/ash_drake/swoop_down(T)
+	boss_state = 2
+
+	play_sound('sound/mob/ash_drake/land.ogg',T)
+
+	CALLBACK("\ref[src]_ash_drake_land",SECONDS_TO_DECISECONDS(1),src,.proc/finish_land)
+
+	if(prob(50))
+		fire_rain()
+
+	return TRUE
+
+
+
+/mob/living/simple/ash_drake/proc/finish_land()
+
+	boss_state = 0
+	icon_state = "living"
+	update_collisions(initial(collision_flags),initial(collision_bullet_flags))
+	interaction_flags = initial(interaction_flags)
+	update_sprite()
+
+	play_sound('sound/mob/ash_drake/impact.ogg',get_turf(src))
+
+	for(var/turf/T in range(2,src))
+		new/obj/effect/temp/impact/combat/smash(T)
+		var/is_center = T == src.loc
+		for(var/mob/living/L in T.contents)
+			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)
+
+	return TRUE
+
+
 
 
 /mob/living/simple/ash_drake/proc/fire_rain()
@@ -160,24 +155,27 @@
 
 	var/list/turf/simulated/floor/valid_floors = list()
 
-	for(var/turf/simulated/floor/T in range(4,src))
+	var/turf/desired_turf = ai && ai.objective_attack ? get_turf(ai.objective_attack) : get_turf(src)
+
+	for(var/turf/simulated/floor/T in range(4,desired_turf))
 		valid_floors += T
 
-	var/amount_multiplier = FLOOR(10 + (1 - (health.health_current/health.health_max))*20, 1)
-
-	for(var/i=1,i<=amount_multiplier,i++)
-		var/turf/T = pick(valid_floors)
-		new/obj/effect/temp/target(T)
-		new/obj/effect/falling_fireball(T)
+	if(length(valid_floors))
+		var/amount_multiplier = FLOOR(5 + (1 - (health.health_current/health.health_max))*15, 1)
+		play_sound('sound/mob/ash_drake/firerain.ogg',desired_turf)
+		for(var/i=1,i<=amount_multiplier,i++)
+			var/turf/T = pick(valid_floors)
+			new/obj/effect/temp/target(T)
+			new/obj/effect/falling_fireball(T)
 
 	return TRUE
 
 /mob/living/simple/ash_drake/get_movement_delay(var/include_stance=TRUE)
 
-	. = ..()
-
 	if(boss_state)
-		. = 1
+		return 1
+
+	. = ..()
 
 /mob/living/simple/ash_drake/proc/shoot_fireball(var/atom/desired_target)
 	shoot_projectile(
@@ -190,7 +188,7 @@
 		16,
 		16,
 		0,
-		TILE_SIZE*0.75,
+		TILE_SIZE*0.25,
 		1,
 		"#FFFFFF",
 		0,
@@ -198,11 +196,13 @@
 		iff_tag,
 		loyalty_tag
 	)
+	play_sound('sound/mob/ash_drake/fireball.ogg',get_turf(src))
 
 /mob/living/simple/ash_drake/post_death()
-	..()
+	. = ..()
 	icon_state = "dead"
 	update_sprite()
+	play_sound('sound/mob/ash_drake/death.ogg',get_turf(src))
 
 
 

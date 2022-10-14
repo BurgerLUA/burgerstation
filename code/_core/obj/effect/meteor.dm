@@ -41,6 +41,7 @@
 	icon_state = "firebolt_flipped"
 
 	var/meteor_time = SECONDS_TO_DECISECONDS(2)
+	var/stored_loyalty_tag = "Ash Drake"
 
 /obj/effect/falling_fireball/New(var/desired_location)
 
@@ -59,7 +60,7 @@
 	return ..()
 
 /obj/effect/falling_fireball/proc/land()
-	explode(get_turf(src),10,src,src)
+	explode(get_turf(src),10,src,src,desired_loyalty_tag=stored_loyalty_tag)
 	src.alpha = 0
 	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
 	return TRUE

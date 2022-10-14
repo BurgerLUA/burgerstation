@@ -299,7 +299,7 @@
 	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT && !ismob(enterer))
 		return FALSE
 
-	if(density && (!enterer || (enterer.collision_flags && src.collision_flags) && (enterer.collision_flags & src.collision_flags)))
+	if(density && (!enterer || (enterer.collision_flags && src.collision_flags)))
 		if(oldloc)
 			var/enter_direction = get_dir(oldloc,src)
 			if((enter_direction & NORTH) && density_north)
