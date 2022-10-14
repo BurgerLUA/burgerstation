@@ -66,14 +66,19 @@
 		var/mob/living/L = caller
 		caller.face_atom(object) //Changing dir
 		var/atom/movable/object_to_throw
-		if(grabbed_object) object_to_throw = grabbed_object //We want to throw something that we pull
-		else object_to_throw = top_object //Else we throw something in our hand
+		if(grabbed_object)
+			object_to_throw = grabbed_object //We want to throw something that we pull
+		else
+			object_to_throw = top_object //Else we throw something in our hand
 
 		if(istype(object_to_throw))
-			if(ismob(object_to_throw) && grab_level < 2) //To throw mob you need agressive grab
-				caller.to_chat(span("warning","You need a better grip to do that!"))
-				return TRUE //Isn't agressive grab on mob?
-
+			if(is_living(object_to_throw))
+				if(!allow_hostile_action(L.loyalty_tag,object_to_throw))
+					caller.to_chat(span("warning","You can't throw allies!"))
+					return TRUE
+				if(grab_level < 2) //To throw mob you need an agressive grab
+					caller.to_chat(span("warning","You need a better grip to do that!"))
+					return TRUE
 			var/vel_x = object.x - caller.x //Caller pos is the same as object anyway
 			var/vel_y = object.y - caller.y
 			var/highest = max(abs(vel_x),abs(vel_y))
