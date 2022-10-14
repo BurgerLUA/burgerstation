@@ -29,7 +29,7 @@
 
 /ai/boss/ash_drake/handle_attacking()
 
-	var/inverse_health_percent = 1 - (health.health_current/health.health_max))
+	var/inverse_health_percent = 1 - (health.health_current/health.health_max)
 
 	if(owner_as_ash_drake.boss_state == 1)
 		if(fly_time >= 40 - inverse_health_percent*30)
