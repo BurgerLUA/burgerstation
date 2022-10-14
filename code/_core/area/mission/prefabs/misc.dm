@@ -73,3 +73,16 @@
 /area/mission/prefab/misc/xenomorph_hive
 	name = "\improper Xenomorph Hive"
 	interior = TRUE
+
+
+/area/mission/prefab/misc/unconstructed_syndicate_base
+	name = "\improper Unconstructed Syndicate Base"
+	interior = TRUE
+	requires_power = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/misc/unconstructed_syndicate_base/subsection
+	name = "\improper Unconstructed Syndicate Base - Subsection"
+	icon_state = "blue"
