@@ -7,8 +7,6 @@ SUBSYSTEM_DEF(callback)
 
 	tick_usage_max = 100
 
-	preloop = TRUE
-
 
 /subsystem/callback/unclog(var/mob/caller)
 	for(var/callback_id in src.all_callbacks)

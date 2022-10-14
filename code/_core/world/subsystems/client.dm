@@ -45,11 +45,11 @@ SUBSYSTEM_DEF(client)
 		var/damage_multiplier = data[3]
 		var/max_bursts_to_use = data[4]
 		var/shoot_delay_to_use = data[5]
-		if(R.last_shoot_time + shoot_delay_to_use > world.time)
+		if(R.next_shoot_time > world.time)
 			continue
 		if(!R.handle_automatic(caller,params,damage_multiplier,max_bursts_to_use,shoot_delay_to_use))
 			var/real_burst_delay = (R.burst_delay ? R.burst_delay : R.shoot_delay*R.current_bursts*1.25) - R.shoot_delay*R.current_bursts
-			R.next_shoot_time = world.time + real_burst_delay
+			R.next_shoot_time = max(R.next_shoot_time,world.time + real_burst_delay)
 			R.current_bursts = 1
 			queued_automatics -= k
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)

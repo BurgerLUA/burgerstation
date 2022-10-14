@@ -30,10 +30,12 @@ SUBSYSTEM_DEF(obj)
 		var/obj/O = k
 		INITIALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
 	for(var/k in initialize_early)
 		var/obj/O = k
 		GENERATE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
 	for(var/k in initialize_early)
 		var/obj/O = k
 		FINALIZE(O)
@@ -43,10 +45,12 @@ SUBSYSTEM_DEF(obj)
 		var/obj/O = k
 		INITIALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
 	for(var/k in initialize_normal)
 		var/obj/O = k
 		GENERATE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
 	for(var/k in initialize_normal)
 		var/obj/O = k
 		FINALIZE(O)
@@ -56,10 +60,12 @@ SUBSYSTEM_DEF(obj)
 		var/obj/O = k
 		INITIALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
 	for(var/k in initialize_late)
 		var/obj/O = k
 		GENERATE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
 	for(var/k in initialize_late)
 		var/obj/O = k
 		FINALIZE(O)

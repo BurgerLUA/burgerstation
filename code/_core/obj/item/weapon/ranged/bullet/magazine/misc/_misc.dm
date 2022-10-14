@@ -44,7 +44,7 @@
 	tier = 1
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_empty(var/mob/caller)
-	next_shoot_time = world.time + 20
+	next_shoot_time = max(next_shoot_time,world.time + 20)
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/misc/sentry/handle_ammo(var/mob/caller)

@@ -46,7 +46,7 @@
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_empty(var/obj/caller)
-	next_shoot_time = world.time + 20
+	next_shoot_time = max(next_shoot_time,world.time + 20)
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_ammo(var/obj/caller)

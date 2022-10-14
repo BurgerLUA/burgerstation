@@ -47,7 +47,7 @@
 
 	pump()
 
-	next_shoot_time = world.time + pump_delay
+	next_shoot_time = max(next_shoot_time,world.time + pump_delay)
 
 	return TRUE
 

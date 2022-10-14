@@ -116,47 +116,6 @@
 		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
-/* Price calculation is hard.
-/obj/item/weapon/ranged/proc/get_damage_price()
-
-	if(!ranged_damage_type)
-		return 0
-
-	var/damagetype/D = all_damage_types[ranged_damage_type]
-
-	if(!D)
-		return 0
-
-	. = D.calculate_value(src) * bullet_count * damage_mod
-
-/obj/item/weapon/ranged/get_base_value()
-
-	.  = get_damage_price()
-
-	if(automatic)
-		. *= 0.75 + 0.25*(10 / max(1,shoot_delay))
-	else
-		. *= 0.75 + 0.25*(10 / max(2,shoot_delay))
-
-	if(!heat_max)
-		log_error("Warning: [src.type] didn't have a heat_max.")
-	else
-		. *= 0.5 + (0.2/heat_max)*0.5
-
-	if(!inaccuracy_modifier)
-		log_error("Warning: [src.type] didn't have an inaccuracy_modifier.")
-	else
-		. *= 0.5 + (0.5/inaccuracy_modifier)*0.5
-
-	. *= 0.75 + max(0.25,1 - movement_inaccuracy_modifier)*0.25
-
-	. *= 0.75 + max(0.25,1 - movement_spread_base)*0.25
-
-	. *= 0.2
-
-	. = CEILING(.,1)
-*/
-
 /obj/item/weapon/ranged/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("firing_pin")
@@ -303,12 +262,8 @@
 			//Messages are handled in the above proc.
 			return FALSE
 
-	if(check_time)
-		if(next_shoot_time > world.time)
-			return FALSE
-
-		if(world.time - last_shoot_time < get_shoot_delay(caller,object,location,params))
-			return FALSE
+	if(check_time && next_shoot_time > world.time)
+		return FALSE
 
 	return TRUE
 
@@ -369,7 +324,7 @@ obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 
 
 obj/item/weapon/ranged/proc/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
-	.return shoot_delay
+	return shoot_delay
 
 obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 
@@ -561,6 +516,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		)
 
 	last_shoot_time = world.time
+	next_shoot_time = world.time + shoot_delay_to_use
 
 	if(heat_max)
 		if(recoil_delay_to_use > 0)
