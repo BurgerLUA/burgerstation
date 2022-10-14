@@ -38,8 +38,6 @@
 	. = ..()
 	var/mob/living/advanced/A = owner
 
-	A.health.health_regeneration = 0
-
 	var/obj/item/organ/hand/HR = A.labeled_organs[BODY_HAND_RIGHT]
 	if(HR)
 		A.remove_organ(HR,TRUE)

@@ -44,38 +44,40 @@
 			. += CD.get_pickup_amount(caller,FALSE)
 			if(. >= 100) //100 at a time only.
 				break
+
+/obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	INTERACT_CHECK
+
+	if(!caller || !caller.client)
+		INTERACT_DELAY(3)
+		return TRUE
+
+	if(!(caller.client.ckey in valid_ckeys))
+		INTERACT_DELAY(3)
+		return TRUE
+
+	if(!istype(object,/obj/item/currency/gold_coin/) && !is_inventory(object))
+		INTERACT_DELAY(3)
+		return TRUE
+
+	var/pickup_amount =	get_pickup_amount(caller,TRUE)
+	pickup_amount = min(pickup_amount,100)
+	if(pickup_amount <= 0)
+		return TRUE
+	var/obj/item/currency/gold_coin/G = new(get_turf(src))
+	INITIALIZE(G)
+	G.amount = pickup_amount
+	SSeconomy.gold_in_circulation += pickup_amount
+	FINALIZE(G)
+	G.pixel_x = src.pixel_x
+	G.pixel_y = src.pixel_y
+	object.click_on_object(caller,G,location,control,params)
 	valid_ckeys -= caller.client.ckey
 	caller.client.images -= cached_coin
 	caller.client.images -= cached_sparkle
 	if(length(valid_ckeys) <= 0)
 		qdel(src)
-
-/obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	INTERACT_CHECK
-	INTERACT_DELAY(3)
-
-	if(!caller || !caller.client)
-		return TRUE
-
-	if(!(caller.client.ckey in valid_ckeys))
-		return TRUE
-
-	if(!istype(object,/obj/item/currency/gold_coin/) && !is_inventory(object))
-		return TRUE
-
-	var/pickup_amount =	get_pickup_amount(caller,TRUE)
-	pickup_amount = min(pickup_amount,100)
-	if(pickup_amount <=0)
-		return TRUE
-	var/obj/item/currency/gold_coin/G = new(get_turf(src))
-	G.amount = pickup_amount
-	SSeconomy.gold_in_circulation += pickup_amount
-	INITIALIZE(G)
-	FINALIZE(G)
-	G.pixel_x = src.pixel_x
-	G.pixel_y = src.pixel_y
-	object.click_on_object(caller,G,location,control,params)
 	return TRUE
 
 /obj/structure/interactive/coin_drop/update_sprite()

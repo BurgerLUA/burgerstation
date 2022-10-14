@@ -20,6 +20,8 @@ var/global/enable_friendly_fire = FALSE
 
 	if(hostile)
 		var/turf/T = get_turf(victim)
+		if(!T)
+			return FALSE
 		if(is_player(victim) && SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
 			return TRUE
 		var/area/A = T.loc
@@ -38,6 +40,8 @@ var/global/enable_friendly_fire = FALSE
 
 	if(hostile)
 		var/turf/T = get_turf(victim)
+		if(!T)
+			return FALSE
 		if(is_player(victim) && SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
 			return TRUE
 		var/area/A = T.loc

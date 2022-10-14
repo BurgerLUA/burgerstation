@@ -7,6 +7,14 @@
 		var/mob/living/advanced/A = owner.loc
 		A.queue_organ_health_update |= owner
 
+/health/obj/item/organ/adjust_loss(var/loss_type,var/value)
+	. = ..()
+	if(. && is_organ(owner) && is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		if(. > 0) //Increase damage
+			A.health_regen_delay = max(A.health_regen_delay,SECONDS_TO_DECISECONDS(60))
+		QUEUE_HEALTH_UPDATE(A)
+
 /health/obj/item/organ/update_health_stats()
 
 	if(!is_organ(owner))
@@ -92,10 +100,6 @@
 		mental = 0
 
 	. += ..()
-
-	if((brute || burn || rad || pain) && is_advanced(owner.loc))
-		var/mob/living/advanced/A = owner.loc
-		A.queue_organ_health_update |= owner
 
 /health/obj/item/organ/synthetic
 	resistance = list(PAIN=0,TOX=0)

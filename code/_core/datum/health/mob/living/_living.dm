@@ -127,10 +127,10 @@
 
 /health/mob/living/adjust_loss(var/loss_type,var/value)
 	. = ..()
-	if(.)
+	if(. && is_living(owner))
 		var/mob/living/L = owner
 		if(. > 0) //Increase damage
-			L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(30))
+			L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(60))
 		QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_mana(var/adjust_value)
