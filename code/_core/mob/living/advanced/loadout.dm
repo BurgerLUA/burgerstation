@@ -33,16 +33,18 @@
 				GENERATE(I)
 				FINALIZE(I)
 				spawning_loot.post_spawn(I)
-				if(spawning_outfit.on_add(src,I))
-					added_items += I
+				if(!spawning_outfit.on_add(src,I))
+					break
+				added_items += I
 		else
 			var/atom/movable/I = new k(T)
 			spawning_outfit.pre_add(src,I)
 			INITIALIZE(I)
 			GENERATE(I)
 			FINALIZE(I)
-			if(spawning_outfit.on_add(src,I))
-				added_items += I
+			if(!spawning_outfit.on_add(src,I))
+				break
+			added_items += I
 
 	spawning_outfit.post_add(src,added_items)
 

@@ -62,10 +62,8 @@
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
 			if(!first_step || !(first_step.Enter(src,src.loc) || first_step.Enter(src,second_step)))
 				final_move_dir &= ~first_move_dir_to_use
-				src << "cock"
 			if(!second_step || !(second_step.Enter(src,src.loc) || second_step.Enter(src,first_step)))
 				final_move_dir &= ~second_move_dir_to_use
-				src << "ball"
 
 		//Storing previous move dir and handling inability to move.
 		var/similiar_move_dir = FALSE
