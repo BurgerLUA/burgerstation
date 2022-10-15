@@ -25,6 +25,14 @@
 
 	action_name = "work"
 
+	bullet_length_min = 76
+	bullet_length_best = 76.2
+	bullet_length_max = 76.4
+
+	bullet_diameter_min = 18
+	bullet_diameter_best = 18.5
+	bullet_diameter_max = 19
+
 	heat_max = 0.08
 
 	attachment_whitelist = list(

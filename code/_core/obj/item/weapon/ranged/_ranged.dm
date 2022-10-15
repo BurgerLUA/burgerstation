@@ -388,9 +388,10 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/damage_multiplier_to_use = damage_multiplier * damage_mod
 	var/penetrations_left = 0
 	var/condition_to_use = 1
+	var/bullet_view_punch = 1
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
-	var/power_to_use = 0
+	var/power_to_use = 1
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
 	if(spent_bullet)
@@ -402,8 +403,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
 		SET(bullet_color_to_use,spent_bullet.bullet_color)
 		MUL(inaccuracy_modifier_to_use,spent_bullet.inaccuracy_modifier)
+		MUL(bullet_view_punch,spent_bullet.view_punch_mod)
 		ADD(penetrations_left,spent_bullet.penetrations)
-		power_to_use = spent_bullet.get_power()
+		power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2)
 		damage_multiplier_to_use *= quality_bonus
 		condition_to_use = max(0,5 - max(0,quality_bonus*4))
 		condition_to_use += FLOOR(heat_current*5,1)
@@ -419,7 +421,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		arm_strength *= 10
 
 	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
-	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
+	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*bullet_view_punch*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
 	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
 
 	if(projectile_to_use)
@@ -529,27 +531,43 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/mob/living/advanced/A = caller
 		if(is_inventory(src.loc))
 			var/obj/hud/inventory/I = src.loc
-			var/arm_damage = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
+			var/damage_to_deal = (FLOOR((view_punch_to_use/TILE_SIZE)*2, 1) - 1)*2
 			if(wielded)
-				arm_damage -= 20
-			if(arm_damage >= 5)
-				var/obj/item/organ/O
-				if(I.click_flags & RIGHT_HAND)
-					if(wielded)
-						O = A.labeled_organs[BODY_ARM_RIGHT]
-					else
-						O = A.labeled_organs[BODY_HAND_RIGHT]
-				else
-					if(wielded)
-						O = A.labeled_organs[BODY_ARM_LEFT]
-					else
-						O = A.labeled_organs[BODY_HAND_LEFT]
-				if(O && O.health)
-					if(O.health.organic)
-						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
-					else
-						O.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
+				damage_to_deal -= 20
 
+			if(damage_to_deal > 0)
+				var/arm_damage = 0
+				var/hand_damage = 0
+				if(wielded)
+					arm_damage = damage_to_deal*0.75 - 20
+					hand_damage = damage_to_deal*0.25 - 20
+				else if(can_wield && !wielded)
+					hand_damage = damage_to_deal*0.9 - 20
+					arm_damage = damage_to_deal*0.1 - 20
+				else
+					hand_damage = damage_to_deal*0.5 - 20
+					arm_damage = damage_to_deal*0.5 - 20
+
+				var/obj/item/organ/O_hand
+				var/obj/item/organ/O_arm
+				if(I.click_flags & RIGHT_HAND)
+					O_arm = A.labeled_organs[BODY_ARM_RIGHT]
+					O_hand = A.labeled_organs[BODY_HAND_RIGHT]
+				else
+					O_arm = A.labeled_organs[BODY_ARM_LEFT]
+					O_hand = A.labeled_organs[BODY_HAND_LEFT]
+
+				if(hand_damage >= 0 && O_hand && O_hand.health)
+					if(O_hand.health.organic)
+						O_hand.health.adjust_loss_smart(BRUTE=max(0,hand_damage*0.5 - 10),PAIN=hand_damage,organic=TRUE,robotic=FALSE)
+					else
+						O_hand.health.adjust_loss_smart(BRUTE=max(0,hand_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
+
+				if(arm_damage > 0 && O_arm && O_arm.health)
+					if(O_arm.health.organic)
+						O_arm.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),PAIN=arm_damage,organic=TRUE,robotic=FALSE)
+					else
+						O_arm.health.adjust_loss_smart(BRUTE=max(0,arm_damage*0.5 - 10),organic=TRUE,robotic=TRUE)
 
 	if(use_iff_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)

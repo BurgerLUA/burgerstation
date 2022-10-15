@@ -139,14 +139,13 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 			var/second_move_dir_to_use = desired_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(node_checker,first_move_dir_to_use)
 			var/turf/second_step = get_step(node_checker,second_move_dir_to_use)
-			if(!first_step || !node_checker.can_enter_turf(first_step))
+			if(!first_step || !(first_step.Enter(node_checker,node_checker.loc) || first_step.Enter(node_checker,second_step)))
 				desired_dir &= ~first_move_dir_to_use
-			if(!second_step || !node_checker.can_enter_turf(second_step))
+			if(!second_step || !(second_step.Enter(node_checker,node_checker.loc) || second_step.Enter(node_checker,first_step)))
 				desired_dir &= ~second_move_dir_to_use
 			if(!desired_dir)
-				T = pick(first_step,second_step)
-			else
-				T = get_step(node_checker,desired_dir)
+				break
+			T = get_step(node_checker,desired_dir)
 		else
 			T = get_step(node_checker,desired_dir)
 		if(!T) break

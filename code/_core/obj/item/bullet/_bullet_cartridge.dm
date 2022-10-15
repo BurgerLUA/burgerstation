@@ -26,6 +26,8 @@
 	var/bullet_color //The bullet color of the projectile.
 	var/inaccuracy_modifier = 1 //The modifier for target doll inaccuracy. Lower values means more accurate.
 	var/penetrations = 0 //How many additional penetrations this bullet is allowed.
+	var/view_punch_mod = 1
+
 
 	var/caseless = FALSE
 
@@ -58,42 +60,11 @@
 	return ..()
 
 /obj/item/bullet_cartridge/proc/calculate_weight()
-	return size*0.25
-
-/obj/item/bullet_cartridge/proc/get_power()
-
-	. = 0
-
-	if(!damage_type_bullet)
-		return .
-
-	var/damagetype/D = all_damage_types[damage_type_bullet]
-	if(!D)
-		return .
-
-	for(var/k in D.attack_damage_base)
-		. += D.attack_damage_base[k]
+	return initial(size)*0.25
 
 /obj/item/bullet_cartridge/get_base_value()
 
-	if(!damage_type_bullet)
-		return ..()
-
-	var/damagetype/D = all_damage_types[damage_type_bullet]
-	if(!D)
-		return ..()
-
-	. = D.calculate_value(src)*projectile_count
-
-	. *= 0.75 + (projectile_speed/TILE_SIZE)*0.25
-
-	. *= 0.75 + max(0.5,1 - base_spread)*0.25
-
-	. *= 0.5 + max(0,1-inaccuracy_modifier)*0.5
-
-	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
-
-	. += min(10,(bullet_length*bullet_diameter)/(9*19))
+	. = SSbalance.stored_value_bullets[src.type] ? SSbalance.stored_value_bullets[src.type] : 1
 
 	if(is_spent)
 		. *= 0.05
@@ -282,3 +253,19 @@
 		return FALSE
 
 	return ..()
+
+/obj/item/bullet_cartridge/proc/get_recommended_value()
+
+	if(!damage_type_bullet)
+		return 0
+
+	var/damagetype/D = all_damage_types[damage_type_bullet]
+	if(!D) return 0
+
+	. = D.get_damage_per_hit(ARMOR_VALUE_TO_CONSIDER) * projectile_count
+	. *= 1 + (projectile_speed/TILE_SIZE)*0.25
+	. *= 1 + max(0.5,1 - base_spread)*0.25
+	. *= 1 + max(0,1-inaccuracy_modifier)*0.5
+	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
+	. += min(10,(bullet_length*bullet_diameter)/(9*19))
+	. *= 0.2

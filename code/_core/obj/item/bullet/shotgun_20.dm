@@ -8,8 +8,8 @@
 	projectile_count = 5
 	base_spread = 0.03
 
-	bullet_diameter = 17.5
-	bullet_length = 17.5
+	bullet_diameter = 15.6
+	bullet_length = 88.9
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_20
@@ -23,6 +23,8 @@
 
 	amount_max = 5
 	amount_max_icon = 5
+
+	view_punch_mod = 0.5
 
 /obj/item/bullet_cartridge/shotgun_20/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
@@ -62,9 +64,6 @@
 	desc = "Shoots a lot of small magic circles at once."
 	desc_extended = "This shell is covered in mysterious runes, and smells like the ocean???"
 	icon_state = "buckshot"
-
-	bullet_diameter = 17.5
-	bullet_length = 16.66
 
 	projectile_count = 7
 	base_spread = 0.03

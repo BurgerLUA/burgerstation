@@ -168,17 +168,6 @@ var/global/list/all_damage_numbers = list()
 
 	return round(combat_rating*0.25,1)
 
-/damagetype/proc/calculate_value(var/obj/item/I)
-
-	. = 0
-
-	for(var/k in attack_damage_base)
-		.var/total_damage = attack_damage_base[k] + attribute_stats[k] + skill_stats[k]
-		. += calculate_damage_with_armor(total_damage,max(0,75 - attack_damage_penetration[k]))
-
-	if(attack_delay)
-		. *= 0.75 + 0.25*(10 / max(1,attack_delay))
-
 /damagetype/proc/get_miss_chance()
 	return 0
 

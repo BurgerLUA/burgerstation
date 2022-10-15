@@ -59,7 +59,7 @@ var/global/list/possible_bosses_to_spawn = list(
 
 /obj/structure/interactive/tendril/Finalize()
 	. = ..()
-	spawn_monster()
+	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2),src,.proc/spawn_monster)
 
 /obj/structure/interactive/tendril/proc/telegraph_delete()
 

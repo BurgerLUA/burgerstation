@@ -13,3 +13,5 @@
 
 //Soft limit to prevent more than any of this amount of being on a single turf at once. THIS INCLUDES EVERYTHING THAT USES move(). forcemove() is intentionally ignored.
 #define TURF_CONTENT_LIMIT 100
+
+#define ARMOR_VALUE_TO_CONSIDER 100 //The armor value of which to consider the value of weapons, bullets, and armor for.

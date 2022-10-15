@@ -2,6 +2,7 @@
 	return movement_delay
 
 
+/*
 /atom/movable/proc/can_enter_turf(var/turf/T,var/loc_overide = src.loc)
 
 	if(!T.has_dense_atom)
@@ -16,6 +17,7 @@
 			return FALSE
 
 	return TRUE
+*/
 
 
 
@@ -58,10 +60,12 @@
 			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
-			if(!first_step || !src.can_enter_turf(first_step))
+			if(!first_step || !(first_step.Enter(src,src.loc) || first_step.Enter(src,second_step)))
 				final_move_dir &= ~first_move_dir_to_use
-			if(!second_step || !src.can_enter_turf(second_step))
+				src << "cock"
+			if(!second_step || !(second_step.Enter(src,src.loc) || second_step.Enter(src,first_step)))
 				final_move_dir &= ~second_move_dir_to_use
+				src << "ball"
 
 		//Storing previous move dir and handling inability to move.
 		var/similiar_move_dir = FALSE

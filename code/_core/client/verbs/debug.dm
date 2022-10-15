@@ -38,8 +38,8 @@ var/global/list/debug_verbs = list(
 
 	var/text_to_send = ""
 
-	for(var/k in SSbalance.stored_value)
-		var/v = SSbalance.stored_value[k]
+	for(var/k in SSbalance.stored_value_weapons)
+		var/v = SSbalance.stored_value_weapons[k]
 		var/t = SSbalance.stored_tier[k]
 		text_to_send += "[k]: $[v] (Tier: [t])<br>"
 

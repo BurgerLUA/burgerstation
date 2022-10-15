@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/supply_crate.dmi'
 	icon_state = "supply"
 
-	health = /health/construction/
+	health = /health/obj/item/misc/
 
 	health_base = 25
 

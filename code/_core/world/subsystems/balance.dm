@@ -8,7 +8,8 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_dph = list()
 	var/list/stored_tier = list()
 	var/list/stored_killtime = list()
-	var/list/stored_value = list()
+	var/list/stored_value_weapons = list()
+	var/list/stored_value_bullets = list()
 
 	var/list/weapon_to_bullet = list()
 	var/list/weapon_to_magazine = list()
@@ -22,19 +23,18 @@ SUBSYSTEM_DEF(balance)
 
 	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = k
-		if(initial(B.value) <= 0 || initial(B.rarity) != RARITY_COMMON)
-			continue
 		B = new k(T)
 		B.initialize_type = INITIALIZE_NONE
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
 		created_bullets += B
+		stored_value_bullets[B.type] = CEILING(B.get_recommended_value(),0.01)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in subtypesof(/obj/item/magazine))
 		var/obj/item/magazine/M = new k(T)
-		if(initial(M.value) <= 0 || initial(M.rarity) != RARITY_COMMON)
+		if(initial(M.rarity) != RARITY_COMMON)
 			continue
 		M = new k(T)
 		M.initialize_type = INITIALIZE_NONE
@@ -60,11 +60,11 @@ SUBSYSTEM_DEF(balance)
 			var/obj/item/weapon/ranged/bullet/B = W
 			for(var/v in created_bullets)
 				var/obj/item/bullet_cartridge/C = v
+				if(C.rarity != RARITY_COMMON)
+					continue
 				if(C.bullet_length != B.bullet_length_best)
 					continue
 				if(C.bullet_diameter != B.bullet_diameter_best)
-					continue
-				if(C.parent_type != /obj/item/bullet_cartridge) //First level types only. This means no special bullets.
 					continue
 				weapon_to_bullet[B.type] = C.type
 				break
@@ -74,8 +74,6 @@ SUBSYSTEM_DEF(balance)
 			for(var/v in created_magazines)
 				var/obj/item/magazine/M = v
 				if(!M.weapon_whitelist[B.type])
-					continue
-				if(M.parent_type != /obj/item/magazine) //First level types only. This means no special magazines.
 					continue
 				weapon_to_magazine[B.type] = M.type
 
@@ -97,8 +95,8 @@ SUBSYSTEM_DEF(balance)
 				imbalanced_weapons++
 			stored_tier[W.type] = recommended_tier
 
-		var/found_value = W.get_recommended_value(100) //The 100 is the armor value. This makes it so that pistols are generally cheaper than rifles that have armor penetration.
-		stored_value[W.type] = found_value
+		var/found_value = W.get_recommended_value(ARMOR_VALUE_TO_CONSIDER) //The 100 is the armor value. This makes it so that pistols are generally cheaper than rifles that have armor penetration.
+		stored_value_weapons[W.type] = found_value
 
 		qdel(W)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
@@ -106,7 +104,8 @@ SUBSYSTEM_DEF(balance)
 	sortInsert(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
 	sortInsert(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
 	sortInsert(stored_killtime, /proc/cmp_numeric_asc, associative=TRUE)
-	sortInsert(stored_value, /proc/cmp_numeric_asc, associative=TRUE)
+	sortInsert(stored_value_weapons, /proc/cmp_numeric_asc, associative=TRUE)
+	sortInsert(stored_value_bullets, /proc/cmp_numeric_asc, associative=TRUE)
 
 	for(var/k in created_bullets)
 		var/obj/item/I = k

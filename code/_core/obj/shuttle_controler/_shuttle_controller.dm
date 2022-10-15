@@ -67,8 +67,8 @@ var/global/list/all_shuttle_controlers = list()
 
 	. = ..()
 
-	var/min_x = 0
-	var/min_y = 0
+	var/min_x = INFINITY
+	var/min_y = INFINITY
 	var/max_x = 0
 	var/max_y = 0
 
@@ -76,7 +76,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/list/found_turfs = list()
 	var/failure = FALSE
-	for(var/turf/T in A.contents)
+	for(var/turf/simulated/T in A.contents)
 		min_x = min(min_x,T.x)
 		min_y = min(min_y,T.y)
 		max_x = max(max_x,T.x)
@@ -90,7 +90,7 @@ var/global/list/all_shuttle_controlers = list()
 		found_turfs += T
 
 	if(failure)
-		log_error("Error: [src.get_debug_name()] was placed in an area larger than 32x32!")
+		log_error("Error: [src.get_debug_name()] was placed in an area ([A.get_debug_name()]) larger than 32x32!")
 	else
 		var/icon/I = ICON_INVISIBLE
 		for(var/k in found_turfs)

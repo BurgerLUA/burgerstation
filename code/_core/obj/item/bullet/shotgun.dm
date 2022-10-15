@@ -9,7 +9,7 @@
 	base_spread = 0.03
 
 	bullet_diameter = 18.5
-	bullet_length = 18.5
+	bullet_length = 76.2
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_pellet
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12
@@ -23,6 +23,8 @@
 
 	amount_max = 5
 	amount_max_icon = 5
+
+	view_punch_mod = 0.5
 
 /obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE

@@ -24,9 +24,9 @@
 	size = SIZE_2
 	weight = 8
 
-	bullet_length_min = 18
-	bullet_length_best = 18.5
-	bullet_length_max = 19
+	bullet_length_min = 76
+	bullet_length_best = 76.2
+	bullet_length_max = 76.4
 
 	bullet_diameter_min = 18
 	bullet_diameter_best = 18.5

@@ -1,11 +1,3 @@
-/*
-/ai/proc/can_enter_turf(var/turf/T)
-
-	if(!ignore_hazard_turfs && istype(T,/turf/simulated/liquid/))
-		return FALSE
-
-	return TRUE
-*/
 
 /ai/proc/post_move(var/mob/living/L,args)
 

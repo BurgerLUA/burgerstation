@@ -31,7 +31,7 @@
 
 	var/hits_per_second = get_hits_per_second()
 
-	. = (get_shots_to_kill(armor_to_use)-1)/(hits_per_second)
+	. = (get_shots_to_kill(armor_to_use)-1) / (hits_per_second)
 
 	var/rounding = 10/hits_per_second
 
