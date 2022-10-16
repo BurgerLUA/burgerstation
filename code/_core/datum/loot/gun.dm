@@ -110,7 +110,6 @@
 
 /loot/gun/solarian
 	company_type = "Solarian"
-	base_type = /obj/item/weapon/ranged/bullet
 
 /loot/gun/slavic
 	company_type = "Slavic"

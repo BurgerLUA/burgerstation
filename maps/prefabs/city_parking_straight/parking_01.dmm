@@ -1,170 +1,21 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/simulated/floor/sidewalk,
-/area/dmm_suite/clear_area)
-"c" = (
-/obj/decal/road_marking/solid_line/offset{
-	icon_state = "1";
-	dir = 8
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"d" = (
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"e" = (
-/obj/decal/road_marking/solid_line/offset{
-	icon_state = "1";
-	dir = 4
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"f" = (
-/obj/decal/road_marking/solid_line/offset{
-	icon_state = "1";
-	dir = 9
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"g" = (
-/obj/decal/road_marking/solid_line/offset{
-	icon_state = "1";
-	dir = 5
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"h" = (
-/obj/decal/road_marking/solid_line/offset{
-	icon_state = "1";
-	dir = 10
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"i" = (
-/obj/decal/road_marking/solid_line/offset{
-	icon_state = "1";
-	dir = 6
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
+"a" = (/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
+"c" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1";dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"e" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1";dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"f" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1";dir = 9},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"g" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1";dir = 5},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"h" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1";dir = 10},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"i" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1";dir = 6},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(2,1,1) = {"
-a
-c
-e
-d
-e
-d
-e
-d
-e
-a
-"}
-(3,1,1) = {"
-a
-c
-e
-d
-e
-d
-e
-d
-e
-a
-"}
-(4,1,1) = {"
-d
-f
-d
-d
-d
-d
-d
-d
-h
-d
-"}
-(5,1,1) = {"
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-"}
-(6,1,1) = {"
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-"}
-(7,1,1) = {"
-d
-g
-d
-d
-d
-d
-d
-d
-i
-d
-"}
-(8,1,1) = {"
-a
-c
-d
-c
-d
-c
-d
-c
-e
-a
-"}
-(9,1,1) = {"
-a
-c
-d
-c
-d
-c
-d
-c
-e
-a
-"}
-(10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+aaaddddaaa
+accfddgcca
+aeedddddda
+addddddcca
+aeedddddda
+addddddcca
+aeedddddda
+addddddcca
+aeehddieea
+aaaddddaaa
 "}

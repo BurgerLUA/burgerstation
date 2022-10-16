@@ -46,7 +46,7 @@
 	if(old_attack == A)
 		return FALSE
 
-	if(is_player(old_attack))
+	if(is_player(old_attack) && ai_attacking_players[old_attack])
 		ai_attacking_players[old_attack] -= owner
 
 	attackers -= old_attack

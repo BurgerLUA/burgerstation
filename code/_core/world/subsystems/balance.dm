@@ -73,6 +73,8 @@ SUBSYSTEM_DEF(balance)
 			var/obj/item/weapon/ranged/bullet/magazine/B = W
 			for(var/v in created_magazines)
 				var/obj/item/magazine/M = v
+				if(M.rarity != RARITY_COMMON)
+					continue
 				if(!M.weapon_whitelist[B.type])
 					continue
 				weapon_to_magazine[B.type] = M.type

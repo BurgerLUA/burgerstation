@@ -438,7 +438,7 @@
 		"Pirates" = /mob/living/advanced/npc/pirate_crew/ranged,
 		"Revs" = /mob/living/advanced/npc/rev,
 		"Space Soldiers" = /mob/living/advanced/npc/space_soldier,
-		"Tax Collectors" = /mob/living/advanced/npc/tax_man,
+		"Tax Collectors" = /mob/living/advanced/npc/tax_collector,
 		"Zombies" = /mob/living/advanced/npc/zombie/civilian,
 		"Custom..." = "Custom...",
 		"Cancel" = "Cancel"
@@ -458,12 +458,13 @@
 		desired_squad = text2path(desired_squad)
 
 		if(!ispath(desired_squad,/mob/))
+			src.to_chat(span("warning","Invalid path!"))
 			return FALSE
 
 		desired_squad = text2path(desired_squad)
 	else
 		desired_squad = possible_squads[desired_squad]
 
-	if(!SShorde.send_squad(desired_victim,desired_squad,bypass_restrictions=TRUE,debug=TRUE))
+	if(!SShorde.send_squad(desired_victim,desired_squad,bypass_restrictions=TRUE))
 		src.to_chat(span("warning","Could not send a squad to this player. Could not find a valid path."))
 

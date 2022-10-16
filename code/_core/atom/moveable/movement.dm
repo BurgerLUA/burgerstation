@@ -56,7 +56,7 @@
 
 		//Handling intercardinal collisions.
 		if(intercardinal)
-			var/first_move_dir_to_use = first_move_dir ? first_move_dir : get_true_4dir(final_move_dir)
+			var/first_move_dir_to_use = src.first_move_dir ? src.first_move_dir : get_true_4dir(final_move_dir)
 			var/second_move_dir_to_use = final_move_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)

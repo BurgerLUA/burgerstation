@@ -103,7 +103,7 @@
 
 	var/obj/marker/map_node/desired_node = current_node_path[path_steps]
 	var/turf/T1 = get_turf(owner)
-	var/list/obstructions = get_obstructions(T1,desired_node)
+	var/list/obstructions = get_obstructions(T1,desired_node,ignore_living=TRUE)
 
 	if(!length(obstructions)) //All good.
 		return TRUE
@@ -240,7 +240,20 @@
 	owner.move_dir = 0x0
 	return TRUE
 
+/ai/proc/handle_movement_move_from_ally()
+
+	if(move_from_ally <= 0)
+		return FALSE
+
+	owner.move_dir = move_from_ally_dir
+	move_from_ally--
+
+	return TRUE
+
 /ai/proc/handle_movement()
+
+	if(handle_movement_move_from_ally())
+		return TRUE
 
 	if(handle_movement_astar())
 		return TRUE
@@ -275,6 +288,15 @@
 			if(is_enemy(L))
 				set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
 				spawn do_attack(obstacle,prob(left_click_chance))
+			else
+				move_from_ally = 3 //Excuse me, Dr. Freeman.
+				move_from_ally_dir = L.move_dir
+				if(!move_from_ally_dir)
+					if(owner.move_dir)
+						move_from_ally_dir = turn(owner.move_dir,180)
+					else
+						move_from_ally_dir = pick(DIRECTIONS_ALL)
+				trigger_other_bump = FALSE
 			if(trigger_other_bump && L.ai)
 				L.ai.Bump(owner,FALSE)
 		else if(attack_movement_obstructions)

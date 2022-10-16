@@ -98,7 +98,7 @@
 	set hidden = TRUE
 	SPAM_CHECK_CLIENT(10)
 	settings.change_setting("compact_mode",!settings.loaded_data["compact_mode"])
-	src << "Compact mode changed."
+	to_chat(span("notice","Compact mode changed."))
 	for(var/k in mob.buttons)
 		var/obj/hud/button/B = k
 		B.update_sprite()

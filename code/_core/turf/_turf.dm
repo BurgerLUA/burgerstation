@@ -259,7 +259,7 @@
 		var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
 		var/new_loc_chunk_z = src.z
 
-		if(new_loc_chunk_z > 0 && old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z)
+		if(new_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
 			var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
 			if(new_chunk) new_chunk.cleanables += enterer
 
@@ -286,7 +286,7 @@
 		var/new_loc_chunk_y = new_loc ? CEILING(new_loc.y/CHUNK_SIZE,1) : 0
 		var/new_loc_chunk_z = new_loc ? new_loc.z : 0
 
-		if(old_loc_chunk_z > 0 && old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z)
+		if(old_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
 			var/chunk/old_chunk = SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
 			if(old_chunk) old_chunk.cleanables -= exiter
 

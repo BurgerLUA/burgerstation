@@ -1,121 +1,19 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/simulated/wall/brick/red,
-/area/dmm_suite/clear_area)
-"b" = (
-/obj/structure/interactive/storage/trash_pile/low_chance,
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"c" = (
-/obj/item/trash/random,
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"d" = (
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"e" = (
-/obj/structure/interactive/fence/end{
-	icon_state = "end";
-	dir = 4
-	},
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"f" = (
-/obj/structure/interactive/fence{
-	icon_state = "straight";
-	dir = 4
-	},
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"g" = (
-/obj/structure/interactive/fence/door,
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"h" = (
-/obj/structure/interactive/fence/end{
-	icon_state = "end";
-	dir = 8
-	},
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
+"a" = (/turf/simulated/wall/brick/red,/area/dmm_suite/clear_area)
+"b" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"c" = (/obj/item/trash/random,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/interactive/fence/end{icon_state = "end";dir = 4},/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/interactive/fence{icon_state = "straight";dir = 4},/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"g" = (/obj/structure/interactive/fence/door,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"h" = (/obj/structure/interactive/fence/end{icon_state = "end";dir = 8},/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(2,1,1) = {"
-b
-b
-b
-b
-e
-b
-b
-b
-"}
-(3,1,1) = {"
-d
-d
-d
-d
-f
-d
-d
-c
-"}
-(4,1,1) = {"
-d
-d
-c
-d
-f
-c
-d
-c
-"}
-(5,1,1) = {"
-c
-d
-d
-d
-g
-d
-d
-d
-"}
-(6,1,1) = {"
-d
-d
-d
-d
-f
-d
-d
-c
-"}
-(7,1,1) = {"
-b
-b
-b
-b
-h
-b
-b
-b
-"}
-(8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
+abddcdba
+abddddba
+abdcddba
+abddddba
+aeffgfha
+abdcddba
+abddddba
+abccdcba
 "}

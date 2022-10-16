@@ -140,7 +140,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 				var/mob/living/L2 = L.ai.objective_attack
 				if(allow_helpful_action(owner.loyalty_tag,L2))
 					return TRUE
-		if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
+		if(!hunt_target && predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))
 			return TRUE
 
 	if(aggression_check)
@@ -149,6 +149,9 @@ var/global/list/difficulty_to_ai_modifier = list(
 	return TRUE
 
 /ai/proc/check_aggression(var/mob/living/target,var/aggression_override = src.aggression)
+
+	if(hunt_target)
+		return FALSE
 
 	switch(aggression_override)
 		if(0)

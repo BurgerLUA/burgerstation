@@ -1,431 +1,49 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"b" = (
-/turf/simulated/wall/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"c" = (
-/obj/structure/interactive/lighting/mounted_torch,
-/turf/simulated/wall/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"d" = (
-/obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 4
-	},
-/turf/simulated/wall/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"e" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/portal_scroll,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"f" = (
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"g" = (
-/obj/structure/table/wood,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"h" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/fulton_pack,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"i" = (
-/obj/structure/interactive/lighting/mounted_torch{
-	icon_state = "torch";
-	dir = 8
-	},
-/turf/simulated/wall/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"j" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"k" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/pinpointer/boss,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"l" = (
-/obj/structure/carpet/red,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"m" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/handcuffs,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"n" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/map,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"o" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/analyzer/value,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"p" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/deployable/barricade,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"q" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/shop,
-/obj/item/flare,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"r" = (
-/obj/structure/interactive/bar_sign/bawse_loot,
-/turf/simulated/wall/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"s" = (
-/obj/structure/short_wall/wood/dark,
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"t" = (
-/turf/simulated/floor/colored/dirt/soil,
-/area/dmm_suite/clear_area)
-"u" = (
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"v" = (
-/obj/structure/table/wood,
-/obj/structure/carpet/red,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"w" = (
-/obj/structure/carpet/red,
-/mob/living/advanced/npc/unique/goblin_merchant,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"x" = (
-/obj/structure/interactive/atm,
-/turf/simulated/wall/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"y" = (
-/obj/marker/map_node,
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"z" = (
-/obj/marker/map_node,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"A" = (
-/obj/structure/carpet/red,
-/obj/marker/map_node/x2,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"B" = (
-/obj/marker/map_node/x2,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
-"C" = (
-/obj/marker/map_node,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/colored/dirt/path,
-/area/dmm_suite/clear_area)
-"D" = (
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/brick/grey,
-/area/mission/prefab/fob/bawse_loot)
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"c" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"d" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch";dir = 4},/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"e" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/portal_scroll,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"f" = (/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"g" = (/obj/structure/table/wood,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"h" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/fulton_pack,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"i" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch";dir = 8},/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"j" = (/obj/marker/spawning/window,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"k" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/pinpointer/boss,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"l" = (/obj/structure/carpet/red,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"m" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/handcuffs,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"n" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/map,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"o" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/analyzer/value,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"p" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/deployable/barricade,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"q" = (/obj/structure/table/wood,/obj/structure/interactive/shop,/obj/item/flare,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"r" = (/obj/structure/interactive/bar_sign/bawse_loot,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"s" = (/obj/structure/short_wall/wood/dark,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"t" = (/turf/simulated/floor/colored/dirt/soil,/area/dmm_suite/clear_area)
+"u" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"v" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"w" = (/obj/structure/carpet/red,/mob/living/advanced/npc/unique/goblin_merchant,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"x" = (/obj/structure/interactive/atm,/turf/simulated/wall/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"y" = (/obj/marker/map_node,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"z" = (/obj/marker/map_node,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"A" = (/obj/structure/carpet/red,/obj/marker/map_node/x2,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"B" = (/obj/marker/map_node/x2,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
+"C" = (/obj/marker/map_node,/obj/marker/smart_clear_turf,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+"D" = (/obj/marker/smart_clear_turf,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(3,1,1) = {"
-a
-s
-s
-s
-s
-s
-s
-b
-d
-j
-j
-j
-j
-j
-d
-b
-"}
-(4,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-b
-e
-k
-n
-p
-f
-f
-f
-b
-"}
-(5,1,1) = {"
-a
-s
-t
-y
-u
-u
-y
-f
-z
-f
-f
-f
-f
-f
-f
-j
-"}
-(6,1,1) = {"
-a
-s
-t
-u
-u
-u
-u
-c
-f
-l
-l
-l
-A
-f
-f
-j
-"}
-(7,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-b
-g
-v
-v
-l
-l
-f
-f
-j
-"}
-(8,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-b
-f
-l
-v
-l
-l
-B
-f
-j
-"}
-(9,1,1) = {"
-a
-s
-t
-y
-t
-t
-t
-b
-f
-w
-v
-l
-l
-f
-f
-c
-"}
-(10,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-b
-f
-l
-v
-l
-l
-f
-f
-f
-"}
-(11,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-b
-g
-v
-v
-l
-l
-f
-B
-D
-"}
-(12,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-c
-f
-l
-l
-l
-l
-f
-f
-f
-"}
-(13,1,1) = {"
-a
-s
-t
-u
-t
-t
-t
-x
-f
-f
-f
-f
-f
-f
-f
-r
-"}
-(14,1,1) = {"
-a
-s
-t
-y
-t
-t
-t
-b
-h
-m
-o
-q
-f
-f
-f
-b
-"}
-(15,1,1) = {"
-a
-s
-s
-u
-s
-s
-s
-b
-i
-j
-j
-j
-j
-j
-i
-b
-"}
-(16,1,1) = {"
-a
-a
-a
-C
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+aaaaaaaaaaaaaaaa
+aasssssssssssssa
+aastttttttttttsa
+aasuyuuuyuuuuyuC
+aastuuttttttttsa
+aastuuttttttttsa
+aastyuttttttttsa
+aabbfcbbbbbcxbba
+aadezfgfffgffhia
+aajkflvlwlvlfmja
+aajnflvvvvvlfoja
+aajpflllllllfqja
+aajffAllllllffja
+aajffffBffffffja
+aadfffffffBfffia
+aabbjjjjcfDfrbba
 "}

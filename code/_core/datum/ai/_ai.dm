@@ -142,6 +142,9 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/knows_about_lockers = FALSE
 
+	var/move_from_ally_dir = 0x0
+	var/move_from_ally = 0
+
 /ai/Destroy()
 
 	set_active(FALSE,TRUE)

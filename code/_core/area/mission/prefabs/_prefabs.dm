@@ -2,6 +2,8 @@
 	trackable = TRUE
 	horde_data = /horde_data/syndicate
 
+	flags_area = FLAG_AREA_NO_HORDE
+
 
 
 

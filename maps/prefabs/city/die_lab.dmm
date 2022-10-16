@@ -1,669 +1,93 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"ab" = (
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"ac" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ad" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ae" = (
-/mob/living/simple/slime/water,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"af" = (
-/obj/structure/interactive/lighting/fixture/bulb,
-/mob/living/simple/slime/blood,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"ag" = (
-/obj/structure/interactive/fence/end{
-	icon_state = "end";
-	dir = 1
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"ah" = (
-/obj/marker/spawning/random/maintenance,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ai" = (
-/obj/structure/interactive/light_switch,
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"aj" = (
-/obj/structure/interactive/wire/yellow,
-/obj/structure/interactive/door/airlock/locked,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ak" = (
-/obj/structure/interactive/power/apc,
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"al" = (
-/obj/marker/spawning/random/maintenance,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"am" = (
-/mob/living/advanced/npc/monkey,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"an" = (
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"ao" = (
-/obj/structure/interactive/fence,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"ap" = (
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"aq" = (
-/obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 8
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ar" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"as" = (
-/obj/structure/interactive/fence/door{
-	icon_state = "door_opened";
-	dir = 8
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"at" = (
-/mob/living/simple/slime/jungle,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"au" = (
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"av" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
-	},
-/mob/living/simple/slime/magma,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"aw" = (
-/obj/structure/interactive/fence/end,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"ax" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ay" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
-	},
-/mob/living/advanced/npc/monkey{
-	icon_state = "directional";
-	dir = 1
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"az" = (
-/mob/living/advanced/npc/monkey{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"aA" = (
-/obj/structure/interactive/door/airlock/locked,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab/backroom)
-"aB" = (
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab)
-"aC" = (
-/obj/structure/table,
-/obj/item/slime_core/red,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aD" = (
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aE" = (
-/obj/structure/carpet/red,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aF" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/carpet/red,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aG" = (
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"aH" = (
-/obj/structure/table,
-/obj/item/slime_core/black/weak,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aI" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 4
-	},
-/obj/structure/table,
-/obj/item/slime_core/red,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aJ" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/interactive/storage/cash_register{
-	icon_state = "register";
-	dir = 4
-	},
-/obj/structure/carpet/red,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aK" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 8
-	},
-/obj/structure/table,
-/obj/item/slime_core/black,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aL" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab)
-"aM" = (
-/obj/structure/table,
-/obj/item/slime_core/green,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aN" = (
-/obj/structure/table/reinforced/steel,
-/obj/structure/carpet/red,
-/obj/item/slime_core/custom,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aO" = (
-/obj/structure/table,
-/obj/item/slime_core/black/strong,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aP" = (
-/obj/structure/table,
-/obj/item/slime_core/custom,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aQ" = (
-/obj/structure/table,
-/obj/item/slime_core/blue,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aR" = (
-/obj/structure/table,
-/obj/item/slime_core/white/strong,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aS" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 4
-	},
-/obj/structure/table,
-/obj/item/slime_core/white,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aT" = (
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aU" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 8
-	},
-/obj/structure/table,
-/obj/item/slime_core/white,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aV" = (
-/obj/structure/table,
-/obj/item/slime_core/white,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aW" = (
-/obj/structure/table,
-/obj/item/slime_core/white/weak,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aX" = (
-/obj/structure/interactive/door/airlock/glass,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"aY" = (
-/obj/structure/interactive/bar_sign/die_lab,
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab)
-"aZ" = (
-/obj/structure/interactive/wire/yellow,
-/obj/marker/smart_clear_turf,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"ba" = (
-/obj/marker/map_node/x2,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bb" = (
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"bc" = (
-/obj/structure/carpet/red,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bd" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"be" = (
-/obj/structure/carpet/grey,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bf" = (
-/obj/marker/smart_clear_turf,
-/obj/marker/map_node,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"bg" = (
-/obj/structure/interactive/wire/yellow,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"bh" = (
-/obj/decal/poster/off_station,
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"bi" = (
-/obj/marker/spawning/random/food,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"bj" = (
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/die_lab/backroom)
-"bk" = (
-/obj/structure/interactive/chair/comfy,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"bl" = (
-/obj/structure/interactive/storage/safe,
-/obj/structure/carpet/red,
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bm" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 1
-	},
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"bn" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 1
-	},
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab)
-"bo" = (
-/obj/structure/interactive/potted_plant/bin,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"bp" = (
-/obj/structure/interactive/potted_plant/bin,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bq" = (
-/obj/structure/interactive/storage/safe,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
-"br" = (
-/obj/structure/sign/shock,
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"bs" = (
-/obj/structure/sign/secure,
-/turf/simulated/wall/metal,
-/area/mission/prefab/city/die_lab/backroom)
-"bt" = (
-/mob/living/advanced/npc/zombie/civilian{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bu" = (
-/mob/living/advanced/npc/zombie/civilian{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/city/die_lab)
-"bv" = (
-/mob/living/advanced/npc/zombie/civilian,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/die_lab/backroom)
+"aa" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab/backroom)
+"ac" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"ad" = (/obj/structure/interactive/wire/yellow,/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"ae" = (/mob/living/simple/slime/water,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"af" = (/obj/structure/interactive/lighting/fixture/bulb,/mob/living/simple/slime/blood,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"ag" = (/obj/structure/interactive/fence/end{icon_state = "end";dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"ah" = (/obj/marker/spawning/random/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"ai" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"aj" = (/obj/decal/poster/off_station,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"ak" = (/obj/structure/interactive/wire/yellow,/obj/structure/interactive/door/airlock/locked,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"al" = (/obj/structure/sign/shock,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"am" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"an" = (/obj/marker/spawning/random/maintenance,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"ao" = (/mob/living/advanced/npc/monkey,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"ap" = (/obj/marker/spawning/random/trash,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aq" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"ar" = (/obj/structure/interactive/fence,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"as" = (/mob/living/advanced/npc/zombie/civilian,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"at" = (/obj/structure/interactive/chair/comfy,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"au" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"av" = (/obj/structure/interactive/wire/yellow,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aw" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"ax" = (/obj/structure/interactive/power/smes{icon_state = "smes_map";dir = 8},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"ay" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"az" = (/obj/marker/spawning/random/food,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aA" = (/obj/structure/interactive/fence/door{icon_state = "door_opened";dir = 8},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aB" = (/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"aC" = (/obj/marker/spawning/random/dangerous,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aD" = (/mob/living/simple/slime/jungle,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aE" = (/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aF" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview";dir = 1},/mob/living/simple/slime/magma,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aG" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aH" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aI" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview";dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aJ" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aK" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab)
+"aL" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview";dir = 1},/mob/living/advanced/npc/monkey{icon_state = "directional";dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aM" = (/mob/living/advanced/npc/monkey{icon_state = "directional";dir = 8},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/die_lab)
+"aN" = (/obj/structure/interactive/door/airlock/locked,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab)
+"aO" = (/obj/structure/sign/secure,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"aP" = (/obj/structure/table,/obj/item/slime_core/red,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aQ" = (/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aR" = (/obj/structure/carpet/red,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aS" = (/obj/structure/table/reinforced/steel,/obj/structure/carpet/red,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aT" = (/obj/structure/interactive/storage/safe,/obj/structure/carpet/red,/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aU" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aV" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aW" = (/obj/structure/table,/obj/item/slime_core/black/weak,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aX" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview";dir = 4},/obj/structure/table,/obj/item/slime_core/red,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aY" = (/obj/structure/table/reinforced/steel,/obj/structure/interactive/storage/cash_register{icon_state = "register";dir = 4},/obj/structure/carpet/red,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"aZ" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional";dir = 8},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"ba" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview";dir = 8},/obj/structure/table,/obj/item/slime_core/black,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bb" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/die_lab/backroom)
+"bc" = (/obj/structure/table,/obj/item/slime_core/green,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bd" = (/obj/structure/table/reinforced/steel,/obj/structure/carpet/red,/obj/item/slime_core/custom,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"be" = (/obj/structure/table,/obj/item/slime_core/black/strong,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bf" = (/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bg" = (/obj/structure/table,/obj/item/slime_core/custom,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bh" = (/obj/structure/table,/obj/item/slime_core/blue,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bi" = (/obj/marker/map_node/x2,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bj" = (/mob/living/advanced/npc/zombie/civilian{icon_state = "directional";dir = 4},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bk" = (/obj/structure/table,/obj/item/slime_core/white/strong,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bl" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview";dir = 4},/obj/structure/table,/obj/item/slime_core/white,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bm" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher";dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab/backroom)
+"bn" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher";dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab)
+"bo" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bp" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview";dir = 8},/obj/structure/table,/obj/item/slime_core/white,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bq" = (/obj/structure/table,/obj/item/slime_core/white,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"br" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bs" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bt" = (/obj/structure/table,/obj/item/slime_core/white/weak,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bu" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/die_lab/backroom)
+"bv" = (/obj/structure/interactive/bar_sign/die_lab,/turf/simulated/wall/metal,/area/mission/prefab/city/die_lab/backroom)
 
 (1,1,1) = {"
-ab
-ab
-ab
-ab
-ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(2,1,1) = {"
-ab
-ae
-au
-at
-al
-ab
-aB
-aB
-aL
-aL
-aL
-aL
-aB
-aB
-aB
-aa
-"}
-(3,1,1) = {"
-ab
-af
-an
-an
-av
-ab
-aC
-aI
-aM
-aM
-aQ
-aQ
-aS
-aV
-aL
-aa
-"}
-(4,1,1) = {"
-ab
-ag
-ao
-as
-aw
-bh
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aD
-aL
-aa
-"}
-(5,1,1) = {"
-ab
-ah
-bv
-ap
-aG
-bh
-aE
-aE
-aE
-aE
-aD
-bu
-aD
-aD
-aL
-aa
-"}
-(6,1,1) = {"
-ab
-ai
-bk
-ap
-ax
-ab
-aF
-aJ
-aF
-aE
-aD
-aD
-aD
-aD
-aL
-aa
-"}
-(7,1,1) = {"
-ac
-bh
-bo
-ap
-ap
-bm
-bl
-aE
-aF
-aE
-aD
-aD
-aT
-aT
-bn
-aa
-"}
-(8,1,1) = {"
-aZ
-aj
-bg
-ap
-bb
-aA
-bc
-aE
-aF
-aE
-aD
-ba
-aT
-be
-aX
-bf
-"}
-(9,1,1) = {"
-ac
-br
-ad
-ap
-ap
-bs
-aE
-aE
-aN
-aE
-aD
-aD
-aT
-aT
-aY
-aa
-"}
-(10,1,1) = {"
-ac
-ab
-aq
-ap
-bq
-ai
-aE
-aF
-aN
-aE
-aD
-aD
-aD
-bp
-aB
-aa
-"}
-(11,1,1) = {"
-ab
-ak
-ar
-ap
-ax
-ab
-aE
-aE
-aE
-aE
-aD
-aD
-aD
-aD
-aL
-aa
-"}
-(12,1,1) = {"
-ab
-ah
-bi
-ap
-bi
-ab
-bd
-aD
-aD
-aD
-ba
-aD
-aD
-bt
-aL
-aa
-"}
-(13,1,1) = {"
-ab
-ag
-as
-ao
-aw
-bh
-aD
-bt
-aD
-aD
-aD
-aD
-aD
-aD
-aL
-aa
-"}
-(14,1,1) = {"
-ab
-al
-au
-bj
-ay
-ab
-aH
-aK
-aO
-aP
-aP
-aR
-aU
-aW
-aL
-aa
-"}
-(15,1,1) = {"
-ab
-am
-bj
-au
-az
-ab
-aB
-aB
-aL
-aL
-aL
-aL
-aB
-aB
-aB
-aa
-"}
-(16,1,1) = {"
-ab
-ab
-ab
-ab
-ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aBaBaBaBaBaBacadacacaBaBaBaBaBaB
+aBaeafagahaiajakalaBamahaganaoaB
+aBapaqarasatauavawaxayazaAapaCaB
+aBaDaqaAaEaEaEaEaEaEaEaEaraCapaB
+aBanaFaGaHaIaEaJaEaKaIazaGaLaMaB
+aBaBaBajajaBbnaNaOaiaBaBajaBaBaB
+aaabaPaQaRaSaTaUaRaRaRaVaQaWabaa
+aaabaXaQaRaYaRaRaRaSaRaQaZbaabaa
+aabbbcaQaRaSaSaSbdbdaRaQaQbebbaa
+aabbbcaQaRaRaRaRaRaRaRaQaQbgbbaa
+aabbbhaQaQaQaQaQaQaQaQbiaQbgbbaa
+aabbbhaQbjaQaQbiaQaQaQaQaQbkbbaa
+aaabblaQaQaQboboboaQaQaQaQbpabaa
+aaabbqaQaQaQbobrbobsaQaZaQbtabaa
+aaabbbbbbbbbbmbubvabbbbbbbbbabaa
+aaaaaaaaaaaaaabfaaaaaaaaaaaaaaaa
 "}

@@ -215,7 +215,7 @@
 	return TRUE
 
 /atom/Cross(atom/movable/O,atom/oldloc) //Override default.
-	if(O.collision_flags & src.collision_flags)
+	if( (O.collision_flags && src.collision_flags) && (O.collision_flags & src.collision_flags) )
 		return FALSE
 	return TRUE
 

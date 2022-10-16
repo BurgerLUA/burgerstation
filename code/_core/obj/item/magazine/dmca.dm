@@ -21,7 +21,7 @@
 	bullet_diameter_best = 10
 	bullet_diameter_max = 10
 
-	size = SIZE_3
+	size = SIZE_2
 
 	icon_states = 1
 

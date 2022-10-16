@@ -105,7 +105,17 @@
 
 /atom/movable/New(var/desired_loc)
 	light_sprite_sources = list()
-	return ..()
+	. = ..()
+	if(world_state == STATE_RUNNING && src.enable_chunk_clean && SSchunk.initialized && is_simulated(loc))
+		var/turf/simulated/T = loc
+		var/area/A = T.loc
+		if(A && !A.safe_storage)
+			var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
+			var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
+			var/new_loc_chunk_z = src.z
+			if(new_loc_chunk_z > 0)
+				var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
+				if(new_chunk) new_chunk.cleanables += src
 
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/force = FALSE)
 

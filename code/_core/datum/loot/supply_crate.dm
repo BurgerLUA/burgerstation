@@ -23,7 +23,7 @@
 
 /loot/supply_crate/nanotrasen
 	loot_table_guaranteed = list(
-		/loot/gun/solarian
+		/loot/gun/nanotrasen
 	)
 
 /loot/supply_crate/solarian

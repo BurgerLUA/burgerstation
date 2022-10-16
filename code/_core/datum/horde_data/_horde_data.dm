@@ -8,8 +8,6 @@
 	horde_weights = list(
 		/mob/living/advanced/npc/abductor = 5,
 		"zombie" = 100
-
-
 	)
 
 	horde_squads = list(
@@ -77,8 +75,7 @@
 		/mob/living/simple/slime/cave = 10,
 		/mob/living/simple/slime/oil = 5,
 		/mob/living/simple/slime/water = 5,
-		/mob/living/simple/spider = 10,
-		/mob/living/advanced/npc/beefman = 5
+		/mob/living/simple/spider = 10
 	)
 
 	horde_squads = list(

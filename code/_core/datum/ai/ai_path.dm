@@ -22,6 +22,12 @@
 
 	if(check_for_obstructions) check_node_path_obstructions()
 
+	if(debug)
+		for(var/k in desired_path)
+			var/obj/marker/map_node/MN = k
+			MN.alpha = 255
+			MN.invisibility = 0
+
 	HOOK_CALL("set_path")
 
 	return TRUE

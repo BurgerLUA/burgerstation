@@ -63,7 +63,7 @@
 
 	size = MAX_INVENTORY_X*2*SIZE_3
 
-	dynamic_inventory_count = 8
+	dynamic_inventory_count = 4
 	container_max_size = SIZE_4
 	container_max_slots = 1
 

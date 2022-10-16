@@ -21,16 +21,19 @@
 	name = "chief engineer's office"
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
+	no_access = TRUE
 
 /obj/structure/interactive/door/airlock/station/command/cmo
 	name = "chief medical officer's office"
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
+	no_access = TRUE
 
 /obj/structure/interactive/door/airlock/station/command/rd
 	name = "research director's office"
 	color = COLOR_COMMAND
 	fill_color = COLOR_COMMAND
+	no_access = TRUE
 
 /obj/structure/interactive/door/airlock/station/chapel
 	name = "chapel airlock"

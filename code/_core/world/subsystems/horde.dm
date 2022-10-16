@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(horde)
 	else
 		return chosen_key
 
-/subsystem/horde/proc/send_squad(var/mob/victim,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/debug=FALSE)
+/subsystem/horde/proc/send_squad(var/mob/victim,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/horde_count_override=0,var/debug=FALSE)
 
 	var/turf/T = get_turf(victim)
 	if(!T)
@@ -126,63 +126,74 @@ SUBSYSTEM_DEF(horde)
 		if(debug) log_debug("Could not send squad: Area identifier was expected to be Mission, but it was [A.area_identifier].")
 		return FALSE
 	//Okay. Here is the fun part. Finding spawns.
-	var/my_chunk_x = CEILING(victim.loc.x/CHUNK_SIZE,1)
-	var/my_chunk_y = CEILING(victim.loc.y/CHUNK_SIZE,1)
-	var/my_chunk_z = victim.loc.z
+	var/my_chunk_x = T.x/CHUNK_SIZE
+	var/my_chunk_y = T.y/CHUNK_SIZE
+	my_chunk_x = CEILING(my_chunk_x,1)
+	my_chunk_y = CEILING(my_chunk_x,1)
+	var/my_chunk_z = T.z
+
+	var/chunk/victim_chunk = SSchunk.chunks[my_chunk_z][my_chunk_x][my_chunk_y]
+	if(!length(victim_chunk.nodes))
+		if(debug) log_debug("Could not send squad: Victim's chunk location had no valid nodes.")
+		return FALSE
+
+	if(debug) log_debug("Found victim chunk ([victim_chunk.x],[victim_chunk.y],[victim_chunk.z]).")
+
+	var/obj/marker/map_node/N_end = find_closest_node(T)
+	if(!N_end)
+		if(debug) log_debug("Could not send squad: Could not find a closest node to the player..")
+		return FALSE
 
 	var/list/valid_nodes = list()
 
-	for(var/x=-1,x<=1,x++)
-		var/real_x = my_chunk_x+x*2
-		if(real_x <= 1 || real_x >= SSchunk.chunk_count_x-1)
+	for(var/x=-2,x<=2,x+=2) for(var/y=-2,y<=2,y+=2)
+		if(x==0 && y==0)
 			continue
-		for(var/y=-1,y<=1,y++)
-			if(x == 0 && y == 0) //Redundant checking.
-				continue
-			var/real_y = my_chunk_y+y*2
-			if(real_y <= 1 || real_y >= SSchunk.chunk_count_y-1)
-				continue
-
-			var/chunk/CH_CENTER = SSchunk.chunks[my_chunk_z][real_x][real_y]
-			if(length(CH_CENTER.players))
-				continue
-			var/valid=TRUE
-			for(var/dir in DIRECTIONS_ALL)
-				var/list/offsets = direction_to_pixel_offset(dir)
-				var/check_x = real_x+offsets[1]
-				var/check_y = real_y+offsets[2]
-				if(check_x < 1 || check_x > SSchunk.chunk_count_x) //Corner.
+		var/chunk_x = my_chunk_x + x
+		var/chunk_y = my_chunk_y + y
+		if(chunk_x <= 0 || chunk_x > world.maxx/CHUNK_SIZE)
+			continue
+		if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
+			continue
+		var/chunk/C = SSchunk.chunks[my_chunk_z][chunk_x][chunk_y]
+		if(length(C.players))
+			continue
+		for(var/k in C.nodes)
+			var/obj/marker/map_node/N = k
+			if(!bypass_restrictions)
+				var/turf/TN = N.loc
+				var/area/AN = TN.loc
+				if(AN.flags_area & FLAG_AREA_NO_HORDE)
 					continue
-				if(check_y < 1 || check_y > SSchunk.chunk_count_y) //Corner.
-					continue
-				var/chunk/CH = SSchunk.chunks[my_chunk_z][check_x][check_y]
-				if(length(CH.players))
-					valid = FALSE
-					break
-			if(!valid)
-				continue
-			valid_nodes |= CH_CENTER.nodes
+			valid_nodes += N
 
 	if(!length(valid_nodes))
 		if(debug) log_debug("Could not send squad: Found zero valid nodes to place squad at.")
 		return FALSE
 
 	var/obj/marker/map_node/N_start = pick(valid_nodes)
-	var/turf/squad_spawn = N_start.loc
-	var/obj/marker/map_node/N_end = find_closest_node(T)
-	if(!N_end)
-		if(debug) log_debug("Could not send squad: Could not find a closest node to the player..")
-		return FALSE
+	var/turf/squad_spawn = get_turf(N_start)
+
+	if(debug)
+		var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
+		N_chunk_x = FLOOR(N_chunk_x,1)
+		var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
+		N_chunk_y = FLOOR(N_chunk_y,1)
+		var/N_chunk_z = squad_spawn.z
+		var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
+		log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
+
+
 	var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
 	if(!found_path)
-		if(debug) log_debug("Could not send squad: Could not find a path from the squad selection point to the target.")
+		if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
 		return FALSE
 
 	var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
 
 
-	var/enemies_to_send = 4
-	if(is_player(victim))
+	var/enemies_to_send = horde_count_override
+	if(!enemies_to_send && is_player(victim))
 		var/mob/living/advanced/player/P = victim
 		enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
 
@@ -208,6 +219,8 @@ SUBSYSTEM_DEF(horde)
 			break
 		else
 			Z.ai.delete_on_no_path = TRUE
+			if(debug)
+				Z.ai.debug = TRUE
 			. += 1
 			if(debug && !sent_area)
 				sent_area = get_area(Z)
@@ -216,5 +229,5 @@ SUBSYSTEM_DEF(horde)
 		if(. <= 0)
 			log_debug("Could not send squad: AI could not properly set their hunt target.")
 		else
-			log_debug("Sent squad. [.] expected squad members spawned at [sent_area.get_debug_name()].")
+			log_debug("Sent squad. [.] expected squad members spawned at [squad_spawn.get_debug_name()].")
 

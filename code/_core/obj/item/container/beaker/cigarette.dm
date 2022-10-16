@@ -109,7 +109,7 @@
 	if(istype(src.loc,/obj/hud/inventory/organs/face))
 		var/obj/hud/inventory/organs/face/I = src.loc
 		if(I.owner && I.owner.reagents)
-			reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier,caller=I.owner,include_abstrac=TRUE)
+			reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier,caller=I.owner,include_abstract=TRUE)
 			return TRUE
 	reagents.splash(null,get_turf(src),consume_amount,TRUE,1) //Just remove the reagents if there is no one to add it to.
 	return TRUE

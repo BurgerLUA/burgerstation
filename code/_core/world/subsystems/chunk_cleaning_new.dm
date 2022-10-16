@@ -14,6 +14,9 @@ SUBSYSTEM_DEF(chunk)
 	var/chunk_count_y = 0
 	var/chunk_count_z = 0
 
+	var/list/failed_chunk_count = list()
+	var/list/unclean_chunks = list()
+
 /subsystem/chunk/Initialize()
 
 	chunk_count_x = CEILING(world.maxx/CHUNK_SIZE,1)
@@ -31,7 +34,11 @@ SUBSYSTEM_DEF(chunk)
 	//Make all the chunks
 	var/added_chunks = 0
 	for(var/z=1,z<=chunk_count_z,z++) for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
-		chunks[z][x][y] = new /chunk/
+		var/chunk/C = new
+		C.x = x
+		C.y = y
+		C.z = z
+		chunks[z][x][y] = C
 		added_chunks++
 
 	log_subsystem(src.name,"Added [added_chunks] chunks.")
@@ -123,8 +130,15 @@ SUBSYSTEM_DEF(chunk)
 	for(var/k in chunks_to_process)
 		var/chunk/C = k
 		if(length(C.players))
+			if(length(C.cleanables) >= (CHUNK_SIZE*CHUNK_SIZE)*0.2) //20% concetration
+				failed_chunk_count[C] += 1
+				if(failed_chunk_count[C] >= 3)
+					unclean_chunks |= C
 			chunks_to_process -= C
 			chunks_to_process -= C.adjacent_chunks
+		else
+			failed_chunk_count -= C
+			unclean_chunks -= C
 
 	log_subsystem(src.name,"Filtered out [old_chunks - length(chunks_to_process)] chunks due to player presence...")
 
@@ -134,12 +148,13 @@ SUBSYSTEM_DEF(chunk)
 			continue
 		for(var/j in C.cleanables)
 			var/atom/movable/M = j
-			if(M.z)
-				var/chunk_x = CEILING(M.x/CHUNK_SIZE,1)
-				var/chunk_y = CEILING(M.y/CHUNK_SIZE,1)
-				var/chunk/C2 = SSchunk.chunks[M.z][chunk_x][chunk_y]
-				if(C != C2)
-					continue //It was moved.
+			if(!M.z)
+				continue
+			var/chunk_x = CEILING(M.x/CHUNK_SIZE,1)
+			var/chunk_y = CEILING(M.y/CHUNK_SIZE,1)
+			var/chunk/C2 = SSchunk.chunks[M.z][chunk_x][chunk_y]
+			if(C != C2)
+				continue //It was moved.
 			if(M.on_chunk_clean())
 				. += 1
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
@@ -147,3 +162,28 @@ SUBSYSTEM_DEF(chunk)
 			var/obj/marker/mob_spawn/MS = j
 			MS.process()
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
+
+
+	for(var/k in unclean_chunks)
+		var/chunk/C = k
+
+		if(!length(C.nodes))
+			continue
+
+		var/enemies_to_send = min(1 + length(C.cleanables)/30,3)
+		enemies_to_send = FLOOR(enemies_to_send,1)
+
+		var/max_enemies_to_send = min(enemies_to_send*5,10)
+
+		for(var/j in C.players)
+			if(max_enemies_to_send <= 0)
+				break
+			var/mob/living/P = j
+			var/area/A = get_area(P)
+			if(A.area_identifier != "Mission")
+				continue
+			if(P.dead)
+				continue
+			if(!SShorde.send_squad(P,/mob/living/advanced/npc/beefman,horde_count_override=enemies_to_send,bypass_restrictions=TRUE))
+				continue
+			max_enemies_to_send -= enemies_to_send

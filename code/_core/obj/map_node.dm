@@ -13,14 +13,6 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 	see_in_dark  = 1e6 // Literally arbitrary.
 	density = TRUE
 
-/mob/abstract/node_checker/Cross(atom/movable/O,atom/oldloc)
-	return TRUE
-
-/mob/abstract/node_checker/Bump(atom/Obstacle)
-	if(istype(Obstacle,/obj/structure/interactive/door))
-		return TRUE
-	. = ..()
-
 /obj/marker/map_node
 	name = "map node"
 	icon = 'icons/obj/node/node_1.dmi'
@@ -103,7 +95,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		var/direction = dir2text(get_dir(src,M))
 		if(src.adjacent_map_nodes[direction] && get_dist_real(src,M) > get_dist_real(src,src.adjacent_map_nodes[direction]))
 			continue
-		var/list/obstructions = get_obstructions(src,M) + get_obstructions(M,src)
+		var/list/obstructions = get_obstructions(src,M,ignore_living=TRUE)
 		if(length(obstructions) > 0)
 			continue
 		src.adjacent_map_nodes[direction] = M
@@ -115,7 +107,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 	return found
 
 
-/proc/get_obstructions(var/atom/point_A,var/atom/point_B,var/check_contents=TRUE) //Supports point_B being a node
+/proc/get_obstructions(var/atom/point_A,var/atom/point_B,var/check_contents=TRUE,var/ignore_living=FALSE) //Supports point_B being a node
 
 	. = list()
 
@@ -133,29 +125,71 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		limit--
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/desired_dir = get_dir(node_checker,point_B)
-		var/turf/T
+		var/turf/T = get_step(node_checker,desired_dir)
 		if(is_intercardinal_dir(desired_dir))
+
+			var/final_move_dir = desired_dir
+
+			var/list/possible_obstructions = list()
+
 			var/first_move_dir_to_use = get_true_4dir(desired_dir)
 			var/second_move_dir_to_use = desired_dir & ~first_move_dir_to_use
 			var/turf/first_step = get_step(node_checker,first_move_dir_to_use)
 			var/turf/second_step = get_step(node_checker,second_move_dir_to_use)
-			if(!first_step || !(first_step.Enter(node_checker,node_checker.loc) || first_step.Enter(node_checker,second_step)))
-				desired_dir &= ~first_move_dir_to_use
-			if(!second_step || !(second_step.Enter(node_checker,node_checker.loc) || second_step.Enter(node_checker,first_step)))
-				desired_dir &= ~second_move_dir_to_use
-			if(!desired_dir)
-				break
-			T = get_step(node_checker,desired_dir)
-		else
-			T = get_step(node_checker,desired_dir)
+
+			if(first_step)
+				var/first_from_loc = first_step.Enter(node_checker,node_checker.loc)
+				if(first_from_loc)
+					if(first_step.has_dense_atom)
+						for(var/k in first_step.contents)
+							var/atom/movable/M = k
+							if(ignore_living && is_living(M))
+								continue
+							if(!M.allow_path && M.density && !M.Cross(node_checker,node_checker.loc))
+								first_step = null
+								possible_obstructions += M
+								break
+				else
+					possible_obstructions += first_step
+					first_step = null
+
+			if(second_step)
+				var/second_from_loc = second_step.Enter(node_checker,node_checker.loc)
+				if(second_from_loc)
+					if(second_step.has_dense_atom)
+						for(var/k in second_step.contents)
+							var/atom/movable/M = k
+							if(ignore_living && is_living(M))
+								continue
+							if(!M.allow_path && M.density && !M.Cross(node_checker,node_checker.loc))
+								second_step = null
+								possible_obstructions += M
+								break
+				else
+					possible_obstructions += second_step
+					second_step = null
+
+			if(!first_step)
+				final_move_dir &= ~first_move_dir_to_use
+
+			if(!second_step)
+				final_move_dir &= ~second_move_dir_to_use
+
+			if(!final_move_dir)
+				. += possible_obstructions
+
 		if(!T) break
+
 		if(T.density && !T.Enter(node_checker,node_checker.loc))
-			. |= T
+			. += T
+
 		if(check_contents && T.has_dense_atom)
 			for(var/k in T.contents)
 				var/atom/movable/M = k
+				if(ignore_living && is_living(M))
+					continue
 				if(!M.allow_path && M.density && M.anchored && !M.Cross(node_checker,node_checker.loc))
-					. |= M
+					. += M
 
 		node_checker.loc = T
 
@@ -163,7 +197,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 
 
 
-/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE,var/check_view=FALSE)
+/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE*2,var/check_view=FALSE)
 
 	var/obj/marker/map_node/best_node = null
 	var/best_distance = INFINITY

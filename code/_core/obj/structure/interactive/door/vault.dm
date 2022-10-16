@@ -14,3 +14,8 @@ obj/structure/interactive/door/vault
 
 obj/structure/interactive/door/vault/syndicate
 	icon = 'icons/obj/structure/airlock/vault_door_dark.dmi'
+
+
+obj/structure/interactive/door/vault/syndicate/Finalize()
+	. = ..()
+	all_vault_doors += src
