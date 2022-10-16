@@ -1,39 +1,367 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/obj/marker/objective_spawn,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"c" = (/turf/simulated/wall/boss,/area/dmm_suite/clear_area)
-"d" = (/obj/structure/table/simple/boss,/obj/marker/spawning/random/ashwalker,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
-"e" = (/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
-"f" = (/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
-"g" = (/obj/structure/table/cooking/bonfire,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
-"h" = (/obj/structure/table/simple/boss,/turf/simulated/floor/boss,/area/dmm_suite/clear_area)
-"i" = (/obj/structure/table/simple/boss,/obj/marker/spawning/random/ashwalker,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"j" = (/mob/living/advanced/npc/ashwalker/hunter,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"k" = (/obj/structure/interactive/plant/porcini_mushroom,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"l" = (/obj/structure/table/simple/boss,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"m" = (/mob/living/advanced/npc/ashwalker/assassin,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
-"n" = (/obj/structure/interactive/fountain,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
-"p" = (/obj/structure/interactive/plant/embershroom_mushroom,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"q" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"s" = (/obj/marker/map_node/x2,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"t" = (/obj/marker/map_node/x2,/turf/simulated/floor/colored/ash/necro,/area/dmm_suite/clear_area)
-"v" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"x" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/marker/objective_spawn,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"c" = (
+/turf/simulated/wall/boss,
+/area/dmm_suite/clear_area)
+"d" = (
+/obj/structure/table/simple/boss,
+/obj/marker/spawning/random/ashwalker,
+/turf/simulated/floor/boss,
+/area/dmm_suite/clear_area)
+"e" = (
+/turf/simulated/floor/colored/ash/necro,
+/area/dmm_suite/clear_area)
+"f" = (
+/turf/simulated/floor/boss,
+/area/dmm_suite/clear_area)
+"g" = (
+/obj/structure/table/cooking/bonfire,
+/turf/simulated/floor/boss,
+/area/dmm_suite/clear_area)
+"h" = (
+/obj/structure/table/simple/boss,
+/turf/simulated/floor/boss,
+/area/dmm_suite/clear_area)
+"i" = (
+/obj/structure/table/simple/boss,
+/obj/marker/spawning/random/ashwalker,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"j" = (
+/mob/living/advanced/npc/ashwalker/hunter,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"k" = (
+/obj/structure/interactive/plant/porcini_mushroom,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"l" = (
+/obj/structure/table/simple/boss,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"m" = (
+/mob/living/advanced/npc/ashwalker/assassin,
+/turf/simulated/floor/colored/ash/necro,
+/area/dmm_suite/clear_area)
+"n" = (
+/obj/structure/interactive/fountain,
+/turf/simulated/floor/colored/ash/necro,
+/area/dmm_suite/clear_area)
+"p" = (
+/obj/structure/interactive/plant/embershroom_mushroom,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"q" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"s" = (
+/obj/marker/map_node/x2,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"t" = (
+/obj/marker/map_node/x2,
+/turf/simulated/floor/colored/ash/necro,
+/area/dmm_suite/clear_area)
+"v" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"x" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaa
-aaaqqqqqqqqqaaaa
-aaqqcccccccqqqaa
-aqcccdqeefcqqaaa
-aqcgghfenfcqqqqx
-aqcffijtqqckkkqq
-aaccclqqmbcqvqqv
-aaaqccqeeccqqppp
-aaaaqqqxeeeeqqaa
-aaaqqqqqqqeevqaa
-aaqqqqqqqqqqqqaa
-vqqqqqqsqqqqqqqv
-qqqqsqqqqqsqqqqq
-aaqqqqqqqqqqqaaa
-aaaqqqqsqqqqaaaa
-aaaaqqqqqqqaaaaa
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+v
+q
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+q
+q
+q
+a
+a
+a
+a
+a
+q
+q
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+q
+c
+c
+c
+c
+a
+a
+a
+q
+q
+q
+q
+a
+a
+"}
+(4,1,1) = {"
+a
+q
+q
+c
+g
+f
+c
+q
+a
+q
+q
+q
+q
+q
+q
+a
+"}
+(5,1,1) = {"
+a
+q
+c
+c
+g
+f
+c
+c
+q
+q
+q
+q
+s
+q
+q
+q
+"}
+(6,1,1) = {"
+a
+q
+c
+d
+h
+i
+l
+c
+q
+q
+q
+q
+q
+q
+q
+q
+"}
+(7,1,1) = {"
+a
+q
+c
+q
+f
+j
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+"}
+(8,1,1) = {"
+a
+q
+c
+e
+e
+t
+q
+e
+x
+q
+q
+s
+q
+q
+s
+q
+"}
+(9,1,1) = {"
+a
+q
+c
+e
+n
+q
+m
+e
+e
+q
+q
+q
+q
+q
+q
+q
+"}
+(10,1,1) = {"
+a
+q
+c
+f
+f
+q
+b
+c
+e
+q
+q
+q
+q
+q
+q
+q
+"}
+(11,1,1) = {"
+a
+q
+c
+c
+c
+c
+c
+c
+e
+e
+q
+q
+s
+q
+q
+q
+"}
+(12,1,1) = {"
+a
+q
+q
+q
+q
+k
+q
+q
+e
+e
+q
+q
+q
+q
+q
+a
+"}
+(13,1,1) = {"
+a
+a
+q
+q
+q
+k
+v
+q
+q
+v
+q
+q
+q
+q
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+q
+a
+q
+k
+q
+p
+q
+q
+q
+q
+q
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+q
+q
+q
+p
+a
+a
+a
+q
+q
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+x
+q
+v
+p
+a
+a
+a
+v
+q
+a
+a
+a
 "}
