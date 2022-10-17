@@ -148,7 +148,7 @@
 	return ..()
 
 /mob/living/simple/bubblegum/proc/start_charge()
-	if(CALLBACK_EXISTS("stop_charge_\ref[src]")
+	if(CALLBACK_EXISTS("stop_charge_\ref[src]"))
 		return FALSE
 	charge_dir = dir
 	charge_steps = VIEW_RANGE
