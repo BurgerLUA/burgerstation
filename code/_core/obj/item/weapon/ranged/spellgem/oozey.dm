@@ -4,7 +4,6 @@
 	desc_extended = "Enunciation is very important. This spell is often learned by young mages accidentally, intending to creas"
 	icon_state = "damage"
 
-	cost_mana = 8
 	shoot_delay = 1.5
 
 	bullet_count = 1

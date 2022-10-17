@@ -4,7 +4,6 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots chaotic energy in a circle."
 	icon_state = "damage"
 
-	cost_mana = 7
 	shoot_delay = 14
 
 	bullet_count = 7

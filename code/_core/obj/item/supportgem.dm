@@ -21,6 +21,8 @@
 
 	var/list/support_stats = list()
 
+	tier_type = "support gem"
+
 
 /obj/item/supportgem/proc/update_support_stats()
 	return TRUE
@@ -67,7 +69,7 @@
 	name = "deadly impact support gem"
 	power_base = 0.2 //20%
 	power_per_quality = 1/100 //100% more damage per 100 quality
-	value = 250
+	value = 350
 
 	color = COLOR_RED
 	color_2 = COLOR_ORANGE
@@ -87,7 +89,7 @@
 	name = "cheaper casting support gem"
 	power_base = 0.05 //5%
 	power_per_quality = 0.5/100 //50% reduced mana cost per 100 quality
-	value = 250
+	value = 100
 
 	color = COLOR_BLUE
 	color_2 = COLOR_WHITE
@@ -106,7 +108,7 @@
 	name = "spliting shots support gem"
 	power_base = 1 //1 extra projectile
 	power_per_quality = 5/100 //5 extra projectiles per 100 quality
-	value = 250
+	value = 300
 
 	color = COLOR_GREEN
 	color_2 = COLOR_GREEN_DARK
@@ -126,7 +128,7 @@
 	name = "focused shots support gem"
 	power_base = 0.5 //50%
 	power_per_quality = 0.2 / 100 //20% less spread per 100 quality
-	value = 250
+	value = 150
 
 	color = COLOR_GREEN
 	color_2 = COLOR_BLUE
@@ -146,7 +148,7 @@
 	name = "penetrator support gem"
 	power_base = 1 //1 extra penetration
 	power_per_quality = 3/100 //3 extra penetrations per 100 quality
-	value = 250
+	value = 400
 
 	color = COLOR_PINK
 	color_2 = COLOR_PURPLE
@@ -165,7 +167,7 @@
 	name = "speed support gem"
 	power_base = 0.2 //20% increased speed.
 	power_per_quality = 0.4/100 //40% increased speed per 100 quality.
-	value = 250
+	value = 200
 
 	color = COLOR_GOLD
 	color_2 = COLOR_RED
@@ -184,7 +186,7 @@
 	name = "precision support gem"
 	power_base = 0.2 //20% increased accuracy.
 	power_per_quality = 0.4/100 //40% increased accuracy per 100 quality.
-	value = 250
+	value = 100
 
 	color = COLOR_GREEN
 	color_2 = COLOR_RED

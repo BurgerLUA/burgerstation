@@ -22,7 +22,7 @@
 
 /ai/boss/bubblegum/handle_attacking()
 
-	if(owner_as_bubblegum.charge_steps)
+	if(owner_as_bubblegum.charge_steps > 0)
 		return FALSE
 
 	if(objective_attack && owner_as_bubblegum.health)
@@ -33,7 +33,7 @@
 			owner_as_bubblegum.blood_attack()
 			return TRUE
 
-		if(!owner_as_bubblegum.charge_steps && (is_facing(owner_as_bubblegum,objective_attack)) && prob(10*health_prob_mod))
+		if(owner_as_bubblegum.charge_steps <= 0 && (is_facing(owner_as_bubblegum,objective_attack)) && prob(10*health_prob_mod))
 			owner_as_bubblegum.start_charge()
 			return TRUE
 

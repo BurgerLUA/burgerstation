@@ -4,7 +4,6 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots an unholy skull that tracks targets."
 	icon_state = "damage"
 
-	cost_mana = 25
 	shoot_delay = 10
 
 	bullet_count = 1

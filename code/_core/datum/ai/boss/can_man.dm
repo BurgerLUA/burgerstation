@@ -59,14 +59,14 @@
 	if(objective_attack)
 		handle_projectiles()
 
-	if(owner_as_can_man.charge_steps)
+	if(owner_as_can_man.charge_steps > 0)
 		return FALSE
 
 	if(objective_attack && owner_as_can_man.health)
 
 		var/health_prob_mod = 3 - (owner_as_can_man.health.health_current / owner_as_can_man.health.health_max)*2
 
-		if(!owner_as_can_man.charge_steps && prob(10*health_prob_mod))
+		if(!owner_as_can_man.charge_steps <= 0 && prob(10*health_prob_mod))
 			owner_as_can_man.start_charge()
 			return TRUE
 

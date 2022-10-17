@@ -4,7 +4,6 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a single high-damage explosive fireball."
 	icon_state = "damage"
 
-	cost_mana = 50
 	shoot_delay = 30
 
 	bullet_count = 1

@@ -78,22 +78,23 @@
 
 /mob/living/simple/can_man/get_movement_delay(var/include_stance=TRUE)
 
-	if(charge_steps)
+	if(charge_steps > 0)
 		return 1 //Max
 
 	return ..()
 
 /mob/living/simple/can_man/post_move(var/atom/old_loc)
 
-	if(charge_steps)
+	if(charge_steps > 0)
 		play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src))
+		charge_steps -= 1
 
 	. = ..()
 
 
 /mob/living/simple/can_man/Bump(atom/Obstacle)
 
-	if(charge_steps && Obstacle.health)
+	if(Obstacle.health && charge_steps > 0)
 		var/damagetype/DT = all_damage_types[/damagetype/npc/bubblegum]
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
@@ -101,10 +102,16 @@
 		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,null,params,TRUE,TRUE)
 		DT.process_damage(src,Obstacle,src,object_to_damage,src,1)
 
+
 	return ..()
 
 
 /mob/living/simple/can_man/proc/start_charge()
+
+	if(CALLBACK_EXISTS("stop_charge_\ref[src]"))
+		return FALSE
+
+
 	charge_dir = dir
 	charge_steps = rand(5,15)
 	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/finish_charge)

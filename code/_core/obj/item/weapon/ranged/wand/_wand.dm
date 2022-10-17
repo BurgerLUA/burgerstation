@@ -29,6 +29,8 @@
 	var/hovering = FALSE //Cosmetic socket effects.
 	var/hovering_alpha = 0
 
+	tier_type = "wand"
+
 /obj/item/weapon/ranged/wand/MouseEntered(location,control,params)
 
 	. = ..()
@@ -270,6 +272,8 @@
 	wand_damage_multiplier = 1
 	wand_mana_multiplier = 0.5
 
+	tier = 0
+
 	value = 100
 
 /obj/item/weapon/ranged/wand/crafted
@@ -278,6 +282,8 @@
 
 	wand_damage_multiplier = 1.25
 	wand_mana_multiplier = 0.75
+
+	tier = 1
 
 	value = 100
 
@@ -288,6 +294,8 @@
 	wand_damage_multiplier = 1.5
 	wand_mana_multiplier = 1
 
+	tier = 2
+
 	value = 100
 
 /obj/item/weapon/ranged/wand/twisted
@@ -296,6 +304,8 @@
 
 	wand_damage_multiplier = 2
 	wand_mana_multiplier = 2
+
+	tier = 3
 
 
 	value = 100
@@ -307,6 +317,8 @@
 	wand_damage_multiplier = 2.25
 	wand_mana_multiplier = 2.25
 
+	tier = 4
+
 	value = 100
 
 /obj/item/weapon/ranged/wand/sage
@@ -315,5 +327,7 @@
 
 	wand_damage_multiplier = 2.5
 	wand_mana_multiplier = 2.5
+
+	tier = 5
 
 	value = 100

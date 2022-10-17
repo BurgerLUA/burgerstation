@@ -8,8 +8,6 @@
 	var/color_2 = null //Gradient
 	var/color_3 = null //Outline
 
-	var/cost_mana = 0
-
 	var/spread_per_shot = 5 //Angle to add per shot.
 
 	automatic = TRUE
@@ -20,10 +18,28 @@
 
 	company_type = "Wizard Federation"
 
+	var/cost_mana = 0 //generated on Initialize()
+
+/obj/item/weapon/ranged/spellgem/get_base_value()
+	. = ..()
+	. *= 1 - (spread_per_shot/360)
+
+/obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
+	. = get_damage_per_hit(100)
+	. *= bullet_count
+	. *= projectile_speed/TILE_SIZE
+	. *= 1 - (spread_per_shot/360)
+	. *= 0.25
+	. = CEILING(.,1)
+
+
+
+
 /obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
 	. = cost_mana
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
+
 
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
 
@@ -75,6 +91,10 @@
 
 	. = ..()
 
+/obj/item/weapon/ranged/spellgem/Initialize()
+	. = ..()
+	cost_mana = get_base_mana_cost()
+
 /obj/item/weapon/ranged/spellgem/Finalize()
 	. = ..()
 	update_sprite()
@@ -96,10 +116,12 @@
 	if(!owner.health)
 		return 1
 
-	if(!cost_mana)
+	var/final_cost = get_mana_cost(owner)
+
+	if(final_cost <= 0)
 		return 1
 
-	return owner && cost_mana ? FLOOR(owner.health.mana_current / cost_mana, 1) : 0
+	return owner && cost_mana ? FLOOR(owner.health.mana_current / final_cost, 1) : 0
 
 /obj/item/weapon/ranged/spellgem/handle_ammo(var/mob/caller,var/bullet_position=1)
 
@@ -110,7 +132,10 @@
 	if(!A.health)
 		return ..()
 
-	A.health.adjust_mana(-cost_mana)
+	var/final_cost = get_mana_cost(A)
+
+	if(final_cost != 0)
+		A.health.adjust_mana(-final_cost)
 
 	return null
 

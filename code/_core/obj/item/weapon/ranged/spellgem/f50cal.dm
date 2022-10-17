@@ -4,7 +4,6 @@
 	desc_extended = "After the Third Mage War, Desert Eagles were largely replaced with this particular shiny rock that acts just like one without needing bullets."
 	icon_state = "damage"
 
-	cost_mana = 12
 	shoot_delay = 8
 
 	bullet_count = 1

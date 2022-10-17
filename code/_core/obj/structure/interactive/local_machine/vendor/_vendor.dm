@@ -124,7 +124,7 @@ var/global/list/equipped_antags = list()
 		else if(P.left_item && istype(P.left_item,accepts_item) && P.left_item.amount >= amount)
 			P.left_item.add_item_count(-amount)
 		else
-			P.to_chat(span("warning","You don't have enough [accepts_item.name]s to purchase this!"))
+			P.to_chat(span("warning","You don't have enough [initial(accepts_item.name)]s to purchase this!"))
 			return FALSE
 		return TRUE
 

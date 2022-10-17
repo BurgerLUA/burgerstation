@@ -4,7 +4,6 @@
 	desc_extended = "Soupy the Bozomancer spent a decade crafting the perfect spell, enabling all spells at any time from a single gem. Upon perfecting his masterpiece, he resigned his position as leader of the Syndicate to run Donk Co."
 	icon_state = "damage"
 
-	cost_mana = 7
 	shoot_delay = 1.5
 
 	bullet_count = 1
@@ -27,7 +26,6 @@
 	value = 2700
 
 /obj/item/weapon/ranged/spellgem/metronome/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
-	cost_mana = rand(3, 17)
 	ranged_damage_type = pick(damage_list)
 	projectile = pick(projectile_list)
 	shoot_delay = rand(8, 40) / 10

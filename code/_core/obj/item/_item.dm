@@ -24,7 +24,7 @@
 	var/quality = 100
 	var/rarity = RARITY_COMMON //Arbitrary Value
 	var/tier = -1 //-1 means not set.
-	var/tier_type = "item"
+	var/tier_type
 
 	var/list/material = list() //Stored materials
 
@@ -485,8 +485,13 @@ var/global/list/rarity_to_mul = list(
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
 
+	if(tier >= 1)
+		. += div("rarity center","Tier \Roman[tier][tier_type ? " [tier_type]" : ""].")
+	else if(tier == 0)
+		. += div("rarity center","Tier [tier][tier_type ? " [tier_type]" : ""].")
+
 	if(contraband)
-		. += div("bad bold","CONTRABAND")
+		. += div("bad bold center","CONTRABAND")
 
 	if(quality <= 0)
 		. += div("rarity bad","<b>Quality</b>: BROKEN")

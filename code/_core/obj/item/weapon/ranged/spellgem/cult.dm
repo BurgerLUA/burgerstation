@@ -5,7 +5,6 @@
 	icon_state = "damage"
 	color = "#7F0000"
 
-	cost_mana = 15
 	shoot_delay = 10
 
 	bullet_count = 1

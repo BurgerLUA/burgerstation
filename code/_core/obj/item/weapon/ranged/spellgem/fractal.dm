@@ -4,7 +4,6 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a fractal firebrand that forks when it hits living creatures."
 	icon_state = "damage"
 
-	cost_mana = 20
 	shoot_delay = 2
 	burst_delay = 10
 	max_bursts = 3

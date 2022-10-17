@@ -21,8 +21,6 @@
 	can_wear = TRUE
 	item_slot = -1
 
-	//var/weapon_tier = 0
-
 	uses_until_condition_fall = 100
 
 	has_quick_function = TRUE
@@ -37,12 +35,14 @@
 
 /obj/item/weapon/Finalize()
 	. = ..()
-	if(tier == -1 && SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
-		tier = SSbalance.stored_tier[type]
+	if(tier == -1)
+		if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
+			tier = SSbalance.stored_tier[type]
+		else
+			tier = 1
 
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += div("rarity center","Tier [tier] [tier_type].")
 	if(enchantment)
 		. += div("notice","It is enchanted with <b>[enchantment.name]</b>")
 		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")
