@@ -113,8 +113,6 @@
 
 	var/list/known_emotes = list()
 
-	var/last_hold = -1
-
 	var/next_emote = 0 //Prevents spam
 
 	var/last_z = 0

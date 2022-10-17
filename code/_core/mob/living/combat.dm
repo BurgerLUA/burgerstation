@@ -32,8 +32,20 @@
 			animate(shield_overlay,pixel_x=0,pixel_y=0,alpha = 0, time = 3, flags = ANIMATION_LINEAR_TRANSFORM)
 		else
 			var/list/offsets = direction_to_pixel_offset(dir)
-			animate(shield_overlay,pixel_x=offsets[1]*8,pixel_y=offsets[2]*8,alpha = 200, time = 5, easing = BACK_EASING | EASE_OUT, flags = ANIMATION_LINEAR_TRANSFORM)
-
+			var/animation_time = 5
+			if(!force_change)
+				if(parry_spam_time <= world.time)
+					shield_overlay.color = "#FFFFFF"
+					animation_time = 3 + get_skill_power(SKILL_PARRY,0,1,2)*3
+					parry_time = world.time + animation_time
+					parry_spam_time = world.time + 18
+				else //Can't parry
+					animation_time = 10
+					shield_overlay.color = "#FF0000"
+					parry_spam_time = max(parry_spam_time,world.time+10)
+			animate(shield_overlay,pixel_x=offsets[1]*8,pixel_y=offsets[2]*8,alpha = force_change ? 150 : 200, color="#FFFFFF", time = animation_time, easing = BACK_EASING | EASE_OUT, flags = ANIMATION_LINEAR_TRANSFORM)
+			if(!force_change)
+				animate(alpha=150, time = parry_spam_time - world.time)
 
 /mob/living/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 

@@ -396,7 +396,7 @@ var/global/list/all_damage_numbers = list()
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 		if(attacker != victim)
 			//Parrying
-			if(is_advanced(victim) && can_be_parried)
+			if(is_advanced(victim) && src.can_be_parried)
 				var/mob/living/advanced/A = victim
 				if(A.parry(attacker,weapon,hit_object,src))
 					A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)

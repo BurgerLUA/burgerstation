@@ -277,6 +277,9 @@
 
 	var/gibbed = FALSE //Returns true if the cause of death was a gib.
 
+	var/parry_time = 0
+	var/parry_spam_time = 0
+
 /mob/living/Destroy()
 
 	UNPROCESS_LIVING(src)
