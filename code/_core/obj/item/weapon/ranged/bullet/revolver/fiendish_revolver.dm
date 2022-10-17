@@ -10,12 +10,12 @@
 
 	tier = 3
 
-	damage_mod = 1.5
+	damage_mod = 2
 	shoot_delay = 1
 
 	automatic = FALSE
 
-	bullet_count_max = 7
+	bullet_count_max = 6
 
 	shoot_sounds = list('sound/weapons/fists/claw_flesh_01.ogg',
 		'sound/effects/demon_attack1.ogg',
@@ -79,6 +79,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
+
+	value_burgerbux = 1
 
 /obj/item/weapon/ranged/bullet/revolver/fiendish/get_static_spread()
 	return 0

@@ -20,5 +20,5 @@
 
 	value = 2000
 
-
+	value_burgerbux = 1
 

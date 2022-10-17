@@ -41,6 +41,10 @@
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()
 
+/obj/item/container/simple/beaker/large/water_holy/Generate()
+	reagents.add_reagent(/reagent/nutrition/water/holy,reagents.volume_max)
+	return ..()
+
 /obj/item/container/simple/beaker/large/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()

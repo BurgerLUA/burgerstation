@@ -95,6 +95,8 @@
 
 	weight = 4
 
+	value_burgerbux = 1
+
 /obj/item/powercell/vehicle
 	name = "mech-grade power cell"
 	desc = "Do not swallow."

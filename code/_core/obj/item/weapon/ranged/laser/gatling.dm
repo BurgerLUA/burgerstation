@@ -38,6 +38,8 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.3
 
+	value_burgerbux = 1
+
 
 /obj/item/weapon/ranged/energy/gatling/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 	. = ..()

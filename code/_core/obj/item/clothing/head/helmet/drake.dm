@@ -1,4 +1,4 @@
-/obj/item/clothing/head/helmet/drake
+/obj/item/clothing/head/helmet/drake //This gets attached
 	name = "ash drake helmet"
 	icon = 'icons/obj/item/clothing/hats/drake_helmet.dmi'
 
@@ -10,7 +10,6 @@
 
 	size = SIZE_3
 
-
-	value = 400
+	value = 0
 
 	can_save = FALSE

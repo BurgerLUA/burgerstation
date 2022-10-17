@@ -16,6 +16,7 @@
 
 	var/next_heal= 0
 
+	value_burgerbux = 1
 
 /obj/item/weapon/melee/staff_of_healing/click_self(var/mob/caller)
 

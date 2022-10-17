@@ -36,7 +36,8 @@
 		bullet_color = COLOR_CYAN
 	)
 
-	value = 600
+	value = 3000
+	value_burgerbux = 1
 
 /obj/item/attachment/barrel/laser_charger
 	name = "modular laser charger"
@@ -138,4 +139,5 @@
 		shoot_delay = 1.5,
 	)
 
-	value = 800
+	value = 1600
+	value_burgerbux = 1

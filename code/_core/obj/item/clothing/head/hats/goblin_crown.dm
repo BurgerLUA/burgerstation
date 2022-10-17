@@ -10,6 +10,8 @@
 
 	value = 1000
 
+	value_burgerbux = 1
+
 	var/cooldown_effect = 0
 
 /obj/item/clothing/head/hat/goblin_crown/post_move(atom/old_loc)

@@ -57,7 +57,7 @@
 
 /obj/item/container/syringe/medipen/adminomnizine
 	name = "god's butterfly pen"
-	value_burgerbux = 1000
+	value_burgerbux = 1
 
 /obj/item/container/syringe/medipen/adminomnizine/Generate()
 	reagents.add_reagent(/reagent/medicine/adminomnizine,reagents.volume_max)

@@ -1,4 +1,4 @@
-obj/item/clothing/back/wings/angel
+/obj/item/clothing/back/wings/angel
 	name = "angel wings"
 	desc = "Proof of divinity."
 	desc_extended = "A pair of absolutely divine angel wings. Good for the holy."
@@ -11,7 +11,9 @@ obj/item/clothing/back/wings/angel
 
 	speed_bonus = 0.25 //25% faster.
 
-obj/item/clothing/back/wings/angel/demon
+	value_burgerbux = 1
+
+/obj/item/clothing/back/wings/angel/demon
 	name = "demon wings"
 	desc = "Heaven's not my kind of place anyway."
 	desc_extended = "A pair of absolutely infernal demonic wings. Good for the profane."

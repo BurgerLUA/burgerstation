@@ -55,6 +55,8 @@
 
 	value = 1000
 
+	value_burgerbux = 1
+
 /obj/item/clothing/overwear/armor/knight/templar
 	name = "templar knight armor"
 	desc = "Fuck Elves."
@@ -78,8 +80,9 @@
 
 	size = SIZE_6
 
-
 	value = 300
+
+	value_burgerbux = 1
 
 /obj/item/clothing/overwear/armor/knight/daddy
 	name = "giant father's armor"

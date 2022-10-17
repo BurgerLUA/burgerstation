@@ -7,3 +7,5 @@
 	armor = /armor/hardsuit/combat/hammer
 
 	size = SIZE_4
+
+	value_burgerbux = 1

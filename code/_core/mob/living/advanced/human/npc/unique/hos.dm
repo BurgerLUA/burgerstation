@@ -3,8 +3,8 @@
 	desc = "Shitsec Prime."
 	species = "human"
 	dialogue_id = /dialogue/npc/hos/
-	sex = MALE
-	gender = MALE
+	sex = FEMALE
+	gender = FEMALE
 
 	dna = /dna/human
 

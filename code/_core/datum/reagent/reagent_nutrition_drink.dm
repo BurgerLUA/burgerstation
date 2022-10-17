@@ -41,6 +41,29 @@
 			var/mob/living/advanced/A = target
 			A.make_clean(clean_strength=cleaning_power)
 
+
+/reagent/nutrition/water/holy
+	name = "holy water"
+	desc = "What most lifeforms bless with."
+	color = "#99D5FF"
+	alpha = 100
+
+	flavor = "holy water"
+	flavor_strength = 0.5
+
+	particle_size = 0
+	liquid = 1
+
+	hydration_amount = 25
+	nutrition_quality_amount = 3
+	heal_factor = 2
+
+	cooled_reagent_temp = T0C - 1
+	cooled_reagent_amount = 1
+	cooled_reagent_mul = 0.25
+
+	value = 3
+
 /reagent/nutrition/ice
 	name = "ice"
 	desc = "What most lifeforms use to cool their drinks."

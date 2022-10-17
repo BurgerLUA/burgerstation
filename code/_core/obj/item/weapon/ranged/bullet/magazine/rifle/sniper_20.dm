@@ -75,6 +75,8 @@
 
 	pixel_x = -8
 
+	value_burgerbux = 1
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_static_spread()
 	return 0
 

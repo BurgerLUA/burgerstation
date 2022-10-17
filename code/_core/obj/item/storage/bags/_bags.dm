@@ -383,6 +383,7 @@
 	is_container = FALSE
 	dyeable = TRUE
 	color = "#D8C1B0"
+	value_burgerbux = 1
 
 /obj/item/storage/bagofhoarding/get_value()
 	. = ..()

@@ -19,6 +19,8 @@
 
 	item_slot_layer = 1
 
+	value_burgerbux = 1
+
 /obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/neck))

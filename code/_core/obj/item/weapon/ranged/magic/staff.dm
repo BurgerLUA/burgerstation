@@ -186,3 +186,5 @@
 
 	value = 1400
 
+	value_burgerbux = 1
+

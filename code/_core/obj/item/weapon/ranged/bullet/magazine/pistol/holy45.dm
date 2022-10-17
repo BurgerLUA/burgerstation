@@ -62,6 +62,8 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	value_burgerbux = 1
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/holy45/get_static_spread()

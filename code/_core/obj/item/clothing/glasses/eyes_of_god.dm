@@ -10,9 +10,7 @@
 	value = 5000
 
 	vision_mod = FLAG_VISION_ALL
-	sight_mod = SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_THRU
 	see_invisible = INVISIBLITY_GHOST
-	see_in_dark = VIEW_RANGE + ZOOM_RANGE
 
 	item_slot_layer = 1
 
@@ -20,25 +18,5 @@
 		ATTRIBUTE_WISDOM = 5
 	)
 
-/*
-/obj/item/clothing/glasses/eyes_of_god/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
 
-	. = ..()
-
-	if(is_inventory(old_location))
-		var/obj/hud/inventory/I = old_location
-		I.owner?.remove_color_mod("eyes")
-		I.owner?.remove_lighting_mod("\ref[src]")
-
-	if(new_location.item_slot & SLOT_FACE)
-		var/list/desired_color = list(
-			1.25,0,0,0,
-			0,1.25,0,0,
-			0,0,1.25,0,
-			0,0,0,1,
-			0,0,0,0
-		)
-		new_location.owner.add_color_mod("eyes",desired_color)
-		new_location.owner.add_lighting_mod("\ref[src]",100)
-*/
 

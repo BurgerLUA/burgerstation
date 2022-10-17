@@ -184,6 +184,8 @@
 
 	tier = 3
 
+	value_burgerbux = 1
+
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
 	stored_arrow = new stored_arrow(src)

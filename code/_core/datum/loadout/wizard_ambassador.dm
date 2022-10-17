@@ -45,5 +45,7 @@
 		/obj/item/clothing/neck/tie/black,
 		/obj/item/clothing/head/hat/wizard/real/red,
 
-		/obj/item/clothing/back/storage/dufflebag/poly/wizard
+		/obj/item/clothing/back/storage/dufflebag/poly/wizard,
+
+		/obj/item/weapon/ranged/magic/staff/fire
 	)

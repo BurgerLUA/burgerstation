@@ -12,3 +12,4 @@
 
 	value = 360
 
+	value_burgerbux = 1

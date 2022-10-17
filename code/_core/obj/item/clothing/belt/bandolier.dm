@@ -1,5 +1,5 @@
 /obj/item/clothing/belt/bandolier
-	name = "bandolier"
+	name = "error bandolier"
 	desc = "For the aspiring sweeper."
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of shotgun shells. ALT+Click to grab additional shells while already holding a shell."
 
@@ -8,7 +8,7 @@
 	dyeable = TRUE
 
 
-	value = 200
+	value = 0
 	size = SIZE_3
 
 	var/list/stored_shells = list()
@@ -17,6 +17,9 @@
 	var/max_shells = 0
 	var/shell_type = /obj/item/bullet_cartridge
 	var/handful = 0
+
+/obj/item/clothing/belt/bandolier/get_base_value()
+	return max_shells*3
 
 //only called on Finalise to calculate the shell count from memory
 /obj/item/clothing/belt/bandolier/proc/update_shell_count()
@@ -143,6 +146,7 @@
 	. = ..()
 
 /obj/item/clothing/belt/bandolier/shotgun_12
+	name = "12 gauge shotgun bandolier"
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of 12 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
 	max_shells = 200
@@ -150,6 +154,7 @@
 	handful = 5
 
 /obj/item/clothing/belt/bandolier/shotgun_20
+	name = "20 gauge shotgun bandolier"
 	desc_extended = "A dyed bandolier meant to hold a number of 20 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
 	icon = 'icons/obj/item/clothing/belts/bandolier_20.dmi'
 	max_shells = 240
@@ -157,7 +162,8 @@
 	handful = 5
 
 /obj/item/clothing/belt/bandolier/shotgun_23
-	desc_extended = "A surplus bandolier meant to hold a number of 23 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
+	name = "23x75mmR shotgun bandolier"
+	desc_extended = "A surplus bandolier meant to hold a number of 23x75mmR shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
 	icon = 'icons/obj/item/clothing/belts/bandolier_23.dmi'
 	max_shells = 160
 	shell_type = /obj/item/bullet_cartridge/shotgun_23

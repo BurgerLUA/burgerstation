@@ -5,6 +5,8 @@
 	icon = 'icons/obj/item/clothing/suit/maskcoat_grass.dmi'
 	worn_layer = LAYER_MOB_CLOTHING_COAT
 
+	armor = /armor/cloth/protective
+
 	size = SIZE_3
 
 	value = 450

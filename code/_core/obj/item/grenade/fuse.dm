@@ -9,7 +9,6 @@
 /obj/item/grenade/fuse/Generate()
 	. = ..()
 	var/obj/item/device/fuse/T = new fuse_type(src)
-	T.time_set = 50
 	stored_trigger = T
 	open = FALSE
 
@@ -52,6 +51,22 @@
 
 	value_burgerbux = 1
 	fuse_type = /obj/item/device/fuse/hehe
+
+
+
+/obj/item/grenade/fuse/holy
+	name = "\improper holy hand grenade"
+	icon_state = "holy"
+	desc = "Not a globus cruciger."
+	desc_extended = "And the Lord spake, saying, 'First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it."
+	value_burgerbux = 1
+
+	fuse_type = /obj/item/device/fuse/holy
+
+/obj/item/grenade/fuse/holy/Generate()
+	stored_containers += new /obj/item/container/simple/beaker/large/potassium(src)
+	stored_containers += new /obj/item/container/simple/beaker/large/water_holy(src)
+	return ..()
 
 
 /obj/item/grenade/fuse/fragmentation

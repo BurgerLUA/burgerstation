@@ -15,3 +15,5 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/drake)
 
 	value = 1100
+
+	value_burgerbux = 1

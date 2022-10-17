@@ -9,7 +9,7 @@
 	var/obj/structure/interactive/crate/closet/supply_pod/supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod
 	var/charges = 1
 
-	value = 1000
+	value = 0
 
 	weight = 4
 
@@ -80,11 +80,11 @@
 	value = 3000
 	value_burgerbux = 1
 
-
+/*
 /obj/item/supply_remote/mech/
 	value = 1000
 
-/*
+
 /obj/item/supply_remote/mech/ripley
 	name = "drop pod remote - Ripley Mining Mech with Drill + Laser Gun"
 	stored_object_types = list(/mob/living/vehicle/mech/modular/premade/ripley)
@@ -99,6 +99,7 @@
 		/obj/item/supply_crate/nanotrasen,
 		/obj/item/supply_crate/nanotrasen
 	)
+	value = 2000
 
 /obj/item/supply_remote/crates/syndicate
 	name = "drop pod remote - x4 Syndicate supply crates"
@@ -108,6 +109,7 @@
 		/obj/item/supply_crate/syndicate,
 		/obj/item/supply_crate/syndicate
 	)
+	value = 2000
 	supply_pod_type = /obj/structure/interactive/crate/closet/supply_pod/syndicate
 
 /obj/item/supply_remote/crates/slavic
@@ -118,6 +120,7 @@
 		/obj/item/supply_crate/slavic,
 		/obj/item/supply_crate/slavic
 	)
+	value = 2000
 
 /obj/item/supply_remote/crates/yankee
 	name = "drop pod remote - x4 Solarian supply crates"
@@ -127,6 +130,7 @@
 		/obj/item/supply_crate/solarian,
 		/obj/item/supply_crate/solarian
 	)
+	value = 2000
 
 /obj/item/supply_remote/barbecue
 	name = "drop pod remote - Barbecue Kit"

@@ -64,3 +64,43 @@
 	if(. && active && !sound_played && time_set <= 8)
 		play_sound('sound/meme/hehe.ogg',get_turf(src),range_max=VIEW_RANGE)
 		sound_played = TRUE
+
+
+/obj/item/device/fuse/holy
+	name = "holy fuse"
+
+	value_burgerbux = 1
+
+	time_set = 80
+	time_min = 0
+	time_max = 300
+
+/obj/item/device/fuse/holy/think()
+
+	. = ..()
+
+	if(active && . && !(time_set % 10) && is_living(last_caller))
+		var/mob/living/L = last_caller
+		var/obj/item/I = src.loc
+		if(!L.dead && istype(I))
+			var/obj/hud/inventory/INV = I.loc
+			if(istype(INV) && INV.owner == last_caller)
+				switch(time_set)
+					if(70)
+						L.do_say("One!")
+					if(60)
+						L.do_say("Two!")
+					if(50)
+						L.do_say("Five!")
+					if(40)
+						var/mob/living/found_ally
+						for(var/mob/living/L2 in oviewers(4,L))
+							if(L.loyalty_tag != L2.loyalty_tag)
+								continue
+							if(!L2.dead)
+								found_ally = L2
+								break
+						if(found_ally)
+							found_ally.do_say("Three, sir!")
+					if(30)
+						L.do_say("Three!")

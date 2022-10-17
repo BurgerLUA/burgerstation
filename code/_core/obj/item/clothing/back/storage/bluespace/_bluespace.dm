@@ -19,6 +19,8 @@
 
 	value = 3000
 
+	value_burgerbux = 1
+
 /obj/item/clothing/back/storage/satchel/bluespace
 	name = "satchel of holding"
 	desc = "Let me just get X from my inter-dimensional purse."
@@ -38,6 +40,8 @@
 	)
 
 	value = 2500
+
+	value_burgerbux = 1
 
 /obj/item/clothing/back/storage/satchel/bluespace/prank
 	name = "satchel of hold"

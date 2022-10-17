@@ -75,9 +75,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/runesword.dmi'
 	icon_state = "inventory"
 
-	value = 1500
-
-
 	projectile_speed = TILE_SIZE*0.25 - 1
 
 	projectile = /obj/projectile/magic/blade
@@ -94,4 +91,5 @@
 
 	value = 4000
 
+	value_burgerbux = 1
 
