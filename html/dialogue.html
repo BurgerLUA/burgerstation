@@ -1,11 +1,11 @@
 <html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 		<style>
 			body {
-				background-image:url('tile.png');
-				background-repeat: repeat;
-				color: white;
+				background-color: #FF0000;
+				color: #0000FF;
 				font-family: Arial Narrow,Arial,sans-serif;
 				font-size: 14px;
 				
@@ -18,14 +18,14 @@
 				padding: 0;				
 			}
 			a{
-				color:#96F1FF;
+				color: #00FF00;
 			
 			}
 			a:hover{
-				color:#969FFF;
+				color: #00FF00;
 			}
 			th,td {
-				border: 2px solid #5D96A0;
+				border: 2px solid #00FF00;
 			}
 			table#main_table {
 				width: 100%;
@@ -61,13 +61,20 @@
 			#goodbye {
 				height:32px;
 			}
+			hr {
+				border: 1px solid #0000FF
+			}
 			button.extended {
-				background:url('button_blue_extended.png');
-				width: 120px;
-				height: 20px;
-				border: none;
+				background-image: radial-gradient(#FF0000, #00FF00);
+				outline: 1px solid #0000FF;
+				outline-offset: -3px;
+				width: 130px;
+				height: 24px;
+				border-style: ridge;
+				border: 1px solid #00FF00;
+				border-radius: 5px;
 				cursor: pointer;
-				color: white;
+				color: #0000FF;
 				padding: 0px;				
 			}			
 		</style>

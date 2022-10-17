@@ -1,14 +1,23 @@
 /menu/dialogue/
 	file = 'html/dialogue.html'
-	resources = list(
-		"tile.png" = 'html/tile.png',
-	)
+	resources = list()
 
 /menu/dialogue/open(var/mob/user)
 	cache_resources(user)
 	winset(user, "map.dialogue","is-visible=true")
-	sleep(1)
-	user << output(file, "map.dialogue")
+
+	var/file_text = file2text(file)
+
+	var/list/color_scheme = DEFAULT_COLORS
+
+	if(user && user.client && user.client.settings)
+		color_scheme = user.client.settings.loaded_data["hud_colors"]
+
+	file_text = replacetextEx(file_text,"#FF0000",color_scheme[2])
+	file_text = replacetextEx(file_text,"#00FF00",color_scheme[3])
+	file_text = replacetextEx(file_text,"#0000FF",color_scheme[4])
+
+	user << output(file_text, "map.dialogue")
 
 /menu/dialogue/on_load(var/mob/user)
 
