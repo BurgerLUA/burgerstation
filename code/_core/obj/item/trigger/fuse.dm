@@ -61,7 +61,6 @@
 	. = ..()
 	if(. && active && time_set == 8)
 		play_sound('sound/meme/hehe.ogg',get_turf(src),range_max=VIEW_RANGE)
-		sound_played = TRUE
 
 
 /obj/item/device/fuse/holy

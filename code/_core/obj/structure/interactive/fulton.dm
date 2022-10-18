@@ -94,7 +94,7 @@
 				return 0
 			return .
 		else
-			L.to_chat(span("danger","You were captured and sold to a prison! Better luck next time!"))
+			L.to_chat(span("danger","You were captured! Better luck next time!"))
 		. = CEILING(L.get_value(),1)
 		L.death(TRUE)
 	else

@@ -44,7 +44,7 @@
 		if(is_living(caller))
 			var/mob/living/L2 = caller
 			if(!allow_hostile_action(L2.loyalty_tag,L))
-				L2.to_chat(span("warning","Your loyalty tag prevents you from extracting \the [L.name]!"))
+				caller.to_chat(span("warning","Your loyalty tag prevents you from extracting \the [L.name]!"))
 				return FALSE
 		if(L.boss)
 			caller.to_chat(span("warning","\The [L.name] is too large to be extracted!"))
@@ -55,7 +55,7 @@
 		if(istype(object,/obj/structure/interactive/crate/secure))
 			var/obj/structure/interactive/crate/secure/S = object
 			if(S.locked)
-				caller.to_chat(span("warning","\The [S.name] needs to be open in order to be sold!"))
+				caller.to_chat(span("warning","\The [S.name] needs to be unlocked in order to be sold!"))
 				return FALSE
 		for(var/k in C.contents)
 			var/atom/movable/M = k
@@ -63,7 +63,7 @@
 				return FALSE
 
 	if(value_check && object.get_value() <= 0)
-		caller.to_chat(span("warning","\The [object.name] cannot be sold!"))
+		caller.to_chat(span("warning","\The [object.name] cannot be sold as it has no value!"))
 		return FALSE
 
 	return TRUE
