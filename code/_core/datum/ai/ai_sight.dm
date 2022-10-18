@@ -32,7 +32,8 @@
 		if(length(M.light_sprite_sources)) //Target has has a flashlight on. Lightness is irrelevant.
 			lightness = 1
 	lightness = max(0,lightness)
-	lightness = lightness/night_vision
+	if(night_vision > 0)
+		lightness = lightness/night_vision
 	lightness = COSINE_CURVE(lightness)
 
 	// https://www.desmos.com/calculator/mc4gs7eia1
@@ -44,6 +45,9 @@
 			. *= 0.75
 		if(!L.z && L != objective_attack && !knows_about_lockers)
 			. *= 0.25
+		if(L == hunt_target)
+			. *= 2
+			. += 0.1
 
 	if(debug && ismob(A))
 		var/mob/M = A
