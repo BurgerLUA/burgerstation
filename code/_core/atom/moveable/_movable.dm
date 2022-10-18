@@ -235,7 +235,7 @@
 		if(!A.is_safe_to_delete(FALSE))
 			return FALSE
 
-	return ..()
+	return TRUE
 
 /atom/movable/set_density(var/desired_density=TRUE,var/force=FALSE)
 
