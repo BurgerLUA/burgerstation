@@ -331,6 +331,8 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 	if(length(shoot_sounds_to_use))
 		var/turf/T = get_turf(src)
 		play_sound(pick(shoot_sounds_to_use),T,range_min = VIEW_RANGE*0.5, range_max=VIEW_RANGE + ZOOM_RANGE*3,tracked = "\ref[src]")
+		if(src.stored_spellswap && src.stored_spellswap.desired_sound)
+			play_sound(src.stored_spellswap.desired_sound,T,range_max=VIEW_RANGE)
 		if(shoot_alert_to_use)
 			var/use_caller = TRUE
 			if(is_living(caller))
@@ -423,6 +425,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/heat_per_shot_to_use = max(0.25,1 - arm_strength)*heat_per_shot_mod*power_to_use*0.006*bullet_count_to_use*(10/clamp(weight,5,20))
 	var/view_punch_to_use = max(0.25,1 - arm_strength)*view_punch_mod*bullet_view_punch*power_to_use*0.04*TILE_SIZE*bullet_count_to_use*(1 + heat_current/0.2)
 	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
+
+	if(src.stored_spellswap && src.stored_spellswap.desired_projectile)
+		projectile_to_use = src.stored_spellswap.desired_projectile.
 
 	if(projectile_to_use)
 

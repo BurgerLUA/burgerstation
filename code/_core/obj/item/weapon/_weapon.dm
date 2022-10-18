@@ -33,6 +33,8 @@
 
 	var/company_type
 
+	var/obj/item/spellswap/stored_spellswap
+
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(tier == -1)
@@ -114,6 +116,8 @@
 		.["enchantment"]["strength"] = enchantment.strength
 		.["enchantment"]["charge"] = enchantment.charge
 		.["enchantment"]["cost"] = enchantment.cost
+	if(stored_spellswap)
+		SAVEATOM("stored_spellswap")
 
 /obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
@@ -125,3 +129,5 @@
 			enchantment.strength = object_data["enchantment"]["strength"]
 			enchantment.charge = object_data["enchantment"]["charge"]
 			enchantment.cost = object_data["enchantment"]["cost"]
+	if(object_data["stored_spellswap"])
+		LOADATOM("stored_spellswap")

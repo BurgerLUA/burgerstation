@@ -7,12 +7,25 @@
 		/loot/tempering_items = 1
 	)
 	loot_table_guaranteed = list(
-	 	/obj/item/portal_scroll
+	 	/obj/item/portal_scroll,
+	 	/loot/spellswap
 	 )
 	loot_count = 1
 
 /loot/treasure/boss
 	loot_count = 5
+
+
+/loot/spellswap
+	loot_table = list(
+		/obj/item/spellswap/magic_missile = 1,
+		/obj/item/spellswap/chaos = 1,
+		/obj/item/spellswap/fireball = 1,
+		/obj/item/spellswap/flame = 1,
+		/obj/item/spellswap/frost = 1,
+		/obj/item/spellswap/arcblade = 1,
+		/obj/item/spellswap/tesla = 1,
+	)
 
 /loot/tempering_items
 	loot_table = list(

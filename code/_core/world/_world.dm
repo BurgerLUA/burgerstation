@@ -28,27 +28,31 @@ var/global/world_state = STATE_STARTING
 	loop_checks = 1
 
 /world/New()
+
 	sleep_offline = FALSE
 	__detect_rust_g()
+
 	//TODO: Unfuck this.
-	createtypecache(/mob/living/)
+	createtypecache(/mob/living)
 	createtypecache(/mob/living/advanced)
 	createtypecache(/mob/living/advanced/player)
 	createtypecache(/mob/abstract/observer)
-	createtypecache(/obj/structure/)
-	createtypecache(/obj/item/)
+	createtypecache(/obj/structure)
+	createtypecache(/obj/item)
 	createtypecache(/obj/item/clothing)
 	createtypecache(/obj/item/currency)
-	createtypecache(/obj/item/organ/)
-	createtypecache(/obj/hud/)
-	createtypecache(/obj/hud/inventory/)
-	createtypecache(/turf/simulated/floor/)
-	createtypecache(/turf/simulated/wall/)
-	createtypecache(/turf/simulated/)
+	createtypecache(/obj/item/organ)
+	createtypecache(/obj/item/weapon)
+	createtypecache(/obj/hud)
+	createtypecache(/obj/hud/inventory)
+	createtypecache(/turf/simulated/floor)
+	createtypecache(/turf/simulated/wall)
+	createtypecache(/turf/simulated)
 	createtypecache(/turf/simulated/floor/tile)
-	createtypecache(/turf/unsimulated/)
+	createtypecache(/turf/unsimulated)
 
 	. = ..()
+
 	life()
 	sleep_offline = initial(sleep_offline)
 

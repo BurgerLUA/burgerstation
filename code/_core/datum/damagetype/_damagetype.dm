@@ -443,6 +443,18 @@ var/global/list/all_damage_numbers = list()
 			object_to_check = A.labeled_organs[O.id]
 	var/defense_rating_attacker = (attacker && attacker.health) ? attacker.health.get_defense(attacker,object_to_check,TRUE) : list()
 	if(debug) log_debug("Calculating [length(damage_to_deal)] damage types...")
+
+	if(is_weapon(weapon))
+		var/obj/item/weapon/I = weapon
+		if(I.stored_spellswap)
+			var/total_damage = 0
+			for(var/k in damage_to_deal)
+				total_damage += damage_to_deal[k]
+			damage_to_deal = list()
+			for(var/k in I.stored_spellswap.damage_conversion)
+				var/v = I.stored_spellswap.damage_conversion[k]
+				damage_to_deal[k] = v * total_damage
+
 	for(var/damage_type in damage_to_deal)
 		if(!damage_type)
 			continue
@@ -681,12 +693,18 @@ var/global/list/all_damage_numbers = list()
 
 	var/desired_volume = 25 + min(75,total_damage_dealt/2)
 
+	var/turf/T = get_turf(hit_object)
+
 	if(is_living(victim) && length(impact_sounds_flesh))
-		play_sound(pick(impact_sounds_flesh),get_turf(hit_object),range_max=VIEW_RANGE,volume=desired_volume)
+		play_sound(pick(impact_sounds_flesh),T,range_max=VIEW_RANGE,volume=desired_volume)
 
 	else if(length(impact_sounds))
-		var/turf/T = get_turf(hit_object)
 		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
+
+	if(is_weapon(weapon))
+		var/obj/item/weapon/I = weapon
+		if(I.stored_spellswap && I.stored_spellswap.desired_sound)
+			play_sound(I.stored_spellswap.desired_sound,T,range_max=VIEW_RANGE,volume=desired_volume)
 
 	return TRUE
 
