@@ -469,6 +469,7 @@
 #include "code\_core\datum\damagetype\unarmed\slaughter.dm"
 #include "code\_core\datum\damagetype\unarmed\stand.dm"
 #include "code\_core\datum\dialogue\_dialogue.dm"
+#include "code\_core\datum\dialogue\hostage\_hostage.dm"
 #include "code\_core\datum\dialogue\npc\chief_medical_officer.dm"
 #include "code\_core\datum\dialogue\npc\contractor.dm"
 #include "code\_core\datum\dialogue\npc\head_of_personel.dm"

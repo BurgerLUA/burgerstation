@@ -5,7 +5,7 @@
 	dna = /dna/human
 
 	ai = /ai/advanced/hostage
-	dialogue = /dialogue/npc/hostage/
+	dialogue_id = /dialogue/npc/hostage/
 	health_base = 200 //Extra health so the escort mission isn't fucking hell.
 	level = 8
 

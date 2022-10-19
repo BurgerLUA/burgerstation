@@ -41,7 +41,7 @@
 
 	. = ..()
 
-	var/mob/living/advanced/npc/unique/hostage/L = P.dialogue_target
+	var/mob/living/advanced/npc/hostage/L = P.dialogue_target
 
 	if(!L.ai) return
 
