@@ -54,7 +54,7 @@
 
 	. = ..()
 
-	if(. && (corner_icons || old_corner_icons) && SSsmoothing.initialized)
+	if(. && is_simulated(src) && (corner_icons || old_corner_icons) && SSsmoothing.initialized)
 		if(corner_icons != old_corner_icons)
 			SSsmoothing.queue_update_edges(src)
 		else

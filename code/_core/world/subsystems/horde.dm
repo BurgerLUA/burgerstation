@@ -146,8 +146,8 @@ SUBSYSTEM_DEF(horde)
 
 	var/list/valid_nodes = list()
 
-	for(var/x=-2,x<=2,x+=2) for(var/y=-2,y<=2,y+=2)
-		if(x==0 && y==0)
+	for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
+		if(x==0 && y==0) //Not sure if this will happen but w/e
 			continue
 		var/chunk_x = my_chunk_x + x
 		var/chunk_y = my_chunk_y + y
@@ -160,6 +160,8 @@ SUBSYSTEM_DEF(horde)
 			continue
 		for(var/k in C.nodes)
 			var/obj/marker/map_node/N = k
+			if(get_dist(N,victim) <= VIEW_RANGE + ZOOM_RANGE)
+				continue
 			if(!bypass_restrictions)
 				var/turf/TN = N.loc
 				var/area/AN = TN.loc

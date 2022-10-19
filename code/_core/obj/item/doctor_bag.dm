@@ -101,8 +101,9 @@
 		if(is_player(caller) && caller.client)
 			var/mob/living/advanced/player/P = caller
 			if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
-				var/experience_gain = -total_healed*5
-				P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
+				var/experience_gain = total_healed*5
+				if(experience_gain > 0)
+					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 
 	if(reagents)
 		var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
