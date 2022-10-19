@@ -77,9 +77,10 @@
 	if(!objective_attack)
 		return FALSE
 
-	if(projectile_delay+projectile_ramp > 0)
+	if(projectile_delay + projectile_ramp > 0)
 		projectile_delay--
-		return FALSE
+	else
+		projectile_delay = initial(projectile_delay)
 
 	if(projectile_count > 0)
 		play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
@@ -106,7 +107,6 @@
 		projectile_ramp++
 	else
 		projectile_count = initial(projectile_count)
-		projectile_delay = initial(projectile_delay)
 		projectile_ramp = 0
 
 	return TRUE

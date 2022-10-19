@@ -60,8 +60,8 @@
 		name_blacklist[initial_name] = TRUE
 		stored_types += C
 
-	stored_types += /obj/item/coin/antag_token
-	stored_types += /obj/item/storage/bags/goodie/loot_box
+	//stored_types += /obj/item/coin/antag_token
+	//stored_types += /obj/item/storage/bags/goodie/loot_box
 
 	. = ..()
 

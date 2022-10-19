@@ -9,7 +9,9 @@
 	allow_reagent_transfer_to = FALSE
 	allow_reagent_transfer_from = FALSE
 
-	value = 10
+	value = 100
+
+	value_burgerbux = 1
 
 /obj/item/container/edible/supermatter_cheese/get_value()
 	return get_base_value()

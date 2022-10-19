@@ -291,7 +291,8 @@
 	else if(stun_immunity < 0)
 		stun_immunity = min(stun_immunity + TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
 
-	handle_status_effects(TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
+	if(length(status_effects))
+		handle_status_effects(TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
 
 	if(client && !dead && health && next_heartbeat <= world.time)
 		var/desired_heartrate = 60
