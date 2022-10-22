@@ -101,7 +101,8 @@
 		'sound/effects/inventory/rustle5.ogg'
 	)
 
-	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_type = volume.
+	var/list/grinder_reagents = list() //Reagents that are created if this is processed in a grinder.
+	var/reagent_count             //"Fake" amount of reagents, used for calculations
 
 	var/flags_tool = FLAG_TOOL_NONE
 	var/tool_time = SECONDS_TO_DECISECONDS(5)

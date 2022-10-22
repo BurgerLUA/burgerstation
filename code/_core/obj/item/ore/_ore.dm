@@ -5,6 +5,7 @@ obj/item/ore/
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "rock_small"
 	var/ore_color = "#FFFFFF"
+	reagents = /reagent_container/ore
 
 /obj/item/ore/Finalize()
 	. = ..()
@@ -28,16 +29,22 @@ obj/item/ore/iron
 	name = "iron ore"
 	desc = "Commonly found in caves."
 	ore_color = "#B5634F"
+	grinder_reagents = /reagent/iron
+	reagent_count = 10
 	icon_state = "ore_iron"
 
 obj/item/ore/copper
 	name = "copper ore"
 	desc = "Commonly found on surfaces."
+	grinder_reagents = /reagent/copper
+	reagent_count = 10
 	ore_color = "#E28446"
 
 obj/item/ore/aluminium
 	name = "aluminium ore"
 	desc = "Commonly found in caves."
+	grinder_reagents = /reagent/aluminium
+	reagent_count = 10
 	ore_color = "#C4C4C4"
 
 obj/item/ore/nickel
@@ -59,6 +66,8 @@ obj/item/ore/silver
 	name = "silver ore"
 	desc = "Found deep underground, usually well hidden."
 	ore_color = "#E5E5EA"
+	grinder_reagents = /reagent/silver
+	reagent_count = 5
 	icon_state = "ore_silver"
 
 obj/item/ore/gold
@@ -86,7 +95,8 @@ obj/item/ore/carbon
 	name = "carbon ore"
 	desc = "Found in caves and deep underground."
 	ore_color = "#0A0A0A"
-	alchemy_reagents = list("carbon" = 15)
+	grinder_reagents = /reagent/carbon
+	reagent_count = 10
 	icon_state = "ore_coal"
 
 obj/item/ore/magnesium
@@ -98,4 +108,6 @@ obj/item/ore/plasma
 	name = "phoron plasma ore"
 	desc = "Commonly found in areas of great power."
 	ore_color = "#B200B6"
+	grinder_reagents = /reagent/fuel/phoron
+	reagent_count = 5
 	icon_state = "ore_phoron"
