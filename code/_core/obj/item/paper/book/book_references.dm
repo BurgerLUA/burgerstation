@@ -14,13 +14,14 @@
 	desc_extended = "A catalog featuring all the medical recipes known to man."
 	data = SSreagent.stored_book_data["Chemistry"].Copy()
 
+/*
 /obj/item/paper/book/cookingchem/Initialize()
 	. = ..()
 	name = "reference: Cooking Recipes"
 	desc = "I am the one who cooks burgers."
 	desc_extended = "A catalog featuring all the cooking recipes known to man."
 	icon_state = "chefbook"
-	data = SSreagent.stored_book_data["food"].Copy()
+	data =
 
 /obj/item/paper/book/bartending/Initialize()
 	. = ..()
@@ -28,4 +29,7 @@
 	desc = "Drinks are on you from now on"
 	icon_state = "barbook"
 	desc_extended = "A catalog featuring all the drink recipes known to man."
-	data = SSreagent.stored_book_data["Chemistry"].Copy()                                 //someone make these later
+	data =
+*/
+
+//I am not touching book code, someone please add these.

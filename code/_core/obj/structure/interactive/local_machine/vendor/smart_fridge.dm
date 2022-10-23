@@ -40,7 +40,7 @@
 		/obj/item/container/simple/alcohol/fernet,
 		/obj/item/container/simple/alcohol/gin,
 		/obj/item/container/simple/alcohol/grappa,
-		/obj/item/container/simple/alcohol/hearty_punch,
+		///obj/item/container/simple/alcohol/hearty_punch, this is craftable now 2u ethanol, 1u heal juice, 1u sugar
 		/obj/item/container/simple/alcohol/nothing,
 		/obj/item/container/simple/alcohol/rum,
 		/obj/item/container/simple/alcohol/tequila,
