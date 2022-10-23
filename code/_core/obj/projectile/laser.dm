@@ -27,6 +27,14 @@
 /obj/projectile/bullet/laser/sniper
 	icon_state = "sniper"
 
+/obj/projectile/bullet/laser/opticore
+	icon_state = "sniper"
+
+/obj/projectile/bullet/laser/opticore/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),25,owner,src,loyalty_tag)
+
 /obj/projectile/bullet/spit
 	icon = 'icons/obj/projectiles/spit.dmi'
 	icon_state = "spit"

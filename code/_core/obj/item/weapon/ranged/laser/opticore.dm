@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/energy/opticore
 	name = "\improper Opticore"
 	desc = "Tenno, Do you think me a weeb?"
-	desc_extended = "Emits some sort of energy that blasts a solid cannonball sized hole into whatever it hits. Discharges so much energy it actually has a kick to it."
+	desc_extended = "Blasts so much energy in such an unstable energy bubble that the first thing it hits will violently explode. Kinda like a mantis shrimps punch, but with lasers."
 	icon = 'icons/obj/item/weapons/ranged/laser/sniper.dmi'
 	value = 12000
 
@@ -9,11 +9,13 @@
 
 	bullet_color = "#FFFFFF"
 
-	projectile = /obj/projectile/bullet/laser/sniper
+	projectile = /obj/projectile/bullet/laser/opticore
 	ranged_damage_type = /damagetype/ranged/laser/rifle/opticore
 
+	view_punch_mod = 2.5
+	
 	projectile_speed = 62
-	shoot_delay = 50
+	shoot_delay = 100
 
 	automatic = FALSE
 
@@ -41,6 +43,8 @@
 
 	size = SIZE_5
 	weight = 36
+
+	contraband = TRUE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
