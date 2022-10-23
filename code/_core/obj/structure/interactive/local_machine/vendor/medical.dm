@@ -63,7 +63,19 @@
 	name = "chemical vendor"
 	icon_state = "smartfridge2"
 	stored_types = list(
-
+		/obj/item/container/simple/beaker/potassium/vendor,
+		/obj/item/container/simple/beaker/nitrogen/vendor,
+		/obj/item/container/simple/beaker/silicon/vendor,
+		/obj/item/container/simple/beaker/salt/vendor,
+		/obj/item/container/simple/beaker/sodium_chloride/vendor,
+		/obj/item/container/simple/beaker/ash/vendor,
+		/obj/item/container/simple/beaker/ammonia/vendor,
+		/obj/item/container/simple/beaker/sulfur/vendor,
+		/obj/item/container/simple/beaker/chlorine/vendor,
+		/obj/item/container/simple/beaker/phosphorous/vendor,
+		/obj/item/container/simple/beaker/oxygen/vendor,
+		/obj/item/container/simple/beaker/hydrogen/vendor,
+		/obj/item/container/simple/beaker/ethanol/vendor
 	)
 
 /obj/structure/interactive/vending/medical/wardrobe

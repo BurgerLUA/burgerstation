@@ -9,7 +9,7 @@
 	heal_bleeding = TRUE
 	amount_max = 10
 
-	value = 5
+	value = 30
 
 /obj/item/container/healing/bandage/prank
 	name = "badages"
@@ -35,7 +35,7 @@
 	treatment_time_mul = 1
 	heal_burn = 50
 	heal_burn_percent = 0
-	value = 5
+	value = 30
 
 /obj/item/container/healing/ointment/advanced
 	name = "infused ointment (silver sulfadiazine)"
@@ -56,12 +56,14 @@
 	heal_bleeding = TRUE
 	amount_max = 10
 
-	value = 20
+	value = 80
 
 /obj/item/container/healing/trauma_kit/advanced
 	name = "infused trauma kit (styptic powder)"
 	desc = "I knew something was missing."
 	desc_extended = "Trauma Kits with added styptic powder to the bandages and antiseptics, allowing for even better recovery."
+
+	value = 100
 
 /obj/item/container/healing/trauma_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/styptic_powder,50)
@@ -80,7 +82,7 @@
 	heal_bleeding = TRUE
 	amount_max = 4
 
-	value = 80
+	value = 150
 
 	organic = FALSE
 
@@ -103,7 +105,7 @@
 	heal_brute_percent = -2
 	amount_max = 3
 
-	value = 120
+	value = 200
 
 	organic = TRUE
 
@@ -127,12 +129,14 @@
 	heal_burn_percent = 10
 	amount_max = 10
 
-	value = 20
+	value = 80
 
 /obj/item/container/healing/burn_kit/advanced
 	name = "infused burn kit (silver sulfadiazine)"
 	desc = "I can't believe they still cheaped out on the silver sulfadiazine."
 	desc_extended = "Burn kits whose contents have been infused with Silver Sulfadiazine. A great lesson in how Capitalism will never provide to your needs."
+
+	value = 100
 
 /obj/item/container/healing/burn_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,50)

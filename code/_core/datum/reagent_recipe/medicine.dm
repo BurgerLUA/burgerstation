@@ -9,6 +9,7 @@
 /reagent_recipe/medicine/inaprovaline
 
 	name = "Inaprovaline"
+	desc = "a common stabilizer synthesised from basic elements and compounds. Only works when injected. Has a high overdose threshold. Provides the UNDYING effect."
 
 	required_reagents = list(
 		/reagent/carbon = 1,
@@ -23,6 +24,7 @@
 /reagent_recipe/medicine/bicaridine
 
 	name = "Bicaridine"
+	desc = "Red for brute."
 
 	required_reagents = list(
 		/reagent/carbon = 1,
@@ -36,6 +38,7 @@
 /reagent_recipe/medicine/dylovene
 
 	name = "Dylovene"
+	desc = "Green for toxin."
 
 	required_reagents = list(
 		/reagent/nitrogen = 1,
@@ -50,6 +53,7 @@
 /reagent_recipe/medicine/tricordrazine
 
 	name = "Tricordrazine"
+	desc = "Heals everything except for oxygen loss."
 
 	required_reagents = list(
 		/reagent/medicine/inaprovaline = 1,
@@ -64,6 +68,7 @@
 /reagent_recipe/medicine/synthflesh
 
 	name = "Synthflesh"
+	desc = "Experimental synthetic flesh. Significantly heals brute and burn damage of the affected limb instantly. Warning: Do not use on open cuts."
 
 	required_reagents = list(
 		/reagent/medicine/bicaridine = 1,
@@ -78,6 +83,7 @@
 /reagent_recipe/medicine/dexalin
 
 	name = "Dexalin"
+	desc = "Blue for oxy."
 
 	required_reagents = list(
 		/reagent/fuel/acetone = 1,
@@ -92,6 +98,7 @@
 /reagent_recipe/medicine/kelotane
 
 	name = "Kelotane"
+	desc = "Yellow for burn."
 
 	required_reagents = list(
 		/reagent/carbon = 1,
@@ -105,6 +112,7 @@
 /reagent_recipe/medicine/charcoal
 
 	name = "Charcoal"
+	desc = "Purges poisons from the system while healing a slight amount of toxins. Works just as well when consumed."
 
 	required_reagents = list(
 		/reagent/ash = 1,
@@ -122,7 +130,10 @@
 
 
 /reagent_recipe/medicine/silver_sulfadiazine
+
 	name = "Silver Sulfadiazine"
+	desc = "Heals burn damage. Only works when applied to skin."
+
 	required_reagents = list(
 		/reagent/ammonia = 1,
 		/reagent/silver = 1,
@@ -136,7 +147,10 @@
 	)
 
 /reagent_recipe/medicine/styptic_powder
+
 	name = "Styptic Powder"
+	desc = "Heals brute damage. Only works when applied to skin."
+
 	required_reagents = list(
 		/reagent/aluminium = 1,
 		/reagent/fuel/welding = 1,
@@ -149,7 +163,10 @@
 
 
 /reagent_recipe/medicine/epinephrine
+
 	name = "Epinephrine"
+	desc = "Used for reviving dying patients. Provides the ADRENALINE! effect for a short period of time."
+
 	required_reagents = list(
 		/reagent/fuel/acetone = 1,
 		/reagent/fuel/diethylamine = 1,
@@ -164,7 +181,10 @@
 
 
 /reagent_recipe/medicine/antihol
+
 	name = "Antihol"
+	desc = "Purges alcohol from your system quickly."
+
 	required_reagents = list(
 		/reagent/medicine/charcoal = 1,
 		/reagent/copper = 1,
@@ -176,7 +196,10 @@
 	)
 
 /reagent_recipe/medicine/synthblood
+
 	name = "Synthblood"
+	desc = "A special synthetic blood that replicates the blood type of any organic being when injected. Usually more expensive than just using real blood, however it has some chemical applications."
+
 	required_reagents = list(
 		/reagent/medicine/inaprovaline = 1,
 		/reagent/iron = 1,

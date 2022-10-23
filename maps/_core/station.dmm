@@ -4722,7 +4722,7 @@
 /area/burgerstation/medical/lobby)
 "rF" = (
 /obj/marker/spawning/window,
-/turf/simulated/floor/tile,
+/turf/simulated/floor/plating,
 /area/burgerstation/medical/chemistry)
 "rG" = (
 /obj/structure/interactive/power/apc{
@@ -8432,7 +8432,7 @@
 /area/burgerstation/medical/chemistry)
 "Ga" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/tile,
+/turf/simulated/floor/plating,
 /area/burgerstation/medical/chemistry)
 "Ho" = (
 /obj/structure/interactive/disposals/pipe/ending{
@@ -8510,7 +8510,7 @@
 /area/burgerstation/mining)
 "Na" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/tile,
+/turf/simulated/floor/plating,
 /area/burgerstation/medical/lobby)
 "Ny" = (
 /obj/decal/hazard/black,
