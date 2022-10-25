@@ -178,12 +178,15 @@
 /obj/item/weapon/ranged/wand/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("socketed_spellgem")
+	SAVEVAR("sockets")
 	SAVELISTATOM("socketed_supportgems")
 
 /obj/item/weapon/ranged/wand/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	LOADATOM("socketed_spellgem")
+	LOADVAR("sockets")
 	LOADLISTATOM("socketed_supportgems")
+	
 
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
