@@ -245,9 +245,9 @@
 		owner.update_sprite()
 
 	if(volume_current > volume_max && volume_max > 0)
-		var/difference = volume_current - volume_max
+		var/difference = round((volume_current - volume_max),REAGENT_ROUNDING)
 		var/chosen_reagent = stored_reagents[length(stored_reagents)]
-		remove_reagent(chosen_reagent,CEILING(difference,1))
+		remove_reagent(chosen_reagent,difference)
 
 	if(volume_current)
 		SSreagent.all_temperature_reagent_containers |= src
@@ -345,7 +345,7 @@
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/required_amount = found_recipe.required_reagents[k]
 		var/amount_to_remove = portions_to_make * required_amount
-		remove_reagent(k,amount_to_remove,FALSE,FALSE)
+		remove_reagent(k,round(amount_to_remove,REAGENT_ROUNDING),FALSE,FALSE)
 		amount_removed += amount_to_remove
 
 	update_container(FALSE)
@@ -353,8 +353,7 @@
 	for(var/k in found_recipe.results)
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/v = found_recipe.results[k] * portions_to_make
-		add_reagent(k,v,desired_temperature,FALSE,FALSE,caller)
-
+		add_reagent(k,round(v,REAGENT_ROUNDING),desired_temperature,FALSE,FALSE,caller)
 	found_recipe.on_react(caller,src,portions_to_make)
 
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
@@ -374,18 +373,12 @@
 
 /reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
-	if(amount > 0)
-		amount = FLOOR(amount,REAGENT_ROUNDING)
-	else if(amount < 0)
-		amount = CEILING(amount,REAGENT_ROUNDING)
-
+	if(!amount || amount == 0 || (amount < REAGENT_ROUNDING && -REAGENT_ROUNDING < amount)) //If amount is less than "Possible" nothing happens.
+		return 0	
 	var/reagent/R = REAGENT(reagent_type)
 
 	if(!R)
 		CRASH("Reagent Error: Tried to add/remove an invalid reagent ([reagent_type]) to [owner.get_debug_name()]!")
-
-	if(!amount)
-		return 0
 
 	if(temperature == TNULL || R.abstract)
 		if(owner)
@@ -400,16 +393,16 @@
 	var/previous_amount = stored_reagents[reagent_type]
 	var/previous_temp = stored_reagents_temperature[reagent_type]
 
-	if(volume_current + amount > volume_max)
-		amount = volume_max - volume_current
-
-	if(amount == 0)
-		return 0
+	if((volume_current + amount) > volume_max)
+		amount = round(volume_max - volume_current,REAGENT_ROUNDING)
 
 	. = amount //This is the REAL WORLD AMOUNT that is added. This is used for removing stuff.
 
+	if(amount)
+		stored_reagents[reagent_type] += amount
+
 	if(amount > 0)
-		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
+		R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 		var/mob/living/L
 		if(src.owner)
 			if(is_living(src.owner))
@@ -417,10 +410,9 @@
 			else if(is_living(src.owner.loc))
 				L = src.owner.loc
 		if(L)
-			amount = R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
+			R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
 
-	if(amount)
-		stored_reagents[reagent_type] += amount
+	
 
 	if(amount > 0) //Temperature stuff.
 		if(!previous_amount || !previous_temp || previous_temp == TNULL) //Fallback nonsense.
@@ -430,7 +422,7 @@
 		else
 			stored_reagents_temperature[reagent_type] = temperature
 
-	if(stored_reagents[reagent_type] <= 0)
+	if(stored_reagents[reagent_type] < REAGENT_ROUNDING)
 		R.on_remove(src)
 		var/mob/living/L
 		if(is_living(src.owner))
@@ -504,7 +496,7 @@
 
 		var/amount_transfered = target_container.add_reagent(
 			r_id,
-			ratio*amount,
+			round(ratio*amount,REAGENT_ROUNDING),
 			temp,
 			should_update=FALSE,
 			check_recipes=FALSE,
