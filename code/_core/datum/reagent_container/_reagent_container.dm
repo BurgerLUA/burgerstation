@@ -203,7 +203,7 @@
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
-		stored_reagents[r_id] = round(stored_reagents[r_id],REAGENT_ROUNDING)
+		stored_reagents[r_id] = FLOOR(stored_reagents[r_id],REAGENT_ROUNDING)
 
 		if(R.lethal) contains_lethal = TRUE
 
@@ -245,9 +245,9 @@
 		owner.update_sprite()
 
 	if(volume_current > volume_max && volume_max > 0)
-		var/difference = volume_current - volume_max
+		var/difference = CEILING((volume_current - volume_max),REAGENT_ROUNDING)
 		var/chosen_reagent = stored_reagents[length(stored_reagents)]
-		remove_reagent(chosen_reagent,CEILING(difference,1))
+		remove_reagent(chosen_reagent,difference)
 
 	if(volume_current)
 		SSreagent.all_temperature_reagent_containers |= src
@@ -374,11 +374,16 @@
 
 /reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
-	if(amount > 0)
+
+	if(volume_current + amount > volume_max)
+		amount = FLOOR(volume_max - volume_current,REAGENT_ROUNDING)
+
+	if(amount == 0)
+		return 0
+	else if(amount > 0)
 		amount = FLOOR(amount,REAGENT_ROUNDING)
 	else if(amount < 0)
 		amount = CEILING(amount,REAGENT_ROUNDING)
-
 	var/reagent/R = REAGENT(reagent_type)
 
 	if(!R)
@@ -400,13 +405,10 @@
 	var/previous_amount = stored_reagents[reagent_type]
 	var/previous_temp = stored_reagents_temperature[reagent_type]
 
-	if(volume_current + amount > volume_max)
-		amount = volume_max - volume_current
-
-	if(amount == 0)
-		return 0
-
 	. = amount //This is the REAL WORLD AMOUNT that is added. This is used for removing stuff.
+
+	if(amount)
+		stored_reagents[reagent_type] += amount
 
 	if(amount > 0)
 		amount = R.on_add(src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
@@ -418,9 +420,6 @@
 				L = src.owner.loc
 		if(L)
 			amount = R.on_add_living(L,src,amount,previous_amount,caller) //This is the VIRTUAL AMOUNT that is actually added.
-
-	if(amount)
-		stored_reagents[reagent_type] += amount
 
 	if(amount > 0) //Temperature stuff.
 		if(!previous_amount || !previous_temp || previous_temp == TNULL) //Fallback nonsense.
@@ -475,6 +474,7 @@
 
 	amount = min(amount,volume_current)
 
+
 	if(caller && target_container.owner)
 
 		var/mob/living/L1 = caller
@@ -499,7 +499,7 @@
 		if(R.abstract && !include_abstract)
 			continue
 		var/volume = stored_reagents[r_id]
-		var/ratio = volume / old_volume
+		var/ratio = CEILING(volume / old_volume,REAGENT_ROUNDING)
 		var/temp = stored_reagents_temperature[r_id]
 
 		var/amount_transfered = target_container.add_reagent(
