@@ -163,7 +163,7 @@ SUBSYSTEM_DEF(chunk)
 			MS.process()
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
 
-
+/* //this was a stipid idea
 	for(var/k in unclean_chunks)
 		var/chunk/C = k
 
@@ -187,3 +187,4 @@ SUBSYSTEM_DEF(chunk)
 			if(!SShorde.send_squad(P,/mob/living/advanced/npc/beefman,horde_count_override=enemies_to_send,bypass_restrictions=TRUE))
 				continue
 			max_enemies_to_send -= enemies_to_send
+/*
