@@ -27,10 +27,10 @@
 /obj/projectile/bullet/laser/sniper
 	icon_state = "sniper"
 
-/obj/projectile/bullet/laser/opticore
+/obj/projectile/bullet/laser/opticor
 	icon_state = "sniper"
 
-/obj/projectile/bullet/laser/opticore/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/bullet/laser/opticor/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
 		explode(get_turf(hit_atom),25,owner,src,loyalty_tag)

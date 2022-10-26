@@ -47,7 +47,7 @@
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE*5
 
-/damagetype/ranged/laser/rifle/opticore
+/damagetype/ranged/laser/rifle/opticor
 	attack_damage_base = list(
 		LASER = 400,
 		HEAT = 80,

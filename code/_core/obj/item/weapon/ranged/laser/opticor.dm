@@ -1,16 +1,16 @@
-/obj/item/weapon/ranged/energy/opticore
-	name = "\improper Opticore"
+/obj/item/weapon/ranged/energy/opticor
+	name = "\improper Opticor"
 	desc = "Tenno, Do you think me a weeb?"
 	desc_extended = "Blasts so much energy in such an unstable energy bubble that the first thing it hits will violently explode. Kinda like a mantis shrimps punch, but with lasers."
-	icon = 'icons/obj/item/weapons/ranged/laser/sniper.dmi'
-	value = 12000
+	icon = 'icons/obj/item/weapons/ranged/laser/opticor.dmi'
+	value = 8000
 
 	company_type = "NanoTrasen"
 
 	bullet_color = "#FFFFFF"
 
-	projectile = /obj/projectile/bullet/laser/opticore
-	ranged_damage_type = /damagetype/ranged/laser/rifle/opticore
+	projectile = /obj/projectile/bullet/laser/opticor
+	ranged_damage_type = /damagetype/ranged/laser/rifle/opticor
 
 	view_punch_mod = 2.5
 	
@@ -69,13 +69,13 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-/obj/item/weapon/ranged/energy/opticore/get_static_spread()
+/obj/item/weapon/ranged/energy/opticor/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/opticore/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/opticor/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/energy/opticore/update_icon()
+/obj/item/weapon/ranged/energy/opticor/update_icon()
 
 	var/open_text = open_icon && open ? "_open" : ""
 
