@@ -187,4 +187,4 @@ SUBSYSTEM_DEF(chunk)
 			if(!SShorde.send_squad(P,/mob/living/advanced/npc/beefman,horde_count_override=enemies_to_send,bypass_restrictions=TRUE))
 				continue
 			max_enemies_to_send -= enemies_to_send
-/*
+*/
