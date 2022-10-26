@@ -7,7 +7,7 @@
 
 	shoot_delay = 10
 
-	bullet_count = 1
+	bullet_count = 2
 	projectile_speed = TILE_SIZE*0.5 - 1
 
 	projectile = /obj/projectile/magic/cultist

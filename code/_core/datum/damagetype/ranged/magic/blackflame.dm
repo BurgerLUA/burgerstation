@@ -1,8 +1,8 @@
 /damagetype/ranged/magic/blackflame/
 	attack_damage_base = list(
-		HEAT = 60*0.2,
-		ARCANE = 60*0.1,
-		DARK = 60*0.1
+		HEAT = 60*0.25,
+		ARCANE = 60*0.125,
+		DARK = 60*0.125
 	)
 
 	attribute_stats = list(

@@ -18,6 +18,8 @@
 
 	var/enchantment/enchantment
 
+	var/list/enchantment_whitelist[] //A whitelist of [enchantment.name] or [ALL] of enchants allowed on the weapon E.G. 'Blaze' or 'stagger'
+
 	can_wear = TRUE
 	item_slot = -1
 
@@ -107,6 +109,24 @@
 	update_sprite()
 	. = ..()
 
+/obj/item/weapon/clicked_on_by_object(mob/caller,atom/object,location,control,params)
+	if(istype(object,/obj/item/soulgem) && enchantment)
+		var/obj/item/soulgem/G = object
+		if(G.total_charge > 0 && enchantment.charge < enchantment.max_charge)
+			var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge)) 
+			enchantment.charge += chargediff
+			G.total_charge -= chargediff
+			if(!caller.is_player_controlled())
+				CRASH("How the flying fuck is a mob smart enough to recharge their enchanted weapon![caller.get_debug_name()] did it!")
+			var/mob/living/pcaller = caller //This is stupid and bad.
+			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.5)
+			if(G.total_charge <= 0)
+				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name],shattering it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], shattering it!"))
+				qdel(G)
+			else
+				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name]"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name]"))
+			return TRUE
+	. = ..()
 /obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
@@ -116,6 +136,7 @@
 		.["enchantment"]["strength"] = enchantment.strength
 		.["enchantment"]["charge"] = enchantment.charge
 		.["enchantment"]["cost"] = enchantment.cost
+		.["enchantment"]["max_charge"] = enchantment.max_charge
 	if(stored_spellswap)
 		SAVEATOM("stored_spellswap")
 
@@ -129,5 +150,7 @@
 			enchantment.strength = object_data["enchantment"]["strength"]
 			enchantment.charge = object_data["enchantment"]["charge"]
 			enchantment.cost = object_data["enchantment"]["cost"]
+			enchantment.max_charge = object_data["enchantment"]["max_charge"]
 	if(object_data["stored_spellswap"])
 		LOADATOM("stored_spellswap")
+

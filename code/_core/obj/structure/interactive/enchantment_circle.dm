@@ -104,7 +104,8 @@
 
 	var/obj/item/soulgem/soulgem = locate() in stored_items
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
-	if(weapon_to_enchant && !istype(weapon_to_enchant,/obj/item/weapon/melee) && !istype(weapon_to_enchant,/obj/item/weapon/ranged/bow))
+	//if(weapon_to_enchant && !istype(weapon_to_enchant,/obj/item/weapon/melee) && !istype(weapon_to_enchant,/obj/item/weapon/ranged/bow))
+	if(weapon_to_enchant && (!weapon_to_enchant.enchantment_whitelist[stored_book.stored_enchantment.name] || !weapon_to_enchant.enchantment_whitelist["ALL"]))
 		weapon_to_enchant = null
 
 	if(!soulgem || !soulgem.total_charge || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)

@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/shock
 	attack_damage_base = list(
-		SHOCK = 45*0.4,
+		SHOCK = 45*0.35,
 		ARCANE = 45*0.1
 	)
 

@@ -19,6 +19,8 @@
 
 	var/mob/living/advanced/current_shooter
 
+	enchantment_whitelist = list("ALL")
+
 	override_icon_state = TRUE
 
 	ranged_damage_type = /damagetype/ranged/bow/

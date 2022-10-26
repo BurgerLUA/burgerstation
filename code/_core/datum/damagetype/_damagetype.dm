@@ -480,8 +480,13 @@ var/global/list/all_damage_numbers = list()
 			if(IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any magic damage if we resist magic.
 				damage_to_deal[damage_type] = 0
 				continue
+			damage_to_deal[damage_type] += clamp(defense_rating_attacker[damage_type]*0.1,0,damage_to_deal[damage_to_deal]*3) //Deal 10 more damage per 100 arcane resist of attacker,max of 3x damage
+			if(debug) log_debug("Victim's new [damage_type] damage due to attacker's [defense_rating_attacker[damage_type]] Total Taken: [damage_to_deal[damage_type]].")
+			/* 
+			If someone wants to make a variable to swap between dealing more peirce or damage, heres original code.
 			victim_defense -= defense_rating_attacker[damage_type]*0.5
 			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
+			*/
 		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)

@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/tesla
 	attack_damage_base = list(
-		SHOCK = 60*0.25
+		SHOCK = 60*0.3
 	)
 
 	attribute_stats = list(
@@ -27,7 +27,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		SHOCK = 20*0.25
+		SHOCK = 20*0.3
 	)
 
 	attribute_stats = list(

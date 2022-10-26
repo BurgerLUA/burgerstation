@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/flame
 	attack_damage_base = list(
-		HEAT = 45*0.4,
+		HEAT = 45*0.5,
 		ARCANE = 45*0.1
 	)
 

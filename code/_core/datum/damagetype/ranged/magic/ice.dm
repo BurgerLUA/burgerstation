@@ -27,8 +27,8 @@
 
 /damagetype/ranged/magic/fire
 	attack_damage_base = list(
-		PIERCE = 60*0.2,
-		HEAT = 60*0.3
+		PIERCE = 60*0.25,
+		HEAT = 60*0.35
 	)
 
 	attribute_stats = list(
