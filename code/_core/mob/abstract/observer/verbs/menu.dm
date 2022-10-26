@@ -4,6 +4,14 @@ var/global/antag_count = 0
 	set name = "Quickload Character"
 	set category = "Menu"
 
+	if(world_state < STATE_RUNNING)
+		to_chat(span("warning","The round is currently loading! Wait a bit!"))
+		return FALSE
+
+	if(world_state > STATE_RUNNING)
+		to_chat(span("warning","The round is currently ending! Wait until next round!"))
+		return FALSE
+
 	if(!src.client)
 		log_error("Attempted to quickload a character without a client!")
 		return FALSE
