@@ -2154,6 +2154,7 @@
 #include "code\_core\world\subsystems\material.dm"
 #include "code\_core\world\subsystems\menus.dm"
 #include "code\_core\world\subsystems\objs.dm"
+#include "code\_core\world\subsystems\ore.dm"
 #include "code\_core\world\subsystems\paper.dm"
 #include "code\_core\world\subsystems\payday.dm"
 #include "code\_core\world\subsystems\poster.dm"

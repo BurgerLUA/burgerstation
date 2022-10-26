@@ -50,6 +50,23 @@
 
 	result = /obj/item/container/edible/dynamic/bread
 
+/reagent_recipe/food/dough/corn
+	name = "corn flour dough"
+	desc = "dough made with corn flour"
+
+	required_reagents = list(
+
+		/reagent/nutrition/corn_flour = 3,
+		/reagent/nutrition/water = 2,
+	)
+
+	results = list(
+		/reagent/nutrition/dough/flour/processed = 5
+	)
+
+	result = /obj/item/container/edible/dynamic/bread
+
+
 
 /reagent_recipe/food/bread/
 
