@@ -67,13 +67,10 @@
 		if(!support_value)
 			log_error("Warning: Support value of [support_type] was [isnum(support_value) ? 0 : "NULL"] for [src.get_debug_name()].")
 			continue
-		var/additive_mults = 0
-		var/to_add_from_mod = 0
-		for(var/i = 1,i <= modifier_count[support_type], i++)
-			to_add_from_mod = (support_value * (1/i))
-			additive_mults += to_add_from_mod
-
-		attachment_stats[support_type] *= (additive_mults)
+		if((support_value / modifier_count) >= 1)
+			attachment_stats[support_type] = support_value - (modifier_count - 1)
+		else
+			attachment_stats[support_type] = support_value * (support_value / modifier_count)
 
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
