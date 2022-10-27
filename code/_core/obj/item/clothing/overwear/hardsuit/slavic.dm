@@ -24,7 +24,7 @@
 	icon = 'icons/obj/item/clothing/suit/skat.dmi'
 	desc = "RIP Stingray."
 	desc_extended = "This modern military armored suit is designed for assault operations in anomalous areas. Comprises a PSZ-12p heavy military armored suit, built-in compensation suit, and an anomalous protection bodysuit. The armor provides excellent protection against bullet and fragmentation damage, without greatly reducing the wearer's mobility. Does not come with an artifact container, as there's literally no artifacts anywhere. You know, different universe."
-
+	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	item_slot = SLOT_TORSO_ARMOR
 	worn_layer = LAYER_MOB_CLOTHING_HARDSUIT
