@@ -202,8 +202,14 @@
 		A.reagents.add_reagent(/reagent/toxin/blob_spore,50)
 		smoke(T,10,SECONDS_TO_DECISECONDS(3),A.reagents,A,255)
 		var/reagent/R = REAGENT(/reagent/blood/blob)
-		for(var/i=1,i<=9,i++)
-			create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+		for(var/i=1,i<=3,i++)
+			create_blood(
+				/obj/effect/cleanable/blood/splatter,
+				T,
+				R.color,
+				rand(-TILE_SIZE,TILE_SIZE),
+				rand(-TILE_SIZE,TILE_SIZE)
+			)
 
 	qdel(I2)
 

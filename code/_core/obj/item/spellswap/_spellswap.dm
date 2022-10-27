@@ -30,7 +30,7 @@
 			return TRUE
 
 		if(I.stored_spellswap)
-			qdel(I)
+			qdel(I.stored_spellswap)
 
 		src.drop_item(I)
 		I.stored_spellswap = src
