@@ -266,7 +266,7 @@
 			var/list/base_normals = direction_to_pixel_offset(gib_direction)
 			base_normals[1] += RAND_PRECISE(-0.25,0.25) //Variation
 			base_normals[2] += RAND_PRECISE(-0.25,0.25) //Variation
-			for(var/i=1,i<=clamp(organ_size,1,4),i++)
+			for(var/i=1,i<=clamp(organ_size,1,3),i++)
 				create_blood(
 					/obj/effect/cleanable/blood/gib,
 					T,
@@ -379,9 +379,9 @@
 	if(reagents)
 		reagents.metabolize(is_advanced(src.loc) ? src.loc : null)
 
-	if(bleeding >= 0.25 && is_advanced(src.loc))
+	if(bleeding >= 1 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
-		if(A.blood_type && A.health && A.blood_volume && prob(80)) //Blood optimizations!
+		if(A.blood_type && A.health && A.blood_volume && prob(25))
 			var/bleed_amount = bleeding*TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 			var/reagent/R = REAGENT(A.blood_type)
 			var/turf/T = get_turf(A)

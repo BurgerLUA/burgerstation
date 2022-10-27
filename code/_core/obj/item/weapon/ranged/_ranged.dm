@@ -5,6 +5,9 @@
 
 	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a longer barrel length. Also affects projectile speed.
 
+	var/manufacturing_quality = 1 //The general quality of the weapon. Higher values mean that the weapon is more accurate and handles heat/recoil/whatever better.
+	//NanoTrasen quality should be 1.
+
 	var/automatic = FALSE
 	var/max_bursts = 0 //Inherint maximum amount of bursts.
 	var/current_maxmium_bursts = 0 //Read only. Controlled by firemode changing.
@@ -270,13 +273,17 @@
 
 /obj/item/weapon/ranged/think()
 
-	if(queued_recoil > 0)
+
+
+
+	if(heat_max && last_shoot_time + min(shoot_delay*(weight/10),15) < world.time)
+		var/heat_to_remove = CEILING(0.03/max(1,weight) + heat_current*0.1,0.001)
+		heat_current = max(0,heat_current - heat_to_remove)
+		queued_recoil = 0
+	else if(queued_recoil > 0)
 		var/heat_to_add = CEILING(queued_recoil*0.25,0.001)
 		heat_current = min(heat_max,heat_current + heat_to_add)
 		queued_recoil = max(0,queued_recoil - heat_to_add)
-	else if(heat_max && last_shoot_time + (shoot_delay*(weight/10)) < world.time)
-		var/heat_to_remove = CEILING(0.03/max(1,weight) + heat_current*0.1,0.001)
-		heat_current = max(0,heat_current - heat_to_remove)
 
 	. = ..()
 

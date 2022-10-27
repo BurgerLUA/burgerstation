@@ -45,9 +45,10 @@
 			offset_x = (offset_x/norm_offset) * total_bleed_damage * 0.25
 			offset_y = (offset_y/norm_offset) * total_bleed_damage * 0.25
 
-			for(var/i=1,i<=clamp(round(total_bleed_damage/50),1,BLOOD_LIMIT_HARD),i++)
-				if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
-					break
+			if(total_bleed_damage >= 50)
+				for(var/i=1,i<=clamp(CEILING(total_bleed_damage*0.01,1),1,BLOOD_LIMIT_HARD),i++)
+					if(!create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,offset_x,offset_y))
+						break
 
 		if(health && total_bleed_damage && blood_type && blood_volume_max)
 			blood_volume = max(0,blood_volume-FLOOR(total_bleed_damage*0.02,1))
@@ -163,7 +164,7 @@
 			play_sound('sound/effects/impacts/savage_blade.ogg',T,volume=80)
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)
-				for(var/i=1,i<=rand(3,5),i++)
+				for(var/i=1,i<=rand(2,3),i++)
 					create_blood(/obj/effect/cleanable/blood/splatter/,T,R.color,rand(-TILE_SIZE*2,TILE_SIZE*2),rand(-TILE_SIZE*2,TILE_SIZE*2))
 		if(BLUNT)
 			add_status_effect(STAGGER,20,20)
@@ -181,7 +182,7 @@
 			if(blood_type)
 				var/reagent/R = REAGENT(blood_type)
 				var/desired_direction = get_dir(weapon,src)
-				for(var/i=1,i<=4,i++)
+				for(var/i=1,i<=3,i++)
 					T = get_step(T,desired_direction)
 					if(!T || !T.is_safe_move(check_contents=FALSE))
 						break
