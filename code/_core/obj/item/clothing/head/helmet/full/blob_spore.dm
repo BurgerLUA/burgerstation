@@ -84,10 +84,9 @@
 		if(O.health.adjust_loss_smart(brute=damage_ramp))
 			damage_ramp += initial(damage_ramp)
 			play_sound('sound/effects/blob_infection.ogg',T)
-			if(T && A.blood_type)
+			if(T && A.blood_type && prob(50))
 				var/reagent/R = REAGENT(A.blood_type)
-				for(var/i=1,i<=2,i++)
-					create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
+				create_blood(/obj/effect/cleanable/blood/splatter,T,R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
 		next_feed = world.time + SECONDS_TO_DECISECONDS(1)
 
 	if(A.ai && !A.is_busy() && prob(25))
