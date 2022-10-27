@@ -127,7 +127,7 @@
 		HOLY = 25,
 		DARK = -25,
 		FATIGUE = -50,
-		PAIN = 200,
+		PAIN = INFINITY,
 		ION = INFINITY,
 		SANITY = 0
 	)
