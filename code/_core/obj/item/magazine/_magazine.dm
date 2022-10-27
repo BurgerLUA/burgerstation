@@ -239,7 +239,7 @@
 
 /obj/item/magazine/gold/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/weapon/ranged/bullet/))
+	if(istype(object,/obj/item/weapon/ranged/bullet/magazine))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)

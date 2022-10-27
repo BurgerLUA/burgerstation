@@ -14,7 +14,7 @@ PATREONS
 ADDITIONAL CREDITS
 	UI Sounds obtained from: http://raisedbeaches.com/octave/
 
-	Sprites taken from AuroraStation, Baystation, /tg/station, Citadel Station.
+	Sprites taken from AuroraStation, Baystation, /tg/station, Citadel Station, Yogstation
 
 	Lighting taking from EuropaStation.
 

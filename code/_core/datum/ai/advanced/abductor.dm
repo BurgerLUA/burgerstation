@@ -6,7 +6,7 @@
 
 	var/mob/living/advanced/A = owner
 
-	if(!CALLBACK_EXISTS("\ref[src]_fuckoff") && objective_attack && objective_attack.has_status_effects(STAMCRIT,PAINCRIT))
+	if(is_living(objective_attack) && !CALLBACK_EXISTS("\ref[src]_fuckoff") && objective_attack && objective_attack.has_status_effects(STAMCRIT,PAINCRIT))
 		var/obj/hud/inventory/I = A.inventories_by_id[BODY_HAND_LEFT]
 		if(istype(I) && istype(I.get_top_object(),/obj/item/clothing/hands/gloves/recall))
 			A.do_say("Ayy lmao")

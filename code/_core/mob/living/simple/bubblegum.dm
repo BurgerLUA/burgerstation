@@ -123,12 +123,13 @@
 	if(!horizontal) play_sound('sound/effects/impacts/meteor_impact.ogg',get_turf(src),volume = charge_steps ? 50 : 25)
 
 	if(charge_steps > 0)
-		var/turf/simulated/T0 = get_turf(src)
-		var/turf/simulated/T1 = get_step(src,turn(dir,90))
-		var/turf/simulated/T2 = get_step(src,turn(dir,-90))
-		if(T0) create_blood(/obj/effect/cleanable/blood/splatter,T0,"#7F0000",rand(-8,8),rand(-8,8))
-		if(T1) create_blood(/obj/effect/cleanable/blood/splatter,T1,"#7F0000",rand(-8,8),rand(-8,8))
-		if(T2) create_blood(/obj/effect/cleanable/blood/splatter,T2,"#7F0000",rand(-8,8),rand(-8,8))
+		if(charge_steps <= 3)
+			var/turf/simulated/T0 = get_turf(src)
+			var/turf/simulated/T1 = get_step(src,turn(dir,90))
+			var/turf/simulated/T2 = get_step(src,turn(dir,-90))
+			if(T0) create_blood(/obj/effect/cleanable/blood/splatter,T0,"#7F0000",rand(-8,8),rand(-8,8))
+			if(T1) create_blood(/obj/effect/cleanable/blood/splatter,T1,"#7F0000",rand(-8,8),rand(-8,8))
+			if(T2) create_blood(/obj/effect/cleanable/blood/splatter,T2,"#7F0000",rand(-8,8),rand(-8,8))
 		charge_steps -= 1
 
 	return ..()
