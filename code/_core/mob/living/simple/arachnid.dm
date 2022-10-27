@@ -72,4 +72,6 @@
 		icon_state = "stun"
 	else if(ai && !ai.active)
 		icon_state = "inactive"
+	else
+		icon_state = "living"
 

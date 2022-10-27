@@ -54,13 +54,12 @@
 		reagents.add_reagent(/reagent/toxin/blob_spore,50)
 		smoke(T,5,SECONDS_TO_DECISECONDS(3),reagents,src,255)
 		var/reagent/R = REAGENT(blood_type)
-		for(var/i=1,i<=4,i++)
-			create_blood(
-				/obj/effect/cleanable/blood/splatter,
-				T,
-				R.color,
-				rand(-TILE_SIZE,TILE_SIZE),
-				rand(-TILE_SIZE,TILE_SIZE)
-			)
+		create_blood(
+			/obj/effect/cleanable/blood/splatter,
+			T,
+			R.color,
+			rand(-TILE_SIZE*0.25,TILE_SIZE*0.25),
+			rand(-TILE_SIZE*0.25,TILE_SIZE*0.25)
+		)
 
 	. = ..()

@@ -12,7 +12,7 @@
 
 	movement_delay = 1 //Lowest possible.
 
-	health_base = 100
+	health_base = 50
 
 	butcher_contents = list(
 		/obj/item/container/edible/dynamic/meat/raw_beefman,
@@ -24,7 +24,7 @@
 
 	death_threshold = 0
 
-	level = 35
+	level = 15
 
 /mob/living/advanced/npc/beefman/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
