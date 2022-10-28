@@ -18,6 +18,7 @@
 
 	company_type = "Wizard Federation"
 
+	var/utilitygem = FALSE //Should gem use cost_mana instead of calc? You must manually define its /shoot function as well!
 	var/cost_mana = 0 //generated on Initialize()
 
 /obj/item/weapon/ranged/spellgem/get_base_value()
@@ -31,7 +32,8 @@
 	. *= 1 - (spread_per_shot/360)
 	. *= 0.25
 	. = CEILING(.,1)
-
+	if(utilitygem)
+		. = cost_mana
 
 
 
@@ -186,3 +188,10 @@
 
 /obj/item/weapon/ranged/spellgem/quick(var/mob/caller,var/atom/object,location,params)
 	return shoot(caller,object,location,params)
+
+/obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier, click_called)
+	if(!utilitygem)
+		. = ..()
+	else
+		CRASH("You need to manually define the function of utility gem [object.get_debug_name()]")
+	

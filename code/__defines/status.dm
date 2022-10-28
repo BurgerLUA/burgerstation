@@ -99,3 +99,6 @@
 #define IMMORTAL "immortal"
 
 #define CRITPROTECTION "critprotection"
+
+//provides base 10 to all damagetypes of armor.
+#define TEMP_ARMOR "temp_armor"
