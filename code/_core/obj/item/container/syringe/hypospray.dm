@@ -26,7 +26,7 @@
 
 	value = 1600
 	icon = 'icons/obj/item/container/hypospray_combat.dmi'
-	icon_state = "combat_hypo"
+	icon_state = "hypo"
 
 	injection_sound = 'sound/effects/stimpack.ogg'
 
