@@ -37,10 +37,12 @@
 	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/ground_ore_deposit/proc/mine()
+/obj/structure/interactive/ground_ore_deposit/proc/mine_ore()
+
 	if(src.ore_score <= 0)
 		qdel(src)
 		return FALSE
+
 	src.ore_score--
 	var/obj/item/material/ore/O = new(src.loc)
 	O.material_id = src.material_id
@@ -52,9 +54,10 @@
 		O.drop_item(OB)
 	else
 		O.drop_item(get_step(src,pick(DIRECTIONS_ALL)))
-	if(ore_score <= 0)
+	if(src.ore_score <= 0)
 		qdel(src)
-	update_sprite()
+	else
+		update_sprite()
 	return TRUE
 
 /obj/structure/interactive/ground_ore_deposit/get_examine_list(var/mob/examiner)
