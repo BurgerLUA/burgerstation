@@ -1397,6 +1397,7 @@
 #include "code\_core\obj\item\clothing\shirt\normal.dm"
 #include "code\_core\obj\item\clothing\shirt\suit.dm"
 #include "code\_core\obj\item\clothing\shirt\syndicate.dm"
+#include "code\_core\obj\item\clothing\special\imaginary.dm"
 #include "code\_core\obj\item\clothing\underbottom\_underbottom.dm"
 #include "code\_core\obj\item\clothing\underbottom\underwear.dm"
 #include "code\_core\obj\item\clothing\undertop\_undertop.dm"

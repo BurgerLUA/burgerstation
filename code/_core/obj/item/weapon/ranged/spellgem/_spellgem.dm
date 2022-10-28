@@ -18,27 +18,28 @@
 
 	company_type = "Wizard Federation"
 
-	var/utilitygem = FALSE //Should gem use cost_mana instead of calc? You must manually define its /shoot function as well!
+	var/utilitygem = FALSE //Add Custom Shoot Function?
+	var/utility_cost = 100 // Mana cost for util gems.
 	var/cost_mana = 0 //generated on Initialize()
 
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
 	. *= 1 - (spread_per_shot/360)
 
-/obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
+/obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost() 
+	if(utilitygem)
+		return utility_cost
 	. = get_damage_per_hit(100)
 	. *= bullet_count
 	. *= projectile_speed/TILE_SIZE
 	. *= 1 - (spread_per_shot/360)
 	. *= 0.25
 	. = CEILING(.,1)
-	if(utilitygem)
-		. = cost_mana
 
 
 
 /obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
-	. = cost_mana
+	. = utilitygem ? utility_cost : cost_mana
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
 
@@ -157,6 +158,52 @@
 /obj/item/weapon/ranged/spellgem/get_movement_spread(var/mob/living/L)
 	return 0
 
+/obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called = FALSE)
+	if(!utilitygem)
+		. = ..()
+	else
+
+		if(!pre_shoot(caller,object,location,params,damage_multiplier))
+			return FALSE
+
+		handle_ammo(caller)
+
+		var/damage_multiplier_to_use = damage_multiplier * damage_mod
+
+		if(length(attachment_stats))
+			MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
+
+		var/quality_bonus = get_quality_bonus(0.5,2)
+		var/condition_to_use = 1
+		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
+		var/max_bursts_to_use = current_maxmium_bursts
+		
+
+		last_shoot_time = world.time
+		next_shoot_time = world.time + shoot_delay_to_use
+
+		damage_multiplier_to_use *= quality_bonus
+		condition_to_use = max(0,5 - max(0,quality_bonus*4))
+		condition_to_use += FLOOR(heat_current*5,1)
+
+		if(use_iff_tag && firing_pin)
+			firing_pin.on_shoot(caller,src)
+
+		update_sprite()
+
+		use_condition(condition_to_use)
+
+		if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
+			SSclient.queued_automatics[src] = list(
+			caller,
+			params,
+			damage_multiplier,
+			max_bursts_to_use,
+			shoot_delay_to_use
+		)
+
+		return TRUE
+
 /obj/item/weapon/ranged/spellgem/update_overlays()
 	. = ..()
 
@@ -189,9 +236,3 @@
 /obj/item/weapon/ranged/spellgem/quick(var/mob/caller,var/atom/object,location,params)
 	return shoot(caller,object,location,params)
 
-/obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier, click_called)
-	if(!utilitygem)
-		. = ..()
-	else
-		CRASH("You need to manually define the function of utility gem [object.get_debug_name()]")
-	

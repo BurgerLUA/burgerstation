@@ -38,6 +38,8 @@
 		/obj/item/weapon/ranged/spellgem/magic_missile,
 		/obj/item/weapon/ranged/spellgem/shock,
 		/obj/item/weapon/ranged/spellgem/tesla,
+		
+		/obj/item/weapon/ranged/spellgem/buff_armor,
 
 		/obj/item/supportgem/cost,
 		/obj/item/supportgem/damage,
