@@ -92,19 +92,19 @@ obj/structure/interactive/barricade/Finalize()
 	if(dir == NORTH)
 		pixel_x = 0
 		pixel_y = 0
-		desired_dense |= NORTH
+		desired_dense |= SOUTH
 	else if(dir == EAST)
 		pixel_x = 0
 		pixel_y = 0
-		desired_dense |= EAST
+		desired_dense |= WEST
 	else if(dir == SOUTH)
 		pixel_x = 0
 		pixel_y = 0
-		desired_dense |= SOUTH
+		desired_dense |= NORTH
 	else if(dir == WEST)
 		pixel_x = 0
 		pixel_y = 0
-		desired_dense |= WEST
+		desired_dense |= EAST
 
 	update_collisions(c_dir = desired_dense)
 
