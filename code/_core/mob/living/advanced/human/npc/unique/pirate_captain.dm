@@ -34,6 +34,8 @@
 
 	var/next_revive = 0
 
+	soul_size = SOUL_SIZE_RARE
+
 	blood_type = null
 
 	level = 70

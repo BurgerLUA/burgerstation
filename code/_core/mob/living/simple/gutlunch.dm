@@ -18,6 +18,8 @@
 	stamina_base = 50
 	mana_base = 25
 
+	soul_size = SOUL_SIZE_COMMON
+
 	size = SIZE_ANIMAL
 
 /mob/living/simple/gutlunch/post_move(var/atom/old_loc)

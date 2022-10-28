@@ -13,6 +13,8 @@
 
 	var/loadout
 
+	soul_size = SOUL_SIZE_COMMON
+
 	level = 20
 
 /mob/living/advanced/npc/unique/knight/Initialize()

@@ -4,6 +4,8 @@
 	ai = /ai/advanced/
 	class = /class/greytide
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/advanced/npc/greytide/Initialize()
 
 	. = ..()

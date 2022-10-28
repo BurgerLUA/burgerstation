@@ -22,6 +22,8 @@
 
 	dna = /dna/human
 
+	soul_size = SOUL_SIZE_COMMON
+
 	level = 22
 
 /mob/living/advanced/npc/rev/Initialize()

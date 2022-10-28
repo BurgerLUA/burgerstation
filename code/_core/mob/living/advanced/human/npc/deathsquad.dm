@@ -7,6 +7,8 @@
 
 	dialogue_id = /dialogue/npc/soldier
 
+	soul_size = SOUL_SIZE_UNCOMMON
+
 	loadout = /loadout/deathsquad
 
 	level = 80

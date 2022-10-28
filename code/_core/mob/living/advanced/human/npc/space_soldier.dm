@@ -8,6 +8,8 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 
+	soul_size = SOUL_SIZE_UNCOMMON
+
 	level = 70
 
 	var/list/possible_loadouts = list(

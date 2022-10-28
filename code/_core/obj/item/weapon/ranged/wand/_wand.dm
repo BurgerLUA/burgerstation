@@ -186,7 +186,7 @@
 	LOADATOM("socketed_spellgem")
 	LOADVAR("sockets")
 	LOADLISTATOM("socketed_supportgems")
-	
+	update_attachment_stats()
 
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)

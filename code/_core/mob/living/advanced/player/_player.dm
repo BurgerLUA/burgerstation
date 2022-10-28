@@ -33,6 +33,8 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	//var/spawn_protection = 0
 
+	soul_size = SOUL_SIZE_GODLY //The most powerful foe? Your fellow man.
+
 	respawn = FALSE
 
 	var/difficulty = DIFFICULTY_NORMAL

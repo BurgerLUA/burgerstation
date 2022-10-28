@@ -87,3 +87,35 @@
 		ARCANE = 0.25,
 		SHOCK = 0.75
 	)
+
+/obj/item/spellswap/negate
+	name= "SpellSwapper(tm) - NULL"
+	desc_extended = "Use this on a full magazine to trade the bullets for....Bullets?."
+
+/obj/item/spellswap/negate/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(is_weapon(object))
+
+		INTERACT_CHECK
+		INTERACT_DELAY(10)
+
+
+		var/obj/item/weapon/I = object
+
+		var/desired_choice = input("Are you sure you wish to spellswap \the [I.name] with \the [src.name]? This will remove the spellswap (If any)","Spellswap","Cancel") as null|anything in list("Yes","No","Cancel")
+
+		if(desired_choice != "Yes")
+			caller.to_chat(span("notice","You decide not to spellswap \the [I.name]."))
+			return TRUE
+
+		
+		qdel(I.stored_spellswap)
+
+		caller.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
+
+		var/turf/T = get_turf(caller)
+		play_sound(desired_sound,T)
+
+		return TRUE
+
+	. = ..()

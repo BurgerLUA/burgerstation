@@ -4,6 +4,8 @@
 	ai = /ai/advanced/ranged/
 	class = /class/wizard
 
+	soul_size = SOUL_SIZE_RARE
+
 	force_spawn = TRUE
 	boss = TRUE
 
