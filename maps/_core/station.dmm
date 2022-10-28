@@ -2466,7 +2466,7 @@
 "jh" = (
 /obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile,
-/area/burgerstation/medical)
+/area/burgerstation/medical/chemistry)
 "ji" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
@@ -2912,6 +2912,7 @@
 /obj/structure/interactive/disposals/pipe{
 	dir = 5
 	},
+/obj/structure/interactive/bed,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "kQ" = (
@@ -3039,11 +3040,9 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/science/research_director)
 "lq" = (
-/obj/structure/interactive/chair{
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "lr" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -3117,6 +3116,7 @@
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
 	},
+/obj/structure/interactive/bed,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "lE" = (
@@ -4003,7 +4003,7 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering/lobby)
 "oU" = (
-/obj/structure/interactive/bed,
+/obj/structure/interactive/vending/medical/medicine,
 /turf/simulated/floor/tile/morphing/medical,
 /area/burgerstation/medical)
 "oV" = (
@@ -4721,12 +4721,9 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/medical/lobby)
 "rF" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
-/obj/structure/interactive/crate/closet,
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/burgerstation/medical/chemistry)
 "rG" = (
 /obj/structure/interactive/power/apc{
 	dir = 4
@@ -5107,7 +5104,7 @@
 	icon_state = ""
 	},
 /turf/simulated/wall/metal,
-/area/burgerstation/medical)
+/area/burgerstation/medical/chemistry)
 "ta" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/structure/interactive/wire/red,
@@ -5283,9 +5280,11 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cafe/botany)
 "tH" = (
-/obj/structure/interactive/vending/medical/medicine,
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/obj/item/paper/book/chemistry,
+/obj/structure/table,
+/obj/structure/interactive/shop,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "tI" = (
 /obj/structure/interactive/misc/urinal{
 	dir = 4;
@@ -5308,13 +5307,14 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "tL" = (
-/obj/structure/interactive/vending/medical/wardrobe,
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/obj/structure/interactive/vending/medical/chemistry,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "tM" = (
-/obj/structure/interactive/vending/medical/equipment,
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/interactive/vending/chemistry/tools,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "tN" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/morphing/science,
@@ -8426,6 +8426,14 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/tile/morphing/mining,
 /area/burgerstation/mining)
+"FW" = (
+/obj/structure/interactive/vending/chemistry/wardrobe,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
+"Ga" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plating,
+/area/burgerstation/medical/chemistry)
 "Ho" = (
 /obj/structure/interactive/disposals/pipe/ending{
 	dir = 1
@@ -8437,6 +8445,11 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/mining,
 /area/burgerstation/mining)
+"In" = (
+/obj/structure/interactive/door/airlock/station/chemistry,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "IC" = (
 /obj/item/paper/cargo,
 /obj/structure/table/steel,
@@ -8477,6 +8490,11 @@
 /obj/structure/interactive/door/airlock/station/mining,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
+"Mo" = (
+/obj/structure/interactive/wire/green,
+/obj/structure/table,
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "Mq" = (
 /obj/structure/interactive/loadout_vendor,
 /obj/structure/interactive/disposals/pipe,
@@ -8490,6 +8508,10 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
+"Na" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plating,
+/area/burgerstation/medical/lobby)
 "Ny" = (
 /obj/decal/hazard/black,
 /obj/structure/interactive/intercom{
@@ -8510,14 +8532,34 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/mining)
+"QG" = (
+/obj/structure/interactive/vending/medical/equipment,
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 "QI" = (
 /obj/decal/hazard,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
+"SA" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
+"SV" = (
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/bed/sleeper/medical,
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "Tn" = (
 /obj/structure/interactive/vending/nanotrasen/gundrobe,
 /turf/simulated/floor/tile/morphing/mining,
 /area/burgerstation/mining)
+"Ty" = (
+/turf/simulated/floor/tile,
+/area/burgerstation/medical/chemistry)
+"TH" = (
+/turf/simulated/wall/metal,
+/area/burgerstation/medical/chemistry)
 "Us" = (
 /obj/structure/interactive/wire/green,
 /obj/decal/hazard{
@@ -8541,6 +8583,9 @@
 /obj/structure/interactive/vending/nanotrasen/ammo,
 /turf/simulated/floor/tile/morphing/mining,
 /area/burgerstation/mining)
+"WG" = (
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "Xx" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -8557,6 +8602,10 @@
 	},
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/mining)
+"Yj" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal,
+/area/burgerstation/medical/lobby)
 "Yq" = (
 /obj/structure/interactive/vending/nanotrasen/attachment,
 /turf/simulated/floor/tile/morphing/mining,
@@ -8584,6 +8633,10 @@
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/morphing/mining,
 /area/burgerstation/mining)
+"ZP" = (
+/obj/structure/interactive/vending/medical/wardrobe,
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 
 (1,1,1) = {"
 aa
@@ -43690,9 +43743,9 @@ lj
 fj
 Aw
 oU
-oU
-oU
-oU
+QG
+ZP
+rv
 BI
 uk
 uk
@@ -44455,7 +44508,7 @@ qY
 qj
 lj
 lk
-lk
+Na
 lk
 lj
 hs
@@ -44710,13 +44763,13 @@ rh
 sP
 rh
 qN
-lj
-fj
+Yj
 lq
 lq
 lq
-fj
-oR
+In
+SA
+ql
 oR
 oR
 ql
@@ -44969,9 +45022,9 @@ lU
 lj
 lj
 tH
-oR
-oR
-oR
+Ty
+Ty
+rF
 oR
 oR
 oR
@@ -45224,16 +45277,16 @@ lA
 nr
 lA
 nr
-qg
+TH
 tM
 jh
-vc
+Ty
+Ga
+oR
 oR
 vc
 oR
-vc
-oR
-ql
+Mo
 oR
 rv
 qg
@@ -45483,14 +45536,14 @@ hY
 lA
 sZ
 tL
+Ty
+Ty
+rF
+oR
 oR
 ln
 oR
-ln
-oR
-ln
-oR
-ql
+SV
 oR
 rv
 qg
@@ -45738,15 +45791,15 @@ CP
 oO
 CP
 nr
-qg
-fj
-kI
-pK
+TH
+FW
+WG
+WG
 rF
 pK
 kI
 pK
-pK
+kI
 qo
 Ay
 fj

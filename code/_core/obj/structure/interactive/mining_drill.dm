@@ -57,7 +57,8 @@
 
 	return TRUE
 
-/obj/structure/interactive/mining_drill/post_move()
+/obj/structure/interactive/mining_drill/post_move(var/atom/old_loc)
+	. = ..()
 	drill_depth = 0
 	found_deposit = null
 
@@ -87,33 +88,31 @@
 
 /obj/structure/interactive/mining_drill/proc/check_valid()
 
-	var/valid_setup = FALSE
 	for(var/obj/structure/interactive/mining_brace/MB in orange(1,src))
 		if(!MB.anchored || get_step(MB,MB.dir) != src.loc)
 			continue
 		var/obj/structure/interactive/mining_brace/MB2 = locate() in get_step(src,MB.dir).contents
 		if(!MB2 || !MB2.anchored || get_step(MB2,MB2.dir) != src.loc)
 			continue
-		valid_setup = TRUE
-		break
+		return TRUE
 
-	return valid_setup
-
+	return FALSE
 
 /obj/structure/interactive/mining_drill/think()
 
 	if(!found_deposit)
 		found_deposit = locate() in src.loc
 
-	 if(!anchored || !found_deposit || found_deposit.ore_score <= 0)
+	 if(!anchored || !found_deposit || found_deposit.ore_score <= 0 || found_deposit.qdeleting)
 	 	deactivate()
+	 	found_deposit = null
 	 	return FALSE
 
 	drill_depth++
 	if(drill_depth >= 100)
 		drill_counter++
 		if(drill_counter > 30)
-			found_deposit.mine()
+			found_deposit.mine_ore()
 			drill_counter = 0
 
 	return TRUE

@@ -56,6 +56,7 @@
 	alpha = 200
 
 	flavor = "oxygen"
+	value = 2
 
 	liquid = 0.25
 
@@ -114,6 +115,8 @@
 	name = "Solid Hydrogen"
 	color = "#7F0000"
 	alpha = 255
+
+	value = 2
 
 	particle_size = 0.75
 

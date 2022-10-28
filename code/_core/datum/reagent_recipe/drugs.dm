@@ -5,6 +5,7 @@
 /reagent_recipe/drugs/space_drugs
 
 	name = "Space Drugs"
+	desc = "bro... space drugs."
 
 	required_reagents = list(
 		/reagent/drug/lithium = 1,
@@ -20,6 +21,7 @@
 /reagent_recipe/drugs/space_dust
 
 	name = "Space Dust"
+	desc = "like space drugs, but more expensive."
 
 	required_reagents = list(
 		/reagent/fuel/acetone = 1,

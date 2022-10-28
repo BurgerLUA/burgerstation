@@ -136,7 +136,7 @@
 	desc = "What most lifeforms also breathe in but don't really use."
 	color = "#D9E2E2"
 	alpha = 200
-
+	value = 3
 	flavor = "cold"
 
 	liquid = 0.25
@@ -146,7 +146,7 @@
 	desc = "What most lifeforms do things with."
 	color = COLOR_BLACK
 	alpha = 225
-
+	value = 2
 	flavor = "dildos"
 
 	liquid = -0.25
@@ -156,7 +156,7 @@
 	desc = "What most lifeforms do things with."
 	color = "#ADADAD"
 	alpha = 255
-
+	value = 2
 	flavor = "bananas"
 
 	flavor_strength = 6
@@ -170,7 +170,7 @@
 	desc = "Down here, everything is salt."
 	color = "#FFFFF4"
 	alpha = 235
-
+	value = 1.5
 	flavor = "salt"
 	flavor_strength = 4
 
@@ -185,7 +185,7 @@
 	desc = "The purest form of salt. Harvested only from the saltiest of Burgerstation players."
 	color = "#FFFFFF"
 	alpha = 255
-
+	value = 2
 	flavor = "disgusting salt"
 	flavor_strength = 10
 
@@ -197,7 +197,7 @@
 	desc = "Ash from burning organic things."
 	color = "#A0A0A0"
 	alpha = 255
-
+	value = 2
 	flavor = "ash"
 	flavor_strength = 3
 
@@ -207,7 +207,7 @@
 	name = "Liquid Ammonia"
 	desc = "Ammonia from lifeforms."
 	alpha = 200
-
+	value = 2
 	color = "#EFEFEF"
 
 	flavor = "ammonia"
@@ -219,7 +219,7 @@
 	name = "Sulfur"
 	desc = "Sulfur from hell."
 	alpha = 200
-
+	value = 2
 	color = "#FFD800"
 
 	flavor = "sewer"
@@ -233,6 +233,7 @@
 	alpha = 200
 
 	color = "#C1D689"
+	value = 2.5
 
 	flavor = "chlorine"
 	flavor_strength = 8
@@ -333,7 +334,7 @@
 	desc = ""
 	color = "#FFFFFF"
 	alpha = 250
-
+	value = 2.5
 	flavor = "bitterness"
 	flavor_strength = 5
 
