@@ -5,6 +5,8 @@
 /reagent_recipe/explosion/holy_water_potassium
 	name = "Holy Water-Potassium Explosion"
 	category = "Explosions"
+	desc = "hallelujah!"
+
 	required_reagents = list(
 		/reagent/nutrition/water/holy = 1,
 		/reagent/potassium = 1
@@ -45,7 +47,9 @@
 
 /reagent_recipe/explosion/water_potassium
 	name = "Water-Potassium Explosion"
+	desc = "a grayshirt's favorite recipe."
 	category = "Explosions"
+
 	required_reagents = list(
 		/reagent/nutrition/water = 1,
 		/reagent/potassium = 1
@@ -82,6 +86,8 @@
 /reagent_recipe/explosion/smoke
 	name = "Sugar-Phosphorous-Potassium Smoke"
 	category = "Explosions"
+	desc = "PROBABLY a warcrime!"
+
 	required_reagents = list(
 		/reagent/nutrition/sugar = 1,
 		/reagent/phosphorous = 1,
@@ -102,6 +108,8 @@
 
 /reagent_recipe/explosion/potassium_perchlorate
 	name = "Potassium Perchlorate"
+	desc = "do. not. inhale."
+
 	required_reagents = list(
 		/reagent/potassium = 1,
 		/reagent/chlorine = 1,
@@ -114,6 +122,8 @@
 
 /reagent_recipe/explosion/flash_powder
 	name = "Aluminium Flash Powder"
+	desc = "blind your friends with this."
+
 	required_reagents = list(
 		/reagent/fuel/potassium_perchlorate = 1,
 		/reagent/aluminium = 1

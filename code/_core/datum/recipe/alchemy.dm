@@ -1,3 +1,4 @@
+/*
 /recipe/alchemy/
 	name = "smelting recipe"
 	desc = "A smelting recipe"
@@ -17,7 +18,4 @@
 
 	required_item_grid = list("c2" = "beaker")
 	required_items = list("ore_carbon")
-
-	recipe_type = "alchemy"
-
-	product_reagent = "carbon"
+*/
