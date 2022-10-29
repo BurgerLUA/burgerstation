@@ -92,6 +92,8 @@
 	name= "SpellSwapper(tm) - NULL"
 	desc_extended = "Use this on a full magazine to trade the bullets for....Bullets?."
 
+	value = 1000
+
 /obj/item/spellswap/negate/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_weapon(object))
