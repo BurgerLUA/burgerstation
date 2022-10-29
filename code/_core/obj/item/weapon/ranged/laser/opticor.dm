@@ -15,7 +15,9 @@
 	view_punch_mod = 2.5
 	
 	projectile_speed = 62
-	shoot_delay = 100
+	shoot_delay = 25
+
+	bullet_count = 3
 
 	automatic = FALSE
 
@@ -25,7 +27,7 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	charge_cost = CELL_SIZE_ADVANCED
+	charge_cost = CELL_SIZE_BASIC / 8
 
 	attachment_whitelist = list()
 
