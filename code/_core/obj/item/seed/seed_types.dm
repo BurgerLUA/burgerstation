@@ -174,7 +174,7 @@
 	growth_speed = 0.2
 
 	delete_after_harvest = TRUE
-
+/*
 /obj/item/seed/herb
 	plant_type = /plant_type/herb_red
 
@@ -213,7 +213,7 @@
 	growth_speed = 0.45
 
 	delete_after_harvest = TRUE
-
+*/
 /obj/item/seed/potato
 	plant_type = /plant_type/potato
 

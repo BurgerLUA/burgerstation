@@ -389,13 +389,13 @@
 	)
 
 	typical_volume = 20
-
+/*
 /plant_type/herb_red
 	name = "Red Herb"
 	desc = "A red herb. Harvested for its healing properties."
-	plant_icon_state = "herb"
-	harvest_icon_state = "herb"
-	seed_icon_state = "herb"
+	plant_icon_state = "rherb"
+	harvest_icon_state = "rherb"
+	seed_icon_state = "rherb"
 	plant_icon_count = 2
 	reagents = list(
 		/reagent/medicine/health_potion = 0.5,
@@ -407,10 +407,10 @@
 
 /plant_type/herb_blue
 	name = "blue Herb"
-	desc = "A red herb. Harvested for its magical properties."
-	plant_icon_state = "herb"
-	harvest_icon_state = "herb"
-	seed_icon_state = "herb"
+	desc = "A blue herb. Often used by mages."
+	plant_icon_state = "bherb"
+	harvest_icon_state = "bherb"
+	seed_icon_state = "bherb"
 	plant_icon_count = 2
 	reagents = list(
 		/reagent/medicine/mana_potion = 0.5,
@@ -420,15 +420,16 @@
 	typical_volume = 12
 
 /plant_type/herb_green
-	name = "blue Herb"
-	desc = "A red herb. Harvested for its magical properties."
-	plant_icon_state = "herb"
-	harvest_icon_state = "herb"
-	seed_icon_state = "herb"
-	plant_icon_count = 2
+	name = "green Herb"
+	desc = "A green herb. Full of stamina juice. Yum!"
+	plant_icon_state = "gherb"
+	harvest_icon_state = "gherb"
+	seed_icon_state = "gherb"
+	plant_icon_count = 3
 	reagents = list(
 		/reagent/medicine/stamina_potion = 0.5,
 		/reagent/medicine/vitamins = 0.5
 	)
 
 	typical_volume = 12
+*/ //decided against these personally, but they are there if needed
