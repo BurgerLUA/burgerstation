@@ -73,8 +73,7 @@
 		if((support_value / modifier_count) >= 1)
 			attachment_stats[support_type] = support_value - (modifier_count - 1)
 		else
-			attachment_stats[support_type] = support_value * (support_value / modifier_count)
-
+			attachment_stats[support_type] = support_value
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
 	else
@@ -84,7 +83,6 @@
 		attachment_stats["damage_multiplier"] *= W.wand_damage_multiplier
 	else
 		attachment_stats["damage_multiplier"] = W.wand_damage_multiplier
-
 	return TRUE
 
 
@@ -167,41 +165,20 @@
 			return FALSE
 
 		handle_ammo(caller)
-
-		var/damage_multiplier_to_use = damage_multiplier * damage_mod
-
-		if(length(attachment_stats))
-			MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
-
 		var/quality_bonus = get_quality_bonus(0.5,2)
 		var/condition_to_use = 1
 		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
-		var/max_bursts_to_use = current_maxmium_bursts
 		
 
 		last_shoot_time = world.time
 		next_shoot_time = world.time + shoot_delay_to_use
 
-		damage_multiplier_to_use *= quality_bonus
 		condition_to_use = max(0,5 - max(0,quality_bonus*4))
 		condition_to_use += FLOOR(heat_current*5,1)
-
-		if(use_iff_tag && firing_pin)
-			firing_pin.on_shoot(caller,src)
 
 		update_sprite()
 
 		use_condition(condition_to_use)
-
-		if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
-			SSclient.queued_automatics[src] = list(
-			caller,
-			params,
-			damage_multiplier,
-			max_bursts_to_use,
-			shoot_delay_to_use
-		)
-
 		return TRUE
 
 /obj/item/weapon/ranged/spellgem/update_overlays()

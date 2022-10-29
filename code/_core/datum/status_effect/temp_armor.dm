@@ -15,7 +15,7 @@
 	if(!is_advanced(owner))
 		return FALSE
 	var/mob/living/advanced/L = owner
-	for(var/i = 0, i < FLOOR(magnitude/10,1),i++)
+	for(var/i = 0, i < FLOOR(magnitude/2.5,1),i++)
 		var/fakeboi = new /obj/item/clothing/special/imaginary()
 		L.worn_objects += list(fakeboi)
 	return TRUE

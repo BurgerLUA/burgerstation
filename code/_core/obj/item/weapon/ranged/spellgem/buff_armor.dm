@@ -16,11 +16,17 @@
 	value = 800
 /obj/item/weapon/ranged/spellgem/buff_armor/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called)
 	if(istype(caller,/mob/living))
-		var/damage_multiplier_to_use = 1
 		. = ..()
+		var/quality_bonus = get_quality_bonus(0.5,2)
+		var/damage_multiplier_to_use = damage_multiplier * damage_mod
+		damage_multiplier_to_use *= quality_bonus
+		if(length(attachment_stats))
+			MUL(damage_multiplier_to_use,attachment_stats["damage_multiplier"])
 		var/mob/living/livingcaller = caller
-		livingcaller.add_status_effect(TEMP_ARMOR,damage_multiplier_to_use * 10,SECONDS_TO_DECISECONDS(damage_multiplier_to_use * 30))
-		caller.visible_message(span("warning","\The [caller.name] looks tougher!"),span("warning","You feel more resistant to damage!"))
-		return TRUE
+		if(livingcaller.status_effects[TEMP_ARMOR])
+			livingcaller.visible_message(span("warning","\The [livingcaller.name] looks dissapointedly at \the [src]."),span("warning","The Spell Fizzles!"))
+		else
+			livingcaller.visible_message(span("warning","\The [livingcaller.name] looks tougher!"),span("warning","You feel more resistant to damage!"))
+			livingcaller.add_status_effect(TEMP_ARMOR,damage_multiplier_to_use * 10,SECONDS_TO_DECISECONDS(damage_multiplier_to_use * 30))
 	else
 		CRASH("Nonliving atom [caller] is somehow using a [object], which shouldn't be possible!")
