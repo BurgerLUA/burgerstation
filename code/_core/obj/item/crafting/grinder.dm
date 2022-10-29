@@ -67,7 +67,7 @@
 		if(!I.allow_reagent_transfer_from)
 			qdel(I)
 		else
-			I.reagents.update_container()
+			I.reagents.update_container(caller)
 
 	if(!success)
 		caller.to_chat(span("warning","There are no valid items to process!"))
@@ -78,9 +78,9 @@
 		var/reagent/R = REAGENT(reagent_type)
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
-			var/amount_removed = C.reagents.remove_reagent(reagent_type,reagent_amount,FALSE)
+			var/amount_removed = -C.reagents.add_reagent(reagent_type,-reagent_amount,FALSE)
 			C.reagents.add_reagent(R.processed_reagent,amount_removed,temperature,FALSE,FALSE,caller = caller)
 
-	C.reagents.update_container()
+	C.reagents.update_container(caller)
 
 	return TRUE
