@@ -39,7 +39,7 @@
 
 
 /obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
-	. = utilitygem ? utility_cost : cost_mana
+	. = cost_mana
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
 
@@ -73,7 +73,7 @@
 		if((support_value / modifier_count) >= 1)
 			attachment_stats[support_type] = support_value - (modifier_count - 1)
 		else
-			attachment_stats[support_type] = support_value
+			attachment_stats[support_type] *= (1/modifier_count[support_type])
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
 	else

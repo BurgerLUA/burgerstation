@@ -6,7 +6,7 @@
 	minimum = SECONDS_TO_DECISECONDS(1)
 
 	default_duration = SECONDS_TO_DECISECONDS(30)
-	default_magnitude = 2
+	default_magnitude = 10
 
 	affects_dead = FALSE
 	var/to_block = list(BRUTE,BURN,TOX)
