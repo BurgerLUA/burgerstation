@@ -660,6 +660,7 @@
 #include "code\_core\datum\reagent_container\living.dm"
 #include "code\_core\datum\reagent_container\medicine.dm"
 #include "code\_core\datum\reagent_container\mop.dm"
+#include "code\_core\datum\reagent_container\ore.dm"
 #include "code\_core\datum\reagent_container\pill.dm"
 #include "code\_core\datum\reagent_container\plant.dm"
 #include "code\_core\datum\reagent_container\special.dm"
