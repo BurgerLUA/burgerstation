@@ -216,12 +216,3 @@
 
 /obj/item/weapon/ranged/spellgem/quick(var/mob/caller,var/atom/object,location,params)
 	return shoot(caller,object,location,params)
-
-/obj/item/weapon/ranged/spellgem/save_item_data(mob/living/advanced/player/P, save_inventory, died)
-	. = ..()
-	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
-		SAVEATOM("attachment_stats")
-/obj/item/weapon/ranged/spellgem/load_item_data_post(mob/living/advanced/player/P, list/object_data)
-	. = ..()
-	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
-		LOADATOM("attachment_stats")
