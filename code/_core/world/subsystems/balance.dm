@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(balance)
-	name = "Balance Subsystem"
+	name = "Balance and Value Subsystem"
 	desc = "Makes a balance report of weapons."
 
 	priority = SS_ORDER_PRELOAD
@@ -8,32 +8,56 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_dph = list()
 	var/list/stored_tier = list()
 	var/list/stored_killtime = list()
-	var/list/stored_value_weapons = list()
-	var/list/stored_value_bullets = list()
+
+	var/list/stored_value = list() //STORED VALUE SHOULD BE ONLY USED FOR LOOT GENERATION (EXCEPTION: WEAPONS, BULLETS, MAGAZINES)
 
 	var/list/weapon_to_bullet = list()
 	var/list/weapon_to_magazine = list()
 
-/subsystem/balance/Initialize()
-
 	var/list/created_bullets = list()
 	var/list/created_magazines = list()
 
-	var/turf/T = locate(1,1,1)
+/subsystem/balance/proc/process_items(var/turf/T,var/list/everything_else)
 
-	for(var/k in subtypesof(/obj/item/bullet_cartridge/))
+	for(var/k in everything_else)
+		var/obj/item/I = k
+		if(initial(I.value) <= 0)
+			continue
+		I = new k(T)
+		I.initialize_type = INITIALIZE_NONE
+		INITIALIZE(I)
+		GENERATE(I)
+		FINALIZE(I)
+		if(I.qdeleting)
+			continue
+		stored_value[I.type] = I.get_value()
+		qdel(I)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+
+/subsystem/balance/proc/process_bullets(var/turf/T,var/list/bullet_subtypes)
+	. = list()
+	for(var/k in bullet_subtypes)
 		var/obj/item/bullet_cartridge/B = k
+		if(initial(B.rarity) != RARITY_COMMON)
+			continue
 		B = new k(T)
 		B.initialize_type = INITIALIZE_NONE
 		INITIALIZE(B)
 		GENERATE(B)
 		FINALIZE(B)
+		if(B.qdeleting)
+			continue
 		created_bullets += B
-		stored_value_bullets[B.type] = CEILING(B.get_recommended_value(),0.01)
+		stored_value[B.type] = B.get_recommended_value()
+		stored_value[B.type] = CEILING(stored_value[B.type],0.01)
+		. += B
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
-	for(var/k in subtypesof(/obj/item/magazine))
-		var/obj/item/magazine/M = new k(T)
+/subsystem/balance/proc/process_magazines(var/turf/T,var/list/magazine_subtypes)
+	. = list()
+	for(var/k in magazine_subtypes)
+		var/obj/item/magazine/M = k
 		if(initial(M.rarity) != RARITY_COMMON)
 			continue
 		M = new k(T)
@@ -41,12 +65,18 @@ SUBSYSTEM_DEF(balance)
 		INITIALIZE(M)
 		GENERATE(M)
 		FINALIZE(M)
+		if(M.qdeleting)
+			continue
 		created_magazines += M
+		stored_value[M.type] = M.bullet_length_best*M.bullet_diameter_best*M.bullet_count_max*0.01
+		stored_value[M.type] = CEILING(stored_value[M.type],1)
+		if(M.ammo) stored_value[M.type] += stored_value[M.ammo] * M.bullet_count_max
+		. += M
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
-	var/imbalanced_weapons = 0
-
-	for(var/k in subtypesof(/obj/item/weapon))
+/subsystem/balance/proc/process_weapons(var/turf/T,var/list/weapon_subtypes)
+	. = list()
+	for(var/k in weapon_subtypes)
 		var/obj/item/weapon/W = k
 		if(initial(W.value) <= 0)
 			continue
@@ -55,8 +85,11 @@ SUBSYSTEM_DEF(balance)
 		INITIALIZE(W)
 		GENERATE(W)
 		FINALIZE(W)
+		if(W.qdeleting)
+			continue
+		. += W
 
-		if(istype(W,/obj/item/weapon/ranged/bullet))
+		if(istypecache(W,/obj/item/weapon/ranged/bullet))
 			var/obj/item/weapon/ranged/bullet/B = W
 			for(var/v in created_bullets)
 				var/obj/item/bullet_cartridge/C = v
@@ -69,7 +102,7 @@ SUBSYSTEM_DEF(balance)
 				weapon_to_bullet[B.type] = C.type
 				break
 
-		if(istype(W,/obj/item/weapon/ranged/bullet/magazine))
+		if(istypecache(W,/obj/item/weapon/ranged/bullet/magazine))
 			var/obj/item/weapon/ranged/bullet/magazine/B = W
 			for(var/v in created_magazines)
 				var/obj/item/magazine/M = v
@@ -92,35 +125,44 @@ SUBSYSTEM_DEF(balance)
 
 		if(!W.bypass_balance_check)
 			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
-			if(W.tier >= 0 && recommended_tier != W.tier)
-				//log_error("Balance Warning: <b>[W.type]</b> had a tier of <b>[W.tier]</b>, but the formula recommends a tier of <b>[recommended_tier]</b>![istype(W,/obj/item/weapon/ranged/bullet) ? "(Bullet used: [weapon_to_bullet[W.type]])" : ""]")
-				imbalanced_weapons++
 			stored_tier[W.type] = recommended_tier
 
 		var/found_value = W.get_recommended_value(ARMOR_VALUE_TO_CONSIDER) //The 100 is the armor value. This makes it so that pistols are generally cheaper than rifles that have armor penetration.
-		stored_value_weapons[W.type] = found_value
+		stored_value[W.type] = found_value
 
-		qdel(W)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+/subsystem/balance/Initialize()
+
+	var/turf/T = locate(1,1,1)
+
+	var/list/stuff_to_delete = list()
+
+	var/list/bullet_subtypes = subtypesof(/obj/item/bullet_cartridge/)
+	stuff_to_delete += process_bullets(T,bullet_subtypes)
+
+	var/list/magazine_subtypes = subtypesof(/obj/item/magazine/)
+	stuff_to_delete += process_magazines(T,magazine_subtypes)
+
+	var/list/weapon_subtypes = subtypesof(/obj/item/weapon)
+	stuff_to_delete += process_weapons(T,weapon_subtypes)
+
+	for(var/k in stuff_to_delete)
+		var/obj/item/I = k
+		qdel(I)
+
+	var/list/everything_else = subtypesof(/obj/item)
+	everything_else -= bullet_subtypes
+	everything_else -= magazine_subtypes
+	everything_else -= weapon_subtypes
+
+	process_items(T,everything_else)
 
 	sortInsert(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
 	sortInsert(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
 	sortInsert(stored_killtime, /proc/cmp_numeric_asc, associative=TRUE)
-	sortInsert(stored_value_weapons, /proc/cmp_numeric_asc, associative=TRUE)
-	sortInsert(stored_value_bullets, /proc/cmp_numeric_asc, associative=TRUE)
 
-	for(var/k in created_bullets)
-		var/obj/item/I = k
-		qdel(I)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	created_bullets.Cut()
-
-	for(var/k in created_magazines)
-		var/obj/item/I = k
-		qdel(I)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	created_magazines.Cut()
-
-	log_subsystem(src.name,"Found [imbalanced_weapons] imbalanced weapons.")
 
 	. = ..()

@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(smoothing)
 
 /subsystem/smoothing/Initialize()
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))
-		return FALSE
+		return TRUE
 	log_subsystem(src.name,"Processing [length(queued_smoothing_turfs)] turf edges...")
 	log_subsystem(src.name,"Processing [length(queued_smoothing_objs)] obj edges...")
 	on_life()

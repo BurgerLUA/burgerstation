@@ -20,7 +20,7 @@
 
 	armor = /armor/leather/mining/advanced
 
-	size = SIZE_7
+	size = SIZE_6
 
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva)
