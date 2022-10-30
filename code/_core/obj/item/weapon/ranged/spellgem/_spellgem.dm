@@ -72,11 +72,6 @@
 			continue
 		if(!isnum(support_value))
 			continue
-			/*
-		if((support_value - ((modifier_count[support_type]-1))) >= 1)
-			attachment_stats[support_type] = support_value - (modifier_count[support_type] - 1)
-		else
-		*/
 		attachment_stats[support_type] *= (1/(modifier_count[support_type]-((1/3) * modifier_count[support_type])))
 		if(support_type == "bullet_count")
 			attachment_stats[support_type] = modifier_count[support_type]
