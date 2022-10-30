@@ -9,7 +9,7 @@
 	default_magnitude = 1
 
 	affects_dead = FALSE
-	var/base_to_heal = 0.05
+	var/base_to_heal = 0.1
 
 /status_effect/temp_regen/on_effect_life(mob/living/owner, magnitude, duration)
 	if(!owner.health)
@@ -22,6 +22,6 @@
 	if(victim.status_effects[TEMP_REGEN])
 		return FALSE
 /status_effect/temp_regen/on_effect_removed(mob/living/owner, magnitude, duration)
-	owner.visible_message(span("warning","\The [owner.name]'s wounds stop closing themself!"),span("warning","Your wounds cease closing themself!"))
+	owner.visible_message(span("warning","\The [owner.name]'s wounds stop quivering!"),span("warning","Your wounds cease quivering!"))
 	. = ..()
 	

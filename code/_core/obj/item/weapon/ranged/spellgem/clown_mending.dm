@@ -15,7 +15,7 @@
 	utility_cost = 60 
 	
 	value = 1200
-/obj/item/weapon/ranged/spellgem/self_regenerate/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called)
+/obj/item/weapon/ranged/spellgem/clown_mending/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called)
 	if(istype(caller,/mob/living))
 		. = ..()
 		var/quality_bonus = get_quality_bonus(0.5,2)
