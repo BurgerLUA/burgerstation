@@ -41,5 +41,6 @@
 		/loot/magic/soulgem = 9,
 		/loot/magic/potion = 6,
 		/obj/item/powergem = 3,
+		/obj/item/weapon/ranged/spellgem/self_regenerate = 6,
 	)
 	loot_count = 3
