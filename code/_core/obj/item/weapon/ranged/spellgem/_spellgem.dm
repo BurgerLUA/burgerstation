@@ -72,12 +72,15 @@
 			continue
 		if(!isnum(support_value))
 			continue
-		if((support_value / modifier_count[support_type]) >= 1 && !(support_type == "bullet_count"))
+			/*
+		if((support_value - ((modifier_count[support_type]-1))) >= 1)
 			attachment_stats[support_type] = support_value - (modifier_count[support_type] - 1)
-		else if(support_type == "bullet_count")
-			attachment_stats[support_type] = modifier_count[support_type]
 		else
-			attachment_stats[support_type] *= (1/modifier_count[support_type])
+		*/
+		attachment_stats[support_type] *= (1/(modifier_count[support_type]-((1/3) * modifier_count[support_type])))
+		if(support_type == "bullet_count")
+			attachment_stats[support_type] = modifier_count[support_type]
+
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
 	else

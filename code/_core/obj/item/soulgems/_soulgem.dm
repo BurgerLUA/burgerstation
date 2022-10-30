@@ -44,39 +44,28 @@
 	. = ..()
 	name = initial(name)
 	icon = initial(icon)
-	switch(total_capacity)
-		if(0 to SOUL_SIZE_COMMON)
-			name = "common [name]"
-			icon_state = "common"
-		if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
-			name = "uncommon [name]"
-			icon_state = "uncommon"
-		if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
-			name = "rare [name]"
-			icon_state = "rare"
-		if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
-			name = "mystic [name]"
-			icon_state = "mystic"
-		if(SOUL_SIZE_MYSTIC to INFINITY)
-			name = "godly [name]"
-			icon_state = "godly"
 	if(is_star)
 		name = "Azura's Star"
-		icon = "azuras_star"
-
-	if(total_charge > 0)
-		icon_state = "[icon_state]_1"
-		switch(total_charge)
+		icon_state = "azuras"
+	else
+		switch(total_capacity)
 			if(0 to SOUL_SIZE_COMMON)
-				name = "[name] (common)"
+				name = "common [name]"
+				icon_state = "common"
 			if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
-				name = "[name] (uncommon)"
+				name = "uncommon [name]"
+				icon_state = "uncommon"
 			if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
-				name = "[name] (rare)"
+				name = "rare [name]"
+				icon_state = "rare"
 			if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
-				name = "[name] (mystic)"
+				name = "mystic [name]"
+				icon_state = "mystic"
 			if(SOUL_SIZE_MYSTIC to INFINITY)
-				name = "[name] (godly)"
+				name = "godly [name]"
+				icon_state = "godly"
+	if(total_charge > 0)
+
 		if(is_star)
 			switch(total_charge)
 				if(0 to SOUL_SIZE_COMMON)
@@ -89,7 +78,21 @@
 					name = "[name] (mystic)"
 				if(SOUL_SIZE_MYSTIC to INFINITY)
 					name = "[name] (godly)"
-			icon_state = "azuras_star_1"
+			icon_state = "azuras_1"
+		
+		else
+			switch(total_charge)
+				if(0 to SOUL_SIZE_COMMON)
+					name = "[name] (common)"
+				if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
+					name = "[name] (uncommon)"
+				if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
+					name = "[name] (rare)"
+				if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
+					name = "[name] (mystic)"
+				if(SOUL_SIZE_MYSTIC to INFINITY)
+					name = "[name] (godly)"
+			icon_state = "[icon_state]_1"
 	else
 		name = "[name] (empty)"
 
