@@ -78,7 +78,8 @@
 		A.visible_message(span("danger","\The [A.name] appears out of nowhere!."),span("notice","\The [src.name] whisks you away back to where you were."))
 		return TRUE
 
-	qdel(linked_returning) //Get rid of existing one.
+	if(linked_returning)
+		qdel(linked_returning) //Get rid of existing one.
 	linked_returning = new(get_turf(A))
 	INITIALIZE(linked_returning)
 	GENERATE(linked_returning)

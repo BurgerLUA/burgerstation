@@ -188,12 +188,12 @@
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
 	if(!new_loc)
-		log_error("Warning: Projectile didn't have a new loc.")
+		log_error("Warning: [src.get_debug_name()] didn't have a new loc.")
 		on_projectile_hit(src.loc,old_loc,new_loc)
 		return FALSE
 
 	if(!old_loc)
-		log_error("Warning: Projectile didn't have an old loc.")
+		log_error("Warning: [src.get_debug_name()] didn't have an old loc.")
 		on_projectile_hit(src.loc,old_loc,new_loc)
 		return FALSE
 
