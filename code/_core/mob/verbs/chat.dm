@@ -60,7 +60,7 @@
 		return FALSE
 
 	if(src.client)
-		text_to_say = police_input(src.client,text_to_say)
+		text_to_say = police_text(src.client,text_to_say,check_characters=TRUE)
 
 	if(!check_spam(client,text_to_say))
 		return FALSE

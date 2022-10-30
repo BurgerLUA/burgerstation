@@ -63,13 +63,9 @@
 		caller.to_chat(span("warning","You can't write here, there is already a message!"))
 		return TRUE
 
-	var/input_text = sanitize(input("What would you like the message to say?") as text|null)
+	var/input_text = input("What would you like the message to say?") as text|null
 
-	if(!input_text)
-		return TRUE
-
-	if(caller.client)
-		input_text = police_input(caller.client,input_text)
+	input_text = police_text(caller.client,input_text,check_characters=TRUE)
 
 	if(!input_text)
 		return TRUE

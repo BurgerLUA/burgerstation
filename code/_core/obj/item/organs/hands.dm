@@ -372,7 +372,7 @@
 
 	if(!I.grabbed_object)
 		possible_damage_types[/damagetype/unarmed/fists/disarm] = 10
-		possible_damage_types[/damagetype/unarmed/fists/grab] = 50
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 40
 	else if(I.grab_level >= 2)
 		possible_damage_types[/damagetype/unarmed/claw] = 0
 		possible_damage_types[/damagetype/unarmed/bite] = 100 //Start biting for sure if the grab is reinforced.

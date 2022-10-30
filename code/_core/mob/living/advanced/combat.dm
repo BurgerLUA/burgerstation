@@ -10,13 +10,13 @@
 	if(driving)
 		return driving.can_attack(attacker,victim,weapon,params,damage_type)
 
-	if(attack_flags & CONTROL_MOD_BLOCK)
+	if(victim && attack_flags & CONTROL_MOD_BLOCK) //This is a very hacky way of dealing with can_block using can_attack.
 		return FALSE
 
 	if(handcuffed)
 		return FALSE
 
-	return ..()
+	. = ..()
 
 
 /mob/living/advanced/defer_click_on_object(var/mob/caller,location,control,params)
@@ -144,6 +144,9 @@
 	return list(best_item,best_value)
 
 /mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
+
+	if(horizontal)
+		return FALSE
 
 	if(!is_facing(src,attacker))
 		return FALSE

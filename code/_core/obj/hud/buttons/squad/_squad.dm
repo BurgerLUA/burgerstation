@@ -83,7 +83,7 @@
 			return FALSE
 
 		if(P.client)
-			squad_name = police_input(P.client,squad_name)
+			squad_name = police_text(P.client,squad_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 
 		if(!squad_name)
 			return FALSE

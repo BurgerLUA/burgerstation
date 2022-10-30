@@ -49,7 +49,7 @@ var/global/next_announcement = 0
 		caller.to_chat(span("notice","You decide not to use the device."))
 		return FALSE
 
-	message = police_input(caller.client,message)
+	message = police_text(caller.client,message,check_characters=TRUE)
 
 	if(!message)
 		caller.to_chat(span("notice","You decide not to use the device."))
@@ -175,7 +175,7 @@ var/global/next_announcement = 0
 		caller.to_chat(span("notice","You decide not to use the device."))
 		return FALSE
 
-	message = police_input(caller.client,message)
+	message = police_text(caller.client,message,check_characters=TRUE)
 
 	if(!message)
 		caller.to_chat(span("notice","You decide not to use the device."))

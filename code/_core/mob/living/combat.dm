@@ -6,10 +6,7 @@
 	if(horizontal)
 		return FALSE
 
-	if(!can_move())
-		return FALSE
-
-	if(!src.z)
+	if(!can_attack(src))
 		return FALSE
 
 	return TRUE
@@ -55,11 +52,8 @@
 	if(has_status_effects(PARALYZE,SLEEP,STAMCRIT,STUN,STAGGER,PARRIED))
 		return FALSE
 
-	if(grabbing_hand && grabbing_hand.owner)
-		if(horizontal)
-			return FALSE
-		if(is_behind(grabbing_hand.owner,src))
-			return FALSE
+	//Cannot attack if you're being grabbed from behind.
+	if(grabbing_hand && grabbing_hand.owner && (src.horizontal || is_behind(grabbing_hand.owner,src)))
 		return FALSE
 
 	. = ..()

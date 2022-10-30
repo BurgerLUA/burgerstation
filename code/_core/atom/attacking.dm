@@ -180,7 +180,7 @@
 		var/area/A1 = get_area(victim)
 		var/area/A2 = get_area(src)
 		if(!(A1 && A2))
-			CRASH("Warning: tried attacking without valid areas!")
+			CRASH("Tried attacking without valid areas!")
 		if( (A1.flags_area & FLAG_AREA_NO_DAMAGE) || (A2.flags_area & FLAG_AREA_NO_DAMAGE) )
 			return FALSE
 

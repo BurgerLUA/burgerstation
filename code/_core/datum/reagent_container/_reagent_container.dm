@@ -114,7 +114,7 @@
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
-		. += I.inventory_temperature_mod
+		. += I.inventory_temperature
 
 
 /reagent_container/proc/process_temperature()
@@ -122,7 +122,7 @@
 	if(!owner)
 		return FALSE
 
-	if(!volume_current)
+	if(volume_current <= 0)
 		return FALSE
 
 	var/desired_temperature = get_desired_temperature()
@@ -138,6 +138,12 @@
 			continue
 		var/volume = stored_reagents[r_id]
 		temperature_mod += (volume * R.temperature_mod)
+
+	temperature_mod *= 1/volume_current
+
+	if(is_inventory(owner.loc))
+		var/obj/hud/inventory/I = owner.loc
+		temperature_mod *= I.inventory_temperature_mod
 
 	var/temperature_diff = desired_temperature - average_temperature
 

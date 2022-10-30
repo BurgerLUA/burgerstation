@@ -719,6 +719,7 @@
 #include "code\_core\datum\squad\_squad.dm"
 #include "code\_core\datum\stand\_stand.dm"
 #include "code\_core\datum\status_effect\_status_effect.dm"
+#include "code\_core\datum\status_effect\grab.dm"
 #include "code\_core\datum\status_effect\zombie.dm"
 #include "code\_core\datum\telecomm_trigger\_telecomm_trigger.dm"
 #include "code\_core\datum\ticket\_ticket.dm"

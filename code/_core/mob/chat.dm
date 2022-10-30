@@ -157,7 +157,7 @@ var/regex/vowels = new("\[aeiou\]", "i")
 	text_to_say = trim(mod_speech(text_to_say))
 
 	if(should_sanitize && src.client)
-		text_to_say = police_input(src.client,text_to_say)
+		text_to_say = police_text(src.client,text_to_say,check_characters=TRUE)
 
 	talk(src,src,text_to_say,talk_type_to_use,frequency_to_use,language_to_use,talk_range)
 

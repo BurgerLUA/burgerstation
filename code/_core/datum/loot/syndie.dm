@@ -13,4 +13,4 @@
 		/obj/item/grenade/fuse/fragmentation = 40,
 		/loot/scroll/lesser = 20
 	)
-	loot_count = 8
+	loot_count = 4

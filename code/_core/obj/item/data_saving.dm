@@ -163,8 +163,14 @@
 
 	if(object_data["name"])
 		name = object_data["name"]
+		name = police_text(P.client,name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
+		if(!name)
+			name = initial(name)
 	if(object_data["label"])
-		name = object_data["label"]
+		label = object_data["label"]
+		label = police_text(P.client,label,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
+		if(!label)
+			label = initial(label)
 	if(object_data["last_marker"])
 		last_marker = object_data["last_marker"]
 	if(object_data["color"])

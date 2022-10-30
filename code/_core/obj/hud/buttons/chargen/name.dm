@@ -35,7 +35,7 @@
 		if(!choice) return
 
 		if(caller.client)
-			choice = sanitize_name(P.client,choice,50)
+			choice = police_text(P.client,choice,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 
 		if(!choice) return
 
