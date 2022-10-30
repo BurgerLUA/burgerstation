@@ -4,7 +4,7 @@
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one gives a light regeneration? effect. Honk!"
 	icon_state = "damage"
 	color = "#ff0080"
-	color3 = "#fffb00"
+	color_3 = "#fffb00"
 
 	use_loyalty_tag = FALSE
 	use_iff_tag = FALSE
