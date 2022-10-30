@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/energy/opticor
 	name = "\improper Opticor"
 	desc = "Tenno, Do you think me a weeb?"
-	desc_extended = "Blasts so much energy in such an unstable energy bubble that the first thing it hits will violently explode. Kinda like a mantis shrimps punch, but with lasers."
+	desc_extended = "Fires an incredibly large amount of energy causing massive damage to whatever it hits."
 	icon = 'icons/obj/item/weapons/ranged/laser/opticor.dmi'
 	value = 8000
 
