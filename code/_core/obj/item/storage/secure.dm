@@ -13,11 +13,11 @@
 	dynamic_inventory_count = 3*2
 
 	container_max_slots = 1
-	container_max_size = SIZE_3
+	container_max_size = SIZE_5
 
 	is_container = TRUE
 
-	size = (3*2*SIZE_3) + SIZE_3
+	size = (3*2*SIZE_5) + SIZE_5
 	weight = 50
 
 	dynamic_inventory_type = /obj/hud/inventory/dynamic/secure
