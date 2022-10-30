@@ -115,7 +115,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 				return FALSE
 			if(!desired_loc)
 				return FALSE
-			for(var/d in DIRECTIONS_ALL + 1)
+			for(var/d in DIRECTIONS_ALL)
 				var/turf/T = get_step(desired_loc,d)
 				if(T.has_dense_atom)
 					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
