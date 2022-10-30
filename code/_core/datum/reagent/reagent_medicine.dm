@@ -15,7 +15,7 @@
 	. = ..()
 
 	if(!L.dead && experience_per_unit*. > 0 && is_player(caller) && caller.client)
-		caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
+		caller.add_skill_xp(SKILL_MEDICINE,CEILING(experience_per_unit*.,1))
 
 /reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
 
