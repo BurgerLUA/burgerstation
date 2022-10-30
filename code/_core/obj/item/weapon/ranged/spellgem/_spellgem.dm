@@ -70,8 +70,10 @@
 		if(!support_value)
 			log_error("Warning: Support value of [support_type] was [isnum(support_value) ? 0 : "NULL"] for [src.get_debug_name()].")
 			continue
+		if(!isnum(support_value))
+			continue
 		if((support_value / modifier_count) >= 1)
-			attachment_stats[support_type] = support_value - (modifier_count - 1)
+		attachment_stats[support_type] = support_value - (modifier_count - 1)
 		else
 			attachment_stats[support_type] *= (1/modifier_count[support_type])
 	if(attachment_stats["mana_cost_multiplier"])

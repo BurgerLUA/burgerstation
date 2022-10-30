@@ -21,10 +21,9 @@
 		if(!isturf(object.loc))
 			caller.to_chat(span("warning","We couldn't get the object's signal!"))
 			return FALSE
-
-	if(object.anchored)
-		caller.to_chat(span("warning","\The [object.name] is anchored to the floor!"))
-		return FALSE
+		if(object.anchored)
+			caller.to_chat(span("warning","\The [object.name] is anchored to the floor!"))
+			return FALSE
 
 	if(caller == object)
 		caller.to_chat(span("warning","You can't extract yourself!"))
