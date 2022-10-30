@@ -110,7 +110,11 @@
 			caller.to_chat(span("notice","You decide not to spellswap \the [I.name]."))
 			return TRUE
 		if(I.stored_spellswap)
+			if(istype(I,/obj/item/weapon/ranged))
+				var/obj/item/weapon/ranged/R
+				R.projectile = initial(R.projectile)
 			qdel(I.stored_spellswap)
+			
 		else
 			caller.to_chat(span("notice", "There's no spell to remove!"))
 			return TRUE

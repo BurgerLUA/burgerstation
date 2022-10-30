@@ -72,8 +72,10 @@
 			continue
 		if(!isnum(support_value))
 			continue
-		if((support_value / modifier_count[support_type]) >= 1)
+		if((support_value / modifier_count[support_type]) >= 1 && !(support_type == "bullet_count"))
 			attachment_stats[support_type] = support_value - (modifier_count[support_type] - 1)
+		else if(support_type == "bullet_count")
+			attachment_stats[support_type] = modifier_count[support_type]
 		else
 			attachment_stats[support_type] *= (1/modifier_count[support_type])
 	if(attachment_stats["mana_cost_multiplier"])

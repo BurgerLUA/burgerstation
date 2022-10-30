@@ -60,10 +60,9 @@
 		if(SOUL_SIZE_MYSTIC to INFINITY)
 			name = "godly [name]"
 			icon_state = "godly"
-
 	if(is_star)
 		name = "Azura's Star"
-		icon = initial(icon)
+		icon = "azuras_star"
 
 	if(total_charge > 0)
 		icon_state = "[icon_state]_1"
@@ -90,7 +89,7 @@
 					name = "[name] (mystic)"
 				if(SOUL_SIZE_MYSTIC to INFINITY)
 					name = "[name] (godly)"
-			icon_state = "[icon_state]_1"
+			icon_state = "azuras_star_1"
 	else
 		name = "[name] (empty)"
 
