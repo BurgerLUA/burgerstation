@@ -87,7 +87,7 @@
 
 /obj/item/supportgem/cost
 	name = "cheaper casting support gem"
-	power_base = 0.05 //5%
+	power_base = 0.10 //10%
 	power_per_quality = 0.5/100 //50% reduced mana cost per 100 quality
 	value = 100
 

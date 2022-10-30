@@ -72,15 +72,16 @@
 			continue
 		if(!isnum(support_value))
 			continue
-		if((support_value / modifier_count) >= 1)
-		attachment_stats[support_type] = support_value - (modifier_count - 1)
+		if((support_value / modifier_count[support_type]) >= 1)
+			attachment_stats[support_type] = support_value - (modifier_count[support_type] - 1)
 		else
 			attachment_stats[support_type] *= (1/modifier_count[support_type])
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
 	else
 		attachment_stats["mana_cost_multiplier"] = W.wand_mana_multiplier
-
+	if(attachment_stats["mana_cost_multiplier"] < 0.25)
+		attachment_stats["mana_cost_multiplier"] = 0.25
 	if(attachment_stats["damage_multiplier"])
 		attachment_stats["damage_multiplier"] *= W.wand_damage_multiplier
 	else
@@ -214,6 +215,11 @@
 /obj/item/weapon/ranged/spellgem/quick(var/mob/caller,var/atom/object,location,params)
 	return shoot(caller,object,location,params)
 
+/obj/item/weapon/ranged/spellgem/save_item_data(mob/living/advanced/player/P, save_inventory, died)
+	. = ..()
+	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
+		SAVEATOM("attachment_stats")
 /obj/item/weapon/ranged/spellgem/load_item_data_post(mob/living/advanced/player/P, list/object_data)
 	. = ..()
-	update_attachment_stats()
+	if(istype(src.loc,/obj/item/weapon/ranged/wand/))
+		LOADATOM("attachment_stats")

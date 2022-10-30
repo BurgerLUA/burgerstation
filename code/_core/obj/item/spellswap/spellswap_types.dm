@@ -109,10 +109,11 @@
 		if(desired_choice != "Yes")
 			caller.to_chat(span("notice","You decide not to spellswap \the [I.name]."))
 			return TRUE
-
-		
-		qdel(I.stored_spellswap)
-
+		if(I.stored_spellswap)
+			qdel(I.stored_spellswap)
+		else
+			caller.to_chat(span("notice", "There's no spell to remove!"))
+			return TRUE
 		caller.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
 
 		var/turf/T = get_turf(caller)
