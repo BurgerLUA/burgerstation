@@ -278,7 +278,7 @@
 	for(var/k in stored_containers)
 		var/obj/item/container/simple/beaker/B = k
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
-		B.reagents.update_container()
+		B.reagents.update_container(caller)
 
 	if(src.z && SSai.tracked_avoidance_by_z["[src.z]"])
 		SSai.tracked_avoidance_by_z["[src.z]"] -= src
@@ -286,7 +286,7 @@
 	spent = TRUE
 
 	if(src.reagents)
-		src.reagents.update_container()
+		src.reagents.update_container(caller)
 		src.reagents.process_recipes(caller)
 
 	update_sprite()

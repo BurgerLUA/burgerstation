@@ -5,7 +5,7 @@
 	if(!text_to_say)
 		text_to_say = input("adminhelp") as message
 
-	text_to_say = police_input(src,text_to_say)
+	text_to_say = police_text(src,text_to_say,check_characters=TRUE)
 
 	if(!text_to_say)
 		return FALSE
@@ -43,7 +43,7 @@
 	if(!bwoink_message)
 		bwoink_message = input("Bwoink") as message
 
-	bwoink_message = sanitize(bwoink_message)
+	bwoink_message = police_text(src,bwoink_message,check_characters=TRUE)
 
 	if(!bwoink_message)
 		src.to_chat(span("warning","Invalid message!"))

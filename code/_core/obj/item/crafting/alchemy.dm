@@ -1,4 +1,4 @@
-/obj/item/crafting/alchemy
+/*/obj/item/crafting/alchemy
 	name = "portable alchemy table"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "alchemy"
@@ -73,7 +73,7 @@
 		if(should_delete)
 			qdel(I)
 		else if(I.reagents)
-			I.reagents.update_container()
+			I.reagents.update_container(caller)
 
 	if(!success)
 		caller.to_chat(span("warning","There are no valid items to process!"))
@@ -87,10 +87,11 @@
 			C.reagents.remove_reagent(reagent_type,reagent_amount,FALSE)
 			C.reagents.add_reagent(R.processed_reagent,reagent_amount,temperature,FALSE,FALSE,caller = caller)
 
-	C.reagents.update_container()
+	C.reagents.update_container(caller)
 
 	return TRUE
 
 
 
 
+*/

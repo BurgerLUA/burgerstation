@@ -23,7 +23,7 @@
 /mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/appearance_only=FALSE)
 
 	//Name
-	real_name = sanitize_name(client,loaded_data["name"])
+	real_name = police_text(client,loaded_data["name"],check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 	if(!real_name)
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 
@@ -231,7 +231,7 @@
 	var/list/final_skill_list = list()
 	for(var/id in skills)
 		var/experience/skill/S = skills[id]
-		var/desired_experience = ENABLE_XP_SAVING ? S.experience : S.level_to_xp(S.chargen_max_level)
+		var/desired_experience = ENABLE_XP_SAVING && S.experience > 0 ? S.experience : S.level_to_xp(S.chargen_max_level)
 		final_skill_list[id] = desired_experience
 	.["skills"] = final_skill_list
 
@@ -239,7 +239,7 @@
 	var/list/final_attribute_list = list()
 	for(var/id in attributes)
 		var/experience/attribute/B = attributes[id]
-		var/desired_experience = ENABLE_XP_SAVING ? B.experience : B.level_to_xp(B.chargen_max_level)
+		var/desired_experience = ENABLE_XP_SAVING && B.experience > 0 ? B.experience : B.level_to_xp(B.chargen_max_level)
 		final_attribute_list[id] = desired_experience
 	.["attributes"] = final_attribute_list
 

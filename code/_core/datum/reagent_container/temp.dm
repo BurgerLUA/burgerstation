@@ -5,7 +5,7 @@
 	should_update_owner = FALSE
 
 
-/reagent_container/temp/update_container()
+/reagent_container/temp/update_container(var/mob/caller,var/update_owner = TRUE)
 
 	. = ..()
 

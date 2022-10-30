@@ -39,30 +39,6 @@
 
 	return text
 
-/proc/police_input(var/client/caller,var/input, var/max_length, var/capitalize = FALSE, var/periodize = FALSE)
-
-	if(!max_length)
-		max_length = CONFIG("MAX_MESSAGE_LENGTH",512)
-
-	if(capitalize)
-		input = capitalize(input)
-
-	if(periodize)
-		input = periodize(input)
-
-	input = sanitize(input,max_length)
-
-	if(caller)
-		if(forbidden_characters && forbidden_characters.Find(input)) //Буквально 1984
-			if(SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"])
-				caller.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"]))
-			return FALSE
-		if(SSbadwords.has_badword(input))
-			caller.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
-			return FALSE
-
-	return input
-
 //Skull132 made this
 /proc/repeat_text(var/text_to_repeat, var/times_to_repeat=1)
 
@@ -74,6 +50,7 @@
     return returning_list.Join("")
 
 /proc/sanitize(var/input, var/max_length, var/encode = 1, var/trim = 1, var/extra = 1)
+
 	if(!input)
 		return
 
@@ -92,6 +69,42 @@
 
 	if(trim)
 		input = trim(input)
+
+	return input
+
+/proc/police_text(var/client/caller, var/input, var/min_length, var/max_length, var/capitalize = FALSE, var/periodize = FALSE, var/check_name = FALSE, var/check_characters = FALSE, var/encode = TRUE, var/trim=TRUE, var/extra=TRUE)
+
+	if(!min_length)
+		min_length = 1
+
+	if(!max_length)
+		max_length = CONFIG("MAX_MESSAGE_LENGTH",512)
+
+	if(capitalize)
+		input = capitalize(input)
+
+	if(periodize)
+		input = periodize(input)
+
+	input = sanitize(input,max_length,encode=encode,trim=trim,extra=extra)
+
+	if(length(input) < min_length)
+		caller?.to_chat(span("danger","Your text was too short!"))
+		return FALSE
+
+	if(check_name && forbidden_characters_name && forbidden_characters_name.Find(input))
+		if(SSconfig.config["FORBIDDEN_CHARACTERS_NAME_WARNING"])
+			caller?.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_NAME_WARNING"]))
+		return FALSE
+
+	if(check_characters && forbidden_characters && forbidden_characters.Find(input)) //Буквально 1984
+		if(SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"])
+			caller?.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"]))
+		return FALSE
+
+	if(SSbadwords.has_badword(input))
+		caller?.to_chat(span("danger","Your text \"[input]\" contains one or more forbidden words and cannot be used."))
+		return FALSE
 
 	return input
 
@@ -170,33 +183,6 @@
 
 /proc/proper_url_encode(var/input)
 	return url_encode(replacetextEx(input,"\n",""))
-
-var/global/regex/illegal_name_characters = regex("\[^(A-Z,a-z,\\s,&,',0-9,\\-)\]")
-
-/proc/sanitize_name(var/client/caller,var/text,var/limit=50)
-
-	. = text
-
-	if(!.)
-		return null
-
-	var/has_forbidden = FALSE
-	if(illegal_name_characters.Find(text))
-		has_forbidden = TRUE
-		. = illegal_name_characters.Replace(.,"")
-
-	. = trim(.)
-
-	if(SSbadwords.has_badword(.))
-		caller?.to_chat(span("danger","The name \"[.]\" contains a forbidden word."))
-		return null
-
-	if(length(.) <= 2)
-		caller?.to_chat(span("warning","The name \"[.]\" is too short!"))
-		return null
-
-	if(has_forbidden)
-		caller?.to_chat(span("warning","Your name contained forbidden characters, and thus was removed of them."))
 
 /proc/ref2num(var/ref)
 	return text2num(copytext(ref,2,-1),16)

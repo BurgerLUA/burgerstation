@@ -13,7 +13,7 @@
 
 	size = SIZE_3
 
-	value = 200
+	value = 2000
 
 	weight = 16
 
@@ -27,7 +27,7 @@
 
 	weight = 8
 
-	value = 1600
+	value = 2100
 
 /obj/item/defib/Destroy()
 	QDEL_NULL(paddle_left)

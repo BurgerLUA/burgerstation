@@ -24,7 +24,7 @@
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
-	if(grabbing_hand && handcuffed)
+	if(grabbing_hand && handcuffed) //Can't move while grabbed and handcuffed.
 		return FALSE
 
 	if(driving)

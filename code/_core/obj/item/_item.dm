@@ -40,20 +40,20 @@
 	var/pixel_height_offset = 0 //The z offset of this, in pixels. Used for sandwiches and burgers.
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
-	var/dynamic_inventory_count = 0
+	var/dynamic_inventory_count
 	var/obj/hud/inventory/dynamic/dynamic_inventory_type = /obj/hud/inventory/dynamic
-	var/container_max_size = 0 //This item has a container, how much should it be able to hold in each slot?
-	var/container_max_slots = 0 //How much each inventory slot can hold.
+	var/container_max_size //This item has a container, how much should it be able to hold in each slot?
+	var/container_max_slots //How much each inventory slot can hold.
 	var/container_blacklist = list()
 	var/container_whitelist = list()
 	var/max_inventory_x = MAX_INVENTORY_X
 	var/inventory_category = "dynamic"
 	var/starting_inventory_y = "BOTTOM:12+1.25"
 	var/inventory_y_multiplier = 1
-	var/container_priority = 0 //Good idea to be negative as non-dynamic inventories (hend, worn, ect) are above 0. Default for dynamic inventories is -101.
+	var/container_priority //Good idea to be negative as non-dynamic inventories (hend, worn, ect) are above 0. Default for dynamic inventories is -101.
 
-	var/container_temperature = 0 //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
-	var/container_temperature_mod = 1 //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
+	var/container_temperature //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
+	var/container_temperature_mod //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
 
 	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
 
@@ -101,7 +101,8 @@
 		'sound/effects/inventory/rustle5.ogg'
 	)
 
-	var/list/alchemy_reagents = list() //Reagents that are created if this is processed in an alchemy table. Format: reagent_type = volume.
+	var/list/grinder_reagents = list() //Reagents that are created if this is processed in a grinder.
+	var/reagent_count             //"Fake" amount of reagents, used for calculations
 
 	var/flags_tool = FLAG_TOOL_NONE
 	var/tool_time = SECONDS_TO_DECISECONDS(5)
@@ -424,16 +425,18 @@ var/global/list/rarity_to_mul = list(
 		var/obj/hud/inventory/new_inv = inventories[i]
 		inventories[i] = new new_inv(src)
 		//Doesn't need to be initialized as it's done later.
-		if(container_max_slots)
+		if(isnum(container_max_slots))
 			inventories[i].max_slots = container_max_slots
-		if(container_max_size)
+		if(isnum(container_max_size))
 			inventories[i].max_size = container_max_size
 		if(container_blacklist && length(container_blacklist))
 			inventories[i].item_blacklist = container_blacklist
 		if(container_whitelist && length(container_whitelist))
 			inventories[i].item_whitelist = container_whitelist
-		if(container_temperature)
-			inventories[i].inventory_temperature_mod = container_temperature
+		if(isnum(container_temperature))
+			inventories[i].inventory_temperature = container_temperature
+		if(isnum(container_temperature_mod))
+			inventories[i].inventory_temperature_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
 		var/obj/hud/inventory/dynamic/D = new dynamic_inventory_type(src)
@@ -441,17 +444,19 @@ var/global/list/rarity_to_mul = list(
 		D.id = "\ref[src]_dynamic_[i]"
 		D.slot_num = i
 		D.inventory_category = inventory_category
-		if(container_max_slots)
+		if(isnum(container_max_slots))
 			D.max_slots = container_max_slots
-		if(container_max_size)
+		if(isnum(container_max_size))
 			D.max_size = container_max_size
 		if(container_blacklist && length(container_blacklist))
 			D.item_blacklist = container_blacklist
 		if(container_whitelist && length(container_whitelist))
 			D.item_whitelist = container_whitelist
-		if(container_temperature)
-			D.inventory_temperature_mod = container_temperature
-		if(container_priority)
+		if(isnum(container_temperature))
+			D.inventory_temperature = container_temperature
+		if(isnum(container_temperature_mod))
+			D.inventory_temperature_mod = container_temperature_mod
+		if(isnum(container_priority))
 			D.priority = container_priority
 		inventories += D
 

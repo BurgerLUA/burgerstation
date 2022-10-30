@@ -11,7 +11,7 @@
 	if(!check_spam(src))
 		return FALSE
 
-	text_to_say = police_input(src,text_to_say)
+	text_to_say = police_text(src,text_to_say,check_characters=TRUE)
 
 	if(!check_spam(src,text_to_say))
 		return FALSE
@@ -40,7 +40,7 @@
 	if(!check_spam(src))
 		return FALSE
 
-	text_to_say = police_input(src,text_to_say)
+	text_to_say = police_text(src,text_to_say,check_characters=TRUE)
 
 	if(!check_spam(src,text_to_say))
 		return FALSE

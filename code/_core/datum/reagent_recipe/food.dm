@@ -5,6 +5,7 @@
 /reagent_recipe/food/dough/
 
 	name = "wheat grain dough"
+	desc = "wheat dough! add reagents to it!"
 
 	required_reagents = list(
 		/reagent/nutrition/wheat_grain = 3,
@@ -20,6 +21,7 @@
 /reagent_recipe/food/dough/flour
 
 	name = "whole wheat flour dough"
+	desc = "healthier than normal dough."
 
 	required_reagents = list(
 		/reagent/nutrition/wheat_grain/flour = 3,
@@ -35,6 +37,7 @@
 /reagent_recipe/food/dough/flour/processed
 
 	name = "white flour dough"
+	desc = "dough"
 
 	required_reagents = list(
 		/reagent/nutrition/wheat_grain/flour/processed = 3,
@@ -47,10 +50,28 @@
 
 	result = /obj/item/container/edible/dynamic/bread
 
+/reagent_recipe/food/dough/corn
+	name = "corn flour dough"
+	desc = "dough made with corn flour"
+
+	required_reagents = list(
+
+		/reagent/nutrition/corn_flour = 3,
+		/reagent/nutrition/water = 2,
+	)
+
+	results = list(
+		/reagent/nutrition/dough/flour/processed = 5
+	)
+
+	result = /obj/item/container/edible/dynamic/bread
+
+
 
 /reagent_recipe/food/bread/
 
 	name = "wheat grain bread"
+	desc = "bread made from wheat grain, cook dough."
 
 	required_reagents = list(
 		/reagent/nutrition/dough = 1
@@ -67,6 +88,7 @@
 /reagent_recipe/food/bread/flour
 
 	name = "whole wheat flour bread"
+	desc = "bread made from whole wheat grain, cook dough."
 
 	required_reagents = list(
 		/reagent/nutrition/dough/flour = 1
@@ -83,6 +105,7 @@
 /reagent_recipe/food/bread/flour/processed
 
 	name = "white flour bread"
+	desc = "bread made from processed wheat grain, cook dough."
 
 	required_reagents = list(
 		/reagent/nutrition/dough/flour/processed = 1,
@@ -99,6 +122,7 @@
 /reagent_recipe/food/cake_batter/
 
 	name = "cake batter"
+	desc = "the cake is a lie."
 
 	required_reagents = list(
 		/reagent/nutrition/wheat_grain/flour/processed = 15,
@@ -115,6 +139,7 @@
 
 /reagent_recipe/food/icing_sugar
 	name = "icing sugar"
+	desc = "sugar icing, (better than buttercream)."
 
 	required_reagents = list(
 		/reagent/nutrition/corn_flour = 1,
@@ -127,6 +152,7 @@
 
 /reagent_recipe/food/icing
 	name = "icing"
+	desc = "icing, uses sugar icing which is a bit weird, this is probably buttercream (inferior)."
 
 	required_reagents = list(
 		/reagent/nutrition/sugar/icing = 1,

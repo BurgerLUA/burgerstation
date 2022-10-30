@@ -43,7 +43,7 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 
-	desired_name = sanitize(desired_name,50)
+	desired_name = police_text(caller.client,desired_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 
 	if(!desired_name)
 		return TRUE

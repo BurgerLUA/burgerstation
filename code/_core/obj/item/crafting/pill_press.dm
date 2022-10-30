@@ -2,6 +2,8 @@
 	name = "portable pill press table"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "pill_press"
+	desc = "A pill press"
+	desc_extended = ""
 
 	inventories = list(
 

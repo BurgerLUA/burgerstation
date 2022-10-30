@@ -61,19 +61,20 @@ var/global/list/gps_list = list()
 				caller.to_chat(span("notice","DENIED: Advanced GPS feature only."))
 				return
 			var/choose_password = input("Input a new password.", "Password Select") as null|text
+			choose_password = police_text(caller.client,choose_password,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 			if(!choose_password)
 				caller.to_chat(span("notice","You failed to select a new password."))
 				return
-			assigned_number = sanitize(choose_password)
 			caller.to_chat(span("notice","You set the password to [assigned_number]"))
 			play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 			return
 		if("Rename")
 			var/choose_name = input("Input a new name.", "Name Select") as null|text
+			choose_name = police_text(caller.client,choose_name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 			if(!choose_name)
 				caller.to_chat(span("notice","You failed to select a new name."))
 				return
-			name = "[initial(name)] ([sanitize(choose_name)])"
+			name = "[initial(name)] ([choose_name])"
 			caller.to_chat(span("notice","You set the name to [name]"))
 			play_sound('sound/machines/click.ogg',get_turf(src),range_max=VIEW_RANGE)
 			return
