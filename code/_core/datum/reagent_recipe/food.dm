@@ -61,7 +61,7 @@
 	)
 
 	results = list(
-		/reagent/nutrition/dough/flour/processed = 5
+		/reagent/nutrition/dough/corn = 5
 	)
 
 	result = /obj/item/container/edible/dynamic/bread
@@ -117,6 +117,24 @@
 
 	results = list(
 		/reagent/nutrition/bread/flour/processed = 1
+	)
+
+
+/reagent_recipe/food/bread/corn
+
+	name = "whole wheat flour bread"
+	desc = "bread made from whole wheat grain, cook dough."
+
+	required_reagents = list(
+		/reagent/nutrition/dough/corn = 1
+	)
+
+	required_temperature_min = list(
+		/reagent/nutrition/dough/corn = 475
+	)
+
+	results = list(
+		/reagent/nutrition/bread/corn = 1
 	)
 
 /reagent_recipe/food/cake_batter/
