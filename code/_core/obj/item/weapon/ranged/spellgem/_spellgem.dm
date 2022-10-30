@@ -18,7 +18,7 @@
 
 	company_type = "Wizard Federation"
 
-	var/utilitygem = FALSE //Add Custom Shoot Function?
+	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
 	var/utility_cost = 100 // Mana cost for util gems.
 	var/cost_mana = 0 //generated on Initialize()
 
@@ -179,7 +179,6 @@
 		update_sprite()
 
 		use_condition(condition_to_use)
-		return TRUE
 
 /obj/item/weapon/ranged/spellgem/update_overlays()
 	. = ..()
