@@ -24,10 +24,12 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
+	battery = /obj/item/powercell/recharging
+
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	charge_cost = CELL_SIZE_BASIC / 8
+	charge_cost = CELL_SIZE_BASIC / 16
 
 	attachment_whitelist = list()
 
@@ -103,3 +105,20 @@
 	update_held_icon()
 
 	return ..()
+
+
+/obj/item/weapon/ranged/energy/opticor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_CROWBAR)
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(5)
+			if(battery)
+				caller.to_chat(span("warning","You cant actually seem to find a slot to pry out any battery!"))
+			else
+				caller.to_chat(span("warning","There is nothing to pry out of \the [src.name]!"))
+			return TRUE
+
+	. = ..()
