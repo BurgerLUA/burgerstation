@@ -14,13 +14,14 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
+			battery.charge_current += charge_per_feed
 			caller.to_chat(span("notice","You've recharged \the [src.name]."))
 			qdel(object)
 			return
 		else
 			caller.to_chat(span("warning","You can't use this for refilling!"))
 			return FALSE
-			
+
 	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_CROWBAR)
