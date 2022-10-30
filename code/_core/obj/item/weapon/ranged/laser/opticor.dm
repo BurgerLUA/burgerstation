@@ -48,8 +48,6 @@
 	size = SIZE_5
 	weight = 36
 
-	contraband = TRUE
-
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
 		/obj/item/attachment/barrel/compensator = FALSE,

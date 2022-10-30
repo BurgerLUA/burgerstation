@@ -23,13 +23,14 @@
 
 /loot/lavaland/colossus
 	loot_table = list(
-		/obj/item/weapon/ranged/bow/hardlight = 1,
-		/obj/item/weapon/ranged/energy/gatling = 1,
-		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
-		/obj/item/storage/blood_box/holy_45 = 1,
-		/obj/item/storage/blood_box/witchunt = 1,
-		/obj/item/clothing/glasses/eyes_of_god = 1,
-		/obj/item/weapon/melee/crystal = 1
+		/obj/item/weapon/ranged/bow/hardlight = 2,
+		/obj/item/weapon/ranged/energy/gatling = 2,
+		/obj/item/weapon/ranged/magic/spellblade/runesword = 2,
+		/obj/item/storage/blood_box/holy_45 = 2,
+		/obj/item/storage/blood_box/witchunt = 2,
+		/obj/item/clothing/glasses/eyes_of_god = 2,
+		/obj/item/weapon/melee/crystal = 2
+		/obj/item/weapon/ranged/energy/opticor = 1
 	)
 
 
