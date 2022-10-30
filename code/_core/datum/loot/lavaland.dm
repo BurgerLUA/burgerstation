@@ -29,7 +29,7 @@
 		/obj/item/storage/blood_box/holy_45 = 2,
 		/obj/item/storage/blood_box/witchunt = 2,
 		/obj/item/clothing/glasses/eyes_of_god = 2,
-		/obj/item/weapon/melee/crystal = 2
+		/obj/item/weapon/melee/crystal = 2,
 		/obj/item/weapon/ranged/energy/opticor = 1
 	)
 
