@@ -64,7 +64,7 @@
 
 /obj/item/bullet_cartridge/get_base_value()
 
-	. = SSbalance.stored_value_bullets[src.type] ? SSbalance.stored_value_bullets[src.type] : 1
+	. = SSbalance.stored_value[src.type] ? SSbalance.stored_value[src.type] : 1
 
 	if(is_spent)
 		. *= 0.05

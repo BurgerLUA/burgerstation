@@ -17,13 +17,18 @@
 
 	pixel_y = 4
 
+/obj/item/bulletbox/Generate()
+	. = ..()
+	if(ispath(stored_bullet))
+		set_stored_bullet(stored_bullet,generate=TRUE)
+
 /obj/item/bulletbox/Finalize()
 	. = ..()
 	update_sprite()
 
 /obj/item/bulletbox/Destroy()
-	. = ..()
 	set_stored_bullet(null)
+	. = ..()
 
 /obj/item/bulletbox/get_value()
 	. = ..()
@@ -40,13 +45,9 @@
 	SAVEPATH("stored_bullet")
 	SAVEVAR("bullet_count")
 
-/obj/item/bulletbox/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
-
-	if(object_data["stored_bullet"])
-		var/obj/item/bullet_cartridge/BC = text2path(object_data["stored_bullet"])
-		if(BC) set_stored_bullet(BC)
-
+	LOADPATH("stored_bullet")
 	LOADVAR("bullet_count")
 
 /obj/item/bulletbox/click_self(var/mob/caller)
@@ -127,7 +128,7 @@
 
 	. = ..()
 
-/obj/item/bulletbox/proc/set_stored_bullet(var/desired_path)
+/obj/item/bulletbox/proc/set_stored_bullet(var/desired_path,var/generate=FALSE)
 
 	if(!desired_path)
 		if(stored_bullet && istype(stored_bullet))
@@ -147,6 +148,8 @@
 			set_stored_bullet(null)
 			update_sprite()
 			return FALSE
+		if(generate)
+			bullet_count = bullet_max
 		return TRUE
 
 	return FALSE
@@ -177,29 +180,21 @@
 		I.pixel_y = -6
 		I.pixel_x = 3
 		add_overlay(I)
-	if(anchored && bullet_count) //Draw the bullets inside.
-		var/ratio = 1 + FLOOR((bullet_count/bullet_max)*2,1)
-		if(stored_bullet && stored_bullet.bulletbox_icon_state)
-			var/image/I = new/image(icon,"[stored_bullet.bulletbox_icon_state]_[ratio]")
-			add_overlay(I)
+		if(anchored && bullet_count) //Draw the bullets inside.
+			var/ratio = 1 + FLOOR((bullet_count/bullet_max)*2,1)
+			if(stored_bullet && stored_bullet.bulletbox_icon_state)
+				var/image/I2 = new/image(icon,"[stored_bullet.bulletbox_icon_state]_[ratio]")
+				add_overlay(I2)
 
-/obj/item/bulletbox/rifle_556/Generate()
-	. = ..()
-	set_stored_bullet(/obj/item/bullet_cartridge/rifle_223/nato/premium)
-	bullet_count = bullet_max
+/obj/item/bulletbox/rifle_556
+	stored_bullet = /obj/item/bullet_cartridge/rifle_223/nato/premium
 
+/obj/item/bulletbox/rifle_762
+	stored_bullet = /obj/item/bullet_cartridge/rifle_308/nato/premium
 
-/obj/item/bulletbox/rifle_762/Generate()
-	. = ..()
-	set_stored_bullet(/obj/item/bullet_cartridge/rifle_308/nato/premium)
-	bullet_count = bullet_max
+/obj/item/bulletbox/rifle_127
+	stored_bullet = /obj/item/bullet_cartridge/sniper_127/premium
 
-/obj/item/bulletbox/rifle_127/Generate()
-	. = ..()
-	set_stored_bullet(/obj/item/bullet_cartridge/sniper_127/premium)
-	bullet_count = bullet_max
+/obj/item/bulletbox/rifle_127/ap
+	stored_bullet = /obj/item/bullet_cartridge/sniper_127/ap
 
-/obj/item/bulletbox/rifle_127/ap/Generate()
-	. = ..()
-	set_stored_bullet(/obj/item/bullet_cartridge/sniper_127/ap)
-	bullet_count = bullet_max

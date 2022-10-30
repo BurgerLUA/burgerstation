@@ -257,38 +257,6 @@
 		/obj/item/storage/egg_carton = 20,
 	)
 
-/loot/misc/cash_register
-	loot_table = list(
-		/obj/item/coin/cursed = 1,
-		/obj/item/currency/telecrystals = 1,
-		/obj/item/currency/credits = 5,
-		/obj/item/currency/gold_coin = 5,
-		/obj/item/currency/dosh = 200
-	)
-	chance_none = 80
-	loot_count = 6
-	var/desired_value = 100 //on average.
-
-/loot/misc/cash_register/pre_spawn(var/atom/movable/M)
-	. = ..()
-	// https://www.desmos.com/calculator/o2npnuupqr
-	if(istype(M,/obj/item/))
-		var/obj/item/I = M
-		var/value = I.get_base_value()
-		if(value <= 0)
-			value = 1
-		var/rng_result = rand()**(value/desired_value)
-		I.amount =  FLOOR(I.amount*rng_result,1)
-		if(I.amount < 1)
-			I.amount = 1
-		if(I.amount > I.amount_max)
-			I.amount = I.amount_max
-
-
-
-
-
-
 /loot/misc/ashwalker //Stuff found in ashwalker camps
 	loot_table = list(
 		/loot/currency/gold_coin = 100,

@@ -66,18 +66,22 @@
 
 /obj/item/attachment/undermount/gun
 	name = "gun"
-
 	var/obj/item/weapon/ranged/stored_gun
 
+/obj/item/attachment/undermount/gun/Destroy()
+	QDEL_NULL(stored_gun)
+	. = ..()
+
 /obj/item/attachment/undermount/gun/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-	return stored_gun.clicked_on_by_object(caller,object,location,control,params)
+	return stored_gun?.clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/attachment/undermount/gun/Generate()
-	stored_gun = new stored_gun(src)
-	stored_gun.anchored = TRUE
-	INITIALIZE(stored_gun)
-	GENERATE(stored_gun)
-	FINALIZE(stored_gun)
+	if(stored_gun)
+		stored_gun = new stored_gun(src)
+		stored_gun.anchored = TRUE
+		INITIALIZE(stored_gun)
+		GENERATE(stored_gun)
+		FINALIZE(stored_gun)
 	. = ..()
 
 /obj/item/attachment/undermount/gun/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
