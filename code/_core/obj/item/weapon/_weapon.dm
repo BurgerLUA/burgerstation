@@ -119,8 +119,8 @@
 			if(!caller.is_player_controlled())
 				CRASH("How the flying fuck is a mob smart enough to recharge their enchanted weapon![caller.get_debug_name()] did it!")
 			var/mob/living/pcaller = caller //This is stupid and bad.
-			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.5)
-			if(G.total_charge <= 0)
+			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
+			if(G.total_charge <= 0 && !G.is_star)
 				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name],shattering it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], shattering it!"))
 				qdel(G)
 			else

@@ -118,8 +118,10 @@
 	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem)
 	weapon_to_enchant.visible_message(span("notice","\The [weapon_to_enchant.name] shines brightly as it's new enchantment is applied."))
 	caller.add_skill_xp(SKILL_MAGIC_ENCHANTING,experience_to_give)
-
-	qdel(soulgem)
+	if(soulgem.is_star)
+		soulgem.total_charge = 0
+	else
+		qdel(soulgem)
 	qdel(stored_book)
 	qdel(src)
 
