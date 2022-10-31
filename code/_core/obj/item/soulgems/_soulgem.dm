@@ -109,7 +109,7 @@
 		if(S.qdeleting || !S.soul_size)
 			return TRUE
 
-		total_charge = MIN(S.soul_size,total_capacity)
+		total_charge = min(S.soul_size,total_capacity)
 		caller.visible_message(span("danger","\The [caller.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
 		if(is_living(caller))
 			var/mob/living/L = caller

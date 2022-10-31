@@ -6,7 +6,7 @@
 	desired_projectile = /obj/projectile/magic/magic_missile
 	desired_sound = list('sound/weapons/magic/magic_missile.ogg')
 	damage_conversion = list(
-		ARCANE = 1
+		ARCANE = 0.9
 	)
 
 /obj/item/spellswap/chaos
@@ -17,8 +17,8 @@
 	desired_projectile = /obj/projectile/magic/chaos
 	desired_sound = list('sound/weapons/magic/chaos.ogg')
 	damage_conversion = list(
-		ARCANE = 0.5,
-		DARK = 0.5
+		ARCANE = 0.45,
+		DARK = 0.45
 	)
 
 /obj/item/spellswap/fireball
@@ -30,8 +30,8 @@
 	desired_sound = list('sound/weapons/magic/fireball.ogg')
 
 	damage_conversion = list(
-		ARCANE = 0.25,
-		BOMB = 0.25,
+		ARCANE = 0.2,
+		BOMB = 0.2,
 		HEAT = 0.5
 	)
 
@@ -44,8 +44,8 @@
 	desired_sound = list('sound/weapons/magic/firestream.ogg')
 
 	damage_conversion = list(
-		ARCANE = 0.25,
-		HEAT = 0.75
+		ARCANE = 0.2,
+		HEAT = 0.7
 	)
 
 /obj/item/spellswap/frost
@@ -57,8 +57,8 @@
 	desired_sound = list('sound/weapons/magic/frost.ogg')
 
 	damage_conversion = list(
-		ARCANE = 0.25,
-		COLD = 0.75
+		ARCANE = 0.2,
+		COLD = 0.7
 	)
 
 /obj/item/spellswap/arcblade
@@ -70,8 +70,8 @@
 	desired_sound = list('sound/weapons/magic/arc_blade.ogg')
 
 	damage_conversion = list(
-		ARCANE = 0.25,
-		BLADE = 0.25,
+		ARCANE = 0.2,
+		BLADE = 0.2,
 		SHOCK = 0.5
 	)
 
@@ -84,45 +84,13 @@
 	desired_sound = list('sound/weapons/magic/zap.ogg')
 
 	damage_conversion = list(
-		ARCANE = 0.25,
-		SHOCK = 0.75
+		ARCANE = 0.2,
+		SHOCK = 0.7
 	)
 
 /obj/item/spellswap/negate
 	name= "SpellSwapper(tm) - NULL"
 	desc_extended = "Use this on a weapon to trade the bullets for....bullets?."
 
+	desired_projectile = null
 	value = 1000
-
-/obj/item/spellswap/negate/click_on_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(is_weapon(object))
-
-		INTERACT_CHECK
-		INTERACT_DELAY(10)
-
-
-		var/obj/item/weapon/I = object
-
-		var/desired_choice = input("Are you sure you wish to spellswap \the [I.name] with \the [src.name]? This will remove the spellswap (If any)","Spellswap","Cancel") as null|anything in list("Yes","No","Cancel")
-
-		if(desired_choice != "Yes")
-			caller.to_chat(span("notice","You decide not to spellswap \the [I.name]."))
-			return TRUE
-		if(I.stored_spellswap)
-			if(istype(I,/obj/item/weapon/ranged))
-				var/obj/item/weapon/ranged/R
-				R.projectile = initial(R.projectile)
-			qdel(I.stored_spellswap)
-			
-		else
-			caller.to_chat(span("notice", "There's no spell to remove!"))
-			return TRUE
-		caller.to_chat(span("notice","You spellswap \the [I.name] with \the [src.name]."))
-
-		var/turf/T = get_turf(caller)
-		play_sound(desired_sound,T)
-
-		return TRUE
-
-	. = ..()
