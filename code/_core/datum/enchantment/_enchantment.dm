@@ -13,7 +13,7 @@
 	cost = initial(cost) * strength * (1 - caller.get_skill_power(SKILL_MAGIC_ENCHANTING,0,1,1)*0.5)
 	strength = (1 + caller.get_skill_power(SKILL_MAGIC_ENCHANTING,0,1,2)) * (charge/SOUL_SIZE_MYSTIC)*10
 	strength = CEILING(strength,1)
-	name = "[initial(name)] \Roman[strength]"
+	name = "[initial(name)]"
 	return strength * cost
 
 /enchantment/proc/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

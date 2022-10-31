@@ -48,7 +48,7 @@
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(enchantment)
-		. += div("notice","It is enchanted with <b>[enchantment.name]</b>")
+		. += div("notice","It is enchanted with <b>[enchantment.name] \Roman[enchantment.strength]</b>")
 		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")
 
 /obj/item/weapon/quick(var/mob/caller,var/atom/object,location,params)

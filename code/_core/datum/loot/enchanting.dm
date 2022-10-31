@@ -1,12 +1,12 @@
 /loot/magic/soulgem
 	loot_table = list(
-		/obj/item/soulgem = 27,
-		/obj/item/soulgem/common = 27,
-		/obj/item/soulgem/uncommon = 9,
-		/obj/item/soulgem/rare = 3,
-		/obj/item/soulgem/mystic = 1
+		/obj/item/soulgem/common/filled = 27,
+		/obj/item/soulgem/common = 54,
+		/obj/item/soulgem/uncommon = 18,
+		/obj/item/soulgem/uncommon/filled = 9,
+		/obj/item/soulgem/rare = 6,
+		/obj/item/soulgem/mystic = 2
 	)
-	loot_count = 2
 
 
 /loot/magic/potion
