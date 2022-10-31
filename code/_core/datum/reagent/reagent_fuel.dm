@@ -15,7 +15,7 @@
 
 	var/turf/T = get_turf(container.owner)
 
-	var/volume_amount = container.remove_reagent(src.type,container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
+	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
 
 	if(explosion_strength_per_unit > 0)
 		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
@@ -56,6 +56,7 @@
 	alpha = 200
 
 	flavor = "oxygen"
+	value = 2
 
 	liquid = 0.25
 
@@ -114,6 +115,8 @@
 	name = "Solid Hydrogen"
 	color = "#7F0000"
 	alpha = 255
+
+	value = 2
 
 	particle_size = 0.75
 

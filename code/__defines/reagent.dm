@@ -1,5 +1,6 @@
 #define RECIPE(x) SSreagent.all_reagent_recipes[x]
 
+#define REAGENT_ROUNDING 0.01
 
 #define REAGENT_METABOLISM_NONE 0x0
 #define REAGENT_METABOLISM_INGEST 0x1

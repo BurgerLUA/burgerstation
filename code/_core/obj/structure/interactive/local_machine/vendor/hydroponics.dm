@@ -28,5 +28,6 @@
 		/obj/item/seed/sugarcane,
 		/obj/item/seed/potato,
 		/obj/item/seed/chili,
-		/obj/item/seed/chili/ghost
+		/obj/item/seed/chili/ghost,
+		/obj/item/seed/potato
 	)

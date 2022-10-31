@@ -12,7 +12,7 @@
 		if(object != top_object && top_object.click_on_object_alt(caller,object,location,control,params))
 			return TRUE
 
-	//Reinforced grabbing. Doesn't matter what your intent is.
+	//Reinforced grabbing. Doesn't matter what your intent is as long as you're clicking with the same hand.
 	if(grabbed_object && grabbed_object == object && is_living(object))
 		reinforce_grab(caller)
 		return TRUE

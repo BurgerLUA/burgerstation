@@ -239,11 +239,11 @@
 	name = "trash(?) loot"
 	icon_state = "misc"
 	possible_objects = list(
+		/loot/value/trash = 2000,
 		/loot/value/low = 1000,
 		/loot/value/medium = 250,
 		/loot/value/high = 100,
-		/loot/value/extreme =1
-
+		/loot/value/extreme = 1
 	)
 	color = COLOR_GREY
 

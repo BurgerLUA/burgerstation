@@ -21,6 +21,10 @@
 
 	var/next_think = 0
 
+/obj/item/clothing/glasses/nightvision/Destroy()
+	QDEL_NULL(stored_cell)
+	. = ..()
+
 /obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEATOM("stored_cell")

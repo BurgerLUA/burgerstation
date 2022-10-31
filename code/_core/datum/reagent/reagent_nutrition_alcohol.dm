@@ -17,7 +17,7 @@
 
 	heal_factor = 0
 
-	value = 1
+	value = 3
 
 	lethal = TRUE
 
@@ -48,6 +48,20 @@
 	if(owner.health)
 		owner.intoxication += power*.*0.5*multiplier
 		owner.sanity_regen_buffer += power*.*multiplier
+
+/reagent/nutrition/ethanol/on_add_living(var/mob/living/owner,var/reagent_container/container,var/amount_added=0,var/current_volume=0) //shamlessly copied painkiller code. Sue me
+
+	. = ..()
+
+	if(STATUS_EFFECT_MAGNITUDE(owner,PAINKILLER) <= power)
+		owner.add_status_effect(PAINKILLER,power,-1)
+
+/reagent/nutrition/ethanol/on_remove_living(var/mob/living/owner,var/reagent_container/container)
+
+	. = ..()
+
+	if(STATUS_EFFECT_MAGNITUDE(owner,PAINKILLER) <= power)
+		owner.remove_status_effect(PAINKILLER)
 
 /reagent/nutrition/ethanol/fernet
 	name = "fernet"

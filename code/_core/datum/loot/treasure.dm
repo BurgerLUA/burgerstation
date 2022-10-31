@@ -27,51 +27,28 @@
 		/obj/item/spellswap/tesla = 1,
 	)
 
+	use_value = TRUE
+
 /loot/tempering_items
 	loot_table = list(
-		/obj/item/tempering/luck = 30,
-		/obj/item/tempering/quality/clothing = 30,
-		/obj/item/tempering/quality/energy = 30,
-		/obj/item/tempering/quality/magic = 50,
-		/obj/item/tempering/quality/melee = 30,
-		/obj/item/tempering/quality/ranged = 30,
+		/obj/item/tempering/luck = 1,
+		/obj/item/tempering/quality/clothing = 1,
+		/obj/item/tempering/quality/energy = 1,
+		/obj/item/tempering/quality/magic = 1,
+		/obj/item/tempering/quality/melee = 1,
+		/obj/item/tempering/quality/ranged = 1,
 	)
 	loot_count = 6
 	chance_none = 25
+
+	use_value = TRUE
 
 /loot/experience_scrolls
 	loot_table = list(
-		/loot/skill_scroll,
-		/loot/attribute_scroll,
+		/loot/skill_scroll = 4,
+		/loot/attribute_scroll = 1,
 	)
 	loot_count = 3
-
-/loot/soulgem
-	loot_table = list(
-		/obj/item/soulgem/common = 4**4,
-		/obj/item/soulgem/uncommon = 4**3,
-		/obj/item/soulgem/rare = 4**2,
-		/obj/item/soulgem/mystic = 4**1,
-		/obj/item/soulgem/godly = 4**0
-	)
-	loot_count = 1
-
-/loot/soulgem/filled
-	loot_table = list(
-		/obj/item/soulgem/common/filled = 4**4,
-		/obj/item/soulgem/uncommon/filled = 4**3,
-		/obj/item/soulgem/rare/filled = 4**2,
-		/obj/item/soulgem/mystic/filled = 4**1
-	)
-	loot_count = 1
-
-/loot/soulgem/assorted
-	loot_table = list(
-		/loot/soulgem  = 5,
-		/loot/soulgem/filled = 1
-	)
-	loot_count = 6
-	chance_none = 25
 
 /loot/enchanting_book
 	loot_table = list(

@@ -202,7 +202,7 @@
 			. *= 1.25
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
 
-	if(grabbing_hand) //Being grabbed.
+	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)

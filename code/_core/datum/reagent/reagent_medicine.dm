@@ -202,7 +202,7 @@
 	for(var/reagent_id in container.stored_reagents)
 		var/reagent/R = REAGENT(reagent_id)
 		if(istype(R,/reagent/nutrition/ethanol))
-			container.remove_reagent(reagent_id,.*3*multiplier)
+			container.add_reagent(reagent_id,-.*3*multiplier)
 
 /reagent/medicine/antihol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -217,7 +217,7 @@
 	for(var/reagent_id in container.stored_reagents)
 		var/reagent/R = REAGENT(reagent_id)
 		if(istype(R,/reagent/nutrition/ethanol))
-			container.remove_reagent(reagent_id,.*3*multiplier)
+			container.add_reagent(reagent_id,-.*3*multiplier)
 
 /reagent/medicine/purge
 	name = "Calomel"
@@ -244,7 +244,7 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(R.type == src.type)
 			continue
-		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4*multiplier)
+		owner.tox_regen_buffer += container.add_reagent(reagent_id,-.*4*multiplier)
 
 /reagent/medicine/purge/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
 
@@ -256,7 +256,7 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(R.type == src.type)
 			continue
-		owner.tox_regen_buffer -= container.remove_reagent(reagent_id,.*4*multiplier)
+		owner.tox_regen_buffer += container.add_reagent(reagent_id,-.*4*multiplier)
 
 /reagent/medicine/charcoal
 	name = "charcoal"
@@ -283,7 +283,7 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(!R.lethal)
 			continue
-		container.remove_reagent(reagent_id,.)
+		container.add_reagent(reagent_id,-.)
 		owner.tox_regen_buffer += 3*.*multiplier
 
 /reagent/medicine/charcoal/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
@@ -296,7 +296,7 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(!R.lethal)
 			continue
-		container.remove_reagent(reagent_id,.*2*multiplier)
+		container.add_reagent(reagent_id,-.*2*multiplier)
 		owner.tox_regen_buffer += 2*.*multiplier
 
 
@@ -452,4 +452,4 @@
 		var/reagent/R = REAGENT(reagent_id)
 		if(!istype(R,/reagent/radioactive/))
 			continue
-		container.remove_reagent(reagent_id,.*10*multiplier)
+		container.add_reagent(reagent_id,-.*10*multiplier)

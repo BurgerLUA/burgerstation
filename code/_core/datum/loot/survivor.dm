@@ -43,7 +43,7 @@
 		/obj/item/grenade/fuse/flashbang = 40,
 		/loot/scroll/lesser = 20
 	)
-	loot_count = 8
+	loot_count = 4
 
 
 /loot/survivor/head //hats, masks, ect.

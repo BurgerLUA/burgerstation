@@ -18,7 +18,7 @@ var/global/ticket_number_counter = 1
 			src.join(usr.client)
 		var/desired_message = input("Adminhelp") as message
 		if(desired_message)
-			desired_message = police_input(usr.client,desired_message)
+			desired_message = police_text(usr.client,desired_message,check_characters=TRUE)
 			if(desired_message)
 				send_message(usr.client,desired_message)
 

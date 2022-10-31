@@ -58,6 +58,10 @@
 		health.adjust_loss_smart(brute = -linked_core.heal_amount)
 	if(update_health_state())
 		update_sprite()
+
+	if(src.super) //Supers can't make anything.
+		return TRUE
+
 	var/list/possible_options = list()
 	var/list/possible_options_super = list()
 	for(var/k in adjacent_blobs)
@@ -102,21 +106,21 @@
 				continue
 			if(istype(victim,/obj/structure/interactive/blob/) && victim.color == src.color) //No friendly fire!
 				continue
-			if(victim != T) //Attack blocking objects (and mobs).
+			if(victim != T && victim.health) //Attack blocking objects (and mobs).
 				spawn src.attack(src,victim,precise=TRUE)
 				break
-			else if(T.density_north || T.density_south || T.density_east || T.density_west) //Attack blocking walls.
+			else if(T.density && (T.density_north || T.density_south || T.density_east || T.density_west) && T.health) //Attack blocking walls.
 				spawn src.attack(src,T,precise=TRUE)
 				break
 			else //Turf is clear. Add it to a possible spawn.
 				possible_spawns += T
 
-		if(length(possible_spawns) && !src.super) //Supers can't make super walls.
+		if(length(possible_spawns)) //Supers can't make walls.
 
 			var/make_super = length(linked_core.linked_walls) > linked_core.blob_limit
 
 			var/turf/T = pick(possible_spawns)
-			var/obj/structure/interactive/blob/node/found_node = !make_super ? locate() in range(4,T) : TRUE //Pretend we found it.
+			var/obj/structure/interactive/blob/node/found_node = locate() in range(4,T)
 
 			var/obj/structure/interactive/blob/B
 			if(found_node)
@@ -128,9 +132,10 @@
 				B = new/obj/structure/interactive/blob/node(T,linked_core) //Make a node if there is none.
 			B.color = color
 			INITIALIZE(B)
+			FINALIZE(B)
 			if(!make_super)
 				B.health.adjust_loss_smart(brute = B.health.health_current - linked_core.heal_amount)
-			FINALIZE(B)
+			B.update_sprite()
 
 			var/list/direction_offsets = get_directional_offsets(T,src)
 			var/matrix/M = B.get_base_transform()

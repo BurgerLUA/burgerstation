@@ -13,6 +13,8 @@
 
 	value = 1200
 
+	size = SIZE_7
+
 /obj/item/clothing/overwear/armor/nanotrasen/deathsquad
 
 	armor = /armor/hardsuit/combat/nanotrasen/plus

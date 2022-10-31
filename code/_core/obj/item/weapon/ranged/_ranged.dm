@@ -244,6 +244,11 @@
 	if(!caller.can_attack(caller))
 		return FALSE
 
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(L.grabbing_hand)
+			return FALSE
+
 	return TRUE
 
 /obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)

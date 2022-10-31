@@ -5,6 +5,26 @@
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
 	var/chance_none = 0 //Applies on a per loot_count basis.
 	var/loot_multiplier = 1 //How much of the loot to duplicate.
+	var/use_value = FALSE //Use the actual value of a weapon as a weight instead of the predefined value in the list.
+
+/loot/New(var/desired_loc)
+
+	. = ..()
+
+	if(use_value)
+		var/highest = 0
+		for(var/k in loot_table)
+			if(!ispathcache(k,/obj/item/))
+				log_error("Error: use_value was set to TRUE for [src.get_debug_name()], but everything in the loot_table was an item!")
+				use_value = FALSE
+				break
+			highest = max(highest,SSbalance.stored_value[k])
+		if(use_value)
+			for(var/k in loot_table)
+				var/value = SSbalance.stored_value[k]
+				var/actual_weight = (1 - value/highest)*highest
+				actual_weight = 1 + FLOOR(actual_weight,1)
+				loot_table[k] = actual_weight
 
 /loot/proc/do_spawn(var/atom/spawn_loc,var/rarity=0) //Use this to spawn the loot. rarity is optional.
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")

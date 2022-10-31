@@ -174,3 +174,55 @@
 	growth_speed = 0.2
 
 	delete_after_harvest = TRUE
+/*
+/obj/item/seed/herb
+	plant_type = /plant_type/herb_red
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 5
+	yield_max = 2
+	growth_speed = 0.45
+
+	delete_after_harvest = TRUE
+
+/obj/item/seed/herb/green
+	plant_type = /plant_type/herb_green
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 5
+	yield_max = 2
+	growth_speed = 0.45
+
+	delete_after_harvest = TRUE
+
+/obj/item/seed/herb/blue
+	plant_type = /plant_type/herb_blue
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 5
+	yield_max = 2
+	growth_speed = 0.45
+
+	delete_after_harvest = TRUE
+*/
+/obj/item/seed/potato
+	plant_type = /plant_type/potato
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 5
+	yield_max = 2
+	growth_speed = 0.4
+
+	delete_after_harvest = TRUE

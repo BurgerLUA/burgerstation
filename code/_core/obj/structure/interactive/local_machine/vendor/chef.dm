@@ -31,6 +31,8 @@
 	icon_state = "chef_equipment"
 
 	stored_types = list(
+		/obj/item/paper/book/cooking,
+		///obj/item/paper/book/cookingchem,                             needs to be made! book_references.dm
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/weapon/melee/sword/spoon,

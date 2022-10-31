@@ -2,6 +2,8 @@
 	name = "portable grinder"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "grinder"
+	desc = "grinds items into reagents"
+	desc_extended = "if I put you into a meat grinder..."
 
 	inventories = list(
 		/obj/hud/inventory/crafting/slotB1,
@@ -49,17 +51,23 @@
 
 		var/obj/item/I = item_table["b[i]"]
 
-		if(!I || !I.reagents)
+		if(!I || !I.reagents || !I.grinder_reagents)
 			continue
 
 		if(I.reagents)
+			caller.to_chat(span("warning","DEBUG Item contains reagents! [I.reagents]"))
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, caller = caller)
 			success = TRUE
 
+		if(I.grinder_reagents)
+			caller.to_chat(span("warning","DEBUG Item contains alchemy reagents! [I.grinder_reagents]"))
+			C.reagents.add_reagent(I.grinder_reagents,I.reagent_count)                                               // instead of static ten-per-item, probably give I....
+			success = TRUE                                                                              // ...something like "reagent_count"...
+                                                                                                        // ... (I.grinder_reagents,I.reagent_count)
 		if(!I.allow_reagent_transfer_from)
 			qdel(I)
 		else
-			I.reagents.update_container()
+			I.reagents.update_container(caller)
 
 	if(!success)
 		caller.to_chat(span("warning","There are no valid items to process!"))
@@ -70,9 +78,9 @@
 		var/reagent/R = REAGENT(reagent_type)
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
-			var/amount_removed = C.reagents.remove_reagent(reagent_type,reagent_amount,FALSE)
+			var/amount_removed = -C.reagents.add_reagent(reagent_type,-reagent_amount,FALSE)
 			C.reagents.add_reagent(R.processed_reagent,amount_removed,temperature,FALSE,FALSE,caller = caller)
 
-	C.reagents.update_container()
+	C.reagents.update_container(caller)
 
 	return TRUE

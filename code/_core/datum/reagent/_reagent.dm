@@ -57,6 +57,20 @@
 
 	var/abstract = FALSE //Set to true so its not calculated in reagent additions. Note that abstract reagents can only be removed directly.
 
+
+/reagent/New(var/desired_loc)
+
+	if(metabolism_stomach > 0)
+		metabolism_stomach = max(metabolism_stomach,REAGENT_ROUNDING)
+
+	if(metabolism_blood > 0)
+		metabolism_blood = max(metabolism_blood,REAGENT_ROUNDING)
+
+	if(metabolism_skin > 0)
+		metabolism_stomach = max(metabolism_skin,REAGENT_ROUNDING)
+
+	. = ..()
+
 /reagent/proc/on_add(var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
 	return amount_added
 

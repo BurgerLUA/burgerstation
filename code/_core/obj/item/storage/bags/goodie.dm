@@ -7,11 +7,15 @@
 
 	//We generate loot later to prevent lag."
 
-	dynamic_inventory_count = 8
-	container_max_size = SIZE_2
+	dynamic_inventory_count = 9
+	max_inventory_x = 3
+	container_max_size = 0
 	container_max_slots = 1
 
 	var/open_verb = "unwrap"
+
+/obj/item/storage/bags/goodie/get_base_value()
+	return loot_generated ? 5 : initial(value)
 
 /obj/item/storage/bags/goodie/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
@@ -35,9 +39,10 @@
 			rarity = P.get_rarity()
 		var/list/generated_loot = SPAWN_LOOT(loot_to_generate,get_turf(src),rarity)
 		for(var/k in generated_loot)
-			add_to_inventory(null,k,FALSE,TRUE,silent=TRUE)
+			add_to_inventory(null,k,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
 
 		caller.to_chat(span("notice","You [open_verb] \the [src.name]."))
+
 		return TRUE
 
 	return ..()
@@ -63,7 +68,7 @@
 
 	size = MAX_INVENTORY_X*2*SIZE_3
 
-	dynamic_inventory_count = 4
+	dynamic_inventory_count = 8 //Double, just in case.
 	container_max_size = SIZE_4
 	container_max_slots = 1
 

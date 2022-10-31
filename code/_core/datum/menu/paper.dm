@@ -26,7 +26,7 @@
 
 	run_function(P,"set_reference",list2params(list("\ref[src]")))
 
-	set_text(P,sanitize(P.active_paper.data[P.active_paper.last_page],3000,extra = FALSE),P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
+	set_text(P,P.active_paper.data[P.active_paper.last_page],P.active_paper.name,P.active_paper.last_page,length(P.active_paper.data),P.active_paper.editable)
 
 /menu/paper/close(var/mob/user)
 	winset(user,"map.paper","is-visible=false")
@@ -55,7 +55,7 @@
 
 		if(href_list["change_page"])
 			var/desired_page = clamp(text2num(href_list["change_page"]),1,length(P.active_paper.data))
-			set_text(P,sanitize(P.active_paper.data[desired_page],3000,extra = FALSE),P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
+			set_text(P,P.active_paper.data[desired_page],P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
 
 		if(href_list["close"])
 			close_menu(P,/menu/paper/)
@@ -77,8 +77,10 @@
 					var/regex/link_remover_3 = new("www\\.","g")
 					desired_new_text = link_remover_3.Replace(desired_new_text,"")
 
+					desired_new_text = police_text(P.client,desired_new_text,min_length=0,max_length=3000,extra=FALSE)
+
 					if(desired_new_text && length(desired_new_text))
 						P.active_paper.data[desired_page] = desired_new_text
-						set_text(P,sanitize(P.active_paper.data[desired_page],3000,extra = FALSE),P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
+						set_text(P,P.active_paper.data[desired_page],P.active_paper.name,desired_page,length(P.active_paper.data),P.active_paper.editable)
 
 	return ..()

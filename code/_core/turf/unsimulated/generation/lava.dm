@@ -1,28 +1,3 @@
-/*
-var/global/list/possible_mushrooms = list(
-	/obj/structure/interactive/plant/cactus_fruit = 6,
-	/obj/structure/interactive/plant/polypore_mushroom = 1,
-	/obj/structure/interactive/plant/porcini_mushroom = 1,
-	/obj/structure/interactive/plant/inocybe_mushroom = 1,
-	/obj/structure/interactive/plant/embershroom_mushroom = 1
-)
-
-var/global/list/possible_lavaland_fauna = list(
-	/obj/marker/generation/mob/ash_walker = 5,
-	/obj/marker/generation/mob/goliath = 10,
-	/obj/marker/generation/mob/goliath_ancient = 1,
-	/obj/marker/generation/mob/watcher = 5,
-	/obj/marker/generation/mob/legion = 5
-)
-var/global/list/possible_lavaland_decor = list(
-	/obj/structure/interactive/basalt = 5,
-)
-
-#define PLACE_MUSHROOM var/datum/D__LINE__ = pickweight(possible_mushrooms); new D__LINE__(src)
-#define PLACE_LAVALAND_FAUNA var/datum/D__LINE__ = pickweight(possible_lavaland_fauna); new D__LINE__(src)
-#define PLACE_LAVALAND_DECOR var/datum/D__LINE__ =pickweight(possible_lavaland_decor); new D__LINE__(src) //not used, I know!
-*/
-
 /turf/unsimulated/generation/lava
 	name = "lava generation"
 	icon_state = "lava"
@@ -111,6 +86,7 @@ var/global/list/possible_lavaland_decor = list(
 						if(prob(1))
 							new /obj/marker/generation/plant/porcini_mushroom(src)
 					new /obj/marker/generation/turf/basalt(src)
+					new /turf/simulated/floor/basalt(src)
 				else if(prob(1))
 					new /obj/marker/generation/turf/basalt_wall(src)
 					new /turf/simulated/wall/rock/basalt(src)
@@ -148,12 +124,12 @@ var/global/list/possible_lavaland_decor = list(
 				if(prob(1))
 					if(prob(1))
 						new /obj/marker/generation/plant/cactus_fruit(src)
-					new /turf/simulated/floor/basalt(src)
 					new /obj/marker/generation/mob/legion(src)
 					new /obj/marker/generation/turf/basalt(src)
+					new /turf/simulated/floor/basalt(src)
 				else
-					new /turf/simulated/wall/rock/basalt(src)
 					new /obj/marker/generation/turf/basalt_wall(src)
+					new /turf/simulated/wall/rock/basalt(src)
 			else
 				if(prob(1))
 					new /obj/marker/generation/plant/glowcap(src)

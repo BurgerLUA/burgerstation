@@ -82,17 +82,17 @@
 			var/volume = I.reagents.stored_reagents[k]
 			if(R.particle_size < filter_setting)
 				var/temperature = I.reagents.stored_reagents_temperature[k]
-				var/amount_removed = I.reagents.remove_reagent(k,volume,should_update=FALSE,check_recipes=FALSE,caller=caller)
+				var/amount_removed = -I.reagents.add_reagent(k,-volume,should_update=FALSE,check_recipes=FALSE,caller=caller)
 				C.reagents.add_reagent(k,amount_removed,temperature,should_update=FALSE,check_recipes=FALSE,caller=caller)
 				transfered = TRUE
 				success = TRUE
 
 		if(transfered)
-			I.reagents.update_container()
+			I.reagents.update_container(caller)
 			I.reagents.process_recipes(caller)
 
 	if(success)
-		C.reagents.update_container()
+		C.reagents.update_container(caller)
 		C.reagents.process_recipes(caller)
 	else
 		caller.to_chat(span("warning","\The [src.name] could not filter anything!"))

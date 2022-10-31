@@ -1,4 +1,5 @@
 var/global/regex/forbidden_characters
+var/global/regex/forbidden_characters_name
 
 
 
@@ -40,6 +41,8 @@ SUBSYSTEM_DEF(config)
 	if(config["FORBIDDEN_CHARACTERS"])
 		forbidden_characters = regex(config["FORBIDDEN_CHARACTERS"])
 
+	if(config["FORBIDDEN_CHARACTERS_NAME"])
+		forbidden_characters_name = regex(config["FORBIDDEN_CHARACTERS_NAME"])
 
 
 	return ..()

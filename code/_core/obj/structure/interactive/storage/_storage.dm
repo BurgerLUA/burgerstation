@@ -69,7 +69,7 @@
 	icon = 'icons/obj/structure/trash_piles.dmi'
 	icon_state = "trash"
 
-	stored_loot = /loot/value/low
+	stored_loot = /loot/value/trash
 
 	var/mob/living/stored_threat
 
@@ -150,7 +150,7 @@
 	icon = 'icons/obj/structure/register.dmi'
 	icon_state = "register"
 
-	stored_loot = /loot/misc/cash_register
+	stored_loot = /loot/currency/cash_register
 
 	layer = 1000
 

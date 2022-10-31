@@ -43,21 +43,3 @@
 			active_staff += "[k] ([english_list(ranks)])"
 
 	to_chat("<b>[length(active_staff)] Online Staff</b><br>[english_list(active_staff)]")
-
-
-/*
-/client/verb/redeem_reward()
-	set name = "Redeem Reward"
-	set category = "Menu"
-
-	var/desired_input = input("Please enter the reward code. Reward codes are case sensitive.","Reward Code") as text
-
-	desired_input = sanitize(desired_input)
-
-	if(desired_input)
-		SSreward.check_code(src,desired_input)
-
-	to_chat(span("warning","Invalid reward code!"))
-
-	return FALSE
-*/
