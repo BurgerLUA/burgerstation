@@ -18,7 +18,7 @@
 
 	var/enchantment/enchantment
 
-	var/list/enchantment_whitelist[] //A whitelist of ["/enchantment/path"] or [ALL] of enchants allowed on the weapon E.G. "/enchantment/fire". Path should be a string.
+	var/list/enchantment_whitelist[] //A whitelist of [/enchantment/path] or [ALL] of enchants allowed on the weapon E.G. /enchantment/fire.
 
 	can_wear = TRUE
 	item_slot = -1
