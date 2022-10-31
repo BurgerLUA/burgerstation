@@ -61,7 +61,7 @@
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
 
-	soul_size = SOUL_SIZE_RARE
+	soul_size = SOUL_SIZE_MYSTIC
 
 	object_size = 2
 

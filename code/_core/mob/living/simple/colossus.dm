@@ -64,7 +64,7 @@
 		/obj/item/container/edible/dynamic/meat/raw_colossus
 	)
 
-	soul_size = SOUL_SIZE_MYSTIC
+	soul_size = SOUL_SIZE_GODLY
 
 	object_size = 2
 
