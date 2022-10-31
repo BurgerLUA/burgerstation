@@ -240,6 +240,7 @@
 		if(socketed_spellgem)
 			I = SG.loc
 			socketed_spellgem.drop_item(get_turf(src))
+			socketed_spellgem.update_attachment_stats()
 		if(I)
 			I.add_object(socketed_spellgem)
 			caller.to_chat(span("notice","You replace \the [socketed_spellgem.name] with \the [SG.name]."))
