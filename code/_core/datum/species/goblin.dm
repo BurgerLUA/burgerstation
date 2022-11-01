@@ -31,5 +31,13 @@
 		BODY_HAND_RIGHT = /obj/item/organ/hand/goblin,
 		BODY_HAND_LEFT = /obj/item/organ/hand/goblin/left,
 		BODY_EYE_RIGHT = /obj/item/organ/eye,
-		BODY_EYE_LEFT = /obj/item/organ/eye/left
+		BODY_EYE_LEFT = /obj/item/organ/eye/left,
+
+		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_HEART = /obj/item/organ/internal/heart,
+		BODY_LUNGS = /obj/item/organ/internal/lungs,
+		BODY_STOMACH = /obj/item/organ/internal/stomach,
+		BODY_LIVER = /obj/item/organ/internal/liver,
+		BODY_INTESTINTES = /obj/item/organ/internal/intestines,
+		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 	)
