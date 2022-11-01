@@ -340,12 +340,13 @@
 	if(T)
 		for(var/k in inventories)
 			var/obj/hud/inventory/I = k
-			if(I.ultra_persistant)
-				continue
 			var/list/dropped_objects = I.drop_objects(T)
 			for(var/j in dropped_objects)
 				var/obj/item/O = j
-				animate(O,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
+				if(I.ultra_persistant)
+					qdel(O)
+				else
+					animate(O,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
 
 	if(attached_organ)
 		attached_organ.attached_organs -= src
