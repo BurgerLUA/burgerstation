@@ -59,7 +59,8 @@
 			I.pixel_x = SC.x - 16
 			I.pixel_y = SC.y - 16
 			var/area/A = get_area(SC)
-			I.maptext = "[A.name]"
+			I.maptext = "<center>[A.name]</center>"
+			I.maptext_y = 16
 			add_overlay(I)
 
 

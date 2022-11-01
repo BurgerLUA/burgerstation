@@ -97,7 +97,12 @@ var/global/list/all_shuttle_controlers = list()
 			var/turf/T = k
 			var/local_x = T.x - src.x
 			var/local_y = T.y - src.y
-			I.DrawBox("#FFFFFF",local_x + 16,local_y + 16)
+			var/desired_color = "#FFFFFF"
+			if(T.density)
+				desired_color = "#B7B7B7"
+			else if(T.has_dense_atom)
+				desired_color = "#D8D8D8"
+			I.DrawBox(desired_color,local_x + 16,local_y + 16)
 		src.stored_icon = I
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
