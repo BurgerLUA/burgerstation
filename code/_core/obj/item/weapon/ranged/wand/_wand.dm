@@ -142,7 +142,6 @@
 /obj/item/weapon/ranged/wand/Initialize()
 	. = ..()
 	sockets_max = tier + 2
-	sockets_max = CEILING(sockets_max,1)
 	if(sockets_max <= 2)
 		sockets_max = 2
 
@@ -151,8 +150,8 @@
 	if(sockets == 0) //Sockets are given in the wild.
 		// https://www.desmos.com/calculator/eomhtrxl2v
 		var/diceroll = rand(1,1000)
-		var/magic_number = (1000/6)**1.25
-		sockets = 1 + (diceroll/magic_number)**3.5
+		var/magic_number = (500/8)**1.25
+		sockets = 1 + (diceroll/magic_number)**1.25
 		sockets = FLOOR(sockets,1)
 		sockets = min(sockets,sockets_max)
 
