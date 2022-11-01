@@ -149,10 +149,10 @@
 		if (final_cost > A.health.mana_current)
 			A.health.adjust_mana(min(-A.health.mana_current,-final_cost))
 			caller.visible_message(span("warning","\The [caller.name]'s spell fizzles!"),span("warning","You push with all your mana, but the spell fizzles!"))
-			return FALSE
+			return TRUE
 		else
 			A.health.adjust_mana(-final_cost)
-			return TRUE
+			return null
 	return null
 
 
@@ -176,7 +176,7 @@
 		if(!pre_shoot(caller,object,location,params,damage_multiplier))
 			return FALSE
 
-		if(!handle_ammo(caller))
+		if(!(handle_ammo(caller) == null))
 			return FALSE
 		var/quality_bonus = get_quality_bonus(0.5,2)
 		var/condition_to_use = 1
