@@ -18,6 +18,7 @@
 	for(var/i = 0, i < FLOOR(magnitude/2.5,1),i++)
 		var/fakeboi = new /obj/item/clothing/special/imaginary()
 		L.worn_objects += list(fakeboi)
+	owner.visible_message(span("warning","\The [owner.name] looks tougher!"),span("warning","You feel more resistant to damage!"))
 	return TRUE
 
 /status_effect/temp_armor/on_effect_removed(mob/living/owner, magnitude, duration)

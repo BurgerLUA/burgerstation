@@ -26,7 +26,6 @@
 		if(livingcaller.status_effects[TEMP_ARMOR])
 			livingcaller.visible_message(span("warning","\The [livingcaller.name] looks dissapointedly at \the [src]."),span("warning","The Spell Fizzles!"))
 		else
-			livingcaller.visible_message(span("warning","\The [livingcaller.name] looks tougher!"),span("warning","You feel more resistant to damage!"))
 			livingcaller.add_status_effect(TEMP_ARMOR,damage_multiplier_to_use * 10,SECONDS_TO_DECISECONDS(damage_multiplier_to_use * 30))
 		return TRUE
 	else

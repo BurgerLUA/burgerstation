@@ -41,12 +41,13 @@
 		/obj/item/weapon/ranged/spellgem/tesla,
 		
 		/obj/item/weapon/ranged/spellgem/buff_armor,
-
+		/obj/item/weapon/ranged/spellgem/projectile_armor,
+		
 		/obj/item/supportgem/cost,
 		/obj/item/supportgem/damage,
 		/obj/item/supportgem/projectiles,
 		/obj/item/supportgem/spread,
-		/obj/item/supportgem/penetrations,
+		/obj/item/supportgem/overkill,
 		/obj/item/supportgem/speed,
 		/obj/item/supportgem/precision
 	)

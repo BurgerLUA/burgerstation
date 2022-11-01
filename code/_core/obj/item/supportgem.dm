@@ -162,6 +162,28 @@
 	)
 	support_desc = "Increases penetrations count by <b>[penetration_count]</b>.\nIncreases mana cost by 50%."
 
+/obj/item/supportgem/overkill
+	name = "overkill support gem"
+	power_base = 1 //1x dmg
+	power_per_quality = 2/100 //200% more damage per 100% qual
+	value = 400
+
+	color = COLOR_PINK
+	color_2 = COLOR_PURPLE
+	color_3 = COLOR_WHITE
+
+/obj/item/supportgem/overkill/update_support_stats()
+	var/damagemult = power_base + (quality-100)*power_per_quality
+	var/manamult = power_base + (quality-100)*power_per_quality
+	support_stats = list(
+		"damage_multiplier" = damagemult + 1.4,
+		"inaccuracy_modifier" = 1.25,
+		"projectile_speed" = 1.25,
+		"mana_cost_multiplier" = manamult + 2.5,
+		"shoot_delay" = 2
+	)
+	support_desc = "Increases damage by <b>[damagemult + 1.4] Times</b>.\nIncreases mana cost by <b>[(manamult + 2.5)/100]%</b>.\nIncreases Inaccuracy and Projectile Speed by 25%.\nIncreases shoot delay by 100%."
+
 
 /obj/item/supportgem/speed
 	name = "speed support gem"

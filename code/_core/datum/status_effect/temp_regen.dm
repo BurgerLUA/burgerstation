@@ -24,4 +24,7 @@
 /status_effect/temp_regen/on_effect_removed(mob/living/owner, magnitude, duration)
 	owner.visible_message(span("warning","\The [owner.name]'s wounds stop quivering!"),span("warning","Your wounds cease quivering!"))
 	. = ..()
+/status_effect/temp_regen/on_effect_added(mob/living/owner, atom/source, magnitude, duration, stealthy)
+	owner.visible_message(span("warning","\The [owner.name]'s wounds begin to close!"),span("warning","You feel your wounds closing..."))
+	. = ..()
 	

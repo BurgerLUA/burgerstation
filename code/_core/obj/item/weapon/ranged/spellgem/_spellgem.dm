@@ -19,6 +19,7 @@
 	company_type = "Wizard Federation"
 
 	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
+	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.
 	var/utility_cost = 100 // Mana cost for util gems.
 	var/cost_mana = 0 //generated on Initialize()
 
@@ -27,7 +28,7 @@
 	. *= 1 - (spread_per_shot/360)
 
 /obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost() 
-	if(utilitygem)
+	if(utilitygem || projectile_utility)
 		return utility_cost
 	. = get_damage_per_hit(100)
 	. *= bullet_count
@@ -146,7 +147,7 @@
 
 	if(final_cost != 0)
 		if (final_cost > A.health.mana_current)
-			a.health.adjust_mana(min(-A.health.mana_current,-final_cost))
+			A.health.adjust_mana(min(-A.health.mana_current,-final_cost))
 			caller.visible_message(span("warning","\The [caller.name]'s spell fizzles!"),span("warning","You push with all your mana, but the spell fizzles!"))
 		else
 			A.health.adjust_mana(-final_cost)
@@ -174,7 +175,7 @@
 		if(!pre_shoot(caller,object,location,params,damage_multiplier))
 			return FALSE
 
-		if(!handle_ammo(caller)
+		handle_ammo(caller)
 		var/quality_bonus = get_quality_bonus(0.5,2)
 		var/condition_to_use = 1
 		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
