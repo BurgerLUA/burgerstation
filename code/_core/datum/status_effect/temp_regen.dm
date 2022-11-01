@@ -9,7 +9,7 @@
 	default_magnitude = 1
 
 	affects_dead = FALSE
-	var/base_to_heal = 0.05
+	var/base_to_heal = 0.1
 
 /status_effect/temp_regen/on_effect_life(mob/living/owner, magnitude, duration)
 	if(!owner.health)

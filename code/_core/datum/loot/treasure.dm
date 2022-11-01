@@ -1,10 +1,11 @@
 /loot/treasure
 	loot_table = list(
-		/loot/supply_crate/all = 1,
-		/loot/soulgem/assorted = 1,
-		/loot/experience_scrolls = 1,
-		/loot/enchanting_book = 1,
-		/loot/tempering_items = 1
+		/loot/supply_crate/all = 5,
+		/loot/soulgem/assorted = 5,
+		/loot/experience_scrolls = 5,
+		/loot/enchanting_book = 5,
+		/loot/tempering_items = 5,
+		/loot/rings/good = 1
 	)
 	loot_table_guaranteed = list(
 	 	/obj/item/portal_scroll,
@@ -48,27 +49,27 @@
 
 /loot/soulgem
 	loot_table = list(
-		/obj/item/soulgem/common = 4**4,
-		/obj/item/soulgem/uncommon = 4**3,
-		/obj/item/soulgem/rare = 4**2,
-		/obj/item/soulgem/mystic = 4**1,
-		/obj/item/soulgem/godly = 4**0
+		/obj/item/soulgem/common = 75,
+		/obj/item/soulgem/uncommon = 15,
+		/obj/item/soulgem/rare = 5,
+		/obj/item/soulgem/mystic = 3,
+		/obj/item/soulgem/godly = 2
 	)
 	loot_count = 1
 
 /loot/soulgem/filled
 	loot_table = list(
-		/obj/item/soulgem/common/filled = 4**4,
-		/obj/item/soulgem/uncommon/filled = 4**3,
-		/obj/item/soulgem/rare/filled = 4**2,
-		/obj/item/soulgem/mystic/filled = 4**1
+		/obj/item/soulgem/common/filled = 75,
+		/obj/item/soulgem/uncommon/filled = 18,
+		/obj/item/soulgem/rare/filled = 7,
+		/obj/item/soulgem/mystic/filled = 5
 	)
 	loot_count = 1
 
 /loot/soulgem/assorted
 	loot_table = list(
-		/loot/soulgem  = 5,
-		/loot/soulgem/filled = 1
+		/loot/soulgem  = 80,
+		/loot/soulgem/filled = 20
 	)
 	loot_count = 6
 	chance_none = 25
@@ -80,7 +81,6 @@
 		/obj/item/paper/book/enchanting/stun = 1,
 		/obj/item/paper/book/enchanting/disarm = 1,
 		/obj/item/paper/book/enchanting/blood_leech = 1,
-		/obj/item/paper/book/enchanting/soul_trap = 1
 	)
 	loot_count = 1
 

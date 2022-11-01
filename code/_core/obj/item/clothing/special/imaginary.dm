@@ -1,7 +1,7 @@
 /obj/item/clothing/special/imaginary
 	name = "FakeArmor"
 
-	protected_limbs = list(BODY_HEAD,BODY_TORSO,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT,BODY_FOOT_LEFT,BODY_FOOT_RIGHT,BODY_EYES,BODY_EARS)
+	protected_limbs = BODY_MAIN
 
 	can_rename = FALSE
 

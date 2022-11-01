@@ -19,6 +19,8 @@
 	var/mana_regeneration = -1
 	var/mana_regen_cooef = 1 //What percentage to naturally regenerate mana.
 
+	var/damage_multiplier = 1
+
 	var/list/damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 
 	var/list/max_damage = list(PAIN=100) //Maximum damage this health object can take.
@@ -34,7 +36,7 @@
 	return ..()
 
 /health/proc/get_damage_multiplier()
-	return 1
+	return damage_multiplier
 
 /health/New(var/desired_owner)
 	owner = desired_owner
