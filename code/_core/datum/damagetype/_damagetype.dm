@@ -485,7 +485,7 @@ var/global/list/all_damage_numbers = list()
 				var/health/mob/living/advanced/adv_attacker = attacker.health
 				var/total_attacker_defense = (adv_attacker) ? adv_attacker.get_total_mob_defense(TRUE,FALSE) : list()
 				var/magic_before_arcane = damage_to_deal[damage_type]
-				arcane_bonus = clamp((total_attacker_defense[damage_type]*0.1),0,(magic_before_arcane*2.5)) //Deal 1 more damage per 10 magic resist of attacker,max of 2.5x damage
+				arcane_bonus = clamp((total_attacker_defense[damage_type]*0.02),0,(magic_before_arcane*2.5)) //Deal 1 more damage per 50 magic resist of attacker,max of 2.5x damage
 				if(debug) log_debug("Victim's new [damage_type] damage due to attacker's [defense_rating_attacker[damage_type]] Total Taken: [arcane_bonus + damage_to_deal[damage_type]].")
 			/* 
 			If someone wants to make a variable to swap between dealing more peirce or damage, heres original code.
