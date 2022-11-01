@@ -147,11 +147,11 @@
 
 /obj/item/weapon/ranged/wand/Generate()
 	. = ..()
-	if(sockets == 0) //Sockets are given in the wild.
+	if(sockets == 0) //Sockets are given in the wild. Old function below
 		// https://www.desmos.com/calculator/eomhtrxl2v
 		var/diceroll = rand(1,1000)
-		var/magic_number = (500/8)**1.25
-		sockets = 1 + (diceroll/magic_number)**1.25
+		var/magic_number = (500/6)**1.25
+		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
 		sockets = min(sockets,sockets_max)
 
@@ -310,7 +310,7 @@
 	wand_damage_multiplier = 1.3
 	wand_mana_multiplier = 1.3
 
-	tier = 1
+	tier = 2
 
 
 	value = 100
@@ -322,7 +322,7 @@
 	wand_damage_multiplier = 1.4
 	wand_mana_multiplier = 1.4
 
-	tier = 2
+	tier = 3
 
 	value = 100
 
@@ -333,6 +333,6 @@
 	wand_damage_multiplier = 1.5
 	wand_mana_multiplier = 1.5
 
-	tier = 2
+	tier = 3
 
 	value = 100
