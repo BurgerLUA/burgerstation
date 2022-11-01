@@ -9,7 +9,7 @@
 
 	bullet_count = 1
 	projectile_speed = TILE_SIZE*0.75 - 1
-
+	use_loyalty_tag = FALSE
 	projectile_utility = TRUE
 	utility_cost = 100
 
