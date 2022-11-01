@@ -82,7 +82,7 @@ var/global/list/difficulty_to_xp_mod = list(
 		return FALSE
 
 	if(!bypass_checks)
-		if(owner.allow_experience_gains)
+		if(!owner.allow_experience_gains)
 			return FALSE
 		if(owner.dead)
 			return FALSE

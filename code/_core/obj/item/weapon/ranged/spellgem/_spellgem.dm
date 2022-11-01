@@ -145,7 +145,11 @@
 	var/final_cost = get_mana_cost(A)
 
 	if(final_cost != 0)
-		A.health.adjust_mana(-final_cost)
+		if (final_cost > A.health.mana_current)
+			a.health.adjust_mana(min(-A.health.mana_current,-final_cost))
+			caller.visible_message(span("warning","\The [caller.name]'s spell fizzles!"),span("warning","You push with all your mana, but the spell fizzles!"))
+		else
+			A.health.adjust_mana(-final_cost)
 
 	return null
 
@@ -170,7 +174,7 @@
 		if(!pre_shoot(caller,object,location,params,damage_multiplier))
 			return FALSE
 
-		handle_ammo(caller)
+		if(!handle_ammo(caller)
 		var/quality_bonus = get_quality_bonus(0.5,2)
 		var/condition_to_use = 1
 		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
