@@ -41,13 +41,22 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 	while(TRUE)
 		var/list/choices = list("Cancel" = "Cancel")
-		for(var/k in all_shuttle_controlers)
-			var/obj/shuttle_controller/SC = k
+
+		if(linked_marker.owning_shuttle)
+			var/obj/shuttle_controller/SC = linked_marker.owning_shuttle
 			if(SC.loyalty_owner != L.loyalty_tag)
 				continue
 			var/area/A = get_area(SC)
 			var/shuttle_text = "[A.name]: [SC.state]"
 			choices[shuttle_text] = SC
+		else
+			for(var/k in all_shuttle_controlers)
+				var/obj/shuttle_controller/SC = k
+				if(SC.loyalty_owner != L.loyalty_tag)
+					continue
+				var/area/A = get_area(SC)
+				var/shuttle_text = "[A.name]: [SC.state]"
+				choices[shuttle_text] = SC
 
 		var/desired_choice = input("Select a shuttle to call.","Shuttle calling","Cancel") as null|anything in choices
 
@@ -167,13 +176,15 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 
 	var/reserved = FALSE
 
+	var/obj/shuttle_controller/owning_shuttle //Who owns the marker? Applies to bluespace transit areas and base transit areas.
+
 	anchored = 2
 
 /obj/marker/shuttle_landing/Finalize()
 	. = ..()
 	if(!SSdmm_suite.is_pvp_coord(loc.x,loc.y,loc.z,32))
 		var/obj/structure/interactive/computer/console/shuttle_landing/best_computer
-		var/best_distance = INFINITY
+		var/best_distance = 1 + VIEW_RANGE*2
 		for(var/k in all_shuttle_landing_consoles)
 			var/obj/structure/interactive/computer/console/shuttle_landing/SL = k
 			if(SL.z != src.z)
@@ -192,4 +203,5 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 			best_computer.linked_marker = src
 			src.linked_computer = best_computer
 
-		all_shuttle_landing_markers += src
+		if(!owning_shuttle)
+			all_shuttle_landing_markers += src

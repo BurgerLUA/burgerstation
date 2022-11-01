@@ -78,10 +78,6 @@
 	chance_none = 0
 	rotational_offset = 16
 
-/obj/marker/prefab/shuttle/prepare_prefab()
-	. = ..()
-	dir = SOUTH //Force south dir.
-
 //Special Prefabs
 
 /obj/marker/prefab/antag

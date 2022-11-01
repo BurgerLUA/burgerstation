@@ -5,9 +5,6 @@
 "b" = (
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/flounder)
-"c" = (
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
 "d" = (
 /turf/simulated/wall/metal/shuttle,
 /area/shuttle/flounder)
@@ -55,45 +52,15 @@
 	dir = 1;
 	icon_state = "1,0"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/flounder)
 "m" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,2"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/flounder)
-"n" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,2"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/flounder)
-"o" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/flounder)
-"p" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/flounder)
-"q" = (
 /obj/structure/shuttle/wing/right{
 	dir = 1;
 	icon_state = "1,0"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/flounder)
-"r" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,4"
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
 "s" = (
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
@@ -101,40 +68,29 @@
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/flounder)
 "t" = (
-/obj/structure/shuttle/wing/left{
-	dir = 8;
-	icon_state = "2,1"
+/obj/structure/shuttle/wing/right{
+	icon_state = "2,2"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/flounder)
 "u" = (
-/obj/decal/hazard/box,
-/obj/structure/interactive/lighting/fixture/floor/stronger,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"v" = (
-/obj/decal/hazard{
-	dir = 8;
-	icon_state = "line"
+/obj/structure/shuttle/wing/left{
+	icon_state = "2,2"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/flounder)
 "w" = (
-/obj/decal/hazard{
-	dir = 1
+/obj/structure/shuttle/wing/left{
+	icon_state = "2,4"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"x" = (
-/obj/decal/hazard{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "y" = (
-/obj/decal/hazard,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/structure/shuttle/wing/right{
+	icon_state = "2,1"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/flounder)
 "z" = (
 /obj/structure/interactive/lighting/fixture/tube{
 	dir = 4;
@@ -158,24 +114,23 @@
 /area/shuttle/flounder)
 "C" = (
 /obj/structure/shuttle/wing/left{
+	icon_state = "2,1"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/flounder)
+"D" = (
+/obj/structure/shuttle/wing/left{
+	dir = 8;
+	icon_state = "2,1"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/flounder)
+"E" = (
+/obj/structure/shuttle/wing/left{
 	dir = 8;
 	icon_state = "2,2"
 	},
-/turf/simulated/floor/plating,
-/area/shuttle/flounder)
-"D" = (
-/obj/structure/shuttle/wing/right{
-	dir = 4;
-	icon_state = "2,2"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/flounder)
-"E" = (
-/obj/structure/shuttle/wing/right{
-	dir = 4;
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/flounder)
 "F" = (
 /obj/structure/interactive/chair,
@@ -192,13 +147,13 @@
 	},
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/flounder)
-"H" = (
-/obj/structure/interactive/computer/console/shuttle_landing{
-	icon_state = "computer";
-	dir = 1
+"I" = (
+/obj/structure/shuttle/wing/right{
+	dir = 4;
+	icon_state = "2,2"
 	},
 /turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
+/area/shuttle/flounder)
 "J" = (
 /obj/structure/interactive/lighting/fixture/bulb{
 	dir = 8
@@ -224,6 +179,13 @@
 	icon_state = "preview"
 	},
 /turf/simulated/floor/plating/shuttle,
+/area/shuttle/flounder)
+"N" = (
+/obj/structure/shuttle/wing/right{
+	dir = 4;
+	icon_state = "2,1"
+	},
+/turf/dmm_suite/clear_turf,
 /area/shuttle/flounder)
 "W" = (
 /obj/structure/interactive/lighting/fixture/tube{
@@ -265,46 +227,46 @@ a
 a
 "}
 (2,1,1) = {"
-u
-v
-v
-v
-v
-u
-v
-v
-v
-v
-u
-v
-v
-v
-v
-u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (3,1,1) = {"
-w
-c
-c
-c
-c
-c
-c
-c
-c
+a
+a
+a
+a
+a
+a
+a
+a
+a
 d
-m
-o
-c
-c
-c
+t
 y
+a
+a
+a
+a
 "}
 (4,1,1) = {"
-w
-c
-c
-c
+a
+a
+a
+a
 b
 s
 b
@@ -313,16 +275,16 @@ k
 d
 d
 d
-c
-c
-c
-y
+a
+a
+a
+a
 "}
 (5,1,1) = {"
-w
+a
 l
-m
-o
+t
+y
 b
 d
 i
@@ -333,12 +295,12 @@ Y
 d
 k
 d
-t
-y
+D
+a
 "}
 (6,1,1) = {"
-u
-q
+a
+m
 d
 d
 d
@@ -351,14 +313,14 @@ j
 z
 j
 d
-C
-u
+E
+a
 "}
 (7,1,1) = {"
-w
-c
-c
-c
+a
+a
+a
+a
 e
 d
 d
@@ -370,13 +332,13 @@ j
 j
 d
 d
-y
+a
 "}
 (8,1,1) = {"
-w
-c
-c
-c
+a
+a
+a
+a
 f
 h
 d
@@ -388,13 +350,13 @@ j
 Z
 B
 k
-y
+a
 "}
 (9,1,1) = {"
-w
-c
-c
-c
+a
+a
+a
+a
 f
 h
 d
@@ -406,13 +368,13 @@ j
 Z
 B
 k
-y
+a
 "}
 (10,1,1) = {"
-w
-c
-c
-c
+a
+a
+a
+a
 g
 d
 d
@@ -424,10 +386,10 @@ j
 j
 d
 d
-y
+a
 "}
 (11,1,1) = {"
-u
+a
 l
 d
 d
@@ -441,14 +403,14 @@ j
 A
 j
 d
-D
-u
+I
+a
 "}
 (12,1,1) = {"
-w
-q
-n
-p
+a
+m
+u
+C
 b
 d
 i
@@ -459,14 +421,14 @@ L
 d
 k
 d
-E
-y
+N
+a
 "}
 (13,1,1) = {"
-w
-c
-c
-c
+a
+a
+a
+a
 b
 M
 b
@@ -475,49 +437,49 @@ k
 d
 d
 d
-c
-c
-c
-y
+a
+a
+a
+a
 "}
 (14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
 w
-c
-c
-c
-c
-c
-c
-c
-r
 d
-n
-p
-c
-c
-c
-y
+u
+C
+a
+a
+a
+a
 "}
 (15,1,1) = {"
-u
-x
-x
-x
-x
-u
-x
-x
-x
-x
-u
-x
-x
-x
-x
-u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (16,1,1) = {"
-H
+a
 a
 a
 a

@@ -93,7 +93,7 @@
 				announce(
 					"Central Command Mission Update",
 					"Drop Pod Boarding",
-					"All landfall crew are ordered to proceed to the hanger bay and prep for drop pod launch. Drop pods will be allowed to launch in 1 minute.",
+					"All landfall crew are ordered to proceed to the hanger bay and prep for drop pod launch. Shuttles will be allowed to launch in 1 minute.",
 					sound_to_play = 'sound/voice/announcement/landfall_crew_1_minute_shuttle.ogg'
 				)
 			if(3)

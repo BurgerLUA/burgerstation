@@ -57,7 +57,9 @@ var/global/list/all_shuttle_controlers = list()
 		qdel(src)
 
 	transit_marker_base = new(T)
+	transit_marker_base.owning_shuttle = src
 	transit_marker_bluespace = new(T2)
+	transit_marker_bluespace.owning_shuttle = src
 
 	transit_marker_base.reserved = TRUE
 
