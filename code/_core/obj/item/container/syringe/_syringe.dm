@@ -69,16 +69,10 @@
 
 	spam_fix_time = world.time + 20
 
-/obj/item/container/syringe/Initialize()
-	. = ..()
-	if(inject_amount_max > reagents.volume_max)
-		inject_amount_max = reagents.volume_max
-	if(!inject_amount_desired)
-		inject_amount_desired = inject_amount_max
-
 /obj/item/container/syringe/Finalize()
 	. = ..()
 	//Autocode.
+	inject_amount_desired = clamp(inject_amount_desired,1,reagents.volume_max)
 	if(!can_inject && !can_draw)
 		log_error("LOGIC ERROR: Syringe [src.get_debug_name()] couldn't inject or draw reagents!")
 	else if(!can_inject)

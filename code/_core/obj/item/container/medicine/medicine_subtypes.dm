@@ -102,7 +102,7 @@
 	icon_state = "bone_gel"
 	treatment_time_mul = 4
 	heal_brute = 0
-	heal_brute_percent = -2
+	heal_brute_percent = 0
 	amount_max = 3
 
 	value = 200

@@ -5,6 +5,11 @@
 	value_burgerbux = 1
 	value = 4000
 
+/obj/item/poster/Generate()
+	. = ..()
+	if(!stored_poster)
+		stored_poster = pick(SSposter.all_posters)
+
 /obj/item/poster/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEPATH("stored_poster")

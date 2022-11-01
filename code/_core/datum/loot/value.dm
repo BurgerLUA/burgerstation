@@ -6,20 +6,31 @@
 	var/value_min = 1
 	var/value_max = 500
 
+	use_value = TRUE
+
 /loot/value/New()
 
-	for(var/k in subtypesof(/obj/item)) //Is this a good idea? Probably not.
+	for(var/k in SSbalance.stored_value)
 		var/obj/item/I = k
-		var/value = initial(I.value)
-		if(value < value_min || value > value_max)
+		var/value = SSbalance.stored_value[k]
+		if(value < value_min)
 			continue
-		var/value_burgerbux = initial(I.value_burgerbux)
-		if(value_burgerbux > 0)
+		if(value > value_max)
 			continue
-		loot_table[k] = CEILING(100/(value+1),1)
+		if(initial(I.contraband))
+			continue
+		if(initial(I.value_burgerbux))
+			continue
+		loot_table[I] = 1 //Correct multipliers added later.
 
-	return ..()
+	. = ..()
 
+
+/loot/value/trash
+	value_min = 1
+	value_max = 250
+	loot_count = 20
+	chance_none = 75
 
 /loot/value/low
 	value_min = 1

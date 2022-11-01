@@ -28,22 +28,26 @@
 		/obj/item/spellswap/tesla = 1,
 	)
 
+	use_value = TRUE
+
 /loot/tempering_items
 	loot_table = list(
-		/obj/item/tempering/luck = 30,
-		/obj/item/tempering/quality/clothing = 30,
-		/obj/item/tempering/quality/energy = 30,
-		/obj/item/tempering/quality/magic = 50,
-		/obj/item/tempering/quality/melee = 30,
-		/obj/item/tempering/quality/ranged = 30,
+		/obj/item/tempering/luck = 1,
+		/obj/item/tempering/quality/clothing = 1,
+		/obj/item/tempering/quality/energy = 1,
+		/obj/item/tempering/quality/magic = 1,
+		/obj/item/tempering/quality/melee = 1,
+		/obj/item/tempering/quality/ranged = 1,
 	)
 	loot_count = 6
 	chance_none = 25
 
+	use_value = TRUE
+
 /loot/experience_scrolls
 	loot_table = list(
-		/loot/skill_scroll,
-		/loot/attribute_scroll,
+		/loot/skill_scroll = 4,
+		/loot/attribute_scroll = 1,
 	)
 	loot_count = 3
 

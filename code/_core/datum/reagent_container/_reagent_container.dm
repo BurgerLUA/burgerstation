@@ -260,6 +260,7 @@
 	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
 
+
 	if(volume_current > 0)
 		SSreagent.all_temperature_reagent_containers |= src
 	else

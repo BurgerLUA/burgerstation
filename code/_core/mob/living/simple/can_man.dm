@@ -111,10 +111,10 @@
 	if(CALLBACK_EXISTS("stop_charge_\ref[src]"))
 		return FALSE
 
-
 	charge_dir = dir
 	charge_steps = rand(5,15)
 	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/finish_charge)
+
 	return TRUE
 
 /mob/living/simple/can_man/proc/finish_charge()

@@ -3,36 +3,41 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/obj/decal/hazard/box,
-/obj/structure/interactive/lighting/fixture/floor/stronger,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/structure/shuttle/wing/right{
+	icon_state = "2,2"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
 "c" = (
-/obj/decal/hazard{
-	dir = 1
+/obj/structure/shuttle/wing/left{
+	icon_state = "2,2"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
 "d" = (
-/obj/decal/hazard{
-	dir = 8;
-	icon_state = "line"
+/obj/structure/shuttle/wing/right{
+	icon_state = "2,1"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
 "e" = (
-/obj/decal/hazard{
-	dir = 4
+/obj/structure/shuttle/wing/right{
+	icon_state = "1,1"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
 "f" = (
-/obj/decal/hazard,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/structure/shuttle/wing/left{
+	icon_state = "1,1"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
 "g" = (
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/structure/shuttle/wing/left{
+	icon_state = "2,1"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 1;
@@ -73,51 +78,19 @@
 /area/shuttle/shuttlebus)
 "o" = (
 /obj/structure/shuttle/wing/right{
-	icon_state = "2,2"
+	icon_state = "1,0"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/shuttlebus)
 "p" = (
 /obj/structure/shuttle/wing/left{
-	icon_state = "2,2"
+	icon_state = "1,0"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/shuttlebus)
 "q" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/shuttlebus)
-"r" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/shuttlebus)
-"s" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/shuttlebus)
-"t" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/shuttlebus)
-"u" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,0"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/shuttlebus)
-"v" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,0"
-	},
-/turf/simulated/floor/plating,
+/obj/marker/spawning/window/shuttle,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/shuttlebus)
 "w" = (
 /obj/marker/spawning/window/shuttle,
@@ -134,13 +107,6 @@
 /obj/shuttle_controller,
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/shuttlebus)
-"z" = (
-/obj/structure/interactive/computer/console/shuttle_landing{
-	icon_state = "computer";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "A" = (
 /obj/structure/interactive/chair,
 /obj/structure/interactive/lighting/fixture/tube{
@@ -203,62 +169,62 @@ a
 a
 "}
 (2,1,1) = {"
-b
-d
-d
-d
-d
-b
-d
-d
-d
-d
-b
-d
-d
-d
-d
-b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (3,1,1) = {"
-c
-g
+a
+a
 h
 k
 k
-o
-q
-g
-g
-g
-g
-g
-g
-g
-g
-f
+b
+d
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (4,1,1) = {"
-c
-g
+a
+a
 i
 m
 k
 k
-r
-u
-g
-g
-g
-g
-g
-g
-g
-f
+e
+o
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (5,1,1) = {"
-c
-g
+a
+a
 j
 k
 k
@@ -270,13 +236,13 @@ w
 w
 w
 k
-u
-g
-f
+o
+a
+a
 "}
 (6,1,1) = {"
-b
-g
+a
+a
 k
 k
 K
@@ -289,12 +255,12 @@ K
 A
 k
 k
-g
-b
+a
+a
 "}
 (7,1,1) = {"
-c
-g
+a
+a
 l
 B
 n
@@ -308,11 +274,11 @@ n
 n
 w
 w
-f
+a
 "}
 (8,1,1) = {"
-c
-g
+a
+a
 l
 n
 K
@@ -326,11 +292,11 @@ n
 K
 x
 w
-f
+a
 "}
 (9,1,1) = {"
-c
-g
+a
+a
 l
 n
 K
@@ -344,11 +310,11 @@ n
 K
 x
 w
-f
+a
 "}
 (10,1,1) = {"
-c
-g
+a
+a
 l
 C
 n
@@ -362,11 +328,11 @@ n
 n
 w
 w
-f
+a
 "}
 (11,1,1) = {"
-b
-g
+a
+a
 k
 k
 K
@@ -379,83 +345,83 @@ K
 A
 k
 k
-g
-b
+a
+a
 "}
 (12,1,1) = {"
-c
-g
+a
+a
 h
 k
 k
 k
 k
 k
-w
-w
-w
-w
+q
+q
+q
+q
 k
-v
-g
-f
+p
+a
+a
 "}
 (13,1,1) = {"
-c
-g
+a
+a
 i
 m
 k
 k
-s
-v
-g
-g
-g
-g
-g
-g
-g
 f
+p
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (14,1,1) = {"
-c
-g
+a
+a
 j
 k
 k
-p
-t
+c
 g
-g
-g
-g
-g
-g
-g
-g
-f
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (15,1,1) = {"
-b
-e
-e
-e
-e
-b
-e
-e
-e
-e
-b
-e
-e
-e
-e
-b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (16,1,1) = {"
-z
+a
 a
 a
 a
