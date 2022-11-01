@@ -1,5 +1,6 @@
 /loadout/
 	var/list/spawning_items = list() //Remember, order matters! Also accepts loot.
+	var/list/possible_gems = list() // A weighted list of what gems the wands(if any) of mob should carry in them
 
 /loadout/proc/get_spawning_items()
 	return spawning_items.Copy() //Copy is needed.
@@ -44,5 +45,13 @@
 			W2.stored_magazine = M
 			W2.open = FALSE
 			W2.update_sprite()
-
+	for(var/obj/item/weapon/ranged/wand/W in added_items) // Gives wands a basic spellgem, if the mob has possible weapon gems to add to it.
+		if(!W.socketed_spellgem)
+			var/obj/item/weapon/ranged/spellgem/SG = pickweight(possible_gems)
+			SG = new SG(get_turf(A))
+			INITIALIZE(SG)
+			GENERATE(SG)
+			FINALIZE(SG)
+			W.contents += SG //probably stupid and bad
+			W.socketed_spellgem = SG
 	return TRUE

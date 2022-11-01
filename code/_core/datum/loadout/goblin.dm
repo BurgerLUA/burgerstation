@@ -9,7 +9,6 @@
 	)
 
 	var/list/possible_weapon = list()
-
 /loadout/goblin/get_spawning_items()
 
 	. = ..()
@@ -23,7 +22,24 @@
 	)
 
 	possible_weapon = list(
+		/obj/item/weapon/ranged/wand/branch = 20,
+		/obj/item/weapon/ranged/wand/quartz = 15,
+		/obj/item/weapon/ranged/wand/twisted = 5,
+		/obj/item/weapon/ranged/spellgem/flame = 10,
+		/obj/item/weapon/ranged/spellgem/inferno = 10,
+		/obj/item/weapon/ranged/spellgem/ice_spear = 10,
+		/obj/item/weapon/ranged/spellgem/fire_spear = 10,
+		/obj/item/weapon/ranged/spellgem/shock = 10,
+		/obj/item/weapon/ranged/spellgem/frost = 10
+	)
 
+	possible_gems = list(
+		/obj/item/weapon/ranged/spellgem/flame = 1,
+		/obj/item/weapon/ranged/spellgem/inferno = 1,
+		/obj/item/weapon/ranged/spellgem/ice_spear = 1,
+		/obj/item/weapon/ranged/spellgem/fire_spear = 1,
+		/obj/item/weapon/ranged/spellgem/shock = 1,
+		/obj/item/weapon/ranged/spellgem/frost = 1
 	)
 
 /loadout/goblin/warrior

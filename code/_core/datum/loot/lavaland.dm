@@ -76,5 +76,6 @@
 
 /loot/lavaland/hierophant
 	loot_table = list(
-		/obj/item/weapon/melee/hierophant_staff = 1,
+		/loot/weapon/magic/good_wand = 75,
+		/obj/item/weapon/melee/hierophant_staff = 25,
 	)

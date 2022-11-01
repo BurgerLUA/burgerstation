@@ -141,7 +141,7 @@
 
 /obj/item/weapon/ranged/wand/Initialize()
 	. = ..()
-	sockets_max = 7 * (wand_damage_multiplier/2.5)
+	sockets_max = tier + 2
 	sockets_max = CEILING(sockets_max,1)
 	if(sockets_max <= 2)
 		sockets_max = 2
@@ -154,6 +154,7 @@
 		var/magic_number = (1000/6)**1.25
 		sockets = 1 + (diceroll/magic_number)**3.5
 		sockets = FLOOR(sockets,1)
+		sockets = min(sockets,sockets_max)
 
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)
@@ -275,7 +276,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/branch.dmi'
 
 	wand_damage_multiplier = 1
-	wand_mana_multiplier = 0.5
+	wand_mana_multiplier = 0.95
 
 	tier = 0
 
@@ -285,8 +286,8 @@
 	name = "crafted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
-	wand_damage_multiplier = 1.25
-	wand_mana_multiplier = 0.75
+	wand_damage_multiplier = 1.1
+	wand_mana_multiplier = 1.1
 
 	tier = 1
 
@@ -296,10 +297,10 @@
 	name = "crafted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
-	wand_damage_multiplier = 1.5
-	wand_mana_multiplier = 1
+	wand_damage_multiplier = 1.2
+	wand_mana_multiplier = 1.2
 
-	tier = 2
+	tier = 1
 
 	value = 100
 
@@ -307,10 +308,10 @@
 	name = "twisted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/twisted.dmi'
 
-	wand_damage_multiplier = 2
-	wand_mana_multiplier = 2
+	wand_damage_multiplier = 1.3
+	wand_mana_multiplier = 1.3
 
-	tier = 3
+	tier = 1
 
 
 	value = 100
@@ -319,10 +320,10 @@
 	name = "profane wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/profane.dmi'
 
-	wand_damage_multiplier = 2.25
-	wand_mana_multiplier = 2.25
+	wand_damage_multiplier = 1.4
+	wand_mana_multiplier = 1.4
 
-	tier = 4
+	tier = 2
 
 	value = 100
 
@@ -330,9 +331,9 @@
 	name = "sage wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/sage.dmi'
 
-	wand_damage_multiplier = 2.5
-	wand_mana_multiplier = 2.5
+	wand_damage_multiplier = 1.5
+	wand_mana_multiplier = 1.5
 
-	tier = 5
+	tier = 2
 
 	value = 100
