@@ -75,7 +75,9 @@
 /ai/boss/can_man/proc/handle_projectiles()
 
 	if(!objective_attack)
-		projectile_ramp = 0
+		projectile_delay = initial(projectile_delay)
+		projectile_count = initial(projectile_count)
+		projectile_ramp = initial(projectile_ramp)
 		return FALSE
 
 	if(projectile_delay + projectile_ramp > 0)
