@@ -132,7 +132,7 @@
 	if(final_cost <= 0)
 		return 1
 
-	return owner && cost_mana ? FLOOR(owner.health.mana_current / final_cost, 1) : 0
+	return owner && cost_mana ? 1 : 0 //Mana cost and fizzle in handle_ammo
 
 /obj/item/weapon/ranged/spellgem/handle_ammo(var/mob/caller,var/bullet_position=1)
 

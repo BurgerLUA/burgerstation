@@ -164,8 +164,8 @@
 
 /obj/item/supportgem/overkill
 	name = "overkill support gem"
-	power_base = 1 //1x dmg
-	power_per_quality = 2/100 //200% more damage per 100% qual
+	power_base = 0.4 //1.4x dmg
+	power_per_quality = 1/100 //100% more damage per 100% qual
 	value = 400
 
 	color = COLOR_PINK
@@ -176,13 +176,13 @@
 	var/damagemult = power_base + (quality-100)*power_per_quality
 	var/manamult = power_base + (quality-100)*power_per_quality
 	support_stats = list(
-		"damage_multiplier" = damagemult + 1.4,
+		"damage_multiplier" = damagemult,
 		"inaccuracy_modifier" = 1.25,
 		"projectile_speed" = 1.25,
 		"mana_cost_multiplier" = manamult + 2.5,
 		"shoot_delay" = 2
 	)
-	support_desc = "Increases damage by <b>[damagemult + 1.4] Times</b>.\nIncreases mana cost by <b>[(manamult + 2.5)/100]%</b>.\nIncreases Inaccuracy and Projectile Speed by 25%.\nIncreases shoot delay by 100%."
+	support_desc = "Increases damage by <b>[damagemult] Times</b>.\nIncreases mana cost by <b>[(manamult + 2.5)/100]%</b>.\nIncreases Inaccuracy and Projectile Speed by 25%.\nIncreases shoot delay by 100%."
 
 
 /obj/item/supportgem/speed

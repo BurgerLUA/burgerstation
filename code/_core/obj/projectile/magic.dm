@@ -339,13 +339,13 @@
 	. = ..()
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
-		if(!L.dead && allow_helpful_action(src.loyalty_tag,L))
+		if(!L.dead)
 			L.add_status_effect(TEMP_REGEN,damage_multiplier,SECONDS_TO_DECISECONDS(damage_multiplier * 15))
 /obj/projectile/magic/buff/armor
 	name = "armor"
-/obj/projectile/magic/buff/mending/on_projectile_hit(atom/hit_atom)
+/obj/projectile/magic/buff/armor/on_projectile_hit(atom/hit_atom)
 	. = ..()
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
-		if(!L.dead && allow_helpful_action(src.loyalty_tag,L))
+		if(!L.dead)
 			L.add_status_effect(TEMP_ARMOR,damage_multiplier * 10,SECONDS_TO_DECISECONDS(damage_multiplier * 30))
