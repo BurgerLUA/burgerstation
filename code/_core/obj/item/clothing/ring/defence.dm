@@ -3,7 +3,7 @@
 	desc_extended = "A dull circular ring. This one lightly increases your defence to basic attacks."
 	armor = /armor/ring/minor_defense
 
-/obj/item/clothing/ring/gold/defense
+/obj/item/clothing/ring/silver/defense
 	name = "Ring of Defense"
 	desc = "A shiny circular ring. This one increases your defence to basic attacks."
 	armor = /armor/ring/defense

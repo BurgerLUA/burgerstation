@@ -1,11 +1,11 @@
 /loot/treasure
 	loot_table = list(
-		/loot/supply_crate/all = 5,
-		/loot/soulgem/assorted = 5,
-		/loot/experience_scrolls = 5,
-		/loot/enchanting_book = 5,
-		/loot/tempering_items = 5,
-		/loot/rings/good = 1
+		/loot/supply_crate/all = 15,
+		/loot/soulgem/assorted = 15,
+		/loot/experience_scrolls = 15,
+		/loot/enchanting_book = 15,
+		/loot/tempering_items = 15,
+		/loot/rings/good = 10
 	)
 	loot_table_guaranteed = list(
 	 	/obj/item/portal_scroll,
@@ -15,7 +15,6 @@
 
 /loot/treasure/boss
 	loot_count = 5
-
 
 /loot/spellswap
 	loot_table = list(

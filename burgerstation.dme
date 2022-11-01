@@ -1398,6 +1398,7 @@
 #include "code\_core\obj\item\clothing\ring\arcane.dm"
 #include "code\_core\obj\item\clothing\ring\cat_cursed.dm"
 #include "code\_core\obj\item\clothing\ring\defence.dm"
+#include "code\_core\obj\item\clothing\ring\special.dm"
 #include "code\_core\obj\item\clothing\shirt\_shirt.dm"
 #include "code\_core\obj\item\clothing\shirt\blouse.dm"
 #include "code\_core\obj\item\clothing\shirt\clown.dm"

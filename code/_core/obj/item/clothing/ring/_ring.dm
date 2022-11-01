@@ -4,11 +4,20 @@
 	desc_extended = "A shiny circular ring. Wonder what it does?"
 
 	weight = 1
-
+	value = 1000
 	worn_layer = LAYER_MOB_CLOTHING_RING
 	item_slot = SLOT_RING
 
 	uses_until_condition_fall = 250
+
+
+/obj/item/clothing/ring/copper
+	name = "Copper Ring"
+	icon = 'icons/obj/item/clothing/ring/copper.dmi'
+	protected_limbs = BODY_MAIN
+	desc = "A copper circular ring. Wonder what it does?"
+	value = 750
+	armor = /armor/ring/copper
 
 /obj/item/clothing/ring/iron
 	name = "Iron Ring"
@@ -21,9 +30,26 @@
 	icon = 'icons/obj/item/clothing/ring/gold.dmi'
 	protected_limbs = BODY_MAIN
 	desc = "A shiny circular ring. Wonder what it does?"
+	value = 1500
+
+/obj/item/clothing/ring/silver
+	name = "Silver Ring"
+	icon = 'icons/obj/item/clothing/ring/silver.dmi'
+	protected_limbs = BODY_MAIN
+	desc = "A tarnished circular ring. Wonder what it does?"
+	value = 2000
 
 /obj/item/clothing/ring/cat/
 	name = "Cat Ring"
 	desc = "A fuzzy circular ring. Wonder what it does?"
 	protected_limbs = BODY_MAIN
 	icon = 'icons/obj/item/clothing/ring/cat.dmi'
+	value = 3000
+
+/obj/item/clothing/ring/horsemen/
+	name = "Ring of the Horsemen"
+	desc = "May your woes be many; and your days few."
+	protected_limbs = BODY_MAIN
+	icon = 'icons/obj/item/clothing/ring/horsemen.dmi'
+	value = 2500
+	

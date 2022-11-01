@@ -210,14 +210,8 @@
 			L.to_chat(span("notice","Wait, did god drop their epi-pen?"))
 			CREATE(/obj/item/container/syringe/medipen/adminomnizine,get_turf(src))
 		if(19)
-			L.to_chat(span("notice","I feel like a new person... with no debts!"))
-			L.resurrect()
-			if(is_player(L))
-				var/mob/living/advanced/player/P = L
-				P.currency = max(P.currency,50000)
-				P.revenue = 0
-				P.expenses = 0
-				P.last_tax_payment = world.realtime
+			L.to_chat(span("notice","Just shy of 20...wait, where'd this ring come from?"))
+			CREATE(/obj/item/clothing/ring/gold/ring_of_god,get_turf(src))
 		if(20)
 			L.to_chat(span("notice","NAT 20! I AM A GOD!"))
 			CREATE(/obj/item/clothing/mask/godlike,get_turf(src))

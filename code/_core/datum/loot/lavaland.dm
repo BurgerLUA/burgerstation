@@ -71,7 +71,8 @@
 
 /loot/lavaland/herald
 	loot_table = list(
-		/obj/item/herald_mirror = 1,
+		/obj/item/herald_mirror = 4,
+		/loot/rings/horseman = 1
 	)
 
 /loot/lavaland/hierophant
