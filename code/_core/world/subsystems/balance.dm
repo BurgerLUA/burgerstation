@@ -60,6 +60,8 @@ SUBSYSTEM_DEF(balance)
 		var/obj/item/magazine/M = k
 		if(initial(M.rarity) != RARITY_COMMON)
 			continue
+		if(initial(M.bullet_count_max) <= 0)
+			continue
 		M = new k(T)
 		M.initialize_type = INITIALIZE_NONE
 		INITIALIZE(M)
