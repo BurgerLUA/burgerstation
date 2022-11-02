@@ -173,7 +173,7 @@
 	color_3 = COLOR_WHITE
 
 /obj/item/supportgem/overkill/update_support_stats()
-	var/damagemult = power_base + (quality-100)*power_per_quality
+	var/damagemult = 1 + power_base + (quality-100)*power_per_quality
 	var/manamult = power_base + (quality-100)*power_per_quality
 	support_stats = list(
 		"damage_multiplier" = damagemult,
