@@ -2,7 +2,7 @@
 	name = "weapon magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
-	var/bullet_count_max = 30 //How many bullets can this store
+	var/bullet_count_max = 0 //How many bullets can this store
 	var/list/obj/item/bullet_cartridge/stored_bullets
 
 	var/list/weapon_whitelist = list() //What guns can fit this object? Assoic list (type = TRUE/FALSE)

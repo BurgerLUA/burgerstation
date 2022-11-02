@@ -114,6 +114,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 				caller.to_chat(span("warning","Invalid drop location: NanoTrasen has deemed it's unsafe to launch at this time!"))
 				return FALSE
 			if(!desired_loc)
+				caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
 				return FALSE
 			for(var/d in DIRECTIONS_ALL)
 				var/turf/T = get_step(desired_loc,d)

@@ -101,7 +101,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/reinforce_grab(var/mob/caller)
+/obj/hud/inventory/proc/reinforce_grab(var/mob/living/caller)
 
 	if(world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
 		return FALSE
@@ -110,6 +110,10 @@
 		return FALSE
 
 	var/mob/living/grabbed_living = grabbed_object
+
+	if(!allow_hostile_action(caller.loyalty_tag,grabbed_living))
+		return FALSE
+
 	caller.visible_message(
 		span("warning","\The [caller.name] tightens their grip on \the [grabbed_living.name]!"),
 		span("warning","You tighten your grip on \the [grabbed_living.name]!")
