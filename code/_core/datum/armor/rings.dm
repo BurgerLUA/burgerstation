@@ -118,7 +118,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		ARCANE = -10,
+		ARCANE = 10,
 		HEAT = 10,
 		COLD = 10,
 		SHOCK = 10,
