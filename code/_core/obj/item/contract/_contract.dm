@@ -107,18 +107,22 @@
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P,var/params)
 	var/turf/T = get_turf(P)
-	if(burgerbux_reward)
-		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
-		P.adjust_burgerbux(burgerbux_reward)
+	if(src.value_current != src.value_max)
+		P.to_chat(span("warning","You feel it would be unwise to try to turn in a contract that isn't complete yet!"))
+		return FALSE
 	else
-		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
-	src.drop_item(T)
-	reward.drop_item(T)
-	P.put_in_hands(reward,params)
-	reward = null //Just in case.
-	value_current = 0 //Just in case.
-	qdel(src)
-	return TRUE
+		if(burgerbux_reward)
+			P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
+			P.adjust_burgerbux(burgerbux_reward)
+		else
+			P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
+		src.drop_item(T)
+		reward.drop_item(T)
+		P.put_in_hands(reward,params)
+		reward = null //Just in case.
+		value_current = 0 //Just in case.
+		qdel(src)
+		return TRUE
 
 
 

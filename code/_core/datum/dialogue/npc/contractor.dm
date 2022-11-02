@@ -96,8 +96,7 @@
 			var/obj/item/contract/C = P.left_item
 			if(C.amount >= C.amount_max)
 				found_contract = C
-		if(found_contract)
-			found_contract.turn_in(P)
+		if(found_contract && found_contract.turn_in(P))
 			. = ..(P,"*success")
 		else
 			. = ..(P,"*failure")
