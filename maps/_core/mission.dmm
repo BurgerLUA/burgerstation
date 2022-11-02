@@ -48,10 +48,6 @@
 "aj" = (
 /turf/unsimulated/generation/lava/path,
 /area)
-"ak" = (
-/obj/marker/prefab/landing,
-/turf/unsimulated/generation/ocean,
-/area)
 "al" = (
 /obj/marker/prefab/city/t_junction,
 /turf/unsimulated/generation/forest,
@@ -191,7 +187,7 @@
 /turf/unsimulated/generation/ocean,
 /area)
 "aQ" = (
-/obj/marker/prefab/house,
+/obj/marker/prefab/landing,
 /turf/unsimulated/generation/beach/path,
 /area)
 "aR" = (
@@ -230,11 +226,8 @@
 /turf/unsimulated/generation/beach/path,
 /area)
 "aZ" = (
-/obj/marker/prefab/fob{
-	icon_state = "";
-	dir = 8
-	},
-/turf/unsimulated/generation/forest/path,
+/obj/marker/prefab/landing,
+/turf/unsimulated/generation/jungle/path,
 /area)
 "ba" = (
 /obj/marker/prefab/landing,
@@ -51099,7 +51092,7 @@ by
 by
 by
 by
-ak
+by
 by
 by
 by
@@ -70013,7 +70006,7 @@ aw
 aw
 aw
 aw
-aw
+aZ
 aw
 aw
 aw
@@ -77167,7 +77160,7 @@ az
 az
 az
 az
-az
+aQ
 az
 az
 az
@@ -132375,7 +132368,7 @@ az
 az
 az
 az
-aQ
+az
 az
 az
 az
@@ -153399,17 +153392,17 @@ az
 az
 az
 az
-aY
-az
-az
-az
-az
-aY
 az
 az
 az
 az
 az
+az
+az
+az
+az
+az
+aQ
 az
 az
 az
@@ -155916,7 +155909,7 @@ az
 az
 az
 az
-aY
+az
 az
 az
 az
@@ -158931,7 +158924,7 @@ az
 az
 az
 az
-aY
+az
 az
 az
 az
@@ -160433,7 +160426,7 @@ az
 az
 az
 az
-aY
+az
 az
 az
 az
@@ -200473,7 +200466,7 @@ bt
 bt
 bt
 bt
-ba
+bt
 bt
 bt
 aD
@@ -211000,7 +210993,7 @@ bt
 bt
 bt
 bt
-aZ
+bt
 bt
 bt
 bt
@@ -213008,7 +213001,7 @@ bt
 bt
 bt
 bt
-bt
+ba
 bt
 bt
 bt
