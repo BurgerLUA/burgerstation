@@ -110,8 +110,6 @@
 	name = "magic missile"
 	icon_state = "missile"
 
-	is_homing = TRUE
-
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/magic/blade
