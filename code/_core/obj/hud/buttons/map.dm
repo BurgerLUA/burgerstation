@@ -59,7 +59,8 @@
 			I.pixel_x = SC.x - 16
 			I.pixel_y = SC.y - 16
 			var/area/A = get_area(SC)
-			I.maptext = "[A.name]"
+			I.maptext = "<center>[A.name]</center>"
+			I.maptext_y = 16
 			add_overlay(I)
 
 
@@ -283,29 +284,9 @@
 
 		if(connected_background.linked_pod)
 			if(launch)
-				if(!SSgamemode.active_gamemode.allow_launch)
-					caller.to_chat(span("warning","Error: Drop pods are not ready to launch yet."))
-					return FALSE
-				if(!connected_background || !connected_background.z_drop)
-					caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
-					return FALSE
 				var/turf/T = locate(connected_background.x_drop,connected_background.y_drop,connected_background.z_drop)
-				if(!T)
-					caller.to_chat(span("warning","Invalid drop location: Out of bounds."))
-					return FALSE
-				if(!T.is_safe() || !T.is_safe_move())
-					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
-					return FALSE
-				var/turf/T2 = get_step(T,SOUTH)
-				if(!T2 || !T2.is_safe() || !T2.is_safe_move())
-					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
-					return FALSE
-				var/area/A = T.loc
-				if(A.interior)
-					caller.to_chat(span("warning","Invalid drop location: Obstructed area."))
-					return FALSE
-				connected_background.linked_pod.set_state(caller,POD_LAUNCHING,T)
-				connected_background.update_owner(null)
+				if(connected_background.linked_pod.set_state(caller,POD_LAUNCHING,T))
+					connected_background.update_owner(null)
 				return TRUE
 			else if(close)
 				connected_background.linked_pod.set_state(caller,POD_IDLE)

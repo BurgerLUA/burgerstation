@@ -12,6 +12,7 @@
 	var/obj/stored_line
 
 	maptext = "Resist!"
+	maptext_y = -16
 
 	mouse_opacity = 0
 	alpha = 0

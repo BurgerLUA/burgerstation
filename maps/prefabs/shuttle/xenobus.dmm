@@ -3,32 +3,35 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/obj/decal/hazard/box,
-/obj/structure/interactive/lighting/fixture/floor/stronger,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/structure/shuttle/wing/right{
+	icon_state = "2,2"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/xeno)
 "c" = (
-/obj/decal/hazard{
-	dir = 1
+/obj/structure/shuttle/wing/left{
+	icon_state = "2,2"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/xeno)
 "d" = (
-/obj/decal/hazard{
-	dir = 8;
-	icon_state = "line"
+/obj/structure/shuttle/wing/right{
+	icon_state = "2,1"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/xeno)
 "e" = (
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"f" = (
-/obj/decal/hazard{
-	dir = 4
+/obj/structure/shuttle/wing/right{
+	icon_state = "1,1"
 	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/turf/dmm_suite/clear_turf,
+/area/shuttle/xeno)
+"f" = (
+/obj/structure/shuttle/wing/left{
+	icon_state = "2,1"
+	},
+/turf/dmm_suite/clear_turf,
+/area/shuttle/xeno)
 "g" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 1;
@@ -73,69 +76,35 @@
 /area/shuttle/xeno)
 "o" = (
 /obj/structure/shuttle/wing/right{
-	icon_state = "2,2"
+	icon_state = "1,0"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/xeno)
 "p" = (
 /obj/structure/shuttle/wing/left{
-	icon_state = "2,2"
+	icon_state = "1,0"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/xeno)
 "q" = (
-/obj/structure/shuttle/wing/right{
+/obj/structure/shuttle/wing/left{
+	dir = 1;
 	icon_state = "2,1"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/xeno)
 "r" = (
 /obj/structure/shuttle/wing/right{
-	icon_state = "1,1"
+	dir = 1;
+	icon_state = "2,1"
 	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/xeno)
 "s" = (
 /obj/structure/shuttle/wing/left{
 	icon_state = "1,1"
 	},
-/turf/simulated/floor/plating,
-/area/shuttle/xeno)
-"t" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/xeno)
-"u" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,0"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/xeno)
-"v" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,0"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/xeno)
-"w" = (
-/obj/decal/hazard,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"x" = (
-/obj/structure/shuttle/wing/left{
-	dir = 1;
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/xeno)
-"y" = (
-/obj/structure/shuttle/wing/right{
-	dir = 1;
-	icon_state = "2,1"
-	},
-/turf/simulated/floor/plating,
+/turf/dmm_suite/clear_turf,
 /area/shuttle/xeno)
 "z" = (
 /obj/structure/interactive/computer/console/flight_control{
@@ -152,13 +121,6 @@
 /obj/structure/interactive/chair,
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/xeno)
-"C" = (
-/obj/structure/interactive/computer/console/shuttle_landing{
-	icon_state = "computer";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "D" = (
 /obj/structure/interactive/chair,
 /obj/structure/interactive/lighting/fixture/tube,
@@ -203,44 +165,44 @@ a
 a
 "}
 (2,1,1) = {"
-b
-d
-d
-d
-d
-b
-d
-d
-d
-d
-b
-d
-d
-d
-d
-b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (3,1,1) = {"
-c
-e
-e
-e
+a
+a
+a
+a
 j
 n
 n
 n
 n
-e
-e
-e
-e
-e
-e
-w
+a
+a
+a
+a
+a
+a
+a
 "}
 (4,1,1) = {"
-c
-e
+a
+a
 g
 j
 j
@@ -248,17 +210,17 @@ Y
 Y
 Y
 n
-e
-e
-e
-e
-e
-e
-w
+a
+a
+a
+a
+a
+a
+a
 "}
 (5,1,1) = {"
-c
-e
+a
+a
 h
 l
 j
@@ -266,17 +228,17 @@ m
 m
 m
 j
-o
-q
-e
-e
-e
-e
-w
+b
+d
+a
+a
+a
+a
+a
 "}
 (6,1,1) = {"
-b
-e
+a
+a
 i
 j
 j
@@ -285,16 +247,16 @@ Y
 Y
 j
 j
-r
-u
-x
-q
 e
-b
+o
+q
+d
+a
+a
 "}
 (7,1,1) = {"
-c
-e
+a
+a
 j
 j
 D
@@ -307,12 +269,12 @@ j
 j
 j
 j
-e
-w
+a
+a
 "}
 (8,1,1) = {"
-c
-e
+a
+a
 k
 m
 m
@@ -324,13 +286,13 @@ m
 B
 z
 n
-e
-e
-w
+a
+a
+a
 "}
 (9,1,1) = {"
-c
-e
+a
+a
 k
 m
 m
@@ -342,13 +304,13 @@ m
 B
 z
 n
-e
-e
-w
+a
+a
+a
 "}
 (10,1,1) = {"
-c
-e
+a
+a
 j
 j
 D
@@ -361,12 +323,12 @@ j
 j
 j
 j
-e
-w
+a
+a
 "}
 (11,1,1) = {"
-b
-e
+a
+a
 g
 j
 j
@@ -376,15 +338,15 @@ I
 j
 j
 s
-v
-y
-t
-e
-b
+p
+r
+f
+a
+a
 "}
 (12,1,1) = {"
-c
-e
+a
+a
 h
 l
 j
@@ -392,17 +354,17 @@ m
 m
 m
 j
-p
-t
-e
-e
-e
-e
-w
+c
+f
+a
+a
+a
+a
+a
 "}
 (13,1,1) = {"
-c
-e
+a
+a
 i
 j
 j
@@ -410,52 +372,52 @@ I
 I
 I
 n
-e
-e
-e
-e
-e
-e
-w
+a
+a
+a
+a
+a
+a
+a
 "}
 (14,1,1) = {"
-c
-e
-e
-e
+a
+a
+a
+a
 j
 n
 n
 n
 n
-e
-e
-e
-e
-e
-e
-w
+a
+a
+a
+a
+a
+a
+a
 "}
 (15,1,1) = {"
-b
-f
-f
-f
-f
-b
-f
-f
-f
-f
-b
-f
-f
-f
-f
-b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (16,1,1) = {"
-C
+a
 a
 a
 a

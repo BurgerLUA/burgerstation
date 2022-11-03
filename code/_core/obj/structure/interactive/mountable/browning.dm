@@ -128,7 +128,7 @@
 		if(!linked_gun)
 			qdel(src)
 		else
-			src.force_move(linked_gun)
+			src.drop_item(linked_gun)
 
 
 

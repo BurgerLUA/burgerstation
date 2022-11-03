@@ -29,7 +29,9 @@
 		var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)*5
 		var/attacker_power = !attacker.dead ? attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10*grabbing_hand.grab_level : 0
 
-		if(attacker.horizontal && !src.horizontal)
+		if(!allow_hostile_action(src.loyalty_tag,attacker))
+			attacker_power = 0
+		else if(attacker.horizontal && !src.horizontal)
 			attacker_power *= 0.5
 		else if(!attacker.horizontal && src.horizontal)
 			src_power *= 0.5
