@@ -16,6 +16,4 @@
 		"c3" = null
 	)
 
-	no_consume_ids = list("/obj/item/material/ingot/diamond")
-
-	product = /obj/item/weapon/melee/tool/pickaxe
+	product = /obj/item/weapon/melee/tool/pickaxe/diamond

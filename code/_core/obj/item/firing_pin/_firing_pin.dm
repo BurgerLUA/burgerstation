@@ -75,6 +75,19 @@
 		if(T) play_sound('sound/voice/catgirl/meow.ogg',T)
 	return ..()
 
+/obj/item/firing_pin/electronic/iff/nanotrasen/honkmother
+	name = "electronic honkmother firing pin"
+	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered NanoTrasen IFF implant, and prevents firing at those with one. This one seems to have some sort of speaker..."
+	iff_tag = "NanoTrasen"
+	icon_state = "nanotrasen"
+	value = 666
+
+/obj/item/firing_pin/electronic/iff/nanotrasen/honkmother/on_shoot(var/mob/caller,var/obj/item/weapon)
+	if(caller && weapon)
+		var/turf/T = get_turf(weapon)
+		if(T) play_sound('sound/items/bikehorn.ogg',T)
+	return ..()
+
 /obj/item/firing_pin/electronic/iff/syndicate
 	name = "syndicate firing pin"
 	desc_extended = "Acts as a trigger mechanism for the gun. The gun can only be fired by those with a registered Syndicate IFF implant, and prevents firing at those with one."

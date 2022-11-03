@@ -81,8 +81,9 @@ And the code would look like this:
 				if(do_debug) log_debug("There is an incorrect item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else
-				if(!no_consume_ids[grid_crafting_id_text])
-					used_items += held_item_in_grid
+				used_items += held_item_in_grid
+				if(grid_crafting_id_text in no_consume_ids)
+					used_items[held_item_in_grid] = TRUE
 
 	if(length(required_items))
 		for(var/crafting_type_id in required_items)
@@ -94,8 +95,9 @@ And the code would look like this:
 					continue
 				if(istype(I,crafting_id))
 					found_id = TRUE
-					if(!no_consume_ids[crafting_type_id])
-						used_items += I
+					used_items += I
+					if(crafting_type_id in no_consume_ids)
+						used_items[I] = TRUE
 					break
 			if(!found_id)
 				return list()

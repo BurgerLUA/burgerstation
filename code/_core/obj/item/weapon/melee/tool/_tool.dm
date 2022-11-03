@@ -173,7 +173,7 @@
 	name = "steel pickaxe"
 	desc = "MINIIIIIING DIAAAAAMOOOOOOONDS."
 	desc_extended = "An extremely outdated tool for digging through hard rock. Extremely effective, however, and always dose a guaranteed x4 critical hit multiplier when attacking turfs."
-	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe_steel.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe/normal.dmi'
 
 	damage_type = /damagetype/melee/club/pickaxe/
 
@@ -186,6 +186,20 @@
 	size = SIZE_3
 	weight = 10
 
+/obj/item/weapon/melee/tool/pickaxe/diamond
+	name = "diamond pickaxe"
+	desc = "SO FAR I'VE GOT TWOOOOOOOOOOOO."
+	desc_extended = "An extremely outdated tool for digging through hard rock. Extremely effective, however, and always dose a guaranteed x4 critical hit multiplier when attacking turfs.\nMade of diamonds for some reason."
+	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe/diamond.dmi'
+
+	damage_type = /damagetype/melee/club/pickaxe/diamond
+
+	tool_time = SECONDS_TO_DECISECONDS(1.5)
+
+	value = 1200
+
+	size = SIZE_3
+	weight = 7
 
 /obj/item/weapon/melee/tool/shovel
 	name = "shovel"
