@@ -8,11 +8,11 @@
 		"a3" = "/obj/item/material/ingot/diamond",
 
 		"b1" = null,
-		"b2" = "/obj/item/weapon/melee/tool/pickaxe",
+		"b2" = "/obj/item/material/rod/steel",
 		"b3" = null,
 
 		"c1" = null,
-		"c2" = null,
+		"c2" = "/obj/item/material/rod/steel",
 		"c3" = null
 	)
 
