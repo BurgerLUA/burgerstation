@@ -90,7 +90,7 @@
 /obj/structure/interactive/fax_machine/cargo/process_data(var/mob/caller,var/list/data_to_process = list())
 
 	var/list/required_data = list(
-		"Requisitioner's Name", //Real-name of the player. It's basically a lock saying only this person can open it. Leave blank for anyone to open.
+		"Requisitioners Name", //Real-name of the player. It's basically a lock saying only this person can open it. Leave blank for anyone to open.
 		"Item ID", //The unique item ID of the item you're ordering.
 		"Quantity" //How much of this item you want.
 	)
@@ -109,9 +109,10 @@
 			found_data[desired_key] = trim(desired_value)
 
 	var/real_quantity = found_data["Quantity"] ? clamp(text2num(found_data["Quantity"]),0,10) : 0
-	if(length(found_data) && found_data["Requisitioner's Name"] && found_data["Item ID"] && real_quantity)
+	if(length(found_data) && found_data["Requisitioners Name"] && found_data["Item ID"] && real_quantity)
 		var/atom/movable/stored_item = SScargo.cargo_id_to_type[found_data["Item ID"]]
 		if(!stored_item)
+			caller.visible_message(span("warning","The machine buzzes some error and a red screen, but the message was gone before you could read it."))
 			return ..()
 		var/obj/marker/cargo/C = locate() in world
 		var/obj/structure/interactive/crate/secure/cargo/SC = new(get_turf(C))
@@ -126,9 +127,12 @@
 
 		SC.close()
 		SC.lock()
-		SC.owner_name = "[found_data["Requisitioner's Name"]]"
+		SC.owner_name = "[found_data["Requisitioners Name"]]"
 		SC.name = "secure cargo crate ([SC.owner_name] [found_data["Item ID"]])"
 		SC.credits_required = CEILING(SC.get_value(),1)
 		SC.force_move(SC.loc)
-
-	return ..()
+		caller.visible_message(span("warning","The machine buzzes with a green screen, you guess they got the message."))
+		return ..()
+	else 
+		caller.visible_message(span("warning","The machine buzzes with several errors, you guess you got something wrong."))
+		return ..()
