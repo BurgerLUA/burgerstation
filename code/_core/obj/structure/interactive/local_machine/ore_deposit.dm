@@ -3,7 +3,7 @@
 	desc = "MINECRAFT."
 	icon = 'icons/obj/structure/ore.dmi'
 	icon_state = "deposit"
-	var/obj/item/ore/stored_ore //We don't need to spawn this yet.
+	var/obj/item/material/ore/stored_ore //We don't need to spawn this yet.
 	var/chance_delete = 0
 	alpha = 200
 
@@ -47,47 +47,47 @@
 /obj/structure/interactive/localmachine/ore_deposit/iron
 	name = "iron deposit"
 	icon_state = "deposit_iron"
-	stored_ore = /obj/item/ore/iron
+	stored_ore = /obj/item/material/ore/iron
 
 /obj/structure/interactive/localmachine/ore_deposit/copper
 	name = "copper deposit"
 	color = "#E28446"
-	stored_ore = /obj/item/ore/copper
+	stored_ore = /obj/item/material/ore/copper
 
 
 /obj/structure/interactive/localmachine/ore_deposit/tin
 	name = "tin deposit"
 	color = "#E2E2E2"
-	stored_ore = /obj/item/ore/tin
+	stored_ore = /obj/item/material/ore/tin
 
 
 /obj/structure/interactive/localmachine/ore_deposit/zinc
 	name = "zinc deposit"
 	color = "#E8E8EF"
-	stored_ore = /obj/item/ore/zinc
+	stored_ore = /obj/item/material/ore/zinc
 
 
 /obj/structure/interactive/localmachine/ore_deposit/gold
 	name = "gold deposit"
 	icon_state = "deposit_gold"
-	stored_ore = /obj/item/ore/gold
+	stored_ore = /obj/item/material/ore/gold
 
 /obj/structure/interactive/localmachine/ore_deposit/silver
 	name = "silver deposit"
 	icon_state = "deposit_silver"
-	stored_ore = /obj/item/ore/silver
+	stored_ore = /obj/item/material/ore/silver
 
 /obj/structure/interactive/localmachine/ore_deposit/carbon
 	name = "coal deposit"
 	icon_state = "deposit_coal"
-	stored_ore = /obj/item/ore/carbon
+	stored_ore = /obj/item/material/ore/carbon
 
 /obj/structure/interactive/localmachine/ore_deposit/aluminum
 	name = "aluminum deposit"
 	color = "#C4C4C4"
-	stored_ore = /obj/item/ore/aluminum
+	stored_ore = /obj/item/material/ore/aluminum
 
 /obj/structure/interactive/localmachine/ore_deposit/plasma
 	name = "phoron plasma deposit"
 	icon_state = "deposit_phoron"
-	stored_ore = /obj/item/ore/plasma
+	stored_ore = /obj/item/material/ore/plasma

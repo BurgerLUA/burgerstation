@@ -113,7 +113,8 @@
 			GENERATE(I3)
 			FINALIZE(I3)
 			product_slot.add_object(I3,caller,FALSE,TRUE)
-
+			if(R.amount > 1 && I3.amount_max > 1)
+				I3.amount = R.amount
 			for(var/obj/item/I in recipe_check)
 				if(R.transfer_reagents && I.reagents && I3.reagents)
 					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current, caller = caller)

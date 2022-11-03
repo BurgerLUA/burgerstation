@@ -9,8 +9,9 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
-	item_blacklist = list(
-		/obj/item/crafting/
+	item_whitelist = list(
+		/obj/item/crafting/ingredient/,
+		/obj/item/material/
 	)
 
 
@@ -73,3 +74,7 @@
 
 /obj/hud/inventory/crafting/result
 	screen_loc = "CENTER+3,TOP-3"
+	
+	item_whitelist = list(
+		/obj/item/ //Explotable? Probably, do I care? No.
+	)

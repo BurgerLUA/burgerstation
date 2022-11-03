@@ -27,7 +27,7 @@ And the code would look like this:
 
 	var/do_debug = FALSE
 
-	var/list/required_item_grid = list( //The second value is the craft_id of the item.
+	var/list/required_item_grid = list( //Second value is the path of the item as string
 		/*
 		"a1" = null,
 		"a2" = null,
@@ -42,7 +42,7 @@ And the code would look like this:
 		"c3" = null
 		*/
 	)
-
+	//List of required items SOMEWHERE in the table. Use path of item as String
 	var/list/required_items = list()
 
 	var/obj/item/product
@@ -50,7 +50,7 @@ And the code would look like this:
 	//Result icon and icon state.
 	var/icon = ""
 	var/icon_state = ""
-
+	var/amount = 1 //How many? Only works if item.amount_max > 1. DOES NOT CHECK MAX STACK SIZE.
 	var/transfer_reagents = FALSE
 
 /recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
@@ -66,7 +66,9 @@ And the code would look like this:
 
 	if(length(required_item_grid))
 		for(var/grid_id in required_item_grid)
-			var/grid_crafting_id = required_item_grid[grid_id]
+			var/grid_crafting_id_text = required_item_grid[grid_id]
+			var/grid_crafting_id = text2path_safe(grid_crafting_id_text)
+
 			if(!grid_crafting_id || grid_crafting_id == null)
 				if(do_debug) log_debug("No item is needed for [grid_id]. Skipping.")
 				continue
@@ -74,20 +76,21 @@ And the code would look like this:
 			if(!held_item_in_grid)
 				if(do_debug) log_debug("There is no item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
-			else if(held_item_in_grid.crafting_id != grid_crafting_id)
+			else if(!istype(held_item_in_grid,grid_crafting_id))
 				if(do_debug) log_debug("There is an incorrect item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else
 				used_items += held_item_in_grid
 
 	if(length(required_items))
-		for(var/crafting_id in required_items)
+		for(var/crafting_type_id in required_items)
+			var/crafting_id = text2path_safe(crafting_type_id)
 			var/found_id = FALSE
 			for(var/grid_id in item_table)
 				var/obj/item/I = item_table[grid_id]
 				if(!I)
 					continue
-				if(I.crafting_id == crafting_id)
+				if(istype(I,crafting_id))
 					used_items += I
 					found_id = TRUE
 					break
