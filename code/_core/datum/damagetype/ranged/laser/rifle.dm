@@ -49,12 +49,12 @@
 
 /damagetype/ranged/laser/rifle/opticor
 	attack_damage_base = list(
-		LASER = 100,
-		HEAT = 20,
-		RAD = 5
+		LASER = 150,
+		HEAT = 25,
+		RAD = 10
 	)
 	attack_damage_penetration = list(
-		LASER = 300,
+		LASER = 200,
 		HEAT = 80,
 		RAD = 10
 	)
