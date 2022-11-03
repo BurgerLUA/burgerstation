@@ -52,6 +52,7 @@ And the code would look like this:
 	var/icon_state = ""
 	var/amount = 1 //How many? Only works if item.amount_max > 1. DOES NOT CHECK MAX STACK SIZE.
 	var/transfer_reagents = FALSE
+	var/no_consume_ids = list() //What types shouldnt be consumed on craft?
 
 /recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
 
@@ -80,7 +81,8 @@ And the code would look like this:
 				if(do_debug) log_debug("There is an incorrect item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else
-				used_items += held_item_in_grid
+				if(!no_consume_ids[grid_crafting_id_text])
+					used_items += held_item_in_grid
 
 	if(length(required_items))
 		for(var/crafting_type_id in required_items)
@@ -91,8 +93,9 @@ And the code would look like this:
 				if(!I)
 					continue
 				if(istype(I,crafting_id))
-					used_items += I
 					found_id = TRUE
+					if(!no_consume_ids[crafting_type_id])
+						used_items += I
 					break
 			if(!found_id)
 				return list()

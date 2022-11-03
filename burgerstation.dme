@@ -688,6 +688,7 @@
 #include "code\_core\datum\recipe\workbench.dm"
 #include "code\_core\datum\recipe\workbench\alloys.dm"
 #include "code\_core\datum\recipe\workbench\placeables.dm"
+#include "code\_core\datum\recipe\workbench\tools.dm"
 #include "code\_core\datum\reward\_reward.dm"
 #include "code\_core\datum\savedata\_savedata.dm"
 #include "code\_core\datum\savedata\client\_client.dm"

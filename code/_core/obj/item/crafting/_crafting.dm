@@ -119,9 +119,9 @@
 				if(R.transfer_reagents && I.reagents && I3.reagents)
 					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current, caller = caller)
 					qdel(I)
-				else
+				else 
 					I.add_item_count(-1)
-
+					
 			R.on_create(caller,src,I3)
 
 			return I3
