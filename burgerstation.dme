@@ -1891,6 +1891,7 @@
 #include "code\_core\obj\structure\interactive\sheet_maker.dm"
 #include "code\_core\obj\structure\interactive\shield.dm"
 #include "code\_core\obj\structure\interactive\short_wall.dm"
+#include "code\_core\obj\structure\interactive\shower.dm"
 #include "code\_core\obj\structure\interactive\shrine.dm"
 #include "code\_core\obj\structure\interactive\smelter.dm"
 #include "code\_core\obj\structure\interactive\soapstone.dm"

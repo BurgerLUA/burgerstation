@@ -2244,7 +2244,7 @@
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)
 "oi" = (
-/obj/structure/interactive/misc/shower,
+/obj/structure/interactive/shower,
 /obj/structure/interactive/misc/curtain_open,
 /turf/simulated/floor/tile/dark,
 /area/hellscape/interior/syndicate/aux)

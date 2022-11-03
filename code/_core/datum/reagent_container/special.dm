@@ -14,3 +14,8 @@
 /reagent_container/blob
 	volume_max = 100
 	should_update_owner = FALSE
+
+
+/reagent_container/shower
+	volume_max = 50
+	should_update_owner = FALSE
