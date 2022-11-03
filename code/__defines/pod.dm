@@ -5,3 +5,4 @@
 #define POD_LANDING 4
 #define POD_LANDED 5
 #define POD_OPENING 6
+#define POD_DESTROY 7
