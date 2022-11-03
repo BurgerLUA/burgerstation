@@ -114,18 +114,20 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 				caller.to_chat(span("warning","Invalid drop location: NanoTrasen has deemed it's unsafe to launch at this time!"))
 				return FALSE
 			if(!desired_loc)
+				caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
 				return FALSE
-			if(!desired_loc.is_safe() || !desired_loc.is_safe_move())
-				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
-				return FALSE
-			var/turf/T2 = get_step(desired_loc,SOUTH)
-			if(!T2.is_safe() || !T2.is_safe_move())
-				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
-				return FALSE
-			var/area/A = desired_loc.loc
-			if(A.interior)
-				caller.to_chat(span("warning","Invalid drop location: This area has a roof."))
-				return FALSE
+			for(var/d in DIRECTIONS_ALL + 0x0)
+				var/turf/T = get_step(desired_loc,d)
+				if(T.has_dense_atom)
+					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+					return FALSE
+				if(!T.is_safe() || !T.is_safe_move())
+					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+					return FALSE
+				var/area/A = T.loc
+				if(A.interior)
+					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+					return FALSE
 			icon_state = "none"
 			flick("drop_anim",src)
 			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,caller,POD_LAUNCHED,desired_loc)

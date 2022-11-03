@@ -7,7 +7,7 @@
 
 	var/desired_reagent
 
-/reagent_container/turf/update_container()
+/reagent_container/turf/update_container(var/mob/caller,var/update_owner = TRUE)
 
 	. = ..()
 

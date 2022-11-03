@@ -16,9 +16,9 @@
 	value_burgerbux = 50
 
 /obj/item/spraycan/Destroy()
-	. = ..()
 	QDEL_NULL(desired_spray)
 	QDEL_NULL(existing_spray)
+	. = ..()
 
 /obj/item/spraycan/Finalize()
 	. = ..()
@@ -76,12 +76,12 @@
 		if(!desired_spray)
 			caller.to_chat(span("warning","No spray selected."))
 			return TRUE
+		if(existing_spray && !existing_spray.qdeleting)
+			qdel(existing_spray)
 		var/obj/effect/cleanable/spray/C = new(T)
 		C.icon = desired_spray
 		C.name = "\"art\" - by [caller.ckey]"
 		play_sound('sound/effects/spray.ogg',T)
-		if(existing_spray)
-			qdel(existing_spray)
 		existing_spray = C
 
 	return TRUE

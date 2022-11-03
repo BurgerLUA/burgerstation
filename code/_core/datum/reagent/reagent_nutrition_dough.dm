@@ -54,6 +54,22 @@
 
 	flavor_strength = 2
 
+/reagent/nutrition/dough/corn
+	name = "corn flour dough"
+	desc = "A deceptively unhealty dough choice."
+	color = "#eccf78"
+
+	nutrition_amount = 3
+	nutrition_quality_amount = -2.5
+
+	flavor = "raw dough"
+
+	liquid = 0.25
+
+	heated_reagent = /reagent/nutrition/bread/corn
+
+	flavor_strength = 2
+
 //Bread
 /reagent/nutrition/bread
 	name = "wheat grain bread"
@@ -104,6 +120,19 @@
 
 	flavor_strength = 0.25
 
+/reagent/nutrition/bread/corn
+	name = "corn bread"
+	desc = "goes great with chicken"
+	color = "#eccf78"
+
+	nutrition_amount = 15
+	nutrition_quality_amount = -1
+
+	flavor = "white bread"
+
+	liquid = -0.25
+
+	flavor_strength = 0.3
 //Cake
 /reagent/nutrition/cake_batter
 	name = "cake batter"

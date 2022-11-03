@@ -78,11 +78,14 @@ var/global/list/difficulty_to_xp_mod = list(
 
 /experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE)
 
-	if(!(bypass_checks || owner.allow_experience_gains))
-		return FALSE
-
 	if(!ENABLE_XP)
 		return FALSE
+
+	if(!bypass_checks)
+		if(!owner.allow_experience_gains)
+			return FALSE
+		if(owner.dead)
+			return FALSE
 
 	if(xp_to_add > 0 && !(flags & ATTRIBUTE_NO_XP_MUL) && is_player(owner))
 		var/mob/living/advanced/player/P = owner

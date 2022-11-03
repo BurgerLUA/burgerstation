@@ -24,7 +24,7 @@
 
 /mob/living/advanced/handle_movement(var/adjust_delay=0)
 
-	if(grabbing_hand && handcuffed)
+	if(grabbing_hand && handcuffed) //Can't move while grabbed and handcuffed.
 		return FALSE
 
 	if(driving)
@@ -214,19 +214,20 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		for(var/p in C.protected_limbs) //p would be what was protected for the C object
 			if(clean_items[p]) //Existing clothing found.
 				var/obj/item/clothing/C2 = clean_items[p] //Existing clothing.
-				var/obj/hud/inventory/I = C.loc
-				var/obj/item/organ/O = I.loc
-				if(O.id != p)
-					continue
 				if(C.worn_layer >= C2.worn_layer)
 					clean_items[p] = C
-			else if(clean_items[p] == FALSE)
+			else
 				clean_items[p] = C
 
 	//Step 2: Go through all the clothing to clean up. If there is none, clean up the organ instead.
+
+	var/list/already_cleaned = list()
 	for(var/k in clean_items)
 		var/obj/item/I = clean_items[k] ? clean_items[k] : src.labeled_organs[k]
 		if(I) //Give the clothing a stain if it exists (dirt)
+			if(already_cleaned[I])
+				continue
+			already_cleaned[I] = TRUE
 			var/new_strength = I.blood_stain_intensity - clean_strength
 			if(new_strength <= 0)
 				I.set_bloodstain(0)

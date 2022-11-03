@@ -1,5 +1,4 @@
 //Basic config settings for developers
-// #define ENABLE_INSTALOAD FALSE
 
 #define FALLBACK_TURF locate(VIEW_RANGE+1,VIEW_RANGE+1,1) //This shouldn't be touched unless you know what you're doing.
 

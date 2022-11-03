@@ -198,13 +198,15 @@
 
 	for(var/k in contents)
 		var/atom/movable/v = k
+		if(v.mouse_opacity <= 0)
+			continue
 		if(attacker == v)
 			continue
 		if(!v.health)
 			continue
-		if(ismob(v))
-			var/mob/M = v
-			if(M.mouse_opacity == 0)
+		if(is_living(v))
+			var/mob/living/L = v
+			if(L.dead)
 				continue
 		if(!v.can_be_attacked(attacker))
 			continue
@@ -213,7 +215,15 @@
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(attacker == L || L.dead || L.mouse_opacity <= 0 || L.next_move <= 0 || get_dist(L,src) > 1)
+			if(L.mouse_opacity <= 0)
+				continue
+			if(attacker == L)
+				continue
+			if(L.dead)
+				continue
+			if(L.next_move <= 0)
+				continue
+			if(get_dist(L,src) > 1)
 				continue
 			return L
 

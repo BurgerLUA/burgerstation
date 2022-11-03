@@ -80,7 +80,7 @@
 		if(!IT || !IT.reagents)
 			continue
 		IT.reagents.transfer_reagents_to(T, IT.reagents.volume_current/calculated_bites, FALSE )
-		IT.reagents.update_container()
+		IT.reagents.update_container(consumer)
 
 	if(calculated_bites < 1)
 		calculated_bites = 1

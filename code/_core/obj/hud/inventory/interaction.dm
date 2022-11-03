@@ -6,16 +6,15 @@
 		if(L.dead && !(object.interaction_flags & FLAG_INTERACTION_DEAD))
 			L.to_chat(span("warning","You're dead!"))
 			return TRUE
+		//Reinforced grabbing. Doesn't matter what your intent is as long as you're clicking with the same hand.
+		if(grabbed_object && grabbed_object == object && is_living(object))
+			reinforce_grab(caller)
+			return TRUE
 
 	if(parent_inventory) //Wielding an object.
 		var/atom/top_object = parent_inventory.get_top_object()
 		if(object != top_object && top_object.click_on_object_alt(caller,object,location,control,params))
 			return TRUE
-
-	//Reinforced grabbing. Doesn't matter what your intent is.
-	if(grabbed_object && grabbed_object == object && is_living(object))
-		reinforce_grab(caller)
-		return TRUE
 
 	var/atom/top_object = get_top_object()
 

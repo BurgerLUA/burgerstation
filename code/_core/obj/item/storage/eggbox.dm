@@ -6,6 +6,7 @@
 	icon_state = "eggbox"
 
 	dynamic_inventory_count = 12
+	max_inventory_x = 6
 	container_max_slots = 1
 
 	container_whitelist = list(

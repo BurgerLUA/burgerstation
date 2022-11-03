@@ -21,7 +21,8 @@ SUBSYSTEM_DEF(cargo)
 		/obj/item/supply_remote/drill,
 		/obj/item/grenade/timed/smoke,
 		/obj/item/fulton_pack,
-		/obj/item/deployable/bodybag
+		/obj/item/deployable/bodybag,
+		/obj/item/storage/ammo/rubber
 	)                                           // I'll add more down the line, as im sure a lot of other people will. I dont want to add anything unbalanced -v
 
 /subsystem/cargo/Initialize()

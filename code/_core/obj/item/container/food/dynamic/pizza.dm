@@ -80,7 +80,7 @@
 				log_error("Load item error: Tried loading an invalid reagent [r_id]!")
 				continue
 			reagents_toppings.add_reagent(R_path,volume,TNULL,FALSE)
-		reagents_toppings.update_container()
+		reagents_toppings.update_container(P)
 
 /obj/item/container/edible/dynamic/pizza/Initialize()
 	. = ..()

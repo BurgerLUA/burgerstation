@@ -13,7 +13,7 @@
 
 	slot_icons = TRUE
 
-	protected_limbs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT) //TODO: MAKE THIS DYNAMIC
+	protected_limbs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT)
 
 	dyeable = TRUE
 

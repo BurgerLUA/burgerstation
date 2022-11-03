@@ -60,21 +60,22 @@
 		icon_state = "wallmed_nomap"
 
 /obj/structure/interactive/vending/medical/chemistry
-	name = "chemistry vendor"
-	icon_state = "chem"
+	name = "chemical vendor"
+	icon_state = "smartfridge2"
 	stored_types = list(
-		/obj/item/paper/book/chemistry,
-		/obj/item/storage/bags/chemistry,
-		/obj/item/storage/pillbottle,
-		/obj/item/container/syringe/hypodermic,
-		/obj/item/container/spray,
-		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle,
-		/obj/item/container/simple/beaker/vial,
-		/obj/item/container/simple/beaker/bottle/large,
-		/obj/item/container/simple/beaker/bottle,
-		/obj/item/container/simple/beaker,
-		/obj/item/container/simple/beaker/large,
-		/obj/item/container/blood_pack/
+		/obj/item/container/simple/beaker/potassium/vendor,
+		/obj/item/container/simple/beaker/nitrogen/vendor,
+		/obj/item/container/simple/beaker/silicon/vendor,
+		/obj/item/container/simple/beaker/salt/vendor,
+		/obj/item/container/simple/beaker/sodium_chloride/vendor,
+		/obj/item/container/simple/beaker/ash/vendor,
+		/obj/item/container/simple/beaker/ammonia/vendor,
+		/obj/item/container/simple/beaker/sulfur/vendor,
+		/obj/item/container/simple/beaker/chlorine/vendor,
+		/obj/item/container/simple/beaker/phosphorous/vendor,
+		/obj/item/container/simple/beaker/oxygen/vendor,
+		/obj/item/container/simple/beaker/hydrogen/vendor,
+		/obj/item/container/simple/beaker/ethanol/vendor
 	)
 
 /obj/structure/interactive/vending/medical/wardrobe

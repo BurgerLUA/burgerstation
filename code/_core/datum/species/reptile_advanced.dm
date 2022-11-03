@@ -34,6 +34,7 @@
 		BODY_TAIL = /obj/item/organ/tail/reptile_advanced,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_HEART = /obj/item/organ/internal/heart,
 		BODY_LUNGS = /obj/item/organ/internal/lungs,
 		BODY_STOMACH = /obj/item/organ/internal/stomach,
 		BODY_LIVER = /obj/item/organ/internal/liver,
@@ -62,6 +63,7 @@
 		BODY_TAIL = /obj/item/organ/tail/reptile_advanced,
 
 		BODY_BRAIN = /obj/item/organ/internal/brain,
+		BODY_HEART = /obj/item/organ/internal/heart,
 		BODY_LUNGS = /obj/item/organ/internal/lungs,
 		BODY_STOMACH = /obj/item/organ/internal/stomach,
 		BODY_LIVER = /obj/item/organ/internal/liver,

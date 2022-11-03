@@ -5,6 +5,7 @@
 /reagent_recipe/magic/health_potion
 
 	name = "Healing Juice"
+	desc = "heals over time."
 
 	required_reagents = list(
 		/reagent/blood/ancient = 1,
@@ -21,6 +22,7 @@
 /reagent_recipe/magic/stamina_potion
 
 	name = "Stamina Juice"
+	desc = "restores stamina over time."
 
 	required_reagents = list(
 		/reagent/blood/xeno = 1,
@@ -36,6 +38,7 @@
 /reagent_recipe/magic/mana_potion
 
 	name = "Mana Juice"
+	desc = "restores mana over time."
 
 	required_reagents = list(
 		/reagent/blood/goliath = 1,

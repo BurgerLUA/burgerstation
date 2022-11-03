@@ -18,7 +18,6 @@ var/global/list/debug_verbs = list(
 	/client/verb/view_dps,
 	/client/verb/view_dph,
 	/client/verb/view_killtime,
-	/client/verb/view_value,
 	/client/verb/test_ranged_weapons,
 	/client/verb/debug_flash,
 	/client/proc/debug_variables,
@@ -31,19 +30,6 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_rust_g,
 	/client/verb/view_map
 )
-
-/client/verb/view_value()
-	set name = "View Recommended Value of Weapons"
-	set category = "Debug"
-
-	var/text_to_send = ""
-
-	for(var/k in SSbalance.stored_value_weapons)
-		var/v = SSbalance.stored_value_weapons[k]
-		var/t = SSbalance.stored_tier[k]
-		text_to_send += "[k]: $[v] (Tier: [t])<br>"
-
-	src << browse("<body>[text_to_send]</body>","window=help")
 
 /client/verb/view_dps()
 	set name = "View DPS of Weapons"
