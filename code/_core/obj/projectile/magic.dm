@@ -7,7 +7,7 @@
 	var/explode_power = 5
 	//Do we slowly fade out of existance?
 	var/does_degrade = FALSE
-	var/magic_vel_degrade = 0.95 
+	var/magic_vel_degrade = 0.90 
 	//Do we home in on a target?
 	var/is_homing = FALSE
 	var/last_angle
@@ -116,7 +116,7 @@
 	name = "magic blade"
 	icon_state = "blade"
 
-	penetrations_left = 2
+	penetrations_left = 1
 
 	magic_vel_degrade = 0.95
 
@@ -202,7 +202,7 @@
 
 	does_degrade = TRUE
 
-	penetrations_left = 2
+	penetrations_left = 1
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/magic/shadow
@@ -215,7 +215,7 @@
 
 	does_degrade = TRUE
 
-	penetrations_left = 3
+	penetrations_left = 2
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/bullet/summon
@@ -259,7 +259,7 @@
 	name = "arcblade"
 	icon_state = "cool"
 
-	penetrations_left = 2
+	penetrations_left = 1
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
@@ -267,7 +267,7 @@
 	name = "fractal"
 	icon_state = "fractal"
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
-	penetrations_left = 2
+	penetrations_left = 1
 	is_homing = TRUE
 	max_home_speed = 24
 
