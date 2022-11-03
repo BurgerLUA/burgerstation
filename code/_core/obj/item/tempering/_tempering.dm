@@ -14,6 +14,7 @@
 	value_burgerbux = 1 //Prevents being sold in vendors.
 
 	var/unlimited = FALSE
+	var/left = 5 //How much qual can this item improve before breaking?
 
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -50,6 +51,18 @@
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
 		C.sync_additional_clothing()
-	if(!unlimited)
+	if(unlimited)
+		left = increase
+		return TRUE
+	if(left <= 0)
 		qdel(src)
 	return TRUE
+
+/obj/item/tempering/save_item_data(mob/living/advanced/player/P, save_inventory, died)
+	SAVEVAR("left")
+	. = ..()
+/obj/item/tempering/load_item_data_post(mob/living/advanced/player/P, list/object_data)
+	LOADVAR("left")
+	. = ..()
+	
+	

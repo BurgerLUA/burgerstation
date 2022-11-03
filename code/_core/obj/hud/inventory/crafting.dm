@@ -11,7 +11,8 @@
 
 	item_whitelist = list(
 		/obj/item/crafting/ingredient/,
-		/obj/item/material/
+		/obj/item/material/,
+		/obj/item/weapon/melee/tool
 	)
 
 

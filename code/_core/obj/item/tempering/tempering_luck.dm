@@ -24,10 +24,13 @@
 
 	if(I.luck + increase > limit)
 		I.luck = limit
+		left -= increase
 	else if(I.luck + increase < minimum)
 		I.luck = minimum
+		left -= increase
 	else
 		I.luck += increase
+		left -= increase
 
 	return ..()
 

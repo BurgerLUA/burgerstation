@@ -43,3 +43,9 @@
 	icon_state = "p_tank"
 	value = 750
 	crafting_id = "p_tank"
+/obj/item/crafting/ingredient/part/sandpaper
+	name = "sandpaper"
+	desc = "coarse and rough"
+	desc_extended = "A piece of paper covered in rough grains of sand. Useful for smoothing metals."
+	icon_state = "sand_paper"
+	value = 50

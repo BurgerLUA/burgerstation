@@ -22,15 +22,23 @@
 	return ..()
 
 /obj/item/tempering/quality/on_temper(var/mob/caller,var/obj/item/I)
-
+	
 	if(I.quality + increase > limit)
+		var/to_consume = limit - I.quality
+		left -= to_consume
 		I.quality = limit
 	else if(I.quality + increase < minimum)
 		I.quality = minimum
+		left -= increase
 	else
 		I.quality += increase
-
+		left -= increase
 	return ..()
+
+/obj/item/tempering/quality/examine()
+	if(!unlimited)
+		desc_extended += "\nCan add <b>[left]</b> more quality."
+	. = ..()
 
 /obj/item/tempering/quality/melee
 	name = "warrior's whetstone"
@@ -52,6 +60,20 @@
 
 	value = 500
 
+/obj/item/tempering/quality/clothing/repair
+	name = "sewing kit"
+	desc = "Stay classy!"
+	desc_extended = "A simple thread and needle, capable of repairing clothes back up to 100%"
+	icon_state = "quality_clothing_repair"
+
+	temper_whitelist = /obj/item/clothing
+
+	increase = 100
+	limit = 100
+	minimum = 0
+
+	left = 1
+
 /obj/item/tempering/quality/ranged
 	name = "brass tinker's box"
 	desc = "Stay on top of things."
@@ -59,6 +81,16 @@
 	icon_state = "quality_ranged"
 
 	temper_whitelist = /obj/item/weapon/ranged/bullet
+
+	value = 500
+
+obj/item/tempering/quality/ranged/bow
+	name = "bow limb reinforcements"
+	desc = "Stay on top of things."
+	desc_extended = "A special kit of special screws, platings, and mechanical parts that improves the quality of bows by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
+	icon_state = "quality_ranged_bow"
+
+	temper_whitelist = /obj/item/weapon/ranged/bow
 
 	value = 500
 

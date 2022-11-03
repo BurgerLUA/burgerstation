@@ -1,3 +1,4 @@
+/*
 /obj/item/tempering/magazine
 	name = "magazine improvement"
 	desc = "You shouldn't be seeing this..."
@@ -95,3 +96,4 @@
 			B.shoot_sounds = new_sound
 
 	return ..()
+*/
