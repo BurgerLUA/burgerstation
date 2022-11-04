@@ -35,7 +35,8 @@
 		/obj/item/storage/wallet/random_colonist = 20,
 		/loot/medicine/kits = 5,
 		/loot/medicine/misc_medicine = 10,
-		/loot/misc/cigarettes = 20
+		/loot/misc/cigarettes = 20,
+		/obj/item/paper/recipe = 25
 
 	)
 

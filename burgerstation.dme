@@ -1548,6 +1548,7 @@
 #include "code\_core\obj\item\paper\_paper.dm"
 #include "code\_core\obj\item\paper\map.dm"
 #include "code\_core\obj\item\paper\paper_cargo.dm"
+#include "code\_core\obj\item\paper\paper_recipe.dm"
 #include "code\_core\obj\item\paper\syndicate_note.dm"
 #include "code\_core\obj\item\paper\book\_book.dm"
 #include "code\_core\obj\item\paper\book\book_guides.dm"

@@ -96,6 +96,16 @@
 	desc = "Found in the deepest of locations, usually well hidden."
 	ore_color = "#D9E5EA"
 
+/obj/item/material/ore/diamond
+	name = "diamond ore"
+	desc = "Found in the deepest of locations, usually well hidden."
+	ore_color = "#009ee2"
+
+/obj/item/material/ore/uranium
+	name = "uranium ore"
+	desc = "Found in the deepest of locations, usually well hidden."
+	ore_color = "#003f15"
+
 /obj/item/material/ore/tin
 	name = "tin ore"
 	desc = "Commonly found on the surface."

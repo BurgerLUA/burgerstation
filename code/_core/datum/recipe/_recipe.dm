@@ -52,7 +52,9 @@ And the code would look like this:
 	var/icon_state = ""
 	var/amount = 1 //How many? Only works if item.amount_max > 1. DOES NOT CHECK MAX STACK SIZE.
 	var/transfer_reagents = FALSE
-	var/no_consume_ids = list() //What types shouldnt be consumed on craft?
+	var/list/no_consume_ids = list() //What types shouldnt be consumed on craft?
+
+	var/secret = FALSE //Its a secret to everybody. Won't show up in "recipe" loot items.
 
 /recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
 

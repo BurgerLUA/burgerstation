@@ -37,18 +37,6 @@
 
 	return N
 
-/obj/item/proc/split_stack()
-
-	var/stacks_to_take = FLOOR(amount/2, 1)
-	if(!stacks_to_take)
-		return FALSE
-	var/obj/item/I = copy(src)
-	I.force_move(get_turf(src))
-	I.amount = 0
-	src.transfer_amount_to(I,stacks_to_take)
-
-	return I
-
 /obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(try_transfer_reagents(caller,object,location,control,params))
@@ -77,10 +65,28 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(1)
-
-	var/obj/hud/inventory/I = object
-	var/old_item_name = src.name
-	var/obj/item/I2 = split_stack()
-	caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [I2.amount]."))
-	I.add_object(I2)
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(amount > 1 && CONTROL_MOD_DISARM && amount_max > 1)
+			var/choice = input("How much do you want to put in your other hand?","Amount to split",0) as num
+			if(!choice || FLOOR(choice,1) <= 0)
+				L.to_chat(span("notice","You decide not to split the stack."))
+			else
+				var/obj/hud/inventory/I = object
+				var/old_item_name = src.name
+				var/obj/item/stack2
+				if(choice >= amount)
+					var/to_transfer = FLOOR((amount - 1),1)
+					stack2 = copy(src)
+					stack2.force_move(get_turf(src))
+					stack2.amount = 0
+					src.transfer_amount_to(stack2,to_transfer)
+				else
+					var/to_transfer = FLOOR(choice,1)
+					stack2 = copy(src)
+					stack2.force_move(get_turf(src))
+					stack2.amount = 0
+					src.transfer_amount_to(stack2,to_transfer)
+				I.add_object(stack2)
+				caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [stack2.amount]."))
 	return TRUE
