@@ -302,7 +302,7 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_05/bathroom)
 "bj" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},

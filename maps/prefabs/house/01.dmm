@@ -37,7 +37,7 @@
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_01/bathroom_02)
 "ak" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},
@@ -60,7 +60,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/master_bedroom)
 "ao" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},

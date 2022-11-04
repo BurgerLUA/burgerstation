@@ -38,7 +38,7 @@
 /area/mission/prefab/house/house_06/guest_bedroom)
 "aj" = (
 /obj/structure/interactive/misc/curtain_open,
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},
@@ -273,12 +273,12 @@
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "aY" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},
 /obj/structure/interactive/misc/curtain_open,
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},

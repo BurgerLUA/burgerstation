@@ -3292,7 +3292,7 @@
 /turf/simulated/floor/wood/rich,
 /area/box/interior/station/command)
 "nR" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},

@@ -147,7 +147,7 @@
 /turf/simulated/floor/wood/brown,
 /area/debug)
 "aI" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	dir = 4
 	},
 /obj/structure/interactive/misc/curtain_open,
@@ -465,7 +465,7 @@
 /turf/simulated/floor/tile/tint,
 /area/wizard)
 "bU" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	dir = 4
 	},
 /obj/structure/interactive/misc/curtain_open,
@@ -491,7 +491,7 @@
 /turf/simulated/floor/tile/tint,
 /area/wizard)
 "bX" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	dir = 8
 	},
 /obj/structure/interactive/misc/curtain_open,
@@ -626,7 +626,7 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area)
 "cx" = (
-/obj/structure/interactive/misc/shower,
+/obj/structure/interactive/shower,
 /obj/structure/interactive/misc/curtain_open,
 /turf/simulated/floor/tile/shuttle/black,
 /area)

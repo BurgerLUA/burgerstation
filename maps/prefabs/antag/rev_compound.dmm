@@ -32,7 +32,7 @@
 /turf/simulated/wall/brick/red/dark/rev,
 /area/prefab/rev_base)
 "aj" = (
-/obj/structure/interactive/misc/shower,
+/obj/structure/interactive/shower,
 /turf/simulated/floor/brick/grey/dark,
 /area/prefab/rev_base)
 "ak" = (

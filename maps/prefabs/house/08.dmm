@@ -242,7 +242,7 @@
 /area/mission/prefab/house/house_08/bathroom)
 "aW" = (
 /obj/structure/interactive/misc/curtain_open,
-/obj/structure/interactive/misc/shower,
+/obj/structure/interactive/shower,
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_08/bathroom)
 "aX" = (
