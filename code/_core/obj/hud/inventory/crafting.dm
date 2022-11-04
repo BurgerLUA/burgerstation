@@ -9,12 +9,6 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
-	item_whitelist = list(
-		/obj/item/crafting/ingredient/,
-		/obj/item/material/,
-		/obj/item/weapon/melee/tool
-	)
-
 
 /obj/hud/inventory/crafting/obj/hud/inventory/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
@@ -75,7 +69,3 @@
 
 /obj/hud/inventory/crafting/result
 	screen_loc = "CENTER+3,TOP-3"
-	
-	item_whitelist = list(
-		/obj/item/ //Explotable? Probably, do I care? No.
-	)
