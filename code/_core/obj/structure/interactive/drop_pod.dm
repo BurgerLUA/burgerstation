@@ -153,9 +153,9 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			for(var/k in contents)
 				var/atom/movable/M = k
 				M.force_move(src.loc)
-			CALLBACK("set_state_\ref[src]",50,src,.proc/set_state,caller,POD_DESTROY,desired_loc)
+			CALLBACK("set_state_\ref[src]",ttl,src,.proc/set_state,caller,POD_DESTROY,desired_loc)
 		if(POD_DESTROY)
-			src.Destroy()
+			qdel(src)
 	state = desired_state
 
 	return TRUE
