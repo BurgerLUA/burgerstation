@@ -50,3 +50,6 @@
 
 /obj/item/material/ingot/nickel
 	material_id = /material/nickel
+
+/obj/item/material/ingot/copper
+	material = /material/copper

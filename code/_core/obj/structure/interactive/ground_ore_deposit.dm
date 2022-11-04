@@ -62,7 +62,7 @@
 
 /obj/structure/interactive/ground_ore_deposit/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","The meter detects an ore concentration of [ore_score]%.")
+	. += div("notice","The meter detects an ore concentration of [ore_score] ore.")
 
 /obj/structure/interactive/ground_ore_deposit/update_sprite()
 
@@ -104,6 +104,7 @@
 		/material/silver = 30,
 		/material/diamond = 5,
 		/material/uranium = 30,
+		/material/copper = 25
 		/material/titanium = 25,
 		/material/zinc = 25,
 		/material/magnesium = 25,

@@ -20,6 +20,19 @@
 
 	value = 3
 
+obj/item/weapon/melee/tool/hammer
+	name = "hammer"
+	desc = "Anythings one of these if you need it to be."
+	desc_extended = "A study hammer with which to bash things with. Not very good for combat, sadly."
+	icon = 'icons/obj/item/weapons/melee/tools/hammer.dmi'
+
+
+	size = SIZE_2
+	weight = 5
+
+	value = 5
+
+
 /obj/item/weapon/melee/tool/wrench
 	name = "wrench"
 	desc = "An adjustable, sizable, thermo-regulable wrench!"

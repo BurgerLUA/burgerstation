@@ -687,7 +687,7 @@
 #include "code\_core\datum\recipe\filter.dm"
 #include "code\_core\datum\recipe\smelter.dm"
 #include "code\_core\datum\recipe\workbench.dm"
-#include "code\_core\datum\recipe\workbench\alloys.dm"
+#include "code\_core\datum\recipe\workbench\clothing.dm"
 #include "code\_core\datum\recipe\workbench\misc.dm"
 #include "code\_core\datum\recipe\workbench\parts.dm"
 #include "code\_core\datum\recipe\workbench\placeables.dm"

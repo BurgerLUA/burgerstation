@@ -1,8 +1,8 @@
 /*
 /recipe/alchemy/
-	name = "smelting recipe"
-	desc = "A smelting recipe"
-	desc_extended = "Smelting recipe information."
+	name = "alchemy recipe"
+	desc = "An alchemy recipe"
+	desc_extended = "alchemy recipe description"
 
 	required_item_grid = list()
 	required_items = list()

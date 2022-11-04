@@ -166,6 +166,31 @@
 		SANITY = INFINITY
 	)
 
+/material/copper
+	name = "copper"
+	color = "#E28446"
+
+	value_per_unit = 4
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 20,
+		LASER = 0,
+		ARCANE = INFINITY,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
 /material/aluminium
 	name = "aluminium"
 	color = COLOR_ALUMINIUM
