@@ -291,7 +291,7 @@
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_02/hallway)
 "bf" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},

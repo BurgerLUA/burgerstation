@@ -1433,7 +1433,7 @@
 /turf/simulated/floor/tile/tint,
 /area/lavaland/interior/base/bathrooms)
 "gz" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 4
 	},
@@ -1444,7 +1444,7 @@
 /turf/simulated/floor/tile/tint,
 /area/lavaland/interior/base/bathrooms)
 "gB" = (
-/obj/structure/interactive/misc/shower{
+/obj/structure/interactive/shower{
 	icon_state = "shower";
 	dir = 8
 	},

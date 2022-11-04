@@ -105,16 +105,18 @@
 	var/turf/simulated/T
 	if(is_simulated(owner.loc))
 		T = owner.loc
-
-	var/area/A
-	if(T && T.loc)
-		A = T.loc
-
-	. = (A ? A.ambient_temperature : T0C + 20) + (T ? T.turf_temperature_mod : 0)
-
-	if(is_inventory(owner.loc))
+		. += T.turf_temperature_mod
+	else if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
 		. += I.inventory_temperature
+
+	if(T && T.loc)
+		var/area/A = T.loc
+		. += A.ambient_temperature
+	else
+		. += T0C + 20
+
+
 
 
 /reagent_container/proc/process_temperature()
@@ -149,7 +151,7 @@
 
 	var/temperature_change = temperature_change_mul * ((temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-0.01,0.01)) //The clamp at the end ensures that the temperature will always increase/decrease.
 
-	if(!temperature_change)
+	if(temperature_change == 0)
 		return TRUE
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
