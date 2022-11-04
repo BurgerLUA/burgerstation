@@ -43,3 +43,24 @@
 	)
 
 	product = /obj/item/tempering/quality/melee
+
+	secret = TRUE
+/recipe/workbench/repair_consumable
+
+	required_item_grid = list(
+		"a1" = null,
+		"a2" = null,
+		"a3" = null,
+
+		"b1" = null,
+		"b2" = null,
+		"b3" = null,
+
+		"c1" = null,
+		"c2" = null,
+		"c3" = null
+	)
+
+	required_items = list("/obj/item/crafting/ingredient/part/scrap","/obj/item/crafting/ingredient/part/tape","/obj/item/crafting/ingredient/part/electronics","/obj/item/weapon/melee/toolbox")
+
+	product = /obj/item/tempering/quality/lesser_consumable

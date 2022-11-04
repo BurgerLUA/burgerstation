@@ -84,7 +84,7 @@
 
 	value = 500
 
-obj/item/tempering/quality/ranged/bow
+/obj/item/tempering/quality/ranged/bow
 	name = "bow limb reinforcements"
 	desc = "Stay on top of things."
 	desc_extended = "A special kit of special screws, platings, and mechanical parts that improves the quality of bows by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
@@ -93,6 +93,25 @@ obj/item/tempering/quality/ranged/bow
 	temper_whitelist = /obj/item/weapon/ranged/bow
 
 	value = 500
+
+
+/obj/item/tempering/quality/lesser_consumable
+	name = "gun repair kit"
+	desc = "Help my gun needs cleaning."
+	desc_extended = "A kit of some spare parts, bits and bobs, and mechanicl parts that improve the quality of any weapon back up to 100%"
+	icon_state = "gun_cleaning"
+
+	temper_whitelist = /obj/item/weapon/
+
+	increase = 100
+	limit = 100
+	minimum = 0
+
+	left = 1
+	
+	value = 100
+
+	value_burgerbux = 0
 
 /obj/item/tempering/quality/ranged/lesser
 	name = "gun cleaning kit"

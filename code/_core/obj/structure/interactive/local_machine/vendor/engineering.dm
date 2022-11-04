@@ -1,6 +1,12 @@
 /obj/structure/interactive/vending/engineering
 	name = "engineering vendor"
 	icon_state = "engivend"
+	stored_types = list(
+		/obj/item/crafting/workbench,
+		/obj/item/crafting/ingredient/part/tape,
+		/obj/item/crafting/ingredient/part/electronics,
+		/obj/item/crafting/ingredient/part/scrap
+	)
 
 /obj/structure/interactive/vending/engineering/equipment
 	name = "engineering equipment vendor"
