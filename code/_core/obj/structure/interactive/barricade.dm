@@ -23,6 +23,10 @@
 
 	repair_flag = FLAG_TOOL_WELDER
 
+/obj/structure/interactive/barricade/Initialize()
+	. = ..()
+	set_dir(dir,TRUE)
+
 /obj/structure/interactive/barricade/Destroy()
 	. = ..()
 	climbers.Cut()
@@ -83,30 +87,14 @@ obj/structure/interactive/barricade/Finalize()
 	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/barricade/update_sprite()
+/obj/structure/interactive/barricade/set_dir(var/desired_dir,var/force=FALSE)
 
 	. = ..()
 
-	var/desired_dense = 0x0
-
-	if(dir == NORTH)
+	if(.)
 		pixel_x = 0
 		pixel_y = 0
-		desired_dense |= SOUTH
-	else if(dir == EAST)
-		pixel_x = 0
-		pixel_y = 0
-		desired_dense |= WEST
-	else if(dir == SOUTH)
-		pixel_x = 0
-		pixel_y = 0
-		desired_dense |= NORTH
-	else if(dir == WEST)
-		pixel_x = 0
-		pixel_y = 0
-		desired_dense |= EAST
-
-	update_collisions(c_dir = desired_dense)
+		update_collisions(c_dir = dir)
 
 
 /obj/structure/interactive/barricade/update_overlays()

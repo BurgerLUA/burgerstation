@@ -53,14 +53,6 @@ obj/structure/interactive/misc/urinal
 	icon_state = "urinal"
 	plane = PLANE_OBJ
 
-
-
-obj/structure/interactive/misc/shower
-	name = "shower"
-	desc = "For when you don't feel like taking a b‰‰‰th."
-	desc_extended = "A shower fixture as decor to liven up the area."
-	icon_state = "shower"
-
 obj/structure/interactive/misc/mirror
 	name = "mirror"
 	desc = "Magic mirror on the wall, who is the most robust of them all?"
