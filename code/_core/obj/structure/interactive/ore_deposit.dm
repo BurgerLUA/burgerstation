@@ -67,6 +67,8 @@
 	var/obj/structure/interactive/ore_deposit/ore_type = pickweight(possible_materials)
 	stored_ore = initial(ore_type.stored_ore)
 	ore_count = rand(1,initial(ore_type.ore_max))
+	name = initial(ore_type.name)
+	icon_state = initial(ore_type.icon_state)
 	return ..()
 
 /obj/structure/interactive/ore_deposit/iron
@@ -216,5 +218,7 @@
 	stored_ore = initial(ore_type.stored_ore)
 	var/ore_number = initial(ore_type.deep_ore_max)
 	ore_count = rand(round(ore_number/3,1),ore_number)
+	name = initial("deep [ore_type.name]")
+	icon_state = initial(ore_type.icon_state)
 	return ..()
 
