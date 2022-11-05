@@ -79,7 +79,8 @@
 				var/obj/item/item_path = text2path_safe(unconsumed)
 				var/item_name = initial(item_path.name)
 				data += list("Unconsumed: [item_name]")
+		var/product_name = initial(stored_recipe.product.name)
 		desc = "Some sort of recipe?"
-		desc_extended = "Looks like a recipe for a [stored_recipe.product.name],whatever that is.Made in the [stored_recipe.recipe_type], it makes [stored_recipe.amount]."
+		desc_extended = "Looks like a recipe for a [product_name],whatever that is.Made in the [stored_recipe.recipe_type], it makes [stored_recipe.amount]."
 		
 		

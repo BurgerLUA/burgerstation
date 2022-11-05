@@ -41,97 +41,113 @@
 	..()
 
 /obj/item/material/ore/iron
+	material_id = /material/iron
 	name = "iron ore"
-	desc = "Commonly found in caves."
+	desc = "Insert FE-ic pun here."
 	ore_color = "#B5634F"
 	grinder_reagents = /reagent/iron
 	reagent_count = 10
 	icon_state = "ore_iron"
 
 /obj/item/material/ore/copper
+	material_id = /material/copper
 	name = "copper ore"
-	desc = "Commonly found on surfaces."
+	desc = "Tastes like coins."
 	grinder_reagents = /reagent/copper
 	reagent_count = 10
 	ore_color = "#E28446"
 
 /obj/item/material/ore/aluminium
+	material_id = /material/aluminium
 	name = "aluminium ore"
-	desc = "Commonly found in caves."
+	desc = "Alu-min-ium"
 	grinder_reagents = /reagent/aluminium
 	reagent_count = 10
 	ore_color = "#C4C4C4"
 
 /obj/item/material/ore/nickel
+	material_id = /material/nickel
 	name = "nickel ore"
-	desc = "Commonly found near caves with sand in them."
+	desc = "Tastes like 5 credits."
 	ore_color = "#AAC4C4"
 
 /obj/item/material/ore/lead
+	material_id = /material/lead
 	name = "lead ore"
-	desc = "Found deep underground."
+	desc = "Tastes like poision"
 	ore_color = "#5E5D77"
 
 /obj/item/material/ore/zinc
+	material_id = /material/zinc
 	name = "zinc ore"
-	desc = "Found near water."
+	desc = "A nessicary material in brass."
 	ore_color = "#E8E8EF"
 
 /obj/item/material/ore/silver
+	material_id = /material/silver
 	name = "silver ore"
-	desc = "Found deep underground, usually well hidden."
+	desc = "Silver and ..... what was the other one?"
 	ore_color = "#E5E5EA"
 	grinder_reagents = /reagent/silver
 	reagent_count = 5
 	icon_state = "ore_silver"
 
 /obj/item/material/ore/gold
+	material_id = /material/gold
 	name = "gold ore"
-	desc = "Found deep underground, usually well hidden."
+	desc = "WERE RICH!"
 	ore_color = "#FFE74F"
 	icon_state = "ore_gold"
 
 /obj/item/material/ore/titanium
+	material_id = /material/titanium
 	name = "titanium ore"
-	desc = "Found in the deepest of locations, usually well hidden."
+	desc = "Stronk"
 	ore_color = "#D9E5EA"
 
 /obj/item/material/ore/diamond
+	material_id = /material/diamond
 	name = "diamond ore"
-	desc = "Found in the deepest of locations, usually well hidden."
+	desc = "MIIIINING AWAY"
 	ore_color = "#009ee2"
 
 /obj/item/material/ore/uranium
+	material_id = /material/uranium
 	name = "uranium ore"
-	desc = "Found in the deepest of locations, usually well hidden."
+	desc = "URAAAAANIUM FEVER."
 	ore_color = "#003f15"
 
 /obj/item/material/ore/tin
+	material_id = /material/tin
 	name = "tin ore"
-	desc = "Commonly found on the surface."
+	desc = "Blocks phycics and aliens. Dont forget the government!"
 	ore_color = "#E2E2E2"
 
 /obj/item/material/ore/cobalt
+	material_id = /material/cobalt
 	name = "cobalt ore"
-	desc = "Found deep underground."
+	desc = "Not as pretty as your eyes."
 	ore_color = "#ABCCCC"
 
 /obj/item/material/ore/carbon
+	material_id = /material/carbon
 	name = "carbon ore"
-	desc = "Found in caves and deep underground."
+	desc = "Almost a diamond. Just a few million years and some pressure early."
 	ore_color = "#0A0A0A"
 	grinder_reagents = /reagent/carbon
 	reagent_count = 10
 	icon_state = "ore_coal"
 
 /obj/item/material/ore/magnesium
+	material_id = /material/magnesium
 	name = "magnesium ore"
-	desc = "Commonly found in caves."
+	desc = "Do not mix with water. Or was that Potassium?"
 	ore_color = COLOR_BLACK
 
 /obj/item/material/ore/plasma
+	material_id = /material/phoron
 	name = "phoron plasma ore"
-	desc = "Commonly found in areas of great power."
+	desc = "Hey what happens if I light it on fi..."
 	ore_color = "#B200B6"
 	grinder_reagents = /reagent/fuel/phoron
 	reagent_count = 5

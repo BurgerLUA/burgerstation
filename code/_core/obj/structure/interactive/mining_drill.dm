@@ -8,7 +8,7 @@
 	var/drill_counter = 0
 	can_rotate = FALSE
 
-	var/obj/structure/interactive/ground_ore_deposit/found_deposit
+	var/obj/structure/interactive/ore_deposit_ground/found_deposit
 
 	collision_flags = FLAG_COLLISION_WALL
 
@@ -103,7 +103,7 @@
 	if(!found_deposit)
 		found_deposit = locate() in src.loc
 
-	 if(!anchored || !found_deposit || found_deposit.ore_score <= 0 || found_deposit.qdeleting)
+	 if(!anchored || !found_deposit || found_deposit.ore_count <= 0 || found_deposit.qdeleting)
 	 	deactivate()
 	 	found_deposit = null
 	 	return FALSE
@@ -112,7 +112,7 @@
 	if(drill_depth >= 100)
 		drill_counter++
 		if(drill_counter > 30)
-			found_deposit.mine_ore()
+			found_deposit.drop_ore()
 			drill_counter = 0
 
 	return TRUE

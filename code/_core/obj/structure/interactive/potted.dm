@@ -1,6 +1,6 @@
 obj/structure/interactive/potted_plant
 	name = "potted plant"
-	desc = "For replacing the oxygen that theese retards waste."
+	desc = "For replacing the oxygen that these retards waste."
 	desc_extended = "A randomized potted plant as decor to liven up the area."
 	icon = 'icons/obj/structure/flora/potted.dmi'
 

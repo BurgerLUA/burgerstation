@@ -86,6 +86,32 @@
 	)
 
 
+/material/cobalt/
+	name = "cobalt"
+	color = COLOR_BLUE
+
+	value_per_unit = 1
+
+	armor = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = -25,
+		ARCANE = INFINITY,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 100,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+
 /material/rock/
 	name = "rock"
 	color = COLOR_ROCK
@@ -171,6 +197,56 @@
 	color = "#E28446"
 
 	value_per_unit = 4
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 20,
+		LASER = 0,
+		ARCANE = INFINITY,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+/material/tin
+	name = "tin"
+	color = "#E2E2E2"
+
+	value_per_unit = 0.5
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 20,
+		LASER = 0,
+		ARCANE = INFINITY,
+		HEAT = 50,
+		COLD = 50,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+/material/lead
+	name = "lead"
+	color = "#5E5D77"
+
+	value_per_unit = 0.5
 
 	armor = list(
 		BLADE = 25,

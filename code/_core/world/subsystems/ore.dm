@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(ore)
 	name = "Ore Subsystem"
-	desc = "Initialize objs after they are made. Also handles queued object smoothing."
+	desc = "Spawns ore in the world."
 	priority = SS_ORDER_LAST
 
 /subsystem/ore/Initialize()
@@ -15,9 +15,7 @@ SUBSYSTEM_DEF(ore)
 			continue
 		if(!prob(1))
 			continue
-		var/obj/structure/interactive/ground_ore_deposit/map/random/GOD = new(S)
-		INITIALIZE(GOD)
-		GENERATE(GOD)
+		new /obj/structure/interactive/ore_deposit_ground/random(S)
 		spawned_ore_chunks++
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
@@ -26,10 +24,7 @@ SUBSYSTEM_DEF(ore)
 			continue
 		if(!prob(1))
 			continue
-		var/obj/structure/interactive/wall_ore_deposit/map/random/WOD = new(S)
-		INITIALIZE(WOD)
-		GENERATE(WOD)
-		FINALIZE(WOD)
+		new /obj/structure/interactive/ore_deposit/random(S)
 		spawned_ore_chunks++
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 

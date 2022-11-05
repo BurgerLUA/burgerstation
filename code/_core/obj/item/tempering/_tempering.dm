@@ -59,10 +59,12 @@
 	return TRUE
 
 /obj/item/tempering/save_item_data(mob/living/advanced/player/P, save_inventory, died)
+	. = ..()
 	SAVEVAR("left")
-	. = ..()
+	
 /obj/item/tempering/load_item_data_post(mob/living/advanced/player/P, list/object_data)
-	LOADVAR("left")
 	. = ..()
+	LOADVAR("left")
+	
 	
 	
