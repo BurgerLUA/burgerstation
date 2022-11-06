@@ -36,10 +36,10 @@
 	L.do_say("<font color='#DD1C1F' size='4'>[word]</font>",FALSE)
 
 	for(var/mob/living/L2 in oview(T,8))
-	//	if(L2.dead)
-	//		continue
-	//	if(L2.loyalty_tag == L.loyalty_tag)
-	//		continue
+		if(L2.dead)
+			continue
+		if(L2.loyalty_tag == L.loyalty_tag)
+			continue
 		do_damage(L2,L)
 
 /ability/voice_of_god/harm/bleed
