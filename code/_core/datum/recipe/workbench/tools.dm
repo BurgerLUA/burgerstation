@@ -16,4 +16,4 @@
 		"c3" = null
 	)
 
-	product = /obj/item/weapon/melee/tool/pickaxe/diamond
+	product = /obj/item/weapon/melee/tool/pickaxe_diamond
