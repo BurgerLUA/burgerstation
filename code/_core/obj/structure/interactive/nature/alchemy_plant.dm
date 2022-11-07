@@ -77,3 +77,8 @@
 	name = "forest nut pile"
 	icon_state = "forest_nut"
 	harvest_item = /obj/item/crafting/ingredient/part/alchemy_plant/forest_nut
+
+/obj/structure/interactive/alchemy_plant/snow_daisy
+	name = "snow daisy patch"
+	icon_state = "snow_daisy"
+	harvest_item = /obj/item/crafting/ingredient/part/alchemy_plant/snow_daisy
