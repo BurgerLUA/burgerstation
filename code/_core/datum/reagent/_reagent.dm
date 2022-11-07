@@ -100,40 +100,40 @@
 /reagent/proc/on_remove_living(var/mob/living/L,var/reagent_container/container)
 	return TRUE
 
-/reagent/proc/metabolize(var/mob/living/living_owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/proc/metabolize(var/mob/living/living_owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
-	var/container_flags_metabolism = container.flags_metabolism
+	. = 0
 
-	var/total_metabolized = 0
+	if(starting_volume <= 0)
+		return .
 
-	if(starting_volume >= 0 && container_flags_metabolism & REAGENT_METABOLISM_BLOOD)
-		total_metabolized += on_metabolize_blood(living_owner,container,starting_volume,multiplier)
-
-	if(starting_volume >= 0 && container_flags_metabolism & REAGENT_METABOLISM_INGEST)
-		total_metabolized += on_metabolize_stomach(living_owner,container,starting_volume,multiplier)
-
-	if(starting_volume >= 0 && container_flags_metabolism & REAGENT_METABOLISM_SKIN)
-		total_metabolized += on_metabolize_skin(living_owner,container,starting_volume,multiplier)
+	switch(container.flags_metabolism)
+		if(REAGENT_METABOLISM_BLOOD)
+			. += on_metabolize_blood(living_owner,container,metabolism_blood,starting_volume,multiplier)
+		if(REAGENT_METABOLISM_INGEST)
+			. += on_metabolize_stomach(living_owner,container,metabolism_stomach,starting_volume,multiplier)
+		if(REAGENT_METABOLISM_SKIN)
+			. += on_metabolize_skin(living_owner,container,metabolism_skin,starting_volume,multiplier)
 
 	if(overdose_threshold && starting_volume >= overdose_threshold)
-		total_metabolized += on_overdose(living_owner,container,starting_volume,multiplier,total_metabolized)
+		. += on_overdose(living_owner,container,.,starting_volume,multiplier)
 
-	return total_metabolized
+	return .
 
-/reagent/proc/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_stomach * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+/reagent/proc/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+	return amount_to_metabolize * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
-/reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+/reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+	return amount_to_metabolize * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
-/reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_blood * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+/reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+	return amount_to_metabolize * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
-/reagent/proc/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
-	return metabolism_skin * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+/reagent/proc/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+	return amount_to_metabolize * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
 
-/reagent/proc/on_overdose(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1,var/metabolism_amount=0)
-	return metabolism_amount * TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+/reagent/proc/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
+	return 0
 
 /reagent/proc/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	return TRUE

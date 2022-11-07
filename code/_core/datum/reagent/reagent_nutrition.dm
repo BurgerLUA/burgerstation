@@ -58,7 +58,7 @@
 			L.add_nutrition_quality(nutrition_quality_amount*.)
 
 
-/reagent/nutrition/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -68,7 +68,7 @@
 	if(hydration_amount)
 		plant.add_hydration(.*(hydration_amount/25)*multiplier) //water has 25 hydration, and we want 1u water = 1 hydration point
 
-/reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -107,12 +107,12 @@
 		if(owner.health && nutrition_amount + hydration_amount != 0)
 			owner.stamina_regen_buffer += (nutrition_amount + hydration_amount) * . *multiplier
 
-/reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	owner.tox_regen_buffer -= . * (0.5 + abs(nutrition_amount)*0.1)*multiplier
 	owner.blood_toxicity += .
-	on_metabolize_stomach(owner,container,starting_volume,multiplier*0.5)
+	on_metabolize_stomach(owner,container,.,starting_volume,multiplier*0.5)
 
 	return
