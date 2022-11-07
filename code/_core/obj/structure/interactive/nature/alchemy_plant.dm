@@ -16,6 +16,7 @@
 	var/chance = prob(clamp(skill_power*0.80,10,100))
 	if(!chance)
 		caller.to_chat(span("warning","You fumble and ruin the harvest!"))
+		caller.add_skill_xp(SKILL_BOTANY,3)
 		grown = FALSE
 		return TRUE
 	if(harvest_item)
@@ -25,8 +26,10 @@
 		FINALIZE(NH)
 		if(prob(clamp(skill_power*0.50,1,25)))
 			caller.to_chat(span("notice","You carefully gather the [NH.name], but theres still more!"))
+			caller.add_skill_xp(SKILL_BOTANY,10)
 			return TRUE
 		caller.to_chat(span("notice","You carefully gather the [NH.name],depleting it."))
+		caller.add_skill_xp(SKILL_BOTANY,5)
 		grown = FALSE
 		src.update_sprite()
 	return TRUE
