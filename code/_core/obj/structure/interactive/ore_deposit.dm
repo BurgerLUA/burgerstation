@@ -64,7 +64,8 @@
 		/obj/structure/interactive/ore_deposit/zinc = 25,
 		/obj/structure/interactive/ore_deposit/magnesium = 25,
 		/obj/structure/interactive/ore_deposit/aluminium = 25,
-		/obj/structure/interactive/ore_deposit/nickel = 25
+		/obj/structure/interactive/ore_deposit/nickel = 25,
+		/obj/structure/interactive/ore_deposit/cobalt = 5
 	)
 
 	var/obj/structure/interactive/ore_deposit/ore_type = pickweight(possible_materials)
@@ -197,6 +198,15 @@
 	stored_ore = /obj/item/material/ore/diamond
 	ore_max = 3
 	deep_ore_max = 10
+
+/obj/structure/interactive/ore_deposit/cobalt
+	name = "cobalt deposit"
+	desc = "Your first Hardmode ore. Proabably."
+	desc_extended = "A vein of ore. This one contains cobalt ore."
+	color =	COLOR_BLUE
+	stored_ore = /obj/item/material/ore/cobalt
+	ore_max = 3
+	deep_ore_max = 30
 //deep ore
 /obj/structure/interactive/ore_deposit_ground
 	name = "deep ore deposit"
@@ -244,7 +254,8 @@
 		/obj/structure/interactive/ore_deposit/zinc = 10,
 		/obj/structure/interactive/ore_deposit/magnesium = 10,
 		/obj/structure/interactive/ore_deposit/aluminium = 10,
-		/obj/structure/interactive/ore_deposit/nickel = 10
+		/obj/structure/interactive/ore_deposit/nickel = 10,
+		/obj/structure/interactive/ore_deposit/cobalt = 20
 	)
 	var/obj/structure/interactive/ore_deposit/ore_type = pickweight(possible_materials)
 	stored_ore = initial(ore_type.stored_ore)

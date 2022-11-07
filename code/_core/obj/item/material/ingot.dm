@@ -13,6 +13,10 @@
 	material_id = /material/iron
 	desc = "Fe-ic huh?"
 
+/obj/item/material/ingot/cobalt
+	material_id = /material/cobalt
+	desc = "Mystic metal,sometimes."
+
 /obj/item/material/ingot/gold
 	material_id = /material/gold
 	desc = "WERE RICH!"
