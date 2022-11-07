@@ -7,7 +7,6 @@
 	amount_max = 50
 	amount_max_icon = 3
 
-	crafting_id = "sheet"
 
 	material_multiplier = 1
 

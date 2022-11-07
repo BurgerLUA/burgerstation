@@ -1,7 +1,7 @@
 /obj/item/material/ingot
 	name = "ingot"
 	desc = "I am error."
-	desc_extended = "An ingot of a material. Made by smelting ore."
+	
 	icon = 'icons/obj/item/material.dmi'
 	icon_state = "ingot"
 

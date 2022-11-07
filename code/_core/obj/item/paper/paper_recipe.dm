@@ -71,12 +71,17 @@
 			for(var/any_item in stored_recipe.required_items)
 				var/obj/item/item_path = text2path_safe(any_item)
 				var/item_name = initial(item_path.name)
-				data += list("Anywhere: [item_name] x [initial(stored_recipe.required_items[any_item])]")	
+				data += list("Anywhere: [item_name] x [stored_recipe.required_items[any_item]]")	
 		if(stored_recipe.no_consume_ids.len >= 1)
 			for(var/unconsumed in stored_recipe.no_consume_ids)
 				var/obj/item/item_path = text2path_safe(unconsumed)
 				var/item_name = initial(item_path.name)
 				data += list("Unconsumed: [item_name]")
+		if(stored_recipe.reagents_to_add.len >= 1)
+			for(var/reagent_path in stored_recipe.reagents_to_add)
+				var/reagent/reagent = text2path_safe(reagent_path)
+				data += list("Product reagent: [initial(reagent.name)] x [stored_recipe.reagents_to_add[reagent_path]]")
+
 		var/product_name = initial(stored_recipe.product.name)
 		name = "Recipe for [product_name]"
 		desc = "Some sort of recipe?"
