@@ -48,9 +48,9 @@
 			if(L.blood_type)
 				var/reagent/BT = REAGENT(L.blood_type)
 				blood_type = BT.name
-				blood_volume = "[L.blood_volume] ([FLOOR(L.blood_volume/L.blood_volume_max,0.01)*100]%)"
+				blood_volume = "[L.blood_volume]u ([FLOOR(L.blood_volume/L.blood_volume_max,0.01)*100]%)"
 				blood_oxygen = "[FLOOR((L.blood_volume/L.blood_volume_max) + L.blood_oxygen,0.01)*100]%"
-				blood_toxicity = "[L.blood_toxicity]([max(0,1 - L.chem_power)*100]%)"
+				blood_toxicity = "[max(0,1 - L.chem_power)*100]%"
 
 		if(target.reagents && length(target.reagents.stored_reagents))
 			reagent_printout = ""
