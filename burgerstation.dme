@@ -1922,7 +1922,6 @@
 #include "code\_core\obj\structure\interactive\tendril.dm"
 #include "code\_core\obj\structure\interactive\the_curse.dm"
 #include "code\_core\obj\structure\interactive\torch.dm"
-#include "code\_core\obj\structure\interactive\wall_ore_deposit.dm"
 #include "code\_core\obj\structure\interactive\window.dm"
 #include "code\_core\obj\structure\interactive\wizard_hole.dm"
 #include "code\_core\obj\structure\interactive\atmospherics\_atmospherics.dm"

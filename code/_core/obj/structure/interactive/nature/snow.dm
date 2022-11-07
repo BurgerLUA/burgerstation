@@ -28,10 +28,15 @@ obj/structure/scenery/bush/snow/New()
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	health = /health/construction/
+	material_id = /material/wood
 	health_base = 250
 	mouse_opacity = 1
 	density = TRUE
 
+/obj/structure/interactive/tree/on_destruction(mob/caller, damage)
+	if(caller in orange(1,src))
+		create_destruction(src,list(/obj/item/material/wood/oak = rand(1,3)))
+	. = ..()
 /obj/structure/interactive/tree/Finalize()
 	. = ..()
 	if(is_simulated(src.loc))
