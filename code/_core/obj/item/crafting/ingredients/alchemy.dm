@@ -22,3 +22,9 @@
 	desc_extended = "A large, brown nut, bursting with toughening energy. Too bad its toxic...."
 	icon_state = "forest_nut"
 	value = 5
+/obj/item/crafting/ingredient/part/alchemy_plant/snow_daisy
+	name = "snow daisy"
+	desc = "Daisy, Daisy, give me your answer, do..."
+	desc_extended = "A large, white flower, bursting with mana. Too bad its toxic...."
+	icon_state = "snow_daisy"
+	value = 5

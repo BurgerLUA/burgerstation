@@ -10,3 +10,6 @@
 /obj/marker/alchemy_plant/forest_berry
 	to_spawn = /obj/structure/interactive/alchemy_plant/forest_berry
 	allowed_turfs = list(/turf/simulated/floor/colored/grass)
+/obj/marker/alchemy_plant/snow_daisy
+	to_spawn = /obj/structure/interactive/alchemy_plant/snow_daisy
+	allowed_turfs = list(/turf/simulated/floor/colored/snow)
