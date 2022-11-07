@@ -49,4 +49,11 @@
 	desc = "coarse and rough"
 	desc_extended = "A piece of paper covered in rough grains of sand. Useful for smoothing metals."
 	icon_state = "sand_paper"
-	value = 50
+	value = 10
+//Doesnt go boom
+/obj/item/crafting/ingredient/part/gunpowder
+	name = "gunpowder"
+	desc = "Kaboom?"
+	desc_extended = "Some gunpowder wrapped in a nice package."
+	icon_state = "gunpowder"
+	value = 5

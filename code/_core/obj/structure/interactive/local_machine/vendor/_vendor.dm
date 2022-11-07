@@ -17,6 +17,7 @@ var/global/list/equipped_antags = list()
 	var/list/obj/item/stored_objects = list()
 	var/list/obj/item/stored_types = list()
 	var/list/obj/item/stored_cost = list()
+	var/list/item_multiplier = list() //list of items to multiply the value of by thier assigned value in stored types.
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -180,6 +181,8 @@ var/global/list/equipped_antags = list()
 	var/turf/T = get_turf(src)
 	for(var/k in stored_types)
 		create_item(k,T)
+		if(isnum(stored_types[k]))
+			item_multiplier[k] = stored_types[k]
 	stored_types.Cut()
 
 	. = ..()
@@ -231,7 +234,10 @@ var/global/list/equipped_antags = list()
 		var/local_markup = markup
 		if(!ignore_economy)
 			local_markup = max(markup * (SSeconomy.price_multipliers["[I.type]"] ? SSeconomy.price_multipliers["[I.type]"] : 1),markup)
-		stored_cost[I.type] = CEILING(get_bullshit_price(I.get_value()*local_markup),1)
+		if(isnum(item_multiplier[I.type]))
+			stored_cost[I.type] = CEILING((get_bullshit_price(I.get_value()*local_markup)*item_multiplier[I.type]),1)
+		else
+			stored_cost[I.type] = CEILING(get_bullshit_price(I.get_value()*local_markup),1)
 		if(price_max)
 			stored_cost[I.type] = min(price_max,stored_cost[I.type])
 		if(stored_cost[I.type] <= 0)

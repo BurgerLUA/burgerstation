@@ -1,3 +1,4 @@
+/*
 /recipe/workbench/copper_ring
 	name = "copper ring"
 
@@ -15,4 +16,5 @@
 		"c3" = null
 	)
 
-	product = /obj/item/crafting/ingredient/part/sandpaper
+	product = /obj/item/clothing/ring/copper
+*/

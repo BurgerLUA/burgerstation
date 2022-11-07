@@ -20,7 +20,7 @@
 
 	value = 3
 
-obj/item/weapon/melee/tool/hammer
+/obj/item/weapon/melee/tool/hammer
 	name = "hammer"
 	desc = "Anythings one of these if you need it to be."
 	desc_extended = "A study hammer with which to bash things with. Not very good for combat, sadly."
@@ -230,3 +230,14 @@ obj/item/weapon/melee/tool/hammer
 
 	size = SIZE_3
 	weight = 8
+
+/obj/item/weapon/melee/tool/botany
+	name = "enchanted weeder"
+	desc = "Why was it enchanted again?"
+	desc_extended = "An enchanted manual weeder. Required for the delicate gathering of certain magical flora."
+	icon = 'icons/obj/item/weapons/melee/tools/weeder.dmi'
+
+	value = 250
+
+	size = SIZE_1
+	weight = 1

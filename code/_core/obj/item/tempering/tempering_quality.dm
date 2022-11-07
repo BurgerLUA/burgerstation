@@ -84,7 +84,7 @@
 
 	value = 500
 
-/obj/item/tempering/quality/ranged/bow
+/obj/item/tempering/quality/ranged_bow
 	name = "bow limb reinforcements"
 	desc = "Stay on top of things."
 	desc_extended = "A special kit of special screws, platings, and mechanical parts that improves the quality of bows by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."

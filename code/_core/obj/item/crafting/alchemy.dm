@@ -1,4 +1,4 @@
-/*/obj/item/crafting/alchemy
+/obj/item/crafting/alchemy
 	name = "portable alchemy table"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "alchemy"
@@ -13,12 +13,14 @@
 
 	crafting_id = "alchemy"
 
-	crafting_type = /recipe/alchemy/
+	crafting_type = "alchemy"
 
 	value = 25
 
 	size = SIZE_4
 
+/*
+Old code. Maybe someone else will find a use for it....
 /obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/item/container/C //Final slot container.
@@ -90,8 +92,4 @@
 	C.reagents.update_container(caller)
 
 	return TRUE
-
-
-
-
 */

@@ -5,7 +5,8 @@
 		/obj/item/crafting/workbench,
 		/obj/item/crafting/ingredient/part/tape,
 		/obj/item/crafting/ingredient/part/electronics,
-		/obj/item/crafting/ingredient/part/scrap
+		/obj/item/crafting/ingredient/part/scrap,
+		/obj/item/weapon/melee/tool/hammer
 	)
 
 /obj/structure/interactive/vending/engineering/equipment

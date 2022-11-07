@@ -104,22 +104,27 @@
 
 	for(var/k in SSrecipe.all_recipes)
 		var/recipe/R = k
-
+		/*
+		if(initial(R.recipe_type) == crafting_type && crafting_type)
+			caller.to_chat(span("warning","[initial(R.recipe_type)] isnt == [crafting_type]! Skipping!"))
+			continue
+		*/
 		var/list/recipe_check = R.check_recipe(item_table,src)
 		if(length(recipe_check)) //We can craft
-
 			var/obj/item/I3 = new R.product(caller.loc)
 			INITIALIZE(I3)
 			GENERATE(I3)
 			FINALIZE(I3)
+			if(istype(I3,/obj/item/container) && length(R.reagents_to_add))
+				var/obj/item/container/IC3 = I3
+				for(var/reagent_text in R.reagents_to_add)
+					var/reagent/reagent = text2path_safe(reagent_text)
+					IC3.reagents.add_reagent(reagent,R.reagents_to_add[reagent_text])
 			product_slot.add_object(I3,caller,FALSE,TRUE)
 			if(R.amount > 1 && I3.amount_max > 1)
 				I3.amount = R.amount
 			for(var/obj/item/I in recipe_check)
-				if(R.transfer_reagents && I.reagents && I3.reagents)
-					I.reagents.transfer_reagents_to(I3.reagents,I.reagents.volume_current, caller = caller)
-					qdel(I)
-				else if(recipe_check[I])
+				if(recipe_check[I])
 					continue
 				else
 					I.add_item_count(-1)

@@ -1,6 +1,7 @@
 /obj/structure/interactive/ore_deposit
 	name = "ore deposit"
-	desc = "MINECRAFT."
+	desc = "MINECRAFT!"
+	desc_extended = "Chonky"
 	icon = 'icons/obj/structure/ore.dmi'
 	icon_state = "deposit"
 	initialize_type = INITIALIZE_LATE
@@ -9,6 +10,7 @@
 	var/deep_ore_max = 100 //How much does a deep-vein hold? - the thrombosis.
 	var/ore_count = 0 // How much does it hold currently
 	alpha = 200
+
 /obj/structure/interactive/ore_deposit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -46,8 +48,9 @@
 
 /obj/structure/interactive/ore_deposit/random
 
-/obj/structure/interactive/ore_deposit/random/New(var/desired_loc)
 
+/obj/structure/interactive/ore_deposit/random/New(var/desired_loc)
+	..()
 	var/list/possible_materials = list(
 		/obj/structure/interactive/ore_deposit/iron = 100,
 		/obj/structure/interactive/ore_deposit/plasma = 10,
@@ -68,17 +71,23 @@
 	stored_ore = initial(ore_type.stored_ore)
 	ore_count = rand(1,initial(ore_type.ore_max))
 	name = initial(ore_type.name)
+	desc = initial(ore_type.desc)
 	icon_state = initial(ore_type.icon_state)
-	return ..()
+	desc_extended = initial(ore_type.desc_extended)
 
 /obj/structure/interactive/ore_deposit/iron
 	name = "iron deposit"
+	desc = "23 more for a full set of armor!"
+	desc_extended = "A vein of ore. This one contains iron ore."
 	icon_state = "deposit_iron"
 	stored_ore = /obj/item/material/ore/iron
 	ore_max = 10
+	deep_ore_max = 100
 
 /obj/structure/interactive/ore_deposit/copper
 	name = "copper deposit"
+	desc = "Now in vanilla!"
+	desc_extended = "A vein of ore. This one contains copper ore."
 	color = "#E28446"
 	stored_ore = /obj/item/material/ore/copper
 	ore_max = 7
@@ -86,6 +95,8 @@
 
 /obj/structure/interactive/ore_deposit/tin
 	name = "tin deposit"
+	desc = "A man with no heart."
+	desc_extended = "A vein of ore. This one contains tin ore."
 	color = "#E2E2E2"
 	stored_ore = /obj/item/material/ore/tin
 	ore_max = 7
@@ -93,6 +104,8 @@
 
 /obj/structure/interactive/ore_deposit/zinc
 	name = "zinc deposit"
+	desc = "Battery Material."
+	desc_extended = "A vein of ore. This one contains zinc ore."
 	color = "#E8E8EF"
 	stored_ore = /obj/item/material/ore/zinc
 	ore_max = 6
@@ -100,6 +113,8 @@
 
 /obj/structure/interactive/ore_deposit/gold
 	name = "gold deposit"
+	desc = "WERE RICH"
+	desc_extended = "A vein of ore. This one contains gold ore."
 	icon_state = "deposit_gold"
 	stored_ore = /obj/item/material/ore/gold
 	ore_max = 5
@@ -107,6 +122,8 @@
 
 /obj/structure/interactive/ore_deposit/uranium
 	name = "uranium deposit"
+	desc = "Its gone and got you down."
+	desc_extended = "A vein of ore. This one contains uranium ore."
 	icon_state = "deposit_uranium"
 	stored_ore = /obj/item/material/ore/uranium
 	ore_max = 5
@@ -114,12 +131,16 @@
 
 /obj/structure/interactive/ore_deposit/titanium
 	name = "titanium deposit"
+	desc = "Float like a butterfly."
+	desc_extended = "A vein of ore. This one contains titanium ore."
 	stored_ore = /obj/item/material/ore/titanium
 	ore_max = 3
 	deep_ore_max = 50
 
 /obj/structure/interactive/ore_deposit/silver
 	name = "silver deposit"
+	desc = "Not quite as rich"
+	desc_extended = "A vein of ore. This one contains silver ore."
 	icon_state = "deposit_silver"
 	stored_ore = /obj/item/material/ore/silver
 	ore_max = 5
@@ -127,6 +148,8 @@
 
 /obj/structure/interactive/ore_deposit/carbon
 	name = "coal deposit"
+	desc = "So close to diamond."
+	desc_extended = "A vein of ore. This one contains carbon ore."
 	icon_state = "deposit_coal"
 	stored_ore = /obj/item/material/ore/carbon
 	ore_max = 3
@@ -134,12 +157,16 @@
 
 /obj/structure/interactive/ore_deposit/magnesium
 	name = "magnesium deposit"
+	desc = "Makes pretty fire."
+	desc_extended = "A vein of ore. This one contains magnesium ore."
 	stored_ore = /obj/item/material/ore/magnesium
 	ore_max = 3
 	deep_ore_max = 30
 
 /obj/structure/interactive/ore_deposit/aluminium
 	name = "aluminium deposit"
+	desc = "Foil V-001 Alpha"
+	desc_extended = "A vein of ore. This one contains aluminum ore."
 	stored_ore = /obj/item/material/ore/aluminium
 	color = "#C4C4C4"
 	ore_max = 3
@@ -147,12 +174,16 @@
 
 /obj/structure/interactive/ore_deposit/nickel
 	name = "nickel deposit"
+	desc = "What concert is 45 cents?"
+	desc_extended = "A vein of ore. This one contains nickel ore."
 	stored_ore = /obj/item/material/ore/nickel
 	ore_max = 3
 	deep_ore_max = 30
 
 /obj/structure/interactive/ore_deposit/plasma
 	name = "phoron plasma deposit"
+	desc = "Spicy air ore"
+	desc_extended = "A vein of ore. This one contains plasma/phoron ore."
 	icon_state = "deposit_phoron"
 	stored_ore = /obj/item/material/ore/plasma
 	ore_max = 3
@@ -160,6 +191,8 @@
 
 /obj/structure/interactive/ore_deposit/diamond
 	name = "diamond deposit"
+	desc = "Ok guys, im gonna do take on me"
+	desc_extended = "A vein of ore. This one contains diamond ore."
 	icon_state = "deposit_diamond"
 	stored_ore = /obj/item/material/ore/diamond
 	ore_max = 3
@@ -195,10 +228,9 @@
 		TO.drop_item(MD.loc)
 
 /obj/structure/interactive/ore_deposit_ground/random
-	
 
 /obj/structure/interactive/ore_deposit_ground/random/New(var/desired_loc)
-
+	..()
 	var/list/possible_materials = list(
 		/obj/structure/interactive/ore_deposit/iron = 100,
 		/obj/structure/interactive/ore_deposit/plasma = 10,
@@ -219,6 +251,8 @@
 	var/ore_number = initial(ore_type.deep_ore_max)
 	ore_count = rand(round(ore_number/3,1),ore_number)
 	name = "deep [initial(ore_type.name)]"
+	desc = initial(ore_type.desc)
+	desc_extended = "[initial(ore_type.desc_extended)] This vein is much larger, but far to deep down to dig manually."
 	icon_state = initial(ore_type.icon_state)
-	return ..()
+
 

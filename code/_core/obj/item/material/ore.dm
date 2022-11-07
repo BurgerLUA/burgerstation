@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "rock_small"
 	var/ore_color = "#FFFFFF"
-	amount_max = 1
+	amount_max = 5
 	amount_max_icon = 1
 
 	material_multiplier = 1

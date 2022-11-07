@@ -5,8 +5,8 @@
 	icon_state = "scrap"
 	inventories = null
 	is_container = FALSE
-
-
+	amount_max = 10
+	
 /obj/item/crafting/ingredient/part/
 	name = "part"
 
