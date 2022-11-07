@@ -79,23 +79,56 @@
 	if(multiplier <= 0)
 		return
 
+	var/metabolism_limit = 0
+	switch(flags_metabolism)
+		if(REAGENT_METABOLISM_BLOOD)
+			metabolism_limit = 5
+		if(REAGENT_METABOLISM_INGEST)
+			metabolism_limit = 10
+		if(REAGENT_METABOLISM_SKIN)
+			metabolism_limit = 50
+
+	if(metabolism_limit <= 0)
+		return //Something went wrong.
+
+	//First pass.
+	var/total_metabolism = 0
 	for(var/r_id in stored_reagents)
-
 		var/volume = stored_reagents[r_id]
-
-		if(!volume || volume <= REAGENT_ROUNDING)
-			continue
-
 		var/reagent/R = REAGENT(r_id)
-
-		if(!(flags_metabolism & R.flags_metabolism))
+		if(!(flags_metabolism & R.flags_metabolism) || volume < 1) //Small amounts are ignored and removed, along with reagents that serve no purpose.
+			add_reagent(r_id,-volume,FALSE)
 			continue
+		switch(flags_metabolism)
+			if(REAGENT_METABOLISM_BLOOD)
+				total_metabolism += R.metabolism_blood
+			if(REAGENT_METABOLISM_INGEST)
+				total_metabolism += R.metabolism_stomach
+			if(REAGENT_METABOLISM_SKIN)
+				total_metabolism += R.metabolism_skin
+	var/metabolism_multiplier = min(1,metabolism_limit/total_metabolism)
 
-		var/metabolize_amount = R.metabolize(living_owner,src,volume,multiplier*living_owner.chem_power)
-		if(metabolize_amount)
-			add_reagent(r_id,-metabolize_amount,FALSE)
-			if(R.blood_toxicity_multiplier)
-				living_owner.blood_toxicity += metabolize_amount*R.blood_toxicity_multiplier
+	var/blood_toxicity_to_add = 0
+	//Second pass.
+	for(var/r_id in stored_reagents)
+		var/volume = stored_reagents[r_id]
+		var/reagent/R = REAGENT(r_id)
+		var/amount_metabolized = 0
+		switch(flags_metabolism)
+			if(REAGENT_METABOLISM_BLOOD)
+				amount_metabolized += R.on_metabolize_blood(living_owner,src,R.metabolism_blood*metabolism_multiplier,volume,multiplier*living_owner.chem_power)
+			if(REAGENT_METABOLISM_INGEST)
+				amount_metabolized += R.on_metabolize_stomach(living_owner,src,R.metabolism_stomach*metabolism_multiplier,volume,multiplier*living_owner.chem_power)
+			if(REAGENT_METABOLISM_SKIN)
+				amount_metabolized += R.on_metabolize_skin(living_owner,src,R.metabolism_skin*metabolism_multiplier,volume,multiplier*living_owner.chem_power)
+		if(R.overdose_threshold > 0 && volume >= R.overdose_threshold)
+			amount_metabolized += R.on_overdose(living_owner,src,amount_metabolized,volume,multiplier) //Chem power not considered here.
+		if(amount_metabolized > 0)
+			add_reagent(r_id,-amount_metabolized,FALSE)
+			if(R.blood_toxicity_multiplier != 0)
+				blood_toxicity_to_add += amount_metabolized*R.blood_toxicity_multiplier
+
+	living_owner.blood_toxicity += blood_toxicity_to_add
 
 	update_container(living_owner)
 
