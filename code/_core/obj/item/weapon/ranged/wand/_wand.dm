@@ -286,7 +286,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
 	wand_damage_multiplier = 1.1
-	wand_mana_multiplier = 1.1
+	wand_mana_multiplier = 0.90
 
 	tier = 1
 
@@ -297,7 +297,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
 	wand_damage_multiplier = 1.2
-	wand_mana_multiplier = 1.2
+	wand_mana_multiplier = 0.90
 
 	tier = 1
 
@@ -308,7 +308,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/twisted.dmi'
 
 	wand_damage_multiplier = 1.3
-	wand_mana_multiplier = 1.3
+	wand_mana_multiplier = 0.85
 
 	tier = 2
 
@@ -320,7 +320,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/profane.dmi'
 
 	wand_damage_multiplier = 1.4
-	wand_mana_multiplier = 1.4
+	wand_mana_multiplier = 0.80
 
 	tier = 3
 
@@ -331,7 +331,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/sage.dmi'
 
 	wand_damage_multiplier = 1.5
-	wand_mana_multiplier = 1.5
+	wand_mana_multiplier = 0.75
 
 	tier = 3
 
