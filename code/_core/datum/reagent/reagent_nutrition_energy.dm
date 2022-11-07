@@ -30,15 +30,16 @@
 
 	. = ..()
 
-	var/local_strength = adrenaline_strength * (container.flags_metabolism & REAGENT_METABOLISM_BLOOD ? 1 : 0.25)
-	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= local_strength)
-		L.add_status_effect(ADRENALINE,local_strength,-1)
+	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
+		var/local_strength = adrenaline_strength * (container.flags_metabolism & REAGENT_METABOLISM_BLOOD ? 1 : 0.25)
+		if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= local_strength)
+			L.add_status_effect(ADRENALINE,local_strength,-1)
 
 /reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
+	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
 		L.remove_status_effect(ADRENALINE)
 
 /reagent/nutrition/energy/grey_bull

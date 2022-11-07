@@ -305,11 +305,13 @@
 
 /reagent/medicine/dexalin/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 	. = ..()
-	L.blood_oxygen += 0.2
+	if(container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH))
+		L.blood_oxygen += 0.2 * .
 
 /reagent/medicine/dexalin/on_remove_living(var/mob/living/L,var/reagent_container/container)
 	. = ..()
-	L.blood_oxygen -= 0.2
+	if(container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH))
+		L.blood_oxygen -= 0.2 * .
 
 /reagent/medicine/tricordrazine
 	name = "Tricordrazine"
@@ -579,12 +581,12 @@
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
+	if( (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
 		L.add_status_effect(UNDYING,strength,-1)
 
 /reagent/medicine/inaprovaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
+	if( (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,UNDYING) <= strength)
 		L.remove_status_effect(UNDYING)

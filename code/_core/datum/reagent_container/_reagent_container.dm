@@ -83,7 +83,7 @@
 	switch(flags_metabolism)
 		if(REAGENT_METABOLISM_BLOOD)
 			metabolism_limit = 5
-		if(REAGENT_METABOLISM_INGEST)
+		if(REAGENT_METABOLISM_STOMACH)
 			metabolism_limit = 10
 		if(REAGENT_METABOLISM_SKIN)
 			metabolism_limit = 50
@@ -102,7 +102,7 @@
 		switch(flags_metabolism)
 			if(REAGENT_METABOLISM_BLOOD)
 				total_metabolism += R.metabolism_blood
-			if(REAGENT_METABOLISM_INGEST)
+			if(REAGENT_METABOLISM_STOMACH)
 				total_metabolism += R.metabolism_stomach
 			if(REAGENT_METABOLISM_SKIN)
 				total_metabolism += R.metabolism_skin
@@ -117,7 +117,7 @@
 		switch(flags_metabolism)
 			if(REAGENT_METABOLISM_BLOOD)
 				amount_metabolized += R.on_metabolize_blood(living_owner,src,R.metabolism_blood*metabolism_multiplier,volume,multiplier*living_owner.chem_power)
-			if(REAGENT_METABOLISM_INGEST)
+			if(REAGENT_METABOLISM_STOMACH)
 				amount_metabolized += R.on_metabolize_stomach(living_owner,src,R.metabolism_stomach*metabolism_multiplier,volume,multiplier*living_owner.chem_power)
 			if(REAGENT_METABOLISM_SKIN)
 				amount_metabolized += R.on_metabolize_skin(living_owner,src,R.metabolism_skin*metabolism_multiplier,volume,multiplier*living_owner.chem_power)

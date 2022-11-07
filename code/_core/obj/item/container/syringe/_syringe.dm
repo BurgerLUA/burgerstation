@@ -208,6 +208,9 @@
 			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object.name] with \the [src.name]!"))
 
 	else if(amount > 0) //Inject
+		var/atom/object_to_inject = object
+		if(is_organ(object_to_inject) && is_living(object_to_inject.loc)) //Targeting an organ. We're injecting into the blood stream.
+			object_to_inject = object_to_inject.loc
 		if(object.reagents && object.reagents.volume_current < object.reagents.volume_max) //We're not too picky about what we inject.
 			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount, caller = caller)
 			if(transfer_amount)

@@ -46,16 +46,15 @@
 
 	. = ..()
 
-	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_INGEST))
-		. *= 0.5
+	if(amount_added && (container.flags_metabolism & REAGENT_METABOLISM_STOMACH))
 		if(nutrition_amount)
-			L.add_nutrition(nutrition_amount*.)
+			L.add_nutrition(nutrition_amount*.*0.5)
 			if(nutrition_quality_amount < 0)
-				L.add_nutrition_fast(-nutrition_quality_amount*.)
+				L.add_nutrition_fast(-nutrition_quality_amount*.*0.5)
 		if(hydration_amount)
-			L.add_hydration(hydration_amount*.)
+			L.add_hydration(hydration_amount*.*0.5)
 		if(nutrition_quality_amount)
-			L.add_nutrition_quality(nutrition_quality_amount*.)
+			L.add_nutrition_quality(nutrition_quality_amount*.*0.5)
 
 
 /reagent/nutrition/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)

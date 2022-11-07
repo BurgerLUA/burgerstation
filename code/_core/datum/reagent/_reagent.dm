@@ -19,7 +19,7 @@
 	var/metabolism_skin = 1 //How many units of the reagent to metabolize per second.
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
 
-	var/flags_metabolism = REAGENT_METABOLISM_INGEST | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN
+	var/flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN
 
 	var/liquid = 0 //What percentage of this reagent is a liquid? Accepts values -1 to 1, where -1 is dry as fuck and 1 is wet as fuck.
 
@@ -110,7 +110,7 @@
 	switch(container.flags_metabolism)
 		if(REAGENT_METABOLISM_BLOOD)
 			. += on_metabolize_blood(living_owner,container,metabolism_blood,starting_volume,multiplier)
-		if(REAGENT_METABOLISM_INGEST)
+		if(REAGENT_METABOLISM_STOMACH)
 			. += on_metabolize_stomach(living_owner,container,metabolism_stomach,starting_volume,multiplier)
 		if(REAGENT_METABOLISM_SKIN)
 			. += on_metabolize_skin(living_owner,container,metabolism_skin,starting_volume,multiplier)

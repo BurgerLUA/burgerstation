@@ -53,14 +53,15 @@
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(owner,PAINKILLER) <= power)
+
+	if( (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(owner,PAINKILLER) <= power)
 		owner.add_status_effect(PAINKILLER,power,-1)
 
 /reagent/nutrition/ethanol/on_remove_living(var/mob/living/owner,var/reagent_container/container)
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(owner,PAINKILLER) <= power)
+	if( (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(owner,PAINKILLER) <= power)
 		owner.remove_status_effect(PAINKILLER)
 
 /reagent/nutrition/ethanol/fernet

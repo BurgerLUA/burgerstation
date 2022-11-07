@@ -35,6 +35,7 @@
 		var/blood_type = "N/A"
 		var/blood_volume = "N/A"
 		var/blood_oxygen = "N/A"
+		var/blood_toxicity = "N/A"
 		var/reagent_printout = "N/A"
 		if(is_living(target))
 			var/mob/living/L = target
@@ -49,6 +50,7 @@
 				blood_type = BT.name
 				blood_volume = "[L.blood_volume] ([FLOOR(L.blood_volume/L.blood_volume_max,0.01)*100]%)"
 				blood_oxygen = "[FLOOR((L.blood_volume/L.blood_volume_max) + L.blood_oxygen,0.01)*100]%"
+				blood_toxicity = "[L.blood_toxicity]([max(0,1 - L.chem_power)*100]%)"
 
 		if(target.reagents && length(target.reagents.stored_reagents))
 			reagent_printout = ""
@@ -56,7 +58,7 @@
 				var/reagent/R = REAGENT(r_id)
 				var/volume = target.reagents.stored_reagents[r_id]
 				reagent_printout += "[R.name]: [volume]u<br>"
-		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Reagents (Blood):<br>[reagent_printout]"
+		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
 		caller.to_chat(.)
 		if(is_living(target))
 			var/mob/living/L = target

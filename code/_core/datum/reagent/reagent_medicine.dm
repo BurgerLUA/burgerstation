@@ -14,7 +14,7 @@
 
 	. = ..()
 
-	if(!L.dead && experience_per_unit*. > 0 && is_player(caller) && caller.client)
+	if(!L.dead && experience_per_unit*. > 0 && (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && is_player(caller) && caller.client)
 		caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
 
 /reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
@@ -46,14 +46,14 @@
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
+	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
 		L.add_status_effect(ADRENALINE,strength,-1)
 
 /reagent/medicine/adrenaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
+	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
 		L.remove_status_effect(ADRENALINE)
 
 /reagent/medicine/adrenaline/epinephrine
@@ -73,7 +73,7 @@
 
 	. = ..()
 
-	if(. + current_volume >= 10 && L.dead)
+	if(. + current_volume >= 10 && L.dead && (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)))
 		if(!L.check_death() && L.is_player_controlled() && !L.suicide)
 			L.revive()
 			L.visible_message(span("danger","\The [L.name] jolts to life!"))
@@ -429,7 +429,7 @@
 
 /reagent/medicine/space_prussian_blue
 	name = "Space Prussian Blue"
-	desc = "A relatively uncommon but inexpensive pigment that acts as a great dye as well as an excellent way to treat radiation poisoning caused by consuming radioactive substances. Only works when ingested."
+	desc = "A relatively uncommon but inexpensive pigment that acts as a great dye as well as an excellent way to treat radiation poisoning caused by consuming radioactive substances. Only works when STOMACHed."
 	color = "#1D2A60"
 	alpha = 255
 	flavor = "salty bananas"
