@@ -1,7 +1,7 @@
 /enchantment/fire
 	name = "Blaze"
 	desc = "Sets targets on fire."
-	enchanting_phrase = "Woah Momma, That's a spicy meatball!"
+	enchanting_phrase = "Woah Momma, Thats a spicy meatball!"
 	cost = 75
 
 /enchantment/fire/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
@@ -27,7 +27,7 @@
 /enchantment/stun
 	name = "Stun"
 	desc = "Has a chance to stun opponents."
-	enchanting_phrase = "Fucking stunlockers are fucking noobs, I'm tired of this shit!"
+	enchanting_phrase = "Fucking stunlockers are fucking noobs, Im tired of this shit!"
 	cost = 200
 
 /enchantment/stun/on_hit(var/atom/attacker,var/atom/victim,var/obj/item/weapon/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)

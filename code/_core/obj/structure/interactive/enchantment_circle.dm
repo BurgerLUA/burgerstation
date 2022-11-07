@@ -133,9 +133,23 @@
 	if(is_living(speaker) && active && stored_book && text)
 		var/text_to_compare = sanitize(lowertext(stored_book.enchanting_phrase))
 		var/language/L = SSlanguage.all_languages[LANGUAGE_LIZARD]
+		
+		//Removal of moff accent
+		var/antimoth = list(
+			"ø" = "o",
+			"æ" = "ae",
+			"å" = "a"
+		)
+		//stupid but effective removal of lizard accent
+		var/antilizard = list(
+			"sss" = "s"
+		)
+		var/moffnoaccent = sanitize(lowertext(replace_characters(text,antimoth)))
+		var/lizardnoaccent = sanitize(lowertext(replace_characters(text,antilizard)))
+
 		var/converted_text = sanitize(L.process_text(speaker,lowertext(stored_book.enchanting_phrase)))
 
-		if(text_to_compare == lowertext(text) || text_to_compare == lowertext(language_text) || converted_text == lowertext(text) || converted_text == lowertext(language_text))
+		if(text_to_compare == lowertext(text) || text_to_compare == lowertext(language_text) || converted_text == lizardnoaccent || converted_text == lowertext(lizardnoaccent) || converted_text == moffnoaccent || converted_text == lowertext(moffnoaccent))
 			try_enchant(speaker)
 
 	return ..()

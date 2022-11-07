@@ -27,6 +27,9 @@
 /obj/projectile/bullet/laser/sniper
 	icon_state = "sniper"
 
+/obj/projectile/bullet/laser/opticor
+	icon_state = "sniper"
+	
 /obj/projectile/bullet/spit
 	icon = 'icons/obj/projectiles/spit.dmi'
 	icon_state = "spit"
