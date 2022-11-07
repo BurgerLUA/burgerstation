@@ -1,4 +1,4 @@
-/obj/item/container/syringe/hypospray
+/obj/item/container/syringe/hypodermic/hypospray
 	name = "hypospray"
 	desc = ";CMO IS A CHANGELING!!"
 	desc_extended = "A bulky, sterile, reusuable air-needle autoinjector for rapid administration of drugs to patients. Injects up to 15 units at a time, almost instantly."
@@ -19,7 +19,7 @@
 
 	icon_count = 13
 
-/obj/item/container/syringe/hypospray/combat
+/obj/item/container/syringe/hypodermic/hypospray/combat
 	name = "combat hypospray"
 	desc = ";CMO IS A CHANGELING!!"
 	desc_extended = "A sterile, reusuable air-needle autoinjector for rapid administration of drugs to patients. About half the size of a regular hypospray, and just as powerful. Injects up to 30 units at a time, instantly."

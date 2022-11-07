@@ -74,7 +74,7 @@
 		/obj/item/container/healing/nanopaste,
 		/obj/item/container/blood_pack/full/rad_be_gone,
 		/obj/item/storage/pillbottle/assprin,
-		/obj/item/container/syringe/hypospray
+		/obj/item/container/syringe/hypodermic/hypospray
 
 	)
 	markup = 0.75

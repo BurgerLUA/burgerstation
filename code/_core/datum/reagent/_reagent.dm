@@ -57,6 +57,7 @@
 
 	var/abstract = FALSE //Set to true so its not calculated in reagent additions. Note that abstract reagents can only be removed directly.
 
+	var/bypass_small_limit = FALSE //Set to true if this reagent ignores the metabolism cap of 1u minimum.
 
 /reagent/New(var/desired_loc)
 

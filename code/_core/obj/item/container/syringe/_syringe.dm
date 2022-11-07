@@ -4,15 +4,11 @@
 	desc_extended = "Holds reagents. Can be toggled to inject or draw."
 	crafting_id = "syringe"
 
-	icon = 'icons/obj/item/container/syringe.dmi'
-	icon_state = "syringe"
-	var/icon_count = 7
-
 	reagents = /reagent_container/syringe/
 
-	var/inject_amount_desired = 0 //Read only. Don't change this.
-	var/injecting = FALSE //Read only. Don't change this.
-	var/spam_fix_time = 0 //Read only. Don't change this.
+	var/inject_amount_desired = 5
+	var/injecting = FALSE
+	var/spam_fix_time = 0
 
 	//Has special snowflake code that handles this. Don't change these.
 	allow_reagent_transfer_to = FALSE
@@ -23,12 +19,18 @@
 
 	var/injection_sound = null //Optional injection sound to use.
 	var/injection_time = SECONDS_TO_DECISECONDS(1) //Time in deciseconds to take when performing an injection. Draws are double this. Self injections are half this.
-	var/inject_amount_max = INFINITY //Set to a value other than infinity to add a hard limit to injections.
+	var/inject_amount_max = INFINITY //Set to a value other than infinity to add a hard limit to injections. Limit is then limited again by the reagent's container.
 	var/can_inject = TRUE //Set to true if this can inject into other beings.
 	var/can_draw = TRUE //Set to true if this can draw reagents from beings or objects.
 	var/adjustable = TRUE //Set to true if the injection amount can change. Otherwise, uses inject_amount_max.
 	var/stealthy = FALSE //Set to true if the injection doesn't alert the victim, other than the "tiny prick".
 	var/quality_reduction_on_use = 15 //How much quality (out of 100) to take away per use.
+
+/obj/item/container/syringe/Finalize()
+	. = ..()
+	inject_amount_max = min(inject_amount_max,reagents.volume_max)
+	if(!inject_amount_desired)
+		inject_amount_desired = inject_amount_max
 
 /obj/item/container/syringe/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
@@ -55,7 +57,6 @@
 
 	inject_amount_desired += fixed_delta
 	if(inject_amount_desired > inject_amount_max)
-		//Cannot go higher
 		inject_amount_desired = inject_amount_max
 	else if(inject_amount_desired < 1)
 		//Cannot go lower
@@ -211,8 +212,8 @@
 		var/atom/object_to_inject = object
 		if(is_organ(object_to_inject) && is_living(object_to_inject.loc)) //Targeting an organ. We're injecting into the blood stream.
 			object_to_inject = object_to_inject.loc
-		if(object.reagents && object.reagents.volume_current < object.reagents.volume_max) //We're not too picky about what we inject.
-			var/transfer_amount = reagents.transfer_reagents_to(object.reagents,amount, caller = caller)
+		if(object_to_inject.reagents && object_to_inject.reagents.volume_current + amount <= object_to_inject.reagents.volume_max) //We're not too picky about what we inject.
+			var/transfer_amount = reagents.transfer_reagents_to(object_to_inject.reagents,amount, caller = caller)
 			if(transfer_amount)
 				if(injection_sound)
 					play_sound(injection_sound,get_turf(src))

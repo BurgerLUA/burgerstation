@@ -57,6 +57,8 @@
 			for(var/r_id in target.reagents.stored_reagents)
 				var/reagent/R = REAGENT(r_id)
 				var/volume = target.reagents.stored_reagents[r_id]
+				if(!R.bypass_small_limit && volume < 1) //Ignore small reagents.
+					continue
 				reagent_printout += "[R.name]: [volume]u<br>"
 		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
 		caller.to_chat(.)
