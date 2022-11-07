@@ -1743,6 +1743,7 @@
 #include "code\_core\obj\item\weapon\ranged\laser\laser_rifle.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\laser_sniper.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\nanotrasen_turret.dm"
+#include "code\_core\obj\item\weapon\ranged\laser\opticor.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\sentry.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\syndicate_turret.dm"
 #include "code\_core\obj\item\weapon\ranged\laser\fed\_fed.dm"

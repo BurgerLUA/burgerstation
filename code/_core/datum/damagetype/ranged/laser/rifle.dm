@@ -46,3 +46,17 @@
 		RAD = 10
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE*5
+
+/damagetype/ranged/laser/rifle/opticor
+	attack_damage_base = list(
+		LASER = 150,
+		HEAT = 25,
+		RAD = 10
+	)
+	attack_damage_penetration = list(
+		LASER = 200,
+		HEAT = 80,
+		RAD = 10
+	)
+	falloff = VIEW_RANGE + ZOOM_RANGE*5
+	allow_glancing_blows = TRUE
