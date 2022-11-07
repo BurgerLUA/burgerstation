@@ -100,7 +100,8 @@
 		if(!(flags_metabolism & R.flags_metabolism)) //Remove reagents that serve no purpose.
 			add_reagent(r_id,-volume,FALSE)
 			continue
-		if(!R.bypass_small_limit && volume < 1) //Ignore small reagents.
+		if(!R.bypass_small_limit && volume < 1) //Ignore small reagents and remove them, slowly.
+			add_reagent(r_id,-REAGENT_ROUNDING,FALSE)
 			continue
 		var/amount_to_metabolize = 0
 		switch(flags_metabolism)
