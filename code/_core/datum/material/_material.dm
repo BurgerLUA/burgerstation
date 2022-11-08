@@ -553,6 +553,31 @@
 		SANITY = INFINITY
 	)
 
+/material/uranium_235
+	name = "uranium_235"
+	color = "#5bf116"
+
+	value_per_unit = 75
+
+	armor = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 50,
+		LASER = 25,
+		ARCANE = 25,
+		HEAT = 100,
+		COLD = 100,
+		BOMB = 100,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
 /material/titanium
 	name = "titanium"
 	color = COLOR_TITANIUM

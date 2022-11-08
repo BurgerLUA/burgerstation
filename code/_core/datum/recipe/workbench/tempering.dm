@@ -1,7 +1,7 @@
 /recipe/workbench/ranged_to_bow_kit
 	name = "ranged to bow"
 
-	required_items = list("obj/item/tempering/quality/ranged" = 1,
+	required_items = list("/obj/item/tempering/quality/ranged" = 1,
 	"/obj/item/weapon/melee/tool/screwdriver" = 1)
 
 	no_consume_ids = list("/obj/item/weapon/melee/tool/screwdriver")
@@ -12,7 +12,7 @@
 	
 	name = "sewing kit"
 
-	required_items = list("obj/item/material/rod/steel" = 1,
+	required_items = list("/obj/item/material/rod/steel" = 1,
 	"/obj/item/crafting/ingredient/thread/synthcloth" = 1)
 
 
@@ -34,7 +34,7 @@
 		"c3" = null
 	)
 
-	product = /obj/item/tempering/quality/melee
+	product = list("/obj/item/tempering/quality/melee" = 100)
 
 	secret = TRUE
 /recipe/workbench/repair_consumable
@@ -44,4 +44,4 @@
 	"/obj/item/crafting/ingredient/part/electronics" = 1,
 	"/obj/item/weapon/melee/toolbox" = 1)
 
-	product = /obj/item/tempering/quality/lesser_consumable
+	product = list("/obj/item/tempering/quality/lesser_consumable" = 100)

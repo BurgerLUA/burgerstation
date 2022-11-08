@@ -16,8 +16,8 @@
 		"c3" = null
 	)
 
-	product = /obj/item/weapon/ranged/thrown/shuriken
-	amount = 10
+	product = list("/obj/item/weapon/ranged/thrown/shuriken" = 100)
+	amount = list(10)
 /recipe/workbench/kitchen_shuriken
 
 	name = "kitchen shuriken"
@@ -36,5 +36,5 @@
 		"c3" = null
 	)
 
-	product = /obj/item/weapon/ranged/thrown/kitchen_shuriken
-	amount = 10
+	product = list("/obj/item/weapon/ranged/thrown/kitchen_shuriken" = 100)
+	amount = list(10)

@@ -2,7 +2,7 @@
 	name = "Recipe for disaster"
 	desc = "A used piece of paper"
 	desc_extended = "A recipe for something, obscured by time."
-	data = list()
+	data = list("Its just garbled text and scribbles.")
 /obj/item/paper/recipe/Generate()
 	. = ..()
 	var/a1 = "-"
@@ -81,10 +81,20 @@
 			for(var/reagent_path in stored_recipe.reagents_to_add)
 				var/reagent/reagent = text2path_safe(reagent_path)
 				data += list("Product reagent: [initial(reagent.name)] x [stored_recipe.reagents_to_add[reagent_path]]")
-
-		var/product_name = initial(stored_recipe.product.name)
-		name = "Recipe for [product_name]"
-		desc = "Some sort of recipe?"
-		desc_extended = "Looks like a recipe for a [product_name],whatever that is.Made in the [stored_recipe.recipe_type], it makes [stored_recipe.amount]."
+		if(length(stored_recipe.product) == 1)
+			var/product_path = stored_recipe.product[1]
+			var/product_name = initial(stored_recipe.product[product_path].name)
+			var/product_chance = stored_recipe.product[product_path]
+			name = "Recipe for [product_name]"
+			desc = "Some sort of recipe?"
+			desc_extended = "Looks like a recipe for a [product_name],whatever that is.Made in the [stored_recipe.recipe_type], it makes [stored_recipe.amount[1]] at a [product_chance]% chance."
+		else
+			for(var/i = 1,i <= length(stored_recipe.product),i++)
+				var/product_path = stored_recipe.product[i]
+				var/product_name = initial(stored_recipe.product[product_path].name)
+				var/product_chance = stored_recipe.product[product_path]
+				name = "Recipe for Many"
+				desc = "Thats a lot of items."
+				desc_extended += "It looks like it makes [product_name], at a [product_chance]% chance. Makes [stored_recipe.amount[i]]."
 		
 		

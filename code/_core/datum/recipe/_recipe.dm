@@ -45,26 +45,30 @@ And the code would look like this:
 	//List of required items SOMEWHERE in the table. Use path of item as String
 	var/list/required_items = list()
 
-	var/obj/item/product // What does it make? Path not in string.
-	var/amount = 1 //How many? Only works if item.amount_max > 1. DOES NOT CHECK MAX STACK SIZE.
+	var/list/product = list() // What does it make = chance to make out of 100. More than one item will drop the previous on the ground.
+	var/list/amount = list(1) //How many? First product, then second, third... so on. Doesnt check max stack size.
+	var/list/reagents_to_add = list() //Reagent to fill resulting container with, if any. Reagent as string = amount, Doesnt check if the container can HOLD that much though.
+	var/material_id_result = null  //What material ID should the resulting item have? Leave null if it doesnt have a material_id! Only works for /obj/item/material/ decendents
+	var/list/fail_product = list() // If we fail the craft, what should we make? Weighted list, can be null.
+	var/fail_amount = 1 //Fail amount of items, because it only gives one type of item, no need to worry about a list.
+	var/list/fail_reagents_to_add = list() //Same as above, but for fail products. Won't try to fill something that can't hold anything.
 	//Result icon and icon state.
 	var/icon = ""
 	var/icon_state = ""
 	
 	var/list/no_consume_ids = list() //What types shouldnt be consumed on craft?
 
-	var/list/reagents_to_add = list() //Reagent to fill resulting container with, if any. Reagent as string = amount, Doesnt check if the container can HOLD that much though.
+	
 
 	var/secret = FALSE //Its a secret to everybody. Won't show up in "recipe" loot items.
 
 /recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
-
+	return TRUE
+	
+/recipe/proc/on_fail(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
 	return TRUE
 
 /recipe/proc/check_recipe(var/list/item_table,var/obj/item/crafting/crafting_table)
-
-	if(crafting_table.crafting_id != recipe_type)
-		return list()
 
 	var/list/used_items = list()
 

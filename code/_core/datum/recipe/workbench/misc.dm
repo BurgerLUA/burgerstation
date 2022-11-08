@@ -6,7 +6,7 @@
 	"/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen" = 1)
 
 	secret = TRUE
-	product = /obj/item/firing_pin/electronic/iff/nanotrasen/honkmother
+	product = list("/obj/item/firing_pin/electronic/iff/nanotrasen/honkmother" = 100)
 
 /recipe/workbench/recipe_binder
 
@@ -27,4 +27,4 @@
 	)
 
 
-	product = /obj/item/storage/recipe_binder
+	product = list("/obj/item/storage/recipe_binder" = 100)

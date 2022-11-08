@@ -104,34 +104,56 @@
 
 	for(var/k in SSrecipe.all_recipes)
 		var/recipe/R = k
-		/*
-		if(initial(R.recipe_type) == crafting_type && crafting_type)
-			caller.to_chat(span("warning","[initial(R.recipe_type)] isnt == [crafting_type]! Skipping!"))
+		if(R.recipe_type != crafting_type && crafting_type)
 			continue
-		*/
 		var/list/recipe_check = R.check_recipe(item_table,src)
 		if(length(recipe_check)) //We can craft
-			var/obj/item/I3 = new R.product(caller.loc)
-			INITIALIZE(I3)
-			GENERATE(I3)
-			FINALIZE(I3)
-			if(istype(I3,/obj/item/container) && length(R.reagents_to_add))
-				var/obj/item/container/IC3 = I3
-				for(var/reagent_text in R.reagents_to_add)
-					var/reagent/reagent = text2path_safe(reagent_text)
-					IC3.reagents.add_reagent(reagent,R.reagents_to_add[reagent_text])
-			product_slot.add_object(I3,caller,FALSE,TRUE)
-			if(R.amount > 1 && I3.amount_max > 1)
-				I3.amount = R.amount
-			for(var/obj/item/I in recipe_check)
-				if(recipe_check[I])
-					continue
-				else
-					I.add_item_count(-1)
-					
-			R.on_create(caller,src,I3)
-
-			return I3
-
+			for(var/i = 1, i <= length(R.product),i++)
+				var/product_id = R.product[i]
+				if(prob(R.product[product_id])) // If craft succeeds.
+					var/obj/item/product = text2path_safe(product_id)
+					var/obj/item/I3 = new product(caller.loc)
+					INITIALIZE(I3)
+					GENERATE(I3)
+					FINALIZE(I3)
+					if(istype(I3,/obj/item/container) && length(R.reagents_to_add))
+						var/obj/item/container/IC3 = I3
+						for(var/reagent_text in R.reagents_to_add)
+							var/reagent/reagent = text2path_safe(reagent_text)
+							IC3.reagents.add_reagent(reagent,R.reagents_to_add[reagent_text])
+					if(!(product_slot.get_top_object()))
+						product_slot.add_object(I3,caller,FALSE,TRUE)
+					if(R.amount[i] > 1 && I3.amount_max > 1)
+						I3.amount = R.amount[i]
+					for(var/obj/item/I in recipe_check)
+						if(recipe_check[I])
+							continue
+						else
+							I.add_item_count(-1)
+					R.on_create(caller,src,I3)
+					return I3
+				else //Craft fails.
+					caller.to_chat(span("warning","You make a mistake..."))
+					if(R.fail_product)
+						var/IFP_P = pickweight(R.fail_product)
+						var/obj/item/IFP = new IFP_P(caller.loc)
+						INITIALIZE(IFP)
+						GENERATE(IFP)
+						FINALIZE(IFP)
+						if(istype(IFP,/obj/item/container) && length(R.fail_reagents_to_add))
+							var/obj/item/container/IC3 = IFP
+							for(var/reagent_text in R.fail_reagents_to_add)
+								var/reagent/reagent = text2path_safe(reagent_text)
+								IC3.reagents.add_reagent(reagent,R.fail_reagents_to_add[reagent_text])
+						product_slot.add_object(IFP,caller,FALSE,TRUE)
+						if(R.fail_amount > 1 && IFP.amount_max > 1)
+							IFP.amount = R.fail_amount
+						for(var/obj/item/I in recipe_check)
+							if(recipe_check[I])
+								continue
+							else
+								I.add_item_count(-1)
+						R.on_fail(caller,src,IFP)	
+						return IFP
 	caller.to_chat(span("warning","You fail to craft anything..."))
 	return FALSE

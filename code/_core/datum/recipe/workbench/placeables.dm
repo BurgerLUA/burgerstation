@@ -16,5 +16,5 @@
 		"c3" = null
 	)
 
-	product = /obj/item/deployable/barricade
-	amount = 3
+	product = list("/obj/item/deployable/barricade" = 100)
+	amount = list(3)
