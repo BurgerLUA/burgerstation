@@ -105,11 +105,11 @@
 	container_max_size = SIZE_2
 
 	container_whitelist = list(
-		/obj/item/container/syringe/hypospray/combat,
+		/obj/item/container/syringe/hypodermic/hypospray/combat,
 		/obj/item/container/simple/beaker
 	)
 
 /obj/item/storage/kit/small/syndicate/filled/fill_inventory()
-	new /obj/item/container/syringe/hypospray/combat(src)
+	new /obj/item/container/syringe/hypodermic/hypospray/combat(src)
 	new /obj/item/container/simple/beaker/bottle/medium/morphine(src)
 	. = ..()

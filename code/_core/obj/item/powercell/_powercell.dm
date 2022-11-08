@@ -1,6 +1,6 @@
 /obj/item/powercell/
 	name = "standard power cell"
-	desc = "Do not ingest."
+	desc = "Do not STOMACH."
 	desc_extended = "A power cell for use in recharging energy weaponry. This one has a rating of 10000 megawatts."
 	icon = 'icons/obj/item/cells.dmi'
 	icon_state = "cell_basic"
@@ -126,7 +126,7 @@
 
 /obj/item/powercell/recharging
 	name = "fusion power cell"
-	desc = "Do not ingest."
+	desc = "Do not STOMACH."
 	desc_extended = "A power cell for use in recharging energy weaponry. This one has a rating of 10000 megawatts, and self-charges"
 	icon = 'icons/obj/item/cells.dmi'
 	icon_state = "cell_recharging"
