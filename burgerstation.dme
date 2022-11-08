@@ -1520,6 +1520,7 @@
 #include "code\_core\obj\item\material\icon.dm"
 #include "code\_core\obj\item\material\ingot.dm"
 #include "code\_core\obj\item\material\ore.dm"
+#include "code\_core\obj\item\material\pellets.dm"
 #include "code\_core\obj\item\material\rod.dm"
 #include "code\_core\obj\item\material\sandstone.dm"
 #include "code\_core\obj\item\material\shard.dm"
