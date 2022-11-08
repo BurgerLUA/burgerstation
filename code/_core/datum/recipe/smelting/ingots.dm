@@ -95,3 +95,10 @@
 	required_items = list("/obj/item/material/ingot/uranium" = 2,"/obj/item/material/ingot/plasma" = 1)
 	product = list("/obj/item/material/ingot/uranium_235" =75)
 	fail_product = list("/obj/item/material/ingot/uranium" = 100)
+
+/recipe/smelter/brass
+	name = "smelt brass"
+	desc = "Smelt zinc and copper into brass ingots."
+	required_items = list("/obj/item/material/ingot/copper" = 2,"/obj/item/material/ingot/zinc" = 1)
+	product = list("/obj/item/material/ingot/brass" =100)
+	amount = list(3)

@@ -14,6 +14,11 @@
 	material_id = /material/iron
 	desc = "Fe-ic huh?"
 
+/obj/item/material/ingot/brass
+	name = "brass ingot"
+	material_id = /material/brass
+	desc = "Good for bullet casings."
+
 /obj/item/material/ingot/cobalt
 	name = "cobalt ingot"
 	material_id = /material/cobalt

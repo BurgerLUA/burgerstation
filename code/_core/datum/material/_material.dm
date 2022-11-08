@@ -339,6 +339,31 @@
 		SANITY = INFINITY
 	)
 
+/material/brass
+	name = "brass"
+	color = "#e7a831"
+	value_per_unit = 15
+
+	armor = list( //someone make this better.
+		BLADE = 100,  
+		BLUNT = 100, 
+		PIERCE = 100, 
+		LASER = 125, 
+		ARCANE = 0,
+		HEAT = 75,
+		COLD = 75,
+		BOMB = 25,
+		BIO = INFINITY,
+		RAD = INFINITY,
+		HOLY = INFINITY,
+		DARK = INFINITY,
+		FATIGUE = INFINITY,
+		ION = INFINITY,
+		PAIN = INFINITY,
+		SANITY = INFINITY
+	)
+
+
 /material/nickel
 	name = "nickel"
 	color = COLOR_NICKEL

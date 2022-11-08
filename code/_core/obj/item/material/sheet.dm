@@ -46,6 +46,12 @@
 /obj/item/material/sheet/steel
 	name = "steel sheet"
 	material_id = /material/steel
+	desc = "Builders best friend"
+
+/obj/item/material/sheet/brass
+	name = "brass sheet"
+	material_id = /material/brass
+	desc = "Rat-var?"
 
 /obj/item/material/sheet/glass
 	name = "glass sheet"

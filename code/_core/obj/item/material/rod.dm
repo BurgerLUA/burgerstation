@@ -59,6 +59,11 @@
 	material_id = /material/iron
 	desc = "I.AM.IRON-ROD."
 
+/obj/item/material/rod/brass
+	name = "brass rod"
+	material_id = /material/brass
+	desc = "Great for cults!"
+
 /obj/item/material/rod/cobalt
 	name = "cobalt rod"
 	material_id = /material/cobalt

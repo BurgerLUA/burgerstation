@@ -9,6 +9,11 @@
 	desc = "Ive got balls of steel"
 	material_id = /material/steel
 
+/obj/item/material/pellets/brass
+	name = "brass pellets"
+	desc = "Ive got balls of... brass?"
+	material_id = /material/brass
+
 /obj/item/material/pellets/glass
 	name = "glass pellets"
 	desc = "Marbles anyone?"
