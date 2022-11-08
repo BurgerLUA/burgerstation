@@ -88,3 +88,10 @@
 	desc = "smelt nickel into nickel ingots."
 	required_items = list("/obj/item/material/ore/nickel" = 3)
 	product = list("/obj/item/material/ingot/nickel" =100)
+
+/recipe/smelter/uranium_235
+	name = "alloy uranium plasma"
+	desc = "alloy uranium and plasma for uranium 235"
+	required_items = list("/obj/item/material/ingot/uranium" = 2,"/obj/item/material/ingot/plasma" = 1)
+	product = list("/obj/item/material/ingot/uranium_235" =75)
+	fail_product = list("/obj/item/material/ingot/uranium" = 100)
