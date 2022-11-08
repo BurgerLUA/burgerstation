@@ -17,15 +17,15 @@
 	value *= 1+(damage_per_unit*3)
 	return ..()
 
-/reagent/toxin/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/toxin/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	plant?.health?.adjust_loss_smart(tox=-.*damage_per_unit*2*multiplier)
 
-/reagent/toxin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/toxin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.tox_regen_buffer -= .*damage_per_unit*0.75*multiplier
 
-/reagent/toxin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/toxin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.tox_regen_buffer -= .*damage_per_unit*multiplier
 

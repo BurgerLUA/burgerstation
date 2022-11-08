@@ -109,7 +109,7 @@
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()
 	icon_state = "[initial(icon_state)][rand(1,4)]"
-	new /obj/item/container/syringe/hypospray/combat(src)
+	new /obj/item/container/syringe/hypodermic/hypospray/combat(src)
 	new /obj/item/container/simple/beaker/bottle/medium/bicaridine(src)
 	new /obj/item/container/simple/beaker/bottle/medium/kelotane(src)
 	new /obj/item/container/simple/beaker/bottle/medium/dylovene(src)

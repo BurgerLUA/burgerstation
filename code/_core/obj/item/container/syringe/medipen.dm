@@ -8,6 +8,7 @@
 
 	reagents = /reagent_container/syringe/medipen
 
+	inject_amount_desired = INFINITY
 	injection_sound = 'sound/effects/epi.ogg'
 
 	can_draw = FALSE

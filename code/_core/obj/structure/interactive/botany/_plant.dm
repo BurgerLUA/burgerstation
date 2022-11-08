@@ -176,7 +176,7 @@
 		for(var/r_id in reagents.stored_reagents)
 			var/reagent/R = REAGENT(r_id)
 			var/volume = reagents.stored_reagents[r_id]
-			var/amount_metabolized = R.on_metabolize_plant(src,reagents,volume,1)
+			var/amount_metabolized = R.on_metabolize_plant(src,reagents,max(R.metabolism_stomach,R.metabolism_blood,R.metabolism_skin),volume,1)
 			if(amount_metabolized > 0)
 				total_metabolized -= reagents.add_reagent(r_id,-amount_metabolized,FALSE,FALSE,null)
 
