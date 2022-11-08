@@ -43,7 +43,6 @@
 	name = "diamond ingot"
 	material_id = /material/diamond
 	desc = "...how."
-	desc_extended += "You have no clue how it formed like this."
 
 /obj/item/material/ingot/uranium
 	name = "uranium ingot"
