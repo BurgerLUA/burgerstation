@@ -107,7 +107,7 @@
 
 /obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P,var/params)
 	var/turf/T = get_turf(P)
-	if(src.value_current >= src.value_max)
+	if(src.value_current < src.value_max)
 		P.to_chat(span("warning","You feel it would be unwise to try to turn in a contract that isn't complete yet!"))
 		return FALSE
 	else
