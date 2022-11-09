@@ -270,7 +270,7 @@ var/global/list/debug_verbs = list(
 		try
 			var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 			if(mobdata)
-				mobdata.save_character(P,force = TRUE)
+				mobdata.save_character(P)
 			to_chat(span("notice","Saved [P.get_debug_name()]."))
 		catch(var/exception/e)
 			to_chat(span("danger","Could not save [P.get_debug_name()] due to a runtime error!"))
