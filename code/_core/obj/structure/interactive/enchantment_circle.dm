@@ -104,7 +104,7 @@
 
 	var/obj/item/soulgem/soulgem = locate() in stored_items
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
-	if(weapon_to_enchant && !(!weapon_to_enchant.enchantment_whitelist[stored_book.stored_enchantment] || !weapon_to_enchant.enchantment_whitelist["ALL"]))
+	if(weapon_to_enchant && !(!weapon_to_enchant.enchantment_whitelist[stored_book.stored_enchantment] || !weapon_to_enchant.enchantment_whitelist["ALL"]) && (weapon_to_enchant.enchantment_blacklist["ALL"] || weapon_to_enchant.enchantment_blacklist[stored_book.stored_enchantment]))
 		weapon_to_enchant = null
 
 	if(!soulgem || !soulgem.total_charge || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
@@ -117,7 +117,7 @@
 	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem)
 	weapon_to_enchant.visible_message(span("notice","\The [weapon_to_enchant.name] shines brightly as it's new enchantment is applied."))
 	caller.add_skill_xp(SKILL_MAGIC_ENCHANTING,experience_to_give)
-	if(soulgem.is_star)
+	if(soulgem.do_not_consume)
 		soulgem.total_charge = 0
 	else
 		qdel(soulgem)

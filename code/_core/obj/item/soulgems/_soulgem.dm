@@ -7,7 +7,7 @@
 
 	var/total_charge = 0
 	var/total_capacity = 0
-	var/is_star = FALSE //Does this get consumed? Or merely emptied on craft. Only used for Azuras Star
+	var/do_not_consume = FALSE //Does this get consumed? Or merely emptied on craft. Only used for Azuras Star
 
 	value = 0
 
@@ -44,8 +44,8 @@
 	. = ..()
 	name = initial(name)
 	icon = initial(icon)
-	if(is_star)
-		name = "Azura's Star"
+	if(do_not_consume)
+		name = "Unbreaking [name]"
 		icon_state = "azuras"
 	else
 		switch(total_capacity)
@@ -65,34 +65,18 @@
 				name = "godly [name]"
 				icon_state = "godly"
 	if(total_charge > 0)
-
-		if(is_star)
-			switch(total_charge)
-				if(0 to SOUL_SIZE_COMMON)
-					name = "[name] (common)"
-				if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
-					name = "[name] (uncommon)"
-				if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
-					name = "[name] (rare)"
-				if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
-					name = "[name] (mystic)"
-				if(SOUL_SIZE_MYSTIC to INFINITY)
-					name = "[name] (godly)"
-			icon_state = "azuras_1"
-		
-		else
-			switch(total_charge)
-				if(0 to SOUL_SIZE_COMMON)
-					name = "[name] (common)"
-				if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
-					name = "[name] (uncommon)"
-				if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
-					name = "[name] (rare)"
-				if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
-					name = "[name] (mystic)"
-				if(SOUL_SIZE_MYSTIC to INFINITY)
-					name = "[name] (godly)"
-			icon_state = "[icon_state]_1"
+		switch(total_charge)
+			if(0 to SOUL_SIZE_COMMON)
+				name = "[name] (common)"
+			if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
+				name = "[name] (uncommon)"
+			if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
+				name = "[name] (rare)"
+			if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
+				name = "[name] (mystic)"
+			if(SOUL_SIZE_MYSTIC to INFINITY)
+				name = "[name] (godly)"
+		icon_state = "[icon_state]_1"
 	else
 		name = "[name] (empty)"
 
@@ -133,7 +117,7 @@
 			if(is_living(caller))
 				var/mob/living/L = caller
 				L.add_skill_xp(SKILL_MAGIC_ENCHANTING,CEILING(total_charge*0.025,1))
-			if(!is_star && total_charge == 0)
+			if(!do_not_consume && total_charge <= 0)
 				caller.to_chat(span("warning","\The [src] shatters!"))
 				qdel(src)
 		else
@@ -183,7 +167,4 @@
 
 /obj/item/soulgem/azuras_star
 	total_capacity = SOUL_SIZE_MYSTIC
-	is_star = TRUE
-/obj/item/soulgem/azuras_star/filled/Generate()
-	. = ..()
-	total_charge = total_capacity
+	do_not_consume = TRUE

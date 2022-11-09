@@ -737,7 +737,7 @@
 #include "code\_core\datum\status_effect\last_breath.dm"
 #include "code\_core\datum\status_effect\mana_void.dm"
 #include "code\_core\datum\status_effect\painkiller.dm"
-#include "code\_core\datum\status_effect\paralized.dm"
+#include "code\_core\datum\status_effect\paralyzed.dm"
 #include "code\_core\datum\status_effect\parried.dm"
 #include "code\_core\datum\status_effect\resting.dm"
 #include "code\_core\datum\status_effect\shoved.dm"

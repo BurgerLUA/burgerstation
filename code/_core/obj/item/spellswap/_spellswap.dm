@@ -31,8 +31,8 @@
 		if(desired_projectile==null)
 			if(I.stored_spellswap)
 				qdel(I.stored_spellswap)
-				src.drop_item(I)
 				I.stored_spellswap = src
+				src.drop_item(I)
 			else
 				caller.to_chat(span("notice", "There's no spell to remove!"))
 				return TRUE

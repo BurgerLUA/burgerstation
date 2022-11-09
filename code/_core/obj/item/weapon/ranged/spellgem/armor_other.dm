@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/spellgem/projectile_armor
-	name = "armor other spell gem"
+	name = "reinforce other spell gem"
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots an armor creating blast. ."
 	icon_state = "damage"

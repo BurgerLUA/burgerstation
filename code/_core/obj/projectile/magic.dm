@@ -2,12 +2,10 @@
 	icon = 'icons/obj/projectiles/magic.dmi'
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
-	//Do go boom?
-	var/does_explode = FALSE
-	var/explode_power = 5
-	//Do we slowly fade out of existance?
-	var/does_degrade = FALSE
-	var/magic_vel_degrade = 0.90 
+	//Goes boom on destroy if not 0
+	var/explode_power = 0
+	//Velocity multiplied by this every update if not 0
+	var/magic_vel_degrade = 0 
 	//Do we home in on a target?
 	var/is_homing = FALSE
 	var/last_angle
@@ -18,7 +16,7 @@
 /obj/projectile/magic/on_projectile_hit(atom/hit_atom)
 	. = ..()
 	
-	if(. && does_explode)
+	if(. && explode_power > 0)
 		explode(get_turf(hit_atom),explode_power,owner,src,loyalty_tag)
 
 /obj/projectile/magic/update_projectile(var/tick_rate=1)
@@ -64,7 +62,7 @@
 
 		last_angle = desired_angle
 	
-	else if(. && does_degrade)
+	else if(. && magic_vel_degrade > 0)
 		vel_x *= magic_vel_degrade
 		vel_y *= magic_vel_degrade
 		alpha = clamp(alpha *= magic_vel_degrade,0,255)
@@ -84,7 +82,6 @@
 /obj/projectile/magic/fireball/explosive
 	hit_target_turf = TRUE
 
-	does_explode = TRUE
 	explode_power = 20
 
 /obj/projectile/magic/fireball/lava
@@ -167,7 +164,6 @@
 /obj/projectile/magic/lightning
 	name = "lightning"
 	icon_state = "lightning_01"
-	does_degrade = TRUE
 	magic_vel_degrade = 0.85
 
 /obj/projectile/magic/lightning/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
@@ -177,13 +173,12 @@
 /obj/projectile/magic/frost
 	name = "frost"
 	icon_state = "frost"
-	does_degrade = TRUE
+	magic_vel_degrade = 0.9
 
 /obj/projectile/magic/lesser_fire
 	name = "lesser fire"
 	icon_state = "fire_lesser"
 
-	does_degrade = TRUE
 	magic_vel_degrade = 0.9
 
 /obj/projectile/magic/lightning_bolt
@@ -200,7 +195,7 @@
 	name = "magic fire crystal"
 	icon_state = "crystal_fire"
 
-	does_degrade = TRUE
+	magic_vel_degrade = 0.95
 
 	penetrations_left = 1
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -213,7 +208,7 @@
 	name = "ice bolt"
 	icon_state = "crystal_ice"
 
-	does_degrade = TRUE
+	magic_vel_degrade = 0.95
 
 	penetrations_left = 2
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -231,7 +226,6 @@
 	name = "blackflame"
 	icon_state = "blackflame"
 
-	does_explode = TRUE
 	explode_power = 10
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -303,7 +297,6 @@
 
 	is_homing = TRUE
 	max_home_speed = 16
-	does_explode = TRUE
 	explode_power = 2.5
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -312,7 +305,6 @@
 	name = "inferno"
 	icon_state = "inferno"
 
-	does_explode = TRUE
 	explode_power = 2.5
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID

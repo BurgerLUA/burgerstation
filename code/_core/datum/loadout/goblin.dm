@@ -35,7 +35,6 @@
 
 	possible_gems = list(
 		/obj/item/weapon/ranged/spellgem/flame = 1,
-		/obj/item/weapon/ranged/spellgem/inferno = 1,
 		/obj/item/weapon/ranged/spellgem/ice_spear = 1,
 		/obj/item/weapon/ranged/spellgem/fire_spear = 1,
 		/obj/item/weapon/ranged/spellgem/shock = 1,

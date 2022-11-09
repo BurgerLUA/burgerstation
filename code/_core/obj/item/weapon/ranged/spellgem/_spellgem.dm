@@ -148,7 +148,7 @@
 	if(final_cost != 0)
 		if (final_cost > A.health.mana_current)
 			A.health.adjust_mana(min(-A.health.mana_current,-final_cost))
-			caller.visible_message(span("warning","\The [caller.name]'s spell fizzles!"),span("warning","You push with all your mana, but the spell fizzles!"))
+			caller.to_chat(span("warning","You push with all your mana, but the spell fizzles!"))
 			return TRUE
 		else
 			A.health.adjust_mana(-final_cost)

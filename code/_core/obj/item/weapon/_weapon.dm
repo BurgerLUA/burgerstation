@@ -18,7 +18,8 @@
 
 	var/enchantment/enchantment
 
-	var/list/enchantment_whitelist[] //A whitelist of [/enchantment/path] or [ALL] of enchants allowed on the weapon E.G. /enchantment/fire.
+	var/list/enchantment_whitelist //A whitelist of [/enchantment/path] or ["ALL"] of enchants allowed on the weapon E.G. /enchantment/fire.
+	var/list/enchantment_blacklist //a blacklist of version of above, with ["ALL"] meaning the weapon accepts no enchants.
 
 	can_wear = TRUE
 	item_slot = -1
@@ -116,11 +117,11 @@
 			var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge)) 
 			enchantment.charge += chargediff
 			G.total_charge -= chargediff
-			if(!caller.is_player_controlled())
-				CRASH("How the flying fuck is a mob smart enough to recharge their enchanted weapon![caller.get_debug_name()] did it!")
+			if(!caller.is_living())
+				CRASH("Nonliving [caller.get_debug_name()] tried to recharge a weapon enchantment!")
 			var/mob/living/pcaller = caller //This is stupid and bad.
 			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
-			if(G.total_charge <= 0 && !G.is_star)
+			if(G.total_charge <= 0 && !G.do_not_consume)
 				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name],shattering it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], shattering it!"))
 				qdel(G)
 			else
