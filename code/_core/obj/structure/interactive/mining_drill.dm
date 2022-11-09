@@ -113,6 +113,12 @@
 		drill_counter++
 		if(drill_counter > 30)
 			found_deposit.drop_ore()
+			found_deposit.ore_count--
+			if(found_deposit.ore_count <= 0 )
+				qdel(found_deposit)
+				src.visible_message(span("warning","The [found_deposit.name] runs dry!"))
+				found_deposit = null
+				deactivate()
 			drill_counter = 0
 
 	return TRUE
