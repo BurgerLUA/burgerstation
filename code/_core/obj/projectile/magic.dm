@@ -13,29 +13,27 @@
 /obj/projectile/magic/fireball/explosive
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/explosive/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/explosive/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
-	if(.)
-		explode(get_turf(hit_atom),20,owner,src,loyalty_tag)
+	if(. && old_loc)
+		explode(old_loc,20,owner,src,loyalty_tag)
 
 
 
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
-	if(.)
-		var/turf/T = get_turf(hit_atom)
-		if(T)
-			var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
-			INITIALIZE(L)
-			GENERATE(L)
-			FINALIZE(L)
+	if(. && new_loc)
+		var/obj/effect/temp/hazard/lava/L = new(new_loc,SECONDS_TO_DECISECONDS(30),owner)
+		INITIALIZE(L)
+		GENERATE(L)
+		FINALIZE(L)
 
 /obj/projectile/magic/chaos
 	name = "chaos ball"
@@ -76,7 +74,7 @@
 	name = "revival rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
@@ -89,7 +87,7 @@
 	name = "healing rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/heal/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/rift/heal/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 

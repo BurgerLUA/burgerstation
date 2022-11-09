@@ -10,11 +10,6 @@ obj/structure/interactive/shower
 
 	reagents = /reagent_container/shower
 
-	density = TRUE
-	collision_dir = 0x0
-
-	bullet_block_chance = 10
-
 obj/structure/interactive/shower/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -38,7 +33,6 @@ obj/structure/interactive/shower/set_dir(var/desired_dir,var/force=FALSE)
 			pixel_y = 16
 		else
 			pixel_y = 0
-		update_collisions(c_dir = dir)
 
 obj/structure/interactive/shower/Destroy()
 	CALLBACK_REMOVE("\ref[src]_shower")

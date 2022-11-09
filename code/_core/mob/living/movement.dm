@@ -244,10 +244,10 @@
 
 	. = ..()
 
-/mob/living/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown.
+/mob/living/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown.
 
 	if(!has_status_effects(STUN,STAGGER,PARALYZE))
-		if(hit_wall)
+		if(hit_atom)
 			add_status_effect(STUN,10,10,source = owner)
 		else
 			add_status_effect(STAGGER,5,5,source = owner)
