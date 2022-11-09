@@ -90,14 +90,16 @@
 
 	for(var/obj/hud/inventory/crafting/result/R in inventories)
 		if(R.get_top_object())
-			caller.to_chat(span("warning","Remove the already completed item in the product slot before doing this!"))
-			return FALSE
+			caller.to_chat(span("warning","You drop the [R.get_top_object().name] on the ground to make room for the next product."))
+			R.get_top_object().drop_item(src)
+			product_slot = R
+			break
 		else
 			product_slot = R
 			break
 
 	if(!product_slot)
-		caller.to_chat(span("warning","No product slot detected. Report this bug to burger on Discord."))
+		caller.to_chat(span("warning","No product slot detected. Report this bug the github or Discord."))
 		return FALSE
 
 	var/list/item_table = generate_crafting_table(caller,src)

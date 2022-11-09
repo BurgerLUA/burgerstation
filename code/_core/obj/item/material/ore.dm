@@ -10,7 +10,7 @@
 
 	material_multiplier = 1
 
-	value = 0.5
+	value = 0.25
 
 	reagents = /reagent_container/ore
 
