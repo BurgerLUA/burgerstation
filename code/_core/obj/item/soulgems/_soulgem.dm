@@ -45,7 +45,7 @@
 	name = initial(name)
 	icon = initial(icon)
 	if(do_not_consume)
-		name = "Unbreaking [name]"
+		name = "unbreaking [name]"
 		icon_state = "azuras"
 	else
 		switch(total_capacity)
