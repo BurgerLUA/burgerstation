@@ -9,6 +9,7 @@
 
 	var/ammo
 	var/ammo_surplus //This is given via autorestockers. If none is listed, then it cannot give the ammo.
+	var/no_restock = FALSE //Will not restock at a premium ammo vendor.
 
 	size = SIZE_2
 

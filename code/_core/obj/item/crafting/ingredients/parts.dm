@@ -57,6 +57,7 @@
 	desc_extended = "Some gunpowder wrapped in a nice package."
 	icon_state = "gunpowder"
 	value = 5
+	amount_max = 100
 //Mold for casings, 
 /obj/item/crafting/ingredient/part/casing_mold
 	name = "casing mold"
@@ -64,6 +65,7 @@
 	desc_extended = "A mold to make bullet casings."
 	icon_state = "casing_mold"
 	value = 100
+	amount_max = 1
 //the actual bullet casing.
 /obj/item/crafting/ingredient/part/bullet_casings
 	name = "bullet casings"
@@ -71,3 +73,4 @@
 	desc_extended = "A large amount of bullet casings, in serveral calibers."
 	icon_state = "bullet_casings"
 	value = 25
+	amount_max = 100

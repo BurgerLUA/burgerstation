@@ -149,6 +149,14 @@
 
 	penetrations = 1
 
+/obj/item/bullet_cartridge/rifle_223/du
+	name = "\improper .223 DU rifle bullet"
+	desc_extended = "For rifles that require .223. This one has a depleted uranium tip."
+	rarity = RARITY_RARE
+	damage_type_bullet = /damagetype/ranged/bullet/rifle_223/du
+	projectile_speed = BULLET_SPEED_RIFLE_HEAVY
+	value = 4.4
+	penetrations = 2
 
 
 /obj/item/bullet_cartridge/rifle_223/nato

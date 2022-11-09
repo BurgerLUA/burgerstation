@@ -44,11 +44,12 @@ And the code would look like this:
 	)
 	//List of required items SOMEWHERE in the table. Use path of item as String
 	var/list/required_items = list()
-
+	var/list/consume_id_amount = list() //Item to consume amount list. 0 will not consume the item. Null is 1. Take a look at other recipes if still confused.
 	var/list/product = list() // What does it make = chance to make out of 100. More than one item will drop the previous on the ground.
 	var/list/amount = list(1) //How many? First product, then second, third... so on. Doesnt check max stack size.
 	var/list/reagents_to_add = list() //Reagent to fill resulting container with, if any. Reagent as string = amount, Doesnt check if the container can HOLD that much though.
 	var/material_id_result = null  //What material ID should the resulting item have? Leave null if it doesnt have a material_id! Only works for /obj/item/material/ decendents
+
 	var/list/fail_product = list() // If we fail the craft, what should we make? Weighted list, can be null.
 	var/fail_amount = 1 //Fail amount of items, because it only gives one type of item, no need to worry about a list.
 	var/list/fail_reagents_to_add = list() //Same as above, but for fail products. Won't try to fill something that can't hold anything.
@@ -56,7 +57,7 @@ And the code would look like this:
 	var/icon = ""
 	var/icon_state = ""
 	
-	var/list/consume_id_amount = list() //Item to consume amount list. 0 will not consume the item. Null is 1.
+	
 
 	
 

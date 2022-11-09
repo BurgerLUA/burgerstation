@@ -42,3 +42,10 @@
 	icon = 'icons/obj/item/magazine/556_rifle_ap.dmi'
 	icon_state = "556"
 	ammo = /obj/item/bullet_cartridge/rifle_223/nato/ap
+
+/obj/item/magazine/rifle_556/du
+	name = "\improper 5.56mm DU rifle magazine"
+	icon = 'icons/obj/item/magazine/556_rifle_du.dmi'
+	icon_state = "556"
+	ammo = /obj/item/bullet_cartridge/rifle_223/du
+	no_restock = TRUE

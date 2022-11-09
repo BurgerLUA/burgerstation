@@ -107,6 +107,9 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
+		if(M.no_restock)
+			caller.to_chat(span("warning","Error: Magazine ammo non-standard. Unable to fill with designated ammo type. You have not been charged."))
+			return TRUE
 		var/obj/item/bullet_cartridge/bullet_to_create = M.ammo
 		if(M.regenerate && M.ammo)
 			bullet_to_create = M.ammo
