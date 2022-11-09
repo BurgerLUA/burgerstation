@@ -4,7 +4,7 @@
 	required_item_grid = list(
 		"a2" = null,
 
-		"b2" = null,
+		"b2" = "/obj/item/weapon/melee/tool/wirecutters",
 		"b3" = "/obj/item/bullet_cartridge",
 
 		"c2" = null
