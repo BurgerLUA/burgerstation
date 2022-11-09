@@ -91,7 +91,7 @@
 	for(var/obj/hud/inventory/crafting/result/R in inventories)
 		if(R.get_top_object())
 			caller.to_chat(span("warning","You drop the [R.get_top_object().name] on the ground to make room for the next product."))
-			R.get_top_object().drop_item(src)
+			R.get_top_object().drop_item(get_turf(caller))
 			product_slot = R
 			break
 		else
