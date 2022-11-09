@@ -606,7 +606,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if(!isobj(A) && !ismob(A) && !isturf(A))
 			to_chat(span("notice",  "This can only be done to instances of type /obj, /mob and /turf"))
 			return
-		explode(get_turf(A),7,A,A,null)
+		explode(get_turf(A),4,A,A,null)
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["rotatedatum"])

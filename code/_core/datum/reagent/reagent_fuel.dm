@@ -21,8 +21,8 @@
 		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
 		smoke(
 			epicenter,
-			volume_amount*explosion_strength_per_unit*0.02,
-			SECONDS_TO_DECISECONDS(2*explosion_strength_per_unit),
+			volume_amount*explosion_strength_per_unit*0.2,
+			SECONDS_TO_DECISECONDS(10*explosion_strength_per_unit),
 			null,
 			owner,
 			alpha=100
@@ -60,7 +60,7 @@
 
 	liquid = 0.25
 
-	explosion_strength_per_unit = 0.25
+	explosion_strength_per_unit = 0.01
 
 	heated_reagent = null //Nothing.
 	heated_reagent_temp = 54.36
@@ -72,7 +72,7 @@
 
 	particle_size = 0.25
 
-	explosion_strength_per_unit = 0.75
+	explosion_strength_per_unit = 0.03
 
 /reagent/fuel/oil/crude
 	name = "Crude Oil"
@@ -86,7 +86,7 @@
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
-	explosion_strength_per_unit = 0.5
+	explosion_strength_per_unit = 0.02
 
 /reagent/fuel/oil/carbon
 	name = "Carbonized Oil"
@@ -100,7 +100,7 @@
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
-	explosion_strength_per_unit = 0.25
+	explosion_strength_per_unit = 0.01
 
 /reagent/fuel/welding
 	name = "Welding Fuel"
@@ -109,7 +109,7 @@
 
 	particle_size = 0.3
 
-	explosion_strength_per_unit = 1.5
+	explosion_strength_per_unit = 0.06
 
 /reagent/fuel/hydrogen
 	name = "Solid Hydrogen"
@@ -120,7 +120,7 @@
 
 	particle_size = 0.75
 
-	explosion_strength_per_unit = 2
+	explosion_strength_per_unit = 0.1
 
 /reagent/fuel/phoron
 	name = "Solid Phoron"
@@ -129,7 +129,7 @@
 
 	particle_size = 1
 
-	explosion_strength_per_unit = 5
+	explosion_strength_per_unit = 0.3
 
 /reagent/fuel/acetone
 	name = "Acetone"
@@ -138,7 +138,7 @@
 
 	particle_size = 0.1
 
-	explosion_strength_per_unit = 0.5
+	explosion_strength_per_unit = 0.02
 
 /reagent/fuel/diethylamine
 	name = "Diethylamine"
@@ -146,7 +146,7 @@
 
 	particle_size = 0.75
 
-	explosion_strength_per_unit = 1.5
+	explosion_strength_per_unit = 0.06
 
 /reagent/fuel/tnt
 	name = "Trinitrotoluene"
@@ -154,7 +154,7 @@
 
 	particle_size = 0.75
 
-	explosion_strength_per_unit = 2.5
+	explosion_strength_per_unit = 0.1
 
 /reagent/fuel/potassium_perchlorate
 	name = "Potassium Perchlorate"
@@ -163,7 +163,7 @@
 	liquid = -0.5
 	particle_size = 0.2
 
-	explosion_strength_per_unit = 0.1
+	explosion_strength_per_unit = 0.004
 	bang_strength_per_unit = 30/VIEW_RANGE
 
 /reagent/fuel/flash_powder
@@ -173,6 +173,6 @@
 	liquid = -0.5
 	particle_size = 0.3
 
-	explosion_strength_per_unit = 0.05
+	explosion_strength_per_unit = 0.002
 	flash_strength_per_unit = 20/VIEW_RANGE
 	bang_strength_per_unit = 40/VIEW_RANGE

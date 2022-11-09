@@ -219,7 +219,6 @@
 
 #define BLOCK_DISTANCE(A1,A2) max(abs(A1.x - A2.x),abs(A1.y - A2.y))
 
-
 #define HYPOTENUSE(a,b) sqrt(a**2 + b**2)
 
 #define IS_INFINITY(a) (abs(a) >= INFINITY)

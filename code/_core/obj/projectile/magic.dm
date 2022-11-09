@@ -18,7 +18,7 @@
 	. = ..()
 
 	if(. && old_loc)
-		explode(old_loc,20,owner,src,loyalty_tag)
+		explode(old_loc,3,owner,src,loyalty_tag)
 
 
 

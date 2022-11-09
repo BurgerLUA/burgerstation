@@ -69,7 +69,7 @@
 /obj/projectile/bullet/HE_40M/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(.)
-		explode(old_loc,20,owner,weapon,iff_tag)
+		explode(old_loc,4,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/rocket_he
 
@@ -80,7 +80,7 @@
 /obj/projectile/bullet/rocket_he/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && old_loc)
-		explode(old_loc,40,owner,weapon,iff_tag,multiplier = 5)
+		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 5)
 
 /obj/projectile/bullet/rocket_nuclear
 
@@ -101,7 +101,7 @@
 /obj/projectile/bullet/rocket_ap/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && old_loc)
-		explode(old_loc,5,owner,weapon,iff_tag)
+		explode(old_loc,3,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/rocket_wp
 
@@ -122,7 +122,7 @@
 /obj/projectile/bullet/rocket_wp/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && old_loc)
-		explode(old_loc,20,owner,weapon,iff_tag,multiplier = 2)
+		explode(old_loc,3,owner,weapon,iff_tag,multiplier = 2)
 
 /obj/projectile/bullet/rocket_wp/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
@@ -139,7 +139,7 @@
 /obj/projectile/bullet/gyrojet/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && old_loc)
-		explode(old_loc,10,owner,weapon,iff_tag)
+		explode(old_loc,3,owner,weapon,iff_tag)
 
 
 /obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
@@ -160,20 +160,6 @@
 		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
 			on_projectile_hit(current_loc)
 			return FALSE
-
-
-
-/obj/projectile/bullet/rocket_gyro
-	name = "rocket"
-	icon = 'icons/obj/projectiles/rocket.dmi'
-	icon_state = "gyrojet"
-
-/obj/projectile/bullet/rocket_gyro/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
-
-	. = ..()
-
-	if(. && old_loc)
-		explode(old_loc,20,owner,src,iff_tag)
 
 /obj/projectile/bullet/Fiendish
 	name = "bullet"
