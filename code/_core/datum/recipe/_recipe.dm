@@ -90,6 +90,11 @@ And the code would look like this:
 			else if(held_item_in_grid.amount < consume_id_amount[grid_crafting_id_text] && consume_id_amount[grid_crafting_id_text])
 				if (do_debug)
 					log_debug("There isnt enough of item in [grid_id]! We cannot craft this recipe ([name]) without [consume_id_amount[grid_crafting_id_text]] [grid_crafting_id] in [grid_id]. ")
+				return list()
+			else if(length(held_item_in_grid.contents))
+				if(do_debug)
+					log_debug("The item in grid [grid_id] has inventory! We wouldn't want to delete that now would we?")
+				return list()
 			else
 				used_items += held_item_in_grid
 				if(grid_crafting_id_text in consume_id_amount)
@@ -108,7 +113,7 @@ And the code would look like this:
 					if(grid_id in found_slots)
 						continue
 					var/obj/item/I = item_table[grid_id]
-					if(!I)
+					if(!I || length(I.contents))
 						continue
 					if(I.amount < consume_id_amount[crafting_type_id])
 						continue

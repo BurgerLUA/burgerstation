@@ -28,6 +28,7 @@
 	value = 20
 
 /obj/item/magazine/sniper_127/du
+	name = "\improper 12.7x90mm DU sniper magazine"
 	ammo = /obj/item/bullet_cartridge/sniper_127/du
 	no_restock = TRUE
 	icon_state = "12_DU"
