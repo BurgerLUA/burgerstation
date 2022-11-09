@@ -49,8 +49,10 @@
 	if(is_living(caller))
 		var/mob/living/CL = caller
 		if(L.ckey_owner == CL.ckey_owner)
-			if(!L.can_save)
-				return FALSE
+			if(is_player(L))
+				var/mob/living/advanced/player/P = L
+				if(!P.allow_save)
+					return FALSE
 		else if(!allow_hostile_action(CL.loyalty_tag,L))
 			return FALSE
 
