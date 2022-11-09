@@ -13,13 +13,13 @@
 
 	heal_factor = 0
 
-/reagent/nutrition/energy/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/energy/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
 		owner.stamina_regen_buffer += .*stamina_strength*multiplier
 
-/reagent/nutrition/energy/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/energy/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -30,15 +30,16 @@
 
 	. = ..()
 
-	var/local_strength = adrenaline_strength * (container.flags_metabolism & REAGENT_METABOLISM_BLOOD ? 1 : 0.25)
-	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= local_strength)
-		L.add_status_effect(ADRENALINE,local_strength,-1)
+	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
+		var/local_strength = adrenaline_strength * (container.flags_metabolism & REAGENT_METABOLISM_BLOOD ? 1 : 0.25)
+		if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= local_strength)
+			L.add_status_effect(ADRENALINE,local_strength,-1)
 
 /reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
 
 	. = ..()
 
-	if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
+	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= adrenaline_strength)
 		L.remove_status_effect(ADRENALINE)
 
 /reagent/nutrition/energy/grey_bull

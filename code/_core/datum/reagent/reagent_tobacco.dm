@@ -18,7 +18,7 @@
 
 	blood_toxicity_multiplier = 3
 
-/reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
