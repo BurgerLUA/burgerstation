@@ -35,7 +35,7 @@ obj/structure/scenery/bush/snow/New()
 
 /obj/structure/interactive/tree/on_destruction(mob/caller, damage)
 	if(caller in orange(1,src))
-		create_destruction(src,list(/obj/item/material/wood/oak = rand(1,3)))
+		CREATE(/obj/item/material/wood/oak,src)
 	. = ..()
 /obj/structure/interactive/tree/Finalize()
 	. = ..()
