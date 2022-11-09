@@ -38,6 +38,10 @@
 	. = ..()
 	var/mob/living/advanced/A = owner
 
+	var/turf/T = get_turf(src)
+
+	A.drop_hands(T)
+
 	var/obj/item/organ/hand/HR = A.labeled_organs[BODY_HAND_RIGHT]
 	if(HR)
 		A.remove_organ(HR,TRUE)
