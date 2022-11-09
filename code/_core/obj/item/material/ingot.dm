@@ -89,12 +89,13 @@
 	material_id = /material/nickel
 	desc = "Useful for alloys."
 
-/obj/item/material/ingot/copper
-	name = "copper ingot"
-	material = /material/copper
-	desc = "Now vanilla!"
-
 /obj/item/material/ingot/uranium_235
 	name = "uranium 235 ingot"
-	material = /material/uranium_235
+	material_id = /material/uranium_235
 	desc = "Glows faintly."
+
+/obj/item/material/ingot/copper
+	name = "copper ingot"
+	material_id = /material/copper
+	desc = "Now vanilla!"
+

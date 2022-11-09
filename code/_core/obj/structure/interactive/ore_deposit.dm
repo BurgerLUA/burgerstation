@@ -26,7 +26,11 @@
 		if(!(I.flags_tool & FLAG_TOOL_PICKAXE))
 			A.to_chat(span("notice","You need a mining tool in order to mine \the [src.name]."))
 			return TRUE
+		
 		src.drop_ore(A,stored_ore)
+		ore_count--
+		if(ore_count <= 0)
+			A.to_chat(span("notice", "The [name] runs dry!"))
 		INTERACT_DELAY(I.tool_time)
 
 	return TRUE
@@ -45,11 +49,6 @@
 	else
 		var/obj/D
 		TO.drop_item(D.loc)
-	ore_count--
-	if(ore_count <= 0)
-		if(is_living(caller))
-			var/mob/living/A
-			A.to_chat(span("notice", "The [name] runs dry!"))
 		qdel(src)
 
 /obj/structure/interactive/ore_deposit/random

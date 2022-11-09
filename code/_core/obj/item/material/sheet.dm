@@ -18,11 +18,12 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			var/material/material_id_path = src.material_id
+			var/material/material_id_path = material_id
 			var/possible_rod_text = text("/obj/item/material/rod/[initial(material_id_path.name)]")
 			var/possible_rod = text2path_safe(possible_rod_text)
 			if(!length(subtypesof(possible_rod))) //If theres a rod coded for the material...
 				var/obj/item/material/rod/R = new possible_rod(get_turf(src))
+				R.material_id = material_id
 				R.amount = 4
 				INITIALIZE(R)
 				GENERATE(R)
@@ -128,12 +129,13 @@
 	material_id = /material/nickel
 	desc = "Could probably use this for something..."
 
-/obj/item/material/sheet/copper
-	name = "copper sheet"
-	material = /material/copper
-	desc = "Also still modded."
-
 /obj/item/material/sheet/uranium_235
 	name = "uranium 235 sheet"
-	material = /material/uranium_235
+	material_id = /material/uranium_235
 	desc = "Its fissile, not fizzle."
+
+/obj/item/material/sheet/copper
+	name = "copper sheet"
+	material_id = /material/copper
+	desc = "Also still modded."
+

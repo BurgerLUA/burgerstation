@@ -80,7 +80,7 @@
 /obj/projectile/bullet/rocket_he/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && old_loc)
-		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 5)
+		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 3)
 
 /obj/projectile/bullet/rocket_nuclear
 
@@ -91,7 +91,7 @@
 /obj/projectile/bullet/rocket_nuclear/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),12,owner,weapon,iff_tag,multiplier = 10)
+		explode(get_turf(hit_atom),12,owner,weapon,iff_tag,multiplier = 6)
 
 /obj/projectile/bullet/rocket_ap
 

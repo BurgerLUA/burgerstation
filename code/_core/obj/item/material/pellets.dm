@@ -90,12 +90,13 @@
 	material_id = /material/nickel
 	desc = "Would make a nice coin, if it were flat."
 
-/obj/item/material/pellets/copper
-	name = "copper pellets"
-	material = /material/copper
-	desc = "Round penny."
-
 /obj/item/material/pellets/uranium_235
 	name = "uranium 235 fuel pellets"
-	material = /material/uranium_235
+	material_id = /material/uranium_235
 	desc = "Reactor ready!"
+
+/obj/item/material/pellets/copper
+	name = "copper pellets"
+	material_id = /material/copper
+	desc = "Round penny."
+

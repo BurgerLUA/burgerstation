@@ -19,11 +19,12 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			var/material/material_id_path = src.material_id
+			var/material/material_id_path = material_id
 			var/possible_pellets_text = text("/obj/item/material/pellets/[initial(material_id_path.name)]")
 			var/possible_pellets = text2path_safe(possible_pellets_text)
 			if(!length(subtypesof(possible_pellets))) //If theres a pellets coded for the material...
 				var/obj/item/material/pellets/R = new possible_pellets(get_turf(src))
+				R.material_id = material_id
 				R.amount = 4
 				INITIALIZE(R)
 				GENERATE(R)
@@ -129,12 +130,13 @@
 	material_id = /material/nickel
 	desc = "Thats a lot of coins."
 
-/obj/item/material/rod/copper
-	name = "copper rod"
-	material = /material/copper
-	desc = "Still modded."
-
 /obj/item/material/rod/uranium_235
 	name = "uranium 235 fuel rod"
-	material = /material/uranium_235
+	material_id = /material/uranium_235
 	desc = "Im waking up."
+
+/obj/item/material/rod/copper
+	name = "copper rod"
+	material_id = /material/copper
+	desc = "Still modded."
+
