@@ -117,7 +117,7 @@
 			var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge)) 
 			enchantment.charge += chargediff
 			G.total_charge -= chargediff
-			if(!caller.is_living())
+			if(!is_living(caller))
 				CRASH("Nonliving [caller.get_debug_name()] tried to recharge a weapon enchantment!")
 			var/mob/living/pcaller = caller //This is stupid and bad.
 			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
