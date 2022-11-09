@@ -14,8 +14,8 @@
 
 	. = ..()
 
-	if(!L.dead && experience_per_unit*. > 0 && (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && is_player(caller) && caller.client)
-		caller.add_skill_xp(SKILL_MEDICINE,experience_per_unit*.)
+	if(!L.dead && experience_per_unit*. > 0 && is_player(caller) && caller.client)
+		caller.add_skill_xp(SKILL_MEDICINE,CEILING(experience_per_unit*.,1))
 
 /reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
 

@@ -17,7 +17,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 	opacity = TRUE
 
 	var/state = POD_IDLE
-
+	var/ttl = SECONDS_TO_DECISECONDS(30)
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_TURF_CHECKING
 
 	density = TRUE
@@ -116,18 +116,17 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			if(!desired_loc)
 				caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
 				return FALSE
-			for(var/d in DIRECTIONS_ALL + 0x0)
-				var/turf/T = get_step(desired_loc,d)
-				if(T.has_dense_atom)
-					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
-					return FALSE
-				if(!T.is_safe() || !T.is_safe_move())
-					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
-					return FALSE
-				var/area/A = T.loc
-				if(A.interior)
-					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
-					return FALSE
+			var/turf/T = get_step(desired_loc,SOUTH)
+			if(T.has_dense_atom)
+				caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+				return FALSE
+			if(!T.is_safe() || !T.is_safe_move())
+				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+				return FALSE
+			var/area/A = T.loc
+			if(A.interior)
+				caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+				return FALSE
 			icon_state = "none"
 			flick("drop_anim",src)
 			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,caller,POD_LAUNCHED,desired_loc)
@@ -154,7 +153,9 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			for(var/k in contents)
 				var/atom/movable/M = k
 				M.force_move(src.loc)
-
+			CALLBACK("set_state_\ref[src]",ttl,src,.proc/set_state,caller,POD_DESTROY,desired_loc)
+		if(POD_DESTROY)
+			qdel(src)
 	state = desired_state
 
 	return TRUE

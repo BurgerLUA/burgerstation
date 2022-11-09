@@ -50,9 +50,6 @@
 	if(driving)
 		driving.exit_vehicle(src,get_turf(driving))
 
-	if(!master && !delete_on_death)
-		drop_hands(get_turf(src))
-
 	. = ..()
 
 
@@ -64,6 +61,9 @@
 	for(var/k in src.using_inventories)
 		var/obj/item/I = k
 		I.close_inventory(src)
+
+	if(!master && !delete_on_death && !is_player_controlled(src))
+		drop_hands(get_turf(src))
 
 /mob/living/advanced/rejuvenate()
 

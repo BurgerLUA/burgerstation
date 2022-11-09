@@ -5,7 +5,11 @@
 	if(.)
 		var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 		if(mobdata)
-			mobdata.save_character(src,died = TRUE)
+			if(world_state == STATE_RUNNING)
+				mobdata.save_character(src,died = TRUE)
+			else
+				mobdata.save_character(src)
+				allow_save = FALSE //So deathboxes don't save.
 
 /mob/living/advanced/player/on_killed(var/list/attackers)
 
