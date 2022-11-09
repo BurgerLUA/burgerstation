@@ -3,9 +3,12 @@
 	icon_state = "engivend"
 	stored_types = list(
 		/obj/item/crafting/workbench,
+		/obj/item/crafting/bullet_press,
 		/obj/item/crafting/ingredient/part/tape,
 		/obj/item/crafting/ingredient/part/electronics,
 		/obj/item/crafting/ingredient/part/scrap,
+		/obj/item/crafting/ingredient/part/bullet_casings = 25,
+		/obj/item/crafting/ingredient/part/gunpowder = 25,
 		/obj/item/weapon/melee/tool/hammer,
 		/obj/item/paper/book/crafting_guide
 	)
