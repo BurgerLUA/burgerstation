@@ -6,7 +6,8 @@
 		/obj/item/crafting/ingredient/part/tape,
 		/obj/item/crafting/ingredient/part/electronics,
 		/obj/item/crafting/ingredient/part/scrap,
-		/obj/item/weapon/melee/tool/hammer
+		/obj/item/weapon/melee/tool/hammer,
+		/obj/item/paper/book/crafting_guide
 	)
 
 /obj/structure/interactive/vending/engineering/equipment
