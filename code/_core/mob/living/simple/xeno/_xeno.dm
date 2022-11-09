@@ -149,18 +149,18 @@
 	P.rotate_projectile = FALSE
 	P.set_dir(get_dir(thrower,desired_target))
 
-/mob/living/simple/xeno/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown and it hits an object.
+/mob/living/simple/xeno/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown and it hits an object.
 
 	. = ..()
 
 	if(!can_leap) return
 
-	if(is_living(hit_atom))
-		var/mob/living/L = hit_atom
-		L.add_status_effect(STUN,10,10)
-
-	if(hit_wall)
-		src.add_status_effect(STUN,30,30)
+	if(hit_atom)
+		if(is_living(hit_atom))
+			var/mob/living/L = hit_atom
+			L.add_status_effect(STUN,10,10)
+		else
+			src.add_status_effect(STUN,30,30)
 
 	leaping = FALSE
 	update_sprite()

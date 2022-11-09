@@ -20,7 +20,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/dice/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall) //What happens after the person is thrown and it hits an object.
+/obj/item/dice/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown and it hits an object.
 	roll_dice(owner)
 	return ..()
 

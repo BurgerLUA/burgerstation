@@ -1,7 +1,7 @@
 /obj/effect/cleanable/scorch
 	name = "scorch mark"
 	icon = 'icons/obj/effects/scorch.dmi'
-	icon_state = "rust1"
+	icon_state = "6"
 	enable_chunk_clean = FALSE
 
 	plane = PLANE_FLOOR_ATTACHMENT

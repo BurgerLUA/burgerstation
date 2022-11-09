@@ -103,8 +103,9 @@
 	if(!.)
 		return FALSE
 
-	var/projectile_dir = get_dir(old_turf,new_turf)
-	if(projectile_dir & src.collision_dir)
+	var/projectile_dir = turn(get_dir(old_turf,new_turf),180)
+
+	if(!(projectile_dir & src.collision_dir))
 		return FALSE
 
 	if(P.target_atom == src || bullet_block_chance >= 100) //Intentionally placed before distance checking in order to prevent exploits.

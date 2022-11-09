@@ -57,8 +57,17 @@ SUBSYSTEM_DEF(explosion)
 
 	var/obj/explosion_process/EP = locate() in desired_turf
 
+
+
+
 	if(!EP)
 		play_sound(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)
+		new /obj/effect/cleanable/scorch(desired_turf)
+		new /obj/effect/temp/explosion(desired_turf,desired_power*0.5)
+		for(var/d in DIRECTIONS_ALL)
+			if(!prob(80))
+				continue
+			new /obj/effect/temp/explosion_particle(desired_turf,desired_power,"#FFFFFF",d)
 		EP = new(desired_turf)
 		EP.power = desired_power
 		EP.owner = desired_owner

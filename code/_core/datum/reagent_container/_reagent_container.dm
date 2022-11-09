@@ -425,7 +425,7 @@
 			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current),caller = caller)
 	else
 		update_container(caller)
-		play_sound('sound/items/bikehorn.ogg',get_turf(owner),range_max=VIEW_RANGE) //lol
+		//play_sound('sound/items/bikehorn.ogg',get_turf(owner),range_max=VIEW_RANGE) //lol
 
 	return TRUE
 

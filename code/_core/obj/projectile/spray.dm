@@ -27,9 +27,9 @@
 		if(reagents.volume_current <= 0 && !qdeleting)
 			on_projectile_hit(new_loc,old_loc,new_loc)
 
-/obj/projectile/spray/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(. && reagents.volume_current > 0)
+	if(. && hit_atom && reagents.volume_current > 0)
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
 
 /obj/projectile/spray/update_projectile(var/tick_rate=1)
@@ -64,9 +64,9 @@
 		if(reagents.volume_current <= 0 && !qdeleting)
 			on_projectile_hit(new_loc,old_loc,new_loc)
 
-/obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(. && reagents.volume_current)
+	if(. && hit_atom && reagents.volume_current)
 		reagents.splash(owner,hit_atom,reagents.volume_current,TRUE,0.5)
 
 

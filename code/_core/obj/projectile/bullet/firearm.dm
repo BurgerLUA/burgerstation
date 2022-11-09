@@ -9,10 +9,10 @@
 	name = "sniper bullet"
 	icon_state = "bullet_massive"
 
-/obj/projectile/bullet/firearm/sniper/explosive/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/bullet/firearm/sniper/explosive/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(.)
-		explode(get_turf(hit_atom),5,owner,weapon,iff_tag)
+	if(. && old_loc)
+		explode(old_loc,5,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/firearm/rifle
 	name = "rifle bullet"

@@ -32,9 +32,9 @@
 	LOADVAR("broken")
 	LOADCONTENTS
 
-/obj/item/plate/on_thrown(var/atom/owner,var/atom/hit_atom,var/atom/hit_wall)
+/obj/item/plate/on_thrown(var/atom/owner,var/atom/hit_atom)
 
-	if(hit_wall || hit_atom)
+	if(hit_atom)
 		on_destruction(owner,TRUE)
 
 	return ..()
