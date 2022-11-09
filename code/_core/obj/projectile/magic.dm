@@ -82,7 +82,7 @@
 /obj/projectile/magic/fireball/explosive
 	hit_target_turf = TRUE
 
-	explode_power = 20
+	explode_power = 4
 
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
@@ -226,7 +226,7 @@
 	name = "blackflame"
 	icon_state = "blackflame"
 
-	explode_power = 10
+	explode_power = 3
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
@@ -297,7 +297,7 @@
 
 	is_homing = TRUE
 	max_home_speed = 16
-	explode_power = 2.5
+	explode_power = 1.5
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
@@ -305,7 +305,7 @@
 	name = "inferno"
 	icon_state = "inferno"
 
-	explode_power = 2.5
+	explode_power = 1.5
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
