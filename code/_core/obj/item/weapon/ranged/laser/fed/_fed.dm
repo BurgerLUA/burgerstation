@@ -10,12 +10,11 @@
 /obj/item/weapon/ranged/energy/fed/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object))
-		if(fed_item)
+		if(istype(object,fed_item))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			if(istype(battery))
-				battery.charge_current = min(battery.charge_max,battery.charge_current+charge_per_feed)
+			battery.charge_current += charge_per_feed
 			caller.to_chat(span("notice","You've recharged \the [src.name]."))
 			qdel(object)
 			return

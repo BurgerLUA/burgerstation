@@ -123,6 +123,9 @@
 		caller.to_chat(span("warning","Something seems to be preventing \the [M.name] from being extracted..."))
 		return FALSE
 
+	if(istype(M,/obj/structure/interactive/artifact))
+		caller.to_chat(span("warning","\The [M.name] is far to heavy to be lifted by \the Fulton System! "))
+		return FALSE
 	return TRUE
 
 /obj/structure/interactive/fulton/proc/add_movable(var/mob/caller,var/atom/movable/M)
