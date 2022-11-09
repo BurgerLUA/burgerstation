@@ -74,7 +74,7 @@
 	)
 
 
-/reagent/iron/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/iron/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -83,7 +83,7 @@
 		owner.tox_regen_buffer -= . * 0.5
 		QUEUE_HEALTH_UPDATE(owner)
 
-/reagent/iron/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/iron/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
@@ -176,7 +176,7 @@
 
 	liquid = -0.9
 
-/reagent/salt/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/salt/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.add_hydration(.*-5*multiplier)
 
@@ -255,13 +255,13 @@
 
 	blood_toxicity_multiplier = -0.5 //A meme, but whatever.
 
-/reagent/space_cleaner/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/space_cleaner/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
 	owner.tox_regen_buffer += .*1*multiplier
 
-/reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/starting_volume=0,var/multiplier=1)
+/reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 

@@ -1,7 +1,10 @@
 /obj/item/container/syringe/hypodermic/
-	name = "medical syringe"
+	name = "hypodermic syringe"
 	value = 5
 	injection_time = SECONDS_TO_DECISECONDS(1)
+	icon = 'icons/obj/item/container/syringe.dmi'
+	icon_state = "syringe"
+	var/icon_count = 7
 
 /obj/item/container/syringe/hypodermic/update_icon()
 	. = ..()
@@ -49,22 +52,22 @@
 
 
 /obj/item/container/syringe/hypodermic/epinephrine/
-	name = "medical syringe (epinephrine)"
+	name = "hypodermic syringe (epinephrine)"
 
 /obj/item/container/syringe/hypodermic/epinephrine/Generate()
 	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max)
 	return ..()
 
 /obj/item/container/syringe/hypodermic/opium/
-	name = "medical syringe (opium)"
+	name = "hypodermic syringe (opium)"
 
 /obj/item/container/syringe/hypodermic/opium/Generate()
 	reagents.add_reagent(/reagent/medicine/painkiller/opium,reagents.volume_max)
 	return ..()
 
 /obj/item/container/syringe/hypodermic/omnizine
-	name = "medical syringe (omnizine)"
+	name = "hypodermic syringe (omnizine)"
 
-/obj/item/container/syringe/omnizine/Generate()
+/obj/item/container/syringe/hypodermic/omnizine/Generate()
 	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max)
 	return ..()
