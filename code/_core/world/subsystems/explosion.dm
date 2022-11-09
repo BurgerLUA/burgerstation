@@ -53,21 +53,20 @@ SUBSYSTEM_DEF(explosion)
 
 	return TRUE
 
-/proc/explode(var/turf/desired_turf,var/desired_power,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/velocity_dir=0x0,var/multiplier=1)
+/proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/velocity_dir=0x0,var/multiplier=1)
+
+	var/desired_power = desired_range ** 3
 
 	var/obj/explosion_process/EP = locate() in desired_turf
-
-
-
 
 	if(!EP)
 		play_sound(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)
 		new /obj/effect/cleanable/scorch(desired_turf)
-		new /obj/effect/temp/explosion(desired_turf,desired_power*0.5)
+		new /obj/effect/temp/explosion(desired_turf,desired_range)
 		for(var/d in DIRECTIONS_ALL)
 			if(!prob(80))
 				continue
-			new /obj/effect/temp/explosion_particle(desired_turf,desired_power,"#FFFFFF",d)
+			new /obj/effect/temp/explosion_particle(desired_turf,desired_range*RAND_PRECISE(0.75,1.25),"#FFFFFF",d)
 		EP = new(desired_turf)
 		EP.power = desired_power
 		EP.owner = desired_owner

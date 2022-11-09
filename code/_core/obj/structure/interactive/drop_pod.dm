@@ -146,7 +146,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			icon_state = "pod_closed"
 			flick("land_anim",src)
 			CALLBACK("set_state_\ref[src]",50,src,.proc/set_state,caller,POD_OPENING,desired_loc)
-			explode(desired_loc,20,src,src,"NanoTrasen")
+			explode(desired_loc,3,src,src,"NanoTrasen")
 		if(POD_OPENING)
 			play_sound('sound/machines/droppod_land.ogg',get_turf(src))
 			icon_state = "pod"

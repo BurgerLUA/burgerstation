@@ -11,8 +11,8 @@
 /obj/effect/temp/explosion/New(var/desired_location,var/desired_time,var/desired_color)
 	. = ..()
 	var/matrix/M = get_base_transform()
-	if(desired_time > 5)
-		M.Scale(desired_time/5,desired_time/5)
+	if(desired_time > 2)
+		M.Scale(desired_time/2,desired_time/2)
 	animate(src,transform = M, alpha=0, easing = CUBIC_EASING | EASE_OUT, time = desired_time)
 
 /obj/effect/temp/explosion_particle
@@ -29,4 +29,4 @@
 
 	var/list/pixel_offsets = direction_to_pixel_offset(dir)
 
-	animate(src, alpha = 0, pixel_x = pixel_offsets[1]*TILE_SIZE*desired_time*0.1, pixel_y = pixel_offsets[2]*TILE_SIZE*desired_time*0.1, easing = CUBIC_EASING | EASE_OUT, time = desired_time-1)
+	animate(src, alpha = 0, pixel_x = pixel_offsets[1]*TILE_SIZE*desired_time*0.1, pixel_y = pixel_offsets[2]*TILE_SIZE*desired_time*0.1, easing = CUBIC_EASING | EASE_OUT, time = desired_time)

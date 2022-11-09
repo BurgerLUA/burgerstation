@@ -185,7 +185,7 @@
 	update_sprite()
 
 	if(slime_traits & SLIME_TRAIT_EXPLOSIVE)
-		explode(get_turf(src),100,src,src,src.loyalty_tag)
+		explode(get_turf(src),2,src,src,src.loyalty_tag)
 
 /mob/living/simple/slime/check_death()
 

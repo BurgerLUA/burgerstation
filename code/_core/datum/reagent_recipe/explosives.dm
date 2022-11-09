@@ -31,7 +31,7 @@
 		var/mob/living/L = caller
 		tag_to_use = L.loyalty_tag
 
-	explode(explosion_location,explosion_power*10,caller,container.owner,tag_to_use)
+	explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
 	smoke(
 		explosion_location,
 		magnitude*0.05*2,
@@ -72,7 +72,7 @@
 		var/mob/living/L = caller
 		tag_to_use = L.loyalty_tag
 
-	explode(explosion_location,explosion_power*10,caller,container.owner,tag_to_use)
+	explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
 	smoke(
 		explosion_location,
 		magnitude*0.05,

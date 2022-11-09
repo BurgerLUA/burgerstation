@@ -121,7 +121,7 @@
 		if(T)
 			T.visible_message(span("danger","You hear a mechanical click when you open the tab... oh fu-"))
 			var/mob/living/L = caller
-			explode(T,15,caller,src,L.loyalty_tag)
+			explode(T,3,caller,src,L.loyalty_tag)
 			explosive = FALSE
 
 

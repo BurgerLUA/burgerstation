@@ -30,7 +30,7 @@
 /mob/living/simple/exploding_frog/death()
 
 	if(!exploded)
-		explode(get_turf(src),30,master ? master : src,src,loyalty_tag)
+		explode(get_turf(src),2,master ? master : src,src,loyalty_tag)
 		exploded = TRUE
 
 	. = ..()

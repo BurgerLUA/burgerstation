@@ -18,5 +18,5 @@
 
 /mob/living/simple/goliath/baby/post_death()
 	. = ..()
-	explode(get_turf(src),30,src,src,loyalty_tag)
+	explode(get_turf(src),3,src,src,loyalty_tag)
 	qdel(src)
