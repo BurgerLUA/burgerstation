@@ -57,10 +57,6 @@ And the code would look like this:
 	var/icon = ""
 	var/icon_state = ""
 	
-	
-
-	
-
 	var/secret = FALSE //Its a secret to everybody. Won't show up in "recipe" loot items.
 
 /recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
