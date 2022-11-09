@@ -75,7 +75,8 @@
 /loot/misc/safe
 	loot_table_guaranteed = list(
 		/loot/value/medium,
-		/loot/value/high
+		/loot/value/high,
+		/obj/item/paper/recipe
 	)
 	loot_table = list(
 		/loot/currency/dosh = 100,
@@ -89,6 +90,7 @@
 
 /loot/misc/kitchen
 	loot_table = list(
+		/obj/item/paper/recipe = 50,
 		/loot/misc/food_drink = 25,
 		/loot/misc/baking = 100,
 		/obj/item/weapon/melee/sword/spoon = 10,
@@ -266,6 +268,7 @@
 		/loot/soulgem/filled = 10,
 		/loot/supply_crate/all = 5,
 		/loot/enchanting_book = 5,
+		/obj/item/paper/recipe = 10,
 		/obj/item/bullet_cartridge/arrow/ashen{amount=5} = 70,
 		/obj/item/clothing/belt/belt_quiver = 30,
 		/obj/item/cannonball = 5,
