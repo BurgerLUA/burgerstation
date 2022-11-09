@@ -21,7 +21,7 @@
 		return FALSE
 
 	on_fire = TRUE
-	play_sound('sound/weapons/magic/fireball.ogg',get_turf(src),range_max=VIEW_RANGE)
+	play_sound('sound/weapons/magic/fireball.ogg',get_turf(src),range_max=VIEW_RANGE,volume = 25)
 
 	if(ai)
 		ai.on_damage_received(null,source,null,null,null,added_fire_stacks*5,null,FALSE)

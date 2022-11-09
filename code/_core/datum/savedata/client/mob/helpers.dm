@@ -91,7 +91,7 @@ var/global/allow_loading = TRUE
 
 	return TRUE
 
-/savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/force=FALSE,var/died=FALSE)
+/savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/died=FALSE)
 
 	if(!A)
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save NULL. Please contact the server owner with error code: 1000.</h2>"))
@@ -108,11 +108,6 @@ var/global/allow_loading = TRUE
 	if(!istype(A))
 		usr?.to_chat(span("danger","<h2>Save failed. Tried to save [A.get_debug_name()]. Please contact the server owner with error code: 1003.</h2>"))
 		CRASH("SAVE ERROR: Tried to save [A.get_debug_name()], a non-player!")
-
-
-	if(!force && world_state != STATE_RUNNING)
-		usr?.to_chat(span("danger","Your character was not saved as the round is not running!"))
-		return FALSE
 
 	if(!A.allow_save)
 		usr?.to_chat(span("danger","You cannot save this character!"))

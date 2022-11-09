@@ -79,15 +79,13 @@
 		valid_turfs[T] = direction_mod
 		total_direction_mod += direction_mod
 
-	var/has_existing = length(valid_existing)
-
 	for(var/k in valid_turfs)
 		CHECK_TICK_SAFE(50,FPS_SERVER)
 		if(!total_direction_mod)
 			break
 		var/new_power_value = valid_turfs[k]
 		var/turf/T = k
-		var/obj/explosion_process/EP = has_existing ? valid_existing[k] : null
+		var/obj/explosion_process/EP = valid_existing[k] ? valid_existing[k] : null
 		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))*0.5
 		if(EP)
 			if(EP.power <= power_to_give)

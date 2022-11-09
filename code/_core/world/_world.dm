@@ -161,7 +161,7 @@ var/global/world_state = STATE_STARTING
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
 		if(P.dead)
 			continue
-		if(M.save_character(P,force = TRUE))
+		if(M.save_character(P))
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
