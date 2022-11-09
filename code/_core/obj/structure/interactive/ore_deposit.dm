@@ -249,7 +249,7 @@
 	..()
 	var/list/possible_materials = list(
 		/obj/structure/interactive/ore_deposit/iron = 100,
-		/obj/structure/interactive/ore_deposit/plasma = 10,
+		/obj/structure/interactive/ore_deposit/plasma = 40,
 		/obj/structure/interactive/ore_deposit/carbon = 20,
 		/obj/structure/interactive/ore_deposit/gold = 50,
 		/obj/structure/interactive/ore_deposit/silver = 50,
