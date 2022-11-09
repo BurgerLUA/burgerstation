@@ -4,9 +4,9 @@
 	required_items = list("/obj/item/tempering/quality/ranged" = 1,
 	"/obj/item/weapon/melee/tool/screwdriver" = 1)
 
-	no_consume_ids = list("/obj/item/weapon/melee/tool/screwdriver")
+	consume_id_amount = list("/obj/item/weapon/melee/tool/screwdriver" = 0)
 
-	product = /obj/item/tempering/quality/ranged_bow
+	product = list("/obj/item/tempering/quality/ranged_bow" = 100)
 
 /recipe/workbench/clothing_repair
 	
@@ -16,7 +16,7 @@
 	"/obj/item/crafting/ingredient/thread/synthcloth" = 1)
 
 
-	product = /obj/item/tempering/quality/clothing/repair
+	product = list("/obj/item/tempering/quality/clothing/repair" = 100)
 
 /recipe/workbench/whetstone
 

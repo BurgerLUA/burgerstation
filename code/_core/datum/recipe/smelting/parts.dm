@@ -10,10 +10,10 @@
 
 	required_items = list("/obj/item/material/ingot/brass" = 1,"/obj/item/crafting/ingredient/part/casing_mold" = 1)
 
-	no_consume_ids = list("/obj/item/crafting/ingredient/part/casing_mold")
+	consume_id_amount = list("/obj/item/crafting/ingredient/part/casing_mold" = 0)
 
 	product = list("/obj/item/crafting/ingredient/part/bullet_casings" = 100)
 	amount = list(2)
-	
+
 
 	

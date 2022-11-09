@@ -56,7 +56,7 @@ And the code would look like this:
 	var/icon = ""
 	var/icon_state = ""
 	
-	var/list/no_consume_ids = list() //What types shouldnt be consumed on craft?
+	var/list/consume_id_amount = list() //Item to consume amount list. 0 will not consume the item. Null is 1.
 
 	
 
@@ -90,10 +90,15 @@ And the code would look like this:
 				if(do_debug) 
 					log_debug("There is an incorrect item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
+			else if(held_item_in_grid.amount < consume_id_amount[grid_crafting_id_text] && consume_id_amount[grid_crafting_id_text])
+				if (do_debug)
+					log_debug("There isnt enough of item in [grid_id]! We cannot craft this recipe ([name]) without [consume_id_amount[grid_crafting_id_text]] [grid_crafting_id] in [grid_id]. ")
 			else
 				used_items += held_item_in_grid
-				if(grid_crafting_id_text in no_consume_ids)
-					used_items[held_item_in_grid] = TRUE
+				if(grid_crafting_id_text in consume_id_amount)
+					used_items[held_item_in_grid] = consume_id_amount[grid_crafting_id_text]
+				else
+					used_items[held_item_in_grid] = 1
 	
 	if(length(required_items))
 		var/list/found_slots = list()
@@ -108,12 +113,16 @@ And the code would look like this:
 					var/obj/item/I = item_table[grid_id]
 					if(!I)
 						continue
+					if(I.amount < consume_id_amount[crafting_type_id])
+						continue
 					if(istype(I,crafting_id))
 						used_items += I
 						found=TRUE
 						found_slots += grid_id
-						if(crafting_type_id in no_consume_ids)
-							used_items[I] = TRUE
+						if(crafting_type_id in consume_id_amount)
+							used_items[I] = consume_id_amount[crafting_type_id]
+						else
+							used_items[I] = 1
 						break
 			if(!found)
 				return list()

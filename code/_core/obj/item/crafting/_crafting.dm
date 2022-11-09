@@ -126,10 +126,10 @@
 					if(R.amount[i] > 1 && I3.amount_max > 1)
 						I3.amount = R.amount[i]
 					for(var/obj/item/I in recipe_check)
-						if(recipe_check[I])
+						if(recipe_check[I] == 0)
 							continue
 						else
-							I.add_item_count(-1)
+							I.add_item_count(-recipe_check[I])
 					R.on_create(caller,src,I3)
 					return I3
 				else //Craft fails.
@@ -149,10 +149,10 @@
 						if(R.fail_amount > 1 && IFP.amount_max > 1)
 							IFP.amount = R.fail_amount
 						for(var/obj/item/I in recipe_check)
-							if(recipe_check[I])
+							if(recipe_check[I] == 0)
 								continue
 							else
-								I.add_item_count(-1)
+								I.add_item_count(-recipe_check[I])
 						R.on_fail(caller,src,IFP)	
 						return IFP
 	caller.to_chat(span("warning","You fail to craft anything..."))
