@@ -67,6 +67,8 @@
 	var/obj/item/attachment/stock/attachment_stock
 	var/attachment_stock_offset_x = 0
 	var/attachment_stock_offset_y = 0
+	var/obj/item/attachment/stock_mod/stock_mod
+	var/obj/item/attachment/barrel_mod/barrel_mod
 
 	damage_type = /damagetype/melee/club/gun_butt //Melee.
 
@@ -85,6 +87,8 @@
 	QDEL_NULL(attachment_sight)
 	QDEL_NULL(attachment_barrel)
 	QDEL_NULL(firing_pin)
+	QDEL_NULL(stock_mod)
+	QDEL_NULL(barrel_mod)
 	. = ..()
 
 
@@ -126,6 +130,8 @@
 	SAVEATOM("attachment_sight")
 	SAVEATOM("attachment_undermount")
 	SAVEATOM("attachment_stock")
+	SAVEATOM("stock_mod")
+	SAVEATOM("barrel_mod")
 
 /obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
@@ -134,6 +140,8 @@
 	LOADATOM("attachment_sight")
 	LOADATOM("attachment_undermount")
 	LOADATOM("attachment_stock")
+	LOADATOM("stock_mod")
+	LOADATOM("barrel_mod")
 
 /obj/item/weapon/ranged/Finalize()
 
@@ -277,9 +285,6 @@
 
 /obj/item/weapon/ranged/think()
 
-
-
-
 	if(heat_max && last_shoot_time + min(shoot_delay*(weight/10),15) < world.time)
 		var/heat_to_remove = CEILING(0.03/max(1,weight) + heat_current*0.1,0.001)
 		heat_current = max(0,heat_current - heat_to_remove)
@@ -403,6 +408,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/penetrations_left = 0
 	var/condition_to_use = 1
 	var/bullet_view_punch = 1
+	var/durability_mod = src.attachment_stats["durability_mod"]
 	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
 
 	var/power_to_use = 1
@@ -421,8 +427,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		ADD(penetrations_left,spent_bullet.penetrations)
 		power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2)
 		damage_multiplier_to_use *= quality_bonus
-		condition_to_use = max(0,5 - max(0,quality_bonus*4))
-		condition_to_use += FLOOR(heat_current*5,1)
+		var/condition_to_use_pre = max(0,1 - max(0,quality_bonus*4))
+		condition_to_use_pre += FLOOR(heat_current*2,1)
+		condition_to_use = condition_to_use_pre * durability_mod
 	else if(requires_bullets)
 		handle_empty(caller)
 		return FALSE

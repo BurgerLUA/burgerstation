@@ -29,7 +29,6 @@
 		if(ore_count <= 0)
 			A.to_chat(span("notice", "The [name] runs dry!"))
 			qdel(src)
-		ore_count--
 		src.drop_ore(A,stored_ore)
 		INTERACT_DELAY(I.tool_time)
 
@@ -41,6 +40,7 @@
 	INITIALIZE(TO)
 	GENERATE(TO)
 	FINALIZE(TO)
+	ore_count--
 	if(OB)
 		TO.drop_item(OB.loc)
 	else

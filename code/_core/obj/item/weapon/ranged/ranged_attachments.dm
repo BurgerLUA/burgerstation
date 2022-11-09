@@ -12,7 +12,9 @@
 		/obj/item/attachment/barrel/ = "attachment_barrel",
 		/obj/item/attachment/sight/ = "attachment_sight",
 		/obj/item/attachment/undermount/ = "attachment_undermount",
-		/obj/item/attachment/stock = "attachment_stock"
+		/obj/item/attachment/stock = "attachment_stock",
+		/obj/item/attachment/barrel_mod = "barrel_mod",
+		/obj/item/attachment/stock_mod = "stock_mod"
 	)
 
 	for(var/k in type_to_var)
@@ -46,7 +48,9 @@
 		"attachment_barrel",
 		"attachment_sight",
 		"attachment_undermount",
-		"attachment_stock"
+		"attachment_stock",
+		"barrel_mod",
+		"stock_mod"
 	)
 
 	var/list/choice_list = list()
@@ -88,7 +92,9 @@
 		"attachment_barrel",
 		"attachment_sight",
 		"attachment_undermount",
-		"attachment_stock"
+		"attachment_stock",
+		"barrel_mod",
+		"stock_mod"
 	)
 
 	var/list/modifier_count = list()

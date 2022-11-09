@@ -864,6 +864,9 @@ var/global/list/rarity_to_mul = list(
 	var/original_quality = quality
 	var/original_damage_num = get_damage_icon_number()
 
+	if (quality >= 200)
+		return TRUE
+
 	quality = FLOOR(quality + quality_to_add,0.01)
 
 	if(original_quality > 0 && quality <= 0)

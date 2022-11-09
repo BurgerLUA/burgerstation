@@ -1129,6 +1129,8 @@
 #include "code\_core\obj\item\attachment\attachment_sight.dm"
 #include "code\_core\obj\item\attachment\attachment_stock.dm"
 #include "code\_core\obj\item\attachment\attachment_undermount.dm"
+#include "code\_core\obj\item\attachment\gun_barrel.dm"
+#include "code\_core\obj\item\attachment\gun_stock.dm"
 #include "code\_core\obj\item\bullet\_bullet_cartridge.dm"
 #include "code\_core\obj\item\bullet\arrow.dm"
 #include "code\_core\obj\item\bullet\bmg_50.dm"
