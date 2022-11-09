@@ -95,9 +95,9 @@
 
 
 /obj/item/attachment/undermount/gun/grenade_launcher
-	name = "20mm undermounted grenade launcher"
+	name = "40mm undermounted grenade launcher"
 	desc = "Thump!"
-	desc_extended = "A compact undermounted grenade launcher capable of shooting 20mm grenades at medium ranges. The added weight to the front makes the weapon bulkier to shoot when moving."
+	desc_extended = "A compact undermounted grenade launcher capable of shooting 40mm grenades at medium ranges. The added weight to the front makes the weapon bulkier to shoot when moving."
 	icon_state = "grenade_launcher"
 
 	stored_gun = /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount
