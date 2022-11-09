@@ -12,3 +12,6 @@
 /damagetype/ranged/bullet/sniper_20/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
+/damagetype/ranged/bullet/sniper_20/du
+	damage_mod = DU_MUL
+	penetration_mod = DU_MUL

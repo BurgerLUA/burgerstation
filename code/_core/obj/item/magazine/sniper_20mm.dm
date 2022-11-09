@@ -26,3 +26,9 @@
 	icon_states = 1
 
 	value = 40
+
+/obj/item/magazine/sniper_20mm/du
+	ammo = /obj/item/bullet_cartridge/sniper_20/du
+	icon_state = "20_DU"
+	no_restock = TRUE
+	value = 120

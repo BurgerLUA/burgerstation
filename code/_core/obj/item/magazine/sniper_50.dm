@@ -46,3 +46,8 @@
 	name = "\improper .50 sniper magazine - armor piercing"
 	icon_state = "50AP"
 	ammo = /obj/item/bullet_cartridge/sniper_50/ap
+/obj/item/magazine/sniper_50/du
+	name = "\improper .50 sniper magazine - depleted uranium"
+	icon_state = "50_DU"
+	ammo = /obj/item/bullet_cartridge/sniper_50/du
+	no_restock = TRUE

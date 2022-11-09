@@ -18,6 +18,11 @@
 	damage_mod = SURPLUS_MUL
 	penetration_mod = ARMOR_MUL
 
+/damagetype/ranged/bullet/rifle_308/du
+	damage_mod = DU_MUL
+	penetration_mod = DU_MUL
+
+
 /damagetype/ranged/bullet/rifle_762mm
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -37,6 +42,10 @@
 /damagetype/ranged/bullet/rifle_762mm/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
+
+/damagetype/ranged/bullet/rifle_762mm/du
+	damage_mod = DU_MUL
+	penetration_mod = DU_MUL
 
 /damagetype/ranged/bullet/rifle_762mm/ap
 	damage_mod = SURPLUS_MUL

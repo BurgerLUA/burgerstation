@@ -82,6 +82,17 @@
 	if(.)
 		explode(get_turf(hit_atom),40,owner,weapon,iff_tag,multiplier = 5)
 
+/obj/projectile/bullet/rocket_nuclear
+
+	icon = 'icons/obj/projectiles/rocket.dmi'
+	icon_state = "rocket_nuke"
+	hit_target_turf = TRUE
+
+/obj/projectile/bullet/rocket_nuclear/on_projectile_hit(var/atom/hit_atom)
+	. = ..()
+	if(.)
+		explode(get_turf(hit_atom),80,owner,weapon,iff_tag,multiplier = 10)
+
 /obj/projectile/bullet/rocket_ap
 
 	icon = 'icons/obj/projectiles/rocket.dmi'

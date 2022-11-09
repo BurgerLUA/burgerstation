@@ -26,3 +26,8 @@
 	damage_type_bullet = /damagetype/ranged/bullet/bmg_50/surplus
 	jam_chance = 1
 	value = 0
+
+/obj/item/bullet_cartridge/sniper_20/du
+	name = "\improper DU 20x117mm sniper round"
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/du
+	value = 40

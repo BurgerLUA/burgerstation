@@ -28,6 +28,13 @@
 	jam_chance = 1
 	value = 0
 
+/obj/item/bullet_cartridge/sniper_50/du
+	name = "\improper DU .50 sniper round"
+	desc_extended = "For sniper rifles that require .50 ammo. This one has a depleted uranium tip."
+	rarity = RARITY_MYTHICAL
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/du
+	value = 120
+
 /obj/item/bullet_cartridge/sniper_50/explosive
 	name = "\improper .50 explosive sniper round"
 	icon = 'icons/obj/item/bullet/50_explosive.dmi'

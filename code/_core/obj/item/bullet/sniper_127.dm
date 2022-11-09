@@ -33,8 +33,13 @@
 	desc = "For when you want to shoot someone's armor so hard their family will feel it too."
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_127/ap
 
-/obj/item/bullet_cartridge/sniper_127/premium //incase you want someone extreamly dead.
+/obj/item/bullet_cartridge/sniper_127/premium //incase you want someone extremely dead.
 	name = "\improper premium 12.7x90mm sniper round"
 	desc = "For when you want to shoot something so hard everone feels it."
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_127/premium
+
+/obj/item/bullet_cartridge/sniper_127/du //incase you want someone EXTREMELY dead.
+	name = "\improper DU 12.7x90mm sniper round"
+	desc = "For when you want to shoot something so hard everone slumps over in pain."
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_127/du
 

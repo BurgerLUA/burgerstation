@@ -30,7 +30,6 @@
 		/obj/item/legion_core_stabilizer,
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
-		/obj/item/crafting/smelter,
 		/obj/item/clothing/overwear/hardsuit/mining
 	)
 

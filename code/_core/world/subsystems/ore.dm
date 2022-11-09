@@ -16,12 +16,12 @@ SUBSYSTEM_DEF(ore)
 		if(!S.organic)
 			continue
 		if(SSdmm_suite.is_pvp_coord(S.x,S.y,S.z))
-			if(prob(98))
+			if(prob(99))
 				continue
 			new /obj/marker/ore_deep(S)
 			spawned_ore_chunks_deep++
 		else
-			if(prob(99))
+			if(prob(99.5))
 				continue
 			new /obj/marker/ore_deep(S)
 			spawned_ore_chunks_deep++
@@ -30,12 +30,12 @@ SUBSYSTEM_DEF(ore)
 		if(!S.organic || !S.health)
 			continue
 		if(SSdmm_suite.is_pvp_coord(S.x,S.y,S.z))
-			if(prob(95))
+			if(prob(97.5))
 				continue
 			new /obj/marker/ore(S)
 			spawned_ore_chunks++
 		else
-			if(prob(97.5))
+			if(prob(99))
 				continue
 			new /obj/marker/ore(S)
 			spawned_ore_chunks++

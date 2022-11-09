@@ -50,6 +50,28 @@
 
 	size = 2
 
+/obj/item/bullet_cartridge/rocket_70mm/nuclear
+	name = "70mm nuclear Warhead"
+	desc = "Look at me im Davy Crocket!"
+	desc_extended = "For RPGs, wAIT IS THAT A FUCKING NUKE?!?"
+	rarity = RARITY_RARE
+	icon = 'icons/obj/item/bullet/rocket.dmi'
+	icon_state = "NUKE"
+	value = 1200
+
+	amount_max = 1
+	amount_max_icon = 1
+
+	bullet_length = 800
+	bullet_diameter = 70
+
+	projectile = /obj/projectile/bullet/rocket_nuclear
+	damage_type_bullet = /damagetype/ranged/bullet/rocket/nuclear
+
+	projectile_speed = TILE_SIZE * 0.7
+
+	size = 2
+
 /obj/item/bullet_cartridge/rocket_70mm/wp/get_base_value()
 	. = ..()
 	. += 200
@@ -70,7 +92,7 @@
 	bullet_diameter = 70
 
 	projectile = /obj/projectile/bullet/rocket_ap
-	damage_type_bullet = /damagetype/ranged/bullet/rocket_ap/
+	damage_type_bullet = /damagetype/ranged/bullet/rocket/ap
 
 	projectile_speed = TILE_SIZE * 0.9
 
