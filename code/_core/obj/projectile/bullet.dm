@@ -91,7 +91,7 @@
 /obj/projectile/bullet/rocket_nuclear/on_projectile_hit(var/atom/hit_atom)
 	. = ..()
 	if(.)
-		explode(get_turf(hit_atom),160,owner,weapon,iff_tag,multiplier = 10)
+		explode(get_turf(hit_atom),12,owner,weapon,iff_tag,multiplier = 10)
 
 /obj/projectile/bullet/rocket_ap
 

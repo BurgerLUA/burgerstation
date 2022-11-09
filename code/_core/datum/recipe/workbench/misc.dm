@@ -18,7 +18,7 @@
 		"a3" = null,
 
 		"b1" = "/obj/item/material/wood/normal",
-		"b2" = "obj/item/paper",
+		"b2" = "/obj/item/paper",
 		"b3" = null,
 
 		"c1" = "/obj/item/crafting/ingredient/part/tape",

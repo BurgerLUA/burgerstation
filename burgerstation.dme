@@ -694,6 +694,7 @@
 #include "code\_core\datum\recipe\smelting\construction.dm"
 #include "code\_core\datum\recipe\smelting\ingots.dm"
 #include "code\_core\datum\recipe\smelting\parts.dm"
+#include "code\_core\datum\recipe\workbench\attachments.dm"
 #include "code\_core\datum\recipe\workbench\clothing.dm"
 #include "code\_core\datum\recipe\workbench\misc.dm"
 #include "code\_core\datum\recipe\workbench\parts.dm"
