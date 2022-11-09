@@ -30,7 +30,7 @@
 	new/obj/effect/temp/target(loc,20)
 
 /obj/effect/falling_meteor/proc/land()
-	explode(get_turf(src),20,src,src,multiplier = 5)
+	explode(get_turf(src),2,src,src,multiplier = 5)
 	src.alpha = 0
 	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
 	return TRUE
@@ -60,7 +60,7 @@
 	return ..()
 
 /obj/effect/falling_fireball/proc/land()
-	explode(get_turf(src),10,src,src,desired_loyalty_tag=stored_loyalty_tag)
+	explode(get_turf(src),2,src,src,desired_loyalty_tag=stored_loyalty_tag)
 	src.alpha = 0
 	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
 	return TRUE

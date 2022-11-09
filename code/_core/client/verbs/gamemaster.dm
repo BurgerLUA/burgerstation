@@ -347,12 +347,12 @@
 
 	var/turf/T = get_turf(mob)
 
-	var/desired_strength = input("What do you wish the explosion strength to be? Max: 10000","Explosion Strength",40) as num|null
+	var/desired_strength = input("What do you wish the explosion range (extimated) to be? Max: 20","Explosion Strength",4) as num|null
 
 	if(!desired_strength || desired_strength <= 0)
 		return FALSE
 
-	desired_strength = min(desired_strength,10000)
+	desired_strength = min(desired_strength,20)
 
 	log_admin("[src.get_debug_name()] created a [desired_strength] strength explosion at [T.get_debug_name()].")
 

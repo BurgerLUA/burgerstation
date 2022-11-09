@@ -92,7 +92,7 @@
 	play_sound('sound/weapons/cannon_shot.ogg',T)
 
 	//Explosion effects.
-	explode(T,100,caller,src,loyalty_tag_to_use,src.dir,3)
+	explode(T,4,caller,src,loyalty_tag_to_use,src.dir,3)
 	smoke(T,3,SECONDS_TO_DECISECONDS(3),null,caller,100)
 
 	has_fuse = FALSE

@@ -17,7 +17,14 @@
 
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
-	SSexplosion.add_data(loc,owner,source,epicenter,(power*0.9 + original_power*0.1)*multiplier,loyalty_tag)
+	SSexplosion.add_data(
+		loc,
+		owner,
+		source,
+		epicenter,
+		(power*0.75 + original_power*0.25)*multiplier,
+		loyalty_tag
+	)
 	icon_state = "[clamp(FLOOR(power/30,1),1,3)]"
 	if(velocity_dir)
 		dir = velocity_dir
@@ -86,17 +93,17 @@
 		var/new_power_value = valid_turfs[k]
 		var/turf/T = k
 		var/obj/explosion_process/EP = valid_existing[k] ? valid_existing[k] : null
-		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))*0.5
+		var/power_to_give = (power * (new_power_value/total_direction_mod) * min(new_power_value,1))*0.75
 		if(EP)
 			if(EP.power <= power_to_give)
-				EP.power += power_to_give
+				EP.power += power_to_give*0.9
 				EP.original_power = max(EP.original_power,original_power)
 				EP.blacklist += blacklist
 				power -= power_to_give
 		else
 			EP = new(T)
 			EP.original_power = original_power
-			EP.power = power_to_give
+			EP.power = power_to_give*0.9
 			power -= power_to_give
 			EP.velocity_dir = get_dir_advanced(src,EP)
 			EP.owner = owner

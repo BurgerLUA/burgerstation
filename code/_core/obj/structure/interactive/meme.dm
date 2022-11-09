@@ -29,7 +29,7 @@
 
 /obj/structure/interactive/dont_look/proc/do_explode()
 	var/turf/T = get_turf(src)
-	explode(T,100,T,T,"God")
+	explode(T,VIEW_RANGE,T,T,"God")
 	qdel(src)
 	return TRUE
 

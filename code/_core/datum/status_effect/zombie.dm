@@ -84,7 +84,6 @@
 	A.ai = new /ai/advanced/zombie(null,A)
 
 	if(A.client)
-		var/turf/T = get_turf(A)
 		A.client.make_ghost(T ? T : FALLBACK_TURF)
 	A.ckey_last = null
 	A.add_status_effect(ADRENALINE,100,-1,force=TRUE,stealthy=TRUE)

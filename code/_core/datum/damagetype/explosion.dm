@@ -1,4 +1,4 @@
-//Explosion damage follows this graph: https://www.desmos.com/calculator/ia1lj88rdt
+//Explosion damage follows this graph: https://www.desmos.com/calculator/ia1lj88rdt (OUTDATED)
 //Calculated in do_explosion_damage().
 
 /damagetype/explosion/
