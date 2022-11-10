@@ -46,12 +46,10 @@
 	return ..()
 damagetype/ranged/bullet/rocket/nuclear
 	attack_damage_base = list(
-		BLUNT = 100,
 		BOMB = 50,
 		RAD = 100
 	)
 	attack_damage_penetration = list(
-		BLUNT = 50,
 		BOMB = 50,
 		RAD = 50
 	)
