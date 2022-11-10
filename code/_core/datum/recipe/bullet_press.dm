@@ -16,5 +16,5 @@
 	)
 	required_items = list() //Preferably dont use.
 
-	recipe_type = "bullet_press"
+	recipe_type = "bullet press"
 
