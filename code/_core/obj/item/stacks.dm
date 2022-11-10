@@ -72,7 +72,7 @@
 			var/splitamount = FLOOR(choice,1)
 			if(!choice || splitamount <= 0)
 				L.to_chat(span("notice","You decide not to split the stack."))
-			else
+			else if (amount > 1) //just in case.
 				var/obj/hud/inventory/I = object
 				var/old_item_name = src.name
 				var/obj/item/stack2
