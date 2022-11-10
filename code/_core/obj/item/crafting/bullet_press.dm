@@ -12,7 +12,7 @@
 		/obj/hud/inventory/crafting/result
 	)
 
-	crafting_type = "bullet press"
+	crafting_type = "bullet_press"
 
 	value = 25
 

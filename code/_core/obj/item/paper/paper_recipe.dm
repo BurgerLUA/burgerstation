@@ -90,7 +90,7 @@
 			var/product_chance = stored_recipe.product[product_path]
 			name = "Recipe for [product_name]"
 			desc = "Some sort of recipe?"
-			desc_extended = "Looks like a recipe for a [product_name],whatever that is.Made in the [stored_recipe.recipe_type], it makes [stored_recipe.amount[1]] at a [product_chance]% chance."
+			desc_extended = "Looks like a recipe for a [product_name],whatever that is.Made in the [deunderscore(stored_recipe.recipe_type)], it makes [stored_recipe.amount[1]] at a [product_chance]% chance."
 		else
 			for(var/i = 1,i <= length(stored_recipe.product),i++)
 				var/product_path = stored_recipe.product[i]

@@ -83,7 +83,7 @@
 
 		"c2" = "/obj/item/crafting/ingredient/part/bullet_casings"
 	)
-	product = list("/damagetype/ranged/bullet/sniper_127/du" = 100)
+	product = list("/obj/item/magazine/sniper_127/du" = 100)
 	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 32,"/obj/item/crafting/ingredient/part/bullet_casings" = 4,
 	"/obj/item/material/pellets/uranium_235" = 16)
 
@@ -94,10 +94,10 @@
 		"a2" = "/obj/item/material/pellets/uranium_235",
 
 		"b2" = "/obj/item/crafting/ingredient/part/gunpowder",
-		"b3" = "/obj/item/bullet_cartridge/sniper_20",
+		"b3" = "/obj/item/magazine/sniper_20mm",
 
 		"c2" = "/obj/item/crafting/ingredient/part/bullet_casings"
 	)
-	product = list("/obj/item/bullet_cartridge/sniper_20/du" = 100)
+	product = list("/obj/item/magazine/sniper_20mm/du" = 100)
 	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 64,"/obj/item/crafting/ingredient/part/bullet_casings" = 4,
 	"/obj/item/material/pellets/uranium_235" = 32)
