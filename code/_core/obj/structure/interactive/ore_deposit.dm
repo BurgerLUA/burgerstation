@@ -88,7 +88,7 @@
 	desc_extended = "A vein of ore. This one contains iron ore."
 	icon_state = "deposit_iron"
 	stored_ore = /obj/item/material/ore/iron
-	ore_max = 10
+	ore_max = 20
 	deep_ore_max = 800
 
 /obj/structure/interactive/ore_deposit/copper
@@ -97,7 +97,7 @@
 	desc_extended = "A vein of ore. This one contains copper ore."
 	color = "#E28446"
 	stored_ore = /obj/item/material/ore/copper
-	ore_max = 7
+	ore_max = 14
 	deep_ore_max = 560
 
 /obj/structure/interactive/ore_deposit/tin
@@ -106,7 +106,7 @@
 	desc_extended = "A vein of ore. This one contains tin ore."
 	color = "#E2E2E2"
 	stored_ore = /obj/item/material/ore/tin
-	ore_max = 7
+	ore_max = 14
 	deep_ore_max = 560
 
 /obj/structure/interactive/ore_deposit/zinc
@@ -115,7 +115,7 @@
 	desc_extended = "A vein of ore. This one contains zinc ore."
 	color = "#E8E8EF"
 	stored_ore = /obj/item/material/ore/zinc
-	ore_max = 6
+	ore_max = 12
 	deep_ore_max = 500
 
 /obj/structure/interactive/ore_deposit/gold
@@ -124,7 +124,7 @@
 	desc_extended = "A vein of ore. This one contains gold ore."
 	icon_state = "deposit_gold"
 	stored_ore = /obj/item/material/ore/gold
-	ore_max = 5
+	ore_max = 10
 	deep_ore_max = 400
 
 /obj/structure/interactive/ore_deposit/uranium
@@ -133,7 +133,7 @@
 	desc_extended = "A vein of ore. This one contains uranium ore."
 	icon_state = "deposit_uranium"
 	stored_ore = /obj/item/material/ore/uranium
-	ore_max = 5
+	ore_max = 10
 	deep_ore_max = 500
 
 /obj/structure/interactive/ore_deposit/titanium
@@ -141,7 +141,7 @@
 	desc = "Float like a butterfly."
 	desc_extended = "A vein of ore. This one contains titanium ore."
 	stored_ore = /obj/item/material/ore/titanium
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 400
 
 /obj/structure/interactive/ore_deposit/silver
@@ -150,7 +150,7 @@
 	desc_extended = "A vein of ore. This one contains silver ore."
 	icon_state = "deposit_silver"
 	stored_ore = /obj/item/material/ore/silver
-	ore_max = 5
+	ore_max = 10
 	deep_ore_max = 400
 
 /obj/structure/interactive/ore_deposit/carbon
@@ -159,7 +159,7 @@
 	desc_extended = "A vein of ore. This one contains carbon ore."
 	icon_state = "deposit_coal"
 	stored_ore = /obj/item/material/ore/carbon
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 80
 
 /obj/structure/interactive/ore_deposit/magnesium
@@ -167,7 +167,7 @@
 	desc = "Makes pretty fire."
 	desc_extended = "A vein of ore. This one contains magnesium ore."
 	stored_ore = /obj/item/material/ore/magnesium
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 240
 
 /obj/structure/interactive/ore_deposit/aluminium
@@ -176,7 +176,7 @@
 	desc_extended = "A vein of ore. This one contains aluminum ore."
 	stored_ore = /obj/item/material/ore/aluminium
 	color = "#C4C4C4"
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 240
 
 /obj/structure/interactive/ore_deposit/nickel
@@ -184,7 +184,7 @@
 	desc = "What concert is 45 cents?"
 	desc_extended = "A vein of ore. This one contains nickel ore."
 	stored_ore = /obj/item/material/ore/nickel
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 240
 
 /obj/structure/interactive/ore_deposit/plasma
@@ -193,7 +193,7 @@
 	desc_extended = "A vein of ore. This one contains plasma/phoron ore."
 	icon_state = "deposit_phoron"
 	stored_ore = /obj/item/material/ore/plasma
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 160
 
 /obj/structure/interactive/ore_deposit/diamond
@@ -202,7 +202,7 @@
 	desc_extended = "A vein of ore. This one contains diamond ore."
 	icon_state = "deposit_diamond"
 	stored_ore = /obj/item/material/ore/diamond
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 160
 
 /obj/structure/interactive/ore_deposit/cobalt
@@ -211,7 +211,7 @@
 	desc_extended = "A vein of ore. This one contains cobalt ore."
 	color =	COLOR_BLUE
 	stored_ore = /obj/item/material/ore/cobalt
-	ore_max = 3
+	ore_max = 6
 	deep_ore_max = 240
 //deep ore
 /obj/structure/interactive/ore_deposit_ground

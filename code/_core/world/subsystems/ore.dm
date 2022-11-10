@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(ore)
 	var/spawned_ore_chunks = 0
 	var/spawned_ore_chunks_deep = 0
 	var/startturf = locate(1,1,SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"])
-	var/endturf = locate(world.maxx,world.maxy,world.maxz)
+	var/endturf = locate(world.maxx,world.maxy,SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"])
 	for(var/turf/simulated/floor/S in block(startturf,endturf))
 		if(!S.organic)
 			continue
