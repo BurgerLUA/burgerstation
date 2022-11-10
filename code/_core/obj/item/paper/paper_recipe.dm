@@ -76,14 +76,17 @@
 			for(var/unconsumed in stored_recipe.consume_id_amount)
 				var/obj/item/item_path = text2path_safe(unconsumed)
 				var/item_name = initial(item_path.name)
-				data += list("Unconsumed: [item_name]\n\n")
+				if(stored_recipe.consume_id_amount[unconsumed] >=1)
+					data += list("Amount: [item_name] -> [stored_recipe.consume_id_amount[unconsumed]]\n\n")
+				else
+					data += list("Unconsumed: [item_name]")
 		if(stored_recipe.reagents_to_add.len >= 1)
 			for(var/reagent_path in stored_recipe.reagents_to_add)
 				var/reagent/reagent = text2path_safe(reagent_path)
 				data += list("Product reagent: [initial(reagent.name)] x [stored_recipe.reagents_to_add[reagent_path]]\n\n")
 		if(length(stored_recipe.product) == 1)
 			var/product_path = stored_recipe.product[1]
-			var/product_name = initial(stored_recipe.product[1].name)
+			var/product_name = initial(text2path_safe(product_path).name)
 			var/product_chance = stored_recipe.product[product_path]
 			name = "Recipe for [product_name]"
 			desc = "Some sort of recipe?"
@@ -91,7 +94,7 @@
 		else
 			for(var/i = 1,i <= length(stored_recipe.product),i++)
 				var/product_path = stored_recipe.product[i]
-				var/product_name = initial(stored_recipe.product[i].name)
+				var/product_name = initial(text2path_safe(product_path).name)
 				var/product_chance = stored_recipe.product[product_path]
 				name = "Recipe for Many"
 				desc = "Thats a lot of items."

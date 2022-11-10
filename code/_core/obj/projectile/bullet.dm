@@ -77,6 +77,25 @@
 	icon_state = "rocket_he"
 	hit_target_turf = TRUE
 
+/obj/projectile/bullet/HE_40M/hv
+
+	icon_state = "HV"
+
+/obj/projectile/bullet/HE_40M/hv/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+	. = ..()
+	if(.)
+		explode(old_loc,2,owner,weapon,iff_tag)
+
+/obj/projectile/bullet/HE_40M/du
+
+	icon_state = "DU"
+
+/obj/projectile/bullet/HE_40M/du/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+	. = ..()
+	if(.)
+		explode(old_loc,6,owner,weapon,iff_tag)
+
+
 /obj/projectile/bullet/rocket_he/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && old_loc)

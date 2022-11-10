@@ -49,7 +49,7 @@
 	consume_id_amount = list("/obj/item/material/pellets/magnesium" = 2)
 
 /recipe/bullet_press/incen/sniper_50
-	name = "shotgun 12 incen"
+	name = "sniper 50 incen"
 
 	required_item_grid = list(
 
