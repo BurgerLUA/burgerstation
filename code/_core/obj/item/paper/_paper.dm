@@ -49,13 +49,5 @@
 			P.active_paper = null
 
 	return ..()
-
-/obj/item/paper/save_item_data(mob/living/advanced/player/P, save_inventory, died)
-	SAVEVAR("data")
-	. = ..()
-
-/obj/item/paper/load_item_data_post(mob/living/advanced/player/P, list/object_data)
-	LOADVAR("data")
-	. = ..()
 	
 	

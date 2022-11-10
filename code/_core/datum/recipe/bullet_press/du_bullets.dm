@@ -30,7 +30,7 @@
 	"/obj/item/material/pellets/uranium_235" = 40)
 
 /recipe/bullet_press/du/nuke
-	name = "depleted uranium 308"
+	name = "depleted uranium nuke"
 	secret = TRUE
 	required_item_grid = list(
 		"a2" = "/obj/item/material/ingot/uranium_235",

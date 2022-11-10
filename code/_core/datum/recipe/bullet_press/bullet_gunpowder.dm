@@ -10,3 +10,4 @@
 		"c2" = null
 	)
 	product = list("/obj/item/crafting/ingredient/part/gunpowder" = 100)
+	consume_id_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0)

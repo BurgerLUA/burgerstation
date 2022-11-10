@@ -69,20 +69,21 @@
 		var/mob/living/L = caller
 		if(amount > 1 && CONTROL_MOD_DISARM && amount_max > 1)
 			var/choice = input("How much do you want to put in your other hand?","Amount to split",0) as num
-			if(!choice || FLOOR(choice,1) <= 0)
+			var/splitamount = FLOOR(choice,1)
+			if(!choice || splitamount <= 0)
 				L.to_chat(span("notice","You decide not to split the stack."))
 			else
 				var/obj/hud/inventory/I = object
 				var/old_item_name = src.name
 				var/obj/item/stack2
-				if(choice >= amount)
-					var/to_transfer = FLOOR((amount - 1),1)
+				if(splitamount >= amount)
+					var/to_transfer = amount - 1
 					stack2 = copy(src)
 					stack2.force_move(get_turf(src))
 					stack2.amount = 0
 					src.transfer_amount_to(stack2,to_transfer)
 				else
-					var/to_transfer = FLOOR(choice,1)
+					var/to_transfer = splitamount
 					stack2 = copy(src)
 					stack2.force_move(get_turf(src))
 					stack2.amount = 0

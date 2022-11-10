@@ -20,9 +20,12 @@
 		var/obj/item/material/ore/O = object
 		O.drop_item(src)
 		return TRUE
-
+	else if(is_advanced(caller))
+		var/mob/living/advanced/C = caller
+		if(C.selected_intent == INTENT_DISARM)
+			for(var/obj/item/material/ore/ore in contents)
+				ore.drop_item(get_turf(C))
 	return ..()
-
 /obj/structure/interactive/ore_box/Cross(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/obj/item/material/ore/))

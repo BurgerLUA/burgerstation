@@ -111,7 +111,7 @@
 	drill_depth++
 	if(drill_depth >= 100)
 		drill_counter++
-		if(drill_counter > 30)
+		if(drill_counter > 60)
 			found_deposit.drop_ore()
 			found_deposit.ore_count--
 			if(found_deposit.ore_count <= 0 )

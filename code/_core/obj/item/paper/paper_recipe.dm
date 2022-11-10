@@ -83,7 +83,7 @@
 				data += list("Product reagent: [initial(reagent.name)] x [stored_recipe.reagents_to_add[reagent_path]]\n\n")
 		if(length(stored_recipe.product) == 1)
 			var/product_path = stored_recipe.product[1]
-			var/product_name = initial(stored_recipe.product[product_path].name)
+			var/product_name = initial(stored_recipe.product[1].name)
 			var/product_chance = stored_recipe.product[product_path]
 			name = "Recipe for [product_name]"
 			desc = "Some sort of recipe?"
@@ -91,7 +91,7 @@
 		else
 			for(var/i = 1,i <= length(stored_recipe.product),i++)
 				var/product_path = stored_recipe.product[i]
-				var/product_name = initial(stored_recipe.product[product_path].name)
+				var/product_name = initial(stored_recipe.product[i].name)
 				var/product_chance = stored_recipe.product[product_path]
 				name = "Recipe for Many"
 				desc = "Thats a lot of items."
@@ -101,12 +101,15 @@
 		
 /obj/item/paper/recipe/save_item_data(mob/living/advanced/player/P, save_inventory, died)
 	//This has a special description, we need to save it!
+	. = ..()
+	SAVEVAR("data")
 	SAVEVAR("desc")
 	SAVEVAR("desc_extended")
-	. = ..()
+	
 
 /obj/item/paper/recipe/load_item_data_post(mob/living/advanced/player/P, list/object_data)
+	. = ..()
+	LOADVAR("data")
 	LOADVAR("desc")
 	LOADVAR("desc_extended")
-	. = ..()
 	
