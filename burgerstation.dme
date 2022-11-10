@@ -691,7 +691,6 @@
 #include "code\_core\datum\recipe\alchemy\potions.dm"
 #include "code\_core\datum\recipe\bullet_press\bullet_gunpowder.dm"
 #include "code\_core\datum\recipe\bullet_press\du_bullets.dm"
-#include "code\_core\datum\recipe\bullet_press\grenades.dm"
 #include "code\_core\datum\recipe\bullet_press\incen_bullets.dm"
 #include "code\_core\datum\recipe\smelting\construction.dm"
 #include "code\_core\datum\recipe\smelting\ingots.dm"

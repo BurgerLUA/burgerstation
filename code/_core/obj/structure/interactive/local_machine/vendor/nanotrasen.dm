@@ -198,6 +198,7 @@
 		/obj/item/bullet_cartridge/rocket_70mm/wp,
 		/obj/item/bullet_cartridge/rocket_70mm/ap,
 		/obj/item/bullet_cartridge/grenade_40mm,
+		/obj/item/bullet_cartridge/grenade_40mm/rubber,
 		/obj/item/powercell,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger
