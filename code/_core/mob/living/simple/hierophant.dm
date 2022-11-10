@@ -11,7 +11,7 @@
 
 	stun_angle = 0
 
-	health_base = 10000
+	health_base = 12500
 
 	armor = /armor/default_organic
 

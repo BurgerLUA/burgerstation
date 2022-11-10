@@ -3,7 +3,7 @@
 	boss_icon_state = "ash_drake"
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/
+	damage_type = /damagetype/unarmed/claw/boss/
 
 
 	pixel_x = -16
@@ -23,7 +23,7 @@
 
 	stun_angle = 0
 
-	health_base = 10000
+	health_base = 12500
 	stamina_base = 5000
 	mana_base = 5000
 

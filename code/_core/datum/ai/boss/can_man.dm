@@ -5,7 +5,7 @@
 
 	var/mob/living/simple/can_man/owner_as_can_man
 
-	var/projectile_count = 15
+	var/projectile_count = 5
 	var/projectile_delay = 10
 
 	var/strafe_count = 10
@@ -80,7 +80,7 @@
 		projectile_ramp = initial(projectile_ramp)
 		return FALSE
 
-	if(projectile_delay + projectile_ramp > 0)
+	if(projectile_delay + projectile_ramp > 0) 
 		projectile_delay--
 	else
 		projectile_delay = initial(projectile_delay)
@@ -93,10 +93,10 @@
 			null,
 			null,
 			/obj/projectile/bullet/firearm/pistol,
-			/damagetype/ranged/bullet/pistol_45,
+			/damagetype/ranged/bullet/pistol_45/hp,
 			16,
 			16,
-			0,
+			0.03,
 			TILE_SIZE*0.5,
 			1,
 			"#FF4A00",

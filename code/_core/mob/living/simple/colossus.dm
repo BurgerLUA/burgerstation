@@ -16,7 +16,7 @@
 
 	boss_loot = /loot/lavaland/colossus
 
-	health_base = 8000
+	health_base = 12000
 	stamina_base = 500
 	mana_base = 2000
 

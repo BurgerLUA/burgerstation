@@ -3,7 +3,7 @@
 	boss_icon_state = "bubblegum"
 	icon = 'icons/mob/living/simple/lavaland/bubblegum.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/
+	damage_type = /damagetype/unarmed/claw/boss/
 
 	ai = /ai/boss/bubblegum/
 
@@ -16,8 +16,8 @@
 	var/charge_steps = 0
 	var/charge_dir = 0
 
-	health_base = 12000
-	stamina_base = 4000
+	health_base = 16000
+	stamina_base = 5000
 	mana_base = 1000
 
 	movement_delay = DECISECONDS_TO_TICKS(3)
