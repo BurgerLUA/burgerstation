@@ -277,3 +277,49 @@
 
 /area/mission/prefab/house/house_D03/chapple
 	icon_state = "brown"
+
+
+		//davidthtthird house 04 maintaces house
+/area/mission/prefab/house/house_D04
+	name = "house D04"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_D04/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_D04/bedroom
+	icon_state = "green"
+
+/area/mission/prefab/house/house_D04/maintmain
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_D04/maintbar
+	icon_state = "cyan"
+
+
+		//davidthtthird house 05
+/area/mission/prefab/house/house_D05
+	name = "house D05"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_D05/hall
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_D05/kitchen
+	icon_state = "green"
+
+/area/mission/prefab/house/house_D05/bedroom
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_D05/bathroom
+	icon_state = "cyan"
+
+/area/mission/prefab/house/house_D05/closet
+	icon_state = "pink"
+
