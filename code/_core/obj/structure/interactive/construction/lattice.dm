@@ -20,7 +20,10 @@
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
-
+/obj/structure/interactive/construction/lattice/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
+	. = ..()
+	qdel(src)
 /obj/structure/interactive/construction/lattice/proc/construct_grille(var/mob/caller,var/obj/item/material/rod/R)
 	var/obj/structure/interactive/construction/grille/G = new(src.loc)
 	G.material_id = R.material_id

@@ -74,6 +74,7 @@
 	icon_state = "bullet_casings"
 	value = 25
 	amount_max = 100
+//box
 /obj/item/crafting/ingredient/part/metal_box
 	name = "empty metal box"
 	desc = "An empty metal box."

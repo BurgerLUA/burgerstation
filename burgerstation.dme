@@ -1957,6 +1957,8 @@
 #include "code\_core\obj\structure\interactive\construction\girder.dm"
 #include "code\_core\obj\structure\interactive\construction\grille.dm"
 #include "code\_core\obj\structure\interactive\construction\lattice.dm"
+#include "code\_core\obj\structure\interactive\construction\machine_frame.dm"
+#include "code\_core\obj\structure\interactive\construction\reinf_girder.dm"
 #include "code\_core\obj\structure\interactive\crate\_crate.dm"
 #include "code\_core\obj\structure\interactive\crate\bodybag.dm"
 #include "code\_core\obj\structure\interactive\crate\chest.dm"

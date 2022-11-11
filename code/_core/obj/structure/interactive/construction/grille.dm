@@ -65,7 +65,7 @@
 	return ..()
 
 /obj/structure/interactive/construction/grille/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)
 

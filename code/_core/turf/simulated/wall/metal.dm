@@ -60,7 +60,9 @@
 	name = "[material_name] reinforced wall"	
 	desc_extended = "Its a [material_name] wall, but reinforced with extra [material_name]."
 	reinforced_material_id = M
+	reinforced_color = initial(M.color)
 	health_base += initial(M.bonus_wall_health)
+	update_sprite()
 
 /turf/simulated/wall/metal/reinforced/hull
 	name = "adamantium-carbon reinforced plasteel wall"

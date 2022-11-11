@@ -63,7 +63,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/girder/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 1),material_id)
 	. = ..()
 	qdel(src)
 

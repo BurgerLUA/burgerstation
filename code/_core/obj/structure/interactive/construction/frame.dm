@@ -21,6 +21,11 @@
 		return FALSE
 	return TRUE
 
+/obj/structure/interactive/construction/frame/on_destruction(var/mob/caller,var/damage = FALSE)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
+	. = ..()
+	qdel(src)
+
 /obj/structure/interactive/construction/frame/proc/construct_girder(var/mob/caller,var/obj/item/material/sheet/S)
 	var/obj/structure/interactive/construction/girder/G = new(src.loc)
 	G.material_id = S.material_id
