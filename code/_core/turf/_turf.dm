@@ -355,8 +355,11 @@
 
 	return null
 
-/turf/proc/can_construct_on(var/mob/caller,var/obj/structure/structure_to_make)
-	caller.to_chat(span("warning","You cannot deploy on this turf!"))
+/turf/proc/can_construct_on(var/atom/caller,var/obj/structure/structure_to_make = null)
+	if(!is_living(caller))
+		return FALSE
+	var/mob/living/C = caller
+	C.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 
 /turf/proc/is_straight_path_to(var/turf/target_turf,var/check_vision=FALSE,var/check_density=TRUE)

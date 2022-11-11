@@ -29,8 +29,8 @@
 	if(istype(src.loc,/obj/structure/window/))
 		caller.to_chat(span("warning","There is already a window here!"))
 		return FALSE
-	if(S.amount < 4)
-		caller.to_chat(span("warning","You need 4 glass sheets in order to build a wall!"))
+	if(S.amount < 1)
+		caller.to_chat(span("warning","You need a glass sheet in order to build a wall!"))
 		return FALSE
 	return TRUE
 
@@ -42,13 +42,10 @@
 	GENERATE(W)
 	FINALIZE(W)
 	caller?.visible_message(span("notice","\The [caller.name] places \the [W.name]."),span("notice","You place \the [W.name]."))
-	S.add_item_count(-4)
+	S.add_item_count(-1)
 	return TRUE
 
 /obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-
-
 
 	if(istype(object,/obj/item/material/sheet))
 		var/obj/item/material/sheet/S = object
@@ -68,7 +65,7 @@
 	return ..()
 
 /obj/structure/interactive/construction/grille/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
 

@@ -4,7 +4,7 @@
 	var/desc_extended = "Information about this material."
 
 	var/color = "#FFFFFF"
-
+	var/bonus_wall_health = 0
 	var/icon_state_sheet = "sheet"
 	var/icon_state_rod = "rod"
 	var/icon_state_ingot = "ingot"
@@ -91,7 +91,7 @@
 	color = COLOR_BLUE
 
 	value_per_unit = 1
-
+	bonus_wall_health = 500
 	armor = list(
 		BLADE = 50,
 		BLUNT = 50,
@@ -115,7 +115,7 @@
 /material/rock/
 	name = "rock"
 	color = COLOR_ROCK
-
+	bonus_wall_health = 250
 	value_per_unit = 1
 
 	armor = list(
@@ -141,7 +141,7 @@
 /material/glass/
 	name = "glass"
 	color = COLOR_GLASS
-
+	bonus_wall_health = 25
 	icon_state_sheet = "glass"
 
 	icon_state_ore = "ore_sand"
@@ -170,7 +170,7 @@
 /material/steel
 	name = "steel"
 	color = COLOR_STEEL
-
+	bonus_wall_health = 1000
 	value_per_unit = 9
 
 	armor = list(
@@ -195,7 +195,7 @@
 /material/copper
 	name = "copper"
 	color = "#E28446"
-
+	bonus_wall_health = 250
 	value_per_unit = 4
 
 	armor = list(
@@ -220,7 +220,7 @@
 /material/tin
 	name = "tin"
 	color = "#E2E2E2"
-
+	bonus_wall_health = 100
 	value_per_unit = 0.5
 
 	armor = list(
@@ -245,7 +245,7 @@
 /material/lead
 	name = "lead"
 	color = "#5E5D77"
-
+	bonus_wall_health = 250
 	value_per_unit = 0.5
 
 	armor = list(
@@ -271,7 +271,7 @@
 	name = "aluminium"
 	color = COLOR_ALUMINIUM
 	value_per_unit = 12
-
+	bonus_wall_health = 100
 	armor = list(
 		BLADE = 25,
 		BLUNT = 25,
@@ -295,7 +295,7 @@
 	name = "zinc"
 	color = COLOR_ZINC
 	value_per_unit = 10
-
+	bonus_wall_health = 100
 	armor = list(
 		BLADE = 0,  //it's
 		BLUNT = 0,  //very
@@ -319,7 +319,7 @@
 	name = "magnesium"
 	color = COLOR_MAGNESIUM
 	value_per_unit = 14
-
+	bonus_wall_health = 100
 	armor = list(
 		BLADE = 30,  //it's
 		BLUNT = 30,  //very
@@ -343,7 +343,7 @@
 	name = "brass"
 	color = "#e7a831"
 	value_per_unit = 15
-
+	bonus_wall_health = 750
 	armor = list( //someone make this better.
 		BLADE = 100,  
 		BLUNT = 100, 
@@ -368,7 +368,7 @@
 	name = "nickel"
 	color = COLOR_NICKEL
 	value_per_unit = 13
-
+	bonus_wall_health = 150
 	armor = list(
 		BLADE = 25,  //it's
 		BLUNT = 25,  //for
@@ -393,7 +393,7 @@
 	color = COLOR_IRON
 	icon_state_ore = "ore_iron"
 	icon_state_ore_deposit = "deposit_iron"
-
+	bonus_wall_health = 500
 	value_per_unit = 7
 
 	armor = list(
@@ -421,7 +421,7 @@
 	color = COLOR_PHORON
 	icon_state_ore = "ore_phoron"
 	icon_state_ore_deposit = "deposit_phoron"
-
+	bonus_wall_health = 10
 	value_per_unit = 20
 
 	armor = list(
@@ -448,7 +448,7 @@
 	color = COLOR_CARBON
 	icon_state_ore = "ore_coal"
 	icon_state_ore_deposit = "deposit_coal"
-
+	bonus_wall_health = 10
 	value_per_unit = 5
 
 	armor = list(
@@ -475,7 +475,7 @@
 	color = COLOR_GOLD
 	icon_state_ore = "ore_gold"
 	icon_state_ore_deposit = "deposit_gold"
-
+	bonus_wall_health = 50
 	value_per_unit = 40
 
 	armor = list(
@@ -502,7 +502,7 @@
 	color = COLOR_DIAMOND
 	icon_state_ore = "ore_diamond"
 	icon_state_ore_deposit = "deposit_diamond"
-
+	bonus_wall_health = 1500
 	value_per_unit = 100
 
 	armor = list(
@@ -529,7 +529,7 @@
 	color = COLOR_SILVER
 	icon_state_ore = "ore_silver"
 	icon_state_ore_deposit = "deposit_silver"
-
+	bonus_wall_health = 250
 	value_per_unit = 30
 
 	armor = list(
@@ -556,7 +556,7 @@
 	color = COLOR_URANIUM
 	icon_state_ore = "ore_uranium"
 	icon_state_ore_deposit = "deposit_uranium"
-
+	bonus_wall_health = 100
 	value_per_unit = 35
 
 	armor = list(
@@ -581,7 +581,7 @@
 /material/uranium_235
 	name = "uranium_235"
 	color = "#5bf116"
-
+	bonus_wall_health = 200
 	value_per_unit = 75
 
 	armor = list(
@@ -607,7 +607,7 @@
 	name = "titanium"
 	color = COLOR_TITANIUM
 	icon_state_ore = "ore_titanium"
-
+	bonus_wall_health = 1250
 	value_per_unit = 25
 
 	armor = list(
@@ -632,7 +632,7 @@
 /material/plasteel
 	name = "plasteel"
 	color = COLOR_PLASTEEL
-
+	bonus_wall_health = 2000
 	value_per_unit = 25
 
 	armor = list(
@@ -659,7 +659,7 @@
 	name = "wood"
 	color = COLOR_WOOD
 	value_per_unit = 5
-
+	bonus_wall_health = 50
 	armor = list(
 		BLADE = 0,
 		BLUNT = 50,
@@ -683,7 +683,7 @@
 	name = "adamantium-carbon"
 	color = COLOR_ADAMANITUM_CARBON
 	value_per_unit = 2000
-
+	bonus_wall_health = INFINITY
 	armor = list(
 		BLADE = INFINITY,
 		BLUNT = INFINITY,
@@ -707,7 +707,7 @@
 	name = "electrum"
 	color = COLOR_ELECTRUM
 	value_per_unit = 70
-
+	bonus_wall_health = 600
 	armor = list(
 		BLADE = 10,
 		BLUNT = 10,

@@ -42,6 +42,6 @@
 	required_items = list("/obj/item/crafting/ingredient/part/scrap" = 1,
 	"/obj/item/crafting/ingredient/part/tape" = 1,
 	"/obj/item/crafting/ingredient/part/electronics" = 1,
-	"/obj/item/weapon/melee/toolbox" = 1)
+	"/obj/item/crafting/ingredient/part/metal_box" = 1)
 
 	product = list("/obj/item/tempering/quality/lesser_consumable" = 100)

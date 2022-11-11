@@ -48,6 +48,20 @@
 	reinforced_color = COLOR_PLASTEEL
 	health_base = 3000
 
+/turf/simulated/wall/metal/reinforced/constructed
+	name = "plasteel reinforced steel wall"
+	desc = "Try getting through that"
+	desc_extended = "It's a wall made of steel reinforced with plasteel, really tough."
+	icon_state = "wall_ref"
+	health_base = 3000
+
+/turf/simulated/wall/metal/reinforced/constructed/proc/recalc(var/material/M)
+	var/material_name = initial(M.name)
+	name = "[material_name] reinforced wall"	
+	desc_extended = "Its a [material_name] wall, but reinforced with extra [material_name]."
+	reinforced_material_id = M
+	health_base += initial(M.bonus_wall_health)
+
 /turf/simulated/wall/metal/reinforced/hull
 	name = "adamantium-carbon reinforced plasteel wall"
 	desc = "Try getting through that"
