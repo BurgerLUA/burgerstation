@@ -32,7 +32,7 @@
 		caller.to_chat(span("notice","You carefully gather the [NH.name],depleting it."))
 		caller.add_skill_xp(SKILL_BOTANY,5)
 		grown = FALSE
-		src.update_sprite()
+		update_sprite()
 	return TRUE
 /obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
 	SSbotany_alchemy.all_alchemy_plants -= src 
@@ -46,7 +46,7 @@
 	if(!grown)
 		if(prob(0.50))
 			grown = TRUE
-			src.update_sprite()
+			update_sprite()
 
 /obj/structure/interactive/alchemy_plant/update_sprite()
 	

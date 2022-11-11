@@ -6,26 +6,11 @@
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	density = TRUE
-
+	anchored = FALSE
 	health_base = 100
 	var/electronics = FALSE
 	bullet_block_chance = 90
 
-/obj/structure/interactive/construction/machine_frame/proc/can_construct_reinf_wall(var/mob/caller,var/obj/item/material/sheet/S)
-
-	INTERACT_CHECK_NO_DELAY(src)
-	INTERACT_CHECK_NO_DELAY(S)
-
-	if(istype(src.loc,/turf/simulated/wall/))
-		caller.to_chat(span("warning","There is already a machine frame here... somehow."))
-		return FALSE
-	if(S.amount < 1)
-		caller.to_chat(span("warning","You need a sheet in order to build a machine frame!"))
-		return FALSE
-	if(S.material_id != material_id)
-		caller.to_chat(span("warning","You don't have the correct material for this!"))
-		return FALSE
-	return TRUE
 /obj/structure/interactive/construction/machine_frame/proc/make_machine(var/mob/caller,var/obj/item/S,var/machine_to_make)
 	var/turf/T = src.loc
 	new machine_to_make(T)
