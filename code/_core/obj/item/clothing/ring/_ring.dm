@@ -45,6 +45,7 @@
 	protected_limbs = BODY_MAIN
 	icon = 'icons/obj/item/clothing/ring/cat.dmi'
 	value = 3000
+	value_burgerbux = 1
 
 /obj/item/clothing/ring/horsemen/
 	name = "ring of the Horsemen"
@@ -52,4 +53,4 @@
 	protected_limbs = BODY_MAIN
 	icon = 'icons/obj/item/clothing/ring/horsemen.dmi'
 	value = 2500
-	
+	value_burgerbux = 1

@@ -2,12 +2,13 @@
 	name = "ring of God"
 	desc_extended ="A glorious ambrosia ring, crafted by god himself. Increases armor."
 	armor = /armor/ring/god
+	value_burgerbux = 1
 
 /obj/item/clothing/ring/gold/wedding
 	name = "wedding ring"
 	desc_extended = "Wuv. Twu Wuv."
 	armor = /armor/ring/wedding
-
+	
 //Horsemen rings
 /obj/item/clothing/ring/horsemen/death
 	name = "ring of Death"
