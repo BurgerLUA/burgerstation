@@ -7,9 +7,11 @@
 
 	var/projectile_count = 5
 	var/projectile_delay = 10
-
+	var/rev_up = 0
+	var/shot_delay = 8
 	var/strafe_count = 10
 	var/strafe_delay = 30
+	var/is_fire_tick
 
 
 	var/projectile_ramp = 10
@@ -57,7 +59,13 @@
 /ai/boss/can_man/handle_attacking()
 
 	if(objective_attack)
-		handle_projectiles()
+		shot_delay--
+		if(shot_delay <= 0)
+			handle_projectiles()
+	else if(shot_delay < initial(shot_delay))
+		shot_delay = initial(shot_delay)
+		rev_up = 0
+				
 
 	if(owner_as_can_man.charge_steps > 0)
 		return FALSE
@@ -85,7 +93,7 @@
 	else
 		projectile_delay = initial(projectile_delay)
 
-	if(projectile_count > 0)
+	if(is_fire_tick)
 		play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
@@ -108,9 +116,12 @@
 		owner.set_dir(get_dir(owner,objective_attack))
 		projectile_count--
 		projectile_ramp++
+		is_fire_tick = FALSE
 	else
 		projectile_delay = initial(projectile_delay)
 		projectile_count = initial(projectile_count)
 		projectile_ramp = initial(projectile_ramp)
-
+		is_fire_tick = TRUE
+	rev_up++
+	shot_delay = initial(shot_delay) - rev_up
 	return TRUE
