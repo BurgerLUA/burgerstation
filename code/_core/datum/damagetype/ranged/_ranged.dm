@@ -43,7 +43,7 @@
 
 	var/allow_glancing_blows = FALSE
 
-	allow_heavy_attack = FALSE
+	allow_power_attacks = FALSE
 
 /damagetype/ranged/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return 0.5

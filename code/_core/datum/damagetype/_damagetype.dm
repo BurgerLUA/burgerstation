@@ -139,7 +139,7 @@ var/global/list/all_damage_numbers = list()
 
 	var/alert_on_impact = ALERT_LEVEL_NONE
 
-	var/allow_heavy_attack = TRUE
+	var/allow_power_attacks = TRUE
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -263,7 +263,44 @@ var/global/list/all_damage_numbers = list()
 	play_sound('sound/effects/deflect.ogg',get_turf(attacker),range_max=VIEW_RANGE*0.75)
 	return FALSE
 
+/damagetype/proc/windup(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
+
+	if(!length(victims))
+		return FALSE
+
+	var/local_power_attack_delay = attack_delay_max*0.25
+
+	attacker.attack_next = world.time + local_power_attack_delay + 1
+	if(attacker != weapon)
+		weapon.attack_next = local_power_attack_delay
+
+	var/list/pixel_offset = get_directional_offsets(attacker,victims[1])
+
+	animate(attacker, pixel_x = -pixel_offset[1]*attack_animation_distance*0.5, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(local_power_attack_delay*0.75,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
+	animate(pixel_x = pixel_offset[1]*attack_animation_distance*0.5, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(local_power_attack_delay*1.1,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
+
+	if(ismob(attacker))
+		var/mob/M = attacker
+		if(M.client)
+			M.client.recoil_pixel_x += pixel_offset[1]
+			M.client.recoil_pixel_y += pixel_offset[2]
+
+	play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
+
+	CALLBACK("swing_\ref[weapon]",local_power_attack_delay,src,.proc/swing,attacker,victims,weapon,hit_objects,blamed,damage_multiplier)
+
+
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
+
+	. = do_swing(attacker,victims,weapon,hit_objects,blamed,damage_multiplier)
+
+	if(attacker != weapon)
+		weapon.attack_next = world.time + .
+		attacker.attack_next = world.time + .*0.5
+	else
+		attacker.attack_next = world.time + .
+
+/damagetype/proc/do_swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
 
 	if(!length(victims))
 		return perform_miss(attacker,null,weapon)

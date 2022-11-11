@@ -36,6 +36,8 @@
 
 	alert_on_impact = ALERT_LEVEL_NOISE
 
+	allow_power_attacks = FALSE
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 
