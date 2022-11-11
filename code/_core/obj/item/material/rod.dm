@@ -25,21 +25,21 @@
 			if(!length(subtypesof(possible_pellets))) //If theres a pellets coded for the material...
 				var/obj/item/material/pellets/R = new possible_pellets(get_turf(src))
 				R.material_id = material_id
-				R.amount = 4
+				R.amount = 8
 				INITIALIZE(R)
 				GENERATE(R)
 				FINALIZE(R)
-				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
+				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 8 [R.name]."))
 				add_item_count(-1)
 				R.Move(get_turf(I))
 			else // We cant find a pellets for the material...
 				var/obj/item/material/pellets/R = new(get_turf(src))
 				R.material_id = material_id
-				R.amount = 4
+				R.amount = 8
 				INITIALIZE(R)
 				GENERATE(R)
 				FINALIZE(R)
-				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
+				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 8 [R.name]."))
 				add_item_count(-1)
 				R.Move(get_turf(I))
 			return TRUE

@@ -61,7 +61,7 @@
 	if(!is_advanced(caller))
 		return ..()
 	if(collect_item && !istype(object,collect_item))
-		caller.to_chat(span("warning","You don't have the proper tool to collect from the [src.name] without damaging it! You need a [collect_item.name]!"))
+		caller.to_chat(span("warning","You don't have the proper tool to collect from the [src.name] without damaging it! You need \a [initial(collect_item.name)]!"))
 		return ..()
 	
 	INTERACT_CHECK
