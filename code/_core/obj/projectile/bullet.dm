@@ -71,7 +71,7 @@
 	if(.)
 		explode(old_loc,4,owner,weapon,iff_tag)
 /obj/projectile/bullet/HV_40M
-
+	icon = 'icons/obj/projectiles/explosive.dmi'
 	icon_state = "HV"
 
 /obj/projectile/bullet/HV_40M/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
@@ -80,7 +80,7 @@
 		explode(old_loc,2,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/DU_40M
-
+	icon = 'icons/obj/projectiles/explosive.dmi'
 	icon_state = "DU"
 
 /obj/projectile/bullet/DU_40M/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
@@ -89,8 +89,8 @@
 		explode(old_loc,6,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/RUBBER_40M
-
-	icon_state = "rubber"
+	icon = 'icons/obj/projectiles/explosive.dmi'
+	icon_state = "RUBBER"
 
 /obj/projectile/bullet/RUBBER_40M/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
