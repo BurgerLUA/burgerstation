@@ -14,7 +14,8 @@
 
 	container_blacklist = list(
 		/obj/item/clothing/back/storage/backpack/bluespace,
-		/obj/item/clothing/back/storage/satchel/bluespace
+		/obj/item/clothing/back/storage/satchel/bluespace,
+		/obj/item/clothing/belt/holding
 	)
 
 	value = 3000
@@ -36,7 +37,8 @@
 
 	container_blacklist = list(
 		/obj/item/clothing/back/storage/backpack/bluespace,
-		/obj/item/clothing/back/storage/satchel/bluespace
+		/obj/item/clothing/back/storage/satchel/bluespace,
+		/obj/item/clothing/belt/holding
 	)
 
 	value = 2500

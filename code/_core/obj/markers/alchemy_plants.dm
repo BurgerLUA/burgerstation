@@ -13,3 +13,9 @@
 /obj/marker/alchemy_plant/snow_daisy
 	to_spawn = /obj/structure/interactive/alchemy_plant/snow_daisy
 	allowed_turfs = list(/turf/simulated/floor/colored/snow)
+/obj/marker/alchemy_plant/space_cotton
+	to_spawn = /obj/structure/interactive/alchemy_plant/space_cotton
+	allowed_turfs = list(/turf/simulated/floor/colored/grass,/turf/simulated/floor/colored/snow,/turf/simulated/floor/colored/grass/jungle)
+/obj/marker/alchemy_plant/devil_shroom
+	to_spawn = /obj/structure/interactive/alchemy_plant/devil_shroom
+	allowed_turfs = list(/turf/simulated/floor/basalt/)

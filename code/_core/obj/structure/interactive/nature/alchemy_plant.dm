@@ -3,10 +3,11 @@
 	name = "alchemy_plant"
 	icon = 'icons/obj/structure/flora/alchemy_plant.dmi'
 	icon_state = "error"
-	desc = "Something something alchemy reagent"
-	desc_extended = "Some useful magical flora. Can be harveted with the right tools and knowledge."
+	desc = "Something something bootleg plant"
+	desc_extended = "Some sort of wild plant."
 	var/grown = TRUE
-	var/harvest_item 
+	var/harvest_item //What do we get for harvesting the plant?
+	var/obj/item/collect_item //What do we need to COLLECT FROM the plant?
 /obj/structure/interactive/alchemy_plant/proc/harvest(var/mob/living/advanced/caller)
 
 	if(!grown)
@@ -59,8 +60,8 @@
 
 	if(!is_advanced(caller))
 		return ..()
-	if(!istype(object,/obj/item/weapon/melee/tool/botany) || !is_advanced(caller))
-		caller.to_chat(span("warning","You don't have the proper tool to collect from the [src.name] without damaging it!"))
+	if(collect_item && !istype(object,collect_item))
+		caller.to_chat(span("warning","You don't have the proper tool to collect from the [src.name] without damaging it! You need a [collect_item.name]!"))
 		return ..()
 	
 	INTERACT_CHECK
@@ -74,14 +75,37 @@
 /obj/structure/interactive/alchemy_plant/forest_berry
 	name = "forest berry bush"
 	icon_state = "forest_berry"
+	desc = "Magical!"
+	desc_extended = "A large red berry bush, its fruit have healing energy. Could be useful in alchemy."
 	harvest_item = /obj/item/crafting/ingredient/part/alchemy_plant/forest_berry
+	collect_item = /obj/item/weapon/melee/tool/botany
 
 /obj/structure/interactive/alchemy_plant/forest_nut
 	name = "forest nut pile"
 	icon_state = "forest_nut"
+	desc = "Magical!"
+	desc_extended = "A large pile of nuts, they have a defensive aura. Could be useful in alchemy."
 	harvest_item = /obj/item/crafting/ingredient/part/alchemy_plant/forest_nut
+	collect_item = /obj/item/weapon/melee/tool/botany
 
 /obj/structure/interactive/alchemy_plant/snow_daisy
 	name = "snow daisy patch"
 	icon_state = "snow_daisy"
+	desc = "Livingwood maker."
+	desc_extended = "A patch of pure white flowers, bursting with mana. Could be useful in alchemy."
 	harvest_item = /obj/item/crafting/ingredient/part/alchemy_plant/snow_daisy
+	collect_item = /obj/item/weapon/melee/tool/botany
+
+/obj/structure/interactive/alchemy_plant/space_cotton
+	name = "space cotton"
+	icon_state = "space_cotton"
+	desc = "Something something racism"
+	desc_extended = "A cotton like plant growing synthcloth. Probably a lateblooming seed, as most that dont grow instantly are defective."
+	harvest_item = /obj/item/crafting/ingredient/thread/synthcloth
+
+/obj/structure/interactive/alchemy_plant/devil_shroom
+	name = "devils mushroom"
+	icon_state = "devil_shroom"
+	desc = "From a distant Rimworld"
+	desc_extended = "A strange mushroom that grows a fiber-like cloth that is incredibly strong and fireproof."
+	harvest_item = /obj/item/crafting/ingredient/thread/devilstrand

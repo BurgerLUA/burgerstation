@@ -31,3 +31,22 @@
 
 	product = list("/obj/item/crafting/ingredient/part/casing_mold" = 100)
 	
+/recipe/workbench/dura_thread
+
+	name = "durathread"
+
+	required_item_grid = list(
+		"a1" = "/obj/item/crafting/ingredient/thread/devilstrand",
+		"a2" = "/obj/item/crafting/ingredient/thread/synthcloth",
+		"a3" = "/obj/item/crafting/ingredient/thread/devilstrand",
+
+		"b1" = "/obj/item/crafting/ingredient/thread/synthcloth",
+		"b2" = "/obj/item/material/rod/cobalt",
+		"b3" = "/obj/item/crafting/ingredient/thread/synthcloth",
+
+		"c1" = "/obj/item/crafting/ingredient/thread/devilstrand",
+		"c2" = "/obj/item/crafting/ingredient/thread/synthcloth",
+		"c3" = "/obj/item/crafting/ingredient/thread/devilstrand"
+	)
+
+	product = list("/obj/item/crafting/ingredient/thread/durathread/" = 100)
