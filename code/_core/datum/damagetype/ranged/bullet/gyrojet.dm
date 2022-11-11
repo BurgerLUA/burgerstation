@@ -19,4 +19,11 @@
 		var/mob/living/V = victim
 		V.health.adjust_stamina(-75)
 	. = ..()
-	
+/damagetype/ranged/bullet/gyrojet/hv
+	attack_damage_base = list(
+		BLUNT = 250
+	)
+	attack_damage_penetration = list(
+		BLUNT = 125
+	)
+	falloff = 0

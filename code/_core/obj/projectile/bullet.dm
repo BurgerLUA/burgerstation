@@ -69,7 +69,7 @@
 /obj/projectile/bullet/HE_40M/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(.)
-		explode(old_loc,4,owner,weapon,iff_tag)
+		explode(old_loc,4,owner,weapon,iff_tag,multiplier = 1.5)
 /obj/projectile/bullet/HV_40M
 	icon = 'icons/obj/projectiles/explosive.dmi'
 	icon_state = "HV"
@@ -86,7 +86,7 @@
 /obj/projectile/bullet/DU_40M/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(.)
-		explode(old_loc,6,owner,weapon,iff_tag)
+		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 1.5)
 
 /obj/projectile/bullet/RUBBER_40M
 	icon = 'icons/obj/projectiles/explosive.dmi'

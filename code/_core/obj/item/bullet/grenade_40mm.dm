@@ -32,7 +32,7 @@
 	icon = 'icons/obj/item/bullet/40mm_HV.dmi'
 
 	projectile = /obj/projectile/bullet/HV_40M
-
+	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/hv
 	projectile_speed = TILE_SIZE * 1.2
 
 /obj/item/bullet_cartridge/grenade_40mm/du
@@ -41,9 +41,8 @@
 	desc_extended = "For Grenade launchers, small nuclear payload."
 	icon = 'icons/obj/item/bullet/40mm_DU.dmi'
 
-	projectile = /obj/projectile/bullet/HV_40M
+	projectile = /obj/projectile/bullet/DU_40M
 
-	projectile_speed = TILE_SIZE * 1.2
 
 /obj/item/bullet_cartridge/grenade_40mm/rubber
 	name = "40mm rubber round"
@@ -53,5 +52,3 @@
 
 	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/rubber_grenade
 	projectile = /obj/projectile/bullet/RUBBER_40M
-
-	projectile_speed = TILE_SIZE * 1.2
