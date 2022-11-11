@@ -47,7 +47,8 @@
 		PARALYZE = TRUE,
 		STAMCRIT = TRUE,
 		STAGGER = TRUE,
-		FIRE = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE
 	)
 
 	size = SIZE_BOSS

@@ -33,7 +33,8 @@
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
 		DRUGGY = TRUE,
-		FIRE = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE
 	)
 
 	enable_medical_hud = FALSE

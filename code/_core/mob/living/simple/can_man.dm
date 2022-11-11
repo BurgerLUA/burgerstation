@@ -38,7 +38,8 @@
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
 		DRUGGY = TRUE,
-		FIRE = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE
 	)
 
 	size = SIZE_BOSS
