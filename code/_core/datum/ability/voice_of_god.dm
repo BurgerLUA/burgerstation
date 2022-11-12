@@ -2,9 +2,10 @@
 	name = "Command: Harm"
 	desc = "Damages all enemies within 8 tiles, and makes them susceptable to further damage."
 	icon_state = "dash"
-
 	resource_type = MANA
-	var/damagetype/damage_type
+	cost = 50 //Half of a level 1 character's mana. Has a high cooldown.
+	cooldown = SECONDS_TO_DECISECONDS(10)
+	var/damagetype/damage_type = /damagetype/ranged/magic/voice_of_god/harm
 	var/atom/caller
 	var/word = "DIE"
 	category = "Voice Of God"
@@ -33,7 +34,7 @@
 	for(var/mob/living/L2 in oview(T,8))
 		if(L2.dead)
 			continue
-		if(!allow_hostile_action(L.loyalty_tag,L2))
+		if(!allow_hostile_action(L2.loyalty_tag,L))		
 			continue
 		do_damage(L2,L)
 
@@ -58,11 +59,14 @@
 
 	var/mob/living/L = caller
 	var/turf/T = get_turf(L)
+	play_sound('sound/effects/invoke_general.ogg',T, range_max = SOUND_RANGE)
+	leveled_effect = round(L.get_skill_power(SKILL_PRAYER,0,1,2))
 
-	for(var/mob/living/L2 in oview(T,4))
+	L.do_say("<font color='#DD1C1F' size='4'>[word]</font>",FALSE)
+	for(var/mob/living/L2 in oview(T,8))
 		if(L2.dead)
 			continue
 		if(L2.loyalty_tag != L.loyalty_tag)
 			continue
-		L2.add_status_effect(TEMP_REGEN,2,SECONDS_TO_DECISECONDS(5))
+		L2.add_status_effect(TEMP_REGEN,leveled_effect,SECONDS_TO_DECISECONDS(5))
 		L2.add_status_effect(UNDYING,SECONDS_TO_DECISECONDS(5))
