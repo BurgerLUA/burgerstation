@@ -2,6 +2,7 @@
 	name = "Command: Harm"
 	desc = "Damages all enemies within 8 tiles, and makes them susceptable to further damage."
 	icon_state = "dash"
+
 	resource_type = MANA
 	cost = 50 //Half of a level 1 character's mana. Has a high cooldown.
 	cooldown = SECONDS_TO_DECISECONDS(10)
@@ -53,14 +54,16 @@
 	cooldown = SECONDS_TO_DECISECONDS(15)
 	category = "Voice Of God"
 	var/word = "LIVE" //Is there possibly a way to switch what a specific ability does? Well, seeing as this one's the area buff while the others are area debuffs...
-	var/leveled_effect = 0
+	var/leveled_effect = 1
 
 /ability/voice_of_god/live/on_cast(var/mob/caller,var/atom/target,var/atom/victim,location,params)
 
 	var/mob/living/L = caller
 	var/turf/T = get_turf(L)
 	play_sound('sound/effects/invoke_general.ogg',T, range_max = SOUND_RANGE)
-	leveled_effect = round(L.get_skill_power(SKILL_PRAYER,0,1,2))
+	
+	if(is_living(L))
+		leveled_effect = round(L.get_skill_power(SKILL_PRAYER,0,1,2)*5)
 
 	L.do_say("<font color='#DD1C1F' size='4'>[word]</font>",FALSE)
 	for(var/mob/living/L2 in oview(T,8))
