@@ -25,6 +25,7 @@
 		if(C.selected_intent == INTENT_DISARM)
 			for(var/obj/item/material/ore/ore in contents)
 				ore.drop_item(get_turf(C))
+		C.to_chat(span("notice","You dump all the ores at your feet."))
 	return ..()
 /obj/structure/interactive/ore_box/Cross(atom/movable/O,atom/oldloc)
 

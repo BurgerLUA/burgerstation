@@ -17,7 +17,7 @@
 	)
 
 
-	product = list("/obj/item/attachment/barrel_mod/reinforced_stock" = 100)
+	product = list("/obj/item/attachment/stock_mod/reinforced_stock" = 100)
 
 /recipe/workbench/barrel_reinforcement
 
