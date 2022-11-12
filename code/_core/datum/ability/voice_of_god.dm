@@ -16,11 +16,6 @@
 
 /ability/voice_of_god/harm/proc/do_damage(var/atom/victim,var/atom/caller)
 
-	if(is_living(victim) && is_living(caller) && caller != victim)
-		var/mob/living/L = victim
-		var/mob/living/L2 = caller
-		if(!allow_hostile_action(L2.loyalty_tag,L))
-			return FALSE
 	var/damagetype/DT = all_damage_types[damage_type]
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(caller,src,params,DT))
@@ -38,7 +33,7 @@
 	for(var/mob/living/L2 in oview(T,8))
 		if(L2.dead)
 			continue
-		if(L2.loyalty_tag == L.loyalty_tag)
+		if(!allow_hostile_action(L.loyalty_tag,L2))
 			continue
 		do_damage(L2,L)
 
