@@ -64,7 +64,7 @@
 
 	bullet_length = 800
 	bullet_diameter = 70
-
+	value_burgerbux = 1
 	projectile = /obj/projectile/bullet/rocket_nuclear
 	damage_type_bullet = /damagetype/ranged/bullet/rocket/nuclear
 

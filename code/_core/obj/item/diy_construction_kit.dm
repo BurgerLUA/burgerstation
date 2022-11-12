@@ -1,7 +1,7 @@
 /obj/item/diy_construction_kit
 	name = "D.I.Y. construction kit"
 	desc = "Need a dispenser here!"
-	desc_extended = "Allows you to slowly construct several types of buildings by placing frames down. Also holds a decent amount of materials."
+	desc_extended = "Allows you to quickly construct several types of buildings by placing frames down. Also holds a decent amount of materials."
 	icon = 'icons/obj/item/diy_construction_kit.dmi'
 
 	is_container = TRUE
@@ -11,7 +11,7 @@
 	weight = 10
 	can_rename = TRUE
 	var/build_type = "grilles"
-	
+
 /obj/item/diy_construction_kit/attack(atom/attacker, atom/victim, list/params, atom/blamed, ignore_distance, precise, damage_multiplier, damagetype/damage_type_override)
 	return FALSE //no
 
@@ -25,7 +25,7 @@
 	var/mob/living/advanced/C = caller
 	var/turf/simulated/floor/F = get_turf(object)
 	if(C.intent == INTENT_DISARM)
-		build_type = input(C,"What would you like to construct?","Contruction Selector","grilles") as anything in list("grilles","girders/wall","reinforced girders/wall","lattices/floor","machine frame")
+		build_type = input(C,"What would you like to construct?","Contruction Selector","grilles") as anything in list("grilles","girders/wall/door","reinforced girders/wall","lattices/floor","machine frame")
 		C.to_chat(span("notice","You decide to start constructing [build_type]."))
 		return ..()
 	var/other_hand
@@ -62,9 +62,10 @@
 			GENERATE(O)
 			FINALIZE(O)
 			R.add_item_count(-2)
+			C.visible_message(span("notice","[C.name] constructs a [O.name]."),span("notice","You contruct a [O.name]."))
 			INTERACT_DELAY(2.5)
 			return TRUE
-		if("girders/wall")
+		if("girders/wall/door")
 			if(!F.can_construct_on(C,/obj/structure/interactive/construction/girder))
 				return ..()
 			if(!istype(I,/obj/item/material/rod))
@@ -80,6 +81,7 @@
 			GENERATE(O)
 			FINALIZE(O)
 			R.add_item_count(-1)
+			C.visible_message(span("notice","[C.name] constructs a [O.name]."),span("notice","You contruct a [O.name]."))
 			INTERACT_DELAY(2.5)
 			return TRUE
 		if("reinforced girders/wall")
@@ -98,6 +100,7 @@
 			GENERATE(O)
 			FINALIZE(O)
 			R.add_item_count(-2)
+			C.visible_message(span("notice","[C.name] constructs a [O.name]."),span("notice","You contruct a [O.name]."))
 			INTERACT_DELAY(2.5)
 			return TRUE
 		if("lattices/floor")
@@ -116,6 +119,7 @@
 			GENERATE(O)
 			FINALIZE(O)
 			R.add_item_count(-1)
+			C.visible_message(span("notice","[C.name] constructs a [O.name]."),span("notice","You contruct a [O.name]."))
 			INTERACT_DELAY(2.5)
 			return TRUE
 		if("machine frame")
@@ -134,7 +138,7 @@
 			GENERATE(O)
 			FINALIZE(O)
 			R.add_item_count(-1)
+			C.visible_message(span("notice","[C.name] constructs a [O.name]."),span("notice","You contruct a [O.name]."))
 			INTERACT_DELAY(2.5)
 			return TRUE
 	. = ..()
-	

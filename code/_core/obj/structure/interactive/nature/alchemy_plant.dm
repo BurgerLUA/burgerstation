@@ -36,7 +36,7 @@
 		update_sprite()
 	return TRUE
 /obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
-	SSbotany_alchemy.all_alchemy_plants -= src 
+	SSbotany_alchemy.all_alchemy_plants -= src
 	qdel(src)
 
 /obj/structure/interactive/plant/New(var/desired_loc)
@@ -50,11 +50,11 @@
 			update_sprite()
 
 /obj/structure/interactive/alchemy_plant/update_sprite()
-	
+
 	if(grown)
 		icon_state = "[initial(icon_state)]"
 	else
-		icon_state = "[icon]_h"
+		icon_state = "[initial(icon_state)]_h"
 
 
 /obj/structure/interactive/alchemy_plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -64,7 +64,7 @@
 	if(collect_item && !istype(object,collect_item))
 		caller.to_chat(span("warning","You don't have the proper tool to collect from the [src.name] without damaging it! You need \a [initial(collect_item.name)]!"))
 		return ..()
-	
+
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)

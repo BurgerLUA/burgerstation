@@ -1,6 +1,7 @@
 /obj/structure/interactive/construction/lattice
 	name = "lattice"
 	desc = "A metal lattice."
+	desc_extended = "Could probably add some more rods for a grille, or a plate for a floor."
 	icon_state = "lattice"
 
 	health_base = 50

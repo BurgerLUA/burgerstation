@@ -1,6 +1,7 @@
 /obj/structure/interactive/construction/frame
 	name = "frame"
 	desc = "A metal frame."
+	desc_extended = "Could make a lattice with some rods, or a frame with some sheets."
 	icon_state = "frame"
 
 	health_base = 25

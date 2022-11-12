@@ -1,6 +1,7 @@
 /obj/structure/interactive/construction/machine_frame
 	name = "machine frame"
 	desc = "A metal machine frame."
+	desc_extended = "I should add some electronics if its a complex machine, otherwise, I'll just need some other part."
 	icon_state = "machine_frame"
 
 	collision_flags = FLAG_COLLISION_WALL
@@ -19,7 +20,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/machine_frame/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
 

@@ -1,6 +1,7 @@
 /obj/structure/interactive/construction/reinf_girder
 	name = "reinforced girder"
 	desc = "A metal reinforced girder."
+	desc_extended = "Could probably add some sheets for a reinforced wall."
 	icon_state = "girder_reinf"
 
 	collision_flags = FLAG_COLLISION_WALL
@@ -37,7 +38,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/reinf_girder/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2,/obj/item/material/sheet/ = 1),material_id)
+	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)
 

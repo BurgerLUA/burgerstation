@@ -1,6 +1,7 @@
 /obj/structure/interactive/construction/grille
 	name = "grille"
 	desc = "A metal grille."
+	desc_extended = "Could probably add some glass for a window."
 	icon_state = "grille"
 
 	icon = 'icons/obj/structure/grille.dmi'
