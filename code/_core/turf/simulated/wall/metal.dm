@@ -24,7 +24,7 @@
 	INITIALIZE(G)
 	FINALIZE(G)
 
-	create_destruction(src,list(/obj/item/material/sheet/ = 4),material_id)
+	create_destruction(src,list(/obj/item/material/sheet/ = 1),material_id)
 
 	return ..()
 
@@ -59,7 +59,9 @@
 	var/material_name = initial(M.name)
 	name = "[material_name] reinforced wall"	
 	desc_extended = "Its a [material_name] wall, but reinforced with extra [material_name]."
+	material_id = M
 	reinforced_material_id = M
+	color = initial(M.color)
 	reinforced_color = initial(M.color)
 	health_base += initial(M.bonus_wall_health)
 	update_sprite()

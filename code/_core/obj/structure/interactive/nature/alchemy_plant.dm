@@ -19,6 +19,7 @@
 		caller.to_chat(span("warning","You fumble and ruin the harvest!"))
 		caller.add_skill_xp(SKILL_BOTANY,3)
 		grown = FALSE
+		update_sprite()
 		return TRUE
 	if(harvest_item)
 		var/obj/item/NH = new harvest_item(caller.loc)
@@ -44,7 +45,7 @@
 
 /obj/structure/interactive/alchemy_plant/proc/on_life(var/tick_rate = 1)
 	if(!grown)
-		if(prob(0.50))
+		if(prob(1))
 			grown = TRUE
 			update_sprite()
 

@@ -57,7 +57,7 @@
 	icon = 'icons/obj/item/magazine/762_rifle_du.dmi'
 	no_restock = TRUE
 	ammo = /obj/item/bullet_cartridge/rifle_308/du
-
+	value_burgerbux = 1
 
 /obj/item/magazine/sniper_308/nato/du
 	name = "\improper 7.62mm DP sniper magazine"
@@ -65,3 +65,4 @@
 	icon = 'icons/obj/item/magazine/762_rifle_du.dmi'
 	no_restock = TRUE
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato/du
+	value_burgerbux = 1

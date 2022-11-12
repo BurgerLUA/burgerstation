@@ -101,3 +101,18 @@
 	product = list("/obj/item/magazine/sniper_20mm/du" = 100)
 	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 64,"/obj/item/crafting/ingredient/part/bullet_casings" = 4,
 	"/obj/item/material/pellets/uranium_235" = 32)
+
+/recipe/bullet_press/du/minigun_46
+	name = "depleted uranium minigun_46"
+
+	required_item_grid = list(
+		"a2" = "/obj/item/material/pellets/uranium_235",
+
+		"b2" = "/obj/item/crafting/ingredient/part/gunpowder",
+		"b3" = "/obj/item/magazine/minigun_46",
+
+		"c2" = null //Theyre caseless.
+	)
+	product = list("/obj/item/magazine/minigun_46/du" = 100)
+	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 50,"/obj/item/material/pellets/uranium_235" = 100)
+	

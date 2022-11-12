@@ -49,3 +49,4 @@
 	icon_state = "556"
 	ammo = /obj/item/bullet_cartridge/rifle_223/du
 	no_restock = TRUE
+	value_burgerbux = 1

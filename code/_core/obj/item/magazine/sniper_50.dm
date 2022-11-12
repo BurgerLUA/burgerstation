@@ -51,3 +51,4 @@
 	icon_state = "50_DU"
 	ammo = /obj/item/bullet_cartridge/sniper_50/du
 	no_restock = TRUE
+	value_burgerbux = 1

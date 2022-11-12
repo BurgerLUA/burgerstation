@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/belts/holding.dmi'
 	desc = "Engineer/medic favorite toolbox"
 	desc_extended = "Stores a massive amount of smaller items in a tiny bluspace pouch."
-
+	value_burgerbux = 1
 	is_container = TRUE
 
 	dynamic_inventory_count = MAX_INVENTORY_X * 2

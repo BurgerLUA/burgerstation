@@ -32,3 +32,4 @@
 	icon_state = "20_DU"
 	no_restock = TRUE
 	value = 120
+	value_burgerbux = 1
