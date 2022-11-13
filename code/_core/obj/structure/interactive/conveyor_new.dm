@@ -26,9 +26,11 @@
 			if(anchored)
 				caller.to_chat(span("notice","You un-anchor the conveyor."))
 				set_anchored(FALSE)
+				disable()
 			else
 				caller.to_chat(span("notice","You anchor the conveyor."))
 				set_anchored(TRUE)
+				enable()
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)

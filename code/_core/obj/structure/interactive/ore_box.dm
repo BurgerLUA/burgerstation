@@ -39,9 +39,8 @@
 
 /obj/structure/interactive/ore_box/proc/stack(var/obj/item/material/ore/O)
 	for(var/obj/item/material/ore/C in contents)
-		if(istype(O,C.type))
-			var/to_transfer = min(C.amount_max - C.amount,O.amount)
-			O.transfer_amount_to(C,to_transfer)
+		if(O.can_transfer_stacks_to(C))
+			O.transfer_amount_to(C)
 
 /obj/structure/interactive/ore_box/get_examine_list(var/mob/examiner)
 

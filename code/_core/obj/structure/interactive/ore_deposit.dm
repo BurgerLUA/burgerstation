@@ -5,6 +5,7 @@
 	icon = 'icons/obj/structure/ore.dmi'
 	icon_state = "deposit"
 	initialize_type = INITIALIZE_LATE
+	layer = LAYER_WALL_DECAL
 	var/obj/item/material/ore/stored_ore //We don't need to spawn this yet.
 	var/ore_max = 5 // How much can the vein hold?
 	var/deep_ore_max = 100 //How much does a deep-vein hold? - the thrombosis.
@@ -26,7 +27,7 @@
 		if(!(I.flags_tool & FLAG_TOOL_PICKAXE))
 			A.to_chat(span("notice","You need a mining tool in order to mine \the [src.name]."))
 			return TRUE
-		
+
 		src.drop_ore(A,stored_ore)
 		ore_count--
 		if(ore_count <= 0)
@@ -39,18 +40,19 @@
 /obj/structure/interactive/ore_deposit/proc/drop_ore(var/atom/caller,var/ore_to_spawn)
 	var/obj/item/TO = new src.stored_ore
 	var/obj/structure/interactive/ore_box/OB = locate() in range(1,src)
+	var/obj/structure/interactive/conveyor/CV = locate() in range(1,src)
 	INITIALIZE(TO)
 	GENERATE(TO)
 	FINALIZE(TO)
-	if(OB)
+	if(CV)
+		TO.drop_item(CV.loc)
+	else if(OB)
 		TO.drop_item(OB.loc)
 	else if(is_living(caller))
 		var/mob/living/C = caller
 		TO.drop_item(C.loc)
 	else
-		var/obj/D
-		TO.drop_item(D.loc)
-		qdel(src)
+		TO.drop_item(caller.loc)
 
 /obj/structure/interactive/ore_deposit/random
 
@@ -219,6 +221,7 @@
 	desc = "bring out the excavator"
 	icon = 'icons/obj/structure/ore.dmi'
 	icon_state = "deposit"
+	layer = LAYER_FLOOR_PLATING
 	var/obj/item/material/ore/stored_ore //We don't need to spawn this yet.
 	var/ore_count = 0 // How much does it hold currently
 	initialize_type = INITIALIZE_LATE
@@ -226,7 +229,7 @@
 /obj/structure/interactive/ore_deposit_ground/clicked_on_by_object(mob/caller, atom/object, location, control, params)
 	caller.to_chat(span("notice","This vein is far too deep to mine manually! You should get a Drill to do it for you!"))
 	return TRUE
-	
+
 /obj/structure/interactive/ore_deposit_ground/proc/drop_ore(var/caller,var/ore_to_spawn)
 
 	var/obj/structure/interactive/mining_drill/MD = locate() in range(1,src)
