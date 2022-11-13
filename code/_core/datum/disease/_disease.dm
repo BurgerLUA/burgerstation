@@ -33,7 +33,7 @@
 
 /disease/hrp/on_life(var/mob/living/owner)
 	. = ..()
-	if(prob(stage*25))
+	if(prob(stage*10))
 		if(stage >= 1 && prob(40))
 			owner.do_emote("blink")
 		else if(stage >= 2)
