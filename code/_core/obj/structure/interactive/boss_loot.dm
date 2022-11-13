@@ -4,7 +4,11 @@ var/global/list/wishgranter_speak_lines = list(
 	"Are you worthy? Come...",
 	"I see you. Come to the light...",
 	"It is your fate to see me. Do you not believe in fate?",
-	"You get what you deserve!"
+	"You get what you deserve!",
+	"Money? Fame? Power? It can be yours...",
+	"Just reach out and grab it...",
+	"Simply sign the dotted line... Just kidding!",
+
 )
 
 /obj/structure/interactive/boss_loot
@@ -87,6 +91,7 @@ var/global/list/wishgranter_speak_lines = list(
 
 	if(die_time <= world.time)
 		clear_self()
+		qdel(src)
 		return FALSE
 
 	if(next_speak <= world.time && prob(3))
