@@ -8,7 +8,7 @@
 		"a3" = "/obj/item/tempering/quality/clothing/repair",
 
 		"b1" = "/obj/item/crafting/ingredient/thread/durathread/",
-		"b2" = "/obj/item/clothing/back/storage/satchel/bluespace",
+		"b2" = "/obj/item/crafting/ingredient/thread/durathread/",
 		"b3" = "/obj/item/crafting/ingredient/thread/durathread/",
 
 		"c1" = "/obj/item/material/ingot/titanium",
