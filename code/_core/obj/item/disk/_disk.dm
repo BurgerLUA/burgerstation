@@ -86,6 +86,28 @@
 		"cost" = 500
 	)
 
+/obj/item/disk/rcd/light
+	name = "rcd data disk (circle light)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Storm Light."
+	data = list(
+		"name" = "circle_light.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/lighting/fixture/bulb,
+		"cost" = 100
+	)
+
+/obj/item/disk/rcd/tube_light
+	name = "rcd data disk (tube light)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Tube Light."
+	data = list(
+		"name" = "tube_light.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/lighting/fixture/tube/station,
+		"cost" = 100
+	)
+
 /obj/item/disk/rcd/diverter
 	name = "rcd data disk (air diverter)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."

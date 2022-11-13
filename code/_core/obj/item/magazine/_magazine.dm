@@ -48,7 +48,10 @@
 
 	if(icon_states)
 		var/bullet_num = length(stored_bullets)
-		icon_num = min(bullet_num/bullet_count_max,1)*icon_states
+		var/bullet_count_max_fake = 1
+		if(bullet_count_max != 0) //I dont know how, I dont know why, but somewhere in crafting, you divide by 0 here.
+			bullet_count_max_fake = bullet_count_max // This is the stupidest bandaid I could find.
+		icon_num = min(bullet_num/bullet_count_max_fake,1)*icon_states
 		icon_num = FLOOR(icon_num,1)
 		if(!icon_num && bullet_num)
 			icon_num = 1

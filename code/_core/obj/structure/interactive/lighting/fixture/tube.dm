@@ -14,6 +14,17 @@
 
 	dir_offset = 2
 
+/obj/structure/interactive/lighting/fixture/tube/clicked_on_by_object(mob/caller, atom/object, location, control, params)
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the light."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the light."))
+				anchored = TRUE
+	. = ..()
 
 /obj/structure/interactive/lighting/fixture/tube/color
 	name = "colored light"

@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(horde)
 		if(A.area_identifier != "Mission") //I dont know why theres a drill not on mission but sanity
 			continue
 		var/mob/living/squad_to_send = get_squad_to_send(D)
-		if(!squad_to_send || !send_squad(D,squad_to_send))
+		if(!squad_to_send || !send_squad(D,squad_to_send,TRUE))//THERE IS NO SAFE ORE MINING.
 			continue
 		all_drills[D] = world.time + HORDE_DELAY_DRILL
 	return TRUE

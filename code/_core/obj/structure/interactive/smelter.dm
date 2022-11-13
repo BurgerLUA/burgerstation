@@ -73,4 +73,8 @@
 			else
 				caller.to_chat(span("notice","You anchor the smelter."))
 				anchored = TRUE
+	else
+		for(var/obj/item/T in contents)
+			T.drop_item(get_turf(caller))
+		caller.to_chat(span("notice","You empty the smelter."))
 	. = ..()
