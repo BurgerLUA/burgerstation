@@ -117,6 +117,10 @@
 			victims += A
 			cleave_number--
 
+	if(!length(victims))
+		attacker.attack_next = world.time + 1
+		return FALSE
+
 	var/list/hit_objects = list()
 	for(var/atom/v in victims)
 		var/can_attack = attacker.can_attack(attacker,v,object_to_damage_with,params,DT)
@@ -145,17 +149,12 @@
 			if(can_attack && can_be_attacked) break //Just means we don't have a hitobject.
 		victims -= v //Needs to be here.
 
-	var/swing_result = DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
-	if(swing_result)
-		if(attacker != object_to_damage_with)
-			object_to_damage_with.attack_next = world.time + swing_result
-		attacker.attack_next = world.time + swing_result*0.5
-	else
-		attacker.attack_next = world.time + 1
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(DT.allow_power_attacks && (L.attack_flags & CONTROL_MOD_DISARM) && L.health.stamina_current >= 20 && L.health.adjust_stamina(-20))
+			return DT.windup(attacker,victims,object_to_damage_with,hit_objects,attacker,2)
 
-	HOOK_CALL("attack")
-
-	return TRUE
+	return DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
 
 /atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 0.5
