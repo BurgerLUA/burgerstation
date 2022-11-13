@@ -155,7 +155,7 @@
 								continue
 							else
 								I.add_item_count(-recipe_check[I])
-						R.on_fail(caller,src,IFP)	
+						R.on_fail(caller,src,IFP)
 						return IFP
 	caller.to_chat(span("warning","You fail to craft anything..."))
 	return FALSE

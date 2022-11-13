@@ -20,6 +20,15 @@
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(10)
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the conveyor."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the conveyor."))
+				anchored = TRUE
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)

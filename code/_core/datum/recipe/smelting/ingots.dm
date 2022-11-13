@@ -13,7 +13,7 @@
 /recipe/smelter/cobalt
 	name = "smelt cobalt"
 	desc = "Smelt cobalt ore into cobalt ingots"
-	required_items = list("/obj/item/material/ingot/cobalt" = 3)
+	required_items = list("/obj/item/material/ore/cobalt" = 3)
 	product = list("/obj/item/material/ingot/cobalt" =100)
 
 /recipe/smelter/gold

@@ -11,7 +11,7 @@
 		"b2" = null, // The gunpowder
 		"b3" = null, // A mag to fill with bullets
 
-		"c2" = null, // The Casings 
+		"c2" = null, // The Casings
 		*/
 	)
 /recipe/bullet_press/du/rifle_308
@@ -71,7 +71,7 @@
 	product = list("/obj/item/magazine/sniper_308/nato/du" = 100)
 	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 30,"/obj/item/crafting/ingredient/part/bullet_casings" = 30,
 	"/obj/item/material/pellets/uranium_235" = 30)
-	
+
 /recipe/bullet_press/du/sniper_127
 	name = "depleted uranium 127 sniper"
 
@@ -84,7 +84,7 @@
 		"c2" = "/obj/item/crafting/ingredient/part/bullet_casings"
 	)
 	product = list("/obj/item/magazine/sniper_127/du" = 100)
-	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 32,"/obj/item/crafting/ingredient/part/bullet_casings" = 4,
+	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 32,"/obj/item/crafting/ingredient/part/bullet_casings" = 8,
 	"/obj/item/material/pellets/uranium_235" = 16)
 
 /recipe/bullet_press/du/sniper_20
@@ -115,4 +115,3 @@
 	)
 	product = list("/obj/item/magazine/minigun_46/du" = 100)
 	consume_id_amount = list("/obj/item/crafting/ingredient/part/gunpowder" = 50,"/obj/item/material/pellets/uranium_235" = 100)
-	
