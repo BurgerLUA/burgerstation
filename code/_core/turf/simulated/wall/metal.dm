@@ -83,6 +83,12 @@
 	reinforced_material_id = /material/adamantium_carbon
 	reinforced_color = "#FF0000"
 	health = null
+	health_base = INFINITY //TRY BREAKING IT NOW I DARE YOU.
+
+/turf/simulated/wall/metal/reinforced/syndicate/on_damage_received(atom/atom_damaged, atom/attacker, atom/weapon, damagetype/DT, list/damage_table, damage_amount, critical_hit_multiplier, stealthy)
+	health = INFINITY //BREAK IT NOW I FUCKING DARE YOU.
+	. = ..()
+
 
 /turf/simulated/wall/metal/reinforced/syndicate/shuttle
 	plane = PLANE_SHUTTLE
