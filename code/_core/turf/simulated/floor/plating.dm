@@ -37,6 +37,12 @@
 	name = "dark steel floor plating"
 	color = COLOR_STEEL_DARK
 
+/turf/simulated/floor/plating/syndicate/is_safe_move(check_contents)
+	for(var/obj/structure/interactive/door/vault/syndicate/S in src.contents) // Ghetto anti-heiro staff
+		return FALSE
+	. = ..()
+
+
 /turf/simulated/floor/plating/rev
 	name = "tinted steel floor plating"
 	color = "#626A3B"
