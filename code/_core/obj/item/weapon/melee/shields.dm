@@ -1,3 +1,10 @@
+var/global/list/shield_price_mul = list(
+	ATTACK_TYPE_UNARMED = 0.75,
+	ATTACK_TYPE_MELEE = 0.5,
+	ATTACK_TYPE_RANGED = 2,
+	ATTACK_TYPE_MAGIC = 3
+)
+
 /obj/item/weapon/melee/shield
 	name = "basic wooden shield"
 	desc = "For the basic."
@@ -18,13 +25,6 @@
 	value = 100
 
 	block_sound = 'sound/effects/impacts/shield_wood.ogg'
-
-var/global/list/shield_price_mul = list(
-	ATTACK_TYPE_UNARMED = 0.75,
-	ATTACK_TYPE_MELEE = 0.5,
-	ATTACK_TYPE_RANGED = 2,
-	ATTACK_TYPE_MAGIC = 3
-)
 
 /obj/item/weapon/melee/shield/get_base_value()
 

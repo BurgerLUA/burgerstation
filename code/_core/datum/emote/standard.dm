@@ -127,7 +127,7 @@
 	id = "exhale"
 	action = "\The #USER exhales."
 
-/emote/exhale
+/emote/blink
 	name = "Blink"
 	id = "blink"
 	action = "\The #USER blinks."
