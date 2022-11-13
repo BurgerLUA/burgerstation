@@ -35,6 +35,7 @@
 	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/du
 	value = 120
+	penetrations = 3
 
 /obj/item/bullet_cartridge/sniper_50/explosive
 	name = "\improper .50 explosive sniper round"

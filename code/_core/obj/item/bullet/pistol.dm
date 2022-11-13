@@ -268,7 +268,7 @@
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/du
 	caseless = TRUE
 	value = 2
-
+	penetrations = 2
 /obj/item/bullet_cartridge/pistol_4mm/caseless/surplus
 	name = "\improper surplus 4.6x30mm caseless pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/surplus

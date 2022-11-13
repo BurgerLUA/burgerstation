@@ -51,6 +51,7 @@
 	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_308/du
 	value = 4.8
+	penetrations = 2
 /obj/item/bullet_cartridge/rifle_308/nato/du
 	name = "\improper DU 7.62mm rifle bullet"
 	desc = "The choice for Marksmen and Machinegunners. This one has a DU tip."
@@ -59,6 +60,7 @@
 	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/du
 	value = 2.2
+	penetrations = 2
 
 /obj/item/bullet_cartridge/rifle_308/nato
 	name = "\improper 7.62mm rifle bullet"

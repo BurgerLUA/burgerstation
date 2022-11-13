@@ -43,4 +43,4 @@
 	desc = "For when you want to shoot something so hard everone slumps over in pain."
 	rarity = RARITY_RARE
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_127/du
-
+	penetrations = 3
