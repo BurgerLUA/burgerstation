@@ -304,7 +304,7 @@
 		/obj/item/material/ingot/uranium_235{amount = 50} = 1,
 		/obj/item/material/ingot/zinc{amount = 50} = 1,
 	)
-	loot_count = 5
+	loot_count = 2
 /loot/misc/sheets
 	loot_table = list(
 		/obj/item/material/sheet/aluminium{amount = 50} = 1,
@@ -326,4 +326,4 @@
 		/obj/item/material/sheet/uranium_235{amount = 50} = 1,
 		/obj/item/material/sheet/zinc{amount = 50} = 1,
 	)
-	loot_count = 5
+	loot_count = 2

@@ -19,13 +19,19 @@
 	loot_table = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127 = 10,
 		/loot/scroll = 20,
-		/obj/item/clothing/back/storage/backpack/bluespace = 5,
-		/obj/item/clothing/back/storage/satchel/bluespace = 5,
-		/obj/item/clothing/belt/holding = 5,
+		/obj/item/clothing/back/storage/backpack/bluespace = 1,
+		/obj/item/clothing/back/storage/satchel/bluespace = 1,
+		/obj/item/clothing/belt/holding = 1,
 		/loot/misc/ingots = 10,
 		/loot/misc/sheets = 10,
-		/obj/item/weapon/ranged/energy/opticor = 5,
+		/obj/item/weapon/ranged/energy/opticor = 1,
 		/obj/item/container/healing/trauma_kit/advanced = 5,
 		/obj/item/container/healing/burn_kit/advanced = 5,
+		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel = 10,
+		/obj/item/bullet_cartridge/rocket_70mm/nuclear = 20,
+		/obj/item/bullet_cartridge/grenade_40mm/du = 20,
+		/obj/item/coin/cursed = 20,
+		/obj/item/magazine/minigun_46/du = 15
+
 	)
-	loot_count = 4
+	loot_count = 3
