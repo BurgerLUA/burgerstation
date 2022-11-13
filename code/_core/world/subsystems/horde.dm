@@ -160,8 +160,8 @@ SUBSYSTEM_DEF(horde)
 			return FALSE
 
 		var/area/A = T.loc
-		if(!bypass_restrictions && A.area_identifier != "Mission")
-			if(debug) log_debug("Could not send squad: Area identifier was expected to be Mission, but it was [A.area_identifier].")
+		if(!bypass_restrictions && A.z != SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"])
+			if(debug) log_debug("Could not send squad: Not on mission map!")
 			return FALSE
 		//Okay. Here is the fun part. Finding spawns.
 		var/my_chunk_x = T.x/CHUNK_SIZE
