@@ -34,4 +34,4 @@
 		/obj/item/magazine/minigun_46/du = 15
 
 	)
-	loot_count = 3
+	loot_count = 6

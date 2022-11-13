@@ -43,7 +43,7 @@
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
 		/obj/item/disk/rcd/oresmelter,
-		/obj/item/disk/rcd/orestorage,
+		///obj/item/disk/rcd/orestorage,
 		/obj/item/disk/rcd/stacker,
 		/obj/item/disk/rcd/chair,
 		/obj/item/disk/rcd/table,

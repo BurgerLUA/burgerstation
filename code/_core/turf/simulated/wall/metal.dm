@@ -79,6 +79,8 @@
 	icon = 'icons/turf/wall/metal/syndicate.dmi'
 	desc = "Dont even bother."
 	color = COLOR_IRON
+	material_id = /material/adamantium_carbon
+	reinforced_material_id = /material/adamantium_carbon
 	reinforced_color = "#FF0000"
 	health = null
 

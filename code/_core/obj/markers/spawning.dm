@@ -204,11 +204,10 @@
 	name = "random vault loot"
 	icon_state = "vault"
 	possible_objects = list(
-		/loot/supply_crate/syndicate = 200,
-		/loot/syndie/vault = 100,
+		/loot/syndie/vault = 200,
 		/obj/item/supply_crate/syndicate{amount=3} = 100,
 		/obj/item/storage/kit/syndicate/filled = 50,
-		/obj/item/clothing/overwear/hardsuit/syndie/advanced = 50,
+		/obj/item/clothing/overwear/hardsuit/syndie/advanced = 75,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite = 50
 	)
 
