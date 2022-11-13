@@ -525,7 +525,7 @@ var/global/list/all_damage_numbers = list()
 				var/arcane_bonus_percent = clamp((total_attacker_defense[damage_type]*0.02),0,(magic_before_arcane*2.5)) //Deal 1% more damage per 50 magic resist of attacker,max of 2.5x damage
 				arcane_bonus = magic_before_arcane * (arcane_bonus_percent/100)
 				if(debug) log_debug("Victim's new [damage_type] damage due to attacker's [defense_rating_attacker[damage_type]] Total Taken: [arcane_bonus + damage_to_deal[damage_type]].")
-			/* 
+			/*
 			If someone wants to make a variable to swap between dealing more peirce or damage, heres original code.
 			victim_defense -= defense_rating_attacker[damage_type]*0.5
 			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")

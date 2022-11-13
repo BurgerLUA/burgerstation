@@ -47,6 +47,12 @@
 		hovering = FALSE
 		START_THINKING(src)
 
+/obj/item/weapon/ranged/wand/on_drop(obj/hud/inventory/old_inventory, silent)
+	if(length(socketed_spellgem))
+		socketed_spellgem.mana_cost_user = 0
+	. = ..()
+
+
 /obj/item/weapon/ranged/wand/think()
 
 	if(!is_inventory(src.loc))

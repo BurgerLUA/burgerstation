@@ -22,12 +22,13 @@
 	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.
 	var/utility_cost = 100 // Mana cost for util gems.
 	var/cost_mana = 0 //generated on Initialize()
+	var/mana_cost_user = 0 // Stored value of how much mana should be taken from the user based on arcane armor. Recalculated on shoot
 
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
 	. *= 1 - (spread_per_shot/360)
 
-/obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost() 
+/obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
 	if(utilitygem || projectile_utility)
 		return utility_cost
 	. = get_damage_per_hit(100)
@@ -43,6 +44,15 @@
 	. = cost_mana
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
+	if(is_advanced(caller))
+		var/health/mob/living/advanced/H = caller.health
+		var/list/arcanes = H.get_total_mob_defense(TRUE,FALSE)
+		var/mana_mul = 0
+		mana_mul += clamp(arcanes[HOLY]/100,-25,25)
+		mana_mul += clamp(arcanes[ARCANE]/100,-25,25) // Basically, for every 100 armor total, gain or lose 1% mana efficiency
+		mana_mul += clamp(arcanes[DARK]/100,-25,25)	//goes up to 75% reduction in cost.
+		. *= (1 - mana_mul/100)
+
 
 
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
@@ -79,7 +89,7 @@
 			attachment_stats[support_type] *= (1/support_value)
 		if(support_type == "bullet_count")
 			attachment_stats[support_type] += modifier_count[support_type]
-			
+
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
 	else
@@ -90,8 +100,8 @@
 		attachment_stats["damage_multiplier"] *= W.wand_damage_multiplier
 	else
 		attachment_stats["damage_multiplier"] = W.wand_damage_multiplier
+	mana_cost_user = 0
 	return TRUE
-
 
 
 /obj/item/weapon/ranged/spellgem/get_owner()
@@ -127,7 +137,7 @@
 	if(!owner.health)
 		return 1
 
-	var/final_cost = get_mana_cost(owner)
+	var/final_cost = mana_cost_user
 
 	if(final_cost <= 0)
 		return 1
@@ -143,7 +153,7 @@
 	if(!A.health)
 		return ..()
 
-	var/final_cost = get_mana_cost(A)
+	var/final_cost = mana_cost_user
 
 	if(final_cost != 0)
 		if (final_cost > A.health.mana_current)
@@ -168,7 +178,15 @@
 /obj/item/weapon/ranged/spellgem/get_movement_spread(var/mob/living/L)
 	return 0
 
+/obj/item/weapon/ranged/spellgem/on_drop(obj/hud/inventory/old_inventory, silent)
+	mana_cost_user = 0
+	. = ..()
+
+
 /obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called = FALSE)
+	if(mana_cost_user <= 0)
+		mana_cost_user = get_mana_cost(caller)
+
 	if(!utilitygem)
 		. = ..()
 	else
@@ -181,7 +199,7 @@
 		var/quality_bonus = get_quality_bonus(0.5,2)
 		var/condition_to_use = 1
 		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
-		
+
 
 		last_shoot_time = world.time
 		next_shoot_time = world.time + shoot_delay_to_use
