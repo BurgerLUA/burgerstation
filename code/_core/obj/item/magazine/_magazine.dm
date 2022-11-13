@@ -9,8 +9,7 @@
 
 	var/ammo
 	var/ammo_surplus //This is given via autorestockers. If none is listed, then it cannot give the ammo.
-	var/no_restock = FALSE //Will not restock at a premium ammo vendor.
-
+	var/prem_restock_ammo //What ammo to give at a premium restocker. If not listed, gives the default ammo for that mag.
 	size = SIZE_2
 
 	var/bullet_length_min = -1

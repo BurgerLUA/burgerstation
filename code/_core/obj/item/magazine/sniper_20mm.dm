@@ -30,7 +30,7 @@
 /obj/item/magazine/sniper_20mm/du
 	ammo = /obj/item/bullet_cartridge/sniper_20/du
 	icon_state = "20_DU"
-	no_restock = TRUE
+	prem_restock_ammo = /obj/item/bullet_cartridge/sniper_20
 	rarity = RARITY_UNCOMMON
 	value = 120
 	value_burgerbux = 1

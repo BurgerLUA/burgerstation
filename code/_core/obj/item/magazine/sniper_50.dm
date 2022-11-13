@@ -51,5 +51,5 @@
 	icon_state = "50_DU"
 	rarity = RARITY_UNCOMMON
 	ammo = /obj/item/bullet_cartridge/sniper_50/du
-	no_restock = TRUE
+	prem_restock_ammo = /obj/item/bullet_cartridge/sniper_50
 	value_burgerbux = 1

@@ -107,10 +107,10 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
-		if(M.no_restock)
-			caller.to_chat(span("warning","Error: Magazine ammo non-standard. Unable to fill with designated ammo type. You have not been charged."))
-			return TRUE
 		var/obj/item/bullet_cartridge/bullet_to_create = M.ammo
+		if(M.prem_restock_ammo)
+			caller.to_chat(span("warning","Error: Magazine ammo non-standard. Unable to fill with designated ammo type. Filling with standard rounds."))
+			bullet_to_create = M.prem_restock_ammo
 		if(M.regenerate && M.ammo)
 			bullet_to_create = M.ammo
 		if(!bullet_to_create)
@@ -130,7 +130,7 @@
 			if (M.regenerate && M.ammo)
 				A.to_chat(span("notice","ERROR: NULL ACCOUNT. USER NOT CHARGED."))
 			else
-				A.adjust_currency(credits)
+				A.adjust_currency(-credits)
 				A.to_chat(span("notice","Thank you for your purchase of [bullets_to_add] round(s). You have been charged [credits] credits."))
 		var/obj/item/bullet_cartridge/B = new bullet_to_create(src.loc)
 		INITIALIZE(B)

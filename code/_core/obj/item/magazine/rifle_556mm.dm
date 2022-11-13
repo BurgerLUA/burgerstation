@@ -49,5 +49,5 @@
 	icon_state = "556"
 	rarity = RARITY_UNCOMMON
 	ammo = /obj/item/bullet_cartridge/rifle_223/du
-	no_restock = TRUE
+	prem_restock_ammo = /obj/item/bullet_cartridge/rifle_223
 	value_burgerbux = 1
