@@ -47,6 +47,7 @@
 	name = "\improper 5.56mm DU rifle magazine"
 	icon = 'icons/obj/item/magazine/556_rifle_du.dmi'
 	icon_state = "556"
+	rarity = RARITY_UNCOMMON
 	ammo = /obj/item/bullet_cartridge/rifle_223/du
 	no_restock = TRUE
 	value_burgerbux = 1

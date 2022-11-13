@@ -32,6 +32,7 @@
 	name = "\improper DU .50 sniper round"
 	desc_extended = "For sniper rifles that require .50 ammo. This one has a depleted uranium tip."
 	rarity = RARITY_MYTHICAL
+	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_50/du
 	value = 120
 

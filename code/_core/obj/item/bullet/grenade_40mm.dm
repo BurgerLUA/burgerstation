@@ -40,7 +40,8 @@
 	desc = "KA-BOOOOOOM"
 	desc_extended = "For Grenade launchers, small nuclear payload."
 	icon = 'icons/obj/item/bullet/40mm_DU.dmi'
-
+	rarity = RARITY_UNCOMMON
+	value_burgerbux = 1
 	projectile = /obj/projectile/bullet/DU_40M
 
 

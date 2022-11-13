@@ -29,5 +29,6 @@
 
 /obj/item/bullet_cartridge/sniper_20/du
 	name = "\improper DU 20x117mm sniper round"
+	rarity = RARITY_RARE
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/du
 	value = 40

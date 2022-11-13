@@ -264,6 +264,7 @@
 /obj/item/bullet_cartridge/pistol_4mm/caseless/du
 	name = "\improper 4.6x30mm caseless DU smg cartridge"
 	rarity = RARITY_RARE
+	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/du
 	caseless = TRUE
 	value = 2

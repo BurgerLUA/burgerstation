@@ -41,5 +41,6 @@
 /obj/item/bullet_cartridge/sniper_127/du //incase you want someone EXTREMELY dead.
 	name = "\improper DU 12.7x90mm sniper round"
 	desc = "For when you want to shoot something so hard everone slumps over in pain."
+	rarity = RARITY_RARE
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_127/du
 

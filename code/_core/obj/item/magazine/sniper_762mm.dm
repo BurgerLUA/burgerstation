@@ -56,6 +56,7 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one contains DU rounds."
 	icon = 'icons/obj/item/magazine/762_rifle_du.dmi'
 	no_restock = TRUE
+	rarity = RARITY_UNCOMMON
 	ammo = /obj/item/bullet_cartridge/rifle_308/du
 	value_burgerbux = 1
 
@@ -64,5 +65,6 @@
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one contains DU rounds."
 	icon = 'icons/obj/item/magazine/762_rifle_du.dmi'
 	no_restock = TRUE
+	rarity = RARITY_UNCOMMON
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato/du
 	value_burgerbux = 1

@@ -48,12 +48,15 @@
 	name = "\improper DU .308 rifle bullet"
 	desc_extended = "For rifles that require .308. This one has a DU tip."
 	rarity = RARITY_UNCOMMON
+	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_308/du
 	value = 4.8
 /obj/item/bullet_cartridge/rifle_308/nato/du
 	name = "\improper DU 7.62mm rifle bullet"
 	desc = "The choice for Marksmen and Machinegunners. This one has a DU tip."
 	desc_extended = "For rifles that require 7.62mm"
+	rarity = RARITY_UNCOMMON
+	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/rifle_762mm/du
 	value = 2.2
 

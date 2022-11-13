@@ -55,6 +55,7 @@
 	desc = "Look at me im Davy Crocket!"
 	desc_extended = "For RPGs, wAIT IS THAT A FUCKING NUKE?!?"
 	rarity = RARITY_RARE
+	value_burgerbux = 1
 	icon = 'icons/obj/item/bullet/rocket.dmi'
 	icon_state = "NUKE"
 	value = 1200

@@ -33,5 +33,7 @@
 	icon = 'icons/obj/item/magazine/minigun.dmi'
 	icon_state = "mini_du"
 	bullet_count_max = 200
+	rarity = RARITY_UNCOMMON
+	value_burgerbux = 1
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/caseless/du
 	value_burgerbux = 1
