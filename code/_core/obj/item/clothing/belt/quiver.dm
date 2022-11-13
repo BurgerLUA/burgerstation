@@ -8,9 +8,19 @@
 	value = 200
 
 	var/list/stored_arrows = list()
-	var/arrow_count = 0
 
 	var/max_arrows = 200
+
+/obj/item/clothing/belt/belt_quiver/get_base_value()
+	return max_arrows*3
+
+/obj/item/clothing/belt/belt_quiver/get_value()
+	. = ..()
+	for(var/k in stored_arrows)
+		var/amount = stored_arrows[k]
+		var/found_value = SSbalance.stored_value[k]
+		if(found_value > 0)
+			. += amount*found_value
 
 /obj/item/clothing/belt/belt_quiver/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
