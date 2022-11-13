@@ -58,8 +58,8 @@
 	return PLANE_MOB_STEALTH //Always stealth.
 /mob/living/advanced/npc/beefman/on_walk()
 	var/turf/T = get_turf(src)
-	for(var/obj/effect/cleanable/blood/B in T.contents)
+	for(var/obj/effect/cleanable/B in T.contents)
 		qdel(B)
-		src.health.health_max += 5
-		src.health.adjust_loss_smart(2,2,2)
+		src.health.health_max += 3
+		src.health.adjust_loss_smart(1,1,1)
 	. = ..()
