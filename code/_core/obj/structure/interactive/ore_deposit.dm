@@ -39,14 +39,11 @@
 
 /obj/structure/interactive/ore_deposit/proc/drop_ore(var/atom/caller,var/ore_to_spawn)
 	var/obj/item/TO = new src.stored_ore
-	var/obj/structure/interactive/ore_box/OB = locate() in range(1,src)
-	var/obj/structure/interactive/conveyor/CV = locate() in range(1,src)
+	var/obj/structure/interactive/ore_box/OB = locate() in orange(2,src)
 	INITIALIZE(TO)
 	GENERATE(TO)
 	FINALIZE(TO)
-	if(CV)
-		TO.drop_item(CV.loc)
-	else if(OB)
+	if(OB)
 		TO.drop_item(OB.loc)
 	else if(is_living(caller))
 		var/mob/living/C = caller
@@ -233,14 +230,17 @@
 /obj/structure/interactive/ore_deposit_ground/proc/drop_ore(var/caller,var/ore_to_spawn)
 
 	var/obj/structure/interactive/mining_drill/MD = locate() in range(1,src)
-	var/obj/structure/interactive/ore_box/OB = locate() in orange(2,src)
+	var/obj/structure/interactive/ore_box/OB = locate() in orange(1,src)
+	var/obj/structure/interactive/conveyor/CV = locate() in orange(1,src)
 	if(!MD)
 		CRASH("Who the fuck called drop_ore on a deep vein without a drill? [caller] did.")
 	var/obj/item/TO = new src.stored_ore
 	INITIALIZE(TO)
 	GENERATE(TO)
 	FINALIZE(TO)
-	if(OB)
+	if(CV)
+		TO.drop_item(CV.loc)
+	else if(OB)
 		TO.drop_item(OB.loc)
 	else
 		TO.drop_item(MD.loc)

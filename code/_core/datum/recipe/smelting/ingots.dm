@@ -102,3 +102,10 @@
 	required_items = list("/obj/item/material/ingot/copper" = 2,"/obj/item/material/ingot/zinc" = 1)
 	product = list("/obj/item/material/ingot/brass" =100)
 	amount = list(3)
+
+/recipe/smelter/copper
+	name = "smelt copper"
+	desc = "smelt copper into copper ingots."
+	required_items = list("/obj/item/material/ore/copper" = 3)
+	product = list("/obj/item/material/ingot/copper" =100)
+

@@ -50,8 +50,6 @@
 				GENERATE(I)
 				FINALIZE(I)
 				O.add_item_count(-3)
-		if(O.amount <= 0) //just in case.
-			qdel(O)
 	return
 /obj/structure/interactive/smelter/proc/stack(var/obj/item/material/ore/O)
 	for(var/obj/item/material/ore/C in contents)

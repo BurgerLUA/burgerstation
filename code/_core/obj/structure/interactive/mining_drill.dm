@@ -35,7 +35,7 @@
 	. = ..()
 
 /obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)
 	. = ..()
 	qdel(src)
 

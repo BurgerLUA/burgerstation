@@ -57,7 +57,7 @@
 
 /turf/simulated/wall/metal/reinforced/constructed/proc/recalc(var/material/M)
 	var/material_name = initial(M.name)
-	name = "[material_name] reinforced wall"	
+	name = "[material_name] reinforced wall"
 	desc_extended = "Its a [material_name] wall, but reinforced with extra [material_name]."
 	material_id = M
 	reinforced_material_id = M
@@ -77,8 +77,10 @@
 
 /turf/simulated/wall/metal/reinforced/syndicate
 	icon = 'icons/turf/wall/metal/syndicate.dmi'
+	desc = "Dont even bother."
 	color = COLOR_IRON
 	reinforced_color = "#FF0000"
+	health = null
 
 /turf/simulated/wall/metal/reinforced/syndicate/shuttle
 	plane = PLANE_SHUTTLE
