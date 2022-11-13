@@ -25,10 +25,10 @@
 		if(T.flags_tool & FLAG_TOOL_WRENCH)
 			if(anchored)
 				caller.to_chat(span("notice","You un-anchor the conveyor."))
-				anchored = FALSE
+				set_anchored(FALSE)
 			else
 				caller.to_chat(span("notice","You anchor the conveyor."))
-				anchored = TRUE
+				set_anchored(TRUE)
 
 	if(caller.movement_flags & MOVEMENT_WALKING)
 		if(anchored)

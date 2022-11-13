@@ -152,6 +152,17 @@
 		"cost" = 1000
 	)
 
+/obj/item/disk/rcd/flap
+	name = "rcd data disk (flap)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a rubber flap."
+	data = list(
+		"name" = "flap.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/plastic_flaps,
+		"cost" = 1000
+	)
+
 /obj/item/disk/rcd/table
 	name = "rcd data disk (table)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
