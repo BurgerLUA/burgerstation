@@ -30,8 +30,10 @@
 			return TRUE
 		if(desired_projectile==null)
 			if(I.stored_spellswap)
+				I.stored_spellswap = src
 				qdel(I.stored_spellswap)
 				src.drop_item(I)
+				I.damage_type = initial(I.damage_type)
 			else
 				caller.to_chat(span("notice", "There's no spell to remove!"))
 				return TRUE
