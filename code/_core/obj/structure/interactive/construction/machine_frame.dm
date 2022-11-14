@@ -26,6 +26,15 @@
 
 obj/structure/interactive/construction/machine_frame/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the machine frame."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the machine frame."))
+				anchored = TRUE
 	if(istype(object,/obj/item/crafting/ingredient/part/electronics))
 		var/obj/item/P = object
 		INTERACT_CHECK

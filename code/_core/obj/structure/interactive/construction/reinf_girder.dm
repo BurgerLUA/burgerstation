@@ -45,6 +45,22 @@
 
 obj/structure/interactive/construction/reinf_girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the reinforced girder."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the reinforced girder."))
+				anchored = TRUE
+		if(T.flags_tool & FLAG_TOOL_WIRECUTTER)
+			caller.to_chat(span("notice","You dissasemble the [src.name]"))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
+			src.on_destruction(caller)
+			return TRUE
 	if(istype(object,/obj/item/material/sheet/))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

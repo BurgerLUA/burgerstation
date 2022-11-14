@@ -71,7 +71,7 @@
 	qdel(src)
 
 
-obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(istype(object,/obj/item/material/sheet/))
 		INTERACT_CHECK
@@ -86,5 +86,22 @@ obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/calle
 		INTERACT_DELAY(10)
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/construct_door,caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_door,caller,object)
+		return TRUE
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the girder."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the girder."))
+				anchored = TRUE
+		if(T.flags_tool & FLAG_TOOL_WIRECUTTER)
+			caller.to_chat(span("notice","You dissasemble the [src.name]"))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
+			src.on_destruction(caller)
+			return TRUE
 		return TRUE
 	return ..()

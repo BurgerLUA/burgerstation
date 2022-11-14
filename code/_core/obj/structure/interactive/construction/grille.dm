@@ -48,6 +48,15 @@
 
 /obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
+			caller.to_chat(span("notice","You dissasemble the [src.name]"))
+			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
+			INTERACT_DELAY(10)
+			src.on_destruction(caller)
+			return TRUE
 	if(istype(object,/obj/item/material/sheet))
 		var/obj/item/material/sheet/S = object
 		if(ispath(S.material_id,/material/glass))
