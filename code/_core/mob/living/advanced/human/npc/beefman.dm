@@ -60,6 +60,6 @@
 	var/turf/T = get_turf(src)
 	for(var/obj/effect/cleanable/B in T.contents)
 		qdel(B)
-		src.health.health_max += 3
-		src.health.adjust_loss_smart(1,1,1)
+		src.health.health_max += 5
+		src.health.adjust_loss_smart(-5,-5,-5)
 	. = ..()
