@@ -48,9 +48,7 @@
 		var/health/mob/living/advanced/H = caller.health
 		var/list/arcanes = H.get_total_mob_defense(TRUE,FALSE)
 		var/mana_mul = 0
-		mana_mul += clamp(arcanes[HOLY]/100,-25,25)
-		mana_mul += clamp(arcanes[ARCANE]/100,-25,25) // Basically, for every 100 armor total, gain or lose 1% mana efficiency
-		mana_mul += clamp(arcanes[DARK]/100,-25,25)	//goes up to 75% reduction in cost.
+		mana_mul = clamp(arcanes[ARCANE]/100,-75,75) // Basically, for every 100 armor total, gain or lose 1% mana efficiency
 		. *= (1 - mana_mul/100)
 
 
