@@ -56,12 +56,12 @@ And the code would look like this:
 	//Result icon and icon state.
 	var/icon = ""
 	var/icon_state = ""
-	
+
 	var/secret = FALSE //Its a secret to everybody. Won't show up in "recipe" loot items.
 
 /recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
 	return TRUE
-	
+
 /recipe/proc/on_fail(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item)
 	return TRUE
 
@@ -75,16 +75,16 @@ And the code would look like this:
 			var/grid_crafting_id = text2path_safe(grid_crafting_id_text)
 
 			if(!grid_crafting_id || grid_crafting_id == null)
-				if(do_debug) 
+				if(do_debug)
 					log_debug("No item is needed for [grid_id]. Skipping.")
 				continue
 			var/obj/item/held_item_in_grid = item_table[grid_id]
 			if(!held_item_in_grid)
-				if(do_debug) 
+				if(do_debug)
 					log_debug("There is no item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else if(!istype(held_item_in_grid,grid_crafting_id))
-				if(do_debug) 
+				if(do_debug)
 					log_debug("There is an incorrect item in [grid_id]. We cannot craft this recipe ([name]) without a [grid_crafting_id] in [grid_id].")
 				return list()
 			else if(held_item_in_grid.amount < consume_id_amount[grid_crafting_id_text] && consume_id_amount[grid_crafting_id_text])
@@ -101,13 +101,13 @@ And the code would look like this:
 					used_items[held_item_in_grid] = consume_id_amount[grid_crafting_id_text]
 				else
 					used_items[held_item_in_grid] = 1
-	
+
 	if(length(required_items))
 		var/list/found_slots = list()
 		for(var/crafting_type_id in required_items)
 			var/crafting_id = text2path_safe(crafting_type_id)
 			var/amount_to_take = required_items[crafting_type_id]
-			var/found=FALSE
+			var/found=0
 			for(var/i = 1, i <= amount_to_take,i++)
 				for(var/grid_id in item_table)
 					if(grid_id in found_slots)
@@ -119,13 +119,13 @@ And the code would look like this:
 						continue
 					if(istype(I,crafting_id))
 						used_items += I
-						found=TRUE
+						found++
 						found_slots += grid_id
 						if(crafting_type_id in consume_id_amount)
 							used_items[I] = consume_id_amount[crafting_type_id]
 						else
 							used_items[I] = 1
 						break
-			if(!found)
+			if(found < amount_to_take)
 				return list()
 	return used_items

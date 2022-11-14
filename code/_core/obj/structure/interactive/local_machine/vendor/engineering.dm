@@ -47,6 +47,8 @@
 		/obj/item/disk/rcd/stacker,
 		/obj/item/disk/rcd/chair,
 		/obj/item/disk/rcd/table,
+		/obj/item/disk/rcd/light,
+		/obj/item/disk/rcd/tube_light,
 		///obj/item/disk/rcd/airlock,
 		/obj/item/disk/rcd/flap,
 		/obj/item/matter_cartridge,
