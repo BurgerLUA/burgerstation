@@ -49,8 +49,8 @@
 		var/obj/hud/inventory/I = loc
 		if(is_living(I.owner))
 			var/mob/living/L = I.owner
-			var/strength_mod = L.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)
-			var/dex_mod = L.get_attribute_power(ATTRIBUTE_DEXTERITY,0.5,1,2)
+			var/strength_mod = 0.5 + L.get_attribute_power(ATTRIBUTE_STRENGTH,0,1,2)*0.5
+			var/dex_mod = 0.25 + L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*0.75
 			stage_per_decisecond *= dex_mod
 			stage_per_decisecond = CEILING(stage_per_decisecond,1)
 			stage_max *= strength_mod
@@ -217,10 +217,10 @@
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
 	var/damagetype/D = all_damage_types[ranged_damage_type]
-	return D.get_damage_per_hit(armor_to_use)
+	return D.get_damage_per_hit(armor_to_use) * (stage_max/100)
 
 /obj/item/weapon/ranged/bow/get_hits_per_second()
-	return 1 / (1 + (stage_max/(stage_per_decisecond/10))) //How long it takes to fully charge.
+	return (stage_per_decisecond/stage_max)*10
 
 
 
