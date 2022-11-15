@@ -31,7 +31,6 @@
 		/obj/item/coin/cursed = 20,
 		/obj/item/magazine/minigun_46/du = 15,
 		/obj/item/currency/telecrystals{amount=10} = 10,
-		/loot/weapon/explosive/flashbangs = 10,
 
 	)
 	loot_count = 6
