@@ -93,7 +93,7 @@
 	data = list(
 		"name" = "circle_light.obj",
 		"effect" = /obj/effect/temp/sparkles,
-		"object" = /obj/structure/interactive/lighting/fixture/floor/stronger,
+		"object" = /obj/structure/interactive/lighting/fixture/floor/stronger/rcd,
 		"cost" = 100
 	)
 
@@ -104,7 +104,7 @@
 	data = list(
 		"name" = "tube_light.obj",
 		"effect" = /obj/effect/temp/sparkles,
-		"object" = /obj/structure/interactive/lighting/fixture/tube/station,
+		"object" = /obj/structure/interactive/lighting/fixture/tube/station/rcd,
 		"cost" = 100
 	)
 

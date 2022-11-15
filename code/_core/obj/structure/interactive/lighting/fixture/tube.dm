@@ -78,6 +78,14 @@
 	desired_light_power = 0.75
 	desired_light_range = VIEW_RANGE*0.75
 
+/obj/structure/interactive/lighting/fixture/tube/station/rcd/Finalize()
+	. = ..()
+	new /light_source(src)
+	desired_light_color = color
+	update_sprite()
+	update_atom_light()
+	update_icon()
+
 /obj/structure/interactive/lighting/fixture/tube/station/strong
 	desired_light_power = 0.75
 	desired_light_range = VIEW_RANGE*0.85
