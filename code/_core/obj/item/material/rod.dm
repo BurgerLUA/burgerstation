@@ -29,7 +29,7 @@
 				INITIALIZE(R)
 				GENERATE(R)
 				FINALIZE(R)
-				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 8 [R.name]."))
+				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]."),span("notice","You cut \the [src.name] into 8 [R.name]."))
 				add_item_count(-1)
 				R.Move(get_turf(I))
 			else // We cant find a pellets for the material...
@@ -39,7 +39,7 @@
 				INITIALIZE(R)
 				GENERATE(R)
 				FINALIZE(R)
-				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 8 [R.name]."))
+				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]."),span("notice","You cut \the [src.name] into 8 [R.name]."))
 				add_item_count(-1)
 				R.Move(get_turf(I))
 			return TRUE

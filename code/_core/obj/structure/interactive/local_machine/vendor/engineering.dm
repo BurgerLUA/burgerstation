@@ -7,8 +7,8 @@
 		/obj/item/crafting/ingredient/part/tape,
 		/obj/item/crafting/ingredient/part/electronics,
 		/obj/item/crafting/ingredient/part/scrap,
-		/obj/item/crafting/ingredient/part/bullet_casings = 1.5,
-		/obj/item/crafting/ingredient/part/gunpowder = 1.5,
+		/obj/item/crafting/ingredient/part/bullet_casings{amount=25} = 2.5,
+		/obj/item/crafting/ingredient/part/gunpowder{amount=25} = 2.5,
 		/obj/item/weapon/melee/tool/hammer,
 		/obj/item/paper/book/crafting_guide
 	)
