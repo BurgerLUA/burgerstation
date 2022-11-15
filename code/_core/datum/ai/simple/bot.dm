@@ -9,9 +9,10 @@
 	radius_find_enemy = 0
 	should_investigate_alert = FALSE
 
-	roaming_distance = 0
-
 	resist_grabs = FALSE
+
+	aggression = 0
+	assistance = 0
 
 /ai/bot/medical/New(var/desired_loc,var/mob/living/desired_owner)
 	. = ..()
@@ -24,9 +25,9 @@
 	return ..()
 
 /ai/bot/medical/proc/is_valid_healing_target(var/mob/living/L)
-	if(L == owner)
-		return FALSE
 	if(!L || L.qdeleting)
+		return FALSE
+	if(L == owner)
 		return FALSE
 	if(!istype(L.health) || !L.health.organic)
 		return FALSE
@@ -38,15 +39,15 @@
 		return FALSE
 	return TRUE
 
-/ai/bot/medical/handle_objectives(var/tick_rate)
+/ai/bot/medical/find_new_objectives(var/tick_rate)
 
-	if(!healing_target || !is_valid_healing_target(healing_target,get_dist(owner,healing_target),VIEW_RANGE))
+	if(!is_valid_healing_target(healing_target,get_dist(owner,healing_target),VIEW_RANGE))
 		find_healing_target()
 
-	if(healing_target && get_dist(healing_target,owner) <= 1 && !owner_as_bot.is_busy())
+	if(healing_target && get_dist(healing_target,owner) <= 1)
 		owner_as_bot.try_treat(healing_target)
 
-	return ..()
+	. = ..()
 
 /ai/bot/medical/handle_movement()
 	if(healing_target)
@@ -54,6 +55,7 @@
 			owner.move_dir = 0x0
 		else
 			owner.move_dir = get_dir(owner,healing_target)
+		last_movement_proc = "healing target override"
 		return TRUE
 	return ..()
 
@@ -116,3 +118,5 @@
 	should_investigate_alert = TRUE
 	roaming_distance = VIEW_RANGE
 	resist_grabs = TRUE
+	aggression = 2
+	assistance = 1

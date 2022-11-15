@@ -1,5 +1,5 @@
 /area/mission/prefab/city
-	horde_data = /horde_data/city
+	horde_data = "mission"
 
 
 /area/mission/prefab/city/city_hall

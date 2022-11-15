@@ -1,7 +1,7 @@
 //AI that kicks people off the ship if they're intentionally trying to block doors.
 
 /ai/doorman
-	roaming_distance = 0
+
 	left_click_chance = 100
 	use_alerts = FALSE
 	true_sight = TRUE
@@ -47,14 +47,19 @@
 
 	return TRUE
 
-/ai/doorman/handle_objectives(var/tick_rate)
+/ai/doorman/find_new_objectives(var/tick_rate)
 
-	if(!objective_attack && length(attackers))
+	if(length(attackers))
 		var/mob/living/chosen_target = pick(attackers)
 		attackers -= chosen_target
 		set_objective(chosen_target)
 
-	if(objective_attack && !(locate(/obj/structure/interactive/scanner/living) in objective_attack.loc.contents))
+	return TRUE
+
+
+/ai/doorman/handle_current_objectives(var/tick_rate)
+
+	if(!(locate(/obj/structure/interactive/scanner/living) in objective_attack.loc.contents))
 		attackers -= objective_attack
 		set_objective(null)
 

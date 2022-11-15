@@ -27,11 +27,12 @@
 
 	return TRUE
 
-/ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE) //Set follow to true if it should constantly follow the person.
+/ai/proc/set_move_objective(var/atom/desired_objective,var/follow = FALSE,var/astar = FALSE) //Set follow to true if it should constantly follow the person.
 	if(desired_objective)
 		set_active(TRUE)
 	objective_move = desired_objective
 	should_follow_objective_move = follow
+	should_astar_objective_move = astar
 	return TRUE
 
 /ai/proc/handle_movement_attack_objective()
@@ -77,9 +78,13 @@
 	return FALSE
 
 /ai/proc/handle_movement_move_objective()
+
 	if(objective_move)
 		var/move_distance = get_dist(owner,objective_move)
-		if(move_distance > 1)
+		if(move_distance >= VIEW_RANGE*0.75 && should_astar_objective_move)
+			if(!set_path_astar(get_turf(objective_move)))
+				set_move_objective(null)
+		else if(move_distance > 1)
 			if(should_follow_objective_move && move_distance >= 4)
 				owner.movement_flags = MOVEMENT_RUNNING
 			else
@@ -91,6 +96,7 @@
 			owner.movement_flags = MOVEMENT_NORMAL
 			owner.move_dir = 0x0
 		return TRUE
+
 	return FALSE
 
 /ai/proc/check_node_path_obstructions()
@@ -199,25 +205,61 @@
 	return FALSE
 
 /ai/proc/handle_movement_roaming()
-	if(roaming_distance >= 1)
-		if(get_dist(owner,start_turf) >= roaming_distance-1)
-			owner.movement_flags = MOVEMENT_WALKING
-			owner.move_dir = get_dir(owner,start_turf)
-			return TRUE
-		else if(roaming_distance > 1)
-			if(roam)
-				if(prob(5))
-					owner.movement_flags = MOVEMENT_WALKING
-					owner.move_dir = pick(DIRECTIONS_ALL)
-					roam_counter -= 1
+
+	if(roaming_distance > 0)
+
+		var/start_turf_distance = get_dist(owner,start_turf)
+
+		if(roaming_direction) //Currently romaing
+			if(start_turf_distance == roaming_distance || roaming_counter <= 0) //Stop roaming. Too far.
+				roaming_direction = 0x0
+			else if(start_turf_distance > roaming_distance)
+				owner.movement_flags = MOVEMENT_WALKING
+				owner.move_dir = get_dir(owner,start_turf)
 			else
 				owner.movement_flags = MOVEMENT_WALKING
-				owner.move_dir = 0x0
-				if(prob(25))
-					roam_counter -= 1
-			if(roam_counter <= 0)
-				roam = !roam
-				roam_counter = initial(roam_counter)
+				owner.move_dir = roaming_direction
+				if(prob(20))
+					roaming_direction = turn(roaming_direction,45)
+				roaming_counter -= 1
+				return TRUE
+		else //Not roaming
+			if(prob(5)) //Now roaming
+				var/list/valid_directions = DIRECTIONS_ALL
+				var/bad_direction = get_dir(start_turf,owner)
+				valid_directions -= bad_direction
+				valid_directions -= turn(bad_direction,45)
+				valid_directions -= turn(bad_direction,-45)
+				roaming_direction = pick(valid_directions)
+				roaming_counter = roaming_distance*2
+				if(allow_far_roaming)
+					start_turf = get_turf(owner)
+
+	return FALSE
+
+/ai/proc/handle_movement_guarding()
+
+	if(!guard || !start_turf)
+		return FALSE
+
+	var/turf/T = get_turf(owner)
+
+	if(T == start_turf)
+		var/turf/facing_turf = get_step(owner,owner.dir)
+		if(facing_turf.density || prob(4))
+			owner.set_dir(turn(owner.dir,pick(-90,90)))
+		return FALSE
+
+	if(T.z == start_turf.z)
+		var/list/obstructions = get_obstructions(T,start_turf)
+		if(!length(obstructions))
+			objective_move = start_turf
+		else if(!set_path_astar(start_turf))
+			guard = FALSE
+	else
+		guard = FALSE
+
+	//We don't return true here because we really want this to be overwritten.
 
 	return FALSE
 
@@ -253,30 +295,43 @@
 /ai/proc/handle_movement()
 
 	if(handle_movement_move_from_ally())
+		last_movement_proc = "move_from_ally"
 		return TRUE
 
 	if(handle_movement_astar())
+		last_movement_proc = "astar"
 		return TRUE
 
 	if(handle_movement_path_frustration())
+		last_movement_proc = "path_frustration"
 		return TRUE
 
 	if(handle_movement_attack_objective())
+		last_movement_proc = "attack_objective"
 		return TRUE
 
 	if(handle_movement_move_objective())
+		last_movement_proc = "move_objective"
 		return TRUE
 
 	if(handle_movement_alert())
+		last_movement_proc = "alert"
 		return TRUE
 
 	if(handle_movement_path())
+		last_movement_proc = "path"
+		return TRUE
+
+	if(handle_movement_guarding())
+		last_movement_proc = "guarding"
 		return TRUE
 
 	if(handle_movement_roaming())
+		last_movement_proc = "roaming"
 		return TRUE
 
 	handle_movement_reset()
+	last_movement_proc = "none"
 
 	return FALSE
 

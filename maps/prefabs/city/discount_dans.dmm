@@ -498,22 +498,22 @@
 /area/mission/prefab/city/discount_dans)
 "bQ" = (
 /obj/structure/carpet/red,
-/mob/living/advanced/npc/zombie/bartender,
+/obj/marker/mission_mob,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/city/discount_dans)
 "bR" = (
-/mob/living/advanced/npc/zombie/chef,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/discount_dans/kitchen)
 "bS" = (
-/mob/living/advanced/npc/zombie/civilian{
+/obj/marker/mission_mob{
 	icon_state = "directional";
 	dir = 4
 	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/city/discount_dans)
 "bT" = (
-/mob/living/advanced/npc/zombie/civilian{
+/obj/marker/mission_mob{
 	icon_state = "directional";
 	dir = 4
 	},

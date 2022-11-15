@@ -312,7 +312,7 @@
 "bf" = (
 /obj/structure/carpet/grey,
 /obj/structure/interactive/lighting/fixture/bulb,
-/mob/living/advanced/npc/zombie/civilian{
+/obj/marker/mission_mob{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -420,11 +420,11 @@
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/city/toolbox_tavern)
 "bB" = (
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/city/toolbox_tavern)
 "bC" = (
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/toolbox_tavern/bathroom)
 

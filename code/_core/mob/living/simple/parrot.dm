@@ -90,6 +90,8 @@
 	loyalty_tag = "NanoTrasen"
 	iff_tag = "NanoTrasen"
 
+	ai = /ai/pet
+
 /mob/living/simple/parrot/mono/setup_name()
 	name = initial(name)
 	return TRUE

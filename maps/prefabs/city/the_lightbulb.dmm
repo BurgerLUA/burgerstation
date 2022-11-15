@@ -281,7 +281,7 @@
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/the_lightbulb)
 "bd" = (
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/tan,
 /area/mission/prefab/city/the_lightbulb)
 "be" = (
@@ -413,7 +413,7 @@
 /turf/simulated/wall/plastic/tan,
 /area/mission/prefab/city/the_lightbulb)
 "bG" = (
-/mob/living/advanced/npc/zombie/civilian{
+/obj/marker/mission_mob{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -421,12 +421,12 @@
 /area/mission/prefab/city/the_lightbulb)
 "bH" = (
 /obj/structure/interactive/lighting/fixture/tube/color/turf,
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/the_lightbulb)
 "bI" = (
 /obj/structure/carpet/grey,
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/tan,
 /area/mission/prefab/city/the_lightbulb/breakroom)
 

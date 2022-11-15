@@ -1681,7 +1681,7 @@
 /turf/simulated/floor/wood/boat/starting,
 /area/lz_001/caves/lagoon/ship)
 "ih" = (
-/mob/living/advanced/npc/zombie/desert,
+/obj/marker/mission_mob,
 /turf/simulated/floor/colored/sand/desert,
 /area/lz_001/desert)
 "ij" = (

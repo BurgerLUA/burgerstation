@@ -2,6 +2,10 @@
 "a" = (
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
+"b" = (
+/obj/marker/map_node/x2,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "c" = (
 /obj/decal/road_marking/solid_line/offset{
 	icon_state = "1";
@@ -110,14 +114,14 @@ d
 "}
 (6,1,1) = {"
 d
+b
 d
 d
 d
+b
 d
 d
-d
-d
-d
+b
 d
 "}
 (7,1,1) = {"

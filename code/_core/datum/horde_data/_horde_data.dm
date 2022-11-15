@@ -3,27 +3,7 @@
 	var/list/horde_weights = list()
 	var/list/horde_squads = list()
 
-/horde_data/city
-
-	horde_weights = list(
-		/mob/living/advanced/npc/abductor = 5,
-		"zombie" = 100
-	)
-
-	horde_squads = list(
-		"zombie" = list(
-			/mob/living/advanced/npc/zombie/civilian = 200,
-			/mob/living/advanced/npc/zombie/bartender = 5,
-			/mob/living/advanced/npc/zombie/chaplain = 5,
-			/mob/living/advanced/npc/zombie/chef = 5,
-			/mob/living/advanced/npc/zombie/chemist = 5,
-			/mob/living/advanced/npc/zombie/clown = 5,
-			/mob/living/advanced/npc/zombie/librarian = 5,
-			/mob/living/advanced/npc/zombie/medical = 20,
-			/mob/living/advanced/npc/zombie/scientist = 10,
-			/mob/living/advanced/npc/zombie/security = 30
-		)
-	)
+	var/ignore_gamemode = FALSE
 
 /horde_data/forest
 
@@ -45,13 +25,6 @@
 			/mob/living/advanced/npc/goblin/warrior = 40,
 			/mob/living/advanced/npc/goblin = 80
 		)
-	)
-
-
-/horde_data/syndicate
-	horde_weights = list(
-		/mob/living/advanced/npc/syndicate = 100,
-		/mob/living/simple/silicon/syndieborg = 10
 	)
 
 /horde_data/jungle
@@ -131,9 +104,9 @@
 			/mob/living/advanced/npc/ashwalker/hunter = 20,
 			/mob/living/advanced/npc/ashwalker/warrior = 20
 		)
-
-
 	)
+
+	ignore_gamemode = TRUE
 
 /horde_data/beach
 
@@ -154,16 +127,63 @@
 	)
 
 /horde_data/desert
+
 	horde_weights = list(
 		/mob/living/simple/slime/sand = 10,
 		/mob/living/simple/spider/glow = 10,
 		/mob/living/advanced/npc/zombie/desert = 40,
 	)
 
-/horde_data/hive
+/horde_data/xeno
+
 	horde_weights = list(
 		/mob/living/simple/xeno/drone = 20,
 		/mob/living/simple/xeno/hunter = 30,
 		/mob/living/simple/xeno/predatorian = 5,
 		/mob/living/simple/xeno/sentinel = 10
+	)
+
+	ignore_gamemode = TRUE
+
+
+/horde_data/tax
+
+	horde_weights = list(
+		/mob/living/advanced/npc/tax_collector = 100
+	)
+
+	ignore_gamemode = TRUE
+
+/horde_data/zombie
+
+	horde_weights = list(
+		/mob/living/advanced/npc/zombie/civilian = 200,
+		/mob/living/advanced/npc/zombie/bartender = 5,
+		/mob/living/advanced/npc/zombie/chaplain = 5,
+		/mob/living/advanced/npc/zombie/chef = 5,
+		/mob/living/advanced/npc/zombie/chemist = 5,
+		/mob/living/advanced/npc/zombie/clown = 5,
+		/mob/living/advanced/npc/zombie/librarian = 5,
+		/mob/living/advanced/npc/zombie/medical = 20,
+		/mob/living/advanced/npc/zombie/scientist = 10,
+		/mob/living/advanced/npc/zombie/security = 30
+	)
+
+	ignore_gamemode = TRUE
+
+/horde_data/syndicate
+
+	horde_weights = list(
+		/mob/living/advanced/npc/syndicate = 100,
+		/mob/living/simple/silicon/syndieborg = 10
+	)
+
+	ignore_gamemode = TRUE
+
+
+/horde_data/revolutionary
+
+	horde_weights = list(
+		/mob/living/advanced/npc/rev = 100,
+		/mob/living/simple/bear/armored/revolutionary = 10
 	)

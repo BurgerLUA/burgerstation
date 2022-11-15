@@ -67,6 +67,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 	if(dist <= attack_distance_max)
 		if(attackers[A])
 			return -2 //Target those who attacked you, but still attack those who are literally touching you.
+		if(hunt_target == A)
+			return 99999 //Yeah.
 		if(is_living(A))
 			var/mob/living/L = A
 			if(L.ai)
@@ -125,6 +127,9 @@ var/global/list/difficulty_to_ai_modifier = list(
 		A = V.passengers[1]
 	*/
 
+	if(hunt_target && A == hunt_target)
+		return TRUE
+
 	if(A == owner)
 		return FALSE
 
@@ -132,6 +137,12 @@ var/global/list/difficulty_to_ai_modifier = list(
 		return FALSE
 
 	var/mob/living/L = A
+
+	if(is_living(hunt_target))
+		var/mob/living/L_hunt_target = hunt_target
+		if(L_hunt_target.loyalty_tag && L_hunt_target.loyalty_tag == L.loyalty_tag) //The friend of my enemy is my enemy.
+			return TRUE
+
 	if(L.ai)
 		if(L.ai.objective_attack)
 			if(L.ai.objective_attack == owner)
@@ -139,13 +150,6 @@ var/global/list/difficulty_to_ai_modifier = list(
 			if(assistance == 1 && is_living(L.ai.objective_attack))
 				var/mob/living/L2 = L.ai.objective_attack
 				if(allow_helpful_action(owner.loyalty_tag,L2))
-					return TRUE
-		if(hunt_target)
-			if(L == hunt_target)
-				return TRUE
-			if(is_living(hunt_target))
-				var/mob/living/L_hunt_target = hunt_target
-				if(L_hunt_target.loyalty_tag && L_hunt_target.loyalty_tag == L.loyalty_tag)
 					return TRUE
 			return FALSE
 		if(predict_attack && !safety_check && L.ai.is_enemy(owner,TRUE))

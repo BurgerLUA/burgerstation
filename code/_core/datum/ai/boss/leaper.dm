@@ -15,7 +15,6 @@
 /ai/boss/leaper/handle_movement()
 	return FALSE
 
-
 /ai/boss/leaper/handle_attacking()
 
 	. = ..()

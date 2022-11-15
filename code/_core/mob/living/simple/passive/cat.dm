@@ -7,7 +7,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	icon = 'icons/mob/living/simple/cat_colored.dmi'
 	icon_state = "living"
 
-	ai = /ai/cat
+	ai = /ai/pet
 
 	var/kittens_left = 20 //Needs to be a limit. Just in case.
 
@@ -63,7 +63,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	icon = 'icons/mob/living/simple/cat_kitten.dmi'
 	icon_state = "living"
 
-	ai = /ai/cat/kitten
+	ai = /ai/pet/low_roam
 
 /mob/living/simple/cat/runtime
 	name = "Runtime"
@@ -73,6 +73,8 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 
 	loyalty_tag = "NanoTrasen"
 	iff_tag = "NanoTrasen"
+
+	ai = /ai/pet
 
 /mob/living/simple/cat/runtime/proc/reproduce()
 

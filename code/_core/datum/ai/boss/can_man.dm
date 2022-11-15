@@ -26,12 +26,14 @@
 
 	if(projectile_count && !strafe_count)
 		owner.move_dir = 0x0
+		last_movement_proc = "projectile count override"
 		return TRUE
 
 	if(get_dist(owner,start_turf) >= 10)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,start_turf)
 		owner_as_can_man.charge_steps = 0
+		last_movement_proc = "reset override"
 		return TRUE
 
 	if(objective_attack)
@@ -39,6 +41,7 @@
 			owner_as_can_man.move_dir = turn(get_dir(owner,objective_attack),90)
 			owner_as_can_man.movement_flags = MOVEMENT_RUNNING
 			strafe_count--
+			last_movement_proc = "strafe override"
 			return TRUE
 		else
 			if(strafe_delay > 0)
@@ -50,6 +53,7 @@
 	if(owner_as_can_man.charge_dir)
 		owner_as_can_man.move_dir = owner_as_can_man.charge_dir
 		owner_as_can_man.movement_flags = MOVEMENT_RUNNING
+		last_movement_proc = "charge override"
 		return TRUE
 
 	return ..()

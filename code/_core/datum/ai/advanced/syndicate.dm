@@ -14,9 +14,6 @@
 	owner.move_dir = pick(DIRECTIONS_ALL)
 	return TRUE
 
-
-
-
 /ai/advanced/slavic
 	language_to_use = LANGUAGE_SLAVIC
 	enemy_tags = list("NanoTrasen")
