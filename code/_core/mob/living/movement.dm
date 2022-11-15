@@ -205,8 +205,10 @@
 	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25
 
-	if(ai && ai.objective_move && ai.should_follow_objective_move && get_dist(src,ai.objective_move) <= 3) //Synced movement.
-		. = max(.,ai.objective_move)
+	if(ai && ai.objective_move && ai.should_follow_objective_move && ismovable(ai.objective_move) && get_dist(src,ai.objective_move) <= 3) //Synced movement.
+		var/atom/movable/M = ai.objective_move
+		var/found_movement_delay = M.get_movement_delay()
+		. = clamp(found_movement_delay,.,.*2)
 
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
