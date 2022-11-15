@@ -114,6 +114,7 @@ SUBSYSTEM_DEF(horde)
 		if(!squad_to_send || !send_squad(D,squad_to_send,TRUE))//THERE IS NO SAFE ORE MINING.
 			continue
 		all_drills[D] = world.time + HORDE_DELAY_DRILL
+
 	return TRUE
 
 /subsystem/horde/proc/get_squad_to_send(var/atom/target)
@@ -160,7 +161,7 @@ SUBSYSTEM_DEF(horde)
 			return FALSE
 
 		var/area/A = T.loc
-		if(!bypass_restrictions && A.z != SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"])
+		if(!bypass_restrictions && A.area_identifier != "Mission")
 			if(debug) log_debug("Could not send squad: Not on mission map!")
 			return FALSE
 		//Okay. Here is the fun part. Finding spawns.
@@ -169,22 +170,13 @@ SUBSYSTEM_DEF(horde)
 		my_chunk_x = CEILING(my_chunk_x,1)
 		my_chunk_y = CEILING(my_chunk_x,1)
 		var/my_chunk_z = T.z
-
-		var/chunk/victim_chunk = SSchunk.chunks[my_chunk_z][my_chunk_x][my_chunk_y]
-		if(!length(victim_chunk.nodes))
-			if(debug) log_debug("Could not send squad: Victim's chunk location had no valid nodes.")
-			return FALSE
-
-		if(debug) log_debug("Found victim chunk ([victim_chunk.x],[victim_chunk.y],[victim_chunk.z]).")
-
 		var/obj/marker/map_node/N_end = find_closest_node(T)
 		if(!N_end)
-			if(debug) log_debug("Could not send squad: Could not find a closest node to the target..")
+			if(debug) log_debug("Could not send squad: Could not find a closest node to the target.")
 			return FALSE
-
 		var/list/valid_nodes = list()
 
-		for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
+		for(var/x=-1,x<=3,x+=2) for(var/y=-1,y<=3,y+=2)
 			if(x==0 && y==0) //Not sure if this will happen but w/e
 				continue
 			var/chunk_x = my_chunk_x + x
@@ -194,8 +186,6 @@ SUBSYSTEM_DEF(horde)
 			if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
 				continue
 			var/chunk/C = SSchunk.chunks[my_chunk_z][chunk_x][chunk_y]
-			if(length(C.players))
-				continue
 			for(var/k in C.nodes)
 				var/obj/marker/map_node/N = k
 				if(get_dist(N,victim) <= VIEW_RANGE + ZOOM_RANGE)
@@ -224,24 +214,16 @@ SUBSYSTEM_DEF(horde)
 			log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
 
 
-		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
+		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,maxtraverse = 250,debug=TRUE)
 		if(!found_path)
 			if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
 			return FALSE
-
 		var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
 
 
 		var/enemies_to_send = horde_count_override
-		if(!enemies_to_send && is_player(victim))
-			var/mob/living/advanced/player/P = victim
-			enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
-		else if(!enemies_to_send) //must be a drill or objective.
+		if(!enemies_to_send)
 			enemies_to_send = 3
-		if(enemies_to_send <= 0)
-			if(debug) log_debug("Could not send squad: Target already has too many squads being sent after them.")
-			return TRUE //Already being hunted.
-
 		. = 0
 		var/area/sent_area //debug only
 		for(var/i=1,i<=min(enemies_to_send,4),i++) //Send at most only 4 at a time.

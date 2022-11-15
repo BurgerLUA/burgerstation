@@ -17,7 +17,7 @@
 	loot_count = 4
 /loot/syndie/vault //what spawns in syndie vaults. Should be good kush. Mayhaps a low chance at boss loot.
 	loot_table = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20 = 10,
+		/loot/syndie/vault/sniper_20 = 5,
 		/loot/scroll = 20,
 		/obj/item/clothing/back/storage/backpack/bluespace = 1,
 		/obj/item/clothing/back/storage/satchel/bluespace = 1,
@@ -34,3 +34,15 @@
 
 	)
 	loot_count = 6
+
+/loot/syndie/vault/sniper_20
+
+	loot_table_guaranteed = list(
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20
+	)
+
+	loot_table = list(
+		/obj/item/magazine/sniper_20mm = 100
+	)
+	loot_count = 4
+	chance_none = 20

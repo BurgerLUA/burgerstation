@@ -17,12 +17,13 @@
 #define FLAG_AREA_NO_EVENTS 0x100
 
 #define FLAG_AREA_NO_TELEPORT 0x200
-
+#define FLAG_AREA_NO_BLOODCRAWL 0x201
 #define FLAG_AREA_ALLOW_DEATHMATCH 0x400 //Allow deathmatch to occur when it is time.
 
 #define FLAG_AREA_DIRTY 0x800
 
 #define FLAG_AREA_NO_HORDE 0x1000
+
 
 #define FLAG_AREA_COMM_SCRAMBLED 0x1
 #define FLAG_AREA_COMM_DISABLED 0x2

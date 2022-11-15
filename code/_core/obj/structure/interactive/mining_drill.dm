@@ -24,10 +24,11 @@
 	desired_light_range = 2
 	desired_light_color = "#FFFFFF"
 
-/obj/structure/interactive/mining_drill/New(desired_loc)
+/obj/structure/interactive/mining_drill/Finalize()
 	SShorde.all_drills += src
 	SShorde.all_drills[src] = world.time + SECONDS_TO_DECISECONDS(15)
 	. = ..()
+
 
 /obj/structure/interactive/mining_drill/Destroy()
 	found_deposit = null

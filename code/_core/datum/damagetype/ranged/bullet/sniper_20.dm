@@ -1,7 +1,7 @@
 /damagetype/ranged/bullet/sniper_20
 	attack_damage_base = list(
-		PIERCE = 200,
-		BLUNT = 100
+		PIERCE = 350,
+		BLUNT = 150
 	)
 	attack_damage_penetration = list(
 		PIERCE = 200,

@@ -36,6 +36,8 @@
 
 	sound_environment = ENVIRONMENT_PLAIN
 
+	horde_data = /horde_data/snow
+
 	interior = FALSE
 
 /area/mission/desert/interior
