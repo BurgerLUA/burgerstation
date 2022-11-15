@@ -151,6 +151,9 @@ var/global/list/equipped_antags = list()
 		return null
 
 	var/obj/item/new_item = new associated_item.type(get_turf(src))
+	INITIALIZE(new_item)
+	GENERATE(new_item)
+	FINALIZE(new_item)
 	new_item.amount = associated_item.amount
 	modify_item(new_item,associated_item)
 
