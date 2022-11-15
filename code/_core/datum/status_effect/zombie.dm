@@ -38,7 +38,7 @@
 	. = ..()
 	var/mob/living/advanced/A = owner
 
-	var/turf/T = get_turf(src)
+	var/turf/T = get_turf(A)
 
 	A.drop_hands(T)
 
@@ -61,12 +61,30 @@
 	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,.proc/on_damage_received)
 	H.update_sprite()
 
+	if(istype(source,/obj/item/clothing/head/helmet/full/blob_spore))
+		var/obj/item/clothing/head/helmet/full/blob_spore/BS = source
+		H.health.adjust_loss_smart(
+			brute=-BS.total_damage_dealt,
+			organic=TRUE,
+			robotic=FALSE,
+			update=FALSE
+		)
+
+	A.health.adjust_loss_smart(
+		brute=-(20 + A.health.damage[BRUTE]*0.5),
+		burn=-(10 + A.health.damage[BURN]*0.25),
+		tox=-A.health.damage[BRUTE],
+		organic=TRUE,
+		robotic=FALSE,
+		update=FALSE
+	)
+
 	for(var/k in A.organs)
 		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
 		if(O.id == BODY_TORSO)
-			O.damage_coefficient *= 0.5
+			O.damage_coefficient *= 0.25
 		else if(O.id == BODY_HEAD)
 			O.damage_coefficient *= 2
 		else
@@ -86,12 +104,16 @@
 	if(A.client)
 		T = get_turf(A)
 		A.client.make_ghost(T ? T : FALLBACK_TURF)
+
 	A.ckey_last = null
+
 	A.add_status_effect(ADRENALINE,100,-1,force=TRUE,stealthy=TRUE)
 
-	post_death(A)
-
 	A.update_all_blends()
+
+	A.revive()
+
+	A.ai.set_active(TRUE)
 
 /status_effect/zombie/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()

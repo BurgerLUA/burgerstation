@@ -282,15 +282,15 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/honked_and_loaded)
 "aZ" = (
-/mob/living/advanced/npc/zombie/clown,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/orange,
 /area/mission/prefab/city/honked_and_loaded)
 "ba" = (
-/mob/living/advanced/npc/zombie/clown,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/honked_and_loaded)
 "bb" = (
-/mob/living/advanced/npc/zombie/clown,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/red,
 /area/mission/prefab/city/honked_and_loaded)
 

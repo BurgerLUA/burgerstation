@@ -22,15 +22,16 @@
 
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
 
+	. = ..()
+
 	if(hit_atom)
 		on_destruction(owner,TRUE)
 
-	return ..()
-
 /obj/item/supply_crate/PostInitialize()
+	. = ..()
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
-	return ..()
+
 
 /obj/item/supply_crate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE

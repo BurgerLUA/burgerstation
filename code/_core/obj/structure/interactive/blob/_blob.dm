@@ -19,7 +19,7 @@
 	damage_type = /damagetype/blob_attack/
 
 	health = /health/blob
-	health_base = 120
+	health_base = 250
 
 	density = TRUE
 
@@ -47,7 +47,7 @@
 
 /obj/structure/interactive/blob/proc/grow_charge(var/obj/structure/interactive/blob/original_blob,var/obj/structure/interactive/blob/last_blob,var/tolerance=1,var/turf/priority_turf)
 
-	if(src.qdeleting || !original_blob || original_blob.qdeleting)
+	if(src.qdeleting || !original_blob || original_blob.qdeleting || !linked_core || linked_core.qdeleting)
 		return FALSE
 
 	tolerance += 0.1

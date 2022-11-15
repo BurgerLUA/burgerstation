@@ -409,7 +409,7 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab/backroom)
 "bD" = (
-/mob/living/advanced/npc/zombie/chemist,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/green,
 /area/mission/prefab/city/the_chem_lab)
 "bE" = (
@@ -436,11 +436,11 @@
 /area/mission/prefab/city/the_chem_lab/backroom)
 "bI" = (
 /obj/marker/map_node,
-/mob/living/advanced/npc/zombie/chemist,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab/backroom)
 "bJ" = (
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab)
 

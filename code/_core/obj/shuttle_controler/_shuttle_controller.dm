@@ -253,9 +253,14 @@ var/global/list/all_shuttle_controlers = list()
 	var/original_src_x = src.x
 	var/original_src_y = src.y
 
+	for(var/j in valid_turfs) //First pass: Stun everything.
+		var/turf/T = j
+		for(var/k in T.contents)
+			var/atom/movable/M = k
+			M.next_move = max(M.next_move,SECONDS_TO_TICKS(4))
+
 	for(var/j in valid_turfs) //Valid turfs are all the turfs in the shuttle area.
 		var/turf/T = j
-		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/offset_x = T.x - original_src_x
 		var/offset_y = T.y - original_src_y
 		var/turf/T_to_replace = locate(desired_marker.x + offset_x, desired_marker.y + offset_y, desired_marker.z) //The destination turf!
@@ -288,12 +293,10 @@ var/global/list/all_shuttle_controlers = list()
 		//Okay, time to move everything.
 		for(var/k in T.contents)
 			var/atom/movable/M = k
-			CHECK_TICK_SAFE(75,FPS_SERVER)
 			if(M.anchored >= 2)
 				continue
 			if(M.loc != T)
 				continue
-			M.next_move = max(M.next_move,SECONDS_TO_TICKS(3))
 			M.force_move(T_to_replace)
 			if(enable_shuttle_throwing)
 				objects_to_throw += M
@@ -318,7 +321,6 @@ var/global/list/all_shuttle_controlers = list()
 	if(enable_shuttle_throwing)
 		for(var/k in objects_to_throw)
 			var/atom/movable/M = k
-			CHECK_TICK_SAFE(75,FPS_SERVER)
 			if(M.anchored || M.collision_flags & FLAG_COLLISION_ETHEREAL)
 				continue
 			if(istype(M,/obj/structure/))

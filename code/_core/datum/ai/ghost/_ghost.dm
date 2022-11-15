@@ -121,18 +121,24 @@
 /ai/ghost/handle_movement()
 
 	if(handle_movement_astar())
+		last_movement_proc = "astar"
 		return TRUE
 
 	if(handle_movement_attack_objective())
+		last_movement_proc = "attack_objective"
 		return TRUE
 
 	if(handle_movement_move_objective())
+		last_movement_proc = "move_objective"
 		return TRUE
 
 	if(handle_movement_roaming())
+		last_movement_proc = "roaming"
 		return TRUE
 
 	handle_movement_reset()
+
+	last_movement_proc = "none"
 
 	return FALSE
 
@@ -212,13 +218,16 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(objective_attack || (anger >= 100 && last_teleport + SECONDS_TO_DECISECONDS(4) <= world.time))
+	if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (objective_attack || (anger >= 100 && last_teleport + SECONDS_TO_DECISECONDS(4) <= world.time)))
 		var/no_objective = !objective_attack
 		objective_ticks += tick_rate
 		owner_as_ghost.desired_alpha = 255
 		if(objective_ticks >= get_objective_delay())
 			objective_ticks = 0
-			handle_objectives(tick_rate)
+			if(objective_attack && frustration_attack < frustration_attack_threshold)
+				handle_current_objectives(objective_delay)
+			else
+				find_new_objectives(objective_delay)
 			if(objective_attack)
 				anger -= 10 //Hunts for 200/10 seconds.
 				if(qdeleting || !owner || owner.qdeleting)

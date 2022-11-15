@@ -1,5 +1,8 @@
 /ai/advanced/zombie
 
+	allow_far_roaming = TRUE
+	roaming_distance = VIEW_RANGE
+
 	resist_handcuffs = FALSE
 	should_find_weapon = FALSE //Citizens aren't supposed to have guns.
 

@@ -90,6 +90,8 @@ var/global/list/all_clients = list() //Assoc list
 	var/recoil_pixel_x = 0
 	var/recoil_pixel_y = 0
 
+	var/update_statpanel = FALSE
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 

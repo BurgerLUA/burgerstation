@@ -11,7 +11,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/atom/objective_move
 	var/should_follow_objective_move = FALSE
-	var/should_burger_star_objective_move = FALSE
+	var/should_astar_objective_move = FALSE
 
 	var/mob/living/objective_attack
 	var/atom/objective_investigate
@@ -40,15 +40,13 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/turf/start_turf
 
-	var/roaming_distance = 5
-
 	var/use_pathfinding = FALSE //For frustration.
 
 	var/shoot_obstacles = TRUE
 
 	var/left_click_chance = 90
 
-	var/night_vision = 0.25 //What level of darkness the mob can see in. Basically if light is above this value, it can 100% see it.
+	var/night_vision = 0.25 //What level of darkness the mob can see in. Basically if light is above this value, it can 100% see it. Lower is better.
 
 	var/see_through_walls = FALSE //Can the ai see through walls?
 
@@ -118,9 +116,13 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/list/enemy_tags = list()
 
-	//Roaming Stuff. Mostly read only.
-	var/roam = FALSE
-	var/roam_counter = 10
+	//Roaming Stuff.
+	var/allow_far_roaming = FALSE //Set to true to change the origin point of the roam when the roam finishes.
+	var/roaming_distance = 0 //Allowed distance to roam. Set to a value above 0 to enable.
+	var/roaming_counter = 0 //Allowed steps to roam. Will be set to double roaming_distance.
+	var/roaming_direction = 0x0 // The direction the mob is currently romaing.
+
+	var/guard = FALSE //Set to true if the mob constantly tries to guard the current location.
 
 	var/delete_on_no_path = FALSE
 
@@ -144,6 +146,12 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/move_from_ally_dir = 0x0
 	var/move_from_ally = 0
+
+	var/sleep_on_idle = TRUE
+
+	var/passive = FALSE
+
+	var/last_movement_proc = "none"
 
 /ai/Destroy()
 
@@ -250,6 +258,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 /ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
 	owner = desired_owner
+	roaming_counter = roaming_distance*2
 	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
 	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
 	if(night_vision <= 0)

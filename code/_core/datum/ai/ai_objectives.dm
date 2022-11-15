@@ -100,82 +100,83 @@
 
 	return TRUE
 
-/ai/proc/handle_light()
+/ai/proc/handle_current_objectives(var/tick_rate)
 
-	var/turf/T = get_turf(owner)
-
-	for(var/k in T.affecting_lights)
-		var/light_source/LS = k
-		if(!is_player(LS.top_atom))
-			continue
-		var/mob/living/L = LS.top_atom
-		if(should_attack_mob(L))
-			set_alert_level(ALERT_LEVEL_CAUTION,L,L)
-			break
-
-	return TRUE
-
-/ai/proc/handle_objectives(var/tick_rate)
-
-	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+	if(objective_attack.qdeleting || !objective_attack.health)
+		set_objective(null)
 		return TRUE
 
-	if(objective_attack)
-		if(objective_attack.qdeleting || !objective_attack.health || (!is_living(objective_attack) && objective_attack.health.health_current <= 0) )
-			set_objective(null)
-		else if(is_living(objective_attack))
-			if(!should_attack_mob(objective_attack,FALSE))
-				set_objective(null)
-			else
-				last_combat_location = get_turf(objective_attack)
-				var/detection_level = get_detection_level(objective_attack,view_check=TRUE)
-				if(detection_level <= 0) //Gone completely.
-					set_objective(null)
-				else if(detection_level <= 0.25) //Basically out of combat, but not yet
-					frustration_attack += tick_rate
-				else
-					frustration_attack = 0
+	if(get_dist(owner,objective_attack) > attack_distance_max) //Too far away.
+		frustration_attack += tick_rate
+	else
+		frustration_attack = 0
 
-		else if(isturf(objective_attack) && objective_attack.Enter(owner))
+	if(is_living(objective_attack))
+		if(!should_attack_mob(objective_attack,FALSE))
 			set_objective(null)
-		else if(get_dist(owner,objective_attack) > attack_distance_max)
+			return TRUE
+		last_combat_location = get_turf(objective_attack)
+		var/detection_level = get_detection_level(objective_attack,view_check=TRUE)
+		if(detection_level <= 0) //Gone completely.
+			set_objective(null)
+		else if(detection_level <= 0.25) //Basically out of combat, but not yet
 			frustration_attack += tick_rate
 		else
 			frustration_attack = 0
+		return TRUE
+
+	if(!objective_attack.density) //Object is no longer dense.
+		set_objective(null)
+		return TRUE
+
+	if(isturf(objective_attack))
+		if(objective_attack.Enter(owner)) //No reason to attack the turf.
+			set_objective(null)
+			return TRUE
 	else
-		handle_light()
+		if(objective_attack.health.health_current <= 0)
+			set_objective(null)
+			return TRUE
 
-	if(!objective_attack || frustration_attack > frustration_attack_threshold)
-		var/list/possible_targets = get_possible_targets()
-		var/atom/best_target
-		var/best_score = 0
-		var/best_detection_value = 0
-		for(var/k in possible_targets)
-			var/atom/A = k
-			var/detection_value = possible_targets[k]
-			var/score_value = get_attack_score(A)
-			if(!best_score || (score_value > best_score && detection_value >= best_detection_value))
-				best_target = A
-				best_score = score_value
-				best_detection_value = detection_value
-		if(best_target && best_target != objective_attack && best_detection_value > 0.25)
-			if(best_detection_value < 0.5)
-				investigate(best_target)
+/ai/proc/find_new_objectives(var/tick_rate)
+
+	//Find a new living mob target.
+	var/list/possible_targets = get_possible_targets()
+	var/atom/best_target
+	var/best_score = -INFINITY
+	var/best_detection_value = 0
+	for(var/k in possible_targets)
+		var/atom/A = k
+		var/detection_value = possible_targets[k]
+		var/score_value = get_attack_score(A)
+		if( (best_detection_value < night_vision && detection_value > best_detection_value) || (score_value > best_score && detection_value > night_vision))
+			best_target = A
+			best_score = score_value
+			best_detection_value = detection_value
+
+	if(best_target && best_target != objective_attack)
+		if(best_detection_value < night_vision*2)
+			investigate(best_target)
+			return TRUE
+		else
+			if(reaction_time > 0)
+				if(debug && ismob(best_target))
+					var/mob/M = best_target
+					if(M.client)
+						M.to_chat(span("debug","Setting delayed objective target ([reaction_time])."))
+				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
 			else
-				if(reaction_time > 0)
-					if(debug && ismob(best_target))
-						var/mob/M = best_target
-						if(M.client)
-							M.to_chat(span("debug","Setting delayed objective target ([reaction_time])."))
-					CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
-				else
-					set_objective(best_target)
-		else if(last_combat_location && !length(current_path_astar))
-			set_path_astar(last_combat_location)
-			last_combat_location = null
-		frustration_attack = 0
+				set_objective(best_target)
+		return TRUE
 
-	if(!objective_attack && shoot_obstacles && length(obstacles) && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+	//Path to last known location.
+	if(last_combat_location && !length(current_path_astar))
+		set_path_astar(last_combat_location)
+		last_combat_location = null
+		return TRUE
+
+	//Find an obstacle to shoot.
+	if(shoot_obstacles && length(obstacles))
 		var/atom/closest_obstacle
 		var/best_distance = INFINITY
 		var/view_range = get_view_range()
@@ -201,9 +202,23 @@
 			else
 				set_objective(closest_obstacle)
 
+	//Find a new target if affected by a light.
+	if(!objective_attack)
+		var/turf/T = get_turf(owner)
+		for(var/k in T.affecting_lights)
+			var/light_source/LS = k
+			if(!is_player(LS.top_atom))
+				continue
+			var/mob/living/L = LS.top_atom
+			if(should_attack_mob(L))
+				set_alert_level(ALERT_LEVEL_CAUTION,L,L)
+				break
+
 	return TRUE
 
 /ai/proc/get_view_range()
+	if(hunt_target)
+		return radius_find_enemy_caution
 	. = radius_find_enemy
 	switch(alert_level)
 		if(ALERT_LEVEL_NOISE)
@@ -232,7 +247,7 @@
 		var/detection_level = get_detection_level(L)
 		if(detection_level <= 0)
 			continue
-		.[L] = get_detection_level(L)
+		.[L] = detection_level
 
 /ai/proc/investigate(var/atom/desired_target)
 

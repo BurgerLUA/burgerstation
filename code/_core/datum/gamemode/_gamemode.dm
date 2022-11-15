@@ -14,7 +14,7 @@
 
 	var/state = GAMEMODE_PRELOAD
 
-	var/list/objective_text = "No objectives listed."
+	var/objective_text = "No objectives listed."
 
 	var/next_objective_update = 0
 
@@ -30,6 +30,8 @@
 	var/initialized = FALSE
 	var/generated = FALSE
 	var/finalized = FALSE
+
+	var/horde_data/gamemode_horde_data
 
 /gamemode/proc/Initialize()
 	if(initialized)
@@ -210,6 +212,11 @@
 		has_new ? "New Objectives Added" : "Objectives Updated",
 		objective_text,
 		sound_to_play = 'sound/alert/airplane.ogg')
+
+	for(var/k in all_mobs_with_clients)
+		var/mob/M = k
+		M.client.update_statpanel = TRUE
+
 
 	next_objective_update = -1
 

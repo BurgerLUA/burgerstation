@@ -18,7 +18,7 @@
 
 	return null
 
-/ai/carp/handle_objectives(var/tick_rate)
+/ai/carp/find_new_objectives(var/tick_rate)
 
 	if(!carp_leader || !is_valid_leader(carp_leader))
 		var/mob/living/simple/spacecarp/leader/new_leader = get_leader()
@@ -36,7 +36,7 @@
 			owner.move_dir = get_dir(owner,carp_leader)
 		else
 			owner.move_dir = 0
-
+		last_movement_proc = "carp leader override"
 		return TRUE
 
 	return ..()

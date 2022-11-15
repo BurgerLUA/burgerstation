@@ -1,5 +1,6 @@
 /ai/slime/
-	roaming_distance = 32
+
+	roaming_distance = VIEW_RANGE*2
 
 	aggression = 1
 	assistance = 1

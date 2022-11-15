@@ -15,6 +15,7 @@
 	var/next_feed = 0
 
 	var/damage_ramp = 2
+	var/total_damage_dealt = 0
 
 	can_save = FALSE
 
@@ -75,13 +76,15 @@
 
 	if(inert)
 		if(next_feed <= world.time)
-			A.add_status_effect(ZOMBIE,100,-1)
+			A.add_status_effect(ZOMBIE,100,-1,source=src)
 			remove_blob()
 		return TRUE
 
 	if(next_feed <= world.time)
 		var/turf/T = get_turf(src)
-		if(O.health.adjust_loss_smart(brute=damage_ramp))
+		var/damage_dealt = O.health.adjust_loss_smart(brute=damage_ramp)
+		if(damage_dealt)
+			total_damage_dealt += damage_dealt
 			damage_ramp += initial(damage_ramp)
 			play_sound('sound/effects/blob_infection.ogg',T)
 			if(T && A.blood_type && prob(50))

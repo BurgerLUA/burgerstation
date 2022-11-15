@@ -50,7 +50,7 @@
 
 	if(delete_last_mob)
 		if(mob) qdel(mob)
-	else
+	else if(mob)
 		clear_mob(mob,TRUE)
 
 	M.client = src
@@ -66,6 +66,8 @@
 
 	update_zoom(2)
 	update_verbs()
+
+	update_statpanel = TRUE
 
 /client/proc/clear_mob(var/mob/M,var/hard = FALSE) //This is called when the client no longer controls this mob.
 

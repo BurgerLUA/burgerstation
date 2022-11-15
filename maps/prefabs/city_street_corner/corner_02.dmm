@@ -154,6 +154,14 @@
 	},
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
+"B" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x3,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 "C" = (
 /obj/marker/prefab/alley_end{
 	icon_state = "alley_end";
@@ -189,6 +197,14 @@
 "H" = (
 /obj/marker/prefab/alley_end,
 /turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"I" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 1
+	},
+/obj/marker/map_node/x3,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -356,7 +372,7 @@ j
 j
 j
 x
-y
+I
 j
 t
 e
@@ -413,12 +429,12 @@ j
 v
 v
 v
+B
 v
 v
 v
 v
-v
-v
+B
 v
 v
 g
