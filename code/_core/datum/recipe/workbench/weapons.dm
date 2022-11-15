@@ -38,3 +38,24 @@
 
 	product = list("/obj/item/weapon/ranged/thrown/kitchen_shuriken" = 100)
 	amount = list(10)
+
+/recipe/workbench/bootleg_landmine
+
+	name = "landmine bootleg"
+
+	required_item_grid = list(
+		"a1" = "/obj/item/device/proximity",
+		"a2" = "/obj/item/weapon/melee/tool/screwdriver",
+		"a3" = "/obj/item/grenade/timed/explosive",
+
+		"b1" = null,
+		"b2" = null,
+		"b3" = null,
+
+		"c1" = null,
+		"c2" = null,
+		"c3" = null
+	)
+
+	product = list("/obj/item/grenade/landmine/proximity/explosive" = 100)
+	consume_id_amount = list("/obj/item/weapon/melee/tool/screwdriver" = 0)

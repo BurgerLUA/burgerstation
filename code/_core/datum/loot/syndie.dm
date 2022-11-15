@@ -12,7 +12,7 @@
 		/obj/item/storage/kit/small/advanced/filled = 20,
 		/obj/item/grenade/fuse/fragmentation = 40,
 		/loot/scroll/lesser = 10,
-		/obj/item/data_laptop = 10
+		/obj/item/data_laptop = 5
 	)
 	loot_count = 4
 /loot/syndie/vault //what spawns in syndie vaults. Should be good kush. Mayhaps a low chance at boss loot.

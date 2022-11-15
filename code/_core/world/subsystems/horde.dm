@@ -159,7 +159,6 @@ SUBSYSTEM_DEF(horde)
 		var/turf/T = get_turf(victim)
 		if(!T)
 			return FALSE
-
 		var/area/A = T.loc
 		if(!bypass_restrictions && A.area_identifier != "Mission")
 			if(debug) log_debug("Could not send squad: Not on mission map!")
@@ -170,7 +169,7 @@ SUBSYSTEM_DEF(horde)
 		my_chunk_x = CEILING(my_chunk_x,1)
 		my_chunk_y = CEILING(my_chunk_x,1)
 		var/my_chunk_z = T.z
-		var/obj/marker/map_node/N_end = find_closest_node(T)
+		var/obj/marker/map_node/N_end = find_closest_node(T,VIEW_RANGE*8)
 		if(!N_end)
 			if(debug) log_debug("Could not send squad: Could not find a closest node to the target.")
 			return FALSE

@@ -123,8 +123,8 @@
 	var/antilizard = list(
 			"sss" = "s"
 		)
-	var/moffnoaccent = sanitize(lowertext(replace_characters(text,antimoth)))
-	var/lizardnoaccent = sanitize(lowertext(replace_characters(text,antilizard)))
+	var/moffnoaccent = sanitize(replace_characters(text,antimoth))
+	var/lizardnoaccent = sanitize(replace_characters(text,antilizard))
 	var/looking_for = replace_characters("[passwordA],[passwordB],[passwordC].",list("\"" = ""))
 	if(text == looking_for || moffnoaccent == looking_for || lizardnoaccent == looking_for)
 		src.visible_message(span("notice","You hear a click from the door..."))
