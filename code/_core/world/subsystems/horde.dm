@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(horde)
 			return FALSE
 		var/list/valid_nodes = list()
 
-		for(var/x=-1,x<=3,x+=2) for(var/y=-1,y<=3,y+=2)
+		for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
 			if(x==0 && y==0) //Not sure if this will happen but w/e
 				continue
 			var/chunk_x = my_chunk_x + x

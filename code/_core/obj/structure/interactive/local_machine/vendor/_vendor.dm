@@ -150,12 +150,9 @@ var/global/list/equipped_antags = list()
 		flick("[initial(icon_state)]-deny",src)
 		return null
 
-	var/obj/item/new_item
-	new_item = new associated_item.type(get_turf(src))
+	var/obj/item/new_item = copy(associated_item)
+	new_item.force_move(get_turf(src))
 	modify_item(new_item,associated_item)
-	INITIALIZE(new_item)
-	GENERATE(new_item)
-	FINALIZE(new_item)
 
 	caller.to_chat(span("notice","You vend \the [new_item.name]."))
 

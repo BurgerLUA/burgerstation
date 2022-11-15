@@ -30,7 +30,7 @@
 	consume_id_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0 )
 
 	product = list("/obj/item/crafting/ingredient/part/casing_mold" = 100)
-	
+
 /recipe/workbench/dura_thread
 
 	name = "durathread"
@@ -41,7 +41,7 @@
 		"a3" = "/obj/item/crafting/ingredient/thread/devilstrand",
 
 		"b1" = "/obj/item/crafting/ingredient/thread/synthcloth",
-		"b2" = "/obj/item/material/rod/cobalt",
+		"b2" = "/obj/item/material/rod/plasteel",
 		"b3" = "/obj/item/crafting/ingredient/thread/synthcloth",
 
 		"c1" = "/obj/item/crafting/ingredient/thread/devilstrand",
