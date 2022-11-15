@@ -70,6 +70,7 @@
 
 	if(owner_as_ash_drake.boss_state == 2)
 		owner.move_dir = 0x0
+		last_movement_proc = "land override"
 		return TRUE
 
 	. = ..()

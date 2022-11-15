@@ -13,7 +13,7 @@
 	owner_as_hierophant = null
 	return ..()
 
-/ai/boss/hierophant/handle_objectives()
+/ai/boss/hierophant/handle_current_objectives(var/tick_rate)
 
 	. = ..()
 

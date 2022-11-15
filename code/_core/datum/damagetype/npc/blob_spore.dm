@@ -27,10 +27,10 @@
 
 /damagetype/npc/blob_spore/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 	. = ..()
-	if(prob(40) && is_advanced(victim) && is_organ(hit_object) && istype(attacker,/mob/living/simple/blob_spore))
+	if(is_advanced(victim) && is_organ(hit_object) && istype(attacker,/mob/living/simple/blob_spore))
 		var/obj/item/organ/O = hit_object
 		var/mob/living/advanced/A = victim
-		if(O.id == BODY_HEAD)
+		if(O.id == BODY_HEAD && O.health.health_current <= O.health.health_max*0.5)
 			var/obj/item/clothing/head/helmet/full/blob_spore/H = new(get_turf(victim))
 			INITIALIZE(H)
 			GENERATE(H)

@@ -98,15 +98,23 @@ SUBSYSTEM_DEF(horde)
 
 /subsystem/horde/proc/get_squad_to_send(var/mob/living/advanced/player/victim)
 
-	if(prob(20) && SStax.check_delinquent(victim))
-		return /mob/living/advanced/npc/tax_collector
-
 	var/area/A = get_area(victim)
 
 	if(!A || !A.horde_data)
 		return null
 
-	var/horde_data/found_horde_data = src.all_horde_data_types[A.horde_data]
+	var/horde_data/found_horde_data
+
+	if(A.horde_data == "mission")
+		found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
+	else
+		found_horde_data = src.all_horde_data_types[A.horde_data]
+
+	if(!found_horde_data.ignore_gamemode)
+		if(SSgamemode && SSgamemode.active_gamemode && length(SSgamemode.active_gamemode.gamemode_horde_data) && prob(80))
+			found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
+		else if(victim && prob(20) && SStax.check_delinquent(victim))
+			found_horde_data = src.all_horde_data_types[/horde_data/tax]
 
 	var/chosen_key = pickweight(found_horde_data.horde_weights)
 
@@ -160,6 +168,9 @@ SUBSYSTEM_DEF(horde)
 			continue
 		for(var/k in C.nodes)
 			var/obj/marker/map_node/N = k
+			var/node_length = length(N.adjacent_map_nodes)
+			if(node_length <= 2)
+				continue
 			if(get_dist(N,victim) <= VIEW_RANGE + ZOOM_RANGE)
 				continue
 			if(!bypass_restrictions)
@@ -173,26 +184,34 @@ SUBSYSTEM_DEF(horde)
 		if(debug) log_debug("Could not send squad: Found zero valid nodes to place squad at.")
 		return FALSE
 
-	var/obj/marker/map_node/N_start = pick(valid_nodes)
-	var/turf/squad_spawn = get_turf(N_start)
+	var/attempts = 5
+	var/obj/marker/map_node/N_start
+	var/list/obj/marker/map_node/found_path
+	var/turf/squad_spawn
 
-	if(debug)
-		var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
-		N_chunk_x = FLOOR(N_chunk_x,1)
-		var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
-		N_chunk_y = FLOOR(N_chunk_y,1)
-		var/N_chunk_z = squad_spawn.z
-		var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
-		log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
+	while(attempts > 0 && length(valid_nodes))
+		attempts--
+		N_start = pick(valid_nodes)
+		valid_nodes -= N_start
+		squad_spawn = get_turf(N_start)
+		found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
+		if(debug)
+			var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
+			N_chunk_x = FLOOR(N_chunk_x,1)
+			var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
+			N_chunk_y = FLOOR(N_chunk_y,1)
+			var/N_chunk_z = squad_spawn.z
+			var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
+			log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
+		if(!found_path)
+			if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
+			continue
 
-
-	var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
 	if(!found_path)
-		if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
+		if(debug) log_debug("Failed to find a valid path.")
 		return FALSE
 
 	var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
-
 
 	var/enemies_to_send = horde_count_override
 	if(!enemies_to_send && is_player(victim))

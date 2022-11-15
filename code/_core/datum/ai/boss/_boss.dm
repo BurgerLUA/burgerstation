@@ -3,7 +3,6 @@
 	objective_delay = DECISECONDS_TO_TICKS(10)
 
 	true_sight = TRUE
-	roaming_distance = 3
 
 	use_alerts = TRUE
 
@@ -17,3 +16,5 @@
 	ignore_hazard_turfs = TRUE
 
 	boss = TRUE
+
+	guard = TRUE

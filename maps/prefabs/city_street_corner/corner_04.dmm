@@ -285,6 +285,22 @@
 /obj/structure/interactive/fence/door,
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
+"W" = (
+/obj/marker/map_node/x3,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"X" = (
+/obj/marker/map_node/x2,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"Y" = (
+/obj/decal/road_marking/dotted_line/half{
+	icon_state = "1";
+	dir = 4
+	},
+/obj/marker/map_node/x3,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -637,12 +653,12 @@ p
 g
 k
 k
+W
 k
-k
 E
 E
 E
-E
+Y
 E
 E
 E
@@ -967,7 +983,7 @@ k
 g
 k
 k
-k
+X
 k
 z
 p
@@ -1231,7 +1247,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -1495,7 +1511,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -1759,7 +1775,7 @@ p
 g
 k
 k
-k
+X
 k
 z
 p
@@ -2023,7 +2039,7 @@ a
 g
 k
 k
-k
+X
 k
 V
 p
@@ -2287,7 +2303,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -2551,7 +2567,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -2815,7 +2831,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -3079,7 +3095,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -3343,7 +3359,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -3607,7 +3623,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p
@@ -3871,7 +3887,7 @@ a
 g
 k
 k
-k
+X
 k
 z
 p

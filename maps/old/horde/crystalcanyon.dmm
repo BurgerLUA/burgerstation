@@ -465,7 +465,7 @@
 /turf/simulated/floor/tile/purple,
 /area/crystalcanyon/charliebase)
 "fV" = (
-/mob/living/advanced/npc/zombie,
+/obj/marker/mission_mob,
 /turf/simulated/floor/cave_dirt,
 /area/crystalcanyon/downedshuttle)
 "gc" = (
@@ -680,7 +680,7 @@
 /turf/simulated/floor/tile/overlapping/dark,
 /area/crystalcanyon/interior/revbar)
 "ln" = (
-/mob/living/advanced/npc/zombie/chemist,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/blue,
 /area/crystalcanyon/deltaclinic)
 "lq" = (
@@ -715,10 +715,6 @@
 /obj/marker/map_node,
 /turf/simulated/floor/colored/dirt/snow,
 /area/crystalcanyon/outside)
-"lX" = (
-/mob/living/advanced/npc/zombie/botanist,
-/turf/simulated/floor/cave_dirt,
-/area/crystalcanyon/downedshuttle)
 "lZ" = (
 /obj/structure/smooth/table/reinforced,
 /turf/simulated/floor/tile/yellow,
@@ -772,7 +768,7 @@
 /turf/unsimulated/generation/snow_cave,
 /area/crystalcanyon/interior/cave/east)
 "nH" = (
-/mob/living/advanced/npc/zombie/clown,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/morphing/yellow/pure,
 /area/crystalcanyon/clownplace)
 "nO" = (
@@ -1119,7 +1115,7 @@
 /obj/structure/interactive/chair{
 	icon_state = "chair_toppled"
 	},
-/mob/living/advanced/npc/zombie/security,
+/obj/marker/mission_mob,
 /turf/simulated/floor/colored/snow,
 /area/crystalcanyon/downedshuttle)
 "xY" = (
@@ -1206,7 +1202,7 @@
 /turf/simulated/floor/tile/blue_baby,
 /area/crystalcanyon/interior/revbar)
 "Al" = (
-/mob/living/advanced/npc/zombie/clown,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/grey,
 /area/crystalcanyon/clownplace)
 "An" = (
@@ -1470,7 +1466,7 @@
 /obj/structure/interactive/chair{
 	icon_state = "chair_toppled"
 	},
-/mob/living/advanced/npc/zombie/security,
+/obj/marker/mission_mob,
 /turf/simulated/floor/cave_dirt,
 /area/crystalcanyon/downedshuttle)
 "Jh" = (
@@ -1588,7 +1584,7 @@
 /turf/simulated/floor/cult/darker,
 /area/crystalcanyon/interior/cave/west)
 "MJ" = (
-/mob/living/advanced/npc/zombie,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/shuttle,
 /area/crystalcanyon/downedshuttle)
 "MN" = (
@@ -1689,10 +1685,6 @@
 "Pf" = (
 /turf/simulated/hazard/water,
 /area/crystalcanyon/outside)
-"Pj" = (
-/mob/living/advanced/npc/zombie/medical,
-/turf/simulated/floor/tile/blue,
-/area/crystalcanyon/deltaclinic)
 "Pm" = (
 /obj/marker/generation/snow_wall,
 /turf/unsimulated/generation/snow_cave,
@@ -1776,7 +1768,7 @@
 /turf/unsimulated/generation/snow,
 /area/crystalcanyon/outside)
 "Rg" = (
-/mob/living/advanced/npc/zombie/clown,
+/obj/marker/mission_mob,
 /turf/simulated/floor/cult/darker,
 /area/crystalcanyon/interior/cave/west)
 "Ri" = (
@@ -1813,7 +1805,7 @@
 /turf/simulated/floor/tile/overlapping/dark,
 /area/crystalcanyon/interior/playerrev)
 "RS" = (
-/mob/living/advanced/npc/zombie,
+/obj/marker/mission_mob,
 /turf/unsimulated/generation/snow,
 /area/crystalcanyon/outside)
 "Sa" = (
@@ -1905,7 +1897,7 @@
 /turf/unsimulated/generation/snow_cave,
 /area/crystalcanyon/interior/cave/north)
 "Vn" = (
-/mob/living/advanced/npc/zombie/scientist,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile/shuttle/green,
 /area/crystalcanyon/downedshuttle)
 "Vt" = (
@@ -10732,7 +10724,7 @@ BH
 wO
 Xe
 xY
-Pj
+ln
 wO
 BH
 xY
@@ -12278,7 +12270,7 @@ BH
 BH
 BH
 Bp
-Pj
+ln
 wO
 Ry
 Ry
@@ -15097,7 +15089,7 @@ Bp
 Bp
 Bp
 WT
-Pj
+ln
 wO
 Ry
 Ry
@@ -27221,7 +27213,7 @@ Ry
 Ry
 Ry
 Ry
-lX
+fV
 Ib
 Ib
 zv

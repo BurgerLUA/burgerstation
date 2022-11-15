@@ -18,8 +18,6 @@
 
 	use_pathfinding = TRUE
 
-	roaming_distance = VIEW_RANGE
-
 	//Gun handling
 	var/obj/item/bullet_cartridge/last_found_bullet
 	var/desired_shell_reload = 0
@@ -456,9 +454,11 @@
 /ai/advanced/handle_movement()
 
 	if(avoid_threats && handle_movement_avoidance())
+		last_movement_proc = "avoidance"
 		return TRUE
 
 	if(handle_movement_weapon())
+		last_movement_proc = "weapon"
 		return TRUE
 
 	. = ..()

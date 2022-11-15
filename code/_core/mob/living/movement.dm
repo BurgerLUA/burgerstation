@@ -205,6 +205,9 @@
 	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25
 
+	if(ai && ai.objective_move && ai.should_follow_objective_move && get_dist(src,ai.objective_move) <= 3) //Synced movement.
+		. = max(.,ai.objective_move)
+
 /mob/living/proc/toggle_sneak(var/on = TRUE)
 
 	for(var/k in buttons)

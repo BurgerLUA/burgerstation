@@ -34,6 +34,10 @@
 /obj/structure/scenery/flowers,
 /turf/simulated/floor/colored/grass,
 /area/dmm_suite/clear_area)
+"h" = (
+/obj/marker/map_node/x2,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -52,7 +56,7 @@ a
 b
 b
 b
-b
+h
 b
 b
 a
@@ -100,11 +104,11 @@ a
 b
 b
 b
+h
 b
 b
 b
-b
-b
+h
 b
 "}
 (7,1,1) = {"

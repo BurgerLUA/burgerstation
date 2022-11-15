@@ -1,12 +1,13 @@
-/ai/cat
+/ai/pet
 	roaming_distance = VIEW_RANGE
 	radius_find_enemy = VIEW_RANGE
-	roam_counter = 30
+	roaming_distance = 5
 
 	aggression = 0
 	assistance = 0
 
+	passive = TRUE
 
-/ai/cat/kitten
-	roam_counter = 10
-	objective_delay = 100
+
+/ai/pet/low_roam
+	roaming_distance = 2

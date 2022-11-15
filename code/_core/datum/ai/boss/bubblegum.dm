@@ -16,6 +16,7 @@
 	if(owner_as_bubblegum.charge_dir)
 		owner_as_bubblegum.move_dir = owner_as_bubblegum.charge_dir
 		owner_as_bubblegum.movement_flags = MOVEMENT_RUNNING
+		last_movement_proc = "charge override"
 		return FALSE
 
 	return ..()

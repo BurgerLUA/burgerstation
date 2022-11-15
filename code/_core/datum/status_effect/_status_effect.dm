@@ -328,6 +328,8 @@
 	maximum = SECONDS_TO_DECISECONDS(300)
 	default_duration = SECONDS_TO_DECISECONDS(30)
 
+	affects_dead = TRUE
+
 /status_effect/adrenaline/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
 	owner.remove_status_effect(STAMCRIT)

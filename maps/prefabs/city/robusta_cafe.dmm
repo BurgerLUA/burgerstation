@@ -272,19 +272,15 @@
 /area/dmm_suite/clear_area)
 "bb" = (
 /obj/structure/carpet/red,
-/mob/living/advanced/npc/zombie/bartender,
+/obj/marker/mission_mob,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
 "bc" = (
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/robusta_cafe/bathroom)
 "bd" = (
-/mob/living/advanced/npc/zombie/librarian,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/city/robusta_cafe)
-"be" = (
-/mob/living/advanced/npc/zombie/civilian,
+/obj/marker/mission_mob,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
 
@@ -391,7 +387,7 @@ aC
 aC
 aG
 aC
-be
+bd
 ai
 ba
 ba
@@ -476,7 +472,7 @@ aK
 aR
 aP
 aC
-be
+bd
 aC
 aC
 aC

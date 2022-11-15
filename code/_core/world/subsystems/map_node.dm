@@ -15,8 +15,39 @@ SUBSYSTEM_DEF(map_node)
 		if(M.initialize_node())
 			map_nodes += 1
 			adjacent_map_nodes += length(M.adjacent_map_nodes)
+		else
+			qdel(M)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
-	log_subsystem(name,"Initialized [map_nodes] valid map nodes with [adjacent_map_nodes] links.")
+	log_subsystem(name,"Initialized [map_nodes] manual map nodes with [adjacent_map_nodes] links.")
+
+	var/z = SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"]
+
+	var/list/auto_nodes = list()
+	for(var/x=1,x<=world.maxx,x+=8) for(var/y=1,y<=world.maxy,y+=8)
+		var/turf/T = locate(x,y,z)
+		if(!T || T.has_dense_atom)
+			continue
+		var/obj/marker/map_node/M = locate() in range(4,T)
+		if(M)
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			continue
+		M = new(T)
+		auto_nodes += M
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	var/auto_map_nodes = 0
+	var/adjacent_auto_map_nodes = 0
+
+	for(var/k in auto_nodes)
+		var/obj/marker/map_node/M = k
+		if(M.initialize_node())
+			auto_map_nodes += 1
+			adjacent_auto_map_nodes += length(M.adjacent_map_nodes)
+		else
+			qdel(M)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	log_subsystem(name,"Initialized [auto_map_nodes] automatic map nodes with [adjacent_auto_map_nodes] links.")
 
 	. = ..()
