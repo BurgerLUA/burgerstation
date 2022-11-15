@@ -317,42 +317,42 @@ SUBSYSTEM_DEF(horde)
 			if(debug) log_debug("Could not send squad: Found zero valid nodes to place squad at.")
 			return FALSE
 
-	var/attempts = 5
-	var/obj/marker/map_node/N_start
-	var/list/obj/marker/map_node/found_path
-	var/turf/squad_spawn
+		var/attempts = 5
+		var/obj/marker/map_node/N_start
+		var/list/obj/marker/map_node/found_path
+		var/turf/squad_spawn
 
-	while(attempts > 0 && length(valid_nodes))
-		attempts--
-		N_start = pick(valid_nodes)
-		valid_nodes -= N_start
-		squad_spawn = get_turf(N_start)
-		found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
-		if(debug)
-			var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
-			N_chunk_x = FLOOR(N_chunk_x,1)
-			var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
-			N_chunk_y = FLOOR(N_chunk_y,1)
-			var/N_chunk_z = squad_spawn.z
-			var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
-			log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
+		while(attempts > 0 && length(valid_nodes))
+			attempts--
+			N_start = pick(valid_nodes)
+			valid_nodes -= N_start
+			squad_spawn = get_turf(N_start)
+			found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
+			if(debug)
+				var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
+				N_chunk_x = FLOOR(N_chunk_x,1)
+				var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
+				N_chunk_y = FLOOR(N_chunk_y,1)
+				var/N_chunk_z = squad_spawn.z
+				var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
+				log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
+			if(!found_path)
+				if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
+				continue
+
 		if(!found_path)
-			if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
-			continue
-
-	if(!found_path)
-		if(debug) log_debug("Failed to find a valid path.")
-		return FALSE
+			if(debug) log_debug("Failed to find a valid path.")
+			return FALSE
 
 		var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
 
-	var/enemies_to_send = horde_count_override
-	if(!enemies_to_send && is_player(victim))
-		var/mob/living/advanced/player/P = victim
-		enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
+		var/enemies_to_send = horde_count_override
+		if(!enemies_to_send && is_player(victim))
+			var/mob/living/advanced/player/P = victim
+			enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
 
-	if(!bypass_restrictions && victim.ckey_last)
-		enemies_to_send -= length(ckeys_being_hunt_by[victim.ckey_last])
+		if(!bypass_restrictions && victim.ckey_last)
+			enemies_to_send -= length(ckeys_being_hunt_by[victim.ckey_last])
 
 		if(enemies_to_send <= 0)
 			if(debug) log_debug("Could not send squad: Target already has too many squads being sent after them.")
