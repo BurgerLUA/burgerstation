@@ -31,15 +31,17 @@
 	. = create_loot_table(spawn_loc,rarity)
 	for(var/k in .)
 		var/atom/movable/M = k
-		pre_spawn(M)
+		var/list/loot_data = .[k]
+		for(var/j in loot_data)
+			var/loot/L = j
+			L.pre_spawn(M)
 		INITIALIZE(M)
 		GENERATE(M)
 		FINALIZE(M)
-		post_spawn(M)
-		//animate(M,pixel_x = initial(M.pixel_x) + rand(-8,8),pixel_y = initial(M.pixel_y) + rand(-8,8), time = 5)
+		for(var/j in loot_data)
+			var/loot/L = j
+			L.post_spawn(M)
 
-	//Order of operations
-	//do_spawn -> create_loot_table -> create_loot_single
 
 /loot/proc/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity=0) //Don't use this. Use do_spawn to spawn loot. Not providing a spawn_loc will just return the types.
 
@@ -54,11 +56,14 @@
 		var/loot/L = LOOT(type_to_spawn)
 		for(var/i=1,i<=loot_multiplier,i++)
 			. += L.create_loot_table(spawn_loc,rarity)
+			for(var/k in .)
+				.[k] += src
 		return .
 
 	for(var/i=1,i<=loot_multiplier,i++)
 		if(spawn_loc)
-			. += new type_to_spawn(spawn_loc)
+			var/atom/movable/M = new type_to_spawn(spawn_loc)
+			.[M] = list(src)
 		else
 			. += type_to_spawn
 

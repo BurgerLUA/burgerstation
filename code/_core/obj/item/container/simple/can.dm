@@ -76,6 +76,8 @@
 	icon_state = "grey_bull"
 	reagents = /reagent_container/beaker/
 
+	rarity = RARITY_RARE
+
 /obj/item/container/simple/can/grey_bull/Generate()
 	reagents.add_reagent(/reagent/nutrition/energy/grey_bull,reagents.volume_max)
 	open = FALSE
@@ -103,6 +105,8 @@
 	name = "Dr. Gibbs"
 	var/explosive = TRUE
 	value = 300
+
+	rarity = RARITY_RARE
 
 /obj/item/container/simple/can/dr_gibb/explosive/get_examine_list(var/mob/examiner)
 

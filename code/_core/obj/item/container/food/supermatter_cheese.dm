@@ -13,6 +13,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_RARE
+
 /obj/item/container/edible/supermatter_cheese/get_value()
 	return get_base_value()
 

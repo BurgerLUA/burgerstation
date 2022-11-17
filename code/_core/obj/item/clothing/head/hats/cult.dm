@@ -15,6 +15,8 @@
 
 	can_save = FALSE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/head/hat/cult/old
 
 	name = "ancient cult hood"
@@ -23,3 +25,5 @@
 	armor = /armor/dark/cult_robes/ancient
 
 	size = SIZE_2
+
+	rarity = RARITY_MYTHICAL

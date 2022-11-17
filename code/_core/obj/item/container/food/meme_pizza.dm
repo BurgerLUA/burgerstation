@@ -13,6 +13,8 @@
 
 	var/servings_left = 2
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/container/edible/meme_pizza/Generate()
 	reagents.add_reagent(/reagent/nutrition/bread,10)
 	reagents.add_reagent(/reagent/nutrition/cheese/cheddar,5)

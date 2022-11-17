@@ -7,3 +7,5 @@
 	armor = /armor/hardsuit/mining
 
 	size = SIZE_3
+
+	rarity = RARITY_RARE

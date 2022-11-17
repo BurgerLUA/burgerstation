@@ -17,3 +17,5 @@
 	value = 1100
 
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL

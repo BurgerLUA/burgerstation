@@ -22,3 +22,5 @@
 	value_burgerbux = 20000
 
 	item_slot = SLOT_HEAD | SLOT_FACE
+
+	rarity = RARITY_LEGENDARY

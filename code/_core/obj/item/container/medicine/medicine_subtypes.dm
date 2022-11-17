@@ -18,10 +18,14 @@
 	heal_brute = -25
 	value = 100
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/container/healing/bandage/advanced
 	name = "infused bandages (styptic powder)"
 	desc = "Allows wounds to recover further than simple cloth."
 	desc_extended = "Bandages infused with styptic power. Close wounds faster than normal bandages if pressed well against the skin."
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/container/healing/bandage/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/styptic_powder,50)
@@ -41,6 +45,10 @@
 	name = "infused ointment (silver sulfadiazine)"
 	desc = "Sometimes you have to prepare your own medicine."
 	desc_extended = "Ointment whose gel has been mixed with Silver Sufadiazine.  Far more effective at both healing burnt skin and relieving pain."
+
+	rarity = RARITY_UNCOMMON
+
+
 /obj/item/container/healing/ointment/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,50)
 	return ..()
@@ -58,12 +66,16 @@
 
 	value = 80
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/container/healing/trauma_kit/advanced
 	name = "infused trauma kit (styptic powder)"
 	desc = "I knew something was missing."
 	desc_extended = "Trauma Kits with added styptic powder to the bandages and antiseptics, allowing for even better recovery."
 
 	value = 100
+
+	rarity = RARITY_RARE
 
 /obj/item/container/healing/trauma_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/styptic_powder,50)
@@ -85,6 +97,8 @@
 	value = 150
 
 	organic = FALSE
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/container/healing/nanopaste/treat(var/mob/caller,var/atom/A)
 
@@ -109,6 +123,8 @@
 
 	organic = TRUE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/container/healing/bone_gel/treat(var/mob/caller,var/atom/A)
 
 	. = ..()
@@ -131,12 +147,16 @@
 
 	value = 80
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/container/healing/burn_kit/advanced
 	name = "infused burn kit (silver sulfadiazine)"
 	desc = "I can't believe they still cheaped out on the silver sulfadiazine."
 	desc_extended = "Burn kits whose contents have been infused with Silver Sulfadiazine. A great lesson in how Capitalism will never provide to your needs."
 
 	value = 100
+
+	rarity = RARITY_RARE
 
 /obj/item/container/healing/burn_kit/advanced/Generate()
 	reagents.add_reagent(/reagent/medicine/silver_sulfadiazine,50)
@@ -164,6 +184,8 @@
 	amount_max = 3
 
 	value = 5
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/container/healing/patch/brute
 	name = "brute patch (Styptic Powder)"

@@ -18,5 +18,5 @@
 		ATTRIBUTE_WISDOM = 5
 	)
 
-
+	rarity = RARITY_MYTHICAL
 

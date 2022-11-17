@@ -69,7 +69,7 @@
 	icon = 'icons/obj/structure/trash_piles.dmi'
 	icon_state = "trash"
 
-	stored_loot = /loot/value/trash
+	stored_loot = /loot/random/trash/lots
 
 	var/mob/living/stored_threat
 
@@ -136,7 +136,7 @@
 	name = "assorted ammo pile"
 	desc = "What an assorted and unsorted mess."
 	desc_extended = "Well, they gotta get their ammo from somewhere."
-	stored_loot = /loot/ammo
+	stored_loot = /loot/assorted_ammo/
 	icon = 'icons/obj/item/bulletbox.dmi'
 	icon_state = "ammo"
 

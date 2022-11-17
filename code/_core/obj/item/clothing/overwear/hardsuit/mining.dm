@@ -12,3 +12,5 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/mining)
 
 	value = 1000
+
+	rarity = RARITY_RARE

@@ -2,9 +2,17 @@
 	name = "hypodermic syringe"
 	value = 5
 	injection_time = SECONDS_TO_DECISECONDS(1)
+
+	inject_amount_desired = 5
+	inject_amount_precision = 5
+
 	icon = 'icons/obj/item/container/syringe.dmi'
 	icon_state = "syringe"
 	var/icon_count = 7
+
+	rarity = RARITY_UNCOMMON
+
+	injecting = null //Auto generate.
 
 /obj/item/container/syringe/hypodermic/update_icon()
 	. = ..()

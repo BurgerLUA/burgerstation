@@ -11,3 +11,5 @@
 	size = SIZE_3
 
 	value = 200
+
+	rarity = RARITY_UNCOMMON

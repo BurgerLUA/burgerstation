@@ -8,3 +8,5 @@
 	armor = /armor/leather/antimage
 
 	value = 2000
+
+	rarity = RARITY_MYTHICAL

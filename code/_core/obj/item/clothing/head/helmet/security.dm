@@ -11,6 +11,8 @@
 
 	value = 20
 
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -23,6 +25,8 @@
 	size = SIZE_3
 
 	value = 60
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/head/helmet/tactical/advanced
 	name = "advanced tactical helmet"

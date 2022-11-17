@@ -16,3 +16,5 @@
 	)
 
 	contraband = TRUE
+
+	rarity = RARITY_MYTHICAL

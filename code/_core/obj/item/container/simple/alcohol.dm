@@ -49,6 +49,8 @@
 	icon_state = "badminka"
 	initial_reagent = /reagent/nutrition/ethanol/vodka/premium
 
+	rarity = RARITY_RARE
+
 /obj/item/container/simple/alcohol/gin
 	name = "Griffeater's Gin"
 	icon_state = "gin"
@@ -64,10 +66,14 @@
 	icon_state = "schnapps_gold"
 	initial_reagent = /reagent/nutrition/ethanol/schnapps/gold
 
+	rarity = RARITY_RARE
+
 /obj/item/container/simple/alcohol/nothing
 	name = "Nothing"
 	icon_state = "nothing"
 	initial_reagent = /reagent/nutrition/ethanol/nothing
+
+	rarity = RARITY_RARE
 
 /obj/item/container/simple/alcohol/coffee_liqueur
 	name = "Robusto Coffee Liqueur"
@@ -89,6 +95,8 @@
 	icon_state = "tequila_premium"
 	initial_reagent = /reagent/nutrition/ethanol/tequila/premium
 
+	rarity = RARITY_RARE
+
 /obj/item/container/simple/alcohol/wine
 	name = "Doublebeard's Red Wine"
 	icon_state = "wine"
@@ -104,10 +112,14 @@
 	icon_state = "lizardwine"
 	initial_reagent = /reagent/nutrition/ethanol/wine/lizard
 
+	rarity = RARITY_RARE
+
 /obj/item/container/simple/alcohol/hearty_punch
 	name = "Hearty Punch"
 	icon_state = "hearty_punch"
 	initial_reagent = /reagent/nutrition/ethanol/hearty_punch
+
+	rarity = RARITY_RARE
 
 /obj/item/container/simple/alcohol/absinthe
 	name = "Absinthe"
@@ -130,6 +142,8 @@
 	name = "Premium Yellowliver Absinthe"
 	icon_state = "absinthepremium"
 	initial_reagent = /reagent/nutrition/ethanol/absinthe/premium
+
+	rarity = RARITY_RARE
 
 /obj/item/container/simple/alcohol/grappa
 	name = "Grandpa's Grappa"

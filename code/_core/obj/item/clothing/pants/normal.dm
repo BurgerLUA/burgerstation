@@ -64,6 +64,8 @@
 		"pants" = COLOR_PURPLE
 	)
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/pants/normal/ancient_security
 	name = "ancient security pants"
 	desc = "From a forgotten age."
@@ -176,6 +178,8 @@
 	icon = 'icons/obj/item/clothing/pants/reinforced.dmi'
 
 	armor = /armor/cloth/hard
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/pants/normal/reinforced/ntops
 	name = "NT ops reinforced pants"

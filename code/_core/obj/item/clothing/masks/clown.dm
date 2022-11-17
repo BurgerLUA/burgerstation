@@ -10,3 +10,5 @@
 
 
 	value = 120
+
+	rarity = RARITY_UNCOMMON

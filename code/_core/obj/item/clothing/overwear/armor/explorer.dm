@@ -17,3 +17,5 @@
 	size = SIZE_6
 
 	value = 100
+
+	rarity = RARITY_UNCOMMON

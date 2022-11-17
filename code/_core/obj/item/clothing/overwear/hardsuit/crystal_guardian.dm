@@ -11,3 +11,5 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/crystal_guardian)
 
 	value = 2000
+
+	rarity = RARITY_MYTHICAL

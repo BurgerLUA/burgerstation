@@ -12,3 +12,5 @@
 	armor = /armor/military/heavy/hard
 
 	size = SIZE_7
+
+	rarity = RARITY_MYTHICAL

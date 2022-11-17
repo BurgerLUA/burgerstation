@@ -62,10 +62,11 @@
 
 	size = SIZE_1
 
-
 	value = 15
 
 	weight = 3
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/powercell/industrial
 	name = "industrial power cell"
@@ -75,6 +76,8 @@
 	charge_max = CELL_SIZE_INDUSTRIAL
 
 	size = SIZE_2
+
+	rarity = RARITY_UNCOMMON
 
 
 	value = 25
@@ -96,6 +99,8 @@
 	weight = 4
 
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/powercell/vehicle
 	name = "mech-grade power cell"

@@ -119,6 +119,7 @@
 
 
 /obj/marker/spawning/random/do_spawn(var/turf/T)
+
 	if(!prob(chance_none))
 		var/datum/D = pickweight(possible_objects)
 		if(ispathcache(D,/turf/))
@@ -141,11 +142,6 @@
 				var/atom/movable/A = D
 				A = new A(T)
 				LATE_INIT(A)
-
-/obj/marker/spawning/random/maintenance/do_spawn(var/turf/T)
-	var/datum/D = ..()
-	if((ispath(D,/obj/structure/table/) || ispath(D,/obj/structure/interactive/crate)) && prob(25))
-		SPAWN_LOOT(/loot/value/low,T)
 
 /obj/marker/spawning/random/maintenance
 	icon_state = "maint"
@@ -239,11 +235,7 @@
 	name = "trash(?) loot"
 	icon_state = "misc"
 	possible_objects = list(
-		/loot/value/trash = 2000,
-		/loot/value/low = 1000,
-		/loot/value/medium = 250,
-		/loot/value/high = 100,
-		/loot/value/extreme = 1
+		/loot/random/trash/lots = 1
 	)
 	color = COLOR_GREY
 

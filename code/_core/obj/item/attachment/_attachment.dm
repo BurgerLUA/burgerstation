@@ -35,6 +35,8 @@
 
 	weight = 1
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/attachment/get_examine_list(var/mob/caller)
 
 	. = ..()

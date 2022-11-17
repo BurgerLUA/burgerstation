@@ -10,6 +10,8 @@
 
 	value = 800
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/overwear/coat/hos/revfficer
 	name = "revolutionary officer coat"
 	desc = "hey commie can i have your coat plz"
@@ -19,3 +21,5 @@
 	size = SIZE_4
 
 	value = 800
+
+	rarity = RARITY_RARE

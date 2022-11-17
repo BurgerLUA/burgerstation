@@ -6,6 +6,8 @@
 
 	weight = 0.25
 
+	rarity = RARITY_BROKEN
+
 /obj/item/trash/random/Generate()
 	. = ..()
 	var/list/states = icon_states(icon)

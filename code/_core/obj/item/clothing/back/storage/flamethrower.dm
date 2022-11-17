@@ -13,3 +13,5 @@ obj/item/clothing/back/flamethrower
 	additional_clothing = list(
 		/obj/item/weapon/ranged/energy/flamethrower
 	)
+
+	rarity = RARITY_RARE

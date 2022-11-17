@@ -8,6 +8,8 @@
 
 	size = SIZE_3
 
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/clothing/head/helmet/full/rad
 	name = "radiation helmet"
@@ -19,6 +21,8 @@
 
 	size = SIZE_3
 
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/clothing/head/helmet/full/bomb
 	name = "bomb helmet"
@@ -29,3 +33,5 @@
 	armor = /armor/military/heavy/hard/bomb
 
 	size = SIZE_3
+
+	rarity = RARITY_UNCOMMON

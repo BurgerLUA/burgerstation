@@ -4,10 +4,11 @@
 	desc_extended = "The first model of mauler hardsuit, and a common sight during the Nuclear Operatives era. Today it's mostly surplus worn by Syndicate grunts."
 	icon = 'icons/obj/item/clothing/hats/syndie_basic.dmi'
 
-
 	armor = /armor/hardsuit/combat/syndicate
 
 	size = SIZE_4
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/head/helmet/full/hardsuit/syndie/advanced
 	name = "mauler helmet mk2"
@@ -19,6 +20,8 @@
 
 	size = SIZE_3
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/head/helmet/full/hardsuit/syndie/elite
 	name = "mauler helmet mk3"
 	desc = "May I make a suggestion? Run."
@@ -28,6 +31,8 @@
 	armor = /armor/hardsuit/combat/syndicate/fast
 
 	size = SIZE_3
+
+	rarity = RARITY_MYTHICAL
 
 
 /obj/item/clothing/head/helmet/full/hardsuit/syndie/ultra
@@ -39,3 +44,5 @@
 	armor = /armor/hardsuit/combat/syndicate/ultra
 
 	size = SIZE_3
+
+	rarity = RARITY_LEGENDARY

@@ -29,6 +29,7 @@
 /obj/item/bikehorn/magic
 	name = "magic bikehorn"
 	value = 500
+	rarity = RARITY_RARE
 
 /obj/item/bikehorn/magic/click_self(var/mob/caller)
 
@@ -41,4 +42,3 @@
 			L.do_emote("spin")
 
 
-	

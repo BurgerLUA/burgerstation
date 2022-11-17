@@ -19,6 +19,8 @@
 
 	contraband = TRUE
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/clothing/hands/gloves/captain/left
 	name = "left glove of the captain"
 	desc = "Be a comdom with these."

@@ -31,20 +31,6 @@
 
 	return TRUE
 
-/obj/item/Generate()
-	fill_inventory()
-	if(length(inventories))
-		for(var/obj/item/I in src.contents)
-			if(I.finalized)
-				continue
-			pre_fill_inventory(I)
-			INITIALIZE(I)
-			GENERATE(I)
-			FINALIZE(I)
-			post_fill_inventory(I)
-			add_to_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
-	. = ..()
-
 /obj/item/proc/fill_inventory()
 	return TRUE
 

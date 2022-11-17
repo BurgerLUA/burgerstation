@@ -11,6 +11,8 @@
 
 	value = 360
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/head/hat/hos/revfficer
 	name = "revolutionary officer cap"
 	desc = "Conscript spam baste."
@@ -21,3 +23,5 @@
 
 
 	value = 360
+
+	rarity = RARITY_RARE

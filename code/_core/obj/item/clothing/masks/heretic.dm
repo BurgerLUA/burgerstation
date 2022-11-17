@@ -17,3 +17,4 @@
 		SKILL_PRAYER = 5
 	)
 
+	rarity = RARITY_MYTHICAL

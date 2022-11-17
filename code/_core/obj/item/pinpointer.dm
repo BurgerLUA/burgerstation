@@ -19,6 +19,8 @@
 
 	var/unreliable = FALSE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/pinpointer/quick(var/mob/caller,var/atom/object,location,params)
 	return click_self(caller)
 
@@ -160,6 +162,8 @@
 	var/desired_loyalty_tag = "NanoTrasen"
 
 	var/encoded = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/pinpointer/crew/click_self(var/mob/caller)
 
@@ -442,6 +446,8 @@
 	icon_state = "syndicate"
 	value = 1000
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/pinpointer/mobs/click_self(var/mob/caller, var/mob/living/advanced/npc/a, var/mob/living/simple/a)
 	INTERACT_CHECK

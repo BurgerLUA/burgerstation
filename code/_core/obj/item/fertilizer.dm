@@ -10,6 +10,8 @@
 
 	value = 200
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/fertilizer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("uses_left")

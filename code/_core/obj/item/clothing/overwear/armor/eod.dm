@@ -14,3 +14,4 @@
 
 	value = 1500
 
+	rarity = RARITY_RARE

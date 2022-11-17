@@ -622,11 +622,10 @@
 					owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 				return FALSE
 
-	if(!(I.type in item_bypass) && !(src.type in I.inventory_bypass) && max_size >= 0)
-		if(max_size >= 0 && I.size > max_size)
-			if(messages && src.loc)
-				owner.to_chat(span("warning","\The [I] is too large to be put in \the [src.loc.name]."))
-			return FALSE
+	if(max_size >= 0 && I.size > max_size && !(I.type in item_bypass) && !(src.type in I.inventory_bypass))
+		if(messages && src.loc)
+			owner.to_chat(span("warning","\The [I] is too large to be put in \the [src.loc.name]."))
+		return FALSE
 
 	return TRUE
 

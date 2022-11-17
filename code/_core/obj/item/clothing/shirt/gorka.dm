@@ -9,3 +9,5 @@
 	armor = /armor/cloth/hard/winter
 
 	value = 60
+
+	rarity = RARITY_UNCOMMON

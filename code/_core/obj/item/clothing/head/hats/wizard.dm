@@ -30,6 +30,8 @@
 
 	armor = /armor/cloth/arcane/bonus
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/head/hat/wizard/real/blue
 	color = "#0751C0"
 

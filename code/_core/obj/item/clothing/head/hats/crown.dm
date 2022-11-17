@@ -14,6 +14,8 @@
 
 	var/winner_name
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/clothing/head/hat/crown/get_examine_details_list(var/mob/examiner)
 	. = ..()
 	if(winner_name)

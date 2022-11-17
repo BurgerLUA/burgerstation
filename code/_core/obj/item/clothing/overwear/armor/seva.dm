@@ -25,6 +25,7 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva)
 
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/overwear/armor/seva/mono
 	name = "custom SEVA suit"
@@ -35,6 +36,8 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva/mono)
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/overwear/armor/seva/mono/mowo
 	name = "cutestom SEWA suwut"
 	desc_extended = "An eawtewn euwopean modew of hawzawdous enviwoments suit, fawvowed by scienwisws, scawengews awnd anomawy wowshipping fanatics awike! thiws iws wevowutionawies' modification fow uwban combat."
@@ -44,11 +47,15 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva/mono/mowo)
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/overwear/armor/seva/syndie
-	name = "fireproof SEVA suit"
+	name = "syndicate SEVA suit"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike! This is revolutionaries' modification for high temperatures, exported to the Syndicate."
 	icon = 'icons/obj/item/clothing/suit/sevasyndie_suit.dmi'
 
 	armor = /armor/leather/mining/elite
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/seva/syndie)
+
+	rarity = RARITY_MYTHICAL

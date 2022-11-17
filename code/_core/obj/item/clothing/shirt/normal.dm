@@ -162,6 +162,8 @@
 
 	armor = /armor/cloth/hard
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/shirt/normal/reinforced/ntops
 	name = "NT ops reinforced shirt"
 	polymorphs = list(

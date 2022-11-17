@@ -19,6 +19,8 @@
 
 	value = 1
 
+	rarity = RARITY_RARE
+
 /obj/item/container/syringe/medipen/update_sprite()
 	. = ..()
 	name = initial(name)

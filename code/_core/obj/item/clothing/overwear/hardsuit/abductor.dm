@@ -12,3 +12,5 @@
 
 
 	additional_clothing = list()
+
+	rarity = RARITY_RARE

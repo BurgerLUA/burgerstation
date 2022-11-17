@@ -21,6 +21,8 @@ var/global/next_announcement = 0
 
 	var/stored_message
 
+	rarity = RARITY_RARE
+
 /obj/item/announcement/proc/can_use(var/mob/caller)
 	return TRUE
 

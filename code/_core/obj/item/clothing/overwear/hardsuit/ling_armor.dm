@@ -10,8 +10,9 @@
 
 	size = SIZE_7
 
-
 	additional_clothing = list(
 		/obj/item/weapon/melee/sword/armblade,
 		/obj/item/weapon/ranged/stamina_use/tentacle
 	)
+
+	rarity = RARITY_LEGENDARY

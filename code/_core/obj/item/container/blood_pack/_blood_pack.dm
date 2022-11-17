@@ -16,6 +16,8 @@
 
 	value = 20
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/container/blood_pack/feed(var/mob/caller,var/mob/living/target)
 	return FALSE
 

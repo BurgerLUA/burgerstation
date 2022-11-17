@@ -27,6 +27,7 @@
 
 	has_quick_function = TRUE
 
+	rarity = RARITY_UNCOMMON
 
 /obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 

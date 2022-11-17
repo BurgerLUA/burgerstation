@@ -9,6 +9,8 @@
 
 	size = SIZE_2
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/mask/gas/mining
 	name = "advanced gas mask"
 	icon = 'icons/obj/item/clothing/masks/mining.dmi'
@@ -25,6 +27,8 @@
 	icon = 'icons/obj/item/clothing/masks/gasmask_syndicate.dmi'
 
 	armor = /armor/military/light/hard/tactical
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/mask/gas/mercenary
 	name = "mercenary gas mask"

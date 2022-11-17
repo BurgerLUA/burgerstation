@@ -12,3 +12,5 @@
 	armor = /armor/cloth/flammable
 
 	size = SIZE_5
+
+	rarity = RARITY_MYTHICAL

@@ -35,6 +35,8 @@
 	nice_bait = TRUE
 	amount_max = 1
 
+	rarity = RARITY_MYTHICAL
+
 
 //River
 /obj/item/fishing/bait/river
@@ -56,6 +58,8 @@
 	nice_bait = TRUE
 	amount_max = 1
 
+	rarity = RARITY_MYTHICAL
+
 //Lava
 /obj/item/fishing/bait/lava
 	name = "lava fishing bait"
@@ -67,4 +71,5 @@
 	)
 	valid_loot_type = /loot/fishing/lava
 
+	rarity = RARITY_RARE
 	value = 250

@@ -46,12 +46,16 @@
 
 	worn_layer = LAYER_MOB_HAIR_ABOVE
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/glasses/sun/gar/giga
 	name = "gigagar shades"
 	icon = 'icons/obj/item/clothing/glasses/gigagar.dmi'
 	damage_type = /damagetype/melee/sword/katana
 
 	value = 2500
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"
@@ -65,6 +69,8 @@
 	armor = /armor/mechanical
 
 	value = 1400
+
+	rarity = RARITY_MYTHICAL
 
 
 /obj/item/clothing/glasses/sun/security

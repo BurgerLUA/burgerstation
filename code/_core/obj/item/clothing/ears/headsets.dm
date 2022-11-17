@@ -43,15 +43,21 @@
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/syndicate
 
+	contraband = TRUE
+
 /obj/item/clothing/ears/headset/mercenary
 	name = "mercenary headset"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/mercenary
 
+	contraband = TRUE
+
 /obj/item/clothing/ears/headset/revolutionary
 	name = "revolutionary headset"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/revolutionary
+
+	contraband = TRUE
 
 /obj/item/clothing/ears/headset/nanotrasen/medical
 	name = "nanotrasen medical headset"
@@ -75,3 +81,5 @@
 	)
 
 	worn_layer = LAYER_MOB_CLOTHING_HELMET + 0.01
+
+	rarity = RARITY_UNCOMMON

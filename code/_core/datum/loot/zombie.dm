@@ -1,0 +1,27 @@
+/loot/zombie //Stuff civilians are supposed to have
+
+	loot_table = list(
+		/loot/candy = 1,
+		/loot/random/low = 1,
+		/loot/misc = 1,
+		/loot/misc/food_drink = 1
+	)
+
+	chance_none = 50
+
+	loot_count = 6
+
+
+/loot/zombie_wallet //Stuff civilians are supposed to have
+
+	loot_table_guaranteed = list(
+		/obj/item/id/colonist
+	)
+
+	loot_table = list(
+		/loot/currency/pocket_change = 1
+	)
+
+	chance_none = 75
+
+	loot_count = 3

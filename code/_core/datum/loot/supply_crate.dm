@@ -18,28 +18,27 @@
 
 /loot/supply_crate/slavic
 	loot_table_guaranteed = list(
-		/loot/gun/slavic
+		/loot/random/gun/slavic
 	)
 
 /loot/supply_crate/nanotrasen
 	loot_table_guaranteed = list(
-		/loot/gun/nanotrasen
+		/loot/random/gun/nanotrasen
 	)
 
 /loot/supply_crate/solarian
 	loot_table_guaranteed = list(
-		/loot/gun/solarian
+		/loot/random/gun/solarian
 	)
 
 /loot/supply_crate/syndicate
 	loot_table_guaranteed = list(
-		/loot/gun/syndicate
+		/loot/random/gun/syndicate
 	)
 
 /loot/supply_crate/magic
 	loot_table = list(
-		/loot/magic/soulgem = 9,
-		/loot/magic/potion = 6,
-		/obj/item/powergem = 3,
+		/loot/soulgem/assorted = 9,
+		/loot/potion = 6
 	)
 	loot_count = 3

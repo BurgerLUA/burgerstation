@@ -19,6 +19,8 @@
 
 	icon_count = 13
 
+	rarity = RARITY_RARE
+
 /obj/item/container/syringe/hypodermic/hypospray/combat
 	name = "combat hypospray"
 	desc = ";CMO IS A CHANGELING!!"
@@ -39,3 +41,5 @@
 	size = SIZE_2
 
 	icon_count = 5
+
+	rarity = RARITY_MYTHICAL

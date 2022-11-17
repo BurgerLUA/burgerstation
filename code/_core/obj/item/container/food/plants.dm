@@ -189,7 +189,7 @@
 
 /obj/item/container/edible/plant/chili
 	name = "chili pepper"
-	icon_state = "chili"
+	icon_state = "chilipepper"
 	plant_type = /plant_type/chili
 
 /obj/item/container/edible/plant/chili/Generate()

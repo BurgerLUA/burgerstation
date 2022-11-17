@@ -11,6 +11,8 @@
 
 	weight = 0.1
 
+	rarity = RARITY_RARE
+
 /obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(!is_item(object) || object == src)

@@ -28,6 +28,19 @@
 
 /obj/item/proc/open_inventory(var/mob/living/advanced/A)
 
+	if(loot_to_generate)
+		var/rarity = 0
+		if(is_player(A))
+			var/mob/living/advanced/player/P = A
+			rarity = P.get_rarity()
+		var/list/generated_loot = SPAWN_LOOT(loot_to_generate,get_turf(src),rarity)
+		for(var/k in generated_loot)
+			var/atom/movable/M = k
+			if(!src.add_to_inventory(null,M,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
+				qdel(M)
+		A.to_chat(span("notice","You [loot_open_verb] \the [src.name]."))
+		loot_to_generate = null
+
 	if(inventory_user)
 		close_inventory(inventory_user)
 

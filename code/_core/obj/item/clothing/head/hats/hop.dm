@@ -9,3 +9,5 @@
 	size = SIZE_2
 
 	value = 240
+
+	rarity = RARITY_LEGENDARY

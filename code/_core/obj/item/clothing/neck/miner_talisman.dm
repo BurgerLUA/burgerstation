@@ -17,3 +17,5 @@
 	value = 300
 
 	item_slot_layer = 1
+
+	rarity = RARITY_RARE

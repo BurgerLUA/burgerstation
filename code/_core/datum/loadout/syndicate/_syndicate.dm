@@ -158,7 +158,7 @@
 		/obj/item/clothing/overwear/hardsuit/syndie/ultra,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black/,
-		/loot/gun/syndicate/ultra,
+		/loot/random/gun/syndicate/ultra,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
 		/obj/item/magazine/pistol_12mm,
 		/obj/item/magazine/pistol_12mm,

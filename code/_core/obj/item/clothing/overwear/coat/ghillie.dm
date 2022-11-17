@@ -13,6 +13,8 @@
 
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/ghillie)
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/overwear/coat/ghillie/forest
 	name = "SKAT-9M patterned ghillie suit (forest)"
 	desc = "Sneeki breeki like."
