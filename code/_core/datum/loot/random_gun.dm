@@ -6,6 +6,11 @@
 	)
 
 
+/loot/assorted_ammo/lots
+	loot_count = 4
+	loot_multiplier = 5
+
+
 /loot/random/gun/
 	var/company_type
 

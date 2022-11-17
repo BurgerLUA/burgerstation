@@ -794,6 +794,7 @@
 #include "code\_core\mob\living\advanced\human\npc\_npc.dm"
 #include "code\_core\mob\living\advanced\human\npc\abductor.dm"
 #include "code\_core\mob\living\advanced\human\npc\ashwalker.dm"
+#include "code\_core\mob\living\advanced\human\npc\assistant.dm"
 #include "code\_core\mob\living\advanced\human\npc\beefman.dm"
 #include "code\_core\mob\living\advanced\human\npc\clockwork_cultist.dm"
 #include "code\_core\mob\living\advanced\human\npc\contractor_guard.dm"

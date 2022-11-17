@@ -148,7 +148,7 @@
 	chance_none = 20
 	possible_objects = list(
 		//Trash piles and loot
-		/obj/structure/interactive/storage/trash_pile = 100,
+		/obj/structure/interactive/storage/trash_pile/station = 100,
 		/obj/marker/spawning/random/supply_crate = 1,
 		/obj/structure/interactive/bookcase = 5,
 		//Crates
