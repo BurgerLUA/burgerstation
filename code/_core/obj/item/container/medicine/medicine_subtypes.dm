@@ -119,11 +119,14 @@
 	heal_brute_percent = 0
 	amount_max = 3
 
-	value = 200
+	value = 100
 
 	organic = TRUE
 
 	rarity = RARITY_UNCOMMON
+
+/obj/item/container/healing/bone_gel/get_base_value()
+	return value
 
 /obj/item/container/healing/bone_gel/treat(var/mob/caller,var/atom/A)
 

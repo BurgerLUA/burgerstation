@@ -69,7 +69,11 @@
 	if(!A)
 		CRASH("change_area() had an invalid area type ([N])!")
 
-	A.contents |= src
+	if(src.loc == A)
+		return FALSE
+
+	A.contents += src
+
 	return TRUE
 
 
