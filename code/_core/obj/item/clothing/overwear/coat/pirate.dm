@@ -12,3 +12,5 @@
 	size = SIZE_3
 
 	armor = /armor/leather/hard
+
+	rarity = RARITY_RARE

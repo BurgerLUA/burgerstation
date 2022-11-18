@@ -15,6 +15,8 @@
 
 	var/unlimited = FALSE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object) && can_temper(caller,object))

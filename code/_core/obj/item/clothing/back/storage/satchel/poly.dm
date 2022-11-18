@@ -106,3 +106,6 @@
 		"detail" = "#998969",
 		"buckle" = "#625C59"
 	)
+
+/obj/item/clothing/back/storage/satchel/poly/zombie
+	loot_to_generate = /loot/zombie

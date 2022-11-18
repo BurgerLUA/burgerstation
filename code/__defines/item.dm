@@ -31,6 +31,15 @@
 #define FLAG_CLOTHING_NOBEAST_HEAD 0x2
 #define FLAG_CLOTHING_NOBEAST_WINGS 0x4
 
+var/global/list/rarity_to_number = list(
+	RARITY_BROKEN = 1,
+	RARITY_COMMON = 2,
+	RARITY_UNCOMMON = 3,
+	RARITY_RARE = 4,
+	RARITY_MYTHICAL = 5,
+	RARITY_LEGENDARY = 6
+)
+
 #define RARITY_BROKEN "broken"
 #define RARITY_COMMON "common"
 #define RARITY_UNCOMMON "uncommon"

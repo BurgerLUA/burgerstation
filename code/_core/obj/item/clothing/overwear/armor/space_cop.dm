@@ -4,8 +4,6 @@
 	desc = "Out of time, out of place."
 	desc_extended = "Rudimentary protection for only the most special forces in the Galaxy."
 
-
-
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_HAND_LEFT,BODY_HAND_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 
 	armor = /armor/military/light
@@ -18,3 +16,5 @@
 	additional_clothing = list(
 		/obj/item/clothing/head/hat/space_cop
 	)
+
+	rarity = RARITY_RARE

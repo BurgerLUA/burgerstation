@@ -22,10 +22,12 @@
 	if(.)
 		for(var/k in src.contents)
 			var/atom/movable/A = k
-			if(hit_atom.density)
-				A.force_move(old_loc ? old_loc : src.loc)
-			else
-				A.force_move(new_loc ? new_loc : src.loc)
+			if(old_loc)
+				A.force_move(old_loc)
+			else if(new_loc)
+				A.force_move(new_loc)
+			else if(src.loc)
+				A.force_move(src.loc)
 			A.on_thrown(owner,hit_atom)
 			CHECK_TICK_SAFE(75,FPS_SERVER)
 

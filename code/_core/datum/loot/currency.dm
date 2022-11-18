@@ -1,11 +1,10 @@
 /loot/currency
 	var/desired_value = 1000 //How much (on average) do we want to give to the player (if possible).
 	loot_count = 1
-	use_value = TRUE
 
 /loot/currency/pre_spawn(var/atom/movable/M)
 	. = ..()
-	if(istype(M,/obj/item/))
+	if(desired_value > 0 && istype(M,/obj/item/))
 		var/obj/item/I = M
 		if(I.amount_max > 1)
 			var/value_to_create = rand(0,desired_value*2)
@@ -36,7 +35,7 @@
 	)
 	chance_none = 25
 	loot_count = 6
-	desired_value = 200 //on average, per
+	desired_value = 300 //on average, per
 
 /loot/currency/pocket_change
 	loot_table = list(
@@ -45,6 +44,5 @@
 		/obj/item/currency/credits = 20,
 		/obj/item/currency/dosh = 200
 	)
-	chance_none = 50
-	loot_count = 3
-	desired_value = 75 //on average, per
+	loot_count = 1
+	desired_value = 100 //on average, per

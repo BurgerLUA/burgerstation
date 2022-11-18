@@ -10,3 +10,5 @@
 
 
 	value = 500
+
+	rarity = RARITY_MYTHICAL

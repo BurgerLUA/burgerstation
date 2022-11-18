@@ -99,3 +99,4 @@ var/global/list/gps_list = list()
 	value = 2100
 	advanced = TRUE
 	need_password = TRUE
+	rarity = RARITY_UNCOMMON

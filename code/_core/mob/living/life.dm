@@ -190,15 +190,23 @@
 		if(length(people_who_killed))
 			on_killed(people_who_killed)
 
-		if(boss && T)
+		if(boss && T && length(people_who_killed))
+
 			var/rarity = 0
 			var/rarity_count = 0
+			var/list/valid_ckeys = list()
 			for(var/mob/living/advanced/player/P in people_who_killed)
 				rarity += P.get_rarity()
 				rarity_count++
+				if(P.ckey_last)
+					valid_ckeys += P.ckey_last
+
+			if(length(valid_ckeys))
+				create_gold_drop(T,CEILING(src.health.health_max/10,1),valid_ckeys)
+
 			if(rarity_count > 0)
 				rarity *= 1/rarity_count
-				var/list/loot_spawned = SPAWN_LOOT(/loot/treasure/boss,T,rarity)
+				var/list/loot_spawned = SPAWN_LOOT(/loot/boss,T,rarity)
 				for(var/k in loot_spawned)
 					var/obj/item/I = k
 					var/item_move_dir = pick(DIRECTIONS_ALL)

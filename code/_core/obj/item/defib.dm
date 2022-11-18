@@ -17,6 +17,8 @@
 
 	weight = 16
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/defib/belt
 	name = "compact defibrillator"
 	icon = 'icons/obj/item/clothing/belts/compact_defib.dmi'
@@ -28,6 +30,8 @@
 	weight = 8
 
 	value = 2100
+
+	rarity = RARITY_RARE
 
 /obj/item/defib/Destroy()
 	QDEL_NULL(paddle_left)

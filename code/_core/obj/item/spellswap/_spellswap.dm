@@ -12,6 +12,8 @@
 
 	value = 3000
 
+	rarity = RARITY_RARE
+
 
 /obj/item/spellswap/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 

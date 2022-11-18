@@ -14,6 +14,8 @@
 
 	var/cooldown_effect = 0
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/clothing/head/hat/goblin_crown/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/head))

@@ -4,6 +4,8 @@
 	var/obj/item/storage_storage/storage
 
 	var/loot/stored_loot
+	var/loot/stored_loot_per_instance
+	var/list/tracked_instance_ckeys
 
 	anchored = TRUE
 
@@ -19,28 +21,31 @@
 	if(storage && src.z)
 		for(var/obj/item/I in loc.contents)
 			storage.add_to_inventory(null,I)
+	tracked_instance_ckeys = list()
 
 
 /obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/caller) //caller wants to see inside src
 
-	if(!src.can_caller_interact_with(caller,distance_checks=FALSE))
-		return TRUE
-
+	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
-	if(!(caller in viewers(VIEW_RANGE,src)))
-		return TRUE
+	var/turf/T = get_turf(src)
+	var/rarity = 0
+	if(is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		rarity = P.get_rarity()
 
 	if(stored_loot)
-		var/turf/T = get_turf(src)
-		var/rarity = 0
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
-			rarity = P.get_rarity()
 		var/list/spawned_loot = SPAWN_LOOT(stored_loot,T,rarity)
 		for(var/obj/item/I in spawned_loot)
 			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 		stored_loot = null
+
+	if(stored_loot_per_instance && caller.ckey && !tracked_instance_ckeys[caller.ckey])
+		tracked_instance_ckeys[caller.ckey] = TRUE
+		var/list/spawned_instance_loot = SPAWN_LOOT(stored_loot_per_instance,T,rarity)
+		for(var/obj/item/I in spawned_instance_loot)
+			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 
 	caller.clear_inventory_defers() //Remove existing ones.
 
@@ -69,9 +74,8 @@
 	icon = 'icons/obj/structure/trash_piles.dmi'
 	icon_state = "trash"
 
-	stored_loot = /loot/value/trash
-
-	var/mob/living/stored_threat
+	stored_loot = /loot/random/trash/lots
+	stored_loot_per_instance = /loot/random/medium
 
 	var/chance_none = 0
 
@@ -81,19 +85,49 @@
 		qdel(src)
 		return
 
-	. = ..()
-
-
-/obj/structure/interactive/storage/trash_pile/low_chance
-	chance_none = 80
-
-/obj/structure/interactive/storage/trash_pile/New(var/desired_loc)
 	icon_state = "[initial(icon_state)]_[rand(1,10)]"
+
 	. = ..()
 
-/obj/structure/interactive/storage/trash_pile/Destroy()
+var/global/list/possible_trash_enemies = list(
+	/mob/living/simple/passive/mouse/grey = 200,
+	/mob/living/simple/bat/space = 50,
+	/mob/living/advanced/npc/rogue_assistant = 25,
+	/mob/living/simple/gutlunch = 25,
+	/mob/living/simple/xeno/hunter = 5,
+	/mob/living/simple/glockroach = 1,
+)
+
+/obj/structure/interactive/storage/trash_pile/station
+	stored_loot = /loot/random/trash/lots
+	stored_loot_per_instance = /loot/random/low
+	chance_none = 0
+	var/stored_threat = FALSE
+
+/obj/structure/interactive/storage/trash_pile/station/Finalize()
 	. = ..()
-	QDEL_NULL(stored_threat)
+	if(prob(50))
+		stored_threat = TRUE
+
+/obj/structure/interactive/storage/trash_pile/station/examine_storage(var/mob/living/advanced/caller)
+
+	. = ..()
+
+	if(. && stored_threat && prob(30))
+		var/turf/T = get_turf(src)
+		stored_threat = FALSE
+		if(T)
+			var/mob/living/L = pickweight(possible_trash_enemies)
+			L = new L(src)
+			INITIALIZE(L)
+			GENERATE(L)
+			FINALIZE(L)
+			L.force_move(T)
+			if(L.ai)
+				L.ai.set_active(TRUE)
+			src.visible_message(span("danger","\A [L.name] crawls out of \the [src.name]!"))
+
+
 
 
 /obj/structure/interactive/storage/safe
@@ -104,6 +138,7 @@
 	icon_state = "safe"
 
 	stored_loot = /loot/misc/safe
+	stored_loot_per_instance = /loot/random/high
 
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = 1000
@@ -136,9 +171,11 @@
 	name = "assorted ammo pile"
 	desc = "What an assorted and unsorted mess."
 	desc_extended = "Well, they gotta get their ammo from somewhere."
-	stored_loot = /loot/ammo
 	icon = 'icons/obj/item/bulletbox.dmi'
 	icon_state = "ammo"
+
+	stored_loot = /loot/assorted_ammo/lots
+	stored_loot_per_instance = /loot/random/magazine
 
 	pixel_y = 7
 
@@ -151,6 +188,7 @@
 	icon_state = "register"
 
 	stored_loot = /loot/currency/cash_register
+	stored_loot_per_instance = /loot/currency/pocket_change
 
 	layer = 1000
 

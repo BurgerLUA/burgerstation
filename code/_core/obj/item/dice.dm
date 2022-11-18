@@ -83,6 +83,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/dice/d20/cursed/update_icon()
 	. = ..()
 	if(!used) icon_state = "blank"

@@ -13,6 +13,8 @@
 
 	value = 300
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/head/helmet/slavticool
 	name = "\improper 'Slav-safe' LLC combat helmet"
 	icon = 'icons/obj/item/clothing/hats/squad_helmet.dmi'
@@ -25,6 +27,8 @@
 
 	value = 150
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/head/helmet/slavticool/thermal
 	name = "\improper 'Slav-safe' LLC thermal combat helmet"
 	desc_extended = "Durable combat helmet made out of complex plastic-based bullet-resistant materials and ceramics. Should save you from a bullet or five. This model has been outfitted with an advanced thermal monocle."
@@ -32,3 +36,5 @@
 	additional_clothing = list(/obj/item/clothing/glasses/thermal/thermal_rev)
 
 	value = 250
+
+	rarity = RARITY_MYTHICAL

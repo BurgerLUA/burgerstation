@@ -12,8 +12,10 @@
 
 	var/obj/effect/cleanable/spray/existing_spray
 
-	value = 10000
-	value_burgerbux = 50
+	value = 3000
+	value_burgerbux = 20
+
+	rarity = RARITY_RARE
 
 /obj/item/spraycan/Destroy()
 	QDEL_NULL(desired_spray)

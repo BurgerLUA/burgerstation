@@ -33,6 +33,8 @@
 
 	value = 200
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/fishing/rod/Destroy()
 	. = ..()
 	QDEL_NULL(lure)
@@ -299,6 +301,8 @@
 	icon = 'icons/obj/item/fishing/rodtelescopic.dmi'
 	compact = TRUE
 	size = SIZE_1
+
+	rarity = RARITY_RARE
 
 /obj/item/fishing/rod/telescopic/click_self(var/mob/caller)
 	INTERACT_CHECK

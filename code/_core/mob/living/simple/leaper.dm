@@ -18,7 +18,7 @@
 
 	stun_angle = 0
 
-	health_base = 15000
+	health_base = 17500
 	stamina_base = 1000
 	mana_base = 2000
 
@@ -42,7 +42,8 @@
 		REST = TRUE,
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE
+		DRUGGY = TRUE,
+		GRAB = TRUE
 	)
 
 	size = SIZE_BOSS

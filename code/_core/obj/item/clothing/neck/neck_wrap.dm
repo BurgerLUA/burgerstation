@@ -19,3 +19,5 @@
 	value = 400
 
 	item_slot_layer = 2
+
+	rarity = RARITY_MYTHICAL

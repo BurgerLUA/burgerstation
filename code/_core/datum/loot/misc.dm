@@ -20,7 +20,6 @@
 		/obj/item/id/colonist = 40,
 		/obj/item/light_sensor = 20,
 		/obj/item/lighter = 30,
-		/obj/item/map = 40,
 		/obj/item/mop = 10,
 		/obj/item/plate = 30,
 		/obj/item/powercell = 20,
@@ -73,8 +72,7 @@
 
 /loot/misc/safe
 	loot_table_guaranteed = list(
-		/loot/value/medium,
-		/loot/value/high
+		/loot/random/high
 	)
 	loot_table = list(
 		/loot/currency/dosh = 100,
@@ -265,7 +263,6 @@
 		/loot/soulgem = 50,
 		/loot/soulgem/filled = 10,
 		/loot/supply_crate/all = 5,
-		/loot/enchanting_book = 5,
 		/obj/item/bullet_cartridge/arrow/ashen{amount=5} = 70,
 		/obj/item/clothing/belt/belt_quiver = 30,
 		/obj/item/cannonball = 5,

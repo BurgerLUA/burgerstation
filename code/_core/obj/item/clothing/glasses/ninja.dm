@@ -17,3 +17,5 @@
 	mob_values_add = list(
 		ATTRIBUTE_AGILITY = 5
 	)
+
+	rarity = RARITY_RARE

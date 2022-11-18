@@ -18,6 +18,8 @@
 
 	value = 750 //Extraordinary cost. :P
 
+	rarity = RARITY_RARE
+
 
 /obj/item/clothing/overwear/hardsuit/skat
 	name = "SKAT-9"
@@ -33,10 +35,11 @@
 
 	size = SIZE_7
 
-
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/skat)
 
 	value = 1050
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/overwear/hardsuit/skat/antag
 	name = "SKAT-10"
@@ -52,10 +55,11 @@
 
 	size = SIZE_7
 
-
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/skat/antag)
 
 	value = 2050
+
+	rarity = RARITY_MYTHICAL
 
 	var/cooldown_effect = 0
 

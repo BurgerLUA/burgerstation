@@ -46,8 +46,9 @@
 
 	size = SIZE_4
 
-
 	value = 300
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/head/helmet/full/knight/clockwork
 	name = "clockwork helmet"
@@ -58,6 +59,8 @@
 	value = 500
 
 	size = SIZE_2
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/head/helmet/full/knight/runic
 	name = "runic helmet"

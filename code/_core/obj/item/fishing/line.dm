@@ -18,6 +18,8 @@
 	break_on_success = 10
 	color = "#7F3300"
 
+	rarity = RARITY_COMMON
+
 /obj/item/fishing/line/t2
 	name = "commercial fishing line"
 	desc = "For serious fishers."
@@ -26,6 +28,8 @@
 	break_on_failure = 8
 	break_on_success = 4
 	color = "#C0C0C0"
+
+	rarity = RARITY_COMMON
 
 /obj/item/fishing/line/t3
 	name = "high durability fishing line"
@@ -36,6 +40,8 @@
 	break_on_success = 0
 	color = "#404040"
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/fishing/line/t4
 	name = "robust 'fishing line'"
 	desc = "Sponsored by the greytide."
@@ -44,6 +50,8 @@
 	icon = 'icons/obj/item/cable.dmi'
 	color = "#FF0000"
 
+	rarity = RARITY_RARE
+
 /obj/item/fishing/line/t5
 	name = "lavaproof fishing line"
 	desc = "Not as rare as it is in Terraria!"
@@ -51,3 +59,5 @@
 	value = 4000
 	color = "#FF6A00"
 	lavaproof = TRUE
+
+	rarity = RARITY_MYTHICAL

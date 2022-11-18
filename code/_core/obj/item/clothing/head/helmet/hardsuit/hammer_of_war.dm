@@ -9,3 +9,5 @@
 	size = SIZE_4
 
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL

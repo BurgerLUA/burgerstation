@@ -109,3 +109,5 @@
 	)
 
 	value = 1000
+
+	rarity = RARITY_RARE

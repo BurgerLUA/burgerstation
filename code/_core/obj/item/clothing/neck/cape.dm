@@ -66,6 +66,8 @@
 
 	dyeable = FALSE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/neck/cape/black
 	polymorphs = list(
 		"base" = COLOR_BLACK,

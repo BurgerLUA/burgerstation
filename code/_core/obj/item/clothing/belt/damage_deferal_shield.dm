@@ -27,6 +27,8 @@
 
 	contraband = TRUE
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/belt/damage_deferal_shield/use_condition(var/amount_to_use=1)
 	if(!CALLBACK_EXISTS("\ref[src]_disable_shield"))
 		return FALSE

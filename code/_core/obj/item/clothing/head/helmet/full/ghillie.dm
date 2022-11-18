@@ -13,6 +13,8 @@
 
 	can_save = FALSE
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/head/helmet/full/ghillie/forest
 	name = "SKAT-9M patterned ghillie head cover (forest)"
 	desc = "Sneeki breeki like."

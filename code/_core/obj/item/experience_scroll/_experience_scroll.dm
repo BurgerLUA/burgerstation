@@ -19,6 +19,13 @@
 
 	value_burgerbux = 1 //Prevents being sold in vendors.
 
+	rarity = RARITY_MYTHICAL
+
+	var/level_to_give = 5
+
+/obj/item/experience_scroll/get_base_value()
+	return 0
+
 /obj/item/experience_scroll/update_overlays()
 	var/image/I = new/image(icon,overlay_icon_state)
 	I.color = overlay_color

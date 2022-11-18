@@ -27,6 +27,8 @@
 
 	value = 150
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/overwear/armor/knight/red
 	name = "red heavy knight armor"
 	icon = 'icons/obj/item/clothing/suit/knight_red.dmi'
@@ -56,6 +58,8 @@
 	value = 1000
 
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/overwear/armor/knight/templar
 	name = "templar knight armor"
@@ -97,6 +101,8 @@
 
 	value = 4000
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/overwear/armor/knight/clockwork
 	name = "clockwork armor"
 
@@ -110,6 +116,8 @@
 
 	value = 900
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/overwear/armor/knight/magnus
 	name = "magnus armor"
 	icon = 'icons/obj/item/clothing/suit/magnus.dmi'
@@ -121,6 +129,8 @@
 	size = SIZE_5
 
 	value = 300
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/overwear/armor/knight/magnus/red
 	color = COLOR_RED
@@ -168,3 +178,5 @@
 		BODY_TORSO = TRUE,
 		BODY_GROIN = TRUE
 	)
+
+	rarity = RARITY_MYTHICAL

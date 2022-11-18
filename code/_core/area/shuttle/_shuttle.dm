@@ -5,11 +5,13 @@
 	safe_storage = TRUE
 	trackable = TRUE
 	allow_ghost = FALSE
-	map_color = COLOR_PINK
+	map_color = COLOR_STEEL
 	interior = TRUE
 	dynamic_lighting = TRUE
 
 	area_identifier = "Burgerstation"
+
+	map_color_ignore_dense = TRUE
 
 /area/shuttle/flounder
 	name = "\improper NTS Flounder"

@@ -41,3 +41,4 @@
 	name = "magic broom"
 	broom_range = 4
 	value = 800
+	rarity = RARITY_RARE

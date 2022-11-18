@@ -31,3 +31,5 @@
 	mob_values_add = list(
 		SKILL_MEDICINE = 5
 	)
+
+	rarity = RARITY_UNCOMMON

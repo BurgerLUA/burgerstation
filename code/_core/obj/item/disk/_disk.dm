@@ -47,6 +47,8 @@
 	writing_color = "#004A7F"
 	metal_color = "#BBC5C7"
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/disk/random/Generate()
 	frame_color = random_color()
 	writing_color = random_color()
@@ -184,6 +186,8 @@
 	value_burgerbux = 1
 	value = 10000
 
+	rarity = RARITY_LEGENDARY
+
 
 /obj/item/disk/genetic
 	name = "genetic data disk"
@@ -196,6 +200,8 @@
 	data = list(
 		"ability" = null
 	)
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/disk/genetic/Finalize()
 

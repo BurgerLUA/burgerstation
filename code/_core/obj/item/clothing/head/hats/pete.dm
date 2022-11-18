@@ -13,3 +13,5 @@
 	value = 360
 
 	value_burgerbux = 1
+
+	rarity = RARITY_LEGENDARY

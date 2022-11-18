@@ -11,7 +11,7 @@
 
 	stun_angle = 0
 
-	health_base = 10000
+	health_base = 12500
 
 	armor = /armor/default_organic
 
@@ -33,7 +33,8 @@
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
 		DRUGGY = TRUE,
-		FIRE = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE
 	)
 
 	enable_medical_hud = FALSE

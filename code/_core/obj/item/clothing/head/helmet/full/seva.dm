@@ -10,12 +10,16 @@
 
 	can_save = FALSE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/head/helmet/full/seva/mono
 	name = "custom SEVA suit"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike! This is revolutionaries' modification for urban combat."
 	icon = 'icons/obj/item/clothing/hats/sevamono_suit.dmi'
 
 	armor = /armor/leather/mining/elite
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/head/helmet/full/seva/mono/mowo
 	name = "cutestom SEWA suwut"
@@ -24,9 +28,13 @@
 
 	armor = /armor/leather/mining/advanced
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/head/helmet/full/seva/syndie
-	name = "fireproof SEVA suit"
+	name = "syndicate SEVA suit"
 	desc_extended = "An eastern european model of Hazardous Enviroments Suit, favored by scientists, scavengers and anomaly worshipping fanatics alike! This is revolutionaries' modification for high temperatures, exported to the Syndicate."
 	icon = 'icons/obj/item/clothing/hats/sevasyndie_suit.dmi'
 
 	armor = /armor/leather/mining/elite
+
+	rarity = RARITY_RARE

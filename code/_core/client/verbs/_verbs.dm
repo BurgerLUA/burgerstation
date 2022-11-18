@@ -47,6 +47,7 @@
 	verbs += /client/verb/ghost
 	verbs += /client/verb/check_objectives
 	verbs += /client/verb/examine_atom
+	verbs += /client/verb/view_map
 
 	if(permissions & FLAG_PERMISSION_HOST)
 		verbs += /client/verb/apply_fuckup

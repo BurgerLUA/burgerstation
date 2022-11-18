@@ -11,6 +11,8 @@
 
 	value = 400
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/head/helmet/full/nanotrasen/deathsquad
 	polymorphs = list(
 		"base" = COLOR_GREY_DARK,
@@ -18,3 +20,5 @@
 		"stripe" = "#910000"
 	)
 	armor = /armor/hardsuit/combat/nanotrasen/plus
+
+	rarity = RARITY_MYTHICAL

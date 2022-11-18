@@ -30,7 +30,8 @@
 		/obj/item/storage/blood_box/holy_45 = 2,
 		/obj/item/storage/blood_box/witchunt = 2,
 		/obj/item/clothing/glasses/eyes_of_god = 2,
-		/obj/item/weapon/melee/crystal = 2
+		/obj/item/weapon/melee/crystal = 2,
+		/obj/item/storage/blood_box/holy_grenades = 1
 	)
 
 
@@ -41,7 +42,8 @@
 		/obj/item/powercell/bluespace = 3,
 		/obj/item/clothing/back/storage/backpack/bluespace = 3,
 		/obj/item/clothing/back/storage/satchel/bluespace = 3,
-		/obj/item/weapon/ranged/energy/opticor = 1
+		/obj/item/weapon/ranged/energy/opticor = 1,
+		/obj/item/storage/blood_box/sniper_20 = 1
 	)
 
 /loot/lavaland/broodmother

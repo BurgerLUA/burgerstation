@@ -13,6 +13,8 @@
 
 	weight = 4
 
+	rarity = RARITY_RARE
+
 /obj/item/supply_remote/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("charges")

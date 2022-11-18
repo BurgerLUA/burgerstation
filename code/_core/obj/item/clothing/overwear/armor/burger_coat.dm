@@ -14,6 +14,8 @@
 
 	speed_bonus = 0.1
 
+	rarity = RARITY_MYTHICAL
+
 
 /obj/item/clothing/overwear/armor/burger_coat/courier
 	name = "Courier Jacket"

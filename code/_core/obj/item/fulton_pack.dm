@@ -9,6 +9,8 @@
 
 	value = 200
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE,var/turf_check=FALSE)
 
 	INTERACT_CHECK_NO_DELAY(src)

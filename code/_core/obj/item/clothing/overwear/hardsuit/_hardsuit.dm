@@ -24,3 +24,5 @@
 	)
 
 	uses_until_condition_fall = 1000
+
+	rarity = RARITY_RARE

@@ -7,8 +7,7 @@
 	var/value_burgerbux
 
 	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
-	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning.
-
+	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning. This should only be set by special code.
 
 	var/can_rename = FALSE //Can you rename this item?
 
@@ -51,6 +50,9 @@
 	var/starting_inventory_y = "BOTTOM:12+1.25"
 	var/inventory_y_multiplier = 1
 	var/container_priority //Good idea to be negative as non-dynamic inventories (hend, worn, ect) are above 0. Default for dynamic inventories is -101.
+
+	var/loot/loot_to_generate //We generate loot later to prevent lag.
+	var/loot_open_verb = "unbuckle"
 
 	var/container_temperature //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
@@ -218,10 +220,12 @@ var/global/list/rarity_to_mul = list(
 	RARITY_MYTHICAL = 4
 )
 
+/*
 /obj/item/proc/generate_rarity() //Only called when loot is spawned. Not in shops or other means.
 	if(rarity == RARITY_COMMON) rarity = pickweight(rarity_to_prob)
 	if(uses_until_condition_fall > 0) quality += (rarity_to_mul[rarity]-1)*10
 	return TRUE
+*/
 
 /obj/item/proc/use_condition(var/amount_to_use=1)
 
@@ -895,3 +899,18 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/proc/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
 	return FALSE
+
+
+/obj/item/Generate()
+	fill_inventory()
+	if(length(inventories))
+		for(var/obj/item/I in src.contents)
+			if(I.finalized)
+				continue
+			pre_fill_inventory(I)
+			INITIALIZE(I)
+			GENERATE(I)
+			FINALIZE(I)
+			post_fill_inventory(I)
+			add_to_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
+	. = ..()

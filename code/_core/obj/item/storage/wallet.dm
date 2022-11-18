@@ -15,6 +15,10 @@
 
 	value = 40
 
+/obj/item/storage/wallet/random_colonist
+	loot_to_generate = /loot/zombie_wallet
+
+/*
 var/global/list/single_cigs = subtypesof(/obj/item/container/cigarette)
 var/global/list/single_patches = subtypesof(/obj/item/container/healing/patch)
 var/global/list/single_syringes = subtypesof(/obj/item/container/syringe/medipen) - /obj/item/container/syringe/medipen/adminomnizine
@@ -24,7 +28,7 @@ var/global/list/single_pills = subtypesof(/obj/item/container/edible/pill)
 
 	//ID
 	if(prob(90))
-		new /obj/item/id/colonist(src)
+
 
 	//Base currency
 	var/obj/item/currency/dosh/D = new(src)
@@ -56,3 +60,4 @@ var/global/list/single_pills = subtypesof(/obj/item/container/edible/pill)
 		P = new P(src)
 
 	. = ..()
+*/

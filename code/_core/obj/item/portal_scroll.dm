@@ -7,6 +7,8 @@
 	has_quick_function = TRUE //Allows scrolls to show up in the belt slots.
 	value = 500
 
+	rarity = RARITY_RARE
+
 /obj/item/portal_scroll/quick(var/mob/caller,var/atom/object,location,params)
 	click_self(caller)
 

@@ -80,6 +80,8 @@
 
 	plane = PLANE_CURRENCY
 
+	rarity = RARITY_RARE
+
 /obj/item/currency/gold_bar/Finalize()
 	. = ..()
 	update_value()

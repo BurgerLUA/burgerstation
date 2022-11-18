@@ -9,10 +9,11 @@
 
 	size = SIZE_7
 
-
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie)
 
 	value = 400
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/overwear/hardsuit/syndie/advanced
 	name = "mauler hardsuit mk2"
@@ -29,6 +30,8 @@
 	additional_clothing = list(/obj/item/clothing/head/helmet/full/hardsuit/syndie/advanced)
 
 	value = 600
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/overwear/hardsuit/syndie/elite
 	name = "mauler hardsuit mk3"
@@ -50,6 +53,8 @@
 
 	contraband = TRUE
 
+	rarity = RARITY_MYTHICAL
+
 
 /obj/item/clothing/overwear/hardsuit/syndie/ultra
 	name = "mauler hardsuit mk4 ULTRA"
@@ -70,3 +75,5 @@
 	speed_bonus = 0.4
 
 	contraband = TRUE
+
+	rarity = RARITY_LEGENDARY

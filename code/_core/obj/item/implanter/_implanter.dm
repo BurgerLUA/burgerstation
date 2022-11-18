@@ -13,6 +13,8 @@
 
 	weight = 3
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/implanter/Destroy()
 	QDEL_NULL(stored_implant)
 	. = ..()
@@ -76,6 +78,9 @@
 	stored_implant = /obj/item/organ/internal/implant/hand/left/iff/nanotrasen
 	removes_existing = FALSE
 	value_burgerbux = 1000000
+
+	rarity = RARITY_LEGENDARY
+	contraband = TRUE
 
 /obj/item/implanter/od_purge
 	stored_implant = /obj/item/organ/internal/implant/torso/od_purge

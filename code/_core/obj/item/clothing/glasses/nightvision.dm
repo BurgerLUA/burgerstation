@@ -21,6 +21,8 @@
 
 	var/next_think = 0
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/glasses/nightvision/Destroy()
 	QDEL_NULL(stored_cell)
 	. = ..()

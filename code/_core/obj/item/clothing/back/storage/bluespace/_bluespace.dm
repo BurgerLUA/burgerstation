@@ -43,6 +43,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/back/storage/satchel/bluespace/prank
 	name = "satchel of hold"
 	desc = "What the fuck, this is just the worst."

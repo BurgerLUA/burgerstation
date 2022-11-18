@@ -90,7 +90,7 @@
 
 /obj/hud/button/widget/logout
 	name = "Logout"
-	desc_extended = "Click here to force your character to logout. You can only logout while in a slepper. You can rejoin as the same character or a new character any time after logging out."
+	desc_extended = "Click here to force your character to logout. You can only logout while in a sleeper. You can rejoin as the same character or a new character any time after logging out."
 	icon_state = "logout_new"
 	screen_loc = "RIGHT,TOP"
 
@@ -122,3 +122,24 @@
 	P.add_color_scheme_buttons()
 
 	return ..()
+
+
+/obj/hud/button/widget/view_map
+	name = "View Map"
+	desc_extended = "Click here to view the current z-level's map."
+	icon_state = "map_new"
+	screen_loc = "RIGHT-3,TOP"
+
+/obj/hud/button/widget/view_map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	. = ..()
+
+	var/obj/hud/button/map_background/M_control = locate() in caller.buttons
+
+	if(M_control)
+		M_control.update_owner(null)
+		caller.to_chat(span("notice","You close the map."))
+	else
+		M_control = new(caller)
+		M_control.update_owner(caller)
+		caller.to_chat(span("notice","You open the map."))

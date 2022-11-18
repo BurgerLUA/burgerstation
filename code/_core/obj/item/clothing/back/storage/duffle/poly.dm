@@ -96,7 +96,6 @@
 	new /obj/item/tempering/quality/ranged/lesser(src)
 
 	new /obj/item/pinpointer/landmark(src)
-	new /obj/item/map(src)
 	new /obj/item/flare(src)
 	new /obj/item/weapon/melee/torch/flashlight(src)
 

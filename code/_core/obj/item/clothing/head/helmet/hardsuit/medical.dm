@@ -7,3 +7,5 @@
 	armor = /armor/hardsuit/medical
 
 	size = SIZE_3
+
+	rarity = RARITY_RARE

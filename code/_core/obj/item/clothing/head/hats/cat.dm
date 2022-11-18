@@ -23,6 +23,8 @@
 
 	value = 400
 
+	rarity = RARITY_RARE
+
 
 /obj/item/clothing/head/hat/bunny
 	name = "\improper cursed bunny ears"
@@ -41,3 +43,5 @@
 	worn_layer = LAYER_MOB_HAIR_HEAD + 0.01
 
 	value = 400
+
+	rarity = RARITY_RARE

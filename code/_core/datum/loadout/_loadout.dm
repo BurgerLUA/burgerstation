@@ -2,6 +2,8 @@
 	var/list/spawning_items = list() //Remember, order matters! Also accepts loot.
 	var/list/possible_gems = list() // A weighted list of what gems the wands(if any) of mob should carry in them
 
+	var/obj/item/spawn_on_loot_fail //Put a backpack path here or something so failed loot goes in it if it can.
+
 /loadout/proc/get_spawning_items()
 	return spawning_items.Copy() //Copy is needed.
 
@@ -10,10 +12,31 @@
 
 /loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I) //added after initialize and spawn
 
+	. = TRUE
+
 	if(!I.quick_equip(A,silent=TRUE))
-		log_error("Loadout Error: Could not add \the [I.type] to \the [A.get_debug_name()]!")
-		qdel(I)
-		return FALSE
+		. = FALSE
+		if(spawn_on_loot_fail)
+			var/item_slot = initial(spawn_on_loot_fail.item_slot)
+			for(var/k in A.inventories_by_id)
+				var/obj/hud/inventory/INV = A.inventories_by_id[k]
+				if(!(INV.item_slot & item_slot))
+					continue
+				if(length(INV.contents))
+					continue
+				var/obj/item/IF = new spawn_on_loot_fail(get_turf(A))
+				INITIALIZE(IF)
+				GENERATE(IF)
+				FINALIZE(IF)
+				INV.add_object(IF,messages=FALSE)
+				if(IF.add_to_inventory(A,I,enable_messages=FALSE))
+					. = TRUE
+				break
+
+		if(!.)
+			log_error("Loadout Error: Could not add \the [I.type] to \the [A.get_debug_name()]!")
+			qdel(I)
+			return FALSE
 
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
@@ -21,7 +44,7 @@
 			return TRUE
 		C.equip_additional_clothing(A)
 
-	return TRUE
+	return .
 
 /loadout/proc/post_add(var/mob/living/advanced/A,var/list/added_items = list()) //Added after everything is added.
 

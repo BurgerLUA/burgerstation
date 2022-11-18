@@ -23,6 +23,8 @@
 
 	tier_type = "support gem"
 
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/supportgem/proc/update_support_stats()
 	return TRUE

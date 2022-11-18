@@ -14,6 +14,8 @@
 
 	glide_size = 1
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
 
 	if(I != src && istype(I,/obj/item/currency/))
@@ -35,6 +37,8 @@
 	value = 200
 
 	currency_class = "Telecrystals"
+
+	rarity = RARITY_RARE
 
 /obj/item/currency/telecrystals/update_icon()
 	switch(amount)
@@ -82,6 +86,8 @@
 	amount_max = 4
 
 	currency_class = "Magic Shard"
+
+	rarity = RARITY_RARE
 
 /obj/item/currency/magic_token/update_icon()
 	icon_state = "[amount]"
