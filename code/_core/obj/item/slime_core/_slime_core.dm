@@ -10,6 +10,8 @@
 
 	weight = 0.25
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/slime_core/New(var/desired_loc)
 	generate_name()
 	return ..()
@@ -48,6 +50,8 @@
 	desc_extended = "Can change into any color. Alt-clicking other items copies the color instead."
 	value = 1000
 	alpha = 255
+
+	rarity = RARITY_RARE
 
 /obj/item/slime_core/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

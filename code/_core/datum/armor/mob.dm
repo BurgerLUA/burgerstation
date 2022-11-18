@@ -502,14 +502,14 @@
 
 /armor/drake
 	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 75,
+		BLADE = 50,
+		BLUNT = 75,
+		PIERCE = 75,
+		LASER = 100,
 		ARCANE = 0,
-		HEAT = 200,
-		COLD = 25,
-		SHOCK = 25,
+		HEAT = 250,
+		COLD = 50,
+		SHOCK = -25,
 		ACID = 50,
 		BOMB = 0,
 		BIO = 0,

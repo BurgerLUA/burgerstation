@@ -12,6 +12,13 @@
 
 	markup = rand(4,8)
 
-	SPAWN_LOOT(/loot/value/medium,src.loc)
+	for(var/i=1,i<=6,i++)
+		switch(rand(1,4))
+			if(1)
+				SPAWN_LOOT(/loot/random/trash,src.loc)
+			if(2)
+				SPAWN_LOOT(/loot/random/low,src.loc)
+			if(3)
+				SPAWN_LOOT(/loot/random/medium,src.loc)
 
 	return ..()

@@ -96,6 +96,7 @@
 		/obj/hud/button/widget/experience,
 		/obj/hud/button/widget/logout,
 		/obj/hud/button/widget/change_theme,
+		/obj/hud/button/widget/view_map,
 
 		/obj/hud/button/squad/main,
 

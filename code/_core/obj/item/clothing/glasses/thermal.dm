@@ -15,6 +15,8 @@
 
 	item_slot_layer = 2
 
+	rarity = RARITY_LEGENDARY
+
 
 /obj/item/clothing/glasses/thermal/thermoncle
 	name = "thermoncle"

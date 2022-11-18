@@ -5,11 +5,13 @@
 
 	var/mob/living/simple/can_man/owner_as_can_man
 
-	var/projectile_count = 15
+	var/projectile_count = 5
 	var/projectile_delay = 10
-
+	var/rev_up = 0
+	var/shot_delay = 8
 	var/strafe_count = 10
 	var/strafe_delay = 30
+	var/is_fire_tick
 
 
 	var/projectile_ramp = 10
@@ -61,7 +63,13 @@
 /ai/boss/can_man/handle_attacking()
 
 	if(objective_attack)
-		handle_projectiles()
+		shot_delay--
+		if(shot_delay <= 0)
+			handle_projectiles()
+	else if(shot_delay < initial(shot_delay))
+		shot_delay = initial(shot_delay)
+		rev_up = 0
+				
 
 	if(owner_as_can_man.charge_steps > 0)
 		return FALSE
@@ -84,12 +92,12 @@
 		projectile_ramp = initial(projectile_ramp)
 		return FALSE
 
-	if(projectile_delay + projectile_ramp > 0)
+	if(projectile_delay + projectile_ramp > 0) 
 		projectile_delay--
 	else
 		projectile_delay = initial(projectile_delay)
 
-	if(projectile_count > 0)
+	if(is_fire_tick)
 		play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
@@ -97,10 +105,10 @@
 			null,
 			null,
 			/obj/projectile/bullet/firearm/pistol,
-			/damagetype/ranged/bullet/pistol_45,
+			/damagetype/ranged/bullet/pistol_45/hp,
 			16,
 			16,
-			0,
+			0.03,
 			TILE_SIZE*0.5,
 			1,
 			"#FF4A00",
@@ -112,9 +120,12 @@
 		owner.set_dir(get_dir(owner,objective_attack))
 		projectile_count--
 		projectile_ramp++
+		is_fire_tick = FALSE
 	else
 		projectile_delay = initial(projectile_delay)
 		projectile_count = initial(projectile_count)
 		projectile_ramp = initial(projectile_ramp)
-
+		is_fire_tick = TRUE
+	rev_up++
+	shot_delay = initial(shot_delay) - rev_up
 	return TRUE

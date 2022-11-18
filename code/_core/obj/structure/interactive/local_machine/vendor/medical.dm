@@ -107,7 +107,6 @@
 	icon_state = "medquip"
 	stored_types = list(
 		/obj/item/clothing/ears/headset/nanotrasen/medical,
-		/obj/item/map,
 		/obj/item/pinpointer/crew,
 		/obj/item/pinpointer/crew/death,
 		/obj/item/analyzer/health,

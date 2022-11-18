@@ -11,3 +11,5 @@
 	size = SIZE_8
 
 	value = 2400
+
+	rarity = RARITY_MYTHICAL

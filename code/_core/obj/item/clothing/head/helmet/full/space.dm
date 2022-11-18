@@ -12,3 +12,5 @@
 	armor = /armor/hardsuit/env
 
 	size = SIZE_3
+
+	rarity = RARITY_UNCOMMON

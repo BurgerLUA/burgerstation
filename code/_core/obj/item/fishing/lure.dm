@@ -25,6 +25,8 @@
 
 	value = 50
 
+	rarity = RARITY_COMMON
+
 /obj/item/fishing/lure/t1_easy
 	name = "easy-going fishing lure"
 	icon_state = "easy"
@@ -37,6 +39,8 @@
 	rarity_bonus = -10
 
 	value = 250
+
+	rarity = RARITY_COMMON
 
 /obj/item/fishing/lure/t2
 	name = "commercial fishing lure"
@@ -51,6 +55,8 @@
 
 	value = 1000
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/fishing/lure/t3
 	name = "McRobust's fishing lure"
 	icon_state = "robust"
@@ -63,6 +69,8 @@
 	rarity_bonus = 10
 
 	value = 1000
+
+	rarity = RARITY_RARE
 
 /obj/item/fishing/lure/t3_clown
 	name = "funny fishing bob"
@@ -77,3 +85,5 @@
 	rarity_bonus = 20
 
 	value = 2000
+
+	rarity = RARITY_RARE

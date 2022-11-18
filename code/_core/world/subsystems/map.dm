@@ -22,14 +22,16 @@ SUBSYSTEM_DEF(map)
 			var/area/A = S.loc
 			if(A.map_color) //Mapped out area.
 				found_color = A.map_color
-				if(S.density && (S.density_north || S.density_east || S.density_west || S.density_south))
-					found_color = blend_colors(found_color,"#000000",0.5)
-				else if(locate(/obj/structure/table/window) in S.contents)
-					found_color = blend_colors(found_color,"#000000",0.4)
+				if(!A.map_color_ignore_dense)
+					if(S.density && (S.density_north || S.density_east || S.density_west || S.density_south))
+						found_color = blend_colors(found_color,"#000000",0.5)
+					else if(locate(/obj/structure/table/window) in S.contents)
+						found_color = blend_colors(found_color,"#000000",0.4)
 			else if(S.map_color)
 				found_color = S.map_color
-				if(!S.density && S.has_dense_atom)
-					found_color = blend_colors(found_color,"#000000",0.25)
+				if(!A.map_color_ignore_dense)
+					if(!S.density && S.has_dense_atom)
+						found_color = blend_colors(found_color,"#000000",0.25)
 
 			if(!found_color)
 				found_color = (x+y)%2 ? "#000000" : "#FF00DC"

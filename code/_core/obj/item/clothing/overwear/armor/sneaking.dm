@@ -9,3 +9,5 @@
 	value = 200
 
 	armor = /armor/military/light
+
+	rarity = RARITY_MYTHICAL

@@ -153,18 +153,19 @@
 	update_sprite()
 	return TRUE
 
-/proc/create_gold_drop(var/turf/T,var/amount=5)
+/proc/create_gold_drop(var/turf/T,var/amount=5,var/list/valid_ckeys)
 
 	amount = min(amount,100) //Enforce a limit, just in case.
 
-	var/list/valid_ckeys = list()
-	for(var/k in all_players)
-		var/mob/living/advanced/player/P = k
-		if(!P.client) //Inactive players don't get anything.
-			continue
-		if(get_dist(P,T) > BOSS_RANGE)
-			continue
-		valid_ckeys |= P.client.ckey
+	if(!length(valid_ckeys))
+		valid_ckeys = list()
+		for(var/k in all_players)
+			var/mob/living/advanced/player/P = k
+			if(!P.client) //Inactive players don't get anything.
+				continue
+			if(get_dist(P,T) > BOSS_RANGE)
+				continue
+			valid_ckeys |= P.client.ckey
 
 	var/list/valid_turfs = list()
 

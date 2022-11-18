@@ -33,6 +33,8 @@
 
 	armor = /armor/cloth/arcane/bonus
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/overwear/coat/wizard/real/purple
 	color = "#B05FE2"
 

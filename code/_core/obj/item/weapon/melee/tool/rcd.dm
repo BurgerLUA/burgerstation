@@ -13,6 +13,8 @@
 
 	weight = 5
 
+	rarity = RARITY_RARE
+
 /obj/item/rcd/Destroy()
 	QDEL_NULL(rcd_disk)
 	. = ..()

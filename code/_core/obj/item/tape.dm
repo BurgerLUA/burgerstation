@@ -14,6 +14,8 @@
 	var/obj/item/cassette_tape/stored_tape
 	var/playing = FALSE
 
+	rarity = RARITY_RARE
+
 /obj/item/cassette_player/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(stored_tape)
@@ -134,6 +136,8 @@
 	icon_state = "tape_white"
 
 	value = 200
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/cassette_tape/Finalize()
 	. = ..()

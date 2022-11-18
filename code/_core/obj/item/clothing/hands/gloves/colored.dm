@@ -73,8 +73,9 @@
 
 	size = SIZE_1
 
-
 	value = 150
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/hands/gloves/colored/insulated/left
 	name = "left insulated glove"

@@ -17,7 +17,7 @@
 
 	speed_bonus = -0.05
 
-
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/feet/shoes/duck/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
 	original_footsteps += /footstep/quack

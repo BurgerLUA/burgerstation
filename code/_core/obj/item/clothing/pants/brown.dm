@@ -62,3 +62,5 @@
 	armor = /armor/steel/runic
 
 	size = SIZE_3
+
+	rarity = RARITY_MYTHICAL

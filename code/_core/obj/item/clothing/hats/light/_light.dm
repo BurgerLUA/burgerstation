@@ -58,3 +58,5 @@
 	desired_light_power = 0.5
 	desired_light_color = "#FFF0C6"
 	desired_light_angle = LIGHT_WIDE
+
+	rarity = RARITY_UNCOMMON

@@ -27,8 +27,7 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_skill,
 	/client/verb/set_attribute,
 	/client/verb/horde_test_preview,
-	/client/verb/test_rust_g,
-	/client/verb/view_map
+	/client/verb/test_rust_g
 )
 
 /client/verb/view_dps()

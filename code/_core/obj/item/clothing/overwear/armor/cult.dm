@@ -16,6 +16,8 @@
 		/obj/item/clothing/head/hat/cult
 	)
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/overwear/armor/cult/old
 	name = "ancient cult robes"
 	desc = "Listen to your eldritch, son."
@@ -31,6 +33,8 @@
 	additional_clothing = list(
 		/obj/item/clothing/head/hat/cult/old
 	)
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/overwear/armor/cult/hard
 	name = "hardened cult robes"
@@ -49,3 +53,5 @@
 	additional_clothing = list(
 		/obj/item/clothing/head/helmet/full/hardsuit/cult
 	)
+
+	rarity = RARITY_RARE

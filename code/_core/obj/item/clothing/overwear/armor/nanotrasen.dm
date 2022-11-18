@@ -15,6 +15,8 @@
 
 	size = SIZE_7
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/overwear/armor/nanotrasen/deathsquad
 
 	armor = /armor/hardsuit/combat/nanotrasen/plus
@@ -25,3 +27,5 @@
 		"shoulders" = COLOR_BLACK,
 		"extra" = "#910000"
 	)
+
+	rarity = RARITY_MYTHICAL

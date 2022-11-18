@@ -13,6 +13,8 @@
 
 	weight = 0.5
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/soapstone/Finalize()
 	. = ..()
 	update_sprite()

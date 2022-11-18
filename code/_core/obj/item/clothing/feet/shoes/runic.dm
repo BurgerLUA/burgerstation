@@ -18,6 +18,8 @@
 
 	speed_bonus = 0
 
+	rarity = RARITY_MYTHICAL
+
 
 
 /obj/item/clothing/feet/shoes/runic/left

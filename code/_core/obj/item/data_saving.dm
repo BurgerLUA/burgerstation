@@ -138,6 +138,7 @@
 	if(luck && luck != initial(luck))
 		.["luck"] = luck
 
+	SAVEPATH("loot_to_generate")
 
 /obj/item/organ/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 
@@ -189,6 +190,8 @@
 		quality = clamp(object_data["quality"],0,200)
 	if(object_data["luck"])
 		luck = object_data["luck"]
+
+	LOADPATH("loot_to_generate")
 
 	return TRUE
 

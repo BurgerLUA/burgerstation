@@ -36,9 +36,7 @@
 
 	weight = 1
 
-/obj/item/attachment/New(var/desired_loc)
-	..()
-	update_icon()
+	rarity = RARITY_UNCOMMON
 
 /obj/item/attachment/get_examine_list(var/mob/caller)
 

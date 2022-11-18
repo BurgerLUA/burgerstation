@@ -17,3 +17,5 @@
 	polymorphs = list(
 		"armor" = "#726858"
 	)
+
+	rarity = RARITY_RARE

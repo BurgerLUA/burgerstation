@@ -8,6 +8,8 @@
 
 	uses_until_condition_fall = 250
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/ring/iron
 	name = "iron ring"
 	icon = 'icons/obj/item/clothing/ring/iron.dmi'

@@ -29,6 +29,9 @@
 
 	size = SIZE_1
 
+/obj/item/container/healing/get_base_value()
+	return abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3
+
 /obj/item/container/healing/Generate()
 	if(amount == 0)
 		amount = amount_max

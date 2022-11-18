@@ -17,6 +17,8 @@
 
 	value = 0
 
+	rarity = RARITY_RARE
+
 /obj/item/contract/Destroy()
 	QDEL_NULL(reward)
 	. = ..()

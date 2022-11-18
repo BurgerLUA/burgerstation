@@ -140,6 +140,8 @@
 	var/obj/item/powercell/stored_battery
 	var/obj/item/magazine/stored_magazine
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/deployable/mob/sentry/pre_deploy(var/mob/caller,var/turf/T,var/mob/living/L)
 
 	. = ..()

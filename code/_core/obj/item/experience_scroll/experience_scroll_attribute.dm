@@ -3,6 +3,11 @@
 
 	overlay_icon_state = "bauble"
 
+/obj/item/experience_scroll/attribute/get_base_value()
+	if(!attribute)
+		return 0
+ 	return 1000 * level_to_give
+
 /obj/item/experience_scroll/attribute/get_examine_list()
 	. = ..()
 	. += div("notice","Reading \the [src.name] will grant [attribute] experience.")
@@ -13,7 +18,7 @@
 		return FALSE
 
 	var/experience/E = A.get_attribute(attribute)
-	var/experience_to_add = E.level_to_xp(10) - E.level_to_xp(9)
+	var/experience_to_add = E.level_to_xp(level_to_give) - E.level_to_xp(level_to_give-1)
 	A.add_attribute_xp(attribute,experience_to_add)
 
 	return ..()
@@ -97,20 +102,13 @@
 	overlay_icon_state = null
 	overlay_color = null
 
+	rarity = RARITY_RARE
+
+	level_to_give = 3
+
 /obj/item/experience_scroll/attribute/lesser/Initialize()
 	. = ..()
 	icon_state = pick(icon_states(icon))
-
-/obj/item/experience_scroll/attribute/lesser/gain_knowledge(var/mob/living/advanced/A)
-
-	if(!attribute)
-		return FALSE
-
-	var/experience/E = A.get_attribute(attribute)
-	var/experience_to_add = E.level_to_xp(5) - E.level_to_xp(4)
-	A.add_attribute_xp(attribute,experience_to_add)
-
-	return ..()
 
 /obj/item/experience_scroll/attribute/lesser/strength
 	name = "bodybuilding manual"

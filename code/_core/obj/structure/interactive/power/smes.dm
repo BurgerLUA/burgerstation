@@ -118,6 +118,9 @@
 
 /obj/structure/interactive/power/apc_connection_terminal/get_power_draw()
 
+	if(!connected_smes)
+		return 0
+
 	var/missing_charge = 0
 	for(var/k in connected_smes.stored_cells)
 		var/obj/item/powercell/PC = k

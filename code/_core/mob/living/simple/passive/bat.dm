@@ -28,3 +28,6 @@
 /mob/living/simple/bat/post_death()
 	. = ..()
 	icon_state = "dead"
+
+/mob/living/simple/bat/space
+	name = "space bat"

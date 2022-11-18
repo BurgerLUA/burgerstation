@@ -123,6 +123,8 @@
 	value = 1500
 	value_burgerbux = 1
 
+	rarity = RARITY_RARE
+
 /obj/item/clothing/overwear/coat/vest/revolutionary
 	name = "revolutionary combat webbing"
 	desc = "The pinnacle of torso storaging."
@@ -135,3 +137,5 @@
 	container_max_size = SIZE_2
 	value = 1500
 	value_burgerbux = 1
+
+	rarity = RARITY_RARE

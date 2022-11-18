@@ -20,6 +20,8 @@
 
 	weight = 10
 
+	rarity = RARITY_RARE
+
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
 
 	. = ..()

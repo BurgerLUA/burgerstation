@@ -10,6 +10,8 @@
 
 	weight = 0.25
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
 	return TRUE
 

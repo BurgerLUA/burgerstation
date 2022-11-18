@@ -13,6 +13,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/back/wings/angel/demon
 	name = "demon wings"
 	desc = "Heaven's not my kind of place anyway."

@@ -20,3 +20,5 @@
 		"armor" = "#726858",
 		"visor" = "#D6EEE4"
 	)
+
+	rarity = RARITY_UNCOMMON

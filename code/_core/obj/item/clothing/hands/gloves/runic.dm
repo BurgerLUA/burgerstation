@@ -16,6 +16,8 @@
 
 	value = 800
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/clothing/hands/gloves/runic/left
 	name = "left runic glove"
 

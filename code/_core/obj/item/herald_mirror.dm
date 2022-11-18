@@ -11,6 +11,8 @@
 
 	value = 5000
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/herald_mirror/Destroy()
 	linked_destination = null
 	linked_returning = null

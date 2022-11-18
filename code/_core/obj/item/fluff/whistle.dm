@@ -12,6 +12,8 @@
 
 	weight = 0.25
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/whistle/click_self(var/mob/caller)
 
 	INTERACT_CHECK

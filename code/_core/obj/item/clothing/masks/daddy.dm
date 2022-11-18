@@ -23,3 +23,5 @@
 	)
 
 	item_slot = SLOT_HEAD | SLOT_FACE
+
+	rarity = RARITY_MYTHICAL

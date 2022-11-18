@@ -3,6 +3,7 @@
 	var/next_scan = 0
 	weight = 3
 	has_quick_function = TRUE //use analyzers from the belt slots
+	rarity = RARITY_COMMON
 
 /obj/item/analyzer/quick(var/mob/caller,var/atom/object,location,params)
 

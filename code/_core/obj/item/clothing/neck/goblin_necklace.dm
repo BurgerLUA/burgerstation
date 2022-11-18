@@ -21,6 +21,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/neck))

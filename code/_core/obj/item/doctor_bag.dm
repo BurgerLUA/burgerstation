@@ -19,6 +19,8 @@
 	var/base_delay = SECONDS_TO_DECISECONDS(1)
 	var/added_delay = SECONDS_TO_DECISECONDS(9) //At 0 medicine. Gets reduced to 0 at 100 medicine.
 
+	rarity = RARITY_RARE
+
 /obj/item/doctor_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 

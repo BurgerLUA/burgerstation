@@ -33,8 +33,7 @@
 		/obj/item/clothing/overwear/armor/nanotrasen,
 		/obj/item/clothing/head/helmet/full/nanotrasen,
 		/obj/item/weapon/melee/energy/grazer,
-		/obj/item/flare,
-		/obj/item/map
+		/obj/item/flare
 	)
 
 /obj/structure/interactive/vending/nanotrasen/wardrobe/ops
@@ -69,8 +68,7 @@
 		/obj/item/clothing/overwear/armor/bulletproof,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/clothing/head/helmet/full/eod_helm,
-		/obj/item/clothing/overwear/armor/eod,
-		/obj/item/map
+		/obj/item/clothing/overwear/armor/eod
 	)
 
 /obj/structure/interactive/vending/nanotrasen/gundrobe

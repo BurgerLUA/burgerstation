@@ -2,8 +2,9 @@
 	name = "poster"
 	var/collectable_poster/stored_poster
 
-	value_burgerbux = 1
-	value = 4000
+	value = 2000
+
+	rarity = RARITY_RARE
 
 /obj/item/poster/Generate()
 	. = ..()

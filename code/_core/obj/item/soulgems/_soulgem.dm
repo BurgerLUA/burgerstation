@@ -12,6 +12,8 @@
 
 	weight = 1
 
+	rarity = RARITY_COMMON
+
 /obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("total_charge")
@@ -47,18 +49,23 @@
 		if(0 to SOUL_SIZE_COMMON)
 			name = "common [name]"
 			icon_state = "common"
+			rarity = RARITY_COMMON
 		if(SOUL_SIZE_COMMON to SOUL_SIZE_UNCOMMON)
 			name = "uncommon [name]"
 			icon_state = "uncommon"
+			rarity = RARITY_UNCOMMON
 		if(SOUL_SIZE_UNCOMMON to SOUL_SIZE_RARE)
 			name = "rare [name]"
 			icon_state = "rare"
+			rarity = RARITY_RARE
 		if(SOUL_SIZE_RARE to SOUL_SIZE_MYSTIC)
 			name = "mystic [name]"
 			icon_state = "mystic"
+			rarity = RARITY_MYTHICAL
 		if(SOUL_SIZE_MYSTIC to INFINITY)
 			name = "godly [name]"
 			icon_state = "godly"
+			rarity = RARITY_LEGENDARY
 
 	if(total_charge > 0)
 		icon_state = "[icon_state]_1"

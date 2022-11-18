@@ -9,3 +9,5 @@
 	armor = /armor/steel/arcane
 
 	size = SIZE_3
+
+	rarity = RARITY_MYTHICAL

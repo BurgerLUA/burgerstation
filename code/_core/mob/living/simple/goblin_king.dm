@@ -36,7 +36,8 @@
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
 		DRUGGY = TRUE,
-		FIRE = FALSE
+		FIRE = FALSE,
+		GRAB = TRUE
 	)
 
 	iff_tag = "Goblin"

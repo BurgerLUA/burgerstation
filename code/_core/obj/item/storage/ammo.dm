@@ -10,6 +10,8 @@
 
 	value = 10
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/storage/ammo/bullet_22/
 	name = "box of .22 LR bullets"
 	desc_extended = "An ammo box that can hold 36 .22 LR bullets."

@@ -10,7 +10,6 @@
 		/obj/item/clothing/belt/storage,
 		/obj/item/clothing/back/storage/backpack/grey,
 
-		/obj/item/map,
 		/obj/item/analyzer/gps,
 		/obj/item/analyzer/health,
 		/obj/item/fulton_pack,

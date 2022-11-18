@@ -13,6 +13,8 @@
 
 	armor = /armor/cloth/hoodie
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/clothing/overwear/coat/drip/get_base_value()
 	. = ..()
 	. += 20000

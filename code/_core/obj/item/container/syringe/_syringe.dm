@@ -7,6 +7,7 @@
 	reagents = /reagent_container/syringe/
 
 	var/inject_amount_desired = 5
+	var/inject_amount_precision = 1
 	var/injecting = FALSE
 	var/spam_fix_time = 0
 
@@ -25,12 +26,6 @@
 	var/adjustable = TRUE //Set to true if the injection amount can change. Otherwise, uses inject_amount_max.
 	var/stealthy = FALSE //Set to true if the injection doesn't alert the victim, other than the "tiny prick".
 	var/quality_reduction_on_use = 15 //How much quality (out of 100) to take away per use.
-
-/obj/item/container/syringe/Finalize()
-	. = ..()
-	inject_amount_max = min(inject_amount_max,reagents.volume_max)
-	if(!inject_amount_desired)
-		inject_amount_desired = inject_amount_max
 
 /obj/item/container/syringe/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
@@ -55,14 +50,18 @@
 
 	var/fixed_delta = clamp(delta_y,-1,1)
 
-	inject_amount_desired += fixed_delta
+	var/last_amount = inject_amount_desired
+
+	inject_amount_desired += fixed_delta*inject_amount_precision
+	inject_amount_desired = CEILING(inject_amount_desired,inject_amount_precision)
 	if(inject_amount_desired > inject_amount_max)
 		inject_amount_desired = inject_amount_max
-	else if(inject_amount_desired < 1)
+	else if(inject_amount_desired < inject_amount_precision)
 		//Cannot go lower
-		inject_amount_desired = 1
-	else
-		//Normal operation.
+		inject_amount_desired = inject_amount_precision
+
+	//Normal operation.
+	if(last_amount != inject_amount_desired)
 		if(spam_fix_time <= world.time)
 			caller.to_chat(span("notice","You change \the [src.name]'s injection limit to [inject_amount_desired]u..."))
 		else
@@ -71,15 +70,27 @@
 	spam_fix_time = world.time + 20
 
 /obj/item/container/syringe/Finalize()
-	. = ..()
-	//Autocode.
-	inject_amount_desired = clamp(inject_amount_desired,1,reagents.volume_max)
+
+	inject_amount_max = min(inject_amount_max,reagents.volume_max)
+
+	if(!inject_amount_desired)
+		inject_amount_desired = inject_amount_max
+
 	if(!can_inject && !can_draw)
 		log_error("LOGIC ERROR: Syringe [src.get_debug_name()] couldn't inject or draw reagents!")
 	else if(!can_inject)
 		injecting = FALSE
 	else if(!can_draw)
 		injecting = TRUE
+	else if(!isnum(injecting) && can_inject && can_draw && !injecting && length(reagents.stored_reagents))
+		injecting = TRUE
+	else
+		injecting = FALSE
+
+	. = ..()
+
+	inject_amount_desired = clamp(inject_amount_desired,1,reagents.volume_max)
+
 	update_sprite()
 
 /obj/item/container/syringe/click_self(var/mob/caller,location,control,params)

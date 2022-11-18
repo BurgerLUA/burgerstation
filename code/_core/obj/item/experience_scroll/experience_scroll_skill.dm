@@ -3,6 +3,11 @@
 
 	overlay_icon_state = "gem"
 
+ /obj/item/experience_scroll/skill/get_base_value()
+ 	if(!skill)
+ 		return 0
+ 	return 750 * level_to_give
+
 /obj/item/experience_scroll/skill/get_examine_list()
 	. = ..()
 	. += div("notice","Reading \the [src.name] will grant [skill] experience.")
@@ -13,7 +18,7 @@
 		return FALSE
 
 	var/experience/E = A.get_skill(skill)
-	var/experience_to_add = E.level_to_xp(10) - E.level_to_xp(9)
+	var/experience_to_add = E.level_to_xp(level_to_give) - E.level_to_xp(level_to_give-1)
 	A.add_skill_xp(skill,experience_to_add)
 
 	return ..()
@@ -104,20 +109,13 @@
 	overlay_icon_state = null
 	overlay_color = null
 
+	rarity = RARITY_RARE
+
+	level_to_give = 3
+
 /obj/item/experience_scroll/skill/lesser/Initialize()
 	. = ..()
 	icon_state = pick(icon_states(icon))
-
-/obj/item/experience_scroll/skill/lesser/gain_knowledge(var/mob/living/advanced/A)
-
-	if(!skill)
-		return FALSE
-
-	var/experience/E = A.get_skill(skill)
-	var/experience_to_add = E.level_to_xp(5) - E.level_to_xp(4)
-	A.add_skill_xp(skill,experience_to_add)
-
-	return ..()
 
 /obj/item/experience_scroll/skill/lesser/melee
 	name = "fencing manual"

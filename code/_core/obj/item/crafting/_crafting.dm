@@ -26,6 +26,8 @@
 
 	weight = 10
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/crafting/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK

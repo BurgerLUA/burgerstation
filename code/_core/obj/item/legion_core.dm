@@ -9,7 +9,14 @@
 	var/expiry_time = -1
 	var/stabilized = FALSE
 
-	value = 1000
+	value = 500
+
+	rarity = RARITY_UNCOMMON
+
+/obj/item/legion_core/get_base_value()
+	if(stabilized)
+		return value*2
+	return expiry_time < 0 ? value*0.2 : value
 
 /obj/item/legion_core/Generate()
 	expiry_time = SECONDS_TO_DECISECONDS(600)
@@ -94,6 +101,8 @@
 	value = 200
 	icon = 'icons/obj/item/legion_core.dmi'
 	icon_state = "stabilizer"
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/legion_core_stabilizer/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 

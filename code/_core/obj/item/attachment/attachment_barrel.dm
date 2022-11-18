@@ -39,6 +39,8 @@
 	value = 3000
 	value_burgerbux = 1
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/attachment/barrel/laser_charger
 	name = "modular laser charger"
 	desc = "SUPERCHARGE."
@@ -140,4 +142,4 @@
 	)
 
 	value = 1600
-	value_burgerbux = 1
+	rarity = RARITY_MYTHICAL
