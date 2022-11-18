@@ -1,10 +1,13 @@
 /loot/zombie //Stuff civilians are supposed to have
 
 	loot_table = list(
-		/loot/candy = 1,
-		/loot/random/low = 1,
-		/loot/misc = 1,
-		/loot/misc/food_drink = 1
+		/loot/candy = 100,
+		/loot/random/low = 100,
+		/loot/misc = 100,
+		/loot/misc/food_drink = 100,
+		/loot/random/medium = 20,
+		/loot/random/high = 10,
+		/loot/random/extreme = 5
 	)
 
 	chance_none = 50

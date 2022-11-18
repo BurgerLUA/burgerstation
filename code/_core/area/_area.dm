@@ -16,6 +16,7 @@
 	var/trackable = FALSE //Trackable area by the game.
 
 	var/map_color //The area's map color. Leave blank to refer to the turf instead.
+	var/map_color_ignore_dense = FALSE
 
 	var/ambient_sound
 	var/list/random_sounds = list()

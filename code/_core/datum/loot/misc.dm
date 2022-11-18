@@ -20,7 +20,6 @@
 		/obj/item/id/colonist = 40,
 		/obj/item/light_sensor = 20,
 		/obj/item/lighter = 30,
-		/obj/item/map = 40,
 		/obj/item/mop = 10,
 		/obj/item/plate = 30,
 		/obj/item/powercell = 20,
