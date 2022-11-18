@@ -55,7 +55,7 @@
 	icon = 'icons/mob/living/simple/crab_king.dmi'
 	icon_state = "king"
 
-	health_base = 2500
+	health_base = 4000
 	stamina_base = 1000
 	mana_base = 100
 
@@ -83,9 +83,9 @@
 	force_spawn = TRUE
 	boss_music = /track/crab_rave
 
-	damage_type = /damagetype/npc/crab
+	damage_type = /damagetype/npc/crab_king
 
-	armor = /armor/chitin
+	armor = /armor/chitin/heavy
 
 	fatigue_mul = 0
 
@@ -101,7 +101,8 @@
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
 		DRUGGY = TRUE,
-		FIRE = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE
 	)
 
 	enable_medical_hud = FALSE

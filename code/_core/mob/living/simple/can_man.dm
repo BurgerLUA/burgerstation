@@ -3,7 +3,7 @@
 	boss_icon_state = "can_man"
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/
+	damage_type = /damagetype/unarmed/claw/boss/
 
 
 	value = 20000
@@ -16,7 +16,7 @@
 
 	stun_angle = 0
 
-	health_base = 10000
+	health_base = 12500
 	stamina_base = 4000
 	mana_base = 100
 
@@ -38,7 +38,8 @@
 		ADRENALINE = TRUE,
 		DISARM = TRUE,
 		DRUGGY = TRUE,
-		FIRE = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE
 	)
 
 	size = SIZE_BOSS
