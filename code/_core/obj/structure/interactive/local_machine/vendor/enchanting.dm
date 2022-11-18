@@ -76,7 +76,6 @@
 		/obj/item/clothing/neck/tie/red,
 		/obj/item/weapon/melee/sword/allium,
 		/obj/item/weapon/melee/torch,
-		/obj/item/map,
 		/obj/item/crafting/alchemy
 	)
 
