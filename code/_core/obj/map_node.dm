@@ -91,7 +91,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 /obj/marker/map_node/proc/initialize_node()
 
 	var/found = FALSE
-	for(var/obj/marker/map_node/M in orange(VIEW_RANGE*2,src))
+	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src))
 		var/direction = dir2text(get_dir(src,M))
 		if(src.adjacent_map_nodes[direction] && get_dist_real(src,M) > get_dist_real(src,src.adjacent_map_nodes[direction]))
 			continue
@@ -138,14 +138,14 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 			var/turf/second_step = get_step(node_checker,second_move_dir_to_use)
 
 			if(first_step)
-				var/first_from_loc = first_step.Enter(node_checker,node_checker.loc)
+				var/first_from_loc = first_step.density ? first_step.Enter(node_checker,node_checker.loc) : TRUE
 				if(first_from_loc)
-					if(first_step.has_dense_atom)
+					if(check_contents && first_step.has_dense_atom)
 						for(var/k in first_step.contents)
 							var/atom/movable/M = k
 							if(ignore_living && is_living(M))
 								continue
-							if(!M.allow_path && M.density && !M.Cross(node_checker,node_checker.loc))
+							if(!M.allow_path && M.density && M.anchored && !M.Cross(node_checker,node_checker.loc))
 								first_step = null
 								possible_obstructions += M
 								break
@@ -154,14 +154,14 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 					first_step = null
 
 			if(second_step)
-				var/second_from_loc = second_step.Enter(node_checker,node_checker.loc)
+				var/second_from_loc = second_step.density ? second_step.Enter(node_checker,node_checker.loc) : TRUE
 				if(second_from_loc)
-					if(second_step.has_dense_atom)
+					if(check_contents && second_step.has_dense_atom)
 						for(var/k in second_step.contents)
 							var/atom/movable/M = k
 							if(ignore_living && is_living(M))
 								continue
-							if(!M.allow_path && M.density && !M.Cross(node_checker,node_checker.loc))
+							if(!M.allow_path && M.density && M.anchored && !M.Cross(node_checker,node_checker.loc))
 								second_step = null
 								possible_obstructions += M
 								break

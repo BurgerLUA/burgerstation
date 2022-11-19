@@ -152,8 +152,9 @@
 /area/mission/prefab/house/house_07/living_area)
 "aD" = (
 /obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_07/entrance)
+/area/mission/prefab/house/house_07/master_bedroom)
 "aE" = (
 /obj/structure/interactive/light_switch{
 	icon_state = "setup";
@@ -534,6 +535,21 @@
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07)
+"bX" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07/living_area)
+"bY" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07)
+"bZ" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07/entrance)
 
 (1,1,1) = {"
 ab
@@ -579,7 +595,7 @@ aq
 aw
 ac
 aG
-bO
+bY
 bO
 aP
 bd
@@ -590,7 +606,7 @@ bd
 bS
 "}
 (4,1,1) = {"
-ad
+aD
 ag
 ak
 ak
@@ -694,7 +710,7 @@ aA
 aA
 aS
 aS
-aD
+bZ
 bS
 "}
 (10,1,1) = {"
@@ -775,7 +791,7 @@ ab
 ab
 av
 av
-bE
+bX
 bE
 av
 bh

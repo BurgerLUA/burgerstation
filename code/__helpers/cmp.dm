@@ -80,7 +80,6 @@
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
 
-
 /proc/cmp_worn_layer_hybrid_asc(var/obj/item/A,var/obj/item/B)
 	var/A_score = A.item_slot*10 + A.item_slot_layer
 	var/B_score = B.item_slot*10 + B.item_slot_layer
@@ -88,3 +87,7 @@
 
 /proc/cmp_loadout_dsc(var/list/A,var/list/B)
 	return sorttext("[A["name"]]","[B["name"]]")
+
+
+/proc/cmp_recipe_priority_dsc(var/reagent_recipe/A,var/reagent_recipe/B)
+	return cmp_numeric_dsc(A.priority,B.priority)

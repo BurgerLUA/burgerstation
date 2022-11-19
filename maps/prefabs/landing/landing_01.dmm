@@ -15,9 +15,14 @@
 /obj/marker/shuttle_landing,
 /turf/simulated/floor/landing/dark,
 /area/dmm_suite/clear_area)
-"k" = (
+"e" = (
 /obj/structure/interactive/computer/console/shuttle_landing,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/landing,
+/area/dmm_suite/clear_area)
+"f" = (
+/obj/marker/mission_mob,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "p" = (
 /obj/marker/map_node,
@@ -63,16 +68,16 @@
 
 (1,1,1) = {"
 p
-a
-a
-p
-a
+f
 a
 p
 a
 a
 p
 a
+a
+p
+f
 a
 p
 a
@@ -113,7 +118,7 @@ b
 b
 G
 F
-a
+f
 "}
 (4,1,1) = {"
 p
@@ -242,7 +247,7 @@ F
 p
 "}
 (11,1,1) = {"
-a
+f
 C
 b
 b
@@ -335,15 +340,15 @@ a
 p
 a
 p
-a
+f
 p
 a
 b
-k
+e
 I
 b
 p
-a
+f
 p
 a
 a

@@ -132,7 +132,7 @@
 		health = new health(src)
 
 	if(listener)
-		all_listeners |= src
+		all_listeners += src
 
 	. = ..()
 

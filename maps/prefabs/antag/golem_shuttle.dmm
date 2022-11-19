@@ -1,9 +1,52 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/right)
+"ab" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"ac" = (
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
 "ad" = (
 /obj/marker/map_node,
 /turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"at" = (
+/area/mission/prefab/misc/golem/right)
+"ae" = (
+/obj/structure/interactive/mining_brace{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"af" = (
+/obj/structure/interactive/mining_drill,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"ag" = (
+/obj/structure/interactive/mining_brace{
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"ah" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/head/helmet/welding,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"ai" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/bags/mining,
+/obj/item/storage/bags/mining,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"aj" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/melee/tool/pickaxe,
+/obj/item/weapon/melee/tool/pickaxe,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"ak" = (
 /obj/structure/table/reinforced,
 /obj/item/flare,
 /obj/item/flare,
@@ -11,7 +54,50 @@
 /obj/item/flare,
 /obj/item/flare,
 /turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
+/area/mission/prefab/misc/golem/right)
+"al" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/right)
+"am" = (
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/right)
+"an" = (
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/right)
+"ao" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/right)
+"ap" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/right)
+"aq" = (
+/obj/structure/shuttle_engine/large{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/right)
+"ar" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"as" = (
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/center)
+"at" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"au" = (
+/obj/structure/interactive/computer/arcade/bubbletwist,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"av" = (
+/obj/item/ball/soccer,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
 "aw" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1;
@@ -20,31 +106,297 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"bP" = (
+"ax" = (
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"ay" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"az" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aA" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/mask/gas/mining,
+/obj/item/clothing/mask/gas/mining,
+/obj/item/clothing/mask/gas/mining,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aB" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table/reinforced,
+/obj/item/weapon/ranged/energy/fed/plasma_cutter,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aC" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/melee/tool/pickaxe,
+/obj/item/weapon/melee/tool/pickaxe,
+/obj/item/weapon/melee/tool/pickaxe,
+/obj/item/flare,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aD" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aE" = (
+/obj/structure/interactive/vending/mining/golem,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aF" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8;
+	dir = 1;
 	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"dh" = (
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"dK" = (
-/obj/structure/interactive/door/airlock/shuttle,
+/area/mission/prefab/misc/golem/right)
+"aG" = (
 /turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"em" = (
+/area/mission/prefab/misc/golem/center)
+"aH" = (
+/obj/marker/map_node/x2,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aI" = (
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aJ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/bags/mining,
 /obj/item/storage/bags/mining,
 /obj/item/storage/bags/mining,
 /turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"fM" = (
-/obj/structure/interactive/vending/medical,
+/area/mission/prefab/misc/golem/center)
+"aK" = (
+/obj/structure/table/reinforced,
+/obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
+"aL" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aM" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aN" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aO" = (
+/obj/marker/lobby,
+/obj/marker/map_node/x2,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aP" = (
+/obj/marker/map_node/x3,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aQ" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aR" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aS" = (
+/obj/structure/interactive/bed/sleeper/medical,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aT" = (
+/obj/structure/interactive/computer/console/medical{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aU" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/medical_hud,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aV" = (
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/left)
+"aW" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"aX" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"aY" = (
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"aZ" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"ba" = (
+/obj/structure/interactive/vending/medical,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bb" = (
+/mob/living/simple/bot/medibot,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bc" = (
+/obj/structure/table/reinforced,
+/obj/item/container/syringe/medipen/mining,
+/obj/item/container/syringe/medipen/mining,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bd" = (
+/obj/structure/shuttle_engine/large{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/left)
+"be" = (
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bf" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bg" = (
+/obj/structure/table/reinforced,
+/obj/item/supply_crate/medicine,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bh" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/crate/medical,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bi" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/kit/burn/filled,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bj" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/kit/brute,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bk" = (
+/obj/structure/interactive/vending/medical/basic{
+	dir = 1;
+	icon_state = "wallmed"
+	},
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bl" = (
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/left)
+"bm" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/left)
+"bn" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/left)
+"bo" = (
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bp" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bq" = (
+/obj/structure/interactive/mining_brace{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"br" = (
+/obj/structure/interactive/mining_drill,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bs" = (
+/obj/structure/interactive/mining_brace{
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bt" = (
+/obj/structure/table/reinforced,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bu" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bv" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/head/helmet/welding,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bw" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bx" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"by" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem)
+"bz" = (
+/obj/structure/interactive/crate/necro,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bA" = (
+/obj/structure/interactive/power/smes/industrial{
+	icon_state = "smes_map";
+	dir = 4
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bB" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem)
+"bC" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bD" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"dh" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 "gz" = (
 /obj/structure/interactive/storage/trash_pile,
 /turf/dmm_suite/clear_turf,
@@ -53,32 +405,6 @@
 /obj/structure/interactive/storage/trash_pile,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
-"jq" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"ke" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/bags/mining,
-/obj/item/storage/bags/mining,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"ls" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"lu" = (
-/obj/structure/interactive/crate/necro,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"lT" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/melee/tool/pickaxe,
-/obj/item/weapon/melee/tool/pickaxe,
-/obj/item/weapon/melee/tool/pickaxe,
-/obj/item/flare,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
 "mc" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /turf/simulated/floor/tile/shuttle/purple,
@@ -105,34 +431,11 @@
 /obj/marker/antag/golem,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem)
-"wi" = (
-/obj/structure/interactive/crate/coffin,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"wI" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
 "wP" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1;
 	icon_state = "preview"
 	},
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"yl" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/melee/tool/pickaxe,
-/obj/item/weapon/melee/tool/pickaxe,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"zS" = (
-/obj/structure/interactive/vending/mining/golem,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"As" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
 "Bo" = (
@@ -143,46 +446,12 @@
 /obj/marker/map_node,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
-"Bz" = (
-/obj/structure/interactive/vending/medical/basic{
-	dir = 1;
-	icon_state = "wallmed"
-	},
-/turf/simulated/wall/metal/shuttle,
-/area/mission/prefab/misc/golem)
 "Ce" = (
 /obj/marker/map_node/x2,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem)
-"Cn" = (
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"DM" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"DR" = (
-/obj/structure/table/reinforced,
-/obj/item/container/syringe/medipen/mining,
-/obj/item/container/syringe/medipen/mining,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"Ea" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"Fd" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/kit/brute,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
 "Is" = (
 /turf/simulated/wall/metal/shuttle,
-/area/mission/prefab/misc/golem)
-"Jr" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/glasses/medical_hud,
-/turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
 "Kz" = (
 /obj/marker/objective_spawn,
@@ -195,117 +464,18 @@
 	},
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"Mh" = (
-/obj/item/ball/soccer,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"My" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1;
-	icon_state = "preview"
-	},
-/obj/structure/interactive/crate/medical,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"Np" = (
-/obj/structure/shuttle_engine/large{
-	dir = 4
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/dmm_suite/clear_area)
-"Pg" = (
-/obj/structure/interactive/mining_brace{
-	dir = 8
-	},
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"PA" = (
-/obj/structure/interactive/mining_drill,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"QF" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"Re" = (
-/obj/structure/interactive/crate/coffin,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
 "Rm" = (
 /obj/structure/interactive/lighting/fixture/tube/station/strong,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"RT" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/kit/burn/filled,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"SI" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/mask/gas/mining,
-/obj/item/clothing/mask/gas/mining,
-/obj/item/clothing/mask/gas/mining,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"TJ" = (
-/turf/simulated/floor/plating/shuttle,
-/area/dmm_suite/clear_area)
 "TP" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"Uo" = (
-/mob/living/simple/bot/medibot,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"UX" = (
-/obj/structure/interactive/computer/console/medical{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"Ve" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/head/helmet/welding,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
-"VJ" = (
-/obj/structure/table/reinforced,
-/obj/item/supply_crate/medicine,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"VU" = (
-/obj/marker/lobby,
-/obj/marker/map_node/x2,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"XG" = (
-/obj/structure/interactive/computer/arcade/bubbletwist,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"YH" = (
-/obj/structure/interactive/bed/sleeper/medical,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"Zk" = (
-/obj/structure/interactive/mining_brace{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem)
 "Zm" = (
 /obj/marker/map_node/x3,
 /turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"Zs" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/obj/structure/table/reinforced,
-/obj/item/weapon/ranged/energy/fed/plasma_cutter,
-/turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
 "ZY" = (
 /turf/simulated/floor/tile/shuttle/purple,
@@ -659,12 +829,12 @@ pY
 pY
 pY
 pY
-Is
-Is
-Is
-Is
-Is
-dK
+aa
+aa
+aa
+aa
+aa
+ar
 Is
 qx
 tC
@@ -672,12 +842,12 @@ tC
 tC
 qx
 Is
-dK
-Is
-Is
-Is
-Is
-Is
+aW
+be
+be
+be
+be
+be
 pY
 pY
 pY
@@ -693,12 +863,12 @@ pY
 pY
 pY
 dh
-Is
-Cn
-ZY
-Is
-XG
-Ea
+aa
+ac
+an
+aa
+au
+ay
 Is
 qx
 tC
@@ -706,12 +876,12 @@ tC
 tC
 qx
 Is
-Ea
-tC
-Is
-ZY
-Cn
-Is
+aX
+aY
+be
+bl
+bo
+be
 dh
 pY
 pY
@@ -727,25 +897,25 @@ pY
 pY
 dh
 Br
-ls
+ab
 ad
-ZY
-Is
-Mh
+an
+aa
+av
+ax
+by
+aK
+bB
 tC
-Is
+tC
 qx
-tC
-tC
-tC
-qx
 Is
-tC
-tC
-Is
-ZY
-ad
-ls
+aY
+aY
+be
+bl
+bp
+bx
 Br
 dh
 pY
@@ -761,25 +931,25 @@ pY
 pY
 pY
 dh
-Is
-Zk
-ZY
-Is
-tC
-tC
+aa
+ae
+an
+aa
+ax
+ax
 Is
 qx
-tC
+bB
 Ce
 tC
 qx
 Is
-tC
-tC
-Is
-ZY
-Zk
-Is
+aY
+aY
+be
+bl
+bq
+be
 dh
 dh
 pY
@@ -795,25 +965,25 @@ pY
 pY
 pY
 pY
-Is
-PA
-ZY
-Is
-tC
-QF
+aa
+af
+an
+aa
+ax
+aF
 Is
 mc
-tC
+bB
 tC
 tC
 wP
 Is
-wI
-tC
-Is
-ZY
-PA
-Is
+aZ
+aY
+be
+bl
+br
+be
 dh
 pY
 pY
@@ -829,25 +999,25 @@ pY
 pY
 pY
 pY
-Is
-Pg
-jq
-dK
-Ea
-Ea
-Is
-Is
-dK
-dK
-dK
-Is
-Is
-tC
-Ea
-dK
-jq
-Pg
-Is
+aa
+ag
+ao
+ar
+ay
+ay
+as
+as
+bC
+at
+at
+as
+as
+aY
+aX
+aW
+bm
+bs
+be
 pY
 pY
 pY
@@ -863,25 +1033,25 @@ pY
 pY
 pY
 pY
-Is
-Ve
-ZY
-Is
-tC
-tC
-Is
-lu
-tC
-tC
-tC
-ZY
-Is
-tC
-tC
-Is
-ZY
-at
-Is
+aa
+ah
+an
+aa
+ax
+ax
+as
+bz
+bD
+aG
+aG
+aI
+as
+aY
+aY
+be
+bl
+bt
+be
 pY
 pY
 pY
@@ -897,25 +1067,25 @@ pY
 pY
 pY
 pY
-Is
-ke
-ZY
-Is
-tC
-tC
-Is
-ZY
-tC
-VU
-tC
-ZY
-Is
-Ea
-tC
-Is
-ZY
-DM
-Is
+aa
+ai
+an
+aa
+ax
+ax
+as
+bA
+aG
+aO
+aG
+aI
+as
+aX
+aY
+be
+bl
+bu
+be
 pY
 pY
 pY
@@ -931,25 +1101,25 @@ pY
 pY
 pY
 pY
-Is
-yl
-ZY
-Is
-Is
-dK
-Is
-mc
-tC
-tC
-tC
-wP
-Is
-dK
-Is
-Is
-ZY
-DM
-Is
+aa
+aj
+an
+as
+as
+at
+as
+aL
+aG
+aG
+aG
+aR
+as
+at
+as
+as
+bl
+bu
+be
 pY
 pY
 pY
@@ -965,25 +1135,25 @@ pY
 pY
 pY
 pY
-Is
+aa
+ak
+ao
 at
-jq
-dK
-jq
-jq
-ZY
-ZY
-tC
-tC
-tC
-ZY
-YH
-fM
-qx
-dK
-jq
-Ve
-Is
+az
+az
+aI
+aI
+aG
+aG
+aG
+aI
+aS
+ba
+bf
+at
+bm
+bv
+be
 gz
 pY
 pY
@@ -999,25 +1169,25 @@ pY
 pY
 pY
 pY
-Is
-Zk
-jq
-dK
-jq
-tC
-tC
-tC
-tC
-tC
-tC
-tC
-tC
-tC
-VJ
-dK
-jq
-Zk
-Is
+aa
+ae
+ao
+at
+az
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+bg
+at
+bm
+bq
+be
 pY
 pY
 pY
@@ -1033,25 +1203,25 @@ pY
 pY
 pY
 pY
-Is
-PA
-ZY
-Is
-SI
-tC
-tC
-tC
-tC
-Zm
-tC
-tC
-UX
-tC
-qx
-Is
-ZY
-PA
-Is
+aa
+af
+an
+as
+aA
+aG
+aG
+aG
+aG
+aP
+aG
+aG
+aT
+aG
+bf
+as
+bl
+br
+be
 pY
 pY
 pY
@@ -1067,25 +1237,25 @@ pY
 pY
 pY
 dh
-Is
-Pg
-ZY
-Is
-Zs
-Ce
-tC
-tC
-tC
-tC
-tC
-tC
-tC
-Ce
-My
-Is
-ZY
-Pg
-Is
+aa
+ag
+an
+as
+aB
+aH
+aG
+aG
+aG
+aG
+aG
+aG
+aG
+aH
+bh
+as
+bl
+bs
+be
 dh
 pY
 pY
@@ -1101,25 +1271,25 @@ pY
 pY
 dh
 Br
-ls
+ab
 ad
-ZY
-Is
-lT
-tC
-tC
-bP
-tC
-tC
-tC
-bP
-tC
-tC
-ZY
-Bz
-ZY
-ad
-ls
+an
+as
+aC
+aG
+aG
+aM
+aG
+aG
+aG
+aM
+aG
+aG
+aI
+bk
+bl
+bp
+bx
 Br
 dh
 pY
@@ -1135,25 +1305,25 @@ pY
 pY
 pY
 dh
-Is
-wi
-Re
-Is
-As
-tC
-tC
-Is
-dK
-dK
-dK
-Is
-tC
-Uo
-RT
-Is
-Re
-wi
-Is
+aa
+al
+ap
+as
+aD
+aG
+aG
+as
+at
+at
+at
+as
+aG
+bb
+bi
+as
+bn
+bw
+be
 dh
 dh
 pY
@@ -1169,25 +1339,25 @@ pY
 pY
 pY
 pY
-Is
-wi
-Re
-Is
-zS
-zS
-em
-Is
-tC
-tC
-tC
-Is
-Jr
-DR
-Fd
-Is
-Re
-wi
-Is
+aa
+al
+ap
+as
+aE
+aE
+aJ
+as
+aG
+aG
+aG
+as
+aU
+bc
+bj
+as
+bn
+bw
+be
 dh
 pY
 pY
@@ -1203,25 +1373,25 @@ pY
 pY
 pY
 pY
-Is
-Is
-Is
-Is
-Is
-Is
-Is
-Is
-wI
-Ce
-QF
-Is
-Is
-Is
-Is
-Is
-Is
-Is
-Is
+aa
+aa
+aa
+as
+as
+as
+as
+as
+aN
+aH
+aQ
+as
+as
+as
+as
+as
+be
+be
+be
 pY
 pY
 pY
@@ -1237,25 +1407,25 @@ pY
 pY
 pY
 pY
-Is
-TJ
-Np
-TJ
-Np
-TJ
-Np
-Is
-tC
-tC
-tC
-Is
-TJ
-Np
-TJ
-Np
-TJ
-Np
-Is
+aa
+am
+aq
+am
+aq
+am
+aq
+as
+aG
+aG
+aG
+as
+aV
+bd
+aV
+bd
+aV
+bd
+be
 pY
 pY
 pY
@@ -1271,25 +1441,25 @@ pY
 pY
 pY
 pY
-Is
-TJ
-TJ
-TJ
-TJ
-TJ
-TJ
-Is
-dK
-dK
-dK
-Is
-TJ
-TJ
-TJ
-TJ
-TJ
-TJ
-Is
+aa
+am
+am
+am
+am
+am
+am
+as
+at
+at
+at
+as
+aV
+aV
+aV
+aV
+aV
+aV
+be
 pY
 pY
 pY

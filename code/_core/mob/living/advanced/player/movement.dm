@@ -28,7 +28,7 @@
 				C.players -= src
 			if(new_chunk_z)
 				var/chunk/C = SSchunk.chunks[new_chunk_z][new_chunk_x][new_chunk_y]
-				C.players |= src
+				C.players += src
 
 		var/area/A_old = get_area(old_loc)
 		var/area/A_new = get_area(loc)

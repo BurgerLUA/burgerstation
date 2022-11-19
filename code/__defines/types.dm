@@ -20,6 +20,8 @@ var/global/list/all_typecaches = list()
 #define is_datum(A) istype(A, /datum)
 #define is_atom(A) istype(A,/atom)
 
+#define is_area(A) istypecache(A,/area)
+
 #define is_living(A) istypecache(A,/mob/living/)
 
 
@@ -53,13 +55,15 @@ var/global/list/all_typecaches = list()
 
 #define is_floor(A) istypecache(A,/turf/simulated/floor/)
 
+#define is_turf(A) istypecache(A,/turf)
 
 #define is_wall(A) istypecache(A,/turf/simulated/wall/)
-
 
 #define is_simulated(A) istypecache(A, /turf/simulated/)
 
 #define is_unsimulated(A) istypecache(A, /turf/unsimulated)
+
+#define is_generation(A) istypecache(A, /turf/unsimulated/generation)
 
 #define is_tile(A) istypecache(A,/turf/simulated/floor/tile)
 

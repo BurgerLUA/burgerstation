@@ -17,10 +17,10 @@
 	INTERACT_CHECK_NO_DELAY(object)
 
 	if(turf_check)
-		if(!isturf(caller.loc))
+		if(!is_turf(caller.loc))
 			caller.to_chat(span("warning","We couldn't get your signal!"))
 			return FALSE
-		if(!isturf(object.loc))
+		if(!is_turf(object.loc))
 			caller.to_chat(span("warning","We couldn't get the object's signal!"))
 			return FALSE
 		if(object.anchored)
@@ -36,7 +36,7 @@
 		if(L.master)
 			caller.to_chat(span("warning","Minions cannot be fultoned!"))
 			return FALSE
-		if(isturf(L.loc) && !L.horizontal)
+		if(is_turf(L.loc) && !L.horizontal)
 			caller.to_chat(span("warning","\The [L.name] must be laying on the ground to allow a successful extraction!"))
 			return FALSE
 		if(L.dead)
@@ -90,7 +90,7 @@
 	if(!ismovable(object))
 		return ..()
 
-	if(!isturf(object.loc))
+	if(!is_turf(object.loc))
 		return ..()
 
 	INTERACT_CHECK

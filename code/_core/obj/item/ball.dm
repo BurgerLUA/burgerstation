@@ -18,6 +18,8 @@
 	var/dribbling = FALSE
 	var/dribble_counter = 0
 
+	var/balling = FALSE //If it's in the all_balls list
+
 	value = 500
 
 /obj/item/ball/update_overlays()
@@ -25,22 +27,33 @@
 	var/image/I = new/image(initial(icon),"[initial(icon_state)]_shading")
 	add_overlay(I)
 
+/obj/item/ball/proc/set_balling(var/desired_balling=TRUE)
+
+	if(desired_balling == balling)
+		return FALSE
+
+	balling = desired_balling
+	if(balling)
+		SSball.all_balls += src
+	else
+		SSball.all_balls -= src
+
+
+	return TRUE
+
+
 /obj/item/ball/Finalize()
 	. = ..()
 	update_sprite()
-	if(src.z)
-		SSball.all_balls |= src
+	set_balling(src.z ? TRUE : FALSE)
 
 /obj/item/ball/Destroy()
-	SSball.all_balls -= src
+	set_balling(FALSE)
 	. = ..()
 
 /obj/item/ball/post_move(var/atom/old_loc)
 	. = ..()
-	if(src.z)
-		SSball.all_balls |= src
-	else
-		SSball.all_balls -= src
+	set_balling(src.z ? TRUE : FALSE)
 
 /obj/item/ball/proc/ball_think(var/tick_rate=1)
 

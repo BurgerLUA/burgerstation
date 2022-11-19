@@ -13,7 +13,7 @@
 	if(owner.dead)
 		return FALSE
 
-	if(!isturf(owner.loc))
+	if(!is_turf(owner.loc))
 		return FALSE
 
 	if(owner.has_status_effects(STUN,SLEEP,PARALYZE))

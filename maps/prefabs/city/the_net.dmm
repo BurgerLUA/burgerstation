@@ -255,10 +255,9 @@
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "aW" = (
-/obj/structure/interactive/door/airlock/dark,
 /obj/marker/smart_clear_turf,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 "aX" = (
 /obj/structure/table/steel/dark,
 /obj/marker/spawning/random/trash,
@@ -306,21 +305,26 @@
 /obj/marker/mission_mob,
 /turf/simulated/floor/tile/dark/single,
 /area/mission/prefab/city/the_net)
+"bf" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/city/the_net)
 
 (1,1,1) = {"
 aa
 aa
 ab
 ab
+bf
 ab
 ab
 ab
+bf
 ab
 ab
 ab
-ab
-ab
-ab
+bf
 ab
 ab
 aM
@@ -413,7 +417,7 @@ am
 am
 aR
 ab
-aM
+aW
 "}
 (7,1,1) = {"
 aC
@@ -448,7 +452,7 @@ az
 ba
 bd
 aN
-aW
+ae
 aV
 "}
 (9,1,1) = {"
@@ -503,7 +507,7 @@ am
 aN
 aR
 ab
-aM
+aW
 "}
 (12,1,1) = {"
 aD
@@ -582,15 +586,15 @@ aa
 aa
 ab
 ab
+bf
 ab
 ab
 ab
+bf
 ab
 ab
 ab
-ab
-ab
-ab
+bf
 ab
 ab
 aM

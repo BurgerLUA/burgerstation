@@ -25,7 +25,7 @@
 	. = ..()
 
 	if(.)
-		if(isturf(target))
+		if(is_turf(target))
 			var/turf/T = target
 			var/cleaning_power = volume_to_splash*5*strength_mod
 			for(var/obj/effect/cleanable/C in T.contents)

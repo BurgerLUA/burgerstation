@@ -104,19 +104,18 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_antag_ship)
 "ax" = (
-/obj/marker/antag/syndicate,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/syndicate_antag_ship)
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
 "ay" = (
 /obj/item/weapon/melee/toolbox/syndicate,
 /obj/structure/table/reinforced/steel/dark,
 /turf/simulated/floor/tile/shuttle/red,
 /area/mission/prefab/misc/syndicate_antag_ship)
 "az" = (
-/obj/structure/interactive/misc/mirror/cracked/chargen{
-	pixel_y = -32
-	},
-/turf/simulated/floor/tile/shuttle/red,
+/obj/marker/map_node,
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_antag_ship)
 "aA" = (
 /obj/item/cross,
@@ -179,8 +178,9 @@
 /turf/simulated/floor/tile/shuttle/red,
 /area/mission/prefab/misc/syndicate_antag_ship)
 "aL" = (
-/obj/marker/objective_spawn,
-/turf/simulated/floor/tile/shuttle/red,
+/obj/structure/interactive/door/airlock/shuttle/dark,
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_antag_ship)
 "aM" = (
 /obj/marker/lobby,
@@ -269,6 +269,53 @@
 "bc" = (
 /obj/item/implanter/od_purge,
 /obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/shuttle/red,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bd" = (
+/obj/structure/interactive/power/apc{
+	icon_state = "apc";
+	dir = 8
+	},
+/turf/simulated/wall/dark/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"be" = (
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/red,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bf" = (
+/obj/structure/interactive/misc/mirror/cracked/chargen{
+	pixel_y = -32
+	},
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/red,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bg" = (
+/obj/structure/interactive/power/smes/industrial{
+	icon_state = "smes_map";
+	dir = 4
+	},
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/red,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bh" = (
+/obj/marker/map_node,
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/red,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bi" = (
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bj" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8
+	},
+/obj/structure/interactive/wire/red,
+/turf/simulated/floor/tile/shuttle/red,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bk" = (
+/obj/marker/objective_spawn,
+/obj/structure/interactive/wire/red,
 /turf/simulated/floor/tile/shuttle/red,
 /area/mission/prefab/misc/syndicate_antag_ship)
 
@@ -425,7 +472,7 @@ aa
 aa
 aa
 aa
-aa
+ax
 aa
 aa
 aa
@@ -592,10 +639,10 @@ aq
 av
 ac
 aC
-aF
-aq
-aq
-aL
+bh
+be
+be
+bk
 aq
 aq
 aF
@@ -626,10 +673,10 @@ ar
 aw
 ac
 ac
-at
+aL
 ac
 ac
-ac
+bd
 ac
 ac
 at
@@ -660,7 +707,7 @@ ar
 ar
 aq
 ar
-as
+az
 ar
 aq
 ar
@@ -694,7 +741,7 @@ ar
 ar
 aq
 aD
-ar
+bi
 ar
 aq
 aD
@@ -725,10 +772,10 @@ aa
 ac
 ai
 as
-as
-aq
-aq
-aG
+az
+be
+be
+bj
 aq
 aq
 aM
@@ -759,7 +806,7 @@ aa
 ac
 ac
 at
-at
+aL
 ac
 ac
 ac
@@ -793,8 +840,8 @@ aa
 ac
 aj
 as
-as
 az
+bf
 ac
 ad
 ac
@@ -827,8 +874,8 @@ aa
 ac
 ak
 ar
-ax
-az
+ar
+bf
 ac
 ad
 ac
@@ -861,8 +908,8 @@ aa
 ac
 al
 ar
-ax
-az
+ar
+bf
 ac
 ad
 ac
@@ -895,8 +942,8 @@ aa
 ac
 am
 ar
-ax
-az
+ar
+bf
 ac
 ad
 ac
@@ -929,8 +976,8 @@ aa
 ac
 an
 as
-ax
-aq
+ar
+bg
 ac
 ad
 ac
@@ -1166,6 +1213,7 @@ aa
 aa
 aa
 aa
+ax
 aa
 aa
 aa
@@ -1179,8 +1227,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+ax
 aa
 aa
 aa

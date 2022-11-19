@@ -23,8 +23,8 @@
 	name = "bluespace light"
 	icon_state=  "bluespess"
 
-	sunlight_freq = 1
-	sunlight_color = "#0094FF"
+	sunlight_color = null
+	sunlight_freq = 0
 
 	cheese_type = /reagent/nutrition/cheese/bluespace
 

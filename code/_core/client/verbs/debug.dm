@@ -381,8 +381,9 @@ var/global/list/debug_verbs = list(
 	set category = "Debug"
 
 	var/list/possible_mobs = list()
-	for(var/mob/living/advanced/A in view(src))
+	for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
 		possible_mobs += A
+
 	for(var/mob/living/advanced/A in all_mobs_with_clients)
 		possible_mobs |= A
 

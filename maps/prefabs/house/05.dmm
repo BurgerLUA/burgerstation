@@ -25,10 +25,6 @@
 "ag" = (
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
-"ah" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_05)
 "ai" = (
 /obj/structure/interactive/wire/yellow,
 /turf/simulated/floor/plating,
@@ -395,6 +391,21 @@
 /obj/structure/carpet/red,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/entrance)
+"bz" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/kitchen)
+"bA" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05)
+"bB" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/entrance)
 
 (1,1,1) = {"
 aa
@@ -419,7 +430,7 @@ aa
 ad
 ad
 ad
-ae
+bz
 ae
 ad
 ad
@@ -443,7 +454,7 @@ aM
 aP
 aR
 aU
-aU
+bB
 aR
 aR
 aR
@@ -464,7 +475,7 @@ aY
 bl
 by
 bn
-ae
+bz
 aK
 aK
 "}
@@ -488,7 +499,7 @@ aK
 "}
 (6,1,1) = {"
 aa
-ae
+bz
 ak
 ak
 ak
@@ -569,7 +580,7 @@ aB
 bf
 aT
 aT
-aU
+bB
 bg
 aK
 aK
@@ -614,7 +625,7 @@ aa
 "}
 (13,1,1) = {"
 am
-ah
+bA
 aq
 ac
 aC
@@ -652,12 +663,12 @@ aa
 aK
 af
 af
-ah
+bA
 af
 af
 af
 aR
-aU
+bB
 aR
 aV
 aV

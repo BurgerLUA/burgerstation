@@ -31,6 +31,26 @@
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_D02/bathroom)
+"ag" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D02/officer_bedroom)
+"ah" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D02/bunks)
+"ai" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D02/hallway)
+"aj" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D02/kitchen)
 "aE" = (
 /obj/structure/interactive/bed/sheet,
 /obj/structure/carpet/blue,
@@ -140,10 +160,6 @@
 /obj/marker/spawning/random/kitchen,
 /turf/simulated/floor/tile/grey,
 /area/mission/prefab/house/house_D02/kitchen)
-"mc" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/plating,
-/area/mission/prefab/house/house_D02/officer_bedroom)
 "mz" = (
 /obj/structure/interactive/door/airlock/wood,
 /turf/simulated/floor/wood/brown,
@@ -509,13 +525,13 @@ OU
 PH
 PH
 SE
-mc
+ag
 Yj
 TM
 SE
 gq
 uY
-uY
+ah
 gq
 gq
 "}
@@ -677,7 +693,7 @@ De
 HT
 gi
 BW
-BW
+ai
 HT
 HT
 "}
@@ -777,7 +793,7 @@ De
 De
 De
 XS
-XS
+aj
 XS
 XS
 De

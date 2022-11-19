@@ -335,6 +335,7 @@
 	dir = 4
 	},
 /obj/marker/map_node,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/mission/prefab/city/the_chem_lab)
 "bp" = (
@@ -343,6 +344,7 @@
 /area/mission/prefab/city/the_chem_lab)
 "bq" = (
 /obj/marker/map_node,
+/obj/marker/smart_clear_turf,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "br" = (
@@ -443,20 +445,29 @@
 /obj/marker/mission_mob,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab)
+"bK" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bL" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/city/the_chem_lab)
 
 (1,1,1) = {"
 aa
 ab
 ab
 ac
-ac
+bL
 ac
 ac
 ab
 ab
 ac
 ac
-ac
+bL
 ac
 bx
 ab
@@ -496,7 +507,7 @@ at
 aq
 aq
 ac
-bl
+bK
 "}
 (4,1,1) = {"
 bl
@@ -517,7 +528,7 @@ ac
 bl
 "}
 (5,1,1) = {"
-bl
+bK
 ac
 ag
 ar
@@ -658,7 +669,7 @@ aM
 aM
 bp
 ac
-bl
+bK
 "}
 (13,1,1) = {"
 aa

@@ -70,7 +70,8 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "ar" = (
-/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate/scientist,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "as" = (
@@ -267,7 +268,6 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "ba" = (
-/obj/item/armor_plate/light,
 /obj/structure/table/reinforced/steel/dark,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
@@ -345,7 +345,6 @@
 	dir = 8;
 	icon_state = "preview"
 	},
-/obj/item/armor_plate/light,
 /obj/structure/table/reinforced/steel/dark,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
@@ -462,8 +461,11 @@
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bI" = (
-/mob/living/advanced/npc/syndicate/scientist,
 /obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate{
+	dir = 4;
+	icon_state = "directional"
+	},
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bJ" = (
@@ -666,6 +668,19 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
+"cp" = (
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cq" = (
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
 "dl" = (
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/morphing/red/dark,
@@ -707,11 +722,6 @@
 /obj/structure/interactive/wire/green,
 /obj/marker/spawning/window,
 /turf/simulated/floor/plating,
-/area/mission/prefab/misc/syndicate_research_outpost)
-"pc" = (
-/mob/living/advanced/npc/syndicate,
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "rs" = (
 /obj/structure/interactive/power/apc{
@@ -815,14 +825,6 @@
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/morphing/red/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
-"OP" = (
-/mob/living/advanced/npc/syndicate{
-	dir = 4;
-	icon_state = "directional"
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/misc/syndicate_research_outpost)
 "PL" = (
 /obj/structure/interactive/solar_panel,
 /obj/structure/interactive/wire/yellow,
@@ -867,14 +869,6 @@
 "Wp" = (
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"XD" = (
-/mob/living/advanced/npc/syndicate{
-	dir = 8;
-	icon_state = "directional"
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/misc/syndicate_research_outpost)
 "Zs" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4;
@@ -2314,12 +2308,12 @@ at
 at
 ah
 aa
-ar
+ba
 ah
 aR
 bb
 ah
-ar
+ba
 aa
 Wp
 Wp
@@ -2380,7 +2374,7 @@ bP
 at
 ah
 av
-ar
+ba
 aK
 at
 at
@@ -2434,7 +2428,7 @@ at
 bo
 ah
 av
-bI
+ar
 at
 bP
 bV
@@ -2446,7 +2440,7 @@ bP
 at
 ah
 av
-ar
+ba
 aA
 at
 at
@@ -2578,7 +2572,7 @@ bP
 at
 ah
 av
-ar
+ba
 at
 at
 at
@@ -2715,7 +2709,7 @@ at
 at
 at
 co
-ar
+ba
 aa
 Wp
 Wp
@@ -2847,7 +2841,7 @@ ah
 ah
 aG
 bB
-ar
+ba
 aa
 Wp
 Wp
@@ -2948,20 +2942,20 @@ ac
 ac
 ac
 aa
-ar
+ba
 aI
-ar
+ba
 ah
 ah
 aY
 bd
 aa
-ar
+ba
 aR
 ah
 aE
 br
-ar
+ba
 bC
 aE
 av
@@ -3022,7 +3016,7 @@ at
 at
 ah
 aa
-ar
+ba
 aP
 at
 at
@@ -3080,7 +3074,7 @@ ac
 ac
 ac
 bu
-bI
+ar
 so
 at
 at
@@ -3154,7 +3148,7 @@ ah
 aG
 ak
 aa
-ar
+ba
 at
 aK
 at
@@ -3220,7 +3214,7 @@ aa
 aa
 aa
 bu
-pc
+cp
 gx
 gx
 gx
@@ -3409,10 +3403,10 @@ aa
 ac
 aa
 af
-ar
+ba
 az
 aM
-ar
+ba
 aa
 ah
 ag
@@ -3478,7 +3472,7 @@ ag
 as
 aA
 gx
-OP
+bI
 rs
 ah
 at
@@ -4022,7 +4016,7 @@ ah
 ah
 aG
 ag
-XD
+cq
 ag
 ae
 ab
@@ -4143,7 +4137,7 @@ ah
 aV
 ba
 bf
-ar
+ba
 aR
 HZ
 ak
@@ -4278,7 +4272,7 @@ at
 at
 at
 gx
-ar
+ba
 aa
 ah
 at
@@ -4344,7 +4338,7 @@ at
 at
 aK
 gx
-ar
+ba
 aa
 bt
 at

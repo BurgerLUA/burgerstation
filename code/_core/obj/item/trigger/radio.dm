@@ -128,7 +128,7 @@
 
 /obj/item/device/radio/Finalize()
 	. = ..()
-	SSradio.all_radios |= src
+	SSradio.all_radios += src
 
 /obj/item/device/radio/Destroy()
 	SSradio.all_radios -= src

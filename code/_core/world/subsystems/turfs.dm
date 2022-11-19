@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(turf)
 
 /subsystem/turf/Initialize()
 
+	var/list/type_to_time = list()
+
 	log_subsystem(src.name,"Generating seeds...")
 	for(var/i=1,i<=50,i++) //Generate 50 seeds.
 		seeds += rand(1,99999)
@@ -36,13 +38,21 @@ SUBSYSTEM_DEF(turf)
 	//First generation pass.
 	log_subsystem(src.name,"Pregenerating turfs...")
 	for(var/turf/unsimulated/generation/G in world)
+		var/benchmark = true_time()
 		G.pre_generate()
+		benchmark = true_time() - benchmark
+		if(benchmark > 0)
+			type_to_time[G.type] += benchmark
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	//Second generation pass.
 	log_subsystem(src.name,"Generating turfs...")
 	for(var/turf/unsimulated/generation/G in world)
+		var/benchmark = true_time()
 		G.generate()
+		benchmark = true_time() - benchmark
+		if(benchmark > 0)
+			type_to_time[G.type] += benchmark
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	if(!CONFIG("ENABLE_INSTALOAD",FALSE))
@@ -63,28 +73,42 @@ SUBSYSTEM_DEF(turf)
 
 		log_subsystem(src.name,"Generating first markers...")
 		for(var/k in generations_first)
+			var/benchmark = true_time()
 			var/obj/marker/generation/G = k
 			G.generate_marker()
+			benchmark = true_time() - benchmark
+			if(benchmark > 0)
+				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 		log_subsystem(src.name,"Generating second markers...")
 		for(var/k in generations_second)
+			var/benchmark = true_time()
 			var/obj/marker/generation/G = k
 			G.generate_marker()
+			benchmark = true_time() - benchmark
+			if(benchmark > 0)
+				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 		log_subsystem(src.name,"Generating third markers...")
 		for(var/k in generations_third)
+			var/benchmark = true_time()
 			var/obj/marker/generation/G = k
 			G.generate_marker()
+			benchmark = true_time() - benchmark
+			if(benchmark > 0)
+				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	log_subsystem(src.name,"Initializing turfs...")
 	for(var/turf/simulated/S in world)
+		var/benchmark = true_time()
 		INITIALIZE(S)
+		benchmark = true_time() - benchmark
+		if(benchmark > 0)
+			type_to_time[S.type] += benchmark
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
-
-	var/list/type_to_time = list()
 
 	log_subsystem(src.name,"Finalizing turfs...")
 	var/turfs_finalized = 0
@@ -105,11 +129,10 @@ SUBSYSTEM_DEF(turf)
 	if(turf_length >= 1)
 		var/num_turfs = min(turf_length,5)
 		type_to_time.Cut(num_turfs)
-		log_debug("[num_turfs] Most Expensive Turfs:")
+		log_debug("[num_turfs] Most Expensive Types:")
 		for(var/k in type_to_time)
 			var/v = type_to_time[k]
 			log_debug("[k]: [DECISECONDS_TO_SECONDS(v)] seconds")
-
 
 	log_subsystem(src.name,"Processing [length(smart_clear_turfs)] smart clear turf markers...")
 	var/benchmark = true_time()

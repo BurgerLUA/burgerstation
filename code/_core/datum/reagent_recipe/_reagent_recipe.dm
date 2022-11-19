@@ -19,5 +19,7 @@
 
 	var/secret = FALSE //This just means its unlisted in the recipe book.
 
+	var/priority = 0 //Higher numbers means higher priority.
+
 /reagent_recipe/proc/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
 	return TRUE

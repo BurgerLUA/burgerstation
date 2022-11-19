@@ -424,7 +424,7 @@
 								if(length(DT.impact_sounds))
 									play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
 
-	if(impact_effect_turf && isturf(hit_atom))
+	if(impact_effect_turf && is_turf(hit_atom))
 		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*3,-20,20),clamp((shoot_y-16)*3,-20,20),bullet_color)
 
 	else if(impact_effect_movable && ismovable(hit_atom))

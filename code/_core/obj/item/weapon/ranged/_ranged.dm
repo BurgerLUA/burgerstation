@@ -718,7 +718,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				y_vel,
 				final_pixel_target_x,
 				final_pixel_target_y,
-				location ? location : (isturf(target) ? target : get_turf(target)),
+				location ? location : (is_turf(target) ? target : get_turf(target)),
 				damage_type_to_use,
 				target,
 				bullet_color,

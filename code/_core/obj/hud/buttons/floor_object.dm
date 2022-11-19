@@ -25,13 +25,15 @@
 
 /obj/hud/button/floor_object/update_owner(var/mob/desired_owner)
 
-	if(owner)
+	var/owner_changed = owner != desired_owner
+
+	if(owner_changed && owner)
 		owner.examine_butons -= src
 
 	. = ..()
 
-	if(owner)
-		owner.examine_butons |= src
+	if(owner_changed && owner)
+		owner.examine_butons += src
 		if(!associated_object)
 			log_error("Warning: [get_debug_name()] didn't have an associated object on initialization!")
 			return FALSE
@@ -55,7 +57,7 @@
 
 	tooltip_text = get_tooltip_text()
 
-	vis_contents |= associated_object
+	vis_contents += associated_object
 
 
 /obj/hud/button/floor_object/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

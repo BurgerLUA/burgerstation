@@ -670,7 +670,7 @@ var/global/list/all_damage_numbers = list()
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
+	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && is_turf(victim.loc))
 		var/turf/T = victim.loc
 		if(T)
 			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"

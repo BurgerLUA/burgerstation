@@ -5,7 +5,7 @@
 	damage = list(BRUTE = 0, BURN = 0, TOX = 0, OXY = 0, FATIGUE = 0, PAIN=0, RAD=0, SANITY=0, MENTAL=0)
 	if(is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
-		A.queue_organ_health_update |= owner
+		A.queue_organ_health_update[owner] = TRUE
 
 /health/obj/item/organ/adjust_loss(var/loss_type,var/value)
 	. = ..()

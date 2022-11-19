@@ -22,11 +22,10 @@ SUBSYSTEM_DEF(radio)
 
 	var/list/queued_telecomms = list()
 
-	for(var/area_id in all_telecomms)
-		var/list/area_list = all_telecomms[area_id]
-		for(var/k in area_list)
+	for(var/area_id in all_telecomms) //Get all area ids in this telecomms list.
+		for(var/k in all_telecomms[area_id]) //Get all telecomms units in this area_id
 			var/obj/structure/interactive/telecomms/TC = k
-			queued_telecomms |= TC
+			queued_telecomms += TC
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in queued_telecomms)

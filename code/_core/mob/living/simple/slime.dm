@@ -148,7 +148,7 @@
 				I.pixel_x = initial(I.pixel_x) - 8
 			if(absorbed)
 				update_sprite()
-		if((slime_traits & SLIME_TRAIT_WET) && isturf(loc))
+		if((slime_traits & SLIME_TRAIT_WET) && is_turf(loc))
 			var/turf/T = loc
 			var/cleaning_power = 100
 			for(var/obj/effect/cleanable/C in T.contents)

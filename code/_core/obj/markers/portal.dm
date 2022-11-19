@@ -8,7 +8,7 @@ var/global/list/portal_markers = list()
 	if(loyalty_tag)
 		if(!portal_markers[loyalty_tag])
 			portal_markers[loyalty_tag] = list()
-		portal_markers[loyalty_tag] |= src
+		portal_markers[loyalty_tag] += src
 	. = ..()
 
 /obj/marker/portal/nanotrasen

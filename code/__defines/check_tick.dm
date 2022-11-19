@@ -12,8 +12,8 @@
 	}\
 	else if(world.tick_usage > limit) { \
 		var/safety_count=0; \
-		while(world.tick_usage > limit && (max_delays <= safety_count)) {\
+		while(world.tick_usage > limit && (max_delays >= safety_count)) {\
 			safety_count++; \
-			sleep(TICK_LAG * (world.tick_usage/limit)); \
+			sleep(TICK_LAG); \
 		}\
 	}

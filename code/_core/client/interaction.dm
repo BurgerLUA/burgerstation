@@ -109,7 +109,7 @@
 		mob.on_right_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
-		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (isturf(object) || isturf(object.loc)))
+		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (is_turf(object) || is_turf(object.loc)))
 			if(spam_protection_interact <= 10)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
 				A.pixel_x = new_params[PARAM_ICON_X] - 16
@@ -219,9 +219,6 @@
 	new_params[PARAM_ICON_Y] = text2num(new_params[PARAM_ICON_Y])
 
 	store_new_params(object,location,new_params)
-
-	if(!mob)
-		return TRUE
 
 	if(istype(object,/atom/))
 		var/atom/A = object

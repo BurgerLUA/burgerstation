@@ -417,6 +417,26 @@
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/cult,
 /area/mission/prefab/house/house_03/backroom)
+"bG" = (
+/obj/structure/short_wall/wood,
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bH" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/boat,
+/area/mission/prefab/house/house_03/bedroom)
+"bI" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/boat,
+/area/mission/prefab/house/house_03)
+"bJ" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/boat,
+/area/mission/prefab/house/house_03/entrance)
 
 (1,1,1) = {"
 aa
@@ -460,7 +480,7 @@ aO
 aO
 ap
 ap
-aL
+bI
 aL
 ba
 au
@@ -468,7 +488,7 @@ aC
 aC
 aC
 bd
-bD
+bJ
 bd
 aO
 "}
@@ -541,11 +561,11 @@ ai
 ai
 bx
 bx
-bD
+bJ
 aO
 "}
 (8,1,1) = {"
-ag
+bH
 aU
 ak
 ah
@@ -703,6 +723,6 @@ br
 br
 br
 br
-br
+bG
 aO
 "}

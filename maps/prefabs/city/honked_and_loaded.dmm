@@ -94,6 +94,7 @@
 /area/mission/prefab/city/honked_and_loaded)
 "ar" = (
 /obj/structure/interactive/wire/green,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "as" = (
@@ -293,19 +294,33 @@
 /obj/marker/mission_mob,
 /turf/simulated/floor/tile/red,
 /area/mission/prefab/city/honked_and_loaded)
+"bc" = (
+/obj/structure/interactive/solar_panel,
+/obj/structure/interactive/wire/yellow,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bd" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"be" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/mission/prefab/city/honked_and_loaded)
 
 (1,1,1) = {"
 aa
 aa
 aa
 aa
+bd
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+bd
 aa
 aa
 aa
@@ -344,7 +359,7 @@ aK
 aK
 ao
 aa
-aa
+bd
 aa
 aa
 "}
@@ -382,7 +397,7 @@ ab
 aJ
 aL
 ao
-aP
+be
 "}
 (6,1,1) = {"
 aa
@@ -508,10 +523,10 @@ ab
 aJ
 aL
 ao
-aP
+be
 "}
 (13,1,1) = {"
-av
+bc
 ab
 am
 aZ
@@ -542,7 +557,7 @@ aK
 aK
 ao
 aa
-aa
+bd
 aa
 aa
 "}
@@ -569,13 +584,13 @@ aa
 aa
 aa
 aa
+bd
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+bd
 aa
 aa
 aa

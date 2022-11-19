@@ -89,6 +89,9 @@
 
 	. = ..()
 
+/obj/structure/interactive/storage/trash_pile/low_chance
+	chance_none = 50
+
 var/global/list/possible_trash_enemies = list(
 	/mob/living/simple/passive/mouse/grey = 200,
 	/mob/living/simple/bat/space = 50,

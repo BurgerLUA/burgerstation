@@ -72,7 +72,7 @@
 	var/list/missing_organs = list()
 	for(var/k in TARGETABLE_LIMBS)
 		if(!labeled_organs[k])
-			missing_organs |= k
+			missing_organs += k
 
 	if(length(missing_organs))
 		var/species/S = SPECIES(species)

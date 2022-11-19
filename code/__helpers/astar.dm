@@ -16,7 +16,7 @@ Some code modified to work with Burgerstation.
 
 /*
 /proc/AStar(turf/start, turf/end, atom/movable/walker, maxtraverse = 30)
-	if(!isturf(start) || !isturf(end))
+	if(!is_turf(start) || !is_turf(end))
 		return
 	var/list/turf/open = list(start)
 	var/list/turf/nodeParent = list()

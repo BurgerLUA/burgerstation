@@ -117,7 +117,7 @@
 	if(desired_loc && loot_drop && health)
 		var/loot/L = all_loot[loot_drop]
 
-		if(!isturf(desired_loc))
+		if(!is_turf(desired_loc))
 			return FALSE
 
 		if(loot_drop_in_corpse)
@@ -192,9 +192,9 @@
 		for(var/k in hit_logs)
 			var/list/attack_log = k
 			if(attack_log["lethal"])
-				people_who_killed |= attack_log["attacker"]
+				people_who_killed[attack_log["attacker"]] += 1
 			else if(attack_log["critical"])
-				people_who_contributed |= attack_log["attacker"]
+				people_who_contributed[attack_log["attacker"]] += 1
 		if(!length(people_who_killed))
 			people_who_killed = people_who_contributed
 		if(length(people_who_killed))

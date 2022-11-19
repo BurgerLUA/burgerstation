@@ -11,7 +11,7 @@
 
 /damagetype/ranged/laser/plasma_cutter/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
-	if(isturf(hit_object))
+	if(is_turf(hit_object))
 		damage_multiplier *= 8 //More damage against walls.
 
 	. = ..()

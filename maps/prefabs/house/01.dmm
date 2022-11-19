@@ -73,6 +73,7 @@
 /area/mission/prefab/house/house_01)
 "aq" = (
 /obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/boys_bedroom)
 "ar" = (
@@ -99,6 +100,7 @@
 /area/mission/prefab/house/house_01/bathroom_02)
 "av" = (
 /obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/girls_bedroom)
 "aw" = (
@@ -626,6 +628,16 @@
 /obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01)
+"cn" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_01)
+"co" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_01/master_bedroom)
 
 (1,1,1) = {"
 bx
@@ -872,7 +884,7 @@ aJ
 bo
 bR
 bq
-bk
+cn
 bk
 bq
 bV
@@ -902,7 +914,7 @@ bx
 ac
 ac
 ac
-aY
+co
 aY
 ac
 ac

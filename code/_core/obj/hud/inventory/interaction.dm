@@ -35,7 +35,7 @@
 			if(is_inventory(I.loc) && !I.is_container)
 				toggle_wield(caller,object)
 				return TRUE
-		if(is_organ(src.loc) && isturf(object.loc) && get_dist(caller,object) <= 1)
+		if(is_organ(src.loc) && is_turf(object.loc) && get_dist(caller,object) <= 1)
 			var/obj/item/organ/O = src.loc
 			if(ismob(object))
 				O.attack(caller,object,params,damage_type_override=/damagetype/unarmed/fists/grab)
@@ -60,7 +60,7 @@
 
 	//Throw the object if we are telling it to throw.
 	if(caller.attack_flags & CONTROL_MOD_THROW && is_living(caller))
-		if(!isturf(caller.loc))
+		if(!is_turf(caller.loc))
 			return TRUE
 		var/mob/living/L = caller
 		caller.face_atom(object) //Changing dir
@@ -128,7 +128,7 @@
 		if(grabbed_object)
 			release_object(caller)
 			return TRUE
-		if(!isturf(caller.loc))
+		if(!is_turf(caller.loc))
 			return TRUE
 		var/turf/caller_turf = get_turf(caller)
 		var/turf/desired_turf = object ? get_turf(object) : null
@@ -139,8 +139,8 @@
 		return TRUE
 
 	//Handle moving grabbed objects
-	if(grabbed_object && isturf(grabbed_object.loc))
-		if(isturf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
+	if(grabbed_object && is_turf(grabbed_object.loc))
+		if(is_turf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
 			var/desired_move_dir = get_dir(grabbed_object,object)
 			var/turf/desired_move_turf = get_step(grabbed_object.loc,desired_move_dir)
 			if(is_living(grabbed_object) && is_living(caller))
@@ -174,10 +174,10 @@
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].toggle_wield(caller,A.right_item)
 				return TRUE
 
-	if(get_dist(src,object) <= 1 && (is_inventory(object) || is_inventory(object.loc) || isturf(object) || isturf(object.loc)) && !(isturf(object.loc) && !isturf(caller.loc)) )
+	if(get_dist(src,object) <= 1 && (is_inventory(object) || is_inventory(object.loc) || is_turf(object) || is_turf(object.loc)) && !(is_turf(object.loc) && !is_turf(caller.loc)) )
 		if(is_item(object)) //We're clicking on another item.
 			var/obj/item/I = object
-			if(I.is_container && (I.anchored || !isturf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.
+			if(I.is_container && (I.anchored || !is_turf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.
 				var/obj/item/found_item
 				for(var/k in I.inventories)
 					var/obj/hud/inventory/INV = k

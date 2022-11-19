@@ -14,7 +14,7 @@
 /area/dmm_suite/clear_area)
 "e" = (
 /obj/structure/interactive/plant/embershroom_mushroom,
-/turf/dmm_suite/clear_turf,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "f" = (
 /obj/structure/table/simple/boss,
@@ -49,7 +49,7 @@
 /area/dmm_suite/clear_area)
 "n" = (
 /obj/structure/interactive/plant/porcini_mushroom,
-/turf/dmm_suite/clear_turf,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "o" = (
 /obj/marker/objective_spawn,
@@ -274,13 +274,13 @@ j
 (12,1,1) = {"
 a
 a
-a
-a
-a
-a
-a
-a
-a
+j
+j
+j
+j
+j
+j
+j
 j
 j
 j
@@ -292,14 +292,14 @@ a
 (13,1,1) = {"
 a
 a
-a
+j
 e
-a
+j
 n
-a
-a
-a
-a
+j
+j
+j
+j
 j
 j
 j
@@ -310,15 +310,15 @@ a
 (14,1,1) = {"
 a
 a
-a
+j
 e
-a
+j
 n
-a
-a
-a
-a
-a
+j
+j
+j
+j
+j
 j
 j
 a
@@ -328,15 +328,15 @@ a
 (15,1,1) = {"
 a
 a
-a
+j
 e
-a
+j
 n
-a
-a
-a
-a
-a
+j
+j
+j
+j
+j
 j
 j
 a
@@ -346,15 +346,15 @@ a
 (16,1,1) = {"
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+j
+j
+j
+j
+j
+j
+j
+j
+j
 t
 j
 a

@@ -4,7 +4,7 @@
 /area/dmm_suite/clear_area)
 "b" = (
 /obj/structure/short_wall/wood/starting,
-/turf/dmm_suite/clear_turf,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "c" = (
 /obj/structure/short_wall/wood,
@@ -175,6 +175,18 @@
 /obj/item/cannonball,
 /obj/marker/map_node,
 /turf/simulated/floor/wood/boat/starting,
+/area/dmm_suite/clear_area)
+"I" = (
+/obj/marker/smart_clear_turf,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/boat,
+/area/dmm_suite/clear_area)
+"J" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"K" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -465,9 +477,9 @@ a
 a
 a
 a
-a
-a
-a
+J
+J
+J
 a
 a
 a
@@ -499,9 +511,9 @@ a
 a
 a
 a
-a
-a
-a
+J
+K
+J
 a
 a
 a
@@ -533,9 +545,9 @@ a
 a
 a
 a
-a
-a
-a
+J
+J
+J
 a
 a
 a
@@ -568,7 +580,7 @@ c
 c
 c
 c
-c
+I
 c
 c
 c
@@ -636,7 +648,7 @@ d
 d
 d
 G
-d
+G
 d
 d
 G
@@ -772,7 +784,7 @@ d
 d
 d
 G
-d
+G
 d
 d
 G
@@ -840,7 +852,7 @@ c
 c
 c
 c
-c
+I
 c
 c
 c
@@ -873,9 +885,9 @@ a
 a
 a
 a
-a
-a
-a
+J
+J
+J
 a
 a
 a
@@ -907,9 +919,9 @@ a
 a
 a
 a
-a
-a
-a
+J
+K
+J
 a
 a
 a
@@ -941,9 +953,9 @@ a
 a
 a
 a
-a
-a
-a
+J
+J
+J
 a
 a
 a

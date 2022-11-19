@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/marker/prefab/house/low_chance,
+/obj/marker/prefab/house,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
@@ -56,16 +56,9 @@
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "l" = (
-/obj/marker/prefab/house/low_chance{
+/obj/marker/prefab/house{
 	icon_state = "";
 	dir = 4
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"m" = (
-/obj/marker/prefab/house/low_chance{
-	icon_state = "";
-	dir = 8
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
@@ -2550,7 +2543,7 @@ b
 b
 b
 b
-m
+a
 b
 b
 b
@@ -2797,7 +2790,7 @@ b
 b
 b
 b
-m
+a
 b
 b
 b

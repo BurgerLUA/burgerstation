@@ -88,7 +88,7 @@
 
 /obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(isturf(object))
+	if(is_turf(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)

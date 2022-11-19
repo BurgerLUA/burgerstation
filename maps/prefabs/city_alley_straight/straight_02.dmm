@@ -28,7 +28,8 @@
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
 "g" = (
-/obj/structure/interactive/fence/door,
+/obj/item/trash/random,
+/obj/marker/map_node,
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
 "h" = (
@@ -36,6 +37,15 @@
 	icon_state = "end";
 	dir = 8
 	},
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+"i" = (
+/obj/structure/interactive/fence/door,
+/obj/marker/map_node,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/marker/map_node,
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
 
@@ -80,14 +90,14 @@ d
 c
 "}
 (5,1,1) = {"
-c
-d
-d
-d
 g
 d
 d
 d
+i
+d
+d
+j
 "}
 (6,1,1) = {"
 d

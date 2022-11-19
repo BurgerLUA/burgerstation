@@ -110,7 +110,7 @@
 	if(!objective_weapon)
 		return FALSE
 
-	if(!isturf(objective_weapon.loc))
+	if(!is_turf(objective_weapon.loc))
 		objective_weapon = null
 		return FALSE
 

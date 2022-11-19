@@ -17,13 +17,21 @@
 		qdel(src)
 		return TRUE
 
+	var/turf/simulated/floor/F = loc
+	F.has_ore = TRUE
+
 	. = ..()
 
 	if(ore_score > 10)
-		for(var/turf/simulated/floor/T in orange(1,src)) //Floors only. Yes it can spawn on tiles and reinforced plating, but that's fine.
+		for(var/d in DIRECTIONS_ALL)
+			var/turf/simulated/floor/T = get_step(src,d)
+			if(!is_floor(T))
+				continue
+			if(T.density)
+				continue
 			if(!T.organic)
 				continue
-			if(locate(/obj/structure/interactive/ground_ore_deposit/) in T.contents)
+			if(T.has_ore)
 				continue
 			if(prob(25 + ore_score))
 				var/obj/structure/interactive/ground_ore_deposit/GOD = new(T)

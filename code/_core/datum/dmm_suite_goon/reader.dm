@@ -177,6 +177,7 @@ dmm_suite
 					var/match = copytext(noStrings.match, 2, -1) // Strip quotes
 					models = noStrings.Replace(models, indexText, found)
 					originalStrings[indexText] = (match)
+				CHECK_TICK_SAFE(50,FPS_SERVER)
 			while(found)
 			// Identify each object's data, instantiate it, & reconstitues its fields.
 			for(var/atomModel in splittext(models, comma_delim))
@@ -191,34 +192,36 @@ dmm_suite
 						key_value_regex.Find(paddedAttribute)
 						attributes[key_value_regex.group[1]] = key_value_regex.group[2]
 				. += loadModel(atomPath, attributes, originalStrings, location, angleOffset, debug)
+				CHECK_TICK_SAFE(50,FPS_SERVER)
 
 		loadModel(atomPath, list/attributes, list/strings, var/turf/location, angleOffset, debug)
+			if(!atomPath) //Sometimes dmm_suite can have invalid models.
+				if(debug) log_debug("Invalid/null atomPath!")
+				return 0
 			// Cancel if atomPath is a placeholder (DMM_IGNORE flags used to write file)
-			if(ispath(atomPath, /turf/dmm_suite/clear_turf) || ispath(atomPath, /area/dmm_suite/clear_area))
+			if(atomPath == /turf/dmm_suite/clear_turf || atomPath == /area/dmm_suite/clear_area)
 				if(debug) log_debug("Canceling due to clear area/turf...")
 				return 1
 			// Parse all attributes and create preloader
-			var/list/attributesMirror = list()
 			if(!location)
 				CRASH("Invalid loadModel location!")
 				return 0
-
+			var/list/attributesMirror = list()
 			for(var/attributeName in attributes)
 				attributesMirror[attributeName] = loadAttribute(attributes[attributeName], strings)
-			var/dmm_suite/preloader/preloader = new(location, attributesMirror)
 			// Begin Instanciation
 			// Handle Areas (not created every time)
 			var/atom/instance
-			if(ispath(atomPath, /area)) //Don't set instances for areas.
-				if(ispath(atomPath,/area/shuttle))
+			if(ispathcache(atomPath, /area)) //Don't set instances for areas.
+				if(ispathcache(atomPath,/area/shuttle))
 					location.transit_area = location.loc.type //Old area type.
 				new atomPath(location)
 				location.dmm_preloader = null
 				return 1
-
+			var/dmm_suite/preloader/preloader = new(location, attributesMirror)
 			// Handle Underlay Turfs
-			if(ispath(atomPath, /turf))
-				if(ispath(atomPath, /turf/dmm_suite/no_wall))
+			if(ispathcache(atomPath, /turf))
+				if(atomPath == /turf/dmm_suite/no_wall)
 					if(is_simulated(location))
 						var/turf/simulated/S = location
 						if(S.density)
@@ -226,7 +229,7 @@ dmm_suite
 								instance = new S.destruction_turf(location)
 							else
 								instance = new /turf/simulated/floor/cave_dirt(location)
-					else if(istype(location,/turf/unsimulated/generation))
+					else if(is_generation(location))
 						var/turf/unsimulated/generation/G = location
 						G.density = FALSE
 					else
@@ -236,16 +239,16 @@ dmm_suite
 					instance = new atomPath(location)
 					if(instance.plane == PLANE_SHUTTLE)
 						location.transit_turf = old_turf_type
-			else if(atomPath)
+			else
 				instance = new atomPath(location)
-			if(instance)
-				if(preloader) // Atom could delete itself in New(), or the instance could be an area.
-					preloader.load(instance)
-				if(angleOffset)
-					instance.dir = turn(instance.dir,-angleOffset)
-					instance.on_dmm_suite_rotate(angleOffset)
 
-			return (instance ? TRUE : FALSE)
+			if(preloader) // Atom could delete itself in New(), or the instance could be an area.
+				preloader.load(instance)
+			if(angleOffset)
+				instance.dir = turn(instance.dir,-angleOffset)
+				instance.on_dmm_suite_rotate(angleOffset)
+
+			return TRUE
 
 		loadAttribute(value, list/strings)
 			//Check for string
@@ -270,7 +273,7 @@ turf
 		dmm_suite/preloader/dmm_preloader
 
 atom/New(turf/newLoc)
-    if(isturf(newLoc))
+    if(is_turf(newLoc))
         var/dmm_suite/preloader/preloader = newLoc.dmm_preloader
         if(preloader)
             newLoc.dmm_preloader = null

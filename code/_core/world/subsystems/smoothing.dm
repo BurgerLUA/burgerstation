@@ -25,18 +25,20 @@ SUBSYSTEM_DEF(smoothing)
 		return FALSE
 
 	for(var/k in queued_smoothing_objs)
-		src.queued_smoothing_objs -= k
 		var/obj/structure/S = k
 		S.queued_smoothing = FALSE
 		S.update_smooth_code()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
+	queued_smoothing_objs.Cut()
+
 	for(var/k in queued_smoothing_turfs)
-		src.queued_smoothing_turfs -= k
 		var/turf/simulated/S = k
 		S.queued_smoothing = FALSE
 		S.update_smooth_code()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+
+	queued_smoothing_turfs.Cut()
 
 	return TRUE
 

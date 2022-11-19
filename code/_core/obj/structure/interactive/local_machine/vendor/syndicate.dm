@@ -3,6 +3,7 @@
 	icon_state = "syndi"
 	accepts_item = /obj/item/currency/telecrystals
 	markup = 1
+	health = null
 
 /obj/structure/interactive/vending/syndicate/guns
 	name = "syndicate armaments vendor"

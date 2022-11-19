@@ -112,7 +112,7 @@ var/global/ticket_number_counter = 1
 
 	if(!ckey_to_tickets[C.ckey])
 		ckey_to_tickets[C.ckey] = list()
-	ckey_to_tickets[C.ckey] |= src
+	ckey_to_tickets[C.ckey] += src
 
 	var/client/VC = CLIENT(victim)
 	if(victim == attacker) //Victim called for the ahelp and someone has joined the ticket.

@@ -68,14 +68,6 @@ SUBSYSTEM_DEF(lighting)
 			new /atom/movable/lighting_overlay(T)
 			. += 1
 
-/subsystem/lighting/proc/InitializeLightingAtoms(list/atoms)
-	. = 0
-	for (var/turf/T in atoms)
-		CHECK_TICK_SAFE(tick_usage_max,0)
-		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
-			new /atom/movable/lighting_overlay(T)
-			. += 1
-
 /subsystem/lighting/on_life()
 
 	var/list/curr_lights = light_queue

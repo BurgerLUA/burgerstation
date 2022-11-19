@@ -20,9 +20,9 @@
 /turf/simulated/wall/metal/reinforced,
 /area/mission/prefab/city/the_harmbaton/firing_range)
 "ag" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/marker/map_node,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/the_harmbaton/firing_range)
 "ah" = (
 /turf/simulated/floor/plating/reinforced,
 /area/mission/prefab/city/the_harmbaton/firing_range)
@@ -74,15 +74,14 @@
 	icon_state = "corner";
 	dir = 9
 	},
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "at" = (
-/obj/structure/interactive/fence/door{
-	icon_state = "door_opened";
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
+/obj/structure/carpet/grey,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton/firing_range)
 "au" = (
 /obj/structure/interactive/power/smes{
 	icon_state = "smes_map";
@@ -369,6 +368,52 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/city/the_harmbaton)
+"bu" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton/firing_range)
+"bv" = (
+/obj/structure/interactive/fence/door{
+	icon_state = "door_opened";
+	dir = 8
+	},
+/obj/marker/smart_clear_turf,
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bw" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bx" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
+"by" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
+"bz" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/map_node,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/the_harmbaton/armory)
+"bA" = (
+/obj/structure/carpet/grey,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
+"bB" = (
+/obj/marker/smart_clear_turf,
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bC" = (
+/obj/marker/map_node,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/the_harmbaton/armory)
 
 (1,1,1) = {"
 aP
@@ -377,7 +422,7 @@ ar
 ar
 ar
 ar
-at
+bv
 ap
 ax
 ax
@@ -395,7 +440,7 @@ av
 av
 aw
 au
-ag
+bw
 ao
 ax
 aA
@@ -431,7 +476,7 @@ ah
 ah
 ah
 ac
-an
+bx
 ae
 aE
 aB
@@ -450,12 +495,12 @@ ah
 ah
 ac
 an
-an
+bx
 ay
-aC
+bz
 aB
 aB
-aB
+bC
 aL
 ax
 aa
@@ -463,7 +508,7 @@ aa
 (6,1,1) = {"
 ac
 ah
-ah
+ag
 ah
 ah
 ac
@@ -522,7 +567,7 @@ ah
 be
 ac
 an
-ae
+by
 ax
 aR
 aR
@@ -553,7 +598,7 @@ ao
 (11,1,1) = {"
 af
 aH
-aY
+at
 aY
 aY
 bm
@@ -589,20 +634,20 @@ ao
 (13,1,1) = {"
 af
 aI
+bu
 ba
-ba
-ba
+bu
 bh
-ae
-ae
+by
+by
 al
-ae
+by
 ae
 ae
 aW
-aW
+bA
 al
-ao
+bB
 "}
 (14,1,1) = {"
 af

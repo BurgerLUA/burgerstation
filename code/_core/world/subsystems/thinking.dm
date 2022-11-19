@@ -1,13 +1,13 @@
 SUBSYSTEM_DEF(thinking)
 	name = "Think Subsystem"
 	desc = "Any and all objects that think when it is active are handled here."
-	priority = SS_ORDER_LAST
+	priority = SS_ORDER_THINK
 	tick_rate = DECISECONDS_TO_TICKS(1)
 	var/list/all_thinkers = list() //associative list
 
-	tick_usage_max = 100
+	tick_usage_max = 99
 
-	preloop = TRUE
+	//preloop = TRUE
 
 /subsystem/thinking/unclog(var/mob/caller)
 	for(var/k in src.all_thinkers)
@@ -16,6 +16,7 @@ SUBSYSTEM_DEF(thinking)
 	return ..()
 
 /subsystem/thinking/on_life()
+
 	for(var/k in all_thinkers)
 		var/atom/A = k
 		if(!A || A.qdeleting)

@@ -186,7 +186,7 @@
 
 /damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
 
-	if(is_advanced(attacker) && ismovable(victim) && isturf(victim.loc))
+	if(is_advanced(attacker) && ismovable(victim) && is_turf(victim.loc))
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim

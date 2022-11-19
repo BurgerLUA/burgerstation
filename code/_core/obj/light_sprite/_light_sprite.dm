@@ -47,7 +47,7 @@
 			CRASH("Invalid set_top_atom ([new_top_atom.get_debug_name()])!")
 			return FALSE
 		top_atom = new_top_atom
-		top_atom.light_sprite_sources |= src
+		top_atom.light_sprite_sources += src
 		force_move(T)
 		set_dir(top_atom.dir)
 

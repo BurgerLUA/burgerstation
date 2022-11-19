@@ -50,7 +50,7 @@
 		INITIALIZE(I)
 		GENERATE(I)
 		FINALIZE(I)
-		stored_cells |= I
+		stored_cells += I
 
 /obj/structure/interactive/power/smes/get_examine_list(var/mob/caller)
 	. = ..()

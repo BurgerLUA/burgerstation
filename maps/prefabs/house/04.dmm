@@ -166,9 +166,9 @@
 /area/mission/prefab/house/house_04/bathroom)
 "aK" = (
 /obj/marker/spawning/window,
-/obj/structure/interactive/wire/red,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_04/kitchen)
+/area/mission/prefab/house/house_04/bedroom)
 "aL" = (
 /obj/structure/interactive/wire/red,
 /turf/simulated/floor/wood/brown,
@@ -401,6 +401,17 @@
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/entrance)
+"bz" = (
+/obj/marker/spawning/window,
+/obj/structure/interactive/wire/red,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_04/kitchen)
+"bA" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_04/entrance)
 
 (1,1,1) = {"
 aa
@@ -484,7 +495,7 @@ ar
 av
 ac
 ay
-aK
+bz
 aP
 ay
 bd
@@ -530,7 +541,7 @@ aa
 "}
 (8,1,1) = {"
 az
-ae
+aK
 aj
 aj
 ad
@@ -561,7 +572,7 @@ bt
 aV
 aE
 aO
-bg
+bA
 az
 "}
 (10,1,1) = {"
@@ -665,7 +676,7 @@ aa
 aa
 aI
 aI
-bg
+bA
 bg
 aI
 aI

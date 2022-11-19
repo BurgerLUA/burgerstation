@@ -71,20 +71,20 @@
 			continue
 		if(priority_turf) //Prioritize blobs getting attacked.
 			if(d & get_dir_advanced(src,priority_turf))
-				possible_options |= B
+				possible_options += B
 				if(B.super)
-					possible_options_super |= B
+					possible_options_super += B
 				continue
 		else //Not getting attacked? Move away from the core to expand.
 			if(prefered_dir_2 && d & prefered_dir_2)
-				possible_options |= B
+				possible_options += B
 				if(B.super)
-					possible_options_super |= B
+					possible_options_super += B
 				continue
 			if(prefered_dir && d & prefered_dir) //Looks like we're kinda stuck. Float around in circles if possible.
-				possible_options |= B
+				possible_options += B
 				if(B.super)
-					possible_options_super |= B
+					possible_options_super += B
 				continue
 
 	var/options = length(possible_options)
@@ -207,7 +207,7 @@
 
 	var/turf/T = src.loc
 	if(linked_core)
-		linked_core.lost_turfs |= T
+		linked_core.lost_turfs += T //Don't worry about duplicate turfs.
 	. = ..()
 	var/state_code = update_health_state()
 	if(state_code)

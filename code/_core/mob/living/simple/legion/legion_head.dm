@@ -56,7 +56,7 @@
 
 /mob/living/simple/legionare_head/proc/convert(var/mob/living/advanced/A)
 
-	if(!can_convert || !A.dead || A.qdeleting || src.qdeleting || !isturf(A.loc) )
+	if(!can_convert || !A.dead || A.qdeleting || src.qdeleting || !is_turf(A.loc) )
 		return FALSE
 
 	A.force_move(src) //Store it before it is stolen.

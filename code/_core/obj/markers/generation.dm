@@ -41,24 +41,30 @@ var/global/list/all_generation_markers = list()
 	. = ..()
 	all_generation_markers -= src
 
-/obj/marker/generation/proc/grow(var/desired_grow,var/first_time=FALSE)
+/obj/marker/generation/proc/generate_marker()
 
-	for(var/k in valid_turfs)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
-		if(!length(valid_turfs))
-			return FALSE
-		if(objects_placed >= objects_max)
-			return FALSE
-		var/turf/T = k
+	var/turf/CT = get_turf(src)
+
+	if(!CT)
+		qdel(src)
+		return FALSE
+
+	var/desired_grow = 1 + rand(grow_amount_min,grow_amount_max)
+
+	valid_turfs += CT
+
+	while(objects_placed < objects_max && desired_grow > 0 && length(valid_turfs) > 0)
+		var/turf/T = valid_turfs[1]
 		valid_turfs -= T
+		desired_grow--
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		if(forbidden_turfs[T])
 			continue
 		forbidden_turfs[T] = TRUE //Already processed
 
-
-		if(!first_time && !prob(hole_chance) && !ispath(object_to_place,T) && !T.world_spawn && (!turf_whitelist || istype(T,turf_whitelist)))
+		if(T != src.loc && !T.world_spawn && !prob(hole_chance) && !ispath(object_to_place,T) && (!turf_whitelist || istype(T,turf_whitelist)))
 			new object_to_place(T)
-			objects_placed++
+			objects_placed += 1
 
 		for(var/v in DIRECTIONS_CARDINAL)
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
@@ -86,30 +92,6 @@ var/global/list/all_generation_markers = list()
 					forbidden_turfs[T2] = TRUE //Already processed
 					continue
 			valid_turfs += T2
-
-
-
-	return TRUE
-
-/obj/marker/generation/proc/generate_marker()
-
-	var/turf/T = get_turf(src)
-
-	if(!T)
-		qdel(src)
-		return FALSE
-
-	var/desired_grow = 1 + rand(grow_amount_min,grow_amount_max)
-
-	valid_turfs += T
-
-	var/first=TRUE
-	while(desired_grow > 0)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
-		desired_grow--
-		if(!grow(desired_grow,first))
-			break
-		first = FALSE
 
 	qdel(src)
 

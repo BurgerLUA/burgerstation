@@ -1,6 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/dmm_suite/clear_turf,
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "ab" = (
 /turf/simulated/wall/wood/rich,
@@ -53,8 +54,9 @@
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
 "an" = (
-/turf/simulated/floor/tile,
-/area/mission/prefab/city/robusta_cafe/bathroom)
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
 "ao" = (
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/rich,
@@ -283,23 +285,60 @@
 /obj/marker/mission_mob,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
+"be" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bf" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bg" = (
+/obj/structure/carpet/grey,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
+"bh" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile,
+/area/mission/prefab/city/robusta_cafe/bathroom)
+"bi" = (
+/obj/marker/mission_mob,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
+"bj" = (
+/obj/structure/carpet/red,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
+"bk" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"bl" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 ba
 ba
 ba
+bl
+be
 ba
 ba
 ba
 ba
+bl
+be
 ba
 ba
 ba
-ba
-ba
-ba
-ba
-ba
+be
 ba
 "}
 (2,1,1) = {"
@@ -317,22 +356,22 @@ ai
 aU
 ab
 ab
-ba
+bl
 ba
 "}
 (3,1,1) = {"
 ab
 aW
-ac
+an
 ac
 ac
 ac
 as
-ac
+an
 au
 ac
 ac
-ac
+an
 au
 ab
 ba
@@ -377,7 +416,7 @@ ba
 (6,1,1) = {"
 aN
 aK
-ac
+an
 ac
 aC
 aB
@@ -389,7 +428,7 @@ aG
 aC
 bd
 ai
-ba
+be
 ba
 "}
 (7,1,1) = {"
@@ -404,7 +443,7 @@ ac
 aH
 aC
 aC
-aC
+bj
 au
 ai
 ba
@@ -418,7 +457,7 @@ aQ
 bb
 aB
 aC
-ac
+an
 aF
 aC
 aH
@@ -447,9 +486,9 @@ ba
 ba
 "}
 (10,1,1) = {"
+aa
 af
-af
-ag
+bf
 aV
 aD
 aZ
@@ -461,25 +500,25 @@ aG
 aC
 ac
 ab
-ba
+bl
 ba
 "}
 (11,1,1) = {"
-ag
+bk
 ag
 ag
 aK
 aR
 aP
 aC
-bd
+bi
+bj
 aC
 aC
-aC
-aC
+bj
 ay
 ab
-ba
+be
 ba
 "}
 (12,1,1) = {"
@@ -507,25 +546,25 @@ aS
 ap
 aI
 ae
+an
 ac
-ac
-aC
+bj
 aC
 aX
-aC
+bj
 ac
 aE
-aE
+bg
 aA
 "}
 (14,1,1) = {"
 aj
 ae
 ar
-an
+bh
 bc
 aJ
-ac
+an
 at
 aW
 ao
@@ -555,20 +594,20 @@ aL
 ab
 "}
 (16,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+be
+ba
+ba
+ba
+be
 ba
 ba
 ba
 ba
+be
+ba
+bl
 ba
 ba
-ba
-ba
+be
 ba
 "}

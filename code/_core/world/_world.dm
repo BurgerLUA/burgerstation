@@ -33,6 +33,8 @@ var/global/world_state = STATE_STARTING
 	__detect_rust_g()
 
 	//TODO: Unfuck this.
+	createtypecache(/area)
+	createtypecache(/area/shuttle)
 	createtypecache(/mob/living)
 	createtypecache(/mob/living/advanced)
 	createtypecache(/mob/living/advanced/player)
@@ -50,10 +52,11 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/obj/item/bullet_cartridge/)
 	createtypecache(/obj/hud)
 	createtypecache(/obj/hud/inventory)
-	createtypecache(/turf/simulated/floor)
-	createtypecache(/turf/simulated/wall)
+	createtypecache(/turf)
 	createtypecache(/turf/simulated)
+	createtypecache(/turf/simulated/floor)
 	createtypecache(/turf/simulated/floor/tile)
+	createtypecache(/turf/simulated/wall)
 	createtypecache(/turf/unsimulated)
 
 	. = ..()

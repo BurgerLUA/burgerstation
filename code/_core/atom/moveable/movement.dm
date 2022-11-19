@@ -40,7 +40,7 @@
 		if(intercardinal)
 			final_movement_delay *= SQRT2
 
-		if(src.z && isturf(src.loc) && (collision_flags & FLAG_COLLISION_WALKING))
+		if(src.z && is_turf(src.loc) && (collision_flags & FLAG_COLLISION_WALKING))
 			var/turf/T = loc
 			final_movement_delay *= T.move_delay_modifier
 
@@ -161,8 +161,8 @@
 
 	var/atom/old_loc = loc
 
-	var/turf/old_loc_as_turf = isturf(old_loc) ? old_loc : null
-	var/turf/new_loc_as_turf = isturf(new_loc) ? new_loc : null
+	var/turf/old_loc_as_turf = is_turf(old_loc) ? old_loc : null
+	var/turf/new_loc_as_turf = is_turf(new_loc) ? new_loc : null
 
 	if(old_loc)
 		old_loc.Exited(src, new_loc)
@@ -233,8 +233,8 @@
 		CRASH("Tried moving [src.get_debug_name()] into nullspace via Move(). Use force_move() instead.")
 		return FALSE
 
-	var/turf/old_loc_as_turf = isturf(OldLoc) ? OldLoc : null
-	var/turf/new_loc_as_turf = isturf(NewLoc) ? NewLoc : null
+	var/turf/old_loc_as_turf = is_turf(OldLoc) ? OldLoc : null
+	var/turf/new_loc_as_turf = is_turf(NewLoc) ? NewLoc : null
 
 	if(change_dir_on_move && Dir)
 		set_dir(Dir)

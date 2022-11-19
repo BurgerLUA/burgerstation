@@ -81,7 +81,7 @@
 
 	play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
 	inventory_user = A
-	inventory_user.using_inventories |= src
+	inventory_user.using_inventories += src
 
 	return TRUE
 
@@ -196,7 +196,7 @@
 /obj/item/proc/drop_item(var/atom/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE) //Should be used in place of forcemove when possible.
 
 	if(drop_sound && !silent && new_location && !qdeleting)
-		if(isturf(new_location))
+		if(is_turf(new_location))
 			play_sound(drop_sound,new_location,range_max=VIEW_RANGE*0.5)
 		else
 			play_sound(inventory_sound,get_turf(new_location),range_max=VIEW_RANGE*0.25,volume=25)

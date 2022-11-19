@@ -133,7 +133,7 @@ SUBSYSTEM_DEF(chunk)
 			if(length(C.cleanables) >= (CHUNK_SIZE*CHUNK_SIZE)*0.2) //20% concetration
 				failed_chunk_count[C] += 1
 				if(failed_chunk_count[C] >= 3)
-					unclean_chunks |= C
+					unclean_chunks += C
 			chunks_to_process -= C
 			chunks_to_process -= C.adjacent_chunks
 		else

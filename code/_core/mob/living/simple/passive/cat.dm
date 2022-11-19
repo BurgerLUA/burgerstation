@@ -103,7 +103,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	return TRUE
 
 /mob/living/simple/cat/runtime/Finalize()
-	all_runtimes |= src
+	all_runtimes += src
 	return ..()
 
 /mob/living/simple/cat/runtime/Destroy()

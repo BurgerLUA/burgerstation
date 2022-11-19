@@ -195,7 +195,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(!active_ai_list["[z]"])
 		active_ai_list["[z]"] = list()
-	active_ai_list["[z]"] |= src
+	active_ai_list["[z]"] += src
 
 /ai/proc/remove_from_active_list(var/z)
 	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
@@ -206,7 +206,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(!inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] = list()
-	inactive_ai_list["[z]"] |= src
+	inactive_ai_list["[z]"] += src
 
 /ai/proc/remove_from_inactive_list(var/z)
 	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
@@ -226,8 +226,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	if(!force && active == desired_active)
 		return FALSE
 
-	active = desired_active
-
 	var/turf/T = get_turf(owner)
 
 	if(!T)
@@ -235,15 +233,17 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	if(active)
 		PROCESS_LIVING(owner)
-		add_to_active_list(T.z)
-		remove_from_inactive_list(T.z)
+		if(active != desired_active)
+			add_to_active_list(T.z)
+			remove_from_inactive_list(T.z)
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
 		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
 	else
 		if(owner && owner.processing)
 			UNPROCESS_LIVING(owner)
-		add_to_inactive_list(T.z)
-		remove_from_active_list(T.z)
+		if(active != desired_active)
+			add_to_inactive_list(T.z)
+			remove_from_active_list(T.z)
 		set_alert_level(ALERT_LEVEL_NONE,TRUE)
 		set_objective(null)
 		set_move_objective(null)
@@ -253,6 +253,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		obstacles.Cut()
 		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
 		HOOK_REMOVE("pre_death","\ref[src]_pre_death",owner)
+
+	active = desired_active
 
 	return TRUE
 

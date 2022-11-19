@@ -3,7 +3,7 @@
 	anchored = TRUE
 
 /obj/structure/interactive/lighting/Destroy()
-	if(apc_powered && isturf(src.loc))
+	if(apc_powered && is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A.requires_power)
 			update_power_draw(0)
@@ -13,10 +13,10 @@
 
 /obj/structure/interactive/lighting/Finalize()
 	. = ..()
-	if(apc_powered && isturf(src.loc))
+	if(apc_powered && is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A.requires_power)
-			A.powered_lights |= src
+			A.powered_lights += src
 			on = FALSE
 		else
 			apc_powered = FALSE
@@ -24,15 +24,15 @@
 /obj/structure/interactive/lighting/post_move(var/atom/old_loc)
 	. = ..()
 	if(apc_powered)
-		if(isturf(old_loc))
+		if(is_turf(old_loc))
 			var/area/A = old_loc.loc
 			if(A.requires_power)
 				update_power_draw(0)
 				A.powered_lights -= src
-		if(isturf(src.loc))
+		if(is_turf(src.loc))
 			var/area/A = src.loc.loc
 			if(A.requires_power)
-				A.powered_lights |= src
+				A.powered_lights += src
 			else
 				apc_powered = FALSE
 
