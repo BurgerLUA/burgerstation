@@ -99,3 +99,7 @@
 #define IMMORTAL "immortal"
 
 #define CRITPROTECTION "critprotection"
+
+#define FRAGILE "fragile"
+//Increases the damage multiplier, which increases incoming damage.
+//The strongest stack takes priority, but all instances will refresh the effect.
