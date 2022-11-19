@@ -18,6 +18,18 @@
 
 	loadout = /loadout/that_guy
 
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		STAMCRIT = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		DISARM = TRUE,
+		GRAB = TRUE,
+		PAINCRIT = TRUE
+	)
+
 
 /mob/living/advanced/npc/unique/that_guy/setup_visuals()
 	. = ..()

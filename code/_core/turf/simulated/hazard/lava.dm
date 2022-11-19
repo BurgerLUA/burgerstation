@@ -44,17 +44,15 @@
 
 /turf/simulated/liquid/lava/proc/lava_idiot(var/mob/living/L,var/check=FALSE)
 
-	if(length(L.status_immune) && L.status_immune[FIRE])
-		return FALSE
-
 	if(check && !istype(L.loc,src.type))
 		return FALSE
 
-	if(!L.on_fire && L.send_pain_response(20))
-		L.to_chat(span("danger","<h1>The lava is HOT!</h1>"))
+	var/was_on_fire = L.on_fire
 
-	L.add_status_effect(FIRE,100,0,stealthy=L.on_fire)
+	if(L.add_status_effect(FIRE,100,0,stealthy=L.on_fire))
+		if(!was_on_fire && L.send_pain_response(20))
+			L.to_chat(span("danger","<h1>The lava is HOT!</h1>"))
 
-	CALLBACK("lava_\ref[L]",10,src,.proc/lava_idiot,L,TRUE)
+		CALLBACK("lava_\ref[L]",10,src,.proc/lava_idiot,L,TRUE)
 
 	return TRUE

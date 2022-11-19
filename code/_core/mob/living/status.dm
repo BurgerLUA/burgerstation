@@ -20,11 +20,13 @@
 				if(T) new/obj/effect/temp/status_effect(T,duration,"IMMUNE!")
 			return FALSE
 		else
-			status_type = status_immune[status_type]
 			if(magnitude != -1)
 				magnitude = magnitude*0.5
 			if(duration != -1)
 				duration = duration*0.5
+			if(status_type != status_immune[status_type])
+				status_type = status_immune[status_type]
+				return src.add_status_effect(status_type,magnitude,duration,source,force,stealthy,bypass_limits)
 
 	if(!S.can_add_status_effect(source,src))
 		return FALSE

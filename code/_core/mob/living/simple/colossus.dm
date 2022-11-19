@@ -34,13 +34,10 @@
 		STAMCRIT = TRUE,
 		STAGGER = TRUE,
 		CONFUSED = TRUE,
-		CRIT = TRUE,
-		REST = TRUE,
-		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE,
 		FIRE = TRUE,
-		GRAB = TRUE
+		GRAB = TRUE,
+		PAINCRIT = TRUE
 	)
 
 	iff_tag = "Colossus"

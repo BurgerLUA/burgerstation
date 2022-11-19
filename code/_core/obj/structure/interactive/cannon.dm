@@ -46,6 +46,7 @@
 	icon_state = "idle"
 
 /obj/structure/interactive/cannon/Finalize()
+
 	. = ..()
 
 	for(var/obj/item/I in loc.contents)
@@ -54,6 +55,8 @@
 		src.insert_item(null,I)
 
 	update_sprite()
+
+	set_dir(dir,TRUE)
 
 /obj/structure/interactive/cannon/set_dir(var/desired_dir,var/force = FALSE)
 

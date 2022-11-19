@@ -50,19 +50,22 @@
 
 	. = ..()
 
-	var/turf/T = get_turf(src)
-	var/did_drop = FALSE
-	for(var/k in inventories)
-		var/obj/hud/inventory/I = k
-		if(I.worn)
-			continue
-		if(length(I.drop_objects(T)))
-			did_drop = TRUE
-	if(did_drop && is_advanced(loc))
-		var/mob/living/advanced/A = loc
-		A.visible_message(span("warning","\The [A.name]'s [src.name] recoils from their injury!"),span("danger","You cry in pain as your [src.name] recoils from your injury!"))
+	if(is_living(loc))
+		var/mob/living/L = loc
+		if(!L.boss)
+			var/turf/T = get_turf(src)
+			var/did_drop = FALSE
+			for(var/k in inventories)
+				var/obj/hud/inventory/I = k
+				if(I.worn)
+					continue
+				if(length(I.drop_objects(T)))
+					did_drop = TRUE
+			if(did_drop)
+				L.visible_message(span("warning","\The [L.name]'s [src.name] recoils from their injury!"),span("danger","You cry in pain as your [src.name] recoils from your injury!"))
+				return TRUE
 
-	return . || did_drop
+	return .
 
 /obj/item/organ/hand/get_damage_type(var/atom/attacker,var/atom/victim)
 

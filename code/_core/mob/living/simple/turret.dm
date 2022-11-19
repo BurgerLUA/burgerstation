@@ -26,6 +26,18 @@
 
 	soul_size = null
 
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		STAMCRIT = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		DISARM = TRUE,
+		GRAB = TRUE,
+		PAINCRIT = TRUE
+	)
+
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 

@@ -24,12 +24,9 @@
 		STAMCRIT = TRUE,
 		STAGGER = TRUE,
 		CONFUSED = TRUE,
-		CRIT = TRUE,
-		REST = TRUE,
-		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE,
-		FIRE = TRUE
+		GRAB = TRUE,
+		PAINCRIT = TRUE
 	)
 
 	var/next_revive = 0
@@ -99,6 +96,17 @@
 
 	loadout = /loadout/pirate/mate
 
+	status_immune = list(
+		STUN = TRUE,
+		SLEEP = TRUE,
+		PARALYZE = TRUE,
+		STAMCRIT = TRUE,
+		STAGGER = TRUE,
+		CONFUSED = TRUE,
+		DISARM = TRUE,
+		GRAB = TRUE,
+		PAINCRIT = TRUE
+	)
 
 /mob/living/advanced/npc/pirate_crew
 	name = "skeleton crew"

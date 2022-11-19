@@ -21,11 +21,10 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 		STAMCRIT = TRUE,
 		STAGGER = TRUE,
 		CONFUSED = TRUE,
-		CRIT = TRUE,
-		REST = TRUE,
-		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE,
+		PAINCRIT = TRUE
 	)
 
 	ai = /ai/boss/xeno_queen

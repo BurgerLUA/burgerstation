@@ -31,13 +31,10 @@
 		STAMCRIT = TRUE,
 		STAGGER = TRUE,
 		CONFUSED = TRUE,
-		CRIT = TRUE,
-		REST = TRUE,
-		ADRENALINE = TRUE,
 		DISARM = TRUE,
-		DRUGGY = TRUE,
-		FIRE = FALSE,
-		GRAB = TRUE
+		FIRE = TRUE,
+		GRAB = TRUE,
+		PAINCRIT = TRUE
 	)
 
 	iff_tag = "Goblin"
