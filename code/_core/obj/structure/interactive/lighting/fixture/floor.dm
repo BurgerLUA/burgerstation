@@ -22,6 +22,14 @@
 	desired_light_power = 0.5
 	desired_light_range = 16
 
+/obj/structure/interactive/lighting/fixture/floor/stronger/rcd/Finalize()
+	. = ..()
+	new /light_source(src)
+	desired_light_color = color
+	update_sprite()
+	update_atom_light()
+	update_icon()
+
 
 /obj/structure/interactive/lighting/fixture/floor/color
 	name = "colored light"

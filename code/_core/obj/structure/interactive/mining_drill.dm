@@ -8,7 +8,7 @@
 	var/drill_counter = 0
 	can_rotate = FALSE
 
-	var/obj/structure/interactive/ground_ore_deposit/found_deposit
+	var/obj/structure/interactive/ore_deposit_ground/found_deposit
 
 	collision_flags = FLAG_COLLISION_WALL
 
@@ -24,12 +24,19 @@
 	desired_light_range = 2
 	desired_light_color = "#FFFFFF"
 
+/obj/structure/interactive/mining_drill/Finalize()
+	SShorde.all_drills += src
+	SShorde.all_drills[src] = world.time + SECONDS_TO_DECISECONDS(15)
+	. = ..()
+
+
 /obj/structure/interactive/mining_drill/Destroy()
 	found_deposit = null
+	SShorde.all_drills -= src
 	. = ..()
 
 /obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 10),/material/steel)
+	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)
 	. = ..()
 	qdel(src)
 
@@ -103,7 +110,7 @@
 	if(!found_deposit)
 		found_deposit = locate() in src.loc
 
-	 if(!anchored || !found_deposit || found_deposit.ore_score <= 0 || found_deposit.qdeleting)
+	 if(!anchored || !found_deposit || found_deposit.ore_count <= 0 || found_deposit.qdeleting)
 	 	deactivate()
 	 	found_deposit = null
 	 	return FALSE
@@ -111,8 +118,14 @@
 	drill_depth++
 	if(drill_depth >= 100)
 		drill_counter++
-		if(drill_counter > 30)
-			found_deposit.mine_ore()
+		if(drill_counter > 60)
+			found_deposit.drop_ore()
+			found_deposit.ore_count--
+			if(found_deposit.ore_count <= 0 )
+				qdel(found_deposit)
+				src.visible_message(span("warning","The [found_deposit.name] runs dry!"))
+				found_deposit = null
+				deactivate()
 			drill_counter = 0
 
 	return TRUE

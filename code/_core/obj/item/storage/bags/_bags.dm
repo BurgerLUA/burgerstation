@@ -105,16 +105,31 @@
 /obj/item/storage/bags/mining
 	name = "mining bag"
 	desc = "What if i put my mining bed next to yours?"
-	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots. Holds up to 60 ores and ingots."
+	desc_extended = "A giant orange bag that is designed to hold all your ores. Holds up to 60 ores and ingots. Holds up to 50 ore per slot."
 	icon_state = "mining"
 
 	value = 400
 
 	container_max_size = SIZE_2
-	dynamic_inventory_count = 6
+	dynamic_inventory_count = 8
 	container_max_slots = 10
 	container_whitelist = list(
-		/obj/item/material/ore,
+		/obj/item/material/ore
+	)
+
+	value = 100
+/obj/item/storage/bags/blacksmithing
+	name = "blacksmithing bag"
+	desc = "Just kidding... Unless?"
+	desc_extended = "A giant black bag that is designed to hold all your ingots. Holds up to 100 ingots per slot."
+	icon_state = "blacksmithing"
+
+	value = 400
+
+	container_max_size = SIZE_2
+	dynamic_inventory_count = 8
+	container_max_slots = 2
+	container_whitelist = list(
 		/obj/item/material/ingot
 	)
 
@@ -125,7 +140,7 @@
 	icon_state = "mining_bluespace"
 	desc = "I got that bluespace fever and I can't sleep!"
 	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores and ingots."
-	dynamic_inventory_count = 6
+	dynamic_inventory_count = 8
 	container_max_slots = 30
 
 	value = 6000
@@ -233,7 +248,7 @@
 
 /obj/item/storage/pillbottle/bicaridine
 	name = "bicaridine pill bottle"
-	desc = "Contains 20 20u bicaridine pills."
+	desc = "Contains 20 5u bicaridine pills."
 
 /obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -242,7 +257,7 @@
 
 /obj/item/storage/pillbottle/bicaridine_small
 	name = "bicaridine pill bottle"
-	desc = "Contains 10 20u bicaridine pills."
+	desc = "Contains 10 5u bicaridine pills."
 
 /obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -251,7 +266,7 @@
 
 /obj/item/storage/pillbottle/kelotane
 	name = "kelotane pill bottle"
-	desc = "Contains 20 20u kelotane pills."
+	desc = "Contains 20 5u kelotane pills."
 
 /obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -260,7 +275,7 @@
 
 /obj/item/storage/pillbottle/kelotane_small
 	name = "kelotane pill bottle"
-	desc = "Contains 10 20u kelotane pills."
+	desc = "Contains 10 5u kelotane pills."
 
 /obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -269,7 +284,7 @@
 
 /obj/item/storage/pillbottle/dylovene
 	name = "dylovene pill bottle"
-	desc = "Contains 20 20u dylovene pills."
+	desc = "Contains 20 5u dylovene pills."
 
 /obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -278,7 +293,7 @@
 
 /obj/item/storage/pillbottle/dylovene_small
 	name = "dylovene pill bottle"
-	desc = "Contains 10 20u dylovene pills."
+	desc = "Contains 10 5u dylovene pills."
 
 /obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -288,7 +303,7 @@
 
 /obj/item/storage/pillbottle/iron
 	name = "iron pill bottle"
-	desc = "Contains 20 20u iron pills."
+	desc = "Contains 20 10u iron pills."
 
 /obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -297,7 +312,7 @@
 
 /obj/item/storage/pillbottle/iron_small
 	name = "iron pill bottle"
-	desc = "Contains 10 20u iron pills."
+	desc = "Contains 10 10u iron pills."
 
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -306,7 +321,7 @@
 
 /obj/item/storage/pillbottle/omnizine
 	name = "omnizine pill bottle"
-	desc = "Contains 20 20u omnizine pills."
+	desc = "Contains 20 10u omnizine pills."
 
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -315,7 +330,7 @@
 
 /obj/item/storage/pillbottle/charcoal
 	name = "charcoal pill bottle"
-	desc = "Contains 20 20u charcoal pills."
+	desc = "Contains 20 10u charcoal pills."
 
 /obj/item/storage/pillbottle/charcoal/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -324,7 +339,7 @@
 
 /obj/item/storage/pillbottle/antihol_small
 	name = "antihol bottle"
-	desc = "Contains 10 20u antihol pills."
+	desc = "Contains 10 10u antihol pills."
 
 /obj/item/storage/pillbottle/antihol_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -343,7 +358,7 @@
 
 /obj/item/storage/pillbottle/potassium_iodide_small
 	name = "potassium iodide pill bottle"
-	desc = "Contains 10 20u potassium iodide pills."
+	desc = "Contains 10 10u potassium iodide pills."
 
 /obj/item/storage/pillbottle/potassium_iodide_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -358,8 +373,6 @@
 	for(var/i=1,i<=10,i++)
 		new /obj/item/container/edible/pill/space_prussian_blue(src)
 	. = ..()
-
-
 
 /obj/item/storage/bagofhoarding
 	name = "bag of hoarding"

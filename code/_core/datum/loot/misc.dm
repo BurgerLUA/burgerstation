@@ -34,7 +34,8 @@
 		/obj/item/storage/wallet/random_colonist = 20,
 		/loot/medicine/kits = 5,
 		/loot/medicine/misc_medicine = 10,
-		/loot/misc/cigarettes = 20
+		/loot/misc/cigarettes = 20,
+		/obj/item/paper/recipe = 25
 
 	)
 
@@ -86,6 +87,7 @@
 
 /loot/misc/kitchen
 	loot_table = list(
+		/obj/item/paper/recipe = 50,
 		/loot/misc/food_drink = 25,
 		/loot/misc/baking = 100,
 		/obj/item/weapon/melee/sword/spoon = 10,
@@ -263,6 +265,7 @@
 		/loot/soulgem = 50,
 		/loot/soulgem/filled = 10,
 		/loot/supply_crate/all = 5,
+		/obj/item/paper/recipe = 10,
 		/obj/item/bullet_cartridge/arrow/ashen{amount=5} = 70,
 		/obj/item/clothing/belt/belt_quiver = 30,
 		/obj/item/cannonball = 5,
@@ -277,3 +280,47 @@
 
 	chance_none = 20
 	loot_count = 1
+/loot/misc/ingots
+	loot_table = list(
+		/obj/item/material/ingot/aluminium{amount = 50} = 1,
+		/obj/item/material/ingot/brass{amount = 50} = 1,
+		/obj/item/material/ingot/cobalt{amount = 50} = 1,
+		/obj/item/material/ingot/copper{amount = 50} = 1,
+		/obj/item/material/ingot/diamond{amount = 50} = 1,
+		/obj/item/material/ingot/electrum{amount = 50} = 1,
+		/obj/item/material/ingot/gold{amount = 50} = 1,
+		/obj/item/material/ingot/iron{amount = 50} = 1,
+		/obj/item/material/ingot/magnesium{amount = 50} = 1,
+		/obj/item/material/ingot/nickel{amount = 50} = 1,
+		/obj/item/material/ingot/phoron{amount = 50} = 1,
+		/obj/item/material/ingot/plasteel{amount = 50} = 1,
+		/obj/item/material/ingot/silver{amount = 50} = 1,
+		/obj/item/material/ingot/steel{amount = 50} = 1,
+		/obj/item/material/ingot/titanium{amount = 50} = 1,
+		/obj/item/material/ingot/uranium{amount = 50} = 1,
+		/obj/item/material/ingot/uranium_235{amount = 50} = 1,
+		/obj/item/material/ingot/zinc{amount = 50} = 1,
+	)
+	loot_count = 2
+/loot/misc/sheets
+	loot_table = list(
+		/obj/item/material/sheet/aluminium{amount = 50} = 1,
+		/obj/item/material/sheet/brass{amount = 50} = 1,
+		/obj/item/material/sheet/cobalt{amount = 50} = 1,
+		/obj/item/material/sheet/copper{amount = 50} = 1,
+		/obj/item/material/sheet/diamond{amount = 50} = 1,
+		/obj/item/material/sheet/electrum{amount = 50} = 1,
+		/obj/item/material/sheet/gold{amount = 50} = 1,
+		/obj/item/material/sheet/iron{amount = 50} = 1,
+		/obj/item/material/sheet/magnesium{amount = 50} = 1,
+		/obj/item/material/sheet/nickel{amount = 50} = 1,
+		/obj/item/material/sheet/phoron{amount = 50} = 1,
+		/obj/item/material/sheet/plasteel{amount = 50} = 1,
+		/obj/item/material/sheet/silver{amount = 50} = 1,
+		/obj/item/material/sheet/steel{amount = 50} = 1,
+		/obj/item/material/sheet/titanium{amount = 50} = 1,
+		/obj/item/material/sheet/uranium{amount = 50} = 1,
+		/obj/item/material/sheet/uranium_235{amount = 50} = 1,
+		/obj/item/material/sheet/zinc{amount = 50} = 1,
+	)
+	loot_count = 2

@@ -85,3 +85,21 @@
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount/click_self(var/mob/caller)
 	return TRUE
+
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel
+	name = "\improper revolving grenade launcher"
+	desc = "Thoomp! Thoomp! Thoomp!"
+	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
+	icon = 'icons/obj/item/weapons/ranged/grenade_launcher_multi.dmi'
+	icon_state = "inventory"
+	value = 2400
+
+	company_type = "Solarian"
+
+	tier = 2
+
+	shoot_delay = 20
+
+	automatic = FALSE
+
+	bullet_count_max = 4

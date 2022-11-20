@@ -28,10 +28,15 @@ obj/structure/scenery/bush/snow/New()
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	health = /health/construction/
+	material_id = /material/wood
 	health_base = 250
 	mouse_opacity = 1
 	density = TRUE
 
+/obj/structure/interactive/tree/on_destruction(mob/caller, damage)
+	if(caller in orange(1,src))
+		CREATE(/obj/item/material/wood/oak,get_turf(src))
+	. = ..()
 /obj/structure/interactive/tree/Finalize()
 	. = ..()
 	if(is_simulated(src.loc))
@@ -60,8 +65,6 @@ obj/structure/scenery/bush/snow/New()
 /obj/structure/interactive/tree/pine/New(var/desired_loc)
 	icon_state = "pine_[rand(1,3)]"
 	return ..()
-
-
 
 /obj/structure/interactive/tree/evergreen
 	name = "evergreen tree"

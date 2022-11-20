@@ -27,7 +27,8 @@
 	layer = 100
 
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
-	create_destruction(src,list(/obj/item/material/sandstone/ = 5),material_id)
+	if(caller in orange(1,src))
+		create_destruction(src,list(/obj/item/material/sandstone/ = 1),material_id)
 	CREATE(/obj/structure/scenery/rocks,src)
 	return ..()
 

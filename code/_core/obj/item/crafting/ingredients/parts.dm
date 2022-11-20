@@ -43,3 +43,42 @@
 	icon_state = "p_tank"
 	value = 750
 	crafting_id = "p_tank"
+//Rub rub sandpaper.
+/obj/item/crafting/ingredient/part/sandpaper
+	name = "sandpaper"
+	desc = "coarse and rough"
+	desc_extended = "A piece of paper covered in rough grains of sand. Useful for smoothing metals."
+	icon_state = "sand_paper"
+	value = 10
+//Doesnt go boom
+/obj/item/crafting/ingredient/part/gunpowder
+	name = "gunpowder"
+	desc = "Kaboom?"
+	desc_extended = "Some gunpowder wrapped in a nice package."
+	icon_state = "gunpowder"
+	value = 5
+	amount_max = 100
+//Mold for casings, 
+/obj/item/crafting/ingredient/part/casing_mold
+	name = "casing mold"
+	desc = "Just need some brass"
+	desc_extended = "A mold to make bullet casings."
+	icon_state = "casing_mold"
+	value = 100
+	amount_max = 1
+//the actual bullet casing.
+/obj/item/crafting/ingredient/part/bullet_casings
+	name = "bullet casings"
+	desc = "How they fit every caliber? Theres a lot of them."
+	desc_extended = "A large amount of bullet casings, in serveral calibers."
+	icon_state = "bullet_casings"
+	value = 25
+	amount_max = 100
+//box
+/obj/item/crafting/ingredient/part/metal_box
+	name = "empty metal box"
+	desc = "An empty metal box."
+	desc_extended = "An empty metal box, much to small to hold anything other than cogs and parts."
+	icon_state = "box"
+	value = 100
+	amount_max = 100

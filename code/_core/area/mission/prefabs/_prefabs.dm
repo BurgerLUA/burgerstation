@@ -17,6 +17,7 @@
 	link_to_parent_apc = TRUE
 	interior = TRUE
 	trackable = FALSE
+	flags_area = FLAG_AREA_NO_BLOODCRAWL
 
 /area/mission/prefab/vault/vault_01
 

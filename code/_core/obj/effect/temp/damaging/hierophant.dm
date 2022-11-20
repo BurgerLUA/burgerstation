@@ -77,7 +77,7 @@
 		blasts_left--
 		var/turf/T = get_step(src,dir)
 		var/turf/current_turf = get_turf(src)
-		if(!current_turf.is_safe_move(FALSE) && !T.is_safe_move(FALSE))
+		if(!current_turf.is_safe_move(FALSE) || !T.is_safe_move(FALSE))
 			return FALSE
 		var/obj/effect/temp/hazard/hierophant/targeted/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left

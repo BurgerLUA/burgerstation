@@ -17,7 +17,7 @@
 
 	crafting_id = "smelter"
 
-	crafting_type = /recipe/smelter/
+	crafting_type = "smelter"
 
 	value = 25
 

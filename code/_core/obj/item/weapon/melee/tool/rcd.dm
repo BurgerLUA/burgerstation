@@ -67,7 +67,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
 
-		var/turf/T = isturf(object)
+		var/turf/T = get_turf(object)
 		if(!rcd_disk)
 			caller.to_chat(span("warning","ERROR: There is no construction disk loaded in \the [src.name]!"))
 			return TRUE

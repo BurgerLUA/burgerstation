@@ -16,6 +16,11 @@
 	damage_mod = SURPLUS_MUL
 	penetration_mod = ARMOR_MUL
 
+/damagetype/ranged/bullet/smg_4mm/du
+	damage_mod = DU_MUL
+	penetration_mod = DU_MUL
+
+
 /damagetype/ranged/bullet/smg_4mm/toxin
 	attack_damage_base = list(
 		BIO = 15,

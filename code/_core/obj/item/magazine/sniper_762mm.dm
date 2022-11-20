@@ -50,3 +50,21 @@
 	icon = 'icons/obj/item/magazine/762_rifle_ap.dmi'
 
 	ammo = /obj/item/bullet_cartridge/rifle_308/nato/ap
+
+/obj/item/magazine/sniper_308/du
+	name = "\improper .308 DP sniper magazine"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one contains DU rounds."
+	icon = 'icons/obj/item/magazine/762_rifle_du.dmi'
+	prem_restock_ammo = /obj/item/bullet_cartridge/rifle_308
+	rarity = RARITY_UNCOMMON
+	ammo = /obj/item/bullet_cartridge/rifle_308/du
+	value_burgerbux = 1
+
+/obj/item/magazine/sniper_308/nato/du
+	name = "\improper 7.62mm DP sniper magazine"
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one contains DU rounds."
+	icon = 'icons/obj/item/magazine/762_rifle_du.dmi'
+	prem_restock_ammo = /obj/item/bullet_cartridge/rifle_308/nato
+	rarity = RARITY_UNCOMMON
+	ammo = /obj/item/bullet_cartridge/rifle_308/nato/du
+	value_burgerbux = 1

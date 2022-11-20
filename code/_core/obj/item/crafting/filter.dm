@@ -15,7 +15,7 @@
 
 	crafting_id = "filter"
 
-	crafting_type = /recipe/filter/
+	crafting_type = "filter"
 
 	value = 25
 
