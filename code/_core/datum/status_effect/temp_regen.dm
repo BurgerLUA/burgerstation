@@ -9,22 +9,10 @@
 	default_magnitude = 1
 
 	affects_dead = FALSE
-	var/base_to_heal = 0.1
 
 /status_effect/temp_regen/on_effect_life(mob/living/owner, magnitude, duration)
-	if(!owner.health)
-		return FALSE
-	var/to_heal = -(base_to_heal * magnitude)
-	owner.health.adjust_loss_smart(brute = to_heal,burn = to_heal,tox = to_heal)
-	return TRUE
-/status_effect/temp_regen/can_add_status_effect(atom/attacker, mob/living/victim)
+
+	owner.brute_regen_buffer += magnitude*0.1
+	owner.burn_regen_buffer += magnitude*0.1
+
 	. = ..()
-	if(victim.status_effects[TEMP_REGEN])
-		return FALSE
-/status_effect/temp_regen/on_effect_removed(mob/living/owner, magnitude, duration)
-	owner.visible_message(span("warning","\The [owner.name]'s wounds stop quivering!"),span("warning","Your wounds cease quivering!"))
-	. = ..()
-/status_effect/temp_regen/on_effect_added(mob/living/owner, atom/source, magnitude, duration, stealthy)
-	owner.visible_message(span("warning","\The [owner.name]'s wounds begin to close!"),span("warning","You feel your wounds closing..."))
-	. = ..()
-	

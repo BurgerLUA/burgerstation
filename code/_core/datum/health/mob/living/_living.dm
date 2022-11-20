@@ -29,6 +29,8 @@
 	var/armor_bonus = FLOOR(L.intoxication*0.025 + max(0,L.nutrition - 1000)*0.05,5)
 	var/physical_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5)
 
+	physical_bonus += max(0,STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR))
+
 	var/list/bonus_armor = list(
 		BLADE = armor_bonus + physical_bonus,
 		BLUNT = armor_bonus + physical_bonus,

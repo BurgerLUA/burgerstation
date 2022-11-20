@@ -22,38 +22,23 @@
 
 	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
 	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.
-	var/utility_cost = 100 // Mana cost for util gems.
-	var/cost_mana = 0 //generated on Initialize()
-	var/mana_cost_user = 0 // Stored value of how much mana should be taken from the user based on arcane armor. Recalculated on shoot
+
+	var/base_mana_cost = 0 //The base mana cost for this item. Calculated on Initialize().
+	var/mana_cost_override = 0 //The override value for mana cost for this item. For uitlity spells or stuff that add extra effects.
 
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
 	. *= 1 - (spread_per_shot/360)
 
 /obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
-	if(utilitygem || projectile_utility)
-		return utility_cost
+	if(mana_cost_override)
+		return mana_cost_override
 	. = get_damage_per_hit(100)
 	. *= bullet_count
 	. *= projectile_speed/TILE_SIZE
 	. *= 1 - (spread_per_shot/360)
 	. *= 0.25
 	. = CEILING(.,1)
-
-
-
-/obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
-
-	. = cost_mana
-
-	if(attachment_stats["mana_cost_multiplier"])
-		. *= attachment_stats["mana_cost_multiplier"]
-
-	if(. && casting_type && is_living(caller))
-		var/mob/living/L = caller
-		. *= 1 / (1+L.get_skill_power(casting_type)*3) //Up to 25% reduction at level 100.
-
-
 
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
 
@@ -100,7 +85,7 @@
 		attachment_stats["damage_multiplier"] *= W.wand_damage_multiplier
 	else
 		attachment_stats["damage_multiplier"] = W.wand_damage_multiplier
-	mana_cost_user = 0
+
 	return TRUE
 
 
@@ -114,57 +99,31 @@
 
 /obj/item/weapon/ranged/spellgem/Initialize()
 	. = ..()
-	cost_mana = get_base_mana_cost()
+	base_mana_cost = get_base_mana_cost()
 
 /obj/item/weapon/ranged/spellgem/Finalize()
 	. = ..()
 	update_sprite()
 
-/obj/item/weapon/ranged/spellgem/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
-
-	if(get_ammo_count() < 1)
-		return FALSE
-
-	return ..()
-
-/obj/item/weapon/ranged/spellgem/get_ammo_count()
-
-	var/mob/living/owner = get_owner()
-
-	if(!owner)
-		return 0
-
-	if(!owner.health)
-		return 1
-
-	var/final_cost = mana_cost_user
-
-	if(final_cost <= 0)
-		return 1
-
-	return owner && cost_mana ? 1 : 0 //Mana cost and fizzle in handle_ammo
-
 /obj/item/weapon/ranged/spellgem/handle_ammo(var/mob/caller,var/bullet_position=1)
 
-	if(!is_advanced(caller))
+	if(!caller.health || !is_advanced(caller))
 		return ..()
 
 	var/mob/living/advanced/A = caller
-	if(!A.health)
-		return ..()
 
-	var/final_cost = mana_cost_user
+	var/final_mana_cost = base_mana_cost
+	if(length(attachment_stats) && attachment_stats["mana_cost_multiplier"])
+		final_mana_cost *= attachment_stats["mana_cost_multiplier"]
+	final_mana_cost *= 1 / (1+A.get_skill_power(casting_type)*3) //Up to 25% reduction at level 100.
 
-	if(final_cost != 0)
-		if (final_cost > A.health.mana_current)
-			A.health.adjust_mana(min(-A.health.mana_current,-final_cost))
-			caller.to_chat(span("warning","You push with all your mana, but the spell fizzles!"))
-			return TRUE
-		else
-			A.health.adjust_mana(-final_cost)
-			return null
-	return null
+	if(final_mana_cost > A.health.mana_current)
+		caller.to_chat(span("warning","You try to push with all your mana, but the spell fizzles!"))
+		return TRUE //Fail
 
+	A.health.adjust_mana(-final_mana_cost)
+
+	return null //Null is good.
 
 /obj/item/weapon/ranged/spellgem/get_heat_spread()
 	return 0
@@ -178,38 +137,28 @@
 /obj/item/weapon/ranged/spellgem/get_movement_spread(var/mob/living/L)
 	return 0
 
-/obj/item/weapon/ranged/spellgem/on_drop(obj/hud/inventory/old_inventory, silent)
-	mana_cost_user = 0
-	. = ..()
-
-
 /obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called = FALSE)
-	if(mana_cost_user <= 0)
-		mana_cost_user = get_mana_cost(caller)
 
 	if(!utilitygem)
-		. = ..()
-	else
+		return ..()
 
-		if(!pre_shoot(caller,object,location,params,damage_multiplier))
-			return FALSE
+	if(!pre_shoot(caller,object,location,params,damage_multiplier))
+		return FALSE
 
-		if(!(handle_ammo(caller) == null))
-			return FALSE
-		var/quality_bonus = get_quality_bonus(0.5,2)
-		var/condition_to_use = 1
-		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
+	if(handle_ammo(caller) != null)
+		return FALSE
 
+	var/quality_bonus = get_quality_bonus(0.5,2)
+	var/condition_to_use = 1
+	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
 
-		last_shoot_time = world.time
-		next_shoot_time = world.time + shoot_delay_to_use
+	last_shoot_time = world.time
+	next_shoot_time = world.time + shoot_delay_to_use
 
-		condition_to_use = max(0,5 - max(0,quality_bonus*4))
-		condition_to_use += FLOOR(heat_current*5,1)
+	condition_to_use = max(0,5 - max(0,quality_bonus*4))
+	condition_to_use += FLOOR(heat_current*5,1)
 
-		update_sprite()
-
-		use_condition(condition_to_use)
+	use_condition(condition_to_use)
 
 /obj/item/weapon/ranged/spellgem/update_overlays()
 	. = ..()

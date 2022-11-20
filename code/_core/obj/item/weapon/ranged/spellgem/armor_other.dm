@@ -11,9 +11,9 @@
 	projectile_speed = TILE_SIZE*0.75 - 1
 
 	use_loyalty_tag = FALSE
-	
+
 	projectile_utility = TRUE
-	utility_cost = 50
+	mana_cost_override = 50
 
 	projectile = /obj/projectile/magic/buff/armor
 	ranged_damage_type = /damagetype/ranged/magic/buff //AKA no dmg

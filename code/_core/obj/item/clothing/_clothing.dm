@@ -4,8 +4,6 @@
 	worn_layer = LAYER_MOB
 	var/flags_clothing = FLAG_CLOTHING_NONE
 
-	var/should_go_poof = FALSE //Used solely to find "Imaginary" equipment that should poof when told to.
-
 	appearance_flags = PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
 
 	weight = 0

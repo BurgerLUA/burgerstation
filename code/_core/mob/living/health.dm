@@ -3,11 +3,7 @@
 	if(!health || has_status_effect(IMMORTAL))
 		return FALSE
 
-	var/health_added = 0
-	if(has_status_effect(UNDYING))
-		health_added += STATUS_EFFECT_MAGNITUDE(src,UNDYING)
-
-	if((health.health_current + health_added) <= death_threshold)
+	if((health.health_current + STATUS_EFFECT_MAGNITUDE(src,UNDYING)) <= death_threshold)
 		return TRUE
 
 	return FALSE
@@ -74,8 +70,8 @@
 			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon,atom_to_butcher)
 
 	if(!dead && has_status_effect(PARRIED))
-		var/stun_duration = STATUS_EFFECT_DURATION(src,STUN)*2
-		var/stun_magnitude = STATUS_EFFECT_MAGNITUDE(src,STUN)*2
+		var/stun_duration = STATUS_EFFECT_DURATION(src,PARRIED)*2
+		var/stun_magnitude = STATUS_EFFECT_MAGNITUDE(src,PARRIED)*2
 		remove_status_effect(PARRIED)
 		add_status_effect(STUN,stun_magnitude,stun_duration)
 

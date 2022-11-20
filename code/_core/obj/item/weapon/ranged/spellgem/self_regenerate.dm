@@ -11,9 +11,10 @@
 
 	utilitygem = TRUE
 
-	utility_cost = 120 //Novice mages only!
-	
+	mana_cost_override = 120 //Adept mages only!
+
 	value = 1200
+
 /obj/item/weapon/ranged/spellgem/self_regenerate/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called)
 	if(istype(caller,/mob/living))
 		..()
