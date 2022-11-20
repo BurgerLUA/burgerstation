@@ -159,7 +159,6 @@
 		var/magic_number = (500/6)**1.25
 		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
-		sockets = min(sockets,sockets_max)
 
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)

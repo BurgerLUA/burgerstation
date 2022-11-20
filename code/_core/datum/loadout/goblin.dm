@@ -25,21 +25,20 @@
 		/obj/item/weapon/ranged/wand/branch = 20,
 		/obj/item/weapon/ranged/wand/quartz = 15,
 		/obj/item/weapon/ranged/wand/twisted = 5,
-		/obj/item/weapon/ranged/spellgem/flame = 10,
-		/obj/item/weapon/ranged/spellgem/inferno = 10,
-		/obj/item/weapon/ranged/spellgem/ice_spear = 10,
-		/obj/item/weapon/ranged/spellgem/fire_spear = 10,
-		/obj/item/weapon/ranged/spellgem/shock = 10,
-		/obj/item/weapon/ranged/spellgem/frost = 10
 	)
 
-	possible_gems = list(
+	var/list/random_gem = list(
 		/obj/item/weapon/ranged/spellgem/flame = 1,
 		/obj/item/weapon/ranged/spellgem/ice_spear = 1,
 		/obj/item/weapon/ranged/spellgem/fire_spear = 1,
 		/obj/item/weapon/ranged/spellgem/shock = 1,
 		/obj/item/weapon/ranged/spellgem/frost = 1
 	)
+
+/loadout/goblin/mage/get_spawning_items()
+	. = ..()
+	. += pickweight(random_gem)
+
 
 /loadout/goblin/warrior
 	spawning_items = list(

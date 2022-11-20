@@ -46,6 +46,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/obj/item/organ)
 	createtypecache(/obj/item/weapon)
 	createtypecache(/obj/item/weapon/ranged)
+	createtypecache(/obj/item/weapon/ranged/wand)
 	createtypecache(/obj/item/weapon/ranged/bullet)
 	createtypecache(/obj/item/weapon/ranged/bullet/magazine)
 	createtypecache(/obj/item/magazine)
