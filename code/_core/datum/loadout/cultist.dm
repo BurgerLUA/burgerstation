@@ -8,19 +8,27 @@
 	)
 
 	var/list/random_tome = list(
-		/obj/item/weapon/ranged/spellgem/chaos,
-		/obj/item/weapon/ranged/spellgem/cult
+		/obj/item/weapon/ranged/spellgem/chaos = 20,
+		/obj/item/weapon/ranged/spellgem/cult = 20,
+		/obj/item/weapon/ranged/spellgem/blackflame = 20,
+		/obj/item/weapon/ranged/wand/twisted = 20,
+		/obj/item/weapon/ranged/wand/profane = 10,
+		/obj/item/weapon/ranged/wand/sage = 5
 	)
 
 	var/list/random_weapon = list(
 		/obj/item/weapon/melee/sword/claymore/cult,
 		/obj/item/weapon/unarmed/holy/spiked
-
+	)
+	possible_gems = list(
+		/obj/item/weapon/ranged/spellgem/blackflame = 1,
+		/obj/item/weapon/ranged/spellgem/chaos = 2,
+		/obj/item/weapon/ranged/spellgem/cult = 2
 	)
 
 /loadout/cultist/get_spawning_items()
 	. = ..()
-	. += pick(random_weapon)
+	. += pickweight(random_weapon)
 	if(prob(25)) . += pick(random_tome)
 
 /loadout/cultist/old

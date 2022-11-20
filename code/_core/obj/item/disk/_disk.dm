@@ -88,6 +88,28 @@
 		"cost" = 500
 	)
 
+/obj/item/disk/rcd/light
+	name = "rcd data disk (circle light)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Storm Light."
+	data = list(
+		"name" = "circle_light.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/lighting/fixture/floor/stronger/rcd,
+		"cost" = 100
+	)
+
+/obj/item/disk/rcd/tube_light
+	name = "rcd data disk (tube light)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a Tube Light."
+	data = list(
+		"name" = "tube_light.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/lighting/fixture/tube/station/rcd,
+		"cost" = 100
+	)
+
 /obj/item/disk/rcd/diverter
 	name = "rcd data disk (air diverter)"
 	desc = "GET THAT FUKKEN D-- Oh, nevermind."
@@ -151,6 +173,17 @@
 		"name" = "airlock.obj",
 		"effect" = /obj/effect/temp/sparkles,
 		"object" = /obj/structure/interactive/door/airlock,
+		"cost" = 1000
+	)
+
+/obj/item/disk/rcd/flap
+	name = "rcd data disk (flap)"
+	desc = "GET THAT FUKKEN D-- Oh, nevermind."
+	desc_extended = "Stores blueprints for use in an RCD. This one contains schematics for a rubber flap."
+	data = list(
+		"name" = "flap.obj",
+		"effect" = /obj/effect/temp/sparkles,
+		"object" = /obj/structure/interactive/plastic_flaps,
 		"cost" = 1000
 	)
 

@@ -49,3 +49,15 @@
 	if(is_wall(victim))
 		return 4
 	return ..()
+
+/damagetype/melee/club/pickaxe/diamond
+
+	attack_damage_base = list(
+		BLUNT = 20,
+		PIERCE = 40
+	)
+
+	attack_damage_penetration = list(
+		BLUNT = 100,
+		PIERCE = 100,
+	)

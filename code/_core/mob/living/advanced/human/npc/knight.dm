@@ -6,6 +6,8 @@
 	ai = /ai/advanced
 	class = "crusader"
 
+	soul_size = SOUL_SIZE_COMMON
+
 /mob/living/advanced/npc/deus_vault/Initialize()
 
 	. = ..()

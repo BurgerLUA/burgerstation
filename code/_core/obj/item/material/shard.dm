@@ -7,7 +7,6 @@
 	amount_max = 1
 	amount_max_icon = 1
 
-	crafting_id = "shard"
 
 	material_multiplier = 0.5
 

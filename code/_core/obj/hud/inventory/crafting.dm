@@ -9,10 +9,6 @@
 	should_draw = FALSE
 	drag_to_take = FALSE
 
-	item_blacklist = list(
-		/obj/item/crafting/
-	)
-
 
 /obj/hud/inventory/crafting/obj/hud/inventory/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 

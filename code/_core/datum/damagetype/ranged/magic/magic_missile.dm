@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/magic_missile
 	attack_damage_base = list(
-		ARCANE = 60*0.5
+		ARCANE = 60*0.55
 	)
 
 	attribute_stats = list(

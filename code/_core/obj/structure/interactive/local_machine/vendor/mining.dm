@@ -18,6 +18,7 @@
 		/obj/item/storage/pouch/triple/brown,
 		/obj/item/weapon/melee/torch/lantern,
 		/obj/item/storage/bags/mining,
+		/obj/item/storage/bags/blacksmithing,
 		/obj/item/crafting/smelter,
 		/obj/item/weapon/melee/tool/pickaxe,
 		/obj/item/weapon/melee/tool/shovel,
@@ -30,7 +31,6 @@
 		/obj/item/legion_core_stabilizer,
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
-		/obj/item/crafting/workbench,
 		/obj/item/clothing/overwear/hardsuit/mining
 	)
 
@@ -51,6 +51,7 @@
 		/obj/item/storage/pouch/triple/brown,
 		/obj/item/weapon/melee/torch/lantern,
 		/obj/item/storage/bags/mining,
+		/obj/item/storage/bags/blacksmithing,
 		/obj/item/crafting/smelter,
 		/obj/item/weapon/melee/tool/pickaxe,
 		/obj/item/weapon/melee/tool/shovel,

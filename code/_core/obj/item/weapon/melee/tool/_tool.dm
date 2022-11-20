@@ -20,6 +20,19 @@
 
 	value = 3
 
+/obj/item/weapon/melee/tool/hammer
+	name = "hammer"
+	desc = "Anythings one of these if you need it to be."
+	desc_extended = "A study hammer with which to bash things with. Not very good for combat, sadly."
+	icon = 'icons/obj/item/weapons/melee/tools/hammer.dmi'
+
+
+	size = SIZE_2
+	weight = 5
+
+	value = 5
+
+
 /obj/item/weapon/melee/tool/wrench
 	name = "wrench"
 	desc = "An adjustable, sizable, thermo-regulable wrench!"
@@ -173,7 +186,7 @@
 	name = "steel pickaxe"
 	desc = "MINIIIIIING DIAAAAAMOOOOOOONDS."
 	desc_extended = "An extremely outdated tool for digging through hard rock. Extremely effective, however, and always dose a guaranteed x4 critical hit multiplier when attacking turfs."
-	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe_steel.dmi'
+	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe/normal.dmi'
 
 	damage_type = /damagetype/melee/club/pickaxe/
 
@@ -186,6 +199,22 @@
 	size = SIZE_3
 	weight = 10
 
+/obj/item/weapon/melee/tool/pickaxe_diamond
+	name = "diamond pickaxe"
+	desc = "SO FAR I'VE GOT TWOOOOOOOOOOOO."
+	desc_extended = "An extremely outdated tool for digging through hard rock. Extremely effective, however, and always dose a guaranteed x4 critical hit multiplier when attacking turfs.\nMade of diamonds for some reason."
+	icon = 'icons/obj/item/weapons/melee/clubs/pickaxe/diamond.dmi'
+
+	damage_type = /damagetype/melee/club/pickaxe/diamond
+
+	flags_tool = FLAG_TOOL_PICKAXE
+
+	tool_time = SECONDS_TO_DECISECONDS(1.5)
+
+	value = 1200
+
+	size = SIZE_3
+	weight = 7
 
 /obj/item/weapon/melee/tool/shovel
 	name = "shovel"
@@ -203,3 +232,14 @@
 
 	size = SIZE_3
 	weight = 8
+
+/obj/item/weapon/melee/tool/botany
+	name = "enchanted weeder"
+	desc = "Why was it enchanted again?"
+	desc_extended = "An enchanted manual weeder. Required for the delicate gathering of certain magical flora."
+	icon = 'icons/obj/item/weapons/melee/tools/weeder.dmi'
+
+	value = 250
+
+	size = SIZE_1
+	weight = 1

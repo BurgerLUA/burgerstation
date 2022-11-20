@@ -10,7 +10,7 @@
 	iff_tag = "Beefman"
 	loyalty_tag = "Beefman"
 
-	movement_delay = 1 //Lowest possible.
+	movement_delay = 2 //2nd Lowest possible.
 
 	health_base = 50
 
@@ -56,3 +56,10 @@
 	if(horizontal)
 		return PLANE_MOB_SMALL
 	return PLANE_MOB_STEALTH //Always stealth.
+/mob/living/advanced/npc/beefman/on_walk()
+	var/turf/T = get_turf(src)
+	for(var/obj/effect/cleanable/B in T.contents)
+		qdel(B)
+		src.health.health_max += 5
+		src.health.adjust_loss_smart(-5,-5,-5)
+	. = ..()

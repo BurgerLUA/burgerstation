@@ -42,6 +42,8 @@
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/barrel_mod/reinforced_barrel = TRUE,
+		/obj/item/attachment/stock_mod/reinforced_stock = TRUE,
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE

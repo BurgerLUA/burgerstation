@@ -59,7 +59,7 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	if(!P)
 		CREATE(I,desired_loc)
 
-proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
+proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id = null)
 	for(var/k in objects_to_spawn)
 		if(!ispath(k))
 			var/atom/movable/M = k
@@ -68,7 +68,7 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id)
 		var/spawn_count = objects_to_spawn[k] ? objects_to_spawn[k] : 1
 		for(var/i=1,i<=spawn_count,i++)
 			var/obj/M = new k(T)
-			if(istype(M,/obj/item/material/))
+			if(istype(M,/obj/item/material/) && material_id)
 				var/obj/item/material/M2 = M
 				M2.material_id = material_id
 			INITIALIZE(M)

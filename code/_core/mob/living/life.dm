@@ -71,17 +71,7 @@
 		S.plane = PLANE_EFFECT
 		S.layer = 1000
 		S.name = "soul of [initial(name)]:"
-		switch(level)
-			if(0 to 20)
-				S.soul_size = SOUL_SIZE_COMMON
-			if(20 to 60)
-				S.soul_size = SOUL_SIZE_UNCOMMON
-			if(60 to 99)
-				S.soul_size = SOUL_SIZE_RARE
-			if(99 to 199)
-				S.soul_size = SOUL_SIZE_MYSTIC
-			if(199 to INFINITY)
-				S.soul_size = SOUL_SIZE_GODLY
+		S.soul_size = src.soul_size
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)

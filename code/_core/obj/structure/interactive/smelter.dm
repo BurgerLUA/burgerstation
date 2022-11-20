@@ -6,7 +6,7 @@
 	icon_state = "furnace"
 
 	plane = PLANE_OBJ
-
+	anchored = TRUE
 	pixel_y = 2
 
 	bullet_block_chance = 50
@@ -37,22 +37,44 @@
 	add_overlay(I2)
 
 
-/obj/structure/interactive/smelter/proc/smelt(var/atom/movable/O)
+/obj/structure/interactive/smelter/proc/smelt()
 
-	if(!istype(O,/obj/item/material/ore/))
-		return FALSE
-
-	var/obj/item/material/ore/I = O
-	var/obj/item/material/ingot/S = new(src.loc)
-	S.amount = I.amount
-	S.material_id = I.material_id
-	INITIALIZE(S)
-	GENERATE(S)
-	FINALIZE(S)
-	qdel(I)
-
+	for(var/obj/item/material/ore/O in contents)
+		if(O.amount >= 3)
+			var/material/material = O.material_id
+			var/ingottype = "/obj/item/material/ingot/[initial(material.name)]"
+			var/tocheck = text2path_safe(ingottype)
+			if(ispath(tocheck))
+				var/obj/item/material/ingot/I = new ingottype(src.loc)
+				INITIALIZE(I)
+				GENERATE(I)
+				FINALIZE(I)
+				O.add_item_count(-3)
 	return
+/obj/structure/interactive/smelter/proc/stack(var/obj/item/material/ore/O)
+	for(var/obj/item/material/ore/C in contents)
+		if(O.can_transfer_stacks_to(C))
+			O.transfer_amount_to(C)
 
 /obj/structure/interactive/smelter/Crossed(atom/movable/O)
-	smelt(O)
+	if(istype(O,/obj/item/material/ore/))
+		var/obj/item/material/ore/T = O
+		T.drop_item(src)
+		stack(T)
+	smelt()
 	return ..()
+/obj/structure/interactive/smelter/clicked_on_by_object(mob/caller, atom/object, location, control, params)
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the smelter."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the smelter."))
+				anchored = TRUE
+	else
+		for(var/obj/item/T in contents)
+			T.drop_item(get_turf(caller))
+		caller.to_chat(span("notice","You empty the smelter."))
+	. = ..()

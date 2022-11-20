@@ -18,13 +18,19 @@
 
 	company_type = "Wizard Federation"
 
+	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
+	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.
+	var/utility_cost = 100 // Mana cost for util gems.
 	var/cost_mana = 0 //generated on Initialize()
+	var/mana_cost_user = 0 // Stored value of how much mana should be taken from the user based on arcane armor. Recalculated on shoot
 
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
 	. *= 1 - (spread_per_shot/360)
 
 /obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
+	if(utilitygem || projectile_utility)
+		return utility_cost
 	. = get_damage_per_hit(100)
 	. *= bullet_count
 	. *= projectile_speed/TILE_SIZE
@@ -34,11 +40,17 @@
 
 
 
-
 /obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
 	. = cost_mana
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
+	if(is_advanced(caller))
+		var/health/mob/living/advanced/H = caller.health
+		var/list/arcanes = H.get_total_mob_defense(TRUE,FALSE)
+		var/mana_mul = 0
+		mana_mul = clamp(arcanes[ARCANE]/25,-75,75) // Basically, for every 25 armor total, gain or lose 1% mana efficiency
+		. *= (1 - mana_mul/100)
+
 
 
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
@@ -69,20 +81,25 @@
 			continue
 		if(!isnum(support_value))
 			continue
-		attachment_stats[support_type] *= (1/support_value)
+		if(modifier_count[support_type] > 1)
+			attachment_stats[support_type] *= (1/(modifier_count[support_type]-((1/3) * modifier_count[support_type])))
+		else
+			attachment_stats[support_type] *= (1/support_value)
+		if(support_type == "bullet_count")
+			attachment_stats[support_type] += modifier_count[support_type]
 
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
 	else
 		attachment_stats["mana_cost_multiplier"] = W.wand_mana_multiplier
-
+	if(attachment_stats["mana_cost_multiplier"] < 0.25)
+		attachment_stats["mana_cost_multiplier"] = 0.25
 	if(attachment_stats["damage_multiplier"])
 		attachment_stats["damage_multiplier"] *= W.wand_damage_multiplier
 	else
 		attachment_stats["damage_multiplier"] = W.wand_damage_multiplier
-
+	mana_cost_user = 0
 	return TRUE
-
 
 
 /obj/item/weapon/ranged/spellgem/get_owner()
@@ -118,12 +135,12 @@
 	if(!owner.health)
 		return 1
 
-	var/final_cost = get_mana_cost(owner)
+	var/final_cost = mana_cost_user
 
 	if(final_cost <= 0)
 		return 1
 
-	return owner && cost_mana ? FLOOR(owner.health.mana_current / final_cost, 1) : 0
+	return owner && cost_mana ? 1 : 0 //Mana cost and fizzle in handle_ammo
 
 /obj/item/weapon/ranged/spellgem/handle_ammo(var/mob/caller,var/bullet_position=1)
 
@@ -134,11 +151,16 @@
 	if(!A.health)
 		return ..()
 
-	var/final_cost = get_mana_cost(A)
+	var/final_cost = mana_cost_user
 
 	if(final_cost != 0)
-		A.health.adjust_mana(-final_cost)
-
+		if (final_cost > A.health.mana_current)
+			A.health.adjust_mana(min(-A.health.mana_current,-final_cost))
+			caller.to_chat(span("warning","You push with all your mana, but the spell fizzles!"))
+			return TRUE
+		else
+			A.health.adjust_mana(-final_cost)
+			return null
 	return null
 
 
@@ -153,6 +175,39 @@
 
 /obj/item/weapon/ranged/spellgem/get_movement_spread(var/mob/living/L)
 	return 0
+
+/obj/item/weapon/ranged/spellgem/on_drop(obj/hud/inventory/old_inventory, silent)
+	mana_cost_user = 0
+	. = ..()
+
+
+/obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called = FALSE)
+	if(mana_cost_user <= 0)
+		mana_cost_user = get_mana_cost(caller)
+
+	if(!utilitygem)
+		. = ..()
+	else
+
+		if(!pre_shoot(caller,object,location,params,damage_multiplier))
+			return FALSE
+
+		if(!(handle_ammo(caller) == null))
+			return FALSE
+		var/quality_bonus = get_quality_bonus(0.5,2)
+		var/condition_to_use = 1
+		var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
+
+
+		last_shoot_time = world.time
+		next_shoot_time = world.time + shoot_delay_to_use
+
+		condition_to_use = max(0,5 - max(0,quality_bonus*4))
+		condition_to_use += FLOOR(heat_current*5,1)
+
+		update_sprite()
+
+		use_condition(condition_to_use)
 
 /obj/item/weapon/ranged/spellgem/update_overlays()
 	. = ..()

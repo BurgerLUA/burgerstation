@@ -46,6 +46,7 @@ var/global/list/all_vault_doors = list()
 		return TRUE
 
 	var/obj/structure/interactive/door/airlock/A = pick(all_vault_doors)
+	var/password = all_vault_doors[A]
 	all_vault_doors -= A
 
 	used = TRUE
@@ -53,6 +54,6 @@ var/global/list/all_vault_doors = list()
 	update_sprite()
 	flick("open",src)
 
-	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[A.x],[A.y],[A.z]</b>\" before flickering to dark..."))
+	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[A.x],[A.y],[A.z]</b>\" and \"[password]\" before flickering to dark..."))
 
 	return TRUE

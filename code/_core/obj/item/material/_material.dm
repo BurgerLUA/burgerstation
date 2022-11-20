@@ -10,7 +10,6 @@
 	amount_max = 50
 	amount_max_icon = 3
 
-	crafting_id = "material"
 
 	value = 1
 
@@ -44,9 +43,6 @@
 		log_error("Warning: [src.get_debug_name()] had invalid material id \"[material_id]\".")
 		qdel(src)
 		return TRUE
-
-	var/material/M = SSmaterials.all_materials[material_id]
-	crafting_id = "[initial(crafting_id)]_[M.name]"
 
 	return ..()
 

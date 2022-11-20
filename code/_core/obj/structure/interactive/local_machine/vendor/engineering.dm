@@ -1,6 +1,17 @@
 /obj/structure/interactive/vending/engineering
 	name = "engineering vendor"
 	icon_state = "engivend"
+	stored_types = list(
+		/obj/item/crafting/workbench,
+		/obj/item/crafting/bullet_press,
+		/obj/item/crafting/ingredient/part/tape,
+		/obj/item/crafting/ingredient/part/electronics,
+		/obj/item/crafting/ingredient/part/scrap,
+		/obj/item/crafting/ingredient/part/bullet_casings{amount=25} = 2.5,
+		/obj/item/crafting/ingredient/part/gunpowder{amount=25} = 2.5,
+		/obj/item/weapon/melee/tool/hammer,
+		/obj/item/paper/book/crafting_guide
+	)
 
 /obj/structure/interactive/vending/engineering/equipment
 	name = "engineering equipment vendor"
@@ -20,22 +31,26 @@
 		/obj/item/container/healing/cable,
 		/obj/item/pinpointer/landmark,
 		/obj/item/weapon/melee/torch/flashlight,
-		/obj/item/material/sheet/steel{amount=50},
-		/obj/item/material/sheet/glass{amount=50},
-		/obj/item/material/rod/steel{amount=50},
-		/obj/item/deployable/barricade{amount=10},
+		/obj/item/material/sheet/steel{amount=50} = 2.5,
+		/obj/item/material/sheet/glass{amount=50} = 2.5,
+		/obj/item/material/rod/steel{amount=50} = 2.5,
+		/obj/item/deployable/barricade{amount=10} = 5,
+		/obj/item/diy_construction_kit,
 		/obj/item/rcd,
-		/obj/item/disk/rcd/glass_window,
-		/obj/item/disk/rcd/metal_plating,
-		/obj/item/disk/rcd/metal_wall,
+		///obj/item/disk/rcd/glass_window,
+		///obj/item/disk/rcd/metal_plating,
+		///obj/item/disk/rcd/metal_wall,
 		/obj/item/disk/rcd/conveyor,
 		/obj/item/disk/rcd/diverter,
 		/obj/item/disk/rcd/oresmelter,
-		/obj/item/disk/rcd/orestorage,
+		///obj/item/disk/rcd/orestorage,
 		/obj/item/disk/rcd/stacker,
 		/obj/item/disk/rcd/chair,
 		/obj/item/disk/rcd/table,
-		/obj/item/disk/rcd/airlock,
+		/obj/item/disk/rcd/light,
+		/obj/item/disk/rcd/tube_light,
+		///obj/item/disk/rcd/airlock,
+		/obj/item/disk/rcd/flap,
 		/obj/item/matter_cartridge,
 		/obj/item/cell_charger,
 		/obj/item/powercell/industrial,

@@ -22,10 +22,20 @@
 	INTERACT_CHECK_OBJECT
 	INTERACT_DELAY(5)
 
-	caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
-	set_dir(turn(dir,90))
+	if(istype(object,/obj/item))
+		var/obj/item/T = object
+		if(T.flags_tool & FLAG_TOOL_WRENCH)
+			if(anchored)
+				caller.to_chat(span("notice","You un-anchor the diverter."))
+				anchored = FALSE
+			else
+				caller.to_chat(span("notice","You anchor the diverter."))
+				anchored = TRUE
+	else
+		caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+		set_dir(turn(dir,90))
 
-	update_sprite()
+		update_sprite()
 
 	return TRUE
 
@@ -45,7 +55,7 @@
 	icon_state = "diverter_on"
 
 /obj/structure/interactive/diverter/proc/should_push(var/atom/movable/M)
-	return TRUE
+	return anchored
 
 /obj/structure/interactive/diverter/think()
 

@@ -44,6 +44,6 @@
 	ammo = /obj/item/bullet_cartridge/gauss/incendiary
 
 /obj/item/magazine/gauss_gun/ap
-	name = "\improper 2.54x12mm Gauss Rifle magazine - Depleted Uranium"
+	name = "\improper 2.54x12mm Gauss Rifle magazine - Armor Piercing"
 	icon_state = "fgaussap"
 	ammo = /obj/item/bullet_cartridge/gauss/ap

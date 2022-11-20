@@ -21,7 +21,7 @@
 
 	crafting_id = "workbench"
 
-	crafting_type = /recipe/workbench/
+	crafting_type = "workbench"
 
 	value = 25
 

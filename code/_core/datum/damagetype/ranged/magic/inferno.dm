@@ -1,6 +1,6 @@
 /damagetype/ranged/magic/inferno
 	attack_damage_base = list(
-		HEAT = 45*0.5,
+		HEAT = 45*0.55,
 	)
 
 	attribute_stats = list(

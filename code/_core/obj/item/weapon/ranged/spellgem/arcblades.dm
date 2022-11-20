@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/spellgem/arcblades
 	name = "arcblades spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots two spinning arc blades that pierces and slices enemies.."
+	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots three spinning arc blades that pierces and slices enemies."
 	icon_state = "damage"
 
 	shoot_delay = 20

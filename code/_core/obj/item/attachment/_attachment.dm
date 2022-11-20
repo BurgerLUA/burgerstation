@@ -1,4 +1,4 @@
-/obj/item/attachment
+/obj/item/attachment/
 	name = "weapon attachment"
 	desc = "Modular!"
 	desc_extended = "Attach this to your weapon for EXTRA POWER."
@@ -24,6 +24,7 @@
 		shoot_alert
 		damage_type
 		bullet_color
+		durability_mod
 	*/
 
 	//TODO: ADD AUTOMATIC, ZOOM
@@ -44,4 +45,3 @@
 	for(var/k in attachment_stats)
 		var/v = attachment_stats[k]
 		. += span("notice","[k]: [v]")
-

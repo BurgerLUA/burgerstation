@@ -43,6 +43,8 @@
 		/obj/item/attachment/barrel/gyro = TRUE,
 		/obj/item/attachment/barrel/laser_charger = FALSE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/barrel_mod/reinforced_barrel = TRUE,
+		/obj/item/attachment/stock_mod/reinforced_stock = TRUE,
 
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,

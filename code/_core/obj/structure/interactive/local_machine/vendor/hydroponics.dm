@@ -6,7 +6,8 @@
 		/obj/item/container/simple/beaker/bottle/plant_food,
 		/obj/item/storage/bags/botany/processor,
 		/obj/item/fertilizer,
-		/obj/item/analyzer/plant
+		/obj/item/analyzer/plant,
+		/obj/item/weapon/melee/tool/botany = 50
 	)
 
 /obj/structure/interactive/vending/hydroponics/seeds
