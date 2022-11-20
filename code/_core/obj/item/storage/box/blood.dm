@@ -13,14 +13,6 @@
 
 	value_burgerbux = 1
 
-/obj/item/storage/blood_box/update_inventory()
-	. = ..()
-	for(var/k in src.inventories)
-		var/obj/hud/inventory/I = k
-		if(length(I.contents))
-			return .
-	qdel(src)
-
 /obj/item/storage/blood_box/Finalize()
 	. = ..()
 	prune_inventory()

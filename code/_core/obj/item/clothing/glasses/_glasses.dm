@@ -16,6 +16,22 @@
 	uses_until_condition_fall = 75
 
 
+/obj/item/clothing/glasses/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(.)
+
+		if(is_inventory(old_loc))
+			var/obj/hud/inventory/I = old_loc
+			if(I.worn && I.owner)
+				I.owner.update_eyes()
+
+		if(is_inventory(loc))
+			var/obj/hud/inventory/I = loc
+			if(I.worn && I.owner)
+				I.owner.update_eyes()
+
 /obj/item/clothing/glasses/get_base_value()
 
 	. = ..()

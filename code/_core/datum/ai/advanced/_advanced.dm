@@ -33,6 +33,8 @@
 
 	attack_movement_obstructions = FALSE
 
+	var/list/overall_defense_rating = list()
+
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()

@@ -31,14 +31,6 @@
 	. += div("danger","Death boxes cannot be stored in banks.")
 	. += div("danger","Anyone can open a death box, even if they don't own it.")
 
-/obj/item/storage/death_box/update_inventory()
-	. = ..()
-	for(var/k in src.inventories)
-		var/obj/hud/inventory/I = k
-		if(length(I.contents))
-			return .
-	qdel(src)
-
 /obj/item/storage/death_box/Finalize()
 	. = ..()
 	prune_inventory()

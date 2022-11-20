@@ -18,6 +18,8 @@
 
 	company_type = "Wizard Federation"
 
+	var/casting_type = SKILL_MAGIC_OFFENSIVE //What skill to use.
+
 	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
 	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.
 	var/utility_cost = 100 // Mana cost for util gems.
@@ -41,15 +43,15 @@
 
 
 /obj/item/weapon/ranged/spellgem/proc/get_mana_cost(var/mob/living/caller)
+
 	. = cost_mana
+
 	if(attachment_stats["mana_cost_multiplier"])
 		. *= attachment_stats["mana_cost_multiplier"]
-	if(is_advanced(caller))
-		var/health/mob/living/advanced/H = caller.health
-		var/list/arcanes = H.get_total_mob_defense(TRUE,FALSE)
-		var/mana_mul = 0
-		mana_mul = clamp(arcanes[ARCANE]/25,-75,75) // Basically, for every 25 armor total, gain or lose 1% mana efficiency
-		. *= (1 - mana_mul/100)
+
+	if(. && casting_type && is_living(caller))
+		var/mob/living/L = caller
+		. *= 1 / (1+L.get_skill_power(casting_type)*3) //Up to 25% reduction at level 100.
 
 
 

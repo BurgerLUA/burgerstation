@@ -372,7 +372,7 @@
 			else
 				A.held_objects += I
 				update_held_icon(I)
-			A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+			A.queue_update_items = TRUE
 
 	update_stats()
 
@@ -465,7 +465,7 @@
 					A.worn_objects -= I
 				else
 					A.held_objects -= I
-				A.update_items(should_update_eyes = worn, should_update_protection = worn, should_update_clothes = worn)
+				A.queue_update_items = TRUE
 
 		I.set_dir(owner.dir)
 

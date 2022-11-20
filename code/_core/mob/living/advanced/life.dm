@@ -9,6 +9,10 @@
 
 /mob/living/advanced/on_life()
 
+	if(queue_update_items)
+		update_items()
+		queue_update_items = FALSE
+
 	if(health && length(queue_organ_health_update))
 		for(var/k in queue_organ_health_update)
 			var/obj/item/organ/O = k

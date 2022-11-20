@@ -33,8 +33,8 @@
 
 		armor_list = target.health.get_defense(caller,object_to_analyze,TRUE)
 	else if(is_advanced(target))
-		var/health/mob/living/advanced/target_health = target.health
-		armor_list = target_health.get_total_mob_defense(FALSE,TRUE)
+		var/mob/living/advanced/A = target
+		armor_list = A.overall_clothing_defense_rating
 	else
 		caller.to_chat(span("notice","The armor scanner can only scan the total armor of advanced beings!"))
 		return TRUE
@@ -51,8 +51,8 @@
 /obj/item/analyzer/armor/click_self(mob/caller, location, control, params)
 	if(scan_all)
 		scan_all = FALSE
-		caller.to_chat(span("notice","You configure the [src.name] to scan body part armor."))
+		caller.to_chat(span("notice","You configure the [src.name] to scan an organ's defense value."))
 	else
 		scan_all = TRUE
-		caller.to_chat(span("notice","You configure the [src.name] to scan total armor."))
+		caller.to_chat(span("notice","You configure the [src.name] to scan total armor from clothing."))
 	. = ..()
