@@ -17,7 +17,8 @@
 		/obj/item/container/edible/meme_pizza = 1,
 		/obj/item/storage/blood_box/duum = 1,
 		/obj/item/weapon/melee/slaughterclaws = 1,
-		/obj/item/storage/blood_box/fiendish = 1
+		/obj/item/storage/blood_box/fiendish = 1,
+		/obj/item/soulgem/azuras_star = 1
 
 	)
 
@@ -73,10 +74,12 @@
 
 /loot/lavaland/herald
 	loot_table = list(
-		/obj/item/herald_mirror = 1,
+		/obj/item/herald_mirror = 4,
+		/loot/rings/horseman = 1
 	)
 
 /loot/lavaland/hierophant
 	loot_table = list(
-		/obj/item/weapon/melee/hierophant_staff = 1,
+		/loot/weapon/magic/good_wand = 75,
+		/obj/item/weapon/melee/hierophant_staff = 25,
 	)

@@ -18,4 +18,5 @@
 		var/obj/item/weapon/ranged/magic/M = weapon
 		if(M.stored_powergem)
 			.[M.stored_powergem.damage_type_to_add] += M.stored_powergem.damage_to_add
+	
 

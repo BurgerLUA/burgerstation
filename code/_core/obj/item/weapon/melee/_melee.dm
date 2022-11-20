@@ -2,6 +2,8 @@ obj/item/weapon/melee
 	name = "Melee Weapon"
 	desc = "A melee weapon"
 
+	enchantment_whitelist = list("ALL")
+
 	drop_sound = 'sound/items/drop/sword.ogg'
 
 	block_defense = list(

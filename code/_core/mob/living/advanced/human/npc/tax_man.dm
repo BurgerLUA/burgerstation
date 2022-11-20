@@ -35,6 +35,8 @@
 
 	level = 30
 
+	soul_size = SOUL_SIZE_UNCOMMON
+
 	loadout = /loadout/tax_collector
 
 /mob/living/advanced/npc/tax_collector/Finalize()

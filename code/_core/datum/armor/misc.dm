@@ -101,3 +101,11 @@
 		BOMB = INFINITY,
 		SANITY = -100
 	)
+
+/armor/imaginary
+	defense_rating = list(
+		BRUTE = 5,
+		BURN = 5,
+		TOX = 5,
+		PAIN = 5
+	)

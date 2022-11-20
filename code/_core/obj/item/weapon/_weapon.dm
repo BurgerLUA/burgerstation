@@ -18,6 +18,9 @@
 
 	var/enchantment/enchantment
 
+	var/list/enchantment_whitelist //A whitelist of [/enchantment/path] or ["ALL"] of enchants allowed on the weapon E.G. /enchantment/fire.
+	var/list/enchantment_blacklist //a blacklist of version of above, with ["ALL"] meaning the weapon accepts no enchants.
+
 	can_wear = TRUE
 	item_slot = -1
 
@@ -46,7 +49,7 @@
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(enchantment)
-		. += div("notice","It is enchanted with <b>[enchantment.name]</b>")
+		. += div("notice","It is enchanted with <b>[enchantment.name] \Roman[enchantment.strength]</b>")
 		. += div("notice","The enchantment has [enchantment.charge] charge left ([FLOOR(enchantment.charge/enchantment.cost,1)] uses).")
 
 /obj/item/weapon/quick(var/mob/caller,var/atom/object,location,params)
@@ -107,6 +110,24 @@
 	update_sprite()
 	. = ..()
 
+/obj/item/weapon/clicked_on_by_object(mob/caller,atom/object,location,control,params)
+	if(istype(object,/obj/item/soulgem) && enchantment)
+		var/obj/item/soulgem/G = object
+		if(G.total_charge > 0 && enchantment.charge < enchantment.max_charge)
+			var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge)) 
+			enchantment.charge += chargediff
+			G.total_charge -= chargediff
+			if(!is_living(caller))
+				CRASH("Nonliving [caller.get_debug_name()] tried to recharge a weapon enchantment!")
+			var/mob/living/pcaller = caller //This is stupid and bad.
+			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
+			if(G.total_charge <= 0 && !G.do_not_consume)
+				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name],shattering it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], shattering it!"))
+				qdel(G)
+			else
+				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name]"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name]"))
+			return TRUE
+	. = ..()
 /obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
@@ -116,6 +137,7 @@
 		.["enchantment"]["strength"] = enchantment.strength
 		.["enchantment"]["charge"] = enchantment.charge
 		.["enchantment"]["cost"] = enchantment.cost
+		.["enchantment"]["max_charge"] = enchantment.max_charge
 	if(stored_spellswap)
 		SAVEATOM("stored_spellswap")
 
@@ -129,5 +151,7 @@
 			enchantment.strength = object_data["enchantment"]["strength"]
 			enchantment.charge = object_data["enchantment"]["charge"]
 			enchantment.cost = object_data["enchantment"]["cost"]
+			enchantment.max_charge = object_data["enchantment"]["max_charge"]
 	if(object_data["stored_spellswap"])
 		LOADATOM("stored_spellswap")
+

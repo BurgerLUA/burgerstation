@@ -64,6 +64,7 @@
 
 	level = 16
 
+	soul_size = SOUL_SIZE_UNCOMMON
 
 /mob/living/advanced/npc/syndicate/ultra
 	name = "\improper ULTRA syndicate operative"
@@ -80,6 +81,7 @@
 	loadout_to_level = list(
 		/loadout/syndicate/ultra = 1
 	)
+	soul_size = SOUL_SIZE_RARE
 
 /mob/living/advanced/npc/syndicate/ultra/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	. = ..()

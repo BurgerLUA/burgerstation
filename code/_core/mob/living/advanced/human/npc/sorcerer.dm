@@ -3,6 +3,7 @@
 	desc = "A sorcerer borrowed from the syndicate-allied wizard federation."
 	ai = /ai/advanced
 
+	soul_size = SOUL_SIZE_UNCOMMON
 
 	var/list/possible_outfits = list(
 		/loadout/sorcerer = 1

@@ -99,3 +99,8 @@
 #define IMMORTAL "immortal"
 
 #define CRITPROTECTION "critprotection"
+
+//provides base 10 to BRUTE BURN and TOX armor.
+#define TEMP_ARMOR "temp_armor"
+//provides  0.05 regen of BRUTE BURN and TOX damage - magnifier damages instead.
+#define TEMP_REGEN "temp_regeneration"

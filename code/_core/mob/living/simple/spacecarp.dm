@@ -37,7 +37,7 @@
 
 	blood_type = /reagent/blood/carp
 
-	soul_size = SOUL_SIZE_UNCOMMON
+	soul_size = SOUL_SIZE_COMMON
 
 	level = 16
 

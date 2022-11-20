@@ -4,6 +4,8 @@
 
 	dna = /dna/human
 
+	soul_size = SOUL_SIZE_COMMON
+
 	ai = /ai/advanced/suvivor
 
 	level = 40

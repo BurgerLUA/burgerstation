@@ -513,13 +513,24 @@ var/global/list/all_damage_numbers = list()
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists. Also makes it so that negative armor penetration penalties apply when there is armor.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
+		var/arcane_bonus = 0
 		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			if(IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any magic damage if we resist magic.
 				damage_to_deal[damage_type] = 0
 				continue
+			if(is_advanced(attacker))
+				var/health/mob/living/advanced/adv_attacker = attacker.health
+				var/total_attacker_defense = (adv_attacker) ? adv_attacker.get_total_mob_defense(TRUE,FALSE) : list()
+				var/magic_before_arcane = damage_to_deal[damage_type]
+				var/arcane_bonus_percent = clamp((total_attacker_defense[damage_type]*0.02),0,(magic_before_arcane*2.5)) //Deal 1% more damage per 50 magic resist of attacker,max of 2.5x damage
+				arcane_bonus = magic_before_arcane * (arcane_bonus_percent/100)
+				if(debug) log_debug("Victim's new [damage_type] damage due to attacker's [defense_rating_attacker[damage_type]] Total Taken: [arcane_bonus + damage_to_deal[damage_type]].")
+			/*
+			If someone wants to make a variable to swap between dealing more peirce or damage, heres original code.
 			victim_defense -= defense_rating_attacker[damage_type]*0.5
 			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
-		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
+			*/
+		var/new_damage_amount = calculate_damage_with_armor((old_damage_amount + arcane_bonus),victim_defense)
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")

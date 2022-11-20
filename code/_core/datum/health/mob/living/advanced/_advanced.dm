@@ -220,4 +220,26 @@
 					clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
 		.["items"] += C
-
+/health/mob/living/advanced/proc/get_total_mob_defense(var/arcane_only=FALSE,var/ignore_luck = FALSE) //Checks total armor of all clothes combined. Probably shouldnt call much.
+	. = list()
+	var/mob/living/advanced/A = owner
+	for(var/obj/item/clothing/C in A.worn_objects)
+		var/armor/ARM_C = ARMOR(C.armor)
+		if(!ARM_C)
+			continue
+		.["deflection"] = max(.["deflection"],ARM_C.deflection)
+		for(var/damage_type in ARM_C.defense_rating)
+			if(arcane_only && !(damage_type == ARCANE || damage_type == HOLY || damage_type == DARK))
+				continue
+			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
+				continue
+			if(IS_INFINITY(ARM_C.defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+				.[damage_type] += ARM_C.defense_rating[damage_type]
+				continue
+			var/clothing_defense = ARM_C.defense_rating[damage_type]
+			if(!ignore_luck)
+				if(C.luck > 50 && prob(C.luck-50))
+					clothing_defense *= 2
+				else if(C.luck < 50 && prob(50-C.luck))
+					clothing_defense *= 0.5
+			.[damage_type] += FLOOR(clothing_defense,1)

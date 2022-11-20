@@ -187,6 +187,7 @@
 			INTERACT_DELAY(5)
 			add_attachment(caller,I)
 			return TRUE
+
 		if(use_iff_tag)
 			if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
 				INTERACT_CHECK

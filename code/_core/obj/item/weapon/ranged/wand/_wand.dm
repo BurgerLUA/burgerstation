@@ -47,6 +47,12 @@
 		hovering = FALSE
 		START_THINKING(src)
 
+/obj/item/weapon/ranged/wand/on_drop(obj/hud/inventory/old_inventory, silent)
+	if(length(socketed_spellgem))
+		socketed_spellgem.mana_cost_user = 0
+	. = ..()
+
+
 /obj/item/weapon/ranged/wand/think()
 
 	if(!is_inventory(src.loc))
@@ -141,19 +147,19 @@
 
 /obj/item/weapon/ranged/wand/Initialize()
 	. = ..()
-	sockets_max = 7 * (wand_damage_multiplier/2.5)
-	sockets_max = CEILING(sockets_max,1)
+	sockets_max = tier + 2
 	if(sockets_max <= 2)
 		sockets_max = 2
 
 /obj/item/weapon/ranged/wand/Generate()
 	. = ..()
-	if(sockets == 0) //Sockets are given in the wild.
+	if(sockets == 0) //Sockets are given in the wild. Old function below
 		// https://www.desmos.com/calculator/eomhtrxl2v
 		var/diceroll = rand(1,1000)
-		var/magic_number = (1000/6)**1.25
-		sockets = 1 + (diceroll/magic_number)**3.5
+		var/magic_number = (500/6)**1.25
+		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
+		sockets = min(sockets,sockets_max)
 
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)
@@ -174,6 +180,8 @@
 	. += div("notice","Has <b>1</b> slot(s) for spell gems.")
 	. += div("notice","Has <b>[sockets]</b> slot(s) for support gems.")
 	. += div("notice","This wand type increases the power of support gems by [(wand_damage_multiplier-1)*100]%.")
+	if(socketed_spellgem)
+		. += div("notice","Currently casts \the [socketed_spellgem.name]")
 
 /obj/item/weapon/ranged/wand/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
@@ -186,7 +194,6 @@
 	LOADATOM("socketed_spellgem")
 	LOADVAR("sockets")
 	LOADLISTATOM("socketed_supportgems")
-	
 
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
@@ -239,6 +246,7 @@
 		if(socketed_spellgem)
 			I = SG.loc
 			socketed_spellgem.drop_item(get_turf(src))
+			socketed_spellgem.update_attachment_stats()
 		if(I)
 			I.add_object(socketed_spellgem)
 			caller.to_chat(span("notice","You replace \the [socketed_spellgem.name] with \the [SG.name]."))
@@ -273,7 +281,7 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/branch.dmi'
 
 	wand_damage_multiplier = 1
-	wand_mana_multiplier = 0.5
+	wand_mana_multiplier = 0.95
 
 	tier = 0
 
@@ -283,8 +291,8 @@
 	name = "crafted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
-	wand_damage_multiplier = 1.25
-	wand_mana_multiplier = 0.75
+	wand_damage_multiplier = 1.1
+	wand_mana_multiplier = 0.90
 
 	tier = 1
 
@@ -294,10 +302,10 @@
 	name = "crafted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
-	wand_damage_multiplier = 1.5
-	wand_mana_multiplier = 1
+	wand_damage_multiplier = 1.2
+	wand_mana_multiplier = 0.90
 
-	tier = 2
+	tier = 1
 
 	value = 100
 
@@ -305,10 +313,10 @@
 	name = "twisted wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/twisted.dmi'
 
-	wand_damage_multiplier = 2
-	wand_mana_multiplier = 2
+	wand_damage_multiplier = 1.3
+	wand_mana_multiplier = 0.85
 
-	tier = 3
+	tier = 2
 
 
 	value = 100
@@ -317,10 +325,10 @@
 	name = "profane wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/profane.dmi'
 
-	wand_damage_multiplier = 2.25
-	wand_mana_multiplier = 2.25
+	wand_damage_multiplier = 1.4
+	wand_mana_multiplier = 0.80
 
-	tier = 4
+	tier = 3
 
 	value = 100
 
@@ -328,9 +336,9 @@
 	name = "sage wand"
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/sage.dmi'
 
-	wand_damage_multiplier = 2.5
-	wand_mana_multiplier = 2.5
+	wand_damage_multiplier = 1.5
+	wand_mana_multiplier = 0.75
 
-	tier = 5
+	tier = 3
 
 	value = 100
