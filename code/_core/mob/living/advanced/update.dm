@@ -28,12 +28,13 @@
 					blocking_clothing[C] = TRUE
 				if(C.armor)
 					var/armor/A = ARMOR(C.armor)
-					for(var/d_type in A.defense_rating)
-						if(IS_INFINITY(A.defense_rating[d_type]))
-							continue
-						if(IS_INFINITY(overall_clothing_defense_rating[d_type]))
-							continue
-						overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]
+					if(A)
+						for(var/d_type in A.defense_rating)
+							if(IS_INFINITY(A.defense_rating[d_type]))
+								continue
+							if(IS_INFINITY(overall_clothing_defense_rating[d_type]))
+								continue
+							overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]
 
 	move_delay_multiplier *= 1 + (total_weight/max_weight)
 	move_delay_multiplier = FLOOR(max(0.25,move_delay_multiplier),0.01)

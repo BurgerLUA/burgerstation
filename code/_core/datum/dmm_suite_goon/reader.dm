@@ -242,11 +242,12 @@ dmm_suite
 			else
 				instance = new atomPath(location)
 
-			if(preloader) // Atom could delete itself in New(), or the instance could be an area.
-				preloader.load(instance)
-			if(angleOffset)
-				instance.dir = turn(instance.dir,-angleOffset)
-				instance.on_dmm_suite_rotate(angleOffset)
+			if(instance)
+				if(preloader) // Atom could delete itself in New(), or the instance could be an area.
+					preloader.load(instance)
+				if(angleOffset)
+					instance.dir = turn(instance.dir,-angleOffset)
+					instance.on_dmm_suite_rotate(angleOffset)
 
 			return TRUE
 

@@ -155,7 +155,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 /ai/Destroy()
 
-	set_active(FALSE,TRUE)
+	set_active(FALSE)
 
 	var/turf/T = get_turf(owner)
 	if(T)
@@ -192,39 +192,45 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	return ..()
 
 /ai/proc/add_to_active_list(var/z)
+	if(debug) log_debug("Adding to active list [z].")
 	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(!active_ai_list["[z]"])
 		active_ai_list["[z]"] = list()
 	active_ai_list["[z]"] += src
 
 /ai/proc/remove_from_active_list(var/z)
+	if(debug) log_debug("Removing from active list [z].")
 	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(length(active_ai_list) && active_ai_list["[z]"])
 		active_ai_list["[z]"] -= src
 
 /ai/proc/add_to_inactive_list(var/z)
+	if(debug) log_debug("Adding to inactive list [z].")
 	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(!inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] = list()
 	inactive_ai_list["[z]"] += src
 
 /ai/proc/remove_from_inactive_list(var/z)
+	if(debug) log_debug("Removing from inactive list [z].")
 	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(length(inactive_ai_list) && inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] -= src
 
-/ai/proc/set_active(var/desired_active=TRUE,var/force=FALSE)
+/ai/proc/set_active(var/desired_active=TRUE)
 
 	if(desired_active)
 		if(!owner)
-			CRASH("AI was set to active without an owner!")
+			return FALSE
 		if(owner.qdeleting)
-			CRASH("AI was set to active while the owner was qdeleting!")
+			return FALSE
 		if(owner.dead)
-			CRASH("AI was set to active while the owner was dead!")
+			return FALSE
 
-	if(!force && active == desired_active)
+	if(active == desired_active)
 		return FALSE
+
+	active = desired_active
 
 	var/turf/T = get_turf(owner)
 
@@ -233,17 +239,15 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	if(active)
 		PROCESS_LIVING(owner)
-		if(active != desired_active)
-			add_to_active_list(T.z)
-			remove_from_inactive_list(T.z)
+		add_to_active_list(T.z)
+		remove_from_inactive_list(T.z)
 		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
 		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
+		if(debug) log_debug("Setting to active.")
 	else
-		if(owner && owner.processing)
-			UNPROCESS_LIVING(owner)
-		if(active != desired_active)
-			add_to_inactive_list(T.z)
-			remove_from_active_list(T.z)
+		UNPROCESS_LIVING(owner)
+		add_to_inactive_list(T.z)
+		remove_from_active_list(T.z)
 		set_alert_level(ALERT_LEVEL_NONE,TRUE)
 		set_objective(null)
 		set_move_objective(null)
@@ -253,8 +257,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		obstacles.Cut()
 		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
 		HOOK_REMOVE("pre_death","\ref[src]_pre_death",owner)
-
-	active = desired_active
+		if(debug) log_debug("Setting to inactive.")
 
 	return TRUE
 
@@ -269,9 +272,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
-	set_active(active,TRUE)
 
 /ai/proc/pre_death(var/mob/living/L,args)
-	set_active(FALSE,TRUE)
+	set_active(FALSE)
 	return TRUE
 

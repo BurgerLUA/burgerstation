@@ -17,7 +17,7 @@
 
 /obj/item/weapon/ranged/spellgem/self_regenerate/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called)
 	if(istype(caller,/mob/living))
-		..()
+		. = ..()
 		var/quality_bonus = get_quality_bonus(0.5,2)
 		var/damage_multiplier_to_use = damage_multiplier * damage_mod
 		damage_multiplier_to_use *= quality_bonus
