@@ -5,7 +5,7 @@
 
 	flags_hud = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
 
-	var/obj/item/crafting/stored_crafting_table
+	var/obj/item/crafting_bench/stored_crafting_table
 
 	has_quick_function = FALSE
 

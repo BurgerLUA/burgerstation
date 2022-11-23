@@ -68,13 +68,11 @@ proc/create_destruction(var/turf/T,var/list/objects_to_spawn,var/material_id = n
 		var/spawn_count = objects_to_spawn[k] ? objects_to_spawn[k] : 1
 		for(var/i=1,i<=spawn_count,i++)
 			var/obj/M = new k(T)
-			if(istype(M,/obj/item/material/) && material_id)
+			INITIALIZE(M)
+			if(material_id && istype(M,/obj/item/material/))
 				var/obj/item/material/M2 = M
 				M2.material_id = material_id
-			INITIALIZE(M)
 			FINALIZE(M)
-			M.update_sprite()
-			//GENERATE(M)
 			animate(M,pixel_x = rand(-8,8), pixel_y = rand(-8,8), time = 3)
 
 	return TRUE

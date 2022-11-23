@@ -58,4 +58,4 @@
 	)
 
 	product = list("/obj/item/grenade/landmine/proximity/explosive" = 100)
-	consume_id_amount = list("/obj/item/weapon/melee/tool/screwdriver" = 0)
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/screwdriver" = 0)

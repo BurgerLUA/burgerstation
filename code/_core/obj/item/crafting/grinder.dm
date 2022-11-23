@@ -1,4 +1,4 @@
-/obj/item/crafting/grinder
+/obj/item/crafting_bench/grinder
 	name = "portable grinder"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "grinder"
@@ -22,7 +22,7 @@
 	size = SIZE_4
 
 
-/obj/item/crafting/grinder/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/grinder/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/item/C //Final slot container.
 

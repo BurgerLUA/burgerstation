@@ -2,8 +2,8 @@
 	name = "engineering vendor"
 	icon_state = "engivend"
 	stored_types = list(
-		/obj/item/crafting/workbench,
-		/obj/item/crafting/bullet_press,
+		/obj/item/crafting_bench/workbench,
+		/obj/item/crafting_bench/bullet_press,
 		/obj/item/crafting/ingredient/part/tape,
 		/obj/item/crafting/ingredient/part/electronics,
 		/obj/item/crafting/ingredient/part/scrap,

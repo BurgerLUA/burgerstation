@@ -5,7 +5,7 @@
 	"/obj/item/weapon/melee/tool/hammer" = 1,
 	"/obj/item/paper" = 1)
 
-	consume_id_amount = list("/obj/item/weapon/melee/tool/hammer" = 0)
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/hammer" = 0)
 
 	product = list("/obj/item/crafting/ingredient/part/sandpaper" = 100)
 
@@ -27,7 +27,7 @@
 		"c3" = null
 	)
 
-	consume_id_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0 )
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0 )
 
 	product = list("/obj/item/crafting/ingredient/part/casing_mold" = 100)
 

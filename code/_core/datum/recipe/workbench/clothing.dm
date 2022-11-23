@@ -17,4 +17,4 @@
 	)
 
 	product = list("/obj/item/clothing/belt/holding"=100)
-	consume_id_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0)
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0)

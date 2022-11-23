@@ -1,4 +1,4 @@
-/obj/item/crafting/pill_press
+/obj/item/crafting_bench/pill_press
 	name = "portable pill press table"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "pill_press"
@@ -21,7 +21,7 @@
 
 	size = SIZE_4
 
-/obj/item/crafting/pill_press/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/pill_press/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/hud/inventory/crafting/result/product_slot
 	var/obj/item/product_container

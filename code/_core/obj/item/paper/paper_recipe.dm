@@ -71,13 +71,13 @@
 			for(var/any_item in stored_recipe.required_items)
 				var/obj/item/item_path = text2path_safe(any_item)
 				var/item_name = initial(item_path.name)
-				data += list("Anywhere: [item_name] x [stored_recipe.required_items[any_item]]\n\n")	
-		if(stored_recipe.consume_id_amount.len >= 1)
-			for(var/unconsumed in stored_recipe.consume_id_amount)
+				data += list("Anywhere: [item_name] x [stored_recipe.required_items[any_item]]\n\n")
+		if(stored_recipe.required_item_grid_amount.len >= 1)
+			for(var/unconsumed in stored_recipe.required_item_grid_amount)
 				var/obj/item/item_path = text2path_safe(unconsumed)
 				var/item_name = initial(item_path.name)
-				if(stored_recipe.consume_id_amount[unconsumed] >=1)
-					data += list("Amount: [item_name] -> [stored_recipe.consume_id_amount[unconsumed]]\n\n")
+				if(stored_recipe.required_item_grid_amount[unconsumed] >=1)
+					data += list("Amount: [item_name] -> [stored_recipe.required_item_grid_amount[unconsumed]]\n\n")
 				else
 					data += list("Unconsumed: [item_name]")
 		if(stored_recipe.reagents_to_add.len >= 1)
@@ -101,18 +101,17 @@
 				desc_extended += "It looks like it makes [product_name], at a [product_chance]% chance. Makes [stored_recipe.amount[i]]."
 	else
 		data = list("Its just scribbles and garbled text.")
-		
+
 /obj/item/paper/recipe/save_item_data(mob/living/advanced/player/P, save_inventory, died)
 	//This has a special description, we need to save it!
 	. = ..()
 	SAVEVAR("data")
 	SAVEVAR("desc")
 	SAVEVAR("desc_extended")
-	
+
 
 /obj/item/paper/recipe/load_item_data_post(mob/living/advanced/player/P, list/object_data)
 	. = ..()
 	LOADVAR("data")
 	LOADVAR("desc")
 	LOADVAR("desc_extended")
-	

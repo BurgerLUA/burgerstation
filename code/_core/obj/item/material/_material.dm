@@ -18,6 +18,7 @@
 	weight = 0.1
 
 /obj/item/material/can_transfer_stacks_to(var/obj/item/I)
+
 	if(!istype(I,/obj/item/material/))
 		return FALSE
 
@@ -38,19 +39,18 @@
 	. = ..()
 	LOADPATH("material_id")
 
-/obj/item/material/Initialize()
+/obj/item/material/get_base_value()
+	. = ..()
+	var/material/M = SSmaterials.all_materials[material_id]
+	. *= M.value_per_unit * material_multiplier
+
+/obj/item/material/Finalize()
+
+	. = ..()
+
 	if(!SSmaterials.all_materials[material_id])
 		log_error("Warning: [src.get_debug_name()] had invalid material id \"[material_id]\".")
 		qdel(src)
 		return TRUE
 
-	return ..()
-
-/obj/item/material/PostInitialize()
-	. = ..()
 	update_sprite()
-
-/obj/item/material/get_base_value()
-	. = ..()
-	var/material/M = SSmaterials.all_materials[material_id]
-	. *= M.value_per_unit * material_multiplier

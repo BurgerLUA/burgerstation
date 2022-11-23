@@ -1,4 +1,4 @@
-/obj/item/crafting/filter
+/obj/item/crafting_bench/filter
 	name = "portable filtering device"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "filter"
@@ -25,7 +25,7 @@
 
 	var/precision = 0.1
 
-/obj/item/crafting/filter/click_self(var/mob/caller)
+/obj/item/crafting_bench/filter/click_self(var/mob/caller)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		var/current_setting
@@ -50,7 +50,7 @@
 
 	. = ..()
 
-/obj/item/crafting/filter/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/filter/attempt_to_craft(var/mob/living/advanced/caller)
 
 	var/obj/item/container/C //Final slot container.
 
