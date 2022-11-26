@@ -47,9 +47,6 @@ And the code would look like this:
 	var/list/required_item_grid_amount //Assoc list of crafting_id to amount to remove. Blank means assume just 1.
 
 
-	//List of required items anywhere in the table.
-	var/list/required_items = list() //Assoc list. crafting_id to amount required.
-
 	var/obj/item/product //The created product.
 	var/product_amount = 1 //The amount of products to create.
 
@@ -63,10 +60,11 @@ And the code would look like this:
 
 	for(var/j in item_table)
 		var/obj/item/I = j
-		var/amount_to_remove = length(required_item_grid_amount) && required_item_grid_amount[j] ? required_item_grid_amount[j] : 1
+		var/amount_to_remove = length(required_item_grid_amount) && isnum(required_item_grid_amount[j]) ? required_item_grid_amount[j] : 1
 		if(I.reagents && created_item.reagents)
 			I.reagents.transfer_reagents_to(created_item.reagents)
-		I.add_item_count(-amount_to_remove)
+		if(amount_to_remove > 0)
+			I.add_item_count(-amount_to_remove)
 
 	return TRUE
 
@@ -104,7 +102,7 @@ And the code would look like this:
 			if (do_debug) log_debug("There isnt enough of item in [grid_id]! We cannot craft this recipe ([name]) without at least [required_item_grid_amount[grid_crafting_id]] [grid_crafting_id] in [grid_id]. ")
 			return null
 
-		if(length(required_item_grid_amount) && required_item_grid_amount[grid_crafting_id])
+		if(length(required_item_grid_amount) && isnum(required_item_grid_amount[grid_crafting_id]))
 			used_items[I] = required_item_grid_amount[grid_crafting_id]
 		else
 			used_items[I] = 1

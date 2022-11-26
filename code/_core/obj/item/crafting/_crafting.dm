@@ -33,10 +33,13 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 
+	if(is_advanced(caller))
+		toggle_crafting(caller)
+
+/obj/item/crafting_bench/proc/toggle_crafting(var/mob/living/advanced/A)
+
 	if(!length(inventories))
 		return FALSE
-
-	var/mob/living/advanced/A = caller
 
 	if(inventory_user && is_advanced(inventory_user))
 		var/mob/living/advanced/A2 = inventory_user
@@ -82,17 +85,11 @@
 			B.mouse_opacity = 0
 			B.stored_crafting_table = null
 
-	inventory_user = caller
+	inventory_user = A
 
 	return TRUE
 
 /obj/item/crafting_bench/proc/attempt_to_craft(var/mob/living/advanced/caller)
-
-	var/obj/hud/inventory/crafting/result/product_slot = locate() in src.inventories
-
-	if(!product_slot)
-		caller.to_chat(span("warning","No product slot detected! Report this bug on github!"))
-		return FALSE
 
 	var/list/item_table = generate_crafting_table(caller,src)
 
@@ -111,9 +108,25 @@
 				for(var/r_id in R.product_reagents)
 					var/volume = R.product_reagents[r_id]
 					I.reagents.add_reagent(r_id,volume)
-			product_slot.add_object(I,caller,FALSE)
 			R.on_create(caller,src,I,recipe_check)
+			var/success = FALSE
+			for(var/obj/hud/inventory/crafting/result/product_slot in src.inventories)
+				if(!length(product_slot.contents))
+					product_slot.add_object(I,caller,FALSE)
+					success = TRUE
+					break
+				for(var/j in product_slot.contents)
+					var/obj/item/I2 = j
+					if(I.can_transfer_stacks_to(I2))
+						I.transfer_amount_to(I2)
+						if(I.qdeleting || I.amount <= 0)
+							success = TRUE
+						break
+				if(success)
+					break
+
 			return I
 
 	caller.to_chat(span("warning","You fail to craft anything..."))
+
 	return FALSE
