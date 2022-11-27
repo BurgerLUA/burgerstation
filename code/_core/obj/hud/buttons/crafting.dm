@@ -5,7 +5,7 @@
 
 	flags_hud = FLAG_HUD_MOB | FLAG_HUD_SPECIAL
 
-	var/obj/item/crafting/stored_crafting_table
+	var/obj/item/crafting_bench/stored_crafting_table
 
 	has_quick_function = FALSE
 
@@ -29,11 +29,10 @@
 	. = ..()
 
 	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
 		if(stored_crafting_table)
-			stored_crafting_table.attempt_to_craft(A)
+			stored_crafting_table.attempt_to_craft(caller)
 		else
-			log_error("Warning: [A.get_debug_name()] tried to craft without a stored crafting table!")
+			log_error("Warning: [caller.get_debug_name()] tried to craft without a stored crafting table!")
 
 
 
@@ -52,14 +51,4 @@
 	. = ..()
 
 	if(. && is_advanced(caller))
-		var/mob/living/advanced/A = caller
-
-		for(var/obj/hud/inventory/crafting/I in A.inventories_by_id)
-			animate(I,alpha=0,time=4)
-			I.mouse_opacity = 0
-
-		for(var/obj/hud/button/crafting/B in A.buttons)
-			animate(B,alpha=0,time=4)
-			B.mouse_opacity = 0
-			B.stored_crafting_table = null
-
+		stored_crafting_table.toggle_crafting(caller)

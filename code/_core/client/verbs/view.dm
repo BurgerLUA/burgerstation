@@ -83,8 +83,6 @@
 	set name = "Orbit Player"
 	set category = "View"
 
-	//sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
-
 	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in all_mobs_with_clients
 	if(!choice || choice == mob)
 		to_chat(span("warning","Invalid mob."))
@@ -104,7 +102,7 @@
 		mob.observing = null
 
 	mob.force_move(T)
-	choice.observers |= mob
+	choice.observers += mob
 	mob.observing = choice
 
 	to_chat(span("notice","You orbit [choice]."))

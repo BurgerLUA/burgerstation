@@ -11,7 +11,7 @@
 		"b2" = null, // The gunpowder
 		"b3" = null, // A mag to fill with bullets
 
-		"c2" = null, // The Casings 
+		"c2" = null, // The Casings
 		*/
 	)
 /recipe/bullet_press/incen/shotgun_23
@@ -22,14 +22,14 @@
 		"a2" = "/obj/item/material/pellets/magnesium",
 
 		"b2" = null,
-		"b3" = "/obj/item/bullet_cartridge/shotgun_23/", 
+		"b3" = "/obj/item/bullet_cartridge/shotgun_23/",
 
 		"c2" = null,
 
 	)
 
 	product = list("/obj/item/bullet_cartridge/shotgun_23/fire" = 100)
-	consume_id_amount = list("/obj/item/material/pellets/magnesium" = 4)
+	required_item_grid_amount = list("/obj/item/material/pellets/magnesium" = 4)
 
 /recipe/bullet_press/incen/shotgun_12
 	name = "shotgun 12 incen"
@@ -39,14 +39,14 @@
 		"a2" = "/obj/item/material/pellets/magnesium",
 
 		"b2" = null,
-		"b3" = "/obj/item/bullet_cartridge/shotgun_12", 
+		"b3" = "/obj/item/bullet_cartridge/shotgun_12",
 
 		"c2" = null,
 
 	)
 
 	product = list("/obj/item/bullet_cartridge/shotgun_12/fire" = 100)
-	consume_id_amount = list("/obj/item/material/pellets/magnesium" = 2)
+	required_item_grid_amount = list("/obj/item/material/pellets/magnesium" = 2)
 
 /recipe/bullet_press/incen/sniper_50
 	name = "sniper 50 incen"
@@ -56,11 +56,11 @@
 		"a2" = "/obj/item/material/pellets/magnesium",
 
 		"b2" = "/obj/item/crafting/ingredient/part/gunpowder",
-		"b3" = "/obj/item/magazine/sniper_50", 
+		"b3" = "/obj/item/magazine/sniper_50",
 
 		"c2" = "/obj/item/crafting/ingredient/part/bullet_casings",
 
 	)
 
 	product = list("/obj/item/magazine/sniper_50/incendiary" = 100)
-	consume_id_amount = list("/obj/item/material/pellets/magnesium" = 32,"/obj/item/crafting/ingredient/part/gunpowder" = 40,"/obj/item/crafting/ingredient/part/bullet_casings" = 8)
+	required_item_grid_amount = list("/obj/item/material/pellets/magnesium" = 32,"/obj/item/crafting/ingredient/part/gunpowder" = 40,"/obj/item/crafting/ingredient/part/bullet_casings" = 8)

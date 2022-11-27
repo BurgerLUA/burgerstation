@@ -13,6 +13,10 @@
 /obj/item/trash/random,
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
+"e" = (
+/obj/marker/map_node,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -46,12 +50,12 @@ d
 "}
 (4,1,1) = {"
 c
-c
+e
 c
 c
 d
 c
-c
+e
 c
 "}
 (5,1,1) = {"

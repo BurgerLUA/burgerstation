@@ -62,6 +62,31 @@
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D01/bedroom01)
+"aj" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D01/kitchen)
+"ak" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D01/main_hallway)
+"al" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D01/bedroom02)
+"am" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D01/bedroom01)
+"an" = (
+/obj/structure/interactive/wire/yellow,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D01)
 "aD" = (
 /turf/simulated/floor/tile/coldroom,
 /area/mission/prefab/house/house_D01/bathroom)
@@ -457,10 +482,6 @@
 /obj/marker/spawning/random/food,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D01/kitchen)
-"XO" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/mission/prefab/house/house_D01)
 "Yr" = (
 /obj/marker/spawning/window,
 /turf/simulated/floor/plating,
@@ -525,18 +546,18 @@ Xg
 zC
 vg
 lB
-Yr
+aj
 Yr
 vt
 YB
 dK
 rb
-Vg
+al
 Ih
 "}
 (4,1,1) = {"
 Ih
-Yr
+aj
 ET
 oU
 CK
@@ -639,7 +660,7 @@ mo
 OA
 PS
 nO
-kJ
+am
 Ih
 "}
 (10,1,1) = {"
@@ -661,7 +682,7 @@ My
 pp
 "}
 (11,1,1) = {"
-XO
+an
 vG
 zx
 zx
@@ -754,7 +775,7 @@ pp
 pp
 EB
 IM
-IM
+ak
 IM
 IM
 EB
@@ -762,7 +783,7 @@ EB
 EB
 EB
 IM
-IM
+ak
 EB
 EB
 pp

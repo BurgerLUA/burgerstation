@@ -137,7 +137,9 @@ var/global/list/redscale = list(
 
 	assoc_button?.update_owner(desired_owner)
 
-	if(is_advanced(owner)) //Old owner
+	var/owner_changed = owner != desired_owner
+
+	if(owner_changed && is_advanced(owner)) //Old owner
 		var/mob/living/advanced/A = owner
 		A.inventory_defers -= src
 		HOOK_REMOVE("grab_changed","grab_changed_\ref[src]",A)
@@ -145,8 +147,8 @@ var/global/list/redscale = list(
 
 	. = ..()
 
-	if(is_advanced(owner)) //New owner
+	if(owner_changed && is_advanced(owner)) //New owner
 		var/mob/living/advanced/A = owner
-		A.inventory_defers |= src
+		A.inventory_defers += src
 		HOOK_ADD("grab_changed","grab_changed_\ref[src]",A,src,.proc/update)
 		HOOK_ADD("post_move","update_stats_\ref[src]",A,src,.proc/update)

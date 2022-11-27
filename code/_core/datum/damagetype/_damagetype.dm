@@ -497,6 +497,14 @@ var/global/list/all_damage_numbers = list()
 			continue
 		if(debug) log_debug("Calculating [damage_type]...")
 		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
+		if(!ignore_armor_bonus_damage && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
+			if(length(defense_rating_attacker) && defense_rating_attacker[damage_type] && IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, dark).
+				damage_to_deal[damage_type] = 0
+				continue
+			if(is_advanced(attacker) && attacker.health)
+				var/mob/living/advanced/A = attacker
+				damage_to_deal[damage_type] *= clamp(1 + A.overall_clothing_defense_rating[damage_type]*0.02,0,1) //Deal 2% more damage per 100 magic resist of attacker, max of 100% more damage.
+				if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [damage_type]: [damage_to_deal[damage_type]].")
 		if(damage_type != FATIGUE && block_multiplier > 0)
 			if(debug) log_debug("Calculating [damage_type] with shield...")
 			var/blocked_damage = block_multiplier * old_damage_amount
@@ -513,24 +521,7 @@ var/global/list/all_damage_numbers = list()
 		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists. Also makes it so that negative armor penetration penalties apply when there is armor.
 			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
 			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
-		var/arcane_bonus = 0
-		if(!ignore_armor_bonus_damage && old_damage_amount && length(defense_rating_attacker) && defense_rating_attacker[damage_type] && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
-			if(IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any magic damage if we resist magic.
-				damage_to_deal[damage_type] = 0
-				continue
-			if(is_advanced(attacker))
-				var/health/mob/living/advanced/adv_attacker = attacker.health
-				var/total_attacker_defense = (adv_attacker) ? adv_attacker.get_total_mob_defense(TRUE,FALSE) : list()
-				var/magic_before_arcane = damage_to_deal[damage_type]
-				var/arcane_bonus_percent = clamp((total_attacker_defense[damage_type]*0.02),0,(magic_before_arcane*2.5)) //Deal 1% more damage per 50 magic resist of attacker,max of 2.5x damage
-				arcane_bonus = magic_before_arcane * (arcane_bonus_percent/100)
-				if(debug) log_debug("Victim's new [damage_type] damage due to attacker's [defense_rating_attacker[damage_type]] Total Taken: [arcane_bonus + damage_to_deal[damage_type]].")
-			/*
-			If someone wants to make a variable to swap between dealing more peirce or damage, heres original code.
-			victim_defense -= defense_rating_attacker[damage_type]*0.5
-			if(debug) log_debug("Victim's new [damage_type] defense due to attacker's [defense_rating_attacker[damage_type]] armor: [victim_defense].")
-			*/
-		var/new_damage_amount = calculate_damage_with_armor((old_damage_amount + arcane_bonus),victim_defense)
+		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
 		if(debug) log_debug("Blocked [damage_type] damage: [damage_to_block].")
@@ -681,7 +672,7 @@ var/global/list/all_damage_numbers = list()
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && isturf(victim.loc))
+	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && is_turf(victim.loc))
 		var/turf/T = victim.loc
 		if(T)
 			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"

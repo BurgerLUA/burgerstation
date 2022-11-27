@@ -10,4 +10,3 @@ obj/item/weapon/unarmed
 		ATTACK_TYPE_RANGED = 0,
 		ATTACK_TYPE_MAGIC = 0
 	)
-	enchantment_whitelist = list("ALL")

@@ -225,7 +225,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/turf/starting_turf = get_turf(src)
 	var/area/starting_area = starting_turf.loc
-	areas_to_upate |= starting_area
+	areas_to_upate[starting_area] = TRUE
 
 	if(!istype(starting_turf.loc,/area/shuttle)) //marker exists outside a shuttle area
 		CRASH("SHUTTLE ERROR: [src.get_debug_name()] is not in a valid shuttle area!")
@@ -283,12 +283,12 @@ var/global/list/all_shuttle_controlers = list()
 
 		var/turf/old_turf_type = T_to_replace.type
 		var/area/old_area_type = T_to_replace.loc.type
-		areas_to_upate |= T.loc
+		areas_to_upate[T.loc] = TRUE
 		if(T.plane == PLANE_SHUTTLE) T_to_replace.change_turf(T.type,TRUE,TRUE) //Change to shuttle turf.
 		T_to_replace.change_area(T.loc.type) //Change to shuttle area.
 		T_to_replace.transit_turf = old_turf_type
 		T_to_replace.transit_area = old_area_type
-		areas_to_upate |= T_to_replace.loc
+		areas_to_upate[T_to_replace.loc] = TRUE
 
 		//Okay, time to move everything.
 		for(var/k in T.contents)
@@ -312,7 +312,7 @@ var/global/list/all_shuttle_controlers = list()
 
 		T.change_area(T.transit_area) //From shuttle area to old turf that existed under.
 		if(T.plane == PLANE_SHUTTLE) T.change_turf(T.transit_turf) //From shuttle turf to old turf that existed under.
-		areas_to_upate |= T.loc
+		areas_to_upate[T.loc] = TRUE
 
 	for(var/k in areas_to_upate)
 		var/area/A = k

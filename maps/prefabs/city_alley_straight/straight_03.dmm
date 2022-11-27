@@ -27,6 +27,10 @@
 	},
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
+"g" = (
+/obj/marker/map_node,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
 "h" = (
 /obj/structure/interactive/fence/end{
 	icon_state = "end";
@@ -76,13 +80,13 @@ c
 c
 "}
 (5,1,1) = {"
-c
+g
 b
 f
 b
 c
 c
-c
+g
 c
 "}
 (6,1,1) = {"

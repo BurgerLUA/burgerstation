@@ -100,6 +100,7 @@
 
 	if(A.ai) qdel(A.ai)
 	A.ai = new /ai/advanced/zombie(null,A)
+	A.ai.active = FALSE //I know this feels like shitcode but *dab
 
 	if(A.client)
 		T = get_turf(A)

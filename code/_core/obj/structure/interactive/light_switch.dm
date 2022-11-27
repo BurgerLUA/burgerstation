@@ -18,7 +18,7 @@
 	dir_offset = TILE_SIZE - 8
 
 /obj/structure/interactive/light_switch/Destroy()
-	if(isturf(src.loc))
+	if(is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A.requires_power)
 			A.light_switches -= src
@@ -31,10 +31,10 @@
 
 /obj/structure/interactive/light_switch/Finalize()
 	. = ..()
-	if(isturf(src.loc))
+	if(is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A.requires_power)
-			A.light_switches |= src
+			A.light_switches += src
 		else
 			log_error("ERROR: Created [src.get_debug_name()] in an [A.type] that doesn't require power. Deleting!")
 			qdel(src)
@@ -43,14 +43,14 @@
 
 /obj/structure/interactive/light_switch/post_move(var/atom/old_loc)
 	. = ..()
-	if(isturf(old_loc))
+	if(is_turf(old_loc))
 		var/area/A = old_loc.loc
 		if(A.requires_power)
 			A.light_switches -= src
-	if(isturf(src.loc))
+	if(is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A.requires_power)
-			A.light_switches |= src
+			A.light_switches += src
 
 /obj/structure/interactive/light_switch/update_atom_light()
 

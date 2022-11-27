@@ -58,8 +58,7 @@
 
 /obj/item/container/edible/sandwich/update_inventory()
 	. = ..()
-	if(finalized)
-		update_sprite()
+	update_sprite()
 
 /obj/item/container/edible/sandwich/burger
 	name = "burger"

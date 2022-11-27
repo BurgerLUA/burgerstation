@@ -7,20 +7,17 @@
 		/obj/item/clothing/overwear/armor/cult
 	)
 
-	var/list/random_tome = list(
-		/obj/item/weapon/ranged/spellgem/chaos = 20,
-		/obj/item/weapon/ranged/spellgem/cult = 20,
-		/obj/item/weapon/ranged/spellgem/blackflame = 20,
+	var/list/random_wand = list(
 		/obj/item/weapon/ranged/wand/twisted = 20,
 		/obj/item/weapon/ranged/wand/profane = 10,
 		/obj/item/weapon/ranged/wand/sage = 5
 	)
 
 	var/list/random_weapon = list(
-		/obj/item/weapon/melee/sword/claymore/cult,
-		/obj/item/weapon/unarmed/holy/spiked
+		/obj/item/weapon/melee/sword/claymore/cult = 1,
+		/obj/item/weapon/unarmed/holy/spiked = 1
 	)
-	possible_gems = list(
+	var/list/random_gem = list(
 		/obj/item/weapon/ranged/spellgem/blackflame = 1,
 		/obj/item/weapon/ranged/spellgem/chaos = 2,
 		/obj/item/weapon/ranged/spellgem/cult = 2
@@ -29,7 +26,9 @@
 /loadout/cultist/get_spawning_items()
 	. = ..()
 	. += pickweight(random_weapon)
-	if(prob(25)) . += pick(random_tome)
+	if(prob(25))
+		. += pickweight(random_wand)
+		. += pickweight(random_gem)
 
 /loadout/cultist/old
 	spawning_items = list(

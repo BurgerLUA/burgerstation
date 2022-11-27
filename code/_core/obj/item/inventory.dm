@@ -22,13 +22,6 @@
 
 
 /obj/item/proc/update_inventory() //When this object's inventory was updated.
-
-	if(is_inventory(loc) && finalized)
-		var/obj/hud/inventory/I = loc
-		if(is_advanced(I.owner))
-			var/mob/living/advanced/A = I.owner
-			A.update_speed()
-
 	return TRUE
 
 /obj/item/proc/fill_inventory()

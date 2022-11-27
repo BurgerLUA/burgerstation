@@ -54,8 +54,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	health = null
 
-	var/list/tracked_hidden_organs
-
 	value = 500
 
 	stun_angle = -90
@@ -84,9 +82,12 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
 	var/last_mood_gain = 0
 
+	var/queue_update_items = FALSE
 	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
 
 	var/current_mouse_spread = 0
+
+	var/list/overall_clothing_defense_rating = list()
 
 /mob/living/advanced/Destroy()
 
@@ -103,7 +104,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	inventories_by_id?.Cut()
 
 	overlays_assoc?.Cut()
-	tracked_hidden_organs?.Cut()
 	ability_buttons?.Cut()
 
 	held_objects = null
@@ -152,7 +152,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	worn_objects = list()
 	labeled_organs = list()
 	overlays_assoc = list()
-	tracked_hidden_organs = list()
 
 	. = ..()
 

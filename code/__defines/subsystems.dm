@@ -29,6 +29,7 @@
 #define SS_ORDER_LIGHTING 20
 #define SS_ORDER_DELETE 21
 #define SS_ORDER_REPORT 22
+#define SS_ORDER_THINK 23
 
 #define queue_smoothing_obj(A) if(!A.queued_smoothing) {A.queued_smoothing = TRUE; SSsmoothing.queued_smoothing_objs += A}
 #define queue_smoothing_turf(A) if(!A.queued_smoothing) {A.queued_smoothing = TRUE; SSsmoothing.queued_smoothing_turfs += A}

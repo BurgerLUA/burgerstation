@@ -7,7 +7,7 @@
 	if(!ismovable(object) || !object.can_be_grabbed(caller))
 		return FALSE
 
-	if(!isturf(caller.loc))
+	if(!is_turf(caller.loc))
 		return FALSE
 
 	if(grabbed_object)
@@ -96,7 +96,7 @@
 	if(get_dist(caller,object) >= 2)
 		return FALSE
 
-	if(!isturf(caller.loc))
+	if(!is_turf(caller.loc))
 		return FALSE
 
 	return TRUE

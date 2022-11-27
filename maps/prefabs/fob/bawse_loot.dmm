@@ -65,7 +65,6 @@
 "n" = (
 /obj/structure/table/wood,
 /obj/structure/interactive/shop,
-/obj/item/map,
 /turf/simulated/floor/brick/grey,
 /area/mission/prefab/fob/bawse_loot)
 "o" = (
@@ -140,6 +139,10 @@
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/brick/grey,
 /area/mission/prefab/fob/bawse_loot)
+"E" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
@@ -171,7 +174,7 @@ a
 a
 a
 a
-a
+E
 a
 a
 a
@@ -423,7 +426,7 @@ a
 a
 a
 a
-a
+E
 a
 a
 a

@@ -112,32 +112,33 @@
 	set name = "Smite Living"
 	set category = "Fun"
 
-	var/mob/living/L
+	var/mob/living/L1
 
 	if(!target)
 		var/list/valid_targets = list()
 
+		for(var/mob/living/L2 in view(VIEW_RANGE,src.mob))
+			valid_targets += L2
+
 		for(var/k in all_players)
-			valid_targets += k
+			valid_targets |= k
 
-		for(L in view(src.mob,VIEW_RANGE))
-			valid_targets |= L
+		L1 = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
 
-		L = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
+		if(!L1) return FALSE
 
-		if(!L) return FALSE
+	else
+		L1 = target
 
-	else L = target
-
-	var/confirm = input("Are you sure you want to crush [L.name]? This will kill them instantly...","Cursh Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
+	var/confirm = input("Are you sure you want to crush [L1.name]? This will kill them instantly...","Cursh Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
 
 	if(confirm != "Yes") return FALSE
 
-	var/turf/T = get_turf(L)
+	var/turf/T = get_turf(L1)
 	play_sound('sound/meme/cbt.ogg',T)
-	CALLBACK("\ref[L]_smite",15,L,/mob/living/proc/smite)
+	CALLBACK("\ref[L1]_smite",15,L1,/mob/living/proc/smite)
 
-	log_admin("[L.get_debug_name()] was smited by [src.get_debug_name()].")
+	log_admin("[L1.get_debug_name()] was smited by [src.get_debug_name()].")
 
 
 /client/verb/break_bones(var/mob/living/advanced/target)
@@ -145,36 +146,36 @@
 	set name = "Break Bones"
 	set category = "Fun"
 
-	var/mob/living/advanced/L
+	var/mob/living/advanced/A1
 
 	if(!target)
 		var/list/valid_targets = list()
 
+		for(var/mob/living/advanced/A2 in view(VIEW_RANGE,src.mob))
+			valid_targets += A2
+
 		for(var/k in all_players)
-			valid_targets += k
+			valid_targets |= k
 
-		for(L in view(src.mob,VIEW_RANGE))
-			valid_targets |= L
+		A1 = input("Who do you wish to break?","Break Target") as null|anything in valid_targets
 
-		L = input("Who do you wish to break?","Break Target") as null|anything in valid_targets
-
-		if(!L) return FALSE
+		if(!A1) return FALSE
 
 	else
-		L = target
+		A1 = target
 
-	var/confirm = input("Are you sure you want to break all the bones in [L.name]\s body? This will hurt...","Break Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
+	var/confirm = input("Are you sure you want to break all the bones in [A1.name]\s body? This will hurt...","Break Confirmation","Cancel") as null|anything in list("Yes","No","Cancel")
 
 	if(confirm != "Yes") return FALSE
 
-	for(var/k in L.labeled_organs)
-		var/obj/item/organ/O = L.labeled_organs[k]
+	for(var/k in A1.labeled_organs)
+		var/obj/item/organ/O = A1.labeled_organs[k]
 		O.break_bone(FALSE,FALSE)
 
-	L.visible_message(span("danger","Every bone in [L.name]'s body breaks!"),span("danger","Every bone in your body breaks!"))
-	play_sound('sound/effects/bone_crack.ogg',get_turf(L))
+	A1.visible_message(span("danger","Every bone in [A1.name]'s body breaks!"),span("danger","Every bone in your body breaks!"))
+	play_sound('sound/effects/bone_crack.ogg',get_turf(A1))
 
-	log_admin("[L.get_debug_name()] was broken by [src.get_debug_name()].")
+	log_admin("[A1.get_debug_name()] bones were broken by [src.get_debug_name()].")
 
 /client/verb/give_credits(var/dosh_amount as num)
 	set name = "Give Credits"
@@ -376,7 +377,9 @@
 	var/list/valid_bodies = list()
 
 	for(var/mob/living/L in view(src.mob,VIEW_RANGE))
-		valid_bodies |= L
+		if(L.ckey || L.ckey_last)
+			continue
+		valid_bodies += L
 
 	var/mob/living/desired_body = input("What body would you like to take control of?","Control Body") as null|anything in valid_bodies
 

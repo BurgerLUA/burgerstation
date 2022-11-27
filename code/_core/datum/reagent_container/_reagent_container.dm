@@ -56,7 +56,7 @@
 	. = ..()
 
 	if(!(flags_temperature & REAGENT_TEMPERATURE_NO_AMBIENT) && volume_current)
-		SSreagent.all_temperature_reagent_containers |= src
+		SSreagent.all_temperature_reagent_containers += src
 
 /reagent_container/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 	. = FALSE
@@ -333,14 +333,18 @@
 			continue
 		if(from_temperature_change && !R.has_temperature_recipe)
 			continue
-		recipes_to_check |= R.involved_in_recipes
+		for(var/j in R.involved_in_recipes)
+			var/reagent_recipe/JR = SSreagent.all_reagent_recipes[j]
+			recipes_to_check[JR] = TRUE
+
+	sortTim(recipes_to_check,/proc/cmp_recipe_priority_dsc)
 
 	var/reagent_recipe/found_recipe = null
 	for(var/k in recipes_to_check)
 
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 
-		var/reagent_recipe/recipe = SSreagent.all_reagent_recipes[k]
+		var/reagent_recipe/recipe = k
 
 		if(debug) log_debug("Checking [recipe]...")
 

@@ -60,12 +60,20 @@
 
 	mob = M
 	eye = M
-	all_mobs_with_clients |= M
-	all_listeners |= M
+
+	all_mobs_with_clients += M
+	if(!all_mobs_with_clients_by_z["[M.last_z]"])
+		all_mobs_with_clients_by_z["[M.last_z]"] = list()
+	all_mobs_with_clients_by_z["[M.last_z]"] += src
+
 	view = M.view
 
 	update_zoom(2)
 	update_verbs()
+
+	if(!M.listener)
+		M.listener = TRUE
+		all_listeners += src
 
 	update_statpanel = TRUE
 
@@ -80,19 +88,10 @@
 	if(!M)
 		return FALSE
 
-	if(M.parallax)
-		for(var/k in M.parallax)
-			var/obj/parallax/P = M.parallax[k]
-			qdel(P)
-			M.parallax -= P
-		M.parallax.Cut()
-
 	all_mobs_with_clients -= M
 	if(all_mobs_with_clients_by_z["[M.last_z]"])
 		all_mobs_with_clients_by_z["[M.last_z]"] -= src
 
-	if(!M.listener)
-		all_listeners -= M
 	M.client = null
 	if(hard)
 		M.ckey_last = null

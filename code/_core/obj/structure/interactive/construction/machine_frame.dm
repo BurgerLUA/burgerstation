@@ -58,7 +58,7 @@ obj/structure/interactive/construction/machine_frame/clicked_on_by_object(var/mo
 		caller.visible_message(span("notice","[caller.name] inserts some parts into the [src.name]."),span("notice","You insert some parts into the [src.name]."))
 		make_machine(caller,object,/obj/structure/interactive/mining_brace)
 		return TRUE
-	if(istype(object,/obj/item/crafting/smelter))
+	if(istype(object,/obj/item/crafting_bench/smelter))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)

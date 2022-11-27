@@ -47,12 +47,6 @@
 		hovering = FALSE
 		START_THINKING(src)
 
-/obj/item/weapon/ranged/wand/on_drop(obj/hud/inventory/old_inventory, silent)
-	if(length(socketed_spellgem))
-		socketed_spellgem.mana_cost_user = 0
-	. = ..()
-
-
 /obj/item/weapon/ranged/wand/think()
 
 	if(!is_inventory(src.loc))
@@ -159,7 +153,6 @@
 		var/magic_number = (500/6)**1.25
 		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
-		sockets = min(sockets,sockets_max)
 
 /obj/item/weapon/ranged/wand/Destroy()
 	QDEL_NULL(socketed_spellgem)

@@ -28,7 +28,7 @@
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
 "g" = (
-/obj/structure/interactive/fence/door,
+/obj/marker/map_node,
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
 "h" = (
@@ -38,11 +38,21 @@
 	},
 /turf/simulated/floor/colored/dirt/path,
 /area/dmm_suite/clear_area)
+"i" = (
+/obj/item/trash/random,
+/obj/marker/map_node,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+"j" = (
+/obj/structure/interactive/fence/door,
+/obj/marker/map_node,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 a
 b
-c
+g
 c
 a
 a
@@ -62,12 +72,12 @@ b
 (3,1,1) = {"
 a
 b
-c
+g
 d
 c
+j
+c
 g
-c
-c
 "}
 (4,1,1) = {"
 a
@@ -102,10 +112,10 @@ a
 (7,1,1) = {"
 a
 c
-d
+i
 c
 c
-c
+g
 b
 a
 "}

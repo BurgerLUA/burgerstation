@@ -24,7 +24,7 @@ var/global/list/all_telecomms = list()
 	if(!all_telecomms[area_identifier])
 		all_telecomms[area_identifier] = list()
 
-	all_telecomms[area_identifier] |= src
+	all_telecomms[area_identifier] += src
 	broadcasting_areas[area_identifier] = TRUE
 
 	return TRUE

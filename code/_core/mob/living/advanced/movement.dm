@@ -95,7 +95,7 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(prob(5) && sent_pain && sent_pain.send_pain_response(20))
 			src.to_chat(span("warning","Your broken [sent_pain.name] struggles to keep you upright!"))
 
-	if(isturf(old_loc))
+	if(is_turf(old_loc))
 		var/turf/T = old_loc
 		//Right hand
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD]?.grabbed_object)

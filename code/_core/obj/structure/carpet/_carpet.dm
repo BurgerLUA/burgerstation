@@ -17,6 +17,8 @@
 
 	mouse_opacity = 0
 
+	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
+
 /obj/structure/carpet/on_destruction(var/mob/caller,var/damage = FALSE)
 	. = ..()
 	qdel(src)

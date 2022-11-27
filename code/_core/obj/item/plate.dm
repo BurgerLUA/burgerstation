@@ -86,13 +86,15 @@
 
 /obj/item/plate/Entered(var/atom/movable/enterer,var/atom/oldloc)
 	. = ..()
-	enterer.vis_flags &= ~VIS_INHERIT_ID
-	vis_contents |= enterer
+	if(oldloc != src)
+		enterer.vis_flags &= ~VIS_INHERIT_ID
+		vis_contents |= enterer
 
 /obj/item/plate/Exited(var/atom/movable/exiter,var/atom/newloc)
 	. = ..()
-	vis_contents -= exiter
-	exiter.vis_flags = initial(exiter.vis_flags)
+	if(newloc != src)
+		vis_contents -= exiter
+		exiter.vis_flags = initial(exiter.vis_flags)
 
 /obj/item/plate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

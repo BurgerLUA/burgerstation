@@ -17,7 +17,7 @@
 			frustration_move = max(0,frustration_move-0.25)
 			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
 
-	if(!new_turf || !old_turf || new_turf.z != old_turf.z)
+	if(new_turf.z != old_turf.z)
 		if(active)
 			if(old_turf) remove_from_active_list(old_turf.z)
 			if(new_turf) add_to_active_list(new_turf.z)

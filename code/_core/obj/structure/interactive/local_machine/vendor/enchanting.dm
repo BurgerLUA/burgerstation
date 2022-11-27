@@ -39,10 +39,10 @@
 		/obj/item/weapon/ranged/spellgem/magic_missile,
 		/obj/item/weapon/ranged/spellgem/shock,
 		/obj/item/weapon/ranged/spellgem/tesla,
-		
+
 		/obj/item/weapon/ranged/spellgem/buff_armor,
 		/obj/item/weapon/ranged/spellgem/projectile_armor,
-		
+
 		/obj/item/supportgem/cost,
 		/obj/item/supportgem/damage,
 		/obj/item/supportgem/projectiles,
@@ -80,7 +80,7 @@
 		/obj/item/clothing/neck/tie/red,
 		/obj/item/weapon/melee/sword/allium,
 		/obj/item/weapon/melee/torch,
-		/obj/item/crafting/alchemy
+		/obj/item/crafting_bench/alchemy
 	)
 
 	accepts_item = /obj/item/currency/gold_coin

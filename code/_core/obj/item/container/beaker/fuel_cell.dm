@@ -30,7 +30,7 @@
 		allow_reagent_transfer_to = TRUE
 		allow_reagent_transfer_from = TRUE
 		reagents.temperature_change_mul = 1
-		SSreagent.all_temperature_reagent_containers |= reagents
+		SSreagent.all_temperature_reagent_containers += reagents
 
 
 /obj/item/container/simple/beaker/fuel_cell/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -38,12 +38,12 @@
 	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WRENCH)
-			if(!allow_reagent_transfer_to || !allow_reagent_transfer_from)
+			if(!(allow_reagent_transfer_to || allow_reagent_transfer_from))
 				caller.visible_message(span("notice","\The [caller.name] opens \the [src.name] with \the [I.name]."),span("notice","You open \the [src.name] with \the [I.name]."))
 				allow_reagent_transfer_to = TRUE
 				allow_reagent_transfer_from = TRUE
 				reagents.temperature_change_mul = 1
-				SSreagent.all_temperature_reagent_containers |= reagents
+				SSreagent.all_temperature_reagent_containers += reagents
 			else
 				caller.to_chat(span("warning","\The [src.name] is already open!"))
 			return TRUE

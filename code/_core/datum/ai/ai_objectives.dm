@@ -129,7 +129,7 @@
 		set_objective(null)
 		return TRUE
 
-	if(isturf(objective_attack))
+	if(is_turf(objective_attack))
 		if(objective_attack.Enter(owner)) //No reason to attack the turf.
 			set_objective(null)
 			return TRUE
@@ -185,7 +185,7 @@
 			if(A.qdeleting)
 				obstacles -= k
 				continue
-			if(isturf(A))
+			if(is_turf(A))
 				if(A.Enter(owner,owner.loc))
 					obstacles -= k
 					continue

@@ -5,7 +5,7 @@
 	"/obj/item/weapon/melee/tool/hammer" = 1,
 	"/obj/item/paper" = 1)
 
-	consume_id_amount = list("/obj/item/weapon/melee/tool/hammer" = 0)
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/hammer" = 0)
 
 	product = list("/obj/item/crafting/ingredient/part/sandpaper" = 100)
 
@@ -27,7 +27,7 @@
 		"c3" = null
 	)
 
-	consume_id_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0 )
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/wirecutters" = 0 )
 
 	product = list("/obj/item/crafting/ingredient/part/casing_mold" = 100)
 
@@ -50,24 +50,3 @@
 	)
 
 	product = list("/obj/item/crafting/ingredient/thread/durathread/" = 100)
-
-
-/recipe/workbench/empty_box
-
-	name = "empty box"
-
-	required_item_grid = list(
-		"a1" = null,
-		"a2" = "/obj/item/material/sheet/steel",
-		"a3" = null,
-
-		"b1" = "/obj/item/material/sheet/steel",
-		"b2" = "/obj/item/material/sheet/steel",
-		"b3" = "/obj/item/material/sheet/steel",
-
-		"c1" = null,
-		"c2" = "/obj/item/material/sheet/steel",
-		"c3" = null
-	)
-
-	product = list("/obj/item/crafting/ingredient/part/metal_box" = 100)

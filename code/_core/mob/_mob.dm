@@ -362,7 +362,7 @@
 	if(C)
 		C.control_mob(src,FALSE)
 
-	all_mobs |= src
+	all_mobs += src
 
 	. = ..()
 

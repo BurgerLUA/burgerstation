@@ -52,10 +52,7 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "j" = (
-/obj/marker/prefab/house/low_chance{
-	icon_state = "";
-	dir = 8
-	},
+/obj/marker/prefab/house,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "k" = (
@@ -71,13 +68,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"m" = (
-/obj/marker/prefab/house/low_chance{
-	icon_state = "";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "p" = (
 /obj/structure/interactive/lighting/roadlamp{
@@ -419,7 +409,7 @@ e
 e
 e
 e
-m
+j
 e
 e
 e

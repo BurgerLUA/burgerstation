@@ -44,7 +44,7 @@
 		container = null
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
-	if(container && container.volume_current > 0 && (A.reagents || isturf(A)))
+	if(container && container.volume_current > 0 && (A.reagents || is_turf(A)))
 		var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
 		container.splash(owner,A,amount_to_actually_splash,FALSE,5)
 	return TRUE

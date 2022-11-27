@@ -4,7 +4,7 @@
 	required_items = list("/obj/item/tempering/quality/ranged" = 1,
 	"/obj/item/weapon/melee/tool/screwdriver" = 1)
 
-	consume_id_amount = list("/obj/item/weapon/melee/tool/screwdriver" = 0)
+	required_item_grid_amount = list("/obj/item/weapon/melee/tool/screwdriver" = 0)
 
 	product = list("/obj/item/tempering/quality/ranged_bow" = 100)
 

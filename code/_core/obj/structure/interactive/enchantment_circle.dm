@@ -104,8 +104,15 @@
 
 	var/obj/item/soulgem/soulgem = locate() in stored_items
 	var/obj/item/weapon/weapon_to_enchant = locate() in stored_items
-	if(weapon_to_enchant && !(!weapon_to_enchant.enchantment_whitelist[stored_book.stored_enchantment] || !weapon_to_enchant.enchantment_whitelist["ALL"]) && (weapon_to_enchant.enchantment_blacklist["ALL"] || weapon_to_enchant.enchantment_blacklist[stored_book.stored_enchantment]))
-		weapon_to_enchant = null
+
+	if(weapon_to_enchant)
+		if(weapon_to_enchant.enchantment_whitelist)
+			if(!length(weapon_to_enchant.enchantment_whitelist) && !weapon_to_enchant.enchantment_whitelist[stored_book.stored_enchantment])
+				weapon_to_enchant = null
+		if(length(weapon_to_enchant.enchantment_blacklist))
+			if(weapon_to_enchant.enchantment_blacklist[stored_book.stored_enchantment])
+				weapon_to_enchant = null
+
 
 	if(!soulgem || !soulgem.total_charge || !weapon_to_enchant || weapon_to_enchant.enchantment || !stored_book.stored_enchantment)
 		caller.visible_message(span("warning","\The [src.name] reacts to [caller.name]'s words... but slowly fizzles out."),span("warning","\The [src.name] reacts to your words... but slowly fizzles out."))
@@ -133,7 +140,7 @@
 	if(is_living(speaker) && active && stored_book && text)
 		var/text_to_compare = sanitize(lowertext(stored_book.enchanting_phrase))
 		var/language/L = SSlanguage.all_languages[LANGUAGE_LIZARD]
-		
+
 		//Removal of moff accent
 		var/antimoth = list(
 			"ø" = "o",

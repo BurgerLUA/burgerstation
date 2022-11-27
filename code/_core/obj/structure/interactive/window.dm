@@ -50,7 +50,7 @@
 			if(!T)
 				continue
 			var/atom/A = src.should_smooth_with(T)
-			var/is_a_turf = isturf(A)
+			var/is_a_turf = is_turf(A)
 			var/is_an_airlock = istype(A,/obj/structure/interactive/door/airlock)
 			if(is_a_turf || is_an_airlock)
 				var/image/I = new/image(initial(A.icon),is_a_turf ? "window_blend_[d]" : "metal_frame_[d]")

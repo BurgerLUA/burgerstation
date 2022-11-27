@@ -43,10 +43,10 @@ var/global/power_id = 1
 		wire.power_network.remove_wire(wire)
 
 	wire.power_network = src
-	connected_wires |= wire
+	connected_wires += wire
 
 	if(wire.connected_machine)
-		connected_wires_with_machines |= wire
+		connected_wires_with_machines += wire
 		wire.connected_machine.update_power_draw(wire.connected_machine.get_power_draw(),reset=TRUE)
 		wire.connected_machine.update_power_supply(wire.connected_machine.get_power_supply(),reset=TRUE)
 

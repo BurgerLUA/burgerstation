@@ -165,7 +165,7 @@
 				continue
 			if(get_dist(P,T) > BOSS_RANGE)
 				continue
-			valid_ckeys |= P.client.ckey
+			valid_ckeys += P.client.ckey
 
 	var/list/valid_turfs = list()
 

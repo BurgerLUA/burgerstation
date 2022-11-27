@@ -47,6 +47,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/cache_mx = 0
 
 /lighting_corner/New(turf/new_turf, diagonal, oi)
+
 	SSlighting.lighting_corners += src
 
 	t1 = new_turf

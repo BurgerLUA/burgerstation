@@ -65,7 +65,7 @@ obj/structure/interactive/door
 	if(apc_powered)
 		var/area/A = get_area(src)
 		if(A.requires_power)
-			A.powered_doors |= src
+			A.powered_doors += src
 		else
 			apc_powered = FALSE
 
@@ -76,15 +76,15 @@ obj/structure/interactive/door
 /obj/structure/interactive/door/post_move(var/atom/old_loc)
 	. = ..()
 	if(apc_powered)
-		if(isturf(old_loc))
+		if(is_turf(old_loc))
 			var/area/A = old_loc.loc
 			if(A.requires_power)
 				update_power_draw(0)
 				A.powered_doors -= src
-		if(isturf(src.loc))
+		if(is_turf(src.loc))
 			var/area/A = src.loc.loc
 			if(A.requires_power)
-				A.powered_doors |= src
+				A.powered_doors += src
 			else
 				apc_powered = FALSE
 

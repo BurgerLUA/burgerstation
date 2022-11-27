@@ -5,17 +5,57 @@
 	//Goes boom on destroy if not 0
 	var/explode_power = 0
 	//Velocity multiplied by this every update if not 0
-	var/magic_vel_degrade = 0 
-	//Do we home in on a target?
-	var/is_homing = FALSE
+	var/magic_vel_degrade = 0
+
+
+
+	var/homing = FALSE //Do we home in on a target?
+	var/homing_distance_max = VIEW_RANGE //Allowed maximum distance to home.
+	var/homing_distance_min = 0 //If non-zero, speed up if above this range and slow down if below this range.
+	var/homing_speed = 0 //How fast are we allowed to go without slowing down? Set to 0 to disable.
+	var/homing_maximum_acceleration = 0.05 //Per tick. Also deceleration. limited between 0.01 and 0.25.
+	var/homing_angle_limit = 45 //Maximum angle that it can change when homing.
+	var/homing_mod = 0.05 //What percentage of velocity (as a value 0-1) should the projectile try to turn to.
+
+	var/obj/projectile/turret_projectile // The projectile for this projectile to shoot when near valid targets.
+	var/turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
+	var/turret_projectie_max_range = 4
+	var/turret_projectile_next = 0 //Read only.
+	var/turret_projectile_speed = TILE_SIZE*0.5 - 1
+	var/turret_projectile_sound
+
 	var/last_angle
-	var/is_turret = FALSE //Slows down homing bois so they can shoot while alive. Does nothing if not homing.
 	var/extra_lifetime =  2 //How long should we persist before starting to decay by magic_vel_degrade?
-	var/max_home_speed = 4 //How fast are we allowed to go without slowing down?
+
+
+/obj/projectile/magic/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+	. = ..()
+	homing_maximum_acceleration = clamp(homing_maximum_acceleration,0.01,0.25)
+
+	//Stolen from smartguns
+	if(homing && (loyalty_tag || iff_tag) && target_turf)
+		var/mob/living/best_target
+		var/best_distance = INFINITY
+		for(var/mob/living/L in range(target_turf,3))
+			if(L.dead)
+				continue
+			if(iff_tag && L.iff_tag == iff_tag)
+				continue
+			if(loyalty_tag && L.loyalty_tag == loyalty_tag)
+				continue
+			var/dist = get_dist(target_turf,L)
+			if(dist < best_distance)
+				best_target = L
+				best_distance = dist
+		if(best_target)
+			target_atom = best_target
+
+
+
 
 /obj/projectile/magic/on_projectile_hit(atom/hit_atom)
 	. = ..()
-	
+
 	if(. && explode_power > 0)
 		explode(get_turf(hit_atom),explode_power,owner,src,loyalty_tag)
 
@@ -23,53 +63,103 @@
 
 	. = ..()
 
-	if(. && is_homing)
-		if(!.)
-			return .
+	if(!. || !current_loc)
+		return .
 
-		if(!current_loc)
-			return .
+	//Handle shooting.
+	if(turret_projectile && turret_projectie_max_range > 0 && turret_projectile_next <= world.time)
+		turret_projectile_next = world.time + turret_projectile_delay
+		var/mob/living/best_target
+		var/best_distance = INFINITY
+		for(var/mob/living/L in orange(turret_projectie_max_range,current_loc))
+			if(L.dead)
+				continue
+			if(iff_tag && L.iff_tag == iff_tag)
+				continue
+			if(loyalty_tag && L.loyalty_tag == loyalty_tag)
+				continue
+			var/dist = get_dist(current_loc,L)
+			if(dist < best_distance)
+				best_target = L
+				best_distance = dist
+		if(best_target)
+			current_loc.shoot_projectile(
+				owner,
+				best_target,
+				null,
+				null,
+				turret_projectile,
+				damage_type,
+				16,
+				16,
+				0,
+				turret_projectile_speed,
+				1,
+				src.color,
+				0,
+				1,
+				iff_tag,
+				loyalty_tag
+			)
+			if(turret_projectile_sound)
+				play_sound(turret_projectile_sound,current_loc)
 
-		if(start_time + SECONDS_TO_DECISECONDS(extra_lifetime) > lifetime)
-			vel_x *= magic_vel_degrade
-			vel_y *= magic_vel_degrade
-			alpha -= 10
-			if(alpha <= 0)
+
+
+	if(homing && target_atom && target_atom.z == src.z && !target_atom.qdeleting)
+
+		var/current_speed = ROOT(vel_x**2 + vel_y**2,2) //Current speed.
+
+		if(homing_speed > 0)
+			if(current_speed <= 0)
 				on_projectile_hit(current_loc)
 				return FALSE
+			var/found_max = max(abs(vel_x),abs(vel_y))
+			var/norm_x = vel_x/found_max
+			var/norm_y = vel_y/found_max
+			var/max_increase = 1 / (current_speed / homing_speed)
+			max_increase = round(max_increase,0.01)
+			if(max_increase != 1) //No point in doing anything if the speed is fine.
+				if(max_increase < 1) //Woah, slow down.
+					max_increase = max(max_increase,1-homing_maximum_acceleration)
+				else if(max_increase > 1) //Lets speed up.
+					max_increase = min(max_increase,1+homing_maximum_acceleration)
+				current_speed = current_speed * max_increase
+				vel_x = norm_x * current_speed
+				vel_y = norm_y * current_speed
+
+		var/real_distance_to_target = get_dist_real(current_loc,target_atom)
+
+		if(homing_distance_max > 0 && real_distance_to_target > homing_distance_max) //Too far away.
 			return .
 
-
-		if((abs(vel_x) > max_home_speed && abs(vel_y) > max_home_speed) && is_turret)
-			vel_x *= 0.95
-			vel_y *= 0.95
+		if(real_distance_to_target <= 0) //Too close!
 			return .
 
-		var/atom/target_to_track = target_atom ? target_atom : target_turf
+		var/list/offsets = get_directional_offsets(current_loc,target_atom)
 
-		if(!target_to_track || target_to_track.z != src.z || target_to_track.qdeleting)
-			return .
+		if(vel_x && vel_y)
+			var/current_angle = -ATAN2(vel_x,vel_y) + 90
+			var/new_angle = -ATAN2(offsets[1],offsets[2]) + 90
 
-		var/desired_angle = get_angle(current_loc,target_to_track)
+			if(current_angle != new_angle)
+				if(!homing_angle_limit || abs(current_angle - new_angle) < homing_angle_limit)
+					vel_x = round(offsets[1]*current_speed*homing_mod + vel_x*(1-homing_mod),0.001)
+					vel_y = round(offsets[2]*current_speed*homing_mod + vel_y*(1-homing_mod),0.001)
+				if(rotate_projectile)
+					var/matrix/M = get_base_transform()
+					M.Turn(last_angle)
+					transform = M
 
-		if(!isnum(last_angle))
-			last_angle = desired_angle
-		else
-			desired_angle = SIMPLIFY_DEGREES(last_angle)*0.75 + SIMPLIFY_DEGREES(desired_angle)*0.25
-
-		vel_x = (vel_x + sin(desired_angle)*2)*0.5
-		vel_y = (vel_y + cos(desired_angle)*2)*0.5
-
-		last_angle = desired_angle
-	
-	else if(. && magic_vel_degrade > 0)
+	//Start to degrade velocity over time.
+	if((!homing || homing_speed <= 0) && start_time + SECONDS_TO_DECISECONDS(extra_lifetime) > lifetime)
 		vel_x *= magic_vel_degrade
 		vel_y *= magic_vel_degrade
-		alpha = clamp(alpha *= magic_vel_degrade,0,255)
-
-		if(abs(vel_x) <= 1	&& abs(vel_y) <= 1)
+		alpha -= 10
+		if(alpha <= 0)
 			on_projectile_hit(current_loc)
 			return FALSE
+
 
 
 /obj/projectile/magic/fireball
@@ -157,9 +247,28 @@
 	name = "tesla ball"
 	icon_state = "tesla"
 
-	magic_vel_degrade = 0.75
-	is_homing = TRUE
-	is_turret = TRUE
+	homing = TRUE //Do we home in on a target?
+	homing_distance_max = VIEW_RANGE //Allowed maximum distance to home.
+	homing_distance_min = 4 //If non-zero, speed up if above this range and slow down if below this range.
+	homing_speed = TILE_SIZE * 0.25
+	homing_maximum_acceleration = 0.05 //Per tick. Also deceleration. limited between 0.01 and 0.25.
+	homing_angle_limit = 360
+	homing_mod = 0.2
+
+	turret_projectile = /obj/projectile/magic/tesla_bolt // The projectile for this projectile to shoot when near valid targets.
+	turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
+	turret_projectie_max_range = 5
+	turret_projectile_speed = TILE_SIZE*0.5 - 1
+	turret_projectile_sound = 'sound/effects/tesla.ogg'
+
+
+/obj/projectile/magic/tesla_bolt
+	name = "tesla bolt"
+	icon_state = "tesla_01"
+
+/obj/projectile/magic/tesla_bolt/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
+	icon_state = pick("tesla_01","tesla_02","tesla_03")
+	return ..()
 
 /obj/projectile/magic/lightning
 	name = "lightning"
@@ -188,7 +297,7 @@
 /obj/projectile/magic/crystal
 	name = "magic crystal"
 	icon_state = "crystal"
-	
+
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 /obj/projectile/magic/crystal/fire
@@ -262,12 +371,12 @@
 	icon_state = "fractal"
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 	penetrations_left = 1
-	is_homing = TRUE
-	max_home_speed = 24
+	homing = TRUE
+	homing_speed = TILE_SIZE*0.75
 
 /*
 /obj/projectile/magic/fractal/on_projectile_hit(atom/hit_atom)
-	
+
 	. = ..()
 
 	if(. && is_living(hit_atom) && !has_split)
@@ -276,8 +385,8 @@
 		if(inrange.len == 0)
 			return FALSE
 		for(var/list/unluckymobs in inrange)
-			for(var/i = min(2,unluckymobs.len), i,i++) 
-				var/victim = unluckymobs[rand(1,unluckymobs.len)] 
+			for(var/i = min(2,unluckymobs.len), i,i++)
+				var/victim = unluckymobs[rand(1,unluckymobs.len)]
 				src.on_projectile_hit(victim)
 				unluckymobs -= list(victim) //dont hit same twice
 		return FALSE
@@ -290,13 +399,13 @@
 	//TODO: Var for all 'Unholy' creatures.Deal extra to them.
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
-	
+
 /obj/projectile/magic/unholy_skull
 	name = "unholy skull"
 	icon_state = "evil"
 
-	is_homing = TRUE
-	max_home_speed = 16
+	homing = TRUE
+	homing_speed = TILE_SIZE * 0.5
 	explode_power = 1.5
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID

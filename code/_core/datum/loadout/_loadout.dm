@@ -1,6 +1,5 @@
 /loadout/
 	var/list/spawning_items = list() //Remember, order matters! Also accepts loot.
-	var/list/possible_gems = list() // A weighted list of what gems the wands(if any) of mob should carry in them
 
 	var/obj/item/spawn_on_loot_fail //Put a backpack path here or something so failed loot goes in it if it can.
 
@@ -48,16 +47,17 @@
 
 /loadout/proc/post_add(var/mob/living/advanced/A,var/list/added_items = list()) //Added after everything is added.
 
-	for(var/obj/item/weapon/ranged/bullet/W in added_items) //So weapons don't spawn empty.
+	for(var/obj/item/weapon/ranged/W in added_items) //So bullet weapons don't spawn empty.
 		if(SSbalance.weapon_to_bullet[W.type])
-			for(var/i=1,i<=length(W.stored_bullets),i++)
-				var/obj/item/bullet_cartridge/BC = SSbalance.weapon_to_bullet[W.type]
-				BC = new BC(W)
+			var/obj/item/weapon/ranged/bullet/W2 = W
+			for(var/i=1,i<=length(W2.stored_bullets),i++)
+				var/obj/item/bullet_cartridge/BC = SSbalance.weapon_to_bullet[W2.type]
+				BC = new BC(W2)
 				BC.amount = 1
 				INITIALIZE(BC)
 				GENERATE(BC)
 				FINALIZE(BC)
-				W.stored_bullets[i] = BC
+				W2.stored_bullets[i] = BC
 		if(SSbalance.weapon_to_magazine[W.type])
 			var/obj/item/weapon/ranged/bullet/magazine/W2 = W
 			var/obj/item/magazine/M = SSbalance.weapon_to_magazine[W2.type]
@@ -68,13 +68,25 @@
 			W2.stored_magazine = M
 			W2.open = FALSE
 			W2.update_sprite()
-	for(var/obj/item/weapon/ranged/wand/W in added_items) // Gives wands a basic spellgem, if the mob has possible weapon gems to add to it.
-		if(!W.socketed_spellgem)
-			var/obj/item/weapon/ranged/spellgem/SG = pickweight(possible_gems)
-			SG = new SG(get_turf(A))
-			INITIALIZE(SG)
-			GENERATE(SG)
-			FINALIZE(SG)
-			W.contents += SG //probably stupid and bad
-			W.socketed_spellgem = SG
+
+		if(is_wand(W))
+			var/obj/item/weapon/ranged/wand/W2 = W
+			if(!W2.socketed_spellgem)
+				for(var/obj/item/weapon/ranged/spellgem/S in added_items)
+					if(is_wand(S.loc))
+						continue
+					S.force_move(S)
+					W2.socketed_spellgem = S
+			if(length(W2.socketed_supportgems) < W2.sockets)
+				for(var/obj/item/supportgem/S in added_items)
+					if(is_wand(S.loc))
+						continue
+					if(length(W2.socketed_supportgems) >= W2.sockets)
+						break
+					S.force_move(S)
+					W2.socketed_supportgems += S
+			W2.update_sprite()
+			W2.update_attachment_stats()
+
+
 	return TRUE

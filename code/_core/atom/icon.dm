@@ -38,7 +38,7 @@
 	if(length(vis_contents) >= 100)
 		CRASH("Warning: [get_debug_name()] exceeds 100 vis contents![is_datum(desired_vis_content) ? " Overlay name: [desired_vis_content.get_debug_name()]." : ""]")
 
-	vis_contents |= desired_vis_content
+	vis_contents += desired_vis_content
 
 	return TRUE
 

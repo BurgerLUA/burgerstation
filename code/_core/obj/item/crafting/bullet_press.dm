@@ -1,4 +1,4 @@
-/obj/item/crafting/bullet_press
+/obj/item/crafting_bench/bullet_press
 	name = "portable bullet press"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "bullet_press"

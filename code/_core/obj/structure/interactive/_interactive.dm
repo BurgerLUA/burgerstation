@@ -18,7 +18,7 @@ obj/structure/interactive/
 
 /obj/structure/interactive/Destroy()
 
-	if(apc_powered && isturf(src.loc))
+	if(apc_powered && is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A && A.requires_power)
 			update_power_draw(0)
@@ -33,10 +33,10 @@ obj/structure/interactive/
 
 /obj/structure/interactive/Finalize()
 
-	if(apc_powered && isturf(src.loc))
+	if(apc_powered && is_turf(src.loc))
 		var/area/A = src.loc.loc
 		if(A && A.requires_power)
-			A.powered_machines |= src
+			A.powered_machines += src
 
 	. = ..()
 
@@ -45,15 +45,15 @@ obj/structure/interactive/
 	if(connected_wire)
 		connected_wire.do_snap()
 	if(apc_powered)
-		if(isturf(old_loc))
+		if(is_turf(old_loc))
 			var/area/A = old_loc.loc
 			if(A.requires_power)
 				update_power_draw(0)
 				A.powered_machines -= src
-		if(isturf(src.loc))
+		if(is_turf(src.loc))
 			var/area/A = src.loc.loc
 			if(A.requires_power)
-				A.powered_machines |= src
+				A.powered_machines += src
 
 /obj/structure/interactive/proc/get_power_draw()
 	return 0

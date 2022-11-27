@@ -12,8 +12,8 @@
 	)
 
 	if("purchase a blood contract" in known_options)
-		.["hello"] |= "purchase a blood contract"
-		.["hello"] |= "turn in a blood contract"
+		.["hello"] += "purchase a blood contract"
+		.["hello"] += "turn in a blood contract"
 
 
 	.["Blood Contracts"] = list(
@@ -24,7 +24,7 @@
 	)
 
 	if("purchase loot boxes" in known_options)
-		.["hello"] |= "purchase loot boxes"
+		.["hello"] += "purchase loot boxes"
 
 
 	.["Loot Boxes"] = list(

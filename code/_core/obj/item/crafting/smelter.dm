@@ -1,4 +1,4 @@
-/obj/item/crafting/smelter
+/obj/item/crafting_bench/smelter
 	name = "portable smelter"
 	desc = "Smelt ores! Also cooks!"
 	icon = 'icons/obj/item/ore.dmi'

@@ -6,17 +6,14 @@
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "c" = (
-/obj/marker/prefab/house/low_chance{
+/obj/marker/prefab/house{
 	icon_state = "";
 	dir = 4
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "d" = (
-/obj/marker/prefab/house/low_chance{
-	icon_state = "";
-	dir = 8
-	},
+/obj/marker/prefab/house,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "e" = (

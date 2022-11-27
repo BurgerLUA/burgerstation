@@ -160,7 +160,7 @@
 		var/area/A = T.loc
 		A.chunk_cleanable += src
 
-	if((opacity || density) && src.z && isturf(src.loc))
+	if((opacity || density) && src.z && is_turf(src.loc))
 		var/turf/T = src.loc
 		if(opacity)
 			T.has_opaque_atom = TRUE
@@ -241,7 +241,7 @@
 
 	. = ..()
 
-	if(. && isturf(loc))
+	if(. && is_turf(loc))
 		var/turf/T = loc
 		if(T.density != density)
 			T.recalculate_atom_density()

@@ -59,6 +59,21 @@
 /obj/marker/hostage_spawn,
 /turf/simulated/floor/tile/chapel,
 /area/mission/prefab/house/house_D03/chapple)
+"al" = (
+/obj/structure/interactive/door/airlock/station/glass,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"am" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D03/hallway)
+"an" = (
+/obj/structure/interactive/door/airlock/station/maintenance,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D03/hallway)
 "aF" = (
 /obj/structure/table/wood,
 /obj/marker/spawning/random/food,
@@ -482,7 +497,7 @@ TS
 me
 me
 cy
-Ph
+am
 Ph
 TS
 Gc
@@ -520,7 +535,7 @@ HZ
 pW
 pW
 HZ
-Ph
+am
 Lh
 WH
 Lh
@@ -724,7 +739,7 @@ ai
 sc
 "}
 (15,1,1) = {"
-su
+an
 aa
 EL
 Qu
@@ -749,7 +764,7 @@ Zv
 Zv
 Zv
 Zv
-me
+al
 me
 dX
 dX

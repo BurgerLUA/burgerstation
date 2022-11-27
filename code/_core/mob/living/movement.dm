@@ -62,17 +62,20 @@
 
 	. = ..()
 
+	if(qdeleting || !.)
+		return .
+
 	if(is_sneaking)
 		on_sneak()
 
 	if(old_turf && length(old_turf.old_living))
 		old_turf.old_living -= src
 
-	if(isturf(old_loc) && !qdeleting)
+	if(is_turf(old_loc))
 		var/turf/T = old_loc
 		if(!T.old_living)
 			T.old_living = list()
-		T.old_living |= src
+		T.old_living += src
 		src.old_turf = T
 
 		if(!src.z)

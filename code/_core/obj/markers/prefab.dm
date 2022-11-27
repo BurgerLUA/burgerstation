@@ -122,9 +122,6 @@
 	chance_none = 0
 	rotational_offset = 16
 
-/obj/marker/prefab/house/low_chance
-	chance_none = 80
-
 /obj/marker/prefab/alley
 	icon = 'icons/obj/markers/prefab_8x8.dmi'
 	icon_state = "alley"

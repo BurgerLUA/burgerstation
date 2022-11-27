@@ -20,7 +20,7 @@
 	owner_as_ash_drake = null
 	return ..()
 
-/ai/boss/ash_drake/set_active(var/desired_active=TRUE,var/force=FALSE)
+/ai/boss/ash_drake/set_active(var/desired_active=TRUE)
 	. = ..()
 	if(. && owner_as_ash_drake.boss_state == 1 && !active)
 		owner_as_ash_drake.start_land()

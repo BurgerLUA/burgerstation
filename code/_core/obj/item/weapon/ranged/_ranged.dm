@@ -669,8 +669,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		final_pixel_target_x = target_cords[1]
 		final_pixel_target_y = target_cords[2]
 	else
-		final_pixel_target_x = 16 + rand(-4,4)
-		final_pixel_target_y = 16 + rand(-4,4)
+		final_pixel_target_x = TILE_SIZE*0.5
+		final_pixel_target_y = TILE_SIZE*0.5
 
 	if(caller && length(params) && params["screen-loc"])
 		var/list/screen_loc_parsed = parse_screen_loc(params["screen-loc"])
@@ -687,15 +687,23 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		target_fake_x = target.x*TILE_SIZE + icon_pos_x
 		target_fake_y = target.y*TILE_SIZE + icon_pos_y
 
-	var/list/xy_list = get_projectile_path(caller ? caller : src,target_fake_x,target_fake_y,accuracy_loss)
+	var/turf/T = get_turf(src)
+
+	//Distance. In pixels.
+	var/diff_x = target_fake_x - (T.x*TILE_SIZE) - TILE_SIZE*0.5
+	var/diff_y = target_fake_y - (T.y*TILE_SIZE) - TILE_SIZE*0.5
+
+	var/new_angle = ATAN2(diff_x,diff_y)
+	new_angle += RAND_PRECISE(-accuracy_loss,accuracy_loss)*90
+
+	var/x_offset = cos(new_angle)
+	var/y_offset = sin(new_angle)
 
 	. = list()
 
-	var/turf/T = get_turf(src)
-
 	for(var/i=1,i<=bullet_count_to_use,i++)
 
-		var/list/local_xy_list = get_projectile_offset(xy_list[1],xy_list[2],i,bullet_count_to_use,base_spread) //Needs to be unique to each shot.
+		var/list/local_xy_list = get_projectile_offset(x_offset,y_offset,i,bullet_count_to_use,base_spread) //Needs to be unique to each shot.
 
 		var/new_x = local_xy_list[1]
 		var/new_y = local_xy_list[2]
@@ -726,7 +734,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 				y_vel,
 				final_pixel_target_x,
 				final_pixel_target_y,
-				location ? location : (isturf(target) ? target : get_turf(target)),
+				location ? location : (is_turf(target) ? target : get_turf(target)),
 				damage_type_to_use,
 				target,
 				bullet_color,
@@ -744,23 +752,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
 	return 0
-
-/atom/proc/get_projectile_path(var/atom/caller,var/desired_x,var/desired_y,var/accuracy)
-
-	//desired_x and desired_y is in pixels.
-
-	//This is where the caller is in the world. Pixel coords.
-	var/caller_fake_x = caller.x*TILE_SIZE + caller.pixel_x + 16
-	var/caller_fake_y = caller.y*TILE_SIZE + caller.pixel_y + 16
-
-	//Distance. In pixels.
-	var/diffx = desired_x - caller_fake_x
-	var/diffy = desired_y - caller_fake_y
-
-	var/new_angle = ATAN2(diffx,diffy)
-	new_angle += RAND_PRECISE(-accuracy,accuracy)*90
-
-	return list(cos(new_angle),sin(new_angle))
 
 /atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 	var/new_angle = ATAN2(initial_offset_x,initial_offset_y)

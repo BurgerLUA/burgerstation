@@ -33,6 +33,8 @@
 
 	attack_movement_obstructions = FALSE
 
+	var/list/overall_defense_rating = list()
+
 /ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()
@@ -110,7 +112,7 @@
 	if(!objective_weapon)
 		return FALSE
 
-	if(!isturf(objective_weapon.loc))
+	if(!is_turf(objective_weapon.loc))
 		objective_weapon = null
 		return FALSE
 

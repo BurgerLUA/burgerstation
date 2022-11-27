@@ -13,7 +13,7 @@
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "e" = (
-/obj/marker/prefab/house/low_chance,
+/obj/marker/prefab/house,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "f" = (

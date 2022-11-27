@@ -250,7 +250,7 @@ client/proc/debug_variables(datum/D in world)
 			body += "<option value='?_src_=vars;equip_loadout=\ref[D]'>Select Equipment</option>"
 	if(isobj(D))
 		body += "<option value='?_src_=vars;delall=\ref[D]'>Delete all of type</option>"
-	if(isobj(D) || ismob(D) || isturf(D))
+	if(isobj(D) || ismob(D) || is_turf(D))
 		body += "<option value='?_src_=vars;TtU=\ref[D]'>Teleport to user</option>"
 		body += "<option value='?_src_=vars;ai_alert=\ref[D]'>Alert AI</option>"
 		body += "<option value='?_src_=vars;explode=\ref[D]'>Trigger explosion</option>"
@@ -506,9 +506,9 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			return
 
 		var/ghosts = list()
-		for(var/mob/abstract/observer/ghost/G in range(5))
+		for(var/mob/abstract/observer/ghost/G in range(usr,5))
 			if(!G.client) continue
-			ghosts |= G.client
+			ghosts += G.client
 		if(length(ghosts))
 			NO = input("Please choose a new client to obtain [M.name].","Control mob",src) as anything in ghosts
 			if(!NO) return FALSE
@@ -563,7 +563,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 	else if(href_list["ai_alert"])
 
 		var/atom/A = locate(href_list["ai_alert"])
-		if(!isobj(A) && !ismob(A) && !isturf(A))
+		if(!isobj(A) && !ismob(A) && !is_turf(A))
 			to_chat(span("notice",  "This can only be done to instances of type /obj, /mob and /turf"))
 			return
 		var/range = input(src,"Дальность распространения шума", "Alert range") as num
@@ -603,7 +603,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 	else if(href_list["explode"])
 
 		var/atom/A = locate(href_list["explode"])
-		if(!isobj(A) && !ismob(A) && !isturf(A))
+		if(!isobj(A) && !ismob(A) && !is_turf(A))
 			to_chat(span("notice",  "This can only be done to instances of type /obj, /mob and /turf"))
 			return
 		explode(get_turf(A),4,A,A,null)

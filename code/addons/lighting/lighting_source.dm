@@ -276,7 +276,7 @@
 
 	UNSETEMPTY(effect_str)
 
-/light_source/proc/update_corners(now = FALSE)
+/light_source/proc/update_corners(var/now = FALSE)
 
 	var/update = FALSE
 	var/atom/source_atom = src.source_atom //From /tg/. Prevents it from being cleared mid update.
@@ -285,27 +285,27 @@
 		qdel(src)
 		return
 
-	if (source_atom.light_power != light_power)
+	if(source_atom.light_power != light_power)
 		light_power = source_atom.light_power
 		update = TRUE
 
-	if (source_atom.light_range != light_range)
+	if(source_atom.light_range != light_range)
 		light_range = source_atom.light_range
 		update = TRUE
 
-	if (!top_atom)
+	if(!top_atom)
 		top_atom = source_atom
 		update = TRUE
 
-	if (top_atom.loc != source_turf)
+	if(top_atom.loc != source_turf)
 		source_turf = top_atom.loc
 		UPDATE_APPROXIMATE_PIXEL_TURF
 		update = TRUE
 
-	if (!light_range || !light_power)
+	if(!light_range || !light_power)
 		update = TRUE
 
-	if (isturf(top_atom))
+	if(is_turf(top_atom))
 		if(source_turf != top_atom)
 			source_turf = top_atom
 			UPDATE_APPROXIMATE_PIXEL_TURF
@@ -387,7 +387,9 @@
 	var/test_x
 	var/test_y
 
-	FOR_DVIEW(T, CEILING(actual_range,1), source_turf, 0)
+	actual_range = CEILING(actual_range,1)
+
+	FOR_DVIEW(T, actual_range, source_turf, 0)
 
 		CHECK_TICK_SAFE(50,FPS_SERVER*10)
 
@@ -399,7 +401,7 @@
 			if ((DISCRIMINANT(limit_a_x, limit_a_y, test_x, test_y) > 0) || (DISCRIMINANT(test_x, test_y, limit_b_x, limit_b_y) > 0))
 				continue
 
-		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) || T.light_sources)
+		if (T.light_sources || TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			Tcorners = T.corners
 			if (!T.lighting_corners_initialised)
 				T.lighting_corners_initialised = TRUE
@@ -429,12 +431,14 @@
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
 	for(thing in L)
+		CHECK_TICK_SAFE(50,FPS_SERVER*10)
 		T = thing
 		LAZYADD(T.affecting_lights, src)
 
 	L = affecting_turfs - turfs // Now-gone turfs, remove us from the affecting lights.
 	affecting_turfs -= L
 	for (thing in L)
+		CHECK_TICK_SAFE(50,FPS_SERVER*10)
 		T = thing
 		LAZYREMOVE(T.affecting_lights, src)
 

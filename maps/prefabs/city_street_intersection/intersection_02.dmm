@@ -49,7 +49,7 @@
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
 "k" = (
-/obj/marker/prefab/house/low_chance,
+/obj/marker/prefab/house,
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "m" = (

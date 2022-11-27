@@ -14,6 +14,7 @@
 /obj/structure/interactive/wire/yellow,
 /obj/marker/smart_clear_turf,
 /obj/marker/map_node,
+/obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/mission/prefab/city/die_lab)
 "ae" = (
@@ -286,7 +287,6 @@
 /area/mission/prefab/city/die_lab/backroom)
 "bf" = (
 /obj/marker/smart_clear_turf,
-/obj/marker/map_node,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
 "bg" = (
@@ -378,6 +378,12 @@
 /obj/structure/interactive/bar_sign/die_lab,
 /turf/simulated/wall/metal,
 /area/mission/prefab/city/die_lab/backroom)
+"bw" = (
+/obj/marker/smart_clear_turf,
+/obj/marker/map_node,
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aB
@@ -389,7 +395,7 @@ aB
 aa
 aa
 aa
-aa
+bf
 aa
 aa
 aa
@@ -449,7 +455,7 @@ aQ
 aQ
 aQ
 bb
-aa
+bf
 "}
 (5,1,1) = {"
 aB
@@ -521,7 +527,7 @@ bi
 bo
 br
 bu
-bf
+bw
 "}
 (9,1,1) = {"
 ac
@@ -611,7 +617,7 @@ aQ
 aQ
 aQ
 bb
-aa
+bf
 "}
 (14,1,1) = {"
 aB
@@ -659,7 +665,7 @@ aB
 aa
 aa
 aa
-aa
+bf
 aa
 aa
 aa

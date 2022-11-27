@@ -620,6 +620,7 @@
 			for(var/obj/hud/button/boss_health/B in P.buttons)
 				B.target_bosses |= src
 				B.update_stats()
+
 	if(dead)
 		dead = FALSE //I know this feels like shitcode but *dab
 		death()
@@ -628,7 +629,9 @@
 
 	if(ai)
 		ai = new ai(null,src)
-		ai.set_active(ai.active,TRUE)
+		ai.active = FALSE //I know this feels like shitcode but *dab
+		if(initial(ai.active))
+			ai.set_active(TRUE)
 		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
 
 	QUEUE_HEALTH_UPDATE(src)

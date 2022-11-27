@@ -18,8 +18,8 @@
 
 	var/enchantment/enchantment
 
-	var/list/enchantment_whitelist //A whitelist of [/enchantment/path] or ["ALL"] of enchants allowed on the weapon E.G. /enchantment/fire.
-	var/list/enchantment_blacklist //a blacklist of version of above, with ["ALL"] meaning the weapon accepts no enchants.
+	var/list/enchantment_whitelist //Set to null to disable whitelist and allow all.
+	var/list/enchantment_blacklist //Set to null to disable blacklist and allow all.
 
 	can_wear = TRUE
 	item_slot = -1
@@ -111,23 +111,31 @@
 	. = ..()
 
 /obj/item/weapon/clicked_on_by_object(mob/caller,atom/object,location,control,params)
-	if(istype(object,/obj/item/soulgem) && enchantment)
+
+	if(enchantment && istype(object,/obj/item/soulgem))
+		INTERACT_CHECK
+		INTERACT_DELAY(20)
 		var/obj/item/soulgem/G = object
-		if(G.total_charge > 0 && enchantment.charge < enchantment.max_charge)
-			var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge)) 
-			enchantment.charge += chargediff
-			G.total_charge -= chargediff
-			if(!is_living(caller))
-				CRASH("Nonliving [caller.get_debug_name()] tried to recharge a weapon enchantment!")
-			var/mob/living/pcaller = caller //This is stupid and bad.
-			pcaller.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
-			if(G.total_charge <= 0 && !G.do_not_consume)
-				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name],shattering it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], shattering it!"))
-				qdel(G)
-			else
-				caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name]"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name]"))
+		if(enchantment.charge >= enchantment.max_charge)
+			caller.to_chat(span("warning","\The [src.name] is already fully recharged!"))
 			return TRUE
+		if(G.total_charge <= 0)
+			caller.to_chat(span("warning","\The [G.name] is empty and devoid of charge!"))
+			return TRUE
+		var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge))
+		enchantment.charge += chargediff
+		G.total_charge -= chargediff
+		var/mob/living/L = caller.
+		L.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
+		if(G.total_charge <= 0 && !G.do_not_consume)
+			caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name], consuming it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], consuming it!"))
+			qdel(G)
+		else
+			caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name]"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name]"))
+		return TRUE
+
 	. = ..()
+
 /obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs

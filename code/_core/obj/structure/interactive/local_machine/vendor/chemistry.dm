@@ -20,9 +20,9 @@
 	stored_types = list(
 		/obj/item/paper/book/chemistry,
 		/obj/item/storage/bags/chemistry,
-		/obj/item/crafting/pill_press,
-		/obj/item/crafting/filter,
-		/obj/item/crafting/grinder,
+		/obj/item/crafting_bench/pill_press,
+		/obj/item/crafting_bench/filter,
+		/obj/item/crafting_bench/grinder,
 		/obj/item/storage/pillbottle,
 		/obj/item/container/syringe/hypodermic,
 		/obj/item/container/spray,

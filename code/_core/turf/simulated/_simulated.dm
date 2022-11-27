@@ -66,8 +66,9 @@
 /turf/simulated/proc/add_wet(var/wet_to_add)
 	var/old_wet = wet_level
 	wet_level += wet_to_add
-	SSturf.wet_turfs |= src
 	if(old_wet <= 0)
+		SSturf.wet_turfs += src
+	if(wet_level <= 0)
 		overlays.Cut()
 		update_overlays()
 	return TRUE

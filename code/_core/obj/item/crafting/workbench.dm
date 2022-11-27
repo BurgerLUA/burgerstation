@@ -1,4 +1,4 @@
-/obj/item/crafting/workbench
+/obj/item/crafting_bench/workbench
 	name = "portable workbench"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "workbench"

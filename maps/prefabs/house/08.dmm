@@ -451,6 +451,25 @@
 /obj/marker/map_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/master_bedroom)
+"bI" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08)
+"bJ" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/entrance)
+"bK" = (
+/obj/marker/spawning/window,
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/master_bedroom)
+"bL" = (
+/obj/marker/smart_clear_turf,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aa
@@ -462,7 +481,7 @@ ay
 ay
 aB
 aB
-ad
+bL
 ad
 aa
 aa
@@ -492,7 +511,7 @@ aa
 aa
 aJ
 aJ
-ae
+bI
 ap
 av
 aC
@@ -557,12 +576,12 @@ aM
 aT
 aY
 bf
-bm
+bK
 aJ
 "}
 (7,1,1) = {"
 aJ
-ae
+bI
 ai
 al
 ar
@@ -691,12 +710,12 @@ aa
 aa
 aa
 an
-aL
+bJ
 an
 aL
 aL
 an
-aL
+bJ
 ba
 aV
 bb

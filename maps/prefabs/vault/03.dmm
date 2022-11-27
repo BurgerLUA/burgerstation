@@ -79,6 +79,24 @@
 	},
 /turf/simulated/wall/metal/reinforced/syndicate,
 /area/mission/prefab/vault/vault_03)
+"q" = (
+/obj/structure/interactive/wire/red,
+/obj/marker/map_node,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_03)
+"r" = (
+/obj/marker/smart_clear_turf,
+/obj/marker/map_node,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_03)
+"s" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"t" = (
+/obj/marker/map_node,
+/turf/simulated/floor/plating/syndicate,
+/area/mission/prefab/vault/vault_03)
 
 (1,1,1) = {"
 a
@@ -144,13 +162,13 @@ l
 b
 d
 e
+t
 g
 g
-g
-k
+q
 m
-g
-l
+r
+s
 "}
 (7,1,1) = {"
 b

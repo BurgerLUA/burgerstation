@@ -64,13 +64,19 @@ SUBSYSTEM_DEF(dmm_suite)
 		prefab_markers -= M
 		M.prepare_prefab()
 		if(!length(valid_prefabs[M.category]))
-			not_enough |= M.category
+			if(!not_enough[M.category])
+				not_enough[M.category] = 1
+			else
+				not_enough[M.category] += 1
 			continue
 		var/list/local_prefabs = valid_prefabs[M.category].Copy()
 		if(length(M.prefabs))
 			local_prefabs = local_prefabs & M.prefabs
 		if(!length(local_prefabs))
-			not_enough |= M.category
+			if(!not_enough[M.category])
+				not_enough[M.category] = 1
+			else
+				not_enough[M.category] += 1
 			continue
 
 		var/chosen_file = pick(local_prefabs)
@@ -98,7 +104,9 @@ SUBSYSTEM_DEF(dmm_suite)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	if(length(not_enough))
-		log_error("Warning: Not enough prefabs of type(s) [english_list(not_enough)] to satisfy all prefab markers.")
+		log_error("Warning: Not enough prefabs to satisfy all prefab markers.")
+		for(var/k in not_enough)
+			log_error("[not_enough[k]] additional [k] prefabs required.")
 
 	log_subsystem(name,"Loaded [loaded_prefabs] prefabs.")
 
