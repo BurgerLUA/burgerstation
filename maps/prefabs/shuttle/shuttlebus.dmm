@@ -3,40 +3,23 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,2"
-	},
-/turf/dmm_suite/clear_turf,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/shuttlebus)
 "c" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,2"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/shuttlebus)
 "d" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/structure/interactive/chair/shuttle,
+/obj/structure/interactive/lighting/fixture/tube,
+/turf/simulated/floor/tile/shuttle,
 /area/shuttle/shuttlebus)
 "e" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,1"
+/obj/structure/interactive/lighting/fixture/tube{
+	dir = 1;
+	icon_state = "preview"
 	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/shuttlebus)
-"f" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,1"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/shuttlebus)
-"g" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/shuttlebus)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
@@ -59,13 +42,6 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/shuttlebus)
-"k" = (
-/turf/simulated/wall/metal/shuttle,
-/area/shuttle/shuttlebus)
-"l" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
 "m" = (
 /obj/structure/shuttle_engine/heater{
 	dir = 1;
@@ -73,24 +49,27 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/shuttlebus)
-"n" = (
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
-"o" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,0"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/shuttlebus)
-"p" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,0"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/shuttlebus)
 "q" = (
 /obj/marker/spawning/window/shuttle,
 /turf/dmm_suite/clear_turf,
+/area/shuttle/shuttlebus)
+"r" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 1
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/shuttlebus)
+"s" = (
+/mob/living/simple/turret/nanotrasen/immortal,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/shuttlebus)
+"t" = (
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/shuttlebus)
+"u" = (
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/shuttlebus)
 "w" = (
 /obj/marker/spawning/window/shuttle,
@@ -105,49 +84,14 @@
 /area/shuttle/shuttlebus)
 "y" = (
 /obj/shuttle_controller,
-/turf/simulated/floor/tile/shuttle,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/shuttlebus)
+"z" = (
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/shuttlebus)
 "A" = (
-/obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
-"B" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	dir = 4;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
-"C" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	dir = 8;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
-"D" = (
-/obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/fixture/tube{
-	dir = 4;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
-"E" = (
-/obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/fixture/tube{
-	dir = 8;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/shuttlebus)
-"K" = (
-/obj/structure/interactive/chair,
-/turf/simulated/floor/tile/shuttle,
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/shuttlebus)
 
 (1,1,1) = {"
@@ -190,10 +134,10 @@ a
 a
 a
 h
-k
-k
 b
-d
+b
+a
+a
 a
 a
 a
@@ -209,10 +153,10 @@ a
 a
 i
 m
-k
-k
-e
-o
+b
+b
+a
+a
 a
 a
 a
@@ -226,52 +170,52 @@ a
 a
 a
 j
-k
-k
-k
-k
-k
+b
+b
+b
 w
 w
 w
 w
-k
-o
+w
+c
+b
+a
 a
 a
 "}
 (6,1,1) = {"
 a
-a
-k
-k
-K
-K
-K
-D
-K
-K
-K
-A
-k
-k
-a
+r
+b
+b
+d
+t
+t
+t
+t
+t
+t
+e
+b
+b
+s
 a
 "}
 (7,1,1) = {"
 a
 a
-l
-B
-n
-n
-n
-n
-n
-n
-n
-n
-n
+c
+u
+t
+t
+t
+t
+t
+t
+t
+u
+z
 w
 w
 a
@@ -279,17 +223,17 @@ a
 (8,1,1) = {"
 a
 a
-l
-n
-K
-n
-K
-n
-K
-n
-K
-n
-K
+c
+u
+u
+u
+u
+y
+u
+u
+u
+u
+A
 x
 w
 a
@@ -297,17 +241,17 @@ a
 (9,1,1) = {"
 a
 a
-l
-n
-K
-n
-K
-y
-K
-n
-K
-n
-K
+c
+u
+u
+u
+u
+u
+u
+u
+u
+u
+A
 x
 w
 a
@@ -315,54 +259,54 @@ a
 (10,1,1) = {"
 a
 a
-l
-C
-n
-n
-n
-n
-n
-n
-n
-n
-n
+c
+u
+t
+t
+t
+t
+t
+t
+t
+u
+z
 w
 w
 a
 "}
 (11,1,1) = {"
 a
-a
-k
-k
-K
-K
-K
-E
-K
-K
-K
-A
-k
-k
-a
+r
+b
+b
+d
+t
+t
+t
+t
+t
+t
+e
+b
+b
+s
 a
 "}
 (12,1,1) = {"
 a
 a
 h
-k
-k
-k
-k
-k
+b
+b
+b
+w
+w
 q
 q
 q
-q
-k
-p
+c
+b
+a
 a
 a
 "}
@@ -371,10 +315,10 @@ a
 a
 i
 m
-k
-k
-f
-p
+b
+b
+a
+a
 a
 a
 a
@@ -388,10 +332,10 @@ a
 a
 a
 j
-k
-k
-c
-g
+b
+b
+a
+a
 a
 a
 a

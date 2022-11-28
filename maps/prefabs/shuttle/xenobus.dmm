@@ -3,34 +3,22 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,2"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/xeno)
 "c" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,2"
-	},
-/turf/dmm_suite/clear_turf,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/xeno)
 "d" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/xeno)
 "e" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,1"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/xeno)
 "f" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/shuttle_controller,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/xeno)
 "g" = (
 /obj/structure/shuttle_engine/propulsion/right{
@@ -57,8 +45,7 @@
 /turf/simulated/wall/metal/shuttle,
 /area/shuttle/xeno)
 "k" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/xeno)
 "l" = (
 /obj/structure/shuttle_engine/heater{
@@ -75,73 +62,42 @@
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/xeno)
 "o" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "1,0"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/xeno)
-"p" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,0"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/xeno)
-"q" = (
-/obj/structure/shuttle/wing/left{
-	dir = 1;
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/xeno)
-"r" = (
-/obj/structure/shuttle/wing/right{
-	dir = 1;
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/xeno)
-"s" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "1,1"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/xeno)
-"z" = (
-/obj/structure/interactive/computer/console/flight_control{
-	dir = 1;
-	icon_state = "computer"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/xeno)
-"A" = (
-/obj/shuttle_controller,
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/xeno)
-"B" = (
-/obj/structure/interactive/chair,
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/xeno)
-"D" = (
-/obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/fixture/tube,
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/xeno)
-"E" = (
 /obj/structure/interactive/lighting/fixture/tube{
 	icon_state = "preview";
 	dir = 1
 	},
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"p" = (
+/obj/structure/interactive/lighting/fixture/tube,
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/xeno)
-"I" = (
-/obj/structure/interactive/chair{
-	dir = 8
+"q" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"r" = (
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"s" = (
+/turf/simulated/floor/plating/shuttle,
+/area/dmm_suite/clear_area)
+"t" = (
+/mob/living/simple/turret/nanotrasen/immortal,
+/turf/simulated/floor/plating/shuttle,
+/area/dmm_suite/clear_area)
+"u" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 1
 	},
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/xeno)
-"Y" = (
-/obj/structure/interactive/chair{
-	dir = 4
+/turf/simulated/floor/plating/shuttle,
+/area/dmm_suite/clear_area)
+"z" = (
+/obj/structure/interactive/computer/console/flight_control{
+	dir = 1;
+	icon_state = "computer"
 	},
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/xeno)
@@ -185,14 +141,14 @@ a
 (3,1,1) = {"
 a
 a
-a
-a
+j
+j
 j
 n
 n
 n
 n
-a
+n
 a
 a
 a
@@ -206,11 +162,11 @@ a
 g
 j
 j
-Y
-Y
-Y
+e
+e
+e
+e
 n
-a
 a
 a
 a
@@ -224,13 +180,13 @@ a
 h
 l
 j
-m
-m
-m
-j
-b
-d
-a
+e
+e
+e
+e
+n
+t
+s
 a
 a
 a
@@ -242,87 +198,87 @@ a
 i
 j
 j
+p
 m
-Y
-Y
-j
-j
-e
-o
-q
-d
+m
+m
+k
+k
+r
+k
+a
 a
 a
 "}
 (7,1,1) = {"
 a
-a
+u
 j
 j
-D
+d
 m
 m
 m
-E
-j
-j
-j
-j
-j
+m
+o
+k
+q
+k
+k
 a
 a
 "}
 (8,1,1) = {"
 a
-a
-k
-m
-m
-m
-m
-m
-m
-m
-B
+s
+b
+c
+c
+c
+c
+f
+c
+c
+c
+e
 z
 n
-a
 a
 a
 "}
 (9,1,1) = {"
 a
-a
-k
-m
-m
-m
-m
-A
-m
-m
-B
+s
+b
+c
+c
+c
+c
+c
+c
+c
+c
+e
 z
 n
-a
 a
 a
 "}
 (10,1,1) = {"
 a
-a
+u
 j
 j
-D
+d
 m
 m
 m
-E
-j
-j
-j
-j
-j
+m
+o
+k
+q
+k
+k
 a
 a
 "}
@@ -332,15 +288,15 @@ a
 g
 j
 j
-m
-I
-I
-j
-j
-s
 p
+m
+m
+m
+k
+k
 r
-f
+k
+a
 a
 a
 "}
@@ -350,13 +306,13 @@ a
 h
 l
 j
-m
-m
-m
-j
-c
-f
-a
+e
+e
+e
+e
+n
+t
+s
 a
 a
 a
@@ -368,11 +324,11 @@ a
 i
 j
 j
-I
-I
-I
+e
+e
+e
+e
 n
-a
 a
 a
 a
@@ -383,14 +339,14 @@ a
 (14,1,1) = {"
 a
 a
-a
-a
+j
+j
 j
 n
 n
 n
 n
-a
+n
 a
 a
 a

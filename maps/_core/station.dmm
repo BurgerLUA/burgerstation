@@ -2963,9 +2963,8 @@
 /area/burgerstation/hall/east)
 "lb" = (
 /obj/structure/table/steel,
-/turf/simulated/floor/tile{
-	icon_state = "single"
-	},
+/obj/item/crafting_bench/grinder,
+/turf/simulated/floor/tile/red,
 /area/burgerstation/cafe/kitchen)
 "lc" = (
 /obj/structure/table/steel,
@@ -5768,9 +5767,6 @@
 /area/burgerstation/engineering)
 "vu" = (
 /obj/structure/table/steel,
-/obj/item/crafting/grinder{
-	pixel_y = 8
-	},
 /turf/simulated/floor/tile{
 	icon_state = "single"
 	},
@@ -6600,10 +6596,10 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/solars/ne)
 "yl" = (
-/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/door/airlock/external/no_access,
 /obj/structure/interactive/wire/yellow,
 /turf/simulated/floor/plating,
-/area/burgerstation/engineering/solars/ne)
+/area/burgerstation/engineering/solars/nw)
 "ym" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -6687,8 +6683,8 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering/solars/se)
 "yD" = (
-/obj/structure/interactive/door/airlock/external/glass/bolted,
 /obj/structure/interactive/wire/yellow,
+/obj/structure/interactive/door/airlock/external/no_access,
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering/solars/se)
 "yE" = (
@@ -6753,10 +6749,10 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering/solars/sw)
 "yR" = (
+/obj/structure/interactive/door/airlock/external/no_access,
 /obj/structure/interactive/wire/yellow,
-/obj/structure/interactive/door/airlock/external/glass/bolted,
 /turf/simulated/floor/plating,
-/area/burgerstation/engineering/solars/sw)
+/area/burgerstation/engineering/solars/ne)
 "yS" = (
 /obj/structure/interactive/wire/yellow,
 /obj/structure/interactive/solar_panel,
@@ -6770,10 +6766,10 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/solars/nw)
 "yV" = (
-/obj/structure/interactive/door/airlock/external/glass/bolted,
 /obj/structure/interactive/wire/yellow,
+/obj/structure/interactive/door/airlock/external/no_access,
 /turf/simulated/floor/plating,
-/area/burgerstation/engineering/solars/nw)
+/area/burgerstation/engineering/solars/sw)
 "yW" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -30960,9 +30956,9 @@ AY
 yQ
 yL
 yO
-yR
+yV
 yO
-yR
+yV
 yO
 yO
 yO
@@ -33207,9 +33203,9 @@ yT
 yT
 yT
 yT
-yV
+yl
 yT
-yV
+yl
 yT
 Dr
 zd
@@ -38121,8 +38117,8 @@ kJ
 mi
 mH
 xP
-om
 lb
+vu
 mj
 mh
 on
@@ -38636,7 +38632,7 @@ mk
 zU
 lc
 om
-lb
+vu
 bI
 jy
 oH
@@ -49142,9 +49138,9 @@ yj
 yj
 yj
 yj
-yl
+yR
 yj
-yl
+yR
 yj
 fh
 yw

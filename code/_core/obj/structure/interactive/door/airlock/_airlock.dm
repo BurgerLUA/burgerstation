@@ -82,11 +82,10 @@
 
 	if(door_state == DOOR_STATE_OPENED && opened_time >= 100)
 		var/has_living = FALSE
-		for(var/mob/living/L in loc.contents)
-			if(safeties)
+		if(safeties)
+			for(var/mob/living/L in loc.contents)
 				has_living = TRUE
 				break
-
 		if(!has_living)
 			close()
 			return TRUE
@@ -99,7 +98,7 @@
 
 	. = ..()
 
-	if(istype(.,/obj/structure/interactive/door/airlock/))
+	if(. && istype(.,/obj/structure/interactive/door/airlock/))
 		return null
 
 obj/structure/interactive/door/airlock/open(var/mob/caller,var/lock = FALSE,var/force = FALSE)
@@ -308,6 +307,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 	if(anchored)
 		var/image/frame = new/image(icon,"frame")
+		frame.appearance_flags = src.appearance_flags | RESET_COLOR
 		add_underlay(frame)
 
 		for(var/d in DIRECTIONS_CARDINAL)

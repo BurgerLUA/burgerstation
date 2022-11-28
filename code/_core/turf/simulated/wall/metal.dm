@@ -167,6 +167,10 @@
 	color = "#FFFFFF"
 	map_color = "#AAAAAA"
 
+
+/turf/simulated/wall/metal/shuttle/off_white
+	color = "#A2A6AA"
+
 /turf/simulated/wall/metal/circuit
 	name = "techno steel wall"
 	icon = 'icons/turf/wall/metal/circuit.dmi'

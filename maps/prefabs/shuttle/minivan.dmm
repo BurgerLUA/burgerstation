@@ -3,42 +3,15 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/obj/structure/shuttle/wing/right{
-	dir = 8;
-	icon_state = "1,0"
-	},
-/turf/dmm_suite/clear_turf,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/minivan)
 "c" = (
-/obj/structure/shuttle/wing/left{
-	dir = 4;
-	icon_state = "1,0"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/minivan)
 "d" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,2"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/minivan)
-"e" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,2"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/minivan)
-"f" = (
-/obj/structure/shuttle/wing/right{
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
-/area/shuttle/minivan)
-"g" = (
-/obj/structure/shuttle/wing/left{
-	icon_state = "2,1"
-	},
-/turf/dmm_suite/clear_turf,
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle,
 /area/shuttle/minivan)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
@@ -64,10 +37,6 @@
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/minivan)
-"l" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
-/area/shuttle/minivan)
 "m" = (
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/minivan)
@@ -75,23 +44,51 @@
 /obj/marker/spawning/window/shuttle,
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/minivan)
+"o" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 1
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
 "p" = (
 /turf/simulated/floor/plating/shuttle,
 /area/shuttle/minivan)
-"v" = (
-/obj/structure/interactive/computer/console/flight_control{
-	dir = 1;
-	icon_state = "computer"
+"q" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 8
 	},
-/turf/simulated/floor/tile/shuttle,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"r" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"t" = (
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/minivan)
+"u" = (
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/minivan)
+"v" = (
+/obj/shuttle_controller,
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/minivan)
 "w" = (
-/obj/shuttle_controller,
-/turf/simulated/floor/tile/shuttle,
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/minivan)
+"x" = (
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/minivan)
 "y" = (
-/obj/structure/interactive/chair,
-/turf/simulated/floor/tile/shuttle,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/minivan)
 "z" = (
 /obj/structure/interactive/lighting/fixture/bulb{
@@ -103,6 +100,13 @@
 "A" = (
 /obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/tile/shuttle,
+/area/shuttle/minivan)
+"B" = (
+/obj/structure/interactive/computer/console/flight_control{
+	dir = 1;
+	icon_state = "computer"
+	},
+/turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/minivan)
 
 (1,1,1) = {"
@@ -162,9 +166,9 @@ a
 (4,1,1) = {"
 a
 a
-b
-d
-f
+j
+j
+j
 a
 a
 a
@@ -186,10 +190,10 @@ j
 n
 n
 n
-j
-a
-a
-a
+n
+b
+p
+q
 a
 a
 a
@@ -201,88 +205,88 @@ a
 i
 k
 j
-y
-y
-y
-j
+u
+u
+u
+u
+b
 p
-j
+b
 n
 n
-n
-a
+b
 a
 "}
 (7,1,1) = {"
 a
-a
+o
 j
 j
-j
-m
-m
-z
-j
-l
 j
 A
 m
+m
+z
+b
+d
+b
+w
+y
 n
-a
 a
 "}
 (8,1,1) = {"
 a
 a
 p
-l
-m
-m
-m
-m
-m
-m
-m
-y
+c
+t
+t
+t
 v
-j
-a
+t
+t
+t
+t
+x
+B
+n
 a
 "}
 (9,1,1) = {"
 a
 a
 p
-l
-m
-m
-m
-w
-m
-m
-m
-y
-v
-j
-a
+c
+t
+t
+t
+t
+t
+t
+t
+t
+x
+B
+n
 a
 "}
 (10,1,1) = {"
 a
-a
+o
 j
 j
-j
-m
-m
-z
-j
-l
 j
 A
 m
+m
+z
+b
+d
+b
+w
+y
 n
-a
 a
 "}
 (11,1,1) = {"
@@ -291,16 +295,16 @@ a
 h
 k
 j
-y
-y
-y
-j
+u
+u
+u
+u
+b
 p
-j
+b
 n
 n
-n
-a
+b
 a
 "}
 (12,1,1) = {"
@@ -312,10 +316,10 @@ j
 n
 n
 n
-j
-a
-a
-a
+n
+b
+p
+r
 a
 a
 a
@@ -324,9 +328,9 @@ a
 (13,1,1) = {"
 a
 a
-c
-e
-g
+j
+j
+j
 a
 a
 a

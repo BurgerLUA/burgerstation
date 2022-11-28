@@ -14,6 +14,12 @@
 /turf/simulated/floor/tile/shuttle/blue
 	color = COLOR_BLUE
 
+/turf/simulated/floor/tile/shuttle/nanotrasen
+	color = "#3B5A72"
+
+/turf/simulated/floor/tile/shuttle/dark
+	color = "#555A62"
+
 /turf/simulated/floor/tile/shuttle/purple
 	color = COLOR_PURPLE
 
@@ -26,3 +32,6 @@
 
 /turf/simulated/floor/tile/shuttle/green
 	color = "#449944"
+
+
+

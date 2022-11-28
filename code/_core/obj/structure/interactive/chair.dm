@@ -99,3 +99,10 @@ obj/structure/interactive/chair/comfy
 	icon_state = "comfychair"
 
 	armrest = TRUE
+
+
+obj/structure/interactive/chair/shuttle
+	name = "shuttle chair"
+	icon_state = "shuttle_chair"
+
+	armrest = TRUE

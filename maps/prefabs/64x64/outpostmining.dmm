@@ -31,12 +31,11 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/entrance)
 "ah" = (
-/obj/decal/tile/cross/red,
-/obj/structure/interactive/lighting/fixture/tube/syndicate,
-/mob/living/advanced/npc/syndicate,
+/obj/marker/map_node,
 /obj/structure/interactive/wire/red,
+/mob/living/advanced/npc/syndicate,
 /turf/simulated/floor/tile/dark,
-/area/mission/prefab/misc/syndicate_mining_outpost/entrance)
+/area/mission/prefab/misc/syndicate_mining_outpost/hall)
 "ai" = (
 /obj/decal/tile/cross/red,
 /mob/living/advanced/npc/syndicate,
@@ -303,7 +302,7 @@
 /obj/structure/interactive/limiter{
 	dir = 4
 	},
-/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/door/airlock/external,
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bd" = (
@@ -311,11 +310,11 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "be" = (
-/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/door/airlock/external,
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bf" = (
-/obj/structure/interactive/door/airlock/external/glass/bolted,
+/obj/structure/interactive/door/airlock/external,
 /obj/structure/interactive/scanner/crate_only,
 /obj/structure/interactive/conveyor,
 /turf/simulated/floor/tile/dark,
@@ -755,11 +754,12 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/hall)
 "cI" = (
-/obj/marker/map_node,
-/mob/living/advanced/npc/syndicate,
+/obj/decal/tile/cross/red,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
 /obj/structure/interactive/wire/red,
+/mob/living/advanced/npc/syndicate,
 /turf/simulated/floor/tile/dark,
-/area/mission/prefab/misc/syndicate_mining_outpost/hall)
+/area/mission/prefab/misc/syndicate_mining_outpost/entrance)
 "cJ" = (
 /obj/structure/interactive/conveyor{
 	dir = 8;
@@ -1142,9 +1142,6 @@
 /mob/living/simple/bot/medibot/syndicate,
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/medical)
-"em" = (
-/turf/simulated/floor/tile,
-/area/mission/prefab/misc/syndicate_mining_outpost/service)
 "en" = (
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
 /turf/simulated/floor/tile,
@@ -1241,9 +1238,6 @@
 /turf/simulated/floor/tile,
 /area/mission/prefab/misc/syndicate_mining_outpost/service)
 "eG" = (
-/obj/item/crafting/grinder{
-	pixel_y = 8
-	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/misc/syndicate_mining_outpost/service)
 "eH" = (
@@ -3438,7 +3432,7 @@ dc
 dc
 dc
 et
-em
+eG
 eS
 RI
 fa
@@ -3503,9 +3497,9 @@ eb
 eg
 dg
 et
-em
+eG
 eF
-em
+eG
 RI
 fa
 cn
@@ -3568,10 +3562,10 @@ dU
 dU
 dU
 eh
-em
-em
-em
-em
+eG
+eG
+eG
+eG
 RI
 fa
 cn
@@ -3635,9 +3629,9 @@ ec
 dU
 dg
 en
-em
 eG
-em
+eG
+eG
 RI
 fa
 cn
@@ -3701,7 +3695,7 @@ dg
 dg
 dg
 eu
-em
+eG
 eH
 eT
 RI
@@ -3765,11 +3759,11 @@ dv
 dV
 dv
 eh
-em
-em
-em
+eG
+eG
+eG
 eI
-em
+eG
 RI
 fa
 cn
@@ -3831,11 +3825,11 @@ dr
 dW
 dr
 dg
-em
-em
-em
+eG
+eG
+eG
 eJ
-em
+eG
 RI
 fa
 cn
@@ -3897,11 +3891,11 @@ du
 dw
 dw
 dg
-em
-em
-em
-em
-em
+eG
+eG
+eG
+eG
+eG
 RI
 fa
 cn
@@ -4502,7 +4496,7 @@ cn
 Kl
 cn
 ac
-ah
+cI
 ag
 ag
 ag
@@ -4548,7 +4542,7 @@ by
 by
 cp
 cm
-cI
+ah
 cn
 dg
 dy
