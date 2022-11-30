@@ -92,12 +92,15 @@
 
 
 /obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
+
 	if(damage && !dead)
 		SSbotany.all_plants -= src //The dead don't think anymore.
 		dead = TRUE
 		health.restore()
 		update_sprite()
+
 	. = ..()
+
 	if(dead || !damage)
 		qdel(src)
 

@@ -19,7 +19,7 @@
 	weight = 0.1
 
 	var/injection_sound = null //Optional injection sound to use.
-	var/injection_time = SECONDS_TO_DECISECONDS(1) //Time in deciseconds to take when performing an injection. Draws are double this. Self injections are half this.
+	var/injection_time = SECONDS_TO_DECISECONDS(2) //Time in deciseconds to take when performing an injection. Draws are double this. Self injections are half this.
 	var/inject_amount_max = INFINITY //Set to a value other than infinity to add a hard limit to injections. Limit is then limited again by the reagent's container.
 	var/can_inject = TRUE //Set to true if this can inject into other beings.
 	var/can_draw = TRUE //Set to true if this can draw reagents from beings or objects.
@@ -115,6 +115,15 @@
 	if(!target.reagents)
 		caller.to_chat(span("warning","You can't target \the [target.name]!"))
 		return FALSE
+
+	if(injecting)
+		if(reagents.volume_current <= 0)
+			caller.to_chat(span("warning","\The [src.name] is empty!"))
+			return FALSE
+	else
+		if(reagents.volume_current >= reagents.volume_max)
+			caller.to_chat(span("warning","\The [src.name] is full!"))
+			return FALSE
 
 	if(is_living(caller))
 		var/mob/living/attacker = caller
@@ -218,6 +227,10 @@
 				caller.visible_message(span("warning","\The [caller.name] draws liquid from \the [object.name]."),span("notice","You draw [transfer_amount] units of liquid from \the [object.name]."))
 		else
 			caller.to_chat(span("warning","You can't seem to find a way to draw anything from \the [object.name] with \the [src.name]!"))
+		if(!injecting && reagents.volume_current >= reagents.volume_max && can_inject)
+			injecting = TRUE
+			update_sprite()
+
 
 	else if(amount > 0) //Inject
 		var/atom/object_to_inject = object
@@ -231,6 +244,10 @@
 				caller.visible_message(span("warning","\The [caller.name] injects \the [src.name] into \the [object.name]."),span("notice","You inject [transfer_amount] units of liquid into \the [object.name]."))
 		else
 			caller.to_chat(span("warning","You can't seem to find a way to inject \the [object.name] with \the [src.name]!"))
+		if(injecting && reagents.volume_current <= 0 && can_draw)
+			injecting = FALSE
+			update_sprite()
+
 
 	if(is_organ(object))
 		var/obj/item/organ/O = object

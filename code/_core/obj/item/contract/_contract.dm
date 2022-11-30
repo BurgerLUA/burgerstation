@@ -60,7 +60,7 @@
 	if(!reward)
 		log_error("Warnng: [src.get_debug_name()] had an invalid reward!")
 		qdel(src)
-		return .
+		return FALSE
 
 	update_value()
 	update_sprite()

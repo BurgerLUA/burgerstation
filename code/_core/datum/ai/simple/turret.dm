@@ -1,10 +1,11 @@
 /ai/turret
+
 	radius_find_enemy = VIEW_RANGE
 	radius_find_enemy_noise = VIEW_RANGE
 	radius_find_enemy_caution = VIEW_RANGE + ZOOM_RANGE
 	radius_find_enemy_combat = VIEW_RANGE + ZOOM_RANGE
 
-	distance_target_max = INFINITY
+	distance_target_max = VIEW_RANGE + ZOOM_RANGE*3
 
 	roaming_distance = 0
 
@@ -13,13 +14,14 @@
 	aggression = 2
 	assistance = 0
 
-
 	var/should_scan = TRUE
 	var/scan_at_alert_level = ALERT_LEVEL_NONE
 	var/list/valid_scan_dirs
 	var/last_scan = 0
 	var/scan_key = 1
 	var/scan_mod = 1
+
+	active = TRUE
 
 
 /ai/turret/New(var/desired_loc,var/mob/living/desired_owner)

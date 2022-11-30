@@ -78,7 +78,7 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "ap" = (
-/turf/simulated/wall/dark/shuttle,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aq" = (
 /turf/simulated/floor/plating,
@@ -209,11 +209,11 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aN" = (
-/turf/simulated/wall/dark/shuttle,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aO" = (
 /obj/structure/interactive/status_display/global_display/bravo,
-/turf/simulated/wall/dark/shuttle,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aP" = (
 /turf/simulated/floor/tile/shuttle/red,
@@ -343,7 +343,7 @@
 /obj/structure/interactive/fire_closet{
 	dir = 4
 	},
-/turf/simulated/wall/dark/shuttle,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "bj" = (
 /turf/simulated/floor/tile/morphing/engineering,
@@ -768,7 +768,7 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "cK" = (
-/turf/simulated/wall/dark/shuttle,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "cL" = (
 /obj/structure/interactive/conveyor{
@@ -1446,7 +1446,7 @@
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "fr" = (
 /obj/structure/interactive/status_display/global_display/alpha,
-/turf/simulated/wall/dark/shuttle,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "fs" = (
 /obj/marker/spawning/window/reinforced,

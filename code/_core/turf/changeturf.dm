@@ -25,7 +25,9 @@
 	. = W
 	W.disallow_generation = old_disallow_generation
 
-	W.recalc_atom_opacity()
+	W.recalculate_atom_opacity()
+	W.recalculate_atom_density()
+
 	if(SSlighting && SSlighting.initialized)
 		W.lighting_overlay = old_lighting_overlay
 		W.affecting_lights = old_affecting_lights

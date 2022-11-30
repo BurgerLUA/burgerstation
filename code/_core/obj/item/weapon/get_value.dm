@@ -1,20 +1,32 @@
-// https://www.desmos.com/calculator/eqoor2rovm
+// https://www.desmos.com/calculator/ndpqhe7kfe
 
 
 /obj/item/weapon/proc/get_recommended_value(var/armor_to_use=0)
 
-	var/reliability = get_reliability()
+	var/reliability = min(1,0.5 + 0.5*get_reliability())
 
-	var/kill_time = get_kill_time(armor_to_use)
-	var/kill_time_mod = ((5-min(kill_time,5)*reliability)**5)*0.4
+	var/kill_time = clamp(get_kill_time(armor_to_use),0,100) //Prevents absurd values.
+	var/kill_time_mod = ((5-min(kill_time*reliability,5))**6)*0.25
 
 	var/stopping_power = get_stopping_power(armor_to_use)
-	var/stopping_power_mod = (stopping_power**1.2)*1000
+	var/stopping_power_mod = ((reliability*stopping_power)**1.5)*1000
 
-	var/dps = get_dps(get_damage_per_hit(armor_to_use))
+	var/dps = get_dps(get_damage_per_hit(armor_to_use)*reliability)
 	var/dps_mod = (dps**1.3)*1.1
 
-	. = ( (kill_time_mod + stopping_power_mod + dps_mod)*reliability )**1.04
+	if(kill_time_mod < 0)
+		log_error("Value Calcuation Error: kill_time_mod was negative! ([kill_time_mod])")
+		return 1
+
+	if(stopping_power_mod < 0)
+		log_error("Value Calcuation Error: stopping_power_mod was negative! ([stopping_power_mod])")
+		return 1
+
+	if(dps_mod < 0)
+		log_error("Value Calcuation Error: dps_mod was negative! ([dps_mod])")
+		return 1
+
+	. = ( (kill_time_mod + stopping_power_mod + dps_mod)*0.2 )**1.2
 
 	switch(.)
 		if(0 to 100)
@@ -25,3 +37,8 @@
 			return CEILING(.,100)
 		if(10000 to INFINITY)
 			return CEILING(.,1000)
+
+/obj/item/weapon/ranged/get_recommended_value(var/armor_to_use=0)
+	. = ..() ** 1.1
+	return  CEILING(.,20)
+

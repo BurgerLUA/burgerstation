@@ -30,6 +30,9 @@
 /obj/item/clothing/underbottom/underwear/boxers/medical
 	color = COLOR_MEDICAL
 
+/obj/item/clothing/underbottom/underwear/boxers/syndicate
+	color = COLOR_CRIMSON
+
 /obj/item/clothing/underbottom/underwear/boxers/heart
 	name = "heart boxers"
 	desc = "The layabout's classic."

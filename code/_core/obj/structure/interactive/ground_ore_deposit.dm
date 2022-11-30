@@ -11,11 +11,16 @@
 	desired_light_power = 0.25
 	desired_light_color = "#FFFFFF"
 
-/obj/structure/interactive/ground_ore_deposit/Initialize(var/desired_loc)
+
+/obj/structure/interactive/ground_ore_deposit/New(var/desired_loc)
 
 	if(!is_floor(loc))
 		qdel(src)
-		return TRUE
+
+	.  = ..()
+
+
+/obj/structure/interactive/ground_ore_deposit/Initialize(var/desired_loc)
 
 	var/turf/simulated/floor/F = loc
 	F.has_ore = TRUE

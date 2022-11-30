@@ -293,14 +293,22 @@ SUBSYSTEM_DEF(horde)
 		for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
 			if(x==0 && y==0) //Not sure if this will happen but w/e
 				continue
-			var/chunk_x = my_chunk_x + x
-			var/chunk_y = my_chunk_y + y
+			var/chunk_x = my_chunk_x + x*2
+			var/chunk_y = my_chunk_y + y*2
 			if(chunk_x <= 0 || chunk_x > world.maxx/CHUNK_SIZE)
 				continue
 			if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
 				continue
 			var/chunk/C = SSchunk.chunks[my_chunk_z][chunk_x][chunk_y]
 			if(length(C.players))
+				continue
+			var/bad_chunk = FALSE
+			for(var/k in C.adjacent_chunks)
+				var/chunk/C2 = k
+				if(length(C2.players))
+					bad_chunk = TRUE
+					break
+			if(bad_chunk)
 				continue
 			for(var/k in C.nodes)
 				var/obj/marker/map_node/N = k

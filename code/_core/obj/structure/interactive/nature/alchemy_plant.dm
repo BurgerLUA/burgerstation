@@ -10,6 +10,11 @@
 	var/obj/item/collect_item //What do we need to COLLECT FROM the plant?
 	var/harvest_chance = 50 //Base chance of harvesting the plant, added to 50% of botany skill. always at least 10%
 	var/great_success = 0 //Likelyness to NOT consume the plant on harvest.25% of botany is added to this. Max 75% chance, min 2.5%
+
+/obj/structure/interactive/alchemy_plant/Destroy()
+	SSbotany_alchemy.all_alchemy_plants -= src
+	. = ..()
+
 /obj/structure/interactive/alchemy_plant/proc/harvest(var/mob/living/advanced/caller)
 
 	if(!grown)
@@ -37,11 +42,12 @@
 		grown = FALSE
 		update_sprite()
 	return TRUE
-/obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
-	SSbotany_alchemy.all_alchemy_plants -= src
+
+/obj/structure/interactive/alchemy_plant/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/plant/New(var/desired_loc)
+/obj/structure/interactive/alchemy_plant/New(var/desired_loc)
 	SSbotany_alchemy.all_alchemy_plants += src
 	. = ..()
 

@@ -63,6 +63,10 @@
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
+/mob/living/advanced/npc/nanotrasen/hanger_guard{
+	icon_state = "directional";
+	dir = 4
+	},
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/hall/east)
 "ap" = (
@@ -206,10 +210,19 @@
 /turf/simulated/floor/plating,
 /area/space)
 "aT" = (
-/obj/item/weapon/melee/torch/flashlight/maglight,
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/turf/simulated/floor/tile/morphing/nanotrasen,
+/obj/structure/sign/department/b/sec{
+	dir = 4;
+	icon_state = "direction_sec"
+	},
+/obj/structure/sign/department/b/sci{
+	dir = 4;
+	icon_state = "direction_sci"
+	},
+/obj/structure/sign/department/b/evac{
+	dir = 4;
+	icon_state = "direction_evac"
+	},
+/turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
 "aU" = (
 /obj/structure/carpet/command,
@@ -284,12 +297,7 @@
 /area/burgerstation/bathrooms)
 "bf" = (
 /obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/baton,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/nanotrasen,
+/turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "bg" = (
 /obj/marker/spawning/window/shuttle,
@@ -399,6 +407,7 @@
 "bC" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /obj/structure/interactive/wire/red,
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
 "bD" = (
@@ -565,11 +574,6 @@
 /area/burgerstation/hall/north)
 "cj" = (
 /obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/pinpointer/boss,
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8
-	},
 /turf/simulated/floor/tile/morphing/nanotrasen,
 /area/burgerstation/armory)
 "ck" = (
@@ -704,10 +708,11 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cargo)
 "cL" = (
-/obj/structure/interactive/lighting/fixture/tube/station/stronger{
-	dir = 1
+/mob/living/advanced/npc/nanotrasen/hanger_guard{
+	icon_state = "directional";
+	dir = 8
 	},
-/turf/simulated/floor/tile/morphing/cargo,
+/turf/simulated/floor/tile/dark,
 /area/burgerstation/hanger)
 "cM" = (
 /obj/structure/interactive/disposals/pipe/junction/flipped{
@@ -904,7 +909,10 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/central)
 "dA" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
+/mob/living/advanced/npc/nanotrasen{
+	icon_state = "directional";
+	dir = 1
+	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/hall/central)
 "dB" = (
@@ -1075,7 +1083,7 @@
 "en" = (
 /obj/structure/interactive/disposals/pipe/labeler{
 	dir = 4;
-	sorting_tag_label = "cargo"
+	sorting_tag_label = "lost_and_found"
 	},
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/disposals)
@@ -1156,11 +1164,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/armory)
 "eC" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/energy/stunbaton,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "eD" = (
 /obj/marker/spawning/window/reinforced,
 /turf/simulated/floor/plating,
@@ -1171,11 +1180,9 @@
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel/office)
 "eF" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/handcuffs,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/door/airlock/station/maintenance,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/east)
 "eG" = (
 /obj/structure/interactive/conveyor{
 	dir = 1;
@@ -1214,11 +1221,8 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/east)
 "eL" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/paper/book/controls,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/turf/simulated/wall/metal,
+/area/space/light)
 "eM" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -1255,11 +1259,12 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "eR" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/radio,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 "eS" = (
 /obj/structure/interactive/disposals/pipe/junction{
 	dir = 1
@@ -1401,11 +1406,12 @@
 /turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "fq" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/clothing/ears/headset,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/maint/east)
 "fr" = (
 /obj/decal/hazard{
 	dir = 8
@@ -1414,30 +1420,36 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "fs" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/clothing/glasses/nightvision,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/pipe/junction/sorting/flipped{
+	dir = 8;
+	icon_state = "pipe-j2s";
+	sorting_tag = "medical"
+	},
+/turf/simulated/floor/tile/grey,
+/area/burgerstation/hall/central)
 "ft" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/structure/sign/department/c/infirm,
-/obj/item/clothing/glasses/sun/security,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/atmospherics/vent,
+/obj/structure/interactive/disposals/pipe{
+	dir = 10
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical/lobby)
 "fu" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/clothing/glasses/sun,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/machine/outlet{
+	dir = 8
+	},
+/obj/structure/interactive/disposals/pipe/ending{
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/maint/east)
 "fv" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/clothing/overwear/coat/vest,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile,
+/area/burgerstation/medical/lobby)
 "fw" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1
@@ -1449,33 +1461,35 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/armory)
 "fx" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/pinpointer/objective,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/marker/spawning/window,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/plating,
+/area/burgerstation/medical/lobby)
 "fy" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/shield/buckler,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/chair,
+/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 "fz" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/pinpointer/landmark,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "fA" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/weapon/melee/energy/sword/blue,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/structure/interactive/disposals/pipe{
+	dir = 5
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "fB" = (
-/obj/structure/table/steel,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe{
+	dir = 10
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "fC" = (
 /obj/structure/interactive/lighting/mounted_torch{
 	dir = 4;
@@ -1526,11 +1540,11 @@
 /turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "fK" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/magazine/clip/revolver/bullet_38,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/pipe{
+	dir = 5
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "fL" = (
 /obj/structure/interactive/status_display/global_display/round,
 /turf/simulated/wall/metal/reinforced,
@@ -1540,11 +1554,11 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/armory)
 "fN" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/weapon/ranged/bullet/revolver/detective,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "fO" = (
 /obj/structure/interactive/wire/red,
 /obj/structure/interactive/atmospherics/scrubber,
@@ -1702,11 +1716,11 @@
 /turf/simulated/wall/plastic/wizard,
 /area/burgerstation/library)
 "gr" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/grenade/timed/explosive,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/medical)
 "gs" = (
 /obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/tile/tint,
@@ -1828,9 +1842,13 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/engineering/supermatter)
 "gP" = (
-/obj/structure/interactive/door/airlock/station/engineering/glass/supermatter,
-/turf/simulated/floor/plating,
-/area/burgerstation/engineering/supermatter)
+/obj/structure/interactive/disposals/pipe,
+/obj/decal/hazard/black{
+	dir = 8;
+	icon_state = "line"
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/burgerstation/engineering)
 "gQ" = (
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering/telecomms)
@@ -2743,10 +2761,6 @@
 /area/burgerstation/science/research_director)
 "ki" = (
 /obj/structure/interactive/crate/closet/freezer,
-/mob/living/advanced/npc/beefman{
-	dir = 8;
-	icon_state = "directional"
-	},
 /turf/simulated/floor/tile/coldroom,
 /area/burgerstation/cafe/kitchen/freezer)
 "kj" = (
@@ -2898,9 +2912,11 @@
 /turf/simulated/wall/metal/reinforced,
 /area/burgerstation/cafe/bar)
 "kN" = (
-/obj/structure/interactive/atmospherics/scrubber,
-/turf/simulated/floor/tile,
-/area/burgerstation/medical)
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/maint/east)
 "kO" = (
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cafe/bar)
@@ -4061,9 +4077,11 @@
 /turf/simulated/floor/tile/grey,
 /area/burgerstation/hall/central)
 "ph" = (
-/obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
-/area/burgerstation/medical)
+/obj/structure/interactive/disposals/pipe{
+	dir = 10
+	},
+/turf/simulated/floor/tile/morphing/medical,
+/area/burgerstation/maint/east)
 "pi" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
@@ -4550,7 +4568,10 @@
 /obj/structure/interactive/lighting/fixture/tube/station/stronger{
 	dir = 1
 	},
-/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/nanotrasen/hanger_guard{
+	icon_state = "directional";
+	dir = 1
+	},
 /turf/simulated/floor/tile/morphing/cargo,
 /area/burgerstation/hanger)
 "rb" = (
@@ -5085,7 +5106,9 @@
 /turf/simulated/floor/tile/morphing/science,
 /area/burgerstation/science)
 "sX" = (
-/obj/structure/interactive/atmospherics/scrubber,
+/obj/structure/interactive/disposals/pipe/junction{
+	dir = 1
+	},
 /turf/simulated/floor/tile,
 /area/burgerstation/medical/lobby)
 "sY" = (
@@ -5142,10 +5165,12 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/medical/cmo)
 "ti" = (
-/obj/structure/interactive/chair,
-/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/interactive/disposals/pipe,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
 /turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/area/burgerstation/medical/lobby)
 "tj" = (
 /obj/structure/sign/shock,
 /turf/simulated/wall/metal/reinforced,
@@ -6157,9 +6182,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/maint/north)
 "wO" = (
-/obj/structure/interactive/vending/nanotrasen/wardrobe/ops,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/marker/spawning/window,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/medical/lobby)
 "wP" = (
 /obj/structure/interactive/power/apc{
 	dir = 4
@@ -6349,20 +6377,12 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/science)
 "xA" = (
-/obj/structure/sign/department/b/sec{
-	dir = 4;
-	icon_state = "direction_sec"
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
 	},
-/obj/structure/sign/department/b/sci{
-	dir = 4;
-	icon_state = "direction_sci"
-	},
-/obj/structure/sign/department/b/evac{
-	dir = 4;
-	icon_state = "direction_evac"
-	},
-/turf/simulated/wall/brick/chapel,
-/area/burgerstation/armory)
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "xB" = (
 /obj/structure/sign/department/a/engineering{
 	dir = 8;
@@ -6553,8 +6573,12 @@
 "yc" = (
 /obj/structure/interactive/disposals/pipe,
 /obj/decal/hazard/black{
-	dir = 8;
+	dir = 4;
 	icon_state = "line"
+	},
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/engineering,
 /area/burgerstation/engineering)
@@ -7231,9 +7255,11 @@
 /turf/simulated/floor/tile,
 /area/burgerstation/medical)
 "Ay" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical)
+/obj/structure/interactive/disposals/pipe{
+	dir = 8
+	},
+/turf/simulated/floor/tile,
+/area/burgerstation/medical/chemistry)
 "Az" = (
 /obj/marker/map_node,
 /turf/simulated/floor/plating,
@@ -7326,9 +7352,12 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering/telecomms)
 "AS" = (
-/obj/structure/interactive/vending/nanotrasen/gundrobe/ops,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/interactive/disposals/pipe/ending{
+	dir = 8
+	},
+/obj/structure/interactive/disposals/machine/chute,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/chemistry)
 "AT" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 8
@@ -7384,10 +7413,14 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/engineering)
 "Bc" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node/x2,
-/turf/simulated/floor/tile/dark,
-/area/burgerstation/engineering)
+/obj/decal/hazard{
+	dir = 8
+	},
+/obj/structure/interactive/wire/red,
+/obj/marker/map_node,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
 "Bd" = (
 /obj/structure/interactive/wire/green,
 /obj/marker/map_node,
@@ -7399,18 +7432,21 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/engineering)
 "Bf" = (
-/obj/structure/interactive/disposals/pipe,
-/obj/decal/hazard/black{
-	dir = 8;
-	icon_state = "line"
+/obj/structure/interactive/disposals/pipe/labeler{
+	dir = 1;
+	icon_state = "pipe-l";
+	sorting_tag_label = "material"
 	},
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/burgerstation/engineering)
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
 "Bg" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/burgerstation/engineering)
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/stacker,
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
 "Bh" = (
 /obj/structure/carpet/red,
 /obj/marker/map_node,
@@ -7587,9 +7623,9 @@
 /turf/simulated/floor/tile/morphing/dark,
 /area/burgerstation/hall/north)
 "BM" = (
-/obj/structure/interactive/vending/nanotrasen/ammo/ops,
-/turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/morphing/chemistry,
+/area/burgerstation/medical/lobby)
 "BN" = (
 /obj/structure/interactive/vending/nanotrasen/gundrobe/dip,
 /turf/simulated/floor/plating,
@@ -7794,13 +7830,16 @@
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/cargo)
 "Ct" = (
-/obj/decal/hazard{
-	dir = 8
+/obj/structure/interactive/lighting/fixture/tube/station/stronger{
+	dir = 1
 	},
-/obj/structure/interactive/wire/red,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/burgerstation/maint/disposals)
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/nanotrasen/hanger_guard{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/cargo,
+/area/burgerstation/hanger)
 "Cu" = (
 /obj/structure/interactive/disposals/pipe{
 	dir = 10
@@ -8307,19 +8346,17 @@
 /turf/simulated/floor/tile/chapel,
 /area/burgerstation/chapel/office)
 "Eh" = (
-/obj/structure/interactive/disposals/pipe/junction{
-	dir = 1
-	},
-/obj/marker/map_node,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tile,
-/area/burgerstation/medical/lobby)
+/area/burgerstation/medical/chemistry)
 "Ei" = (
-/obj/structure/interactive/disposals/machine/chute,
-/obj/structure/interactive/disposals/pipe/ending{
+/obj/structure/interactive/wire/red,
+/obj/marker/map_node,
+/obj/structure/interactive/disposals/pipe/junction/flipped{
 	dir = 8
 	},
-/turf/simulated/floor/tile/morphing/medical,
-/area/burgerstation/medical/lobby)
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
 "Ej" = (
 /obj/structure/interactive/vending/medical/medicine,
 /turf/simulated/floor/tile/morphing/medical,
@@ -8399,11 +8436,12 @@
 /turf/simulated/floor/plating,
 /area/burgerstation/medical/lobby)
 "Ey" = (
-/obj/structure/table/steel,
-/obj/structure/interactive/shop,
-/obj/item/pinpointer/mobs,
+/obj/decal/hazard/black{
+	dir = 1
+	},
+/mob/living/advanced/npc/nanotrasen/hanger_guard,
 /turf/simulated/floor/tile/morphing/nanotrasen,
-/area/burgerstation/armory)
+/area/burgerstation/arrivals)
 "Ez" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 8
@@ -8465,13 +8503,52 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/tile/morphing/mining,
 /area/burgerstation/mining)
+"EK" = (
+/mob/living/advanced/npc/nanotrasen,
+/turf/simulated/floor/tile/morphing/nanotrasen,
+/area/burgerstation/hall/north)
+"EL" = (
+/obj/structure/interactive/conveyor{
+	dir = 1;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/diverter/material{
+	icon_state = "diverter";
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/burgerstation/maint/disposals)
+"EM" = (
+/obj/structure/interactive/disposals/pipe,
+/obj/decal/hazard/black{
+	dir = 8;
+	icon_state = "line"
+	},
+/obj/structure/interactive/emitter{
+	icon_state = "emitter";
+	dir = 8
+	},
+/turf/simulated/floor/tile/morphing/engineering,
+/area/burgerstation/engineering)
+"EN" = (
+/obj/structure/interactive/conveyor{
+	dir = 8;
+	icon_state = "conveyor"
+	},
+/obj/structure/interactive/plastic_flaps,
+/turf/simulated/floor/plating,
+/area/burgerstation/engineering/supermatter)
+"EO" = (
+/mob/living/simple/bot/medibot,
+/turf/simulated/floor/tile,
+/area/burgerstation/medical/lobby)
+"EP" = (
+/mob/living/simple/bot/medibot,
+/turf/simulated/floor/tile,
+/area/burgerstation/medical)
 "FW" = (
 /obj/structure/interactive/vending/chemistry/wardrobe,
 /turf/simulated/floor/tile/morphing/chemistry,
-/area/burgerstation/medical/chemistry)
-"Ga" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/plating,
 /area/burgerstation/medical/chemistry)
 "Ho" = (
 /obj/structure/interactive/disposals/pipe/ending{
@@ -8547,10 +8624,6 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
-"Na" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/plating,
-/area/burgerstation/medical/lobby)
 "Ny" = (
 /obj/decal/hazard/black,
 /obj/structure/interactive/intercom{
@@ -29899,7 +29972,7 @@ lI
 lI
 my
 lI
-cL
+ra
 bj
 du
 ds
@@ -30927,7 +31000,7 @@ lI
 lI
 lI
 lI
-ra
+Ct
 bj
 fV
 gj
@@ -31945,11 +32018,11 @@ fH
 lI
 oz
 ei
-lI
+cL
 lI
 my
 lI
-lI
+cL
 sF
 oz
 AX
@@ -31974,7 +32047,7 @@ pL
 pL
 pL
 pL
-Bc
+oC
 pL
 pL
 ua
@@ -32231,7 +32304,7 @@ hN
 ni
 hi
 yb
-yb
+yc
 yb
 hi
 nh
@@ -33263,7 +33336,7 @@ dI
 dI
 gO
 gO
-jj
+EN
 gO
 of
 uU
@@ -33772,8 +33845,8 @@ nf
 hN
 hi
 hi
-Bf
-yc
+gP
+EM
 yd
 iG
 iT
@@ -34029,7 +34102,7 @@ Be
 hN
 hN
 hN
-hN
+Be
 su
 kU
 iG
@@ -34288,8 +34361,8 @@ vs
 vt
 ee
 kT
-Bg
-gP
+ee
+gT
 hu
 gS
 gO
@@ -42731,7 +42804,7 @@ eD
 eD
 eD
 dD
-xA
+aT
 aJ
 bq
 aI
@@ -42749,14 +42822,14 @@ mp
 nk
 oL
 ku
-pm
-pH
-cZ
-qj
-qT
-qY
-qY
-sX
+wg
+pJ
+jZ
+qn
+qU
+sj
+sy
+tm
 qj
 uI
 uJ
@@ -42980,13 +43053,13 @@ sr
 dD
 dU
 ew
-bf
-eC
-fy
-fA
-fK
-fN
-gr
+cj
+cj
+cj
+cj
+cj
+cj
+dV
 dU
 is
 aJ
@@ -43006,14 +43079,14 @@ mM
 op
 op
 ku
-wg
-pJ
-jZ
-qn
-qU
-sj
-sy
-tm
+pm
+pH
+cZ
+qj
+qY
+qY
+qY
+fv
 qj
 uI
 rg
@@ -43263,12 +43336,12 @@ mp
 mo
 oN
 ku
-pm
-pH
-cZ
-qj
-qY
-qY
+fs
+pJ
+qn
+qn
+tm
+EO
 qY
 qT
 qj
@@ -43524,7 +43597,7 @@ pm
 tp
 lj
 qq
-qY
+qT
 qY
 qY
 qT
@@ -43752,14 +43825,14 @@ dD
 dX
 eA
 sB
-eF
+bf
 fL
 fZ
 eD
 eI
 eD
 xM
-aJ
+EK
 aI
 bq
 aI
@@ -43781,7 +43854,7 @@ pm
 pH
 lk
 qM
-qY
+qT
 qY
 qY
 qT
@@ -43790,7 +43863,7 @@ qj
 qj
 qj
 qj
-lj
+lk
 fj
 Aw
 oU
@@ -44009,7 +44082,7 @@ dD
 dY
 eA
 sB
-eL
+bf
 eD
 ga
 gs
@@ -44038,7 +44111,7 @@ pm
 pH
 lk
 qM
-qY
+qT
 qY
 sM
 tn
@@ -44046,7 +44119,7 @@ sj
 sj
 sj
 sj
-Eh
+sX
 El
 tr
 Ax
@@ -44266,7 +44339,7 @@ dD
 dZ
 eA
 sB
-eR
+bf
 eD
 BJ
 zL
@@ -44295,21 +44368,21 @@ rJ
 pH
 lk
 qM
-qY
-qY
-qY
-qY
-qj
-qj
-qj
-qj
-Ei
-lj
+ft
+sj
+sj
+sj
+qn
+qn
+qn
+qn
 ti
-ql
-oR
-oR
-kN
+fx
+fy
+fz
+qP
+qP
+fA
 lD
 qp
 um
@@ -44523,7 +44596,7 @@ dF
 ea
 sv
 sG
-fq
+bf
 fM
 wM
 gc
@@ -44552,21 +44625,21 @@ px
 pH
 lk
 qM
-rg
+qY
 qY
 qY
 qY
 qj
 lj
 lk
-Na
-lk
+BM
+wO
 lj
 hs
 ui
 ql
 ql
-ql
+eC
 lL
 tZ
 AA
@@ -44787,7 +44860,7 @@ gc
 gL
 dV
 hR
-aJ
+EK
 aI
 zK
 bq
@@ -44817,13 +44890,13 @@ qN
 Yj
 lq
 lq
-lq
+xA
 In
 SA
 ql
 oR
 oR
-ql
+eC
 oR
 uG
 ub
@@ -45037,7 +45110,7 @@ dH
 dV
 ey
 sI
-fs
+bf
 dD
 ge
 gc
@@ -45074,14 +45147,14 @@ lj
 lj
 tH
 Ty
-Ty
+Ay
 rF
 oR
 oR
 oR
-oR
-ql
-oR
+EP
+fB
+fK
 tk
 qg
 qg
@@ -45291,10 +45364,10 @@ ah
 xw
 ah
 dD
-wO
+dW
 ey
 sI
-ft
+bf
 eD
 gf
 gc
@@ -45331,15 +45404,15 @@ nr
 TH
 tM
 jh
-Ty
-Ga
+Ay
+Eh
 oR
 oR
 vc
 oR
 Mo
-oR
-rv
+fN
+eR
 qg
 tu
 AB
@@ -45548,10 +45621,10 @@ nq
 nq
 nq
 dD
-AS
+dX
 ey
 sI
-fu
+bf
 eD
 gg
 gc
@@ -45588,15 +45661,15 @@ lA
 sZ
 tL
 Ty
-Ty
+Ay
 rF
 oR
 oR
 ln
 oR
 SV
-oR
-rv
+fN
+eR
 qg
 ae
 tQ
@@ -45805,10 +45878,10 @@ BN
 dk
 dk
 dD
-BM
+dY
 ey
 sI
-fv
+bf
 fL
 gh
 eD
@@ -45845,15 +45918,15 @@ nr
 TH
 FW
 WG
-WG
+AS
 rF
 pK
 kI
 pK
 kI
 qo
-Ay
-fj
+gr
+eR
 qg
 td
 AC
@@ -46109,8 +46182,8 @@ hv
 hv
 hv
 rB
-ph
-sL
+gr
+eR
 sL
 uq
 xl
@@ -46366,10 +46439,10 @@ lJ
 lJ
 rn
 CT
-Az
-vN
-ak
-vN
+kN
+fq
+Lt
+sb
 AC
 td
 AC
@@ -46577,13 +46650,13 @@ nq
 ex
 dD
 dU
-aT
+dV
 cj
-fx
-fz
-Ey
-fB
-fB
+cj
+cj
+cj
+cj
+cj
 Bq
 dD
 ak
@@ -46623,10 +46696,10 @@ lT
 tJ
 rm
 CU
+ph
+fu
+eL
 sb
-vN
-ak
-vN
 td
 rI
 rI
@@ -46880,10 +46953,10 @@ qi
 mY
 lJ
 tW
-sb
-vN
-ak
-vN
+eF
+rI
+eL
+rI
 td
 rI
 lh
@@ -50172,12 +50245,12 @@ ab
 ab
 ak
 cH
-eO
+Ei
 bC
-Ct
-xT
-xT
-xT
+Bc
+Bf
+cv
+eG
 dK
 gk
 eV
@@ -50433,8 +50506,8 @@ dh
 sQ
 sN
 dK
-cH
 dK
+Bg
 dK
 ek
 eV
@@ -50691,7 +50764,7 @@ da
 cv
 eG
 eG
-eG
+EL
 eG
 eG
 gy
@@ -52260,7 +52333,7 @@ zA
 CX
 xr
 pM
-qt
+Ey
 hF
 hF
 gU
@@ -53031,7 +53104,7 @@ bE
 am
 xr
 pM
-qt
+Ey
 hF
 hF
 fY

@@ -9,3 +9,5 @@
 	sleep_on_idle = FALSE
 
 	guard = TRUE
+
+	resist_grabs = 2

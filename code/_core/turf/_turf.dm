@@ -258,12 +258,13 @@
 	if(enterer.density)
 		has_dense_atom = TRUE
 
-	var/area/A = src.loc
+	if(world_state >= STATE_RUNNING && enterer.enable_chunk_clean)
 
-	if(enterer.enable_chunk_clean && SSchunk.initialized && !A.safe_storage)
-		var/old_loc_chunk_x = old_loc ? CEILING(old_loc.x/CHUNK_SIZE,1) : 0
-		var/old_loc_chunk_y = old_loc ? CEILING(old_loc.y/CHUNK_SIZE,1) : 0
-		var/old_loc_chunk_z = old_loc ? old_loc.z : 0
+		var/turf/old_turf = is_turf(old_loc) ? old_loc : null
+
+		var/old_loc_chunk_x = old_turf ? CEILING(old_turf.x/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_y = old_turf ? CEILING(old_turf.y/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_z = old_turf ? old_turf.z : 0
 
 		var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
 		var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
@@ -272,6 +273,7 @@
 		if(new_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
 			var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
 			if(new_chunk) new_chunk.cleanables += enterer
+
 
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
@@ -286,20 +288,21 @@
 	if(exiter.density)
 		recalculate_atom_density()
 
-	if(exiter.enable_chunk_clean && SSchunk.initialized)
+	if(world_state >= STATE_RUNNING && exiter.enable_chunk_clean)
+
+		var/turf/new_turf = is_turf(new_loc) ? new_loc : null
 
 		var/old_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
 		var/old_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
 		var/old_loc_chunk_z = src.z
 
-		var/new_loc_chunk_x = new_loc ? CEILING(new_loc.x/CHUNK_SIZE,1) : 0
-		var/new_loc_chunk_y = new_loc ? CEILING(new_loc.y/CHUNK_SIZE,1) : 0
-		var/new_loc_chunk_z = new_loc ? new_loc.z : 0
+		var/new_loc_chunk_x = new_turf ? CEILING(new_turf.x/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_y = new_turf ? CEILING(new_turf.y/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_z = new_turf ? new_turf.z : 0
 
 		if(old_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
 			var/chunk/old_chunk = SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
 			if(old_chunk) old_chunk.cleanables -= exiter
-
 
 /turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return istype(health)

@@ -1,5 +1,5 @@
 /mob/living/advanced/npc/survivor
-	name = "hostile survivor"
+	name = "bandit"
 	desc = "Get off my lawn!"
 
 	dna = /dna/human

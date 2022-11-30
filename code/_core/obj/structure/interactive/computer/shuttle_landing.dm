@@ -35,7 +35,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 		L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
 		return TRUE
 
-	if(!SSgamemode.active_gamemode.allow_launch)
+	if(!SSgamemode.active_gamemode?.allow_launch)
 		L.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
 		return TRUE
 

@@ -62,11 +62,26 @@
 
 	. = ..()
 
-	if(qdeleting || !.)
-		return .
+	if(ai && src.finalized && SSchunk.finalized)
+		var/turf/new_turf = loc && !isturf(loc) ? get_turf(loc) : loc
 
-	if(is_sneaking)
-		on_sneak()
+		var/old_loc_chunk_x = old_turf ? CEILING(src.x/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_y = old_turf ? CEILING(src.y/CHUNK_SIZE,1) : 0
+		var/old_loc_chunk_z = old_turf ? src.z : 0
+
+		var/new_loc_chunk_x = new_turf ? CEILING(new_turf.x/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_y = new_turf ? CEILING(new_turf.y/CHUNK_SIZE,1) : 0
+		var/new_loc_chunk_z = new_turf ? new_turf.z : 0
+
+		if(old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z)
+
+			if(old_loc_chunk_z)
+				var/chunk/old_chunk = SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
+				old_chunk.ai -= src.ai
+
+			if(new_loc_chunk_z)
+				var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
+				new_chunk.ai += src.ai
 
 	if(old_turf && length(old_turf.old_living))
 		old_turf.old_living -= src
@@ -81,6 +96,12 @@
 		if(!src.z)
 			handle_blocking()
 
+	if(qdeleting)
+		return .
+
+	if(is_sneaking)
+		on_sneak()
+
 	climb_counter = 0
 
 	last_move_delay = TICKS_TO_DECISECONDS(next_move)
@@ -93,6 +114,12 @@
 			var/obj/item/wet_floor_sign/WFS = locate() in range(2,S)
 			if(!WFS || move_mod > 2)
 				add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+
+
+
+
+
+
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)

@@ -8,6 +8,9 @@
 /turf/simulated/floor/tile/shuttle/red
 	color = COLOR_RED
 
+/turf/simulated/floor/tile/shuttle/red/crimson
+	color = "#9B0000"
+
 /turf/simulated/floor/tile/shuttle/engineering
 	color = COLOR_ENGINEERING
 
@@ -20,12 +23,15 @@
 /turf/simulated/floor/tile/shuttle/dark
 	color = "#555A62"
 
+/turf/simulated/floor/tile/shuttle/dark/darker
+	color = "#383838"
+
 /turf/simulated/floor/tile/shuttle/purple
 	color = COLOR_PURPLE
 
 
 /turf/simulated/floor/tile/shuttle/black
-	color = COLOR_GREY_DARK
+	color = COLOR_BLACK
 
 /turf/simulated/floor/tile/shuttle/cyan
 	color = COLOR_CYAN

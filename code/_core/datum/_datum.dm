@@ -15,10 +15,15 @@
 	qdel(src)
 	return TRUE
 
-/datum/Destroy()
+//Credit to Kachnov for this garbage collection code.
+/datum/proc/Destroy()
 	HOOK_CALL("Destroy")
 	hooks?.Cut()
-	. = ..()
+	tag = null // required to GC
+	return TRUE
+
+/datum/proc/PreDestroy()
+	return TRUE
 
 /datum/proc/get_debug_name()
 	return "[src.type]"

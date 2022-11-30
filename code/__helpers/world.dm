@@ -19,32 +19,41 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 
 #define is_valid(A) (A && !A.qdeleting)
 
-#define INITIALIZE(D)																								\
-	if(D.initialized) {																								\
+#define INITIALIZE(D)																															\
+	if(D.qdeleting) {																															\
+		log_error("ERROR: [D.get_debug_name()] tried to initialize while qdeleting! in [__FILE__]:[__LINE__]");									\
+	}																																			\
+	else if(D.initialized) {																													\
 		log_error("ERROR: [D.get_debug_name()] was initialized more than once! in [__FILE__]:[__LINE__]");										\
-	}																												\
-	else {																											\
+	}																																			\
+	else {																																		\
 		if(!D.Initialize()) {log_error("ERROR: [D.get_debug_name()] did not run Initialize() properly! in [__FILE__]:[__LINE__]")};				\
 		if(!D.PostInitialize()) {log_error("ERROR: [D.get_debug_name()] did not run PostInitialize() properly! in [__FILE__]:[__LINE__]")};		\
-		D.initialized = TRUE;																						\
+		D.initialized = TRUE;																													\
 	}
 
-#define GENERATE(D)																									\
-	if(D.generated)	{																								\
-		log_error("ERROR: [D.get_debug_name()] was generated more than once! in [__FILE__]:[__LINE__]");											\
-	}																												\
-	else {																											\
+#define GENERATE(D)																																\
+	if(D.qdeleting) {																															\
+		log_error("ERROR: [D.get_debug_name()] tried to generate while qdeleting! in [__FILE__]:[__LINE__]");									\
+	}																																			\
+	if(D.generated)	{																															\
+		log_error("ERROR: [D.get_debug_name()] was generated more than once! in [__FILE__]:[__LINE__]");										\
+	}																																			\
+	else {																																		\
 		if(!D.Generate()) {log_error("ERROR: [D.get_debug_name()] did not run Generate() properly! in [__FILE__]:[__LINE__]")};					\
-		D.generated = TRUE;																							\
+		D.generated = TRUE;																														\
 	}
 
-#define FINALIZE(D)																									\
-	if(D.finalized) {																								\
-		log_error("ERROR: [D.get_debug_name()] was finalized more than once! in [__FILE__]:[__LINE__]");											\
-	}																												\
-	else {																											\
+#define FINALIZE(D)																																\
+	if(D.qdeleting) {																															\
+		log_error("ERROR: [D.get_debug_name()] tried to finalize while qdeleting! in [__FILE__]:[__LINE__]");									\
+	}																																			\
+	if(D.finalized) {																															\
+		log_error("ERROR: [D.get_debug_name()] was finalized more than once! in [__FILE__]:[__LINE__]");										\
+	}																																			\
+	else {																																		\
 		if(!D.Finalize()) {log_error("ERROR: [D.get_debug_name()] did not run Finalize() properly! in [__FILE__]:[__LINE__]")};					\
-		D.finalized = TRUE;																							\
+		D.finalized = TRUE;																														\
 	}
 
 /proc/CREATE(var/atom/A,var/atom/desired_loc)

@@ -60,10 +60,10 @@
 				add_overlay(I)
 
 /obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)
-	. = ..()
 	if(damage)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 		no_queue = TRUE
+	. = ..()
 	qdel(src)
 
 /obj/structure/window/reinforced

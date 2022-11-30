@@ -27,7 +27,7 @@
 
 	create_destruction(src,list(/obj/item/material/wood/ = 1),material_id)
 
-	return ..()
+	. = ..()
 
 
 /turf/simulated/wall/wood/brown

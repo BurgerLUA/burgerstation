@@ -10,7 +10,7 @@
 
 	tier = 2
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = FALSE
 
@@ -23,9 +23,9 @@
 	can_wield = FALSE
 
 	size = SIZE_2
-	weight = 7
+	weight = 9
 
-	heat_max = 0.08
+	heat_max = 0.1
 
 	bullet_length_min = 27
 	bullet_length_best = 33
@@ -73,7 +73,7 @@
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod
 	name = "\improper 12.7mm High-Power Auto MOD"

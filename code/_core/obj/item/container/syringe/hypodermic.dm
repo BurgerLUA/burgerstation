@@ -1,7 +1,7 @@
 /obj/item/container/syringe/hypodermic/
 	name = "hypodermic syringe"
 	value = 5
-	injection_time = SECONDS_TO_DECISECONDS(1)
+	injection_time = SECONDS_TO_DECISECONDS(2)
 
 	inject_amount_desired = 5
 	inject_amount_precision = 5
@@ -79,3 +79,17 @@
 /obj/item/container/syringe/hypodermic/omnizine/Generate()
 	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max)
 	return ..()
+
+
+/obj/item/container/syringe/hypodermic/auto
+	name = "autosyringe"
+	desc_extended = "A rare prototype to the medipen, the autosyringe uses pressurized air to quickly inhject chemicals into the bloodstream. The pressurized system cannot be tweaked and thus will always inject the full amount if possible."
+	icon = 'icons/obj/item/container/syringe_advanced.dmi'
+	rarity = RARITY_RARE
+	quality_reduction_on_use = 5
+	injection_time = SECONDS_TO_DECISECONDS(1.5)
+	icon_count = 11
+	inject_amount_desired = INFINITY
+	injection_sound = 'sound/effects/epi.ogg'
+	value = 100
+	reagents = /reagent_container/syringe/auto

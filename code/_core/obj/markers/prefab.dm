@@ -83,7 +83,6 @@
 /obj/marker/prefab/antag
 	icon = 'icons/obj/markers/prefab_antag.dmi'
 	category = "antag"
-	chance_none = 50
 	rotational_offset = 32
 
 /obj/marker/prefab/boss

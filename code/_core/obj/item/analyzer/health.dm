@@ -7,6 +7,15 @@
 	icon_state = "inventory"
 	value = 150
 	var/advanced = FALSE
+	var/stealth = FALSE
+
+	var/scan_range = 1
+
+/obj/item/analyzer/health/syndicate
+	name = "syndicate health analyzer"
+	desc_extended = "A handheld portable health analyzer that prints the target's total received damage in an arbitary measurement. This syndicate variant is more silent and works at a short range."
+	stealth = TRUE
+	scan_range = VIEW_RANGE*0.75
 
 /obj/item/analyzer/health/click_self(var/mob/caller)
 	INTERACT_CHECK
@@ -17,7 +26,7 @@
 
 /obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
 
-	if(get_dist(caller,target) > 1)
+	if(get_dist(caller,target) > scan_range)
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 
@@ -28,7 +37,10 @@
 	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
 
 	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.damage[BRUTE],1)]</font>|<font color='yellow'>[CEILING(target.health.damage[BURN],1)]</font>|<font color='green'>[CEILING(target.health.damage[TOX],1)]</font>|<font color='blue'>[CEILING(target.health.damage[OXY],1)]</font>"
-	new/obj/effect/chat_text(target,.,TRUE)
+
+	if(!stealth)
+		new/obj/effect/chat_text(target,.,TRUE)
+		play_sound('sound/items/scanbeep.ogg',get_turf(src))
 
 	if(advanced)
 		var/species = "N/A"

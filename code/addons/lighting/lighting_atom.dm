@@ -68,7 +68,7 @@
 	. = ..()
 
 	if (opacity && istype(T))
-		T.recalc_atom_opacity()
+		T.recalculate_atom_opacity()
 		T.reconsider_lights()
 
 
@@ -101,7 +101,7 @@
 #endif
 	else
 		var/old_has_opaque_atom = T.has_opaque_atom
-		T.recalc_atom_opacity()
+		T.recalculate_atom_opacity()
 		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
 

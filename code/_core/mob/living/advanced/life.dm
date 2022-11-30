@@ -35,17 +35,16 @@
 		handle_mood()
 
 /mob/living/advanced/proc/handle_mood()
-	var/target_mood = (200 * 0.5 + get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod()) - (health ? (health.damage[PAIN] * max(0,1-get_attribute_power(ATTRIBUTE_ENDURANCE))) - pain_removal : 0 )
-	target_mood = FLOOR(target_mood,1)
-	if(mood == null) //Exactly null
-		mood = target_mood
-	if(mood != target_mood)
-		last_mood_gain = clamp(target_mood-mood,-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*(5/60),TICKS_TO_SECONDS(LIFE_TICK_SLOW)*(20/60)) //Lose/gain 5/20 mood in a minute due to other factors.
-		mood += last_mood_gain
-		mood = clamp(mood,0,200)
+
+	var/desired_mood = src.get_nutrition_mod() * src.get_hydration_mod() * (0.5 + src.get_nutrition_quality_mod()*0.5) * 100
+
+	desired_mood = round(desired_mood,5)
+
 	var/obj/hud/button/mood/B = locate() in buttons
-	if(B && B.last_mood != mood)
+	if(B && B.last_mood != desired_mood)
+		B.last_mood = desired_mood
 		B.update_sprite()
+
 	return TRUE
 
 

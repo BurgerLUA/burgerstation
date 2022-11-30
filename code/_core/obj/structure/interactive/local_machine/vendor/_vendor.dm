@@ -52,6 +52,8 @@ var/global/list/equipped_antags = list()
 
 	health = /health/construction/
 
+	health_base = 500
+
 	apc_powered = TRUE
 
 /obj/structure/interactive/vending/proc/vend_random(var/count=1) //For malfunctions/hacking/destruction
@@ -218,7 +220,8 @@ var/global/list/equipped_antags = list()
 		stored_objects += I
 		I.drop_item(src)
 		I.plane = PLANE_HUD_OBJ
-		I.pixel_y = 4
+		I.pixel_x = initial(I.pixel_x)
+		I.pixel_y = initial(I.pixel_y) + 4
 
 	if(accepts_item)
 		accepts_item = new accepts_item(src)

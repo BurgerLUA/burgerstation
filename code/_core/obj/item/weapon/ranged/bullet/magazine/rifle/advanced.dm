@@ -12,7 +12,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_delay = 3
+	shoot_delay = 2.5
 
 	automatic = TRUE
 
@@ -71,16 +71,14 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-
-
-	dan_mode = TRUE
-
 	movement_spread_base = 0.02
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
+
+	dan_mode = TRUE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced/get_static_spread()
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced/get_skill_spread(var/mob/living/L)
-	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

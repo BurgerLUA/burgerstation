@@ -3,6 +3,7 @@
 	should_find_weapon = TRUE
 	roaming_distance = 0
 	resist_handcuffs = FALSE
+	enable_loc_safety = FALSE
 
 /ai/advanced/hostage/is_enemy(var/atom/A,var/safety_check=TRUE)
 	if(!is_living(A))

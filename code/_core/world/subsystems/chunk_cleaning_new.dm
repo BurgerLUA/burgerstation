@@ -73,19 +73,26 @@ SUBSYSTEM_DEF(chunk)
 	var/total_spawnpoints = 0
 	for(var/k in SSliving.all_living) //Setup spawnpoints for respawning mobs.
 		var/mob/living/L = k
-		if(!L.respawn)
+		if(!is_turf(L.loc))
 			continue
-		var/turf/simulated/T = get_turf(L)
-		if(!istype(T))
-			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
-			continue
+		var/turf/T = L.loc
 		var/area/A = T.loc
+
 		if(A.safe_storage)
 			continue
+
+		if(!L.respawn)
+			continue
+
+		if(!is_simulated(T))
+			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
+			continue
+
 		var/x = CEILING(T.x/CHUNK_SIZE,1)
 		var/y = CEILING(T.y/CHUNK_SIZE,1)
 		var/z = T.z
 		var/chunk/CH = chunks[z][x][y]
+
 		var/obj/marker/mob_spawn/M = new(T,L)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
 		CH.spawning_markers += M
@@ -148,21 +155,22 @@ SUBSYSTEM_DEF(chunk)
 			continue
 		for(var/j in C.cleanables)
 			var/atom/movable/M = j
-			if(!M.z)
+			if(!is_turf(M.loc))
 				continue
-			var/chunk_x = CEILING(M.x/CHUNK_SIZE,1)
-			var/chunk_y = CEILING(M.y/CHUNK_SIZE,1)
-			var/chunk/C2 = SSchunk.chunks[M.z][chunk_x][chunk_y]
+			var/turf/T = M.loc
+			var/area/A = T.loc
+			var/chunk_x = CEILING(T.x/CHUNK_SIZE,1)
+			var/chunk_y = CEILING(T.y/CHUNK_SIZE,1)
+			var/chunk/C2 = SSchunk.chunks[T.z][chunk_x][chunk_y]
 			if(C != C2)
 				continue //It was moved.
-			if(M.on_chunk_clean())
+			if(!A.safe_storage && M.on_chunk_clean())
 				. += 1
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
 		for(var/j in C.spawning_markers)
 			var/obj/marker/mob_spawn/MS = j
 			MS.process()
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
-
 
 	for(var/k in unclean_chunks)
 		var/chunk/C = k

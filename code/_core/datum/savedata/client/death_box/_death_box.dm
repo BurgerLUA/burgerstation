@@ -51,7 +51,7 @@ var/global/list/ckey_to_death_box_data = list()
 			total_items_saved++
 		if(length(data_list["inventory"]))
 			DB.loaded_data += list(data_list)
-			data_list["value"] = CEILING(data_list["value"]*0.25,1) + 2000
+			data_list["value"] = CEILING(data_list["value"]*0.25,1) + 1000
 			db_data_to_save |= DB
 
 	log_debug("Saving [length(db_data_to_save)] death box instances with [total_items_saved] items saved.")

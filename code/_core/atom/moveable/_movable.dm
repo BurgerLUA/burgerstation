@@ -64,13 +64,16 @@
 
 	var/dir_offset = TILE_SIZE
 
+/atom/movable/PreDestroy()
+	force_move(null)
+	loc = null //Just in case.
+	. = ..()
+
 /atom/movable/Destroy()
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
 	grabbing_hand = null
-	force_move(null)
-	loc = null
 	. = ..()
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
@@ -106,16 +109,6 @@
 /atom/movable/New(var/desired_loc)
 	light_sprite_sources = list()
 	. = ..()
-	if(world_state == STATE_RUNNING && src.enable_chunk_clean && SSchunk.initialized && is_simulated(loc))
-		var/turf/simulated/T = loc
-		var/area/A = T.loc
-		if(A && !A.safe_storage)
-			var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
-			var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
-			var/new_loc_chunk_z = src.z
-			if(new_loc_chunk_z > 0)
-				var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
-				if(new_chunk) new_chunk.cleanables += src
 
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/force = FALSE)
 
@@ -155,17 +148,22 @@
 
 	. = ..()
 
-	if(enable_chunk_clean && src.z)
-		var/turf/T = loc
-		var/area/A = T.loc
-		A.chunk_cleanable += src
+	if(is_turf(src.loc))
 
-	if((opacity || density) && src.z && is_turf(src.loc))
 		var/turf/T = src.loc
-		if(opacity)
-			T.has_opaque_atom = TRUE
-		if(density)
-			T.has_dense_atom = TRUE
+
+		if(world_state >= STATE_RUNNING && src.enable_chunk_clean)
+			var/chunk_x = CEILING(T.x/CHUNK_SIZE,1)
+			var/chunk_y = CEILING(T.y/CHUNK_SIZE,1)
+			var/chunk_z = T.z
+			var/chunk/C = SSchunk.chunks[chunk_z][chunk_x][chunk_y]
+			C.cleanables += src
+
+		if((opacity || density))
+			if(opacity)
+				T.has_opaque_atom = TRUE
+			if(density)
+				T.has_dense_atom = TRUE
 
 	update_value()
 

@@ -559,6 +559,8 @@
 		var/obj/item/weapon/melee/energy/E = W
 		if(!E.enabled) E.click_self(A)
 
+	checked_weapons = FALSE
+
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
 	if(istype(W,/obj/item/weapon/melee/energy))
@@ -566,6 +568,7 @@
 		if(E.enabled) E.click_self(A)
 	if(!W.quick_equip(A,ignore_hands=TRUE))
 		W.drop_item(get_turf(owner))
+	checked_weapons = FALSE
 	return TRUE
 
 /ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
@@ -612,16 +615,17 @@
 
 	distance_target_max = min(VIEW_RANGE,attack_distance_max)
 
-	if(!checked_weapons && attack_distance_max == 1 && objective_attack && get_dist(owner,objective_attack) > 4) //Find a new weapon to use if our enemy is far.
+	if(!checked_weapons && objective_attack && abs(get_dist(owner,objective_attack) - attack_distance_max) > VIEW_RANGE*0.5) //Find a new weapon to use if our enemy is close/far.
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
 		if(W)
 			if(A.right_item == W)
-				return ..()
-			if(A.left_item == W)
-				return ..()
-			if(A.right_item) unequip_weapon(A.right_item)
-			if(A.left_item) unequip_weapon(A.left_item)
-			equip_weapon(W)
+				checked_weapons = TRUE //Give up.
+			else if(A.left_item == W)
+				checked_weapons = TRUE //Give up.
+			else
+				if(A.right_item) unequip_weapon(A.right_item)
+				if(A.left_item) unequip_weapon(A.left_item)
+				equip_weapon(W)
 		else
 			checked_weapons = TRUE //Give up.
 

@@ -43,7 +43,7 @@
 		var/obj/marker/M = k
 		if(!M.loc)
 			qdel(M)
-			CHECK_TICK_SAFE(50,FPS_SERVER*3)
+			CHECK_TICK_SAFE(25,FPS_SERVER*10)
 			continue
 
 		var/chosen_data = pickweight(HD.horde_weights)
@@ -57,7 +57,7 @@
 		FINALIZE(L)
 		amount_created += 1
 		qdel(M)
-		CHECK_TICK_SAFE(50,FPS_SERVER*3)
+		CHECK_TICK_SAFE(25,FPS_SERVER*10)
 
 
 	log_debug("Created [amount_created] mission mobs.")

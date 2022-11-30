@@ -277,6 +277,14 @@
 
 	return FALSE
 
+/ai/proc/handle_movement_loc_safety()
+	if(enable_loc_safety && !is_turf(owner.loc))
+		owner.movement_flags = MOVEMENT_NORMAL
+		owner.move_dir = pick(DIRECTIONS_ALL)
+		return TRUE
+	return FALSE
+
+
 /ai/proc/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_NORMAL
 	owner.move_dir = 0x0
@@ -293,6 +301,10 @@
 	return TRUE
 
 /ai/proc/handle_movement()
+
+	if(handle_movement_loc_safety())
+		last_movement_proc = "loc_safety"
+		return TRUE
 
 	if(handle_movement_move_from_ally())
 		last_movement_proc = "move_from_ally"

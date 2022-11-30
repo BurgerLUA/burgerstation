@@ -14,7 +14,7 @@
 
 	health = /health/construction
 
-	health_base = 10
+	health_base = 20
 
 	apc_powered = TRUE
 

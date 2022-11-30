@@ -102,21 +102,21 @@
 	. = ..()
 
 /obj/item/storage/kit/syndicate
-	name = "deluxe combat hypospray kit"
+	name = "deluxe first aid kit"
 	desc = "I hope you've got insurance."
-	desc_extended = "A combat medical kit for combat operatives. Contains a combat hypospray and various medicine for all your combat needs."
+	desc_extended = "A combat medical kit for combat operatives. Contains hard to obtain medication that is generally superior than basic medication, as well as an autosyringe and a special first aid analyzer."
 	icon_state = "tactical"
 
 /obj/item/storage/kit/syndicate/filled/fill_inventory()
 	icon_state = "[initial(icon_state)][rand(1,4)]"
-	new /obj/item/container/syringe/hypodermic/hypospray/combat(src)
-	new /obj/item/container/simple/beaker/bottle/medium/bicaridine(src)
-	new /obj/item/container/simple/beaker/bottle/medium/kelotane(src)
-	new /obj/item/container/simple/beaker/bottle/medium/dylovene(src)
-	new /obj/item/container/simple/beaker/bottle/medium/epinephrine(src)
-	new /obj/item/container/simple/beaker/bottle/medium/morphine(src)
-	new /obj/item/container/simple/beaker/bottle/medium/calomel(src)
-	new /obj/item/container/simple/beaker/bottle/medium/inaprovaline(src)
+	new /obj/item/analyzer/health/syndicate(src)
+	new /obj/item/container/syringe/hypodermic/auto(src)
+	new /obj/item/container/simple/beaker/bottle/medium/brute_mix(src)
+	new /obj/item/container/simple/beaker/bottle/medium/burn_mix(src)
+	new /obj/item/container/simple/beaker/bottle/medium/toxin_mix(src)
+	new /obj/item/container/simple/beaker/bottle/medium/death_mix(src)
+	new /obj/item/container/simple/beaker/bottle/medium/rad_mix(src)
+	new /obj/item/container/simple/beaker/bottle/medium/combat_mix(src)
 	. = ..()
 
 /obj/item/storage/kit/ai3

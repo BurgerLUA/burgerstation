@@ -210,20 +210,29 @@
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
 				src.send_pain_response(damage_amount)
 			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
-				var/gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
+				var/gib_chance = 0
+				if(length(attached_organs) == 1 && A.has_status_effect(ZOMBIE))
+					gib_chance = 100
+				else
+					gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
 				if(A.dead)
 					gib_chance -= length(attached_organs)*20 //No cheesing torso.
 				else
 					gib_chance -= length(attached_organs)*50 //No cheesing torso.
 				if(gib_chance > 0 && prob(gib_chance))
+					var/gib_direction = 0x0
+					if(!attacker || get_turf(attacker) == get_turf(src))
+						gib_direction = pick(DIRECTIONS_ALL)
+					else
+						gib_direction = get_dir(attacker,src)
 					if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
 						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
 							var/mob/living/LA = attacker
 							if(LA.client) //And the person doing the gibbing is an active player.
-								gib(get_dir(attacker,src))
+								gib(gib_direction)
 							//Otherwise, don't gib.
 					else
-						gib(get_dir(attacker,src))
+						gib(gib_direction)
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)

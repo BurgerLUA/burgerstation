@@ -27,10 +27,13 @@
 	layer = 100
 
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
-	if(caller in orange(1,src))
+
+	if(get_dist(caller,src) <= 1)
 		create_destruction(src,list(/obj/item/material/sandstone/ = 1),material_id)
+
 	CREATE(/obj/structure/scenery/rocks,src)
-	return ..()
+
+	. = ..()
 
 /turf/simulated/wall/rock/snow
 	real_icon = 'icons/turf/wall/rock/snow.dmi'

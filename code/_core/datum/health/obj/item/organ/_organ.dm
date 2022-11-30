@@ -73,8 +73,6 @@
 
 	if(pain > 0 && is_advanced(owner.loc))
 		var/obj/item/organ/O = owner
-		var/mob/living/advanced/A = owner.loc
-		A.mood -= pain*0.03
 		if(pain >= health_current)
 			O.send_pain_response(pain)
 

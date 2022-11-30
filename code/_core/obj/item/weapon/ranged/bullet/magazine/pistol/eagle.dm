@@ -9,7 +9,7 @@
 	company_type = "Solarian"
 
 	damage_mod = 1.1
-	shoot_delay = 5
+	shoot_delay = 3
 	shoot_sounds = list('sound/weapons/50/shoot.ogg')
 
 	movement_spread_base = 0.01
@@ -19,7 +19,7 @@
 	size = SIZE_2
 	weight = 8
 
-	heat_max = 0.2
+	heat_max = 0.12
 
 	bullet_length_min = 30
 	bullet_length_best = 33

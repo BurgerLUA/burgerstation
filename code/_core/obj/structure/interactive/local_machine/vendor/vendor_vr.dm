@@ -131,7 +131,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
 		/obj/item/magazine/smg_9mm,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/magazine/smg_9mm,

@@ -43,10 +43,10 @@
 	locked = TRUE
 
 /obj/structure/interactive/door/airlock/on_destruction(var/mob/caller,var/damage = FALSE)
-	if(door_state == DOOR_STATE_BROKEN)
+	if(door_state != DOOR_STATE_BROKEN)
 		set_door_state(caller,DOOR_STATE_BROKEN,TRUE)
 		health.restore()
-		return ..()
+		. = ..()
 	else
 		. = ..()
 		qdel(src)

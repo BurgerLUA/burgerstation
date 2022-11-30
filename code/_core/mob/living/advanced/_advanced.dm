@@ -79,9 +79,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
 
-	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
-	var/last_mood_gain = 0
-
 	var/queue_update_items = FALSE
 	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
 

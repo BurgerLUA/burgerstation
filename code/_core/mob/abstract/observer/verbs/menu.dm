@@ -213,6 +213,10 @@ var/global/antag_count = 0
 	mobdata.reset_data()
 
 	var/mob/living/advanced/player/antagonist/P = new chosen_marker.spawn_type(get_turf(chosen_marker),C)
-	P.prepare()
+	INITIALIZE(P)
+	FINALIZE(P)
+	P.equip_loadout(P.loadout_to_use,TRUE)
+	P.setup_iff()
+	stop_music_track(P.client)
 
 	antag_count++

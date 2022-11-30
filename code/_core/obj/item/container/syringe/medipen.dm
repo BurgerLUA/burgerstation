@@ -17,9 +17,9 @@
 	injection_time = SECONDS_TO_DECISECONDS(0.5)
 	quality_reduction_on_use = 100
 
-	value = 1
+	value = 20
 
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 
 /obj/item/container/syringe/medipen/update_sprite()
 	. = ..()

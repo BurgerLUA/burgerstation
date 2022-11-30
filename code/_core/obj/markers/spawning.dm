@@ -8,6 +8,9 @@
 /obj/marker/spawning/Initialize()
 	do_spawn(src.loc)
 	. = ..()
+
+/obj/marker/spawning/Finalize()
+	. = ..()
 	qdel(src)
 
 /obj/marker/spawning/proc/do_spawn(var/turf/T)

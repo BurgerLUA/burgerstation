@@ -15,11 +15,13 @@
 
 	var/chance_none = 90
 
-/obj/structure/interactive/supplies/Generate()
-	. = ..()
-
+/obj/structure/interactive/supplies/New(var/desired_loc)
 	if(prob(chance_none))
 		qdel(src)
+	. = ..()
+
+/obj/structure/interactive/supplies/Generate()
+	. = ..()
 
 
 /obj/structure/interactive/supplies/update_icon()

@@ -14,6 +14,11 @@
 		var/safety_count=0; \
 		while(world.tick_usage > limit && (max_delays >= safety_count)) {\
 			safety_count++; \
-			sleep(TICK_LAG); \
+			if(limit <= 0) { \
+				sleep(1) \
+			} \
+			else{ \
+				sleep(TICK_LAG * (1 + min(FPS_SERVER,world.tick_usage/limit)*3)); \
+			} \
 		}\
 	}

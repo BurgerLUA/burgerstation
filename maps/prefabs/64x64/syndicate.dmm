@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "ab" = (
 /obj/marker/map_node,
@@ -185,7 +185,7 @@
 /obj/structure/interactive/fire_closet{
 	dir = 4
 	},
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "aM" = (
 /obj/item/clothing/glasses/sun/security/red,
@@ -376,7 +376,7 @@
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bu" = (
 /obj/structure/interactive/power/apc,
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bv" = (
 /obj/item/clothing/glasses/medical_hud/advanced,
@@ -388,7 +388,7 @@
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bx" = (
 /obj/structure/interactive/fire_closet,
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "by" = (
 /obj/item/clothing/belt/storage/medical,
@@ -530,7 +530,7 @@
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bS" = (
 /obj/decal/poster/syndicate,
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bT" = (
 /obj/structure/interactive/door/airlock/syndicate,
@@ -557,7 +557,7 @@
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bY" = (
 /obj/structure/interactive/bar_sign/traitor,
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "bZ" = (
 /obj/structure/interactive/atmospherics/vent,
@@ -727,7 +727,7 @@
 /obj/structure/interactive/power/apc{
 	dir = 1
 	},
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "so" = (
 /obj/structure/interactive/atmospherics/vent,
@@ -787,7 +787,7 @@
 /obj/structure/interactive/power/apc{
 	dir = 8
 	},
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "BP" = (
 /obj/structure/interactive/computer/console/medical{
@@ -843,7 +843,7 @@
 /obj/structure/interactive/power/apc{
 	dir = 4
 	},
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "TB" = (
 /obj/structure/table/reinforced/steel/dark,
@@ -864,7 +864,7 @@
 /area/mission/prefab/misc/syndicate_research_outpost)
 "Vq" = (
 /obj/structure/interactive/wire/green,
-/turf/simulated/wall/dark,
+turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_research_outpost)
 "Wp" = (
 /turf/dmm_suite/clear_turf,

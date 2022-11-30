@@ -6,7 +6,7 @@ var/global/list/all_antag_markers = list()
 
 /obj/marker/antag/New(var/desired_loc)
 
-	if(name)
+	if(spawn_type && name)
 		if(!all_antag_markers[name])
 			all_antag_markers[name] = list()
 
@@ -30,8 +30,8 @@ var/global/list/all_antag_markers = list()
 
 /obj/marker/antag/merc
 	name = "Mercenary"
-	spawn_type = /mob/living/advanced/player/antagonist/merc
+	//spawn_type = /mob/living/advanced/player/antagonist/merc
 
 /obj/marker/antag/golem
 	name = "Free Golem"
-	spawn_type = /mob/living/advanced/player/antagonist/golem
+	//spawn_type = /mob/living/advanced/player/antagonist/golem

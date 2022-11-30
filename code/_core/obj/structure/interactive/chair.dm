@@ -106,3 +106,6 @@ obj/structure/interactive/chair/shuttle
 	icon_state = "shuttle_chair"
 
 	armrest = TRUE
+
+obj/structure/interactive/chair/shuttle/dark
+	color = COLOR_GREY_LIGHT

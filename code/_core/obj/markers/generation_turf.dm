@@ -43,8 +43,11 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 					continue
 				if(!istype(T2))
 					continue
-				turfs_to_check += T2
 				turf_blacklist[T2] = TRUE
+				if(prob(get_dist(current_turf,T2)*20 - 80))
+					continue
+				turfs_to_check += T2
+
 
 /obj/marker/generation/turf/
 	priority = 1

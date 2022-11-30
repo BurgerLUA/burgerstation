@@ -169,7 +169,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	if(is_living(caller))
 		var/mob/living/L = caller
 		if(L.is_player_controlled())
-			log_admin("Player [L.get_debug_name()] belonging to [L.loyalty_tag] destroyed the supermatter.")
+			log_admin("Player [L.get_debug_name()] belonging to [L.loyalty_tag] destroyed a supermatter.")
 	explode(T,VIEW_RANGE*2,T,T,"Supermatter")
 
 /*

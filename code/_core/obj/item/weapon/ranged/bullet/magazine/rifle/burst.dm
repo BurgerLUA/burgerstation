@@ -80,7 +80,7 @@
 	movement_spread_base = 0.02
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread()
-	return 0.005
+	return 0.0075
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
@@ -116,7 +116,7 @@
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_static_spread()
-	return 0.001
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_skill_spread(var/mob/living/L)
-	return max(0,0.04 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

@@ -280,6 +280,28 @@
 	var/parry_time = 0
 	var/parry_spam_time = 0
 
+/mob/living/PreDestroy()
+
+	if(ai)
+		ai.set_active(FALSE)
+
+		var/turf/T = loc && !is_turf(loc) ? get_turf(src) : loc
+		if(T)
+			ai.remove_from_active_list(T.z)
+			ai.remove_from_inactive_list(T.z)
+			var/chunk_x = CEILING(T.x/CHUNK_SIZE,1)
+			var/chunk_y = CEILING(T.y/CHUNK_SIZE,1)
+			var/chunk_z = T.z
+			var/chunk/C = SSchunk.chunks[chunk_z][chunk_x][chunk_y]
+			if(C)
+				C.ai -= ai
+		else
+			log_error("Warning: [src.get_debug_name()]'s AI couldn't delete properly as it had a null turf.")
+
+	. = ..()
+
+
+
 /mob/living/Destroy()
 
 	UNPROCESS_LIVING(src)
@@ -629,10 +651,20 @@
 
 	if(ai)
 		ai = new ai(null,src)
-		ai.active = FALSE //I know this feels like shitcode but *dab
+		ai.active = FALSE //I know this feels like shitcode but it just werks.
 		if(initial(ai.active))
 			ai.set_active(TRUE)
 		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
+
+		if(SSchunk.finalized)
+			var/turf/T = loc && !is_turf(loc) ? get_turf(src) : loc
+			if(T)
+				var/chunk_x = CEILING(T.x/CHUNK_SIZE,1)
+				var/chunk_y = CEILING(T.y/CHUNK_SIZE,1)
+				var/chunk_z = T.z
+				var/chunk/C = SSchunk.chunks[chunk_z][chunk_x][chunk_y]
+				C.ai += src.ai
+
 
 	QUEUE_HEALTH_UPDATE(src)
 

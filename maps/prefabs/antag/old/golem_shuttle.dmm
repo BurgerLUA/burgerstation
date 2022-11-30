@@ -1,136 +1,142 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"ab" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"ac" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"ad" = (
 /turf/simulated/wall/metal/shuttle,
 /area/mission/prefab/misc/golem/right)
-"ab" = (
+"ae" = (
 /obj/structure/interactive/door/airlock/shuttle,
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"ac" = (
+"af" = (
+/obj/structure/interactive/storage/trash_pile,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"ag" = (
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"ad" = (
+"ah" = (
 /obj/marker/map_node,
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"ae" = (
+"ai" = (
 /obj/structure/interactive/mining_brace{
 	dir = 4
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"af" = (
+"aj" = (
 /obj/structure/interactive/mining_drill,
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"ag" = (
+"ak" = (
 /obj/structure/interactive/mining_brace{
 	dir = 8
 	},
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"ah" = (
+"al" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/head/helmet/welding,
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
-"ai" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/bags/mining,
-/obj/item/storage/bags/mining,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/right)
-"aj" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/melee/tool/pickaxe,
-/obj/item/weapon/melee/tool/pickaxe,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/right)
-"ak" = (
-/obj/structure/table/reinforced,
-/obj/item/flare,
-/obj/item/flare,
-/obj/item/flare,
-/obj/item/flare,
-/obj/item/flare,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/right)
-"al" = (
-/obj/structure/interactive/crate/coffin,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/right)
 "am" = (
-/turf/simulated/floor/plating/shuttle,
+/obj/structure/table/reinforced,
+/obj/item/storage/bags/mining,
+/obj/item/storage/bags/mining,
+/turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
 "an" = (
-/turf/simulated/floor/tile/shuttle/purple,
+/obj/structure/table/reinforced,
+/obj/item/weapon/melee/tool/pickaxe,
+/obj/item/weapon/melee/tool/pickaxe,
+/turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
 "ao" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/shuttle/purple,
+/obj/structure/table/reinforced,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
 "ap" = (
 /obj/structure/interactive/crate/coffin,
-/turf/simulated/floor/tile/shuttle/purple,
+/turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/golem/right)
 "aq" = (
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/right)
+"ar" = (
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/right)
+"as" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/right)
+"at" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/right)
+"au" = (
 /obj/structure/shuttle_engine/large{
 	dir = 4
 	},
 /turf/simulated/floor/plating/shuttle,
 /area/mission/prefab/misc/golem/right)
-"ar" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/right)
-"as" = (
-/turf/simulated/wall/metal/shuttle,
-/area/mission/prefab/misc/golem/center)
-"at" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"au" = (
-/obj/structure/interactive/computer/arcade/bubbletwist,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/right)
 "av" = (
-/obj/item/ball/soccer,
+/obj/structure/interactive/door/airlock/shuttle,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/right)
 "aw" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1;
-	icon_state = "preview"
-	},
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/center)
 "ax" = (
+/obj/structure/interactive/door/airlock/shuttle,
 /turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/right)
+/area/mission/prefab/misc/golem/center)
 "ay" = (
-/obj/marker/map_node,
+/obj/structure/interactive/computer/arcade/bubbletwist,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/right)
 "az" = (
+/obj/item/ball/soccer,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"aA" = (
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"aB" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/right)
+"aC" = (
 /obj/marker/map_node,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aA" = (
+"aD" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/mask/gas/mining,
 /obj/item/clothing/mask/gas/mining,
 /obj/item/clothing/mask/gas/mining,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aB" = (
+"aE" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
 /obj/structure/table/reinforced,
 /obj/item/weapon/ranged/energy/fed/plasma_cutter,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aC" = (
+"aF" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/melee/tool/pickaxe,
 /obj/item/weapon/melee/tool/pickaxe,
@@ -138,242 +144,77 @@
 /obj/item/flare,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aD" = (
+"aG" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aE" = (
+"aH" = (
 /obj/structure/interactive/vending/mining/golem,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aF" = (
+"aI" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1;
 	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/right)
-"aG" = (
+"aJ" = (
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/center)
-"aH" = (
+"aK" = (
 /obj/marker/map_node/x2,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/center)
-"aI" = (
+"aL" = (
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem)
+"aM" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem)
+"aN" = (
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aJ" = (
+"aO" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/bags/mining,
 /obj/item/storage/bags/mining,
 /obj/item/storage/bags/mining,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"aK" = (
+"aP" = (
+/obj/structure/interactive/lighting/fixture/tube/station/strong,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem)
+"aQ" = (
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem)
+"aR" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem)
+"aS" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem)
+"aT" = (
 /obj/structure/table/reinforced,
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"aL" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"aM" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 8;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"aN" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"aO" = (
-/obj/marker/lobby,
-/obj/marker/map_node/x2,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"aP" = (
-/obj/marker/map_node/x3,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"aQ" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"aR" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1;
-	icon_state = "preview"
-	},
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"aS" = (
-/obj/structure/interactive/bed/sleeper/medical,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"aT" = (
-/obj/structure/interactive/computer/console/medical{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
 "aU" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/glasses/medical_hud,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"aV" = (
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/golem/left)
-"aW" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/left)
-"aX" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/left)
-"aY" = (
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/left)
-"aZ" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/left)
-"ba" = (
-/obj/structure/interactive/vending/medical,
 /turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bb" = (
-/mob/living/simple/bot/medibot,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem/center)
-"bc" = (
-/obj/structure/table/reinforced,
-/obj/item/container/syringe/medipen/mining,
-/obj/item/container/syringe/medipen/mining,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bd" = (
-/obj/structure/shuttle_engine/large{
-	dir = 4
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/golem/left)
-"be" = (
-/turf/simulated/wall/metal/shuttle,
-/area/mission/prefab/misc/golem/left)
-"bf" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bg" = (
-/obj/structure/table/reinforced,
-/obj/item/supply_crate/medicine,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bh" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	dir = 1;
-	icon_state = "preview"
-	},
-/obj/structure/interactive/crate/medical,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bi" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/kit/burn/filled,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bj" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/kit/brute,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/center)
-"bk" = (
-/obj/structure/interactive/vending/medical/basic{
-	dir = 1;
-	icon_state = "wallmed"
-	},
-/turf/simulated/wall/metal/shuttle,
-/area/mission/prefab/misc/golem/center)
-"bl" = (
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/left)
-"bm" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/left)
-"bn" = (
-/obj/structure/interactive/crate/coffin,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem/left)
-"bo" = (
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bp" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bq" = (
-/obj/structure/interactive/mining_brace{
-	dir = 4
-	},
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"br" = (
-/obj/structure/interactive/mining_drill,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bs" = (
-/obj/structure/interactive/mining_brace{
-	dir = 8
-	},
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bt" = (
-/obj/structure/table/reinforced,
-/obj/item/flare,
-/obj/item/flare,
-/obj/item/flare,
-/obj/item/flare,
-/obj/item/flare,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bu" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bv" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/head/helmet/welding,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bw" = (
-/obj/structure/interactive/crate/coffin,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"bx" = (
-/obj/structure/interactive/door/airlock/shuttle,
-/turf/simulated/floor/tile/shuttle/black,
-/area/mission/prefab/misc/golem/left)
-"by" = (
-/obj/structure/interactive/power/apc,
-/turf/simulated/wall/metal/shuttle,
 /area/mission/prefab/misc/golem)
-"bz" = (
+"aV" = (
 /obj/structure/interactive/crate/necro,
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"bA" = (
+"aW" = (
 /obj/structure/interactive/power/smes/industrial{
 	icon_state = "smes_map";
 	dir = 4
@@ -381,1191 +222,1350 @@
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem/center)
-"bB" = (
+"aX" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"aY" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"aZ" = (
+/obj/marker/spawning/window/extra,
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem)
+"ba" = (
+/obj/marker/antag/golem,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem)
+"bb" = (
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem)
+"bc" = (
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem)
-"bC" = (
+"bd" = (
 /obj/structure/interactive/door/airlock/shuttle,
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/center)
-"bD" = (
+"be" = (
 /obj/structure/interactive/wire/green,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem/center)
-"dh" = (
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"gz" = (
-/obj/structure/interactive/storage/trash_pile,
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"iq" = (
-/obj/structure/interactive/storage/trash_pile,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"mc" = (
+"bf" = (
 /obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"mj" = (
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bg" = (
 /obj/structure/interactive/statue/director,
 /turf/simulated/floor/tile/shuttle,
 /area/mission/prefab/misc/golem)
-"pY" = (
-/turf/dmm_suite/clear_turf,
+"bh" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem)
+"bi" = (
+/obj/marker/map_node/x3,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem)
+"bj" = (
+/obj/marker/map_node/x2,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem)
+"bk" = (
+/obj/marker/lobby,
+/obj/marker/map_node/x2,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bl" = (
+/obj/marker/map_node/x3,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bm" = (
+/obj/marker/map_node/x2,
+/turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
-"qn" = (
-/obj/marker/spawning/window/extra,
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/golem)
-"qx" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"tC" = (
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"ub" = (
-/obj/marker/antag/golem,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"wP" = (
+"bn" = (
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 1;
 	icon_state = "preview"
 	},
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"Bo" = (
-/obj/marker/map_node/x2,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"Br" = (
-/obj/marker/map_node,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"Ce" = (
-/obj/marker/map_node/x2,
 /turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"Is" = (
-/turf/simulated/wall/metal/shuttle,
-/area/mission/prefab/misc/golem)
-"Kz" = (
-/obj/marker/objective_spawn,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"Lg" = (
+/area/mission/prefab/misc/golem/center)
+"bo" = (
 /obj/structure/interactive/lighting/fixture/tube/station/strong{
 	dir = 1;
 	icon_state = "preview"
 	},
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"Rm" = (
-/obj/structure/interactive/lighting/fixture/tube/station/strong,
-/turf/simulated/floor/tile/shuttle/purple,
-/area/mission/prefab/misc/golem)
-"TP" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
+"bp" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
-"Zm" = (
-/obj/marker/map_node/x3,
-/turf/simulated/floor/tile/shuttle,
-/area/mission/prefab/misc/golem)
-"ZY" = (
+"bq" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
 /turf/simulated/floor/tile/shuttle/purple,
 /area/mission/prefab/misc/golem)
+"br" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bs" = (
+/obj/structure/interactive/storage/trash_pile,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bt" = (
+/obj/structure/interactive/bed/sleeper/medical,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bu" = (
+/obj/structure/interactive/computer/console/medical{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bv" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/medical_hud,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bw" = (
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bx" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"by" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bz" = (
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bA" = (
+/obj/structure/interactive/lighting/fixture/tube/station,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bB" = (
+/obj/structure/interactive/vending/medical,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bC" = (
+/mob/living/simple/bot/medibot,
+/turf/simulated/floor/tile/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bD" = (
+/obj/structure/table/reinforced,
+/obj/item/container/syringe/medipen/mining,
+/obj/item/container/syringe/medipen/mining,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bE" = (
+/obj/structure/shuttle_engine/large{
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bF" = (
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/left)
+"bG" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bH" = (
+/obj/structure/table/reinforced,
+/obj/item/supply_crate/medicine,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bI" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	dir = 1;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/crate/medical,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bJ" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/kit/burn/filled,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bK" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/kit/brute,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/center)
+"bL" = (
+/obj/structure/interactive/vending/medical/basic{
+	dir = 1;
+	icon_state = "wallmed"
+	},
+/turf/simulated/wall/metal/shuttle,
+/area/mission/prefab/misc/golem/center)
+"bM" = (
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/left)
+"bN" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/left)
+"bO" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/purple,
+/area/mission/prefab/misc/golem/left)
+"bP" = (
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bQ" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bR" = (
+/obj/structure/interactive/mining_brace{
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bS" = (
+/obj/structure/interactive/mining_drill,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bT" = (
+/obj/structure/interactive/mining_brace{
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bU" = (
+/obj/structure/table/reinforced,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/obj/item/flare,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bV" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bW" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/head/helmet/welding,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bX" = (
+/obj/structure/interactive/crate/coffin,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
+"bY" = (
+/obj/structure/interactive/door/airlock/shuttle,
+/turf/simulated/floor/tile/shuttle/black,
+/area/mission/prefab/misc/golem/left)
 
 (1,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (2,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (3,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (4,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-Is
-Is
-Is
-Is
-Is
-Is
-Is
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (5,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-Is
-Rm
-qn
-mj
-qn
-Lg
-Is
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aL
+aP
+aZ
+bg
+aZ
+bo
+aL
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (6,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-Is
-ZY
-qn
-qn
-qn
-ZY
-Is
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aL
+aQ
+aZ
+aZ
+aZ
+aQ
+aL
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (7,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-Is
-qx
-ub
-tC
-ub
-qx
-Is
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aL
+aR
+ba
+bb
+ba
+aR
+aL
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (8,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-Is
-qx
-ub
-Kz
-ub
-qx
-Is
-dh
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+aL
+aR
+ba
+bh
+ba
+aR
+aL
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (9,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-dh
-Is
-qx
-ub
-Zm
-ub
-qx
-Is
-dh
-dh
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+aL
+aR
+ba
+bi
+ba
+aR
+aL
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (10,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-gz
-gz
-dh
-dh
-Br
-Is
-TP
-ub
-tC
-ub
-aw
-Is
-Br
-dh
-dh
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(11,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
 aa
 aa
 aa
 aa
 aa
-ar
-Is
-qx
-tC
-tC
-tC
-qx
-Is
-aW
-be
-be
-be
-be
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(12,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-dh
 aa
-ac
-an
 aa
-au
-ay
-Is
-qx
-tC
-tC
-tC
-qx
-Is
-aX
-aY
-be
-bl
-bo
-be
-dh
-pY
-pY
-pY
-pY
-pY
-"}
-(13,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-dh
-Br
-ab
-ad
-an
-aa
-av
-ax
-by
-aK
-bB
-tC
-tC
-qx
-Is
-aY
-aY
-be
-bl
-bp
-bx
-Br
-dh
-pY
-pY
-pY
-pY
-"}
-(14,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-aa
-ae
-an
-aa
-ax
-ax
-Is
-qx
-bB
-Ce
-tC
-qx
-Is
-aY
-aY
-be
-bl
-bq
-be
-dh
-dh
-pY
-pY
-pY
-pY
-"}
-(15,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
 aa
 af
-an
-aa
-ax
-aF
-Is
-mc
-bB
-tC
-tC
-wP
-Is
-aZ
-aY
-be
-bl
-br
-be
-dh
-pY
-pY
-pY
-pY
-pY
-"}
-(16,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-aa
-ag
-ao
-ar
-ay
-ay
-as
-as
-bC
-at
-at
-as
-as
-aY
-aX
-aW
-bm
-bs
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(17,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-aa
-ah
-an
-aa
-ax
-ax
-as
-bz
-bD
-aG
-aG
-aI
-as
-aY
-aY
-be
-bl
-bt
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(18,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-aa
-ai
-an
-aa
-ax
-ax
-as
-bA
-aG
-aO
-aG
-aI
-as
-aX
-aY
-be
-bl
-bu
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(19,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-aa
-aj
-an
-as
-as
-at
-as
+af
+ab
+ab
+ac
 aL
-aG
-aG
-aG
-aR
-as
-at
-as
-as
-bl
-bu
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(20,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-aa
-ak
-ao
-at
-az
-az
-aI
-aI
-aG
-aG
-aG
-aI
 aS
 ba
-bf
-at
-bm
-bv
-be
-gz
-pY
-pY
-pY
-pY
-pY
-"}
-(21,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+bb
+ba
+bp
+aL
+ac
+ab
+ab
 aa
-ae
-ao
-at
-az
-aG
-aG
-aG
-aG
-aG
-aG
-aG
-aG
-aG
-bg
-at
-bm
-bq
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(22,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
 aa
-af
-an
-as
-aA
-aG
-aG
-aG
-aG
-aP
-aG
-aG
-aT
-aG
-bf
-as
-bl
-br
-be
-pY
-pY
-pY
-pY
-pY
-pY
-"}
-(23,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-dh
 aa
-ag
-an
-as
-aB
-aH
-aG
-aG
-aG
-aG
-aG
-aG
-aG
-aH
-bh
-as
-bl
-bs
-be
-dh
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
 "}
-(24,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-dh
-Br
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+ad
+ad
+ad
+ad
+av
+aL
+aR
+bb
+bb
+bb
+aR
+aL
+bx
+bF
+bF
+bF
+bF
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
 ab
 ad
-an
-as
-aC
-aG
-aG
-aM
-aG
-aG
-aG
-aM
-aG
-aG
-aI
-bk
-bl
-bp
-bx
-Br
-dh
-pY
-pY
-pY
-pY
-"}
-(25,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-aa
-al
-ap
-as
-aD
-aG
-aG
-as
-at
-at
-at
-as
-aG
+ag
+ar
+ad
+ay
+aB
+aL
+aR
 bb
-bi
-as
-bn
-bw
-be
-dh
-dh
-pY
-pY
-pY
-pY
-"}
-(26,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+bb
+bb
+aR
+aL
+by
+bz
+bF
+bM
+bP
+bF
+ab
 aa
-al
-ap
-as
-aE
-aE
-aJ
-as
-aG
-aG
-aG
-as
-aU
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ac
+ae
+ah
+ar
+ad
+az
+aA
+aM
+aT
+bc
+bb
+bb
+aR
+aL
+bz
+bz
+bF
+bM
+bQ
+bY
+ac
+ab
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ad
+ai
+ar
+ad
+aA
+aA
+aL
+aR
 bc
 bj
+bb
+aR
+aL
+bz
+bz
+bF
+bM
+bR
+bF
+ab
+ab
+aa
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+aj
+ar
+ad
+aA
+aI
+aL
+aU
+bc
+bb
+bb
+bq
+aL
+bA
+bz
+bF
+bM
+bS
+bF
+ab
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+ak
 as
-bn
-bw
+av
+aB
+aB
+aw
+aw
+bd
+ax
+ax
+aw
+aw
+bz
+by
+bx
+bN
+bT
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+al
+ar
+ad
+aA
+aA
+aw
+aV
 be
-dh
-pY
-pY
-pY
-pY
-pY
+aJ
+aJ
+aN
+aw
+bz
+bz
+bF
+bM
+bU
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+am
+ar
+ad
+aA
+aA
+aw
+aW
+aJ
+bk
+aJ
+aN
+aw
+by
+bz
+bF
+bM
+bV
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+an
+ar
+aw
+aw
+ax
+aw
+aX
+aJ
+aJ
+aJ
+br
+aw
+ax
+aw
+aw
+bM
+bV
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+ao
+as
+ax
+aC
+aC
+aN
+aN
+aJ
+aJ
+aJ
+aN
+bt
+bB
+bG
+ax
+bN
+bW
+bF
+af
+aa
+aa
+aa
+aa
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+ai
+as
+ax
+aC
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+bH
+ax
+bN
+bR
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(22,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+aj
+ar
+aw
+aD
+aJ
+aJ
+aJ
+aJ
+bl
+aJ
+aJ
+bu
+aJ
+bG
+aw
+bM
+bS
+bF
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ad
+ak
+ar
+aw
+aE
+aK
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+aK
+bI
+aw
+bM
+bT
+bF
+ab
+aa
+aa
+aa
+aa
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ac
+ae
+ah
+ar
+aw
+aF
+aJ
+aJ
+aY
+aJ
+aJ
+aJ
+aY
+aJ
+aJ
+aN
+bL
+bM
+bQ
+bY
+ac
+ab
+aa
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ad
+ap
+at
+aw
+aG
+aJ
+aJ
+aw
+ax
+ax
+ax
+aw
+aJ
+bC
+bJ
+aw
+bO
+bX
+bF
+ab
+ab
+aa
+aa
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+ap
+at
+aw
+aH
+aH
+aO
+aw
+aJ
+aJ
+aJ
+aw
+bv
+bD
+bK
+aw
+bO
+bX
+bF
+ab
+aa
+aa
+aa
+aa
+aa
 "}
 (27,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
 aa
 aa
 aa
-as
-as
-as
-as
-as
-aN
-aH
-aQ
-as
-as
-as
-as
-as
-be
-be
-be
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+ad
+ad
+ad
+aw
+aw
+aw
+aw
+aw
+bf
+aK
+bn
+aw
+aw
+aw
+aw
+aw
+bF
+bF
+bF
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (28,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
 aa
-am
+aa
+aa
+aa
+aa
+aa
+aa
+ad
 aq
-am
+au
 aq
-am
+au
 aq
-as
-aG
-aG
-aG
-as
-aV
-bd
-aV
-bd
-aV
-bd
-be
-pY
-pY
-pY
-pY
-pY
-pY
+au
+aw
+aJ
+aJ
+aJ
+aw
+bw
+bE
+bw
+bE
+bw
+bE
+bF
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (29,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
 aa
-am
-am
-am
-am
-am
-am
-as
-at
-at
-at
-as
-aV
-aV
-aV
-aV
-aV
-aV
-be
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+aq
+aq
+aq
+aq
+aq
+aq
+aw
+ax
+ax
+ax
+aw
+bw
+bw
+bw
+bw
+bw
+bw
+bF
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (30,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-dh
-dh
-dh
-dh
-iq
-dh
-dh
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+bs
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (31,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-dh
-Bo
-dh
-dh
-dh
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+bm
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (32,1,1) = {"
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-dh
-dh
-dh
-dh
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
-pY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}

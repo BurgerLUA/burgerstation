@@ -99,7 +99,10 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/stored_sneak_power = 0
 
-	var/resist_grabs = TRUE
+	var/resist_grabs = 1
+	//0 = do not resist grabs
+	//1 = resist grabs by enemies
+	//2 = resist grabs by everyone
 
 	var/retaliate = TRUE //Should we attack when getting hit?
 	var/aggression = 2 //Thanks elder scrolls.
@@ -123,6 +126,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/roaming_direction = 0x0 // The direction the mob is currently romaing.
 
 	var/guard = FALSE //Set to true if the mob constantly tries to guard the current location.
+
+	var/enable_loc_safety = TRUE //Set to true to tell the AI to move in a random direction if it's not on a turf (usually in a crate or a locker).
 
 	var/delete_on_no_path = FALSE
 
@@ -154,15 +159,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/last_movement_proc = "none"
 
 /ai/Destroy()
-
-	set_active(FALSE)
-
-	var/turf/T = get_turf(owner)
-	if(T)
-		remove_from_active_list(T.z)
-		remove_from_inactive_list(T.z)
-	else
-		log_error("Warning: [src.get_debug_name()] couldn't be cleared properly as it the owner ([owner ? owner.get_debug_name() : "NULL"]) had a null turf.")
 
 	if(owner) owner.ai = null
 	owner = null

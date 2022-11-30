@@ -147,8 +147,8 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
-	if(attacker.is_player_controlled()) //PvP is always 1.
-		return 1
+	if(attacker.is_player_controlled()) //PvP is always 0.5.
+		return 0.5
 
 	return difficulty_to_damage_mul[src.get_difficulty()]
 
@@ -248,39 +248,6 @@ var/global/list/difficulty_to_damage_mul = list(
 		if(dist > VIEW_RANGE + ZOOM_RANGE)
 			continue
 		A.set_active(TRUE)
-
-
-/mob/living/advanced/player/post_move(var/atom/old_loc)
-
-	. = ..()
-
-	if(.)
-
-		if(!dead && ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
-			var/area/A = get_area(src)
-			if(istype(A,/area/burgerstation))
-				var/area/A2 = get_area(old_loc)
-				if(!istype(A2,/area/burgerstation))
-					last_autosave = world.time //Safety
-					var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
-					mobdata?.save_character(src)
-
-		if(dialogue_target_id)
-			dialogue_target_id = null
-			close_menu(src,/menu/dialogue/)
-
-		if(active_structure && get_dist(src,active_structure) > 1)
-			set_structure_unactive()
-
-		if(active_device && get_dist(src,active_device) > 1)
-			set_device_unactive()
-
-		ai_steps++
-
-		if(src.loc && (ai_steps >= (VIEW_RANGE + ZOOM_RANGE) || (old_loc && old_loc.z != src.loc.z)))
-			var/turf/T = get_turf(src.loc)
-			wake_chunk(T.z)
-			ai_steps = 0
 
 /mob/living/advanced/player/proc/prestige(var/skill_id)
 	if(!prestige_count[skill_id])

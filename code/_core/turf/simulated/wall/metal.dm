@@ -26,7 +26,7 @@
 
 	create_destruction(src,list(/obj/item/material/sheet/ = 1),material_id)
 
-	return ..()
+	. = ..()
 
 /*
 /turf/simulated/wall/metal/rusted
@@ -164,12 +164,17 @@
 
 	plane = PLANE_SHUTTLE
 
-	color = "#FFFFFF"
+	color = "#AAAAAA"
 	map_color = "#AAAAAA"
 
 
 /turf/simulated/wall/metal/shuttle/off_white
 	color = "#A2A6AA"
+	map_color = "#A2A6AA"
+
+/turf/simulated/wall/metal/shuttle/dark
+	color = COLOR_GREY_DARK
+	map_color = COLOR_GREY_DARK
 
 /turf/simulated/wall/metal/circuit
 	name = "techno steel wall"
@@ -182,3 +187,7 @@
 	color = COLOR_STEEL
 	material_id = /material/steel
 	health_base = 1000
+
+/turf/simulated/wall/metal/circuit/indestructable
+	health = null
+	destruction_turf = null

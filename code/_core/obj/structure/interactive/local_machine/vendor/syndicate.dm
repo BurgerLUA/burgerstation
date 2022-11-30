@@ -50,7 +50,7 @@
 		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/sword/combat_knife,
 		/obj/item/weapon/melee/energy/sword/red,
-		/obj/item/weapon/melee/energy/shield/red,
+		/obj/item/weapon/melee/energy/shield,
 		/obj/item/tempering/quality/ranged/lesser,
 		/obj/item/tempering/quality/greater,
 		/obj/item/grenade/fuse/fragmentation
@@ -61,22 +61,13 @@
 	icon_state = "boozeomat"
 
 	stored_types = list(
-		/obj/item/storage/kit/filled,
-		/obj/item/storage/kit/brute/filled,
-		/obj/item/storage/kit/burn/filled,
-		/obj/item/storage/kit/toxin/filled,
-		/obj/item/storage/kit/ai3/filled,
+		/obj/item/analyzer/health/syndicate,
+		/obj/item/defib,
 		/obj/item/storage/kit/syndicate/filled,
-		/obj/item/container/simple/beaker/bottle/epinephrine,
-		/obj/item/container/simple/beaker/bottle/morphine,
-		/obj/item/container/simple/beaker/bottle/calomel,
-		/obj/item/container/syringe/hypodermic,
-		/obj/item/container/blood_pack/full/synthblood,
-		/obj/item/container/healing/nanopaste,
-		/obj/item/container/blood_pack/full/rad_be_gone,
-		/obj/item/storage/pillbottle/assprin,
-		/obj/item/container/syringe/hypodermic/hypospray
-
+		/obj/item/storage/kit/small/syndicate/filled,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/reptile,
+		/obj/item/container/blood_pack/full/synthblood
 	)
 	markup = 0.75
 
@@ -92,14 +83,16 @@
 		/obj/item/attachment/barrel/compensator,
 		/obj/item/attachment/barrel/extended,
 		/obj/item/attachment/barrel/gyro,
-		/obj/item/attachment/barrel/laser_charger,
 		/obj/item/attachment/barrel/suppressor,
+
 		/obj/item/attachment/sight/laser_sight,
 		/obj/item/attachment/sight/quickfire_adapter,
 		/obj/item/attachment/sight/red_dot,
 		/obj/item/attachment/sight/scope,
+		/obj/item/attachment/sight/scope/medium,
 		/obj/item/attachment/sight/scope/large,
-		/obj/item/attachment/sight/targeting_computer,
+		/obj/item/attachment/sight/scope/massive,
+
 		/obj/item/attachment/undermount/angled_grip,
 		/obj/item/attachment/undermount/bipod,
 		/obj/item/attachment/undermount/burst_adapter,

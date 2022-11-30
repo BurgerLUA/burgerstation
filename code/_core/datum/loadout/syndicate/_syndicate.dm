@@ -87,7 +87,7 @@
 		/obj/item/clothing/overwear/hardsuit/syndie,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/weapon/melee/sword/combat_knife,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
 		/obj/item/magazine/smg_45,
@@ -166,53 +166,6 @@
 		/obj/item/grenade/fuse/fragmentation,
 		/obj/item/weapon/melee/energy/sword/red
 	)
-
-
-
-
-
-
-/loadout/syndicate/player_antagonist
-	spawning_items = list(
-		/obj/item/clothing/ears/headset/syndicate,
-		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/underbottom/underwear/boxers,
-		/obj/item/clothing/feet/socks/ankle,
-		/obj/item/clothing/feet/socks/ankle,
-		/obj/item/clothing/glasses/sun/security/red,
-		/obj/item/clothing/head/hat/beret/armored/syndicate,
-		/obj/item/clothing/mask/gas/syndicate,
-		/obj/item/clothing/overwear/armor/bulletproof,
-		/obj/item/clothing/overwear/coat/vest/syndicate,
-		/obj/item/clothing/neck/cloak/red,
-		/obj/item/clothing/hands/gloves/colored/padded/black,
-		/obj/item/clothing/hands/gloves/colored/padded/black/left,
-		/obj/item/clothing/feet/shoes/black_boots,
-		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/storage/pouch/triple/black/,
-		/obj/item/storage/pouch/triple/black/,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
-		/obj/item/magazine/smg_45,
-		/obj/item/magazine/smg_45,
-		/obj/item/magazine/smg_45,
-		/obj/item/magazine/smg_45,
-		/obj/item/magazine/smg_45,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/weapon/melee/sword/combat_knife,
-		/obj/item/clothing/back/storage/dufflebag/syndicate,
-		/obj/item/weapon/melee/torch/flashlight/maglight,
-		/obj/item/pinpointer/crew/syndicate,
-		/obj/item/container/edible/package/junkfood/syndicate,
-		/obj/item/container/simple/can/dr_gibb,
-		/obj/item/container/simple/beaker/flask/engraved,
-		/obj/item/currency/telecrystals{amount=50},
-		/obj/item/fulton_pack
-	)
-
 
 /loadout/syndicate/scientist
 	spawning_items = list(
