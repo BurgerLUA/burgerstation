@@ -43,13 +43,13 @@ var/global/enable_friendly_fire = FALSE
 		if(!T)
 			return FALSE
 		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
-			return iff_attacker == "NanoTrasen"
+			return loyalty_attacker == "NanoTrasen"
 		var/area/A = T.loc
 		if(A)
 			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
-				return iff_attacker == "NanoTrasen"
+				return loyalty_attacker == "NanoTrasen"
 			if(A.flags_area & FLAG_AREA_NO_LOYALTY)
-				return iff_attacker == "NanoTrasen"
+				return loyalty_attacker == "NanoTrasen"
 
 	if(loyalty_attacker != victim.loyalty_tag || loyalty_attacker == null) //Unfriendly.
 		return hostile
