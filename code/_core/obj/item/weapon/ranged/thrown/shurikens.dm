@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/thrown/kitchen_shuriken
-	name = "shuriken"
+	name = "kitchen shuriken"
 	icon = 'icons/obj/item/weapons/ranged/thrown/kitchen_shuriken.dmi'
 	desc = "Just like my japanese animes?"
 	desc_extended = "You cant just tape four knives together and call them a shuriken."

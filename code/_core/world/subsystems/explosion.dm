@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(explosion)
 	tick_rate = DECISECONDS_TO_TICKS(1)
 
 	var/list/obj/explosion_process/active_explosions = list()
+	var/list/obj/fire_process/active_fires = list()
 
 	var/list/atom/damage_to_process = list()
 
@@ -47,13 +48,21 @@ SUBSYSTEM_DEF(explosion)
 		explosion_ticks = 0
 
 	for(var/k in active_explosions)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/obj/explosion_process/EP = k
 		EP.process()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+
+	for(var/k in active_fires)
+		var/obj/fire_process/FP = k
+		FP.process()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 
 /proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/velocity_dir=0x0,var/multiplier=1)
+
+	if(desired_range <= 0)
+		return FALSE
 
 	var/desired_power = desired_range ** 3
 
@@ -80,3 +89,38 @@ SUBSYSTEM_DEF(explosion)
 		FINALIZE(EP)
 	else
 		EP.power += desired_power
+
+
+
+/proc/emp(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+
+	desired_range = min(desired_range,VIEW_RANGE*2)
+
+	if(desired_range <= 0)
+		return FALSE
+
+	new /obj/effect/temp/emp_pulse(desired_turf)
+
+	for(var/turf/T in range(desired_range,desired_turf))
+		var/magnitude = (desired_range - get_dist(desired_turf,T))*multiplier
+		if(T.act_emp(desired_owner,desired_source,desired_turf,magnitude,desired_loyalty_tag))
+			new /obj/effect/temp/emp_sparkle(T)
+		CHECK_TICK_SAFE(50,FPS_SERVER)
+
+
+
+/proc/firebomb(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+
+	if(desired_range <= 0)
+		return FALSE
+
+	var/obj/fire_process/FP = new(desired_turf)
+	FP.fire_power = desired_range
+	FP.initial_fire_power = desired_range
+	FP.loyalty_tag = desired_loyalty_tag
+	FP.multiplier = multiplier
+	FP.momentum = -1
+
+
+
+

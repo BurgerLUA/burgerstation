@@ -286,11 +286,16 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
+	if(owner != src)
+		if(!allow_hostile_action(desired_loyalty_tag,src))
+			return FALSE
+
 	. = ..()
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
-		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+		if(O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE
 
 /mob/living/advanced/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)

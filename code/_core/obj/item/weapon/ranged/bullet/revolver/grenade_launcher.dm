@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher
-	name = "\improper Grenade Thumper"
+	name = "\improper 40mm Grenade Launcher"
 	desc = "Blooper"
 	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
@@ -11,7 +11,7 @@
 	tier = 1
 	bypass_balance_check = TRUE
 
-	shoot_delay = 20
+	shoot_delay = 10
 
 	automatic = TRUE
 
@@ -87,7 +87,7 @@
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel
-	name = "\improper revolving grenade launcher"
+	name = "40mm revolving grenade launcher"
 	desc = "Thoomp! Thoomp! Thoomp!"
 	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher_multi.dmi'
@@ -103,3 +103,16 @@
 	automatic = FALSE
 
 	bullet_count_max = 4
+
+
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen
+	name = "\improper 40mm Grenade Thumper"
+	desc = "Thumper."
+	desc_extended = "A modern single capacity grenade launcher for a modern corporate army."
+	icon = 'icons/obj/item/weapons/ranged/grenade_launcher_nt.dmi'
+	icon_state = "inventory"
+	value = 2400
+
+	shoot_delay = 20
+
+	company_type = "NanoTrasen"

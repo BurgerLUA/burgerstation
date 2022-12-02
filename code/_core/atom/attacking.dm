@@ -159,7 +159,7 @@
 /atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 0.5
 
-/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damage_type/damage_type,var/params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
+/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
 	return src
 
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list()) //Which object should the attacker damage with?

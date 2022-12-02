@@ -2,9 +2,31 @@
 	category = "Explosives"
 	results = list()
 
+/reagent_recipe/explosion/emp
+	name = "Electro-Magnetic Pulse"
+	desc = "Disables electronics."
+
+	required_reagents = list(
+		/reagent/iron = 1,
+		/reagent/radioactive/uranium = 1
+	)
+
+	results = list()
+
+/reagent_recipe/explosion/emp/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
+
+	var/tag_to_use
+	if(is_living(caller))
+		var/mob/living/L = caller
+		tag_to_use = L.loyalty_tag
+
+	emp(get_turf(container.owner),magnitude/20,caller,container.owner,tag_to_use)
+
+	return TRUE
+
+
 /reagent_recipe/explosion/holy_water_potassium
 	name = "Holy Water-Potassium Explosion"
-	category = "Explosions"
 	desc = "hallelujah!"
 
 	required_reagents = list(
@@ -24,7 +46,7 @@
 		var/obj/item/I = container.owner
 		I.drop_item(explosion_location)
 
-	var/explosion_power = round( ((magnitude*2 ** 0.3) * 0.5) + magnitude*2*0.0125, 0.01)
+	var/explosion_power = round( ((magnitude*2 ** 0.3) * 0.5) + magnitude*2*0.025, 0.01)
 
 	var/tag_to_use
 	if(is_living(caller))
@@ -48,7 +70,6 @@
 /reagent_recipe/explosion/water_potassium
 	name = "Water-Potassium Explosion"
 	desc = "a grayshirt's favorite recipe."
-	category = "Explosions"
 
 	required_reagents = list(
 		/reagent/nutrition/water = 1,
@@ -85,7 +106,6 @@
 
 /reagent_recipe/explosion/smoke
 	name = "Sugar-Phosphorous-Potassium Smoke"
-	category = "Explosions"
 	desc = "PROBABLY a warcrime!"
 
 	required_reagents = list(

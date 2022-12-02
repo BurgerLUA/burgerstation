@@ -528,7 +528,8 @@
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+		if(M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 

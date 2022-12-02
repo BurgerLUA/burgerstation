@@ -337,6 +337,17 @@
 
 	return ..()
 
+
+
+/turf/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+
+	. = ..()
+
+	for(var/k in src.contents)
+		var/atom/movable/M = k
+		if(M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE
+
 /turf/proc/setup_turf_light(var/sunlight_freq)
 	return FALSE
 

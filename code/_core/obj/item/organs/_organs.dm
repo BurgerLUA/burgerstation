@@ -487,4 +487,5 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 	. = ..()
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+		if(I.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE

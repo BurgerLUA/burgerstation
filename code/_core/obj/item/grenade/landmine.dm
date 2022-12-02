@@ -14,6 +14,7 @@
 	name = "proximity explosive landmine"
 	desc = "Kaboom!"
 	desc_extended = "A prebuilt proximity explosive landmine. The labeling indicates that the proximity delay is set to 5 seconds."
+	value = 50
 
 /obj/item/grenade/landmine/proximity/explosive/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/water(src)

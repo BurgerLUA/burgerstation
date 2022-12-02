@@ -3,7 +3,7 @@
 	plane = PLANE_PROJECTILE
 	layer = LAYER_PROJECTILE
 
-	damage_type = null //Default is /damage_type/error. Sometimes projectiles don't need to do damage.
+	damage_type = null //Default is /damagetype/error. Sometimes projectiles don't need to do damage.
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 

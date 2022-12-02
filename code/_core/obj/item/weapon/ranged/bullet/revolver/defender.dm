@@ -1,16 +1,16 @@
-/obj/item/weapon/ranged/bullet/revolver/detective
-	name = "\improper .38 Special revolver"
-	desc = "The detective's trusty sidearm. Uses .38 revolver rounds."
-	desc_extended = "Private Detectives still carry snub-nose revolvers due to them packing a bigger punch in a much smaller guns. Can be useful in a pinch."
-	icon = 'icons/obj/item/weapons/ranged/revolver/38.dmi'
+/obj/item/weapon/ranged/bullet/revolver/defender
+	name = "\improper .38 Special Pocket Defender"
+	desc = "This ain't no old lady's purse gun."
+	desc_extended = "A modern revolver using ancient revolver designs. Uses .38 special rounds."
+	icon = 'icons/obj/item/weapons/ranged/revolver/pocket.dmi'
 	icon_state = "inventory"
-	value = 300
+	value = 400
 
-	company_type = "Solarian"
+	company_type = "NanoTrasen"
 
 	tier = 1
 
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = FALSE
 
@@ -19,7 +19,7 @@
 	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
 
 	size = SIZE_1
-	weight = 5
+	weight = 8
 
 	bullet_length_min = 10
 	bullet_length_best = 29
@@ -29,10 +29,11 @@
 	bullet_diameter_best = 9
 	bullet_diameter_max = 9.5
 
-	heat_max = 0.05
+	heat_max = 0.075
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -48,29 +49,27 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-
-
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 28 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_x = 27 - 16
+	attachment_barrel_offset_y = 20 - 16
 
-	attachment_sight_offset_x = 17 - 16
-	attachment_sight_offset_y = 19 - 16
+	attachment_sight_offset_x = 14 - 16
+	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 26 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 24 - 16
+	attachment_undermount_offset_y = 19 - 16
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
-/obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread()
-	return 0.005
+/obj/item/weapon/ranged/bullet/revolver/defender/get_static_spread()
+	return 0
 
-/obj/item/weapon/ranged/bullet/revolver/detective/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/revolver/defender/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))

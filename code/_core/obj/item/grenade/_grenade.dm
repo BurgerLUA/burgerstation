@@ -17,7 +17,7 @@
 
 	var/open = TRUE
 
-	value = 15
+	value = -1
 
 	queue_delete_immune = TRUE
 
@@ -293,50 +293,3 @@
 	update_sprite()
 
 	. = ..()
-
-/obj/item/grenade/timed/Generate()
-	var/obj/item/device/timer/T = new(src)
-	T.time_set = 30
-	stored_trigger = T
-	open = FALSE
-	return ..()
-
-/obj/item/grenade/timed/explosive
-	name = "timed explosive grenade"
-	desc = "Kaboom!"
-	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/explosive/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/water(src)
-	stored_containers += new /obj/item/container/simple/beaker/potassium(src)
-	return ..()
-
-/obj/item/grenade/timed/explosive_large
-	name = "timed large explosive grenade"
-	desc = "Kaboom!"
-	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds. This one has a larger payload."
-
-/obj/item/grenade/timed/explosive_large/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/large/water(src)
-	stored_containers += new /obj/item/container/simple/beaker/large/potassium(src)
-	return ..()
-
-/obj/item/grenade/timed/smoke/
-	name = "timed smoke grenade"
-	desc = "Kaboomish!"
-	desc_extended = "A prebuilt timed smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/smoke/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/smoke_01(src)
-	stored_containers += new /obj/item/container/simple/beaker/smoke_02(src)
-	return ..()
-
-/obj/item/grenade/timed/lube_smoke
-	name = "timed lube smoke grenade"
-	desc = "Kaboomish!"
-	desc_extended = "A prebuilt timed lube smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/lube_smoke/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_01(src)
-	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_02(src)
-	return ..()

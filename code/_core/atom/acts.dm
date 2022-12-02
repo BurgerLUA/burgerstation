@@ -14,5 +14,9 @@
 
 
 /atom/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
-	if(health) health.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
-	return TRUE
+
+	if(!health)
+		return FALSE
+
+	return health.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)\
+

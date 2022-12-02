@@ -60,6 +60,14 @@
 	reagents.add_reagent(/reagent/fuel/tnt,reagents.volume_max)
 	return ..()
 
+/obj/item/container/simple/beaker/iron/Generate()
+	reagents.add_reagent(/reagent/iron,reagents.volume_max)
+	return ..()
+
+/obj/item/container/simple/beaker/uranium/Generate()
+	reagents.add_reagent(/reagent/radioactive/uranium,reagents.volume_max)
+	return ..()
+
 /obj/item/container/simple/beaker/tnt_fragments/Generate()
 	reagents.add_reagent(/reagent/fuel/tnt,20)
 	reagents.add_reagent(/reagent/iron,40)

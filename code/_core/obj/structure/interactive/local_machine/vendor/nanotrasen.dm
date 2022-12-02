@@ -81,25 +81,26 @@
 	icon_state_panel = null
 
 	stored_types = list(
+		/obj/item/weapon/melee/energy/stunbaton,
+
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
+		/obj/item/weapon/ranged/bullet/revolver/defender,
 
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
-		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
+		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
-		/obj/item/weapon/ranged/energy/hybrid/carbine
+
+		/obj/item/grenade/timed/explosive
 	)
 
+//Security
 /obj/structure/interactive/vending/nanotrasen/gundrobe/ops
 	name = "NT ops gun vendor"
 	icon_state = "gundrobe_ops"
@@ -110,27 +111,69 @@
 	icon_state_panel = null
 
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/magazine/pistol/tranq,
+		/obj/item/weapon/unarmed/powerfist,
+
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer,
 
-		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
+		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
+		/obj/item/grenade/timed/explosive_large
+	)
 
+//Engineering
+/obj/structure/interactive/vending/nanotrasen/gundrobe/engineering
+	icon_state = "gundrobe_engineering"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+	stored_types = list(
+
+		/obj/item/weapon/melee/axe/fireaxe,
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten, //Really an SMG.
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
+
+		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
+		/obj/item/weapon/ranged/bullet/revolver/rocket,
+		/obj/item/clothing/back/flamethrower,
+
+		/obj/item/deployable/mob/sentry,
+		/obj/item/deployable/barricade,
+
+		/obj/item/grenade/landmine/proximity/explosive
+	)
+
+//Science
+/obj/structure/interactive/vending/nanotrasen/gundrobe/science
+	icon_state = "gundrobe_science"
+
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+	stored_types = list(
+		/obj/item/weapon/melee/energy/sword/katana,
+		/obj/item/weapon/ranged/bullet/magazine/smg/smart,
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,
 		/obj/item/weapon/ranged/energy/freezegun,
+		/obj/item/weapon/ranged/energy/hybrid/carbine,
+		/obj/item/weapon/ranged/energy/iongun,
+		/obj/item/weapon/ranged/energy/sniper,
 
-		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
-		/obj/item/deployable/mob/sentry,
-		/obj/item/deployable/mountable/browning
+		/obj/item/grenade/timed/emp
 	)
 
 /obj/structure/interactive/vending/nanotrasen/gundrobe/dip
@@ -209,16 +252,6 @@
 	icon_state_off = null
 	icon_state_mask = null
 	icon_state_panel = null
-
-
-/obj/structure/interactive/vending/nanotrasen/gundrobe/engineering
-	icon_state = "gundrobe_engineering"
-
-	icon_state_broken = null
-	icon_state_off = null
-	icon_state_mask = null
-	icon_state_panel = null
-
 
 /obj/structure/interactive/vending/nanotrasen/attachment
 	name = "attachment vendor"

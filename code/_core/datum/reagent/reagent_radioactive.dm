@@ -22,3 +22,14 @@
 	liquid = -0.25
 
 	particle_size = 0.7
+
+/reagent/radioactive/uranium
+	name = "uranium"
+	desc = "Radioactive uranium."
+	color = "#999589"
+
+	flavor = "the inside of a reactor"
+
+	liquid = -0.25
+
+	particle_size = 0.7

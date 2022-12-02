@@ -700,6 +700,15 @@
 	. = ..()
 	PROCESS_LIVING_FORCE(src)
 
+/mob/living/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+
+	if(owner != src)
+		if(!allow_hostile_action(desired_loyalty_tag,src))
+			return FALSE
+
+	. = ..()
+
+
 /mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(owner != src)
