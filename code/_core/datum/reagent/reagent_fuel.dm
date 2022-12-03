@@ -8,6 +8,7 @@
 	var/explosion_strength_per_unit = 0
 	var/flash_strength_per_unit = 0
 	var/bang_strength_per_unit = 0
+	var/fire_strength_per_unit = 0
 
 	blood_toxicity_multiplier = 5
 
@@ -30,22 +31,30 @@
 
 	if(flash_strength_per_unit > 0)
 		var/flash_range = min(VIEW_RANGE*2,volume_amount*flash_strength_per_unit)
-		for(var/mob/living/L in viewers(flash_range,T))
-			var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
-			var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
-			L.flash(duration)
+		if(flash_range >= 2)
+			for(var/mob/living/L in viewers(flash_range,T))
+				var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
+				var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
+				L.flash(duration)
 
 	if(bang_strength_per_unit > 0)
 		var/bang_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)
-		var/list/hearing = list()
-		for(var/mob/living/L in hearers(bang_range,T))
-			var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
-			var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
-			L.flash(duration)
-			L.bang(duration*2)
-			hearing += L
-		play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=bang_range*0.5,range_max=bang_range*2,channel=SOUND_CHANNEL_FLASHBANG)
-		play_sound_global('sound/effects/flashring.ogg',hearers=hearing,volume=75,channel=SOUND_CHANNEL_FLASHBANG)
+		if(bang_range >= 2)
+			var/list/hearing = list()
+			for(var/mob/living/L in hearers(bang_range,T))
+				var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
+				var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
+				L.flash(duration)
+				L.bang(duration*2)
+				hearing += L
+			play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=bang_range*0.5,range_max=bang_range*2,channel=SOUND_CHANNEL_FLASHBANG)
+			play_sound_global('sound/effects/flashring.ogg',hearers=hearing,volume=75,channel=SOUND_CHANNEL_FLASHBANG)
+
+	if(fire_strength_per_unit > 0)
+		var/fire_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)
+		if(fire_range >= 2)
+			firebomb(T,fire_range,owner,source,desired_loyalty_tag)
+			play_sound('sound/effects/firebomb.ogg',T)
 
 	. = ..()
 
@@ -73,6 +82,7 @@
 	particle_size = 0.25
 
 	explosion_strength_per_unit = 0.03
+	fire_strength_per_unit = 0.03
 
 /reagent/fuel/oil/crude
 	name = "Crude Oil"
@@ -87,6 +97,7 @@
 	heated_reagent_mul = 0.01
 
 	explosion_strength_per_unit = 0.02
+	fire_strength_per_unit = 0.02
 
 /reagent/fuel/oil/carbon
 	name = "Carbonized Oil"
@@ -101,6 +112,7 @@
 	heated_reagent_mul = 0.01
 
 	explosion_strength_per_unit = 0.01
+	fire_strength_per_unit = 0.02
 
 /reagent/fuel/welding
 	name = "Welding Fuel"
@@ -110,9 +122,10 @@
 	particle_size = 0.3
 
 	explosion_strength_per_unit = 0.06
+	fire_strength_per_unit = 0.1
 
 /reagent/fuel/hydrogen
-	name = "Solid Hydrogen"
+	name = "Liquid Hydrogen"
 	color = "#7F0000"
 	alpha = 255
 
@@ -121,15 +134,29 @@
 	particle_size = 0.75
 
 	explosion_strength_per_unit = 0.1
+	fire_strength_per_unit = 0.1
+
+/reagent/fuel/hydrogen_peroxide
+	name = "Hydrogen Peroxide"
+	color = "#FFEFEF"
+	alpha = 100
+
+	value = 2
+
+	particle_size = 0.8
+
+	explosion_strength_per_unit = 0.2
+	fire_strength_per_unit = 0.3
 
 /reagent/fuel/phoron
-	name = "Solid Phoron"
+	name = "Liquid Phoron"
 	color = "#FF00DC"
 	alpha = 255
 
 	particle_size = 1
 
 	explosion_strength_per_unit = 0.3
+	fire_strength_per_unit = 0.6
 
 /reagent/fuel/acetone
 	name = "Acetone"
@@ -139,6 +166,7 @@
 	particle_size = 0.1
 
 	explosion_strength_per_unit = 0.02
+	fire_strength_per_unit = 0.01
 
 /reagent/fuel/diethylamine
 	name = "Diethylamine"
@@ -147,6 +175,7 @@
 	particle_size = 0.75
 
 	explosion_strength_per_unit = 0.06
+	fire_strength_per_unit = 0.03
 
 /reagent/fuel/tnt
 	name = "Trinitrotoluene"

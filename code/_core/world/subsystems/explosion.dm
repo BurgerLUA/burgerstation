@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(explosion)
 
 /proc/emp(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
 
-	desired_range = min(desired_range,VIEW_RANGE*2)
+	desired_range = min(desired_range,VIEW_RANGE)
 
 	if(desired_range <= 0)
 		return FALSE
@@ -115,12 +115,12 @@ SUBSYSTEM_DEF(explosion)
 		return FALSE
 
 	var/obj/fire_process/FP = new(desired_turf)
-	FP.fire_power = desired_range
-	FP.initial_fire_power = desired_range
+	FP.fire_power = desired_range*2
+	FP.initial_fire_power = desired_range*2
 	FP.loyalty_tag = desired_loyalty_tag
 	FP.multiplier = multiplier
-	FP.momentum = -1
+	FP.momentum = NORTH | EAST | SOUTH | WEST
+	FP.source = desired_owner
 
-
-
+	return TRUE
 

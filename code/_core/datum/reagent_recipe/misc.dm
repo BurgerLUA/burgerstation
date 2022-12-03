@@ -169,7 +169,7 @@
 	)
 
 	results = list(
-		/reagent/hydrogen_peroxide = 3
+		/reagent/fuel/hydrogen_peroxide = 3
 	)
 
 

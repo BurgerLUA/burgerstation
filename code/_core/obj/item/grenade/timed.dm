@@ -3,6 +3,7 @@
 	icon_state = "grenade"
 
 	var/marker_color = "#FFFFFF"
+	var/paint_color
 
 /obj/item/grenade/timed/update_icon()
 
@@ -19,6 +20,17 @@
 /obj/item/grenade/timed/update_overlays()
 
 	. = ..()
+
+	if(!open && paint_color)
+		var/image/I = new/image(icon,null)
+		if(spent)
+			I.icon_state = "[initial(icon_state)]_spent_paint"
+		else
+			I.icon_state = "[initial(icon_state)]_paint"
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
+		I.color = paint_color
+		I.blend_mode = BLEND_MULTIPLY
+		add_overlay(I)
 
 	if(!spent && !open)
 		var/image/I = new/image(icon,"[initial(icon_state)]_marking")
@@ -87,7 +99,7 @@
 	name = "timed EMP grenade"
 	desc = "Kaboomish!"
 	desc_extended = "A prebuilt timed EMP grenade. The labeling indicates that the fuse is set to 3 seconds."
-
+	icon_state = "grenade_large"
 	marker_color = COLOR_CYAN
 
 /obj/item/grenade/timed/emp/Generate()
@@ -95,3 +107,16 @@
 	stored_containers += new /obj/item/container/simple/beaker/uranium(src)
 	return ..()
 
+
+/obj/item/grenade/timed/incendiary
+	name = "timed incendiary grenade"
+	desc = "Kaboomish!"
+	desc_extended = "A prebuilt timed incendiary grenade. The labeling indicates that the fuse is set to 3 seconds."
+
+	paint_color = COLOR_RED
+	marker_color = COLOR_ORANGE
+
+/obj/item/grenade/timed/incendiary/Generate()
+	stored_containers += new /obj/item/container/simple/beaker/oxygen(src)
+	stored_containers += new /obj/item/container/simple/beaker/phoron(src)
+	return ..()

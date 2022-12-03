@@ -340,9 +340,3 @@
 
 	liquid = -0.5
 
-/reagent/hydrogen_peroxide
-	name = "hydrogen peroxide"
-	color = "#FFFFFF"
-
-	alpha = 100
-
