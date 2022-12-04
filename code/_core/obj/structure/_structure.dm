@@ -34,7 +34,10 @@
 
 	var/queued_smoothing = FALSE
 
+	var/creator_ckey //Who created this structure.
+
 /obj/structure/Destroy()
+
 	if(corner_icons && SSsmoothing.initialized)
 		SSsmoothing.queue_update_edges(get_turf(src),FALSE)
 	. = ..()
@@ -171,9 +174,12 @@
 
 
 /obj/structure/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-	var/area/A = get_area(src)
-	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
-		return FALSE
+
+	if(!creator_ckey)
+		var/area/A = get_area(src)
+		if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
+			return FALSE
+
 	return ..()
 
 

@@ -186,7 +186,6 @@
 	if(fire_mod >= 0.25)
 		var/fire_power = round( (( (magnitude*fire_mod) ** 0.3) * 0.5) + magnitude*fire_mod*0.1, 0.01)
 		firebomb(explosion_location,fire_power,caller,container.owner,tag_to_use)
-		play_sound('sound/effects/firebomb.ogg',explosion_location)
 
 	smoke(
 		explosion_location,

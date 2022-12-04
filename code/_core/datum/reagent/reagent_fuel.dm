@@ -54,7 +54,6 @@
 		var/fire_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)
 		if(fire_range >= 2)
 			firebomb(T,fire_range,owner,source,desired_loyalty_tag)
-			play_sound('sound/effects/firebomb.ogg',T)
 
 	. = ..()
 

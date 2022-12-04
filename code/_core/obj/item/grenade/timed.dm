@@ -29,7 +29,6 @@
 			I.icon_state = "[initial(icon_state)]_paint"
 		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.color = paint_color
-		I.blend_mode = BLEND_MULTIPLY
 		add_overlay(I)
 
 	if(!spent && !open)
@@ -120,3 +119,62 @@
 	stored_containers += new /obj/item/container/simple/beaker/oxygen(src)
 	stored_containers += new /obj/item/container/simple/beaker/phoron(src)
 	return ..()
+
+/obj/item/grenade/timed/barrier
+	name = "barrier grenade"
+	desc_extended = "A special prebuilt grenade storing a robust inflatable barrier. Note that the grenade cannot be used in certain areas. The labeling indicates that the fuse is set to 3 seconds."
+	paint_color = COLOR_GREY_DARK
+	marker_color = COLOR_RED
+	value = 400
+
+/obj/item/grenade/timed/barrier/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
+			caller.to_chat(span("warning","\The [src.name] has nothing to unscrew!"))
+			return TRUE
+
+	. = ..()
+
+/obj/item/grenade/timed/barrier/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
+	var/area/A = T.loc
+
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
+		visible_message(span("warning","\The [src.name] fails to deploy!"))
+		return FALSE
+
+	if(T.has_dense_atom)
+
+		var/list/good_turfs = list()
+		for(var/d in DIRECTIONS_ALL)
+			var/turf/DT = get_step(T,d)
+			if(!DT.is_safe_move())
+				continue
+			if(DT.has_dense_atom)
+				continue
+			good_turfs += DT
+
+		if(!good_turfs)
+			visible_message(span("warning","\The [src.name] fails to deploy!"))
+			return .
+
+		for(var/k in T.contents)
+			var/atom/movable/M = k
+			if(!M.density)
+				continue
+			if(M.anchored)
+				visible_message(span("warning","\The [src.name] fails to deploy!"))
+				return .
+			M.Move(pick(good_turfs))
+
+		var/obj/structure/interactive/barrier/B = new(T)
+		B.creator_ckey = caller.ckey ? caller.ckey : "#null"
+		INITIALIZE(B)
+		GENERATE(B)
+		FINALIZE(B)
+		play_sound('sound/effects/inflate.ogg',T)

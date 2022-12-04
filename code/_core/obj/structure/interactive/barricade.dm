@@ -11,7 +11,7 @@
 
 	collision_dir = 0x0
 
-	bullet_block_chance = 100
+	bullet_block_chance = 90
 
 	health = /health/construction/barricade
 

@@ -114,13 +114,19 @@ SUBSYSTEM_DEF(explosion)
 	if(desired_range <= 0)
 		return FALSE
 
-	var/obj/fire_process/FP = new(desired_turf)
-	FP.fire_power = desired_range*2
-	FP.initial_fire_power = desired_range*2
-	FP.loyalty_tag = desired_loyalty_tag
-	FP.multiplier = multiplier
-	FP.momentum = NORTH | EAST | SOUTH | WEST
-	FP.source = desired_owner
+	var/obj/fire_process/FP = locate() in desired_turf
+
+	if(!FP)
+		play_sound('sound/effects/firebomb.ogg',desired_turf)
+		FP = new(desired_turf)
+		FP.fire_power = desired_range*2
+		FP.initial_fire_power = desired_range*2
+		FP.loyalty_tag = desired_loyalty_tag
+		FP.multiplier = multiplier
+		FP.momentum = NORTH | EAST | SOUTH | WEST
+		FP.source = desired_owner
+	else
+		FP.fire_power += desired_range*2
 
 	return TRUE
 
