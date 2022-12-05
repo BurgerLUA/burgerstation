@@ -268,6 +268,11 @@
 				if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
 					return FALSE
 
+	if(!OldLoc || OldLoc == loc) //Special code here. the OldLoc check is for if any of the above procs moved the atom while it was being called.
+		loc = NewLoc
+
+	if(src.density)
+
 		//No going back. We're moving.
 
 		//Do: Exit the turf.
@@ -304,19 +309,7 @@
 		//Do: Enter the turf.
 		NewLoc.Entered(src,OldLoc)
 
-	if(!OldLoc || OldLoc == loc) //Special code here. the OldLoc check is for if any of the above procs moved the atom while it was being called.
-		loc = NewLoc
-
 	post_move(OldLoc)
-
-	/*
-	if((collision_flags & FLAG_COLLISION_WALKING) && src.z)
-		var/turf/T = loc
-		if(T.friction < 1)
-			var/calculated_speed = SECONDS_TO_TICKS(glide_size/TILE_SIZE)
-			var/calculated_direction = get_dir(OldLoc,loc)
-			start_momentum(calculated_speed,calculated_direction)
-	*/
 
 	return TRUE
 

@@ -1888,6 +1888,7 @@
 #include "code\_core\obj\shuttle_controler\_shuttle_controller.dm"
 #include "code\_core\obj\spawn\_spawn.dm"
 #include "code\_core\obj\structure\_structure.dm"
+#include "code\_core\obj\structure\metal_foam.dm"
 #include "code\_core\obj\structure\render_target_test.dm"
 #include "code\_core\obj\structure\smoothing.dm"
 #include "code\_core\obj\structure\totem.dm"

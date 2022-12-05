@@ -178,3 +178,98 @@
 		GENERATE(B)
 		FINALIZE(B)
 		play_sound('sound/effects/inflate.ogg',T)
+
+
+
+
+
+
+
+
+
+/obj/item/grenade/timed/shell
+	name = "shell grenade"
+	desc_extended = "A special prebuilt grenade storing a special metalic foam that sprays on a donut shape around the grenade. Note that the grenade cannot be used in certain areas. The labeling indicates that the fuse is set to 3 seconds."
+	paint_color = COLOR_GREY_LIGHT
+	marker_color = COLOR_GOLD
+	value = 400
+
+/obj/item/grenade/timed/shell/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
+			caller.to_chat(span("warning","\The [src.name] has nothing to unscrew!"))
+			return TRUE
+
+	. = ..()
+
+/obj/item/grenade/timed/shell/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
+
+	/*
+	var/area/A = T.loc
+	if(A.flags_area & FLAG_AREA_NO_CONSTRUCTION)
+		visible_message(span("warning","\The [src.name] fails to deploy!"))
+		return FALSE
+	*/
+
+	var/list/deploy_turfs = list()
+	for(var/d in DIRECTIONS_ALL)
+		var/turf/DT = get_step(T,d)
+		if(!DT.is_safe_move())
+			continue
+		if(DT.has_dense_atom)
+			continue
+		deploy_turfs[DT] = d
+
+	var/success = FALSE
+	var/has_a_bad_turf = TRUE
+	for(var/k in deploy_turfs)
+		var/turf/D = k
+		var/direction = deploy_turfs[k]
+		var/turf/forward = get_step(D,direction)
+		var/bad_turf = FALSE
+		if(D.has_dense_atom)
+			for(var/j in D.contents)
+				var/atom/movable/M = j
+				if(!M.density)
+					continue
+				if(M.anchored)
+					bad_turf = TRUE
+					break
+				if(M.Move(forward)) //out of the donut
+					continue
+				if(M.Move(T)) //into the donut
+					continue
+				bad_turf = TRUE
+				break
+		if(D.has_dense_atom)
+			bad_turf = TRUE //Still dense
+		if(bad_turf)
+			has_a_bad_turf = TRUE
+		else
+			var/obj/structure/metal_foam/F = new(D)
+			F.creator_ckey = caller.ckey ? caller.ckey : "#null"
+			INITIALIZE(F)
+			GENERATE(F)
+			FINALIZE(F)
+			success = TRUE
+
+	if(has_a_bad_turf && !T.has_dense_atom)
+		var/obj/structure/metal_foam/F = new(T)
+		F.creator_ckey = caller.ckey ? caller.ckey : "#null"
+		INITIALIZE(F)
+		GENERATE(F)
+		FINALIZE(F)
+		success = TRUE
+
+
+
+	if(success)
+		play_sound('sound/effects/inflate.ogg',T)
+	else
+		visible_message(span("warning","\The [src.name] fails to deploy!"))

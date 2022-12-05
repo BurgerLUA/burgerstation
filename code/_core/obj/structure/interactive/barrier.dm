@@ -15,4 +15,8 @@
 
 	health = /health/construction/barricade
 
-	health_base = 1600
+	health_base = 800
+
+/obj/structure/interactive/barrier/on_destruction(var/mob/caller,var/damage = FALSE)
+	. = ..()
+	qdel(src)

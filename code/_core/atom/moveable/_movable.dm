@@ -64,6 +64,8 @@
 
 	var/dir_offset = TILE_SIZE
 
+	var/abstract = FALSE
+
 /atom/movable/PreDestroy()
 	force_move(null)
 	loc = null //Just in case.
@@ -162,8 +164,8 @@
 		if((opacity || density))
 			if(opacity)
 				T.has_opaque_atom = TRUE
-			if(density)
-				T.has_dense_atom = TRUE
+			if(density && !abstract)
+				T.has_dense_atom = "/atom/movable/Finalize() [src.type]"
 
 	update_value()
 

@@ -60,13 +60,15 @@
 	has_dense_atom = FALSE
 
 	if(density)
-		has_dense_atom = TRUE
+		has_dense_atom = "recalculate_atom_density() inherent turf density"
 		return TRUE
 
 	for(var/k in src.contents)
 		var/atom/movable/M = k
+		if(M.abstract)
+			continue
 		if(M.density)
-			has_dense_atom = TRUE
+			has_dense_atom = "recalculate_atom_density() [M.type]"
 			break
 
 	return TRUE
@@ -178,7 +180,7 @@
 		has_opaque_atom = TRUE
 
 	if(density)
-		has_dense_atom = TRUE
+		has_dense_atom = "/turf/New() inherent density"
 
 
 /turf/Destroy()
@@ -255,8 +257,8 @@
 		if(T && !T.density_up && enterer.Move(T) && !T.safe_fall)
 			enterer.on_fall(src)
 
-	if(enterer.density)
-		has_dense_atom = TRUE
+	if(enterer.density && !enterer.abstract)
+		has_dense_atom = "/turf/Entered() [enterer.type]."
 
 	if(world_state >= STATE_RUNNING && enterer.enable_chunk_clean)
 
