@@ -908,6 +908,7 @@
 #include "code\_core\mob\living\simple\herald.dm"
 #include "code\_core\mob\living\simple\hierophant.dm"
 #include "code\_core\mob\living\simple\hivelord.dm"
+#include "code\_core\mob\living\simple\hologram.dm"
 #include "code\_core\mob\living\simple\leaper.dm"
 #include "code\_core\mob\living\simple\lobster.dm"
 #include "code\_core\mob\living\simple\parrot.dm"

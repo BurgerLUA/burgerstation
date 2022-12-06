@@ -95,6 +95,7 @@
 	var/reagent/reagent
 	var/reagent_amount = 50
 	value_burgerbux = 1 //So it doesn't show up in loot.
+	value = 10
 
 /obj/item/container/simple/beaker/vendor/Generate()
 	. = ..()
