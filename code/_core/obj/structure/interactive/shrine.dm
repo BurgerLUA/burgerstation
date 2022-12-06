@@ -211,7 +211,7 @@ var/global/list/possible_ritual_spawns = list(
 				var/turf/T = locate(x+ix,y+iy,z)
 				if(!T)
 					continue
-				if(T.is_safe() && T.is_safe_move())
+				if(T.is_safe() && T.can_move_to())
 					valid_turfs += T
 
 

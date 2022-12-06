@@ -14,6 +14,8 @@ obj/effect/temp/hazard
 
 	density = TRUE
 
+	hazardous = TRUE
+
 obj/effect/temp/hazard/Destroy()
 	owner = null
 	return ..()

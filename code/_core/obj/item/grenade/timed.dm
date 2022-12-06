@@ -153,7 +153,7 @@
 		var/list/good_turfs = list()
 		for(var/d in DIRECTIONS_ALL)
 			var/turf/DT = get_step(T,d)
-			if(!DT.is_safe_move())
+			if(!DT.can_move_to())
 				continue
 			if(DT.has_dense_atom)
 				continue
@@ -220,7 +220,7 @@
 	var/list/deploy_turfs = list()
 	for(var/d in DIRECTIONS_ALL)
 		var/turf/DT = get_step(T,d)
-		if(!DT.is_safe_move())
+		if(!DT.can_move_to())
 			continue
 		if(DT.has_dense_atom)
 			continue

@@ -45,7 +45,7 @@
 
 	var/turf/T = get_turf(src)
 	var/turf/T2 = get_step(T,caller.dir)
-	if(T2.is_safe_move())
+	if(T2.can_move_to())
 		T = T2
 
 	var/obj/marker/portal/PM = pick(portal_markers[P.loyalty_tag])

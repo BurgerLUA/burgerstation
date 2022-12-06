@@ -46,7 +46,7 @@
 
 	var/queued_smoothing = FALSE
 
-/turf/simulated/is_safe_move(var/check_contents=TRUE)
+/turf/simulated/can_move_to(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE

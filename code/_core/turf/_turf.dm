@@ -53,6 +53,8 @@
 
 	var/has_dense_atom = FALSE
 
+	var/has_hazardous_atom = FALSE
+
 	var/organic = FALSE
 
 /turf/proc/recalculate_atom_density()
@@ -69,6 +71,24 @@
 			continue
 		if(M.density)
 			has_dense_atom = "recalculate_atom_density() [M.type]"
+			break
+
+	return TRUE
+
+/turf/proc/recalculate_atom_hazards()
+
+	has_hazardous_atom = FALSE
+
+	if(hazardous)
+		has_hazardous_atom = "recalculate_atom_hazards() inherent turf density"
+		return TRUE
+
+	for(var/k in src.contents)
+		var/atom/movable/M = k
+		if(M.abstract)
+			continue
+		if(M.hazardous)
+			has_hazardous_atom = "recalculate_atom_hazards() [M.type]"
 			break
 
 	return TRUE
@@ -154,6 +174,9 @@
 
 /turf/proc/is_safe()
 
+	if(has_hazardous_atom)
+		return FALSE
+
 	if(SSdmm_suite.is_pvp_coord(x,y,z))
 		return FALSE
 
@@ -163,13 +186,13 @@
 
 	return TRUE
 
-/turf/proc/is_safe_teleport(var/check_contents=TRUE)
+/turf/proc/can_teleport_to(var/check_contents=TRUE)
 	var/area/A = loc
 	if(A && A.flags_area & FLAG_AREA_NO_TELEPORT)
 		return FALSE
-	return is_safe_move(check_contents)
+	return can_move_to(check_contents)
 
-/turf/proc/is_safe_move(var/check_contents=TRUE)
+/turf/proc/can_move_to(var/check_contents=TRUE)
 	return !is_space()
 
 /turf/New(loc)
@@ -289,6 +312,9 @@
 
 	if(exiter.density)
 		recalculate_atom_density()
+
+	if(exiter.hazardous)
+		recalculate_atom_hazards()
 
 	if(world_state >= STATE_RUNNING && exiter.enable_chunk_clean)
 

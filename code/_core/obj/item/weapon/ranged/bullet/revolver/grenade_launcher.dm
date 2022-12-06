@@ -65,8 +65,6 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.04
 
-	value_burgerbux = 1
-
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.1
 

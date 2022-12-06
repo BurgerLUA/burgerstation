@@ -34,7 +34,7 @@
 		else
 			var/list/possible_teleport_turfs = list()
 			for(var/turf/T in range(12,attacker))
-				if(!T.is_safe_move())
+				if(!T.can_move_to())
 					continue
 				possible_teleport_turfs += T
 

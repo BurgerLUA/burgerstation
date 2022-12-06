@@ -287,7 +287,7 @@ var/global/list/debug_verbs = list(
 	var/list/valid_turfs = list()
 
 	for(var/turf/simulated/floor/S in range(VIEW_RANGE + ZOOM_RANGE,mob))
-		if(!S.is_safe_move())
+		if(!S.can_move_to())
 			continue
 		valid_turfs += S
 

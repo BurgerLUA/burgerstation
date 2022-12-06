@@ -37,7 +37,7 @@
 	name = "dark steel floor plating"
 	color = COLOR_STEEL_DARK
 
-/turf/simulated/floor/plating/syndicate/is_safe_move(check_contents)
+/turf/simulated/floor/plating/syndicate/can_move_to(check_contents)
 	for(var/obj/structure/interactive/door/vault/syndicate/S in src.contents) // Ghetto anti-heiro staff
 		return FALSE
 	. = ..()

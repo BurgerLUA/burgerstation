@@ -393,7 +393,7 @@
 			continue
 		if(T.lightness > 0)
 			continue
-		if(!T.is_safe_move())
+		if(!T.can_move_to())
 			continue
 		possible_turfs += T
 

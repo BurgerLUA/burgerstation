@@ -290,7 +290,7 @@
 					continue
 				if(!M.density)
 					continue
-				M.Uncrossed(src)
+				M.Uncrossed(src,NewLoc)
 
 		//Do: Crossed the contents
 		if(!new_loc_as_turf || new_loc_as_turf.has_dense_atom)
@@ -301,7 +301,7 @@
 					continue
 				if(!M.density)
 					continue
-				M.Crossed(src)
+				M.Crossed(src,OldLoc)
 	else
 		//Do: Exit the turf.
 		if(OldLoc) OldLoc.Exited(src,NewLoc) //Can be null.

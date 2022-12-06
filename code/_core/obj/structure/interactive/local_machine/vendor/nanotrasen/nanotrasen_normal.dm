@@ -62,7 +62,6 @@
 		// 1 shotgun
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 
-
 		// 1 grenade
 		/obj/item/grenade/timed/explosive,
 

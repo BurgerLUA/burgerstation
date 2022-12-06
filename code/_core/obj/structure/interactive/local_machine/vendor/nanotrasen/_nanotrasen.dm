@@ -74,7 +74,6 @@
 	icon_state_panel = null
 	stored_types = list(
 		/obj/item/weapon/melee/energy/sword/katana,
-		/obj/item/weapon/ranged/bullet/magazine/smg/smart,
 		/obj/item/weapon/ranged/energy/rifle,
 		/obj/item/weapon/ranged/energy/rifle/hardlight,
 		/obj/item/weapon/ranged/energy/rifle/xray,

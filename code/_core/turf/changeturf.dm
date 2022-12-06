@@ -27,6 +27,7 @@
 
 	W.recalculate_atom_opacity()
 	W.recalculate_atom_density()
+	W.recalculate_atom_hazards()
 
 	if(SSlighting && SSlighting.initialized)
 		W.lighting_overlay = old_lighting_overlay

@@ -89,7 +89,7 @@
 		else
 			var/move_dir = get_dir(T1,T2)
 			var/turf/T3 = get_step(T1,move_dir)
-			if(!T3.is_safe_move(FALSE))
+			if(!T3.can_move_to(FALSE))
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
@@ -109,7 +109,7 @@
 		else
 			var/move_dir = get_dir(T1,T2)
 			var/turf/T3 = get_step(T1,move_dir)
-			if(!T3.is_safe_move(FALSE))
+			if(!T3.can_move_to(FALSE))
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
@@ -186,7 +186,7 @@
 			continue
 		var/list/possible_turfs = list()
 		for(var/turf/simulated/T in A2)
-			if(!T.is_safe_move())
+			if(!T.can_move_to())
 				continue
 			possible_turfs += T
 		if(!length(possible_turfs))
@@ -381,7 +381,7 @@
 		var/list/possible_turfs = list()
 		if(origin_area && prob(10))
 			for(var/turf/simulated/floor/TF in origin_area)
-				if(!TF.is_safe_move(FALSE))
+				if(!TF.can_move_to(FALSE))
 					continue
 				possible_turfs += TF
 		else
@@ -391,7 +391,7 @@
 					continue
 				if(!AF.allow_ghost)
 					continue
-				if(!TF.is_safe_move(FALSE))
+				if(!TF.can_move_to(FALSE))
 					continue
 				possible_turfs += TF
 		if(length(possible_turfs))

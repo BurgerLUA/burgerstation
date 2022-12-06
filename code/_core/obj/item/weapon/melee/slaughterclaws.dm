@@ -34,7 +34,7 @@
 		damage_type = initial(damage_type)
 
 	if(L.intent == INTENT_GRAB && next_teleport_command <= world.time)
-		if(!T.is_safe_move()) //Alright, that's it. No more water-walking!
+		if(!T.can_move_to()) //Alright, that's it. No more water-walking!
 			L.to_chat(span("danger","You can't bloodcrawl there!"))
 			return TRUE
 		if(A.flags_area & FLAG_AREA_NO_BLOODCRAWL) // No bloodcrawling into vaults for you!

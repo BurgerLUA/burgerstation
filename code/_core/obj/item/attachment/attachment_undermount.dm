@@ -109,3 +109,20 @@
 	value = 1000
 
 	rarity = RARITY_RARE
+
+
+/obj/item/attachment/undermount/gun/built_in_shotgun
+	name = "12g singlebarrel shotgun attachment"
+	desc = "Thump!"
+	desc_extended = ""
+	icon_state = "s_shotgun"
+
+	stored_gun = /obj/item/weapon/ranged/bullet/revolver/sbarrel/undermount
+
+	attachment_stats = list(
+		movement_spread = 1.5
+	)
+
+	value = -1
+
+	removable = FALSE

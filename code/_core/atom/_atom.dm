@@ -54,6 +54,8 @@
 	var/generated = FALSE
 	var/finalized = FALSE
 
+	var/hazardous = FALSE
+
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 
 	if(density == desired_density && !force)

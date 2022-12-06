@@ -10,16 +10,15 @@
 
 		/obj/item/weapon/melee/axe/fireaxe,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten, //Really an SMG.
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
-
-		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
-		/obj/item/weapon/ranged/bullet/revolver/rocket,
-		/obj/item/clothing/back/flamethrower,
-
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/barricade,
+
+		/obj/item/weapon/ranged/bullet/magazine/smg/smart,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten, //Really an SMG.
+
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc,
+		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
+		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
 		/obj/item/grenade/landmine/proximity/explosive,
 		/obj/item/grenade/timed/barrier

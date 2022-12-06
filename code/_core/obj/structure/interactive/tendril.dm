@@ -115,7 +115,7 @@ var/global/list/possible_bosses_to_spawn = list(
 		var/list/valid_turfs = list()
 		for(var/d in DIRECTIONS_ALL)
 			var/turf/T2 = get_step(src,d)
-			if(T2 && !T2.density && T2.is_safe_move())
+			if(T2 && !T2.density && T2.can_move_to())
 				valid_turfs += T2
 
 		if(length(valid_turfs))
