@@ -58,8 +58,8 @@
 	attachment_sight_offset_x = 17 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 24 - 16
-	attachment_undermount_offset_y = 14 - 16
+	attachment_undermount_offset_x = 28 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 	dan_mode = TRUE
 

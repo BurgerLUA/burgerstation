@@ -25,28 +25,33 @@ obj/structure/interactive/proc/link_power(var/area/A,var/link=TRUE)
 	if(link)
 		switch(power_type)
 			if(POWER_MACHINE)
-				A.powered_machines += src
+				if(A.requires_power)
+					A.powered_machines += src
 				powered = A.enable_power_machines & ON ? TRUE : FALSE
 			if(POWER_DOOR)
-				A.powered_doors += src
+				if(A.requires_power)
+					A.powered_doors += src
 				powered = A.enable_power_doors & ON ? TRUE : FALSE
 			if(POWER_LIGHT)
-				A.powered_lights += src
+				if(A.requires_power)
+					A.powered_lights += src
 				powered = A.enable_power_lights & ON ? TRUE : FALSE
 	else
-		switch(power_type)
-			if(POWER_MACHINE)
-				A.powered_machines -= src
-			if(POWER_DOOR)
-				A.powered_doors -= src
-			if(POWER_LIGHT)
-				A.powered_lights -= src
+		if(A.requires_power)
+			switch(power_type)
+				if(POWER_MACHINE)
+					A.powered_machines -= src
+				if(POWER_DOOR)
+					A.powered_doors -= src
+				if(POWER_LIGHT)
+					A.powered_lights -= src
 		powered = FALSE
 
-	if(powered)
-		update_power_draw(get_power_draw())
-	else
-		update_power_draw(0)
+	if(A.requires_power)
+		if(powered)
+			update_power_draw(get_power_draw())
+		else
+			update_power_draw(0)
 
 /obj/structure/interactive/Destroy()
 
@@ -226,8 +231,8 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 			power_draw = desired_power_draw
 			A.power_draw += power_draw
 
-	update_sprite()
 	update_atom_light()
+	update_sprite()
 
 	return TRUE
 

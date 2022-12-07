@@ -53,12 +53,12 @@
 	return TRUE
 
 /obj/structure/interactive/lighting/fixture/update_icon()
+	. = ..()
 	icon = initial(icon)
 	if(desired_light_color)
 		icon_state = "bulb"
 	else
 		icon_state = "none"
-	return ..()
 
 /obj/structure/interactive/lighting/fixture/update_underlays()
 	. = ..()

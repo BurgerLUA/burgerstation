@@ -23,6 +23,9 @@
 		power_draw = desired_power_draw
 		A.power_draw += power_draw
 
+	update_atom_light()
+	update_sprite()
+
 	return TRUE
 
 

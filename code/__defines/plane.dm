@@ -58,6 +58,8 @@
 
 #define PLANE_LIGHT_FIXTURE -14
 
+#define PLANE_OBJ_LARGE -13
+
 #define PLANE_EFFECT -10
 
 //Weather

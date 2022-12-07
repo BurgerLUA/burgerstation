@@ -17,4 +17,4 @@
 
 /obj/structure/interactive/door/alarm/New(var/desired_loc)
 	alpha = 255
-	return ..()
+	. = ..()
