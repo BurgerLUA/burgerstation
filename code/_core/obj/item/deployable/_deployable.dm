@@ -63,9 +63,9 @@
 	desc_extended = "A large deployable barricade."
 	structure_to_deploy = /obj/structure/interactive/barricade/
 	icon = 'icons/obj/item/deployable/barricade.dmi'
-	value = 40
+	value = 60
 
-	weight = 3
+	weight = 10
 
 	amount_max = 5
 
@@ -173,3 +173,21 @@
 	. = ..()
 	LOADATOM("stored_battery")
 	LOADATOM("stored_magazine")
+
+
+/obj/item/deployable/barbed_wire
+	name = "deployable barbed wire"
+	desc = "Ouch!"
+	desc_extended = "An ancient, almost torturous design meant to inhibit the movement of soldiers and civilians while using as little materials as possible."
+	icon = 'icons/obj/structure/barbed_wire.dmi'
+	icon_state = "inventory"
+
+	structure_to_deploy = /obj/structure/interactive/barbed_wire
+
+	weight = 5
+
+	amount_max = 10
+
+	value = 10
+
+	size = SIZE_2

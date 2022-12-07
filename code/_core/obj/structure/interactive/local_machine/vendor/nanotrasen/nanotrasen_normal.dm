@@ -42,6 +42,7 @@
 	icon_state_panel = null
 
 	stored_types = list(
+		// 1 melee
 		/obj/item/weapon/melee/energy/stunbaton,
 
 		//3 pistols
@@ -49,20 +50,18 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 		/obj/item/weapon/ranged/bullet/revolver/defender,
 
-		//3 smgs
+		//3 smgs or shotguns.
 		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
-		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 
 		// 3 rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 
-		// 1 shotgun
-		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
-
-		// 1 grenade
+		// 3 grenades or equipment
 		/obj/item/grenade/timed/explosive,
+		/obj/item/grenade/landmine/proximity/explosive,
 
 	)

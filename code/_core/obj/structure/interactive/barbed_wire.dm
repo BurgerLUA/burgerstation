@@ -1,7 +1,7 @@
 /obj/structure/interactive/barbed_wire
 	name = "barbed wire"
 	desc = "Ouch!"
-	desc_extended = "An ancient, almost torturous design meant to inhibit the movement of soldiers and civilians while using as few materials as possible."
+	desc_extended = "An ancient, almost torturous design meant to inhibit the movement of soldiers and civilians while using as little materials as possible."
 
 	icon = 'icons/obj/structure/barbed_wire.dmi'
 	icon_state = "wire"
@@ -12,6 +12,10 @@
 	density = TRUE
 
 	hazardous = TRUE
+
+	plane = PLANE_MOB
+	collision_flags = FLAG_COLLISION_NONE
+	collision_bullet_flags = FLAG_COLLISION_NONE
 
 /obj/structure/interactive/barbed_wire/Crossed(atom/movable/O)
 	. = ..()

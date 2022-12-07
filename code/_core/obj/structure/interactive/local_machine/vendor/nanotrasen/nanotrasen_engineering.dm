@@ -7,21 +7,28 @@
 	icon_state_mask = null
 	icon_state_panel = null
 	stored_types = list(
-
+		//1 melee
 		/obj/item/weapon/melee/axe/fireaxe,
 
-		/obj/item/deployable/mob/sentry,
-		/obj/item/deployable/barricade,
+		//3 pistols
+		/obj/item/weapon/ranged/bullet/magazine/pistol/classic,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
+		/obj/item/weapon/ranged/bullet/revolver/defender,
 
+		//3 smgs or shotguns
 		/obj/item/weapon/ranged/bullet/magazine/smg/smart,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten, //Really an SMG.
+		/obj/item/weapon/ranged/bullet/pump/shotgun/classic,
 
+		//3 rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc,
 		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
 		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
-		/obj/item/grenade/landmine/proximity/explosive,
-		/obj/item/grenade/timed/barrier
+		//3 grenades or equipment
+		/obj/item/deployable/barbed_wire,
+		/obj/item/deployable/barricade,
+		/obj/item/deployable/mob/sentry
 	)
 
 /obj/structure/interactive/vending/nanotrasen/wardrobe/engineering

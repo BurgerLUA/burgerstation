@@ -6,8 +6,9 @@
 	icon_state = "38"
 	bullet_count_max = 6
 
-	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/detective = TRUE
+	weapon_whitelist = list(,
+		/obj/item/weapon/ranged/bullet/revolver/detective = TRUE,
+		/obj/item/weapon/ranged/bullet/revolver/defender = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_38
