@@ -10,50 +10,80 @@ obj/structure/interactive/
 	var/power_draw = 0
 	var/power_supply = 0
 
-	var/wire_powered = FALSE //Set to true if this takes power from a wire.
-	var/apc_powered = FALSE //Set to true if this takes power from an APC.
+	var/wire_powered = FALSE //Set to true if this should take power from a wire.
+	var/apc_powered = FALSE //Set to true if this should take power from an APC.
 
 	var/powered = FALSE //Whether or not this object is currently powered.
 
+	var/power_type = POWER_MACHINE
+
+obj/structure/interactive/proc/link_power(var/area/A,var/link=TRUE)
+
+	if(!apc_powered)
+		return FALSE
+
+	if(link)
+		switch(power_type)
+			if(POWER_MACHINE)
+				A.powered_machines += src
+				powered = A.enable_power_machines & ON ? TRUE : FALSE
+			if(POWER_DOOR)
+				A.powered_doors += src
+				powered = A.enable_power_doors & ON ? TRUE : FALSE
+			if(POWER_LIGHT)
+				A.powered_lights += src
+				powered = A.enable_power_lights & ON ? TRUE : FALSE
+	else
+		switch(power_type)
+			if(POWER_MACHINE)
+				A.powered_machines -= src
+			if(POWER_DOOR)
+				A.powered_doors -= src
+			if(POWER_LIGHT)
+				A.powered_lights -= src
+		powered = FALSE
+
+	if(powered)
+		update_power_draw(get_power_draw())
+	else
+		update_power_draw(0)
 
 /obj/structure/interactive/Destroy()
 
-	if(apc_powered && is_turf(src.loc))
-		var/area/A = src.loc.loc
-		if(A && A.requires_power)
-			update_power_draw(0)
-			A.powered_machines -= src
-	apc_powered = FALSE
+	if(is_turf(loc))
+		var/turf/T = loc
+		link_power(T.loc,FALSE)
 
 	if(connected_wire)
 		connected_wire.do_snap()
+
+	apc_powered = FALSE
 	wire_powered = FALSE
 
 	. = ..()
 
 /obj/structure/interactive/Finalize()
 
-	if(apc_powered && is_turf(src.loc))
-		var/area/A = src.loc.loc
-		if(A && A.requires_power)
-			A.powered_machines += src
+	if(is_turf(loc))
+		var/turf/T = loc
+		link_power(T.loc,TRUE)
 
 	. = ..()
 
 /obj/structure/interactive/post_move(var/atom/old_loc)
 	. = ..()
+
 	if(connected_wire)
 		connected_wire.do_snap()
+
 	if(apc_powered)
 		if(is_turf(old_loc))
-			var/area/A = old_loc.loc
-			if(A.requires_power)
-				update_power_draw(0)
-				A.powered_machines -= src
+			var/turf/T = old_loc
+			link_power(T.loc,FALSE)
+
 		if(is_turf(src.loc))
-			var/area/A = src.loc.loc
-			if(A.requires_power)
-				A.powered_machines += src
+			var/turf/T = src.loc
+			link_power(T.loc,TRUE)
 
 /obj/structure/interactive/proc/get_power_draw()
 	return 0
@@ -195,6 +225,9 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 			if(!reset) A.power_draw -= power_draw
 			power_draw = desired_power_draw
 			A.power_draw += power_draw
+
+	update_sprite()
+	update_atom_light()
 
 	return TRUE
 

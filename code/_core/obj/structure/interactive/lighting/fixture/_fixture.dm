@@ -46,7 +46,7 @@
 	update_sprite()
 
 /obj/structure/interactive/lighting/fixture/update_atom_light()
-	if(on && desired_light_range && desired_light_power && desired_light_color)
+	if(powered && desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color,desired_light_angle)
 	else
 		set_light(FALSE)
@@ -69,7 +69,7 @@
 
 /obj/structure/interactive/lighting/fixture/update_overlays()
 	. = ..()
-	if(on && light_color && light_range > 0 && light_power > 0)
+	if(powered && light_color && light_range > 0 && light_power > 0)
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
 		IS.plane = PLANE_LIGHTING_EFFECT

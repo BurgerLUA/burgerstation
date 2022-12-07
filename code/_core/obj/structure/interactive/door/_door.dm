@@ -35,6 +35,8 @@ obj/structure/interactive/door
 
 	powered = FALSE //Set to true if this door is active.
 
+	power_type = POWER_DOOR
+
 /obj/structure/interactive/door/Generate()
 
 	if(spawn_signaller)
@@ -49,44 +51,6 @@ obj/structure/interactive/door
 		locked = TRUE
 
 	. = ..()
-
-/obj/structure/interactive/door/Destroy()
-
-	if(apc_powered)
-		var/area/A = get_area(src)
-		if(A.requires_power)
-			update_power_draw(0)
-			A.powered_doors -= src
-
-	. = ..()
-
-/obj/structure/interactive/door/Finalize()
-
-	if(apc_powered)
-		var/area/A = get_area(src)
-		if(A.requires_power)
-			A.powered_doors += src
-		else
-			apc_powered = FALSE
-
-	. = ..()
-
-	update_sprite()
-
-/obj/structure/interactive/door/post_move(var/atom/old_loc)
-	. = ..()
-	if(apc_powered)
-		if(is_turf(old_loc))
-			var/area/A = old_loc.loc
-			if(A.requires_power)
-				update_power_draw(0)
-				A.powered_doors -= src
-		if(is_turf(src.loc))
-			var/area/A = src.loc.loc
-			if(A.requires_power)
-				A.powered_doors += src
-			else
-				apc_powered = FALSE
 
 obj/structure/interactive/door/update_icon()
 	..()

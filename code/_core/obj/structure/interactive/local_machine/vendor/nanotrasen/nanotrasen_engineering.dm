@@ -1,5 +1,6 @@
 //Engineering
 /obj/structure/interactive/vending/nanotrasen/gundrobe/engineering
+	name = "engineering gun vendor"
 	icon_state = "gundrobe_engineering"
 
 	icon_state_broken = null
@@ -7,7 +8,9 @@
 	icon_state_mask = null
 	icon_state_panel = null
 	stored_types = list(
-		//1 melee
+		//3 melee
+		/obj/item/weapon/melee/energy/grazer,
+		/obj/item/weapon/melee/tool/wrench/high,
 		/obj/item/weapon/melee/axe/fireaxe,
 
 		//3 pistols

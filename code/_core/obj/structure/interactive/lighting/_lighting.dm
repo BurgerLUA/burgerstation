@@ -1,40 +1,7 @@
 /obj/structure/interactive/lighting/
-	var/on = TRUE
 	anchored = TRUE
-
-/obj/structure/interactive/lighting/Destroy()
-	if(apc_powered && is_turf(src.loc))
-		var/area/A = src.loc.loc
-		if(A.requires_power)
-			update_power_draw(0)
-			A.powered_lights -= src
-
-	. = ..()
-
-/obj/structure/interactive/lighting/Finalize()
-	. = ..()
-	if(apc_powered && is_turf(src.loc))
-		var/area/A = src.loc.loc
-		if(A.requires_power)
-			A.powered_lights += src
-			on = FALSE
-		else
-			apc_powered = FALSE
-
-/obj/structure/interactive/lighting/post_move(var/atom/old_loc)
-	. = ..()
-	if(apc_powered)
-		if(is_turf(old_loc))
-			var/area/A = old_loc.loc
-			if(A.requires_power)
-				update_power_draw(0)
-				A.powered_lights -= src
-		if(is_turf(src.loc))
-			var/area/A = src.loc.loc
-			if(A.requires_power)
-				A.powered_lights += src
-			else
-				apc_powered = FALSE
+	power_type = POWER_LIGHT
+	powered = TRUE //By default.
 
 /obj/structure/interactive/lighting/get_power_draw()
 	return CEILING(desired_light_power*desired_light_range*30,1)

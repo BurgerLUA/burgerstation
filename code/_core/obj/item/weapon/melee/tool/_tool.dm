@@ -46,6 +46,19 @@
 
 	value = 5
 
+/obj/item/weapon/melee/tool/wrench/high
+	name = "high impact wrench"
+	desc = "An adjustable, sizable, thermo-regulable wrench! Now with more impact!"
+	desc_extended = "A wrench that can fit any bolt in the known universe. What a time to be alive. This variant is impact rated."
+
+	icon = 'icons/obj/item/weapons/melee/tools/wrench_impact.dmi'
+	size = SIZE_2
+	weight = 8
+
+	value = 20
+
+	damage_type = /damagetype/melee/club/mace/
+
 /obj/item/weapon/melee/tool/welder
 	name = "welding tool"
 	desc = "Your common, typical everyday wielding tool! Wear eye protection!"

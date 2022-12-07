@@ -271,8 +271,10 @@
 	enable_power_doors = enable
 
 	for(var/k in powered_doors)
-		var/obj/structure/interactive/door/D = k
+		var/obj/structure/interactive/D = k
 		if(!D.apc_powered)
+			continue
+		if(D.power_type != POWER_DOOR)
 			continue
 		if(D.powered == (enable_power_doors & ON ? TRUE : FALSE) && !force)
 			continue
@@ -281,7 +283,6 @@
 			D.update_power_draw(D.get_power_draw())
 		else
 			D.update_power_draw(0)
-		D.update_sprite()
 
 	return TRUE
 
@@ -300,6 +301,8 @@
 		var/obj/structure/interactive/P = k
 		if(!P.apc_powered)
 			continue
+		if(P.power_type != POWER_MACHINE)
+			continue
 		if(P.powered == (enable_power_machines & ON ? TRUE : FALSE) && !force)
 			continue
 		P.powered = enable_power_machines & ON ? TRUE : FALSE
@@ -307,7 +310,6 @@
 			P.update_power_draw(P.get_power_draw())
 		else
 			P.update_power_draw(0)
-		P.update_sprite()
 
 	return TRUE
 
@@ -322,18 +324,18 @@
 	enable_power_lights = enable
 
 	for(var/k in powered_lights)
-		var/obj/structure/interactive/lighting/L = k
+		var/obj/structure/interactive/L = k
 		if(!L.apc_powered)
 			continue
-		if(L.on == (enable_power_lights & ON ? TRUE : FALSE) && !force)
+		if(L.power_type != POWER_LIGHT)
 			continue
-		L.on = enable_power_lights & ON ? TRUE : FALSE
-		if(L.on)
+		if(L.powered == (enable_power_lights & ON ? TRUE : FALSE) && !force)
+			continue
+		L.powered = enable_power_lights & ON ? TRUE : FALSE
+		if(L.powered)
 			L.update_power_draw(L.get_power_draw())
 		else
 			L.update_power_draw(0)
-		L.update_atom_light()
-		L.update_sprite()
 
 	for(var/k in light_switches)
 		var/obj/structure/interactive/light_switch/LS = k

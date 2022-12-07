@@ -279,7 +279,7 @@ var/global/list/equipped_antags = list()
 	var/column=0
 
 	for(var/i=1,i<=stored_objects_length,i++)
-		if(row >= 8)
+		if(row >= 9)
 			row = 0
 			column++
 		var/obj/item/I = stored_objects[i]
