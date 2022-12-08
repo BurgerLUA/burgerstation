@@ -44,6 +44,13 @@
 		"shoulders" = COLOR_WHITE
 	)
 
+
+/obj/item/clothing/shirt/normal/uniform/engineering
+	polymorphs = list(
+		"shirt" = COLOR_ENGINEERING,
+		"shoulders" = COLOR_VISIBLE_GREEN
+	)
+
 /obj/item/clothing/shirt/normal/uniform/science
 	name = "science uniformed shirt"
 	desc = "Nerd."
@@ -111,16 +118,6 @@
 	desc_extended = "An old outdated variant of the security shirt."
 	polymorphs = list(
 		"shirt" = COLOR_CRIMSON,
-	)
-
-
-/obj/item/clothing/shirt/normal/engineering
-	name = "engineering shirt"
-	desc = "Offensively bright."
-	desc_extended = "A shirt with reflective stripes, so in case of an accident, the engineer's corpse will be easily found."
-	polymorphs = list(
-		"shirt" = COLOR_ENGINEERING,
-		"shoulders" = COLOR_VISIBLE_GREEN
 	)
 
 /obj/item/clothing/shirt/normal/medical

@@ -441,7 +441,21 @@
 
 	sound_environment = ENVIRONMENT_BATHROOM
 
-/area/burgerstation/pvp
+/area/burgerstation/maint/pvp
+
+	ambient_sound = 'sound/ambient/vents_loop.ogg'
+
+	random_sounds = list(
+		'sound/ambient/maint_1.ogg',
+		'sound/ambient/maint_2.ogg'
+	)
+
+	map_color = COLOR_ORANGE
+	sound_environment = ENVIRONMENT_BATHROOM
+
+
+
+/area/burgerstation/maint/pvp/table
 	name = "ERROR"
 	icon_state = "pvp"
 	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
@@ -449,3 +463,5 @@
 	sound_environment = ENVIRONMENT_ALLEY
 
 	map_color = COLOR_ORANGE
+
+	link_to_parent_apc = TRUE

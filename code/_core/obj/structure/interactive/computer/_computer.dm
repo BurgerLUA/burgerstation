@@ -107,3 +107,25 @@ obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(
 	open_menu(P,/menu/dialogue/)
 
 	return TRUE
+
+
+obj/structure/interactive/computer/console/engineering
+	name = "engineering console"
+
+
+obj/structure/interactive/computer/console/engineering/Generate()
+	computer_type = pick("power","solar","tank","area_atmos","alert:1")
+	keyboard_type = "[computer_type]_key"
+
+
+	var/list/type_to_light = list(
+		"power" = "#C6B227",
+		"solar" = "#C6B227",
+		"tank" = "#BFE2FF",
+		"area_atmos" = "#BFE2FF",
+		"alert:1" = "#BFE2FF",
+	)
+
+	desired_light_color = type_to_light[computer_type]
+
+	. = ..()

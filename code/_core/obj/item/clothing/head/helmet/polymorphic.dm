@@ -39,7 +39,7 @@
 	polymorphs = list(
 		"base" = COLOR_BLACK,
 		"ears" = COLOR_ENGINEERING,
-		"stripe" = COLOR_ENGINEERING
+		"stripe" = COLOR_VISIBLE_GREEN
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/medical

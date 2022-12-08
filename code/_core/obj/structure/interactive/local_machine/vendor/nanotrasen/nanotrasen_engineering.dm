@@ -1,7 +1,19 @@
 //Engineering
-/obj/structure/interactive/vending/nanotrasen/gundrobe/engineering
+
+/obj/structure/interactive/vending/nanotrasen/
+	health = null
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
+
+/obj/structure/interactive/vending/nanotrasen/engineering/
+	icon = 'icons/obj/structure/vending_new.dmi'
+
+
+/obj/structure/interactive/vending/nanotrasen/engineering/guns
 	name = "engineering gun vendor"
-	icon_state = "gundrobe_engineering"
+	icon_state = "engineering_guns"
 
 	icon_state_broken = null
 	icon_state_off = null
@@ -34,36 +46,99 @@
 		/obj/item/deployable/mob/sentry
 	)
 
-/obj/structure/interactive/vending/nanotrasen/wardrobe/engineering
-	name = "security wardrobe vendor"
-	icon_state = "secdrobe_new"
-
-	icon_state_broken = null
-	icon_state_off = null
-	icon_state_mask = null
-	icon_state_panel = null
+/obj/structure/interactive/vending/nanotrasen/engineering/clothing
+	name = "engineering clothing vendor"
+	icon_state = "engineering_clothing"
 
 	stored_types = list(
 		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/underbottom/underwear/boxers/nanotrasen,
 		/obj/item/clothing/undertop/underwear/shirt/black,
-		/obj/item/clothing/pants/normal/striped/nanotrasen,
-		/obj/item/clothing/shirt/normal/uniform/nanotrasen,
-		/obj/item/storage/shoebox/jackboot/,
-		/obj/item/storage/glovebox/padded/,
-		/obj/item/clothing/back/storage/satchel/poly/nanotrasen,
-		/obj/item/clothing/back/storage/dufflebag/poly/nanotrasen,
-		/obj/item/clothing/back/storage/backpack/poly/nanotrasen,
-		/obj/item/storage/pouch/single/black,
-		/obj/item/storage/pouch/double/black,
-		/obj/item/storage/pouch/triple/black,
-		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/pants/normal/striped/engineering,
+		/obj/item/clothing/shirt/normal/uniform/engineering,
+		/obj/item/storage/shoebox/workboot,
+		/obj/item/storage/glovebox/yellow,
+		/obj/item/clothing/back/storage/satchel/poly/engineering,
+		/obj/item/clothing/back/storage/dufflebag/poly/engineering,
+		/obj/item/clothing/back/storage/backpack/poly/engineering,
+		/obj/item/storage/pouch/single/brown,
+		/obj/item/storage/pouch/double/brown,
+		/obj/item/storage/pouch/triple/brown,
+		/obj/item/clothing/belt/storage/colored/brown,
 		/obj/item/clothing/belt/bandolier/shotgun_12,
-		/obj/item/clothing/mask/gas/poly/nanotrasen,
-		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
-		/obj/item/clothing/overwear/armor/medium_armor/black,
-		/obj/item/clothing/overwear/armor/nanotrasen,
-		/obj/item/clothing/head/helmet/full/nanotrasen,
-		/obj/item/weapon/melee/energy/grazer,
-		/obj/item/flare
+		/obj/item/clothing/mask/gas/poly/engineering,
+		/obj/item/clothing/head/helmet/polymorphic/engineering,
+		/obj/item/clothing/overwear/armor/medium_armor/brown,
+		/obj/item/clothing/overwear/armor/nanotrasen/engineering,
+		/obj/item/clothing/head/helmet/full/nanotrasen/engineering
+	)
+
+/obj/structure/interactive/vending/nanotrasen/engineering/equipment
+	name = "engineering equipment vendor"
+	icon_state = "engineering_equipment"
+
+	stored_types = list(
+		/obj/item/material/sheet/iron{amount=50},
+		/obj/item/material/sheet/glass{amount=50},
+		/obj/item/powercell,
+		/obj/item/powercell/industrial,
+		/obj/item/weapon/melee/toolbox/red,
+		/obj/item/weapon/melee/toolbox/green,
+		/obj/item/weapon/melee/toolbox/blue,
+		/obj/item/weapon/melee/toolbox/yellow,
+		/obj/item/weapon/melee/tool/crowbar,
+		/obj/item/weapon/melee/tool/screwdriver,
+		/obj/item/weapon/melee/tool/multitool,
+		/obj/item/weapon/melee/tool/welder,
+		/obj/item/weapon/melee/tool/wrench
+	)
+
+/obj/structure/interactive/vending/nanotrasen/engineering/rcd
+	name = "engineering RCD vendor"
+	icon_state = "engineering_rcd"
+
+	stored_types = list(
+		/obj/item/rcd,
+		/obj/item/matter_cartridge,
+		/obj/item/disk/rcd/airlock,
+		/obj/item/disk/rcd/chair,
+		/obj/item/disk/rcd/conveyor,
+		/obj/item/disk/rcd/diverter,
+		/obj/item/disk/rcd/flap,
+		/obj/item/disk/rcd/glass_window,
+		/obj/item/disk/rcd/light,
+		/obj/item/disk/rcd/metal_plating,
+		/obj/item/disk/rcd/metal_wall,
+		/obj/item/disk/rcd/oresmelter,
+		/obj/item/disk/rcd/orestorage,
+		/obj/item/disk/rcd/stacker,
+		/obj/item/disk/rcd/table,
+		/obj/item/disk/rcd/tube_light
+	)
+
+/obj/structure/interactive/vending/nanotrasen/engineering/ammo
+	name = "engineering ammo vendor"
+	icon_state = "engineering_ammo"
+
+	stored_types = list(
+
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/clip/revolver/bullet_38,
+
+		/obj/item/magazine/smg_smart,
+		/obj/item/magazine/rifle_tungsten,
+		/obj/item/magazine/rifle_556,
+
+		/obj/item/bullet_cartridge/rocket_70mm,
+		/obj/item/bullet_cartridge/rocket_70mm/ap,
+
+		/obj/item/bullet_cartridge/grenade_40mm,
+		/obj/item/bullet_cartridge/grenade_40mm/hv,
+
+		/obj/item/bullet_cartridge/shotgun_12,
+		/obj/item/bullet_cartridge/shotgun_12/flechette,
+		/obj/item/bullet_cartridge/shotgun_12/slug,
+		/obj/item/bullet_cartridge/shotgun_12/frag
+
 	)

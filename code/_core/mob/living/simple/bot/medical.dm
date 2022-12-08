@@ -1,7 +1,7 @@
 /mob/living/simple/bot/medibot
 	name = "medical bot"
 	desc = "I NEED HEALING."
-	desc_extended = "A medical bot programmed to heal those in need. It's not afraid to defend itself."
+	desc_extended = "A medical bot programmed to heal those in need. It is not afraid to defend itself."
 
 	loyalty_tag = "NanoTrasen"
 	iff_tag = "NanoTrasen"
@@ -21,7 +21,8 @@
 		BRUTE = /reagent/medicine/bicaridine,
 		BURN = /reagent/medicine/kelotane,
 		TOX = /reagent/medicine/dylovene,
-		OXY = /reagent/iron
+		OXY = /reagent/iron,
+		"dead" = /reagent/medicine/adrenaline/epinephrine
 	)
 
 	damage_type = /damagetype/npc/medibot
@@ -29,6 +30,8 @@
 	health = /health/mob/living/inorganic
 
 	stun_angle = 180
+
+	var/advanced = FALSE //Set to true if this medibot can revive.
 
 /mob/living/simple/bot/medibot/post_death()
 
@@ -80,9 +83,10 @@
 	. = list()
 
 	for(var/DT in medicine)
-		var/loss = target.health.damage[DT]
-		if(loss < healing_threshold)
-			continue
+		if(DT != "dead")
+			var/loss = target.health.damage[DT]
+			if(loss < healing_threshold)
+				continue
 		var/reagent/R = REAGENT(medicine[DT])
 		var/existing_reagent_amount = target.reagents.get_reagent_volume(medicine[DT])
 		if(existing_reagent_amount)
@@ -133,7 +137,7 @@
 	if(!target.health.organic)
 		return FALSE
 
-	if(target.dead)
+	if(target.dead && !advanced)
 		return FALSE
 
 	if(get_dist(src,target) > 1)
@@ -150,7 +154,7 @@
 		PROGRESS_BAR(src,src,SECONDS_TO_DECISECONDS(5),.proc/treat,target)
 		PROGRESS_BAR_CONDITIONS(src,src,.proc/can_treat,target)
 		target.visible_message(span("warning","\The [src.name] is trying to inject [target.name]!"),span("danger","\The [src.name] is trying to inject you!"))
-		if(target.has_status_effect(CRIT))
+		if(target.dead || target.has_status_effect(CRIT))
 			play_sound('sound/voice/medbot/no.ogg',get_turf(src),range_max=VIEW_RANGE)
 			src.do_say("No, stay with me!")
 		update_icon()
@@ -191,3 +195,18 @@
 	overlay_icon_state = "[desired_pack][desired_num]"
 	return ..()
 
+
+/mob/living/simple/bot/medibot/maint_pvp
+	name = "fight club medic"
+
+	overlay_icon_state = "tactical"
+	loyalty_tag = "NanoTrasen"
+	iff_tag = "NanoTrasen"
+
+	ai = /ai/bot/medical/aggressive
+
+	health_base = 300
+
+	anchored = TRUE
+
+	advanced = TRUE

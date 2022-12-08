@@ -175,6 +175,11 @@ obj/structure/table/reinforced/steel
 obj/structure/table/reinforced/steel/dark
 	color = COLOR_STEEL_DARK
 
+obj/structure/table/reinforced/steel/dark/doom
+	name = "table of doom"
+	desc = "Probably shouldn't climb this."
+	desc_extended = "A strange looking dark table with some weird circuitry attached."
+
 obj/structure/table/reinforced/yellow
 	color = "#FFFF00"
 

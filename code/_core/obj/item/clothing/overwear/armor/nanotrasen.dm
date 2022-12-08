@@ -29,3 +29,11 @@
 	)
 
 	rarity = RARITY_MYTHICAL
+
+/obj/item/clothing/overwear/armor/nanotrasen/engineering
+
+	polymorphs = list(
+		"base" = COLOR_ENGINEERING,
+		"chest" = COLOR_BROWN,
+		"shoulders" = COLOR_VISIBLE_GREEN
+	)

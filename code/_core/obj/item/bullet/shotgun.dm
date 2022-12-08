@@ -120,3 +120,23 @@
 
 	projectile = /obj/projectile/bullet/firearm/shotgun_slug
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/rubber_slug
+
+
+
+/obj/item/bullet_cartridge/shotgun_12/frag
+	name = "\improper 12 gauge frag"
+	rarity = RARITY_UNCOMMON
+	desc = "Shoots one really big bullet."
+	desc_extended = "This shell doesn't spread alot, and only has one projectile."
+	icon_state = "slug"
+
+	projectile_count = 1
+	base_spread = 0
+
+	projectile = /obj/projectile/bullet/firearm/shotgun_slug
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/frag
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.04
+	value = 3

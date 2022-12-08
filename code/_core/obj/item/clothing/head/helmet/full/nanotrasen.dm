@@ -22,3 +22,11 @@
 	armor = /armor/hardsuit/combat/nanotrasen/plus
 
 	rarity = RARITY_MYTHICAL
+
+
+/obj/item/clothing/head/helmet/full/nanotrasen/engineering
+	polymorphs = list(
+		"base" = COLOR_ORANGE,
+		"visor" = "#DDF1AD",
+		"stripe" = COLOR_VISIBLE_GREEN
+	)

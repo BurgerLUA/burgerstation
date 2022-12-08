@@ -34,6 +34,12 @@
 		"stripes" = COLOR_NANOTRASEN
 	)
 
+/obj/item/clothing/pants/normal/striped/engineering
+	polymorphs = list(
+		"pants" = COLOR_GREY_LIGHT,
+		"stripes" = COLOR_VISIBLE_GREEN
+	)
+
 /obj/item/clothing/pants/normal/recruit
 	polymorphs = list(
 		"pants" = COLOR_RECRUIT_DARK
@@ -94,16 +100,6 @@
 	desc_extended = "Nondescript grey pants that fight against food stains."
 	polymorphs = list(
 		"pants" = COLOR_GREY
-	)
-
-
-/obj/item/clothing/pants/normal/engineering
-	name = "engineering pants"
-	desc = "Offensively bright."
-	desc_extended = "Standard issue engineering pants, pre-stained yellow for when the SM delaminates"
-	polymorphs = list(
-		"pants" = COLOR_ENGINEERING,
-		"stripes" = COLOR_VISIBLE_GREEN
 	)
 
 /obj/item/clothing/pants/normal/medical
