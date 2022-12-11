@@ -1,12 +1,5 @@
 //Engineering
 
-/obj/structure/interactive/vending/nanotrasen/
-	health = null
-	icon_state_broken = null
-	icon_state_off = null
-	icon_state_mask = null
-	icon_state_panel = null
-
 /obj/structure/interactive/vending/nanotrasen/engineering/
 	icon = 'icons/obj/structure/vending_new.dmi'
 

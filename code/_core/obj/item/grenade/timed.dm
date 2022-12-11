@@ -93,6 +93,20 @@
 	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_02(src)
 	return ..()
 
+/obj/item/grenade/timed/cleaning_smoke
+	name = "timed BLAM! cleaning smoke grenade"
+	desc = "BLAM!"
+	desc_extended = "A prebuilt timed cleaing smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
+
+	paint_color = COLOR_GREEN
+	marker_color = COLOR_GREEN
+
+/obj/item/grenade/timed/cleaning_smoke/Generate()
+	stored_containers += new /obj/item/container/simple/beaker/large/cleaing_smoke_01(src)
+	stored_containers += new /obj/item/container/simple/beaker/large/cleaing_smoke_02(src)
+	return ..()
+
+
 
 /obj/item/grenade/timed/emp
 	name = "timed EMP grenade"
@@ -314,3 +328,91 @@
 	if(D.ai)
 		D.ai.set_active(TRUE)
 
+
+
+
+
+
+/obj/item/grenade/timed/blackhole
+	name = "blackhole grenade"
+	desc_extended = "A special prebuilt grenade storing a volatile black hole that sucks up small objects to be sold to another dimension. The labeling indicates that the fuse is set to 3 seconds."
+	paint_color = COLOR_PURPLE
+	marker_color = COLOR_BLACK
+	value = 400
+
+/obj/item/grenade/timed/blackhole/get_base_value()
+	return initial(value)
+
+/obj/item/grenade/timed/blackhole/get_value()
+	. = get_base_value()
+	for(var/obj/item/I in src.contents)
+		. += I.get_value()
+
+/obj/item/grenade/timed/blackhole/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+
+	if(is_item(object))
+		var/obj/item/I = object
+		if(I.flags_tool & FLAG_TOOL_SCREWDRIVER)
+			caller.to_chat(span("warning","\The [src.name] has nothing to unscrew!"))
+			return TRUE
+
+	. = ..()
+
+/obj/item/grenade/timed/blackhole/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+
+	. = ..()
+
+	var/turf/T = get_turf(src)
+
+	if(!is_advanced(caller))
+		visible_message(span("warning","\The [src.name] fails to deploy!"))
+		return TRUE
+
+	var/mob/living/advanced/A = caller
+
+	anchored = TRUE
+
+	icon = 'icons/obj/effects/portal.dmi'
+	icon_state = "bhole3"
+
+	play_sound('sound/effects/space_phase.ogg',T)
+
+	suck(A,5)
+
+
+/obj/item/grenade/timed/blackhole/proc/suck(var/mob/living/advanced/caller,var/sucks_left=0)
+
+
+	var/turf/T = get_turf(src)
+
+	var/limit = 10
+
+	var/sucked = FALSE
+	for(var/obj/item/I in view(5,src))
+		if(limit <= 0)
+			break
+		if(I.anchored)
+			continue
+		if(!is_turf(I.loc))
+			continue
+		if(I.loc == T)
+			I.force_move(src)
+			sucked = TRUE
+			continue
+		I.force_move(get_step(I,get_dir(I,T)))
+		limit--
+		CHECK_TICK_SAFE(50,FPS_SERVER)
+
+	if(sucked)
+		play_sound('sound/effects/portal_suck.ogg',T)
+
+	if(sucks_left > 0)
+		CALLBACK("\ref[src]_suck",8,src,.proc/suck,caller,sucks_left-1)
+	else
+		if(is_player(caller))
+			var/mob/living/advanced/player/P = caller
+			var/value_of_contents = src.get_value() * 0.25
+			value_of_contents = CEILING(value_of_contents,1)
+			P.to_chat(span("notice","You've earned [value_of_contents] credits for that [src.name]."))
+			P.adjust_currency(value_of_contents)
+		qdel(src)

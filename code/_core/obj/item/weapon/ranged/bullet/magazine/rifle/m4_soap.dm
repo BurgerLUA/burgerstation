@@ -1,19 +1,20 @@
-/obj/item/weapon/ranged/bullet/magazine/rifle/m4
-	name = "\improper 5.56mm M5A2"
+/obj/item/weapon/ranged/bullet/magazine/rifle/m4_soap
+
+	name = "\improper 5.56mm M5 SOAPMOD"
 	desc = "Made in the Space Colonies!"
-	desc_extended = "A typical run of the mill assault rifle designed to quickly put down targets at medium to long ranges."
-	icon = 'icons/obj/item/weapons/ranged/rifle/sol/merc.dmi'
+	desc_extended = "A tactically modified version of the M5A2 assault rifle, with built-in attachments for squeaky-clean operations."
+	icon = 'icons/obj/item/weapons/ranged/rifle/sol/merc_nt.dmi'
 	icon_state = "inventory"
 	value = 1800
 
-	company_type = "Solarian"
+	company_type = "NanoTrasen"
 
-	tier = 2
+	tier = 3
 
 	damage_mod = 1.15
 	shoot_delay = 1.15
 
-	automatic = TRUE
+	automatic = FALSE
 
 	firemodes = list("automatic","semi-automatic")
 
@@ -22,7 +23,7 @@
 	can_wield = TRUE
 
 	size = SIZE_4
-	weight = 14
+	weight = 20
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -35,7 +36,8 @@
 	ai_heat_sensitivity = 0.75
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -64,30 +66,35 @@
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 15 - 16
-	attachment_sight_offset_y = 19 - 16
+	attachment_sight_offset_x = 14 - 16
+	attachment_sight_offset_y = 20 - 16
 
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
 	dan_mode = TRUE
 
-	heat_max = 0.09
+	heat_max = 0.1
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m4/get_static_spread()
-	return 0.0075
+/obj/item/weapon/ranged/bullet/magazine/rifle/m4_soap/Generate()
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/m4/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
-
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/m4/Generate()
 	. = ..()
-	attachment_sight = new /obj/item/attachment/sight/m4(src)
+
+	attachment_barrel = new /obj/item/attachment/barrel/suppressor(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)
+
+	attachment_sight = new /obj/item/attachment/sight/red_dot(src)
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
+
+	attachment_undermount = new /obj/item/attachment/undermount/gun/grenade_launcher(src)
+	INITIALIZE(attachment_undermount)
+	GENERATE(attachment_undermount)
+	FINALIZE(attachment_undermount)

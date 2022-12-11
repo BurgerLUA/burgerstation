@@ -53,6 +53,27 @@
 	jam_chance = 1
 	value = 0
 
+/obj/item/bullet_cartridge/shotgun_12/slug/cleaning
+	name = "\improper 12 gauge cleaning slug"
+	rarity = RARITY_UNCOMMON
+	desc = "Shoots one really big bullet."
+	desc_extended = "This shell doesn't spread alot, and only has one projectile that also CLEANS."
+	icon_state = "oldrubber"
+
+	projectile_count = 1
+	base_spread = 0
+
+	projectile = /obj/projectile/bullet/cleaning_shot
+	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/slug/cleaning
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.04
+	value = 2
+
+	caseless = TRUE
+
+
 /obj/item/bullet_cartridge/shotgun_12/surplus
 	name = "\improper surplus 12 gauge buckshot"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/surplus

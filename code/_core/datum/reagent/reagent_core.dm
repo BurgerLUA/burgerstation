@@ -255,17 +255,19 @@
 
 	blood_toxicity_multiplier = -0.5 //A meme, but whatever.
 
+	lethal = TRUE
+
 /reagent/space_cleaner/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer += .*1*multiplier
+	owner.tox_regen_buffer -= .*2*multiplier
 
 /reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	owner.tox_regen_buffer += .*2*multiplier
+	owner.tox_regen_buffer -= .*4*multiplier
 
 /reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 

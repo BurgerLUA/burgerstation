@@ -136,6 +136,7 @@
 		stored_bullet = null
 		bullet_count = 0
 		bullet_max = 0
+		rarity = RARITY_COMMON
 		return TRUE
 
 	if(ispath(desired_path))
@@ -150,6 +151,7 @@
 			return FALSE
 		if(generate)
 			bullet_count = bullet_max
+		rarity = stored_bullet.rarity
 		return TRUE
 
 	return FALSE
@@ -186,15 +188,37 @@
 				var/image/I2 = new/image(icon,"[stored_bullet.bulletbox_icon_state]_[ratio]")
 				add_overlay(I2)
 
-/obj/item/bulletbox/rifle_556
+/obj/item/bulletbox/rifle_556/
+	stored_bullet = /obj/item/bullet_cartridge/rifle_223/nato
+
+/obj/item/bulletbox/rifle_556/premium
 	stored_bullet = /obj/item/bullet_cartridge/rifle_223/nato/premium
 
 /obj/item/bulletbox/rifle_762
+	stored_bullet = /obj/item/bullet_cartridge/rifle_308/nato
+
+/obj/item/bulletbox/rifle_762/premium
 	stored_bullet = /obj/item/bullet_cartridge/rifle_308/nato/premium
 
-/obj/item/bulletbox/rifle_127
+
+/obj/item/bulletbox/sniper_127/
+	stored_bullet = /obj/item/bullet_cartridge/sniper_127
+
+/obj/item/bulletbox/sniper_127/premium
 	stored_bullet = /obj/item/bullet_cartridge/sniper_127/premium
 
-/obj/item/bulletbox/rifle_127/ap
+/obj/item/bulletbox/sniper_127/ap
 	stored_bullet = /obj/item/bullet_cartridge/sniper_127/ap
 
+
+/obj/item/bulletbox/shotgun_12/
+	stored_bullet = /obj/item/bullet_cartridge/shotgun_12/
+
+/obj/item/bulletbox/shotgun_12/flechette
+	stored_bullet = /obj/item/bullet_cartridge/shotgun_12/flechette
+
+/obj/item/bulletbox/shotgun_12/slug
+	stored_bullet = /obj/item/bullet_cartridge/shotgun_12/slug
+
+/obj/item/bulletbox/shotgun_12/slug/cleaning
+	stored_bullet = /obj/item/bullet_cartridge/shotgun_12/slug/cleaning

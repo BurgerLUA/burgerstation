@@ -1,6 +1,9 @@
-/obj/structure/interactive/vending/nanotrasen
-	name = "security vendor"
-	icon_state = "sec"
+/obj/structure/interactive/vending/nanotrasen/
+	health = null
+	icon_state_broken = null
+	icon_state_off = null
+	icon_state_mask = null
+	icon_state_panel = null
 
 /obj/structure/interactive/vending/nanotrasen/wardrobe/ops
 	name = "nt ops wardrobe vendor"

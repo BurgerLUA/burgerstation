@@ -25,6 +25,19 @@
 	reagents.add_reagent(/reagent/lube,60)
 	return ..()
 
+/obj/item/container/simple/beaker/large/cleaing_smoke_01/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/potassium,40)
+	reagents.add_reagent(/reagent/space_cleaner,60)
+	return ..()
+
+/obj/item/container/simple/beaker/large/cleaing_smoke_02/Generate()
+	reagents.add_reagent(/reagent/nutrition/sugar,20)
+	reagents.add_reagent(/reagent/phosphorous,40)
+	reagents.add_reagent(/reagent/space_cleaner,60)
+	return ..()
+
+
 /obj/item/container/simple/beaker/large/bicaridine/Generate()
 	reagents.add_reagent(/reagent/medicine/bicaridine,reagents.volume_max)
 	return ..()

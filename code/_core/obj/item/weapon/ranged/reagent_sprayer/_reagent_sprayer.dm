@@ -124,3 +124,19 @@
 
 /obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/get_base_spread()
 	return 0.1
+
+
+
+
+/obj/item/weapon/ranged/reagent_sprayer/mega_sprayer
+	name = "mega sprayer"
+	reagents = /reagent_container/beaker/bucket
+	reagent_per_shot = 20
+	icon = 'icons/obj/item/weapons/ranged/chem_sprayer.dmi'
+
+	size = SIZE_3
+	weight = 15
+
+	value = 300
+
+	dan_mode = FALSE
