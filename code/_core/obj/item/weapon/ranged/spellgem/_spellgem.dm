@@ -26,6 +26,8 @@
 	var/base_mana_cost = 0 //The base mana cost for this item. Calculated on Initialize().
 	var/mana_cost_override = 0 //The override value for mana cost for this item. For uitlity spells or stuff that add extra effects.
 
+	requires_bullets = FALSE
+
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
 	. *= 1 - (spread_per_shot/360)
@@ -105,26 +107,6 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/weapon/ranged/spellgem/handle_ammo(var/mob/caller,var/bullet_position=1)
-
-	if(!caller.health || !is_advanced(caller))
-		return ..()
-
-	var/mob/living/advanced/A = caller
-
-	var/final_mana_cost = base_mana_cost
-	if(length(attachment_stats) && attachment_stats["mana_cost_multiplier"])
-		final_mana_cost *= attachment_stats["mana_cost_multiplier"]
-	final_mana_cost *= 1 / (1+A.get_skill_power(casting_type)*3) //Up to 25% reduction at level 100.
-
-	if(final_mana_cost > A.health.mana_current)
-		caller.to_chat(span("warning","You try to push with all your mana, but the spell fizzles!"))
-		return TRUE //Fail
-
-	A.health.adjust_mana(-final_mana_cost)
-
-	return null //Null is good.
-
 /obj/item/weapon/ranged/spellgem/get_heat_spread()
 	return 0
 
@@ -137,15 +119,35 @@
 /obj/item/weapon/ranged/spellgem/get_movement_spread(var/mob/living/L)
 	return 0
 
+/obj/item/weapon/ranged/spellgem/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+
+
+	. = ..()
+
+	if(caller.health)
+		var/final_mana_cost = base_mana_cost
+		if(length(attachment_stats) && attachment_stats["mana_cost_multiplier"])
+			final_mana_cost *= attachment_stats["mana_cost_multiplier"]
+
+		if(is_living(caller))
+			var/mob/living/L = caller
+			final_mana_cost *= 1 / (1+L.get_skill_power(casting_type)*3) //Up to 25% reduction at level 100.
+
+		if(final_mana_cost > caller.health.mana_current)
+			caller.to_chat(span("warning","You try to push with all your mana, but the spell fizzles!"))
+			return FALSE //Fail
+
+		caller.health.adjust_mana(-final_mana_cost)
+
+
+
+
 /obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called = FALSE)
 
 	if(!utilitygem)
 		return ..()
 
 	if(!pre_shoot(caller,object,location,params,damage_multiplier))
-		return FALSE
-
-	if(handle_ammo(caller) != null)
 		return FALSE
 
 	var/quality_bonus = get_quality_bonus(0.5,2)

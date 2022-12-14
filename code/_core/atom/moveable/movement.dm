@@ -61,20 +61,8 @@
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
 
-			if(first_step)
-				var/first_from_loc = first_step.Enter(src,src.loc)
-				if(first_from_loc)
-					if(first_step.has_dense_atom)
-						for(var/k in first_step.contents)
-							var/atom/movable/M = k
-							if(M.density && !M.Cross(src,src.loc))
-								first_step = null
-								break
-				else
-					first_step = null
-
-			if(second_step)
-				var/second_from_loc = second_step.Enter(src,src.loc)
+			if(second_step) //Safety.
+				var/second_from_loc = !second_step.density || second_step.Enter(src,src.loc)
 				if(second_from_loc)
 					if(second_step.has_dense_atom)
 						for(var/k in second_step.contents)
@@ -84,31 +72,22 @@
 								break
 				else
 					second_step = null
-
-			/*
-			if(first_step && second_step)
-				var/first_from_second = first_step.has_dense_atom && first_step.Enter(src,second_step)
-				if(first_from_second)
-					for(var/k in first_step.contents)
-						var/atom/movable/M = k
-						if(M.density && !M.Cross(src,second_step))
-							first_step = null
-							break
-				var/second_from_first = second_step.has_dense_atom && second_step.Enter(src,first_step)
-				if(second_from_first)
-					for(var/k in second_step.contents)
-						var/atom/movable/M = k
-						if(M.density && !M.Cross(src,first_step))
-							second_step = null
-							break
-			*/
-
-
-
-			if(!first_step)
-				final_move_dir &= ~first_move_dir_to_use
 			if(!second_step)
 				final_move_dir &= ~second_move_dir_to_use
+
+			if(second_step && first_step) //Safety.
+				var/first_from_loc = !first_step.density || first_step.Enter(src,src.loc)
+				if(first_from_loc)
+					if(first_step.has_dense_atom)
+						for(var/k in first_step.contents)
+							var/atom/movable/M = k
+							if(M.density && !M.Cross(src,src.loc))
+								first_step = null
+								break
+				else
+					first_step = null
+			if(!first_step)
+				final_move_dir &= ~first_move_dir_to_use
 
 		//Storing previous move dir and handling inability to move.
 		var/similiar_move_dir = FALSE

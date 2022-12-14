@@ -40,6 +40,7 @@ var/global/list/all_typecaches = list()
 
 #define is_clothing(A) istypecache(A,/obj/item/clothing)
 
+#define is_container(A) istypecache(A,/obj/item/container/)
 
 #define is_currency(A) istypecache(A,/obj/item/currency/)
 

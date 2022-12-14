@@ -115,7 +115,7 @@
 /obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
 
 	if(!is_advanced(caller))
-		return null
+		return FALSE
 
 	var/mob/living/advanced/A = caller
 

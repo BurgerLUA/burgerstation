@@ -1,4 +1,4 @@
-/obj/structure/interactive/vending/nanotrasen/engineering/
+/obj/structure/interactive/vending/nanotrasen/janitor/
 	icon = 'icons/obj/structure/vending_new.dmi'
 
 
@@ -33,7 +33,8 @@
 
 		//3 grenades or equipment
 		/obj/item/grenade/timed/cleaning_smoke,
-		/obj/item/grenade/timed/blackhole
+		/obj/item/grenade/timed/blackhole,
+		/obj/item/deployable/mob/cleaning_bot
 
 
 

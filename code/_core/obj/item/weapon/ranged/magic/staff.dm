@@ -42,7 +42,7 @@
 		charge_to_remove *= 2
 	total_charge -= charge_to_remove
 	update_sprite()
-	return FALSE
+	return null
 
 /obj/item/weapon/ranged/magic/staff/get_ammo_count()
 	return round(total_charge / cost_charge)

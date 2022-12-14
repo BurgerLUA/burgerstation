@@ -332,7 +332,7 @@
 	return shoot(caller,object,location,params,click_called=TRUE)
 
 obj/item/weapon/ranged/proc/handle_ammo(var/mob/caller)
-	return FALSE
+	return null
 
 obj/item/weapon/ranged/proc/handle_empty(var/mob/caller)
 	if(length(empty_sounds))
@@ -415,25 +415,31 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/power_to_use = 1
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
-	if(spent_bullet)
-		SET(projectile_to_use,spent_bullet.projectile)
-		SET(shoot_sounds_to_use,spent_bullet.shoot_sounds)
-		SET(damage_type_to_use,spent_bullet.damage_type_bullet)
-		SET(bullet_count_to_use,spent_bullet.projectile_count)
-		ADD(bullet_spread_to_use,spent_bullet.base_spread)
-		SET(projectile_speed_to_use,spent_bullet.projectile_speed)
-		SET(bullet_color_to_use,spent_bullet.bullet_color)
-		MUL(inaccuracy_modifier_to_use,spent_bullet.inaccuracy_modifier)
-		MUL(bullet_view_punch,spent_bullet.view_punch_mod)
-		ADD(penetrations_left,spent_bullet.penetrations)
-		power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2)
-		damage_multiplier_to_use *= quality_bonus
-		var/condition_to_use_pre = max(0,1 - max(0,quality_bonus*4))
-		condition_to_use_pre += FLOOR(heat_current*2,1)
-		condition_to_use = condition_to_use_pre * durability_mod
-	else if(requires_bullets)
-		handle_empty(caller)
-		return FALSE
+
+	if(requires_bullets)
+		if(spent_bullet)
+			SET(projectile_to_use,spent_bullet.projectile)
+			SET(shoot_sounds_to_use,spent_bullet.shoot_sounds)
+			SET(damage_type_to_use,spent_bullet.damage_type_bullet)
+			SET(bullet_count_to_use,spent_bullet.projectile_count)
+			ADD(bullet_spread_to_use,spent_bullet.base_spread)
+			SET(projectile_speed_to_use,spent_bullet.projectile_speed)
+			SET(bullet_color_to_use,spent_bullet.bullet_color)
+			MUL(inaccuracy_modifier_to_use,spent_bullet.inaccuracy_modifier)
+			MUL(bullet_view_punch,spent_bullet.view_punch_mod)
+			ADD(penetrations_left,spent_bullet.penetrations)
+			power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2)
+			damage_multiplier_to_use *= quality_bonus
+			var/condition_to_use_pre = max(0,1 - max(0,quality_bonus*4))
+			condition_to_use_pre += FLOOR(heat_current*2,1)
+			condition_to_use = condition_to_use_pre * durability_mod
+		else
+			handle_empty(caller)
+			return FALSE
+	else
+		if(spent_bullet == FALSE)
+			handle_empty(caller)
+			return
 
 	var/arm_strength = 0.5
 	if(is_advanced(caller))
