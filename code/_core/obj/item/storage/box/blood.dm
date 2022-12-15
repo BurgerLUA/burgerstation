@@ -30,7 +30,7 @@
 	new /obj/item/clothing/overwear/hardsuit/doom(src)
 	new /obj/item/clothing/head/helmet/full/doom(src)
 	new /obj/item/weapon/ranged/bullet/pump/shotgun/doom(src)
-	new /obj/item/storage/ammo/buckshot(src)
+	new /obj/item/bulletbox/small/shotgun_12(src)
 	. = ..()
 
 /obj/item/storage/blood_box/witchunt/fill_inventory()

@@ -42,6 +42,13 @@
 		"buckle" = COLOR_SILVER
 	)
 
+/obj/item/clothing/back/storage/satchel/poly/janitor
+	polymorphs = list(
+		"body" = COLOR_JANITOR,
+		"straps" = COLOR_BLACK,
+		"detail" = COLOR_GOLD,
+		"buckle" = COLOR_SILVER
+	)
 
 /obj/item/clothing/back/storage/satchel/poly/engineering
 	polymorphs = list(

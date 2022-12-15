@@ -120,12 +120,12 @@
 		/obj/item/magazine/lmg_762,
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod,
-		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/magazine/pistol_12mm/nt,
-		/obj/item/magazine/pistol_12mm/nt,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
+		/obj/item/magazine/pistol_12mm,
 		/obj/item/weapon/melee/energy/handsword
 
 	)

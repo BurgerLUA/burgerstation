@@ -73,7 +73,7 @@
 				play_sound('sound/effects/portal_suck.ogg',T)
 				next_sell = max(next_sell,world.time + SECONDS_TO_DECISECONDS(10))
 
-	else //failed.
+	else if(ai.last_movement_proc == "cleaning") //failed.
 
 		var/turf/T_right = get_step(src,turn(src.dir,-90))
 		var/turf/T_left = get_step(src,turn(src.dir,90))

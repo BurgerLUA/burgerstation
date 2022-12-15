@@ -27,6 +27,9 @@
 /obj/item/clothing/underbottom/underwear/boxers/engineering
 	color = COLOR_ENGINEERING
 
+/obj/item/clothing/underbottom/underwear/boxers/janitor
+	color = COLOR_JANITOR
+
 /obj/item/clothing/underbottom/underwear/boxers/medical
 	color = COLOR_MEDICAL
 

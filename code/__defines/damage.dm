@@ -48,3 +48,4 @@
 #define SURPLUS_MUL 0.75
 #define PREMIUM_MUL 1.25
 #define DU_MUL 1.5
+#define HP_MUL 1.5

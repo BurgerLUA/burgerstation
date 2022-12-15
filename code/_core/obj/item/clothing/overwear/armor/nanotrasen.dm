@@ -37,3 +37,20 @@
 		"chest" = COLOR_BROWN,
 		"shoulders" = COLOR_VISIBLE_GREEN
 	)
+
+
+/obj/item/clothing/overwear/armor/nanotrasen/janitor
+
+	polymorphs = list(
+		"base" = COLOR_JANITOR,
+		"chest" = COLOR_GREY,
+		"shoulders" = COLOR_GOLD
+	)
+
+/obj/item/clothing/overwear/armor/nanotrasen/nt_ops
+
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"chest" = COLOR_BLACK,
+		"shoulders" = COLOR_BLACK
+	)

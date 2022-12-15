@@ -1,6 +1,9 @@
-/obj/structure/interactive/vending/nanotrasen/wardrobe
-	name = "security wardrobe vendor"
-	icon_state = "secdrobe_new"
+/obj/structure/interactive/vending/nanotrasen/normal
+	icon = 'icons/obj/structure/vending_new.dmi'
+
+/obj/structure/interactive/vending/nanotrasen/normal/clothing
+	name = "nanotrasen wardrobe vendor"
+	icon_state = "regular_clothing"
 
 	icon_state_broken = null
 	icon_state_off = null
@@ -8,38 +11,51 @@
 	icon_state_panel = null
 
 	stored_types = list(
-		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/underbottom/underwear/boxers/nanotrasen,
-		/obj/item/clothing/undertop/underwear/shirt/black,
+		//Socks and Underwear
+		/obj/item/storage/underwear,
+
+		//Pants and Shirt
 		/obj/item/clothing/pants/normal/striped/nanotrasen,
 		/obj/item/clothing/shirt/normal/uniform/nanotrasen,
+
+		//Shoes and gloves.
 		/obj/item/storage/shoebox/jackboot/,
 		/obj/item/storage/glovebox/padded/,
-		/obj/item/clothing/back/storage/satchel/poly/nanotrasen,
-		/obj/item/clothing/back/storage/dufflebag/poly/nanotrasen,
-		/obj/item/clothing/back/storage/backpack/poly/nanotrasen,
+
+		//Headset and Accessories
+		/obj/item/clothing/ears/headset/nanotrasen,
+		/obj/item/clothing/glasses/sun/security,
+
+		//Helmets and masks
+		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
+		/obj/item/clothing/mask/gas/poly/nanotrasen,
+
+		//Armor
+		/obj/item/clothing/overwear/armor/medium_armor/black,
+
+		//Belt and pockets.
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/double/black,
 		/obj/item/storage/pouch/triple/black,
-		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/belt/bandolier/shotgun_12,
-		/obj/item/clothing/mask/gas/poly/nanotrasen,
-		/obj/item/clothing/head/helmet/polymorphic/nanotrasen,
-		/obj/item/clothing/overwear/armor/medium_armor/black,
+
+		//Satchel, Backpack, Duffleback.
+		/obj/item/clothing/back/storage/satchel/poly/nanotrasen,
+		/obj/item/clothing/back/storage/dufflebag/poly/nanotrasen,
+		/obj/item/clothing/back/storage/backpack/poly/nanotrasen,
+
+		//Bonus
 		/obj/item/clothing/overwear/armor/nanotrasen,
 		/obj/item/clothing/head/helmet/full/nanotrasen,
-		/obj/item/weapon/melee/energy/grazer,
-		/obj/item/flare
+
 	)
 
-/obj/structure/interactive/vending/nanotrasen/gundrobe
-	name = "gun vendor"
-	icon_state = "gundrobe"
+/obj/structure/interactive/vending/nanotrasen/normal/guns
 
-	icon_state_broken = null
-	icon_state_off = null
-	icon_state_mask = null
-	icon_state_panel = null
+	name = "nanotrasen gun vendor"
+	icon_state = "regular_guns"
+
 
 	stored_types = list(
 		// 1 melee
@@ -51,9 +67,9 @@
 		/obj/item/weapon/ranged/bullet/revolver/defender,
 
 		//3 smgs or shotguns.
-		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
 
 		// 3 rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
@@ -64,4 +80,23 @@
 		/obj/item/grenade/timed/explosive,
 		/obj/item/grenade/landmine/proximity/explosive,
 
+	)
+
+/obj/structure/interactive/vending/nanotrasen/normal/ammo
+
+	name = "nanotrasen gun vendor"
+	icon_state = "regular_ammo"
+
+	stored_types = list(
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm/hp,
+		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/pistol_10mm/ap,
+		/obj/item/magazine/clip/revolver/bullet_38,
+		/obj/item/magazine/smg_9mm,
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12/flechette,
+		/obj/item/bulletbox/small/shotgun_12/slug,
+		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/rifle_556/ap,
 	)

@@ -33,3 +33,14 @@
 	icon_states = 9
 
 	value = 5
+
+/obj/item/magazine/pistol_9mm/hp
+
+	name = "\improper 9mm HP pistol magazine"
+	icon = 'icons/obj/item/magazine/9mmpistol_hp.dmi'
+	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber. This one has a hollow point tip."
+
+	ammo = /obj/item/bullet_cartridge/pistol_9mm/hp
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_9mm/surplus
+
+	rarity = RARITY_UNCOMMON

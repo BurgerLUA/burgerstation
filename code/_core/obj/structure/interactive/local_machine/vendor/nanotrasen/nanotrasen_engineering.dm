@@ -44,24 +44,40 @@
 	icon_state = "engineering_clothing"
 
 	stored_types = list(
-		/obj/item/clothing/feet/socks/knee,
-		/obj/item/clothing/underbottom/underwear/boxers/nanotrasen,
-		/obj/item/clothing/undertop/underwear/shirt/black,
+		//Socks and Underwear
+		/obj/item/storage/underwear,
+
+		//Pants and Shirt
 		/obj/item/clothing/pants/normal/striped/engineering,
 		/obj/item/clothing/shirt/normal/uniform/engineering,
+
+		//Shoes and gloves.
 		/obj/item/storage/shoebox/workboot,
 		/obj/item/storage/glovebox/yellow,
-		/obj/item/clothing/back/storage/satchel/poly/engineering,
-		/obj/item/clothing/back/storage/dufflebag/poly/engineering,
-		/obj/item/clothing/back/storage/backpack/poly/engineering,
+
+		//Headset and Accessories
+		/obj/item/clothing/ears/headset/nanotrasen,
+
+		//Helmets and masks
+		/obj/item/clothing/head/helmet/polymorphic/engineering,
+		/obj/item/clothing/mask/gas/poly/engineering,
+
+		//Armor
+		/obj/item/clothing/overwear/armor/medium_armor/brown,
+
+		//Belts and pockets
+		/obj/item/clothing/belt/storage/colored/brown,
+		/obj/item/clothing/belt/bandolier/shotgun_12,
 		/obj/item/storage/pouch/single/brown,
 		/obj/item/storage/pouch/double/brown,
 		/obj/item/storage/pouch/triple/brown,
-		/obj/item/clothing/belt/storage/colored/brown,
-		/obj/item/clothing/belt/bandolier/shotgun_12,
-		/obj/item/clothing/mask/gas/poly/engineering,
-		/obj/item/clothing/head/helmet/polymorphic/engineering,
-		/obj/item/clothing/overwear/armor/medium_armor/brown,
+
+		//Satchel, Backpack, Duffleback
+		/obj/item/clothing/back/storage/satchel/poly/engineering,
+		/obj/item/clothing/back/storage/dufflebag/poly/engineering,
+		/obj/item/clothing/back/storage/backpack/poly/engineering,
+
+		//Bonus
 		/obj/item/clothing/overwear/armor/nanotrasen/engineering,
 		/obj/item/clothing/head/helmet/full/nanotrasen/engineering
 	)

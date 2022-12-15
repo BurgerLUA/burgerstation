@@ -16,3 +16,13 @@
 /damagetype/ranged/bullet/pistol_9mm/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
+
+
+/damagetype/ranged/bullet/pistol_9mm/hp
+	attack_damage_base = list(
+		BLUNT = 20*HP_MUL,
+	)
+	attack_damage_penetration = list(
+		BLUNT = -20,
+	)
+	falloff = VIEW_RANGE*0.5

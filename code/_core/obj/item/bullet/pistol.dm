@@ -166,6 +166,17 @@
 
 	penetrations = 1
 
+/obj/item/bullet_cartridge/pistol_9mm/hp
+	name = "\improper HP 9mm pistol cartridge"
+	desc_extended = "For pistols, revolvers, and smgs that require 9mm ammo. This one has a hollow point tip."
+	rarity = RARITY_UNCOMMON
+	icon = 'icons/obj/item/bullet/9mm_hp.dmi'
+
+	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm/hp
+
+	value = 2
+
+
 /obj/item/bullet_cartridge/pistol_4mm/
 	name = "\improper 4.6x30mm smg cartridge"
 	desc = "Pierces armor like butter."

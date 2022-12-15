@@ -59,6 +59,13 @@
 		"straps" = COLOR_BLUE
 	)
 
+/obj/item/clothing/back/storage/dufflebag/poly/janitor
+	polymorphs = list(
+		"body" = COLOR_JANITOR,
+		"detail" = COLOR_BLACK,
+		"straps" = COLOR_BLACK
+	)
+
 /obj/item/clothing/back/storage/dufflebag/poly/recruit
 	vendor_name = "\improper New Recruit's Kit"
 	polymorphs = list(

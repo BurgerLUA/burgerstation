@@ -37,8 +37,6 @@ var/global/list/possible_bosses_to_spawn = list(
 
 	anchored = 2
 
-	pixel_y
-
 	desired_light_power = 0.75
 	desired_light_range = VIEW_RANGE*0.5
 	desired_light_color = "#C67000"

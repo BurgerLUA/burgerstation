@@ -40,6 +40,17 @@
 		"stripes" = COLOR_VISIBLE_GREEN
 	)
 
+/obj/item/clothing/pants/normal/striped/janitor
+	name = "janitor pants"
+	desc = "Stripes improve everything."
+	desc_extended = "The pants of choice for janitors."
+	polymorphs = list(
+		"pants" = COLOR_GREY,
+		"stripes" = COLOR_JANITOR
+	)
+
+
+
 /obj/item/clothing/pants/normal/recruit
 	polymorphs = list(
 		"pants" = COLOR_RECRUIT_DARK
@@ -149,15 +160,6 @@
 	polymorphs = list(
 		"pants" = COLOR_WHITE,
 		"stripes" = COLOR_CHEMISTRY
-	)
-
-/obj/item/clothing/pants/normal/janitor
-	name = "janitor pants"
-	desc = "Stripes improve everything."
-	desc_extended = "The pants of choice for janitors."
-	polymorphs = list(
-		"pants" = COLOR_GREY,
-		"stripes" = COLOR_JANITOR
 	)
 
 /obj/item/clothing/pants/normal/space_cop

@@ -18,21 +18,19 @@
 /obj/disposals_container/Exit(atom/movable/O, atom/newloc)
 	return FALSE //NO ESCAPE
 
-/obj/disposals_container/Destroy()
+/obj/disposals_container/PreDestroy()
+
+	var/turf/T = get_turf(src)
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		if(M.collision_flags & FLAG_COLLISION_ETHEREAL)
-			M.force_move(get_turf(src.loc))
-			continue
-		//var/list/offset = direction_to_pixel_offset(pick(DIRECTIONS_ALL))
-		//M.throw_self(M,null,null,null,offset[1]*10,offset[2]*10)
-		M.force_move(get_turf(src.loc))
+		M.force_move(T)
 
+	. = ..()
+
+/obj/disposals_container/Destroy()
 	visited_pipes.Cut()
-
 	last_pipe = null
-
 	. = ..()
 
 /obj/disposals_container/think()

@@ -7,8 +7,8 @@
 
 	amount = 1
 	amount_max = 1
-	
-	projectile = /obj/projectile/thrown //Something here.
+
+	projectile = /obj/projectile/thrown //Always needs to be thrown
 	shoot_sounds = list('sound/effects/fwoosh.ogg')
 
 	company_type = "Black Spider Clan"
@@ -34,6 +34,8 @@
 		FINALIZE(I)
 		P.appearance = src.appearance
 		P.icon_state = "inventory"
+		P.plane = initial(P.plane)
+		P.layer = initial(P.layer)
 		add_item_count(-1)
 
 /obj/item/weapon/ranged/thrown/kunai

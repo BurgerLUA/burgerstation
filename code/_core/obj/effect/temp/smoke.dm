@@ -1,11 +1,20 @@
-/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255)
+/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255,var/list/optional_reagents)
 	if(!desired_turf)
 		return FALSE
 	var/reagent_container/temp/smoke/T
-	if(container)
+	if(container || length(optional_reagents))
 		T = new(null,1000)
 		T.owner = owner
-		container.transfer_reagents_to(T,container.volume_current,caller=owner) //Transfer everything to this temp container.
+		for(var/k in optional_reagents)
+			var/v = optional_reagents[k]
+			T.add_reagent(k,v, should_update=FALSE,check_recipes=FALSE,caller=owner)
+		if(container)
+			container.transfer_reagents_to(T,container.volume_current,should_update=FALSE,check_recipes=FALSE,caller=owner) //Transfer everything to this temp container.
+			container.update_container(owner)
+			container.process_recipes(owner)
+		T.update_container(owner)
+		T.process_recipes(owner)
+
 
 	var/list/blacklist_turfs = list(T=TRUE)
 	. = new/obj/effect/temp/smoke(desired_turf,desired_duration,blacklist_turfs,T,owner,desired_power,alpha)

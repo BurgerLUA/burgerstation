@@ -176,4 +176,5 @@
 		I.pixel_x = initial(stored_movable.pixel_x)
 		I.pixel_y = initial(stored_movable.pixel_y) - pixel_y
 		I.plane = PLANE_EFFECT
+		I.layer = FLOAT_LAYER
 		add_underlay(I)

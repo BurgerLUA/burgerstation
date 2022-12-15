@@ -84,6 +84,7 @@
 	IM.pixel_y = 4
 	IM.pixel_z = 0
 	IM.plane = PLANE_HUD_OBJ
+	IM.layer = -1
 	add_overlay(IM)
 
 
@@ -128,7 +129,7 @@
 				if(A.movement_flags & MOVEMENT_RUNNING)
 					I.quick_equip(A)
 				else
-					A.put_in_hands(I)
+					A.put_in_hands(I,params)
 
 
 /obj/hud/button/close_vendor

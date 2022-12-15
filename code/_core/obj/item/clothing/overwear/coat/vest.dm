@@ -110,6 +110,13 @@
 		"pockets" = COLOR_BLACK
 	)
 
+/obj/item/clothing/overwear/coat/vest/janitor
+
+	polymorphs = list(
+		"shirt" = COLOR_GREY,
+		"pockets" = COLOR_JANITOR
+	)
+
 /obj/item/clothing/overwear/coat/vest/syndicate
 	name = "syndicate combat webbing"
 	desc = "The pinnacle of torso storaging."

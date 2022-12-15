@@ -87,6 +87,13 @@
 		"filter" = COLOR_PLASTEEL
 	)
 
+/obj/item/clothing/mask/gas/poly/nt_ops
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"eyes" = COLOR_NANOTRASEN,
+		"filter" = COLOR_PLASTEEL
+	)
+
 /obj/item/clothing/mask/gas/poly/syndicate
 	polymorphs = list(
 		"base" = COLOR_BLACK,

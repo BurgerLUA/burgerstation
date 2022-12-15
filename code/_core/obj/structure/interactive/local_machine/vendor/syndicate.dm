@@ -18,7 +18,7 @@
 		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357,
 		/obj/item/magazine/clip/revolver/bullet_357,
-		/obj/item/storage/ammo/bullet_357/,
+		/obj/item/bulletbox/small/revolver_357,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
@@ -205,7 +205,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762{amount=5},
-		/obj/item/storage/ammo/bullet_762/,
+		/obj/item/bulletbox/rifle_762_revolver,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
@@ -228,10 +228,8 @@
 		/obj/item/magazine/rifle_939,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
-		/obj/item/storage/ammo/buckshot_23,
-		/obj/item/storage/ammo/slug_23,
-		/obj/item/storage/ammo/fire_23,
-		/obj/item/storage/ammo/rubber_23,
+		/obj/item/bulletbox/shotgun_23,
+		/obj/item/bulletbox/shotgun_23/slug,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/magazine/shotgun_auto,
@@ -244,7 +242,7 @@
 		/obj/item/magazine/bizon_9mm,
 
 		/obj/item/weapon/ranged/bullet/pump/gm94,
-		/obj/item/storage/ammo/grenade_40mm,
+		/obj/item/bullet_cartridge/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/magazine/lmg_762_r,
