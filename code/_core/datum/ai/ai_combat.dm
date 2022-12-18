@@ -119,6 +119,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
+	if(A.qdeleting || !A.finalized)
+		return FALSE
 	/*
 	if(istype(A,/mob/living/vehicle/))
 		var/mob/living/vehicle/V = A

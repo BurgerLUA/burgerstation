@@ -3,7 +3,7 @@
 	var/list/shoot_sounds = list()
 	var/shoot_alert = ALERT_LEVEL_CAUTION
 
-	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a longer barrel length. Also affects projectile speed.
+	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a longer barrel length.
 
 	var/manufacturing_quality = 1 //The general quality of the weapon. Higher values mean that the weapon is more accurate and handles heat/recoil/whatever better.
 	//NanoTrasen quality should be 1.
@@ -603,9 +603,9 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(use_iff_tag && firing_pin)
 		firing_pin.on_shoot(caller,src)
 
-	update_sprite()
-
 	use_condition(condition_to_use)
+
+	update_sprite()
 
 	if(click_called && automatic && caller.client && is_player(caller)) //Automatic fire.
 		SSclient.queued_automatics[src] = list(

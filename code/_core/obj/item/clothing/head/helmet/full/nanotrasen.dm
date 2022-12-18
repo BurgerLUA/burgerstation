@@ -44,3 +44,10 @@
 		"visor" = COLOR_GOLD,
 		"stripe" = COLOR_BLACK
 	)
+
+/obj/item/clothing/head/helmet/full/nanotrasen/science
+	polymorphs = list(
+		"base" = "#D8D39C",
+		"visor" = "#2ACCFF",
+		"stripe" = COLOR_SCIENCE
+	)

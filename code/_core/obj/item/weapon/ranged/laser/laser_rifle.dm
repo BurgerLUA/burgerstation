@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/energy/rifle
 	name = "AER13 Laser Rifle"
 	desc = "Pew pew pew!"
-	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard beam."
+	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one is the standard variant."
 	icon = 'icons/obj/item/weapons/ranged/laser/modular.dmi'
 	value = 2000
 
@@ -32,14 +32,15 @@
 	)
 
 	size = SIZE_4
-	weight = 14
+	weight = 20
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
 		/obj/item/attachment/barrel/compensator = FALSE,
 		/obj/item/attachment/barrel/extended = FALSE,
 		/obj/item/attachment/barrel/gyro = FALSE,
-		/obj/item/attachment/barrel/laser_charger = TRUE, /obj/item/attachment/barrel/laser_charger/advanced = TRUE,
+		/obj/item/attachment/barrel/laser_charger = TRUE,
+		/obj/item/attachment/barrel/laser_charger/advanced = TRUE,
 		/obj/item/attachment/barrel/suppressor = FALSE,
 		/obj/item/attachment/barrel_mod/reinforced_barrel = TRUE,
 		/obj/item/attachment/stock_mod/reinforced_stock = TRUE,
@@ -50,8 +51,6 @@
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
-
-
 
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
@@ -72,6 +71,8 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.04
 
+	can_wield = TRUE
+
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
 	return 0.005
 
@@ -84,6 +85,8 @@
 
 /obj/item/weapon/ranged/energy/rifle/update_overlays()
 
+	. = ..()
+
 	var/obj/item/powercell/PC = get_battery()
 
 	var/true_charge = istype(PC) ? FLOOR(PC.charge_current/charge_cost, 1) / FLOOR(PC.charge_max/charge_cost, 1) : 0
@@ -91,7 +94,6 @@
 	var/image/I = new/image(initial(icon),"ammo_[CEILING(true_charge * 8, 1)]")
 	I.color = polymorphs["barrel"]
 	add_overlay(I)
-	return ..()
 
 /obj/item/weapon/ranged/energy/rifle/update_sprite()
 	. = ..()

@@ -173,7 +173,7 @@
 
 		return TRUE
 
-	return ..()
+	. = ..()
 
 /turf/simulated/update_overlays()
 

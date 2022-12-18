@@ -219,7 +219,7 @@
 		. *= max(2 - stealth_mod*0.5,1)
 
 	if(ckey_last)
-		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
+		. *= 2 - min(1,get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod())
 
 	if(intoxication)
 		. *= 1 + intoxication*0.003

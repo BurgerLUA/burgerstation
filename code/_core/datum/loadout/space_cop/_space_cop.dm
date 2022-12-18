@@ -9,7 +9,7 @@
 		/obj/item/clothing/hands/gloves/colored/padded/black/left,
 		/obj/item/clothing/mask/gas/space_cop,
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype,
 		/obj/item/weapon/melee/energy/stunbaton,
 		/obj/item/magazine/pistol_40,
 		/obj/item/magazine/pistol_40,

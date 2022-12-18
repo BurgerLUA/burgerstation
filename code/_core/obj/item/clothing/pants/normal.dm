@@ -49,6 +49,11 @@
 		"stripes" = COLOR_JANITOR
 	)
 
+/obj/item/clothing/pants/normal/striped/scientist
+	polymorphs = list(
+		"pants" = COLOR_WHITE,
+		"stripes" = COLOR_SCIENCE
+	)
 
 
 /obj/item/clothing/pants/normal/recruit

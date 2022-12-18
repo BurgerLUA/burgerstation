@@ -374,8 +374,6 @@
 				update_held_icon(I)
 			A.queue_update_items = TRUE
 
-	update_stats()
-
 	if(I.loc != src) //Something went wrong.
 		if(!owner)
 			usr.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 01"))
@@ -385,11 +383,14 @@
 		return TRUE
 
 	I.on_pickup(old_location,src)
+	I.update_inventory()
 
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
 
 	vis_contents += I
+
+	update_stats()
 
 	return TRUE
 
@@ -448,8 +449,6 @@
 	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
 	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
-	update_stats()
-
 	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
@@ -472,6 +471,9 @@
 	vis_contents -= I
 
 	I.on_drop(src,silent)
+	I.update_inventory()
+
+	update_stats()
 
 	return I
 
@@ -492,10 +494,6 @@
 		desc_extended = initial(desc_extended)
 
 	tooltip_text = get_tooltip_text()
-
-	if(is_item(src.loc))
-		var/obj/item/I2 = src.loc
-		I2.update_inventory()
 
 	HOOK_CALL("update_stats")
 

@@ -9,7 +9,6 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/mod,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod,

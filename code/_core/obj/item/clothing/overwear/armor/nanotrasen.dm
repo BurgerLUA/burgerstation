@@ -54,3 +54,11 @@
 		"chest" = COLOR_BLACK,
 		"shoulders" = COLOR_BLACK
 	)
+
+/obj/item/clothing/overwear/armor/nanotrasen/science
+
+	polymorphs = list(
+		"base" = "#D8D39C",
+		"chest" = "#564F49",
+		"shoulders" = COLOR_SCIENCE
+	)

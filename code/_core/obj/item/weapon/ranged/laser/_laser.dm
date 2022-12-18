@@ -15,6 +15,8 @@
 
 	use_iff_tag = TRUE
 
+	damage_mod = 1
+
 /obj/item/weapon/ranged/energy/Destroy()
 	QDEL_NULL(battery)
 	. = ..()

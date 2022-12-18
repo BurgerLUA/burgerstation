@@ -1,33 +1,31 @@
-/obj/item/weapon/ranged/bullet/pump/shotgun/doom
-	name = "That Shotgun"
-	desc = "Packs a punch (not a kick, that's another series)."
-	desc_extended = "A 12 gauge wooded shotgun for those who care more about the classic shotguns than what's currently out there."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/sol/classic.dmi'
+/obj/item/weapon/ranged/bullet/pump/shotgun/frenchie
+	name = "12g Frenchie"
+	desc = "Ahhhhhhhhhh, the french-"
+	desc_extended = "An early prototype of an experimental shotgun designed to shoot two slugs at once out of one barrel. That never worked out well."
+	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/frenchie.dmi'
+	icon_state = "inventory"
+	value = 800
 
-	company_type = "Solarian"
+	company_type = "NanoTrasen"
+
+	tier = 3
+
+	shoot_delay = 5
 
 	damage_mod = 1.3
 
-	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
-	pump_sound = 'sound/weapons/shotgun_pump_old.ogg'
-
-	value = 4000
-	tier = 3
-
 	automatic = FALSE
 
-	shoot_delay = 4
-	damage_mod = 2
-	heat_max = 0
-	bullet_count_max = 6
-	pump_delay = 6
+	bullet_count_max = 7
 
-	size = SIZE_4
-	weight = 12
+	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 
-	dan_mode = TRUE
+	size = SIZE_4
+	weight = 11
+
+	heat_max = 0.08
 
 	bullet_length_min = 76
 	bullet_length_best = 76.2
@@ -37,8 +35,11 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
+	dan_mode = TRUE
+
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -54,32 +55,30 @@
 		/obj/item/attachment/sight/scope/large = TRUE,
 		/obj/item/attachment/sight/targeting_computer = TRUE,
 
-
-
 		/obj/item/attachment/undermount/angled_grip = TRUE,
 		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
+	attachment_barrel_offset_x = 30 - 16
+	attachment_barrel_offset_y = 18 - 16
 
-
-	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 19 - 16
-
-	attachment_sight_offset_x = 20 - 16
+	attachment_sight_offset_x = 14 - 16
 	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 31 - 16
-	attachment_undermount_offset_y = 18 - 16
+	attachment_undermount_offset_x = 28 - 16
+	attachment_undermount_offset_y = 15 - 16
 
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_static_spread()
-	return 0.005
+	pump_delay = 4
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_skill_spread(var/mob/living/L)
-	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
+/obj/item/weapon/ranged/bullet/pump/shotgun/frenchie/get_static_spread()
+	return 0.004
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_base_spread()
+/obj/item/weapon/ranged/bullet/pump/shotgun/frenchie/get_skill_spread(var/mob/living/L)
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+
+/obj/item/weapon/ranged/bullet/pump/shotgun/frenchie/get_base_spread()
 	return 0.1

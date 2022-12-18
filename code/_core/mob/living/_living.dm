@@ -37,7 +37,7 @@
 	var/nutrition_fast = 0
 	var/hydration = 1000
 	var/hydration_max = 1000
-	var/nutrition_quality = 1000 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that.
+	var/nutrition_quality = 1500 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that. 1000 is average.
 	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
@@ -742,8 +742,8 @@
 	var/list/params = list()
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
-	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,TRUE,TRUE)
-	var/damagetype/D = all_damage_types[/damagetype/explosion/]
+	var/damagetype/D = all_damage_types[/damagetype/explosion]
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE
 

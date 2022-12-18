@@ -74,13 +74,13 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
-	name = ".40 Auto-19 MOD"
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype
+	name = ".40 Auto-18 Prototype"
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_2.dmi'
 	desc_extended = "A modified variant of the 9mm Auto Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 600
 	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
-	shoot_delay = 1.25
+	shoot_delay = 2
 	tier = 2
 
 
@@ -105,10 +105,10 @@
 
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread()
-	return 0
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype/get_static_spread()
+	return 0.001
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 
