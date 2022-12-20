@@ -29,7 +29,6 @@ SUBSYSTEM_DEF(explosion)
 
 /subsystem/explosion/on_life()
 
-	explosion_ticks++
 	if(explosion_ticks >= 4)
 		for(var/k in damage_to_process)
 			var/atom/victim = k
@@ -40,12 +39,20 @@ SUBSYSTEM_DEF(explosion)
 			for(var/j in explosion_data)
 				var/atom/owner = j
 				var/list/explosion_subdata = explosion_data[j]
-				victim.act_explode(owner,explosion_subdata["source"],explosion_subdata["epicenter"],explosion_subdata["magnitude"],explosion_subdata["loyalty_tag"])
+				victim.act_explode(
+					owner,
+					explosion_subdata["source"],
+					explosion_subdata["epicenter"],
+					explosion_subdata["magnitude"],
+					explosion_subdata["loyalty_tag"]
+				)
 				explosion_data -= j
 				CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 			if(!length(explosion_data))
 				damage_to_process -= k
-		explosion_ticks = 0
+		explosion_ticks = 1
+	else
+		explosion_ticks++
 
 	for(var/k in active_explosions)
 		var/obj/explosion_process/EP = k

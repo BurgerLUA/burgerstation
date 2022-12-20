@@ -9,9 +9,10 @@
 	layer = 100 //Makes it above the hunger meter.
 	screen_loc = "RIGHT:-1,CENTER-1:-4"
 	var/last_mood = 50
+	user_colors = FALSE
 
 /obj/hud/button/mood/update_icon()
-	. = ..()
+
 	switch(last_mood)
 		if(-INFINITY to 10)
 			color = "#FF0000" //Red
@@ -34,6 +35,8 @@
 		if(100 to INFINITY)
 			color = "#4CFF00" //Greener
 			icon_state = "100"
+
+	. = ..()
 
 
 /obj/hud/button/mood/get_examine_list(var/mob/caller)

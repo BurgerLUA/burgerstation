@@ -73,14 +73,14 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 	owner = null
 	. = ..()
 
-/obj/hud/update_icon()
+/obj/hud/update_sprite()
+
+	. = ..()
 
 	if(user_colors)
 		var/icon/I = new/icon(initial(icon),icon_state)
 		swap_colors(I)
 		icon = I
-
-	. = ..()
 
 /obj/hud/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)
 	CRASH("[attacker.get_debug_name()] tried to attack [victim] with a HUD object!")

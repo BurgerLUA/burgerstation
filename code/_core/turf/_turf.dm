@@ -332,9 +332,6 @@
 			var/chunk/old_chunk = SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
 			if(old_chunk) old_chunk.cleanables -= exiter
 
-/turf/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-	return istype(health)
-
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 
 	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT && !ismob(enterer))
@@ -363,8 +360,7 @@
 		var/atom/movable/M = k
 		M.act_explode(owner,source,epicenter,magnitude,desired_loyalty_tag)
 
-	return ..()
-
+	. = ..()
 
 
 /turf/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)

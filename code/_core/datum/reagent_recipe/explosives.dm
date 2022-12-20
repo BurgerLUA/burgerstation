@@ -46,7 +46,7 @@
 		var/obj/item/I = container.owner
 		I.drop_item(explosion_location)
 
-	var/explosion_power = round( ((magnitude*2 ** 0.3) * 0.5) + magnitude*2*0.025, 0.01)
+	var/explosion_power = round( ((magnitude ** 0.3) * 0.5) + magnitude*0.025, 0.01)
 
 	var/tag_to_use
 	if(is_living(caller))
@@ -86,7 +86,7 @@
 		var/obj/item/I = container.owner
 		I.drop_item(explosion_location)
 
-	var/explosion_power = round( ((magnitude ** 0.3) * 0.5) + magnitude*0.0125, 0.01)
+	var/explosion_power = round( ((magnitude ** 0.3) * 0.5) + magnitude*0.025, 0.01)
 
 	var/tag_to_use
 	if(is_living(caller))

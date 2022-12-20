@@ -749,6 +749,8 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
+	. = ..()
+
 	if(magnitude > 3)
 
 		var/x_mod = src.x - epicenter.x
@@ -764,8 +766,6 @@ var/global/list/rarity_to_mul = list(
 			y_mod *= 1/max
 
 		throw_self(owner,null,null,null,max(TILE_SIZE-1,x_mod*magnitude*2),max(TILE_SIZE-1,y_mod*magnitude*2))
-
-	return ..()
 
 /obj/item/proc/get_overlay_ids()
 	return list("\ref[src]")

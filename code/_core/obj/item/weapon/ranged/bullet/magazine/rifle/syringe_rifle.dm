@@ -75,6 +75,8 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.03
 
+	var/reagent_per_shot = 5
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
@@ -87,6 +89,19 @@
 		icon_state = initial(icon_state)
 
 	..()
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+
+	. = ..()
+
+	if(stored_magazine && stored_magazine.reagents)
+		for(var/k in .)
+			var/obj/projectile/P = k
+			if(P.reagents)
+				stored_magazine.reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller)
+
+
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_static_spread()
 	return 0
