@@ -99,13 +99,11 @@
 		if(PC) PC.charge_current = max(0,PC.charge_current-rand(8,12))
 		if(!PC || PC.charge_current <= 0) //NO MORE CHARGE.
 			active = FALSE
-			var/obj/hud/inventory/I = src.loc
 			update_sprite()
-			if(istype(I))
+			if(is_inventory(src.loc))
+				var/obj/hud/inventory/I = src.loc
 				disable(I)
-				if(I.worn && is_advanced(I.owner))
-					var/mob/living/advanced/A = I.owner
-					A.remove_overlay("\ref[src]")
+				if(I.worn)
 					I.update_worn_icon(src)
 
 	return active
@@ -142,9 +140,7 @@
 			disable(I)
 		caller.to_chat(span("notice","You toggle \the [src.name] [active ? "on" : "off"]."))
 		update_sprite()
-		if(I.worn && is_advanced(I.owner))
-			var/mob/living/advanced/A = I.owner
-			A.remove_overlay("\ref[src]")
+		if(I.worn)
 			I.update_worn_icon(src)
 		return TRUE
 

@@ -407,18 +407,12 @@
 
 	item_to_update.initialize_blends(desired_icon_state)
 
-	if(istype(item_to_update,/obj/item/clothing/back/wings))
-		A.add_overlay_tracked("wings_behind",item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
-		A.add_overlay_tracked("wings_front",item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
-		A.add_overlay_tracked("wings_side",item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
-	else
-		var/desired_layer = item_to_update.worn_layer
-		if(advanced_layering)
-			var/key = contents.Find(item_to_update)
-			if(key != 1)
-				var/obj/item/I = contents[1]
-				desired_layer = I.worn_layer + (key)*0.01
-		A.add_overlay_tracked("\ref[item_to_update]",item_to_update,desired_layer = desired_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
+	item_to_update.handle_overlays(
+		A,
+		add=TRUE,
+		worn=TRUE,
+		icon_state_override=desired_icon_state
+	)
 
 	return TRUE
 
@@ -452,13 +446,7 @@
 	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(worn && istype(I,/obj/item/clothing/back/wings))
-				A.remove_overlay("wings_behind")
-				A.remove_overlay("wings_front")
-				A.remove_overlay("wings_side")
-			else
-				A.remove_overlay("\ref[I]")
-
+			I.handle_overlays(A,add=FALSE)
 			if(!A.qdeleting)
 				if(worn)
 					A.worn_objects -= I

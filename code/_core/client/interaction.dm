@@ -111,9 +111,12 @@
 	if(click_flags & CLICK_MIDDLE)
 		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (is_turf(object) || is_turf(object.loc)))
 			if(spam_protection_interact <= 10)
+				var/turf/T = get_turf(mob)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
-				A.pixel_x = new_params[PARAM_ICON_X] - 16
-				A.pixel_y = new_params[PARAM_ICON_Y] - 16
+				A.pixel_x = (T.x - A.x)*TILE_SIZE
+				A.pixel_y = (T.y - A.y)*TILE_SIZE + TILE_SIZE
+				A.desired_pixel_x = new_params[PARAM_ICON_X] - 16
+				A.desired_pixel_y = new_params[PARAM_ICON_Y] - 16
 				A.invisibility = mob.invisibility
 				INITIALIZE(A)
 				FINALIZE(A)

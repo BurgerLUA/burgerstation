@@ -65,17 +65,16 @@
 	stored_types = list(
 		//3 melee
 		/obj/item/weapon/unarmed/powerfist,
-		/obj/item/weapon/melee/energy/sword/katana/merc,
-		/obj/item/weapon/melee/energy/handsword,
+
 
 		//3 pistols
 		/obj/item/weapon/ranged/energy/hybrid/carbine/small,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype,
+		/obj/item/weapon/ranged/bullet/revolver/defender,
 
 		//3 smgs or shotguns
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
 		/obj/item/weapon/ranged/energy/hybrid/carbine,
-		/obj/item/weapon/ranged/bullet/magazine/smg/pdw2,
-		/obj/item/weapon/ranged/bullet/pump/shotgun/frenchie,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/tech,
 
 		//3 rifles
 		/obj/item/weapon/ranged/energy/rifle,
@@ -104,9 +103,13 @@
 		/obj/item/powercell,
 		/obj/item/powercell/advanced,
 		/obj/item/powercell/industrial,
-		/obj/item/magazine/pistol_40,
-		/obj/item/magazine/smg_pdw2,
+		/obj/item/magazine/smg_pdw,
+		/obj/item/magazine/smg_pdw/ap,
+		/obj/item/magazine/smg_pdw/incendiary,
+		/obj/item/magazine/smg_pdw/ion,
+		/obj/item/magazine/smg_pdw/toxin,
 		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/bulletbox/small/shotgun_12/flechette,
 		/obj/item/bulletbox/small/shotgun_12/slug,
+		/obj/item/bulletbox/small/shotgun_12/techshot
 	)

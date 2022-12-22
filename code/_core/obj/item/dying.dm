@@ -43,10 +43,7 @@
 			C.sync_additional_clothing()
 		if(is_inventory(loc))
 			var/obj/hud/inventory/I = loc
-			if(I.worn && is_advanced(I.owner))
-				var/mob/living/advanced/A = I.owner
-				A.remove_overlay("\ref[src]")
-				I.update_worn_icon(src)
+			if(I.worn) I.update_worn_icon(src)
 
 		return TRUE
 	else

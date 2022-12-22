@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(map_node)
 		if(M)
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			continue
-		M = new(T)
+		M = new(T,TRUE)
 		auto_nodes += M
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 

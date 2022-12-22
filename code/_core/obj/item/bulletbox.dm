@@ -271,6 +271,11 @@
 	bullet_whitelist = list(/obj/item/bullet_cartridge/shotgun_12/flechette = TRUE)
 	icon = 'icons/obj/item/bulletbox_12_flechette.dmi'
 
+/obj/item/bulletbox/small/shotgun_12/techshot
+	stored_bullet = /obj/item/bullet_cartridge/shotgun_12/techshot
+	bullet_whitelist = list(/obj/item/bullet_cartridge/shotgun_12/techshot = TRUE)
+	icon = 'icons/obj/item/bulletbox_12_techshot.dmi'
+
 /obj/item/bulletbox/small/revolver_357
 	stored_bullet = /obj/item/bullet_cartridge/revolver_357
 	bullet_whitelist = list(/obj/item/bullet_cartridge/revolver_357 = TRUE)

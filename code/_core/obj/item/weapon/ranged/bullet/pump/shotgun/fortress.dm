@@ -1,8 +1,8 @@
-/obj/item/weapon/ranged/bullet/pump/shotgun/classic
+/obj/item/weapon/ranged/bullet/pump/shotgun/fortress
 	name = "12g Fortress Defender"
 	desc = "They don't make them like they used to."
 	desc_extended = "A compact yet still powerful pump action shotgun meant for home and fortress defence. One of the first weapons manufactured by NanoTrasen when they were just an iron mining company."
-	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/pump_2.dmi'
+	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/fortress.dmi'
 	icon_state = "inventory"
 	value = 800
 
@@ -73,11 +73,11 @@
 
 	pump_delay = 3
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/classic/get_static_spread()
+/obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_static_spread()
 	return 0.015
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/classic/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/classic/get_base_spread()
+/obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_base_spread()
 	return 0.15

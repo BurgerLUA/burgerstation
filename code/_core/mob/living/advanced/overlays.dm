@@ -4,9 +4,8 @@
 		k = "\ref[object]"
 
 	if(overlays_assoc[k])
+		log_error("An overlay of reference [k] for [object.get_debug_name()] already exists! Removing and replacing...")
 		remove_overlay(k)
-		CRASH("An overlay of reference [k] already exists! Removing and replacing...")
-
 
 	var/image/overlay/O = new /image/overlay
 	if(object)

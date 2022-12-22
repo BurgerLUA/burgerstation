@@ -161,3 +161,22 @@
 
 	size = 0.04
 	value = 3
+
+
+/obj/item/bullet_cartridge/shotgun_12/techshot
+	name = "\improper 12 gauge techshot"
+	rarity = RARITY_RARE
+	desc = "Shoots one really big bullet."
+	desc_extended = "Shoots a focused laser."
+	icon_state = "techshot"
+
+	projectile_count = 1
+	base_spread = 0
+
+	projectile = /obj/projectile/bullet/laser/plasma_cutter
+	damage_type_bullet = /damagetype/ranged/laser/pulse
+
+	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
+
+	size = 0.04
+	value = 3

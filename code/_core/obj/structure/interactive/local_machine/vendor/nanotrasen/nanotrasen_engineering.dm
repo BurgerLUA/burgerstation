@@ -26,7 +26,7 @@
 		//3 smgs or shotguns
 		/obj/item/weapon/ranged/bullet/magazine/smg/smart,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten, //Really an SMG.
-		/obj/item/weapon/ranged/bullet/pump/shotgun/classic,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/fortress,
 
 		//3 rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc,

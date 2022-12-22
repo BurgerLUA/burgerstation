@@ -54,7 +54,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		update_icon()
 		queue_power_update = FALSE
 
-	var/charge_to_take = min(1,charge)
+	var/charge_to_take = min(charge,50 + charge*0.05)
 	if(charge_to_take > 0)
 		add_charge(-charge_to_take)
 		if(charge >= charge_max*0.25 && charge <= charge_max*0.5) //Healing sweet spot.
@@ -117,21 +117,21 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		charge_amount = charge_max*0.9
 		visible_message(span("danger","\The [src.name] flashes  violently!"))
 		use_radio(src,src,"WARNING: Supermatter overcharge detected! Dumping excess energy!",LANGUAGE_BASIC,TEXT_RADIO,RADIO_FREQ_COMMON,LANGUAGE_BASIC,TALK_RANGE)
-		explode(T,VIEW_RANGE,T,T,"Supermatter")
+		explode(T,VIEW_RANGE,src,src,"Supermatter")
 	else if(charge < 0)
 		var/turf/T = get_turf(src)
 		health.adjust_loss(BRUTE,health.health_max*0.1)
 		charge_amount = charge_max*0.1
 		use_radio(src,src,"WARNING: Supermatter negative charge detected! Implosion detected!",LANGUAGE_BASIC,TEXT_RADIO,RADIO_FREQ_COMMON,LANGUAGE_BASIC,TALK_RANGE)
 		visible_message(span("danger","\The [src.name] creaks violently!"))
-		explode(T,VIEW_RANGE,T,T,"Supermatter")
+		explode(T,VIEW_RANGE,src,src,"Supermatter")
 
 	return TRUE
 
 /obj/structure/interactive/supermatter/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
-	if(damage_amount > 0) add_charge(FLOOR(damage_amount*0.1,1))
+	if(damage_amount > 0) add_charge(FLOOR(damage_amount*0.5,1))
 
 	if(health)
 		var/health_percent = health.health_current/health.health_max
@@ -140,7 +140,8 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 			trigger_warning()
 		//update_map_text()
 
-	if(weapon && DT.get_attack_type() == ATTACK_TYPE_MELEE && get_dist(src,weapon) <= 2)
+	if(weapon && DT.get_attack_type() == ATTACK_TYPE_MELEE)
+
 		if(weapon.health)
 			weapon.health.adjust_loss_smart(burn=400)
 		else if(is_item(weapon))
@@ -154,7 +155,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 			GENERATE(SC)
 			FINALIZE(SC)
 			var/turf/T = get_turf(src)
-			explode(T,4,T,T,"Supermatter")
+			explode(T,4,src,src,"Supermatter")
 
 /obj/structure/interactive/supermatter/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	if(source == src)
@@ -170,7 +171,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		var/mob/living/L = caller
 		if(L.is_player_controlled())
 			log_admin("Player [L.get_debug_name()] belonging to [L.loyalty_tag] destroyed a supermatter.")
-	explode(T,VIEW_RANGE*2,T,T,"Supermatter")
+	explode(T,VIEW_RANGE*2,src,src,"Supermatter")
 
 /*
 /obj/structure/interactive/supermatter/proc/update_map_text()
