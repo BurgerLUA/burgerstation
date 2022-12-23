@@ -120,7 +120,7 @@
 
 	for(var/k in additional_clothing_stored)
 		var/obj/item/C = k
-		C.initialize_blends()
+		C.initialize_blends(desired_icon_state)
 
 /obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()

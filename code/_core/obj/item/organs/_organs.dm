@@ -126,7 +126,6 @@
 /obj/item/organ/update_sprite()
 	. = ..()
 	transform = get_base_transform()
-
 	if(has_dropped_icon && !is_advanced(loc) && enable_skin && additional_blends["skin"])
 		var/icon_blend/IB = additional_blends["skin"]
 		color = IB.color
@@ -134,18 +133,13 @@
 		color = null
 
 /obj/item/organ/update_icon()
-
 	. = ..()
-
 	icon_state = initial(icon_state)
-
 	if(has_dropped_icon && !is_advanced(loc))
 		icon_state = "[icon_state]_inventory"
 
 /obj/item/organ/update_underlays()
-
 	. = ..()
-
 	if(has_dropped_icon_underlay && !is_advanced(loc))
 		var/image/I = new/image(initial(icon),"[icon_state]_underlay")
 		add_underlay(I)
@@ -315,7 +309,7 @@
 	O.attached_organs += src
 	return TRUE
 
-/obj/item/organ/initialize_blends()
+/obj/item/organ/initialize_blends(var/desired_icon_state)
 
 	if(enable_skin)
 		add_blend("skin", desired_color = "#FF0000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)

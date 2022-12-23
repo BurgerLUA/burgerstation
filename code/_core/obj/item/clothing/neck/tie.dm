@@ -23,6 +23,9 @@
 /obj/item/clothing/neck/tie/red
 	color = "#FF0000"
 
+/obj/item/clothing/neck/tie/pink
+	color = COLOR_PINK
+
 /obj/item/clothing/neck/tie/black
 	color = "#050505"
 

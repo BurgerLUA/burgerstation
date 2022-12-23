@@ -15,6 +15,8 @@
 #define BODY_TORSO_OB "torso_ob"
 #define BODY_TORSO_MALE "torso_m"
 #define BODY_TORSO_FEMALE "torso_f"
+#define BODY_TORSO_MALE_FAT "torso_m_fat"
+#define BODY_TORSO_FEMALE_FAT "torso_f_fat"
 
 #define BODY_GROIN "groin"
 #define BODY_GROIN_O "groin_o"

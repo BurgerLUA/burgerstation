@@ -55,6 +55,11 @@
 		"stripes" = COLOR_SCIENCE
 	)
 
+/obj/item/clothing/pants/normal/striped/zombie_clown
+	polymorphs = list(
+		"pants" = COLOR_PINK,
+		"stripes" = COLOR_RED
+	)
 
 /obj/item/clothing/pants/normal/recruit
 	polymorphs = list(

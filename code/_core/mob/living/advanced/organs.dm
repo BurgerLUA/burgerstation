@@ -25,7 +25,7 @@
 		INITIALIZE(O)
 		FINALIZE(O)
 
-	if(O.enable_overlay) O.handle_overlays(src,add=TRUE,worn=FALSE)
+	if(O.enable_overlay) O.handle_overlays(src,add=TRUE)
 
 	O.on_organ_add(src)
 

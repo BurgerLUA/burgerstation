@@ -29,6 +29,12 @@
 		"stripes" = COLOR_BLACK
 	)
 
+/obj/item/clothing/shirt/normal/striped/zombie_clown
+	polymorphs = list(
+		"shirt" = COLOR_WHITE,
+		"stripes" = COLOR_BLOOD
+	)
+
 /obj/item/clothing/shirt/normal/uniform
 	name = "uniformed shirt"
 	desc = "It's hip to be square"

@@ -590,13 +590,13 @@ var/global/list/debug_verbs = list(
 	var/list/tracked_zombies = list()
 	spawn while(world.time <= time_to_stop)
 		for(var/k in tracked_zombies)
-			var/mob/living/advanced/npc/zombie/civilian/Z = k
+			var/mob/living/advanced/npc/zombie/normal/Z = k
 			if(Z.dead) tracked_zombies -= Z
 		sleep(SECONDS_TO_DECISECONDS(5))
 		if(length(tracked_zombies) >= 8)
 			continue
 		var/turf/T = pick(horde_test_turfs)
-		var/mob/living/advanced/npc/zombie/civilian/Z = new(T)
+		var/mob/living/advanced/npc/zombie/normal/Z = new(T)
 		INITIALIZE(Z)
 		GENERATE(Z)
 		FINALIZE(Z)
