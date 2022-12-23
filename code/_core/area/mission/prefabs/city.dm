@@ -201,3 +201,30 @@
 
 /area/mission/prefab/city/chess/bathroom
 	icon_state = "blue"
+
+
+/area/mission/prefab/city/the_coderbus
+	name = "\improper The Coderbus"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/the_coderbus/bathroom
+	icon_state = "blue"
+
+
+
+/area/mission/prefab/city/the_outer_spess
+	name = "\improper The Outer Spess"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+

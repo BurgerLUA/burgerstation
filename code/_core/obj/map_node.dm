@@ -105,8 +105,6 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 
 	if(!found)
 		if(!automatic) log_error("Invalid node! [src.get_debug_name()].")
-		qdel(src)
-
 
 	return found
 

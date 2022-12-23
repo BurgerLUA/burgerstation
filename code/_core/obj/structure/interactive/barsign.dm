@@ -91,10 +91,10 @@ obj/structure/interactive/bar_sign/debug
 	desc = "Wait what?"
 	icon_state = "thecoderbus"
 
-obj/structure/interactive/bar_sign/outer_space
-	name = "The Outer Space"
+obj/structure/interactive/bar_sign/the_outer_spess
+	name = "The Outer Spess"
 	desc = "Wait what?"
-	icon_state = "theouterspess"
+	icon_state = "the_outer_spess"
 
 obj/structure/interactive/bar_sign/adminbus
 	name = "The adminbus"
@@ -120,3 +120,8 @@ obj/structure/interactive/bar_sign/chess
 	name = "Chess"
 	desc = "Wait what?"
 	icon_state = "chess"
+
+obj/structure/interactive/bar_sign/the_coderbus
+	name = "The Coderbus"
+	desc = "Wait what?"
+	icon_state = "the_coderbus"
