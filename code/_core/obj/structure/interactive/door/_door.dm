@@ -115,11 +115,14 @@ obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/fo
 
 /obj/structure/interactive/door/proc/unlock(var/mob/caller,var/force = FALSE)
 	locked = FALSE
+	if(initial(allow_path))
+		allow_path = TRUE
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/door/proc/lock(var/mob/caller,var/force = FALSE)
 	locked = TRUE
+	allow_path = FALSE
 	update_sprite()
 	return TRUE
 

@@ -101,7 +101,7 @@
 
 	. = ..()
 
-	if(src.z)
+	if(.)
 		for(var/k in light_sprite_sources)
 			var/obj/light_sprite/LS = k
 			if(LS == src)

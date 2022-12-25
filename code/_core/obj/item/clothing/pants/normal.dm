@@ -40,6 +40,12 @@
 		"stripes" = COLOR_VISIBLE_GREEN
 	)
 
+/obj/item/clothing/pants/normal/striped/engineering/solarian
+	polymorphs = list(
+		"pants" = "#B59463",
+		"stripes" = COLOR_VISIBLE_ORANGE
+	)
+
 /obj/item/clothing/pants/normal/striped/janitor
 	name = "janitor pants"
 	desc = "Stripes improve everything."

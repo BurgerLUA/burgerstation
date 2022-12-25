@@ -7,6 +7,7 @@
 		/obj/item/clothing/feet/shoes/sandal/left,
 
 		/obj/item/clothing/head/hat/chef,
+		/obj/item/weapon/melee/sword/butcher_cleaver,
 	)
 
 	extra_clothing_chance = 100

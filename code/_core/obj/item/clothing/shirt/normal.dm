@@ -107,6 +107,11 @@
 		"shoulders" = COLOR_BLACK
 	)
 
+/obj/item/clothing/shirt/normal/tee/engineering/solarian
+	polymorphs = list(
+		"shirt_tee" = "#B59463",
+	)
+
 /obj/item/clothing/shirt/normal/tee/soccer/ref
 	polymorphs = list(
 		"shirt_tee" = COLOR_YELLOW,

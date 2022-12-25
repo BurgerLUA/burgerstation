@@ -1,7 +1,7 @@
 
 
 var/global/list/limbs_to_value = list(
-	BODY_HEAD = 2,
+	BODY_HEAD = 1.25,
 	BODY_TORSO = 1,
 	BODY_GROIN = 0.75,
 	BODY_ARM_LEFT = 0.25,

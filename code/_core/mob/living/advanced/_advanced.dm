@@ -128,7 +128,7 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	. = ..()
 
-	if(. || force) //Dan updating.
+	if(.) //Dan updating.
 		if(inventories_by_id[BODY_HAND_LEFT_HELD] && left_item && left_item.dan_mode)
 			inventories_by_id[BODY_HAND_LEFT_HELD].update_held_icon(left_item)
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD] && right_item && right_item.dan_mode)

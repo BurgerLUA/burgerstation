@@ -407,7 +407,7 @@
 	INITIALIZE(B)
 	GENERATE(B)
 	FINALIZE(B)
-	B.ai.set_path_astar(src.loc)
+	B.ai.set_path_astar(get_turf(src))
 
 	return TRUE
 */
@@ -462,7 +462,7 @@
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
-	gib(TRUE)
+	gib(hard=TRUE)
 
 /mob/living/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)

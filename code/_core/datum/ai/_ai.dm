@@ -38,9 +38,9 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/list/target_distribution_x = list(12,16,16,16,20)
 	var/list/target_distribution_y = list(12,16,16,16,20)
 
-	var/turf/start_turf
+	var/turf/home_turf //Where the mob's home is.
 
-	var/use_pathfinding = FALSE //For frustration.
+	var/use_astar_on_frustration = FALSE
 
 	var/shoot_obstacles = TRUE
 
@@ -60,11 +60,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/frustration_move = 0
 	var/frustration_move_threshold = 3 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
 
-	var/frustration_path = 0
-	var/frustration_path_threshold = 10 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
-
-	var/turf/path_start_turf
-	var/turf/path_end_turf
+	var/frustration_node_path = 0
+	var/frustration_node_path_threshold = 10 //Above this means they'll try to find a new node path. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/list/attackers = list()
 
@@ -72,10 +69,12 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/attack_movement_obstructions = TRUE //Should attack ALL obstructions if blocked.
 
-	var/path_steps = 1
-	var/list/obj/marker/map_node/current_node_path = list()
+	var/node_path_current_step = 1
+	var/list/obj/marker/map_node/node_path_current = list()
 
 	var/list/current_path_astar = list()
+	var/turf/node_path_start_turf
+	var/turf/node_path_end_turf
 
 	var/turf/last_combat_location //last location where there was an objective_attack
 
@@ -165,9 +164,9 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	objective_move = null
 	objective_attack = null
 	objective_investigate = null
-	start_turf = null
-	path_start_turf = null
-	path_end_turf = null
+	home_turf = null
+	node_path_start_turf = null
+	node_path_end_turf = null
 
 	if(attackers)
 		attackers.Cut()
@@ -177,9 +176,9 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		obstacles.Cut()
 		obstacles = null
 
-	if(current_node_path)
-		current_node_path.Cut()
-		current_node_path = null
+	if(node_path_current)
+		node_path_current.Cut()
+		node_path_current = null
 
 	if(current_path_astar)
 		current_path_astar.Cut()
@@ -261,7 +260,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	owner = desired_owner
 	roaming_counter = roaming_distance*2
 	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
-	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
+	home_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
 	if(night_vision <= 0)
 		night_vision = 0.5
 	. = ..()

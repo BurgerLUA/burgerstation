@@ -6,17 +6,6 @@
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(L.loc)
 
-	//Frustration
-	if(old_turf && new_turf)
-		if(old_turf == new_turf)
-			frustration_move++
-			if(length(current_node_path))
-				frustration_path++
-			if(debug) log_debug("[src.get_debug_name()] post_move'd to the same loc")
-		else
-			frustration_move = max(0,frustration_move-0.25)
-			if(debug) log_debug("[src.get_debug_name()] post_move'd to a different loc.")
-
 	if(new_turf.z != old_turf.z)
 		if(active)
 			if(old_turf) remove_from_active_list(old_turf.z)
@@ -33,6 +22,7 @@
 	objective_move = desired_objective
 	should_follow_objective_move = follow
 	should_astar_objective_move = astar
+	frustration_move = 0
 	return TRUE
 
 /ai/proc/handle_movement_attack_objective()
@@ -45,31 +35,21 @@
 				owner.move_dir = get_dir(objective_attack,owner) //RUN AWAY.
 				owner.movement_flags = MOVEMENT_RUNNING
 				return TRUE
+
 		if(!objective_attack.z) //Inside something. Get close to it.
 			owner.move_dir = get_dir(owner,get_turf(objective_attack))
 			owner.movement_flags = MOVEMENT_RUNNING
 			return TRUE
+
 		var/target_distance = get_dist(owner,objective_attack)
-		if(target_distance < attack_distance_min) //Get farther to attack.
+		if(attack_distance_min > 0 && target_distance < attack_distance_min) //Get farther to attack.
 			owner.move_dir = get_dir(objective_attack,owner)
 			owner.movement_flags = MOVEMENT_NORMAL
-		if(target_distance > attack_distance_max) //Get closer to attack.
+		else if(target_distance > attack_distance_max) //Get closer to attack.
 			owner.move_dir = get_dir(owner,objective_attack)
 			owner.movement_flags = MOVEMENT_RUNNING
 		else
 			owner.movement_flags = MOVEMENT_NORMAL
-			var/owner_to_objective_dir = get_dir(owner,objective_attack)
-			var/turf/T1 = get_step(owner,owner_to_objective_dir)
-			if(!T1.is_safe() || !T1.can_move_to(FALSE))
-				owner.move_dir = turn(owner_to_objective_dir,pick(-90,90,180))
-				frustration_move++
-				return TRUE
-			var/objective_to_owner_dir = get_dir(objective_attack,owner)
-			var/turf/T2 = get_step(objective_attack,objective_to_owner_dir)
-			if(!T2.is_safe() || !T2.can_move_to(FALSE))
-				owner.move_dir = turn(objective_to_owner_dir,pick(-90,90,180))
-				frustration_move++
-				return TRUE
 			if(prob(target_distance <= 1 ? 25 : 5)) //Strafe when close.
 				owner.move_dir = turn(get_dir(owner,objective_attack),pick(-90,90))
 
@@ -101,13 +81,13 @@
 
 /ai/proc/check_node_path_obstructions()
 
-	if(length(current_node_path) < path_steps)
+	if(length(node_path_current) < node_path_current_step)
 		return FALSE
 
-	if(!current_node_path[path_steps])
+	if(!node_path_current[node_path_current_step])
 		return FALSE
 
-	var/obj/marker/map_node/desired_node = current_node_path[path_steps]
+	var/obj/marker/map_node/desired_node = node_path_current[node_path_current_step]
 	var/turf/T1 = get_turf(owner)
 	var/list/obstructions = get_obstructions(T1,desired_node,ignore_living=TRUE)
 
@@ -151,24 +131,24 @@
 	return FALSE
 
 /ai/proc/handle_movement_path()
-	if(length(current_node_path))
-		if(path_steps <= length(current_node_path))
-			var/obj/marker/map_node/desired_node = current_node_path[path_steps]
+	if(length(node_path_current))
+		if(node_path_current_step <= length(node_path_current))
+			var/obj/marker/map_node/desired_node = node_path_current[node_path_current_step]
 			var/desired_precision = desired_node.precision
-			if(path_steps - 1 >= 1)
-				var/obj/marker/map_node/last_node = current_node_path[path_steps-1]
+			if(node_path_current_step - 1 >= 1)
+				var/obj/marker/map_node/last_node = node_path_current[node_path_current_step-1]
 				desired_precision = min(desired_precision,last_node.precision)
 			var/turf/T = get_turf(owner)
 			var/calc_distance = abs(desired_node.x - T.x) + abs(desired_node.y - T.y)
 			if(calc_distance <= desired_precision) //We've made it to the next node.
-				path_steps++
+				node_path_current_step++
 				owner.move_dir = 0
 				if(check_for_obstructions) check_node_path_obstructions()
-				frustration_path = 0
+				frustration_node_path = 0
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
 		else //Complete path
-			start_turf = get_turf(owner)
+			home_turf = get_turf(owner)
 			set_path(null)
 			owner.move_dir = 0
 		return TRUE
@@ -176,16 +156,16 @@
 
 /ai/proc/handle_movement_path_frustration()
 
-	if(frustration_path > frustration_path_threshold)
+	if(frustration_node_path > frustration_node_path_threshold)
 
-		frustration_path = 0
+		frustration_node_path = 0
 
 		var/obj/marker/map_node/N_start = find_closest_node(owner,check_view=TRUE)
 		if(!N_start)
 			set_path(null)
 			return FALSE
 
-		var/obj/marker/map_node/N_end = find_closest_node(path_end_turf)
+		var/obj/marker/map_node/N_end = find_closest_node(node_path_end_turf)
 		if(!N_end)
 			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path end!")
 			set_path(null)
@@ -197,8 +177,8 @@
 			set_path(null)
 			return FALSE
 
-		set_path_astar(get_turf(N_start))
-		set_path(found_path)
+		set_path_astar(get_turf(N_start)) //Move to the start via star.
+		set_path(found_path) //Go to the end normally.
 
 		return TRUE
 
@@ -208,14 +188,14 @@
 
 	if(roaming_distance > 0)
 
-		var/start_turf_distance = get_dist(owner,start_turf)
+		var/start_turf_distance = get_dist(owner,home_turf)
 
 		if(roaming_direction) //Currently romaing
 			if(start_turf_distance == roaming_distance || roaming_counter <= 0) //Stop roaming. Too far.
 				roaming_direction = 0x0
 			else if(start_turf_distance > roaming_distance)
 				owner.movement_flags = MOVEMENT_WALKING
-				owner.move_dir = get_dir(owner,start_turf)
+				owner.move_dir = get_dir(owner,home_turf)
 			else
 				owner.movement_flags = MOVEMENT_WALKING
 				owner.move_dir = roaming_direction
@@ -226,35 +206,35 @@
 		else //Not roaming
 			if(prob(5)) //Now roaming
 				var/list/valid_directions = DIRECTIONS_ALL
-				var/bad_direction = get_dir(start_turf,owner)
+				var/bad_direction = get_dir(home_turf,owner)
 				valid_directions -= bad_direction
 				valid_directions -= turn(bad_direction,45)
 				valid_directions -= turn(bad_direction,-45)
 				roaming_direction = pick(valid_directions)
 				roaming_counter = roaming_distance*2
 				if(allow_far_roaming)
-					start_turf = get_turf(owner)
+					home_turf = get_turf(owner)
 
 	return FALSE
 
 /ai/proc/handle_movement_guarding()
 
-	if(!guard || !start_turf)
+	if(!guard || !home_turf)
 		return FALSE
 
 	var/turf/T = get_turf(owner)
 
-	if(T == start_turf)
+	if(T == home_turf)
 		var/turf/facing_turf = get_step(owner,owner.dir)
 		if(facing_turf.density || prob(4))
 			owner.set_dir(turn(owner.dir,pick(-90,90)))
 		return FALSE
 
-	if(T.z == start_turf.z)
-		var/list/obstructions = get_obstructions(T,start_turf)
+	if(T.z == home_turf.z)
+		var/list/obstructions = get_obstructions(T,home_turf)
 		if(!length(obstructions))
-			objective_move = start_turf
-		else if(!set_path_astar(start_turf))
+			objective_move = home_turf
+		else if(!set_path_astar(home_turf))
 			guard = FALSE
 	else
 		guard = FALSE

@@ -23,6 +23,8 @@
 
 	pixel_y = 0
 
+	allow_path = TRUE
+
 /obj/structure/table/PostInitialize()
 
 	var/turf/T = get_turf(src)

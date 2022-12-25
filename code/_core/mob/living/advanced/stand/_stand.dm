@@ -60,7 +60,7 @@
 
 /mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
 	. = ..()
-	update_offsets()
+	if(.) update_offsets()
 
 /mob/living/advanced/stand/on_life()
 	. = ..()

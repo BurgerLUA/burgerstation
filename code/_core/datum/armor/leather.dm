@@ -172,3 +172,18 @@
 		DARK = 50,
 		SANITY = 100
 	)
+
+/armor/leather/fireproof
+	defense_rating = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = 50,
+		ARCANE = -75,
+		HEAT = 200,
+		COLD = 75,
+		ACID = 100,
+		BOMB = 25,
+		BIO = 50,
+		RAD = 25
+	)

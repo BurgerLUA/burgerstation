@@ -1,5 +1,5 @@
 //Gimmick:
-//Fast, has a chainsaw.
+//Fast, has a chainsaw. Likes to teleport and ambush you like an ass if no one sees them.
 
 
 /mob/living/advanced/npc/zombie/clown

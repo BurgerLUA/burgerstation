@@ -62,12 +62,12 @@
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
 
 			if(second_step) //Safety.
-				var/second_from_loc = !second_step.density || second_step.Enter(src,src.loc)
+				var/second_from_loc = !second_step.density || second_step.Enter(src,first_step)
 				if(second_from_loc)
 					if(second_step.has_dense_atom)
 						for(var/k in second_step.contents)
 							var/atom/movable/M = k
-							if(M.density && !M.Cross(src,src.loc))
+							if(M.density && !M.Cross(src,first_step))
 								second_step = null
 								break
 				else

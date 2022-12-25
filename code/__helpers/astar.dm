@@ -33,7 +33,7 @@ Some code modified to work with Burgerstation.
 				current = nodeParent[current]
 			return reconstructed_path
 
-		var/list/neighbors = current.get_crossable_neighbors(walker,TRUE,TRUE)
+		var/list/neighbors = current.get_crossable_neighbors(walker,TRUE,TRUE,TRUE)
 		for (var/neighbor in neighbors)
 			if (neighbor in open)
 				continue
@@ -66,12 +66,16 @@ Some code modified to work with Burgerstation.
 
 	while(length(openSet))
 		var/turf/current = pick_lowest(openSet, fScore)
-		if(get_dist(current, goal) <= min_dist)
+
+		if(min_dist <= 0)
+			if(current == goal)
+				return reconstruct_path(cameFrom, current)
+		else if(get_dist(current, goal) <= min_dist)
 			return reconstruct_path(cameFrom, current)
 
 		openSet -= current
 		closedSet += current
-		var/list/turf/neighbors = current.get_crossable_neighbors(walker,TRUE,TRUE)
+		var/list/turf/neighbors = current.get_crossable_neighbors(walker,TRUE,TRUE,TRUE)
 		for(var/turf/neighbor as anything in neighbors)
 			if(neighbor in closedSet)
 				continue // already checked this one

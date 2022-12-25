@@ -16,7 +16,7 @@
 
 	var/resist_handcuffs = TRUE
 
-	use_pathfinding = TRUE
+	use_astar_on_frustration = TRUE
 
 	//Gun handling
 	var/obj/item/bullet_cartridge/last_found_bullet
@@ -197,6 +197,7 @@
 
 	var/mob/living/advanced/A = owner
 
+
 	if(!found_grenade && !checked_grenades && objective_attack && prob(grenade_chance) && get_dist(owner,objective_attack) >= VIEW_RANGE*0.5)
 		if(!find_grenade()) //Find a grenade to throw.
 			checked_grenades = TRUE //Stop checking grenades as we can't find anymore.
@@ -263,15 +264,17 @@
 		//The whole real_target checking multiple times seems ugly but what can you do.
 		next_complex = world.time + rand(5,10)
 		return FALSE
-	else if(!I.click_flags) //The nade needs to be in our hands.
-		if(!(A.left_item && A.right_item) || src.unequip_weapon(A.left_item) || src.unequip_weapon(A.right_item))
-			A.put_in_hands(G)
-		next_complex = world.time + rand(5,10)
-		return TRUE
-	else //Time to arm the grenade!
-		G.click_self(A)
-		next_complex = world.time + rand(5,30)
-		return TRUE
+
+	if(objective_attack)
+		if(!I.click_flags) //The nade needs to be in our hands.
+			if(!(A.left_item && A.right_item) || (A.left_item && src.unequip_weapon(A.left_item)) || (A.right_item && src.unequip_weapon(A.right_item)))
+				A.put_in_hands(G)
+			next_complex = world.time + rand(5,10)
+			return TRUE
+		else //Time to arm the grenade!
+			G.click_self(A)
+			next_complex = world.time + rand(5,30)
+			return TRUE
 
 /ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
 
@@ -563,6 +566,8 @@
 
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
+	if(W.additional_clothing_parent)
+		return FALSE
 	if(istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(E.enabled) E.click_self(A)

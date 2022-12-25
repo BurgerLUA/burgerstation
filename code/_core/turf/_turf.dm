@@ -96,27 +96,30 @@
 /turf/proc/pre_change() //When this turf is removed in favor of a new turf.
 	return TRUE
 
-/turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE)
+/turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE,var/pathfinding=FALSE)
 
 	. = list()
 	if(cardinal)
 		for(var/d in DIRECTIONS_CARDINAL)
 			var/turf/T = get_step(src,d)
-			if(!T.Enter(null,src))
+			if(!T)
+				continue
+			if(T.density && !T.Enter(null,src))
 				continue
 			var/can_cross = TRUE
-			for(var/k in T.contents)
-				var/atom/movable/M = k
-				if(!M.density)
+			if(T.has_dense_atom)
+				for(var/k in T.contents)
+					var/atom/movable/M = k
+					if(!M.density)
+						continue
+					if(pathfinding && M.allow_path)
+						continue
+					if(M.Cross(crosser,src))
+						continue
+					can_cross = FALSE
+					break
+				if(!can_cross)
 					continue
-				if(M.allow_path)
-					continue
-				if(M.Cross(crosser,src))
-					continue
-				can_cross = FALSE
-				break
-			if(!can_cross)
-				continue
 			. += T
 
 	if(intercardinal)
@@ -128,39 +131,42 @@
 			if(!T1) continue
 
 			var/turf/T2 = get_step(T1,second_dir)
+			if(!T2) continue
 
-			if(!T1.Enter(null,src))
+			if(T1.density && !T1.Enter(null,src))
 				continue
 
-			if(!T2.Enter(null,T1))
+			if(T2.density && !T2.Enter(null,T1))
 				continue
 
 			var/can_cross = TRUE
-			for(var/k in T1.contents)
-				var/atom/movable/M = k
-				if(!M.density)
+			if(T1.has_dense_atom)
+				for(var/k in T1.contents)
+					var/atom/movable/M = k
+					if(!M.density)
+						continue
+					if(pathfinding && M.allow_path)
+						continue
+					if(M.Cross(crosser,src))
+						continue
+					can_cross = FALSE
+					break
+				if(!can_cross)
 					continue
-				if(M.allow_path)
-					continue
-				if(M.Cross(crosser,src))
-					continue
-				can_cross = FALSE
-				break
-			if(!can_cross)
-				continue
 
-			for(var/k in T2.contents)
-				var/atom/movable/M = k
-				if(!M.density)
+			if(T2.has_dense_atom)
+				for(var/k in T2.contents)
+					var/atom/movable/M = k
+					if(!M.density)
+						continue
+					if(pathfinding && M.allow_path)
+						continue
+					if(M.Cross(crosser,T1))
+						continue
+					can_cross = FALSE
+					break
+				if(!can_cross)
 					continue
-				if(M.allow_path)
-					continue
-				if(M.Cross(crosser,T1))
-					continue
-				can_cross = FALSE
-				break
-			if(!can_cross)
-				continue
 
 			. += T2
 
