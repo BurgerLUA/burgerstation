@@ -148,7 +148,8 @@
 			else
 				owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
 		else //Complete path
-			home_turf = get_turf(owner)
+			if(!guard)
+				home_turf = get_turf(owner)
 			set_path(null)
 			owner.move_dir = 0
 		return TRUE
@@ -212,7 +213,7 @@
 				valid_directions -= turn(bad_direction,-45)
 				roaming_direction = pick(valid_directions)
 				roaming_counter = roaming_distance*2
-				if(allow_far_roaming)
+				if(allow_far_roaming && !guard)
 					home_turf = get_turf(owner)
 
 	return FALSE
@@ -224,20 +225,31 @@
 
 	var/turf/T = get_turf(owner)
 
-	if(T == home_turf)
-		var/turf/facing_turf = get_step(owner,owner.dir)
-		if(facing_turf.density || prob(4))
-			owner.set_dir(turn(owner.dir,pick(-90,90)))
-		return FALSE
-
 	if(T.z == home_turf.z)
+
+		if(T == home_turf)
+			var/turf/facing_turf = get_step(owner,owner.dir)
+			if(facing_turf.density || prob(4))
+				owner.set_dir(turn(owner.dir,pick(-90,90)))
+			return FALSE
+		else
+			owner.movement_flags = MOVEMENT_WALKING
+			owner.move_dir = get_dir(owner,home_turf)
+			return TRUE
+
 		var/list/obstructions = get_obstructions(T,home_turf)
 		if(!length(obstructions))
 			objective_move = home_turf
 		else if(!set_path_astar(home_turf))
 			guard = FALSE
+			return FALSE
+
+
+
 	else
 		guard = FALSE
+		return FALSE
+
 
 	//We don't return true here because we really want this to be overwritten.
 

@@ -179,3 +179,5 @@ obj/structure/interactive/door/metal
 obj/structure/interactive/door/Finalize()
 	. = ..()
 	update_sprite()
+	if(locked)
+		allow_path = FALSE

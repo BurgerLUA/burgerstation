@@ -58,7 +58,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/frustration_attack_threshold = SECONDS_TO_TICKS(6) //Above this means they'll try to find a new target. THIS IS MEASURED IN TICKS.
 
 	var/frustration_move = 0
-	var/frustration_move_threshold = 3 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_move_threshold = 10 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/frustration_node_path = 0
 	var/frustration_node_path_threshold = 10 //Above this means they'll try to find a new node path. THIS IS MEASURED IN MOVEMENT FAILURES.

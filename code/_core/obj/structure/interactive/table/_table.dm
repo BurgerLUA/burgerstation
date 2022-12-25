@@ -65,13 +65,13 @@
 			O.force_move(src.loc)
 		return TRUE
 
-	return ..()
+	. = ..()
 
 
 
 /obj/structure/table/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		var/obj/structure/table/T = locate() in O.loc.contents
 		if(T)
@@ -85,25 +85,25 @@
 
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /obj/structure/table/Crossed(atom/movable/O)
 
-	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		L.on_table = TRUE
 		L.handle_transform()
 
-	return ..()
+	. = ..()
 
 /obj/structure/table/Uncrossed(atom/movable/O)
 
-	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		L.on_table = FALSE
 		L.handle_transform()
 
-	return ..()
+	. = ..()
 
 obj/structure/table/rack
 	name = "plastic rack"

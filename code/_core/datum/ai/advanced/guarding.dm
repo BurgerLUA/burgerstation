@@ -11,3 +11,5 @@
 	guard = TRUE
 
 	resist_grabs = 2
+
+	allow_far_roaming = FALSE

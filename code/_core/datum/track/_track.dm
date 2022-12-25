@@ -260,3 +260,8 @@
 	name = "Trailer"
 	path = 'sound/music/Trailer.ogg'
 	length = 2*60 + 50
+
+/track/slayer //Menu music
+	name = "Slayer"
+	path = 'sound/music/Slayer.ogg'
+	length = 4*60 + 20
