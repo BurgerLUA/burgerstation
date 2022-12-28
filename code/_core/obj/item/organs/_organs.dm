@@ -358,7 +358,7 @@
 
 /obj/item/organ/PostInitialize()
 	. = ..()
-	initialize_blends(icon_state)
+	initialize_worn_blends(icon_state)
 
 /*
 /obj/item/organ/Finalize()
