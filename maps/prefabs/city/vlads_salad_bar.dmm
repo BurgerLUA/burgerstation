@@ -68,12 +68,13 @@
 "bp" = (/obj/structure/interactive/storage/safe,/obj/marker/map_node,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
 "bq" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
 "br" = (/obj/marker/mission_mob,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bs" = (/obj/marker/hostage_spawn,/obj/structure/interactive/chair/wood,/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
 
 (1,1,1) = {"
 aaabababababababababavawawaxaybg
 bgabadaeaeafadagagahatacaNbfazbg
 aCaiaOajajajajajaOakbnbraRaRaAbg
-bgabalamanananamaoabapaqaqaqaqbb
+bgabalamanbsanamaoabapaqaqaqaqbb
 aaarboauauaBauaubpaDaEaqaFaGaqbb
 aaaHasaIaJaIaIaIaJaIaKaqaLaMaPbb
 aaaQbobqaTaTaTaTaSaSaUaqaqaVaqaa

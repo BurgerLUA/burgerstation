@@ -245,3 +245,20 @@
 
 /area/mission/prefab/city/vlads_salad_bar/kitchen
 	icon_state = "red"
+
+
+/area/mission/prefab/city/traitor_joes
+	name = "\improper Traitor Joe's"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/traitor_joes/entrance
+	icon_state = "blue"
+
+/area/mission/prefab/city/traitor_joes/vault
+	icon_state = "red"

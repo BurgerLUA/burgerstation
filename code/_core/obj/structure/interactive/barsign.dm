@@ -56,12 +56,6 @@ obj/structure/interactive/bar_sign/the_chem_lab
 	desc = "The only thing that won't explode is your wallet!"
 	icon_state = "the_chem_lab"
 
-
-obj/structure/interactive/bar_sign/traitor
-	name = "Traitor Joe's"
-	desc = "For all your traitor needs!"
-	icon_state = "traitor"
-
 obj/structure/interactive/bar_sign/bawse_loot
 	name = "Bawse Loot"
 	desc = "Nothing is stolen*! We promise!"
@@ -130,3 +124,8 @@ obj/structure/interactive/bar_sign/vlads_salad_bar
 	name = "Vlad's Salad Bar"
 	desc = "Wait what?"
 	icon_state = "vlads_salad_bar"
+
+obj/structure/interactive/bar_sign/traitor_joes
+	name = "Traitor Joe's"
+	desc = "For all your traitor needs!"
+	icon_state = "traitor_joes"
