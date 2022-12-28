@@ -177,12 +177,6 @@
 	src.health.adjust_loss_smart(pain=health.health_max*0.25,organic=TRUE,robotic=FALSE)
 	return TRUE
 
-/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
-	. = ..()
-	if(. && is_advanced(loc))
-		var/mob/living/advanced/A = loc
-		A.update_overlay_tracked("\ref[src]")
-
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
@@ -355,6 +349,18 @@
 				desired_type = ICON_BLEND_OVERLAY,
 				desired_layer = damage_layer
 			)
+
+	if(enable_blood_stains)
+		add_blend(
+			"bloodstain",
+			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
+			desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
+			desired_color = blood_stain_color,
+			desired_blend = ICON_ADD,
+			desired_type = ICON_BLEND_MASK,
+			desired_should_save = FALSE,
+			desired_layer = damage_layer+0.01
+		)
 
 /obj/item/organ/PostInitialize()
 	. = ..()

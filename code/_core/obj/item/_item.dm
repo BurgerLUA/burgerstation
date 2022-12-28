@@ -827,7 +827,7 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
 	. = ..()
-	if(is_advanced(loc))
+	if(. && is_advanced(loc))
 		src.handle_overlays(loc,worn=TRUE,update=TRUE)
 
 /obj/item/update_icon()
