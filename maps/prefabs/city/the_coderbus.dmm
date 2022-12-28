@@ -33,7 +33,7 @@
 "aG" = (/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
 "aH" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
 "aI" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
-"aJ" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aJ" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "aK" = (/obj/structure/carpet/red,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
 "aL" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_coderbus)
 "aM" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
@@ -56,22 +56,32 @@
 "bd" = (/obj/structure/interactive/fire_alarm{icon_state = "fire_alarm"; dir = 8},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_coderbus)
 "be" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "bf" = (/obj/structure/interactive/bar_sign/the_coderbus,/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_coderbus)
+"bg" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bh" = (/obj/marker/mission_mob,/obj/marker/map_node,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_coderbus/bathroom)
+"bi" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"bj" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
+"bk" = (/obj/marker/mission_mob,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
+"bl" = (/obj/marker/mission_mob,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"bm" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
+"bn" = (/obj/marker/map_node,/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
+"bo" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"bp" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
 
 (1,1,1) = {"
 aaaaaaaaaaaOaOabamanananananaoaa
 aaacacacacabaeabapaqaRazazazaraa
-aaacafagacahaiajaJadadadadaPasaa
-aaacakalatauaiababababababababaa
+aaacafagacahaJajbgadadadadaPasaa
+aaacakbhatbiaiababababababababaa
 aaacavalawaxaiayaAaAaAaBaAaCaDaa
 aaacacaEacauaFaGaHaIaIaIaIauaDaa
-aaabauaiaiaiaFaGaKaKaKaKaKauaDaa
-aaaLauaMaNaGaGaGaQaQaQaHaQauaDaa
+aaabbiaiaiaibjbkaKaKbpaKaKblaDaa
+aaaLauaMaNaGbmaGaQaQaQaHaQauaDaa
 aaabaTaNaNaGauaUaAaAaAaAaAaVaDaa
 aaabahaGaGaGauabaDaDaDaDaDaDabaa
-aaabauaGaGaGauaWbcbcbcbcbcbcbcbc
-aaabauaNaNaXaYaZbcaSaSaSaSaSaSaS
+aaabbiaGaGbkbiaWbnbcbcbcbcbcbcbn
+aaabauaNaNaXboaZbnaSaSaSaSaSaSaS
 aaabaxbabbaXaYbdbcaSaSaSaSaSaSaS
-aaabauaGaNaXaYaZbcaSaSaSaSaSaSaS
+aaabbibkaNaXboaZbnaSaSaSaSaSaSaS
 aaabahbeaAauahabbcaSaSaSaSaSaSaS
-aaabbfabaDaDaDabbcaSaSaSaSaSaSaS
+aaabbfabaDaDaDabbnaSaSaSaSaSaSaS
 "}
