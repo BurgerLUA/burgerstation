@@ -228,3 +228,20 @@
 	default_state_power_machines = ON|AUTO
 	default_state_power_doors = ON|AUTO
 
+
+
+/area/mission/prefab/city/vlads_salad_bar
+	name = "\improper Vlad's Salad Bar"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/vlads_salad_bar/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/city/vlads_salad_bar/kitchen
+	icon_state = "red"

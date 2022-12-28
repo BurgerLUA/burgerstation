@@ -125,3 +125,8 @@ obj/structure/interactive/bar_sign/the_coderbus
 	name = "The Coderbus"
 	desc = "Wait what?"
 	icon_state = "the_coderbus"
+
+obj/structure/interactive/bar_sign/vlads_salad_bar
+	name = "Vlad's Salad Bar"
+	desc = "Wait what?"
+	icon_state = "vlads_salad_bar"
