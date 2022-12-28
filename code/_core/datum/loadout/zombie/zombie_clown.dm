@@ -6,8 +6,12 @@
 		/obj/item/clothing/feet/shoes/clown,
 		/obj/item/clothing/feet/shoes/clown/left,
 		/obj/item/clothing/neck/tie/pink,
-		/obj/item/clothing/overwear/coat/apron,
 		/obj/item/clothing/mask/clown/zombie,
-		/obj/item/clothing/mask/makeshift,
 		/obj/item/weapon/melee/energy/chainsaw
 	)
+
+	possible_extra_clothing = list(
+		/obj/item/clothing/mask/makeshift
+	)
+
+	extra_clothing_chance = 10

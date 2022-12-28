@@ -98,9 +98,10 @@
 	if(I) I.iff_tag = "Blob"
 	owner.set_iff_tag("Blob")
 
-	if(A.ai) qdel(A.ai)
-	A.ai = new /ai/advanced/zombie(null,A)
-	A.ai.active = FALSE //I know this feels like shitcode but *dab
+	if(!istype(A.ai,/ai/advanced/zombie))
+		qdel(A.ai)
+		A.ai = new /ai/advanced/zombie(null,A)
+		A.ai.active = FALSE //I know this feels like shitcode but *dab
 
 	if(A.client)
 		T = get_turf(A)

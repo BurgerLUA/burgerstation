@@ -309,22 +309,52 @@
 	O.attached_organs += src
 	return TRUE
 
-/obj/item/organ/initialize_blends(var/desired_icon_state)
+/obj/item/organ/initialize_worn_blends(var/desired_icon_state)
 
 	if(enable_skin)
-		add_blend("skin", desired_color = "#FF0000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend(
+			"skin",
+			desired_color = "#FF0000",
+			desired_blend = ICON_MULTIPLY,
+			desired_type = ICON_BLEND_COLOR,
+			desired_should_save = TRUE,
+			desired_layer = worn_layer
+		)
 
 	if(enable_glow)
-		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#00FF00", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend(
+			"skin_glow",
+			desired_icon = initial(icon),
+			desired_icon_state = "[icon_state]_glow",
+			desired_color = "#00FF00",
+			desired_blend = ICON_OVERLAY,
+			desired_type = ICON_BLEND_OVERLAY,
+			desired_should_save = TRUE,
+			desired_layer = worn_layer
+		)
 
 	if(enable_detail)
-		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_color", desired_color = "#0000FF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend(
+			"skin_detail",
+			desired_icon = initial(icon),
+			desired_icon_state = "[icon_state]_color",
+			desired_color = "#0000FF",
+			desired_blend = ICON_OVERLAY,
+			desired_type = ICON_BLEND_OVERLAY,
+			desired_should_save = TRUE,
+			desired_layer = worn_layer
+		)
 
 	if(enable_wounds)
 		for(var/damagetype in visual_wounds)
-			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
-
-	. = ..()
+			add_blend(
+				"damage_[damagetype]",
+				desired_icon = damage_icon,
+				desired_color = "#FFFFFF",
+				desired_blend = ICON_OVERLAY,
+				desired_type = ICON_BLEND_OVERLAY,
+				desired_layer = damage_layer
+			)
 
 /obj/item/organ/PostInitialize()
 	. = ..()

@@ -136,20 +136,22 @@
 		if(real_distance_to_target <= 0) //Too close!
 			return .
 
-		var/list/offsets = get_directional_offsets(current_loc,target_atom)
+
 
 		if(vel_x && vel_y)
-			var/current_angle = -ATAN2(vel_x,vel_y) + 90
-			var/new_angle = -ATAN2(offsets[1],offsets[2]) + 90
+			var/list/offsets = get_directional_offsets(current_loc,target_atom)
+			if(offsets[1] || offsets[2])
+				var/current_angle = -ATAN2(vel_x,vel_y) + 90
+				var/new_angle = -ATAN2(offsets[1],offsets[2]) + 90
 
-			if(current_angle != new_angle)
-				if(!homing_angle_limit || abs(current_angle - new_angle) < homing_angle_limit)
-					vel_x = round(offsets[1]*current_speed*homing_mod + vel_x*(1-homing_mod),0.001)
-					vel_y = round(offsets[2]*current_speed*homing_mod + vel_y*(1-homing_mod),0.001)
-				if(rotate_projectile)
-					var/matrix/M = get_base_transform()
-					M.Turn(last_angle)
-					transform = M
+				if(current_angle != new_angle)
+					if(!homing_angle_limit || abs(current_angle - new_angle) < homing_angle_limit)
+						vel_x = round(offsets[1]*current_speed*homing_mod + vel_x*(1-homing_mod),0.001)
+						vel_y = round(offsets[2]*current_speed*homing_mod + vel_y*(1-homing_mod),0.001)
+					if(rotate_projectile)
+						var/matrix/M = get_base_transform()
+						M.Turn(last_angle)
+						transform = M
 
 	//Start to degrade velocity over time.
 	if((!homing || homing_speed <= 0) && start_time + SECONDS_TO_DECISECONDS(extra_lifetime) > lifetime)

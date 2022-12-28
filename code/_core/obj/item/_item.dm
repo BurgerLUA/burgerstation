@@ -258,10 +258,7 @@ var/global/list/rarity_to_mul = list(
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/initialize_blends(var/desired_icon_state)
-
-	if(!desired_icon_state)
-		desired_icon_state = icon_state_worn
+/obj/item/initialize_worn_blends(var/desired_icon_state)
 
 	if(length(polymorphs))
 		var/icon/initial_icon = initial(icon)
@@ -815,18 +812,23 @@ var/global/list/rarity_to_mul = list(
 	if(!force && CEILING(old_level,1) == CEILING(blood_stain_intensity,1) && old_color == desired_color)
 		return FALSE
 
-	if(!enable_blood_stains || blood_stain_intensity <= 0)
-		remove_blend("bloodstain")
-	else
-		add_blend("bloodstain", desired_icon_state = "[CEILING(blood_stain_intensity,1)]", desired_color = blood_stain_color)
-
 	update_sprite()
-
+	add_blend(
+		"bloodstain",
+		desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
+		desired_color = blood_stain_color
+	)
 	if(is_inventory(loc))
 		var/obj/hud/inventory/I = loc
-		if(I.worn) I.update_worn_icon(src)
+		if(is_advanced(I.owner))
+			src.handle_overlays(I.owner,worn=I.worn,update=TRUE)
 
 	return TRUE
+
+/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+	. = ..()
+	if(is_advanced(loc))
+		src.handle_overlays(loc,worn=TRUE,update=TRUE)
 
 /obj/item/update_icon()
 	. = ..()
@@ -876,12 +878,9 @@ var/global/list/rarity_to_mul = list(
 	if(enable_torn_overlay || enable_damage_overlay)
 		var/desired_damage_num = get_damage_icon_number()
 		if(original_damage_num != desired_damage_num)
+			update_sprite()
 			add_blend("damage_overlay_noise", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
 			add_blend("damage_overlay", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
-			update_sprite()
-			if(is_inventory(loc))
-				var/obj/hud/inventory/I = loc
-				if(I.worn) I.update_worn_icon(src)
 
 	update_value()
 

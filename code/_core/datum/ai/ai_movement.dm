@@ -232,19 +232,14 @@
 			if(facing_turf.density || prob(4))
 				owner.set_dir(turn(owner.dir,pick(-90,90)))
 			return FALSE
-		else
-			owner.movement_flags = MOVEMENT_WALKING
-			owner.move_dir = get_dir(owner,home_turf)
-			return TRUE
 
-		var/list/obstructions = get_obstructions(T,home_turf)
-		if(!length(obstructions))
-			objective_move = home_turf
-		else if(!set_path_astar(home_turf))
-			guard = FALSE
-			return FALSE
-
-
+		if(!objective_move)
+			var/list/obstructions = get_obstructions(T,home_turf)
+			if(!length(obstructions))
+				objective_move = home_turf
+			else if(!set_path_astar(home_turf))
+				guard = FALSE
+				return FALSE
 
 	else
 		guard = FALSE

@@ -21,6 +21,8 @@ proc/direction_to_pixel_offset(var/dir)
 	return A.loc != B.loc && (get_true_4dir(A.dir) & get_dir(A,B))
 
 /proc/get_directional_offsets(var/atom/A,var/atom/B)
+	if(get_turf(A) == get_turf(B))
+		return list(0,0)
 	var/angle = get_angle(A,B)
 	return list(sin(angle),cos(angle))
 

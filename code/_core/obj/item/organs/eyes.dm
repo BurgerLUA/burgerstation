@@ -21,9 +21,16 @@
 	can_be_broken = FALSE
 
 
-/obj/item/organ/eye/initialize_blends(var/desired_icon_state)
+/obj/item/organ/eye/initialize_worn_blends(var/desired_icon_state)
 	. = ..()
-	add_blend("eye", desired_color = "#000000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)
+	add_blend(
+		"eye",
+		desired_color = "#000000",
+		desired_blend = ICON_MULTIPLY,
+		desired_type = ICON_BLEND_COLOR,
+		desired_should_save = TRUE,
+		desired_layer = worn_layer
+	)
 
 /obj/item/organ/eye/left
 	name = "left eye"

@@ -234,9 +234,10 @@
 	if(mob && isturf(location))
 		if(zoom_held && (world.time - zoom_time) > 4)
 			var/list/offsets = get_directional_offsets(mob,location)
-			is_zoomed = get_dir_advanced(mob,location)
-			mob.set_dir(is_zoomed)
-			update_camera_offset(offsets[1],offsets[2])
+			if(offsets[1] || offsets[2])
+				is_zoomed = get_dir_advanced(mob,location)
+				mob.set_dir(is_zoomed)
+				update_camera_offset(offsets[1],offsets[2])
 		if(is_living(mob))
 			var/mob/living/L = mob
 			if(L.intent == INTENT_HARM)

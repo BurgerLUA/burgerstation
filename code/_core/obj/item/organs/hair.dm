@@ -13,9 +13,18 @@
 
 	enable_skin = FALSE
 
-/obj/item/organ/hair/initialize_blends(var/desired_icon_state)
+/obj/item/organ/hair/initialize_worn_blends(var/desired_icon_state)
 	. = ..()
-	add_blend("hair_head", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi', desired_icon_state = "hair_b", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = FLOAT_LAYER)
+	add_blend(
+		"hair_head",
+		desired_color = "#FFFFFF",
+		desired_blend = ICON_OVERLAY,
+		desired_icon = 'icons/mob/living/advanced/hair/human_hair_head.dmi',
+		desired_icon_state = "hair_b",
+		desired_type = ICON_BLEND_OVERLAY,
+		desired_should_save = TRUE,
+		desired_layer = FLOAT_LAYER
+	)
 
 /obj/item/organ/hair/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
 	do_delete = TRUE
@@ -36,9 +45,18 @@
 
 	enable_skin = FALSE
 
-/obj/item/organ/beard/initialize_blends(var/desired_icon_state)
+/obj/item/organ/beard/initialize_worn_blends(var/desired_icon_state)
 	. = ..()
-	add_blend("hair_face", desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi', desired_icon_state = "none", desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = FLOAT_LAYER)
+	add_blend(
+		"hair_face",
+		desired_color = "#FFFFFF",
+		desired_blend = ICON_OVERLAY,
+		desired_icon = 'icons/mob/living/advanced/hair/human_hair_face.dmi',
+		desired_icon_state = "none",
+		desired_type = ICON_BLEND_OVERLAY,
+		desired_should_save = TRUE,
+		desired_layer = FLOAT_LAYER
+	)
 
 
 /obj/item/organ/beard/unattach_from_parent(var/turf/T,var/do_delete=FALSE)

@@ -64,15 +64,16 @@
 	if(. && smart && target_atom && target_atom.z == src.z)
 		var/lock_mod = 0.1
 		var/list/offsets = get_directional_offsets(current_loc,target_atom)
-		vel_x = round(offsets[1]*TILE_SIZE*0.5*lock_mod + vel_x*(1-lock_mod),0.001)
-		vel_y = round(offsets[2]*TILE_SIZE*0.5*lock_mod + vel_y*(1-lock_mod),0.001)
-		var/current_angle = -ATAN2(vel_x,vel_y) + 90
-		var/new_angle = -ATAN2(offsets[1],offsets[2]) + 90
-		var/matrix/M = get_base_transform()
-		M.Turn(current_angle)
-		transform = M
-		if(abs(current_angle - new_angle) >= 45) //Out of FOV basically.
-			smart = FALSE
+		if(offsets[1] || offsets[2])
+			vel_x = round(offsets[1]*TILE_SIZE*0.5*lock_mod + vel_x*(1-lock_mod),0.001)
+			vel_y = round(offsets[2]*TILE_SIZE*0.5*lock_mod + vel_y*(1-lock_mod),0.001)
+			var/current_angle = -ATAN2(vel_x,vel_y) + 90
+			var/new_angle = -ATAN2(offsets[1],offsets[2]) + 90
+			var/matrix/M = get_base_transform()
+			M.Turn(current_angle)
+			transform = M
+			if(abs(current_angle - new_angle) >= 45) //Out of FOV basically.
+				smart = FALSE
 
 	if(target_atom && target_atom.loc == current_loc) //Basically missed the target.
 		smart = FALSE

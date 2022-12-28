@@ -11,6 +11,8 @@
 
 	sleep_on_idle = FALSE
 
+	frustration_move_threshold = 0
+
 /ai/bot/cleaner/handle_movement()
 
 	. = ..()

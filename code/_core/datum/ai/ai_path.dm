@@ -10,6 +10,11 @@
 		if(debug) log_debug("[src.get_debug_name()] tried node pathing, but couldn't find a valid end node.")
 		return set_path_astar(destination)
 
+	if(length(node_path_current) && N_start && N_end && N_start == node_path_current[1] && N_end == node_path_current[length(node_path_current)])
+		if(debug) log_debug("[src.get_debug_name()] tried node pathing, but the path was the same as last path!")
+		if(set_path_astar(destination))
+			return TRUE
+
 	var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 	if(!found_path)
 		if(debug) log_debug("[src.get_debug_name()] tried astar pathing, but couldn't find a valid node path.")

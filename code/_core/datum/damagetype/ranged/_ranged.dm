@@ -73,8 +73,8 @@
 	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
 	var/list/offsets = get_directional_offsets(attacker,victim)
 
-	if(ismob(victim))
-		var/mob/M = victim
+	if(is_living(victim))
+		var/mob/living/M = victim
 		if(M.client)
 			M.client.recoil_pixel_x -= offsets[1]*multiplier
 			M.client.recoil_pixel_y -= offsets[2]*multiplier

@@ -368,10 +368,10 @@
 			var/mob/living/advanced/A = owner
 			if(worn)
 				A.worn_objects += I
-				update_worn_icon(I)
+				src.initialize_worn_icon(I)
 			else
 				A.held_objects += I
-				update_held_icon(I)
+				src.update_held_icon(I)
 			A.queue_update_items = TRUE
 
 	if(I.loc != src) //Something went wrong.
@@ -394,7 +394,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
+/obj/hud/inventory/proc/initialize_worn_icon(var/obj/item/item_to_update)
 
 	var/mob/living/advanced/A = owner
 
@@ -405,7 +405,7 @@
 	else
 		desired_icon_state = item_to_update.icon_state_worn
 
-	item_to_update.initialize_blends(desired_icon_state)
+	item_to_update.initialize_worn_blends(desired_icon_state)
 
 	item_to_update.handle_overlays(
 		A,
@@ -446,7 +446,7 @@
 	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			I.handle_overlays(A,add=FALSE)
+			I.handle_overlays(A,remove=TRUE)
 			if(!A.qdeleting)
 				if(worn)
 					A.worn_objects -= I

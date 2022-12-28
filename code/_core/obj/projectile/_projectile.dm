@@ -374,55 +374,56 @@
 
 					if(block_percent >= richochet_block_percent_threshold)
 						var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
-						var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(face_of_impact[1],face_of_impact[2])))
-						if(angle_of_incidence >= local_required_angle)
-							var/turf/T = get_turf(hit_atom)
-							if(T)
+						if(face_of_impact[1] || face_of_impact[2])
+							var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(face_of_impact[1],face_of_impact[2])))
+							if(angle_of_incidence >= local_required_angle)
+								var/turf/T = get_turf(hit_atom)
+								if(T)
 
-								ricochets_left--
+									ricochets_left--
 
-								if(is_living(hit_atom))
-									var/mob/living/L = owner
-									if(L.ckey_last) //Only convert if it hits a player.
-										var/good_tag = FALSE
-										if(iff_tag && L.iff_tag)
-											iff_tag = L.iff_tag
-											good_tag = TRUE
-										if(loyalty_tag && L.loyalty_tag)
-											loyalty_tag = L.loyalty_tag
-											good_tag = TRUE
-										if(good_tag)
-											owner = L
-											blamed = L
+									if(is_living(hit_atom))
+										var/mob/living/L = owner
+										if(L.ckey_last) //Only convert if it hits a player.
+											var/good_tag = FALSE
+											if(iff_tag && L.iff_tag)
+												iff_tag = L.iff_tag
+												good_tag = TRUE
+											if(loyalty_tag && L.loyalty_tag)
+												loyalty_tag = L.loyalty_tag
+												good_tag = TRUE
+											if(good_tag)
+												owner = L
+												blamed = L
 
-								start_turf = T
-								previous_loc = T
-								current_loc = T
+									start_turf = T
+									previous_loc = T
+									current_loc = T
 
-								//Move one step forward.
-								pixel_x_float_physical += vel_x
-								pixel_y_float_physical += vel_y
-								//Reflect the velocity
-								vel_x *= 1 - abs(face_of_impact[1])*2
-								vel_y *= 1 - abs(face_of_impact[2])*2
+									//Move one step forward.
+									pixel_x_float_physical += vel_x
+									pixel_y_float_physical += vel_y
+									//Reflect the velocity
+									vel_x *= 1 - abs(face_of_impact[1])*2
+									vel_y *= 1 - abs(face_of_impact[2])*2
 
-								//Adjust the position.
-								pixel_x_float_physical -= vel_x*0.5
-								pixel_y_float_physical -= vel_y*0.5
+									//Adjust the position.
+									pixel_x_float_physical -= vel_x*0.5
+									pixel_y_float_physical -= vel_y*0.5
 
-								//Resync everything.
-								pixel_x_float_visual = pixel_x_float_physical
-								pixel_y_float_visual = pixel_y_float_physical
-								pixel_x = CEILING(pixel_x_float_visual,1)
-								pixel_y = CEILING(pixel_y_float_visual,1)
-								var/matrix/M = get_base_transform()
-								var/new_angle = -ATAN2(vel_x,vel_y) + 90
-								M.Turn(new_angle)
-								transform = M
-								. = FALSE
+									//Resync everything.
+									pixel_x_float_visual = pixel_x_float_physical
+									pixel_y_float_visual = pixel_y_float_physical
+									pixel_x = CEILING(pixel_x_float_visual,1)
+									pixel_y = CEILING(pixel_y_float_visual,1)
+									var/matrix/M = get_base_transform()
+									var/new_angle = -ATAN2(vel_x,vel_y) + 90
+									M.Turn(new_angle)
+									transform = M
+									. = FALSE
 
-								if(length(DT.impact_sounds))
-									play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
+									if(length(DT.impact_sounds))
+										play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
 
 	if(impact_effect_turf && is_turf(hit_atom))
 		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*3,-20,20),clamp((shoot_y-16)*3,-20,20),bullet_color)

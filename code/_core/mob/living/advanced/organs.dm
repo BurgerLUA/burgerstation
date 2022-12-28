@@ -25,16 +25,17 @@
 		INITIALIZE(O)
 		FINALIZE(O)
 
-	if(O.enable_overlay) O.handle_overlays(src,add=TRUE)
+	if(O.enable_overlay) O.handle_overlays(src,add=TRUE,worn=TRUE)
 
 	O.on_organ_add(src)
 
 	return O
 
 
-/obj/item/proc/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/proc/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
-	A.remove_overlay("\ref[src]")
+	if(remove)
+		A.remove_overlay("\ref[src]")
 
 	if(add)
 		if(worn)
@@ -57,13 +58,17 @@
 				desired_color=src.color
 			)
 
+	if(update)
+		A.update_overlay_tracked("\ref[src]",desired_color=src.color)
+
 
 	return TRUE
 
-/obj/item/clothing/back/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/clothing/back/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
-	A.remove_overlay("\ref[src]_wings_behind")
-	A.remove_overlay("\ref[src]_wings_front")
+	if(remove)
+		A.remove_overlay("\ref[src]_wings_behind")
+		A.remove_overlay("\ref[src]_wings_front")
 
 	if(add)
 		if(worn)
@@ -90,11 +95,16 @@
 				desired_color = src.color
 			)
 
+	if(update)
+		if(worn)
+			A.update_overlay_tracked("\ref[src]_wings_behind",desired_color=src.color)
+			A.update_overlay_tracked("\ref[src]_wings_front",desired_color=src.color)
 
 
-/obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/worn=FALSE)
+/obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
-	A.remove_overlay("\ref[src]")
+	if(remove)
+		A.remove_overlay("\ref[src]")
 
 	if(add)
 		A.add_overlay_tracked(
@@ -103,13 +113,17 @@
 			desired_layer = src.worn_layer
 		)
 
+	if(update)
+		A.update_overlay_tracked("\ref[src]")
+
 
 	return TRUE
 
-/obj/item/organ/antennae/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/worn=FALSE)
+/obj/item/organ/antennae/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
-	A.remove_overlay("\ref[src]_antennae_behind")
-	A.remove_overlay("\ref[src]_antennae_front")
+	if(remove)
+		A.remove_overlay("\ref[src]_antennae_behind")
+		A.remove_overlay("\ref[src]_antennae_front")
 
 	if(add)
 		A.add_overlay_tracked(
@@ -129,12 +143,17 @@
 			desired_pixel_y = src.worn_pixel_y
 		)
 
+	if(update)
+		A.update_overlay_tracked("\ref[src]_antennae_behind")
+		A.update_overlay_tracked("\ref[src]_antennae_front")
+
 	return TRUE
 
-/obj/item/organ/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/worn=FALSE)
+/obj/item/organ/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
-	A.remove_overlay("\ref[src]_wings_behind")
-	A.remove_overlay("\ref[src]_wings_front")
+	if(remove)
+		A.remove_overlay("\ref[src]_wings_behind")
+		A.remove_overlay("\ref[src]_wings_front")
 
 	if(add)
 		A.add_overlay_tracked(
@@ -154,12 +173,18 @@
 			desired_pixel_y = src.worn_pixel_y
 		)
 
+	if(update)
+		A.update_overlay_tracked("\ref[src]_wings_behind")
+		A.update_overlay_tracked("\ref[src]_wings_front")
+
+
 	return TRUE
 
-/obj/item/organ/tail/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/worn=FALSE)
+/obj/item/organ/tail/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
-	A.remove_overlay("\ref[src]_tail_behind")
-	A.remove_overlay("\ref[src]_tail_front")
+	if(remove)
+		A.remove_overlay("\ref[src]_tail_behind")
+		A.remove_overlay("\ref[src]_tail_front")
 
 	if(add)
 		A.add_overlay_tracked(
@@ -174,6 +199,11 @@
 			desired_layer = LAYER_MOB_TAIL_FRONT,
 			desired_icon_state = "tail_front"
 		)
+
+	if(update)
+		A.update_overlay_tracked("\ref[src]_tail_behind")
+		A.update_overlay_tracked("\ref[src]_tail_front")
+
 
 	return TRUE
 
@@ -190,7 +220,7 @@
 
 	O.update_owner(null)
 
-	if(O.enable_overlay) O.handle_overlays(src,add=FALSE)
+	if(O.enable_overlay) O.handle_overlays(src,remove=TRUE)
 
 	organs -= O
 	labeled_organs -= O.id

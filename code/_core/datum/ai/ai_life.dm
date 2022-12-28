@@ -93,7 +93,7 @@
 						if(target_distance <= VIEW_RANGE*2 && !found_valid_path) //Couldn't find a valid path, so we use astar.
 							set_path_astar(desired_target_turf)
 
-		else if(use_astar_on_frustration && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
+		else if(frustration_move_threshold > 0 && use_astar_on_frustration && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
 			var/path_num = length(node_path_current)
 			if(path_num)
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to current node path due to movement failure...")
@@ -126,7 +126,7 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(current_turf) //current_turf will only be assigned if they were supposed to move.
+	if(frustration_move_threshold > 0 && current_turf) //current_turf will only be assigned if they were supposed to move.
 		if(current_turf == get_turf(owner)) //Did not move even though it was supposed to move.
 			frustration_move++
 			if(length(node_path_current))

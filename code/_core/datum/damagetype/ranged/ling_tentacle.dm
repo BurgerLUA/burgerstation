@@ -38,7 +38,7 @@
 		var/mob/living/L = victim
 		var/mob/living/A = attacker
 		var/distance = get_dist(A,L)
-		if(distance <= 0)
+		if(distance <= 0 || !(offsets[1] || offsets[2]))
 			L.add_status_effect(STUN,20,20,source = attacker)
 		else
 			L.throw_self(attacker,null,16,16,offsets[1]*(-distance*3),offsets[2]*(-distance*3))

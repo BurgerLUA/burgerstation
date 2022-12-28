@@ -103,8 +103,6 @@
 			if(is_inventory(src.loc))
 				var/obj/hud/inventory/I = src.loc
 				disable(I)
-				if(I.worn)
-					I.update_worn_icon(src)
 
 	return active
 
@@ -139,9 +137,6 @@
 		else
 			disable(I)
 		caller.to_chat(span("notice","You toggle \the [src.name] [active ? "on" : "off"]."))
-		update_sprite()
-		if(I.worn)
-			I.update_worn_icon(src)
 		return TRUE
 
 	. = ..()

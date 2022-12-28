@@ -5,6 +5,7 @@
 	var/checked_weapons = FALSE
 	var/checked_grenades = FALSE
 	var/checked_weapons_on_ground = FALSE
+	var/suicide_bomber = FALSE //Set to true if it is supposed to prime the grenade but not throw it.
 
 	var/found_grenade = null
 
@@ -238,7 +239,7 @@
 		G.drop_item(get_turf(A))
 		return FALSE
 
-	if(G.stored_trigger.active) //Live nade, throw it!
+	if(G.stored_trigger.active && !suicide_bomber) //Live nade, throw it!
 		var/atom/real_target = objective_attack
 		if(real_target)
 			var/turf/T = get_step(owner,real_target)
@@ -255,9 +256,10 @@
 
 		if(real_target)
 			var/list/offsets = get_directional_offsets(owner,real_target)
-			var/throw_velocity = 10
 			G.drop_item(get_turf(owner))
-			G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
+			if(offsets[1] || offsets[2])
+				var/throw_velocity = 10
+				G.throw_self(owner,real_target,16,16,offsets[1]*throw_velocity,offsets[2]*throw_velocity,lifetime = SECONDS_TO_DECISECONDS(4), steps_allowed = VIEW_RANGE, desired_loyalty_tag = owner.loyalty_tag)
 		else
 			G.drop_item(get_turf(A)) //Bad grenade. This will rarely happen due to the above turf checking but this is for weird cases.
 

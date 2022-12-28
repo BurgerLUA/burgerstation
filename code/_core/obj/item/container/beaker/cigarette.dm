@@ -87,13 +87,6 @@
 
 	. = ..()
 
-/obj/item/container/cigarette/update_sprite()
-	. = ..()
-	if(is_inventory(loc)) //Snowflake code, do not remove.
-		var/obj/hud/inventory/I = loc
-		if(I.worn && src.loc == I)
-			I.update_worn_icon(src)
-
 /obj/item/container/cigarette/update_overlays()
 	if(lit && reagents)
 		var/pixel_offset = FLOOR(clamp(reagents.volume_current/2,0,10),1) - 10

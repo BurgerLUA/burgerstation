@@ -279,8 +279,8 @@ var/global/list/all_damage_numbers = list()
 	animate(attacker, pixel_x = -pixel_offset[1]*attack_animation_distance*0.5, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(local_power_attack_delay*0.75,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
 	animate(pixel_x = pixel_offset[1]*attack_animation_distance*0.5, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(local_power_attack_delay*1.1,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
 
-	if(ismob(attacker))
-		var/mob/M = attacker
+	if(is_living(attacker))
+		var/mob/living/M = attacker
 		if(M.client)
 			M.client.recoil_pixel_x += pixel_offset[1]
 			M.client.recoil_pixel_y += pixel_offset[2]
@@ -713,20 +713,21 @@ var/global/list/all_damage_numbers = list()
 	if(hit_effect)
 		new hit_effect(get_turf(victim))
 
-	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
 	var/list/offsets = get_directional_offsets(attacker,victim)
 
-	if(ismob(victim))
-		var/mob/M = victim
-		if(M.client)
-			M.client.recoil_pixel_x -= offsets[1]*multiplier
-			M.client.recoil_pixel_y -= offsets[2]*multiplier
+	if(offsets[1] || offsets[2])
+		var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+		if(is_living(victim))
+			var/mob/living/M = victim
+			if(M.client)
+				M.client.recoil_pixel_x -= offsets[1]*multiplier
+				M.client.recoil_pixel_y -= offsets[2]*multiplier
 
-	if(ismob(attacker))
-		var/mob/M = attacker
-		if(M.client)
-			M.client.recoil_pixel_x -= offsets[1]*multiplier*0.5
-			M.client.recoil_pixel_y -= offsets[2]*multiplier*0.5
+		if(is_living(attacker))
+			var/mob/living/M = attacker
+			if(M.client)
+				M.client.recoil_pixel_x -= offsets[1]*multiplier*0.5
+				M.client.recoil_pixel_y -= offsets[2]*multiplier*0.5
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
@@ -773,8 +774,8 @@ var/global/list/all_damage_numbers = list()
 	animate(attacker, pixel_x = pixel_offset[1]*attack_animation_distance, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
 	animate(pixel_x = -pixel_offset[1]*attack_animation_distance, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
 
-	if(ismob(attacker))
-		var/mob/M = attacker
+	if(is_living(attacker))
+		var/mob/living/M = attacker
 		if(M.client)
 			M.client.recoil_pixel_x -= pixel_offset[1]
 			M.client.recoil_pixel_y -= pixel_offset[2]
