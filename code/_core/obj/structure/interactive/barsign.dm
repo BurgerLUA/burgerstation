@@ -129,3 +129,8 @@ obj/structure/interactive/bar_sign/traitor_joes
 	name = "Traitor Joe's"
 	desc = "For all your traitor needs!"
 	icon_state = "traitor_joes"
+
+obj/structure/interactive/bar_sign/the_ale_nath
+	name = "The Ale'Nath"
+	desc = "Wait what?"
+	icon_state = "the_ale_nath"
