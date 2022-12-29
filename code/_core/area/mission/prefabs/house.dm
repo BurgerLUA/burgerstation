@@ -211,6 +211,76 @@
 	icon_state = "blue"
 
 
+//House 09
+/area/mission/prefab/house/house_09
+	name = "house 08"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_09/bathroom
+	icon_state = "green"
+
+/area/mission/prefab/house/house_09/master_bedroom
+	icon_state = "red"
+
+/area/mission/prefab/house/house_09/side_bedroom
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_09/hallway
+	icon_state = "blue"
+
+
+//House 10
+/area/mission/prefab/house/house_10
+	name = "house 08"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_10/bathroom
+	icon_state = "green"
+
+/area/mission/prefab/house/house_10/master_bedroom
+	icon_state = "red"
+
+/area/mission/prefab/house/house_10/kitchen
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_10/hallway
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_10/side_room
+	icon_state = "pink"
+
+
+//House 11
+/area/mission/prefab/house/house_11
+	name = "house 08"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_11/bathroom
+	icon_state = "green"
+
+/area/mission/prefab/house/house_11/master_bedroom
+	icon_state = "red"
+
+/area/mission/prefab/house/house_11/side_bedroom
+	icon_state = "purple"
+
+/area/mission/prefab/house/house_11/entrance
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_11/storage
+	icon_state = "pink"
+
+/area/mission/prefab/house/house_11/living_room
+	icon_state = "orange"
 
 
 //davidthtthird house 01

@@ -21,19 +21,34 @@ SUBSYSTEM_DEF(area)
 
 /subsystem/area/Initialize()
 
-	var/area_count = 0
-
 	var/area/null_area
+
+	log_subsystem(name,"Initializing areas...")
 
 	for(var/k in all_areas)
 		var/area/A = all_areas[k]
 		INITIALIZE(A)
-		GENERATE(A)
-		FINALIZE(A)
-		area_count++
 		if(A.type == /area/)
 			null_area = A
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	log_subsystem(name,"Generating areas...")
+
+	for(var/k in all_areas)
+		var/area/A = all_areas[k]
+		GENERATE(A)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	log_subsystem(name,"Finalizing areas...")
+
+	var/area_count = 0
+	for(var/k in all_areas)
+		var/area/A = all_areas[k]
+		FINALIZE(A)
+		area_count++
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	log_subsystem(name,"Finalized [area_count] total areas.")
 
 	var/changed_areas = 0
 	while(TRUE)
@@ -59,8 +74,6 @@ SUBSYSTEM_DEF(area)
 	log_subsystem(src.name,"Changed [changed_areas] turfs with bad areas into good areas.")
 
 	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
-
-	log_subsystem(name,"Initialized [area_count] total areas.")
 
 	if(CONFIG("ENABLE_WEATHER",FALSE))
 		set_weather(WEATHER_RAIN,is_raining,areas_rain)
