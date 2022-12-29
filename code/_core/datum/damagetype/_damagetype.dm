@@ -332,6 +332,7 @@ var/global/list/all_damage_numbers = list()
 					if(callback_data["time"] <= world.time + SECONDS_TO_DECISECONDS(0.25))
 						CALLBACK_REMOVE("hit_\ref[A.right_item]")
 						return perform_clash(attacker,victim,weapon,A.right_item)
+			/*
 			if(istype(victim,/mob/living/advanced/stand/))
 				var/mob/living/advanced/stand/S = victim
 				victim = S.owner
@@ -339,6 +340,7 @@ var/global/list/all_damage_numbers = list()
 					var/obj/item/organ/O = hit_object
 					if(A.labeled_organs[O.id])
 						hit_object = A.labeled_organs[O.id]
+			*/
 
 		if(!is_valid(attacker))
 			CRASH("Could not swing as there was no attacker!")

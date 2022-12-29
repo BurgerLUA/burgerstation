@@ -70,6 +70,13 @@
 
 	level = 12
 
+/mob/living/simple/turret/syndicate/ship
+	name = "syndicate ship turret"
+
+	stored_weapon = /obj/item/weapon/ranged/energy/syndicate_turret/ship
+
+	level = 30
+
 /mob/living/simple/turret/syndicate/post_death()
 	icon_state = "dead"
 	return ..()

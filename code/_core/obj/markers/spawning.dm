@@ -90,6 +90,19 @@
 	LATE_INIT(W)
 	setup_airlock()
 
+/obj/marker/spawning/window/reinforced/grilled
+	icon_state = "window_grille_reinforced"
+	color = "#FFFF00"
+
+/obj/marker/spawning/window/reinforced/grilled/do_spawn(var/turf/T)
+	var/obj/structure/table/window/G = new(T)
+	var/obj/structure/interactive/construction/grille/A = new(T)
+	var/obj/structure/window/reinforced/W = new(T)
+	LATE_INIT(G)
+	LATE_INIT(A)
+	LATE_INIT(W)
+	setup_airlock()
+
 /obj/marker/spawning/window/shuttle
 	icon_state = "window_grille_reinforced"
 	color = "#394D5B"
@@ -101,6 +114,7 @@
 	var/obj/structure/window/reinforced/W = new(T)
 	W.plane = PLANE_SHUTTLE
 	W.color = "#394D5B"
+	W.alpha = 200
 	LATE_INIT(G)
 	LATE_INIT(W)
 	setup_airlock()

@@ -6,7 +6,6 @@
 	reagents = /reagent_container/spray/bottle
 
 	hit_target_turf = TRUE
-	hit_target_atom = TRUE
 	hit_laying = TRUE
 
 	plane = PLANE_PROJECTILE_NO_EFFECTS

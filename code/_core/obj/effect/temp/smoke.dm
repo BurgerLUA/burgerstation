@@ -53,14 +53,14 @@
 		container = null
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
-	if(container && container.volume_current > 0 && (A.reagents || is_turf(A)))
-		var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
-		container.splash(owner,A,amount_to_actually_splash,FALSE,5)
+	var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
+	container.splash(owner,A,amount_to_actually_splash,FALSE,5)
 	return TRUE
 
 /obj/effect/temp/smoke/Crossed(var/atom/movable/O)
 	. = ..()
-	if(O.density && O.reagents) try_splash(O)
+	if(O.density && O.reagents && container && container.volume_current > 0)
+		try_splash(O)
 
 /obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255,var/original_smoke_volume,var/original_reagent_volume)
 	. = ..()
@@ -87,7 +87,8 @@
 		opacity = TRUE
 	update_sprite()
 
-	try_splash(loc)
+	if(container.volume_current > 0)
+		try_splash(loc)
 
 	spread()
 

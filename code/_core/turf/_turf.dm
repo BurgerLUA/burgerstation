@@ -224,8 +224,11 @@
 
 /turf/change_victim(var/atom/attacker,var/atom/object)
 
-	if(density_north || density_south || density_east || density_west)
+	if(density && (density_north || density_south || density_east || density_west))
 		return src
+
+	var/atom/best_target
+	var/atom/best_score
 
 	for(var/k in contents)
 		var/atom/movable/v = k
@@ -241,7 +244,10 @@
 				continue
 		if(!v.can_be_attacked(attacker))
 			continue
-		return v
+		var/score = v.plane*1000 + v.layer
+		if(score > best_score)
+			best_score = score
+			best_target = v
 
 	if(old_living)
 		for(var/k in old_living)
@@ -256,9 +262,12 @@
 				continue
 			if(get_dist(L,src) > 1)
 				continue
-			return L
+			var/score = (L.plane*1000 + L.layer) - 100*1000
+			if(score > best_score)
+				best_score = score
+				best_target = L
 
-	return src
+	return best_target
 
 /turf/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
 

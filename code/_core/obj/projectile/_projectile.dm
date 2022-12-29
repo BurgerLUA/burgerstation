@@ -45,7 +45,6 @@
 	var/atom/target_atom
 
 	var/hit_target_turf = FALSE //The target atom can still be hit when false. Setting to true just gives priority.
-	var/hit_target_atom = FALSE //The target atom can still be hit when false. Setting to true just gives priority.
 	var/hit_laying = FALSE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -197,53 +196,55 @@
 		on_projectile_hit(src.loc,old_loc,new_loc)
 		return FALSE
 
-	//Handle atoms in turf.
-	//Take priority of existing targets on a turf before ones that existed before.
-
-	if(hit_target_atom && old_loc == target_atom.loc && target_atom.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(target_atom,old_loc,new_loc))
-		if(debug) log_debug("[src.get_debug_name()] hit target atom.")
-		return FALSE
-
-	if(hit_target_turf && old_loc == target_turf)
-		on_projectile_hit(target_turf,old_loc,new_loc)
-		if(debug) log_debug("[src.get_debug_name()] hit target turf.")
-		return FALSE
-
-	if(old_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(old_loc,old_loc,new_loc))
-		penetrations_left--
-		if(penetrations_left < 0)
-			return FALSE
-
 	if(debug)
 		var/obj/effect/temp/tile/TE = new(new_loc)
 		TE.maptext = "[steps_current]"
 		TE.alpha = 200
 
-	if(old_loc != new_loc)
-		for(var/k in new_loc.contents)
-			var/atom/movable/A = k
-			if(!A.density || (hit_target_atom && A == target_atom))
-				continue
-			if(A.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(A,old_loc,new_loc))
-				penetrations_left--
-				if(penetrations_left < 0)
-					return FALSE
+	var/list/target_score = list() //The higher the object, the higher priority it is to get hit.
 
-		if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
+	for(var/k in new_loc.contents)
+		var/atom/movable/A = k
+		if(!A.density)
+			continue
+		if(is_living(A))
+			var/mob/living/L = A
+			var/score = -1 * L.size
+			if(L == target_atom)
+				score = 0
+			else if(L.horizontal)
+				score *= 2
+			target_score[L] = score
+			continue
+		else
+			target_score[A] = A.plane*1000 + A.layer
+
+	for(var/k in new_loc.old_living)
+		var/mob/living/L = k
+		if(!L.density)
+			continue
+		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions for old_living
+			continue
+		var/score = -10 * L.size
+		if(L == target_atom)
+			score = 0
+		else if(L.horizontal)
+			score *= 2
+		target_score[L] = score
+
+	sortInsert(target_score,associative=TRUE)
+
+	for(var/k in target_score)
+		var/mob/living/L = k
+		if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
 			penetrations_left--
 			if(penetrations_left < 0)
 				return FALSE
 
-		for(var/k in new_loc.old_living)
-			var/mob/living/L = k
-			if(!L.density|| (hit_target_atom && L == target_atom))
-				continue
-			if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions.
-				continue
-			if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
-				penetrations_left--
-				if(penetrations_left < 0)
-					return FALSE
+	if(( (hit_target_turf && target_turf == new_loc) || new_loc.projectile_should_collide(src,old_loc,new_loc)) && on_projectile_hit(new_loc,old_loc,new_loc))
+		penetrations_left--
+		if(penetrations_left < 0)
+			return FALSE
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc,old_loc,new_loc)

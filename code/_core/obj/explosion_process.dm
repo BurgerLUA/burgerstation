@@ -64,23 +64,23 @@
 		if(existing)
 			direction_mod = max(0,power-existing.power)
 			if(velocity_dir)
-				if(d == velocity_dir)
+				if(d & velocity_dir)
 					direction_mod *= 2
-				else if(d == turn(velocity_dir,180))
+				else if(d & turn(velocity_dir,180))
 					direction_mod *= 0.1
 				else
 					direction_mod *= 0.5
 			if(existing.velocity_dir)
-				if(d == existing.velocity_dir)
+				if(d & existing.velocity_dir)
 					direction_mod *= 2
-				else if(d == turn(existing.velocity_dir,180))
+				else if(d & turn(existing.velocity_dir,180))
 					direction_mod *= 0.1
 				else
 					direction_mod *= 0.5
 			valid_existing[T] = existing
-		else if(velocity_dir && velocity_dir == d)
+		else if(velocity_dir && velocity_dir & d)
 			direction_mod *= 4
-		else if(velocity_dir && turn(velocity_dir,180) == d)
+		else if(velocity_dir && turn(velocity_dir,180) & d)
 			direction_mod *= 0.1
 
 		valid_turfs[T] = direction_mod
@@ -116,7 +116,8 @@
 			GENERATE(EP)
 			FINALIZE(EP)
 
-	power = FLOOR((power*0.9) - 0.5,0.1)
+	power = (power*0.5) - 1
+	power = FLOOR(power,0.1)
 	power = clamp(power,0,1000)
 
 	if(power <= 1)

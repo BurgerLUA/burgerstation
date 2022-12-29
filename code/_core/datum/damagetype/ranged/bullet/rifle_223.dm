@@ -32,6 +32,24 @@
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE
 
+/damagetype/ranged/bullet/rifle_223/syndicate_turret
+
+/damagetype/ranged/bullet/rifle_223/syndicate_turret/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.ckey_last)
+			return ..()
+		if(L.master && L.master.ckey_last)
+			return ..()
+
+	damage_multiplier = 5
+
+
+
+	. = ..()
+
+
 /damagetype/ranged/bullet/rifle_556mm/surplus
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL

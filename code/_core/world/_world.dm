@@ -32,6 +32,8 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = FALSE
 	__detect_rust_g()
 
+	setup_turf_damage_icons()
+
 	//TODO: Unfuck this.
 	createtypecache(/area)
 	createtypecache(/area/shuttle)

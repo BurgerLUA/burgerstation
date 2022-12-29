@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/captain.dmi'
 
 	projectile = /obj/projectile/bullet/firearm/rifle
-	ranged_damage_type = /damagetype/ranged/bullet/rifle_556mm
+	ranged_damage_type = /damagetype/ranged/bullet/rifle_223
 
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 2
@@ -39,3 +39,7 @@
 	if(caller.is_player_controlled())
 		return FALSE
 	return ..()
+
+/obj/item/weapon/ranged/energy/syndicate_turret/ship
+	ranged_damage_type = /damagetype/ranged/bullet/rifle_223/syndicate_turret
+	shoot_delay = 1.5
