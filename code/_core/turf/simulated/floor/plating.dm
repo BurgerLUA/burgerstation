@@ -15,10 +15,16 @@
 	desc = "The plating underneath the floor"
 	desc_extended = "A floor found underneath an actual floor."
 
+	health_base = 1000
+
 /turf/simulated/floor/plating/reinforced
 	name = "reinforced plating"
 	icon_state = "filled3"
 	exposed = FALSE
+
+	destruction_turf = /turf/simulated/floor/plating
+
+	health_base = 1000
 
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"
@@ -31,6 +37,8 @@
 	icon_state = "plating"
 	plane = PLANE_SHUTTLE
 	color = COLOR_STEEL
+
+	destruction_turf = /turf/simulated/floor/plating
 
 
 /turf/simulated/floor/plating/syndicate

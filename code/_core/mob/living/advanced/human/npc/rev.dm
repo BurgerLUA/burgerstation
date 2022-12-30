@@ -4,6 +4,8 @@
 	desc_extended = "An ex-nanotrasen revolutionary soldier fighting for their right to \[EXPUNGED\]. Surprisingly, they're not syndicate backed."
 	ai = /ai/advanced/slavic
 
+	combat_dialogue = /combat_dialogue/revolutionary
+
 	var/list/possible_outfits = list(
 		/loadout/rev/solider = 10,
 		/loadout/rev/solider/alt = 10,

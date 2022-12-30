@@ -194,10 +194,15 @@ var/global/list/difficulty_to_ai_modifier = list(
 			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
 			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
 
-	if(combat_dialogue && !stealthy && next_talk <= world.time && damage_amount >= 30 && prob(20+damage_amount))
-		var/returning_dialogue = SSdialogue.get_combat_dialogue(combat_dialogue,"self_hit",damage_amount)
-		if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
-		next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+	if(owner.combat_dialogue && next_talk <= world.time && !stealthy && damage_amount >= 30)
+		if(owner.health && owner.health.health_current <= owner.health.health_max*0.25 && prob(20+damage_amount))
+			var/returning_dialogue = SSdialogue.get_combat_dialogue(owner.combat_dialogue,"combat_losing",damage_amount)
+			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+		else if(prob(20+damage_amount))
+			var/returning_dialogue = SSdialogue.get_combat_dialogue(owner.combat_dialogue,"self_hit",damage_amount)
+			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
+			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 
 
 	return TRUE

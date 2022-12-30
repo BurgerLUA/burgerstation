@@ -8,6 +8,8 @@
 
 	enable_chunk_clean = TRUE
 
+	var/combat_dialogue/combat_dialogue
+
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 

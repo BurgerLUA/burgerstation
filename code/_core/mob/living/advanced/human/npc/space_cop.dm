@@ -15,6 +15,8 @@
 
 	soul_size = RARITY_UNCOMMON
 
+	combat_dialogue = /combat_dialogue/solarian
+
 /mob/living/advanced/npc/space_soldier/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/space_cop)

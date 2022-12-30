@@ -72,6 +72,7 @@ var/global/time_dialation = 0
 		subsystem_initialize(SS)
 		if(!SS.preloop)
 			continue
+		sleep(3)
 		subsystem_life_loop(SS)
 
 	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
@@ -85,6 +86,7 @@ var/global/time_dialation = 0
 		var/subsystem/SS = k
 		if(SS.preloop)
 			continue
+		sleep(3)
 		subsystem_life_loop(SS)
 
 	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)

@@ -5,6 +5,8 @@
 
 	dialogue_id = /dialogue/npc/soldier
 
+	combat_dialogue = /combat_dialogue/syndicate
+
 	dna = /dna/human
 
 	var/list/possible_outfits = list(

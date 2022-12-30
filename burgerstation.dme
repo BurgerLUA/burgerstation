@@ -298,6 +298,7 @@
 #include "code\_core\datum\class\player.dm"
 #include "code\_core\datum\colors\_icon_blend.dm"
 #include "code\_core\datum\combat_dialogue\_combat_dialogue.dm"
+#include "code\_core\datum\combat_dialogue\bandit.dm"
 #include "code\_core\datum\combat_dialogue\revolutionary.dm"
 #include "code\_core\datum\combat_dialogue\solarian.dm"
 #include "code\_core\datum\combat_dialogue\syndicate.dm"

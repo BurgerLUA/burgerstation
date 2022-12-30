@@ -145,7 +145,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//Dialogue related.
 	var/language_to_use = LANGUAGE_BASIC
 	var/next_talk = 0
-	var/combat_dialogue/combat_dialogue
 
 	var/knows_about_lockers = FALSE
 

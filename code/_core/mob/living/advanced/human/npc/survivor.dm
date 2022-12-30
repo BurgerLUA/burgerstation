@@ -10,6 +10,8 @@
 
 	level = 40
 
+	combat_dialogue = /combat_dialogue/bandit
+
 /mob/living/advanced/npc/survivor/setup_appearance(var/set_default=FALSE)
 
 	. = ..()
