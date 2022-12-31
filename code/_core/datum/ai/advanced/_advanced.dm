@@ -7,7 +7,7 @@
 	var/checked_weapons_on_ground = FALSE
 	var/suicide_bomber = FALSE //Set to true if it is supposed to prime the grenade but not throw it.
 
-	var/found_grenade = null
+	var/obj/item/grenade/found_grenade = null
 
 	var/obj/item/weapon/objective_weapon
 	var/attack_delay_left
@@ -36,7 +36,11 @@
 
 	var/list/overall_defense_rating = list()
 
+	var/use_cover_chance = 100
+	var/obj/marker/cover_node/current_cover
+
 /ai/advanced/Destroy()
+	remove_cover()
 	objective_weapon = null
 	return ..()
 
@@ -197,7 +201,6 @@
 /ai/advanced/proc/handle_equipment() //Return true to avoid regular attack.
 
 	var/mob/living/advanced/A = owner
-
 
 	if(!found_grenade && !checked_grenades && objective_attack && prob(grenade_chance) && get_dist(owner,objective_attack) >= VIEW_RANGE*0.5)
 		if(!find_grenade()) //Find a grenade to throw.
@@ -464,6 +467,10 @@
 		last_movement_proc = "avoidance"
 		return TRUE
 
+	if(current_cover && objective_attack && handle_movement_cover())
+		last_movement_proc = "cover"
+		return TRUE
+
 	if(handle_movement_weapon())
 		last_movement_proc = "weapon"
 		return TRUE
@@ -654,3 +661,117 @@
 			return TRUE
 
 	return FALSE
+
+
+/ai/advanced/proc/remove_cover()
+
+	if(current_cover)
+		current_cover.reserved = FALSE
+		current_cover = null
+		return TRUE
+
+	return FALSE
+
+
+/ai/advanced/proc/find_and_set_cover(var/atom/enemy)
+
+	var/list/valid_covers = list()
+
+
+	var/obj/marker/cover_node/CN
+	FOR_DVIEW(CN,VIEW_RANGE,get_turf(owner),101)
+		if(!(CN.dir & get_dir(CN,enemy)))
+			continue
+		if(CN.reserved)
+			continue
+		valid_covers[CN] = get_dist(owner,CN)
+
+	END_FOR_DVIEW
+
+	if(!length(valid_covers))
+		if(debug) log_debug("Couldn't find any valid covers.")
+		return FALSE
+
+	sortTim(valid_covers,associative=TRUE)
+
+	if(current_cover) remove_cover()
+
+	current_cover = valid_covers[1]
+	current_cover.reserved = TRUE
+
+	if(debug) log_debug("Found [length(valid_covers)] covers.")
+
+	return TRUE
+
+
+
+
+/ai/advanced/proc/handle_movement_cover()
+
+	if(length(current_path_astar))
+		return FALSE
+
+	if(get_dist(current_cover,owner) > 1)
+		var/turf/T = get_turf(current_cover)
+		if(!set_path_astar(T))
+			remove_cover()
+		return FALSE
+
+	var/mob/living/advanced/A = owner
+
+	var/should_be_in_cover = FALSE
+	if(!found_grenade?.stored_trigger?.active) //A little confusing but it just prevents the below from running if there is a grenade and we should obviously never be in cover with an active grenade.
+		if(next_complex > world.time)
+			should_be_in_cover = TRUE
+		else if(A.left_item && istype(A.left_item,/obj/item/weapon/ranged/bullet/))
+			var/obj/item/weapon/ranged/bullet/B = A.left_item
+			if(!B.chambered_bullet)
+				should_be_in_cover = TRUE
+		else if(A.right_item && istype(A.right_item,/obj/item/weapon/ranged/bullet/))
+			var/obj/item/weapon/ranged/bullet/B = A.right_item
+			if(!B.chambered_bullet)
+				should_be_in_cover = TRUE
+
+	if(should_be_in_cover)
+		var/turf/turf_to_step = get_turf(current_cover)
+		if(owner.loc != turf_to_step)
+			owner.move_dir = get_dir(owner,turf_to_step)
+			if(debug) log_debug("Moving to cover [dir2text(owner.move_dir)].")
+			owner.movement_flags = MOVEMENT_WALKING
+		else
+			owner.move_dir = 0x0
+			if(debug) log_debug("In cover.")
+	else//Go out of cover.
+		var/turf/turf_to_step
+		if(current_cover.turn_dir == 0) //Both
+			var/turf/T1 = get_step(current_cover,turn(current_cover.dir,90))
+			var/turf/T2 = get_step(current_cover,turn(current_cover.dir,-90))
+			var/T1_dist = get_dist(T1,objective_attack)
+			var/T2_dist = get_dist(T1,objective_attack)
+			if(T1_dist == T2_dist)
+				turf_to_step = pick(T1,T2)
+			else if(T1_dist < T2_dist)
+				turf_to_step = T1
+			else
+				turf_to_step = T2
+		else
+			turf_to_step = get_step(current_cover,turn(current_cover.dir,current_cover.turn_dir))
+		if(owner.loc != turf_to_step)
+			owner.move_dir = get_dir(owner,turf_to_step)
+			owner.movement_flags = MOVEMENT_WALKING
+			if(debug) log_debug("Moving out of cover [dir2text(owner.move_dir)].")
+		else
+			owner.move_dir = 0x0
+			if(debug) log_debug("Out of cover.")
+
+	return TRUE
+
+/ai/advanced/set_objective(var/atom/A)
+
+	. = ..()
+
+	if(. && use_cover_chance)
+		if(objective_attack && prob(use_cover_chance))
+			find_and_set_cover(objective_attack)
+		else
+			if(current_cover) remove_cover()

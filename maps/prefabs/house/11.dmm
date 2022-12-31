@@ -31,7 +31,7 @@
 "aE" = (/obj/structure/carpet/brown,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/living_room)
 "aF" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/house/house_11/living_room)
 "aG" = (/obj/structure/carpet/blue,/obj/structure/interactive/bed/double/sheet,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/master_bedroom)
-"aH" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/house/house_11)
+"aH" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_11)
 "aI" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aJ" = (/obj/structure/carpet/blue,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/master_bedroom)
 "aK" = (/obj/structure/table/wood,/obj/marker/spawning/random/misc,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
@@ -74,7 +74,7 @@
 "bv" = (/obj/structure/interactive/door/airlock/wood,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/side_bedroom)
 "bw" = (/turf/simulated/wall/wood/brown,/area/mission/prefab/house/house_11/bathroom)
 "bx" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/wood/brown,/area/mission/prefab/house/house_11/bathroom)
-"by" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile,/area/mission/prefab/house/house_11/bathroom)
+"by" = (/obj/structure/interactive/door/airlock,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_11/bathroom)
 "bz" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/house/house_11/bathroom)
 "bA" = (/obj/structure/carpet/brown,/obj/marker/map_node/x2,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
 "bB" = (/obj/structure/interactive/shower{icon_state = "shower"; dir = 8},/obj/structure/interactive/misc/curtain_open,/turf/simulated/floor/tile,/area/mission/prefab/house/house_11/bathroom)
@@ -89,7 +89,7 @@
 "bK" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/house/house_11/entrance)
 "bL" = (/obj/structure/carpet/brown,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/entrance)
 "bM" = (/obj/structure/carpet/brown,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/entrance)
-"bN" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_11)
+"bN" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/marker/cover_node/left,/turf/simulated/floor/tile,/area/mission/prefab/house/house_11)
 "bO" = (/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 1},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
 "bP" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
 "bQ" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/wood/brown,/area/mission/prefab/house/house_11)
@@ -107,22 +107,33 @@
 "cc" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "cd" = (/obj/structure/interactive/storage/trash_pile,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "ce" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"cf" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/living_room)
+"cg" = (/obj/structure/carpet/blue,/obj/marker/cover_node/left,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/master_bedroom)
+"ch" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/living_room)
+"ci" = (/obj/structure/carpet/brown,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
+"cj" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
+"ck" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/right,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/living_room)
+"cl" = (/obj/structure/carpet/red,/obj/marker/cover_node/left,/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11/side_bedroom)
+"cm" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/stair/wood{icon_state = "stair"; dir = 1},/area/mission/prefab/house/house_11/entrance)
+"cn" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_11)
+"co" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/oak,/area/mission/prefab/house/house_11)
+"cp" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_11)
 
 (1,1,1) = {"
 ccccaabTaaaaaaaaccaaaaaaaaaaaaaa
 aIaeafafaeaeaeaeccagagagagagagcc
 aIaeajakalamamaeccaganapaqavawcc
 aIaeaGaJaJaJaMaecdagaWapapaXawce
-aLaebcaJbVbgbiaeahagapapbYbnawcc
+aLaebccgbVbgbiaeahagapclbYbnawcc
 aPaebobpbsaeaeaeaoagagbubvagagcd
-asaraQatbZaxahazaAaBahabbWadaiai
-aCaCaHauauaKahaNaRaSaTacacacayai
-aCaUaVauauaYbababdbdaDaEaEaEaEaF
+asaraQatbZcjahazaAaBahabbWadaiai
+aCaCaHaucoaKahaNaRaSaTchacacayai
+aCaUcpauauaYbababdbdaDaEaEaEaEaF
 bebfaVauauauauayacacacaEaZaEbbaF
 bebfbhaubAbjbjacacbUacaEaEaEaEaF
-bebkaVaubjbjbjabacayacabbmbWbqai
-beblcaaubrbrbjbtbFbFbFbtbxbybwbw
-aCbkaVbGbHbIbJbKbLbSbMbtbzbXbBbw
+bebkaVaubjbjbjcfacayacckbmbWbqai
+beblcaaubrbrcibtcmbFbFbtbxbybwbw
+aCbkcnbGbHbIbJbKbLbSbMbtbzbXbBbw
 aCaCbNbObPbPaxbtbLbLbLbtbCbDbEbw
 aOaCaCbebebebQbtbRcbbRbtbwbwbwbw
 "}

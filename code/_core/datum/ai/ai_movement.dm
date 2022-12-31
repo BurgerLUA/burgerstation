@@ -271,7 +271,6 @@
 		return TRUE
 	return FALSE
 
-
 /ai/proc/handle_movement_reset()
 	owner.movement_flags = MOVEMENT_NORMAL
 	owner.move_dir = 0x0

@@ -1,61 +1,74 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath/backroom)
-"c" = (/turf/simulated/wall/plastic/wizard,/area/mission/prefab/city/the_ale_nath/backroom)
-"d" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"e" = (/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"f" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"g" = (/obj/marker/spawning/random/valuable,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"h" = (/obj/structure/carpet/blue/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"i" = (/obj/marker/spawning/random/trash,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"j" = (/obj/structure/carpet/blue/magic,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"k" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/obj/structure/table/wood/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"l" = (/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"m" = (/obj/marker/wizard_rift_location,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
-"n" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"o" = (/obj/structure/interactive/door/airlock/wood,/obj/structure/interactive/wire/green,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"p" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/plastic/wizard,/area/mission/prefab/city/the_ale_nath/backroom)
-"q" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"r" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"s" = (/obj/structure/table/wood,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"t" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath/backroom)
-"u" = (/obj/structure/interactive/door/airlock/wood,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath/backroom)
-"v" = (/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"w" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"x" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"y" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 8},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"z" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"A" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"B" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"C" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"D" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"E" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"F" = (/obj/structure/table/wood,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"G" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/item/container/simple/alcohol/ale,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"H" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"I" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/the_ale_nath)
-"J" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"K" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"L" = (/obj/structure/interactive/bar_sign/the_ale_nath,/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"M" = (/obj/structure/interactive/door/airlock/wood,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"N" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"O" = (/obj/structure/table/wood,/obj/item/container/simple/alcohol/ale,/obj/item/container/simple/alcohol/ale,/obj/item/container/simple/alcohol/ale,/obj/item/container/simple/alcohol/ale,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
-"P" = (/obj/structure/table/wood/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath/backroom)
+"ac" = (/turf/simulated/wall/plastic/wizard,/area/mission/prefab/city/the_ale_nath/backroom)
+"ad" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"ae" = (/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"af" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"ag" = (/obj/marker/spawning/random/valuable,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"ah" = (/obj/structure/carpet/blue/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"ai" = (/obj/marker/spawning/random/trash,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aj" = (/obj/structure/carpet/blue/magic,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"ak" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/obj/structure/table/wood/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"al" = (/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"am" = (/obj/marker/wizard_rift_location,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"an" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"ao" = (/obj/structure/interactive/door/airlock/wood,/obj/structure/interactive/wire/green,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"ap" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/plastic/wizard,/area/mission/prefab/city/the_ale_nath/backroom)
+"aq" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"ar" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"as" = (/obj/structure/table/wood,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"at" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath/backroom)
+"au" = (/obj/structure/interactive/door/airlock/wood,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath/backroom)
+"av" = (/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aw" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"ax" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"ay" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 8},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"az" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aA" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aB" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aC" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aD" = (/obj/marker/map_node,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"aE" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aF" = (/obj/structure/table/wood,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aG" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/item/container/simple/alcohol/ale,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aH" = (/obj/structure/table/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aI" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/the_ale_nath)
+"aJ" = (/obj/structure/interactive/chair/stool/bar{icon_state = "bar"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aK" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/obj/structure/interactive/potted_plant/bin,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aL" = (/obj/structure/interactive/bar_sign/the_ale_nath,/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aM" = (/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aN" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aO" = (/obj/structure/table/wood,/obj/item/container/simple/alcohol/ale,/obj/item/container/simple/alcohol/ale,/obj/item/container/simple/alcohol/ale,/obj/item/container/simple/alcohol/ale,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aP" = (/obj/structure/table/wood/magic,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"aQ" = (/obj/structure/interactive/door/airlock/wood,/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aR" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aS" = (/obj/structure/interactive/lighting/fixture/tube,/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aT" = (/obj/structure/carpet/blue/magic,/obj/marker/map_node,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"aU" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aV" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aW" = (/obj/marker/cover_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aX" = (/obj/marker/cover_node/right,/turf/simulated/floor/wood/magic,/area/mission/prefab/city/the_ale_nath/backroom)
+"aY" = (/obj/marker/cover_node/left,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"aZ" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/obj/marker/cover_node/left,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"ba" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/obj/structure/interactive/potted_plant/bin,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"bb" = (/obj/marker/cover_node/right,/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
+"bc" = (/obj/marker/map_node,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/city/the_ale_nath)
 
 (1,1,1) = {"
-abbbbbbbbbbbbbba
-abccccccccccccba
-abcdPPPefPPPdcba
-zbcghhhhhhhhPcba
-zbcchhhhhhhhPcba
-zbbcjhhhhhhhkcba
-CybcleeeemeePcba
-iDbcdPPPPeeedcba
-nobcccccpeccccba
-qrbbbOObtubbbbba
-nrvwvvvxvvvvwvna
-nABvEFGEGGHEGvIa
-aIvvJJJJJJJJJvIa
-aIvvvvvvvvvvvvIa
-anKvsvvvvvvsvKna
-annIIILnMNIIInna
+aaababababababababababababababaa
+aaabacacacacacacacacacacacacabaa
+aaabacadaPaPaPaeafaPaPaPadacabaa
+azabacagahahahahahahahahaPacabaa
+azabacacahaTahahahaTahahaPacabaa
+azababacajahahahahahahahakacabaa
+aCayabacalaeaeaeaeamaeaeaPacabaa
+aiarabacadaPaPaPaPaeaXaeadacabaa
+anaoabacacacacacapaDacacacacabaa
+aqaRabababaOaOabatauabababababaa
+anaZavaSavavavaxavaMavavawbcanaa
+anaAaBavaEaFaGaEaGaGaHaEaGavaIaa
+aaaIavavaJaJaJaJaJaJaJaJaJavaIaa
+aaaIavaMavavavavaMavavavavaMaIaa
+aaanbaaUasaVbbaYaMaWaUasaVaKanaa
+aaananaIaIaIaLanaQaNaIaIaIananaa
 "}

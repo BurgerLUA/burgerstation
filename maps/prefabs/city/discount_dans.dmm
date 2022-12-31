@@ -8,7 +8,7 @@
 "ah" = (/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "ai" = (/obj/structure/interactive/door/airlock/station/bathroom/female,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
 "aj" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
-"ak" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
+"ak" = (/obj/marker/map_node,/obj/marker/cover_node/right,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "al" = (/obj/structure/sign/restroom/female,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/bathroom_female)
 "am" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
 "an" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_female)
@@ -19,7 +19,7 @@
 "as" = (/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/bathroom_male)
 "at" = (/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "au" = (/obj/structure/sign/restroom/male,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/bathroom_male)
-"av" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
+"av" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
 "aw" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/bathroom_male)
 "ax" = (/obj/structure/short_wall/wood,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
 "ay" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
@@ -48,7 +48,7 @@
 "aV" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "aW" = (/obj/structure/interactive/chair/wood,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "aX" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"aY" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"aY" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/obj/structure/carpet/red,/obj/marker/cover_node/right,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "aZ" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 8},/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "ba" = (/obj/structure/interactive/bar_sign/dan,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans)
 "bb" = (/obj/structure/interactive/door/airlock/wood/dark,/turf/simulated/floor/wood/brown/dark,/area/mission/prefab/city/discount_dans)
@@ -63,9 +63,9 @@
 "bk" = (/obj/structure/interactive/vending/smart_fridge/kitchen/solarian,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "bl" = (/obj/structure/table/reinforced/steel,/obj/structure/interactive/lighting/fixture/tube,/obj/marker/spawning/random/kitchen,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "bm" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/structure/interactive/storage/safe,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"bn" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bn" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/obj/marker/cover_node/left,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bo" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"bp" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bp" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bq" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "br" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 "bs" = (/obj/structure/interactive/chair/wood,/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/wood/brown/dark,/area/mission/prefab/city/discount_dans)
@@ -82,13 +82,13 @@
 "bD" = (/obj/decal/poster/off_station,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
 "bE" = (/obj/decal/poster/off_station{icon_state = ""; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans)
 "bF" = (/obj/decal/poster/off_station,/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans)
-"bG" = (/obj/marker/spawning/random/food,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
+"bG" = (/obj/structure/table/reinforced/steel,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
 "bH" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bI" = (/obj/structure/table/wood,/obj/structure/carpet/red,/obj/marker/spawning/random/trash,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bJ" = (/obj/marker/spawning/random/trash,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bK" = (/obj/structure/table/wood,/obj/marker/spawning/random/trash,/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
 "bL" = (/obj/structure/interactive/computer/arcade/bubbletwist,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
-"bM" = (/obj/structure/carpet/red,/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bM" = (/obj/structure/carpet/red,/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bN" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
 "bO" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans/bathroom_male)
 "bP" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/wood/brown,/area/mission/prefab/city/discount_dans)
@@ -97,19 +97,23 @@
 "bS" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
 "bT" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown/dark,/area/dmm_suite/clear_area)
 "bU" = (/obj/marker/mission_mob,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bV" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bW" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/structure/carpet/red,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans)
+"bX" = (/obj/structure/interactive/door/airlock/glass,/obj/marker/cover_node/left,/turf/simulated/floor/wood/brown,/area/mission/prefab/city/discount_dans/kitchen)
+"bY" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile,/area/mission/prefab/city/discount_dans/kitchen)
 
 (1,1,1) = {"
 aaabaaaaaaaaaaaaaaacacadbdadadap
 bNajbkafagagagblaabLaFaiaKbtadap
-aabraebRaeaebRajakboahalamanadap
-aabDbDbGaobGaobcaqarahbOasasasap
+aabrbYbRaeaebRakbXboahalamanadap
+aabDbDaobGbGaobcaqarahbOasasasap
 bEbgbjatatatatbqatarahauavawasap
 bPbmatatatbQatatatarboaEbwbuasap
-acbhbfaGbHaGbIbhaGarahasbeasasap
+acbhbfaGbHaGbIbhaGarbVasbeasasap
 acbMaHaJaHaHaRaRaHarbxaTbybJaMap
 aVahahbSahahbBahahbUbpacaNaLaOap
 aVataWaWatahahataWaWatacbvaLaOap
-acaXbhbHaXbnboaYbibhaZacaPbJaOap
+acbWbhbHaXbnboaYbibhaZacaPbJaOap
 acacaVaVbaacbbbFaVaVbFacaQaSaUap
 axaCbKaAaBaBbzaBaAazbsaxapbAaIap
 axaBaBaBbTaBaBaBaBaBaBaxapapapap

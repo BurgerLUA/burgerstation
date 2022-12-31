@@ -83,16 +83,21 @@
 "bE" = (/obj/marker/map_node,/obj/marker/mission_mob,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
 "bF" = (/obj/marker/mission_mob,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
 "bG" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/marker/hostage_spawn,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bH" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bI" = (/obj/marker/cover_node/right,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bJ" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bK" = (/obj/marker/cover_node/right,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bL" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
 
 (1,1,1) = {"
 aPaPacacacacacacacacafafafafafac
 asaqacahahahahahaiakaHaIaIaNaVac
 aravacahahagahahahaXatbabubrbaac
 aravacahbGahahahbFbdaYbrbababaac
-arawacahahahahahbeakaYbabDbabfac
+arawacahahahahahbeakaYbJbDbKbfac
 arauacacacacacacacbgbmbjbhbiacac
 bvbwambxananananananaFaebyaeaZab
-apaobbaebxaMaeaebyaeaeaebEaeaeab
+apaobbbLbxaMaeaebyaeaebHbEbIaeab
 axaxaxaEaybnazaxaxaQaQabalababab
 axaAbpaBbzaCbqaAaRbkaeaFbyaeabaa
 axaAaBaBaBaBaBaAaRaeaOaUaebsaSaa

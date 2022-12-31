@@ -17,7 +17,7 @@
 "aq" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "ar" = (/obj/structure/interactive/fence,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "as" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"at" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus/bathroom)
+"at" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/obj/marker/cover_node/left,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus/bathroom)
 "au" = (/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "av" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_coderbus/bathroom)
 "aw" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_coderbus/bathroom)
@@ -44,11 +44,11 @@
 "aR" = (/obj/structure/interactive/wire/yellow,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aS" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "aT" = (/obj/structure/table/reinforced/steel,/obj/marker/spawning/random/food,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
-"aU" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"aU" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/obj/marker/cover_node/right,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "aV" = (/obj/structure/interactive/crate/closet/anchored,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "aW" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_coderbus)
 "aX" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
-"aY" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"aY" = (/obj/structure/carpet/grey,/obj/marker/cover_node{icon_state = "both"; dir = 4},/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "aZ" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
 "ba" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
 "bb" = (/obj/structure/table/reinforced/steel,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 8},/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
@@ -66,22 +66,26 @@
 "bn" = (/obj/marker/map_node,/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
 "bo" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 "bp" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/tile/dark/ish,/area/mission/prefab/city/the_coderbus)
+"bq" = (/obj/structure/interactive/wire/green,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"br" = (/obj/structure/interactive/wire/green,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"bs" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
+"bt" = (/obj/marker/map_node,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile/morphing,/area/mission/prefab/city/the_coderbus)
 
 (1,1,1) = {"
 aaaaaaaaaaaOaOabamanananananaoaa
 aaacacacacabaeabapaqaRazazazaraa
 aaacafagacahaJajbgadadadadaPasaa
-aaacakbhatbiaiababababababababaa
-aaacavalawaxaiayaAaAaAaBaAaCaDaa
+aaacakbhatbibqababababababababaa
+aaacavalawaxbrayaAaAaAaBaAaCaDaa
 aaacacaEacauaFaGaHaIaIaIaIauaDaa
 aaabbiaiaiaibjbkaKaKbpaKaKblaDaa
 aaaLauaMaNaGbmaGaQaQaQaHaQauaDaa
 aaabaTaNaNaGauaUaAaAaAaAaAaVaDaa
 aaabahaGaGaGauabaDaDaDaDaDaDabaa
-aaabbiaGaGbkbiaWbnbcbcbcbcbcbcbn
+aaabbiaGaGbkbtaWbnbcbcbcbcbcbcbn
 aaabauaNaNaXboaZbnaSaSaSaSaSaSaS
 aaabaxbabbaXaYbdbcaSaSaSaSaSaSaS
 aaabbibkaNaXboaZbnaSaSaSaSaSaSaS
-aaabahbeaAauahabbcaSaSaSaSaSaSaS
+aaabahbeaAaubsabbcaSaSaSaSaSaSaS
 aaabbfabaDaDaDabbnaSaSaSaSaSaSaS
 "}

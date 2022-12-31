@@ -6,7 +6,7 @@
 "af" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/back/storage/backpack/clown,/obj/item/clothing/back/storage/backpack/clown,/obj/item/clothing/back/storage/backpack/clown,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "ag" = (/obj/structure/table/reinforced/yellow,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "ah" = (/obj/structure/table/reinforced/yellow,/obj/structure/interactive/lighting/fixture/tube/color/random,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
-"ai" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
+"ai" = (/obj/structure/interactive/wire/green,/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aj" = (/obj/structure/interactive/reagent_tank/rolly/lube,/obj/structure/interactive/lighting/fixture/tube/color/random,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "ak" = (/obj/structure/table/reinforced/yellow,/obj/item/container/spray/ketchup,/obj/item/container/spray/ketchup,/obj/item/container/spray/ketchup,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "al" = (/obj/structure/table/reinforced/yellow,/obj/item/container/spray/mustard,/obj/item/container/spray/mustard,/obj/item/container/spray/mustard,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
@@ -31,7 +31,6 @@
 "aE" = (/turf/simulated/floor/tile/blue,/area/mission/prefab/city/honked_and_loaded)
 "aF" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/back/storage/satchel/bluespace/prank,/obj/item/clothing/back/storage/satchel/bluespace/prank,/obj/item/clothing/back/storage/satchel/bluespace/prank,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aG" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/mask/clown,/obj/item/clothing/mask/clown,/obj/item/clothing/mask/clown,/obj/structure/interactive/lighting/fixture/tube/color/random{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
-"aH" = (/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
 "aI" = (/obj/structure/table/reinforced/yellow,/obj/item/container/healing/bandage/prank,/obj/item/container/healing/bandage/prank,/obj/item/container/healing/bandage/prank,/obj/structure/interactive/lighting/fixture/tube/color/random{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aJ" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
 "aK" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/mission/prefab/city/honked_and_loaded)
@@ -45,7 +44,7 @@
 "aS" = (/obj/structure/interactive/lighting/fixture/tube/color/random,/turf/dmm_suite/no_wall,/area/mission/prefab/city/honked_and_loaded)
 "aT" = (/obj/structure/table/reinforced/yellow,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile,/area/mission/prefab/city/honked_and_loaded)
 "aU" = (/obj/structure/table/reinforced/yellow,/obj/marker/spawning/random/valuable,/turf/simulated/floor/tile,/area/mission/prefab/city/honked_and_loaded)
-"aV" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
+"aV" = (/obj/structure/carpet/grey,/obj/marker/cover_node/right,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
 "aW" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/brick/banana,/area/mission/prefab/city/honked_and_loaded)
 "aX" = (/obj/structure/table/reinforced/yellow,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/turf/simulated/floor/tile,/area/mission/prefab/city/honked_and_loaded)
 "aY" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile,/area/mission/prefab/city/honked_and_loaded)
@@ -62,6 +61,10 @@
 "bj" = (/obj/marker/map_node,/turf/simulated/floor/tile/red,/area/mission/prefab/city/honked_and_loaded)
 "bk" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
 "bl" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/mission/prefab/city/honked_and_loaded)
+"bm" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
+"bn" = (/obj/structure/carpet/grey,/obj/marker/cover_node/left,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
+"bo" = (/obj/marker/cover_node/right,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
+"bp" = (/obj/marker/cover_node,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaarasauavavbcavaaaa
@@ -71,13 +74,13 @@ aaaoapbgaqaqaqbgbgaqaqaqbhataoaa
 bdaoawaqaZaAaTaAaYaBaAaqaqayaobd
 aaaoazaqaAaAaUaXaBaTaAaAaqaCaoaa
 aaaoaDaqaAaEaEaAaAaEaEaAaqaFaoaa
-aaabaGbgaHaEbibaaAbiaEaHbgaIabaa
+aaabaGbgbpaEbibaaAbiaEbpbgaIabaa
 aaabaoaoaWaJaAaAaAaAaJabaoaoabaa
 aaaoaKaKaoaLaAaMaMaAaLaoaKaKaoaa
 bdaoaKaKaoaJbjaMaMbjaJaoaKaKaobd
-aaabaoaoabaNaMaMaMbbaOabaoaoabaa
-aaaaaaaoaJaAaAaMaMaAaAaJaoaaaaaa
-aaaabdaoaLaHbkaVaVbkaHaLaobdaaaa
+aaabaoababaNaMaMaMbbaOababaoabaa
+aaaaaaabaJaAaAaMaMaAaAaJabaaaaaa
+aaaabdabaLbmbkaVbnbkboaLabbdaaaa
 aaaaaaabaoabaQaRabaQabaoabaaaaaa
 aaaaaaaPbeaSblaPaPblaSbeaPaaaaaa
 "}

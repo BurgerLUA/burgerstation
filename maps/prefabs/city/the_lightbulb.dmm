@@ -10,16 +10,16 @@
 "aj" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "ak" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb)
 "al" = (/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb/bathroom)
-"am" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
+"am" = (/obj/structure/interactive/door/airlock,/obj/marker/cover_node/left,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "an" = (/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
-"ao" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"ao" = (/obj/marker/map_node,/obj/marker/cover_node/right{icon_state = "right"; dir = 1},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "ap" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
 "aq" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
-"ar" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
+"ar" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "as" = (/obj/structure/table/steel,/obj/marker/spawning/random/misc,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "at" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "au" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
-"av" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
+"av" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/obj/marker/cover_node/right,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
 "aw" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb/bathroom)
 "ax" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "ay" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
@@ -78,29 +78,40 @@
 "bz" = (/obj/marker/map_node,/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bA" = (/obj/decal/poster/off_station,/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "bB" = (/obj/marker/spawning/random/maintenance,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"bC" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/misc,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
+"bC" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/misc,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "bD" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb)
 "bE" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
 "bF" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/plastic/tan,/area/mission/prefab/city/the_lightbulb)
 "bG" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 "bH" = (/obj/structure/interactive/lighting/fixture/tube/color/turf,/obj/marker/mission_mob,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/the_lightbulb)
 "bI" = (/obj/structure/carpet/grey,/obj/marker/mission_mob,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb/breakroom)
+"bJ" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bK" = (/obj/marker/mission_mob,/obj/marker/cover_node/right,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bL" = (/obj/structure/carpet/grey,/obj/marker/cover_node/right,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bM" = (/obj/structure/carpet/grey,/obj/marker/cover_node/left,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bN" = (/obj/structure/interactive/wire/green,/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bO" = (/obj/marker/map_node,/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bP" = (/obj/marker/map_node,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bQ" = (/obj/marker/map_node,/obj/marker/cover_node/left,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bR" = (/obj/marker/map_node,/obj/marker/cover_node/right,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bS" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 1},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
+"bT" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/tile/tan,/area/mission/prefab/city/the_lightbulb)
 
 (1,1,1) = {"
 acacacacacacacaRbvaRaRbBaWaXbtaY
 abbAbAbAabababbBaxbabababbaSbuaZ
 abadaeafblbmabbDajakalalalalaTaZ
-bybpagagbIbpambqbraoalapaqalaTaZ
+bybpagagbIbpamaobrbNalapaqalaTaZ
 abarasatahbCaaaubxbqavbsawalaTaU
 ababababbEababanananalbkalalaiai
-aibqaybqbqbdanbqbqananbqbqaybqai
+aibOaybqbqbdbSbqbqanbTbqbqaybPai
 azaAaiaBanananananananbGaCaiaDaz
 azaEaiaFananaGanbnaHananaFaiaIaz
 azaAaiaFananaJananaHananaFaiaDaz
 azaKaiaBbqanbqbqanbqanbqaCaiaLaz
-azaMaiaFananananananbdanaFaiaNaz
+azaMaiaFanbJananananbKanaFaiaNaz
 azaKaiaibFaiaOaPaPaQaiaiaiaiaLaz
-aibqbcbHbwaibeaPaPboaibfbgbfbqai
+aibQbcbHbwaibebLbMboaibfbgbfbRai
 aiaiazazazaibhbibjbhaiazazazaiai
 aVaVaVaVaVaVbzaVaVbzaVaVaVaVaVaV
 "}

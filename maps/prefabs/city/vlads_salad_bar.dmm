@@ -9,10 +9,10 @@
 "ai" = (/obj/structure/interactive/door/airlock/wood,/turf/simulated/floor/plating,/area/mission/prefab/city/vlads_salad_bar/kitchen)
 "aj" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
 "ak" = (/obj/structure/interactive/door/airlock/wood,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
-"al" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/obj/structure/interactive/wire/green,/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
+"al" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/obj/structure/interactive/wire/green,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
 "am" = (/obj/marker/mission_mob,/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
 "an" = (/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
-"ao" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
+"ao" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
 "ap" = (/turf/simulated/wall/wood,/area/mission/prefab/city/vlads_salad_bar)
 "aq" = (/turf/simulated/wall/wood,/area/mission/prefab/city/vlads_salad_bar/bathroom)
 "ar" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/wood,/area/mission/prefab/city/vlads_salad_bar)
@@ -59,7 +59,7 @@
 "bg" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bh" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "bi" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 1},/obj/structure/carpet/red,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
-"bj" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
+"bj" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/obj/marker/cover_node/right,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
 "bk" = (/obj/structure/interactive/bar_sign/vlads_salad_bar,/turf/simulated/wall/wood,/area/mission/prefab/city/vlads_salad_bar)
 "bl" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
 "bm" = (/obj/marker/map_node,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
@@ -69,6 +69,12 @@
 "bq" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
 "br" = (/obj/marker/mission_mob,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bs" = (/obj/marker/hostage_spawn,/obj/structure/interactive/chair/wood,/turf/simulated/floor/tile,/area/mission/prefab/city/vlads_salad_bar/kitchen)
+"bt" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/left,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
+"bu" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/right,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
+"bv" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 1},/obj/marker/cover_node/left,/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
+"bw" = (/obj/marker/mission_mob,/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
+"bx" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
+"by" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/wood/oak,/area/mission/prefab/city/vlads_salad_bar)
 
 (1,1,1) = {"
 aaabababababababababavawawaxaybg
@@ -78,13 +84,13 @@ bgabalamanbsanamaoabapaqaqaqaqbb
 aaarboauauaBauaubpaDaEaqaFaGaqbb
 aaaHasaIaJaIaIaIaJaIaKaqaLaMaPbb
 aaaQbobqaTaTaTaTaSaSaUaqaqaVaqaa
-aaapaWbmauauauauauaubmaubmbmaXaa
+aaapaWbmauauauauauaubmbybmbmaXaa
 aaapaYauauauaBauauauauauauauapaa
 aaapaZauaubabcbdaubaaYbdauaUapaa
-aaapaBbmauauaubmauaBauaubmaEapaa
+aaapbwbmauauaubmauaBauaubmbxapaa
 bgbeaWaubaaYbdbmbabcbdauauaWbebg
 bhbebcauauauauauauauauauaBaYbebh
-bgbebibmaubjauauauaubjaubmbibebg
-bgapbebebearaEbmbmaEapbebebeapbg
+bgbebibmaubjauauauaubvaubmbibebg
+bgapbebebearbtbmbmbuapbebebeapbg
 bgbgbgbhbgbkapblblapapbgbhbgbgbg
 "}
