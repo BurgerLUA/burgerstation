@@ -87,7 +87,7 @@
 		opacity = TRUE
 	update_sprite()
 
-	if(container.volume_current > 0)
+	if(container && container.volume_current > 0)
 		try_splash(loc)
 
 	spread()

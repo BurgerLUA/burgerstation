@@ -14,6 +14,8 @@
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
 	var/tmp/next_move = 0 //How long until you can move again, in ticks.
 
+	var/thrown_bounce_modifier = 1 //Set to a value to above 1 to make this object bounce. 1 will generally cause it to bounce backwards at half its current velocity at 1. Values 2 and above are super bouncy.
+
 	// var/momentum_speed = 0 //Tiles per second. Maximum 10.
 	// var/momentum_dir = 0x0
 

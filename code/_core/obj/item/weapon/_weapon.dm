@@ -38,6 +38,8 @@
 
 	var/obj/item/spellswap/stored_spellswap
 
+	thrown_bounce_modifier = 0.5
+
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(tier == -1)

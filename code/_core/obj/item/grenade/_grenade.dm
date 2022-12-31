@@ -29,6 +29,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	thrown_bounce_modifier = 2
+
 /obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
 	var/num = bullet_num/bullet_num_max

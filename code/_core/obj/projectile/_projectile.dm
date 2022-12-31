@@ -82,6 +82,7 @@
 	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
 	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
 	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
+	var/ricochet_advanced_calculations = FALSE
 
 	var/debug = FALSE
 
@@ -247,7 +248,7 @@
 			return FALSE
 
 	if(steps_allowed && steps_allowed <= steps_current)
-		on_projectile_hit(new_loc,old_loc,new_loc)
+		on_projectile_hit(old_loc,old_loc,new_loc)
 		return FALSE
 
 	steps_current += 1
