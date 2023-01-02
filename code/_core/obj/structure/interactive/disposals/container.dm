@@ -71,10 +71,6 @@
 				visited_pipes[last_pipe] += 1
 				if(visited_pipes[last_pipe] >= 5)
 					qdel(src)
-					/*
-					last_pipe.visible_message(span("danger","\The [last_pipe.name] bursts!"))
-					qdel(last_pipe)
-					*/
 					return TRUE
 			else
 				visited_pipes[last_pipe] = 1
@@ -88,10 +84,6 @@
 			visited_pipes[last_pipe] += 1
 			if(visited_pipes[last_pipe] >= 5)
 				qdel(src)
-				/*
-				last_pipe.visible_message(span("danger","\The [last_pipe.name] bursts from the stress!"))
-				qdel(last_pipe)
-				*/
 				return TRUE
 		else
 			visited_pipes[last_pipe] = 1
@@ -105,5 +97,7 @@
 		M.force_move(get_turf(src.loc))
 
 	STOP_THINKING(src)
+
+	qdel(src)
 
 	return FALSE

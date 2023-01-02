@@ -21,7 +21,7 @@
 	size = SIZE_4
 	weight = 14
 
-	heat_max = 0.1
+	heat_max = 0.06
 
 	bullet_length_min = 46
 	bullet_length_best = 51

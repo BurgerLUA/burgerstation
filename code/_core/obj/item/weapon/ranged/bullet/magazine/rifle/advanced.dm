@@ -12,7 +12,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_delay = 2.5
+	shoot_delay = 3
 
 	automatic = TRUE
 
@@ -81,4 +81,4 @@
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced/get_skill_spread(var/mob/living/L)
-	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))

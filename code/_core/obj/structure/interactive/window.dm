@@ -130,7 +130,11 @@
 		force_corner = TRUE
 		name = "corner window"
 
-	return ..()
+	. = ..()
+
+/obj/structure/window/directional/Finalize()
+	. = ..()
+	set_dir(dir,force=TRUE)
 
 /obj/structure/window/directional/set_dir(var/desired_dir,var/force = FALSE)
 

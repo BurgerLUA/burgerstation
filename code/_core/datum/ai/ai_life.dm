@@ -126,7 +126,7 @@
 
 	owner.handle_movement(tick_rate)
 
-	if(frustration_move_threshold > 0 && current_turf) //current_turf will only be assigned if they were supposed to move.
+	if(owner.move_dir && frustration_move_threshold > 0 && current_turf) //current_turf will only be assigned if they were supposed to move.
 		if(current_turf == get_turf(owner)) //Did not move even though it was supposed to move.
 			frustration_move++
 			if(length(node_path_current))

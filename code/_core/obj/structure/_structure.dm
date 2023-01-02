@@ -163,7 +163,7 @@
 
 /obj/structure/Uncross(var/atom/movable/O,atom/newloc)
 
-	if(O.collision_flags & src.collision_flags)
+	if(!O || O.collision_flags & src.collision_flags)
 		var/direction = get_dir(src,newloc)
 		if(collision_dir == (NORTH | SOUTH | EAST | WEST))
 			return TRUE //Prevents people from getting stuck in walls.
