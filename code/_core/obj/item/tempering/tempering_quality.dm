@@ -22,7 +22,7 @@
 	return ..()
 
 /obj/item/tempering/quality/on_temper(var/mob/caller,var/obj/item/I)
-	
+
 	if(I.quality + increase > limit)
 		var/to_consume = limit - I.quality
 		left -= to_consume
@@ -108,7 +108,7 @@
 	minimum = 0
 
 	left = 1
-	
+
 	value = 100
 
 	value_burgerbux = 0
@@ -116,7 +116,7 @@
 /obj/item/tempering/quality/ranged/lesser
 	name = "gun cleaning kit"
 	desc = "Help my gun needs cleaning."
-	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 1%, up to 75%. Has unlimited uses."
+	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 5%, up to 75%. Has unlimited uses."
 	icon_state = "gun_cleaning"
 
 	temper_whitelist = /obj/item/weapon/ranged

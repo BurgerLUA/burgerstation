@@ -69,9 +69,28 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mining
+	name = "10mm Laton Mining Edition"
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
+
+	bullet_length_min = 25
+	bullet_length_best = 32
+	bullet_length_max = 33
+
+	bullet_diameter_min = 10
+	bullet_diameter_best = 10.17
+	bullet_diameter_max = 11
+
+
+
+
+
+
+
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"
-	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mod.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_dark.dmi'
 	shoot_delay = 1.25
 	weight = 4
 	heat_max = 0.06

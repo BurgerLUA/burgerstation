@@ -20,6 +20,7 @@
 
 /obj/decal/hazard/black
 	icon = 'icons/obj/decal/hazard_full.dmi'
+	alpha = 200
 
 
 /obj/decal/hazard/black/corner

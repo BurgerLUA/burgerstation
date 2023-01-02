@@ -107,6 +107,12 @@
 		"shoulders" = COLOR_BLACK
 	)
 
+/obj/item/clothing/shirt/normal/tee/cargo
+	polymorphs = list(
+		"shirt_tee" = COLOR_CARGO,
+		"shoulders" = COLOR_GOLD
+	)
+
 /obj/item/clothing/shirt/normal/tee/engineering/solarian
 	polymorphs = list(
 		"shirt_tee" = "#B59463",
@@ -201,4 +207,11 @@
 	polymorphs = list(
 		"shirt_tee" = "#62869E"
 	)
+
+/obj/item/clothing/shirt/normal/reinforced/mining
+	polymorphs = list(
+		"shirt" = "#717261",
+		"shoulders" = COLOR_MINING
+	)
+
 

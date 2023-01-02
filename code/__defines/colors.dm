@@ -67,7 +67,7 @@
 #define COLOR_OLIVE_DRAB "#797659"
 
 //Department Colors
-#define COLOR_CARGO "#B57329"
+#define COLOR_CARGO "#87642D"
 
 #define COLOR_COMMAND "#2C566E"
 
@@ -91,6 +91,8 @@
 
 #define COLOR_DEATHSQUAD_BLACK "#4A3333"
 #define COLOR_DEATHSQUAD_RED "#A54F3A"
+
+#define COLOR_MINING "#793A80"
 
 //Materials
 #define COLOR_METAL "#777777"

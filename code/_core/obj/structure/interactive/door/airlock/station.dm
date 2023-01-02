@@ -177,7 +177,7 @@
 	name = "mining airlock"
 	color = COLOR_BROWN
 	filler = "fill"
-	fill_color = COLOR_PURPLE
+	fill_color = COLOR_MINING
 
 
 /obj/structure/interactive/door/airlock/station/medical/glass

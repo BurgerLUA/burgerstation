@@ -6,7 +6,7 @@
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(L.loc)
 
-	if(new_turf.z != old_turf.z)
+	if(new_turf?.z != old_turf?.z)
 		if(active)
 			if(old_turf) remove_from_active_list(old_turf.z)
 			if(new_turf) add_to_active_list(new_turf.z)

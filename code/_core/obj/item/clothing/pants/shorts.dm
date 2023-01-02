@@ -20,27 +20,28 @@
 
 
 /obj/item/clothing/pants/shorts/red_soccer
-	name = "red soccer shorts"
 	polymorphs = list(
 		"pants" = COLOR_RED,
 		"stripes" = COLOR_WHITE
 	)
 
 /obj/item/clothing/pants/shorts/blue_soccer
-	name = "blue soccer shorts"
 	polymorphs = list(
 		"pants" = COLOR_BLUE,
 		"stripes" = COLOR_BLACK
 	)
 
 /obj/item/clothing/pants/shorts/ref_soccer
-	name = "blue soccer shorts"
 	polymorphs = list(
 		"pants" = COLOR_BLACK
 	)
 
 /obj/item/clothing/pants/shorts/brown
-	name = "brown shorts"
 	polymorphs = list(
 		"pants" = COLOR_BROWN
+	)
+
+/obj/item/clothing/pants/shorts/cargo
+	polymorphs = list(
+		"pants" = COLOR_CARGO
 	)

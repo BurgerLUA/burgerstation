@@ -33,3 +33,6 @@
 		icon_state = "[icon_state]_on"
 	else
 		icon_state = "[icon_state]_off"
+
+/obj/structure/table/cooking/barbecue/anchored
+	anchored = 1

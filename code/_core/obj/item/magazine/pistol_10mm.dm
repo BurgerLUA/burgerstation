@@ -11,7 +11,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/sol = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/sol = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mining = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm

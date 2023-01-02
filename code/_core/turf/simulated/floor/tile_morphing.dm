@@ -142,7 +142,7 @@
 	color = COLOR_GREEN
 
 /turf/simulated/floor/tile/morphing/mining
-	color = COLOR_SCIENCE
+	color = COLOR_MINING
 
 /turf/simulated/floor/tile/morphing/medical
 	color = COLOR_MEDICAL

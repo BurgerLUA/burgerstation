@@ -38,25 +38,28 @@
 #define LAYER_OBJ_AIRLOCK      8
 
 #define LAYER_MOB_BELOW        (LAYER_MOB - 0.1)
-#define LAYER_MOB              9
+#define LAYER_MOB              10
 
-#define LAYER_MOB_FIRE         10
 
-#define LAYER_MOB_ABOVE        11
 
-#define LAYER_MOB_WATER        12
 
-#define LAYER_MOB_FLYING       13
+#define LAYER_MOB_FIRE         20
 
-#define LAYER_PROJECTILE       14
+#define LAYER_MOB_ABOVE        21
 
-#define LAYER_EFFECT           15
+#define LAYER_MOB_WATER        22
 
-#define LAYER_LARGE_OBJ        16
+#define LAYER_MOB_FLYING       23
 
-#define LAYER_GHOST            17
+#define LAYER_PROJECTILE       24
 
-#define LAYER_AREA 20 //Weather
+#define LAYER_EFFECT           25
+
+#define LAYER_LARGE_OBJ        26
+
+#define LAYER_GHOST            27
+
+#define LAYER_AREA             30 //Weather
 
 #define LAYER_LIGHTING 50
 #define LAYER_LIGHTING_DYNAMIC 51
@@ -69,58 +72,58 @@
 
 
 //Clothing
-#define LAYER_MOB_NONE                 (FLOAT_LAYER + 0.01)
-#define LAYER_MOB_WINGS_BEHIND         (FLOAT_LAYER + 0.02)
-#define LAYER_MOB_TAIL_BEHIND          (FLOAT_LAYER + 0.03)
-#define LAYER_MOB_WINGS_ADJACENT       (FLOAT_LAYER + 0.04)
-#define LAYER_MOB_TORSO                (FLOAT_LAYER + 0.05)
+#define LAYER_MOB_NONE                 (LAYER_MOB + 0.1)
+#define LAYER_MOB_WINGS_BEHIND         (LAYER_MOB + 0.2)
+#define LAYER_MOB_TAIL_BEHIND          (LAYER_MOB + 0.3)
+#define LAYER_MOB_WINGS_ADJACENT       (LAYER_MOB + 0.4)
+#define LAYER_MOB_TORSO                (LAYER_MOB + 0.5)
 
-#define LAYER_MOB_CLOTHING_UNDERSHIRT  (FLOAT_LAYER + 0.11)
-#define LAYER_MOB_ANTENNAE_BEHIND      (FLOAT_LAYER + 0.12)
-#define LAYER_MOB_HEAD                 (FLOAT_LAYER + 0.13)
-#define LAYER_MOB_EAR                  (FLOAT_LAYER + 0.14)
-#define LAYER_MOB_EYE                  (FLOAT_LAYER + 0.15)
-#define LAYER_MOB_CLOTHING_EAR         (FLOAT_LAYER + 0.16)
+#define LAYER_MOB_CLOTHING_UNDERSHIRT  (LAYER_MOB + 1.0)
+#define LAYER_MOB_ANTENNAE_BEHIND      (LAYER_MOB + 1.1)
+#define LAYER_MOB_HEAD                 (LAYER_MOB + 1.2)
+#define LAYER_MOB_EAR                  (LAYER_MOB + 1.3)
+#define LAYER_MOB_EYE                  (LAYER_MOB + 1.4)
+#define LAYER_MOB_CLOTHING_EAR         (LAYER_MOB + 1.5)
 
-#define LAYER_MOB_CLOTHING_HEADWRAP    (FLOAT_LAYER + 0.21)
-#define LAYER_MOB_CLOTHING_EYE         (FLOAT_LAYER + 0.22)
-#define LAYER_MOB_GROIN                (FLOAT_LAYER + 0.23)
-#define LAYER_MOB_ARMS                 (FLOAT_LAYER + 0.24)
+#define LAYER_MOB_CLOTHING_HEADWRAP    (LAYER_MOB + 2.0)
+#define LAYER_MOB_CLOTHING_EYE         (LAYER_MOB + 2.1)
+#define LAYER_MOB_GROIN                (LAYER_MOB + 2.2)
+#define LAYER_MOB_ARMS                 (LAYER_MOB + 2.3)
 
-#define LAYER_MOB_LEGS                 (FLOAT_LAYER + 0.31)
-#define LAYER_MOB_FEET                 (FLOAT_LAYER + 0.32)
-#define LAYER_MOB_CLOTHING_UNDERWEAR   (FLOAT_LAYER + 0.32)
-#define LAYER_MOB_CLOTHING_SOCKS       (FLOAT_LAYER + 0.34)
-#define LAYER_MOB_CLOTHING_SHOES       (FLOAT_LAYER + 0.35)
+#define LAYER_MOB_LEGS                 (LAYER_MOB + 3.0)
+#define LAYER_MOB_FEET                 (LAYER_MOB + 3.1)
+#define LAYER_MOB_CLOTHING_UNDERWEAR   (LAYER_MOB + 3.2)
+#define LAYER_MOB_CLOTHING_SOCKS       (LAYER_MOB + 3.3)
+#define LAYER_MOB_CLOTHING_SHOES       (LAYER_MOB + 3.4)
 
-#define LAYER_MOB_CLOTHING_PANTS       (FLOAT_LAYER + 0.41)
-#define LAYER_MOB_CLOTHING_UNIFORM     (FLOAT_LAYER + 0.42)
-#define LAYER_MOB_CLOTHING_NECK_UNDER  (FLOAT_LAYER + 0.43)
-#define LAYER_MOB_CLOTHING_BELT        (FLOAT_LAYER + 0.44)
-#define LAYER_MOB_CLOTHING_ARMOR       (FLOAT_LAYER + 0.45)
+#define LAYER_MOB_CLOTHING_PANTS       (LAYER_MOB + 4.0)
+#define LAYER_MOB_CLOTHING_UNIFORM     (LAYER_MOB + 4.1)
+#define LAYER_MOB_CLOTHING_NECK_UNDER  (LAYER_MOB + 4.2)
+#define LAYER_MOB_CLOTHING_BELT        (LAYER_MOB + 4.3)
+#define LAYER_MOB_CLOTHING_ARMOR       (LAYER_MOB + 4.4)
 
-#define LAYER_MOB_INJURY               (FLOAT_LAYER + 0.51)
-#define LAYER_MOB_HANDS                (FLOAT_LAYER + 0.52)
-#define LAYER_MOB_CLOTHING_RING        (FLOAT_LAYER + 0.53)
-#define LAYER_MOB_CLOTHING_GLOVES      (FLOAT_LAYER + 0.54)
-#define LAYER_MOB_INJURY_HANDS         (FLOAT_LAYER + 0.55)
+#define LAYER_MOB_INJURY               (LAYER_MOB + 5.0)
+#define LAYER_MOB_HANDS                (LAYER_MOB + 5.1)
+#define LAYER_MOB_CLOTHING_RING        (LAYER_MOB + 5.2)
+#define LAYER_MOB_CLOTHING_GLOVES      (LAYER_MOB + 5.3)
+#define LAYER_MOB_INJURY_HANDS         (LAYER_MOB + 5.4)
 
-#define LAYER_MOB_CLOTHING_HARDSUIT    (FLOAT_LAYER + 0.61)
-#define LAYER_MOB_CLOTHING_COAT        (FLOAT_LAYER + 0.62)
-#define LAYER_MOB_CLOTHING_COAT_OVER   (FLOAT_LAYER + 0.63)
-#define LAYER_MOB_CLOTHING_NECK_OVER   (FLOAT_LAYER + 0.64)
-#define LAYER_MOB_TAIL_FRONT           (FLOAT_LAYER + 0.65)
-#define LAYER_MOB_WINGS_FRONT          (FLOAT_LAYER + 0.66)
-#define LAYER_MOB_CLOTHING_BACK        (FLOAT_LAYER + 0.67)
+#define LAYER_MOB_CLOTHING_HARDSUIT    (LAYER_MOB + 6.0)
+#define LAYER_MOB_CLOTHING_COAT        (LAYER_MOB + 6.1)
+#define LAYER_MOB_CLOTHING_COAT_OVER   (LAYER_MOB + 6.2)
+#define LAYER_MOB_CLOTHING_NECK_OVER   (LAYER_MOB + 6.3)
+#define LAYER_MOB_TAIL_FRONT           (LAYER_MOB + 6.4)
+#define LAYER_MOB_WINGS_FRONT          (LAYER_MOB + 6.5)
+#define LAYER_MOB_CLOTHING_BACK        (LAYER_MOB + 6.6)
 
-#define LAYER_MOB_ANTENNAE_FRONT       (FLOAT_LAYER + 0.71)
-#define LAYER_MOB_HAIR_FACE            (FLOAT_LAYER + 0.72)
-#define LAYER_MOB_HAIR_HEAD            (FLOAT_LAYER + 0.73)
-#define LAYER_MOB_HAIR_ABOVE           (FLOAT_LAYER + 0.74)
-#define LAYER_MOB_CLOTHING_MASK        (FLOAT_LAYER + 0.75)
-#define LAYER_MOB_CLOTHING_HELMET      (FLOAT_LAYER + 0.76)
-#define LAYER_MOB_CLOTHING_ALL         (FLOAT_LAYER + 0.77)
-#define LAYER_MOB_BLOB                 (FLOAT_LAYER + 0.78)
+#define LAYER_MOB_ANTENNAE_FRONT       (LAYER_MOB + 7.1)
+#define LAYER_MOB_HAIR_FACE            (LAYER_MOB + 7.2)
+#define LAYER_MOB_HAIR_HEAD            (LAYER_MOB + 7.3)
+#define LAYER_MOB_HAIR_ABOVE           (LAYER_MOB + 7.4)
+#define LAYER_MOB_CLOTHING_MASK        (LAYER_MOB + 7.5)
+#define LAYER_MOB_CLOTHING_HELMET      (LAYER_MOB + 7.6)
+#define LAYER_MOB_CLOTHING_ALL         (LAYER_MOB + 7.7)
+#define LAYER_MOB_BLOB                 (LAYER_MOB + 7.8)
 
-#define LAYER_MOB_HELD                 (FLOAT_LAYER + 0.81)
+#define LAYER_MOB_HELD                 (LAYER_MOB + 7.9)
 

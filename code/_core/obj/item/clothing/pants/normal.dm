@@ -234,3 +234,10 @@
 	polymorphs = list(
 		"pants" = "#62869E"
 	)
+
+
+/obj/item/clothing/pants/normal/reinforced/mining
+	polymorphs = list(
+		"pants" = "#796755",
+		"kneepads" = COLOR_WHITE
+	)

@@ -389,6 +389,10 @@
 
 	map_color = COLOR_CARGO
 
+/area/burgerstation/cargo/lobby
+	name = "\improper Cargo Lobby"
+	icon_state = "lobby"
+
 /area/burgerstation/maint
 	name = "\improper Maint"
 	icon_state = "maint"

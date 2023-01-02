@@ -262,6 +262,7 @@ var/global/list/rarity_to_mul = list(
 
 	if(length(polymorphs))
 		var/icon/initial_icon = initial(icon)
+		var/layer_mod = 0
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
 			add_blend(
@@ -272,8 +273,9 @@ var/global/list/rarity_to_mul = list(
 				desired_blend = ICON_OVERLAY,
 				desired_type = ICON_BLEND_OVERLAY,
 				desired_should_save = TRUE,
-				desired_layer = worn_layer
+				desired_layer = worn_layer + (layer_mod * 0.001)
 			)
+			layer_mod++
 
 	if(enable_blood_stains)
 		add_blend(
@@ -284,7 +286,7 @@ var/global/list/rarity_to_mul = list(
 			desired_blend = ICON_ADD,
 			desired_type = ICON_BLEND_MASK,
 			desired_should_save = FALSE,
-			desired_layer = worn_layer+0.01
+			desired_layer = worn_layer + 0.011
 		)
 
 	if(enable_damage_overlay)
@@ -296,7 +298,7 @@ var/global/list/rarity_to_mul = list(
 			desired_blend = ICON_MULTIPLY,
 			desired_type = ICON_BLEND_MASK,
 			desired_should_save = FALSE,
-			desired_layer = worn_layer+0.02
+			desired_layer = worn_layer + 0.012
 		)
 
 	if(enable_torn_overlay)
@@ -308,7 +310,7 @@ var/global/list/rarity_to_mul = list(
 			desired_blend = ICON_OVERLAY,
 			desired_type = ICON_BLEND_CUT,
 			desired_should_save = FALSE,
-			desired_layer = worn_layer+0.03
+			desired_layer = worn_layer + 0.013
 		)
 
 	. = ..()
