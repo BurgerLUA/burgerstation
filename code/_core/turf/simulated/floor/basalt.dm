@@ -34,7 +34,7 @@
 
 	. = ..()
 
-	if(smooth_code_1 == smooth_code_2 && smooth_code_3 == smooth_code_4 && smooth_code_1 == smooth_code_4)
+	if(smooth_code_1 == "f" && smooth_code_2 == "f" && smooth_code_3 == "f" && smooth_code_4 == "f")
 		icon = initial(icon)
 		if(prob(3))
 			light_turf = TRUE
@@ -46,9 +46,10 @@
 		pixel_x = 0
 		pixel_y = 0
 
-		return TRUE
-
 /turf/simulated/floor/basalt/Finalize()
 	. = ..()
 	if(!light_turf && prob(2))
-		new/obj/structure/interactive/basalt(src)
+		if(!SSturf.initialized)
+			var/obj/structure/interactive/basalt/B = new(src)
+			B.pixel_x = rand(-5,5)
+			B.pixel_y = rand(-5,5)

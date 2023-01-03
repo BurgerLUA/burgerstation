@@ -16,6 +16,7 @@
 	desc_extended = "A handheld portable health analyzer that prints the target's total received damage in an arbitary measurement. This syndicate variant is more silent and works at a short range."
 	stealth = TRUE
 	scan_range = VIEW_RANGE*0.75
+	icon_state = "inventory_syndicate"
 
 /obj/item/analyzer/health/click_self(var/mob/caller)
 	INTERACT_CHECK

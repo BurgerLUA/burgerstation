@@ -96,6 +96,9 @@ obj/structure/scenery/rocks/New()
 
 	pixel_x = 8
 
+	plane = PLANE_WIRE
+	layer = 1000
+
 obj/structure/interactive/basalt/New()
 	..()
 	icon_state = "basalt_[rand(1,4)]"

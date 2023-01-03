@@ -35,6 +35,9 @@
 /obj/item/clothing/belt/storage/colored/merc_alt
 	color = "#97805C"
 
+/obj/item/clothing/belt/storage/colored/medical
+	color = COLOR_MEDICAL
+
 /obj/item/clothing/belt/storage/colored/recruit
 	color = COLOR_RECRUIT_DARK
 	value_burgerbux = 1
