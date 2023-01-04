@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(ai)
 			if(!AI)
 				continue
 			if(AI.qdeleting)
-				log_error("WARNING: AI of type [AI.type] was dqeleting!")
+				log_error("WARNING: AI of type [AI.type] was qdeleting before it was removed from active_ai_by_z!")
 				active_ai_by_z[z] -= k
 				continue
 			if(!AI.owner)

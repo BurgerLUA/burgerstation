@@ -102,6 +102,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	var/last_autosave = 0 //The last time this player saved.
 
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = TRUE
 
 	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
 
@@ -229,25 +230,6 @@ var/global/list/difficulty_to_damage_mul = list(
 		linked_portals = null
 
 	return TRUE
-
-/mob/living/advanced/player/proc/wake_chunk(var/desired_z=0)
-
-	if(!desired_z)
-		return TRUE
-
-	for(var/k in SSai.inactive_ai_by_z["[desired_z]"])
-		var/ai/A = k
-		var/dist = get_dist(src,A.owner)
-		if(dist > VIEW_RANGE + ZOOM_RANGE)
-			continue
-		A.set_active(TRUE)
-
-	for(var/k in SSbossai.inactive_ai_by_z["[desired_z]"])
-		var/ai/A = k
-		var/dist = get_dist(src,A.owner)
-		if(dist > VIEW_RANGE + ZOOM_RANGE)
-			continue
-		A.set_active(TRUE)
 
 /mob/living/advanced/player/proc/prestige(var/skill_id)
 	if(!prestige_count[skill_id])

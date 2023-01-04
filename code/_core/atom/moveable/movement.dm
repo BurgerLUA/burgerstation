@@ -189,7 +189,40 @@
 		var/obj/light_sprite/LS = k
 		LS.force_move(src.loc)
 
+	if(enable_chunk_handling && SSchunk.initialized && src.finalized)
+
+		var/turf/old_turf = is_turf(old_loc) ? old_loc : null
+		var/old_loc_chunk_x = 0
+		var/old_loc_chunk_y = 0
+		var/old_loc_chunk_z = 0
+		if(old_turf)
+			old_loc_chunk_x = old_turf ? GET_CHUNK_X(old_turf) : 0
+			old_loc_chunk_y = old_turf ? GET_CHUNK_Y(old_turf) : 0
+			old_loc_chunk_z = old_turf ? GET_CHUNK_Z(old_turf) : 0
+
+		var/turf/new_turf = is_turf(loc) ? loc : null
+		var/new_loc_chunk_x = 0
+		var/new_loc_chunk_y = 0
+		var/new_loc_chunk_z = 0
+		if(new_turf)
+			new_loc_chunk_x = GET_CHUNK_X(new_turf)
+			new_loc_chunk_y = GET_CHUNK_Y(new_turf)
+			new_loc_chunk_z = GET_CHUNK_Z(new_turf)
+
+		if(old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z)
+			var/chunk/old_chunk = old_loc_chunk_z > 0 ? SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y] : null
+			var/chunk/new_chunk = new_loc_chunk_z > 0 ? SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y] : null
+			src.on_chunk_cross(old_chunk,new_chunk)
+
 	HOOK_CALL("post_move")
+	return TRUE
+
+/atom/movable/proc/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+
+	if(enable_chunk_clean)
+		if(new_chunk) new_chunk.cleanables += src
+		if(old_chunk) old_chunk.cleanables -= src
+
 	return TRUE
 
 /atom/movable/Bump(atom/Obstacle)

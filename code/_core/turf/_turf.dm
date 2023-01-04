@@ -271,9 +271,6 @@
 
 /turf/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
 
-	if(!source.has_footsteps)
-		return FALSE
-
 	var/list/returning_footsteps = source.get_footsteps(footstep ? list(footstep) : list(),enter)
 	if(length(returning_footsteps))
 		return source.handle_footsteps(src,returning_footsteps,enter)
@@ -287,9 +284,6 @@
 
 	. = ..()
 
-	if(!enterer.qdeleting && is_living(enterer))
-		do_footstep(enterer,TRUE)
-
 	if(!density_down)
 		var/turf/T = locate(x,y,z-1)
 		if(T && !T.density_up && enterer.Move(T) && !T.safe_fall)
@@ -298,23 +292,6 @@
 	if(enterer.density && !enterer.abstract)
 		has_dense_atom = "/turf/Entered() [enterer.type]."
 
-	if(world_state >= STATE_RUNNING && enterer.enable_chunk_clean)
-
-		var/turf/old_turf = is_turf(old_loc) ? old_loc : null
-
-		var/old_loc_chunk_x = old_turf ? CEILING(old_turf.x/CHUNK_SIZE,1) : 0
-		var/old_loc_chunk_y = old_turf ? CEILING(old_turf.y/CHUNK_SIZE,1) : 0
-		var/old_loc_chunk_z = old_turf ? old_turf.z : 0
-
-		var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
-		var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
-		var/new_loc_chunk_z = src.z
-
-		if(new_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
-			var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
-			if(new_chunk) new_chunk.cleanables += enterer
-
-
 /turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
@@ -322,30 +299,11 @@
 
 	. = ..()
 
-	if(!exiter.qdeleting && is_living(exiter))
-		do_footstep(exiter,FALSE)
-
 	if(exiter.density)
 		recalculate_atom_density()
 
 	if(exiter.hazardous)
 		recalculate_atom_hazards()
-
-	if(world_state >= STATE_RUNNING && exiter.enable_chunk_clean)
-
-		var/turf/new_turf = is_turf(new_loc) ? new_loc : null
-
-		var/old_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
-		var/old_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
-		var/old_loc_chunk_z = src.z
-
-		var/new_loc_chunk_x = new_turf ? CEILING(new_turf.x/CHUNK_SIZE,1) : 0
-		var/new_loc_chunk_y = new_turf ? CEILING(new_turf.y/CHUNK_SIZE,1) : 0
-		var/new_loc_chunk_z = new_turf ? new_turf.z : 0
-
-		if(old_loc_chunk_z > 0 && (old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z))
-			var/chunk/old_chunk = SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
-			if(old_chunk) old_chunk.cleanables -= exiter
 
 /turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
 

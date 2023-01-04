@@ -3,6 +3,7 @@
 	icon = 'icons/obj/effects/scorch.dmi'
 	icon_state = "6"
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = FALSE
 
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = 9999

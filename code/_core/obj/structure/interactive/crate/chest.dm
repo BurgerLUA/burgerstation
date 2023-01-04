@@ -13,6 +13,7 @@
 	open_sound = 'sound/effects/lockpicking/chest_open.ogg'
 	close_sound = 'sound/effects/lockpicking/chest_close.ogg'
 
+	enable_chunk_handling = TRUE
 	enable_chunk_clean = TRUE
 
 /obj/structure/interactive/crate/chest/on_chunk_clean()

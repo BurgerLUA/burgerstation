@@ -11,6 +11,7 @@
 	invisibility = 101
 
 	enable_chunk_clean = TRUE
+	enable_chunk_handling = TRUE
 
 /obj/marker/mob_spawn/New(var/loc,var/mob/living/desired_mob_stored)
 	. = ..()

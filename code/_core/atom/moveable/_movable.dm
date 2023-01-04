@@ -62,6 +62,7 @@
 
 	var/can_be_bumped = TRUE
 
+	var/enable_chunk_handling = FALSE
 	var/enable_chunk_clean = FALSE
 
 	var/dir_offset = TILE_SIZE
@@ -69,6 +70,11 @@
 	var/abstract = FALSE
 
 /atom/movable/PreDestroy()
+	if(enable_chunk_handling && SSchunk.initialized)
+		var/turf/T = is_turf(loc) ? loc : null
+		if(T)
+			var/chunk/C = CHUNK(T)
+			src.on_chunk_cross(C,null)
 	force_move(null)
 	loc = null //Just in case.
 	. = ..()
@@ -156,12 +162,9 @@
 
 		var/turf/T = src.loc
 
-		if(world_state >= STATE_RUNNING && src.enable_chunk_clean)
-			var/chunk_x = CEILING(T.x/CHUNK_SIZE,1)
-			var/chunk_y = CEILING(T.y/CHUNK_SIZE,1)
-			var/chunk_z = T.z
-			var/chunk/C = SSchunk.chunks[chunk_z][chunk_x][chunk_y]
-			C.cleanables += src
+		if(enable_chunk_handling && SSchunk.initialized)
+			var/chunk/C = CHUNK(T)
+			src.on_chunk_cross(null,C)
 
 		if((opacity || density))
 			if(opacity)

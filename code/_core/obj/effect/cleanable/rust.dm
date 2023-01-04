@@ -3,6 +3,7 @@
 	icon = 'icons/obj/effects/rust.dmi'
 	icon_state = "rust1"
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = FALSE
 
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = 0

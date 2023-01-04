@@ -58,30 +58,20 @@
 	if(.)
 		handle_blocking(TRUE)
 
+/mob/living/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+
+	. = ..()
+
+	if(src.ai)
+		if(old_chunk) old_chunk.ai -= src
+		if(new_chunk) new_chunk.ai += src
+
 /mob/living/post_move(var/atom/old_loc)
 
 	. = ..()
 
-	if(ai && src.finalized && SSchunk.finalized)
-		var/turf/new_turf = loc && !isturf(loc) ? get_turf(loc) : loc
-
-		var/old_loc_chunk_x = old_turf ? CEILING(src.x/CHUNK_SIZE,1) : 0
-		var/old_loc_chunk_y = old_turf ? CEILING(src.y/CHUNK_SIZE,1) : 0
-		var/old_loc_chunk_z = old_turf ? src.z : 0
-
-		var/new_loc_chunk_x = new_turf ? CEILING(new_turf.x/CHUNK_SIZE,1) : 0
-		var/new_loc_chunk_y = new_turf ? CEILING(new_turf.y/CHUNK_SIZE,1) : 0
-		var/new_loc_chunk_z = new_turf ? new_turf.z : 0
-
-		if(old_loc_chunk_x != new_loc_chunk_x || old_loc_chunk_y != new_loc_chunk_y || old_loc_chunk_z != new_loc_chunk_z)
-
-			if(old_loc_chunk_z)
-				var/chunk/old_chunk = SSchunk.chunks[old_loc_chunk_z][old_loc_chunk_x][old_loc_chunk_y]
-				old_chunk.ai -= src.ai
-
-			if(new_loc_chunk_z)
-				var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
-				new_chunk.ai += src.ai
+	if(!.)
+		return .
 
 	if(old_turf && length(old_turf.old_living))
 		old_turf.old_living -= src
@@ -92,9 +82,13 @@
 			T.old_living = list()
 		T.old_living += src
 		src.old_turf = T
-
 		if(!src.z)
 			handle_blocking()
+		T.do_footstep(src,FALSE)
+
+	if(is_turf(loc))
+		var/turf/T = loc
+		T.do_footstep(src,TRUE)
 
 	if(qdeleting)
 		return .
@@ -265,17 +259,18 @@
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.density) //A living being is crossing us.
+	if(O.density && is_living(O)) //A living being is crossing us.
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
 			//If the crosser is horizontal, or the src is horizontal, you can cross.
 			return TRUE
-		if((!L.ai || !src.ai))
-			if(allow_helpful_action(L.loyalty_tag,src)) //If the crosser is not an AI and we're on the same team, allow it.
-				return TRUE
-		if(L.size >= SIZE_ANIMAL)
-			//Can't cross bud. You're an AI. No AI clogging.
-			return FALSE
+		if(L.size < SIZE_ANIMAL || src.size < SIZE_ANIMAL)
+			//If the crosser or the src is smaller than an animal, you can cross.
+			return TRUE
+		if((!L.ai || !src.ai) && allow_helpful_action(L.loyalty_tag,src))
+			//If the crosser is not an AI and we're on the same team, allow it.
+			return TRUE
+
 
 	. = ..()
 

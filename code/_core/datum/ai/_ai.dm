@@ -159,6 +159,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 /ai/Destroy()
 
+	set_active(FALSE)
+
 	if(owner) owner.ai = null
 	owner = null
 	objective_move = null
@@ -184,7 +186,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		current_path_astar.Cut()
 		current_path_astar = null
 
-	return ..()
+	. = ..()
 
 /ai/proc/add_to_active_list(var/z)
 	if(debug) log_debug("Adding to active list [z].")

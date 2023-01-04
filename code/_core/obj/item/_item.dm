@@ -169,6 +169,7 @@
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable. For clothing it's "How much damage equals -1% quality."
 
 	enable_chunk_clean = TRUE
+	enable_chunk_handling = TRUE
 
 	var/enable_blood_stains = FALSE //Set to false to disable. Good for laser weapons.
 	var/blood_stain_intensity = 0 //Scale, from 0 to 5.

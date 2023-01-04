@@ -5,6 +5,7 @@ var/global/mob/abstract/melee_checker
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	movement_delay = 1
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = FALSE
 	abstract = TRUE
 
 /mob/abstract/melee_checker

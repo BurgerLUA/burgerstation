@@ -2,7 +2,7 @@
 
 	. = ..()
 
-	if(. && loc != old_loc && finalized)
+	if(. && src.loc != old_loc && finalized)
 
 		var/turf/old_turf = !old_loc || is_turf(old_loc) ? old_loc : get_turf(old_loc)
 		var/turf/new_turf = !loc || is_turf(loc) ? loc : get_turf(loc)
@@ -26,41 +26,25 @@
 		if(active_device && get_dist(src,active_device) > 1)
 			set_device_unactive()
 
-		var/new_chunk_x
-		var/new_chunk_y //Chunky monkey.
-		var/new_chunk_z
-
-		var/old_chunk_x
-		var/old_chunk_y
-		var/old_chunk_z
-
-		if(old_turf && old_turf.z)
-			old_chunk_x = CEILING(old_turf.x/CHUNK_SIZE,1)
-			old_chunk_y = CEILING(old_turf.y/CHUNK_SIZE,1)
-			old_chunk_z = old_turf.z
-
-		if(new_turf && new_turf.z)
-			new_chunk_x = CEILING(new_turf.x/CHUNK_SIZE,1)
-			new_chunk_y = CEILING(new_turf.y/CHUNK_SIZE,1)
-			new_chunk_z = new_turf.z
-
-		if(new_chunk_x != old_chunk_x || new_chunk_y != old_chunk_y || new_chunk_z != old_chunk_z)
-			if(old_chunk_z)
-				var/chunk/C = SSchunk.chunks[old_chunk_z][old_chunk_x][old_chunk_y]
-				C.players -= src
-			if(new_chunk_z)
-				var/chunk/C = SSchunk.chunks[new_chunk_z][new_chunk_x][new_chunk_y]
-				C.players += src
-				if(ai_steps >= VIEW_RANGE+ZOOM_RANGE || !old_turf || old_turf.z != new_turf.z)
-					var/list/chunks_to_check = C.adjacent_chunks + C
-					for(var/k in chunks_to_check)
-						var/chunk/C = k
-						for(var/j in C.ai)
-							var/ai/A = j
-							if(!A.active) A.set_active(TRUE)
-					ai_steps = 0
-
-		ai_steps++
-
 		if( (new_area?.flags_area & FLAG_AREA_SINGLEPLAYER) != (old_area?.flags_area & FLAG_AREA_SINGLEPLAYER) )
 			src.update_eyes()
+
+
+/mob/living/advanced/player/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+
+	. = ..()
+
+	if(old_chunk)
+		old_chunk.players -= src
+
+	if(new_chunk)
+		new_chunk.players += src
+		if(ai_steps >= VIEW_RANGE+ZOOM_RANGE)
+			for(var/k in new_chunk.adjacent_chunks + new_chunk)
+				var/chunk/C = k
+				for(var/j in C.ai)
+					var/ai/A = j
+					if(!A.active) A.set_active(TRUE)
+			ai_steps = 0
+		else
+			ai_steps++

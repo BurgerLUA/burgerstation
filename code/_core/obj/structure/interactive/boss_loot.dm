@@ -31,6 +31,9 @@ var/global/list/wishgranter_speak_lines = list(
 	var/die_time = 0
 	var/next_speak = 0
 
+	enable_chunk_clean = TRUE
+	enable_chunk_handling = TRUE
+
 /obj/structure/interactive/boss_loot/Destroy()
 	allowed_users?.Cut()
 	return ..()

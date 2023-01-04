@@ -32,6 +32,7 @@ var/global/list/possible_ritual_spawns = list(
 
 	var/complete = FALSE //Set to true if the ritual is complete.
 
+	enable_chunk_handling = TRUE
 	enable_chunk_clean = TRUE
 
 /obj/structure/interactive/ritual/on_chunk_clean()

@@ -24,8 +24,7 @@ SUBSYSTEM_DEF(chunk)
 	chunk_count_z = world.maxz
 
 	if(!chunk_count_x || !chunk_count_y || !chunk_count_z)
-		//Something went wrong...
-		return FALSE
+		CRASH("FATAL ERROR: COULD NOT INITIALIZE CHUNKS!")
 
 	chunks = new/list(chunk_count_z,chunk_count_x,chunk_count_y)
 
@@ -46,24 +45,21 @@ SUBSYSTEM_DEF(chunk)
 
 	//Link adjacent chunks to eachother.
 	for(var/z=1,z<=chunk_count_z,z++) for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
-		var/chunk/C = chunks[z][x][y]
+		var/chunk/C = CHUNK_XYZ(x,y,z)
 		//get adjacents
 		for(var/x2=-1,x2<=1,x2++) for(var/y2=-1,y2<=1,y2++).
 			if(x2==0 && y2==0)
 				continue
 			if(x+x2 < 1 || y+y2 < 1 || x+x2 > chunk_count_x || y+y2 > chunk_count_y)
 				continue
-			C.adjacent_chunks += chunks[z][x+x2][y+y2]
+			C.adjacent_chunks += CHUNK_XYZ(x+x2,y+y2,z)
 
 	//Add existing map nodes to chunks.
 	for(var/k in all_map_nodes)
 		var/obj/marker/map_node/N = k
-		if(!N.loc || !N.loc.z)
+		if(!is_turf(N.loc))
 			continue
-		var/x = CEILING(N.loc.x/CHUNK_SIZE,1)
-		var/y = CEILING(N.loc.y/CHUNK_SIZE,1)
-		var/z = N.loc.z
-		var/chunk/CH = chunks[z][x][y]
+		var/chunk/CH = CHUNK(N.loc)
 		CH.nodes += N
 
 	tick_rate = initial(tick_rate) //Set the tick rate based on the amount of z-levels.
@@ -78,6 +74,12 @@ SUBSYSTEM_DEF(chunk)
 		var/turf/T = L.loc
 		var/area/A = T.loc
 
+
+		var/chunk/CH = CHUNK(T)
+
+		if(L.ai)
+			CH.ai += L.ai
+
 		if(A.safe_storage)
 			continue
 
@@ -87,11 +89,6 @@ SUBSYSTEM_DEF(chunk)
 		if(!is_simulated(T))
 			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
 			continue
-
-		var/x = CEILING(T.x/CHUNK_SIZE,1)
-		var/y = CEILING(T.y/CHUNK_SIZE,1)
-		var/z = T.z
-		var/chunk/CH = chunks[z][x][y]
 
 		var/obj/marker/mob_spawn/M = new(T,L)
 		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
@@ -159,9 +156,7 @@ SUBSYSTEM_DEF(chunk)
 				continue
 			var/turf/T = M.loc
 			var/area/A = T.loc
-			var/chunk_x = CEILING(T.x/CHUNK_SIZE,1)
-			var/chunk_y = CEILING(T.y/CHUNK_SIZE,1)
-			var/chunk/C2 = SSchunk.chunks[T.z][chunk_x][chunk_y]
+			var/chunk/C2 = CHUNK(T)
 			if(C != C2)
 				continue //It was moved.
 			if(!A.safe_storage && M.on_chunk_clean())

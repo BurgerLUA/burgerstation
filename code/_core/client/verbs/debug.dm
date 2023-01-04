@@ -27,7 +27,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_skill,
 	/client/verb/set_attribute,
 	/client/verb/horde_test_preview,
-	/client/verb/test_rust_g
+	/client/verb/test_rust_g,
+	/client/verb/debug_current_chunk
 )
 
 /client/verb/view_dps()
@@ -614,6 +615,11 @@ var/global/list/debug_verbs = list(
 
 
 
-/client/verb/download_map()
-	set name = "Download Map"
+/client/verb/debug_current_chunk()
+	set name = "Debug Current Chunk"
 	set category = "Debug"
+
+	var/turf/T = get_turf(mob)
+	var/chunk/C = CHUNK(T)
+
+	debug_variables(C)
