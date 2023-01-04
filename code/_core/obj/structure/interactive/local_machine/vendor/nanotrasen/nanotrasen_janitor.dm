@@ -91,16 +91,19 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 
 		//3 smgs or shotguns
-		/obj/item/weapon/ranged/reagent_sprayer/mega_sprayer,
-		/obj/item/weapon/ranged/bullet/revolver/sweep,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/weapon/ranged/bullet/revolver/dbarrel,
-
+		/obj/item/weapon/ranged/bullet/revolver/sweep,
 
 		//3 rifles
+		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/m4_soap,
-		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
 
+		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
+		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
+		/obj/item/weapon/ranged/reagent_sprayer/mega_sprayer,
 
 		//3 grenades or equipment
 		/obj/item/grenade/timed/cleaning_smoke,
@@ -123,15 +126,18 @@
 
 	stored_types = list(
 		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm/hp,
 		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/bulletbox/shotgun_12,
 		/obj/item/bulletbox/small/shotgun_12/flechette,
 		/obj/item/bulletbox/shotgun_12/flechette,
 		/obj/item/bulletbox/small/shotgun_12/slug,
 		/obj/item/bulletbox/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/slug/cleaning,
+		/obj/item/bullet_cartridge/shotgun_12/slug/cleaning{amount=5},
 		/obj/item/bulletbox/shotgun_12/slug/cleaning,
 		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/lmg_556,
 		/obj/item/bullet_cartridge/grenade_40mm,
 	)

@@ -70,7 +70,7 @@
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mining
-	name = "10mm Laton Mining Edition"
+	name = "10mm Laton-H"
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
 
 	bullet_length_min = 25

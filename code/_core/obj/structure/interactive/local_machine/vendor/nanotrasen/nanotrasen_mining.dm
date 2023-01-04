@@ -78,10 +78,15 @@
 
 
 		//3 rifles
-		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_classic,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 
+
+		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_classic,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		//3 grenades or equipment
 		/obj/item/grenade/timed/explosive,
@@ -109,15 +114,17 @@
 
 		/obj/item/bullet_cartridge/revolver_300{amount=5},
 
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12/flechette,
-		/obj/item/bullet_cartridge/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/frag,
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12/flechette,
+		/obj/item/bulletbox/small/shotgun_12/slug,
+
+		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/rifle_556/ap,
+
+		/obj/item/magazine/lmg_556_classic,
 
 		/obj/item/magazine/sniper_308/nato,
 		/obj/item/magazine/sniper_308/nato/ap,
-
-		/obj/item/magazine/lmg_556_classic,
 
 		/obj/item/magazine/sniper_127
 

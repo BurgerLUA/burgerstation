@@ -64,11 +64,13 @@
 
 	stored_types = list(
 		//3 melee
+		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/weapon/unarmed/powerfist,
-
+		/obj/item/weapon/melee/tool/crowbar/red,
 
 		//3 pistols
 		/obj/item/weapon/ranged/energy/hybrid/carbine/small,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen,
 		/obj/item/weapon/ranged/bullet/revolver/defender,
 
 		//3 smgs or shotguns
@@ -76,10 +78,15 @@
 		/obj/item/weapon/ranged/energy/hybrid/carbine,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/tech,
 
-		//3 rifles
+		//3 assault rifles
 		/obj/item/weapon/ranged/energy/rifle,
-		/obj/item/weapon/ranged/energy/freezegun,
+		/obj/item/weapon/ranged/energy/rifle/hardlight,
+		/obj/item/weapon/ranged/energy/rifle/xray,
+
+		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
 		/obj/item/weapon/ranged/energy/iongun,
+		/obj/item/weapon/ranged/energy/freezegun,
+		/obj/item/weapon/ranged/energy/sniper,
 
 		//3 grenades or equipment
 		/obj/item/grenade/timed/decoy,
@@ -103,6 +110,8 @@
 		/obj/item/powercell,
 		/obj/item/powercell/advanced,
 		/obj/item/powercell/industrial,
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_9mm/hp,
 		/obj/item/magazine/smg_pdw,
 		/obj/item/magazine/smg_pdw/ap,
 		/obj/item/magazine/smg_pdw/incendiary,

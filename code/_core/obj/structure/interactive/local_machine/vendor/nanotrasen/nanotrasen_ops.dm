@@ -28,6 +28,11 @@
 		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
 
 		//3 rifles
+		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
+
+		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
@@ -62,6 +67,8 @@
 		/obj/item/magazine/smg_pdw/ion,
 		/obj/item/magazine/smg_pdw/toxin,
 		/obj/item/magazine/smg_4mm_standard,
+		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/rifle_556/ap,
 		/obj/item/magazine/sniper_308/nato,
 		/obj/item/magazine/sniper_308/nato/ap,
 		/obj/item/magazine/lmg_556,

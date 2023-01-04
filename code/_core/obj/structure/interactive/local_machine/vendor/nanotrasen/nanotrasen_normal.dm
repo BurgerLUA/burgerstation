@@ -58,8 +58,10 @@
 
 
 	stored_types = list(
-		// 1 melee
+		// 3 melee
+		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/weapon/melee/energy/stunbaton,
+		/obj/item/weapon/melee/sword/sabre,
 
 		//3 pistols
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
@@ -71,10 +73,15 @@
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
 
-		// 3 rifles
+		// 3 assault rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
+
+		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		// 3 grenades or equipment
 		/obj/item/grenade/timed/explosive,
@@ -99,4 +106,8 @@
 		/obj/item/bulletbox/small/shotgun_12/slug,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556/ap,
+		/obj/item/magazine/lmg_556,
+		/obj/item/magazine/sniper_308/nato,
+		/obj/item/magazine/sniper_308/nato/ap,
+		/obj/item/magazine/sniper_127
 	)

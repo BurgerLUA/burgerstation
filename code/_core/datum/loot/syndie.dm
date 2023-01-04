@@ -24,7 +24,6 @@
 		/obj/item/clothing/belt/holding = 1,
 		/loot/misc/ingots = 10,
 		/loot/misc/sheets = 10,
-		/obj/item/weapon/ranged/energy/opticor = 1,
 		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel = 10,
 		/obj/item/bullet_cartridge/rocket_70mm/nuclear = 20,
 		/obj/item/bullet_cartridge/grenade_40mm/du = 20,

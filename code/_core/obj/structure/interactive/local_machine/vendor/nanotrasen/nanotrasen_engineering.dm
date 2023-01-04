@@ -19,17 +19,22 @@
 		/obj/item/weapon/melee/axe/fireaxe,
 
 		//3 pistols
-		/obj/item/weapon/ranged/bullet/magazine/pistol/classic,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 		/obj/item/weapon/ranged/bullet/revolver/defender,
 
 		//3 smgs or shotguns
 		/obj/item/weapon/ranged/bullet/magazine/smg/smart,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten, //Really an SMG.
-		/obj/item/weapon/ranged/bullet/pump/shotgun/fortress,
+		/obj/item/weapon/ranged/bullet/magazine/smg/fbi,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
 
 		//3 rifles
+		/obj/item/weapon/ranged/bullet/magazine/rifle/tungsten,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc,
+
+		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt,
 		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen,
 		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
@@ -38,6 +43,42 @@
 		/obj/item/deployable/barricade,
 		/obj/item/deployable/mob/sentry
 	)
+
+/obj/structure/interactive/vending/nanotrasen/engineering/ammo
+	name = "engineering ammo vendor"
+	icon_state = "engineering_ammo"
+
+	stored_types = list(
+
+		/obj/item/magazine/pistol_9mm,
+		/obj/item/magazine/pistol_10mm,
+		/obj/item/magazine/clip/revolver/bullet_38,
+
+		/obj/item/magazine/smg_smart,
+		/obj/item/magazine/smg_45,
+		/obj/item/magazine/rifle_tungsten,
+
+		/obj/item/magazine/rifle_556,
+		/obj/item/magazine/rifle_556/ap,
+
+		/obj/item/magazine/lmg_762,
+
+		/obj/item/bullet_cartridge/rocket_70mm,
+		/obj/item/bullet_cartridge/rocket_70mm/ap,
+
+		/obj/item/bullet_cartridge/grenade_40mm,
+		/obj/item/bullet_cartridge/grenade_40mm/hv,
+
+		/obj/item/bullet_cartridge/shotgun_12,
+		/obj/item/bullet_cartridge/shotgun_12/flechette,
+		/obj/item/bullet_cartridge/shotgun_12/slug,
+		/obj/item/bullet_cartridge/shotgun_12/frag
+
+	)
+
+
+
+
 
 /obj/structure/interactive/vending/nanotrasen/engineering/clothing
 	name = "engineering clothing vendor"
@@ -123,31 +164,4 @@
 		/obj/item/disk/rcd/stacker,
 		/obj/item/disk/rcd/table,
 		/obj/item/disk/rcd/tube_light
-	)
-
-/obj/structure/interactive/vending/nanotrasen/engineering/ammo
-	name = "engineering ammo vendor"
-	icon_state = "engineering_ammo"
-
-	stored_types = list(
-
-		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_10mm,
-		/obj/item/magazine/clip/revolver/bullet_38,
-
-		/obj/item/magazine/smg_smart,
-		/obj/item/magazine/rifle_tungsten,
-		/obj/item/magazine/rifle_556,
-
-		/obj/item/bullet_cartridge/rocket_70mm,
-		/obj/item/bullet_cartridge/rocket_70mm/ap,
-
-		/obj/item/bullet_cartridge/grenade_40mm,
-		/obj/item/bullet_cartridge/grenade_40mm/hv,
-
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12/flechette,
-		/obj/item/bullet_cartridge/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/frag
-
 	)
