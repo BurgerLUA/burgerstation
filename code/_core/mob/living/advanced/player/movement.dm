@@ -39,8 +39,11 @@
 
 	if(new_chunk)
 		new_chunk.players += src
-		if(ai_steps >= VIEW_RANGE+ZOOM_RANGE)
-			for(var/k in new_chunk.adjacent_chunks + new_chunk)
+		if(ai_steps >= VIEW_RANGE+ZOOM_RANGE || old_chunk?.z != new_chunk.z)
+			for(var/j in new_chunk.ai)
+				var/ai/A = j
+				if(!A.active) A.set_active(TRUE)
+			for(var/k in new_chunk.adjacent_chunks)
 				var/chunk/C = k
 				for(var/j in C.ai)
 					var/ai/A = j

@@ -63,8 +63,8 @@
 	. = ..()
 
 	if(src.ai)
-		if(old_chunk) old_chunk.ai -= src
-		if(new_chunk) new_chunk.ai += src
+		if(old_chunk) old_chunk.ai -= src.ai
+		if(new_chunk) new_chunk.ai += src.ai
 
 /mob/living/post_move(var/atom/old_loc)
 
