@@ -58,7 +58,6 @@
 			close(P)
 			return
 		var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
-		if(!D.set_topic(P,topic))
-			close(P)
+		D.set_topic(P,topic)
 
 	return ..()

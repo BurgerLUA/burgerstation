@@ -32,22 +32,22 @@ SUBSYSTEM_DEF(tax)
 	. = world.realtime - (P.last_tax_payment + 604800*10*2) //2 weeks
 	. = max(0,.)
 
-/subsystem/tax/proc/pay_taxes(var/mob/living/advanced/player/P)
+/subsystem/tax/proc/pay_taxes(var/mob/living/advanced/player/P,var/silent=FALSE)
 
 	var/taxes_to_pay = get_tax_amount(P)
 
 	var/partial_tax = FALSE
 
 	if(P.currency < taxes_to_pay)
-		P.to_chat(span("danger","You don't have enough credits to pay your taxes in full! You paid what you could..."))
+		if(!silent) P.to_chat(span("danger","You don't have enough credits to pay your taxes in full! You paid what you could..."))
 		partial_tax = TRUE
 
 	var/pay_amount = -P.adjust_currency(-taxes_to_pay,FALSE)
 
 	if(partial_tax)
-		P.to_chat(span("warning","You have partially paid [pay_amount] of your taxes..."))
+		if(!silent) P.to_chat(span("warning","You have partially paid [pay_amount] of your taxes..."))
 	else
-		P.to_chat(span("notice","You have successfully paid [pay_amount] of your taxes. Check back in 1 week ([time2text(world.realtime+(604800*10),"Month DD")]) to pay your taxes again!"))
+		if(!silent) P.to_chat(span("notice","You have successfully paid [pay_amount] of your taxes. Check back in 1 week ([time2text(world.realtime+(604800*10),"Month DD")]) to pay your taxes again!"))
 		P.last_tax_payment = world.realtime
 
 	P.revenue = 0

@@ -45,3 +45,4 @@
 
 	M.run_function(P,"set_topic","\"[url_encode(final_topic)]\"")
 
+	return TRUE

@@ -153,7 +153,7 @@ var/global/allow_loading = TRUE
 
 /savedata/client/mob/proc/delete_character(var/mob/living/advanced/player/A)
 
-	if(!A || !A.ckey)
+	if(!A || !A.ckey || !A.client)
 		return
 
 	if(A != usr)
@@ -163,17 +163,17 @@ var/global/allow_loading = TRUE
 	var/savedata/client/globals/GD = GLOBALDATA(A.ckey)
 
 	if(!GD)
-		CRASH("No globaldata found!")
+		CRASH("No globaldata found for [A.ckey]!")
 		return
 
 	if(A.save_id != loaded_data["id"])
-		CRASH("Save id [A.save_id] is not equal to [src.loaded_data["id"]]!")
+		CRASH("Save id [A.save_id] is not equal to [src.loaded_data["id"]] for [A.ckey]!")
 		return
 
 	var/file_name = get_file(A.save_id)
 
 	if(!fdel(file_name))
-		CRASH("Could not delete file [file_name]!")
+		CRASH("Could not delete file [file_name] for [A.ckey]!")
 		return FALSE
 
 	SStax.pay_taxes(A)
@@ -197,6 +197,8 @@ var/global/allow_loading = TRUE
 		var/amount_to_add = max(0,S.get_xp() - S.level_to_xp(S.default_level))*0.5
 		amount_to_add = FLOOR(amount_to_add,1)
 		GD.loaded_data["stored_experience"][s_id] += amount_to_add
+
+	A.client?.make_ghost(get_turf(A))
 
 	qdel(A)
 
