@@ -33,3 +33,8 @@
 	polymorphs = list(
 		"base" = COLOR_NANOTRASEN_DARK
 	)
+
+/obj/item/clothing/overwear/coat/polymorphic/hop
+	polymorphs = list(
+		"base" = "#006086"
+	)

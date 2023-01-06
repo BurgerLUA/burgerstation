@@ -19,6 +19,7 @@
 
 	var/small = FALSE
 	var/ignore_custom_sprites = FALSE
+	var/draw_bullet_on_box = TRUE
 
 	var/list/obj/item/bullet_cartridge/bullet_whitelist
 
@@ -183,18 +184,19 @@
 /obj/item/bulletbox/update_overlays()
 	. = ..()
 	if(istype(stored_bullet)) //Draw the logo on the bullet
-		var/image/I = new/image(stored_bullet.icon,stored_bullet.icon_state)
-		I.appearance = stored_bullet.appearance
-		I.color = "#AAAAAA"
-		I.alpha = 200
-		var/matrix/M = matrix()
-		M.Turn(90)
-		I.transform = M
-		I.pixel_y = -6
-		I.pixel_x = 3
-		I.plane = FLOAT_PLANE
-		I.layer = FLOAT_LAYER
-		add_overlay(I)
+		if(draw_bullet_on_box)
+			var/image/I = new/image(stored_bullet.icon,stored_bullet.icon_state)
+			I.appearance = stored_bullet.appearance
+			I.color = "#AAAAAA"
+			I.alpha = 200
+			var/matrix/M = matrix()
+			M.Turn(90)
+			I.transform = M
+			I.pixel_y = -6
+			I.pixel_x = 0
+			I.plane = FLOAT_PLANE
+			I.layer = FLOAT_LAYER
+			add_overlay(I)
 		if((small || anchored) && bullet_count) //Draw the bullets inside.
 			var/ratio = 1 + FLOOR((bullet_count/bullet_max)*2,1)
 			if(stored_bullet)
@@ -255,6 +257,7 @@
 	size = SIZE_2
 	small = TRUE
 	ignore_custom_sprites = TRUE
+	draw_bullet_on_box = FALSE
 
 /obj/item/bulletbox/small/shotgun_12
 	stored_bullet = /obj/item/bullet_cartridge/shotgun_12

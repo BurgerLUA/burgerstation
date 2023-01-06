@@ -32,14 +32,14 @@
 
 	var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
 	if(!D)
-		log_error("ERROR: [user] cannot access dialogue ID [P.dialogue_target_id ? P.dialogue_target_id : "NULL"] for mob [P.dialogue_target.get_debug_name()]!")
+		log_error("ERROR: [P.get_debug_name()] cannot access dialogue ID [P.dialogue_target_id ? P.dialogue_target_id : "NULL"] for mob [P.dialogue_target.get_debug_name()]!")
 		return FALSE
 
-	run_function(P,"set_reference","'\ref[src]'")
+	run_function(P,"set_reference","\"\ref[src]\"")
 
-	D.add_stored_topics_if_exist(P)
+	D.set_topic(P,"hello")
 
-	run_function(P,"set_name","'[P.dialogue_target.name]'")
+	run_function(P,"set_name","\"[P.dialogue_target.name]\"")
 
 /menu/dialogue/close(var/mob/user)
 	winset(user, "map.dialogue","is-visible=false")
@@ -52,11 +52,12 @@
 /menu/dialogue/Topic(href,href_list)
 
 	if(length(href_list) && href_list["topic"] && is_player(usr))
+		var/topic = url_decode(href_list["topic"])
 		var/mob/living/advanced/player/P = usr
-		if(href_list["topic"] == "goodbye")
+		if(topic == "goodbye")
 			close(P)
 			return
 		var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
-		D.set_topic(P,href_list["topic"])
+		D.set_topic(P,topic)
 
 	return ..()

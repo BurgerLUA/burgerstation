@@ -61,6 +61,13 @@
 		"stripes" = COLOR_SCIENCE
 	)
 
+/obj/item/clothing/pants/normal/striped/hop
+	polymorphs = list(
+		"pants" = "#006086",
+		"stripes" = "#B00000"
+	)
+
+
 /obj/item/clothing/pants/normal/striped/zombie_clown
 	polymorphs = list(
 		"pants" = COLOR_PINK,

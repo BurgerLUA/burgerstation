@@ -6,10 +6,17 @@
 	. = list()
 
 	.["hello"] = list(
-		"Hello, [P.real_name]. Come for a #1? I could officially certify you as an #2. It's considered dead-end but it can help you get started for other jobs where you can actually get a #3.",
+		"Hello, [P.real_name]. Come for a #1? I could officially certify you as an #2. It's considered dead-end but it can help you get started for other jobs where you can actually get a #3. I also handle #4 if you feel that you've made enough money in this sector.",
 		"job",
 		"assistant",
-		"promotion"
+		"promotion",
+		"retirement"
+	)
+
+	.["retirement"] = list(
+		"Unfortunately due to strict labor laws in this sector that allow employees to quit their job for any time for any reason, we are legally required for you to offer the option to retire, ending your contract. This something you're interested in?NEWLINENEWLINE#1NEWLINE#2NEWLINENEWLINE(Retirement allows you to <b>permanently</b> delete your character and transfer all their experience to the experience redemption system. Additionally, all items on your character at the time of retirement are sold.)",
+		"*Yes, retire happily and spend out the rest of your days being miserable over the fact that you don't have a job.",
+		"*No, do not retire and continue to be happy that NanoTrasen provides."
 	)
 
 	.["job"] = list(
@@ -39,6 +46,14 @@
 		"Ah, the job isn't really for everyone. Let me know if you change your mind."
 	)
 
+	.["*Yes, retire happily and spend out the rest of your days being miserable over the fact that you don't have a job."] = list(
+		"Darn labor unions."
+	)
+
+	.["*No, do not retire and continue to be happy that NanoTrasen provides."] = list(
+		"Excellent choice. I am legally obligated to tell you that the offer still stands."
+	)
+
 
 /dialogue/npc/hop/set_topic(var/mob/living/advanced/player/P,var/topic)
 
@@ -46,3 +61,9 @@
 
 	if(topic == "*Yes, become an assistant.")
 		P.set_job(/job/assistant)
+
+	if(topic == "*Yes, retire happily and spend out the rest of your days being miserable over the fact that you don't have a job.")
+		var/desired_choice = input(P,"Are you sure you want to retire? This cannot be undone!","Retirement Plan","Cancel") as null|anything in list("Yes","No","Cancel")
+		if(desired_choice == "Yes")
+			var/savedata/client/mob/D = MOBDATA(P.ckey)
+			if(D) D.delete_character(P)

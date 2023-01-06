@@ -6,43 +6,29 @@
 /dialogue/proc/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 	return list()
 
-/dialogue/proc/add_stored_topics_if_exist(var/mob/living/advanced/player/P)
+/dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic) //When you click on a dialogue option. topic var should be unsanitized
+
+	if(!topic)
+		CRASH("No topic arg presented!")
 
 	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 	var/menu/M = get_menu(/menu/dialogue/)
-	var/list/known_options = mobdata.loaded_data["known_topics"]
-	var/list/dialogue_options = get_dialogue_options(P,known_options)
-	var final_topic_string = get_topic_string(P,"hello",dialogue_options)
 
-	if(!final_topic_string)
+	var/list/known_options = mobdata.loaded_data["known_topics"] //Optional
+
+	var/list/dialogue_options = get_dialogue_options(P,known_options)
+	if(!length(dialogue_options))
+		log_error("Dialogue Error: [P.get_debug_name()] found no dialogue options for dialogue [type]:[topic]!")
 		return FALSE
 
-	for(var/topic in dialogue_options & known_options)
-		final_topic_string += "_[topic]"
-
-	final_topic_string = url_encode(final_topic_string)
-
-	M.run_function(P,"convert_data","\"[final_topic_string]\"")
-
-	return TRUE
-
-/dialogue/proc/get_topic_string(var/mob/living/advanced/player/P,var/topic,var/list/dialogue_options)
-
-	if(!length(dialogue_options))
-		CRASH("No dialogue options for [topic] for dialogue [type]!")
-
 	var/list/chosen_dialogue = dialogue_options[topic]
-
 	if(!length(chosen_dialogue))
-		log_error("ERROR: [P.get_debug_name()] cannot access chosen topic \"[topic ? topic : "NULL VALUE"]\" for dialogue [type]!")
-		P.to_chat(span("error","Dialogue Error: Cannot access chosen topic [topic] for dialogue [type]. Please report this bug on discord."))
+		log_error("Dialogue Error: [P.get_debug_name()] cannot access [type]:[topic]!")
 		return FALSE
 
 	var/dialogue = chosen_dialogue[1]
 
 	var/final_topic = "[topic]_[dialogue]"
-
-	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
 
 	for(var/i=2,i<=length(chosen_dialogue),i++)
 
@@ -53,11 +39,9 @@
 		if(first_letter != "*")
 			mobdata.loaded_data["known_topics"] |= chosen_dialogue[i]
 
-	return final_topic
+	if(topic == "hello")
+		for(var/k in dialogue_options & known_options)
+			final_topic += "_[k]"
 
-/dialogue/proc/set_topic(var/mob/living/advanced/player/P,var/topic)
-	var/savedata/client/mob/mobdata = MOBDATA(P.ckey_last)
-	var/menu/M = get_menu(/menu/dialogue/)
-	var/list/known_options = mobdata.loaded_data["known_topics"]
-	var/final_topic_string = url_encode(get_topic_string(P,topic,get_dialogue_options(P,known_options)))
-	M.run_function(P,"convert_data","\"[final_topic_string]\"")
+	M.run_function(P,"set_topic","\"[url_encode(final_topic)]\"")
+

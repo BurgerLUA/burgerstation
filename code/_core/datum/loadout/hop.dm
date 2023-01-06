@@ -1,6 +1,12 @@
 /loadout/hop
 	spawning_items = list(
-		/obj/item/clothing/ears/headset,
+
+		/obj/item/clothing/pants/normal/striped/hop,
+		/obj/item/clothing/shirt/normal,
+		/obj/item/clothing/neck/tie/red,
+		/obj/item/clothing/overwear/coat/polymorphic/hop,
+
+		/obj/item/clothing/ears/headset/nanotrasen,
 
 		/obj/item/clothing/hands/gloves/colored,
 		/obj/item/clothing/hands/gloves/colored/left,

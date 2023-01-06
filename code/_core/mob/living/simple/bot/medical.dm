@@ -21,8 +21,7 @@
 		BRUTE = /reagent/medicine/bicaridine,
 		BURN = /reagent/medicine/kelotane,
 		TOX = /reagent/medicine/dylovene,
-		OXY = /reagent/iron,
-		"dead" = /reagent/medicine/adrenaline/epinephrine
+		OXY = /reagent/iron
 	)
 
 	damage_type = /damagetype/npc/medibot
@@ -83,10 +82,9 @@
 	. = list()
 
 	for(var/DT in medicine)
-		if(DT != "dead")
-			var/loss = target.health.damage[DT]
-			if(loss < healing_threshold)
-				continue
+		var/loss = target.health.damage[DT]
+		if(loss < healing_threshold)
+			continue
 		var/reagent/R = REAGENT(medicine[DT])
 		var/existing_reagent_amount = target.reagents.get_reagent_volume(medicine[DT])
 		if(existing_reagent_amount)

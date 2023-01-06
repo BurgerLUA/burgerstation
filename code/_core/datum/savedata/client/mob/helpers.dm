@@ -65,6 +65,8 @@ var/global/allow_loading = TRUE
 	rustg_file_write(data,desired_file)
 	return TRUE
 
+
+
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
 	var/client/owner = CLIENT(ckey)
@@ -148,3 +150,50 @@ var/global/allow_loading = TRUE
 		. = FALSE
 
 	A.is_saving = FALSE
+
+/savedata/client/mob/proc/delete_character(var/mob/living/advanced/player/A)
+
+	if(!A || !A.ckey)
+		return
+
+	if(A != usr)
+		return
+
+	var/savedata/client/globals/GD = GLOBALDATA(A.ckey)
+
+	if(!GD)
+		return
+
+	if(A.save_id != loaded_data["save_id"])
+		return
+
+	var/file_name = get_file(A.save_id)
+
+	if(!fdel(file_name))
+		return FALSE
+
+	SStax.pay_taxes(A)
+
+	var/total_value = A.get_value() + A.currency
+	total_value = max(0,total_value)
+
+	if(!GD.loaded_data["stored_experience"])
+		GD.loaded_data["stored_experience"] = list()
+
+	GD.loaded_data["stored_currency"] += total_value
+
+	for(var/s_id in A.skills)
+		var/experience/skill/S = A.skills[s_id]
+		var/amount_to_add = max(0,S.get_xp() - S.level_to_xp(S.default_level))*0.5
+		amount_to_add = FLOOR(amount_to_add,1)
+		GD.loaded_data["stored_experience"][s_id] += amount_to_add
+
+	for(var/s_id in A.attributes)
+		var/experience/attribute/S = A.attributes[s_id]
+		var/amount_to_add = max(0,S.get_xp() - S.level_to_xp(S.default_level))*0.5
+		amount_to_add = FLOOR(amount_to_add,1)
+		GD.loaded_data["stored_experience"][s_id] += amount_to_add
+
+	qdel(A)
+
+	return TRUE

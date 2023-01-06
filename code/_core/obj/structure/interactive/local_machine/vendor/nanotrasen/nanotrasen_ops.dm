@@ -67,6 +67,8 @@
 		/obj/item/magazine/smg_pdw/ion,
 		/obj/item/magazine/smg_pdw/toxin,
 		/obj/item/magazine/smg_4mm_standard,
+		/obj/item/magazine/smg_45,
+		/obj/item/magazine/smg_45/ap,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556/ap,
 		/obj/item/magazine/sniper_308/nato,
