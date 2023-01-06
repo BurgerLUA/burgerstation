@@ -157,19 +157,23 @@ var/global/allow_loading = TRUE
 		return
 
 	if(A != usr)
+		CRASH("[A.get_debug_name()] is not equal to [usr.get_debug_name()]!")
 		return
 
 	var/savedata/client/globals/GD = GLOBALDATA(A.ckey)
 
 	if(!GD)
+		CRASH("No globaldata found!")
 		return
 
-	if(A.save_id != loaded_data["save_id"])
+	if(A.save_id != loaded_data["id"])
+		CRASH("Save id [A.save_id] is not equal to [src.loaded_data["id"]]!")
 		return
 
 	var/file_name = get_file(A.save_id)
 
 	if(!fdel(file_name))
+		CRASH("Could not delete file [file_name]!")
 		return FALSE
 
 	SStax.pay_taxes(A)

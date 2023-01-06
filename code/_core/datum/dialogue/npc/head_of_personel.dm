@@ -57,13 +57,14 @@
 
 /dialogue/npc/hop/set_topic(var/mob/living/advanced/player/P,var/topic)
 
-	. = ..()
-
-	if(topic == "*Yes, become an assistant.")
-		P.set_job(/job/assistant)
-
 	if(topic == "*Yes, retire happily and spend out the rest of your days being miserable over the fact that you don't have a job.")
 		var/desired_choice = input(P,"Are you sure you want to retire? This cannot be undone!","Retirement Plan","Cancel") as null|anything in list("Yes","No","Cancel")
 		if(desired_choice == "Yes")
 			var/savedata/client/mob/D = MOBDATA(P.ckey)
 			if(D) D.delete_character(P)
+			return FALSE
+
+	. = ..()
+
+	if(topic == "*Yes, become an assistant.")
+		P.set_job(/job/assistant)
