@@ -140,7 +140,7 @@
 			
 			//Actually setting the dialogue box.
 			for(i=2; i < tabledata.length; i++) {
-				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+encodeURI(tabledata[i])+"'>" + tabledata[i].replace("*","") + "</a>"
+				var formatted_link = "<a href=\"byond://?src="+global_reference+";topic="+encodeURIComponent(tabledata[i])+"\">" + tabledata[i].replace("*","") + "</a>"
 				add_table_of_contents(tabledata[i])
 				dialogue = dialogue.replace("#" + (i-1).toString(), formatted_link)
 			}
@@ -151,7 +151,7 @@
 			for(i=0; i < global_stored_topics.length; i++) {
 				var chosen_topic = global_stored_topics[i]
 				if(chosen_topic.substring(0,1) != "*") {
-					var formatted_link = "<a href='byond://?src="+global_reference+";topic="+encodeURI(chosen_topic)+"'>"+chosen_topic+"</a>"
+					var formatted_link = "<a href=\"byond://?src="+global_reference+";topic="+encodeURIComponent(chosen_topic)+"\">"+chosen_topic+"</a>"
 					topics_html = topics_html+formatted_link+"<br>"
 				}
 			}
