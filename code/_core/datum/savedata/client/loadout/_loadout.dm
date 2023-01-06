@@ -36,6 +36,25 @@ var/global/list/ckey_to_loadout_cooldown = list()
 		loaded_data = json_decode(rustg_file_read(full_path))
 	return TRUE
 
+/proc/delete_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
+
+	if(!P.ckey || !name)
+		return FALSE
+
+	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
+
+	if(!length(L.loaded_data))
+		P.to_chat(span("warning","You have no loadouts to delete!"))
+		return FALSE
+
+	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before deleting another loadout!"))
+		return FALSE
+
+	L.loaded_data -= name
+
+	L.save()
+	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 /proc/save_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
 

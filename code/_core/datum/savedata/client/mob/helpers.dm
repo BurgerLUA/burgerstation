@@ -5,8 +5,10 @@ var/global/allow_loading = TRUE
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
 
+
 /savedata/client/mob/proc/get_proper_id_from_filename(var/file_string)
 	return replacetext(replacetext(file_string,"character_",""),".json","")
+
 
 /savedata/client/mob/proc/load_most_recent_character()
 	var/list/file_paths = get_files()
@@ -24,6 +26,7 @@ var/global/allow_loading = TRUE
 			best_data = new_loaded_data
 
 	return best_data
+
 
 /savedata/client/mob/proc/get_next_character_id()
 
@@ -45,6 +48,7 @@ var/global/allow_loading = TRUE
 	else
 		return "[best_number]"
 
+
 /savedata/client/mob/proc/load_json_data_from_id(var/character_id)
 
 	var/filename = get_file(character_id)
@@ -56,6 +60,7 @@ var/global/allow_loading = TRUE
 
 	return json_decode(data)
 
+
 /savedata/client/mob/proc/write_json_data_to_id(var/character_id,var/json_data)
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
@@ -64,7 +69,6 @@ var/global/allow_loading = TRUE
 	var/data = json_encode(json_data)
 	rustg_file_write(data,desired_file)
 	return TRUE
-
 
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
@@ -92,6 +96,7 @@ var/global/allow_loading = TRUE
 	loaded_data["id"] = character_id
 
 	return TRUE
+
 
 /savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/died=FALSE)
 
@@ -150,6 +155,7 @@ var/global/allow_loading = TRUE
 		. = FALSE
 
 	A.is_saving = FALSE
+
 
 /savedata/client/mob/proc/delete_character(var/mob/living/advanced/player/A)
 
