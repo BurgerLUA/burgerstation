@@ -3,7 +3,7 @@ obj/effect/temp/arrow
 	icon = 'icons/obj/effects/point.dmi'
 	icon_state = "arrow"
 	duration = 20
-	pixel_z = TILE_SIZE
+	pixel_z = -TILE_SIZE
 
 	var/desired_pixel_x = 0
 	var/desired_pixel_y = 0

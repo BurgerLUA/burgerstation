@@ -9,7 +9,7 @@
 
 /obj/projectile/bullet/grenade/he/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(.)
+	if(. && old_loc)
 		explode(old_loc,4,owner,weapon,iff_tag,multiplier = 1.5)
 
 /obj/projectile/bullet/grenade/hv
@@ -17,7 +17,7 @@
 
 /obj/projectile/bullet/grenade/hv/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(.)
+	if(. && old_loc)
 		explode(old_loc,2,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/grenade/du
@@ -25,7 +25,7 @@
 
 /obj/projectile/bullet/grenade/du/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(.)
+	if(. && old_loc)
 		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 1.5)
 
 
@@ -35,7 +35,7 @@
 
 /obj/projectile/bullet/grenade/cleaning/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(.)
+	if(. && old_loc)
 		explode(old_loc,1,owner,weapon,iff_tag,multiplier = 1.5)
 		smoke(old_loc,10,20,null,owner,50,list(/reagent/nutrition/water = 100))
 

@@ -188,13 +188,13 @@
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
 	if(!new_loc)
-		log_error("Warning: [src.get_debug_name()] didn't have a new loc.")
-		on_projectile_hit(src.loc,old_loc,new_loc)
+		log_error("Warning: [src.get_debug_name()] didn't have a new loc!")
+		on_projectile_hit(src.loc)
 		return FALSE
 
 	if(!old_loc)
-		log_error("Warning: [src.get_debug_name()] didn't have an old loc.")
-		on_projectile_hit(src.loc,old_loc,new_loc)
+		log_error("Warning: [src.get_debug_name()] didn't have an old loc!")
+		on_projectile_hit(src.loc)
 		return FALSE
 
 	if(debug)
@@ -237,18 +237,25 @@
 
 	for(var/k in target_score)
 		var/mob/living/L = k
-		if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
-			penetrations_left--
-			if(penetrations_left < 0)
-				return FALSE
+		if(L.projectile_should_collide(src,old_loc,new_loc))
+			if(on_projectile_hit(L,old_loc,new_loc))
+				penetrations_left--
+				if(penetrations_left < 0)
+					return FALSE
+			else
+				break
 
-	if(( (hit_target_turf && target_turf == new_loc) || new_loc.projectile_should_collide(src,old_loc,new_loc)) && on_projectile_hit(new_loc,old_loc,new_loc))
+	if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
 		penetrations_left--
 		if(penetrations_left < 0)
 			return FALSE
 
+	if(hit_target_turf && target_turf == new_loc)
+		on_projectile_hit(new_loc,old_loc,new_loc)
+		return FALSE
+
 	if(steps_allowed && steps_allowed <= steps_current)
-		on_projectile_hit(old_loc,old_loc,new_loc)
+		on_projectile_hit(new_loc,old_loc,new_loc)
 		return FALSE
 
 	steps_current += 1
@@ -262,7 +269,7 @@
 		return FALSE
 
 	if(!src.z || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
-		on_projectile_hit(current_loc ? current_loc : src.loc,null,null)
+		on_projectile_hit(current_loc)
 		return FALSE
 
 	if(!start_time) //First time running.
@@ -282,11 +289,21 @@
 	var/rounded_x = CEILING(pixel_x_float_visual,1)
 	var/rounded_y = CEILING(pixel_y_float_visual,1)
 	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough change to animate.
+		var/pixel_offset_x = vel_x
+		var/pixel_offset_y = vel_y
+		if(pixel_offset_x || pixel_offset_y)
+			var/norm = max(abs(pixel_offset_x),abs(pixel_offset_y))
+			pixel_offset_x = round((pixel_offset_x/norm) * TILE_SIZE)
+			pixel_offset_y = round((pixel_offset_y/norm) * TILE_SIZE)
 		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
-			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
+			animate(src,
+				pixel_x = rounded_x + pixel_offset_x,
+				pixel_y = rounded_y + pixel_offset_y,
+				time=tick_rate
+			)
 		else
-			pixel_x = rounded_x
-			pixel_y = rounded_y
+			pixel_x = rounded_x + pixel_offset_x
+			pixel_y = rounded_y + pixel_offset_y
 
 	var/max_normal = max(abs(vel_x),abs(vel_y))
 	var/x_normal = vel_x/max_normal

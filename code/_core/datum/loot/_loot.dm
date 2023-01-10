@@ -11,22 +11,25 @@
 
 	. = ..()
 
-	if(use_value)
-		var/highest = 0
-		for(var/k in loot_table)
-			if(!ispathcache(k,/obj/item/))
-				log_error("Error: use_value was set to TRUE for [src.get_debug_name()], but everything in the loot_table was an item!")
-				use_value = FALSE
-				break
-			highest = max(highest,SSbalance.stored_value[k])
+	if(length(loot_table))
 		if(use_value)
+			var/highest = 0
 			for(var/k in loot_table)
-				var/value = SSbalance.stored_value[k]
-				var/actual_weight = (1 - value/highest)*highest
-				actual_weight = 1 + FLOOR(actual_weight,1)
-				loot_table[k] = actual_weight
+				if(!ispathcache(k,/obj/item/))
+					log_error("Error: use_value was set to TRUE for [src.get_debug_name()], but everything in the loot_table was an item!")
+					use_value = FALSE
+					break
+				highest = max(highest,SSbalance.stored_value[k])
+			if(use_value)
+				for(var/k in loot_table)
+					var/value = SSbalance.stored_value[k]
+					var/actual_weight = (1 - value/highest)*highest
+					actual_weight = 1 + FLOOR(actual_weight,1)
+					loot_table[k] = actual_weight
 
-/loot/proc/do_spawn(var/atom/spawn_loc,var/rarity=0) //Use this to spawn the loot. rarity is optional.
+		sortMerge(loot_table,/proc/cmp_numeric_asc_rand,TRUE)
+
+/loot/proc/do_spawn(var/atom/spawn_loc,var/rarity) //Use this to spawn the loot. rarity is optional.
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")
 	. = create_loot_table(spawn_loc,rarity)
 	for(var/k in .)
@@ -43,13 +46,13 @@
 			L.post_spawn(M)
 
 
-/loot/proc/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity=0) //Don't use this. Use do_spawn to spawn loot. Not providing a spawn_loc will just return the types.
+/loot/proc/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity) //Don't use this. Use do_spawn to spawn loot. Not providing a spawn_loc will just return the types.
 
 	. = list()
 
 	if(islist(type_to_spawn))
 		for(var/k in type_to_spawn)
-			. += create_loot_single(k,spawn_loc,rarity)
+			. += create_loot_single(k,spawn_loc,rarity) //Repeats this proc.
 		return .
 
 	if(ispath(type_to_spawn,/loot/))
@@ -73,26 +76,23 @@
 /loot/proc/post_spawn(var/atom/movable/M)
 	return TRUE
 
-/loot/proc/create_loot_table(var/atom/spawn_loc,var/rarity=0) //rarity is optional
-
-	var/list/new_table = allow_duplicates ? loot_table : loot_table.Copy()
+/loot/proc/create_loot_table(var/atom/spawn_loc,var/rarity) //rarity is optional.
 
 	. = list()
 
 	for(var/k in loot_table_guaranteed)
 		if(!k) CRASH("Error: Improper selection in loot_table_guaranteed!")
-		. += create_loot_single(k,spawn_loc,rarity)
+		. += create_loot_single(k,spawn_loc)
 
-	if(length(new_table) <= 0)
-		return .
-
-	for(var/i=1,i<=loot_count,i++)
-		if(prob(chance_none))
-			continue
-		var/selection = pickweight(new_table,rarity)
-		if(!selection) CRASH("Error: Improper selection in loot_table!")
-		. += create_loot_single(selection,spawn_loc,rarity)
-		if(!allow_duplicates)
-			new_table -= selection
-			if(length(new_table) <= 0)
-				break
+	if(length(loot_table) > 0)
+		var/list/new_table = allow_duplicates ? loot_table : loot_table.Copy()
+		for(var/i=1,i<=loot_count,i++)
+			if(prob(chance_none))
+				continue
+			var/selection = pickweight(new_table,rarity)
+			if(!selection) CRASH("Error: Improper selection in loot_table!")
+			. += create_loot_single(selection,spawn_loc,rarity)
+			if(!allow_duplicates)
+				new_table -= selection
+				if(length(new_table) <= 0)
+					break

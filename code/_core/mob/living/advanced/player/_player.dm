@@ -248,13 +248,18 @@ var/global/list/difficulty_to_damage_mul = list(
 
 var/global/list/difficulty_to_rarity = list(
 	DIFFICULTY_EASY = 0,
-	DIFFICULTY_NORMAL = 0,
-	DIFFICULTY_HARD = 0.05,
-	DIFFICULTY_EXTREME = 0.1,
-	DIFFICULTY_NIGHTMARE = 0.2
+	DIFFICULTY_NORMAL = 5,
+	DIFFICULTY_HARD = 15,
+	DIFFICULTY_EXTREME = 20,
+	DIFFICULTY_NIGHTMARE = 40
 )
 
+// https://www.desmos.com/calculator/eh8dy1z0ga
 
 /mob/living/advanced/player/proc/get_rarity()
-	. = src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1)*0.2
-	. += difficulty_to_rarity[src.get_difficulty()]
+	. = 10
+	. += level*0.3
+	. += src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1) * 0.3
+	. += difficulty_to_rarity[src.get_difficulty()] * 0.4
+	// . *= 1 + (increased_rarity/100)
+	return .

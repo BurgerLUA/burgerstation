@@ -137,8 +137,8 @@ var/global/list/kitchen_gun_slogans = list(
 	if(istype(P,/obj/projectile/thrown/))
 		return ..()
 
-	var/turf/T = P.current_loc
-	if(istype(T))
+	var/turf/T = get_turf(hit_atom)
+	if(T)
 		for(var/obj/effect/cleanable/C in T.contents)
 			qdel(C)
 

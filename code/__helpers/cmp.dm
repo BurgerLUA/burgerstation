@@ -4,6 +4,9 @@
 /proc/cmp_numeric_asc(a,b)
 	return a - b
 
+/proc/cmp_numeric_asc_rand(a,b)
+	return a == b ? prob(50) : a - b
+
 /proc/cmp_text_asc(a,b)
 	return sorttext(b,a)
 

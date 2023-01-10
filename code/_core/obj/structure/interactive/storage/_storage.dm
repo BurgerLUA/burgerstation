@@ -21,7 +21,8 @@
 	if(storage && src.z)
 		for(var/obj/item/I in loc.contents)
 			storage.add_to_inventory(null,I)
-	tracked_instance_ckeys = list()
+	if(stored_loot_per_instance)
+		tracked_instance_ckeys = list()
 
 
 /obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/caller) //caller wants to see inside src

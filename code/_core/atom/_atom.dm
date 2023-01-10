@@ -204,7 +204,7 @@
 /atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod=1)
 	return 0
 
-/atom/proc/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
+/atom/proc/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	return TRUE
 
 /atom/proc/is_busy()

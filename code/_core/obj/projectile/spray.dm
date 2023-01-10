@@ -21,10 +21,11 @@
 
 /obj/projectile/spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(!.)
+	if(. && new_loc)
 		reagents.splash(owner,new_loc,2.5,TRUE,0.25)
 		if(reagents.volume_current <= 0 && !qdeleting)
-			on_projectile_hit(new_loc,old_loc,new_loc)
+			on_projectile_hit(new_loc)
+			return FALSE
 
 /obj/projectile/spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
@@ -58,10 +59,11 @@
 
 /obj/projectile/extinguisher_spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(!.)
+	if(. && new_loc)
 		reagents.splash(owner,new_loc,1,TRUE,0.25)
 		if(reagents.volume_current <= 0 && !qdeleting)
-			on_projectile_hit(new_loc,old_loc,new_loc)
+			on_projectile_hit(new_loc)
+			return FALSE
 
 /obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()

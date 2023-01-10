@@ -53,11 +53,11 @@
 
 
 
-/obj/projectile/magic/on_projectile_hit(atom/hit_atom)
+/obj/projectile/magic/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 
-	if(. && explode_power > 0)
-		explode(get_turf(hit_atom),explode_power,owner,src,loyalty_tag)
+	if(. && old_loc && explode_power > 0)
+		explode(old_loc,explode_power,owner,src,loyalty_tag)
 
 /obj/projectile/magic/update_projectile(var/tick_rate=1)
 
@@ -136,8 +136,6 @@
 		if(real_distance_to_target <= 0) //Too close!
 			return .
 
-
-
 		if(vel_x && vel_y)
 			var/list/offsets = get_directional_offsets(current_loc,target_atom)
 			if(offsets[1] || offsets[2])
@@ -158,7 +156,7 @@
 		vel_x *= magic_vel_degrade
 		vel_y *= magic_vel_degrade
 		alpha -= 10
-		if(alpha <= 0)
+		if(alpha <= 40)
 			on_projectile_hit(current_loc)
 			return FALSE
 
@@ -179,17 +177,16 @@
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
-	if(.)
-		var/turf/T = get_turf(hit_atom)
-		if(T)
-			var/obj/effect/temp/hazard/lava/L = new(T,SECONDS_TO_DECISECONDS(30),owner)
-			INITIALIZE(L)
-			GENERATE(L)
-			FINALIZE(L)
+	if(. && hit_atom && old_loc)
+		var/turf/turf_to_hit = is_floor(hit_atom) ? hit_atom : old_loc
+		var/obj/effect/temp/hazard/lava/L = new(turf_to_hit,SECONDS_TO_DECISECONDS(30),owner)
+		INITIALIZE(L)
+		GENERATE(L)
+		FINALIZE(L)
 
 /obj/projectile/magic/chaos
 	name = "chaos ball"
@@ -221,7 +218,7 @@
 	name = "revival rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
@@ -234,7 +231,7 @@
 	name = "healing rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/heal/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/magic/rift/heal/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
@@ -420,31 +417,35 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-/obj/projectile/magic/inferno/on_projectile_hit(atom/hit_atom, turf/old_loc, turf/new_loc)
+/obj/projectile/magic/inferno/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+
 	. = ..()
 
-	if(.)
-		var/turf/T = get_turf(hit_atom)
-		if(T)
-			var/obj/effect/temp/hazard/fire/L = new(T,SECONDS_TO_DECISECONDS(5),owner)
-			INITIALIZE(L)
-			GENERATE(L)
-			FINALIZE(L)
+	if(. && hit_atom && old_loc)
+		var/turf/turf_to_hit = is_floor(hit_atom) ? hit_atom : old_loc
+		var/obj/effect/temp/hazard/fire/L = new(turf_to_hit,SECONDS_TO_DECISECONDS(5),owner)
+		INITIALIZE(L)
+		GENERATE(L)
+		FINALIZE(L)
 
 /obj/projectile/magic/buff
 	name = "buff"
 	icon_state = "cross"
+
 /obj/projectile/magic/buff/mending
 	name = "mending"
-/obj/projectile/magic/buff/mending/on_projectile_hit(atom/hit_atom)
+
+/obj/projectile/magic/buff/mending/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
 		if(!L.dead)
 			L.add_status_effect(TEMP_REGEN,damage_multiplier,SECONDS_TO_DECISECONDS(damage_multiplier * 15))
+
 /obj/projectile/magic/buff/armor
 	name = "armor"
-/obj/projectile/magic/buff/armor/on_projectile_hit(atom/hit_atom)
+
+/obj/projectile/magic/buff/armor/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom

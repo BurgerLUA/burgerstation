@@ -7,11 +7,8 @@
 
 	. = ..()
 
-	if(. && is_living(hit_atom))
-		var/mob/living/L = hit_atom
-		if(L.reagents)
-			L.reagents.add_reagent(/reagent/space_cleaner,10,caller=owner)
-
-		if(new_loc)
-			var/reagent/R = REAGENT(/reagent/nutrition/water)
-			R.on_splash(null,owner,new_loc,20,1)
+	if(. && hit_atom)
+		if(hit_atom.reagents && is_living(hit_atom)) //Direct injection.
+			hit_atom.reagents.add_reagent(/reagent/space_cleaner,10,caller=owner)
+		var/reagent/R = REAGENT(/reagent/nutrition/water)
+		R.on_splash(null,owner,hit_atom,20,1)

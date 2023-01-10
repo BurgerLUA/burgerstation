@@ -72,8 +72,8 @@
 	return null
 */
 
-
-/proc/pickweight(list/list_to_pick,var/rarity=0) //Stolen from /tg/
+/*
+/proc/pickweight(list/list_to_pick) //Stolen from /tg/
 	var/total = 0
 	var/item
 	for(item in list_to_pick)
@@ -83,6 +83,36 @@
 			list_to_pick[item] = CEILING(list_to_pick[item],1)
 		total += list_to_pick[item]
 	total = rand(0, total)
+	for(item in list_to_pick)
+		total -= list_to_pick[item]
+		if(total <= 0 && list_to_pick[item])
+			return item
+
+	return null
+*/
+
+var/global/list/has_rarity_pickweight_support = list()
+
+/proc/pickweight(list/list_to_pick,var/rarity) //Stolen from /tg/ with changes by burger.
+	var/total = 0
+
+	var/item
+	for(item in list_to_pick)
+		if(!isnum(list_to_pick[item]))
+			list_to_pick[item] = 1
+		else
+			list_to_pick[item] = CEILING(list_to_pick[item],1)
+		total += list_to_pick[item]
+
+	// A lower total is better.
+	// https://www.desmos.com/calculator/eh8dy1z0ga
+	if(isnum(rarity))
+		var/modifier = max( (75-rarity)/75, rand() ** (rarity/100) )
+		modifier = FLOOR(total*modifier,1)
+		total = rand(modifier,total)
+	else
+		total = rand(0, total)
+
 	for(item in list_to_pick)
 		total -= list_to_pick[item]
 		if(total <= 0 && list_to_pick[item])

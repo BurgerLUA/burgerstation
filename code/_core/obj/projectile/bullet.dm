@@ -76,10 +76,10 @@
 	icon_state = "rocket_nuke"
 	hit_target_turf = TRUE
 
-/obj/projectile/bullet/rocket_nuclear/on_projectile_hit(var/atom/hit_atom)
+/obj/projectile/bullet/rocket_nuclear/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(.)
-		explode(get_turf(hit_atom),10,owner,weapon,iff_tag)
+	if(. && old_loc)
+		explode(old_loc,10,owner,weapon,iff_tag)
 
 /obj/projectile/bullet/rocket_ap
 
