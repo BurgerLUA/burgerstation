@@ -17,6 +17,8 @@
 
 	ricochets_left =  0 //Uses custom system.
 
+	debug = TRUE
+
 /obj/projectile/thrown/Initialize()
 
 	. = ..()
@@ -44,23 +46,13 @@
 
 	if(. && hit_atom && old_loc && new_loc)
 		var/do_bounce = hit_atom != target_turf && steps_current < steps_allowed
-		world.log << "HIT [hit_atom.type]"
 		for(var/k in src.contents)
 			var/atom/movable/A = k
 			if(ricochets_left <= 0 && do_bounce && A.thrown_bounce_modifier)
 				do_bounce = FALSE
 
-				var/max_normal = max(abs(vel_x),abs(vel_y))
-				var/x_normal = vel_x/max_normal
-				var/y_normal = vel_y/max_normal
-
-				var/current_loc_x = x + (pixel_x_float_physical + x_normal*TILE_SIZE) / TILE_SIZE
-				var/current_loc_y = y + (pixel_y_float_physical + y_normal*TILE_SIZE) / TILE_SIZE
-
-				var/difference_x = hit_atom.x - current_loc_x
-				var/difference_y = hit_atom.y - current_loc_y
-
-				world.log << "Diff: [difference_x], [difference_y]"
+				var/difference_x = new_loc.x - old_loc.x
+				var/difference_y = new_loc.y - old_loc.y
 
 				var/impact_face_x = 0
 				var/impact_face_y = 0
@@ -69,17 +61,6 @@
 				else
 					impact_face_y = difference_y > 0 ? -1 : 1
 
-				if(impact_face_x)
-					if(impact_face_x == -1)
-						world.log << "LEFT"
-					else
-						world.log << "RIGHT"
-				else
-					if(impact_face_y == -1)
-						world.log << "BOTTOM"
-					else
-						world.log << "TOP"
-
 				var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(impact_face_x,impact_face_y)))
 				var/velocity_mod = thrown_bounce_modifier*0.5 + ((angle_of_incidence/90) * thrown_bounce_modifier)*0.5
 				velocity_mod = min(velocity_mod,1)
@@ -87,14 +68,13 @@
 					. = FALSE
 					if(impact_face_x)
 						vel_x *= -1
-						pixel_x_float_physical = (hit_atom.x - src.x)*TILE_SIZE + impact_face_x*TILE_SIZE*0.5
+						pixel_x_float_physical = (hit_atom.x - src.x)*TILE_SIZE + impact_face_x*TILE_SIZE*0.25
 					if(impact_face_y)
 						vel_y *= -1
-						pixel_y_float_physical = (hit_atom.y - src.y)*TILE_SIZE + impact_face_y*TILE_SIZE*0.5
+						pixel_y_float_physical = (hit_atom.y - src.y)*TILE_SIZE + impact_face_y*TILE_SIZE*0.25
 					vel_x *= velocity_mod
 					vel_y *= velocity_mod
 					steps_allowed *= velocity_mod
-					//current_loc = old_loc
 					continue
 				else
 					. = TRUE

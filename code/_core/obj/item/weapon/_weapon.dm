@@ -38,7 +38,7 @@
 
 	var/obj/item/spellswap/stored_spellswap
 
-	thrown_bounce_modifier = 0.5
+	thrown_bounce_modifier = 0.25
 
 /obj/item/weapon/Finalize()
 	. = ..()
