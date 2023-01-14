@@ -107,3 +107,6 @@
 
 
 #define FAT "fat"
+#define BUFF "buff"
+
+#define RAGE "rage"

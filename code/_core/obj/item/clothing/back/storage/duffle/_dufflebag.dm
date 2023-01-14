@@ -14,8 +14,3 @@
 	weight = 20
 
 	value = 100
-
-/obj/item/clothing/back/storage/dufflebag/engineering
-	name = "engineering dufflebag"
-	desc_extended = "A robust duffelbag for lugging around materials. Slows you down, however."
-	icon = 'icons/obj/item/clothing/back/dufflebag/engineering.dmi'

@@ -11,9 +11,9 @@
 	anchored = TRUE
 	health = null
 
-	level = 42
+	level = 50
 
-	loadout = /loadout/hop
+	loadout = /loadout/nanotrasen/head/hop
 
 /mob/living/advanced/npc/unique/hop/setup_visuals()
 	. = ..()

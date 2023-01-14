@@ -5,8 +5,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 55*0.4,
-		HOLY = 30*0.1
+		BLUNT = 10,
+		HOLY = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -16,33 +16,29 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 55*0.2,
-		ATTRIBUTE_DEXTERITY = 55*0.1
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT),
-		ATTRIBUTE_DEXTERITY = list(BLUNT)
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 55*0.3,
-		SKILL_PRAYER = 55*0.5
+		SKILL_UNARMED = 30,
+		SKILL_PRAYER = 60
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT),
-		SKILL_PRAYER = list(HOLY)
+		SKILL_UNARMED = BLUNT,
+		SKILL_PRAYER = HOLY
 	)
 
-	bonus_experience_skill = list(
-		SKILL_UNARMED = 25, //25%
-		SKILL_PRAYER = 25
-	)
+	cqc_tag = "4"
 
-
-	attack_delay = 11*0.5
-	attack_delay_max = 11
+	attack_delay = 5
+	attack_delay_max = 10
 
 
 /damagetype/unarmed/holy/spiked
@@ -50,16 +46,21 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 55*0.4,
-		PIERCE = 55*0.1,
-		DARK = 30*0.1
+		BLUNT = 10,
+		PIERCE = 15,
+		DARK = 0
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLUNT = 0,
-		PIERCE = 50,
-		DARK = 0
+		BLUNT = 25,
+		PIERCE = 25,
+		DARK = 25
+	)
+
+	attribute_stats = list(
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
@@ -67,10 +68,18 @@
 		ATTRIBUTE_DEXTERITY = list(BLUNT,PIERCE)
 	)
 
-	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT,PIERCE),
-		SKILL_PRAYER = list(DARK)
+	skill_stats = list(
+		SKILL_UNARMED = 30,
+		SKILL_PRAYER = 60
+
 	)
 
-	attack_delay = 11*0.5
-	attack_delay_max = 11
+	skill_damage = list(
+		SKILL_UNARMED = list(BLUNT,PIERCE),
+		SKILL_PRAYER = DARK
+	)
+
+	cqc_tag = "4"
+
+	attack_delay = 7
+	attack_delay_max = 15

@@ -39,5 +39,8 @@
 /obj/item/clothing/head/hat/beret/science
 	color = COLOR_SCIENCE
 
+/obj/item/clothing/head/hat/beret/janitor
+	color = COLOR_JANITOR
+
 /obj/item/clothing/head/hat/beret/red
 	color = COLOR_RED

@@ -50,6 +50,8 @@
 
 	W.post_change_turf(old_turf_type)
 
+	HOOK_CALL("change_turf")
+
 
 /turf/simulated/change_turf(var/turf/N, var/force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
 

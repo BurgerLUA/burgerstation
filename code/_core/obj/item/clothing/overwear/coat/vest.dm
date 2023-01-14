@@ -110,7 +110,7 @@
 		"pockets" = COLOR_BLACK
 	)
 
-/obj/item/clothing/overwear/coat/vest/janitor
+/obj/item/clothing/overwear/coat/vest/poly/janitor
 
 	polymorphs = list(
 		"shirt" = COLOR_GREY,

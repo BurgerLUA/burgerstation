@@ -285,6 +285,9 @@
 
 	//Returning TRUE means don't attack on the same tick. It's good to return true if you want the shooter to wait before firing.
 
+	if(R.next_shoot_time > world.time)
+		return TRUE
+
 	var/mob/living/advanced/A = owner
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/magazine/))

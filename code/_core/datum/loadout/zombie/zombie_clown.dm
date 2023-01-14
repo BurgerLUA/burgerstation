@@ -14,4 +14,4 @@
 		/obj/item/clothing/mask/makeshift
 	)
 
-	extra_clothing_chance = 10
+	extra_clothing_chance = 5

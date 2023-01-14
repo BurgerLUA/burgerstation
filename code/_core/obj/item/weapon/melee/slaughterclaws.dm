@@ -6,7 +6,6 @@
 	// var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks
 	icon = 'icons/obj/item/weapons/unarmed/slaughterclaws.dmi' //thx Nzzy!
 	damage_type = /damagetype/unarmed/slaughter
-	var/damage_type_harm = /damagetype/unarmed/slaughter_heavy
 	size = SIZE_2
 	weight = 10
 
@@ -28,10 +27,6 @@
 
 	var/target_distance = get_dist(L,T)
 
-	if(L.intent == INTENT_HARM)
-		damage_type = damage_type_harm
-	else
-		damage_type = initial(damage_type)
 
 	if(L.intent == INTENT_GRAB && next_teleport_command <= world.time)
 		if(!T.can_move_to()) //Alright, that's it. No more water-walking!

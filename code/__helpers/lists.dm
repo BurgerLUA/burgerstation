@@ -156,41 +156,37 @@ var/global/list/has_rarity_pickweight_support = list()
 //Move a single element from position fromIndex within a list, to position toIndex
 //This will preserve associations ~Carnie
 /proc/moveElement(var/list/L, var/fromIndex, var/toIndex)
+	if(fromIndex == toIndex || fromIndex + 1 == toIndex) //no need to move
+		return
 	if(fromIndex > toIndex)
-		++fromIndex
-	//else
-	//	++toIndex
+		++fromIndex //since a null will be inserted before from_index, the index needs to be nudged right by one
 
 	L.Insert(toIndex, null)
 	L.Swap(fromIndex, toIndex)
-	L.Cut(fromIndex, fromIndex+1)
-
+	L.Cut(fromIndex, fromIndex + 1)
 
 //Move elements [fromIndex,fromIndex+len) to [toIndex,toIndex+len)
 //This will preserve associations and is much faster than copying to a new list
 //or checking for associative lists and manually copying elements ~Carnie
 /proc/moveRange(var/list/L, var/fromIndex, var/toIndex, var/len=1)
 	var/distance = abs(toIndex - fromIndex)
-	if(len > distance)	//there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going
-		if(fromIndex < toIndex)
-			toIndex += len
-		else
-			fromIndex += len
+	if(len >= distance) //there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going. The result being, our range we are moving is shifted left or right by dist elements
+		if(fromIndex <= toIndex)
+			return //no need to move
+		fromIndex += len //we want to shift left instead of right
 
-		for(var/i=0, i<distance, ++i)
+		for(var/i in 1 to distance)
 			L.Insert(fromIndex, null)
 			L.Swap(fromIndex, toIndex)
-			L.Cut(toIndex, toIndex+1)
+			L.Cut(toIndex, toIndex + 1)
 	else
 		if(fromIndex > toIndex)
 			fromIndex += len
-		else
-			toIndex += len	//?
 
-		for(var/i=0, i<len, ++i)
+		for(var/i in 1 to len)
 			L.Insert(toIndex, null)
 			L.Swap(fromIndex, toIndex)
-			L.Cut(fromIndex, fromIndex+1)
+			L.Cut(fromIndex, fromIndex + 1)
 
 //Move elements from [fromIndex, fromIndex+len) to [toIndex, toIndex+len)
 //Move any elements being overwritten by the move to the now-empty elements, preserving order

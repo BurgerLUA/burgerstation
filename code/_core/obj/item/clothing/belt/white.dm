@@ -29,6 +29,9 @@
 /obj/item/clothing/belt/storage/colored/purple
 	color = COLOR_PURPLE
 
+/obj/item/clothing/belt/storage/colored/science
+	color = COLOR_SCIENCE
+
 /obj/item/clothing/belt/storage/colored/merc
 	color = "#4C5E56"
 

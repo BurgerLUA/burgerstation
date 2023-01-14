@@ -20,6 +20,29 @@
 		SANITY = 0
 	)
 
+/armor/roided_zombie
+	defense_rating = list(
+		BLADE = 50,
+		BLUNT = 50,
+		PIERCE = 50,
+		LASER = 50,
+		ARCANE = 50,
+		HEAT = 0,
+		COLD = 0,
+		SHOCK = 0,
+		ACID = 0,
+		BOMB = 0,
+		BIO = 0,
+		RAD = 0,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = 0,
+		PAIN = 0,
+		ION = INFINITY,
+		SANITY = 0
+	)
+	deflection = 1
+
 /armor/goblin
 	defense_rating = list(
 		BLADE = 0,

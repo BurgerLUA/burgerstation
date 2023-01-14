@@ -1,6 +1,4 @@
-//Gimmick:
 //Fast, has a chainsaw. Likes to teleport and ambush you like an ass by teleporting to dark areas.
-
 
 /mob/living/advanced/npc/zombie/clown
 	name = "zombie clown"

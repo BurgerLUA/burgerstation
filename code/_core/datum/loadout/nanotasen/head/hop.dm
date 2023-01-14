@@ -1,4 +1,5 @@
-/loadout/hop
+/loadout/nanotrasen/head/hop
+
 	spawning_items = list(
 
 		/obj/item/clothing/pants/normal/striped/hop,

@@ -1,3 +1,4 @@
+//Carries a stunbaton.
 
 /mob/living/advanced/npc/zombie/security
 	name = "zombie security"

@@ -211,6 +211,7 @@
 		"pain",
 		"scream",
 		"dab",
+		"flex",
 		"nod",
 		"shake",
 		"bow",

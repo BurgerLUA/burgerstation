@@ -24,7 +24,7 @@
 		if(!src.dead)
 			src.visible_message(span("warning","\The [src.name] takes a savage hit!"),span("danger","You take a savage hit!"))
 
-	if(blood_type && total_bleed_damage > 0 && blood_volume > 0)
+	if(DT && DT.draw_blood && blood_type && total_bleed_damage > 0 && blood_volume > 0)
 		var/turf/T = get_turf(src)
 
 		if(T)

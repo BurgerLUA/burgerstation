@@ -1,4 +1,4 @@
-/damagetype/unarmed/claw/
+/damagetype/unarmed/claw
 	attack_verbs = list("claw")
 
 	hit_effect = /obj/effect/temp/impact/combat/claw
@@ -11,19 +11,19 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 30*0.3,
-		PIERCE = 30*0.1
+		BLADE = 10,
+		PIERCE = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
-		BLADE = 20*0.5,
-		PIERCE = 20*0.5
+		BLADE = 25,
+		PIERCE = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 30*0.25,
-		ATTRIBUTE_DEXTERITY = 30*0.25
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
@@ -32,27 +32,14 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 30*0.1
+		SKILL_UNARMED = 35
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = list(BLADE,PIERCE),
+		SKILL_UNARMED = list(BLADE,PIERCE)
 	)
 
-	throw_mul = 1
+	cqc_tag = "4"
 
-	attack_delay = 10*0.5
-	attack_delay_max = 10
-damagetype/unarmed/claw/boss
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	attack_damage_base = list(
-		BLADE = 30*0.5,
-		PIERCE = 30*0.2
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLADE = 20*0.75,
-		PIERCE = 20*0.75
-	)
+	attack_delay = 4
+	attack_delay_max = 8

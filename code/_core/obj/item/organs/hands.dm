@@ -71,8 +71,6 @@
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
-		if(L.attack_flags & CONTROL_MOD_KICK)
-			return /damagetype/unarmed/foot
 		switch(L.intent)
 			if(INTENT_HARM)
 				. = /damagetype/unarmed/fists/
@@ -362,27 +360,27 @@
 
 /obj/item/organ/hand/zombie/get_damage_type(var/atom/attacker,var/atom/victim)
 
+	if(!is_living(victim))
+		return /damagetype/unarmed/claw
+
+	var/mob/living/victim_as_living = victim
 	var/mob/living/advanced/A = attacker
-	var/obj/hud/inventory/I = A.inventories_by_id[src.id]
 
-	if(A.horizontal) //Always grab when horizontal.
-		if(I && !I.grabbed_object)
-			return /damagetype/unarmed/fists/grab
-
-	var/list/possible_damage_types = list(
-		/damagetype/unarmed/claw = 100
-	)
-
-	if(!I.grabbed_object)
-		possible_damage_types[/damagetype/unarmed/fists/disarm] = 10
-		possible_damage_types[/damagetype/unarmed/fists/grab] = 40
-	else if(I.grab_level >= 2)
-		possible_damage_types[/damagetype/unarmed/claw] = 0
-		possible_damage_types[/damagetype/unarmed/bite] = 100 //Start biting for sure if the grab is reinforced.
-	else
+	var/list/possible_damage_types
+	if(victim_as_living.grabbing_hand)
+		if(victim_as_living.grabbing_hand.grab_level >= 2)
+			return /damagetype/unarmed/bite //Start biting.
+		possible_damage_types = list()
 		possible_damage_types[/damagetype/unarmed/claw] = 50
 		possible_damage_types[/damagetype/unarmed/fists/grab] = 25 //Reinforce grab.
 		possible_damage_types[/damagetype/unarmed/bite] = 10
+	else
+		if(A.horizontal || victim_as_living.horizontal) //Always grab when self or target is horizontal, and not grabbed
+			return /damagetype/unarmed/fists/grab
+		possible_damage_types = list()
+		possible_damage_types[/damagetype/unarmed/claw] = 100
+		possible_damage_types[/damagetype/unarmed/fists/disarm] = 10
+		possible_damage_types[/damagetype/unarmed/fists/grab] = 40
 
 	return pickweight(possible_damage_types)
 

@@ -51,7 +51,7 @@
 				src,
 				desired_layer = desired_layer,
 				desired_icon = initial(src.icon),
-				desired_icon_state = icon_state_override ? icon_state_override : initial(src.icon_state),
+				desired_icon_state = icon_state_override,
 				desired_no_initial = src.no_initial_blend,
 				desired_pixel_x = src.worn_pixel_x,
 				desired_pixel_y = src.worn_pixel_y,
@@ -59,7 +59,11 @@
 			)
 
 	if(update)
-		A.update_overlay_tracked("\ref[src]",desired_color=src.color)
+		A.update_overlay_tracked(
+			"\ref[src]",
+			desired_color=src.color,
+			desired_icon_state = icon_state_override,
+		)
 
 
 	return TRUE
@@ -110,11 +114,15 @@
 		A.add_overlay_tracked(
 			"\ref[src]",
 			src,
-			desired_layer = src.worn_layer
+			desired_layer = src.worn_layer,
+			desired_icon_state = icon_state_override,
 		)
 
 	if(update)
-		A.update_overlay_tracked("\ref[src]")
+		A.update_overlay_tracked(
+			"\ref[src]",
+			desired_icon_state = icon_state_override,
+		)
 
 
 	return TRUE

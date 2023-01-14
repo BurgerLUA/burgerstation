@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/revolver/sweep
 	name = "\improper 12g Station Sweeper shotgun"
 	desc = "Clean the station with one easy trick!"
-	desc_extended = "An oddly designed semi-automatic shotgun with its own internal revolving magazine. The trigger pull is quite stiff and the recoil is even worse. Reloading requires manual removal of spent shells as there is no shell eject system."
+	desc_extended = "An oddly designed semi-automatic shotgun with its own internal revolving magazine. The trigger pull is quite stiff and the recoil is even worse. Reloading requires manual removal of spent shells as there is no atuomatic shell eject system."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/nanotrasen/sweep.dmi'
 	icon_state = "inventory"
 	value = 400
@@ -18,8 +18,8 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	size = SIZE_1
-	weight = 8
+	size = SIZE_3
+	weight = 12
 
 	bullet_length_min = 76
 	bullet_length_best = 76.2
@@ -74,8 +74,11 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
+/obj/item/weapon/ranged/bullet/revolver/sweep/get_base_spread()
+	return 0.15
+
 /obj/item/weapon/ranged/bullet/revolver/sweep/get_static_spread()
-	return 0
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/revolver/sweep/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))

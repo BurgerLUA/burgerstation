@@ -17,8 +17,6 @@
 
 	ricochets_left =  0 //Uses custom system.
 
-	debug = TRUE
-
 /obj/projectile/thrown/Initialize()
 
 	. = ..()

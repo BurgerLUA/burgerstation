@@ -1,4 +1,5 @@
-/loadout/cmo
+/loadout/nanotrasen/head/cmo
+
 	spawning_items = list(
 
 		/obj/item/clothing/ears/headset,

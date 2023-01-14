@@ -3,7 +3,7 @@
 	boss_icon_state = "ash_drake"
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/boss/
+	damage_type = /damagetype/unarmed/claw
 
 
 	pixel_x = -16

@@ -1,0 +1,1 @@
+/loadout/nanotrasen/head

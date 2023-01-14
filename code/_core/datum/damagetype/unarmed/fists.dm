@@ -6,7 +6,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 45*0.2
+		BLUNT = 5
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -15,27 +15,36 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 45*0.3,
-		ATTRIBUTE_DEXTERITY = 45*0.1
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT),
-		ATTRIBUTE_DEXTERITY = list(BLUNT)
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 45*0.4
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT)
+		SKILL_UNARMED = BLUNT
 	)
 
 	cqc_tag = "4"
 
-	attack_delay = 10*0.5
+	attack_delay = 5
 	attack_delay_max = 10
+
+/damagetype/unarmed/fists/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.has_status_effect(BUFF))
+			return TRUE
+
+	. = ..()
 
 /damagetype/unarmed/fists/help
 	attack_verbs = list("tap")
@@ -46,7 +55,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 30*0.2
+		FATIGUE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -55,8 +64,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 30*0.3,
-		ATTRIBUTE_DEXTERITY = 30*0.2
+		ATTRIBUTE_STRENGTH = 15,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -65,7 +74,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 30*0.3
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
@@ -86,7 +95,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 15*0.5
+		FATIGUE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -95,8 +104,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 15*0.1,
-		ATTRIBUTE_DEXTERITY = 15*0.1
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	attribute_damage = list(
@@ -105,15 +114,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 15*0.2
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = 12
-	attack_delay_max = 15
+	attack_delay = 15
+	attack_delay_max = 20
 
 	cqc_tag = "2"
 
@@ -156,27 +165,25 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 15*0.25,
-		ATTRIBUTE_DEXTERITY = 15*0.25
+
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = FATIGUE,
-		ATTRIBUTE_DEXTERITY = FATIGUE
+
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 15*0.25
+
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = FATIGUE
+
 	)
 
 	cqc_tag = "3"
 
-	attack_delay = 10
-	attack_delay_max = 10
+	attack_delay = 15
+	attack_delay_max = 30
 
 	draw_blood = FALSE
 
@@ -201,107 +208,3 @@
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].grab_object(attacker,victim)
 
 	return ..()
-
-
-/damagetype/unarmed/powerfist/
-	attack_verbs = list("pummel","pound")
-
-	hit_effect = /obj/effect/temp/impact/combat/punch
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	attack_damage_base = list(
-		BLUNT = 90*0.5
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLUNT = 0
-	)
-
-	attribute_stats = list(
-
-	)
-
-	attribute_damage = list(
-
-	)
-
-
-	skill_stats = list(
-		SKILL_UNARMED = 50*0.5
-	)
-
-	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT)
-	)
-
-	cqc_tag = "p"
-
-	attack_delay = 10
-	attack_delay_max = 10
-
-
-/damagetype/unarmed/brass/
-	attack_verbs = list("punch","hit","strike","pummel","pound")
-
-	hit_effect = /obj/effect/temp/impact/combat/punch
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	attack_damage_base = list(
-		BLUNT = 55*0.4
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLUNT = 0
-	)
-
-	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 55*0.2,
-		ATTRIBUTE_DEXTERITY = 55*0.1
-	)
-
-	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT),
-		ATTRIBUTE_DEXTERITY = list(BLUNT)
-	)
-
-	skill_stats = list(
-		SKILL_UNARMED = 55*0.3
-	)
-
-	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT)
-	)
-
-	cqc_tag = "p"
-
-	attack_delay = 12*0.5
-	attack_delay_max = 12
-
-
-/damagetype/unarmed/brass/spiked
-
-	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
-	attack_damage_base = list(
-		BLUNT = 55*0.4,
-		PIERCE = 55*0.1
-	)
-
-	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
-	attack_damage_penetration = list(
-		BLUNT = 0,
-		PIERCE = 50
-	)
-
-	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT,PIERCE),
-		ATTRIBUTE_DEXTERITY = list(BLUNT,PIERCE)
-	)
-
-	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT,PIERCE)
-	)
-
-	attack_delay = 11*0.5
-	attack_delay_max = 11
