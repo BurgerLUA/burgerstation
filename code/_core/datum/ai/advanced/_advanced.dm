@@ -225,9 +225,6 @@
 	if(istype(A.right_item,/obj/item/weapon/ranged/) && handle_gun(A.right_item))
 		return TRUE
 
-
-
-
 	return FALSE
 
 /ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)

@@ -203,8 +203,8 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		qdel(B)
 	else
 		if(B.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
-			if(B.drop_sound)
-				play_sound(B.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
+			if(B.drop_sound && new_loc && is_turf(new_loc))
+				play_sound(B.drop_sound,new_loc,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 			qdel(B)
 		else
 			B.drop_item(new_loc)

@@ -153,7 +153,7 @@ var/global/list/equipped_antags = list()
 		flick("[initial(icon_state)]-deny",src)
 		return null
 
-	var/obj/item/new_item = new associated_item.type(get_turf(src))
+	var/obj/item/new_item = new associated_item.type(get_turf(caller))
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	FINALIZE(new_item)

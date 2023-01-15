@@ -159,7 +159,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 /ai/Destroy()
 
-	set_active(FALSE)
+	set_active(FALSE,deleting=TRUE)
 
 	if(owner) owner.ai = null
 	owner = null
@@ -214,7 +214,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	if(length(inactive_ai_list) && inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] -= src
 
-/ai/proc/set_active(var/desired_active=TRUE)
+/ai/proc/set_active(var/desired_active=TRUE,var/deleting=FALSE)
 
 	if(desired_active)
 		if(!owner)
@@ -243,7 +243,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		if(debug) log_debug("Setting to active.")
 	else
 		UNPROCESS_LIVING(owner)
-		add_to_inactive_list(T.z)
+		if(!deleting) add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
 		set_alert_level(ALERT_LEVEL_NONE,TRUE)
 		set_objective(null)

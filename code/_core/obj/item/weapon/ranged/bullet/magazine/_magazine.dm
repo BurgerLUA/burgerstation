@@ -52,28 +52,30 @@
 
 /obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
 
-	INTERACT_CHECK
-	INTERACT_DELAY(1)
-
 	. = ..()
 
 	if(.)
 		return .
 
+	if(next_shoot_time > world.time)
+		return FALSE
+
+	var/turf/T = get_turf(src)
+
 	var/cock_type // = "flacid"
 
-	if(eject_chambered_bullet(caller,caller ? caller.loc : get_turf(src),TRUE))
+	if(eject_chambered_bullet(caller,caller ? caller.loc : T,TRUE))
 		cock_type = "back"
 
 	if(load_new_bullet_from_magazine(caller))
 		cock_type = cock_type == "back" ? "both" : "forward"
 
-	var/turf/T = get_turf(src)
-
 	if(cock_type)
 		if(T)
 			play_sound(get_cock_sound(cock_type),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
 		update_sprite()
+
+	next_shoot_time = max(next_shoot_time,world.time + 5)
 
 	return TRUE
 

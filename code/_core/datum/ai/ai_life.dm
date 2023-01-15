@@ -94,6 +94,7 @@
 							set_path_astar(desired_target_turf)
 
 		else if(frustration_move_threshold > 0 && use_astar_on_frustration && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
+			frustration_move = 0
 			var/path_num = length(node_path_current)
 			if(path_num)
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to current node path due to movement failure...")
