@@ -359,7 +359,7 @@ mob/living/proc/on_life_slow()
 				tox_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25*0.25
 
 	if(reagents)
-		reagents.metabolize(src)
+		reagents.metabolize(src,TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	handle_hunger()
 

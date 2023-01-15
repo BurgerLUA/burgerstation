@@ -22,7 +22,7 @@
 	. = ..()
 
 	if(owner)
-		owner.tox_regen_buffer -= . //Deal tox damage.
+		owner.tox_regen_buffer -= metabolism_amount //Deal tox damage.
 
 /reagent/medicine/adrenaline
 	name = "adrenaline"

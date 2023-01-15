@@ -417,7 +417,7 @@
 /obj/item/organ/proc/on_life()
 
 	if(reagents)
-		reagents.metabolize(is_advanced(src.loc) ? src.loc : null)
+		reagents.metabolize(is_advanced(src.loc) ? src.loc : null, TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	if(bleeding >= 1 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
