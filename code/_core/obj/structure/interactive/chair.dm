@@ -107,5 +107,7 @@ obj/structure/interactive/chair/shuttle
 
 	armrest = TRUE
 
+	pixel_y = 3
+
 obj/structure/interactive/chair/shuttle/dark
 	color = COLOR_GREY_LIGHT

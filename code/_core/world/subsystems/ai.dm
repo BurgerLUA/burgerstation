@@ -14,6 +14,10 @@ SUBSYSTEM_DEF(ai)
 
 	tick_usage_max = 95
 
+	var/list/queued_ai_update_chunks = list()
+
+	var/next_chunk_update = 0
+
 /subsystem/ai/unclog(var/mob/caller)
 
 	for(var/z in active_ai_by_z)
@@ -28,6 +32,20 @@ SUBSYSTEM_DEF(ai)
 	return ..()
 
 /subsystem/ai/on_life()
+
+	if(next_chunk_update < world.time)
+		next_chunk_update = world.time + SECONDS_TO_DECISECONDS(2)
+		for(var/ch in queued_ai_update_chunks)
+			var/chunk/C1 = ch
+			queued_ai_update_chunks -= ch
+			for(var/j in C1.ai)
+				var/ai/A = j
+				if(!A.active) A.set_active(TRUE)
+			for(var/k in C1.adjacent_chunks)
+				var/chunk/C2 = k
+				for(var/j in C2.ai)
+					var/ai/A = j
+					if(!A.active) A.set_active(TRUE)
 
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])

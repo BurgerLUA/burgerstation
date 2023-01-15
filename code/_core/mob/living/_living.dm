@@ -618,6 +618,13 @@
 		var/obj/hud/button/stat/resist_bar/RB = new(src)
 		RB.update_owner(src)
 
+	if(ai)
+		ai = new ai(null,src)
+		ai.active = FALSE //I know this feels like shitcode but it just werks.
+		if(initial(ai.active))
+			ai.set_active(TRUE)
+		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
+
 /mob/living/Finalize()
 
 	. = ..()
@@ -637,13 +644,6 @@
 		death()
 
 	update_level(TRUE)
-
-	if(ai)
-		ai = new ai(null,src)
-		ai.active = FALSE //I know this feels like shitcode but it just werks.
-		if(initial(ai.active))
-			ai.set_active(TRUE)
-		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
 
 	QUEUE_HEALTH_UPDATE(src)
 
