@@ -233,7 +233,7 @@
 			score *= 2
 		target_score[L] = score
 
-	sortInsert(target_score,associative=TRUE)
+	sort_tim(target_score,associative=TRUE)
 
 	for(var/k in target_score)
 		var/mob/living/L = k

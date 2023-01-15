@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(area)
 
 	log_subsystem(src.name,"Changed [changed_areas] turfs with bad areas into good areas.")
 
-	sortTim(all_areas,/proc/cmp_path_asc,associative=TRUE)
+	sort_tim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 
 	if(CONFIG("ENABLE_WEATHER",FALSE))
 		set_weather(WEATHER_RAIN,is_raining,areas_rain)

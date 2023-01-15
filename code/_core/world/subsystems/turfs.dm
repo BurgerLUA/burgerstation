@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(turf)
 
 	log_subsystem(src.name,"Finalized [turfs_finalized] simulated turfs.")
 
-	sortInsert(type_to_time, /proc/cmp_numeric_dsc, associative=TRUE)
+	sort_tim(type_to_time, /proc/cmp_numeric_dsc, associative=TRUE)
 
 	var/turf_length = length(type_to_time)
 	if(turf_length >= 1)

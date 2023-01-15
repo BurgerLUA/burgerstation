@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(research)
 	var/quadrants_file = rustg_file_read(RESEARCH_SCORES_QUADRANTS)
 	if(!quadrants_file)
 		log_subsystem(name,"Found no quadrants high score file... creating new one.")
-		sortTim(quadrant_high_scores,/proc/cmp_highscore)
+		sort_tim(quadrant_high_scores,/proc/cmp_highscore)
 		quadrant_high_scores = quadrant_high_scores.Copy(1,min(length(quadrant_high_scores),5)+1)
 		rustg_file_append(json_encode(quadrant_high_scores),RESEARCH_SCORES_QUADRANTS)
 	else
@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(research)
 
 /subsystem/research/proc/add_quadrants_score(var/mob/living/advanced/player/P ,var/score)
 	quadrant_high_scores.Add(list(list(P.real_name,score)))
-	sortList(quadrant_high_scores,/proc/cmp_highscore)
+	sort_tim(quadrant_high_scores,/proc/cmp_highscore)
 	quadrant_high_scores = quadrant_high_scores.Copy(1,min(length(quadrant_high_scores),5))
 	rustg_file_write(json_encode(quadrant_high_scores),RESEARCH_SCORES_QUADRANTS)
 

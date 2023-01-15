@@ -212,7 +212,7 @@
 	set name = "Bring Player"
 	set category = "Admin"
 
-	sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
+	sort_tim(all_mobs_with_clients,/proc/cmp_path_asc)
 
 	var/mob/choice = input("Who would you like to bring","Bring Mob") as null|mob in all_mobs_with_clients
 	if(!choice)

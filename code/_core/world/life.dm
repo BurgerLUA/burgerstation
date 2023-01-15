@@ -61,7 +61,7 @@ var/global/time_dialation = 0
 		S = new subsystem
 		active_subsystems += S
 
-	sortMerge(active_subsystems, /proc/cmp_subsystem_priority)
+	sort_tim(active_subsystems, /proc/cmp_subsystem_priority)
 
 	log_subsystem("Subsystem Controller","Created and sorted [length(active_subsystems)] subsystems sorted.")
 

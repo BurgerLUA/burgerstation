@@ -337,7 +337,7 @@
 			var/reagent_recipe/JR = SSreagent.all_reagent_recipes[j]
 			recipes_to_check[JR] = TRUE
 
-	sortTim(recipes_to_check,/proc/cmp_recipe_priority_dsc)
+	sort_tim(recipes_to_check,/proc/cmp_recipe_priority_dsc)
 
 	var/reagent_recipe/found_recipe = null
 	for(var/k in recipes_to_check)
@@ -609,7 +609,7 @@
 		flavor_flags["[R.flags_flavor]"] += flavor_strength
 		total_flavor_strength += flavor_strength
 
-	sortTim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
+	sort_tim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
 
 	var/list/english_flavor_profile = list()
 

@@ -66,7 +66,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 		return FALSE
 
 	var/list/objects_to_check = P.worn_objects.Copy()
-	sortTim(objects_to_check,/proc/cmp_worn_layer_hybrid_asc)
+	sort_tim(objects_to_check,/proc/cmp_worn_layer_hybrid_asc)
 	objects_to_check += P.held_objects
 
 	var/list/final_data_list = list()

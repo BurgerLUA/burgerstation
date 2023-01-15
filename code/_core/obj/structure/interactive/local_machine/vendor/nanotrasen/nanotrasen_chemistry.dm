@@ -59,6 +59,6 @@
 
 /obj/structure/interactive/vending/nanotrasen/chemistry/reagents/Finalize()
 	. = ..()
-	sortTim(stored_objects,/proc/cmp_name_asc)
+	sort_tim(stored_objects,/proc/cmp_name_asc)
 
 #undef LAZY_BEAKER

@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(cargo)
 		cargo_id_to_type[md5_hash] = P
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
-	sortTim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
+	sort_tim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
 
 	var/item_count = 1
 

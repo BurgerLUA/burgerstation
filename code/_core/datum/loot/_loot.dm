@@ -27,7 +27,7 @@
 					actual_weight = 1 + FLOOR(actual_weight,1)
 					loot_table[k] = actual_weight
 
-		sortMerge(loot_table,/proc/cmp_numeric_asc_rand,TRUE)
+		sort_tim(loot_table,/proc/cmp_numeric_asc_rand,TRUE)
 
 /loot/proc/do_spawn(var/atom/spawn_loc,var/rarity) //Use this to spawn the loot. rarity is optional.
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")

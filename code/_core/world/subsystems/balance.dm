@@ -160,9 +160,9 @@ SUBSYSTEM_DEF(balance)
 
 	process_items(T,everything_else)
 
-	sortInsert(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
-	sortInsert(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
-	sortInsert(stored_killtime, /proc/cmp_numeric_asc, associative=TRUE)
+	sort_tim(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
+	sort_tim(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
+	sort_tim(stored_killtime, /proc/cmp_numeric_asc, associative=TRUE)
 
 	created_bullets.Cut()
 	created_magazines.Cut()

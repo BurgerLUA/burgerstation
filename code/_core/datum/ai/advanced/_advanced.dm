@@ -695,7 +695,7 @@
 		if(debug) log_debug("Couldn't find any valid covers.")
 		return FALSE
 
-	sortTim(valid_covers,associative=TRUE)
+	sort_tim(valid_covers,associative=TRUE)
 
 	if(current_cover) remove_cover()
 
