@@ -93,7 +93,7 @@
 						if(target_distance <= VIEW_RANGE*2 && !found_valid_path) //Couldn't find a valid path, so we use astar.
 							set_path_astar(desired_target_turf)
 
-		else if(frustration_move_threshold > 0 && use_astar_on_frustration && frustration_move >= (length(current_path_astar) ? frustration_move_threshold*2 : frustration_move_threshold))
+		else if(frustration_move_threshold > 0 && use_astar_on_frustration && frustration_move >= (length(astar_path_current) ? frustration_move_threshold*2 : frustration_move_threshold))
 			frustration_move = 0
 			var/path_num = length(node_path_current)
 			if(path_num)
@@ -134,7 +134,7 @@
 				frustration_node_path++
 			if(debug) log_debug("[src.get_debug_name()] tried moving, but couldn't.")
 		else
-			frustration_move = max(0,frustration_move-0.25)
+			frustration_move = max(0,frustration_move-1)
 
 	return TRUE
 

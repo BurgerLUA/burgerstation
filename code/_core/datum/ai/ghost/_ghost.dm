@@ -79,9 +79,9 @@
 		var/turf/T2 = get_turf(objective_attack)
 		if(T1.z != T2.z || get_dist(T1,T2) > 64) //Too far, can't path.
 			return FALSE
-		var/astar_length = length(current_path_astar)
+		var/astar_length = length(astar_path_current)
 		if(astar_length)
-			var/turf/T4 = get_turf(current_path_astar[astar_length]) //Check the end of the path.
+			var/turf/T4 = get_turf(astar_path_current[astar_length]) //Check the end of the path.
 			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
@@ -99,9 +99,9 @@
 		var/turf/T2 = get_turf(objective_move)
 		if(T1.z != T2.z || get_dist(T1,T2) > 64) //Too far, can't path.
 			return FALSE
-		var/astar_length = length(current_path_astar)
+		var/astar_length = length(astar_path_current)
 		if(astar_length)
-			var/turf/T4 = get_turf(current_path_astar[astar_length]) //Check the end of the path.
+			var/turf/T4 = get_turf(astar_path_current[astar_length]) //Check the end of the path.
 			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)

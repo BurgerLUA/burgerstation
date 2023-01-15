@@ -1,5 +1,8 @@
 /ai/proc/set_path_fallback(var/turf/destination)
 
+	if(!destination)
+		CRASH("Invalid destination provided!")
+
 	var/obj/marker/map_node/N_start = find_closest_node(owner)
 	if(!N_start)
 		if(debug) log_debug("[src.get_debug_name()] tried node pathing, but couldn't find a valid start node.")
@@ -62,14 +65,14 @@
 	frustration_node_path = 0
 	frustration_move = 0
 
-	if(current_path_astar)
-		current_path_astar.Cut()
-		current_path_astar = null
+	if(astar_path_current)
+		astar_path_current.Cut()
+		astar_path_current = null
 
 	if(destination)
 		var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner,min_distance)
 		if(returning_path)
-			current_path_astar = returning_path
+			astar_path_current = returning_path
 			set_active(TRUE)
 			return TRUE
 		else

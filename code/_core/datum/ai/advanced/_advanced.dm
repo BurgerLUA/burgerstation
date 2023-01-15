@@ -38,6 +38,7 @@
 
 	var/use_cover_chance = 100
 	var/obj/marker/cover_node/current_cover
+	var/checked_cover = TRUE //Set to false when the mob equips a new weapon.
 
 /ai/advanced/Destroy()
 	remove_cover()
@@ -60,7 +61,7 @@
 		if(!left_hand_weapon && !right_hand_weapon)
 			found_ammo_pile = null //Didn't have a valid weapon.
 		else
-			if(!length(current_path_astar)) //Couldn't path properly. Try again.
+			if(!length(astar_path_current)) //Couldn't path properly. Try again.
 				found_ammo_pile = null
 				find_ammo_pile()
 			if(found_ammo_pile && get_dist(owner,found_ammo_pile) <= 1)
@@ -572,6 +573,7 @@
 		if(!E.enabled) E.click_self(A)
 
 	checked_weapons = FALSE
+	checked_cover = FALSE
 
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
@@ -583,6 +585,7 @@
 	if(!W.quick_equip(A,ignore_hands=TRUE))
 		W.drop_item(get_turf(owner))
 	checked_weapons = FALSE
+	checked_cover = FALSE
 	return TRUE
 
 /ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
@@ -610,11 +613,11 @@
 
 	if(A.right_item && !A.left_item)
 		left_click_chance = 100
-		attack_distance_min = A.right_item.combat_range
+		attack_distance_min = A.right_item.combat_range*0.5
 		attack_distance_max = A.right_item.combat_range
 	else if(!A.right_item && A.left_item)
 		left_click_chance = 0
-		attack_distance_min = A.left_item.combat_range
+		attack_distance_min = A.left_item.combat_range*0.5
 		attack_distance_max = A.left_item.combat_range
 	else if(A.left_item && A.right_item)
 		attack_distance_min = min(A.right_item.combat_range,A.left_item.combat_range)
@@ -628,6 +631,11 @@
 			left_click_chance = 0
 
 	distance_target_max = min(VIEW_RANGE,attack_distance_max)
+
+	if(objective_attack && !checked_cover && attack_distance_max > 3)
+		checked_cover = TRUE
+		if(use_cover_chance && prob(use_cover_chance))
+			find_and_set_cover(objective_attack)
 
 	if(!checked_weapons && objective_attack && abs(get_dist(owner,objective_attack) - attack_distance_max) > VIEW_RANGE*0.5) //Find a new weapon to use if our enemy is close/far.
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
@@ -675,31 +683,37 @@
 
 /ai/advanced/proc/find_and_set_cover(var/atom/enemy)
 
-	var/list/valid_covers = list()
-
-
 	var/obj/marker/cover_node/CN
-	FOR_DVIEW(CN,VIEW_RANGE,get_turf(owner),101)
+	var/turf/T = get_turf(owner)
+
+	var/obj/marker/cover_node/best_cover
+	var/best_cover_distance
+
+	FOR_DVIEW(CN,VIEW_RANGE,T,101)
 		if(!(CN.dir & get_dir(CN,enemy)))
 			continue
 		if(CN.reserved)
 			continue
-		valid_covers[CN] = get_dist(owner,CN)
+		var/distance_to_cover = get_dist(T,CN)
+		var/distance_to_enemy = get_dist(CN,enemy)
+		if(attack_distance_max < distance_to_enemy || attack_distance_min > distance_to_enemy) //Too far || too close.
+			distance_to_cover *= 2
+		if(best_cover && distance_to_cover >= best_cover_distance)
+			continue
+		best_cover = CN
+		best_cover_distance = distance_to_cover
 
 	END_FOR_DVIEW
 
-	if(!length(valid_covers))
+	if(!best_cover)
 		if(debug) log_debug("Couldn't find any valid covers.")
 		return FALSE
-
-	sort_tim(valid_covers,associative=TRUE)
-
 	if(current_cover) remove_cover()
 
-	current_cover = valid_covers[1]
+	current_cover = best_cover
 	current_cover.reserved = TRUE
 
-	if(debug) log_debug("Found [length(valid_covers)] covers.")
+	if(debug) log_debug("Found a good cover.")
 
 	return TRUE
 
@@ -708,7 +722,7 @@
 
 /ai/advanced/proc/handle_movement_cover()
 
-	if(length(current_path_astar))
+	if(length(astar_path_current))
 		return FALSE
 
 	if(get_dist(current_cover,owner) > 1)
@@ -770,8 +784,5 @@
 
 	. = ..()
 
-	if(. && use_cover_chance)
-		if(objective_attack && prob(use_cover_chance))
-			find_and_set_cover(objective_attack)
-		else
-			if(current_cover) remove_cover()
+	if(. && current_cover && !objective_attack)
+		remove_cover()

@@ -16,7 +16,6 @@
 	var/shell_count = 0
 	var/max_shells = 0
 	var/shell_type = /obj/item/bullet_cartridge
-	var/handful = 0
 
 /obj/item/clothing/belt/bandolier/get_base_value()
 	return max_shells*3
@@ -112,31 +111,16 @@
 		if(!S)
 			S = initial(shell_type)
 
-		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			S = new S(get_turf(src))
-			S.amount = 1
-			stored_shells[S.type] -= 1
-			shell_count -= 1
-			caller.to_chat(span("notice","You take a shell from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
-			if(stored_shells[S.type] <= 0)
-				stored_shells -= S.type
-			INITIALIZE(S)
-			FINALIZE(S)
-			I.add_object(S)
-			update_sprite()
-			return TRUE
+		var/amount_to_grab = 1
+		if(!(caller.attack_flags & CONTROL_MOD_DISARM))
+			amount_to_grab = min(stored_shells[S.type],initial(S.amount_max))
 		S = new S(get_turf(src))
-		var/amount = 0
-		if(stored_shells[S.type] < handful)
-			amount = stored_shells[S.type]
-		else
-			amount = handful
-		S.amount = amount
-		stored_shells[S.type] -= amount
-		shell_count -= amount
-		caller.to_chat(span("notice","You take [amount] shell\s from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
+		S.amount = amount_to_grab
+		stored_shells[S.type] -= amount_to_grab
 		if(stored_shells[S.type] <= 0)
 			stored_shells -= S.type
+		shell_count -= amount_to_grab
+		caller.to_chat(span("notice","You take [amount_to_grab] shell\s from \the [src.name]. There are [stored_shells[S.type]] shells of that type left."))
 		INITIALIZE(S)
 		FINALIZE(S)
 		I.add_object(S)
@@ -149,22 +133,22 @@
 	name = "12 gauge shotgun bandolier"
 	desc_extended = "A not-so-fancy bandolier meant to hold a number of 12 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
-	max_shells = 200
+	max_shells = 100
 	shell_type = /obj/item/bullet_cartridge/shotgun_12
-	handful = 5
+	value = 1
 
 /obj/item/clothing/belt/bandolier/shotgun_20
 	name = "20 gauge shotgun bandolier"
 	desc_extended = "A dyed bandolier meant to hold a number of 20 gauge shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
 	icon = 'icons/obj/item/clothing/belts/bandolier_20.dmi'
-	max_shells = 240
+	max_shells = 120
 	shell_type = /obj/item/bullet_cartridge/shotgun_20
-	handful = 5
+	value = 1
 
 /obj/item/clothing/belt/bandolier/shotgun_23
 	name = "23x75mmR shotgun bandolier"
 	desc_extended = "A surplus bandolier meant to hold a number of 23x75mmR shotgun shells. Click to grab a handful of shells, or ALT+Click to take one."
 	icon = 'icons/obj/item/clothing/belts/bandolier_23.dmi'
-	max_shells = 160
+	max_shells = 80
 	shell_type = /obj/item/bullet_cartridge/shotgun_23
-	handful = 4
+	value = 1

@@ -267,5 +267,5 @@
 	. *= 1 + max(0.5,1 - base_spread)*0.25
 	. *= 1 + max(0,1-inaccuracy_modifier)*0.5
 	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
-	. += min(10,(bullet_length*bullet_diameter)/(9*19))
+	. += min(10,(bullet_length*bullet_diameter)/(9*19))*0.25
 	. *= 0.2

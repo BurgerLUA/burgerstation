@@ -3,7 +3,7 @@
 /status_effect/rage
 	name = "Rage"
 	desc = "You're filled with rage!"
-	id = ADRENALINE
+	id = RAGE
 
 	minimum = SECONDS_TO_DECISECONDS(5)
 	maximum = SECONDS_TO_DECISECONDS(30)

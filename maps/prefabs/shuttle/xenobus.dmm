@@ -19,20 +19,22 @@
 "s" = (/mob/living/simple/turret/nanotrasen/immortal{icon_state = "active"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
 "t" = (/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
 "u" = (/mob/living/simple/turret/nanotrasen/immortal,/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
+"v" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle,/area/shuttle/xeno)
+"w" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/xeno)
 "z" = (/obj/structure/interactive/computer/console/flight_control{dir = 1; icon_state = "computer"},/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
 aaaaaasttsaaaaaa
 aajghijbbjghijaa
-aajjljjccjjljjaa
+aajjljvccvjljjaa
 aajjjjdccdjjjjaa
 aaneepmccmpeenaa
 aaneemmccmmeenaa
 aaneemmfcmmeenaa
 aaneemmccmmeenaa
 aannnkoccoknnnaa
-aaaaukkcckkuaaaa
+aaaaukwccwkuaaaa
 aaaatrqeeqrtaaaa
 aaaaakkzzkkaaaaa
 aaaaaaknnkaaaaaa

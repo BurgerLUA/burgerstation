@@ -156,7 +156,7 @@
 		INITIALIZE(stored_bullet)
 		stored_bullet.amount = 1
 		FINALIZE(stored_bullet)
-		bullet_max = FLOOR( 10*(size**3)/stored_bullet.bullet_diameter, 1)
+		bullet_max = CEILING( 10*(size**3)/stored_bullet.bullet_diameter, 1)
 		if(!bullet_max)
 			set_stored_bullet(null)
 			update_sprite()

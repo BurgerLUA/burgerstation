@@ -16,17 +16,10 @@
 
 	. = ..()
 
-	if(prob(10))
-		if(gender == FEMALE)
-			loadout = /loadout/survivor/female/melee
-		else
-			loadout = /loadout/survivor/male/melee
-
+	if(gender == FEMALE)
+		loadout = /loadout/survivor/female
 	else
-		if(gender == FEMALE)
-			loadout = /loadout/survivor/female
-		else
-			loadout = /loadout/survivor/male
+		loadout = /loadout/survivor/male
 
 
 /mob/living/advanced/npc/survivor/Finalize()

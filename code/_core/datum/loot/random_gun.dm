@@ -56,6 +56,7 @@
 			if(ispath(R,/obj/item/weapon/ranged/bullet/magazine))
 				if(!SSbalance.weapon_to_magazine[R])
 					continue
+		loot_table[R] = 1 //Correct multipliers added later.
 
 	return TRUE
 

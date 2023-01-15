@@ -170,7 +170,7 @@
 		return TRUE
 
 	//Path to last known location.
-	if(last_combat_location && !length(current_path_astar))
+	if(last_combat_location && !length(astar_path_current))
 		set_path_astar(last_combat_location)
 		last_combat_location = null
 		return TRUE

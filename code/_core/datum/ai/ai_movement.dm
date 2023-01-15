@@ -29,11 +29,24 @@
 
 	if(objective_attack)
 
-		if(cowardice >= 0)
+		if(cowardice > 0)
 			var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
-			if(health_percent <= cowardice)
-				owner.move_dir = get_dir(objective_attack,owner) //RUN AWAY.
-				owner.movement_flags = MOVEMENT_RUNNING
+			if(health_percent <= cowardice && !length(node_path_current) && !length(astar_path_current))
+				if(get_dist(owner,objective_attack) <= VIEW_RANGE)
+					var/turf/T1 = get_turf(owner)
+					var/turf/T2 = get_turf(objective_attack)
+					var/list/offsets = get_directional_offsets(T2,T1)
+					if(!offsets[1] && !offsets[2])
+						offsets[1] = pick(-1,1)
+						offsets[2] = pick(-1,1)
+					var/final_x = T1.x + offsets[1]*VIEW_RANGE*3
+					final_x = clamp(final_x,1,world.maxx)
+					var/final_y = T1.y + offsets[2]*VIEW_RANGE*3
+					final_y = clamp(final_y,1,world.maxy)
+					var/turf/final_turf  = locate(final_x,final_y,T1.z)
+					if(final_turf)
+						if(!set_path_fallback(final_turf))
+							cowardice = 0
 				return TRUE
 
 		if(!objective_attack.z) //Inside something. Get close to it.
@@ -112,13 +125,13 @@
 
 /ai/proc/handle_movement_astar()
 
-	if(length(current_path_astar))
+	if(length(astar_path_current))
 		var/turf/T = get_turf(owner)
-		var/turf/desired_turf = current_path_astar[1]
+		var/turf/desired_turf = astar_path_current[1]
 		if(T == desired_turf)
-			current_path_astar -= desired_turf
-			if(length(current_path_astar))
-				desired_turf = current_path_astar[1]
+			astar_path_current -= desired_turf
+			if(length(astar_path_current))
+				desired_turf = astar_path_current[1]
 			else
 				desired_turf = null
 		if(desired_turf)
@@ -157,24 +170,25 @@
 
 /ai/proc/handle_movement_path_frustration()
 
-	if(frustration_node_path > frustration_node_path_threshold)
+	if(frustration_node_path_threshold > 0 && frustration_node_path > frustration_node_path_threshold)
 
 		frustration_node_path = 0
 
-		var/obj/marker/map_node/N_start = find_closest_node(owner,check_view=TRUE)
+		var/obj/marker/map_node/N_start = find_closest_node(owner)
 		if(!N_start)
+			log_error("[owner.get_debug_name()] is stuck and cannot find a path start!")
 			set_path(null)
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(node_path_end_turf)
 		if(!N_end)
-			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a path end!")
+			log_error("[owner.get_debug_name()] is stuck and cannot find a path end!")
 			set_path(null)
 			return FALSE
 
 		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 		if(!found_path)
-			log_error("[owner] ([owner.x],[owner.y],[owner.z]) is stuck and cannot find a final path!")
+			log_error("[owner.get_debug_name()] is stuck and cannot find a final path!")
 			set_path(null)
 			return FALSE
 
@@ -304,6 +318,10 @@
 		last_movement_proc = "path_frustration"
 		return TRUE
 
+	if(handle_movement_path())
+		last_movement_proc = "path"
+		return TRUE
+
 	if(handle_movement_attack_objective())
 		last_movement_proc = "attack_objective"
 		return TRUE
@@ -314,10 +332,6 @@
 
 	if(handle_movement_alert())
 		last_movement_proc = "alert"
-		return TRUE
-
-	if(handle_movement_path())
-		last_movement_proc = "path"
 		return TRUE
 
 	if(handle_movement_guarding())

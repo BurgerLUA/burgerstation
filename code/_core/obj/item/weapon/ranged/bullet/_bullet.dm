@@ -177,7 +177,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return chambered_bullet ? chambered_bullet.damage_type : null
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/atom/new_loc,var/play_sound=FALSE)
 
 	if(!chambered_bullet)
 		return FALSE

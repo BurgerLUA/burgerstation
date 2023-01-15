@@ -206,15 +206,15 @@
 
 	for(var/k in new_loc.contents)
 		var/atom/movable/A = k
-		if(!A.density)
+		if(!A.density || A.mouse_opacity <= 0)
 			continue
 		if(is_living(A))
 			var/mob/living/L = A
-			var/score = -1 * L.size
+			var/score = L.size //Bigger objects get more priority.
 			if(L == target_atom)
-				score = 0
+				score = 1000
 			else if(L.horizontal)
-				score *= 2
+				score *= 0.5
 			target_score[L] = score
 			continue
 		else
@@ -222,18 +222,18 @@
 
 	for(var/k in new_loc.old_living)
 		var/mob/living/L = k
-		if(!L.density)
+		if(!L.density || L.mouse_opacity <= 0)
 			continue
-		if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions for old_living
+		if(L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions for living.
 			continue
-		var/score = -10 * L.size
+		var/score = L.size*0.5
 		if(L == target_atom)
-			score = 0
+			score = 1000
 		else if(L.horizontal)
-			score *= 2
+			score *= 0.5
 		target_score[L] = score
 
-	sort_tim(target_score,associative=TRUE)
+	sort_tim(target_score,cmp=/proc/cmp_numeric_dsc,associative=TRUE) //Get the highest.
 
 	for(var/k in target_score)
 		var/mob/living/L = k
