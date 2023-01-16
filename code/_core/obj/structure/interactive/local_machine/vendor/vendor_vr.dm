@@ -139,8 +139,6 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 		/obj/item/magazine/smg_4mm_standard,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
-		/obj/item/magazine/bizon_9mm
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/shotguns

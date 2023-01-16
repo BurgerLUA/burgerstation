@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/holy45
-	name = "Holy .45 M1984 Pistol"
+	name = "Holy .45 M1984 pistol"
 	desc = "We can't expect God to do all the work."
 	desc_extended = "A special replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland."
 	value = 4000

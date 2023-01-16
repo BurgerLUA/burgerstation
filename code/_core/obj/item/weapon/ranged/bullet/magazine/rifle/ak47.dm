@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47
-	name = "\improper 7.62x39mm AK Type-13"
+	name = "\improper 7.62x39mm KA-47 rifle"
 	desc = "Ancient, with an upgrade."
-	desc_extended = "An old relic created by ancient Space Slavs to be used for lesser colonies in proxy wars. The absurdly large cartridge packs a pretty accurate and deadly punch."
+	desc_extended = "The Kinetic Action rifle is an old relic created by ancient Space Slavs to be used for lesser colonies in proxy wars. The absurdly large cartridge packs a pretty accurate and deadly punch."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
 	value = 1600

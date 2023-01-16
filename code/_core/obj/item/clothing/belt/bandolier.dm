@@ -110,11 +110,10 @@
 		var/obj/item/bullet_cartridge/S = pickweight(stored_shells)
 		if(!S)
 			S = initial(shell_type)
-
+		S = new S(get_turf(src))
 		var/amount_to_grab = 1
 		if(!(caller.attack_flags & CONTROL_MOD_DISARM))
-			amount_to_grab = min(stored_shells[S.type],initial(S.amount_max))
-		S = new S(get_turf(src))
+			amount_to_grab = min(stored_shells[S.type],S.amount_max)
 		S.amount = amount_to_grab
 		stored_shells[S.type] -= amount_to_grab
 		if(stored_shells[S.type] <= 0)

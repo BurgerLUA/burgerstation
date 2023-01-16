@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle
-	name = ".50 Silver Eagle"
+	name = ".50 Silver Eagle pistol"
 	desc = "Shiny!"
 	desc_extended = "A proudly Yankee made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'

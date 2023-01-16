@@ -44,6 +44,8 @@ var/global/list/all_typecaches = list()
 
 #define is_currency(A) istypecache(A,/obj/item/currency/)
 
+#define is_magazine(A) istypecache(A,/obj/item/magazine/)
+
 
 #define is_organ(A) istypecache(A,/obj/item/organ/)
 

@@ -8,7 +8,6 @@
 
 	weapon_whitelist = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94 = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12 = TRUE,
 	)
 
 	ammo = /obj/item/bullet_cartridge/rifle_545mm

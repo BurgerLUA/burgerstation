@@ -208,7 +208,6 @@
 		/obj/item/bulletbox/rifle_762_revolver,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
 		/obj/item/magazine/rifle_545,
 		/obj/item/magazine/rifle_545/ap,
 
@@ -237,9 +236,6 @@
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
 		/obj/item/magazine/pistol_9mm,
-
-		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
-		/obj/item/magazine/bizon_9mm,
 
 		/obj/item/weapon/ranged/bullet/pump/gm94,
 		/obj/item/bullet_cartridge/grenade_40mm,

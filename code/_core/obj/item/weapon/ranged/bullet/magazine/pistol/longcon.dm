@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/longcon
-	name = ".45 LongCon Pistol"
+	name = ".45 LongCon pistol"
 	desc = "A .45 that looks like a 9mm."
 	desc_extended = "A lightweight and compact Syndicate pistol chambered in .45. Tiny, but still gets the job done."
 	value = 800

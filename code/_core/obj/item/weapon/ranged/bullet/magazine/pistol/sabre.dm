@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
-	name = "\improper 12.7mm Sabre"
+	name = "\improper 12.7mm Sabre pistol"
 	desc = "As sharp as a real saber sword, hurts just as much too."
-	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives."
+	desc_extended = "A very powerful automatic pistol commonly used by high ranking Syndicate Operatives."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
 	value = 1100
@@ -11,7 +11,7 @@
 	tier = 2
 	shoot_delay = 2.5
 
-	automatic = FALSE
+	automatic = TRUE
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.25

@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton
-	name = "9mm Laton"
+	name = "9mm Laton pistol"
 	desc = "9mm is all you need."
 	desc_extended = "NT's standard pistol, chambered in a 9mm cartridge. It's very easy to use and recommended for beginners."
 	value = 200

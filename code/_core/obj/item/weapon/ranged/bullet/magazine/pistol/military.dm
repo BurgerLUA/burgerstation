@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
-	name = "9mm Auto 18"
+	name = "9mm Auto 18 pistol"
 	desc = "An old relic from an oppressive police force."
 	desc_extended = "An automatic machine pistol chambered in 9mm. Good for getting out of tricky situations quickly."
 	value = 400

@@ -1,5 +1,5 @@
 /obj/item/magazine/bizon_9mm
-	name = "\improper 9mm Bizon magazine"
+	name = "\improper 9mm Bison magazine"
 	desc = "IT'S NOT A CLIP. IT'S A MAGAZINE."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 	icon = 'icons/obj/item/magazine/9mm_bizon.dmi'

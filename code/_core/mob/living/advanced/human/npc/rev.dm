@@ -7,19 +7,14 @@
 	combat_dialogue = /combat_dialogue/revolutionary
 
 	var/list/possible_outfits = list(
-		/loadout/rev/solider = 10,
-		/loadout/rev/solider/alt = 10,
-		/loadout/rev/skat = 10,
-		/loadout/rev/exo = 5,
-		/loadout/rev/sniper = 5
+		/loadout/slavic/infantry = 100,
+		/loadout/slavic/sniper = 10,
+
 	)
 
 	var/loadout_to_level = list(
-		/loadout/rev/solider = 1,
-		/loadout/rev/solider/alt = 2,
-		/loadout/rev/skat = 4,
-		/loadout/rev/exo = 8,
-		/loadout/rev/sniper = 8
+		/loadout/slavic/infantry = 1,
+		/loadout/slavic/sniper = 1.2,
 	)
 
 	dna = /dna/human
@@ -38,3 +33,17 @@
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/revolutionary)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/revolutionary)
 
+
+/mob/living/advanced/npc/rev/elite
+	name = "elite revolutionary soldier"
+
+	possible_outfits = list(
+		/loadout/slavic/infantry/advanced = 100,
+		/loadout/slavic/sniper/advanced = 10,
+
+	)
+
+	loadout_to_level = list(
+		/loadout/slavic/infantry/advanced = 1,
+		/loadout/slavic/sniper/advanced = 1.2,
+	)

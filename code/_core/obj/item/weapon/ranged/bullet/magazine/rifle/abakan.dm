@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94
-	name = "\improper 5.45x39mm Nikonov Rifle"
-	desc = "A nuu cheeki breeki i v damkee!"
-	desc_extended = "Weapon of the elite troops of the Space Slavic army. It was developed as a replacement for the outdated AK Type-13. Its quick 2 round burst system allows for very precise firing and tight groupings."
+	name = "\improper 5.45x39mm AM84 rifle"
+	desc = "Why shoot one bullet when you can shoot two?"
+	desc_extended = "The AM84, or the AutoMekanism rifle, is one of the standard weapons of the elite troops of the Space Slavic army. It was developed as a replacement for the outdated KA-47 rifle. Its quick 2 round burst system allows for very precise firing and tight groupings."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle.dmi'
 	icon_state = "inventory"
 	value = 4500
@@ -55,13 +55,13 @@
 	)
 
 	attachment_barrel_offset_x = 32 - 16
-	attachment_barrel_offset_y = 20 - 16
+	attachment_barrel_offset_y = 17 - 16
 
-	attachment_sight_offset_x = 13 - 16
-	attachment_sight_offset_y = 21 - 16
+	attachment_sight_offset_x = 12 - 16
+	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 23 - 16
-	attachment_undermount_offset_y = 18 - 16
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 17 - 16
 
 	dan_mode = TRUE
 

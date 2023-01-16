@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/classic
-	name = "9mm Team Defender"
+	name = "9mm T-Defender pistol"
 	desc = "They don't make them like they used to."
 	desc_extended = "A decently fast-firing accurate semi-automatic pistol designed to be a backup weapon. Originally carried by the first employees of NanoTrasen."
 	value = 400

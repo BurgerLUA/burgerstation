@@ -12,6 +12,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/groza/equipped = TRUE
 	)
 
 	bullet_length_min = 38

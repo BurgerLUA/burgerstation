@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown
-	name = ".40 Brown"
+	name = ".40 Brown pistol"
 	icon = 'icons/obj/item/weapons/ranged/pistol/40_1.dmi'
 	desc_extended = "A decently powerful and accurate .40 semi-automatic pistol meant for self defense. Commonly used by mercenaries."
 	value = 650

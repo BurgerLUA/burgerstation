@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/dip
-	name = ".22 Z-Drip Gun"
+	name = ".22 Z-Drip pistol"
 	desc = "The best in manufactured pistols."
 	desc_extended = "The Z-Drip Gun is a relatively inexpensive pistol meant for civilian self-defense. The low caliber makes it difficult to use as a serious weapon, however."
 	value = 120

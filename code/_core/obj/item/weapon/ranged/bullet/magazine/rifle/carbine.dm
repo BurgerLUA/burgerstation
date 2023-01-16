@@ -137,7 +137,7 @@
 
 	can_wield = FALSE
 
-	size = SIZE_3
+	size = SIZE_4
 	weight = 8
 
 	heat_max = 0.08

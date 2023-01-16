@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
-	name = ".45 1984 Pistol"
+	name = ".45 1984 Tactical pistol"
 	desc = "No rubber rounds here; it's all lethal."
 	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Colonists."
 	value = 700
