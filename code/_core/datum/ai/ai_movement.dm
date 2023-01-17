@@ -31,22 +31,25 @@
 
 		if(cowardice > 0)
 			var/health_percent = owner.health ? owner.health.health_current/owner.health.health_max : 1
-			if(health_percent <= cowardice && !length(node_path_current) && !length(astar_path_current))
-				if(get_dist(owner,objective_attack) <= VIEW_RANGE)
-					var/turf/T1 = get_turf(owner)
-					var/turf/T2 = get_turf(objective_attack)
-					var/list/offsets = get_directional_offsets(T2,T1)
-					if(!offsets[1] && !offsets[2])
-						offsets[1] = pick(-1,1)
-						offsets[2] = pick(-1,1)
-					var/final_x = T1.x + offsets[1]*VIEW_RANGE*3
-					final_x = clamp(final_x,1,world.maxx)
-					var/final_y = T1.y + offsets[2]*VIEW_RANGE*3
-					final_y = clamp(final_y,1,world.maxy)
-					var/turf/final_turf  = locate(final_x,final_y,T1.z)
-					if(final_turf)
-						if(!set_path_fallback(final_turf))
-							cowardice = 0
+			if((owner.horizontal || health_percent <= cowardice) && !length(node_path_current) && !length(astar_path_current) && get_dist(owner,objective_attack) <= VIEW_RANGE)
+				owner.move_dir = get_dir(objective_attack,owner)
+				owner.movement_flags = MOVEMENT_RUNNING
+				/* TOO EXPENSIVE
+				var/turf/T1 = get_turf(owner)
+				var/turf/T2 = get_turf(objective_attack)
+				var/list/offsets = get_directional_offsets(T2,T1)
+				if(!offsets[1] && !offsets[2])
+					offsets[1] = pick(-1,1)
+					offsets[2] = pick(-1,1)
+				var/final_x = T1.x + offsets[1]*VIEW_RANGE*3
+				final_x = clamp(final_x,1,world.maxx)
+				var/final_y = T1.y + offsets[2]*VIEW_RANGE*3
+				final_y = clamp(final_y,1,world.maxy)
+				var/turf/final_turf  = locate(final_x,final_y,T1.z)
+				if(final_turf)
+					if(!set_path_fallback(final_turf))
+						cowardice = 0
+				*/
 				return TRUE
 
 		if(!objective_attack.z) //Inside something. Get close to it.
@@ -116,7 +119,7 @@
 		var/atom/A = k
 		if(!A.can_be_attacked(owner)) //Can't even destroy it. Just give up.
 			obstacles.Cut()
-			set_path(null)
+			set_path_node(null)
 			break //Give up.
 		obstacles[A] = TRUE
 
@@ -163,7 +166,7 @@
 		else //Complete path
 			if(!guard)
 				home_turf = get_turf(owner)
-			set_path(null)
+			set_path_node(null)
 			owner.move_dir = 0
 		return TRUE
 	return FALSE
@@ -177,23 +180,23 @@
 		var/obj/marker/map_node/N_start = find_closest_node(owner)
 		if(!N_start)
 			log_error("[owner.get_debug_name()] is stuck and cannot find a path start!")
-			set_path(null)
+			set_path_node(null)
 			return FALSE
 
 		var/obj/marker/map_node/N_end = find_closest_node(node_path_end_turf)
 		if(!N_end)
 			log_error("[owner.get_debug_name()] is stuck and cannot find a path end!")
-			set_path(null)
+			set_path_node(null)
 			return FALSE
 
 		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 		if(!found_path)
 			log_error("[owner.get_debug_name()] is stuck and cannot find a final path!")
-			set_path(null)
+			set_path_node(null)
 			return FALSE
 
 		set_path_astar(get_turf(N_start)) //Move to the start via star.
-		set_path(found_path) //Go to the end normally.
+		set_path_node(found_path) //Go to the end normally.
 
 		return TRUE
 

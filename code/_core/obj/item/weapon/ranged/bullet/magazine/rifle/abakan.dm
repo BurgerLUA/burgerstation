@@ -1,8 +1,8 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/an94
-	name = "\improper 5.45x39mm AM84 rifle"
+	name = "\improper 9x39mm AM84 rifle"
 	desc = "Why shoot one bullet when you can shoot two?"
 	desc_extended = "The AM84, or the AutoMekanism rifle, is one of the standard weapons of the elite troops of the Space Slavic army. It was developed as a replacement for the outdated KA-47 rifle. Its quick 2 round burst system allows for very precise firing and tight groupings."
-	icon = 'icons/obj/item/weapons/ranged/rifle/rev/545_rifle.dmi'
+	icon = 'icons/obj/item/weapons/ranged/rifle/rev/939_rifle_2.dmi'
 	icon_state = "inventory"
 	value = 4500
 
@@ -32,9 +32,9 @@
 	bullet_length_best = 39
 	bullet_length_max = 40
 
-	bullet_diameter_min = 5.4
-	bullet_diameter_best = 5.45
-	bullet_diameter_max = 5.46  //Just so people wouldn't load this gun with 5.56, would be really-really weird to do so - Stalkeros
+	bullet_diameter_min = 8
+	bullet_diameter_best = 9
+	bullet_diameter_max = 10
 
 	ai_heat_sensitivity = 1.5
 

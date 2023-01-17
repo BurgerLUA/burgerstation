@@ -70,11 +70,15 @@
 		if(alert_time <= 0)
 			set_alert_level(max(0,alert_level-1),TRUE)
 
+	if(owner.anchored)
+		return TRUE
 
 	var/turf/current_turf
+	var/should_remove_frustration = TRUE
 
-	if(!owner.anchored && owner.next_move <= 0)
+	if(owner.next_move <= 0) //We will move.
 		current_turf = get_turf(owner)
+
 		if(!objective_attack && hunt_target && next_node_check_time <= world.time) //Update the hunt target destination.
 			next_node_check_time = world.time + SECONDS_TO_DECISECONDS(2)
 			var/turf/desired_target_turf = get_step(hunt_target,turn(hunt_target.dir,180))
@@ -89,32 +93,37 @@
 							var/obj/marker/map_node/N_end = N_start ? find_closest_node(desired_target_turf) : null //Find the closet node to the target.
 							var/list/obj/marker/map_node/found_path = N_end ? AStar_Circle_node(N_start,N_end) : null //Okay. Path time. Maybe.
 							if(found_path)
-								found_valid_path = set_path(found_path)
-						if(target_distance <= VIEW_RANGE*2 && !found_valid_path) //Couldn't find a valid path, so we use astar.
+								found_valid_path = set_path_node(found_path)
+						if(target_distance <= VIEW_RANGE*3 && !found_valid_path) //Couldn't find a valid path, so we use astar.
 							set_path_astar(desired_target_turf)
 
-		else if(frustration_move_threshold > 0 && use_astar_on_frustration && frustration_move >= (length(astar_path_current) ? frustration_move_threshold*2 : frustration_move_threshold))
+		//Astar
+		if(frustration_astar_path_threshold > 0 && length(astar_path_current) && frustration_astar_path > frustration_astar_path_threshold)
+			if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
+			set_path_fallback(astar_path_current[length(astar_path_current)])
+		//Node
+		else if(frustration_node_path_threshold > 0 && length(node_path_current) && frustration_node_path > frustration_node_path_threshold)
+			if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
+			set_path_fallback(get_turf(astar_path_current[length(node_path_current)]))
+		//Move
+		else if(use_astar_on_frustration_move && frustration_move_threshold > 0 && frustration_move >= frustration_move_threshold)
 			frustration_move = 0
-			var/path_num = length(node_path_current)
-			if(path_num)
-				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to current node path due to movement failure...")
-				set_path_fallback(get_turf(node_path_current[path_num]))
-
-			else if(objective_attack)
+			if(objective_attack)
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
 				set_path_fallback(get_turf(objective_attack))
-
 			else if(objective_move)
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_move due to movement failure...")
 				set_path_fallback(get_turf(objective_move))
 
 
 		var/result = src.handle_movement()
-		if(result)
+		if(result && owner.move_dir)
 			if(owner.has_status_effect(REST))
 				owner.remove_status_effect(REST)
-			if(!use_astar_on_frustration && frustration_move > 0) //Bad movement.
+			var/threshold_to_use = use_astar_on_frustration_move ? frustration_move_threshold*0.5 : frustration_move_threshold
+			if(frustration_move_threshold > 0 && frustration_move > threshold_to_use) //Bad movement.
 				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
+				should_remove_frustration = FALSE
 		else
 			owner.next_move = max(owner.next_move,SECONDS_TO_TICKS(1)) //Wait a bit.
 
@@ -124,17 +133,28 @@
 				if(!T.is_safe())
 					owner.move_dir = 0x0
 					frustration_move = INFINITY
+					frustration_node_path = INFINITY
+					frustration_astar_path = INFINITY
 
 	owner.handle_movement(tick_rate)
 
-	if(owner.move_dir && frustration_move_threshold > 0 && current_turf) //current_turf will only be assigned if they were supposed to move.
+	if(owner.move_dir && current_turf) //current_turf will only be assigned if they were supposed to move.
 		if(current_turf == get_turf(owner)) //Did not move even though it was supposed to move.
-			frustration_move++
-			if(length(node_path_current))
-				frustration_node_path++
+			if(length(astar_path_current))
+				if(frustration_astar_path_threshold > 0) frustration_astar_path++
+			else if(length(node_path_current))
+				if(frustration_node_path_threshold > 0) frustration_node_path++
+			else if(frustration_move_threshold)
+				frustration_move++
 			if(debug) log_debug("[src.get_debug_name()] tried moving, but couldn't.")
-		else
-			frustration_move = max(0,frustration_move-1)
+		else if(should_remove_frustration)
+			if(length(astar_path_current))
+				if(frustration_astar_path_threshold > 0) frustration_astar_path_threshold = max(0,frustration_astar_path_threshold-1)
+			else if(length(node_path_current))
+				if(frustration_node_path_threshold > 0) frustration_node_path_threshold = max(0,frustration_node_path_threshold-1)
+			else if(frustration_move_threshold)
+				frustration_move = max(0,frustration_move-1)
+
 
 	return TRUE
 
@@ -147,6 +167,7 @@
 
 /ai/proc/on_death()
 	set_objective(null)
-	set_path(null)
+	set_path_node(null)
+	set_path_astar(null)
 	set_active(FALSE)
 	return TRUE

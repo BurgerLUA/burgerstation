@@ -20,7 +20,7 @@
 
 	shoot_sounds = list('sound/weapons/308/shoot_short.ogg') //Very-very lazy, will prolly change all gun sounds later with their respective ones from either stalker or stalkerbuild.
 
-	can_wield = FALSE
+	can_wield = TRUE
 
 	size = SIZE_3
 	weight = 8

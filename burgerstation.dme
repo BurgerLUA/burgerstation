@@ -1577,7 +1577,6 @@
 #include "code\_core\obj\item\magazine\pulse.dm"
 #include "code\_core\obj\item\magazine\revolver.dm"
 #include "code\_core\obj\item\magazine\rifle_308_m13.dm"
-#include "code\_core\obj\item\magazine\rifle_545.dm"
 #include "code\_core\obj\item\magazine\rifle_556mm.dm"
 #include "code\_core\obj\item\magazine\rifle_762_short.dm"
 #include "code\_core\obj\item\magazine\rifle_slavic.dm"

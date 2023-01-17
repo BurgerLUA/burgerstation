@@ -207,10 +207,6 @@
 		/obj/item/bullet_cartridge/revolver_762{amount=5},
 		/obj/item/bulletbox/rifle_762_revolver,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
-		/obj/item/magazine/rifle_545,
-		/obj/item/magazine/rifle_545/ap,
-
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
 		/obj/item/magazine/rifle_762_short,
 
@@ -224,6 +220,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/magazine/rifle_939,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,

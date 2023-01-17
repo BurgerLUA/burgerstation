@@ -12,6 +12,7 @@
 	var/list/possible_outfits = list(
 		/loadout/syndicate/soldier = 90,
 		/loadout/syndicate/shotgunnner = 20,
+		//Hardsuits below.
 		/loadout/syndicate/basic = 6,
 		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 1
@@ -19,13 +20,14 @@
 
 	var/loadout_to_level = list(
 		/loadout/syndicate/soldier = 1,
-		/loadout/syndicate/shotgunnner = 1.5,
+		/loadout/syndicate/shotgunnner = 1.25,
+		//Hardsuits below.
 		/loadout/syndicate/basic = 2,
 		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 4
 	)
 
-	level = 20
+	level = 25
 
 /mob/living/advanced/npc/syndicate/Initialize()
 

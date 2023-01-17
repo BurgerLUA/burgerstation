@@ -176,5 +176,6 @@
 
 	horde_weights = list(
 		/mob/living/advanced/npc/rev = 100,
+		/mob/living/advanced/npc/rev/elite = 20,
 		/mob/living/simple/bear/armored/revolutionary = 10
 	)

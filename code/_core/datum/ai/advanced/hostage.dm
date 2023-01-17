@@ -11,7 +11,9 @@
 	var/mob/living/L = A
 	return L.ai && L.ai.objective_attack == owner
 
-/ai/advanced/hostage/set_path(var/list/Vector3D/desired_path = list())
+/ai/advanced/hostage/set_path_node(var/list/Vector3D/desired_path = list())
+
+	. = ..()
 
 	if(node_path_end_turf && !desired_path)
 		var/obj/marker/hostage_rest/HR = locate() in view(VIEW_RANGE,owner)
@@ -21,5 +23,3 @@
 		else
 			home_turf = node_path_end_turf
 			roaming_distance = 8
-
-	return ..()

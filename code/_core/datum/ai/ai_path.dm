@@ -23,9 +23,9 @@
 		if(debug) log_debug("[src.get_debug_name()] tried astar pathing, but couldn't find a valid node path.")
 		return set_path_astar(destination)
 
-	return set_path(found_path)
+	return set_path_node(found_path)
 
-/ai/proc/set_path(var/list/obj/marker/map_node/desired_path = list())
+/ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path = list())
 
 	if(!desired_path || !length(desired_path))
 		node_path_current = null
@@ -62,7 +62,7 @@
 /ai/proc/set_path_astar(var/turf/destination,var/min_distance=0)
 
 	owner.move_dir = 0x0
-	frustration_node_path = 0
+	frustration_astar_path = 0
 	frustration_move = 0
 
 	if(astar_path_current)

@@ -7,21 +7,21 @@
 	combat_dialogue = /combat_dialogue/revolutionary
 
 	var/list/possible_outfits = list(
-		/loadout/slavic/infantry = 100,
-		/loadout/slavic/sniper = 10,
+		/loadout/slavic/infantry = 70,
+		/loadout/slavic/sniper = 20,
+		/loadout/slavic/heavy = 10
 
 	)
 
 	var/loadout_to_level = list(
 		/loadout/slavic/infantry = 1,
-		/loadout/slavic/sniper = 1.2,
+		/loadout/slavic/sniper = 1.25,
+		/loadout/slavic/heavy = 1.25
 	)
 
 	dna = /dna/human
 
-	soul_size = SOUL_SIZE_COMMON
-
-	level = 22
+	level = 25
 
 /mob/living/advanced/npc/rev/Initialize()
 	loadout = pickweight(possible_outfits)
@@ -38,8 +38,8 @@
 	name = "elite revolutionary soldier"
 
 	possible_outfits = list(
-		/loadout/slavic/infantry/advanced = 100,
-		/loadout/slavic/sniper/advanced = 10,
+		/loadout/slavic/infantry/advanced = 80,
+		/loadout/slavic/sniper/advanced = 20,
 
 	)
 
@@ -47,3 +47,23 @@
 		/loadout/slavic/infantry/advanced = 1,
 		/loadout/slavic/sniper/advanced = 1.2,
 	)
+
+	level = 40
+
+/mob/living/advanced/npc/rev/commander
+	name = "elite revolutionary commander"
+
+	possible_outfits = list(
+		/loadout/slavic/commander = 1
+
+	)
+
+	loadout_to_level = list(
+		/loadout/slavic/commander = 1
+	)
+
+	level = 80
+
+/mob/living/advanced/npc/rev/commander/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+	. = ..()
+	. *= 0.5
