@@ -191,11 +191,14 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(B.bullet_diameter != bullet_diameter_best)
 		jam_chance += 25
 
+	if(B.jam_chance < 100)
+		jam_chance *= 0.1 + 0.9*(heat_current/heat_max)
+
 	if(jammed)
-		if(jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
 	else if(jam_chance && luck(list(B,src,caller),jam_chance,FALSE))
-		if(jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
+		if(B.jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE
 

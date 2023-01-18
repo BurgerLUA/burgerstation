@@ -31,7 +31,7 @@
 
 /loot/proc/do_spawn(var/atom/spawn_loc,var/rarity) //Use this to spawn the loot. rarity is optional.
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")
-	. = create_loot_table(spawn_loc,rarity)
+	. = create_loot_table(spawn_loc,use_value ? rarity : null)
 	for(var/k in .)
 		var/atom/movable/M = k
 		var/list/loot_data = .[k]
