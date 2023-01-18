@@ -26,7 +26,7 @@
 
 	value = 30
 
-/obj/item/clothing/head/hat/skimask/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/hat/skimask/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 

@@ -88,7 +88,7 @@
 
 
 
-/obj/projectile/thrown/Destroy()
+/obj/projectile/thrown/PreDestroy()
 
 	for(var/k in src.contents)
 		CHECK_TICK_SAFE(75,FPS_SERVER)

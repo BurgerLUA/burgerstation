@@ -103,7 +103,7 @@
 
 
 
-/obj/item/clothing/head/helmet/full/blob_spore/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/helmet/full/blob_spore/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 

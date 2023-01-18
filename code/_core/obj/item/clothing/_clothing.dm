@@ -43,29 +43,25 @@
 	var/list/mob_values_mul
 
 
-/obj/item/clothing/post_move(var/atom/old_loc)
-
+/obj/item/clothing/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
+	var/obj/hud/inventory/IN = loc
+	if(IN.worn && is_living(IN.owner))
+		var/mob/living/L = IN.owner
+		for(var/k in mob_values_add)
+			L.add_mob_value("\ref[src]",k,mob_values_add[k],ADDITION)
+		for(var/k in mob_values_mul)
+			L.add_mob_value("\ref[src]",k,mob_values_mul[k],MULTIPLICATION)
 
-	if(. && (length(mob_values_add) || length(mob_values_mul)))
-
-		if(is_inventory(old_loc))
-			var/obj/hud/inventory/IO = old_loc
-			if(IO.worn && is_living(IO.owner))
-				var/mob/living/L = IO.owner
-				for(var/k in mob_values_add)
-					L.remove_mob_value("\ref[src]",k,ADDITION)
-				for(var/k in mob_values_mul)
-					L.remove_mob_value("\ref[src]",k,MULTIPLICATION)
-
-		if(is_inventory(loc))
-			var/obj/hud/inventory/IN = loc
-			if(IN.worn && is_living(IN.owner))
-				var/mob/living/L = IN.owner
-				for(var/k in mob_values_add)
-					L.add_mob_value("\ref[src]",k,mob_values_add[k],ADDITION)
-				for(var/k in mob_values_mul)
-					L.add_mob_value("\ref[src]",k,mob_values_mul[k],MULTIPLICATION)
+/obj/item/clothing/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(old_inventory.worn && is_living(old_inventory.owner))
+		var/mob/living/L = old_inventory.owner
+		for(var/k in mob_values_add)
+			L.remove_mob_value("\ref[src]",k,ADDITION)
+		for(var/k in mob_values_mul)
+			L.remove_mob_value("\ref[src]",k,MULTIPLICATION)
+	remove_additonal_clothing()
 
 /obj/item/clothing/Destroy()
 	QDEL_CUT(additional_clothing_stored)
@@ -113,10 +109,6 @@
 	sync_additional_clothing()
 
 	. = ..()
-
-/obj/item/clothing/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
-	. = ..()
-	remove_additonal_clothing()
 
 /obj/item/clothing/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 	return original_footsteps

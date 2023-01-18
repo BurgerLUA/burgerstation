@@ -112,6 +112,11 @@
 /loot/random/gun/solarian
 	company_type = "Solarian"
 
+/loot/random/gun/solarian/bandit
+	value_max = 1000
+	rarity_min = RARITY_COMMON
+	rarity_max = RARITY_UNCOMMON
+
 /loot/random/gun/slavic
 	company_type = "Slavic"
 

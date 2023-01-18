@@ -31,7 +31,7 @@
 
 	var/avoid_threats = TRUE
 
-	use_alert_overlays = FALSE
+	use_alert_overlays = TRUE
 
 	attack_movement_obstructions = FALSE
 
@@ -294,7 +294,7 @@
 		if(!G.stored_magazine && !G.chambered_bullet) //Find one
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
-				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
 				return TRUE
 			var/obj/item/magazine/M
 			var/obj/item/organ/O_groin = A.labeled_organs[BODY_GROIN]
@@ -303,28 +303,31 @@
 			if(!M)
 				if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
 					G.drop_item(get_turf(owner)) //IT'S NO USE. No magazines left.
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 				return TRUE
 			M.click_on_object(A,G)
 			if(!G.stored_magazine)
 				G.drop_item(get_turf(owner)) //IT'S NO USE. Something went wrong with reloading the magazine.
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 				return TRUE
 			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-				next_complex = max(world.time,G.next_shoot_time) + rand(2,6)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,6)
 				return TRUE
 			return TRUE
 
 		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
 			G.eject_magazine(A)
-			next_complex = max(world.time,G.next_shoot_time) + rand(10,20)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(10,20)
 			return TRUE
 
 		if(!G.chambered_bullet || G.chambered_bullet.is_spent)
 			G.click_self(A)
 			if(!G.chambered_bullet)
 				G.drop_item(get_turf(owner)) //IT'S NO USE. Something went wrong with chambering the bullet.
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 				return FALSE
-			next_complex = max(world.time,G.next_shoot_time) + rand(5,10)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 			return TRUE
 
 		return FALSE //All good.
@@ -342,17 +345,17 @@
 					break
 				if(has_valid_bullet)
 					G.rotate_cylinder(clamp(has_valid_bullet - G.current_chamber,-1,1)) //There is another valid bullet somewhere.
-					next_complex = max(world.time,G.next_shoot_time) + rand(3,5)
+					next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(3,5)
 					return TRUE
 
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
-				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
 				return TRUE
 
 			if(!G.open)
 				G.click_self(A) //Open it.
-				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
 				return TRUE
 
 			var/obj/item/bullet_cartridge/B
@@ -374,7 +377,7 @@
 			if(C)
 				C.click_on_object(A,G)
 				C.drop_item(get_turf(owner)) //We have no use for the clip; drop it.
-				next_complex = max(world.time,G.next_shoot_time) + rand(5,10)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 				return TRUE
 			if(B)
 				B.click_on_object(A,G)
@@ -388,32 +391,34 @@
 					last_found_bullet = B
 				else
 					last_found_bullet = null
-				next_complex = max(world.time,G.next_shoot_time) + rand(2,5)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,5)
 				return FALSE
+
 			desired_shell_reload = 0
 			if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
 				G.drop_item(get_turf(owner)) //Can't find anything, so drop it.
-			return TRUE
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
+				return TRUE
 
 		if(G.open && !G.can_shoot_while_open) //https://www.youtube.com/watch?v=ZiEGi2g1JkA
 			G.click_self(A)
-			next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
 			return TRUE
 
 		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-			next_complex = max(world.time,G.next_shoot_time) + rand(2,6)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,6)
 			return TRUE
 
-		return FALSE
+		return FALSE //All good.
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/pump))
 		var/obj/item/weapon/ranged/bullet/pump/G = R
 
 		if((!G.chambered_bullet && G.stored_bullets[1]) || (G.chambered_bullet && G.chambered_bullet.is_spent))
 			G.click_self(owner) //Chamber a new round in.
-			next_complex = max(world.time,G.next_shoot_time) + rand(1,3)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(1,3)
 			return TRUE
 
 		var/max_length = length(G.stored_bullets)
@@ -433,7 +438,7 @@
 		if(desired_shell_reload > 0 && !G.stored_bullets[desired_shell_reload])
 			if(G.wielded) //We should unwield
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,G)
-				next_complex = max(world.time,G.next_shoot_time) + rand(5,15)
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
 				return TRUE
 			var/obj/item/bullet_cartridge/B
 			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent && G.can_fit_bullet(last_found_bullet))
@@ -448,15 +453,16 @@
 			if(!B)
 				if(!should_find_ammo_pile_on_empty || !find_ammo_pile())
 					G.drop_item(get_turf(owner)) //IT'S NO USE. Can't find any shells to put in.
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 				return FALSE
 			B.click_on_object(A,G)
-			next_complex = max(world.time,G.next_shoot_time) + rand(5,8)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,8)
 			return TRUE
 
 		desired_shell_reload = 0 //All good.
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
-			next_complex = max(world.time,G.next_shoot_time) + rand(5,8)
+			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,8)
 			return TRUE
 
 		return FALSE
@@ -557,6 +563,9 @@
 
 	var/mob/living/advanced/A = owner
 
+	if(A.dead)
+		return FALSE
+
 	. = FALSE
 
 	if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && !A.right_item)
@@ -578,6 +587,8 @@
 
 /ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
+	if(A.dead)
+		return FALSE
 	if(W.additional_clothing_parent)
 		return FALSE
 	if(istype(W,/obj/item/weapon/melee/energy))
@@ -588,6 +599,8 @@
 	checked_weapons = FALSE
 	checked_cover = FALSE
 	return TRUE
+
+
 
 /ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
 

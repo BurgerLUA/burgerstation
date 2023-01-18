@@ -78,11 +78,11 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/bullet_cartridge/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/bullet_cartridge/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 

@@ -360,7 +360,7 @@
 	if(!I.drop_item(src,silent=silent))
 		return FALSE
 
-	I.pre_pickup(old_location,src)
+	I.pre_equip(old_location,src)
 
 	if(owner)
 		I.update_owner(owner)
@@ -382,15 +382,15 @@
 		I.drop_item(get_turf(src))
 		return TRUE
 
-	I.on_pickup(old_location,src)
-	I.update_inventory()
-
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
 
 	vis_contents += I
 
 	update_stats()
+
+	I.on_equip(old_location,silent)
+	I.update_inventory()
 
 	return TRUE
 
@@ -458,10 +458,10 @@
 
 	vis_contents -= I
 
-	I.on_drop(src,silent)
-	I.update_inventory()
-
 	update_stats()
+
+	I.on_unequip(src,silent)
+	I.update_inventory()
 
 	return I
 

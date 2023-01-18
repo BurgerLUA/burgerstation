@@ -99,14 +99,16 @@
 
 		//Astar
 		if(frustration_astar_path_threshold > 0 && length(astar_path_current) && frustration_astar_path > frustration_astar_path_threshold)
-			if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
+			frustration_astar_path = 0
+			if(debug) log_debug("[src.get_debug_name()] trying to fallback path to last astar_path_current due to astar path failure...")
 			set_path_fallback(astar_path_current[length(astar_path_current)])
 		//Node
 		else if(frustration_node_path_threshold > 0 && length(node_path_current) && frustration_node_path > frustration_node_path_threshold)
-			if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
-			set_path_fallback(get_turf(astar_path_current[length(node_path_current)]))
+			frustration_node_path = 0
+			if(debug) log_debug("[src.get_debug_name()] trying to fallback path to last node_path_current due to node path failure...")
+			set_path_fallback(get_turf(node_path_current[length(node_path_current)]))
 		//Move
-		else if(use_astar_on_frustration_move && frustration_move_threshold > 0 && frustration_move >= frustration_move_threshold)
+		else if(use_astar_on_frustration_move && frustration_move_threshold > 0 && frustration_move > frustration_move_threshold)
 			frustration_move = 0
 			if(objective_attack)
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_attack due to movement failure...")
@@ -114,7 +116,6 @@
 			else if(objective_move)
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to objective_move due to movement failure...")
 				set_path_fallback(get_turf(objective_move))
-
 
 		var/result = src.handle_movement()
 		if(result && owner.move_dir)
@@ -126,15 +127,16 @@
 				should_remove_frustration = FALSE
 		else
 			owner.next_move = max(owner.next_move,SECONDS_TO_TICKS(1)) //Wait a bit.
+			owner.move_dir = 0x0 //Prevents frustration from running.
 
-		if(owner.move_dir)
-			if(current_turf.is_safe())
-				var/turf/T = get_step(owner,owner.move_dir)
-				if(!T.is_safe())
-					owner.move_dir = 0x0
-					frustration_move = INFINITY
-					frustration_node_path = INFINITY
-					frustration_astar_path = INFINITY
+		if(owner.move_dir && current_turf.is_safe())
+			var/turf/T = get_step(owner,owner.move_dir)
+			if(!T.is_safe())
+				owner.move_dir = 0x0
+				frustration_move = frustration_move_threshold
+				frustration_node_path = frustration_node_path_threshold
+				frustration_astar_path = frustration_astar_path_threshold
+				should_remove_frustration = FALSE
 
 	owner.handle_movement(tick_rate)
 

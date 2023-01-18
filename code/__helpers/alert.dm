@@ -13,7 +13,7 @@
 			continue
 		if(visual && !is_facing_cheap(AI.owner,epicenter))
 			continue
-		if(alert_source && !AI.is_enemy(alert_source,FALSE))
+		if(alert_source && !AI.objective_attack && !AI.is_enemy(alert_source,FALSE))
 			continue
 		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter,alert_source)
 

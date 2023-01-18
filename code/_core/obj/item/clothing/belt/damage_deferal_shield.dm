@@ -34,20 +34,17 @@
 		return FALSE
 	. = ..()
 
-/obj/item/clothing/belt/damage_deferal_shield/post_move(var/atom/old_loc)
 
+/obj/item/clothing/belt/damage_deferal_shield/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
+	var/obj/hud/inventory/I = loc
+	if(I.worn && is_advanced(I.owner))
+		HOOK_ADD("post_move","\ref[src]_shield_post_move",I.owner,src,.proc/owner_post_move)
 
-	if(is_inventory(old_loc))
-		var/obj/hud/inventory/I = old_loc
-		if(I.worn && is_advanced(I.owner))
-			HOOK_REMOVE("post_move","\ref[src]_shield_post_move",I.owner)
-
-	if(is_inventory(loc))
-		var/obj/hud/inventory/I = loc
-		if(I.worn && is_advanced(I.owner))
-			HOOK_ADD("post_move","\ref[src]_shield_post_move",I.owner,src,.proc/owner_post_move)
-
+/obj/item/clothing/belt/damage_deferal_shield/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(old_inventory.worn && is_advanced(old_inventory.owner))
+		HOOK_REMOVE("post_move","\ref[src]_shield_post_move",old_inventory.owner)
 
 /obj/item/clothing/belt/damage_deferal_shield/proc/owner_post_move(var/mob/living/advanced/owner,var/atom/old_loc)
 	shield_overlay.glide_size = owner.glide_size

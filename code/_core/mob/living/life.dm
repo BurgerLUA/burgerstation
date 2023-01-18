@@ -32,15 +32,24 @@
 
 	var/turf/T = get_turf(src)
 
-	if(boss && boss_loot)
-		var/obj/structure/interactive/boss_loot/BL = new(T)
-		BL.loot_to_give = boss_loot
-		BL.allowed_users = players_fighting_boss.Copy()
-		INITIALIZE(BL)
-		GENERATE(BL)
-		FINALIZE(BL)
+	if(T)
+		if(boss && boss_loot)
+			var/obj/structure/interactive/boss_loot/BL = new(T)
+			BL.loot_to_give = boss_loot
+			BL.allowed_users = players_fighting_boss.Copy()
+			INITIALIZE(BL)
+			GENERATE(BL)
+			FINALIZE(BL)
 
-	create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+		create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+
+		if(boss && !drops_gold)
+			drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
+
+		if(drops_gold > 0)
+			create_gold_drop(T,CEILING(drops_gold,1))
+			drops_gold = 0
+
 
 	movement_flags = 0x0
 	attack_flags = 0x0
@@ -55,10 +64,11 @@
 
 	post_death()
 
-	var/obj/hud/button/dead_ghost/DG = new
-	DG.update_owner(src)
+	if(ckey_last)
+		var/obj/hud/button/dead_ghost/DG = new
+		DG.update_owner(src)
 
-	if(client)
+	if(ckey_last)
 		notify_ghosts("[src.name] has died!",T)
 
 	if(master)
@@ -76,13 +86,6 @@
 		GENERATE(S)
 		FINALIZE(S)
 		remove_status_effect(SOULTRAP)
-
-	if(boss && !drops_gold)
-		drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
-
-	if(drops_gold > 0)
-		create_gold_drop(T,CEILING(drops_gold,1))
-		drops_gold = 0
 
 	update_eyes()
 
@@ -166,8 +169,8 @@
 	return rejuvenate() && revive()
 
 /mob/living/proc/pre_death()
-	alert_overlay.icon_state = "none"
-	chat_overlay.icon_state = "none"
+	if(alert_overlay) alert_overlay.icon_state = "none"
+	if(chat_overlay) chat_overlay.icon_state = "none"
 	HOOK_CALL("pre_death")
 	return TRUE
 

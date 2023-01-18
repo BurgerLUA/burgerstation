@@ -161,15 +161,15 @@
 
 	return TRUE
 
-/obj/item/clothing/glasses/nightvision/post_move(var/atom/old_loc)
 
+/obj/item/clothing/glasses/nightvision/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
+	var/obj/hud/inventory/I = loc
+	if(active && I.worn && I.item_slot & SLOT_FACE)
+		enable(I)
 
-	if(active)
-		if(is_inventory(old_loc))
-			disable(old_loc)
-		if(is_inventory(loc))
-			var/obj/hud/inventory/I = loc
-			if(I.item_slot & SLOT_FACE)
-				enable(I)
+/obj/item/clothing/glasses/nightvision/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(active && old_inventory.worn && old_inventory.item_slot & SLOT_FACE)
+		disable(old_inventory)
 

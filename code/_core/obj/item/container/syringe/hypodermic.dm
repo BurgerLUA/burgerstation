@@ -49,7 +49,7 @@
 	if(. && finalized) update_sprite()
 
 
-/obj/item/container/syringe/hypodermic/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
+/obj/item/container/syringe/hypodermic/on_equip(var/atom/old_location,var/silent=FALSE) //When the item is picked up.
 	. = ..()
 	update_sprite()
 

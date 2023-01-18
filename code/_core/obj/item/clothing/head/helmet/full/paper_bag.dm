@@ -79,7 +79,7 @@
 
 	return ..()
 
-/obj/item/clothing/head/helmet/full/paperbag/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/helmet/full/paperbag/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 
@@ -104,8 +104,8 @@
 	else
 		item_slot = SLOT_NONE
 		icon_state = "[initial(icon_state)]2"
+
 	update_sprite()
-	update_overlays()
 
 /obj/item/clothing/head/helmet/full/paperbag/update_overlays()
 

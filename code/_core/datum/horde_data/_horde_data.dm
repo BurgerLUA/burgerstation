@@ -156,8 +156,13 @@
 /horde_data/zombie
 
 	horde_weights = list(
-		/mob/living/advanced/npc/zombie/normal = 100,
-		/mob/living/advanced/npc/zombie/clown = 10
+		/mob/living/advanced/npc/zombie/normal = 200,
+		/mob/living/advanced/npc/zombie/security = 50,
+		/mob/living/advanced/npc/zombie/worker = 50,
+		/mob/living/advanced/npc/zombie/roided = 10,
+		/mob/living/advanced/npc/zombie/bloated = 20,
+		/mob/living/advanced/npc/zombie/armored = 10,
+		/mob/living/advanced/npc/zombie/clown = 5
 	)
 
 	ignore_gamemode = TRUE

@@ -13,7 +13,7 @@
 
 
 /*
-/obj/item/clothing/belt/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/belt/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 

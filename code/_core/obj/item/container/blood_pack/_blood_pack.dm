@@ -28,9 +28,9 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/container/blood_pack/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up.
+/obj/item/container/blood_pack/on_equip(var/atom/old_location,var/silent=FALSE) //When the item is picked up.
+	. = ..()
 	update_sprite()
-	return ..()
 
 /obj/item/container/blood_pack/Finalize()
 	. = ..()

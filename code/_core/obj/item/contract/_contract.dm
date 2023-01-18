@@ -89,20 +89,17 @@
 	LOADVAR("value_current")
 	LOADVAR("burgerbux_reward")
 
-/obj/item/contract/post_move(var/atom/old_loc)
-
+/obj/item/contract/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
-
-	if(!.)
-		return .
-
 	if(istype(loc,/obj/hud/inventory/organs/groin/pocket/contract))
 		var/obj/hud/inventory/organs/groin/pocket/contract/I = loc
 		if(is_advanced(I.owner))
 			HOOK_ADD("on_kill","on_kill_\ref[src]",I.owner,src,.proc/on_kill)
 
-	if(istype(old_loc,/obj/hud/inventory/organs/groin/pocket/contract))
-		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_loc
+/obj/item/contract/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(istype(old_inventory,/obj/hud/inventory/organs/groin/pocket/contract))
+		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_inventory
 		if(is_advanced(I.owner))
 			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
 

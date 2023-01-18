@@ -13,7 +13,7 @@
 		/loot/survivor/head,
 		/obj/item/storage/wallet/random_colonist,
 		/loot/survivor/melee/small,
-		/loot/random/gun/solarian
+		/loot/random/gun/solarian/bandit
 	)
 
 /loadout/survivor/female
@@ -29,5 +29,5 @@
 		/loot/survivor/head,
 		/obj/item/storage/wallet/random_colonist,
 		/loot/survivor/melee/small,
-		/loot/random/gun/solarian
+		/loot/random/gun/solarian/bandit
 	)

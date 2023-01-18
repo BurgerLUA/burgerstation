@@ -554,16 +554,13 @@ var/global/list/rarity_to_mul = list(
 		else if(!can_interact_with_inventory(inventory_user))
 			close_inventory(null)
 
-	if(is_inventory(old_loc))
-		if(src.z && delete_on_drop)
-			qdel(src)
-			return TRUE
-
 	update_lighting_for_owner()
 
 	. = ..()
 
-/obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn to the new_location.
+/obj/item/proc/on_equip(var/atom/old_location,var/silent=FALSE)
+
+	var/obj/hud/inventory/new_location = loc
 
 	if(old_location && new_location)
 		var/turf/old_turf = get_turf(old_location)
@@ -577,7 +574,23 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-/obj/item/proc/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+/obj/item/proc/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+	return TRUE
+
+/obj/item/proc/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+
+	if(!is_inventory(src.loc) && delete_on_drop)
+		qdel(src)
+	else
+		if(additional_clothing_parent)
+			drop_item(additional_clothing_parent) //This retracts the clothing.
+
+		if(old_inventory && loc)
+			var/turf/old_turf = get_turf(old_inventory)
+			var/turf/new_turf = get_turf(loc)
+			if(old_turf != new_turf)
+				new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,src.z ? "drop" : "transfer")
+
 	return TRUE
 
 /obj/item/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
@@ -588,18 +601,6 @@ var/global/list/rarity_to_mul = list(
 	. = ..()
 	update_lighting_for_owner()
 
-/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
-
-	if(additional_clothing_parent)
-		drop_item(additional_clothing_parent) //This retracts the clothing.
-
-	if(old_inventory && loc)
-		var/turf/old_turf = get_turf(old_inventory)
-		var/turf/new_turf = get_turf(loc)
-		if(old_turf != new_turf)
-			new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,src.z ? "drop" : "transfer")
-
-	return TRUE
 
 /obj/item/proc/inventory_to_list()
 

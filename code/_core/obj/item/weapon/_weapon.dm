@@ -103,7 +103,7 @@
 
 	return ..()
 
-/obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/weapon/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	wielded = FALSE
 	if(old_inventory.child_inventory)
 		old_inventory.child_inventory.parent_inventory = null

@@ -63,6 +63,7 @@
 
 	var/cooldown_effect = 0
 
+/*
 /obj/item/clothing/overwear/hardsuit/skat/antag/post_move(atom/old_loc)
 	. = ..()
 	if(istype(loc, /obj/hud/inventory/organs/torso))
@@ -84,3 +85,4 @@
 		affectLiving.rad_regen_buffer += 1
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE
+*/

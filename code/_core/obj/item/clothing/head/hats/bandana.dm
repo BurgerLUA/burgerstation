@@ -19,7 +19,7 @@
 
 	value = 40
 
-/obj/item/clothing/head/hat/bandana/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/hat/bandana/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 

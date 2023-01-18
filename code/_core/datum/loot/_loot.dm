@@ -58,9 +58,16 @@
 	if(ispath(type_to_spawn,/loot/))
 		var/loot/L = LOOT(type_to_spawn)
 		for(var/i=1,i<=loot_multiplier,i++)
-			. += L.create_loot_table(spawn_loc,rarity)
-			for(var/k in .)
-				.[k] += src
+			var/list/loot_data = L.create_loot_table(spawn_loc,rarity)
+			if(spawn_loc)
+				for(var/k in loot_data)
+					if(loot_data[k])
+						.[k] = loot_data[k]
+						.[k] += src
+					else
+						.[k] = list(src)
+			else
+				. += loot_data
 		return .
 
 	for(var/i=1,i<=loot_multiplier,i++)

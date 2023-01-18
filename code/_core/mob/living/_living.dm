@@ -289,6 +289,9 @@
 	if(ai)
 		ai.set_active(FALSE)
 
+	QDEL_NULL(ai)
+	QDEL_NULL(stand)
+
 	. = ..()
 
 /mob/living/Destroy()
@@ -320,8 +323,6 @@
 	else
 		QDEL_CUT_ASSOC(attributes)
 		QDEL_CUT_ASSOC(skills)
-
-	QDEL_NULL(ai)
 
 	hit_logs?.Cut()
 
@@ -359,8 +360,6 @@
 	status_effects?.Cut()
 
 	stat_elements_to_update?.Cut()
-
-	QDEL_NULL(stand)
 
 	return ..()
 
@@ -547,7 +546,7 @@
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 	alert_overlay.icon_state = "none"
-	alert_overlay.pixel_z = 20 + pixel_z
+	alert_overlay.pixel_y = 20 + src.pixel_z
 	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.
 

@@ -171,37 +171,6 @@
 		return TRUE
 	return FALSE
 
-/ai/proc/handle_movement_path_frustration()
-
-	if(frustration_node_path_threshold > 0 && frustration_node_path > frustration_node_path_threshold)
-
-		frustration_node_path = 0
-
-		var/obj/marker/map_node/N_start = find_closest_node(owner)
-		if(!N_start)
-			log_error("[owner.get_debug_name()] is stuck and cannot find a path start!")
-			set_path_node(null)
-			return FALSE
-
-		var/obj/marker/map_node/N_end = find_closest_node(node_path_end_turf)
-		if(!N_end)
-			log_error("[owner.get_debug_name()] is stuck and cannot find a path end!")
-			set_path_node(null)
-			return FALSE
-
-		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
-		if(!found_path)
-			log_error("[owner.get_debug_name()] is stuck and cannot find a final path!")
-			set_path_node(null)
-			return FALSE
-
-		set_path_astar(get_turf(N_start)) //Move to the start via star.
-		set_path_node(found_path) //Go to the end normally.
-
-		return TRUE
-
-	return FALSE
-
 /ai/proc/handle_movement_roaming()
 
 	if(roaming_distance > 0)
@@ -315,10 +284,6 @@
 
 	if(handle_movement_astar())
 		last_movement_proc = "astar"
-		return TRUE
-
-	if(handle_movement_path_frustration())
-		last_movement_proc = "path_frustration"
 		return TRUE
 
 	if(handle_movement_path())

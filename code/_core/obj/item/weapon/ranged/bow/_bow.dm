@@ -39,23 +39,20 @@
 	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 
-/obj/item/weapon/ranged/bow/post_move(var/atom/old_loc)
-	. = ..()
 
+/obj/item/weapon/ranged/bow/on_equip(var/atom/old_location,var/silent=FALSE)
+	. = ..()
 	stage_max = initial(stage_max)
 	stage_per_decisecond = initial(stage_per_decisecond)
-
-	if(is_inventory(loc))
-		var/obj/hud/inventory/I = loc
-		if(is_living(I.owner))
-			var/mob/living/L = I.owner
-			var/strength_mod = 0.5 + L.get_attribute_power(ATTRIBUTE_STRENGTH,0,1,2)*0.5
-			var/dex_mod = 0.25 + L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*0.75
-			stage_per_decisecond *= dex_mod
-			stage_per_decisecond = CEILING(stage_per_decisecond,1)
-			stage_max *= strength_mod
-			stage_max = CEILING(stage_max,1)
-			return .
+	var/obj/hud/inventory/I = loc
+	if(is_living(I.owner))
+		var/mob/living/L = I.owner
+		var/strength_mod = 0.5 + L.get_attribute_power(ATTRIBUTE_STRENGTH,0,1,2)*0.5
+		var/dex_mod = 0.25 + L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*0.75
+		stage_per_decisecond *= dex_mod
+		stage_per_decisecond = CEILING(stage_per_decisecond,1)
+		stage_max *= strength_mod
+		stage_max = CEILING(stage_max,1)
 
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
