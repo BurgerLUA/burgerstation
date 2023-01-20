@@ -2,7 +2,7 @@
 	var/next_leap = 0
 	var/next_spit = 0
 
-	aggression = 2
+	aggression = 3
 	assistance = 1
 	retaliate = TRUE
 

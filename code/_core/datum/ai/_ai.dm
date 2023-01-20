@@ -40,8 +40,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/turf/home_turf //Where the mob's home is.
 
-
-
 	var/shoot_obstacles = TRUE
 
 	var/left_click_chance = 90
@@ -109,11 +107,12 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//2 = resist grabs by everyone
 
 	var/retaliate = TRUE //Should we attack when getting hit?
-	var/aggression = 2 //Thanks elder scrolls.
+	var/aggression = 1 //Thanks elder scrolls.
 	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
 	//1 = Attacks enemies in enemy tags.
-	//2 = Attacks people who don't have the same loyalty tag as them.
-	//3 = Attacks literally everyone in sight, including friends if possible.
+	//2 = Attacks people who don't have the same loyalty tag as them, except for AI.
+	//3 = Attacks people who don't have the same loyalty tag as them, including AI.
+	//4 = Attacks literally everyone in sight, including friends if possible.
 	var/assistance = 1
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them. Note that aggression needs to be equal or greater to 1 in order for this to work.

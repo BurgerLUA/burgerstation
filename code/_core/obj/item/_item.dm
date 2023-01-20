@@ -184,6 +184,11 @@
 
 	var/can_negate_damage = FALSE
 
+/obj/item/PreDestroy()
+	if(is_inventory(src.loc))
+		drop_item(null,silent=TRUE)
+	. = ..()
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null
@@ -196,9 +201,6 @@
 
 	last_interacted = null
 	inventory_user = null
-
-	if(loc)
-		drop_item(silent=TRUE)
 
 	can_save = FALSE
 	can_hold = FALSE

@@ -101,7 +101,7 @@
 		if(I.owner && I.owner.reagents)
 			reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier,caller=I.owner,include_abstract=TRUE)
 			return TRUE
-	reagents.splash(null,get_turf(src),consume_amount,TRUE,1) //Just remove the reagents if there is no one to add it to.
+	reagents.splash(null,get_turf(src),consume_amount*0.25,TRUE,1) //Just remove the reagents if there is no one to add it to.
 	return TRUE
 
 /obj/item/container/cigarette/think()

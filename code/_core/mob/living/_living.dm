@@ -34,9 +34,9 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/nutrition = 1000
-	var/nutrition_max = 1000
-	var/nutrition_max_hard = 2000
+	var/nutrition = 2000
+	var/nutrition_max = 2000
+	var/nutrition_max_hard = 3000
 	var/nutrition_fast = 0
 	var/hydration = 1000
 	var/hydration_max = 1000

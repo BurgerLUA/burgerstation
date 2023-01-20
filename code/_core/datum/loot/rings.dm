@@ -13,6 +13,7 @@
 		/obj/item/clothing/ring/silver/dark = 10,
 		/obj/item/clothing/ring/gold/major_dark = 5
 	)
+	use_value = TRUE
 
 /loot/rings/bad
 	loot_table = list(

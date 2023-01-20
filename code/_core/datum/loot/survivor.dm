@@ -27,25 +27,6 @@
 
 	. = ..()
 
-
-/loot/survivor/reward
-	loot_table = list(
-		/obj/item/container/simple/beaker/flask/onion = 50,
-		/obj/item/tempering/quality/melee = 70,
-		/loot/misc/food = 40,
-		/loot/misc/drink = 40,
-		/loot/misc/baking = 20,
-		/obj/item/container/healing/bandage = 25,
-		/obj/item/container/healing/ointment = 25,
-		/obj/item/storage/pillbottle/dylovene_small = 25,
-		/obj/item/storage/pillbottle/assprin = 25,
-		/obj/item/storage/kit/small/filled = 65,
-		/obj/item/grenade/fuse/flashbang = 40,
-		/loot/scroll/lesser = 20
-	)
-	loot_count = 4
-
-
 /loot/survivor/head //hats, masks, ect.
 	loot_table = list(
 		/obj/item/clothing/head/hat/bandana/red = 100,
@@ -209,6 +190,12 @@
 	apply_poly = TRUE
 	chance_blood = 0
 	chance_quality = 0
+
+/loot/survivor/back_storage/pre_spawn(var/atom/movable/M)
+	. = ..()
+	if(is_item(M))
+		var/obj/item/I = M
+		I.loot_to_generate = /loot/reward/survivor
 
 /loot/survivor/belt_storage
 	loot_table = list(

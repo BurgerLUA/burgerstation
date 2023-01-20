@@ -7,7 +7,7 @@
 
 	return TRUE
 
-/atom/proc/change_victim(var/atom/attacker,var/atom/object)
+/atom/proc/change_victim(var/atom/attacker)
 	return src
 
 /atom/proc/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
@@ -36,9 +36,7 @@
 	if(world.time < attacker.attack_next)
 		return FALSE
 
-	var/atom/changed_target = victim.change_victim(attacker,src)
-	if(changed_target)
-		victim = changed_target
+	victim = victim.change_victim(attacker)
 
 	if(!precise && is_living(victim))
 		var/mob/living/L = victim
@@ -109,7 +107,7 @@
 		for(var/atom/movable/A in range(1,victim))
 			if(cleave_number <= 0)
 				break
-			A = A.change_victim(attacker,src)
+			A = A.change_victim(attacker)
 			if(A == victim || A == attacker)
 				continue
 			if(get_dist(attacker,A) > object_to_damage_with.attack_range)

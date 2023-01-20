@@ -11,7 +11,7 @@
 
 	use_cone_vision = TRUE
 
-	aggression = 2
+	aggression = 3
 	assistance = 0
 
 	var/should_scan = TRUE

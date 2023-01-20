@@ -1,5 +1,5 @@
 /obj/parallax
-	name = "the void"
+	name = "space"
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/parallax.dmi'
 	var/ratio = 1 //For every tile moved, move x pixel in the opposite direction.

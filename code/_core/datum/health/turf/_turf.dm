@@ -16,17 +16,26 @@ var/global/list/image/turf_damage_icons = new/list(5,4)
 	var/last_damage_icon = 0
 	var/damage_icon_turn = 1 //1 to 4
 
+
+/health/turf/update_health_stats()
+	. = ..()
+	var/turf/simulated/T = owner
+	if(T.material_id)
+		var/material/M = MATERIAL(T.material_id)
+		health_max += M.wall_health
+
 /health/turf/New(var/desired_owner)
 
 	. = ..()
 
 	damage_icon_turn = rand(1,4)
 
-	var/turf/T = owner
+	var/turf/simulated/T = owner
 	if(T.material_id)
-		var/material/M = SSmaterials.all_materials[T.material_id]
+		var/material/M = MATERIAL(T.material_id)
 		if(M && M.armor)
 			armor = M.armor
+	organic = T.organic
 
 /health/turf/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
 

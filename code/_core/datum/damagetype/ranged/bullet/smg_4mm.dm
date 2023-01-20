@@ -13,8 +13,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/smg_4mm/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/smg_4mm/du
 	damage_mod = DU_MUL

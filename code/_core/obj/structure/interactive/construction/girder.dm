@@ -56,7 +56,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/girder/proc/construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
-	var/turf/T = src.loc
+	var/turf/simulated/T = src.loc
 	T.change_turf(/turf/simulated/wall/metal/)
 	T.material_id = material_id
 	T.color = color

@@ -84,11 +84,13 @@
 		src.old_turf = T
 		if(!src.z)
 			handle_blocking()
-		T.do_footstep(src,FALSE)
+		if(is_simulated(loc))
+			var/turf/simulated/S = T
+			S.do_footstep(src,FALSE)
 
-	if(is_turf(loc))
-		var/turf/T = loc
-		T.do_footstep(src,TRUE)
+	if(is_simulated(loc))
+		var/turf/simulated/S = loc
+		S.do_footstep(src,TRUE)
 
 	if(qdeleting)
 		return .
@@ -186,7 +188,7 @@
 	if(move_dir) //If you're actually moving.
 		if(!can_move())
 			return FALSE
-		if(grabbing_hand)
+		if(grabbing_hand && !ai) //AI does their own resist in their code.
 			resist()
 			return FALSE
 		if(STATUS_EFFECT_MAGNITUDE(src,SLEEP) == -1)

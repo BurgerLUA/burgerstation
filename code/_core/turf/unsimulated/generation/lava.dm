@@ -22,7 +22,7 @@
 		return ..()
 
 	if(is_different)
-		if(density && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
+		if(density && is_next_to_null_areas && is_next_to_dense_turfs)
 			if(prob(2))
 				new /obj/marker/generation/turf/basalt_wall(src)
 			else if(prob(2))

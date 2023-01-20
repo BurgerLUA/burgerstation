@@ -1,3 +1,3 @@
 /health/construction/barricade
 
-	armor = /armor/structure/plasteel
+	armor = /armor/structure/barricade

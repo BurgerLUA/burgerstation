@@ -1,6 +1,6 @@
 /ai/bullshark
 
-	aggression = 2
+	aggression = 3
 	assistance = 1
 	retaliate = TRUE
 

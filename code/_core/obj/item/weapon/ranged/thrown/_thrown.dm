@@ -14,6 +14,17 @@
 	company_type = "Black Spider Clan"
 
 	var/one_icon = FALSE //For those who are lazy, and want to only sprite one thing.
+
+
+
+/obj/item/weapon/ranged/thrown/get_base_value()
+	. = ..()
+	. *= 0.05
+
+
+
+
+
 /obj/item/weapon/ranged/thrown/update_icon()
 	. = ..()
 	icon = initial(icon)

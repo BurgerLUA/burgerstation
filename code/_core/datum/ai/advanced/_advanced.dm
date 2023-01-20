@@ -18,7 +18,6 @@
 	var/resist_handcuffs = TRUE
 
 	use_astar_on_frustration_move = TRUE
-	cowardice = 0.1
 
 	//Gun handling
 	var/obj/item/bullet_cartridge/last_found_bullet

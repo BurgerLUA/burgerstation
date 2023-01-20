@@ -16,11 +16,14 @@
 
 	var/old_turf_type = src.type
 
+	src.initialized = FALSE
+	src.finalized = FALSE
+	src.generated = FALSE
+	QDEL_NULL(health)
+
 	var/turf/W = new N(src)
-	W.initialized = FALSE
-	W.finalized = FALSE
-	W.generated = FALSE
 	INITIALIZE(W)
+	GENERATE(W)
 	FINALIZE(W)
 	. = W
 	W.disallow_generation = old_disallow_generation

@@ -1,0 +1,1 @@
+#define MATERIAL(x) SSmaterials.all_materials[x]

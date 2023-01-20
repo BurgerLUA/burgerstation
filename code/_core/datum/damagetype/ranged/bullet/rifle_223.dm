@@ -14,8 +14,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/rifle_223/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/rifle_223/du
 	damage_mod = DU_MUL
@@ -55,8 +55,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/rifle_556mm/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/rifle_556mm/premium
 	damage_mod = PREMIUM_MUL
@@ -77,8 +77,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/rifle_545mm/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/rifle_939mm
 	attack_damage_base = list(

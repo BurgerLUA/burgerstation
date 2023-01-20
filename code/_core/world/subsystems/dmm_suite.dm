@@ -22,6 +22,12 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/_core/station.dmm"
 	)
 
+	var/list/map_to_parallax = list(
+		"maps/_core/mission.dmm" = 'icons/obj/effects/parallax.dmi',
+		"maps/_core/bluespace.dmm" = 'icons/obj/effects/parallax_bluespace.dmi',
+		"maps/_core/station.dmm" = 'icons/obj/effects/parallax.dmi'
+	)
+
 	var/pvp_y
 	var/pvp_coef
 
@@ -161,7 +167,7 @@ SUBSYSTEM_DEF(dmm_suite)
 					if(T.loc.type != /area/)
 						bad_block = TRUE
 						break
-					if(T.density && !T.organic)
+					if(T.density)
 						break
 				if(bad_block)
 					continue

@@ -23,13 +23,7 @@
 	var/density_down  = TRUE
 	var/allow_bullet_pass = FALSE
 
-	var/footstep/footstep //The footstep sounds that play.
-
 	var/list/mob/living/old_living //List of mobs that used to be on this turf.
-
-	var/material_id
-
-	var/move_delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier. Only applies to mobs that touch the floor.
 
 	var/world_spawn = FALSE
 
@@ -41,10 +35,6 @@
 
 	var/disallow_generation = FALSE
 
-	var/friction = TRUE //True or false. Can't really do decimals 0 to 1, yet.
-
-	var/parallax_icon = 'icons/obj/effects/parallax.dmi'
-
 	//Stored variables for shuttles
 	var/area/transit_area
 	var/turf/transit_turf
@@ -54,8 +44,6 @@
 	var/has_dense_atom = FALSE
 
 	var/has_hazardous_atom = FALSE
-
-	var/organic = FALSE
 
 /turf/proc/recalculate_atom_density()
 
@@ -222,18 +210,19 @@
 	return ..()
 */
 
-/turf/change_victim(var/atom/attacker,var/atom/object)
+/turf/get_top_object()
+	return src //This should always be the src.
+
+/turf/change_victim(var/atom/attacker)
 
 	if(density && (density_north || density_south || density_east || density_west))
 		return src
 
 	var/atom/best_target
-	var/atom/best_score
+	var/best_score = -INFINITY
 
 	for(var/k in contents)
 		var/atom/movable/v = k
-		if(v.mouse_opacity <= 0)
-			continue
 		if(attacker == v)
 			continue
 		if(!v.health)
@@ -245,15 +234,14 @@
 		if(!v.can_be_attacked(attacker))
 			continue
 		var/score = v.plane*1000 + v.layer
-		if(score > best_score)
-			best_score = score
-			best_target = v
+		if(score <= best_score)
+			continue
+		best_target = v
+		best_score = score
 
 	if(old_living)
 		for(var/k in old_living)
 			var/mob/living/L = k
-			if(L.mouse_opacity <= 0)
-				continue
 			if(attacker == L)
 				continue
 			if(L.dead)
@@ -262,14 +250,17 @@
 				continue
 			if(get_dist(L,src) > 1)
 				continue
-			var/score = (L.plane*1000 + L.layer) - 100*1000
-			if(score > best_score)
-				best_score = score
-				best_target = L
+			if(!L.can_be_attacked(attacker))
+				continue
+			var/score = (L.plane*1000 + L.layer) - (100*1000)
+			if(score <= best_score)
+				continue
+			best_target = L
+			best_score = score
 
-	return best_target
+	return best_target ? best_target : src
 
-/turf/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
+/turf/simulated/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
 
 	var/list/returning_footsteps = source.get_footsteps(footstep ? list(footstep) : list(),enter)
 	if(length(returning_footsteps))

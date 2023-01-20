@@ -1,4 +1,4 @@
-#define SLAVIC_DEFAULT /obj/item/clothing/pants/gorka, /obj/item/clothing/shirt/gorka, /obj/item/clothing/head/hat/skimask/black, /obj/item/clothing/hands/gloves/colored/padded/black, /obj/item/clothing/hands/gloves/colored/padded/black/left, /obj/item/clothing/feet/shoes/black_boots, /obj/item/clothing/feet/shoes/black_boots/left, /obj/item/clothing/belt/storage/colored/black, /obj/item/storage/pouch/double/brown, /obj/item/storage/pouch/double/brown, /obj/item/weapon/melee/sword/rev_bayonet
+#define SLAVIC_DEFAULT /obj/item/clothing/pants/gorka, /obj/item/clothing/shirt/gorka, /obj/item/clothing/head/hat/skimask/black, /obj/item/clothing/hands/gloves/colored/padded/black, /obj/item/clothing/hands/gloves/colored/padded/black/left, /obj/item/clothing/feet/shoes/black_boots, /obj/item/clothing/feet/shoes/black_boots/left, /obj/item/clothing/belt/storage/colored/black, /obj/item/storage/pouch/double/brown, /obj/item/storage/pouch/single/brown, /loot/slavic/back_storage
 
 /loadout/slavic
 	spawning_items = list(
@@ -45,6 +45,8 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
+
+		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
 /loadout/slavic/sniper
@@ -62,6 +64,8 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
+
+		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
 
@@ -85,7 +89,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/magazine/pistol_9mm,
+
+		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
 /loadout/slavic/infantry/advanced
@@ -103,7 +109,9 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
 
-		/obj/item/grenade/fuse/he
+		/obj/item/grenade/fuse/he,
+
+		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
 	var/list/possible_guns = list(
@@ -130,7 +138,7 @@
 	var/mask_chance = 20
 
 /loadout/slavic/infantry/advanced/get_spawning_items()
-	. = ..()
+	. = list()
 	var/obj/item/chosen_gun = pick(possible_guns)
 	. += chosen_gun
 	if(possible_guns_to_magazine[chosen_gun])
@@ -138,6 +146,7 @@
 			. += possible_guns_to_magazine[chosen_gun]
 	if(prob(mask_chance))
 		. += pick(possible_masks)
+	. = ..()
 
 /loadout/slavic/sniper/advanced
 
@@ -157,7 +166,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
-		/obj/item/magazine/pistol_9mm
+		/obj/item/magazine/pistol_9mm,
+
+		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
 
@@ -196,6 +207,8 @@
 		/obj/item/bullet_cartridge/revolver_762{amount=7},
 
 		/obj/item/grenade/fuse/he,
-		/obj/item/grenade/fuse/he
+		/obj/item/grenade/fuse/he,
+
+		/obj/item/weapon/melee/sword/rev_bayonet
 
 	)

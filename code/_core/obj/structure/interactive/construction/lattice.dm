@@ -56,7 +56,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/lattice/proc/construct_floor_plating(var/mob/caller,var/obj/item/material/sheet/S)
-	var/turf/T = src.loc
+	var/turf/simulated/T = src.loc
 	T.change_turf(/turf/simulated/floor/plating/,TRUE)
 	T.color = S.color
 	T.material_id = S.material_id

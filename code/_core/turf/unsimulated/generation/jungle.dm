@@ -19,7 +19,7 @@
 		return ..()
 
 	if(is_different)
-		if(is_next_to_dense_turfs && !is_next_to_interior && is_next_to_null_areas && is_next_to_organic_turfs && prob(90))
+		if(is_next_to_dense_turfs && !is_next_to_interior && is_next_to_null_areas && prob(90))
 			new /turf/simulated/wall/rock/brown(src)
 			if(prob(1))
 				new /obj/marker/generation/turf/jungle_wall(src)

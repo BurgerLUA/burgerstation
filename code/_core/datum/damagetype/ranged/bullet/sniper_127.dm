@@ -14,8 +14,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/sniper_127/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/sniper_127/premium
 	damage_mod = PREMIUM_MUL
@@ -37,8 +37,8 @@
 	falloff = VIEW_RANGE + ZOOM_RANGE*5
 
 /damagetype/ranged/bullet/sniper_50/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/sniper_50/du
 	damage_mod = DU_MUL

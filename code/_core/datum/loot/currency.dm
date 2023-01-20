@@ -1,5 +1,5 @@
 /loot/currency
-	var/desired_value = 1000 //How much (on average) do we want to give to the player (if possible).
+	var/desired_value = 1000 //How much (on average) do we want to give to the player (if possible). This is per item.
 	loot_count = 1
 
 /loot/currency/pre_spawn(var/atom/movable/M)
@@ -18,13 +18,16 @@
 
 
 /loot/currency/dosh
-	loot_table_guaranteed = /obj/item/currency/dosh
+	loot_table_guaranteed = list(/obj/item/currency/dosh)
+
+/loot/currency/dosh/survivor
+	desired_value = 100
 
 /loot/currency/credits
-	loot_table_guaranteed = /obj/item/currency/credits
+	loot_table_guaranteed = list(/obj/item/currency/credits)
 
 /loot/currency/gold_coin
-	loot_table_guaranteed = /obj/item/currency/gold_coin
+	loot_table_guaranteed = list(/obj/item/currency/gold_coin)
 
 /loot/currency/cash_register
 	loot_table = list(

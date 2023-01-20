@@ -12,11 +12,6 @@
 
 	var/turf/destruction_turf
 
-	var/reinforced_material_id
-	var/reinforced_color
-	var/reinforced_alpha = 255
-	var/reinforced_blend = BLEND_DEFAULT
-
 	var/exposed = TRUE //Are pipes and other hidden objects visible?
 
 	var/turf_temperature_mod = 0
@@ -45,6 +40,19 @@
 	var/smooth_code_4
 
 	var/queued_smoothing = FALSE
+
+	var/material_id
+
+	var/reinforced_material_id
+	var/reinforced_color
+	var/reinforced_alpha = 255
+	var/reinforced_blend = BLEND_DEFAULT
+
+	var/move_delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier. Only applies to mobs that touch the floor.
+
+	var/organic = FALSE
+
+	var/footstep/footstep //The footstep sounds that play.
 
 /turf/simulated/can_move_to(var/check_contents=TRUE)
 
@@ -113,11 +121,6 @@
 			health = /health/turf/
 	set_exposed(exposed,!exposed)
 	return ..()
-
-/turf/simulated/PostInitialize()
-	. = ..()
-	if(istype(health))
-		health.organic = organic
 
 /turf/simulated/Finalize()
 	. = ..()

@@ -16,7 +16,10 @@ var/global/list/defense_rating_to_value = list( //Lower values are more expensiv
 	DARK = 7,
 	FATIGUE = 50,
 	ION = 50,
-	PAIN = 50
+	PAIN = 50,
+	BRUTE = 2.5,
+	BURN = 2.5,
+	TOX = 2.5
 )
 
 

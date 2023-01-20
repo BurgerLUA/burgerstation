@@ -24,12 +24,9 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 	var/is_next_to_interior = FALSE
 	var/is_next_to_null_areas = TRUE
 	var/is_next_to_dense_turfs = TRUE
-	var/is_next_to_organic_turfs = TRUE
 	density = TRUE
 
 	var/noise = 0
-
-	organic = TRUE
 
 
 /turf/unsimulated/generation/proc/pre_generate()
@@ -55,8 +52,6 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 		var/turf/T = get_step(src,k)
 		if(!T)
 			continue
-		if(!T.organic)
-			is_next_to_organic_turfs = FALSE
 		if(src.type != T.type && src.parent_type != T.type && src.type != T.parent_type)
 			is_different = TRUE
 			if(!T.density)

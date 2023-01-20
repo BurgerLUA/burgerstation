@@ -12,6 +12,10 @@
 
 	combat_dialogue = /combat_dialogue/bandit
 
+	health_base = 100
+	stamina_base = 100
+	mana_base = 100
+
 /mob/living/advanced/npc/survivor/setup_appearance(var/set_default=FALSE)
 
 	. = ..()

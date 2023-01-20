@@ -17,6 +17,8 @@
 
 	suicide_bomber = TRUE
 
+	aggression = 3
+
 /ai/blob_spore
 	target_distribution_x = list(16)
 	target_distribution_y = list(25)

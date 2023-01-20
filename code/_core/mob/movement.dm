@@ -103,7 +103,6 @@
 
 	return TRUE
 
-
 /mob/post_move(var/atom/old_loc)
 
 	. = ..()
@@ -113,12 +112,14 @@
 
 	if(loc && src.ckey_last)
 		var/turf/T = get_turf(src)
-		for(var/k in src.parallax)
-			var/obj/parallax/P = src.parallax[k]
-			P.icon = T.parallax_icon //TODO: Different z-levels should have the icon.
-			var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
-			var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
-			P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
+		if(T)
+			var/parallax_file = SSdmm_suite.map_to_parallax[SSdmm_suite.z_level_to_file["[T.z]"]]
+			for(var/k in src.parallax)
+				var/obj/parallax/P = src.parallax[k]
+				P.icon = parallax_file
+				var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
+				var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
+				P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
 
 	update_rs_chat()
 

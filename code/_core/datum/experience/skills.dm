@@ -75,12 +75,11 @@
 
 /experience/skill/evasion/ //AGILITY
 	//Each time you dodge = 1 xp
-	//Must dodge 7600 times.
 	name = "Evasion"
 	id = SKILL_EVASION
 	desc = "Your skill in dodging incoming attacks. Affects the chance of a successful dodge from melee weapons, ranged weapons, and magic."
 	experience_power = 1.6
-	experience_multiplier = 1.3
+	experience_multiplier = 2.6
 
 /experience/skill/survival //ENDURANCE
 	//Each time you avoid a trap = 1xp

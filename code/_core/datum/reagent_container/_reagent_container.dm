@@ -652,7 +652,7 @@
 	if(!target)
 		CRASH("Tried to splash with no target!")
 
-	target = target.change_victim(caller,owner)
+	target = target.change_victim(caller)
 
 	if(!target)
 		CRASH("Tried to splash with invalid target!")

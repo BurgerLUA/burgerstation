@@ -12,8 +12,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/revolver_357/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/revolver_38
 	attack_damage_base = list(

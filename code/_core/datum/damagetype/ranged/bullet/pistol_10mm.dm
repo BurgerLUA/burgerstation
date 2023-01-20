@@ -10,8 +10,8 @@
 	falloff = VIEW_RANGE*0.75
 
 /damagetype/ranged/bullet/pistol_10mm/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/pistol_10mm/surplus
 	damage_mod = SURPLUS_MUL
@@ -33,8 +33,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/pistol_40/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/pistol_40/tranq
 	attack_damage_base = list(
