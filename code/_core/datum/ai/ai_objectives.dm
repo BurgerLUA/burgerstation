@@ -332,14 +332,14 @@
 			//Threat neutralized.
 			response_type = "enemy_down"
 			swear_chance = 0
-		else if(old_alert_level == ALERT_LEVEL_CAUTION && new_alert_level == ALERT_LEVEL_COMBAT)
-			//Found the enemy again.
-			response_type = "enemy_spotted"
-			swear_chance = 90
 		else if(old_alert_level == ALERT_LEVEL_NONE && (new_alert_level == ALERT_LEVEL_NOISE || new_alert_level == ALERT_LEVEL_CAUTION))
 			//A weird noise was made.
 			response_type = "noise"
 			swear_chance = owner.health ? (1 - owner.health.health_current/owner.health.health_max)*150 : 0
+		else if(new_alert_level == ALERT_LEVEL_COMBAT)
+			//Found the enemy again.
+			response_type = "enemy_spotted"
+			swear_chance = 90
 		else if(new_alert_level == ALERT_LEVEL_NOISE)
 			//losing interest in the search
 			response_type = "losing_interest"
@@ -349,9 +349,7 @@
 			response_type = "lost_interest"
 			swear_chance = 25
 		if(response_type)
-			var/returning_dialogue = SSdialogue.get_combat_dialogue(owner.combat_dialogue,response_type,swear_chance)
-			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
-			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+			do_dialogue(response_type,swear_chance)
 
 
 	return TRUE

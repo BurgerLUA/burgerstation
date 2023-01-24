@@ -141,7 +141,7 @@
 	owner.handle_movement(tick_rate)
 
 	if(owner.move_dir && current_turf) //current_turf will only be assigned if they were supposed to move.
-		if(current_turf == get_turf(owner)) //Did not move even though it was supposed to move.
+		if(current_turf == get_turf(owner) && (!objective_attack || get_dist(owner,objective_attack) > 1)) //Did not move even though it was supposed to move.
 			if(length(astar_path_current))
 				if(frustration_astar_path_threshold > 0) frustration_astar_path++
 			else if(length(node_path_current))

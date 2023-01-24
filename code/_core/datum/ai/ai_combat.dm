@@ -201,13 +201,9 @@ var/global/list/difficulty_to_ai_modifier = list(
 
 	if(owner.combat_dialogue && next_talk <= world.time && !stealthy && damage_amount >= 30)
 		if(owner.health && owner.health.health_current <= owner.health.health_max*0.25 && prob(20+damage_amount))
-			var/returning_dialogue = SSdialogue.get_combat_dialogue(owner.combat_dialogue,"combat_losing",damage_amount)
-			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
-			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+			do_dialogue("combat_losing",swear_chance)
 		else if(prob(20+damage_amount))
-			var/returning_dialogue = SSdialogue.get_combat_dialogue(owner.combat_dialogue,"self_hit",damage_amount)
-			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
-			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+			do_dialogue("self_hit",swear_chance)
 
 
 	return TRUE
