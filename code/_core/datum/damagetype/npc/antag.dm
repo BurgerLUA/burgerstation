@@ -28,6 +28,5 @@
 		var/mob/living/L = victim
 		if(!L.dead)
 			L.death()
-			L.health?.update_health()
 
 	return ..()

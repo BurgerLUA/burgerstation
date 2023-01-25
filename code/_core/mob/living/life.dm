@@ -91,15 +91,15 @@
 
 	handle_transform()
 
-	brute_regen_buffer = 0
-	burn_regen_buffer = 0
-	tox_regen_buffer = 0
-	pain_regen_buffer = 0
-	rad_regen_buffer = 0
-	sanity_regen_buffer = 0
-	mental_regen_buffer = 0
-	mana_regen_buffer = 0
-	stamina_regen_buffer = 0
+	brute_regen_buffer = max(brute_regen_buffer,0)
+	burn_regen_buffer = max(burn_regen_buffer,0)
+	tox_regen_buffer = max(tox_regen_buffer,0)
+	pain_regen_buffer = max(pain_regen_buffer,0)
+	rad_regen_buffer = max(rad_regen_buffer,0)
+	sanity_regen_buffer = max(sanity_regen_buffer,0)
+	mental_regen_buffer = max(mental_regen_buffer,0)
+	mana_regen_buffer = max(mana_regen_buffer,0)
+	stamina_regen_buffer = max(stamina_regen_buffer,0)
 
 	return TRUE
 
@@ -249,11 +249,6 @@
 
 	if(!dead)
 		handle_natural_regen()
-		if(health)
-			var/old_pain_removal = pain_removal
-			pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
-			if(old_pain_removal != pain_removal)
-				QUEUE_HEALTH_UPDATE(src)
 
 	handle_health_buffer()
 
@@ -295,6 +290,7 @@
 	if(length(status_effects))
 		handle_status_effects(TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
 
+	/* TODO: Make this less shit.
 	if(client && !dead && health && next_heartbeat <= world.time)
 		var/desired_heartrate = 60
 		if(has_status_effect(ADRENALINE))
@@ -310,7 +306,7 @@
 			var/turf/T = get_turf(src)
 			play_sound('sound/effects/heartbeat_single.ogg',T,list(src),pitch=0.5 + (60/desired_heartrate)*0.5,volume=10)
 		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
-
+	*/
 
 	return TRUE
 
@@ -457,40 +453,41 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_health())
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.1,
+			health.health_max*0.1
+		)*multiplier
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.1,
+			health.health_max*0.1
+		)*multiplier
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
-		var/pain_to_regen = clamp(
-			pain_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.1,
+			health.health_max*0.1
+		)*multiplier
+		//Pain is different.
+		var/pain_to_regen = 0
+		if(pain_regen_buffer > 0)
+			pain_to_regen = min(pain_regen_buffer,CEILING(pain_regen_buffer*0.05,1),health.health_max*0.1)*multiplier //Get the smallest out of these 3.
+		else
+			pain_to_regen = max(pain_regen_buffer,-health.health_max*0.01*multiplier)*multiplier
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.1,
+			health.health_max*0.1
+		)*multiplier
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.1,
+			health.health_max*0.1
+		)*multiplier
 		var/mental_to_regen = clamp(
 			mental_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
-		health.adjust_loss_smart(
+			-health.health_max*0.1,
+			health.health_max*0.1
+		)*multiplier
+		src.health.adjust_loss_smart(
 			brute = -brute_to_regen,
 			burn = -burn_to_regen,
 			tox = -tox_to_regen,
@@ -549,9 +546,9 @@ mob/living/proc/on_life_slow()
 
 	if(health.health_regen_cooef > 0 && health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod
-		var/brute_to_adjust = min(max(0,health.damage[BRUTE]*health.health_regen_cooef - brute_regen_buffer),health_mod)
-		var/burn_to_adjust = min(max(0,health.damage[BURN]*health.health_regen_cooef - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.damage[PAIN]*health.health_regen_cooef - pain_regen_buffer),health_mod)
+		var/brute_to_adjust = clamp(health.damage[BRUTE]*health.health_regen_cooef - brute_regen_buffer,0,health_mod)
+		var/burn_to_adjust = clamp(health.damage[BURN]*health.health_regen_cooef - burn_regen_buffer,0,health_mod)
+		var/pain_to_adjust = clamp(health.damage[PAIN]*health.health_regen_cooef - pain_regen_buffer,0,health_mod)
 		if(brute_to_adjust != 0 || burn_to_adjust != 0 || pain_to_adjust != 0)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust

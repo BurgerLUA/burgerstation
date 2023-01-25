@@ -4,27 +4,48 @@
 	color = "#880000"
 	alpha = 225
 	flavor = "pure painkilling"
-	metabolism_stomach = 5/60 // Lasts a minute per 5u
-	metabolism_blood = 10/60 // Lasts a minute per 10u
-	var/strength = 100
+	metabolism_stomach = 5/30
+	metabolism_blood = 5/15
+	overdose_threshold = 15
+	var/strength = 50/5 //Per unit metabolized. (200 per 5u)
+	var/strength_max = 100/5 //Per starting_volume unit. Should generally be smaller than strength. (100 per 5u)
 
-	experience_per_unit = 1
+	experience_per_unit = 0.5
+
+	addiction_strength = 1
+	addiction_threshold = 40
+	addiction = /addiction/painkillers
 
 	value = 0.5
 
-/reagent/medicine/painkiller/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/medicine/painkiller/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,PAINKILLER) <= strength)
-		L.add_status_effect(PAINKILLER,strength,-1)
+	if(strength > 0)
+		var/pain_regen_buffer_allowed = max(0,strength_max*starting_volume*2 - owner.pain_regen_buffer)
+		if(pain_regen_buffer_allowed > 0)
+			owner.pain_regen_buffer += min(pain_regen_buffer_allowed,.*multiplier*2*strength)
+	else
+		owner.pain_regen_buffer += .*multiplier
 
-/reagent/medicine/painkiller/on_remove_living(var/mob/living/L,var/reagent_container/container)
+/reagent/medicine/painkiller/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
 
-	if( (container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,PAINKILLER) <= strength)
-		L.remove_status_effect(PAINKILLER)
+	if(strength > 0)
+		var/pain_regen_buffer_allowed = max(0,strength_max*starting_volume - max(0,owner.pain_regen_buffer))
+		if(pain_regen_buffer_allowed > 0)
+			owner.pain_regen_buffer += min(pain_regen_buffer_allowed,.*multiplier*strength)
+	else
+		owner.pain_regen_buffer += .*multiplier
+
+/reagent/medicine/painkiller/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
+
+	. = ..()
+
+
+
 
 /reagent/medicine/painkiller/opium
 	name = "Opium"
@@ -44,30 +65,14 @@
 
 	strength = 200
 
-	addiction_strength = 4
-	addiction_threshold = 20
-
-	addiction = /addiction/opium
-
 	particle_size = 0.3
 
 	overdose_threshold = 30
 
 	blood_toxicity_multiplier = 5
 
-
-/reagent/medicine/painkiller/opium/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer += .*50*multiplier
-
-/reagent/medicine/painkiller/opium/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer += .*25*multiplier
-
-/reagent/medicine/painkiller/opium/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer -= metabolism_amount*10*multiplier
-
+	addiction_strength = 2
+	addiction_threshold = 20
 
 /reagent/medicine/painkiller/morphine
 	name = "Morphine"
@@ -87,55 +92,33 @@
 
 	strength = 300
 
-	addiction = /addiction/opium
-
 	particle_size = 0.2
 
-	addiction_strength = 4
+	addiction_strength = 1.5
 	addiction_threshold = 30
 
 	overdose_threshold = 30
 
 	blood_toxicity_multiplier = 3
 
-
-/reagent/medicine/painkiller/morphine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer += .*100*multiplier
-
-/reagent/medicine/painkiller/morphine/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer += .*25*multiplier
-
-/reagent/medicine/painkiller/morphine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer -= metabolism_amount*20*multiplier
-
-
 /reagent/medicine/painkiller/assprin
 	name = "Assprin"
 	desc = "A generic painkiller."
 	color = "#D1DBDB"
 	alpha = 255
-	flavor = "ass"
-	metabolism_stomach = 5/60 // Lasts a minute per 5u
-	metabolism_blood = 10/60 // Lasts a minute per 10u
-	strength = 50
 
+	flavor = "ass"
+
+	metabolism_stomach = 10/60 // Takes a minute to metabolize 10u
+	metabolism_blood = 20/60 // Takes a minute to metabolize 20u
 	experience_per_unit = 0.25
 
+	strength = 100/5 //100 healed per 5u.
+	strength_max = 50/5 //Limit of 50 per 5u.
+
+	addiction_strength = 1
+	addiction_threshold = 40
 	overdose_threshold = 30
 
 	value = 0.5
 
-/reagent/medicine/painkiller/assprin/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer += .*25*multiplier
-
-/reagent/medicine/painkiller/assprin/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer += .*10*multiplier
-
-/reagent/medicine/painkiller/assprin/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-	owner.pain_regen_buffer -= metabolism_amount*10*multiplier

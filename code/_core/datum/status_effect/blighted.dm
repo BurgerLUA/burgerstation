@@ -9,6 +9,7 @@
 
 /status_effect/blighted/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
+	//Force all regenerations to be 0 or lower.
 	owner.brute_regen_buffer = min(owner.brute_regen_buffer,0)
 	owner.burn_regen_buffer = min(owner.burn_regen_buffer,0)
 	owner.tox_regen_buffer = min(owner.tox_regen_buffer,0)

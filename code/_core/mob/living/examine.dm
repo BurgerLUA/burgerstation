@@ -28,7 +28,7 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] diseased.</u></b>")
 
-		switch((health.damage[PAIN] - pain_removal)/(1 + wound_stealth))
+		switch((health.damage[PAIN] - pain_regen_buffer)/(1 + wound_stealth))
 			if(15 to 25)
 				. += div("warning","[noun] sore.")
 			if(25 to 50)

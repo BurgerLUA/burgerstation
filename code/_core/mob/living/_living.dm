@@ -277,8 +277,6 @@
 
 	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
 
-	var/pain_removal = 0 //How much damage to ignore due to pain killers. Calculated every second.
-
 	var/gibbed = FALSE //Returns true if the cause of death was a gib.
 
 	var/parry_time = 0

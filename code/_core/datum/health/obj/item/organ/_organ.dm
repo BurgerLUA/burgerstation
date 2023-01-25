@@ -97,6 +97,11 @@
 		sanity = 0
 		mental = 0
 
+	if(update && is_advanced(owner.loc))
+		var/mob/living/advanced/A = owner.loc
+		A.queue_organ_health_update[owner] = TRUE
+		update = FALSE
+
 	. += ..()
 
 /health/obj/item/organ/synthetic

@@ -469,7 +469,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(50 to INFINITY)
 			damage_desc += "<u><b>charred</b></u>"
 
-	switch(health.damage[PAIN] - (istype(A) ? A.pain_removal : 0))
+	switch(health.damage[PAIN] - A.pain_regen_buffer)
 		if(5 to 15)
 			damage_desc += "<i>tender<i/>"
 		if(15 to 25)

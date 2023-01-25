@@ -48,8 +48,8 @@
 
 	var/mob/living/L = owner
 
-	var/max_health = owner.health.health_max
-	var/health = owner.health.health_current
+	var/max_health = L.health.health_max
+	var/health = L.health.health_current
 
 	if(dir==SOUTH) //Master screen blood
 		color = "#FFFFFF"
@@ -62,37 +62,16 @@
 			alpha = clamp(100 - (100*(1/0.4))*(health/max_health),0,100)
 			maptext = null
 
-		/*
-		if(owner.client) //TODO: Move this somewhere else. Like in update health or something.
-
-			var/health_loss = 1 - min(1,(health - (L.health.damage[PAIN]-L.pain_removal))/max_health)
-			var/greyscale_amount = clamp(( (health_loss**2) - 0.6)*3,0,0.9)
-
-			var/light_mod = clamp(0.5 + (health/max_health),0.5,1)
-			var/a = (1 - greyscale_amount)*light_mod
-			var/b = greyscale_amount*light_mod
-
-			var/list/desired_color = list(
-				0.25 + a*0.75,b,b,0,
-				b,a,b,0,
-				b,b,a,0,
-				0,0,0,1,
-				0,0,0,0
-			)
-
-			owner.add_color_mod("health",desired_color)
-		*/
-
 	else if(dir in DIRECTIONS_INTERCARDINAL)
 
-		var/max_pain = owner.health.health_max*owner.health.health_regen_cooef
-		var/pain = max(0,owner.health.damage[PAIN] - L.pain_removal)
+		var/max_pain = L.health.health_max*L.health.health_regen_cooef
+		var/pain = L.health.damage[PAIN] - L.pain_regen_buffer
 
-		var/max_stamina = owner.health.stamina_max*owner.health.stamina_regen_cooef
-		var/stamina = owner.health.stamina_current
+		var/max_stamina = L.health.stamina_max*L.health.stamina_regen_cooef
+		var/stamina = L.health.stamina_current
 
-		var/max_mana = owner.health.mana_max*owner.health.mana_regen_cooef
-		var/mana = owner.health.mana_current
+		var/max_mana = L.health.mana_max*L.health.mana_regen_cooef
+		var/mana = L.health.mana_current
 
 		var/pain_mod = clamp(pain/max_pain,0,1)
 		var/health_mod = clamp(health/max_health,0,1)

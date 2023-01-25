@@ -47,10 +47,6 @@
 //Prevents death by reducing the death threshold relative the the current value.
 //Move faster.
 
-#define PAINKILLER "painkiller"
-//Ignores pain.
-//Health HUD kidden.
-
 #define REST "rest"
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.

@@ -223,10 +223,14 @@
 	if(has_status_effect(SLOW))
 		. *= 2
 
-	if(!horizontal)
-		if(!has_status_effect(ADRENALINE))
-			. *= 1.25
+	if(!horizontal) //You're standing up.
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
+
+	if(health)
+		var/modded_health = (health.health_current + src.pain_regen_buffer*0.25) - max(0,src.health.damage[PAIN] - src.pain_regen_buffer)
+		. *= 2 - clamp( (modded_health/health.health_max) + 0.5,0,1)
+		if(!has_status_effect(ADRENALINE))
+			. *= 2 - clamp( (health.stamina_current/health.stamina_max) + 0.75,0,1)
 
 	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25

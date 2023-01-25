@@ -15,7 +15,6 @@
 	. = ..()
 	owner.add_status_effect(UNDYING,magnitude,duration,stealthy=TRUE)
 	owner.add_status_effect(ADRENALINE,magnitude,duration,stealthy=TRUE)
-	owner.add_status_effect(PAINKILLER,magnitude,duration,stealthy=TRUE)
 	owner.do_say("RRRRRRRRRRRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!")
 	if(duration == -1 && !owner.is_player_controlled(owner))
 		owner.color = "#FF0000"

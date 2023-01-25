@@ -590,6 +590,7 @@ var/global/list/all_damage_numbers = list()
 			mental = damage_to_deal_main[MENTAL],
 			update = FALSE
 		)
+		hit_object.health.update_health() //This forces it to immediately update.
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 

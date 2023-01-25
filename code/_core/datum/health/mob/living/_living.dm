@@ -82,7 +82,7 @@
 				L.remove_status_effect(CRIT)
 
 		//Paincrit
-		var/should_be_in_paincrit = damage[PAIN] > 0 && damage[PAIN] >= health_current
+		var/should_be_in_paincrit = (damage[PAIN] - L.pain_regen_buffer) > 0 && (damage[PAIN] - L.pain_regen_buffer) >= health_current
 		if(!L.status_effects[PAINCRIT] && should_be_in_paincrit)
 			L.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
 		else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
@@ -157,8 +157,9 @@
 
 	. = 0
 
+	var/mob/living/L = owner
+
 	if(fatigue || mental)
-		var/mob/living/L = owner
 		if(fatigue && (L.ai || !L.has_status_effect(STAMCRIT)))
 			. += -adjust_stamina(-fatigue)
 			if(stamina_current <= 0)
@@ -171,10 +172,13 @@
 		fatigue = 0
 		mental = 0
 
+	if(update)
+		QUEUE_HEALTH_UPDATE(L)
+		update = FALSE
+
 	. += ..()
 
 	if(sanity)
-		var/mob/living/L = owner
 		var/sanity_loss = damage[SANITY]
 		if(sanity_loss >= mana_current)
 			if(!L.has_status_effect(STRESSED))

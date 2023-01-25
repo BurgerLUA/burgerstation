@@ -201,9 +201,9 @@ var/global/list/difficulty_to_ai_modifier = list(
 
 	if(owner.combat_dialogue && next_talk <= world.time && !stealthy && damage_amount >= 30)
 		if(owner.health && owner.health.health_current <= owner.health.health_max*0.25 && prob(20+damage_amount))
-			do_dialogue("combat_losing",swear_chance)
+			do_dialogue("combat_losing",damage_amount)
 		else if(prob(20+damage_amount))
-			do_dialogue("self_hit",swear_chance)
+			do_dialogue("self_hit",damage_amount)
 
 
 	return TRUE

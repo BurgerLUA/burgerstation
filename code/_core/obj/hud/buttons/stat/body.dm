@@ -81,7 +81,9 @@
 			I.color = "#000000"
 			continue
 
-		var/health_mod = clamp(CEILING( (O.health.health_current - (O.health.damage[PAIN] - A.pain_removal)) / O.health.health_max, 0.01),0,1)
+		var/modded_health = (O.health.health_current + A.pain_regen_buffer*0.25) - max(0,O.health.damage[PAIN] - A.pain_regen_buffer)
+
+		var/health_mod = clamp(CEILING( modded_health / O.health.health_max, 0.01),0,1)
 
 		var/color_mod = "#000000" //Final color
 		if(health_mod <= 0)

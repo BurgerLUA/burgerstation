@@ -265,3 +265,18 @@
 	name = "Slayer"
 	path = 'sound/music/Slayer.ogg'
 	length = 4*60 + 20
+
+/track/woah //Menu music
+	name = "Woah Menu"
+	path = 'sound/music/Woah Menu.ogg'
+	length = 2*60 + 10
+
+/track/dead //Boss music
+	name = "Dead"
+	path = 'sound/music/Dead.ogg'
+	length = 3*60 + 10
+
+/track/grove //Menu music
+	name = "Grove"
+	path = 'sound/music/Grove.ogg'
+	length = 3*60 + 10

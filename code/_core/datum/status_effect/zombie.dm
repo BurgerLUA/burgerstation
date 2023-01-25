@@ -66,8 +66,7 @@
 		H.health.adjust_loss_smart(
 			brute=-BS.total_damage_dealt,
 			organic=TRUE,
-			robotic=FALSE,
-			update=FALSE
+			robotic=FALSE
 		)
 
 	A.health.adjust_loss_smart(
@@ -75,8 +74,7 @@
 		burn=-(10 + A.health.damage[BURN]*0.25),
 		tox=-A.health.damage[BRUTE],
 		organic=TRUE,
-		robotic=FALSE,
-		update=FALSE
+		robotic=FALSE
 	)
 
 	for(var/k in A.organs)

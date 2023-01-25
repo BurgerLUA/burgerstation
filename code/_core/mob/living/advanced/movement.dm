@@ -51,10 +51,6 @@ mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
 		if(I.grabbed_object)
 			. *= 1.5*I.grab_level
 
-	if(health)
-		. *= 2 - clamp( ((health.health_current - health.damage[PAIN] + pain_removal)/health.health_max) + 0.5,0,1)
-		. *= 2 - clamp( (health.stamina_current/health.stamina_max) + 0.5,0,1)
-
 	. *= move_delay_multiplier
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
