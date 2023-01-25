@@ -41,7 +41,6 @@
 			. += -adjust_mana(-mental)
 
 	if(brute > 0 || burn > 0 || pain > 0 || rad > 0) //Deal damage.
-		A << "Hello?? [brute]"
 		var/list/limbs_to_damage = list()
 		var/total_limb_mod = 0
 		for(var/organ_id in TARGETABLE_LIMBS)
@@ -66,8 +65,6 @@
 				organic = organic,
 				robotic = robotic
 			)
-			if(brute > 0)
-				A << "Trying to deal [brute * limb_mod]/[brute] damage to [O.type]."
 
 	if(brute < 0 || burn < 0 || pain < 0 || rad < 0) //Heal damage
 		var/list/damaged_organs = list()
