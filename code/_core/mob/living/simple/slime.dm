@@ -51,6 +51,9 @@
 
 	var/slime_traits = SLIME_TRAIT_NONE
 
+	override_butcher = TRUE
+	gib_on_butcher = FALSE
+
 /mob/living/simple/slime/on_life_slow()
 	. = ..()
 	if((slime_traits & SLIME_TRAIT_UNSTABLE) && !qdeleting && !dead && !prob(80))
@@ -237,7 +240,11 @@
 	var/happiness = (my_rgb[2]/255) + happiness_mod
 	var/sadness = (my_rgb[3]/255) + sadness_mod
 
+	if(length(contents))
+		sadness = INFINITY //Force a less-animated animation.
+
 	var/mood = "neutral"
+
 	if(anger > happiness && anger > sadness)
 		mood = "angry"
 	else if(happiness > anger && happiness > sadness)
@@ -246,7 +253,10 @@
 		mood = "sad"
 
 	if(dead)
-		icon_state = "death"
+		if(override_butcher_contents)
+			icon_state = "butchered"
+		else
+			icon_state = "death"
 	else  if(stored_slimes > 1)
 		icon_state = "large"
 	else

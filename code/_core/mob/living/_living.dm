@@ -282,6 +282,8 @@
 	var/parry_time = 0
 	var/parry_spam_time = 0
 
+	var/gib_on_butcher = TRUE
+
 /mob/living/PreDestroy()
 
 	if(ai)

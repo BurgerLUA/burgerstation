@@ -90,10 +90,10 @@
 
 /mob/living/proc/on_butcher(var/mob/caller,var/atom/movable/atom_to_butcher)
 
-	if(src.qdeleting)
+	if(src.qdeleting || atom_to_butcher.qdeleting)
 		return FALSE
 
-	if(atom_to_butcher.qdeleting)
+	if(!override_butcher && !length(butcher_contents))
 		return FALSE
 
 	. = list()
@@ -120,13 +120,21 @@
 			. += M
 
 	for(var/obj/item/I in atom_to_butcher.contents)
+		if(I.anchored)
+			continue
 		if(is_organ(I))
 			continue
 		I.drop_item(T)
 		. += I
 
+	override_butcher = FALSE
+	butcher_contents = null
+
 	caller?.visible_message(span("danger","\The [caller.name] butchers \the [atom_to_butcher.name]!"),span("danger","You butcher \the [atom_to_butcher.name]."))
-	atom_to_butcher.gib(hard=TRUE)
+	if(gib_on_butcher)
+		atom_to_butcher.gib(hard=TRUE)
+	else
+		update_sprite()
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return 1
