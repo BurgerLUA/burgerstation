@@ -344,7 +344,7 @@
 	return initial(value)
 
 /obj/item/grenade/timed/blackhole/get_value()
-	. = get_base_value()
+	. = ..()
 	for(var/obj/item/I in src.contents)
 		. += I.get_value()
 

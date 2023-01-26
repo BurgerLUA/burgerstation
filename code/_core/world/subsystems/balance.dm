@@ -129,7 +129,7 @@ SUBSYSTEM_DEF(balance)
 			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
 			stored_tier[W.type] = recommended_tier
 
-		var/found_value = W.get_recommended_value(ARMOR_VALUE_TO_CONSIDER) //The 100 is the armor value. This makes it so that pistols are generally cheaper than rifles that have armor penetration.
+		var/found_value = W.get_recommended_value()
 		stored_value[W.type] = found_value
 
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)

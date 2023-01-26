@@ -14,9 +14,11 @@
 	rarity = RARITY_UNCOMMON
 
 /obj/item/legion_core/get_base_value()
+	. = initial(value)
 	if(stabilized)
-		return value*2
-	return expiry_time < 0 ? value*0.2 : value
+		. *= 2
+	else if(expiry_time < 0)
+		. *= 0.1
 
 /obj/item/legion_core/Generate()
 	expiry_time = SECONDS_TO_DECISECONDS(600)

@@ -28,7 +28,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_attribute,
 	/client/verb/horde_test_preview,
 	/client/verb/test_rust_g,
-	/client/verb/debug_current_chunk
+	/client/verb/debug_current_chunk,
+	/client/verb/debug_weapon_value
 )
 
 /client/verb/view_dps()
@@ -623,3 +624,30 @@ var/global/list/debug_verbs = list(
 	var/chunk/C = CHUNK(T)
 
 	debug_variables(C)
+
+
+/client/verb/debug_weapon_value()
+	set name = "Debug Weapon Value"
+	set category = "Debug"
+
+	var/desired_path = input("Please enter the desired path to debug.","Debug Weapon Value","/obj/item/weapon") as null|text
+	if(!desired_path)
+		return
+
+	var/found_path = text2path(desired_path)
+	if(!found_path)
+		src.to_chat(span("notice","[desired_path] is not a valid path."))
+		return
+
+	if(!ispath(found_path,/obj/item/weapon/))
+		src.to_chat(span("notice","[desired_path] is not a valid weapon path."))
+		return
+
+	var/obj/item/weapon/W = new found_path(get_turf(mob))
+	INITIALIZE(W)
+	GENERATE(W)
+	FINALIZE(W)
+
+	W.get_recommended_value(debug=TRUE)
+
+	qdel(W)

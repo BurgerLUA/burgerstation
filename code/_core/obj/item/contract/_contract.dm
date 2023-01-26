@@ -65,7 +65,7 @@
 	update_value()
 	update_sprite()
 
-/obj/item/contract/get_value()
+/obj/item/contract/get_base_value()
 	return CEILING(reward.get_value()*0.25,1)
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)

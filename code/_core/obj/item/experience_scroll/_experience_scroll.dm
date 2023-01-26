@@ -24,7 +24,7 @@
 	var/level_to_give = 5
 
 /obj/item/experience_scroll/get_base_value()
-	return 0
+	return level_to_give*100
 
 /obj/item/experience_scroll/update_overlays()
 	var/image/I = new/image(icon,overlay_icon_state)

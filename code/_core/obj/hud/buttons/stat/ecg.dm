@@ -56,8 +56,8 @@
 		good_color_text = color_scheme[4]
 		bad_color_text = color_scheme[5]
 
-	var/perceived_health_mod = (L.health.health_current - L.health.damage[PAIN]) / L.health.health_max
-	perceived_health_mod = clamp(perceived_health_mod,0,1)
+	var/perceived_health_mod = (L.health.health_current + L.pain_regen_buffer*0.25) - max(0,L.health.damage[PAIN] - L.pain_regen_buffer)
+	perceived_health_mod = clamp(CEILING( perceived_health_mod / L.health.health_max, 0.01),0,1)
 	var/real_health_mod = clamp(L.health.health_current/L.health.health_max,0,1)
 
 	var/list/color_mod = list(

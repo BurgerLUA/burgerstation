@@ -42,9 +42,12 @@
 #define ALL_DAMAGE list(BLADE,BLUNT,PIERCE,LASER,ARCANE,HEAT,COLD,SHOCK,ACID,BOMB,BIO,RAD,HOLY,DARK,FATIGUE,PAIN,ION,SANITY,MENTAL)
 
 
-//Melee Balance
 
-#define ARMOR_AP_MUL 2
+//Damage Balance
+
+#define ARMOR_VALUE_TO_CONSIDER 150 //The armor value of which to consider the value of weapons, bullets, and armor for.
+
+#define ARMOR_AP_MUL 3
 #define ARMOR_DAM_MUL 0.9
 #define SURPLUS_MUL 0.75
 #define PREMIUM_MUL 1.25

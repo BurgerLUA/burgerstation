@@ -508,7 +508,7 @@ var/global/list/all_damage_numbers = list()
 				damage_to_deal[damage_type] *= clamp(1 + A.overall_clothing_defense_rating[damage_type]*0.02,0,1) //Deal 2% more damage per 100 magic resist of attacker, max of 100% more damage.
 				if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [damage_type]: [damage_to_deal[damage_type]].")
 		if(damage_type != FATIGUE && block_multiplier > 0)
-			if(debug) log_debug("Calculating [damage_type] with shield...")
+			if(debug) log_debug("Calculating [damage_type] with blocking...")
 			var/blocked_damage = block_multiplier * old_damage_amount
 			old_damage_amount -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
@@ -518,11 +518,20 @@ var/global/list/all_damage_numbers = list()
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
 		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
 			damage_to_deal[damage_type] = 0
-			if(debug) log_debug("Victim has infinite [damage_type] defense.")
+			if(debug) log_debug("Victim has infinite [damage_type] defense. No damage can be dealt.")
 			continue
-		if(victim_defense > 0 && attack_damage_penetration[damage_type]) //Penetrate armor only if it exists. Also makes it so that negative armor penetration penalties apply when there is armor.
-			victim_defense = max(0,victim_defense - attack_damage_penetration[damage_type]*penetration_mod)
-			if(debug) log_debug("Victim's [damage_type] defense after penetration: [victim_defense].")
+		if(debug) log_debug("Victim's [damage_type] defense before penetration calculations: [victim_defense].")
+		var/local_penetration = attack_damage_penetration[damage_type] * penetration_mod
+		if(IS_INFINITY(local_penetration))
+			victim_defense = 0
+		else
+			if(local_penetration < 0)
+				if(victim_defense > 0)
+					victim_defense -= local_penetration //This adds extra armor.
+			else
+				if(victim_defense > 0)
+					victim_defense = max(0,victim_defense - local_penetration)
+		if(debug) log_debug("Victim's [damage_type] defense after penetration calculations: [victim_defense].")
 		var/new_damage_amount = calculate_damage_with_armor(old_damage_amount,victim_defense)
 		if(debug) log_debug("Final [damage_type] damage: [new_damage_amount].")
 		var/damage_to_block = max(0,old_damage_amount - new_damage_amount)
@@ -613,14 +622,13 @@ var/global/list/all_damage_numbers = list()
 			var/mob/living/A = blamed
 			var/mob/living/V = victim
 			if(!V.dead)
-				var/victim_health_final = V.health.get_overall_health()
 				var/list/hit_log_format = list()
 				hit_log_format["attacker"] = A
 				hit_log_format["attacker_ckey"] = A.ckey
 				hit_log_format["time"] = world.time
 				hit_log_format["damage"] = total_damage_dealt
-				hit_log_format["critical"] = victim_health_final - total_damage_dealt < 0
-				hit_log_format["lethal"] = (victim_health_final - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
+				hit_log_format["critical"] = V.health.health_current - total_damage_dealt < 0
+				hit_log_format["lethal"] = (V.health.health_current - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
 				V.hit_logs += list(hit_log_format)
 				if(V.is_player_controlled())
 					V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)

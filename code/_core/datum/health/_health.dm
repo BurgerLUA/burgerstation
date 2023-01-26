@@ -55,7 +55,7 @@
 	stamina_max = owner.stamina_base
 	mana_max = owner.mana_base
 
-/health/proc/get_overall_health()
+/health/proc/get_overall_health() //This shouldn't be used. Use health.health_current instead.
 	. = health_max
 	for(var/damage_type in damage)
 		. -= damage[damage_type]

@@ -65,7 +65,7 @@
 	else if(dir in DIRECTIONS_INTERCARDINAL)
 
 		var/max_pain = L.health.health_max*L.health.health_regen_cooef
-		var/pain = L.health.damage[PAIN] - L.pain_regen_buffer
+		var/pain = max(0,L.health.damage[PAIN] + -L.pain_regen_buffer)
 
 		var/max_stamina = L.health.stamina_max*L.health.stamina_regen_cooef
 		var/stamina = L.health.stamina_current
@@ -85,9 +85,10 @@
 			pain_mod
 		)*255
 		color = rgb(
-			255*(1 - pain_mod) - health_mod*255,
-			255*(1 - pain_mod) - stamina_mod*255,
-			255*(1 - pain_mod) - mana_mod*255)
+			max(0,255*(1 - pain_mod) - health_mod*255),
+			max(0,255*(1 - pain_mod) - stamina_mod*255),
+			max(0,255*(1 - pain_mod) - mana_mod*255)
+		)
 
 	return FALSE
 

@@ -152,7 +152,7 @@
 			avoidance_list -= k
 			continue
 		if(owner.z != M.z)
-			log_error("Warning: Object [M.get_debug_name()] was found in a mismatched z-list in tracked ai avoidances.")
+			log_error("Warning: Object [M.get_debug_name()] was found in a mismatched z-list in tracked ai avoidances (Repoted: [owner.z], Actual: [M.z]).")
 			avoidance_list -= k
 			continue
 		if(get_dist(M,owner) >= VIEW_RANGE*0.75)
@@ -165,10 +165,10 @@
 	var/good_direction = (NORTH | EAST | SOUTH | WEST) & ~directions_to_avoid
 
 	if((good_direction & NORTH) && (good_direction && SOUTH))
-		good_direction &= ~(prob(50) ? NORTH : SOUTH)
+		good_direction &= ~(NORTH|SOUTH)
 
 	if((good_direction & EAST) && (good_direction && WEST))
-		good_direction &= ~(prob(50) ? EAST : WEST)
+		good_direction &= ~(EAST|WEST)
 
 	if(debug)
 		log_debug("Running away to the [dir2text(good_direction)] due to avoidance.")

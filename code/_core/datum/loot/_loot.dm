@@ -16,7 +16,7 @@
 			var/highest = 0
 			for(var/k in loot_table)
 				if(!ispathcache(k,/obj/item/))
-					log_error("Error: use_value was set to TRUE for [src.get_debug_name()], but everything in the loot_table was an item!")
+					log_error("Error: use_value was set to TRUE for [src.get_debug_name()], but not everything in the loot_table was an item!")
 					use_value = FALSE
 					break
 				highest = max(highest,SSbalance.stored_value[k])

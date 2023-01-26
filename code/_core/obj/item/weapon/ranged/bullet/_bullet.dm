@@ -46,30 +46,6 @@
 	QDEL_CUT(stored_bullets)
 	return ..()
 
-/* Price calculation is hard.
-/obj/item/weapon/ranged/bullet/get_damage_price()
-
-	var/obj/item/bullet_cartridge/B = SSbalance.weapon_to_bullet[src.type]
-	if(!B)
-		return 0
-
-	var/damagetype/D = initial(B.damage_type_bullet)
-	if(!D)
-		return 0
-
-	D = all_damage_types[D]
-
-	if(!D)
-		return 0
-
-	. = D.calculate_value(src) * damage_mod
-
-
-/obj/item/weapon/ranged/bullet/get_base_value()
-	. = ..()
-	. += (bullet_length_max * bullet_diameter_max)/(9*19)*100
-*/
-
 obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(length(empty_sounds))
 		var/turf/T = get_turf(src)

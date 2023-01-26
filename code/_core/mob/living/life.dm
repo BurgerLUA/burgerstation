@@ -453,39 +453,47 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_health())
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
-			-health.health_max*0.1,
-			health.health_max*0.1
+			-health.health_max*0.05,
+			health.health_max*0.05
 		)*multiplier
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
-			-health.health_max*0.1,
-			health.health_max*0.1
+			-health.health_max*0.05,
+			health.health_max*0.05
 		)*multiplier
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
-			-health.health_max*0.1,
-			health.health_max*0.1
+			-health.health_max*0.05,
+			health.health_max*0.05
 		)*multiplier
 		//Pain is different.
 		var/pain_to_regen = 0
 		if(pain_regen_buffer > 0)
-			pain_to_regen = min(pain_regen_buffer,CEILING(pain_regen_buffer*0.05,1),health.health_max*0.1)*multiplier //Get the smallest out of these 3.
+			pain_to_regen = min(
+				pain_regen_buffer,
+				0.025 + pain_regen_buffer*0.025*multiplier,
+				health.health_max*0.05*multiplier
+			) //Get the smallest out of these 4.
 		else
-			pain_to_regen = max(pain_regen_buffer,-health.health_max*0.01*multiplier)*multiplier
+			pain_to_regen = max(
+				pain_regen_buffer,
+				-health.health_max*0.01*multiplier,
+				-100/300 //Takes 5 minutes to process 100 pain.
+			)
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
-			-health.health_max*0.1,
-			health.health_max*0.1
+			-health.health_max*0.05,
+			health.health_max*0.05
 		)*multiplier
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
-			-health.health_max*0.1,
-			health.health_max*0.1
+			-health.health_max*0.05,
+			health.health_max*0.05
 		)*multiplier
 		var/mental_to_regen = clamp(
 			mental_regen_buffer,
-			-health.health_max*0.1,
-			health.health_max*0.1
+			-health.health_max*0.05,
+			health.health_max*0.05
 		)*multiplier
 		src.health.adjust_loss_smart(
 			brute = -brute_to_regen,
@@ -507,18 +515,18 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_stamina())
 		var/stamina_to_regen = clamp(
 			stamina_regen_buffer,
-			-health.stamina_max*0.1,
-			max(health.stamina_regeneration*multiplier,multiplier)
-		)
+			-health.stamina_max*0.05,
+			health.stamina_max*0.05
+		)*multiplier
 		health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
 
 	if(can_buffer_mana())
 		var/mana_to_regen = clamp(
 			mana_regen_buffer,
-			-health.mana_max*0.1,
-			max(health.mana_regeneration*multiplier,multiplier)
-		)
+			-health.mana_max*0.05,
+			health.mana_max*0.05
+		)*multiplier
 		health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 

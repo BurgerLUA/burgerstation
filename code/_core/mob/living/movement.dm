@@ -215,7 +215,12 @@
 		. *= max(2 - stealth_mod*0.5,1)
 
 	if(ckey_last)
-		. *= 2 - min(1,get_nutrition_mod() * get_hydration_mod() * get_nutrition_quality_mod())
+		var/hydration_nutrition_mod = get_nutrition_mod() * get_hydration_mod()
+		var/nutritional_quality = get_nutrition_quality_mod()
+		if(has_status_effect(DRUGGY))
+			nutritional_quality = max(1,nutritional_quality)
+		hydration_nutrition_mod = clamp(hydration_nutrition_mod*nutritional_quality,0,1)
+		. *= 2 - hydration_nutrition_mod
 
 	if(intoxication)
 		. *= 1 + intoxication*0.003
@@ -227,10 +232,10 @@
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
 
 	if(health)
-		var/modded_health = (health.health_current + src.pain_regen_buffer*0.25) - max(0,src.health.damage[PAIN] - src.pain_regen_buffer)
-		. *= 2 - clamp( (modded_health/health.health_max) + 0.5,0,1)
+		var/modded_health = (src.health.health_current + src.pain_regen_buffer*0.25) - max(0,src.health.damage[PAIN] - src.pain_regen_buffer)
+		. *= 2 - clamp(modded_health/src.health.health_max + 0.25,0,1)
 		if(!has_status_effect(ADRENALINE))
-			. *= 2 - clamp( (health.stamina_current/health.stamina_max) + 0.75,0,1)
+			. *= 2 - clamp( (src.health.stamina_current/src.health.stamina_max) + 0.75,0,1)
 
 	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25

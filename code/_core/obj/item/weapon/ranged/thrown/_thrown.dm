@@ -21,10 +21,6 @@
 	. = ..()
 	. *= 0.05
 
-
-
-
-
 /obj/item/weapon/ranged/thrown/update_icon()
 	. = ..()
 	icon = initial(icon)

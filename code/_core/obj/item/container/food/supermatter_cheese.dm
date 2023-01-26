@@ -15,9 +15,6 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/container/edible/supermatter_cheese/get_value()
-	return get_base_value()
-
 /obj/item/container/edible/supermatter_cheese/Generate()
 	. = ..()
 	reagents.add_reagent(/reagent/drug/supermatter,10)
