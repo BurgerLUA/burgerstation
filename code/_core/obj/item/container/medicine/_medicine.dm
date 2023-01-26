@@ -16,7 +16,7 @@
 
 	var/treatment_time_mul = 1
 
-	amount = 0 //This gets generated.
+	amount = 1
 	amount_max = 10
 
 	var/icon_state_max = 3
@@ -25,24 +25,16 @@
 
 	var/override_icon_state = FALSE
 
-	var/organic = TRUE //Set to true if heals robotic limbs and not organic limbs.
+	var/organic = TRUE //Set to false if heals robotic limbs and not organic limbs.
 
 	size = SIZE_1
 
 /obj/item/container/healing/get_base_value()
 	return abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3
 
-/obj/item/container/healing/Generate()
-	if(amount == 0)
-		amount = amount_max
-	. = ..()
-
 /obj/item/container/healing/Initialize(var/desired_loc)
-
 	. = ..()
-
-	if(reagents)
-		reagents.volume_max = amount*10
+	if(reagents) reagents.volume_max = amount*10
 
 /obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
 

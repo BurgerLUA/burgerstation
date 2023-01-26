@@ -253,7 +253,7 @@
 		mood = "sad"
 
 	if(dead)
-		if(override_butcher_contents)
+		if(!override_butcher)
 			icon_state = "butchered"
 		else
 			icon_state = "death"

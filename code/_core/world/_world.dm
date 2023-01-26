@@ -35,6 +35,7 @@ var/global/world_state = STATE_STARTING
 	setup_turf_damage_icons()
 
 	//TODO: Unfuck this.
+	createtypecache(/loot)
 	createtypecache(/area)
 	createtypecache(/area/shuttle)
 	createtypecache(/mob/living)

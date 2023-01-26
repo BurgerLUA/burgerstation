@@ -6,28 +6,50 @@
 	var/chance_none = 0 //Applies on a per loot_count basis.
 	var/loot_multiplier = 1 //How much of the loot to duplicate.
 	var/use_value = FALSE //Use the actual value of a weapon as a weight instead of the predefined value in the list.
+	var/average_value = 0
 
-/loot/New(var/desired_loc)
-
-	. = ..()
+/loot/proc/check_value()
+	average_value = 0
+	if(use_value)
+		var/highest = 0
+		for(var/k in loot_table) //First pass.
+			if(ispathcache(k,/loot/))
+				var/loot/L = SSloot.all_loot[k]
+				highest = max(highest,L.average_value)
+			else
+				highest = max(highest,SSbalance.stored_value[k])
+		if(!highest)
+			log_error("Warning: [src.type] did not have a highest value for loot. Something went wrong.")
+		for(var/k in loot_table) //Second pass.
+			var/value = 0
+			if(ispathcache(k,/loot/))
+				var/loot/L = SSloot.all_loot[k]
+				value = L.average_value
+			else
+				value = SSbalance.stored_value[k]
+			var/actual_weight = highest ? (1 - value/highest)*highest : 1
+			actual_weight = 1 + FLOOR(actual_weight,1)
+			loot_table[k] = actual_weight
+			average_value += value
+		sort_tim(loot_table,/proc/cmp_numeric_asc_rand,TRUE)
+	else
+		for(var/k in loot_table)
+			if(ispathcache(k,/loot/))
+				var/loot/L = SSloot.all_loot[k]
+				average_value += L.average_value
+			else
+				average_value += SSbalance.stored_value[k]
 
 	if(length(loot_table))
-		if(use_value)
-			var/highest = 0
-			for(var/k in loot_table)
-				if(!ispathcache(k,/obj/item/))
-					log_error("Error: use_value was set to TRUE for [src.get_debug_name()], but not everything in the loot_table was an item!")
-					use_value = FALSE
-					break
-				highest = max(highest,SSbalance.stored_value[k])
-			if(use_value)
-				for(var/k in loot_table)
-					var/value = SSbalance.stored_value[k]
-					var/actual_weight = (1 - value/highest)*highest
-					actual_weight = 1 + FLOOR(actual_weight,1)
-					loot_table[k] = actual_weight
+		average_value *= 1/length(loot_table)
+		average_value *= loot_count * loot_multiplier * clamp((100 - chance_none)/100,0,1)
 
-		sort_tim(loot_table,/proc/cmp_numeric_asc_rand,TRUE)
+	for(var/k in loot_table_guaranteed)
+		if(ispathcache(k,/loot/))
+			var/loot/L = SSloot.all_loot[k]
+			average_value += L.average_value
+		else
+			average_value += SSbalance.stored_value[k]
 
 /loot/proc/do_spawn(var/atom/spawn_loc,var/rarity) //Use this to spawn the loot. rarity is optional.
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")

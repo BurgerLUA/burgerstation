@@ -13,10 +13,6 @@ var/global/list/all_typecaches = list()
 	for(var/k in typesof(type_to_generate))
 		all_typecaches[type_to_generate][k] = TRUE
 
-
-
-
-
 #define is_datum(A) istype(A, /datum)
 #define is_atom(A) istype(A,/atom)
 
