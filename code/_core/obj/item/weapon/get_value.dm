@@ -1,5 +1,3 @@
-// https://www.desmos.com/calculator/k6xteaoff3
-
 
 /obj/item/weapon/proc/get_recommended_value(var/debug=FALSE)
 
@@ -8,12 +6,12 @@
 	if(debug) log_debug("reliability: [reliability]")
 
 	var/kill_time_mod = get_kill_time(0)*0.2 + get_kill_time(100)*0.3 + get_kill_time(200)*0.5
-	kill_time_mod = ((3 - min(reliability*kill_time_mod,3))**4)*24 //Scales from 1944 to 0 (0 to 3)
+	kill_time_mod = (1 + (1.9 / (0.1+kill_time_mod))) * 50
 
 	if(debug) log_debug("kill_time_mod: [kill_time_mod]")
 
 	var/stopping_power = get_stopping_power(0)*0.2 + get_stopping_power(100)*0.3 + get_stopping_power(200)*0.5
-	var/stopping_power_mod = ((reliability*stopping_power)**1.3)*1000
+	var/stopping_power_mod = ((reliability*stopping_power)**1.1)*1000
 
 	if(debug) log_debug("stopping_power_mod: [stopping_power_mod]")
 

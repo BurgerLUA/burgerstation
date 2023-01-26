@@ -10,7 +10,7 @@
 
 	tier = 3
 
-	shoot_delay = 15
+	shoot_delay = 20
 
 	automatic = FALSE
 

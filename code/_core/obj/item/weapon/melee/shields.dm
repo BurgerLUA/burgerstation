@@ -28,7 +28,7 @@ var/global/list/shield_price_mul = list(
 
 /obj/item/weapon/melee/shield/get_base_value()
 
-	. = .()
+	. = ..()
 
 	var/total_block = 0
 	for(var/k in block_defense)

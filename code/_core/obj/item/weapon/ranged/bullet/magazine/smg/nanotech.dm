@@ -66,12 +66,15 @@
 	movement_inaccuracy_modifier = 0
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
+
+	icon_state = initial(icon_state)
+
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
 		var/bullet_num = FLOOR((length(M.stored_bullets)/M.bullet_count_max)*9,1)
-		icon_state = "[initial(icon_state)]_[bullet_num]"
+		icon_state = "[icon_state]_[bullet_num]"
 	else
-		icon_state = initial(icon_state)
+		icon_state = "[icon_state]_open"
 
 	return ..()
 

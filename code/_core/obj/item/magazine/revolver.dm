@@ -26,6 +26,8 @@
 
 	icon_states = 6
 
+	value = 15
+
 
 /obj/item/magazine/clip/revolver/bullet_38/eight
 	name = "\improper .38 eight round speedloader"
@@ -69,6 +71,8 @@
 
 	icon_states = 6
 
+	value = 15
+
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
 	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
@@ -95,3 +99,5 @@
 	size = SIZE_1
 
 	icon_states = 6
+
+	value = 15

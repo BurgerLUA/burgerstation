@@ -39,8 +39,6 @@ SUBSYSTEM_DEF(balance)
 	. = list()
 	for(var/k in bullet_subtypes)
 		var/obj/item/bullet_cartridge/B = k
-		if(initial(B.rarity) != RARITY_COMMON)
-			continue
 		B = new k(T)
 		B.initialize_type = INITIALIZE_NONE
 		INITIALIZE(B)
@@ -48,7 +46,8 @@ SUBSYSTEM_DEF(balance)
 		FINALIZE(B)
 		if(B.qdeleting)
 			continue
-		created_bullets += B
+		if(initial(B.rarity) == RARITY_COMMON)
+			created_bullets += B
 		stored_value[B.type] = B.get_recommended_value()
 		stored_value[B.type] = CEILING(stored_value[B.type],0.01)
 		. += B
@@ -58,8 +57,6 @@ SUBSYSTEM_DEF(balance)
 	. = list()
 	for(var/k in magazine_subtypes)
 		var/obj/item/magazine/M = k
-		if(initial(M.rarity) != RARITY_COMMON)
-			continue
 		if(initial(M.bullet_count_max) <= 0)
 			continue
 		M = new k(T)
@@ -69,7 +66,8 @@ SUBSYSTEM_DEF(balance)
 		FINALIZE(M)
 		if(M.qdeleting)
 			continue
-		created_magazines += M
+		if(initial(M.rarity) == RARITY_COMMON)
+			created_magazines += M
 		stored_value[M.type] = M.bullet_length_best*M.bullet_diameter_best*M.bullet_count_max*0.01
 		stored_value[M.type] = CEILING(stored_value[M.type],1)
 		if(M.ammo) stored_value[M.type] += stored_value[M.ammo] * M.bullet_count_max
@@ -95,8 +93,6 @@ SUBSYSTEM_DEF(balance)
 			var/obj/item/weapon/ranged/bullet/B = W
 			for(var/v in created_bullets)
 				var/obj/item/bullet_cartridge/C = v
-				if(C.rarity != RARITY_COMMON)
-					continue
 				if(C.bullet_length != B.bullet_length_best)
 					continue
 				if(C.bullet_diameter != B.bullet_diameter_best)
@@ -108,8 +104,6 @@ SUBSYSTEM_DEF(balance)
 			var/obj/item/weapon/ranged/bullet/magazine/B = W
 			for(var/v in created_magazines)
 				var/obj/item/magazine/M = v
-				if(M.rarity != RARITY_COMMON)
-					continue
 				if(!M.weapon_whitelist[B.type])
 					continue
 				weapon_to_magazine[B.type] = M.type

@@ -263,11 +263,11 @@
 	if(!D) return 0
 
 	//https://www.desmos.com/calculator/qgzesfmsl1
-	. = (D.get_damage_per_hit(0)*0.2 + D.get_damage_per_hit(100)*0.3 + D.get_damage_per_hit(200)*0.5) * projectile_count
+	. = (D.get_damage_per_hit(0)*0.1 + D.get_damage_per_hit(100)*0.2 + D.get_damage_per_hit(200)*0.7) * projectile_count
 	. *= 0.5 + (D.falloff/VIEW_RANGE)*0.5 //Falloff.
 	. *= 0.75 + (projectile_speed/TILE_SIZE)*0.25 //Speed
 	. *= 0.75 + 0.25*(1- (base_spread/0.1)) //Spread
 	. *= 1 + max(0,1-inaccuracy_modifier)*0.5 //Inaccuracy
 	. *= 0.1 + min(max(0,1 - (jam_chance + misfire_chance)/50),0.9) //Reliability.
-
-	. += ((bullet_length*bullet_diameter)/(9*19))*3 //Material costs.
+	. *= 0.04
+	. += ((bullet_length*bullet_diameter)/(9*19))*1 //Material costs.
