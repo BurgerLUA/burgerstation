@@ -21,9 +21,6 @@
 /obj/item/container/blood_pack/feed(var/mob/caller,var/mob/living/target)
 	return FALSE
 
-/obj/item/container/blood_pack/get_examine_list(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
-
 /obj/item/container/blood_pack/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
 	. = ..()
 	update_sprite()

@@ -13,7 +13,7 @@
 	ranged_damage_type = /damagetype/ranged/ling_tentacle/warp
 	var/alt_ranged_damage_type = /damagetype/ranged/ling_tentacle/pull
 
-	value = -1
+	value = 0
 	value_burgerbux = 1
 
 	drop_sound = 'sound/items/drop/axe.ogg'

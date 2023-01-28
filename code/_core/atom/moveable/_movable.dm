@@ -38,7 +38,7 @@
 
 	var/throwable = TRUE
 
-	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
+	var/value = 0 //Value in whatever currency this world uses. Used for buying and selling items.
 
 	var/acceleration_value = 0 //No touch.
 

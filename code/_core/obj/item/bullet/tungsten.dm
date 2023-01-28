@@ -17,10 +17,11 @@
 	projectile_speed = BULLET_SPEED_MAX
 
 	size = 0.5
-	value = 3
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/tungsten/surplus
 	name = "\improper surplus tungsten bolt"
 	damage_type_bullet = /damagetype/ranged/bullet/tungsten/surplus
 	misfire_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN

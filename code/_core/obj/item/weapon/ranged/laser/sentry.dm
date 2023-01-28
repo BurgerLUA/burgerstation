@@ -21,7 +21,7 @@
 
 	size = SIZE_3
 
-	value = -1
+	value = 0
 
 	battery = /obj/item/powercell/recharging
 

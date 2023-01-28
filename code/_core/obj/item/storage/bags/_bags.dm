@@ -2,7 +2,7 @@
 	name = "specific item type bags"
 	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
-	value = -1
+	value = 0
 
 /obj/item/storage/bags/click_on_object(var/mob/caller as mob, var/atom/object, location, contmrol, params)
 

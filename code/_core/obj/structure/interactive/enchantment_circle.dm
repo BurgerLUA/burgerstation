@@ -8,7 +8,7 @@
 
 	plane = PLANE_FLOOR_ATTACHMENT
 
-	value = -1
+	value = 0
 
 	pixel_x = -32
 	pixel_y = -32

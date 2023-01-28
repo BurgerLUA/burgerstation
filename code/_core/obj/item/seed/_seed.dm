@@ -19,7 +19,7 @@
 
 	var/delete_after_harvest = TRUE
 
-	value = -1
+	value = 0
 
 /obj/item/seed/Finalize()
 

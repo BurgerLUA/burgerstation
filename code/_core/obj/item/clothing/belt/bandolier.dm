@@ -134,7 +134,7 @@
 	icon = 'icons/obj/item/clothing/belts/bandolier_12.dmi'
 	max_shells = 100
 	shell_type = /obj/item/bullet_cartridge/shotgun_12
-	value = 1
+	value = 1 //Dummy value.
 
 /obj/item/clothing/belt/bandolier/shotgun_20
 	name = "20 gauge shotgun bandolier"
@@ -142,7 +142,7 @@
 	icon = 'icons/obj/item/clothing/belts/bandolier_20.dmi'
 	max_shells = 120
 	shell_type = /obj/item/bullet_cartridge/shotgun_20
-	value = 1
+	value = 1 //Dummy value.
 
 /obj/item/clothing/belt/bandolier/shotgun_23
 	name = "23x75mmR shotgun bandolier"
@@ -150,4 +150,4 @@
 	icon = 'icons/obj/item/clothing/belts/bandolier_23.dmi'
 	max_shells = 80
 	shell_type = /obj/item/bullet_cartridge/shotgun_23
-	value = 1
+	value = 1 //Dummy value.

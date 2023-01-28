@@ -26,6 +26,8 @@
 
 	view_punch_mod = 0.5
 
+	value = 1 //Dummy value.
+
 /obj/item/bullet_cartridge/shotgun_12/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
@@ -45,13 +47,12 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.04
-	value = 1.8
 
 /obj/item/bullet_cartridge/shotgun_12/slug/surplus
 	name = "\improper surplus 12 gauge slug"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/slug/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/shotgun_12/slug/cleaning
 	name = "\improper 12 gauge cleaning slug"
@@ -69,7 +70,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.04
-	value = 2
 
 	caseless = TRUE
 
@@ -79,6 +79,7 @@
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/surplus
 	jam_chance = 1
 	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/shotgun_12/fire
 	name = "\improper 12 gauge drake breath shell"
@@ -96,7 +97,6 @@
 	projectile_speed = 8
 
 	size = 0.04
-	value = 5
 
 	inaccuracy_modifier = 1
 
@@ -117,7 +117,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.04
-	value = 1.8
 
 	inaccuracy_modifier = 1.1
 
@@ -127,13 +126,13 @@
 	name = "\improper surplus 12 gauge flechette"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/flechette/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/shotgun_12/rubber // yes i literally just copied the ks-23's rubber slugs shut up
 	name = "\improper 12 gauge rubber slug shell"
 	desc = "Because real men use the concussive force of a huge fucking piece of rubber."
 	desc_extended = "A rubber slug shell, supposedly less lethal. Causes a lot of pain, but not much damage."
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 	icon_state = "rubber"
 
 	projectile_count = 1
@@ -146,7 +145,7 @@
 
 /obj/item/bullet_cartridge/shotgun_12/frag
 	name = "\improper 12 gauge frag"
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 	desc = "Shoots one really big bullet."
 	desc_extended = "This shell doesn't spread alot, and only has one projectile."
 	icon_state = "slug"
@@ -160,7 +159,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.04
-	value = 3
 
 
 /obj/item/bullet_cartridge/shotgun_12/techshot
@@ -179,4 +177,3 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.04
-	value = 3

@@ -17,7 +17,7 @@
 	projectile_speed = TILE_SIZE * 0.5
 
 	size = 0.1
-	value = 100
+	value = 1 //Dummy value.
 
 	caseless = TRUE
 
@@ -35,6 +35,8 @@
 	damage_type_bullet = /damagetype/ranged/bullet/grenade/high_velocity
 	projectile_speed = TILE_SIZE - 1
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/bullet_cartridge/grenade_40mm/du
 	name = "40mm mini-nuke grenade"
 	desc = "KA-BOOOOOOM"
@@ -43,6 +45,8 @@
 	rarity = RARITY_UNCOMMON
 	value_burgerbux = 1
 	projectile = /obj/projectile/bullet/grenade/du
+
+	rarity = RARITY_RARE
 
 
 /obj/item/bullet_cartridge/grenade_40mm/rubber
@@ -54,6 +58,8 @@
 	projectile = /obj/projectile/bullet/grenade/rubber
 	damage_type_bullet = /damagetype/ranged/bullet/grenade/rubber
 
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/bullet_cartridge/grenade_40mm/cleaning
 	name = "40mm cleaning round"
@@ -63,3 +69,5 @@
 
 	projectile = /obj/projectile/bullet/grenade/cleaning
 	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/rubber_grenade
+
+	rarity = RARITY_UNCOMMON

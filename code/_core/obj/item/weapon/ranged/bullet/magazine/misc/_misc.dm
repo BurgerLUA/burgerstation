@@ -37,7 +37,7 @@
 
 	attachment_whitelist = list()
 
-	value = -1
+	value = 0
 
 	anchored = TRUE
 

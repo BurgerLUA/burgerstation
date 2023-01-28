@@ -14,5 +14,3 @@
 	weight = 2
 
 	can_rename = TRUE
-
-	value = 0

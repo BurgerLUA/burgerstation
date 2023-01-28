@@ -9,7 +9,7 @@
 	var/total_capacity = 0
 	var/do_not_consume = FALSE //Does this get consumed? Or merely emptied on craft. Only used for Azuras Star
 
-	value = 0
+	value = 100 //Dummy value. Calculated later.
 
 	weight = 1
 

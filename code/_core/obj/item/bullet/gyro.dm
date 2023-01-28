@@ -19,10 +19,10 @@
 	misfire_chance = 5
 
 	size = 0.1
-	value = 15
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/gyrojet/surplus
 	name = "\improper surplus 20mm gyrorocket"
 	misfire_chance = 20
-
+	rarity = RARITY_BROKEN
 

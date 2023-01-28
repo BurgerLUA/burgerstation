@@ -17,7 +17,7 @@
 
 	var/open = TRUE
 
-	value = -1
+	value = 0
 
 	queue_delete_immune = TRUE
 

@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(balance)
 		FINALIZE(B)
 		if(B.qdeleting)
 			continue
-		if(initial(B.rarity) == RARITY_COMMON)
+		if(B.rarity == RARITY_COMMON) //Only consider normal bullets.
 			created_bullets += B
 		stored_value[B.type] = B.get_recommended_value()
 		stored_value[B.type] = CEILING(stored_value[B.type],0.01)

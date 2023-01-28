@@ -31,7 +31,7 @@
 
 	can_wear = TRUE
 
-	value = -1
+	value = 0
 
 	var/speed_bonus = 0
 

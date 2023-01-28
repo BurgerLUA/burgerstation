@@ -4,7 +4,7 @@
 	desc_extended = ""
 	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
-	value = -1
+	value = 0
 
 	company_type = "Solarian"
 
@@ -50,6 +50,6 @@
 
 /obj/item/weapon/ranged/bullet/revolver/sbarrel/undermount
 	attachment_whitelist = list() //no
-	value = -1
+	value = 0
 	open = TRUE
 	can_shoot_while_open = TRUE

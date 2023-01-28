@@ -5,7 +5,7 @@
 		BODY_HEAD = TRUE,
 		BODY_EYES = TRUE
 	)
-	value = -1
+	value = 0
 
 	uses_until_condition_fall = 750
 

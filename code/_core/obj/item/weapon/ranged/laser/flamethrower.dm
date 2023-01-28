@@ -6,7 +6,7 @@
 
 	company_type = "Solarian"
 
-	value = -1 //This is, after all, part of the Flamethrower Pack
+	value = 0 //This is, after all, part of the Flamethrower Pack
 
 	shoot_sounds = list('sound/weapons/magic/fractal.ogg') //sounds more fire-y
 

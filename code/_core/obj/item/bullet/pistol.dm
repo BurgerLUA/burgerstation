@@ -17,13 +17,16 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.02
-	value = 1
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_10mm/surplus
 	name = "\improper surplus 10mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_10mm/surplus
 	jam_chance = 1
 	value = 0
+	rarity = RARITY_BROKEN
+
 
 /obj/item/bullet_cartridge/pistol_10mm/ap
 	name = "\improper AP 10mm pistol cartridge"
@@ -34,7 +37,6 @@
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_10mm/ap
 
 	size = 0.02
-	value = 2
 
 	penetrations = 1
 
@@ -58,13 +60,15 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.025
-	value = 1.3
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_50/surplus
 	name = "\improper surplus .50 pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_50/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
+
 
 /obj/item/bullet_cartridge/pistol_50/ap
 	name = "\improper AP .50 pistol cartridge"
@@ -73,8 +77,6 @@
 	icon = 'icons/obj/item/bullet/50ae_ap.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_50/ap
-
-	value = 2.6
 
 	penetrations = 1
 
@@ -85,8 +87,6 @@
 	icon = 'icons/obj/item/bullet/50ae_ap.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_50/heartbreaker
-
-	value = 6
 
 /obj/item/bullet_cartridge/pistol_12mm/
 	name = "\improper 12.7mm pistol catridge"
@@ -107,13 +107,15 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.025
-	value = 1.2
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_12mm/surplus
 	name = "\improper surplus 12.7mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_12mm/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
+
 
 /obj/item/bullet_cartridge/pistol_12mm/ap
 	name = "\improper AP 12.7mm pistol catridge"
@@ -122,8 +124,6 @@
 	icon = 'icons/obj/item/bullet/12mm_ap.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_12mm/ap
-
-	value = 2.4
 
 	penetrations = 1
 
@@ -146,13 +146,15 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	value = 0.9
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_9mm/surplus
 	name = "\improper surplus 9mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
+
 
 /obj/item/bullet_cartridge/pistol_9mm/ap
 	name = "\improper AP 9mm pistol cartridge"
@@ -161,8 +163,6 @@
 	icon = 'icons/obj/item/bullet/9mm_ap.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm/ap
-
-	value = 1.8
 
 	penetrations = 1
 
@@ -173,8 +173,6 @@
 	icon = 'icons/obj/item/bullet/9mm_hp.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_9mm/hp
-
-	value = 2
 
 
 /obj/item/bullet_cartridge/pistol_4mm/
@@ -197,7 +195,7 @@
 	projectile_speed = TILE_SIZE - 1 //fast as fuck booooooooooi
 
 	size = 0.01
-	value = 0.4
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_4mm/smart
 	name = "\improper 4.6x30mm smart cartridge"
@@ -219,8 +217,8 @@
 	projectile_speed = TILE_SIZE*0.5 - 1
 
 	size = 0.01
-	value = 2
 
+	rarity = RARITY_UNCOMMON
 
 /obj/item/bullet_cartridge/pistol_4mm/toxin
 	name = "\improper toxin 4.6x30mm smg cartridge"
@@ -229,8 +227,6 @@
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/toxin
 
-	value = 0.5
-
 /obj/item/bullet_cartridge/pistol_4mm/ion
 	name = "\improper ion 4.6x30mm smg cartridge"
 	rarity = RARITY_UNCOMMON
@@ -238,16 +234,12 @@
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ion
 
-	value = 0.5
-
 /obj/item/bullet_cartridge/pistol_4mm/ap
 	name = "\improper AP 4.6x30mm smg cartridge"
 	rarity = RARITY_UNCOMMON
 	caseless = TRUE
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/ap
-
-	value = 0.5
 
 	penetrations = 1
 
@@ -258,19 +250,16 @@
 
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/incendiary
 
-	value = 0.5
-
 /obj/item/bullet_cartridge/pistol_4mm/surplus
 	name = "\improper surplus 4.6x30mm pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_4mm/caseless
 	name = "\improper 4.6x30mm caseless smg cartridge"
 	rarity = RARITY_UNCOMMON
 	caseless = TRUE
-	value = 0.5
 
 /obj/item/bullet_cartridge/pistol_4mm/caseless/du
 	name = "\improper 4.6x30mm caseless DU smg cartridge"
@@ -278,13 +267,13 @@
 	value_burgerbux = 1
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/du
 	caseless = TRUE
-	value = 2
 	penetrations = 2
+
 /obj/item/bullet_cartridge/pistol_4mm/caseless/surplus
 	name = "\improper surplus 4.6x30mm caseless pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/smg_4mm/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_40/
 	name = "\improper .40 pistol cartridge"
@@ -306,13 +295,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	value = 1
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_40/surplus
 	name = "\improper surplus .40 pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_40/ap
 	name = "\improper AP .40 pistol cartridge"
@@ -322,8 +311,6 @@
 	icon = 'icons/obj/item/bullet/40_ap.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/ap
-
-	value = 2
 
 	penetrations = 1
 
@@ -336,16 +323,13 @@
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/tranq
 
-	value = 6
-
 	jam_chance = 100 //Required.
 
 /obj/item/bullet_cartridge/pistol_40/tranq/surplus
 	name = "\improper surplus tranq .40 pistol cartridge"
-	rarity = RARITY_UNCOMMON
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_40/tranq/surplus
 	misfire_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_45/
 	name = "\improper .45 pistol catridge"
@@ -366,13 +350,14 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.015
-	value = 1.5
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_45/surplus
 	name = "\improper surplus .45 pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_45/surplus
 	jam_chance = 1
 	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_45/ap
 	name = "\improper AP .45 pistol catridge"
@@ -381,8 +366,6 @@
 	icon = 'icons/obj/item/bullet/45_ap.dmi'
 
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_45/ap
-
-	value = 1.5
 
 	penetrations = 1
 
@@ -405,15 +388,12 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.015
-	value = 2
 
 /obj/item/bullet_cartridge/pistol_45holy/surplus
 	name = "\improper surplus Holy .45 pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/holybullet/surplus
 	jam_chance = 1
-	value = 0
-
-
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_10x24mm
 	name = "\improper 10x24mm caseless pistol cartridge"
@@ -434,13 +414,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.02
-	value = 1.25
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_10x24mm/surplus
 	name = "\improper surplus 10x24mm caseless pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/pistol_10x24mm/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_10x24mm/explosive
 	name = "\improper 10x24mm HEAP caseless pistol cartridge"
@@ -461,4 +441,5 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.02
-	value = 2.4
+
+	rarity = RARITY_RARE

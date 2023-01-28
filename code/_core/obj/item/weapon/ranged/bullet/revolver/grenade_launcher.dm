@@ -77,7 +77,7 @@
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount
 	attachment_whitelist = list() //no
-	value = -1
+	value = 0
 	open = TRUE
 	can_shoot_while_open = TRUE
 

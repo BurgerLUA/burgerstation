@@ -10,6 +10,4 @@
 
 	size = SIZE_3
 
-	value = 0
-
 	can_save = FALSE

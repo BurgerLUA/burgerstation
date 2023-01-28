@@ -123,6 +123,6 @@
 		movement_spread = 1.5
 	)
 
-	value = -1
+	value = 0
 
 	removable = FALSE

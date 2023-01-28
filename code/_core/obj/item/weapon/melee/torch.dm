@@ -127,6 +127,6 @@
 	desired_light_power = 0.5
 	desired_light_color = "#E3FF9E"
 	desired_light_angle = LIGHT_OMNI
-	value = -1
+	value = 0
 
 	enabled = TRUE

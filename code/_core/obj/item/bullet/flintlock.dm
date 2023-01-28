@@ -16,6 +16,6 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.1
-	value = 3
+	value = 1 //Dummy value.
 
 	caseless = TRUE

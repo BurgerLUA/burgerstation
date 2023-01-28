@@ -5,7 +5,6 @@
 	rarity = RARITY_COMMON
 	icon = 'icons/obj/item/bullet/rocket.dmi'
 	icon_state = "HE"
-	value = 500
 
 	amount_max = 1
 	amount_max_icon = 1
@@ -24,6 +23,8 @@
 
 	bullet_insert_sound = 'sound/weapons/rocket/rocket_insert.ogg'
 
+	value = 1 //Dummy value.
+
 /obj/item/bullet_cartridge/rocket_70mm/get_base_value()
 	. = ..()
 	. += 400
@@ -35,7 +36,6 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/rocket.dmi'
 	icon_state = "WP"
-	value = 400
 
 	amount_max = 1
 	amount_max_icon = 1
@@ -58,7 +58,6 @@
 	value_burgerbux = 1
 	icon = 'icons/obj/item/bullet/rocket.dmi'
 	icon_state = "NUKE"
-	value = 1200
 
 	amount_max = 1
 	amount_max_icon = 1
@@ -84,7 +83,6 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/rocket.dmi'
 	icon_state = "AP"
-	value = 400
 
 	amount_max = 1
 	amount_max_icon = 1

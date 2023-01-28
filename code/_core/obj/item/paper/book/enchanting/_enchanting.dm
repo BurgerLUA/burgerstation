@@ -9,7 +9,7 @@
 
 	var/enchanting_phrase = "Memes."
 
-	value = -1
+	value = 0
 
 	editable = FALSE
 

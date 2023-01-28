@@ -162,7 +162,7 @@
 
 	density = TRUE
 
-	value = -1
+	value = 0
 
 	allow_path = TRUE
 
@@ -330,7 +330,15 @@ var/global/list/rarity_to_mul = list(
 		amount, //What we can actually transfer from
 		target.amount_max - target.amount //What the target can actually hold.
 	)
-	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
+
+	var/reagents_ratio = amount_to_transfer / amount
+
+	target.add_item_count(amount_to_transfer,TRUE)
+	if(src.reagents && target.reagents)
+		src.reagents.transfer_reagents_to(target.reagents,src.reagents.volume_current*reagents_ratio)
+	src.add_item_count(-amount_to_transfer,TRUE)
+
+	return amount_to_transfer
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)
@@ -527,6 +535,8 @@ var/global/list/rarity_to_mul = list(
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
+	if(reagents && reagents.volume_current)
+		. += div("notice",reagents.get_contents_english())
 
 /obj/item/proc/update_lighting_for_owner()
 

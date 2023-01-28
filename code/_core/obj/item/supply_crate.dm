@@ -12,15 +12,24 @@
 	initialize_type = INITIALIZE_LATE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-	var/loot
+	var/loot/loot = /loot/random/low/lots
 
 	var/has_gibs = TRUE
 
-	value = 500
+	value = 1 //Dummy value.
 
 	weight = 10
 
 	rarity = RARITY_RARE
+
+
+/obj/item/supply_crate/get_base_value()
+	if(!loot)
+		return 0
+	if(!SSloot || !SSloot.initialized)
+		return null
+	var/loot/L = LOOT(loot)
+	return CEILING(L.average_value * 1.5,100)
 
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
 
@@ -82,7 +91,6 @@
 /obj/item/supply_crate/magic
 	loot = /loot/supply_crate/magic
 	icon_state = "supply_magic"
-	value = 1000
 
 /obj/item/supply_crate/medicine
 	loot = /loot/supply_crate/medicine

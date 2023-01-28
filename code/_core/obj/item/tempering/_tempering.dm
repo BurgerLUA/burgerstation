@@ -5,7 +5,7 @@
 
 	var/obj/item/temper_whitelist //Type
 
-	value = -1
+	value = 0
 
 	var/increase = 5
 	var/limit = 125
@@ -63,10 +63,9 @@
 /obj/item/tempering/save_item_data(mob/living/advanced/player/P, save_inventory, died)
 	. = ..()
 	SAVEVAR("left")
-	
+
 /obj/item/tempering/load_item_data_post(mob/living/advanced/player/P, list/object_data)
 	. = ..()
 	LOADVAR("left")
-	
-	
-	
+
+

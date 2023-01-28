@@ -15,7 +15,7 @@
 	bullet_diameter = -1
 
 	size = SIZE_1
-	value = 2
+	value = 1 //Dummy value.
 
 	caseless = TRUE
 
@@ -37,12 +37,10 @@
 	amount_max = 3
 	amount_max_icon = 3
 
-	value = 10
-
 /obj/item/bullet_cartridge/arrow/hardlight
 	name = "hardlight arrow"
 	icon = 'icons/obj/item/bullet/arrow_hardlight.dmi'
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 
 	projectile = /obj/projectile/bullet/arrow/hardlight
 	damage_type_bullet = /damagetype/ranged/bow/hardlight
@@ -52,7 +50,7 @@
 	amount_max = 1
 	amount_max_icon = 1
 
-	value = -1
+	value = 0
 
 /obj/item/bullet_cartridge/arrow/hardlight/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
 	return src

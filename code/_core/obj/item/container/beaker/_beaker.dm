@@ -22,8 +22,6 @@
 
 	has_quick_function = TRUE
 
-	value = 0
-
 	size = SIZE_2
 
 /obj/item/container/simple/beaker/Finalize()

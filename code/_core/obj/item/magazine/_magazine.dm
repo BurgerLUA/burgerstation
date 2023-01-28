@@ -230,7 +230,7 @@
 
 	contraband = TRUE
 
-	value = -1
+	value = 0
 	value_burgerbux = 1
 
 	bullet_count_max = 30

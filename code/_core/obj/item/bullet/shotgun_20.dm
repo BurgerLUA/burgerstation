@@ -26,6 +26,8 @@
 
 	view_punch_mod = 0.5
 
+	value = 1 //Dummy value.
+
 /obj/item/bullet_cartridge/shotgun_20/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
@@ -52,12 +54,14 @@
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_12/slug/surplus
 	jam_chance = 1
 	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/shotgun_20/surplus
 	name = "\improper surplus 20 gauge slug"
 	damage_type_bullet = /damagetype/ranged/bullet/shotgun_20/surplus
 	jam_chance = 1
 	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/shotgun_20/cursed
 	name = "\improper 20 gauge curse shell"
@@ -77,3 +81,5 @@
 	value = 1.6
 
 	inaccuracy_modifier = 1.25
+
+	rarity = RARITY_RARE

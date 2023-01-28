@@ -8,7 +8,7 @@
 
 	size = SIZE_5
 
-	value = -1
+	value = 0
 
 	item_slot_layer = 3
 

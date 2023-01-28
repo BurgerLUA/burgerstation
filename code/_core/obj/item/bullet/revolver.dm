@@ -18,13 +18,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.02
-	value = 1.1
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/revolver_38/surplus
 	name = "\improper surplus .38 revolver cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_38/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/revolver_357
 	name = "\improper .357 revolver cartridge"
@@ -46,13 +46,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.03
-	value = 1.5
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/revolver_357/surplus
 	name = "\improper surplus .357 revolver cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_357/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/revolver_44
 	name = "\improper .44 revolver cartridge"
@@ -74,13 +74,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.035
-	value = 2
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/revolver_44/surplus
 	name = "\improper surplus .44 revolver cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_44/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/pistol_22
 	name = "\improper .22 pistol cartridge"
@@ -101,13 +101,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	value = 0.5
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pistol_22/surplus
 	name = "\improper surplus .22 pistol cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_22/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/revolver_300
 	name = "\improper .300 revolver cartridge"
@@ -128,7 +128,7 @@
 	projectile_speed = BULLET_SPEED_PISTOL_HEAVY
 
 	size = 0.06
-	value = 5
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/revolver_762
 	name = "\improper 7.62x38mmR revolver cartridge"
@@ -149,10 +149,10 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.06
-	value = 2
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/revolver_762/surplus
 	name = "\improper surplus 7.62x38mmR revolver cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_762/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN

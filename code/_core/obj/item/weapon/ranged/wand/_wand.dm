@@ -4,7 +4,7 @@
 	desc_extended = "A magic imbued wand that can fit any type of spell gem to amplify and improve its powers."
 	icon_state = "inventory"
 
-	value = -1
+	value = 0
 
 	var/obj/item/weapon/ranged/spellgem/socketed_spellgem
 	var/list/obj/item/supportgem/socketed_supportgems = list()
