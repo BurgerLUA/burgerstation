@@ -31,25 +31,30 @@
 	name = "\improper .50 sniper magazine - explosive"
 	icon_state = "50EXP"
 	ammo = /obj/item/bullet_cartridge/sniper_50/explosive
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/sniper_50/ion
 	name = "\improper .50 sniper magazine - ion"
 	icon_state = "50ION"
 	ammo = /obj/item/bullet_cartridge/sniper_50/ion
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/sniper_50/incendiary
 	name = "\improper .50 sniper magazine - incendiary"
 	icon_state = "50INC"
 	ammo = /obj/item/bullet_cartridge/sniper_50/incendiary
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/sniper_50/ap
 	name = "\improper .50 sniper magazine - armor piercing"
 	icon_state = "50AP"
 	ammo = /obj/item/bullet_cartridge/sniper_50/ap
+	rarity = RARITY_UNCOMMON
+
 /obj/item/magazine/sniper_50/du
 	name = "\improper .50 sniper magazine - depleted uranium"
 	icon_state = "50_DU"
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 	ammo = /obj/item/bullet_cartridge/sniper_50/du
 	prem_restock_ammo = /obj/item/bullet_cartridge/sniper_50
 	value_burgerbux = 1

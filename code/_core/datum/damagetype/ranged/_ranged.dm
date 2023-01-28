@@ -65,13 +65,13 @@
 	. = ..()
 
 
-/damagetype/ranged/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+/damagetype/ranged/do_attack_visuals(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0)
 
 	if(hit_effect)
-		new hit_effect(get_turf(victim))
+		new hit_effect(victim_turf)
 
-	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
-	var/list/offsets = get_directional_offsets(attacker,victim)
+	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+	var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
 
 	if(is_living(victim))
 		var/mob/living/M = victim

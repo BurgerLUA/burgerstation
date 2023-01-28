@@ -33,18 +33,22 @@
 	name = "\improper 4.6x30mm WT-550 magazine - toxin"
 	icon_state = "TOX"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/toxin
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/smg_pdw/ion
 	name = "\improper 4.6x30mm WT-550 magazine - ion"
 	icon_state = "ION"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ion
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/smg_pdw/incendiary
 	name = "\improper 4.6x30mm WT-550 magazine - incendiary"
 	icon_state = "INC"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/incendiary
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/smg_pdw/ap
 	name = "\improper 4.6x30mm WT-550 magazine - armor piercing"
 	icon_state = "AP"
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/ap
+	rarity = RARITY_UNCOMMON

@@ -423,6 +423,15 @@ var/global/list/all_damage_numbers = list()
 	if(!is_valid(victim.health))
 		return FALSE
 
+	var/turf/attacker_turf = get_turf(attacker)
+	if(!attacker_turf)
+		return FALSE
+
+	var/turf/victim_turf = get_turf(victim)
+	if(!victim_turf)
+		return FALSE
+
+
 	if(debug)
 		log_debug("**************************************")
 		log_debug("Calculating: process_damage([attacker],[victim],[weapon],[hit_object],[blamed],[damage_multiplier])")
@@ -439,7 +448,7 @@ var/global/list/all_damage_numbers = list()
 				var/mob/living/advanced/A = victim
 				if(A.parry(attacker,weapon,hit_object,src))
 					A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
-					play_sound('sound/effects/parry.ogg',get_turf(A),range_max=VIEW_RANGE)
+					play_sound('sound/effects/parry.ogg',victim_turf,range_max=VIEW_RANGE)
 					if(is_living(attacker))
 						var/mob/living/LA = attacker
 						LA.to_chat(span("danger","Your attack was parried by \the [A.name]!"),CHAT_TYPE_ALL)
@@ -603,8 +612,8 @@ var/global/list/all_damage_numbers = list()
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
-	do_attack_visuals(attacker,victim,weapon,hit_object,total_damage_dealt)
-	do_attack_sound(attacker,victim,weapon,hit_object,total_damage_dealt)
+	do_attack_visuals(attacker,attacker_turf,victim,victim_turf,total_damage_dealt)
+	do_attack_sound(attacker,attacker_turf,victim,victim_turf,total_damage_dealt,victim.health && victim.health.organic && is_living(victim))
 
 	if(is_living(victim) && victim.health)
 		var/mob/living/L = victim
@@ -683,18 +692,16 @@ var/global/list/all_damage_numbers = list()
 
 	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
 
-	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0 && is_turf(victim.loc))
-		var/turf/T = victim.loc
-		if(T)
-			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
-			var/obj/effect/damage_number/DN
-			if(length(all_damage_numbers) && all_damage_numbers[desired_id])
-				DN = all_damage_numbers[desired_id]
-				DN.add_value(total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
-			else
-				DN = new(T,total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,desired_id)
+	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0)
+		var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
+		var/obj/effect/damage_number/DN
+		if(length(all_damage_numbers) && all_damage_numbers[desired_id])
+			DN = all_damage_numbers[desired_id]
+			DN.add_value(total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
+		else
+			DN = new(victim_turf,total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,desired_id)
 
-	if(istype(weapon,/obj/item/weapon))
+	if(is_weapon(weapon))
 		var/obj/item/weapon/W = weapon
 		if(W.reagents && victim.reagents)
 			W.reagents.transfer_reagents_to(victim.reagents,W.reagents.volume_current*clamp(total_damage_dealt/200,0.25,1))
@@ -705,6 +712,8 @@ var/global/list/all_damage_numbers = list()
 			if(W.enchantment.charge <= 0)
 				qdel(W.enchantment)
 				W.enchantment = null
+		if(W.stored_spellswap && W.stored_spellswap.desired_sound)
+			play_sound(W.stored_spellswap.desired_sound,victim_turf,range_max=VIEW_RANGE,volume=25)
 
 	victim.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 	if(victim != hit_object)
@@ -719,15 +728,15 @@ var/global/list/all_damage_numbers = list()
 
 	return TRUE
 
-/damagetype/proc/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+/damagetype/proc/do_attack_visuals(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0)
 
 	if(hit_effect)
-		new hit_effect(get_turf(victim))
+		new hit_effect(victim_turf)
 
-	var/list/offsets = get_directional_offsets(attacker,victim)
+	var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
 
 	if(offsets[1] || offsets[2])
-		var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+		var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
 		if(is_living(victim))
 			var/mob/living/M = victim
 			if(M.client)
@@ -740,22 +749,15 @@ var/global/list/all_damage_numbers = list()
 				M.client.recoil_pixel_x -= offsets[1]*multiplier*0.5
 				M.client.recoil_pixel_y -= offsets[2]*multiplier*0.5
 
-/damagetype/proc/do_attack_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/proc/do_attack_sound(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0,var/flesh=FALSE)
 
 	var/desired_volume = 25 + min(75,total_damage_dealt/2)
 
-	var/turf/T = get_turf(hit_object)
-
-	if(is_living(victim) && length(impact_sounds_flesh))
-		play_sound(pick(impact_sounds_flesh),T,range_max=VIEW_RANGE,volume=desired_volume)
+	if(flesh && length(impact_sounds_flesh))
+		play_sound(pick(impact_sounds_flesh),victim_turf,range_max=VIEW_RANGE,volume=desired_volume)
 
 	else if(length(impact_sounds))
-		play_sound(pick(impact_sounds),T,range_max=VIEW_RANGE,volume=desired_volume)
-
-	if(is_weapon(weapon))
-		var/obj/item/weapon/I = weapon
-		if(I.stored_spellswap && I.stored_spellswap.desired_sound)
-			play_sound(I.stored_spellswap.desired_sound,T,range_max=VIEW_RANGE,volume=desired_volume)
+		play_sound(pick(impact_sounds),victim_turf,range_max=VIEW_RANGE,volume=desired_volume)
 
 	return TRUE
 

@@ -34,3 +34,4 @@
 /obj/item/magazine/carbine_223/ap
 	name = "\improper .223 carbine AP magazine"
 	ammo = /obj/item/bullet_cartridge/rifle_223/ap
+	rarity = RARITY_UNCOMMON

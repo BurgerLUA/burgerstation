@@ -38,3 +38,4 @@
 	icon = 'icons/obj/item/magazine/45_smg_ap.dmi'
 	icon_state = "45"
 	ammo = /obj/item/bullet_cartridge/pistol_45/ap
+	rarity = RARITY_UNCOMMON

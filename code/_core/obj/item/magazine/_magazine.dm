@@ -28,6 +28,10 @@
 	weight = 0.25
 	has_quick_function = TRUE //Allows mags to show up in the belt slots.
 
+	rarity = RARITY_COMMON
+
+	value = 0
+
 /obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))

@@ -32,8 +32,6 @@
 	name = "\improper 4.6x30mm caseless DU large magazine"
 	icon = 'icons/obj/item/magazine/minigun.dmi'
 	icon_state = "mini_du"
-	bullet_count_max = 200
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 	value_burgerbux = 1
 	ammo = /obj/item/bullet_cartridge/pistol_4mm/caseless/du
-	value_burgerbux = 1

@@ -32,18 +32,22 @@
 	name = "\improper 2.54x12mm Gauss Rifle magazine - Gibtonite Slug"
 	icon_state = "fgausshe"
 	ammo = /obj/item/bullet_cartridge/gauss/explosive
+	rarity = RARITY_RARE
 
 /obj/item/magazine/gauss_gun/ion
 	name = "\improper 2.54x12mm Gauss Rifle magazine - Uranium-Iron Alloy"
 	icon_state = "fgaussion"
 	ammo = /obj/item/bullet_cartridge/gauss/ion
+	rarity = RARITY_RARE
 
 /obj/item/magazine/gauss_gun/incendiary
 	name = "\improper 2.54x12mm Gauss Rifle magazine - Compressed Napalm"
 	icon_state = "fgaussinc"
 	ammo = /obj/item/bullet_cartridge/gauss/incendiary
+	rarity = RARITY_RARE
 
 /obj/item/magazine/gauss_gun/ap
 	name = "\improper 2.54x12mm Gauss Rifle magazine - Armor Piercing"
 	icon_state = "fgaussap"
 	ammo = /obj/item/bullet_cartridge/gauss/ap
+	rarity = RARITY_UNCOMMON

@@ -34,3 +34,4 @@
 	name = "\improper .40 tranq pistol magazine"
 	icon = 'icons/obj/item/magazine/40pistol_tranq.dmi'
 	ammo = /obj/item/bullet_cartridge/pistol_40/tranq
+	rarity = RARITY_UNCOMMON

@@ -39,3 +39,5 @@
 	ammo_surplus = /obj/item/bullet_cartridge/pistol_10x24mm/surplus
 
 	value = 100
+
+	rarity = RARITY_RARE
