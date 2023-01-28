@@ -70,7 +70,7 @@
 	if(hit_effect)
 		new hit_effect(victim_turf)
 
-	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+	var/multiplier = clamp(TILE_SIZE * (total_damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
 	var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
 
 	if(is_living(victim))

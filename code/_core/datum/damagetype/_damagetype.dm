@@ -736,7 +736,7 @@ var/global/list/all_damage_numbers = list()
 	var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
 
 	if(offsets[1] || offsets[2])
-		var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+		var/multiplier = clamp(TILE_SIZE * (total_damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
 		if(is_living(victim))
 			var/mob/living/M = victim
 			if(M.client)
