@@ -15,6 +15,8 @@
 
 	rarity = RARITY_COMMON
 
+
+
 /obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	SAVEVAR("total_charge")
@@ -49,6 +51,7 @@
 	if(do_not_consume)
 		name = "unbreaking [name]"
 		icon_state = "azuras"
+		rarity = RARITY_LEGENDARY
 	else
 		switch(total_capacity)
 			if(0 to SOUL_SIZE_COMMON)
@@ -166,7 +169,7 @@
 
 /obj/item/soulgem/godly
 	total_capacity = SOUL_SIZE_GODLY
-	value_burgerbux = 10000
+	value_burgerbux = 1
 
 /obj/item/soulgem/godly/filled/Generate()
 	. = ..()

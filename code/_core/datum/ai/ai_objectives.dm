@@ -71,6 +71,9 @@
 		owner.update_intent()
 		if(is_player(A))
 			ai_attacking_players[A][owner] = TRUE
+		for(var/k in linked_ais)
+			var/ai/LAI = k
+			LAI.set_objective(A)
 		return TRUE
 	else if(istype(A))
 		frustration_attack = 0
@@ -79,12 +82,18 @@
 		objective_attack = A
 		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
+		for(var/k in linked_ais)
+			var/ai/LAI = k
+			LAI.set_objective(A)
 		return TRUE
 
 	frustration_attack = 0
 	objective_attack = null
 	owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
 	owner.update_intent()
+	for(var/k in linked_ais)
+		var/ai/LAI = k
+		LAI.set_objective(null)
 
 	if(!owner.dead && old_attack && !old_attack.qdeleting)
 		if(is_living(old_attack))

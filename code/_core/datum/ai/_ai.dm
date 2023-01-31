@@ -160,7 +160,50 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/last_movement_proc = "none"
 
+	var/ai/master_ai
+	var/list/ai/linked_ais
+
+/ai/proc/set_master_ai(var/ai/target_ai)
+
+	if(target_ai == master_ai)
+		return FALSE
+
+	if(src == target_ai)
+		return FALSE
+
+	if(master_ai) //If we already have a master ai, remove it.
+		master_ai.linked_ais -= src
+
+	master_ai = target_ai //Set it to the desired target_ai
+
+	if(master_ai)
+		if(!master_ai.linked_ais)
+			master_ai.linked_ais = list()
+		master_ai.linked_ais += src //Add ourselves to linked AIs.
+		if(master_ai.objective_attack)
+			src.objective_attack = master_ai.objective_attack
+		if(master_ai.astar_path_current)
+			src.astar_path_current = master_ai.astar_path_current.Copy()
+		if(master_ai.node_path_current)
+			src.node_path_current = master_ai.node_path_current.Copy()
+
+	if(length(src.linked_ais))
+		for(var/k in linked_ais)
+			var/ai/A = k
+			A.set_master_ai(master_ai)
+
+	return TRUE
+
 /ai/Destroy()
+
+	if(length(linked_ais)) //Reset master.
+		var/ai/new_master_ai = linked_ais[1]
+		for(var/k in linked_ais)
+			var/ai/linked_ai = k
+			if(new_master_ai == linked_ai)
+				linked_ai.set_master_ai(null)
+			else
+				linked_ai.set_master_ai(new_master_ai)
 
 	set_active(FALSE,deleting=TRUE)
 

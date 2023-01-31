@@ -29,7 +29,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/horde_test_preview,
 	/client/verb/test_rust_g,
 	/client/verb/debug_current_chunk,
-	/client/verb/debug_weapon_value
+	/client/verb/debug_weapon_value,
+	/client/verb/swarm_test
 )
 
 /client/verb/view_dps()
@@ -651,3 +652,24 @@ var/global/list/debug_verbs = list(
 	W.get_recommended_value(debug=TRUE)
 
 	qdel(W)
+
+/client/verb/swarm_test()
+	set name = "Swarm Test"
+	set category = "Debug"
+
+	var/list/offset = direction_to_pixel_offset(mob.dir)
+
+	var/ai/master_ai
+	for(var/i=1,i<=8,i++)
+		var/turf/T = locate(mob.x + offset[1]*8 + round(pick(-i,i)*0.5,1), mob.y + offset[2]*8 + round(pick(-i,i)*0.5,1), mob.z)
+		if(T)
+			var/mob/living/simple/xeno/hunter/M = new(T)
+			M.dir = mob.dir
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			if(!master_ai)
+				master_ai = M.ai
+			else
+				M.ai.set_master_ai(master_ai)
+			M.ai.set_active(TRUE)

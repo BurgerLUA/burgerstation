@@ -1,5 +1,8 @@
 /ai/proc/set_path_fallback(var/turf/destination)
 
+	if(master_ai)
+		return FALSE
+
 	if(!destination)
 		CRASH("Invalid destination provided!")
 
@@ -25,7 +28,7 @@
 
 	return set_path_node(found_path)
 
-/ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path = list())
+/ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path)
 
 	if(!desired_path || !length(desired_path))
 		node_path_current = null
@@ -34,6 +37,9 @@
 		node_path_current_step = null
 		frustration_node_path = 0
 		return TRUE
+
+	if(master_ai)
+		return FALSE
 
 	set_active(TRUE)
 
@@ -55,15 +61,27 @@
 			MN.alpha = 255
 			MN.invisibility = 0
 
-	HOOK_CALL("set_path")
+	for(var/k in linked_ais)
+		var/ai/A = k
+		A.node_path_current_step = 1
+		A.node_path_current = desired_path.Copy()
+		A.frustration_node_path = 0
+		A.frustration_move = 0
+		A.owner.move_dir = 0x0
+		A.node_path_start_turf = node_path_start_turf
+		A.node_path_end_turf = node_path_end_turf
 
 	return TRUE
 
 /ai/proc/set_path_astar(var/turf/destination,var/min_distance=0)
 
-	owner.move_dir = 0x0
 	frustration_astar_path = 0
 	frustration_move = 0
+
+	if(master_ai)
+		return FALSE
+
+	set_active(TRUE)
 
 	if(astar_path_current)
 		astar_path_current.Cut()
@@ -74,8 +92,11 @@
 		if(returning_path)
 			astar_path_current = returning_path
 			set_active(TRUE)
+			for(var/k in linked_ais)
+				var/ai/A = k
+				A.astar_path_current = returning_path.Copy()
+				A.set_active(TRUE)
 			return TRUE
 		else
 			if(debug) log_debug("[src.get_debug_name()] tried astar pathing, but couldn't find a valid astar path.")
 
-	return FALSE
