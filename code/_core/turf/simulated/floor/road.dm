@@ -7,6 +7,8 @@
 
 	map_color = COLOR_GREY_DARK
 
+	layer = -999
+
 /turf/simulated/floor/road/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"
 	. = ..()
@@ -19,6 +21,8 @@
 	footstep = /footstep/concrete
 
 	map_color = COLOR_GREY
+
+	layer = -998
 
 /turf/simulated/floor/sidewalk/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"

@@ -122,7 +122,7 @@
 	rotational_offset = 16
 
 /obj/marker/prefab/alley
-	icon = 'icons/obj/markers/prefab_8x8.dmi'
+	icon = 'icons/obj/markers/prefab_5x5.dmi'
 	icon_state = "alley"
 	category = "city_alley_straight" //or "city_alley_corner"
 	chance_none = 0

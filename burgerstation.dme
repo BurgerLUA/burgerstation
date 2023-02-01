@@ -997,6 +997,7 @@
 #include "code\_core\obj\decal\hazard.dm"
 #include "code\_core\obj\decal\poster.dm"
 #include "code\_core\obj\decal\road.dm"
+#include "code\_core\obj\decal\sidewalk_corner.dm"
 #include "code\_core\obj\decal\soccer.dm"
 #include "code\_core\obj\decal\tile.dm"
 #include "code\_core\obj\effect\_effect.dm"

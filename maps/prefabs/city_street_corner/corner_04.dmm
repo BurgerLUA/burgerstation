@@ -6,8 +6,8 @@
 "af" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
 "ag" = (/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
 "ah" = (/obj/marker/prefab/city/store,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"ai" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"aj" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 10},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"ai" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 10},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aj" = (/obj/decal/road_marking/solid_line,/obj/decal/sidewalk_curb/corner{icon_state = "curb_corner"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "ak" = (/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "al" = (/obj/decal/road_marking/solid_line,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "am" = (/obj/marker/prefab/city/store{icon_state = ""; dir = 8},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
@@ -16,17 +16,17 @@
 "ap" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 8},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "aq" = (/obj/marker/map_node/x4,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "ar" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"as" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 9},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"as" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 9},/obj/decal/sidewalk_curb/corner{icon_state = "curb_corner"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "at" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/obj/marker/map_node/x4,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "au" = (/obj/decal/road_marking/solid_stop{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"av" = (/obj/decal/road_marking/solid_line,/obj/marker/map_node/x3,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"av" = (/obj/decal/road_marking/solid_line,/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aw" = (/obj/structure/interactive/lighting/roadlamp{icon_state = "lamp"; dir = 1},/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
 "ax" = (/obj/marker/prefab/house,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "ay" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/sidewalk,/area/dmm_suite/clear_area)
 "az" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 8},/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aA" = (/obj/marker/map_node/x2,/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"aB" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 5},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"aC" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aB" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 5},/obj/decal/sidewalk_curb/corner{icon_state = "curb_corner"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aC" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 5},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 10},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aD" = (/obj/structure/interactive/fence/post{icon_state = "post"; dir = 8},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "aE" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aF" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 8},/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
@@ -42,13 +42,32 @@
 "aP" = (/obj/structure/interactive/fence,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "aQ" = (/obj/marker/map_node/x3,/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aR" = (/obj/structure/interactive/fence/post,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"aS" = (/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aS" = (/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 1},/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aT" = (/obj/structure/interactive/fence/end,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "aU" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"aV" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aW" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aX" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/obj/decal/sidewalk_curb,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "aY" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 4},/obj/marker/map_node/x3,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"aZ" = (/obj/decal/road_marking/hazard/yellow,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"ba" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 6},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"bb" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"aZ" = (/obj/decal/road_marking/hazard/yellow,/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 6},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"ba" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 6},/obj/decal/sidewalk_curb/corner{icon_state = "curb_corner"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bb" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 1},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bc" = (/obj/decal/road_marking/solid_stop{icon_state = "1"; dir = 8},/obj/decal/sidewalk_curb,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bd" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/obj/decal/sidewalk_curb,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"be" = (/obj/decal/road_marking/solid_line,/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bf" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 8},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bg" = (/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 5},/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bh" = (/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bi" = (/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 4},/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bj" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 8},/obj/decal/sidewalk_curb,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bk" = (/obj/decal/road_marking/solid_line,/obj/marker/map_node/x3,/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bl" = (/obj/decal/road_marking/hazard/yellow,/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 5},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bm" = (/obj/decal/road_marking/hazard/yellow,/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bn" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 10},/obj/decal/sidewalk_curb/corner,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bo" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 6},/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 9},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bp" = (/obj/decal/sidewalk_curb,/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"bq" = (/obj/decal/sidewalk_curb{icon_state = "curb"; dir = 6},/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"br" = (/obj/decal/road_marking/hazard,/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -68,51 +87,51 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagaaaaaaaaaaaaaa
-aaaaagbaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCagaaaaaaaaaaaaaa
-aaaaagbbakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakagaaaaaaaaaaaaaa
-aaaaagbbakakaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIakakakakagaaaaaaaaaaaaaa
-aaaaagbbakaQazaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKakakaSakagaaaaaaaaaaaaaa
-aaaaagbbakaEaGakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakagaaaaaaaaaaaaaa
-aaaaagalakaEaGakbaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCayapapapaDapapaO
-aaaaagalakaEaGakalagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagaaaaaaaaaaaaaP
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aaaaagalakaYaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-agagagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aiaiarasakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-akakarakakakakakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
-aIakatakakakakakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aKauarakakakakakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-akauarakakakakakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aiauarajakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
-agawagakakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
-aaaaagalakaEaGakalagahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaanaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaT
-aaaaagalakaMaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaMaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalabaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagafafafafafafafafafafafafafafafafafafafafafafafafafafaaaaagakakakakagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakalagagagagagagagagagagagaoagagagagagagagagagagagagagagagagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakaBaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaiaiaiaiaiajaZagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaEaGakakakakakakakakakakakakakakakakakakakakakakakakakakakalaZagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakaMaNaIaIaIaIaJaIaIaIaIaIaIaJaIaIaIaIaIaIaJaIaIaIaIaIaIaqakalakaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakakaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaLaFakalakaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagalakakakakakakakakakakakakakakakakakakakakakakakakakakakaEaGakalakaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagaBaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCajakaEaGakalakaUaaaaaaaaaaaaaaaaaaamaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaagagagagagagagagagagagagagagagagagagagagagagagagagagagalakaEaGakalaZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagalakaEaGakalaZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagalakaEaGakalagaeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagalakaEaHakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagalakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbobfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfaSaSaSaSbgagaaaaaaaaaaaaaa
+aaaaagbbakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakbhbhbhbhbiagaaaaaaaaaaaaaa
+aaaaagbbakakaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIbhbhbhbhbiagaaaaaaaaaaaaaa
+aaaaagbbakaQazaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAaKaKaKaAbhbhbhbrbiagaaaaaaaaaaaaaa
+aaaaagbbakaEaGakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakbhbhbhbhbiagaaaaaaaaaaaaaa
+aaaaagbeakaEaGakbabjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbpbpbpbpbqayapapapaDapapaO
+aaaaagbeakaEaGakavagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagaaaaaaaaaaaaaP
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aaaaagbeakaYaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+agagagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aVaVaWasakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+akakarakakakakakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
+aIakatakakakakakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aKauarakakakakakbkagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+akauarakakakakakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aXbcbdbnakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
+agawagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaP
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaR
+aaaaagbeakaEaGakavagahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaanaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaT
+aaaaagbeakaMaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakalagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaMaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakavabaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakavagafafafafafafafafafafafafafafafafafafafafafafafafafafaaaaagakakakakagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakavagagagagagagagagagagagaoagagagagagagagagagagagagagagagagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakaBbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfbfaVaVaVaVaVaiblagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaEaGakakakakakakakakakakakakakakakakakakakakakakakakakakakalbmagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakaMaNaIaIaIaIaJaIaIaIaIaIaIaJaIaIaIaIaIaIaJaIaIaIaIaIaIaqakalakaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakakaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaKaLaFakalakaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagbeakakakakakakakakakakakakakakakakakakakakakakakakakakakaEaGakalakaUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagaCbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbjbnakaEaGakalakaUaaaaaaaaaaaaaaaaaaamaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaagagagagagagagagagagagagagagagagagagagagagagagagagagagbeakaEaGakalbmaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbeakaEaGakajaZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbeakaEaGakavagaeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbeakaEaHakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbeakaEaGakavagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

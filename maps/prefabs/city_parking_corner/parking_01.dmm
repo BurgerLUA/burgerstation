@@ -6,6 +6,7 @@
 "f" = (/obj/decal/road_marking/solid_line/offset{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "g" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "h" = (/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"j" = (/obj/decal/sidewalk_corner{icon_state = "corner"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaa
@@ -15,7 +16,7 @@ bbbbbbeffa
 bhbbbhbbba
 bbbbbbbffa
 bbbbbbbbba
-aaabbbbffa
+aajbbbbffa
 ggabbhbbba
 ggabbbbaaa
 "}
