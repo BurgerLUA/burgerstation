@@ -7,6 +7,7 @@
 
 	map_color = COLOR_GREY_DARK
 
+	plane = PLANE_ROAD
 	layer = -999
 
 /turf/simulated/floor/road/New(var/desired_loc)
@@ -22,6 +23,7 @@
 
 	map_color = COLOR_GREY
 
+	plane = PLANE_ROAD
 	layer = -998
 
 /turf/simulated/floor/sidewalk/New(var/desired_loc)
@@ -31,6 +33,11 @@
 /turf/simulated/floor/sidewalk/Finalize()
 	. = ..()
 	update_sprite()
+	var/obj/structure/sidewalk_curb/SC = new(src)
+	if(SSobj.initialized)
+		INITIALIZE(SC)
+		GENERATE(SC)
+		FINALIZE(SC)
 
 /turf/simulated/floor/sidewalk/update_overlays()
 

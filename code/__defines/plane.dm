@@ -6,11 +6,14 @@
 
 #define PLANE_PARALLAX -80
 
+//Turfs
+
+#define PLANE_ROAD -60
+
 #define PLANE_FLOOR_BELOW -50 //For openspace.
 
 #define PLANE_WATER_FLOOR -44
 
-//Turfs
 #define PLANE_FLOOR -42
 
 #define PLANE_SHUTTLE -41
@@ -78,6 +81,7 @@
 
 #define PLANE_DARKNESS 0 // This is always 0. There is no way to change this.
 
+#define PLANE_AREA 1
 
 //Hud Effects
 #define PLANE_DAMAGE_NUMBERS 10
@@ -100,4 +104,6 @@
 
 #define PLANE_HUD_MOUSE 102
 
-#define PLANE_AREA 200
+#define PLANE_HUD_LOADING 103
+
+

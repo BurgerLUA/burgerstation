@@ -6,7 +6,7 @@
 	enable_chunk_handling = FALSE
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = 0
+	layer = LAYER_FLOOR_PLATING
 
 /obj/effect/cleanable/rust/New(var/desired_loc)
 	icon_state = pick("rust1","rust2","rust3","rust4")

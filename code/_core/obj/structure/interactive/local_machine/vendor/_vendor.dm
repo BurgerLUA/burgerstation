@@ -32,7 +32,7 @@ var/global/list/equipped_antags = list()
 	bullet_block_chance = 75
 
 	plane = PLANE_OBJ_LARGE
-	layer = 1000
+	layer = LAYER_LARGE_OBJ
 
 	pixel_y = 8
 

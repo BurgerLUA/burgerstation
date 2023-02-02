@@ -7,7 +7,7 @@
 	icon_state = "none"
 
 	plane = PLANE_EFFECT
-	layer = 100
+	layer = LAYER_MOB_FLYING
 
 	var/mob/owner
 	var/atom/movable/stored_movable

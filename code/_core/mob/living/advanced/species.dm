@@ -136,7 +136,8 @@
 		B.maptext_height = 300
 		B.maptext_y = 20
 		B.mouse_opacity = 0
-		B.layer = 99 //I DON'T GIFE A FUKC
+		B.plane = PLANE_HUD_LOADING
+		B.layer = LAYER_HUD_ALL
 		client.screen += B
 		client.update_zoom(3)
 

@@ -79,7 +79,7 @@
 		S.transform = get_base_transform()
 		S.color = "#000000"
 		S.plane = PLANE_EFFECT
-		S.layer = 1000
+		S.layer = LAYER_GHOST
 		S.name = "soul of [initial(name)]:"
 		S.soul_size = src.soul_size
 		INITIALIZE(S)

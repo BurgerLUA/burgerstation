@@ -11,7 +11,7 @@
 	var/override_overlays = FALSE
 
 	plane = PLANE_WIRE
-	layer = 1000
+	layer = LAYER_FLOOR_CARPET
 
 	health = /health/construction/
 

@@ -24,7 +24,7 @@
 
 	map_color = "#2D2B2B"
 
-	layer = 100
+	layer = LAYER_WALL_LARGE + 0.1
 
 /turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
 
@@ -49,7 +49,7 @@
 
 	map_color = "#5B5959"
 
-	layer = 101
+	layer = LAYER_WALL_LARGE + 0.11
 
 /turf/simulated/wall/rock/basalt
 	real_icon = 'icons/turf/wall/rock/basalt.dmi'
@@ -67,7 +67,7 @@
 
 	map_color = "#1C1C1C"
 
-	layer = 102
+	layer = LAYER_WALL_LARGE + 0.12
 
 
 /turf/simulated/wall/rock/brown
@@ -84,7 +84,7 @@
 
 	map_color = "#261C15"
 
-	layer = 103
+	layer = LAYER_WALL_LARGE + 0.13
 
 /turf/simulated/wall/rock/moss
 	real_icon = 'icons/turf/wall/rock/moss.dmi'
@@ -100,7 +100,7 @@
 
 	map_color = "#141914"
 
-	layer = 104
+	layer = LAYER_WALL_LARGE + 0.14
 
 /turf/simulated/wall/rock/desert
 	real_icon = 'icons/turf/wall/rock/desert.dmi'
@@ -116,7 +116,7 @@
 
 	map_color = "#271D0C"
 
-	layer = 105
+	layer = LAYER_WALL_LARGE + 0.15
 
 /turf/simulated/wall/rock/ice
 	real_icon = 'icons/turf/wall/rock/ice.dmi'
@@ -134,7 +134,7 @@
 
 	map_color = "#5B5959"
 
-	layer = 106
+	layer = LAYER_WALL_LARGE + 0.16
 
 /turf/simulated/wall/rock/indestructable
 	name = "bedrock wall"
@@ -159,7 +159,7 @@
 
 	map_color = "#000000"
 
-	layer = 107
+	layer = LAYER_WALL_LARGE + 0.17
 
 /turf/simulated/wall/rock/indestructable/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return FALSE

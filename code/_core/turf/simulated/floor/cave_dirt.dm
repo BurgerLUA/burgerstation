@@ -33,7 +33,7 @@
 	icon_state = "0,0"
 
 	plane = PLANE_FLOOR
-	layer = 0
+	layer = LAYER_FLOOR - 0.1
 
 	footstep = /footstep/asteroid
 

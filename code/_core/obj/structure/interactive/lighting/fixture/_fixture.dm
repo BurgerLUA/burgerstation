@@ -73,7 +73,7 @@
 		var/image/IS = new/image(initial(icon),"light")
 		IS.appearance_flags = RESET_COLOR | RESET_ALPHA
 		IS.plane = PLANE_LIGHTING_EFFECT
-		IS.layer = 99
+		IS.layer = LAYER_LIGHTING_EMISSIVE
 		IS.color = desired_light_color
 		IS.alpha = 255*(light_power/1)
 		add_overlay(IS)

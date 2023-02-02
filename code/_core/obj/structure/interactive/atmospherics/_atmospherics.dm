@@ -13,7 +13,7 @@ obj/structure/interactive/atmospherics/vent
 	desired_light_color = "#64BEB5"
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = 1000
+	layer = LAYER_FLOOR_VENT
 
 obj/structure/interactive/atmospherics/scrubber
 	name = "scrubber"
@@ -27,7 +27,7 @@ obj/structure/interactive/atmospherics/scrubber
 	desired_light_color = "#BE6864"
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = 1000
+	layer = LAYER_FLOOR_VENT
 
 obj/structure/interactive/atmospherics/air_alarm
 	name = "air alarm"

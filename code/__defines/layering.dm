@@ -1,4 +1,6 @@
-#define LAYER_FLOOR                 1
+#define LAYER_BASE					6
+
+#define LAYER_FLOOR                 LAYER_BASE
 #define LAYER_FLOOR_ROCK			(LAYER_FLOOR + 0.11)
 #define LAYER_FLOOR_GRAVEL			(LAYER_FLOOR + 0.12)
 #define LAYER_FLOOR_DIRT			(LAYER_FLOOR + 0.13)
@@ -6,69 +8,85 @@
 #define LAYER_FLOOR_GRASS			(LAYER_FLOOR + 0.15)
 #define LAYER_FLOOR_GRASS_DENSE		(LAYER_FLOOR + 0.16)
 
-#define LAYER_FLOOR_PLATING         (LAYER_FLOOR + 0.2)
-#define LAYER_FLOOR_PIPE			(LAYER_FLOOR + 0.3)
-#define LAYER_FLOOR_TILE            (LAYER_FLOOR + 0.4)
-#define LAYER_FLOOR_DECAL			(LAYER_FLOOR + 0.5)
-#define LAYER_FLOOR_WEATHER			(LAYER_FLOOR + 0.6)
+#define LAYER_FLOOR_PLATING         (LAYER_FLOOR + 0.1)
+#define LAYER_FLOOR_PIPE			(LAYER_FLOOR + 0.2)
+#define LAYER_FLOOR_TILE            (LAYER_FLOOR + 0.3)
+#define LAYER_FLOOR_DECAL			(LAYER_FLOOR + 0.4)
+#define LAYER_FLOOR_WEATHER			(LAYER_FLOOR + 0.5)
+#define LAYER_FLOOR_VENT			(LAYER_FLOOR + 0.6)
+#define LAYER_FLOOR_CARPET			(LAYER_FLOOR_VENT - 0.01)
 #define LAYER_FLOOR_CONVEYOR		(LAYER_FLOOR + 0.7)
 #define LAYER_FLOOR_SCENERY			(LAYER_FLOOR + 0.8)
 #define LAYER_FLOOR_EFFECTS			(LAYER_FLOOR + 0.9)
 
-#define LAYER_WALL 3
-#define LAYER_WALL_DECAL (LAYER_WALL + 0.1)
+#define LAYER_WALL LAYER_BASE + 1
 
-#define LAYER_TABLE 4
+#define LAYER_WALL_LARGE (LAYER_WALL + 0.5)
 
+#define LAYER_WALL_DECAL (LAYER_WALL + 0.9)
+
+
+#define LAYER_TABLE LAYER_BASE+2
 
 #define LAYER_OBJ_DOOR_OPEN    (LAYER_OBJ - 0.2)
 #define LAYER_OBJ_CRATE        (LAYER_OBJ - 0.1)
-#define LAYER_OBJ              5
+#define LAYER_OBJ              LAYER_BASE+3
 #define LAYER_OBJ_GRILLE 	   (LAYER_OBJ + 0.1)
 #define LAYER_OBJ_WINDOW 	   (LAYER_OBJ + 0.2)
 #define LAYER_OBJ_DOOR_CLOSED  (LAYER_OBJ + 0.3)
-#define LAYER_OBJ_ITEM         (LAYER_OBJ + 0.4)
+#define LAYER_OBJ_CONTAINER    (LAYER_OBJ + 0.4)
+#define LAYER_OBJ_ITEM         (LAYER_OBJ + 0.5)
 
 #define LAYER_BLOOD            (LAYER_MOB_SWIMMING - 0.1)
 
-#define LAYER_MOB_SWIMMING     6
+#define LAYER_MOB_SWIMMING     LAYER_BASE+4
 
-#define LAYER_MOB_DEAD         7
+#define LAYER_MOB_DEAD         LAYER_BASE+5
 
-#define LAYER_OBJ_AIRLOCK      8
+#define LAYER_OBJ_AIRLOCK      LAYER_BASE+6
 
 #define LAYER_MOB_BELOW        (LAYER_MOB - 0.1)
-#define LAYER_MOB              10
+#define LAYER_MOB              LAYER_BASE+7
 
 
 
 
-#define LAYER_MOB_FIRE         20
+#define LAYER_MOB_FIRE         LAYER_BASE+10
 
-#define LAYER_MOB_ABOVE        21
+#define LAYER_MOB_ABOVE        LAYER_BASE+11
 
-#define LAYER_MOB_WATER        22
+#define LAYER_MOB_WATER        LAYER_BASE+12
 
-#define LAYER_MOB_FLYING       23
+#define LAYER_LARGE_OBJ        LAYER_BASE+13
 
-#define LAYER_PROJECTILE       24
+#define LAYER_MOB_FLYING       LAYER_BASE+14
 
-#define LAYER_EFFECT           25
 
-#define LAYER_LARGE_OBJ        26
 
-#define LAYER_GHOST            27
+#define LAYER_PROJECTILE       LAYER_BASE+15
 
-#define LAYER_AREA             30 //Weather
 
-#define LAYER_LIGHTING 50
-#define LAYER_LIGHTING_DYNAMIC 51
 
-#define LAYER_SCREEN_BLOOD 99
+#define LAYER_EFFECT           LAYER_BASE+16
 
-#define LAYER_HUD 100
-#define LAYER_HUD_ITEMS 101
 
+
+#define LAYER_GHOST            LAYER_BASE+17
+
+#define LAYER_AREA             LAYER_BASE+20 //Weather
+
+#define LAYER_LIGHTING LAYER_BASE+50
+#define LAYER_LIGHTING_DYNAMIC LAYER_BASE+51
+#define LAYER_LIGHTING_EMISSIVE LAYER_BASE+52
+
+#define LAYER_FLASH LAYER_BASE+70
+
+#define LAYER_SCREEN_BLOOD LAYER_BASE+80
+
+#define LAYER_HUD LAYER_BASE+90
+#define LAYER_HUD_ITEMS LAYER_BASE+100
+#define LAYER_HUD_TOOLTIP LAYER_BASE+110
+#define LAYER_HUD_ALL LAYER_BASE+900
 
 
 //Clothing

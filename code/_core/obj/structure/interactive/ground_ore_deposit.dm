@@ -4,7 +4,7 @@
 	icon_state = "deposit"
 	var/ore_score = 1
 	plane = PLANE_FLOOR
-	layer = 0
+	layer = LAYER_FLOOR_PLATING
 	initialize_type = INITIALIZE_LATE
 
 	desired_light_range = 1

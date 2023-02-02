@@ -7,3 +7,4 @@
 	has_quick_function = FALSE
 	maptext_width = TILE_SIZE
 	maptext_height = TILE_SIZE
+	layer = LAYER_SCREEN_BLOOD+1

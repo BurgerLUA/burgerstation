@@ -4,7 +4,7 @@
 	icon = 'icons/obj/light_sprite_new.dmi'
 	icon_state = "radial"
 	plane = PLANE_LIGHTING
-	layer = 999
+	layer = LAYER_LIGHTING_DYNAMIC
 	//blend_mode = BLEND_ADD
 
 	appearance_flags = LONG_GLIDE | TILE_BOUND

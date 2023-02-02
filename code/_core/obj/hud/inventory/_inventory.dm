@@ -10,9 +10,6 @@
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
-	plane = PLANE_HUD
-	layer = 1
-
 	var/atom/movable/grabbed_object
 
 	var/worn = FALSE //Set to TRUE if it's a worn object.

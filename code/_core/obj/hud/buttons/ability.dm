@@ -17,7 +17,7 @@ var/global/list/ability_colors = list(
 	flags_hud = FLAG_HUD_MOB
 
 	plane = PLANE_HUD
-	layer = 1
+	layer = LAYER_HUD
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER

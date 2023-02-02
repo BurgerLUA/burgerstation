@@ -14,7 +14,7 @@
 
 /obj/hud/button/exchange/
 	plane = PLANE_HUD
-	layer = 1
+	layer = LAYER_HUD+1
 
 /obj/hud/button/exchange/sell
 	name = "sell"
@@ -149,8 +149,8 @@
 	if(stored_object)
 		var/image/I = new/image(stored_object.icon,stored_object.icon_state)
 		I.appearance = stored_object.appearance
-		I.layer = 100
-		I.plane = plane
+		I.plane = FLOAT_PLANE
+		I.layer = FLOAT_LAYER
 		I.pixel_x = 4
 		I.pixel_y = 0
 		add_overlay(I)

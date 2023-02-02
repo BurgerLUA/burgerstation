@@ -77,7 +77,7 @@ var/global/list/possible_bosses_to_spawn = list(
 		if(L.ai) L.ai.set_active(TRUE)
 		var/obj/effect/temp/E = new(T,SECONDS_TO_DECISECONDS(1))
 		E.plane = PLANE_JUNK
-		E.layer = 1000
+		E.layer = LAYER_FLOOR_EFFECTS
 		E.icon = 'icons/obj/effects/ash_drake_landing.dmi'
 		E.icon_state = "landing"
 		E.pixel_x = -TILE_SIZE

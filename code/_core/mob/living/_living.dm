@@ -571,7 +571,7 @@
 	water_mask.icon_state = "water_mask"
 	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
 	water_mask.plane = PLANE_MOB_WATER_MASK
-	water_mask.layer = 0
+	water_mask.layer = LAYER_BASE
 	water_mask.pixel_x = -32
 	water_mask.pixel_y = -32
 	water_mask.alpha = 200

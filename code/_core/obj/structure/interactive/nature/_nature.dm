@@ -97,7 +97,7 @@ obj/structure/scenery/rocks/New()
 	pixel_x = 8
 
 	plane = PLANE_WIRE
-	layer = 1000
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/interactive/basalt/New()
 	..()

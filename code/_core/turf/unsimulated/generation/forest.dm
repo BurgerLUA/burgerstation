@@ -17,7 +17,7 @@ var/global/snow_num = 0.6+rand()*0.2
 
 	if(is_snow)
 
-		if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs)
+		if(density && is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 			new /turf/simulated/wall/rock/snow(src)
 			if(prob(2))
 				new /obj/marker/generation/turf/snow_wall(src)
@@ -123,7 +123,7 @@ var/global/snow_num = 0.6+rand()*0.2
 	else
 
 
-		if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs)
+		if(density && is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 			new /turf/simulated/wall/rock(src)
 			if(src.loc.type == /area/) new /area/mission/forest(src)
 			disallow_generation = TRUE

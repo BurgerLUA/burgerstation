@@ -29,7 +29,7 @@
 		disallow_generation = TRUE
 		return ..()
 
-	if(is_different && is_next_to_null_areas)
+	if(is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 		if(prob(1))
 			new /obj/marker/generation/turf/rock_wall(src)
 		else

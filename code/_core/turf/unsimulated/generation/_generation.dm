@@ -22,8 +22,9 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 	icon = 'icons/turf/generation.dmi'
 	var/is_different = FALSE
 	var/is_next_to_interior = FALSE
-	var/is_next_to_null_areas = TRUE
-	var/is_next_to_dense_turfs = TRUE
+	var/is_next_to_null_area = FALSE
+	var/is_next_to_dense_turf = FALSE
+	var/is_next_to_simulated = FALSE
 	density = TRUE
 
 	var/noise = 0
@@ -54,13 +55,16 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 			continue
 		if(src.type != T.type && src.parent_type != T.type && src.type != T.parent_type)
 			is_different = TRUE
-			if(!T.density)
-				is_next_to_dense_turfs = FALSE
+		if(T.density)
+			is_next_to_dense_turf = TRUE
+		if(is_simulated(T))
+			is_next_to_simulated = TRUE
 		var/area/A = T.loc
 		if(A.interior)
 			is_next_to_interior = TRUE
-		if(A.type != /area/)
-			is_next_to_null_areas = FALSE
+		if(A.type == /area/)
+			is_next_to_null_area = TRUE
+
 
 	return TRUE
 

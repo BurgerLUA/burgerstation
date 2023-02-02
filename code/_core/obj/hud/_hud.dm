@@ -18,6 +18,9 @@
 
 	desc_extended = null
 
+	plane = PLANE_HUD
+	layer = LAYER_HUD
+
 /obj/hud/New(var/desired_loc)
 	. = ..()
 	tooltip_text = get_tooltip_text()

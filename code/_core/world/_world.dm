@@ -63,7 +63,6 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/simulated/floor/tile)
 	createtypecache(/turf/simulated/wall)
 	createtypecache(/turf/unsimulated)
-
 	. = ..()
 
 	life()

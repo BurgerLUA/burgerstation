@@ -13,8 +13,6 @@
 
 	var/list/labeled_overlays = list()
 
-	layer = 0
-
 /obj/hud/button/stat/body/Destroy()
 	labeled_overlays?.Cut()
 	. = ..()

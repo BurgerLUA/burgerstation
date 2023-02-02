@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structure/store_signs.dmi'
 	icon_state = "blank"
 	plane = PLANE_WALL
-	layer = 99
+	layer = LAYER_LARGE_OBJ
 	dir_offset = 64
 
 

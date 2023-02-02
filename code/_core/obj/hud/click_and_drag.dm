@@ -17,7 +17,7 @@
 
 	user_colors = FALSE
 
-	layer = 100
+	layer = LAYER_HUD_TOOLTIP
 
 /obj/hud/click_and_drag/Destroy()
 	stored_object = null

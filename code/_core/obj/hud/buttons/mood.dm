@@ -6,7 +6,7 @@
 	icon_state = "100"
 	screen_loc = "RIGHT-1,CENTER"
 	flags_hud = FLAG_HUD_MOB
-	layer = 100 //Makes it above the hunger meter.
+	layer = LAYER_HUD+1
 	screen_loc = "RIGHT:-1,CENTER-1:-4"
 	var/last_mood = 50
 	user_colors = FALSE

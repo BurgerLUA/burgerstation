@@ -2,7 +2,7 @@
 	name = "wall decor"
 	mouse_opacity = 0
 	plane = PLANE_WALL
-	layer = 500
+	layer = LAYER_WALL_DECAL
 
 /obj/structure/wall_decor/Finalize()
 	. = ..()

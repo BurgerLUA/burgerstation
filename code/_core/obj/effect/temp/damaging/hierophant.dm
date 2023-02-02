@@ -7,7 +7,7 @@
 	hazard_range = 0
 	damage_type = /damagetype/ranged/magic/hierophant
 	plane = PLANE_BLOOD
-	layer = 0
+	layer = LAYER_FLOOR_EFFECTS
 	var/blasts_left = 10
 	var/copy_delay = 3
 	var/should_teleport = FALSE

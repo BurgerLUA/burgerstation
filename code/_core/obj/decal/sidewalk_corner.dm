@@ -5,19 +5,9 @@
 	mouse_opacity = 0
 	alpha = 255
 
-/obj/decal/sidewalk_curb
-	name = "sidewalk curb"
-	icon = 'icons/obj/decal/curb.dmi'
-	icon_state = "curb"
+/obj/decal/manhole
+	name = "manhole"
+	icon = 'icons/obj/decal/city.dmi'
+	icon_state = "manhole"
 	mouse_opacity = 0
 	alpha = 255
-
-	plane = PLANE_FLOOR
-	layer = LAYER_FLOOR_DECAL + 10
-
-/obj/decal/sidewalk_curb/corner
-	icon_state = "curb_corner"
-
-/obj/decal/sidewalk_curb/Generate()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[rand(1,4)]"
