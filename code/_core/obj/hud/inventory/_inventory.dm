@@ -78,6 +78,8 @@
 
 	var/advanced_layering = FALSE //Set to TRUE to enable advanced layering, where the layer of clothing is based on the layer below.
 
+	layer = 0 //has to be this way
+
 /obj/hud/inventory/MouseEntered(location,control,params)
 
 	. = ..()

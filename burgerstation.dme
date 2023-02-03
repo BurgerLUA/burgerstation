@@ -2320,5 +2320,6 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
+#include "maps\prefabs\house\12.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE
