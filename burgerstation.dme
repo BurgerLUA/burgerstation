@@ -160,6 +160,7 @@
 #include "code\_core\area\mission\prefabs\fob.dm"
 #include "code\_core\area\mission\prefabs\house.dm"
 #include "code\_core\area\mission\prefabs\misc.dm"
+#include "code\_core\area\mission\prefabs\sol_base.dm"
 #include "code\_core\area\shuttle\_shuttle.dm"
 #include "code\_core\area\space\_space.dm"
 #include "code\_core\atom\_atom.dm"
@@ -2067,6 +2068,7 @@
 #include "code\_core\obj\structure\interactive\door\airlock\external.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\lz_420.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\shuttle.dm"
+#include "code\_core\obj\structure\interactive\door\airlock\solarian.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\station.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\syndicate.dm"
 #include "code\_core\obj\structure\interactive\door\airlock\wood.dm"
@@ -2320,6 +2322,5 @@
 #include "code\addons\lighting\~lighting_undef.dm"
 #include "interface\interface.dm"
 #include "interface\interface.dmf"
-#include "maps\prefabs\house\12.dmm"
 #include "scripts\macro.dms"
 // END_INCLUDE

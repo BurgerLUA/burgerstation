@@ -17,3 +17,6 @@
 
 /obj/structure/interactive/lighting/fixture/bulb/green
 	color = COLOR_GREEN_LIGHT
+
+/obj/structure/interactive/lighting/fixture/bulb/red
+	color = COLOR_RED_DARK

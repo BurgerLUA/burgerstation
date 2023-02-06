@@ -283,6 +283,65 @@
 	icon_state = "orange"
 
 
+
+//House 12
+/area/mission/prefab/house/house_12
+	name = "house 12"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_12/bathroom
+	icon_state = "green"
+
+/area/mission/prefab/house/house_12/kitchen
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_12/bedroom
+	icon_state = "red"
+
+/area/mission/prefab/house/house_12/entrance
+	icon_state = "orange"
+
+/area/mission/prefab/house/house_12/mid
+	icon_state = "pink"
+
+
+
+
+
+//House 13
+/area/mission/prefab/house/house_13
+	name = "house 13"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+
+/area/mission/prefab/house/house_13/bathroom
+	icon_state = "green"
+
+/area/mission/prefab/house/house_13/kitchen
+	icon_state = "blue"
+
+/area/mission/prefab/house/house_13/bedroom
+	icon_state = "red"
+
+/area/mission/prefab/house/house_13/entrance
+	icon_state = "orange"
+
+/area/mission/prefab/house/house_13/side_room
+	icon_state = "pink"
+
+
+
+
+
+
+
+
+
 //davidthtthird house 01
 /area/mission/prefab/house/house_D01
 	name = "house D01"

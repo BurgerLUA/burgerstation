@@ -50,6 +50,11 @@
 		return FALSE
 	. = ..()
 
+/turf/simulated/floor/plating/solarian
+	name = "solarian steel floor plating"
+	color = "#66706C"
+
+
 
 /turf/simulated/floor/plating/rev
 	name = "tinted steel floor plating"

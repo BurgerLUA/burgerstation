@@ -16,6 +16,13 @@
 	tertiary_color = "#D8D8EC"
 	heal_multiplier = 0.25
 
+/obj/structure/interactive/bed/sleeper/medical/solarian
+	name = "solarian medical sleeper"
+	base_color = "#A5D5D1"
+	secondary_color = "#4D9BBC"
+	tertiary_color = "#D8C2E1"
+	heal_multiplier = 0.75
+
 /obj/structure/interactive/bed/sleeper/medical/think()
 
 	if(door_state == SLEEPER_CLOSED && buckled && is_living(buckled))

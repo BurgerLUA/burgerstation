@@ -155,7 +155,6 @@ obj/structure/table/wood
 	corner_category = "table_wood"
 
 obj/structure/table/wood/poor
-	name = "wood table"
 	color = "#6B4E3A"
 
 obj/structure/table/wood/magic

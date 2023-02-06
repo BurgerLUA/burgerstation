@@ -116,3 +116,11 @@
 	color = COLOR_COMMAND
 	desc = "A commanding floor"
 	desc_extended = "A floor that makes you want to point and tell your crewmates to make it so."
+
+
+
+
+
+/turf/simulated/floor/tile/solarian
+	color = "#667A72"
+

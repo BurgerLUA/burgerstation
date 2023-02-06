@@ -47,6 +47,7 @@
 "U" = (/obj/marker/map_node/x5,/obj/decal/road_marking/solid_line/offset/yellow{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "V" = (/obj/decal/road_marking/solid_line/offset/yellow{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "W" = (/turf/simulated/wall/brick/city,/area/dmm_suite/clear_area)
+"X" = (/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLGdcbWaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -101,9 +102,11 @@ aaaaaaaaaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdLGdcbW
 aaaaaaaaaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdrGdcbW
 aaaaaaaaaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdLGdcbW
 aaaaaaaaaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdLGdcbW
-aaaaaaaaaWagaaaaaaaaaaaaaaaaaaaaaaaaaahaaaaaaaaaaaaaaaabcdLGdcbW
-aaaaaaaaaWaaaaaaaaaaaaaaaaafbbbbbbbbbbbbbbbbbbbbbbbbbbbbcdLGdcbW
-aaaaaaaaaWWWWWWWWWWWWWWWWWWWbIQQQQwwwwwwwwwwwwwwwwwwwwwwPdLGdcbW
+aaaaaaaaaWagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdLGdcbW
+aaaaaaaaaWaaaaaaaaaaaaaaaaafbbbbbbbbbaaaaaaaaaaaaaaaaaabcdLGdcbW
+aaaaaaaaaWWWWWWWWWWWWWWWWWWWbXddddXXbahaaaaaaaaaaaaaaaabcdLGdcbW
+aaaaaaaaaaaaaaaaaaaaaaaaaaaWbXddddXXbbbbbbbbbbbbbbbbbbbbcdLGdcbW
+aaaaaaaaaaaaaaaaaaaaaaaaaaaWbIQQQQwwwwwwwwwwwwwwwwwwwwwwPdLGdcbW
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcddddddddddddddddddddddddddddLGdcbW
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcddMMMMMMMMMMMMMMMMMMMMMMMMMMJGdcbW
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLnNNNNNNlNNNNNNlNNNNNNlNNNNNzdcbW
@@ -111,6 +114,4 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLGddddddddddddddddddddddddddddcbW
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLGdIwwwwwwwwwwwwwwwwwwwwwwwwwwPbW
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLGdcbbbbbbbbbbbbbbbbbbbbbbbbbbbbW
 aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLpdcbWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLGdcbWaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaWbcdLGdcbWaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

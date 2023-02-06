@@ -173,3 +173,24 @@
 /turf/simulated/wall/metal/circuit/indestructable
 	health = null
 	destruction_turf = null
+
+
+
+/turf/simulated/wall/metal/solarian
+	name = "solarian steel wall"
+	icon = 'icons/turf/wall/metal/solarian.dmi'
+	icon_state = "wall"
+	corner_icons = TRUE
+
+	destruction_turf = /turf/simulated/floor/plating/solarian
+
+	color = "#83918C"
+	material_id = /material/steel
+	health_base = 1000
+
+/turf/simulated/wall/metal/solarian/reinforced
+	name = "plasteel reinforced solarian steel wall"
+	icon_state = "wall_ref"
+	reinforced_material_id = /material/plasteel
+	reinforced_color = "#FFFFFF"
+	health_base = 3000

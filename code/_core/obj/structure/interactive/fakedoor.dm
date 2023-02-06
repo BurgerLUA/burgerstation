@@ -13,6 +13,7 @@
 	opacity = 0
 
 /obj/structure/scenery/fake_door/blast_door
+	name = "blast door"
 	icon_state = "blast_closed"
 
 /obj/structure/scenery/fake_door/fire_door
@@ -57,6 +58,7 @@
 	icon_state = "external_opened"
 
 /obj/structure/scenery/fake_door/nocolide/blast_door
+	name = "blast door"
 	icon_state = "blast_opened"
 
 /obj/structure/scenery/fake_door/nocolide/maint_door

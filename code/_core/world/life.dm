@@ -4,7 +4,7 @@ var/global/time_dialation = 0
 	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
-			if( (!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
+			if((!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 				SS.overtime_count++
 				sleep(TICK_LAG)
 				continue
@@ -19,13 +19,18 @@ var/global/time_dialation = 0
 			SS.tick_rate = 0
 			log_subsystem(SS.name,"Shutting down.")
 			break
+		SS.last_run_duration = FLOOR(true_time() - start_time,0.01)
 		if(world_state >= STATE_RUNNING)
-			SS.last_run_duration = FLOOR(true_time() - start_time,0.01)
 			SS.total_run_duration += SS.last_run_duration
+
+		var/desired_delay = TICKS_TO_DECISECONDS(SS.tick_rate)
 		if(time_dialation && SS.use_time_dialation)
-			sleep(TICKS_TO_DECISECONDS(SS.tick_rate*time_dialation))
+			desired_delay *= time_dialation
+		desired_delay -= SS.last_run_duration
+		if(desired_delay > 0)
+			sleep(desired_delay)
 		else
-			sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+			sleep(-1)
 
 /world/proc/subsystem_initialize(var/subsystem/SS)
 	//No background processing. Everything needs to run in order.

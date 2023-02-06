@@ -181,7 +181,7 @@
 	icon = 'icons/obj/markers/prefab_64x64_city.dmi'
 	icon_state = null
 	category = "city_street_straight" //or "city_street_corner"
-
+	unique = FALSE
 
 /obj/marker/prefab/city/line/prepare_prefab()
 
@@ -206,21 +206,29 @@
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "cross"
 	category = "city_street_intersection"
+	unique = TRUE
 
-
+/obj/marker/prefab/city/intersection/New(var/desired_loc)
+	. = ..()
+	dir = pick(NORTH,EAST,SOUTH,WEST)
 
 /obj/marker/prefab/city/t_junction
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "t"
 	category = "city_street_t"
-
+	unique = TRUE
 
 /obj/marker/prefab/city/end
 	icon = 'icons/obj/markers/prefab_64x64_city_end.dmi'
 	icon_state = null
 	category = "city_street_end"
+	unique = FALSE
 
-
+/obj/marker/prefab/city/farm
+	icon = 'icons/obj/markers/prefab_64x64_farm.dmi'
+	icon_state = null
+	category = "farm"
+	unique = FALSE
 
 /obj/marker/prefab/city/parking
 	icon = 'icons/obj/markers/prefab_10x10.dmi'
@@ -228,6 +236,7 @@
 	category = "city_parking_straight" //or "city_parking_corner"
 	alpha = 150
 	rotational_offset = 10
+	unique = FALSE
 
 /obj/marker/prefab/city/parking/prepare_prefab()
 
