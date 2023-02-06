@@ -212,6 +212,21 @@
 	. = ..()
 	dir = pick(NORTH,EAST,SOUTH,WEST)
 
+
+
+/obj/marker/prefab/city/sol_base
+	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
+	icon_state = "cross"
+	category = "sol_base"
+	unique = TRUE
+
+/obj/marker/prefab/city/sol_base/New(var/desired_loc)
+	. = ..()
+	dir = pick(NORTH,EAST,SOUTH,WEST)
+
+
+
+
 /obj/marker/prefab/city/t_junction
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "t"

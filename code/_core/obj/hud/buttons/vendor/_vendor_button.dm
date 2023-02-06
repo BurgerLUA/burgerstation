@@ -19,6 +19,8 @@
 
 	has_quick_function = FALSE
 
+	layer = 0
+
 /obj/hud/button/vendor/get_examine_list(var/mob/caller)
 	if(!associated_item)
 		return ..()
