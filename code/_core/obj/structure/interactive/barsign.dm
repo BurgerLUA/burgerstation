@@ -134,3 +134,8 @@ obj/structure/interactive/bar_sign/the_ale_nath
 	name = "The Ale'Nath"
 	desc = "Wait what?"
 	icon_state = "the_ale_nath"
+
+obj/structure/interactive/bar_sign/the_greytide
+	name = "The Greytide"
+	desc = "Wait what?"
+	icon_state = "the_greytide"

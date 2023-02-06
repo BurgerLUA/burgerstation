@@ -276,3 +276,20 @@
 
 /area/mission/prefab/city/the_ale_nath/backroom
 	icon_state = "blue"
+
+
+/area/mission/prefab/city/the_greytide
+	name = "The Greytide"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/the_greytide/bathroom
+	icon_state = "pink"
+
+/area/mission/prefab/city/the_greytide/store
+	icon_state = "blue"

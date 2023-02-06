@@ -1,0 +1,85 @@
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide)
+"ac" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"ad" = (/obj/structure/carpet/command,/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"ae" = (/obj/structure/carpet/command,/obj/structure/table/steel,/obj/marker/spawning/random/valuable,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"af" = (/obj/structure/carpet/command,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"ag" = (/obj/structure/interactive/vending/junk/solarian,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"ah" = (/obj/structure/interactive/vending/soda/solarian,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"ai" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"aj" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/city/the_greytide)
+"ak" = (/obj/structure/carpet/command,/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"al" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"am" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"an" = (/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide/bathroom)
+"ao" = (/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide/store)
+"ap" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide)
+"aq" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide)
+"ar" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"as" = (/obj/structure/interactive/misc/toilet,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/bathroom)
+"at" = (/obj/structure/table/steel,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"au" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"av" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide)
+"aw" = (/obj/structure/interactive/crate,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"ax" = (/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"ay" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/obj/marker/cover_node/right,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/bathroom)
+"az" = (/obj/structure/interactive/wire/green,/obj/marker/mission_mob,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"aA" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 4},/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aB" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/the_greytide/store)
+"aC" = (/obj/structure/interactive/bookcase,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aD" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide/bathroom)
+"aE" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aF" = (/obj/structure/interactive/lighting/fixture/tube/station,/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aG" = (/obj/structure/table/steel,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 4},/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aH" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aI" = (/obj/structure/interactive/chair,/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aJ" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aK" = (/obj/structure/interactive/storage/trash_pile/station,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"aL" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aM" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aN" = (/obj/structure/table/steel,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 8},/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aO" = (/obj/structure/table/steel,/obj/structure/carpet/grey,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aP" = (/obj/structure/table/steel,/obj/structure/carpet/grey,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aQ" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/obj/marker/cover_node/right,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aR" = (/obj/structure/interactive/potted_plant/nanotrasen,/obj/marker/cover_node/left,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aS" = (/obj/marker/cover_node/right,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aT" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"aU" = (/obj/structure/interactive/bar_sign/the_greytide,/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide/store)
+"aV" = (/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aW" = (/obj/marker/spawning/window,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/mission/prefab/city/the_greytide/store)
+"aX" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"aY" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal,/area/mission/prefab/city/the_greytide/bathroom)
+"aZ" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"ba" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/marker/cover_node/right,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bb" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/obj/marker/cover_node/left,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bc" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bd" = (/obj/structure/carpet/command,/obj/marker/cover_node/left,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"be" = (/obj/structure/carpet/command,/obj/marker/mission_mob,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"bf" = (/obj/structure/interactive/storage/safe,/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"bg" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/obj/marker/mission_mob,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/bathroom)
+"bh" = (/obj/marker/mission_mob,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bi" = (/obj/structure/carpet/command,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"bj" = (/obj/structure/carpet/command,/obj/marker/cover_node/right,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide)
+"bk" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bl" = (/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bm" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/grey,/area/mission/prefab/city/the_greytide/store)
+"bn" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaKaKaKaKaKaKaKaKaaaaaaaaaaaaaa
+aaababababababababamacacamaVacaa
+aaabadaeafagahazajaJaMaraLaLaLaa
+aaabakaebeaialbfanananaoaoaoaoaa
+aaabbdbibjapaqabanasanatatataoaa
+aaababauavabawblaybganaAaxawaBaa
+aaaoatbkaCaCaxbcanaYaDaxbhataBaa
+aaaBatblaxaEaEbmaFaEaEaxblataWaa
+aaaWataxbhaEaGaHaIaNaEaxaxataBaa
+aaaBataxaxaEaOaPaPaPaEaxaxataBaa
+aaaBatblaQaEbmaEaEbmaEbbblataBaa
+aaaoaWaBaoaxaxaxbhaxaxaoaBaWaoaa
+aaaaaaaaaoaRbmaSaZbmbaaoaaaaaaaa
+aaaaaaaaaoaWaTaUaoaTaWaoaaaaaaaa
+aaaaaaaaaXaXbnaXaXbnaXaXaaaaaaaa
+"}
