@@ -1,5 +1,5 @@
 /obj/structure/interactive/bar_sign
-	name = "bar sign"
+	name = "store sign"
 	desc = "Come on in!"
 	icon = 'icons/obj/structure/store_signs.dmi'
 	icon_state = "blank"
