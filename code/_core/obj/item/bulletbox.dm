@@ -10,10 +10,10 @@
 
 	var/obj/item/bullet_cartridge/stored_bullet
 
-	size = SIZE_4
+	size = SIZE_3
 	weight = 30
 
-	value = 200
+	value = 100
 
 	pixel_y = 4
 
@@ -258,6 +258,7 @@
 	small = TRUE
 	ignore_custom_sprites = TRUE
 	draw_bullet_on_box = FALSE
+	value = 10
 
 /obj/item/bulletbox/small/shotgun_12
 	stored_bullet = /obj/item/bullet_cartridge/shotgun_12

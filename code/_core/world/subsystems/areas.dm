@@ -51,6 +51,8 @@ SUBSYSTEM_DEF(area)
 	log_subsystem(name,"Finalized [area_count] total areas.")
 
 	var/changed_areas = 0
+
+	//First (strict) pass.
 	while(TRUE)
 		var/found_turf = FALSE
 		for(var/turf/simulated/T in null_area.contents) //This checks simulated turfs only.
@@ -59,19 +61,47 @@ SUBSYSTEM_DEF(area)
 				if(!nt)
 					new/area/mission/out_of_bounds(T)
 					changed_areas++
+					found_turf = TRUE
+					break
+				var/area/A = nt.loc
+				if(A.allow_area_expansion)
+					new A.type(T)
+					changed_areas++
+					found_turf = TRUE
+					break
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		if(!found_turf)
+			break
+
+	//Second pass.
+	while(TRUE)
+		var/found_turf = FALSE
+		for(var/turf/simulated/T in null_area.contents) //This checks simulated turfs only.
+			for(var/d in DIRECTIONS_CARDINAL)
+				var/turf/nt = get_step(T,d)
+				if(!nt)
+					new/area/mission/out_of_bounds(T)
+					changed_areas++
+					found_turf = TRUE
 					break
 				var/area/A = nt.loc
 				if(A.type != /area/)
 					new A.type(T)
 					changed_areas++
+					found_turf = TRUE
 					break
-			found_turf = TRUE
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
-
 		if(!found_turf)
 			break
 
 	log_subsystem(src.name,"Changed [changed_areas] turfs with bad areas into good areas.")
+
+	var/bad_count = 0
+	for(var/turf/simulated/T in null_area.contents)
+		bad_count++
+
+	if(length(bad_count) > 0)
+		log_subsystem(src.name,"WARNING: Failed to change [bad_count] turfs with bad areas into good areas.")
 
 	sort_tim(all_areas,/proc/cmp_path_asc,associative=TRUE)
 

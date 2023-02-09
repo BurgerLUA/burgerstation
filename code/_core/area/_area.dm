@@ -71,6 +71,8 @@
 
 	var/horde_data/horde_data
 
+	var/allow_area_expansion = FALSE //Allow this area to be automatically expanded in area generation.
+
 /area/proc/is_space()
 	return FALSE
 

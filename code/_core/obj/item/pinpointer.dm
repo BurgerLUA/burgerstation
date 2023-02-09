@@ -234,6 +234,7 @@
 	desired_loyalty_tag = "Syndicate"
 	value = 1000
 	encoded = TRUE
+	contraband = TRUE
 
 /obj/item/pinpointer/crew/revolutionary
 	name = "revolutionary soldier pinpointer"
@@ -242,6 +243,7 @@
 	desired_loyalty_tag = "Revolutionary"
 	value = 1000
 	encoded = TRUE
+	contraband = TRUE
 
 /obj/item/pinpointer/landmark/
 	name = "area pinpointer"

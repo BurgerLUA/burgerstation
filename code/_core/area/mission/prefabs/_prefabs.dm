@@ -4,7 +4,7 @@
 
 	flags_area = FLAG_AREA_NO_HORDE
 
-
+	allow_area_expansion = FALSE
 
 
 
