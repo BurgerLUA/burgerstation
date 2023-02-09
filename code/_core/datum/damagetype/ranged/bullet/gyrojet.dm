@@ -16,7 +16,7 @@
 	)
 	falloff = 0
 
-/damagetype/ranged/bullet/gyrojet/rubber_grenade/post_on_hit(atom/attacker, atom/victim, atom/weapon, atom/hit_object, atom/blamed, total_damage_dealt)
+/damagetype/ranged/bullet/gyrojet/rubber_grenade/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	if(is_living(victim)&& victim.health)
 		var/mob/living/V = victim
 		V.health.adjust_stamina(-75)

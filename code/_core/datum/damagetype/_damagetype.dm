@@ -138,6 +138,7 @@ var/global/list/all_damage_numbers = list()
 	var/sneak_attack_multiplier = 2 //200%
 
 	var/alert_on_impact = ALERT_LEVEL_NONE
+	var/alert_range = 2
 
 	var/allow_power_attacks = TRUE
 
@@ -690,8 +691,6 @@ var/global/list/all_damage_numbers = list()
 		else
 			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
 
-	src.post_on_hit(attacker,victim,weapon,hit_object,blamed,total_damage_dealt)
-
 	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0)
 		var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
 		var/obj/effect/damage_number/DN
@@ -719,12 +718,14 @@ var/global/list/all_damage_numbers = list()
 	if(victim != hit_object)
 		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
+	post_on_hit(attacker,attacker_turf,victim,victim_turf,weapon,hit_object,total_damage_dealt)
+
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 
-/damagetype/proc/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/proc/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
-	if(alert_on_impact != ALERT_LEVEL_NONE)
-		create_alert(2,get_turf(hit_object),blamed,alert_level = alert_on_impact)
+	if(alert_on_impact != ALERT_LEVEL_NONE && alert_range > 0)
+		create_alert(VIEW_RANGE,victim_turf,attacker,alert_level = alert_on_impact)
 
 	return TRUE
 

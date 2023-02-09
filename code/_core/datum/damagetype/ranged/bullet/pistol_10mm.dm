@@ -47,7 +47,7 @@
 	crit_multiplier = 3
 	stealthy = TRUE
 
-/damagetype/ranged/bullet/pistol_40/tranq/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/pistol_40/tranq/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	. = ..()
 	if(victim.health && is_living(victim))
 		var/mob/living/L = victim

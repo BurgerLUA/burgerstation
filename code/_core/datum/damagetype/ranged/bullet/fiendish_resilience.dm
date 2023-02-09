@@ -22,7 +22,8 @@
 
 	falloff = VIEW_RANGE*1
 
-/damagetype/ranged/bullet/fiendish_resilience/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/fiendish_resilience/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+
 	if(is_living(attacker) && is_living(victim))
 		var/mob/living/V = victim
 		var/mob/living/A = attacker
@@ -36,6 +37,6 @@
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.reagents.add_reagent(reagent_to_add,volume_to_add,caller=attacker) //I successfully stole stolen bloodsteal code!
-				play_sound(pick('sound/effects/demon_consume.ogg'),get_turf(V),range_max=VIEW_RANGE*0.5)
+				play_sound('sound/effects/demon_consume.ogg',attacker_turf,range_max=VIEW_RANGE*0.5)
 
 		return ..()

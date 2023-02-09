@@ -39,7 +39,7 @@
 	attack_delay = 15
 	attack_delay_max = 20
 
-/damagetype/melee/club/vampire_killer/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/melee/club/vampire_killer/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && prob(total_damage_dealt))
 		var/mob/living/L = victim

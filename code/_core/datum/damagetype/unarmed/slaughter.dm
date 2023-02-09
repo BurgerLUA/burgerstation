@@ -45,7 +45,7 @@
 	attack_delay = 1
 	attack_delay_max = 10
 
-/damagetype/unarmed/slaughter/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/unarmed/slaughter/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	. = ..()
 
@@ -57,4 +57,5 @@
 			if(blood_to_steal > 0)
 				V.blood_volume -= blood_to_steal
 				A.blood_volume = clamp(A.blood_volume+blood_to_steal,0,A.blood_volume_max) //I successfully stole bloodsteal code.
-				play_sound(pick('sound/effects/demon_consume.ogg'),get_turf(V),range_max=VIEW_RANGE*0.5)
+				if(attacker_turf)
+					play_sound('sound/effects/demon_consume.ogg',attacker_turf,range_max=VIEW_RANGE*0.5)

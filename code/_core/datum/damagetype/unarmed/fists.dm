@@ -130,22 +130,16 @@
 
 	allow_friendly_fire = TRUE
 
-/damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
-	if(is_living(victim))
+	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
-
-		var/luck_value = (total_damage_dealt/15)*100
-
-		if(is_living(attacker))
-			var/mob/living/A = attacker
-			if(allow_hostile_action(A.loyalty_tag,L))
-				if(A.ai && luck(list(attacker,weapon),luck_value) && luck(list(victim,hit_object),100,FALSE))
-					L.add_status_effect(DISARM,5,5, source = attacker)
-				else
-					luck_value *= 4
-					if(luck(list(attacker,weapon),luck_value*0.5) && luck(list(victim,hit_object),100,FALSE))
-						L.add_status_effect(SHOVED,attack_delay*0.5,attack_delay*0.5, source = attacker)
+		var/mob/living/A = attacker
+		if(allow_hostile_action(A.loyalty_tag,L))
+			if(L.has_status_effect(SHOVED))
+				L.add_status_effect(DISARM,5,5, source = attacker)
+			else
+				L.add_status_effect(SHOVED,attack_delay,attack_delay, source = attacker)
 
 	return ..()
 
@@ -191,17 +185,17 @@
 
 	inaccuracy_mod = 2
 
-/damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
-	if(is_advanced(attacker) && ismovable(victim) && is_turf(victim.loc))
+	if(victim_turf && is_advanced(attacker) && ismovable(victim))
 		var/mob/living/advanced/A = attacker
 		if(is_living(victim))
 			var/mob/living/L = victim
 			if(!L.add_status_effect(GRAB,100,20,source = A)) //If we can't grab, return.
 				return ..()
 
-		if(istype(weapon,/obj/item/organ/hand))
-			var/obj/item/organ/hand/H = weapon
+		if(is_organ(weapon))
+			var/obj/item/organ/H = weapon
 			if(H.id == BODY_HAND_RIGHT)
 				A.inventories_by_id[BODY_HAND_RIGHT_HELD].grab_object(attacker,victim)
 			else if(H.id == BODY_HAND_LEFT)

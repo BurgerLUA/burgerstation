@@ -42,7 +42,7 @@
 	attack_delay = 10
 	attack_delay_max = 20
 
-/damagetype/unarmed/bite/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/unarmed/bite/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker) && victim.reagents && total_damage_dealt >= 10 && prob(total_damage_dealt))
 		var/mob/living/L = attacker
