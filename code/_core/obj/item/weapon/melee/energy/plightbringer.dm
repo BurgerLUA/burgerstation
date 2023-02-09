@@ -13,6 +13,8 @@
 	size = SIZE_4
 	weight = 25
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller)
 
 	. = ..()

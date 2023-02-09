@@ -24,3 +24,5 @@
 	can_wear = TRUE
 
 	value = 600
+
+	rarity = RARITY_COMMON

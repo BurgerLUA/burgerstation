@@ -20,6 +20,8 @@
 
 	value = 140
 
+	rarity = RARITY_COMMON
+
 
 /obj/item/weapon/melee/sword/claymore
 	name = "steel claymore sword"
@@ -37,6 +39,8 @@
 
 	can_wear = TRUE
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/melee/sword/claymore/cult
 	name = "cultist sword"
 	icon = 'icons/obj/item/weapons/melee/swords/cult.dmi'
@@ -49,6 +53,8 @@
 	weight = 6
 
 	value = 200
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/melee/spear
 	name = "steel shortspear"
@@ -66,6 +72,8 @@
 
 	weight = 5
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/melee/spear/clockwork
 	name = "clockwork spear"
 	desc = "FOR RATVAR."
@@ -81,6 +89,8 @@
 
 	weight = 10
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
 
@@ -94,6 +104,8 @@
 	value = 900
 
 	attack_range = 2
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/melee/sword/zweihander/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
 
@@ -118,6 +130,8 @@
 
 	value = 500
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/sword/skana
 	name = "skana"
 	desc = "A lightweight metal katana that's been space-ified."
@@ -133,6 +147,8 @@
 	weight = 4
 
 	value = 180
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/melee/sword/gladius
 	name = "gladius"
@@ -150,6 +166,8 @@
 
 	value = 200
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/melee/sword/allium
 	name = "allium"
 	desc = "An allium made of copper."
@@ -165,3 +183,5 @@
 	weight = 5
 
 	value = 150
+
+	rarity = RARITY_COMMON

@@ -13,6 +13,8 @@ obj/item/weapon/unarmed/powerfist
 
 	value = 800
 
+	rarity = RARITY_UNCOMMON
+
 obj/item/weapon/unarmed/powerfist/update_icon()
 
 	. = ..()

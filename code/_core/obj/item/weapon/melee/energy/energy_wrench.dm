@@ -12,6 +12,8 @@
 	size = SIZE_2
 	weight = 3
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller)
 
 	. = ..()

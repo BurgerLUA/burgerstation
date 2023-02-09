@@ -18,6 +18,8 @@
 	weight = 5
 	size = SIZE_2
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
 
 	. = ..()

@@ -17,6 +17,8 @@
 
 	value = 300
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/melee/energy/chainsaw/think()
 
 	if(world.time >= next_chain_time)

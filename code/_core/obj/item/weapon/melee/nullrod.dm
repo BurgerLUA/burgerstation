@@ -11,6 +11,8 @@
 	weight = 4
 	size = SIZE_2
 
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/weapon/melee/null_rod/staff
 	name = "null staff"
@@ -27,6 +29,8 @@
 	weight = 8
 	size = SIZE_4
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/melee/null_rod/dagger
 	name = "null dagger"
 	desc = "I don't think that man has ever been to a seminarian."
@@ -39,3 +43,5 @@
 
 	weight = 3
 	size = SIZE_2
+
+	rarity = RARITY_UNCOMMON

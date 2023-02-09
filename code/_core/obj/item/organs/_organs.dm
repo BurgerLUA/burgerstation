@@ -255,8 +255,6 @@
 		if(!A.has_status_effect(ZOMBIE))
 			A.death()
 			A.make_unrevivable()
-		if(!A.dead)
-			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
 		if(T && A.blood_type)
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
@@ -272,7 +270,7 @@
 					base_normals[2]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
 					TRUE
 				)
-			if(gib_icon_state && enable_skin && additional_blends["skin"])
+			if(!hard && gib_icon_state && enable_skin && additional_blends["skin"])
 				var/icon_blend/IB = additional_blends["skin"]
 				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(
 					/obj/effect/cleanable/blood/body_gib,

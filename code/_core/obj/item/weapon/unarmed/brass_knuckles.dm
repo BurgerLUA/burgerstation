@@ -1,6 +1,6 @@
 obj/item/weapon/unarmed/brass_knuckles
 
-	name = "brass knuckles"
+	name = "iron knuckles"
 	desc = "Cheat at unarmed combat."
 	desc_extended = "A large piece of brass molded to fit around your fist. Delivers an extra punch when attacking, but makes you less agile."
 
@@ -12,6 +12,8 @@ obj/item/weapon/unarmed/brass_knuckles
 	weight = 4
 
 	value = 100
+
+	rarity = RARITY_COMMON
 
 obj/item/weapon/unarmed/brass_knuckles/update_icon()
 
@@ -39,3 +41,5 @@ obj/item/weapon/unarmed/brass_knuckles/mod
 	weight = 6
 
 	value = 100
+
+	rarity = RARITY_UNCOMMON

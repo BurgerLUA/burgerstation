@@ -6,6 +6,10 @@
 	if(!destination)
 		CRASH("Invalid destination provided!")
 
+	var/turf/T = get_turf(owner)
+	if(get_dist(T,destination) >= VIEW_RANGE)
+		return set_path_astar(destination)
+
 	var/obj/marker/map_node/N_start = find_closest_node(owner)
 	if(!N_start)
 		if(debug) log_debug("[src.get_debug_name()] tried node pathing, but couldn't find a valid start node.")

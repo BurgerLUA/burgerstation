@@ -3,7 +3,6 @@
 	desc = "No longer living, I think."
 	desc_extended = "A magical staff belonging to the late heirophant. Allows for teleportation."
 
-
 	icon = 'icons/obj/item/heirophant_staff.dmi'
 
 	damage_type = /damagetype/melee/club/mace
@@ -20,6 +19,8 @@
 	var/next_teleport_command = 0
 
 	item_slot = SLOT_TORSO_BACK
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/melee/hierophant_staff/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 

@@ -102,7 +102,6 @@
 
 	bullet_count_max = 4
 
-
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen
 	name = "\improper 40mm Grenade Thumper"
 	desc = "Thumper."

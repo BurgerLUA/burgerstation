@@ -115,7 +115,7 @@
 /loot/random/gun/solarian/bandit
 	value_max = 1000
 	rarity_min = RARITY_COMMON
-	rarity_max = RARITY_UNCOMMON
+	rarity_max = RARITY_COMMON
 
 /loot/random/gun/slavic
 	company_type = "Slavic"

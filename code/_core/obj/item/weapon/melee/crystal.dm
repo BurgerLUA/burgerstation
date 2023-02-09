@@ -13,6 +13,8 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/melee/crystal/Finalize()
 	. = ..()
 	update_inventory()

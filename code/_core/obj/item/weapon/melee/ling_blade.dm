@@ -18,6 +18,8 @@
 
 	can_save = FALSE
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller)
 
 	INTERACT_CHECK

@@ -16,3 +16,5 @@
 	weight = 40
 
 	item_slot = SLOT_TORSO_BACK
+
+	rarity = RARITY_MYTHICAL

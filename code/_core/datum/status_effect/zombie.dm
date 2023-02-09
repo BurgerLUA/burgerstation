@@ -69,6 +69,17 @@
 			robotic=FALSE
 		)
 
+	for(var/k in A.organs)
+		var/obj/item/organ/O = k
+		if(!O.health)
+			continue
+		if(O.id == BODY_TORSO)
+			O.damage_coefficient *= 0.5
+		else if(O.id == BODY_HEAD)
+			O.damage_coefficient *= 1.5
+		else
+			O.damage_coefficient *= 0.25
+
 	A.health.adjust_loss_smart(
 		brute=-(20 + A.health.damage[BRUTE]*0.5),
 		burn=-(10 + A.health.damage[BURN]*0.25),
@@ -76,17 +87,6 @@
 		organic=TRUE,
 		robotic=FALSE
 	)
-
-	for(var/k in A.organs)
-		var/obj/item/organ/O = k
-		if(!O.health)
-			continue
-		if(O.id == BODY_TORSO)
-			O.damage_coefficient *= 0.25
-		else if(O.id == BODY_HEAD)
-			O.damage_coefficient *= 2
-		else
-			O.damage_coefficient *= 0.1
 
 	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in A.organs
 	if(L) L.loyalty_tag = "Blob"

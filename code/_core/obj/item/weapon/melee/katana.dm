@@ -9,3 +9,5 @@
 	damage_type = /damagetype/melee/sword/katana
 
 	value = 300
+
+	rarity = RARITY_UNCOMMON

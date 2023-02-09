@@ -26,3 +26,5 @@
 	value = 1000
 
 	dan_mode = TRUE
+
+	rarity = RARITY_RARE

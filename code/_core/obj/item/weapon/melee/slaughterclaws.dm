@@ -14,6 +14,8 @@
 	var/next_teleport_command = 0
 	var/next_blood_attack = 0
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/slaughterclaws/click_on_object(var/mob/caller,var/atom/object,location,control,params) //All blood costs are made with a level 50 VIT char in mind.
 
 	var/mob/living/L = caller

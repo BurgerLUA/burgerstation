@@ -12,6 +12,8 @@
 		"blade" = "#4CFF00"
 	)
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/melee/energy/sword/katana/black
 	polymorphs = list(
 		"base" = "#FFFFFF",
@@ -27,6 +29,8 @@
 	)
 	size = SIZE_3
 	weight = 12
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/melee/energy/sword/katana/merc/click_self(var/mob/caller)
 	return TRUE
