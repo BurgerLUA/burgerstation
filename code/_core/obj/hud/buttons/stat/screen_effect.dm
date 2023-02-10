@@ -6,7 +6,7 @@
 	icon = 'icons/hud/injury.dmi'
 	icon_state = "corner"
 
-	plane = PLANE_HUD
+	plane = PLANE_HUD_DAMAGE
 	layer = LAYER_SCREEN_BLOOD
 
 	screen_loc = "CENTER:-144,CENTER:-144"

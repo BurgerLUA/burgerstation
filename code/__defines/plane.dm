@@ -96,7 +96,9 @@
 #define PLANE_ALWAYS_VISIBLE 51
 
 //HUD
-#define PLANE_MAP 99
+#define PLANE_MAP 98
+
+#define PLANE_HUD_DAMAGE 99
 
 #define PLANE_HUD 100
 

@@ -377,7 +377,7 @@
 
 	play_sound('sound/effects/space_phase.ogg',T)
 
-	suck(A,5)
+	suck(A,6)
 
 
 /obj/item/grenade/timed/blackhole/proc/suck(var/mob/living/advanced/caller,var/sucks_left=0)
@@ -385,7 +385,7 @@
 
 	var/turf/T = get_turf(src)
 
-	var/limit = 10
+	var/limit = 20
 
 	var/sucked = FALSE
 	for(var/obj/item/I in view(5,src))

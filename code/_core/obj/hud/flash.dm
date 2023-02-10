@@ -4,7 +4,7 @@
 	icon = 'icons/hud/screen.dmi'
 	icon_state = ""
 
-	plane = PLANE_HUD
+	plane = PLANE_HUD_DAMAGE
 	layer = LAYER_FLASH
 
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
