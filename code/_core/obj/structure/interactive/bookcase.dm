@@ -8,7 +8,6 @@ var/global/list/stored_bookcase_phrases = list(
 	"...Oh a mime book... it's blank..."
 )
 
-
 /obj/structure/interactive/bookcase
 	name = "dusty bookcase"
 	desc = "What possible knowledge could be in here?"
@@ -16,22 +15,29 @@ var/global/list/stored_bookcase_phrases = list(
 	icon = 'icons/obj/structure/bookcase.dmi'
 	icon_state = "book"
 
-	var/chance_of_scroll = TRUE
+	var/chance_of_scroll = 5
 
 	density = TRUE
 
 	pixel_y = 6
 
 /obj/structure/interactive/bookcase/no_scrolls
-	chance_of_scroll = FALSE
+	chance_of_scroll = 0
 
 /obj/structure/interactive/bookcase/Generate()
 
-	if(chance_of_scroll && prob(25))
-		chance_of_scroll = rand(1,5)
-		icon_state = "[initial(icon_state)]_[chance_of_scroll]"
+	if(chance_of_scroll)
+		chance_of_scroll = rand(1,chance_of_scroll)
 
-	return ..()
+	. = ..()
+
+/obj/structure/interactive/bookcase/Finalize()
+	. = ..()
+	update_sprite()
+
+/obj/structure/interactive/bookcase/update_sprite()
+	. = ..()
+	icon_state = "[initial(icon_state)]-[chance_of_scroll]"
 
 /obj/structure/interactive/bookcase/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -39,7 +45,7 @@ var/global/list/stored_bookcase_phrases = list(
 		return ..()
 
 	if(can_search_case(caller))
-		caller.to_chat(span("notice","You start to search \the [src.name]..."))
+		caller.to_chat(span("notice","You start searching \the [src.name]..."))
 		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/search_case,caller)
 		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_search_case,caller)
 
@@ -51,16 +57,15 @@ var/global/list/stored_bookcase_phrases = list(
 
 	if(prob(5))
 		caller.to_chat(span("notice",pick(stored_bookcase_phrases)))
-
-	if(chance_of_scroll <= 0)
-		caller.to_chat(span("warning","...You don't think you'll find anything of use here."))
-		return TRUE
+		if(chance_of_scroll <= 0)
+			caller.to_chat(span("warning","...You don't think you'll find anything of use here."))
+			return FALSE
 
 	return TRUE
 
 /obj/structure/interactive/bookcase/proc/search_case(var/mob/caller)
 
-	if(prob(chance_of_scroll))
+	if(prob(chance_of_scroll*5))
 		var/rarity = 0
 		if(is_player(caller))
 			var/mob/living/advanced/player/P = caller
@@ -68,9 +73,9 @@ var/global/list/stored_bookcase_phrases = list(
 		var/turf/T = get_turf(src)
 		SPAWN_LOOT(/loot/skill_scroll,T,rarity)
 		caller.to_chat(span("notice","Huh. You found a scroll!"))
+		chance_of_scroll--
+		update_sprite()
 	else
 		caller.to_chat(span("warning","...You didn't find anything."))
-	chance_of_scroll--
-	update_sprite()
 
 	return TRUE

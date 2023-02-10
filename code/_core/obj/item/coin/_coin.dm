@@ -8,6 +8,57 @@
 	drop_sound = 'sound/items/drop/ring.ogg'
 
 	weight = 0.05
+	size = SIZE_0
+
+
+/obj/item/coin/bronze
+	name = "solarian bronze coin"
+	value = 50
+	icon_state = "coin2"
+	color = COLOR_BRONZE
+	rarity = RARITY_COMMON
+
+/obj/item/coin/silver
+	name = "solarian silver coin"
+	value = 100
+	icon_state = "coin3"
+	color = COLOR_SILVER
+	rarity = RARITY_UNCOMMON
+
+/obj/item/coin/gold
+	name = "solarian gold coin"
+	value = 250
+	icon_state = "coin4"
+	color = COLOR_GOLD
+	rarity = RARITY_RARE
+
+/obj/item/coin/phoron
+	name = "solarian phoron coin"
+	value = 500
+	icon_state = "coin5"
+	color = COLOR_PHORON
+	rarity = RARITY_RARE
+
+/obj/item/coin/platinum
+	name = "solarian platinum coin"
+	value = 1000
+	icon_state = "coin6"
+	color = COLOR_PLATINUM
+	rarity = RARITY_MYTHICAL
+
+/obj/item/coin/diamond
+	name = "solarian diamond coin"
+	value = 2500
+	icon_state = "coin7"
+	color = COLOR_DIAMOND
+	rarity = RARITY_MYTHICAL
+
+/obj/item/coin/adamantium
+	name = "solarian adamantium coin"
+	value = 5000
+	icon_state = "coin8"
+	color = COLOR_ADAMANITUM_CARBON
+	rarity = RARITY_LEGENDARY
 
 /obj/item/coin/cursed
 	name = "shady coin"
@@ -15,7 +66,6 @@
 	desc_extended = "An unnerving coin made of unknown material, crushing this coin feels like it can change your fate."
 	icon_state = "coin5"
 	value = 2000
-
 	rarity = RARITY_UNCOMMON
 
 /obj/item/coin/cursed/click_self(var/mob/caller)
