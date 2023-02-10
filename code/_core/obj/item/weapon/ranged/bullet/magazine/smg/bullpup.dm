@@ -72,6 +72,8 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_static_spread()
 	return 0.005
 
@@ -103,3 +105,5 @@
 
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 16 - 16
+
+	rarity = RARITY_RARE

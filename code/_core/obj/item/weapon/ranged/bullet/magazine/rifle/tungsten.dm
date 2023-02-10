@@ -75,6 +75,8 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.01
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/update_icon()
 
 	icon_state = initial(icon_state)

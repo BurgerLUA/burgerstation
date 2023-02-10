@@ -65,11 +65,11 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 21 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.01
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread()
 	return 0

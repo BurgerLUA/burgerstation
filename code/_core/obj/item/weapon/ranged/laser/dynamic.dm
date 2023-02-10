@@ -65,6 +65,8 @@
 
 	charge_cost = CELL_SIZE_BASIC / 80
 
+	rarity = RARITY_RARE
+
 
 /obj/item/weapon/ranged/energy/dynamic/get_static_spread()
 	return 0

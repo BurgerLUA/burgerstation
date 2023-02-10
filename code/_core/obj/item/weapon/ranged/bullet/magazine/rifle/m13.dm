@@ -75,6 +75,8 @@
 
 	dan_mode = TRUE
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/get_static_spread()
 	return 0.0001
 

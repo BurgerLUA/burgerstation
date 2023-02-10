@@ -66,6 +66,8 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 18 - 16
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/longcon/get_static_spread()
 	return 0.0045
 

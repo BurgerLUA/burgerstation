@@ -74,6 +74,8 @@
 	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/smg/smart/get_static_spread()
 	return 0.01
 

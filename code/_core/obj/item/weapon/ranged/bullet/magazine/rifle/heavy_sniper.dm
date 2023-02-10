@@ -87,6 +87,8 @@
 
 	dan_mode = TRUE
 
+	rarity = RARITY_RARE
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/heavy_sniper/get_static_spread()

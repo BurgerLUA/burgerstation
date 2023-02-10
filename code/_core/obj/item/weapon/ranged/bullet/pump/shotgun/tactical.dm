@@ -75,6 +75,8 @@
 
 	pump_delay = 1
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical/get_static_spread()

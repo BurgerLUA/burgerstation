@@ -21,6 +21,8 @@
 
 	bullet_color = "#FFFFFF"
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/energy/pump/kinetic_accelerator/update_icon()
 
 	. = ..()

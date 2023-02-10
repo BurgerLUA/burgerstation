@@ -77,6 +77,8 @@
 
 	override_icon_state = TRUE
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_classic/update_icon()
 
 	. = ..()

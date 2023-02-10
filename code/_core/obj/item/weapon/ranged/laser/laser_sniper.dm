@@ -67,6 +67,8 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/energy/sniper/get_static_spread()
 	return 0
 

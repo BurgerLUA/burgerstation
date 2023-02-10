@@ -79,6 +79,8 @@
 
 	dan_mode = TRUE
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/get_static_spread()
 	return 0.001
 
@@ -110,6 +112,8 @@
 	movement_spread_base = 0.01
 
 	dan_mode = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod/get_static_spread()
 	return 0.005

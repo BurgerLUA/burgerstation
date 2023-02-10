@@ -73,6 +73,8 @@
 
 	can_wield = TRUE
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/energy/rifle/get_static_spread()
 	return 0.005
 
@@ -109,14 +111,14 @@
 
 	charge_cost = CELL_SIZE_BASIC / 50
 
-
-
 	polymorphs = list(
 		"base" = COLOR_WHITE,
 		"barrel" = "#FFFF00"
 	)
 
 	value = 2200
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/energy/rifle/xray
 	name = "AER13c X-Ray Rifle"
@@ -137,6 +139,8 @@
 
 	value = 2800
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad
 	name = "AER13c-D X-Ray Rifle"
 	desc_extended = "A modular model of laser rifle, capable of using different crystals to shoot beams with different effects. This one shoots a x-ray beams that completely ignores armor. This one has a phoron crystal, and a special fusion battery that charges over time."
@@ -154,6 +158,8 @@
 	battery = /obj/item/powercell/recharging
 
 	value = 3500
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/energy/rifle/xray/deathsquad/Generate()
 

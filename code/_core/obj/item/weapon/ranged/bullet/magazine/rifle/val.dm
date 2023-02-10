@@ -65,6 +65,8 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.03
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread()
 	return 0.001
 

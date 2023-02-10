@@ -63,6 +63,8 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread()
 	return 0.001
 
@@ -83,6 +85,8 @@
 	weight = 20
 	value_burgerbux = 1
 
+	rarity = RARITY_MYTHICAL
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
 	name = ".50 Black Eagle MOD"
@@ -98,7 +102,7 @@
 
 	weight = 10
 
-
+	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod/equipped/Generate()
 

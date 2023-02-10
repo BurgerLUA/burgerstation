@@ -74,6 +74,8 @@
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/ranged/bullet/magazine/smg/thompson/get_static_spread()
 	return 0.005
 

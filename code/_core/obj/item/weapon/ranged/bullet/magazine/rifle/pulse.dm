@@ -73,11 +73,11 @@
 
 	override_icon_state = TRUE
 
-
-
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.03
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/get_static_spread()
 	return 0.002

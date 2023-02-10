@@ -74,6 +74,8 @@
 
 	pump_delay = 3
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
 	return 0.004
 

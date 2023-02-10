@@ -65,6 +65,8 @@
 
 	tier = 0
 
+	rarity = RARITY_BROKEN
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/dip/get_static_spread()
 	return 0.002
 

@@ -65,6 +65,8 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
 
 	icon_state = initial(icon_state)

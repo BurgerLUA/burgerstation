@@ -66,6 +66,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_RARE
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/holy45/get_static_spread()

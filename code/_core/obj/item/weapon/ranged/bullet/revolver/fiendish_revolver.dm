@@ -76,13 +76,13 @@
 	attachment_undermount_offset_x = 14 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
 	value_burgerbux = 1
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/revolver/fiendish/get_static_spread()
 	return 0

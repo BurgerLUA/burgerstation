@@ -22,6 +22,8 @@
 
 	bullet_color = null
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/energy/fed/plasma_cutter/update_icon()
 
 	. = ..()

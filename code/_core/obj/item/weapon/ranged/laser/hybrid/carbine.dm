@@ -40,6 +40,8 @@
 
 	var/icon_count = 4
 
+	rarity = RARITY_COMMON
+
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/update_icon()
 
@@ -96,6 +98,8 @@
 	charge_cost = CELL_SIZE_BASIC / 80
 
 	damage_mod = 0.9
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/energy/hybrid/carbine/small/get_static_spread()
 	return 0.007

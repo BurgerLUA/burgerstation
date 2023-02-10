@@ -83,6 +83,8 @@
 
 	pixel_x = -8
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0
 

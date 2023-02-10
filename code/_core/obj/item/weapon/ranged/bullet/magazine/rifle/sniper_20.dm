@@ -77,6 +77,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_static_spread()
 	return 0
 

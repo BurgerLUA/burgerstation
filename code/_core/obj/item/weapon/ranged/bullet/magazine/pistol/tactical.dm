@@ -66,6 +66,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	rarity = RARITY_UNCOMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread()
@@ -111,6 +112,8 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread()
 	return 0

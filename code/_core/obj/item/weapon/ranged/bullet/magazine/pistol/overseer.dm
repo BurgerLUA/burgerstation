@@ -69,6 +69,8 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 12 - 16
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_static_spread()
 	return 0.002
 
@@ -124,6 +126,8 @@
 	attachment_undermount_offset_y = 14 - 16
 
 	automatic = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod/silenced/Generate()
 

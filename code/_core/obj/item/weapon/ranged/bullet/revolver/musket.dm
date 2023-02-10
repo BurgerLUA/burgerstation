@@ -85,7 +85,7 @@
 
 	pixel_x = -8
 
-
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/revolver/musket/get_static_spread()
 	return 0.005 //Smoothbore

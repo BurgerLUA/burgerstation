@@ -40,6 +40,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_MYTHICAL
+
 
 /obj/item/weapon/ranged/energy/gatling/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
 	. = ..()

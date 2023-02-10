@@ -75,6 +75,8 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/doom/get_static_spread()
 	return 0.005
 

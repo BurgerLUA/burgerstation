@@ -71,6 +71,7 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread()

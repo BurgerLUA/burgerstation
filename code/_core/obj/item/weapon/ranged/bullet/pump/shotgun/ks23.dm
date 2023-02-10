@@ -74,6 +74,8 @@
 
 	pump_delay = 3
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
 	return 0.1
 

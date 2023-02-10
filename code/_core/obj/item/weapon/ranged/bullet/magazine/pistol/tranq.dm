@@ -39,6 +39,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/tranq/get_static_spread()
 	return 0
 

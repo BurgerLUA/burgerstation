@@ -70,6 +70,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.2
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/revolver/big_game/get_static_spread()
 	return 0
 

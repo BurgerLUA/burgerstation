@@ -68,6 +68,8 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_RARE
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread()
 	return 0.0025
@@ -90,3 +92,5 @@
 	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
 
 	tier = 3
+
+	rarity = RARITY_MYTHICAL

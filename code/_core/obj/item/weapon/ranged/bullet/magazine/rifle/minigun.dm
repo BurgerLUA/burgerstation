@@ -52,6 +52,8 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.3
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
 	return (heat_max - heat_current)*0.5
 

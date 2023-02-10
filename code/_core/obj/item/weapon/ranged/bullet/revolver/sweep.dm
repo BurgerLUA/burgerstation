@@ -74,6 +74,8 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/revolver/sweep/get_base_spread()
 	return 0.15
 

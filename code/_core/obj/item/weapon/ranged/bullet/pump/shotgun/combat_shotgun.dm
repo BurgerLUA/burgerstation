@@ -75,6 +75,8 @@
 
 	pump_delay = 3
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread()
 	return 0.002
 
@@ -117,3 +119,5 @@
 
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 17 - 16
+
+	rarity = RARITY_RARE

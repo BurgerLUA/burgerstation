@@ -33,6 +33,8 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.02
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/weapon/ranged/energy/captain/update_overlays()
 	. = ..()
 	var/obj/item/powercell/PC = get_battery()

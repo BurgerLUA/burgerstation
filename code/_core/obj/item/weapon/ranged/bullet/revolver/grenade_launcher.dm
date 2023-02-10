@@ -65,6 +65,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.04
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.1
 
@@ -101,6 +103,8 @@
 	automatic = FALSE
 
 	bullet_count_max = 4
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen
 	name = "\improper 40mm Grenade Thumper"

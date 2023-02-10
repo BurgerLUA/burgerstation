@@ -146,6 +146,8 @@
 
 	tier = 1
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bow/wood/get_static_spread()
 	return 0.005
 
@@ -161,6 +163,8 @@
 	value = 300
 
 	tier = 2
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
@@ -181,7 +185,7 @@
 
 	tier = 3
 
-	value_burgerbux = 1
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -211,6 +215,8 @@
 	stage_max = 125
 
 	tier = 4
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
 	var/damagetype/D = all_damage_types[ranged_damage_type]

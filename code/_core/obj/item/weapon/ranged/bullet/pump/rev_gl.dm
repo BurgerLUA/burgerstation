@@ -69,6 +69,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1
 

@@ -63,6 +63,8 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_static_spread()
 	return 0.002
 
@@ -81,12 +83,7 @@
 	bullet_diameter_best = 10.17
 	bullet_diameter_max = 11
 
-
-
-
-
-
-
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"
@@ -95,6 +92,8 @@
 	weight = 4
 	heat_max = 0.06
 	value = 350
+
+	rarity = RARITY_RARE
 
 var/global/list/kitchen_gun_slogans = list(
 	"And it sparkles like new!",
@@ -118,6 +117,8 @@ var/global/list/kitchen_gun_slogans = list(
 	var/slogan_number = 1
 
 	value_burgerbux = 1
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()

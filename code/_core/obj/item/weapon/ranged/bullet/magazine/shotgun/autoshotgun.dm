@@ -72,6 +72,8 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.03
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_base_spread()
 	return 0.2
 

@@ -75,6 +75,8 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/chris/get_static_spread()
 	return 0.001
 

@@ -74,6 +74,8 @@
 
 	can_wield = TRUE
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread()
 	return 0.001
 

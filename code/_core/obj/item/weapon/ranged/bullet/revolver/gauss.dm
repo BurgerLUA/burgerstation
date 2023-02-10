@@ -36,6 +36,8 @@
 	movement_inaccuracy_modifier = 4
 	movement_spread_base = 0.3
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread()
 	return 0.03
 

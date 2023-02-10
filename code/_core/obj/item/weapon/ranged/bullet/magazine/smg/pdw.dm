@@ -75,6 +75,8 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread()
 	return 0.005
 

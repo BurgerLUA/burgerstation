@@ -76,6 +76,8 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.005
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 
 	icon_state = initial(icon_state)
@@ -107,6 +109,8 @@
 	weight = 4
 
 	value = 800
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread()
 	return 0.03
@@ -166,6 +170,8 @@
 	movement_spread_base = 0.005
 
 	can_wield = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype/equipped
 

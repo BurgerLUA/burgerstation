@@ -80,6 +80,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/m4_soap/Generate()
 
 	. = ..()

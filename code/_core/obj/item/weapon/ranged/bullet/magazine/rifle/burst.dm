@@ -79,6 +79,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread()
 	return 0.0075
 
@@ -113,6 +115,8 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 17 - 16
+
+	rarity = RARITY_RARE
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_static_spread()

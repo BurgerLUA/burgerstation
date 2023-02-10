@@ -74,6 +74,8 @@
 
 	pump_delay = 4
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/frenchie/get_static_spread()
 	return 0.004
 

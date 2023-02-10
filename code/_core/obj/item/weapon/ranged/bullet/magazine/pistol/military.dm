@@ -65,7 +65,7 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-
+	rarity = RARITY_UNCOMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread()
@@ -103,6 +103,8 @@
 
 	attachment_whitelist = list()
 
+	rarity = RARITY_RARE
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype/get_static_spread()
@@ -120,3 +122,4 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
 	weight = 3
 
+	rarity = RARITY_COMMON

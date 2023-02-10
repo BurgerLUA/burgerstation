@@ -76,6 +76,7 @@
 	movement_inaccuracy_modifier = 1.1
 	movement_spread_base = 0.025
 
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread()
 	return 0
@@ -94,6 +95,8 @@
 	weight = 8
 
 	value = 4000
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod/get_static_spread()
 	return 0.05

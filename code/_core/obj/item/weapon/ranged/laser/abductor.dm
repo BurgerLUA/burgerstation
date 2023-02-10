@@ -35,6 +35,8 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.02
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/energy/abductor/update_overlays()
 	. = ..()
 	var/obj/item/powercell/PC = get_battery()

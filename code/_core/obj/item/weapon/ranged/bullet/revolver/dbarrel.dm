@@ -21,7 +21,7 @@
 
 	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
-	size = SIZE_2
+	size = SIZE_3
 	weight = 8
 
 	bullet_length_min = 76
@@ -37,6 +37,8 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.02
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()
 	return 0.3

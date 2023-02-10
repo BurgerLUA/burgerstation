@@ -69,6 +69,8 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 14 - 16
 
+	rarity = RARITY_COMMON
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_static_spread()
@@ -94,7 +96,7 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-
+	rarity = RARITY_RARE
 
 
 
@@ -126,6 +128,8 @@
 	bullet_diameter_max = 9.5
 
 	heat_max = 0.1
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/slavic/get_static_spread()
 	return 0.01

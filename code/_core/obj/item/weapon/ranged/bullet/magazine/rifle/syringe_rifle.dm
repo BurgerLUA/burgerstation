@@ -77,6 +77,8 @@
 
 	var/reagent_per_shot = 5
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine

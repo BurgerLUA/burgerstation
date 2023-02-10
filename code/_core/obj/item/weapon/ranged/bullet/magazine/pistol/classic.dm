@@ -64,6 +64,7 @@
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_RARE
 
 
 

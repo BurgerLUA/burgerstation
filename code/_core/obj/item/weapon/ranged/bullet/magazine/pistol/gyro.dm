@@ -68,6 +68,7 @@
 	tier = 3
 	bypass_balance_check = TRUE
 
+	rarity = RARITY_RARE
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread()

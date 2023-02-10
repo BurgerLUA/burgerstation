@@ -66,6 +66,8 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread()
 	return 0.001
 

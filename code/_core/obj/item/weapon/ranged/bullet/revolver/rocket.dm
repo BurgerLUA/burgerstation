@@ -38,6 +38,8 @@
 
 	uses_until_condition_fall = 0
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/revolver/rocket/get_base_spread()
 	return 0.02
 

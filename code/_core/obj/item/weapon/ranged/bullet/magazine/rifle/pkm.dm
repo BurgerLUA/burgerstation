@@ -72,6 +72,8 @@
 
 	override_icon_state = TRUE
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/pkm/update_icon()
 
 	icon_state = initial(icon_state)
