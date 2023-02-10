@@ -622,6 +622,7 @@
 #include "code\_core\datum\loot\fishing.dm"
 #include "code\_core\datum\loot\halloween.dm"
 #include "code\_core\datum\loot\lavaland.dm"
+#include "code\_core\datum\loot\loot.dm"
 #include "code\_core\datum\loot\medicine.dm"
 #include "code\_core\datum\loot\misc.dm"
 #include "code\_core\datum\loot\potions.dm"
