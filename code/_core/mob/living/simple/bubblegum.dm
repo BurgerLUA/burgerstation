@@ -1,5 +1,5 @@
 /mob/living/simple/bubblegum
-	name = "bubblegum"
+	name = "Bubblegum"
 	boss_icon_state = "bubblegum"
 	icon = 'icons/mob/living/simple/lavaland/bubblegum.dmi'
 	icon_state = "living"
@@ -10,6 +10,8 @@
 	pixel_x = -32
 
 	boss_loot = /loot/lavaland/bubblegum
+
+	boss_music = /track/bubblegum
 
 	value = 4000
 

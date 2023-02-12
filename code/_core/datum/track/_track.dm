@@ -280,3 +280,8 @@
 	name = "Grove"
 	path = 'sound/music/Grove.ogg'
 	length = 3*60 + 10
+
+/track/bubblegum //Boss music
+	name = "Bubblegum"
+	path = 'sound/music/Bubblegum.ogg'
+	length = 2*60 + 30
