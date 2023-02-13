@@ -42,11 +42,8 @@
 
 /obj/item/weapon/Finalize()
 	. = ..()
-	if(tier == -1)
-		if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
-			tier = SSbalance.stored_tier[type]
-		else
-			tier = 1
+	if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
+		tier = SSbalance.stored_tier[type]
 
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()

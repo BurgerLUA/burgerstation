@@ -55,7 +55,9 @@
 		name = associated_object.name
 		desc_extended = associated_object.desc_extended
 
-	tooltip_text = get_tooltip_text()
+	tooltip_text = initial(tooltip_text)
+	if(!tooltip_text)
+		tooltip_text = generate_tooltip_text()
 
 	vis_contents += associated_object
 

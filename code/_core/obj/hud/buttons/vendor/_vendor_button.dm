@@ -1,8 +1,8 @@
 /obj/hud/button/vendor
 
 	name = "vending button"
-	icon = 'icons/hud/vendor.dmi'
-	icon_state = "vendor_base"
+	icon = 'icons/hud/vendor_new.dmi'
+	icon_state = "base"
 	screen_loc = "CENTER,CENTER"
 
 	flags_hud = FLAG_HUD_SPECIAL
@@ -20,6 +20,8 @@
 	has_quick_function = FALSE
 
 	layer = 0
+
+	var/locked //Accepts a string if it's locked.
 
 /obj/hud/button/vendor/get_examine_list(var/mob/caller)
 	if(!associated_item)
@@ -39,83 +41,105 @@
 
 	. = ..()
 
-	var/num_to_text = num2text(associated_cost)
-	var/the_length = length(num_to_text)
+	if(!locked)
+		var/num_to_text = num2text(associated_cost)
+		var/the_length = length(num_to_text)
+		var/icon/I2 = ICON_INVISIBLE //The pricetag.
 
-	var/icon/I2 = ICON_INVISIBLE
+		if(associated_vendor.accepts_item)
+			var/icon/I3 = new/icon('icons/hud/numbers.dmi',"[associated_vendor.accepts_item.type]")
+			I3.Shift(EAST,1)
+			I2.Blend(I3,ICON_OVERLAY)
 
-	if(associated_vendor.accepts_item)
-		var/icon/I3 = new/icon('icons/hud/numbers.dmi',"[associated_vendor.accepts_item.type]")
-		I3.Shift(EAST,1)
-		I2.Blend(I3,ICON_OVERLAY)
+		else if(!(associated_vendor && associated_vendor.is_free))
+			var/icon/I3 = new/icon('icons/hud/numbers.dmi',"T")
+			I3.Shift(EAST,1)
+			I2.Blend(I3,ICON_OVERLAY)
 
-	else if(!(associated_vendor && associated_vendor.is_free))
-		var/icon/I3 = new/icon('icons/hud/numbers.dmi',"T")
-		I3.Shift(EAST,1)
-		I2.Blend(I3,ICON_OVERLAY)
+		var/x_pos_mod = 13
 
-	var/x_pos_mod = 13
-
-	if(associated_vendor && associated_vendor.is_free && associated_vendor.free_text)
-		var/icon/I4 = new/icon('icons/hud/numbers.dmi',associated_vendor.free_text)
-		I4.Shift(EAST,x_pos_mod)
-		I4.Shift(SOUTH,2)
-		I2.Blend(I4,ICON_OVERLAY)
-	else
-		for(var/i=1,i<=the_length,i++)
-			var/letter = copytext(num_to_text,i,i+1)
-			var/icon/I4 = new/icon('icons/hud/numbers.dmi',letter)
-			if(letter == ".")
-				x_pos_mod -= 1
+		if(associated_vendor && associated_vendor.is_free && associated_vendor.free_text)
+			var/icon/I4 = new/icon('icons/hud/numbers.dmi',associated_vendor.free_text)
 			I4.Shift(EAST,x_pos_mod)
 			I4.Shift(SOUTH,2)
 			I2.Blend(I4,ICON_OVERLAY)
-			if(letter == ".")
-				x_pos_mod += 3
-			else
-				x_pos_mod += 4
+		else
+			for(var/i=1,i<=the_length,i++)
+				var/letter = copytext(num_to_text,i,i+1)
+				var/icon/I4 = new/icon('icons/hud/numbers.dmi',letter)
+				if(letter == ".")
+					x_pos_mod -= 1
+				I4.Shift(EAST,x_pos_mod)
+				I4.Shift(SOUTH,2)
+				I2.Blend(I4,ICON_OVERLAY)
+				if(letter == ".")
+					x_pos_mod += 3
+				else
+					x_pos_mod += 4
 
-	var/image/I4 = new/image(I2)
-	I4.pixel_y = -4
-	I4.pixel_x = 35
-	add_overlay(I4)
+		var/image/I4 = new/image(I2)
+		I4.pixel_y = -4
+		I4.pixel_x = 53
+		add_overlay(I4)
 
 	var/image/IM = new/image(associated_item.icon,associated_item.icon_state)
 	IM.appearance = associated_item.appearance
-	IM.pixel_x = 0
-	IM.pixel_y = 4
+	IM.pixel_x = 4
+	IM.pixel_y = 8
 	IM.pixel_z = 0
 	IM.plane = PLANE_HUD_OBJ
 	IM.layer = -1
+	IM.mouse_opacity = 0
 	add_overlay(IM)
 
+	if(locked)
+		var/image/LI = new/image(initial(icon),"locked")
+		LI.plane = PLANE_HUD_OBJ
+		LI.layer = 1000
+		add_overlay(LI)
 
 /obj/hud/button/vendor/update_sprite()
+
+	if(associated_vendor.use_unlock_requirements && associated_item.unlock_requirement && !associated_item.can_unlock(owner))
+		locked = associated_item.unlock_requirement
 
 	. = ..()
 
 	name = associated_item.vendor_name ? associated_item.vendor_name : associated_item.name
 	desc_extended = associated_item.desc_extended
 
-	tooltip_text = get_tooltip_text()
+	if(locked)
+		tooltip_text = locked
+	else
+		tooltip_text = initial(tooltip_text)
+		if(!tooltip_text)
+			tooltip_text = generate_tooltip_text(tooltip_text)
 
 	maptext = name
-	maptext_width = 96*2
+	maptext_width = 128*2
 	maptext_x = 2
 	maptext_y = 2
 
+	if(locked)
+		color = greyscale
+	else
+		color = initial(color)
 
 /obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	. = ..()
 
 	if(!associated_item)
 		log_error("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
 		update_owner(null)
 		return
 
+	. = ..()
 
 	if(.)
+
+		if(locked)
+			caller.to_chat(span("warning","You haven't unlocked that yet: [locked]"))
+			return TRUE
+
 		var/obj/item/I = associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
 
 		if(I && !I.qdeleting)

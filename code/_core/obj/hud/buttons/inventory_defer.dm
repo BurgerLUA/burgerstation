@@ -83,8 +83,9 @@
 		name = initial(name)
 		desc_extended = initial(desc_extended)
 
-	tooltip_text = get_tooltip_text()
-
+	tooltip_text = initial(tooltip_text)
+	if(!tooltip_text)
+		tooltip_text = generate_tooltip_text()
 
 	return TRUE
 

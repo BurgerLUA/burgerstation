@@ -184,6 +184,11 @@
 
 	var/can_negate_damage = FALSE
 
+	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this.
+
+/obj/item/proc/can_unlock(var/mob/caller)
+	return TRUE
+
 /obj/item/PreDestroy()
 	if(is_inventory(src.loc))
 		drop_item(null,silent=TRUE)

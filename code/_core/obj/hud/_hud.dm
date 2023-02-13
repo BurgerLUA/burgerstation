@@ -23,18 +23,14 @@
 
 /obj/hud/New(var/desired_loc)
 	. = ..()
-	tooltip_text = get_tooltip_text()
+	if(!tooltip_text)
+		tooltip_text = generate_tooltip_text()
 
 var/regex/valid_punct = regex(@"[.?!]($|\s)")
 
 #define TOOLTIP_LIMIT 99
 
-/obj/hud/proc/get_tooltip_text()
-
-	var/init_tooltip = initial(tooltip_text)
-
-	if(init_tooltip)
-		return init_tooltip
+/obj/hud/proc/generate_tooltip_text()
 
 	if(length(desc_extended) <= TOOLTIP_LIMIT)
 		return desc_extended
