@@ -12,7 +12,7 @@
 	projectile = /obj/projectile/magic/crystal/ice
 	ranged_damage_type = /damagetype/ranged/magic/ice
 
-	shoot_sounds = list('sound/weapons/freeze.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg')
 
 	color = "#75C7FF"
 	color_2 = "#5D8EAF"
@@ -34,7 +34,7 @@
 	projectile = /obj/projectile/magic/crystal/fire
 	ranged_damage_type = /damagetype/ranged/magic/fire
 
-	shoot_sounds = list('sound/weapons/freeze.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/freeze_gun/shoot2.ogg')
 
 	color = "#FF8E75"
 	color_2 = "#AD6C5D"

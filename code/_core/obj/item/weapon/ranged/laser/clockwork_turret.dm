@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/misc/clockwork_watcher_shot.ogg')
 
 	charge_cost = 1
 

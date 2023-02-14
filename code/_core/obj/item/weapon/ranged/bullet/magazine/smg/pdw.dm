@@ -19,7 +19,7 @@
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/pdw1/shoot.ogg')
 
 	override_icon_state = TRUE
 

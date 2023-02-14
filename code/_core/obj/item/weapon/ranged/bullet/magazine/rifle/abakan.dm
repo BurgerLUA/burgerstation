@@ -16,7 +16,7 @@
 
 	firemodes = list("burst")
 
-	shoot_sounds = list('sound/weapons/slavic/abakan.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/abakan/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

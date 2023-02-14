@@ -5,7 +5,7 @@
 	value = 400
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
-	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/glock/shoot.ogg')
 	tier = 1
 
 	company_type = "NanoTrasen"
@@ -79,7 +79,6 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_2.dmi'
 	desc_extended = "A modified variant of the 9mm Auto Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 600
-	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
 	shoot_delay = 2
 	tier = 2
 

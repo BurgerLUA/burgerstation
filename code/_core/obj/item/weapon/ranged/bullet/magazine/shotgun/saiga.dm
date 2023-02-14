@@ -14,7 +14,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/saiga/shoot.ogg')
 
 	can_wield = TRUE
 

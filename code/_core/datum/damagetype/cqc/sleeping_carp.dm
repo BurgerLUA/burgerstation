@@ -2,7 +2,7 @@
 	attack_verbs = list("crashing wave kick")
 
 	impact_sounds = list(
-		'sound/weapons/fists/cqc/crashing_wave_kick.ogg',
+		'sound/weapons/unarmed/cqc/crashing_wave_kick.ogg',
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -56,8 +56,8 @@
 /damagetype/cqc/sleeping_carp/keelhaul
 
 	impact_sounds = list(
-		'sound/weapons/fists/cqc/keelhaul_01.ogg',
-		'sound/weapons/fists/cqc/keelhaul_02.ogg'
+		'sound/weapons/unarmed/cqc/keelhaul_01.ogg',
+		'sound/weapons/unarmed/cqc/keelhaul_02.ogg'
 	)
 
 	attack_damage_base = list(
@@ -109,8 +109,8 @@
 	attack_verbs = list("gnashing teeth punch")
 
 	impact_sounds = list(
-		'sound/weapons/fists/cqc/gnashing_teeth_01.ogg',
-		'sound/weapons/fists/cqc/gnashing_teeth_02.ogg'
+		'sound/weapons/unarmed/cqc/gnashing_teeth_01.ogg',
+		'sound/weapons/unarmed/cqc/gnashing_teeth_02.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch

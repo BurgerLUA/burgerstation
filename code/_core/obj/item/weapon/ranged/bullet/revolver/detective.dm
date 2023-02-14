@@ -16,7 +16,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/detective/shoot.ogg')
 
 	size = SIZE_1
 	weight = 5

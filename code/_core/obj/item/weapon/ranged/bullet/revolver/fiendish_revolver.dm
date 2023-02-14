@@ -17,12 +17,10 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/fists/claw_flesh_01.ogg',
-		'sound/effects/demon_attack1.ogg',
-		'sound/weapons/fists/claw_flesh_02.ogg',
-		'sound/weapons/magic/fireball.ogg',
-		'sound/weapons/fists/claw_flesh_03.ogg'
-
+	shoot_sounds = list(
+		'sound/weapons/unarmed/claw_flesh_01.ogg',
+		'sound/weapons/unarmed/claw_flesh_02.ogg',
+		'sound/weapons/unarmed/claw_flesh_03.ogg'
 	)
 
 	size = SIZE_1

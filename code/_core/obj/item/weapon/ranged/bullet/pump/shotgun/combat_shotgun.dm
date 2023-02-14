@@ -19,7 +19,7 @@
 
 	bullet_count_max = 8
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/combat/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -103,8 +103,6 @@
 	shoot_delay = 2
 	damage_mod = 1.4
 	pump_delay = 2
-
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
 
 	can_wield = TRUE
 

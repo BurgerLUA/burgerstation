@@ -96,7 +96,7 @@
 		/obj/item/weapon/ranged/bullet/revolver/sweep,
 
 		//3 rifles
-		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw,
+
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/m4_soap,
 

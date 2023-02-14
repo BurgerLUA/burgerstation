@@ -16,7 +16,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/deckhard/shot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/deckhard/shoot.ogg')
 
 	size = SIZE_2
 	weight = 6

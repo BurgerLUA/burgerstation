@@ -139,7 +139,7 @@
 					iff_tag,
 					loyalty_tag
 				)
-				play_sound('sound/weapons/spike.ogg',T)
+				play_sound('sound/weapons/ranged/misc/slime_spike.ogg',T)
 
 		if(length(src.contents) < 5)
 			var/absorbed = FALSE

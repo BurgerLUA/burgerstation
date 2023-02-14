@@ -16,7 +16,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/12gauge/shoot_team.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/fortress/shoot.ogg')
 
 	can_wield = TRUE
 

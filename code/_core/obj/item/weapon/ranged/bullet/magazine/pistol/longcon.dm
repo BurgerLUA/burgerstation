@@ -10,7 +10,7 @@
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_4.dmi'
 	shoot_delay = 2
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/longcon/shoot.ogg')
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5

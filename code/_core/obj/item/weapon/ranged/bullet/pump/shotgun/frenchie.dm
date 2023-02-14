@@ -18,7 +18,7 @@
 
 	bullet_count_max = 7
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/frenchie/shoot.ogg')
 
 	can_wield = TRUE
 

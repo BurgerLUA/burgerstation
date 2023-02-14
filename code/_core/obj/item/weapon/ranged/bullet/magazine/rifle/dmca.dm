@@ -22,7 +22,7 @@
 
 	firemodes = list("burst")
 
-	shoot_sounds = list('sound/weapons/46/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/dmca/shoot.ogg')
 
 	can_wield = TRUE
 

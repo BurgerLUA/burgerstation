@@ -1,3 +1,5 @@
+//Removed because no one is going to use a .45 assault rifle.
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/starter
 	name = "\improper .45 FNG"
 	desc = "Who the hell came up with this?"

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton.dmi'
 	shoot_delay = 2
 	tier = 1
-	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/laton/shoot.ogg')
 
 	company_type = "NanoTrasen"
 

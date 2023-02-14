@@ -8,8 +8,8 @@
 
 	damage_mod = 1.3
 
-	shoot_sounds = list('sound/weapons/12/shoot_doom.ogg')
-	pump_sound = 'sound/weapons/shotgun_pump_old.ogg'
+	shoot_sounds = list('sound/weapons/ranged/shotgun/doom/shoot.ogg')
+	pump_sound = 'sound/weapons/ranged/generic/shotgun_pump_old.ogg'
 
 	value = 4000
 	tier = 3

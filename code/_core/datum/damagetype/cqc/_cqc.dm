@@ -1,7 +1,7 @@
 /damagetype/cqc/
 	impact_sounds = list(
-		'sound/weapons/fists/cqchit1.ogg',
-		'sound/weapons/fists/cqchit2.ogg'
+		'sound/weapons/unarmed/cqchit1.ogg',
+		'sound/weapons/unarmed/cqchit2.ogg'
 	)
 
 	attack_damage_base = list()

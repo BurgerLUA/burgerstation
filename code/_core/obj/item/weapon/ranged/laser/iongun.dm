@@ -20,7 +20,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-	shoot_sounds = list('sound/weapons/ion/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/ion/shoot.ogg')
 
 	override_icon_state = TRUE
 

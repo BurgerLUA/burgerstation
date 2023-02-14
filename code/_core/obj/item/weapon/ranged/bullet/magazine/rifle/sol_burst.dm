@@ -20,7 +20,7 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/308/shoot_fat.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/sol_burst/shoot.ogg')
 
 	can_wield = TRUE
 

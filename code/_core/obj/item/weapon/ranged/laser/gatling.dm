@@ -7,14 +7,16 @@
 
 	company_type = "NanoTrasen"
 
-	shoot_delay = 0.75
+	shoot_delay = 1.25
 
 	damage_mod = 0.6
+
+	bullet_count = 3
 
 	projectile = /obj/projectile/bullet/laser/weak
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
-	shoot_sounds = list('sound/weapons/gatling/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/gatling/shoot.ogg')
 
 	bullet_color = "#FF0000"
 

@@ -87,7 +87,7 @@
 
 	shoot_delay = SECONDS_TO_DECISECONDS(3)
 
-	shoot_sounds = list('sound/weapons/freeze.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg')
 
 	value = 4000
 

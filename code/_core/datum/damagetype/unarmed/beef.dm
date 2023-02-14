@@ -2,7 +2,7 @@
 	attack_verbs = list("maul")
 
 	impact_sounds = list(
-		'sound/weapons/beef/beef_hit.ogg'
+		'sound/weapons/unarmed/beef/beef_hit.ogg'
 	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

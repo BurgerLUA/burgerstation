@@ -17,7 +17,7 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 
-	shoot_sounds = list('sound/weapons/12/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/sabre/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -88,8 +88,6 @@
 	heat_max = 0.12
 
 	value = 2400
-
-	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
 
 	tier = 3
 

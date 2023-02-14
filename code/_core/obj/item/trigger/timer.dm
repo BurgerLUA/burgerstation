@@ -37,7 +37,7 @@
 	START_THINKING(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
-	play_sound('sound/weapons/timer/arm.ogg',T,range_max=VIEW_RANGE)
+	play_sound('sound/items/timer/arm.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,src,ALERT_LEVEL_NOISE)
 	return ..()
 
@@ -52,7 +52,7 @@
 		if( (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)
 			var/turf/T = get_turf(src)
 			if(T)
-				play_sound('sound/weapons/timer/beep.ogg',T,range_max=VIEW_RANGE)
+				play_sound('sound/items/timer/beep.ogg',T,range_max=VIEW_RANGE)
 
 		if(time_set <= 0)
 			if(loc)

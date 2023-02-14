@@ -5,7 +5,7 @@
 	requires_bullets = TRUE
 
 	shoot_sounds = list(
-		'sound/weapons/bow/fire.ogg'
+		'sound/weapons/ranged/bow/fire.ogg'
 	)
 	empty_sounds = list()
 
@@ -29,7 +29,7 @@
 	movement_inaccuracy_modifier = 0.9
 	movement_spread_base = 0.05
 
-	var/draw_sound = 'sound/weapons/bow/draw_steel.ogg'
+	var/draw_sound = 'sound/weapons/ranged/bow/draw_steel.ogg'
 
 	var/spam_prevention = 0
 
@@ -174,7 +174,7 @@
 
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
-	draw_sound = 'sound/weapons/bow/draw_hardlight.ogg'
+	draw_sound = 'sound/weapons/ranged/bow/draw_hardlight.ogg'
 
 	value = 3000
 
@@ -205,7 +205,7 @@
 	desc_extended = "A special masterfully crafted ashen bow that somehow invokes the strength of ancient megafauna when drawing arrows."
 	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
 
-	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
+	draw_sound = 'sound/weapons/ranged/bow/draw_ashen.ogg'
 
 	ranged_damage_type = /damagetype/ranged/bow/ashen
 

@@ -16,7 +16,7 @@
 
 	damage_mod = 2
 
-	shoot_sounds = list('sound/weapons/20/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/20mm_sniper/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -100,4 +100,4 @@
 	. = ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_cock_sound(var/direction="both")
-	return 'sound/weapons/20/bolt.ogg'
+	return 'sound/weapons/ranged/rifle/20mm_sniper/bolt.ogg'

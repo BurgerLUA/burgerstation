@@ -20,7 +20,7 @@
 
 	bullet_count_max = 4
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/tech/shoot.ogg')
 
 	size = SIZE_3
 	weight = 9

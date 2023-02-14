@@ -3,7 +3,7 @@
 	battery = /obj/item/powercell/dummy
 
 	var/charge_per_pump = 100
-	var/pump_sound = 'sound/weapons/shotgun_pump.ogg'
+	var/pump_sound = 'sound/weapons/ranged/generic/shotgun_pump.ogg'
 	var/action_name = "pump"
 
 	var/pump_delay = 1

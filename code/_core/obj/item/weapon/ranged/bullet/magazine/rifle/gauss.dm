@@ -16,7 +16,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/slavic/gauss.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/gauss/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -68,6 +68,8 @@
 	desc_extended = "The finalized design of the Gauss Gun. Further research and improvements in materials have given it the durability and power efficiency it needs to fire automatically. However, creating even one of this is such an expense that only the Space Slavic Military are seen using these. You have to be seriously lucky to get your hands on this." //mucho texto
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/gauss_carbine.dmi'
 	icon_state = "inventory"
+
+	shoot_sounds = list('sound/weapons/ranged/rifle/gauss/shoot_short.ogg')
 
 	value = 15000
 

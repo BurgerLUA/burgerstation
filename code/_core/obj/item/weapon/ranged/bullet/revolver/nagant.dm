@@ -18,7 +18,7 @@
 
 	insert_limit = 1
 
-	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/nagant/shoot.ogg')
 
 	size = SIZE_3
 	weight = 8

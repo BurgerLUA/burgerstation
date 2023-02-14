@@ -3,7 +3,7 @@
 	open = TRUE
 	open_icon = FALSE
 
-	var/pump_sound = 'sound/weapons/shotgun_pump.ogg'
+	var/pump_sound = 'sound/weapons/ranged/generic/shotgun_pump.ogg'
 
 	movement_spread_base = 0.03
 

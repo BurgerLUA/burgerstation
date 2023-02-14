@@ -22,7 +22,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 60
 
-	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/laser_rifle/shoot.ogg')
 
 	heat_max = 0.1
 

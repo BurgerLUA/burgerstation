@@ -14,7 +14,7 @@
 
 	firemodes = list("semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/syringe.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/tungsten/shoot.ogg')
 
 	heat_max = 0.1
 
@@ -95,4 +95,4 @@
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_cock_sound(var/direction="both")
-	return 'sound/weapons/gun/smg/smg_rack.ogg'
+	return 'sound/weapons/ranged/generic/smg_rack.ogg'

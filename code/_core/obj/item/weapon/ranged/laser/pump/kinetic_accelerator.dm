@@ -8,8 +8,8 @@
 
 	value = 800
 
-	shoot_sounds = list('sound/weapons/kinetic/fire.ogg')
-	pump_sound = 'sound/weapons/kinetic/reload.ogg'
+	shoot_sounds = list('sound/weapons/ranged/energy/kinetic/shoot.ogg')
+	pump_sound = 'sound/weapons/ranged/energy/kinetic/reload.ogg'
 
 	projectile = /obj/projectile/bullet/laser/kinetic
 	ranged_damage_type = /damagetype/ranged/laser/kinetic

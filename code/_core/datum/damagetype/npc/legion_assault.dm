@@ -2,7 +2,7 @@
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(
-		'sound/weapons/fists/bite.ogg'
+		'sound/weapons/unarmed/bite.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/bite
@@ -51,7 +51,7 @@
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(
-		'sound/weapons/fists/bite.ogg'
+		'sound/weapons/unarmed/bite.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/bite

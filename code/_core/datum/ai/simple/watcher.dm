@@ -22,7 +22,7 @@
 		return FALSE
 
 	if(projectile_count > 0)
-		play_sound('sound/weapons/freeze.ogg',get_turf(owner))
+		play_sound('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
 			objective_attack,
@@ -63,7 +63,7 @@
 		return FALSE
 
 	if(projectile_count > 0)
-		play_sound('sound/weapons/freeze.ogg',get_turf(owner))
+		play_sound('sound/weapons/ranged/misc/clockwork_watcher_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
 			objective_attack,

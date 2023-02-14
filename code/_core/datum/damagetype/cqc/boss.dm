@@ -106,12 +106,12 @@
 	attack_verbs = list("staggering punch")
 
 	impact_sounds = list(
-		'sound/weapons/fists/medium_punch_01.ogg',
-		'sound/weapons/fists/medium_punch_02.ogg',
-		'sound/weapons/fists/medium_punch_03.ogg',
-		'sound/weapons/fists/medium_punch_04.ogg',
-		'sound/weapons/fists/medium_punch_05.ogg',
-		'sound/weapons/fists/medium_punch_06.ogg'
+		'sound/weapons/unarmed/medium_punch_01.ogg',
+		'sound/weapons/unarmed/medium_punch_02.ogg',
+		'sound/weapons/unarmed/medium_punch_03.ogg',
+		'sound/weapons/unarmed/medium_punch_04.ogg',
+		'sound/weapons/unarmed/medium_punch_05.ogg',
+		'sound/weapons/unarmed/medium_punch_06.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -161,11 +161,11 @@
 	attack_verbs = list("stunning punch")
 
 	impact_sounds = list(
-		'sound/weapons/fists/heavy_punch_01.ogg',
-		'sound/weapons/fists/heavy_punch_02.ogg',
-		'sound/weapons/fists/heavy_punch_03.ogg',
-		'sound/weapons/fists/heavy_punch_06.ogg',
-		'sound/weapons/fists/heavy_punch_07.ogg'
+		'sound/weapons/unarmed/heavy_punch_01.ogg',
+		'sound/weapons/unarmed/heavy_punch_02.ogg',
+		'sound/weapons/unarmed/heavy_punch_03.ogg',
+		'sound/weapons/unarmed/heavy_punch_06.ogg',
+		'sound/weapons/unarmed/heavy_punch_07.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch

@@ -21,7 +21,7 @@
 
 	caseless = TRUE
 
-	bullet_insert_sound = 'sound/weapons/rocket/rocket_insert.ogg'
+	bullet_insert_sound = 'sound/weapons/ranged/rifle/rocket/rocket_insert.ogg'
 
 	value = 1 //Dummy value.
 

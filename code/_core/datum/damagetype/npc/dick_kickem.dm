@@ -2,7 +2,7 @@
 	attack_verbs = list("dick kick")
 
 	impact_sounds = list(
-		'sound/weapons/fists/cqc/crashing_wave_kick.ogg',
+		'sound/weapons/unarmed/cqc/crashing_wave_kick.ogg',
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch

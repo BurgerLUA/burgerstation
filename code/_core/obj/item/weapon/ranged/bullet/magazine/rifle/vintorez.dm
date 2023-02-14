@@ -16,7 +16,7 @@
 
 	damage_mod = 2
 
-	shoot_sounds = list('sound/weapons/slavic/vintorez.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/vintorez/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = FALSE

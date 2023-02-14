@@ -18,7 +18,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
 
-	shoot_sounds = list('sound/weapons/10/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/sol/shoot.ogg')
 
 	can_wield = FALSE
 

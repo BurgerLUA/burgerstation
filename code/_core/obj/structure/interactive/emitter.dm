@@ -50,7 +50,7 @@
 			null,
 			null
 		)
-		play_sound('sound/weapons/emitter/emitter.ogg',get_turf(src))
+		play_sound('sound/weapons/ranged/energy/emitter/shoot.ogg',get_turf(src))
 
 		next_fire = world.time + SECONDS_TO_DECISECONDS(6)
 		flick("[initial(icon_state)]_fire",src)

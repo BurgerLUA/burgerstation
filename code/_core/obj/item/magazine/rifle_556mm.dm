@@ -7,12 +7,10 @@
 	bullet_count_max = 40
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/bullpup_sol = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/m4 = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst = TRUE,

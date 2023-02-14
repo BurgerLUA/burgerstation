@@ -86,7 +86,6 @@
 		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
 		/obj/item/weapon/ranged/energy/iongun,
 		/obj/item/weapon/ranged/energy/freezegun,
-		/obj/item/weapon/ranged/energy/sniper,
 
 		//3 grenades or equipment
 		/obj/item/grenade/timed/decoy,

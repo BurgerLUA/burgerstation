@@ -16,7 +16,7 @@
 
 	bullet_count_max = 1
 
-	shoot_sounds = list('sound/weapons/slavic/gauss_short.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/gauss/shoot_short.ogg')
 
 	size = SIZE_2
 	weight = 4

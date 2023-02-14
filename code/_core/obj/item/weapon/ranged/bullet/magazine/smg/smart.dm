@@ -21,7 +21,7 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/smart/shoot.ogg')
 
 	heat_max = 0.1
 

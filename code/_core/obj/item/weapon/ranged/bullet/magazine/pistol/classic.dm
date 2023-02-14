@@ -5,7 +5,7 @@
 	value = 400
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_classic.dmi'
 	shoot_delay = 1.5
-	shoot_sounds = list('sound/weapons/pistol/shoot_old.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/fortress/shoot.ogg')
 	tier = 1
 
 	company_type = "NanoTrasen"

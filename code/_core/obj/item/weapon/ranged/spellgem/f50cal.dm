@@ -13,7 +13,7 @@
 	projectile = /obj/projectile/bullet/firearm/rifle
 	ranged_damage_type = /damagetype/ranged/bullet/pistol_50
 
-	shoot_sounds = list('sound/weapons/50/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/50_sniper/shoot.ogg')
 
 	color = "#FDDFCC"
 	color_2 = "#2333FF"

@@ -12,7 +12,7 @@
 
 	shoot_delay = 1
 
-	shoot_sounds = list('sound/weapons/slavic/abakan.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/bizon/shoot.ogg')
 
 	firemodes = list("automatic","burst","semi-automatic")
 

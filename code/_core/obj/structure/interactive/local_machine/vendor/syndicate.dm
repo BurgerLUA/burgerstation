@@ -43,7 +43,6 @@
 		/obj/item/magazine/sniper_50/explosive,
 		/obj/item/magazine/sniper_50/incendiary,
 		/obj/item/magazine/sniper_50/ion,
-		/obj/item/weapon/ranged/energy/sniper,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger,
 		/obj/item/clothing/back/flamethrower,

@@ -98,7 +98,7 @@
 		projectile_delay = initial(projectile_delay)
 
 	if(is_fire_tick)
-		play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
+		play_sound('sound/weapons/ranged/misc/canman_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
 			objective_attack,

@@ -17,7 +17,7 @@
 
 	damage_mod = 1.1
 
-	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/lmg_nt/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

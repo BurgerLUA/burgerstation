@@ -10,7 +10,8 @@
 
 	damage_mod = 1.1
 	shoot_delay = 3
-	shoot_sounds = list('sound/weapons/50/shoot.ogg')
+
+	shoot_sounds = list('sound/weapons/ranged/pistol/eagle/shoot.ogg')
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.25

@@ -1,10 +1,10 @@
 /damagetype/melee/club/
 
 	impact_sounds = list(
-		'sound/weapons/blunt/metal_smash.ogg',
+		'sound/weapons/melee/blunt/metal_smash.ogg',
 	)
 	miss_sounds = list(
-		'sound/weapons/fists/punchmiss.ogg'
+		'sound/weapons/unarmed/punchmiss.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/smash

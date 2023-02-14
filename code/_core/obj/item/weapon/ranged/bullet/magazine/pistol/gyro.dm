@@ -16,7 +16,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/gyrojet/shoot.ogg')
 
 	size = SIZE_3
 	weight = 12

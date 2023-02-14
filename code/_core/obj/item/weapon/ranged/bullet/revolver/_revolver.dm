@@ -42,7 +42,7 @@
 
 	if(. && quick_shot)
 		var/turf/T = get_turf(src)
-		play_sound('sound/weapons/revolver_timing.ogg',T)
+		play_sound('sound/weapons/ranged/generic/revolver_timing.ogg',T)
 
 
 /obj/item/weapon/ranged/bullet/revolver/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
@@ -95,7 +95,7 @@
 	else
 		caller.to_chat(span("notice","You close \the [src]."))
 
-	play_sound('sound/weapons/revolver_click2.ogg',T,range_max=VIEW_RANGE*0.25)
+	play_sound('sound/weapons/ranged/generic/revolver_click2.ogg',T,range_max=VIEW_RANGE*0.25)
 
 	update_sprite()
 

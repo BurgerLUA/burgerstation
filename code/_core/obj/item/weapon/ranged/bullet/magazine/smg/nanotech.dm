@@ -14,7 +14,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/40/shoot_smg.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/nanotech/shoot.ogg')
 
 	can_wield = FALSE
 

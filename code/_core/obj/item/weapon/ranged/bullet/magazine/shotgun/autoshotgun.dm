@@ -14,7 +14,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/12gauge/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/bulldog/shoot.ogg')
 
 	can_wield = TRUE
 

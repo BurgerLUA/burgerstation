@@ -19,7 +19,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg','sound/weapons/ranged/energy/freeze_gun/shoot2.ogg')
 
 	override_icon_state = TRUE
 

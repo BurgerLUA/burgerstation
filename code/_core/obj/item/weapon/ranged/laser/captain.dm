@@ -16,7 +16,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/captain/shoot.ogg')
 
 	charge_cost = CELL_SIZE_BASIC / 80
 

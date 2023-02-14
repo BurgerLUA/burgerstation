@@ -25,6 +25,6 @@
 			else
 				owner.add_status_effect(PARALYZE,5,5,source = source,stealthy = TRUE)
 
-	play_sound('sound/weapons/fists/grab.ogg',get_turf(owner))
+	play_sound('sound/weapons/unarmed/grab.ogg',get_turf(owner))
 
 	. = ..()

@@ -19,7 +19,7 @@
 
 	insert_limit = 1
 
-	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/grenade_launcher/shoot.ogg')
 
 	size = SIZE_4
 	weight = 12

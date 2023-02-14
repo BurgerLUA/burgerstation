@@ -201,10 +201,26 @@
 
 
 /obj/item/magazine/proc/get_magazine_insert_sound()
-	return length(stored_bullets) ? 'sound/weapons/gun/general/magazine_insert_full.ogg' : 'sound/weapons/gun/general/magazine_insert_empty.ogg'
+	return pick(\
+		'sound/weapons/ranged/generic/mag_insert1.ogg',\
+		'sound/weapons/ranged/generic/mag_insert2.ogg',\
+		'sound/weapons/ranged/generic/mag_insert3.ogg',\
+		'sound/weapons/ranged/generic/mag_insert4.ogg',\
+		'sound/weapons/ranged/generic/mag_insert5.ogg',\
+		'sound/weapons/ranged/generic/mag_insert6.ogg',\
+		'sound/weapons/ranged/generic/mag_insert7.ogg',\
+		'sound/weapons/ranged/generic/mag_insert8.ogg',\
+		'sound/weapons/ranged/generic/mag_insert9.ogg'\
+	)
 
 /obj/item/magazine/proc/get_magazine_eject_sound()
-	return length(stored_bullets) ? 'sound/weapons/gun/general/magazine_remove_full.ogg' : 'sound/weapons/gun/general/magazine_remove_empty.ogg'
+	return pick(\
+		'sound/weapons/ranged/generic/mag_remove1.ogg',\
+		'sound/weapons/ranged/generic/mag_remove2.ogg',\
+		'sound/weapons/ranged/generic/mag_remove3.ogg',\
+		'sound/weapons/ranged/generic/mag_remove4.ogg',\
+		'sound/weapons/ranged/generic/mag_remove5.ogg'\
+	)
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 

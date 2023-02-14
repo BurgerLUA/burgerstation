@@ -10,7 +10,7 @@
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
 	shoot_delay = 1.5
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/1984/shoot.ogg')
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
@@ -84,7 +84,6 @@
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
 	shoot_delay = 1.25
-	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
 
 	damage_mod = 1.25
 	tier = 3

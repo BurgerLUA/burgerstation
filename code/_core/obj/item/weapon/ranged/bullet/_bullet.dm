@@ -12,10 +12,10 @@
 	requires_bullets = TRUE
 
 	empty_sounds = list(
-		'sound/weapons/empty1.ogg',
-		'sound/weapons/empty2.ogg',
-		'sound/weapons/empty3.ogg',
-		'sound/weapons/empty4.ogg'
+		'sound/weapons/ranged/generic/empty1.ogg',
+		'sound/weapons/ranged/generic/empty2.ogg',
+		'sound/weapons/ranged/generic/empty3.ogg',
+		'sound/weapons/ranged/generic/empty4.ogg'
 	)
 
 	var/jammed = FALSE

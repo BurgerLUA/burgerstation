@@ -19,7 +19,7 @@
 
 	insert_limit = 2
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/double_barrel/shoot.ogg')
 
 	size = SIZE_3
 	weight = 8

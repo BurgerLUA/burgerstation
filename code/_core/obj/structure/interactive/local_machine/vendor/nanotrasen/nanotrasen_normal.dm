@@ -71,7 +71,7 @@
 		//3 smgs or shotguns.
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
+
 
 		// 3 assault rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,

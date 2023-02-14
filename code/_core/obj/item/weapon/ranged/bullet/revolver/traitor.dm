@@ -16,7 +16,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/traitor/fire.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/357_traitor/shoot.ogg')
 
 	size = SIZE_2
 	weight = 7

@@ -13,7 +13,7 @@
 	projectile = /obj/projectile/bullet/firearm/smg
 	ranged_damage_type = /damagetype/ranged/bullet/pistol_9mm
 
-	shoot_sounds = list('sound/weapons/10/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/handheld/shoot.ogg')
 
 	color = "#00B0CC"
 	color_2 = "#FDDCE1"

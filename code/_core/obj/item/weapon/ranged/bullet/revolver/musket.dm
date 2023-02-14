@@ -20,7 +20,7 @@
 
 	bullet_count_max = 1
 
-	shoot_sounds = list('sound/weapons/308/big_game.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/musket/shoot.ogg')
 
 	size = SIZE_4
 	weight = 20

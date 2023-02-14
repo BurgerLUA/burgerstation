@@ -21,9 +21,9 @@
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
+			play_sound('sound/weapons/melee/esword/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
+			play_sound('sound/weapons/melee/esword/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
 // cant use both the sounds and the wrench flag code
 //obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller)
 //

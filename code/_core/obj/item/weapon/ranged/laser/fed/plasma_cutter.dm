@@ -8,7 +8,7 @@
 
 	value = 1400 //One hell of a mining tool go cry in the corner.
 
-	shoot_sounds = list('sound/weapons/cutter/fire.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/plasma_cutter/shoot.ogg')
 
 	projectile = /obj/projectile/bullet/laser/plasma_cutter
 	ranged_damage_type = /damagetype/ranged/laser/plasma_cutter

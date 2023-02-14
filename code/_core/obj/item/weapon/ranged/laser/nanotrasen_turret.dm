@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/laser_rifle/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/laser_carbine/kill.ogg')
 
 	charge_cost = 1
 

@@ -13,7 +13,7 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556,

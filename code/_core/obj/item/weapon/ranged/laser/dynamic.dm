@@ -19,7 +19,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/dynamic/shoot.ogg')
 
 	can_wield = FALSE
 

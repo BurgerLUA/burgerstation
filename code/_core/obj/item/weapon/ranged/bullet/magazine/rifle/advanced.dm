@@ -16,7 +16,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/308/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/service_rifle/shoot.ogg')
 
 	can_wield = TRUE
 

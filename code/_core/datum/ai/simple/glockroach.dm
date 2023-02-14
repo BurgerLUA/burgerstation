@@ -13,7 +13,7 @@
 	if(!objective_attack)
 		return FALSE
 
-	play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
+	play_sound('sound/weapons/ranged/misc/canman_shot.ogg',get_turf(owner))
 	owner.shoot_projectile(
 		owner,
 		objective_attack,

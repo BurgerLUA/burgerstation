@@ -1,3 +1,5 @@
+//Removed because it's too similiar to the NT AR-13
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine
 	name = "\improper 5.56 U-NT Carabiner"
 	desc = "Good for shuttle hijackings."

@@ -16,7 +16,7 @@
 
 	bullet_count_max = 12
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/sweeper/shoot.ogg')
 
 	size = SIZE_3
 	weight = 12

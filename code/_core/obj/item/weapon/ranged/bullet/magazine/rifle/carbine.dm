@@ -18,7 +18,7 @@
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/carbine.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/syndicate_carbine/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -97,7 +97,7 @@
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")
-	return 'sound/weapons/gun/smg/smg_rack.ogg'
+	return 'sound/weapons/ranged/generic/smg_rack.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = "\improper .223 SYN-Carbine MOD"
@@ -137,7 +137,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/syndicate_carbine/shoot_prototype.ogg')
 
 	can_wield = FALSE
 

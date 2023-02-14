@@ -5,9 +5,9 @@
 	hit_effect = /obj/effect/temp/impact/combat/claw
 
 	impact_sounds = list(
-		'sound/weapons/fists/claw_flesh_01.ogg',
-		'sound/weapons/fists/claw_flesh_02.ogg',
-		'sound/weapons/fists/claw_flesh_03.ogg'
+		'sound/weapons/unarmed/claw_flesh_01.ogg',
+		'sound/weapons/unarmed/claw_flesh_02.ogg',
+		'sound/weapons/unarmed/claw_flesh_03.ogg'
 	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

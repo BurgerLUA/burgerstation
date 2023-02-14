@@ -5,17 +5,17 @@
 	hit_effect = null //Handled elsewhere.
 
 	miss_sounds = list(
-		'sound/weapons/bulletflyby.ogg',
-		'sound/weapons/bulletflyby2.ogg',
-		'sound/weapons/bulletflyby3.ogg'
+		'sound/weapons/ranged/generic/bulletflyby1.ogg',
+		'sound/weapons/ranged/generic/bulletflyby2.ogg',
+		'sound/weapons/ranged/generic/bulletflyby3.ogg'
 	)
 
 	impact_sounds = list(
-		'sound/weapons/ric1.ogg',
-		'sound/weapons/ric2.ogg',
-		'sound/weapons/ric3.ogg',
-		'sound/weapons/ric4.ogg',
-		'sound/weapons/ric5.ogg'
+		'sound/weapons/ranged/generic/ric1.ogg',
+		'sound/weapons/ranged/generic/ric2.ogg',
+		'sound/weapons/ranged/generic/ric3.ogg',
+		'sound/weapons/ranged/generic/ric4.ogg',
+		'sound/weapons/ranged/generic/ric5.ogg'
 	)
 
 	impact_sounds_flesh = list(

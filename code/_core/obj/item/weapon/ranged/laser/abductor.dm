@@ -18,7 +18,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/raygun.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/alien/shoot.ogg')
 
 	charge_cost = CELL_SIZE_BASIC / 60
 

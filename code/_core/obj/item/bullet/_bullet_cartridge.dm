@@ -45,7 +45,7 @@
 
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
-	var/bullet_insert_sound = 'sound/weapons/gun/general/mag_bullet_insert.ogg'
+	var/bullet_insert_sound = 'sound/weapons/ranged/generic/mag_bullet_insert.ogg'
 
 	var/power = 0 //Set in SSweapons.
 
