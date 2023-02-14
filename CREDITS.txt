@@ -1,3 +1,9 @@
+Sounds/Textures ported from
+	/tg/station
+	TGMC
+	Yogstation
+	Aurorastation
+
 PATREONS
 	Sancronis
 	Kevvy-D
