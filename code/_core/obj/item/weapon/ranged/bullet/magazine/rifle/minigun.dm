@@ -58,7 +58,7 @@
 	return (1 - heat_current/heat_max) * heat_max
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
-	return 0.01
+	return 0.1
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))

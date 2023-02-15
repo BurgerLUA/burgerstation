@@ -226,7 +226,7 @@
 	return heat_current
 
 /obj/item/weapon/ranged/proc/get_static_spread()
-	return 0.01
+	return 0.1
 
 /obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L)
 	return 0.01 - (0.02 * L.get_skill_power(SKILL_RANGED))
