@@ -12,7 +12,7 @@
 
 	shoot_delay = 2
 
-	damage_mod = 1.3
+	damage_mod = 1
 
 	automatic = TRUE
 
@@ -105,6 +105,8 @@
 
 	heat_max = 0.12
 
+	damage_mod = 1
+
 	size = SIZE_2
 	weight = 4
 
@@ -131,7 +133,7 @@
 
 	shoot_delay = 1.5
 
-	damage_mod = 1.2
+	damage_mod = 1.3
 
 	automatic = TRUE
 

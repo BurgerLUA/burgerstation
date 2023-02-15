@@ -12,7 +12,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
-	health_base = 200
+	health_base = 100
 	stamina_base = 100
 	mana_base = 100
 
@@ -113,10 +113,10 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 var/global/list/difficulty_to_damage_mul = list(
-	DIFFICULTY_EASY = 0.1,
-	DIFFICULTY_NORMAL = 0.25,
-	DIFFICULTY_HARD = 0.5,
-	DIFFICULTY_EXTREME = 0.75,
+	DIFFICULTY_EASY = 0.25,
+	DIFFICULTY_NORMAL = 0.5,
+	DIFFICULTY_HARD = 0.75,
+	DIFFICULTY_EXTREME = 1,
 	DIFFICULTY_NIGHTMARE = 1
 )
 

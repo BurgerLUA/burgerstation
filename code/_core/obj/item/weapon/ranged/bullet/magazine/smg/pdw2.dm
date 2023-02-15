@@ -69,6 +69,8 @@
 
 	rarity = RARITY_RARE
 
+	can_wield = TRUE
+
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw2/get_static_spread()
 	return 0.004
 

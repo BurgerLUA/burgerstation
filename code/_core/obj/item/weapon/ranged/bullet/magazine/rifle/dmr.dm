@@ -12,7 +12,7 @@
 
 	firemodes = list("semi-automatic")
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	damage_mod = 1.4
 

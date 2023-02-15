@@ -168,7 +168,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		jam_chance += 25
 
 	if(B.jam_chance < 100)
-		jam_chance *= 0.1 + 0.9*(heat_current/heat_max)
+		jam_chance *= 0.1 + 0.9*(heat_max ? heat_current/heat_max : 0)
 
 	if(jammed)
 		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))

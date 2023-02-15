@@ -141,7 +141,46 @@ SUBSYSTEM_DEF(balance)
 	stuff_to_delete += process_magazines(T,magazine_subtypes)
 
 	var/list/weapon_subtypes = subtypesof(/obj/item/weapon)
-	stuff_to_delete += process_weapons(T,weapon_subtypes)
+	var/list/weapons_as_items = process_weapons(T,weapon_subtypes)
+
+	var/list/reported_weapons = list()
+	for(var/k in weapons_as_items)
+		var/obj/item/I1 = k
+		for(var/j in weapons_as_items)
+			var/obj/item/I2 = j
+			if(reported_weapons[I2.type])
+				continue //Already complained about.
+			if(stored_value[I1.type] > stored_value[I2.type]) //Prevents double checking. Weird solution, but it werks.
+				continue
+			if(I1.type == I2.type || I1.parent_type == I2.type || I2.parent_type == I1.type)
+				continue
+			if(is_ranged_weapon(I1) != is_ranged_weapon(I2))
+				continue
+			var/list/similarities = list()
+			var/similarity_limt = 2
+			if(abs(stored_dps[I1.type] - stored_dps[I2.type]) < max(stored_dps[I1.type],stored_dps[I2.type])*0.2)
+				similarities += "damage per second"
+			if(I1.tier_type == I2.tier_type)
+				similarities += "same type of weapon"
+			if(is_ranged_weapon(I1))
+				var/obj/item/weapon/ranged/R1 = I1
+				var/obj/item/weapon/ranged/R2 = I2
+				if(abs(R1.shoot_delay - R2.shoot_delay) < 0.1)
+					similarities += "fire rate"
+				if(abs(R1.heat_max - R2.heat_max) < 0.05)
+					similarities += "heat max"
+				similarity_limt = 3
+			else
+				if(abs(stored_dph[I1.type] - stored_dph[I2.type]) < max(stored_dph[I1.type],stored_dph[I2.type])*0.09)
+					similarities += "damage per hit"
+
+
+			if(length(similarities) >= similarity_limt)
+				log_error("Warning: SSBalance reports that [I1.type] feels too similiar to [I2.type]. Reason: [english_list(similarities)].")
+				reported_weapons[I1.type] = TRUE
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	stuff_to_delete += weapons_as_items
 
 	for(var/k in stuff_to_delete)
 		var/obj/item/I = k
@@ -157,6 +196,7 @@ SUBSYSTEM_DEF(balance)
 	sort_tim(stored_dps, /proc/cmp_numeric_asc, associative=TRUE)
 	sort_tim(stored_dph, /proc/cmp_numeric_asc, associative=TRUE)
 	sort_tim(stored_killtime, /proc/cmp_numeric_asc, associative=TRUE)
+	sort_tim(stored_value, /proc/cmp_numeric_asc, associative=TRUE)
 
 	created_bullets.Cut()
 	created_magazines.Cut()
