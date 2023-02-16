@@ -30,7 +30,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	map_color = COLOR_BLUE
 
 	depth = 0 // 0 Means generate depth.
-	alpha = 255
+	alpha = 200
 
 	mouse_opacity = 0
 
@@ -56,7 +56,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/Finalize()
 
-	alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
+	alpha = 128 + ((depth/MAX_DEPTH) * (initial(alpha)-128))
 	if(depth >= MAX_DEPTH)
 		map_color = map_color_max_depth
 	else if(depth <= 0)
