@@ -8,6 +8,8 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "rocket launcher"
+
 	tier = 3
 	bypass_balance_check = TRUE
 

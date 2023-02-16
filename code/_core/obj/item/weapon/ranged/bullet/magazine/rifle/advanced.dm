@@ -12,6 +12,8 @@
 
 	firemodes = list("automatic","semi-automatic")
 
+	damage_mod = 1.3
+
 	shoot_delay = 3.8
 
 	automatic = TRUE

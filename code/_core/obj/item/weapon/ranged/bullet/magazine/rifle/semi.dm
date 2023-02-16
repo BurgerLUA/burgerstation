@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi
-	name = "\improper 5.56 SA-AR"
+	name = "\improper 5.56mm SA-AR"
 	desc = "Bet you can't guess what SA-AR stands for."
 	desc_extended = "A semi-automatic assault rifle designed for shooters who want to be precise with their shots, but don't want to shell out the extra credits for a high caliber rifle."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_4.dmi'
@@ -7,6 +7,8 @@
 	value = 1200
 
 	company_type = "NanoTrasen"
+
+	tier_type = "marksman rifle"
 
 	tier = 1
 

@@ -1,12 +1,12 @@
-/damagetype/ranged/bullet/revolver_300
+/damagetype/ranged/bullet/revolver_300 //Much bigger than .308
 	attack_damage_base = list(
-		BLUNT = 70
+		BLUNT = 90
 	)
 
 	attack_damage_penetration = list(
 		BLUNT = 25
 	)
-	falloff = VIEW_RANGE + ZOOM_RANGE*2
+	falloff = VIEW_RANGE
 
 /damagetype/ranged/bullet/revolver_300/surplus
 	damage_mod = SURPLUS_MUL

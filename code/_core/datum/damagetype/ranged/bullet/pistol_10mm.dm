@@ -1,7 +1,7 @@
 /damagetype/ranged/bullet/pistol_10mm
 	attack_damage_base = list(
-		BLUNT = 10,
-		PIERCE = 15
+		BLUNT = 15,
+		PIERCE = 10
 	)
 	attack_damage_penetration = list(
 		BLUNT = 10,
@@ -19,8 +19,8 @@
 
 /damagetype/ranged/bullet/pistol_40
 	attack_damage_base = list(
-		BLUNT = 15,
-		PIERCE = 10
+		BLUNT = 20,
+		PIERCE = 5
 	)
 	attack_damage_penetration = list(
 		BLUNT = 10,

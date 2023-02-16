@@ -296,7 +296,7 @@ var/global/list/equipped_antags = list()
 		row++
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "LEFT+[1 + (column+1)*4],TOP-1"
+	CV.screen_loc = "LEFT+[2 + (column+1)*4],TOP-2"
 	CV.update_owner(A)
 	CV.update_sprite()
 

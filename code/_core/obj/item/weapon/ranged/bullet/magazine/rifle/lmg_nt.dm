@@ -7,6 +7,8 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "heavy weapon"
+
 	value = 4000
 
 	tier = 2

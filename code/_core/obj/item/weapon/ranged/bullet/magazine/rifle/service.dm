@@ -8,7 +8,11 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "marksman rifle"
+
 	tier = 1
+
+	damage_mod = 1.4
 
 	shoot_delay = 5.5
 

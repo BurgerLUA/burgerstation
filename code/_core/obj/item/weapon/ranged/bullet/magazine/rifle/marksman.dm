@@ -8,6 +8,8 @@
 
 	company_type = "Syndicate"
 
+	tier_type = "marksman rifle"
+
 	tier = 2
 
 	firemodes = list("semi-automatic")

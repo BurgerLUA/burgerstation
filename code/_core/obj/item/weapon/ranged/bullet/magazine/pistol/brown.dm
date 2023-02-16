@@ -5,7 +5,7 @@
 	desc_extended = "A decently powerful and accurate .40 semi-automatic pistol meant for self defense. Commonly used by the Solarian Space Corps."
 	value = 650
 	shoot_sounds = list('sound/weapons/ranged/pistol/brown/shoot.ogg')
-	shoot_delay = 1.25
+	shoot_delay = 1.3
 
 	company_type = "Solarian"
 

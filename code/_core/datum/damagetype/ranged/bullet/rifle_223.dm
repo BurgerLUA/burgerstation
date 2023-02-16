@@ -4,8 +4,8 @@
 		PIERCE = 5
 	)
 	attack_damage_penetration = list(
-		BLUNT = 25,
-		PIERCE = 25
+		BLUNT = 50,
+		PIERCE = 50
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE
 

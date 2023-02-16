@@ -8,13 +8,15 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "heavy weapon"
+
 	tier = 2
 
-	shoot_delay = 1.6
+	shoot_delay = 1.3
 
 	automatic = TRUE
 
-	damage_mod = 1.2
+	damage_mod = 1.1
 
 	shoot_sounds = list('sound/weapons/ranged/rifle/lmg_nt_light/shoot.ogg')
 

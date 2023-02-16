@@ -10,7 +10,7 @@
 
 	tier = 2
 
-	shoot_delay = 3.2
+	shoot_delay = 4.2
 
 	automatic = FALSE
 
@@ -70,9 +70,11 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	inaccuracy_modifier = 0.25
+	tier_type = "shotgun"
+	movement_spread_base = 0.03
+	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0.25
-	movement_spread_base = 0.02
+	damage_mod = 1
 
 	rarity = RARITY_RARE
 

@@ -8,9 +8,11 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "heavy weapon"
+
 	tier = 3
 
-	shoot_delay = 6
+	shoot_delay = 4
 
 	automatic = FALSE
 

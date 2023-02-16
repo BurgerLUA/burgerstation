@@ -20,6 +20,18 @@
 
 	if(debug) log_debug("dps_mod: [dps_mod]")
 
+	var/bullet_mod = 0
+	var/found_bullet = SSbalance.weapon_to_bullet[src.type]
+	if(found_bullet)
+		var/found_bullet_value = SSbalance.stored_value[found_bullet]
+		if(found_bullet_value)
+			//A weapon that fires 10 2-credit rounds a second should cost 800 credits.
+			//2 => 80
+			//Magic number: 40.
+			bullet_mod = (found_bullet_value*get_hits_per_second())*40
+
+	if(debug) log_debug("bullet_mod: [bullet_mod].")
+
 	if(kill_time_mod < 0)
 		log_error("Value Calcuation Error: kill_time_mod for [src.type] was negative! ([kill_time_mod])")
 		return 1
@@ -32,7 +44,7 @@
 		log_error("Value Calcuation Error: dps_mod for [src.type] was negative! ([dps_mod])")
 		return 1
 
-	. = 0.2 * (dps_mod + stopping_power_mod + kill_time_mod)**1.2
+	. = 0.2 * (dps_mod + stopping_power_mod + kill_time_mod + bullet_mod)**1.2
 
 	if(debug) log_debug("final calculation: [.]")
 

@@ -83,7 +83,7 @@
 	name = "10mm Stecharov pistol MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
-	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is much more compact and concealable."
+	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is much more compac, concealable, and fires much faster."
 
 	size = SIZE_1
 
@@ -97,6 +97,8 @@
 	attachment_undermount_offset_y = 14 - 16
 
 	rarity = RARITY_RARE
+
+	shoot_delay = 1.8
 
 
 

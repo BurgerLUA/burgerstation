@@ -4,7 +4,7 @@
 	desc_extended = "A rare functioning replica of pistol carried into battle by the very first NanoTrasen miners when they were allowed to carry their own guns. A lot has changed, since then."
 	value = 400
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_classic.dmi'
-	shoot_delay = 1.3
+	shoot_delay = 1.2
 	shoot_sounds = list('sound/weapons/ranged/pistol/fortress/shoot.ogg')
 	tier = 1
 

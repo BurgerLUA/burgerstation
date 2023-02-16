@@ -8,6 +8,8 @@
 
 	company_type = "Slavic"
 
+	tier_type = "pistol"
+
 	tier = 2
 
 	shoot_delay = 5

@@ -43,7 +43,10 @@
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
-		tier = SSbalance.stored_tier[type]
+		if(tier_type && SSbalance.stored_tier_max[tier_type] && SSbalance.stored_tier_max[tier_type] < 6)
+			tier = (SSbalance.stored_tier[type] / SSbalance.stored_tier_max[tier_type]) * 6
+		else
+			tier = SSbalance.stored_tier[type]
 
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()

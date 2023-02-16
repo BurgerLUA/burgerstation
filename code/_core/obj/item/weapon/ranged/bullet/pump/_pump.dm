@@ -9,6 +9,8 @@
 
 	var/pump_delay = 1
 
+	tier_type = "shotgun"
+
 
 /obj/item/weapon/ranged/bullet/pump/proc/pump(var/mob/caller,var/silent=FALSE)
 

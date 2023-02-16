@@ -8,6 +8,8 @@
 
 	value = 4000
 
+	damage_mod = 1.1
+
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 

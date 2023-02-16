@@ -8,6 +8,8 @@
 
 	company_type = "Pirate"
 
+	tier_type = "pistol"
+
 	tier = 1
 
 	damage_mod = 1

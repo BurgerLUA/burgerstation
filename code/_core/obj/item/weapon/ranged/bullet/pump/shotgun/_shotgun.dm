@@ -2,7 +2,7 @@
 
 	inaccuracy_modifier = 1.25
 
-	damage_mod = 1.2
+	damage_mod = 1.1
 
 	tier_type = "shotgun"
 

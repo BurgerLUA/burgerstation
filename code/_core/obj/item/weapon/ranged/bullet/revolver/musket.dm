@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 800
 
+	tier_type = "rifle"
+
 	company_type = "Pirate"
 
 	tier = 1

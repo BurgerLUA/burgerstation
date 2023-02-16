@@ -8,6 +8,8 @@
 
 	company_type = "Slavic"
 
+	tier_type = "sniper rifle"
+
 	tier = 2
 
 	shoot_delay = 2.5

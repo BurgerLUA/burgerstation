@@ -1,6 +1,6 @@
 /damagetype/ranged/bullet/revolver_44
 	attack_damage_base = list(
-		BLUNT = 60
+		BLUNT = 70
 	)
 	attack_damage_penetration = list(
 		BLUNT = 0

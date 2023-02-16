@@ -8,6 +8,8 @@
 
 	company_type = "Solarian"
 
+	tier_type = "shotgun"
+
 	tier = 1
 
 	damage_mod = 0.6

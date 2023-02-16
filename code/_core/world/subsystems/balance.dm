@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(balance)
 	var/list/stored_dps = list()
 	var/list/stored_dph = list()
 	var/list/stored_tier = list()
+	var/list/stored_tier_max = list()
 	var/list/stored_killtime = list()
 
 	var/list/stored_value = list() //STORED VALUE SHOULD BE ONLY USED FOR LOOT GENERATION (EXCEPTION: WEAPONS, BULLETS, MAGAZINES)
@@ -120,8 +121,12 @@ SUBSYSTEM_DEF(balance)
 		stored_killtime[W.type] = CEILING(found_killtime,0.01)
 
 		if(!W.bypass_balance_check)
-			var/recommended_tier = FLOOR(max(found_dph-100,found_dps)/100,1)
-			stored_tier[W.type] = recommended_tier
+			// https://www.desmos.com/calculator/zu826fleal
+			var/calculated_average = found_dps*0.75 + found_dph*0.25
+			stored_tier[W.type] = 1 + (calculated_average / 91) - (min(1200,calculated_average)**2)/220000
+			stored_tier[W.type] = min(stored_tier[W.type],6)
+			if(W.tier_type && stored_tier_max[W.tier_type] < stored_tier[W.type])
+				stored_tier_max[W.tier_type] = stored_tier[W.type]
 
 		var/found_value = W.get_recommended_value()
 		stored_value[W.type] = found_value

@@ -19,12 +19,10 @@
 
 /damagetype/ranged/bullet/pistol_45/hp
 	attack_damage_base = list(
-		BLADE = 30,
-		BLUNT = 30
+		BLUNT = 30*HP_MUL
 	)
 	attack_damage_penetration = list(
-		BLADE = -50,
-		BLUNT = -50
+		BLADE = -30
 	)
 
 /damagetype/ranged/bullet/holybullet

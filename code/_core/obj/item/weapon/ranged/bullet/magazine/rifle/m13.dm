@@ -8,6 +8,8 @@
 
 	company_type = "Solarian"
 
+	tier_type = "marksman rifle"
+
 	tier = 1
 
 	shoot_delay = 3.5

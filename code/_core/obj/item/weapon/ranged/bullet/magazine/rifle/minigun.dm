@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 10000
 
+	tier_type = "heavy weapon"
+
 	company_type = "NanoTrasen"
 
 	tier = 4

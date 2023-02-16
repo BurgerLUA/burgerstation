@@ -86,7 +86,7 @@
 	value = 2000
 
 	tier = 3
-	shoot_delay = 2
+	shoot_delay = 4
 
 	heat_max = 0.05
 

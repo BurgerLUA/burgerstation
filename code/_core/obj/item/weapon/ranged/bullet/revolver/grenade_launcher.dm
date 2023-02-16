@@ -8,6 +8,8 @@
 
 	company_type = "Solarian"
 
+	tier_type = "grenade launcher"
+
 	tier = 1
 	bypass_balance_check = TRUE
 

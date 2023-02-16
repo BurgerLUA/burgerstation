@@ -8,6 +8,8 @@
 
 	company_type = "Solarian"
 
+	tier_type = "sniper rifle"
+
 	tier = 5
 
 	shoot_delay = 16

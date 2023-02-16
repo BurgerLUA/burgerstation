@@ -8,10 +8,12 @@
 
 	company_type = "Syndicate"
 
+	tier_type = "sniper rifle"
+
 	tier = 3
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 16
+	shoot_delay = 14
 
 	damage_mod = 2
 

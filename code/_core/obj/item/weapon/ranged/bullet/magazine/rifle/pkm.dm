@@ -8,6 +8,8 @@
 
 	company_type = "Slavic"
 
+	tier_type = "heavy weapon"
+
 	tier = 3
 
 	shoot_delay = 1.6

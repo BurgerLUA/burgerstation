@@ -8,6 +8,8 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "sniper rifle"
+
 	tier = 3
 
 	shoot_delay = 20

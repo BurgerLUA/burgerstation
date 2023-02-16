@@ -8,6 +8,8 @@
 
 	company_type = "Slavic"
 
+	tier_type = "grenade launcher"
+
 	shoot_delay = 20
 
 	automatic = FALSE
