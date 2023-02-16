@@ -9,7 +9,7 @@
 	company_type = "Solarian"
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 1.5
+	shoot_delay = 2.7
 	shoot_sounds = list('sound/weapons/ranged/pistol/1984/shoot.ogg')
 
 	movement_spread_base = 0.008
@@ -83,7 +83,7 @@
 	Where'd you get something like this?"
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
-	shoot_delay = 1.25
+	shoot_delay = 2.2
 
 	damage_mod = 1.25
 	tier = 3

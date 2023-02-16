@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle
-	name = ".50 Silver Eagle pistol"
-	desc = "Shiny!"
-	desc_extended = "A proudly Yankee made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is silver plated."
+	name = "\improper .50 Silver Eagle pistol"
+	desc = "Shiny! Deadly!"
+	desc_extended = "A proudly Solarian made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is silver plated."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50.dmi'
 	value = 1000
 	tier = 2
@@ -9,7 +9,7 @@
 	company_type = "Solarian"
 
 	damage_mod = 1.1
-	shoot_delay = 3
+	shoot_delay = 5
 
 	shoot_sounds = list('sound/weapons/ranged/pistol/eagle/shoot.ogg')
 
@@ -74,8 +74,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold
 	name = ".50 Gold Eagle"
-	desc = "Now in gold!"
-	desc_extended = "A proudly Yankee made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
+	desc = "Shiny! Deadly! GOLD!"
+	desc_extended = "A proudly Solarian made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is gold plated, and provides no tactical advantage whatsoever."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_gold.dmi'
 	value = 5000
 	tier = 4
@@ -86,13 +86,13 @@
 	weight = 20
 	value_burgerbux = 1
 
-	rarity = RARITY_MYTHICAL
+	rarity = RARITY_LEGENDARY
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/mod
 	name = ".50 Black Eagle MOD"
 	desc = "Badass!"
-	desc_extended = "A proudly Yankee made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is painted black and upgraded with higher quality parts."
+	desc_extended = "A proudly Solarian made and designed<sup>\[citation needed\]</sup> 50 caliber pistol for the most elite of commanders. This one is painted black and upgraded with higher quality parts."
 	icon = 'icons/obj/item/weapons/ranged/pistol/50_black.dmi'
 	value = 2000
 	tier = 3

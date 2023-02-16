@@ -12,11 +12,11 @@
 	tier = 3
 
 	damage_mod = 1.15
-	shoot_delay = 1.15
+	shoot_delay = 1.4
 
 	automatic = FALSE
 
-	firemodes = list("automatic","semi-automatic")
+	firemodes = list("semi-automatic")
 
 	shoot_sounds = list('sound/weapons/ranged/rifle/m4/shoot.ogg')
 

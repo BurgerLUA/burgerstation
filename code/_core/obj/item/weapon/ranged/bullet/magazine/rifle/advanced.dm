@@ -12,7 +12,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_delay = 3
+	shoot_delay = 3.8
 
 	automatic = TRUE
 

@@ -6,7 +6,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 3
+	shoot_delay = 5
 
 	automatic = TRUE
 

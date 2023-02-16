@@ -1,7 +1,8 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown
-	name = ".40 Brown pistol"
+	name = "\improper .40 Brown pistol"
 	icon = 'icons/obj/item/weapons/ranged/pistol/40_1.dmi'
-	desc_extended = "A decently powerful and accurate .40 semi-automatic pistol meant for self defense. Commonly used by mercenaries."
+	desc = "What can the .40 Brown do for you?"
+	desc_extended = "A decently powerful and accurate .40 semi-automatic pistol meant for self defense. Commonly used by the Solarian Space Corps."
 	value = 650
 	shoot_sounds = list('sound/weapons/ranged/pistol/brown/shoot.ogg')
 	shoot_delay = 1.25
@@ -76,11 +77,11 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/mod
 	name = ".40 Brown MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/40_2.dmi'
+	desc_extended = "A modified variant of the .40 Brown semi-automatic pistol. Features a faster firerate and reduced recoil."
 
-	shoot_delay = 1.15
+	shoot_delay = 1
 
-	size = SIZE_2
-	weight = 3
+	weight = 5
 
 	heat_max = 0.07
 

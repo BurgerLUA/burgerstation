@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
 	name = "9mm Auto 18 pistol"
 	desc = "An old relic from an oppressive police force."
-	desc_extended = "An automatic machine pistol chambered in 9mm. Good for getting out of tricky situations quickly."
+	desc_extended = "A burst fire machine pistol chambered in 9mm. Good for getting out of tricky situations quickly."
 	value = 400
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
@@ -10,7 +10,7 @@
 
 	company_type = "NanoTrasen"
 
-	firemodes = list("automatic","burst","semi-automatic")
+	firemodes = list("burst","semi-automatic")
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.5

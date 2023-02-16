@@ -11,7 +11,7 @@
 	tier = 3
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 10
+	shoot_delay = 16
 
 	damage_mod = 2
 

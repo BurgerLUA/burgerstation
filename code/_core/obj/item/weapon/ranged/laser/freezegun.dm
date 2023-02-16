@@ -11,7 +11,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/freezegun
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 4
+	shoot_delay = 6
 
 	automatic = TRUE
 

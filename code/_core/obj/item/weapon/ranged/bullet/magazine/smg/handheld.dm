@@ -11,7 +11,7 @@
 
 	value = 800
 
-	shoot_delay = 1.4
+	shoot_delay = 1.1
 
 	automatic = TRUE
 

@@ -4,7 +4,7 @@
 	desc_extended = "NT's standard pistol, chambered in a 9mm cartridge. It's very easy to use and recommended for beginners."
 	value = 200
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton.dmi'
-	shoot_delay = 2
+	shoot_delay = 1.8
 	tier = 1
 	shoot_sounds = list('sound/weapons/ranged/pistol/laton/shoot.ogg')
 

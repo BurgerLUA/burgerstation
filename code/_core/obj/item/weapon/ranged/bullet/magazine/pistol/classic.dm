@@ -1,10 +1,10 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/classic
-	name = "9mm T-Defender pistol"
+	name = "\improper 9x19mm T-Defender pistol"
 	desc = "They don't make them like they used to."
-	desc_extended = "A decently fast-firing accurate semi-automatic pistol designed to be a backup weapon. Originally carried by the first employees of NanoTrasen."
+	desc_extended = "A rare functioning replica of pistol carried into battle by the very first NanoTrasen miners when they were allowed to carry their own guns. A lot has changed, since then."
 	value = 400
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_classic.dmi'
-	shoot_delay = 1.5
+	shoot_delay = 1.3
 	shoot_sounds = list('sound/weapons/ranged/pistol/fortress/shoot.ogg')
 	tier = 1
 
@@ -66,10 +66,8 @@
 
 	rarity = RARITY_RARE
 
-
-
 /obj/item/weapon/ranged/bullet/magazine/pistol/classic/get_static_spread()
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/classic/get_skill_spread(var/mob/living/L)
-	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)) )

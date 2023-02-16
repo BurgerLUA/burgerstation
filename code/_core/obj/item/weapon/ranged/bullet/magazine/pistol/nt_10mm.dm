@@ -9,7 +9,7 @@
 	company_type = "NanoTrasen"
 
 	tier = 1
-	shoot_delay = 2.5
+	shoot_delay = 2.8
 
 	automatic = FALSE
 
@@ -87,7 +87,7 @@
 
 	value = 1200
 
-	shoot_delay = 1
+	shoot_delay = 1.2
 
 	automatic = TRUE
 

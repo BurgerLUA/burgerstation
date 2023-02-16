@@ -10,7 +10,7 @@
 
 	tier = 2
 
-	shoot_delay = 1
+	shoot_delay = 3.5
 
 	movement_spread_base = 0.01
 	inaccuracy_modifier = 0.5

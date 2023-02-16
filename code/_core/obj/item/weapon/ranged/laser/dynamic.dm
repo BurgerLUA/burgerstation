@@ -11,7 +11,7 @@
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
-	shoot_delay = 1.5
+	shoot_delay = 2
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.25

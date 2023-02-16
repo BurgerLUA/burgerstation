@@ -27,6 +27,10 @@
 
 	value = 1 //Dummy value.
 
+/obj/item/bullet_cartridge/shotgun_23/get_value()
+	. = ..()
+	. *= 0.5
+
 /obj/item/bullet_cartridge/shotgun_23/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
 
