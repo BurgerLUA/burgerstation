@@ -15,7 +15,7 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 0.75
+	shoot_delay = 0.8
 
 	firemodes = list("automatic")
 

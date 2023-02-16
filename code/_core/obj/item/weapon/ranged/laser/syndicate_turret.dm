@@ -22,8 +22,6 @@
 
 	battery = /obj/item/powercell/recharging
 
-
-
 	bullet_color = COLOR_BULLET
 
 	inaccuracy_modifier = 1.25

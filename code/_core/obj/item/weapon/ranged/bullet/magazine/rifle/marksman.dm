@@ -10,7 +10,7 @@
 
 	tier = 2
 
-	firemodes = list("automatic","semi-automatic")
+	firemodes = list("semi-automatic")
 
 	shoot_delay = 2.8
 

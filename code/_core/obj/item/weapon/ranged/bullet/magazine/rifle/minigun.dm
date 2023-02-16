@@ -12,7 +12,7 @@
 
 	shoot_delay = 0.5 //Oh god oh fuck
 
-	damage_mod = 1
+	damage_mod = 1.4
 
 	automatic = TRUE
 
@@ -58,7 +58,7 @@
 	return (1 - heat_current/heat_max) * heat_max
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
-	return 0.1
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))

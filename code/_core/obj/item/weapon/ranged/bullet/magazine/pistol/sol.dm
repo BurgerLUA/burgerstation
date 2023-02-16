@@ -2,7 +2,7 @@
 	name = "10mm Lugernut pistol"
 	desc = "Cheaper than tablewine."
 	desc_extended = "A substandard Solarian pistol commonly distributed to conscripts or those who opened a bank account for the first time. The oversized slider is known to break the thumbs of those who hold it incorrectly."
-	icon = 'icons/obj/item/weapons/ranged/pistol/10mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_sol.dmi'
 	icon_state = "inventory"
 	value = 200
 
