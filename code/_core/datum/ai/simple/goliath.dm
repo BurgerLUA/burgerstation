@@ -17,7 +17,7 @@
 
 /ai/goliath/handle_attacking()
 
-	if(objective_attack && alert_level == ALERT_LEVEL_COMBAT && next_tentacle_attack <= world.time)
+	if(objective_attack && objective_attack && next_tentacle_attack <= world.time)
 		var/target_distance = get_dist(owner,objective_attack)
 		if(target_distance > attack_distance_max && target_distance <= tentacle_distance_max)
 			owner_as_goliath.do_tentacle_attack(objective_attack)

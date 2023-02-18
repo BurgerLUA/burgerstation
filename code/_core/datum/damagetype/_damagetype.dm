@@ -609,7 +609,17 @@ var/global/list/all_damage_numbers = list()
 			mental = damage_to_deal_main[MENTAL],
 			update = FALSE
 		)
-		hit_object.health.update_health() //This forces it to immediately update.
+		//This forces it to immediately update.
+		//Organs have weird health updating code, which is handled here.
+		if(is_organ(hit_object))
+			var/obj/item/organ/O = hit_object
+			O.health.update_health()
+			if(is_advanced(O.loc))
+				var/mob/living/advanced/A = O.loc
+				if(A.health)
+					A.health.update_health()
+		else
+			hit_object.health.update_health()
 
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 

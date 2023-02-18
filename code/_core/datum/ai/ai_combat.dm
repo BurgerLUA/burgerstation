@@ -196,9 +196,11 @@ var/global/list/difficulty_to_ai_modifier = list(
 				else
 					set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
-			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
-			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
-
+			if(reaction_time > 0 || alert_level < ALERT_LEVEL_CAUTION)
+				CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
+			else
+				investigate(attacker)
+			set_alert_level(ALERT_LEVEL_COMBAT,FALSE,attacker,attacker)
 	if(owner.combat_dialogue && next_talk <= world.time && !stealthy && damage_amount >= 30)
 		if(owner.health && owner.health.health_current <= owner.health.health_max*0.25 && prob(20+damage_amount))
 			do_dialogue("combat_losing",damage_amount)

@@ -51,7 +51,7 @@
 
 	. = ..()
 
-	if(. && ai && ai.active && ai.alert_level != ALERT_LEVEL_COMBAT && next_talk <= world.time && prob(25))
+	if(. && ai && ai.active && ai.alert_level < ALERT_LEVEL_COMBAT && next_talk <= world.time && prob(25))
 
 		var/sound_to_play
 

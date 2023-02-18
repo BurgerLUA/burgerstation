@@ -67,8 +67,16 @@
 						set_active(FALSE) //Deactivate if idle for more than 3 minutes.
 
 
-	if(alert_level >= ALERT_LEVEL_NOISE && alert_level <= ALERT_LEVEL_CAUTION)
-		alert_time -= tick_rate
+	if(alert_level >= ALERT_LEVEL_NOISE)
+		var/time_mod = 1
+		switch(alert_level)
+			if(ALERT_LEVEL_NOISE)
+				time_mod = 1
+			if(ALERT_LEVEL_CAUTION)
+				time_mod = 0.5
+			if(ALERT_LEVEL_COMBAT)
+				time_mod = 0.25
+		alert_time -= tick_rate*time_mod
 		if(alert_time <= 0)
 			set_alert_level(max(0,alert_level-1),TRUE)
 

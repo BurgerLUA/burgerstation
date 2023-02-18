@@ -41,7 +41,7 @@
 
 	. = ..()
 
-	if(. && should_scan && alert_level != ALERT_LEVEL_COMBAT && alert_level >= scan_at_alert_level && length(valid_scan_dirs))
+	if(. && should_scan && !objective_attack && alert_level >= scan_at_alert_level && length(valid_scan_dirs))
 		var/scan_delay = 10
 		switch(alert_level)
 			if(ALERT_LEVEL_NONE)

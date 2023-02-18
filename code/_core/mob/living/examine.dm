@@ -77,5 +77,8 @@
 			if(ALERT_LEVEL_CAUTION)
 				. += div("warning","[capitalize(pronoun)] seems to be looking for someone.")
 			if(ALERT_LEVEL_COMBAT)
-				. += div("danger","[capitalize(pronoun)] appears to be in a combative stance, with intent to fight [ai.objective_attack]!")
+				if(ai.objective_attack)
+					. += div("danger","[capitalize(pronoun)] appears to be in a combative stance, with intent to fight [ai.objective_attack]!")
+				else
+					. += div("danger","[capitalize(pronoun)] appears to be in a combative stance!")
 

@@ -40,6 +40,8 @@
 
 	thrown_bounce_modifier = 0.25
 
+	var/upgrade_count = 0 //The amount of times this weapon has been upgraded. Maximum 6 times.
+
 /obj/item/weapon/Finalize()
 	. = ..()
 	if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
@@ -49,6 +51,14 @@
 			tier = SSbalance.stored_tier[type]
 
 /obj/item/weapon/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(upgrade_count >= 1)
+		if(upgrade_count >= 2)
+			. += div("rarity legendary",repeat_text("★",upgrade_count-1))
+		else
+			. += div("rarity legendary","★")
+
+/obj/item/weapon/get_examine_details_list(var/mob/examiner)
 	. = ..()
 	if(enchantment)
 		. += div("notice","It is enchanted with <b>[enchantment.name] \Roman[enchantment.strength]</b>")
@@ -69,7 +79,10 @@
 	if(!SSbalance || !SSbalance.stored_value[src.type])
 		return ..()
 
-	return SSbalance.stored_value[src.type]
+	. = SSbalance.stored_value[src.type]
+
+	if(upgrade_count >= 1)
+		. *= 1 + upgrade_count * (upgrade_count-1) * 0.5
 
 /obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
 	return FALSE
@@ -141,6 +154,7 @@
 /obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
 	. = ..()
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
+	if(upgrade_count >= 1) .["upgrade_count"] = upgrade_count
 	if(enchantment)
 		.["enchantment"] = list()
 		.["enchantment"]["enchantment_type"] = enchantment.type
@@ -154,6 +168,7 @@
 /obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
 	. = ..()
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	if(object_data["upgrade_count"]) upgrade_count = object_data["upgrade_count"]
 	if(object_data["enchantment"] && object_data["enchantment"]["enchantment_type"])
 		var/possible_enchantment = text2path(object_data["enchantment"]["enchantment_type"])
 		if(possible_enchantment)

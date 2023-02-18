@@ -540,6 +540,8 @@ var/global/list/rarity_to_mul = list(
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
+/obj/item/get_examine_details_list(var/mob/examiner)
+	. = ..()
 	if(reagents && reagents.volume_current)
 		. += div("notice",reagents.get_contents_english())
 

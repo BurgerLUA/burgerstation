@@ -53,12 +53,12 @@
 
 	if(A) owner.set_dir(get_dir(owner,A))
 
-	if(objective_investigate)
-		objective_investigate = null
+
 
 	if(is_living(A))
 		if(!should_attack_mob(A,FALSE))
 			return FALSE
+		objective_investigate = null
 		frustration_attack = 0
 		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
@@ -76,6 +76,7 @@
 			LAI.set_objective(A)
 		return TRUE
 	else if(istype(A))
+		objective_investigate = null
 		frustration_attack = 0
 		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
@@ -95,17 +96,12 @@
 		var/ai/LAI = k
 		LAI.set_objective(null)
 
-	if(!owner.dead && old_attack && !old_attack.qdeleting)
-		if(is_living(old_attack))
-			var/mob/living/L2 = old_attack
-			if(L2.dead)
-				set_alert_level(ALERT_LEVEL_NOISE,TRUE)
-				return TRUE
-		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
-		set_move_objective(old_attack)
-		return TRUE
 
-	set_alert_level(ALERT_LEVEL_NONE,TRUE)
+	if(!owner.dead && old_attack && !old_attack.qdeleting && is_living(old_attack))
+		var/mob/living/L2 = old_attack
+		if(L2.dead)
+			set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
+			return TRUE
 
 	return TRUE
 
@@ -273,92 +269,3 @@
 
 	return TRUE
 
-/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
-
-	if(!use_alerts)
-		return FALSE
-
-	if(!owner)
-		return FALSE
-
-	if(owner.dead && desired_alert_level != ALERT_LEVEL_NONE)
-		return FALSE
-
-	if(alert_level <= alert_level && is_living(alert_source))
-		var/mob/living/L = alert_source
-		if(alert_level == ALERT_LEVEL_CAUTION)
-			if(L == owner)
-				return FALSE
-		else
-			if(!is_enemy(L,FALSE) || radius_find_enemy <= 0 )
-				return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
-
-	var/old_alert_level = alert_level
-
-	if(can_lower)
-		alert_level = desired_alert_level
-	else
-		alert_level = max(desired_alert_level,alert_level)
-
-	if(old_alert_level <= alert_level && alert_level != ALERT_LEVEL_NONE)
-		set_active(TRUE)
-		if(owner.has_status_effect(REST))
-			owner.remove_status_effect(REST)
-
-	if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION) && !CALLBACK_EXISTS("investigate_\ref[src]") && (old_alert_level >= alert_level ? TRUE : prob(50)) )
-		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
-
-	if(old_alert_level != alert_level)
-		on_alert_level_changed(old_alert_level,alert_level,alert_source)
-		return TRUE
-
-	return FALSE
-
-/ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
-
-	alert_time = initial(alert_time)
-
-	if(use_alert_overlays)
-		if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
-			if(new_alert_level == ALERT_LEVEL_COMBAT)
-				owner.alert_overlay.icon_state = "exclaim"
-			else if(new_alert_level == ALERT_LEVEL_CAUTION)
-				owner.alert_overlay.icon_state = "question"
-			else if(new_alert_level == ALERT_LEVEL_NOISE)
-				owner.alert_overlay.icon_state = "huh"
-			else
-				owner.alert_overlay.icon_state = "none"
-
-	if(owner.combat_dialogue && next_talk <= world.time && prob(25))
-
-		var/response_type
-		var/swear_chance = 0
-		if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_CAUTION)
-			//Lost the enemy, going to investigate.
-			response_type = "enemy_lost"
-			swear_chance = 25
-		else if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_NONE)
-			//Threat neutralized.
-			response_type = "enemy_down"
-			swear_chance = 0
-		else if(old_alert_level == ALERT_LEVEL_NONE && (new_alert_level == ALERT_LEVEL_NOISE || new_alert_level == ALERT_LEVEL_CAUTION))
-			//A weird noise was made.
-			response_type = "noise"
-			swear_chance = owner.health ? (1 - owner.health.health_current/owner.health.health_max)*150 : 0
-		else if(new_alert_level == ALERT_LEVEL_COMBAT)
-			//Found the enemy again.
-			response_type = "enemy_spotted"
-			swear_chance = 90
-		else if(new_alert_level == ALERT_LEVEL_NOISE)
-			//losing interest in the search
-			response_type = "losing_interest"
-			swear_chance = 10
-		else if(new_alert_level == ALERT_LEVEL_NONE)
-			//Investigated and determined there is nothing around.
-			response_type = "lost_interest"
-			swear_chance = 25
-		if(response_type)
-			do_dialogue(response_type,swear_chance)
-
-
-	return TRUE
