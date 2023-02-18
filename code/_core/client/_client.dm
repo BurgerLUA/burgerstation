@@ -92,6 +92,8 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/update_statpanel = FALSE
 
+	var/next_global_click = 0
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 
