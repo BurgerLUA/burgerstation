@@ -60,6 +60,17 @@
 	if(!grabbed_object)
 		return FALSE
 
+	if(is_living(owner))
+		var/mob/living/L = owner
+		if(L.dead)
+			release_object(owner)
+			return FALSE
+		if(is_living(grabbed_object) && L.ai)
+			var/mob/living/G = grabbed_object
+			if(G.dead)
+				release_object(owner)
+				return FALSE
+
 	if(!grabbed_object.can_be_grabbed(owner) || !can_grab(owner,grabbed_object))
 		release_object(owner)
 		return FALSE
