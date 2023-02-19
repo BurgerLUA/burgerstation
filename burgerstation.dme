@@ -935,6 +935,7 @@
 #include "code\_core\mob\living\simple\devil.dm"
 #include "code\_core\mob\living\simple\dick_kickem.dm"
 #include "code\_core\mob\living\simple\exploding_frog.dm"
+#include "code\_core\mob\living\simple\gabber.dm"
 #include "code\_core\mob\living\simple\ghost.dm"
 #include "code\_core\mob\living\simple\glockroach.dm"
 #include "code\_core\mob\living\simple\goblin_king.dm"
