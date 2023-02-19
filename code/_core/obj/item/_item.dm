@@ -257,11 +257,15 @@ var/global/list/rarity_to_mul = list(
 	return TRUE
 
 /obj/item/Finalize()
+
 	. = ..()
+
 	if(length(polymorphs) || color != initial(color))
 		update_sprite()
 	if(!crafting_id)
 		crafting_id = src.type
+
+	layer = LAYER_BASE + value / 10000
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
