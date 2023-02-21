@@ -152,6 +152,10 @@
 	owner.handle_movement(tick_rate)
 
 	if(owner.move_dir && current_turf) //current_turf will only be assigned if they were supposed to move.
+		if(objective_attack)
+			owner.set_dir(objective_attack)
+		else
+			owner.set_dir(owner.move_dir)
 		if(master_ai)
 			var/turf/T2 = get_turf(master_ai.owner)
 			if(get_dist(T2,current_turf) > VIEW_RANGE) //Too far away.

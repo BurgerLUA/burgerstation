@@ -40,6 +40,9 @@
 	attack_delay = 5
 	attack_delay_max = 10
 
+/damagetype/unarmed/holy/slam
+	damage_mod = 2
+
 
 /damagetype/unarmed/holy/spiked
 	attack_verbs = list("curse","defile","desecrate","taint","blaspheme","pollute")

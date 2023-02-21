@@ -27,18 +27,27 @@ SUBSYSTEM_DEF(bossai)
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])
 			var/ai/AI = k
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			if(!AI)
+				continue
 			if(AI.qdeleting)
-				log_error("WARNING: AI of type [AI.type] was dqeleting!")
+				log_error("WARNING: AI of type [AI.type] was qdeleting before it was removed from active_ai_by_z!")
 				active_ai_by_z[z] -= k
 				continue
 			if(!AI.owner)
-				log_error("WARING! AI of type [AI.type] didn't have an owner!")
+				log_error("WARNING: AI of type [AI.type] didn't have an owner!")
 				qdel(AI)
 				continue
 			var/should_life = AI.should_life()
-			if(should_life == null || (should_life && AI.on_life(tick_rate) == null))
-				log_error("WARING! AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
+			if(should_life == null)
+				log_error("WARNING: AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
 				qdel(AI.owner)
+				continue
+			if(!should_life)
+				continue
+			if(AI.on_life(tick_rate) == null)
+				log_error("WARNING: AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
+				qdel(AI.owner)
+				continue
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE

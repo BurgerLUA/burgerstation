@@ -49,10 +49,12 @@
 			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
 			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
-		next_move += CEILING(final_movement_delay, adjust_delay) //Round to the nearest tick.
-
-		glide_size = next_move ? CEILING(step_size/next_move,0.01) : 1
+		var/desired_next_move = CEILING(final_movement_delay, adjust_delay)
+		if(desired_next_move > 0)
+			glide_size = step_size/desired_next_move
 		glide_size = max(glide_size,FPS_CLIENT/FPS_SERVER)
+
+		next_move = max(desired_next_move,next_move)
 
 		//Handling intercardinal collisions.
 		if(intercardinal)

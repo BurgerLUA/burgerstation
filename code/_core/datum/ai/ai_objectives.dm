@@ -53,8 +53,6 @@
 
 	if(A) owner.set_dir(get_dir(owner,A))
 
-
-
 	if(is_living(A))
 		if(!should_attack_mob(A,FALSE))
 			return FALSE

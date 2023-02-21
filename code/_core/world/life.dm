@@ -24,9 +24,8 @@ var/global/time_dialation = 0
 			SS.total_run_duration += SS.last_run_duration
 
 		var/desired_delay = TICKS_TO_DECISECONDS(SS.tick_rate)
-		if(time_dialation && SS.use_time_dialation)
+		if(time_dialation > 1 && SS.use_time_dialation)
 			desired_delay *= time_dialation
-		desired_delay -= SS.last_run_duration
 		if(desired_delay > 0)
 			sleep(desired_delay)
 		else
