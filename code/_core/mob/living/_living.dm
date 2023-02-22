@@ -539,6 +539,7 @@
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
 	chat_overlay.alpha = 0
+	chat_overlay.pixel_y = 20 + src.pixel_z
 	src.vis_contents += chat_overlay
 	//This is initialized somewhere else.
 
@@ -562,6 +563,7 @@
 	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
 	shield_overlay.icon_state = "block"
 	shield_overlay.alpha = 0
+	shield_overlay.pixel_y = src.pixel_z
 	src.vis_contents += shield_overlay
 	//This is initialized somewhere else.
 

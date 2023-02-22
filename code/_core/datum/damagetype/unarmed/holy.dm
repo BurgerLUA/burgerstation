@@ -41,7 +41,19 @@
 	attack_delay_max = 10
 
 /damagetype/unarmed/holy/slam
-	damage_mod = 2
+	damage_mod = 4
+
+	attack_delay = 5*2
+	attack_delay_max = 10*2
+
+/damagetype/unarmed/holy/slam/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+
+	. = ..()
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_status_effect(STUN,30,30)
+
 
 
 /damagetype/unarmed/holy/spiked

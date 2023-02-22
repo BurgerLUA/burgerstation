@@ -43,7 +43,8 @@
 
 	var/atom/old_attack = objective_attack
 
-	if(old_attack == A)
+	if(old_attack && old_attack == A)
+		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
 		return FALSE
 
 	if(is_player(old_attack) && ai_attacking_players[old_attack])
@@ -157,7 +158,10 @@
 			best_score = score_value
 			best_detection_value = detection_value
 
-	if(best_target && best_target != objective_attack)
+	if(best_target)
+		if(best_target == objective_attack)
+			set_objective(best_target)
+			return TRUE
 		if(best_detection_value < night_vision*2)
 			investigate(best_target)
 			return TRUE

@@ -442,6 +442,7 @@
 #include "code\_core\datum\damagetype\ranged\laser\emitter.dm"
 #include "code\_core\datum\damagetype\ranged\laser\flamethrower.dm"
 #include "code\_core\datum\damagetype\ranged\laser\freezegun.dm"
+#include "code\_core\datum\damagetype\ranged\laser\holy.dm"
 #include "code\_core\datum\damagetype\ranged\laser\ion.dm"
 #include "code\_core\datum\damagetype\ranged\laser\kinetic.dm"
 #include "code\_core\datum\damagetype\ranged\laser\pulse.dm"

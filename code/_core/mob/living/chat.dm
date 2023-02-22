@@ -18,18 +18,18 @@
 	talk_duration = SECONDS_TO_DECISECONDS(4)
 	if(chat_overlay)
 		chat_overlay.icon_state = type_type
-		chat_overlay.pixel_x = pixel_x
-		chat_overlay.pixel_y = pixel_y
-		chat_overlay.pixel_z = pixel_z
+		//chat_overlay.pixel_x = pixel_x
+		//chat_overlay.pixel_y = pixel_y
+		//chat_overlay.pixel_z = pixel_z
 		chat_overlay.alpha = 255
 
 /mob/living/proc/start_typing()
 	is_typing = TRUE
 	if(chat_overlay)
 		chat_overlay.icon_state = "talking"
-		chat_overlay.pixel_x = pixel_x
-		chat_overlay.pixel_y = pixel_y
-		chat_overlay.pixel_z = pixel_z
+		//chat_overlay.pixel_x = pixel_x
+		//chat_overlay.pixel_y = pixel_y
+		//chat_overlay.pixel_z = pixel_z
 		chat_overlay.alpha = 255
 
 /mob/living/proc/end_typing()
