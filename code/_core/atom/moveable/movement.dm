@@ -53,7 +53,7 @@
 		if(desired_next_move > 0)
 			glide_size = step_size/desired_next_move
 		glide_size = max(glide_size,FPS_CLIENT/FPS_SERVER)
-
+		desired_next_move = step_size/glide_size //We do this so that glide movement doesn't look weird.
 		next_move = max(desired_next_move,next_move)
 
 		//Handling intercardinal collisions.
