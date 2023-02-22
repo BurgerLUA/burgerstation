@@ -26,8 +26,8 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	iff_tag = "Ash Drake"
-	loyalty_tag = "Ash Drake"
+	iff_tag = "Gabber"
+	loyalty_tag = "Gabber"
 
 	blood_type = /reagent/blood/ancient
 	blood_volume = 3000
@@ -98,3 +98,42 @@
 		DT.owner = src
 		DT.loyalty_tag = src.loyalty_tag
 		DT.place()
+
+/mob/living/simple/gabber/proc/shoot_bouncy_projectiles(var/atom/desired_target,var/amount=5)
+
+	shoot_projectile(
+		src,
+		desired_target,
+		null,
+		null,
+		/obj/projectile/magic/gabber_ring,
+		/damagetype/ranged/leaper_bubble,
+		16,
+		16,
+		0,
+		TILE_SIZE*0.25,
+		amount,
+		"#FFFFFF",
+		0,
+		1,
+		iff_tag,
+		loyalty_tag,
+		base_spread = 0
+	)
+
+	return TRUE
+
+
+/mob/living/simple/gabber/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+
+	if(bullet_num_max == 1)
+		return ..()
+
+	var/num = bullet_num/bullet_num_max
+
+	var/norm_x = initial_offset_x + sin(num*360)
+	var/norm_y = initial_offset_y + cos(num*360)
+
+	var/mul = max(abs(norm_x),abs(norm_y))
+
+	return list(norm_x/mul,norm_y/mul)

@@ -79,10 +79,9 @@
 
 	var/ricochets_left = 3 //Amount of richochets this projectile is allowed to have. 0 to disable.
 	var/ricochet_angle = 55 //The angle of incidence needs to be larger than this to trigger a richochete.
-	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
+	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line. (Lower means can bounce more often).
 	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
 	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
-	var/ricochet_advanced_calculations = FALSE
 
 	var/debug = FALSE
 
