@@ -66,12 +66,20 @@ var/global/list/valid_gabber_sound_files = list()
 				continue
 			var/word = replacetext(file,".ogg","")
 			valid_gabber_sound_files[word] = "sound/voice/silicon/gabber/[file]"
-			world.log << "valid_gabber_sound_files\[[word]\] = sound/voice/silicon/gabber/[file]"
 
 	. = ..()
 
 	update_sprite()
 	set_light_sprite(VIEW_RANGE*0.5,0.25, "#3184B7",LIGHT_OMNI)
+
+	/*
+	var/mob/living/simple/silicon/drone/D = new(src.loc)
+	D.initialize_type = INITIALIZE_NONE
+	INITIALIZE(D)
+	GENERATE(D)
+	FINALIZE(D)
+	D.owner = src
+	*/
 
 /*
 	transform = get_base_transform()
@@ -116,9 +124,10 @@ var/global/list/gabber_voice_curse = list(
 
 	add_status_effect(PARALYZE,duration=10,magnitude=-1,stealthy=TRUE)
 
-	var/chosen_curse = pick(gabber_voice_curse)
+	var/chosen_curse_voice = pick(gabber_voice_curse)
+	var/chosen_curse = gabber_voice_curse[chosen_curse_voice]
 
-	do_voice(chosen_curse)
+	do_voice(chosen_curse_voice)
 
 	for(var/mob/living/L in viewers(VIEW_RANGE,src))
 		if(!allow_hostile_action(src.loyalty_tag,L))
@@ -128,7 +137,6 @@ var/global/list/gabber_voice_curse = list(
 
 var/global/list/gabber_voice_slam = list(
 	"death",
-	"destroy",
 	"die",
 	"down"
 )
@@ -246,3 +254,39 @@ var/global/list/gabber_voice_block = list(
 	"denied",
 	"failure"
 )
+
+
+var/global/list/gabber_voice_destroy_area = list(
+	"destroy",
+	"coward",
+	"pathetic"
+)
+
+/mob/living/simple/gabber/proc/destroy_surrounding_obstacles()
+
+	do_voice(pick(gabber_voice_destroy_area))
+
+	var/ix=0
+	var/iy=0
+	var/imaximum = 0
+	while(TRUE)
+		if(imaximum > VIEW_RANGE)
+			break
+		else if(iy > imaximum)
+			imaximum++
+			ix = -imaximum
+			iy = -imaximum
+		else if(ix > imaximum)
+			ix = -imaximum
+			iy += 1
+		else
+			ix += 1
+		var/turf/T = locate(x + ix,y + iy,z)
+		if(!T)
+			break
+		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,.proc/create_turf_destruction,T)
+
+
+/mob/living/simple/gabber/proc/create_turf_destruction(var/turf/T)
+	new /obj/effect/gabber_turf_destruction(T)
+	return TRUE

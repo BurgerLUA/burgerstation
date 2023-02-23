@@ -229,7 +229,7 @@
 
 /atom/movable/proc/is_safe_to_delete(var/check_loc = TRUE)
 
-	if(check_loc && loc && !src.z)
+	if(check_loc && loc && !src.z) //This means we're in something that isn't a turf.
 		return FALSE
 
 	if(is_player_controlled())
