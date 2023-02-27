@@ -8,7 +8,7 @@
 
 	ai = /ai/advanced/suvivor
 
-	level = 40
+	level = 28
 
 	combat_dialogue = /combat_dialogue/bandit
 

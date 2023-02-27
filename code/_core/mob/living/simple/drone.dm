@@ -19,7 +19,7 @@
 
 	ai = /ai/bodyguard_drone
 
-	level = 30
+	level = 15
 
 	var/mob/living/simple/owner //Not to be confused with master.
 

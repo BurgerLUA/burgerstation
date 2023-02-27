@@ -36,7 +36,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 30
+	level = 8
 
 /mob/living/simple/lobster/post_death()
 	. = ..()

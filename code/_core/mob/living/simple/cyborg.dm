@@ -49,7 +49,7 @@
 		FIRE = TRUE
 	)
 
-	level = 22
+	level = 20
 
 /mob/living/simple/silicon/squats/post_death()
 	. = ..()
@@ -85,7 +85,7 @@
 
 	damage_type = /damagetype/squats/
 
-	level = 12
+	level = 8
 
 /mob/living/simple/silicon/syndieborg/proc/shoot_gun(var/atom/desired_target)
 	shoot_projectile(

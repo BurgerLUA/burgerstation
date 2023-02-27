@@ -17,7 +17,7 @@
 
 	size = SIZE_10
 
-	level = 28
+	level = 12
 
 	dna = /dna/goblin
 

@@ -24,7 +24,7 @@
 	blood_type = /reagent/blood/unholy
 	blood_volume = 100
 
-	level = 12
+	level = 8
 
 /mob/living/simple/hivelord/post_death()
 	. = ..()

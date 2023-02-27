@@ -6,7 +6,7 @@
 
 	ai = /ai/advanced/guarding
 
-	level = 16
+	level = 22
 
 	loadout = /loadout/wizard_guard
 

@@ -11,7 +11,7 @@
 	loyalty_tag = "Zombie"
 	iff_tag = "Zombie"
 
-	level = 15
+	level = 12
 
 	health_base = 200
 	stamina_base = 100

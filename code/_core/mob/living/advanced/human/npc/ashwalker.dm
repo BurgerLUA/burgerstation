@@ -29,7 +29,7 @@
 	loadout_to_use_male = /loadout/ashwalker/hunter
 	loadout_to_use_female = /loadout/ashwalker/hunter/female
 
-	level = 14
+	level = 16
 
 /mob/living/advanced/npc/ashwalker/assassin
 	name = "ashwalker assassin"
@@ -37,7 +37,7 @@
 	loadout_to_use_male = /loadout/ashwalker/assassin
 	loadout_to_use_female = /loadout/ashwalker/assassin/female
 
-	level = 22
+	level = 18
 
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"
@@ -45,4 +45,4 @@
 	loadout_to_use_male = /loadout/ashwalker/warrior
 	loadout_to_use_female = /loadout/ashwalker/warrior/female
 
-	level = 50
+	level = 20

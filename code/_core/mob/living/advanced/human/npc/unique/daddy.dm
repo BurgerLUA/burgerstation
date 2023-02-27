@@ -4,7 +4,7 @@
 
 	health_base = 2000
 
-	level = 14
+	level = 99
 
 	soul_size = SOUL_SIZE_RARE
 

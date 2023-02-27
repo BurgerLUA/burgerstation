@@ -32,7 +32,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 4
+	level = 2
 
 /mob/living/simple/parrot/Finalize()
 	post_move(src.loc)
@@ -122,4 +122,4 @@
 
 	armor = /armor/default_organic
 
-	level = 12
+	level = 8

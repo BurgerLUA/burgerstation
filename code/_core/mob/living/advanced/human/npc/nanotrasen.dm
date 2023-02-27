@@ -9,7 +9,7 @@
 
 	dna = /dna/human
 
-	level = 10
+	level = 8
 
 /mob/living/advanced/npc/nanotrasen/Finalize()
 	. = ..()
@@ -21,7 +21,7 @@
 	name = "\improper NanoTrasen hanger guard"
 	dialogue_id = null
 	loadout = /loadout/nanotrasen/hanger_guard
-	level = 50
+	level = 40
 	ai = /ai/advanced/guarding
 
 /mob/living/advanced/npc/nanotrasen/hanger_guard/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)

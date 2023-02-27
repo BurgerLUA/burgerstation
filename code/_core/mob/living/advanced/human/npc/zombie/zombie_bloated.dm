@@ -4,7 +4,7 @@
 	name = "zombie bloater"
 	loadout = /loadout/zombie/bloated
 
-	level = 30
+	level = 15
 
 	health_base = 400
 	stamina_base = 50

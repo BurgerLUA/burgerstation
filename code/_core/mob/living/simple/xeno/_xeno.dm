@@ -36,7 +36,7 @@
 
 	armor = /armor/xeno
 
-	level = 20
+	level = 10
 
 /mob/living/simple/xeno/get_emote_sound(var/emote_id)
 

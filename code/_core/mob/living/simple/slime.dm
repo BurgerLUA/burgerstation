@@ -45,7 +45,7 @@
 
 	soul_size = SOUL_SIZE_NONE //Prevents farming.
 
-	level = 8
+	level = 2
 
 	alpha = 255 //255 means set automatically based on level
 
@@ -334,14 +334,14 @@
 /mob/living/simple/slime/forest
 	name = "forest slime"
 	color = "#69A333"
-	level = 6
+	level = 4
 
 	slime_traits = SLIME_TRAIT_NONE
 
 /mob/living/simple/slime/water
 	name = "water slime"
 	color = "#52A7C6"
-	level = 12
+	level = 6
 
 	slime_traits = SLIME_TRAIT_FAST | SLIME_TRAIT_WET
 
@@ -355,63 +355,63 @@
 /mob/living/simple/slime/sand
 	name = "sand slime"
 	color = "#F4CD9F"
-	level = 22
+	level = 8
 
 	slime_traits = SLIME_TRAIT_FAST
 
 /mob/living/simple/slime/jungle
 	name = "jungle slime"
 	color = "#6D8756"
-	level = 30
+	level = 8
 
 	slime_traits = SLIME_TRAIT_TOXIC | SLIME_TRAIT_GLOW | SLIME_TRAIT_THORNS
 
 /mob/living/simple/slime/cave
 	name = "cave slime"
 	color = "#936952"
-	level = 14
+	level = 6
 
 	slime_traits = SLIME_TRAIT_STEALTH
 
 /mob/living/simple/slime/ice
 	name = "ice slime"
 	color = "#93DDE2"
-	level = 24
+	level = 12
 
 	slime_traits = SLIME_TRAIT_COLD | SLIME_TRAIT_SLOW | SLIME_TRAIT_DEFENSIVE
 
 /mob/living/simple/slime/basalt
 	name = "basalt slime"
 	color = "#382323"
-	level = 28
+	level = 18
 
 	slime_traits = SLIME_TRAIT_SLOW | SLIME_TRAIT_DEFENSIVE
 
 /mob/living/simple/slime/magma
 	name = "magma slime"
 	color = "#E86518"
-	level = 34
+	level = 20
 
 	slime_traits = SLIME_TRAIT_GLOW | SLIME_TRAIT_FIRE
 
 /mob/living/simple/slime/blood
 	name = "blood slime"
 	color = "#C2230C"
-	level = 50
+	level = 18
 
 	slime_traits = SLIME_TRAIT_AGGRESSIVE
 
 /mob/living/simple/slime/oil
 	name = "oil slime"
 	color = "#332633"
-	level = 50
+	level = 16
 
 	slime_traits = SLIME_TRAIT_SLOW | SLIME_TRAIT_EXPLOSIVE
 
 /mob/living/simple/slime/bluespace
 	name = "bluespace slime"
 	color = "#9FB6FF"
-	level = 60
+	level = 30
 
 	slime_traits = SLIME_TRAIT_UNSTABLE
 

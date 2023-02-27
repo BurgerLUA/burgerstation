@@ -75,7 +75,7 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/syndicate_turret/ship
 
-	level = 30
+	level = 14
 
 /mob/living/simple/turret/syndicate/post_death()
 	icon_state = "dead"
@@ -92,7 +92,7 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/nanotrasen_turret
 
-	level = 12
+	level = 8
 
 /mob/living/simple/turret/nanotrasen/immortal
 	name = "immortal nanotrasen turret"
@@ -117,7 +117,7 @@
 
 	size = SIZE_ANIMAL
 
-	level = 4
+	level = 3
 
 /mob/living/simple/turret/deployable/get_examine_list(var/mob/examiner)
 
@@ -261,7 +261,7 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/clockwork_turret
 
-	level = 22
+	level = 8
 
 /mob/living/simple/turret/clockwork/post_death()
 	icon_state = "dead"

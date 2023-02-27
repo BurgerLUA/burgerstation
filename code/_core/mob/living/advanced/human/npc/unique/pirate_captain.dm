@@ -124,7 +124,7 @@
 	iff_tag = "Skeleton"
 	ai = /ai/advanced/skeleton
 
-	level = 18
+	level = 10
 
 	blood_type = null
 
@@ -133,23 +133,23 @@
 	name = "skeleton crew marksman"
 	loadout = /loadout/pirate/crew/ranged
 
-	level = 24
+	level = 16
 
 /mob/living/advanced/npc/pirate_crew/magic
 	name = "skeleton crew mage"
 	loadout = /loadout/pirate/crew/magic
 
-	level = 32
+	level = 18
 
 /mob/living/advanced/npc/pirate_crew/melee
 	name = "skeleton crew brawler"
 	loadout = /loadout/pirate/crew/melee
 
-	level = 24
+	level = 12
 
 
 /mob/living/advanced/npc/pirate_crew/ninja
 	name = "skeleton crew ninja"
 	loadout = /loadout/pirate/crew/ninja
 
-	level = 32
+	level = 30

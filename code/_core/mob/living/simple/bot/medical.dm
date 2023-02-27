@@ -32,6 +32,8 @@
 
 	var/advanced = FALSE //Set to true if this medibot can revive.
 
+	level = 3
+
 /mob/living/simple/bot/medibot/post_death()
 
 	. = ..()
@@ -170,10 +172,6 @@
 	iff_tag = "Syndicate"
 
 	health_base = 100
-
-	level = 5
-
-
 
 /mob/living/simple/bot/medibot/rogue
 	name = "rogue medical bot"

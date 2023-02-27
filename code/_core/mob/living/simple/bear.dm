@@ -38,7 +38,7 @@
 
 	soul_size = SOUL_SIZE_UNCOMMON
 
-	level = 12
+	level = 6
 
 /mob/living/simple/bear/update_overlays()
 	. = ..()
@@ -63,7 +63,7 @@
 
 	armored = TRUE
 
-	level = 18
+	level = 9
 
 /mob/living/simple/bear/armored/revolutionary
 	name = "armored slavic bear"
@@ -73,7 +73,7 @@
 	enable_security_hud = TRUE
 	enable_medical_hud = TRUE
 
-	level = 24
+	level = 12
 
 /mob/living/simple/bear/snow
 	name = "snow bear"
@@ -81,13 +81,13 @@
 
 	armor = /armor/tough_furred/snow
 
-	level = 14
+	level = 7
 
 /mob/living/simple/bear/black
 	name = "black bear"
 	icon_state = "black"
 
-	level = 16
+	level = 8
 
 /mob/living/simple/bear/space
 	name = "space bear"
@@ -95,4 +95,4 @@
 
 	armor = /armor/tough_furred/space
 
-	level = 18
+	level = 9

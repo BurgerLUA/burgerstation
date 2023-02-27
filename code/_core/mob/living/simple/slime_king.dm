@@ -71,7 +71,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
-	level = 20
+	level = 30
 
 /mob/living/simple/slime_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()

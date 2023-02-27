@@ -31,7 +31,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 8
+	level = 2
 
 
 /mob/living/simple/glockroach/post_death()

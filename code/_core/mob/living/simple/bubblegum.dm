@@ -80,7 +80,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 40
+	level = 35
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()

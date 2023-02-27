@@ -3,7 +3,7 @@
 	class = /class/player/antagonist
 	allow_save = FALSE
 
-	level = 50
+	level = 40
 
 /mob/living/advanced/player/antagonist/on_add_xp(var/experience/E,var/added_xp)
 

@@ -5,7 +5,7 @@
 	name = "zombie roider"
 	loadout = /loadout/zombie/roided
 
-	level = 50
+	level = 25
 
 	health_base = 500
 	stamina_base = 1000

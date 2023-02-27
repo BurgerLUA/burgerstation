@@ -21,7 +21,7 @@
 
 	dna = /dna/human
 
-	level = 25
+	level = 20
 
 /mob/living/advanced/npc/rev/Initialize()
 	loadout = pickweight(possible_outfits)
@@ -48,7 +48,7 @@
 		/loadout/slavic/sniper/advanced = 1.2,
 	)
 
-	level = 40
+	level = 30
 
 /mob/living/advanced/npc/rev/commander
 	name = "elite revolutionary commander"
@@ -62,7 +62,7 @@
 		/loadout/slavic/commander = 1
 	)
 
-	level = 80
+	level = 60
 
 /mob/living/advanced/npc/rev/commander/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	. = ..()

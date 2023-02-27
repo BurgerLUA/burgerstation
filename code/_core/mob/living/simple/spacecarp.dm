@@ -39,7 +39,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 16
+	level = 8
 
 	var/color_body = "#FFFFFF"
 	var/color_eyes = "#FFFFFF"
@@ -88,5 +88,5 @@
 /mob/living/simple/spacecarp/leader
 	name = "alpha giant carp"
 
-	level = 30
+	level = 14
 

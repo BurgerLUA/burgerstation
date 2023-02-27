@@ -50,7 +50,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(6)
 
-	level = 50
+	level = 35
 
 	pixel_x = -16
 

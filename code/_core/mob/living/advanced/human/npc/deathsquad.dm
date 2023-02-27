@@ -11,7 +11,7 @@
 
 	loadout = /loadout/deathsquad
 
-	level = 80
+	level = 60
 
 /mob/living/advanced/npc/deathsquad/Finalize()
 	. = ..()

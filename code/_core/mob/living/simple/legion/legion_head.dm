@@ -30,7 +30,7 @@
 
 	soul_size = null
 
-	level = 4
+	level = 2
 
 	delete_on_death = TRUE
 

@@ -10,7 +10,7 @@
 
 	soul_size = SOUL_SIZE_UNCOMMON
 
-	level = 70
+	level = 60
 
 	var/list/possible_loadouts = list(
 		/loadout/space_soldier/assault_rifle = 4,

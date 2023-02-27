@@ -68,7 +68,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 30
 
 /mob/living/simple/xeno/queen/PostInitialize()
 

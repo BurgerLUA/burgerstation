@@ -68,7 +68,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 40
+	level = 28
 
 /mob/living/simple/colossus/pre_death()
 	do_say("<font color='#DD1C1F' size='4'>I WILL RETURN.</font>",FALSE)

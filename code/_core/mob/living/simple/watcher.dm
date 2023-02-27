@@ -35,7 +35,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 16
+	level = 8
 
 /mob/living/simple/watcher/post_death()
 	. = ..()
@@ -70,7 +70,7 @@
 
 	armor = /armor/brass_construct
 
-	level = 8
+	level = 12
 
 /mob/living/simple/watcher/clockwork/post_death()
 	. = ..()

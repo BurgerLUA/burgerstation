@@ -17,7 +17,7 @@
 
 	anchored = TRUE
 
-	level = 100
+	level = 50
 
 	loadout = /loadout/master
 

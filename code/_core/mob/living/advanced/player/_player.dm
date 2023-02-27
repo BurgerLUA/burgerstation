@@ -12,7 +12,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
-	health_base = 100
+	health_base = 200
 	stamina_base = 100
 	mana_base = 100
 

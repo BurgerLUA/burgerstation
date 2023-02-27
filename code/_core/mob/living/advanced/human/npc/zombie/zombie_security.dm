@@ -4,7 +4,7 @@
 	name = "zombie security"
 	loadout = /loadout/zombie/security
 
-	level = 30
+	level = 15
 
 
 

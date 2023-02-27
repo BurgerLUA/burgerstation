@@ -4,7 +4,7 @@
 	name = "zombie juggernaut"
 	loadout = /loadout/zombie/armored
 
-	level = 40
+	level = 20
 
 /mob/living/advanced/npc/zombie/armored/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 

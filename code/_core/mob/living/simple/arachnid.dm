@@ -47,7 +47,7 @@
 
 	object_size = 2
 
-	level = 22
+	level = 19
 
 /mob/living/simple/arachnid/Finalize()
 	. = ..()

@@ -12,4 +12,4 @@
 	name = "zombie worker"
 	loadout = /loadout/zombie/worker
 
-	level = 20
+	level = 10

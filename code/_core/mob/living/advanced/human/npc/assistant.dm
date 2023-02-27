@@ -25,7 +25,7 @@
 
 	loadout = /loadout/rogue_assistant
 
-	level = 80
+	level = 1
 
 /mob/living/advanced/npc/rogue_assistant/Finalize()
 	. = ..()

@@ -42,7 +42,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 60
+	level = 50
 
 	movement_delay = DECISECONDS_TO_TICKS(3)
 

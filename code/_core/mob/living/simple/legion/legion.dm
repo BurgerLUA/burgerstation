@@ -39,7 +39,7 @@
 
 	soul_size = null
 
-	level = 12
+	level = 8
 
 /mob/living/simple/legionare/Destroy()
 

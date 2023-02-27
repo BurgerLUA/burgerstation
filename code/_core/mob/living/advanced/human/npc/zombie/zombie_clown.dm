@@ -4,7 +4,7 @@
 	name = "zombie clown"
 	loadout = /loadout/zombie/clown
 
-	level = 40
+	level = 20
 
 	movement_delay = DECISECONDS_TO_TICKS(0.5)
 
