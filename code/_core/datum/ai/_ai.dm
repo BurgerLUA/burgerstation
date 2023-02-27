@@ -91,6 +91,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/alert_time = SECONDS_TO_TICKS(10) //In ticks
 	var/sidestep_next = FALSE
 	var/should_investigate_alert = TRUE
+	var/alert_movement_latch = 0x0 //Direction
 
 	var/grab_time = 0
 	var/grab_time_max = 20 //How long, in deciseconds, should we allow someone to grab us?

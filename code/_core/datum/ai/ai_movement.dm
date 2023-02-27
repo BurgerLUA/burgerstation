@@ -238,14 +238,23 @@
 
 /ai/proc/handle_movement_alert()
 
-	if(alert_level > ALERT_LEVEL_NONE && objective_investigate)
+	if(objective_investigate)
 		owner.movement_flags = MOVEMENT_WALKING
 		owner.move_dir = get_dir(owner,objective_investigate)
 		return TRUE
 
-	else if(alert_level == ALERT_LEVEL_CAUTION)
+	if(!objective_attack && alert_level > ALERT_LEVEL_NONE && !objective_attack)
+
+		if(alert_movement_latch)
+			if(prob(33))
+				alert_movement_latch = 0x0
+		else
+			if(!prob(80))
+				alert_movement_latch = pick(DIRECTIONS_CARDINAL)
+
 		owner.movement_flags = MOVEMENT_WALKING
-		owner.move_dir = pick(list(0,0,0,0,NORTH,EAST,SOUTH,WEST))
+		owner.move_dir = alert_movement_latch
+
 		return TRUE
 
 	return FALSE
@@ -321,8 +330,10 @@
 		if(is_living(obstacle))
 			var/mob/living/L = obstacle
 			if(is_enemy(L))
-				set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
-				spawn do_attack(obstacle,prob(left_click_chance))
+				if(objective_attack)
+					spawn do_attack(obstacle,prob(left_click_chance))
+				else
+					set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
 			else
 				move_from_ally = 3 //Excuse me, Dr. Freeman.
 				move_from_ally_dir = L.move_dir

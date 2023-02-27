@@ -2,6 +2,12 @@
 
 var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 
+/obj/marker/smart_clear_turf/
+	var/checks_allowed = 40
+
+/obj/marker/smart_clear_turf/large
+	checks_allowed = 80
+
 /obj/marker/smart_clear_turf/New(var/desired_loc)
 	smart_clear_turfs += src
 	. = ..()
@@ -21,7 +27,6 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 	var/list/turfs_to_check = list(current_turf)
 	var/list/turf_blacklist = list(current_turf=TRUE,null=TRUE)
 
-	var/checks_allowed = 40
 	var/first = TRUE
 	while(length(turfs_to_check) && checks_allowed > 0)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)

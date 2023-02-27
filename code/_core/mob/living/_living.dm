@@ -284,6 +284,8 @@
 
 	var/gib_on_butcher = TRUE
 
+	var/next_alert = 0 //Time until this specific mob can create an alert that wakes up AI. Prevents spam and increases preformance.
+
 /mob/living/PreDestroy()
 
 	if(ai)

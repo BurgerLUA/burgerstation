@@ -1,4 +1,4 @@
-/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
+/ai/proc/set_alert_level(var/desired_alert_level,var/atom/alert_epicenter = null,var/atom/alert_source = null,var/can_lower=FALSE)
 
 	if(!use_alerts)
 		return FALSE
@@ -38,11 +38,8 @@
 		if(owner.has_status_effect(REST))
 			owner.remove_status_effect(REST)
 
-	if(should_investigate_alert && alert_epicenter && !CALLBACK_EXISTS("investigate_\ref[src]") && (old_alert_level >= alert_level ? TRUE : prob(50)) )
-		if(alert_level <= ALERT_LEVEL_CAUTION && reaction_time > 0)
-			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
-		else if(!objective_attack)
-			investigate(alert_epicenter)
+	if(should_investigate_alert && alert_epicenter && (old_alert_level >= alert_level ? TRUE : prob(50)) )
+		try_investigate(alert_epicenter,force_if_on_cooldown=TRUE)
 
 	if(old_alert_level != alert_level)
 		on_alert_level_changed(old_alert_level,alert_level,alert_source)

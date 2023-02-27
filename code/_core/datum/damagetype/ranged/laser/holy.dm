@@ -10,3 +10,9 @@
 		HEAT = 40,
 		HOLY = 100
 	)
+
+/damagetype/ranged/laser/holy/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
+
+	damage_multiplier = 0.01
+
+	. = ..()

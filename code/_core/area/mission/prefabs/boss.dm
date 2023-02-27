@@ -18,3 +18,7 @@
 /area/mission/prefab/boss/herald
 	name = "herald's arena"
 	interior = TRUE
+
+/area/mission/prefab/boss/gabber
+	name = "Zechariah's Lair"
+	interior = TRUE

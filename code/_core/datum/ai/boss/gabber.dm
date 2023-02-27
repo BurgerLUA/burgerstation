@@ -2,7 +2,6 @@
 	var/next_trap = 0
 	var/next_slam = 0
 	var/next_shoot = 0
-	var/next_curse = 0
 	var/next_unblock = 0
 	var/next_destroy_area = 0
 
@@ -30,7 +29,6 @@
 		next_trap = max(next_trap,world.time + SECONDS_TO_DECISECONDS(30))
 		next_slam = max(next_slam,world.time + SECONDS_TO_DECISECONDS(10))
 		next_shoot = max(next_shoot,world.time + SECONDS_TO_DECISECONDS(1))
-		next_curse = max(next_curse,world.time + SECONDS_TO_DECISECONDS(60))
 		if(objective_attack && objective_attack.health)
 			last_objective_attack_health = objective_attack.health.health_current
 		frustration_health = 0
@@ -74,27 +72,34 @@
 		if(T)
 			var/checked_distance = get_dist(owner,T)
 
-			if(checked_distance > 3)
+			if(checked_distance > (owner_as_gabber.sword_mode ? 5 : 3))
 				owner.dash_direction = get_dir(owner,T)
 				owner.dash_amount = checked_distance - 1
 				play_sound('sound/effects/dodge.ogg',get_turf(owner))
 				next_slam = world.time + SECONDS_TO_DECISECONDS(1)
 				return TRUE
 
-			owner_as_gabber.slam(T)
-
-			next_slam = world.time + (prob(25) ? SECONDS_TO_DECISECONDS(30) : SECONDS_TO_DECISECONDS(4))
+			if(owner_as_gabber.sword_mode)
+				var/do_super_slam = prob(25)
+				if(do_super_slam)
+					owner_as_gabber.super_slam_jam(T)
+					next_slam = world.time + SECONDS_TO_DECISECONDS(15)
+				else
+					owner_as_gabber.slam(T)
+					next_slam = world.time + SECONDS_TO_DECISECONDS(1)
+			else
+				owner_as_gabber.slam(T)
+				next_slam = world.time + (prob(25) ? SECONDS_TO_DECISECONDS(30) : SECONDS_TO_DECISECONDS(4))
 
 			return TRUE
 
-	//Parrying/Blocking.
-	if(objective_attack && is_advanced(objective_attack))
+	//Parrying/Blocking. Sword mode only.
+	if(owner_as_gabber.sword_mode && objective_attack && is_advanced(objective_attack))
 		var/mob/living/advanced/A = objective_attack
 		if(prob(80))
 			if( (A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]")) || (A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]")))
 				if(!(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK))
 					owner_as_gabber.attack_flags |= CONTROL_MOD_BLOCK
-					owner_as_gabber.do_voice(pick(gabber_voice_block))
 					owner_as_gabber.set_dir(get_dir(owner_as_gabber,objective_attack))
 					next_unblock = world.time + SECONDS_TO_DECISECONDS(3)
 					owner_as_gabber.handle_blocking()
@@ -114,19 +119,16 @@
 		if(next_trap > world.time)
 			return TRUE
 
-		owner_as_gabber.trap_spam(objective_attack)
+		if(owner_as_gabber.sword_mode)
+			owner_as_gabber.trap_lines()
+		else
+			owner_as_gabber.trap_spam(objective_attack)
 
 		next_trap = world.time + rand(SECONDS_TO_DECISECONDS(30),SECONDS_TO_DECISECONDS(90))
 		return TRUE
 
-	//Curse attack.
-	if(objective_attack && next_curse > 0 && next_curse <= world.time)
-		owner_as_gabber.curse()
-		next_curse = world.time + rand(SECONDS_TO_DECISECONDS(30),SECONDS_TO_DECISECONDS(90))
-		return TRUE
-
-	//Ranged attack.
-	if(objective_attack && next_shoot > 0 && next_shoot <= world.time && get_dist(owner,objective_attack) >= 3)
+	//Ranged attack. Non-sword mode only.
+	if(!owner_as_gabber.sword_mode && objective_attack && next_shoot > 0 && next_shoot <= world.time && get_dist(owner,objective_attack) >= 3)
 		next_shoot = world.time + SECONDS_TO_DECISECONDS(0.5)
 		shoot_count++
 		var/projectiles_to_fire = shoot_count % 5 ? 1 : 5
@@ -135,21 +137,30 @@
 
 	. = ..()
 
+/ai/boss/gabber/should_life()
+
+	. = ..()
+
+	if(owner_as_gabber && owner_as_gabber.has_status_effect(IMMORTAL))
+		return FALSE
 
 /ai/boss/gabber/on_life(var/tick_rate=1)
 
 	. = ..()
 
-	if(objective_attack && objective_attack.health && next_objective_attack_health_update <= world.time)
+	if(owner_as_gabber.sword_mode && next_destroy_area <= world.time)
 
-		next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(3)
+		if(objective_attack && objective_attack.health && next_objective_attack_health_update <= world.time)
 
-		if(last_objective_attack_health && objective_attack.health.health_current >= last_objective_attack_health)
-			frustration_health++
-			if(frustration_health >= 4)
-				owner_as_gabber.destroy_surrounding_obstacles()
-				next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(30)
+			next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(3)
+
+			if(last_objective_attack_health && objective_attack.health.health_current >= last_objective_attack_health)
+				frustration_health++
+				if(frustration_health >= 4)
+					owner_as_gabber.destroy_surrounding_obstacles()
+					next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(30)
+					frustration_health = 0
+			else
 				frustration_health = 0
-		else
-			frustration_health = 0
-		last_objective_attack_health = objective_attack.health.health_current
+
+			last_objective_attack_health = objective_attack.health.health_current

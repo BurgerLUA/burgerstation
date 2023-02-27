@@ -20,8 +20,8 @@
 /obj/effect/gabber_slam/proc/charge()
 	play_sound('sound/weapons/magic/repulse_fast_charge.ogg',get_turf(src))
 	animate(src,alpha=100,time=2)
-	animate(owner,pixel_z=20,time=6,easing=BACK_EASING|EASE_OUT)
-	CALLBACK("\ref[src]_slam",6,src,.proc/slam)
+	animate(owner,pixel_z=20,time=8,easing=BACK_EASING|EASE_OUT)
+	CALLBACK("\ref[src]_slam",8,src,.proc/slam)
 
 /obj/effect/gabber_slam/proc/slam()
 	play_sound('sound/weapons/magic/repulse_fast.ogg',get_turf(src))

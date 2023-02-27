@@ -94,7 +94,20 @@
 	if(client) src.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt)
 	return TRUE
 
-/mob/living/advanced/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
+/mob/living/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
 	if(client)
 		src.add_skill_xp(SKILL_PARRY,1)
+	return TRUE
+
+/mob/living/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
+
+	if(horizontal)
+		return FALSE
+
+	if(parry_time < world.time)
+		return FALSE
+
+	if(!is_facing(src,attacker))
+		return FALSE
+
 	return TRUE

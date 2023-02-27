@@ -142,16 +142,3 @@
 			best_value = O.block_defense[attack_type]
 
 	return list(best_item,best_value)
-
-/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
-
-	if(horizontal)
-		return FALSE
-
-	if(!is_facing(src,attacker))
-		return FALSE
-
-	if(parry_time < world.time)
-		return FALSE
-
-	return TRUE

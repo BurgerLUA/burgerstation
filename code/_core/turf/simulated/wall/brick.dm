@@ -88,3 +88,14 @@
 	desc_extended = "A wall made of bricks."
 
 
+/turf/simulated/wall/brick/temple
+	name = "temple brick wall"
+	color = "#FFDB9E"
+
+	icon = 'icons/turf/wall/preview.dmi'
+	icon_state = "temple"
+
+	real_icon = 'icons/turf/wall/brick_temple.dmi'
+	real_icon_state = "wall"
+
+	health = null

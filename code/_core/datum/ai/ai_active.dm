@@ -61,7 +61,7 @@
 		UNPROCESS_LIVING(owner)
 		if(!deleting) add_to_inactive_list(T.z)
 		remove_from_active_list(T.z)
-		set_alert_level(ALERT_LEVEL_NONE,TRUE)
+		set_alert_level(ALERT_LEVEL_NONE,can_lower=TRUE)
 		set_objective(null)
 		set_move_objective(null)
 		set_hunt_target(null)

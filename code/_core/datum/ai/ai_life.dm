@@ -78,7 +78,7 @@
 				time_mod = 0.25
 		alert_time -= tick_rate*time_mod
 		if(alert_time <= 0)
-			set_alert_level(max(0,alert_level-1),TRUE)
+			set_alert_level(max(0,alert_level-1),can_lower=TRUE)
 
 	if(owner.anchored)
 		return TRUE

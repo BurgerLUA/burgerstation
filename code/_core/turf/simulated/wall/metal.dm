@@ -146,17 +146,13 @@
 
 	plane = PLANE_SHUTTLE
 
-	color = "#AAAAAA"
-	map_color = "#AAAAAA"
-
+	color = "#FFFFFF"
 
 /turf/simulated/wall/metal/shuttle/off_white
 	color = "#A2A6AA"
-	map_color = "#A2A6AA"
 
 /turf/simulated/wall/metal/shuttle/dark
 	color = COLOR_GREY_DARK
-	map_color = COLOR_GREY_DARK
 
 /turf/simulated/wall/metal/circuit
 	name = "techno steel wall"
@@ -194,3 +190,7 @@
 	reinforced_material_id = /material/plasteel
 	reinforced_color = "#FFFFFF"
 	health_base = 3000
+
+/turf/simulated/wall/metal/magic
+	color = "#8034B2"
+	icon = 'icons/turf/wall/metal/magic.dmi'

@@ -52,7 +52,33 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.add_status_effect(STUN,30,30)
+		L.add_status_effect(STUN,10,10)
+
+
+/damagetype/unarmed/holy/kick
+	damage_mod = 2
+
+	attack_delay = 5*2
+	attack_delay_max = 10*2
+
+/damagetype/unarmed/holy/kick/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+
+	. = ..()
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		L.add_status_effect(STUN,20,20)
+
+	if(is_living(victim))
+		var/mob/living/L = victim
+		var/list/offsets = get_directional_offsets(attacker,L)
+		if(!(offsets[1] || offsets[2]))
+			offsets[1] = rand(-1,1)
+			offsets[2] = offsets[1] ? rand(-1,1) : pick(-1,1)
+		L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12,lifetime=5)
+
+
+
 
 
 

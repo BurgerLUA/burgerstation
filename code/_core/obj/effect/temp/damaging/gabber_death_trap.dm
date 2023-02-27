@@ -49,5 +49,5 @@
 		icon_state = "triggered"
 		animate(src,alpha=100,time=10)
 		var/turf/T = get_turf(src)
-		explode(T,4,owner,src,loyalty_tag)
+		explode(T,2,owner,src,loyalty_tag)
 		emp(T,2,owner,src,loyalty_tag)

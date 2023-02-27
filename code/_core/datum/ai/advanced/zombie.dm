@@ -18,6 +18,9 @@
 	suicide_bomber = TRUE
 
 	aggression = 3
+	assistance = 0
+
+	cowardice = -1
 
 /ai/blob_spore
 	target_distribution_x = list(16)

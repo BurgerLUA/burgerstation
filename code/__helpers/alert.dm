@@ -25,6 +25,17 @@
 	if(epicenter.z == 0)
 		CRASH("create_alert() had a non-turf as an epicenter!")
 
+	if(is_living(alert_source))
+		var/mob/living/L = alert_source
+		if(L.master)
+			if(L.master.next_alert > world.time)
+				return FALSE
+			L.master.next_alert = world.time + SECONDS_TO_DECISECONDS(2)
+		else
+			if(L.next_alert > world.time)
+				return FALSE
+			L.next_alert = world.time + SECONDS_TO_DECISECONDS(2)
+
 	var/z = "[epicenter.z]"
 
 	create_alert_process(SSbossai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)

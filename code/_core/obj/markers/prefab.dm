@@ -87,8 +87,7 @@
 
 /obj/marker/prefab/boss
 	category = "boss"
-	icon = 'icons/obj/markers/prefab_boss.dmi'
-	chance_none = 10
+	icon = 'icons/obj/markers/prefab_32x32.dmi'
 	rotational_offset = 32
 
 /obj/marker/prefab/boss/lavaland
@@ -96,6 +95,9 @@
 
 /obj/marker/prefab/boss/jungle
 	category = "boss_jungle"
+
+/obj/marker/prefab/boss/desert
+	category = "boss_desert"
 
 /obj/marker/prefab/forest
 	icon = 'icons/obj/markers/prefab_32x32.dmi'

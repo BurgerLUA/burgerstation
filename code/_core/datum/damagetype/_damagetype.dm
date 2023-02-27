@@ -224,6 +224,7 @@ var/global/list/all_damage_numbers = list()
 	if(debug) log_debug("Multiplying final damage by [final_damage_multiplier] from bonuses.")
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= final_damage_multiplier
+		new_attack_damage[k] = CEILING(new_attack_damage[k],1)
 
 	return new_attack_damage
 
@@ -445,8 +446,8 @@ var/global/list/all_damage_numbers = list()
 		damage_multiplier *= L.get_damage_received_multiplier(attacker,victim,weapon,hit_object,blamed,src)
 		if(attacker != victim)
 			//Parrying
-			if(is_advanced(victim) && src.can_be_parried)
-				var/mob/living/advanced/A = victim
+			if(src.can_be_parried)
+				var/mob/living/A = victim
 				if(A.parry(attacker,weapon,hit_object,src))
 					A.to_chat(span("warning","You parried [attacker.name]'s attack!"),CHAT_TYPE_COMBAT)
 					play_sound('sound/effects/parry.ogg',victim_turf,range_max=VIEW_RANGE)

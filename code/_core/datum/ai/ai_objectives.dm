@@ -99,7 +99,7 @@
 	if(!owner.dead && old_attack && !old_attack.qdeleting && is_living(old_attack))
 		var/mob/living/L2 = old_attack
 		if(L2.dead)
-			set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
+			try_investigate(L2)
 			return TRUE
 
 	return TRUE
@@ -153,17 +153,17 @@
 		var/atom/A = k
 		var/detection_value = possible_targets[k]
 		var/score_value = get_attack_score(A)
-		if( (best_detection_value < night_vision && detection_value > best_detection_value) || (score_value > best_score && detection_value > night_vision))
+		if((best_detection_value < night_vision && detection_value > best_detection_value) || (score_value > best_score && detection_value > night_vision))
 			best_target = A
 			best_score = score_value
 			best_detection_value = detection_value
 
 	if(best_target)
 		if(best_target == objective_attack)
-			set_objective(best_target)
+			set_alert_level(ALERT_LEVEL_COMBAT,best_target,best_target)
 			return TRUE
 		if(best_detection_value < night_vision*2)
-			investigate(best_target)
+			try_investigate(best_target)
 			return TRUE
 		else
 			if(reaction_time > 0)
@@ -218,6 +218,7 @@
 				continue
 			var/mob/living/L = LS.top_atom
 			if(should_attack_mob(L))
+				try_investigate(L,force_if_on_cooldown=TRUE)
 				set_alert_level(ALERT_LEVEL_CAUTION,L,L)
 				break
 
@@ -255,6 +256,34 @@
 		if(detection_level <= 0)
 			continue
 		.[L] = detection_level
+
+/ai/proc/try_investigate(var/atom/desired_target,var/cooldown=reaction_time,var/force_if_on_cooldown=FALSE)
+
+	if(!desired_target)
+		return FALSE
+
+	if(!owner)
+		return FALSE
+
+	if(desired_target == objective_attack)
+		return FALSE
+
+	if(!cooldown)
+		. = investigate(desired_target)
+	else
+		if(CALLBACK_EXISTS("investigate_\ref[src]"))
+			if(force_if_on_cooldown)
+				. = investigate(desired_target)
+			else
+				return FALSE
+		CALLBACK("investigate_\ref[src]",reaction_time,src,.proc/investigate,desired_target)
+		. = TRUE
+
+	if(.)
+		if(alert_level < ALERT_LEVEL_CAUTION)
+			set_alert_level(alert_level+1,desired_target,desired_target)
+
+
 
 /ai/proc/investigate(var/atom/desired_target)
 
