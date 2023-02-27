@@ -17,10 +17,13 @@
 
 	blend_mode = BLEND_ADD
 
+	var/animate_caster = TRUE
+
 /obj/effect/gabber_slam/proc/charge()
 	play_sound('sound/weapons/magic/repulse_fast_charge.ogg',get_turf(src))
 	animate(src,alpha=100,time=2)
-	animate(owner,pixel_z=20,time=8,easing=BACK_EASING|EASE_OUT)
+	if(animate_caster)
+		animate(owner,pixel_z=20,time=8,easing=BACK_EASING|EASE_OUT)
 	CALLBACK("\ref[src]_slam",8,src,.proc/slam)
 
 /obj/effect/gabber_slam/proc/slam()
@@ -29,7 +32,8 @@
 	M.Scale(0)
 	transform = M
 	animate(src,alpha=255,transform=get_base_transform(),time=2)
-	animate(owner,pixel_z=initial(owner.pixel_z)-5,time=1,easing=BACK_EASING|EASE_OUT)
+	if(animate_caster)
+		animate(owner,pixel_z=initial(owner.pixel_z)-5,time=1,easing=BACK_EASING|EASE_OUT)
 	flick("slam_anim",src)
 	for(var/k in DIRECTIONS_ALL + 0x0)
 		var/turf/T = get_step(src,k)
@@ -45,7 +49,8 @@
 
 /obj/effect/gabber_slam/proc/end()
 	animate(src,alpha=0,time=5)
-	animate(owner,pixel_z=initial(owner.pixel_z),time=5,easing=BACK_EASING|EASE_OUT)
+	if(animate_caster)
+		animate(owner,pixel_z=initial(owner.pixel_z),time=5,easing=BACK_EASING|EASE_OUT)
 	CALLBACK("\ref[src]_delete",5,src,/datum/proc/delete)
 
 

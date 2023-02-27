@@ -809,7 +809,7 @@ var/global/list/all_damage_numbers = list()
 
 	do_swing_sound(attacker,victim,weapon)
 
-	if(draw_weapon)
+	if(draw_weapon && is_item(weapon))
 		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 0.5,victim,attacker,weapon)
 
 /damagetype/proc/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)

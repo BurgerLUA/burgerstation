@@ -6,6 +6,9 @@
 	var/next_destroy_area = 0
 
 	var/shoot_count = 0
+	var/super_slams_left = 2
+
+	var/super_traps_left = 2
 
 	var/mob/living/simple/gabber/owner_as_gabber
 
@@ -47,7 +50,7 @@
 		return TRUE
 	*/
 
-	if(next_trap > world.time + SECONDS_TO_DECISECONDS(5) && next_slam > world.time + SECONDS_TO_DECISECONDS(5))
+	if(!owner_as_gabber.sword_mode && next_trap > world.time + SECONDS_TO_DECISECONDS(5) && next_slam > world.time + SECONDS_TO_DECISECONDS(5))
 		if(get_dist(owner,objective_attack) <= 4)
 			owner.move_dir = get_dir(owner,objective_attack)
 			last_movement_proc = "projectiles distance"
@@ -80,16 +83,18 @@
 				return TRUE
 
 			if(owner_as_gabber.sword_mode)
-				var/do_super_slam = prob(25)
+				var/do_super_slam = super_slams_left <= 0
 				if(do_super_slam)
 					owner_as_gabber.super_slam_jam(T)
 					next_slam = world.time + SECONDS_TO_DECISECONDS(15)
+					super_slams_left = initial(super_slams_left)
 				else
 					owner_as_gabber.slam(T)
-					next_slam = world.time + SECONDS_TO_DECISECONDS(1)
+					next_slam = world.time + 18
+					super_slams_left--
 			else
 				owner_as_gabber.slam(T)
-				next_slam = world.time + (prob(25) ? SECONDS_TO_DECISECONDS(30) : SECONDS_TO_DECISECONDS(4))
+				next_slam = world.time + (prob(25) ? SECONDS_TO_DECISECONDS(20) : SECONDS_TO_DECISECONDS(5))
 
 			return TRUE
 
@@ -121,18 +126,27 @@
 
 		if(owner_as_gabber.sword_mode)
 			owner_as_gabber.trap_lines()
+			if(super_traps_left > 0)
+				next_trap = world.time + SECONDS_TO_DECISECONDS(5)
+			else
+				next_trap = world.time + SECONDS_TO_DECISECONDS(30)
+				super_traps_left = initial(super_traps_left)
 		else
 			owner_as_gabber.trap_spam(objective_attack)
+			next_trap = world.time + SECONDS_TO_DECISECONDS(60)
 
-		next_trap = world.time + rand(SECONDS_TO_DECISECONDS(30),SECONDS_TO_DECISECONDS(90))
 		return TRUE
 
 	//Ranged attack. Non-sword mode only.
 	if(!owner_as_gabber.sword_mode && objective_attack && next_shoot > 0 && next_shoot <= world.time && get_dist(owner,objective_attack) >= 3)
-		next_shoot = world.time + SECONDS_TO_DECISECONDS(0.5)
 		shoot_count++
-		var/projectiles_to_fire = shoot_count % 5 ? 1 : 5
+		var/projectiles_to_fire = 1 + shoot_count % 3
 		owner_as_gabber.shoot_bouncy_projectiles(objective_attack,projectiles_to_fire)
+		if(projectiles_to_fire >= 3)
+			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.5)*projectiles_to_fire
+		else
+			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.5)
+
 		return TRUE
 
 	. = ..()

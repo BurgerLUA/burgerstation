@@ -50,6 +50,14 @@ var/global/list/valid_gabber_sound_files = list()
 
 	var/superslam_latch = 0
 
+/mob/living/simple/gabber/get_movement_delay(var/include_stance=TRUE)
+
+	. = ..()
+
+	if(sword_mode)
+		. *= 0.5
+		. = CEILING(.,AI_TICK_FAST)
+
 /mob/living/simple/gabber/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
 	. = ..()
@@ -59,11 +67,19 @@ var/global/list/valid_gabber_sound_files = list()
 
 /mob/living/simple/gabber/death(var/silent=FALSE)
 
-	if(!sword_mode)
+	if(!sword_mode) //Prevents exploits.
 		start_sword_mode()
 		return FALSE
 
 	. = ..()
+
+/mob/living/simple/gabber/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+
+	. = ..()
+
+	if(health && health.health_current <= health.health_max*0.5 && !sword_mode && !has_status_effect(IMMORTAL)) //Start second phase at 50% health.
+		start_sword_mode()
+
 
 /mob/living/simple/gabber/update_icon()
 	. = ..()
@@ -80,7 +96,7 @@ var/global/list/valid_gabber_sound_files = list()
 			if(!has_suffix(file,".ogg"))
 				continue
 			var/word = replacetext(file,".ogg","")
-			word = replacetext(word," ","_")
+			word = replacetext(word,"_"," ")
 			valid_gabber_sound_files[word] = "sound/voice/silicon/gabber/[file]"
 
 	. = ..()
@@ -193,9 +209,13 @@ var/global/list/gabber_voice_slam = list(
 		T = get_step(T,d)
 		if(!T)
 			continue
+		T = get_step(T,d)
+		if(!T)
+			continue
 		var/obj/effect/gabber_slam/S2 = new(T)
 		S2.owner = src
-		CALLBACK("\ref[S2]_directional_slam",5,S2,/obj/effect/gabber_slam/proc/charge)
+		S2.animate_caster = FALSE
+		CALLBACK("\ref[S2]_directional_slam",10,S2,/obj/effect/gabber_slam/proc/charge)
 
 	return TRUE
 
@@ -227,7 +247,7 @@ var/global/list/gabber_voice_slam = list(
 	if(has_status_effect(PARALYZE))
 		return FALSE
 
-	do_voice("there is \[no escape\]")
+	do_voice(pick("there is \[no escape\]","there will be \[no mercy\]"))
 
 	var/turf/T = get_turf(src)
 
@@ -248,11 +268,6 @@ var/global/list/gabber_voice_slam = list(
 		var/math_x = (i - 8)*x_mul
 		var/math_y = (i - 8)*y_mul
 		CALLBACK("\ref[src]_shoot_trap_[i]",i*2,src,.proc/shoot_trap,T,math_x,math_y)
-
-	for(var/i=1,i<=16,i++)
-		var/math_x = (i - 8)*x_mul*-1
-		var/math_y = (i - 8)*y_mul*-1
-		CALLBACK("\ref[src]_shoot_trap_[-i]",i*2,src,.proc/shoot_trap,T,math_x,math_y)
 
 /mob/living/simple/gabber/proc/shoot_trap(var/atom/target,var/math_x,var/math_y)
 
