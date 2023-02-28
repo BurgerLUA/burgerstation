@@ -50,8 +50,8 @@
 /mob/living/proc/get_activity_text()
 
 	if(dead)
-		if(ai || is_player_controlled())
-			return div("danger","They are dead...")
+		if(is_player_controlled())
+			return div("danger","They are dead, but there may still be some hope.")
 		else
 			return div("warning","They are dead and lifeless, and their soul has departed...")
 	else if(!ai)

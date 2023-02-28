@@ -4,7 +4,7 @@
 	nutrition = clamp(nutrition + nutrition_amount,0,nutrition_max_hard)
 	return nutrition_amount
 
-/mob/living/proc/add_hydration(var/hydration_amount,var/update=TRUE)
+/mob/living/proc/add_hydration(var/hydration_amount)
 	hydration = clamp(hydration + hydration_amount,0,hydration_max)
 	return hydration_amount
 

@@ -1,6 +1,3 @@
-//
-
-//Unused: /obj/item/weapon/ranged/magic/staff/lavaland = 1,
 
 /loot/lavaland/chest //Necro chests after defeating tendril spawnwers.
 	loot_table = list(
@@ -12,9 +9,12 @@
 		/obj/item/weapon/ranged/magic/staff/blackflame = 1,
 		/obj/item/storage/blood_box/holy_grenades = 1,
 		/obj/item/weapon/ranged/magic/spellblade/runesword = 1,
-		/obj/item/weapon/ranged/bow/hardlight = 1
-	)
+		/obj/item/weapon/ranged/bow/hardlight = 1,
+		/obj/item/container/syringe/medipen/adminomnizine = 1,
+		/obj/item/dice/d20/cursed = 1,
+		/obj/item/weapon/ranged/magic/staff/lavaland = 1
 
+	)
 
 /loot/lavaland/ash_drake
 	loot_table = list(
@@ -24,7 +24,8 @@
 
 /loot/lavaland/bubblegum
 	loot_table = list(
-
+		/obj/item/clothing/overwear/hardsuit/ling = 9,
+		/obj/item/clothing/mask/endless_bubblegum = 1
 	)
 
 /loot/lavaland/colossus
@@ -36,37 +37,37 @@
 
 /loot/lavaland/can_man
 	loot_table = list(
-
-	)
-
-/loot/lavaland/broodmother
-	loot_table = list(
-
+		/obj/item/storage/blood_box/minigun = 9,
+		/obj/item/storage/blood_box/sniper_20 = 1
 	)
 
 /loot/lavaland/goblin_king
 	loot_table = list(
+		/obj/item/storage/bagofhoarding = 9,
 		/obj/item/clothing/head/hat/goblin_crown = 1
 	)
 
 /loot/lavaland/leaper
 	loot_table = list(
-
+		/obj/item/corrupting_frog = 9,
+		/obj/item/clothing/neck/blood_talisman = 1
 	)
 
 
 /loot/lavaland/herald
 	loot_table = list(
-		/obj/item/herald_mirror = 1,
+		/obj/item/herald_mirror = 9,
+		/obj/item/clothing/ring/copper/unarmed_booster = 1
 	)
 
 /loot/lavaland/hierophant
 	loot_table = list(
-		/obj/item/weapon/melee/hierophant_staff = 1,
+		/obj/item/weapon/melee/hierophant_staff = 9,
+		/obj/item/hope = 1
 	)
 
 /loot/lavaland/gabber
 	loot_table = list(
 		/obj/item/clothing/back/wings/angel = 9,
-		/obj/item/clothing/back/wings/angel/demon = 1,
+		/obj/item/weapon/melee/staff_of_healing = 1
 	)

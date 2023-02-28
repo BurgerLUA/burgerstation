@@ -16,21 +16,15 @@
 	)
 	loot_count = 4
 
-/loot/syndie/vault //what spawns in syndie vaults. Should be good kush. Mayhaps a low chance at boss loot.
+/loot/syndie/vault
 	loot_table = list(
-		/loot/syndie/vault/sniper_20 = 5,
-		/loot/scroll = 20,
 		/obj/item/clothing/back/storage/backpack/bluespace = 1,
 		/obj/item/clothing/back/storage/satchel/bluespace = 1,
-		/obj/item/clothing/belt/holding = 1,
-		/loot/misc/ingots = 10,
-		/loot/misc/sheets = 10,
-		/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel = 10,
-		/obj/item/bullet_cartridge/rocket_70mm/nuclear = 20,
-		/obj/item/bullet_cartridge/grenade_40mm/du = 20,
-		/obj/item/coin/cursed = 20,
-		/obj/item/magazine/minigun_46/du = 15,
-		/obj/item/currency/telecrystals{amount=10} = 10,
+		/obj/item/powercell/bluespace = 1,
+		/loot/currency/telecrystals = 9,
+		/obj/item/storage/kit/syndicate/filled = 1,
+
+
 
 	)
 	loot_count = 6

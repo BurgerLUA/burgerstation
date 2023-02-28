@@ -138,6 +138,7 @@
 	value_max = 1
 	burgerbux_reward = 5
 
+/*
 /obj/item/contract/broodmother
 	name = "Kill the Broodmother"
 	desc = "Kill the Broodmother."
@@ -145,3 +146,4 @@
 	objective_text = "XBroodmothers killed"
 	value_max = 1
 	burgerbux_reward = 5
+*/

@@ -49,3 +49,7 @@
 	)
 	loot_count = 1
 	desired_value = 100 //on average, per
+
+/loot/currency/telecrystals
+	desired_value = 2500
+	loot_table_guaranteed = list(/obj/item/currency/telecrystals)

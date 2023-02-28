@@ -65,12 +65,12 @@
 /obj/item/clothing/mask/voice_of_god/get_examine_details_list(var/mob/caller)
 	. = ..()
 	. += div("notice bold underline","Available commands:")
-	. += div("notice","Stop, Halt, Hold: Paralyzes all enemies in range for 6 seconds.")
-	. += div("notice","Drop, Down, Fall: Stuns all enemies in range for 4 seconds.")
-	. += div("notice","Mend, Heal, Cure: Grants 50 health to all allies in range over 10 seconds.")
-	. += div("notice","Kill, Slay, Wilt: Deals 50 dark damage to all enemies in range.")
-	. += div("notice","Gore, Leak, Loss: Drains 50 units of blood from all enemies in range.")
-	. += div("notice","Burn, Fire, Heat: Drains 50 units of blood from all enemies in range.")
+	. += div("notice","<b>Stop, Halt, Hold</b>: Paralyzes all enemies in range for 6 seconds.")
+	. += div("notice","<b>Drop, Down, Fall</b>: Stuns all enemies in range for 4 seconds.")
+	. += div("notice","<b>Mend, Heal, Cure</b>: Grants 50 health to all allies in range over 10 seconds.")
+	. += div("notice","<b>Kill, Slay, Wilt</b>: Deals 50 dark damage to all enemies in range.")
+	. += div("notice","<b>Gore, Leak, Loss</b>: Drains 50 units of blood from all enemies in range.")
+	. += div("notice","<b>Burn, Fire, Heat</b>: Ignites all enemies in range for 6 seconds.")
 	. += div("notice","All commands share a cooldown of 5 seconds, and require 50 mana and stamina to cast.")
 
 /obj/item/clothing/mask/voice_of_god/on_equip(var/atom/old_location,var/silent=FALSE)
@@ -162,5 +162,5 @@
 	return TRUE
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_burn(var/mob/living/advanced/caller,var/mob/living/victim)
-	victim.ignite(30,source=caller)
+	victim.ignite(60,source=caller)
 	return TRUE

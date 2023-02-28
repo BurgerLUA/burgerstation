@@ -35,4 +35,10 @@
 	new /obj/item/grenade/fuse/holy(src)
 	new /obj/item/grenade/fuse/holy(src)
 	. = ..()
-
+/obj/item/storage/blood_box/minigun/fill_inventory()
+	new /obj/item/weapon/ranged/bullet/magazine/rifle/minigun(src)
+	new /obj/item/magazine/minigun_46/du(src)
+	new /obj/item/magazine/minigun_46/du(src)
+	new /obj/item/magazine/minigun_46/du(src)
+	new /obj/item/magazine/minigun_46/du(src)
+	new /obj/item/magazine/minigun_46/du(src)

@@ -33,3 +33,18 @@
 	desc = "Spare change?"
 	desc_extended = "A ring of one of the four horsemen."
 	armor = /armor/ring/famine
+
+/obj/item/clothing/ring/copper/unarmed_booster
+	name = "ring of the unarmed"
+	desc = "For one with nothing."
+	desc_extended = "A special ring that significantly boosts your unarmed skill."
+
+	mob_values_add = list(
+		SKILL_UNARMED = 25
+	)
+
+	rarity = RARITY_LEGENDARY
+
+/obj/item/clothing/ring/copper/unarmed_booster/get_base_value()
+	. = ..()
+	. += 6000

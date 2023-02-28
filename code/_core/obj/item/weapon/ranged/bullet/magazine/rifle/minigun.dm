@@ -6,9 +6,11 @@
 	icon_state = "inventory"
 	value = 10000
 
+	rarity = RARITY_MYTHICAL
+
 	tier_type = "heavy weapon"
 
-	company_type = "NanoTrasen"
+	company_type = "Syndicate"
 
 	tier = 4
 
@@ -53,8 +55,6 @@
 	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.3
-
-	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_heat_spread()
 	return (1 - heat_current/heat_max) * heat_max

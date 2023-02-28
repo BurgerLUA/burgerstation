@@ -21,6 +21,11 @@
 		DARK = 100
 	)
 
+/armor/dark/talisman
+	defense_rating = list(
+		DARK = 100
+	)
+
 /armor/dark/arcane
 	defense_rating = list(
 		COLD = 20,
