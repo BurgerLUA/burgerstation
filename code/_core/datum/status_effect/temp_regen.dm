@@ -12,7 +12,7 @@
 
 /status_effect/temp_regen/on_effect_life(mob/living/owner, magnitude, duration)
 
-	owner.brute_regen_buffer += magnitude*0.1
-	owner.burn_regen_buffer += magnitude*0.1
+	owner.brute_regen_buffer += magnitude*DECISECONDS_TO_SECONDS(LIFE_TICK_FAST)
+	owner.burn_regen_buffer += magnitude*DECISECONDS_TO_SECONDS(LIFE_TICK_FAST)
 
 	. = ..()

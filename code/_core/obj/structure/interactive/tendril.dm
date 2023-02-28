@@ -5,15 +5,6 @@ var/global/list/possible_monsters_to_spawn = list(
 	/mob/living/simple/watcher
 )
 
-var/global/list/possible_bosses_to_spawn = list(
-	/mob/living/simple/ash_drake,
-	/mob/living/simple/bubblegum,
-	/mob/living/simple/colossus,
-	/mob/living/simple/goliath/broodmother
-)
-
-
-
 /obj/structure/interactive/tendril
 	name = "tendril"
 	desc = "The source of all life in lavaland."
@@ -52,9 +43,6 @@ var/global/list/possible_bosses_to_spawn = list(
 	if(!monster_to_spawn)
 		monster_to_spawn = pick(possible_monsters_to_spawn)
 
-	if(!boss_to_spawn)
-		boss_to_spawn = pick(possible_bosses_to_spawn)
-
 /obj/structure/interactive/tendril/Finalize()
 	. = ..()
 	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2),src,.proc/spawn_monster)
@@ -68,23 +56,10 @@ var/global/list/possible_bosses_to_spawn = list(
 			if(S.health)
 				S.change_turf(/turf/simulated/liquid/lava/)
 
-	if(boss_to_spawn)
-		var/turf/T = get_turf(src)
-		var/mob/living/L = new boss_to_spawn(T)
-		INITIALIZE(L)
-		GENERATE(L)
-		FINALIZE(L)
-		if(L.ai) L.ai.set_active(TRUE)
-		var/obj/effect/temp/E = new(T,SECONDS_TO_DECISECONDS(1))
-		E.plane = PLANE_JUNK
-		E.layer = LAYER_FLOOR_EFFECTS
-		E.icon = 'icons/obj/effects/ash_drake_landing.dmi'
-		E.icon_state = "landing"
-		E.pixel_x = -TILE_SIZE
-		E.pixel_y = -TILE_SIZE
-		L.color = "#000000"
-		animate(L,color=initial(L.color),SECONDS_TO_DECISECONDS(1))
-		boss_to_spawn = null
+	var/obj/structure/interactive/crate/necro/C = new(get_turf(src))
+	INITIALIZE(C)
+	GENERATE(C)
+	FINALIZE(C)
 
 	qdel(src)
 

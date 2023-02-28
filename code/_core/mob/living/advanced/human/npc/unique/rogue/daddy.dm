@@ -1,0 +1,14 @@
+/mob/living/advanced/npc/unique/rogue/daddy
+	name = "THE LEGEND"
+	desc = "They say that the legend never dies. That's usually because they have a ton of defense."
+	ai = /ai/advanced/daddy
+
+	sex = MALE
+	gender = MALE
+
+	level = 99
+
+	soul_size = SOUL_SIZE_RARE
+
+	loadout = /loadout/daddy
+	dna = /dna/human

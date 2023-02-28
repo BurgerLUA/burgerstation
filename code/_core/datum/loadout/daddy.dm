@@ -10,5 +10,10 @@
 		/obj/item/clothing/feet/shoes/workboot,
 		/obj/item/clothing/feet/shoes/workboot/left,
 		/obj/item/weapon/melee/sword/zweihander,
-		/obj/item/weapon/melee/shield/glass
+		/obj/item/weapon/melee/shield/glass,
+
+		/obj/item/clothing/ring/gold/major_defense,
+		/obj/item/clothing/ring/gold/major_defense,
+		/obj/item/clothing/ring/gold/major_defense,
+		/obj/item/clothing/ring/gold/major_defense
 	)

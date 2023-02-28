@@ -89,8 +89,17 @@
 
 //Cyborg
 /obj/item/organ/torso/cyborg
-	name = "advanced cyborg torso"
+	name = "cyborg torso"
 	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
+	desc = "An organ."
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
+//Cyborg 2
+/obj/item/organ/torso/gopro
+	name = "advanced cyborg torso"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
 	desc = "An organ."
 
 	armor = /armor/cyborg

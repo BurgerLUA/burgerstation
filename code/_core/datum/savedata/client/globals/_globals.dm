@@ -8,7 +8,8 @@ var/global/list/ckey_to_globaldata = list()
 		"stored_experience" = list(),
 		"stored_currency" = 0,
 		"new_player" = TRUE,
-		"unlocked_abilities" = list("/ability/dash")
+		"unlocked_abilities" = list("/ability/dash"),
+		"stats" = list()
 	)
 
 /savedata/client/globals/get_file(var/file_id)

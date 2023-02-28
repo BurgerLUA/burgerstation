@@ -130,7 +130,7 @@
 	// https://www.desmos.com/calculator/cka4qx8qr0
 	level = max(1,CEILING( (total_score/max_score)*(100),1))
 
-	if(ai)
+	if(ai && health)
 		level += CEILING(health.health_max/100,1) - 1
 
 	if(!first && old_level != level)

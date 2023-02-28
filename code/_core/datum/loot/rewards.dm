@@ -8,7 +8,7 @@
 		/obj/item/portal_scroll = 1,
 		/loot/potion = 1,
 		/loot/soulgem/assorted = 1,
-		/loot/rings/bad = 1,
+		/loot/rings/minor = 1,
 	)
 	chance_none = 50
 

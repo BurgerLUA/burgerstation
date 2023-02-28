@@ -228,6 +228,36 @@
 	target_bounds_y_min = 11
 	target_bounds_y_max = 14
 
+//Cyborg 2
+/obj/item/organ/hand/gopro
+	name = "right advanced cyborg hand"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
+/obj/item/organ/hand/gopro/left
+	name = "left advanced cyborg hand"
+	id = BODY_HAND_LEFT
+	icon_state = BODY_HAND_LEFT
+	inventories = list(
+		/obj/hud/inventory/organs/left_hand_worn,
+		/obj/hud/inventory/organs/left_hand_held,
+		/obj/hud/inventory/organs/ring/ne,
+		/obj/hud/inventory/organs/ring/se
+	)
+
+	attach_flag = BODY_ARM_LEFT
+
+	hud_id = "body_hand_left"
+
+	target_bounds_x_min = 21
+	target_bounds_x_max = 24
+
+	target_bounds_y_min = 11
+	target_bounds_y_max = 14
+
+
 
 //Beefman
 /obj/item/organ/hand/beefman

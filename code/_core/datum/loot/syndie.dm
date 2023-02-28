@@ -15,6 +15,7 @@
 		/obj/item/data_laptop = 5
 	)
 	loot_count = 4
+
 /loot/syndie/vault //what spawns in syndie vaults. Should be good kush. Mayhaps a low chance at boss loot.
 	loot_table = list(
 		/loot/syndie/vault/sniper_20 = 5,

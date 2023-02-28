@@ -13,9 +13,16 @@
 
 /obj/item/coin/bronze
 	name = "solarian bronze coin"
+	value = 25
+	icon_state = "coin1"
+	color = COLOR_BRONZE
+	rarity = RARITY_COMMON
+
+/obj/item/coin/iron
+	name = "solarian iron coin"
 	value = 50
 	icon_state = "coin2"
-	color = COLOR_BRONZE
+	color = COLOR_IRON
 	rarity = RARITY_COMMON
 
 /obj/item/coin/silver

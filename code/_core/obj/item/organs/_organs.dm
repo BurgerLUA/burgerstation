@@ -436,6 +436,12 @@ obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
 	new_owner.handle_transform()
+	if(src.health)
+		src.health.update_health_stats()
+		src.health.health_current = src.health.health_max
+		src.health.stamina_current = src.health.stamina_max
+		src.health.mana_current = src.health.mana_max
+		new_owner.queue_organ_health_update[src] = TRUE
 	return TRUE
 
 obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)

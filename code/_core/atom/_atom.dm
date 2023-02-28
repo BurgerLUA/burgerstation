@@ -56,6 +56,8 @@
 
 	var/hazardous = FALSE
 
+	var/list/voice_modifiers
+
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 
 	if(density == desired_density && !force)

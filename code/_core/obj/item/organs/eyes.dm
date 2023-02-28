@@ -64,13 +64,26 @@
 //Cyborg
 /obj/item/organ/eye/cyborg
 	name = "right cyborg optical sensor"
-	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
+	icon = 'icons/mob/living/advanced/species/cyborg.dmi'
 
 	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
 /obj/item/organ/eye/cyborg/left
 	name = "left cyborg optical sensor"
+	id = BODY_EYE_LEFT
+	icon_state = BODY_EYE_LEFT
+
+//Cyborg 2
+/obj/item/organ/eye/gopro
+	name = "right advanced cyborg optical sensor"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
+/obj/item/organ/eye/gopro/left
+	name = "left advanced cyborg optical sensor"
 	id = BODY_EYE_LEFT
 	icon_state = BODY_EYE_LEFT
 

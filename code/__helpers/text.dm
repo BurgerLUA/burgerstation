@@ -39,6 +39,17 @@
 
 	return text
 
+/proc/remove_non_letters(var/text,var/keep_spaces=TRUE)
+
+	if(!text)
+		return text
+
+	var/regex/R = keep_spaces ? regex(@{"[^A-z\s]"}) : regex(@{"[^A-z]"})
+	text = R.Replace(text,"")
+
+	return text
+
+
 //Skull132 made this
 /proc/repeat_text(var/text_to_repeat, var/times_to_repeat=1)
 
