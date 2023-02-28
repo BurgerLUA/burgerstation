@@ -1,3 +1,5 @@
+//For use in the lobby camera.
+
 var/global/list/lobby_positions = list()
 
 /obj/marker/lobby

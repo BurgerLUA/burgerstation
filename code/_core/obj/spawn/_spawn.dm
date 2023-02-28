@@ -1,3 +1,5 @@
+//For respawning mobs.
+
 /obj/marker/mob_spawn/
 	name = "mob spawn"
 

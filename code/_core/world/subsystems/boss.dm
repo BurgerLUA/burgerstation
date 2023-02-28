@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(bosses)
 	var/list/tracked_bosses = list()
 	var/list/living_bosses = list()
 
+	var/list/tracked_rogue_crewmembers = list()
+
 /subsystem/bosses/proc/check_boss(var/mob/living/L)
 
 	if(L.dead || L.qdeleting)

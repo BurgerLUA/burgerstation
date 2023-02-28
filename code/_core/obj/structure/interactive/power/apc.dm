@@ -74,7 +74,7 @@
 /obj/structure/interactive/power/apc/Generate()
 	. = ..()
 	if(ispath(cell))
-		cell = new(src)
+		cell = new cell(src)
 		INITIALIZE(cell)
 		GENERATE(cell)
 		FINALIZE(cell)

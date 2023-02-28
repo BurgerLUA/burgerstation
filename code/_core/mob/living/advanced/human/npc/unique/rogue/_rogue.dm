@@ -23,3 +23,11 @@
 		GRAB = TRUE,
 		PAINCRIT = TRUE
 	)
+
+/mob/living/advanced/npc/unique/rogue/Finalize()
+	. = ..()
+	SSbosses.tracked_rogue_crewmembers += src
+
+/mob/living/advanced/npc/unique/rogue/Destroy()
+	. = ..()
+	SSbosses.tracked_rogue_crewmembers -= src
