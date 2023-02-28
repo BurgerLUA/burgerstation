@@ -36,6 +36,8 @@ var/global/list/valid_gabber_sound_files = list()
 	blood_type = /reagent/blood/robot
 	blood_volume = 3000
 
+	boss_loot = /loot/lavaland/gabber
+
 	soul_size = SOUL_SIZE_MYSTIC
 
 	object_size = 2
