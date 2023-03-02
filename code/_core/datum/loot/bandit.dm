@@ -1,9 +1,9 @@
-/loot/survivor
+/loot/bandit
 	var/chance_blood = 0
 	var/chance_quality = 0
 	var/apply_poly = FALSE
 
-/loot/survivor/pre_spawn(var/atom/movable/M)
+/loot/bandit/pre_spawn(var/atom/movable/M)
 
 	if(istype(M,/obj/item/clothing/))
 		var/obj/item/clothing/C = M
@@ -27,7 +27,7 @@
 
 	. = ..()
 
-/loot/survivor/head //hats, masks, ect.
+/loot/bandit/head //hats, masks, ect.
 	loot_table = list(
 		/obj/item/clothing/head/hat/bandana/red = 100,
 		/obj/item/clothing/head/hat/beret/red = 10,
@@ -47,7 +47,7 @@
 	chance_blood = 50
 	chance_quality = 50
 
-/loot/survivor/armor
+/loot/bandit/armor
 	loot_table = list(
 		/obj/item/clothing/overwear/armor/bulletproof = 100,
 		/obj/item/clothing/overwear/armor/medium_armor/black = 50,
@@ -60,7 +60,7 @@
 	chance_blood = 50
 	chance_quality = 50
 
-/loot/survivor/coat
+/loot/bandit/coat
 	loot_table = list(
 		/obj/item/clothing/overwear/coat/apron/blue = 10,
 		/obj/item/clothing/overwear/coat/apron/blacksmith = 20,
@@ -82,7 +82,7 @@
 	chance_blood = 50
 	chance_quality = 50
 
-/loot/survivor/pants/male
+/loot/bandit/pants/male
 	loot_table_guaranteed = list(
 		/obj/item/clothing/underbottom/underwear/boxers,
 	)
@@ -96,7 +96,7 @@
 	chance_blood = 50
 	chance_quality = 50
 
-/loot/survivor/pants/female
+/loot/bandit/pants/female
 	loot_table_guaranteed = list(
 		/obj/item/clothing/underbottom/underwear/panty,
 	)
@@ -111,7 +111,7 @@
 	chance_blood = 50
 	chance_quality = 50
 
-/loot/survivor/shirt/male
+/loot/bandit/shirt/male
 	loot_table_guaranteed = list(
 		/obj/item/clothing/undertop/underwear/shirt
 	)
@@ -126,7 +126,7 @@
 	chance_blood = 50
 	chance_quality = 50
 
-/loot/survivor/shirt/female
+/loot/bandit/shirt/female
 	loot_table_guaranteed = list(
 		/obj/item/clothing/undertop/underwear/bra
 	)
@@ -145,7 +145,7 @@
 	chance_quality = 50
 
 
-/loot/survivor/socks/male
+/loot/bandit/socks/male
 	loot_table = list(
 		/obj/item/clothing/feet/socks/ankle = 100,
 		/obj/item/clothing/feet/socks/knee = 20
@@ -156,7 +156,7 @@
 	chance_blood = 0
 	chance_quality = 50
 
-/loot/survivor/socks/female
+/loot/bandit/socks/female
 	loot_table = list(
 		/obj/item/clothing/feet/socks/ankle = 100,
 		/obj/item/clothing/feet/socks/knee = 20,
@@ -168,7 +168,7 @@
 	chance_blood = 0
 	chance_quality = 50
 
-/loot/survivor/shoes
+/loot/bandit/shoes
 	loot_table = list(
 		list(/obj/item/clothing/feet/shoes/colored/black,/obj/item/clothing/feet/shoes/colored/black/left) = 100,
 		list(/obj/item/clothing/feet/shoes/boot_colored/brown,/obj/item/clothing/feet/shoes/boot_colored/brown/left) = 50,
@@ -179,7 +179,7 @@
 	chance_blood = 100
 	chance_quality = 50
 
-/loot/survivor/back_storage
+/loot/bandit/back_storage
 	loot_table = list(
 		/obj/item/clothing/back/storage/backpack/poly = 100,
 		/obj/item/clothing/back/storage/dufflebag/poly = 50,
@@ -191,13 +191,13 @@
 	chance_blood = 0
 	chance_quality = 0
 
-/loot/survivor/back_storage/pre_spawn(var/atom/movable/M)
+/loot/bandit/back_storage/pre_spawn(var/atom/movable/M)
 	. = ..()
 	if(is_item(M))
 		var/obj/item/I = M
-		I.loot_to_generate = /loot/reward/survivor
+		I.loot_to_generate = /loot/reward/bandit
 
-/loot/survivor/belt_storage
+/loot/bandit/belt_storage
 	loot_table = list(
 		/obj/item/clothing/belt/storage/colored/black = 100,
 		/obj/item/clothing/belt/storage/colored/brown = 100,
@@ -210,7 +210,7 @@
 	chance_quality = 0
 
 
-/loot/survivor/melee
+/loot/bandit/melee
 	loot_table = list(
 		/obj/item/weapon/melee/axe/fireaxe = 75,
 		/obj/item/weapon/melee/energy/chainsaw = 25,
@@ -223,7 +223,7 @@
 	chance_quality = 0
 
 
-/loot/survivor/melee/small
+/loot/bandit/melee/small
 	loot_table = list(
 		/obj/item/weapon/unarmed/brass_knuckles = 50,
 		/obj/item/weapon/melee/sword/combat_knife = 25,

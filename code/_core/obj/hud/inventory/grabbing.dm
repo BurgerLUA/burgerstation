@@ -119,6 +119,9 @@
 
 /obj/hud/inventory/proc/reinforce_grab(var/mob/living/caller,var/force=FALSE)
 
+	if(!grabbed_object)
+		CRASH("Tried calling reinforce_grab without a grabbed object!")
+
 	if(!force && world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
 		return FALSE
 

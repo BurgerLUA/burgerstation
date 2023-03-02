@@ -1,7 +1,7 @@
 /loot/
 	var/list/loot_table = list()
 	var/list/loot_table_guaranteed = list()
-	var/loot_count = 1 //How much of this loot to spawn.
+	var/loot_count = 1 //How much of this loot to spawn. Doesn't affect loot_table_guaranteed.
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
 	var/chance_none = 0 //Applies on a per loot_count basis.
 	var/loot_multiplier = 1 //How much of the loot to duplicate.

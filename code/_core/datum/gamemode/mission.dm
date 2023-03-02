@@ -76,6 +76,7 @@
 	add_objective(/objective/hostage)
 	add_objective(/objective/hostage)
 	add_objective(/objective/kill_boss)
+	add_objective(/objective/kill_rogue)
 
 	if(player_count >= 10)
 		add_objective(/objective/hostage)

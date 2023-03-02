@@ -13,19 +13,18 @@
 	chance_none = 50
 
 //Things that survivors have when you loot them.
-/loot/reward/survivor
+/loot/reward/bandit
 	loot_table_guaranteed = list(
 		/loot/currency/dosh/survivor,
-		/loot/random/trash,
-		/loot/random/low
+		/loot/random/low,
+		/loot/random/medium
 	)
 	loot_table = list(
-		/obj/item/supply_crate/solarian = 1,
-		/obj/item/supply_crate/medicine = 1,
-		/loot/random/medium = 1
-
+		/loot/random/trash,
+		/loot/random/medium,
 	)
 	chance_none = 80
+	loot_count = 8
 
 
 //Thiongs that revs have when you loot them

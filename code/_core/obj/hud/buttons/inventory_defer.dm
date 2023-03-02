@@ -43,6 +43,11 @@
 
 	if(!referencing) CRASH("Referenced inventory not found!")
 
+	if(!is_inventory(object))
+		return FALSE
+
+	var/obj/hud/inventory/I = object //We clicked on this.
+
 	update_vis_contents()
 
 	var/obj/item/top_object = get_top_vis_object()
@@ -51,11 +56,13 @@
 		return FALSE
 
 	if(is_organ(referencing.loc))
+		if(referencing.owner && referencing.owner.ckey_owner == caller.ckey_owner)
+			I.add_object(top_object)
+			return TRUE
 		top_object.try_strip(caller)
 		return TRUE
 
-	if(is_inventory(object) && get_dist(caller,top_object) <= 1)
-		var/obj/hud/inventory/I = object
+	if(get_dist(caller,top_object) <= 1)
 		I.add_object(top_object)
 		return TRUE
 

@@ -1,7 +1,7 @@
 /obj/item/proc/try_strip(var/mob/caller)
 	if(!can_strip(caller,TRUE))
 		return FALSE
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/strip,caller)
+	PROGRESS_BAR(caller,src,5,.proc/strip,caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_strip,caller,TRUE)
 	return TRUE
 

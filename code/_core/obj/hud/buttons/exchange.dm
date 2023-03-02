@@ -108,6 +108,13 @@
 	if(stored_object)
 		set_stored_object(null)
 
+	DEFER_OBJECT
+
+	if(is_item(defer_object)) //Put the item in this inventory slot.
+		set_stored_object(defer_object)
+		HOOK_ADD("post_move","stored_object_post_move_\ref[src]",stored_object,src,.proc/stored_object_post_move)
+		return TRUE
+
 	. = ..()
 
 /obj/hud/button/exchange/base/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)

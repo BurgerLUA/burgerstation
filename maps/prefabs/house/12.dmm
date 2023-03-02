@@ -105,7 +105,7 @@
 "ca" = (/obj/marker/cover_node/right,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/entrance)
 "cb" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
 "cc" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
-"cd" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
+"cd" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
 "ce" = (/obj/marker/cover_node/left,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
 "cf" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
 "cg" = (/obj/structure/carpet/blue,/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
@@ -115,12 +115,12 @@
 "ck" = (/obj/structure/table/rack/grey,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12)
 "cl" = (/obj/marker/map_node,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "cm" = (/obj/structure/interactive/potted_plant/office,/obj/structure/interactive/wire/green,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/kitchen)
-"cn" = (/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/entrance)
-"co" = (/mob/living/advanced/npc/survivor,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
-"cp" = (/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
-"cq" = (/mob/living/advanced/npc/survivor,/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
-"cr" = (/obj/structure/carpet/red,/mob/living/advanced/npc/survivor,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
-"cs" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/survivor{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12)
+"cn" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/entrance)
+"co" = (/mob/living/advanced/npc/bandit,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
+"cp" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
+"cq" = (/mob/living/advanced/npc/bandit,/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
+"cr" = (/obj/structure/carpet/red,/mob/living/advanced/npc/bandit,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
+"cs" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12)
 
 (1,1,1) = {"
 aaacacbUacacacaaaaaaaaaaaaaaaaaa

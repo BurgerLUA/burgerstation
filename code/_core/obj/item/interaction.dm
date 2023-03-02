@@ -48,8 +48,10 @@
 		var/obj/item/I = k
 		if(I == src)
 			continue
+		/*
 		if(I.inventory_category != inventory_category)
 			continue
+		*/
 		I.close_inventory(A)
 
 	var/should_center = length(inventories) <= max_inventory_x

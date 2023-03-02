@@ -1,4 +1,4 @@
-/ai/advanced/suvivor
+/ai/advanced/bandit
 
 	reaction_time = 3
 

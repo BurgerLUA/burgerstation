@@ -583,7 +583,7 @@ var/global/list/debug_verbs = list(
 
 	for(var/k in horde_test_survivor_spawn_turfs)
 		var/turf/T = k
-		var/mob/living/advanced/npc/survivor/S = new(T)
+		var/mob/living/advanced/npc/bandit/S = new(T)
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)
