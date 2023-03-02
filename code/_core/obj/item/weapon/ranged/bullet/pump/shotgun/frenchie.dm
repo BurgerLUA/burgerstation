@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 800
 
-	company_type = "NanoTrasen"
+	company_type = "Solarian"
 
 	tier = 3
 

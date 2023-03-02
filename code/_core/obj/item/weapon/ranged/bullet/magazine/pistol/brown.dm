@@ -66,7 +66,7 @@
 
 	tier = 2
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/brown/get_static_spread()
 	return 0.002

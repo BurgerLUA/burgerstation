@@ -17,7 +17,8 @@
 	loot_table_guaranteed = list(
 		/loot/currency/dosh/survivor,
 		/loot/random/low,
-		/loot/random/medium
+		/loot/random/medium,
+		/loot/reward/standard
 	)
 	loot_table = list(
 		/loot/random/trash,

@@ -80,7 +80,7 @@
 
 	value_burgerbux = 1
 
-	rarity = RARITY_RARE
+	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/ranged/bullet/revolver/fiendish/get_static_spread()
 	return 0

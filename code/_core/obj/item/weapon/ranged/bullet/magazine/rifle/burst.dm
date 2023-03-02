@@ -90,7 +90,9 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod
 	name = "\improper 5.56mm L-HON-0"
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3_new.dmi'
-	desc_extended = "A very early prototype of NanoTrasen's L-HON; the L-HON-0 is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
+	desc_extended = "A very early prototype of NanoTrasen's L-HON when it was actually Solarian's L-HON. This prototype is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
+
+	company_type = "Solarian"
 
 	tier = 3
 

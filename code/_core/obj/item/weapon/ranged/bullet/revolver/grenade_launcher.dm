@@ -67,7 +67,7 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.04
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.1
@@ -119,3 +119,5 @@
 	shoot_delay = 20
 
 	company_type = "NanoTrasen"
+
+	rarity = RARITY_RARE

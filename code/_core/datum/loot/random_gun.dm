@@ -25,6 +25,8 @@
 	rarity_min = RARITY_COMMON
 	rarity_max = RARITY_RARE
 
+	var/debug = FALSE
+
 
 /loot/random/gun/generate_loot_table()
 
@@ -32,17 +34,17 @@
 		var/obj/item/weapon/ranged/R = k
 		if(company_type && initial(R.company_type) != src.company_type)
 			continue
-		var/value = SSbalance.stored_value[k]
-		if(value <= 0)
+		var/initial_value = SSbalance.stored_value[k]
+		if(initial_value <= 0)
 			continue
-		if(value < value_min)
+		if(initial_value < value_min)
 			continue
-		if(value > value_max)
+		if(initial_value > value_max)
 			continue
-		var/rarity = rarity_to_number[initial(R.rarity)]
-		if(rarity < rarity_to_number[rarity_min])
+		var/initial_rarity = initial(R.rarity)
+		if(rarity_to_number[initial_rarity] < rarity_to_number[rarity_min])
 			continue
-		if(rarity > rarity_to_number[rarity_max])
+		if(rarity_to_number[initial_rarity] > rarity_to_number[rarity_max])
 			continue
 		if(!initial(R.can_save))
 			continue
@@ -116,6 +118,7 @@
 	value_max = 1000
 	rarity_min = RARITY_COMMON
 	rarity_max = RARITY_COMMON
+	debug = TRUE
 
 /loot/random/gun/slavic
 	company_type = "Slavic"

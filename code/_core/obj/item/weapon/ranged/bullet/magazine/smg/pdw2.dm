@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw2
 	name = "\improper 4.6x30mm HL7"
 	desc = "Something squeaks that isn't supposed to squeak? Put some HL7 on it."
-	desc_extended = "An early prototype of the WT-550 featuring better quality parts. The design was eventually scrapped by NanoTrasen after they realised there was no space to put a grenade launcher on it."
+	desc_extended = "An early prototype of a competitor to the WT-550, featuring better quality parts. The design was eventually scrapped by the Solarian Government after they realised there was no space to put a grenade launcher on it."
 	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/4mm_pdw_2.dmi'
 	icon_state = "inventory"
 	value = 1100
 
-	company_type = "NanoTrasen"
+	company_type = "Solarian"
 
 	damage_mod = 1
 

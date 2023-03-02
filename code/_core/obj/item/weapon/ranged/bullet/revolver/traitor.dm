@@ -69,7 +69,7 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.04
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread()

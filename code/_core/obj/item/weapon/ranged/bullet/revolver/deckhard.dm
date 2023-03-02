@@ -69,7 +69,7 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.01
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread()
 	return 0

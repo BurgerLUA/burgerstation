@@ -1,3 +1,5 @@
+#define BALANCE_LOG_PATH "data/server/balance_warnings.txt"
+
 SUBSYSTEM_DEF(balance)
 	name = "Balance and Value Subsystem"
 	desc = "Makes a balance report of weapons."
@@ -135,6 +137,8 @@ SUBSYSTEM_DEF(balance)
 
 /subsystem/balance/Initialize()
 
+	fdel(BALANCE_LOG_PATH)
+
 	var/turf/T = locate(1,1,1)
 
 	var/list/stuff_to_delete = list()
@@ -148,6 +152,7 @@ SUBSYSTEM_DEF(balance)
 	var/list/weapon_subtypes = subtypesof(/obj/item/weapon)
 	var/list/weapons_as_items = process_weapons(T,weapon_subtypes)
 
+	var/final_balance_output = ""
 	var/list/reported_weapons = list()
 	for(var/k in weapons_as_items)
 		var/obj/item/I1 = k
@@ -181,7 +186,7 @@ SUBSYSTEM_DEF(balance)
 
 
 			if(length(similarities) >= similarity_limt)
-				log_error("Warning: SSBalance reports that [I1.type] feels too similiar to [I2.type]. Reason: [english_list(similarities)].")
+				final_balance_output += "[I1.type] feels too similiar to [I2.type]. Reason: [english_list(similarities)].\n"
 				reported_weapons[I1.type] = TRUE
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
@@ -205,5 +210,7 @@ SUBSYSTEM_DEF(balance)
 
 	created_bullets.Cut()
 	created_magazines.Cut()
+
+	rustg_file_write(final_balance_output,BALANCE_LOG_PATH)
 
 	. = ..()

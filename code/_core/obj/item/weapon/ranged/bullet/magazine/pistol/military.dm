@@ -8,7 +8,7 @@
 	shoot_sounds = list('sound/weapons/ranged/pistol/glock/shoot.ogg')
 	tier = 1
 
-	company_type = "NanoTrasen"
+	company_type = "Solarian"
 
 	firemodes = list("burst","semi-automatic")
 
@@ -65,7 +65,7 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread()
@@ -120,5 +120,3 @@
 	desc_extended = "An automatic machine pistol chambered in 9mm. Good for getting out of tricky situations quickly. This one has been modifed with a new lighrweight frame and paintjob."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
 	weight = 3
-
-	rarity = RARITY_COMMON

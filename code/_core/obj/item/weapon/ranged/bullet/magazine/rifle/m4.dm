@@ -10,7 +10,7 @@
 
 	tier = 2
 
-	damage_mod = 1.15
+	damage_mod = 1.1
 	shoot_delay = 1.4
 
 	automatic = TRUE
