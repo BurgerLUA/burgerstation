@@ -384,6 +384,8 @@
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
 
+	I.layer = initial(I.layer)
+
 	vis_contents += I
 
 	update_stats()
@@ -456,6 +458,8 @@
 		I.set_dir(owner.dir)
 
 	vis_contents -= I
+
+	I.layer = LAYER_BASE + I.value / 10000
 
 	update_stats()
 

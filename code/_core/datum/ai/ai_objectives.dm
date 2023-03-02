@@ -57,7 +57,6 @@
 	if(is_living(A))
 		if(!should_attack_mob(A,FALSE))
 			return FALSE
-		objective_investigate = null
 		frustration_attack = 0
 		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
@@ -75,7 +74,6 @@
 			LAI.set_objective(A)
 		return TRUE
 	else if(istype(A))
-		objective_investigate = null
 		frustration_attack = 0
 		set_active(TRUE)
 		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
@@ -178,7 +176,7 @@
 
 	//Path to last known location.
 	if(last_combat_location && !length(astar_path_current))
-		set_path_astar(last_combat_location)
+		set_path_fallback(last_combat_location)
 		last_combat_location = null
 		return TRUE
 
@@ -296,7 +294,7 @@
 	if(desired_target == objective_attack)
 		return FALSE
 
-	objective_investigate = desired_target
+	set_path_fallback(get_turf(desired_target))
 
 	return TRUE
 

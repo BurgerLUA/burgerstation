@@ -91,29 +91,21 @@
 
 		if(!master_ai) //No frustration handling if you belong to a master.
 			if(!objective_attack && hunt_target && next_node_check_time <= world.time) //Update the hunt target destination.
-				next_node_check_time = world.time + SECONDS_TO_DECISECONDS(2)
+				next_node_check_time = world.time + SECONDS_TO_DECISECONDS(4)
 				var/turf/desired_target_turf = get_step(hunt_target,turn(hunt_target.dir,180))
 				if(!last_hunt_target_turf || get_dist(last_hunt_target_turf,desired_target_turf) >= hunt_distance)
 					last_hunt_target_turf = desired_target_turf
 					if(desired_target_turf && current_turf && desired_target_turf.z == current_turf.z)
 						var/target_distance = get_dist(current_turf,desired_target_turf) //Get distance of the AI to the target.
 						if(target_distance >= hunt_distance) //We're too far away. Lets find them.
-							var/found_valid_path = FALSE
-							if(target_distance >= VIEW_RANGE) //Wow we're really far away. Lets use a different pathing system instead.
-								var/obj/marker/map_node/N_start = find_closest_node(current_turf) //Find the closest node to us.
-								var/obj/marker/map_node/N_end = N_start ? find_closest_node(desired_target_turf) : null //Find the closet node to the target.
-								var/list/obj/marker/map_node/found_path = N_end ? AStar_Circle_node(N_start,N_end) : null //Okay. Path time. Maybe.
-								if(found_path)
-									found_valid_path = set_path_node(found_path)
-							if(target_distance <= VIEW_RANGE*3 && !found_valid_path) //Couldn't find a valid path, so we use astar.
-								set_path_astar(desired_target_turf)
+							set_path_fallback(desired_target_turf)
 
-			//Astar
+			//Astar path sanity.
 			if(frustration_astar_path_threshold > 0 && length(astar_path_current) && frustration_astar_path > frustration_astar_path_threshold)
 				frustration_astar_path = 0
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to last astar_path_current due to astar path failure...")
 				set_path_fallback(astar_path_current[length(astar_path_current)])
-			//Node
+			//Node path sanity.
 			else if(frustration_node_path_threshold > 0 && length(node_path_current) && frustration_node_path > frustration_node_path_threshold)
 				frustration_node_path = 0
 				if(debug) log_debug("[src.get_debug_name()] trying to fallback path to last node_path_current due to node path failure...")

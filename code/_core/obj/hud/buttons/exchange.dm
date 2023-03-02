@@ -61,7 +61,7 @@
 						if(!G.qdeleting && G.can_transfer_stacks_to(object))
 							G.transfer_amount_to(object)
 						if(!G.qdeleting)
-							A.put_in_hands(G,params)
+							G.quick_equip(A,ignore_worn=TRUE)
 
 					SSeconomy.update_stats()
 			else

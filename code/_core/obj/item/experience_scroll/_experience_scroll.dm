@@ -23,6 +23,10 @@
 
 	var/level_to_give = 5
 
+/obj/item/experience_scroll/Finalize()
+	. = ..()
+	update_sprite()
+
 /obj/item/experience_scroll/get_base_value()
 	return level_to_give*100
 

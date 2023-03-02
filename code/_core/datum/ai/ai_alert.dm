@@ -42,7 +42,6 @@
 		try_investigate(alert_epicenter,force_if_on_cooldown=TRUE)
 
 	if(alert_level <= ALERT_LEVEL_NONE)
-		objective_investigate = null
 		CALLBACK_REMOVE("investigate_\ref[src]")
 
 	if(old_alert_level != alert_level)

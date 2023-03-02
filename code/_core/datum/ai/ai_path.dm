@@ -7,7 +7,8 @@
 		CRASH("Invalid destination provided!")
 
 	var/turf/T = get_turf(owner)
-	if(get_dist(T,destination) >= VIEW_RANGE)
+
+	if(get_dist(T,destination) <= VIEW_RANGE) //Small enough to do it.
 		return set_path_astar(destination)
 
 	var/obj/marker/map_node/N_start = find_closest_node(owner)

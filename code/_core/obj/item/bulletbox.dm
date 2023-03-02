@@ -23,6 +23,17 @@
 
 	var/list/obj/item/bullet_cartridge/bullet_whitelist
 
+/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+	. = ..()
+	if(stored_bullet) .["stored_bullet"] = stored_bullet.type
+	SAVEVAR("bullet_count")
+
+/obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+	. = ..()
+	if(object_data["stored_bullet"])
+		set_stored_bullet(object_data["stored_bullet"])
+	LOADVAR("bullet_count")
+
 /obj/item/bulletbox/Generate()
 	. = ..()
 	if(ispath(stored_bullet))
@@ -45,16 +56,6 @@
 	. = ..()
 	if(stored_bullet)
 		. += div("notice","It stores [stored_bullet.name] ([bullet_count]/[bullet_max] capacity).")
-
-/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
-	SAVEPATH("stored_bullet")
-	SAVEVAR("bullet_count")
-
-/obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
-	LOADPATH("stored_bullet")
-	LOADVAR("bullet_count")
 
 /obj/item/bulletbox/click_self(var/mob/caller)
 

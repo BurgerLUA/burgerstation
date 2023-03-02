@@ -14,7 +14,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/should_astar_objective_move = FALSE
 
 	var/mob/living/objective_attack
-	var/atom/objective_investigate
 
 	var/check_for_obstructions = TRUE //Pathing only
 
@@ -212,7 +211,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	owner = null
 	objective_move = null
 	objective_attack = null
-	objective_investigate = null
 	home_turf = null
 	node_path_start_turf = null
 	node_path_end_turf = null

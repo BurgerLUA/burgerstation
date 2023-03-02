@@ -55,17 +55,18 @@ var/global/list/stored_bookcase_phrases = list(
 
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(prob(5))
+	if(chance_of_scroll <= 0)
+		caller.to_chat(span("warning","...You don't think you'll find anything of use here."))
+		return FALSE
+
+	if(prob(3))
 		caller.to_chat(span("notice",pick(stored_bookcase_phrases)))
-		if(chance_of_scroll <= 0)
-			caller.to_chat(span("warning","...You don't think you'll find anything of use here."))
-			return FALSE
 
 	return TRUE
 
 /obj/structure/interactive/bookcase/proc/search_case(var/mob/caller)
 
-	if(prob(chance_of_scroll*5))
+	if(prob(chance_of_scroll*10))
 		var/rarity = 0
 		if(is_player(caller))
 			var/mob/living/advanced/player/P = caller
@@ -73,9 +74,10 @@ var/global/list/stored_bookcase_phrases = list(
 		var/turf/T = get_turf(src)
 		SPAWN_LOOT(/loot/skill_scroll,T,rarity)
 		caller.to_chat(span("notice","Huh. You found a scroll!"))
-		chance_of_scroll--
-		update_sprite()
 	else
 		caller.to_chat(span("warning","...You didn't find anything."))
+
+	chance_of_scroll--
+	update_sprite()
 
 	return TRUE
