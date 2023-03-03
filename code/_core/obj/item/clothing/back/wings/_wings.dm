@@ -14,3 +14,5 @@ obj/item/clothing/back/wings
 	item_slot_layer = 3
 
 	uses_until_condition_fall = 150
+
+	item_slot_layer = 1

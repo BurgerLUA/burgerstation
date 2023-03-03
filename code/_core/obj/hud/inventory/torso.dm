@@ -33,7 +33,7 @@
 	icon_state = "slot_torso_b"
 	id = BODY_TORSO_B
 	screen_loc = "CENTER-4,BOTTOM:11"
-	max_slots = 1
+	max_slots = 2
 	worn = TRUE
 
 	item_slot = SLOT_TORSO_BACK
