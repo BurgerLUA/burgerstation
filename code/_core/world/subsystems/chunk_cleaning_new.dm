@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(chunk)
 	for(var/z=1,z<=chunk_count_z,z++) for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
 		var/chunk/C = chunks[z][x][y]
 		//get adjacents
-		for(var/x2=-1,x2<=1,x2++) for(var/y2=-1,y2<=1,y2++).
+		for(var/x2=-1,x2<=1,x2++) for(var/y2=-1,y2<=1,y2++)
 			if(x2==0 && y2==0)
 				continue
 			if(x+x2 < 1 || y+y2 < 1 || x+x2 > chunk_count_x || y+y2 > chunk_count_y)
