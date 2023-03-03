@@ -154,7 +154,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 /mob/living/simple/gabber/proc/do_voice(var/text_to_say,var/force=FALSE)
 
-	if(next_special_attack > world.time) //No voice stacking.
+	if(!force && next_special_attack > world.time) //No voice stacking.
 		return TRUE
 
 	if(valid_gabber_sound_files[text_to_say])
