@@ -27,7 +27,7 @@
 			else
 				if(prob(0.25))
 					new /obj/marker/generation/mob/slime/sand(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/zombie/desert(src)
 				new /turf/simulated/floor/colored/sand/desert/lighter(src)
 		if(GENERATION_SEGMENT_LOW - 0.1 to GENERATION_SEGMENT_LOW)
@@ -37,7 +37,7 @@
 			else
 				if(prob(0.25))
 					new /obj/marker/generation/mob/slime/sand(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/zombie/desert(src)
 				new /turf/simulated/floor/colored/sand/desert/lighter(src)
 		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_LOW + 0.1)
@@ -47,7 +47,7 @@
 			else
 				if(prob(1))
 					new /obj/marker/generation/mob/slime/sand(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/zombie/desert(src)
 				new /turf/simulated/floor/colored/sand/desert/lighter(src)
 		if(GENERATION_SEGMENT_LOW + 0.1 to GENERATION_SEGMENT_MID)

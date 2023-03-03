@@ -27,4 +27,4 @@
 
 /status_effect/consencrated/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
-	owner.burn_regen_buffer -= 5 * TICKS_TO_SECONDS(LIFE_TICK)
+	owner.burn_regen_buffer -= 1 * TICKS_TO_SECONDS(LIFE_TICK)

@@ -203,7 +203,7 @@
 				rarity_count++
 				if(P.ckey_last)
 					valid_ckeys += P.ckey_last
-				INCREASE_STAT(P,"bosses_killed",1)
+				INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
 
 			if(length(valid_ckeys))
 				create_gold_drop(T,CEILING(src.health.health_max/10,1),valid_ckeys)

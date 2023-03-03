@@ -43,3 +43,6 @@
 /turf/simulated/floor/colored/sand/desert/lighter
 	corner_category = "sand_desert_lighter"
 	color = "#CCBC8A"
+
+/turf/simulated/floor/colored/sand/desert/gabber
+	destruction_turf = /turf/simulated/floor/plating/reinforced

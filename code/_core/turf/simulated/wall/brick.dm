@@ -98,4 +98,5 @@
 	real_icon = 'icons/turf/wall/brick_temple.dmi'
 	real_icon_state = "wall"
 
-	health = null
+	destruction_turf = /turf/simulated/wall/metal/circuit
+

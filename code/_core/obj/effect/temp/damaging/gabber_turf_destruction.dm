@@ -19,12 +19,10 @@
 	CALLBACK("\ref[src]_destroy_self",20,src,.proc/destroy_self)
 	if(is_simulated(loc))
 		var/turf/simulated/T = loc
-		if(T.health && T.density && (T.density_north || T.density_south || T.density_east || T.density_west))
+		if(T.health)
 			var/turf/simulated/destruction_turf = T.destruction_turf
-			if(destruction_turf && !initial(destruction_turf.density))
+			if(destruction_turf)
 				T.change_turf(destruction_turf)
-			else
-				T.change_turf(/turf/simulated/floor/cave_dirt)
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			if(!M.health)

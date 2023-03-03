@@ -61,9 +61,11 @@
 	icon_state = "floor"
 	color = "#D3B27C"
 	health = null
+	destruction_turf = /turf/simulated/floor/plating/reinforced
 
 /turf/simulated/floor/temple/jewel
 	icon_state = "floor_jewel"
+	destruction_turf = /turf/simulated/floor/circuit/blue
 
 /turf/simulated/floor/temple/jewel/Finalize()
 	. = ..()

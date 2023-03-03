@@ -18,6 +18,9 @@
 	var/last_objective_attack_health
 	var/frustration_health = 0
 
+	var/next_self_health_update = 0
+	var/last_self_health
+
 /ai/boss/gabber/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_gabber = desired_owner
 	return ..()
@@ -58,7 +61,23 @@
 
 	. = ..()
 
+/ai/boss/gabber/proc/start_block(var/duration = SECONDS_TO_DECISECONDS(3))
+	owner_as_gabber.attack_flags |= CONTROL_MOD_BLOCK
+	next_unblock = world.time + duration
+	owner_as_gabber.handle_blocking()
+
+/ai/boss/gabber/proc/stop_block()
+	owner_as_gabber.attack_flags &= ~CONTROL_MOD_BLOCK
+	owner_as_gabber.handle_blocking()
+
 /ai/boss/gabber/handle_attacking()
+
+	if(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK)
+		if(!objective_attack || next_unblock <= world.time)
+			stop_block()
+			return TRUE
+		owner_as_gabber.set_dir(get_dir(owner_as_gabber,objective_attack))
+		return TRUE
 
 	//Slam attack. This should always take first priority as it affects movement above.
 	if(objective_attack && next_slam > 0 && next_slam <= world.time + SECONDS_TO_DECISECONDS(1))
@@ -99,24 +118,13 @@
 			return TRUE
 
 	//Parrying/Blocking. Sword mode only.
-	if(owner_as_gabber.sword_mode && objective_attack && is_advanced(objective_attack))
+	if(owner_as_gabber.sword_mode && objective_attack && is_advanced(objective_attack) && !(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK))
 		var/mob/living/advanced/A = objective_attack
-		if(prob(80))
-			if( (A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]")) || (A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]")))
-				if(!(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK))
-					owner_as_gabber.attack_flags |= CONTROL_MOD_BLOCK
-					owner_as_gabber.set_dir(get_dir(owner_as_gabber,objective_attack))
-					next_unblock = world.time + SECONDS_TO_DECISECONDS(3)
-					owner_as_gabber.handle_blocking()
-			else if(next_unblock <= world.time)
-				owner_as_gabber.attack_flags &= ~CONTROL_MOD_BLOCK
-				owner_as_gabber.handle_blocking()
-			return TRUE
+		if(prob(80) && (A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]")) || (A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]")))
+			start_block()
 
 	else if(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK)
-		owner_as_gabber.attack_flags &= ~CONTROL_MOD_BLOCK
-		owner_as_gabber.handle_blocking()
-
+		stop_block()
 
 	//Trap attack.
 	if(objective_attack && next_trap > 0 && next_trap <= world.time + SECONDS_TO_DECISECONDS(1))
@@ -125,7 +133,8 @@
 			return TRUE
 
 		if(owner_as_gabber.sword_mode)
-			owner_as_gabber.trap_lines()
+			owner_as_gabber.trap_lines(super_traps_left)
+			super_traps_left--
 			if(super_traps_left > 0)
 				next_trap = world.time + SECONDS_TO_DECISECONDS(5)
 			else
@@ -143,9 +152,9 @@
 		var/projectiles_to_fire = 1 + shoot_count % 3
 		owner_as_gabber.shoot_bouncy_projectiles(objective_attack,projectiles_to_fire)
 		if(projectiles_to_fire >= 3)
-			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.5)*projectiles_to_fire
+			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.75)*projectiles_to_fire
 		else
-			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.5)
+			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.25)*projectiles_to_fire
 
 		return TRUE
 
@@ -155,26 +164,40 @@
 
 	. = ..()
 
-	if(owner_as_gabber && owner_as_gabber.has_status_effect(IMMORTAL))
-		return FALSE
+	if(owner_as_gabber)
+
+		if(owner_as_gabber.has_status_effect(IMMORTAL))
+			return FALSE
 
 /ai/boss/gabber/on_life(var/tick_rate=1)
 
 	. = ..()
 
-	if(owner_as_gabber.sword_mode && next_destroy_area <= world.time)
+	if(owner_as_gabber.sword_mode)
 
-		if(objective_attack && objective_attack.health && next_objective_attack_health_update <= world.time)
+		if(next_self_health_update <= world.time)
 
-			next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(3)
+			var/current_health = owner_as_gabber.health.health_current / owner_as_gabber.health.health_max
 
-			if(last_objective_attack_health && objective_attack.health.health_current >= last_objective_attack_health)
-				frustration_health++
-				if(frustration_health >= 4)
-					owner_as_gabber.destroy_surrounding_obstacles()
-					next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(30)
+			if(last_self_health && (last_self_health - current_health >= 0.05)) //Lost more than 5% hp in a second.
+				start_block() //Taking a lot of damage means they should block.
+
+			last_self_health = current_health
+			next_self_health_update = world.time + SECONDS_TO_DECISECONDS(1)
+
+		else if(next_destroy_area <= world.time)
+
+			if(objective_attack && objective_attack.health && next_objective_attack_health_update <= world.time)
+
+				next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(3)
+
+				if(last_objective_attack_health && objective_attack.health.health_current >= last_objective_attack_health)
+					frustration_health++
+					if(frustration_health >= 4)
+						owner_as_gabber.destroy_surrounding_obstacles()
+						next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(30)
+						frustration_health = 0
+				else
 					frustration_health = 0
-			else
-				frustration_health = 0
 
-			last_objective_attack_health = objective_attack.health.health_current
+				last_objective_attack_health = objective_attack.health.health_current

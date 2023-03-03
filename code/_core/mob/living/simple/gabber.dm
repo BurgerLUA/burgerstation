@@ -38,6 +38,8 @@ var/global/list/valid_gabber_sound_files = list()
 
 	boss_loot = /loot/lavaland/gabber
 
+	boss_music = /track/light_of_zach
+
 	soul_size = SOUL_SIZE_MYSTIC
 
 	object_size = 2
@@ -52,6 +54,9 @@ var/global/list/valid_gabber_sound_files = list()
 
 	var/superslam_latch = 0
 
+/mob/living/simple/gabber/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
+	return 1
+
 /mob/living/simple/gabber/get_movement_delay(var/include_stance=TRUE)
 
 	. = ..()
@@ -65,7 +70,7 @@ var/global/list/valid_gabber_sound_files = list()
 	. = ..()
 
 	if(sword_mode)
-		. *= 0.5
+		. *= 0.75
 
 /mob/living/simple/gabber/death(var/silent=FALSE)
 
@@ -137,6 +142,7 @@ var/global/list/valid_gabber_sound_files = list()
 	update_sprite()
 	play_sound('sound/effects/gabber_sword_draw.ogg',get_turf(src),range_min=VIEW_RANGE*0.5,range_max=VIEW_RANGE*2)
 	src.rejuvenate()
+	add_status_effect(IMMORTAL,stealthy=TRUE) //Rejuvenate removes all status effects, including this one. Needs to be re-added.
 
 /mob/living/simple/gabber/proc/end_sword_mode()
 	remove_status_effect(IMMORTAL)
@@ -149,7 +155,7 @@ var/global/list/valid_gabber_sound_files = list()
 	if(valid_gabber_sound_files[text_to_say])
 		var/turf/T = get_turf(src)
 		if(T)
-			play_sound(valid_gabber_sound_files[text_to_say],T,range_min=VIEW_RANGE*0.5,range_max=VIEW_RANGE*2)
+			play_sound(valid_gabber_sound_files[text_to_say],T,volume=75,range_min=VIEW_RANGE*0.5,range_max=VIEW_RANGE*2)
 
 	src.do_say("[uppertext(text_to_say)].")
 
@@ -244,12 +250,15 @@ var/global/list/gabber_voice_slam = list(
 		CALLBACK("\ref[src]_shoot_trap_[i]",i*2,src,.proc/shoot_trap,target,math_x,math_y)
 
 
-/mob/living/simple/gabber/proc/trap_lines()
+/mob/living/simple/gabber/proc/trap_lines(var/trap_switch = 0)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
 
-	do_voice(pick("there is \[no escape\]","there will be \[no mercy\]"))
+	if(trap_switch % 2)
+		do_voice("there is \[no escape\]")
+	else
+		do_voice("there will be \[no mercy\]")
 
 	var/turf/T = get_turf(src)
 
@@ -307,9 +316,6 @@ var/global/list/gabber_voice_multishot = list(
 /mob/living/simple/gabber/proc/shoot_bouncy_projectiles(var/atom/desired_target,var/amount=3)
 
 	play_sound('sound/weapons/magic/holy_shoot.ogg',get_turf(src))
-
-	if(amount > 1)
-		do_voice(pick(gabber_voice_multishot))
 
 	shoot_projectile(
 		src,

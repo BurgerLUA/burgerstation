@@ -1,6 +1,6 @@
 "a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "b" = (/turf/simulated/wall/brick/temple,/area/mission/prefab/boss/gabber)
-"c" = (/turf/simulated/floor/colored/sand/desert,/area/mission/prefab/boss/gabber)
+"c" = (/turf/simulated/floor/colored/sand/desert/gabber,/area/mission/prefab/boss/gabber)
 "d" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 4},/turf/simulated/wall/brick/temple,/area/mission/prefab/boss/gabber)
 "e" = (/turf/simulated/floor/temple,/area/mission/prefab/boss/gabber)
 "f" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 8},/turf/simulated/wall/brick/temple,/area/mission/prefab/boss/gabber)
@@ -11,21 +11,22 @@
 "k" = (/turf/simulated/wall/rock/desert,/area/dmm_suite/clear_area)
 "l" = (/turf/simulated/floor/temple/jewel,/area/mission/prefab/boss/gabber)
 "m" = (/obj/marker/generation/turf/desert_wall,/turf/simulated/wall/rock/desert,/area/dmm_suite/clear_area)
+"n" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 1},/turf/simulated/wall/brick/temple,/area/mission/prefab/boss/gabber)
 
 (1,1,1) = {"
 aaakkkkkkkkmkkkkkkkkmkkkkkkkkaaa
-aakkmkkbbbbbbbbbbbbbbbbbbbkkmkka
+aakkmkkbbbbbbbbbjbbbbbbbbbkkmkka
 akkkkkkbcccccccccccccccccbkkkkkk
 kkbbbbbdclllllllllllllllcfbbbbbk
 kkbccccbcleeeeeeeeeeeeelcbccccbk
-kkbceecccleggglllllgggelccceecbk
-kmdceecbeleggglehelgggelebceecfm
-kkbceecbelegggleeelgggelebceecbk
+kkbclecccleggglllllgggelcccelcbk
+kmdclecbeleggglehelgggelebcelcfm
+kkbclecbelegggleeelgggelebcelcbk
 kkbccccbeleggglllllgggelebccccbk
 kkbbbcbdeleeeeeeeeeeeeelefbcbbbk
 kkkkbccbelllllleeellllllebccbkkk
 akmkbcccceeccclccclccceeccccbkma
-akkkbccbceecbblbbblbbceecbccbkka
+akkkbccbceecbblbnblbbceecbccbkka
 aakkbbbdceecfclllllcdceecfbbbkaa
 aaakkkkbccccbccclcccbccccbkkkkaa
 aaaakkkbbbbbbbdclcfbbbbbbbkkaaaa
