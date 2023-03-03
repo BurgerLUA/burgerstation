@@ -1,3 +1,4 @@
+
 /ai/boss/gabber
 	var/next_trap = 0
 	var/next_slam = 0
@@ -41,6 +42,14 @@
 
 /ai/boss/gabber/handle_movement()
 
+	if(objective_attack && is_living(objective_attack))
+		var/mob/living/L = objective_attack
+		if(L.horizontal)
+			owner.move_dir = get_dir(owner,objective_attack)
+			owner.movement_flags = MOVEMENT_RUNNING
+			last_movement_proc = "horizontal grief"
+			return TRUE
+
 	if(next_slam > 0 && next_slam <= world.time + SECONDS_TO_DECISECONDS(1)) //Doing slam.
 		owner.move_dir = 0x0
 		last_movement_proc = "slam override"
@@ -78,6 +87,9 @@
 			return TRUE
 		owner_as_gabber.set_dir(get_dir(owner_as_gabber,objective_attack))
 		return TRUE
+
+	if(owner_as_gabber.next_special_attack > world.time)
+		return ..()
 
 	//Slam attack. This should always take first priority as it affects movement above.
 	if(objective_attack && next_slam > 0 && next_slam <= world.time + SECONDS_TO_DECISECONDS(1))
@@ -123,9 +135,6 @@
 		if(prob(80) && (A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]")) || (A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]")))
 			start_block()
 
-	else if(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK)
-		stop_block()
-
 	//Trap attack.
 	if(objective_attack && next_trap > 0 && next_trap <= world.time + SECONDS_TO_DECISECONDS(1))
 
@@ -146,12 +155,22 @@
 
 		return TRUE
 
-	//Ranged attack. Non-sword mode only.
-	if(!owner_as_gabber.sword_mode && objective_attack && next_shoot > 0 && next_shoot <= world.time && get_dist(owner,objective_attack) >= 3)
-		shoot_count++
+	//Ranged attack. Non-sword mode only (unless there are other players fighting it).
+	if(objective_attack && next_shoot > 0 && next_shoot <= world.time)
+
 		var/projectiles_to_fire = 1 + shoot_count % 3
-		owner_as_gabber.shoot_bouncy_projectiles(objective_attack,projectiles_to_fire)
+		shoot_count++
+
+		if(!owner_as_gabber.sword_mode && get_dist(owner,objective_attack) >= 3)
+			owner_as_gabber.shoot_bouncy_projectiles(objective_attack,projectiles_to_fire)
+
 		if(projectiles_to_fire >= 3)
+			//Also fire at nearby enemies in sword mode.
+			if(owner_as_gabber.sword_mode && length(owner_as_gabber.players_fighting_boss))
+				var/list/players_to_shoot_at = owner_as_gabber.players_fighting_boss - objective_attack
+				for(var/k in players_to_shoot_at)
+					var/mob/living/L = k
+					owner_as_gabber.shoot_bouncy_projectiles(L,1)
 			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.75)*projectiles_to_fire
 		else
 			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.25)*projectiles_to_fire
@@ -161,11 +180,8 @@
 	. = ..()
 
 /ai/boss/gabber/should_life()
-
 	. = ..()
-
 	if(owner_as_gabber)
-
 		if(owner_as_gabber.has_status_effect(IMMORTAL))
 			return FALSE
 

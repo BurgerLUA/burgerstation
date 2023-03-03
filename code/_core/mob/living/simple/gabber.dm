@@ -54,6 +54,8 @@ var/global/list/valid_gabber_sound_files = list()
 
 	var/superslam_latch = 0
 
+	var/next_special_attack = 0 //Prevents voice stacking.
+
 /mob/living/simple/gabber/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 1
 
@@ -117,10 +119,10 @@ var/global/list/valid_gabber_sound_files = list()
 	animate(src,pixel_z = -16,time=5)
 	animate(pixel_z = initial(pixel_z),time=50)
 
-	CALLBACK("\ref[src]_monologue_1",10,src,.proc/do_voice,"fool")
-	CALLBACK("\ref[src]_monologue_2",10+10,src,.proc/do_voice,"you are not a threat")
+	CALLBACK("\ref[src]_monologue_1",10,src,.proc/do_voice,"fool",TRUE)
+	CALLBACK("\ref[src]_monologue_2",10+10,src,.proc/do_voice,"you are not a threat",TRUE)
 	CALLBACK("\ref[src]_monologue_3",10+10+40,src,.proc/showoff)
-	CALLBACK("\ref[src]_monologue_4",10+10+40+10,src,.proc/do_voice,"but \[I am\]")
+	CALLBACK("\ref[src]_monologue_4",10+10+40+10,src,.proc/do_voice,"but \[I am\]",TRUE)
 	CALLBACK("\ref[src]_monologue_5",10+10+40+10+40,src,.proc/end_sword_mode)
 
 	return TRUE
@@ -150,7 +152,10 @@ var/global/list/valid_gabber_sound_files = list()
 	if(ai)
 		ai.set_active(TRUE)
 
-/mob/living/simple/gabber/proc/do_voice(var/text_to_say)
+/mob/living/simple/gabber/proc/do_voice(var/text_to_say,var/force=FALSE)
+
+	if(next_special_attack > world.time) //No voice stacking.
+		return TRUE
 
 	if(valid_gabber_sound_files[text_to_say])
 		var/turf/T = get_turf(src)
@@ -158,6 +163,8 @@ var/global/list/valid_gabber_sound_files = list()
 			play_sound(valid_gabber_sound_files[text_to_say],T,volume=75,range_min=VIEW_RANGE*0.5,range_max=VIEW_RANGE*2)
 
 	src.do_say("[uppertext(text_to_say)].")
+
+	next_special_attack = world.time + SECONDS_TO_DECISECONDS(1)
 
 	return TRUE
 
@@ -245,9 +252,9 @@ var/global/list/gabber_voice_slam = list(
 	var/direction = pick(-1,1)
 
 	for(var/i=1,i<=16,i++)
-		var/math_x = sin(i/8 * 360 * direction + offset)*VIEW_RANGE*0.5
-		var/math_y = cos(i/8 * 360 * direction + offset)*VIEW_RANGE*0.5
-		CALLBACK("\ref[src]_shoot_trap_[i]",i*2,src,.proc/shoot_trap,target,math_x,math_y)
+		var/math_x = sin( (i/8 * 360 * direction) + offset)*VIEW_RANGE*0.5
+		var/math_y = cos( (i/8 * 360 * direction) + offset)*VIEW_RANGE*0.5
+		CALLBACK("\ref[src]_shoot_trap_[i]",5 + i*2,src,.proc/shoot_trap,target,math_x,math_y)
 
 
 /mob/living/simple/gabber/proc/trap_lines(var/trap_switch = 0)
@@ -327,7 +334,7 @@ var/global/list/gabber_voice_multishot = list(
 		16,
 		16,
 		0,
-		TILE_SIZE*0.125,
+		sword_mode ? TILE_SIZE*0.25 : TILE_SIZE*0.125,
 		amount,
 		"#FFFFFF",
 		0,

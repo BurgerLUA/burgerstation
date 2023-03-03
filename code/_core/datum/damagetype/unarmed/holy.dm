@@ -66,16 +66,18 @@
 	. = ..()
 
 	if(is_living(victim))
-		var/mob/living/L = victim
-		L.add_status_effect(STUN,20,20)
-
-	if(is_living(victim))
-		var/mob/living/L = victim
-		var/list/offsets = get_directional_offsets(attacker,L)
+		var/mob/living/LV = victim
+		LV.add_status_effect(STUN,20,20)
+		var/list/offsets = get_directional_offsets(attacker,LV)
 		if(!(offsets[1] || offsets[2]))
 			offsets[1] = rand(-1,1)
 			offsets[2] = offsets[1] ? rand(-1,1) : pick(-1,1)
-		L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12,lifetime=5)
+		LV.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12,lifetime=5)
+
+		if(is_living(attacker))
+			var/mob/living/LA = attacker
+			if(LA.ai)
+				LA.ai.find_new_objectives() //Destroyed them so hard. Find a new target.
 
 
 
