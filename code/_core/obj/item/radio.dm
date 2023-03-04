@@ -33,10 +33,10 @@
 /obj/item/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
 
-/obj/item/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_radio")
 
-/obj/item/radio/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/radio/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_radio")

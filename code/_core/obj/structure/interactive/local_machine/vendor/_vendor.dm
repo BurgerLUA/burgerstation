@@ -6,6 +6,8 @@ var/global/list/equipped_antags = list()
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "generic"
 
+	var/special = FALSE //Is this a special vendor that shouldn't be considered for loadout purposes?
+
 	//Gen means generate based on initial icon_state
 	var/icon_state_broken = "gen"
 	var/icon_state_off = "gen"
@@ -282,7 +284,7 @@ var/global/list/equipped_antags = list()
 	var/column=0
 
 	for(var/i=1,i<=stored_objects_length,i++)
-		if(row >= 9)
+		if(row >= 8)
 			row = 0
 			column++
 		var/obj/item/I = stored_objects[i]

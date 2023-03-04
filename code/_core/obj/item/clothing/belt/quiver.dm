@@ -22,15 +22,15 @@
 		if(found_value > 0)
 			. += amount*found_value
 
-/obj/item/clothing/belt/belt_quiver/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/clothing/belt/belt_quiver/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	.["stored_arrows"] = list()
 	for(var/k in stored_arrows)
 		var/v = stored_arrows[k]
 		.["stored_arrows"][k] = v
 
-/obj/item/clothing/belt/belt_quiver/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/clothing/belt/belt_quiver/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	for(var/k in object_data["stored_arrows"])
 		var/v = object_data["stored_arrows"][k]
 		stored_arrows[text2path(k)] = v

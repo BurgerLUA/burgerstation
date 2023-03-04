@@ -31,12 +31,12 @@
 
 	return ..()
 
-/obj/item/container/edible/meme_pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/container/edible/meme_pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("servings_left")
 
-/obj/item/container/edible/meme_pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/edible/meme_pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("servings_left")
 
 /obj/item/container/edible/meme_pizza/Finalize()

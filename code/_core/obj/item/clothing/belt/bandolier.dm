@@ -27,15 +27,15 @@
 		var/v = stored_shells[k]
 		shell_count += v
 
-/obj/item/clothing/belt/bandolier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/clothing/belt/bandolier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	.["stored_shells"] = list()
 	for(var/k in stored_shells)
 		var/v = stored_shells[k]
 		.["stored_shells"][k] = v
 
-/obj/item/clothing/belt/bandolier/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/clothing/belt/bandolier/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	for(var/k in object_data["stored_shells"])
 		var/v = object_data["stored_shells"][k]
 		stored_shells[text2path_safe(k)] = v

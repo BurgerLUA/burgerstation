@@ -18,12 +18,12 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/fuse/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/device/fuse/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("time_set")
 
-/obj/item/device/fuse/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/device/fuse/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 
 /obj/item/device/fuse/click_self(var/mob/caller)

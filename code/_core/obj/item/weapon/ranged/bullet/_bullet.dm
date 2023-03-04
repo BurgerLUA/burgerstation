@@ -109,8 +109,9 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 
 
-/obj/item/weapon/ranged/bullet/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/bullet/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+
+	RUN_PARENT_SAFE
 
 	if(src.chambered_bullet) .["chambered_bullet"] = src.chambered_bullet.type
 
@@ -121,8 +122,9 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 			if(B) .["stored_bullets"][i] = B.type
 
 
-/obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+
+	RUN_PARENT_SAFE
 
 	if(object_data["chambered_bullet"])
 		var/b_type = object_data["chambered_bullet"]

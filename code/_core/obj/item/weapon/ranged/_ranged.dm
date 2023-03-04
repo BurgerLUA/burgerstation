@@ -123,8 +123,8 @@
 		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
-/obj/item/weapon/ranged/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("firing_pin")
 	SAVEATOM("attachment_barrel")
 	SAVEATOM("attachment_sight")
@@ -133,8 +133,8 @@
 	SAVEATOM("stock_mod")
 	SAVEATOM("barrel_mod")
 
-/obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("firing_pin")
 	LOADATOM("attachment_barrel")
 	LOADATOM("attachment_sight")

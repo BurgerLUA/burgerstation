@@ -27,12 +27,12 @@
 	QDEL_NULL(stored_cell)
 	. = ..()
 
-/obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_cell")
 
-/obj/item/clothing/glasses/nightvision/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/clothing/glasses/nightvision/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_cell")
 
 /obj/item/clothing/glasses/nightvision/get_examine_list(var/mob/examiner)

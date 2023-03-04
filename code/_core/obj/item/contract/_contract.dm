@@ -77,14 +77,14 @@
 	. += div("notice","[value_current] out of [value_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
-/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("reward")
 	SAVEVAR("value_current")
 	SAVEVAR("burgerbux_reward")
 
-/obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("reward")
 	LOADVAR("value_current")
 	LOADVAR("burgerbux_reward")

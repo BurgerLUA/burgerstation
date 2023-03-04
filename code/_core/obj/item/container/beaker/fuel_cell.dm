@@ -16,12 +16,12 @@
 
 	reagents = /reagent_container/fuel_cell
 
-/obj/item/container/simple/beaker/fuel_cell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/container/simple/beaker/fuel_cell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("allow_reagent_transfer_to")
 
-/obj/item/container/simple/beaker/fuel_cell/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/simple/beaker/fuel_cell/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("allow_reagent_transfer_to")
 
 /obj/item/container/simple/beaker/fuel_cell/Finalize()

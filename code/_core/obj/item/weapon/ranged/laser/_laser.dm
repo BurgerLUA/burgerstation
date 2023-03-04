@@ -25,12 +25,12 @@
 	. = ..()
 	if(battery) . += battery.get_value()
 
-/obj/item/weapon/ranged/energy/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/energy/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("battery")
 
-/obj/item/weapon/ranged/energy/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/ranged/energy/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("battery")
 
 /obj/item/weapon/ranged/energy/Finalize()

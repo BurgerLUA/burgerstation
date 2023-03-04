@@ -188,14 +188,14 @@
 	value = 20
 
 
-/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
 	SAVEVAR("color_canister")
 
-/obj/item/storage/pillbottle/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/storage/pillbottle/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("color_lid")
 	LOADVAR("color_label")
 	LOADVAR("color_canister")
@@ -403,14 +403,14 @@
 	if(goods && hoard > 0)
 		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")
 	SAVEATOM("goods")
 
-/obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("hoard")
 	LOADPATH("targetitem")
 	LOADATOM("goods")

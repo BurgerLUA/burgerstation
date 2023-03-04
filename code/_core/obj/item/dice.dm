@@ -89,12 +89,12 @@
 	. = ..()
 	if(!used) icon_state = "blank"
 
-/obj/item/dice/d20/cursed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/dice/d20/cursed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("used")
 
-/obj/item/dice/d20/cursed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/dice/d20/cursed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("used")
 
 /obj/item/dice/d20/cursed/roll_dice(var/mob/caller,var/silent=FALSE)

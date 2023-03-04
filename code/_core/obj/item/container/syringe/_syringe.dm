@@ -27,15 +27,15 @@
 	var/stealthy = FALSE //Set to true if the injection doesn't alert the victim, other than the "tiny prick".
 	var/quality_reduction_on_use = 15 //How much quality (out of 100) to take away per use.
 
-/obj/item/container/syringe/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/container/syringe/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(adjustable)
 		SAVEVAR("inject_amount_desired")
 	if(can_inject && can_draw)
 		SAVEVAR("injecting")
 
-/obj/item/container/syringe/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/syringe/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(adjustable)
 		LOADVAR("inject_amount_desired")
 	if(can_inject && can_draw)

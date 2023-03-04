@@ -22,12 +22,12 @@
 		. += div("notice","It currently holding [stored_tape.name] inside.")
 	. += div("notice","It is currently [playing ? "playing" : "not playing"].")
 
-/obj/item/cassette_player/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/cassette_player/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_tape")
 
-/obj/item/cassette_player/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/cassette_player/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_tape")
 
 /obj/item/cassette_player/Finalize()
@@ -152,10 +152,10 @@
 		stored_track = pick(SStrack.all_tracks)
 		icon_state = "tape_blue"
 
-/obj/item/cassette_tape/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/cassette_tape/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEPATH("stored_track")
 
-/obj/item/cassette_tape/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/cassette_tape/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADPATH("stored_track")

@@ -151,8 +151,8 @@
 
 	. = ..()
 
-/obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 	if(upgrade_count >= 1) .["upgrade_count"] = upgrade_count
 	if(enchantment)
@@ -165,8 +165,8 @@
 	if(stored_spellswap)
 		SAVEATOM("stored_spellswap")
 
-/obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
 	if(object_data["upgrade_count"]) upgrade_count = object_data["upgrade_count"]
 	if(object_data["enchantment"] && object_data["enchantment"]["enchantment_type"])

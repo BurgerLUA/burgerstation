@@ -73,7 +73,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	var/final_cost = 0
 	for(var/k in objects_to_check)
 		var/obj/item/I = k
-		var/list/generated_list = I.save_item_data(P)
+		var/list/generated_list = I.save_item_data(P,loadout=TRUE)
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			generated_list["original_slot"] = I2.id
@@ -125,9 +125,8 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	var/turf/T = get_turf(P)
 	var/total_value = 0
 	for(var/data in found_data["loadout"])
-		var/obj/item/I = load_and_create(P,data,T,TRUE)
+		var/obj/item/I = load_and_create(P,data,T,loadout=TRUE)
 		if(!I)
-			P.to_chat(span("danger","Could not load item of type [data["type"]] as it doesn't exist anymore!"))
 			continue
 		var/obj/hud/inventory/I2 = data["original_slot"] ? P.inventories_by_id[data["original_slot"]] : null
 		var/success = I2 ? I2.add_object(I,messages=FALSE,silent=TRUE,error_on_fail=FALSE) : I.quick_equip(P,silent=TRUE)

@@ -27,13 +27,13 @@
 	. = ..()
 	update_inventory()
 
-/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("logo")
 	SAVEVAR("logobg")
 
-/obj/item/clothing/head/helmet/full/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/clothing/head/helmet/full/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("logo")
 	LOADVAR("logobg")
 

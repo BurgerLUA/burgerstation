@@ -90,6 +90,8 @@
 
 	apc_powered = FALSE
 
+	special = TRUE
+
 /obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
 	return CEILING(desired_price,10)
 

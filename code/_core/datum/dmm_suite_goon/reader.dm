@@ -273,7 +273,7 @@ turf
 	var
 		dmm_suite/preloader/dmm_preloader
 
-atom/New(turf/newLoc)
+/atom/New(turf/newLoc)
     if(is_turf(newLoc))
         var/dmm_suite/preloader/preloader = newLoc.dmm_preloader
         if(preloader)

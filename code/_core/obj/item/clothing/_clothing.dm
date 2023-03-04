@@ -67,8 +67,8 @@
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 
-/obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/clothing/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
 
 	/*
@@ -80,8 +80,8 @@
 	*/
 
 
-/obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/clothing/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
 	/*
 	if(object_data["clothing_enchantments"])

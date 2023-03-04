@@ -105,6 +105,7 @@
 
 	if(check_name && forbidden_characters_name && forbidden_characters_name.Find(input))
 		if(SSconfig.config["FORBIDDEN_CHARACTERS_NAME_WARNING"])
+			caller?.to_chat(span("warning","[input] is not an acceptable name."))
 			caller?.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_NAME_WARNING"]))
 		return FALSE
 

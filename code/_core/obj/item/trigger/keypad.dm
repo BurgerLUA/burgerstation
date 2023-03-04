@@ -16,12 +16,12 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 
 	value = 10
 
-/obj/item/device/keypad/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/device/keypad/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("code")
 
-/obj/item/device/keypad/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/device/keypad/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("code")
 
 /obj/item/device/keypad/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)

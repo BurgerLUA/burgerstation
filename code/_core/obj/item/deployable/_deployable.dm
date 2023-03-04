@@ -164,13 +164,13 @@
 			TD.set_iff_tag(C.iff_tag)
 
 
-/obj/item/deployable/mob/sentry/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/deployable/mob/sentry/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_battery")
 	SAVEATOM("stored_magazine")
 
-/obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_battery")
 	LOADATOM("stored_magazine")
 

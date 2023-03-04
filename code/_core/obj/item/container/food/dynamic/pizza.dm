@@ -52,8 +52,8 @@
 	. = ..()
 	QDEL_NULL(reagents_toppings)
 
-/obj/item/container/edible/dynamic/pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/container/edible/dynamic/pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("sliced")
 	SAVEVAR("color_sauce")
 	SAVEVAR("color_cheese")
@@ -62,16 +62,16 @@
 	if(reagents_toppings && length(reagents_toppings.stored_reagents))
 		.["reagents_toppings"] = reagents.stored_reagents
 
-/obj/item/container/edible/dynamic/pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/edible/dynamic/pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("sliced")
 	LOADVAR("color_sauce")
 	LOADVAR("color_cheese")
 	LOADLIST("topping_data")
 	LOADLIST("offsets")
 
-/obj/item/container/edible/dynamic/pizza/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/edible/dynamic/pizza/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(length(object_data["reagents_toppings"]))
 		for(var/r_id in object_data["reagents_toppings"])
 			var/volume = object_data["reagents_toppings"][r_id]

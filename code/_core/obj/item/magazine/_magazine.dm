@@ -65,9 +65,10 @@
 
 	return ..()
 
-/obj/item/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
-	. = ..()
+	RUN_PARENT_SAFE
+
 	if(length(stored_bullets))
 		.["stored_bullets"] = list()
 		for(var/i=1,i<=length(stored_bullets),i++)
@@ -77,9 +78,9 @@
 	.["regenerate"] = regenerate
 
 
-/obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 
-	. = ..()
+	RUN_PARENT_SAFE
 	if(object_data["stored_bullets"])
 		for(var/k in object_data["stored_bullets"])
 			var/v = object_data["stored_bullets"][k]

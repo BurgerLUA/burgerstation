@@ -132,6 +132,7 @@
 #include "code\__helpers\name.dm"
 #include "code\__helpers\path.dm"
 #include "code\__helpers\pooling.dm"
+#include "code\__helpers\proc.dm"
 #include "code\__helpers\progress_bar.dm"
 #include "code\__helpers\random.dm"
 #include "code\__helpers\recursive.dm"

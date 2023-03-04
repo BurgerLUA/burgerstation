@@ -31,8 +31,8 @@
 
 	value = 0
 
-/obj/item/container/edible/plant/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/container/edible/plant/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 
 	SAVEPATH("plant_type")
 
@@ -49,8 +49,8 @@
 
 	SAVEVAR("sliced")
 
-/obj/item/container/edible/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/edible/plant/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 
 	LOADPATH("plant_type")
 

@@ -23,13 +23,13 @@
 
 	var/list/obj/item/bullet_cartridge/bullet_whitelist
 
-/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(stored_bullet) .["stored_bullet"] = stored_bullet.type
 	SAVEVAR("bullet_count")
 
-/obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(object_data["stored_bullet"])
 		set_stored_bullet(object_data["stored_bullet"])
 	LOADVAR("bullet_count")

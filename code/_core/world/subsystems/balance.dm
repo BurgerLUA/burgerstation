@@ -20,6 +20,53 @@ SUBSYSTEM_DEF(balance)
 	var/list/created_bullets = list()
 	var/list/created_magazines = list()
 
+	var/list/can_save_loadout = list()
+
+/subsystem/balance/proc/process_loadout_contents(var/obj/O)
+	//This allows gloves and medicine to be stored. It's shitcode, but it works.
+	//Don't need to create any more items from here because it's all already created.
+	for(var/k in O.contents)
+		var/atom/movable/M = k
+		if(is_inventory(M))
+			process_loadout_contents(M)
+			continue
+		if(!is_item(M))
+			continue
+		var/obj/item/I = M
+		if(!initial(I.can_save_loadout))
+			continue
+		can_save_loadout[I.type] = TRUE
+		process_loadout_contents(I)
+
+	return TRUE
+
+/subsystem/balance/proc/process_loadout(var/turf/T)
+
+	for(var/k in subtypesof(/obj/structure/interactive/vending/))
+		var/obj/structure/interactive/vending/V = k
+		if(initial(V.special))
+			continue
+		if(initial(V.accepts_item))
+			continue
+		V = new V(T)
+		V.initialize_type = INITIALIZE_NONE
+		for(var/j in V.stored_types)
+			var/obj/item/I = j
+			if(!ispathcache(I,/obj/item/))
+				continue
+			if(!initial(I.can_save_loadout))
+				continue
+			I = new I(T)
+			I.initialize_type = INITIALIZE_NONE
+			INITIALIZE(I)
+			GENERATE(I)
+			FINALIZE(I)
+			can_save_loadout[I.type] = TRUE
+			process_loadout_contents(I)
+			qdel(I)
+		//We don't run initialize or anything here because we just need the initial types.
+		qdel(V)
+
 /subsystem/balance/proc/process_items(var/turf/T,var/list/everything_else)
 
 	for(var/k in everything_else)
@@ -49,7 +96,7 @@ SUBSYSTEM_DEF(balance)
 		FINALIZE(B)
 		if(B.qdeleting)
 			continue
-		if(B.rarity == RARITY_COMMON) //Only consider normal bullets.
+		if(initial(B.rarity) == RARITY_COMMON) //Only consider normal bullets.
 			created_bullets += B
 		stored_value[B.type] = B.get_recommended_value()
 		stored_value[B.type] = CEILING(stored_value[B.type],0.01)
@@ -212,5 +259,7 @@ SUBSYSTEM_DEF(balance)
 	created_magazines.Cut()
 
 	rustg_file_write(final_balance_output,BALANCE_LOG_PATH)
+
+	process_loadout(T)
 
 	. = ..()

@@ -60,12 +60,12 @@
 		qdel(src)
 	return TRUE
 
-/obj/item/tempering/save_item_data(mob/living/advanced/player/P, save_inventory, died)
-	. = ..()
+/obj/item/tempering/save_item_data(var/mob/living/advanced/player/P, var/save_inventory=TRUE, var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("left")
 
-/obj/item/tempering/load_item_data_post(mob/living/advanced/player/P, list/object_data)
-	. = ..()
+/obj/item/tempering/load_item_data_post(var/mob/living/advanced/player/P, var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("left")
 
 

@@ -77,12 +77,12 @@
 
 	var/active = FALSE
 
-/obj/item/weapon/melee/tool/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/melee/tool/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("fuel_current")
 
-/obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("fuel_current")
 
 /obj/item/weapon/melee/tool/welder/Generate()

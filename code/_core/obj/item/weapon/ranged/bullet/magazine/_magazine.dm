@@ -13,20 +13,18 @@
 	QDEL_NULL(stored_magazine)
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_magazine")
 
-/obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
-	return stored_magazine
-
-
-/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-
-	. = ..()
+/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_magazine")
 	if(stored_magazine)
 		src.open = FALSE
+
+/obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
+	return stored_magazine
 
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)

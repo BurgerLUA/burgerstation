@@ -48,8 +48,8 @@
 	. += max(0,100-growth_max)*0.25
 	. += max(0,200-growth_produce_max)*0.25
 
-/obj/item/seed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/seed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 
 	SAVEVAR("icon_state")
 
@@ -67,8 +67,8 @@
 	SAVEVAR("delete_after_harvest")
 
 
-/obj/item/seed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/seed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 
 	LOADVAR("icon_state")
 

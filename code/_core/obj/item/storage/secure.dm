@@ -25,3 +25,5 @@
 	inventory_category = "secure"
 
 	queue_delete_immune = TRUE
+
+	can_save_loadout = FALSE

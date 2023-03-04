@@ -8,6 +8,7 @@
 
 	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
 	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning. This should only be set by special code.
+	var/can_save_loadout = TRUE //Set to true if you can save this item in a loadout.
 
 	var/can_rename = FALSE //Can you rename this item?
 
@@ -931,6 +932,7 @@ var/global/list/rarity_to_mul = list(
 			if(I.finalized)
 				continue
 			pre_fill_inventory(I)
+			I.initialize_type = src.initialize_type
 			INITIALIZE(I)
 			GENERATE(I)
 			FINALIZE(I)
