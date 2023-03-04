@@ -107,7 +107,7 @@
 		caller.visible_message(span("danger","\The [caller.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
 		if(is_living(caller))
 			var/mob/living/L = caller
-			L.add_skill_xp(SKILL_MAGIC_ENCHANTING,CEILING(S.soul_size*0.1,1))
+			L.add_skill_xp(SKILL_SUMMONING,CEILING(S.soul_size*0.01,1))
 		qdel(S)
 		update_sprite()
 
@@ -126,7 +126,7 @@
 			total_charge -= total_charge
 			if(is_living(caller))
 				var/mob/living/L = caller
-				L.add_skill_xp(SKILL_MAGIC_ENCHANTING,CEILING(total_charge*0.025,1))
+				L.add_skill_xp(SKILL_SUMMONING,CEILING(total_charge*0.0025,1))
 			if(!do_not_consume && total_charge <= 0)
 				caller.to_chat(span("warning","\The [src] shatters!"))
 				qdel(src)

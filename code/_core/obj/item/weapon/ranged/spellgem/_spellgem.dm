@@ -18,7 +18,7 @@
 
 	company_type = "Wizard Federation"
 
-	var/casting_type = SKILL_MAGIC_OFFENSIVE //What skill to use.
+	var/casting_type = SKILL_MAGIC //What skill to use.
 
 	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
 	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.

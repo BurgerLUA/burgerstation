@@ -28,6 +28,8 @@
 	ranks = list(
 		"Cleaner",
 		"Custodian",
-		"Janitor"
+		"Janitor",
 		"Superintendent"
 	)
+
+	job_flags = FLAG_JOB_CLEANING

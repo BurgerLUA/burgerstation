@@ -4,17 +4,17 @@
 	passive_income = 400
 	passive_income_bonus = 100
 
-	//50 total
 	bonus_skills = list(
-		SKILL_UNARMED = 5,
-		SKILL_MELEE = 5,
-		SKILL_BLOCK = 5,
-		SKILL_ARMOR = 5,
-		SKILL_RANGED = 10,
-		SKILL_PRECISION = 5,
-		SKILL_SURVIVAL = 5,
+		//1 Major (15)
+		SKILL_RANGED = 15,
+
+		//2 Moderate (10)
+		SKILL_PRECISION = 10,
+
+		//3 Minor (5)
 		SKILL_EVASION = 5,
 		SKILL_PARRY = 5,
+		SKILL_ARMOR = 5
 	)
 
 	//50 total
@@ -35,3 +35,5 @@
 		"Officer",
 		"Senior Officer"
 	)
+
+	job_flags = FLAG_JOB_KILLING

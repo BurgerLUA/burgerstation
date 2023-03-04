@@ -6,7 +6,7 @@
 	. = list()
 
 	.["hello"] = list(
-		"Hello, [P.real_name]. Come for a #1? I could officially certify you as an #2. It's considered dead-end but it can help you get started for other jobs where you can actually get a #3. I also handle #4 if you feel that you've made enough money in this sector.",
+		"Hello, [P.real_name]. Come for a #1? I could officially certify you as an #2. It's considered dead-end, with no potential for #3, but it can help you get started for other jobs where you can actually get a #3. I also handle #4 if you feel that you've made enough money in this sector.",
 		"job",
 		"assistant",
 		"promotion",
@@ -14,7 +14,8 @@
 	)
 
 	.["retirement"] = list(
-		"Unfortunately due to strict labor laws in this sector that allow employees to quit their job for any time for any reason, we are legally required for you to offer the option to retire, ending your contract. This something you're interested in?NEWLINENEWLINE#1NEWLINE#2NEWLINENEWLINE(Retirement allows you to <b>permanently</b> delete your character and transfer all their experience to the experience redemption system. Additionally, all items on your character at the time of retirement are sold.)",
+		"Unfortunately due to strict labor laws in this sector that allow employees to quit their job for any time for any reason, we are legally required for you to offer the option to retire, ending your contract. \
+		Is this something you're interested in?NEWLINENEWLINE#1NEWLINE#2NEWLINENEWLINE(Retirement allows you to <b>permanently</b> delete your character and transfer all their experience to the experience redemption system. Additionally, all items on your character at the time of retirement are sold.)",
 		"*Yes, retire and spend out the rest of your days being miserable over the fact that you don't have a job.",
 		"*No, do not retire and continue to be happy that NanoTrasen provides."
 	)

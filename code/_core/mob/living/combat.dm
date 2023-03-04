@@ -33,7 +33,7 @@
 			if(!force_change)
 				if(parry_spam_time <= world.time)
 					shield_overlay.color = "#FFFFFF"
-					animation_time = 3 + get_skill_power(SKILL_PARRY,0,1,2)*3
+					animation_time = 3 + get_skill_power(SKILL_BLOCK,0,1,2)*3
 					parry_time = world.time + animation_time
 					parry_spam_time = world.time + 18
 				else //Can't parry
@@ -95,8 +95,6 @@
 	return TRUE
 
 /mob/living/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
-	if(client)
-		src.add_skill_xp(SKILL_PARRY,1)
 	return TRUE
 
 /mob/living/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)

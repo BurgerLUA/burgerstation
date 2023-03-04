@@ -20,11 +20,11 @@
 	if(!grown)
 		caller.to_chat(span("warning","\The [src.name] doesnt look ready to be harvested yet...."))
 		return TRUE
-	var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
+	var/skill_power = caller.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	var/chance = prob(clamp((skill_power*0.50) + harvest_chance,10,100))
 	if(!chance)
 		caller.to_chat(span("warning","You fumble and ruin the harvest!"))
-		caller.add_skill_xp(SKILL_BOTANY,3)
+		caller.add_skill_xp(SKILL_SURVIVAL,3)
 		grown = FALSE
 		update_sprite()
 		return TRUE
@@ -35,10 +35,10 @@
 		FINALIZE(NH)
 		if(prob(clamp((skill_power*0.25) + great_success,2.5,75)))
 			caller.to_chat(span("notice","You carefully gather the [NH.name], but theres still more!"))
-			caller.add_skill_xp(SKILL_BOTANY,10)
+			caller.add_skill_xp(SKILL_SURVIVAL,10)
 			return TRUE
 		caller.to_chat(span("notice","You carefully gather the [NH.name],depleting it."))
-		caller.add_skill_xp(SKILL_BOTANY,5)
+		caller.add_skill_xp(SKILL_SURVIVAL,5)
 		grown = FALSE
 		update_sprite()
 	return TRUE

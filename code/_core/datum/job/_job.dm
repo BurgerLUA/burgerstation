@@ -42,6 +42,8 @@
 
 	var/list/ranks
 
+	var/job_flags = 0x0
+
 /job/proc/get_rank_title(var/rank_level=1)
 	var/rank_length = length(ranks)
 	if(!rank_length)

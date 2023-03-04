@@ -123,7 +123,7 @@
 	weapon_to_enchant.enchantment = new stored_book.stored_enchantment
 	var/experience_to_give = weapon_to_enchant.enchantment.generate_stats(caller,weapon_to_enchant,soulgem)
 	weapon_to_enchant.visible_message(span("notice","\The [weapon_to_enchant.name] shines brightly as it's new enchantment is applied."))
-	caller.add_skill_xp(SKILL_MAGIC_ENCHANTING,experience_to_give)
+	caller.add_skill_xp(SKILL_SUMMONING,experience_to_give)
 	if(soulgem.do_not_consume)
 		soulgem.total_charge = 0
 	else

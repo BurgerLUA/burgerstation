@@ -27,3 +27,5 @@
 		"Medical Doctor",
 		"Senior Medical Doctor"
 	)
+
+	job_flags = FLAG_JOB_HEALING

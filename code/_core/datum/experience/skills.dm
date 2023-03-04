@@ -5,7 +5,7 @@
 	chargen_max_level = 25
 
 //Warrior
-/experience/skill/melee/ //STRENGTH
+/experience/skill/melee/ //ATTRIBUTE_STRENGTH
 	//Each point of damage dealt = 1xp
 	//Level 100 is 2 million xp.
 	name = "Melee"
@@ -15,17 +15,7 @@
 	experience_power = 1.6
 	experience_multiplier = 43
 
-/experience/skill/unarmed/ //FORTITUDE
-	//Each point of damage dealt = 1xp
-	//Level 100 is 1 million xp.
-	name = "Unarmed"
-	id = SKILL_UNARMED
-	desc = "Kapooooooooooooooooooooooooooooooooooooooooooooooow."
-	desc_extended = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
-	experience_power = 1.6
-	experience_multiplier = 28
-
-/experience/skill/prayer/ //VITALITY
+/experience/skill/prayer/ //ATTRIBUTE_CONSTITUTION
 	//Each point of damage dealt or healed = 1xp
 	name = "Prayer"
 	id = SKILL_PRAYER
@@ -34,7 +24,8 @@
 	experience_power = 1.6
 	experience_multiplier = 43
 
-/experience/skill/block/ //FORTITUDE
+
+/experience/skill/block/ //ATTRIBUTE_FORTITUDE
 	//Each point of damage blocked = 1xp
 	//Level 100 is 1 million xp.
 	name = "Block"
@@ -43,7 +34,7 @@
 	experience_power = 1.6
 	experience_multiplier = 28
 
-/experience/skill/armor/ //???
+/experience/skill/armor/ //ATTRIBUTE_FORTITUDE
 	//Each point of damage blocked by armor = 1xp
 	//Level 100 is 1 million xp.
 	name = "Armor"
@@ -53,7 +44,8 @@
 	experience_multiplier = 28
 
 //Rogue 6
-/experience/skill/ranged/ //DEXTERITY
+
+/experience/skill/ranged/ //ATTRIBUTE_DEXTERITY
 	//Each point of damage dealt = 1xp
 	//Level 100 is 2 million xp.
 	name = "Ranged"
@@ -63,17 +55,7 @@
 	experience_power = 1.6
 	experience_multiplier = 43
 
-/experience/skill/precision/ //AGILITY
-	//Each point of extra damage in a critical hit = 1xp
-	//Level 100 is 1 million xp.
-	name = "Precision"
-	id = SKILL_PRECISION
-	desc = "There is actually a difference between precision and accurancy."
-	desc_extended = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
-	experience_power = 1.6
-	experience_multiplier = 28
-
-/experience/skill/evasion/ //AGILITY
+/experience/skill/evasion/ //ATTRIBUTE_AGILITY
 	//Each time you dodge = 1 xp
 	name = "Evasion"
 	id = SKILL_EVASION
@@ -81,7 +63,17 @@
 	experience_power = 1.6
 	experience_multiplier = 2.6
 
-/experience/skill/survival //ENDURANCE
+/experience/skill/unarmed/ //ATTRIBUTE_RESILIENCE
+	//Each point of damage dealt = 1xp
+	//Level 100 is 1 million xp.
+	name = "Unarmed"
+	id = SKILL_UNARMED
+	desc = "Kapooooooooooooooooooooooooooooooooooooooooooooooow."
+	desc_extended = "Your skill in performing attacks with your fists. Affects the damage of your bare hands, brass knuckles, or power fists."
+	experience_power = 1.6
+	experience_multiplier = 28
+
+/experience/skill/survival //ATTRIBUTE_RESILIENCE
 	//Each time you avoid a trap = 1xp
 	//Must avoid 1000 times.
 	name = "Survival"
@@ -91,40 +83,33 @@
 	experience_power = 1.5
 	experience_multiplier = 1
 
-/experience/skill/parry/ //WISDOM
-	//Each time you parry = 1xp
-	name = "Parrying"
-	id = SKILL_PARRY
-	desc = "Your skill in parrying incoming attacks. Affects the chance of a successful counter-attack from melee weapons, ranged weapons, and magic."
-	experience_power = 1.6
-	experience_multiplier = 2.6
+
+
+
+
+
+
+
+
 
 //Mage
-/experience/skill/magic/ //INTELLIGENCE
+/experience/skill/magic/ //ATTRIBUTE_WILLPOWER
 	name = "Magic"
-	id = SKILL_MAGIC_DEFENSIVE
+	id = SKILL_MAGIC
 	desc = "Not to be confused with sorcery."
 	desc_extended = "Your skill in casting support and defensive spells like summoning magic."
 	experience_power = 1.6
 	experience_multiplier = 43
 
-/experience/skill/sorcery/ //WISDOM
-	name = "Sorcery"
-	id = SKILL_MAGIC_OFFENSIVE
-	desc = "Not to be confused with magic."
-	desc_extended = "Your skill in casting damage-dealing magic such as fireball."
-	experience_power = 1.6
-	experience_multiplier = 43
-
-/experience/skill/summoning //WISDOM
+/experience/skill/summoning //ATTRIBUTE_SOUL
 	name = "Summoning"
-	id = SKILL_MAGIC_SUMMONING
+	id = SKILL_SUMMONING
 	desc = "Not to be confused with prayer."
 	desc_extended = "Your skill in casting summoning related magic such as summon skeleton."
 	experience_power = 1.6
 	experience_multiplier = 43
 
-/experience/skill/medicine/ //WILLPOWER
+/experience/skill/medicine/ //ATTRIBUTE_INTELLIGENCE
 	name = "Medicine"
 	id = SKILL_MEDICINE
 	desc = "Surgery isn't in, yet!"
@@ -132,20 +117,12 @@
 	experience_power = 1.6
 	experience_multiplier = 28
 
-/experience/skill/enchanting/ //INTELLIGENCE
-	name = "Enchanting"
-	id = SKILL_MAGIC_ENCHANTING
-	desc = "This doesn't work, yet!"
-	desc_extended = "Your skill in enchanting objects. Affects the speed, sucess rate, and quality of enchanted items."
-	experience_power = 1.8
-	experience_multiplier = 4.1
-
-//Non-class skills
-/experience/skill/botany/ //No stat attached
-	name = "Botany"
-	id = SKILL_BOTANY
-	desc = "Farming. "
-	desc_extended = "Your skill in growing and harvesting plants. Affects harvested plant yield and potency."
-	experience_power = 1.8
-	experience_multiplier = 8.2
-	counts_towards_level = FALSE
+/experience/skill/precision/ //ATTRIBUTE_INTELLIGENCE
+	//Each point of extra damage in a critical hit = 1xp
+	//Level 100 is 1 million xp.
+	name = "Precision"
+	id = SKILL_PRECISION
+	desc = "There is actually a difference between precision and accurancy."
+	desc_extended = "Your skill in striking vital points of creatures and humanoids. Affects the rate in which critical hits occur."
+	experience_power = 1.6
+	experience_multiplier = 28

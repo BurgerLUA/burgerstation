@@ -82,7 +82,7 @@
 	return 0
 
 /obj/item/weapon/ranged/magic/get_skill_spread(var/mob/living/L)
-	return 0.05 - (0.1 * L.get_skill_power(SKILL_MAGIC_DEFENSIVE))
+	return 0.05 - (0.1 * L.get_skill_power(SKILL_MAGIC))
 
 /obj/item/weapon/ranged/magic/get_base_spread()
 	return 0.02

@@ -69,14 +69,14 @@
 
 /obj/item/experience_scroll/skill/magic
 	name = "scroll of magic"
-	skill = SKILL_MAGIC_DEFENSIVE
+	skill = SKILL_MAGIC
 	value = 2000
 
 	overlay_color = COLOR_BLUE
 
-/obj/item/experience_scroll/skill/sorcery
-	name = "scroll of sorcery"
-	skill = SKILL_MAGIC_OFFENSIVE
+/obj/item/experience_scroll/skill/summoning
+	name = "scroll of summoning"
+	skill = SKILL_SUMMONING
 	value = 2000
 
 	overlay_color = COLOR_BLUE
@@ -84,13 +84,6 @@
 /obj/item/experience_scroll/skill/medicine
 	name = "scroll of medicine"
 	skill = SKILL_MEDICINE
-	value = 2000
-
-	overlay_color = COLOR_BLUE
-
-/obj/item/experience_scroll/skill/botany
-	name = "scroll of botany"
-	skill = SKILL_BOTANY
 	value = 2000
 
 	overlay_color = COLOR_BLUE
@@ -143,16 +136,12 @@
 
 /obj/item/experience_scroll/skill/lesser/magic
 	name = "magic tome"
-	skill = SKILL_MAGIC_DEFENSIVE
+	skill = SKILL_MAGIC
 
-/obj/item/experience_scroll/skill/lesser/sorcery
-	name = "sorcery tome"
-	skill = SKILL_MAGIC_OFFENSIVE
+/obj/item/experience_scroll/skill/lesser/summoning
+	name = "summoning tome"
+	skill = SKILL_SUMMONING
 
 /obj/item/experience_scroll/skill/lesser/medicine
 	name = "first aid booklet"
 	skill = SKILL_MEDICINE
-
-/obj/item/experience_scroll/skill/lesser/botany
-	name = "plant encyclopedia"
-	skill = SKILL_BOTANY

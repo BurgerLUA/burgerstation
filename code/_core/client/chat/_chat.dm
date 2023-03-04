@@ -61,7 +61,7 @@
 	if(!text_to_say)
 		return FALSE
 
-	if(length(speaker.voice_modifiers))
+	if(is_atom(speaker) && length(speaker.voice_modifiers))
 		for(var/k in speaker.voice_modifiers)
 			var/atom/A = k
 			text_to_say = call(A,speaker.voice_modifiers[A])(speaker,source,text_to_say,text_type,frequency,language,talk_range)

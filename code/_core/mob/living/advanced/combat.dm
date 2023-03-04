@@ -119,6 +119,8 @@
 	var/obj/item/best_item = null
 	var/best_value = 0
 
+	var/block_defense_multiplier = 0.5 + src.get_skill_power(SKILL_BLOCK,0,1,2) * 0.5
+
 	//Left
 	if(left_item)
 		if(left_item.block_defense[attack_type] && left_item.block_defense[attack_type] > best_value && left_item.can_block(attacker,weapon,src,DT))
@@ -141,4 +143,4 @@
 			best_item = O
 			best_value = O.block_defense[attack_type]
 
-	return list(best_item,best_value)
+	return list(best_item,best_value*block_defense_multiplier)

@@ -181,10 +181,11 @@ var/global/list/all_damage_numbers = list()
 	. = max(1,do_attack_animation(attacker,victim,weapon))
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
-	if(is_living(victim) && attacker != victim)
-		var/mob/living/L = victim
-		if(L.client)
-			L.add_skill_xp(SKILL_EVASION,1)
+	if(is_living(victim) && is_living(attacker))
+		var/mob/living/V = victim
+		var/mob/living/A = attacker
+		if(V.loyalty_tag != A.loyalty_tag && V.is_player_controlled())
+			V.add_skill_xp(SKILL_EVASION,1)
 
 /damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
 	return crit_multiplier
@@ -651,39 +652,43 @@ var/global/list/all_damage_numbers = list()
 				hit_log_format["critical"] = V.health.health_current - total_damage_dealt < 0
 				hit_log_format["lethal"] = (V.health.health_current - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
 				V.hit_logs += list(hit_log_format)
-				if(V.is_player_controlled())
-					V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
+				if(attacker != victim && V.is_player_controlled())
+					if(total_damage_dealt > 0)
+						V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
+					if(damage_blocked_with_armor > 0)
+						V.add_skill_xp(SKILL_ARMOR,damage_blocked_with_armor*0.1)
+					if(damage_blocked_with_shield > 0)
+						V.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
 
 			if(attacker != victim && total_damage_dealt && !V.dead && A.is_player_controlled())
 				var/list/experience_gained = list()
-				var/experience_damage = SAFENUM(damage_to_deal_main[BRUTE]) + SAFENUM(damage_to_deal_main[BURN]) + SAFENUM(damage_to_deal_main[TOX]) + SAFENUM(damage_to_deal_main[RAD])
 				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
-					var/xp_to_give = CEILING((experience_damage*experience_multiplier)/critical_hit_multiplier,1)
+					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 						experience_gained[SKILL_PRECISION] += xp_to_give
 
 				for(var/skill in skill_stats)
-					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * experience_damage * experience_multiplier, 1)
+					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained[skill] += xp_to_give
 
 				for(var/attribute in attribute_stats)
-					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * experience_damage * experience_multiplier, 1)
+					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give
 
 				for(var/skill in bonus_experience_skill)
-					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * experience_damage * experience_multiplier,1)
+					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained[skill] += xp_to_give
 
 				for(var/attribute in bonus_experience_attribute)
-					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * experience_damage * experience_multiplier,1)
+					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * total_damage_dealt * experience_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give

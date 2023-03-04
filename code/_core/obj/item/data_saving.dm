@@ -35,7 +35,7 @@
 
 	return TRUE
 
-/proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE)
+/proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE,var/loadout=FALSE)
 
 	if(!object_data)
 		//log_error("Tried to create an object with a null object_data list!")
@@ -67,9 +67,13 @@
 		return FALSE
 
 	I = new I(loc)
-	I.load_item_data_pre(P,object_data)
+	if(!I.load_item_data_pre(P,object_data))
+		qdel(I)
+		return null
 	INITIALIZE(I)
-	I.load_item_data_post(P,object_data)
+	if(!I.load_item_data_post(P,object_data))
+		qdel(I)
+		return null
 	FINALIZE(I)
 	I.drop_item(loc,silent=TRUE)
 
@@ -78,7 +82,7 @@
 		return null
 
 	if(I.contraband)
-		if(P)
+		if(P && !loadout)
 			var/value_to_give = FLOOR(I.get_value()*0.5,1)
 			if(value_to_give > 0)
 				P.to_chat(span("notice","Due to \the [I.name] being contraband, the cryo system cannot grant you this object. You were given [value_to_give] credits as compensation."))
