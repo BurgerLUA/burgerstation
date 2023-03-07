@@ -22,6 +22,8 @@
 	var/next_self_health_update = 0
 	var/last_self_health
 
+	ignore_hazard_turfs = FALSE
+
 /ai/boss/gabber/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_gabber = desired_owner
 	return ..()
