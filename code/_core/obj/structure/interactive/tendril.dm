@@ -52,18 +52,20 @@ var/global/list/possible_monsters_to_spawn = list(
 /obj/structure/interactive/tendril/Finalize()
 	. = ..()
 	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2),src,.proc/spawn_monster)
-	for(var/d in DIRECTIONS_ALL)
+	for(var/d in DIRECTIONS_ALL + 0x0)
 		var/turf/T = get_step(src,d)
 		if(T && is_simulated(T))
-			T.change_turf(/turf/simulated/floor/basalt/)
+			var/turf/simulated/S = T
+			if(S.health || !S.density)
+				S.change_turf(/turf/simulated/floor/basalt/)
 
 /obj/structure/interactive/tendril/proc/telegraph_delete()
 
 	for(var/k in DIRECTIONS_ALL + 0x0)
 		var/turf/T = get_step(src,k)
-		if(is_simulated(T))
+		if(T && is_simulated(T))
 			var/turf/simulated/S = T
-			if(S.health)
+			if(S.health || !S.density)
 				S.change_turf(/turf/simulated/liquid/lava/)
 
 	var/obj/structure/interactive/crate/necro/C = new(get_turf(src))
