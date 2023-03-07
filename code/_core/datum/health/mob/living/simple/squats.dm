@@ -1,6 +1,8 @@
 /health/mob/living/simple/squats/
 	organic = FALSE
 
-/health/mob/living/simple/squats/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
+/health/mob/living/simple/squats/update_health()
 	. = ..()
+	if(!owner)
+		return .
 	owner.update_sprite()

@@ -22,7 +22,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/lattice/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/construction/lattice/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
@@ -89,7 +89,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(caller)
+			src.on_destruction(FALSE)
 			return TRUE
 		if(istype(I,/obj/item/material/rod/))
 			INTERACT_CHECK

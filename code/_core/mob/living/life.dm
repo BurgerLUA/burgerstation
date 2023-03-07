@@ -91,16 +91,6 @@
 
 	handle_transform()
 
-	brute_regen_buffer = max(brute_regen_buffer,0)
-	burn_regen_buffer = max(burn_regen_buffer,0)
-	tox_regen_buffer = max(tox_regen_buffer,0)
-	pain_regen_buffer = max(pain_regen_buffer,0)
-	rad_regen_buffer = max(rad_regen_buffer,0)
-	sanity_regen_buffer = max(sanity_regen_buffer,0)
-	mental_regen_buffer = max(mental_regen_buffer,0)
-	mana_regen_buffer = max(mana_regen_buffer,0)
-	stamina_regen_buffer = max(stamina_regen_buffer,0)
-
 	return TRUE
 
 
@@ -169,6 +159,15 @@
 	return rejuvenate() && revive()
 
 /mob/living/proc/pre_death()
+	brute_regen_buffer = max(brute_regen_buffer,0)
+	burn_regen_buffer = max(burn_regen_buffer,0)
+	tox_regen_buffer = max(tox_regen_buffer,0)
+	pain_regen_buffer = max(pain_regen_buffer,0)
+	rad_regen_buffer = max(rad_regen_buffer,0)
+	sanity_regen_buffer = max(sanity_regen_buffer,0)
+	mental_regen_buffer = max(mental_regen_buffer,0)
+	mana_regen_buffer = max(mana_regen_buffer,0)
+	stamina_regen_buffer = max(stamina_regen_buffer,0)
 	if(alert_overlay) alert_overlay.icon_state = "none"
 	if(chat_overlay) chat_overlay.icon_state = "none"
 	HOOK_CALL("pre_death")

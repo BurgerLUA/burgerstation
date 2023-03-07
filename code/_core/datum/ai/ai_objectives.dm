@@ -140,10 +140,10 @@
 			set_objective(null)
 			return TRUE
 
-/ai/proc/find_new_objectives(var/tick_rate)
+/ai/proc/find_new_objectives(var/tick_rate,var/bonus_sight=FALSE)
 
 	//Find a new living mob target.
-	var/list/possible_targets = get_possible_targets()
+	var/list/possible_targets = get_possible_targets(bonus_sight)
 	var/atom/best_target
 	var/best_score = -INFINITY
 	var/best_detection_value = 0
@@ -236,7 +236,7 @@
 	if(owner.has_status_effect(REST)) //Mostly used for sleeping zombies.
 		. *= 0.5
 
-/ai/proc/get_possible_targets()
+/ai/proc/get_possible_targets(var/bonus_sight=FALSE)
 
 	. = list()
 
@@ -250,7 +250,7 @@
 	for(var/mob/living/L in view(range_to_use,owner))
 		if(!should_attack_mob(L))
 			continue
-		var/detection_level = get_detection_level(L)
+		var/detection_level = get_detection_level(L,FALSE,bonus_sight)
 		if(detection_level <= 0)
 			continue
 		.[L] = detection_level

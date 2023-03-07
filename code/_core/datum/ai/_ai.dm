@@ -107,7 +107,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//2 = resist grabs by everyone
 
 	var/retaliate = TRUE //Should we attack when getting hit?
-	var/aggression = 1 //Thanks elder scrolls.
+	var/aggression = 2 //Thanks elder scrolls.
 	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
 	//1 = Attacks enemies in enemy tags.
 	//2 = Attacks people who don't have the same loyalty tag as them, except for AI.
@@ -125,8 +125,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//Roaming Stuff.
 	var/allow_far_roaming = FALSE //Set to true to change the origin point of the roam when the roam finishes.
 	var/roaming_distance = 0 //Allowed distance to roam. Set to a value above 0 to enable.
-	var/roaming_counter = 0 //Allowed steps to roam. Will be set to double roaming_distance.
-	var/roaming_direction = 0x0 // The direction the mob is currently romaing.
+	var/roaming_counter = 0 //Allowed steps to roam. Will be set to double roaming_distance, so there is no point in changing this.
+	var/roaming_direction = 0x0 // The direction the mob is currently romaing. Don't change this.
 
 	var/guard = FALSE //Set to true if the mob constantly tries to guard the current location.
 
@@ -238,8 +238,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	roaming_counter = roaming_distance*2
 	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
 	home_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
-	if(night_vision <= 0)
-		night_vision = 0.5
 	. = ..()
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner

@@ -59,7 +59,7 @@
 			else
 				.[damage_type] = bonus[damage_type]
 
-/health/mob/living/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
+/health/mob/living/update_health()
 
 	var/mob/living/L = owner
 
@@ -69,51 +69,53 @@
 
 	. = ..()
 
-	if(.)
+	if(!owner)
+		return .
 
-		//Regularcrit
-		if(L.death_threshold < 0)
-			var/should_be_in_crit = (health_current <= 0) && !L.status_effects[ADRENALINE]
-			if(!L.status_effects[CRIT] && should_be_in_crit)
-				L.add_status_effect(CRIT,-1,-1,force = TRUE)
-				if(!L.dead && !L.status_effects[CRITPROTECTION])
-					L.add_status_effect(CRITPROTECTION,stealthy=TRUE)
-			else if(L.status_effects[CRIT] && !should_be_in_crit)
-				L.remove_status_effect(CRIT)
+	//Regularcrit
+	if(L.death_threshold < 0)
+		var/should_be_in_crit = (health_current <= 0) && !L.status_effects[ADRENALINE]
+		if(!L.status_effects[CRIT] && should_be_in_crit)
+			L.add_status_effect(CRIT,-1,-1,force = TRUE)
+			if(!L.dead && !L.status_effects[CRITPROTECTION] && L.is_player_controlled())
+				L.add_status_effect(CRITPROTECTION,stealthy=TRUE)
+		else if(L.status_effects[CRIT] && !should_be_in_crit)
+			L.remove_status_effect(CRIT)
 
-		//Paincrit
-		var/should_be_in_paincrit = (damage[PAIN] - L.pain_regen_buffer) > 0 && (damage[PAIN] - L.pain_regen_buffer) >= health_current
-		if(!L.status_effects[PAINCRIT] && should_be_in_paincrit)
-			L.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
-		else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
-			L.remove_status_effect(PAINCRIT)
+	//Paincrit
+	var/should_be_in_paincrit = (damage[PAIN] - L.pain_regen_buffer) > 0 && (damage[PAIN] - L.pain_regen_buffer) >= health_current
+	if(!L.status_effects[PAINCRIT] && should_be_in_paincrit)
+		L.add_status_effect(PAINCRIT,-1,-1,force = TRUE)
+	else if(L.status_effects[PAINCRIT] && !should_be_in_paincrit)
+		L.remove_status_effect(PAINCRIT)
 
-		if(check_death && L.check_death())
-			L.death()
+	//Death
+	if(L.check_death())
+		L.death()
 
-		if(L.medical_hud_image)
-			var/health_icon_state
-			if(L.dead)
-				var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
-				if(time_left > 0)
-					health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
-				else
-					health_icon_state = "dead"
-			else if (L.has_status_effect(CRIT))
-				health_icon_state = "crit"
+	//HUD stuff.
+	if(L.medical_hud_image)
+		var/health_icon_state
+		if(L.dead)
+			var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
+			if(time_left > 0)
+				health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
 			else
-				health_icon_state = "[clamp(FLOOR((health_current/health_max)*23, 1),0,23)]"
+				health_icon_state = "dead"
+		else if (L.has_status_effect(CRIT))
+			health_icon_state = "crit"
+		else
+			health_icon_state = "[clamp(FLOOR((health_current/health_max)*23, 1),0,23)]"
 
-			L.medical_hud_image.icon_state = health_icon_state
+		L.medical_hud_image.icon_state = health_icon_state
 
-		if(L.medical_hud_image_advanced)
-			L.medical_hud_image_advanced.icon_state = "[damage[TOX] > 0][damage[BURN] > 0][damage[BRUTE] > 0]"
+	if(L.medical_hud_image_advanced)
+		L.medical_hud_image_advanced.icon_state = "[damage[TOX] > 0][damage[BURN] > 0][damage[BRUTE] > 0]"
 
-		if(update_hud)
-			for(var/k in L.stat_elements)
-				var/obj/hud/button/stat/S = L.stat_elements[k]
-				L.stat_elements_to_update[S] = TRUE
-			L.update_boss_health()
+	for(var/k in L.stat_elements)
+		var/obj/hud/button/stat/S = L.stat_elements[k]
+		L.stat_elements_to_update[S] = TRUE
+	L.update_boss_health()
 
 /health/mob/living/update_health_stats()
 

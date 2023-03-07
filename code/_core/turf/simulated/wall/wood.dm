@@ -17,7 +17,7 @@
 	window_blend = TRUE
 	reinforced_blend = BLEND_MULTIPLY
 
-/turf/simulated/wall/wood/on_destruction(var/mob/caller,var/damage = FALSE)
+/turf/simulated/wall/wood/on_destruction(var/damage = TRUE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)
 	G.material_id = material_id

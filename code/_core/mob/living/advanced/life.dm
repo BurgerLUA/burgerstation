@@ -182,11 +182,3 @@ var/global/list/spread_icons = list(
 		if(client.mouse_pointer_icon != icon_to_use)
 			set_mouse_pointer(icon_to_use)
 
-
-/mob/living/advanced/can_buffer_health()
-	if(src.status_effects[CRITPROTECTION])
-		return FALSE
-	. = ..()
-
-
-

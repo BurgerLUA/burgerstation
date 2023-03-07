@@ -162,15 +162,11 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		return FALSE
 	. = ..()
 
-/obj/structure/interactive/supermatter/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/supermatter/on_destruction(var/damage = TRUE)
 	charge = 0
 	var/turf/T = get_turf(src)
 	qdel(src)
 	. = ..()
-	if(is_living(caller))
-		var/mob/living/L = caller
-		if(L.is_player_controlled())
-			log_admin("Player [L.get_debug_name()] belonging to [L.loyalty_tag] destroyed a supermatter.")
 	explode(T,VIEW_RANGE*2,src,src,"Supermatter")
 
 /*

@@ -215,7 +215,7 @@
 			play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),T)
 		update_sprite()
 
-/obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/blob/on_destruction(var/damage = TRUE)
 	. = ..()
 	qdel(src)
 

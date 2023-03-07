@@ -1,4 +1,4 @@
-/ai/proc/get_detection_level(var/atom/A,var/view_check=FALSE) //Returns a value 0 to 1.
+/ai/proc/get_detection_level(var/atom/A,var/view_check=FALSE,var/bonus_sight=FALSE) //Returns a value 0 to 1.
 
 	var/turf/T_owner = get_turf(owner)
 	var/turf/T_atom = get_turf(A)
@@ -21,7 +21,7 @@
 		vision_distance = get_dist(T_atom,T_objective) //Objective attack is the central focus point, if there is one.
 		vision_distance = max(vision_distance,0)
 
-	if(!see_through_walls && view_check && !T_owner.is_straight_path_to(T_atom,check_vision=TRUE,check_density=FALSE))
+	if(view_check && !see_through_walls && !T_owner.is_straight_path_to(T_atom,check_vision=TRUE,check_density=FALSE))
 		return 0 //Never be able to see through walls.
 
 	//Lightness calculations
@@ -32,8 +32,8 @@
 			lightness = 1
 	lightness = COSINE_CURVE(lightness)
 
-	// https://www.desmos.com/calculator/mc4gs7eia1
-	. = 2 * (0.5 + src.stored_sneak_power) * (1 - ((vision_distance**0.9)-1)/VIEW_RANGE)*(lightness**0.7)
+	// https://www.desmos.com/calculator/bbvdmhbfao
+	. = 2 * (0.5 + src.stored_sneak_power) * (1 - ((vision_distance**0.6)-1)/VIEW_RANGE)*(lightness**0.6)
 
 	if(!src.true_sight && is_living(A))
 		var/mob/living/L = A
@@ -43,6 +43,9 @@
 			. *= 0.25
 
 	if(A == hunt_target)
+		. += 0.5
+
+	if(bonus_sight)
 		. += 0.5
 
 	if(debug && ismob(A))

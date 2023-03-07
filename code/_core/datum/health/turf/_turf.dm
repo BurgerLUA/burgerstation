@@ -37,23 +37,23 @@ var/global/list/image/turf_damage_icons = new/list(5,4)
 			armor = M.armor
 	organic = T.organic
 
-/health/turf/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
+/health/turf/update_health()
 
 	. = ..()
 
-	if(.)
+	if(!owner)
+		return .
 
-		var/turf/simulated/T = owner
+	if(health_current <= 0)
+		owner.on_destruction()
+		return .
 
-		if(health_current <= 0)
-			T.on_destruction(attacker,TRUE)
-		else
-			var/desired_damage_icon = (1 - health_current/health_max)*(length(turf_damage_icons)+1)
-			desired_damage_icon = FLOOR(desired_damage_icon,1)
-			if(last_damage_icon != desired_damage_icon)
-				T.overlays.Cut()
-				T.update_overlays()
-				if(desired_damage_icon > 0)
-					T.add_overlay(turf_damage_icons[desired_damage_icon][damage_icon_turn])
-				last_damage_icon = desired_damage_icon
+	var/desired_damage_icon = (1 - health_current/health_max)*(length(turf_damage_icons)+1)
+	desired_damage_icon = FLOOR(desired_damage_icon,1)
+	if(last_damage_icon != desired_damage_icon)
+		owner.overlays.Cut()
+		owner.update_overlays()
+		if(desired_damage_icon > 0)
+			owner.add_overlay(turf_damage_icons[desired_damage_icon][damage_icon_turn])
+		last_damage_icon = desired_damage_icon
 

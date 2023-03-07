@@ -55,7 +55,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(caller)
+			src.on_destruction(FALSE)
 			return TRUE
 	if(istype(object,/obj/item/material/sheet))
 		var/obj/item/material/sheet/S = object
@@ -74,7 +74,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/interactive/construction/grille/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/construction/grille/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)

@@ -39,6 +39,6 @@
 	CALLBACK("\ref[src]_cut_overlays",SECONDS_TO_DECISECONDS(3),src,.proc/cut_overlays)
 
 
-/obj/structure/metal_foam/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/metal_foam/on_destruction(var/damage = TRUE)
 	. = ..()
 	qdel(src)

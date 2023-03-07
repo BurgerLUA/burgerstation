@@ -26,13 +26,8 @@
 
 	layer = LAYER_WALL_LARGE + 0.1
 
-/turf/simulated/wall/rock/on_destruction(var/mob/caller,var/damage = FALSE)
-
-	if(get_dist(caller,src) <= 1)
-		create_destruction(src,list(/obj/item/material/sandstone/ = 1),material_id)
-
+/turf/simulated/wall/rock/on_destruction(var/damage = TRUE)
 	CREATE(/obj/structure/scenery/rocks,src)
-
 	. = ..()
 
 /turf/simulated/wall/rock/snow

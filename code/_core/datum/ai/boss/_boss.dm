@@ -24,3 +24,5 @@
 	boss = TRUE
 
 	guard = TRUE
+
+	use_blood_sight = FALSE

@@ -1,10 +1,5 @@
 /atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
-
-	if(health)
-		health.update_health(attacker,damage_amount)
-
 	HOOK_CALL("on_damage_received")
-
 	return TRUE
 
 /atom/proc/change_victim(var/atom/attacker)

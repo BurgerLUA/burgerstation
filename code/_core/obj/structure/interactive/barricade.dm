@@ -115,7 +115,7 @@ obj/structure/interactive/barricade/Finalize()
 
 
 
-/obj/structure/interactive/barricade/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/barricade/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),/material/steel)
 	. = ..()
 	qdel(src)

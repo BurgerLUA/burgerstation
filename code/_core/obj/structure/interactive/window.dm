@@ -59,7 +59,7 @@
 				I.appearance_flags = T.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_overlay(I)
 
-/obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/window/on_destruction(var/damage = TRUE)
 	if(damage)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 		no_queue = TRUE

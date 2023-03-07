@@ -81,7 +81,7 @@ var/global/list/equipped_antags = list()
 	return TRUE
 
 
-/obj/structure/interactive/vending/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/vending/on_destruction(var/damage = TRUE)
 	. = ..()
 	if(!broken)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),/material/glass)

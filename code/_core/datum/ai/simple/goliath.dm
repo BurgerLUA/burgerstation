@@ -7,6 +7,11 @@
 	var/next_tentacle_attack = 100
 	var/tentacle_distance_max = 4
 
+	night_vision = 0
+
+	allow_far_roaming = FALSE
+	roaming_distance = VIEW_RANGE
+
 /ai/goliath/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_goliath = desired_owner
 	return ..()

@@ -91,7 +91,7 @@
 
 
 
-/obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/plant/on_destruction(var/damage = TRUE)
 
 	var/should_delete = dead || !damage
 	if(damage && !dead)

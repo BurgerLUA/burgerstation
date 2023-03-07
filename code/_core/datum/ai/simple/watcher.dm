@@ -5,6 +5,10 @@
 	var/projectile_delay = SECONDS_TO_DECISECONDS(5)
 	var/projectile_count = 2
 
+	night_vision = 0
+
+	roaming_distance = VIEW_RANGE*0.5
+
 /ai/watcher/handle_attacking()
 
 	if(objective_attack)

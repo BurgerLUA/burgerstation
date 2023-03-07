@@ -66,8 +66,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	max_level = 100 //Base max level for skills and attributes of the mob.
 
-	death_threshold = -50
-
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs

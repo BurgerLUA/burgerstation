@@ -266,7 +266,8 @@ var/global/list/rarity_to_mul = list(
 	if(!crafting_id)
 		crafting_id = src.type
 
-	layer = LAYER_BASE + value / 10000
+	if(is_turf(loc))
+		layer = LAYER_BASE + value / 10000
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)

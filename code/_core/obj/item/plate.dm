@@ -35,14 +35,14 @@
 /obj/item/plate/on_thrown(var/atom/owner,var/atom/hit_atom)
 
 	if(hit_atom)
-		on_destruction(owner,TRUE)
+		on_destruction()
 
 	return ..()
 
 /obj/item/plate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return !broken
 
-/obj/item/plate/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/item/plate/on_destruction(var/damage = TRUE)
 
 	var/turf/T = get_turf(src)
 

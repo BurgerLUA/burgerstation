@@ -36,7 +36,7 @@
 	. = ..()
 
 	if(hit_atom)
-		on_destruction(owner,TRUE)
+		on_destruction()
 
 /obj/item/supply_crate/PostInitialize()
 	. = ..()
@@ -47,17 +47,13 @@
 /obj/item/supply_crate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/supply_crate/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/item/supply_crate/on_destruction(var/damage = TRUE)
 
 	var/turf/T = get_turf(src)
 	play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(loot)
-		var/rarity = 0
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
-			rarity = P.get_rarity()
+		var/rarity = 50
 		var/list/spawned_loot = SPAWN_LOOT(loot,T,rarity)
 		for(var/k in spawned_loot)
 			var/obj/item/I = k

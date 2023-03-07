@@ -3,10 +3,10 @@
 	if(!health || has_status_effect(IMMORTAL))
 		return FALSE
 
-	if((health.health_current + STATUS_EFFECT_MAGNITUDE(src,UNDYING)) <= death_threshold)
-		return TRUE
+	if((health.health_current + STATUS_EFFECT_MAGNITUDE(src,UNDYING)) > death_threshold)
+		return FALSE
 
-	return FALSE
+	return TRUE
 
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 

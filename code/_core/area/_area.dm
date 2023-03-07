@@ -206,7 +206,7 @@
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 		if(!T.desired_light_color)
 			continue
-		T.on_destruction(null,TRUE)
+		T.on_destruction()
 	return TRUE
 
 /area/proc/apc_process()

@@ -169,9 +169,9 @@
 
 
 
-/health/mob/living/advanced/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
+/health/mob/living/advanced/update_health()
 
-	//Advanced damage is reset and defered to organs.
+	//Some damage is reset and defered to organs.
 	var/mob/living/advanced/A = owner
 	damage[BRUTE] = 0
 	damage[BURN] = 0

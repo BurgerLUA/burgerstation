@@ -25,3 +25,7 @@
 			L.health.adjust_loss_smart(brute=rand(5,10))
 			if(L.health.organic)
 				L.add_status_effect(SLOW,40,40)
+
+/obj/structure/interactive/barbed_wire/on_destruction(var/damage = TRUE)
+	. = ..()
+	qdel(src)

@@ -19,7 +19,7 @@
 
 	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
 
-/obj/structure/carpet/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/carpet/on_destruction(var/damage = TRUE)
 	. = ..()
 	qdel(src)
 

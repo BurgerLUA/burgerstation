@@ -43,7 +43,7 @@
 		update_sprite()
 	return TRUE
 
-/obj/structure/interactive/alchemy_plant/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/alchemy_plant/on_destruction(var/damage = TRUE)
 	. = ..()
 	qdel(src)
 

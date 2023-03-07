@@ -42,9 +42,9 @@
 /obj/structure/interactive/door/airlock/locked
 	locked = TRUE
 
-/obj/structure/interactive/door/airlock/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/door/airlock/on_destruction(var/damage = TRUE)
 	if(door_state != DOOR_STATE_BROKEN)
-		set_door_state(caller,DOOR_STATE_BROKEN,TRUE)
+		set_door_state(null,DOOR_STATE_BROKEN,TRUE)
 		health.restore()
 		. = ..()
 	else

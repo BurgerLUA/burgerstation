@@ -29,12 +29,11 @@
 	update_sprite()
 	return ..()
 
-/obj/item/cross/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/item/cross/on_destruction(var/damage = TRUE)
 
 	if(!broken)
 		var/turf/T = get_turf(src)
 		play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)
-		create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 		broken = TRUE
 		update_sprite()
 

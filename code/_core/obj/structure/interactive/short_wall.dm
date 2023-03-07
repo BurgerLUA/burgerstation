@@ -21,7 +21,7 @@
 
 	health_base = 400
 
-/obj/structure/short_wall/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/short_wall/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 2),material_id)
 	. = ..()
 	qdel(src)

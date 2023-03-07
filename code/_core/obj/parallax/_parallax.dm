@@ -53,7 +53,7 @@
 			var/turf/T2 = locate(x_c,y_c,z_c)
 			if(T2) return T2
 
-	. = ..()
+	return null
 
 /obj/parallax/layer1
 	icon_state = "layer1"

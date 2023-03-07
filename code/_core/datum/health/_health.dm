@@ -47,7 +47,7 @@
 	health_current = health_max
 	stamina_current = stamina_max
 	mana_current = mana_max
-	update_health(update_hud = FALSE)
+	update_health()
 	return TRUE
 
 /health/proc/update_health_stats()
@@ -104,7 +104,7 @@
 		return new_value - old_value
 	return 0
 
-/health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
+/health/proc/update_health() //Update the health values.
 	health_current = get_overall_health()
 	return TRUE
 

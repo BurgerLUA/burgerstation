@@ -16,7 +16,7 @@
 		if(object != top_object && top_object.click_on_object_alt(caller,object,location,control,params))
 			return TRUE
 
-	var/atom/top_object = src.get_top_object() //Basically what we have in our inventory.
+	var/atom/top_object = src.get_top_object() //What is in our inventory.
 
 	//Alt click a corpse with an empty hand.
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && is_advanced(object))
@@ -340,14 +340,6 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 /obj/hud/inventory/defer_click_on_object(var/mob/caller,location,control,params)
 
-	var/contents_length = length(contents)
-
-	if(worn && contents_length > 1)
-		for(var/i=contents_length,i>0,i--)
-			var/obj/item/I = contents[i]
-			if(I.is_container)
-				return I
-
 	if(grabbed_object)
 		return grabbed_object
 
@@ -355,7 +347,6 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 	if(A) return A
 
 	return src
-
 
 /obj/hud/inventory/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params)
 

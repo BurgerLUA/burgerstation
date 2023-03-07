@@ -1,8 +1,12 @@
 /health/mob/living/simple/drone/
 	organic = FALSE
 
-/health/mob/living/simple/drone/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
+/health/mob/living/simple/drone/update_health()
 	. = ..()
+
+	if(!owner)
+		return .
+
 	var/mob/living/L = owner
 
 	if(L.dead)

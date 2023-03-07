@@ -94,9 +94,7 @@
 	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
 	return TRUE
 
-/turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
-
-	if(!destruction_turf) CRASH("[get_debug_name()] called on_destruction without having a destruction turf!")
+/turf/simulated/on_destruction(var/damage = TRUE)
 
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0

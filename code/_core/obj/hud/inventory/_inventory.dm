@@ -384,9 +384,9 @@
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
 
-	I.layer = initial(I.layer)
-
 	vis_contents += I
+
+	I.layer = LAYER_BASE + length(vis_contents)
 
 	update_stats()
 
@@ -629,3 +629,24 @@
 		return null
 
 	return contents[content_length]
+
+/* Redundent
+/obj/hud/inventory/get_top_object()
+
+	var/list/found_items = list()
+
+	var/atom/best_atom
+
+	for(var/k in vis_contents)
+		var/atom/A = k
+		if(!best_atom)
+			best_atom = A
+			continue
+		if(A.plane > best_atom.plane)
+			best_atom = A
+			continue
+		if(A.plane == best_atom.plane && A.layer > best_atom.layer)
+			best_atom = A
+			continue
+*/
+
