@@ -12,15 +12,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 45*0.3,
+		SKILL_MAGIC = 45*0.3,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = HEAT
+		SKILL_MAGIC = HEAT
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC_OFFENSIVE = 75 //75%
+		SKILL_MAGIC = 75 //75%
 	)
 
 /damagetype/ranged/magic/inferno/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)

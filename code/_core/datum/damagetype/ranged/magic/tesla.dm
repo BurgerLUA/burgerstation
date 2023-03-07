@@ -12,15 +12,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 60*0.55,
+		SKILL_MAGIC = 60*0.55,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = SHOCK
+		SKILL_MAGIC = SHOCK
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC_OFFENSIVE = 75 //75%
+		SKILL_MAGIC = 75 //75%
 	)
 
 /damagetype/ranged/magic/tesla_shock
@@ -39,13 +39,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 20*0.55,
+		SKILL_MAGIC = 20*0.55,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = SHOCK
+		SKILL_MAGIC = SHOCK
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC_OFFENSIVE = 75 //75%
+		SKILL_MAGIC = 75 //75%
 	)

@@ -13,15 +13,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 45*0.4
+		SKILL_MAGIC = 45*0.4
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = list(ARCANE,DARK)
+		SKILL_MAGIC = list(ARCANE,DARK)
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC_OFFENSIVE = 75 //75%
+		SKILL_MAGIC = 75 //75%
 	)
 
 
@@ -40,13 +40,13 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 60*0.4
+		SKILL_MAGIC = 60*0.4
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = list(ARCANE,DARK)
+		SKILL_MAGIC = list(ARCANE,DARK)
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC_OFFENSIVE = 75 //75%
+		SKILL_MAGIC = 75 //75%
 	)

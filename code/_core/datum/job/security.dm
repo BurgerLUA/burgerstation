@@ -13,7 +13,6 @@
 
 		//3 Minor (5)
 		SKILL_EVASION = 5,
-		SKILL_PARRY = 5,
 		SKILL_ARMOR = 5
 	)
 
