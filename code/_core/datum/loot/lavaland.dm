@@ -1,7 +1,7 @@
 
 /loot/lavaland/chest //Necro chests after defeating tendril spawnwers.
 	loot_table = list(
-		/obj/item/attachment/barrel/laser_charger/advanced = 1,
+		/obj/item/attachment/barrel/charger/advanced = 1,
 		/obj/item/attachment/barrel/laser_charger/advanced = 1,
 		/obj/item/container/edible/meme_pizza = 1,
 		/obj/item/clothing/overwear/hardsuit/hammer_of_war = 1,
@@ -18,19 +18,19 @@
 
 /loot/lavaland/ash_drake
 	loot_table = list(
-		/obj/item/clothing/overwear/armor/drake_armor = 9,
+		/obj/item/clothing/overwear/armor/drake_armor = 3,
 		/obj/item/weapon/melee/energy/plightbringer = 1
 	)
 
 /loot/lavaland/bubblegum
 	loot_table = list(
-		/obj/item/clothing/overwear/hardsuit/ling = 9,
+		/obj/item/clothing/overwear/hardsuit/ling = 3,
 		/obj/item/clothing/mask/endless_bubblegum = 1
 	)
 
 /loot/lavaland/colossus
 	loot_table = list(
-		/obj/item/clothing/glasses/eyes_of_god = 9,
+		/obj/item/clothing/glasses/eyes_of_god = 3,
 		/obj/item/clothing/mask/voice_of_god = 1
 	)
 
@@ -43,31 +43,31 @@
 
 /loot/lavaland/goblin_king
 	loot_table = list(
-		/obj/item/storage/bagofhoarding = 9,
+		/obj/item/storage/bagofhoarding = 3,
 		/obj/item/clothing/head/hat/goblin_crown = 1
 	)
 
 /loot/lavaland/leaper
 	loot_table = list(
-		/obj/item/corrupting_frog = 9,
+		/obj/item/corrupting_frog = 3,
 		/obj/item/clothing/neck/blood_talisman = 1
 	)
 
 
 /loot/lavaland/herald
 	loot_table = list(
-		/obj/item/herald_mirror = 9,
+		/obj/item/herald_mirror = 3,
 		/obj/item/clothing/ring/copper/unarmed_booster = 1
 	)
 
 /loot/lavaland/hierophant
 	loot_table = list(
-		/obj/item/weapon/melee/hierophant_staff = 9,
+		/obj/item/weapon/melee/hierophant_staff = 3,
 		/obj/item/hope = 1
 	)
 
 /loot/lavaland/gabber
 	loot_table = list(
-		/obj/item/clothing/back/wings/angel = 9,
+		/obj/item/clothing/back/wings/angel = 3,
 		/obj/item/weapon/melee/staff_of_healing = 1
 	)
