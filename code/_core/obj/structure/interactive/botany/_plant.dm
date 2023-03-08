@@ -297,7 +297,7 @@
 			caller.visible_message(span("warning","\The [caller.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
 		else
 			caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
-			var/experience_to_add = total_harvests*potency*0.025
+			var/experience_to_add = total_harvests*potency*0.0125
 			caller.add_skill_xp(SKILL_SURVIVAL,CEILING(experience_to_add,1))
 
 	if(delete_after_harvest)

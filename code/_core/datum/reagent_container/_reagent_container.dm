@@ -194,7 +194,8 @@
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
-		temperature_mod *= I.inventory_temperature_mod
+		if(I.inventory_temperature_mod > 0)
+			temperature_mod *= I.inventory_temperature_mod
 
 	var/temperature_diff = desired_temperature - average_temperature
 

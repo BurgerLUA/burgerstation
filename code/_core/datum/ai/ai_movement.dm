@@ -46,7 +46,7 @@
 	if(!objective_attack)
 		return FALSE
 
-	if(!objective_attack.z) //Inside something. Get close to it.
+	if(!objective_attack.z) //They're inside something. Get close to it.
 		owner.move_dir = get_dir(owner,get_turf(objective_attack))
 		owner.movement_flags = MOVEMENT_RUNNING
 		return TRUE

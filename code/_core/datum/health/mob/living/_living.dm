@@ -115,6 +115,7 @@
 	for(var/k in L.stat_elements)
 		var/obj/hud/button/stat/S = L.stat_elements[k]
 		L.stat_elements_to_update[S] = TRUE
+
 	L.update_boss_health()
 
 /health/mob/living/update_health_stats()

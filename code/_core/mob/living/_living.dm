@@ -183,6 +183,7 @@
 
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
+	var/fire_stacks_max = 0 //largest fire stacks since ignite.
 
 	var/fatigue_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
 	var/pain_mul = 1

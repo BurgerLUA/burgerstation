@@ -348,6 +348,10 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS | FLAG_FLAVOR_NECRO
 
+	heated_reagent_temp = 750
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 1
+
 	nutrition_amount = 10
 	heal_factor = -10
 
@@ -368,6 +372,7 @@
 	flavor = "chicken"
 
 	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent_temp = 1000
 	heated_reagent = /reagent/ash
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
@@ -379,6 +384,10 @@
 	color = "#C44E55"
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	heated_reagent_temp = 750
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 1
 
 	nutrition_amount = 30
 	heal_factor = -10
@@ -400,6 +409,7 @@
 	flavor = "cooked brains"
 
 	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent_temp = 1100
 	heated_reagent = /reagent/ash
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
@@ -410,6 +420,10 @@
 	color = "#AD0000"
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	heated_reagent_temp = 750
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 1
 
 	nutrition_amount = 20
 	heal_factor = -5
@@ -431,6 +445,7 @@
 	flavor = "tough jerky"
 
 	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent_temp = 1100
 	heated_reagent = /reagent/ash
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
@@ -443,6 +458,10 @@
 	color = "#A54343"
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
+
+	heated_reagent_temp = 750
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 1
 
 	nutrition_amount = 0
 	heal_factor = 0
@@ -464,9 +483,11 @@
 	flavor = "filet mignon"
 
 	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent_temp = 1100
 	heated_reagent = /reagent/ash
 	heated_reagent_mul = 0.01
 	heated_reagent_amount = 0
+
 
 
 

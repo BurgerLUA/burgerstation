@@ -39,7 +39,7 @@
 	var/mob/living/L = owner
 	stored_line.pixel_x = FLOOR(L.resist_percent * 27,1)
 
-	if(L.next_resist > 0)
+	if(L.next_resist > 0 || L.resist_percent > 0)
 		src.alpha = clamp(src.alpha + 80,0,255)
 	else
 		src.alpha = clamp(src.alpha - 40,0,255)

@@ -79,6 +79,7 @@ SUBSYSTEM_DEF(explosion)
 		play_sound(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)
 		new /obj/effect/cleanable/scorch(desired_turf)
 		new /obj/effect/temp/explosion(desired_turf,desired_range)
+		create_alert(desired_range*2,desired_turf,desired_owner,ALERT_LEVEL_CAUTION)
 		for(var/d in DIRECTIONS_ALL)
 			if(!prob(80))
 				continue

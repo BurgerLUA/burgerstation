@@ -36,11 +36,12 @@
 				return FALSE
 			L.next_alert = world.time + SECONDS_TO_DECISECONDS(2)
 
-	var/z = "[epicenter.z]"
-
-	create_alert_process(SSbossai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSbossai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
+	var/chunk/CH = CHUNK(epicenter)
+	if(CH)
+		create_alert_process(CH.ai,range,epicenter,alert_source,alert_level,visual)
+		for(var/k in CH.adjacent_chunks)
+			var/chunk/CH2 = k
+			create_alert_process(CH2.ai,range,epicenter,alert_source,alert_level,visual)
 
 	return TRUE
+

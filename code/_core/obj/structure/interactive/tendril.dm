@@ -6,7 +6,7 @@ var/global/list/possible_monsters_to_spawn = list(
 )
 
 /obj/structure/interactive/tendril
-	name = "tendril"
+	name = "necropolis tendril"
 	desc = "The source of all life in lavaland."
 	desc_extended = "A very dangerous tendril that creates life, as well as destroys it. Killing the surrounding fauna will destroy the tendril and grant a reward."
 
@@ -19,7 +19,7 @@ var/global/list/possible_monsters_to_spawn = list(
 
 	var/mob/living/boss_to_spawn
 
-	var/deaths_until_loot = 20
+	var/deaths_until_loot = 12
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
@@ -32,7 +32,7 @@ var/global/list/possible_monsters_to_spawn = list(
 	desired_light_range = VIEW_RANGE*0.5
 	desired_light_color = "#C67000"
 
-	plane = PLANE_SCENERY
+	plane = PLANE_OBJ_LARGE
 
 	mouse_opacity = 1
 
@@ -68,11 +68,6 @@ var/global/list/possible_monsters_to_spawn = list(
 			if(S.health || !S.density)
 				S.change_turf(/turf/simulated/liquid/lava/)
 
-	var/obj/structure/interactive/crate/necro/C = new(get_turf(src))
-	INITIALIZE(C)
-	GENERATE(C)
-	FINALIZE(C)
-
 	qdel(src)
 
 /obj/structure/interactive/tendril/proc/spawn_monster()
@@ -93,8 +88,13 @@ var/global/list/possible_monsters_to_spawn = list(
 	if(tracked_mobs_length <= 0 && deaths_until_loot <= 0)
 		alpha = 0
 		set_density(0)
+		mouse_opacity = 0
+		var/obj/structure/interactive/crate/necro/C = new(get_turf(src))
+		INITIALIZE(C)
+		GENERATE(C)
+		FINALIZE(C)
 		play_sound('sound/effects/tendril_destroyed.ogg',get_turf(src))
-		CALLBACK("\ref[src]_telegraph_delete",SECONDS_TO_DECISECONDS(4),src,.proc/telegraph_delete)
+		CALLBACK("\ref[src]_telegraph_delete",SECONDS_TO_DECISECONDS(6),src,.proc/telegraph_delete)
 		return TRUE
 
 	if(tracked_mobs_length < spawn_limit && deaths_until_loot > 0)

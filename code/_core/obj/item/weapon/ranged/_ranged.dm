@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/
 
 	var/list/shoot_sounds = list()
-	var/shoot_alert = ALERT_LEVEL_CAUTION
+	var/shoot_alert = ALERT_LEVEL_COMBAT
 
 	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a longer barrel length.
 

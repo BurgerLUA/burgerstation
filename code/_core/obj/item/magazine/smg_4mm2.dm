@@ -24,6 +24,6 @@
 
 	size = SIZE_2
 
-	icon_states = 5
+	icon_states = 1
 
 	value = 10

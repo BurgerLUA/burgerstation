@@ -196,9 +196,9 @@
 
 		if(is_organ(weapon))
 			var/obj/item/organ/H = weapon
-			if(H.id == BODY_HAND_RIGHT)
+			if(H.id == BODY_HAND_RIGHT && A.inventories_by_id[BODY_HAND_RIGHT_HELD])
 				A.inventories_by_id[BODY_HAND_RIGHT_HELD].grab_object(attacker,victim)
-			else if(H.id == BODY_HAND_LEFT)
+			else if(H.id == BODY_HAND_LEFT && A.inventories_by_id[BODY_HAND_LEFT_HELD])
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].grab_object(attacker,victim)
 
 	return ..()
