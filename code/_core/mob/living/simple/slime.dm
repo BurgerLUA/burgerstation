@@ -54,6 +54,8 @@
 	override_butcher = TRUE
 	gib_on_butcher = FALSE
 
+	var/has_bomb = FALSE
+
 /mob/living/simple/slime/on_life_slow()
 	. = ..()
 	if((slime_traits & SLIME_TRAIT_UNSTABLE) && !qdeleting && !dead && !prob(80))
@@ -182,13 +184,30 @@
 
 	. = ..()
 
+	var/turf/T = get_turf(src)
+
 	for(var/obj/item/I in contents)
-		I.drop_item(loc)
+		if(T)
+			I.drop_item(T)
+		else
+			qdel(I)
+
+	if(T)
+		if(slime_traits & SLIME_TRAIT_EXPLOSIVE)
+			explode(T,2,src,src,src.loyalty_tag)
+
+		if(has_bomb)
+			has_bomb = FALSE
+			var/obj/item/slime_bomb/SB = new(T)
+			INITIALIZE(SB)
+			GENERATE(SB)
+			FINALIZE(SB)
+			SB.owner = src
+			SB.loyalty_tag = src.loyalty_tag
+			SB.light()
 
 	update_sprite()
 
-	if(slime_traits & SLIME_TRAIT_EXPLOSIVE)
-		explode(get_turf(src),2,src,src,src.loyalty_tag)
 
 /mob/living/simple/slime/check_death()
 
@@ -280,17 +299,21 @@
 
 	if(!dead)
 		for(var/obj/item/O in contents)
-			var/image/I2 = new/image(O.icon,O.icon_state)
-			I2.appearance = O.appearance
-			I2.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
+			var/image/I = new/image(O.icon,O.icon_state)
+			I.appearance = O.appearance
+			I.appearance_flags = O.appearance_flags | RESET_ALPHA | RESET_COLOR
 			var/matrix/M = matrix()
 			M.Scale(0.25,0.25)
-			I2.transform = M
-			add_underlay(I2)
+			I.transform = M
+			add_underlay(I)
+		if(has_bomb)
+			var/image/I = new/image(initial(icon),"bomb")
+			I.appearance_flags = src.appearance_flags | RESET_ALPHA | RESET_COLOR
+			add_underlay(I)
 	if(stored_slimes <= 1 && slime_traits & SLIME_TRAIT_THORNS)
 		var/image/I = new/image(initial(icon),"[src.icon_state]_thorns")
-		I.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
-		src.add_underlay(I)
+		I.appearance_flags = src.appearance_flags | RESET_ALPHA | RESET_COLOR
+		add_underlay(I)
 
 /mob/living/simple/slime/proc/absorb_slime(var/mob/living/simple/slime/desired_slime)
 

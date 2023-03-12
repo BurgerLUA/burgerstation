@@ -697,7 +697,7 @@
 
 	if(objective_attack && !checked_cover && attack_distance_max > 3)
 		checked_cover = TRUE
-		if(use_cover_chance && prob(use_cover_chance))
+		if(use_cover_chance > 0 && prob(use_cover_chance))
 			find_and_set_cover(objective_attack)
 
 	if(!checked_weapons && objective_attack && abs(get_dist(owner,objective_attack) - attack_distance_max) > VIEW_RANGE*0.5) //Find a new weapon to use if our enemy is close/far.
@@ -742,12 +742,12 @@
 
 /ai/advanced/proc/find_and_set_cover(var/atom/enemy)
 
-	var/obj/marker/cover_node/CN
 	var/turf/T = get_turf(owner)
 
 	var/obj/marker/cover_node/best_cover
 	var/best_cover_distance
 
+	var/obj/marker/cover_node/CN
 	FOR_DVIEW(CN,VIEW_RANGE,T,101)
 		if(!(CN.dir & get_dir(CN,enemy)))
 			continue
@@ -756,7 +756,7 @@
 		var/distance_to_cover = get_dist(T,CN)
 		var/distance_to_enemy = get_dist(CN,enemy)
 		if(attack_distance_max < distance_to_enemy || attack_distance_min > distance_to_enemy) //Too far || too close.
-			distance_to_cover *= 2
+			distance_to_cover *= 2 //Still viable, just a worse weight.
 		if(best_cover && distance_to_cover >= best_cover_distance)
 			continue
 		best_cover = CN
@@ -793,7 +793,7 @@
 	var/mob/living/advanced/A = owner
 
 	var/should_be_in_cover = FALSE
-	if(!found_grenade?.stored_trigger?.active) //A little confusing but it just prevents the below from running if there is a grenade and we should obviously never be in cover with an active grenade.
+	if(!(found_grenade?.stored_trigger?.active)) //A little confusing but it just prevents the below from running if there is a grenade and we should obviously never be in cover with an active grenade.
 		if(next_complex > world.time)
 			should_be_in_cover = TRUE
 		else if(A.left_item && istype(A.left_item,/obj/item/weapon/ranged/bullet/))

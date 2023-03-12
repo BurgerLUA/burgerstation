@@ -411,6 +411,9 @@
 	if(duration <= 0)
 		return FALSE
 
+	if(!deafened_duration)
+		play_sound_global('sound/effects/flashring.ogg',hearers=list(src),volume=75,channel=SOUND_CHANNEL_FLASHBANG)
+
 	deafened_duration = max(deafened_duration,duration)
 
 /mob/living/get_sound_environment()

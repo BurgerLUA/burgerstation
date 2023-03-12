@@ -199,7 +199,7 @@
 	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
 
-	GLOBAL_CLICK_DELAY
+	//GLOBAL_CLICK_DELAY
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 

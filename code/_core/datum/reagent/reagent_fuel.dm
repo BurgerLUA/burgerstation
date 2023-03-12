@@ -40,15 +40,12 @@
 	if(bang_strength_per_unit > 0)
 		var/bang_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)
 		if(bang_range >= 2)
-			var/list/hearing = list()
 			for(var/mob/living/L in hearers(bang_range,T))
 				var/strength_mod = 0.25 + (1 - (get_dist(L,T)/VIEW_RANGE))*0.75
-				var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod
-				L.flash(duration)
-				L.bang(duration*2)
-				hearing += L
+				var/duration = SECONDS_TO_DECISECONDS(10)*strength_mod*2
+				L.bang(duration)
 			play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=bang_range*0.5,range_max=bang_range*2,channel=SOUND_CHANNEL_FLASHBANG)
-			play_sound_global('sound/effects/flashring.ogg',hearers=hearing,volume=75,channel=SOUND_CHANNEL_FLASHBANG)
+
 
 	if(fire_strength_per_unit > 0)
 		var/fire_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)

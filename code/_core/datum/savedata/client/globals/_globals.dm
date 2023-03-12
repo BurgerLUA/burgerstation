@@ -38,5 +38,13 @@ var/global/list/ckey_to_globaldata = list()
 	if(!fexists(full_path))
 		rustg_file_write(json_encode(loaded_data),full_path)
 	else
-		loaded_data = json_decode(rustg_file_read(full_path))
+		var/list/found_data = json_decode(rustg_file_read(full_path))
+		for(var/k in loaded_data)
+			if(!found_data[k])
+				found_data[k] = loaded_data[k]
+		loaded_data = found_data
+
+
+
+
 	return TRUE

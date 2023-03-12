@@ -103,13 +103,16 @@
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 
-	for(var/id in loaded_data["organs"]) //This does not use load_and_create (thus load_item_data_pre and load_item_data) as organs are special. TODO: IT SHOULD THOUGH.
+	for(var/id in loaded_data["organs"])
+		if(!loaded_data["organs"][id])
+			log_error("WARNING: Incomplete organ data for [src.get_debug_name()]: [id]!")
+			continue
 		var/o_type = loaded_data["organs"][id]["type"]
 		if(appearance_only && ispath(o_type,/obj/item/organ/internal/implant))
 			continue
 		var/obj/item/organ/O = add_organ(o_type)
 		if(!O)
-			log_error("WARNING: Invalid Organ: [o_type]!")
+			log_error("WARNING: Invalid Organ for [src.get_debug_name()]: [o_type]!")
 			continue
 		if(loaded_data["organs"][id]["blend_data"])
 			O.set_blend_data(loaded_data["organs"][id]["blend_data"])

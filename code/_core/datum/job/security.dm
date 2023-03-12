@@ -5,27 +5,17 @@
 	passive_income_bonus = 100
 
 	bonus_skills = list(
-		//1 Major (15)
-		SKILL_RANGED = 15,
-
-		//2 Moderate (10)
-		SKILL_PRECISION = 10,
-
-		//3 Minor (5)
-		SKILL_EVASION = 5,
-		SKILL_ARMOR = 5
+		SKILL_MELEE = 5,
+		SKILL_ARMOR = 5,
+		SKILL_RANGED = 5,
+		SKILL_SURVIVAL = 5,
 	)
 
-	//50 total
 	bonus_attributes = list(
 		ATTRIBUTE_STRENGTH = 5,
-		ATTRIBUTE_VITALITY = 5,
-		ATTRIBUTE_FORTITUDE = 10,
+		ATTRIBUTE_FORTITUDE = 5,
 		ATTRIBUTE_CONSTITUTION = 5,
-		ATTRIBUTE_DEXTERITY = 10,
-		ATTRIBUTE_RESILIENCE = 5,
 		ATTRIBUTE_ENDURANCE = 5,
-		ATTRIBUTE_AGILITY = 5
 	)
 
 	ranks = list(

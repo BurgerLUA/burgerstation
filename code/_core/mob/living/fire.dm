@@ -5,7 +5,7 @@
 	if(!added_fire_stacks)
 		return FALSE
 	fire_stacks = clamp(fire_stacks + added_fire_stacks,MIN_FIRE_STACKS,MAX_FIRE_STACKS)
-	fire_stacks_max = max(fire_stacks_max,fire_stacks)
+	fire_stacks_max = max(fire_stacks_max,fire_stacks) //Not actually the maximum fire stacks but rather something cosmetic for the resist bar.
 	resist_percent = clamp(fire_stacks/fire_stacks_max,0,1)
 	if(!next_resist)
 		next_resist = 1

@@ -16,6 +16,8 @@
 
 	var/treatment_time_mul = 1
 
+	var/treatment_sound
+
 	amount = 1
 	amount_max = 10
 
@@ -94,6 +96,9 @@
 		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
 	else
 		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."),span("notice","You bandage \the [A.loc.name]'s [A.name]."))
+
+	if(treatment_sound)
+		play_sound(treatment_sound,get_turf(src))
 
 	add_item_count(-1)
 

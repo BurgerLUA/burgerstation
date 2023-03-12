@@ -11,6 +11,8 @@
 
 	value = 30
 
+	treatment_sound = 'sound/items/consumables/tape.ogg'
+
 /obj/item/container/healing/bandage/Generate()
 	. = ..()
 	amount = 3
@@ -77,6 +79,8 @@
 	value = 80
 
 	rarity = RARITY_UNCOMMON
+
+	treatment_sound = 'sound/items/consumables/tape.ogg'
 
 /obj/item/container/healing/trauma_kit/Generate()
 	. = ..()
@@ -146,6 +150,8 @@
 
 	rarity = RARITY_UNCOMMON
 
+	treatment_sound = 'sound/items/consumables/ointment.ogg'
+
 /obj/item/container/healing/bone_gel/Generate()
 	. = ..()
 	amount = 3
@@ -177,6 +183,8 @@
 	value = 80
 
 	rarity = RARITY_UNCOMMON
+
+	treatment_sound = 'sound/items/consumables/tape.ogg'
 
 /obj/item/container/healing/burn_kit/Generate()
 	. = ..()
