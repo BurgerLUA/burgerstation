@@ -26,6 +26,11 @@
 
 	alpha = 150
 
+	var/permanent = FALSE
+
+/obj/structure/interactive/slime_wall/permanent
+	permanent = TRUE
+
 /obj/structure/interactive/slime_wall/Cross(atom/movable/O,atom/oldloc)
 
 	if(is_living(O))
@@ -66,7 +71,8 @@
 		pixel_z = 0,
 		time = 5
 	)
-	CALLBACK("\ref[src]_telegraph_delete",300,src,.proc/telegraph_delete)
+	if(!permanent)
+		CALLBACK("\ref[src]_telegraph_delete",300,src,.proc/telegraph_delete)
 
 
 /obj/structure/interactive/slime_wall/proc/telegraph_delete()

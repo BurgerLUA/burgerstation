@@ -122,7 +122,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		var/obj/marker/map_node/MN = point_B
 		desired_distance = MN.precision
 
-	var/limit = VIEW_RANGE*2
+	var/limit = 10
 	while(get_dist(node_checker,point_B) > desired_distance && limit > 0)
 		limit--
 		CHECK_TICK_SAFE(75,FPS_SERVER)

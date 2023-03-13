@@ -99,6 +99,9 @@
 /obj/marker/prefab/boss/desert
 	category = "boss_desert"
 
+/obj/marker/prefab/boss/forest
+	category = "boss_forest"
+
 /obj/marker/prefab/forest
 	icon = 'icons/obj/markers/prefab_32x32.dmi'
 	category = "forest"

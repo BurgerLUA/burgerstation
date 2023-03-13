@@ -22,3 +22,11 @@
 /area/mission/prefab/boss/gabber
 	name = "Zechariah's Lair"
 	interior = TRUE
+
+
+/area/mission/prefab/boss/slime_king
+	name = "\improper Slime King's throne"
+	interior = FALSE
+
+	sunlight_freq = 8
+	sunlight_color = "#CCB06A"

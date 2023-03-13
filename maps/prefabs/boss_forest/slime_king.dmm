@@ -1,0 +1,45 @@
+"a" = (/turf/simulated/wall/rock,/area/dmm_suite/clear_area)
+"b" = (/obj/structure/interactive/slime_wall/permanent,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"c" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"d" = (/obj/structure/interactive/slime_tile/permanent,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"e" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"f" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node/x3,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"g" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node/x2,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"h" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node/x5,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"i" = (/obj/structure/interactive/slime_tile/permanent,/mob/living/simple/slime_king,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"j" = (/obj/structure/interactive/slime_wall/permanent,/obj/marker/map_node,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+
+(1,1,1) = {"
+eeeeeeeeeeaabbbbaaaeeeeeeeeeeeee
+eeeeeeaaaaabbcdbbaaaaaaaaeeeeeee
+eeeeeaaaabbbddddbbaabbaaaaeeeeee
+eeeeaabbbbdddddddbbbbbbaaaeeeeee
+eeeaaabdddddddddddddddbbaaeeeeee
+eeeaabbddddddddddddddddbbaeeeeee
+eeaabbdddddddfddddddddddbaaeeeea
+eeaabdddddddddddddddddddbaaaeeaa
+aaabbdddddddddddddddddddbbaaaaab
+aaabdddddddddddddddddddddbaaaaab
+aabbdddddddddddddddddddddbbaaabb
+bbbbbdddddddddddddddddddddbbabbd
+dddbbddddddddddddddddddddddbbbdd
+dgddbdddddhddidddddhddddddcdcbdc
+dddcdcdddddddddddddddddddddbbbdd
+bbbbbdddddddddddddddddddddbbabbd
+abbdddddddddddddddddddddddbaaabb
+aabbdddddddddddddddddddddbbaaaab
+aaabdddddddddddddddddddddbaaeeab
+eaabbdddddddddddddddddddbbaeeeaa
+eeaabbddddddfddddddddddbbaaeeeee
+eeaaabbddddddddddddddbbbaaaeeeee
+eeeaaabbbbdddddddbbbbbaaaaeeeeee
+eeeeaaaaabbddddbbbabbaaaaeeeeeee
+eeeeeaaaaabbddbbaaaaaaaeeeeeeeee
+eeeeeeeeaaabbjbaaeeeeeeeeeeeeeee
+eeeeeeeeeeabddbbaaeeeeeeeeeeeeee
+eeeeeeeeeeabdcdbbaeeeeeeeeeeeeee
+eeeeeeeeeeabbdddbaaaeeeeeeeeeeee
+eeeeeeeeeeaabdddbbaaaeeeeeeeeeee
+eeeeeeeeeeaabbdgdbbaaeeeeeeeeeee
+eeeeeeeeeeaaabddddbbaeeeeeeeeeee
+"}

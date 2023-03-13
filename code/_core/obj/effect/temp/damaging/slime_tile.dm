@@ -20,6 +20,11 @@
 
 	alpha = 200
 
+	var/permanent = FALSE
+
+/obj/structure/interactive/slime_tile/permanent
+	permanent = TRUE
+
 /obj/structure/interactive/slime_tile/Finalize()
 	. = ..()
 	var/original_color = color
@@ -38,7 +43,8 @@
 		pixel_z = 0,
 		time = 5
 	)
-	CALLBACK("\ref[src]_telegraph_delete",300,src,.proc/telegraph_delete)
+	if(!permanent)
+		CALLBACK("\ref[src]_telegraph_delete",300,src,.proc/telegraph_delete)
 
 /obj/structure/interactive/slime_tile/proc/telegraph_delete()
 	if(src.qdeleting)
