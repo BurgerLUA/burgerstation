@@ -648,7 +648,7 @@
 
 	if(dead)
 		dead = FALSE //I know this feels like shitcode but *dab
-		death()
+		death(silent=TRUE)
 
 	update_level(TRUE)
 
