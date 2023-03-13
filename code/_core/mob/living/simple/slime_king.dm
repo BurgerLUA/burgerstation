@@ -72,7 +72,48 @@
 
 	level = 30
 
+	var/list/linked_active_slimes = list()
+
 	var/elite = FALSE
+
+/mob/living/simple/slime_king/Destroy()
+	linked_active_slimes.Cut()
+	linked_active_slimes = null
+	. = ..()
+
+/mob/living/simple/slime_king/on_life_slow()
+
+	. = ..()
+
+	if(!dead)
+
+		for(var/k in linked_active_slimes)
+			var/mob/living/simple/slime/S = k
+			if(S.dead || S.qdeleting || get_dist(src,S) >= VIEW_RANGE*2)
+				linked_active_slimes -= k
+
+		if(length(linked_active_slimes) < 5)
+			var/turf/T = get_turf(src)
+			if(T)
+				var/list/valid_move_turfs = list()
+				for(var/d in DIRECTIONS_ALL)
+					var/turf/T2 = get_step(T,d)
+					if(!T2 || T2.density)
+						continue
+					valid_move_turfs += T2
+				if(length(valid_move_turfs))
+					var/mob/living/simple/slime/S = new(T)
+					INITIALIZE(S)
+					S.color = src.color
+					S.alpha = max(100,src.alpha)
+					FINALIZE(S)
+					var/turf/MT = pick(valid_move_turfs)
+					S.Move(MT)
+					if(S.ai)
+						S.ai.set_active(TRUE)
+						S.ai.find_new_objectives(AI_TICK,TRUE)
+					linked_active_slimes += S
+
 
 /mob/living/simple/slime_king/update_icon()
 	. = ..()
@@ -122,7 +163,7 @@
 		if(T)
 			var/mob/living/simple/slime/S = new(T)
 			S.color = src.color
-			S.alpha = src.alpha
+			S.alpha = max(100,src.alpha)
 			INITIALIZE(S)
 			FINALIZE(S)
 			var/xvel = rand(-1,1)
@@ -139,8 +180,6 @@
 /mob/living/simple/slime_king/post_death()
 	. = ..()
 	update_sprite()
-	animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(10))
-	CALLBACK("\ref[src]_delete_in",SECONDS_TO_DECISECONDS(11),src,.proc/delete_self)
 
 /mob/living/simple/slime_king/proc/delete_self()
 	qdel(src)
@@ -229,20 +268,21 @@
 
 
 
-/mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/create_bomb_slime=FALSE)
+/mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/create_slime=FALSE)
 	var/obj/structure/interactive/slime_wall/SW = locate() in T.contents
 	if(SW) return FALSE
 	var/obj/structure/interactive/slime_tile/S = locate() in T.contents
 	if(S) return FALSE
 	S = new(T)
 	S.color = src.color
-	S.alpha = src.alpha
+	S.alpha = max(100,src.alpha)
 	INITIALIZE(S)
 	GENERATE(S)
 	FINALIZE(S)
-	if(create_bomb_slime)
+	if(create_slime)
 		var/mob/living/simple/slime/L = new(T)
-		L.has_bomb = TRUE
+		if(elite)
+			L.has_bomb = TRUE
 		L.color = S.color
 		INITIALIZE(L)
 		GENERATE(L)
@@ -255,7 +295,7 @@
 		L.alpha = 0
 		animate(
 			L,
-			alpha=src.alpha,
+			alpha=max(100,src.alpha),
 			pixel_z=0,
 			time=10
 		)
@@ -269,7 +309,7 @@
 	if(S) return FALSE
 	S = new(T)
 	S.color = src.color
-	S.alpha = src.alpha
+	S.alpha = max(100,src.alpha)
 	INITIALIZE(S)
 	GENERATE(S)
 	FINALIZE(S)

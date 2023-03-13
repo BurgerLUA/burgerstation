@@ -9,6 +9,7 @@
 	density = 1
 	anchored = 1
 
+	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 	density = TRUE
 
@@ -17,7 +18,6 @@
 	bullet_block_chance = 100
 
 	health = /health/construction/barricade
-
 	health_base = 400
 
 	color = "#0094FF"

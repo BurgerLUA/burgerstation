@@ -175,7 +175,7 @@
 		return TRUE
 
 	//Checking if the object we're clicking on can even be interacted with. If all the above fail, it's probably an item.
-	if(object.plane >= PLANE_HUD || object.loc.plane >= PLANE_HUD || is_turf(object) || is_turf(object.loc)) // Only interact with objects that can actually be clicked on.
+	if(object.plane >= PLANE_HUD || (object.loc && object.loc.plane >= PLANE_HUD) || is_turf(object) || is_turf(object.loc)) // Only interact with objects that can actually be clicked on.
 		if(get_dist(src,object) <= 1)
 			if(is_item(object)) //We're clicking on another item.
 				var/obj/item/I = object

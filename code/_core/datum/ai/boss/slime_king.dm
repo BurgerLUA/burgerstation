@@ -5,7 +5,6 @@
 
 	var/next_slime_bomb = 0
 	var/next_slime_wave = 0
-	var/next_slime_ball = 0
 	var/next_slime_house = 0
 	var/next_special_attack = 0
 
@@ -24,17 +23,18 @@
 
 /ai/boss/slime_king/set_objective(var/atom/A)
 
+	var/had_previous_objective = objective_attack
+
 	. = ..()
 
-	if(.)
+	if(. && objective_attack && !had_previous_objective)
 		next_slime_bomb = max(next_slime_bomb,world.time + SECONDS_TO_DECISECONDS(30))
 		next_slime_wave = max(next_slime_wave,world.time + SECONDS_TO_DECISECONDS(10))
-		next_slime_ball = max(next_slime_ball,world.time + SECONDS_TO_DECISECONDS(1))
-		next_slime_house = max(next_slime_house,world.time + SECONDS_TO_DECISECONDS(120))
+		next_slime_house = max(next_slime_house,world.time + SECONDS_TO_DECISECONDS(60))
 
 /ai/boss/slime_king/handle_attacking()
 
-	if(objective_attack && next_special_attack <= world.time)
+	if(objective_attack && next_special_attack <= world.time && !owner_as_slime_king.has_status_effect(PARALYZE))
 
 		if(next_slime_house > 0 && next_slime_house <= world.time)
 			owner_as_slime_king.build_a_house(rand(4,6))
@@ -55,12 +55,5 @@
 				next_slime_wave = world.time + rand(100,300)
 				next_special_attack = world.time + 50
 				return TRUE
-
-		if(next_slime_ball > 0 && next_slime_ball <= world.time && owner_as_slime_king.dash_amount <= 0 && get_dist(owner_as_slime_king,objective_attack) >= 4)
-			owner_as_slime_king.shoot_slime_ball(objective_attack)
-			next_slime_ball = world.time + 5 + (owner_as_slime_king.health.health_current / owner_as_slime_king.health.health_max)*10
-			next_special_attack = world.time + 50
-			return TRUE
-
 
 	. = ..()

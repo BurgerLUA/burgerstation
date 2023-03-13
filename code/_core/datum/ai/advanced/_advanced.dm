@@ -225,11 +225,19 @@
 		objective_weapon = find_nearby_weapon()
 		if(!objective_weapon) checked_weapons_on_ground = TRUE
 
-	if(istype(A.left_item,/obj/item/weapon/ranged/) && handle_gun(A.left_item))
-		return TRUE
+	if(A.left_item)
+		if(is_ranged_weapon(A.left_item) && handle_gun(A.left_item))
+			return TRUE
+		if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item.can_wield && !A.left_item.wielded && !A.right_item)
+			A.inventories_by_id[BODY_HAND_RIGHT_HELD].wield(A,A.left_item)
+			next_complex = max(next_complex,world.time) + rand(2,6)
 
-	if(istype(A.right_item,/obj/item/weapon/ranged/) && handle_gun(A.right_item))
-		return TRUE
+	if(A.right_item)
+		if(is_ranged_weapon(A.right_item) && handle_gun(A.right_item))
+			return TRUE
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item.can_wield && !A.right_item.wielded && !A.left_item)
+			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,A.right_item)
+			next_complex = max(next_complex,world.time) + rand(2,6)
 
 	return FALSE
 

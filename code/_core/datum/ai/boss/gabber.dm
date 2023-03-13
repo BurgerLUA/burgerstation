@@ -33,8 +33,9 @@
 	return ..()
 
 /ai/boss/gabber/set_objective(var/atom/A)
+	var/had_previous_objective = objective_attack
 	. = ..()
-	if(.)
+	if(. && objective_attack && !had_previous_objective)
 		next_trap = max(next_trap,world.time + SECONDS_TO_DECISECONDS(30))
 		next_slam = max(next_slam,world.time + SECONDS_TO_DECISECONDS(10))
 		next_shoot = max(next_shoot,world.time + SECONDS_TO_DECISECONDS(1))

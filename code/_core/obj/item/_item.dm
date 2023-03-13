@@ -187,6 +187,8 @@
 
 	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this.
 
+	item_slot_layer = 3
+
 /obj/item/proc/can_unlock(var/mob/caller)
 	return TRUE
 
