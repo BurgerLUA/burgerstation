@@ -30,7 +30,7 @@
 	if(. && objective_attack && !had_previous_objective)
 		next_slime_bomb = max(next_slime_bomb,world.time + SECONDS_TO_DECISECONDS(30))
 		next_slime_wave = max(next_slime_wave,world.time + SECONDS_TO_DECISECONDS(10))
-		next_slime_house = max(next_slime_house,world.time + SECONDS_TO_DECISECONDS(60))
+		next_slime_house = max(next_slime_house,world.time + SECONDS_TO_DECISECONDS(30))
 
 /ai/boss/slime_king/handle_attacking()
 
@@ -38,7 +38,7 @@
 
 		if(next_slime_house > 0 && next_slime_house <= world.time)
 			owner_as_slime_king.build_a_house(rand(4,6))
-			next_slime_house = world.time + rand(600,1200)
+			next_slime_house = world.time + rand(300,600)
 			next_special_attack = world.time + 50
 			return TRUE
 

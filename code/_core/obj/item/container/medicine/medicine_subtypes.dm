@@ -11,7 +11,7 @@
 
 	value = 30
 
-	treatment_sound = 'sound/items/consumables/tape.ogg'
+	treatment_sound = 'sound/items/consumables/rip1.ogg'
 
 /obj/item/container/healing/bandage/Generate()
 	. = ..()
@@ -276,6 +276,8 @@
 	amount_max = 10
 
 	value = 10
+
+	treatment_sound = 'sound/items/consumables/tape.ogg'
 
 /obj/item/container/healing/gauze/Generate()
 	. = ..()

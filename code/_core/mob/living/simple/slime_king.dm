@@ -29,7 +29,7 @@
 	boss = TRUE
 	force_spawn = TRUE
 
-	armor = /armor/slime
+	armor = /armor/slime/king
 
 	status_immune = list(
 		STUN = TRUE,
@@ -233,6 +233,8 @@
 
 	add_status_effect(PARALYZE,duration=VIEW_RANGE*2,magnitude=-1,stealthy=TRUE)
 
+	play_sound('sound/effects/inflate.ogg',get_turf(src))
+
 	for(var/i=-1,i<=1,i+=1)
 		var/angle_mod = i*90
 		var/final_diraction = angle_mod ? turn(target_direction,angle_mod) : target_direction
@@ -350,7 +352,7 @@
 				break
 			T = pick(valid_turfs)
 			valid_turfs -= T
-		var/desired_time = elite ? 1 + i : 3 + i*3
+		var/desired_time = elite ? 1 + i*3 : 3 + i*6
 		CALLBACK("\ref[src]_throw_bomb_[i]",desired_time,src,.proc/throw_bomb,T)
 
 /mob/living/simple/slime_king/proc/throw_bomb(var/turf/T,var/throw_time=40)
@@ -367,6 +369,7 @@
 	animate(B,pixel_x = B.pixel_x*0.5,pixel_y=B.pixel_y*0.5,pixel_z=TILE_SIZE*3,time=throw_time*0.5)
 	animate(pixel_x=0,pixel_y=0,pixel_z=0,time=throw_time*0.5)
 	CALLBACK("\ref[B]_arm",throw_time*0.75,src,.proc/arm_bomb,B)
+	play_sound('sound/effects/splort.ogg',get_turf(src))
 
 /mob/living/simple/slime_king/proc/arm_bomb(var/obj/item/slime_bomb/B)
 	B.anchored = FALSE
@@ -385,6 +388,8 @@
 		return FALSE
 
 	add_status_effect(PARALYZE,duration=size*2*3*2,magnitude=-1,stealthy=TRUE)
+
+	play_sound('sound/effects/inflate.ogg',get_turf(src))
 
 	for(var/tx=-size,tx<=size,tx++) for(var/ty=-size,ty<=size,ty++)
 		var/turf/TA = locate(T.x + tx,T.y + ty,T.z)

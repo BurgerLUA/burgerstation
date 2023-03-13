@@ -208,7 +208,7 @@
 		BLUNT = 50,
 		PIERCE = -25,
 		LASER = -25,
-		ARCANE = 0,
+		ARCANE = 50,
 		HEAT = 50,
 		COLD = -100,
 		SHOCK = 200,
@@ -224,6 +224,31 @@
 		SANITY = 0
 	)
 	deflection = 1
+
+/armor/slime/king
+	defense_rating = list(
+		BLADE = 25,
+		BLUNT = 75,
+		PIERCE = 25,
+		LASER = 25,
+		ARCANE = 50,
+		HEAT = 100,
+		COLD = -50,
+		SHOCK = 200,
+		ACID = 200,
+		BOMB = 200,
+		BIO = 200,
+		RAD = 200,
+		HOLY = 0,
+		DARK = 0,
+		FATIGUE = INFINITY,
+		PAIN = INFINITY,
+		ION = INFINITY,
+		SANITY = 0
+	)
+	deflection = 1
+
+
 
 /armor/plant
 	defense_rating = list(
