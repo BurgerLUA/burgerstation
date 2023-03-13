@@ -292,13 +292,13 @@ var/global/list/equipped_antags = list()
 		V.associated_item = I
 		V.associated_vendor = src
 		V.associated_cost = stored_cost[I.type]
-		V.screen_loc = "LEFT+[2 + (column)*4],TOP-[row+2]"
+		V.screen_loc = "LEFT+[1.5 + (column)*4],TOP-[row+1.5]"
 		V.update_owner(A)
 		V.update_sprite()
 		row++
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "LEFT+[2 + (column+1)*4],TOP-2"
+	CV.screen_loc = "LEFT+[1.5 + (column+1)*4],TOP-1.5"
 	CV.update_owner(A)
 	CV.update_sprite()
 

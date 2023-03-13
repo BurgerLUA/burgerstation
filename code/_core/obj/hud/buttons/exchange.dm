@@ -14,7 +14,7 @@
 
 /obj/hud/button/exchange/
 	plane = PLANE_HUD
-	layer = LAYER_HUD+1
+	layer = LAYER_HUD+100
 
 /obj/hud/button/exchange/sell
 	name = "sell"
@@ -60,8 +60,11 @@
 						qdel(I)
 						if(!G.qdeleting && G.can_transfer_stacks_to(object))
 							G.transfer_amount_to(object)
+							object.update_sprite()
 						if(!G.qdeleting)
-							G.quick_equip(A,ignore_worn=TRUE)
+							if(!A.put_in_hands(G,params))
+								G.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE)
+
 
 					SSeconomy.update_stats()
 			else
