@@ -501,6 +501,7 @@
 #include "code\_core\datum\dialogue\npc\wizard_ambassador.dm"
 #include "code\_core\datum\dialogue\npc\job_providers\_job_providers.dm"
 #include "code\_core\datum\dialogue\npc\job_providers\head_of_personel.dm"
+#include "code\_core\datum\dialogue\npc\job_providers\head_of_security.dm"
 #include "code\_core\datum\dialogue\tutorial\_tutorial.dm"
 #include "code\_core\datum\disease\_disease.dm"
 #include "code\_core\datum\dmm_suite_goon\_dmm_suite.dm"

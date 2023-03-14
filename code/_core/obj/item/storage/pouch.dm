@@ -24,7 +24,7 @@
 	if(caller == object && is_advanced(caller))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
-		if(quick_equip(caller,TRUE))
+		if(quick_equip(caller,ignore_hands=TRUE,ignore_held=FALSE,ignore_dynamic=TRUE))
 			INTERACT_DELAY(1)
 			return TRUE
 
