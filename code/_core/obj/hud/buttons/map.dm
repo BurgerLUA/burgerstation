@@ -115,7 +115,7 @@
 
 		if(best_marker && connected_background.linked_shuttle_controller.set_destination(caller,best_marker))
 			update_sprite()
-			caller.to_chat(span("notice","New shuttle destination selected: [best_marker.name]."))
+			caller.to_chat(span("notice","New shuttle destination selected: [best_marker.name] [best_marker.linked_computer.shuttle_number]."))
 
 		return TRUE
 
