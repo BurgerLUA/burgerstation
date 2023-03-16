@@ -1929,6 +1929,7 @@
 #include "code\_core\obj\structure\interactive\light_switch.dm"
 #include "code\_core\obj\structure\interactive\limiter.dm"
 #include "code\_core\obj\structure\interactive\loaout_vendor.dm"
+#include "code\_core\obj\structure\interactive\market.dm"
 #include "code\_core\obj\structure\interactive\meme.dm"
 #include "code\_core\obj\structure\interactive\mining_drill.dm"
 #include "code\_core\obj\structure\interactive\misc.dm"

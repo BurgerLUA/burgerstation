@@ -3638,10 +3638,10 @@
 /turf/simulated/wall/metal,
 /area/burgerstation/cryo)
 "nE" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
 /obj/structure/interactive/lighting/fixture/tube/station{
 	dir = 4
 	},
+/obj/structure/interactive/market,
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/hall/west)
 "nF" = (
