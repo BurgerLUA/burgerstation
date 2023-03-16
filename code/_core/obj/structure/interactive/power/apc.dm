@@ -61,6 +61,7 @@
 		A.linked_apc.unlink_area(A)
 	A.linked_apc = src
 	src.linked_areas += A
+	SSpower.all_apc_areas += A
 	update_sprite()
 	return TRUE
 
@@ -68,6 +69,7 @@
 	src.linked_areas -= A
 	if(A.linked_apc == src)
 		A.linked_apc = null
+	SSpower.all_apc_areas -= A
 	update_sprite()
 	return TRUE
 

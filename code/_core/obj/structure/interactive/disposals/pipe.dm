@@ -31,13 +31,18 @@
 
 /obj/structure/interactive/disposals/pipe/Finalize()
 
-	var/disposals_count = 0
+	var/list/disposals_count = list()
 	for(var/obj/structure/interactive/disposals/pipe/DP in src.loc.contents)
-		disposals_count++
+		var/list/found_connections = DP.get_connections()
+		for(var/k in found_connections) //Only the key matters.
+			disposals_count[k] += 1
 
-	if(disposals_count > 1)
-		log_error("Multiple disposals pipes ([disposals_count]) detected at [src.loc.get_debug_name()].")
-		qdel(src)
+	for(var/k in disposals_count)
+		var/v = disposals_count[k]
+		if(v > 1)
+			log_error("Multiple disposals pipes ([disposals_count]) detected at [src.loc.get_debug_name()].")
+			qdel(src)
+			break
 
 	return ..()
 

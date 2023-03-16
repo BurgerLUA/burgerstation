@@ -95,7 +95,9 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.
 
-	var/tutorial = FALSE //Are you in the tutorial level?
+	var/list/quests = list()
+
+	var/tutorial = FALSE
 
 	var/list/linked_portals
 

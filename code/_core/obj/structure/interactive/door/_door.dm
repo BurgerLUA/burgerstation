@@ -37,6 +37,8 @@ obj/structure/interactive/door
 
 	power_type = POWER_DOOR
 
+	apc_powered = TRUE
+
 /obj/structure/interactive/door/Generate()
 
 	if(spawn_signaller)
@@ -154,6 +156,7 @@ obj/structure/interactive/door/metal
 /obj/structure/interactive/door/get_power_draw()
 	return 10
 
+/*
 /obj/structure/interactive/door/update_power_draw(var/desired_power_draw,var/reset=FALSE)
 
 	var/area/A = get_area(src)
@@ -175,6 +178,7 @@ obj/structure/interactive/door/metal
 	update_sprite()
 
 	return TRUE
+*/
 
 obj/structure/interactive/door/Finalize()
 	. = ..()

@@ -2,10 +2,12 @@
 	anchored = TRUE
 	power_type = POWER_LIGHT
 	powered = TRUE //By default.
+	apc_powered = TRUE
 
 /obj/structure/interactive/lighting/get_power_draw()
 	return CEILING(desired_light_power*desired_light_range*30,1)
 
+/*
 /obj/structure/interactive/lighting/update_power_draw(var/desired_power_draw,var/reset=FALSE)
 
 	var/area/A = get_area(src)
@@ -29,6 +31,6 @@
 	update_sprite()
 
 	return TRUE
-
+*/
 
 

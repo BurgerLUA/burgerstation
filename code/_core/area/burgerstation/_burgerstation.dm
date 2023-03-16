@@ -182,6 +182,14 @@
 
 	map_color = COLOR_GREEN
 
+/area/burgerstation/hop_office
+	name = "\improper Head of Personnel's Office"
+	icon_state = "cmd"
+
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
+
+	map_color = COLOR_COMMAND
+
 /area/burgerstation/cloning
 	name = "\improper Cloning"
 	icon_state = "clone"

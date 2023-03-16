@@ -48,6 +48,11 @@
 	fill_color = "#FFFFFF"
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/command/hop
+	name = "head of personnel's office"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
+	no_access = TRUE
 
 
 

@@ -219,20 +219,17 @@ obj/structure/interactive/proc/check_interactables(var/mob/caller,var/atom/objec
 		if(A && !A.linked_apc)
 			desired_power_draw = 0
 
-	if(A)
-		desired_power_draw = max(0,desired_power_draw)
+	desired_power_draw = max(0,desired_power_draw)
 
-		if(desired_power_draw != power_draw)
-			if(wire_powered)
-				if(!reset) connected_wire.power_network.power_draw -= power_draw
-				power_draw = desired_power_draw
-				connected_wire.power_network.power_draw += power_draw
-			else if(apc_powered)
-				if(!reset) A.power_draw -= power_draw
-				power_draw = desired_power_draw
-				A.power_draw += power_draw
-	else
-		power_draw = 0
+	if(desired_power_draw != power_draw)
+		if(wire_powered)
+			if(!reset) connected_wire.power_network.power_draw -= power_draw
+			power_draw = desired_power_draw
+			connected_wire.power_network.power_draw += power_draw
+		else if(A && apc_powered)
+			if(!reset) A.power_draw -= power_draw
+			power_draw = desired_power_draw
+			A.power_draw += power_draw
 
 	update_atom_light()
 	update_sprite()

@@ -22,11 +22,11 @@ SUBSYSTEM_DEF(power)
 				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 				if(!PA)
 					break
-				if(PA.type == /area/)
+				if(PA.type == /area/) //End of the road.
 					break
-				if(!PA.requires_power)
+				if(!PA.requires_power) //Can't really find one.
 					break
-				if(PA.linked_apc)
+				if(PA.linked_apc) //Hey, we found one.
 					PA.linked_apc.link_area(A)
 					break
 				PA = SSarea.all_areas[PA.parent_type] //Keep going until we find one.
@@ -38,6 +38,9 @@ SUBSYSTEM_DEF(power)
 		A.toggle_power_machines(A.default_state_power_machines,force=TRUE)
 		A.toggle_power_doors(A.default_state_power_doors,force=TRUE)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+	log_subsystem(src.name,"Created [length(all_power_networks)] power networks at Initialize().")
+	log_subsystem(src.name,"Created [length(all_apc_areas)] APC areas at Initialize().")
 
 /subsystem/power/on_life()
 
