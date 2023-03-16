@@ -8522,9 +8522,6 @@
 	},
 /turf/simulated/floor/tile/dark,
 /area/burgerstation/mining)
-"Lt" = (
-/turf/simulated/wall/metal/reinforced,
-/area/space/light)
 "Mk" = (
 /obj/structure/interactive/door/airlock/station/mining,
 /turf/simulated/floor/tile/dark,
@@ -30685,7 +30682,7 @@ CD
 CG
 CD
 CD
-Lt
+gN
 gN
 wQ
 gN
