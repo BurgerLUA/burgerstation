@@ -34,8 +34,7 @@
 				'sound/weapons/ranged/generic/gun_slide2.ogg',
 				'sound/weapons/ranged/generic/gun_slide3.ogg',
 				'sound/weapons/ranged/generic/gun_slide4.ogg',
-				'sound/weapons/ranged/generic/gun_slide5.ogg'
-			)
+				'sound/weapons/ranged/generic/gun_slide5.ogg')
 		if("forward")
 			return 'sound/weapons/ranged/generic/slide_drop.ogg'
 		if("back")
