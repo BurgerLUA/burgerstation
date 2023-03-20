@@ -18,7 +18,7 @@
 	plane = PLANE_WIRE
 	layer = LAYER_FLOOR_CARPET + 10
 
-	alpha = 200
+	alpha = 150
 
 	var/permanent = FALSE
 
@@ -90,7 +90,7 @@
 
 /obj/structure/interactive/slime_tile/Crossed(atom/movable/O)
 	. = ..()
-	if(is_living(O))
+	if(!qdeleting && !CALLBACK_EXISTS("\ref[src]_timed_destruction") && is_living(O))
 		var/mob/living/L = O
 		if(L.loyalty_tag == "Slime")
 			CALLBACK("\ref[src]_heal_\ref[L]",10,src,.proc/heal,L)

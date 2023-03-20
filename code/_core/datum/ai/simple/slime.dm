@@ -5,6 +5,9 @@
 	aggression = 1
 	assistance = 1
 
+	target_distribution_x = list(12,16,20)
+	target_distribution_y = list(4.8,12,16)
+
 /ai/slime/proc/can_absorb_slime(var/mob/living/simple/slime/S)
 
 	var/mob/living/simple/slime/self = owner
@@ -46,6 +49,16 @@
 
 	if(!istype(atom_to_attack,/mob/living/simple/slime/) || !can_absorb_slime(atom_to_attack)) //Double check to be safe.
 		return ..()
+
+	var/turf/atom_turf = get_step(src,atom_to_attack) //Only 1 step to prevent funny teleporting
+	if(!atom_turf)
+		return FALSE
+
+	if(atom_turf != atom_to_attack.loc)
+		owner.Move(atom_turf)
+
+	if(atom_turf != owner.loc)
+		return FALSE
 
 	var/mob/living/simple/slime/self = owner
 	self.absorb_slime(atom_to_attack)

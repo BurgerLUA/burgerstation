@@ -58,6 +58,8 @@
 
 	var/list/voice_modifiers
 
+	var/map_spawn = FALSE //Set to true to indicate this object was spawned in via dmm_suite
+
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 
 	if(density == desired_density && !force)

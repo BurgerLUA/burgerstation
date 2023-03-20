@@ -248,6 +248,7 @@ dmm_suite
 				if(angleOffset)
 					instance.dir = turn(instance.dir,-angleOffset)
 					instance.on_dmm_suite_rotate(angleOffset)
+				instance.map_spawn = TRUE
 
 			return TRUE
 

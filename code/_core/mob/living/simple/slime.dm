@@ -1,5 +1,5 @@
 /mob/living/simple/slime/
-	name = "grey slime"
+	name = "slime"
 	desc = "Oh no. They're here too."
 	desc_extended = "A strange gel-based canibalising lifeform that adapts their colors based on the surrounding environments. Diet typically includes fresh blood."
 
@@ -72,7 +72,7 @@
 
 	//Canceling out
 	if((slime_traits & SLIME_TRAIT_FAST) && (slime_traits & SLIME_TRAIT_SLOW))
-		slime_traits &= ~(SLIME_TRAIT_FAST|SLIME_TRAIT_SLOW)
+		slime_traits &= ~(SLIME_TRAIT_FAST|SLIME_TRAIT_SLOW) //Remove both.
 
 	if(slime_traits & SLIME_TRAIT_GLOW)
 		set_light_sprite(stored_slimes + (alpha/255)*2, alpha/255, src.color,LIGHT_OMNI)
@@ -207,6 +207,14 @@
 			SB.light()
 
 	update_sprite()
+
+
+/mob/living/simple/slime/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override) //The src attacks the victim, with the blamed taking responsibility
+
+	if(slime_traits & SLIME_TRAIT_WEAK)
+		damage_multiplier *= 0.5
+
+	. = ..()
 
 
 /mob/living/simple/slime/check_death()

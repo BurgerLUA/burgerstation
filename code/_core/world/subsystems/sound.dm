@@ -138,7 +138,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]
 		M.client << created_sound
 
-proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
+proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=50,var/looping=FALSE)
 
 	stop_music_track(hearer)
 
@@ -161,6 +161,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.status = 0
 	created_sound.volume = volume * (volume_mod/100)
 	created_sound.status = SOUND_STREAM
+	created_sound.repeat = looping
 
 	hearer << created_sound
 	hearer.current_music_track = music_track_id

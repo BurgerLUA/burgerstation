@@ -24,7 +24,7 @@
 
 	mouse_opacity = 2
 
-	alpha = 150
+	alpha = 220
 
 	var/permanent = FALSE
 
@@ -50,6 +50,7 @@
 	I.appearance_flags = src.appearance_flags | KEEP_APART
 	I.plane = PLANE_WIRE
 	I.layer = LAYER_FLOOR_CARPET + 10
+	I.alpha = 200
 	add_underlay(I)
 
 /obj/structure/interactive/slime_wall/Finalize()

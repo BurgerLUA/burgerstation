@@ -36,7 +36,7 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 			turfs_to_check -= k
 			var/turf/simulated/T = k
 			var/turf/dt = T.destruction_turf
-			if(T.organic && T.density && dt && !initial(dt.density))
+			if(!T.map_spawn && T.density && dt && !initial(dt.density))
 				T.change_turf(dt)
 			else if(!first)
 				break

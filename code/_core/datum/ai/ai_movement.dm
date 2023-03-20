@@ -237,7 +237,7 @@
 
 /ai/proc/handle_movement_move_from_ally()
 
-	if(move_from_ally <= 0)
+	if(boss || move_from_ally <= 0)
 		return FALSE
 
 	owner.move_dir = move_from_ally_dir

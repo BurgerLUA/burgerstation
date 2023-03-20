@@ -1,13 +1,13 @@
 /obj/projectile/slime_ball
 	name = "slime ball"
 	icon = 'icons/obj/projectiles/magic.dmi'
-	icon_state = "slime_ball_tri"
+	icon_state = "slime_ball"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 	lifetime = SECONDS_TO_DECISECONDS(4)
 
-
+/*
 /obj/projectile/slime_ball/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
@@ -40,3 +40,4 @@
 			SB.projectile_blacklist += hit_atom
 			INITIALIZE(SB)
 			FINALIZE(SB)
+*/

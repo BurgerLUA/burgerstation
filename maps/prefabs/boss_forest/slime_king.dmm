@@ -1,45 +1,55 @@
 "a" = (/turf/simulated/wall/rock,/area/dmm_suite/clear_area)
-"b" = (/obj/structure/interactive/slime_wall/permanent,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
-"c" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
-"d" = (/obj/structure/interactive/slime_tile/permanent,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"b" = (/obj/structure/interactive/slime_wall/permanent,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"c" = (/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"d" = (/obj/marker/map_node/x3,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
 "e" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"f" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node/x3,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
-"g" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node/x2,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
-"h" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/map_node/x5,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
-"i" = (/obj/structure/interactive/slime_tile/permanent,/mob/living/simple/slime_king,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
-"j" = (/obj/structure/interactive/slime_wall/permanent,/obj/marker/map_node,/turf/simulated/floor/cave_dirt,/area/mission/prefab/boss/slime_king)
+"f" = (/obj/marker/map_node/x2,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"g" = (/obj/marker/map_node,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"h" = (/obj/marker/map_node/x5,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"i" = (/mob/living/simple/slime_king,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"j" = (/obj/marker/map_node,/obj/structure/interactive/slime_tile/permanent,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"k" = (/obj/structure/interactive/slime_tile/permanent,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"l" = (/obj/marker/map_node/x2,/obj/structure/interactive/slime_tile/permanent,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"m" = (/obj/structure/interactive/slime_wall/permanent,/obj/marker/map_node,/obj/structure/interactive/slime_tile/permanent,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"n" = (/obj/marker/map_node,/obj/structure/interactive/slime_tile/permanent,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"o" = (/obj/structure/interactive/slime_tile/permanent,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"p" = (/obj/structure/interactive/slime_wall/permanent,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"q" = (/obj/marker/map_node/x2,/obj/structure/interactive/slime_tile/permanent,/turf/unsimulated/generation/forest/path,/area/mission/prefab/boss/slime_king)
+"r" = (/obj/structure/interactive/slime_wall/permanent,/obj/marker/smart_clear_turf/large,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"s" = (/obj/structure/interactive/slime_tile/permanent,/obj/marker/smart_clear_turf/large,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
+"t" = (/obj/marker/map_node,/obj/structure/interactive/slime_tile/permanent,/obj/marker/smart_clear_turf/large,/turf/dmm_suite/no_wall,/area/mission/prefab/boss/slime_king)
 
 (1,1,1) = {"
-eeeeeeeeeeaabbbbaaaeeeeeeeeeeeee
-eeeeeeaaaaabbcdbbaaaaaaaeeeeeeee
-eeeeeaaaabbbddddbbaabbaaaeeeeeee
-eeeeaabbbbdddddddbbbbbbaaaeeeeee
-eeeaaabdddddddddddddddbbaaeeeeee
-eeeaabbddddddddddddddddbbaeeeeee
-eeaabbdddddddfddddddddddbaaeeeea
-eeaabddddgdddddddgddgdddbaaaeeaa
-aaabbdddddddddddddddddddbbaaeaab
-aaabdddddddddddddddddddddbaaaaab
-aabbdddddddddddddddddddddbbaaabb
-bbbbbdddddddddddddddddddcdbbabbd
-dddbbddddddddddddddddddddddbbbdd
-dgddbdddddhddidddddhdddddgddcbdc
-dddcdcdddddddddddddddddddddbbbdd
-bbbbbdddddddddddddddddddcdbbabbd
-abbdddddddddddddddddddddddbaaabb
-aabbdddddddddddddddddddddbbaaaab
-aaabdddddddddddddddddcdddbaaeeab
-eaabbdddgdddddddgddgddddbbaeeeaa
-eeaabbddddddfddddddddddbbaaeeeee
-eeaaabbddddddddddddddbbbaaaeeeee
-eeeaaabbbbdddddddbbbbbaaaaeeeeee
-eeeeaaaaabbddddbbbabbaaaaeeeeeee
-eeeeeaaaaabbddbbaaaaaaaeeeeeeeee
-eeeeeeeeaaabbjbaaeeeeeeeeeeeeeee
-eeeeeeeeeaabddbbaaeeeeeeeeeeeeee
-eeeeeeeeeaabdcdbbaeeeeeeeeeeeeee
-eeeeeeeeeaabbdddbaaaeeeeeeeeeeee
-eeeeeeeeeaaabdddbbaaaeeeeeeeeeee
-eeeeeeeeeaaabbdgdbbaaeeeeeeeeeee
-eeeeeeeeeeaaabddddbbaeeeeeeeeeee
+eeeeeeeeeeaabrbbaaaeeeeeeeeeeeee
+eeeeeeaaaaabbnobbaaaaaaaeeeeeeee
+eeeeeaaaabbbkooopbaabbaaaeeeeeee
+eeeeaabbbbkoooooopbbbbbaaaeeeeee
+eeeaaabcccccccccccccccbbaaeeeeee
+eeeaabbccccccccccccccccbbaeeeeee
+eeaabbcccccccdccccccccccbaaeeeea
+eeaabccccfcccccccfccfcccbaaaeeaa
+aaabbcccccccccccccccccccbbaaeaab
+aaabkccccccccccccccccccccbaaaaab
+aabboccccccccccccccccccccpbaaabb
+bbbbpcccccccccccccccccccgobbabbk
+oooppccccccccccccccccccccooppbkk
+sqoopccccchcciccccchcccccqoojbkt
+kkonogcccccccccccccccccccokbbbkk
+bbbppcccccccccccccccccccgkbbabbk
+abbkocccccccccccccccccccckbaaabb
+aabbkccccccccccccccccccccbbaaaab
+aaabkccccccccccccccccgcccbaaeeab
+eaabbcccfcccccccfccfccccbbaeeeaa
+eeaabbccccccdccccccccccbbaaeeeee
+eeaaabbccccccccccccccbbbaaaeeeee
+eeeaaabbbbkoooookbbbbbaaaaeeeeee
+eeeeaaaaabbkooobbbabbaaaaeeeeeee
+eeeeeaaaaabbkkbbaaaaaaaeeeeeeeee
+eeeeeeeeaaabbmbaaeeeeeeeeeeeeeee
+eeeeeeeeeaabkkbbaaeeeeeeeeeeeeee
+eeeeeeeeeaabkjkbbaeeeeeeeeeeeeee
+eeeeeeeeeaabbkkkbaaaeeeeeeeeeeee
+eeeeeeeeeaaabkkkbbaaaeeeeeeeeeee
+eeeeeeeeeaaabbklkbbaaeeeeeeeeeee
+eeeeeeeeeeaaabkkskbbaeeeeeeeeeee
 "}

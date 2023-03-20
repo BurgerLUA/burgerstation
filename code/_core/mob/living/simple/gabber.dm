@@ -56,6 +56,8 @@ var/global/list/valid_gabber_sound_files = list()
 
 	var/next_special_attack = 0 //Prevents voice stacking.
 
+	can_attack_while_moving = TRUE
+
 /mob/living/simple/gabber/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 1
 

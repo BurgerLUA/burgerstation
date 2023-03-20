@@ -1,14 +1,16 @@
 /mob/living/simple/slime_king //Not a subtype of slime because it behaves way differently
 	name = "slime king"
-	boss_icon_state = "slime_king"
-	desc = "Oh no. They're here too."
-
 	icon = 'icons/mob/living/simple/slime_king_new.dmi'
 	icon_state = "living"
+
+	boss_icon_state = "slime_king"
 
 	ai = /ai/boss/slime_king
 
 	damage_type = /damagetype/npc/slime
+
+	boss = TRUE
+	force_spawn = TRUE
 
 	can_attack_while_moving = TRUE
 
@@ -18,41 +20,23 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 5000
+	health_base = 4000
 	stamina_base = 5000
-	mana_base = 100
+	mana_base = 1000
 
 	value = 500
 
 	object_size = 2
 
-	boss = TRUE
-	force_spawn = TRUE
-
 	armor = /armor/slime/king
 
-	status_immune = list(
-		STUN = TRUE,
-		SLEEP = TRUE,
-		PARALYZE = TRUE,
-		STAMCRIT = TRUE,
-		STAGGER = TRUE,
-		CONFUSED = TRUE,
-		DISARM = TRUE,
-		FIRE = TRUE,
-		GRAB = TRUE,
-		PAINCRIT = TRUE
-	)
-
-	fatigue_mul = 0
+	boss_music = /track/slime_king
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange
 	)
 
 	size = SIZE_BOSS
-
-	damage_type = /damagetype/npc/slime
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
@@ -64,22 +48,29 @@
 
 	blood_type = null
 
-	soul_size = SOUL_SIZE_RARE
+	soul_size = SOUL_SIZE_MYSTIC
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DECISECONDS_TO_TICKS(5)
 
-	level = 30
+	level = 40
 
 	var/list/linked_active_slimes = list()
 
 	var/elite = FALSE
 
+	var/slime_balls_left = 0
+	var/next_slime_ball_shoot = 0
+
 /mob/living/simple/slime_king/Destroy()
 	linked_active_slimes.Cut()
 	linked_active_slimes = null
 	. = ..()
+
+/mob/living/simple/slime_king/on_life()
+	. = ..()
+	if(!dead) absorb_slimes()
 
 /mob/living/simple/slime_king/on_life_slow()
 
@@ -103,15 +94,17 @@
 					valid_move_turfs += T2
 				if(length(valid_move_turfs))
 					var/mob/living/simple/slime/S = new(T)
-					INITIALIZE(S)
+					S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_DEFENSIVE | SLIME_TRAIT_WEAK)
 					S.color = src.color
 					S.alpha = max(100,src.alpha)
+					INITIALIZE(S)
 					FINALIZE(S)
 					var/turf/MT = pick(valid_move_turfs)
 					S.Move(MT)
 					if(S.ai)
 						S.ai.set_active(TRUE)
 						S.ai.find_new_objectives(AI_TICK,TRUE)
+
 					linked_active_slimes += S
 
 
@@ -164,6 +157,7 @@
 			var/mob/living/simple/slime/S = new(T)
 			S.color = src.color
 			S.alpha = max(100,src.alpha)
+			S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_DEFENSIVE | SLIME_TRAIT_WEAK)
 			INITIALIZE(S)
 			FINALIZE(S)
 			var/xvel = rand(-1,1)
@@ -173,7 +167,6 @@
 				yvel = pick(-1,1)
 			S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
 			if(S.ai)
-				S.ai.aggression = 3
 				S.ai.set_active(TRUE)
 				S.ai.set_objective(attacker)
 
@@ -186,7 +179,15 @@
 
 /mob/living/simple/slime_king/proc/shoot_slime_ball(var/atom/target)
 
+	if(slime_balls_left <= 0)
+		return FALSE
+
 	if(has_status_effect(PARALYZE))
+		return FALSE
+
+	var/turf/T = get_turf(src)
+
+	if(!T)
 		return FALSE
 
 	shoot_projectile(
@@ -211,20 +212,11 @@
 		0
 	)
 
+	next_slime_ball_shoot = world.time + 2
+	slime_balls_left--
+	play_sound('sound/weapons/ranged/misc/slime_spike.ogg',T)
+
 	return TRUE
-
-/mob/living/simple/slime_king/Bump(atom/Obstacle)
-
-	. = ..()
-
-	if(Obstacle.health && src.dash_amount > 0)
-		var/damagetype/DT = all_damage_types[/damagetype/npc/bubblegum]
-		var/list/params = list()
-		params[PARAM_ICON_X] = rand(0,32)
-		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = Obstacle.get_object_to_damage(src,src,params,/damagetype/npc/bubblegum,TRUE,TRUE)
-		visible_message(span("danger","\The [src.name] rams into \the [Obstacle.name]!"))
-		DT.process_damage(src,Obstacle,src,object_to_damage,src,1)
 
 /mob/living/simple/slime_king/proc/slime_wave(var/target_direction=dir)
 
@@ -273,24 +265,23 @@
 /mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/create_slime=FALSE)
 	var/obj/structure/interactive/slime_wall/SW = locate() in T.contents
 	if(SW) return FALSE
-	var/obj/structure/interactive/slime_tile/S = locate() in T.contents
-	if(S) return FALSE
-	S = new(T)
-	S.color = src.color
-	S.alpha = max(100,src.alpha)
-	INITIALIZE(S)
-	GENERATE(S)
-	FINALIZE(S)
+	var/obj/structure/interactive/slime_tile/ST = locate() in T.contents
+	if(ST) return FALSE
+	ST = new(T)
+	ST.color = src.color
+	INITIALIZE(ST)
+	GENERATE(ST)
+	FINALIZE(ST)
 	if(create_slime)
 		var/mob/living/simple/slime/L = new(T)
 		if(elite)
 			L.has_bomb = TRUE
-		L.color = S.color
+		L.color = src.color
+		L.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
 		if(L.ai)
-			L.ai.aggression = 3
 			L.ai.set_active(TRUE)
 			L.ai.find_new_objectives(AI_TICK,TRUE)
 		L.pixel_z = -10
@@ -299,7 +290,7 @@
 			L,
 			alpha=max(100,src.alpha),
 			pixel_z=0,
-			time=10
+			time=20
 		)
 	return TRUE
 
@@ -399,3 +390,56 @@
 			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,.proc/create_slime_wall,TA)
 		else
 			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,.proc/create_slime_tile,TA)
+
+
+/mob/living/simple/slime_king/proc/absorb_slimes()
+
+	var/turf/T = get_turf(src)
+
+	if(!T)
+		return FALSE
+
+	if(has_status_effect(PARALYZE))
+		return TRUE
+
+	var/slime_limit = 5
+	var/good_absorbs = 0
+	var/bad_absorbs = 0
+	for(var/mob/living/simple/slime/S in view(4,src))
+		if(!S.dead)
+			continue
+		if(S.loyalty_tag != src.loyalty_tag)
+			continue
+		if(!S.is_safe_to_delete())
+			continue
+		if(get_dist(T,S) <= 1)
+			if(length(S.butcher_contents) || S.override_butcher)
+				good_absorbs++
+			else
+				bad_absorbs++
+			qdel(S)
+			continue
+		var/turf/move_turf = get_step(S,get_dir(S,T))
+		if(!move_turf)
+			continue
+		S.Move(move_turf)
+		slime_limit--
+		if(slime_limit <= 0)
+			break
+	if(good_absorbs || bad_absorbs)
+		play_sound('sound/effects/portal_suck.ogg',T)
+		if(bad_absorbs)
+			add_status_effect(PARALYZE,30,30)
+			tox_regen_buffer -= bad_absorbs*100
+			play_sound('sound/effects/impacts/savage_bio.ogg',T)
+		else
+			slime_balls_left += good_absorbs
+			brute_regen_buffer += good_absorbs*10
+			burn_regen_buffer += good_absorbs*10
+			for(var/i=1,i<=min(5,good_absorbs),i++)
+				var/obj/effect/temp/healing/H = new(T)
+				H.color = COLOR_GREEN
+				INITIALIZE(H)
+				GENERATE(H)
+				FINALIZE(H)
+			play_sound('sound/weapons/magic/creation.ogg',T)

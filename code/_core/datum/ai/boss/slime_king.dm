@@ -56,4 +56,7 @@
 				next_special_attack = world.time + 50
 				return TRUE
 
+		if(owner_as_slime_king.next_slime_ball_shoot <= world.time && owner_as_slime_king.slime_balls_left > 0 && get_dist(owner_as_slime_king,objective_attack) >= 3)
+			owner_as_slime_king.shoot_slime_ball(objective_attack)
+
 	. = ..()

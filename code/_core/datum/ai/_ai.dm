@@ -34,8 +34,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//Measured in ticks.
 	var/objective_delay = DECISECONDS_TO_TICKS(10)
 
-	var/list/target_distribution_x = list(12,16,16,16,20)
-	var/list/target_distribution_y = list(12,16,16,16,20)
+	var/list/target_distribution_x = list(12,16,20)
+	var/list/target_distribution_y = list(4.8,12,16,20,24)
 
 	var/turf/home_turf //Where the mob's home is.
 

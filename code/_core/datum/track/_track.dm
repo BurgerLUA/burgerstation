@@ -295,3 +295,8 @@
 	name = "Light of Zach"
 	path = 'sound/music/Light of Zach.ogg'
 	length = 3*60 + 50
+
+/track/slime_king //Boss music
+	name = "Slime King"
+	path = 'sound/music/Slime King.ogg'
+	length = 2*60 + 55

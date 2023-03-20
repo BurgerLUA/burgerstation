@@ -12,3 +12,4 @@
 #define SLIME_TRAIT_TOXIC (1<<11)
 #define SLIME_TRAIT_COLD (1<<12)
 #define SLIME_TRAIT_THORNS (1<<13)
+#define SLIME_TRAIT_WEAK (1<<14)
