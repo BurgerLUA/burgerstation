@@ -8,7 +8,7 @@
 	return ..()
 
 
-/obj/item/clothing/click_self(var/mob/caller)
+/obj/item/clothing/click_self(var/mob/caller,location,control,params)
 
 	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc

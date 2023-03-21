@@ -48,7 +48,7 @@
 				qdel(G)
 
 
-/obj/item/ghost_box/click_self(var/mob/caller)
+/obj/item/ghost_box/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

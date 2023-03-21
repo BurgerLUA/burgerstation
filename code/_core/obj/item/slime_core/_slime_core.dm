@@ -77,7 +77,7 @@
 
 	. = ..()
 
-/obj/item/slime_core/custom/click_self(var/mob/caller)
+/obj/item/slime_core/custom/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	var/choice = input("What would you like the color to be?", null, color) as color|null

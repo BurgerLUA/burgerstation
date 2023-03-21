@@ -30,7 +30,7 @@
 	LOADVAR("time_set")
 	LOADVAR("range_set")
 
-/obj/item/device/proximity/click_self(var/mob/caller)
+/obj/item/device/proximity/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
 	trigger(caller,src,-1,-1)

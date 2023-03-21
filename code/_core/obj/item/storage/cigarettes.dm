@@ -23,7 +23,7 @@
 
 	value = 5
 
-/obj/item/storage/cigarettes/click_self(var/mob/caller)
+/obj/item/storage/cigarettes/click_self(var/mob/caller,location,control,params)
 
 	if(open && caller.attack_flags & CONTROL_MOD_DISARM)
 		open = FALSE

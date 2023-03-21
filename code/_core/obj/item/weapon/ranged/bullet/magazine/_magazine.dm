@@ -53,7 +53,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
+/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 

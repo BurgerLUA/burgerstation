@@ -57,7 +57,7 @@
 	if(stored_bullet)
 		. += div("notice","It stores [stored_bullet.name] ([bullet_count]/[bullet_max] capacity).")
 
-/obj/item/bulletbox/click_self(var/mob/caller)
+/obj/item/bulletbox/click_self(var/mob/caller,location,control,params)
 
 	if(small)
 		return TRUE

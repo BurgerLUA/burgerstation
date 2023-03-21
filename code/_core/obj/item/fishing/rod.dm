@@ -304,7 +304,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/fishing/rod/telescopic/click_self(var/mob/caller)
+/obj/item/fishing/rod/telescopic/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(5)
 	if(fishing_turf)

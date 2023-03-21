@@ -66,7 +66,7 @@
 	QDEL_NULL(shield_overlay)
 	. = ..()
 
-/obj/item/clothing/belt/damage_deferal_shield/click_self(var/mob/caller)
+/obj/item/clothing/belt/damage_deferal_shield/click_self(var/mob/caller,location,control,params)
 
 	if(CALLBACK_EXISTS("\ref[src]_disable_shield"))
 		caller.to_chat(span("notice","You toggle \the [src.name] off and manually cycle the shield."))

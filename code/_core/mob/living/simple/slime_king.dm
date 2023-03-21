@@ -31,6 +31,7 @@
 	armor = /armor/slime/king
 
 	boss_music = /track/slime_king
+	boss_loot = /loot/lavaland/slime_king
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange

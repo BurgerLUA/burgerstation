@@ -20,7 +20,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller)
+/obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

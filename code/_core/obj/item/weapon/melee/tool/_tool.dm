@@ -117,7 +117,7 @@
 
 
 
-/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller)
+/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

@@ -115,7 +115,7 @@
 		icon_state = "[icon_state]_off"
 		icon_state_worn = "[icon_state_worn]_off"
 
-/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller)
+/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller,location,control,params)
 
 	var/obj/hud/inventory/I = src.loc
 	if(istype(I))

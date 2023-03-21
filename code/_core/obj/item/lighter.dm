@@ -15,7 +15,7 @@
 
 	value = 80
 
-/obj/item/lighter/click_self(var/mob/caller)
+/obj/item/lighter/click_self(var/mob/caller,location,control,params)
 	set_lit(!lit,caller)
 	return TRUE
 

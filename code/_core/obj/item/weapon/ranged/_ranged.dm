@@ -299,7 +299,7 @@
 
 	return . && (heat_current > 0 || (recoil_delay > 0 && queued_recoil > 0))
 
-/obj/item/weapon/ranged/click_self(var/mob/caller)
+/obj/item/weapon/ranged/click_self(var/mob/caller,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		change_firemode(caller)

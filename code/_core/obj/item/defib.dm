@@ -133,7 +133,7 @@
 
 	return TRUE
 
-/obj/item/defib/click_self(var/mob/caller)
+/obj/item/defib/click_self(var/mob/caller,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE

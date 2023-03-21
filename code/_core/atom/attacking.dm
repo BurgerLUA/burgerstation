@@ -41,12 +41,11 @@
 	if(attacker != victim && !ignore_distance)
 		attacker.face_atom(victim) //Face first victim
 
-	if(is_player(attacker))
-		var/mob/living/advanced/player/P = attacker
-		if(P.client)
-			var/list/attack_coords = P.get_current_target_cords(params)
-			params[PARAM_ICON_X] = attack_coords[1]
-			params[PARAM_ICON_Y] = attack_coords[2]
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		var/list/attack_coords = L.get_current_target_cords(params)
+		params[PARAM_ICON_X] = attack_coords[1]
+		params[PARAM_ICON_Y] = attack_coords[2]
 
 	var/atom/object_to_damage_with = get_object_to_damage_with(attacker,victim,params)
 

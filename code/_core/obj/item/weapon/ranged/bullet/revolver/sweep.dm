@@ -87,7 +87,7 @@
 /obj/item/weapon/ranged/bullet/revolver/sweep/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/revolver/sweep/click_self(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/sweep/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

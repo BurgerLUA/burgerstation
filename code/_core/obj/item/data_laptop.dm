@@ -35,7 +35,7 @@ var/global/list/all_vault_doors = list()
 	. = ..()
 	update_sprite()
 
-/obj/item/data_laptop/click_self(var/mob/caller)
+/obj/item/data_laptop/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

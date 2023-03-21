@@ -555,8 +555,8 @@
 		return FALSE
 
 	var/list/params = list(
-		PARAM_ICON_X = pick(target_distribution_x),
-		PARAM_ICON_Y = pick(target_distribution_y),
+		PARAM_ICON_X = 16,
+		PARAM_ICON_Y = 16,
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,

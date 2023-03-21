@@ -40,7 +40,7 @@
 	play_sound('sound/ui/friendly.ogg',get_turf(src),range_max=VIEW_RANGE)
 	return TRUE
 
-/obj/item/experience_scroll/click_self(var/mob/caller)
+/obj/item/experience_scroll/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

@@ -77,7 +77,7 @@
 
 	return current_chamber
 
-/obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller,location,control,params)
 
 	if(can_shoot_while_open)
 		return TRUE

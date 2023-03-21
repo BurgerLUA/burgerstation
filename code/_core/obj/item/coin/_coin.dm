@@ -75,7 +75,7 @@
 	value = 2000
 	rarity = RARITY_UNCOMMON
 
-/obj/item/coin/cursed/click_self(var/mob/caller)
+/obj/item/coin/cursed/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -107,7 +107,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/coin/antag_token/click_self(var/mob/caller)
+/obj/item/coin/antag_token/click_self(var/mob/caller,location,control,params)
 
 	if(!is_player(caller))
 		return FALSE

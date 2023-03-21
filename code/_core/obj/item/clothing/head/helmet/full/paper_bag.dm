@@ -37,7 +37,7 @@
 	LOADVAR("logo")
 	LOADVAR("logobg")
 
-/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller)
+/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller,location,control,params)
 
 	var/mob/C = caller
 	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))

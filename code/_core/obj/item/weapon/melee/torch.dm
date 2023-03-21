@@ -22,7 +22,7 @@
 
 	value = 10
 
-/obj/item/weapon/melee/torch/click_self(var/mob/caller)
+/obj/item/weapon/melee/torch/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

@@ -78,7 +78,7 @@
 
 	return TRUE
 
-/obj/item/container/cheese_mold/click_self(var/mob/caller)
+/obj/item/container/cheese_mold/click_self(var/mob/caller,location,control,params)
 
 	var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
 	if(answer == "Yes")

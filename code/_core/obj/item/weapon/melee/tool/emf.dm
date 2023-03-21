@@ -81,7 +81,7 @@
 	SSghost.all_emf_trackers -= src
 	return ..()
 
-/obj/item/emf/click_self(var/mob/caller)
+/obj/item/emf/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

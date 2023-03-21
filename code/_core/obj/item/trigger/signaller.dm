@@ -62,7 +62,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 
 	return TRUE
 
-/obj/item/device/signaller/click_self(var/mob/caller)
+/obj/item/device/signaller/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	mode = !mode

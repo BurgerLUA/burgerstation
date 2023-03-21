@@ -173,7 +173,7 @@
 
 	return ..()
 
-/obj/item/grenade/click_self(var/mob/caller)
+/obj/item/grenade/click_self(var/mob/caller,location,control,params)
 
 	if(spent)
 		return ..()

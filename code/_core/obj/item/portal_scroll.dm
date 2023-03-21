@@ -12,7 +12,7 @@
 /obj/item/portal_scroll/quick(var/mob/caller,var/atom/object,location,params)
 	click_self(caller)
 
-/obj/item/portal_scroll/click_self(var/mob/caller)
+/obj/item/portal_scroll/click_self(var/mob/caller,location,control,params)
 
 	if(!is_player(caller) || !caller.client)
 		caller.to_chat(span("warning","You don't know how to use this..."))

@@ -186,7 +186,7 @@
 
 	. = ..()
 
-/obj/item/magazine/click_self(var/mob/caller)
+/obj/item/magazine/click_self(var/mob/caller,location,control,params)
 
 	if(length(stored_bullets) && !is_item(loc))
 		INTERACT_CHECK

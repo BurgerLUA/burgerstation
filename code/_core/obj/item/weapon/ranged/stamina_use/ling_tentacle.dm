@@ -36,7 +36,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/stamina_use/tentacle/click_self(var/mob/caller)
+/obj/item/weapon/ranged/stamina_use/tentacle/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	toggle = !toggle

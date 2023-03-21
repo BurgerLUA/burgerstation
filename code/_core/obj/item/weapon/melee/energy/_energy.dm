@@ -16,7 +16,7 @@
 	. = ..()
 	if(enabled) . += span("notice","It is active.")
 
-/obj/item/weapon/melee/energy/click_self(var/mob/caller)
+/obj/item/weapon/melee/energy/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
 	enabled = !enabled

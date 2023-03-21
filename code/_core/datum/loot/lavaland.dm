@@ -71,3 +71,8 @@
 		/obj/item/clothing/back/wings/angel = 3,
 		/obj/item/weapon/melee/staff_of_healing = 1
 	)
+
+/loot/lavaland/slime_king
+	loot_table = list(
+		/obj/item/clothing/back/storage/backpack/clown/bag_of_bombs = 3
+	)

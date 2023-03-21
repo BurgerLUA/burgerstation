@@ -28,7 +28,7 @@
 	update_sprite()
 
 
-/obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller)
+/obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

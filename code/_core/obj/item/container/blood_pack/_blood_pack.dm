@@ -90,7 +90,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/container/blood_pack/click_self(var/mob/caller)
+/obj/item/container/blood_pack/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

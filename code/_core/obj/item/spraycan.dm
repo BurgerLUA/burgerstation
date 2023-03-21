@@ -26,7 +26,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/spraycan/click_self(var/mob/caller)
+/obj/item/spraycan/click_self(var/mob/caller,location,control,params)
 
 	if(!caller || !caller.client)
 		return TRUE

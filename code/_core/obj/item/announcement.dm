@@ -26,7 +26,7 @@ var/global/next_announcement = 0
 /obj/item/announcement/proc/can_use(var/mob/caller)
 	return TRUE
 
-/obj/item/announcement/click_self(var/mob/caller)
+/obj/item/announcement/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -152,7 +152,7 @@ var/global/next_announcement = 0
 	return TRUE
 
 //This is fucking horrible but it works so I don't care
-/obj/item/announcement/rev/click_self(var/mob/caller)
+/obj/item/announcement/rev/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

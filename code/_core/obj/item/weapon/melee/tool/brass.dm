@@ -91,7 +91,7 @@ obj/item/weapon/melee/tool/brass/welder
 
 
 
-/obj/item/weapon/melee/tool/brass/welder/click_self(var/mob/caller)
+/obj/item/weapon/melee/tool/brass/welder/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

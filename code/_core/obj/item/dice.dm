@@ -44,7 +44,7 @@
 
 	return TRUE
 
-/obj/item/dice/click_self(var/mob/caller)
+/obj/item/dice/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

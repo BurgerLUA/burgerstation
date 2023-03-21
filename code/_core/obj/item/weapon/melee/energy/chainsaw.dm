@@ -90,7 +90,7 @@
 
 	return TRUE
 
-/obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller)
+/obj/item/weapon/melee/energy/chainsaw/click_self(var/mob/caller,location,control,params)
 
 	if(is_living(caller))
 		var/mob/living/L = caller

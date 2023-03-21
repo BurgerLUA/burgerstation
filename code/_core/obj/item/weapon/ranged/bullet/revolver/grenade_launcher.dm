@@ -85,7 +85,7 @@
 	open = TRUE
 	can_shoot_while_open = TRUE
 
-/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount/click_self(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount/click_self(var/mob/caller,location,control,params)
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel

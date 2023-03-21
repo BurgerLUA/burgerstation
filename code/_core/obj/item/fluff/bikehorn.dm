@@ -12,7 +12,7 @@
 
 	weight = 0.25
 
-/obj/item/bikehorn/click_self(var/mob/caller)
+/obj/item/bikehorn/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(20)
@@ -31,7 +31,7 @@
 	value = 500
 	rarity = RARITY_RARE
 
-/obj/item/bikehorn/magic/click_self(var/mob/caller)
+/obj/item/bikehorn/magic/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 

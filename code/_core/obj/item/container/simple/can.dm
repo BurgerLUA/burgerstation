@@ -116,7 +116,7 @@
 		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller)
+/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 

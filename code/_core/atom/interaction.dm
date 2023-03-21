@@ -60,7 +60,7 @@
 	if(distance_checks && !(src.interaction_flags & FLAG_INTERACTION_NO_DISTANCE) && get_dist(caller,src) > interact_distance)
 		return FALSE
 
-/atom/proc/click_self(var/mob/caller as mob,location,control,params)
+/atom/proc/click_self(var/mob/caller,location,control,params)
 	return FALSE
 
 /atom/proc/set_color(var/desired_color,var/desired_substype)

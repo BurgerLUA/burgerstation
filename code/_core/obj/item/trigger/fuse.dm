@@ -26,7 +26,7 @@
 	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 
-/obj/item/device/fuse/click_self(var/mob/caller)
+/obj/item/device/fuse/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
 	trigger(caller,src,-1,-1)

@@ -18,7 +18,7 @@
 	scan_range = VIEW_RANGE*0.75
 	icon_state = "inventory_syndicate"
 
-/obj/item/analyzer/health/click_self(var/mob/caller)
+/obj/item/analyzer/health/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	advanced = !advanced

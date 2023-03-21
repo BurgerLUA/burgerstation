@@ -62,7 +62,7 @@
 
 	return ..()
 
-/obj/item/legion_core/click_self(var/mob/caller)
+/obj/item/legion_core/click_self(var/mob/caller,location,control,params)
 	click_on_object(caller,caller)
 	return TRUE
 
