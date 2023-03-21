@@ -25,7 +25,7 @@
 
 
 /area/mission/prefab/boss/slime_king
-	name = "\improper Slime King's throne"
+	name = "Slime King's throne"
 	interior = FALSE
 
 	sunlight_freq = 8

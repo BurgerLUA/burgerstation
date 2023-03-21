@@ -95,6 +95,12 @@
 		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
 		return FALSE
 
+	var/inaccuracy = DT.inaccuracy_mod
+	if(!precise && inaccuracy > 0)
+		inaccuracy *= src.get_inaccuracy(attacker,victim,1)
+		params[PARAM_ICON_X] = clamp(params[PARAM_ICON_X] + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+		params[PARAM_ICON_Y] = clamp(params[PARAM_ICON_Y] + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
+
 	var/cleave_number = should_cleave(attacker,victim,params)
 	var/list/victims = list(victim)
 	if(cleave_number)
@@ -120,12 +126,7 @@
 		if(victim == v && !(can_attack && can_be_attacked))
 			return FALSE
 		if(can_attack && can_be_attacked)
-			var/inaccuracy = DT.inaccuracy_mod
-			if(!precise && inaccuracy > 0)
-				inaccuracy *= src.get_inaccuracy(attacker,victim,1)
-				params[PARAM_ICON_X] = clamp(params[PARAM_ICON_X] + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
-				params[PARAM_ICON_Y] = clamp(params[PARAM_ICON_Y] + rand(-inaccuracy,inaccuracy),0,TILE_SIZE)
-			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,desired_damage_type,params,precise,precise)
+			var/atom/hit_object = v.get_object_to_damage(attacker,object_to_damage_with,desired_damage_type,params,precise,precise,1)
 			hit_objects += hit_object //Could be null, but that's fine.
 			if(hit_object)
 				if(victim == v && DT.cqc_tag && is_advanced(attacker)) //Only check CQC on the first victim.
@@ -151,7 +152,7 @@
 /atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 0.5
 
-/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/params,var/accurate = FALSE,var/find_closest=FALSE) //Which object should the attacker damage?
+/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 	return src
 
 /atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list()) //Which object should the attacker damage with?
