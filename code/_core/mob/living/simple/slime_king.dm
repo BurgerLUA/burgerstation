@@ -20,11 +20,11 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 4000
-	stamina_base = 5000
+	health_base = 3000
+	stamina_base = 4000
 	mana_base = 1000
 
-	value = 500
+	value = 1000
 
 	object_size = 2
 
@@ -53,7 +53,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	movement_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DECISECONDS_TO_TICKS(6)
 
 	level = 40
 
@@ -95,7 +95,9 @@
 					valid_move_turfs += T2
 				if(length(valid_move_turfs))
 					var/mob/living/simple/slime/S = new(T)
-					S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_DEFENSIVE | SLIME_TRAIT_WEAK)
+					S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
+					S.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
+					S.level = CEILING(L.level,1)
 					S.color = src.color
 					S.alpha = max(100,src.alpha)
 					INITIALIZE(S)
@@ -152,13 +154,15 @@
 			v=100
 		)
 
-	if(!dead && prob(damage_amount) && attacker)
+	if(!dead && damage_amount >= 10 && prob(damage_amount*0.25) && attacker)
 		var/turf/T = get_step(src,get_dir(src,attacker))
 		if(T)
 			var/mob/living/simple/slime/S = new(T)
 			S.color = src.color
 			S.alpha = max(100,src.alpha)
-			S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_DEFENSIVE | SLIME_TRAIT_WEAK)
+			S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
+			S.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
+			S.level = CEILING(L.level,1)
 			INITIALIZE(S)
 			FINALIZE(S)
 			var/xvel = rand(-1,1)
@@ -279,6 +283,8 @@
 			L.has_bomb = TRUE
 		L.color = src.color
 		L.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
+		L.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
+		L.level = CEILING(L.level,1)
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
