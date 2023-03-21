@@ -19,7 +19,7 @@
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 4000
+	health_base = 5000
 	stamina_base = 4000
 	mana_base = 1000
 
@@ -71,7 +71,6 @@
 	var/heal_amount_current = 0
 
 	var/next_slime_absorb_spam = 0
-	var/absorbs_left = 0
 
 	color = "#2222FF"
 
@@ -81,13 +80,6 @@
 	linked_active_slimes.Cut()
 	linked_active_slimes = null
 	. = ..()
-
-/mob/living/simple/slime_king/on_life()
-
-	. = ..()
-
-	if(!dead && absorbs_left > 0)
-		absorb_slimes()
 
 /mob/living/simple/slime_king/proc/create_slime(var/turf/T)
 
@@ -415,17 +407,20 @@
 	next_slime_house = world.time + SECONDS_TO_DECISECONDS(60)
 	next_special_attack = world.time + 10 + size*2*3*2
 
-/mob/living/simple/slime_king/proc/absorb_slimes()
+/mob/living/simple/slime_king/proc/absorb_slimes(var/absorbs_left=20)
+
+	if(dead)
+		return FALSE
 
 	var/turf/T = get_turf(src)
 
 	if(!T)
 		return FALSE
 
-	var/slime_limit = 5
+	var/slime_limit = 10
 	var/good_absorbs = 0
 	var/bad_absorbs = 0
-	for(var/mob/living/simple/slime/S in view(4,src))
+	for(var/mob/living/simple/slime/S in view(VIEW_RANGE,src))
 		if(!S.dead)
 			continue
 		if(S.loyalty_tag != src.loyalty_tag)
@@ -451,14 +446,14 @@
 		if(bad_absorbs)
 			remove_status_effect(PARALYZE)
 			add_status_effect(STUN,30,30)
-			tox_regen_buffer -= bad_absorbs*100
+			tox_regen_buffer -= bad_absorbs*200
 			play_sound('sound/effects/impacts/savage_bio.ogg',T)
 			absorbs_left = 0
 		else
 			slime_balls_left += good_absorbs
-			brute_regen_buffer += good_absorbs*10
-			burn_regen_buffer += good_absorbs*10
-			heal_amount_current += good_absorbs*10
+			brute_regen_buffer += good_absorbs*50
+			burn_regen_buffer += good_absorbs*50
+			heal_amount_current += good_absorbs*50
 			for(var/i=1,i<=min(5,good_absorbs),i++)
 				var/obj/effect/temp/healing/H = new(T)
 				H.color = COLOR_GREEN
@@ -467,9 +462,16 @@
 				FINALIZE(H)
 			play_sound('sound/weapons/magic/creation.ogg',T)
 
+	absorbs_left--
+
+	if(absorbs_left > 0)
+		CALLBACK("\ref[src]_absorb_slimes",2,src,.proc/absorb_slimes,absorbs_left)
+
+	return TRUE
+
 /mob/living/simple/slime_king/proc/start_absorb()
 
-	if(heal_amount_current >= heal_amount_max || next_slime_absorb_spam > world.time || absorbs_left > 0)
+	if(heal_amount_current >= heal_amount_max || next_slime_absorb_spam > world.time || CALLBACK_EXISTS("\ref[src]_absorb_slimes"))
 		return FALSE
 
 	var/turf/T = get_turf(src)
@@ -478,10 +480,10 @@
 		return FALSE
 
 	build_a_house(2)
-	add_status_effect(PARALYZE,duration=100,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
+	add_status_effect(PARALYZE,duration=20*2,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
 	next_slime_absorb_spam = world.time + SECONDS_TO_DECISECONDS(60)
-	absorbs_left = 10
-	next_special_attack = world.time + 100
-	next_slime_ball = world.time + 150
+	next_special_attack = world.time + 20*2 + 10
+	next_slime_ball = world.time + 20*2 + 10
+	absorb_slimes(20)
 
 	return TRUE
