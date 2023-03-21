@@ -74,6 +74,9 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	for(var/k in objects_to_check)
 		var/obj/item/I = k
 		var/list/generated_list = I.save_item_data(P,loadout=TRUE)
+		if(!length(generated_list))
+			P.to_chat(span("warning","\The [I.name] could not be saved in the loadout system."))
+			continue
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			generated_list["original_slot"] = I2.id

@@ -1067,6 +1067,7 @@
 #include "code\_core\obj\effect\temp\muzzleflash.dm"
 #include "code\_core\obj\effect\temp\phasing.dm"
 #include "code\_core\obj\effect\temp\portal.dm"
+#include "code\_core\obj\effect\temp\slime_king_absorb.dm"
 #include "code\_core\obj\effect\temp\smoke.dm"
 #include "code\_core\obj\effect\temp\soul.dm"
 #include "code\_core\obj\effect\temp\sparkles.dm"

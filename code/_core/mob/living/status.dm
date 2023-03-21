@@ -6,11 +6,14 @@
 
 	. = FALSE
 
-	if(!isnum(magnitude))
+	if(isnull(magnitude))
 		magnitude = S.default_magnitude
 
-	if(!isnum(duration))
+	if(isnull(duration))
 		duration = S.default_duration
+
+	if(magnitude == -1 || duration == -1)
+		force = TRUE
 
 	//Check immunities first.
 	if(!force && length(status_immune) && status_immune[status_type])
@@ -20,10 +23,8 @@
 				if(T) new/obj/effect/temp/status_effect(T,duration,"IMMUNE!")
 			return FALSE
 		else
-			if(magnitude != -1)
-				magnitude = magnitude*0.5
-			if(duration != -1)
-				duration = duration*0.5
+			magnitude = magnitude*0.5
+			duration = duration*0.5
 			if(status_type != status_immune[status_type])
 				status_type = status_immune[status_type]
 				return src.add_status_effect(status_type,magnitude,duration,source,force,stealthy,bypass_limits)
@@ -41,18 +42,18 @@
 		status_effects[status_type] = list()
 		. = TRUE
 
-	if(!status_effects[status_type]["duration"] || force || !status_effects[status_type]["magnitude"])
+	if(force || isnull(status_effects[status_type]["duration"]) || isnull(status_effects[status_type]["magnitude"]))
 		status_effects[status_type]["duration"] = duration
 	else //Duration exists.
 		if(status_effects[status_type]["duration"] == -1) //Can't alter a permanent status effect.
 			return FALSE
-		var/mag_mod = magnitude/status_effects[status_type]["magnitude"]
+		var/mag_mod = magnitude / status_effects[status_type]["magnitude"]
 		if(mag_mod >= 1) //New magnitude is stronger or equal to old
 			status_effects[status_type]["duration"] = duration + (status_effects[status_type]["duration"]/mag_mod)
 		else //New magnitude is weaker than old
 			status_effects[status_type]["duration"] += mag_mod*duration
 
-	if(!status_effects[status_type]["magnitude"] || force)
+	if(force || isnull(status_effects[status_type]["magnitude"]))
 		status_effects[status_type]["magnitude"] = magnitude
 	else
 		status_effects[status_type]["magnitude"] = max(status_effects[status_type]["magnitude"],magnitude)

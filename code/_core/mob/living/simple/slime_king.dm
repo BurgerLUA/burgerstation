@@ -14,13 +14,12 @@
 
 	can_attack_while_moving = TRUE
 
-	color = "#2222FF"
 	alpha = 200
 
 	pixel_x = -32
 	pixel_y = -12
 
-	health_base = 3000
+	health_base = 4000
 	stamina_base = 4000
 	mana_base = 1000
 
@@ -59,10 +58,24 @@
 
 	var/list/linked_active_slimes = list()
 
-	var/elite = FALSE
+	var/next_special_attack = 0
+
+	var/next_slime_bomb = 0
+	var/next_slime_wave = 0
+	var/next_slime_house = 0
 
 	var/slime_balls_left = 0
-	var/next_slime_ball_shoot = 0
+	var/next_slime_ball = 0
+
+	var/heal_amount_max = 0
+	var/heal_amount_current = 0
+
+	var/next_slime_absorb_spam = 0
+	var/absorbs_left = 0
+
+	color = "#2222FF"
+
+	var/rage_mode = FALSE
 
 /mob/living/simple/slime_king/Destroy()
 	linked_active_slimes.Cut()
@@ -70,8 +83,40 @@
 	. = ..()
 
 /mob/living/simple/slime_king/on_life()
+
 	. = ..()
-	if(!dead) absorb_slimes()
+
+	if(!dead && absorbs_left > 0)
+		absorb_slimes()
+
+/mob/living/simple/slime_king/proc/create_slime(var/turf/T)
+
+	var/mob/living/simple/slime/S = new(T)
+	S.color = src.color
+	S.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
+	S.level = CEILING(S.level,1)
+	S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
+	S.alpha = max(100,src.alpha)
+	if(health.health_current <= health.health_max*0.5)
+		S.has_bomb = TRUE
+	INITIALIZE(S)
+	FINALIZE(S)
+	if(S.ai)
+		S.ai.set_active(TRUE)
+		S.ai.find_new_objectives(AI_TICK,TRUE)
+	linked_active_slimes += S
+	animate(
+		S,
+		alpha=0,
+		pixel_z=-10
+	)
+	animate(
+		alpha=max(100,src.alpha), //Safety
+		pixel_z=0,
+		time=20
+	)
+	return S
+
 
 /mob/living/simple/slime_king/on_life_slow()
 
@@ -94,22 +139,9 @@
 						continue
 					valid_move_turfs += T2
 				if(length(valid_move_turfs))
-					var/mob/living/simple/slime/S = new(T)
-					S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
-					S.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
-					S.level = CEILING(L.level,1)
-					S.color = src.color
-					S.alpha = max(100,src.alpha)
-					INITIALIZE(S)
-					FINALIZE(S)
+					var/mob/living/simple/slime/S = create_slime(T)
 					var/turf/MT = pick(valid_move_turfs)
 					S.Move(MT)
-					if(S.ai)
-						S.ai.set_active(TRUE)
-						S.ai.find_new_objectives(AI_TICK,TRUE)
-
-					linked_active_slimes += S
-
 
 /mob/living/simple/slime_king/update_icon()
 	. = ..()
@@ -121,7 +153,7 @@
 /mob/living/simple/slime_king/Finalize()
 	. = ..()
 	color = rgb(
-		h=max(0,health.health_current/health.health_max)*220,
+		h=220,
 		s=69,
 		v=100
 	)
@@ -137,19 +169,27 @@
 
 	. = ..()
 
-	if(health.health_current <= health.health_max*0.5)
-		elite = TRUE
+	heal_amount_max = max(heal_amount_max,health.health_max - health.health_current)
 
-	if(elite)
-		var/health_mod = clamp((health.health_current/health.health_max)*200,0,100)
+	var/health_mod = health.health_current/health.health_max
+
+	if(health_mod <= 0.5)
+		rage_mode = TRUE
+
+
+	if(rage_mode)
+		//Red
+		var/color_mod = clamp(health_mod*200,0,100)
 		color = rgb(
 			h=0,
-			s=health_mod,
-			v=health_mod
+			s=color_mod,
+			v=color_mod
 		)
 	else
+		//Other
+		var/color_mod = max(0, (health_mod)*1.5 - 0.5)*220
 		color = rgb(
-			h=max(0, (health.health_current/health.health_max)*1.5 - 0.5)*220,
+			h=color_mod,
 			s=69,
 			v=100
 		)
@@ -157,23 +197,13 @@
 	if(!dead && damage_amount >= 10 && prob(damage_amount*0.25) && attacker)
 		var/turf/T = get_step(src,get_dir(src,attacker))
 		if(T)
-			var/mob/living/simple/slime/S = new(T)
-			S.color = src.color
-			S.alpha = max(100,src.alpha)
-			S.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
-			S.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
-			S.level = CEILING(L.level,1)
-			INITIALIZE(S)
-			FINALIZE(S)
+			var/mob/living/simple/slime/S = create_slime(T)
 			var/xvel = rand(-1,1)
 			var/yvel = rand(-1,1)
 			if(xvel == 0 && yvel == 0)
 				xvel = pick(-1,1)
 				yvel = pick(-1,1)
 			S.throw_self(src,attacker,16,16,xvel*10,yvel*10)
-			if(S.ai)
-				S.ai.set_active(TRUE)
-				S.ai.set_objective(attacker)
 
 /mob/living/simple/slime_king/post_death()
 	. = ..()
@@ -217,7 +247,7 @@
 		0
 	)
 
-	next_slime_ball_shoot = world.time + 2
+	next_slime_ball = world.time + 2
 	slime_balls_left--
 	play_sound('sound/weapons/ranged/misc/slime_spike.ogg',T)
 
@@ -228,7 +258,7 @@
 	if(has_status_effect(PARALYZE))
 		return FALSE
 
-	add_status_effect(PARALYZE,duration=VIEW_RANGE*2,magnitude=-1,stealthy=TRUE)
+	add_status_effect(PARALYZE,duration=VIEW_RANGE*2,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
 
 	play_sound('sound/effects/inflate.ogg',get_turf(src))
 
@@ -256,18 +286,19 @@
 
 			CALLBACK("\ref[src]_slime_wave_[i]_[j]",j,src,.proc/create_slime_tile,old_turf,should_break)
 			if(should_break)
-				if(i==0 && elite)
+				if(i==0 && (health.health_current <= health.health_max*0.5))
 					remove_status_effect(PARALYZE)
 					src.dash_target = old_turf
 					src.dash_amount = get_dist(src,old_turf)
 					play_sound('sound/effects/dodge.ogg',get_turf(src))
 				break
-			else if(elite && !(j % 3))
+			else if((health.health_current <= health.health_max*0.5) && !(j % 3))
 				throw_bomb(old_turf,20)
 
+	next_slime_wave = world.time + SECONDS_TO_DECISECONDS(10)
+	next_special_attack = world.time + SECONDS_TO_DECISECONDS(10)
 
-
-/mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/create_slime=FALSE)
+/mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/should_create_slime=FALSE)
 	var/obj/structure/interactive/slime_wall/SW = locate() in T.contents
 	if(SW) return FALSE
 	var/obj/structure/interactive/slime_tile/ST = locate() in T.contents
@@ -277,28 +308,8 @@
 	INITIALIZE(ST)
 	GENERATE(ST)
 	FINALIZE(ST)
-	if(create_slime)
-		var/mob/living/simple/slime/L = new(T)
-		if(elite)
-			L.has_bomb = TRUE
-		L.color = src.color
-		L.slime_traits |= (SLIME_TRAIT_AGGRESSIVE | SLIME_TRAIT_WEAK)
-		L.level = 1 + (1 - health.health_current/health.health_max)*src.level*0.5
-		L.level = CEILING(L.level,1)
-		INITIALIZE(L)
-		GENERATE(L)
-		FINALIZE(L)
-		if(L.ai)
-			L.ai.set_active(TRUE)
-			L.ai.find_new_objectives(AI_TICK,TRUE)
-		L.pixel_z = -10
-		L.alpha = 0
-		animate(
-			L,
-			alpha=max(100,src.alpha),
-			pixel_z=0,
-			time=20
-		)
+	if(should_create_slime)
+		create_slime(T)
 	return TRUE
 
 /mob/living/simple/slime_king/proc/create_slime_wall(var/turf/T)
@@ -320,7 +331,7 @@
 	if(has_status_effect(PARALYZE))
 		return FALSE
 
-	add_status_effect(PARALYZE,duration=12,magnitude=-1,stealthy=TRUE)
+	add_status_effect(PARALYZE,duration=12,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
 
 	var/list/valid_turfs = list()
 	var/list/valid_target_turfs = list()
@@ -330,7 +341,7 @@
 			continue
 		valid_turfs += T
 
-	if(elite)
+	if(health.health_current <= health.health_max*0.5)
 		for(var/mob/living/L in oview(VIEW_RANGE,src))
 			if(L.dead)
 				continue
@@ -342,7 +353,7 @@
 
 	for(var/i=1,i<=10,i++)
 		var/turf/T
-		if(elite && length(valid_target_turfs))
+		if((health.health_current <= health.health_max*0.5) && length(valid_target_turfs))
 			T = pick(valid_target_turfs)
 			valid_target_turfs -= T
 		else
@@ -350,8 +361,11 @@
 				break
 			T = pick(valid_turfs)
 			valid_turfs -= T
-		var/desired_time = elite ? 1 + i*3 : 3 + i*6
+		var/desired_time = (health.health_current <= health.health_max*0.5) ? 1 + i*3 : 3 + i*6
 		CALLBACK("\ref[src]_throw_bomb_[i]",desired_time,src,.proc/throw_bomb,T)
+
+	next_slime_bomb = world.time + SECONDS_TO_DECISECONDS(30)
+	next_special_attack = world.time + 10 + 3 + 60
 
 /mob/living/simple/slime_king/proc/throw_bomb(var/turf/T,var/throw_time=40)
 	var/obj/item/slime_bomb/B = new(T)
@@ -375,7 +389,7 @@
 	B.light()
 	return TRUE
 
-/mob/living/simple/slime_king/proc/build_a_house(var/size=4)
+/mob/living/simple/slime_king/proc/build_a_house(var/size=4,var/build_walls=TRUE)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -385,7 +399,7 @@
 	if(!T)
 		return FALSE
 
-	add_status_effect(PARALYZE,duration=size*2*3*2,magnitude=-1,stealthy=TRUE)
+	add_status_effect(PARALYZE,duration=size*2*3*2,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
 
 	play_sound('sound/effects/inflate.ogg',get_turf(src))
 
@@ -393,11 +407,13 @@
 		var/turf/TA = locate(T.x + tx,T.y + ty,T.z)
 		if(!TA) continue
 		var/delay = (abs(tx) + abs(ty))*3
-		if(abs(tx) == size || abs(ty) == size)
+		if(build_walls && (abs(tx) == size || abs(ty) == size))
 			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,.proc/create_slime_wall,TA)
 		else
 			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,.proc/create_slime_tile,TA)
 
+	next_slime_house = world.time + SECONDS_TO_DECISECONDS(60)
+	next_special_attack = world.time + 10 + size*2*3*2
 
 /mob/living/simple/slime_king/proc/absorb_slimes()
 
@@ -405,9 +421,6 @@
 
 	if(!T)
 		return FALSE
-
-	if(has_status_effect(PARALYZE))
-		return TRUE
 
 	var/slime_limit = 5
 	var/good_absorbs = 0
@@ -436,13 +449,16 @@
 	if(good_absorbs || bad_absorbs)
 		play_sound('sound/effects/portal_suck.ogg',T)
 		if(bad_absorbs)
-			add_status_effect(PARALYZE,30,30)
+			remove_status_effect(PARALYZE)
+			add_status_effect(STUN,30,30)
 			tox_regen_buffer -= bad_absorbs*100
 			play_sound('sound/effects/impacts/savage_bio.ogg',T)
+			absorbs_left = 0
 		else
 			slime_balls_left += good_absorbs
 			brute_regen_buffer += good_absorbs*10
 			burn_regen_buffer += good_absorbs*10
+			heal_amount_current += good_absorbs*10
 			for(var/i=1,i<=min(5,good_absorbs),i++)
 				var/obj/effect/temp/healing/H = new(T)
 				H.color = COLOR_GREEN
@@ -450,3 +466,22 @@
 				GENERATE(H)
 				FINALIZE(H)
 			play_sound('sound/weapons/magic/creation.ogg',T)
+
+/mob/living/simple/slime_king/proc/start_absorb()
+
+	if(heal_amount_current >= heal_amount_max || next_slime_absorb_spam > world.time || absorbs_left > 0)
+		return FALSE
+
+	var/turf/T = get_turf(src)
+
+	if(!T)
+		return FALSE
+
+	build_a_house(2)
+	add_status_effect(PARALYZE,duration=100,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
+	next_slime_absorb_spam = world.time + SECONDS_TO_DECISECONDS(60)
+	absorbs_left = 10
+	next_special_attack = world.time + 100
+	next_slime_ball = world.time + 150
+
+	return TRUE

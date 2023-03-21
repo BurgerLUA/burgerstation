@@ -11,14 +11,12 @@
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
-	density = TRUE
-
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
 	bullet_block_chance = 100
 
-	health = /health/construction/barricade
-	health_base = 400
+	health = /health/construction
+	health_base = 500
 
 	color = "#0094FF"
 
