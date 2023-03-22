@@ -51,7 +51,6 @@
 /obj/item/container/healing/ointment/Generate()
 	. = ..()
 	amount = 3
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/ointment/advanced
 	name = "infused ointment (silver sulfadiazine)"
@@ -85,7 +84,6 @@
 /obj/item/container/healing/trauma_kit/Generate()
 	. = ..()
 	amount = 3
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/trauma_kit/advanced
 	name = "infused trauma kit (styptic powder)"
@@ -123,7 +121,6 @@
 /obj/item/container/healing/nanopaste/Generate()
 	. = ..()
 	amount = 3
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/nanopaste/treat(var/mob/caller,var/atom/A)
 
@@ -155,7 +152,6 @@
 /obj/item/container/healing/bone_gel/Generate()
 	. = ..()
 	amount = 3
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/bone_gel/get_base_value()
 	return value
@@ -189,7 +185,6 @@
 /obj/item/container/healing/burn_kit/Generate()
 	. = ..()
 	amount = 3
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/burn_kit/advanced
 	name = "infused burn kit (silver sulfadiazine)"
@@ -217,10 +212,11 @@
 
 	organic = FALSE
 
+	reagents = null
+
 /obj/item/container/healing/cable/Generate()
 	. = ..()
 	amount = 5
-	reagents.volume_max = amount*10
 
 /obj/item/container/healing/patch
 	name = "medical patch"
@@ -282,4 +278,3 @@
 /obj/item/container/healing/gauze/Generate()
 	. = ..()
 	amount = 5
-	reagents.volume_max = amount*10

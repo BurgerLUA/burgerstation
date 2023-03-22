@@ -11,6 +11,7 @@
 	var/heal_burn = 0
 	var/heal_burn_percent = 0
 	var/heal_bleeding = FALSE
+	var/reagent_max_per_amount = 15
 
 	var/verb_to_use = "treat"
 
@@ -34,9 +35,17 @@
 /obj/item/container/healing/get_base_value()
 	return abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3
 
-/obj/item/container/healing/Initialize(var/desired_loc)
+/obj/item/container/healing/Generate(var/desired_loc)
 	. = ..()
-	if(reagents) reagents.volume_max = amount*10
+	if(reagents) reagents.volume_max = amount*reagent_max_per_amount
+
+/obj/item/container/healing/Finalize(var/desired_loc)
+	. = ..()
+	if(reagents) reagents.volume_max = amount*reagent_max_per_amount //Safety
+
+/obj/item/container/healing/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
+	. = ..()
+	if(reagents) reagents.volume_max = max(1,amount)*reagent_max_per_amount
 
 /obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
 

@@ -86,14 +86,11 @@
 				var/obj/hud/inventory/I = object
 				var/old_item_name = src.name
 				var/obj/item/new_stack = copy(src)
-				var/reagents_ratio = splitamount / amount
+				new_stack.amount = 0
 				INITIALIZE(new_stack)
 				FINALIZE(new_stack)
-				new_stack.amount = 0
 				new_stack.force_move(get_turf(src))
 				src.transfer_amount_to(new_stack,splitamount)
 				I.add_object(new_stack)
-				if(reagents && new_stack.reagents)
-					reagents.transfer_reagents_to(new_stack.reagents,new_stack.reagents.volume_current*reagents_ratio)
 				caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [new_stack.amount]."))
 	return TRUE
