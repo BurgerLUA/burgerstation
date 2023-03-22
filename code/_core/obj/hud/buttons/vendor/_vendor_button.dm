@@ -1,8 +1,8 @@
 /obj/hud/button/vendor
 
 	name = "vending button"
-	icon = 'icons/hud/vendor_new.dmi'
-	icon_state = "base"
+	icon = 'icons/hud/vendor_long.dmi'
+	icon_state = "large"
 	screen_loc = "CENTER,CENTER"
 
 	flags_hud = FLAG_HUD_SPECIAL
@@ -93,15 +93,24 @@
 	add_overlay(IM)
 
 	if(locked)
-		var/image/LI = new/image(initial(icon),"locked")
+		var/image/LI = new/image(initial(icon),"[icon_state]_locked")
 		LI.plane = PLANE_HUD_OBJ
 		LI.layer = 1000
 		add_overlay(LI)
+
+
 
 /obj/hud/button/vendor/update_sprite()
 
 	if(associated_vendor.use_unlock_requirements && associated_item.unlock_requirement && !associated_item.can_unlock(owner))
 		locked = associated_item.unlock_requirement
+
+	icon = initial(icon)
+
+	if(owner && owner.client)
+		var/client/C = owner.client
+		if(C.settings.loaded_data["compact_mode"])
+			icon_state = "small"
 
 	. = ..()
 

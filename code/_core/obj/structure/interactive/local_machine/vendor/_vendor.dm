@@ -283,6 +283,12 @@ var/global/list/equipped_antags = list()
 	var/row=0
 	var/column=0
 
+	var/x_size = 4
+	if(A.client)
+		var/client/C = A.client
+		if(C.settings.loaded_data["compact_mode"])
+			x_size = 3
+
 	for(var/i=1,i<=stored_objects_length,i++)
 		if(row >= 8)
 			row = 0
@@ -292,13 +298,13 @@ var/global/list/equipped_antags = list()
 		V.associated_item = I
 		V.associated_vendor = src
 		V.associated_cost = stored_cost[I.type]
-		V.screen_loc = "LEFT+[1.5 + (column)*4],TOP-[row+1.5]"
+		V.screen_loc = "LEFT+[1.5 + (column)*x_size],TOP-[row+1.5]"
 		V.update_owner(A)
 		V.update_sprite()
 		row++
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "LEFT+[1.5 + (column+1)*4],TOP-1.5"
+	CV.screen_loc = "LEFT+[1.5 + (column+1)*x_size],TOP-1.5"
 	CV.update_owner(A)
 	CV.update_sprite()
 
