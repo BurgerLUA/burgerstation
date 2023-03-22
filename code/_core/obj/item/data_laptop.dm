@@ -45,15 +45,22 @@ var/global/list/all_vault_doors = list()
 		update_sprite()
 		return TRUE
 
-	var/obj/structure/interactive/door/airlock/A = pick(all_vault_doors)
-	var/password = all_vault_doors[A]
-	all_vault_doors -= A
+	var/obj/structure/interactive/door/vault/syndicate/D
+	while(TRUE)
+		if(!length(all_vault_doors))
+			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it another shift?"))
+			return TRUE
+		D = pick(all_vault_doors)
+		all_vault_doors -= D
+		if(!D.z || !D.stored_keypad || !D.stored_keypad.code)
+			continue //Bad one.
+		break //Found a good one.
 
 	used = TRUE
 	update_value()
 	update_sprite()
 	flick("open",src)
 
-	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[A.x],[A.y],[A.z]</b>\" and \"[password]\" before flickering to dark..."))
+	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[D.x],[D.y],[D.z]</b>\" and \"<b>[D.stored_keypad.code]</b>\" before flickering to dark..."))
 
 	return TRUE

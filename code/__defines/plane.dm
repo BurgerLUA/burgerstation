@@ -14,13 +14,15 @@
 
 #define PLANE_WATER_FLOOR -44
 
-#define PLANE_FLOOR -42
+#define PLANE_FLOOR -43
 
-#define PLANE_SHUTTLE -41
+#define PLANE_SHUTTLE -42
 
-#define PLANE_FLOOR_ATTACHMENT -40 //Decals, basically.
+#define PLANE_FLOOR_ATTACHMENT -41 //Decals, basically.
 
-#define PLANE_WIRE -39
+#define PLANE_WIRE -40
+
+#define PLANE_FOOTSTEP -39
 
 #define PLANE_WALL -38
 
