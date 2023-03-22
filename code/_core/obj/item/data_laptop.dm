@@ -14,6 +14,8 @@ var/global/list/all_vault_doors = list()
 
 	var/used = FALSE
 
+	rarity = RARITY_RARE
+
 	value = 500
 
 /obj/item/data_laptop/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
@@ -53,7 +55,7 @@ var/global/list/all_vault_doors = list()
 	var/obj/structure/interactive/door/vault/syndicate/D
 	while(TRUE)
 		if(!length(all_vault_doors))
-			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it another shift?"))
+			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it in another shift?"))
 			return TRUE
 		D = pick(all_vault_doors)
 		all_vault_doors -= D
