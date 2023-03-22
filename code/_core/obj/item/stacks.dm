@@ -54,16 +54,30 @@
 
 	if(is_item(object))
 		var/obj/item/I = object
-		if(I.can_transfer_stacks_to(src))
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(1)
-			var/stacks_transfered = I.transfer_amount_to(src)
-			if(stacks_transfered)
-				caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
-			else
-				caller.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
-			return TRUE
+		if(I.loc && is_inventory(I.loc))
+			//Transfering src to what we clicked on (what we clicked on is inside an inventory).
+			if(src.can_transfer_stacks_to(I)) //We add to it.
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
+				var/stacks_transfered = src.transfer_amount_to(I)
+				if(stacks_transfered)
+					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [I.name]."))
+				else
+					caller.to_chat(span("warning","You can't transfer any more stacks to \the [I.name], it's full!"))
+				return TRUE
+		else
+			//Transfering what we clicked on to src.
+			if(I.can_transfer_stacks_to(src)) //We take from it.
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
+				var/stacks_transfered = I.transfer_amount_to(src)
+				if(stacks_transfered)
+					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
+				else
+					caller.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
+				return TRUE
 
 	return ..()
 

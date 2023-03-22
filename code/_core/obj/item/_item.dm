@@ -405,6 +405,9 @@ var/global/list/rarity_to_mul = list(
 		var/obj/hud/inventory/I = k
 		if(I.can_slot_object(object,enable_messages,bypass))
 			return I
+		var/obj/item/ITM = I.get_top_object()
+		if(ITM && object.can_transfer_stacks_to(ITM))
+			return ITM
 
 	return null
 
@@ -413,21 +416,36 @@ var/global/list/rarity_to_mul = list(
 	if(!length(inventories))
 		return FALSE
 
-	var/added = FALSE
+	if(object == src)
+		return FALSE
 
-	if(object != src)
-		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,FALSE,bypass)
-		if(found_inventory)
-			found_inventory.add_object(object,enable_messages,bypass,silent=silent)
-			added = TRUE
+	var/obj/result = can_add_to_inventory(caller,object,FALSE,bypass)
 
-	if(enable_messages && caller)
-		if(added)
+	if(!result)
+		return FALSE
+
+	if(is_inventory(result))
+		var/obj/hud/inventory/found_inventory = result
+		found_inventory.add_object(object,enable_messages,bypass,silent=silent)
+		if(caller && enable_messages)
 			caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
-		else
-			caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
+		return TRUE
 
-	return added
+	if(is_item(result))
+		var/obj/item/I = result
+		object.transfer_amount_to(I)
+		if(object.qdeleting)
+			if(caller && enable_messages)
+				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			return TRUE
+		else
+			if(caller && enable_messages)
+				caller.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
+			return FALSE
+
+	if(caller && enable_messages) caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
+
+	return FALSE
 
 /obj/item/New(var/desired_loc)
 
