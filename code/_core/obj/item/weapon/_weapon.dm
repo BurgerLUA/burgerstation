@@ -140,7 +140,7 @@
 		var/chargediff = min(G.total_charge,(enchantment.max_charge - enchantment.charge))
 		enchantment.charge += chargediff
 		G.total_charge -= chargediff
-		var/mob/living/L = caller.
+		var/mob/living/L = caller
 		L.add_skill_xp(SKILL_SUMMONING,chargediff*0.0025)
 		if(G.total_charge <= 0 && !G.do_not_consume)
 			caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name], consuming it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], consuming it!"))

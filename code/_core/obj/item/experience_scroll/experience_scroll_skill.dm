@@ -3,10 +3,10 @@
 
 	overlay_icon_state = "gem"
 
- /obj/item/experience_scroll/skill/get_base_value()
- 	if(!skill)
- 		return 0
- 	return 750 * level_to_give
+/obj/item/experience_scroll/skill/get_base_value()
+	if(!skill)
+		return 0
+	return 750 * level_to_give
 
 /obj/item/experience_scroll/skill/get_examine_list()
 	. = ..()

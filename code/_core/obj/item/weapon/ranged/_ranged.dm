@@ -453,7 +453,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/recoil_delay_to_use = recoil_delay + max(0,(weight - 10)/10)
 
 	if(src.stored_spellswap && src.stored_spellswap.desired_projectile)
-		projectile_to_use = src.stored_spellswap.desired_projectile.
+		projectile_to_use = src.stored_spellswap.desired_projectile
 
 	if(projectile_to_use)
 
