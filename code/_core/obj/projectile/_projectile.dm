@@ -178,7 +178,7 @@
 	pixel_x_float_physical = pixel_x
 	pixel_y_float_physical = pixel_y
 
-	return ..()
+	. = ..()
 
 /obj/projectile/Finalize()
 	. = ..()

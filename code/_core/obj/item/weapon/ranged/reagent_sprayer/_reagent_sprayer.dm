@@ -38,7 +38,10 @@
 
 	for(var/k in .)
 		var/obj/projectile/P = k
-		reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller)
+		if(!P.reagents)
+			log_error("Warning: Could not transfer reagents from [src.get_debug_name()] to [P.get_debug_name()] as it had no reagent container!")
+			continue
+		reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller,check_recipes=FALSE) //Recipes aren't checked here because there is no need and it will cause race conditions otherwise.
 
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle
 	name = "spray bottle"
