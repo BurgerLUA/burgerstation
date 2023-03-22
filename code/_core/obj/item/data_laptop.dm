@@ -16,8 +16,13 @@ var/global/list/all_vault_doors = list()
 
 	value = 500
 
-	contraband = TRUE
+/obj/item/data_laptop/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	SAVEVAR("used")
 
+/obj/item/data_laptop/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	LOADVAR("used")
 
 /obj/item/data_laptop/get_base_value()
 	return used ? 100 : 1000
