@@ -73,7 +73,7 @@
 		if(pain >= health_current)
 			O.send_pain_response(pain)
 
-	if(tox || oxy || fatigue || sanity || mental) //These types should be dealt to the owner.
+	if(tox || oxy || fatigue || sanity || mental || rad) //These types should be dealt to the owner.
 		if(is_advanced(owner.loc))
 			var/mob/living/advanced/A = owner.loc
 			if(A.health)
@@ -83,6 +83,7 @@
 					fatigue=fatigue,
 					sanity=sanity,
 					mental=mental,
+					rad=rad,
 					update=update,
 					organic=organic,
 					robotic=robotic
@@ -93,6 +94,7 @@
 		fatigue = 0
 		sanity = 0
 		mental = 0
+		rad = 0
 
 	if(update && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc

@@ -187,8 +187,6 @@
 
 	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this.
 
-	item_slot_layer = 3
-
 /obj/item/proc/can_unlock(var/mob/caller)
 	return TRUE
 
@@ -401,13 +399,18 @@ var/global/list/rarity_to_mul = list(
 	if(!length(inventories))
 		return null
 
+	if(object.amount_max > 2 && object.amount < object.amount_max)
+		//First pass.
+		for(var/k in inventories)
+			var/obj/hud/inventory/I = k
+			var/obj/item/ITM = I.get_top_object()
+			if(ITM && object.can_transfer_stacks_to(ITM))
+				return ITM
+
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
 		if(I.can_slot_object(object,enable_messages,bypass))
 			return I
-		var/obj/item/ITM = I.get_top_object()
-		if(ITM && object.can_transfer_stacks_to(ITM))
-			return ITM
 
 	return null
 
@@ -443,7 +446,8 @@ var/global/list/rarity_to_mul = list(
 				caller.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
 			return FALSE
 
-	if(caller && enable_messages) caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
+	if(caller && enable_messages)
+		caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
 
 	return FALSE
 

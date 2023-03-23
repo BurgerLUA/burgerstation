@@ -36,6 +36,16 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] hurting.</u></b>")
 
+		switch(health.damage[RAD]/(1 + wound_stealth))
+			if(15 to 25)
+				. += div("warning","[noun] contaminated")
+			if(25 to 50)
+				. += div("warning","<b>[noun] irradiated</b>")
+			if(50 to INFINITY)
+				. += div("warning","<u><b>[noun] mutating</b></u>")
+
+
+
 /mob/living/get_examine_list(var/mob/examiner)
 
 	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)

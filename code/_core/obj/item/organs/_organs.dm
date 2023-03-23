@@ -485,14 +485,6 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(100 to INFINITY)
 			damage_desc += "<u><b>numb from the pain</b></u>"
 
-	switch(health.damage[RAD])
-		if(15 to 25)
-			damage_desc += "glowing"
-		if(25 to 50)
-			damage_desc += "<b>pulsating</b>"
-		if(50 to INFINITY)
-			damage_desc += "<u><b>mutating</b></u>"
-
 	switch(bleeding)
 		if(0.5 to 2)
 			if(health.organic)

@@ -71,7 +71,7 @@
 /loadout/zombie/civilian/pre_add(var/mob/living/advanced/A,var/obj/item/I)
 	. = ..()
 	var/p_length = length(I.polymorphs)
-	if(p_length && I.item_slot_layer > 1)
+	if(p_length && I.item_slot_layer > SLOT_LAYER_UNDER)
 		var/turf/T = get_turf(I)
 		var/pseudo_rand_num = T.x + T.y + T.z + p_length + length(I.desc)
 		for(var/k in I.polymorphs)

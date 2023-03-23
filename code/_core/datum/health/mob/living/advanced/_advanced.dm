@@ -40,7 +40,7 @@
 		if(mental)
 			. += -adjust_mana(-mental)
 
-	if(brute > 0 || burn > 0 || pain > 0 || rad > 0) //Deal damage.
+	if(brute > 0 || burn > 0 || pain > 0) //Deal damage to limbs.
 		var/list/limbs_to_damage = list()
 		var/total_limb_mod = 0
 		for(var/organ_id in TARGETABLE_LIMBS)
@@ -61,19 +61,17 @@
 				brute = brute > 0 ? brute * limb_mod : 0,
 				burn = burn > 0 ? burn * limb_mod : 0,
 				pain = pain > 0 ? pain * limb_mod : 0,
-				rad = rad > 0 ? rad * limb_mod : 0,
 				organic = organic,
 				robotic = robotic
 			)
 
-	if(brute < 0 || burn < 0 || pain < 0 || rad < 0) //Heal damage
+	if(brute < 0 || burn < 0 || pain < 0) //Heal damage to limbs.
 		var/list/damaged_organs = list()
 		var/list/damage_totals = list()
 		var/list/desired_heal_amounts = list( //This inverses the list so its easier to work with.
 			BRUTE = brute < 0 ? -brute : 0,
 			BURN = burn < 0 ? -burn : 0,
-			PAIN = pain < 0 ? -pain : 0,
-			RAD = rad < 0 ? -rad : 0
+			PAIN = pain < 0 ? -pain : 0
 		)
 		for(var/organ_id in TARGETABLE_LIMBS)
 			var/obj/item/organ/O = A.labeled_organs[organ_id]
@@ -99,8 +97,7 @@
 			var/list/heal_list = list(
 				BRUTE = 0,
 				BURN = 0,
-				PAIN = 0,
-				RAD = 0
+				PAIN = 0
 			)
 			for(var/damage_type in damaged_organs[organ_id])
 				var/damage_amount_of_type = damaged_organs[organ_id][damage_type]

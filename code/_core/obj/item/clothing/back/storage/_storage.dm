@@ -12,8 +12,6 @@ obj/item/clothing/back/storage
 
 	drop_sound = 'sound/items/drop/backpack.ogg'
 
-	item_slot_layer = 1
-
 	uses_until_condition_fall = 0
 
 	container_priority = -102
