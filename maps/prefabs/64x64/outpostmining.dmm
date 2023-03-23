@@ -16,7 +16,7 @@
 "ap" = (/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aq" = (/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "ar" = (/obj/structure/interactive/scanner/living,/obj/structure/interactive/scanner/crate_only,/obj/structure/interactive/door/airlock/shuttle/dark,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
-"as" = (/obj/structure/shuttle_engine/propulsion/right{dir = 4},/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+"as" = (/obj/marker/spawning/window/tinted,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "at" = (/obj/structure/interactive/scanner/living,/obj/structure/interactive/conveyor,/obj/structure/interactive/scanner/crate_only,/obj/structure/interactive/door/airlock/shuttle/dark,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "au" = (/obj/structure/interactive/diverter{dir = 4},/obj/structure/interactive/conveyor{dir = 1; icon_state = "conveyor"},/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "av" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
@@ -25,12 +25,12 @@
 "ay" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "az" = (/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aA" = (/obj/structure/shuttle_engine,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
-"aB" = (/obj/structure/shuttle_engine/propulsion{dir = 4},/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+"aB" = (/obj/structure/shuttle_engine/propulsion/right{dir = 4},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aC" = (/obj/structure/interactive/conveyor,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aD" = (/obj/structure/interactive/conveyor{dir = 8; icon_state = "conveyor"},/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aE" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 1},/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aF" = (/obj/decal/hazard{dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
-"aG" = (/obj/marker/spawning/window/tinted,/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
+"aG" = (/obj/structure/shuttle_engine/propulsion{dir = 4},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aH" = (/obj/decal/hazard{dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aI" = (/obj/decal/hazard{dir = 9; icon_state = "line"},/mob/living/advanced/npc/syndicate,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aJ" = (/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
@@ -42,7 +42,7 @@
 "aP" = (/turf/simulated/floor/tile/shuttle/red,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aQ" = (/obj/structure/interactive/chair{dir = 1},/turf/simulated/floor/tile/shuttle/red,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aR" = (/obj/structure/interactive/scanner/living,/obj/structure/interactive/door/airlock/shuttle/dark,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
-"aS" = (/obj/structure/shuttle_engine/propulsion/left{dir = 4},/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+"aS" = (/obj/marker/spawning/window/tinted,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aT" = (/obj/structure/interactive/scanner/living,/obj/structure/interactive/conveyor,/obj/structure/interactive/door/airlock/shuttle/dark,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aU" = (/obj/decal/hazard,/obj/structure/interactive/shield{dir = 4; icon_state = "shieldwall"},/obj/structure/scenery/fake_door/nocolide/blast_door,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "aV" = (/turf/simulated/wall/metal/reinforced,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
@@ -61,6 +61,7 @@
 "bi" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "bj" = (/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bk" = (/obj/structure/interactive/crate/engineering,/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+"bl" = (/obj/structure/shuttle_engine/propulsion/left{dir = 4},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bm" = (/obj/structure/table,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bn" = (/obj/structure/table,/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bo" = (/obj/structure/table,/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/misc/syndicate_mining_outpost/engineering)
@@ -90,6 +91,7 @@
 "bM" = (/obj/structure/interactive/conveyor{dir = 1; icon_state = "conveyor"},/obj/structure/interactive/limiter{dir = 8},/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bN" = (/obj/marker/map_node,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/engineering)
 "bO" = (/obj/decal/hazard/full,/obj/effect/temp/crate_gib,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+"bP" = (/obj/structure/shuttle_engine,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "bQ" = (/obj/decal/hazard/full,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bR" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/engineering)
 "bS" = (/obj/marker/map_node,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
@@ -118,9 +120,9 @@
 "cp" = (/obj/structure/interactive/door/airlock/station/engineering/glass,/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/misc/syndicate_mining_outpost/hall)
 "cq" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1},/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cr" = (/obj/decal/hazard{dir = 8},/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
-"cs" = (/obj/structure/shuttle_engine,/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
+"cs" = (/obj/structure/shuttle_engine/burst,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "ct" = (/obj/structure/interactive/door/airlock/shuttle/dark,/turf/simulated/floor/tile/shuttle/red,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
-"cu" = (/obj/structure/shuttle_engine/burst,/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
+"cu" = (/obj/structure/shuttle_engine,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cv" = (/obj/decal/hazard/black/full,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cw" = (/obj/decal/hazard{dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cx" = (/obj/structure/interactive/door/airlock/station/engineering/glass,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/hall)
@@ -163,7 +165,7 @@
 "di" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/hall)
 "dj" = (/obj/decal/tile/cross/red,/obj/structure/interactive/chair{dir = 1},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/entrance)
 "dk" = (/obj/structure/interactive/door/airlock/station/bar,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/service)
-"dl" = (/obj/marker/spawning/window/tinted,/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
+"dl" = (/obj/structure/shuttle_engine/burst,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "dm" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/service)
 "dn" = (/turf/simulated/wall/metal,/area/mission/prefab/misc/syndicate_mining_outpost/medical)
 "do" = (/obj/marker/spawning/window/tinted,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/medical)
@@ -310,12 +312,10 @@
 "ga" = (/obj/structure/interactive/stacker,/obj/structure/interactive/conveyor,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gb" = (/obj/decal/hazard{dir = 4},/obj/structure/interactive/stacker,/obj/structure/interactive/conveyor,/turf/simulated/floor/tile/morphing/brown,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gc" = (/obj/structure/interactive/chair{dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
-"gd" = (/obj/structure/shuttle_engine,/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "ge" = (/obj/decal/hazard{dir = 8},/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4},/turf/simulated/floor/tile/morphing/brown,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gf" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gg" = (/obj/structure/interactive/disposals/machine/outlet{dir = 1},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gh" = (/obj/decal/hazard{dir = 4},/obj/structure/interactive/disposals/machine/outlet{dir = 1},/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8},/turf/simulated/floor/tile/morphing/brown,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
-"gi" = (/obj/structure/shuttle_engine/burst,/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gk" = (/obj/structure/interactive/door/airlock/station/engineering/glass,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gl" = (/obj/decal/hazard/corner{dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gm" = (/obj/decal/hazard/full,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_mining_outpost/mining)
@@ -405,26 +405,26 @@ szszJyJyJyJyJyJyJyJyJyJyJyJyJyszszszszszszszszszszszszszszszszszszszszszszszszsz
 szszJyJyJyJyJyJyJyJyJyJyJyJyJyszszszszszszszszszszszszszszszszszszszszszszszszszszszJyJyJyJyJyJyJycyJycyJyJyJyJyJyJycyJyCiszszsz
 szszJyJyJyJyJyJyJyJyJyJyJyJyJyszszszszszszszszszszszszszszszszszszszszszszszszszJyvPvPvPvPvPvPvPXJcyvPcyOJOJJyJyJyJycyvPjqszszsz
 szszJyJyJyJyJyJyJyJyJyJyJyJyJyszszszszszszszszszszszszszszszszszszszszszszszszszJyvPabQUFPQUFPQUaeaeaeaeaUaUaUaUaUaZaZaZaZababsz
-szszJyJyJyJyJyJyJyJyJyJyJyJyJyszszszszszszszszszszszszszszszszszszszszszszszszszJyvPabGZbJGZcAGZzgbJbJcBcKdldldlcKewbJbJbJbJfdsz
-szszamJyOJJyJyJyJyJyJyJyDGJyamszszszszszszszszszszszszszszszszszszszszszszszszszJyvPabInInInInInOgInbJcBdlfefffedlewbJbJbJfgabsz
-szanaoaoaoaoaoaoaoaoaoaoaoaoaoanJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJycyvPcyvPababababababfhInbJbJdlfefifedlfjfkfkflbJabsz
-szanaqaqaqaqaqaqaqaqaqaqaqaqaqanJyaparapararapapapasJyJyJyapapapapapatapapascyJycyJyabbJfmfnfnfnfooIfnfnfpfqfqfecKfrcKcKewbJabsz
-szanavDlaqawawawawawawawaqDlaxanOJapauayazazazapaAaBJyJyJyapaCaDaDaDaDapaAaBcyJycyJyabbJfmabfsfsftfubJbJcKfvfqfefwfefxcKewbJabsz
-szanaqaqaFaGaGaGaGaGaGaGaHaqaqanJyapauazazazazapaAaBJyJyJyapaCaDaDaDaDapaAaBcyJycyJyabbJfmabbJbJcBInbJcBdlfzfqfqcKfAfBcKewbJabsz
-szanaqaqaIaGaJaJaKaJaJaGaLaqaqanJyapauaEazazazapaAaBJyJyJyapaCaDaDaDaDapaAaBcyJycyJyabbJfmabfCbJcBInbJcBfrfDfqfqfEfqfxcKewfgabsz
-szanaqaFaNaOaJaPaQaPaJaOaNaHaqanJyapaMapaRaRapapapaSJyJyOJapaTapapapapapapaScyJycyJyabfFfmabfGbJcBInbJcBdlfzfqfqfEfAfBcKewbJabsz
+szszJyJyJyJyJyJyJyJyJyJyJyJyJyszszszszszszszszszszszszszszszszszszszszszszszszszJyvPabGZbJGZcAGZzgbJbJcBcKasasascKewbJbJbJbJfdsz
+szszamJyOJJyJyJyJyJyJyJyDGJyamszszszszszszszszszszszszszszszszszszszszszszszszszJyvPabInInInInInOgInbJcBasfefffeasewbJbJbJfgabsz
+szanaoaoaoaoaoaoaoaoaoaoaoaoaoanJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJyJycyvPcyvPababababababfhInbJbJasfefifeasfjfkfkflbJabsz
+szanaqaqaqaqaqaqaqaqaqaqaqaqaqanJyaparapararapapapaBJyJyJyapapapapapatapapaBcyJycyJyabbJfmfnfnfnfooIfnfnfpfqfqfecKfrcKcKewbJabsz
+szanavDlaqawawawawawawawaqDlaxanOJapauayazazazapaAaGJyJyJyapaCaDaDaDaDapaAaGcyJycyJyabbJfmabfsfsftfubJbJcKfvfqfefwfefxcKewbJabsz
+szanaqaqaFaSaSaSaSaSaSaSaHaqaqanJyapauazazazazapaAaGJyJyJyapaCaDaDaDaDapaAaGcyJycyJyabbJfmabbJbJcBInbJcBasfzfqfqcKfAfBcKewbJabsz
+szanaqaqaIaSaJaJaKaJaJaSaLaqaqanJyapauaEazazazapaAaGJyJyJyapaCaDaDaDaDapaAaGcyJycyJyabbJfmabfCbJcBInbJcBfrfDfqfqfEfqfxcKewfgabsz
+szanaqaFaNaOaJaPaQaPaJaOaNaHaqanJyapaMapaRaRapapapblJyJyOJapaTapapapapapapblcyJycyJyabfFfmabfGbJcBInbJcBasfzfqfqfEfAfBcKewbJabsz
 szanaqaFaNaWaPaXaJaYaPbaaNaHaqaVaVaVbcbdbebeaVaVXEaVaVaVaVaVbfaVaVaVaVXEaVaVbbababfHabfIfJabfKfLcBInbJcBcKfvfqfqcKfqfxcKewbJabsz
-szanaqaFaGaYaJaXaJaYaJaXbiaHaqaVaVbgbhbdbjbjbkbkMObmbnbpbpbpbqaVbrbZbZbsbtbuboabfMfNfOfPfQabfKfLcBfubJcBfRfqfqfSfwfBfBcKewbJabsz
-szanavaFaGaYaJaXaJaYaJaXaOaHaxaVaVbvbwbxbjbzbzbzzBbzbzbKbzbzbqaVbAbBbCPnbDbybEabfTfUfVfWfXabfKfYcBInbJcBfrdldlcKcKdldlfrewbJabsz
-szanaqaFaGbFaJaXlKaYaJaJbGbHbIbLaVbMbdbdbjbOcobzbSbzbQbOcobzbVaVbZbybDbNbDbybZabfTfVfZgagbabgcbJcBInbJcBcKgdgdcKcKgdgdcKewfgabsz
-szanaqaFaGbFaJaXaJaYaJaXaNaHaqbLaVbvbdbWbjbzbzbXzBbYbzbzbzbjcdaVbTbybDPnbCbRbUabgegffVggghabbJbJcBInbJcBgigigigigigigigiewbJabsz
-szanaqaFaGaYaJaXlKaYaJaXaNhLaqcececfaVCGbzcgbObzzBbzbQcgcobjaVaVbZbybybNbybybZabgvfVfVtbjJgkInInFAfubJglgmgmgmgmgmgmgmgmgnbJabsz
+szanaqaFaSaYaJaXaJaYaJaXbiaHaqaVaVbgbhbdbjbjbkbkMObmbnbpbpbpbqaVbrbZbZbsbtbuboabfMfNfOfPfQabfKfLcBfubJcBfRfqfqfSfwfBfBcKewbJabsz
+szanavaFaSaYaJaXaJaYaJaXaOaHaxaVaVbvbwbxbjbzbzbzzBbzbzbKbzbzbqaVbAbBbCPnbDbybEabfTfUfVfWfXabfKfYcBInbJcBfrasascKcKasasfrewbJabsz
+szanaqaFaSbFaJaXlKaYaJaJbGbHbIbLaVbMbdbdbjbOcobzbSbzbQbOcobzbVaVbZbybDbNbDbybZabfTfVfZgagbabgcbJcBInbJcBcKbPbPcKcKbPbPcKewfgabsz
+szanaqaFaSbFaJaXaJaYaJaXaNaHaqbLaVbvbdbWbjbzbzbXzBbYbzbzbzbjcdaVbTbybDPnbCbRbUabgegffVggghabbJbJcBInbJcBcscscscscscscscsewbJabsz
+szanaqaFaSaYaJaXlKaYaJaXaNhLaqcececfaVCGbzcgbObzzBbzbQcgcobjaVaVbZbybybNbybybZabgvfVfVtbjJgkInInFAfubJglgmgmgmgmgmgmgmgmgnbJabsz
 szanaqaFbiaYaJaXaJaYaJaJcacbcccJcJcJbwcLcMcNcObjzBbjcObjcNbjaVaVcichbZPnbycjckabgogpgqjJgrabInbJgsbJbJbJgmgmgmgmgmgmgmgmgtbJabsz
-szanaqHCaGaYaJaXaJaYaJclaOaHaaaVaVaVaVaVcPaVaVbjzBbjcQcQcQaVaVcPaaaacpcxcpaaaaabguabgvjJgrabhsababababababababababababababababsz
-szanaqaFaGbFcqaPaJaPcqaXbicraacmcmcmcmcmcmcmcCcmnGcmcmcmcmcmcmcCcmcmcmnGcmcDcDcEcDcDcDKlcDcDcDcDcDcDcFcncnaahPOJJyszszszszszszsz
+szanaqHCaSaYaJaXaJaYaJclaOaHaaaVaVaVaVaVcPaVaVbjzBbjcQcQcQaVaVcPaaaacpcxcpaaaaabguabgvjJgrabhsababababababababababababababababsz
+szanaqaFaSbFcqaPaJaPcqaXbicraacmcmcmcmcmcmcmcCcmnGcmcmcmcmcmcmcCcmcmcmnGcmcDcDcEcDcDcDKlcDcDcDcDcDcDcFcncnaahPOJJyszszszszszszsz
 szanaqaFaNaNaNaPaJaPaNaNaNaHaacGcHKlKlKlKlKlKlKlcHKlKlKlKlKlKlKlKlKlcHKlahKlKlKlKlKlKlcHKlKlKlKlKlKlKlKlcnaaJyJyamszszszszszszsz
-szanaqaFaNcscsctaOctcscsaNaHaacnKlcncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncHcnaaJyJyfyszszszszszszsz
-szanavaFcucucuaPaPaPcucucuaHaacnKlcndcdcdddddddedfdedddddddddddgdgdgdkdgdgdgdmdndododpdqdpdododododocnKlcSaaJyJyfyJyJyJyJyJyJyJy
+szanaqaFaNcucuctaOctcucuaNaHaacnKlcncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncncHcnaaJyJyfyszszszszszszsz
+szanavaFdldldlaPaPaPdldldlaHaacnKlcndcdcdddddddedfdedddddddddddgdgdgdkdgdgdgdmdndododpdqdpdododododocnKlcSaaJyJyfyJyJyJyJyJyJyJy
 szanaqaqcvcvcvcwcwcwcvcvcvaqaacnKlcncTdcdrdsdtdudvdrdtdsdwdwdwdgdxdydvdydydgdzdndpdpdpdqdpdAdBdCdDdocnKlcUaaJyLvfyJyJyJyJyJyJyJy
 szanaqaqaqaqaqaqaqaqaqaqaqaqaacnKlcncVdEdrdvdFdvdGdHdvdrdwdwdwdgdxdvdvdvdxdgdzdndIdqdqdJdqdqdqdqdDdocnKlcnaaJyJyfyszszszszszszsz
 szanaqaqaqaqaqaqaqaqaqaqaqaxaacGKlcncWdcdgdgdgdgdvdrdudrdwdwdKdgdLdvdGdvdMdNUCdndOdqdPdPdQdRdSdqdDdocnKlcnaaJyJyfyszszszszszszsz

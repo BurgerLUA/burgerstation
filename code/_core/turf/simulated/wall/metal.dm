@@ -57,24 +57,6 @@
 	reinforced_color = COLOR_ADAMANITUM_CARBON
 	health = null
 
-/turf/simulated/wall/metal/reinforced/syndicate
-	icon = 'icons/turf/wall/metal/syndicate.dmi'
-	desc = "Dont even bother."
-	color = COLOR_IRON
-	material_id = /material/adamantium_carbon
-	reinforced_material_id = /material/adamantium_carbon
-	reinforced_color = "#FF0000"
-	health = null
-	health_base = INFINITY //TRY BREAKING IT NOW I DARE YOU.
-
-/turf/simulated/wall/metal/reinforced/syndicate/on_damage_received(atom/atom_damaged, atom/attacker, atom/weapon, damagetype/DT, list/damage_table, damage_amount, critical_hit_multiplier, stealthy)
-	health.health_current = INFINITY //BREAK IT NOW I FUCKING DARE YOU.
-	. = ..()
-
-
-/turf/simulated/wall/metal/reinforced/syndicate/shuttle
-	plane = PLANE_SHUTTLE
-
 /*
 /turf/simulated/wall/metal/reinforced/rusted
 	name = "reinforced metal wall"
@@ -114,8 +96,10 @@
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
 	reinforced_color = "#FFFFFF"
-	health_base = 3000
+	health = null
 
+/turf/simulated/wall/metal/syndicate/reinforced/shuttle
+	plane = PLANE_SHUTTLE
 
 /turf/simulated/wall/metal/rev
 	name = "tinted steel wall"
