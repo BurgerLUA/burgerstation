@@ -221,7 +221,7 @@ var/global/list/all_damage_numbers = list()
 					new_attack_damage[damage_type] += attack_damage
 					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
-	var/final_damage_multiplier = (hit_object && hit_object.health ? hit_object.health.get_damage_multiplier() : 1)*damage_multiplier*damage_mod
+	var/final_damage_multiplier = (hit_object && hit_object.health ? hit_object.health.get_damage_multiplier(attacker,victim,weapon,hit_object) : 1)*damage_multiplier*damage_mod
 	if(debug) log_debug("Multiplying final damage by [final_damage_multiplier] from bonuses.")
 	for(var/k in new_attack_damage)
 		new_attack_damage[k] *= final_damage_multiplier

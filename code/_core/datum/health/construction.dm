@@ -38,3 +38,19 @@
 		old_damage_number = damage_number
 
 /health/construction/glass/reinforced
+
+
+
+
+
+
+
+
+/health/construction/field_generator/
+
+/health/construction/field_generator/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(istype(weapon,/obj/structure/interactive/emitter))
+		return 0
+
+	. = ..()

@@ -141,7 +141,8 @@
 				frustration_astar_path = frustration_astar_path_threshold
 				should_remove_frustration = FALSE
 
-	owner.handle_movement(tick_rate)
+	if(!owner.anchored)
+		owner.handle_movement(tick_rate)
 
 	if(owner.move_dir && current_turf) //current_turf will only be assigned if they were supposed to move.
 		if(objective_attack)

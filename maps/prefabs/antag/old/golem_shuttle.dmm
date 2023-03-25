@@ -14,7 +14,7 @@
 "an" = (/obj/structure/table/reinforced,/obj/item/weapon/melee/tool/pickaxe,/obj/item/weapon/melee/tool/pickaxe,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/golem/right)
 "ao" = (/obj/structure/table/reinforced,/obj/item/flare,/obj/item/flare,/obj/item/flare,/obj/item/flare,/obj/item/flare,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/golem/right)
 "ap" = (/obj/structure/interactive/crate/coffin,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/golem/right)
-"aq" = (/obj/structure/shuttle_engine/large{dir = 4},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/golem/right)
+"aq" = (/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/golem/right)
 "ar" = (/turf/simulated/floor/tile/shuttle/purple,/area/mission/prefab/misc/golem/right)
 "as" = (/obj/marker/map_node,/turf/simulated/floor/tile/shuttle/purple,/area/mission/prefab/misc/golem/right)
 "at" = (/obj/structure/interactive/crate/coffin,/turf/simulated/floor/tile/shuttle/purple,/area/mission/prefab/misc/golem/right)
@@ -73,7 +73,7 @@
 "bu" = (/obj/structure/interactive/lighting/fixture/tube/station{dir = 1; icon_state = "preview"},/turf/simulated/floor/tile/shuttle,/area/mission/prefab/misc/golem/center)
 "bv" = (/obj/structure/table/reinforced,/obj/item/clothing/glasses/medical_hud,/turf/simulated/floor/tile/shuttle/purple,/area/mission/prefab/misc/golem/center)
 "bw" = (/obj/structure/interactive/computer/console/medical{dir = 4},/turf/simulated/floor/tile/shuttle,/area/mission/prefab/misc/golem/center)
-"bx" = (/obj/structure/shuttle_engine/large{dir = 4},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/golem/left)
+"bx" = (/obj/structure/shuttle_engine/large{dir = 4},/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/golem/right)
 "by" = (/obj/structure/interactive/vending/medical/basic{dir = 1; icon_state = "wallmed"},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/golem/center)
 "bz" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle,/area/mission/prefab/misc/golem/left)
 "bA" = (/obj/marker/map_node,/turf/simulated/floor/tile/shuttle,/area/mission/prefab/misc/golem/left)
@@ -119,6 +119,8 @@
 "co" = (/obj/structure/table/reinforced,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/shuttle/black,/area/mission/prefab/misc/golem/left)
 "cp" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/golem/left)
 "cq" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/shuttle/off_white,/area/mission/prefab/misc/golem/center)
+"cr" = (/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/golem/left)
+"cs" = (/obj/structure/shuttle_engine/large{dir = 4},/turf/simulated/floor/plating/shuttle,/area/mission/prefab/misc/golem/left)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -129,23 +131,23 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaabacabaaaaaaaaaaaaaaaaabacabaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaadadaeadadadadadciadadadadaeadadadadadaaaaaa
-aaaaaaaaaaaaaaaaaaafadagahaiajakalamanaoaiajakahapapadadadaaaaaa
-aaaaaaaaaaaaaaaaaaafadararararasararaXcfasarararatatadaqadaaaaaa
-aaaaaaaaaaaaaaaaaaayadadadadadauadadavbcawavavavavavavadadaaaaaa
-aaaaaaaaaaaaaaaaabayadaxcacbcbcccbaWavbZaCaDaEaFaGaHavaqadaaaaaa
-aaaaaaaaaaaaaaababcdcecccbazaBaAazbLavcgaKaKaLaKaKaHavadadaaaaaa
-aaaaaaaIaIaIaIaIaIaIaIaIaJaIaIavavbcavcgaKaKaKaKaKaOavaqadabaaaa
+aaaaaaaaaaaaaaaaaaafadagahaiajakalamanaoaiajakahapapadaqaqaaaaaa
+aaaaaaaaaaaaaaaaaaafadararararasararaXcfasarararatatadbxaqaaaaaa
+aaaaaaaaaaaaaaaaaaayadadadadadauadadavbcawavavavavavavaqaqaaaaaa
+aaaaaaaaaaaaaaaaabayadaxcacbcbcccbaWavbZaCaDaEaFaGaHavbxaqaaaaaa
+aaaaaaaaaaaaaaababcdcecccbazaBaAazbLavcgaKaKaLaKaKaHavaqaqaaaaaa
+aaaaaaaIaIaIaIaIaIaIaIaIaJaIaIavavbcavcgaKaKaKaKaKaOavbxaqabaaaa
 aaaaaaaIaPaQaRaRaRaSaRaRaTaRaUavaVbZchcgaKaKaKaMavavavavavababaa
 aaaaaaaIaYaYaZaZaZaZbababbbbbbbcbdbdaKaKaKaKaKaKawaKbeaKawababab
 aaaaaaaIbfaYbabgbhbababababibaawaKbjaKaKaKbnaKaKawaKaLaKawabbmab
 aaaaaaaIaYaYaZaZaZaZbababababaawaKbdbdbdbdbdbdbdawaKbuaKawababab
 aaaaaaaIboaQaRaRaRbpaRaRaRaRbqavaNbZbraNaKaKaKclcqavavavavbsabab
-aaaaaaaIaIaIaIaIaIaIaIaIaIaIaIavavbcavbtaKbwaKbdbdbvavbkbkababaa
-aaaaaaaaaaaaaaababacbzbAbCbCbEbCbCcjavbBaKaKaLaKbFbDavbxbkabaaaa
-aaaaaaaaaaaaaaaaababbkbCbCbCbCcjckckavbGbHbGbIaNbJbKavbkbkaaaaaa
-aaaaaaaaaaaaaaaaaaabbkbkbkbkbkblbkbkavawawavavbyavavavbxbkaaaaaa
-aaaaaaaaaaaaaaaaaaaabkbMbMbMbMcmcncncnbNbNbMbMbMbObObkbkbkaaaaaa
-aaaaaaaaaaaaaaaaaaaabkbPbQbRbSbTbUbVcobWbRbSbTbQbXbXbkbxbkaaaaaa
+aaaaaaaIaIaIaIaIaIaIaIaIaIaIaIavavbcavbtaKbwaKbdbdbvavcrcrababaa
+aaaaaaaaaaaaaaababacbzbAbCbCbEbCbCcjavbBaKaKaLaKbFbDavcscrabaaaa
+aaaaaaaaaaaaaaaaababbkbCbCbCbCcjckckavbGbHbGbIaNbJbKavcrcraaaaaa
+aaaaaaaaaaaaaaaaaaabbkbkbkbkbkblbkbkavawawavavbyavavavcscraaaaaa
+aaaaaaaaaaaaaaaaaaaabkbMbMbMbMcmcncncnbNbNbMbMbMbObObkcrcraaaaaa
+aaaaaaaaaaaaaaaaaaaabkbPbQbRbSbTbUbVcobWbRbSbTbQbXbXbkcscraaaaaa
 aaaaaaaaaaaaaaaaaaaabkbkbYbkbkbkbkbkcpbkbkbkbkbYbkbkbkbkbkaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaabacababaaaaaaaaafaaaaabacababaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaababaaaaaaaaaaaaaaaaaaababaaaaaaaaaaaaaa

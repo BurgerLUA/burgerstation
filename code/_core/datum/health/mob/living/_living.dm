@@ -8,7 +8,7 @@
 	QUEUE_HEALTH_UPDATE(L)
 	return TRUE
 
-/health/mob/living/get_damage_multiplier()
+/health/mob/living/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
 	. = ..()
 

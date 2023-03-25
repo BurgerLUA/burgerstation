@@ -245,3 +245,7 @@
 
 /atom/proc/on_dmm_suite_rotate(var/angle_offset=0)
 	return TRUE
+
+
+/atom/proc/get_battery() //TODO: Make all atoms that use power use this.
+	return null

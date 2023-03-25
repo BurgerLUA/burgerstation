@@ -25,13 +25,13 @@
 
 /obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
-	if(stored_bullet) .["stored_bullet"] = stored_bullet.type
+	SAVEPATH("stored_bullet")
 	SAVEVAR("bullet_count")
 
 /obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 	RUN_PARENT_SAFE
-	if(object_data["stored_bullet"])
-		set_stored_bullet(object_data["stored_bullet"])
+	LOADPATH("stored_bullet")
+	set_stored_bullet(stored_bullet)
 	LOADVAR("bullet_count")
 
 /obj/item/bulletbox/Generate()
@@ -143,7 +143,7 @@
 
 /obj/item/bulletbox/proc/set_stored_bullet(var/desired_path,var/generate=FALSE)
 
-	if(!desired_path)
+	if(!desired_path) //Clear and remove.
 		if(stored_bullet && istype(stored_bullet))
 			qdel(stored_bullet)
 		stored_bullet = null

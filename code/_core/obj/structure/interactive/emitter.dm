@@ -52,7 +52,7 @@
 		)
 		play_sound('sound/weapons/ranged/energy/emitter/shoot.ogg',get_turf(src))
 
-		next_fire = world.time + SECONDS_TO_DECISECONDS(6)
+		next_fire = world.time + SECONDS_TO_DECISECONDS(5)
 		flick("[initial(icon_state)]_fire",src)
 
 

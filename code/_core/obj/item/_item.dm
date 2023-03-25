@@ -826,10 +826,6 @@ var/global/list/rarity_to_mul = list(
 /obj/item/proc/can_parry()
 	return TRUE
 
-/obj/item/proc/get_battery()
-	return null
-
-
 /obj/item/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	if(quality <= 0)
 		if(ismob(attacker))

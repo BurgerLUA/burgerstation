@@ -35,7 +35,7 @@
 	owner = null
 	return ..()
 
-/health/proc/get_damage_multiplier()
+/health/proc/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return damage_multiplier
 
 /health/New(var/desired_owner)

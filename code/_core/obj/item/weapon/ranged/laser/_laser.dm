@@ -97,6 +97,12 @@
 	return ..()
 
 /obj/item/weapon/ranged/energy/get_battery()
+
+	var/atom/A = src.loc
+	if(A)
+		var/obj/item/powercell/PC = A.get_battery()
+		if(PC) return PC
+
 	return battery
 
 /obj/item/weapon/ranged/energy/New(var/desired_loc)
