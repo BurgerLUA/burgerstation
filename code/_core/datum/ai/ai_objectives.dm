@@ -93,7 +93,6 @@
 		var/ai/LAI = k
 		LAI.set_objective(null)
 
-
 	if(!owner.dead && old_attack && !old_attack.qdeleting && is_living(old_attack))
 		var/mob/living/L2 = old_attack
 		if(L2.dead)
@@ -157,10 +156,10 @@
 			best_detection_value = detection_value
 
 	if(best_target)
-		if(best_target == objective_attack)
+		if(objective_attack && best_target == objective_attack)
 			set_alert_level(ALERT_LEVEL_COMBAT,best_target,best_target)
 			return TRUE
-		if(best_detection_value < night_vision*2)
+		if(!objective_attack && best_detection_value < night_vision*2)
 			try_investigate(best_target)
 			return TRUE
 		else
@@ -216,7 +215,6 @@
 				continue
 			var/mob/living/L = LS.top_atom
 			if(should_attack_mob(L))
-				try_investigate(L,force_if_on_cooldown=TRUE)
 				set_alert_level(ALERT_LEVEL_CAUTION,L,L)
 				break
 

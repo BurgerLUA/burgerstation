@@ -38,7 +38,7 @@
 		if(owner.has_status_effect(REST))
 			owner.remove_status_effect(REST)
 
-	if(should_investigate_alert && alert_epicenter && alert_level > ALERT_LEVEL_NONE && (old_alert_level >= alert_level ? TRUE : prob(50)) )
+	if(!objective_attack && should_investigate_alert && alert_epicenter && alert_level > ALERT_LEVEL_NONE && (old_alert_level >= alert_level ? TRUE : prob(50)) )
 		try_investigate(alert_epicenter,force_if_on_cooldown=TRUE)
 
 	if(alert_level <= ALERT_LEVEL_NONE)
