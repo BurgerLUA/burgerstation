@@ -3,6 +3,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 /ai/
 
+	var/can_attack = TRUE
+
 	var/active = FALSE //Read only to deterimine if this AI is actually active.
 
 	var/debug = FALSE //Enable or disable logging.

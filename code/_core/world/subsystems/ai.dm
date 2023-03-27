@@ -62,14 +62,16 @@ SUBSYSTEM_DEF(ai)
 				continue
 			var/should_life = AI.should_life()
 			if(should_life == null)
-				log_error("WARNING: AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
-				qdel(AI.owner)
+				log_error("WARNING: AI of type [AI.type] in [AI.owner ? AI.owner.get_debug_name() : "NULL OWNER"] likely hit a runtime and was deleted, along with its owner.")
+				if(AI.owner)
+					qdel(AI.owner)
 				continue
 			if(!should_life)
 				continue
 			if(AI.on_life(tick_rate) == null)
-				log_error("WARNING: AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
-				qdel(AI.owner)
+				log_error("WARNING: AI of type [AI.type] in [AI.owner ? AI.owner.get_debug_name() : "NULL OWNER"] likely hit a runtime and was deleted, along with its owner.")
+				if(AI.owner)
+					qdel(AI.owner)
 				continue
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 

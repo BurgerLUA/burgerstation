@@ -150,16 +150,12 @@
 	material_id = /material/steel
 	health_base = 1000
 
-/turf/simulated/wall/metal/circuit/indestructable
-	health = null
-	destruction_turf = null
-
 /turf/simulated/wall/metal/circuit/reinforced
 	name = "reinforced techno steel wall"
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
 	reinforced_color = "#FFFFFF"
-	health_base = 3000
+	health = null //Indestructable
 
 /turf/simulated/wall/metal/solarian
 	name = "solarian steel wall"

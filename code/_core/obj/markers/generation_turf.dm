@@ -39,7 +39,7 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 			if(!T.map_spawn && T.density && dt && !initial(dt.density))
 				T.change_turf(dt)
 			else if(!first)
-				break
+				continue
 			first = FALSE
 			for(var/d in DIRECTIONS_CARDINAL)
 				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)

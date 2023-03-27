@@ -300,7 +300,7 @@
 	if(is_living(obstacle))
 		var/mob/living/L = obstacle
 		if(is_enemy(L))
-			if(objective_attack)
+			if(objective_attack && can_attack)
 				spawn do_attack(obstacle,prob(left_click_chance))
 			else
 				set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
@@ -315,7 +315,7 @@
 			trigger_other_bump = FALSE
 		if(trigger_other_bump && L.ai)
 			L.ai.Bump(owner,FALSE)
-	else if(attack_movement_obstructions)
+	else if(attack_movement_obstructions && can_attack)
 		spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

@@ -82,7 +82,7 @@
 	reinforced_material_id = /material/plasteel
 	reinforced_color = COLOR_PLASTEEL
 
-	health_base = 600
+	health = null //Indestructable.
 
 /obj/structure/window/tinted
 	name = "tinted window"

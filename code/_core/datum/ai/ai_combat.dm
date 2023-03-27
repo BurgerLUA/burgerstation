@@ -32,6 +32,9 @@
 
 /ai/proc/handle_attacking()
 
+	if(!can_attack)
+		return FALSE
+
 	if(!objective_attack)
 		return FALSE
 

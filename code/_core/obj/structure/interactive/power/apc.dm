@@ -80,7 +80,6 @@
 		INITIALIZE(cell)
 		GENERATE(cell)
 		FINALIZE(cell)
-		cell.charge_current = rand(cell.charge_max*0.5,cell.charge_max*0.75)
 
 /obj/structure/interactive/power/apc/update_overlays()
 

@@ -125,8 +125,6 @@
 				W.alpha = 0
 				W.set_density(0)
 
-	world.log << "Result: [.]"
-
 /obj/structure/interactive/field_generator/proc/setup_barrier_chain(var/obj/structure/interactive/field_generator/FG,var/d) //FG is the target FG
 
 	var/turf/T = get_turf(src)

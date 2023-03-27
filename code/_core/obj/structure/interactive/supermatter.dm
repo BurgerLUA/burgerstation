@@ -10,7 +10,9 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
-	collision_dir = 0x0 //Special stuff.
+	bullet_block_chance = 100
+
+	collision_dir = NORTH | EAST | SOUTH | WEST
 
 	value = 10000
 
@@ -83,12 +85,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		var/health_co = health.health_current/health.health_max
 		color = rgb(255,255*health_co,255*health_co)
 
-/obj/structure/interactive/supermatter/Cross(var/atom/movable/O,var/atom/oldloc)
-	if(istype(O,/obj/structure/interactive/supermatter))
-		return FALSE
-	. = ..()
-
-/obj/structure/interactive/supermatter/Crossed(var/atom/movable/O)
+/obj/structure/interactive/supermatter/Cross(atom/movable/O,atom/oldloc)
 
 	. = ..()
 
@@ -103,6 +100,9 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		if(display_spam <= world.time)
 			src.visible_message(span("danger","\The [O.name] flashes in a brilliant light as the [src.name]'s energy swallows it!"))
 			display_spam = world.time + 1
+
+		return FALSE
+
 
 /obj/structure/interactive/supermatter/proc/add_charge(var/charge_amount=0)
 	if(charge_max <= 0)
@@ -141,7 +141,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		//update_map_text()
 
 	if(weapon && DT.get_attack_type() == ATTACK_TYPE_MELEE)
-
 		if(weapon.health)
 			weapon.health.adjust_loss_smart(burn=400)
 		else if(is_item(weapon))

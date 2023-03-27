@@ -2,4 +2,4 @@
 	name = "field generator wall"
 	mouse_opacity = 0
 	density = TRUE
-	alpha = 100
+	alpha = 175
