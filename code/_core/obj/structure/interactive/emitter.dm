@@ -16,6 +16,8 @@
 
 	density = TRUE
 
+/obj/structure/interactive/emitter/active
+	active = TRUE
 
 /obj/structure/interactive/emitter/Finalize()
 	if(active)

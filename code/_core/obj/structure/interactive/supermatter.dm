@@ -193,7 +193,12 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 /obj/structure/interactive/supermatter/station
 	name = "stable supermatter crystal"
 	health_base = 10000
-	charge_max = SECONDS_TO_DECISECONDS(60) //60 seconsd of power.
+	charge_max = SECONDS_TO_DECISECONDS(60) //60 seconds of power.
+
+/obj/structure/interactive/supermatter/ai_core
+
+
+
 
 /obj/structure/interactive/supermatter/defense
 	name = "unstable supermatter crystal"

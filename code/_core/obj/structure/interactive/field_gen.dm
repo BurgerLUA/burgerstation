@@ -1,4 +1,4 @@
-/obj/structure/interactive/field_gen
+/obj/structure/interactive/field_generator
 	name = "field generator"
 	icon = 'icons/obj/structure/field_gen.dmi'
 	icon_state = "field_gen"
@@ -22,24 +22,24 @@
 	var/list/linked_field_gens = list()
 	var/list/linked_field_gen_walls = list() //dimensional list
 
-/obj/structure/interactive/field_gen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/field_generator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	set_active(!active)
 	return TRUE
 
-/obj/structure/interactive/field_gen/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/field_generator/on_destruction(var/damage = TRUE)
 	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/field_gen/active
+/obj/structure/interactive/field_generator/active
 	active = TRUE
 
-/obj/structure/interactive/field_gen/Finalize()
+/obj/structure/interactive/field_generator/Finalize()
 	. = ..()
 	set_active(active,force=TRUE)
 
-/obj/structure/interactive/field_gen/proc/set_active(var/desired_active,var/force=FALSE,var/mob/caller) //caller is optional.
+/obj/structure/interactive/field_generator/proc/set_active(var/desired_active,var/force=FALSE,var/mob/caller) //caller is optional.
 
 	if(!force && desired_active == active)
 		return FALSE
@@ -69,19 +69,19 @@
 
 	return TRUE
 
-/obj/structure/interactive/field_gen/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
+/obj/structure/interactive/field_generator/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
 	. = ..()
 	if(. && !desired_anchored)
 		clear_linkages()
 		if(active)
 			set_active(FALSE)
 
-/obj/structure/interactive/field_gen/post_move(var/atom/old_loc)
+/obj/structure/interactive/field_generator/post_move(var/atom/old_loc)
 	. = ..()
 	if(. && anchored) //Must be a shuttle or something special
 		clear_linkages()
 
-/obj/structure/interactive/field_gen/proc/clear_linkages() //This also clears gen walls, of course.
+/obj/structure/interactive/field_generator/proc/clear_linkages() //This also clears gen walls, of course.
 
 	for(var/d in src.linked_field_gens)
 		clear_linkage(text2num(d))
@@ -89,10 +89,10 @@
 	return TRUE
 
 
-/obj/structure/interactive/field_gen/proc/clear_linkage(var/d)
+/obj/structure/interactive/field_generator/proc/clear_linkage(var/d)
 
 	var/rd = turn(d,180)
-	var/obj/structure/interactive/field_gen/FG = src.linked_field_gens["[d]"]
+	var/obj/structure/interactive/field_generator/FG = src.linked_field_gens["[d]"]
 
 	//Delete our stuff.
 	src.linked_field_gens -= "[d]"
@@ -107,12 +107,12 @@
 	if(FG.linked_field_gen_walls["[rd]"])
 		FG.linked_field_gen_walls["[rd]"].Cut()
 
-/obj/structure/interactive/field_gen/proc/update_barrier_chains()
+/obj/structure/interactive/field_generator/proc/update_barrier_chains()
 
 	. = FALSE
 
 	for(var/d in src.linked_field_gens)
-		var/obj/structure/interactive/field_gen/FG = src.linked_field_gens[d]
+		var/obj/structure/interactive/field_generator/FG = src.linked_field_gens[d]
 		var/is_stable_connection = FG.active && src.active && (FG.stored_field_energy > 0 || src.stored_field_energy > 0)
 		if(is_stable_connection)
 			. = TRUE
@@ -127,7 +127,7 @@
 
 	world.log << "Result: [.]"
 
-/obj/structure/interactive/field_gen/proc/setup_barrier_chain(var/obj/structure/interactive/field_gen/FG,var/d) //FG is the target FG
+/obj/structure/interactive/field_generator/proc/setup_barrier_chain(var/obj/structure/interactive/field_generator/FG,var/d) //FG is the target FG
 
 	var/turf/T = get_turf(src)
 	var/limit = get_dist(FG,src) + 2
@@ -170,7 +170,7 @@
 
 
 
-/obj/structure/interactive/field_gen/proc/setup_linkages()
+/obj/structure/interactive/field_generator/proc/setup_linkages()
 	. = FALSE
 	for(var/d in DIRECTIONS_CARDINAL)
 		if(src.linked_field_gens["[d]"]) //Already have a linkage.
@@ -180,7 +180,7 @@
 		while(limit > 0)
 			limit--
 			T = get_step(T,d)
-			var/obj/structure/interactive/field_gen/FG = locate() in T.contents
+			var/obj/structure/interactive/field_generator/FG = locate() in T.contents
 			if(FG && FG.active) //Don't need to give it energy. As long as src has energy, it can process.
 				src.linked_field_gens["[d]"] = FG
 				FG.linked_field_gens["[turn(d,180)]"] = FG
@@ -190,7 +190,7 @@
 	if(.)
 		update_barrier_chains()
 
-/obj/structure/interactive/field_gen/proc/process_field_gen()
+/obj/structure/interactive/field_generator/proc/process_field_gen()
 
 	//For icon updating.
 	var/old_emitter_state = clamp(stored_emitter_energy,0,6)
@@ -216,14 +216,14 @@
 
 		/*
 		for(var/d in linked_field_gens)
-			var/obj/structure/interactive/field_gen/FG = linked_field_gens[d]
+			var/obj/structure/interactive/field_generator/FG = linked_field_gens[d]
 			if(FG.stored_field_energy <= 0)
 				clear_linkage(text2num(d))
 		*/
 
 	return TRUE
 
-/obj/structure/interactive/field_gen/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/field_generator/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 	if(istype(weapon,/obj/structure/interactive/emitter))
 		emitter_hit()
@@ -231,7 +231,7 @@
 
 
 
-/obj/structure/interactive/field_gen/proc/emitter_hit()
+/obj/structure/interactive/field_generator/proc/emitter_hit()
 
 	var/old_emitter_state = clamp(stored_emitter_energy,0,6)
 	stored_emitter_energy = min(stored_emitter_energy + 1,7) //Add 1, as it was hit.
@@ -240,7 +240,7 @@
 	else if(old_emitter_state != stored_emitter_energy)
 		update_sprite()
 
-/obj/structure/interactive/field_gen/update_overlays()
+/obj/structure/interactive/field_generator/update_overlays()
 	. = ..()
 	if(active)
 		var/image/I = new/image(icon,"on")

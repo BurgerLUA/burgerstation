@@ -138,3 +138,37 @@
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO
 	default_state_power_doors = ON|AUTO
+
+
+/area/mission/prefab/misc/ai_core
+	name = "AI Core"
+	requires_power = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/misc/ai_core/entrance
+	name = "AI Entrance"
+	icon_state = "red"
+
+/area/mission/prefab/misc/ai_core/foyer
+	name = "AI Foyer"
+	icon_state = "green"
+
+/area/mission/prefab/misc/ai_core/core
+	name = "AI Core"
+	icon_state = "blue"
+
+/area/mission/prefab/misc/ai_core/maint/
+	icon_state = "yellow"
+
+/area/mission/prefab/misc/ai_core/maint/left
+	name = "AI Maintenance Left Wing"
+
+/area/mission/prefab/misc/ai_core/maint/right
+	name = "AI Maintenance Right Wing"
+
+/area/mission/prefab/misc/ai_core/engine
+	name = "AI Engine"
+	icon_state = "orange"

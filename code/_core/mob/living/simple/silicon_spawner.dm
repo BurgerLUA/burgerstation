@@ -12,6 +12,9 @@
 	stamina_base = 50
 	mana_base = 50
 
+	anchored = TRUE
+	density = TRUE
+
 /mob/living/simple/silicon/ai/proc/spawn_spawners()
 
 	if(!z)
@@ -84,7 +87,7 @@
 
 
 
-/mob/living/simple/ai/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/simple/silicon/ai/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
 
@@ -185,6 +188,8 @@
 	stamina_base = 500
 
 	armor = /armor/borg
+
+	damage_type = /damagetype/squats/
 
 	level = 15
 
