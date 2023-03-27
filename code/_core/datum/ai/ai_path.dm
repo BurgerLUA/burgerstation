@@ -28,7 +28,7 @@
 
 	var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 	if(!found_path)
-		if(debug) log_debug("[src.get_debug_name()] tried astar pathing, but couldn't find a valid node path.")
+		if(debug) log_debug("[src.get_debug_name()] tried astar node pathing, but couldn't find a valid node path.")
 		return set_path_astar(destination)
 
 	return set_path_node(found_path)

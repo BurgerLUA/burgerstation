@@ -655,8 +655,6 @@
 	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/proc/setup_name()
-	if(boss)
-		return FALSE
 	name = "[CHECK_NAME(name)] (LVL: [level])"
 	return TRUE
 

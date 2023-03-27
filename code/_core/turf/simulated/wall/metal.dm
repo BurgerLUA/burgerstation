@@ -137,6 +137,8 @@
 
 /turf/simulated/wall/metal/shuttle/dark
 	color = COLOR_GREY_DARK
+	reinforced_material_id = /material/plasteel
+	reinforced_color = "#FFFFFF"
 
 /turf/simulated/wall/metal/circuit
 	name = "techno steel wall"

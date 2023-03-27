@@ -57,7 +57,7 @@
 	. = ..()
 	update_sprite()
 
-/mob/living/simple/arachnid/handle_transform()
+/mob/living/simple/arachnid/handle_transform(var/force=FALSE)
 	. = ..()
 	if(.)
 		update_sprite()

@@ -19,6 +19,7 @@
 /obj/marker/spawning/window/
 	name = "full window"
 	icon_state = "window_grille"
+	alpha = 200
 
 /obj/marker/spawning/window/proc/setup_airlock()
 
