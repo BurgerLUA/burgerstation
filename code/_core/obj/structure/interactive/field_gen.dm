@@ -81,8 +81,6 @@
 	if(. && anchored) //Must be a shuttle or something special
 		clear_linkages()
 
-
-
 /obj/structure/interactive/field_gen/proc/clear_linkages() //This also clears gen walls, of course.
 
 	for(var/d in src.linked_field_gens)
@@ -98,7 +96,7 @@
 
 	//Delete our stuff.
 	src.linked_field_gens -= "[d]"
-	if(length(src.linked_field_gen_walls) && src.linked_field_gen_walls["[d]"])
+	if(src.linked_field_gen_walls["[d]"])
 		for(var/k in src.linked_field_gen_walls["[d]"])
 			var/obj/field_generator_wall/W = k
 			if(!W.qdeleting)
@@ -106,13 +104,33 @@
 
 	//Clear their stuff.
 	FG.linked_field_gens -= "[rd]"
-	FG.linked_field_gen_walls["[rd]"].Cut()
+	if(FG.linked_field_gen_walls["[rd]"])
+		FG.linked_field_gen_walls["[rd]"].Cut()
 
+/obj/structure/interactive/field_gen/proc/update_barrier_chains()
+
+	. = FALSE
+
+	for(var/d in src.linked_field_gens)
+		var/obj/structure/interactive/field_gen/FG = src.linked_field_gens[d]
+		var/is_stable_connection = FG.active && src.active && (FG.stored_field_energy > 0 || src.stored_field_energy > 0)
+		if(is_stable_connection)
+			. = TRUE
+		for(var/k in src.linked_field_gen_walls[d])
+			var/obj/field_generator_wall/W = k
+			if(is_stable_connection)
+				W.alpha = initial(W.alpha)
+				W.set_density(1)
+			else
+				W.alpha = 0
+				W.set_density(0)
+
+	world.log << "Result: [.]"
 
 /obj/structure/interactive/field_gen/proc/setup_barrier_chain(var/obj/structure/interactive/field_gen/FG,var/d) //FG is the target FG
 
 	var/turf/T = get_turf(src)
-	var/limit = get_dist(FG,src)
+	var/limit = get_dist(FG,src) + 2
 	var/rd = turn(d,180)
 
 	if(src.linked_field_gen_walls["[d]"])
@@ -127,23 +145,33 @@
 
 	while(limit > 0) //Safety in case shit goes wrong.
 		limit--
-		T = get_step(T,d)
-		if(T == FG.loc)
-			continue
 		var/obj/field_generator_wall/W = new(T)
+		W.dir = d
+		W.icon_state = "beam"
 		INITIALIZE(W)
 		GENERATE(W)
 		FINALIZE(W)
 		src.linked_field_gen_walls["[d]"] += W
 		FG.linked_field_gen_walls["[rd]"] += W
+		if(T == FG.loc)
+			W.icon = 'icons/obj/effects/field_generator_beam_large.dmi'
+			W.pixel_x = -16
+			W.pixel_y = -16
+			W.dir = rd
+			break
+		if(T == src.loc)
+			W.icon = 'icons/obj/effects/field_generator_beam_large.dmi'
+			W.pixel_x = -16
+			W.pixel_y = -16
+		else
+			W.icon = 'icons/obj/effects/field_generator_beam.dmi'
+		T = get_step(T,d)
+
 
 
 
 /obj/structure/interactive/field_gen/proc/setup_linkages()
-
-	if(stored_field_energy <= 0)
-		return FALSE
-
+	. = FALSE
 	for(var/d in DIRECTIONS_CARDINAL)
 		if(src.linked_field_gens["[d]"]) //Already have a linkage.
 			continue
@@ -157,7 +185,10 @@
 				src.linked_field_gens["[d]"] = FG
 				FG.linked_field_gens["[turn(d,180)]"] = FG
 				setup_barrier_chain(FG,d) //No risk of running this twice.
+				. = TRUE
 				break
+	if(.)
+		update_barrier_chains()
 
 /obj/structure/interactive/field_gen/proc/process_field_gen()
 
@@ -177,11 +208,18 @@
 	if(stored_emitter_energy > 0 || stored_field_energy > 0)
 		CALLBACK("\ref[src]_process_field_gen",SECONDS_TO_DECISECONDS(8),src,.proc/process_field_gen)
 
-	if(old_field_state && stored_field_energy <= 0) //Stable field made unstable field.
+	if( (old_field_state > 0 && stored_field_energy <= 0) || (old_field_state <= 0 && stored_field_energy > 0) ) //Stable field made unstable field, or vice vesa.
+		update_barrier_chains()
+
+
+
+
+		/*
 		for(var/d in linked_field_gens)
 			var/obj/structure/interactive/field_gen/FG = linked_field_gens[d]
 			if(FG.stored_field_energy <= 0)
 				clear_linkage(text2num(d))
+		*/
 
 	return TRUE
 
