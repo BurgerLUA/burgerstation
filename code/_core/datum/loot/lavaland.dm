@@ -76,3 +76,8 @@
 	loot_table = list(
 		/obj/item/clothing/back/storage/backpack/clown/bag_of_bombs = 3
 	)
+
+/loot/lavaland/ai_core
+	loot_table = list(
+		/obj/item/weapon/ranged/energy/gatling = 3
+	)

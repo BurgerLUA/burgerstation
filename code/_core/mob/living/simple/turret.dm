@@ -284,6 +284,8 @@
 	level = 20
 	var/image/tracked_cover_overlay
 
+	stored_weapon = /obj/item/weapon/ranged/energy/gatling/ai_core
+
 /mob/living/simple/turret/ai_core/Finalize()
 	. = ..()
 	update_sprite()

@@ -17,6 +17,9 @@
 	anchored = TRUE
 	density = TRUE
 
+	boss = TRUE
+	boss_loot = /loot/lavaland/ai_core
+
 /mob/living/simple/silicon/ai/proc/spawn_spawners()
 
 	if(!z)

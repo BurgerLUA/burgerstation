@@ -171,6 +171,8 @@
 	color = COLOR_ENGINEERING
 	filler = "glass"
 	fill_color = COLOR_PINK
+	no_access = TRUE
+	health = null
 
 /obj/structure/interactive/door/airlock/station/medical
 	name = "medical airlock"
