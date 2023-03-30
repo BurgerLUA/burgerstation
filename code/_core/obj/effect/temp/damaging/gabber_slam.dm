@@ -40,10 +40,10 @@
 		if(!T.has_dense_atom)
 			continue
 		for(var/j in T.contents)
-			var/atom/movable/M = j
-			if(!M.density || !M.health)
+			var/atom/movable/M2 = j
+			if(!M2.density || !M2.health)
 				continue
-			do_damage(M)
+			do_damage(M2)
 
 	CALLBACK("\ref[src]_end",5,src,.proc/end)
 
