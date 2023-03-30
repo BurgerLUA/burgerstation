@@ -28,13 +28,23 @@
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] diseased.</u></b>")
 
-		switch((health.damage[PAIN] - pain_removal)/(1 + wound_stealth))
+		switch((health.damage[PAIN] - pain_regen_buffer)/(1 + wound_stealth))
 			if(15 to 25)
 				. += div("warning","[noun] sore.")
 			if(25 to 50)
 				. += div("warning","<b>[noun] pained.</b>")
 			if(50 to INFINITY)
 				. += div("warning","<u><b>[noun] hurting.</u></b>")
+
+		switch(health.damage[RAD]/(1 + wound_stealth))
+			if(15 to 25)
+				. += div("warning","[noun] contaminated")
+			if(25 to 50)
+				. += div("warning","<b>[noun] irradiated</b>")
+			if(50 to INFINITY)
+				. += div("warning","<u><b>[noun] mutating</b></u>")
+
+
 
 /mob/living/get_examine_list(var/mob/examiner)
 
@@ -50,8 +60,8 @@
 /mob/living/proc/get_activity_text()
 
 	if(dead)
-		if(ai || is_player_controlled())
-			return div("danger","They are dead...")
+		if(is_player_controlled())
+			return div("danger","They are dead, but there may still be some hope.")
 		else
 			return div("warning","They are dead and lifeless, and their soul has departed...")
 	else if(!ai)
@@ -77,5 +87,8 @@
 			if(ALERT_LEVEL_CAUTION)
 				. += div("warning","[capitalize(pronoun)] seems to be looking for someone.")
 			if(ALERT_LEVEL_COMBAT)
-				. += div("danger","[capitalize(pronoun)] appears to be in a combative stance, with intent to fight [ai.objective_attack]!")
+				if(ai.objective_attack)
+					. += div("danger","[capitalize(pronoun)] appears to be in a combative stance, with intent to fight [ai.objective_attack]!")
+				else
+					. += div("danger","[capitalize(pronoun)] appears to be in a combative stance!")
 

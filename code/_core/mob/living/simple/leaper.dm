@@ -65,7 +65,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 30
 
 /mob/living/simple/leaper/handle_alpha()
 	if(has_status_effect(IMMORTAL))
@@ -93,7 +93,7 @@
 			break
 		if(get_dist(T,src) <= 2)
 			continue
-		if(!T.is_safe_move() || !T.is_safe())
+		if(!T.can_move_to() || !T.is_safe())
 			continue
 		valid_turfs += T
 

@@ -5,6 +5,10 @@
 	var/projectile_delay = SECONDS_TO_DECISECONDS(5)
 	var/projectile_count = 2
 
+	night_vision = 0
+
+	roaming_distance = VIEW_RANGE*0.5
+
 /ai/watcher/handle_attacking()
 
 	if(objective_attack)
@@ -22,7 +26,7 @@
 		return FALSE
 
 	if(projectile_count > 0)
-		play_sound('sound/weapons/freeze.ogg',get_turf(owner))
+		play_sound('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
 			objective_attack,
@@ -63,7 +67,7 @@
 		return FALSE
 
 	if(projectile_count > 0)
-		play_sound('sound/weapons/freeze.ogg',get_turf(owner))
+		play_sound('sound/weapons/ranged/misc/clockwork_watcher_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
 			objective_attack,

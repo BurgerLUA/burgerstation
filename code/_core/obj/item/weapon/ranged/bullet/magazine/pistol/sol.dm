@@ -2,7 +2,7 @@
 	name = "10mm Lugernut pistol"
 	desc = "Cheaper than tablewine."
 	desc_extended = "A substandard Solarian pistol commonly distributed to conscripts or those who opened a bank account for the first time. The oversized slider is known to break the thumbs of those who hold it incorrectly."
-	icon = 'icons/obj/item/weapons/ranged/pistol/10mm.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_sol.dmi'
 	icon_state = "inventory"
 	value = 200
 
@@ -10,7 +10,7 @@
 
 	tier = 1
 
-	shoot_delay = 3
+	shoot_delay = 2.3
 
 	automatic = FALSE
 
@@ -18,7 +18,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
 
-	shoot_sounds = list('sound/weapons/10/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/sol/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -67,6 +67,8 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 17 - 16
+
+	rarity = RARITY_COMMON
 
 
 

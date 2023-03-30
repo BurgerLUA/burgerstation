@@ -12,15 +12,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC_OFFENSIVE = 45*0.25
+		SKILL_MAGIC = 45*0.25
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC_OFFENSIVE = DARK
+		SKILL_MAGIC = DARK
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC_OFFENSIVE = 75 //75%
+		SKILL_MAGIC = 75 //75%
 	)
 
 /damagetype/ranged/magic/chaos/canine //Lazy way to stop the cursed canine from leveling magic stats, but still uses them for damage.

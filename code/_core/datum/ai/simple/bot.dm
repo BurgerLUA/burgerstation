@@ -9,7 +9,7 @@
 	radius_find_enemy = 0
 	should_investigate_alert = FALSE
 
-	resist_grabs = FALSE
+	resist_grabs = 0
 
 	aggression = 0
 	assistance = 0
@@ -117,6 +117,6 @@
 	radius_find_enemy = VIEW_RANGE
 	should_investigate_alert = TRUE
 	roaming_distance = VIEW_RANGE
-	resist_grabs = TRUE
-	aggression = 2
+	resist_grabs = 1
+	aggression = 3
 	assistance = 1

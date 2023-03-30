@@ -12,12 +12,14 @@
 
 	dan_mode = TRUE
 
-/obj/item/weapon/melee/energy/handsword/click_self(var/mob/caller)
+	rarity = RARITY_RARE
+
+/obj/item/weapon/melee/energy/handsword/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 
 	if(.)
 		if(enabled)
-			play_sound(pick('sound/weapons/handsword/deploy.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)
+			play_sound(pick('sound/weapons/melee/handsword/deploy.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)
 		else
-			play_sound(pick('sound/weapons/handsword/retract.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)
+			play_sound(pick('sound/weapons/melee/handsword/retract.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)

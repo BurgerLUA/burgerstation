@@ -71,14 +71,14 @@
 	. = ..()
 	var/image/I = new/image(initial(icon),"vr_[vendor_type]")
 	I.plane = PLANE_LIGHTING_EFFECT
-	I.layer = 1000
+	I.layer = LAYER_EFFECT
 	I.pixel_z = TILE_SIZE*0.5
 	I.alpha = 200
 	add_overlay(I)
 
 	var/image/I2 = new/image(initial(icon),"vr_gem")
 	I2.plane = PLANE_LIGHTING_EFFECT
-	I2.layer = 999
+	I2.layer = LAYER_LIGHTING_EMISSIVE
 	I2.alpha = 200
 	add_overlay(I2)
 
@@ -89,6 +89,8 @@
 	ignore_economy = TRUE
 
 	apc_powered = FALSE
+
+	special = TRUE
 
 /obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
 	return CEILING(desired_price,10)
@@ -131,7 +133,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/magazine/smg/handheld,
 		/obj/item/magazine/smg_9mm,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped,
+		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/magazine/smg_9mm,
@@ -139,8 +141,6 @@
 		/obj/item/magazine/smg_45,
 		/obj/item/weapon/ranged/bullet/magazine/smg/nanotech,
 		/obj/item/magazine/smg_4mm_standard,
-		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
-		/obj/item/magazine/bizon_9mm
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/shotguns

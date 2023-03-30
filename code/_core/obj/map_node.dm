@@ -22,6 +22,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 	anchored = 2
 
 	var/precision = 1 //Lower precision must mean mobs need to be very close to the node in order to count as a pass.
+	var/automatic = FALSE
 
 /* RIP failed code.
 /obj/marker/map_node/proc/get_dir_to_this(var/atom/M,var/obj/marker/map_node/source_node)
@@ -80,9 +81,10 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		var/obj/marker/map_node/MN = adjacent_map_nodes[k]
 		. += div("notice",MN.get_debug_name())
 
-/obj/marker/map_node/New(var/desired_loc)
+/obj/marker/map_node/New(var/desired_loc,var/desired_automatic=FALSE)
 	. = ..()
 	all_map_nodes += src
+	automatic = desired_automatic
 
 /obj/marker/map_node/Destroy()
 	. = ..()
@@ -102,7 +104,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		found = TRUE
 
 	if(!found)
-		log_error("Invalid node! [src.get_debug_name()].")
+		if(!automatic) log_error("Invalid node! [src.get_debug_name()].")
 
 	return found
 
@@ -120,7 +122,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		var/obj/marker/map_node/MN = point_B
 		desired_distance = MN.precision
 
-	var/limit = VIEW_RANGE*2
+	var/limit = 10
 	while(get_dist(node_checker,point_B) > desired_distance && limit > 0)
 		limit--
 		CHECK_TICK_SAFE(75,FPS_SERVER)

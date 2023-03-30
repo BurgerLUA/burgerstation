@@ -95,3 +95,11 @@
 	. = ..()
 
 
+/obj/item/storage/shoebox/galosh
+	name = "galoshes shoebox"
+	desc = "Contains a pair of galoshes."
+
+/obj/item/storage/shoebox/galosh/fill_inventory()
+	new /obj/item/clothing/feet/shoes/galosh(src)
+	new /obj/item/clothing/feet/shoes/galosh/left(src)
+	. = ..()

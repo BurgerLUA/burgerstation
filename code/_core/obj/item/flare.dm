@@ -22,14 +22,14 @@
 	QDEL_NULL(stored_cap)
 	. = ..()
 
-/obj/item/flare/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/flare/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_cap")
 	SAVEVAR("ignited")
 	SAVEVAR("has_fuel")
 
-/obj/item/flare/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/flare/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_cap")
 	LOADVAR("ignited")
 	LOADVAR("has_fuel")

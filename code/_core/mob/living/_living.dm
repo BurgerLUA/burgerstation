@@ -7,6 +7,9 @@
 	sight = SEE_BLACKNESS | SEE_SELF//| SEE_PIXELS
 
 	enable_chunk_clean = TRUE
+	enable_chunk_handling = TRUE
+
+	var/combat_dialogue/combat_dialogue
 
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
@@ -31,13 +34,13 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/nutrition = 1000
-	var/nutrition_max = 1000
-	var/nutrition_max_hard = 2000
+	var/nutrition = 2000
+	var/nutrition_max = 2000
+	var/nutrition_max_hard = 3000
 	var/nutrition_fast = 0
 	var/hydration = 1000
 	var/hydration_max = 1000
-	var/nutrition_quality = 1000 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that.
+	var/nutrition_quality = 1500 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that. 1000 is average.
 	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
@@ -180,6 +183,7 @@
 
 	var/on_fire = FALSE
 	var/fire_stacks = 0 //Fire remaining. Measured in deciseconds.
+	var/fire_stacks_max = 0 //largest fire stacks since ignite.
 
 	var/fatigue_mul = 1 //Multipier of fatigue damage given due to blocking projectiles with armor.
 	var/pain_mul = 1
@@ -208,6 +212,7 @@
 		"pain",
 		"scream",
 		"dab",
+		"flex",
 		"nod",
 		"shake",
 		"bow",
@@ -273,12 +278,24 @@
 
 	var/stun_immunity = 0 //Time in deciseconds to prevent stuns.
 
-	var/pain_removal = 0 //How much damage to ignore due to pain killers. Calculated every second.
-
 	var/gibbed = FALSE //Returns true if the cause of death was a gib.
 
 	var/parry_time = 0
 	var/parry_spam_time = 0
+
+	var/gib_on_butcher = TRUE
+
+	var/next_alert = 0 //Time until this specific mob can create an alert that wakes up AI. Prevents spam and increases preformance.
+
+/mob/living/PreDestroy()
+
+	if(ai)
+		ai.set_active(FALSE)
+
+	QDEL_NULL(ai)
+	QDEL_NULL(stand)
+
+	. = ..()
 
 /mob/living/Destroy()
 
@@ -309,8 +326,6 @@
 	else
 		QDEL_CUT_ASSOC(attributes)
 		QDEL_CUT_ASSOC(skills)
-
-	QDEL_NULL(ai)
 
 	hit_logs?.Cut()
 
@@ -349,8 +364,6 @@
 
 	stat_elements_to_update?.Cut()
 
-	QDEL_NULL(stand)
-
 	return ..()
 
 
@@ -371,7 +384,7 @@
 			continue
 		if(T.lightness > 0)
 			continue
-		if(!T.is_safe_move())
+		if(!T.can_move_to())
 			continue
 		possible_turfs += T
 
@@ -385,7 +398,7 @@
 	INITIALIZE(B)
 	GENERATE(B)
 	FINALIZE(B)
-	B.ai.set_path_astar(src.loc)
+	B.ai.set_path_astar(get_turf(src))
 
 	return TRUE
 */
@@ -397,6 +410,9 @@
 
 	if(duration <= 0)
 		return FALSE
+
+	if(!deafened_duration)
+		play_sound_global('sound/effects/flashring.ogg',hearers=list(src),volume=75,channel=SOUND_CHANNEL_FLASHBANG)
 
 	deafened_duration = max(deafened_duration,duration)
 
@@ -440,7 +456,7 @@
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
-	gib(TRUE)
+	gib(hard=TRUE)
 
 /mob/living/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)
@@ -529,6 +545,7 @@
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
 	chat_overlay.alpha = 0
+	chat_overlay.pixel_y = 20 + src.pixel_z
 	src.vis_contents += chat_overlay
 	//This is initialized somewhere else.
 
@@ -536,7 +553,7 @@
 	alert_overlay.layer = LAYER_EFFECT
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 	alert_overlay.icon_state = "none"
-	alert_overlay.pixel_z = 20 + pixel_z
+	alert_overlay.pixel_y = 20 + src.pixel_z
 	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.
 
@@ -552,6 +569,7 @@
 	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
 	shield_overlay.icon_state = "block"
 	shield_overlay.alpha = 0
+	shield_overlay.pixel_y = src.pixel_z
 	src.vis_contents += shield_overlay
 	//This is initialized somewhere else.
 
@@ -561,7 +579,7 @@
 	water_mask.icon_state = "water_mask"
 	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
 	water_mask.plane = PLANE_MOB_WATER_MASK
-	water_mask.layer = 0
+	water_mask.layer = LAYER_BASE
 	water_mask.pixel_x = -32
 	water_mask.pixel_y = -32
 	water_mask.alpha = 200
@@ -607,6 +625,13 @@
 		var/obj/hud/button/stat/resist_bar/RB = new(src)
 		RB.update_owner(src)
 
+	if(ai)
+		ai = new ai(null,src)
+		ai.active = FALSE //I know this feels like shitcode but it just werks.
+		if(initial(ai.active))
+			ai.set_active(TRUE)
+		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
+
 /mob/living/Finalize()
 
 	. = ..()
@@ -623,22 +648,13 @@
 
 	if(dead)
 		dead = FALSE //I know this feels like shitcode but *dab
-		death()
+		death(silent=TRUE)
 
 	update_level(TRUE)
-
-	if(ai)
-		ai = new ai(null,src)
-		ai.active = FALSE //I know this feels like shitcode but *dab
-		if(initial(ai.active))
-			ai.set_active(TRUE)
-		ai.stored_sneak_power = src.get_skill_power(SKILL_SURVIVAL,0,1,2)
 
 	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/proc/setup_name()
-	if(boss)
-		return FALSE
 	name = "[CHECK_NAME(name)] (LVL: [level])"
 	return TRUE
 
@@ -668,11 +684,19 @@
 	. = ..()
 	PROCESS_LIVING_FORCE(src)
 
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
 	if(owner != src)
 		if(!allow_hostile_action(desired_loyalty_tag,src))
-			return TRUE
+			return FALSE
+
+	. = ..()
+
+
+/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+
+	if(owner != src && !allow_hostile_action(desired_loyalty_tag,src))
+		return TRUE
 
 	if(magnitude > 6)
 		var/x_mod = src.x - epicenter.x
@@ -701,8 +725,8 @@
 	var/list/params = list()
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
-	var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,TRUE,TRUE)
-	var/damagetype/D = all_damage_types[/damagetype/explosion/]
+	var/damagetype/D = all_damage_types[/damagetype/explosion]
+	var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE
 

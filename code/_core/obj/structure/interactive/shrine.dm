@@ -32,6 +32,7 @@ var/global/list/possible_ritual_spawns = list(
 
 	var/complete = FALSE //Set to true if the ritual is complete.
 
+	enable_chunk_handling = TRUE
 	enable_chunk_clean = TRUE
 
 /obj/structure/interactive/ritual/on_chunk_clean()
@@ -211,7 +212,7 @@ var/global/list/possible_ritual_spawns = list(
 				var/turf/T = locate(x+ix,y+iy,z)
 				if(!T)
 					continue
-				if(T.is_safe() && T.is_safe_move())
+				if(T.is_safe() && T.can_move_to())
 					valid_turfs += T
 
 

@@ -66,8 +66,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	max_level = 100 //Base max level for skills and attributes of the mob.
 
-	death_threshold = -50
-
 	var/handcuffed = FALSE
 	var/handcuff_break_counter = 0
 	var/obj/item/handcuffs/stored_handcuffs
@@ -78,9 +76,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	var/list/using_inventories = list() //A list of /obj/items with inventories this mob is using.
 
 	var/list/inventory_defers = list() //A list of inventory defer buttons.
-
-	var/mood // On a scale of 0 to 200, with 100 being normal. Stabilizes to 100.
-	var/last_mood_gain = 0
 
 	var/queue_update_items = FALSE
 	var/list/queue_organ_health_update = list() //List of organs that need to be updated.
@@ -131,7 +126,7 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	. = ..()
 
-	if(. || force) //Dan updating.
+	if(.) //Dan updating.
 		if(inventories_by_id[BODY_HAND_LEFT_HELD] && left_item && left_item.dan_mode)
 			inventories_by_id[BODY_HAND_LEFT_HELD].update_held_icon(left_item)
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD] && right_item && right_item.dan_mode)
@@ -282,18 +277,23 @@ mob/living/advanced/Login()
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/atom/object_to_damage = src.get_object_to_damage(owner,source,/damagetype/explosion,params,TRUE,TRUE)
-		var/damagetype/D = all_damage_types[/damagetype/explosion/]
+		var/damagetype/D = all_damage_types[/damagetype/explosion]
+		var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE
 
 /mob/living/advanced/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
+	if(owner != src)
+		if(!allow_hostile_action(desired_loyalty_tag,src))
+			return FALSE
+
 	. = ..()
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
-		O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+		if(O.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE
 
 /mob/living/advanced/gib(var/gib_direction=0x0,var/hard=FALSE)
 	if(qdeleting)

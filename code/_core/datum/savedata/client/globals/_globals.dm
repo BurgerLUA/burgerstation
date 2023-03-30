@@ -8,7 +8,8 @@ var/global/list/ckey_to_globaldata = list()
 		"stored_experience" = list(),
 		"stored_currency" = 0,
 		"new_player" = TRUE,
-		"unlocked_abilities" = list("/ability/dash")
+		"unlocked_abilities" = list("/ability/dash"),
+		"achievements" = list()
 	)
 
 /savedata/client/globals/get_file(var/file_id)
@@ -37,5 +38,13 @@ var/global/list/ckey_to_globaldata = list()
 	if(!fexists(full_path))
 		rustg_file_write(json_encode(loaded_data),full_path)
 	else
-		loaded_data = json_decode(rustg_file_read(full_path))
+		var/list/found_data = json_decode(rustg_file_read(full_path))
+		for(var/k in loaded_data)
+			if(!found_data[k])
+				found_data[k] = loaded_data[k]
+		loaded_data = found_data
+
+
+
+
 	return TRUE

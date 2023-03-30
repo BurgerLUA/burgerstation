@@ -34,7 +34,7 @@
 	attack_delay = 8*0.5
 	attack_delay_max = 8*0.5
 
-/damagetype/cqc/boss/fast_grab/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/cqc/boss/fast_grab/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && ismovable(victim) && is_turf(victim.loc))
 		var/mob/living/advanced/A = attacker
@@ -88,7 +88,7 @@
 	attack_delay = 14
 	attack_delay_max = 14
 
-/damagetype/cqc/boss/grab_slam/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/cqc/boss/grab_slam/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
@@ -106,12 +106,12 @@
 	attack_verbs = list("staggering punch")
 
 	impact_sounds = list(
-		'sound/weapons/fists/medium_punch_01.ogg',
-		'sound/weapons/fists/medium_punch_02.ogg',
-		'sound/weapons/fists/medium_punch_03.ogg',
-		'sound/weapons/fists/medium_punch_04.ogg',
-		'sound/weapons/fists/medium_punch_05.ogg',
-		'sound/weapons/fists/medium_punch_06.ogg'
+		'sound/weapons/unarmed/medium_punch_01.ogg',
+		'sound/weapons/unarmed/medium_punch_02.ogg',
+		'sound/weapons/unarmed/medium_punch_03.ogg',
+		'sound/weapons/unarmed/medium_punch_04.ogg',
+		'sound/weapons/unarmed/medium_punch_05.ogg',
+		'sound/weapons/unarmed/medium_punch_06.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -148,7 +148,7 @@
 	attack_delay = 8*0.5
 	attack_delay_max = 8
 
-/damagetype/cqc/boss/staggering_punch/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/cqc/boss/staggering_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -161,11 +161,11 @@
 	attack_verbs = list("stunning punch")
 
 	impact_sounds = list(
-		'sound/weapons/fists/heavy_punch_01.ogg',
-		'sound/weapons/fists/heavy_punch_02.ogg',
-		'sound/weapons/fists/heavy_punch_03.ogg',
-		'sound/weapons/fists/heavy_punch_06.ogg',
-		'sound/weapons/fists/heavy_punch_07.ogg'
+		'sound/weapons/unarmed/heavy_punch_01.ogg',
+		'sound/weapons/unarmed/heavy_punch_02.ogg',
+		'sound/weapons/unarmed/heavy_punch_03.ogg',
+		'sound/weapons/unarmed/heavy_punch_06.ogg',
+		'sound/weapons/unarmed/heavy_punch_07.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
@@ -202,7 +202,7 @@
 	attack_delay = 8*0.5
 	attack_delay_max = 8
 
-/damagetype/cqc/boss/stunning_punch/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/cqc/boss/stunning_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
@@ -251,7 +251,7 @@
 	attack_delay = 8
 	attack_delay_max = 8
 
-/damagetype/cqc/boss/disarm_theft/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/cqc/boss/disarm_theft/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && is_advanced(victim))
 		var/mob/living/advanced/A = attacker
@@ -310,7 +310,7 @@
 	attack_delay = 8
 	attack_delay_max = 8
 
-/damagetype/cqc/boss/tactical_hug/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/cqc/boss/tactical_hug/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && is_advanced(victim))
 		var/mob/living/advanced/A = attacker

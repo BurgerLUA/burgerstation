@@ -5,7 +5,6 @@
 		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/underbottom/underwear/boxers,
 		/obj/item/clothing/undertop/underwear/shirt,
-		/obj/item/clothing/pants/normal/janitor,
 		/obj/item/clothing/shirt/normal/janitor,
 		/obj/item/storage/shoebox/colored/,
 		/obj/item/storage/glovebox/yellow/,

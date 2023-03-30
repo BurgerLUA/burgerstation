@@ -17,9 +17,9 @@
 	injection_time = SECONDS_TO_DECISECONDS(0.5)
 	quality_reduction_on_use = 100
 
-	value = 1
+	value = 20
 
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 
 /obj/item/container/syringe/medipen/update_sprite()
 	. = ..()
@@ -112,7 +112,6 @@
 	name = "mining butterfly pen"
 	desc = "The only thing that keeps you alive during ash storms. Besides mining capsules."
 	desc_extended = "An incredibly beneficial and expensive butterfly pen with a potent mix of chemicals that should keep you standing even in the harshest of environments. It is recommended not to use more than two in a quick succession."
-	value = 1000
 
 	reagents = /reagent_container/syringe/medipen/hypospray
 

@@ -120,7 +120,7 @@
 
 	return ..()
 
-/obj/item/browning_handle/on_drop(var/obj/hud/inventory/old_inventory,var/silent=TRUE)
+/obj/item/browning_handle/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=TRUE)
 
 	. = ..()
 

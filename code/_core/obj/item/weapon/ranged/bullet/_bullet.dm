@@ -12,10 +12,10 @@
 	requires_bullets = TRUE
 
 	empty_sounds = list(
-		'sound/weapons/empty1.ogg',
-		'sound/weapons/empty2.ogg',
-		'sound/weapons/empty3.ogg',
-		'sound/weapons/empty4.ogg'
+		'sound/weapons/ranged/generic/empty1.ogg',
+		'sound/weapons/ranged/generic/empty2.ogg',
+		'sound/weapons/ranged/generic/empty3.ogg',
+		'sound/weapons/ranged/generic/empty4.ogg'
 	)
 
 	var/jammed = FALSE
@@ -45,30 +45,6 @@
 	QDEL_NULL(chambered_bullet)
 	QDEL_CUT(stored_bullets)
 	return ..()
-
-/* Price calculation is hard.
-/obj/item/weapon/ranged/bullet/get_damage_price()
-
-	var/obj/item/bullet_cartridge/B = SSbalance.weapon_to_bullet[src.type]
-	if(!B)
-		return 0
-
-	var/damagetype/D = initial(B.damage_type_bullet)
-	if(!D)
-		return 0
-
-	D = all_damage_types[D]
-
-	if(!D)
-		return 0
-
-	. = D.calculate_value(src) * damage_mod
-
-
-/obj/item/weapon/ranged/bullet/get_base_value()
-	. = ..()
-	. += (bullet_length_max * bullet_diameter_max)/(9*19)*100
-*/
 
 obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(length(empty_sounds))
@@ -133,8 +109,9 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 
 
-/obj/item/weapon/ranged/bullet/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/bullet/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+
+	RUN_PARENT_SAFE
 
 	if(src.chambered_bullet) .["chambered_bullet"] = src.chambered_bullet.type
 
@@ -145,8 +122,9 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 			if(B) .["stored_bullets"][i] = B.type
 
 
-/obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/ranged/bullet/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+
+	RUN_PARENT_SAFE
 
 	if(object_data["chambered_bullet"])
 		var/b_type = object_data["chambered_bullet"]
@@ -177,7 +155,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	return chambered_bullet ? chambered_bullet.damage_type : null
 
 
-/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/new_loc,var/play_sound=FALSE)
+/obj/item/weapon/ranged/bullet/proc/eject_chambered_bullet(var/mob/caller,var/atom/new_loc,var/play_sound=FALSE)
 
 	if(!chambered_bullet)
 		return FALSE
@@ -191,11 +169,14 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	if(B.bullet_diameter != bullet_diameter_best)
 		jam_chance += 25
 
+	if(B.jam_chance < 100)
+		jam_chance *= 0.1 + 0.9*(heat_max ? heat_current/heat_max : 0)
+
 	if(jammed)
-		if(jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
+		if(B.jam_chance < 100) caller.to_chat(span("notice","You unjam \the [src.name]!"))
 		jammed = FALSE
 	else if(jam_chance && luck(list(B,src,caller),jam_chance,FALSE))
-		if(jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
+		if(B.jam_chance < 100) caller.to_chat(span("danger","\The [src.name] jams!"))
 		jammed = TRUE
 		return FALSE
 
@@ -203,8 +184,8 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		qdel(B)
 	else
 		if(B.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
-			if(B.drop_sound)
-				play_sound(B.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
+			if(B.drop_sound && new_loc && is_turf(new_loc))
+				play_sound(B.drop_sound,new_loc,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 			qdel(B)
 		else
 			B.drop_item(new_loc)

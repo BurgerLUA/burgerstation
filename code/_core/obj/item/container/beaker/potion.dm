@@ -58,7 +58,7 @@
 	desc = "Potion seller, i'm going into battle and I only need your STRONGEST potions."
 	desc_extended = "A tiny bottle, usually used to store potent chemicals. Be sure to not drink unlabeled ones, they might kill you, or turn you into a frog."
 	icon = 'icons/obj/item/container/cup/bottle_tiny.dmi'
-	icon_state = "potion"
+	icon_state = "bottle"
 	icon_count = 6
 
 	reagents = /reagent_container/beaker/vial

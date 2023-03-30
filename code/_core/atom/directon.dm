@@ -1,12 +1,12 @@
-/atom/proc/set_dir(var/desired_direction=0x0,var/force = FALSE)
+/atom/proc/set_dir(var/desired_dir,var/force = FALSE)
 
-	if(!desired_direction)
-		return 0x0
+	if(!desired_dir)
+		return null
 
-	if(!force && dir == desired_direction)
-		return 0x0
+	if(!force && dir == desired_dir)
+		return null
 
-	dir = desired_direction
+	dir = desired_dir
 
 	return dir
 

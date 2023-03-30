@@ -8,15 +8,17 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "sniper rifle"
+
 	tier = 3
 
-	shoot_delay = 15
+	shoot_delay = 20
 
 	automatic = FALSE
 
 	damage_mod = 2
 
-	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/127_sniper/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -82,6 +84,8 @@
 	movement_spread_base = 0.2
 
 	pixel_x = -8
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0

@@ -6,17 +6,21 @@
 	icon_state = "inventory"
 	value = 10000
 
-	company_type = "NanoTrasen"
+	rarity = RARITY_MYTHICAL
+
+	tier_type = "heavy weapon"
+
+	company_type = "Syndicate"
 
 	tier = 4
 
 	shoot_delay = 0.5 //Oh god oh fuck
 
-	damage_mod = 1
+	damage_mod = 1.4
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/minigun.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/minigun/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -52,8 +56,11 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.3
 
+/obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_heat_spread()
+	return (1 - heat_current/heat_max) * heat_max
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_static_spread()
-	return (heat_max - heat_current)*0.5
+	return 0.01
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/minigun/get_skill_spread(var/mob/living/L)
 	return max(0,0.1 - (0.1 * L.get_skill_power(SKILL_RANGED)))

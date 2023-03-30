@@ -22,7 +22,7 @@
 	)
 	falloff = 0
 
-/damagetype/ranged/bullet/rocket/wp/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/rocket/wp/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.add_status_effect(FIRE,200,200,stealthy=L.on_fire)
@@ -39,7 +39,7 @@
 	)
 	falloff = 0
 
-/damagetype/ranged/bullet/rocket/ap/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/rocket/ap/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.add_status_effect(STUN,20,20)
@@ -55,7 +55,7 @@ damagetype/ranged/bullet/rocket/nuclear
 	)
 	falloff = 0
 
-/damagetype/ranged/bullet/rocket/nuclear/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/rocket/nuclear/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.add_status_effect(STUN,40,40)

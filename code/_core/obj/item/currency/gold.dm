@@ -3,7 +3,7 @@
 	name = "gold coin"
 	icon = 'icons/obj/item/currency/gold.dmi'
 	icon_state = "1"
-	value = -1 //Value is based on current economy, see get_base_value()
+	value = 0 //Value is based on current economy, see get_base_value()
 
 	amount_max = 1000
 
@@ -67,7 +67,7 @@
 	name = "gold bar"
 	icon = 'icons/obj/item/currency/gold_bar.dmi'
 	icon_state = "1"
-	value = -1 //Value is based on current economy, see get_base_value()
+	value = 0 //Value is based on current economy, see get_base_value()
 
 	amount_max = 5
 

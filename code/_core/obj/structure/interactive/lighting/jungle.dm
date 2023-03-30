@@ -21,7 +21,7 @@ var/global/list/valid_jungle_colors = list(
 	var/max_types = 0
 
 /obj/structure/interactive/lighting/jungle/update_atom_light()
-	if(on)
+	if(powered)
 		set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	else
 		set_light_sprite(FALSE)

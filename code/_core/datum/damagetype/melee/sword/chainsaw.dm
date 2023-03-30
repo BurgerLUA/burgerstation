@@ -53,5 +53,5 @@
 	attack_delay_max = 10
 
 	swing_sounds = list(
-		'sound/weapons/chainsaw/swing.ogg'
+		'sound/weapons/melee/chainsaw/swing.ogg'
 	)

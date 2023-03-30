@@ -10,6 +10,12 @@
 
 	return null
 
+#define SETUP_DIR(d) \
+	var/turf/simulated/floor/tile/T_##d = get_step(src,d); \
+	var/T_color_##d = T_##d && is_tile(T_##d) && !T_##d.corner_icons ? initial(T_##d.color) : default_color; \
+	if(!T_color_##d) T_color_##d = "#FFFFFF";
+
+
 /turf/simulated/floor/tile/morphing/update_smooth_code()
 
 	var/smooth_code_1_old = smooth_code_1
@@ -21,62 +27,60 @@
 	if(!default_color)
 		default_color = "#FFFFFF"
 
-	var/turf/T_n = get_step(src,NORTH)
-	var/turf/T_e = get_step(src,EAST)
-	var/turf/T_s = get_step(src,SOUTH)
-	var/turf/T_w = get_step(src,WEST)
+	SETUP_DIR(NORTH)
+	SETUP_DIR(EAST)
+	SETUP_DIR(SOUTH)
+	SETUP_DIR(WEST)
 
-	if(!is_tile(T_n))
-		T_n = null
-	if(!is_tile(T_e))
-		T_e = null
-	if(!is_tile(T_s))
-		T_s = null
-	if(!is_tile(T_w))
-		T_w = null
-
-	if(T_n && T_w && initial(T_n.color) == initial(T_w.color))
-		smooth_code_1 = initial(T_n.color)
+	if(T_color_NORTH == T_color_WEST && T_color_NORTH != default_color)
+		smooth_code_1 = T_color_NORTH
 	else
-		var/turf/T_nw = get_step(src,NORTHWEST)
-		if(is_tile(T_nw))
-			smooth_code_1 = initial(T_nw.color)
+		SETUP_DIR(NORTHWEST)
+		if(T_color_NORTHWEST != default_color)
+			smooth_code_1 = T_color_NORTHWEST
 		else
-			smooth_code_1 = default_color
+			if(T_color_NORTH != default_color)
+				smooth_code_1 = T_color_NORTH
+			else
+				smooth_code_1 = T_color_WEST
 
-	if(T_n && T_e && initial(T_n.color) == initial(T_e.color))
-		smooth_code_2 = initial(T_n.color)
+
+	if(T_color_NORTH == T_color_EAST && T_color_NORTH != default_color)
+		smooth_code_2 = T_color_NORTH
 	else
-		var/turf/T_ne = get_step(src,NORTHEAST)
-		if(is_tile(T_ne))
-			smooth_code_2 = initial(T_ne.color)
+		SETUP_DIR(NORTHEAST)
+		if(T_color_NORTHEAST != default_color)
+			smooth_code_2 = T_color_NORTHEAST
 		else
-			smooth_code_2 = default_color
+			if(T_color_NORTH != default_color)
+				smooth_code_2 = T_color_NORTH
+			else
+				smooth_code_2 = T_color_EAST
 
-	if(T_s && T_w && initial(T_s.color) == initial(T_w.color))
-		smooth_code_3 = initial(T_s.color)
+
+	if(T_color_SOUTH == T_color_WEST && T_color_SOUTH != default_color)
+		smooth_code_3 = T_color_SOUTH
 	else
-		var/turf/T_sw = get_step(src,SOUTHWEST)
-		if(is_tile(T_sw))
-			smooth_code_3 = initial(T_sw.color)
+		SETUP_DIR(SOUTHWEST)
+		if(T_color_SOUTHWEST != default_color)
+			smooth_code_3 = T_color_SOUTHWEST
 		else
-			smooth_code_3 = default_color
+			if(T_color_SOUTH != default_color)
+				smooth_code_3 = T_color_SOUTH
+			else
+				smooth_code_3 = T_color_WEST
 
-	if(T_s && T_e && initial(T_s.color) == initial(T_e.color))
-		smooth_code_4 = initial(T_s.color)
+	if(T_color_SOUTH == T_color_EAST && T_color_SOUTH != default_color)
+		smooth_code_4 = T_color_SOUTH
 	else
-		var/turf/T_se = get_step(src,SOUTHEAST)
-		if(is_tile(T_se))
-			smooth_code_4 = initial(T_se.color)
+		SETUP_DIR(SOUTHEAST)
+		if(T_color_SOUTHEAST != default_color)
+			smooth_code_4 = T_color_SOUTHEAST
 		else
-			smooth_code_4 = default_color
-
-		. = FALSE
-
-	if(!smooth_code_1) smooth_code_1 = "#FFFFFF"
-	if(!smooth_code_2) smooth_code_2 = "#FFFFFF"
-	if(!smooth_code_3) smooth_code_3 = "#FFFFFF"
-	if(!smooth_code_4) smooth_code_4 = "#FFFFFF"
+			if(T_color_SOUTH != default_color)
+				smooth_code_4 = T_color_SOUTH
+			else
+				smooth_code_4 = T_color_EAST
 
 	if(smooth_code_1_old != smooth_code_1)
 		. = TRUE
@@ -138,7 +142,7 @@
 	color = COLOR_GREEN
 
 /turf/simulated/floor/tile/morphing/mining
-	color = COLOR_SCIENCE
+	color = COLOR_MINING
 
 /turf/simulated/floor/tile/morphing/medical
 	color = COLOR_MEDICAL

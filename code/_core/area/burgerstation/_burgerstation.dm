@@ -182,6 +182,14 @@
 
 	map_color = COLOR_GREEN
 
+/area/burgerstation/hop_office
+	name = "\improper Head of Personnel's Office"
+	icon_state = "cmd"
+
+	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
+
+	map_color = COLOR_COMMAND
+
 /area/burgerstation/cloning
 	name = "\improper Cloning"
 	icon_state = "clone"
@@ -389,6 +397,10 @@
 
 	map_color = COLOR_CARGO
 
+/area/burgerstation/cargo/lobby
+	name = "\improper Cargo Lobby"
+	icon_state = "lobby"
+
 /area/burgerstation/maint
 	name = "\improper Maint"
 	icon_state = "maint"
@@ -441,7 +453,21 @@
 
 	sound_environment = ENVIRONMENT_BATHROOM
 
-/area/burgerstation/pvp
+/area/burgerstation/maint/pvp
+
+	ambient_sound = 'sound/ambient/vents_loop.ogg'
+
+	random_sounds = list(
+		'sound/ambient/maint_1.ogg',
+		'sound/ambient/maint_2.ogg'
+	)
+
+	map_color = COLOR_ORANGE
+	sound_environment = ENVIRONMENT_BATHROOM
+
+
+
+/area/burgerstation/maint/pvp/table
 	name = "ERROR"
 	icon_state = "pvp"
 	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_LOYALTY | FLAG_AREA_NO_EVENTS | FLAG_AREA_NO_TELEPORT
@@ -449,3 +475,5 @@
 	sound_environment = ENVIRONMENT_ALLEY
 
 	map_color = COLOR_ORANGE
+
+	link_to_parent_apc = TRUE

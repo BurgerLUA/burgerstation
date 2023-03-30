@@ -17,6 +17,8 @@
 	desired_light_power = 1
 	desired_light_color = "#FFFFFF"
 
+	pixel_y = 8
+
 /obj/structure/interactive/fountain/Generate()
 
 	if(!fountain_type)

@@ -15,7 +15,7 @@
 
 	destruction_turf = /turf/simulated/floor/colored/ash
 
-	layer = 600
+	layer = LAYER_WALL_LARGE
 
 /*
 /turf/simulated/wall/ash/update_overlays()

@@ -12,7 +12,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/ion
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 4
+	shoot_delay = 6
 
 	automatic = FALSE
 
@@ -20,7 +20,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-	shoot_sounds = list('sound/weapons/ion/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/ion/shoot.ogg')
 
 	override_icon_state = TRUE
 
@@ -36,6 +36,8 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.05
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/energy/iongun/get_static_spread()
 	if(wielded) return 0

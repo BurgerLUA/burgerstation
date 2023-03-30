@@ -28,8 +28,8 @@
 
 /mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
-	var/x_attack = params && params[PARAM_ICON_X] ? params[PARAM_ICON_X] : 16
-	var/y_attack = params && params[PARAM_ICON_Y] ? params[PARAM_ICON_Y] : 16
+	var/x_attack = params && !isnull(params[PARAM_ICON_X]) ? params[PARAM_ICON_X] : 16
+	var/y_attack = params && !isnull(params[PARAM_ICON_Y]) ? params[PARAM_ICON_Y] : 16
 
 	var/best_distance = INFINITY
 	var/obj/item/organ/best_organ
@@ -70,14 +70,8 @@
 
 	return null
 
-/mob/living/proc/get_current_target_cords(params)
-	if(ai)
-		return list(pick(ai.target_distribution_x),pick(ai.target_distribution_x))
-	if(!params)
-		params = list(PARAM_ICON_X = 16, PARAM_ICON_Y = 16)
-	return list(params[PARAM_ICON_X],params[PARAM_ICON_Y])
-
 /mob/living/advanced/player/get_current_target_cords(params)
+
 	if(!params || !client)
 		return ..()
 
@@ -119,6 +113,8 @@
 	var/obj/item/best_item = null
 	var/best_value = 0
 
+	var/block_defense_multiplier = 0.5 + src.get_skill_power(SKILL_BLOCK,0,1,2) * 0.5
+
 	//Left
 	if(left_item)
 		if(left_item.block_defense[attack_type] && left_item.block_defense[attack_type] > best_value && left_item.can_block(attacker,weapon,src,DT))
@@ -141,17 +137,4 @@
 			best_item = O
 			best_value = O.block_defense[attack_type]
 
-	return list(best_item,best_value)
-
-/mob/living/advanced/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
-
-	if(horizontal)
-		return FALSE
-
-	if(!is_facing(src,attacker))
-		return FALSE
-
-	if(parry_time < world.time)
-		return FALSE
-
-	return TRUE
+	return list(best_item,best_value*block_defense_multiplier)

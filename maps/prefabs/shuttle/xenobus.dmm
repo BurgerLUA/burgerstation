@@ -81,19 +81,27 @@
 /turf/simulated/floor/tile/shuttle/dark,
 /area/shuttle/xeno)
 "s" = (
-/turf/simulated/floor/plating/shuttle,
-/area/dmm_suite/clear_area)
-"t" = (
-/mob/living/simple/turret/nanotrasen/immortal,
-/turf/simulated/floor/plating/shuttle,
-/area/dmm_suite/clear_area)
-"u" = (
 /mob/living/simple/turret/nanotrasen/immortal{
 	icon_state = "active";
 	dir = 1
 	},
 /turf/simulated/floor/plating/shuttle,
-/area/dmm_suite/clear_area)
+/area/shuttle/xeno)
+"t" = (
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"u" = (
+/mob/living/simple/turret/nanotrasen/immortal,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"v" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/xeno)
+"w" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/xeno)
 "z" = (
 /obj/structure/interactive/computer/console/flight_control{
 	dir = 1;
@@ -185,8 +193,8 @@ e
 e
 e
 n
+u
 t
-s
 a
 a
 a
@@ -212,16 +220,16 @@ a
 "}
 (7,1,1) = {"
 a
-u
+s
 j
-j
+v
 d
 m
 m
 m
 m
 o
-k
+w
 q
 k
 k
@@ -230,7 +238,7 @@ a
 "}
 (8,1,1) = {"
 a
-s
+t
 b
 c
 c
@@ -248,7 +256,7 @@ a
 "}
 (9,1,1) = {"
 a
-s
+t
 b
 c
 c
@@ -266,16 +274,16 @@ a
 "}
 (10,1,1) = {"
 a
-u
+s
 j
-j
+v
 d
 m
 m
 m
 m
 o
-k
+w
 q
 k
 k
@@ -311,8 +319,8 @@ e
 e
 e
 n
+u
 t
-s
 a
 a
 a

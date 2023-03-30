@@ -25,6 +25,10 @@
 			INTERACT_CHECK_NO_DELAY(src)
 			INTERACT_CHECK_NO_DELAY(D)
 			polymorphs[choice] = blend_colors(polymorphs[choice] ? polymorphs[choice] : "#FFFFFF",dye_color,dye_strength)
+			add_blend(
+				"polymorph_[choice]",
+				desired_color = polymorphs[choice],
+			)
 	else
 		choice = input("Are you sure you want to dye \the [src.name]?","Dye Selection") as null|anything in list("Yes","No","Cancel")
 		if(choice == "Yes")
@@ -36,17 +40,14 @@
 
 	if(choice)
 		caller.to_chat(span("notice","You dye \the [src.name]."))
-		initialize_blends()
 		update_sprite()
+		if(is_inventory(src.loc))
+			var/obj/hud/inventory/I = src.loc
+			if(is_advanced(I.owner))
+				src.handle_overlays(I.owner,update=TRUE)
 		if(istype(src,/obj/item/clothing/))
 			var/obj/item/clothing/C = src
 			C.sync_additional_clothing()
-		if(is_inventory(loc))
-			var/obj/hud/inventory/I = loc
-			if(I.worn && is_advanced(I.owner))
-				var/mob/living/advanced/A = I.owner
-				A.remove_overlay("\ref[src]")
-				I.update_worn_icon(src)
 
 		return TRUE
 	else

@@ -11,6 +11,7 @@
 	var/last_fly = 0
 	var/last_fireball = 0
 
+	night_vision = 0.25
 
 /ai/boss/ash_drake/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_ash_drake = desired_owner

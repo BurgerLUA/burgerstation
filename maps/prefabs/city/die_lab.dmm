@@ -87,6 +87,10 @@
 /area/mission/prefab/city/die_lab)
 "au" = (
 /obj/structure/interactive/potted_plant/bin,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/mission/prefab/city/die_lab)
 "av" = (
@@ -96,6 +100,10 @@
 /area/mission/prefab/city/die_lab)
 "aw" = (
 /obj/structure/interactive/wire/yellow,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/mission/prefab/city/die_lab)
 "ax" = (
@@ -363,6 +371,7 @@
 /area/mission/prefab/city/die_lab/backroom)
 "bs" = (
 /obj/structure/interactive/potted_plant/bin,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile/grey,
 /area/mission/prefab/city/die_lab/backroom)
 "bt" = (
@@ -384,6 +393,65 @@
 /obj/marker/smart_clear_turf,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"bx" = (
+/obj/structure/carpet/red,
+/obj/marker/mission_mob,
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"by" = (
+/obj/marker/mission_mob,
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"bz" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node,
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"bA" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"bB" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/plating,
+/area/mission/prefab/city/die_lab)
+"bC" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/plating,
+/area/mission/prefab/city/die_lab)
+"bD" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"bE" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"bF" = (
+/obj/marker/mission_mob{
+	icon_state = "directional";
+	dir = 8
+	},
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
+"bG" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/city/die_lab/backroom)
 
 (1,1,1) = {"
 aB
@@ -447,12 +515,12 @@ aA
 aG
 aj
 aQ
+bD
 aQ
 aQ
 aQ
 aQ
-aQ
-aQ
+bG
 aQ
 bb
 bf
@@ -488,7 +556,7 @@ aS
 aR
 aQ
 aQ
-aQ
+by
 aQ
 bb
 aa
@@ -498,16 +566,16 @@ ac
 aj
 au
 aE
-aE
+bC
 bn
 aT
-aR
+bx
 aS
 aR
 aQ
 aQ
 bo
-bo
+bz
 bm
 aa
 "}
@@ -534,16 +602,16 @@ ac
 al
 aw
 aE
-aE
+bB
 aO
 aR
-aR
+bx
 bd
 aR
 aQ
 aQ
 bo
-bo
+bA
 bv
 aa
 "}
@@ -609,12 +677,12 @@ ar
 aG
 aj
 aQ
-aZ
+bF
 aQ
 aQ
 aQ
 aQ
-aQ
+bE
 aQ
 bb
 bf

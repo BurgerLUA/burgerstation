@@ -16,7 +16,7 @@
 
 	bullet_count_max = 8
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/nt/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -73,6 +73,8 @@
 	movement_inaccuracy_modifier = 0.25
 
 	pump_delay = 3
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/nt/get_static_spread()
 	return 0.004

@@ -18,7 +18,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/raygun.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/alien/shoot.ogg')
 
 	charge_cost = CELL_SIZE_BASIC / 60
 
@@ -34,6 +34,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.02
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/energy/abductor/update_overlays()
 	. = ..()

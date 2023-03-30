@@ -8,17 +8,19 @@
 
 	company_type = "Solarian"
 
+	tier_type = "marksman rifle"
+
 	tier = 3
 
 	firemodes = list("semi-automatic")
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	damage_mod = 1.4
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/308/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/dmr/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -74,6 +76,8 @@
 	inaccuracy_modifier = 0.35
 	movement_inaccuracy_modifier = 1.5
 	movement_spread_base = 0.025
+
+	rarity = RARITY_UNCOMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmr/get_static_spread()

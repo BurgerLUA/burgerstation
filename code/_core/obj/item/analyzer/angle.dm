@@ -80,14 +80,14 @@ var/global/list/gps_list = list()
 			return
 	return ..()
 
-/obj/item/analyzer/gps/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/analyzer/gps/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	.["name"] = name
 	.["assigned_number"] = assigned_number
 	.["ownerCkey"] = ownerCkey
 
-/obj/item/analyzer/gps/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/analyzer/gps/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	name = object_data["name"]
 	assigned_number = object_data["assigned_number"]
 	ownerCkey = object_data["ownerCkey"]

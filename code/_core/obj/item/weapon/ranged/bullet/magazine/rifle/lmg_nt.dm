@@ -7,17 +7,19 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "heavy weapon"
+
 	value = 4000
 
 	tier = 2
 
-	shoot_delay = 2
+	shoot_delay = 1.8
 
 	automatic = TRUE
 
 	damage_mod = 1.1
 
-	shoot_sounds = list('sound/weapons/308/shoot_alt.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/lmg_nt/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -76,6 +78,8 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.2
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt/get_static_spread()
 	return 0.0075

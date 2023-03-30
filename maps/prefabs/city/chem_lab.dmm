@@ -64,6 +64,10 @@
 	icon_state = "sink";
 	dir = 8
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab/bathroom)
 "ap" = (
@@ -110,6 +114,7 @@
 /area/mission/prefab/city/the_chem_lab)
 "ay" = (
 /obj/structure/interactive/door/airlock,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab/bathroom)
 "az" = (
@@ -198,6 +203,10 @@
 /obj/structure/interactive/lighting/fixture/tube/fluorescent{
 	icon_state = "preview";
 	dir = 8
+	},
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
 	},
 /turf/simulated/floor/tile/orange,
 /area/mission/prefab/city/the_chem_lab)
@@ -290,6 +299,8 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/marker/cover_node/left,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/tile/orange,
 /area/mission/prefab/city/the_chem_lab)
 "bh" = (
@@ -419,6 +430,7 @@
 	icon_state = "officechair_dark";
 	dir = 8
 	},
+/obj/marker/cover_node/right,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab/backroom)
 "bF" = (
@@ -434,6 +446,10 @@
 /area/mission/prefab/city/the_chem_lab/backroom)
 "bH" = (
 /obj/structure/interactive/door/airlock,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/the_chem_lab/backroom)
 "bI" = (
@@ -453,6 +469,24 @@
 /obj/marker/spawning/window,
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
+/area/mission/prefab/city/the_chem_lab)
+"bM" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/orange,
+/area/mission/prefab/city/the_chem_lab)
+"bN" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile/orange,
+/area/mission/prefab/city/the_chem_lab)
+"bO" = (
+/obj/structure/carpet/grey,
+/obj/structure/interactive/wire/green,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/tile/orange,
 /area/mission/prefab/city/the_chem_lab)
 
 (1,1,1) = {"
@@ -595,7 +629,7 @@ bJ
 at
 at
 aq
-aM
+bM
 bj
 bl
 "}
@@ -613,7 +647,7 @@ aM
 aM
 aM
 aM
-aq
+bN
 ab
 bl
 "}
@@ -682,7 +716,7 @@ bE
 by
 aO
 bm
-aT
+bO
 aT
 aM
 bh

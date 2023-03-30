@@ -8,6 +8,7 @@
 
 	var/contraband = FALSE //Set to true if this object is considered contraband and can't be saved, but still accessed by the game.
 	var/save_on_death = FALSE //Set to true if this item should save on death, regardless of item respawning. This should only be set by special code.
+	var/can_save_loadout = TRUE //Set to true if you can save this item in a loadout.
 
 	var/can_rename = FALSE //Can you rename this item?
 
@@ -162,13 +163,14 @@
 
 	density = TRUE
 
-	value = -1
+	value = 0
 
 	allow_path = TRUE
 
 	var/uses_until_condition_fall = 0 //Uses until the quality degrades by 1%. 0 to disable. For clothing it's "How much damage equals -1% quality."
 
 	enable_chunk_clean = TRUE
+	enable_chunk_handling = TRUE
 
 	var/enable_blood_stains = FALSE //Set to false to disable. Good for laser weapons.
 	var/blood_stain_intensity = 0 //Scale, from 0 to 5.
@@ -183,6 +185,16 @@
 
 	var/can_negate_damage = FALSE
 
+	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this.
+
+/obj/item/proc/can_unlock(var/mob/caller)
+	return TRUE
+
+/obj/item/PreDestroy()
+	if(is_inventory(src.loc))
+		drop_item(null,silent=TRUE)
+	. = ..()
+
 /obj/item/Destroy()
 
 	additional_clothing_parent = null
@@ -195,9 +207,6 @@
 
 	last_interacted = null
 	inventory_user = null
-
-	if(loc)
-		drop_item(silent=TRUE)
 
 	can_save = FALSE
 	can_hold = FALSE
@@ -249,22 +258,25 @@ var/global/list/rarity_to_mul = list(
 	return TRUE
 
 /obj/item/Finalize()
+
 	. = ..()
+
 	if(length(polymorphs) || color != initial(color))
 		update_sprite()
 	if(!crafting_id)
 		crafting_id = src.type
 
+	if(is_turf(loc))
+		layer = LAYER_BASE + value / 10000
+
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/initialize_blends(var/desired_icon_state)
-
-	if(!desired_icon_state)
-		desired_icon_state = icon_state_worn
+/obj/item/initialize_worn_blends(var/desired_icon_state)
 
 	if(length(polymorphs))
 		var/icon/initial_icon = initial(icon)
+		var/layer_mod = 0
 		for(var/polymorph_name in polymorphs)
 			var/polymorph_color = polymorphs[polymorph_name]
 			add_blend(
@@ -275,8 +287,9 @@ var/global/list/rarity_to_mul = list(
 				desired_blend = ICON_OVERLAY,
 				desired_type = ICON_BLEND_OVERLAY,
 				desired_should_save = TRUE,
-				desired_layer = worn_layer
+				desired_layer = worn_layer + (layer_mod * 0.001)
 			)
+			layer_mod++
 
 	if(enable_blood_stains)
 		add_blend(
@@ -287,7 +300,7 @@ var/global/list/rarity_to_mul = list(
 			desired_blend = ICON_ADD,
 			desired_type = ICON_BLEND_MASK,
 			desired_should_save = FALSE,
-			desired_layer = worn_layer+0.01
+			desired_layer = worn_layer + 0.011
 		)
 
 	if(enable_damage_overlay)
@@ -299,7 +312,7 @@ var/global/list/rarity_to_mul = list(
 			desired_blend = ICON_MULTIPLY,
 			desired_type = ICON_BLEND_MASK,
 			desired_should_save = FALSE,
-			desired_layer = worn_layer+0.02
+			desired_layer = worn_layer + 0.012
 		)
 
 	if(enable_torn_overlay)
@@ -311,7 +324,7 @@ var/global/list/rarity_to_mul = list(
 			desired_blend = ICON_OVERLAY,
 			desired_type = ICON_BLEND_CUT,
 			desired_should_save = FALSE,
-			desired_layer = worn_layer+0.03
+			desired_layer = worn_layer + 0.013
 		)
 
 	. = ..()
@@ -328,7 +341,15 @@ var/global/list/rarity_to_mul = list(
 		amount, //What we can actually transfer from
 		target.amount_max - target.amount //What the target can actually hold.
 	)
-	return target.add_item_count(-src.add_item_count(-amount_to_transfer,TRUE),TRUE)
+
+	var/reagents_ratio = amount_to_transfer / amount
+
+	target.add_item_count(amount_to_transfer,TRUE)
+	if(src.reagents && target.reagents)
+		src.reagents.transfer_reagents_to(target.reagents,src.reagents.volume_current*reagents_ratio)
+	src.add_item_count(-amount_to_transfer,TRUE)
+
+	return amount_to_transfer
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)
@@ -378,6 +399,14 @@ var/global/list/rarity_to_mul = list(
 	if(!length(inventories))
 		return null
 
+	if(object.amount_max > 2 && object.amount < object.amount_max)
+		//First pass.
+		for(var/k in inventories)
+			var/obj/hud/inventory/I = k
+			var/obj/item/ITM = I.get_top_object()
+			if(ITM && object.can_transfer_stacks_to(ITM))
+				return ITM
+
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
 		if(I.can_slot_object(object,enable_messages,bypass))
@@ -390,21 +419,37 @@ var/global/list/rarity_to_mul = list(
 	if(!length(inventories))
 		return FALSE
 
-	var/added = FALSE
+	if(object == src)
+		return FALSE
 
-	if(object != src)
-		var/obj/hud/inventory/found_inventory = can_add_to_inventory(caller,object,FALSE,bypass)
-		if(found_inventory)
-			found_inventory.add_object(object,enable_messages,bypass,silent=silent)
-			added = TRUE
+	var/obj/result = can_add_to_inventory(caller,object,FALSE,bypass)
 
-	if(enable_messages && caller)
-		if(added)
+	if(!result)
+		return FALSE
+
+	if(is_inventory(result))
+		var/obj/hud/inventory/found_inventory = result
+		found_inventory.add_object(object,enable_messages,bypass,silent=silent)
+		if(caller && enable_messages)
 			caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
-		else
-			caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
+		return TRUE
 
-	return added
+	if(is_item(result))
+		var/obj/item/I = result
+		object.transfer_amount_to(I)
+		if(object.qdeleting)
+			if(caller && enable_messages)
+				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			return TRUE
+		else
+			if(caller && enable_messages)
+				caller.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
+			return FALSE
+
+	if(caller && enable_messages)
+		caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
+
+	return FALSE
 
 /obj/item/New(var/desired_loc)
 
@@ -525,6 +570,10 @@ var/global/list/rarity_to_mul = list(
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
 
+/obj/item/get_examine_details_list(var/mob/examiner)
+	. = ..()
+	if(reagents && reagents.volume_current)
+		. += div("notice",reagents.get_contents_english())
 
 /obj/item/proc/update_lighting_for_owner()
 
@@ -554,16 +603,13 @@ var/global/list/rarity_to_mul = list(
 		else if(!can_interact_with_inventory(inventory_user))
 			close_inventory(null)
 
-	if(is_inventory(old_loc))
-		if(src.z && delete_on_drop)
-			qdel(src)
-			return TRUE
-
 	update_lighting_for_owner()
 
 	. = ..()
 
-/obj/item/proc/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn to the new_location.
+/obj/item/proc/on_equip(var/atom/old_location,var/silent=FALSE)
+
+	var/obj/hud/inventory/new_location = loc
 
 	if(old_location && new_location)
 		var/turf/old_turf = get_turf(old_location)
@@ -577,7 +623,23 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-/obj/item/proc/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+/obj/item/proc/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+	return TRUE
+
+/obj/item/proc/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+
+	if(!is_inventory(src.loc) && delete_on_drop)
+		qdel(src)
+	else
+		if(additional_clothing_parent)
+			drop_item(additional_clothing_parent) //This retracts the clothing.
+
+		if(old_inventory && loc)
+			var/turf/old_turf = get_turf(old_inventory)
+			var/turf/new_turf = get_turf(loc)
+			if(old_turf != new_turf)
+				new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,src.z ? "drop" : "transfer")
+
 	return TRUE
 
 /obj/item/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
@@ -588,18 +650,6 @@ var/global/list/rarity_to_mul = list(
 	. = ..()
 	update_lighting_for_owner()
 
-/obj/item/proc/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
-
-	if(additional_clothing_parent)
-		drop_item(additional_clothing_parent) //This retracts the clothing.
-
-	if(old_inventory && loc)
-		var/turf/old_turf = get_turf(old_inventory)
-		var/turf/new_turf = get_turf(loc)
-		if(old_turf != new_turf)
-			new/obj/effect/temp/item_pickup(new_turf,2,old_turf,src,src.z ? "drop" : "transfer")
-
-	return TRUE
 
 /obj/item/proc/inventory_to_list()
 
@@ -749,6 +799,8 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
+	. = ..()
+
 	if(magnitude > 3)
 
 		var/x_mod = src.x - epicenter.x
@@ -765,8 +817,6 @@ var/global/list/rarity_to_mul = list(
 
 		throw_self(owner,null,null,null,max(TILE_SIZE-1,x_mod*magnitude*2),max(TILE_SIZE-1,y_mod*magnitude*2))
 
-	return ..()
-
 /obj/item/proc/get_overlay_ids()
 	return list("\ref[src]")
 
@@ -775,10 +825,6 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/proc/can_parry()
 	return TRUE
-
-/obj/item/proc/get_battery()
-	return null
-
 
 /obj/item/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
 	if(quality <= 0)
@@ -815,21 +861,23 @@ var/global/list/rarity_to_mul = list(
 	if(!force && CEILING(old_level,1) == CEILING(blood_stain_intensity,1) && old_color == desired_color)
 		return FALSE
 
-	if(!enable_blood_stains || blood_stain_intensity <= 0)
-		remove_blend("bloodstain")
-	else
-		add_blend("bloodstain", desired_icon_state = "[CEILING(blood_stain_intensity,1)]", desired_color = blood_stain_color)
-
 	update_sprite()
-
+	add_blend(
+		"bloodstain",
+		desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
+		desired_color = blood_stain_color
+	)
 	if(is_inventory(loc))
 		var/obj/hud/inventory/I = loc
-		if(I.worn && is_advanced(I.owner))
-			var/mob/living/advanced/A = I.owner
-			A.remove_overlay("\ref[src]")
-			I.update_worn_icon(src)
+		if(is_advanced(I.owner))
+			src.handle_overlays(I.owner,worn=I.worn,update=TRUE)
 
 	return TRUE
+
+/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+	. = ..()
+	if(. && is_advanced(loc))
+		src.handle_overlays(loc,worn=TRUE,update=TRUE)
 
 /obj/item/update_icon()
 	. = ..()
@@ -879,15 +927,9 @@ var/global/list/rarity_to_mul = list(
 	if(enable_torn_overlay || enable_damage_overlay)
 		var/desired_damage_num = get_damage_icon_number()
 		if(original_damage_num != desired_damage_num)
+			update_sprite()
 			add_blend("damage_overlay_noise", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
 			add_blend("damage_overlay", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
-			update_sprite()
-			if(is_inventory(loc))
-				var/obj/hud/inventory/I = loc
-				if(I.worn && is_advanced(I.owner))
-					var/mob/living/advanced/A = I.owner
-					A.remove_overlay("\ref[src]")
-					I.update_worn_icon(src)
 
 	update_value()
 
@@ -911,6 +953,7 @@ var/global/list/rarity_to_mul = list(
 			if(I.finalized)
 				continue
 			pre_fill_inventory(I)
+			I.initialize_type = src.initialize_type
 			INITIALIZE(I)
 			GENERATE(I)
 			FINALIZE(I)

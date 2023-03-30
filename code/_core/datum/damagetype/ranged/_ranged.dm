@@ -5,17 +5,17 @@
 	hit_effect = null //Handled elsewhere.
 
 	miss_sounds = list(
-		'sound/weapons/bulletflyby.ogg',
-		'sound/weapons/bulletflyby2.ogg',
-		'sound/weapons/bulletflyby3.ogg'
+		'sound/weapons/ranged/generic/bulletflyby1.ogg',
+		'sound/weapons/ranged/generic/bulletflyby2.ogg',
+		'sound/weapons/ranged/generic/bulletflyby3.ogg'
 	)
 
 	impact_sounds = list(
-		'sound/weapons/ric1.ogg',
-		'sound/weapons/ric2.ogg',
-		'sound/weapons/ric3.ogg',
-		'sound/weapons/ric4.ogg',
-		'sound/weapons/ric5.ogg'
+		'sound/weapons/ranged/generic/ric1.ogg',
+		'sound/weapons/ranged/generic/ric2.ogg',
+		'sound/weapons/ranged/generic/ric3.ogg',
+		'sound/weapons/ranged/generic/ric4.ogg',
+		'sound/weapons/ranged/generic/ric5.ogg'
 	)
 
 	impact_sounds_flesh = list(
@@ -65,16 +65,16 @@
 	. = ..()
 
 
-/damagetype/ranged/do_attack_visuals(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_dealt)
+/damagetype/ranged/do_attack_visuals(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0)
 
 	if(hit_effect)
-		new hit_effect(get_turf(victim))
+		new hit_effect(victim_turf)
 
-	var/multiplier = clamp(TILE_SIZE * (damage_dealt / max(1,victim.health?.health_max)) * 2,0,TILE_SIZE*0.25)
-	var/list/offsets = get_directional_offsets(attacker,victim)
+	var/multiplier = clamp(TILE_SIZE * (total_damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+	var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
 
-	if(ismob(victim))
-		var/mob/M = victim
+	if(is_living(victim))
+		var/mob/living/M = victim
 		if(M.client)
 			M.client.recoil_pixel_x -= offsets[1]*multiplier
 			M.client.recoil_pixel_y -= offsets[2]*multiplier

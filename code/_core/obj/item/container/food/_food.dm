@@ -42,9 +42,6 @@
 	. = ..()
 	transform = get_base_transform()
 
-/obj/item/container/edible/get_examine_list(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
-
 /obj/item/container/edible/proc/on_consumed(var/mob/caller,var/mob/living/target) //When there are no reagents left.
 	qdel(src)
 	return TRUE

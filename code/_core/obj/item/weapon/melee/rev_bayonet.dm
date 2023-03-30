@@ -9,3 +9,5 @@
 	damage_type = /damagetype/melee/sword/rev_bayonet
 
 	value = 150
+
+	rarity = RARITY_COMMON

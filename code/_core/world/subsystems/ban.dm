@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(ban)
 		Duration: [expires == -1 ? "Forever" : get_nice_time(expires - world.realtime)]")
 		if(is_player(C.mob))
 			var/mob/living/advanced/player/P = C.mob
-			var/obj/marker/ban/B = locate() in world
+			var/obj/marker/B = pick(backup_spawnpoints)
 			if(B) P.force_move(get_turf(B))
 			if(world_state >= STATE_RUNNING) P.force_logout()
 		//Todo: Make it load their connections history and ban all the ips/computer ids from their connection.

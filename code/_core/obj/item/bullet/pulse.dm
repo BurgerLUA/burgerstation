@@ -18,10 +18,11 @@
 	projectile_speed = BULLET_SPEED_SNIPER
 
 	size = 0.1
-	value = 20
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/pulse/surplus
 	name = "\improper surplus pulse cartridge"
 	damage_type_bullet = /damagetype/ranged/laser/pulse/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN

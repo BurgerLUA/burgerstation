@@ -201,3 +201,120 @@
 
 /area/mission/prefab/city/chess/bathroom
 	icon_state = "blue"
+
+
+/area/mission/prefab/city/the_coderbus
+	name = "\improper The Coderbus"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/the_coderbus/bathroom
+	icon_state = "blue"
+
+
+
+/area/mission/prefab/city/the_outer_spess
+	name = "\improper The Outer Spess"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+
+
+/area/mission/prefab/city/vlads_salad_bar
+	name = "\improper Vlad's Salad Bar"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/vlads_salad_bar/bathroom
+	icon_state = "blue"
+
+/area/mission/prefab/city/vlads_salad_bar/kitchen
+	icon_state = "red"
+
+
+/area/mission/prefab/city/traitor_joes
+	name = "\improper Traitor Joe's"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/traitor_joes/entrance
+	icon_state = "blue"
+
+/area/mission/prefab/city/traitor_joes/vault
+	icon_state = "red"
+
+
+/area/mission/prefab/city/the_ale_nath
+	name = "The Ale'Nath"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/the_ale_nath/backroom
+	icon_state = "blue"
+
+
+/area/mission/prefab/city/the_greytide
+	name = "The Greytide"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+
+/area/mission/prefab/city/the_greytide/bathroom
+	icon_state = "pink"
+
+/area/mission/prefab/city/the_greytide/store
+	icon_state = "blue"
+
+
+
+/area/mission/prefab/city/closed_01
+	name = "closed down shop"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+	flags_area = FLAG_AREA_DIRTY
+
+
+/area/mission/prefab/city/closed_02
+	name = "closed down shop"
+	icon_state = "yellow"
+	requires_power = TRUE
+	link_to_parent_apc = TRUE
+	interior = TRUE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+	flags_area = FLAG_AREA_DIRTY

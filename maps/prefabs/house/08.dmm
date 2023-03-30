@@ -132,6 +132,11 @@
 /area/mission/prefab/house/house_08/entrance)
 "aA" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/left,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/closet)
 "aB" = (
@@ -265,6 +270,10 @@
 	icon_state = "toilet";
 	dir = 4
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_08/bathroom)
 "bc" = (
@@ -276,7 +285,7 @@
 /area/mission/prefab/house/house_08/bathroom)
 "bd" = (
 /obj/structure/carpet/red,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -340,7 +349,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/master_bedroom)
 "bp" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -352,7 +361,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "br" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -395,7 +404,7 @@
 /area/mission/prefab/house/house_08/entrance)
 "by" = (
 /obj/structure/carpet/brown,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 1
 	},
@@ -407,6 +416,7 @@
 	dir = 1
 	},
 /obj/structure/carpet/brown,
+/obj/marker/cover_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/entrance)
 "bA" = (
@@ -415,6 +425,7 @@
 	dir = 1
 	},
 /obj/structure/carpet/red,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_08/master_bedroom)
 "bB" = (
@@ -470,6 +481,39 @@
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
+"bM" = (
+/obj/structure/carpet/blue,
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08)
+"bN" = (
+/obj/structure/interactive/potted_plant/bin,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/entrance)
+"bO" = (
+/obj/structure/interactive/potted_plant/bin,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/entrance)
+"bP" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08)
+"bQ" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08)
 
 (1,1,1) = {"
 aa
@@ -565,7 +609,7 @@ aJ
 aJ
 ab
 ag
-bk
+bQ
 aq
 aq
 bB
@@ -622,12 +666,12 @@ ai
 al
 at
 ar
-bC
+bM
 aI
 aI
 aA
 aI
-au
+bO
 bu
 bu
 aG
@@ -637,7 +681,7 @@ bF
 aJ
 ab
 aj
-al
+bP
 aw
 bs
 bE
@@ -697,7 +741,7 @@ aK
 bG
 bG
 aK
-au
+bN
 ba
 ba
 bn

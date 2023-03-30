@@ -5,13 +5,14 @@ var/global/mob/abstract/melee_checker
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	movement_delay = 1
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = FALSE
+	abstract = TRUE
 
 /mob/abstract/melee_checker
 	name = "melee checker"
 	collision_flags = FLAG_COLLISION_FLYING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 	layer = LAYER_GHOST
-	invisibility = 100
 	invisibility = 101
 	alpha        = 0
 	opacity      = 0

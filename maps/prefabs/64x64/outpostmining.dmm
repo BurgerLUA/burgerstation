@@ -78,7 +78,7 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "ap" = (
-/turf/simulated/wall/dark/shuttle,
+/turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aq" = (
 /turf/simulated/floor/plating,
@@ -90,11 +90,9 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "as" = (
-/obj/structure/shuttle_engine/propulsion/right{
-	dir = 4
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+/obj/marker/spawning/window/tinted,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "at" = (
 /obj/structure/interactive/scanner/living,
 /obj/structure/interactive/conveyor,
@@ -140,10 +138,10 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aB" = (
-/obj/structure/shuttle_engine/propulsion{
+/obj/structure/shuttle_engine/propulsion/right{
 	dir = 4
 	},
-/turf/simulated/floor/plating/shuttle,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aC" = (
 /obj/structure/interactive/conveyor,
@@ -169,9 +167,11 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aG" = (
-/obj/marker/spawning/window/tinted,
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
+/obj/structure/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aH" = (
 /obj/decal/hazard{
 	dir = 8
@@ -209,11 +209,11 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aN" = (
-/turf/simulated/wall/dark/shuttle,
+/turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aO" = (
 /obj/structure/interactive/status_display/global_display/bravo,
-/turf/simulated/wall/dark/shuttle,
+/turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aP" = (
 /turf/simulated/floor/tile/shuttle/red,
@@ -230,11 +230,9 @@
 /turf/simulated/floor/tile/shuttle/black,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "aS" = (
-/obj/structure/shuttle_engine/propulsion/left{
-	dir = 4
-	},
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
+/obj/marker/spawning/window/tinted,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "aT" = (
 /obj/structure/interactive/scanner/living,
 /obj/structure/interactive/conveyor,
@@ -343,7 +341,7 @@
 /obj/structure/interactive/fire_closet{
 	dir = 4
 	},
-/turf/simulated/wall/dark/shuttle,
+/turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "bj" = (
 /turf/simulated/floor/tile/morphing/engineering,
@@ -353,8 +351,11 @@
 /turf/simulated/floor/tile/morphing/engineering,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bl" = (
-/turf/simulated/floor/tile/morphing/engineering,
-/area/mission/prefab/misc/syndicate_mining_outpost/engineering)
+/obj/structure/shuttle_engine/propulsion/left{
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bm" = (
 /obj/structure/table,
 /obj/structure/interactive/lighting/fixture/tube/syndicate,
@@ -516,9 +517,9 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bP" = (
-/obj/structure/interactive/vending/nanotrasen/gundrobe,
-/turf/simulated/floor/tile/morphing/engineering,
-/area/mission/prefab/misc/syndicate_mining_outpost/engineering)
+/obj/structure/shuttle_engine,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "bQ" = (
 /obj/decal/hazard/full,
 /turf/simulated/floor/tile/dark,
@@ -533,7 +534,6 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bT" = (
-/obj/structure/interactive/vending/nanotrasen/ammo,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
@@ -565,7 +565,6 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "bZ" = (
-/obj/structure/interactive/vending/nanotrasen/attachment,
 /turf/simulated/floor/tile/morphing/engineering,
 /area/mission/prefab/misc/syndicate_mining_outpost/engineering)
 "ca" = (
@@ -679,16 +678,16 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cs" = (
-/obj/structure/shuttle_engine,
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
+/obj/structure/shuttle_engine/burst,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "ct" = (
 /obj/structure/interactive/door/airlock/shuttle/dark,
 /turf/simulated/floor/tile/shuttle/red,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cu" = (
-/obj/structure/shuttle_engine/burst,
-/turf/simulated/floor/plating/shuttle,
+/obj/structure/shuttle_engine,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "cv" = (
 /obj/decal/hazard/black/full,
@@ -768,7 +767,7 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/cargo)
 "cK" = (
-/turf/simulated/wall/dark/shuttle,
+/turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "cL" = (
 /obj/structure/interactive/conveyor{
@@ -896,9 +895,9 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/service)
 "dl" = (
-/obj/marker/spawning/window/tinted,
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/mining)
+/obj/structure/shuttle_engine/burst,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/mission/prefab/misc/syndicate_mining_outpost/landing_bay)
 "dm" = (
 /obj/structure/interactive/door/airlock/station/maintenance,
 /turf/simulated/floor/plating,
@@ -1446,7 +1445,7 @@
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "fr" = (
 /obj/structure/interactive/status_display/global_display/alpha,
-/turf/simulated/wall/dark/shuttle,
+/turf/simulated/wall/metal/shuttle/dark,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "fs" = (
 /obj/marker/spawning/window/reinforced,
@@ -1656,15 +1655,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
-"gd" = (
-/obj/structure/shuttle_engine,
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "ge" = (
 /obj/decal/hazard{
 	dir = 8
 	},
-/obj/structure/interactive/vending/nanotrasen/gundrobe,
 /obj/structure/interactive/lighting/fixture/tube/syndicate{
 	dir = 4
 	},
@@ -1692,17 +1686,6 @@
 	},
 /turf/simulated/floor/tile/morphing/brown,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
-"gi" = (
-/obj/structure/shuttle_engine/burst,
-/turf/simulated/floor/plating/shuttle,
-/area/mission/prefab/misc/syndicate_mining_outpost/mining)
-"gj" = (
-/obj/decal/hazard{
-	dir = 8
-	},
-/obj/structure/interactive/vending/nanotrasen/ammo,
-/turf/simulated/floor/tile/morphing/brown,
-/area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gk" = (
 /obj/structure/interactive/door/airlock/station/engineering/glass,
 /obj/structure/interactive/wire/red,
@@ -1728,7 +1711,6 @@
 /obj/decal/hazard{
 	dir = 5
 	},
-/obj/structure/interactive/vending/nanotrasen/attachment,
 /turf/simulated/floor/tile/morphing/brown,
 /area/mission/prefab/misc/syndicate_mining_outpost/mining)
 "gp" = (
@@ -2422,17 +2404,17 @@ aF
 aI
 aN
 aN
-aG
-aG
-aG
-aG
-aG
+aS
+aS
+aS
+aS
+aS
 bi
-aG
-aG
+aS
+aS
 aN
 aN
-cu
+dl
 cv
 aq
 aq
@@ -2484,8 +2466,8 @@ Jy
 ao
 aq
 aw
-aG
-aG
+aS
+aS
 aO
 aW
 aY
@@ -2497,8 +2479,8 @@ aY
 aY
 bF
 aN
-cs
 cu
+dl
 cv
 aq
 aq
@@ -2550,7 +2532,7 @@ Jy
 ao
 aq
 aw
-aG
+aS
 aJ
 aJ
 aP
@@ -2563,8 +2545,8 @@ aJ
 aJ
 cq
 aN
-cs
 cu
+dl
 cv
 aq
 aq
@@ -2616,7 +2598,7 @@ Jy
 ao
 aq
 aw
-aG
+aS
 aJ
 aP
 aX
@@ -2682,7 +2664,7 @@ Jy
 ao
 aq
 aw
-aG
+aS
 aK
 aQ
 aJ
@@ -2748,7 +2730,7 @@ Jy
 ao
 aq
 aw
-aG
+aS
 aJ
 aP
 aY
@@ -2814,7 +2796,7 @@ Jy
 ao
 aq
 aw
-aG
+aS
 aJ
 aJ
 aP
@@ -2827,8 +2809,8 @@ aJ
 aJ
 cq
 aN
-cs
 cu
+dl
 cv
 aq
 aq
@@ -2880,8 +2862,8 @@ Jy
 ao
 aq
 aw
-aG
-aG
+aS
+aS
 aO
 ba
 aX
@@ -2893,8 +2875,8 @@ aJ
 cl
 aX
 aN
-cs
 cu
+dl
 cv
 aq
 aq
@@ -2960,7 +2942,7 @@ aO
 bi
 aN
 aN
-cu
+dl
 cv
 aq
 aq
@@ -3802,11 +3784,11 @@ sz
 sz
 sz
 Jy
-as
 aB
-aB
-aB
-aS
+aG
+aG
+aG
+bl
 aV
 bm
 bz
@@ -4272,7 +4254,7 @@ ap
 aV
 br
 bA
-bP
+bZ
 bT
 bZ
 ci
@@ -4336,7 +4318,7 @@ aD
 aD
 ap
 aV
-bl
+bZ
 bB
 by
 by
@@ -4402,12 +4384,12 @@ aD
 aD
 ap
 aV
-bl
+bZ
 bC
 bD
 bD
 by
-bl
+bZ
 cp
 cm
 cH
@@ -4594,11 +4576,11 @@ sz
 sz
 sz
 Jy
-as
 aB
-aB
-aB
-aS
+aG
+aG
+aG
+bl
 aV
 bu
 by
@@ -4668,9 +4650,9 @@ cy
 bb
 bo
 bE
-bl
+bZ
 bU
-bl
+bZ
 ck
 aa
 cD
@@ -4802,7 +4784,7 @@ fM
 fT
 fT
 ge
-gj
+gv
 go
 gu
 cD
@@ -5582,18 +5564,18 @@ Jy
 OJ
 aU
 cK
-dl
-dl
+as
+as
 fp
 cK
-dl
+as
 fr
-dl
+as
 cK
 fR
 fr
 cK
-gi
+cs
 gm
 gm
 ab
@@ -5647,7 +5629,7 @@ Jy
 Jy
 OJ
 aU
-dl
+as
 fe
 fe
 fq
@@ -5657,9 +5639,9 @@ fD
 fz
 fv
 fq
-dl
-gd
-gi
+as
+bP
+cs
 gm
 gm
 ab
@@ -5713,7 +5695,7 @@ Jy
 Jy
 Jy
 aU
-dl
+as
 ff
 fi
 fq
@@ -5723,9 +5705,9 @@ fq
 fq
 fq
 fq
-dl
-gd
-gi
+as
+bP
+cs
 gm
 gm
 ab
@@ -5779,7 +5761,7 @@ Jy
 Jy
 Jy
 aU
-dl
+as
 fe
 fe
 fe
@@ -5791,7 +5773,7 @@ fq
 fS
 cK
 cK
-gi
+cs
 gm
 gm
 ab
@@ -5846,8 +5828,8 @@ Jy
 Jy
 aU
 cK
-dl
-dl
+as
+as
 cK
 fw
 cK
@@ -5857,7 +5839,7 @@ cK
 fw
 cK
 cK
-gi
+cs
 gm
 gm
 ab
@@ -5921,9 +5903,9 @@ fq
 fA
 fq
 fB
-dl
-gd
-gi
+as
+bP
+cs
 gm
 gm
 ab
@@ -5987,9 +5969,9 @@ fx
 fB
 fx
 fB
-dl
-gd
-gi
+as
+bP
+cs
 gm
 gm
 ab
@@ -6055,7 +6037,7 @@ cK
 cK
 fr
 cK
-gi
+cs
 gm
 gm
 ab

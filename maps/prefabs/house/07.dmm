@@ -96,7 +96,7 @@
 	icon_state = "preview";
 	dir = 8
 	},
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -107,6 +107,7 @@
 	icon_state = "sink";
 	dir = 8
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_07/bathroom_01)
 "au" = (
@@ -122,6 +123,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07/master_bedroom)
 "ax" = (
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07/master_bedroom)
 "ay" = (
@@ -367,6 +369,7 @@
 /area/mission/prefab/house/house_07/master_bedroom)
 "bs" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07/guest_bedroom)
 "bt" = (
@@ -391,7 +394,7 @@
 	icon_state = "wooden_chair";
 	dir = 8
 	},
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -477,10 +480,11 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07)
 "bL" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 1
 	},
@@ -527,6 +531,10 @@
 /area/dmm_suite/clear_area)
 "bV" = (
 /obj/marker/map_node,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07/living_area)
 "bW" = (
@@ -548,6 +556,33 @@
 "bZ" = (
 /obj/marker/spawning/window,
 /obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07/entrance)
+"ca" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07/living_area)
+"cb" = (
+/obj/structure/interactive/wire/red,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07)
+"cc" = (
+/obj/structure/carpet/brown,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_07/entrance)
+"cd" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_07/entrance)
 
@@ -630,7 +665,7 @@ ak
 ar
 ax
 aE
-aI
+cb
 aI
 aI
 aI
@@ -689,9 +724,9 @@ aR
 bz
 bt
 bJ
-aA
+cd
 bT
-aS
+cc
 aZ
 bU
 "}
@@ -739,7 +774,7 @@ av
 aB
 by
 by
-bx
+ca
 bH
 aT
 bh

@@ -11,7 +11,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/rifle_heavy/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/misc/sentry.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE

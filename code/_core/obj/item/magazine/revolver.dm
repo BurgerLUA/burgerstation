@@ -6,8 +6,9 @@
 	icon_state = "38"
 	bullet_count_max = 6
 
-	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/detective = TRUE
+	weapon_whitelist = list(,
+		/obj/item/weapon/ranged/bullet/revolver/detective = TRUE,
+		/obj/item/weapon/ranged/bullet/revolver/defender = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/revolver_38
@@ -25,20 +26,7 @@
 
 	icon_states = 6
 
-
-/obj/item/magazine/clip/revolver/bullet_38/eight
-	name = "\improper .38 eight round speedloader"
-	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
-	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
-	icon = 'icons/obj/item/magazine/revolver/38_2.dmi'
-	bullet_count_max = 8
-
-	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/revolver/comp = TRUE
-	)
-
-	icon_states = 8
-
+	value = 15
 
 /obj/item/magazine/clip/revolver/bullet_44
 	name = "\improper .44 revolver speedloader"
@@ -68,6 +56,8 @@
 
 	icon_states = 6
 
+	value = 15
+
 /obj/item/magazine/clip/revolver/bullet_357
 	name = "\improper .357 speedloader"
 	desc = "IT'S NOT A CLIP. IT'S A MA-- Wait, what?"
@@ -94,3 +84,5 @@
 	size = SIZE_1
 
 	icon_states = 6
+
+	value = 15

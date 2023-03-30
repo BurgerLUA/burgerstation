@@ -33,7 +33,7 @@
 
 	var/list/LOADDATA = ckey_to_loadout_data[caller.ckey].loaded_data
 
-	var/desired_setting = input("What would you like to do?", "Loadout Vendor", "Cancel") as null|anything in list("Save current loadout","Load existing loadout","Cancel")
+	var/desired_setting = input("What would you like to do?", "Loadout Vendor", "Cancel") as null|anything in list("Save current loadout","Load existing loadout","Delete existing loadout","Cancel")
 	INTERACT_CHECK_NO_DELAY(caller)
 
 	if(desired_setting == "Save current loadout")
@@ -70,8 +70,27 @@
 		if(!desired_loadout || desired_loadout == "Cancel")
 			caller.to_chat(span("notice","You decide not to load anything."))
 			return TRUE
-		var/list/actual_loadout = found_loadouts[desired_loadout]
+		var/actual_loadout = found_loadouts[desired_loadout]
 		apply_loadout_to_mob(caller,actual_loadout)
 		return TRUE
+	else if(desired_setting == "Delete existing loadout")
+		if(!length(LOADDATA))
+			caller.to_chat(span("notice","You have no loadouts to delete!"))
+			return TRUE
+		var/list/found_loadouts = list()
+		for(var/k in LOADDATA)
+			var/list/v = LOADDATA[k]
+			var/new_name = "[v["name"]] (Cost:[v["cost"]])"
+			found_loadouts[new_name] = v["name"]
+		found_loadouts += "Cancel"
+		var/desired_loadout = input("What loadout do you wish to delete?","Delete Loadout","Cancel") as null|anything in found_loadouts
+		INTERACT_CHECK_NO_DELAY(caller)
+		if(!desired_loadout || desired_loadout == "Cancel")
+			caller.to_chat(span("notice","You decide not to delete anything."))
+			return TRUE
+		var/actual_loadout = found_loadouts[desired_loadout]
+		var/confirmation = input("Are you sure you wish to delete the loadout \"[actual_loadout]\"? This cannot be undone!","Delete Loadout","Cancel") as null|anything in list("Yes","No","Cancel")
+		if(confirmation == "Yes")
+			delete_loadout_of_mob(caller,actual_loadout)
 
 	. = ..()

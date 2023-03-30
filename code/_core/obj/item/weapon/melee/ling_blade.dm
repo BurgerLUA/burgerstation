@@ -6,7 +6,7 @@
 	icon = 'icons/obj/item/weapons/melee/swords/arm_blade.dmi'
 	damage_type = /damagetype/melee/sword/armblade
 
-	value = -1
+	value = 0
 	value_burgerbux = 1
 
 	drop_sound = 'sound/items/drop/axe.ogg'
@@ -18,7 +18,9 @@
 
 	can_save = FALSE
 
-/obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller)
+	rarity = RARITY_MYTHICAL
+
+/obj/item/weapon/melee/sword/armblade/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

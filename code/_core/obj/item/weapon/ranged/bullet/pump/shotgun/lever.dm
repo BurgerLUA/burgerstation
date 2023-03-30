@@ -18,7 +18,7 @@
 
 	bullet_count_max = 5
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/lever/shoot.ogg')
 
 	size = SIZE_4
 	weight = 10
@@ -73,6 +73,8 @@
 	movement_inaccuracy_modifier = 0.75
 
 	can_wield = TRUE
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread()
 	return 0.001

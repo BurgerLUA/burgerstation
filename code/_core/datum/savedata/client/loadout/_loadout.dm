@@ -36,6 +36,25 @@ var/global/list/ckey_to_loadout_cooldown = list()
 		loaded_data = json_decode(rustg_file_read(full_path))
 	return TRUE
 
+/proc/delete_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
+
+	if(!P.ckey || !name)
+		return FALSE
+
+	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
+
+	if(!length(L.loaded_data))
+		P.to_chat(span("warning","You have no loadouts to delete!"))
+		return FALSE
+
+	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before deleting another loadout!"))
+		return FALSE
+
+	L.loaded_data -= name
+
+	L.save()
+	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 /proc/save_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
 
@@ -47,14 +66,17 @@ var/global/list/ckey_to_loadout_cooldown = list()
 		return FALSE
 
 	var/list/objects_to_check = P.worn_objects.Copy()
-	sortTim(objects_to_check,/proc/cmp_worn_layer_hybrid_asc)
+	sort_tim(objects_to_check,/proc/cmp_worn_layer_hybrid_asc)
 	objects_to_check += P.held_objects
 
 	var/list/final_data_list = list()
 	var/final_cost = 0
 	for(var/k in objects_to_check)
 		var/obj/item/I = k
-		var/list/generated_list = I.save_item_data(P)
+		var/list/generated_list = I.save_item_data(P,loadout=TRUE)
+		if(!length(generated_list))
+			P.to_chat(span("warning","\The [I.name] could not be saved in the loadout system."))
+			continue
 		if(is_inventory(I.loc))
 			var/obj/hud/inventory/I2 = I.loc
 			generated_list["original_slot"] = I2.id
@@ -106,9 +128,8 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	var/turf/T = get_turf(P)
 	var/total_value = 0
 	for(var/data in found_data["loadout"])
-		var/obj/item/I = load_and_create(P,data,T,TRUE)
+		var/obj/item/I = load_and_create(P,data,T,loadout=TRUE)
 		if(!I)
-			P.to_chat(span("danger","Could not load item of type [data["type"]] as it doesn't exist anymore!"))
 			continue
 		var/obj/hud/inventory/I2 = data["original_slot"] ? P.inventories_by_id[data["original_slot"]] : null
 		var/success = I2 ? I2.add_object(I,messages=FALSE,silent=TRUE,error_on_fail=FALSE) : I.quick_equip(P,silent=TRUE)

@@ -172,11 +172,9 @@ SUBSYSTEM_DEF(horde)
 			if(debug) log_debug("Could not send squad: Not on mission map!")
 			return FALSE
 		//Okay. Here is the fun part. Finding spawns.
-		var/my_chunk_x = T.x/CHUNK_SIZE
-		var/my_chunk_y = T.y/CHUNK_SIZE
-		my_chunk_x = CEILING(my_chunk_x,1)
-		my_chunk_y = CEILING(my_chunk_x,1)
-		var/my_chunk_z = T.z
+		var/my_chunk_x = GET_CHUNK_X(T)
+		var/my_chunk_y = GET_CHUNK_Y(T)
+		var/my_chunk_z = GET_CHUNK_Z(T)
 		var/obj/marker/map_node/N_end = find_closest_node(T,VIEW_RANGE*8)
 		if(!N_end)
 			if(debug) log_debug("Could not send squad: Could not find a closest node to the target.")
@@ -192,7 +190,7 @@ SUBSYSTEM_DEF(horde)
 				continue
 			if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
 				continue
-			var/chunk/C = SSchunk.chunks[my_chunk_z][chunk_x][chunk_y]
+			var/chunk/C = CHUNK_XYZ(chunk_x,chunk_y,my_chunk_z)
 			for(var/k in C.nodes)
 				var/obj/marker/map_node/N = k
 				if(get_dist(N,victim) <= VIEW_RANGE + ZOOM_RANGE)
@@ -212,12 +210,7 @@ SUBSYSTEM_DEF(horde)
 		var/turf/squad_spawn = get_turf(N_start)
 
 		if(debug)
-			var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
-			N_chunk_x = FLOOR(N_chunk_x,1)
-			var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
-			N_chunk_y = FLOOR(N_chunk_y,1)
-			var/N_chunk_z = squad_spawn.z
-			var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
+			var/chunk/SC = CHUNK(squad_spawn)
 			log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
 
 
@@ -270,13 +263,10 @@ SUBSYSTEM_DEF(horde)
 			if(debug) log_debug("Could not send squad: Area identifier was expected to be Mission, but it was [A.area_identifier].")
 			return FALSE
 		//Okay. Here is the fun part. Finding spawns.
-		var/my_chunk_x = T.x/CHUNK_SIZE
-		var/my_chunk_y = T.y/CHUNK_SIZE
-		my_chunk_x = CEILING(my_chunk_x,1)
-		my_chunk_y = CEILING(my_chunk_x,1)
-		var/my_chunk_z = T.z
-
-		var/chunk/victim_chunk = SSchunk.chunks[my_chunk_z][my_chunk_x][my_chunk_y]
+		var/chunk/victim_chunk = CHUNK(T)
+		var/my_chunk_x = victim_chunk.x
+		var/my_chunk_y = victim_chunk.y
+		var/my_chunk_z = victim_chunk.z
 		if(!length(victim_chunk.nodes))
 			if(debug) log_debug("Could not send squad: Victim's chunk location had no valid nodes.")
 			return FALSE
@@ -293,14 +283,23 @@ SUBSYSTEM_DEF(horde)
 		for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
 			if(x==0 && y==0) //Not sure if this will happen but w/e
 				continue
-			var/chunk_x = my_chunk_x + x
-			var/chunk_y = my_chunk_y + y
+			var/chunk_x = my_chunk_x + x*2
+			var/chunk_y = my_chunk_y + y*2
 			if(chunk_x <= 0 || chunk_x > world.maxx/CHUNK_SIZE)
 				continue
 			if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
 				continue
-			var/chunk/C = SSchunk.chunks[my_chunk_z][chunk_x][chunk_y]
+
+			var/chunk/C = CHUNK_XYZ(chunk_x,chunk_y,my_chunk_z)
 			if(length(C.players))
+				continue
+			var/bad_chunk = FALSE
+			for(var/k in C.adjacent_chunks)
+				var/chunk/C2 = k
+				if(length(C2.players))
+					bad_chunk = TRUE
+					break
+			if(bad_chunk)
 				continue
 			for(var/k in C.nodes)
 				var/obj/marker/map_node/N = k
@@ -329,12 +328,7 @@ SUBSYSTEM_DEF(horde)
 			squad_spawn = get_turf(N_start)
 			found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
 			if(debug)
-				var/N_chunk_x = squad_spawn.x/CHUNK_SIZE
-				N_chunk_x = FLOOR(N_chunk_x,1)
-				var/N_chunk_y = squad_spawn.y/CHUNK_SIZE
-				N_chunk_y = FLOOR(N_chunk_y,1)
-				var/N_chunk_z = squad_spawn.z
-				var/chunk/SC = SSchunk.chunks[N_chunk_z][N_chunk_x][N_chunk_y]
+				var/chunk/SC = CHUNK(squad_spawn)
 				log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
 			if(!found_path)
 				if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")

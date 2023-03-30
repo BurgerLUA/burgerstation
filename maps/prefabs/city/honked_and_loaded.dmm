@@ -42,6 +42,10 @@
 /area/mission/prefab/city/honked_and_loaded)
 "ai" = (
 /obj/structure/interactive/wire/green,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
 /turf/simulated/floor/tile/orange,
 /area/mission/prefab/city/honked_and_loaded)
 "aj" = (
@@ -95,6 +99,7 @@
 "ar" = (
 /obj/structure/interactive/wire/green,
 /obj/marker/smart_clear_turf,
+/obj/marker/map_node,
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "as" = (
@@ -189,9 +194,6 @@
 	},
 /turf/simulated/floor/tile/orange,
 /area/mission/prefab/city/honked_and_loaded)
-"aH" = (
-/turf/simulated/floor/tile/yellow,
-/area/mission/prefab/city/honked_and_loaded)
 "aI" = (
 /obj/structure/table/reinforced/yellow,
 /obj/item/container/healing/bandage/prank,
@@ -261,6 +263,7 @@
 /area/mission/prefab/city/honked_and_loaded)
 "aV" = (
 /obj/structure/carpet/grey,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/tile/yellow,
 /area/mission/prefab/city/honked_and_loaded)
 "aW" = (
@@ -307,6 +310,54 @@
 "be" = (
 /obj/marker/smart_clear_turf,
 /turf/dmm_suite/no_wall,
+/area/mission/prefab/city/honked_and_loaded)
+"bf" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/orange,
+/area/mission/prefab/city/honked_and_loaded)
+"bg" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/orange,
+/area/mission/prefab/city/honked_and_loaded)
+"bh" = (
+/obj/marker/mission_mob,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/orange,
+/area/mission/prefab/city/honked_and_loaded)
+"bi" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/blue,
+/area/mission/prefab/city/honked_and_loaded)
+"bj" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/red,
+/area/mission/prefab/city/honked_and_loaded)
+"bk" = (
+/obj/structure/carpet/grey,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/yellow,
+/area/mission/prefab/city/honked_and_loaded)
+"bl" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/mission/prefab/city/honked_and_loaded)
+"bm" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile/yellow,
+/area/mission/prefab/city/honked_and_loaded)
+"bn" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile/yellow,
+/area/mission/prefab/city/honked_and_loaded)
+"bo" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/yellow,
+/area/mission/prefab/city/honked_and_loaded)
+"bp" = (
+/obj/marker/cover_node,
+/turf/simulated/floor/tile/yellow,
 /area/mission/prefab/city/honked_and_loaded)
 
 (1,1,1) = {"
@@ -367,17 +418,17 @@ aa
 aa
 ab
 af
+bg
 aq
 aq
 aq
-aq
-aq
+bg
 ao
 aK
 aK
-ao
-ao
-ao
+ab
+ab
+ab
 ab
 aP
 "}
@@ -389,7 +440,7 @@ aq
 aZ
 aA
 aA
-aH
+bp
 aW
 ao
 ao
@@ -413,7 +464,7 @@ aL
 aJ
 aN
 aA
-aH
+bm
 ab
 aS
 "}
@@ -425,21 +476,21 @@ aq
 aT
 aU
 aE
-aE
+bi
 aA
 aA
+bj
 aM
-aM
 aA
-aV
+bk
 aQ
-aP
+bl
 "}
 (8,1,1) = {"
 ar
 ac
-ai
-aq
+bf
+bg
 aA
 aX
 aA
@@ -457,7 +508,7 @@ aP
 as
 ad
 ai
-aq
+bg
 aY
 aB
 aA
@@ -467,7 +518,7 @@ aM
 aM
 aM
 aM
-aV
+bn
 ab
 aP
 "}
@@ -479,15 +530,15 @@ aq
 aB
 aT
 aE
-aE
+bi
 aA
 aA
-aM
+bj
 bb
 aA
-aV
+bk
 aQ
-aP
+bl
 "}
 (11,1,1) = {"
 av
@@ -503,7 +554,7 @@ aL
 aJ
 aO
 aA
-aH
+bo
 ab
 aS
 "}
@@ -515,7 +566,7 @@ aq
 aq
 aA
 aA
-aH
+bp
 ab
 ao
 ao
@@ -529,17 +580,17 @@ be
 bc
 ab
 am
-aZ
+bh
 aq
 aq
 aq
-aq
+bg
 ao
 aK
 aK
-ao
-ao
-ao
+ab
+ab
+ab
 ab
 aP
 "}

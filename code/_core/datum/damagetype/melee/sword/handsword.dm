@@ -1,10 +1,10 @@
 /damagetype/melee/sword/handsword
 
 	swing_sounds = list(
-		'sound/weapons/handsword/swing.ogg'
+		'sound/weapons/melee/handsword/swing.ogg'
 	)
 	impact_sounds = list(
-		'sound/weapons/handsword/hit_01.ogg'
+		'sound/weapons/melee/handsword/hit_01.ogg'
 	)
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.

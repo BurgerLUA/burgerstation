@@ -36,7 +36,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 12
+	level = 3
 
 /mob/living/simple/crab/post_death()
 	..()

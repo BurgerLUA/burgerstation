@@ -12,22 +12,31 @@
 	initialize_type = INITIALIZE_LATE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-	var/loot
+	var/loot/loot = /loot/random/low/lots
 
 	var/has_gibs = TRUE
 
-	value = 500
+	value = 1 //Dummy value.
 
 	weight = 10
 
 	rarity = RARITY_RARE
+
+
+/obj/item/supply_crate/get_base_value()
+	if(!loot)
+		return 0
+	if(!SSloot || !SSloot.initialized)
+		return null
+	var/loot/L = LOOT(loot)
+	return CEILING(L.average_value * 1.5,100)
 
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
 
 	. = ..()
 
 	if(hit_atom)
-		on_destruction(owner,TRUE)
+		on_destruction()
 
 /obj/item/supply_crate/PostInitialize()
 	. = ..()
@@ -38,17 +47,13 @@
 /obj/item/supply_crate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return TRUE
 
-/obj/item/supply_crate/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/item/supply_crate/on_destruction(var/damage = TRUE)
 
 	var/turf/T = get_turf(src)
 	play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 
 	if(loot)
-		var/rarity = 0
-		if(is_player(caller))
-			var/mob/living/advanced/player/P = caller
-			rarity = P.get_rarity()
+		var/rarity = 50
 		var/list/spawned_loot = SPAWN_LOOT(loot,T,rarity)
 		for(var/k in spawned_loot)
 			var/obj/item/I = k
@@ -82,7 +87,6 @@
 /obj/item/supply_crate/magic
 	loot = /loot/supply_crate/magic
 	icon_state = "supply_magic"
-	value = 1000
 
 /obj/item/supply_crate/medicine
 	loot = /loot/supply_crate/medicine

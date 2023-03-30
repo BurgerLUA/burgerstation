@@ -68,7 +68,7 @@
 		projectile_speed = 0.75,
 
 		shoot_alert = ALERT_LEVEL_NONE,
-		shoot_sounds = list('sound/weapons/10/shoot_mod.ogg')
+		shoot_sounds = list('sound/weapons/ranged/generic/shot_suppressed.ogg')
 	)
 
 	//attachment_shoot_alert = ALERT_LEVEL_NONE

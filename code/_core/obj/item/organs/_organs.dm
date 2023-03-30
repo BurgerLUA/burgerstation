@@ -126,7 +126,6 @@
 /obj/item/organ/update_sprite()
 	. = ..()
 	transform = get_base_transform()
-
 	if(has_dropped_icon && !is_advanced(loc) && enable_skin && additional_blends["skin"])
 		var/icon_blend/IB = additional_blends["skin"]
 		color = IB.color
@@ -134,18 +133,13 @@
 		color = null
 
 /obj/item/organ/update_icon()
-
 	. = ..()
-
 	icon_state = initial(icon_state)
-
 	if(has_dropped_icon && !is_advanced(loc))
 		icon_state = "[icon_state]_inventory"
 
 /obj/item/organ/update_underlays()
-
 	. = ..()
-
 	if(has_dropped_icon_underlay && !is_advanced(loc))
 		var/image/I = new/image(initial(icon),"[icon_state]_underlay")
 		add_underlay(I)
@@ -183,12 +177,6 @@
 	src.health.adjust_loss_smart(pain=health.health_max*0.25,organic=TRUE,robotic=FALSE)
 	return TRUE
 
-/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
-	. = ..()
-	if(. && is_advanced(loc))
-		var/mob/living/advanced/A = loc
-		A.update_overlay_tracked("\ref[src]")
-
 /obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
 	. = ..()
@@ -210,20 +198,29 @@
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
 				src.send_pain_response(damage_amount)
 			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
-				var/gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
+				var/gib_chance = 0
+				if(length(attached_organs) == 1 && A.has_status_effect(ZOMBIE))
+					gib_chance = 100
+				else
+					gib_chance = SAFENUM(damage_table[BLADE])*1.25 + SAFENUM(damage_table[BLUNT]) + SAFENUM(damage_table[PIERCE])*0.75
 				if(A.dead)
 					gib_chance -= length(attached_organs)*20 //No cheesing torso.
 				else
 					gib_chance -= length(attached_organs)*50 //No cheesing torso.
 				if(gib_chance > 0 && prob(gib_chance))
+					var/gib_direction = 0x0
+					if(!attacker || get_turf(attacker) == get_turf(src))
+						gib_direction = pick(DIRECTIONS_ALL)
+					else
+						gib_direction = get_dir(attacker,src)
 					if(A.ckey_last) //Hold on, we're a player. Don't be so eager to gib.
 						if(A.dead && is_living(attacker)) //Only gib if the player is dead.
 							var/mob/living/LA = attacker
 							if(LA.client) //And the person doing the gibbing is an active player.
-								gib(get_dir(attacker,src))
+								gib(gib_direction)
 							//Otherwise, don't gib.
 					else
-						gib(get_dir(attacker,src))
+						gib(gib_direction)
 
 
 /obj/item/organ/proc/get_ending_organ(var/limit=10)
@@ -258,8 +255,6 @@
 		if(!A.has_status_effect(ZOMBIE))
 			A.death()
 			A.make_unrevivable()
-		if(!A.dead)
-			A.visible_message(span("warning","\The [A.name]'s [src.name] explodes!"),span("danger","Your [src.name] explodes!"))
 		if(T && A.blood_type)
 			var/organ_size = ((target_bounds_x_max - target_bounds_x_min) * (target_bounds_y_max - target_bounds_y_min))/(4*4)
 			var/reagent/R = REAGENT(A.blood_type)
@@ -275,7 +270,7 @@
 					base_normals[2]*rand(-TILE_SIZE*0.25,TILE_SIZE*2),
 					TRUE
 				)
-			if(gib_icon_state && enable_skin && additional_blends["skin"])
+			if(!hard && gib_icon_state && enable_skin && additional_blends["skin"])
 				var/icon_blend/IB = additional_blends["skin"]
 				var/obj/effect/cleanable/blood/body_gib/BG = create_blood(
 					/obj/effect/cleanable/blood/body_gib,
@@ -306,26 +301,68 @@
 	O.attached_organs += src
 	return TRUE
 
-/obj/item/organ/initialize_blends()
+/obj/item/organ/initialize_worn_blends(var/desired_icon_state)
 
 	if(enable_skin)
-		add_blend("skin", desired_color = "#FF0000", desired_blend = ICON_MULTIPLY, desired_type = ICON_BLEND_COLOR, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend(
+			"skin",
+			desired_color = "#FF0000",
+			desired_blend = ICON_MULTIPLY,
+			desired_type = ICON_BLEND_COLOR,
+			desired_should_save = TRUE,
+			desired_layer = worn_layer
+		)
 
 	if(enable_glow)
-		add_blend("skin_glow", desired_icon = icon, desired_icon_state = "[icon_state]_glow", desired_color = "#00FF00", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend(
+			"skin_glow",
+			desired_icon = initial(icon),
+			desired_icon_state = "[icon_state]_glow",
+			desired_color = "#00FF00",
+			desired_blend = ICON_OVERLAY,
+			desired_type = ICON_BLEND_OVERLAY,
+			desired_should_save = TRUE,
+			desired_layer = worn_layer
+		)
 
 	if(enable_detail)
-		add_blend("skin_detail", desired_icon = icon, desired_icon_state = "[icon_state]_color", desired_color = "#0000FF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY, desired_should_save = TRUE, desired_layer = worn_layer)
+		add_blend(
+			"skin_detail",
+			desired_icon = initial(icon),
+			desired_icon_state = "[icon_state]_color",
+			desired_color = "#0000FF",
+			desired_blend = ICON_OVERLAY,
+			desired_type = ICON_BLEND_OVERLAY,
+			desired_should_save = TRUE,
+			desired_layer = worn_layer
+		)
 
 	if(enable_wounds)
 		for(var/damagetype in visual_wounds)
-			add_blend("damage_[damagetype]", desired_icon = damage_icon, desired_color = "#FFFFFF", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY,desired_layer = damage_layer)
+			add_blend(
+				"damage_[damagetype]",
+				desired_icon = damage_icon,
+				desired_color = "#FFFFFF",
+				desired_blend = ICON_OVERLAY,
+				desired_type = ICON_BLEND_OVERLAY,
+				desired_layer = damage_layer
+			)
 
-	. = ..()
+	if(enable_blood_stains)
+		add_blend(
+			"bloodstain",
+			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
+			desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
+			desired_color = blood_stain_color,
+			desired_blend = ICON_ADD,
+			desired_type = ICON_BLEND_MASK,
+			desired_should_save = FALSE,
+			desired_layer = damage_layer+0.01
+		)
 
 /obj/item/organ/PostInitialize()
 	. = ..()
-	initialize_blends(icon_state)
+	initialize_worn_blends(icon_state)
 
 /*
 /obj/item/organ/Finalize()
@@ -378,7 +415,7 @@
 /obj/item/organ/proc/on_life()
 
 	if(reagents)
-		reagents.metabolize(is_advanced(src.loc) ? src.loc : null)
+		reagents.metabolize(is_advanced(src.loc) ? src.loc : null, TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	if(bleeding >= 1 && is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
@@ -399,6 +436,12 @@ obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
 	new_owner.handle_transform()
+	if(src.health)
+		src.health.update_health_stats()
+		src.health.health_current = src.health.health_max
+		src.health.stamina_current = src.health.stamina_max
+		src.health.mana_current = src.health.mana_max
+		new_owner.queue_organ_health_update[src] = TRUE
 	return TRUE
 
 obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
@@ -430,7 +473,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 		if(50 to INFINITY)
 			damage_desc += "<u><b>charred</b></u>"
 
-	switch(health.damage[PAIN] - (istype(A) ? A.pain_removal : 0))
+	switch(health.damage[PAIN] - A.pain_regen_buffer)
 		if(5 to 15)
 			damage_desc += "<i>tender<i/>"
 		if(15 to 25)
@@ -441,14 +484,6 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 			damage_desc += "<u><b>hurting</b></u>"
 		if(100 to INFINITY)
 			damage_desc += "<u><b>numb from the pain</b></u>"
-
-	switch(health.damage[RAD])
-		if(15 to 25)
-			damage_desc += "glowing"
-		if(25 to 50)
-			damage_desc += "<b>pulsating</b>"
-		if(50 to INFINITY)
-			damage_desc += "<u><b>mutating</b></u>"
 
 	switch(bleeding)
 		if(0.5 to 2)
@@ -478,4 +513,5 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
 	. = ..()
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k
-		I.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+		if(I.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE

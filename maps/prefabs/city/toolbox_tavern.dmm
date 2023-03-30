@@ -20,6 +20,10 @@
 "af" = (
 /obj/structure/carpet/grey,
 /obj/structure/interactive/wire/green,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/city/toolbox_tavern/backroom)
 "ag" = (
@@ -51,6 +55,7 @@
 	icon_state = "toilet";
 	dir = 4
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/toolbox_tavern/bathroom)
 "am" = (
@@ -58,6 +63,7 @@
 	icon_state = "sink";
 	dir = 4
 	},
+/obj/marker/cover_node/right,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/toolbox_tavern/bathroom)
 "an" = (
@@ -70,6 +76,7 @@
 	icon_state = "wooden_chair";
 	dir = 1
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/city/toolbox_tavern/backroom)
 "ap" = (
@@ -207,6 +214,10 @@
 /area/mission/prefab/city/toolbox_tavern)
 "aO" = (
 /obj/structure/interactive/wire/yellow,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
 "aP" = (
@@ -427,6 +438,37 @@
 /obj/marker/mission_mob,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/toolbox_tavern/bathroom)
+"bD" = (
+/obj/marker/hostage_spawn,
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/city/toolbox_tavern)
+"bE" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/city/toolbox_tavern)
+"bF" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/city/toolbox_tavern)
+"bG" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/city/toolbox_tavern)
 
 (1,1,1) = {"
 ab
@@ -513,7 +555,7 @@ aK
 aK
 aK
 aA
-aK
+bF
 bd
 aC
 aa
@@ -582,7 +624,7 @@ bm
 aA
 aA
 bm
-aA
+bD
 bm
 aA
 ai
@@ -639,7 +681,7 @@ aK
 aK
 aK
 aA
-aK
+bE
 bd
 aC
 aa
@@ -649,7 +691,7 @@ ac
 ag
 al
 as
-aA
+bG
 bm
 aA
 bB

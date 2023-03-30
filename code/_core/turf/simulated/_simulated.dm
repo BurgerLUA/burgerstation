@@ -12,11 +12,6 @@
 
 	var/turf/destruction_turf
 
-	var/reinforced_material_id
-	var/reinforced_color
-	var/reinforced_alpha = 255
-	var/reinforced_blend = BLEND_DEFAULT
-
 	var/exposed = TRUE //Are pipes and other hidden objects visible?
 
 	var/turf_temperature_mod = 0
@@ -46,7 +41,20 @@
 
 	var/queued_smoothing = FALSE
 
-/turf/simulated/is_safe_move(var/check_contents=TRUE)
+	var/material_id
+
+	var/reinforced_material_id
+	var/reinforced_color
+	var/reinforced_alpha = 255
+	var/reinforced_blend = BLEND_DEFAULT
+
+	var/move_delay_modifier = 1 //Increase to make it harder to move on this turf. Decrease to make it easier. Only applies to mobs that touch the floor.
+
+	var/organic = FALSE
+
+	var/footstep/footstep //The footstep sounds that play.
+
+/turf/simulated/can_move_to(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)
 		return FALSE
@@ -86,9 +94,7 @@
 	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
 	return TRUE
 
-/turf/simulated/on_destruction(var/mob/caller,var/damage = FALSE)
-
-	if(!destruction_turf) CRASH("[get_debug_name()] called on_destruction without having a destruction turf!")
+/turf/simulated/on_destruction(var/damage = TRUE)
 
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0
@@ -98,12 +104,8 @@
 	pixel_x = 0
 	pixel_y = 0
 
-	var/missing_health = health.health_current < 0 ? -health.health_current : 0
-
 	change_turf(destruction_turf)
-	if(missing_health && src.health)
-		src.health.health_current -= missing_health
-		src.health.update_health(caller,missing_health)
+
 
 /turf/simulated/Initialize()
 	var/area/A = loc
@@ -117,11 +119,6 @@
 			health = /health/turf/
 	set_exposed(exposed,!exposed)
 	return ..()
-
-/turf/simulated/PostInitialize()
-	. = ..()
-	if(istype(health))
-		health.organic = organic
 
 /turf/simulated/Finalize()
 	. = ..()
@@ -177,7 +174,7 @@
 
 		return TRUE
 
-	return ..()
+	. = ..()
 
 /turf/simulated/update_overlays()
 

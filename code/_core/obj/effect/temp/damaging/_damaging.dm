@@ -14,6 +14,8 @@ obj/effect/temp/hazard
 
 	density = TRUE
 
+	hazardous = TRUE
+
 obj/effect/temp/hazard/Destroy()
 	owner = null
 	return ..()
@@ -196,7 +198,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	damage_type = /damagetype/ranged/magic/fireball
 	cross_hazard = TRUE
 	plane = PLANE_BLOOD
-	layer = 0
+	layer = LAYER_FLOOR_EFFECTS
 
 /obj/effect/temp/hazard/lava/get_params(var/atom/victim)
 
@@ -219,7 +221,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	damage_type = /damagetype/ranged/magic/cult
 	cross_hazard = TRUE
 	plane = PLANE_BLOOD
-	layer = 0
+	layer = LAYER_FLOOR_EFFECTS
 
 /obj/effect/temp/hazard/curse/New(var/desired_location,var/desired_time,var/desired_owner)
 
@@ -248,7 +250,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	damage_type = /damagetype/ranged/laser/flamethrower
 	cross_hazard = TRUE
 	plane = PLANE_BLOOD
-	layer = 0
+	layer = LAYER_FLOOR_EFFECTS
 
 /obj/effect/temp/hazard/flamethrowerfire/get_params(var/atom/victim)
 

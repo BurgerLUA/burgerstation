@@ -18,3 +18,15 @@
 /area/mission/prefab/boss/herald
 	name = "herald's arena"
 	interior = TRUE
+
+/area/mission/prefab/boss/gabber
+	name = "Zechariah's Lair"
+	interior = TRUE
+
+
+/area/mission/prefab/boss/slime_king
+	name = "Slime King's throne"
+	interior = FALSE
+
+	sunlight_freq = 8
+	sunlight_color = "#CCB06A"

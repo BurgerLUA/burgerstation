@@ -1,15 +1,17 @@
 /mob/living/simple/bubblegum
-	name = "bubblegum"
+	name = "Bubblegum"
 	boss_icon_state = "bubblegum"
 	icon = 'icons/mob/living/simple/lavaland/bubblegum.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/boss/
+	damage_type = /damagetype/unarmed/claw
 
 	ai = /ai/boss/bubblegum/
 
 	pixel_x = -32
 
 	boss_loot = /loot/lavaland/bubblegum
+
+	boss_music = /track/bubblegum
 
 	value = 4000
 
@@ -78,7 +80,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 40
+	level = 35
 
 /mob/living/simple/bubblegum/post_death()
 	. = ..()

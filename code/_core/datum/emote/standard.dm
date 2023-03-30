@@ -4,6 +4,12 @@
 	action = "\The #USER suddenly hits a dab!"
 	action_target = "\The #USER dabs on #TARGET!"
 
+/emote/flex
+	name = "Flex"
+	id = "flex"
+	action = "\The #USER flexes their muscles!"
+	action_target = "\The #USER flexes their muscles at #TARGET!"
+
 /emote/nod
 	name = "Nod Head"
 	id = "nod"

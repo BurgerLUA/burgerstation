@@ -41,7 +41,7 @@
 	name = "necro chest"
 	icon_state = "necro"
 
-	loot = /loot/lavaland
+	loot = /loot/lavaland/chest
 
 	collect_contents_on_initialize = FALSE
 

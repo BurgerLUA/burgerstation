@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical
-	name = "12g SolTact-S"
-	desc = "When you're too lazy to pump."
-	desc_extended = "A lightweight 12 gauge auto-cycling semi-automatic shotgun designed to clear rooms very fast without the effort of pumping; except when you load a new round in for the first time."
+	name = "12g SolTact"
+	desc = "Tactful."
+	desc_extended = "A lightweight 12 gauge pump action Solarian-designed shotgun."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/sol/tactical.dmi'
 	icon_state = "inventory"
 
@@ -20,7 +20,7 @@
 
 	bullet_count_max = 4
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/tactical/shoot.ogg')
 
 	size = SIZE_3
 	weight = 10
@@ -59,13 +59,13 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 21 - 16
-	attachment_sight_offset_y = 18 - 16
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 15 - 16
 
 	dan_mode = TRUE
@@ -74,6 +74,8 @@
 	movement_inaccuracy_modifier = 0.5
 
 	pump_delay = 1
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical
 
@@ -85,8 +87,3 @@
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical/get_base_spread()
 	return 0.25
-
-/obj/item/weapon/ranged/bullet/pump/shotgun/tactical/handle_ammo(var/mob/caller)
-	. = ..()
-	pump(silent = TRUE)
-

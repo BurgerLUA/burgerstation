@@ -189,7 +189,7 @@
 		/obj/item/clothing/neck/tie = 30,
 		/obj/item/clothing/neck/tie/black = 30,
 		/obj/item/clothing/neck/tie/red = 30,
-		/loot/rings/bad = 10
+		/loot/rings/minor = 10
 	)
 
 /loot/misc/food

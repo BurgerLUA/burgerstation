@@ -61,6 +61,12 @@
 /obj/marker/herald/destination,
 /turf/simulated/floor/basalt,
 /area/herald)
+"p" = (
+/turf/simulated/wall/rock/indestructable,
+/area/space/bluespace)
+"q" = (
+/turf/simulated/floor/darkness,
+/area/space/bluespace)
 
 (1,1,1) = {"
 c
@@ -230472,13 +230478,13 @@ c
 c
 c
 c
-c
-c
-c
-c
-c
-c
-c
+n
+n
+n
+n
+n
+n
+n
 "}
 (460,1,1) = {"
 c
@@ -230974,13 +230980,13 @@ c
 c
 c
 c
-c
-c
-c
-c
-c
-c
-c
+n
+p
+p
+p
+p
+p
+n
 "}
 (461,1,1) = {"
 c
@@ -231476,13 +231482,13 @@ c
 c
 c
 c
-c
-c
-c
-c
-c
-c
-c
+n
+p
+q
+q
+q
+p
+n
 "}
 (462,1,1) = {"
 c
@@ -231978,13 +231984,13 @@ c
 c
 c
 c
-c
-c
-c
-c
-c
-c
-c
+n
+p
+q
+q
+q
+p
+n
 "}
 (463,1,1) = {"
 c
@@ -232480,13 +232486,13 @@ c
 c
 c
 c
-c
-c
-c
-c
-c
-c
-c
+n
+p
+q
+q
+q
+p
+n
 "}
 (464,1,1) = {"
 c
@@ -232982,13 +232988,13 @@ c
 c
 c
 c
-c
-c
-c
-c
-c
-c
-c
+n
+p
+p
+p
+p
+p
+n
 "}
 (465,1,1) = {"
 c

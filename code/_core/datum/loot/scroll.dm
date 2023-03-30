@@ -12,10 +12,8 @@
 		/obj/item/experience_scroll/skill/prayer,
 		/obj/item/experience_scroll/skill/precision,
 		/obj/item/experience_scroll/skill/ranged,
-		/obj/item/experience_scroll/skill/sorcery,
 		/obj/item/experience_scroll/skill/survival,
-		/obj/item/experience_scroll/skill/unarmed,
-		/obj/item/experience_scroll/skill/botany
+		/obj/item/experience_scroll/skill/unarmed
 	)
 	loot_count = 1
 
@@ -48,10 +46,8 @@
 		/obj/item/experience_scroll/skill/lesser/prayer,
 		/obj/item/experience_scroll/skill/lesser/precision,
 		/obj/item/experience_scroll/skill/lesser/ranged,
-		/obj/item/experience_scroll/skill/lesser/sorcery,
 		/obj/item/experience_scroll/skill/lesser/survival,
-		/obj/item/experience_scroll/skill/lesser/unarmed,
-		/obj/item/experience_scroll/skill/lesser/botany
+		/obj/item/experience_scroll/skill/lesser/unarmed
 	)
 	loot_count = 1
 

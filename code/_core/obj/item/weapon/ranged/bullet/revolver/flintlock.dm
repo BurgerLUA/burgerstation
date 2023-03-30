@@ -8,6 +8,8 @@
 
 	company_type = "Pirate"
 
+	tier_type = "pistol"
+
 	tier = 1
 
 	damage_mod = 1
@@ -17,7 +19,7 @@
 
 	bullet_count_max = 1
 
-	shoot_sounds = list('sound/weapons/308/big_game.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/flintlock/shoot.ogg')
 
 	size = SIZE_2
 	weight = 8
@@ -74,6 +76,8 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/revolver/flintlock/get_static_spread()
 	return 0.01 //Smoothbore

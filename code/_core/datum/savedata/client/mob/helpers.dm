@@ -5,8 +5,10 @@ var/global/allow_loading = TRUE
 	var/file_name = get_filename(file_string)
 	return replacetext(replacetext(file_name,"character_",""),".json","")
 
+
 /savedata/client/mob/proc/get_proper_id_from_filename(var/file_string)
 	return replacetext(replacetext(file_string,"character_",""),".json","")
+
 
 /savedata/client/mob/proc/load_most_recent_character()
 	var/list/file_paths = get_files()
@@ -24,6 +26,7 @@ var/global/allow_loading = TRUE
 			best_data = new_loaded_data
 
 	return best_data
+
 
 /savedata/client/mob/proc/get_next_character_id()
 
@@ -45,6 +48,7 @@ var/global/allow_loading = TRUE
 	else
 		return "[best_number]"
 
+
 /savedata/client/mob/proc/load_json_data_from_id(var/character_id)
 
 	var/filename = get_file(character_id)
@@ -56,6 +60,7 @@ var/global/allow_loading = TRUE
 
 	return json_decode(data)
 
+
 /savedata/client/mob/proc/write_json_data_to_id(var/character_id,var/json_data)
 	json_data["id"] = character_id
 	json_data["last_saved_date"] = get_date()
@@ -64,6 +69,7 @@ var/global/allow_loading = TRUE
 	var/data = json_encode(json_data)
 	rustg_file_write(data,desired_file)
 	return TRUE
+
 
 /savedata/client/mob/proc/create_new_character(var/character_id)
 
@@ -90,6 +96,7 @@ var/global/allow_loading = TRUE
 	loaded_data["id"] = character_id
 
 	return TRUE
+
 
 /savedata/client/mob/proc/save_character(var/mob/living/advanced/player/A,var/save_inventory = TRUE,var/died=FALSE)
 
@@ -148,3 +155,57 @@ var/global/allow_loading = TRUE
 		. = FALSE
 
 	A.is_saving = FALSE
+
+
+/savedata/client/mob/proc/delete_character(var/mob/living/advanced/player/A)
+
+	if(!A || !A.ckey || !A.client)
+		return
+
+	if(A != usr)
+		CRASH("[A.get_debug_name()] is not equal to [usr.get_debug_name()]!")
+		return
+
+	var/savedata/client/globals/GD = GLOBALDATA(A.ckey)
+
+	if(!GD)
+		CRASH("No globaldata found for [A.ckey]!")
+		return
+
+	if(A.save_id != loaded_data["id"])
+		CRASH("Save id [A.save_id] is not equal to [src.loaded_data["id"]] for [A.ckey]!")
+		return
+
+	var/file_name = get_file(A.save_id)
+
+	if(!fdel(file_name))
+		CRASH("Could not delete file [file_name] for [A.ckey]!")
+		return FALSE
+
+	SStax.pay_taxes(A)
+
+	var/total_value = A.get_value() + A.currency
+	total_value = max(0,total_value)
+
+	if(!GD.loaded_data["stored_experience"])
+		GD.loaded_data["stored_experience"] = list()
+
+	GD.loaded_data["stored_currency"] += total_value
+
+	for(var/s_id in A.skills)
+		var/experience/skill/S = A.skills[s_id]
+		var/amount_to_add = max(0,S.get_xp() - S.level_to_xp(S.default_level))*0.5
+		amount_to_add = FLOOR(amount_to_add,1)
+		GD.loaded_data["stored_experience"][s_id] += amount_to_add
+
+	for(var/s_id in A.attributes)
+		var/experience/attribute/S = A.attributes[s_id]
+		var/amount_to_add = max(0,S.get_xp() - S.level_to_xp(S.default_level))*0.5
+		amount_to_add = FLOOR(amount_to_add,1)
+		GD.loaded_data["stored_experience"][s_id] += amount_to_add
+
+	A.client?.make_ghost(get_turf(A))
+
+	qdel(A)
+
+	return TRUE

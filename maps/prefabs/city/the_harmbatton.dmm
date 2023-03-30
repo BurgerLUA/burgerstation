@@ -414,6 +414,51 @@
 /obj/marker/map_node,
 /turf/simulated/floor/plating/reinforced,
 /area/mission/prefab/city/the_harmbaton/armory)
+"bD" = (
+/obj/marker/map_node,
+/obj/marker/mission_mob,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton/firing_range)
+"bE" = (
+/obj/marker/map_node,
+/obj/marker/mission_mob,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
+"bF" = (
+/obj/marker/mission_mob,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/the_harmbaton/firing_range)
+"bG" = (
+/obj/structure/interactive/chair/wood{
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/obj/marker/hostage_spawn,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/city/the_harmbaton/firing_range)
+"bH" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
+"bI" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
+"bJ" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton/firing_range)
+"bK" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton/firing_range)
+"bL" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/city/the_harmbaton)
 
 (1,1,1) = {"
 aP
@@ -477,7 +522,7 @@ ah
 ah
 ac
 bx
-ae
+bL
 aE
 aB
 aB
@@ -491,7 +536,7 @@ aa
 ac
 ah
 ah
-ah
+bG
 ah
 ac
 an
@@ -563,7 +608,7 @@ aa
 ac
 ai
 ah
-ah
+bF
 be
 ac
 an
@@ -618,10 +663,10 @@ af
 aI
 ba
 br
-ba
+bJ
 bj
 ae
-ae
+bH
 ab
 aF
 aU
@@ -636,10 +681,10 @@ af
 aI
 bu
 ba
-bu
+bD
 bh
 by
-by
+bE
 al
 by
 ae
@@ -654,10 +699,10 @@ af
 aN
 br
 ba
-ba
+bK
 bi
 ae
-ae
+bI
 ab
 ae
 bs

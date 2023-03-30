@@ -2,10 +2,10 @@
 /damagetype/melee/axe
 
 	impact_sounds = list(
-		'sound/weapons/blade/hit_heavy.ogg',
+		'sound/weapons/melee/blade/hit_heavy.ogg',
 	)
 	miss_sounds = list(
-		'sound/weapons/fists/punchmiss.ogg'
+		'sound/weapons/unarmed/punchmiss.ogg'
 	)
 
 	draw_blood = TRUE

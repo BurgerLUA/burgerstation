@@ -137,6 +137,28 @@
 	target_bounds_y_min = 4
 	target_bounds_y_max = 8
 
+//Cyborg 2
+/obj/item/organ/leg/gopro
+	name = "right advanced cyborg leg"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
+
+/obj/item/organ/leg/gopro/left
+	name = "left advanced cyborg leg"
+	id = BODY_LEG_LEFT
+	icon_state = BODY_LEG_LEFT
+
+	hud_id = "body_leg_left"
+
+	target_bounds_x_min = 17
+	target_bounds_x_max = 20
+
+	target_bounds_y_min = 4
+	target_bounds_y_max = 8
+
 
 /obj/item/organ/leg/beefman
 	name = "right beef leg"

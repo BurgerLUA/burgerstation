@@ -56,7 +56,7 @@
 	return TRUE
 
 /obj/structure/interactive/construction/girder/proc/construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
-	var/turf/T = src.loc
+	var/turf/simulated/T = src.loc
 	T.change_turf(/turf/simulated/wall/metal/)
 	T.material_id = material_id
 	T.color = color
@@ -65,7 +65,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/girder/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/construction/girder/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
@@ -101,7 +101,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(caller)
+			src.on_destruction(FALSE)
 			return TRUE
 		return TRUE
 	return ..()

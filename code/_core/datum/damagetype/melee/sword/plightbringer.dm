@@ -55,23 +55,23 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 25,
-		SKILL_MAGIC_OFFENSIVE = 50
+		SKILL_MAGIC = 50
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE,
-		SKILL_MAGIC_OFFENSIVE = HEAT
+		SKILL_MAGIC = HEAT
 	)
 
 	bonus_experience_skill = list(
 		SKILL_MELEE = 25, //25%
-		SKILL_MAGIC_OFFENSIVE = 25
+		SKILL_MAGIC = 25
 	)
 
 	attack_delay = 20
 	attack_delay_max = 20
 
-/damagetype/melee/sword/plightbringer/on/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/melee/sword/plightbringer/on/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	. = ..()
 

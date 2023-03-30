@@ -45,7 +45,7 @@
 
 	drop_sound = 'sound/items/drop/bullet.ogg'
 
-	var/bullet_insert_sound = 'sound/weapons/gun/general/mag_bullet_insert.ogg'
+	var/bullet_insert_sound = 'sound/weapons/ranged/generic/mag_bullet_insert.ogg'
 
 	var/power = 0 //Set in SSweapons.
 
@@ -78,11 +78,11 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/bullet_cartridge/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 
-/obj/item/bullet_cartridge/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/bullet_cartridge/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
 	update_sprite()
 
@@ -254,7 +254,7 @@
 
 	return ..()
 
-/obj/item/bullet_cartridge/proc/get_recommended_value()
+/obj/item/bullet_cartridge/proc/get_recommended_value(var/debug=FALSE)
 
 	if(!damage_type_bullet)
 		return 0
@@ -262,10 +262,12 @@
 	var/damagetype/D = all_damage_types[damage_type_bullet]
 	if(!D) return 0
 
-	. = D.get_damage_per_hit(ARMOR_VALUE_TO_CONSIDER) * projectile_count
-	. *= 1 + (projectile_speed/TILE_SIZE)*0.25
-	. *= 1 + max(0.5,1 - base_spread)*0.25
-	. *= 1 + max(0,1-inaccuracy_modifier)*0.5
-	. *= min(0.25,1 - (jam_chance + misfire_chance)/100)
-	. += min(10,(bullet_length*bullet_diameter)/(9*19))
-	. *= 0.2
+	//https://www.desmos.com/calculator/qgzesfmsl1
+	. = (D.get_damage_per_hit(0)*0.1 + D.get_damage_per_hit(100)*0.2 + D.get_damage_per_hit(200)*0.7) * projectile_count
+	. *= 0.5 + (D.falloff/VIEW_RANGE)*0.5 //Falloff.
+	. *= 0.75 + (projectile_speed/TILE_SIZE)*0.25 //Speed
+	. *= 0.75 + 0.25*(1- (base_spread/0.1)) //Spread
+	. *= 1 + max(0,1-inaccuracy_modifier)*0.5 //Inaccuracy
+	. *= 0.1 + min(max(0,1 - (jam_chance + misfire_chance)/50),0.9) //Reliability.
+	. *= 0.04
+	. += ((bullet_length*bullet_diameter)/(9*19))*1 //Material costs.

@@ -4,7 +4,7 @@ var/global/time_dialation = 0
 	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
-			if( (!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
+			if((!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 				SS.overtime_count++
 				sleep(TICK_LAG)
 				continue
@@ -19,13 +19,17 @@ var/global/time_dialation = 0
 			SS.tick_rate = 0
 			log_subsystem(SS.name,"Shutting down.")
 			break
+		SS.last_run_duration = FLOOR(true_time() - start_time,0.01)
 		if(world_state >= STATE_RUNNING)
-			SS.last_run_duration = FLOOR(true_time() - start_time,0.01)
 			SS.total_run_duration += SS.last_run_duration
-		if(time_dialation && SS.use_time_dialation)
-			sleep(TICKS_TO_DECISECONDS(SS.tick_rate*time_dialation))
+
+		var/desired_delay = TICKS_TO_DECISECONDS(SS.tick_rate)
+		if(time_dialation > 1 && SS.use_time_dialation)
+			desired_delay *= time_dialation
+		if(desired_delay > 0)
+			sleep(desired_delay)
 		else
-			sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+			sleep(-1)
 
 /world/proc/subsystem_initialize(var/subsystem/SS)
 	//No background processing. Everything needs to run in order.
@@ -61,7 +65,7 @@ var/global/time_dialation = 0
 		S = new subsystem
 		active_subsystems += S
 
-	sortMerge(active_subsystems, /proc/cmp_subsystem_priority)
+	sort_tim(active_subsystems, /proc/cmp_subsystem_priority)
 
 	log_subsystem("Subsystem Controller","Created and sorted [length(active_subsystems)] subsystems sorted.")
 
@@ -72,6 +76,7 @@ var/global/time_dialation = 0
 		subsystem_initialize(SS)
 		if(!SS.preloop)
 			continue
+		sleep(3)
 		subsystem_life_loop(SS)
 
 	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
@@ -85,6 +90,7 @@ var/global/time_dialation = 0
 		var/subsystem/SS = k
 		if(SS.preloop)
 			continue
+		sleep(3)
 		subsystem_life_loop(SS)
 
 	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)

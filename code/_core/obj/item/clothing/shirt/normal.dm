@@ -29,6 +29,12 @@
 		"stripes" = COLOR_BLACK
 	)
 
+/obj/item/clothing/shirt/normal/striped/zombie_clown
+	polymorphs = list(
+		"shirt" = COLOR_WHITE,
+		"stripes" = COLOR_BLOOD
+	)
+
 /obj/item/clothing/shirt/normal/uniform
 	name = "uniformed shirt"
 	desc = "It's hip to be square"
@@ -42,6 +48,13 @@
 	polymorphs = list(
 		"shirt" = COLOR_NANOTRASEN,
 		"shoulders" = COLOR_WHITE
+	)
+
+
+/obj/item/clothing/shirt/normal/uniform/engineering
+	polymorphs = list(
+		"shirt" = COLOR_ENGINEERING,
+		"shoulders" = COLOR_VISIBLE_GREEN
 	)
 
 /obj/item/clothing/shirt/normal/uniform/science
@@ -94,6 +107,17 @@
 		"shoulders" = COLOR_BLACK
 	)
 
+/obj/item/clothing/shirt/normal/tee/cargo
+	polymorphs = list(
+		"shirt_tee" = COLOR_CARGO,
+		"shoulders" = COLOR_GOLD
+	)
+
+/obj/item/clothing/shirt/normal/tee/engineering/solarian
+	polymorphs = list(
+		"shirt_tee" = "#B59463",
+	)
+
 /obj/item/clothing/shirt/normal/tee/soccer/ref
 	polymorphs = list(
 		"shirt_tee" = COLOR_YELLOW,
@@ -111,16 +135,6 @@
 	desc_extended = "An old outdated variant of the security shirt."
 	polymorphs = list(
 		"shirt" = COLOR_CRIMSON,
-	)
-
-
-/obj/item/clothing/shirt/normal/engineering
-	name = "engineering shirt"
-	desc = "Offensively bright."
-	desc_extended = "A shirt with reflective stripes, so in case of an accident, the engineer's corpse will be easily found."
-	polymorphs = list(
-		"shirt" = COLOR_ENGINEERING,
-		"shoulders" = COLOR_VISIBLE_GREEN
 	)
 
 /obj/item/clothing/shirt/normal/medical
@@ -193,4 +207,11 @@
 	polymorphs = list(
 		"shirt_tee" = "#62869E"
 	)
+
+/obj/item/clothing/shirt/normal/reinforced/mining
+	polymorphs = list(
+		"shirt" = "#717261",
+		"shoulders" = COLOR_MINING
+	)
+
 

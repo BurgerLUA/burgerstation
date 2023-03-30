@@ -17,8 +17,6 @@
 
 		/obj/item/clothing/belt/storage/colored/black,
 
-		/obj/item/weapon/ranged/energy/sniper,
-
 		/obj/item/weapon/ranged/bullet/magazine/pistol/deagle,
 		/obj/item/magazine/pistol_50/heartbreaker,
 		/obj/item/magazine/pistol_50/heartbreaker,

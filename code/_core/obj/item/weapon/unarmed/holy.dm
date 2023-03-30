@@ -12,6 +12,8 @@ obj/item/weapon/unarmed/holy
 
 	value = 1000
 
+	rarity = RARITY_RARE
+
 obj/item/weapon/unarmed/holy/update_icon()
 
 	. = ..()
@@ -37,3 +39,5 @@ obj/item/weapon/unarmed/holy/spiked
 	weight = 5
 
 	value = 1000
+
+	rarity = RARITY_RARE

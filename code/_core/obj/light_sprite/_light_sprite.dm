@@ -4,7 +4,7 @@
 	icon = 'icons/obj/light_sprite_new.dmi'
 	icon_state = "radial"
 	plane = PLANE_LIGHTING
-	layer = 999
+	layer = LAYER_LIGHTING_DYNAMIC
 	//blend_mode = BLEND_ADD
 
 	appearance_flags = LONG_GLIDE | TILE_BOUND
@@ -20,7 +20,9 @@
 	owner = null
 	return ..()
 
-/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE) //Override default.
+/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE) //Override default
+	if(!desired_dir)
+		return null
 	if(icon_state == "cone" && is_living(top_atom))
 		var/mob/living/L = top_atom
 		if(L.intent == INTENT_HARM && (L.client || L.ai?.objective_attack))

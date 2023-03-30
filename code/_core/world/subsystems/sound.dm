@@ -138,7 +138,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]
 		M.client << created_sound
 
-proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
+proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/looping=FALSE)
 
 	stop_music_track(hearer)
 
@@ -161,6 +161,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 	created_sound.status = 0
 	created_sound.volume = volume * (volume_mod/100)
 	created_sound.status = SOUND_STREAM
+	created_sound.repeat = looping
 
 	hearer << created_sound
 	hearer.current_music_track = music_track_id
@@ -324,9 +325,11 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=25)
 
 /proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
+	if(volume <= 0 || range_max <= 0)
+		return FALSE
+
 	var/sound/created_sound = setup_sound(sound_path)
-	if(!created_sound || volume <= 0)
-		//log_error("Warning: Invalid sound: [sound_path]!")
+	if(!created_sound)
 		return FALSE
 	if(!source_turf)
 		log_error("Warning: play_sound passed source_turf as null for sound [sound_path]!")

@@ -16,8 +16,8 @@
 
 	var/obj/structure/interactive/crate/chest/associated_chest
 
-	plane = PLANE_HUD - 1
-	layer = 0
+	plane = PLANE_HUD
+	layer = LAYER_HUD + 100
 
 	var/frozen = FALSE
 
@@ -43,7 +43,7 @@
 		linked_lock.icon = initial(icon)
 		linked_lock.icon_state = "lock"
 		linked_lock.plane = plane
-		linked_lock.layer = 1
+		linked_lock.layer = layer+1
 		linked_lock.mouse_opacity = 0
 		vis_contents += linked_lock
 
@@ -51,7 +51,7 @@
 		linked_pick.icon = initial(icon)
 		linked_pick.icon_state = "pick"
 		linked_pick.plane = plane
-		linked_pick.layer = 2
+		linked_pick.layer = layer+2
 		linked_pick.mouse_opacity = 0
 		linked_pick.pixel_y = 20
 		vis_contents += linked_pick
@@ -60,7 +60,7 @@
 		linked_wedge.icon = initial(icon)
 		linked_wedge.icon_state = "wedge"
 		linked_wedge.plane = plane
-		linked_wedge.layer = 3
+		linked_wedge.layer = layer+3
 		linked_wedge.mouse_opacity = 0
 		vis_contents += linked_wedge
 

@@ -155,7 +155,7 @@
 				src.force_move(path_ending)
 				for(var/obj/structure/interactive/door/D in range(src,1))
 					if(D.door_state == DOOR_STATE_BROKEN)
-						D.on_destruction(src,TRUE)
+						D.on_destruction()
 					else if(D.door_state != DOOR_STATE_OPENED)
 						D.open()
 			else

@@ -27,8 +27,7 @@ obj/structure/scenery/merchant_roof
 	name = "merchant roof"
 	icon = 'icons/obj/structure/merchant.dmi'
 	icon_state = "merchant"
-	layer = 100
-	layer = LAYER_LARGE_OBJ
+	layer = LAYER_MOB_FLYING - 0.1
 	pixel_z = 6
 
 

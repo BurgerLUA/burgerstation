@@ -10,5 +10,6 @@
 	icon_state = "splatter_[rand(1,12)]"
 	color = desired_color
 	alpha = 0
-	animate(src,pixel_x=rand(-8,8),pixel_y=rand(-8,8),alpha=initial(alpha),time=duration)
+	animate(src,pixel_x=rand(-8,8),pixel_y=rand(-8,8),alpha=initial(alpha),time=duration*0.75)
+	animate(alpha=0,time=duration*0.25)
 	return ..()

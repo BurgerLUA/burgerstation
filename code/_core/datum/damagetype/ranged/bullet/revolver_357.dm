@@ -1,6 +1,6 @@
 /damagetype/ranged/bullet/revolver_357
 	attack_damage_base = list(
-		BLUNT = 40
+		BLUNT = 50
 	)
 	attack_damage_penetration = list(
 		BLUNT = 25
@@ -12,12 +12,12 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/revolver_357/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/revolver_38
 	attack_damage_base = list(
-		BLUNT = 30,
+		BLUNT = 40,
 	)
 	attack_damage_penetration = list(
 		BLUNT = 20,

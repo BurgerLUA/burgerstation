@@ -10,13 +10,13 @@
 
 	tier = 3
 
-	shoot_delay = 2
+	shoot_delay = 2.6
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/revolver_heavy/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/44/shoot.ogg')
 
 	size = SIZE_2
 	weight = 9
@@ -65,11 +65,11 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 15 - 16
 
-
-
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.08
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/revolver/commander/get_static_spread()
 	return 0

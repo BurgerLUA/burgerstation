@@ -15,26 +15,36 @@
 
 	overall_clothing_defense_rating = list()
 
-	for(var/k in held_objects + worn_objects)
+	for(var/k in held_objects)
 		var/obj/item/I = k
 		total_weight += I.weight
-		if(is_clothing(I))
-			var/obj/item/clothing/C = I
-			var/obj/hud/inventory/INV = C.loc
-			if(INV.worn)
-				move_delay_multiplier -= C.speed_bonus
-				if(C.hidden_organs && !(C.enable_torn_overlay && C.get_damage_icon_number() > 0))
-					hidden_organs |= C.hidden_organs
-					blocking_clothing[C] = TRUE
-				if(C.armor)
-					var/armor/A = ARMOR(C.armor)
-					if(A)
-						for(var/d_type in A.defense_rating)
-							if(IS_INFINITY(A.defense_rating[d_type]))
-								continue
-							if(IS_INFINITY(overall_clothing_defense_rating[d_type]))
-								continue
-							overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]
+
+
+	for(var/k in worn_objects)
+		var/obj/item/I = k
+		total_weight += I.weight
+		if(!is_clothing(I))
+			continue
+		var/obj/item/clothing/C = I
+		var/obj/hud/inventory/INV = C.loc
+		if(!INV || !INV.worn)
+			continue
+		move_delay_multiplier -= C.speed_bonus
+		if(C.hidden_organs && !(C.enable_torn_overlay && C.get_damage_icon_number() > 0))
+			hidden_organs |= C.hidden_organs
+			blocking_clothing[C] = TRUE
+		if(!C.armor)
+			continue
+		var/armor/A = ARMOR(C.armor)
+		if(!A)
+			continue
+		for(var/d_type in A.defense_rating)
+			if(IS_INFINITY(A.defense_rating[d_type]))
+				overall_clothing_defense_rating[d_type] = INFINITY
+				continue
+			if(IS_INFINITY(overall_clothing_defense_rating[d_type]))
+				continue
+			overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]
 
 	move_delay_multiplier *= 1 + (total_weight/max_weight)
 	move_delay_multiplier = FLOOR(max(0.25,move_delay_multiplier),0.01)
@@ -47,12 +57,11 @@
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
 			show_overlay(k, !hidden_organs[OR.id] ? TRUE : FALSE)
-		else
-			var/atom/movable/M = I
-			if(!M.loc || !is_organ(M.loc.loc))
-				continue
-			var/obj/item/organ/OR = M.loc.loc
-			show_overlay(k, (blocking_clothing[M] || !hidden_organs[OR.id]) ? TRUE : FALSE)
+			continue
+		if(!I.loc || !is_organ(I.loc.loc))
+			continue
+		var/obj/item/organ/OR = I.loc.loc
+		show_overlay(k, (blocking_clothing[I] || !hidden_organs[OR.id]) ? TRUE : FALSE)
 
 	return TRUE
 

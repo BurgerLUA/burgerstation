@@ -1,3 +1,55 @@
+/obj/item/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(is_container)
+		var/turf/found_turf
+		if(is_turf(object))
+			found_turf = object
+		else if(is_turf(object.loc))
+			if(is_item(object))
+				if(..() || object.clicked_on_by_object(caller,src,location,control,params))
+					return TRUE
+			found_turf = object.loc
+		if(found_turf)
+			INTERACT_CHECK
+			INTERACT_DELAY(10)
+			var/result = FALSE
+			var/found_object = FALSE
+			for(var/obj/item/I in found_turf.contents)
+				found_object = TRUE
+				if(!src.add_to_inventory(caller,I,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
+					continue
+				result = TRUE
+			if(result)
+				caller.to_chat(span("notice","You shove everything you can into \the [src.name]."))
+			else
+				if(!found_object)
+					caller.to_chat(span("notice","There is nothing on \the [found_turf.name] to add to \the [src.name]."))
+				else
+					caller.to_chat(span("notice","You can't seem to fit anything on the [found_turf.name] to \the [src.name]."))
+			return TRUE
+
+	. = ..()
+
+/obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+
+	if(is_inventory(object) && additional_clothing_parent)
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(1)
+		src.drop_item(additional_clothing_parent,silent=TRUE)
+		return TRUE
+
+	if(is_container && is_item(object)) //We're a container being clicked on.
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		var/obj/item/I = object
+		if(src.add_to_inventory(caller,I))
+			INTERACT_DELAY(1)
+			return TRUE
+
+	. = ..()
+
+
 /obj/item/click_self(var/mob/caller,location,control,params)
 
 	if(!length(inventories))
@@ -100,24 +152,6 @@
 		I.mouse_opacity = 0
 
 	return TRUE
-
-/obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
-
-	if(is_inventory(object) && additional_clothing_parent)
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		INTERACT_DELAY(1)
-		drop_item(additional_clothing_parent,silent=TRUE)
-		return TRUE
-
-	if(is_container && is_item(object)) //We're a container being clicked on.
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		var/obj/item/I = object
-		src.add_to_inventory(caller,I) //Add that item in our hands to the container's inventory.
-		return TRUE
-
-	. = ..()
 
 /obj/item/drop_on_object(var/mob/caller,var/atom/object,location,control,params) //Src is dragged to object
 

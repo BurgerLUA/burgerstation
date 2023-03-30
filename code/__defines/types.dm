@@ -13,10 +13,6 @@ var/global/list/all_typecaches = list()
 	for(var/k in typesof(type_to_generate))
 		all_typecaches[type_to_generate][k] = TRUE
 
-
-
-
-
 #define is_datum(A) istype(A, /datum)
 #define is_atom(A) istype(A,/atom)
 
@@ -40,8 +36,11 @@ var/global/list/all_typecaches = list()
 
 #define is_clothing(A) istypecache(A,/obj/item/clothing)
 
+#define is_container(A) istypecache(A,/obj/item/container/)
 
 #define is_currency(A) istypecache(A,/obj/item/currency/)
+
+#define is_magazine(A) istypecache(A,/obj/item/magazine/)
 
 
 #define is_organ(A) istypecache(A,/obj/item/organ/)
@@ -68,5 +67,7 @@ var/global/list/all_typecaches = list()
 #define is_tile(A) istypecache(A,/turf/simulated/floor/tile)
 
 #define is_weapon(A) istypecache(A,/obj/item/weapon)
+
+#define is_ranged_weapon(A) istypecache(A,/obj/item/weapon/ranged)
 
 #define is_wand(A) istypecache(A,/obj/item/weapon/ranged/wand)

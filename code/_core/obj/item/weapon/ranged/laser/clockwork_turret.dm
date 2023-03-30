@@ -6,11 +6,11 @@
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 3
+	shoot_delay = 5
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/misc/clockwork_watcher_shot.ogg')
 
 	charge_cost = 1
 
@@ -21,7 +21,7 @@
 
 	size = SIZE_3
 
-	value = -1
+	value = 0
 
 	battery = /obj/item/powercell/recharging
 

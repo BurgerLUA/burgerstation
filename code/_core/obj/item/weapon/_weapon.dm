@@ -38,15 +38,27 @@
 
 	var/obj/item/spellswap/stored_spellswap
 
+	thrown_bounce_modifier = 0.25
+
+	var/upgrade_count = 0 //The amount of times this weapon has been upgraded. Maximum 6 times.
+
 /obj/item/weapon/Finalize()
 	. = ..()
-	if(tier == -1)
-		if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
-			tier = SSbalance.stored_tier[type]
+	if(SSbalance && SSbalance.initialized && isnum(SSbalance.stored_tier[type]))
+		if(tier_type && SSbalance.stored_tier_max[tier_type] && SSbalance.stored_tier_max[tier_type] < 6)
+			tier = (SSbalance.stored_tier[type] / SSbalance.stored_tier_max[tier_type]) * 6
 		else
-			tier = 1
+			tier = SSbalance.stored_tier[type]
 
 /obj/item/weapon/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(upgrade_count >= 1)
+		if(upgrade_count >= 2)
+			. += div("rarity legendary",repeat_text("★",upgrade_count-1))
+		else
+			. += div("rarity legendary","★")
+
+/obj/item/weapon/get_examine_details_list(var/mob/examiner)
 	. = ..()
 	if(enchantment)
 		. += div("notice","It is enchanted with <b>[enchantment.name] \Roman[enchantment.strength]</b>")
@@ -67,7 +79,10 @@
 	if(!SSbalance || !SSbalance.stored_value[src.type])
 		return ..()
 
-	return SSbalance.stored_value[src.type]
+	. = SSbalance.stored_value[src.type]
+
+	if(upgrade_count >= 1)
+		. *= 1 + upgrade_count * (upgrade_count-1) * 0.5
 
 /obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
 	return FALSE
@@ -101,7 +116,7 @@
 
 	return ..()
 
-/obj/item/weapon/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/weapon/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	wielded = FALSE
 	if(old_inventory.child_inventory)
 		old_inventory.child_inventory.parent_inventory = null
@@ -126,7 +141,7 @@
 		enchantment.charge += chargediff
 		G.total_charge -= chargediff
 		var/mob/living/L = caller
-		L.add_skill_xp(SKILL_MAGIC_ENCHANTING,chargediff*0.025)
+		L.add_skill_xp(SKILL_SUMMONING,chargediff*0.0025)
 		if(G.total_charge <= 0 && !G.do_not_consume)
 			caller.visible_message(span("notice","\The [caller.name] siphons some energy from \the [G.name] to recharge \the [src.name], consuming it!"),span("notice","You recharge the enchantment on \the [src.name] using the [G.name], consuming it!"))
 			qdel(G)
@@ -136,9 +151,10 @@
 
 	. = ..()
 
-/obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(length(polymorphs)) .["polymorphs"] = polymorphs
+	if(upgrade_count >= 1) .["upgrade_count"] = upgrade_count
 	if(enchantment)
 		.["enchantment"] = list()
 		.["enchantment"]["enchantment_type"] = enchantment.type
@@ -149,9 +165,10 @@
 	if(stored_spellswap)
 		SAVEATOM("stored_spellswap")
 
-/obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	if(object_data["polymorphs"]) polymorphs = object_data["polymorphs"]
+	if(object_data["upgrade_count"]) upgrade_count = object_data["upgrade_count"]
 	if(object_data["enchantment"] && object_data["enchantment"]["enchantment_type"])
 		var/possible_enchantment = text2path(object_data["enchantment"]["enchantment_type"])
 		if(possible_enchantment)

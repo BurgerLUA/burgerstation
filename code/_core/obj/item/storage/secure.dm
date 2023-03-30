@@ -22,6 +22,6 @@
 
 	dynamic_inventory_type = /obj/hud/inventory/dynamic/secure
 
-	inventory_category = "secure"
-
 	queue_delete_immune = TRUE
+
+	can_save_loadout = FALSE

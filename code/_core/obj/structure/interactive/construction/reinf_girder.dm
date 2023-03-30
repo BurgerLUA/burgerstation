@@ -27,17 +27,16 @@
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
 		return FALSE
 	return TRUE
+
 /obj/structure/interactive/construction/reinf_girder/proc/construct_reinf_wall(var/mob/caller,var/obj/item/material/sheet/S)
 	var/turf/T = src.loc
-	T.change_turf(/turf/simulated/wall/metal/reinforced/constructed)
-	var/turf/simulated/wall/metal/reinforced/constructed/nT = T
-	nT.recalc(material_id)
+	T.change_turf(/turf/simulated/wall/metal/reinforced)
 	caller?.visible_message(span("notice","\The [caller.name] places \the [T.name]."),span("notice","You place \the [T.name]."))
 	S.add_item_count(-1)
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/reinf_girder/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/construction/reinf_girder/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)
@@ -59,7 +58,7 @@ obj/structure/interactive/construction/reinf_girder/clicked_on_by_object(var/mob
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(caller)
+			src.on_destruction(FALSE)
 			return TRUE
 	if(istype(object,/obj/item/material/sheet/))
 		INTERACT_CHECK

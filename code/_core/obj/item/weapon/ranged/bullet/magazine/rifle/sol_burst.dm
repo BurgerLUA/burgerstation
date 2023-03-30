@@ -11,7 +11,7 @@
 	tier = 2
 
 	shoot_delay = 1
-	burst_delay = 4
+	burst_delay = 5
 	max_bursts = 3
 
 	damage_mod = 1.3
@@ -20,7 +20,7 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/308/shoot_fat.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/sol_burst/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -81,6 +81,8 @@
 	movement_spread_base = 0.01
 
 	dan_mode = TRUE
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst/get_static_spread()
 	return 0.005

@@ -185,6 +185,10 @@
 	icon_state = "sink";
 	dir = 4
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/tile/coldroom,
 /area/mission/prefab/house/house_01/bathroom_01)
 "aM" = (
@@ -206,6 +210,10 @@
 	icon_state = "sink";
 	dir = 4
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/tile/coldroom,
 /area/mission/prefab/house/house_01/bathroom_02)
 "aP" = (
@@ -220,6 +228,10 @@
 	dir = 4
 	},
 /obj/structure/interactive/storage/ammo_pile,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/girls_bedroom)
 "aR" = (
@@ -369,7 +381,7 @@
 "bs" = (
 /obj/structure/carpet/blue,
 /obj/marker/map_node,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -455,7 +467,7 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/house/house_01)
 "bJ" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -482,10 +494,12 @@
 /area/mission/prefab/house/house_01/girls_bedroom)
 "bN" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/girls_bedroom)
 "bO" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/boys_bedroom)
 "bP" = (
@@ -533,7 +547,7 @@
 /area/mission/prefab/house/house_01)
 "bW" = (
 /obj/marker/map_node,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -568,6 +582,10 @@
 /area/mission/prefab/house/house_01/master_bedroom)
 "cc" = (
 /obj/marker/map_node,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01)
 "cd" = (
@@ -575,6 +593,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/marker/cover_node/right,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/entrance)
 "ce" = (
@@ -590,7 +609,7 @@
 /area/mission/prefab/house/house_01/master_bedroom)
 "cg" = (
 /obj/structure/carpet/brown,
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/master_bedroom)
 "ch" = (
@@ -611,7 +630,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/entrance)
 "ck" = (
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/hallway)
 "cl" = (
@@ -621,6 +640,10 @@
 	dir = 8
 	},
 /obj/marker/map_node,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01)
 "cm" = (
@@ -636,6 +659,27 @@
 "co" = (
 /obj/marker/spawning/window,
 /obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_01/master_bedroom)
+"cp" = (
+/obj/structure/carpet/brown,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_01/master_bedroom)
+"cq" = (
+/obj/structure/carpet/brown,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_01/master_bedroom)
+"cr" = (
+/obj/structure/carpet/brown,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_01/master_bedroom)
 
@@ -880,7 +924,7 @@ aJ
 cg
 aJ
 aJ
-aJ
+cr
 bo
 bR
 bq
@@ -896,9 +940,9 @@ ac
 ac
 aC
 aR
+cp
 aJ
-aJ
-aJ
+cq
 cf
 ac
 ba

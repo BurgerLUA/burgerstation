@@ -13,7 +13,7 @@
 
 	quality = 100
 
-	value = 0
+	value = 1 //Dummy value.
 
 	color = "#FFFFFF"
 	var/color_2 = "#FFFFFF"

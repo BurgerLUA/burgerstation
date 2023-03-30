@@ -11,18 +11,16 @@
 	tier = 3
 
 	damage_mod = 2
-	shoot_delay = 1
+	shoot_delay = 3
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/fists/claw_flesh_01.ogg',
-		'sound/effects/demon_attack1.ogg',
-		'sound/weapons/fists/claw_flesh_02.ogg',
-		'sound/weapons/magic/fireball.ogg',
-		'sound/weapons/fists/claw_flesh_03.ogg'
-
+	shoot_sounds = list(
+		'sound/weapons/unarmed/claw_flesh_01.ogg',
+		'sound/weapons/unarmed/claw_flesh_02.ogg',
+		'sound/weapons/unarmed/claw_flesh_03.ogg'
 	)
 
 	size = SIZE_1
@@ -76,13 +74,13 @@
 	attachment_undermount_offset_x = 14 - 16
 	attachment_undermount_offset_y = 18 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/ranged/bullet/revolver/fiendish/get_static_spread()
 	return 0
@@ -90,7 +88,7 @@
 /obj/item/weapon/ranged/bullet/revolver/fiendish/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/revolver/fiendish/click_self(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/fiendish/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

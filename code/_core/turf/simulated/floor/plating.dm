@@ -15,10 +15,16 @@
 	desc = "The plating underneath the floor"
 	desc_extended = "A floor found underneath an actual floor."
 
+	health_base = 1000
+
 /turf/simulated/floor/plating/reinforced
 	name = "reinforced plating"
 	icon_state = "filled3"
 	exposed = FALSE
+
+	destruction_turf = /turf/simulated/floor/plating
+
+	health_base = 1000
 
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"
@@ -32,15 +38,22 @@
 	plane = PLANE_SHUTTLE
 	color = COLOR_STEEL
 
+	destruction_turf = /turf/simulated/floor/plating
+
 
 /turf/simulated/floor/plating/syndicate
 	name = "dark steel floor plating"
 	color = COLOR_STEEL_DARK
 
-/turf/simulated/floor/plating/syndicate/is_safe_move(check_contents)
+/turf/simulated/floor/plating/syndicate/can_move_to(check_contents)
 	for(var/obj/structure/interactive/door/vault/syndicate/S in src.contents) // Ghetto anti-heiro staff
 		return FALSE
 	. = ..()
+
+/turf/simulated/floor/plating/solarian
+	name = "solarian steel floor plating"
+	color = "#66706C"
+
 
 
 /turf/simulated/floor/plating/rev

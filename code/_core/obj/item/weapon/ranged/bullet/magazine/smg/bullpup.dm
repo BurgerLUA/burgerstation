@@ -8,20 +8,18 @@
 
 	tier = 2
 
-	shoot_delay = 1.5
+	shoot_delay = 1.2
 
 	company_type = "Syndicate"
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/bullpup/shoot.ogg')
 
 	firemodes = list("automatic","burst","semi-automatic")
 
 	dan_mode = TRUE
 	can_wield = TRUE
-
-	override_icon_state = TRUE
 
 	size = SIZE_3
 	weight = 10
@@ -37,8 +35,6 @@
 	bullet_diameter_max = 12
 
 	ai_heat_sensitivity = 0.75
-
-	shoot_alert = ALERT_LEVEL_NONE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = TRUE,
@@ -64,31 +60,50 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 30 - 16
-	attachment_barrel_offset_y = 17 - 16
+	attachment_barrel_offset_x = 29 - 16
+	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 23 - 16
+	attachment_sight_offset_x = 22 - 16
 	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 28 - 16
-	attachment_undermount_offset_y = 15 - 16
+	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_y = 16 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_static_spread()
-	return 0.01
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bullpup/get_skill_spread(var/mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/equipped/Generate()
 
-	. = ..()
 
-	var/obj/item/attachment/sight/red_dot/RD = new(src)
-	attachment_sight = RD
+/obj/item/weapon/ranged/bullet/magazine/smg/bullpup/mod
 
-	var/obj/item/attachment/barrel/suppressor/SS = new(src)
-	attachment_barrel = SS
+	name = ".45 C-20r MOD"
+
+	icon = 'icons/obj/item/weapons/ranged/smg/syndicate/45_mod.dmi'
+
+	tier = 3
+
+	shoot_delay = 1
+
+	weight = 8
+
+	heat_max = 0.07
+
+	attachment_barrel_offset_x = 28 - 16
+	attachment_barrel_offset_y = 18 - 16
+
+	attachment_sight_offset_x = 21 - 16
+	attachment_sight_offset_y = 20 - 16
+
+	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_y = 16 - 16
+
+	rarity = RARITY_RARE

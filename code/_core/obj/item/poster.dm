@@ -11,12 +11,12 @@
 	if(!stored_poster)
 		stored_poster = pick(SSposter.all_posters)
 
-/obj/item/poster/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/poster/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEPATH("stored_poster")
 
-/obj/item/poster/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/poster/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADPATH("stored_poster")
 
 /obj/item/poster/Finalize()

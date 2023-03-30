@@ -74,11 +74,155 @@
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/mission/prefab/house/house_D03/hallway)
+"ao" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/marker/cover_node{
+	icon_state = "both";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"ap" = (
+/obj/marker/cover_node{
+	icon_state = "both";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"aq" = (
+/obj/structure/interactive/door/airlock/station,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D03/sec)
+"ar" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"as" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1
+	},
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"at" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"au" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"av" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"aw" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"ax" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"ay" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"az" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"aA" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"aB" = (
+/obj/structure/interactive/bed/sheet,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
+/mob/living/advanced/npc/bandit{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/science)
+"aC" = (
+/obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/science)
+"aD" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/mob/living/advanced/npc/bandit{
+	icon_state = "directional";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D03/hallway)
+"aE" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/tile/grey/ish,
+/area/mission/prefab/house/house_D03/command)
 "aF" = (
 /obj/structure/table/wood,
 /obj/marker/spawning/random/food,
 /turf/simulated/floor/tile/grey,
 /area/mission/prefab/house/house_D03/command)
+"aG" = (
+/obj/structure/interactive/door/airlock/station,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/tile,
+/area/mission/prefab/house/house_D03/bathroom)
+"aH" = (
+/obj/structure/interactive/wire/red,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D03/hallway)
+"aI" = (
+/obj/structure/interactive/door/airlock/station/maintenance,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D03/hallway)
 "aQ" = (
 /obj/structure/table/wood,
 /obj/marker/spawning/random/misc,
@@ -104,10 +248,6 @@
 "dX" = (
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_D03/science)
-"eC" = (
-/obj/structure/interactive/door/airlock/station,
-/turf/simulated/floor/plating,
-/area/mission/prefab/house/house_D03/sec)
 "fx" = (
 /obj/structure/table/reinforced/steel,
 /obj/marker/spawning/random/kitchen,
@@ -117,10 +257,6 @@
 /obj/structure/interactive/bed/sheet,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D03/science)
-"hk" = (
-/obj/structure/interactive/door/airlock/station,
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_D03/bathroom)
 "jc" = (
 /obj/structure/interactive/potted_plant/office,
 /turf/simulated/floor/wood/brown,
@@ -169,7 +305,7 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/house/house_D03/hallway)
 "qQ" = (
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D03/sec)
 "rq" = (
@@ -186,29 +322,18 @@
 /obj/marker/spawning/window,
 /turf/simulated/floor/plating,
 /area/mission/prefab/house/house_D03/sec)
-"su" = (
-/obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
-/area/mission/prefab/house/house_D03/hallway)
 "sH" = (
 /obj/structure/interactive/potted_plant/office,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D03/science)
 "tv" = (
 /obj/marker/map_node,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 1
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D03/command)
-"tO" = (
-/mob/living/advanced/npc/survivor{
-	icon_state = "directional";
-	dir = 1
-	},
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D03/hallway)
 "uJ" = (
 /obj/structure/interactive/potted_plant/office,
 /turf/simulated/floor/tile/chapel/decor{
@@ -261,23 +386,11 @@
 	},
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D03)
-"AG" = (
-/obj/structure/interactive/potted_plant/office,
-/turf/simulated/floor/tile/grey/ish,
-/area/mission/prefab/house/house_D03/command)
 "AN" = (
 /obj/structure/interactive/crate/closet/freezer,
 /obj/marker/spawning/random/food,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D03/command)
-"AP" = (
-/obj/structure/interactive/bed/sheet,
-/mob/living/advanced/npc/survivor{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D03/science)
 "BJ" = (
 /obj/structure/interactive/lighting/fixture/bulb,
 /turf/simulated/floor/wood/brown,
@@ -292,10 +405,6 @@
 /obj/structure/interactive/wire/red,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D03)
-"Dr" = (
-/obj/structure/interactive/door/airlock/wood,
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D03/science)
 "DK" = (
 /obj/structure/interactive/wire/red,
 /turf/simulated/wall/wood/brown,
@@ -458,13 +567,6 @@
 /obj/marker/spawning/random/trash,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D03/hallway)
-"VQ" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D03/hallway)
 "WH" = (
 /obj/structure/interactive/wire/yellow,
 /turf/simulated/floor/plating,
@@ -511,10 +613,10 @@ br
 br
 TS
 jc
-VQ
+ao
 HZ
 HZ
-pW
+ap
 pW
 VI
 Ph
@@ -526,14 +628,14 @@ Lh
 HD
 br
 lU
-hk
+aG
+HZ
+at
+pW
+pW
 HZ
 pW
-pW
-pW
-HZ
-pW
-pW
+az
 HZ
 am
 Lh
@@ -545,14 +647,14 @@ Fd
 br
 xy
 br
-pW
+aw
 Sr
 Su
 Lz
 JQ
 Sr
 Sr
-pW
+av
 Ph
 op
 Xr
@@ -579,7 +681,7 @@ NJ
 (6,1,1) = {"
 Fd
 si
-eC
+aq
 Fd
 pW
 Lz
@@ -589,7 +691,7 @@ VD
 ah
 Sr
 HZ
-tO
+aD
 af
 Nv
 NJ
@@ -624,7 +726,7 @@ SO
 HA
 lW
 Sr
-pW
+ar
 Fm
 Pc
 JE
@@ -640,7 +742,7 @@ Lz
 vz
 ad
 ae
-AG
+aE
 Sr
 pW
 oY
@@ -653,14 +755,14 @@ Fd
 Fd
 Fd
 Fd
-pW
+ar
 Sr
 Sr
 Lz
 JQ
 Sr
 Sr
-pW
+ax
 oY
 GQ
 Gb
@@ -670,15 +772,15 @@ NJ
 HD
 TS
 ab
-su
+aI
 HZ
-pW
-pW
-pW
-HZ
-pW
+ay
+az
 pW
 HZ
+at
+au
+aA
 ng
 An
 Ak
@@ -687,7 +789,7 @@ NJ
 (12,1,1) = {"
 HD
 TS
-EL
+aH
 vG
 Zv
 Zv
@@ -711,9 +813,9 @@ aj
 uJ
 Zx
 pW
-YF
+as
 dX
-AP
+aB
 aQ
 Qd
 aQ
@@ -730,7 +832,7 @@ rq
 Zx
 pW
 HZ
-Dr
+aC
 RD
 RD
 vv
@@ -747,7 +849,7 @@ ak
 ac
 Hg
 HZ
-HZ
+aA
 dX
 On
 sH

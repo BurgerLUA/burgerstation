@@ -17,7 +17,7 @@
 
 	var/open = TRUE
 
-	value = 15
+	value = 0
 
 	queue_delete_immune = TRUE
 
@@ -28,6 +28,8 @@
 	has_quick_function = TRUE
 
 	rarity = RARITY_UNCOMMON
+
+	thrown_bounce_modifier = 1
 
 /obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
@@ -86,15 +88,15 @@
 
 	return TRUE
 
-/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/grenade/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("open")
 	SAVEVAR("spent")
 	SAVEATOM("stored_trigger")
 	SAVELISTATOM("stored_containers")
 
-/obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/grenade/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("open")
 	LOADVAR("spent")
 	LOADATOM("stored_trigger")
@@ -171,7 +173,7 @@
 
 	return ..()
 
-/obj/item/grenade/click_self(var/mob/caller)
+/obj/item/grenade/click_self(var/mob/caller,location,control,params)
 
 	if(spent)
 		return ..()
@@ -276,13 +278,13 @@
 		P.on_projectile_hit(T)
 		qdel(P)
 
+	if(src.z && SSai.tracked_avoidance_by_z["[src.z]"])
+		SSai.tracked_avoidance_by_z["[src.z]"] -= src
+
 	for(var/k in stored_containers)
 		var/obj/item/container/simple/beaker/B = k
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
 		B.reagents.update_container(caller)
-
-	if(src.z && SSai.tracked_avoidance_by_z["[src.z]"])
-		SSai.tracked_avoidance_by_z["[src.z]"] -= src
 
 	spent = TRUE
 
@@ -293,50 +295,3 @@
 	update_sprite()
 
 	. = ..()
-
-/obj/item/grenade/timed/Generate()
-	var/obj/item/device/timer/T = new(src)
-	T.time_set = 30
-	stored_trigger = T
-	open = FALSE
-	return ..()
-
-/obj/item/grenade/timed/explosive
-	name = "timed explosive grenade"
-	desc = "Kaboom!"
-	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/explosive/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/water(src)
-	stored_containers += new /obj/item/container/simple/beaker/potassium(src)
-	return ..()
-
-/obj/item/grenade/timed/explosive_large
-	name = "timed large explosive grenade"
-	desc = "Kaboom!"
-	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds. This one has a larger payload."
-
-/obj/item/grenade/timed/explosive_large/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/large/water(src)
-	stored_containers += new /obj/item/container/simple/beaker/large/potassium(src)
-	return ..()
-
-/obj/item/grenade/timed/smoke/
-	name = "timed smoke grenade"
-	desc = "Kaboomish!"
-	desc_extended = "A prebuilt timed smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/smoke/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/smoke_01(src)
-	stored_containers += new /obj/item/container/simple/beaker/smoke_02(src)
-	return ..()
-
-/obj/item/grenade/timed/lube_smoke
-	name = "timed lube smoke grenade"
-	desc = "Kaboomish!"
-	desc_extended = "A prebuilt timed lube smoke grenade. The labeling indicates that the fuse is set to 3 seconds."
-
-/obj/item/grenade/timed/lube_smoke/Generate()
-	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_01(src)
-	stored_containers += new /obj/item/container/simple/beaker/large/lube_smoke_02(src)
-	return ..()

@@ -1,17 +1,22 @@
-/obj/item/paper/book/cargo_catalog/Initialize()
-	. = ..()
+/obj/item/paper/book/cargo_catalog/
 	name = "reference: Cargo Catalog Vol 1"
 	desc = "FIRE SALE ON TOOTHPASTE? FINALLY"
 	icon_state = "battlemonsters"
 	desc_extended = "A catalog featuring the many items you can buy from cargo."
+
+
+/obj/item/paper/book/cargo_catalog/Initialize()
+	. = ..()
 	data = SScargo.catalog_data.Copy()
 
-/obj/item/paper/book/chemistry/Initialize()
-	. = ..()
+/obj/item/paper/book/chemistry/
 	name = "reference: Chemistry"
 	desc = "Winners don't drugs! Besides meth."
 	icon_state = "chemistry"
 	desc_extended = "A catalog featuring all the medical recipes known to man."
+
+/obj/item/paper/book/chemistry/Initialize()
+	. = ..()
 	data = SSreagent.stored_book_data["Chemistry"].Copy()
 
 /*

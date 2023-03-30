@@ -16,7 +16,8 @@ SUBSYSTEM_DEF(healthupdate)
 		var/mob/living/L = k
 		L.queue_health_update = FALSE
 		src.queued_mobs -= k
-		if(L.health && !L.health.qdeleting) L.health.update_health()
+		if(L.health && !L.health.qdeleting)
+			L.health.update_health()
 		if(L.queue_health_update)
 			log_error("WARNING: [L.get_debug_name()] was added to the health update subsystem twice after being processed!")
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)

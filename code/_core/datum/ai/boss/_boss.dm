@@ -1,5 +1,11 @@
 /ai/boss/
 
+	aggression = 2
+	assistance = 1
+	cowardice = -1
+	retaliate = TRUE
+	resist_grabs = 2
+
 	objective_delay = DECISECONDS_TO_TICKS(10)
 
 	true_sight = TRUE
@@ -18,3 +24,5 @@
 	boss = TRUE
 
 	guard = TRUE
+
+	use_blood_sight = FALSE

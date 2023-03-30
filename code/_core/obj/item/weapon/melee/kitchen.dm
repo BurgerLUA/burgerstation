@@ -14,6 +14,8 @@
 
 	value = 200
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/melee/sword/butcher_cleaver
 	name = "butcher's cleaver"
 	desc = "What every burcher needs."
@@ -29,6 +31,8 @@
 	dan_mode = FALSE
 
 	value = 800
+
+	rarity = RARITY_UNCOMMON
 
 
 /obj/item/weapon/melee/sword/fork
@@ -47,6 +51,8 @@
 
 	value = 5
 
+	rarity = RARITY_COMMON
+
 
 /obj/item/weapon/melee/sword/spoon
 	name = "spoon"
@@ -63,3 +69,5 @@
 	dan_mode = FALSE
 
 	value = 5
+
+	rarity = RARITY_COMMON

@@ -14,7 +14,7 @@
 	anchored = TRUE
 	density = TRUE
 
-	level = 400
+	level = 666
 
 	var/obj/structure/interactive/vending/stored_vendor = /obj/structure/interactive/vending/contract
 

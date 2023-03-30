@@ -1,22 +1,24 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced
-	name = "\improper 7.62mm SOL-15 Battle Rifle"
+	name = "\improper 7.62mm SOL-15 battle rifle"
 	desc = "HOORAH!."
-	desc_extended = "The SOL-15 is an upgraded version of the SOL-14 rifle. This one features automatic fire capabilities and better recoil dampening."
+	desc_extended = "An old rifle previously used by NanoTrasen when they were contractors of the SolGov army. The SOL-15 is an upgraded version of the SOL-14 rifle. This one features automatic fire capabilities and better recoil dampening."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_3.dmi'
 	icon_state = "inventory"
 	value = 3500
 
-	company_type = "Solarian"
+	company_type = "NanoTrasen"
 
 	tier = 2
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_delay = 3
+	damage_mod = 1.3
+
+	shoot_delay = 3.8
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/308/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/service_rifle/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -71,16 +73,16 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-
-
-	dan_mode = TRUE
-
 	movement_spread_base = 0.02
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
+
+	dan_mode = TRUE
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced/get_static_spread()
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/advanced/get_skill_spread(var/mob/living/L)
-	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.04 * L.get_skill_power(SKILL_RANGED)))

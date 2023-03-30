@@ -31,6 +31,13 @@
 #define FLAG_CLOTHING_NOBEAST_HEAD 0x2
 #define FLAG_CLOTHING_NOBEAST_WINGS 0x4
 
+#define RARITY_BROKEN "broken"
+#define RARITY_COMMON "common"
+#define RARITY_UNCOMMON "uncommon"
+#define RARITY_RARE "rare"
+#define RARITY_MYTHICAL "mythical"
+#define RARITY_LEGENDARY "legendary"
+
 var/global/list/rarity_to_number = list(
 	RARITY_BROKEN = 1,
 	RARITY_COMMON = 2,
@@ -39,13 +46,6 @@ var/global/list/rarity_to_number = list(
 	RARITY_MYTHICAL = 5,
 	RARITY_LEGENDARY = 6
 )
-
-#define RARITY_BROKEN "broken"
-#define RARITY_COMMON "common"
-#define RARITY_UNCOMMON "uncommon"
-#define RARITY_RARE "rare"
-#define RARITY_MYTHICAL "mythical"
-#define RARITY_LEGENDARY "legendary"
 
 #define SLOT_NONE         (1<<0)
 #define SLOT_TORSO        (1<<1)

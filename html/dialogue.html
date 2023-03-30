@@ -41,7 +41,7 @@
 			}
 			#topics {
 				width: 100%;
-				height: 220px;
+				height: 100%;
 				overflow-y: scroll;
 				font-size: 18px;
 			}
@@ -113,7 +113,7 @@
 			global_reference = reference
 		}
 
-		function add_topic(text,update) {
+		function add_table_of_contents(text) {
 			
 			var found = false
 			var i
@@ -128,44 +128,34 @@
 				global_stored_topics[global_stored_topics.length] = text
 			}
 
-			if(update) {
-				update_topics()
-			}
-		}
-		
-		function update_topics() {
-			var returning = ""
-			var existing_topics = [];
-			
-			var i
-			for(i=0; i < global_stored_topics.length; i++) {
-				var chosen_topic = global_stored_topics[i]
-				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ chosen_topic +"'>" + chosen_topic.replace("*","") + "</a>"
-				returning = returning + formatted_link + "<br>"
-			}
-			document.getElementById("topics").innerHTML = returning
 		}
 
-		function convert_data(text) {
-			var tabledata = text.split("_");
-			var topic_name = tabledata[0]
+		function set_topic(text) {
+			var tabledata = text.split("_")
 			var dialogue = tabledata[1]
-	
-			if(dialogue) {
-				dialogue = dialogue.replace(/NEWLINE/g, "<br>")
-			}
-			
 			var i
+			var topics_html = ""
+
+			dialogue = dialogue.replace(/NEWLINE/g, "<br>")
+			
+			//Actually setting the dialogue box.
 			for(i=2; i < tabledata.length; i++) {
-				var formatted_link = "<a href='byond://?src="+global_reference+";topic="+ tabledata[i] +"'>" + tabledata[i].replace("*","") + "</a>"
-				add_topic(tabledata[i])
+				var formatted_link = "<a href=\"byond://?src="+global_reference+";topic="+encodeURIComponent(tabledata[i])+"\">" + tabledata[i].replace("*","") + "</a>"
+				add_table_of_contents(tabledata[i])
 				dialogue = dialogue.replace("#" + (i-1).toString(), formatted_link)
 			}
-			
-
 
 			document.getElementById("dialogue").innerHTML = dialogue
-			update_topics()
+
+			//Setting the topic table of contents.
+			for(i=0; i < global_stored_topics.length; i++) {
+				var chosen_topic = global_stored_topics[i]
+				if(chosen_topic.substring(0,1) != "*") {
+					var formatted_link = "<a href=\"byond://?src="+global_reference+";topic="+encodeURIComponent(chosen_topic)+"\">"+chosen_topic+"</a>"
+					topics_html = topics_html+formatted_link+"<br>"
+				}
+			}
+			document.getElementById("topics").innerHTML = topics_html
 		
 		}	
 		
@@ -193,3 +183,4 @@
 	</script>
 	
 </html>
+

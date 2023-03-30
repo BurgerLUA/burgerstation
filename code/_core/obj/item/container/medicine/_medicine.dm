@@ -11,12 +11,15 @@
 	var/heal_burn = 0
 	var/heal_burn_percent = 0
 	var/heal_bleeding = FALSE
+	var/reagent_max_per_amount = 15
 
 	var/verb_to_use = "treat"
 
 	var/treatment_time_mul = 1
 
-	amount = 0 //This gets generated.
+	var/treatment_sound
+
+	amount = 1
 	amount_max = 10
 
 	var/icon_state_max = 3
@@ -25,24 +28,24 @@
 
 	var/override_icon_state = FALSE
 
-	var/organic = TRUE //Set to true if heals robotic limbs and not organic limbs.
+	var/organic = TRUE //Set to false if heals robotic limbs and not organic limbs.
 
 	size = SIZE_1
 
 /obj/item/container/healing/get_base_value()
 	return abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3
 
-/obj/item/container/healing/Generate()
-	if(amount == 0)
-		amount = amount_max
+/obj/item/container/healing/Generate(var/desired_loc)
 	. = ..()
+	if(reagents) reagents.volume_max = amount*reagent_max_per_amount
 
-/obj/item/container/healing/Initialize(var/desired_loc)
-
+/obj/item/container/healing/Finalize(var/desired_loc)
 	. = ..()
+	if(reagents) reagents.volume_max = amount*reagent_max_per_amount //Safety
 
-	if(reagents)
-		reagents.volume_max = amount*10
+/obj/item/container/healing/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
+	. = ..()
+	if(reagents) reagents.volume_max = max(1,amount)*reagent_max_per_amount
 
 /obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
 
@@ -102,6 +105,9 @@
 		caller.visible_message(span("notice","\The [caller.name] bandages their [A.name]."),span("notice","You bandage your [A.name]."))
 	else
 		caller.visible_message(span("warning","\The [caller.name] bandages \the [A.loc.name]'s [A.name]."),span("notice","You bandage \the [A.loc.name]'s [A.name]."))
+
+	if(treatment_sound)
+		play_sound(treatment_sound,get_turf(src))
 
 	add_item_count(-1)
 

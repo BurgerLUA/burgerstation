@@ -51,6 +51,10 @@
 "am" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/door/airlock,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
 "an" = (
@@ -84,12 +88,20 @@
 	icon_state = "preview";
 	dir = 4
 	},
+/obj/marker/cover_node{
+	icon_state = "both";
+	dir = 8
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
 "at" = (
 /obj/structure/interactive/lighting/fixture/tube{
 	icon_state = "preview";
 	dir = 8
+	},
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
@@ -148,6 +160,10 @@
 /area/mission/prefab/city/robusta_cafe)
 "aE" = (
 /obj/structure/carpet/grey,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/city/robusta_cafe)
 "aF" = (
@@ -176,6 +192,7 @@
 	icon_state = "sink";
 	dir = 8
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile,
 /area/mission/prefab/city/robusta_cafe/bathroom)
 "aJ" = (
@@ -322,6 +339,33 @@
 /obj/marker/smart_clear_turf,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"bm" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
+"bn" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
+"bo" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
+"bp" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/city/robusta_cafe)
 
 (1,1,1) = {"
 ba
@@ -361,7 +405,7 @@ ba
 "}
 (3,1,1) = {"
 ab
-aW
+bn
 an
 ac
 ac
@@ -371,7 +415,7 @@ an
 au
 ac
 ac
-an
+bo
 au
 ab
 ba
@@ -498,7 +542,7 @@ aC
 aC
 aG
 aC
-ac
+bm
 ab
 bl
 ba
@@ -571,7 +615,7 @@ ao
 ao
 aW
 ac
-ac
+bp
 aW
 ab
 "}

@@ -14,7 +14,7 @@
 
 	firemodes = list("semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/syringe.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/tungsten/shoot.ogg')
 
 	heat_max = 0.1
 
@@ -75,6 +75,8 @@
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.01
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/update_icon()
 
 	icon_state = initial(icon_state)
@@ -93,4 +95,4 @@
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/tungsten/get_cock_sound(var/direction="both")
-	return 'sound/weapons/gun/smg/smg_rack.ogg'
+	return 'sound/weapons/ranged/generic/smg_rack.ogg'

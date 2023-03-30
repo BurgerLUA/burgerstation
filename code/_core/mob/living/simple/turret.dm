@@ -70,6 +70,13 @@
 
 	level = 12
 
+/mob/living/simple/turret/syndicate/ship
+	name = "syndicate ship turret"
+
+	stored_weapon = /obj/item/weapon/ranged/energy/syndicate_turret/ship
+
+	level = 14
+
 /mob/living/simple/turret/syndicate/post_death()
 	icon_state = "dead"
 	return ..()
@@ -85,7 +92,7 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/nanotrasen_turret
 
-	level = 12
+	level = 8
 
 /mob/living/simple/turret/nanotrasen/immortal
 	name = "immortal nanotrasen turret"
@@ -110,7 +117,7 @@
 
 	size = SIZE_ANIMAL
 
-	level = 4
+	level = 3
 
 /mob/living/simple/turret/deployable/get_examine_list(var/mob/examiner)
 
@@ -127,7 +134,7 @@
 	else
 		. += div("warning","It is missing a magazine.")
 
-/mob/living/simple/turret/deployable/proc/get_battery()
+/mob/living/simple/turret/deployable/get_battery()
 	return stored_battery
 
 /mob/living/simple/turret/deployable/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -254,8 +261,81 @@
 
 	stored_weapon = /obj/item/weapon/ranged/energy/clockwork_turret
 
-	level = 22
+	level = 8
 
 /mob/living/simple/turret/clockwork/post_death()
 	icon_state = "dead"
 	return ..()
+
+
+
+
+
+
+
+/mob/living/simple/turret/ai_core
+	name = "ai core turret"
+	icon = 'icons/mob/living/simple/turret_nanotrasen.dmi'
+	icon_state = "closed" //Just for map spawn.
+
+	iff_tag = "Silicon"
+	loyalty_tag = "Silicon"
+
+	level = 20
+	var/image/tracked_cover_overlay
+
+	stored_weapon = /obj/item/weapon/ranged/energy/gatling/ai_core
+
+/mob/living/simple/turret/ai_core/Finalize()
+	. = ..()
+	update_sprite()
+
+/mob/living/simple/turret/ai_core/update_icon()
+	. = ..()
+	if(dead)
+		icon_state = "standard_broken"
+	else
+		icon_state = "standard_lethal"
+
+/mob/living/simple/turret/ai_core/update_underlays()
+	. = ..()
+	var/image/I = new/image(icon,"base")
+	add_underlay(I)
+
+/mob/living/simple/turret/ai_core/update_overlays()
+	. = ..()
+	var/image/I = new/image(icon,"closed")
+	add_overlay(I)
+	tracked_cover_overlay = I
+
+/mob/living/simple/turret/ai_core/proc/open()
+	if(!tracked_cover_overlay)
+		return TRUE
+	tracked_cover_overlay.icon_state = "opened"
+	flick("opening",tracked_cover_overlay)
+	src.add_status_effect(PARALYZE,magnitude=100,duration=10,force=TRUE,stealthy=TRUE,bypass_limits=TRUE)
+	return TRUE
+
+/mob/living/simple/turret/ai_core/proc/close()
+	if(!tracked_cover_overlay)
+		return TRUE
+	tracked_cover_overlay.icon_state = "closed"
+	flick("closing",tracked_cover_overlay)
+	src.add_status_effect(PARALYZE,magnitude=100,duration=10,force=TRUE,stealthy=TRUE,bypass_limits=TRUE)
+	return TRUE
+
+/mob/living/simple/turret/ai_core/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
+
+	if(tracked_cover_overlay.icon_state == "closed")
+		open()
+		return TRUE
+
+	. = ..()
+
+/mob/living/simple/turret/ai_core/on_life_slow()
+
+	. = ..()
+
+	if(. && !dead)
+		if(tracked_cover_overlay.icon_state == "opened" && !ai.objective_attack)
+			close()

@@ -16,16 +16,22 @@
 
 	var/old_turf_type = src.type
 
+	src.initialized = FALSE
+	src.finalized = FALSE
+	src.generated = FALSE
+	QDEL_NULL(health)
+
 	var/turf/W = new N(src)
-	W.initialized = FALSE
-	W.finalized = FALSE
-	W.generated = FALSE
 	INITIALIZE(W)
+	GENERATE(W)
 	FINALIZE(W)
 	. = W
 	W.disallow_generation = old_disallow_generation
 
-	W.recalc_atom_opacity()
+	W.recalculate_atom_opacity()
+	W.recalculate_atom_density()
+	W.recalculate_atom_hazards()
+
 	if(SSlighting && SSlighting.initialized)
 		W.lighting_overlay = old_lighting_overlay
 		W.affecting_lights = old_affecting_lights
@@ -46,6 +52,8 @@
 	stored_shuttle_items = old_stored_shuttle_items
 
 	W.post_change_turf(old_turf_type)
+
+	HOOK_CALL("change_turf")
 
 
 /turf/simulated/change_turf(var/turf/N, var/force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.

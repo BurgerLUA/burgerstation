@@ -3,10 +3,10 @@
 	if(!health || has_status_effect(IMMORTAL))
 		return FALSE
 
-	if((health.health_current + STATUS_EFFECT_MAGNITUDE(src,UNDYING)) <= death_threshold)
-		return TRUE
+	if((health.health_current + STATUS_EFFECT_MAGNITUDE(src,UNDYING)) > death_threshold)
+		return FALSE
 
-	return FALSE
+	return TRUE
 
 /mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -24,7 +24,7 @@
 		if(!src.dead)
 			src.visible_message(span("warning","\The [src.name] takes a savage hit!"),span("danger","You take a savage hit!"))
 
-	if(blood_type && total_bleed_damage > 0 && blood_volume > 0)
+	if(DT && DT.draw_blood && blood_type && total_bleed_damage > 0 && blood_volume > 0)
 		var/turf/T = get_turf(src)
 
 		if(T)
@@ -90,10 +90,10 @@
 
 /mob/living/proc/on_butcher(var/mob/caller,var/atom/movable/atom_to_butcher)
 
-	if(src.qdeleting)
+	if(src.qdeleting || atom_to_butcher.qdeleting)
 		return FALSE
 
-	if(atom_to_butcher.qdeleting)
+	if(!override_butcher && !length(butcher_contents))
 		return FALSE
 
 	. = list()
@@ -120,13 +120,21 @@
 			. += M
 
 	for(var/obj/item/I in atom_to_butcher.contents)
+		if(I.anchored)
+			continue
 		if(is_organ(I))
 			continue
 		I.drop_item(T)
 		. += I
 
+	override_butcher = FALSE
+	butcher_contents = null
+
 	caller?.visible_message(span("danger","\The [caller.name] butchers \the [atom_to_butcher.name]!"),span("danger","You butcher \the [atom_to_butcher.name]."))
-	atom_to_butcher.gib(hard=TRUE)
+	if(gib_on_butcher)
+		atom_to_butcher.gib(hard=TRUE)
+	else
+		update_sprite()
 
 /mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	return 1
@@ -180,7 +188,7 @@
 				var/desired_direction = get_dir(weapon,src)
 				for(var/i=1,i<=3,i++)
 					T = get_step(T,desired_direction)
-					if(!T || !T.is_safe_move(check_contents=FALSE))
+					if(!T || !T.can_move_to(check_contents=FALSE))
 						break
 					var/obj/effect/cleanable/blood/line/L = create_blood(/obj/effect/cleanable/blood/line,T,R.color,0,0)
 					if(L) L.dir = desired_direction

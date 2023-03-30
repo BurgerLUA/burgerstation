@@ -1,3 +1,10 @@
+/mob/living/proc/get_current_target_cords(params)
+	if(ai)
+		return list(pick(ai.target_distribution_x),pick(ai.target_distribution_x))
+	if(!params)
+		params = list(PARAM_ICON_X = 16, PARAM_ICON_Y = 16)
+	return list(params[PARAM_ICON_X],params[PARAM_ICON_Y])
+
 /mob/living/proc/can_block()
 
 	if(!(attack_flags & CONTROL_MOD_BLOCK))
@@ -33,7 +40,7 @@
 			if(!force_change)
 				if(parry_spam_time <= world.time)
 					shield_overlay.color = "#FFFFFF"
-					animation_time = 3 + get_skill_power(SKILL_PARRY,0,1,2)*3
+					animation_time = 3 + get_skill_power(SKILL_BLOCK,0,1,2)*3
 					parry_time = world.time + animation_time
 					parry_spam_time = world.time + 18
 				else //Can't parry
@@ -94,7 +101,18 @@
 	if(client) src.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt)
 	return TRUE
 
-/mob/living/advanced/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
-	if(client)
-		src.add_skill_xp(SKILL_PARRY,1)
+/mob/living/proc/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
+	return TRUE
+
+/mob/living/proc/parry(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/damagetype/DT)
+
+	if(horizontal)
+		return FALSE
+
+	if(parry_time < world.time)
+		return FALSE
+
+	if(!is_facing(src,attacker))
+		return FALSE
+
 	return TRUE

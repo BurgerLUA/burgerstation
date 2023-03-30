@@ -3,7 +3,7 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "b" = (
-/turf/simulated/wall/metal/reinforced/syndicate,
+/turf/simulated/wall/metal/syndicate/reinforced,
 /area/mission/prefab/vault/vault_02)
 "c" = (
 /obj/structure/table/reinforced/steel/dark,
@@ -54,7 +54,7 @@
 	icon_state = "apc";
 	dir = 4
 	},
-/turf/simulated/wall/metal/reinforced/syndicate,
+/turf/simulated/wall/metal/syndicate/reinforced,
 /area/mission/prefab/vault/vault_02)
 "l" = (
 /turf/dmm_suite/no_wall,
@@ -68,7 +68,7 @@
 	icon_state = "setup";
 	dir = 8
 	},
-/turf/simulated/wall/metal/reinforced/syndicate,
+/turf/simulated/wall/metal/syndicate/reinforced,
 /area/mission/prefab/vault/vault_02)
 "o" = (
 /obj/structure/interactive/door/vault/syndicate,

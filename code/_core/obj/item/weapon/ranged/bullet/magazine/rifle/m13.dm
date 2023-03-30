@@ -8,13 +8,15 @@
 
 	company_type = "Solarian"
 
+	tier_type = "marksman rifle"
+
 	tier = 1
 
-	shoot_delay = 4
+	shoot_delay = 3.5
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/308/bass_crisp.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/m13/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -75,6 +77,8 @@
 
 	dan_mode = TRUE
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/get_static_spread()
 	return 0.0001
 
@@ -85,7 +89,7 @@
 	. = ..()
 	if(!chambered_bullet && stored_magazine)
 		var/turf/T = get_turf(src)
-		play_sound('sound/weapons/clip_ping.ogg',T)
+		play_sound('sound/weapons/ranged/generic/clip_ping.ogg',T)
 		eject_magazine(caller)
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m13/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object

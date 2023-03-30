@@ -271,7 +271,7 @@ client/proc/debug_variables(datum/D in world)
 	for (var/V in D.vars)
 		names += V
 
-	names = sortList(names)
+	names = sort_tim(names,cmp=/proc/cmp_text_asc)
 
 	for (var/V in names)
 		body += debug_variable(V, D.vars[V], 0, D)
@@ -931,7 +931,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 	if(!istype(L,/list)) to_chat(src, "Not a List.")
 
-	var/list/names = sortList(L)
+	var/list/names = sort_tim(L,cmp=/proc/cmp_text_asc)
 
 	var/variable = input("Which var?","Var") as null|anything in names + "(ADD VAR)"
 
@@ -1123,7 +1123,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		for (var/V in O.vars)
 			names += V
 
-		names = sortList(names)
+		sort_tim(names,cmp=/proc/cmp_text_asc)
 
 		variable = input("Which var?","Var") as null|anything in names
 		if(!variable)	return
@@ -1293,7 +1293,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 	for (var/V in O.vars)
 		names += V
 
-	names = sortList(names)
+	sort_tim(names,cmp=/proc/cmp_text_asc)
 
 	var/variable = ""
 
@@ -1806,7 +1806,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 var/global/list/g_fancy_list_of_types = null
 /proc/get_fancy_list_of_types()
 	if (isnull(g_fancy_list_of_types)) //init
-		var/list/temp = sortList(subtypesof(/atom) - typesof(/area) - /atom/movable)
+		var/list/temp = sort_tim(subtypesof(/atom) - typesof(/area) - /atom/movable,cmp=/proc/cmp_path_asc)
 		g_fancy_list_of_types = new(temp.len)
 		for(var/type in temp)
 			var/typename = "[type]"

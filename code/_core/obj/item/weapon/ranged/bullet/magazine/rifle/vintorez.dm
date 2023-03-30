@@ -8,15 +8,17 @@
 
 	company_type = "Slavic"
 
+	tier_type = "sniper rifle"
+
 	tier = 2
 
-	shoot_delay = 2
+	shoot_delay = 2.5
 
 	automatic = TRUE
 
 	damage_mod = 2
 
-	shoot_sounds = list('sound/weapons/slavic/vintorez.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/vintorez/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = FALSE
@@ -41,7 +43,8 @@
 	shoot_alert = ALERT_LEVEL_NONE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/suppressor = TRUE,
@@ -65,6 +68,8 @@
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/vintorez/get_static_spread()
 	return 0.001

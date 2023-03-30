@@ -15,13 +15,9 @@
 		SKILL_PRECISION = 0,
 		SKILL_SURVIVAL = 0,
 		SKILL_EVASION = 0,
-		SKILL_PARRY = 0,
-		SKILL_MAGIC_DEFENSIVE = 0,
-		SKILL_MAGIC_OFFENSIVE = 0,
-		SKILL_MAGIC_SUMMONING = 0,
-		SKILL_MAGIC_ENCHANTING = 0,
+		SKILL_MAGIC = 0,
+		SKILL_SUMMONING = 0,
 		SKILL_MEDICINE = 0,
-		SKILL_BOTANY = 0
 	)
 
 	var/list/bonus_attributes = list(
@@ -41,6 +37,8 @@
 	)
 
 	var/list/ranks
+
+	var/job_flags = 0x0
 
 /job/proc/get_rank_title(var/rank_level=1)
 	var/rank_length = length(ranks)

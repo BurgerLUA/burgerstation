@@ -10,13 +10,13 @@
 
 	tier = 2
 
-	shoot_delay = 2
+	shoot_delay = 2.1
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/traitor/fire.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/357_traitor/shoot.ogg')
 
 	size = SIZE_2
 	weight = 7
@@ -65,11 +65,11 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 19 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.04
+
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/revolver/traitor_357/get_static_spread()

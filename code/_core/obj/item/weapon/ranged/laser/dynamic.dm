@@ -11,7 +11,7 @@
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
-	shoot_delay = 1.5
+	shoot_delay = 2
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.25
@@ -19,7 +19,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/dynamic/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -64,6 +64,8 @@
 	attachment_undermount_offset_y = 15 - 16
 
 	charge_cost = CELL_SIZE_BASIC / 80
+
+	rarity = RARITY_RARE
 
 
 /obj/item/weapon/ranged/energy/dynamic/get_static_spread()

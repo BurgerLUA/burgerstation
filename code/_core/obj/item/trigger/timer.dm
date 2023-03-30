@@ -18,15 +18,15 @@
 	last_caller = null
 	return ..()
 
-/obj/item/device/timer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/device/timer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("time_set")
 
-/obj/item/device/timer/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/device/timer/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("time_set")
 
-/obj/item/device/timer/click_self(var/mob/caller)
+/obj/item/device/timer/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
 	SPAM_CHECK(5)
 	trigger(caller,src,-1,-1)
@@ -37,7 +37,7 @@
 	START_THINKING(src)
 	active = TRUE
 	var/turf/T = get_turf(src)
-	play_sound('sound/weapons/timer/arm.ogg',T,range_max=VIEW_RANGE)
+	play_sound('sound/items/timer/arm.ogg',T,range_max=VIEW_RANGE)
 	create_alert(VIEW_RANGE,T,src,ALERT_LEVEL_NOISE)
 	return ..()
 
@@ -52,7 +52,7 @@
 		if( (time_set % clamp( FLOOR(1 + (time_set/10),1) ,1,30)) == 0)
 			var/turf/T = get_turf(src)
 			if(T)
-				play_sound('sound/weapons/timer/beep.ogg',T,range_max=VIEW_RANGE)
+				play_sound('sound/items/timer/beep.ogg',T,range_max=VIEW_RANGE)
 
 		if(time_set <= 0)
 			if(loc)

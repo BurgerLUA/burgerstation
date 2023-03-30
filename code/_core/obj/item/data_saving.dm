@@ -35,7 +35,7 @@
 
 	return TRUE
 
-/proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE)
+/proc/load_and_create(var/mob/living/advanced/player/P,var/list/object_data,var/atom/loc,var/initialize=TRUE,var/loadout=FALSE)
 
 	if(!object_data)
 		//log_error("Tried to create an object with a null object_data list!")
@@ -67,28 +67,36 @@
 		return FALSE
 
 	I = new I(loc)
-	I.load_item_data_pre(P,object_data)
+	if(!I.load_item_data_pre(P,object_data,loadout=loadout))
+		qdel(I)
+		return null
 	INITIALIZE(I)
-	I.load_item_data_post(P,object_data)
+	if(!I.load_item_data_post(P,object_data,loadout=loadout))
+		qdel(I)
+		return null
 	FINALIZE(I)
+
+	if(I.contraband || !I.can_save)
+		qdel(I)
+		return null
+
+	if(loadout && !SSbalance.can_save_loadout[I.type])
+		qdel(I)
+		return null
+
 	I.drop_item(loc,silent=TRUE)
-
-	if(!I.can_save)
-		qdel(I)
-		return null
-
-	if(I.contraband)
-		if(P)
-			var/value_to_give = FLOOR(I.get_value()*0.5,1)
-			if(value_to_give > 0)
-				P.to_chat(span("notice","Due to \the [I.name] being contraband, the cryo system cannot grant you this object. You were given [value_to_give] credits as compensation."))
-				P.adjust_currency(value_to_give,silent=TRUE)
-		qdel(I)
-		return null
 
 	return I
 
-/obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/proc/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+
+	if( (contraband || !can_save) && !length(inventories)) //The inventory check prevents people from losing their stuff if a dev is dumb and adds a contraband item with storage.
+		if(contraband) P.to_chat(span("warning","Notice: \The [src.name] could not be saved because it is considered contraband."))
+		return null
+
+	if(loadout && !SSbalance.can_save_loadout[src.type])
+		P.to_chat(span("warning","Notice: \The [src.name] could not be stored in the loadout system because it isn't a standard item."))
+		return null
 
 	. = list()
 
@@ -112,7 +120,7 @@
 			var/obj/hud/inventory/IN = inventories[i]
 			var/list/inventory_data = list()
 			try
-				inventory_data = IN.save_inventory_data(P,save_inventory,died)
+				inventory_data = IN.save_inventory_data(P,save_inventory,died,loadout=loadout)
 			catch(var/exception/e)
 				log_error("Failed to save inventory data of [src.get_debug_name()]. Some information may be lost.")
 				log_error("Save Error: [e] on [e.file]:[e.line]\n[e.desc]!")
@@ -140,17 +148,17 @@
 
 	SAVEPATH("loot_to_generate")
 
-/obj/item/organ/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/organ/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
-	. = ..()
+	RUN_PARENT_SAFE
 
 	var/list/blend_data = get_blend_data()
 	if(length(blend_data)) .["blend_data"] = blend_data
 
 
-/obj/item/organ/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/organ/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 
-	. = ..()
+	RUN_PARENT_SAFE
 
 	if(object_data["blend_data"])
 		log_debug("Blend data for [src.type]:")
@@ -160,7 +168,7 @@
 		log_debug("No blend data found for: [src.type].")
 
 
-/obj/item/proc/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/proc/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 
 	if(object_data["name"])
 		name = object_data["name"]
@@ -179,7 +187,7 @@
 	if(object_data["inventories"])
 		for(var/i=1,i<=length(object_data["inventories"]),i++)
 			var/obj/hud/inventory/I = inventories[i]
-			I.load_inventory_data(P,object_data["inventories"][i])
+			I.load_inventory_data(P,object_data["inventories"][i],loadout=loadout)
 	if(object_data["soul_bound"])
 		soul_bound = object_data["soul_bound"]
 	if(object_data["amount"])
@@ -196,11 +204,11 @@
 	return TRUE
 
 
-/obj/item/proc/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/proc/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 	if(length(object_data["reagents"]))
 		for(var/r_id in object_data["reagents"])
 			var/volume = object_data["reagents"][r_id]
-			var/R_path = text2path(r_id)
+			var/reagent/R_path = text2path(r_id)
 			if(!R_path)
 				log_error("LOAD ERROR: Tried loading an invalid reagent [r_id]!")
 				continue
@@ -208,7 +216,7 @@
 		reagents.update_container(P)
 	return TRUE
 
-/obj/hud/inventory/proc/load_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data) //Setting the data found.
+/obj/hud/inventory/proc/load_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data,var/loadout=FALSE) //Setting the data found.
 
 	if(!inventory_data)
 		log_error("Warning: [src.get_debug_name()] in [P.get_debug_name()] had no inventory data!")
@@ -253,7 +261,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/save_inventory_data(var/mob/living/advanced/player/P,var/save_inventory=TRUE,var/died=FALSE) //Getting the inventory and their contents for saving.
+/obj/hud/inventory/proc/save_inventory_data(var/mob/living/advanced/player/P,var/save_inventory=TRUE,var/died=FALSE,var/loadout=FALSE) //Getting the inventory and their contents for saving.
 
 	var/content_length = length(contents)
 
@@ -266,8 +274,8 @@
 			continue
 		if(died && (src.flags_hud & FLAG_HUD_MOB) && !src.ultra_persistant && !I.save_on_death)
 			continue
-		.[i] = I.save_item_data(P,save_inventory,died)
-
+		var/result = I.save_item_data(P,save_inventory,died,loadout)
+		.[i] = result ? result : null //Forces null
 
 
 

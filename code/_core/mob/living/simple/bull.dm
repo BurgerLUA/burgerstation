@@ -38,7 +38,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 12
+	level = 6
 
 /mob/living/simple/bull/post_death()
 	..()

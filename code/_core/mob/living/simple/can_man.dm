@@ -3,7 +3,7 @@
 	boss_icon_state = "can_man"
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/boss/
+	damage_type = /damagetype/unarmed/claw
 
 
 	value = 20000
@@ -65,7 +65,7 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 70
+	level = 50
 
 /mob/living/simple/can_man/post_death()
 	. = ..()

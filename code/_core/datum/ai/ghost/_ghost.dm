@@ -79,9 +79,9 @@
 		var/turf/T2 = get_turf(objective_attack)
 		if(T1.z != T2.z || get_dist(T1,T2) > 64) //Too far, can't path.
 			return FALSE
-		var/astar_length = length(current_path_astar)
+		var/astar_length = length(astar_path_current)
 		if(astar_length)
-			var/turf/T4 = get_turf(current_path_astar[astar_length]) //Check the end of the path.
+			var/turf/T4 = get_turf(astar_path_current[astar_length]) //Check the end of the path.
 			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
@@ -89,7 +89,7 @@
 		else
 			var/move_dir = get_dir(T1,T2)
 			var/turf/T3 = get_step(T1,move_dir)
-			if(!T3.is_safe_move(FALSE))
+			if(!T3.can_move_to(FALSE))
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
@@ -99,9 +99,9 @@
 		var/turf/T2 = get_turf(objective_move)
 		if(T1.z != T2.z || get_dist(T1,T2) > 64) //Too far, can't path.
 			return FALSE
-		var/astar_length = length(current_path_astar)
+		var/astar_length = length(astar_path_current)
 		if(astar_length)
-			var/turf/T4 = get_turf(current_path_astar[astar_length]) //Check the end of the path.
+			var/turf/T4 = get_turf(astar_path_current[astar_length]) //Check the end of the path.
 			if(get_dist(T2,T4) >= 4 || next_star <= world.time) //Is it an old path?
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
@@ -109,7 +109,7 @@
 		else
 			var/move_dir = get_dir(T1,T2)
 			var/turf/T3 = get_step(T1,move_dir)
-			if(!T3.is_safe_move(FALSE))
+			if(!T3.can_move_to(FALSE))
 				set_path_astar(T2)
 				next_star = world.time + SECONDS_TO_DECISECONDS(4)
 				return TRUE
@@ -186,7 +186,7 @@
 			continue
 		var/list/possible_turfs = list()
 		for(var/turf/simulated/T in A2)
-			if(!T.is_safe_move())
+			if(!T.can_move_to())
 				continue
 			possible_turfs += T
 		if(!length(possible_turfs))
@@ -236,7 +236,7 @@
 					var/can_hunt = TRUE
 					for(var/obj/item/cross/C in range(objective_attack,6))
 						if(!C.broken)
-							C.on_destruction(owner,TRUE)
+							C.on_destruction()
 							can_hunt = FALSE
 							break
 					if(can_hunt)
@@ -381,7 +381,7 @@
 		var/list/possible_turfs = list()
 		if(origin_area && prob(10))
 			for(var/turf/simulated/floor/TF in origin_area)
-				if(!TF.is_safe_move(FALSE))
+				if(!TF.can_move_to(FALSE))
 					continue
 				possible_turfs += TF
 		else
@@ -391,7 +391,7 @@
 					continue
 				if(!AF.allow_ghost)
 					continue
-				if(!TF.is_safe_move(FALSE))
+				if(!TF.can_move_to(FALSE))
 					continue
 				possible_turfs += TF
 		if(length(possible_turfs))
@@ -415,7 +415,7 @@
 	anger += amount
 	return TRUE
 
-/ai/ghost/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
+/ai/ghost/set_alert_level(var/desired_alert_level,var/atom/alert_epicenter = null,var/atom/alert_source = null,var/can_lower=FALSE)
 	//Trying to alert it just pisses it off.
 
 	if(!stat_hates_noise)

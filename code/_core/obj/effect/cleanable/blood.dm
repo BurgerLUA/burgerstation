@@ -93,6 +93,7 @@
 	icon_state = "human"
 	randomize_angle = FALSE
 	blood_level = -1
+	plane = PLANE_FOOTSTEP
 
 /obj/effect/cleanable/blood/line/
 	name = "blood line"

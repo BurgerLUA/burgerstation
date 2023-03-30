@@ -10,13 +10,13 @@
 
 	tier = 2
 
-	shoot_delay = 3
+	shoot_delay = 4.1
 
 	automatic = TRUE
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/deckhard/shot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/deckhard/shoot.ogg')
 
 	size = SIZE_2
 	weight = 6
@@ -65,11 +65,11 @@
 	attachment_undermount_offset_x = 27 - 16
 	attachment_undermount_offset_y = 21 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.01
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/revolver/deckhard/get_static_spread()
 	return 0

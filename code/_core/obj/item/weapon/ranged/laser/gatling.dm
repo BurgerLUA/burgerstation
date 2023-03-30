@@ -5,16 +5,18 @@
 	icon = 'icons/obj/item/weapons/ranged/laser/gatling.dmi'
 	value = 10000
 
-	company_type = "NanoTrasen"
+	company_type = "Solarian"
 
-	shoot_delay = 0.75
+	shoot_delay = 1.25
 
 	damage_mod = 0.6
+
+	bullet_count = 3
 
 	projectile = /obj/projectile/bullet/laser/weak
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
-	shoot_sounds = list('sound/weapons/gatling/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/gatling/shoot.ogg')
 
 	bullet_color = "#FF0000"
 
@@ -40,13 +42,13 @@
 
 	value_burgerbux = 1
 
-
-/obj/item/weapon/ranged/energy/gatling/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
-	. = ..()
-	. += (heat_max - heat_current)
+	rarity = RARITY_MYTHICAL
 
 /obj/item/weapon/ranged/energy/gatling/get_static_spread(var/mob/living/L)
 	return 0.05
+
+/obj/item/weapon/ranged/energy/gatling/get_base_spread()
+	return 0.2
 
 /obj/item/weapon/ranged/energy/gatling/get_skill_spread(var/mob/living/L)
 	return max(0,0.15 - (0.1 * L.get_skill_power(SKILL_RANGED)))
@@ -77,3 +79,10 @@
 	update_held_icon()
 
 	return ..()
+
+/obj/item/weapon/ranged/energy/gatling/ai_core
+	value_burgerbux = 1
+	contraband = TRUE
+	value = 0
+	battery = /obj/item/powercell/recharging
+	bullet_count = 1

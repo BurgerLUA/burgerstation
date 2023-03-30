@@ -20,7 +20,7 @@
 
 	bullet_count_max = 3
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/ks23/shoot.ogg')
 
 	bullet_length_min = 73
 	bullet_length_best = 75
@@ -73,6 +73,8 @@
 	movement_inaccuracy_modifier = 0.25
 
 	pump_delay = 3
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/ks23/get_base_spread()
 	return 0.1

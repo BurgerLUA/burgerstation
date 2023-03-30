@@ -54,6 +54,12 @@
 	var/generated = FALSE
 	var/finalized = FALSE
 
+	var/hazardous = FALSE
+
+	var/list/voice_modifiers
+
+	var/map_spawn = FALSE //Set to true to indicate this object was spawned in via dmm_suite
+
 /atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
 
 	if(density == desired_density && !force)
@@ -92,7 +98,7 @@
 		return TRUE
 	return FALSE
 
-/atom/proc/on_destruction(var/mob/caller,var/damage = FALSE) //Called when destructed by tools or damage.
+/atom/proc/on_destruction(var/damage = TRUE)
 	HOOK_CALL("on_destruction")
 	return TRUE
 
@@ -202,7 +208,7 @@
 /atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod=1)
 	return 0
 
-/atom/proc/on_projectile_hit(var/obj/projectile/P,var/atom/hit_atom)
+/atom/proc/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	return TRUE
 
 /atom/proc/is_busy()
@@ -239,3 +245,7 @@
 
 /atom/proc/on_dmm_suite_rotate(var/angle_offset=0)
 	return TRUE
+
+
+/atom/proc/get_battery() //TODO: Make all atoms that use power use this.
+	return null

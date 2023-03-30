@@ -31,8 +31,7 @@
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "g" = (
-/obj/structure/scenery/flowers,
-/turf/simulated/floor/colored/grass,
+/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "h" = (
 /obj/marker/map_node/x2,

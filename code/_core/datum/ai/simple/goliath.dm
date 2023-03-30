@@ -7,6 +7,11 @@
 	var/next_tentacle_attack = 100
 	var/tentacle_distance_max = 4
 
+	night_vision = 0
+
+	allow_far_roaming = FALSE
+	roaming_distance = VIEW_RANGE
+
 /ai/goliath/New(var/desired_loc,var/mob/living/desired_owner)
 	owner_as_goliath = desired_owner
 	return ..()
@@ -17,7 +22,7 @@
 
 /ai/goliath/handle_attacking()
 
-	if(objective_attack && alert_level == ALERT_LEVEL_COMBAT && next_tentacle_attack <= world.time)
+	if(objective_attack && objective_attack && next_tentacle_attack <= world.time)
 		var/target_distance = get_dist(owner,objective_attack)
 		if(target_distance > attack_distance_max && target_distance <= tentacle_distance_max)
 			owner_as_goliath.do_tentacle_attack(objective_attack)

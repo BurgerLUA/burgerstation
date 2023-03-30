@@ -61,6 +61,13 @@
 	if(!text_to_say)
 		return FALSE
 
+	if(is_atom(speaker) && length(speaker.voice_modifiers))
+		for(var/k in speaker.voice_modifiers)
+			var/atom/A = k
+			text_to_say = call(A,speaker.voice_modifiers[A])(speaker,source,text_to_say,text_type,frequency,language,talk_range)
+			if(!text_to_say)
+				return FALSE
+
 	var/turf/source_turf = get_turf(source)
 
 	var/language/LA = SSlanguage.all_languages[language]

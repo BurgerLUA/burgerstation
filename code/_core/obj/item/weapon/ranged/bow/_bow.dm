@@ -5,7 +5,7 @@
 	requires_bullets = TRUE
 
 	shoot_sounds = list(
-		'sound/weapons/bow/fire.ogg'
+		'sound/weapons/ranged/bow/fire.ogg'
 	)
 	empty_sounds = list()
 
@@ -29,7 +29,7 @@
 	movement_inaccuracy_modifier = 0.9
 	movement_spread_base = 0.05
 
-	var/draw_sound = 'sound/weapons/bow/draw_steel.ogg'
+	var/draw_sound = 'sound/weapons/ranged/bow/draw_steel.ogg'
 
 	var/spam_prevention = 0
 
@@ -39,23 +39,20 @@
 	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 
-/obj/item/weapon/ranged/bow/post_move(var/atom/old_loc)
-	. = ..()
 
+/obj/item/weapon/ranged/bow/on_equip(var/atom/old_location,var/silent=FALSE)
+	. = ..()
 	stage_max = initial(stage_max)
 	stage_per_decisecond = initial(stage_per_decisecond)
-
-	if(is_inventory(loc))
-		var/obj/hud/inventory/I = loc
-		if(is_living(I.owner))
-			var/mob/living/L = I.owner
-			var/strength_mod = 0.5 + L.get_attribute_power(ATTRIBUTE_STRENGTH,0,1,2)*0.5
-			var/dex_mod = 0.25 + L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*0.75
-			stage_per_decisecond *= dex_mod
-			stage_per_decisecond = CEILING(stage_per_decisecond,1)
-			stage_max *= strength_mod
-			stage_max = CEILING(stage_max,1)
-			return .
+	var/obj/hud/inventory/I = loc
+	if(is_living(I.owner))
+		var/mob/living/L = I.owner
+		var/strength_mod = 0.5 + L.get_attribute_power(ATTRIBUTE_STRENGTH,0,1,2)*0.5
+		var/dex_mod = 0.25 + L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*0.75
+		stage_per_decisecond *= dex_mod
+		stage_per_decisecond = CEILING(stage_per_decisecond,1)
+		stage_max *= strength_mod
+		stage_max = CEILING(stage_max,1)
 
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
@@ -115,7 +112,7 @@
 /obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
 
 	if(!is_advanced(caller))
-		return null
+		return FALSE
 
 	var/mob/living/advanced/A = caller
 
@@ -149,6 +146,8 @@
 
 	tier = 1
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bow/wood/get_static_spread()
 	return 0.005
 
@@ -165,6 +164,8 @@
 
 	tier = 2
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bow/hardlight
 	name = "hardlight bow"
 	desc = "How can light be hard? :flushed:"
@@ -173,7 +174,7 @@
 
 	var/obj/item/bullet_cartridge/arrow/stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight
 
-	draw_sound = 'sound/weapons/bow/draw_hardlight.ogg'
+	draw_sound = 'sound/weapons/ranged/bow/draw_hardlight.ogg'
 
 	value = 3000
 
@@ -184,7 +185,7 @@
 
 	tier = 3
 
-	value_burgerbux = 1
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
@@ -204,7 +205,7 @@
 	desc_extended = "A special masterfully crafted ashen bow that somehow invokes the strength of ancient megafauna when drawing arrows."
 	icon = 'icons/obj/item/weapons/ranged/bow/ashen.dmi'
 
-	draw_sound = 'sound/weapons/bow/draw_ashen.ogg'
+	draw_sound = 'sound/weapons/ranged/bow/draw_ashen.ogg'
 
 	ranged_damage_type = /damagetype/ranged/bow/ashen
 
@@ -214,6 +215,8 @@
 	stage_max = 125
 
 	tier = 4
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
 	var/damagetype/D = all_damage_types[ranged_damage_type]

@@ -28,7 +28,10 @@
 	icon_state = "sink";
 	dir = 4
 	},
-/obj/marker/hostage_spawn,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_D02/bathroom)
 "ag" = (
@@ -51,15 +54,150 @@
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/mission/prefab/house/house_D02/kitchen)
+"ak" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	dir = 1
+	},
+/obj/marker/cover_node,
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/house/house_D02/kitchen)
+"al" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/grey/ish,
+/area/mission/prefab/house/house_D02/kitchen)
+"am" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node,
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/house/house_D02/kitchen)
+"an" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/hallway)
+"ao" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/hallway)
+"ap" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/hallway)
+"aq" = (
+/obj/structure/interactive/bed/sheet,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/mob/living/advanced/npc/bandit{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/bunks)
+"ar" = (
+/obj/structure/interactive/bed/sheet,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/bunks)
+"as" = (
+/obj/structure/interactive/chair/office,
+/obj/structure/carpet/blue,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/mob/living/advanced/npc/bandit{
+	icon_state = "directional";
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/officer_bedroom)
+"at" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/kitchen)
+"au" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/tile/grey/ish,
+/area/mission/prefab/house/house_D02/kitchen)
+"av" = (
+/obj/structure/interactive/door/airlock/station/command,
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/officer_bedroom)
+"aw" = (
+/obj/structure/interactive/door/airlock/station,
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile,
+/area/mission/prefab/house/house_D02/bathroom)
+"ax" = (
+/obj/structure/interactive/door/airlock/station/janitor,
+/obj/marker/cover_node/left,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_D02)
+"ay" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/house/house_D02/kitchen)
+"az" = (
+/obj/structure/interactive/misc/toilet,
+/obj/structure/interactive/lighting/fixture/bulb,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/tile,
+/area/mission/prefab/house/house_D02/bathroom)
+"aA" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/tile,
+/area/mission/prefab/house/house_D02/bathroom)
+"aB" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/turf/simulated/floor/tile/grey,
+/area/mission/prefab/house/house_D02/kitchen)
+"aC" = (
+/obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_D02/bunks)
 "aE" = (
 /obj/structure/interactive/bed/sheet,
 /obj/structure/carpet/blue,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D02/officer_bedroom)
-"aP" = (
-/obj/structure/interactive/potted_plant/office,
-/turf/simulated/floor/tile/grey/ish,
-/area/mission/prefab/house/house_D02/kitchen)
 "cF" = (
 /obj/structure/interactive/potted_plant/office,
 /turf/simulated/floor/wood/brown,
@@ -75,21 +213,12 @@
 /obj/structure/table/reinforced/steel,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D02/kitchen)
-"ei" = (
-/obj/structure/interactive/door/airlock/station/glass,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/house/house_D02/kitchen)
 "ez" = (
 /obj/structure/table/rack/grey/light,
 /obj/item/magazine/m13_762,
 /obj/item/magazine/m13_762,
 /turf/simulated/floor/tile/grey,
 /area/mission/prefab/house/house_D02/kitchen)
-"eJ" = (
-/obj/structure/interactive/misc/toilet,
-/obj/structure/interactive/lighting/fixture/bulb,
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_D02/bathroom)
 "eV" = (
 /obj/structure/interactive/barricade{
 	icon_state = "metal";
@@ -124,7 +253,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D02/officer_bedroom)
 "hk" = (
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D02/kitchen)
 "hr" = (
@@ -160,10 +289,6 @@
 /obj/marker/spawning/random/kitchen,
 /turf/simulated/floor/tile/grey,
 /area/mission/prefab/house/house_D02/kitchen)
-"mz" = (
-/obj/structure/interactive/door/airlock/wood,
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D02/bunks)
 "mV" = (
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D02/kitchen)
@@ -313,22 +438,9 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D02/kitchen)
-"FG" = (
-/obj/structure/interactive/potted_plant/office,
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/house/house_D02/kitchen)
 "GE" = (
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D02/kitchen)
-"GT" = (
-/obj/structure/interactive/chair/office,
-/obj/structure/carpet/blue,
-/mob/living/advanced/npc/survivor{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D02/officer_bedroom)
 "HT" = (
 /turf/simulated/wall/wood/brown,
 /area/mission/prefab/house/house_D02/hallway)
@@ -347,7 +459,7 @@
 /area/mission/prefab/house/house_D02)
 "Jw" = (
 /obj/structure/interactive/chair/stool,
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D02/kitchen)
 "JR" = (
@@ -369,19 +481,13 @@
 /obj/structure/interactive/chair/stool,
 /turf/simulated/floor/tile/grey/ish,
 /area/mission/prefab/house/house_D02/kitchen)
-"Lz" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	dir = 1
-	},
-/turf/simulated/floor/tile/grey,
-/area/mission/prefab/house/house_D02/kitchen)
 "ME" = (
 /obj/structure/interactive/potted_plant/office,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_D02/hallway)
 "Nq" = (
 /obj/structure/interactive/bed/sheet,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -389,7 +495,7 @@
 /area/mission/prefab/house/house_D02/bunks)
 "NL" = (
 /obj/structure/interactive/chair/stool,
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/tile/grey,
 /area/mission/prefab/house/house_D02/kitchen)
 "NU" = (
@@ -504,14 +610,6 @@
 	},
 /turf/simulated/wall/metal,
 /area/mission/prefab/house/house_D02/officer_bedroom)
-"Yk" = (
-/obj/structure/interactive/bed/sheet,
-/mob/living/advanced/npc/survivor{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/wood/brown,
-/area/mission/prefab/house/house_D02/bunks)
 "YE" = (
 /obj/structure/interactive/door/airlock/station/glass,
 /turf/simulated/floor/tile/grey/ish,
@@ -540,17 +638,17 @@ Qh
 ab
 gr
 OU
-eJ
+az
 Fh
 SE
 aE
-GT
+as
 oB
 SE
-Yk
+aq
 nh
 nh
-nh
+ar
 gq
 "}
 (3,1,1) = {"
@@ -576,7 +674,7 @@ Xh
 ac
 Is
 oZ
-ae
+aA
 Fh
 SE
 qG
@@ -627,18 +725,18 @@ gq
 "}
 (7,1,1) = {"
 DE
-oG
+ax
 DE
 OU
 OU
-Fp
+aw
 SE
 SE
-df
+av
 SE
 SE
 gq
-mz
+aC
 Qj
 gq
 gq
@@ -646,18 +744,18 @@ gq
 (8,1,1) = {"
 De
 FD
-KB
+ay
 dE
 QH
 GE
 TN
-GE
+au
 KB
-mV
+at
 wS
-dg
+ao
 nY
-dg
+an
 Ws
 HT
 "}
@@ -673,7 +771,7 @@ TN
 FD
 mV
 ME
-dg
+ap
 nY
 dg
 CW
@@ -688,7 +786,7 @@ TN
 Jw
 NU
 Lr
-FG
+am
 De
 HT
 gi
@@ -724,7 +822,7 @@ TN
 Lr
 NU
 Lr
-Lz
+ak
 De
 Fj
 Kn
@@ -773,12 +871,12 @@ aa
 De
 xk
 FD
-ei
+aB
 FD
 za
 Sh
 ez
-aP
+al
 De
 QV
 vn

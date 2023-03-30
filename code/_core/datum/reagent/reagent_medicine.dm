@@ -22,7 +22,7 @@
 	. = ..()
 
 	if(owner)
-		owner.tox_regen_buffer -= . //Deal tox damage.
+		owner.tox_regen_buffer -= metabolism_amount //Deal tox damage.
 
 /reagent/medicine/adrenaline
 	name = "adrenaline"
@@ -394,16 +394,18 @@
 	color = "#BA7C00"
 	alpha = 225
 	flavor = "gunk"
-	value = 1.5
+	value = 0.75
 
-	experience_per_unit = 2
+	experience_per_unit = 1
 
 	liquid = 0.5
 	particle_size = 0.2
 
+	overdose_threshold = 150
+
 /reagent/medicine/rad_b_gone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.rad_regen_buffer += .*5*multiplier
+	owner.rad_regen_buffer += .*2*multiplier
 
 
 /reagent/medicine/potassium_iodide

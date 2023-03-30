@@ -6,6 +6,8 @@
 	icon_state = "inventory"
 	value = 800
 
+	tier_type = "rifle"
+
 	company_type = "Pirate"
 
 	tier = 1
@@ -20,7 +22,7 @@
 
 	bullet_count_max = 1
 
-	shoot_sounds = list('sound/weapons/308/big_game.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/musket/shoot.ogg')
 
 	size = SIZE_4
 	weight = 20
@@ -85,7 +87,7 @@
 
 	pixel_x = -8
 
-
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/revolver/musket/get_static_spread()
 	return 0.005 //Smoothbore

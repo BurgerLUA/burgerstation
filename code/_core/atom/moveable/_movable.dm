@@ -14,6 +14,8 @@
 	var/tmp/first_move_dir = 0x0 //The first movement key pressed. Only used for mobs.
 	var/tmp/next_move = 0 //How long until you can move again, in ticks.
 
+	var/thrown_bounce_modifier = 0.5 //Set to a value to above 1 to make this object bounce. 1 will generally cause it to bounce backwards at its current velocity. Values above 1 are super bouncy.
+
 	// var/momentum_speed = 0 //Tiles per second. Maximum 10.
 	// var/momentum_dir = 0x0
 
@@ -36,7 +38,7 @@
 
 	var/throwable = TRUE
 
-	var/value = -1 //Value in whatever currency this world uses. Used for buying and selling items.
+	var/value = 0 //Value in whatever currency this world uses. Used for buying and selling items.
 
 	var/acceleration_value = 0 //No touch.
 
@@ -60,17 +62,28 @@
 
 	var/can_be_bumped = TRUE
 
+	var/enable_chunk_handling = FALSE
 	var/enable_chunk_clean = FALSE
 
 	var/dir_offset = TILE_SIZE
+
+	var/abstract = FALSE
+
+/atom/movable/PreDestroy()
+	if(enable_chunk_handling && SSchunk.initialized)
+		var/turf/T = is_turf(loc) ? loc : null
+		if(T)
+			var/chunk/C = CHUNK(T)
+			src.on_chunk_cross(C,null)
+	force_move(null)
+	loc = null //Just in case.
+	. = ..()
 
 /atom/movable/Destroy()
 	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
 	grabbing_hand = null
-	force_move(null)
-	loc = null
 	. = ..()
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
@@ -96,7 +109,7 @@
 
 	. = ..()
 
-	if(src.z)
+	if(.)
 		for(var/k in light_sprite_sources)
 			var/obj/light_sprite/LS = k
 			if(LS == src)
@@ -106,16 +119,6 @@
 /atom/movable/New(var/desired_loc)
 	light_sprite_sources = list()
 	. = ..()
-	if(world_state == STATE_RUNNING && src.enable_chunk_clean && SSchunk.initialized && is_simulated(loc))
-		var/turf/simulated/T = loc
-		var/area/A = T.loc
-		if(A && !A.safe_storage)
-			var/new_loc_chunk_x = CEILING(src.x/CHUNK_SIZE,1)
-			var/new_loc_chunk_y = CEILING(src.y/CHUNK_SIZE,1)
-			var/new_loc_chunk_z = src.z
-			if(new_loc_chunk_z > 0)
-				var/chunk/new_chunk = SSchunk.chunks[new_loc_chunk_z][new_loc_chunk_x][new_loc_chunk_y]
-				if(new_chunk) new_chunk.cleanables += src
 
 /atom/movable/proc/update_collisions(var/normal,var/bullet,var/c_dir,var/force = FALSE)
 
@@ -155,17 +158,19 @@
 
 	. = ..()
 
-	if(enable_chunk_clean && src.z)
-		var/turf/T = loc
-		var/area/A = T.loc
-		A.chunk_cleanable += src
+	if(is_turf(src.loc))
 
-	if((opacity || density) && src.z && is_turf(src.loc))
 		var/turf/T = src.loc
-		if(opacity)
-			T.has_opaque_atom = TRUE
-		if(density)
-			T.has_dense_atom = TRUE
+
+		if(enable_chunk_handling && SSchunk.initialized)
+			var/chunk/C = CHUNK(T)
+			src.on_chunk_cross(null,C)
+
+		if((opacity || density))
+			if(opacity)
+				T.has_opaque_atom = TRUE
+			if(density && !abstract)
+				T.has_dense_atom = "/atom/movable/Finalize() [src.type]"
 
 	update_value()
 
@@ -224,7 +229,7 @@
 
 /atom/movable/proc/is_safe_to_delete(var/check_loc = TRUE)
 
-	if(check_loc && loc && !src.z)
+	if(check_loc && loc && !src.z) //This means we're in something that isn't a turf.
 		return FALSE
 
 	if(is_player_controlled())

@@ -10,8 +10,6 @@
 
 	user_colors = FALSE
 
-	layer = 1
-
 	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
 
 	mouse_opacity = 0

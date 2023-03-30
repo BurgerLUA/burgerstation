@@ -13,7 +13,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/rifle/opticor
 
 	view_punch_mod = 2.5
-	
+
 	projectile_speed = 62
 	shoot_delay = 25
 

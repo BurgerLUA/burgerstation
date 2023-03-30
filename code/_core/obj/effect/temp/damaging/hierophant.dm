@@ -7,7 +7,7 @@
 	hazard_range = 0
 	damage_type = /damagetype/ranged/magic/hierophant
 	plane = PLANE_BLOOD
-	layer = 0
+	layer = LAYER_FLOOR_EFFECTS
 	var/blasts_left = 10
 	var/copy_delay = 3
 	var/should_teleport = FALSE
@@ -40,7 +40,7 @@
 		var/turf/current_turf = get_turf(src)
 		if(!current_turf || !current_turf)
 			return FALSE
-		if(!current_turf.is_safe_move(FALSE) && !T.is_safe_move(FALSE))
+		if(!current_turf.can_move_to(FALSE) && !T.can_move_to(FALSE))
 			return FALSE
 		var/obj/effect/temp/hazard/hierophant/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left
@@ -54,7 +54,7 @@
 	else if(should_teleport && ismovable(owner))
 		var/atom/movable/M = owner
 		var/turf/T = get_turf(src)
-		if(T && T.is_safe_move())
+		if(T && T.can_move_to())
 			var/turf/old_turf = get_turf(M)
 			new /obj/effect/temp/phase/out(old_turf)
 			M.force_move(T)
@@ -77,7 +77,7 @@
 		blasts_left--
 		var/turf/T = get_step(src,dir)
 		var/turf/current_turf = get_turf(src)
-		if(!current_turf.is_safe_move(FALSE) || !T.is_safe_move(FALSE))
+		if(!current_turf.can_move_to(FALSE) || !T.can_move_to(FALSE))
 			return FALSE
 		var/obj/effect/temp/hazard/hierophant/targeted/H = new(T,desired_owner = owner)
 		H.blasts_left = blasts_left
@@ -89,7 +89,7 @@
 	else if(should_teleport && ismovable(owner))
 		var/atom/movable/M = owner
 		var/turf/T = get_turf(src)
-		if(T && T.is_safe_move())
+		if(T && T.can_move_to())
 			var/turf/old_turf = get_turf(M)
 			new /obj/effect/temp/phase/out(old_turf)
 			M.force_move(T)

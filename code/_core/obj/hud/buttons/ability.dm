@@ -17,7 +17,7 @@ var/global/list/ability_colors = list(
 	flags_hud = FLAG_HUD_MOB
 
 	plane = PLANE_HUD
-	layer = 1
+	layer = LAYER_HUD
 
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
@@ -71,7 +71,9 @@ var/global/list/ability_colors = list(
 		name = initial(name)
 		desc_extended = initial(desc_extended)
 
-	tooltip_text = get_tooltip_text()
+	tooltip_text = initial(tooltip_text)
+	if(!tooltip_text)
+		tooltip_text = generate_tooltip_text()
 
 /obj/hud/button/ability/think()
 
@@ -90,7 +92,7 @@ var/global/list/ability_colors = list(
 	if(display_number <= 5)
 		display_number = CEILING(display_number,0.1)
 		if(!MODULUS(display_number,1))
-			display_number = "[display_number].0]"
+			display_number = "[display_number].0"
 	else
 		display_number = CEILING(display_number,1)
 

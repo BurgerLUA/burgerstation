@@ -10,11 +10,11 @@
 
 	tier = 3
 
-	shoot_delay = 3
+	shoot_delay = 2.8
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/saiga/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -68,11 +68,11 @@
 	attachment_undermount_offset_x = 23 - 12
 	attachment_undermount_offset_y = 12 - 13
 
-
-
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.04
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20/get_base_spread()
 	return 0.2

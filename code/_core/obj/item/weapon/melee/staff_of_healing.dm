@@ -18,7 +18,9 @@
 
 	value_burgerbux = 1
 
-/obj/item/weapon/melee/staff_of_healing/click_self(var/mob/caller)
+	rarity = RARITY_LEGENDARY
+
+/obj/item/weapon/melee/staff_of_healing/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

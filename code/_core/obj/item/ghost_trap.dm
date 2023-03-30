@@ -13,12 +13,12 @@
 
 	density = TRUE
 
-/obj/item/ghost_box/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/ghost_box/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("stored_ghost")
 
-/obj/item/ghost_box/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/ghost_box/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("stored_ghost")
 
 /obj/item/ghost_box/Finalize()
@@ -48,7 +48,7 @@
 				qdel(G)
 
 
-/obj/item/ghost_box/click_self(var/mob/caller)
+/obj/item/ghost_box/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

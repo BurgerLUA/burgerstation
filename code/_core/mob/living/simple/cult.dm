@@ -11,7 +11,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 10
+	level = 5
 
 /mob/living/simple/cult/construct
 	stun_angle = 0
@@ -44,7 +44,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(7)
 
-	level = 36
+	level = 18
 
 
 
@@ -63,7 +63,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	level = 16
+	level = 8
 
 
 
@@ -82,7 +82,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(1)
 
-	level = 24
+	level = 12
 
 
 
@@ -102,7 +102,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	level = 28
+	level = 14
 
 
 
@@ -121,7 +121,7 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 
-	level = 24
+	level = 12
 
 
 
@@ -140,5 +140,5 @@
 
 	movement_delay = AI_TICK
 
-	level = 16
+	level = 8
 

@@ -23,6 +23,8 @@
 
 	pixel_y = 0
 
+	allow_path = TRUE
+
 /obj/structure/table/PostInitialize()
 
 	var/turf/T = get_turf(src)
@@ -63,13 +65,13 @@
 			O.force_move(src.loc)
 		return TRUE
 
-	return ..()
+	. = ..()
 
 
 
 /obj/structure/table/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		var/obj/structure/table/T = locate() in O.loc.contents
 		if(T)
@@ -83,25 +85,25 @@
 
 		return FALSE
 
-	return ..()
+	. = ..()
 
 /obj/structure/table/Crossed(atom/movable/O)
 
-	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		L.on_table = TRUE
 		L.handle_transform()
 
-	return ..()
+	. = ..()
 
 /obj/structure/table/Uncrossed(atom/movable/O)
 
-	if(O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
+	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O
 		L.on_table = FALSE
 		L.handle_transform()
 
-	return ..()
+	. = ..()
 
 obj/structure/table/rack
 	name = "plastic rack"
@@ -153,7 +155,6 @@ obj/structure/table/wood
 	corner_category = "table_wood"
 
 obj/structure/table/wood/poor
-	name = "wood table"
 	color = "#6B4E3A"
 
 obj/structure/table/wood/magic
@@ -174,6 +175,11 @@ obj/structure/table/reinforced/steel
 
 obj/structure/table/reinforced/steel/dark
 	color = COLOR_STEEL_DARK
+
+obj/structure/table/reinforced/steel/dark/doom
+	name = "table of doom"
+	desc = "Probably shouldn't climb this."
+	desc_extended = "A strange looking dark table with some weird circuitry attached."
 
 obj/structure/table/reinforced/yellow
 	color = "#FFFF00"

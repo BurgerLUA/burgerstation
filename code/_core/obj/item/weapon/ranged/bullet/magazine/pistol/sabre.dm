@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre
-	name = "\improper 12.7mm Sabre"
+	name = "\improper 12.7mm Sabre pistol"
 	desc = "As sharp as a real saber sword, hurts just as much too."
-	desc_extended = "A very powerful semiautomatic pistol commonly used by high ranking Syndicate Operatives."
+	desc_extended = "A very powerful automatic pistol commonly used by high ranking Syndicate Operatives as a decorative sidepiece."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm.dmi'
 	icon_state = "inventory"
 	value = 1100
@@ -9,15 +9,15 @@
 	company_type = "Syndicate"
 
 	tier = 2
-	shoot_delay = 2.5
+	shoot_delay = 2.4
 
-	automatic = FALSE
+	automatic = TRUE
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 
-	shoot_sounds = list('sound/weapons/12/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/sabre/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -68,6 +68,8 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_RARE
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_calibre/get_static_spread()
 	return 0.0025
@@ -81,12 +83,12 @@
 	desc_extended = "A modded variant very powerful semiautomatic pistol commonly used by the most elite high ranking Syndicate Operatives. \
 	It is said that it is easier to become an elite syndicate operative than it is to actually obtain this weapon through combat."
 
-	shoot_delay = 2
+	shoot_delay = 2.1
 
 	heat_max = 0.12
 
 	value = 2400
 
-	shoot_sounds = list('sound/weapons/12/shoot_mod.ogg')
-
 	tier = 3
+
+	rarity = RARITY_MYTHICAL

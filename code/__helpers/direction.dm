@@ -21,6 +21,8 @@ proc/direction_to_pixel_offset(var/dir)
 	return A.loc != B.loc && (get_true_4dir(A.dir) & get_dir(A,B))
 
 /proc/get_directional_offsets(var/atom/A,var/atom/B)
+	if(get_turf(A) == get_turf(B))
+		return list(0,0)
 	var/angle = get_angle(A,B)
 	return list(sin(angle),cos(angle))
 
@@ -55,17 +57,19 @@ proc/get_true_4dir(var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
 proc/get_true_4dir_advanced(var/previous_dir,var/dir) //Converts a possible 8 way dir into a 4 way dir.
 
+	. = dir
+
 	switch(dir)
 		if(SOUTHWEST)
-			dir = previous_dir & SOUTH ? SOUTH : WEST
+			. = (previous_dir & SOUTH) ? SOUTH : WEST
 		if(SOUTHEAST)
-			dir = previous_dir & SOUTH ? SOUTH : EAST
+			. = (previous_dir & SOUTH) ? SOUTH : EAST
 		if(NORTHWEST)
-			dir = previous_dir & NORTH ? NORTH : WEST
+			. = (previous_dir & NORTH) ? NORTH : WEST
 		if(NORTHEAST)
-			dir = previous_dir & NORTH ? NORTH : EAST
+			. = (previous_dir & NORTH) ? NORTH : EAST
 
-	return dir
+	return .
 
 /proc/get_dir_advanced(var/atom/A,var/atom/B,var/cardinal_only=FALSE)
 	var/angle = get_angle(A,B)

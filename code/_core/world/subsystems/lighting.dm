@@ -61,12 +61,12 @@ SUBSYSTEM_DEF(lighting)
 
 /subsystem/lighting/proc/CreateLobjForZ(zlevel)
 	. = 0
-	for (var/thing in Z_ALL_TURFS(zlevel))
-		CHECK_TICK_SAFE(tick_usage_max,0)
+	for(var/thing in Z_ALL_TURFS(zlevel))
 		var/turf/T = thing
 		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			new /atom/movable/lighting_overlay(T)
 			. += 1
+		CHECK_TICK_HARD(tick_usage_max)
 
 /subsystem/lighting/on_life()
 

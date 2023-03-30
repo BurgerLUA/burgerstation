@@ -68,26 +68,28 @@
 	return  ( (1-c*0.5)*d) + (d*cos(a*(1/m)*180)*c*0.5)
 */
 
-// https://www.desmos.com/calculator/11gydjmfmd
+// https://www.desmos.com/calculator/4fggsyju5k
 /proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
+
 	if(damage_dealt < 0)
 		CRASH("Damage [damage_dealt] was negative!")
-	if(!damage_dealt || !armor_rating)
-		return damage_dealt
 	if(IS_INFINITY(armor_rating))
 		return 0
-	if(armor_rating <= 0)
+	if(!damage_dealt || !armor_rating)
+		return damage_dealt //No need to calculate.
+
+	if(armor_rating <= 0) //Negative armor rating means bonus damage.
 		return damage_dealt * (1 + (-armor_rating/200))
 
 	var/a = armor_rating
 	var/d = damage_dealt
 	var/c = 0.85 //Cooefient
-	var/m = 100 //Ideal armor rating to negative c (as a percent) damage.
+	var/m = 200 //Ideal armor rating to negative c (as a percent) damage.
 
 	if(armor_rating >= m)
-		return d*c
+		return d*(1-c)
 
-	return  ( (1-c*0.5)*d) + (d*cos(a*(1/m)*180)*c*0.5)
+	return  ((1-c*0.5)*d) + (d*cos(a*(1/m)*180)*c*0.5)
 
 
 //Experimental graph: https://www.desmos.com/calculator/tsnxztlg8s

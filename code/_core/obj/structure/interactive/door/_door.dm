@@ -35,6 +35,10 @@ obj/structure/interactive/door
 
 	powered = FALSE //Set to true if this door is active.
 
+	power_type = POWER_DOOR
+
+	apc_powered = TRUE
+
 /obj/structure/interactive/door/Generate()
 
 	if(spawn_signaller)
@@ -49,44 +53,6 @@ obj/structure/interactive/door
 		locked = TRUE
 
 	. = ..()
-
-/obj/structure/interactive/door/Destroy()
-
-	if(apc_powered)
-		var/area/A = get_area(src)
-		if(A.requires_power)
-			update_power_draw(0)
-			A.powered_doors -= src
-
-	. = ..()
-
-/obj/structure/interactive/door/Finalize()
-
-	if(apc_powered)
-		var/area/A = get_area(src)
-		if(A.requires_power)
-			A.powered_doors += src
-		else
-			apc_powered = FALSE
-
-	. = ..()
-
-	update_sprite()
-
-/obj/structure/interactive/door/post_move(var/atom/old_loc)
-	. = ..()
-	if(apc_powered)
-		if(is_turf(old_loc))
-			var/area/A = old_loc.loc
-			if(A.requires_power)
-				update_power_draw(0)
-				A.powered_doors -= src
-		if(is_turf(src.loc))
-			var/area/A = src.loc.loc
-			if(A.requires_power)
-				A.powered_doors += src
-			else
-				apc_powered = FALSE
 
 obj/structure/interactive/door/update_icon()
 	..()
@@ -151,11 +117,14 @@ obj/structure/interactive/door/proc/close(var/mob/caller,var/lock = FALSE,var/fo
 
 /obj/structure/interactive/door/proc/unlock(var/mob/caller,var/force = FALSE)
 	locked = FALSE
+	if(initial(allow_path))
+		allow_path = TRUE
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/door/proc/lock(var/mob/caller,var/force = FALSE)
 	locked = TRUE
+	allow_path = FALSE
 	update_sprite()
 	return TRUE
 
@@ -187,21 +156,32 @@ obj/structure/interactive/door/metal
 /obj/structure/interactive/door/get_power_draw()
 	return 10
 
+/*
 /obj/structure/interactive/door/update_power_draw(var/desired_power_draw,var/reset=FALSE)
 
-	var/area/A = null
+	var/area/A = get_area(src)
 
-	A = get_area(src)
-	if(!A.linked_apc)
-		desired_power_draw = 0
-	if(!A.requires_power)
-		desired_power_draw = 0
+	if(A)
+		if(!A.requires_power || !A.linked_apc)
+			desired_power_draw = 0
 
-	desired_power_draw = max(0,desired_power_draw)
+		desired_power_draw = max(0,desired_power_draw)
 
-	if(desired_power_draw != power_draw)
-		if(!reset) A.power_draw -= power_draw
-		power_draw = desired_power_draw
-		A.power_draw += power_draw
+		if(desired_power_draw != power_draw)
+			if(!reset) A.power_draw -= power_draw
+			power_draw = desired_power_draw
+			A.power_draw += power_draw
+	else
+		power_draw = 0
+
+	update_atom_light()
+	update_sprite()
 
 	return TRUE
+*/
+
+obj/structure/interactive/door/Finalize()
+	. = ..()
+	update_sprite()
+	if(locked)
+		allow_path = FALSE

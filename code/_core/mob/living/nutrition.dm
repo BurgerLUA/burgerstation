@@ -4,7 +4,7 @@
 	nutrition = clamp(nutrition + nutrition_amount,0,nutrition_max_hard)
 	return nutrition_amount
 
-/mob/living/proc/add_hydration(var/hydration_amount,var/update=TRUE)
+/mob/living/proc/add_hydration(var/hydration_amount)
 	hydration = clamp(hydration + hydration_amount,0,hydration_max)
 	return hydration_amount
 
@@ -25,5 +25,4 @@
 	return clamp(hydration/(hydration_max*0.50),0,1)
 
 /mob/living/proc/get_nutrition_quality_mod()
-	. = nutrition_quality
-	return clamp(. / nutrition_quality_max,0,1.25)
+	return 0.5 + clamp(nutrition_quality / nutrition_quality_max,0,1)*0.5

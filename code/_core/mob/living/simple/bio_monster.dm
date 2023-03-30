@@ -34,7 +34,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 14
+	level = 7
 
 /mob/living/simple/bio_monster/post_death()
 	. = ..()

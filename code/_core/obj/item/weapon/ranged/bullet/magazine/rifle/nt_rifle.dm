@@ -10,13 +10,13 @@
 
 	tier = 1
 
-	shoot_delay = 2
+	shoot_delay = 1.8
 
 	automatic = TRUE
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/rifle.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/nt_rifle/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -76,9 +76,11 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.02
 
+	rarity = RARITY_COMMON
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_static_spread()
-	return 0.002
+	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/standard/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

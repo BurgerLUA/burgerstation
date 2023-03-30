@@ -31,9 +31,6 @@
 
 	size = SIZE_1
 
-/obj/item/container/cigarette/get_examine_list(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
-
 /obj/item/container/cigarette/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	if(!lit)
 		var/damagetype/DT = all_damage_types[object.get_damage_type(caller,src)]
@@ -87,16 +84,6 @@
 
 	. = ..()
 
-/obj/item/container/cigarette/update_sprite()
-	. = ..()
-	if(is_inventory(loc)) //Snowflake code, do not remove.
-		var/obj/hud/inventory/I = loc
-		if(I.worn && is_advanced(I.owner))
-			var/mob/living/advanced/A = I.owner
-			A.remove_overlay("\ref[src]")
-			if(src in I.contents)
-				I.update_worn_icon(src)
-
 /obj/item/container/cigarette/update_overlays()
 	if(lit && reagents)
 		var/pixel_offset = FLOOR(clamp(reagents.volume_current/2,0,10),1) - 10
@@ -111,7 +98,7 @@
 		if(I.owner && I.owner.reagents)
 			reagents.transfer_reagents_to(I.owner.reagents,consume_amount*multiplier,caller=I.owner,include_abstract=TRUE)
 			return TRUE
-	reagents.splash(null,get_turf(src),consume_amount,TRUE,1) //Just remove the reagents if there is no one to add it to.
+	reagents.splash(null,get_turf(src),consume_amount*0.25,TRUE,1) //Just remove the reagents if there is no one to add it to.
 	return TRUE
 
 /obj/item/container/cigarette/think()

@@ -27,7 +27,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	level = 40
+	level = 22
 
 
 /mob/living/simple/rat_king/post_death()

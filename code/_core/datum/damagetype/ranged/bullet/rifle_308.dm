@@ -1,7 +1,7 @@
 /damagetype/ranged/bullet/rifle_308
 	attack_damage_base = list(
-		BLUNT = 30,
-		PIERCE = 30
+		BLUNT = 40,
+		PIERCE = 20
 	)
 
 	attack_damage_penetration = list(
@@ -15,8 +15,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/rifle_308/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/rifle_308/du
 	damage_mod = DU_MUL
@@ -27,8 +27,8 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 10,
-		PIERCE = 50
+		BLUNT = 20,
+		PIERCE = 40
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -48,8 +48,8 @@
 	penetration_mod = DU_MUL
 
 /damagetype/ranged/bullet/rifle_762mm/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/rifle_762mm/premium
 	damage_mod = PREMIUM_MUL

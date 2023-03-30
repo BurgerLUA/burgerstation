@@ -38,10 +38,10 @@
 
 	for(var/k in .)
 		var/obj/projectile/P = k
-		reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller)
-
-/obj/item/weapon/ranged/reagent_sprayer/get_examine_list(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
+		if(!P.reagents)
+			log_error("Warning: Could not transfer reagents from [src.get_debug_name()] to [P.get_debug_name()] as it had no reagent container!")
+			continue
+		reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller,check_recipes=FALSE) //Recipes aren't checked here because there is no need and it will cause race conditions otherwise.
 
 /obj/item/weapon/ranged/reagent_sprayer/spray_bottle
 	name = "spray bottle"
@@ -124,3 +124,19 @@
 
 /obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/get_base_spread()
 	return 0.1
+
+
+
+
+/obj/item/weapon/ranged/reagent_sprayer/mega_sprayer
+	name = "mega sprayer"
+	reagents = /reagent_container/beaker/bucket
+	reagent_per_shot = 20
+	icon = 'icons/obj/item/weapons/ranged/chem_sprayer.dmi'
+
+	size = SIZE_3
+	weight = 15
+
+	value = 300
+
+	dan_mode = FALSE

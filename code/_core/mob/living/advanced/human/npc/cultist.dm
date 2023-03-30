@@ -23,11 +23,11 @@
 	name = "ancient cultist"
 	loadout = /loadout/cultist/old
 
-	level = 60
+	level = 28
 
 
 /mob/living/advanced/npc/cultist/hard
 	name = "master cultist"
 	loadout = /loadout/cultist/hard
 
-	level = 90
+	level = 50

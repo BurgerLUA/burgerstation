@@ -18,12 +18,13 @@
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
 	size = 0.01
-	value = 2
 
 	jam_chance = 100 //Required.
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/tranq_11m/surplus
 	name = "\improper surplus 11.43x25mm tranquilizer cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/tranq_11mm/surplus
 	misfire_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN

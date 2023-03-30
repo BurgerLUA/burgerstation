@@ -2,6 +2,7 @@
 	ignore_immortal = TRUE
 	should_find_weapon = FALSE
 	roaming_distance = VIEW_RANGE
+	enable_loc_safety = FALSE
 
 /ai/advanced/beef/check_aggression(var/mob/living/target,var/aggression_override = src.aggression)
 

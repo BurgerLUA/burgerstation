@@ -22,14 +22,14 @@ var/global/enable_friendly_fire = FALSE
 		var/turf/T = get_turf(victim)
 		if(!T)
 			return FALSE
-		if(is_player(victim) && SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
-			return TRUE
+		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+			return iff_attacker == "NanoTrasen"
 		var/area/A = T.loc
 		if(A)
 			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
-				return TRUE //Allow anything.
+				return iff_attacker == "NanoTrasen"
 			if(A.flags_area & FLAG_AREA_NO_IFF)
-				return TRUE
+				return iff_attacker == "NanoTrasen"
 
 	if(iff_attacker != victim.iff_tag || iff_attacker == victim.iff_tag) //Unfriendly.
 		return hostile
@@ -42,14 +42,14 @@ var/global/enable_friendly_fire = FALSE
 		var/turf/T = get_turf(victim)
 		if(!T)
 			return FALSE
-		if(is_player(victim) && SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
-			return TRUE
+		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+			return loyalty_attacker == "NanoTrasen"
 		var/area/A = T.loc
 		if(A)
 			if(enable_friendly_fire && (A.flags_area & FLAG_AREA_ALLOW_DEATHMATCH))
-				return TRUE //Allow anything.
+				return loyalty_attacker == "NanoTrasen"
 			if(A.flags_area & FLAG_AREA_NO_LOYALTY)
-				return TRUE
+				return loyalty_attacker == "NanoTrasen"
 
 	if(loyalty_attacker != victim.loyalty_tag || loyalty_attacker == null) //Unfriendly.
 		return hostile

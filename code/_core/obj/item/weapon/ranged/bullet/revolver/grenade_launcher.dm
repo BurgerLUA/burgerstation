@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher
-	name = "\improper Grenade Thumper"
+	name = "\improper 40mm Grenade Launcher"
 	desc = "Blooper"
 	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher.dmi'
@@ -8,10 +8,12 @@
 
 	company_type = "Solarian"
 
+	tier_type = "grenade launcher"
+
 	tier = 1
 	bypass_balance_check = TRUE
 
-	shoot_delay = 20
+	shoot_delay = 10
 
 	automatic = TRUE
 
@@ -19,7 +21,7 @@
 
 	insert_limit = 1
 
-	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/grenade_launcher/shoot.ogg')
 
 	size = SIZE_4
 	weight = 12
@@ -65,7 +67,7 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.04
 
-	value_burgerbux = 1
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/get_base_spread()
 	return 0.1
@@ -79,15 +81,15 @@
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount
 	attachment_whitelist = list() //no
-	value = -1
+	value = 0
 	open = TRUE
 	can_shoot_while_open = TRUE
 
-/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount/click_self(var/mob/caller)
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/undermount/click_self(var/mob/caller,location,control,params)
 	return TRUE
 
 /obj/item/weapon/ranged/bullet/revolver/grenade_launcher/multibarrel
-	name = "\improper revolving grenade launcher"
+	name = "40mm revolving grenade launcher"
 	desc = "Thoomp! Thoomp! Thoomp!"
 	desc_extended = "An old grenade launcher from a past era, uses 40mm grenades."
 	icon = 'icons/obj/item/weapons/ranged/grenade_launcher_multi.dmi'
@@ -103,3 +105,19 @@
 	automatic = FALSE
 
 	bullet_count_max = 4
+
+	rarity = RARITY_RARE
+
+/obj/item/weapon/ranged/bullet/revolver/grenade_launcher/nanotrasen
+	name = "\improper 40mm Grenade Thumper"
+	desc = "Thumper."
+	desc_extended = "A modern single capacity grenade launcher for a modern corporate army."
+	icon = 'icons/obj/item/weapons/ranged/grenade_launcher_nt.dmi'
+	icon_state = "inventory"
+	value = 2400
+
+	shoot_delay = 20
+
+	company_type = "NanoTrasen"
+
+	rarity = RARITY_RARE

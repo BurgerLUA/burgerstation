@@ -11,11 +11,11 @@
 
 	value = 800
 
-	shoot_delay = 1.4
+	shoot_delay = 1.1
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/handheld/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -71,6 +71,7 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/smg/handheld/get_static_spread()

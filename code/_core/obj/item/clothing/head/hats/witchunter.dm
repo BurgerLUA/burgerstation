@@ -1,5 +1,5 @@
-/obj/item/clothing/head/hat/witchunter
-	name = "witchunter hat"
+/obj/item/clothing/head/hat/witchhunter
+	name = "witchhunter hat"
 	icon = 'icons/obj/item/clothing/hats/witchunter.dmi'
 
 	desc = "Avoid all eye contact."

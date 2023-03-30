@@ -6,6 +6,6 @@
 
 	dna = /dna/human
 
-	level = 25
+	level = 22
 
 	loadout = /loadout/crystal_guardian

@@ -7,7 +7,7 @@ var/global/list/all_fog = list()
 	icon = 'icons/obj/effects/fog.dmi'
 	icon_state = "fog"
 	plane = PLANE_EFFECT
-	layer = 100
+	layer = LAYER_GHOST
 	alpha = 255
 
 	collision_flags = FLAG_COLLISION_WALL

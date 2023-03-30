@@ -31,9 +31,9 @@
 		last_movement_proc = "projectile count override"
 		return TRUE
 
-	if(get_dist(owner,start_turf) >= 10)
+	if(get_dist(owner,home_turf) >= 10)
 		owner.movement_flags = MOVEMENT_WALKING
-		owner.move_dir = get_dir(owner,start_turf)
+		owner.move_dir = get_dir(owner,home_turf)
 		owner_as_can_man.charge_steps = 0
 		last_movement_proc = "reset override"
 		return TRUE
@@ -69,7 +69,7 @@
 	else if(shot_delay < initial(shot_delay))
 		shot_delay = initial(shot_delay)
 		rev_up = 0
-				
+
 
 	if(owner_as_can_man.charge_steps > 0)
 		return FALSE
@@ -92,13 +92,13 @@
 		projectile_ramp = initial(projectile_ramp)
 		return FALSE
 
-	if(projectile_delay + projectile_ramp > 0) 
+	if(projectile_delay + projectile_ramp > 0)
 		projectile_delay--
 	else
 		projectile_delay = initial(projectile_delay)
 
 	if(is_fire_tick)
-		play_sound('sound/weapons/canman_shot.ogg',get_turf(owner))
+		play_sound('sound/weapons/ranged/misc/canman_shot.ogg',get_turf(owner))
 		owner.shoot_projectile(
 			owner,
 			objective_attack,

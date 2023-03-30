@@ -58,15 +58,20 @@
 	if(.)
 		handle_blocking(TRUE)
 
+/mob/living/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+
+	. = ..()
+
+	if(src.ai)
+		if(old_chunk) old_chunk.ai -= src.ai
+		if(new_chunk) new_chunk.ai += src.ai
+
 /mob/living/post_move(var/atom/old_loc)
 
 	. = ..()
 
-	if(qdeleting || !.)
+	if(!.)
 		return .
-
-	if(is_sneaking)
-		on_sneak()
 
 	if(old_turf && length(old_turf.old_living))
 		old_turf.old_living -= src
@@ -77,9 +82,21 @@
 			T.old_living = list()
 		T.old_living += src
 		src.old_turf = T
-
 		if(!src.z)
 			handle_blocking()
+		if(is_simulated(loc))
+			var/turf/simulated/S = T
+			S.do_footstep(src,FALSE)
+
+	if(is_simulated(loc))
+		var/turf/simulated/S = loc
+		S.do_footstep(src,TRUE)
+
+	if(qdeleting)
+		return .
+
+	if(is_sneaking)
+		on_sneak()
 
 	climb_counter = 0
 
@@ -93,6 +110,12 @@
 			var/obj/item/wet_floor_sign/WFS = locate() in range(2,S)
 			if(!WFS || move_mod > 2)
 				add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+
+
+
+
+
+
 
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
@@ -165,7 +188,7 @@
 	if(move_dir) //If you're actually moving.
 		if(!can_move())
 			return FALSE
-		if(grabbing_hand)
+		if(grabbing_hand && !ai) //AI does their own resist in their code.
 			resist()
 			return FALSE
 		if(STATUS_EFFECT_MAGNITUDE(src,SLEEP) == -1)
@@ -192,7 +215,12 @@
 		. *= max(2 - stealth_mod*0.5,1)
 
 	if(ckey_last)
-		. *= 2 - min(1.5,get_nutrition_mod() * get_hydration_mod() * (0.5 + get_nutrition_quality_mod()*0.5))
+		var/hydration_nutrition_mod = get_nutrition_mod() * get_hydration_mod()
+		var/nutritional_quality = get_nutrition_quality_mod()
+		if(has_status_effect(DRUGGY))
+			nutritional_quality = max(1,nutritional_quality)
+		hydration_nutrition_mod = clamp(hydration_nutrition_mod*nutritional_quality,0,1)
+		. *= 2 - hydration_nutrition_mod
 
 	if(intoxication)
 		. *= 1 + intoxication*0.003
@@ -200,10 +228,14 @@
 	if(has_status_effect(SLOW))
 		. *= 2
 
-	if(!horizontal)
-		if(!has_status_effect(ADRENALINE))
-			. *= 1.25
+	if(!horizontal) //You're standing up.
 		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
+
+	if(health)
+		var/modded_health = (src.health.health_current + src.pain_regen_buffer*0.25) - max(0,src.health.damage[PAIN] - src.pain_regen_buffer)
+		. *= 2 - clamp(modded_health/src.health.health_max + 0.25,0,1)
+		if(!has_status_effect(ADRENALINE))
+			. *= 2 - clamp( (src.health.stamina_current/src.health.stamina_max) + 0.75,0,1)
 
 	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25
@@ -238,17 +270,18 @@
 
 /mob/living/Cross(atom/movable/O,atom/oldloc)
 
-	if(is_living(O) && O.density) //A living being is crossing us.
+	if(O.density && is_living(O)) //A living being is crossing us.
 		var/mob/living/L = O
 		if(L.horizontal || src.horizontal)
 			//If the crosser is horizontal, or the src is horizontal, you can cross.
 			return TRUE
-		if((!L.ai || !src.ai))
-			if(allow_helpful_action(L.loyalty_tag,src)) //If the crosser is not an AI and we're on the same team, allow it.
-				return TRUE
-		if(L.size >= SIZE_ANIMAL)
-			//Can't cross bud. You're an AI. No AI clogging.
-			return FALSE
+		if(L.size < SIZE_ANIMAL || src.size < SIZE_ANIMAL)
+			//If the crosser or the src is smaller than an animal, you can cross.
+			return TRUE
+		if((!L.ai || !src.ai) && allow_helpful_action(L.loyalty_tag,src))
+			//If the crosser is not an AI and we're on the same team, allow it.
+			return TRUE
+
 
 	. = ..()
 

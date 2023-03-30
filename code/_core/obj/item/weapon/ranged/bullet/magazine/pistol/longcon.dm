@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/longcon
-	name = ".45 LongCon Pistol"
+	name = ".45 LongCon pistol"
 	desc = "A .45 that looks like a 9mm."
 	desc_extended = "A lightweight and compact Syndicate pistol chambered in .45. Tiny, but still gets the job done."
 	value = 800
@@ -10,7 +10,7 @@
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_4.dmi'
 	shoot_delay = 2
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/longcon/shoot.ogg')
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
@@ -65,6 +65,8 @@
 
 	attachment_undermount_offset_x = 21 - 16
 	attachment_undermount_offset_y = 18 - 16
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/longcon/get_static_spread()
 	return 0.0045

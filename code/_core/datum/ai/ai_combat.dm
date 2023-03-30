@@ -9,8 +9,8 @@
 	owner.move_dir = 0
 
 	var/list/params = list(
-		PARAM_ICON_X = pick(target_distribution_x),
-		PARAM_ICON_Y = pick(target_distribution_y),
+		PARAM_ICON_X = 16,
+		PARAM_ICON_Y = 16,
 		"left" = 0,
 		"right" = 0,
 		"middle" = 0,
@@ -31,6 +31,9 @@
 	return TRUE
 
 /ai/proc/handle_attacking()
+
+	if(!can_attack)
+		return FALSE
 
 	if(!objective_attack)
 		return FALSE
@@ -119,6 +122,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 
 /ai/proc/is_enemy(var/atom/A,var/safety_check=TRUE,var/aggression_check=TRUE)
 
+	if(A.qdeleting || !A.finalized)
+		return FALSE
 	/*
 	if(istype(A,/mob/living/vehicle/))
 		var/mob/living/vehicle/V = A
@@ -171,31 +176,34 @@ var/global/list/difficulty_to_ai_modifier = list(
 		if(1)
 			return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)
 		if(2)
-			return allow_hostile_action(owner.loyalty_tag,target)
+			if(target.is_player_controlled())
+				return allow_hostile_action(owner.loyalty_tag,target)
+			else
+				return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)
 		if(3)
+			return allow_hostile_action(owner.loyalty_tag,target)
+		if(4)
 			return TRUE
 
 	return FALSE
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
+	set_active(TRUE)
+
 	if(is_living(attacker) && !stealthy && attacker != objective_attack)
 		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
 				attackers[attacker] = TRUE
-			if(!CALLBACK_EXISTS("set_new_objective_\ref[src]") && (!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*2)))
-				if(reaction_time)
-					CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,attacker)
-				else
-					set_objective(attacker)
+			if(!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*1.25))
+				set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
-			set_alert_level(ALERT_LEVEL_CAUTION,FALSE,attacker,attacker)
-			CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,attacker)
-
-	if(combat_dialogue && !stealthy && next_talk <= world.time && damage_amount >= 30 && prob(20+damage_amount))
-		var/returning_dialogue = SSdialogue.get_combat_dialogue(combat_dialogue,"self_hit",damage_amount)
-		if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
-		next_talk = world.time + SECONDS_TO_DECISECONDS(5)
+			set_alert_level(ALERT_LEVEL_COMBAT,attacker,attacker)
+	if(owner.combat_dialogue && next_talk <= world.time && !stealthy && damage_amount >= 30)
+		if(owner.health && owner.health.health_current <= owner.health.health_max*0.25 && prob(20+damage_amount))
+			do_dialogue("combat_losing",damage_amount)
+		else if(prob(20+damage_amount))
+			do_dialogue("self_hit",damage_amount)
 
 
 	return TRUE

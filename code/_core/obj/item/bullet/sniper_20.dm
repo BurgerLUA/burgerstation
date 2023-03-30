@@ -17,18 +17,18 @@
 	projectile_speed = BULLET_SPEED_SNIPER
 
 	size = 0.2
-	value = 20
 
 	penetrations = 3
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/sniper_20/surplus
 	name = "\improper surplus 20x117mm sniper round"
 	damage_type_bullet = /damagetype/ranged/bullet/bmg_50/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN
 
 /obj/item/bullet_cartridge/sniper_20/du
 	name = "\improper DU 20x117mm sniper round"
 	rarity = RARITY_RARE
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/du
-	value = 40

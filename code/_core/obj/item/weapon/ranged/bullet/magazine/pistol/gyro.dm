@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet
-	name = "\improper 20mm GyroPistol"
-	desc = "Overdesigned and a little overpowered."
-	desc_extended = "A prototype syndicate pistol that uses minature rockets as projectiles."
+	name = "\improper 20mm GyroJet pistol"
+	desc = "Putting the \"launch\" in grenade launcher."
+	desc_extended = "A prototype syndicate pistol that uses minature explosive \"GyroJet\" rockets as projectiles."
 	icon = 'icons/obj/item/weapons/ranged/pistol/gyrojet.dmi'
 	icon_state = "inventory"
 	value = 800
@@ -16,7 +16,7 @@
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/gyrojet/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/gyrojet/shoot.ogg')
 
 	size = SIZE_3
 	weight = 12
@@ -68,6 +68,7 @@
 	tier = 3
 	bypass_balance_check = TRUE
 
+	rarity = RARITY_RARE
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/gyrojet/get_static_spread()

@@ -4,9 +4,8 @@
 		k = "\ref[object]"
 
 	if(overlays_assoc[k])
+		log_error("An overlay of reference [k] for [object.get_debug_name()] already exists! Removing and replacing...")
 		remove_overlay(k)
-		CRASH("An overlay of reference [k] already exists! Removing and replacing...")
-
 
 	var/image/overlay/O = new /image/overlay
 	if(object)
@@ -28,7 +27,7 @@
 	if(!desired_never_blend)
 		if(desired_additional_blends)
 			O.additional_blends = desired_additional_blends
-		else if(isobj(object))
+		else if(object && isobj(object))
 			var/obj/B = object
 			O.additional_blends = B.additional_blends
 
@@ -83,8 +82,12 @@ mob/living/advanced/proc/remove_overlay(var/k)
 		O.initial_icon_state = desired_icon_state
 	if(desired_color)
 		O.color = desired_color
-	if(desired_additional_blends)
-		O.additional_blends = desired_additional_blends
+	if(!desired_never_blend)
+		if(desired_additional_blends)
+			O.additional_blends = desired_additional_blends
+		else if(O.attached_object && isobj(O.attached_object))
+			var/obj/B = O.attached_object
+			O.additional_blends = B.additional_blends
 	if(desired_transform)
 		O.transform = desired_transform
 	if(isnum(desired_pixel_x))

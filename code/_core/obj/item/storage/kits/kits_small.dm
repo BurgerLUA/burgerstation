@@ -98,7 +98,7 @@
 
 /obj/item/storage/kit/small/syndicate
 	name = "combat hypospray kit"
-	desc_extended = "A first aid kit that contains a combat hypospray and a medium bottle of morphine."
+	desc_extended = "A first aid kit that contains a combat hypospray and some bottles of basic healing chemicals."
 	icon_state = "tactical-mini"
 
 	size = SIZE_2
@@ -111,5 +111,7 @@
 
 /obj/item/storage/kit/small/syndicate/filled/fill_inventory()
 	new /obj/item/container/syringe/hypodermic/hypospray/combat(src)
-	new /obj/item/container/simple/beaker/bottle/medium/morphine(src)
+	new /obj/item/container/simple/beaker/bottle/medium/bicaridine(src)
+	new /obj/item/container/simple/beaker/bottle/medium/kelotane(src)
+	new /obj/item/container/simple/beaker/bottle/medium/dylovene(src)
 	. = ..()

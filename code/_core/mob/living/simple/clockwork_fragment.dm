@@ -24,7 +24,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 20
+	level = 12
 
 /mob/living/simple/clockwork_fragment/post_death()
 	. = ..()

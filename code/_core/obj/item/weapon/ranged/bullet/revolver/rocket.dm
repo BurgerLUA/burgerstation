@@ -8,6 +8,8 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "rocket launcher"
+
 	tier = 3
 	bypass_balance_check = TRUE
 
@@ -15,7 +17,7 @@
 
 	bullet_count_max = 1
 
-	shoot_sounds = list('sound/weapons/rocket/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/rocket/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -37,6 +39,8 @@
 	movement_spread_base = 1
 
 	uses_until_condition_fall = 0
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/revolver/rocket/get_base_spread()
 	return 0.02

@@ -46,6 +46,11 @@
 		var/mob/living/L = grabbed_object
 		L.handle_transform()
 		L.stat_elements_to_update |= L.stat_elements["resist"]
+		if(is_living(caller))
+			var/mob/living/LC = caller
+			if(LC.has_status_effect(BUFF))
+				reinforce_grab(caller,force=TRUE)
+
 	HOOK_CALL_ADV("grab_changed",owner,args)
 
 	return TRUE
@@ -54,6 +59,17 @@
 
 	if(!grabbed_object)
 		return FALSE
+
+	if(is_living(owner))
+		var/mob/living/L = owner
+		if(L.dead)
+			release_object(owner)
+			return FALSE
+		if(is_living(grabbed_object) && L.ai)
+			var/mob/living/G = grabbed_object
+			if(G.dead)
+				release_object(owner)
+				return FALSE
 
 	if(!grabbed_object.can_be_grabbed(owner) || !can_grab(owner,grabbed_object))
 		release_object(owner)
@@ -101,9 +117,12 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/reinforce_grab(var/mob/living/caller)
+/obj/hud/inventory/proc/reinforce_grab(var/mob/living/caller,var/force=FALSE)
 
-	if(world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
+	if(!grabbed_object)
+		CRASH("Tried calling reinforce_grab without a grabbed object!")
+
+	if(!force && world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
 		return FALSE
 
 	if(grab_level > 1)

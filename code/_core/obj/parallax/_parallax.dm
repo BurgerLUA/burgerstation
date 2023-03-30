@@ -1,5 +1,5 @@
 /obj/parallax
-	name = "the void"
+	name = "space"
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/parallax.dmi'
 	var/ratio = 1 //For every tile moved, move x pixel in the opposite direction.
@@ -53,28 +53,28 @@
 			var/turf/T2 = locate(x_c,y_c,z_c)
 			if(T2) return T2
 
-	. = ..()
+	return null
 
 /obj/parallax/layer1
 	icon_state = "layer1"
-	layer = 1
+	layer = LAYER_EFFECT + 1
 	ratio = 0
 	mouse_opacity = 2
 
 /obj/parallax/layer2
 	icon_state = "layer2"
-	layer = 2
+	layer = LAYER_EFFECT + 2
 	blend_mode = BLEND_ADD
 	ratio = 0.25
 
 /obj/parallax/layer3
 	icon_state = "layer3"
-	layer = 3
+	layer = LAYER_EFFECT + 3
 	blend_mode = BLEND_ADD
 	ratio = 0.5
 
 /obj/parallax/layer4
 	icon_state = "layer4"
-	layer = 4
+	layer = LAYER_EFFECT + 4
 	ratio = 1
 	auto_resize = FALSE

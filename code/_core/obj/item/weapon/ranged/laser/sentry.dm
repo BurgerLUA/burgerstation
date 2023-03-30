@@ -10,7 +10,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
+	shoot_sounds = list('sound/weapons/ranged/misc/sentry.ogg')
 
 	charge_cost = 1
 
@@ -21,7 +21,7 @@
 
 	size = SIZE_3
 
-	value = -1
+	value = 0
 
 	battery = /obj/item/powercell/recharging
 

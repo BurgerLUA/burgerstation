@@ -18,16 +18,18 @@
 	weight = 5
 	size = SIZE_2
 
-/obj/item/weapon/melee/energy/sword/click_self(var/mob/caller)
+	rarity = RARITY_RARE
+
+/obj/item/weapon/melee/energy/sword/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
+			play_sound('sound/weapons/melee/esword/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
+			play_sound('sound/weapons/melee/esword/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 
 /obj/item/weapon/melee/energy/sword/blue

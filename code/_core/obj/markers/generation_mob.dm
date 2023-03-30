@@ -207,8 +207,8 @@
 
 
 /obj/marker/generation/mob/zombie
-	object_to_place = /mob/living/advanced/npc/zombie/civilian
+	object_to_place = /mob/living/advanced/npc/zombie/normal
 	objects_max = 2
 
 /obj/marker/generation/mob/zombie/desert
-	object_to_place = /mob/living/advanced/npc/zombie/desert
+	object_to_place = /mob/living/advanced/npc/zombie/normal

@@ -1,0 +1,1 @@
+#define RUN_PARENT_SAFE . = ..();if(!.) return null;

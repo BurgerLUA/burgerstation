@@ -3,13 +3,13 @@
 	battery = /obj/item/powercell/dummy
 
 	var/charge_per_pump = 100
-	var/pump_sound = 'sound/weapons/shotgun_pump.ogg'
+	var/pump_sound = 'sound/weapons/ranged/generic/shotgun_pump.ogg'
 	var/action_name = "pump"
 
 	var/pump_delay = 1
 
 
-/obj/item/weapon/ranged/energy/pump/click_self(var/mob/caller)
+/obj/item/weapon/ranged/energy/pump/click_self(var/mob/caller,location,control,params)
 
 	if(next_shoot_time > world.time + 1)
 		return TRUE

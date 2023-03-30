@@ -21,7 +21,7 @@
 		var/event/E = SSevents.all_events[k]
 		refactored_list["[E]"] = E
 
-	sortTim(refactored_list,/proc/cmp_path_asc)
+	sort_tim(refactored_list,/proc/cmp_path_asc)
 
 	var/desired_event = input("What event would you like to run?","Event Manager") as null|anything in refactored_list
 
@@ -442,7 +442,7 @@
 		"Revs" = /mob/living/advanced/npc/rev,
 		"Space Soldiers" = /mob/living/advanced/npc/space_soldier,
 		"Tax Collectors" = /mob/living/advanced/npc/tax_collector,
-		"Zombies" = /mob/living/advanced/npc/zombie/civilian,
+		"Zombies" = /mob/living/advanced/npc/zombie/normal,
 		"Custom..." = "Custom...",
 		"Cancel" = "Cancel"
 	)

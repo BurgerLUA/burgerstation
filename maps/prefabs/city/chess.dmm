@@ -29,6 +29,10 @@
 	icon_state = "sink";
 	dir = 8
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/chess/bathroom)
 "ah" = (
@@ -43,6 +47,7 @@
 /area/mission/prefab/city/chess)
 "ak" = (
 /obj/structure/interactive/door/airlock,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/chess/bathroom)
 "al" = (
@@ -83,6 +88,10 @@
 "as" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/lighting/fixture/tube/station,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/tile/blue,
 /area/mission/prefab/city/chess)
 "at" = (
@@ -248,6 +257,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile/red,
 /area/mission/prefab/city/chess)
 "be" = (
@@ -318,6 +328,27 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/chess/bathroom)
+"br" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/red,
+/area/mission/prefab/city/chess)
+"bs" = (
+/obj/structure/interactive/lighting/fixture/tube/station{
+	icon_state = "preview";
+	dir = 1
+	},
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/red,
+/area/mission/prefab/city/chess)
+"bt" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
+/turf/simulated/floor/tile/blue,
+/area/mission/prefab/city/chess)
 
 (1,1,1) = {"
 ac
@@ -423,7 +454,7 @@ aR
 aR
 aR
 aR
-bo
+br
 ac
 ac
 "}
@@ -549,7 +580,7 @@ aO
 aQ
 aS
 ba
-bd
+bs
 ac
 aP
 "}
@@ -576,7 +607,7 @@ aB
 aJ
 aH
 ac
-bm
+bt
 ap
 ap
 ap

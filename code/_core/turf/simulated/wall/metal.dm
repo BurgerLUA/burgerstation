@@ -16,7 +16,7 @@
 	window_blend = TRUE
 	reinforced_blend = BLEND_MULTIPLY
 
-/turf/simulated/wall/metal/on_destruction(var/mob/caller,var/damage = FALSE)
+/turf/simulated/wall/metal/on_destruction(var/damage = TRUE)
 
 	var/obj/structure/interactive/construction/girder/G = new(src)
 	G.material_id = material_id
@@ -26,7 +26,7 @@
 
 	create_destruction(src,list(/obj/item/material/sheet/ = 1),material_id)
 
-	return ..()
+	. = ..()
 
 /*
 /turf/simulated/wall/metal/rusted
@@ -48,24 +48,6 @@
 	reinforced_color = COLOR_PLASTEEL
 	health_base = 3000
 
-/turf/simulated/wall/metal/reinforced/constructed
-	name = "plasteel reinforced steel wall"
-	desc = "Try getting through that"
-	desc_extended = "It's a wall made of steel reinforced with plasteel, really tough."
-	icon_state = "wall_ref"
-	health_base = 3000
-
-/turf/simulated/wall/metal/reinforced/constructed/proc/recalc(var/material/M)
-	var/material_name = initial(M.name)
-	name = "[material_name] reinforced wall"
-	desc_extended = "Its a [material_name] wall, but reinforced with extra [material_name]."
-	material_id = M
-	reinforced_material_id = M
-	color = initial(M.color)
-	reinforced_color = initial(M.color)
-	health_base += initial(M.bonus_wall_health)
-	update_sprite()
-
 /turf/simulated/wall/metal/reinforced/hull
 	name = "adamantium-carbon reinforced plasteel wall"
 	desc = "Try getting through that"
@@ -74,24 +56,6 @@
 	color = "#48482B"
 	reinforced_color = COLOR_ADAMANITUM_CARBON
 	health = null
-
-/turf/simulated/wall/metal/reinforced/syndicate
-	icon = 'icons/turf/wall/metal/syndicate.dmi'
-	desc = "Dont even bother."
-	color = COLOR_IRON
-	material_id = /material/adamantium_carbon
-	reinforced_material_id = /material/adamantium_carbon
-	reinforced_color = "#FF0000"
-	health = null
-	health_base = INFINITY //TRY BREAKING IT NOW I DARE YOU.
-
-/turf/simulated/wall/metal/reinforced/syndicate/on_damage_received(atom/atom_damaged, atom/attacker, atom/weapon, damagetype/DT, list/damage_table, damage_amount, critical_hit_multiplier, stealthy)
-	health.health_current = INFINITY //BREAK IT NOW I FUCKING DARE YOU.
-	. = ..()
-
-
-/turf/simulated/wall/metal/reinforced/syndicate/shuttle
-	plane = PLANE_SHUTTLE
 
 /*
 /turf/simulated/wall/metal/reinforced/rusted
@@ -132,8 +96,10 @@
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
 	reinforced_color = "#FFFFFF"
-	health_base = 3000
+	health = null
 
+/turf/simulated/wall/metal/syndicate/reinforced/shuttle
+	plane = PLANE_SHUTTLE
 
 /turf/simulated/wall/metal/rev
 	name = "tinted steel wall"
@@ -165,11 +131,14 @@
 	plane = PLANE_SHUTTLE
 
 	color = "#FFFFFF"
-	map_color = "#AAAAAA"
-
 
 /turf/simulated/wall/metal/shuttle/off_white
 	color = "#A2A6AA"
+
+/turf/simulated/wall/metal/shuttle/dark
+	color = COLOR_GREY_DARK
+	reinforced_material_id = /material/plasteel
+	reinforced_color = "#FFFFFF"
 
 /turf/simulated/wall/metal/circuit
 	name = "techno steel wall"
@@ -182,3 +151,33 @@
 	color = COLOR_STEEL
 	material_id = /material/steel
 	health_base = 1000
+
+/turf/simulated/wall/metal/circuit/reinforced
+	name = "reinforced techno steel wall"
+	icon_state = "wall_ref"
+	reinforced_material_id = /material/plasteel
+	reinforced_color = "#FFFFFF"
+	health = null //Indestructable
+
+/turf/simulated/wall/metal/solarian
+	name = "solarian steel wall"
+	icon = 'icons/turf/wall/metal/solarian.dmi'
+	icon_state = "wall"
+	corner_icons = TRUE
+
+	destruction_turf = /turf/simulated/floor/plating/solarian
+
+	color = "#83918C"
+	material_id = /material/steel
+	health_base = 1000
+
+/turf/simulated/wall/metal/solarian/reinforced
+	name = "plasteel reinforced solarian steel wall"
+	icon_state = "wall_ref"
+	reinforced_material_id = /material/plasteel
+	reinforced_color = "#FFFFFF"
+	health_base = 3000
+
+/turf/simulated/wall/metal/magic
+	color = "#8034B2"
+	icon = 'icons/turf/wall/metal/magic.dmi'

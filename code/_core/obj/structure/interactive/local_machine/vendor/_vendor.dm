@@ -6,6 +6,8 @@ var/global/list/equipped_antags = list()
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "generic"
 
+	var/special = FALSE //Is this a special vendor that shouldn't be considered for loadout purposes?
+
 	//Gen means generate based on initial icon_state
 	var/icon_state_broken = "gen"
 	var/icon_state_off = "gen"
@@ -31,7 +33,8 @@ var/global/list/equipped_antags = list()
 
 	bullet_block_chance = 75
 
-	plane = PLANE_OBJ
+	plane = PLANE_OBJ_LARGE
+	layer = LAYER_LARGE_OBJ
 
 	pixel_y = 8
 
@@ -52,7 +55,11 @@ var/global/list/equipped_antags = list()
 
 	health = /health/construction/
 
+	health_base = 500
+
 	apc_powered = TRUE
+
+	var/use_unlock_requirements = TRUE
 
 /obj/structure/interactive/vending/proc/vend_random(var/count=1) //For malfunctions/hacking/destruction
 
@@ -74,7 +81,7 @@ var/global/list/equipped_antags = list()
 	return TRUE
 
 
-/obj/structure/interactive/vending/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/vending/on_destruction(var/damage = TRUE)
 	. = ..()
 	if(!broken)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),/material/glass)
@@ -150,7 +157,7 @@ var/global/list/equipped_antags = list()
 		flick("[initial(icon_state)]-deny",src)
 		return null
 
-	var/obj/item/new_item = new associated_item.type(get_turf(src))
+	var/obj/item/new_item = new associated_item.type(get_turf(caller))
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	FINALIZE(new_item)
@@ -218,7 +225,8 @@ var/global/list/equipped_antags = list()
 		stored_objects += I
 		I.drop_item(src)
 		I.plane = PLANE_HUD_OBJ
-		I.pixel_y = 4
+		I.pixel_x = initial(I.pixel_x)
+		I.pixel_y = initial(I.pixel_y) + 4
 
 	if(accepts_item)
 		accepts_item = new accepts_item(src)
@@ -275,6 +283,12 @@ var/global/list/equipped_antags = list()
 	var/row=0
 	var/column=0
 
+	var/x_size = 4
+	if(A.client)
+		var/client/C = A.client
+		if(C.settings.loaded_data["compact_mode"])
+			x_size = 3
+
 	for(var/i=1,i<=stored_objects_length,i++)
 		if(row >= 8)
 			row = 0
@@ -284,13 +298,13 @@ var/global/list/equipped_antags = list()
 		V.associated_item = I
 		V.associated_vendor = src
 		V.associated_cost = stored_cost[I.type]
-		V.screen_loc = "LEFT+[1 + (column)*3],TOP-[row+1]"
+		V.screen_loc = "LEFT+[1.5 + (column)*x_size],TOP-[row+1.5]"
 		V.update_owner(A)
 		V.update_sprite()
 		row++
 
 	var/obj/hud/button/close_vendor/CV = new
-	CV.screen_loc = "LEFT+[1 + (column+1)*3],TOP-1"
+	CV.screen_loc = "LEFT+[1.5 + (column+1)*x_size],TOP-1.5"
 	CV.update_owner(A)
 	CV.update_sprite()
 

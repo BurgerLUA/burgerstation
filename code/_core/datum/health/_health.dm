@@ -35,7 +35,7 @@
 	owner = null
 	return ..()
 
-/health/proc/get_damage_multiplier()
+/health/proc/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return damage_multiplier
 
 /health/New(var/desired_owner)
@@ -47,7 +47,7 @@
 	health_current = health_max
 	stamina_current = stamina_max
 	mana_current = mana_max
-	update_health(update_hud = FALSE)
+	update_health()
 	return TRUE
 
 /health/proc/update_health_stats()
@@ -55,7 +55,7 @@
 	stamina_max = owner.stamina_base
 	mana_max = owner.mana_base
 
-/health/proc/get_overall_health()
+/health/proc/get_overall_health() //This shouldn't be used. Use health.health_current instead.
 	. = health_max
 	for(var/damage_type in damage)
 		. -= damage[damage_type]
@@ -104,7 +104,7 @@
 		return new_value - old_value
 	return 0
 
-/health/proc/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE) //Update the health values.
+/health/proc/update_health() //Update the health values.
 	health_current = get_overall_health()
 	return TRUE
 
@@ -136,4 +136,4 @@
 
 
 /health/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
-	return TRUE
+	return FALSE

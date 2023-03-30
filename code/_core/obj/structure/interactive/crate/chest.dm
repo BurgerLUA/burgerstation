@@ -13,6 +13,7 @@
 	open_sound = 'sound/effects/lockpicking/chest_open.ogg'
 	close_sound = 'sound/effects/lockpicking/chest_close.ogg'
 
+	enable_chunk_handling = TRUE
 	enable_chunk_clean = TRUE
 
 /obj/structure/interactive/crate/chest/on_chunk_clean()
@@ -99,10 +100,14 @@ var/global/list/lockpick_difficulty_mul = list(
 	loot = /loot/treasure
 	var/chance_none = 0
 
-/obj/structure/interactive/crate/chest/filled/Generate()
-	. = ..()
+/obj/structure/interactive/crate/chest/filled/New(var/desired_loc)
+
 	if(prob(chance_none))
 		qdel(src)
-	else
-		difficulty = rand(1,10)
-		gold_count = (11 - difficulty)*5 + rand(5,10)
+
+	. = ..()
+
+/obj/structure/interactive/crate/chest/filled/Generate()
+	. = ..()
+	difficulty = rand(1,10)
+	gold_count = (11 - difficulty)*5 + rand(5,10)

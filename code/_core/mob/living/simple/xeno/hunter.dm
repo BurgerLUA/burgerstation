@@ -15,7 +15,7 @@
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
 
-	level = 26
+	level = 12
 
 /mob/living/simple/xeno/drone
 	name = "xeno drone"
@@ -32,7 +32,7 @@
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
 
-	level = 20
+	level = 10
 
 /mob/living/simple/xeno/sentinel
 	name = "xeno sentinel"
@@ -49,7 +49,7 @@
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
 
-	level = 20
+	level = 12
 
 
 
@@ -69,4 +69,4 @@
 	blood_type = /reagent/blood/xeno
 	blood_volume = 480
 
-	level = 30
+	level = 20

@@ -12,18 +12,20 @@
 	size = SIZE_2
 	weight = 3
 
-/obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller)
+	rarity = RARITY_RARE
+
+/obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 
 	if(.)
 		SPAM_CHECK(20)
 		if(enabled)
-			play_sound('sound/weapons/energy/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
+			play_sound('sound/weapons/melee/esword/energy_on.ogg',get_turf(src),range_max=VIEW_RANGE)
 		else
-			play_sound('sound/weapons/energy/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
+			play_sound('sound/weapons/melee/esword/energy_off.ogg',get_turf(src),range_max=VIEW_RANGE)
 // cant use both the sounds and the wrench flag code
-//obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller)
+//obj/item/weapon/melee/energy/energy_wrench/click_self(var/mob/caller,location,control,params)
 //
 //	INTERACT_CHECK
 //	INTERACT_DELAY(1)

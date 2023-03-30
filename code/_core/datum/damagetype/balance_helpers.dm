@@ -1,5 +1,8 @@
 /damagetype/proc/get_damage_per_hit(var/armor_to_use=0)
 
+	if(IS_INFINITY(armor_to_use))
+		return 0
+
 	var/list/total_damages = list()
 
 	for(var/k in attack_damage_base)
@@ -20,10 +23,18 @@
 	. = 0
 
 	for(var/k in total_damages)
-		var/armor_calc = attack_damage_penetration[k]*penetration_mod
-		if(armor_calc < 0 && armor_to_use <= 0)
-			armor_calc = 0
-		armor_calc = max(min(armor_to_use,0),armor_to_use-armor_calc)
-		. += calculate_damage_with_armor(total_damages[k],armor_calc)
-
-	. *= damage_mod
+		var/damage = total_damages[k]
+		var/penetration = attack_damage_penetration[k]
+		var/final_armor_to_use = armor_to_use
+		if(IS_INFINITY(penetration))
+			final_armor_to_use = 0
+		else
+			penetration *= penetration_mod
+			if(penetration < 0) //Negative penetration means add armor.
+				if(final_armor_to_use > 0) //Target has armor.
+					final_armor_to_use -= penetration //Add the extra armor.
+			else //Positive penetration means subtract armor.
+				if(final_armor_to_use > 0) //Target has armor.
+					final_armor_to_use = max(0,final_armor_to_use - penetration)
+				//Negative armor means a damage multiplier (handled in calculate_damage_with_armor)
+		. += calculate_damage_with_armor(damage*damage_mod,final_armor_to_use)

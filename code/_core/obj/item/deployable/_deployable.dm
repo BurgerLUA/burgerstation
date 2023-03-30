@@ -63,9 +63,9 @@
 	desc_extended = "A large deployable barricade."
 	structure_to_deploy = /obj/structure/interactive/barricade/
 	icon = 'icons/obj/item/deployable/barricade.dmi'
-	value = 40
+	value = 60
 
-	weight = 3
+	weight = 10
 
 	amount_max = 5
 
@@ -164,12 +164,49 @@
 			TD.set_iff_tag(C.iff_tag)
 
 
-/obj/item/deployable/mob/sentry/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/deployable/mob/sentry/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_battery")
 	SAVEATOM("stored_magazine")
 
-/obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/deployable/mob/sentry/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_battery")
 	LOADATOM("stored_magazine")
+
+
+/obj/item/deployable/barbed_wire
+	name = "deployable barbed wire"
+	desc = "Ouch!"
+	desc_extended = "An ancient, almost torturous design meant to inhibit the movement of soldiers and civilians while using as little materials as possible."
+	icon = 'icons/obj/structure/barbed_wire.dmi'
+	icon_state = "inventory"
+
+	structure_to_deploy = /obj/structure/interactive/barbed_wire
+
+	weight = 5
+
+	amount_max = 10
+
+	value = 10
+
+	size = SIZE_2
+
+
+
+
+/obj/item/deployable/mob/cleaning_bot
+	name = "deployable cleaning bot"
+	desc = "Clean things and earn money for it too!"
+	desc_extended = "A very robust little cleaning bot designed to clean rooms and collect items to be automatically sold off."
+
+	icon = 'icons/mob/living/simple/cleaner.dmi'
+	icon_state = "off"
+
+	mob_to_deploy = /mob/living/simple/bot/cleaner
+
+	value = 500
+
+	amount_max = 1
+
+	size = SIZE_5

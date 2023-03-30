@@ -27,7 +27,10 @@ var/global/list/debug_verbs = list(
 	/client/verb/set_skill,
 	/client/verb/set_attribute,
 	/client/verb/horde_test_preview,
-	/client/verb/test_rust_g
+	/client/verb/test_rust_g,
+	/client/verb/debug_current_chunk,
+	/client/verb/debug_weapon_value,
+	/client/verb/swarm_test
 )
 
 /client/verb/view_dps()
@@ -287,7 +290,7 @@ var/global/list/debug_verbs = list(
 	var/list/valid_turfs = list()
 
 	for(var/turf/simulated/floor/S in range(VIEW_RANGE + ZOOM_RANGE,mob))
-		if(!S.is_safe_move())
+		if(!S.can_move_to())
 			continue
 		valid_turfs += S
 
@@ -580,7 +583,7 @@ var/global/list/debug_verbs = list(
 
 	for(var/k in horde_test_survivor_spawn_turfs)
 		var/turf/T = k
-		var/mob/living/advanced/npc/survivor/S = new(T)
+		var/mob/living/advanced/npc/bandit/S = new(T)
 		INITIALIZE(S)
 		GENERATE(S)
 		FINALIZE(S)
@@ -590,13 +593,13 @@ var/global/list/debug_verbs = list(
 	var/list/tracked_zombies = list()
 	spawn while(world.time <= time_to_stop)
 		for(var/k in tracked_zombies)
-			var/mob/living/advanced/npc/zombie/civilian/Z = k
+			var/mob/living/advanced/npc/zombie/normal/Z = k
 			if(Z.dead) tracked_zombies -= Z
 		sleep(SECONDS_TO_DECISECONDS(5))
 		if(length(tracked_zombies) >= 8)
 			continue
 		var/turf/T = pick(horde_test_turfs)
-		var/mob/living/advanced/npc/zombie/civilian/Z = new(T)
+		var/mob/living/advanced/npc/zombie/normal/Z = new(T)
 		INITIALIZE(Z)
 		GENERATE(Z)
 		FINALIZE(Z)
@@ -614,6 +617,59 @@ var/global/list/debug_verbs = list(
 
 
 
-/client/verb/download_map()
-	set name = "Download Map"
+/client/verb/debug_current_chunk()
+	set name = "Debug Current Chunk"
 	set category = "Debug"
+
+	var/turf/T = get_turf(mob)
+	var/chunk/C = CHUNK(T)
+
+	debug_variables(C)
+
+
+/client/verb/debug_weapon_value()
+	set name = "Debug Weapon Value"
+	set category = "Debug"
+
+	var/desired_path = input("Please enter the desired path to debug.","Debug Weapon Value","/obj/item/weapon") as null|text
+	if(!desired_path)
+		return
+
+	var/found_path = text2path(desired_path)
+	if(!found_path)
+		src.to_chat(span("notice","[desired_path] is not a valid path."))
+		return
+
+	if(!ispath(found_path,/obj/item/weapon/))
+		src.to_chat(span("notice","[desired_path] is not a valid weapon path."))
+		return
+
+	var/obj/item/weapon/W = new found_path(get_turf(mob))
+	INITIALIZE(W)
+	GENERATE(W)
+	FINALIZE(W)
+
+	W.get_recommended_value(debug=TRUE)
+
+	qdel(W)
+
+/client/verb/swarm_test()
+	set name = "Swarm Test"
+	set category = "Debug"
+
+	var/list/offset = direction_to_pixel_offset(mob.dir)
+
+	var/ai/master_ai
+	for(var/i=1,i<=8,i++)
+		var/turf/T = locate(mob.x + offset[1]*8 + round(pick(-i,i)*0.5,1), mob.y + offset[2]*8 + round(pick(-i,i)*0.5,1), mob.z)
+		if(T)
+			var/mob/living/simple/xeno/hunter/M = new(T)
+			M.dir = mob.dir
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			if(!master_ai)
+				master_ai = M.ai
+			else
+				M.ai.set_master_ai(master_ai)
+			M.ai.set_active(TRUE)

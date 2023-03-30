@@ -10,7 +10,7 @@
 	dialogue_id = /dialogue/npc/taxman/
 	anchored = TRUE
 
-	level = 4
+	level = 5
 
 	loadout = /loadout/taxman
 
@@ -33,7 +33,7 @@
 
 	ai = /ai/advanced/taxman
 
-	level = 30
+	level = 18
 
 	soul_size = SOUL_SIZE_UNCOMMON
 

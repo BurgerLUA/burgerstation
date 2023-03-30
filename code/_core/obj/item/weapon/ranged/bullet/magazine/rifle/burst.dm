@@ -19,7 +19,7 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/burst.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/nt_burst/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -79,8 +79,10 @@
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread()
-	return 0.005
+	return 0.0075
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(var/mob/living/L)
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
@@ -88,7 +90,9 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod
 	name = "\improper 5.56mm L-HON-0"
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_3_new.dmi'
-	desc_extended = "A very early prototype of NanoTrasen's L-HON; the L-HON-0 is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
+	desc_extended = "A very early prototype of NanoTrasen's L-HON when it was actually Solarian's L-HON. This prototype is made with higher quality materials which allows for a significantly high rate of fire. Usually coveted by collectors and mercenaries alike."
+
+	company_type = "Solarian"
 
 	tier = 3
 
@@ -114,9 +118,11 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_RARE
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_static_spread()
-	return 0.001
+	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_skill_spread(var/mob/living/L)
-	return max(0,0.04 - (0.06 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

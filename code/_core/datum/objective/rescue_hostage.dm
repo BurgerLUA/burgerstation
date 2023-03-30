@@ -70,7 +70,7 @@
 					if(N_end)
 						var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 						if(found_path)
-							H.ai.set_path(found_path)
+							H.ai.set_path_node(found_path)
 
 			update()
 

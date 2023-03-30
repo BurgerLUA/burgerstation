@@ -3,6 +3,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 /ai/
 
+	var/can_attack = TRUE
+
 	var/active = FALSE //Read only to deterimine if this AI is actually active.
 
 	var/debug = FALSE //Enable or disable logging.
@@ -14,7 +16,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/should_astar_objective_move = FALSE
 
 	var/mob/living/objective_attack
-	var/atom/objective_investigate
 
 	var/check_for_obstructions = TRUE //Pathing only
 
@@ -35,12 +36,10 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//Measured in ticks.
 	var/objective_delay = DECISECONDS_TO_TICKS(10)
 
-	var/list/target_distribution_x = list(12,16,16,16,20)
-	var/list/target_distribution_y = list(12,16,16,16,20)
+	var/list/target_distribution_x = list(12,16,20)
+	var/list/target_distribution_y = list(4.8,12,16,20,24)
 
-	var/turf/start_turf
-
-	var/use_pathfinding = FALSE //For frustration.
+	var/turf/home_turf //Where the mob's home is.
 
 	var/shoot_obstacles = TRUE
 
@@ -57,14 +56,16 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/frustration_attack = 0
 	var/frustration_attack_threshold = SECONDS_TO_TICKS(6) //Above this means they'll try to find a new target. THIS IS MEASURED IN TICKS.
 
+	var/use_frustration = FALSE
 	var/frustration_move = 0
-	var/frustration_move_threshold = 3 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_move_threshold = 10 //Above this means they'll try to alter their movement. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/use_astar_on_frustration_move = FALSE
 
-	var/frustration_path = 0
-	var/frustration_path_threshold = 10 //Above this means they'll try to find a new path. THIS IS MEASURED IN MOVEMENT FAILURES.
+	var/frustration_node_path = 0
+	var/frustration_node_path_threshold = 10 //Above this means they'll try to find a new node path. THIS IS MEASURED IN MOVEMENT FAILURES.
 
-	var/turf/path_start_turf
-	var/turf/path_end_turf
+	var/frustration_astar_path = 0
+	var/frustration_astar_path_threshold = 10 //Above this means they'll try to find a new node path. THIS IS MEASURED IN MOVEMENT FAILURES.
 
 	var/list/attackers = list()
 
@@ -72,10 +73,12 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/attack_movement_obstructions = TRUE //Should attack ALL obstructions if blocked.
 
-	var/path_steps = 1
-	var/list/obj/marker/map_node/current_node_path = list()
+	var/list/astar_path_current = list()
 
-	var/list/current_path_astar = list()
+	var/node_path_current_step = 1
+	var/list/obj/marker/map_node/node_path_current = list()
+	var/turf/node_path_start_turf
+	var/turf/node_path_end_turf
 
 	var/turf/last_combat_location //last location where there was an objective_attack
 
@@ -86,9 +89,10 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/true_sight = FALSE //Set to true if it can see sneaking enemies.
 	var/use_cone_vision = TRUE //Set to true if it can only see things in a cone. Set to false if it can see in a 360 degree view. Note that this only applies to when the NPC is not in alert.
 	var/alert_level = ALERT_LEVEL_NONE //Alert level system
-	var/alert_time = SECONDS_TO_TICKS(20) //In ticks
+	var/alert_time = SECONDS_TO_TICKS(10) //In ticks
 	var/sidestep_next = FALSE
 	var/should_investigate_alert = TRUE
+	var/alert_movement_latch = 0x0 //Direction
 
 	var/grab_time = 0
 	var/grab_time_max = 20 //How long, in deciseconds, should we allow someone to grab us?
@@ -99,14 +103,18 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/stored_sneak_power = 0
 
-	var/resist_grabs = TRUE
+	var/resist_grabs = 1
+	//0 = do not resist grabs
+	//1 = resist grabs by enemies
+	//2 = resist grabs by everyone
 
 	var/retaliate = TRUE //Should we attack when getting hit?
 	var/aggression = 2 //Thanks elder scrolls.
 	//0 = Does not search for enemies; only attacks when told to (example: getting hit by damage, when retaliate is true).
 	//1 = Attacks enemies in enemy tags.
-	//2 = Attacks people who don't have the same loyalty tag as them.
-	//3 = Attacks literally everyone in sight, including friends if possible.
+	//2 = Attacks people who don't have the same loyalty tag as them, except for AI.
+	//3 = Attacks people who don't have the same loyalty tag as them, including AI.
+	//4 = Attacks literally everyone in sight, including friends if possible.
 	var/assistance = 1
 	//0 = Helps no one but themselves.
 	//1 = Helps people with the same loyalty tag as them. Note that aggression needs to be equal or greater to 1 in order for this to work.
@@ -119,10 +127,12 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//Roaming Stuff.
 	var/allow_far_roaming = FALSE //Set to true to change the origin point of the roam when the roam finishes.
 	var/roaming_distance = 0 //Allowed distance to roam. Set to a value above 0 to enable.
-	var/roaming_counter = 0 //Allowed steps to roam. Will be set to double roaming_distance.
-	var/roaming_direction = 0x0 // The direction the mob is currently romaing.
+	var/roaming_counter = 0 //Allowed steps to roam. Will be set to double roaming_distance, so there is no point in changing this.
+	var/roaming_direction = 0x0 // The direction the mob is currently romaing. Don't change this.
 
 	var/guard = FALSE //Set to true if the mob constantly tries to guard the current location.
+
+	var/enable_loc_safety = TRUE //Set to true to tell the AI to move in a random direction if it's not on a turf (usually in a crate or a locker).
 
 	var/delete_on_no_path = FALSE
 
@@ -140,7 +150,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	//Dialogue related.
 	var/language_to_use = LANGUAGE_BASIC
 	var/next_talk = 0
-	var/combat_dialogue/combat_dialogue
 
 	var/knows_about_lockers = FALSE
 
@@ -153,25 +162,60 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/last_movement_proc = "none"
 
+	var/ai/master_ai
+	var/list/ai/linked_ais
+
+/ai/proc/set_master_ai(var/ai/target_ai)
+
+	if(target_ai == master_ai)
+		return FALSE
+
+	if(src == target_ai)
+		return FALSE
+
+	if(master_ai) //If we already have a master ai, remove it.
+		master_ai.linked_ais -= src
+
+	master_ai = target_ai //Set it to the desired target_ai
+
+	if(master_ai)
+		if(!master_ai.linked_ais)
+			master_ai.linked_ais = list()
+		master_ai.linked_ais += src //Add ourselves to linked AIs.
+		if(master_ai.objective_attack)
+			src.objective_attack = master_ai.objective_attack
+		if(master_ai.astar_path_current)
+			src.astar_path_current = master_ai.astar_path_current.Copy()
+		if(master_ai.node_path_current)
+			src.node_path_current = master_ai.node_path_current.Copy()
+
+	if(length(src.linked_ais))
+		for(var/k in linked_ais)
+			var/ai/A = k
+			A.set_master_ai(master_ai)
+
+	return TRUE
+
 /ai/Destroy()
 
-	set_active(FALSE)
+	if(length(linked_ais)) //Reset master.
+		var/ai/new_master_ai = linked_ais[1]
+		for(var/k in linked_ais)
+			var/ai/linked_ai = k
+			if(new_master_ai == linked_ai)
+				linked_ai.set_master_ai(null)
+			else
+				linked_ai.set_master_ai(new_master_ai)
 
-	var/turf/T = get_turf(owner)
-	if(T)
-		remove_from_active_list(T.z)
-		remove_from_inactive_list(T.z)
-	else
-		log_error("Warning: [src.get_debug_name()] couldn't be cleared properly as it the owner ([owner ? owner.get_debug_name() : "NULL"]) had a null turf.")
+	set_active(FALSE,deleting=TRUE)
 
 	if(owner) owner.ai = null
 	owner = null
 	objective_move = null
 	objective_attack = null
-	objective_investigate = null
-	start_turf = null
-	path_start_turf = null
-	path_end_turf = null
+	home_turf = null
+	node_path_start_turf = null
+	node_path_end_turf = null
 
 	if(attackers)
 		attackers.Cut()
@@ -181,93 +225,21 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 		obstacles.Cut()
 		obstacles = null
 
-	if(current_node_path)
-		current_node_path.Cut()
-		current_node_path = null
+	if(node_path_current)
+		node_path_current.Cut()
+		node_path_current = null
 
-	if(current_path_astar)
-		current_path_astar.Cut()
-		current_path_astar = null
+	if(astar_path_current)
+		astar_path_current.Cut()
+		astar_path_current = null
 
-	return ..()
-
-/ai/proc/add_to_active_list(var/z)
-	if(debug) log_debug("Adding to active list [z].")
-	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
-	if(!active_ai_list["[z]"])
-		active_ai_list["[z]"] = list()
-	active_ai_list["[z]"] += src
-
-/ai/proc/remove_from_active_list(var/z)
-	if(debug) log_debug("Removing from active list [z].")
-	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
-	if(length(active_ai_list) && active_ai_list["[z]"])
-		active_ai_list["[z]"] -= src
-
-/ai/proc/add_to_inactive_list(var/z)
-	if(debug) log_debug("Adding to inactive list [z].")
-	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
-	if(!inactive_ai_list["[z]"])
-		inactive_ai_list["[z]"] = list()
-	inactive_ai_list["[z]"] += src
-
-/ai/proc/remove_from_inactive_list(var/z)
-	if(debug) log_debug("Removing from inactive list [z].")
-	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
-	if(length(inactive_ai_list) && inactive_ai_list["[z]"])
-		inactive_ai_list["[z]"] -= src
-
-/ai/proc/set_active(var/desired_active=TRUE)
-
-	if(desired_active)
-		if(!owner)
-			return FALSE
-		if(owner.qdeleting)
-			return FALSE
-		if(owner.dead)
-			return FALSE
-
-	if(active == desired_active)
-		return FALSE
-
-	active = desired_active
-
-	var/turf/T = get_turf(owner)
-
-	if(!T)
-		CRASH("AI had an invalid turf!")
-
-	if(active)
-		PROCESS_LIVING(owner)
-		add_to_active_list(T.z)
-		remove_from_inactive_list(T.z)
-		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
-		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
-		if(debug) log_debug("Setting to active.")
-	else
-		UNPROCESS_LIVING(owner)
-		add_to_inactive_list(T.z)
-		remove_from_active_list(T.z)
-		set_alert_level(ALERT_LEVEL_NONE,TRUE)
-		set_objective(null)
-		set_move_objective(null)
-		set_hunt_target(null)
-		CALLBACK_REMOVE("set_new_objective_\ref[src]")
-		attackers.Cut()
-		obstacles.Cut()
-		HOOK_REMOVE("post_move","\ref[src]_post_move",owner)
-		HOOK_REMOVE("pre_death","\ref[src]_pre_death",owner)
-		if(debug) log_debug("Setting to inactive.")
-
-	return TRUE
+	. = ..()
 
 /ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
 	owner = desired_owner
 	roaming_counter = roaming_distance*2
 	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.
-	start_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
-	if(night_vision <= 0)
-		night_vision = 0.5
+	home_turf = get_turf(owner) //The turf where the enemy spawned, or in some cases, after pathing.
 	. = ..()
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner

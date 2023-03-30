@@ -95,13 +95,16 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/list/prestige_count = list() //Prestige count for each of the skills. Each count increases maximum skill by 5.
 
-	var/tutorial = FALSE //Are you in the tutorial level?
+	var/list/quests = list()
+
+	var/tutorial = FALSE
 
 	var/list/linked_portals
 
 	var/last_autosave = 0 //The last time this player saved.
 
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = TRUE
 
 	var/is_saving = FALSE //Debug var that checks if the player is saving and freaks out if it's saving if it's qdeleted.
 
@@ -112,10 +115,10 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
 var/global/list/difficulty_to_damage_mul = list(
-	DIFFICULTY_EASY = 0.1,
-	DIFFICULTY_NORMAL = 0.25,
-	DIFFICULTY_HARD = 0.5,
-	DIFFICULTY_EXTREME = 0.75,
+	DIFFICULTY_EASY = 0.25,
+	DIFFICULTY_NORMAL = 0.5,
+	DIFFICULTY_HARD = 0.75,
+	DIFFICULTY_EXTREME = 1,
 	DIFFICULTY_NIGHTMARE = 1
 )
 
@@ -124,7 +127,7 @@ var/global/list/difficulty_to_damage_mul = list(
 	setup_difficulty()
 
 /mob/living/advanced/player/proc/default_nanotrasen_move()
-	src.last_tax_payment = world.realtime
+
 	if(length(cryo_spawnpoints))
 		var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
 		force_move(get_turf(C))
@@ -147,8 +150,8 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 
-	if(attacker.is_player_controlled()) //PvP is always 1.
-		return 1
+	if(attacker.is_player_controlled()) //PvP is always 0.5.
+		return 0.5
 
 	return difficulty_to_damage_mul[src.get_difficulty()]
 
@@ -230,58 +233,6 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	return TRUE
 
-/mob/living/advanced/player/proc/wake_chunk(var/desired_z=0)
-
-	if(!desired_z)
-		return TRUE
-
-	for(var/k in SSai.inactive_ai_by_z["[desired_z]"])
-		var/ai/A = k
-		var/dist = get_dist(src,A.owner)
-		if(dist > VIEW_RANGE + ZOOM_RANGE)
-			continue
-		A.set_active(TRUE)
-
-	for(var/k in SSbossai.inactive_ai_by_z["[desired_z]"])
-		var/ai/A = k
-		var/dist = get_dist(src,A.owner)
-		if(dist > VIEW_RANGE + ZOOM_RANGE)
-			continue
-		A.set_active(TRUE)
-
-
-/mob/living/advanced/player/post_move(var/atom/old_loc)
-
-	. = ..()
-
-	if(.)
-
-		if(!dead && ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
-			var/area/A = get_area(src)
-			if(istype(A,/area/burgerstation))
-				var/area/A2 = get_area(old_loc)
-				if(!istype(A2,/area/burgerstation))
-					last_autosave = world.time //Safety
-					var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
-					mobdata?.save_character(src)
-
-		if(dialogue_target_id)
-			dialogue_target_id = null
-			close_menu(src,/menu/dialogue/)
-
-		if(active_structure && get_dist(src,active_structure) > 1)
-			set_structure_unactive()
-
-		if(active_device && get_dist(src,active_device) > 1)
-			set_device_unactive()
-
-		ai_steps++
-
-		if(src.loc && (ai_steps >= (VIEW_RANGE + ZOOM_RANGE) || (old_loc && old_loc.z != src.loc.z)))
-			var/turf/T = get_turf(src.loc)
-			wake_chunk(T.z)
-			ai_steps = 0
-
 /mob/living/advanced/player/proc/prestige(var/skill_id)
 	if(!prestige_count[skill_id])
 		prestige_count[skill_id] = 1
@@ -299,13 +250,18 @@ var/global/list/difficulty_to_damage_mul = list(
 
 var/global/list/difficulty_to_rarity = list(
 	DIFFICULTY_EASY = 0,
-	DIFFICULTY_NORMAL = 0,
-	DIFFICULTY_HARD = 0.05,
-	DIFFICULTY_EXTREME = 0.1,
-	DIFFICULTY_NIGHTMARE = 0.2
+	DIFFICULTY_NORMAL = 5,
+	DIFFICULTY_HARD = 15,
+	DIFFICULTY_EXTREME = 20,
+	DIFFICULTY_NIGHTMARE = 40
 )
 
+// https://www.desmos.com/calculator/eh8dy1z0ga
 
 /mob/living/advanced/player/proc/get_rarity()
-	. = src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1)*0.2
-	. += difficulty_to_rarity[src.get_difficulty()]
+	. = 10
+	. += level*0.3
+	. += src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1) * 0.3
+	. += difficulty_to_rarity[src.get_difficulty()] * 0.4
+	// . *= 1 + (increased_rarity/100)
+	return .

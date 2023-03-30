@@ -17,7 +17,6 @@
 	projectile_speed = BULLET_SPEED_LARGE_PROJECTILE
 
 	size = 0.04
-	value = 3.5
 
 	inaccuracy_modifier = 1.5
 
@@ -25,6 +24,12 @@
 	amount_max_icon = 4
 
 	view_punch_mod = 0.5
+
+	value = 1 //Dummy value.
+
+/obj/item/bullet_cartridge/shotgun_23/get_value()
+	. = ..()
+	. *= 0.5
 
 /obj/item/bullet_cartridge/shotgun_23/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
 	return TRUE
@@ -64,7 +69,7 @@
 	name = "\improper 23x75mmR rubber slug shell"
 	desc = "Welcome to the land called 'Police Brutality'"
 	desc_extended = "A rubber slug shell designed specifically for the KS23"
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 	icon_state = "23rubber"
 
 	projectile_count = 1

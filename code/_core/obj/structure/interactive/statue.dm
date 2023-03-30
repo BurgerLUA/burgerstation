@@ -46,7 +46,8 @@
 	if(stored_object)
 		var/image/I = new/image(stored_object.icon,stored_object.icon_state)
 		I.appearance = stored_object.appearance
-
+		I.plane = FLOAT_PLANE
+		I.layer = FLOAT_LAYER
 		var/old_color = initial(color)
 		var/r = (GetRedPart(old_color)/255)*0.5
 		var/g = (GetGreenPart(old_color)/255)*0.5

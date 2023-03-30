@@ -116,7 +116,7 @@
 		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller)
+/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 
@@ -129,12 +129,12 @@
 			explosive = FALSE
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("explosive")
 
-/obj/item/container/simple/can/dr_gibb/explosive/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/container/simple/can/dr_gibb/explosive/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("explosive")
 
 /obj/item/container/simple/can/space_up/

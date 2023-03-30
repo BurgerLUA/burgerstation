@@ -32,9 +32,6 @@
 /obj/item/container/edible/pill/get_consume_sound()
 	return null
 
-/obj/item/container/edible/pill/get_examine_list(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
-
 /obj/item/container/edible/pill/Finalize()
 	. = ..()
 	if(reagents && reagents.volume_current <= 0) //Pills can't contain nothing.

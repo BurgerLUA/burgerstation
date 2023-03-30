@@ -22,6 +22,10 @@
 "af" = (
 /obj/structure/interactive/bed/double,
 /obj/structure/carpet/red,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/bedroom)
 "ag" = (
@@ -162,6 +166,7 @@
 /area/mission/prefab/house/house_04/entrance)
 "aJ" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_04/bathroom)
 "aK" = (
@@ -283,6 +288,10 @@
 /area/mission/prefab/house/house_04/entrance)
 "bf" = (
 /obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/entrance)
 "bg" = (
@@ -302,6 +311,7 @@
 	dir = 1
 	},
 /obj/structure/carpet/red,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/bedroom)
 "bj" = (
@@ -354,10 +364,15 @@
 	dir = 8
 	},
 /obj/structure/carpet/brown,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/entrance)
 "bs" = (
 /obj/marker/map_node,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/entrance)
 "bt" = (
@@ -366,14 +381,14 @@
 	dir = 4
 	},
 /obj/structure/carpet/red,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/entrance)
 "bu" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -410,6 +425,18 @@
 "bA" = (
 /obj/marker/spawning/window,
 /obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_04/entrance)
+"bB" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_04)
+"bC" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_04/entrance)
 
@@ -552,7 +579,7 @@ aD
 bo
 aU
 aU
-bs
+bC
 aI
 aI
 az
@@ -565,7 +592,7 @@ bi
 ab
 bv
 aq
-aq
+bB
 aE
 aF
 bt

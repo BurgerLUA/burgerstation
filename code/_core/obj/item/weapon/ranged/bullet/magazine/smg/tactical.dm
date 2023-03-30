@@ -16,7 +16,7 @@
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/tactical/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -79,6 +79,8 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.25
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/tactical/get_static_spread()
 	return 0.001
 
@@ -130,6 +132,8 @@
 
 	shoot_delay = 0.8
 	icon = 'icons/obj/item/weapons/ranged/smg/nanotrasen/9mm_black.dmi'
+
+	rarity = RARITY_RARE
 
 
 

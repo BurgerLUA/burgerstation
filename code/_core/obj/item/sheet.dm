@@ -18,7 +18,7 @@ var/global/list/valid_bedsheets = list(
 	value = 10
 
 	plane = PLANE_MOB_SMALL
-	layer = 1000
+	layer = LAYER_MOB_ABOVE
 
 	pixel_y = 4
 

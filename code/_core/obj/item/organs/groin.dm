@@ -79,6 +79,14 @@
 	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
+//cyborg2
+/obj/item/organ/groin/gopro
+	name = "advanced cyborg groin"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
 
 //Beefman
 /obj/item/organ/groin/beefman

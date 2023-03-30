@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical
-	name = ".45 1984 Pistol"
+	name = ".45 1984 Tactical pistol"
 	desc = "No rubber rounds here; it's all lethal."
 	desc_extended = "A common pistol used by modern police forces as well as some private military corporations. Also liked by collectors and Space Colonists."
 	value = 700
@@ -9,8 +9,8 @@
 	company_type = "Solarian"
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/45.dmi'
-	shoot_delay = 1.5
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_delay = 2.7
+	shoot_sounds = list('sound/weapons/ranged/pistol/1984/shoot.ogg')
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
@@ -66,6 +66,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread()
@@ -82,8 +83,7 @@
 	Where'd you get something like this?"
 	value = 2000
 	icon = 'icons/obj/item/weapons/ranged/pistol/45_2.dmi'
-	shoot_delay = 1.25
-	shoot_sounds = list('sound/weapons/45/shoot_mod.ogg')
+	shoot_delay = 1.9
 
 	damage_mod = 1.25
 	tier = 3
@@ -111,6 +111,8 @@
 
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 16 - 16
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread()
 	return 0

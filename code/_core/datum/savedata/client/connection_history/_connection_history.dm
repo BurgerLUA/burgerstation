@@ -22,7 +22,7 @@
 	reset_data()
 
 	var/list/connection_files = get_files()
-	sortTim(connection_files, /proc/cmp_path_dsc)
+	sort_tim(connection_files, /proc/cmp_path_dsc)
 	var/connections_length = length(connection_files)
 	if(connections_length >= CONNECTIONS_FILE_LIMIT)
 		for(var/i=CONNECTIONS_FILE_LIMIT,i<=connections_length,i++)

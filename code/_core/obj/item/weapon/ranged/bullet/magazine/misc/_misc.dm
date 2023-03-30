@@ -15,7 +15,7 @@
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/223/sentry.ogg')
+	shoot_sounds = list('sound/weapons/ranged/misc/sentry.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -37,7 +37,7 @@
 
 	attachment_whitelist = list()
 
-	value = -1
+	value = 0
 
 	anchored = TRUE
 

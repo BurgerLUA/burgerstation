@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structure/light_floor.dmi'
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = 1000
+	layer = LAYER_FLOOR_EFFECTS
 	color = COLOR_LIGHT_BULB
 
 	desired_light_power = 0.25

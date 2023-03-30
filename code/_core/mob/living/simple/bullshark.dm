@@ -35,7 +35,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 12
+	level = 8
 
 /mob/living/simple/bullshark/post_death()
 	. = ..()

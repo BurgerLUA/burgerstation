@@ -18,12 +18,13 @@
 	projectile_speed = BULLET_SPEED_SNIPER
 
 	size = 0.1
-	value = 8
 
 	penetrations = 2
+
+	value = 1 //Dummy value.
 
 /obj/item/bullet_cartridge/bmg_50/surplus
 	name = "\improper surplus .50 BMG round"
 	damage_type_bullet = /damagetype/ranged/bullet/bmg_50/surplus
 	jam_chance = 1
-	value = 0
+	rarity = RARITY_BROKEN

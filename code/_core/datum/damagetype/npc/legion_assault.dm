@@ -2,7 +2,7 @@
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(
-		'sound/weapons/fists/bite.ogg'
+		'sound/weapons/unarmed/bite.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/bite
@@ -36,7 +36,7 @@
 	attack_delay_max = 14
 
 
-/damagetype/npc/legion_assault/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/npc/legion_assault/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	. = ..()
 
@@ -51,7 +51,7 @@
 	attack_verbs = list("bite","chomp","gnaw")
 
 	impact_sounds = list(
-		'sound/weapons/fists/bite.ogg'
+		'sound/weapons/unarmed/bite.ogg'
 	)
 
 	hit_effect = /obj/effect/temp/impact/combat/bite

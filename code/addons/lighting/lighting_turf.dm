@@ -94,7 +94,7 @@
 #undef SCALE
 
 // Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
-/turf/proc/recalc_atom_opacity()
+/turf/proc/recalculate_atom_opacity()
 #ifdef AO_USE_LIGHTING_OPACITY
 	var/old = has_opaque_atom
 #endif
@@ -137,7 +137,7 @@
 	. = ..()
 
 	if (Obj && Obj.opacity)
-		recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
+		recalculate_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
 		reconsider_lights()
 
 // This is inlined in lighting_source.dm.

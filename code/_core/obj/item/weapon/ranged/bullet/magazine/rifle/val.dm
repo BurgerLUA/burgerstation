@@ -18,7 +18,7 @@
 
 	damage_mod = 1.1
 
-	shoot_sounds = list('sound/weapons/slavic/val.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/val/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -64,6 +64,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.03
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/val/get_static_spread()
 	return 0.001

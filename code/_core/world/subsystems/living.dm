@@ -30,6 +30,7 @@ SUBSYSTEM_DEF(living)
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 

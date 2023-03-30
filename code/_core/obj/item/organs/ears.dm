@@ -63,6 +63,20 @@
 	id = BODY_EAR_LEFT
 	icon_state = BODY_EAR_LEFT
 
+//Cyborg 2
+/obj/item/organ/ear/gopro
+	name = "right cyborg sensor"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
+/obj/item/organ/ear/gopro/left
+	name = "left cyborg sensor"
+	id = BODY_EAR_LEFT
+	icon_state = BODY_EAR_LEFT
+
+
 
 //Monkey
 /obj/item/organ/ear/monkey

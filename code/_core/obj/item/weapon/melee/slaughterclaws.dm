@@ -6,7 +6,6 @@
 	// var/user_intent = 1 //will need a more elegant way to change this Later(TM), but it could provide a framework for other intent checks
 	icon = 'icons/obj/item/weapons/unarmed/slaughterclaws.dmi' //thx Nzzy!
 	damage_type = /damagetype/unarmed/slaughter
-	var/damage_type_harm = /damagetype/unarmed/slaughter_heavy
 	size = SIZE_2
 	weight = 10
 
@@ -14,6 +13,8 @@
 	value_burgerbux = 1
 	var/next_teleport_command = 0
 	var/next_blood_attack = 0
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/melee/slaughterclaws/click_on_object(var/mob/caller,var/atom/object,location,control,params) //All blood costs are made with a level 50 VIT char in mind.
 
@@ -28,13 +29,9 @@
 
 	var/target_distance = get_dist(L,T)
 
-	if(L.intent == INTENT_HARM)
-		damage_type = damage_type_harm
-	else
-		damage_type = initial(damage_type)
 
 	if(L.intent == INTENT_GRAB && next_teleport_command <= world.time)
-		if(!T.is_safe_move()) //Alright, that's it. No more water-walking!
+		if(!T.can_move_to()) //Alright, that's it. No more water-walking!
 			L.to_chat(span("danger","You can't bloodcrawl there!"))
 			return TRUE
 		if(A.flags_area & FLAG_AREA_NO_BLOODCRAWL) // No bloodcrawling into vaults for you!

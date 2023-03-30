@@ -95,7 +95,7 @@
 
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 
-	if(bullet_block_chance <= 0)
+	if(P.target_atom != src && bullet_block_chance <= 0)
 		return FALSE
 
 	. = ..()
@@ -107,6 +107,9 @@
 
 	if(!(projectile_dir & src.collision_dir))
 		return FALSE
+
+	if(P.target_atom == src) //Bullet block chance doesn't matter if we intentionally target it.
+		return TRUE
 
 	if(P.target_atom == src || bullet_block_chance >= 100) //Intentionally placed before distance checking in order to prevent exploits.
 		return TRUE

@@ -13,13 +13,11 @@
 
 	shoot_delay = 2
 
-	damage_mod = 1.5
-
 	automatic = FALSE
 
 	bullet_count_max = 8
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/combat/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -75,6 +73,8 @@
 
 	pump_delay = 3
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/pump/shotgun/combat/get_static_spread()
 	return 0.002
 
@@ -102,8 +102,6 @@
 	damage_mod = 1.4
 	pump_delay = 2
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
-
 	can_wield = TRUE
 
 	weight = 8
@@ -117,3 +115,5 @@
 
 	attachment_undermount_offset_x = 30 - 16
 	attachment_undermount_offset_y = 17 - 16
+
+	rarity = RARITY_RARE

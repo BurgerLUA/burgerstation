@@ -8,7 +8,7 @@
 
 /turf/unsimulated/generation/desert/generate(var/size = WORLD_SIZE)
 
-	if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
+	if(density && is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 		new /turf/simulated/wall/rock/desert(src)
 		if(src.loc.type == /area/) new /area/mission/desert/interior(src)
 		disallow_generation = TRUE
@@ -27,7 +27,7 @@
 			else
 				if(prob(0.25))
 					new /obj/marker/generation/mob/slime/sand(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/zombie/desert(src)
 				new /turf/simulated/floor/colored/sand/desert/lighter(src)
 		if(GENERATION_SEGMENT_LOW - 0.1 to GENERATION_SEGMENT_LOW)
@@ -37,7 +37,7 @@
 			else
 				if(prob(0.25))
 					new /obj/marker/generation/mob/slime/sand(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/zombie/desert(src)
 				new /turf/simulated/floor/colored/sand/desert/lighter(src)
 		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_LOW + 0.1)
@@ -47,7 +47,7 @@
 			else
 				if(prob(1))
 					new /obj/marker/generation/mob/slime/sand(src)
-				else if(prob(1))
+				else if(prob(0.25))
 					new /obj/marker/generation/mob/zombie/desert(src)
 				new /turf/simulated/floor/colored/sand/desert/lighter(src)
 		if(GENERATION_SEGMENT_LOW + 0.1 to GENERATION_SEGMENT_MID)

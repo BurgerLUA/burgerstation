@@ -29,3 +29,36 @@
 	)
 
 	rarity = RARITY_MYTHICAL
+
+/obj/item/clothing/overwear/armor/nanotrasen/engineering
+
+	polymorphs = list(
+		"base" = COLOR_ENGINEERING,
+		"chest" = COLOR_BROWN,
+		"shoulders" = COLOR_VISIBLE_GREEN
+	)
+
+
+/obj/item/clothing/overwear/armor/nanotrasen/janitor
+
+	polymorphs = list(
+		"base" = COLOR_JANITOR,
+		"chest" = COLOR_GREY,
+		"shoulders" = COLOR_GOLD
+	)
+
+/obj/item/clothing/overwear/armor/nanotrasen/nt_ops
+
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"chest" = COLOR_BLACK,
+		"shoulders" = COLOR_BLACK
+	)
+
+/obj/item/clothing/overwear/armor/nanotrasen/science
+
+	polymorphs = list(
+		"base" = "#D8D39C",
+		"chest" = "#564F49",
+		"shoulders" = COLOR_SCIENCE
+	)

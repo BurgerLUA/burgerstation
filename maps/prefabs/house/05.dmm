@@ -3,7 +3,10 @@
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 "ab" = (
-/obj/structure/interactive/storage/ammo_pile,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/entrance)
 "ac" = (
@@ -25,6 +28,10 @@
 "ag" = (
 /turf/simulated/floor/plating,
 /area/dmm_suite/clear_area)
+"ah" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/entrance)
 "ai" = (
 /obj/structure/interactive/wire/yellow,
 /turf/simulated/floor/plating,
@@ -155,6 +162,10 @@
 	icon_state = "preview";
 	dir = 8
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05)
 "aH" = (
@@ -209,6 +220,7 @@
 "aP" = (
 /obj/structure/interactive/crate/trash,
 /obj/marker/spawning/random/trash,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/kitchen)
 "aQ" = (
@@ -239,6 +251,10 @@
 /area/mission/prefab/house/house_05/bathroom)
 "aX" = (
 /obj/structure/interactive/door/airlock,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_05/bathroom)
 "aY" = (
@@ -273,6 +289,14 @@
 /area/mission/prefab/house/house_05/entrance)
 "be" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/storage)
 "bf" = (
@@ -288,12 +312,20 @@
 /area/dmm_suite/clear_area)
 "bh" = (
 /obj/structure/interactive/misc/toilet,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_05/bathroom)
 "bi" = (
 /obj/structure/interactive/misc/sink{
 	icon_state = "sink";
 	dir = 8
+	},
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
 	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_05/bathroom)
@@ -329,6 +361,7 @@
 /area/mission/prefab/house/house_05/entrance)
 "bo" = (
 /obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05)
 "bp" = (
@@ -337,6 +370,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/marker/cover_node,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/entrance)
 "bq" = (
@@ -350,18 +384,18 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05)
 "bs" = (
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/kitchen)
 "bt" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05)
 "bu" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -404,6 +438,31 @@
 "bB" = (
 /obj/marker/spawning/window,
 /obj/marker/smart_clear_turf,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/entrance)
+"bC" = (
+/obj/structure/carpet/blue,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/entrance)
+"bD" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/entrance)
+"bE" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_05/entrance)
+"bF" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_05/entrance)
 
@@ -492,7 +551,7 @@ aS
 bk
 bm
 bk
-aS
+ah
 aR
 aK
 aK
@@ -524,11 +583,11 @@ ap
 ap
 aF
 ap
-aS
+bF
 aS
 bu
 aS
-bn
+bD
 aR
 aK
 aK
@@ -597,7 +656,7 @@ ap
 ap
 ap
 ax
-aT
+bC
 aV
 aV
 aV
@@ -649,7 +708,7 @@ aC
 aG
 aL
 af
-bn
+bE
 aS
 az
 aV

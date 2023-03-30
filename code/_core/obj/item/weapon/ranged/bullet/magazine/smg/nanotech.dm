@@ -10,11 +10,11 @@
 
 	tier = 3
 
-	shoot_delay = 1
+	shoot_delay = 1.15
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/40/shoot_smg.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/nanotech/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -65,18 +65,23 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/update_icon()
+
+	icon_state = initial(icon_state)
+
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
 		var/bullet_num = FLOOR((length(M.stored_bullets)/M.bullet_count_max)*9,1)
-		icon_state = "[initial(icon_state)]_[bullet_num]"
+		icon_state = "[icon_state]_[bullet_num]"
 	else
-		icon_state = initial(icon_state)
+		icon_state = "[icon_state]_open"
 
 	return ..()
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_static_spread()
-	return 0.01
+	return 0.004
 
 /obj/item/weapon/ranged/bullet/magazine/smg/nanotech/get_skill_spread(var/mob/living/L)
-	return 0.02 - (0.04 * L.get_skill_power(SKILL_RANGED))
+	return 0.01 - (0.02 * L.get_skill_power(SKILL_RANGED))

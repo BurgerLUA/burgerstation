@@ -4,8 +4,6 @@
 	opacity = 0
 	plane = PLANE_SPACE
 
-	parallax_icon = 'icons/obj/effects/parallax_bluespace.dmi'
-
 /turf/bluespace/New(var/desired_loc)
 	. = ..()
 	icon = null

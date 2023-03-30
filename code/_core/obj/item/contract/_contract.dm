@@ -60,12 +60,12 @@
 	if(!reward)
 		log_error("Warnng: [src.get_debug_name()] had an invalid reward!")
 		qdel(src)
-		return .
+		return FALSE
 
 	update_value()
 	update_sprite()
 
-/obj/item/contract/get_value()
+/obj/item/contract/get_base_value()
 	return CEILING(reward.get_value()*0.25,1)
 
 /obj/item/contract/get_examine_details_list(var/mob/examiner)
@@ -77,32 +77,29 @@
 	. += div("notice","[value_current] out of [value_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
-/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("reward")
 	SAVEVAR("value_current")
 	SAVEVAR("burgerbux_reward")
 
-/obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("reward")
 	LOADVAR("value_current")
 	LOADVAR("burgerbux_reward")
 
-/obj/item/contract/post_move(var/atom/old_loc)
-
+/obj/item/contract/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
-
-	if(!.)
-		return .
-
 	if(istype(loc,/obj/hud/inventory/organs/groin/pocket/contract))
 		var/obj/hud/inventory/organs/groin/pocket/contract/I = loc
 		if(is_advanced(I.owner))
 			HOOK_ADD("on_kill","on_kill_\ref[src]",I.owner,src,.proc/on_kill)
 
-	if(istype(old_loc,/obj/hud/inventory/organs/groin/pocket/contract))
-		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_loc
+/obj/item/contract/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(istype(old_inventory,/obj/hud/inventory/organs/groin/pocket/contract))
+		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_inventory
 		if(is_advanced(I.owner))
 			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
 

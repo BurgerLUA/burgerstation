@@ -1,8 +1,6 @@
 var/global/list/space_cop_tag_shitlist = list()
 
 /ai/advanced/space_cop
-	target_distribution_x = list(16)
-	target_distribution_y = list(16)
 	timeout_threshold = 100
 	ignore_immortal = TRUE
 	reaction_time = 2

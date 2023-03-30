@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(botany)
 	name = "Botany Subsystem"
 	desc = "Handle botany related matters."
-	tick_rate = SECONDS_TO_TICKS(10)
+	tick_rate = SECONDS_TO_TICKS(20)
 	priority = SS_ORDER_FIRST
 
 	tick_usage_max = 50
@@ -19,12 +19,18 @@ SUBSYSTEM_DEF(botany)
 
 /subsystem/botany/on_life()
 
-	for(var/k in all_plants)
-		var/obj/structure/interactive/plant/P = k
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
-		if(P.on_life(tick_rate) == null)
-			log_error("Warning! Plant [P.get_debug_name()] did not complete on_life() properly and thus was deleted.")
-			qdel(P)
+	if(length(all_plants))
+		var/plants_to_check = all_plants.Copy()
+		var/desired_delay = tick_rate / length(plants_to_check)
+		desired_delay = TICKS_TO_DECISECONDS(desired_delay)
+		for(var/k in plants_to_check)
+			var/obj/structure/interactive/plant/P = k
+			if(P.qdeleting)
+				continue
+			if(P.on_life(tick_rate) == null)
+				log_error("Warning! Plant [P.get_debug_name()] did not complete on_life() properly and thus was deleted.")
+				qdel(P)
+			sleep(desired_delay)
 
 	return TRUE
 

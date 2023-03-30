@@ -13,6 +13,13 @@
 
 	map_color_ignore_dense = TRUE
 
+	no_apc = TRUE
+	requires_power = FALSE
+
+	enable_power_doors = ON
+	enable_power_machines = ON
+	enable_power_lights = ON
+
 /area/shuttle/flounder
 	name = "\improper NTS Flounder"
 

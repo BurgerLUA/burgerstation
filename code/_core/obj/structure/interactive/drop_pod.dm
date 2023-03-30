@@ -116,17 +116,18 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			if(!desired_loc)
 				caller.to_chat(span("warning","Invalid drop location: No drop location selected."))
 				return FALSE
-			var/turf/T = get_step(desired_loc,SOUTH)
-			if(T.has_dense_atom)
-				caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
-				return FALSE
-			if(!T.is_safe() || !T.is_safe_move())
-				caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
-				return FALSE
-			var/area/A = T.loc
-			if(A.interior)
-				caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
-				return FALSE
+			for(var/d in DIRECTIONS_ALL)
+				var/turf/T = get_step(desired_loc,d)
+				if(!T || T.has_dense_atom)
+					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+					return FALSE
+				if(!T.is_safe() || !T.can_move_to())
+					caller.to_chat(span("warning","Invalid drop location: Unsafe area."))
+					return FALSE
+				var/area/A = T.loc
+				if(A.interior)
+					caller.to_chat(span("warning","Invalid drop location: Target area is obstructed."))
+					return FALSE
 			icon_state = "none"
 			flick("drop_anim",src)
 			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,caller,POD_LAUNCHED,desired_loc)

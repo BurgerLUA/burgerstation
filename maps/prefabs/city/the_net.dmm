@@ -123,6 +123,10 @@
 	icon_state = "preview";
 	dir = 4
 	},
+/obj/marker/cover_node{
+	icon_state = "both";
+	dir = 8
+	},
 /turf/simulated/floor/tile/morphing/green,
 /area/mission/prefab/city/the_net)
 "ay" = (
@@ -133,6 +137,10 @@
 /obj/structure/interactive/lighting/fixture/tube/fluorescent{
 	icon_state = "preview";
 	dir = 8
+	},
+/obj/marker/cover_node{
+	icon_state = "both";
+	dir = 4
 	},
 /turf/simulated/floor/tile/morphing/green,
 /area/mission/prefab/city/the_net)
@@ -196,6 +204,7 @@
 /area/mission/prefab/city/the_net)
 "aJ" = (
 /obj/structure/interactive/wire/green,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile/morphing/green,
 /area/mission/prefab/city/the_net)
 "aK" = (
@@ -310,6 +319,31 @@
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/plating,
 /area/mission/prefab/city/the_net)
+"bg" = (
+/obj/marker/map_node,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/dark/single,
+/area/mission/prefab/city/the_net)
+"bh" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/the_net)
+"bi" = (
+/obj/structure/interactive/chair/office/dark,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/the_net)
+"bj" = (
+/obj/marker/cover_node/left,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aa
@@ -367,9 +401,9 @@ aM
 "}
 (4,1,1) = {"
 aM
-aM
+bj
 ad
-ag
+bh
 al
 ax
 al
@@ -405,7 +439,7 @@ aM
 aB
 aF
 ad
-ai
+bi
 aX
 aq
 an
@@ -522,7 +556,7 @@ am
 aN
 am
 am
-aN
+bg
 ah
 aQ
 aM

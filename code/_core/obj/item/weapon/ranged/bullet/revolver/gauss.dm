@@ -8,6 +8,8 @@
 
 	company_type = "Slavic"
 
+	tier_type = "pistol"
+
 	tier = 2
 
 	shoot_delay = 5
@@ -16,7 +18,7 @@
 
 	bullet_count_max = 1
 
-	shoot_sounds = list('sound/weapons/slavic/gauss_short.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/gauss/shoot_short.ogg')
 
 	size = SIZE_2
 	weight = 4
@@ -35,6 +37,8 @@
 	inaccuracy_modifier = 2  // this was previously set to 3 and you literally couldnt hit someone in the torso at melee range with it
 	movement_inaccuracy_modifier = 4
 	movement_spread_base = 0.3
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/gauss_gun/get_static_spread()
 	return 0.03

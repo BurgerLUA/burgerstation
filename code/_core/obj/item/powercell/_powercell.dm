@@ -32,12 +32,12 @@
 	. += CEILING(charge_current*0.001,1)
 	. += CEILING(charge_max*0.0003,1)
 
-/obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("charge_current")
 
-/obj/item/powercell/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/powercell/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("charge_current")
 
 /obj/item/powercell/Generate()
@@ -146,8 +146,9 @@
 
 	value_burgerbux = 1 //Citizens aren't supposed to have recharging power cells.
 
-/obj/item/powercell/recharging/on_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/powercell/recharging/on_equip(var/atom/old_location,var/slient=FALSE)
 	. = ..()
+	var/obj/hud/inventory/new_location = loc
 	if(new_location.click_flags && new_location.owner)
 		var/mob/living/advanced/A = new_location.owner
 		A.to_chat(span("danger","\The intense heat from \the [src.name] burns your hand and forces you to drop it!"))
@@ -181,6 +182,6 @@
 
 	size = SIZE_1
 
-	value = -1
+	value = 0
 
 	weight = 0

@@ -9,18 +9,20 @@
 	var/total_capacity = 0
 	var/do_not_consume = FALSE //Does this get consumed? Or merely emptied on craft. Only used for Azuras Star
 
-	value = 0
+	value = 100 //Dummy value. Calculated later.
 
 	weight = 1
 
 	rarity = RARITY_COMMON
 
-/obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+
+
+/obj/item/soulgem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("total_charge")
 
-/obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/soulgem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("total_charge")
 
 /obj/item/soulgem/Finalize()
@@ -49,6 +51,7 @@
 	if(do_not_consume)
 		name = "unbreaking [name]"
 		icon_state = "azuras"
+		rarity = RARITY_LEGENDARY
 	else
 		switch(total_capacity)
 			if(0 to SOUL_SIZE_COMMON)
@@ -104,7 +107,7 @@
 		caller.visible_message(span("danger","\The [caller.name] traps \the [S.name] with \the [src.name]!"),span("warning","You trap \the [S.name] with \the [src.name]!"))
 		if(is_living(caller))
 			var/mob/living/L = caller
-			L.add_skill_xp(SKILL_MAGIC_ENCHANTING,CEILING(S.soul_size*0.1,1))
+			L.add_skill_xp(SKILL_SUMMONING,CEILING(S.soul_size*0.01,1))
 		qdel(S)
 		update_sprite()
 
@@ -123,7 +126,7 @@
 			total_charge -= total_charge
 			if(is_living(caller))
 				var/mob/living/L = caller
-				L.add_skill_xp(SKILL_MAGIC_ENCHANTING,CEILING(total_charge*0.025,1))
+				L.add_skill_xp(SKILL_SUMMONING,CEILING(total_charge*0.0025,1))
 			if(!do_not_consume && total_charge <= 0)
 				caller.to_chat(span("warning","\The [src] shatters!"))
 				qdel(src)
@@ -166,7 +169,7 @@
 
 /obj/item/soulgem/godly
 	total_capacity = SOUL_SIZE_GODLY
-	value_burgerbux = 10000
+	value_burgerbux = 1
 
 /obj/item/soulgem/godly/filled/Generate()
 	. = ..()

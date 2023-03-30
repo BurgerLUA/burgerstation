@@ -4,7 +4,7 @@
 	screen_loc = "CENTER+0.5,CENTER+0.5"
 
 	plane = PLANE_MAP
-	layer = 1
+	layer = LAYER_HUD+11
 
 	mouse_opacity = 1
 
@@ -151,7 +151,7 @@
 	icon_state = null
 
 	plane = PLANE_MAP
-	layer = 0
+	layer = LAYER_HUD+10
 
 	user_colors = TRUE
 
@@ -249,7 +249,7 @@
 	icon = 'icons/hud/hud.dmi'
 
 	plane = PLANE_HUD
-	layer = LAYER_HUD + 1
+	layer = LAYER_HUD+12
 
 	var/offset_x = 0
 	var/offset_y = 0

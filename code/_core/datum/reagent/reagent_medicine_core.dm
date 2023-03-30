@@ -65,11 +65,11 @@
 
 /reagent/medicine/caridone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,20)*.*multiplier
+	owner.brute_regen_buffer += rand(10,20)*.*multiplier
 
 /reagent/medicine/caridone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += rand(1,20)*.*multiplier
+	owner.brute_regen_buffer += rand(10,15)*.*multiplier
 
 /reagent/medicine/percardone
 	name = "Percardone"
@@ -172,11 +172,11 @@
 
 /reagent/medicine/arentane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(1,10)*.*multiplier
+	owner.burn_regen_buffer += rand(5,10)*.*multiplier
 
 /reagent/medicine/arentane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(1,10)*.*multiplier
+	owner.burn_regen_buffer += rand(5,10)*.*multiplier
 
 /reagent/medicine/kenotone
 	name = "Kenotone"
@@ -198,13 +198,13 @@
 
 /reagent/medicine/kenotone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(2,20)*.*multiplier
+	owner.burn_regen_buffer += rand(10,20)*.*multiplier
 	owner.tox_regen_buffer -= rand(1,10)*.*multiplier
 	owner.stamina_regen_buffer -= rand(1,10)*.*multiplier
 
 /reagent/medicine/kenotone/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.burn_regen_buffer += rand(2,20)*.*multiplier
+	owner.burn_regen_buffer += rand(5,20)*.*multiplier
 	owner.tox_regen_buffer -= rand(1,10)*.*multiplier
 	owner.stamina_regen_buffer -= rand(1,10)*.*multiplier
 

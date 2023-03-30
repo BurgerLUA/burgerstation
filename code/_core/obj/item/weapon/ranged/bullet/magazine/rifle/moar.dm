@@ -10,15 +10,15 @@
 
 	tier = 3
 
-	shoot_delay = 1
+	shoot_delay = 1.2
 
-	damage_mod = 1.2
+	damage_mod = 1.15
 
 	automatic = TRUE
 
 	firemodes = list("automatic")
 
-	shoot_sounds = list('sound/weapons/308/shoot_sharp.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/moar/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -77,6 +77,8 @@
 	movement_spread_base = 0.0075
 
 	dan_mode = TRUE
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/moar/get_static_spread()
 	return 0.02

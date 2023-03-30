@@ -33,9 +33,8 @@ obj/structure/scenery/bush/snow/New()
 	mouse_opacity = 1
 	density = TRUE
 
-/obj/structure/interactive/tree/on_destruction(mob/caller, damage)
-	if(caller in orange(1,src))
-		CREATE(/obj/item/material/wood/oak,get_turf(src))
+/obj/structure/interactive/tree/on_destruction(var/damage = TRUE)
+	CREATE(/obj/item/material/wood/oak,get_turf(src))
 	. = ..()
 /obj/structure/interactive/tree/Finalize()
 	. = ..()
@@ -55,7 +54,7 @@ obj/structure/scenery/bush/snow/New()
 	icon_state = "pine_2"
 	pixel_x = -16
 
-/obj/structure/interactive/tree/pine/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/tree/pine/on_destruction(var/damage = TRUE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "pine_stump"
@@ -74,7 +73,7 @@ obj/structure/scenery/bush/snow/New()
 	color = "#d4d2ab"
 
 
-/obj/structure/interactive/tree/evergreen/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/tree/evergreen/on_destruction(var/damage = TRUE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "evergreen_stump"
@@ -92,7 +91,7 @@ obj/structure/scenery/bush/snow/New()
 	pixel_x = -32
 	pixel_y = 0
 
-/obj/structure/interactive/tree/jungle_small/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/tree/jungle_small/on_destruction(var/damage = TRUE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "stump"
@@ -110,7 +109,7 @@ obj/structure/scenery/bush/snow/New()
 	pixel_x = -48
 	pixel_y = -16
 
-/obj/structure/interactive/tree/jungle_large/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/tree/jungle_large/on_destruction(var/damage = TRUE)
 	. = ..()
 	QDEL_NULL(health) //Important
 	icon_state = "stump"

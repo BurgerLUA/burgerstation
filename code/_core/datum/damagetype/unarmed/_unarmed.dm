@@ -4,13 +4,13 @@
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
 	impact_sounds = list(
-		'sound/weapons/fists/light_punch_01.ogg',
-		'sound/weapons/fists/light_punch_02.ogg',
-		'sound/weapons/fists/light_punch_03.ogg',
-		'sound/weapons/fists/light_punch_04.ogg',
-		'sound/weapons/fists/light_punch_05.ogg',
-		'sound/weapons/fists/light_punch_06.ogg',
-		'sound/weapons/fists/light_punch_07.ogg'
+		'sound/weapons/unarmed/light_punch_01.ogg',
+		'sound/weapons/unarmed/light_punch_02.ogg',
+		'sound/weapons/unarmed/light_punch_03.ogg',
+		'sound/weapons/unarmed/light_punch_04.ogg',
+		'sound/weapons/unarmed/light_punch_05.ogg',
+		'sound/weapons/unarmed/light_punch_06.ogg',
+		'sound/weapons/unarmed/light_punch_07.ogg'
 	)
 
 	damage_type_to_fatigue = list( //What percentage of damage blocked is converted into fatigue.

@@ -10,7 +10,9 @@
 
 	size = SIZE_2
 
-/obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/caller)
+	rarity = RARITY_COMMON
+
+/obj/item/weapon/melee/energy/stunbaton/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 

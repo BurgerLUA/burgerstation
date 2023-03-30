@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer
-	name = "\improper 12.7mm High-Power Auto"
-	desc = "The \"Auto\" is for semiauto."
+	name = "\improper 12.7mm High-Power Auto pistol"
+	desc = "The \"Auto\" is for semiauto. An automatic 12.7mm pistol would be silly!"
 	desc_extended = "A very powerful semiautomatic pistol designed for high ranking NanoTrasen commanders."
 	icon = 'icons/obj/item/weapons/ranged/pistol/12mm_nt.dmi'
 	icon_state = "inventory"
@@ -10,7 +10,7 @@
 
 	tier = 2
 
-	shoot_delay = 3
+	shoot_delay = 6
 
 	automatic = FALSE
 
@@ -18,14 +18,14 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.025
 
-	shoot_sounds = list('sound/weapons/12/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/overseer/shoot.ogg')
 
 	can_wield = FALSE
 
 	size = SIZE_2
-	weight = 7
+	weight = 9
 
-	heat_max = 0.08
+	heat_max = 0.1
 
 	bullet_length_min = 27
 	bullet_length_best = 33
@@ -69,11 +69,13 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 12 - 16
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_static_spread()
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/get_skill_spread(var/mob/living/L)
-	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
+	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod
 	name = "\improper 12.7mm High-Power Auto MOD"
@@ -84,7 +86,7 @@
 	value = 2000
 
 	tier = 3
-	shoot_delay = 2
+	shoot_delay = 4
 
 	heat_max = 0.05
 
@@ -124,6 +126,8 @@
 	attachment_undermount_offset_y = 14 - 16
 
 	automatic = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/overseer/mod/silenced/Generate()
 

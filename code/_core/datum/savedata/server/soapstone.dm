@@ -1,7 +1,7 @@
 /savedata/server/soapstone
 
-/savedata/server/soapstone/get_file(var/z_level)
-	return replacetext(SOAPSTONE_FILE_FORMAT,"%MAP",SSdmm_suite.z_level_to_file["[z_level]"])
+/savedata/server/soapstone/get_file(var/file_id)
+	return replacetext(SOAPSTONE_FILE_FORMAT,"%MAP",file_id)
 
 /savedata/server/soapstone/proc/quick_write(var/list/data_to_write)
 
@@ -26,9 +26,9 @@
 
 /savedata/server/soapstone/proc/quick_load()
 
-	for(var/z_level in SSdmm_suite.z_level_to_file)
+	for(var/map_file in SSdmm_suite.z_level_to_file)
 
-		var/file_name = get_file(z_level)
+		var/file_name = get_file(map_file)
 
 		log_debug("Loading file [file_name]...")
 

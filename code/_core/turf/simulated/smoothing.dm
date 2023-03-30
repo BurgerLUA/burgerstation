@@ -98,7 +98,6 @@
 	else
 		se = "i"
 
-
 	. = FALSE
 
 	if(smooth_code_1 != nw)

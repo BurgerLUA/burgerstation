@@ -59,11 +59,11 @@
 				I.appearance_flags = T.appearance_flags | RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_overlay(I)
 
-/obj/structure/window/on_destruction(var/mob/caller,var/damage = FALSE)
-	. = ..()
+/obj/structure/window/on_destruction(var/damage = TRUE)
 	if(damage)
 		create_destruction(get_turf(src),list(/obj/item/material/shard/ = 2),material_id)
 		no_queue = TRUE
+	. = ..()
 	qdel(src)
 
 /obj/structure/window/reinforced
@@ -82,7 +82,7 @@
 	reinforced_material_id = /material/plasteel
 	reinforced_color = COLOR_PLASTEEL
 
-	health_base = 600
+	health = null //Indestructable.
 
 /obj/structure/window/tinted
 	name = "tinted window"
@@ -130,7 +130,11 @@
 		force_corner = TRUE
 		name = "corner window"
 
-	return ..()
+	. = ..()
+
+/obj/structure/window/directional/Finalize()
+	. = ..()
+	set_dir(dir,force=TRUE)
 
 /obj/structure/window/directional/set_dir(var/desired_dir,var/force = FALSE)
 

@@ -25,7 +25,7 @@
 	attack_delay = 10
 	attack_delay_max = 10
 
-/damagetype/npc/captain_beepsky/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/npc/captain_beepsky/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -34,7 +34,7 @@
 		else
 			var/list/possible_teleport_turfs = list()
 			for(var/turf/T in range(12,attacker))
-				if(!T.is_safe_move())
+				if(!T.can_move_to())
 					continue
 				possible_teleport_turfs += T
 

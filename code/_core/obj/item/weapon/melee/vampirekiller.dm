@@ -13,3 +13,5 @@
 
 	weight = 3
 	size = SIZE_2
+
+	rarity = RARITY_RARE

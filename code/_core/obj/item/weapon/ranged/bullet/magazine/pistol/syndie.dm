@@ -10,7 +10,7 @@
 
 	tier = 1
 
-	shoot_delay = 2
+	shoot_delay = 2.2
 
 	automatic = FALSE
 
@@ -18,7 +18,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0
 
-	shoot_sounds = list('sound/weapons/10/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/stetchkin/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -69,6 +69,8 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 14 - 16
 
+	rarity = RARITY_COMMON
+
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/syndie/get_static_spread()
@@ -81,7 +83,7 @@
 	name = "10mm Stecharov pistol MOD"
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_2.dmi'
 	desc = "The traitor's second best friend."
-	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is much more compact and concealable."
+	desc_extended = "A standard Syndicate pistol modified with better materials. This variant is much more compac, concealable, and fires much faster."
 
 	size = SIZE_1
 
@@ -93,3 +95,46 @@
 
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 14 - 16
+
+	rarity = RARITY_RARE
+
+	shoot_delay = 1.8
+
+
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/slavic
+	name = "9x19mm Mackintosh pistol"
+	desc = "Putting the \"Sir, can I have something better.\" in surplus!"
+	desc_extended = "A surplus Slavic pistol designed to be a cheap replica of the Stecharov pistol, which was also a cheap replica of a Slavic pistol. It has many layers to its shitness."
+	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_3.dmi'
+
+	company_type = "Slavic"
+
+	size = SIZE_2
+
+	attachment_barrel_offset_x = 26 - 16
+	attachment_barrel_offset_y = 20 - 16
+
+	attachment_sight_offset_x = 13 - 16
+	attachment_sight_offset_y = 21 - 16
+
+	attachment_undermount_offset_x = 22 - 16
+	attachment_undermount_offset_y = 17 - 16
+
+	bullet_length_min = 16
+	bullet_length_best = 19
+	bullet_length_max = 20
+
+	bullet_diameter_min = 8.5
+	bullet_diameter_best = 9
+	bullet_diameter_max = 9.5
+
+	heat_max = 0.1
+
+	rarity = RARITY_COMMON
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/slavic/get_static_spread()
+	return 0.01
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/slavic/get_skill_spread(var/mob/living/L)
+	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))

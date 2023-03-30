@@ -1,7 +1,7 @@
 /obj/item/clothing/feet/shoes/magboot
 	name = "right magboot"
 	desc = "Water-proof."
-	desc_extended = "Heavy boots with a magnetic sole. Prevents you from losing grip and floating off into the void."
+	desc_extended = "Heavy boots with a magnetic sole, to be worn over your current shoe. Prevents you from losing grip and floating off into the void."
 
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
@@ -10,7 +10,7 @@
 	icon = 'icons/obj/item/clothing/shoes/magboots.dmi'
 
 	item_slot = SLOT_FOOT
-	item_slot_mod = SLOT_MOD_LEFT
+	item_slot_mod = SLOT_MOD_RIGHT
 	protected_limbs = list(BODY_FOOT_RIGHT)
 
 	armor = /armor/hardsuit/mechanical

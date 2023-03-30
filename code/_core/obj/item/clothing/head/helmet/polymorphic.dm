@@ -28,6 +28,20 @@
 		"stripe" = COLOR_NANOTRASEN
 	)
 
+/obj/item/clothing/head/helmet/polymorphic/janitor
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"ears" = COLOR_NANOTRASEN,
+		"stripe" = COLOR_JANITOR
+	)
+
+/obj/item/clothing/head/helmet/polymorphic/science
+	polymorphs = list(
+		"base" = COLOR_WHITE,
+		"ears" = COLOR_NANOTRASEN,
+		"stripe" = COLOR_SCIENCE
+	)
+
 /obj/item/clothing/head/helmet/polymorphic/recruit
 	polymorphs = list(
 		"base" = COLOR_BLACK,
@@ -39,7 +53,7 @@
 	polymorphs = list(
 		"base" = COLOR_BLACK,
 		"ears" = COLOR_ENGINEERING,
-		"stripe" = COLOR_ENGINEERING
+		"stripe" = COLOR_VISIBLE_GREEN
 	)
 
 /obj/item/clothing/head/helmet/polymorphic/medical

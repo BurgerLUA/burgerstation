@@ -61,6 +61,7 @@
 		A.linked_apc.unlink_area(A)
 	A.linked_apc = src
 	src.linked_areas += A
+	SSpower.all_apc_areas += A
 	update_sprite()
 	return TRUE
 
@@ -68,17 +69,17 @@
 	src.linked_areas -= A
 	if(A.linked_apc == src)
 		A.linked_apc = null
+	SSpower.all_apc_areas -= A
 	update_sprite()
 	return TRUE
 
 /obj/structure/interactive/power/apc/Generate()
 	. = ..()
 	if(ispath(cell))
-		cell = new(src)
+		cell = new cell(src)
 		INITIALIZE(cell)
 		GENERATE(cell)
 		FINALIZE(cell)
-		cell.charge_current = rand(cell.charge_max*0.5,cell.charge_max*0.75)
 
 /obj/structure/interactive/power/apc/update_overlays()
 

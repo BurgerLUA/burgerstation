@@ -82,12 +82,12 @@
 		FINALIZE(stored_gun)
 	. = ..()
 
-/obj/item/attachment/undermount/gun/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/attachment/undermount/gun/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_gun")
 
-/obj/item/attachment/undermount/gun/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/attachment/undermount/gun/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_gun")
 
 /obj/item/attachment/undermount/gun/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
@@ -109,3 +109,20 @@
 	value = 1000
 
 	rarity = RARITY_RARE
+
+
+/obj/item/attachment/undermount/gun/built_in_shotgun
+	name = "12g singlebarrel shotgun attachment"
+	desc = "Thump!"
+	desc_extended = ""
+	icon_state = "s_shotgun"
+
+	stored_gun = /obj/item/weapon/ranged/bullet/revolver/sbarrel/undermount
+
+	attachment_stats = list(
+		movement_spread = 1.5
+	)
+
+	value = 0
+
+	removable = FALSE

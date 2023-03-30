@@ -21,10 +21,6 @@
 
 	affects_dead = FALSE
 
-/status_effect/paincrit/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
-	owner.remove_status_effect(PAINKILLER)
-	return ..()
-
 /status_effect/stamcrit
 	name = "Stamcrit"
 	desc = "You're too tired!"

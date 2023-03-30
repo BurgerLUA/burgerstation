@@ -1,7 +1,6 @@
 /ai/advanced/nanotrasen
-	enemy_tags = list("Syndicate")
+	enemy_tags = list("Syndicate","Revolutionary")
 	should_find_weapon = TRUE
 	aggression = 1
 	assistance = 1
-	cowardice = 0.75
 	guard = TRUE

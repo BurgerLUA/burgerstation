@@ -8,15 +8,17 @@
 
 	company_type = "Syndicate"
 
+	tier_type = "heavy weapon"
+
 	tier = 3
 
-	shoot_delay = 1
+	shoot_delay = 1.6
 
 	automatic = TRUE
 
 	damage_mod = 1.3
 
-	shoot_sounds = list('sound/weapons/smg_heavy/classic_2.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/lmg_syndicate/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -78,6 +80,8 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.1
+
+	rarity = RARITY_RARE
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/lmg/update_icon()

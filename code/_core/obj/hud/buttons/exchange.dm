@@ -14,7 +14,7 @@
 
 /obj/hud/button/exchange/
 	plane = PLANE_HUD
-	layer = 1
+	layer = LAYER_HUD+100
 
 /obj/hud/button/exchange/sell
 	name = "sell"
@@ -60,8 +60,11 @@
 						qdel(I)
 						if(!G.qdeleting && G.can_transfer_stacks_to(object))
 							G.transfer_amount_to(object)
+							object.update_sprite()
 						if(!G.qdeleting)
-							A.put_in_hands(G,params)
+							if(!A.put_in_hands(G,params))
+								G.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE)
+
 
 					SSeconomy.update_stats()
 			else
@@ -108,6 +111,13 @@
 	if(stored_object)
 		set_stored_object(null)
 
+	DEFER_OBJECT
+
+	if(is_item(defer_object)) //Put the item in this inventory slot.
+		set_stored_object(defer_object)
+		HOOK_ADD("post_move","stored_object_post_move_\ref[src]",stored_object,src,.proc/stored_object_post_move)
+		return TRUE
+
 	. = ..()
 
 /obj/hud/button/exchange/base/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -149,8 +159,8 @@
 	if(stored_object)
 		var/image/I = new/image(stored_object.icon,stored_object.icon_state)
 		I.appearance = stored_object.appearance
-		I.layer = 100
-		I.plane = plane
+		I.plane = FLOAT_PLANE
+		I.layer = FLOAT_LAYER
 		I.pixel_x = 4
 		I.pixel_y = 0
 		add_overlay(I)
@@ -174,4 +184,7 @@
 		maptext = "Click and drag an item here."
 		maptext_x = 5
 		maptext_y = 16
-	tooltip_text = get_tooltip_text()
+
+	tooltip_text = initial(tooltip_text)
+	if(!tooltip_text)
+		tooltip_text = generate_tooltip_text()

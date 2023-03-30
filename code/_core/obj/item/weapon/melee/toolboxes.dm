@@ -32,6 +32,8 @@
 	name = "fully loaded black toolbox"
 	color = COLOR_GREY_DARK
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/toolbox/syndicate/Generate()
 	new /obj/item/weapon/melee/tool/crowbar(src)
 	new /obj/item/weapon/melee/tool/multitool(src)
@@ -48,6 +50,6 @@
 	icon = 'icons/obj/item/weapons/melee/toolbox/gold.dmi'
 	damage_type = /damagetype/melee/club/gold_toolbox
 
-
-
 	value = 5000
+
+	rarity = RARITY_LEGENDARY

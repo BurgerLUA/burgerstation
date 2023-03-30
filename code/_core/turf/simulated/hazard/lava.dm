@@ -20,6 +20,8 @@
 
 	depth = 4
 
+	hazardous = TRUE
+
 /turf/simulated/liquid/lava/is_safe()
 	return FALSE
 

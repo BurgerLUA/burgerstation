@@ -3,7 +3,7 @@
 	plane = PLANE_PROJECTILE
 	layer = LAYER_PROJECTILE
 
-	damage_type = null //Default is /damage_type/error. Sometimes projectiles don't need to do damage.
+	damage_type = null //Default is /damagetype/error. Sometimes projectiles don't need to do damage.
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
@@ -45,7 +45,6 @@
 	var/atom/target_atom
 
 	var/hit_target_turf = FALSE //The target atom can still be hit when false. Setting to true just gives priority.
-	var/hit_target_atom = FALSE //The target atom can still be hit when false. Setting to true just gives priority.
 	var/hit_laying = FALSE
 
 	collision_flags = FLAG_COLLISION_NONE
@@ -80,7 +79,7 @@
 
 	var/ricochets_left = 3 //Amount of richochets this projectile is allowed to have. 0 to disable.
 	var/ricochet_angle = 55 //The angle of incidence needs to be larger than this to trigger a richochete.
-	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line.
+	//Generally a number between 0 and 90, with 0 being a direct impact and 90 being an impossible to obtain parallel line. (Lower means can bounce more often).
 	//Ideal value is something between 55 and 60. This value is doubled when considering shields.
 	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
 
@@ -179,7 +178,7 @@
 	pixel_x_float_physical = pixel_x
 	pixel_y_float_physical = pixel_y
 
-	return ..()
+	. = ..()
 
 /obj/projectile/Finalize()
 	. = ..()
@@ -188,62 +187,71 @@
 /obj/projectile/proc/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 
 	if(!new_loc)
-		log_error("Warning: [src.get_debug_name()] didn't have a new loc.")
-		on_projectile_hit(src.loc,old_loc,new_loc)
+		log_error("Warning: [src.get_debug_name()] didn't have a new loc!")
+		on_projectile_hit(src.loc)
 		return FALSE
 
 	if(!old_loc)
-		log_error("Warning: [src.get_debug_name()] didn't have an old loc.")
-		on_projectile_hit(src.loc,old_loc,new_loc)
+		log_error("Warning: [src.get_debug_name()] didn't have an old loc!")
+		on_projectile_hit(src.loc)
 		return FALSE
-
-	//Handle atoms in turf.
-	//Take priority of existing targets on a turf before ones that existed before.
-
-	if(hit_target_atom && old_loc == target_atom.loc && target_atom.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(target_atom,old_loc,new_loc))
-		if(debug) log_debug("[src.get_debug_name()] hit target atom.")
-		return FALSE
-
-	if(hit_target_turf && old_loc == target_turf)
-		on_projectile_hit(target_turf,old_loc,new_loc)
-		if(debug) log_debug("[src.get_debug_name()] hit target turf.")
-		return FALSE
-
-	if(old_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(old_loc,old_loc,new_loc))
-		penetrations_left--
-		if(penetrations_left < 0)
-			return FALSE
 
 	if(debug)
 		var/obj/effect/temp/tile/TE = new(new_loc)
 		TE.maptext = "[steps_current]"
 		TE.alpha = 200
 
-	if(old_loc != new_loc)
-		for(var/k in new_loc.contents)
-			var/atom/movable/A = k
-			if(!A.density || (hit_target_atom && A == target_atom))
-				continue
-			if(A.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(A,old_loc,new_loc))
+	var/list/target_score = list() //The higher the object, the higher priority it is to get hit.
+
+	for(var/k in new_loc.contents)
+		var/atom/movable/A = k
+		if(!A.density || A.mouse_opacity <= 0)
+			continue
+		if(is_living(A))
+			var/mob/living/L = A
+			var/score = L.size //Bigger objects get more priority.
+			if(L == target_atom)
+				score = 1000
+			else if(L.horizontal)
+				score *= 0.5
+			target_score[L] = score
+			continue
+		else
+			target_score[A] = A.plane*1000 + A.layer
+
+	for(var/k in new_loc.old_living)
+		var/mob/living/L = k
+		if(!L.density || L.mouse_opacity <= 0)
+			continue
+		if(L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions for living.
+			continue
+		var/score = L.size*0.5
+		if(L == target_atom)
+			score = 1000
+		else if(L.horizontal)
+			score *= 0.5
+		target_score[L] = score
+
+	sort_tim(target_score,cmp=/proc/cmp_numeric_dsc,associative=TRUE) //Get the highest.
+
+	for(var/k in target_score)
+		var/mob/living/L = k
+		if(L.projectile_should_collide(src,old_loc,new_loc))
+			if(on_projectile_hit(L,old_loc,new_loc))
 				penetrations_left--
 				if(penetrations_left < 0)
 					return FALSE
+			else
+				break
 
-		if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
-			penetrations_left--
-			if(penetrations_left < 0)
-				return FALSE
+	if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
+		penetrations_left--
+		if(penetrations_left < 0)
+			return FALSE
 
-		for(var/k in new_loc.old_living)
-			var/mob/living/L = k
-			if(!L.density|| (hit_target_atom && L == target_atom))
-				continue
-			if(L.mouse_opacity <= 0 || L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions.
-				continue
-			if(L.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(L,old_loc,new_loc))
-				penetrations_left--
-				if(penetrations_left < 0)
-					return FALSE
+	if(hit_target_turf && target_turf == new_loc)
+		on_projectile_hit(new_loc,old_loc,new_loc)
+		return FALSE
 
 	if(steps_allowed && steps_allowed <= steps_current)
 		on_projectile_hit(new_loc,old_loc,new_loc)
@@ -260,7 +268,7 @@
 		return FALSE
 
 	if(!src.z || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
-		on_projectile_hit(current_loc ? current_loc : src.loc,null,null)
+		on_projectile_hit(current_loc)
 		return FALSE
 
 	if(!start_time) //First time running.
@@ -280,11 +288,21 @@
 	var/rounded_x = CEILING(pixel_x_float_visual,1)
 	var/rounded_y = CEILING(pixel_y_float_visual,1)
 	if(pixel_x != rounded_x || pixel_y != rounded_y) //Big enough change to animate.
+		var/pixel_offset_x = vel_x
+		var/pixel_offset_y = vel_y
+		if(pixel_offset_x || pixel_offset_y)
+			var/norm = max(abs(pixel_offset_x),abs(pixel_offset_y))
+			pixel_offset_x = round((pixel_offset_x/norm) * TILE_SIZE)
+			pixel_offset_y = round((pixel_offset_y/norm) * TILE_SIZE)
 		if(world.tick_usage < 90 && max(abs(vel_x),abs(vel_y)) < TILE_SIZE*TICKS_TO_SECONDS(SSprojectiles.tick_rate))
-			animate(src,pixel_x = rounded_x,pixel_y = rounded_y,time=tick_rate)
+			animate(src,
+				pixel_x = rounded_x + pixel_offset_x,
+				pixel_y = rounded_y + pixel_offset_y,
+				time=tick_rate
+			)
 		else
-			pixel_x = rounded_x
-			pixel_y = rounded_y
+			pixel_x = rounded_x + pixel_offset_x
+			pixel_y = rounded_y + pixel_offset_y
 
 	var/max_normal = max(abs(vel_x),abs(vel_y))
 	var/x_normal = vel_x/max_normal
@@ -360,6 +378,7 @@
 				var/list/damage_information = DT.process_damage(owner,hit_atom,weapon,object_to_damage,blamed,damage_multiplier)
 
 				if(ricochets_left > 0 && length(damage_information))
+					//damage information indexes
 					//1 = damage dealt
 					//2 = damage blocked via armor
 					//3 = damage blocked via shield
@@ -374,55 +393,56 @@
 
 					if(block_percent >= richochet_block_percent_threshold)
 						var/list/face_of_impact = get_directional_offsets(old_loc,new_loc)
-						var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(face_of_impact[1],face_of_impact[2])))
-						if(angle_of_incidence >= local_required_angle)
-							var/turf/T = get_turf(hit_atom)
-							if(T)
+						if(face_of_impact[1] || face_of_impact[2])
+							var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(face_of_impact[1],face_of_impact[2])))
+							if(angle_of_incidence >= local_required_angle)
+								var/turf/T = get_turf(hit_atom)
+								if(T)
 
-								ricochets_left--
+									ricochets_left--
 
-								if(is_living(hit_atom))
-									var/mob/living/L = owner
-									if(L.ckey_last) //Only convert if it hits a player.
-										var/good_tag = FALSE
-										if(iff_tag && L.iff_tag)
-											iff_tag = L.iff_tag
-											good_tag = TRUE
-										if(loyalty_tag && L.loyalty_tag)
-											loyalty_tag = L.loyalty_tag
-											good_tag = TRUE
-										if(good_tag)
-											owner = L
-											blamed = L
+									if(is_living(hit_atom))
+										var/mob/living/L = owner
+										if(L.ckey_last) //Only convert if it hits a player.
+											var/good_tag = FALSE
+											if(iff_tag && L.iff_tag)
+												iff_tag = L.iff_tag
+												good_tag = TRUE
+											if(loyalty_tag && L.loyalty_tag)
+												loyalty_tag = L.loyalty_tag
+												good_tag = TRUE
+											if(good_tag)
+												owner = L
+												blamed = L
 
-								start_turf = T
-								previous_loc = T
-								current_loc = T
+									start_turf = T
+									previous_loc = T
+									current_loc = T
 
-								//Move one step forward.
-								pixel_x_float_physical += vel_x
-								pixel_y_float_physical += vel_y
-								//Reflect the velocity
-								vel_x *= 1 - abs(face_of_impact[1])*2
-								vel_y *= 1 - abs(face_of_impact[2])*2
+									//Move one step forward.
+									pixel_x_float_physical += vel_x
+									pixel_y_float_physical += vel_y
+									//Reflect the velocity
+									vel_x *= 1 - abs(face_of_impact[1])*2
+									vel_y *= 1 - abs(face_of_impact[2])*2
 
-								//Adjust the position.
-								pixel_x_float_physical -= vel_x*0.5
-								pixel_y_float_physical -= vel_y*0.5
+									//Adjust the position.
+									pixel_x_float_physical -= vel_x*0.5
+									pixel_y_float_physical -= vel_y*0.5
 
-								//Resync everything.
-								pixel_x_float_visual = pixel_x_float_physical
-								pixel_y_float_visual = pixel_y_float_physical
-								pixel_x = CEILING(pixel_x_float_visual,1)
-								pixel_y = CEILING(pixel_y_float_visual,1)
-								var/matrix/M = get_base_transform()
-								var/new_angle = -ATAN2(vel_x,vel_y) + 90
-								M.Turn(new_angle)
-								transform = M
-								. = FALSE
+									//Resync everything.
+									pixel_x_float_visual = pixel_x_float_physical
+									pixel_y_float_visual = pixel_y_float_physical
+									pixel_x = CEILING(pixel_x_float_visual,1)
+									pixel_y = CEILING(pixel_y_float_visual,1)
+									var/matrix/M = get_base_transform()
+									var/new_angle = -ATAN2(vel_x,vel_y) + 90
+									M.Turn(new_angle)
+									transform = M
+									. = FALSE
 
-								if(length(DT.impact_sounds))
-									play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
+									if(length(DT.impact_sounds))
+										play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
 
 	if(impact_effect_turf && is_turf(hit_atom))
 		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*3,-20,20),clamp((shoot_y-16)*3,-20,20),bullet_color)

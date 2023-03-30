@@ -14,8 +14,8 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/sniper_127/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/sniper_127/premium
 	damage_mod = PREMIUM_MUL
@@ -37,8 +37,8 @@
 	falloff = VIEW_RANGE + ZOOM_RANGE*5
 
 /damagetype/ranged/bullet/sniper_50/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/sniper_50/du
 	damage_mod = DU_MUL
@@ -66,7 +66,7 @@
 	damage_mod = 0.5
 	penetration_mod = 0
 
-/damagetype/ranged/bullet/sniper_50/incendiary/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/sniper_50/incendiary/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	if(is_living(victim))
 		var/mob/living/L = victim
 		L.add_status_effect(FIRE,150,150,stealthy=L.on_fire)

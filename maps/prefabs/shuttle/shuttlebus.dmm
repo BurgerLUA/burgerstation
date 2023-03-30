@@ -21,6 +21,10 @@
 	},
 /turf/simulated/floor/tile/shuttle/nanotrasen,
 /area/shuttle/shuttlebus)
+"f" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/shuttlebus)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 1;
@@ -188,7 +192,7 @@ a
 a
 r
 b
-b
+f
 d
 t
 t
@@ -197,7 +201,7 @@ t
 t
 t
 e
-b
+f
 b
 s
 a
@@ -278,7 +282,7 @@ a
 a
 r
 b
-b
+f
 d
 t
 t
@@ -287,7 +291,7 @@ t
 t
 t
 e
-b
+f
 b
 s
 a

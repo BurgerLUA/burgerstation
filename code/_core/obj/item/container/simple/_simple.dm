@@ -10,9 +10,6 @@
 /obj/item/container/simple/get_consume_sound()
 	return 'sound/items/consumables/drink.ogg'
 
-/obj/item/container/simple/get_examine_list(var/mob/examiner)
-	return ..() + div("notice",reagents.get_contents_english())
-
 /obj/item/container/simple/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(allow_reagent_transfer_to && istype(object,/obj/item/weapon/melee))

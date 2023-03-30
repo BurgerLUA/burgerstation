@@ -86,6 +86,10 @@
 	icon_state = "preview";
 	dir = 4
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 8
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_02)
 "ar" = (
@@ -183,7 +187,8 @@
 	icon_state = "preview";
 	dir = 1
 	},
-/mob/living/advanced/npc/survivor{
+/obj/marker/cover_node/right,
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -259,6 +264,10 @@
 /area/mission/prefab/house/house_02/kitchen)
 "aW" = (
 /obj/structure/interactive/potted_plant/office,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_02/hallway)
 "aX" = (
@@ -320,6 +329,10 @@
 	icon_state = "preview";
 	dir = 8
 	},
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_02/hallway)
 "bk" = (
@@ -331,6 +344,10 @@
 /area/mission/prefab/house/house_02/bathroom)
 "bl" = (
 /obj/structure/interactive/door/airlock/station/bathroom/toilet,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_02/bathroom)
 "bm" = (
@@ -402,7 +419,7 @@
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_02/entrance)
 "by" = (
-/mob/living/advanced/npc/survivor,
+/mob/living/advanced/npc/bandit,
 /turf/simulated/floor/wood/brown,
 /area/mission/prefab/house/house_02/kitchen)
 "bz" = (
@@ -498,6 +515,25 @@
 /obj/marker/smart_clear_turf,
 /turf/dmm_suite/no_wall,
 /area/dmm_suite/clear_area)
+"bQ" = (
+/obj/structure/carpet/brown,
+/obj/marker/cover_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/entrance)
+"bR" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/entrance)
+"bS" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/hallway)
 
 (1,1,1) = {"
 aa
@@ -581,7 +617,7 @@ bM
 aS
 aS
 bc
-aS
+bQ
 bi
 aX
 aX
@@ -654,7 +690,7 @@ ar
 ar
 bc
 bc
-bc
+bR
 bG
 aP
 aa
@@ -745,7 +781,7 @@ al
 ae
 ae
 bg
-aY
+bS
 aY
 bw
 bs

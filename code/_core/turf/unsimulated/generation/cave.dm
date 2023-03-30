@@ -8,7 +8,7 @@
 
 /turf/unsimulated/generation/forest_cave/generate(var/size = WORLD_SIZE)
 
-	if(density && (x <= VIEW_RANGE*2 || x >= size - VIEW_RANGE*2 || y <= VIEW_RANGE*2 || y >= size - VIEW_RANGE*2)) //Handle edges.
+	if(density && (x <= VIEW_RANGE || x >= size - VIEW_RANGE || y <= VIEW_RANGE || y >= size - VIEW_RANGE)) //Handle edges.
 		new /turf/simulated/wall/rock(src)
 		if(prob(5))
 			new /obj/marker/generation/turf/rock_wall(src)
@@ -29,7 +29,7 @@
 		disallow_generation = TRUE
 		return ..()
 
-	if(is_different && is_next_to_null_areas)
+	if(is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 		if(prob(1))
 			new /obj/marker/generation/turf/rock_wall(src)
 		else

@@ -101,7 +101,7 @@
 			var/turf/T = get_step(src,d)
 			if(linked_core && T == priority_turf)
 				linked_core.lost_turfs -= priority_turf
-			var/atom/victim = T.change_victim(src,src)
+			var/atom/victim = T.change_victim(src)
 			if(!victim) //Something went wrong.
 				continue
 			if(istype(victim,/obj/structure/interactive/blob/) && victim.color == src.color) //No friendly fire!
@@ -215,7 +215,7 @@
 			play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),T)
 		update_sprite()
 
-/obj/structure/interactive/blob/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/blob/on_destruction(var/damage = TRUE)
 	. = ..()
 	qdel(src)
 

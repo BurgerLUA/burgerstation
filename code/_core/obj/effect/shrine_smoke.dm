@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/shrine_smoke.dmi'
 	icon_state = "smoke"
 	plane = PLANE_EFFECT
-	layer = 100
+	layer = LAYER_GHOST
 	alpha = 255
 
 	collision_flags = FLAG_COLLISION_WALL

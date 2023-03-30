@@ -47,13 +47,13 @@
 
 		var/turf/T = locate(rand(1+offset,world.maxx-offset),rand(1+offset,world.maxy-offset),desired_z)
 
-		if(!T.density && T.is_safe() && T.is_safe_move())
+		if(!T.density && T.is_safe() && T.can_move_to())
 			var/area/A = T.loc
 			if(!(A.flags_area & FLAG_AREA_NO_EVENTS))
 				return T
 
 		for(var/turf/T2 in range(VIEW_RANGE,T))
-			if(T.density || !T2.is_safe() || !T2.is_safe_move())
+			if(T.density || !T2.is_safe() || !T2.can_move_to())
 				continue
 			var/area/A = T2.loc
 			if(A.flags_area & FLAG_AREA_NO_EVENTS)

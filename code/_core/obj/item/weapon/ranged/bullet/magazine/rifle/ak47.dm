@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47
-	name = "\improper 7.62x39mm AK Type-13"
+	name = "\improper 7.62x39mm KA-47 rifle"
 	desc = "Ancient, with an upgrade."
-	desc_extended = "An old relic created by ancient Space Slavs to be used for lesser colonies in proxy wars. The absurdly large cartridge packs a pretty accurate and deadly punch."
+	desc_extended = "The Kinetic Action rifle is an old relic created by ancient Space Slavs to be used for lesser colonies in proxy wars. The absurdly large cartridge packs a pretty accurate and deadly punch."
 	icon = 'icons/obj/item/weapons/ranged/rifle/rev/762_rifle.dmi'
 	icon_state = "inventory"
 	value = 1600
@@ -10,13 +10,14 @@
 
 	tier = 2
 
-	shoot_delay = 3
+	damage_mod = 1
+	shoot_delay = 1.75
 
 	automatic = TRUE
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/308/shoot_long.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/ak/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -79,6 +80,8 @@
 
 	dan_mode = TRUE
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/get_static_spread()
 	return 0.001
 
@@ -110,6 +113,8 @@
 	movement_spread_base = 0.01
 
 	dan_mode = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/ak47/mod/get_static_spread()
 	return 0.005

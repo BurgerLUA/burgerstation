@@ -18,6 +18,10 @@
 "af" = (
 /obj/structure/carpet/blue,
 /obj/structure/interactive/bed/sheet,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/guest_bedroom)
 "ag" = (
@@ -82,13 +86,17 @@
 "aq" = (
 /obj/structure/carpet/blue,
 /obj/marker/map_node,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/guest_bedroom)
 "ar" = (
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_06/bathroom_01)
 "as" = (
@@ -101,6 +109,10 @@
 	icon_state = "preview";
 	dir = 8
 	},
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/master_bedroom)
 "au" = (
@@ -112,6 +124,10 @@
 /obj/structure/carpet/blue,
 /obj/structure/interactive/crate/trash,
 /obj/marker/spawning/random/trash,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 8
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/guest_bedroom)
 "aw" = (
@@ -120,6 +136,7 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/marker/cover_node/left,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/guest_bedroom)
 "ax" = (
@@ -155,6 +172,10 @@
 /area/mission/prefab/house/house_06/master_bedroom)
 "aC" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/guest_bedroom)
 "aD" = (
@@ -183,6 +204,10 @@
 /area/mission/prefab/house/house_06/bathroom_02)
 "aH" = (
 /obj/structure/interactive/lighting/fixture/bulb,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_06/bathroom_02)
 "aI" = (
@@ -215,7 +240,7 @@
 /area/mission/prefab/house/house_06/bathroom_02)
 "aN" = (
 /obj/marker/map_node,
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
@@ -223,6 +248,7 @@
 /area/mission/prefab/house/house_06/bathroom_01)
 "aO" = (
 /obj/structure/interactive/door/airlock,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/tile,
 /area/mission/prefab/house/house_06/bathroom_02)
 "aP" = (
@@ -231,6 +257,7 @@
 /area/mission/prefab/house/house_06)
 "aQ" = (
 /obj/structure/interactive/door/airlock/wood,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/master_bedroom)
 "aR" = (
@@ -320,6 +347,10 @@
 /obj/structure/interactive/lighting/fixture/bulb,
 /obj/structure/interactive/wire/green,
 /obj/structure/carpet/blue,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06)
 "bi" = (
@@ -395,6 +426,10 @@
 	icon_state = "preview";
 	dir = 8
 	},
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 4
+	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/kitchen)
 "bw" = (
@@ -414,14 +449,15 @@
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06)
 "bz" = (
-/mob/living/advanced/npc/survivor{
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 4
 	},
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06)
 "bA" = (
-/mob/living/advanced/npc/survivor{
+/obj/marker/cover_node/right,
+/mob/living/advanced/npc/bandit{
 	icon_state = "directional";
 	dir = 8
 	},
@@ -492,6 +528,17 @@
 /obj/marker/smart_clear_turf,
 /turf/simulated/floor/wood/rich,
 /area/mission/prefab/house/house_06/kitchen)
+"bP" = (
+/obj/structure/interactive/wire/green,
+/obj/structure/carpet/blue,
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house/house_06)
+"bQ" = (
+/obj/structure/interactive/potted_plant/bin,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/rich,
+/area/mission/prefab/house/house_06)
 
 (1,1,1) = {"
 aa
@@ -579,7 +626,7 @@ aF
 bb
 bh
 bj
-bj
+bP
 bq
 aX
 "}
@@ -651,7 +698,7 @@ bm
 aK
 aJ
 aJ
-aK
+bQ
 bw
 aa
 "}

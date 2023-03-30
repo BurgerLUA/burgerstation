@@ -1,3 +1,10 @@
+#define GLOBAL_CLICK_DELAY 							\
+	var/true_time_of_day = true_time();				\
+	if(next_global_click > true_time_of_day)		\
+		return TRUE;								\
+	next_global_click = true_time_of_day + 1;
+
+
 /client/proc/get_click_flags(var/list/params,var/check_swap = FALSE)
 
 	. = 0x0
@@ -18,6 +25,8 @@
 		. |= CLICK_MIDDLE
 
 /client/MouseWheel(var/atom/object,delta_x,delta_y,location,control,params)
+
+	GLOBAL_CLICK_DELAY
 
 	var/list/new_params = params2list(params)
 	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
@@ -93,6 +102,8 @@
 	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
+	GLOBAL_CLICK_DELAY
+
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	if(examine_mode)
@@ -111,9 +122,12 @@
 	if(click_flags & CLICK_MIDDLE)
 		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (is_turf(object) || is_turf(object.loc)))
 			if(spam_protection_interact <= 10)
+				var/turf/T = get_turf(mob)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
-				A.pixel_x = new_params[PARAM_ICON_X] - 16
-				A.pixel_y = new_params[PARAM_ICON_Y] - 16
+				A.pixel_x = (T.x - A.x)*TILE_SIZE
+				A.pixel_y = (T.y - A.y)*TILE_SIZE + TILE_SIZE
+				A.desired_pixel_x = new_params[PARAM_ICON_X] - 16
+				A.desired_pixel_y = new_params[PARAM_ICON_Y] - 16
 				A.invisibility = mob.invisibility
 				INITIALIZE(A)
 				FINALIZE(A)
@@ -150,6 +164,8 @@
 	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
+	GLOBAL_CLICK_DELAY
+
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	if(click_flags & CLICK_LEFT)
@@ -182,6 +198,8 @@
 
 	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
+
+	//GLOBAL_CLICK_DELAY
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 
@@ -231,9 +249,10 @@
 	if(mob && isturf(location))
 		if(zoom_held && (world.time - zoom_time) > 4)
 			var/list/offsets = get_directional_offsets(mob,location)
-			is_zoomed = get_dir_advanced(mob,location)
-			mob.set_dir(is_zoomed)
-			update_camera_offset(offsets[1],offsets[2])
+			if(offsets[1] || offsets[2])
+				is_zoomed = get_dir_advanced(mob,location)
+				mob.set_dir(is_zoomed)
+				update_camera_offset(offsets[1],offsets[2])
 		if(is_living(mob))
 			var/mob/living/L = mob
 			if(L.intent == INTENT_HARM)

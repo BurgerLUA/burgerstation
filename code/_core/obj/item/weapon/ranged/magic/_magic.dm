@@ -70,19 +70,19 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/magic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/magic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_powergem")
 
-/obj/item/weapon/ranged/magic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/ranged/magic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_powergem")
 
 /obj/item/weapon/ranged/magic/get_static_spread()
 	return 0
 
 /obj/item/weapon/ranged/magic/get_skill_spread(var/mob/living/L)
-	return 0.05 - (0.1 * L.get_skill_power(SKILL_MAGIC_DEFENSIVE))
+	return 0.05 - (0.1 * L.get_skill_power(SKILL_MAGIC))
 
 /obj/item/weapon/ranged/magic/get_base_spread()
 	return 0.02

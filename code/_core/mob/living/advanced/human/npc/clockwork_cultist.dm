@@ -12,7 +12,7 @@
 	mana_base = 100
 	stamina_base = 100
 
-	level = 40
+	level = 28
 
 /mob/living/advanced/npc/clockwork_cultist/Finalize()
 	. = ..()

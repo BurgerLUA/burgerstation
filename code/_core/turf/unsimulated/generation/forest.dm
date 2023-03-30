@@ -17,7 +17,7 @@ var/global/snow_num = 0.6+rand()*0.2
 
 	if(is_snow)
 
-		if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
+		if(density && is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 			new /turf/simulated/wall/rock/snow(src)
 			if(prob(2))
 				new /obj/marker/generation/turf/snow_wall(src)
@@ -123,7 +123,7 @@ var/global/snow_num = 0.6+rand()*0.2
 	else
 
 
-		if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
+		if(density && is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 			new /turf/simulated/wall/rock(src)
 			if(src.loc.type == /area/) new /area/mission/forest(src)
 			disallow_generation = TRUE
@@ -216,9 +216,7 @@ var/global/snow_num = 0.6+rand()*0.2
 					disallow_generation = TRUE
 			if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGHEST)
 				if(density)
-					if(prob(20))
-						new /obj/marker/generation/turf/rock_wall(src)
-					else if(prob(0.25))
+					if(prob(0.25))
 						new /obj/marker/generation/turf/water(src)
 					else
 						if(prob(1))
@@ -231,11 +229,30 @@ var/global/snow_num = 0.6+rand()*0.2
 					disallow_generation = TRUE
 			if(GENERATION_SEGMENT_HIGHEST to INFINITY)
 				if(density)
-					new /turf/simulated/wall/rock/moss(src)
-					if(prob(5))
-						new /obj/marker/generation/turf/rock_wall(src)
+					new /turf/simulated/floor/colored/grass(src)
+					if(prob(2))
+						new /obj/marker/generation/foliage/tree(src)
+						if(prob(1))
+							new /obj/marker/generation/plant/chanterelle(src)
+						if(prob(0.5))
+							new /obj/marker/generation/mob/slime/forest(src)
+					else if(prob(1))
+						new /obj/marker/generation/foliage/flowers(src)
+						if(prob(1))
+							new /obj/marker/generation/mob/bee(src)
+					else if(prob(1))
+						if(prob(75))
+							new /obj/marker/generation/turf/forest_dirt(src)
+						else
+							new /obj/marker/generation/turf/forest_soil(src)
+						if(prob(1))
+							new /obj/marker/generation/plant/cabbage(src)
+							if(prob(1))
+								new /obj/marker/generation/mob/goat(src)
+					else if(prob(5))
+						new /obj/marker/generation/foliage/grass(src)
 				else
-					new /turf/simulated/floor/cave_dirt(src)
+					new/turf/simulated/floor/colored/dirt/path(src)
 					disallow_generation = TRUE
 
 		if(src.loc.type == /area/) new /area/mission/forest(src)

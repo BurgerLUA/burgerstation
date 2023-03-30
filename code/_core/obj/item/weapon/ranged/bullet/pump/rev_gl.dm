@@ -8,6 +8,8 @@
 
 	company_type = "Slavic"
 
+	tier_type = "grenade launcher"
+
 	shoot_delay = 20
 
 	automatic = FALSE
@@ -16,7 +18,7 @@
 
 	insert_limit = 1
 
-	shoot_sounds = list('sound/weapons/grenade_launcher/thump.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/grenade_launcher/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -68,6 +70,8 @@
 	pump_delay = 5
 
 	value_burgerbux = 1
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/pump/gm94/get_base_spread()
 	return 0.1

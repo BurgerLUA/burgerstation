@@ -17,3 +17,5 @@
 	weight = 30
 
 	item_slot = SLOT_TORSO_BACK
+
+	rarity = RARITY_LEGENDARY

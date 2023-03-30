@@ -66,29 +66,27 @@
 		H.health.adjust_loss_smart(
 			brute=-BS.total_damage_dealt,
 			organic=TRUE,
-			robotic=FALSE,
-			update=FALSE
+			robotic=FALSE
 		)
-
-	A.health.adjust_loss_smart(
-		brute=-(20 + A.health.damage[BRUTE]*0.5),
-		burn=-(10 + A.health.damage[BURN]*0.25),
-		tox=-A.health.damage[BRUTE],
-		organic=TRUE,
-		robotic=FALSE,
-		update=FALSE
-	)
 
 	for(var/k in A.organs)
 		var/obj/item/organ/O = k
 		if(!O.health)
 			continue
 		if(O.id == BODY_TORSO)
-			O.damage_coefficient *= 0.25
+			O.damage_coefficient *= 0.5
 		else if(O.id == BODY_HEAD)
-			O.damage_coefficient *= 2
+			O.damage_coefficient *= 1.5
 		else
-			O.damage_coefficient *= 0.1
+			O.damage_coefficient *= 0.25
+
+	A.health.adjust_loss_smart(
+		brute=-(20 + A.health.damage[BRUTE]*0.5),
+		burn=-(10 + A.health.damage[BURN]*0.25),
+		tox=-A.health.damage[BRUTE],
+		organic=TRUE,
+		robotic=FALSE
+	)
 
 	var/obj/item/organ/internal/implant/head/loyalty/L = locate() in A.organs
 	if(L) L.loyalty_tag = "Blob"
@@ -98,9 +96,10 @@
 	if(I) I.iff_tag = "Blob"
 	owner.set_iff_tag("Blob")
 
-	if(A.ai) qdel(A.ai)
-	A.ai = new /ai/advanced/zombie(null,A)
-	A.ai.active = FALSE //I know this feels like shitcode but *dab
+	if(!istype(A.ai,/ai/advanced/zombie))
+		qdel(A.ai)
+		A.ai = new /ai/advanced/zombie(null,A)
+		A.ai.active = FALSE //I know this feels like shitcode but *dab
 
 	if(A.client)
 		T = get_turf(A)

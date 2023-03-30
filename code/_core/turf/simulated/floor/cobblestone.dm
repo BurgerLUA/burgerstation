@@ -54,3 +54,38 @@
 
 /turf/simulated/floor/brick/city/clean
 	color = "#CCBAAD"
+
+/turf/simulated/floor/temple
+	name = "temple floor"
+	icon = 'icons/turf/floor/temple.dmi'
+	icon_state = "floor"
+	color = "#D3B27C"
+	health = null
+	destruction_turf = /turf/simulated/floor/plating/reinforced
+
+/turf/simulated/floor/temple/jewel
+	icon_state = "floor_jewel"
+	destruction_turf = /turf/simulated/floor/circuit/blue
+
+/turf/simulated/floor/temple/jewel/Finalize()
+	. = ..()
+	update_sprite()
+
+/turf/simulated/floor/temple/jewel/update_icon()
+	. = ..()
+	icon_state = "floor"
+
+/turf/simulated/floor/temple/jewel/update_overlays()
+	. = ..()
+	var/image/I = new(initial(icon),"light")
+	var/offset_x = rand(0,3) * 8
+	var/offset_y = rand(0,3)
+	if(offset_y % 2)
+		offset_x += 4
+	offset_y *= 8
+	I.pixel_x = offset_x
+	I.pixel_y = offset_y
+	add_overlay(I)
+	light_offset_x = offset_x - 12
+	light_offset_y = offset_y - 12
+	set_light(1,0.25,"#C0CBE5")

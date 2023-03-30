@@ -49,7 +49,7 @@
 		FIRE = TRUE
 	)
 
-	level = 22
+	level = 20
 
 /mob/living/simple/silicon/squats/post_death()
 	. = ..()
@@ -85,7 +85,7 @@
 
 	damage_type = /damagetype/squats/
 
-	level = 12
+	level = 8
 
 /mob/living/simple/silicon/syndieborg/proc/shoot_gun(var/atom/desired_target)
 	shoot_projectile(
@@ -106,7 +106,7 @@
 		iff_tag,
 		loyalty_tag
 	)
-	play_sound('sound/weapons/223/lmg.ogg',get_turf(src))
+	play_sound('sound/weapons/ranged/smg/handheld/shoot.ogg',get_turf(src))
 	return TRUE
 
 

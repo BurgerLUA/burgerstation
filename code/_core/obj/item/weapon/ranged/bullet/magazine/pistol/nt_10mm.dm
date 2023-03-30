@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power
-	name = "10mm NT Penumbra Pistol"
+	name = "10mm NT Penumbra pistol"
 	desc = "For when 9mm isn't big enough."
 	desc_extended = "The 10mm NanoTrasen Penumbra Pistol is a more advanced pistol for a more advanced user. While the recoil and weight is a little hard to manage, an expert with this gun can do some serious damage."
 	icon = 'icons/obj/item/weapons/ranged/pistol/10mm_nt.dmi'
@@ -9,7 +9,7 @@
 	company_type = "NanoTrasen"
 
 	tier = 1
-	shoot_delay = 2.5
+	shoot_delay = 2.8
 
 	automatic = FALSE
 
@@ -17,7 +17,7 @@
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.0125
 
-	shoot_sounds = list('sound/weapons/10/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/high_power/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -68,6 +68,8 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/high_power/get_static_spread()
 	return 0.0009
 
@@ -85,7 +87,7 @@
 
 	value = 1200
 
-	shoot_delay = 1
+	shoot_delay = 1.2
 
 	automatic = TRUE
 
@@ -102,3 +104,19 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 17 - 16
 
+	rarity = RARITY_RARE
+
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mining
+	name = "10mm Laton-H"
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
+
+	bullet_length_min = 25
+	bullet_length_best = 32
+	bullet_length_max = 33
+
+	bullet_diameter_min = 10
+	bullet_diameter_best = 10.17
+	bullet_diameter_max = 11
+
+	rarity = RARITY_UNCOMMON

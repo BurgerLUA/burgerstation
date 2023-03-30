@@ -8,13 +8,15 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "heavy weapon"
+
 	tier = 3
 
-	shoot_delay = 3
+	shoot_delay = 4
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/pulse/pulse.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/pulse/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -73,11 +75,11 @@
 
 	override_icon_state = TRUE
 
-
-
 	inaccuracy_modifier = 0.1
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.03
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/pulse/get_static_spread()
 	return 0.002

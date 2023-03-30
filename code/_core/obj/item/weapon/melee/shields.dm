@@ -26,9 +26,11 @@ var/global/list/shield_price_mul = list(
 
 	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/melee/shield/get_base_value()
 
-	. = 0
+	. = ..()
 
 	var/total_block = 0
 	for(var/k in block_defense)
@@ -61,6 +63,8 @@ var/global/list/shield_price_mul = list(
 
 	block_sound = 'sound/effects/impacts/shield_metal.ogg'
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/melee/shield/glass
 	name = "magic glass shield"
 	icon = 'icons/obj/item/shields/glass.dmi'
@@ -75,6 +79,8 @@ var/global/list/shield_price_mul = list(
 	block_sound = 'sound/effects/impacts/shield_metal.ogg'
 
 	value = 800
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/melee/shield/buckler
 	name = "hardened steel buckler"
@@ -92,6 +98,8 @@ var/global/list/shield_price_mul = list(
 	dan_offset_pixel_y = list(-2,-2,-2,-2)
 
 	value = 200
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/melee/shield/great
 	name = "iron great shield"
@@ -112,6 +120,8 @@ var/global/list/shield_price_mul = list(
 
 	value = 900
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/shield/heartstone
 	name = "heartstone shield"
 	icon = 'icons/obj/item/shields/heartstone.dmi'
@@ -130,6 +140,8 @@ var/global/list/shield_price_mul = list(
 	block_sound = 'sound/effects/impacts/shield_polymer.ogg'
 
 	value = 600
+
+	rarity = RARITY_RARE
 
 
 /obj/item/weapon/melee/shield/holy_forest
@@ -153,6 +165,8 @@ var/global/list/shield_price_mul = list(
 
 	value = 600
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/shield/leather
 	name = "leather-steel shield"
 	icon = 'icons/obj/item/shields/leather.dmi'
@@ -171,6 +185,8 @@ var/global/list/shield_price_mul = list(
 	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 200
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/melee/shield/mirror
 	name = "great mirror shield"
@@ -191,6 +207,8 @@ var/global/list/shield_price_mul = list(
 
 	value = 1200
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/shield/redstar
 	name = "slavic redstar shield"
 	icon = 'icons/obj/item/shields/redstar.dmi'
@@ -209,6 +227,8 @@ var/global/list/shield_price_mul = list(
 	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 300
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/melee/shield/spider
 	name = "red spider shield"
@@ -229,6 +249,8 @@ var/global/list/shield_price_mul = list(
 
 	value = 300
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/melee/shield/sun
 	name = "sun shield"
 	icon = 'icons/obj/item/shields/sun.dmi'
@@ -247,6 +269,8 @@ var/global/list/shield_price_mul = list(
 	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 400
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/melee/shield/target
 	name = "iron target shield"
@@ -267,6 +291,8 @@ var/global/list/shield_price_mul = list(
 
 	value = 300
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/melee/shield/whitewood
 	name = "whitewood magic shield"
 	icon = 'icons/obj/item/shields/whitewood.dmi'
@@ -285,3 +311,5 @@ var/global/list/shield_price_mul = list(
 	block_sound = 'sound/effects/impacts/shield_wood.ogg'
 
 	value = 400
+
+	rarity = RARITY_UNCOMMON

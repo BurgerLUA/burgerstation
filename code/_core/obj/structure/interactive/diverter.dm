@@ -146,3 +146,10 @@
 			return TRUE
 
 	return FALSE
+
+/obj/structure/interactive/diverter/crate
+	name = "airjet diverter (crate)"
+	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks if it's a crate."
+
+/obj/structure/interactive/diverter/crate/should_push(var/atom/movable/M)
+	return istype(M,/obj/structure/interactive/crate)

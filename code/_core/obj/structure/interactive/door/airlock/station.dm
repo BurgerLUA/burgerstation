@@ -48,6 +48,11 @@
 	fill_color = "#FFFFFF"
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/command/hop
+	name = "head of personnel's office"
+	color = COLOR_COMMAND
+	fill_color = COLOR_COMMAND
+	no_access = TRUE
 
 
 
@@ -166,6 +171,8 @@
 	color = COLOR_ENGINEERING
 	filler = "glass"
 	fill_color = COLOR_PINK
+	no_access = TRUE
+	health = null
 
 /obj/structure/interactive/door/airlock/station/medical
 	name = "medical airlock"
@@ -177,7 +184,7 @@
 	name = "mining airlock"
 	color = COLOR_BROWN
 	filler = "fill"
-	fill_color = COLOR_PURPLE
+	fill_color = COLOR_MINING
 
 
 /obj/structure/interactive/door/airlock/station/medical/glass
@@ -225,7 +232,7 @@
 	filler = "glass"
 
 /obj/structure/interactive/door/airlock/station/chemistry
-	name = "medical airlock"
+	name = "chemistry airlock"
 	color = COLOR_CHEMISTRY
 	filler = "glass"
 	fill_color = COLOR_WHITE

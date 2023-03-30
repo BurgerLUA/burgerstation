@@ -8,7 +8,7 @@
 
 	size = SIZE_5
 
-	value = -1
+	value = 0
 
 	item_slot_layer = 3
 
@@ -46,7 +46,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller)
+/obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller,location,control,params)
 	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/remove_blob,caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_remove_blob,caller)
 	return TRUE
@@ -103,7 +103,7 @@
 
 
 
-/obj/item/clothing/head/helmet/full/blob_spore/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/helmet/full/blob_spore/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
 
 	. = ..()
 

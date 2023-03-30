@@ -47,7 +47,7 @@
 
 	object_size = 2
 
-	level = 22
+	level = 19
 
 /mob/living/simple/arachnid/Finalize()
 	. = ..()
@@ -57,7 +57,7 @@
 	. = ..()
 	update_sprite()
 
-/mob/living/simple/arachnid/handle_transform()
+/mob/living/simple/arachnid/handle_transform(var/force=FALSE)
 	. = ..()
 	if(.)
 		update_sprite()

@@ -13,7 +13,7 @@
 	density = TRUE
 	anchored = TRUE
 
-	layer = 9999
+	layer = LAYER_OBJ_GRILLE
 
 	//health = /health/construction/
 	//health_base = 100

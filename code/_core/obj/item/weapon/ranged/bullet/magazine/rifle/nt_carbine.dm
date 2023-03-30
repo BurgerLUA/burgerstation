@@ -1,3 +1,5 @@
+//Removed because it's too similiar to the NT AR-13
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine
 	name = "\improper 5.56 U-NT Carabiner"
 	desc = "Good for shuttle hijackings."
@@ -77,6 +79,7 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.005
 
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine/get_static_spread()
 	return 0.01

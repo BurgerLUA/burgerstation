@@ -129,11 +129,13 @@
 "aA" = (
 /obj/structure/interactive/crate/bodybag,
 /obj/marker/spawning/random/misc,
+/obj/marker/cover_node/left,
 /turf/simulated/floor/plating/reinforced,
 /area/mission/prefab/city/newmed_clinic/furnace)
 "aB" = (
 /obj/structure/interactive/crate/trash,
 /obj/marker/spawning/random/trash,
+/obj/marker/cover_node/right,
 /turf/simulated/floor/plating/reinforced,
 /area/mission/prefab/city/newmed_clinic/furnace)
 "aC" = (
@@ -237,6 +239,10 @@
 "aX" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/lighting/fixture/tube,
+/obj/marker/cover_node/right{
+	icon_state = "right";
+	dir = 1
+	},
 /turf/simulated/floor/tile/morphing/green,
 /area/mission/prefab/city/newmed_clinic)
 "aY" = (
@@ -428,6 +434,34 @@
 /obj/marker/map_node,
 /turf/simulated/floor/tile/tint,
 /area/mission/prefab/city/newmed_clinic/lobby)
+"bK" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"bL" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"bM" = (
+/obj/structure/carpet/grey,
+/obj/marker/cover_node/right,
+/turf/simulated/floor/tile/morphing/medical,
+/area/mission/prefab/city/newmed_clinic/lobby)
+"bN" = (
+/obj/structure/interactive/potted_plant/nanotrasen,
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 1
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
+"bO" = (
+/obj/marker/cover_node/left{
+	icon_state = "left";
+	dir = 4
+	},
+/turf/simulated/floor/tile/morphing/green,
+/area/mission/prefab/city/newmed_clinic)
 
 (1,1,1) = {"
 aa
@@ -564,7 +598,7 @@ ac
 aP
 aV
 bD
-aM
+bO
 aM
 aM
 aM
@@ -599,7 +633,7 @@ aF
 ac
 aQ
 aU
-aM
+bK
 bc
 bi
 bj
@@ -635,7 +669,7 @@ ac
 ac
 aR
 aW
-aM
+bL
 bb
 bk
 bo
@@ -653,7 +687,7 @@ ax
 aw
 aG
 aX
-aM
+bK
 be
 bl
 bI
@@ -678,7 +712,7 @@ bp
 bp
 bn
 bp
-bz
+bM
 bB
 "}
 (15,1,1) = {"
@@ -688,8 +722,8 @@ as
 ba
 aD
 aG
-aY
-aM
+bN
+bL
 bb
 bi
 bq

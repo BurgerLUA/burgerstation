@@ -10,14 +10,14 @@
 
 	tier = 2
 
-	damage_mod = 1.15
-	shoot_delay = 1.15
+	damage_mod = 1.1
+	shoot_delay = 1.4
 
 	automatic = TRUE
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/m4/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -77,6 +77,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.02
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/m4/get_static_spread()
 	return 0.0075

@@ -1,5 +1,5 @@
 //simple insertion sort - generally faster than merge for runs of 7 or smaller
-/proc/sortInsert(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
+/proc/sort_insert(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
 	if(L && L.len >= 2)
 		fromIndex = fromIndex % L.len
 		toIndex = toIndex % (L.len+1)
@@ -8,8 +8,9 @@
 		if(toIndex <= 0)
 			toIndex += L.len + 1
 
-		sortInstance.L = L
-		sortInstance.cmp = cmp
-		sortInstance.associative = associative
-		sortInstance.binarySort(fromIndex, toIndex, fromIndex)
+		sort_instance.L = L
+		sort_instance.cmp = cmp
+		sort_instance.associative = associative
+		sort_instance.binarySort(fromIndex, toIndex, fromIndex)
+
 	return L

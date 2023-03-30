@@ -29,4 +29,4 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 20
+	level = 19

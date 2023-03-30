@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(weather)
 				var/obj/O = new(T)
 				O.mouse_opacity = 0
 				O.plane = PLANE_WEATHER
-				O.layer = 0
+				O.layer = LAYER_AREA
 				O.icon = null
 				O.icon_state = null
 				O.anchored = 2

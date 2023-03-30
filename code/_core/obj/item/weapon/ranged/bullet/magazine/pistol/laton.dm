@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton
-	name = "9mm Laton"
+	name = "9mm Laton pistol"
 	desc = "9mm is all you need."
 	desc_extended = "NT's standard pistol, chambered in a 9mm cartridge. It's very easy to use and recommended for beginners."
 	value = 200
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton.dmi'
-	shoot_delay = 2
+	shoot_delay = 1.8
 	tier = 1
-	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/laton/shoot.ogg')
 
 	company_type = "NanoTrasen"
 
@@ -63,19 +63,43 @@
 	attachment_undermount_offset_x = 22 - 16
 	attachment_undermount_offset_y = 16 - 16
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_static_spread()
 	return 0.002
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
+/obj/item/weapon/ranged/bullet/magazine/pistol/laton/prototype
+	name = "10mm Laton-H Prototype"
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
+
+	bullet_length_min = 25
+	bullet_length_best = 32
+	bullet_length_max = 33
+
+	bullet_diameter_min = 10
+	bullet_diameter_best = 10.17
+	bullet_diameter_max = 11
+
+	rarity = RARITY_RARE
+
+	shoot_delay = 1.4
+	weight = 7
+	heat_max = 0.06
+
+	shoot_sounds = list('sound/weapons/ranged/pistol/sol/shoot.ogg')
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"
-	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mod.dmi'
+	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_dark.dmi'
 	shoot_delay = 1.25
 	weight = 4
 	heat_max = 0.06
 	value = 350
+
+	rarity = RARITY_RARE
 
 var/global/list/kitchen_gun_slogans = list(
 	"And it sparkles like new!",
@@ -100,6 +124,8 @@ var/global/list/kitchen_gun_slogans = list(
 
 	value_burgerbux = 1
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()
 	if(.)
@@ -118,8 +144,8 @@ var/global/list/kitchen_gun_slogans = list(
 	if(istype(P,/obj/projectile/thrown/))
 		return ..()
 
-	var/turf/T = P.current_loc
-	if(istype(T))
+	var/turf/T = get_turf(hit_atom)
+	if(T)
 		for(var/obj/effect/cleanable/C in T.contents)
 			qdel(C)
 

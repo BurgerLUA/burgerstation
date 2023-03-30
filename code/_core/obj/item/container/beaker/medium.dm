@@ -64,3 +64,76 @@
 /obj/item/container/simple/beaker/bottle/medium/inaprovaline/Generate()
 	reagents.add_reagent(/reagent/medicine/inaprovaline,reagents.volume_max)
 	return ..()
+
+
+/obj/item/container/simple/beaker/bottle/medium/brute_mix
+	name = "syndicate brute prevention mix"
+	rarity = RARITY_RARE
+
+/obj/item/container/simple/beaker/bottle/medium/brute_mix/Generate()
+	reagents.add_reagent(/reagent/medicine/bicaridine_plus,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/percardone,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/inaprovaline,reagents.volume_max*0.20)
+	reagents.add_reagent(/reagent/medicine/mitogen,reagents.volume_max*0.15)
+	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max*0.15)
+	return ..()
+
+/obj/item/container/simple/beaker/bottle/medium/burn_mix
+	name = "syndicate burn prevention mix"
+	rarity = RARITY_RARE
+
+/obj/item/container/simple/beaker/bottle/medium/burn_mix/Generate()
+	reagents.add_reagent(/reagent/medicine/arentane,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/kenotone,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/inaprovaline,reagents.volume_max*0.20)
+	reagents.add_reagent(/reagent/medicine/painkiller/morphine,reagents.volume_max*0.15)
+	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max*0.15)
+	return ..()
+
+/obj/item/container/simple/beaker/bottle/medium/toxin_mix
+	name = "syndicate toxin prevention mix"
+	rarity = RARITY_RARE
+
+/obj/item/container/simple/beaker/bottle/medium/toxin_mix/Generate()
+	reagents.add_reagent(/reagent/medicine/charcoal,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/dylovene,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/adrenaline,reagents.volume_max*0.20)
+	reagents.add_reagent(/reagent/medicine/antihol,reagents.volume_max*0.15)
+	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max*0.15)
+	return ..()
+
+/obj/item/container/simple/beaker/bottle/medium/death_mix
+	name = "syndicate death prevention mix"
+	rarity = RARITY_RARE
+
+/obj/item/container/simple/beaker/bottle/medium/death_mix/Generate()
+	reagents.add_reagent(/reagent/medicine/painkiller/morphine,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/omnizine,reagents.volume_max*0.25)
+	reagents.add_reagent(/reagent/medicine/dexalin,reagents.volume_max*0.20)
+	reagents.add_reagent(/reagent/medicine/inaprovaline,reagents.volume_max*0.15)
+	reagents.add_reagent(/reagent/medicine/adrenaline/epinephrine,reagents.volume_max*0.15)
+	return ..()
+
+/obj/item/container/simple/beaker/bottle/medium/rad_mix
+	name = "syndicate radiation prevention mix"
+	rarity = RARITY_RARE
+
+/obj/item/container/simple/beaker/bottle/medium/rad_mix/Generate()
+	reagents.add_reagent(/reagent/medicine/rad_b_gone,reagents.volume_max*0.5)
+	reagents.add_reagent(/reagent/medicine/charcoal,reagents.volume_max*0.20)
+	reagents.add_reagent(/reagent/medicine/space_prussian_blue,reagents.volume_max*0.15)
+	reagents.add_reagent(/reagent/medicine/potassium_iodide,reagents.volume_max*0.15)
+	return ..()
+
+
+/obj/item/container/simple/beaker/bottle/medium/combat_mix
+	name = "syndicate combat mix"
+	rarity = RARITY_RARE
+
+/obj/item/container/simple/beaker/bottle/medium/combat_mix/Generate()
+	reagents.add_reagent(/reagent/medicine/adrenaline,reagents.volume_max*0.2)
+	reagents.add_reagent(/reagent/medicine/painkiller/morphine,reagents.volume_max*0.2)
+	reagents.add_reagent(/reagent/medicine/stamina_potion,reagents.volume_max*0.2)
+	reagents.add_reagent(/reagent/medicine/health_potion,reagents.volume_max*0.2)
+	reagents.add_reagent(/reagent/medicine/mana_potion,reagents.volume_max*0.2)
+	return ..()

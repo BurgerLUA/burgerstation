@@ -100,16 +100,38 @@
 				var/xp = ENABLE_XP_SAVING ? loaded_data["attributes"][id] : S.level_to_xp(S.chargen_max_level)
 				S.update_experience(xp)
 
+		//Abilities
+		var/ability_length = min(length(ability_buttons),length(loaded_data["abilities"]))
+
+		for(var/i=1,i<=ability_length,i++)
+			var/b_index = ability_buttons[i]
+			var/obj/hud/button/ability/B = ability_buttons[b_index]
+			if(loaded_data["abilities"][i])
+				var/ability_type = text2path(loaded_data["abilities"][i])
+				if(ability_type)
+					B.ability = new ability_type
+					B.update_sprite()
+
+		//Quests
+		for(var/k in loaded_data["quests"])
+			src.add_quest(k,loaded_data["quests"][k])
+
+
+
+
 	if(loaded_data["known_languages"])
 		known_languages |= loaded_data["known_languages"]
 
-	for(var/id in loaded_data["organs"]) //This does not use load_and_create (thus load_item_data_pre and load_item_data) as organs are special. TODO: IT SHOULD THOUGH.
+	for(var/id in loaded_data["organs"])
+		if(!loaded_data["organs"][id])
+			log_error("WARNING: Incomplete organ data for [src.get_debug_name()]: [id]!")
+			continue
 		var/o_type = loaded_data["organs"][id]["type"]
 		if(appearance_only && ispath(o_type,/obj/item/organ/internal/implant))
 			continue
 		var/obj/item/organ/O = add_organ(o_type)
 		if(!O)
-			log_error("WARNING: Invalid Organ: [o_type]!")
+			log_error("WARNING: Invalid Organ for [src.get_debug_name()]: [o_type]!")
 			continue
 		if(loaded_data["organs"][id]["blend_data"])
 			O.set_blend_data(loaded_data["organs"][id]["blend_data"])
@@ -159,18 +181,6 @@
 	if(!labeled_organs["implant_head"])
 		add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
-	//Abilities
-	var/ability_length = min(length(ability_buttons),length(loaded_data["abilities"]))
-
-	for(var/i=1,i<=ability_length,i++)
-		var/b_index = ability_buttons[i]
-		var/obj/hud/button/ability/B = ability_buttons[b_index]
-		if(loaded_data["abilities"][i])
-			var/ability_type = text2path(loaded_data["abilities"][i])
-			if(ability_type)
-				B.ability = new ability_type
-				B.update_sprite()
-
 	update_all_blends()
 
 	health?.update_health_stats()
@@ -213,10 +223,16 @@
 	.["job_rank"] = job_rank
 	.["difficulty"] = difficulty
 
+	if(length(quests))
+		.["quests"] = list()
+		for(var/k in quests)
+			var/quest/Q = k
+			.["quests"] += Q
+
 	if(length(traits))
 		.["traits"] = list()
 		for(var/k in traits)
-			.["traits"] |= k
+			.["traits"] += k
 
 	var/final_organ_list = list()
 	for(var/id in labeled_organs)

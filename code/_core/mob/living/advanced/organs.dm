@@ -25,23 +25,195 @@
 		INITIALIZE(O)
 		FINALIZE(O)
 
-	if(O.enable_overlay) //TODO: Unfuck this shitcode.
-		if(istype(O,/obj/item/organ/antennae))
-			add_overlay_tracked("antennae_behind",O,desired_layer = LAYER_MOB_ANTENNAE_BEHIND, desired_icon_state = "[O.icon_state]_BEHIND",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
-			add_overlay_tracked("antennae_front",O,desired_layer = LAYER_MOB_ANTENNAE_FRONT, desired_icon_state = "[O.icon_state]_FRONT",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
-		else if(istype(O,/obj/item/organ/wings))
-			add_overlay_tracked("natural_wings_behind",O,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon_state = "[O.icon_state]_BEHIND",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
-			add_overlay_tracked("natural_wings_front",O,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon_state = "[O.icon_state]_FRONT",desired_pixel_x = O.worn_pixel_x,desired_pixel_y = O.worn_pixel_y)
-		else if(istype(O,/obj/item/organ/tail))
-			add_overlay_tracked("tail_behind",O,desired_layer = LAYER_MOB_TAIL_BEHIND, desired_icon_state = "tail_behind")
-			add_overlay_tracked("tail_front",O,desired_layer = LAYER_MOB_TAIL_FRONT, desired_icon_state = "tail_front")
-		else
-			add_overlay_tracked("\ref[O]",O,desired_layer = O.worn_layer)
+	if(O.enable_overlay) O.handle_overlays(src,add=TRUE,worn=TRUE)
 
 	O.on_organ_add(src)
 
 	return O
 
+
+/obj/item/proc/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+
+	if(remove)
+		A.remove_overlay("\ref[src]")
+
+	if(add)
+		if(worn)
+			var/obj/hud/inventory/I = src.loc
+			var/desired_layer = src.worn_layer
+			if(I.advanced_layering && length(I.contents) > 1)
+				var/key = I.contents.Find(src)
+				if(key != 1)
+					var/obj/item/I2 = I.contents[1]
+					desired_layer = I2.worn_layer + (key)*0.01
+			A.add_overlay_tracked(
+				"\ref[src]",
+				src,
+				desired_layer = desired_layer,
+				desired_icon = initial(src.icon),
+				desired_icon_state = icon_state_override,
+				desired_no_initial = src.no_initial_blend,
+				desired_pixel_x = src.worn_pixel_x,
+				desired_pixel_y = src.worn_pixel_y,
+				desired_color=src.color
+			)
+
+	if(update)
+		A.update_overlay_tracked(
+			"\ref[src]",
+			desired_color=src.color,
+			desired_icon_state = icon_state_override,
+		)
+
+
+	return TRUE
+
+/obj/item/clothing/back/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+
+	if(remove)
+		A.remove_overlay("\ref[src]_wings_behind")
+		A.remove_overlay("\ref[src]_wings_front")
+
+	if(add)
+		if(worn)
+			A.add_overlay_tracked(
+				"\ref[src]_wings_behind",
+				src,
+				desired_layer = LAYER_MOB_WINGS_BEHIND,
+				desired_icon = initial(src.icon),
+				desired_icon_state = "worn_behind",
+				desired_no_initial = src.no_initial_blend,
+				desired_pixel_x = src.worn_pixel_x,
+				desired_pixel_y = src.worn_pixel_y,
+				desired_color = src.color
+			)
+			A.add_overlay_tracked(
+				"\ref[src]_wings_front",
+				src,
+				desired_layer = LAYER_MOB_WINGS_FRONT,
+				desired_icon=initial(src.icon),
+				desired_icon_state = "worn_front",
+				desired_no_initial = src.no_initial_blend,
+				desired_pixel_x = src.worn_pixel_x,
+				desired_pixel_y = src.worn_pixel_y,
+				desired_color = src.color
+			)
+
+	if(update)
+		if(worn)
+			A.update_overlay_tracked("\ref[src]_wings_behind",desired_color=src.color)
+			A.update_overlay_tracked("\ref[src]_wings_front",desired_color=src.color)
+
+
+/obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+
+	if(remove)
+		A.remove_overlay("\ref[src]")
+
+	if(add)
+		A.add_overlay_tracked(
+			"\ref[src]",
+			src,
+			desired_layer = src.worn_layer,
+			desired_icon_state = icon_state_override,
+		)
+
+	if(update)
+		A.update_overlay_tracked(
+			"\ref[src]",
+			desired_icon_state = icon_state_override,
+		)
+
+
+	return TRUE
+
+/obj/item/organ/antennae/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+
+	if(remove)
+		A.remove_overlay("\ref[src]_antennae_behind")
+		A.remove_overlay("\ref[src]_antennae_front")
+
+	if(add)
+		A.add_overlay_tracked(
+			"\ref[src]_antennae_behind",
+			src,
+			desired_layer = LAYER_MOB_ANTENNAE_BEHIND,
+			desired_icon_state = "[src.icon_state]_BEHIND",
+			desired_pixel_x = src.worn_pixel_x,
+			desired_pixel_y =src.worn_pixel_y
+		)
+		A.add_overlay_tracked(
+			"\ref[src]_antennae_front",
+			src,
+			desired_layer = LAYER_MOB_ANTENNAE_FRONT,
+			desired_icon_state = "[src.icon_state]_FRONT",
+			desired_pixel_x = src.worn_pixel_x,
+			desired_pixel_y = src.worn_pixel_y
+		)
+
+	if(update)
+		A.update_overlay_tracked("\ref[src]_antennae_behind")
+		A.update_overlay_tracked("\ref[src]_antennae_front")
+
+	return TRUE
+
+/obj/item/organ/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+
+	if(remove)
+		A.remove_overlay("\ref[src]_wings_behind")
+		A.remove_overlay("\ref[src]_wings_front")
+
+	if(add)
+		A.add_overlay_tracked(
+			"\ref[src]_wings_behind",
+			src,
+			desired_layer = LAYER_MOB_WINGS_BEHIND,
+			desired_icon_state = "[src.icon_state]_BEHIND",
+			desired_pixel_x = src.worn_pixel_x,
+			desired_pixel_y = src.worn_pixel_y
+		)
+		A.add_overlay_tracked(
+			"\ref[src]_wings_front",
+			src,
+			desired_layer = LAYER_MOB_WINGS_FRONT,
+			desired_icon_state = "[src.icon_state]_FRONT",
+			desired_pixel_x = src.worn_pixel_x,
+			desired_pixel_y = src.worn_pixel_y
+		)
+
+	if(update)
+		A.update_overlay_tracked("\ref[src]_wings_behind")
+		A.update_overlay_tracked("\ref[src]_wings_front")
+
+
+	return TRUE
+
+/obj/item/organ/tail/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+
+	if(remove)
+		A.remove_overlay("\ref[src]_tail_behind")
+		A.remove_overlay("\ref[src]_tail_front")
+
+	if(add)
+		A.add_overlay_tracked(
+			"\ref[src]_tail_behind",
+			src,
+			desired_layer = LAYER_MOB_TAIL_BEHIND,
+			desired_icon_state = "tail_behind"
+		)
+		A.add_overlay_tracked(
+			"\ref[src]_tail_front",
+			src,
+			desired_layer = LAYER_MOB_TAIL_FRONT,
+			desired_icon_state = "tail_front"
+		)
+
+	if(update)
+		A.update_overlay_tracked("\ref[src]_tail_behind")
+		A.update_overlay_tracked("\ref[src]_tail_front")
+
+
+	return TRUE
 
 /mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_delete = FALSE)
 
@@ -56,18 +228,7 @@
 
 	O.update_owner(null)
 
-	if(O.enable_overlay) //TODO: Unfuck this shitcode.
-		if(istype(O,/obj/item/organ/antennae))
-			remove_overlay("antennae_behind")
-			remove_overlay("antennae_front")
-		else if(istype(O,/obj/item/organ/wings))
-			remove_overlay("natural_wings_behind")
-			remove_overlay("natural_wings_front")
-		else if(istype(O,/obj/item/organ/tail))
-			remove_overlay("tail_behind")
-			remove_overlay("tail_front")
-		else
-			remove_overlay("\ref[O]")
+	if(O.enable_overlay) O.handle_overlays(src,remove=TRUE)
 
 	organs -= O
 	labeled_organs -= O.id

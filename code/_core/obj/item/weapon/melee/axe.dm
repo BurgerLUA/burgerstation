@@ -3,7 +3,7 @@
 
 /obj/item/weapon/melee/axe/fireaxe
 
-	name = "Fire Axe"
+	name = "fire axe"
 	desc = "Hey Paul!" //im not sorry
 	desc_extended = "I think their undisputed masterpiece is 'Hip to be Square', a song so catchy, most people probably don't listen to the lyrics. But they should, because it's not just about the pleasures of conformity, and the importance of trends, it's also a personal statement about the band itself."
 
@@ -24,3 +24,5 @@
 	can_wear = TRUE
 
 	value = 600
+
+	rarity = RARITY_COMMON

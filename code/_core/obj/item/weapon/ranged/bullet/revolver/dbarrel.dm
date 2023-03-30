@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/bullet/revolver/dbarrel
 	name = "\improper 12g Boomstick"
-	desc = "The bartender's trusty double barrel shotgun. It was cut in half by a clown."
+	desc = "The bartender's trusty double barrel shotgun."
 	desc_extended = "Double barreled shotguns are often sawed off in order to be used as a sidearm, at the cost of the user's wrist bones."
 	icon = 'icons/obj/item/weapons/ranged/dbarrel.dmi'
 	icon_state = "inventory"
@@ -8,10 +8,12 @@
 
 	company_type = "Solarian"
 
+	tier_type = "shotgun"
+
 	tier = 1
 
 	damage_mod = 0.6
-	shoot_delay = 3
+	shoot_delay = 1
 
 	automatic = FALSE
 
@@ -19,9 +21,9 @@
 
 	insert_limit = 2
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/double_barrel/shoot.ogg')
 
-	size = SIZE_2
+	size = SIZE_3
 	weight = 8
 
 	bullet_length_min = 76
@@ -37,6 +39,8 @@
 	inaccuracy_modifier = 1
 	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.02
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/revolver/dbarrel/get_base_spread()
 	return 0.3

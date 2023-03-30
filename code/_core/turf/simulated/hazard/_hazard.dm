@@ -28,6 +28,7 @@ var/global/obj/water_ground
 		mouse_opacity = 0
 		if(!water_ground)
 			water_ground = new(null)
+			water_ground.name = "water"
 			water_ground.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
 			water_ground.vis_flags = VIS_INHERIT_ID
 			water_ground.icon = 'icons/turf/floor/icons.dmi'

@@ -135,7 +135,7 @@
 
 	return ..()
 
-/obj/item/pinpointer/custom/click_self(var/mob/caller)
+/obj/item/pinpointer/custom/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -165,7 +165,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/pinpointer/crew/click_self(var/mob/caller)
+/obj/item/pinpointer/crew/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -234,6 +234,7 @@
 	desired_loyalty_tag = "Syndicate"
 	value = 1000
 	encoded = TRUE
+	contraband = TRUE
 
 /obj/item/pinpointer/crew/revolutionary
 	name = "revolutionary soldier pinpointer"
@@ -242,6 +243,7 @@
 	desired_loyalty_tag = "Revolutionary"
 	value = 1000
 	encoded = TRUE
+	contraband = TRUE
 
 /obj/item/pinpointer/landmark/
 	name = "area pinpointer"
@@ -250,7 +252,7 @@
 
 	value = 10
 
-/obj/item/pinpointer/landmark/click_self(var/mob/caller)
+/obj/item/pinpointer/landmark/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -303,7 +305,7 @@
 
 	value = 20
 
-/obj/item/pinpointer/objective/click_self(var/mob/caller)
+/obj/item/pinpointer/objective/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -351,7 +353,7 @@
 
 	value = 100
 
-/obj/item/pinpointer/boss/click_self(var/mob/caller)
+/obj/item/pinpointer/boss/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -398,7 +400,7 @@
 	contraband = TRUE
 	unreliable = TRUE
 
-/obj/item/pinpointer/deathmatch/click_self(var/mob/caller)
+/obj/item/pinpointer/deathmatch/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

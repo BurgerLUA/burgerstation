@@ -14,17 +14,15 @@
 	penetration_mod = SURPLUS_MUL
 
 /damagetype/ranged/bullet/pistol_45/ap
-	damage_mod = SURPLUS_MUL
-	penetration_mod = ARMOR_MUL
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
 
 /damagetype/ranged/bullet/pistol_45/hp
 	attack_damage_base = list(
-		BLADE = 30,
-		BLUNT = 30
+		BLUNT = 30*HP_MUL
 	)
 	attack_damage_penetration = list(
-		BLADE = -50,
-		BLUNT = -50
+		BLADE = -30
 	)
 
 /damagetype/ranged/bullet/holybullet
@@ -67,7 +65,7 @@
 	damage_mod = SURPLUS_MUL
 	penetration_mod = SURPLUS_MUL
 
-/damagetype/ranged/bullet/tranq_11mm/post_on_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/tranq_11mm/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	. = ..()
 	if(victim.health && is_living(victim))
 		var/mob/living/L = victim

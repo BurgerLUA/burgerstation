@@ -1,12 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/smart
 	name = "\improper 4.6x30mm Smart SMG"
 	desc = "Now that's smarts!"
-	desc_extended = "A Solarian protoype SMG that uses expensive smart-microchip heat-seeking guided bullets to assist in idiots hitting targets. Has a tendency to actually still miss."
+	desc_extended = "A NanoTrasen protoype SMG that uses expensive smart-microchip heat-seeking guided bullets to assist in idiots hitting targets. Has a tendency to actually still miss."
 	icon = 'icons/obj/item/weapons/ranged/smg/sol/smart.dmi'
 	icon_state = "inventory"
 	value = 3000
 
-	company_type = "Solarian"
+	company_type = "NanoTrasen"
 
 	damage_mod = 1
 
@@ -21,7 +21,7 @@
 
 	firemodes = list("burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/smart/shoot.ogg')
 
 	heat_max = 0.1
 
@@ -73,6 +73,8 @@
 
 	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 0
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/smg/smart/get_static_spread()
 	return 0.01

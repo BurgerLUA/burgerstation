@@ -8,16 +8,18 @@
 
 	company_type = "Syndicate"
 
+	tier_type = "sniper rifle"
+
 	tier = 3
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 15
+	shoot_delay = 14
 
 	damage_mod = 2
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/sniper_heavy/heavy_sniper.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/50_sniper/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -86,6 +88,8 @@
 	attachment_stock_offset_y = 16 - 16
 
 	dan_mode = TRUE
+
+	rarity = RARITY_RARE
 
 
 

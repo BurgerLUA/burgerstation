@@ -12,6 +12,8 @@
 
 	value = 700
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/melee/sword/cblade
 	name = "\improper cleaver blade"
 	desc = "A crude blade. Nothing more."
@@ -26,6 +28,8 @@
 
 	value = 400
 
+	rarity = RARITY_MYTHICAL
+
 /obj/item/weapon/melee/sword/uncoiled
 	name = "\improper uncoiled sword"
 	desc = "A bland, sturdy sword."
@@ -39,3 +43,5 @@
 	weight = 5
 
 	value = 900
+
+	rarity = RARITY_MYTHICAL

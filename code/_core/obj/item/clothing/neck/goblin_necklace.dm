@@ -23,12 +23,15 @@
 
 	rarity = RARITY_LEGENDARY
 
-/obj/item/clothing/neck/goblin_necklace/post_move(atom/old_loc)
+/obj/item/clothing/neck/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
-	if(istype(loc, /obj/hud/inventory/organs/neck))
+	var/obj/hud/inventory/I = loc
+	if(I.worn)
 		START_THINKING(src)
-	else
-		STOP_THINKING(src)
+
+/obj/item/clothing/neck/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	STOP_THINKING(src)
 
 /obj/item/clothing/neck/goblin_necklace/think()
 	if(cooldown_effect > world.time)

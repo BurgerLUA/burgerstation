@@ -34,6 +34,46 @@
 		"stripes" = COLOR_NANOTRASEN
 	)
 
+/obj/item/clothing/pants/normal/striped/engineering
+	polymorphs = list(
+		"pants" = COLOR_GREY_LIGHT,
+		"stripes" = COLOR_VISIBLE_GREEN
+	)
+
+/obj/item/clothing/pants/normal/striped/engineering/solarian
+	polymorphs = list(
+		"pants" = "#B59463",
+		"stripes" = COLOR_VISIBLE_ORANGE
+	)
+
+/obj/item/clothing/pants/normal/striped/janitor
+	name = "janitor pants"
+	desc = "Stripes improve everything."
+	desc_extended = "The pants of choice for janitors."
+	polymorphs = list(
+		"pants" = COLOR_GREY,
+		"stripes" = COLOR_JANITOR
+	)
+
+/obj/item/clothing/pants/normal/striped/scientist
+	polymorphs = list(
+		"pants" = COLOR_WHITE,
+		"stripes" = COLOR_SCIENCE
+	)
+
+/obj/item/clothing/pants/normal/striped/hop
+	polymorphs = list(
+		"pants" = "#006086",
+		"stripes" = "#B00000"
+	)
+
+
+/obj/item/clothing/pants/normal/striped/zombie_clown
+	polymorphs = list(
+		"pants" = COLOR_PINK,
+		"stripes" = COLOR_RED
+	)
+
 /obj/item/clothing/pants/normal/recruit
 	polymorphs = list(
 		"pants" = COLOR_RECRUIT_DARK
@@ -96,16 +136,6 @@
 		"pants" = COLOR_GREY
 	)
 
-
-/obj/item/clothing/pants/normal/engineering
-	name = "engineering pants"
-	desc = "Offensively bright."
-	desc_extended = "Standard issue engineering pants, pre-stained yellow for when the SM delaminates"
-	polymorphs = list(
-		"pants" = COLOR_ENGINEERING,
-		"stripes" = COLOR_VISIBLE_GREEN
-	)
-
 /obj/item/clothing/pants/normal/medical
 	name = "medical pants"
 	desc = "Smells like disinfectant."
@@ -153,15 +183,6 @@
 	polymorphs = list(
 		"pants" = COLOR_WHITE,
 		"stripes" = COLOR_CHEMISTRY
-	)
-
-/obj/item/clothing/pants/normal/janitor
-	name = "janitor pants"
-	desc = "Stripes improve everything."
-	desc_extended = "The pants of choice for janitors."
-	polymorphs = list(
-		"pants" = COLOR_GREY,
-		"stripes" = COLOR_JANITOR
 	)
 
 /obj/item/clothing/pants/normal/space_cop
@@ -219,4 +240,11 @@
 	name = "abductor reinforced pants"
 	polymorphs = list(
 		"pants" = "#62869E"
+	)
+
+
+/obj/item/clothing/pants/normal/reinforced/mining
+	polymorphs = list(
+		"pants" = "#796755",
+		"kneepads" = COLOR_WHITE
 	)

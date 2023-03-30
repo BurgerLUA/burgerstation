@@ -1,10 +1,10 @@
 /obj/structure/interactive/bar_sign
-	name = "bar sign"
+	name = "store sign"
 	desc = "Come on in!"
 	icon = 'icons/obj/structure/store_signs.dmi'
 	icon_state = "blank"
 	plane = PLANE_WALL
-	layer = 99
+	layer = LAYER_LARGE_OBJ
 	dir_offset = 64
 
 
@@ -56,12 +56,6 @@ obj/structure/interactive/bar_sign/the_chem_lab
 	desc = "The only thing that won't explode is your wallet!"
 	icon_state = "the_chem_lab"
 
-
-obj/structure/interactive/bar_sign/traitor
-	name = "Traitor Joe's"
-	desc = "For all your traitor needs!"
-	icon_state = "traitor"
-
 obj/structure/interactive/bar_sign/bawse_loot
 	name = "Bawse Loot"
 	desc = "Nothing is stolen*! We promise!"
@@ -91,10 +85,10 @@ obj/structure/interactive/bar_sign/debug
 	desc = "Wait what?"
 	icon_state = "thecoderbus"
 
-obj/structure/interactive/bar_sign/outer_space
-	name = "The Outer Space"
+obj/structure/interactive/bar_sign/the_outer_spess
+	name = "The Outer Spess"
 	desc = "Wait what?"
-	icon_state = "theouterspess"
+	icon_state = "the_outer_spess"
 
 obj/structure/interactive/bar_sign/adminbus
 	name = "The adminbus"
@@ -120,3 +114,28 @@ obj/structure/interactive/bar_sign/chess
 	name = "Chess"
 	desc = "Wait what?"
 	icon_state = "chess"
+
+obj/structure/interactive/bar_sign/the_coderbus
+	name = "The Coderbus"
+	desc = "Wait what?"
+	icon_state = "the_coderbus"
+
+obj/structure/interactive/bar_sign/vlads_salad_bar
+	name = "Vlad's Salad Bar"
+	desc = "Wait what?"
+	icon_state = "vlads_salad_bar"
+
+obj/structure/interactive/bar_sign/traitor_joes
+	name = "Traitor Joe's"
+	desc = "For all your traitor needs!"
+	icon_state = "traitor_joes"
+
+obj/structure/interactive/bar_sign/the_ale_nath
+	name = "The Ale'Nath"
+	desc = "Wait what?"
+	icon_state = "the_ale_nath"
+
+obj/structure/interactive/bar_sign/the_greytide
+	name = "The Greytide"
+	desc = "Wait what?"
+	icon_state = "the_greytide"

@@ -152,6 +152,14 @@
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
+"x" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/flounder)
+"y" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/flounder)
 "z" = (
 /obj/structure/interactive/chair/shuttle{
 	icon_state = "shuttle_chair";
@@ -261,11 +269,11 @@ a
 l
 l
 i
-d
+y
 r
 s
 u
-l
+x
 k
 d
 a
@@ -387,11 +395,11 @@ a
 l
 l
 i
-d
+y
 r
 t
 v
-l
+x
 k
 d
 a

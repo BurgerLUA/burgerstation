@@ -27,7 +27,7 @@
 
 	attachment_whitelist = list()
 
-	shoot_sounds = list('sound/weapons/laser_sniper/shoot.ogg')
+	shoot_sounds = list('sound/weapons/energy/laser_sniper/shoot.ogg')
 
 	heat_max = 0.1
 
@@ -66,6 +66,8 @@
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/energy/sniper/get_static_spread()
 	return 0

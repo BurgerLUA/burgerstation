@@ -13,8 +13,6 @@
 
 	var/list/labeled_overlays = list()
 
-	layer = 0
-
 /obj/hud/button/stat/body/Destroy()
 	labeled_overlays?.Cut()
 	. = ..()
@@ -81,15 +79,16 @@
 			I.color = "#000000"
 			continue
 
-		var/health_mod = clamp(CEILING( (O.health.health_current - (O.health.damage[PAIN] - A.pain_removal)) / O.health.health_max, 0.01),0,1)
+		var/perceived_health_mod = (O.health.health_current + A.pain_regen_buffer*0.25) - max(0,O.health.damage[PAIN] - A.pain_regen_buffer)
+		perceived_health_mod = clamp(CEILING( perceived_health_mod / O.health.health_max, 0.01),0,1)
 
 		var/color_mod = "#000000" //Final color
-		if(health_mod <= 0)
+		if(perceived_health_mod <= 0)
 			color_mod = "#303030"
-		else if(health_mod >= 1)
+		else if(perceived_health_mod >= 1)
 			color_mod = good_color
 		else
-			color_mod = blend_colors(bad_color,good_color,health_mod*0.9)
+			color_mod = blend_colors(bad_color,good_color,perceived_health_mod*0.9)
 
 		if(I.color == "#000000")
 			I.color = color_mod

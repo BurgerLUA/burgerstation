@@ -24,10 +24,10 @@
 			continue
 		if(value > value_max)
 			continue
-		var/rarity = rarity_to_number[initial(I.rarity)]
-		if(rarity < rarity_to_number[rarity_min])
+		var/initial_rarity = initial(I.rarity)
+		if(rarity_to_number[initial_rarity] < rarity_to_number[rarity_min])
 			continue
-		if(rarity > rarity_to_number[rarity_max])
+		if(rarity_to_number[initial_rarity] > rarity_to_number[rarity_max])
 			continue
 		if(initial(I.value_burgerbux) > 0)
 			continue
@@ -49,7 +49,7 @@
 
 /loot/random/trash
 	value_min = 1
-	value_max = 250
+	value_max = 100
 	rarity_min = RARITY_BROKEN
 	rarity_max = RARITY_COMMON
 
@@ -58,7 +58,7 @@
 	chance_none = 75
 
 /loot/random/low
-	value_min = 1
+	value_min = 100
 	value_max = 500
 	rarity_min = RARITY_BROKEN
 	rarity_max = RARITY_COMMON

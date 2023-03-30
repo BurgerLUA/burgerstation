@@ -13,7 +13,7 @@
 			continue
 		if(visual && !is_facing_cheap(AI.owner,epicenter))
 			continue
-		if(alert_source && !AI.is_enemy(alert_source,FALSE))
+		if(alert_source && !AI.objective_attack && !AI.is_enemy(alert_source,FALSE))
 			continue
 		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time,1),AI,/ai/proc/set_alert_level,alert_level,FALSE,epicenter,alert_source)
 
@@ -25,11 +25,23 @@
 	if(epicenter.z == 0)
 		CRASH("create_alert() had a non-turf as an epicenter!")
 
-	var/z = "[epicenter.z]"
+	if(is_living(alert_source))
+		var/mob/living/L = alert_source
+		if(L.master)
+			if(L.master.next_alert > world.time)
+				return FALSE
+			L.master.next_alert = world.time + SECONDS_TO_DECISECONDS(2)
+		else
+			if(L.next_alert > world.time)
+				return FALSE
+			L.next_alert = world.time + SECONDS_TO_DECISECONDS(2)
 
-	create_alert_process(SSbossai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSai.inactive_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSbossai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
-	create_alert_process(SSai.active_ai_by_z[z],range,epicenter,alert_source,alert_level,visual)
+	var/chunk/CH = CHUNK(epicenter)
+	if(CH)
+		create_alert_process(CH.ai,range,epicenter,alert_source,alert_level,visual)
+		for(var/k in CH.adjacent_chunks)
+			var/chunk/CH2 = k
+			create_alert_process(CH2.ai,range,epicenter,alert_source,alert_level,visual)
 
 	return TRUE
+

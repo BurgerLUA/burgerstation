@@ -30,7 +30,7 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/magic/spellblade/click_self(var/mob/caller)
+/obj/item/weapon/ranged/magic/spellblade/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -87,9 +87,11 @@
 
 	shoot_delay = SECONDS_TO_DECISECONDS(3)
 
-	shoot_sounds = list('sound/weapons/freeze.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg')
 
 	value = 4000
 
 	value_burgerbux = 1
+
+	rarity = RARITY_RARE
 

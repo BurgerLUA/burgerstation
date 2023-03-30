@@ -31,6 +31,6 @@
 	name = "\improper 12.7x90mm DU sniper magazine"
 	ammo = /obj/item/bullet_cartridge/sniper_127/du
 	prem_restock_ammo = /obj/item/bullet_cartridge/sniper_127
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 	icon_state = "12_DU"
 	value_burgerbux = 1

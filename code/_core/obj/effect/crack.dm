@@ -5,7 +5,8 @@
 	icon_state = "1"
 	alpha = 20
 	color = "#000000"
-	layer = 0
+	plane = PLANE_FLOOR_ATTACHMENT
+	layer = LAYER_FLOOR_WEATHER
 
 /obj/effect/crack/New(var/desired_loc)
 	. = ..()
@@ -19,7 +20,8 @@
 	icon_state = "1"
 	alpha = 100
 	color = "#007F0E"
-	layer = 1
+	plane = PLANE_FLOOR_ATTACHMENT
+	layer = LAYER_FLOOR_CARPET
 
 /obj/effect/moss/New(var/desired_loc)
 	. = ..()

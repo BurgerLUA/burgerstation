@@ -74,7 +74,7 @@
 		if(current_boss.boss_music && owner)
 			var/client/C = owner.client
 			if(C && C.current_music_track != current_boss.boss_music)
-				play_music_track(current_boss.boss_music,C)
+				play_music_track(current_boss.boss_music,C,looping=TRUE)
 				current_boss_music = current_boss.boss_music
 
 	if(current_boss.health)

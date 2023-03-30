@@ -260,3 +260,43 @@
 	name = "Trailer"
 	path = 'sound/music/Trailer.ogg'
 	length = 2*60 + 50
+
+/track/slayer //Menu music
+	name = "Slayer"
+	path = 'sound/music/Slayer.ogg'
+	length = 4*60 + 20
+
+/track/woah //Menu music
+	name = "Woah Menu"
+	path = 'sound/music/Woah Menu.ogg'
+	length = 2*60 + 10
+
+/track/dead //Boss music
+	name = "Dead"
+	path = 'sound/music/Dead.ogg'
+	length = 3*60 + 10
+
+/track/grove //Menu music
+	name = "Grove"
+	path = 'sound/music/Grove.ogg'
+	length = 3*60 + 10
+
+/track/bubblegum //Boss music
+	name = "Bubblegum"
+	path = 'sound/music/Bubblegum.ogg'
+	length = 2*60 + 30
+
+/track/clockwork //Boss music
+	name = "Clockwork"
+	path = 'sound/music/Clockwork.ogg'
+	length = 3*60 + 0
+
+/track/light_of_zach //Boss music
+	name = "Light of Zach"
+	path = 'sound/music/Light of Zach.ogg'
+	length = 3*60 + 50
+
+/track/slime_king //Boss music
+	name = "Slime King"
+	path = 'sound/music/Slime King.ogg'
+	length = 2*60 + 55

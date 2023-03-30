@@ -2,7 +2,7 @@
 	name = "specific item type bags"
 	icon = 'icons/obj/item/storage/bags.dmi'
 	icon_state = "mining"
-	value = -1
+	value = 0
 
 /obj/item/storage/bags/click_on_object(var/mob/caller as mob, var/atom/object, location, contmrol, params)
 
@@ -51,7 +51,7 @@
 	desc_extended = "A special bag that converts all plant matter into seeds when inserted into the bag."
 	icon_state = "botany_processor"
 
-/obj/item/storage/bags/botany/processor/click_self(var/mob/caller)
+/obj/item/storage/bags/botany/processor/click_self(var/mob/caller,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK
@@ -188,14 +188,14 @@
 	value = 20
 
 
-/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/storage/pillbottle/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("color_lid")
 	SAVEVAR("color_label")
 	SAVEVAR("color_canister")
 
-/obj/item/storage/pillbottle/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/storage/pillbottle/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("color_lid")
 	LOADVAR("color_label")
 	LOADVAR("color_canister")
@@ -403,14 +403,14 @@
 	if(goods && hoard > 0)
 		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")
 	SAVEATOM("goods")
 
-/obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("hoard")
 	LOADPATH("targetitem")
 	LOADATOM("goods")

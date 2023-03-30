@@ -1,3 +1,3 @@
 /combat_dialogue/revolutionary
-	folderpath = "text/combatdialogue/revolutionary/"
+	folderpath = "text/combatdialogue/revolutionary"
 

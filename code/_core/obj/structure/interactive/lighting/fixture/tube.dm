@@ -69,7 +69,7 @@
 /obj/structure/interactive/lighting/fixture/tube/syndicate
 	color = "#FFBABA"
 	color_frame = "#666666"
-	desired_light_power = 0.5
+	desired_light_power = 0.6
 	desired_light_range = VIEW_RANGE*0.6
 
 /obj/structure/interactive/lighting/fixture/tube/station

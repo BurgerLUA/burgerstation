@@ -8,7 +8,7 @@
 	return ..()
 
 
-/obj/item/clothing/click_self(var/mob/caller)
+/obj/item/clothing/click_self(var/mob/caller,location,control,params)
 
 	if(length(additional_clothing_stored) && is_advanced(caller) && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
@@ -27,22 +27,23 @@
 
 	for(var/k in caller.inventories_by_id)
 		var/obj/hud/inventory/I = caller.inventories_by_id[k]
+		if(I.qdeleting || I.loc.qdeleting)
+			continue
 		if(I.click_flags && ignore_hands)
 			continue
 		if(!I.allow_quick_equip)
 			continue
-		if(!ignore_worn && I.worn && can_be_worn(caller,I) && I.can_slot_object(src) && (!best_inventory_wear || I.priority >= best_inventory_wear.priority))
+		if(!ignore_worn && I.worn && (!best_inventory_wear || I.priority >= best_inventory_wear.priority) && can_be_worn(caller,I) && I.can_slot_object(src))
 			best_inventory_wear = I
 			continue
-		if(istype(I,/obj/hud/inventory/dynamic))
-			if(!ignore_dynamic && can_be_held(caller,I) && I.can_slot_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+		if(I.should_add_to_advanced) //Non-dynamic
+			if(!ignore_held && (!best_inventory_equip || I.priority >= best_inventory_equip.priority) && can_be_held(caller,I) && I.can_slot_object(src))
 				best_inventory_equip = I
 				continue
 		else
-			if(!ignore_held && can_be_held(caller,I) && I.can_slot_object(src) && (!best_inventory_equip || I.priority >= best_inventory_equip.priority))
+			if(!ignore_dynamic && (!best_inventory_equip || I.priority >= best_inventory_equip.priority) && can_be_held(caller,I) && I.can_slot_object(src))
 				best_inventory_equip = I
 				continue
-
 
 	if(best_inventory_wear)
 		if(debug) log_debug("(WEAR) Best inventory found for [caller.get_debug_name()]: [best_inventory_wear.get_debug_name()].")

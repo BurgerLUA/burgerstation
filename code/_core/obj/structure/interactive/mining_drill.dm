@@ -35,7 +35,7 @@
 	SShorde.all_drills -= src
 	. = ..()
 
-/obj/structure/interactive/mining_drill/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/mining_drill/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)
 	. = ..()
 	qdel(src)
@@ -146,7 +146,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/mining_brace/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/mining_brace/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/sheet/ = 5),/material/steel)
 	. = ..()
 	qdel(src)

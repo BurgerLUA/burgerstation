@@ -25,3 +25,29 @@
 	icon_states = 8
 
 	value = 20
+
+	reagents = /reagent_container/syringe_gun
+
+	allow_reagent_transfer_to = TRUE
+	allow_reagent_transfer_from = TRUE
+
+/obj/item/magazine/syringe_gun/update_sprite()
+
+	. = ..()
+
+	var/reagent/highest_R
+	var/highest_value = 0
+
+	for(var/k in reagents.stored_reagents)
+		var/reagent/R = REAGENT(k)
+		var/volume = reagents.stored_reagents[k]
+		if(!highest_value || volume > highest_value)
+			highest_R = R
+			highest_value = volume
+
+	if(highest_R)
+		name = "[initial(name)] ([highest_R.name])"
+	else
+		name = "[initial(name)] (blank)"
+
+

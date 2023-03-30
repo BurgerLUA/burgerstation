@@ -1,4 +1,4 @@
-/damagetype/ranged/bullet/pistol_10x24mm
+/damagetype/ranged/bullet/pistol_10x24mm //DMCA
 	attack_damage_base = list(
 		BLUNT = 10,
 		PIERCE = 10

@@ -32,15 +32,24 @@
 
 	var/turf/T = get_turf(src)
 
-	if(boss && boss_loot)
-		var/obj/structure/interactive/boss_loot/BL = new(T)
-		BL.loot_to_give = boss_loot
-		BL.allowed_users = players_fighting_boss.Copy()
-		INITIALIZE(BL)
-		GENERATE(BL)
-		FINALIZE(BL)
+	if(T)
+		if(boss && boss_loot)
+			var/obj/structure/interactive/boss_loot/BL = new(T)
+			BL.loot_to_give = boss_loot
+			BL.allowed_users = players_fighting_boss.Copy()
+			INITIALIZE(BL)
+			GENERATE(BL)
+			FINALIZE(BL)
 
-	create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+		if(!silent) create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
+
+		if(boss && !drops_gold)
+			drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
+
+		if(drops_gold > 0)
+			create_gold_drop(T,CEILING(drops_gold,1))
+			drops_gold = 0
+
 
 	movement_flags = 0x0
 	attack_flags = 0x0
@@ -55,10 +64,11 @@
 
 	post_death()
 
-	var/obj/hud/button/dead_ghost/DG = new
-	DG.update_owner(src)
+	if(ckey_last)
+		var/obj/hud/button/dead_ghost/DG = new
+		DG.update_owner(src)
 
-	if(client)
+	if(ckey_last)
 		notify_ghosts("[src.name] has died!",T)
 
 	if(master)
@@ -69,7 +79,7 @@
 		S.transform = get_base_transform()
 		S.color = "#000000"
 		S.plane = PLANE_EFFECT
-		S.layer = 1000
+		S.layer = LAYER_GHOST
 		S.name = "soul of [initial(name)]:"
 		S.soul_size = src.soul_size
 		INITIALIZE(S)
@@ -77,26 +87,9 @@
 		FINALIZE(S)
 		remove_status_effect(SOULTRAP)
 
-	if(boss && !drops_gold)
-		drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold) * 5
-
-	if(drops_gold > 0)
-		create_gold_drop(T,CEILING(drops_gold,1))
-		drops_gold = 0
-
 	update_eyes()
 
 	handle_transform()
-
-	brute_regen_buffer = 0
-	burn_regen_buffer = 0
-	tox_regen_buffer = 0
-	pain_regen_buffer = 0
-	rad_regen_buffer = 0
-	sanity_regen_buffer = 0
-	mental_regen_buffer = 0
-	mana_regen_buffer = 0
-	stamina_regen_buffer = 0
 
 	return TRUE
 
@@ -166,8 +159,17 @@
 	return rejuvenate() && revive()
 
 /mob/living/proc/pre_death()
-	alert_overlay.icon_state = "none"
-	chat_overlay.icon_state = "none"
+	brute_regen_buffer = max(brute_regen_buffer,0)
+	burn_regen_buffer = max(burn_regen_buffer,0)
+	tox_regen_buffer = max(tox_regen_buffer,0)
+	pain_regen_buffer = max(pain_regen_buffer,0)
+	rad_regen_buffer = max(rad_regen_buffer,0)
+	sanity_regen_buffer = max(sanity_regen_buffer,0)
+	mental_regen_buffer = max(mental_regen_buffer,0)
+	mana_regen_buffer = max(mana_regen_buffer,0)
+	stamina_regen_buffer = max(stamina_regen_buffer,0)
+	if(alert_overlay) alert_overlay.icon_state = "none"
+	if(chat_overlay) chat_overlay.icon_state = "none"
 	HOOK_CALL("pre_death")
 	return TRUE
 
@@ -200,6 +202,7 @@
 				rarity_count++
 				if(P.ckey_last)
 					valid_ckeys += P.ckey_last
+				INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
 
 			if(length(valid_ckeys))
 				create_gold_drop(T,CEILING(src.health.health_max/10,1),valid_ckeys)
@@ -246,11 +249,6 @@
 
 	if(!dead)
 		handle_natural_regen()
-		if(health)
-			var/old_pain_removal = pain_removal
-			pain_removal = max(0,STATUS_EFFECT_MAGNITUDE(src,PAINKILLER)) * max(1,STATUS_EFFECT_DURATION(src,PAINKILLER)/SECONDS_TO_DECISECONDS(60))
-			if(old_pain_removal != pain_removal)
-				QUEUE_HEALTH_UPDATE(src)
 
 	handle_health_buffer()
 
@@ -292,6 +290,7 @@
 	if(length(status_effects))
 		handle_status_effects(TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
 
+	/* TODO: Make this less shit.
 	if(client && !dead && health && next_heartbeat <= world.time)
 		var/desired_heartrate = 60
 		if(has_status_effect(ADRENALINE))
@@ -307,7 +306,7 @@
 			var/turf/T = get_turf(src)
 			play_sound('sound/effects/heartbeat_single.ogg',T,list(src),pitch=0.5 + (60/desired_heartrate)*0.5,volume=10)
 		next_heartbeat = world.time + 1/max(0.025,desired_heartrate/600)
-
+	*/
 
 	return TRUE
 
@@ -359,7 +358,7 @@ mob/living/proc/on_life_slow()
 				tox_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25*0.25
 
 	if(reagents)
-		reagents.metabolize(src)
+		reagents.metabolize(src,TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	handle_hunger()
 
@@ -454,40 +453,49 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_health())
 		var/brute_to_regen = clamp(
 			brute_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.05,
+			health.health_max*0.05
+		)*multiplier
 		var/burn_to_regen = clamp(
 			burn_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.05,
+			health.health_max*0.05
+		)*multiplier
 		var/tox_to_regen = clamp(
 			tox_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
-		var/pain_to_regen = clamp(
-			pain_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.05,
+			health.health_max*0.05
+		)*multiplier
+		//Pain is different.
+		var/pain_to_regen = 0
+		if(pain_regen_buffer > 0)
+			pain_to_regen = min(
+				pain_regen_buffer,
+				0.025 + pain_regen_buffer*0.025*multiplier,
+				health.health_max*0.05*multiplier
+			) //Get the smallest out of these 4.
+		else
+			pain_to_regen = max(
+				pain_regen_buffer,
+				-health.health_max*0.01*multiplier,
+				-100/300 //Takes 5 minutes to process 100 pain.
+			)
 		var/rad_to_regen = clamp(
 			rad_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.05,
+			health.health_max*0.05
+		)*multiplier
 		var/sanity_to_regen = clamp(
 			sanity_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
+			-health.health_max*0.05,
+			health.health_max*0.05
+		)*multiplier
 		var/mental_to_regen = clamp(
 			mental_regen_buffer,
-			-health.health_max*0.1*multiplier,
-			health.health_max*0.1*multiplier
-		)
-		health.adjust_loss_smart(
+			-health.health_max*0.05,
+			health.health_max*0.05
+		)*multiplier
+		src.health.adjust_loss_smart(
 			brute = -brute_to_regen,
 			burn = -burn_to_regen,
 			tox = -tox_to_regen,
@@ -507,18 +515,18 @@ mob/living/proc/on_life_slow()
 	if(can_buffer_stamina())
 		var/stamina_to_regen = clamp(
 			stamina_regen_buffer,
-			-health.stamina_max*0.1,
-			max(health.stamina_regeneration*multiplier,multiplier)
-		)
+			-health.stamina_max*0.05,
+			health.stamina_max*0.05
+		)*multiplier
 		health.adjust_stamina(stamina_to_regen)
 		stamina_regen_buffer -= stamina_to_regen
 
 	if(can_buffer_mana())
 		var/mana_to_regen = clamp(
 			mana_regen_buffer,
-			-health.mana_max*0.1,
-			max(health.mana_regeneration*multiplier,multiplier)
-		)
+			-health.mana_max*0.05,
+			health.mana_max*0.05
+		)*multiplier
 		health.adjust_mana(mana_to_regen)
 		mana_regen_buffer -= mana_to_regen
 
@@ -546,9 +554,9 @@ mob/living/proc/on_life_slow()
 
 	if(health.health_regen_cooef > 0 && health_regen_delay <= 0 && health.health_regeneration > 0)
 		var/health_mod = DECISECONDS_TO_SECONDS(delay_mod) * health.health_regeneration * nutrition_hydration_mod
-		var/brute_to_adjust = min(max(0,health.damage[BRUTE]*health.health_regen_cooef - brute_regen_buffer),health_mod)
-		var/burn_to_adjust = min(max(0,health.damage[BURN]*health.health_regen_cooef - burn_regen_buffer),health_mod)
-		var/pain_to_adjust = min(max(0,health.damage[PAIN]*health.health_regen_cooef - pain_regen_buffer),health_mod)
+		var/brute_to_adjust = clamp(health.damage[BRUTE]*health.health_regen_cooef - brute_regen_buffer,0,health_mod)
+		var/burn_to_adjust = clamp(health.damage[BURN]*health.health_regen_cooef - burn_regen_buffer,0,health_mod)
+		var/pain_to_adjust = clamp(health.damage[PAIN]*health.health_regen_cooef - pain_regen_buffer,0,health_mod)
 		if(brute_to_adjust != 0 || burn_to_adjust != 0 || pain_to_adjust != 0)
 			brute_regen_buffer += brute_to_adjust
 			burn_regen_buffer += burn_to_adjust

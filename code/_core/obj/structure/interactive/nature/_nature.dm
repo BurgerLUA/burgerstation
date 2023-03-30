@@ -29,9 +29,9 @@ obj/structure/scenery/flowers/New()
 		if(1)
 			icon_state = "ywflowers_[rand(1,4)]"
 		if(2)
-			icon_state = "brflowers_[rand(1,4)]"
-		if(3)
 			icon_state = "brflowers_[rand(1,3)]"
+		if(3)
+			icon_state = "ppflowers_[rand(1,3)]"
 
 obj/structure/scenery/flowers/Finalize()
 	. = ..()
@@ -95,6 +95,9 @@ obj/structure/scenery/rocks/New()
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
 	pixel_x = 8
+
+	plane = PLANE_WIRE
+	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/interactive/basalt/New()
 	..()

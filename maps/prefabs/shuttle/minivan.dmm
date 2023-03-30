@@ -13,6 +13,14 @@
 /obj/structure/interactive/door/airlock/external,
 /turf/simulated/floor/tile/shuttle,
 /area/shuttle/minivan)
+"e" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/minivan)
+"f" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/minivan)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 1;
@@ -222,14 +230,14 @@ a
 o
 j
 j
-j
+e
 A
 m
 m
 z
 b
 d
-b
+f
 w
 y
 n
@@ -276,14 +284,14 @@ a
 o
 j
 j
-j
+e
 A
 m
 m
 z
 b
 d
-b
+f
 w
 y
 n

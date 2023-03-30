@@ -16,6 +16,8 @@
 	size = SIZE_4
 	weight = 20
 
+	rarity = RARITY_RARE
+
 /obj/item/weapon/melee/mezzaluna/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
 
 	if(wielded)

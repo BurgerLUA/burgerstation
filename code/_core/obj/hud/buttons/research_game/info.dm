@@ -3,35 +3,39 @@
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "square_round"
 	maptext = "<center>Info</center>"
+	layer = LAYER_SCREEN_BLOOD+3
 
 /obj/hud/button/research/info/time
 	name = "time left"
 	screen_loc = "LEFT,TOP"
 	maptext = "<center>Time:<br>1:00</center>"
+	layer = LAYER_SCREEN_BLOOD+3
 
 /obj/hud/button/research/info/level
 	name = "current level"
 	screen_loc = "LEFT,TOP-1"
 	maptext = "<center>Level:<br>1</center>"
+	layer = LAYER_SCREEN_BLOOD+3
 
 /obj/hud/button/research/info/score
 	name = "score"
 	screen_loc = "LEFT,TOP-2"
 	maptext = "<center>Score:<br>0</center>"
+	layer = LAYER_SCREEN_BLOOD+3
 
 /obj/hud/button/research/info/effect
 	name = "text"
 	screen_loc = "CENTER,CENTER"
 	icon_state = "none"
 	maptext = "<center>+1</center>"
-	layer = 99
+	layer = LAYER_SCREEN_BLOOD+5
 
 /obj/hud/button/research/info/quit
 	name = "quit button"
 	screen_loc = "TOP,RIGHT"
 	icon_state = "square_round_small"
 	maptext = "<center>Quit</center>"
-	layer = 99
+	layer = LAYER_SCREEN_BLOOD+4
 	mouse_opacity = 1
 
 /obj/hud/button/research/info/quit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -65,4 +69,4 @@
 
 	mouse_opacity = 0
 
-	layer = 100 //I don't give a fuck.
+	layer = LAYER_SCREEN_BLOOD+5

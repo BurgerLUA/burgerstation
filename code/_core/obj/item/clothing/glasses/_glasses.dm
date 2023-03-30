@@ -16,21 +16,16 @@
 	uses_until_condition_fall = 75
 
 
-/obj/item/clothing/glasses/post_move(var/atom/old_loc)
-
+/obj/item/clothing/glasses/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
+	var/obj/hud/inventory/I = loc
+	if(I.worn && I.owner)
+		I.owner.update_eyes()
 
-	if(.)
-
-		if(is_inventory(old_loc))
-			var/obj/hud/inventory/I = old_loc
-			if(I.worn && I.owner)
-				I.owner.update_eyes()
-
-		if(is_inventory(loc))
-			var/obj/hud/inventory/I = loc
-			if(I.worn && I.owner)
-				I.owner.update_eyes()
+/obj/item/clothing/glasses/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(old_inventory.worn && old_inventory.owner)
+		old_inventory.owner.update_eyes()
 
 /obj/item/clothing/glasses/get_base_value()
 

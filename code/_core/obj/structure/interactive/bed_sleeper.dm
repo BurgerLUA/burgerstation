@@ -64,7 +64,7 @@
 	. = ..()
 	var/image/I = new/image(initial(icon),"over")
 	I.plane = PLANE_MOB_SMALL
-	I.layer = 1000
+	I.layer = LAYER_MOB_ABOVE
 	I.color = base_color
 	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_overlay(I)

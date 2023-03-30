@@ -10,7 +10,7 @@
 
 	tier = 3
 
-	shoot_delay = 1.5
+	shoot_delay = 3.4
 
 	automatic = FALSE
 
@@ -18,7 +18,7 @@
 
 	insert_limit = 1
 
-	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/nagant/shoot.ogg')
 
 	size = SIZE_3
 	weight = 8
@@ -67,11 +67,11 @@
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 19 - 16
 
-
-
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.04
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/revolver/nagant/get_static_spread()
 	return 0

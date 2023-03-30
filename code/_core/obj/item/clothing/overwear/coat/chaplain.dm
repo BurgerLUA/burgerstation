@@ -15,8 +15,8 @@
 		SKILL_PRAYER = 3
 	)
 
-/obj/item/clothing/overwear/coat/chaplain/witchunter
-	name = "witchunter garb"
+/obj/item/clothing/overwear/coat/chaplain/witchhunter
+	name = "witchhunter garb"
 	icon = 'icons/obj/item/clothing/suit/witchunter.dmi'
 
 	desc = "Do not react."

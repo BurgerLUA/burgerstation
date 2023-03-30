@@ -7,13 +7,20 @@
 
 	amount = 1
 	amount_max = 1
-	
-	projectile = /obj/projectile/thrown //Something here.
+
+	projectile = /obj/projectile/thrown //Always needs to be thrown
 	shoot_sounds = list('sound/effects/fwoosh.ogg')
 
 	company_type = "Black Spider Clan"
 
 	var/one_icon = FALSE //For those who are lazy, and want to only sprite one thing.
+
+
+
+/obj/item/weapon/ranged/thrown/get_base_value()
+	. = ..()
+	. *= 0.05
+
 /obj/item/weapon/ranged/thrown/update_icon()
 	. = ..()
 	icon = initial(icon)
@@ -34,6 +41,8 @@
 		FINALIZE(I)
 		P.appearance = src.appearance
 		P.icon_state = "inventory"
+		P.plane = initial(P.plane)
+		P.layer = initial(P.layer)
 		add_item_count(-1)
 
 /obj/item/weapon/ranged/thrown/kunai

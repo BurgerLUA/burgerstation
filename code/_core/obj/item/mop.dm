@@ -17,20 +17,21 @@
 
 /obj/item/mop/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(isobj(object) && object.reagents)
+	if(is_container(object) && object.reagents)
+		var/obj/item/container/C = object
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		if(!object.reagents)
+		if(C.reagents.volume_current <= 0)
 			caller.to_chat(span("warning","\The [object.name] is empty!"))
 			return TRUE
-		var/turf/T = get_turf(object)
-		var/space_left = object.reagents.volume_max - object.reagents.volume_current
+		var/turf/T = get_turf(C)
+		var/space_left = C.reagents.volume_max - C.reagents.volume_current
 		var/overflow = src.reagents.volume_current - space_left
 		if(overflow > 0)
-			object.reagents.splash(caller,T,overflow,1)
-		src.reagents.transfer_reagents_to(object.reagents,min(space_left,src.reagents.volume_current),should_update = FALSE, caller = caller)
-		object.reagents.transfer_reagents_to(src.reagents,src.reagents.volume_max, caller = caller)
+			C.reagents.splash(caller,T,overflow,1)
+		src.reagents.transfer_reagents_to(C.reagents,min(space_left,src.reagents.volume_current),should_update = FALSE, caller = caller)
+		C.reagents.transfer_reagents_to(src.reagents,src.reagents.volume_max, caller = caller)
 		play_sound('sound/effects/watersplash.ogg',T,range_max=VIEW_RANGE)
 		return TRUE
 
@@ -45,7 +46,7 @@
 		INTERACT_DELAY(4)
 		caller.set_dir(get_dir(caller,T))
 		var/damagetype/DT = all_damage_types[damage_type]
-		DT.do_attack_visuals(caller,T,src,T,0)
+		DT.do_attack_visuals(caller,get_turf(caller),T,T,0)
 		if(src.reagents.volume_current <= 0)
 			caller.to_chat(span("warning","\The [src.name] is dry!"))
 			return TRUE

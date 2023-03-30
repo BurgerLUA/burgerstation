@@ -9,6 +9,8 @@
 
 	has_quick_function = FALSE
 
+	layer = 0
+
 /obj/hud/button/crafting/Destroy()
 	stored_crafting_table = null
 	return ..()

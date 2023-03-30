@@ -1,22 +1,24 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman
 	name = "\improper .308 Mauler MR"
 	desc = "Vanilla, but still powerful."
-	desc_extended = "The .308 Mauler Marksman Rifle is THE dmr for private military corporations. Easy to use, accurate, and comes only in semi-automatic to train those recruits not to waste ammo."
+	desc_extended = "The .308 Mauler Marksman Rifle is the ultimate DMR for Syndicate Marksmen. Easy to use, accurate, and comes in automatic as well as semi-automatic."
 	icon = 'icons/obj/item/weapons/ranged/rifle/syndicate/308.dmi'
 	icon_state = "inventory"
 	value = 1900
 
 	company_type = "Syndicate"
 
+	tier_type = "marksman rifle"
+
 	tier = 2
 
-	firemodes = list("automatic","semi-automatic")
+	firemodes = list("semi-automatic")
 
-	shoot_delay = 2.75
+	shoot_delay = 2.8
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/308/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/marksman/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -76,6 +78,7 @@
 	movement_inaccuracy_modifier = 1.1
 	movement_spread_base = 0.025
 
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/get_static_spread()
 	return 0
@@ -94,6 +97,8 @@
 	weight = 8
 
 	value = 4000
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod/get_static_spread()
 	return 0.05

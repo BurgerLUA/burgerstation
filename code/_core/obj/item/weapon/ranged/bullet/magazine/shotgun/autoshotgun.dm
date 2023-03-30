@@ -10,11 +10,11 @@
 
 	tier = 3
 
-	shoot_delay = 4
+	shoot_delay = 3.7
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/12gauge/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/bulldog/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -71,6 +71,8 @@
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.03
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog/get_base_spread()
 	return 0.2

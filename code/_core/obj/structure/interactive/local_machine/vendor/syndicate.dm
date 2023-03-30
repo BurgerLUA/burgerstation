@@ -18,7 +18,7 @@
 		/obj/item/magazine/pistol_10mm/ap,
 		/obj/item/weapon/ranged/bullet/revolver/traitor_357,
 		/obj/item/magazine/clip/revolver/bullet_357,
-		/obj/item/storage/ammo/bullet_357/,
+		/obj/item/bulletbox/small/revolver_357,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
 		/obj/item/magazine/smg_45,
 		/obj/item/magazine/smg_45/ap,
@@ -43,14 +43,13 @@
 		/obj/item/magazine/sniper_50/explosive,
 		/obj/item/magazine/sniper_50/incendiary,
 		/obj/item/magazine/sniper_50/ion,
-		/obj/item/weapon/ranged/energy/sniper,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger,
 		/obj/item/clothing/back/flamethrower,
 		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/sword/combat_knife,
 		/obj/item/weapon/melee/energy/sword/red,
-		/obj/item/weapon/melee/energy/shield/red,
+		/obj/item/weapon/melee/energy/shield,
 		/obj/item/tempering/quality/ranged/lesser,
 		/obj/item/tempering/quality/greater,
 		/obj/item/grenade/fuse/fragmentation
@@ -61,22 +60,13 @@
 	icon_state = "boozeomat"
 
 	stored_types = list(
-		/obj/item/storage/kit/filled,
-		/obj/item/storage/kit/brute/filled,
-		/obj/item/storage/kit/burn/filled,
-		/obj/item/storage/kit/toxin/filled,
-		/obj/item/storage/kit/ai3/filled,
+		/obj/item/analyzer/health/syndicate,
+		/obj/item/defib,
 		/obj/item/storage/kit/syndicate/filled,
-		/obj/item/container/simple/beaker/bottle/epinephrine,
-		/obj/item/container/simple/beaker/bottle/morphine,
-		/obj/item/container/simple/beaker/bottle/calomel,
-		/obj/item/container/syringe/hypodermic,
-		/obj/item/container/blood_pack/full/synthblood,
-		/obj/item/container/healing/nanopaste,
-		/obj/item/container/blood_pack/full/rad_be_gone,
-		/obj/item/storage/pillbottle/assprin,
-		/obj/item/container/syringe/hypodermic/hypospray
-
+		/obj/item/storage/kit/small/syndicate/filled,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/reptile,
+		/obj/item/container/blood_pack/full/synthblood
 	)
 	markup = 0.75
 
@@ -92,14 +82,16 @@
 		/obj/item/attachment/barrel/compensator,
 		/obj/item/attachment/barrel/extended,
 		/obj/item/attachment/barrel/gyro,
-		/obj/item/attachment/barrel/laser_charger,
 		/obj/item/attachment/barrel/suppressor,
+
 		/obj/item/attachment/sight/laser_sight,
 		/obj/item/attachment/sight/quickfire_adapter,
 		/obj/item/attachment/sight/red_dot,
 		/obj/item/attachment/sight/scope,
+		/obj/item/attachment/sight/scope/medium,
 		/obj/item/attachment/sight/scope/large,
-		/obj/item/attachment/sight/targeting_computer,
+		/obj/item/attachment/sight/scope/massive,
+
 		/obj/item/attachment/undermount/angled_grip,
 		/obj/item/attachment/undermount/bipod,
 		/obj/item/attachment/undermount/burst_adapter,
@@ -212,12 +204,7 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/revolver/nagant,
 		/obj/item/bullet_cartridge/revolver_762{amount=5},
-		/obj/item/storage/ammo/bullet_762/,
-
-		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/ak12,
-		/obj/item/magazine/rifle_545,
-		/obj/item/magazine/rifle_545/ap,
+		/obj/item/bulletbox/rifle_762_revolver,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/ak47,
 		/obj/item/magazine/rifle_762_short,
@@ -232,13 +219,12 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/val,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/vintorez,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/groza,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/an94,
 		/obj/item/magazine/rifle_939,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/ks23,
-		/obj/item/storage/ammo/buckshot_23,
-		/obj/item/storage/ammo/slug_23,
-		/obj/item/storage/ammo/fire_23,
-		/obj/item/storage/ammo/rubber_23,
+		/obj/item/bulletbox/shotgun_23,
+		/obj/item/bulletbox/shotgun_23/slug,
 
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/saiga_20,
 		/obj/item/magazine/shotgun_auto,
@@ -247,11 +233,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/yarygin,
 		/obj/item/magazine/pistol_9mm,
 
-		/obj/item/weapon/ranged/bullet/magazine/smg/bizon,
-		/obj/item/magazine/bizon_9mm,
-
 		/obj/item/weapon/ranged/bullet/pump/gm94,
-		/obj/item/storage/ammo/grenade_40mm,
+		/obj/item/bullet_cartridge/grenade_40mm,
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/magazine/lmg_762_r,

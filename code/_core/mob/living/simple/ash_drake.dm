@@ -3,7 +3,7 @@
 	boss_icon_state = "ash_drake"
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw/boss/
+	damage_type = /damagetype/unarmed/claw
 
 
 	pixel_x = -16
@@ -71,10 +71,9 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 28
 
-	movement_delay = DECISECONDS_TO_TICKS(5)
-
+	movement_delay = DECISECONDS_TO_TICKS(4)
 
 
 /mob/living/simple/ash_drake/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
@@ -104,7 +103,7 @@
 	new/obj/effect/temp/ash_drake/swoop_up(T)
 
 	boss_state = 1
-	update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
+	update_collisions(FLAG_COLLISION_FLYING,FLAG_COLLISION_BULLET_NONE)
 	interaction_flags = 0x0
 	icon_state = "shadow"
 	play_sound('sound/mob/ash_drake/fly.ogg',T)
@@ -139,13 +138,19 @@
 	interaction_flags = initial(interaction_flags)
 	update_sprite()
 
-	play_sound('sound/mob/ash_drake/impact.ogg',get_turf(src))
+	var/turf/center_turf = get_turf(src)
 
-	for(var/turf/T in range(2,src))
+	play_sound('sound/mob/ash_drake/impact.ogg',center_turf)
+
+	for(var/turf/T in range(2,center_turf))
 		new/obj/effect/temp/impact/combat/smash(T)
-		var/is_center = T == src.loc
+		var/is_center = T == center_turf
 		for(var/mob/living/L in T.contents)
+			if(L==src)
+				continue
 			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)
+
+	firebomb(center_turf,VIEW_RANGE*0.5,src,src,src.loyalty_tag)
 
 	return TRUE
 
@@ -176,10 +181,10 @@
 
 /mob/living/simple/ash_drake/get_movement_delay(var/include_stance=TRUE)
 
-	if(boss_state)
-		return 1
-
 	. = ..()
+
+	if(boss_state)
+		. *= 0.25
 
 /mob/living/simple/ash_drake/proc/shoot_fireball(var/atom/desired_target)
 	shoot_projectile(
@@ -187,7 +192,7 @@
 		desired_target,
 		null,
 		null,
-		/obj/projectile/magic/fireball/lava,
+		/obj/projectile/magic/fireball,
 		/damagetype/ranged/magic/fireball,
 		16,
 		16,

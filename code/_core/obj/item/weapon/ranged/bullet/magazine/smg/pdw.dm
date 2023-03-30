@@ -15,11 +15,11 @@
 	automatic = TRUE
 	can_wield = FALSE
 
-	shoot_delay = 0.8
+	shoot_delay = 1
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/smg_light/smg.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/pdw1/shoot.ogg')
 
 	override_icon_state = TRUE
 
@@ -63,7 +63,7 @@
 		/obj/item/attachment/undermount/vertical_grip = TRUE
 	)
 
-	attachment_barrel_offset_x = 31 - 16
+	attachment_barrel_offset_x = 27 - 16
 	attachment_barrel_offset_y = 18 - 16
 
 	attachment_sight_offset_x = 13 - 16
@@ -74,6 +74,8 @@
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/get_static_spread()
 	return 0.005

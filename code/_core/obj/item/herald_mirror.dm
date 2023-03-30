@@ -22,7 +22,7 @@
 	linked_destination = locate() in world
 	return ..()
 
-/obj/item/herald_mirror/click_self(var/mob/caller)
+/obj/item/herald_mirror/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

@@ -5,6 +5,10 @@
 	alpha = 255
 	plane = PLANE_EFFECT
 
+/obj/effect/temp/item_pickup/Destroy()
+	. = ..()
+	CALLBACK_REMOVE("fade_\ref[src]")
+
 obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/atom/old_location,var/obj/item/desired_object,var/desired_animation_type = "pickup")
 
 	appearance = desired_object.appearance
@@ -32,8 +36,11 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 		if("transfer")
 			animate(src,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 
-	spawn(duration)
-		desired_object.alpha = initial(desired_object.alpha)
-		qdel(src)
+	CALLBACK("fade_\ref[src]",duration,src,.proc/fade,desired_object)
 
+	return TRUE
+
+obj/effect/temp/item_pickup/proc/fade(var/atom/object)
+	object.alpha = initial(object.alpha)
+	qdel(src)
 	return TRUE

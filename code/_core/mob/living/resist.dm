@@ -58,6 +58,7 @@
 				attacker.health.adjust_stamina(-src_power*4)
 			resist_counter = -1
 			next_resist = 0
+			resist_percent = 0
 		else
 			src.visible_message(
 				span("danger","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
@@ -100,7 +101,19 @@
 			)
 		adjust_fire_stacks(-stacks_to_remove)
 		health.adjust_stamina(-5)
-		next_resist = world.time + 15
+		if(fire_stacks <= 0)
+			next_resist = 0
+			resist_percent = 0
+		else
+			next_resist = world.time + 15
+
+		if(fire_stacks_max)
+			resist_percent = clamp(fire_stacks/fire_stacks_max,0,1)
+		else
+			resist_percent = 1
+
+		stat_elements_to_update |= stat_elements["resist"]
+
 		return FALSE
 
 	else if(has_status_effect(REST))

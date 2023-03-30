@@ -377,7 +377,7 @@ var/global/list/all_shuttle_controlers = list()
 
 /obj/shuttle_controller/proc/try_launch(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
 
-	if(!SSgamemode.active_gamemode.allow_launch)
+	if(!SSgamemode?.active_gamemode?.allow_launch)
 		caller?.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
 		return FALSE
 

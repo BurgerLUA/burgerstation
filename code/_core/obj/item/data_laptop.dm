@@ -14,10 +14,17 @@ var/global/list/all_vault_doors = list()
 
 	var/used = FALSE
 
+	rarity = RARITY_RARE
+
 	value = 500
 
-	contraband = TRUE
+/obj/item/data_laptop/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	SAVEVAR("used")
 
+/obj/item/data_laptop/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	LOADVAR("used")
 
 /obj/item/data_laptop/get_base_value()
 	return used ? 100 : 1000
@@ -35,7 +42,7 @@ var/global/list/all_vault_doors = list()
 	. = ..()
 	update_sprite()
 
-/obj/item/data_laptop/click_self(var/mob/caller)
+/obj/item/data_laptop/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -45,15 +52,22 @@ var/global/list/all_vault_doors = list()
 		update_sprite()
 		return TRUE
 
-	var/obj/structure/interactive/door/airlock/A = pick(all_vault_doors)
-	var/password = all_vault_doors[A]
-	all_vault_doors -= A
+	var/obj/structure/interactive/door/vault/syndicate/D
+	while(TRUE)
+		if(!length(all_vault_doors))
+			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it in another shift?"))
+			return TRUE
+		D = pick(all_vault_doors)
+		all_vault_doors -= D
+		if(!D.z || !D.stored_keypad || !D.stored_keypad.code)
+			continue //Bad one.
+		break //Found a good one.
 
 	used = TRUE
 	update_value()
 	update_sprite()
 	flick("open",src)
 
-	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[A.x],[A.y],[A.z]</b>\" and \"[password]\" before flickering to dark..."))
+	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[D.x],[D.y],[D.z]</b>\" and \"<b>[D.stored_keypad.code]</b>\" before flickering to dark..."))
 
 	return TRUE

@@ -40,8 +40,8 @@
 		if(intercardinal)
 			final_movement_delay *= SQRT2
 
-		if(src.z && is_turf(src.loc) && (collision_flags & FLAG_COLLISION_WALKING))
-			var/turf/T = loc
+		if(src.z && is_simulated(src.loc) && (collision_flags & FLAG_COLLISION_WALKING))
+			var/turf/simulated/T = loc
 			final_movement_delay *= T.move_delay_modifier
 
 		var/final_movement_delay_before_accel = final_movement_delay
@@ -49,10 +49,16 @@
 			var/accel_decimal = 1 - clamp(acceleration_value/100,0,1)
 			final_movement_delay *= 1 + (accel_decimal*acceleration_mod)
 
-		next_move += CEILING(final_movement_delay, adjust_delay) //Round to the nearest tick.
+		var/desired_next_move = CEILING(final_movement_delay, adjust_delay)
+		if(desired_next_move > 0)
+			glide_size = step_size/desired_next_move
 
-		glide_size = next_move ? CEILING(step_size/next_move,0.01) : 1
-		glide_size = max(glide_size,FPS_CLIENT/FPS_SERVER)
+		if(glide_size < FPS_CLIENT/FPS_SERVER)
+			glide_size = FPS_CLIENT/FPS_SERVER
+		else
+			desired_next_move = step_size/glide_size //We do this so that glide movement doesn't look weird.
+
+		next_move = max(desired_next_move,next_move)
 
 		//Handling intercardinal collisions.
 		if(intercardinal)
@@ -61,8 +67,22 @@
 			var/turf/first_step = get_step(src,first_move_dir_to_use)
 			var/turf/second_step = get_step(src,second_move_dir_to_use)
 
-			if(first_step)
-				var/first_from_loc = first_step.Enter(src,src.loc)
+			if(second_step) //Safety.
+				var/second_from_loc = !second_step.density || second_step.Enter(src,first_step)
+				if(second_from_loc)
+					if(second_step.has_dense_atom)
+						for(var/k in second_step.contents)
+							var/atom/movable/M = k
+							if(M.density && !M.Cross(src,first_step))
+								second_step = null
+								break
+				else
+					second_step = null
+			if(!second_step)
+				final_move_dir &= ~second_move_dir_to_use
+
+			if(second_step && first_step) //Safety.
+				var/first_from_loc = !first_step.density || first_step.Enter(src,src.loc)
 				if(first_from_loc)
 					if(first_step.has_dense_atom)
 						for(var/k in first_step.contents)
@@ -72,43 +92,8 @@
 								break
 				else
 					first_step = null
-
-			if(second_step)
-				var/second_from_loc = second_step.Enter(src,src.loc)
-				if(second_from_loc)
-					if(second_step.has_dense_atom)
-						for(var/k in second_step.contents)
-							var/atom/movable/M = k
-							if(M.density && !M.Cross(src,src.loc))
-								second_step = null
-								break
-				else
-					second_step = null
-
-			/*
-			if(first_step && second_step)
-				var/first_from_second = first_step.has_dense_atom && first_step.Enter(src,second_step)
-				if(first_from_second)
-					for(var/k in first_step.contents)
-						var/atom/movable/M = k
-						if(M.density && !M.Cross(src,second_step))
-							first_step = null
-							break
-				var/second_from_first = second_step.has_dense_atom && second_step.Enter(src,first_step)
-				if(second_from_first)
-					for(var/k in second_step.contents)
-						var/atom/movable/M = k
-						if(M.density && !M.Cross(src,first_step))
-							second_step = null
-							break
-			*/
-
-
-
 			if(!first_step)
 				final_move_dir &= ~first_move_dir_to_use
-			if(!second_step)
-				final_move_dir &= ~second_move_dir_to_use
 
 		//Storing previous move dir and handling inability to move.
 		var/similiar_move_dir = FALSE
@@ -210,7 +195,22 @@
 		var/obj/light_sprite/LS = k
 		LS.force_move(src.loc)
 
+	if(enable_chunk_handling && SSchunk.initialized && src.finalized)
+
+		var/chunk/old_chunk = is_turf(old_loc) ? CHUNK(old_loc) : null
+		var/chunk/new_chunk = is_turf(loc) ? CHUNK(loc) : null
+		if(old_chunk != new_chunk)
+			src.on_chunk_cross(old_chunk,new_chunk)
+
 	HOOK_CALL("post_move")
+	return TRUE
+
+/atom/movable/proc/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+
+	if(enable_chunk_clean)
+		if(new_chunk) new_chunk.cleanables += src
+		if(old_chunk) old_chunk.cleanables -= src
+
 	return TRUE
 
 /atom/movable/Bump(atom/Obstacle)
@@ -268,6 +268,11 @@
 				if(M.density && !M.Cross(src,OldLoc) && !src.Bump(M))
 					return FALSE
 
+	if(!OldLoc || OldLoc == loc) //Special code here. the OldLoc check is for if any of the above procs moved the atom while it was being called.
+		loc = NewLoc
+
+	if(src.density)
+
 		//No going back. We're moving.
 
 		//Do: Exit the turf.
@@ -285,7 +290,7 @@
 					continue
 				if(!M.density)
 					continue
-				M.Uncrossed(src)
+				M.Uncrossed(src,NewLoc)
 
 		//Do: Crossed the contents
 		if(!new_loc_as_turf || new_loc_as_turf.has_dense_atom)
@@ -296,7 +301,7 @@
 					continue
 				if(!M.density)
 					continue
-				M.Crossed(src)
+				M.Crossed(src,OldLoc)
 	else
 		//Do: Exit the turf.
 		if(OldLoc) OldLoc.Exited(src,NewLoc) //Can be null.
@@ -304,19 +309,7 @@
 		//Do: Enter the turf.
 		NewLoc.Entered(src,OldLoc)
 
-	if(!OldLoc || OldLoc == loc) //Special code here. the OldLoc check is for if any of the above procs moved the atom while it was being called.
-		loc = NewLoc
-
 	post_move(OldLoc)
-
-	/*
-	if((collision_flags & FLAG_COLLISION_WALKING) && src.z)
-		var/turf/T = loc
-		if(T.friction < 1)
-			var/calculated_speed = SECONDS_TO_TICKS(glide_size/TILE_SIZE)
-			var/calculated_direction = get_dir(OldLoc,loc)
-			start_momentum(calculated_speed,calculated_direction)
-	*/
 
 	return TRUE
 

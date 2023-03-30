@@ -15,7 +15,7 @@
 
 	flags_hud = FLAG_HUD_MOB
 
-	layer = 1000
+	layer = LAYER_HUD_TOOLTIP
 
 /obj/hud/button/tooltip/proc/set_text(var/desired_text,var/desired_screen_loc)
 

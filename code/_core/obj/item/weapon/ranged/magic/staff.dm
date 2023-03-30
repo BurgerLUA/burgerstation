@@ -16,12 +16,12 @@
 		. += span("warning","Overcharged: Uses twice as many charge as it is above capacity.")
 
 
-/obj/item/weapon/ranged/magic/staff/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/magic/staff/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("total_charge")
 
-/obj/item/weapon/ranged/magic/staff/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/ranged/magic/staff/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("total_charge")
 
 
@@ -42,7 +42,7 @@
 		charge_to_remove *= 2
 	total_charge -= charge_to_remove
 	update_sprite()
-	return FALSE
+	return null
 
 /obj/item/weapon/ranged/magic/staff/get_ammo_count()
 	return round(total_charge / cost_charge)
@@ -69,6 +69,8 @@
 	shoot_delay = 14*0.25
 
 	value = 1200
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/magic/staff/fire/New()
 	..()
@@ -103,6 +105,8 @@
 
 	value = 900
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/weapon/ranged/magic/staff/chaos/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
 	var/num = bullet_num/bullet_num_max
@@ -121,7 +125,7 @@
 
 /obj/item/weapon/ranged/magic/staff/basic
 
-	name = "Staff of Magic Missile"
+	name = "Staff of the Magic Missile"
 	desc = "ARCANE MISSILE!."
 	desc_extended = "Point the orb end at the enemy for best result."
 	cost_charge = SOUL_SIZE_COMMON/20
@@ -140,6 +144,8 @@
 	shoot_delay = 8
 
 	value = 1000
+
+	rarity = RARITY_UNCOMMON
 
 /*
 /obj/item/weapon/ranged/magic/staff/focus
@@ -187,4 +193,6 @@
 	value = 1400
 
 	value_burgerbux = 1
+
+	rarity = RARITY_RARE
 

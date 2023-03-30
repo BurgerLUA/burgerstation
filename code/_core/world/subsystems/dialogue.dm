@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(dialogue)
 
 /subsystem/dialogue/proc/setup_combat_dialogue(var/combat_dialogue/CD)
 
-	var/list/files = flist(CD.folderpath)
+	var/list/files = flist("[CD.folderpath]/")
 
 	if(!length(files))
 		log_error("[CD.get_debug_name()] found no valid files in directory [CD.folderpath]!")

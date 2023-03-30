@@ -21,7 +21,8 @@
 	if(storage && src.z)
 		for(var/obj/item/I in loc.contents)
 			storage.add_to_inventory(null,I)
-	tracked_instance_ckeys = list()
+	if(stored_loot_per_instance)
+		tracked_instance_ckeys = list()
 
 
 /obj/structure/interactive/storage/proc/examine_storage(var/mob/living/advanced/caller) //caller wants to see inside src
@@ -144,7 +145,7 @@ var/global/list/possible_trash_enemies = list(
 	stored_loot_per_instance = /loot/random/high
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = 1000
+	layer = LAYER_OBJ_CONTAINER
 
 	var/chance_none = 70
 
@@ -193,6 +194,6 @@ var/global/list/possible_trash_enemies = list(
 	stored_loot = /loot/currency/cash_register
 	stored_loot_per_instance = /loot/currency/pocket_change
 
-	layer = 1000
+	layer = LAYER_OBJ_CONTAINER
 
 	pixel_y = 10

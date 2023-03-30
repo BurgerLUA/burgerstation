@@ -10,13 +10,13 @@
 
 	tier = 1
 
-	shoot_delay = 2
+	shoot_delay = 3.5
 
 	automatic = FALSE
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/revolver_light/revolver.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/detective/shoot.ogg')
 
 	size = SIZE_1
 	weight = 5
@@ -69,8 +69,10 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.02
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/revolver/detective/get_static_spread()
-	return 0
+	return 0.005
 
 /obj/item/weapon/ranged/bullet/revolver/detective/get_skill_spread(var/mob/living/L)
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))

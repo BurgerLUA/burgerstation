@@ -68,7 +68,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 20
+	level = 30
 
 /mob/living/simple/xeno/queen/PostInitialize()
 
@@ -127,6 +127,6 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 			var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
 			if(!found_path)
 				continue
-			X.ai.set_path(found_path)
+			X.ai.set_path_node(found_path)
 
 	return TRUE

@@ -40,7 +40,7 @@
 
 	return TRUE
 
-/obj/item/paper/on_drop(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/paper/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 
 	if(old_inventory && is_player(old_inventory.owner) && old_inventory.owner.client)
 		var/mob/living/advanced/player/P = old_inventory.owner
@@ -49,5 +49,4 @@
 			P.active_paper = null
 
 	return ..()
-	
-	
+

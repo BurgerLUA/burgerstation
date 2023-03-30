@@ -11,6 +11,8 @@ obj/item/clothing/back/wings
 
 	protected_limbs = TARGETABLE_LIMBS
 
-	item_slot_layer = 3
+	item_slot_layer = SLOT_LAYER_UNDER
 
 	uses_until_condition_fall = 150
+
+	item_slot_layer = 1

@@ -13,5 +13,12 @@
 	src.alpha = 0
 
 	var/list/offsets = get_directional_offsets(attacker,victim)
-	animate(src, alpha = initial(alpha), pixel_x = offsets[1]*TILE_SIZE, pixel_y = offsets[2]*TILE_SIZE, time = duration*0.4, easing = QUAD_EASING | EASE_OUT)
+	animate(
+		src,
+		alpha = initial(alpha),
+		pixel_x = offsets[1]*TILE_SIZE,
+		pixel_y = offsets[2]*TILE_SIZE,
+		time = duration*0.4,
+		easing = QUAD_EASING | EASE_OUT
+	)
 

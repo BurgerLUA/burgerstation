@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/holy45
-	name = "Holy .45 M1984 Pistol"
+	name = "Holy .45 M1984 pistol"
 	desc = "We can't expect God to do all the work."
-	desc_extended = "A special replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland."
+	desc_extended = "A special Solarian-Produced replica of a holy artifact used by Pope Benny Bishiop III in the 2042 Holy Wars of United Jesusland. Works quite well for a propaganda device."
 	value = 4000
 
 	company_type = "Solarian"
@@ -10,7 +10,7 @@
 
 	icon = 'icons/obj/item/weapons/ranged/pistol/holy45.dmi'
 	shoot_delay = 1.75
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/1984/shoot.ogg')
 
 	movement_spread_base = 0.008
 	inaccuracy_modifier = 0.5
@@ -65,6 +65,8 @@
 	attachment_undermount_offset_y = 16 - 16
 
 	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL
 
 
 

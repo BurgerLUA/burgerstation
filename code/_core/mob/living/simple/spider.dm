@@ -36,7 +36,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 10
+	level = 5
 
 /mob/living/simple/spider/post_death()
 	..()
@@ -47,7 +47,7 @@
 	name = "glowspider"
 	icon_state = "nurse"
 
-	level = 18
+	level = 12
 
 /mob/living/simple/spider/glow/Initialize()
 	. = ..()
@@ -57,5 +57,5 @@
 	name = "twilight spider"
 	icon_state = "hunter"
 
-	level = 20
+	level = 14
 

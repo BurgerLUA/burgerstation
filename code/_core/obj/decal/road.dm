@@ -1,6 +1,9 @@
 /obj/decal/road_marking
 	name = "road marking"
 
+	plane = PLANE_ROAD
+	layer = LAYER_BASE
+
 
 /obj/decal/road_marking/dotted_line
 	icon_state = "1"

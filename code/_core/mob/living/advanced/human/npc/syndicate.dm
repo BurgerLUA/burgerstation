@@ -5,25 +5,29 @@
 
 	dialogue_id = /dialogue/npc/soldier
 
+	combat_dialogue = /combat_dialogue/syndicate
+
 	dna = /dna/human
 
 	var/list/possible_outfits = list(
 		/loadout/syndicate/soldier = 90,
 		/loadout/syndicate/shotgunnner = 20,
+		//Hardsuits below.
 		/loadout/syndicate/basic = 6,
 		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 1
 	)
 
-	var/loadout_to_level = list(
+	var/list/loadout_to_level = list(
 		/loadout/syndicate/soldier = 1,
-		/loadout/syndicate/shotgunnner = 1.5,
+		/loadout/syndicate/shotgunnner = 1.25,
+		//Hardsuits below.
 		/loadout/syndicate/basic = 2,
 		/loadout/syndicate/advanced = 3,
 		/loadout/syndicate/elite = 4
 	)
 
-	level = 20
+	level = 25
 
 /mob/living/advanced/npc/syndicate/Initialize()
 
@@ -86,3 +90,13 @@
 /mob/living/advanced/npc/syndicate/ultra/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 	. = ..()
 	. *= 0.5
+
+/mob/living/advanced/npc/syndicate/shotgun
+
+	possible_outfits = list(
+		/loadout/syndicate/shotgunnner = 20,
+	)
+
+	loadout_to_level = list(
+		/loadout/syndicate/shotgunnner = 1.25,
+	)

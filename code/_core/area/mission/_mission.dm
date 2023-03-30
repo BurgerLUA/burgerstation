@@ -5,6 +5,7 @@
 	dynamic_lighting = TRUE
 	trackable = FALSE
 
+	allow_area_expansion = TRUE
 
 /area/mission/desert
 	name = "\improper Cliffside Sea Desert"

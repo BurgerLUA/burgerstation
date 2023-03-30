@@ -11,7 +11,7 @@
 	ranged_damage_type = /damagetype/ranged/laser/freezegun
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 4
+	shoot_delay = 6
 
 	automatic = TRUE
 
@@ -19,7 +19,7 @@
 
 	charge_cost = CELL_SIZE_BASIC / 30
 
-	shoot_sounds = list('sound/weapons/chronogun/fire.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/freeze_gun/shoot1.ogg','sound/weapons/ranged/energy/freeze_gun/shoot2.ogg')
 
 	override_icon_state = TRUE
 
@@ -65,6 +65,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.05
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/energy/freezegun/get_static_spread()
 	return 0.001

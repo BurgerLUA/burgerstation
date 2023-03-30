@@ -29,7 +29,7 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Base harvest chance per yield.
-	var/growth_speed = 10 //How much to add to growth every second. Looks high, but there's so many other percentage modifiers it needs to be for plants to grow at all.
+	var/growth_speed = 1 //How much to add to growth every second. A good starting value would be between 0.25 and 0.5
 
 	var/hydration = 35 //Out of 100
 	var/nutrition = 35 //Out of 100
@@ -91,14 +91,19 @@
 
 
 
-/obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
+/obj/structure/interactive/plant/on_destruction(var/damage = TRUE)
+
+	var/should_delete = dead || !damage
 	if(damage && !dead)
 		SSbotany.all_plants -= src //The dead don't think anymore.
 		dead = TRUE
 		health.restore()
 		update_sprite()
+		should_delete = FALSE
+
 	. = ..()
-	if(dead || !damage)
+
+	if(should_delete)
 		qdel(src)
 
 /obj/structure/interactive/plant/proc/add_nutrition(var/nutrition_amount)
@@ -110,10 +115,6 @@
 	hydration += hydration_amount
 	hydration = clamp(hydration,0,200)
 	return TRUE
-
-/obj/structure/interactive/plant/New(var/desired_loc)
-	SSbotany.all_plants += src
-	. = ..()
 
 /obj/structure/interactive/plant/Generate()
 	. = ..()
@@ -127,9 +128,14 @@
 
 /obj/structure/interactive/plant/Finalize()
 	. = ..()
+	if(!dead && !qdeleting)
+		SSbotany.all_plants += src
+
+/obj/structure/interactive/plant/Finalize()
+	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/plant/Destroy()
+/obj/structure/interactive/plant/PreDestroy()
 	SSbotany.all_plants -= src
 	. = ..()
 
@@ -183,13 +189,7 @@
 		if(total_metabolized > 0)
 			reagents.update_container(update_owner=FALSE)
 
-	//dead plants auto-remove themselves
-	var/health_percent = health.health_current/health.health_max
-	if(health_percent <= 0.01)
-		src.visible_message(span("warning","\The [src.name] dies!"),span("warning","You, somehow a plant, have died and read this message?"))
-		qdel(src)
-	else
-		update_sprite()
+	update_sprite()
 
 	return TRUE
 
@@ -256,7 +256,7 @@
 		if(move_direction & WEST)
 			animation_offset_x += 32
 
-		var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
+		var/skill_power = caller.get_skill_power(SKILL_SURVIVAL,0,1,2)
 		var/health_mod  = health.health_current/health.health_max
 
 		var/child_yield = CEILING(yield_max*(0.5 + min(skill_power,1)*0.5),1)
@@ -297,7 +297,8 @@
 			caller.visible_message(span("warning","\The [caller.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
 		else
 			caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
-			caller.add_skill_xp(SKILL_BOTANY, FLOOR(total_harvests*potency,1))
+			var/experience_to_add = total_harvests*potency*0.0125
+			caller.add_skill_xp(SKILL_SURVIVAL,CEILING(experience_to_add,1))
 
 	if(delete_after_harvest)
 		growth = 0 //just in case

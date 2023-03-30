@@ -7,7 +7,7 @@
 	icon_state = "none"
 
 	plane = PLANE_EFFECT
-	layer = 100
+	layer = LAYER_MOB_FLYING
 
 	var/mob/owner
 	var/atom/movable/stored_movable
@@ -176,4 +176,5 @@
 		I.pixel_x = initial(stored_movable.pixel_x)
 		I.pixel_y = initial(stored_movable.pixel_y) - pixel_y
 		I.plane = PLANE_EFFECT
+		I.layer = FLOAT_LAYER
 		add_underlay(I)

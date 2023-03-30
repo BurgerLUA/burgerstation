@@ -8,15 +8,17 @@
 
 	value = 4000
 
+	damage_mod = 1.1
+
 	projectile = /obj/projectile/bullet/laser
 	ranged_damage_type = /damagetype/ranged/laser/carbine
 
 	projectile_speed = TILE_SIZE - 1
-	shoot_delay = 2
+	shoot_delay = 3
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/laser_carbine/kill.ogg')
+	shoot_sounds = list('sound/weapons/ranged/energy/captain/shoot.ogg')
 
 	charge_cost = CELL_SIZE_BASIC / 80
 
@@ -32,6 +34,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.5
 	movement_spread_base = 0.02
+
+	rarity = RARITY_LEGENDARY
 
 /obj/item/weapon/ranged/energy/captain/update_overlays()
 	. = ..()

@@ -72,8 +72,8 @@
 	return null
 */
 
-
-/proc/pickweight(list/list_to_pick,var/rarity=0) //Stolen from /tg/
+/*
+/proc/pickweight(list/list_to_pick) //Stolen from /tg/
 	var/total = 0
 	var/item
 	for(item in list_to_pick)
@@ -83,6 +83,34 @@
 			list_to_pick[item] = CEILING(list_to_pick[item],1)
 		total += list_to_pick[item]
 	total = rand(0, total)
+	for(item in list_to_pick)
+		total -= list_to_pick[item]
+		if(total <= 0 && list_to_pick[item])
+			return item
+
+	return null
+*/
+
+/proc/pickweight(list/list_to_pick,var/rarity) //Stolen from /tg/ with changes by burger.
+	var/total = 0
+
+	var/item
+	for(item in list_to_pick)
+		if(!isnum(list_to_pick[item]))
+			list_to_pick[item] = 1
+		else
+			list_to_pick[item] = CEILING(list_to_pick[item],1)
+		total += list_to_pick[item]
+
+	// A lower total is better.
+	// https://www.desmos.com/calculator/eh8dy1z0ga
+	if(isnum(rarity))
+		var/modifier = max( (75-rarity)/75, rand() ** (rarity/100) )
+		modifier = FLOOR(total*modifier,1)
+		total = rand(modifier,total)
+	else
+		total = rand(0, total)
+
 	for(item in list_to_pick)
 		total -= list_to_pick[item]
 		if(total <= 0 && list_to_pick[item])
@@ -111,133 +139,6 @@
 			continue
 
 	return best_key
-
-//for sorting clients or mobs by ckey
-/proc/sortKey(var/list/L, var/order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
-
-/proc/sortList(var/list/L, var/cmp=/proc/cmp_text_asc)
-	return sortTim(L.Copy(), cmp)
-
-//uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sortNames(var/list/L, var/order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
-
-//Move a single element from position fromIndex within a list, to position toIndex
-//This will preserve associations ~Carnie
-/proc/moveElement(var/list/L, var/fromIndex, var/toIndex)
-	if(fromIndex > toIndex)
-		++fromIndex
-	//else
-	//	++toIndex
-
-	L.Insert(toIndex, null)
-	L.Swap(fromIndex, toIndex)
-	L.Cut(fromIndex, fromIndex+1)
-
-
-//Move elements [fromIndex,fromIndex+len) to [toIndex,toIndex+len)
-//This will preserve associations and is much faster than copying to a new list
-//or checking for associative lists and manually copying elements ~Carnie
-/proc/moveRange(var/list/L, var/fromIndex, var/toIndex, var/len=1)
-	var/distance = abs(toIndex - fromIndex)
-	if(len > distance)	//there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going
-		if(fromIndex < toIndex)
-			toIndex += len
-		else
-			fromIndex += len
-
-		for(var/i=0, i<distance, ++i)
-			L.Insert(fromIndex, null)
-			L.Swap(fromIndex, toIndex)
-			L.Cut(toIndex, toIndex+1)
-	else
-		if(fromIndex > toIndex)
-			fromIndex += len
-		else
-			toIndex += len	//?
-
-		for(var/i=0, i<len, ++i)
-			L.Insert(toIndex, null)
-			L.Swap(fromIndex, toIndex)
-			L.Cut(fromIndex, fromIndex+1)
-
-//Move elements from [fromIndex, fromIndex+len) to [toIndex, toIndex+len)
-//Move any elements being overwritten by the move to the now-empty elements, preserving order
-//Note: if the two ranges overlap, only the destination order will be preserved fully, since some elements will be within both ranges ~Carnie
-/proc/swapList(var/list/L, var/fromIndex, var/toIndex, var/len=1)
-	var/distance = abs(toIndex - fromIndex)
-	if(len > distance)	//there is an overlap, therefore swapping each element will require more swaps than inserting new elements
-		if(fromIndex < toIndex)
-			toIndex += len
-		else
-			fromIndex += len
-
-		for(var/i=0, i<distance, ++i)
-			L.Insert(fromIndex, null)
-			L.Swap(fromIndex, toIndex)
-			L.Cut(toIndex, toIndex+1)
-	else
-		if(toIndex > fromIndex)
-			var/a = toIndex
-			toIndex = fromIndex
-			fromIndex = a
-
-		for(var/i=0, i<len, ++i)
-			L.Swap(fromIndex++, toIndex++)
-
-//replaces old reverseList ~Carnie
-/proc/reverseList(var/list/L, var/start=1, var/end=0)
-	if(L.len)
-		start = start % L.len
-		end = end % (L.len+1)
-		if(start <= 0)
-			start += L.len
-		if(end <= 0)
-			end += L.len + 1
-
-		--end
-		while(start < end)
-			L.Swap(start++,end--)
-
-	return L
-
-// Insert an object A into a sorted list using cmp_proc (/code/_helpers/cmp.dm) for comparison.
-// Use ADD_SORTED(list, A, cmp_proc)
-
-// Return the index using dichotomic search
-/proc/FindElementIndex(var/atom/A, var/list/L, var/cmp)
-	var/i = 1
-	var/j = L.len
-	var/mid
-
-	while(i < j)
-		mid = round((i+j)/2)
-
-		if(call(cmp)(L[mid],A) < 0)
-			i = mid + 1
-		else
-			j = mid
-
-	if(i == 1 || i ==  L.len) // Edge cases
-		return (call(cmp)(L[i],A) > 0) ? i : i+1
-	else
-		return i
-
-/proc/get_real_length(var/list/L)
-
-	if(!L)
-		return 0
-
-	var/list_length = length(L)
-
-	var/actual_length = 0
-
-	for(var/i=1,i<=list_length,i++)
-		if(L[i])
-			actual_length++
-
-	return actual_length
 
 /proc/get_last_value(var/list/L)
 
@@ -373,3 +274,35 @@
 
 	for(var/i in 1 to inserted_list.len - 1)
 		inserted_list.Swap(i, rand(i, inserted_list.len))
+
+//replaces old reverseList ~Carnie
+/proc/reverseList(var/list/L, var/start=1, var/end=0)
+	if(L.len)
+		start = start % L.len
+		end = end % (L.len+1)
+		if(start <= 0)
+			start += L.len
+		if(end <= 0)
+			end += L.len + 1
+
+		--end
+		while(start < end)
+			L.Swap(start++,end--)
+
+	return L
+
+
+/proc/get_real_length(var/list/L)
+
+	if(!L)
+		return 0
+
+	var/list_length = length(L)
+
+	var/actual_length = 0
+
+	for(var/i=1,i<=list_length,i++)
+		if(L[i])
+			actual_length++
+
+	return actual_length

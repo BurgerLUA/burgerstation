@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/wall/metal/reinforced/syndicate,
+/turf/simulated/wall/metal/syndicate/reinforced,
 /area/mission/prefab/vault/vault_01)
 "b" = (
 /obj/structure/table/reinforced/steel/dark,
@@ -48,7 +48,7 @@
 	icon_state = "apc";
 	dir = 4
 	},
-/turf/simulated/wall/metal/reinforced/syndicate,
+/turf/simulated/wall/metal/syndicate/reinforced,
 /area/mission/prefab/vault/vault_01)
 "j" = (
 /obj/structure/interactive/wire/red,
@@ -77,7 +77,7 @@
 	icon_state = "setup";
 	dir = 8
 	},
-/turf/simulated/wall/metal/reinforced/syndicate,
+/turf/simulated/wall/metal/syndicate/reinforced,
 /area/mission/prefab/vault/vault_01)
 "q" = (
 /obj/marker/map_node,

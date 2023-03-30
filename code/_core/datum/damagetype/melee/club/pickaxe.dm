@@ -1,9 +1,9 @@
 /damagetype/melee/club/pickaxe/
 
 	impact_sounds = list(
-		'sound/weapons/pickaxe/picaxe1.ogg',
-		'sound/weapons/pickaxe/picaxe2.ogg',
-		'sound/weapons/pickaxe/picaxe3.ogg'
+		'sound/weapons/melee/pickaxe/picaxe1.ogg',
+		'sound/weapons/melee/pickaxe/picaxe2.ogg',
+		'sound/weapons/melee/pickaxe/picaxe3.ogg'
 	)
 
 

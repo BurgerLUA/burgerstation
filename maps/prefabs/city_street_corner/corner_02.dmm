@@ -8,7 +8,7 @@
 /area/dmm_suite/clear_area)
 "c" = (
 /obj/marker/prefab/house,
-/turf/dmm_suite/clear_turf,
+/turf/simulated/wall/brick/city,
 /area/dmm_suite/clear_area)
 "d" = (
 /obj/decal/road_marking/solid_line{
@@ -50,10 +50,12 @@
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "k" = (
-/turf/simulated/wall/brick/red,
+/obj/marker/prefab/city/parking,
+/turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
 "l" = (
-/turf/simulated/floor/colored/dirt/path,
+/obj/decal/road_marking/dotted_line,
+/turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "m" = (
 /obj/marker/prefab/house{
@@ -73,16 +75,8 @@
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"o" = (
-/obj/marker/prefab/city/store{
-	icon_state = "";
-	dir = 1
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "p" = (
-/obj/marker/prefab/alley,
-/turf/dmm_suite/clear_turf,
+/turf/simulated/wall/brick/city,
 /area/dmm_suite/clear_area)
 "q" = (
 /obj/marker/prefab/city/parking{
@@ -162,20 +156,6 @@
 /obj/marker/map_node/x3,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
-"C" = (
-/obj/marker/prefab/alley_end{
-	icon_state = "alley_end";
-	dir = 4
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"D" = (
-/obj/marker/prefab/alley{
-	icon_state = "alley";
-	dir = 4
-	},
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "E" = (
 /obj/marker/prefab/city/store,
 /turf/dmm_suite/clear_turf,
@@ -194,10 +174,6 @@
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"H" = (
-/obj/marker/prefab/alley_end,
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
 "I" = (
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
@@ -205,6 +181,32 @@
 	},
 /obj/marker/map_node/x3,
 /turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"J" = (
+/obj/marker/prefab/city/parking{
+	icon_state = "parking";
+	dir = 5
+	},
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"K" = (
+/obj/decal/road_marking/solid_cross,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"L" = (
+/obj/decal/road_marking/dotted_line{
+	icon_state = "1";
+	dir = 4
+	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"M" = (
+/obj/decal/road_marking/hazard/yellow,
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"Y" = (
+/obj/decal/road_marking/hazard/yellow,
+/turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
 
 (1,1,1) = {"
@@ -223,7 +225,7 @@ a
 a
 a
 a
-a
+c
 e
 e
 e
@@ -244,23 +246,23 @@ y
 j
 t
 e
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
 a
 a
 a
@@ -310,6 +312,12 @@ y
 j
 t
 e
+e
+e
+e
+e
+e
+e
 a
 a
 a
@@ -319,14 +327,8 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+J
+p
 a
 a
 a
@@ -355,7 +357,7 @@ a
 a
 a
 a
-c
+a
 e
 t
 j
@@ -376,6 +378,12 @@ I
 j
 t
 e
+M
+M
+M
+M
+M
+M
 a
 a
 a
@@ -386,13 +394,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -440,8 +442,14 @@ v
 g
 y
 j
-t
-e
+L
+K
+j
+j
+j
+j
+j
+j
 a
 a
 a
@@ -452,13 +460,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -506,8 +508,14 @@ w
 w
 j
 j
-t
-e
+L
+K
+j
+j
+j
+j
+j
+j
 a
 a
 a
@@ -518,19 +526,13 @@ a
 a
 a
 a
+p
 a
 a
 a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-C
 a
 a
 a
@@ -572,8 +574,14 @@ j
 j
 j
 j
-t
-e
+L
+K
+j
+j
+j
+j
+j
+j
 a
 a
 a
@@ -584,13 +592,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -633,13 +635,19 @@ i
 i
 i
 i
-i
-i
-i
-i
-i
-f
-e
+j
+j
+j
+j
+j
+L
+K
+j
+j
+j
+j
+j
+j
 a
 a
 a
@@ -650,13 +658,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -699,13 +701,19 @@ e
 e
 e
 e
+M
+M
+M
+M
+M
+M
 e
-e
-e
-e
-e
-e
-e
+M
+M
+M
+M
+M
+M
 a
 a
 a
@@ -716,13 +724,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -760,6 +762,24 @@ y
 j
 t
 e
+p
+p
+p
+p
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
 a
 a
 a
@@ -770,25 +790,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -826,6 +828,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -853,8 +856,7 @@ a
 a
 a
 a
-a
-a
+p
 a
 a
 a
@@ -892,6 +894,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -919,8 +922,7 @@ a
 a
 a
 q
-k
-a
+p
 a
 a
 a
@@ -958,6 +960,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -974,7 +977,7 @@ a
 a
 a
 a
-o
+E
 a
 a
 a
@@ -985,8 +988,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1024,6 +1026,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1051,14 +1054,13 @@ a
 a
 a
 a
-k
+p
 a
 a
 a
 a
 a
 a
-D
 a
 a
 a
@@ -1090,6 +1092,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1117,8 +1120,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1156,6 +1158,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1183,8 +1186,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1222,6 +1224,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1249,8 +1252,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1288,6 +1290,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1315,8 +1318,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1354,6 +1356,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1381,8 +1384,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1420,6 +1422,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1447,8 +1450,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1486,6 +1488,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1513,8 +1516,7 @@ a
 a
 a
 q
-k
-a
+p
 a
 a
 a
@@ -1532,17 +1534,17 @@ a
 a
 a
 a
-a
-a
-a
-H
-a
-a
-a
-a
-a
-a
-a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
 p
 e
 t
@@ -1552,6 +1554,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1579,14 +1582,13 @@ a
 a
 a
 a
-k
+p
 a
 a
 a
 a
 a
 a
-D
 a
 a
 a
@@ -1598,42 +1600,7 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-e
-t
-j
-x
-y
-j
-t
-e
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+p
 a
 a
 a
@@ -1646,7 +1613,42 @@ a
 a
 a
 k
+t
+j
+x
+y
+j
+t
+e
+p
 a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+p
 a
 a
 a
@@ -1664,7 +1666,7 @@ a
 a
 a
 a
-a
+p
 a
 a
 a
@@ -1684,6 +1686,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1711,8 +1714,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1730,9 +1732,9 @@ a
 a
 a
 a
+p
 a
-a
-a
+e
 a
 a
 a
@@ -1750,6 +1752,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1777,8 +1780,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1796,9 +1798,9 @@ a
 a
 a
 a
+p
 a
-a
-a
+e
 a
 a
 a
@@ -1816,6 +1818,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1843,8 +1846,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1862,9 +1864,9 @@ a
 a
 a
 a
+p
 a
-a
-a
+e
 a
 a
 a
@@ -1882,6 +1884,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1909,8 +1912,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1928,9 +1930,9 @@ a
 a
 a
 a
+p
 a
-a
-a
+e
 a
 a
 a
@@ -1948,6 +1950,7 @@ y
 j
 t
 e
+p
 a
 a
 a
@@ -1975,8 +1978,7 @@ a
 a
 a
 a
-k
-a
+p
 a
 a
 a
@@ -1994,9 +1996,9 @@ a
 a
 a
 a
+p
 a
-a
-a
+e
 a
 a
 a
@@ -2014,6 +2016,7 @@ y
 j
 t
 A
+p
 a
 a
 a
@@ -2041,28 +2044,27 @@ a
 a
 a
 a
-k
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
 "}
 (29,1,1) = {"
+p
+p
+p
+p
+p
 a
-a
-a
-a
-a
-a
-a
+e
 a
 a
 a
@@ -2167,10 +2169,10 @@ i
 i
 i
 i
-i
-i
-i
-i
+l
+l
+l
+l
 i
 i
 i
@@ -2203,7 +2205,7 @@ a
 a
 a
 a
-E
+a
 e
 t
 j
@@ -2269,7 +2271,7 @@ a
 a
 a
 a
-a
+E
 e
 t
 j
@@ -2409,7 +2411,7 @@ j
 j
 j
 j
-j
+u
 j
 j
 j
@@ -2471,10 +2473,10 @@ a
 e
 h
 i
-i
-i
-r
-i
+l
+l
+l
+l
 i
 i
 i
@@ -2543,9 +2545,9 @@ e
 e
 e
 e
-e
-e
 F
+e
+e
 e
 e
 e
@@ -2610,6 +2612,7 @@ a
 a
 a
 a
+p
 a
 a
 a
@@ -2646,8 +2649,7 @@ a
 a
 a
 a
-a
-a
+p
 "}
 (38,1,1) = {"
 a
@@ -2676,26 +2678,9 @@ a
 a
 a
 a
+p
 a
 a
-l
-l
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-m
 a
 a
 a
@@ -2714,6 +2699,23 @@ a
 a
 m
 a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+m
+p
 "}
 (39,1,1) = {"
 a
@@ -2742,10 +2744,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -2780,6 +2779,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (40,1,1) = {"
 a
@@ -2808,10 +2810,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -2846,6 +2845,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (41,1,1) = {"
 a
@@ -2874,10 +2876,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -2912,6 +2911,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (42,1,1) = {"
 a
@@ -2940,10 +2942,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -2978,6 +2977,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (43,1,1) = {"
 a
@@ -3006,10 +3008,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3044,6 +3043,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (44,1,1) = {"
 a
@@ -3072,10 +3074,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3110,6 +3109,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (45,1,1) = {"
 a
@@ -3137,11 +3139,8 @@ a
 a
 a
 a
-a
-a
 q
-l
-l
+p
 a
 a
 a
@@ -3176,6 +3175,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (46,1,1) = {"
 a
@@ -3204,10 +3206,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3242,6 +3241,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (47,1,1) = {"
 a
@@ -3270,10 +3272,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3308,6 +3307,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (48,1,1) = {"
 a
@@ -3336,10 +3338,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3374,10 +3373,11 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (49,1,1) = {"
-a
-a
 a
 a
 a
@@ -3404,8 +3404,7 @@ a
 a
 a
 a
-l
-l
+p
 a
 a
 a
@@ -3440,6 +3439,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (50,1,1) = {"
 a
@@ -3468,10 +3470,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3506,6 +3505,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (51,1,1) = {"
 a
@@ -3534,10 +3536,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3572,6 +3571,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (52,1,1) = {"
 a
@@ -3600,10 +3602,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3638,6 +3637,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (53,1,1) = {"
 a
@@ -3666,10 +3668,7 @@ a
 a
 a
 a
-a
-a
-l
-l
+p
 a
 a
 a
@@ -3704,6 +3703,9 @@ a
 a
 a
 a
+a
+a
+p
 "}
 (54,1,1) = {"
 a
@@ -3731,27 +3733,10 @@ a
 a
 a
 a
-a
-a
 G
-k
-k
+p
 a
 a
-a
-a
-a
-a
-a
-b
-a
-a
-a
-a
-a
-a
-a
-b
 a
 a
 a
@@ -3769,7 +3754,24 @@ a
 a
 a
 b
-k
+a
+a
+a
+a
+a
+a
+a
+a
+b
+a
+a
+a
+a
+a
+a
+a
+b
+p
 "}
 (55,1,1) = {"
 a
@@ -3798,12 +3800,8 @@ a
 a
 a
 a
-a
-a
-a
-k
-a
-a
+p
+p
 a
 a
 a
@@ -3835,7 +3833,11 @@ a
 a
 a
 a
-k
+a
+a
+a
+a
+p
 "}
 (56,1,1) = {"
 a
@@ -3864,10 +3866,8 @@ a
 a
 a
 a
-a
-a
 e
-k
+p
 a
 a
 a
@@ -3901,7 +3901,9 @@ a
 a
 a
 a
-k
+a
+a
+p
 "}
 (57,1,1) = {"
 a
@@ -3929,11 +3931,9 @@ a
 a
 a
 a
-a
-a
-a
+Y
 e
-k
+p
 a
 a
 a
@@ -3967,7 +3967,9 @@ a
 a
 a
 a
-k
+a
+a
+p
 "}
 (58,1,1) = {"
 a
@@ -3995,11 +3997,9 @@ a
 a
 a
 a
-a
-a
-a
+Y
 e
-k
+p
 a
 a
 a
@@ -4033,7 +4033,9 @@ a
 a
 a
 a
-k
+a
+a
+p
 "}
 (59,1,1) = {"
 a
@@ -4061,11 +4063,9 @@ a
 a
 a
 a
-a
-a
-a
+Y
 e
-k
+p
 a
 a
 a
@@ -4099,7 +4099,9 @@ a
 a
 a
 a
-k
+a
+a
+p
 "}
 (60,1,1) = {"
 a
@@ -4127,11 +4129,9 @@ a
 a
 a
 a
-a
-a
-a
+Y
 e
-k
+p
 a
 a
 a
@@ -4165,7 +4165,9 @@ a
 a
 a
 a
-k
+a
+a
+p
 "}
 (61,1,1) = {"
 a
@@ -4194,10 +4196,8 @@ a
 a
 a
 a
-a
-a
 e
-k
+p
 a
 a
 a
@@ -4231,7 +4231,9 @@ a
 a
 a
 a
-k
+a
+a
+p
 "}
 (62,1,1) = {"
 a
@@ -4260,44 +4262,44 @@ a
 a
 a
 a
-a
-a
-a
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-a
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
-k
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
 "}
 (63,1,1) = {"
 a
@@ -4326,7 +4328,7 @@ a
 a
 a
 a
-a
+p
 a
 a
 a
@@ -4382,17 +4384,17 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
+p
 a
 a
 a

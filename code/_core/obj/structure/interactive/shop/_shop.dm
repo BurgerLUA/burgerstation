@@ -79,16 +79,22 @@
 	U.appearance = stored_item.appearance
 	U.pixel_x = 2
 	U.pixel_y = 4
+	U.plane = FLOAT_PLANE
+	U.layer = FLOAT_LAYER
 	add_overlay(U)
 
 	var/image/M = new/image(icon,icon_state)
 	M.appearance = stored_item.appearance
+	M.plane = FLOAT_PLANE
+	M.layer = FLOAT_LAYER
 	add_overlay(M)
 
 	var/image/O = new/image(icon,icon_state)
 	O.appearance = stored_item.appearance
 	O.pixel_x = -2
 	O.pixel_y = -4
+	O.plane = FLOAT_PLANE
+	O.layer = FLOAT_LAYER
 	add_overlay(O)
 
 /obj/structure/interactive/shop/update_icon()

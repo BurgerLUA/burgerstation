@@ -13,29 +13,32 @@
 	QDEL_NULL(stored_magazine)
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/ranged/bullet/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_magazine")
 
-/obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
-	return stored_magazine
-
-
-/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
-
-	. = ..()
+/obj/item/weapon/ranged/bullet/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_magazine")
 	if(stored_magazine)
 		src.open = FALSE
 
+/obj/item/weapon/ranged/bullet/magazine/proc/get_magazine()
+	return stored_magazine
+
 /obj/item/weapon/ranged/bullet/magazine/proc/get_cock_sound(var/direction="both")
 	switch(direction)
 		if("both")
-			return 'sound/weapons/gun/general/bolt_rack.ogg'
+			return pick(
+				'sound/weapons/ranged/generic/gun_slide1.ogg',
+				'sound/weapons/ranged/generic/gun_slide2.ogg',
+				'sound/weapons/ranged/generic/gun_slide3.ogg',
+				'sound/weapons/ranged/generic/gun_slide4.ogg',
+				'sound/weapons/ranged/generic/gun_slide5.ogg')
 		if("forward")
-			return 'sound/weapons/gun/general/bolt_drop.ogg'
+			return 'sound/weapons/ranged/generic/slide_drop.ogg'
 		if("back")
-			return 'sound/weapons/gun/general/slide_lock_1.ogg'
+			return 'sound/weapons/ranged/generic/slide_lock.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/Generate()
 
@@ -50,30 +53,32 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller)
-
-	INTERACT_CHECK
-	INTERACT_DELAY(1)
+/obj/item/weapon/ranged/bullet/magazine/click_self(var/mob/caller,location,control,params)
 
 	. = ..()
 
 	if(.)
 		return .
 
+	if(next_shoot_time > world.time)
+		return FALSE
+
+	var/turf/T = get_turf(src)
+
 	var/cock_type // = "flacid"
 
-	if(eject_chambered_bullet(caller,caller ? caller.loc : get_turf(src),TRUE))
+	if(eject_chambered_bullet(caller,caller ? caller.loc : T,TRUE))
 		cock_type = "back"
 
 	if(load_new_bullet_from_magazine(caller))
 		cock_type = cock_type == "back" ? "both" : "forward"
 
-	var/turf/T = get_turf(src)
-
 	if(cock_type)
 		if(T)
 			play_sound(get_cock_sound(cock_type),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
 		update_sprite()
+
+	next_shoot_time = max(next_shoot_time,world.time + 5)
 
 	return TRUE
 

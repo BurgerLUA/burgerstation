@@ -10,9 +10,6 @@
 	icon = 'icons/hud/hud.dmi'
 	icon_state = "square"
 
-	plane = PLANE_HUD
-	layer = 1
-
 	var/atom/movable/grabbed_object
 
 	var/worn = FALSE //Set to TRUE if it's a worn object.
@@ -80,6 +77,8 @@
 	var/light_mod = 0 //Power multiplier for lights for being in this inventory. Worn inventories will always have this at 1.
 
 	var/advanced_layering = FALSE //Set to TRUE to enable advanced layering, where the layer of clothing is based on the layer below.
+
+	layer = 0 //has to be this way
 
 /obj/hud/inventory/MouseEntered(location,control,params)
 
@@ -360,7 +359,7 @@
 	if(!I.drop_item(src,silent=silent))
 		return FALSE
 
-	I.pre_pickup(old_location,src)
+	I.pre_equip(old_location,src)
 
 	if(owner)
 		I.update_owner(owner)
@@ -368,13 +367,11 @@
 			var/mob/living/advanced/A = owner
 			if(worn)
 				A.worn_objects += I
-				update_worn_icon(I)
+				src.initialize_worn_icon(I)
 			else
 				A.held_objects += I
-				update_held_icon(I)
+				src.update_held_icon(I)
 			A.queue_update_items = TRUE
-
-	update_stats()
 
 	if(I.loc != src) //Something went wrong.
 		if(!owner)
@@ -384,16 +381,21 @@
 		I.drop_item(get_turf(src))
 		return TRUE
 
-	I.on_pickup(old_location,src)
-
 	I.pixel_x = initial(I.pixel_x) + x_offset
 	I.pixel_y = initial(I.pixel_y) + y_offset
 
 	vis_contents += I
 
+	I.layer = LAYER_BASE + length(vis_contents)
+
+	update_stats()
+
+	I.on_equip(old_location,silent)
+	I.update_inventory()
+
 	return TRUE
 
-/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
+/obj/hud/inventory/proc/initialize_worn_icon(var/obj/item/item_to_update)
 
 	var/mob/living/advanced/A = owner
 
@@ -404,20 +406,14 @@
 	else
 		desired_icon_state = item_to_update.icon_state_worn
 
-	item_to_update.initialize_blends(desired_icon_state)
+	item_to_update.initialize_worn_blends(desired_icon_state)
 
-	if(istype(item_to_update,/obj/item/clothing/back/wings))
-		A.add_overlay_tracked("wings_behind",item_to_update,desired_layer = LAYER_MOB_WINGS_BEHIND, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_behind",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
-		A.add_overlay_tracked("wings_front",item_to_update,desired_layer = LAYER_MOB_WINGS_FRONT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_front",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
-		A.add_overlay_tracked("wings_side",item_to_update,desired_layer = LAYER_MOB_WINGS_ADJACENT, desired_icon=initial(item_to_update.icon), desired_icon_state = "worn_adjacent",desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
-	else
-		var/desired_layer = item_to_update.worn_layer
-		if(advanced_layering)
-			var/key = contents.Find(item_to_update)
-			if(key != 1)
-				var/obj/item/I = contents[1]
-				desired_layer = I.worn_layer + (key)*0.01
-		A.add_overlay_tracked("\ref[item_to_update]",item_to_update,desired_layer = desired_layer,desired_icon=initial(item_to_update.icon),desired_icon_state = desired_icon_state,desired_no_initial = item_to_update.no_initial_blend,desired_pixel_x = item_to_update.worn_pixel_x,desired_pixel_y = item_to_update.worn_pixel_y,desired_color=item_to_update.color)
+	item_to_update.handle_overlays(
+		A,
+		add=TRUE,
+		worn=TRUE,
+		icon_state_override=desired_icon_state
+	)
 
 	return TRUE
 
@@ -448,18 +444,10 @@
 	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
 	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
-	update_stats()
-
 	if(owner)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
-			if(worn && istype(I,/obj/item/clothing/back/wings))
-				A.remove_overlay("wings_behind")
-				A.remove_overlay("wings_front")
-				A.remove_overlay("wings_side")
-			else
-				A.remove_overlay("\ref[I]")
-
+			I.handle_overlays(A,remove=TRUE)
 			if(!A.qdeleting)
 				if(worn)
 					A.worn_objects -= I
@@ -471,7 +459,12 @@
 
 	vis_contents -= I
 
-	I.on_drop(src,silent)
+	I.layer = LAYER_BASE + I.value / 10000
+
+	update_stats()
+
+	I.on_unequip(src,silent)
+	I.update_inventory()
 
 	return I
 
@@ -491,11 +484,9 @@
 		name = initial(name)
 		desc_extended = initial(desc_extended)
 
-	tooltip_text = get_tooltip_text()
-
-	if(is_item(src.loc))
-		var/obj/item/I2 = src.loc
-		I2.update_inventory()
+	tooltip_text = initial(tooltip_text)
+	if(!tooltip_text)
+		tooltip_text = generate_tooltip_text()
 
 	HOOK_CALL("update_stats")
 
@@ -528,7 +519,8 @@
 
 	for(var/k in contents)
 		var/atom/movable/M = k
-		M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag)
+		if(M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
+			. = TRUE
 
 /obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
 
@@ -637,3 +629,24 @@
 		return null
 
 	return contents[content_length]
+
+/* Redundent
+/obj/hud/inventory/get_top_object()
+
+	var/list/found_items = list()
+
+	var/atom/best_atom
+
+	for(var/k in vis_contents)
+		var/atom/A = k
+		if(!best_atom)
+			best_atom = A
+			continue
+		if(A.plane > best_atom.plane)
+			best_atom = A
+			continue
+		if(A.plane == best_atom.plane && A.layer > best_atom.layer)
+			best_atom = A
+			continue
+*/
+

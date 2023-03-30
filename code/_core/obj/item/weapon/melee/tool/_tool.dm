@@ -46,6 +46,19 @@
 
 	value = 5
 
+/obj/item/weapon/melee/tool/wrench/high
+	name = "high impact wrench"
+	desc = "An adjustable, sizable, thermo-regulable wrench! Now with more impact!"
+	desc_extended = "A wrench that can fit any bolt in the known universe. What a time to be alive. This variant is impact rated."
+
+	icon = 'icons/obj/item/weapons/melee/tools/wrench_impact.dmi'
+	size = SIZE_2
+	weight = 8
+
+	value = 20
+
+	damage_type = /damagetype/melee/club/mace/
+
 /obj/item/weapon/melee/tool/welder
 	name = "welding tool"
 	desc = "Your common, typical everyday wielding tool! Wear eye protection!"
@@ -64,12 +77,12 @@
 
 	var/active = FALSE
 
-/obj/item/weapon/melee/tool/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/weapon/melee/tool/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEVAR("fuel_current")
 
-/obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADVAR("fuel_current")
 
 /obj/item/weapon/melee/tool/welder/Generate()
@@ -104,7 +117,7 @@
 
 
 
-/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller)
+/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

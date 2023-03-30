@@ -1,27 +1,31 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/service
 	name = "\improper 7.62mm SOL-14 Service Rifle"
 	desc = "HOORAH!."
-	desc_extended = "The SOL-14 is the battle rifle currently in service in the SolGov Army. It's occasionally seen in the hands of PMCs."
+	desc_extended = "An old rifle previously used by NanoTrasen when they were contractors of the SolGov army. It's occasionally seen in the hands of veteran PMCs."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/762_2.dmi'
 	icon_state = "inventory"
 	value = 2200
 
-	company_type = "Solarian"
+	company_type = "NanoTrasen"
+
+	tier_type = "marksman rifle"
 
 	tier = 1
 
-	shoot_delay = 4
+	damage_mod = 1.4
+
+	shoot_delay = 5.5
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/308/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/service_rifle/shoot.ogg')
 
 	can_wield = TRUE
 
 	size = SIZE_4
 	weight = 14
 
-	heat_max = 0.1
+	heat_max = 0.06
 
 	bullet_length_min = 46
 	bullet_length_best = 51
@@ -34,7 +38,8 @@
 	ai_heat_sensitivity = 1.5
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = TRUE, /obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
 		/obj/item/attachment/barrel/compensator = TRUE,
 		/obj/item/attachment/barrel/extended = TRUE,
 		/obj/item/attachment/barrel/gyro = TRUE,
@@ -68,11 +73,13 @@
 	attachment_undermount_offset_x = 26 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	inaccuracy_modifier = 0.1
+	movement_spread_base = 0.02
+	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
-	movement_spread_base = 0.04
 
 	dan_mode = TRUE
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/service/get_static_spread()
 	return 0.0001

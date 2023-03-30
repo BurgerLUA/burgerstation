@@ -47,10 +47,6 @@
 //Prevents death by reducing the death threshold relative the the current value.
 //Move faster.
 
-#define PAINKILLER "painkiller"
-//Ignores pain.
-//Health HUD kidden.
-
 #define REST "rest"
 //Move delay multiplied by 4.
 //Cannot dodge, parry, block, and you have a 100% chance to be hit.
@@ -102,5 +98,12 @@
 
 //provides base 10 to BRUTE BURN and TOX armor.
 #define TEMP_ARMOR "temp_armor"
+
 //provides  0.05 regen of BRUTE BURN and TOX damage - magnifier damages instead.
 #define TEMP_REGEN "temp_regeneration"
+
+
+#define FAT "fat"
+#define BUFF "buff"
+
+#define RAGE "rage"

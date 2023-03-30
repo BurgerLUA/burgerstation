@@ -14,7 +14,7 @@
 
 	size = SIZE_CRITTER
 
-	level = 8
+	level = 2
 
 /mob/living/simple/goliath/baby/post_death()
 	. = ..()

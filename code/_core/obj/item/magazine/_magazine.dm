@@ -28,6 +28,10 @@
 	weight = 0.25
 	has_quick_function = TRUE //Allows mags to show up in the belt slots.
 
+	rarity = RARITY_COMMON
+
+	value = 0
+
 /obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
@@ -61,9 +65,10 @@
 
 	return ..()
 
-/obj/item/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 
-	. = ..()
+	RUN_PARENT_SAFE
+
 	if(length(stored_bullets))
 		.["stored_bullets"] = list()
 		for(var/i=1,i<=length(stored_bullets),i++)
@@ -73,9 +78,9 @@
 	.["regenerate"] = regenerate
 
 
-/obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 
-	. = ..()
+	RUN_PARENT_SAFE
 	if(object_data["stored_bullets"])
 		for(var/k in object_data["stored_bullets"])
 			var/v = object_data["stored_bullets"][k]
@@ -181,7 +186,7 @@
 
 	. = ..()
 
-/obj/item/magazine/click_self(var/mob/caller)
+/obj/item/magazine/click_self(var/mob/caller,location,control,params)
 
 	if(length(stored_bullets) && !is_item(loc))
 		INTERACT_CHECK
@@ -197,10 +202,26 @@
 
 
 /obj/item/magazine/proc/get_magazine_insert_sound()
-	return length(stored_bullets) ? 'sound/weapons/gun/general/magazine_insert_full.ogg' : 'sound/weapons/gun/general/magazine_insert_empty.ogg'
+	return pick(\
+		'sound/weapons/ranged/generic/mag_insert1.ogg',\
+		'sound/weapons/ranged/generic/mag_insert2.ogg',\
+		'sound/weapons/ranged/generic/mag_insert3.ogg',\
+		'sound/weapons/ranged/generic/mag_insert4.ogg',\
+		'sound/weapons/ranged/generic/mag_insert5.ogg',\
+		'sound/weapons/ranged/generic/mag_insert6.ogg',\
+		'sound/weapons/ranged/generic/mag_insert7.ogg',\
+		'sound/weapons/ranged/generic/mag_insert8.ogg',\
+		'sound/weapons/ranged/generic/mag_insert9.ogg'\
+	)
 
 /obj/item/magazine/proc/get_magazine_eject_sound()
-	return length(stored_bullets) ? 'sound/weapons/gun/general/magazine_remove_full.ogg' : 'sound/weapons/gun/general/magazine_remove_empty.ogg'
+	return pick(\
+		'sound/weapons/ranged/generic/mag_remove1.ogg',\
+		'sound/weapons/ranged/generic/mag_remove2.ogg',\
+		'sound/weapons/ranged/generic/mag_remove3.ogg',\
+		'sound/weapons/ranged/generic/mag_remove4.ogg',\
+		'sound/weapons/ranged/generic/mag_remove5.ogg'\
+	)
 
 /obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -230,7 +251,7 @@
 
 	contraband = TRUE
 
-	value = -1
+	value = 0
 	value_burgerbux = 1
 
 	bullet_count_max = 30

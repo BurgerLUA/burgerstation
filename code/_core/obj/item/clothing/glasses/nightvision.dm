@@ -27,12 +27,12 @@
 	QDEL_NULL(stored_cell)
 	. = ..()
 
-/obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/clothing/glasses/nightvision/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("stored_cell")
 
-/obj/item/clothing/glasses/nightvision/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/clothing/glasses/nightvision/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("stored_cell")
 
 /obj/item/clothing/glasses/nightvision/get_examine_list(var/mob/examiner)
@@ -99,14 +99,10 @@
 		if(PC) PC.charge_current = max(0,PC.charge_current-rand(8,12))
 		if(!PC || PC.charge_current <= 0) //NO MORE CHARGE.
 			active = FALSE
-			var/obj/hud/inventory/I = src.loc
 			update_sprite()
-			if(istype(I))
+			if(is_inventory(src.loc))
+				var/obj/hud/inventory/I = src.loc
 				disable(I)
-				if(I.worn && is_advanced(I.owner))
-					var/mob/living/advanced/A = I.owner
-					A.remove_overlay("\ref[src]")
-					I.update_worn_icon(src)
 
 	return active
 
@@ -119,7 +115,7 @@
 		icon_state = "[icon_state]_off"
 		icon_state_worn = "[icon_state_worn]_off"
 
-/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller)
+/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller,location,control,params)
 
 	var/obj/hud/inventory/I = src.loc
 	if(istype(I))
@@ -141,11 +137,6 @@
 		else
 			disable(I)
 		caller.to_chat(span("notice","You toggle \the [src.name] [active ? "on" : "off"]."))
-		update_sprite()
-		if(I.worn && is_advanced(I.owner))
-			var/mob/living/advanced/A = I.owner
-			A.remove_overlay("\ref[src]")
-			I.update_worn_icon(src)
 		return TRUE
 
 	. = ..()
@@ -170,15 +161,15 @@
 
 	return TRUE
 
-/obj/item/clothing/glasses/nightvision/post_move(var/atom/old_loc)
 
+/obj/item/clothing/glasses/nightvision/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
+	var/obj/hud/inventory/I = loc
+	if(active && I.worn && I.item_slot & SLOT_FACE)
+		enable(I)
 
-	if(active)
-		if(is_inventory(old_loc))
-			disable(old_loc)
-		if(is_inventory(loc))
-			var/obj/hud/inventory/I = loc
-			if(I.item_slot & SLOT_FACE)
-				enable(I)
+/obj/item/clothing/glasses/nightvision/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	if(active && old_inventory.worn && old_inventory.item_slot & SLOT_FACE)
+		disable(old_inventory)
 

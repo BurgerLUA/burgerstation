@@ -7,16 +7,15 @@
 	bullet_count_max = 40
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/nt_carbine = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/standard = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/bullpup_sol = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/pdw = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/m4 = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/moar = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/rifle/moar = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/ooc = TRUE
 
 	)
 
@@ -42,12 +41,13 @@
 	icon = 'icons/obj/item/magazine/556_rifle_ap.dmi'
 	icon_state = "556"
 	ammo = /obj/item/bullet_cartridge/rifle_223/nato/ap
+	rarity = RARITY_UNCOMMON
 
 /obj/item/magazine/rifle_556/du
 	name = "\improper 5.56mm DU rifle magazine"
 	icon = 'icons/obj/item/magazine/556_rifle_du.dmi'
 	icon_state = "556"
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 	ammo = /obj/item/bullet_cartridge/rifle_223/du
 	prem_restock_ammo = /obj/item/bullet_cartridge/rifle_223
 	value_burgerbux = 1

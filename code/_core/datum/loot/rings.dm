@@ -13,31 +13,34 @@
 		/obj/item/clothing/ring/silver/dark = 10,
 		/obj/item/clothing/ring/gold/major_dark = 5
 	)
+	use_value = TRUE
 
-/loot/rings/bad
+/loot/rings/minor
 	loot_table = list(
-		/loot/rings/copper = 100,
-		/obj/item/clothing/ring/iron/minor_arcane = 40,
-		/obj/item/clothing/ring/silver/arcane = 10,
-		/obj/item/clothing/ring/iron/minor_defense = 40,
-		/obj/item/clothing/ring/silver/defense = 10,
-		/obj/item/clothing/ring/iron/minor_holy = 40,
-		/obj/item/clothing/ring/silver/holy = 10,
-		/obj/item/clothing/ring/iron/minor_dark = 40,
-		/obj/item/clothing/ring/silver/dark = 10
+		/obj/item/clothing/ring/iron/minor_arcane = 1,
+		/obj/item/clothing/ring/iron/minor_defense = 1,
+		/obj/item/clothing/ring/iron/minor_holy = 1,
+		/obj/item/clothing/ring/iron/minor_dark = 1,
 	)
 
-/loot/rings/good
+/loot/rings/moderate
 	loot_table = list(
-		/obj/item/clothing/ring/silver/arcane = 40,
-		/obj/item/clothing/ring/gold/major_arcane = 10,
-		/obj/item/clothing/ring/silver/defense = 40,
-		/obj/item/clothing/ring/gold/major_defense = 10,
-		/obj/item/clothing/ring/silver/holy = 40,
-		/obj/item/clothing/ring/gold/major_holy = 10,
-		/obj/item/clothing/ring/silver/dark = 40,
-		/obj/item/clothing/ring/gold/major_dark = 10
+		/obj/item/clothing/ring/silver/arcane = 1,
+		/obj/item/clothing/ring/silver/defense = 1,
+		/obj/item/clothing/ring/silver/holy = 1,
+		/obj/item/clothing/ring/silver/dark = 1,
 	)
+
+/loot/rings/major
+	loot_table = list(
+		/obj/item/clothing/ring/gold/major_arcane = 1,
+		/obj/item/clothing/ring/gold/major_defense = 1,
+		/obj/item/clothing/ring/gold/major_holy = 1,
+		/obj/item/clothing/ring/gold/major_dark = 1
+	)
+
+
+
 /loot/rings/cursed
 	loot_table = list(
 		/obj/item/clothing/ring/cat/agility = 100 //only ring in here so far so 100% chance

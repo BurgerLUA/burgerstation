@@ -10,14 +10,14 @@
 
 	tier = 3
 
-	damage_mod = 1.5
-	shoot_delay = 3
+	damage_mod = 1.3
+	shoot_delay = 6.2
 
 	automatic = FALSE
 
 	bullet_count_max = 5
 
-	shoot_sounds = list('sound/weapons/308/big_game.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/big_game/shoot.ogg')
 
 	size = SIZE_3
 	weight = 12
@@ -69,6 +69,8 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.2
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/revolver/big_game/get_static_spread()
 	return 0

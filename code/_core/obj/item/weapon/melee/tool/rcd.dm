@@ -19,15 +19,19 @@
 	QDEL_NULL(rcd_disk)
 	. = ..()
 
-/obj/item/rcd/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
-	. = ..()
+/obj/item/rcd/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	SAVEATOM("rcd_disk")
 	SAVEVAR("matter_current")
 
-/obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
-	. = ..()
+/obj/item/rcd/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
 	LOADATOM("rcd_disk")
 	LOADVAR("matter_current")
+
+
+/obj/item/rcd/Finalize()
+	. = ..()
 	update_sprite()
 
 /obj/item/rcd/Generate()

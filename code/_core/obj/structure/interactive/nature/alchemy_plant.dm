@@ -10,16 +10,21 @@
 	var/obj/item/collect_item //What do we need to COLLECT FROM the plant?
 	var/harvest_chance = 50 //Base chance of harvesting the plant, added to 50% of botany skill. always at least 10%
 	var/great_success = 0 //Likelyness to NOT consume the plant on harvest.25% of botany is added to this. Max 75% chance, min 2.5%
+
+/obj/structure/interactive/alchemy_plant/Destroy()
+	SSbotany_alchemy.all_alchemy_plants -= src
+	. = ..()
+
 /obj/structure/interactive/alchemy_plant/proc/harvest(var/mob/living/advanced/caller)
 
 	if(!grown)
 		caller.to_chat(span("warning","\The [src.name] doesnt look ready to be harvested yet...."))
 		return TRUE
-	var/skill_power = caller.get_skill_power(SKILL_BOTANY,0,1,2)
+	var/skill_power = caller.get_skill_power(SKILL_SURVIVAL,0,1,2)
 	var/chance = prob(clamp((skill_power*0.50) + harvest_chance,10,100))
 	if(!chance)
 		caller.to_chat(span("warning","You fumble and ruin the harvest!"))
-		caller.add_skill_xp(SKILL_BOTANY,3)
+		caller.add_skill_xp(SKILL_SURVIVAL,3)
 		grown = FALSE
 		update_sprite()
 		return TRUE
@@ -30,18 +35,19 @@
 		FINALIZE(NH)
 		if(prob(clamp((skill_power*0.25) + great_success,2.5,75)))
 			caller.to_chat(span("notice","You carefully gather the [NH.name], but theres still more!"))
-			caller.add_skill_xp(SKILL_BOTANY,10)
+			caller.add_skill_xp(SKILL_SURVIVAL,10)
 			return TRUE
 		caller.to_chat(span("notice","You carefully gather the [NH.name],depleting it."))
-		caller.add_skill_xp(SKILL_BOTANY,5)
+		caller.add_skill_xp(SKILL_SURVIVAL,5)
 		grown = FALSE
 		update_sprite()
 	return TRUE
-/obj/structure/interactive/plant/on_destruction(var/mob/caller,var/damage = FALSE)
-	SSbotany_alchemy.all_alchemy_plants -= src
+
+/obj/structure/interactive/alchemy_plant/on_destruction(var/damage = TRUE)
+	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/plant/New(var/desired_loc)
+/obj/structure/interactive/alchemy_plant/New(var/desired_loc)
 	SSbotany_alchemy.all_alchemy_plants += src
 	. = ..()
 

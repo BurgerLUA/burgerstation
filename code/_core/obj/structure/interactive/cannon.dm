@@ -92,7 +92,7 @@
 
 	total_size = 0
 
-	play_sound('sound/weapons/cannon_shot.ogg',T)
+	play_sound('sound/weapons/ranged/misc/cannon_shot.ogg',T)
 
 	//Explosion effects.
 	explode(T,4,caller,src,loyalty_tag_to_use,src.dir,3)

@@ -1,16 +1,16 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military
-	name = "9mm Auto 18"
+	name = "9mm Auto 18 pistol"
 	desc = "An old relic from an oppressive police force."
-	desc_extended = "An automatic machine pistol chambered in 9mm. Good for getting out of tricky situations quickly."
+	desc_extended = "A burst fire machine pistol chambered in 9mm. Good for getting out of tricky situations quickly."
 	value = 400
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm.dmi'
 	shoot_delay = 1.5
-	shoot_sounds = list('sound/weapons/40/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/pistol/glock/shoot.ogg')
 	tier = 1
 
-	company_type = "NanoTrasen"
+	company_type = "Solarian"
 
-	firemodes = list("automatic","burst","semi-automatic")
+	firemodes = list("burst","semi-automatic")
 
 	movement_spread_base = 0.005
 	inaccuracy_modifier = 0.5
@@ -65,7 +65,7 @@
 	attachment_undermount_offset_x = 23 - 16
 	attachment_undermount_offset_y = 16 - 16
 
-
+	rarity = RARITY_COMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_static_spread()
@@ -74,13 +74,12 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/military/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)) )
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod
-	name = ".40 Auto-19 MOD"
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype
+	name = ".40 Auto-18 Prototype"
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_2.dmi'
 	desc_extended = "A modified variant of the 9mm Auto Pistol. The barrel width was increased to support .40 The slider has been shortened, the frame replaced with lighter materials, and a recoil compensator was added for extra accuracy."
 	value = 600
-	shoot_sounds = list('sound/weapons/40/shoot_mod.ogg')
-	shoot_delay = 1.25
+	shoot_delay = 2
 	tier = 2
 
 
@@ -103,12 +102,14 @@
 
 	attachment_whitelist = list()
 
+	rarity = RARITY_RARE
 
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_static_spread()
-	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/military/mod/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype/get_static_spread()
+	return 0.001
+
+/obj/item/weapon/ranged/bullet/magazine/pistol/military/prototype/get_skill_spread(var/mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 
@@ -119,4 +120,3 @@
 	desc_extended = "An automatic machine pistol chambered in 9mm. Good for getting out of tricky situations quickly. This one has been modifed with a new lighrweight frame and paintjob."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_nt.dmi'
 	weight = 3
-

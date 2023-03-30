@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/bizon
-	name = "\improper 9x19mm PP-19"
-	desc = "Gruz dvesti."
-	desc_extended = "PP-19, also known as 'Bizon', is a 9x19 chambered submachine gun with an incredibly high ammo capacity."
+	name = "\improper 9x19mm Bison PDW"
+	desc = "Kicks like a Bison too."
+	desc_extended = "A 9x19 chambered Slavic submachine gun with an incredibly high ammo capacity. Excellent for tight-quarters holdouts."
 	icon = 'icons/obj/item/weapons/ranged/smg/slavic/9mm.dmi'
 	icon_state = "inventory"
 	value = 2000
@@ -10,9 +10,9 @@
 
 	tier = 2
 
-	shoot_delay = 1.1
+	shoot_delay = 1
 
-	shoot_sounds = list('sound/weapons/slavic/abakan.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/bizon/shoot.ogg')
 
 	firemodes = list("automatic","burst","semi-automatic")
 
@@ -46,26 +46,26 @@
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
 		/obj/item/attachment/sight/red_dot = TRUE,
 		/obj/item/attachment/sight/scope = TRUE,
-		/obj/item/attachment/undermount/bipod = FALSE, //This is just straight up perversion - putting bipod on the SMG.
+		/obj/item/attachment/undermount/bipod = FALSE,
 		/obj/item/attachment/undermount/burst_adapter = TRUE,
-		/obj/item/attachment/undermount/angled_grip = TRUE,
-		/obj/item/attachment/undermount/vertical_grip = TRUE
+		/obj/item/attachment/undermount/angled_grip = FALSE,
+		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 31 - 16
-	attachment_barrel_offset_y = 20 - 16
+	attachment_barrel_offset_x = 28 - 16
+	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 13 - 16
-	attachment_sight_offset_y = 21 - 16
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 25 - 15
-	attachment_undermount_offset_y = 16 - 16
-
-
+	attachment_undermount_offset_x = 14 - 15
+	attachment_undermount_offset_y = 13 - 16
 
 	inaccuracy_modifier = 0.75
 	movement_inaccuracy_modifier = 0
 	movement_spread_base = 0.005
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/smg/bizon/get_static_spread()
 	return 0.005

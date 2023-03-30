@@ -27,11 +27,8 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		var/quality_mod = L.get_nutrition_quality_mod()
-		var/nut_mod = L.get_nutrition_mod()
 		var/hyd_mod = L.get_hydration_mod()
-		. += "Your hydration is [FLOOR(hyd_mod*100,1)]%."
-		. += "Your energy level is [FLOOR(100 * nut_mod * hyd_mod * quality_mod,1)]%."
+		. += "Your hydration level is [FLOOR(hyd_mod*100,1)]%."
 
 
 

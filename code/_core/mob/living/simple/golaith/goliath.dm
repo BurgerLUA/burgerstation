@@ -37,7 +37,7 @@
 
 	soul_size = SOUL_SIZE_COMMON
 
-	level = 24
+	level = 12
 
 	movement_delay = DECISECONDS_TO_TICKS(2)
 

@@ -19,7 +19,7 @@
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/45/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/smg/chris/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -74,6 +74,8 @@
 
 	attachment_undermount_offset_x = 28 - 16
 	attachment_undermount_offset_y = 16 - 16
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/smg/chris/get_static_spread()
 	return 0.001

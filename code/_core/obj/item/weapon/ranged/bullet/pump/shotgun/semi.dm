@@ -11,7 +11,7 @@
 
 	tier = 3
 
-	damage_mod = 1.1
+	damage_mod = 1
 	shoot_delay = 4
 
 	automatic = FALSE
@@ -20,7 +20,7 @@
 
 	bullet_count_max = 6
 
-	shoot_sounds = list('sound/weapons/combat_shotgun/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/shotgun/semi/shoot.ogg')
 
 	size = SIZE_3
 	weight = 12
@@ -74,6 +74,8 @@
 	movement_inaccuracy_modifier = 0.5
 
 	pump_delay = 1
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi
 

@@ -10,8 +10,6 @@
 
 	user_colors = FALSE
 
-	layer = 1
-
 	appearance_flags = NO_CLIENT_COLOR | PIXEL_SCALE | LONG_GLIDE | TILE_BOUND | KEEP_TOGETHER
 
 	mouse_opacity = 0
@@ -56,7 +54,8 @@
 		good_color_text = color_scheme[4]
 		bad_color_text = color_scheme[5]
 
-	var/perceived_health_mod = clamp( (L.health.health_current - (L.health.damage[PAIN] - L.pain_removal)) / L.health.health_max,0,1)
+	var/perceived_health_mod = (L.health.health_current + L.pain_regen_buffer*0.25) - max(0,L.health.damage[PAIN] - L.pain_regen_buffer)
+	perceived_health_mod = clamp(CEILING( perceived_health_mod / L.health.health_max, 0.01),0,1)
 	var/real_health_mod = clamp(L.health.health_current/L.health.health_max,0,1)
 
 	var/list/color_mod = list(
@@ -73,7 +72,8 @@
 			icon_state = "dead"
 		text_to_use = "<center>DEATH</center>"
 	else
-		icon_state = "[clamp(CEILING(real_health_mod*5,1),0,5)]"
+		var/display_mod = (perceived_health_mod + real_health_mod)/2
+		icon_state = "[clamp(CEILING(display_mod*5,1),0,5)]"
 		text_to_use = "[FLOOR(perceived_health_mod*100,1)]%"
 
 	if(color == "#000000")

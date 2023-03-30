@@ -1,3 +1,5 @@
+//Removed because no one is going to use a .45 assault rifle.
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/starter
 	name = "\improper .45 FNG"
 	desc = "Who the hell came up with this?"
@@ -75,6 +77,8 @@
 	movement_spread_base = 0.0075
 
 	dan_mode = TRUE
+
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/starter/get_static_spread()
 	return 0.0015

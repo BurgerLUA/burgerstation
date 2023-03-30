@@ -12,7 +12,7 @@
 	footstep = /footstep/tile
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = 1000
+	layer = LAYER_FLOOR_WEATHER
 
 /turf/simulated/floor/disco/Initialize()
 	. = ..()
@@ -41,7 +41,7 @@ var/global/list/disco_images = list()
 		I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 		I.blend_mode = BLEND_ADD
 		I.plane = PLANE_WIRE
-		I.layer = 1000
+		I.layer = LAYER_FLOOR_WEATHER + 0.1
 		disco_images[desired_icon_state] = I
 
 	add_overlay(disco_images[desired_icon_state])

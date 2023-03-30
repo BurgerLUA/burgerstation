@@ -22,7 +22,7 @@
 
 	firemodes = list("burst")
 
-	shoot_sounds = list('sound/weapons/46/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/dmca/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -79,6 +79,8 @@
 	inaccuracy_modifier = 2
 	movement_inaccuracy_modifier = 1
 	movement_spread_base = 0.2
+
+	rarity = RARITY_UNCOMMON
 
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/dmca/get_static_spread()

@@ -1,3 +1,18 @@
+/mob/living/advanced/npc/nanotrasen
+	name = "\improper NanoTrasen security personnel"
+	desc = "A security team that actually follows orders!"
+	desc_extended = "A low-ranking NanoTrasen soldier tasked with defending the station and assisting with higher ranking NanoTrasen personnel with missions."
+	ai = /ai/advanced/nanotrasen
+
+	dialogue_id = /dialogue/npc/soldier/
+	loadout = /loadout/nanotrasen/soldier
+
+	dna = /dna/human
+
+	level = 10
+
+
+
 /mob/living/advanced/npc/rogue_assistant
 	name = "rogue assistant"
 	desc = "Help, maint!"
@@ -10,7 +25,7 @@
 
 	loadout = /loadout/rogue_assistant
 
-	level = 80
+	level = 1
 
 /mob/living/advanced/npc/rogue_assistant/Finalize()
 	. = ..()

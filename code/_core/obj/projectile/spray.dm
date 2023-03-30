@@ -6,7 +6,6 @@
 	reagents = /reagent_container/spray/bottle
 
 	hit_target_turf = TRUE
-	hit_target_atom = TRUE
 	hit_laying = TRUE
 
 	plane = PLANE_PROJECTILE_NO_EFFECTS
@@ -22,10 +21,11 @@
 
 /obj/projectile/spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(!.)
+	if(. && new_loc)
 		reagents.splash(owner,new_loc,2.5,TRUE,0.25)
 		if(reagents.volume_current <= 0 && !qdeleting)
-			on_projectile_hit(new_loc,old_loc,new_loc)
+			on_projectile_hit(new_loc)
+			return FALSE
 
 /obj/projectile/spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()
@@ -59,10 +59,11 @@
 
 /obj/projectile/extinguisher_spray/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
-	if(!.)
+	if(. && new_loc)
 		reagents.splash(owner,new_loc,1,TRUE,0.25)
 		if(reagents.volume_current <= 0 && !qdeleting)
-			on_projectile_hit(new_loc,old_loc,new_loc)
+			on_projectile_hit(new_loc)
+			return FALSE
 
 /obj/projectile/extinguisher_spray/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 	. = ..()

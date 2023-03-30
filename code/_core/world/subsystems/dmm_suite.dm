@@ -22,12 +22,23 @@ SUBSYSTEM_DEF(dmm_suite)
 		"maps/_core/station.dmm"
 	)
 
+	var/list/map_to_parallax = list(
+		"maps/_core/mission.dmm" = 'icons/obj/effects/parallax.dmi',
+		"maps/_core/bluespace.dmm" = 'icons/obj/effects/parallax_bluespace.dmi',
+		"maps/_core/station.dmm" = 'icons/obj/effects/parallax.dmi'
+	)
+
 	var/pvp_y
 	var/pvp_coef
+
+	var/list/possible_rogue_crewmembers = list()
 
 /subsystem/dmm_suite/Initialize()
 
 	dmm_suite = new()
+
+	for(var/k in subtypesof(/mob/living/advanced/npc/unique/rogue))
+		possible_rogue_crewmembers += k
 
 	//Load all the maps.
 	var/maps_loaded = 0
@@ -161,7 +172,7 @@ SUBSYSTEM_DEF(dmm_suite)
 					if(T.loc.type != /area/)
 						bad_block = TRUE
 						break
-					if(T.density && !T.organic)
+					if(T.density)
 						break
 				if(bad_block)
 					continue
@@ -175,7 +186,18 @@ SUBSYSTEM_DEF(dmm_suite)
 				)
 				desired_bridges--
 
+	shuffle_inplace(rogue_crewmember_markers)
 
+	for(var/k in rogue_crewmember_markers)
+		if(!length(possible_rogue_crewmembers))
+			break
+		var/obj/marker/rogue_crewmember_marker/M = k
+		var/turf/T = get_turf(M)
+		if(!T)
+			continue
+		var/mob/living/L = pick(possible_rogue_crewmembers)
+		possible_rogue_crewmembers -= L
+		L = new L(T)
 
 	return ..()
 

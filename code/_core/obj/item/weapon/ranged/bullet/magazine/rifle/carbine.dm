@@ -8,17 +8,19 @@
 
 	company_type = "Syndicate"
 
+	tier_type = "carbine"
+
 	tier = 2
 
-	shoot_delay = 2
+	shoot_delay = 1.7
 
-	damage_mod = 1.3
+	damage_mod = 1
 
 	automatic = TRUE
 
 	firemodes = list("automatic","burst","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/carbine.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/syndicate_carbine/shoot.ogg')
 
 	can_wield = FALSE
 
@@ -76,6 +78,8 @@
 	movement_inaccuracy_modifier = 0.25
 	movement_spread_base = 0.005
 
+	rarity = RARITY_COMMON
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/update_icon()
 
 	icon_state = initial(icon_state)
@@ -95,7 +99,7 @@
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")
-	return 'sound/weapons/gun/smg/smg_rack.ogg'
+	return 'sound/weapons/ranged/generic/smg_rack.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
 	name = "\improper .223 SYN-Carbine MOD"
@@ -103,10 +107,14 @@
 
 	heat_max = 0.12
 
+	damage_mod = 1
+
 	size = SIZE_2
 	weight = 4
 
 	value = 800
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread()
 	return 0.03
@@ -125,19 +133,19 @@
 
 	tier = 2
 
-	shoot_delay = 1.5
+	shoot_delay = 1.3
 
-	damage_mod = 1.2
+	damage_mod = 1.3
 
 	automatic = TRUE
 
 	firemodes = list("automatic","semi-automatic")
 
-	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/syndicate_carbine/shoot_prototype.ogg')
 
 	can_wield = FALSE
 
-	size = SIZE_3
+	size = SIZE_4
 	weight = 8
 
 	heat_max = 0.08
@@ -166,6 +174,8 @@
 	movement_spread_base = 0.005
 
 	can_wield = TRUE
+
+	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/prototype/equipped
 

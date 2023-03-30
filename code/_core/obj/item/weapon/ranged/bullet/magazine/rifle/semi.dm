@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi
-	name = "\improper 5.56 SA-AR"
+	name = "\improper 5.56mm SA-AR"
 	desc = "Bet you can't guess what SA-AR stands for."
 	desc_extended = "A semi-automatic assault rifle designed for shooters who want to be precise with their shots, but don't want to shell out the extra credits for a high caliber rifle."
 	icon = 'icons/obj/item/weapons/ranged/rifle/nanotrasen/556_4.dmi'
@@ -8,14 +8,16 @@
 
 	company_type = "NanoTrasen"
 
+	tier_type = "marksman rifle"
+
 	tier = 1
 
 	damage_mod = 1.3
-	shoot_delay = 1.75
+	shoot_delay = 3.2
 
 	automatic = FALSE
 
-	shoot_sounds = list('sound/weapons/223/carbine_heavy.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/nt_semi/shoot.ogg')
 
 	can_wield = TRUE
 
@@ -75,9 +77,10 @@
 	movement_inaccuracy_modifier = 0.75
 	movement_spread_base = 0.03
 
+	rarity = RARITY_COMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_static_spread()
-	return 0
+	return 0.0005
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/semi/get_skill_spread(var/mob/living/L)
 	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

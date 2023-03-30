@@ -32,7 +32,10 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = FALSE
 	__detect_rust_g()
 
+	setup_turf_damage_icons()
+
 	//TODO: Unfuck this.
+	createtypecache(/loot)
 	createtypecache(/area)
 	createtypecache(/area/shuttle)
 	createtypecache(/mob/living)
@@ -41,6 +44,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/mob/abstract/observer)
 	createtypecache(/obj/structure)
 	createtypecache(/obj/item)
+	createtypecache(/obj/item/container)
 	createtypecache(/obj/item/clothing)
 	createtypecache(/obj/item/currency)
 	createtypecache(/obj/item/organ)
@@ -50,7 +54,7 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/obj/item/weapon/ranged/bullet)
 	createtypecache(/obj/item/weapon/ranged/bullet/magazine)
 	createtypecache(/obj/item/magazine)
-	createtypecache(/obj/item/bullet_cartridge/)
+	createtypecache(/obj/item/bullet_cartridge)
 	createtypecache(/obj/hud)
 	createtypecache(/obj/hud/inventory)
 	createtypecache(/turf)
@@ -59,7 +63,6 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/simulated/floor/tile)
 	createtypecache(/turf/simulated/wall)
 	createtypecache(/turf/unsimulated)
-
 	. = ..()
 
 	life()

@@ -93,6 +93,15 @@
 	armor = /armor/cyborg
 	health = /health/obj/item/organ/synthetic
 
+//cyborg 2
+/obj/item/organ/head/gopro/
+	name = "advanced cyborg head"
+	icon = 'icons/mob/living/advanced/species/gopro.dmi'
+	desc = "An organ."
+
+	armor = /armor/cyborg
+	health = /health/obj/item/organ/synthetic
+
 
 //beef
 /obj/item/organ/head/beefman

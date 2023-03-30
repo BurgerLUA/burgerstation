@@ -8,15 +8,17 @@
 
 	company_type = "Solarian"
 
+	tier_type = "sniper rifle"
+
 	tier = 5
 
-	shoot_delay = 20
+	shoot_delay = 16
 
 	automatic = FALSE
 
 	damage_mod = 2
 
-	shoot_sounds = list('sound/weapons/20/shoot.ogg')
+	shoot_sounds = list('sound/weapons/ranged/rifle/20mm_sniper/shoot.ogg')
 
 	can_wield = TRUE
 	wield_only = TRUE
@@ -77,6 +79,8 @@
 
 	value_burgerbux = 1
 
+	rarity = RARITY_LEGENDARY
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_static_spread()
 	return 0
 
@@ -98,4 +102,4 @@
 	. = ..()
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_cock_sound(var/direction="both")
-	return 'sound/weapons/20/bolt.ogg'
+	return 'sound/weapons/ranged/rifle/20mm_sniper/bolt.ogg'

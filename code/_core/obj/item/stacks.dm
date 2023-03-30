@@ -19,7 +19,10 @@
 			"verbs",
 			"vars",
 			"vis_locs",
-			"vis_contents"
+			"vis_contents",
+			"initialized",
+			"finalized",
+			"generated"
 		)
 	)
 
@@ -29,6 +32,13 @@
 		if(denyvar[i])
 			continue
 		try
+			if(islist(A.vars[i])) //Don't copy lists.
+				continue
+			if(is_datum(A.vars[i])) //Turn datums into a path if appropriate.
+				var/datum/D = A.vars[i]
+				if(ispath(N.vars[i]))
+					N.vars[i] = D.type
+				continue
 			N.vars[i] = A.vars[i]
 		catch()
 			log_error("copy() error: Cannot write var [i] for type [A.type]!")
@@ -44,16 +54,30 @@
 
 	if(is_item(object))
 		var/obj/item/I = object
-		if(I.can_transfer_stacks_to(src))
-			INTERACT_CHECK
-			INTERACT_CHECK_OBJECT
-			INTERACT_DELAY(1)
-			var/stacks_transfered = I.transfer_amount_to(src)
-			if(stacks_transfered)
-				caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
-			else
-				caller.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
-			return TRUE
+		if(I.loc && is_inventory(I.loc))
+			//Transfering src to what we clicked on (what we clicked on is inside an inventory).
+			if(src.can_transfer_stacks_to(I)) //We add to it.
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
+				var/stacks_transfered = src.transfer_amount_to(I)
+				if(stacks_transfered)
+					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [I.name]."))
+				else
+					caller.to_chat(span("warning","You can't transfer any more stacks to \the [I.name], it's full!"))
+				return TRUE
+		else
+			//Transfering what we clicked on to src.
+			if(I.can_transfer_stacks_to(src)) //We take from it.
+				INTERACT_CHECK
+				INTERACT_CHECK_OBJECT
+				INTERACT_DELAY(1)
+				var/stacks_transfered = I.transfer_amount_to(src)
+				if(stacks_transfered)
+					caller.to_chat(span("notice","You transfer [stacks_transfered] stacks to \the [src.name]."))
+				else
+					caller.to_chat(span("warning","You can't transfer any more stacks to \the [src.name], it's full!"))
+				return TRUE
 
 	return ..()
 
@@ -70,24 +94,17 @@
 		if(amount > 1 && CONTROL_MOD_DISARM && amount_max > 1)
 			var/choice = input("How much do you want to put in your other hand?","Amount to split",0) as num
 			var/splitamount = FLOOR(choice,1)
-			if(!choice || splitamount <= 0)
+			if(!choice || splitamount <= 0 || splitamount >= amount)
 				L.to_chat(span("notice","You decide not to split the stack."))
 			else if (amount > 1) //just in case.
 				var/obj/hud/inventory/I = object
 				var/old_item_name = src.name
-				var/obj/item/stack2
-				if(splitamount >= amount)
-					var/to_transfer = amount - 1
-					stack2 = copy(src)
-					stack2.force_move(get_turf(src))
-					stack2.amount = 0
-					src.transfer_amount_to(stack2,to_transfer)
-				else
-					var/to_transfer = splitamount
-					stack2 = copy(src)
-					stack2.force_move(get_turf(src))
-					stack2.amount = 0
-					src.transfer_amount_to(stack2,to_transfer)
-				I.add_object(stack2)
-				caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [stack2.amount]."))
+				var/obj/item/new_stack = copy(src)
+				new_stack.amount = 0
+				INITIALIZE(new_stack)
+				FINALIZE(new_stack)
+				new_stack.force_move(get_turf(src))
+				src.transfer_amount_to(new_stack,splitamount)
+				I.add_object(new_stack)
+				caller.to_chat(span("notice","You split \the stack of [old_item_name]. The new stack now has [new_stack.amount]."))
 	return TRUE

@@ -83,13 +83,11 @@
 /obj/marker/prefab/antag
 	icon = 'icons/obj/markers/prefab_antag.dmi'
 	category = "antag"
-	chance_none = 50
 	rotational_offset = 32
 
 /obj/marker/prefab/boss
 	category = "boss"
-	icon = 'icons/obj/markers/prefab_boss.dmi'
-	chance_none = 10
+	icon = 'icons/obj/markers/prefab_32x32.dmi'
 	rotational_offset = 32
 
 /obj/marker/prefab/boss/lavaland
@@ -97,6 +95,12 @@
 
 /obj/marker/prefab/boss/jungle
 	category = "boss_jungle"
+
+/obj/marker/prefab/boss/desert
+	category = "boss_desert"
+
+/obj/marker/prefab/boss/forest
+	category = "boss_forest"
 
 /obj/marker/prefab/forest
 	icon = 'icons/obj/markers/prefab_32x32.dmi'
@@ -123,7 +127,7 @@
 	rotational_offset = 16
 
 /obj/marker/prefab/alley
-	icon = 'icons/obj/markers/prefab_8x8.dmi'
+	icon = 'icons/obj/markers/prefab_5x5.dmi'
 	icon_state = "alley"
 	category = "city_alley_straight" //or "city_alley_corner"
 	chance_none = 0
@@ -182,7 +186,7 @@
 	icon = 'icons/obj/markers/prefab_64x64_city.dmi'
 	icon_state = null
 	category = "city_street_straight" //or "city_street_corner"
-
+	unique = FALSE
 
 /obj/marker/prefab/city/line/prepare_prefab()
 
@@ -207,21 +211,37 @@
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "cross"
 	category = "city_street_intersection"
+	unique = TRUE
+
+/obj/marker/prefab/city/intersection/New(var/desired_loc)
+	. = ..()
+	dir = pick(NORTH,EAST,SOUTH,WEST)
 
 
+
+/obj/marker/prefab/city/sol_base
+	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
+	icon_state = "t"
+	category = "sol_base"
+	unique = TRUE
 
 /obj/marker/prefab/city/t_junction
 	icon = 'icons/obj/markers/prefab_64x64_city_intersection.dmi'
 	icon_state = "t"
 	category = "city_street_t"
-
+	unique = TRUE
 
 /obj/marker/prefab/city/end
 	icon = 'icons/obj/markers/prefab_64x64_city_end.dmi'
 	icon_state = null
 	category = "city_street_end"
+	unique = FALSE
 
-
+/obj/marker/prefab/city/farm
+	icon = 'icons/obj/markers/prefab_64x64_farm.dmi'
+	icon_state = null
+	category = "farm"
+	unique = FALSE
 
 /obj/marker/prefab/city/parking
 	icon = 'icons/obj/markers/prefab_10x10.dmi'
@@ -229,6 +249,7 @@
 	category = "city_parking_straight" //or "city_parking_corner"
 	alpha = 150
 	rotational_offset = 10
+	unique = FALSE
 
 /obj/marker/prefab/city/parking/prepare_prefab()
 

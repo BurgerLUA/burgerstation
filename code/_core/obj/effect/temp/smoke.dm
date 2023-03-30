@@ -1,11 +1,20 @@
-/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255)
+/proc/smoke(var/turf/desired_turf,var/desired_power=20,var/desired_duration=100,var/reagent_container/container,var/mob/owner,var/alpha=255,var/list/optional_reagents)
 	if(!desired_turf)
 		return FALSE
 	var/reagent_container/temp/smoke/T
-	if(container)
+	if(container || length(optional_reagents))
 		T = new(null,1000)
 		T.owner = owner
-		container.transfer_reagents_to(T,container.volume_current,caller=owner) //Transfer everything to this temp container.
+		for(var/k in optional_reagents)
+			var/v = optional_reagents[k]
+			T.add_reagent(k,v, should_update=FALSE,check_recipes=FALSE,caller=owner)
+		if(container)
+			container.transfer_reagents_to(T,container.volume_current,should_update=FALSE,check_recipes=FALSE,caller=owner) //Transfer everything to this temp container.
+			container.update_container(owner)
+			container.process_recipes(owner)
+		T.update_container(owner)
+		T.process_recipes(owner)
+
 
 	var/list/blacklist_turfs = list(T=TRUE)
 	. = new/obj/effect/temp/smoke(desired_turf,desired_duration,blacklist_turfs,T,owner,desired_power,alpha)
@@ -44,14 +53,14 @@
 		container = null
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
-	if(container && container.volume_current > 0 && (A.reagents || is_turf(A)))
-		var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
-		container.splash(owner,A,amount_to_actually_splash,FALSE,5)
+	var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2
+	container.splash(owner,A,amount_to_actually_splash,FALSE,5)
 	return TRUE
 
 /obj/effect/temp/smoke/Crossed(var/atom/movable/O)
 	. = ..()
-	if(O.density && O.reagents) try_splash(O)
+	if(O.density && O.reagents && container && container.volume_current > 0)
+		try_splash(O)
 
 /obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255,var/original_smoke_volume,var/original_reagent_volume)
 	. = ..()
@@ -78,7 +87,8 @@
 		opacity = TRUE
 	update_sprite()
 
-	try_splash(loc)
+	if(container && container.volume_current > 0)
+		try_splash(loc)
 
 	spread()
 

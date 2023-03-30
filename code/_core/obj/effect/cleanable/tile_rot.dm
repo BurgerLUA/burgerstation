@@ -3,6 +3,7 @@
 	icon = 'icons/obj/effects/tile_rot.dmi'
 	icon_state = "1"
 	enable_chunk_clean = FALSE
+	enable_chunk_handling = FALSE
 
 	color = "#725E43"
 	alpha = 255

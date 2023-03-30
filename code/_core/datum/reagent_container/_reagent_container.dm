@@ -65,7 +65,7 @@
 		if(R.act_explode(src,owner,source,epicenter,magnitude,desired_loyalty_tag))
 			. = TRUE
 
-/reagent_container/proc/metabolize(var/mob/living/living_owner,var/multiplier=1)
+/reagent_container/proc/metabolize(var/mob/living/living_owner,var/multiplier=1) //Assumed that it is metabolism per second.
 
 	if(!volume_current)
 		return
@@ -79,7 +79,7 @@
 	if(multiplier <= 0)
 		return
 
-	var/metabolism_limit = 0
+	var/metabolism_limit = 0 //Per second.
 	switch(flags_metabolism)
 		if(REAGENT_METABOLISM_BLOOD)
 			metabolism_limit = 5
@@ -87,6 +87,8 @@
 			metabolism_limit = 10
 		if(REAGENT_METABOLISM_SKIN)
 			metabolism_limit = 50
+
+	metabolism_limit *= multiplier
 
 	if(metabolism_limit <= 0)
 		return //Something went wrong.
@@ -104,43 +106,47 @@
 			add_reagent(r_id,-REAGENT_ROUNDING,FALSE)
 			continue
 		var/amount_to_metabolize = 0
-		switch(flags_metabolism)
+		switch(src.flags_metabolism)
 			if(REAGENT_METABOLISM_BLOOD)
 				amount_to_metabolize = R.metabolism_blood
 			if(REAGENT_METABOLISM_STOMACH)
 				amount_to_metabolize = R.metabolism_stomach
 			if(REAGENT_METABOLISM_SKIN)
 				amount_to_metabolize = R.metabolism_skin
-		if(volume - amount_to_metabolize < 1)
-			amount_to_metabolize = volume
+		amount_to_metabolize *= multiplier
+		amount_to_metabolize = min(amount_to_metabolize,volume) //Never go above the volume.
 		amounts_to_metabolize[r_id] = amount_to_metabolize
 		total_metabolism += amount_to_metabolize
 
+	var/actual_metabolism = 0
 	if(total_metabolism > 0)
 		var/metabolism_multiplier = min(1,metabolism_limit/total_metabolism)
 		var/blood_toxicity_to_add = 0
 		//Second pass.
 		for(var/r_id in amounts_to_metabolize)
-			var/volume = stored_reagents[r_id]
-			var/amount_to_metabolize = amounts_to_metabolize[r_id] * metabolism_multiplier
 			var/reagent/R = REAGENT(r_id)
+			var/volume = stored_reagents[r_id]
+			var/amount_to_metabolize = amounts_to_metabolize[r_id]
 			var/amount_metabolized = 0
-			switch(flags_metabolism)
+			switch(src.flags_metabolism)
 				if(REAGENT_METABOLISM_BLOOD)
-					amount_metabolized += R.on_metabolize_blood(living_owner,src,amount_to_metabolize,volume,multiplier*living_owner.chem_power)
+					amount_metabolized += R.on_metabolize_blood(living_owner,src,amount_to_metabolize,volume,living_owner.chem_power*metabolism_multiplier)
 				if(REAGENT_METABOLISM_STOMACH)
-					amount_metabolized += R.on_metabolize_stomach(living_owner,src,amount_to_metabolize,volume,multiplier*living_owner.chem_power)
+					amount_metabolized += R.on_metabolize_stomach(living_owner,src,amount_to_metabolize,volume,living_owner.chem_power*metabolism_multiplier)
 				if(REAGENT_METABOLISM_SKIN)
-					amount_metabolized += R.on_metabolize_skin(living_owner,src,amount_to_metabolize,volume,multiplier*living_owner.chem_power)
+					amount_metabolized += R.on_metabolize_skin(living_owner,src,amount_to_metabolize,volume,living_owner.chem_power*metabolism_multiplier)
 			if(R.overdose_threshold > 0 && volume >= R.overdose_threshold)
-				amount_metabolized += R.on_overdose(living_owner,src,amount_metabolized,volume,multiplier) //Chem power not considered here.
+				amount_metabolized += R.on_overdose(living_owner,src,amount_metabolized,volume) //Chem power not considered here.
 			if(amount_metabolized > 0)
 				add_reagent(r_id,-amount_metabolized,FALSE)
 				if(R.blood_toxicity_multiplier != 0)
 					blood_toxicity_to_add += amount_metabolized*R.blood_toxicity_multiplier
+				actual_metabolism += amount_metabolized
 		living_owner.blood_toxicity += blood_toxicity_to_add
 
 	update_container(living_owner)
+
+	return actual_metabolism
 
 
 /reagent_container/proc/get_desired_temperature()
@@ -188,7 +194,8 @@
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
-		temperature_mod *= I.inventory_temperature_mod
+		if(I.inventory_temperature_mod > 0)
+			temperature_mod *= I.inventory_temperature_mod
 
 	var/temperature_diff = desired_temperature - average_temperature
 
@@ -337,7 +344,7 @@
 			var/reagent_recipe/JR = SSreagent.all_reagent_recipes[j]
 			recipes_to_check[JR] = TRUE
 
-	sortTim(recipes_to_check,/proc/cmp_recipe_priority_dsc)
+	sort_tim(recipes_to_check,/proc/cmp_recipe_priority_dsc)
 
 	var/reagent_recipe/found_recipe = null
 	for(var/k in recipes_to_check)
@@ -609,7 +616,7 @@
 		flavor_flags["[R.flags_flavor]"] += flavor_strength
 		total_flavor_strength += flavor_strength
 
-	sortTim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
+	sort_tim(flavor_profile,/proc/cmp_numeric_dsc,associative=TRUE)
 
 	var/list/english_flavor_profile = list()
 
@@ -646,7 +653,7 @@
 	if(!target)
 		CRASH("Tried to splash with no target!")
 
-	target = target.change_victim(caller,owner)
+	target = target.change_victim(caller)
 
 	if(!target)
 		CRASH("Tried to splash with invalid target!")
@@ -725,8 +732,6 @@
 				final_flavor_text += " You hate this taste!"
 		else
 			final_flavor_text = null
-
-		A.mood += like_score*5
 
 		if(caller && caller != consumer)
 			consumer.visible_message(span("warning","\The [caller.name] forces \the [consumer.name] to [consume_verb] \the [src.owner.name]!"),span("danger","\The [caller.name] forces you to [consume_verb] the [src.owner.name]!"))

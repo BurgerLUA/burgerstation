@@ -2,7 +2,6 @@
 	enemy_tags = list("NanoTrasen")
 	should_find_weapon = TRUE
 	aggression = 1
-	cowardice = 0.5
 	retaliate = TRUE
 
 
@@ -19,6 +18,5 @@
 	enemy_tags = list("NanoTrasen")
 	should_find_weapon = TRUE
 	aggression = 1
-	cowardice = 0.25
 	retaliate = TRUE
 

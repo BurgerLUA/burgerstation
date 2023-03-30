@@ -28,11 +28,11 @@ SUBSYSTEM_DEF(map_node)
 		var/turf/T = locate(x,y,z)
 		if(!T || T.has_dense_atom)
 			continue
-		var/obj/marker/map_node/M = locate() in range(4,T)
+		var/obj/marker/map_node/M = locate() in range(5,T)
 		if(M)
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			continue
-		M = new(T)
+		M = new(T,TRUE)
 		auto_nodes += M
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 

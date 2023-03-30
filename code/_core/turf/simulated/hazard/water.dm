@@ -32,6 +32,9 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	depth = 0 // 0 Means generate depth.
 	alpha = 255
 
+	var/alpha_min = 75
+	var/alpha_max = 150
+
 	mouse_opacity = 0
 
 	var/shore = FALSE
@@ -47,7 +50,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	shore = FALSE
 	for(var/d in DIRECTIONS_CARDINAL)
 		var/turf/simulated/floor/T = get_step(src,d)
-		if(istype(T) && T.organic)
+		if(is_floor(T) && T.organic)
 			shore = TRUE
 			break
 	if(shore)
@@ -56,7 +59,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/Finalize()
 
-	alpha = 128 + ((depth/MAX_DEPTH) * (254-128))
+	alpha = alpha_min + ((depth/MAX_DEPTH) * (alpha_max-alpha_min))
 	if(depth >= MAX_DEPTH)
 		map_color = map_color_max_depth
 	else if(depth <= 0)
@@ -84,7 +87,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/river/jungle/Finalize()
 	. = ..()
-	if(depth <= 2 && ( (shore&&prob(90)) || prob(40)) )
+	if(depth <= 2 && ( (shore && prob(90)) || prob(40)) )
 		for(var/j=1,j<=rand(2,3),j++)
 			var/obj/structure/scenery/reeds/R = new(src)
 			R.pixel_x = rand(-8,8)

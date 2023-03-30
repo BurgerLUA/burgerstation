@@ -43,7 +43,8 @@
 
 	var/atom/old_attack = objective_attack
 
-	if(old_attack == A)
+	if(old_attack && old_attack == A)
+		set_alert_level(ALERT_LEVEL_COMBAT,A,A)
 		return FALSE
 
 	if(is_player(old_attack) && ai_attacking_players[old_attack])
@@ -52,9 +53,6 @@
 	attackers -= old_attack
 
 	if(A) owner.set_dir(get_dir(owner,A))
-
-	if(objective_investigate)
-		objective_investigate = null
 
 	if(is_living(A))
 		if(!should_attack_mob(A,FALSE))
@@ -71,6 +69,9 @@
 		owner.update_intent()
 		if(is_player(A))
 			ai_attacking_players[A][owner] = TRUE
+		for(var/k in linked_ais)
+			var/ai/LAI = k
+			LAI.set_objective(A)
 		return TRUE
 	else if(istype(A))
 		frustration_attack = 0
@@ -79,24 +80,24 @@
 		objective_attack = A
 		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
+		for(var/k in linked_ais)
+			var/ai/LAI = k
+			LAI.set_objective(A)
 		return TRUE
 
 	frustration_attack = 0
 	objective_attack = null
 	owner.selected_intent = owner.stand ? INTENT_HARM : INTENT_HELP
 	owner.update_intent()
+	for(var/k in linked_ais)
+		var/ai/LAI = k
+		LAI.set_objective(null)
 
-	if(!owner.dead && old_attack && !old_attack.qdeleting)
-		if(is_living(old_attack))
-			var/mob/living/L2 = old_attack
-			if(L2.dead)
-				set_alert_level(ALERT_LEVEL_NOISE,TRUE)
-				return TRUE
-		set_alert_level(ALERT_LEVEL_CAUTION,TRUE)
-		set_move_objective(old_attack)
-		return TRUE
-
-	set_alert_level(ALERT_LEVEL_NONE,TRUE)
+	if(!owner.dead && old_attack && !old_attack.qdeleting && is_living(old_attack))
+		var/mob/living/L2 = old_attack
+		if(L2.dead)
+			try_investigate(L2)
+			return TRUE
 
 	return TRUE
 
@@ -138,10 +139,10 @@
 			set_objective(null)
 			return TRUE
 
-/ai/proc/find_new_objectives(var/tick_rate)
+/ai/proc/find_new_objectives(var/tick_rate,var/bonus_sight=FALSE)
 
 	//Find a new living mob target.
-	var/list/possible_targets = get_possible_targets()
+	var/list/possible_targets = get_possible_targets(bonus_sight)
 	var/atom/best_target
 	var/best_score = -INFINITY
 	var/best_detection_value = 0
@@ -149,14 +150,17 @@
 		var/atom/A = k
 		var/detection_value = possible_targets[k]
 		var/score_value = get_attack_score(A)
-		if( (best_detection_value < night_vision && detection_value > best_detection_value) || (score_value > best_score && detection_value > night_vision))
+		if((best_detection_value < night_vision && detection_value > best_detection_value) || (score_value > best_score && detection_value > night_vision))
 			best_target = A
 			best_score = score_value
 			best_detection_value = detection_value
 
-	if(best_target && best_target != objective_attack)
-		if(best_detection_value < night_vision*2)
-			investigate(best_target)
+	if(best_target)
+		if(objective_attack && best_target == objective_attack)
+			set_alert_level(ALERT_LEVEL_COMBAT,best_target,best_target)
+			return TRUE
+		if(!objective_attack && best_detection_value < night_vision*2)
+			try_investigate(best_target)
 			return TRUE
 		else
 			if(reaction_time > 0)
@@ -170,8 +174,8 @@
 		return TRUE
 
 	//Path to last known location.
-	if(last_combat_location && !length(current_path_astar))
-		set_path_astar(last_combat_location)
+	if(last_combat_location && !length(astar_path_current))
+		set_path_fallback(last_combat_location)
 		last_combat_location = null
 		return TRUE
 
@@ -230,7 +234,7 @@
 	if(owner.has_status_effect(REST)) //Mostly used for sleeping zombies.
 		. *= 0.5
 
-/ai/proc/get_possible_targets()
+/ai/proc/get_possible_targets(var/bonus_sight=FALSE)
 
 	. = list()
 
@@ -244,10 +248,38 @@
 	for(var/mob/living/L in view(range_to_use,owner))
 		if(!should_attack_mob(L))
 			continue
-		var/detection_level = get_detection_level(L)
+		var/detection_level = get_detection_level(L,FALSE,bonus_sight)
 		if(detection_level <= 0)
 			continue
 		.[L] = detection_level
+
+/ai/proc/try_investigate(var/atom/desired_target,var/cooldown=reaction_time,var/force_if_on_cooldown=FALSE)
+
+	if(!desired_target)
+		return FALSE
+
+	if(!owner)
+		return FALSE
+
+	if(desired_target == objective_attack)
+		return FALSE
+
+	if(!cooldown)
+		. = investigate(desired_target)
+	else
+		if(CALLBACK_EXISTS("investigate_\ref[src]"))
+			if(force_if_on_cooldown)
+				. = investigate(desired_target)
+			else
+				return FALSE
+		CALLBACK("investigate_\ref[src]",reaction_time,src,.proc/investigate,desired_target)
+		. = TRUE
+
+	if(.)
+		if(alert_level < ALERT_LEVEL_CAUTION)
+			set_alert_level(alert_level+1,desired_target,desired_target)
+
+
 
 /ai/proc/investigate(var/atom/desired_target)
 
@@ -260,98 +292,7 @@
 	if(desired_target == objective_attack)
 		return FALSE
 
-	objective_investigate = desired_target
+	set_path_fallback(get_turf(desired_target))
 
 	return TRUE
 
-/ai/proc/set_alert_level(var/desired_alert_level,var/can_lower=FALSE,var/atom/alert_epicenter = null,var/atom/alert_source = null)
-
-	if(!use_alerts)
-		return FALSE
-
-	if(!owner)
-		return FALSE
-
-	if(owner.dead && desired_alert_level != ALERT_LEVEL_NONE)
-		return FALSE
-
-	if(alert_level <= alert_level && is_living(alert_source))
-		var/mob/living/L = alert_source
-		if(alert_level == ALERT_LEVEL_CAUTION)
-			if(L == owner)
-				return FALSE
-		else
-			if(!is_enemy(L,FALSE) || radius_find_enemy <= 0 )
-				return FALSE //Ignore sounds and stuff made by teammates, as well as people we do not give a fuck about.
-
-	var/old_alert_level = alert_level
-
-	if(can_lower)
-		alert_level = desired_alert_level
-	else
-		alert_level = max(desired_alert_level,alert_level)
-
-	if(old_alert_level <= alert_level && alert_level != ALERT_LEVEL_NONE)
-		set_active(TRUE)
-		if(owner.has_status_effect(REST))
-			owner.remove_status_effect(REST)
-
-	if(should_investigate_alert && alert_epicenter && (alert_level == ALERT_LEVEL_NOISE || alert_level == ALERT_LEVEL_CAUTION) && !CALLBACK_EXISTS("investigate_\ref[src]") && (old_alert_level >= alert_level ? TRUE : prob(50)) )
-		CALLBACK("investigate_\ref[src]",CEILING(reaction_time*0.5,1),src,.proc/investigate,alert_epicenter)
-
-	if(old_alert_level != alert_level)
-		on_alert_level_changed(old_alert_level,alert_level,alert_source)
-		return TRUE
-
-	return FALSE
-
-/ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
-
-	alert_time = initial(alert_time)
-
-	if(use_alert_overlays)
-		if(owner.alert_overlay && !owner.horizontal && !owner.is_sneaking)
-			if(new_alert_level == ALERT_LEVEL_COMBAT)
-				owner.alert_overlay.icon_state = "exclaim"
-			else if(new_alert_level == ALERT_LEVEL_CAUTION)
-				owner.alert_overlay.icon_state = "question"
-			else if(new_alert_level == ALERT_LEVEL_NOISE)
-				owner.alert_overlay.icon_state = "huh"
-			else
-				owner.alert_overlay.icon_state = "none"
-
-	if(combat_dialogue && next_talk <= world.time && prob(25))
-
-		var/response_type
-		var/swear_chance = 0
-		if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_CAUTION)
-			//Lost the enemy, going to investigate.
-			response_type = "lost_enemy"
-			swear_chance = 25
-		else if(old_alert_level == ALERT_LEVEL_COMBAT && new_alert_level == ALERT_LEVEL_NONE)
-			//Threat neutralized.
-			response_type = "enemy_down"
-			swear_chance = 0
-		else if(old_alert_level == ALERT_LEVEL_CAUTION && new_alert_level == ALERT_LEVEL_COMBAT)
-			//Found the enemy again.
-			response_type = "enemy_found"
-			swear_chance = 90
-		else if(old_alert_level == ALERT_LEVEL_NONE && (new_alert_level == ALERT_LEVEL_NOISE || new_alert_level == ALERT_LEVEL_CAUTION))
-			//A weird noise was made.
-			response_type = "noise"
-			swear_chance = owner.health ? (1 - owner.health.health_current/owner.health.health_max)*150 : 0
-		else if(new_alert_level == ALERT_LEVEL_NOISE)
-			//losing interest in the search
-			response_type = "losing_interest"
-			swear_chance = 10
-		else if(new_alert_level == ALERT_LEVEL_NONE)
-			//Investigated and determined there is nothing around.
-			response_type = "lost_interest"
-			swear_chance = 25
-		if(response_type)
-			var/returning_dialogue = SSdialogue.get_combat_dialogue(combat_dialogue,response_type,swear_chance)
-			if(returning_dialogue) owner.do_say(returning_dialogue,language_to_use = language_to_use)
-			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
-
-
-	return TRUE

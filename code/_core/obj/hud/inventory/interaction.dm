@@ -16,7 +16,7 @@
 		if(object != top_object && top_object.click_on_object_alt(caller,object,location,control,params))
 			return TRUE
 
-	var/atom/top_object = get_top_object()
+	var/atom/top_object = src.get_top_object() //What is in our inventory.
 
 	//Alt click a corpse with an empty hand.
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && is_advanced(object))
@@ -107,7 +107,7 @@
 
 			var/list/target_cords = L.get_current_target_cords(params)
 			//Throwing it
-			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,target_cords[1],target_cords[2],vel_x,vel_y,lifetime=SECONDS_TO_DECISECONDS(1),steps_allowed = VIEW_RANGE,desired_loyalty_tag = L.loyalty_tag)
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,target_cords[1],target_cords[2],vel_x,vel_y,lifetime=SECONDS_TO_DECISECONDS(1),desired_loyalty_tag = L.loyalty_tag)
 
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))
@@ -138,23 +138,6 @@
 			drop_item_from_inventory(get_turf(src))
 		return TRUE
 
-	//Handle moving grabbed objects
-	if(grabbed_object && is_turf(grabbed_object.loc))
-		if(is_turf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
-			var/desired_move_dir = get_dir(grabbed_object,object)
-			var/turf/desired_move_turf = get_step(grabbed_object.loc,desired_move_dir)
-			if(is_living(grabbed_object) && is_living(caller))
-				var/mob/living/L = grabbed_object
-				var/mob/living/C = caller
-				var/turf/grabbed_object_turf = grabbed_object.loc
-				if(!allow_hostile_action(C.loyalty_tag,L) && grabbed_object_turf.is_safe() && !desired_move_turf.is_safe())
-					return TRUE
-			grabbed_object.Move(desired_move_turf)
-			if(is_living(grabbed_object))
-				var/mob/living/L = grabbed_object
-				L.handle_transform()
-		return TRUE
-
 	//Special owner-clicking shortcut.
 	if(caller.attack_flags & CONTROL_MOD_OWNER && top_object)
 		top_object.click_on_object(caller,caller,location,control,params)
@@ -174,47 +157,66 @@
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].toggle_wield(caller,A.right_item)
 				return TRUE
 
-	if(get_dist(src,object) <= 1 && (is_inventory(object) || is_inventory(object.loc) || is_turf(object) || is_turf(object.loc)) && !(is_turf(object.loc) && !is_turf(caller.loc)) )
-		if(is_item(object)) //We're clicking on another item.
-			var/obj/item/I = object
-			if(I.is_container && (I.anchored || !is_turf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.
-				var/obj/item/found_item
-				for(var/k in I.inventories)
-					var/obj/hud/inventory/INV = k
-					found_item = INV.get_top_object()
-					if(found_item)
-						src.add_object(found_item)
-						return TRUE
-			if(!I.anchored) //If it's anchored, we just call click_self on it (later in the code).
-				if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
-					var/obj/hud/inventory/INV = I.loc
-					if(!top_object) //We're clicking on an object with an empty hand.
-						if(INV.worn) //We're clicking on a worn object.
-							var/content_length = length(INV.contents)
-							if(content_length > 1 && caller.attack_flags & CONTROL_MOD_DISARM) //Force
-								content_length -= 1
-							for(var/i=content_length,i>0,i--)
-								var/obj/item/ITM = INV.contents[i]
-								if(ITM.click_self(caller))
-									return TRUE
-						if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
-							I.click_self(caller)
-							return TRUE
-						if(!INV.click_flags && (!INV.drag_to_take || !is_clothing(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
-							if(caller.attack_flags & CONTROL_MOD_DISARM)
-								I.click_self(caller)
-							else
-								src.add_object(object)
-							return TRUE
-					else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
-						return TRUE
-				else if(!top_object && caller.attack_flags && !(caller.attack_flags & ~(CONTROL_MOD_LEFT|CONTROL_MOD_RIGHT)) ) //If we don't have a top object and we don't have any non-left attack flags, pick it up.
-					src.add_object(object)
+	//Handle moving grabbed objects
+	if(grabbed_object && is_turf(grabbed_object.loc))
+		if(is_turf(object) && (get_dist(caller,object) <= 1 || get_dist(object,grabbed_object) <= 1))
+			var/desired_move_dir = get_dir(grabbed_object,object)
+			var/turf/desired_move_turf = get_step(grabbed_object.loc,desired_move_dir)
+			if(is_living(grabbed_object) && is_living(caller))
+				var/mob/living/L = grabbed_object
+				var/mob/living/C = caller
+				var/turf/grabbed_object_turf = grabbed_object.loc
+				if(!allow_hostile_action(C.loyalty_tag,L) && grabbed_object_turf.is_safe() && !desired_move_turf.is_safe())
 					return TRUE
-		else if(top_object && is_inventory(object)) //We have an object in our hands, clicking on an empty inventory.
-			var/obj/hud/inventory/INV = object
-			INV.add_object(top_object)
-			return TRUE
+			grabbed_object.Move(desired_move_turf)
+			if(is_living(grabbed_object))
+				var/mob/living/L = grabbed_object
+				L.handle_transform()
+		return TRUE
+
+	//Checking if the object we're clicking on can even be interacted with. If all the above fail, it's probably an item.
+	if(object.plane >= PLANE_HUD || (object.loc && object.loc.plane >= PLANE_HUD) || is_turf(object) || is_turf(object.loc)) // Only interact with objects that can actually be clicked on.
+		if(get_dist(src,object) <= 1)
+			if(is_item(object)) //We're clicking on another item.
+				var/obj/item/I = object
+				if(I.is_container && (I.anchored || !is_turf(I)) && caller.attack_flags & CONTROL_MOD_GRAB) //We're clicking on a container and we want to quickly grab the first object.
+					var/obj/item/found_item
+					for(var/k in I.inventories)
+						var/obj/hud/inventory/INV = k
+						found_item = INV.get_top_object()
+						if(found_item)
+							src.add_object(found_item)
+							return TRUE
+				if(!I.anchored) //If it's anchored, we just call click_self on it (later in the code).
+					if(is_inventory(I.loc)) //The object we're clicking on is in an inventory. Special behavior.
+						var/obj/hud/inventory/INV = I.loc
+						if(!top_object) //We're clicking on an object with an empty hand.
+							if(INV.worn) //We're clicking on a worn object.
+								var/content_length = length(INV.contents)
+								if(content_length > 1 && caller.attack_flags & CONTROL_MOD_DISARM) //Force
+									content_length -= 1
+								for(var/i=content_length,i>0,i--)
+									var/obj/item/ITM = INV.contents[i]
+									if(ITM.click_self(caller))
+										return TRUE
+							if(I.is_container && !istype(INV,/obj/hud/inventory/dynamic)) //The object that we're clicking on is a container in non-dynamic inventory (organ inventory).
+								I.click_self(caller)
+								return TRUE
+							if(!INV.click_flags && (!INV.drag_to_take || !is_clothing(object))) //The object we're clicking on is not in hands, and it's not in an inventory with drag to take enabled.
+								if(caller.attack_flags & CONTROL_MOD_DISARM)
+									I.click_self(caller)
+								else
+									src.add_object(object)
+								return TRUE
+						else if(INV.worn && !I.is_container && INV.add_object(top_object)) //The item we're clicking on is not a container and it's in a worn inventory, and it can be added.
+							return TRUE
+					else if(!top_object && caller.attack_flags && !(caller.attack_flags & ~(CONTROL_MOD_LEFT|CONTROL_MOD_RIGHT)) ) //If we don't have a top object and we don't have any non-left attack flags, pick it up.
+						src.add_object(object)
+						return TRUE
+			else if(top_object && is_inventory(object)) //We have an object in our hands, clicking on an empty inventory.
+				var/obj/hud/inventory/INV = object
+				INV.add_object(top_object)
+				return TRUE
 
 	//Here be shitcode territory. We're overriding what is normally called.
 	//Should change this in the future.
@@ -338,22 +340,13 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 /obj/hud/inventory/defer_click_on_object(var/mob/caller,location,control,params)
 
-	var/contents_length = length(contents)
-
-	if(worn && contents_length > 1)
-		for(var/i=contents_length,i>0,i--)
-			var/obj/item/I = contents[i]
-			if(I.is_container)
-				return I
-
 	if(grabbed_object)
 		return grabbed_object
 
-	var/obj/item/I = get_top_object()
-	if(I) return I
+	var/atom/A = get_top_object()
+	if(A) return A
 
 	return src
-
 
 /obj/hud/inventory/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params)
 

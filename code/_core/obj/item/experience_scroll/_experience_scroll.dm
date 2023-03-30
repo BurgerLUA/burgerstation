@@ -12,7 +12,7 @@
 	weight = WEIGHT_0
 	size = SIZE_2
 
-	value = -1
+	value = 0
 
 	var/overlay_icon_state = "gem"
 	var/overlay_color = "#FFFFFF"
@@ -23,8 +23,12 @@
 
 	var/level_to_give = 5
 
+/obj/item/experience_scroll/Finalize()
+	. = ..()
+	update_sprite()
+
 /obj/item/experience_scroll/get_base_value()
-	return 0
+	return level_to_give*100
 
 /obj/item/experience_scroll/update_overlays()
 	var/image/I = new/image(icon,overlay_icon_state)
@@ -36,7 +40,7 @@
 	play_sound('sound/ui/friendly.ogg',get_turf(src),range_max=VIEW_RANGE)
 	return TRUE
 
-/obj/item/experience_scroll/click_self(var/mob/caller)
+/obj/item/experience_scroll/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

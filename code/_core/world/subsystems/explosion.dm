@@ -2,13 +2,14 @@ SUBSYSTEM_DEF(explosion)
 	name = "Explosion Subsystem"
 	desc = "Processes explosions."
 	priority = SS_ORDER_NORMAL
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DECISECONDS_TO_TICKS(0.5)
 
 	var/list/obj/explosion_process/active_explosions = list()
+	var/list/obj/fire_process/active_fires = list()
 
 	var/list/atom/damage_to_process = list()
 
-	tick_usage_max = 90
+	tick_usage_max = 95
 
 	var/explosion_ticks = 0
 
@@ -28,7 +29,6 @@ SUBSYSTEM_DEF(explosion)
 
 /subsystem/explosion/on_life()
 
-	explosion_ticks++
 	if(explosion_ticks >= 4)
 		for(var/k in damage_to_process)
 			var/atom/victim = k
@@ -39,21 +39,37 @@ SUBSYSTEM_DEF(explosion)
 			for(var/j in explosion_data)
 				var/atom/owner = j
 				var/list/explosion_subdata = explosion_data[j]
-				victim.act_explode(owner,explosion_subdata["source"],explosion_subdata["epicenter"],explosion_subdata["magnitude"],explosion_subdata["loyalty_tag"])
+				victim.act_explode(
+					owner,
+					explosion_subdata["source"],
+					explosion_subdata["epicenter"],
+					explosion_subdata["magnitude"],
+					explosion_subdata["loyalty_tag"]
+				)
 				explosion_data -= j
 				CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 			if(!length(explosion_data))
 				damage_to_process -= k
-		explosion_ticks = 0
+		explosion_ticks = 1
+	else
+		explosion_ticks++
 
 	for(var/k in active_explosions)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/obj/explosion_process/EP = k
 		EP.process()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+
+	for(var/k in active_fires)
+		var/obj/fire_process/FP = k
+		FP.process()
+		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 
 /proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/velocity_dir=0x0,var/multiplier=1)
+
+	if(desired_range <= 0)
+		return FALSE
 
 	var/desired_power = desired_range ** 3
 
@@ -63,6 +79,7 @@ SUBSYSTEM_DEF(explosion)
 		play_sound(pick('sound/effects/explosion/explosion_1.ogg','sound/effects/explosion/explosion_2.ogg','sound/effects/explosion/explosion_3.ogg'),desired_turf)
 		new /obj/effect/cleanable/scorch(desired_turf)
 		new /obj/effect/temp/explosion(desired_turf,desired_range)
+		create_alert(desired_range*2,desired_turf,desired_owner,ALERT_LEVEL_CAUTION)
 		for(var/d in DIRECTIONS_ALL)
 			if(!prob(80))
 				continue
@@ -80,3 +97,44 @@ SUBSYSTEM_DEF(explosion)
 		FINALIZE(EP)
 	else
 		EP.power += desired_power
+
+
+
+/proc/emp(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+
+	desired_range = min(desired_range,VIEW_RANGE)
+
+	if(desired_range <= 0)
+		return FALSE
+
+	new /obj/effect/temp/emp_pulse(desired_turf)
+
+	for(var/turf/T in range(desired_range,desired_turf))
+		var/magnitude = (desired_range - get_dist(desired_turf,T))*multiplier
+		if(T.act_emp(desired_owner,desired_source,desired_turf,magnitude,desired_loyalty_tag))
+			new /obj/effect/temp/emp_sparkle(T)
+		CHECK_TICK_SAFE(50,FPS_SERVER)
+
+
+
+/proc/firebomb(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+
+	if(desired_range <= 0)
+		return FALSE
+
+	var/obj/fire_process/FP = locate() in desired_turf
+
+	if(!FP)
+		play_sound('sound/effects/firebomb.ogg',desired_turf)
+		FP = new(desired_turf)
+		FP.fire_power = desired_range*2
+		FP.initial_fire_power = desired_range*2
+		FP.loyalty_tag = desired_loyalty_tag
+		FP.multiplier = multiplier
+		FP.momentum = NORTH | EAST | SOUTH | WEST
+		FP.source = desired_owner
+	else
+		FP.fire_power += desired_range*2
+
+	return TRUE
+

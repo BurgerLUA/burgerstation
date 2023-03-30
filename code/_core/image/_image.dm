@@ -33,7 +33,7 @@
 
 	if(length(additional_blends) && !never_blend)
 
-		additional_blends = sortTim(additional_blends,/proc/cmp_icon_blend_layer, TRUE) //Sort blends by layer.
+		sort_tim(additional_blends,/proc/cmp_icon_blend_layer, TRUE) //Sort blends by layer.
 
 		if(no_initial)
 			icon = null

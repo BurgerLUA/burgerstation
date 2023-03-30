@@ -22,7 +22,7 @@
 
 	value = 10
 
-/obj/item/weapon/melee/torch/click_self(var/mob/caller)
+/obj/item/weapon/melee/torch/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -127,6 +127,6 @@
 	desired_light_power = 0.5
 	desired_light_color = "#E3FF9E"
 	desired_light_angle = LIGHT_OMNI
-	value = -1
+	value = 0
 
 	enabled = TRUE

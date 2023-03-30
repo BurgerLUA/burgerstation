@@ -10,7 +10,10 @@
 /turf/simulated/floor/sidewalk,
 /area/dmm_suite/clear_area)
 "d" = (
-/obj/decal/road_marking/solid_line,
+/obj/decal/road_marking/solid_line{
+	icon_state = "1";
+	dir = 6
+	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "e" = (
@@ -37,21 +40,18 @@
 "i" = (
 /obj/decal/road_marking/solid_line{
 	icon_state = "1";
-	dir = 5
+	dir = 10
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "j" = (
-/obj/decal/road_marking/solid_line{
-	icon_state = "1";
-	dir = 8
-	},
+/obj/decal/road_marking/solid_line,
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
 "k" = (
 /obj/decal/road_marking/solid_line{
 	icon_state = "1";
-	dir = 9
+	dir = 5
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
@@ -62,17 +62,10 @@
 	},
 /turf/dmm_suite/clear_turf,
 /area/dmm_suite/clear_area)
-"n" = (
+"m" = (
 /obj/decal/road_marking/solid_line{
 	icon_state = "1";
-	dir = 10
-	},
-/turf/simulated/floor/road,
-/area/dmm_suite/clear_area)
-"o" = (
-/obj/decal/road_marking/solid_line{
-	icon_state = "1";
-	dir = 6
+	dir = 9
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
@@ -103,6 +96,13 @@
 /obj/decal/road_marking/dotted_line/half{
 	icon_state = "1";
 	dir = 4
+	},
+/turf/simulated/floor/road,
+/area/dmm_suite/clear_area)
+"w" = (
+/obj/decal/road_marking/solid_line{
+	icon_state = "1";
+	dir = 8
 	},
 /turf/simulated/floor/road,
 /area/dmm_suite/clear_area)
@@ -1786,20 +1786,20 @@ b
 b
 b
 c
-o
 d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-i
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+k
 c
 b
 b
@@ -1852,7 +1852,7 @@ b
 b
 b
 c
-j
+w
 e
 p
 e
@@ -1865,7 +1865,7 @@ e
 e
 e
 p
-j
+w
 c
 b
 b
@@ -1918,7 +1918,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -1931,7 +1931,7 @@ e
 e
 e
 e
-j
+w
 c
 b
 b
@@ -1984,7 +1984,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -1997,7 +1997,7 @@ e
 e
 e
 e
-j
+w
 c
 c
 c
@@ -2050,42 +2050,42 @@ b
 b
 b
 c
+w
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+i
 j
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-n
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
 "}
 (31,1,1) = {"
 b
@@ -2116,7 +2116,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -2182,7 +2182,7 @@ b
 b
 b
 c
-j
+w
 p
 e
 e
@@ -2248,7 +2248,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -2314,7 +2314,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -2380,42 +2380,42 @@ b
 b
 b
 c
+w
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+d
 j
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-o
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
 "}
 (36,1,1) = {"
 b
@@ -2446,7 +2446,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -2459,7 +2459,7 @@ e
 e
 e
 e
-j
+w
 c
 c
 c
@@ -2512,7 +2512,7 @@ b
 b
 b
 c
-j
+w
 e
 e
 e
@@ -2525,7 +2525,7 @@ e
 e
 e
 e
-j
+w
 c
 b
 b
@@ -2578,7 +2578,7 @@ b
 b
 b
 c
-j
+w
 p
 e
 e
@@ -2591,7 +2591,7 @@ e
 e
 e
 p
-j
+w
 c
 b
 b
@@ -2644,20 +2644,20 @@ b
 b
 b
 c
-n
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d
-k
+i
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+m
 c
 b
 b

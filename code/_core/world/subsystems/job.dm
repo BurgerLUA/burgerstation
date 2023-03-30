@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(job)
 	desc = "Stores all the known jobs in a list."
 	priority = SS_ORDER_FIRST
 
-	var/list/all_jobs = list()
+	var/list/job/all_jobs = list()
 
 /subsystem/job/Initialize()
 

@@ -21,10 +21,12 @@
 		caller.to_chat(span("warning","You're too far away!"))
 		return FALSE
 	return TRUE
-/obj/structure/interactive/construction/lattice/on_destruction(var/mob/caller,var/damage = FALSE)
+
+/obj/structure/interactive/construction/lattice/on_destruction(var/damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
+
 /obj/structure/interactive/construction/lattice/proc/construct_grille(var/mob/caller,var/obj/item/material/rod/R)
 	var/obj/structure/interactive/construction/grille/G = new(src.loc)
 	G.material_id = R.material_id
@@ -36,6 +38,7 @@
 	R.add_item_count(-1)
 	qdel(src)
 	return TRUE
+
 /obj/structure/interactive/construction/lattice/proc/can_construct_reinf_wall(var/mob/caller,var/obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
@@ -51,8 +54,9 @@
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
 		return FALSE
 	return TRUE
+
 /obj/structure/interactive/construction/lattice/proc/construct_floor_plating(var/mob/caller,var/obj/item/material/sheet/S)
-	var/turf/T = src.loc
+	var/turf/simulated/T = src.loc
 	T.change_turf(/turf/simulated/floor/plating/,TRUE)
 	T.color = S.color
 	T.material_id = S.material_id
@@ -85,7 +89,7 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(caller)
+			src.on_destruction(FALSE)
 			return TRUE
 		if(istype(I,/obj/item/material/rod/))
 			INTERACT_CHECK

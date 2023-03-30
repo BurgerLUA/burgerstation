@@ -11,7 +11,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power/mod = TRUE,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/sol = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/pistol/sol = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/prototype = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/pistol_10mm
@@ -34,3 +35,4 @@
 /obj/item/magazine/pistol_10mm/ap
 	name = "\improper 10mm auto AP pistol magazine"
 	ammo = /obj/item/bullet_cartridge/pistol_10mm/ap
+	rarity = RARITY_UNCOMMON
