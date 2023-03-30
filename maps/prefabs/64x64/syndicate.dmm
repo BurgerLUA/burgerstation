@@ -1,224 +1,5100 @@
-"ab" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"ac" = (/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"ad" = (/obj/item/trash/random,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"ae" = (/obj/structure/interactive/door/airlock/syndicate,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"af" = (/obj/item/clothing/neck/tie/red,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ag" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ah" = (/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ai" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aj" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"ak" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"al" = (/obj/structure/interactive/potted_plant/office,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"am" = (/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"an" = (/obj/item/clothing/belt/bandolier/shotgun_20,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ao" = (/obj/structure/interactive/vending/syndicate/guns,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ap" = (/obj/structure/interactive/vending/syndicate/attachment,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aq" = (/obj/item/trash/syndicate,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"ar" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/syndicate/scientist,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"as" = (/mob/living/advanced/npc/syndicate/scientist{dir = 4; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"at" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"au" = (/mob/living/advanced/npc/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"av" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"aw" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/mob/living/advanced/npc/syndicate/scientist{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ax" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ay" = (/mob/living/advanced/npc/syndicate/scientist,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"az" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/obj/marker/spawning/random/supply_crate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aA" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aB" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aC" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"aD" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aE" = (/obj/marker/spawning/random/supply_crate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aF" = (/obj/marker/map_node/x5,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"aG" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aH" = (/obj/structure/interactive/computer/arcade/bubbletwist,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aI" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/obj/item/clothing/glasses/thermal,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aJ" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"aK" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aL" = (/obj/structure/interactive/fire_closet{dir = 4},/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aM" = (/obj/item/clothing/glasses/sun/security/red,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aN" = (/obj/structure/interactive/door/airlock/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aO" = (/obj/marker/map_node/x2,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aP" = (/obj/structure/interactive/chair{dir = 1; icon_state = "chair"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aQ" = (/mob/living/advanced/npc/syndicate{dir = 4; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aR" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aS" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/obj/structure/interactive/bookcase,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aT" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aU" = (/obj/structure/interactive/bookcase{icon_state = "book-1"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aV" = (/obj/item/clothing/mask/gas/syndicate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aW" = (/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aX" = (/obj/structure/interactive/bookcase{icon_state = "book-4"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aY" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"aZ" = (/mob/living/advanced/npc/syndicate/scientist,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ba" = (/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bb" = (/mob/living/advanced/npc/syndicate/scientist{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bc" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bd" = (/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"be" = (/mob/living/advanced/npc/syndicate/scientist{dir = 1; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bf" = (/obj/item/supply_crate/syndicate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bg" = (/obj/item/analyzer/armor,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bh" = (/obj/structure/interactive/bookcase{icon_state = "book-3"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bi" = (/obj/item/firing_pin/electronic/iff/syndicate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bj" = (/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bk" = (/obj/structure/interactive/bookcase{icon_state = "book-2"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bl" = (/obj/item/soapstone/red,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bm" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/mob/living/advanced/npc/syndicate{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bn" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bo" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bp" = (/obj/item/dice/d6/black,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bq" = (/obj/item/cell_charger,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"br" = (/obj/item/announcement/syndicate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bs" = (/obj/structure/interactive/vending/syndicate/prize,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bt" = (/obj/structure/interactive/vending/syndicate/medicine,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bu" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bv" = (/obj/item/clothing/glasses/medical_hud/advanced,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bw" = (/obj/item/implanter/death_alarm,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bx" = (/obj/structure/interactive/fire_closet,/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"by" = (/obj/item/clothing/belt/storage/medical,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bz" = (/obj/structure/interactive/chair{dir = 1; icon_state = "chair"},/mob/living/advanced/npc/syndicate/scientist{dir = 1; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bA" = (/obj/structure/interactive/chair,/mob/living/advanced/npc/syndicate/triple,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bB" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bC" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bD" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bE" = (/obj/structure/interactive/bed/sleeper/medical/syndicate,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bF" = (/obj/structure/interactive/computer/console/medical{dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bG" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"bH" = (/obj/structure/interactive/misc/computer3{dir = 1},/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bI" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/syndicate{dir = 4; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bJ" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bK" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1; icon_state = "preview"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bL" = (/mob/living/simple/bot/medibot/syndicate,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bM" = (/mob/living/advanced/npc/syndicate{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bN" = (/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"bO" = (/mob/living/advanced/npc/syndicate/double{dir = 8; icon_state = "directional"},/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"bP" = (/turf/simulated/floor/tile/dark/er,/area/mission/prefab/misc/syndicate_research_outpost)
-"bQ" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/misc/syndicate_research_outpost)
-"bR" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/mob/living/advanced/npc/syndicate/quadruple{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bS" = (/obj/decal/poster/syndicate,/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bT" = (/obj/structure/interactive/door/airlock/syndicate,/obj/structure/interactive/atmospherics/fan,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bU" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bV" = (/turf/simulated/floor/tile,/area/mission/prefab/misc/syndicate_research_outpost)
-"bW" = (/obj/item/wet_floor_sign,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bX" = (/obj/structure/interactive/atmospherics/scrubber,/obj/marker/map_node/x2,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bY" = (/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"bZ" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile,/area/mission/prefab/misc/syndicate_research_outpost)
-"ca" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/obj/item/legion_core,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cb" = (/obj/structure/interactive/misc/computer1,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cc" = (/obj/structure/interactive/misc/computer4,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cd" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ce" = (/obj/item/clothing/glasses/thermal,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cf" = (/obj/structure/interactive/atmospherics/vent,/mob/living/advanced/npc/syndicate/scientist{dir = 4; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cg" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/mob/living/advanced/npc/syndicate/double{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ch" = (/obj/structure/interactive/chair{dir = 4; icon_state = "chair"},/mob/living/advanced/npc/syndicate/scientist{dir = 4; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ci" = (/obj/item/trash/butt,/obj/item/storage/cigarettes/syndicate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cj" = (/obj/item/clothing/mask/gas/poly/syndicate,/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"ck" = (/obj/marker/objective_spawn,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cl" = (/mob/living/advanced/npc/syndicate{dir = 1; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cm" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 1; icon_state = "preview"},/obj/structure/interactive/crate/bodybag,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cn" = (/obj/structure/interactive/potted_plant/office,/mob/living/advanced/npc/syndicate/scientist{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"co" = (/mob/living/advanced/npc/syndicate/scientist{dir = 1; icon_state = "directional"},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cp" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"cq" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/syndicate{dir = 8; icon_state = "directional"},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"dl" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"gx" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"gB" = (/obj/marker/map_node,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"hc" = (/obj/structure/interactive/lighting/fixture/tube/syndicate,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"kf" = (/obj/structure/interactive/wire/yellow,/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"lD" = (/obj/structure/interactive/chair{dir = 8; icon_state = "chair"},/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"oz" = (/obj/marker/map_node,/obj/structure/interactive/wire/green,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"oL" = (/obj/structure/interactive/wire/green,/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"rs" = (/obj/structure/interactive/power/apc{dir = 1},/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"so" = (/obj/structure/interactive/atmospherics/vent,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"sV" = (/obj/structure/interactive/atmospherics/scrubber,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"sZ" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 8; icon_state = "preview"},/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"tH" = (/obj/marker/spawning/random/supply_crate,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"tV" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark/er,/area/mission/prefab/misc/syndicate_research_outpost)
-"tZ" = (/obj/marker/map_node,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"vK" = (/obj/structure/interactive/wire/yellow,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"vU" = (/obj/structure/interactive/power/smes{dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"xW" = (/obj/structure/interactive/power/smes{dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"zr" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile,/area/mission/prefab/misc/syndicate_research_outpost)
-"Bo" = (/obj/structure/interactive/power/apc{dir = 8},/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"BP" = (/obj/structure/interactive/computer/console/medical{dir = 4},/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"CV" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"Dr" = (/obj/structure/interactive/door/airlock/syndicate,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"Hn" = (/obj/structure/interactive/chair,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"HZ" = (/obj/marker/map_node,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"Iu" = (/obj/structure/interactive/wire/yellow,/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"II" = (/obj/structure/interactive/potted_plant/office,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"PL" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"Qo" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
-"RR" = (/obj/structure/interactive/door/airlock/syndicate,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/syndicate_research_outpost)
-"Sr" = (/obj/structure/interactive/power/apc{dir = 4},/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"TB" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"TN" = (/obj/marker/spawning/random/supply_crate,/obj/structure/table/reinforced/steel/dark,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"TP" = (/obj/marker/map_node,/obj/structure/interactive/wire/green,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"Vq" = (/obj/structure/interactive/wire/green,/turf/simulated/wall/metal/shuttle/dark,/area/mission/prefab/misc/syndicate_research_outpost)
-"Wp" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"Zs" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{dir = 4; icon_state = "preview"},/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/misc/syndicate_research_outpost)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/marker/map_node,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ac" = (
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ad" = (
+/obj/item/trash/random,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ae" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"af" = (
+/obj/item/clothing/neck/tie/red,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ag" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ah" = (
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ai" = (
+/obj/structure/interactive/chair{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aj" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"ak" = (
+/obj/structure/interactive/potted_plant/office,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"al" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"am" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"an" = (
+/obj/item/clothing/belt/bandolier/shotgun_20,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ao" = (
+/obj/structure/interactive/vending/syndicate/guns,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ap" = (
+/obj/structure/interactive/vending/syndicate/attachment,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aq" = (
+/obj/item/trash/syndicate,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ar" = (
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate/scientist,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"as" = (
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"at" = (
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"au" = (
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"av" = (
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aw" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ax" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ay" = (
+/mob/living/advanced/npc/syndicate/scientist,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"az" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/marker/spawning/random/supply_crate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aA" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aB" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aC" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"aD" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aE" = (
+/obj/marker/spawning/random/supply_crate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aF" = (
+/obj/marker/map_node/x5,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"aG" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aH" = (
+/obj/structure/interactive/computer/arcade/bubbletwist,
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aI" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/item/clothing/glasses/thermal,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aJ" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"aK" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aL" = (
+/obj/structure/interactive/fire_closet{
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aM" = (
+/obj/item/clothing/glasses/sun/security/red,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aN" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aO" = (
+/obj/marker/map_node/x2,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aP" = (
+/obj/structure/interactive/chair{
+	dir = 1;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aQ" = (
+/mob/living/advanced/npc/syndicate{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aR" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aS" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/bookcase,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aT" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aU" = (
+/obj/structure/interactive/bookcase{
+	icon_state = "book-1"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aV" = (
+/obj/item/clothing/mask/gas/syndicate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aW" = (
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aX" = (
+/obj/structure/interactive/bookcase{
+	icon_state = "book-4"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aY" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/marker/spawning/random/supply_crate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"aZ" = (
+/mob/living/advanced/npc/syndicate/scientist,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ba" = (
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bb" = (
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bc" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bd" = (
+/obj/marker/spawning/random/supply_crate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"be" = (
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 1;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bf" = (
+/obj/item/supply_crate/syndicate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bg" = (
+/obj/item/analyzer/armor,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bh" = (
+/obj/structure/interactive/bookcase{
+	icon_state = "book-3"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bi" = (
+/obj/item/firing_pin/electronic/iff/syndicate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bj" = (
+/obj/marker/spawning/random/supply_crate,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bk" = (
+/obj/structure/interactive/bookcase{
+	icon_state = "book-2"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bl" = (
+/obj/item/soapstone/red,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bm" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/mob/living/advanced/npc/syndicate{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bn" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bo" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bp" = (
+/obj/item/dice/d6/black,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bq" = (
+/obj/item/cell_charger,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"br" = (
+/obj/item/announcement/syndicate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bs" = (
+/obj/structure/interactive/vending/syndicate/prize,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bt" = (
+/obj/structure/interactive/vending/syndicate/medicine,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bu" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bv" = (
+/obj/item/clothing/glasses/medical_hud/advanced,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bw" = (
+/obj/item/implanter/death_alarm,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bx" = (
+/obj/structure/interactive/fire_closet,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"by" = (
+/obj/item/clothing/belt/storage/medical,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bz" = (
+/obj/structure/interactive/chair{
+	dir = 1;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 1;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bA" = (
+/obj/structure/interactive/chair,
+/mob/living/advanced/npc/syndicate/triple,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bB" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bC" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bD" = (
+/obj/structure/interactive/chair{
+	dir = 4;
+	icon_state = "chair"
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bE" = (
+/obj/structure/interactive/bed/sleeper/medical/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bF" = (
+/obj/structure/interactive/computer/console/medical{
+	dir = 4
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bG" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bH" = (
+/obj/structure/interactive/misc/computer3{
+	dir = 1
+	},
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bI" = (
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bJ" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bK" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bL" = (
+/mob/living/simple/bot/medibot/syndicate,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bM" = (
+/mob/living/advanced/npc/syndicate{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bN" = (
+/obj/structure/interactive/barricade{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bO" = (
+/mob/living/advanced/npc/syndicate/double{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bP" = (
+/turf/simulated/floor/tile/dark/er,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bQ" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile/dark/er,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bR" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/syndicate/quadruple{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bS" = (
+/obj/decal/poster/syndicate,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bT" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/obj/structure/interactive/atmospherics/fan,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bU" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bV" = (
+/turf/simulated/floor/tile,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bW" = (
+/obj/item/wet_floor_sign,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bX" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/marker/map_node/x2,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bY" = (
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"bZ" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ca" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/item/legion_core,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cb" = (
+/obj/structure/interactive/misc/computer1,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cc" = (
+/obj/structure/interactive/misc/computer4,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cd" = (
+/obj/structure/interactive/chair{
+	dir = 4;
+	icon_state = "chair"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ce" = (
+/obj/item/clothing/glasses/thermal,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cf" = (
+/obj/structure/interactive/atmospherics/vent,
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cg" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/syndicate/double{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ch" = (
+/obj/structure/interactive/chair{
+	dir = 4;
+	icon_state = "chair"
+	},
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ci" = (
+/obj/item/trash/butt,
+/obj/item/storage/cigarettes/syndicate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cj" = (
+/obj/item/clothing/mask/gas/poly/syndicate,
+/obj/structure/table/reinforced/steel/dark,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"ck" = (
+/obj/marker/objective_spawn,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cl" = (
+/mob/living/advanced/npc/syndicate{
+	dir = 1;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cm" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/crate/bodybag,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cn" = (
+/obj/structure/interactive/potted_plant/office,
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"co" = (
+/mob/living/advanced/npc/syndicate/scientist{
+	dir = 1;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cp" = (
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"cq" = (
+/obj/structure/interactive/wire/green,
+/mob/living/advanced/npc/syndicate{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"dl" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"gx" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"gB" = (
+/obj/marker/map_node,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"hc" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"kf" = (
+/obj/structure/interactive/wire/yellow,
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"lD" = (
+/obj/structure/interactive/chair{
+	dir = 8;
+	icon_state = "chair"
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"oz" = (
+/obj/marker/map_node,
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"oL" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"rs" = (
+/obj/structure/interactive/power/apc{
+	dir = 1
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"so" = (
+/obj/structure/interactive/atmospherics/vent,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"sV" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"sZ" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 8;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"tH" = (
+/obj/marker/spawning/random/supply_crate,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"tV" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark/er,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"tZ" = (
+/obj/marker/map_node,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"vK" = (
+/obj/structure/interactive/wire/yellow,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"vU" = (
+/obj/structure/interactive/power/smes{
+	dir = 1
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"xW" = (
+/obj/structure/interactive/power/smes{
+	dir = 1
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"zr" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Bo" = (
+/obj/structure/interactive/power/apc{
+	dir = 8
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"BP" = (
+/obj/structure/interactive/computer/console/medical{
+	dir = 4
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"CV" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Dr" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Hn" = (
+/obj/structure/interactive/chair,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"HZ" = (
+/obj/marker/map_node,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Iu" = (
+/obj/structure/interactive/wire/yellow,
+/obj/marker/spawning/window,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"II" = (
+/obj/structure/interactive/potted_plant/office,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"PL" = (
+/obj/structure/interactive/solar_panel,
+/obj/structure/interactive/wire/yellow,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"Qo" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"RR" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Sr" = (
+/obj/structure/interactive/power/apc{
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"TB" = (
+/obj/structure/table/reinforced/steel/dark,
+/obj/marker/spawning/random/supply_crate,
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"TN" = (
+/obj/marker/spawning/random/supply_crate,
+/obj/structure/table/reinforced/steel/dark,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"TP" = (
+/obj/marker/map_node,
+/obj/structure/interactive/wire/green,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Vq" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
+"Wp" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"Zs" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/morphing/red/dark,
+/area/mission/prefab/misc/syndicate_research_outpost)
 
 (1,1,1) = {"
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYabacacacabacacacabacacacacacacacabadacabacacacacacacabacacacacabacacacacabbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYacacacacacacacacacacacacacacacacacbYbYaebYbYbYbYbYbYaebYbYbYbYbYbYbYbYbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYacacacacacacacacacacacacacacacacacbYafagahaiahahbYakahalbYahamanaoapakbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYabacacacacaqacacabacbYbYbYbubYbYacbYbaasatatatahbYauatahavahawatatatahaeabbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYacbYbYbYbYbYbYbYaebYbYbaaxarahbYacbYazaAatatataBbYahaDahavaEatataDataGbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYacbYahahahaHahauagakbYaIatsoHZRRgBaLaMgxgxgxgxHZDrHZaOahavaEatatatatahbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYacbYakaPataDatatatahbYbaatatahbYCVbYbabIahahahakbYahgxahavaEatatatatahbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYacbYaRatatatatatataSbYahatataTbYCVbYbYrsbYbYbYbYbYaRgxahavahatatatatahbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYacbYahatatatatatataUaLahatatahbYCVbYahahahamahahbYahgxahavaVasatatataTbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYabbYahatatataWaWataXbYaYataDaGbYgBaeagataZatatahavahgxahavbaatatatatbbbYabbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYacbYahatatbcaWaAatbbbYbdahbeakbYgBbYahatatatatahavahgxahavbfatatatatbgbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYacbYahatatataWawatbhbYbYbYbYbYbuRRbYaRatatatatahavahgxahavbaatatatatbibYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYacbYahatatbjaWaWatbkbYbabablbacpHZbYahatatatatbmaLaRsoahbYaRatataKatbnbYacbYWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYabbYakatatatatatataUbYaRaPatatgxaGSrdlgxHngxgxHZDrHZaOHZDrHZgxgxgxHndlBoacbYbYWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajPLajPLajPLajbYacbYaRatatatatatataGbYahatataKgxahbYahbpbdahahahbYahgxahbYakahbababibqbYababbYWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpajajajvKvKvKvKvKvKbYacbYahboataKatatgxdlBoaEatatatgxaTbYbYbYbYbYbYbYbYahgxahbYbYbYbYbYbYbubYbYacbYWpWpWpWpWp
-WpWpWpWpWpWpWpWpajajajajbYbYbYbYkfkfIubYabbYahahbdahahahHZakbYbrasatatgxahbYakapaobsayahbYahgxahbYahbtahbtbvtHbwbYacbYWpWpWpWpWp
-WpWpWpWpWpWpaCajajaCajajbYakahbYvUvUxWbYaebubxavavavavbYDrbYbYbaatatatgxahbYaQatatatatagaNagaOahavbyatatatbzgxagaeabbYWpWpWpWpWp
-WpWpWpWpajajajajajajajaJbYaRbAbYCVCVQobYagdldlardldldlhcHZbBbYbCatataDgxaGbYbDatatatatahbYahgxahavahatatbEatBPahbYacbYWpWpWpWpWp
-aJajajajajajajajacacbGbYbYbHTBbYavaeoLbYaRgxatatatatatatatbJbYaEahahahHZakbYbdbdahahbKahbYahgxahavahaKbLatatsVbMbYacbYWpWpWpWpWp
-ajajajajajajajajbNacbObYakahatahahamIIbYakgxbPbPbPbPbPbQatbRbYavavavbYDrbYbYbSbYbYbxbYbYbYahgxaGbYaRatatbEatBPaGbYacbYWpWpWpWpWp
-ajajajajajajajajbNabacbTahaDatbUatatdlaNahtZbPbVbVbVbVbPatahahahahahahHZamahahahahahahahahahgxagaNagatboatattZahbYacbYWpWpWpWpWp
-ajajajajajajajajbNacacbTahatatatatatdlDrdlgxtVzrtVtVtVtVaOgxgxgxgxgxbWaOgxsogxgxgxaOgxbWgxgxbXcqVqdldldldldlTPakbYacbYWpWpWpWpWp
-ajajajaFajajajajbNacbGbYaRatataKatatsZBoahatbPbVbVbVbVbPgxahahbKahahahahahahahahahahahbKHZahahagbYbYbYbYbYbYDrbYbYacbYWpWpWpWpWp
-ajajajajajajajajbNacacbTahatatatatatahaNahatbPbPbPbPbVbPgxahbYbYavavavavavavavavavavavbYDrbYbYaebYahbwahayayHZbBbYacbYWpWpWpWpWp
-ajajajajajajajajbNabacbTahatatbUatatahaNahbUbPbZbVbVbVbPgxbbbYahaQahahahahahaTahahahahahHZahbYabbYcaaAatatatgxaGbYacbYWpWpWpWpWp
-ajajajajajajajajbNacbObYakahatatahahakbYakatbPbPbPbPbPbPgxahbYahataKatatatatatatatatatatgxaGbYacbYahatbEatbFgxbbbYacbYWpWpWpWpWp
-aJajajajajajajajacacbGbYbYcbccaWahbYbYbYbDatatatatatatatgxaGbYbdatcdaWaWaWawatatcdceaWaWlDahbYacbYahcfatatatsVaTbYacbYWpWpWpWpWp
-WpWpajajajajajajajajajaJbYaRatcgahbYWpbYaiahahahahahahahHZakbYahatchaWaWaWaAatatcdaWciaWlDahbYacbYahatbEatbFgxahbYacbYWpWpWpWpWp
-WpWpWpWpajajaCajajaCajajbYakahahakbYWpbYbYbYavavavavavbYDrbYbYaRatatatatatatatatatatataDgxaGbYacSrZsgxgxgxgxozahaeabbYWpWpWpWpWp
-WpWpWpWpWpajajajajajajajbYbYbYbYbYbYWpWpbYbababaaEbacjayHZahbYahakahbKahahahckahahbKahclHZIIBoacbYahbyahbeahcmcnbYacbYWpWpWpWpWp
-WpWpWpWpWpWpajajajajajajajajajajajWpWpWpbYahaKaAatatatatgxahbYbYbYbYbYbYbYbYbYbYbYbYbYbYaebYbYacbYbYbYbYbYbYbYbYbYacbYWpWpWpWpWp
-WpWpWpWpWpWpWpWpajajajajajajajajWpWpWpWpbYaRatatatatatattZahaeabacacacacacabacacacacacacabacacabacacacacacacacacacabbYWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpajajajajajWpWpWpWpWpbYbbatatatatatatgxaGbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpajajWpWpWpWpWpWpbYahatatatatatcosVbBbYWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYbaaEaEahahahbaTNbabYWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpbYbYbYbYbYbYbYbYrsbYbYWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
-WpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWpWp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aJ
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aJ
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(2,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(3,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(4,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aF
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(5,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(6,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(7,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aC
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aC
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(8,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(9,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+ac
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+ac
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(10,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aC
+aj
+ac
+ac
+ab
+ac
+ac
+ac
+ab
+ac
+ac
+aj
+aC
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(11,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+bG
+bO
+ac
+ac
+bG
+ac
+ac
+bO
+bG
+aj
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(12,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aJ
+bY
+bY
+bT
+bT
+bY
+bT
+bT
+bY
+bY
+aJ
+aj
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(13,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+bY
+bY
+bY
+bY
+ak
+ah
+ah
+aR
+ah
+ah
+ak
+bY
+bY
+bY
+bY
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(14,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+PL
+PL
+PL
+PL
+PL
+PL
+PL
+PL
+vK
+bY
+ak
+aR
+bH
+ah
+aD
+at
+at
+at
+at
+ah
+cb
+aR
+ak
+bY
+aj
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(15,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+vK
+bY
+ah
+bA
+TB
+at
+at
+at
+at
+at
+at
+at
+cc
+at
+ah
+bY
+aj
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(16,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+PL
+PL
+PL
+PL
+PL
+PL
+PL
+PL
+vK
+bY
+bY
+bY
+bY
+ah
+bU
+at
+aK
+at
+bU
+at
+aW
+cg
+ah
+bY
+aj
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(17,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+vK
+kf
+vU
+CV
+av
+ah
+at
+at
+at
+at
+at
+ah
+ah
+ah
+ak
+bY
+aj
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(18,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+PL
+PL
+PL
+PL
+PL
+PL
+PL
+PL
+vK
+kf
+vU
+CV
+ae
+am
+at
+at
+at
+at
+at
+ah
+bY
+bY
+bY
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(19,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+vK
+Iu
+xW
+Qo
+oL
+II
+dl
+dl
+sZ
+ah
+ah
+ak
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(20,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+aN
+Dr
+Bo
+aN
+aN
+bY
+bY
+bY
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(21,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ac
+ac
+ab
+ac
+ac
+ac
+ac
+ac
+ab
+ac
+ac
+ac
+ab
+ac
+ac
+ab
+ae
+ag
+aR
+ak
+ah
+dl
+ah
+ah
+ah
+ak
+bD
+ai
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(22,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+ac
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bu
+dl
+gx
+gx
+tZ
+gx
+at
+at
+bU
+at
+at
+ah
+bY
+ba
+ah
+aR
+bb
+ah
+ba
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(23,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+ac
+bY
+ah
+ak
+aR
+ah
+ah
+ah
+ah
+ah
+ak
+aR
+ah
+ah
+bx
+dl
+at
+bP
+bP
+tV
+bP
+bP
+bP
+bP
+at
+ah
+av
+ba
+aK
+at
+at
+at
+aE
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(24,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+ac
+bY
+ah
+aP
+at
+at
+at
+at
+at
+at
+at
+at
+bo
+ah
+av
+ar
+at
+bP
+bV
+zr
+bV
+bP
+bZ
+bP
+at
+ah
+av
+ba
+aA
+at
+at
+at
+aE
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(25,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ac
+ac
+ac
+bY
+ah
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+bd
+av
+dl
+at
+bP
+bV
+tV
+bV
+bP
+bV
+bP
+at
+ah
+av
+aE
+at
+at
+at
+at
+ah
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(26,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+aq
+bY
+aH
+aD
+at
+at
+at
+bc
+at
+bj
+at
+at
+aK
+ah
+av
+dl
+at
+bP
+bV
+tV
+bV
+bP
+bV
+bP
+at
+ah
+av
+ba
+at
+at
+at
+at
+ah
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(27,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+ac
+bY
+ah
+at
+at
+at
+aW
+aW
+aW
+aW
+at
+at
+at
+ah
+av
+dl
+at
+bP
+bV
+tV
+bV
+bV
+bV
+bP
+at
+ah
+av
+cj
+at
+at
+at
+at
+ah
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(28,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+ac
+bY
+au
+at
+at
+at
+aW
+aA
+aw
+aW
+at
+at
+at
+ah
+bY
+hc
+at
+bQ
+bP
+tV
+bP
+bP
+bP
+bP
+at
+ah
+bY
+ay
+at
+at
+at
+co
+ba
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(29,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ac
+ac
+ab
+ae
+ag
+at
+at
+at
+at
+at
+at
+at
+at
+at
+gx
+HZ
+Dr
+HZ
+at
+at
+at
+aO
+gx
+gx
+gx
+gx
+gx
+HZ
+Dr
+HZ
+gx
+tZ
+gx
+sV
+TN
+rs
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(30,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+ac
+bY
+ak
+ah
+aS
+aU
+aX
+bb
+bh
+bk
+aU
+aG
+dl
+ak
+bY
+bB
+bJ
+bR
+ah
+gx
+ah
+ah
+bb
+ah
+aG
+ak
+bY
+ah
+ah
+ah
+aG
+bB
+ba
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(31,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+bY
+bY
+bY
+bY
+bY
+aL
+bY
+bY
+bY
+bY
+bY
+bY
+Bo
+bY
+bY
+bY
+bY
+bY
+ah
+gx
+ah
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+ae
+bY
+bY
+bY
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(32,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+bY
+ba
+aI
+ba
+ah
+ah
+aY
+bd
+bY
+ba
+aR
+ah
+aE
+br
+ba
+bC
+aE
+av
+ah
+gx
+bK
+bY
+ah
+ah
+bd
+ah
+aR
+ah
+bY
+ab
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(33,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+bY
+ax
+at
+at
+at
+at
+at
+ah
+bY
+ba
+aP
+at
+at
+as
+at
+at
+ah
+av
+ah
+gx
+ah
+av
+aQ
+at
+at
+at
+at
+ak
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(34,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+bu
+ar
+so
+at
+at
+at
+aD
+be
+bY
+bl
+at
+at
+at
+at
+at
+at
+ah
+av
+ah
+gx
+ah
+av
+ah
+aK
+cd
+ch
+at
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(35,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+bY
+ah
+HZ
+ah
+aT
+ah
+aG
+ak
+bY
+ba
+at
+aK
+at
+at
+at
+aD
+ah
+bY
+ah
+bW
+ah
+av
+ah
+at
+aW
+aW
+at
+bK
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(36,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+ac
+ac
+bY
+bY
+RR
+bY
+bY
+bY
+bY
+bY
+bu
+cp
+gx
+gx
+gx
+gx
+gx
+gx
+HZ
+Dr
+HZ
+aO
+ah
+av
+ah
+at
+aW
+aW
+at
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(37,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ac
+ac
+ac
+ac
+gB
+CV
+CV
+CV
+gB
+gB
+RR
+HZ
+aG
+ah
+aT
+ah
+ah
+aG
+ak
+bY
+am
+gx
+ah
+av
+ah
+at
+aW
+aW
+at
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(38,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ad
+bY
+bY
+bY
+bY
+aL
+bY
+bY
+bY
+ae
+bY
+bY
+bY
+Sr
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+ah
+so
+ah
+av
+ah
+at
+aw
+aA
+at
+ah
+bY
+ab
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(39,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+af
+ba
+az
+aM
+ba
+bY
+ah
+ag
+ah
+aR
+ah
+dl
+ah
+bY
+ak
+aQ
+bD
+bd
+bS
+ah
+gx
+ah
+av
+aT
+at
+at
+at
+at
+ck
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(40,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ae
+ag
+as
+aA
+gx
+bI
+rs
+ah
+at
+at
+at
+at
+gx
+bp
+bY
+ap
+at
+at
+bd
+bY
+ah
+gx
+ah
+av
+ah
+at
+at
+at
+at
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(41,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ah
+at
+at
+gx
+ah
+bY
+ah
+aZ
+at
+at
+at
+Hn
+bd
+bY
+ao
+at
+at
+ah
+bY
+ah
+gx
+ah
+av
+ah
+at
+cd
+cd
+at
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(42,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ai
+at
+at
+gx
+ah
+bY
+am
+at
+at
+at
+at
+gx
+ah
+bY
+bs
+at
+at
+ah
+bx
+ah
+aO
+ah
+av
+ah
+at
+ce
+aW
+at
+bK
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(43,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ah
+at
+at
+gx
+ah
+bY
+ah
+at
+at
+at
+at
+gx
+ah
+bY
+ay
+at
+at
+bK
+bY
+ah
+gx
+ah
+av
+ah
+at
+aW
+ci
+at
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(44,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ah
+ah
+aB
+HZ
+ak
+bY
+ah
+ah
+ah
+ah
+bm
+HZ
+ah
+bY
+ah
+ag
+ah
+ah
+bY
+ah
+bW
+bK
+bY
+ah
+at
+aW
+aW
+aD
+cl
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(45,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+bY
+bY
+bY
+Dr
+bY
+bY
+bY
+av
+av
+av
+aL
+Dr
+bY
+bY
+bY
+aN
+bY
+bY
+bY
+ah
+gx
+HZ
+Dr
+HZ
+gx
+lD
+lD
+gx
+HZ
+ae
+ab
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(46,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ak
+au
+ah
+HZ
+ah
+aR
+ah
+ah
+ah
+ah
+aR
+HZ
+ah
+ah
+ah
+ag
+ah
+ah
+ah
+ah
+gx
+ah
+bY
+ah
+aG
+ah
+ah
+aG
+II
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(47,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ae
+ah
+at
+aD
+aO
+gx
+gx
+gx
+gx
+gx
+gx
+so
+aO
+gx
+gx
+gx
+aO
+gx
+gx
+gx
+gx
+bX
+ah
+bY
+bY
+bY
+bY
+bY
+bY
+Bo
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(48,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+al
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+HZ
+ah
+ah
+ah
+ah
+ah
+ah
+aG
+ag
+cq
+ag
+ae
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(49,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+bY
+av
+av
+av
+av
+av
+av
+av
+av
+av
+bY
+Dr
+bY
+bY
+bY
+av
+av
+av
+bY
+aN
+Vq
+bY
+bY
+bY
+bY
+bY
+bY
+Sr
+bY
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(50,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ah
+ah
+aE
+aE
+aE
+ah
+aV
+ba
+bf
+ba
+aR
+HZ
+ak
+bY
+ah
+by
+ah
+ah
+aR
+ag
+dl
+bY
+ah
+ca
+ah
+ah
+ah
+Zs
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(51,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+am
+aw
+at
+at
+at
+at
+as
+at
+at
+at
+at
+gx
+ah
+bY
+bt
+at
+at
+aK
+at
+at
+dl
+bY
+bw
+aA
+at
+cf
+at
+gx
+by
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(52,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+bY
+an
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+gx
+ba
+bY
+ah
+at
+at
+bL
+at
+bo
+dl
+bY
+ah
+at
+bE
+at
+bE
+gx
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(53,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ao
+at
+aD
+at
+at
+at
+at
+at
+at
+at
+aK
+gx
+ba
+bY
+bt
+at
+bE
+at
+bE
+at
+dl
+bY
+ay
+at
+at
+at
+at
+gx
+be
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(54,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ap
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+Hn
+bi
+bY
+bv
+bz
+at
+at
+at
+at
+dl
+bY
+ay
+at
+bF
+at
+bF
+gx
+ah
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(55,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+ak
+ah
+aG
+ah
+ah
+ah
+aT
+bb
+bg
+bi
+bn
+dl
+bq
+bu
+tH
+gx
+BP
+sV
+BP
+tZ
+TP
+Dr
+HZ
+gx
+gx
+sV
+gx
+oz
+cm
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(56,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ac
+bY
+bY
+ae
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+Bo
+bY
+bY
+bw
+ag
+ah
+bM
+aG
+ah
+ak
+bY
+bB
+aG
+bb
+aT
+ah
+ah
+cn
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(57,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+ab
+ac
+ac
+ab
+ac
+ac
+ac
+ac
+ac
+ab
+ac
+ac
+ac
+ac
+ab
+bY
+bY
+ae
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+ae
+bY
+bY
+ac
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(58,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+ab
+ac
+ac
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+ac
+ac
+ab
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(59,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(60,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(61,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(62,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(63,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+"}
+(64,1,1) = {"
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
 "}

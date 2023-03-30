@@ -1,44 +1,407 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/minivan)
-"c" = (/obj/structure/interactive/door/airlock/external,/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/minivan)
-"d" = (/obj/structure/interactive/door/airlock/external,/turf/simulated/floor/tile/shuttle,/area/shuttle/minivan)
-"e" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle,/area/shuttle/minivan)
-"f" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/minivan)
-"h" = (/obj/structure/shuttle_engine/propulsion/right{dir = 1; icon_state = "propulsion_r"},/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"i" = (/obj/structure/shuttle_engine/propulsion/left{dir = 1; icon_state = "propulsion_l"},/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"j" = (/turf/simulated/wall/metal/shuttle,/area/shuttle/minivan)
-"k" = (/obj/structure/shuttle_engine/heater{dir = 1; icon_state = "heater"},/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"m" = (/turf/simulated/floor/tile/shuttle,/area/shuttle/minivan)
-"n" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"o" = (/mob/living/simple/turret/nanotrasen/immortal{icon_state = "active"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"p" = (/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"q" = (/mob/living/simple/turret/nanotrasen/immortal{icon_state = "active"; dir = 8},/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"r" = (/mob/living/simple/turret/nanotrasen/immortal{icon_state = "active"; dir = 4},/turf/simulated/floor/plating/shuttle,/area/shuttle/minivan)
-"t" = (/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/minivan)
-"u" = (/obj/structure/interactive/chair/shuttle,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/minivan)
-"v" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/minivan)
-"w" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/minivan)
-"x" = (/obj/structure/interactive/chair/shuttle,/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/minivan)
-"y" = (/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/minivan)
-"z" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/minivan)
-"A" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile/shuttle,/area/shuttle/minivan)
-"B" = (/obj/structure/interactive/computer/console/flight_control{dir = 1; icon_state = "computer"},/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/minivan)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/minivan)
+"c" = (
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/minivan)
+"d" = (
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/minivan)
+"e" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/minivan)
+"f" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/minivan)
+"h" = (
+/obj/structure/shuttle_engine/propulsion/right{
+	dir = 1;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"i" = (
+/obj/structure/shuttle_engine/propulsion/left{
+	dir = 1;
+	icon_state = "propulsion_l"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"j" = (
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/minivan)
+"k" = (
+/obj/structure/shuttle_engine/heater{
+	dir = 1;
+	icon_state = "heater"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"m" = (
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/minivan)
+"n" = (
+/obj/marker/spawning/window/shuttle,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"o" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 1
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"p" = (
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"q" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 8
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"r" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 4
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"t" = (
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/minivan)
+"u" = (
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/minivan)
+"v" = (
+/obj/shuttle_controller,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/minivan)
+"w" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/minivan)
+"x" = (
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/minivan)
+"y" = (
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/minivan)
+"z" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	icon_state = "preview";
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/minivan)
+"A" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/minivan)
+"B" = (
+/obj/structure/interactive/computer/console/flight_control{
+	dir = 1;
+	icon_state = "computer"
+	},
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/minivan)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaa
-aaaaaaoaaoaaaaaa
-aaajhijppjhijaaa
-aaajjkjccjkjjaaa
-aaajjjettejjjaaa
-aaaanuAttAunaaaa
-aaaanumttmunaaaa
-aaaanumvtmunaaaa
-aaaanuzttzunaaaa
-aaaabbbttbbbaaaa
-aaaappdttdppaaaa
-aaaaqbfttfbraaaa
-aaaaanwxxwnaaaaa
-aaaaanyBBynaaaaa
-aaaaabnnnnbaaaaa
-aaaaaaaaaaaaaaaa
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+j
+j
+j
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+h
+j
+j
+n
+n
+n
+n
+b
+p
+q
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+i
+k
+j
+u
+u
+u
+u
+b
+p
+b
+n
+n
+b
+a
+"}
+(7,1,1) = {"
+a
+o
+j
+j
+e
+A
+m
+m
+z
+b
+d
+f
+w
+y
+n
+a
+"}
+(8,1,1) = {"
+a
+a
+p
+c
+t
+t
+t
+v
+t
+t
+t
+t
+x
+B
+n
+a
+"}
+(9,1,1) = {"
+a
+a
+p
+c
+t
+t
+t
+t
+t
+t
+t
+t
+x
+B
+n
+a
+"}
+(10,1,1) = {"
+a
+o
+j
+j
+e
+A
+m
+m
+z
+b
+d
+f
+w
+y
+n
+a
+"}
+(11,1,1) = {"
+a
+a
+h
+k
+j
+u
+u
+u
+u
+b
+p
+b
+n
+n
+b
+a
+"}
+(12,1,1) = {"
+a
+a
+i
+j
+j
+n
+n
+n
+n
+b
+p
+r
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+j
+j
+j
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}

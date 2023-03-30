@@ -1,10 +1,44 @@
-"a" = (/obj/structure/interactive/storage/trash_pile/low_chance,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
-"c" = (/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/interactive/storage/trash_pile/low_chance,
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
+"c" = (
+/turf/simulated/floor/colored/dirt/path,
+/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
-accca
-accca
-accca
-accca
-accca
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+c
+c
+c
+c
+c
+"}
+(3,1,1) = {"
+c
+c
+c
+c
+c
+"}
+(4,1,1) = {"
+c
+c
+c
+c
+c
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
 "}

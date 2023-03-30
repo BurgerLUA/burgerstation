@@ -1,43 +1,400 @@
-"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"b" = (/obj/structure/interactive/door/airlock/external,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/xeno)
-"c" = (/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/xeno)
-"d" = (/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/xeno)
-"e" = (/obj/structure/interactive/chair/shuttle,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/xeno)
-"f" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/xeno)
-"g" = (/obj/structure/shuttle_engine/propulsion/right{dir = 1; icon_state = "propulsion_r"},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"h" = (/obj/structure/shuttle_engine/propulsion{dir = 1; icon_state = "propulsion"},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"i" = (/obj/structure/shuttle_engine/propulsion/left{dir = 1; icon_state = "propulsion_l"},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"j" = (/turf/simulated/wall/metal/shuttle,/area/shuttle/xeno)
-"k" = (/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/xeno)
-"l" = (/obj/structure/shuttle_engine/heater{dir = 1; icon_state = "heater"},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"m" = (/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
-"n" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"o" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/xeno)
-"p" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
-"q" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/xeno)
-"r" = (/obj/structure/interactive/door/airlock/external,/turf/simulated/floor/tile/shuttle/dark,/area/shuttle/xeno)
-"s" = (/mob/living/simple/turret/nanotrasen/immortal{icon_state = "active"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"t" = (/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"u" = (/mob/living/simple/turret/nanotrasen/immortal,/turf/simulated/floor/plating/shuttle,/area/shuttle/xeno)
-"v" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle,/area/shuttle/xeno)
-"w" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/xeno)
-"z" = (/obj/structure/interactive/computer/console/flight_control{dir = 1; icon_state = "computer"},/turf/simulated/floor/tile/shuttle,/area/shuttle/xeno)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/xeno)
+"c" = (
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/xeno)
+"d" = (
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"e" = (
+/obj/structure/interactive/chair/shuttle,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/xeno)
+"f" = (
+/obj/shuttle_controller,
+/turf/simulated/floor/tile/shuttle/nanotrasen,
+/area/shuttle/xeno)
+"g" = (
+/obj/structure/shuttle_engine/propulsion/right{
+	dir = 1;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"h" = (
+/obj/structure/shuttle_engine/propulsion{
+	dir = 1;
+	icon_state = "propulsion"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"i" = (
+/obj/structure/shuttle_engine/propulsion/left{
+	dir = 1;
+	icon_state = "propulsion_l"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"j" = (
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/xeno)
+"k" = (
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/xeno)
+"l" = (
+/obj/structure/shuttle_engine/heater{
+	dir = 1;
+	icon_state = "heater"
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"m" = (
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/xeno)
+"n" = (
+/obj/marker/spawning/window/shuttle,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"o" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	icon_state = "preview";
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"p" = (
+/obj/structure/interactive/lighting/fixture/tube,
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/xeno)
+"q" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"r" = (
+/obj/structure/interactive/door/airlock/external,
+/turf/simulated/floor/tile/shuttle/dark,
+/area/shuttle/xeno)
+"s" = (
+/mob/living/simple/turret/nanotrasen/immortal{
+	icon_state = "active";
+	dir = 1
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"t" = (
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"u" = (
+/mob/living/simple/turret/nanotrasen/immortal,
+/turf/simulated/floor/plating/shuttle,
+/area/shuttle/xeno)
+"v" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/xeno)
+"w" = (
+/obj/structure/interactive/status_display/local_display,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/xeno)
+"z" = (
+/obj/structure/interactive/computer/console/flight_control{
+	dir = 1;
+	icon_state = "computer"
+	},
+/turf/simulated/floor/tile/shuttle,
+/area/shuttle/xeno)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaa
-aaaaaasttsaaaaaa
-aajghijbbjghijaa
-aajjljvccvjljjaa
-aajjjjdccdjjjjaa
-aaneepmccmpeenaa
-aaneemmccmmeenaa
-aaneemmfcmmeenaa
-aaneemmccmmeenaa
-aannnkoccoknnnaa
-aaaaukwccwkuaaaa
-aaaatrqeeqrtaaaa
-aaaaakkzzkkaaaaa
-aaaaaaknnkaaaaaa
-aaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaa
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+j
+j
+j
+n
+n
+n
+n
+n
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+g
+j
+j
+e
+e
+e
+e
+n
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+h
+l
+j
+e
+e
+e
+e
+n
+u
+t
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+i
+j
+j
+p
+m
+m
+m
+k
+k
+r
+k
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+s
+j
+v
+d
+m
+m
+m
+m
+o
+w
+q
+k
+k
+a
+a
+"}
+(8,1,1) = {"
+a
+t
+b
+c
+c
+c
+c
+f
+c
+c
+c
+e
+z
+n
+a
+a
+"}
+(9,1,1) = {"
+a
+t
+b
+c
+c
+c
+c
+c
+c
+c
+c
+e
+z
+n
+a
+a
+"}
+(10,1,1) = {"
+a
+s
+j
+v
+d
+m
+m
+m
+m
+o
+w
+q
+k
+k
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+g
+j
+j
+p
+m
+m
+m
+k
+k
+r
+k
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+h
+l
+j
+e
+e
+e
+e
+n
+u
+t
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+i
+j
+j
+e
+e
+e
+e
+n
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+j
+j
+j
+n
+n
+n
+n
+n
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
