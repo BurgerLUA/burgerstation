@@ -11,7 +11,8 @@
 			reinforce_grab(caller)
 			return TRUE
 
-	if(parent_inventory) //Wielding an object.
+	 //Wielding an object.
+	if(parent_inventory)
 		var/atom/top_object = parent_inventory.get_top_object()
 		if(object != top_object && top_object.click_on_object_alt(caller,object,location,control,params))
 			return TRUE
@@ -47,7 +48,7 @@
 	if(istype(object.loc,/obj/item/plate)) //Plate fuckery.
 		return src.click_on_object(caller,object.loc,location,control,params)
 
-	//Alt clicking with an empty hand.
+	//Alt clicking a movable, rotatable with an empty hand.
 	if(!top_object && caller.attack_flags & CONTROL_MOD_DISARM && ismovable(object))
 		var/atom/movable/M = object
 		if(!M.anchored && M.can_rotate)

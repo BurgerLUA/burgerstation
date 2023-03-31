@@ -156,7 +156,7 @@
 				dash_amount = 0
 				return TRUE
 			glide_size = step_size/adjust_delay
-			src.set_dir(final_direction)
+			//src.set_dir(final_direction)
 			if(!Move(get_step(src,final_direction)))
 				dash_amount = 0
 			else

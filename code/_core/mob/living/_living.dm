@@ -86,6 +86,7 @@
 	var/turf/old_turf //Last turf someone has been in.
 
 	var/stun_angle = 90
+	var/stun_elevation = -14
 
 	var/boss = FALSE
 	var/boss_music
@@ -108,6 +109,7 @@
 	var/horizontal = FALSE //Read only value to check if the mob's sprite is horizontal.
 	var/grabbed = FALSE //Read only value to check if the mob is grabbed.
 
+	//For transform effects. Read only. Use get_elevation and get_turn to change.
 	var/elevation = 0
 	var/turn = 0
 

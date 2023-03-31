@@ -5,11 +5,10 @@
 	. = 0
 	if(on_table)
 		. += 10
-
 	if(on_liquid > 0)
 		. -= on_liquid
 	else if(horizontal)
-		. -= 14
+		. += stun_elevation
 
 /mob/living/proc/get_turn()
 	. = 0

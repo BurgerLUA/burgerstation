@@ -158,8 +158,6 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/sleep_on_idle = TRUE
 
-	var/passive = FALSE
-
 	var/last_movement_proc = "none"
 
 	var/ai/master_ai

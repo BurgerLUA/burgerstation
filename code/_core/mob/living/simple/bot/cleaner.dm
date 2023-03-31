@@ -19,88 +19,6 @@
 
 	health_base = 200
 
-	var/turn_mode = 0
-
-	var/turn_angle = 90
-
-/mob/living/simple/bot/cleaner/Move(var/atom/NewLoc,var/Dir=0x0,var/step_x=0,var/step_y=0)
-
-	if(!ai)
-		return ..()
-
-	if(ai.last_movement_proc == "cleaning")
-		if(turn_mode > 0)
-			if(turn_mode % 2) //Every odd, turn and don't move.
-				src.set_dir(turn(src.dir,turn_angle))
-				if(turn_angle == 180 || turn_angle == -180)
-					turn_angle = pick(-90.90)
-				turn_mode--
-				return TRUE
-			else
-				turn_mode--
-		else if(turn_mode == 0)
-			turn_mode--
-
-	. = ..()
-
-	if(.)
-
-		if(item_contents >= 40)
-			return .
-
-		var/sucked = FALSE
-		if(. && is_turf(loc))
-			var/turf/T = loc
-			var/limit = 10
-			for(var/obj/item/I in T.contents)
-				if(limit <= 0)
-					break
-				if(item_contents >= 40)
-					break
-				if(I.anchored)
-					continue
-				if(I.loc != T)
-					continue
-				I.force_move(src)
-				sucked = TRUE
-				item_contents++
-				limit--
-
-			for(var/obj/effect/cleanable/C in T.contents)
-				qdel(C)
-
-			if(sucked)
-				play_sound('sound/effects/portal_suck.ogg',T)
-				next_sell = max(next_sell,world.time + SECONDS_TO_DECISECONDS(10))
-
-	else if(ai.last_movement_proc == "cleaning") //failed.
-
-		var/turf/T_right = get_step(src,turn(src.dir,-90))
-		var/turf/T_left = get_step(src,turn(src.dir,90))
-
-		if(!T_right || T_right.density || T_right.has_dense_atom)
-			T_right = null
-
-		if(!T_left || T_left.density || T_left.has_dense_atom)
-			T_left = null
-
-		if(T_right && T_left)
-			turn_angle = -turn_angle
-		else if(!T_right && !T_left)
-			turn_angle = 180
-		else if(T_right)
-			turn_angle = -90
-		else if(T_left)
-			turn_angle = 90
-
-		if(turn_mode > 0)
-			turn_mode = 3
-		else
-			turn_mode = 3
-
-
-
-
 /mob/living/simple/bot/cleaner/post_death()
 
 	. = ..()
@@ -120,7 +38,7 @@
 
 	. = ..()
 
-	if(!qdeleting && next_sell >= world.time)
+	if(!qdeleting && (next_sell >= world.time || item_contents >= 40))
 
 		var/total_value = 0
 		for(var/obj/item/I in src.contents)
@@ -142,3 +60,32 @@
 
 		next_sell = world.time + SECONDS_TO_DECISECONDS(60)
 		item_contents = 0
+
+/mob/living/simple/bot/cleaner/post_move(var/atom/old_loc)
+
+	. = ..()
+
+	if(loc != old_loc && item_contents < 40 && loc && is_turf(loc))
+		var/sucked = FALSE
+		var/turf/T = loc
+		var/limit = 10
+		for(var/obj/item/I in T.contents)
+			if(limit <= 0)
+				break
+			if(item_contents >= 40)
+				break
+			if(I.anchored)
+				continue
+			if(I.loc != T)
+				continue
+			I.force_move(src)
+			sucked = TRUE
+			item_contents++
+			limit--
+
+		for(var/obj/effect/cleanable/C in T.contents)
+			qdel(C)
+
+		if(sucked)
+			play_sound('sound/effects/portal_suck.ogg',T)
+			next_sell = max(next_sell,world.time + SECONDS_TO_DECISECONDS(10))

@@ -38,6 +38,9 @@
 		PAINCRIT = TRUE
 	)
 
+	stun_angle = 0
+	stun_elevation = 0
+
 /mob/living/simple/turret/face_atom(var/atom/A)
 	return set_dir(get_dir(src,A))
 
@@ -267,66 +270,54 @@
 	icon_state = "dead"
 	return ..()
 
-
-
-
-
-
-
 /mob/living/simple/turret/ai_core
 	name = "ai core turret"
 	icon = 'icons/mob/living/simple/turret_nanotrasen.dmi'
-	icon_state = "closed" //Just for map spawn.
+	icon_state = "closed"
 
 	iff_tag = "Silicon"
 	loyalty_tag = "Silicon"
 
 	level = 20
-	var/image/tracked_cover_overlay
 
 	stored_weapon = /obj/item/weapon/ranged/energy/gatling/ai_core
+
+	health_base = 250
+
+/mob/living/simple/turret/ai_core/post_death()
+	. = ..()
+	update_sprite()
+	icon_state = "opened"
 
 /mob/living/simple/turret/ai_core/Finalize()
 	. = ..()
 	update_sprite()
 
-/mob/living/simple/turret/ai_core/update_icon()
-	. = ..()
-	if(dead)
-		icon_state = "standard_broken"
-	else
-		icon_state = "standard_lethal"
-
 /mob/living/simple/turret/ai_core/update_underlays()
 	. = ..()
-	var/image/I = new/image(icon,"base")
-	add_underlay(I)
+	var/image/I1 = new/image(icon,dead ? "standard_broken" : "standard_lethal")
+	add_underlay(I1)
+	var/image/I2 = new/image(icon,"base")
+	add_underlay(I2)
 
-/mob/living/simple/turret/ai_core/update_overlays()
-	. = ..()
-	var/image/I = new/image(icon,"closed")
-	add_overlay(I)
-	tracked_cover_overlay = I
+
+
 
 /mob/living/simple/turret/ai_core/proc/open()
-	if(!tracked_cover_overlay)
-		return TRUE
-	tracked_cover_overlay.icon_state = "opened"
-	flick("opening",tracked_cover_overlay)
+	icon_state = "opened"
+	flick("opening",src)
 	src.add_status_effect(PARALYZE,magnitude=100,duration=10,force=TRUE,stealthy=TRUE,bypass_limits=TRUE)
 	return TRUE
 
 /mob/living/simple/turret/ai_core/proc/close()
-	if(!tracked_cover_overlay)
-		return TRUE
-	tracked_cover_overlay.icon_state = "closed"
-	flick("closing",tracked_cover_overlay)
+	icon_state = "closed"
+	flick("closing",src)
 	src.add_status_effect(PARALYZE,magnitude=100,duration=10,force=TRUE,stealthy=TRUE,bypass_limits=TRUE)
 	return TRUE
 
 /mob/living/simple/turret/ai_core/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 
-	if(tracked_cover_overlay.icon_state == "closed")
+	if(icon_state == "closed")
 		open()
 		return TRUE
 
@@ -337,5 +328,5 @@
 	. = ..()
 
 	if(. && !dead)
-		if(tracked_cover_overlay.icon_state == "opened" && !ai.objective_attack)
+		if(icon_state == "opened" && !ai.objective_attack)
 			close()

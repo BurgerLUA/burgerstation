@@ -30,7 +30,7 @@
 		owner.resist()
 		return TRUE
 
-	if(!passive)
+	if(aggression <= 0)
 		if(!master_ai) //No objective finding if you belong to a master.
 			objective_ticks += tick_rate
 			var/actual_objective_delay = get_objective_delay()
@@ -155,24 +155,31 @@
 				src.set_master_ai(null)
 		else
 			if(current_turf == get_turf(owner) && (!objective_attack || get_dist(owner,objective_attack) > 1)) //Did not move even though it was supposed to move.
+				on_movement_fail()
 				if(length(astar_path_current))
 					if(frustration_astar_path_threshold > 0) frustration_astar_path++
 				else if(length(node_path_current))
 					if(frustration_node_path_threshold > 0) frustration_node_path++
-				else if(frustration_move_threshold)
-					frustration_move++
+				else
+					if(frustration_move_threshold > 0) frustration_move++
 				if(debug) log_debug("[src.get_debug_name()] tried moving, but couldn't.")
-			else if(should_remove_frustration)
-				if(length(astar_path_current))
-					if(frustration_astar_path_threshold > 0) frustration_astar_path_threshold = max(0,frustration_astar_path_threshold-1)
-				else if(length(node_path_current))
-					if(frustration_node_path_threshold > 0) frustration_node_path_threshold = max(0,frustration_node_path_threshold-1)
-				else if(frustration_move_threshold)
-					frustration_move = max(0,frustration_move-1)
-
-
+			else
+				on_movement_pass()
+				if(should_remove_frustration)
+					if(length(astar_path_current))
+						if(frustration_astar_path_threshold) frustration_astar_path_threshold = max(0,frustration_astar_path_threshold-1)
+					else if(length(node_path_current))
+						if(frustration_node_path_threshold) frustration_node_path_threshold = max(0,frustration_node_path_threshold-1)
+					else
+						if(frustration_move_threshold) frustration_move = max(0,frustration_move-1)
 
 	return TRUE
+
+/ai/proc/on_movement_pass()
+	return TRUE
+
+/ai/proc/on_movement_fail()
+
 
 /ai/proc/get_objective_delay() //In ticks.
 

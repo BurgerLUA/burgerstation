@@ -32,6 +32,9 @@
 
 /obj/item/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
+	if(caller.attack_flags & CONTROL_MOD_DISARM)
+		return src.click_self(caller,location,control,params)
+
 	if(is_inventory(object) && additional_clothing_parent)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT

@@ -6,8 +6,5 @@
 	aggression = 0
 	assistance = 0
 
-	passive = TRUE
-
-
 /ai/pet/low_roam
 	roaming_distance = 2
