@@ -43,6 +43,7 @@ obj/structure/interactive/atmospherics/air_alarm
 	plane = PLANE_OBJ
 
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
+	try_attach_to()
 	setup_dir_offsets()
 	return ..()
 

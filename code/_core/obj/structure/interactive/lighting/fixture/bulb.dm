@@ -14,6 +14,9 @@
 
 	dir_offset = 2
 
+/obj/structure/interactive/lighting/fixture/bulb/Initialize()
+	. = ..()
+	try_attach_to(turn(src.dir,180))
 
 /obj/structure/interactive/lighting/fixture/bulb/green
 	color = "#1ADB1A"

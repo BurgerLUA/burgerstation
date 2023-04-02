@@ -9,6 +9,7 @@
 	var/use_dir_offsets = FALSE
 
 /obj/structure/sign/Initialize()
+	try_attach_to()
 	if(use_dir_offsets)
 		setup_dir_offsets()
 		dir = SOUTH

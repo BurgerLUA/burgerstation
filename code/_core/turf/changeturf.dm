@@ -60,6 +60,8 @@
 
 	var/old_corner_icons = corner_icons
 
+	destroy_attachments()
+
 	. = ..()
 
 	if(. && is_simulated(src) && (corner_icons || old_corner_icons) && SSsmoothing.initialized)

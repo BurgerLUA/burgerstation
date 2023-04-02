@@ -13,6 +13,9 @@
 	desired_light_range = 7
 	desired_light_color = null //Set in update_icon
 
+/obj/structure/interactive/lighting/fixture/floor/Initialize()
+	. = ..()
+	try_attach_to()
 
 /obj/structure/interactive/lighting/fixture/floor/strong
 	desired_light_power = 0.4

@@ -259,6 +259,7 @@ var/global/list/all_shuttle_controlers = list()
 			var/atom/movable/M = k
 			M.next_move = max(M.next_move,SECONDS_TO_TICKS(4))
 
+	//First pass. Crush everything and add new turfs.
 	for(var/j in valid_turfs) //Valid turfs are all the turfs in the shuttle area.
 		var/turf/T = j
 		var/offset_x = T.x - original_src_x
@@ -266,20 +267,36 @@ var/global/list/all_shuttle_controlers = list()
 		var/turf/T_to_replace = locate(desired_marker.x + offset_x, desired_marker.y + offset_y, desired_marker.z) //The destination turf!
 		if(!T_to_replace)
 			log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at T: [T.x],[T.y],[T.z] | SRC: [original_src_x],[original_src_y],[T.z].")
+			valid_turfs -= T
 			continue
+
+		if(!T_to_replace.stored_shuttle_items)
+			T_to_replace.stored_shuttle_items = list() //Create the list it needs to store shuttle items.
+
+		if(is_simulated(T_to_replace)) //Crush everything in the destination turf that's attached. First pass.
+			var/turf/simulated/S = T_to_replace
+			for(var/k in S.linked_attachments)
+				var/obj/structure/O = k
+				O.on_crush()
+				if(!O.qdeleting)
+					log_error("Warning: [O.get_debug_name()] was a crushed attached object, but it's not deleting!")
 
 		for(var/k in T_to_replace.contents) //Crush everything in the destination turf. First pass.
 			var/atom/movable/M = k
-			if(M.density)
-				M.on_crush()
+			if(!M.density)
+				continue
+			M.on_crush()
 
-		if(!T_to_replace.stored_shuttle_items) T_to_replace.stored_shuttle_items = list() //Create the list it needs to store shuttle items.
-
-		for(var/k in T_to_replace.contents) //Second pass. Get everything that might've been crushed. The second pass is one here as some containers/mobs/ect may drop items.
+		for(var/k in T_to_replace.contents)
 			var/atom/movable/M = k
-			if(M.anchored < 2 && !M.qdeleting)
-				T_to_replace.stored_shuttle_items += M
-				M.force_move(src) //Stored in the shuttle controller, for now.
+			if(!M.density)
+				continue
+			if(M.anchored >= 2)
+				continue
+			if(M.qdeleting)
+				continue
+			T_to_replace.stored_shuttle_items += M
+			M.force_move(src) //Stored in the shuttle controller, for now.
 
 		var/turf/old_turf_type = T_to_replace.type
 		var/area/old_area_type = T_to_replace.loc.type
@@ -290,7 +307,35 @@ var/global/list/all_shuttle_controlers = list()
 		T_to_replace.transit_area = old_area_type
 		areas_to_upate[T_to_replace.loc] = TRUE
 
-		//Okay, time to move everything.
+
+	//Second pass. Move everything.
+	for(var/j in valid_turfs) //Valid turfs are all the turfs in the shuttle area.
+		var/turf/T = j
+		var/offset_x = T.x - original_src_x
+		var/offset_y = T.y - original_src_y
+		var/turf/T_to_replace = locate(desired_marker.x + offset_x, desired_marker.y + offset_y, desired_marker.z) //The destination turf!
+		if(!T_to_replace)
+			log_error("Shuttle Warning: Could not find a turf to replace for [src.get_debug_name()] at T: [T.x],[T.y],[T.z] | SRC: [original_src_x],[original_src_y],[T.z].")
+			continue
+
+		//Move attached objects.
+		if(is_simulated(T))
+			var/turf/simulated/S = T
+			for(var/k in S.linked_attachments)
+				var/obj/structure/O = k
+				var/offset_move_x = T_to_replace.x + (O.x - O.attached_to.x)
+				var/offset_move_y = T_to_replace.y + (O.y - O.attached_to.y)
+				var/turf/T_to_move_to = locate(offset_move_x,offset_move_y, T_to_replace.z) //The destination turf!
+				if(!T_to_move_to || !is_simulated(T_to_replace))
+					log_error("ERROR: [offset_move_x],[offset_move_y],[T_to_replace.z] was not a valid simulated turf to attach [O.get_debug_name()] to!")
+					qdel(O)
+					continue
+				var/turf/simulated/S_to_replace = T_to_replace
+				S.unattach(O)
+				O.force_move(T_to_move_to)
+				S_to_replace.attach(O)
+
+		//Move contents.
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			if(M.anchored >= 2)
@@ -301,6 +346,7 @@ var/global/list/all_shuttle_controlers = list()
 			if(enable_shuttle_throwing)
 				objects_to_throw += M
 
+		//Move stored shuttle items.
 		for(var/k in T.stored_shuttle_items)
 			var/atom/movable/M = k
 			if(is_item(M))
@@ -310,8 +356,10 @@ var/global/list/all_shuttle_controlers = list()
 				M.force_move(T)
 			T.stored_shuttle_items -= M
 
+		//"Delete" old turf.
 		T.change_area(T.transit_area) //From shuttle area to old turf that existed under.
-		if(T.plane == PLANE_SHUTTLE) T.change_turf(T.transit_turf) //From shuttle turf to old turf that existed under.
+		if(T.plane == PLANE_SHUTTLE)
+			T.change_turf(T.transit_turf) //From shuttle turf to old turf that existed under.
 		areas_to_upate[T.loc] = TRUE
 
 	for(var/k in areas_to_upate)

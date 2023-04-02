@@ -102,12 +102,37 @@
 /obj/structure/interactive/status_display/local_display,
 /turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/xeno)
+"x" = (
+/obj/decal/poster/nanotrasen{
+	dir = 4;
+	icon_state = ""
+	},
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/xeno)
+"y" = (
+/obj/decal/poster/nanotrasen{
+	dir = 8;
+	icon_state = ""
+	},
+/turf/simulated/wall/metal/shuttle,
+/area/shuttle/xeno)
 "z" = (
 /obj/structure/interactive/computer/console/flight_control{
 	dir = 1;
 	icon_state = "computer"
 	},
 /turf/simulated/floor/tile/shuttle,
+/area/shuttle/xeno)
+"A" = (
+/obj/decal/poster/nanotrasen{
+	dir = 1;
+	icon_state = ""
+	},
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/xeno)
+"B" = (
+/obj/structure/sign/no_smoking,
+/turf/simulated/wall/metal/shuttle,
 /area/shuttle/xeno)
 
 (1,1,1) = {"
@@ -169,7 +194,7 @@ a
 a
 g
 j
-j
+B
 e
 e
 e
@@ -205,12 +230,12 @@ a
 a
 i
 j
-j
+x
 p
 m
 m
 m
-k
+A
 k
 r
 k
@@ -295,12 +320,12 @@ a
 a
 g
 j
-j
+y
 p
 m
 m
 m
-k
+A
 k
 r
 k
@@ -331,7 +356,7 @@ a
 a
 i
 j
-j
+B
 e
 e
 e

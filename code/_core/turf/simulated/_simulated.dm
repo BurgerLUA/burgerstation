@@ -54,6 +54,40 @@
 
 	var/footstep/footstep //The footstep sounds that play.
 
+	var/list/linked_attachments //For things like APCs, lights, etc.
+
+/turf/simulated/proc/destroy_attachments(var/delete=TRUE)
+	if(!length(linked_attachments))
+		return FALSE
+	for(var/k in linked_attachments)
+		var/obj/structure/O = k
+		src.unattach(O)
+		if(delete)
+			qdel(O)
+	return TRUE
+
+/turf/simulated/proc/attach(var/obj/structure/O)
+	if(!linked_attachments)
+		linked_attachments = list()
+	if(linked_attachments[O])
+		return FALSE
+	if(O.attached_to)
+		O.attached_to.unattach(O)
+	O.attached_to = src
+	linked_attachments[O] = TRUE
+	if(O.density)
+		log_error("Warning: [O.get_debug_name()] was attached to a turf, but it had a density.")
+		O.density = 0
+	O.set_anchored(2)
+
+/turf/simulated/proc/unattach(var/obj/structure/O)
+	if(!linked_attachments) //No point.
+		return FALSE
+	O.attached_to = null
+	linked_attachments -= O
+	O.set_anchored(initial(O.anchored))
+	return TRUE
+
 /turf/simulated/can_move_to(var/check_contents=TRUE)
 
 	if(collision_flags & FLAG_COLLISION_WALKING)

@@ -8,6 +8,10 @@
 
 	density = TRUE
 
+/obj/structure/scenery/fake_door/Initialize()
+	. = ..()
+	try_attach_to()
+
 /obj/structure/scenery/fake_door/glass_bolted
 	icon_state = "glass_bolted"
 	opacity = 0

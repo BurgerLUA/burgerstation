@@ -36,10 +36,23 @@
 
 	var/creator_ckey //Who created this structure.
 
+	var/turf/simulated/attached_to //The simulated turf this object is attached to.
+
+/obj/structure/proc/try_attach_to(var/desired_direction=0x0)
+
+	var/turf/simulated/T = get_step(src,desired_direction)
+	if(!T || !is_simulated(T))
+		return FALSE
+	T.attach(src)
+
 /obj/structure/Destroy()
 
 	if(corner_icons && SSsmoothing.initialized)
 		SSsmoothing.queue_update_edges(get_turf(src),FALSE)
+
+	if(attached_to)
+		attached_to.unattach(src)
+
 	. = ..()
 
 /obj/structure/update_overlays()

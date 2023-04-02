@@ -17,9 +17,9 @@
 /obj/item/container/syringe/hypodermic/update_icon()
 	. = ..()
 	//Plunger
-	var/num_state = CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
 	icon = initial(icon)
 	icon_state = initial(icon_state)
+	var/num_state = CEILING(clamp(reagents.volume_current/reagents.volume_max,0,1)*icon_count,1)
 	icon_state = "[icon_state]_[num_state]"
 
 /obj/item/container/syringe/hypodermic/update_underlays()

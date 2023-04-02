@@ -8,6 +8,7 @@
 	plane = PLANE_OBJ
 
 /obj/structure/interactive/atm/Initialize()
+	try_attach_to()
 	setup_dir_offsets()
 	dir = SOUTH
 	icon_state = "atm"

@@ -76,6 +76,11 @@
 	icon_state = "preview";
 	dir = 1
 	},
+/obj/structure/interactive/disposals/machine/chute,
+/obj/structure/interactive/disposals/pipe/ending{
+	icon_state = "pipe-t";
+	dir = 4
+	},
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/ai_core/engine)
 "ap" = (
@@ -144,10 +149,15 @@
 /area/mission/prefab/misc/ai_core/engine)
 "aB" = (
 /obj/marker/spawning/window/extra,
+/obj/structure/interactive/wire/red,
 /turf/simulated/floor/plating,
-/area/mission/prefab/misc/ai_core/core)
+/area/mission/prefab/misc/ai_core/engine)
 "aC" = (
 /obj/structure/interactive/lighting/fixture/bulb/red,
+/obj/structure/interactive/disposals/pipe{
+	icon_state = "pipe";
+	dir = 10
+	},
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/left)
 "aD" = (
@@ -224,15 +234,15 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/right)
 "aP" = (
-/obj/marker/spawning/window/extra,
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/plating,
-/area/mission/prefab/misc/ai_core/core)
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/circuit/reinforced,
+/area/mission/prefab/misc/ai_core/engine)
 "aQ" = (
 /obj/structure/interactive/lighting/fixture/bulb/red{
 	icon_state = "preview";
 	dir = 4
 	},
+/obj/structure/interactive/disposals/pipe,
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/left)
 "aR" = (
@@ -267,8 +277,7 @@
 /turf/simulated/floor/plating/reinforced,
 /area/mission/prefab/misc/ai_core/core)
 "aY" = (
-/obj/structure/interactive/wire/red,
-/obj/structure/interactive/atmospherics/scrubber,
+/obj/structure/interactive/lighting/fixture/tube/fluorescent,
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/ai_core/core)
 "aZ" = (
@@ -304,20 +313,16 @@
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/ai_core/foyer)
 "bg" = (
-/obj/structure/interactive/wire/red,
-/obj/decal/hazard/box,
-/mob/living/simple/turret/ai_core,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/misc/ai_core/core)
-"bh" = (
-/obj/structure/interactive/wire/red,
-/obj/structure/interactive/atmospherics/vent,
 /turf/simulated/floor/tile/dark,
 /area/mission/prefab/misc/ai_core/core)
+"bh" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/circuit/reinforced,
+/area/mission/prefab/misc/ai_core/maint/right)
 "bi" = (
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/circuit/blue,
-/area/mission/prefab/misc/ai_core/core)
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/circuit/reinforced,
+/area/mission/prefab/misc/ai_core/maint/left)
 "bj" = (
 /obj/structure/interactive/power/smes/industrial{
 	icon_state = "smes_map";
@@ -331,11 +336,12 @@
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/left)
 "bl" = (
-/obj/structure/interactive/lighting/fixture/bulb/red,
-/obj/decal/hazard/box,
-/mob/living/simple/turret/ai_core,
-/turf/simulated/floor/plating,
-/area/mission/prefab/misc/ai_core/maint/left)
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	icon_state = "preview";
+	dir = 1
+	},
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/misc/ai_core/core)
 "bm" = (
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/right)
@@ -352,11 +358,9 @@
 /turf/simulated/floor/circuit/blue,
 /area/mission/prefab/misc/ai_core/core)
 "bq" = (
-/obj/structure/interactive/atmospherics/air_alarm{
-	icon_state = "air_alarm";
-	dir = 4
-	},
-/turf/simulated/wall/metal/circuit/reinforced,
+/obj/structure/interactive/wire/red,
+/obj/structure/interactive/field_generator/active,
+/turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/engine)
 "br" = (
 /turf/simulated/wall/metal/circuit,
@@ -381,13 +385,6 @@
 /obj/structure/interactive/wire/green,
 /mob/living/simple/silicon/spawner,
 /turf/simulated/floor/tile/dark,
-/area/mission/prefab/misc/ai_core/core)
-"bw" = (
-/obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 1
-	},
-/turf/simulated/wall/metal/circuit,
 /area/mission/prefab/misc/ai_core/core)
 "bx" = (
 /obj/structure/interactive/disposals/machine/chute,
@@ -497,10 +494,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/right)
-"bO" = (
-/obj/structure/interactive/power/apc,
-/turf/simulated/wall/metal/circuit/reinforced,
-/area/mission/prefab/misc/ai_core/core)
 "bP" = (
 /obj/structure/interactive/wire/green,
 /obj/structure/interactive/disposals/machine/chute,
@@ -903,10 +896,6 @@
 /obj/structure/interactive/lighting/fixture/tube/fluorescent,
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/entrance)
-"cX" = (
-/obj/structure/interactive/lighting/fixture/tube/fluorescent,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/misc/ai_core/core)
 "cY" = (
 /obj/structure/interactive/light_switch{
 	icon_state = "setup";
@@ -1040,6 +1029,44 @@
 /obj/marker/spawning/random/dangerous,
 /turf/simulated/floor/plating,
 /area/mission/prefab/misc/ai_core/maint/right)
+"du" = (
+/obj/structure/interactive/wire/yellow,
+/obj/structure/interactive/field_generator/active,
+/turf/simulated/floor/plating/reinforced,
+/area/mission/prefab/misc/ai_core/engine)
+"dv" = (
+/obj/structure/interactive/disposals/pipe/junction,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/ai_core/maint/left)
+"dw" = (
+/obj/structure/interactive/door/airlock/station/maintenance/no_access,
+/obj/structure/interactive/disposals/pipe,
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/ai_core/maint/left)
+"dx" = (
+/obj/structure/interactive/door/airlock/station/maintenance/no_access,
+/obj/structure/interactive/disposals/pipe{
+	icon_state = "pipe";
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/mission/prefab/misc/ai_core/maint/left)
+"dy" = (
+/obj/structure/interactive/wire/red,
+/obj/structure/interactive/disposals/pipe{
+	icon_state = "pipe";
+	dir = 5
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/ai_core/engine)
+"dz" = (
+/obj/structure/interactive/wire/red,
+/obj/structure/interactive/disposals/pipe{
+	icon_state = "pipe";
+	dir = 10
+	},
+/turf/simulated/floor/tile/dark,
+/area/mission/prefab/misc/ai_core/engine)
 
 (1,1,1) = {"
 aa
@@ -2440,7 +2467,7 @@ aa
 aa
 aa
 aa
-bu
+ap
 ap
 ap
 ap
@@ -2507,8 +2534,8 @@ ap
 ap
 ap
 ap
-ap
 bd
+bm
 bm
 bm
 cd
@@ -2571,9 +2598,9 @@ au
 aD
 aD
 aD
-aD
 aO
 aR
+aD
 aD
 aD
 aD
@@ -2639,15 +2666,15 @@ dp
 ap
 ap
 ap
-ap
 be
+bm
 bm
 cd
 bt
 aU
 aU
 aU
-bO
+bh
 bS
 bY
 bS
@@ -2704,7 +2731,7 @@ aE
 ah
 aI
 dj
-aU
+ab
 aU
 aU
 aU
@@ -2713,7 +2740,7 @@ aU
 aU
 aZ
 aZ
-aU
+ap
 cd
 bZ
 ce
@@ -2770,7 +2797,7 @@ ag
 dh
 ag
 aN
-aB
+aH
 aV
 aV
 aV
@@ -2779,7 +2806,7 @@ aV
 db
 aV
 bJ
-aU
+ap
 ap
 ap
 ap
@@ -2830,27 +2857,27 @@ ab
 dk
 ah
 al
-ah
 ad
+aJ
 ah
 ah
 aJ
 ag
-aP
+aB
 aW
-bg
-aX
+bj
+bz
 aX
 aX
 bz
 aX
 aX
+bl
 do
 ac
 aS
 bU
 ct
-aS
 ct
 bU
 aS
@@ -2897,23 +2924,23 @@ dk
 ah
 am
 ab
-bq
+aH
 ab
 aH
 aH
 aH
-aU
-cX
+ab
 aY
+bn
 bn
 bn
 bv
 bn
 dd
 bn
+bn
 bP
 ac
-aT
 aT
 aT
 aT
@@ -2968,19 +2995,19 @@ ab
 ba
 ba
 ba
-aU
-bi
-bi
+ab
+bg
 bp
-br
 br
 br
 de
 aX
+aX
+aX
+aX
 bQ
 af
 bf
-bT
 bT
 bT
 bT
@@ -3025,29 +3052,29 @@ aa
 aa
 bu
 ab
-an
+bq
 cZ
 cZ
-ar
 aA
+du
 ar
 aA
 aK
 az
-aU
-bi
-bj
+aP
+bn
 bp
-bp
-bw
+br
 bA
 aZ
+aX
+aX
+aX
 aX
 bR
 as
 bI
 bE
-bI
 bI
 bI
 dc
@@ -3100,18 +3127,18 @@ ab
 bo
 bo
 bo
-aU
-bi
-bi
+ab
+bg
 bp
-br
 br
 br
 de
 aX
+aX
+aX
+aX
 bn
 av
-bT
 bT
 bT
 bT
@@ -3161,14 +3188,14 @@ dk
 ah
 ao
 ab
+aH
 ab
+aH
+aH
+aH
 ab
-aH
-aH
-aH
-aU
-cX
-bh
+aY
+bn
 bn
 bn
 bv
@@ -3176,8 +3203,8 @@ bn
 df
 bn
 bn
+bn
 ac
-aT
 aT
 aT
 aT
@@ -3225,28 +3252,28 @@ aa
 ab
 dk
 ah
-ah
-ah
+al
 ad
+aL
 ah
 ah
 aL
 ag
-aP
+aB
 aW
-bg
-aX
+bj
+bz
 aX
 aX
 bz
 aX
 aX
+bl
 aU
 ac
 aS
 cs
 ct
-aS
 ct
 cs
 aS
@@ -3291,14 +3318,14 @@ aa
 ab
 ae
 dh
-ag
-ag
-ag
+dz
+aq
+dy
 ag
 dg
 ag
 aN
-aB
+aH
 bb
 bb
 bb
@@ -3307,7 +3334,7 @@ bb
 da
 bb
 bK
-aU
+at
 at
 at
 at
@@ -3359,12 +3386,12 @@ ad
 ah
 ah
 ah
-ah
+al
 aF
 ah
 aM
 dj
-aU
+ab
 aU
 aU
 aU
@@ -3373,7 +3400,7 @@ aU
 aU
 aZ
 aZ
-aU
+at
 ds
 ca
 cf
@@ -3425,21 +3452,21 @@ ab
 ab
 ab
 at
-bc
+dx
 at
 dq
 at
 at
 at
-at
 bk
+aG
 aG
 dn
 bx
 aU
 aU
 aU
-bO
+bi
 bV
 cb
 bV
@@ -3492,16 +3519,16 @@ aa
 bu
 at
 aC
-aG
-aG
-aG
-aG
+bB
+bB
+bB
 aQ
-bc
-aG
-aG
-aG
-by
+dw
+bB
+bB
+bB
+bB
+dv
 bB
 bB
 bL
@@ -3562,9 +3589,9 @@ at
 at
 at
 at
-at
-at
-bl
+ap
+bd
+aG
 aG
 ds
 aG
@@ -3628,8 +3655,8 @@ aa
 aa
 aa
 aa
-bu
-at
+ap
+ap
 at
 at
 at

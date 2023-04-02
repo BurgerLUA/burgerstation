@@ -98,3 +98,30 @@
 
 	if(damage_amount >= 15 && prob(damage_amount) && (icon_state == "living" || icon_state == "stunned"))
 		flick("[icon_state]_damage",src)
+
+
+//Stolen from gabber.
+/mob/living/simple/silicon/ai/proc/destroy_surrounding_obstacles_in_area()
+
+	var/ix=0
+	var/iy=0
+	var/imaximum = 0
+	var/area/A = get_area(src)
+	while(imaximum < VIEW_RANGE)
+		if(iy > imaximum)
+			imaximum++
+			ix = -imaximum
+			iy = -imaximum
+		else if(ix > imaximum)
+			ix = -imaximum
+			iy += 1
+		else
+			ix += 1
+		var/turf/T = locate(x + ix,y + iy,z)
+		if(!T || A.loc != T.loc)
+			continue
+		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,.proc/create_turf_destruction,T)
+
+/mob/living/simple/silicon/ai/proc/create_turf_destruction(var/turf/T)
+	new /obj/effect/gabber_turf_destruction(T,force_turf=/turf/simulated/floor/circuit/red)
+	return TRUE

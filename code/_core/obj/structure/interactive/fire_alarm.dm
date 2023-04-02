@@ -12,5 +12,6 @@
 	plane = PLANE_WALL_ATTACHMENT
 
 /obj/structure/interactive/fire_alarm/Initialize()
+	try_attach_to()
 	setup_dir_offsets()
 	return ..()

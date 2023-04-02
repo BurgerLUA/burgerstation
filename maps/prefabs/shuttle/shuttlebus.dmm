@@ -25,6 +25,13 @@
 /obj/structure/interactive/status_display/local_display,
 /turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/shuttlebus)
+"g" = (
+/obj/decal/poster/nanotrasen{
+	dir = 4;
+	icon_state = ""
+	},
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/shuttlebus)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 1;
@@ -45,6 +52,17 @@
 	icon_state = "propulsion_l"
 	},
 /turf/simulated/floor/plating/shuttle,
+/area/shuttle/shuttlebus)
+"k" = (
+/obj/decal/poster/nanotrasen{
+	dir = 8;
+	icon_state = ""
+	},
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/shuttlebus)
+"l" = (
+/obj/structure/sign/no_smoking,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/shuttlebus)
 "m" = (
 /obj/structure/shuttle_engine/heater{
@@ -175,8 +193,8 @@ a
 a
 j
 b
-b
-b
+l
+g
 w
 w
 w
@@ -202,7 +220,7 @@ t
 t
 e
 f
-b
+g
 s
 a
 "}
@@ -292,7 +310,7 @@ t
 t
 e
 f
-b
+k
 s
 a
 "}
@@ -301,8 +319,8 @@ a
 a
 h
 b
-b
-b
+l
+k
 w
 w
 q

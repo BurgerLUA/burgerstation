@@ -21,6 +21,13 @@
 /obj/structure/interactive/status_display/local_display,
 /turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/minivan)
+"g" = (
+/obj/decal/poster/nanotrasen{
+	dir = 1;
+	icon_state = ""
+	},
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/minivan)
 "h" = (
 /obj/structure/shuttle_engine/propulsion/right{
 	dir = 1;
@@ -44,6 +51,10 @@
 	icon_state = "heater"
 	},
 /turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"l" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/shuttle,
 /area/shuttle/minivan)
 "m" = (
 /turf/simulated/floor/tile/shuttle,
@@ -75,6 +86,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating/shuttle,
+/area/shuttle/minivan)
+"s" = (
+/obj/structure/sign/no_smoking,
+/turf/simulated/wall/metal/shuttle/off_white,
 /area/shuttle/minivan)
 "t" = (
 /turf/simulated/floor/tile/shuttle/dark,
@@ -212,12 +227,12 @@ a
 a
 i
 k
-j
+l
 u
 u
 u
 u
-b
+g
 p
 b
 n
@@ -235,7 +250,7 @@ A
 m
 m
 z
-b
+s
 d
 f
 w
@@ -289,7 +304,7 @@ A
 m
 m
 z
-b
+s
 d
 f
 w
@@ -302,12 +317,12 @@ a
 a
 h
 k
-j
+l
 u
 u
 u
 u
-b
+g
 p
 b
 n

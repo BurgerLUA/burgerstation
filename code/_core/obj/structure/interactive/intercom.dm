@@ -31,6 +31,7 @@
 	add_overlay(I)
 
 /obj/structure/interactive/intercom/Initialize()
+	try_attach_to()
 	setup_dir_offsets()
 	return ..()
 

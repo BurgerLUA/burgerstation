@@ -38,6 +38,7 @@
 	FINALIZE(stored_extinguisher)
 
 /obj/structure/interactive/fire_closet/Initialize()
+	try_attach_to()
 	setup_dir_offsets()
 	dir = SOUTH
 	. = ..()

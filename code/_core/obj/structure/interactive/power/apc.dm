@@ -32,6 +32,7 @@
 	. = ..()
 
 /obj/structure/interactive/power/apc/Initialize()
+	try_attach_to()
 	setup_dir_offsets()
 	. = ..()
 

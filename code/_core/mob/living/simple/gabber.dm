@@ -370,10 +370,8 @@ var/global/list/gabber_voice_multishot = list(
 	var/ix=0
 	var/iy=0
 	var/imaximum = 0
-	while(TRUE)
-		if(imaximum >= VIEW_RANGE)
-			break
-		else if(iy > imaximum)
+	while(imaximum < VIEW_RANGE)
+		if(iy > imaximum)
 			imaximum++
 			ix = -imaximum
 			iy = -imaximum
@@ -384,7 +382,7 @@ var/global/list/gabber_voice_multishot = list(
 			ix += 1
 		var/turf/T = locate(x + ix,y + iy,z)
 		if(!T)
-			break
+			continue
 		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,.proc/create_turf_destruction,T)
 
 

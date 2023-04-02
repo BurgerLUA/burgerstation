@@ -190,6 +190,14 @@
 /obj/structure/interactive/chair/shuttle,
 /turf/simulated/floor/tile/shuttle/green,
 /area/shuttle/flounder)
+"E" = (
+/obj/decal/poster/nanotrasen,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/flounder)
+"F" = (
+/obj/structure/sign/no_smoking,
+/turf/simulated/wall/metal/shuttle/off_white,
+/area/shuttle/flounder)
 
 (1,1,1) = {"
 a
@@ -254,7 +262,7 @@ b
 d
 k
 l
-l
+F
 l
 a
 a
@@ -304,7 +312,7 @@ a
 a
 e
 l
-l
+E
 A
 p
 z
@@ -322,7 +330,7 @@ a
 a
 f
 h
-l
+E
 A
 p
 C
@@ -340,7 +348,7 @@ a
 a
 f
 h
-l
+E
 A
 p
 z
@@ -358,7 +366,7 @@ a
 a
 g
 l
-l
+E
 A
 p
 z
@@ -416,7 +424,7 @@ b
 d
 k
 l
-l
+F
 l
 a
 a

@@ -32,6 +32,10 @@ var/global/list/status_displays = list()
 
 	plane = PLANE_WALL_ATTACHMENT
 
+/obj/structure/interactive/status_display/Initialize()
+	. = ..()
+	try_attach_to()
+
 /obj/structure/interactive/status_display/update_icon()
 	icon_state = null
 	return ..()
