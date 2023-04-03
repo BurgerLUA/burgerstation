@@ -8,8 +8,11 @@
 #define SAVELISTATOM(varname) if(length(vars[varname])) {.[varname] = list(); for(var/obj/item/k in vars[varname]) .[varname] += list(k.save_item_data(P,save_inventory,died,loadout=loadout))}
 #define LOADLISTATOM(varname) if(length(object_data[varname])) {for(var/k in object_data[varname]) vars[varname] += load_and_create(P,k,src,loadout=loadout)}
 
+#define SAVETYPEASPATH(varname) if(!isnull(vars[varname])) .[varname] = vars[varname].type
 #define SAVEPATH(varname) if(!isnull(vars[varname])) .[varname] = vars[varname]
 #define LOADPATH(varname) if(!isnull(object_data)) vars[varname] = text2path_safe(object_data[varname])
+
+
 
 #define SAVELIST(varname) SAVEVAR(varname)
 #define LOADLIST(varname) LOADVAR(varname)

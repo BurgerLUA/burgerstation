@@ -25,8 +25,8 @@
 
 /obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
-	SAVEPATH("stored_bullet")
 	SAVEVAR("bullet_count")
+	SAVETYPEASPATH("stored_bullet")
 
 /obj/item/bulletbox/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
 	RUN_PARENT_SAFE
