@@ -60,7 +60,6 @@
 	icon = 'icons/turf/floor/temple.dmi'
 	icon_state = "floor"
 	color = "#D3B27C"
-	health = null
 	destruction_turf = /turf/simulated/floor/plating/reinforced
 
 /turf/simulated/floor/temple/jewel

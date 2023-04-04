@@ -5,7 +5,6 @@
 	layer = LAYER_FLOOR_TILE
 
 	destruction_turf = null
-	health = null
 
 	safe_fall = TRUE
 

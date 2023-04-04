@@ -55,7 +55,7 @@
 	reinforced_material_id = /material/adamantium_carbon
 	color = "#48482B"
 	reinforced_color = COLOR_ADAMANITUM_CARBON
-	health = null
+	destruction_turf = null
 
 /*
 /turf/simulated/wall/metal/reinforced/rusted
@@ -96,7 +96,7 @@
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
 	reinforced_color = "#FFFFFF"
-	health = null
+	destruction_turf = null
 
 /turf/simulated/wall/metal/syndicate/reinforced/shuttle
 	plane = PLANE_SHUTTLE
@@ -157,7 +157,7 @@
 	icon_state = "wall_ref"
 	reinforced_material_id = /material/plasteel
 	reinforced_color = "#FFFFFF"
-	health = null //Indestructable
+	destruction_turf = null
 
 /turf/simulated/wall/metal/solarian
 	name = "solarian steel wall"

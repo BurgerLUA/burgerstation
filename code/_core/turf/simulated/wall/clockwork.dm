@@ -18,7 +18,6 @@
 	desc = "Tick Tock motherfucker"
 	desc_extended = "A wall made of brass, a faint ticking can be heard inside. This one is empowered by the energies of Ratvar and is therefore indestructible"
 	destruction_turf = null
-	health = null
 	color = "#C0C0C0"
 
 /turf/simulated/wall/clockwork/tough

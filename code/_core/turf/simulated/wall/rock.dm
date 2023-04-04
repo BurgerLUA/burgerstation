@@ -15,7 +15,6 @@
 
 	material_id = /material/rock
 
-	health = /health/turf/
 	health_base = 500
 
 	destruction_turf = /turf/simulated/floor/cave_dirt
@@ -146,7 +145,6 @@
 	corner_category = "rock_bedrock"
 
 	material_id = null
-	health = null
 	health_base = null
 	destruction_turf = null
 

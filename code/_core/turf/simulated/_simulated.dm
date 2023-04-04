@@ -2,7 +2,7 @@
 
 	dynamic_lighting = TRUE
 
-	health = null
+	health = null //This value is automatically assigned if there is a destruction_turf.
 	health_base = 100
 
 	var/real_icon
@@ -151,7 +151,7 @@
 				destruction_turf = A.destruction_turf
 		if(destruction_turf)
 			health = /health/turf/
-	set_exposed(exposed,!exposed)
+	set_exposed(exposed,force=TRUE)
 	return ..()
 
 /turf/simulated/Finalize()

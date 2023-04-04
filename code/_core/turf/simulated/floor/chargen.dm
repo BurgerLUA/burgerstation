@@ -5,4 +5,4 @@
 
 	footstep = /footstep/concrete
 
-	health = null
+	destruction_turf = null

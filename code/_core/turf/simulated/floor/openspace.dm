@@ -11,7 +11,6 @@
 	icon_state = "openspace_background"
 
 	destruction_turf = null
-	health = null
 
 	density = TRUE
 	density_down = FALSE

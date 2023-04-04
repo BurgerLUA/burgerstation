@@ -18,7 +18,7 @@
 
 	move_delay_modifier = 1
 
-	health = null
+	destruction_turf = null
 
 	organic = TRUE
 
@@ -39,7 +39,7 @@
 
 	move_delay_modifier = 0.95
 
-	health = null
+	destruction_turf = null
 
 	organic = TRUE
 

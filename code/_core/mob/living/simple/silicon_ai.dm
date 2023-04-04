@@ -118,7 +118,7 @@
 		else
 			ix += 1
 		var/turf/T = locate(x + ix,y + iy,z)
-		if(!T || A.loc != T.loc)
+		if(!T || A != T.loc)
 			continue
 		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,.proc/create_turf_destruction,T)
 
