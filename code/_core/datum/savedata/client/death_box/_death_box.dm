@@ -46,6 +46,8 @@ var/global/list/ckey_to_death_box_data = list()
 		for(var/j in dropped_items)
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			var/obj/item/I = j
+			if(I.queue_delete_immune || I.qdeleting)
+				continue //This is mostly used for the secure universal storage.
 			data_list["inventory"] += list(I.save_item_data(P))
 			data_list["value"] += CEILING(I.get_value(),1)
 			total_items_saved++
