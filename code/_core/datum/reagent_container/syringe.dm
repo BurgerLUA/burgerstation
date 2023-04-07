@@ -10,10 +10,10 @@
 	volume_max = 30
 	should_update_owner = TRUE
 
-/reagent_container/syringe/medipen/hypospray
+/reagent_container/syringe/hypospray
 	volume_max = 60
 	should_update_owner = TRUE
 
-/reagent_container/syringe/medipen/hypospray/combat
+/reagent_container/syringe/hypospray/combat
 	volume_max = 30
 	should_update_owner = TRUE

@@ -94,11 +94,15 @@
 	update_sprite()
 
 /obj/item/container/syringe/click_self(var/mob/caller,location,control,params)
-	INTERACT_CHECK
-	INTERACT_DELAY(1)
-	injecting = !injecting
-	update_sprite()
-	return TRUE
+
+	if(can_inject && can_draw)
+		INTERACT_CHECK
+		INTERACT_DELAY(1)
+		injecting = !injecting
+		update_sprite()
+		return TRUE
+
+	. = ..()
 
 /obj/item/container/syringe/proc/can_inject(var/mob/caller,var/atom/target)
 

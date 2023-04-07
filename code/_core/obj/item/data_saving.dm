@@ -172,7 +172,8 @@
 
 	if(object_data["name"])
 		name = object_data["name"]
-		name = police_text(P.client,name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
+		if(can_rename)
+			name = police_text(P.client,name,check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
 		if(!name)
 			name = initial(name)
 	if(object_data["label"])

@@ -12,7 +12,7 @@
 	quality_reduction_on_use = 0
 	injection_time = SECONDS_TO_DECISECONDS(0.25)
 	inject_amount_max = 15
-	reagents = /reagent_container/syringe/medipen/hypospray // holds 60u
+	reagents = /reagent_container/syringe/hypospray // holds 60u
 	adjustable = TRUE
 
 	size = SIZE_3
@@ -20,6 +20,34 @@
 	var/icon_count = 12
 
 	rarity = RARITY_RARE
+
+	can_draw = FALSE
+	can_inject = TRUE
+
+/obj/item/container/syringe/hypospray/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(!object.reagents)
+		return ..()
+
+	INTERACT_CHECK
+	INTERACT_DELAY(5)
+
+	if(!istype(object,/obj/item/container/simple/beaker/bottle/hypospray))
+		caller.to_chat(span("warning","You don't know how to put \the [object.name] into \the [src.name]... maybe a special container will work?"))
+		return TRUE
+
+	var/obj/item/container/simple/beaker/bottle/hypospray/H = object
+	if(H.spent)
+		caller.to_chat(span("warning","\The [H.name]'s gas canister is spent and cannot inject its contents!"))
+		return TRUE
+	H.spent = TRUE
+
+	if(H.reagents.transfer_reagents_to(src.reagents))
+		caller.to_chat(span("notice","You insert \the [H.name] into \the [src.name], activating the pressurized gas."))
+	else
+		caller.to_chat(span("warning","You insert \the [H.name] into \the [src.name], activating the pressurized gas, but the reagents fail to transfer into \the [src.name]!"))
+
+	return TRUE
 
 /obj/item/container/syringe/hypospray/update_icon()
 	. = ..()
@@ -51,7 +79,7 @@
 	quality_reduction_on_use = 0
 	injection_time = 0
 	inject_amount_max = 30
-	reagents = /reagent_container/syringe/medipen/hypospray/combat // holds 30u
+	reagents = /reagent_container/syringe/hypospray/combat // holds 30u
 	adjustable = TRUE
 
 	size = SIZE_2

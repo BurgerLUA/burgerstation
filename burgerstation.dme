@@ -1522,6 +1522,7 @@
 #include "code\_core\obj\item\container\beaker\bucket.dm"
 #include "code\_core\obj\item\container\beaker\cigarette.dm"
 #include "code\_core\obj\item\container\beaker\fuel_cell.dm"
+#include "code\_core\obj\item\container\beaker\hypospray_vial.dm"
 #include "code\_core\obj\item\container\beaker\internal_magazine.dm"
 #include "code\_core\obj\item\container\beaker\large.dm"
 #include "code\_core\obj\item\container\beaker\large_chemistry.dm"

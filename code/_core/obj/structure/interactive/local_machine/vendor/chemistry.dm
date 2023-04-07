@@ -32,5 +32,6 @@
 		/obj/item/container/simple/beaker/bottle,
 		/obj/item/container/simple/beaker,
 		/obj/item/container/simple/beaker/large,
-		/obj/item/container/blood_pack/
+		/obj/item/container/blood_pack,
+		/obj/item/container/simple/beaker/bottle/hypospray
 	)
