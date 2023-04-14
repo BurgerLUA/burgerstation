@@ -2,7 +2,7 @@
 	name = "portal"
 	desc = "Should be safe."
 	icon = 'icons/obj/effects/portal.dmi'
-	icon_state = "blue"
+	icon_state = "portal"
 
 	var/obj/effect/temp/portal/linked_portal
 	var/obj/marker/portal/linked_marker
@@ -28,6 +28,31 @@
 	desired_light_power = 0.25
 	desired_light_color = "#0384E2"
 
+
+/obj/effect/temp/portal/update_underlays()
+	. = ..()
+	if(linked_portal)
+		var/turf/T = get_turf(linked_portal)
+
+		var/image/I_turf = new/image()
+		I_turf.appearance = T.appearance
+		I_turf.appearance_flags |= KEEP_TOGETHER
+		I_turf.blend_mode = BLEND_INSET_OVERLAY
+		I_turf.plane = FLOAT_PLANE
+		I_turf.layer = FLOAT_LAYER
+
+		var/image/I_mask = new/image(initial(icon),"portal_mask")
+		I_mask.appearance_flags |= KEEP_TOGETHER
+		I_mask.overlays += I_turf
+
+		add_underlay(I_mask)
+
+/obj/effect/temp/portal/update_overlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"portal_filling")
+	I.alpha = 50
+	add_overlay(I)
+
 /obj/effect/temp/portal/Destroy()
 	if(linked_portal)
 		if(linked_portal.linked_portal == src)
@@ -52,11 +77,13 @@
 	animate(filters[length(filters)],size=6,color="#0384E2",easing=SINE_EASING,time=5,loop=-1,flags=ANIMATION_PARALLEL)
 	animate(size=10,easing=SINE_EASING,time=5)
 	animate(size=2,easing=SINE_EASING,time=5)
+	animate(size=6,easing=SINE_EASING,time=5)
 
-	filters += filter(type="ripple",x=0,y=0,size=10,repeat=4,radius=0,falloff=0.5,flags=WAVE_BOUNDED)
-	animate(filters[length(filters)],radius=0,size=10,easing=SINE_EASING,time=7,loop=-1,flags=ANIMATION_PARALLEL)
+	filters += filter(type="ripple",x=0,y=0,size=8,repeat=4,radius=0,falloff=0.5,flags=WAVE_BOUNDED)
+	animate(filters[length(filters)],radius=0,size=8,easing=SINE_EASING,time=7,loop=-1,flags=ANIMATION_PARALLEL)
 	animate(radius=10,size=0,easing=SINE_EASING,time=7)
-	animate(radius=5,size=10,easing=SINE_EASING,time=7)
+	animate(radius=5,size=8,easing=SINE_EASING,time=7)
+	animate(radius=2,size=8,easing=SINE_EASING,time=7)
 
 	update_atom_light()
 

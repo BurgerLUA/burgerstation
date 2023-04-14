@@ -29,6 +29,8 @@
 
 	boss_loot = /loot/lavaland/ash_drake
 
+	boss_music = /track/it_swoops
+
 	var/boss_state = 0
 	//0 = walking
 	//1 = flying

@@ -77,6 +77,9 @@
 	start_portal.name = "[P.name]'s portal to [A2.name]"
 	end_portal.name = "[P.name]'s portal to [A1.name]"
 
+	start_portal.update_sprite()
+	end_portal.update_sprite()
+
 	qdel(src)
 
 	play_sound('sound/effects/portal.ogg',T)

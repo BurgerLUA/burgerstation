@@ -30,8 +30,9 @@
 		owner.resist()
 		return TRUE
 
-	if(aggression <= 0)
-		if(!master_ai) //No objective finding if you belong to a master.
+	if(aggression > 0)
+
+		if(!master_ai) //Find objectives only if you don't belong to a master.
 			objective_ticks += tick_rate
 			var/actual_objective_delay = get_objective_delay()
 			if(objective_ticks >= actual_objective_delay && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))

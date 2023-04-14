@@ -300,3 +300,8 @@
 	name = "Slime King"
 	path = 'sound/music/Slime King.ogg'
 	length = 2*60 + 55
+
+/track/it_swoops //Boss music
+	name = "It Swoops"
+	path = 'sound/music/It Swoops.ogg'
+	length = 3*60 + 15

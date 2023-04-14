@@ -71,7 +71,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 		if(attackers[A])
 			return -2 //Target those who attacked you, but still attack those who are literally touching you.
 		if(hunt_target == A)
-			return 99999 //Yeah.
+			return 99999 //Target those who you are hunting.
 		if(is_living(A))
 			var/mob/living/L = A
 			if(L.ai)
@@ -86,7 +86,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
 					return -9999 //Wow they're being overwhelmed. Very lowest priority.
 				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
-				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health. Low health will be spared. Higher difficulty will make you more desirable.
+				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health and who are closer. Low health will be spared. Higher difficulty will make you more desirable.
 
 	return -dist
 

@@ -287,11 +287,12 @@
 /mob/living/simple/turret/ai_core/post_death()
 	. = ..()
 	update_sprite()
-	icon_state = "opened"
 
 /mob/living/simple/turret/ai_core/Finalize()
 	. = ..()
 	update_sprite()
+	if(icon_state != "closed")
+		close()
 
 /mob/living/simple/turret/ai_core/update_underlays()
 	. = ..()
@@ -323,10 +324,49 @@
 
 	. = ..()
 
-/mob/living/simple/turret/ai_core/on_life_slow()
+
+/mob/living/simple/turret/ai_core/immortalish
+	name = "regenerating core turret"
+
+	var/mob/living/simple/silicon/ai/linked_ai
+
+/mob/living/simple/turret/ai_core/immortalish/Finalize()
+	. = ..()
+	linked_ai = locate() in range(VIEW_RANGE,src)
+	if(!linked_ai)
+		qdel(src)
+
+/mob/living/simple/turret/ai_core/immortalish/on_life_slow()
 
 	. = ..()
 
 	if(. && !dead)
 		if(icon_state == "opened" && !ai.objective_attack)
 			close()
+
+
+
+/mob/living/simple/turret/ai_core/immortalish/post_death()
+	. = ..()
+	if(icon_state != "closed")
+		close()
+	if(linked_ai)
+		if(linked_ai.dead)
+			linked_ai = null
+		if(linked_ai)
+			CALLBACK("\ref[src]_try_revival",SECONDS_TO_DECISECONDS(30),src,.proc/try_revival)
+
+
+/mob/living/simple/turret/ai_core/immortalish/proc/try_revival()
+
+	if(linked_ai && linked_ai.dead)
+		linked_ai = null
+
+	if(!linked_ai)
+		return FALSE
+
+	resurrect()
+	if(ai)
+		ai.set_active(TRUE)
+
+	return TRUE

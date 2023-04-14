@@ -16,7 +16,7 @@
 		return FALSE //Never be able to see what is impossible for a player.
 
 	var/vision_distance = true_distance
-	if(objective_attack)
+	if(objective_attack) //We have an objective attack.
 		var/turf/T_objective = A == objective_attack ? T_atom : get_turf(objective_attack)
 		vision_distance = get_dist(T_atom,T_objective) //Objective attack is the central focus point, if there is one.
 		vision_distance = max(vision_distance,0)
@@ -33,7 +33,7 @@
 	lightness = COSINE_CURVE(lightness)
 
 	// https://www.desmos.com/calculator/bbvdmhbfao
-	. = 2 * (0.5 + src.stored_sneak_power) * (1 - ((vision_distance**0.6)-1)/VIEW_RANGE)*(lightness**0.6)
+	. = 2 * (0.5 + src.stored_sneak_power) * (1 - ((vision_distance**0.6)-1)/VIEW_RANGE)*(min(1,lightness/night_vision)**0.6)
 
 	if(!src.true_sight && is_living(A))
 		var/mob/living/L = A

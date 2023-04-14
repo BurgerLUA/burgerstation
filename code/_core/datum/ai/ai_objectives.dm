@@ -141,6 +141,9 @@
 
 /ai/proc/find_new_objectives(var/tick_rate,var/bonus_sight=FALSE)
 
+	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
+		return FALSE
+
 	//Find a new living mob target.
 	var/list/possible_targets = get_possible_targets(bonus_sight)
 	var/atom/best_target
@@ -148,32 +151,41 @@
 	var/best_detection_value = 0
 	for(var/k in possible_targets)
 		var/atom/A = k
-		var/detection_value = possible_targets[k]
 		var/score_value = get_attack_score(A)
-		if((best_detection_value < night_vision && detection_value > best_detection_value) || (score_value > best_score && detection_value > night_vision))
-			best_target = A
-			best_score = score_value
-			best_detection_value = detection_value
+		var/detection_value = possible_targets[k]
+		if(detection_value < 0.25)
+			//Can't see.
+			continue
+		if(score_value <= best_score)
+			//We have our sights focused on someone better.
+			continue
+		best_target = A
+		best_score = score_value
+		best_detection_value = detection_value
 
-	if(best_target)
-		if(objective_attack && best_target == objective_attack)
+	if(best_target) //We found a new target!
+		if(best_target == objective_attack) //Our best target is currently the one we're still attacking.
 			set_alert_level(ALERT_LEVEL_COMBAT,best_target,best_target)
 			return TRUE
-		if(!objective_attack && best_detection_value < night_vision*2)
+
+		if(best_detection_value < 0.5) //Our best target is someone new outside combat detection range.
 			try_investigate(best_target)
 			return TRUE
-		else
-			if(reaction_time > 0)
-				if(debug && ismob(best_target))
-					var/mob/M = best_target
-					if(M.client)
-						M.to_chat(span("debug","Setting delayed objective target ([reaction_time])."))
-				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
-			else
-				set_objective(best_target)
+
+		if(reaction_time > 0) //Delayed set_objective
+			if(debug && ismob(best_target))
+				var/mob/M = best_target
+				if(M.client)
+					M.to_chat(span("debug","Setting delayed objective target ([reaction_time])."))
+			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
+			return
+
+		set_objective(best_target) //Forced set objective.
 		return TRUE
 
-	//Path to last known location.
+	//Can't find any living beings to shoot.
+
+	//Path to last combat location, if it exists.
 	if(last_combat_location && !length(astar_path_current))
 		set_path_fallback(last_combat_location)
 		last_combat_location = null
@@ -206,24 +218,15 @@
 			else
 				set_objective(closest_obstacle)
 
-	//Find a new target if affected by a light.
-	if(!objective_attack)
-		var/turf/T = get_turf(owner)
-		for(var/k in T.affecting_lights)
-			var/light_source/LS = k
-			if(!is_player(LS.top_atom))
-				continue
-			var/mob/living/L = LS.top_atom
-			if(should_attack_mob(L))
-				set_alert_level(ALERT_LEVEL_CAUTION,L,L)
-				break
-
 	return TRUE
 
 /ai/proc/get_view_range()
-	if(hunt_target)
+
+	if(hunt_target) //We're hunting, so we're pretty cautious.
 		return radius_find_enemy_caution
+
 	. = radius_find_enemy
+
 	switch(alert_level)
 		if(ALERT_LEVEL_NOISE)
 			. = radius_find_enemy_noise
@@ -231,7 +234,8 @@
 			. = radius_find_enemy_caution
 		if(ALERT_LEVEL_COMBAT)
 			. = radius_find_enemy_combat
-	if(owner.has_status_effect(REST)) //Mostly used for sleeping zombies.
+
+	if(owner.has_status_effect(REST)) //Used for sleeping zombies.
 		. *= 0.5
 
 /ai/proc/get_possible_targets(var/bonus_sight=FALSE)
@@ -248,7 +252,7 @@
 	for(var/mob/living/L in view(range_to_use,owner))
 		if(!should_attack_mob(L))
 			continue
-		var/detection_level = get_detection_level(L,FALSE,bonus_sight)
+		var/detection_level = get_detection_level(L,view_check=FALSE,bonus_sight=bonus_sight)
 		if(detection_level <= 0)
 			continue
 		.[L] = detection_level
@@ -264,22 +268,19 @@
 	if(desired_target == objective_attack)
 		return FALSE
 
-	if(!cooldown)
-		. = investigate(desired_target)
-	else
-		if(CALLBACK_EXISTS("investigate_\ref[src]"))
-			if(force_if_on_cooldown)
-				. = investigate(desired_target)
-			else
-				return FALSE
-		CALLBACK("investigate_\ref[src]",reaction_time,src,.proc/investigate,desired_target)
-		. = TRUE
+	if(!cooldown) //Do it instantly.
+		return investigate(desired_target)
 
-	if(.)
-		if(alert_level < ALERT_LEVEL_CAUTION)
-			set_alert_level(alert_level+1,desired_target,desired_target)
+	if(CALLBACK_EXISTS("investigate_\ref[src]"))
+		if(!force_if_on_cooldown)
+			return FALSE
+		CALLBACK_REMOVE("investigate_\ref[src]")
+		return investigate(desired_target)
 
+	owner.set_dir(get_dir(owner,desired_target)) //Look at the source of noise.
+	CALLBACK("investigate_\ref[src]",reaction_time,src,.proc/investigate,desired_target)
 
+	return TRUE
 
 /ai/proc/investigate(var/atom/desired_target)
 

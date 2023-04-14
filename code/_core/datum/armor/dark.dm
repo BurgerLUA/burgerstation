@@ -125,3 +125,19 @@
 		SANITY = -100
 	)
 	deflection = 0.5
+
+/armor/dark/cult_robes/heretic
+	defense_rating = list(
+		BLADE = 25,
+		BLUNT = 25,
+		PIERCE = 25,
+		LASER = -50,
+		ARCANE = 75,
+		HEAT = -50,
+		COLD = 25,
+		SHOCK = -50,
+		BOMB = -100,
+		HOLY = -100,
+		DARK = 100,
+		SANITY = -100
+	)
