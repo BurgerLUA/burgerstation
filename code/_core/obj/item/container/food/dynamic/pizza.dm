@@ -48,9 +48,9 @@
 /obj/item/container/edible/dynamic/pizza/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 	return !sliced
 
-/obj/item/container/edible/dynamic/pizza/Destroy()
-	. = ..()
+/obj/item/container/edible/dynamic/pizza/PreDestroy()
 	QDEL_NULL(reagents_toppings)
+	. = ..()
 
 /obj/item/container/edible/dynamic/pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

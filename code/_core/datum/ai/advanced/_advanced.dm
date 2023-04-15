@@ -40,8 +40,11 @@
 	var/obj/marker/cover_node/current_cover
 	var/checked_cover = TRUE //Set to false when the mob equips a new weapon.
 
-/ai/advanced/Destroy()
+/ai/advanced/PreDestroy()
 	remove_cover()
+	. = ..()
+
+/ai/advanced/Destroy()
 	objective_weapon = null
 	return ..()
 

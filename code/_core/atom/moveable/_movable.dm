@@ -70,21 +70,24 @@
 	var/abstract = FALSE
 
 /atom/movable/PreDestroy()
+	QDEL_NULL(light_sprite)
 	if(enable_chunk_handling && SSchunk.initialized)
 		var/turf/T = is_turf(loc) ? loc : null
 		if(T)
 			var/chunk/C = CHUNK(T)
 			src.on_chunk_cross(C,null)
-	force_move(null)
-	loc = null //Just in case.
 	. = ..()
 
 /atom/movable/Destroy()
-	QDEL_NULL(light_sprite)
 	light_sprite_sources?.Cut()
 	vis_contents?.Cut()
 	grabbing_hand = null
 	. = ..()
+
+/atom/movable/PostDestroy()
+	. = ..()
+	src.force_move(null)
+	src.loc = null
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 

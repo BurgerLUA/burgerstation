@@ -11,9 +11,12 @@
 
 	plane = FLOAT_PLANE
 
+/image/overlay/PreDestroy()
+	QDEL_CUT_ASSOC(additional_blends)
+	. = ..()
+
 /image/overlay/Destroy()
 	attached_object = null
-	QDEL_CUT_ASSOC(additional_blends)
 	. = ..()
 
 /image/overlay/proc/add_overlay(var/datum/overlay_to_add)

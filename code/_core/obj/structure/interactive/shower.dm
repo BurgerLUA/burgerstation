@@ -34,7 +34,7 @@ obj/structure/interactive/shower/set_dir(var/desired_dir,var/force=FALSE)
 		else
 			pixel_y = 0
 
-obj/structure/interactive/shower/Destroy()
+obj/structure/interactive/shower/PreDestroy()
 	CALLBACK_REMOVE("\ref[src]_shower")
 	. = ..()
 

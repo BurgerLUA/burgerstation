@@ -43,8 +43,11 @@ var/global/list/possible_ritual_spawns = list(
 		return TRUE
 	return FALSE
 
-/obj/structure/interactive/ritual/Destroy()
+/obj/structure/interactive/ritual/PreDestroy()
 	end_ritual()
+	. = ..()
+
+/obj/structure/interactive/ritual/Destroy()
 	valid_turfs.Cut()
 	valid_turfs = null
 	. = ..()

@@ -3,7 +3,7 @@ obj/effect/temp
 	desc = "Effect that gets deleted after a while."
 	var/duration = 10 //Deciseconds
 
-obj/effect/temp/Destroy()
+obj/effect/temp/PreDestroy()
 	CALLBACK_REMOVE("remove_effect_\ref[src]")
 	. = ..()
 

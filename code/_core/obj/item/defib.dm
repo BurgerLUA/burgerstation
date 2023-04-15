@@ -33,7 +33,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/defib/Destroy()
+/obj/item/defib/PreDestroy()
 	QDEL_NULL(paddle_left)
 	QDEL_NULL(paddle_right)
 	. = ..()

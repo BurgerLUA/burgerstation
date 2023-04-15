@@ -44,12 +44,14 @@
 
 	var/needs_update = LIGHTING_NO_UPDATE
 
+/light_source/PreDestroy()
+	remove_lum()
+	. = ..()
+
 /light_source/Destroy()
 
 	SSlighting.light_queue -= src
 	SSlighting.total_lighting_sources--
-
-	remove_lum()
 
 	if(source_atom)
 		LAZYREMOVE(source_atom.light_sources, src)

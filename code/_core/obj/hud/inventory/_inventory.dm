@@ -97,7 +97,7 @@
 		A.MouseExited(location,control,params)
 
 
-/obj/hud/inventory/Destroy()
+/obj/hud/inventory/PreDestroy()
 
 	if(grabbed_object)
 		release_object()
@@ -107,10 +107,12 @@
 
 	update_owner(null) //This proc is custom to /obj/hud/inventory so it won't cause issues.
 
+	. = ..()
+
+/obj/hud/inventory/Destroy()
 	parent_inventory = null
 	child_inventory = null
 	grabbed_object = null
-
 	. = ..()
 
 

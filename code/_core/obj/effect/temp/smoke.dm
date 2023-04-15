@@ -42,15 +42,18 @@
 
 	density = TRUE
 
-/obj/effect/temp/smoke/Destroy()
-	. = ..()
-	blacklist_turfs?.Cut()
-	owner = null
+/obj/effect/temp/smoke/PreDestroy()
 	if(container)
 		container.linked_smoke -= src
 		if(!container.qdeleting && length(container.linked_smoke) <= 0)
 			qdel(container) //delete the smoke container if there is no smoke left to spread it, as long as it hasn't been deleted already for having no reagents left.
 		container = null
+	. = ..()
+
+/obj/effect/temp/smoke/Destroy()
+	. = ..()
+	blacklist_turfs?.Cut()
+	owner = null
 
 /obj/effect/temp/smoke/proc/try_splash(var/atom/A)
 	var/amount_to_actually_splash = max(1,reagent_volume_original/max(1,smoke_volume_original)) * 0.2

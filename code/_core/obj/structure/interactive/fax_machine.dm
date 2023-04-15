@@ -12,7 +12,7 @@
 
 	pixel_y = 4
 
-/obj/structure/interactive/fax_machine/Destroy()
+/obj/structure/interactive/fax_machine/PreDestroy()
 	QDEL_NULL(stored_paper)
 	. = ..()
 
@@ -133,6 +133,6 @@
 		SC.force_move(SC.loc)
 		caller.visible_message(span("warning","The machine buzzes with a green screen, you guess they got the message."))
 		return ..()
-	else 
+	else
 		caller.visible_message(span("warning","The machine buzzes with several errors, you guess you got something wrong."))
 		return ..()

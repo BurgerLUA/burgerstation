@@ -81,7 +81,7 @@
 
 	combat_range = VIEW_RANGE
 
-/obj/item/weapon/ranged/Destroy()
+/obj/item/weapon/ranged/PreDestroy()
 	QDEL_NULL(attachment_stock)
 	QDEL_NULL(attachment_undermount)
 	QDEL_NULL(attachment_sight)

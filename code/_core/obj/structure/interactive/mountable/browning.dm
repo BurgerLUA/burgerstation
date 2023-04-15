@@ -16,7 +16,7 @@
 	var/obj/item/magazine/browning_127/stored_magazine
 	var/obj/item/browning_handle/stored_handle
 
-/obj/structure/interactive/mountable/browning/Destroy()
+/obj/structure/interactive/mountable/browning/PreDestroy()
 	QDEL_NULL(stored_weapon)
 	QDEL_NULL(stored_magazine)
 	QDEL_NULL(stored_handle)
@@ -84,7 +84,7 @@
 
 	weight = 2
 
-/obj/item/browning_handle/Destroy()
+/obj/item/browning_handle/PreDestroy()
 	QDEL_NULL(linked_gun)
 	. = ..()
 

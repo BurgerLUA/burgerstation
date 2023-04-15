@@ -7,11 +7,14 @@
 	var/obj/hud/button/close_inventory_defers/assoc_button
 	layer = 0
 
-/obj/hud/button/inventory_defer/Destroy()
-	referencing = null
+/obj/hud/button/inventory_defer/PreDestroy()
 	if(assoc_button)
 		assoc_button.update_owner(null)
 		assoc_button = null
+	. = ..()
+
+/obj/hud/button/inventory_defer/Destroy()
+	referencing = null
 	. = ..()
 
 /obj/hud/button/inventory_defer/proc/get_top_vis_object()

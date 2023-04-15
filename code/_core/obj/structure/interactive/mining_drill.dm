@@ -96,7 +96,7 @@
 /obj/structure/interactive/mining_drill/proc/check_valid()
 
 	for(var/obj/structure/interactive/mining_brace/MB in orange(1,src))
-		if(!MB.anchored || get_step(MB,MB.dir) != src.loc)
+		if(MB.qdeleting || !MB.anchored || get_step(MB,MB.dir) != src.loc)
 			continue
 		var/obj/structure/interactive/mining_brace/MB2 = locate() in get_step(src,MB.dir).contents
 		if(!MB2 || !MB2.anchored || get_step(MB2,MB2.dir) != src.loc)
@@ -151,7 +151,7 @@
 	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/mining_brace/Destroy()
+/obj/structure/interactive/mining_brace/PreDestroy()
 	var/obj/structure/interactive/mining_drill/MD = locate() in get_step(src,dir)
 	MD?.check_valid()
 	. = ..()

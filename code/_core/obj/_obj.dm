@@ -20,6 +20,6 @@
 /obj/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
 	return FALSE
 
-/obj/Destroy()
+/obj/PreDestroy()
 	QDEL_CUT_ASSOC(additional_blends)
 	. = ..()

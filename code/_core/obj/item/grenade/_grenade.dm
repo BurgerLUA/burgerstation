@@ -42,12 +42,11 @@
 
 	return list(norm_x/mul,norm_y/mul)
 
-/obj/item/grenade/Destroy()
-
+/obj/item/grenade/PreDestroy()
 	QDEL_NULL(stored_trigger)
 	QDEL_CUT(stored_containers)
-
 	. = ..()
+
 /obj/item/grenade/Finalize()
 	. = ..()
 	update_sprite()

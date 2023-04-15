@@ -19,7 +19,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/contract/Destroy()
+/obj/item/contract/PreDestroy()
 	QDEL_NULL(reward)
 	. = ..()
 

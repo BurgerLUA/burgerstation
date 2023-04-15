@@ -22,7 +22,7 @@
 
 	initialize_type = INITIALIZE_SUPERLATE
 
-/obj/structure/interactive/statue/Destroy()
+/obj/structure/interactive/statue/PreDestroy()
 	QDEL_NULL(stored_object)
 	. = ..()
 

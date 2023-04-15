@@ -47,7 +47,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/Destroy()
+/mob/living/vehicle/PreDestroy()
 
 	if(passengers)
 		for(var/k in passengers)

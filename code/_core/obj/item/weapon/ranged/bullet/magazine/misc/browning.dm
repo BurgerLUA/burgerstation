@@ -41,7 +41,7 @@
 
 	tier = 3
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/Destroy()
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/PreDestroy()
 	QDEL_NULL(linked_gun)
 	return ..()
 

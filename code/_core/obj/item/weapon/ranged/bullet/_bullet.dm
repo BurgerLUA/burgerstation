@@ -41,7 +41,7 @@
 	uses_until_condition_fall = 50 * (1/shoot_delay)
 	sound_pitch = get_sound_pitch()
 
-/obj/item/weapon/ranged/bullet/Destroy()
+/obj/item/weapon/ranged/bullet/PreDestroy()
 	QDEL_NULL(chambered_bullet)
 	QDEL_CUT(stored_bullets)
 	return ..()

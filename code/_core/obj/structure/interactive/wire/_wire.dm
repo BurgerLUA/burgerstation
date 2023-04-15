@@ -71,7 +71,7 @@
 	src.visible_message(span("danger","\The [src.name] snaps!"))
 	qdel(src)
 
-/obj/structure/interactive/wire/Destroy()
+/obj/structure/interactive/wire/PreDestroy()
 
 	if(power_network)
 		qdel(power_network)

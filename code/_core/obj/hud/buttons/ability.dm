@@ -38,9 +38,9 @@ var/global/list/ability_colors = list(
 	if(ability)
 		ability = new ability
 
-/obj/hud/button/ability/Destroy()
-	. = ..()
+/obj/hud/button/ability/PreDestroy()
 	QDEL_NULL(ability)
+	. = ..()
 
 /obj/hud/button/ability/proc/activate(var/mob/caller)
 

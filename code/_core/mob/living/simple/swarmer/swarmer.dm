@@ -124,7 +124,7 @@
 	var/swarmer_limit = 10
 	var/next_spawn = 0
 
-/mob/living/simple/swarmer/console/Destroy()
+/mob/living/simple/swarmer/console/PreDestroy()
 
 	for(var/k in swarmercount)
 		var/mob/living/simple/swarmer/L = k

@@ -17,9 +17,9 @@
 
 	dir_offset = TILE_SIZE - 8
 
-/obj/structure/interactive/light_switch/Destroy()
-	if(is_turf(src.loc))
-		var/area/A = src.loc.loc
+/obj/structure/interactive/light_switch/PreDestroy()
+	if(loc && is_turf(loc))
+		var/area/A = loc.loc
 		if(A.requires_power)
 			A.light_switches -= src
 	. = ..()

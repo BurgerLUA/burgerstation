@@ -41,10 +41,13 @@
 
 	return ..()
 
-/stand/Destroy()
+/stand/PreDestroy()
 	QDEL_NULL(linked_stand)
+	. = ..()
+
+/stand/Destroy()
 	stand_user = null
-	return ..()
+	. = ..()
 
 /stand/proc/generate()
 	name = uppertext("[pick(SStext.adjectives)] [pick(SStext.verbs)]")

@@ -12,7 +12,7 @@
 	icon = 'icons/obj/structure/airlock/vault_door_dark.dmi'
 	var/obj/item/device/keypad/stored_keypad
 
-/obj/structure/interactive/door/vault/syndicate/Destroy()
+/obj/structure/interactive/door/vault/syndicate/PreDestroy()
 	QDEL_NULL(stored_keypad)
 	. = ..()
 

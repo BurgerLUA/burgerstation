@@ -18,7 +18,7 @@
 
 	value = 20
 
-/obj/item/flare/Destroy()
+/obj/item/flare/PreDestroy()
 	QDEL_NULL(stored_cap)
 	. = ..()
 

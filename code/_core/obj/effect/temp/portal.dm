@@ -53,7 +53,7 @@
 	I.alpha = 50
 	add_overlay(I)
 
-/obj/effect/temp/portal/Destroy()
+/obj/effect/temp/portal/PreDestroy()
 	if(linked_portal)
 		if(linked_portal.linked_portal == src)
 			linked_portal.linked_portal = null

@@ -17,7 +17,7 @@
 	mouse_opacity = 0
 	alpha = 0
 
-/obj/hud/button/stat/resist_bar/Destroy()
+/obj/hud/button/stat/resist_bar/PreDestroy()
 	QDEL_NULL(stored_line)
 	. = ..()
 

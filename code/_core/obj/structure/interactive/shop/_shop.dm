@@ -20,7 +20,7 @@
 /obj/structure/interactive/shop/high_markup
 	markup = 6
 
-/obj/structure/interactive/shop/Destroy()
+/obj/structure/interactive/shop/PreDestroy()
 	QDEL_NULL(stored_item)
 	. = ..()
 

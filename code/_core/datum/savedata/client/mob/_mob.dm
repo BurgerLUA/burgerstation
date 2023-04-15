@@ -31,9 +31,9 @@ var/global/list/ckey_to_mobdata = list()
 	if(owner)
 		ckey_to_mobdata[ckey] = src
 
-/savedata/client/mob/Destroy()
+/savedata/client/mob/PreDestroy()
 	log_error("SERIOUS ERROR: Mobdata for [ckey] was destroyed!")
-	return ..()
+	return FALSE
 
 /savedata/client/mob/get_file(var/file_id)
 	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"

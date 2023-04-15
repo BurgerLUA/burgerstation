@@ -53,7 +53,7 @@ obj/structure/interactive/proc/link_power(var/area/A,var/link=TRUE)
 		else
 			update_power_draw(0)
 
-/obj/structure/interactive/Destroy()
+/obj/structure/interactive/PreDestroy()
 
 	if(is_turf(loc))
 		var/turf/T = loc
@@ -62,9 +62,11 @@ obj/structure/interactive/proc/link_power(var/area/A,var/link=TRUE)
 	if(connected_wire)
 		connected_wire.do_snap()
 
+	. = ..()
+
+/obj/structure/interactive/Destroy()
 	apc_powered = FALSE
 	wire_powered = FALSE
-
 	. = ..()
 
 /obj/structure/interactive/Finalize()

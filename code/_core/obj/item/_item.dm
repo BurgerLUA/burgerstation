@@ -191,19 +191,21 @@
 	return TRUE
 
 /obj/item/PreDestroy()
-	if(is_inventory(src.loc))
-		drop_item(null,silent=TRUE)
-	. = ..()
-
-/obj/item/Destroy()
-
-	additional_clothing_parent = null
 
 	if(inventory_user)
 		close_inventory(inventory_user)
 		inventory_user = null //Just in case
 
+	if(is_inventory(src.loc))
+		drop_item(null,silent=TRUE)
+
 	QDEL_CUT(inventories)
+
+	. = ..()
+
+/obj/item/Destroy()
+
+	additional_clothing_parent = null
 
 	last_interacted = null
 	inventory_user = null

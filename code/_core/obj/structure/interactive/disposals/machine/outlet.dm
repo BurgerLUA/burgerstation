@@ -18,7 +18,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/disposals/machine/outlet/Destroy()
+/obj/structure/interactive/disposals/machine/outlet/PreDestroy()
 
 	var/turf/T = get_turf(src)
 	if(T)

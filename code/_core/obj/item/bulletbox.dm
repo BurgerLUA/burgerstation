@@ -43,7 +43,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/bulletbox/Destroy()
+/obj/item/bulletbox/PreDestroy()
 	set_stored_bullet(null)
 	. = ..()
 

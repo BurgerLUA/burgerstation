@@ -200,7 +200,7 @@
 		has_dense_atom = "/turf/New() inherent density"
 
 
-/turf/Destroy()
+/turf/PreDestroy()
 	CRASH("Tried destroying a turf!")
 	return FALSE
 

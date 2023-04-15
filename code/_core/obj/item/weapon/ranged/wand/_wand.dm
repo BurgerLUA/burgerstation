@@ -154,7 +154,7 @@
 		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
 
-/obj/item/weapon/ranged/wand/Destroy()
+/obj/item/weapon/ranged/wand/PreDestroy()
 	QDEL_NULL(socketed_spellgem)
 	QDEL_CUT(socketed_supportgems)
 	. = ..()

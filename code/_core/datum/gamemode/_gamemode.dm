@@ -54,7 +54,7 @@
 		return TRUE
 	return TRUE
 
-/gamemode/Destroy()
+/gamemode/PreDestroy()
 
 	QDEL_CUT(crew_active_objectives)
 	QDEL_CUT(crew_completed_objectives)

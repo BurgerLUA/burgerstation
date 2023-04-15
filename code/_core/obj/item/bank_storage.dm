@@ -28,5 +28,5 @@
 /obj/item/bank_storage/on_crush(var/message=TRUE)
 	CRASH("ERROR: Tried crushing a bank object; something that should NEVER be crushed!")
 
-/obj/item/bank_storage/Destroy()
+/obj/item/bank_storage/PreDestroy()
 	CRASH("ERROR: Tried deleting a bank object; something that should NEVER be deleted!")

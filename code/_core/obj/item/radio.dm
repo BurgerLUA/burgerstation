@@ -10,7 +10,7 @@
 
 	weight = 1
 
-/obj/item/radio/Destroy()
+/obj/item/radio/PreDestroy()
 	QDEL_NULL(stored_radio)
 	. = ..()
 

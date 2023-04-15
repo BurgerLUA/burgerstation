@@ -112,15 +112,8 @@
 
 	return ..()
 
-/obj/item/magazine/Destroy()
-
-	if(stored_bullets)
-		for(var/k in stored_bullets)
-			if(!k) continue
-			var/obj/item/bullet_cartridge/B = k
-			qdel(B)
-		stored_bullets.Cut()
-
+/obj/item/magazine/PreDestroy()
+	QDEL_CUT(stored_bullets)
 	. = ..()
 
 /obj/item/magazine/PostInitialize()

@@ -389,18 +389,15 @@
 		attached_organ.attached_organs -= src
 		attached_organ = null
 
-	if(T)
-		if(is_advanced(src.loc))
-			var/mob/living/advanced/A = src.loc
-			A.remove_organ(src,do_delete)
-		else if(do_delete)
-			qdel(src)
-			return TRUE
-		else
-			src.drop_item(T)
-	else if(do_delete)
+
+	if(is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
+		A.remove_organ(src,T,do_delete)
+	else if(do_delete || !T)
 		qdel(src)
 		return TRUE
+	else
+		src.drop_item(T)
 
 	update_sprite()
 

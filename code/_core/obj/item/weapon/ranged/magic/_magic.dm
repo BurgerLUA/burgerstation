@@ -21,7 +21,7 @@
 
 	company_type = "Wizard Federation"
 
-/obj/item/weapon/ranged/magic/Destroy()
+/obj/item/weapon/ranged/magic/PreDestroy()
 	QDEL_NULL(stored_powergem)
 	. = ..()
 

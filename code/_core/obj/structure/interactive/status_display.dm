@@ -79,7 +79,7 @@ var/global/list/status_displays = list()
 /obj/structure/interactive/status_display/global_display/Destroy()
 	if(status_displays[status_id])
 		status_displays[status_id] -= src
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/status_display/global_display/arrivals_01
 	name = "arrivals ship 1 status display"

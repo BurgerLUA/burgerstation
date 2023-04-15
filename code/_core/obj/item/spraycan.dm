@@ -17,7 +17,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/spraycan/Destroy()
+/obj/item/spraycan/PreDestroy()
 	QDEL_NULL(desired_spray)
 	QDEL_NULL(existing_spray)
 	. = ..()

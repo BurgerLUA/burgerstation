@@ -64,7 +64,7 @@
 /vote/proc/on_result(var/winner,var/list/results)
 	return TRUE
 
-/vote/Destroy()
+/vote/PreDestroy()
 
 	var/results = get_results()
 

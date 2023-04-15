@@ -35,8 +35,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/fishing/rod/Destroy()
-	. = ..()
+/obj/item/fishing/rod/PreDestroy()
 	QDEL_NULL(lure)
 	QDEL_NULL(line)
 	QDEL_NULL(bait)
@@ -44,6 +43,11 @@
 	QDEL_NULL(fishing_bob)
 	QDEL_NULL(fishing_alert)
 
+	. = ..()
+
+
+/obj/item/fishing/rod/Destroy()
+	. = ..()
 	fishing_turf = null
 	last_caller = null
 

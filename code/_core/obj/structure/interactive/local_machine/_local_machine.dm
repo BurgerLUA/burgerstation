@@ -8,17 +8,19 @@ var/global/list/local_machines = list()
 
 	var/list/disallowed_mobs = list()
 
-/obj/structure/interactive/localmachine/Destroy()
-
-	. = ..()
+/obj/structure/interactive/localmachine/PreDestroy()
 
 	for(var/k in all_mobs_with_clients)
 		var/mob/M = k
 		clear_existing_images(M)
 
-	disallowed_mobs?.Cut()
-
 	QDEL_NULL(cached_image)
+
+	. = ..()
+
+/obj/structure/interactive/localmachine/Destroy()
+	. = ..()
+	disallowed_mobs?.Cut()
 
 /obj/structure/interactive/localmachine/New()
 	. = ..()

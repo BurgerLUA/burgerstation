@@ -66,7 +66,7 @@
 	name = "gun"
 	var/obj/item/weapon/ranged/stored_gun
 
-/obj/item/attachment/undermount/gun/Destroy()
+/obj/item/attachment/undermount/gun/PreDestroy()
 	QDEL_NULL(stored_gun)
 	. = ..()
 

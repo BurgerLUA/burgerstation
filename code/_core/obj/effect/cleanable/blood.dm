@@ -37,7 +37,7 @@
 
 	. = ..()
 
-/obj/effect/cleanable/blood/Destroy()
+/obj/effect/cleanable/blood/PreDestroy()
 	update_blood_level(null,loc)
 	. = ..()
 

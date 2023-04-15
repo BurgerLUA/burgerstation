@@ -27,7 +27,7 @@
 
 	level = 15
 
-/mob/living/simple/silicon/cyborg/Destroy()
+/mob/living/simple/silicon/cyborg/PreDestroy()
 	QDEL_NULL(stored_melee_weapon)
 	QDEL_NULL(stored_ranged_weapon)
 	QDEL_NULL(stored_battery)

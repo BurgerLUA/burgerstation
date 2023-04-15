@@ -102,20 +102,24 @@
 	HOOK_CALL("on_destruction")
 	return TRUE
 
-/atom/Destroy()
+
+/atom/PreDestroy()
 
 	STOP_THINKING(src)
 	stop_advanced_thinking(src)
 
 	set_light(FALSE)
 
-	QDEL_NULL(reagents)
-	QDEL_NULL(health)
+	. = ..()
 
 	for(var/k in contents)
 		var/atom/movable/A = k
 		qdel(A)
 
+	QDEL_NULL(reagents)
+	QDEL_NULL(health)
+
+/atom/Destroy()
 	appearance = null
 	invisibility = 101
 	mouse_opacity = 0
@@ -123,7 +127,6 @@
 	icon_state = null
 	tag = null
 	all_listeners -= src
-
 	. = ..()
 
 /atom/proc/get_base_transform()

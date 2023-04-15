@@ -23,7 +23,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/clothing/glasses/nightvision/Destroy()
+/obj/item/clothing/glasses/nightvision/PreDestroy()
 	QDEL_NULL(stored_cell)
 	. = ..()
 

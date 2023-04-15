@@ -1,8 +1,8 @@
-/mob/living/advanced/proc/remove_all_organs(var/do_delete=TRUE)
+/mob/living/advanced/proc/remove_all_organs(var/do_delete=TRUE,var/turf/T)
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
-		remove_organ(O,do_delete)
+		remove_organ(O,T,do_delete)
 
 	return TRUE
 
@@ -215,13 +215,11 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/do_delete = FALSE)
-
-	var/turf/T = get_turf(src)
+/mob/living/advanced/proc/remove_organ(var/obj/item/organ/O,var/turf/T,var/do_delete = FALSE)
 
 	for(var/k in O.inventories)
 		var/obj/hud/inventory/I = k
-		if(do_delete)
+		if(do_delete || !T)
 			I.delete_objects()
 		else
 			I.drop_objects(T)
@@ -233,7 +231,7 @@
 	organs -= O
 	labeled_organs -= O.id
 
+	O.on_organ_remove(src)
+
 	if(do_delete)
 		qdel(O)
-
-	O.on_organ_remove(src)

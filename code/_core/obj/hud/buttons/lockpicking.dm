@@ -21,10 +21,13 @@
 
 	var/frozen = FALSE
 
-/obj/hud/button/lockpicking/Destroy()
+/obj/hud/button/lockpicking/PreDestroy()
 	QDEL_NULL(linked_lock)
 	QDEL_NULL(linked_pick)
 	QDEL_NULL(linked_wedge)
+	. = ..()
+
+/obj/hud/button/lockpicking/Destroy()
 	associated_chest = null
 	. = ..()
 

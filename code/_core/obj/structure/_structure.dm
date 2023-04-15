@@ -45,10 +45,10 @@
 		return FALSE
 	T.attach(src)
 
-/obj/structure/Destroy()
+/obj/structure/PreDestroy()
 
-	if(corner_icons && SSsmoothing.initialized)
-		SSsmoothing.queue_update_edges(get_turf(src),FALSE)
+	if(loc && is_turf(loc) && corner_icons && SSsmoothing.initialized)
+		SSsmoothing.queue_update_edges(loc,FALSE)
 
 	if(attached_to)
 		attached_to.unattach(src)

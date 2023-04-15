@@ -15,10 +15,13 @@
 	var/power = 0
 	size = 1 //Transform multiplier
 
-/obj/light_sprite/Destroy()
+/obj/light_sprite/PreDestroy()
 	set_top_atom(null) //kills top_atom
+	. = ..()
+
+/obj/light_sprite/Destroy()
 	owner = null
-	return ..()
+	. = ..()
 
 /obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE) //Override default
 	if(!desired_dir)

@@ -9,10 +9,13 @@
 	plane = PLANE_HUD_OBJ
 	layer = -100
 
-/obj/hud/button/floor_object/Destroy()
+/obj/hud/button/floor_object/PreDestroy()
 	if(associated_object)
 		HOOK_REMOVE("post_move","floor_object_post_move_\ref[src]",associated_object)
 		associated_object = null
+	. = ..()
+
+/obj/hud/button/floor_object/Destroy()
 	associated_loc = null
 	. = ..()
 

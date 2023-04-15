@@ -13,10 +13,14 @@ var/global/power_id = 1
 	id = power_id
 	power_id++
 
-/power_network/Destroy()
+/power_network/PreDestroy()
 
 	for(var/k in connected_wires)
 		src.remove_wire(k)
+
+	. = ..()
+
+/power_network/Destroy()
 
 	power_supply = null
 	power_draw = null

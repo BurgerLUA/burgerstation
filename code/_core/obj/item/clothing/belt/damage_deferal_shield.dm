@@ -59,7 +59,7 @@
 	shield_overlay.icon_state = "overlay"
 	shield_overlay.alpha = 0
 
-/obj/item/clothing/belt/damage_deferal_shield/Destroy()
+/obj/item/clothing/belt/damage_deferal_shield/PreDestroy()
 	CALLBACK_REMOVE("\ref[src]_disable_shield")
 	CALLBACK_REMOVE("\ref[src]_cooldown_end")
 	CALLBACK_REMOVE("\ref[src]_shield_beep")

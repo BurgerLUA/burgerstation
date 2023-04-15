@@ -84,16 +84,23 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/list/overall_clothing_defense_rating = list()
 
-/mob/living/advanced/Destroy()
+
+/mob/living/advanced/PreDestroy()
 
 	for(var/k in using_inventories)
 		var/obj/item/I = k
 		I.close_inventory(src)
 
-	using_inventories?.Cut()
+	QDEL_NULL(stored_handcuffs)
 
 	remove_all_organs()
 	remove_all_buttons()
+
+	. = ..()
+
+/mob/living/advanced/Destroy()
+
+	using_inventories?.Cut()
 
 	inventory_defers?.Cut()
 	inventories_by_id?.Cut()
@@ -105,8 +112,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	worn_objects = null
 	active_inventory = null
 	driving = null
-
-	QDEL_NULL(stored_handcuffs)
 
 	. = ..()
 

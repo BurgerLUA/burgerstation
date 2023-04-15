@@ -41,7 +41,7 @@
 
 	level = 8
 
-/mob/living/simple/legionare/Destroy()
+/mob/living/simple/legionare/PreDestroy()
 
 	if(stored_corpse)
 		if(istype(stored_corpse) && stored_corpse.ckey_last)

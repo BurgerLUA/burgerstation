@@ -119,7 +119,7 @@ var/global/list/equipped_antags = list()
 		I.plane = PLANE_LIGHTING
 		add_overlay(I)
 
-/obj/structure/interactive/vending/Destroy()
+/obj/structure/interactive/vending/PreDestroy()
 	QDEL_CUT(stored_objects)
 	QDEL_NULL(accepts_item)
 	. = ..()

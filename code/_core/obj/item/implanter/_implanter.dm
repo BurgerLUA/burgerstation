@@ -15,7 +15,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/implanter/Destroy()
+/obj/item/implanter/PreDestroy()
 	QDEL_NULL(stored_implant)
 	. = ..()
 

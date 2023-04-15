@@ -22,7 +22,7 @@
 	desired_light_color = "#FFFFFF"
 
 
-/obj/structure/interactive/vr_shop/Destroy()
+/obj/structure/interactive/vr_shop/PreDestroy()
 	QDEL_CUT(stored_vendors)
 	. = ..()
 

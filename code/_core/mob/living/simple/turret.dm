@@ -190,7 +190,7 @@
 
 
 
-/mob/living/simple/turret/deployable/Destroy()
+/mob/living/simple/turret/deployable/PreDestroy()
 	QDEL_NULL(stored_battery)
 	QDEL_NULL(stored_magazine)
 	return ..()

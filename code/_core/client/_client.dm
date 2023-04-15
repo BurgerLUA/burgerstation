@@ -107,15 +107,7 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/Del() //Called when the client disconnects. Basically Destroy()
 
-	all_clients -= src.ckey
-
-	known_inventory?.Cut()
-	known_buttons?.Cut()
-	known_stat_elements?.Cut()
-	stored_hud_images?.Cut()
-
-	last_location = null
-	last_object = null
+	clear_mob(mob)
 
 	QDEL_NULL(button_tracker)
 
@@ -125,7 +117,15 @@ var/global/list/all_clients = list() //Assoc list
 	QDEL_NULL(settings)
 	QDEL_NULL(controls)
 
-	clear_mob(mob)
+	all_clients -= src.ckey
+
+	known_inventory?.Cut()
+	known_buttons?.Cut()
+	known_stat_elements?.Cut()
+	stored_hud_images?.Cut()
+
+	last_location = null
+	last_object = null
 
 	world.update_server_status()
 

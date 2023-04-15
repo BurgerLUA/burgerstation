@@ -61,16 +61,9 @@
 			if(debug) log_debug("Light for [src.get_debug_name()] is being created.")
 
 // If we have opacity, make sure to tell (potentially) affected light sources.
-/atom/movable/Destroy()
-
-	var/turf/T = loc
-
+/atom/movable/PreDestroy()
+	set_opacity(FALSE)
 	. = ..()
-
-	if (opacity && istype(T))
-		T.recalculate_atom_opacity()
-		T.reconsider_lights()
-
 
 
 // Should always be used to change the opacity of an atom.
@@ -90,7 +83,7 @@
 
 	var/turf/T = loc
 
-	if(!istype(T))
+	if(!T || !is_turf(T))
 		return FALSE
 
 	if (new_opacity) //We're opaque for sure.

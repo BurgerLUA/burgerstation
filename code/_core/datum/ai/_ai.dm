@@ -194,7 +194,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	return TRUE
 
-/ai/Destroy()
+/ai/PreDestroy()
 
 	if(length(linked_ais)) //Reset master.
 		var/ai/new_master_ai = linked_ais[1]
@@ -206,6 +206,10 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 				linked_ai.set_master_ai(new_master_ai)
 
 	set_active(FALSE,deleting=TRUE)
+
+	. = ..()
+
+/ai/Destroy()
 
 	if(owner) owner.ai = null
 	owner = null

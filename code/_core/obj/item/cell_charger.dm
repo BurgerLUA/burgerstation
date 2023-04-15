@@ -16,8 +16,11 @@
 
 	weight = 6
 
-/obj/item/cell_charger/Destroy()
+/obj/item/cell_charger/PreDestroy()
 	QDEL_NULL(battery)
+	. = ..()
+
+/obj/item/cell_charger/Destroy()
 	charging_device = null
 	. = ..()
 

@@ -9,7 +9,7 @@
 
 	var/empty_warning_percent = 0.2 //0-1, as a percentage
 
-/obj/item/weapon/ranged/bullet/magazine/Destroy()
+/obj/item/weapon/ranged/bullet/magazine/PreDestroy()
 	QDEL_NULL(stored_magazine)
 	. = ..()
 

@@ -21,7 +21,7 @@
 		color = "#00FF00"
 	. = ..()
 
-/obj/structure/interactive/blob/core/Destroy()
+/obj/structure/interactive/blob/core/PreDestroy()
 
 	for(var/k in linked_walls)
 		var/obj/structure/interactive/blob/B = k
@@ -29,6 +29,11 @@
 		B.color = null
 		B.update_health_state()
 		B.update_sprite()
+
+	. = ..()
+
+
+/obj/structure/interactive/blob/core/Destroy()
 
 	linked_walls?.Cut()
 	linked_nodes?.Cut()

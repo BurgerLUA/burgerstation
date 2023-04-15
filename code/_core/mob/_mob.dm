@@ -131,14 +131,12 @@
 	see_invisible = initial(see_invisible)
 	return TRUE
 
-/mob/Destroy()
+/mob/PreDestroy()
 
 	if(client)
-		client.clear_mob(src,TRUE)
-
-	ckey_owner = null
-	ckey_last = null
-	key = null // required to GC
+		log_error("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
+		var/turf/T = get_turf(src)
+		client.make_ghost(T ? T : FALLBACK_TURF)
 
 	for(var/k in buttons)
 		var/obj/hud/button/B = k
@@ -156,20 +154,11 @@
 		tooltip.update_owner(null)
 		tooltip = null
 
-	stored_chat_text?.Cut()
-
-	all_mobs -= src
-	all_mobs_with_clients -= src
-
 	if(observers)
 		for(var/k in observers)
 			var/mob/M = k
 			M.observing = null
 		observers.Cut()
-
-	if(observing)
-		observing.observers -= src
-		observing = null
 
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_water_floor)
@@ -198,11 +187,29 @@
 
 	QDEL_CUT_ASSOC(parallax)
 
+
+	. = ..()
+
+/mob/Destroy()
+
+	. = ..()
+
+	ckey_owner = null
+	ckey_last = null
+	key = null // required to GC
+
+	stored_chat_text?.Cut()
+
+	all_mobs -= src
+	all_mobs_with_clients -= src
+
+	if(observing)
+		observing.observers -= src
+		observing = null
+
 	color_mods?.Cut()
 
 	lighting_mods?.Cut()
-
-	. = ..()
 
 	if(fallback_mob)
 		fallback_mob.linked_mobs -= src

@@ -47,7 +47,7 @@
 	update_sprite()
 	set_balling(src.z ? TRUE : FALSE)
 
-/obj/item/ball/Destroy()
+/obj/item/ball/PreDestroy()
 	set_balling(FALSE)
 	. = ..()
 

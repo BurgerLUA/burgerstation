@@ -22,11 +22,14 @@
 
 	mouse_opacity = 2
 
-/obj/structure/interactive/enchantment_circle/Destroy()
+/obj/structure/interactive/enchantment_circle/PreDestroy()
 	set_active(FALSE)
+	. = ..()
+
+/obj/structure/interactive/enchantment_circle/Destroy()
 	stored_book = null // Just in case.
 	stored_items.Cut() // Just in case.
-	return ..()
+	. = ..()
 
 
 /obj/structure/interactive/enchantment_circle/New(var/desired_loc)

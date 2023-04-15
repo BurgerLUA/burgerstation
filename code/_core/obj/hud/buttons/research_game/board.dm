@@ -96,7 +96,7 @@
 
 	return TRUE
 
-/obj/hud/button/research/board/Destroy()
+/obj/hud/button/research/board/PreDestroy()
 
 	for(var/x_pos=1,x_pos<=RESEARCH_BOARD_SIZE,x_pos++)
 		for(var/y_pos=1,y_pos<=RESEARCH_BOARD_SIZE,y_pos++)

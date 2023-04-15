@@ -15,7 +15,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/rcd/Destroy()
+/obj/item/rcd/PreDestroy()
 	QDEL_NULL(rcd_disk)
 	. = ..()
 

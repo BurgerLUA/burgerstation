@@ -16,17 +16,19 @@
 
 	mouse_opacity = 1
 
-/obj/structure/interactive/fulton/Destroy()
+	anchored = 2
 
+/obj/structure/interactive/fulton/PreDestroy()
 	if(stored_movable)
 		if(loc)
-			stored_movable.force_move(get_turf(loc))
+			stored_movable.force_move(loc)
 		else
 			qdel(stored_movable)
 		stored_movable = null
+	. = ..()
 
+/obj/structure/interactive/fulton/Destroy()
 	owner = null
-
 	. = ..()
 
 /obj/structure/interactive/fulton/proc/do_invalid_fulton()

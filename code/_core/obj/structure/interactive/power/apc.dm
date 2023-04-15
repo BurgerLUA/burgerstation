@@ -20,7 +20,7 @@
 	. += div("notice","Area Power Draw: [src.power_draw]w.")
 	. += div("notice","\The [cell.name] has [cell.charge_current] out of [cell.charge_max] charge remaining.")
 
-/obj/structure/interactive/power/apc/Destroy()
+/obj/structure/interactive/power/apc/PreDestroy()
 
 	for(var/k in linked_areas)
 		var/area/A = k
@@ -30,6 +30,8 @@
 		QDEL_NULL(cell)
 
 	. = ..()
+
+
 
 /obj/structure/interactive/power/apc/Initialize()
 	try_attach_to()

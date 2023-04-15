@@ -291,17 +291,36 @@
 
 /mob/living/PreDestroy()
 
-	if(ai)
-		ai.set_active(FALSE)
+	UNPROCESS_LIVING(src)
+
+	if(ai) ai.set_active(FALSE)
 
 	QDEL_NULL(ai)
 	QDEL_NULL(stand)
 
+	QDEL_NULL(totem)
+
+	QDEL_CUT(linked_mobs)
+
+	if(!fallback_mob)
+		QDEL_CUT_ASSOC(attributes)
+		QDEL_CUT_ASSOC(skills)
+
+	QDEL_NULL(alert_overlay)
+	QDEL_NULL(chat_overlay)
+	QDEL_NULL(fire_overlay)
+	QDEL_NULL(shield_overlay)
+
+	QDEL_NULL(medical_hud_image)
+	QDEL_NULL(security_hud_image)
+	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(water_mask)
+
+	QDEL_NULL(flash_overlay)
+
 	. = ..()
 
 /mob/living/Destroy()
-
-	UNPROCESS_LIVING(src)
 
 	buckled_object = null
 
@@ -313,21 +332,14 @@
 		master.minion = null
 		master = null
 
-	QDEL_NULL(totem)
-
 	if(following)
 		following.followers -= src
 		following = null
-
-	QDEL_CUT(linked_mobs)
 
 	if(fallback_mob)
 		fallback_mob.linked_mobs -= src
 		attributes = null
 		skills = null
-	else
-		QDEL_CUT_ASSOC(attributes)
-		QDEL_CUT_ASSOC(skills)
 
 	hit_logs?.Cut()
 
@@ -342,22 +354,6 @@
 		SSbosses.living_bosses -= src
 
 	players_fighting_boss?.Cut()
-
-	QDEL_NULL(alert_overlay)
-	QDEL_NULL(chat_overlay)
-	QDEL_NULL(fire_overlay)
-	QDEL_NULL(shield_overlay)
-
-	QDEL_NULL(medical_hud_image)
-	QDEL_NULL(security_hud_image)
-	QDEL_NULL(medical_hud_image_advanced)
-	QDEL_NULL(water_mask)
-
-	QDEL_NULL(flash_overlay)
-
-	if(client)
-		log_error("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
-		client.make_ghost(FALLBACK_TURF)
 
 	traits?.Cut()
 	traits_by_category?.Cut()

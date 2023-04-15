@@ -13,7 +13,7 @@
 
 	plane = PLANE_WALL_ATTACHMENT
 
-/obj/structure/interactive/intercom/Destroy()
+/obj/structure/interactive/intercom/PreDestroy()
 	QDEL_NULL(stored_radio)
 	. = ..()
 

@@ -24,15 +24,20 @@ var/global/list/squad/all_squads = list()
 
 	return ..()
 
-/squad/Destroy()
-
-	all_squads -= src
+/squad/PreDestroy()
 
 	for(var/k in members)
 		var/mob/living/advanced/player/P = k
 		remove_member(P)
 
 	remove_leader()
+
+	. = ..()
+
+/squad/Destroy()
+
+	all_squads -= src
+
 
 	return ..()
 

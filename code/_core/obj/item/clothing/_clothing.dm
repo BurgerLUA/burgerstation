@@ -63,7 +63,7 @@
 			L.remove_mob_value("\ref[src]",k,MULTIPLICATION)
 	remove_additonal_clothing()
 
-/obj/item/clothing/Destroy()
+/obj/item/clothing/PreDestroy()
 	QDEL_CUT(additional_clothing_stored)
 	. = ..()
 

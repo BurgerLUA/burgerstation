@@ -183,7 +183,12 @@ var/global/list/difficulty_to_damage_mul = list(
 	health.update_health_stats()
 	return TRUE
 
-/mob/living/advanced/player/Destroy()
+/mob/living/advanced/player/is_safe_to_delete(var/check_loc = TRUE)
+	if(is_saving)
+		return FALSE
+	. = ..()
+
+/mob/living/advanced/player/PreDestroy()
 
 	if(is_saving)
 		log_error("FATAL ERROR: Mob [src.get_debug_name()] was qdeleted while saving! Save errors expected!")
@@ -196,17 +201,21 @@ var/global/list/difficulty_to_damage_mul = list(
 			followers -= L
 		followers.Cut()
 
-	if(client)
-		var/turf/T = get_turf(src)
-		client.make_ghost(T ? T : FALLBACK_TURF)
+	if(current_squad)
+		current_squad.remove_member(src)
+		current_squad = null
+
+	clear_portals()
+
+	QDEL_NULL(click_and_drag_icon)
+
+	. = ..()
+
+/mob/living/advanced/player/Destroy()
 
 	dialogue_target = null
 
 	equipped_antags -= src
-
-	if(current_squad)
-		current_squad.remove_member(src)
-		current_squad = null
 
 	all_players -= src
 
@@ -215,10 +224,6 @@ var/global/list/difficulty_to_damage_mul = list(
 	active_device = null
 	active_structure = null
 	active_paper = null
-
-	clear_portals()
-
-	QDEL_NULL(click_and_drag_icon)
 
 	return ..()
 

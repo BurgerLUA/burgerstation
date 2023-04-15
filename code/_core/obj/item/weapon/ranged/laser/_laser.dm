@@ -17,7 +17,7 @@
 
 	damage_mod = 1
 
-/obj/item/weapon/ranged/energy/Destroy()
+/obj/item/weapon/ranged/energy/PreDestroy()
 	QDEL_NULL(battery)
 	. = ..()
 

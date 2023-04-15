@@ -35,13 +35,13 @@
 	icon = initial(icon)
 	icon_state = "smes"
 
-/obj/structure/interactive/power/smes/Destroy()
-	. = ..()
+/obj/structure/interactive/power/smes/PreDestroy()
 	QDEL_NULL(terminal)
 	for(var/k in stored_cells)
 		var/obj/item/I = k
 		qdel(I)
 	stored_cells.Cut()
+	. = ..()
 
 /obj/structure/interactive/power/smes/Generate()
 	. = ..()

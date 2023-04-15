@@ -29,18 +29,20 @@
 
 /mob/living/advanced/proc/pre_perform_change(var/keep_items)
 
+	var/turf/T = get_turf(src)
+
 	remove_chargen_buttons()
 
 	var/list/kept_items = list()
 
 	if(keep_items)
-		kept_items = drop_all_items(get_turf(src))
+		kept_items = drop_all_items()
 	else
 		for(var/k in inventories_by_id)
 			var/obj/hud/inventory/I = inventories_by_id[k]
 			I.delete_objects()
 
-	remove_all_organs()
+	remove_all_organs(TRUE,T)
 
 	return kept_items
 

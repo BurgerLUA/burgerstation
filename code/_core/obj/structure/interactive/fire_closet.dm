@@ -7,7 +7,7 @@
 
 	var/obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher/stored_extinguisher
 
-/obj/structure/interactive/fire_closet/Destroy()
+/obj/structure/interactive/fire_closet/PreDestroy()
 	QDEL_NULL(stored_extinguisher)
 	. = ..()
 

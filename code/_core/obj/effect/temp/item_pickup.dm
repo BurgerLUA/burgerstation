@@ -5,7 +5,7 @@
 	alpha = 255
 	plane = PLANE_EFFECT
 
-/obj/effect/temp/item_pickup/Destroy()
+/obj/effect/temp/item_pickup/PreDestroy()
 	. = ..()
 	CALLBACK_REMOVE("fade_\ref[src]")
 
