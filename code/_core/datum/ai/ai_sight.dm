@@ -33,7 +33,7 @@
 	lightness = COSINE_CURVE(lightness)
 
 	// https://www.desmos.com/calculator/bbvdmhbfao
-	. = 2 * (0.5 + src.stored_sneak_power) * (1 - ((vision_distance**0.6)-1)/VIEW_RANGE)*(min(1,lightness/night_vision)**0.6)
+	. = 2 * (0.5 + src.stored_sneak_power) * (1 - ((vision_distance**0.6)-1)/VIEW_RANGE)*(min(1,lightness+night_vision)**0.6)
 
 	if(!src.true_sight && is_living(A))
 		var/mob/living/L = A
