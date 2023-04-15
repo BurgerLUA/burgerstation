@@ -30,8 +30,48 @@ var/global/list/debug_verbs = list(
 	/client/verb/test_rust_g,
 	/client/verb/debug_current_chunk,
 	/client/verb/debug_weapon_value,
-	/client/verb/swarm_test
+	/client/verb/swarm_test,
+	/client/verb/destroy_everything
 )
+
+
+var/global/list/destroy_everything_whitelist = list(
+	/obj/item/,
+	/obj/decal/,
+	/obj/effect/,
+	/obj/structure/,
+	/mob/living/advanced/npc,
+	/mob/living/simple,
+)
+
+/client/verb/destroy_everything()
+	set name = "Destroy EVERYTHING (DANGER)"
+	set category = "Debug"
+
+	var/desired_choice = input("Are you sure you wish to spawn every movable object in the game and then destroy it?","Cause Hell","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(desired_choice != "Yes")
+		return TRUE
+
+	var/list/valid_turfs = list()
+	for(var/turf/simulated/T in orange(VIEW_RANGE*0.5,mob))
+		if(T.density || T.has_dense_atom)
+			continue
+		valid_turfs += T
+
+	if(!length(valid_turfs))
+		return TRUE
+
+	for(var/j in destroy_everything_whitelist)
+		for(var/k in subtypesof(j))
+			var/atom/movable/M = new k(pick(valid_turfs))
+			INITIALIZE(M)
+			GENERATE(M)
+			FINALIZE(M)
+			qdel(M)
+			sleep(-1)
+
+
 
 /client/verb/view_dps()
 	set name = "View DPS of Weapons"

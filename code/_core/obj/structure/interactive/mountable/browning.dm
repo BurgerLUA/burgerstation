@@ -52,6 +52,8 @@
 //prototyped from turret
 /obj/structure/interactive/mountable/browning/Finalize()
 
+	. = ..()
+
 	stored_weapon = new /obj/item/weapon/ranged/bullet/magazine/misc/browning(src)
 	INITIALIZE(stored_weapon)
 	GENERATE(stored_weapon)
@@ -67,6 +69,8 @@
 	stored_handle.linked_gun = src
 
 	mag_check(src)
+
+
 
 /obj/item/browning_handle
 	name = "browning handles"

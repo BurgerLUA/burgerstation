@@ -7,12 +7,25 @@
 
 	. = ..()
 
+
+
+	if(!victim)
+		log_error("Warning: [src.get_debug_name()] didn't have a victim set in New()!")
+		return
+
+	if(!attacker)
+		log_error("Warning: [src.get_debug_name()] didn't have a attacker set in New()!")
+		return
+
+	if(!weapon)
+		log_error("Warning: [src.get_debug_name()] didn't have a weapon set in New()!")
+		return
+
+	var/list/offsets = get_directional_offsets(attacker,victim)
 	src.appearance = weapon.appearance
 	src.mouse_opacity = 0
 	src.plane = PLANE_EFFECT
 	src.alpha = 0
-
-	var/list/offsets = get_directional_offsets(attacker,victim)
 	animate(
 		src,
 		alpha = initial(alpha),

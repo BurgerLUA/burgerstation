@@ -36,15 +36,15 @@
 	. = ..()
 	if(!reward)
 		log_error("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
-		qdel(src)
-	else
-		reward = new reward(src)
-		if(!istype(reward,/obj/item/currency))
-			reward.quality = 200
-		INITIALIZE(reward)
-		GENERATE(reward)
-		FINALIZE(reward)
-		value_current = 0
+		reward = /obj/item/coin/adamantium
+
+	reward = new reward(src)
+	if(!istype(reward,/obj/item/currency))
+		reward.quality = 200
+	INITIALIZE(reward)
+	GENERATE(reward)
+	FINALIZE(reward)
+	value_current = 0
 
 /obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
 
@@ -58,7 +58,7 @@
 /obj/item/contract/Finalize()
 	. = ..()
 	if(!reward)
-		log_error("Warnng: [src.get_debug_name()] had an invalid reward!")
+		log_error("Warning: [src.get_debug_name()] had an invalid reward!")
 		qdel(src)
 		return FALSE
 

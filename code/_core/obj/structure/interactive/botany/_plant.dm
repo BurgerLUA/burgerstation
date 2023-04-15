@@ -195,7 +195,13 @@
 
 /obj/structure/interactive/plant/update_icon()
 
+	. = ..()
+
 	var/plant_type/associated_plant = SSbotany.all_plant_types[plant_type]
+
+	if(!associated_plant)
+		log_error("Could not update plant icon for [src.get_debug_name()] as it did not have an associated plant!")
+		return
 
 	name = "[associated_plant.name]"
 

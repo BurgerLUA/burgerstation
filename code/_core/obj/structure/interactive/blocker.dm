@@ -13,9 +13,11 @@ obj/structure/interactive/blocker/Destroy()
 
 obj/structure/interactive/blocker/New(var/desired_loc,var/obj/structure/desired_owned_object)
 
-	owned_object = desired_owned_object
-	collision_dir = owned_object.collision_dir
-
-	update_collisions(owned_object.collision_flags,owned_object.collision_bullet_flags,collision_dir)
+	if(desired_owned_object)
+		owned_object = desired_owned_object
+		collision_dir = owned_object.collision_dir
+		update_collisions(owned_object.collision_flags,owned_object.collision_bullet_flags,collision_dir)
+	else
+		log_error("Warning: [src.get_debug_name()] didn't have a desired_owned_object set in New()!")
 
 	. = ..()

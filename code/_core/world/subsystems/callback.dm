@@ -14,8 +14,11 @@ SUBSYSTEM_DEF(callback)
 	broadcast_to_clients(span("danger","Removed all callbacks."))
 	return ..()
 
-/subsystem/callback/proc/try_call(var/stored_object,var/stored_proc,var/stored_args)
+/subsystem/callback/proc/try_call(var/datum/stored_object,var/stored_proc,var/stored_args)
 	if(stored_object)
+		if(stored_object.qdeleting)
+			log_error("Warning: [stored_object.get_debug_name()] tried being called while qdeleting!")
+			return FALSE
 		call(stored_object,stored_proc)(arglist(stored_args))
 	else
 		call(stored_proc)(arglist(stored_args))

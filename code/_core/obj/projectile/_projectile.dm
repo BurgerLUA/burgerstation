@@ -86,6 +86,7 @@
 	var/debug = FALSE
 
 /obj/projectile/Destroy()
+	SSprojectiles.all_projectiles -= src
 	color = "#000000"
 	owner = null
 	weapon = null
@@ -96,7 +97,6 @@
 	previous_loc = null
 	current_loc = null
 	projectile_blacklist?.Cut()
-	SSprojectiles.all_projectiles -= src
 	. = ..()
 
 /obj/projectile/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
@@ -265,7 +265,8 @@
 
 	if(qdeleting)
 		log_error("Warning: [src.get_debug_name()] called update_projectile() while qdeleting!")
-		return FALSE
+		SSprojectiles.all_projectiles -= src //Safety.
+		return TRUE
 
 	if(!src.z || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
 		on_projectile_hit(current_loc)
