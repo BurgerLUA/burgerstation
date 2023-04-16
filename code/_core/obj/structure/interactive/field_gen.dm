@@ -178,6 +178,7 @@
 		while(limit > 0)
 			limit--
 			T = get_step(T,d)
+			if(!T) break //Off the map.
 			var/obj/structure/interactive/field_generator/FG = locate() in T.contents
 			if(FG && FG.active) //Don't need to give it energy. As long as src has energy, it can process.
 				src.linked_field_gens["[d]"] = FG

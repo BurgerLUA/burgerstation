@@ -59,21 +59,20 @@
 
 /obj/item/bulletbox/click_self(var/mob/caller,location,control,params)
 
-	if(small)
-		return TRUE
+	if(small || anchored)
+		return ..()
 
-	if(!anchored && drop_item(get_turf(caller)) && set_anchored(TRUE))
+	if(drop_item(get_turf(caller)) && set_anchored(TRUE))
 		update_sprite()
-		return TRUE
 
 	return TRUE
 
+
 /obj/item/bulletbox/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	INTERACT_CHECK
-	INTERACT_DELAY(5)
-
 	if(istype(object,/obj/item/bullet_cartridge/))
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
 		var/obj/item/bullet_cartridge/B = object
 		if(!stored_bullet)
 			if(length(bullet_whitelist) && !bullet_whitelist[B.type])
@@ -99,6 +98,8 @@
 		return TRUE
 
 	if(!small && anchored && caller.attack_flags & CONTROL_MOD_DISARM && src.set_anchored(FALSE))
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
 		update_sprite()
 		caller.to_chat(span("notice","You pack up \the [src.name]."))
 		return TRUE
@@ -107,6 +108,8 @@
 		return ..()
 
 	if(is_inventory(object))
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
 		var/bullets_to_take = min(bullet_count,stored_bullet.amount_max)
 		if(bullets_to_take <= 0)
 			return TRUE
@@ -122,6 +125,8 @@
 		return TRUE
 
 	if(istype(object,/obj/item/magazine/))
+		INTERACT_CHECK
+		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
 		if(!M.can_load_magazine(caller,stored_bullet))
 			return TRUE

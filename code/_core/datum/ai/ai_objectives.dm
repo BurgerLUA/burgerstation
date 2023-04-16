@@ -293,7 +293,11 @@
 	if(desired_target == objective_attack)
 		return FALSE
 
-	set_path_fallback(get_turf(desired_target))
+	var/turf/T = get_turf(desired_target)
+	if(!T)
+		return FALSE
+
+	set_path_fallback(T)
 
 	return TRUE
 

@@ -10,7 +10,7 @@
 	size = SIZE_4/1000
 	weight = 50/1000
 
-	currency_class = "gold"
+	currency_class = "gold coin"
 
 	drop_sound = null
 

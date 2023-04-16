@@ -7,6 +7,8 @@ var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 	icon = 'icons/obj/item/credit.dmi'
 	icon_state = "null"
 
+	currency_class = "credits"
+
 	amount_max = 5000
 
 	value = 1

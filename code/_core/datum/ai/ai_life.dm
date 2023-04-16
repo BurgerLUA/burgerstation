@@ -122,6 +122,7 @@
 					set_path_fallback(get_turf(objective_move))
 
 		var/result = src.handle_movement()
+		owner.desc_extended = last_movement_proc
 		if(result && owner.move_dir)
 			if(owner.has_status_effect(REST))
 				owner.remove_status_effect(REST)

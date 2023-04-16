@@ -66,7 +66,8 @@
 		I.close_inventory(src)
 
 	if(!master && !delete_on_death && !is_player_controlled(src))
-		drop_hands(get_turf(src))
+		var/turf/T = get_turf(src)
+		if(T) drop_hands(T)
 
 /mob/living/advanced/rejuvenate()
 

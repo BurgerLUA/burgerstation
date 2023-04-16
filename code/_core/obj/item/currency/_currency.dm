@@ -36,7 +36,7 @@
 	icon_state = "1"
 	value = 200
 
-	currency_class = "Telecrystals"
+	currency_class = "telecrystal"
 
 	rarity = RARITY_RARE
 
@@ -60,7 +60,7 @@
 	icon_state = "1"
 	value = 0.25
 
-	currency_class = "Prize Ticket"
+	currency_class = "prize ticket"
 
 /obj/item/currency/prize_ticket/update_icon()
 	switch(amount)
@@ -85,7 +85,7 @@
 
 	amount_max = 4
 
-	currency_class = "Magic Shard"
+	currency_class = "magic shard"
 
 	rarity = RARITY_RARE
 

@@ -526,24 +526,28 @@
 		medical_hud_image.loc = src
 		medical_hud_image.layer = PLANE_AUGMENTED
 		medical_hud_image.pixel_y = 4
+		medical_hud_image.mouse_opacity = 0
 		medical_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 		medical_hud_image_advanced = new/image('icons/hud/damage_hud.dmi',"000")
 		medical_hud_image_advanced.loc = src
 		medical_hud_image_advanced.layer = PLANE_AUGMENTED
+		medical_hud_image_advanced.mouse_opacity = 0
 		medical_hud_image_advanced.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 	if(enable_security_hud)
 		security_hud_image = new/image('icons/hud/sechud.dmi',"unknown")
 		security_hud_image.loc = src
 		security_hud_image.layer = PLANE_AUGMENTED
+		security_hud_image.mouse_opacity = 0
 		security_hud_image.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
 
 	chat_overlay = new(src)
 	chat_overlay.layer = LAYER_EFFECT
 	chat_overlay.icon = 'icons/mob/living/advanced/overlays/talk.dmi'
 	chat_overlay.alpha = 0
-	chat_overlay.pixel_y = 20 + src.pixel_z
+	chat_overlay.pixel_y = 4 + src.pixel_z
+	chat_overlay.mouse_opacity = 0
 	src.vis_contents += chat_overlay
 	//This is initialized somewhere else.
 
@@ -552,6 +556,7 @@
 	alert_overlay.icon = 'icons/mob/living/advanced/overlays/stealth.dmi'
 	alert_overlay.icon_state = "none"
 	alert_overlay.pixel_y = 20 + src.pixel_z
+	alert_overlay.mouse_opacity = 0
 	src.vis_contents += alert_overlay
 	//This is initialized somewhere else.
 
@@ -559,6 +564,7 @@
 	fire_overlay.layer = LAYER_MOB_FIRE
 	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
 	fire_overlay.icon_state = "0"
+	fire_overlay.mouse_opacity = 0
 	src.vis_contents += fire_overlay
 	//This is initialized somewhere else.
 
@@ -568,6 +574,7 @@
 	shield_overlay.icon_state = "block"
 	shield_overlay.alpha = 0
 	shield_overlay.pixel_y = src.pixel_z
+	shield_overlay.mouse_opacity = 0
 	src.vis_contents += shield_overlay
 	//This is initialized somewhere else.
 
@@ -581,6 +588,7 @@
 	water_mask.pixel_x = -32
 	water_mask.pixel_y = -32
 	water_mask.alpha = 200
+	water_mask.mouse_opacity = 0
 	water_mask.filters += filter(type="alpha",x=0,y=0,render_source="\ref[src]")
 	vis_contents += water_mask
 

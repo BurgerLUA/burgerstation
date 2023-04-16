@@ -28,10 +28,10 @@
 	var/obj/item/analyzer/gps/choice2 = input("Select the GPS for coordinates.", "GPS Selection") as null|anything in gps_list
 	if(!choice2)
 		return
-	if(choice2.need_password)
-		var/passwordcheck = input("Enter the password for this GPS.","GPS Password Entry") as null|text
-		if(passwordcheck != choice2.assigned_number)
-			caller.to_chat(span("notice","You entered the wrong password."))
+	if(choice2.assigned_passkey && choice2.secure)
+		var/passwordcheck = input("Enter the password for this GPS.","GPS Password Entry") as null|password
+		if(passwordcheck != choice2.assigned_passkey)
+			caller.to_chat(span("notice","Incorrect password."))
 			return FALSE
 	var/turf/gpsTURF = get_turf(choice2)
 	var/turf/srcTURF = get_turf(src)
