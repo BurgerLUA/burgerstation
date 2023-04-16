@@ -98,7 +98,7 @@ var/global/list/gps_list = list()
 
 /obj/item/analyzer/gps/advanced
 	name = "advanced gps"
-	desc_extended = "A highly advanced gps and rangefinder that can get the location of where you aim it. This one is secure and can be assigned_passkey protected."
+	desc_extended = "A highly advanced gps and rangefinder that can get the location of where you aim it. This one is secure and can be passkey protected."
 	advanced = TRUE
 	secure = TRUE
 	rarity = RARITY_RARE

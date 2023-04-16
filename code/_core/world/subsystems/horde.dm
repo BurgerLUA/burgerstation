@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(horde)
 		var/area/A = T.loc
 		if(A.area_identifier != "Mission")
 			continue
-		if(P.health && rand() < 1 - (P.health.health_current/P.health.health_max))
+		if(P.health && rand() > P.health.health_current/P.health.health_max)
 			ckey_to_time_to_horde[P.ckey] = world.time + HORDE_DELAY_RECHECK //Forgiveness.
 			continue
 		var/mob/living/squad_to_send = get_squad_to_send(P)
@@ -100,7 +100,7 @@ SUBSYSTEM_DEF(horde)
 		var/obj/structure/interactive/mining_drill/D = drill
 		if(all_drills[D] && all_drills[D] > world.time)
 			continue
-		if(!D) //Drill probably destroyed, mission accomplished.
+		if(!D || D.qdeleting) //Drill destroyed, mission accomplished.
 			continue
 		if(!IS_THINKING(D)) // Drill isnt on. No noise, no horde.
 			continue
@@ -112,6 +112,7 @@ SUBSYSTEM_DEF(horde)
 			continue
 		var/mob/living/squad_to_send = get_squad_to_send(D)
 		if(!squad_to_send || !send_squad(D,squad_to_send,TRUE))//THERE IS NO SAFE ORE MINING.
+			all_drills[D] = world.time + HORDE_DELAY_RECHECK
 			continue
 		all_drills[D] = world.time + HORDE_DELAY_DRILL
 
@@ -119,40 +120,22 @@ SUBSYSTEM_DEF(horde)
 
 /subsystem/horde/proc/get_squad_to_send(var/atom/target)
 
-	if(!is_player(target)) //Probably a drill or other target interactable.
-		var/obj/structure/interactive/victim = target
-
-		var/area/A = get_area(victim)
-
-		if(!A || !A.horde_data)
-			return null
-		var/horde_data/found_horde_data = src.all_horde_data_types[A.horde_data]
-
-		var/chosen_key = pickweight(found_horde_data.horde_weights)
-
-		if(istext(chosen_key))
-			return found_horde_data.horde_squads[chosen_key]
-		else
-			return chosen_key
-	var/mob/living/advanced/player/victim = target
-
-	var/area/A = get_area(victim)
+	//Get the hoard to send.
+	var/area/A = get_area(target)
 
 	if(!A || !A.horde_data)
 		return null
 
 	var/horde_data/found_horde_data
 
-	if(A.horde_data == "mission")
+	if(A.horde_data == "mission" && SSgamemode && SSgamemode.active_gamemode && length(SSgamemode.active_gamemode.gamemode_horde_data))
 		found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
-	else
-		found_horde_data = src.all_horde_data_types[A.horde_data]
 
-	if(!found_horde_data.ignore_gamemode)
-		if(SSgamemode && SSgamemode.active_gamemode && length(SSgamemode.active_gamemode.gamemode_horde_data) && prob(80))
-			found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
-		else if(victim && prob(20) && SStax.check_delinquent(victim))
+	if(!found_horde_data || !found_horde_data.ignore_gamemode)
+		if(is_player(target) && SStax.check_delinquent(target))
 			found_horde_data = src.all_horde_data_types[/horde_data/tax]
+		else
+			found_horde_data = src.all_horde_data_types[A.horde_data]
 
 	var/chosen_key = pickweight(found_horde_data.horde_weights)
 
@@ -162,220 +145,101 @@ SUBSYSTEM_DEF(horde)
 		return chosen_key
 
 /subsystem/horde/proc/send_squad(var/atom/target,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/horde_count_override=0,var/debug=FALSE)
-	if(!istype(target,/mob)) // we must be a structure if we arent a mob.
-		var/obj/structure/interactive/victim = target
-		var/turf/T = get_turf(victim)
-		if(!T)
-			return FALSE
-		var/area/A = T.loc
-		if(!bypass_restrictions && A.area_identifier != "Mission")
-			if(debug) log_debug("Could not send squad: Not on mission map!")
-			return FALSE
-		//Okay. Here is the fun part. Finding spawns.
-		var/my_chunk_x = GET_CHUNK_X(T)
-		var/my_chunk_y = GET_CHUNK_Y(T)
-		var/my_chunk_z = GET_CHUNK_Z(T)
-		var/obj/marker/map_node/N_end = find_closest_node(T,VIEW_RANGE*8)
-		if(!N_end)
-			if(debug) log_debug("Could not send squad: Could not find a closest node to the target.")
-			return FALSE
-		var/list/valid_nodes = list()
 
-		for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
-			if(x==0 && y==0) //Not sure if this will happen but w/e
+	var/enemies_to_send = horde_count_override
+	if(!enemies_to_send && is_player(target))
+		var/mob/living/advanced/player/P = target
+		enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
+		if(!bypass_restrictions && P.ckey_last)
+			enemies_to_send -= length(ckeys_being_hunt_by[P.ckey_last])
+
+	if(enemies_to_send <= 0)
+		if(debug) log_debug("Could not send squad: Target already has too many squads being sent after them.")
+		return TRUE //Already being hunted.
+
+	//Setting up turf and area.
+	var/turf/T = get_turf(target)
+	if(!T)
+		if(debug) log_debug("Could not send squad: No valid turf detected!")
+		return FALSE
+	var/area/A = T.loc
+
+	//Safety Check.
+	if(!bypass_restrictions && A.area_identifier != "Mission")
+		if(debug) log_debug("Could not send squad: Not on mission map!")
+		return FALSE
+
+	var/chunk/C = CHUNK(T)
+	if(!C)
+		if(debug) log_debug("Could not send squad: Could not find a valid chunk.")
+		return FALSE
+
+	var/obj/marker/map_node/N_end = find_closest_node(T,VIEW_RANGE*2)
+	if(!N_end)
+		if(debug) log_debug("Could not send squad: Could not find a closest valid node to the target.")
+		return FALSE
+
+	var/list/valid_nodes = list()
+	var/list/chunks_checked = list(C = TRUE)
+	for(var/k in C.adjacent_chunks)
+		var/chunk/AC = k
+		chunks_checked[AC] = TRUE
+		if(length(AC.players))
+			continue
+		for(var/j in AC.adjacent_chunks)
+			var/chunk/ACC = j
+			if(chunks_checked[ACC])
 				continue
-			var/chunk_x = my_chunk_x + x
-			var/chunk_y = my_chunk_y + y
-			if(chunk_x <= 0 || chunk_x > world.maxx/CHUNK_SIZE)
+			chunks_checked[ACC] = TRUE
+			if(length(ACC.players))
 				continue
-			if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
-				continue
-			var/chunk/C = CHUNK_XYZ(chunk_x,chunk_y,my_chunk_z)
-			for(var/k in C.nodes)
-				var/obj/marker/map_node/N = k
-				if(get_dist(N,victim) <= VIEW_RANGE + ZOOM_RANGE)
+			for(var/h in ACC.nodes)
+				var/obj/marker/map_node/N = h
+				if(length(N.adjacent_map_nodes) != 1) //Find ending nodes only.
 					continue
-				if(!bypass_restrictions)
-					var/turf/TN = N.loc
-					var/area/AN = TN.loc
-					if(AN.flags_area & FLAG_AREA_NO_HORDE)
-						continue
 				valid_nodes += N
 
-		if(!length(valid_nodes))
-			if(debug) log_debug("Could not send squad: Found zero valid nodes to place squad at.")
-			return FALSE
-
+	var/list/obj/marker/map_node/found_path
+	var/turf/squad_spawn
+	for(var/i=1,i<=5,i++) //5 attempts.
 		var/obj/marker/map_node/N_start = pick(valid_nodes)
-		var/turf/squad_spawn = get_turf(N_start)
-
-		if(debug)
-			var/chunk/SC = CHUNK(squad_spawn)
-			log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
-
-
-		var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end,maxtraverse = 250,debug=TRUE)
-		if(!found_path)
-			if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
-			return FALSE
-		var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
-
-
-		var/enemies_to_send = horde_count_override
-		if(!enemies_to_send)
-			enemies_to_send = 3
-		. = 0
-		var/area/sent_area //debug only
-		for(var/i=1,i<=min(enemies_to_send,4),i++) //Send at most only 4 at a time.
-			var/turf/T2 = get_step(squad_spawn,valid_directions[1 + (i % 4)])
-			if(!T) continue
-			var/local_attacker_type = islist(attacker_type) ? pickweight(attacker_type) : attacker_type
-			var/mob/living/Z = new local_attacker_type(T2)
-			INITIALIZE(Z)
-			GENERATE(Z)
-			FINALIZE(Z)
-			if(!Z.ai?.set_hunt_target(victim))
-				qdel(Z)
-				break
-			else
-				Z.ai.delete_on_no_path = TRUE
-				if(debug)
-					Z.ai.debug = TRUE
-				. += 1
-				if(debug && !sent_area)
-					sent_area = get_area(Z)
-
-		if(debug)
-			if(. <= 0)
-				log_debug("Could not send squad: AI could not properly set their hunt target.")
-			else
-				log_debug("Sent squad. [.] expected squad members spawned at [squad_spawn.get_debug_name()].")
-	else
-		var/mob/victim = target
-
-
-		var/turf/T = get_turf(victim)
-		if(!T)
-			return FALSE
-
-		var/area/A = T.loc
-		if(!bypass_restrictions && A.area_identifier != "Mission")
-			if(debug) log_debug("Could not send squad: Area identifier was expected to be Mission, but it was [A.area_identifier].")
-			return FALSE
-		//Okay. Here is the fun part. Finding spawns.
-		var/chunk/victim_chunk = CHUNK(T)
-		var/my_chunk_x = victim_chunk.x
-		var/my_chunk_y = victim_chunk.y
-		var/my_chunk_z = victim_chunk.z
-		if(!length(victim_chunk.nodes))
-			if(debug) log_debug("Could not send squad: Victim's chunk location had no valid nodes.")
-			return FALSE
-
-		if(debug) log_debug("Found victim chunk ([victim_chunk.x],[victim_chunk.y],[victim_chunk.z]).")
-
-		var/obj/marker/map_node/N_end = find_closest_node(T)
-		if(!N_end)
-			if(debug) log_debug("Could not send squad: Could not find a closest node to the player..")
-			return FALSE
-
-		var/list/valid_nodes = list()
-
-		for(var/x=-1,x<=1,x+=2) for(var/y=-1,y<=1,y+=2)
-			if(x==0 && y==0) //Not sure if this will happen but w/e
-				continue
-			var/chunk_x = my_chunk_x + x*2
-			var/chunk_y = my_chunk_y + y*2
-			if(chunk_x <= 0 || chunk_x > world.maxx/CHUNK_SIZE)
-				continue
-			if(chunk_y <= 0 || chunk_y > world.maxy/CHUNK_SIZE)
-				continue
-
-			var/chunk/C = CHUNK_XYZ(chunk_x,chunk_y,my_chunk_z)
-			if(length(C.players))
-				continue
-			var/bad_chunk = FALSE
-			for(var/k in C.adjacent_chunks)
-				var/chunk/C2 = k
-				if(length(C2.players))
-					bad_chunk = TRUE
-					break
-			if(bad_chunk)
-				continue
-			for(var/k in C.nodes)
-				var/obj/marker/map_node/N = k
-				if(get_dist(N,victim) <= VIEW_RANGE + ZOOM_RANGE)
-					continue
-				if(!bypass_restrictions)
-					var/turf/TN = N.loc
-					var/area/AN = TN.loc
-					if(AN.flags_area & FLAG_AREA_NO_HORDE)
-						continue
-				valid_nodes += N
-
-		if(!length(valid_nodes))
-			if(debug) log_debug("Could not send squad: Found zero valid nodes to place squad at.")
-			return FALSE
-
-		var/attempts = 5
-		var/obj/marker/map_node/N_start
-		var/list/obj/marker/map_node/found_path
-		var/turf/squad_spawn
-
-		while(attempts > 0 && length(valid_nodes))
-			attempts--
-			N_start = pick(valid_nodes)
-			valid_nodes -= N_start
+		valid_nodes -= N_start
+		found_path = AStar_Circle_node(N_start,N_end,debug=debug)
+		if(found_path)
 			squad_spawn = get_turf(N_start)
-			found_path = AStar_Circle_node(N_start,N_end,debug=TRUE)
-			if(debug)
-				var/chunk/SC = CHUNK(squad_spawn)
-				log_debug("Found squad chunk ([SC.x],[SC.y],[SC.z]).")
-			if(!found_path)
-				if(debug) log_debug("Could not send squad: Could not find a path from [N_start.get_debug_name()] to [N_end.get_debug_name()].")
-				continue
+			break
 
-		if(!found_path)
-			if(debug) log_debug("Failed to find a valid path.")
-			return FALSE
+	if(!found_path)
+		if(debug) log_debug("Could not send squad: Could not find a valid path after 5 tries.")
+		return FALSE
 
-		var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
+	var/list/valid_directions = list(null,NORTH,EAST,SOUTH,WEST)
 
-		var/enemies_to_send = horde_count_override
-		if(!enemies_to_send && is_player(victim))
-			var/mob/living/advanced/player/P = victim
-			enemies_to_send = enemies_to_send_per_difficulty[P.get_difficulty()]
+	. = 0
+	for(var/i=1,i<=min(enemies_to_send,4),i++) //Send at most only 4 at a time.
+		var/turf/squad_spawn_offset = get_step(squad_spawn,valid_directions[1 + (i % 4)])
+		if(!squad_spawn_offset || squad_spawn_offset.has_dense_atom)
+			squad_spawn_offset = squad_spawn
+		var/mob/living/Z = islist(attacker_type) ? pickweight(attacker_type) : attacker_type
+		Z = new Z(squad_spawn_offset)
+		INITIALIZE(Z)
+		GENERATE(Z)
+		FINALIZE(Z)
+		if(!Z.ai)
+			log_error("Warning: Tried making [Z.get_debug_name()] hunt, but it had no AI!")
+			qdel(Z)
+			break
+		if(debug) Z.ai.debug = TRUE
+		if(!Z.ai.set_path_node(found_path))
+			log_error("Warning: Tried making [Z.get_debug_name()] hunt, but it couldn't path to the hunt target!")
+			qdel(Z)
+			break
+		if(!Z.ai.set_hunt_target(target))
+			log_error("Warning: Tried making [Z.get_debug_name()] hunt, but it couldn't set the hunt target ([target.get_debug_name()])!")
+			qdel(Z)
+			break
+		Z.ai.delete_on_no_path = TRUE
+		. += 1
 
-		if(!bypass_restrictions && victim.ckey_last)
-			enemies_to_send -= length(ckeys_being_hunt_by[victim.ckey_last])
-
-		if(enemies_to_send <= 0)
-			if(debug) log_debug("Could not send squad: Target already has too many squads being sent after them.")
-			return TRUE //Already being hunted.
-
-		. = 0
-		var/area/sent_area //debug only
-		for(var/i=1,i<=min(enemies_to_send,4),i++) //Send at most only 4 at a time.
-			var/turf/T2 = get_step(squad_spawn,valid_directions[1 + (i % 4)])
-			if(!T) continue
-			var/local_attacker_type = islist(attacker_type) ? pickweight(attacker_type) : attacker_type
-			var/mob/living/Z = new local_attacker_type(T2)
-			INITIALIZE(Z)
-			GENERATE(Z)
-			FINALIZE(Z)
-			if(!Z.ai?.set_hunt_target(victim))
-				qdel(Z)
-				break
-			else
-				Z.ai.delete_on_no_path = TRUE
-				if(debug)
-					Z.ai.debug = TRUE
-				. += 1
-				if(debug && !sent_area)
-					sent_area = get_area(Z)
-
-		if(debug)
-			if(. <= 0)
-				log_debug("Could not send squad: AI could not properly set their hunt target.")
-			else
-				log_debug("Sent squad. [.] expected squad members spawned at [squad_spawn.get_debug_name()].")
-
+	if(debug && . > 0)
+		log_debug("Sent squad. [.] expected squad members spawned at [squad_spawn.get_debug_name()] in [squad_spawn.loc.get_debug_name()].")
