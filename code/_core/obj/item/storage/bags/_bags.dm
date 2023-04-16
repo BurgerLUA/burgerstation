@@ -18,7 +18,7 @@
 		var/pickup = 0
 		for(var/obj/item/I in T.contents)
 			if(I.type in container_whitelist)
-				if(src.add_to_inventory(caller,I,enable_messages = FALSE,silent=TRUE))
+				if(src.add_object_to_src_inventory(caller,I,enable_messages = FALSE,silent=TRUE))
 					pickup++
 		if(pickup)
 			caller?.to_chat(span("notice","You add [pickup] objects to \the [src.name]."))

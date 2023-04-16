@@ -30,17 +30,21 @@
 /obj/structure/interactive/ore_box/Cross(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/obj/item/material/ore/))
-		var/obj/item/material/ore/I = O
-		I.drop_item(src)
-		stack(I)
+		stack(O)
 		return FALSE
 
 	return ..()
 
 /obj/structure/interactive/ore_box/proc/stack(var/obj/item/material/ore/O)
+	O.drop_item(src)
 	for(var/obj/item/material/ore/C in contents)
-		if(O.can_transfer_stacks_to(C))
-			O.transfer_amount_to(C)
+		if(O == C)
+			continue
+		if(!O.can_transfer_stacks_to(C))
+			continue
+		O.transfer_amount_to(C)
+		if(O.qdeleting)
+			break
 
 /obj/structure/interactive/ore_box/get_examine_list(var/mob/examiner)
 

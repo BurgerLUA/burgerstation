@@ -16,7 +16,7 @@
 			var/found_object = FALSE
 			for(var/obj/item/I in found_turf.contents)
 				found_object = TRUE
-				if(!src.add_to_inventory(caller,I,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
+				if(!src.add_object_to_src_inventory(caller,I,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
 					continue
 				result = TRUE
 			if(result)
@@ -42,11 +42,11 @@
 		src.drop_item(additional_clothing_parent,silent=TRUE)
 		return TRUE
 
-	if(is_container && is_item(object)) //We're a container being clicked on.
+	if(is_container && is_item(object)) //We're a container being clicked on by an item.
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		var/obj/item/I = object
-		if(src.add_to_inventory(caller,I))
+		if(src.add_object_to_src_inventory(caller,I))
 			INTERACT_DELAY(1)
 			return TRUE
 
@@ -91,7 +91,7 @@
 		var/list/generated_loot = SPAWN_LOOT(loot_to_generate,get_turf(src),rarity)
 		for(var/k in generated_loot)
 			var/atom/movable/M = k
-			if(!src.add_to_inventory(null,M,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
+			if(!src.add_object_to_src_inventory(null,M,enable_messages=FALSE,bypass=FALSE,silent=TRUE))
 				qdel(M)
 		A.to_chat(span("notice","You [loot_open_verb] \the [src.name]."))
 		loot_to_generate = null

@@ -16,28 +16,34 @@
 	desired_light_color = "#0000FF"
 
 /obj/structure/interactive/stacker/Crossed(atom/movable/O)
-	stack(O)
+
+	if(is_item(O))
+		stack(O)
+		return FALSE
+
 	return ..()
 
-/obj/structure/interactive/stacker/proc/stack(var/atom/movable/O)
+/obj/structure/interactive/stacker/proc/stack(var/obj/item/I)
 
-	if(!is_item(O))
+	if(I.amount_max <= 1) //Not stackable.
 		return FALSE
 
-	var/obj/item/I = O
-	if(I.amount_max <= 1)
-		return FALSE
 	if(I.amount >= I.amount_max)
+		if(I.loc != src.loc)
+			I.drop_item(src.loc)
 		return FALSE
 
 	I.drop_item(src)
 
 	for(var/obj/item/E in contents) //E for existing
+		if(E == I)
+			continue
 		if(I.can_transfer_stacks_to(E))
 			I.transfer_amount_to(E)
 			if(E.amount == E.amount_max)
 				E.drop_item(src.loc)
-			break
+			if(I.qdeleting)
+				break
 
 	return TRUE
 

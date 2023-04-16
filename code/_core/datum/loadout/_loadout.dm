@@ -28,7 +28,7 @@
 				GENERATE(IF)
 				FINALIZE(IF)
 				INV.add_object(IF,messages=FALSE)
-				if(IF.add_to_inventory(A,I,enable_messages=FALSE))
+				if(IF.add_object_to_src_inventory(A,I,enable_messages=FALSE))
 					. = TRUE
 				break
 

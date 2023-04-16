@@ -334,25 +334,6 @@ var/global/list/rarity_to_mul = list(
 /obj/item/get_base_value()
 	return initial(value) * amount * price_multiplier * (0.5 + 0.5*clamp(quality/100,0.25,1.5))
 
-/obj/item/proc/transfer_amount_to(var/obj/item/target,var/amount_to_transfer = amount)
-	if(!amount_to_transfer) return 0
-	if(amount_to_transfer < 0)
-		return target.transfer_amount_to(src,-amount_to_transfer)
-	amount_to_transfer = min(
-		amount_to_transfer, //What we want to transfer
-		amount, //What we can actually transfer from
-		target.amount_max - target.amount //What the target can actually hold.
-	)
-
-	var/reagents_ratio = amount_to_transfer / amount
-
-	target.add_item_count(amount_to_transfer,TRUE)
-	if(src.reagents && target.reagents)
-		src.reagents.transfer_reagents_to(target.reagents,src.reagents.volume_current*reagents_ratio)
-	src.add_item_count(-amount_to_transfer,TRUE)
-
-	return amount_to_transfer
-
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)
 		return 0
@@ -396,12 +377,12 @@ var/global/list/rarity_to_mul = list(
 
 	return ..()
 
-/obj/item/proc/can_add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE)
+/obj/item/proc/can_add_object_to_src_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //Can we add object to src?
 
 	if(!length(inventories))
 		return null
 
-	if(object.amount_max > 2 && object.amount < object.amount_max)
+	if(object.amount_max > 1) //We can transfer stacks.
 		//First pass.
 		for(var/k in inventories)
 			var/obj/hud/inventory/I = k
@@ -416,7 +397,7 @@ var/global/list/rarity_to_mul = list(
 
 	return null
 
-/obj/item/proc/add_to_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
+/obj/item/proc/add_object_to_src_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE
@@ -424,7 +405,7 @@ var/global/list/rarity_to_mul = list(
 	if(object == src)
 		return FALSE
 
-	var/obj/result = can_add_to_inventory(caller,object,FALSE,bypass)
+	var/obj/result = src.can_add_object_to_src_inventory(caller,object,FALSE,bypass)
 
 	if(!result)
 		return FALSE
@@ -960,5 +941,5 @@ var/global/list/rarity_to_mul = list(
 			GENERATE(I)
 			FINALIZE(I)
 			post_fill_inventory(I)
-			add_to_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
+			add_object_to_src_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
 	. = ..()

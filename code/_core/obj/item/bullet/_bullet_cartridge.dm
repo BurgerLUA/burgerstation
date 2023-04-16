@@ -239,12 +239,24 @@
 	return src.can_caller_interact_with(caller,delay_checks=FALSE) && G.can_caller_interact_with(caller,delay_checks=FALSE)
 
 
-/obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/I)
+/obj/item/bullet_cartridge/can_transfer_stacks_to(var/obj/item/target)
 
-	if(!istype(I,/obj/item/bullet_cartridge/))
+	if(target == src)
 		return FALSE
 
-	var/obj/item/bullet_cartridge/BC = I
+	if(target.amount_max <= 1)
+		return FALSE
+
+	if(src.amount_max <= 1)
+		return FALSE
+
+	if(target.amount >= target.amount_max)
+		return FALSE
+
+	if(!istype(target,/obj/item/bullet_cartridge/))
+		return FALSE
+
+	var/obj/item/bullet_cartridge/BC = target
 
 	if(BC.bullet_length != bullet_length)
 		return FALSE
@@ -252,7 +264,7 @@
 	if(BC.bullet_diameter != bullet_diameter)
 		return FALSE
 
-	return ..()
+	return TRUE
 
 /obj/item/bullet_cartridge/proc/get_recommended_value(var/debug=FALSE)
 

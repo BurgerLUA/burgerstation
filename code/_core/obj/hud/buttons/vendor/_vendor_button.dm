@@ -151,7 +151,7 @@
 
 		var/obj/item/I = associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
 
-		if(I && !I.qdeleting)
+		if(I && !I.qdeleting && is_item(object)) //Sometimes the item is abstract.
 			if(I.can_transfer_stacks_to(object))
 				var/stacks_transfered = I.transfer_amount_to(object)
 				if(stacks_transfered)

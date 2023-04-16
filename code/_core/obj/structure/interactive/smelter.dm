@@ -53,8 +53,11 @@
 	return
 /obj/structure/interactive/smelter/proc/stack(var/obj/item/material/ore/O)
 	for(var/obj/item/material/ore/C in contents)
-		if(O.can_transfer_stacks_to(C))
-			O.transfer_amount_to(C)
+		if(!O.can_transfer_stacks_to(C))
+			continue
+		O.transfer_amount_to(C)
+		if(O.qdeleting)
+			break
 
 /obj/structure/interactive/smelter/Crossed(atom/movable/O)
 	if(istype(O,/obj/item/material/ore/))

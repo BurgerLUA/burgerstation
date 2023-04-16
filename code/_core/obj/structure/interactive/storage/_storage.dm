@@ -20,7 +20,7 @@
 	. = ..()
 	if(storage && src.z)
 		for(var/obj/item/I in loc.contents)
-			storage.add_to_inventory(null,I)
+			storage.add_object_to_src_inventory(null,I)
 	if(stored_loot_per_instance)
 		tracked_instance_ckeys = list()
 
@@ -39,14 +39,14 @@
 	if(stored_loot)
 		var/list/spawned_loot = SPAWN_LOOT(stored_loot,T,rarity)
 		for(var/obj/item/I in spawned_loot)
-			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
+			storage.add_object_to_src_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 		stored_loot = null
 
 	if(stored_loot_per_instance && caller.ckey && !tracked_instance_ckeys[caller.ckey])
 		tracked_instance_ckeys[caller.ckey] = TRUE
 		var/list/spawned_instance_loot = SPAWN_LOOT(stored_loot_per_instance,T,rarity)
 		for(var/obj/item/I in spawned_instance_loot)
-			storage.add_to_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
+			storage.add_object_to_src_inventory(caller,I,enable_messages = FALSE,bypass = TRUE,silent=TRUE)
 
 	caller.clear_inventory_defers() //Remove existing ones.
 

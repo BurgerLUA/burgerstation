@@ -1,5 +1,38 @@
-/obj/item/proc/can_transfer_stacks_to(var/obj/item/I)
-	return (istype(I,src) || istype(src,I)) && I != src && src.amount_max > 1 && src.amount < src.amount_max
+/obj/item/proc/can_transfer_stacks_to(var/obj/item/target) //General all-purpose code.
+
+	if(target == src)
+		return FALSE
+
+	if(target.amount_max <= 1 || src.amount_max <= 1)
+		return FALSE
+
+	if(!istype(target,src) && !istype(src,target))
+		return FALSE
+
+	if(target.amount >= target.amount_max)
+		return FALSE
+
+	return TRUE
+
+/obj/item/proc/transfer_amount_to(var/obj/item/target,var/amount_to_transfer = amount)
+	if(!amount_to_transfer) return 0
+	if(amount_to_transfer < 0)
+		return target.transfer_amount_to(src,-amount_to_transfer)
+	amount_to_transfer = min(
+		amount_to_transfer, //What we want to transfer
+		amount, //What we can actually transfer from
+		target.amount_max - target.amount //What the target can actually hold.
+	)
+
+	var/reagents_ratio = amount_to_transfer / amount
+
+	target.add_item_count(amount_to_transfer,TRUE)
+	if(src.reagents && target.reagents)
+		src.reagents.transfer_reagents_to(target.reagents,src.reagents.volume_current*reagents_ratio)
+	src.add_item_count(-amount_to_transfer,TRUE)
+
+	return amount_to_transfer
+
 
 //Credit goes to Unknown Person
 
@@ -68,7 +101,7 @@
 				return TRUE
 		else
 			//Transfering what we clicked on to src.
-			if(I.can_transfer_stacks_to(src)) //We take from it.
+			if(I.can_transfer_stacks_to(src)) //We can take from it.
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
 				INTERACT_DELAY(1)

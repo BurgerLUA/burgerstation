@@ -119,7 +119,7 @@
 					var/obj/item/I2 = j
 					if(I.can_transfer_stacks_to(I2))
 						I.transfer_amount_to(I2)
-						if(I.qdeleting || I.amount <= 0)
+						if(I.qdeleting)
 							success = TRUE
 						break
 				if(success)

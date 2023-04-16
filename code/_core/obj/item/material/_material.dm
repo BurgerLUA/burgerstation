@@ -17,19 +17,28 @@
 
 	weight = 0.1
 
-/obj/item/material/can_transfer_stacks_to(var/obj/item/I)
+/obj/item/material/can_transfer_stacks_to(var/obj/item/target)
 
-	if(!istype(I,/obj/item/material/))
+	if(target == src)
 		return FALSE
 
-	var/obj/item/material/M = I
+	if(target.amount_max <= 1 || src.amount_max <= 1)
+		return FALSE
+
+	if(target.amount >= target.amount_max)
+		return FALSE
+
+	if(!istype(target,/obj/item/material/))
+		return FALSE
+
+	var/obj/item/material/M = target
 	if(M.material_id != src.material_id)
 		return FALSE
 
 	if(M.crafting_id != src.crafting_id)
 		return FALSE
 
-	. = ..()
+	return TRUE
 
 /obj/item/material/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

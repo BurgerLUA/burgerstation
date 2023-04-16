@@ -58,12 +58,10 @@
 						A.to_chat(span("notice","You sell \the [B.stored_object] for [G.amount] gold."))
 						B.set_stored_object(null)
 						qdel(I)
-						if(!G.qdeleting && G.can_transfer_stacks_to(object))
+						if(!G.qdeleting && is_item(object) && G.can_transfer_stacks_to(object))
 							G.transfer_amount_to(object)
-							object.update_sprite()
-						if(!G.qdeleting)
-							if(!A.put_in_hands(G,params))
-								G.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE)
+						if(!G.qdeleting && !A.put_in_hands(G,params))
+							G.quick_equip(A,ignore_worn=TRUE,ignore_dynamic=TRUE)
 
 
 					SSeconomy.update_stats()

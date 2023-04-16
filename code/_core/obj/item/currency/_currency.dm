@@ -16,13 +16,26 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/currency/can_transfer_stacks_to(var/obj/item/I)
+/obj/item/currency/can_transfer_stacks_to(var/obj/item/target)
 
-	if(I != src && istype(I,/obj/item/currency/))
-		var/obj/item/currency/C = I
-		return C.currency_class == src.currency_class
+	if(target == src) //Self-stacking.
+		return FALSE
 
-	return FALSE
+	if(target.amount_max <= 1 || src.amount_max <= 1) //Non-stackable.
+		return FALSE
+
+	if(target.amount >= target.amount_max) //Full.
+		return FALSE
+
+	if(!istype(target,/obj/item/currency/)) //Not a currency.
+		return FALSE
+
+	var/obj/item/currency/C = target
+	if(C.currency_class != src.currency_class) //Not the same currency.
+		return FALSE
+
+	return TRUE
+
 
 /obj/item/currency/Finalize()
 	. = ..()

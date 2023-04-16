@@ -67,7 +67,7 @@
 	if(I2) I2.reagents.transfer_reagents_to(P.reagents,I2.transfer_amount, caller = caller)
 
 	if(product_container)
-		product_container.add_to_inventory(caller,P,TRUE)
+		product_container.add_object_to_src_inventory(caller,P,TRUE)
 	else
 		product_slot.add_object(P)
 
