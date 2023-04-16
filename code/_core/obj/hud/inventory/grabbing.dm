@@ -109,10 +109,10 @@
 	if(!object || !caller)
 		return FALSE
 
-	if(get_dist(caller,object) >= 2)
+	if(!caller.loc || !is_turf(caller.loc) || !object.loc || !is_turf(object.loc))
 		return FALSE
 
-	if(!is_turf(caller.loc))
+	if(get_dist(caller,object) >= 2)
 		return FALSE
 
 	return TRUE
@@ -133,6 +133,11 @@
 	if(!allow_hostile_action(caller.loyalty_tag,grabbed_living))
 		return FALSE
 
+	var/turf/T = grabbed_object.loc
+
+	if(!T || !is_turf(T))
+		return FALSE
+
 	caller.visible_message(
 		span("warning","\The [caller.name] tightens their grip on \the [grabbed_living.name]!"),
 		span("warning","You tighten your grip on \the [grabbed_living.name]!")
@@ -144,7 +149,7 @@
 	grabbed_living.handle_transform()
 
 	if(caller.next_move <= 0)
-		caller.Move(get_turf(grabbed_object))
+		caller.Move(T)
 
 	update_overlays() //Changing the appearance of the inventory.
 

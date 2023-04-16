@@ -405,29 +405,30 @@ var/global/list/rarity_to_mul = list(
 	if(object == src)
 		return FALSE
 
-	var/obj/result = src.can_add_object_to_src_inventory(caller,object,FALSE,bypass)
+	var/did_add = FALSE
+	while(!object.qdeleting)
+		var/obj/result = src.can_add_object_to_src_inventory(caller,object,FALSE,bypass)
+		if(!result)
+			break
+		if(is_inventory(result))
+			var/obj/hud/inventory/found_inventory = result
+			found_inventory.add_object(object,enable_messages,bypass,silent=silent)
+			if(caller && enable_messages)
+				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			return TRUE //No need to loop.
+		if(is_item(result))
+			var/obj/item/I = result
+			if(object.transfer_amount_to(I))
+				did_add = TRUE
 
-	if(!result)
-		return FALSE
-
-	if(is_inventory(result))
-		var/obj/hud/inventory/found_inventory = result
-		found_inventory.add_object(object,enable_messages,bypass,silent=silent)
+	if(did_add)
+		if(object.qdeleting)
+			if(caller && enable_messages)
+				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			return TRUE
 		if(caller && enable_messages)
-			caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
+			caller.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
 		return TRUE
-
-	if(is_item(result))
-		var/obj/item/I = result
-		if(object.transfer_amount_to(I))
-			if(object.qdeleting)
-				if(caller && enable_messages)
-					caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
-				return TRUE
-			else
-				if(caller && enable_messages)
-					caller.to_chat(span("notice","You stuff some of \the [object.name] in \the [src.name]."))
-				return FALSE
 
 	if(caller && enable_messages)
 		caller.to_chat(span("warning","You don't have enough inventory space inside \the [src.name] to hold \the [object.name]!"))
