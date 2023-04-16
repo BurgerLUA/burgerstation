@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(horde)
 	tick_rate = SECONDS_TO_TICKS(10)
 
 	var/list/queued_players = list() //Assoc list.
-	var/list/queued_overdue_players = list() //NOT AN ASSOC LIST
+	var/list/queued_overdue_players = list() //Assoc list.
 
 	//var/list/ckey_to_current_squads = list() //Assoc list
 
@@ -30,6 +30,7 @@ SUBSYSTEM_DEF(horde)
 
 	var/list/all_horde_data_types = list()
 	var/list/all_drills = list() //list of all drills to send hordes to. Assoc.
+
 /subsystem/horde/Initialize()
 
 	for(var/k in subtypesof(/horde_data/))
@@ -40,7 +41,7 @@ SUBSYSTEM_DEF(horde)
 
 //The way that this works is that once every 10 seconds, it checks a single player to see if there are any valid spawns for it.
 //It's better this way so that the system is staggered out and 30 players don't get processed on a single tick.
-//There is a "failsafe" for when the player is overdue for an ass kinking.
+//There is a "failsafe" for when the player is overdue for an ass kicking.
 
 /subsystem/horde/on_life()
 
@@ -59,14 +60,15 @@ SUBSYSTEM_DEF(horde)
 			continue
 		ckey_to_time_to_horde[P.ckey] = world.time + HORDE_DELAY
 		if(queued_players[P.ckey]) //Overdue
-			queued_overdue_players |= P.ckey
+			queued_players -= P.ckey //Don't count twice!
+			queued_overdue_players[P.ckey] = TRUE
 		else
 			queued_players[P.ckey] = TRUE
 
 	if(length(queued_players))
 		//It treats the first entry of found players who need an ass kicking as overdue so it sends mobs.
 		//Lazy and a bit of a misnomer, but it saves code.
-		queued_overdue_players |= queued_players[1]
+		queued_overdue_players += queued_players[1]
 		queued_players -= queued_players[1]
 
 	for(var/ckey in queued_overdue_players)
