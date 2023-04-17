@@ -831,7 +831,7 @@
 			var/turf/T1 = get_step(current_cover,turn(current_cover.dir,90))
 			var/turf/T2 = get_step(current_cover,turn(current_cover.dir,-90))
 			var/T1_dist = get_dist(T1,objective_attack)
-			var/T2_dist = get_dist(T1,objective_attack)
+			var/T2_dist = get_dist(T2,objective_attack)
 			if(T1_dist == T2_dist)
 				turf_to_step = pick(T1,T2)
 			else if(T1_dist < T2_dist)
@@ -845,7 +845,11 @@
 			owner.movement_flags = MOVEMENT_WALKING
 			if(debug) log_debug("Moving out of cover [dir2text(owner.move_dir)].")
 		else
-			owner.move_dir = 0x0
+			var/turf/forward_turf = get_step(turf_to_step,current_cover.dir)
+			if(forward_turf.has_dense_atom)
+				owner.move_dir = current_cover.dir
+			else
+				owner.move_dir = 0x0
 			if(debug) log_debug("Out of cover.")
 
 	return TRUE

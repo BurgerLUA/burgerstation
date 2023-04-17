@@ -65,9 +65,8 @@
 		var/obj/item/I = k
 		I.close_inventory(src)
 
-	if(!master && !delete_on_death && !is_player_controlled(src))
-		var/turf/T = get_turf(src)
-		if(T) drop_hands(T)
+	if(src.loc && !master && !delete_on_death && is_turf(src.loc) && !is_player_controlled(src))
+		drop_hands(src.loc)
 
 /mob/living/advanced/rejuvenate()
 
@@ -75,8 +74,11 @@
 
 	var/list/missing_organs = list()
 	for(var/k in TARGETABLE_LIMBS)
-		if(!labeled_organs[k])
-			missing_organs += k
+		var/obj/item/organ/O = labeled_organs[k]
+		if(O)
+			O.broken = FALSE
+		else
+			missing_organs += k //Must be the key.
 
 	if(length(missing_organs))
 		var/species/S = SPECIES(species)

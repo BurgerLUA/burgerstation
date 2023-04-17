@@ -54,12 +54,12 @@
 	return TRUE
 
 
-/mob/living/advanced/proc/drop_hands(var/turf/T)
+/mob/living/advanced/proc/drop_hands(var/turf/T,var/disarm=FALSE)
 	. = list()
 	if(inventories_by_id[BODY_HAND_LEFT_HELD])
-		. += inventories_by_id[BODY_HAND_LEFT_HELD].drop_objects(T)
+		. += inventories_by_id[BODY_HAND_LEFT_HELD].drop_objects(T,disarm)
 	if(inventories_by_id[BODY_HAND_RIGHT_HELD])
-		. += inventories_by_id[BODY_HAND_RIGHT_HELD].drop_objects(T)
+		. += inventories_by_id[BODY_HAND_RIGHT_HELD].drop_objects(T,disarm)
 
 /mob/living/advanced/proc/strip_and_delete_items()
 

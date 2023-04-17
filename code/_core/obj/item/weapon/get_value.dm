@@ -1,4 +1,3 @@
-
 /obj/item/weapon/proc/get_recommended_value(var/debug=FALSE)
 
 	var/reliability = min(1,0.25 + get_reliability())
@@ -29,6 +28,8 @@
 			//2 => 80
 			//Magic number: 40.
 			bullet_mod = (found_bullet_value*get_hits_per_second())*40
+	else if(is_ranged_weapon(src))
+		bullet_mod = dps_mod*15
 
 	if(debug) log_debug("bullet_mod: [bullet_mod].")
 

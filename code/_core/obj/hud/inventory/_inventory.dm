@@ -420,12 +420,14 @@
 	return TRUE
 
 
-/obj/hud/inventory/proc/drop_objects(var/turf/T)
+/obj/hud/inventory/proc/drop_objects(var/turf/T,var/disarm=FALSE)
 
 	. = list()
 
 	for(var/k in contents)
 		var/obj/item/I = k
+		if(disarm && I.size <= SIZE_2)
+			continue
 		if(remove_object(I,T))
 			. += I
 
