@@ -88,17 +88,28 @@
 		if(REAGENT_METABOLISM_SKIN)
 			metabolism_limit = 50
 
-	metabolism_limit *= multiplier
-
 	if(metabolism_limit <= 0)
 		return //Something went wrong.
+
+
+	//Zeroth pass for nutrition bonuses. Stacks multiplicatively.
+	var/power_multiplier = living_owner.chem_power
+	if(flags_metabolism & REAGENT_METABOLISM_STOMACH)
+		for(var/r_id in stored_reagents)
+			var/reagent/R = REAGENT(r_id)
+			var/volume = stored_reagents[r_id]
+			if(R.lethal)
+				continue
+			if(!ispathcache(r_id,/reagent/nutrition))
+				continue
+			power_multiplier *= 1 + min(volume/3,1)*0.25 //Can't cheese it (pun unintended).
 
 	//First pass.
 	var/list/amounts_to_metabolize = list()
 	var/total_metabolism = 0
 	for(var/r_id in stored_reagents)
-		var/volume = stored_reagents[r_id]
 		var/reagent/R = REAGENT(r_id)
+		var/volume = stored_reagents[r_id]
 		if(!(flags_metabolism & R.flags_metabolism)) //Remove reagents that serve no purpose.
 			add_reagent(r_id,-volume,FALSE)
 			continue
@@ -120,7 +131,7 @@
 
 	var/actual_metabolism = 0
 	if(total_metabolism > 0)
-		var/metabolism_multiplier = min(1,metabolism_limit/total_metabolism)
+		var/local_power_multiplier = min(1,metabolism_limit/total_metabolism) * power_multiplier
 		var/blood_toxicity_to_add = 0
 		//Second pass.
 		for(var/r_id in amounts_to_metabolize)
@@ -130,11 +141,11 @@
 			var/amount_metabolized = 0
 			switch(src.flags_metabolism)
 				if(REAGENT_METABOLISM_BLOOD)
-					amount_metabolized += R.on_metabolize_blood(living_owner,src,amount_to_metabolize,volume,living_owner.chem_power*metabolism_multiplier)
+					amount_metabolized += R.on_metabolize_blood(living_owner,src,amount_to_metabolize,volume,local_power_multiplier)
 				if(REAGENT_METABOLISM_STOMACH)
-					amount_metabolized += R.on_metabolize_stomach(living_owner,src,amount_to_metabolize,volume,living_owner.chem_power*metabolism_multiplier)
+					amount_metabolized += R.on_metabolize_stomach(living_owner,src,amount_to_metabolize,volume,local_power_multiplier)
 				if(REAGENT_METABOLISM_SKIN)
-					amount_metabolized += R.on_metabolize_skin(living_owner,src,amount_to_metabolize,volume,living_owner.chem_power*metabolism_multiplier)
+					amount_metabolized += R.on_metabolize_skin(living_owner,src,amount_to_metabolize,volume,local_power_multiplier)
 			if(R.overdose_threshold > 0 && volume >= R.overdose_threshold)
 				amount_metabolized += R.on_overdose(living_owner,src,amount_metabolized,volume) //Chem power not considered here.
 			if(amount_metabolized > 0)

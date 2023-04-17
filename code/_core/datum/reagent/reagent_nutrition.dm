@@ -5,7 +5,7 @@
 	alpha = 255
 
 	metabolism_blood = 1
-	metabolism_stomach = 0.2
+	metabolism_stomach = 0.1
 
 	var/nutrition_amount = 0 //Per unit
 	var/hydration_amount = 0 //Per unit
