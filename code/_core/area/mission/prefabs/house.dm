@@ -1,5 +1,4 @@
 /area/mission/prefab/house
-	horde_data = "mission"
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO
 	default_state_power_doors = ON|AUTO

@@ -7,6 +7,8 @@
 
 	allow_area_expansion = TRUE
 
+	horde_data = "mission"
+
 /area/mission/desert
 	name = "\improper Cliffside Sea Desert"
 	icon_state = "desert"

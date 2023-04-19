@@ -305,17 +305,17 @@
 			else
 				set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
 		else
-			move_from_ally = 3 //Excuse me, Dr. Freeman.
-			move_from_ally_dir = L.move_dir
+			move_from_ally = rand(0,3) //Excuse me, Dr. Freeman.
+			move_from_ally_dir = L.move_dir ? turn(L.move_dir,pick(-45,0,45)) : 0x0
 			if(!move_from_ally_dir)
 				if(owner.move_dir)
-					move_from_ally_dir = turn(owner.move_dir,180)
+					move_from_ally_dir = turn(owner.move_dir,pick(180-45,180,180+45))
 				else
 					move_from_ally_dir = pick(DIRECTIONS_ALL)
 			trigger_other_bump = FALSE
 		if(trigger_other_bump && L.ai)
 			L.ai.Bump(owner,FALSE)
-	else if(attack_movement_obstructions && can_attack)
+	else if(attack_movement_obstructions && can_attack && objective_attack)
 		spawn do_attack(obstacle,prob(left_click_chance))
 
 	return TRUE

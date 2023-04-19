@@ -128,16 +128,16 @@ SUBSYSTEM_DEF(horde)
 	if(!A || !A.horde_data)
 		return null
 
-	var/horde_data/found_horde_data
-
-	if(A.horde_data == "mission" && SSgamemode && SSgamemode.active_gamemode && length(SSgamemode.active_gamemode.gamemode_horde_data))
-		found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
+	var/horde_data/found_horde_data = src.all_horde_data_types[A.horde_data]
 
 	if(!found_horde_data || !found_horde_data.ignore_gamemode)
-		if(is_player(target) && SStax.check_delinquent(target))
+		if(prob(40) && is_player(target) && SStax.check_delinquent(target))
 			found_horde_data = src.all_horde_data_types[/horde_data/tax]
-		else
-			found_horde_data = src.all_horde_data_types[A.horde_data]
+		else if(A.horde_data == "mission" && SSgamemode && SSgamemode.active_gamemode && SSgamemode.active_gamemode.gamemode_horde_data)
+			found_horde_data = src.all_horde_data_types[SSgamemode.active_gamemode.gamemode_horde_data]
+
+	if(!found_horde_data)
+		return null
 
 	var/chosen_key = pickweight(found_horde_data.horde_weights)
 

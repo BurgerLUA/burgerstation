@@ -1,6 +1,4 @@
 /area/mission/prefab/city
-	horde_data = "mission"
-
 
 /area/mission/prefab/city/city_hall
 	name = "city hall"

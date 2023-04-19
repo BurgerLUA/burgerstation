@@ -180,16 +180,13 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		jammed = TRUE
 		return FALSE
 
-	if(B.is_spent && B.caseless)
+	if(B.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
+		if(B.drop_sound && new_loc && is_turf(new_loc))
+			play_sound(B.drop_sound,new_loc,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 		qdel(B)
 	else
-		if(B.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
-			if(B.drop_sound && new_loc && is_turf(new_loc))
-				play_sound(B.drop_sound,new_loc,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
-			qdel(B)
-		else
-			B.drop_item(new_loc)
-			B.update_sprite()
+		B.drop_item(new_loc)
+		B.update_sprite()
 
 	chambered_bullet = null
 
@@ -205,16 +202,13 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	bullet_to_remove.update_sprite()
 	stored_bullets += null
 
-	if(bullet_to_remove.is_spent && bullet_to_remove.caseless)
-		qdel(chambered_bullet)
+	if(bullet_to_remove.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
+		if(bullet_to_remove.drop_sound)
+			play_sound(bullet_to_remove.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
+		qdel(bullet_to_remove)
 	else
-		if(bullet_to_remove.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
-			if(bullet_to_remove.drop_sound)
-				play_sound(bullet_to_remove.drop_sound,get_turf(src),range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
-			qdel(bullet_to_remove)
-		else
-			bullet_to_remove.drop_item(new_loc)
-			bullet_to_remove.update_sprite()
+		bullet_to_remove.drop_item(new_loc)
+		bullet_to_remove.update_sprite()
 
 	return bullet_to_remove
 
@@ -271,7 +265,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	. = B.spend_bullet(caller,misfire_chance)
 
-	if(B.qdeleting)
+	if(. && B.qdeleting)
 		stored_bullets[bullet_position] = null
 
 /obj/item/weapon/ranged/bullet/handle_ammo(var/mob/caller)
