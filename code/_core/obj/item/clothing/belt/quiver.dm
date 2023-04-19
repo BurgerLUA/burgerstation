@@ -98,21 +98,33 @@
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(2)
-		var/obj/hud/inventory/I = object
-		if(!length(stored_arrows))
-			caller.to_chat(span("warning","There are no arrows left!"))
-			return TRUE
-		var/obj/item/bullet_cartridge/arrow/A = pickweight(stored_arrows)
-		A = new A(get_turf(src))
-		A.amount = 1
-		stored_arrows[A.type] -= 1
-		caller.to_chat(span("notice","You take 1 arrow from \the [src.name]. There are [stored_arrows[A.type]] arrows left."))
-		if(stored_arrows[A.type] <= 0)
-			stored_arrows -= A.type
-		INITIALIZE(A)
-		FINALIZE(A)
-		I.add_object(A)
-		update_sprite()
-		return TRUE
+		take_arrow(caller,object)
 
+
+	. = ..()
+
+
+/obj/item/clothing/belt/belt_quiver/proc/take_arrow(var/mob/caller,var/obj/hud/inventory/I)
+	if(!length(stored_arrows))
+		caller.to_chat(span("warning","There are no arrows left!"))
+		return FALSE
+	var/obj/item/bullet_cartridge/arrow/A = pickweight(stored_arrows)
+	A = new A(get_turf(src))
+	A.amount = 1
+	stored_arrows[A.type] -= 1
+	caller.to_chat(span("notice","You take 1 arrow from \the [src.name]. There are [stored_arrows[A.type]] arrows left."))
+	if(stored_arrows[A.type] <= 0)
+		stored_arrows -= A.type
+	INITIALIZE(A)
+	FINALIZE(A)
+	I.add_object(A)
+	update_sprite()
+	return TRUE
+
+
+
+
+
+/obj/item/clothing/belt/belt_quiver/ashen/Generate()
+	stored_arrows[/obj/item/bullet_cartridge/arrow/ashen] = rand(15,30)
 	. = ..()

@@ -39,6 +39,14 @@
 	use_iff_tag = FALSE
 	use_loyalty_tag = TRUE
 
+	dan_mode = TRUE
+
+	var/icon_state_count = 3
+
+/obj/item/weapon/ranged/bow/Finalize()
+	. = ..()
+	update_sprite()
+
 
 /obj/item/weapon/ranged/bow/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
@@ -65,6 +73,7 @@
 	if(stage_current > 0 )
 		shoot(caller,object,location,params,max(stage_current/100,0.25))
 		stage_current = 0
+		next_shoot_time = world.time + 2
 		update_sprite()
 	return TRUE
 
@@ -77,25 +86,26 @@
 		return ..()
 	current_shooter = caller
 	START_THINKING(src)
-	if(world.time >= spam_prevention)
-		play_sound(draw_sound,get_turf(src))
-		spam_prevention = world.time + 5
 	return TRUE
 
 /obj/item/weapon/ranged/bow/update_icon()
-	var/icon_num = 0
-	if(stage_current)
-		icon_num = 1 + ((stage_current/initial(stage_max)) * 3)
-	icon_state = "[initial(icon_state)]_[FLOOR(icon_num,1)]"
 	. = ..()
+	icon_state = initial(icon_state)
+	var/icon_num = stage_current ? 1 + ((stage_current/initial(stage_max)) * icon_state_count) : 0
+	if(icon_num > 0)
+		icon_state = "[icon_state]_[CEILING(icon_num,1)]"
 
 /obj/item/weapon/ranged/bow/think()
 
-	var/held_down = current_shooter && !current_shooter.qdeleting && ((current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_DISARM)
+	var/held_down = src.next_shoot_time <= world.time && current_shooter && !current_shooter.qdeleting && (current_shooter.ai || (current_shooter.attack_flags & CONTROL_MOD_LEFT) || (current_shooter.attack_flags & CONTROL_MOD_RIGHT)) && !(current_shooter.attack_flags & CONTROL_MOD_DISARM)
 
 	if(held_down)
-		stage_current = min(stage_max,stage_current + stage_per_decisecond)
-		update_icon() //update_sprite isn't called here as it is intensive.
+		if(stage_current == 0 && world.time >= spam_prevention)
+			play_sound(draw_sound,get_turf(src))
+			spam_prevention = world.time + 5
+		if(stage_current < stage_max)
+			stage_current = min(stage_max,stage_current + stage_per_decisecond)
+			update_icon() //update_sprite isn't called here as it is intensive.
 		. = TRUE
 	else
 		if(stage_current > 0)
@@ -144,6 +154,8 @@
 
 	value = 200
 
+	icon_state_count = 4
+
 	tier = 1
 
 	rarity = RARITY_COMMON
@@ -161,6 +173,8 @@
 	stage_max = 150
 
 	value = 300
+
+	icon_state_count = 4
 
 	tier = 2
 
@@ -182,6 +196,8 @@
 
 	stage_per_decisecond = 10
 	stage_max = 50
+
+	icon_state_count = 4
 
 	tier = 3
 
@@ -215,6 +231,8 @@
 	stage_max = 125
 
 	tier = 4
+
+	icon_state_count = 4
 
 	rarity = RARITY_UNCOMMON
 

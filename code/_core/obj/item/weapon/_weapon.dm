@@ -21,7 +21,6 @@
 	var/list/enchantment_whitelist //Set to null to disable whitelist and allow all.
 	var/list/enchantment_blacklist //Set to null to disable blacklist and allow all.
 
-	can_wear = TRUE
 	item_slot = -1
 
 	uses_until_condition_fall = 100

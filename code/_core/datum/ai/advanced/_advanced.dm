@@ -229,15 +229,20 @@
 		if(!objective_weapon) checked_weapons_on_ground = TRUE
 
 	if(A.left_item)
-		if(is_ranged_weapon(A.left_item) && handle_gun(A.left_item))
+		if(is_ranged_bullet_weapon(A.left_item) && handle_gun(A.left_item))
+			return TRUE
+		if(is_bow(A.left_item) && handle_bow(A.left_item))
 			return TRUE
 		if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item.can_wield && !A.left_item.wielded && !A.right_item)
 			A.inventories_by_id[BODY_HAND_RIGHT_HELD].wield(A,A.left_item)
 			next_complex = max(next_complex,world.time) + rand(2,6)
 
 	if(A.right_item)
-		if(is_ranged_weapon(A.right_item) && handle_gun(A.right_item))
+		if(is_ranged_bullet_weapon(A.right_item) && handle_gun(A.right_item))
 			return TRUE
+		if(is_bow(A.right_item) && handle_bow(A.right_item))
+			return TRUE
+
 		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item.can_wield && !A.right_item.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,A.right_item)
 			next_complex = max(next_complex,world.time) + rand(2,6)
@@ -310,6 +315,39 @@
 			return TRUE
 
 	return FALSE //Well, shit's fucked.
+
+/ai/advanced/proc/handle_bow(var/obj/item/weapon/ranged/bow/R)
+
+	if(R.next_shoot_time > world.time)
+		return TRUE
+
+	var/mob/living/advanced/A = owner
+
+	var/obj/hud/inventory/I_hand = A.inventories_by_id[BODY_HAND_LEFT_HELD]
+	var/obj/hud/inventory/I_groin = A.inventories_by_id[BODY_GROIN_O]
+	if(!I_hand || !I_groin) //If you don't have a hand, what's the point of using a bow?
+		R.drop_item(get_turf(A))
+		next_complex = max(next_complex,world.time) + 10
+		return TRUE
+
+	var/obj/item/bullet_cartridge/arrow/B = I_hand.get_top_object()
+	if(!B || !istype(B)) //We're not holding an arrow.
+		var/obj/item/clothing/belt/belt_quiver/BQ = I_groin.get_top_object()
+		if(!BQ || !istype(BQ) || !length(BQ.stored_arrows)) //No quiver with arrows found, what's the point of using a bow?
+			R.drop_item(get_turf(A))
+			next_complex = max(next_complex,world.time) + 10
+			return TRUE
+		BQ.take_arrow(A,I_hand)
+		next_complex = max(next_complex,world.time) + rand(3,6)
+		return TRUE
+
+	if(R.stage_current > 0) //Currently drawing the bow to fire it.
+		if(R.stage_current >= R.stage_max && prob(80))
+			R.on_mouse_up(A,objective_attack) //This fires the bow.
+			next_complex = max(next_complex,world.time) + rand(5,10)
+		return TRUE
+
+	return FALSE //All good.
 
 /ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
 
