@@ -1,9 +1,9 @@
 /obj/marker/generation/plant
-	grow_amount_min = 10
-	grow_amount_max = 20
+	grow_amount_min = 25
+	grow_amount_max = 50
 	objects_max = 6
-	skip_chance = 90
-	hole_chance = 20
+	skip_chance = 40
+	hole_chance = 90
 
 	color = COLOR_GREEN
 
@@ -11,35 +11,39 @@
 
 	priority = 2
 
+	bypass_disallow_generation = TRUE
+
+//Lavaland Shrooms
 /obj/marker/generation/plant/cactus_fruit
 	object_to_place = /obj/structure/interactive/plant/cactus_fruit
 	turf_whitelist = /turf/simulated/floor/colored/ash
-	objects_max = 4
+	objects_max = 3
 
 /obj/marker/generation/plant/polypore_mushroom
 	object_to_place = /obj/structure/interactive/plant/polypore_mushroom
 	turf_whitelist = /turf/simulated/floor/boss
-	objects_max = 4
+	objects_max = 3
 
 /obj/marker/generation/plant/porcini_mushroom
 	object_to_place = /obj/structure/interactive/plant/porcini_mushroom
 	turf_whitelist = /turf/simulated/floor/basalt
-	objects_max = 4
+	objects_max = 3
 
 /obj/marker/generation/plant/inocybe_mushroom
 	object_to_place = /obj/structure/interactive/plant/inocybe_mushroom
 	turf_whitelist = /turf/simulated/floor/cave_dirt
-	objects_max = 4
+	objects_max = 3
 
 /obj/marker/generation/plant/embershroom_mushroom
 	object_to_place = /obj/structure/interactive/plant/embershroom_mushroom
 	turf_whitelist = /turf/simulated/floor/basalt
 	objects_max = 4
 
+//Misc shrooms..
 /obj/marker/generation/plant/glowcap
 	object_to_place = /obj/structure/interactive/plant/glowcap
 	turf_whitelist = /turf/simulated/floor
-	objects_max = 4
+	objects_max = 3
 
 /obj/marker/generation/plant/cabbage
 	object_to_place = /obj/structure/interactive/plant/cabbage
@@ -99,19 +103,4 @@
 /obj/marker/generation/plant/wheat
 	object_to_place = /obj/structure/interactive/plant/wheat
 	turf_whitelist = /turf/simulated/floor/colored/grass
-	objects_max = 4
-
-/obj/marker/generation/plant/polypore_mushroom
-	object_to_place = /obj/structure/interactive/plant/polypore_mushroom
-	turf_whitelist = /turf/simulated/floor/basalt
-	objects_max = 4
-
-/obj/marker/generation/plant/porcini_mushroom
-	object_to_place = /obj/structure/interactive/plant/porcini_mushroom
-	turf_whitelist = /turf/simulated/floor/basalt
-	objects_max = 4
-
-/obj/marker/generation/plant/inocybe_mushroom
-	object_to_place = /obj/structure/interactive/plant/inocybe_mushroom
-	turf_whitelist = /turf/simulated/floor/basalt
-	objects_max = 4
+	objects_max = 3

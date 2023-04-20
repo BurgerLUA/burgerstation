@@ -31,6 +31,8 @@ var/global/list/all_generation_markers = list()
 
 	var/flags_generation = FLAG_GENERATION_NONE
 
+	var/bypass_disallow_generation = FALSE
+
 	alpha = 100
 
 /obj/marker/generation/New(var/desired_loc)
@@ -73,7 +75,7 @@ var/global/list/all_generation_markers = list()
 				continue
 			if(forbidden_turfs[T2])
 				continue
-			if(T2.disallow_generation)
+			if(T2.disallow_generation && !bypass_disallow_generation)
 				forbidden_turfs[T2] = TRUE
 				continue
 			var/area/A = T2.loc

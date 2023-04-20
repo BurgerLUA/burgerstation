@@ -49,9 +49,12 @@
 				span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),
 				span("warning","You resist out of the grip of \the [attacker.name]!")
 			)
-			grabbing_hand.release_object()
-			if(grabbing_hand.grab_level <= 1)
-				attacker.add_status_effect(STAGGER,20,20,source=src)
+			if(grabbing_hand)
+				grabbing_hand.release_object()
+				if(grabbing_hand.grab_level <= 1)
+					attacker.add_status_effect(STAGGER,20,20,source=src)
+				else
+					attacker.add_status_effect(STUN,30,30,source=src)
 			else
 				attacker.add_status_effect(STUN,30,30,source=src)
 			if(attacker.health)

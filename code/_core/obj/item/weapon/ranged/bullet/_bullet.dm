@@ -161,7 +161,6 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		return FALSE
 
 	var/obj/item/bullet_cartridge/B = chambered_bullet
-	chambered_bullet = null //Prevents race conditions (I think/hope).
 	var/jam_chance = B.jam_chance
 	if(quality <= 60)
 		jam_chance += 10
@@ -182,14 +181,14 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		return FALSE
 
 	if(B.is_spent && !CONFIG("ENABLE_BULLET_CASINGS",FALSE))
-		if(B.drop_sound && new_loc && is_turf(new_loc))
-			play_sound(B.drop_sound,new_loc,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
 		qdel(B)
 	else
 		B.drop_item(new_loc)
 		B.update_sprite()
 
-	return B
+	chambered_bullet = null
+
+	return TRUE
 
 /obj/item/weapon/ranged/bullet/proc/eject_stored_bullet(var/mob/caller,var/obj/item/bullet_cartridge/bullet_to_remove,var/new_loc,var/play_sound=FALSE)
 

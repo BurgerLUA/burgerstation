@@ -237,9 +237,9 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 
 /obj/marker/generation/turf/basalt/island
 	grow_amount_min = 32
-	grow_amount_max = 64
+	grow_amount_max = 128
 	hole_chance = 0
-	skip_chance = 5
+	skip_chance = 10
 	objects_max = 64
 
 /obj/marker/generation/turf/rock_wall

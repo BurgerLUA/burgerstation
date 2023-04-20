@@ -57,6 +57,8 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 			continue
 		if(src.type != T.type && src.parent_type != T.type && src.type != T.parent_type)
 			is_different = TRUE
+		else
+			continue
 		if(T.density)
 			is_next_to_dense_turf = TRUE
 		if(is_simulated(T))

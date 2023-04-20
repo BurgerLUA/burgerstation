@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(turf)
 			else if(G.priority == 1)
 				generations_first += G
 
-		log_subsystem(src.name,"Generating first markers...")
+		log_subsystem(src.name,"Generating [length(generations_first)] first markers...")
 		for(var/k in generations_first)
 			var/benchmark = true_time()
 			var/obj/marker/generation/G = k
@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(turf)
 				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
-		log_subsystem(src.name,"Generating second markers...")
+		log_subsystem(src.name,"Generating [length(generations_second)] second markers...")
 		for(var/k in generations_second)
 			var/benchmark = true_time()
 			var/obj/marker/generation/G = k
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(turf)
 				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
-		log_subsystem(src.name,"Generating third markers...")
+		log_subsystem(src.name,"Generating [length(generations_third)] third markers...")
 		for(var/k in generations_third)
 			var/benchmark = true_time()
 			var/obj/marker/generation/G = k

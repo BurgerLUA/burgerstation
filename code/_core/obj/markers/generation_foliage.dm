@@ -12,6 +12,8 @@
 
 	priority = 2
 
+	bypass_disallow_generation = TRUE
+
 /obj/marker/generation/foliage/bushes/
 	objects_max = 2
 	hole_chance = 95
@@ -43,7 +45,7 @@
 
 /obj/marker/generation/foliage/bushes/snow
 	object_to_place = /obj/structure/scenery/bush/snow
-	turf_whitelist = /turf/simulated/floor
+	turf_whitelist = /turf/simulated/floor/colored
 
 /obj/marker/generation/foliage/bushes/stalk
 	object_to_place = /obj/structure/scenery/bush/stalk
@@ -106,8 +108,6 @@
 	color = COLOR_GREEN
 
 	turf_whitelist = /turf/simulated/floor/colored/dirt
-
-	priority = 2
 
 //TREES
 /obj/marker/generation/foliage/tree

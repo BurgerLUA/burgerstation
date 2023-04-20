@@ -293,7 +293,7 @@
 
 	UNPROCESS_LIVING(src)
 
-	if(ai) ai.set_active(FALSE)
+	if(istype(ai)) ai.set_active(FALSE)
 
 	QDEL_NULL(ai)
 	QDEL_NULL(stand)
