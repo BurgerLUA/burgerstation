@@ -105,12 +105,12 @@
 
 	. = ..()
 
-	if(stored_trigger?.active && (!old_loc || !loc || old_loc.z != loc.z))
+	if(stored_trigger?.active && (!old_loc || !is_turf(old_loc) || !is_turf(loc) || old_loc.z != loc.z))
 
-		if(old_loc?.z && SSai.tracked_avoidance_by_z["[old_loc.z]"])
+		if(is_turf(old_loc) && SSai.tracked_avoidance_by_z["[old_loc.z]"])
 			SSai.tracked_avoidance_by_z["[old_loc.z]"] -= src
 
-		if(loc?.z)
+		if(is_turf(loc))
 			if(!SSai.tracked_avoidance_by_z["[loc.z]"])
 				SSai.tracked_avoidance_by_z["[loc.z]"] = list()
 			SSai.tracked_avoidance_by_z["[loc.z]"] += src
@@ -120,9 +120,6 @@
 
 	if(alpha == 0) //Already gone.
 		return FALSE
-
-	if(z && SSai.tracked_avoidance_by_z["[z]"])
-		SSai.tracked_avoidance_by_z["[z]"] -= src
 
 	if(source == src)
 		if(!src.z) drop_item(get_turf(src))
@@ -277,8 +274,8 @@
 		P.on_projectile_hit(T)
 		qdel(P)
 
-	if(src.z && SSai.tracked_avoidance_by_z["[src.z]"])
-		SSai.tracked_avoidance_by_z["[src.z]"] -= src
+	if(src.loc && is_turf(src.loc) && SSai.tracked_avoidance_by_z["[src.loc.z]"])
+		SSai.tracked_avoidance_by_z["[src.loc.z]"] -= src
 
 	for(var/k in stored_containers)
 		var/obj/item/container/simple/beaker/B = k

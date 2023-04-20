@@ -2,6 +2,8 @@
 	name = "desert generation"
 	icon_state = "desert"
 
+	noise_num_offset = 3
+
 /turf/unsimulated/generation/desert/path
 	icon_state = "desert_path"
 	density = FALSE

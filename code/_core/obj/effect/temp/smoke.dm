@@ -107,6 +107,8 @@
 
 	for(var/k in initial_possible_directions)
 		var/turf/T = get_step(src,k)
+		if(!T)
+			continue
 		if(blacklist_turfs[T])
 			continue
 		if(!T.Enter(src,src.loc))

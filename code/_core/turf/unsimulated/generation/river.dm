@@ -2,6 +2,8 @@
 	name = "river generation"
 	icon_state = "river"
 
+	noise_num_offset = 8
+
 /turf/unsimulated/generation/river/path
 	icon_state = "river_path"
 	density = FALSE

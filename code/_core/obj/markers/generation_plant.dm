@@ -13,12 +13,12 @@
 
 /obj/marker/generation/plant/cactus_fruit
 	object_to_place = /obj/structure/interactive/plant/cactus_fruit
-	turf_whitelist = /turf/simulated/floor
+	turf_whitelist = /turf/simulated/floor/colored/ash
 	objects_max = 4
 
 /obj/marker/generation/plant/polypore_mushroom
 	object_to_place = /obj/structure/interactive/plant/polypore_mushroom
-	turf_whitelist = /turf/simulated/floor/colored/ash
+	turf_whitelist = /turf/simulated/floor/boss
 	objects_max = 4
 
 /obj/marker/generation/plant/porcini_mushroom
@@ -28,7 +28,7 @@
 
 /obj/marker/generation/plant/inocybe_mushroom
 	object_to_place = /obj/structure/interactive/plant/inocybe_mushroom
-	turf_whitelist = /turf/simulated/floor/basalt
+	turf_whitelist = /turf/simulated/floor/cave_dirt
 	objects_max = 4
 
 /obj/marker/generation/plant/embershroom_mushroom

@@ -235,6 +235,13 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 
 	color = COLOR_GREY_DARK
 
+/obj/marker/generation/turf/basalt/island
+	grow_amount_min = 32
+	grow_amount_max = 64
+	hole_chance = 0
+	skip_chance = 5
+	objects_max = 64
+
 /obj/marker/generation/turf/rock_wall
 	object_to_place = /turf/simulated/wall/rock
 	grow_amount_min = 15

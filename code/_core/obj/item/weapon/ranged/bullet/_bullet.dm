@@ -161,6 +161,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		return FALSE
 
 	var/obj/item/bullet_cartridge/B = chambered_bullet
+	chambered_bullet = null //Prevents race conditions (I think/hope).
 	var/jam_chance = B.jam_chance
 	if(quality <= 60)
 		jam_chance += 10
@@ -187,8 +188,6 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 	else
 		B.drop_item(new_loc)
 		B.update_sprite()
-
-	chambered_bullet = null
 
 	return B
 

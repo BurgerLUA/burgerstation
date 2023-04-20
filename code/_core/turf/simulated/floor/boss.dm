@@ -29,20 +29,24 @@ var/global/list/stored_boss_floor_icons
 	..()
 	if(!stored_boss_floor_icons)
 		stored_boss_floor_icons = list()
-		for(var/i=1,i<=50,i++)
+		for(var/i=1,i<=30,i++)
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
-			var/icon/I = new /icon(icon,icon_state)
-			if(prob(10))
-				var/icon/N = new /icon(icon,get_quad_icon_state(),NORTH)
-				var/icon/E = new /icon(icon,get_quad_icon_state(),EAST)
-				var/icon/W = new /icon(icon,get_quad_icon_state(),WEST)
-				var/icon/S = new /icon(icon,get_quad_icon_state(),SOUTH)
-				I.Blend(N,ICON_OVERLAY)
-				I.Blend(E,ICON_OVERLAY)
-				I.Blend(W,ICON_OVERLAY)
-				I.Blend(S,ICON_OVERLAY)
+			var/icon/I = ICON_INVISIBLE
+			if(prob(60))
+				if(prob(80))
+					var/icon/N = new /icon(icon,get_quad_icon_state(),NORTH)
+					I.Blend(N,ICON_OVERLAY)
+				if(prob(80))
+					var/icon/E = new /icon(icon,get_quad_icon_state(),EAST)
+					I.Blend(E,ICON_OVERLAY)
+				if(prob(80))
+					var/icon/W = new /icon(icon,get_quad_icon_state(),WEST)
+					I.Blend(W,ICON_OVERLAY)
+				if(prob(80))
+					var/icon/S = new /icon(icon,get_quad_icon_state(),SOUTH)
+					I.Blend(S,ICON_OVERLAY)
 			else
-				if(prob(40))
+				if(prob(60))
 					var/dir_to_use = prob(10) ? DIRECTIONS_INTERCARDINAL : SOUTH
 					dir_to_use = pick(dir_to_use)
 					var/icon/S = new /icon(icon,get_solid_icon_state(),dir_to_use)
@@ -52,14 +56,24 @@ var/global/list/stored_boss_floor_icons
 					dir_to_use = pick(dir_to_use)
 					var/icon/D = new /icon(icon,get_donut_icon_state(),dir_to_use)
 					I.Blend(D,ICON_OVERLAY)
-					if(prob(90))
+					if(prob(80))
 						var/icon/T = new /icon(icon,get_timbit_icon_state())
 						I.Blend(T,ICON_OVERLAY)
 			stored_boss_floor_icons += I
 
 /turf/simulated/floor/boss/Finalize()
 	. = ..()
-	icon = pick(stored_boss_floor_icons)
+	update_sprite()
+
+/turf/simulated/floor/boss/update_overlays()
+	. = ..()
+	var/image/I = new(icon,icon_state)
+	I.icon = pick(stored_boss_floor_icons)
+	I.plane = src.plane
+	I.layer = 1000
+	I.appearance_flags = src.appearance_flags | KEEP_APART
+	add_overlay(I)
+
 
 /turf/simulated/floor/boss/proc/get_donut_icon_state()
 

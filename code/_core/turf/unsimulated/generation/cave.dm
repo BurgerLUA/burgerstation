@@ -2,6 +2,8 @@
 	name = "cave generation"
 	icon_state = "caves"
 
+	noise_num_offset = 2
+
 /turf/unsimulated/generation/forest_cave/path
 	icon_state = "caves_path"
 	density = FALSE

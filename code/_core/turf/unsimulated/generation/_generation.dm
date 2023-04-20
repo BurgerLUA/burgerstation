@@ -29,6 +29,8 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 
 	var/noise = 0
 
+	var/noise_num_offset = 1
+
 
 /turf/unsimulated/generation/proc/pre_generate()
 
@@ -39,7 +41,7 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 	var/maximum_value = 0
 	var/minimum_value = 1
 	for(var/i=1,i<=max_instances,i++)
-		var/noise_value = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[z+i]]","[x_seed]","[y_seed]"))
+		var/noise_value = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[noise_num_offset+z+i]]","[x_seed]","[y_seed]"))
 		var/distance_mod = max(abs(0.5 - x_seed) + abs(0.5 - y_seed))
 		var/tweaked_noise_value = 0.5 + sin(noise_value*NOISE_CURVES*180)*0.5 + (0.5 - distance_mod)
 		maximum_value = max(maximum_value,tweaked_noise_value)

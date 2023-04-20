@@ -19,3 +19,14 @@
 		return "[FLOOR(input/1e3,0.1)]k"
 
 	return "[input]"
+
+/proc/rand_map(var/turf/T,var/n = 50,var/seed=1) //0 to 100.
+
+	if(n <= 0)
+		return FALSE
+	if(n >= 100)
+		return TRUE
+
+	var/found_number = text2num(rustg_noise_get_at_coordinates("[SSturf.seeds[T.z]]","[T.x / world.maxx]","[T.y / world.maxy]"))
+
+	return found_number*100 <= n

@@ -2,6 +2,8 @@
 	name = "forest generation"
 	icon_state = "forest"
 
+	noise_num_offset = 4
+
 /turf/unsimulated/generation/forest/path/
 	icon_state = "forest_path"
 	density = FALSE

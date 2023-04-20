@@ -140,10 +140,10 @@
 	if(!objective_attack) //Combat only.
 		return FALSE
 
-	if(!owner.z)
+	if(!owner.loc || !is_turf(owner.loc))
 		return FALSE
 
-	var/list/avoidance_list = SSai.tracked_avoidance_by_z["[owner.z]"]
+	var/list/avoidance_list = SSai.tracked_avoidance_by_z["[owner.loc.z]"]
 
 	var/avoidance_list_length = length(avoidance_list)
 
@@ -160,7 +160,7 @@
 			avoidance_list -= k
 			continue
 		if(owner.z != M.z)
-			log_error("Warning: Object [M.get_debug_name()] was found in a mismatched z-list in tracked ai avoidances (Repoted: [owner.z], Actual: [M.z]).")
+			log_error("Warning: Object [M.get_debug_name()] was found in a mismatched z-list in tracked ai avoidances (Reported: [owner.z], Actual: [M.z]).")
 			avoidance_list -= k
 			continue
 		if(get_dist(M,owner) >= VIEW_RANGE*0.75)

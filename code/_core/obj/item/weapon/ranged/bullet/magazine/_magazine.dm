@@ -140,7 +140,8 @@
 	. = ..()
 
 	if(.)
-		eject_chambered_bullet(caller,get_turf(src),TRUE)
+		if(chambered_bullet)
+			eject_chambered_bullet(caller,get_turf(src),TRUE)
 		if(!requires_cock_each_shot)
 			load_new_bullet_from_magazine(caller)
 

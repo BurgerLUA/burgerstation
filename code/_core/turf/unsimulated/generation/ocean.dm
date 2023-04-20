@@ -2,6 +2,8 @@
 	name = "ocean generation"
 	icon_state = "ocean"
 
+	noise_num_offset = 7
+
 /turf/unsimulated/generation/ocean/path
 	icon_state = "ocean_path"
 	density = FALSE

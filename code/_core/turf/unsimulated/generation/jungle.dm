@@ -2,6 +2,8 @@
 	name = "jungle generation"
 	icon_state = "jungle"
 
+	noise_num_offset = 5
+
 /turf/unsimulated/generation/jungle/path
 	icon_state = "jungle_path"
 	density = FALSE

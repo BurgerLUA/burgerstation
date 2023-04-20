@@ -162,7 +162,7 @@
 /obj/marker/generation/mob/ash_walker
 	object_to_place = /mob/living/advanced/npc/ashwalker/hunter
 	objects_max = 1
-	turf_whitelist = /turf/simulated/wall/ash
+	turf_whitelist = /turf/simulated/floor/colored/ash/
 
 /obj/marker/generation/mob/slime/
 	object_to_place = /mob/living/simple/slime/

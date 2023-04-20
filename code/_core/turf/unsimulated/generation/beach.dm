@@ -2,6 +2,8 @@
 	name = "beach generation"
 	icon_state = "beach"
 
+	noise_num_offset = 1
+
 /turf/unsimulated/generation/beach/path
 	icon_state = "beach_path"
 	density = FALSE
