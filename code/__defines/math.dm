@@ -26,12 +26,6 @@
 // round() acts like FLOOR(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
-// Tangent
-#if DM_VERSION < 513
-#define tan(x) (sin(x) / cos(x))
-#define clamp(CLVALUE,CLMIN,CLMAX) (max((CLMIN), min((CLVALUE), (CLMAX))))
-#endif
-
 #define CLAMP01(x) (clamp(x, 0, 1))
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive

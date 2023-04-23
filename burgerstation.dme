@@ -15,6 +15,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "code\__version_check.dm"
 #include "code\__defines\_config.dm"
 #include "code\__defines\_defines.dm"
 #include "code\__defines\_paths.dm"
