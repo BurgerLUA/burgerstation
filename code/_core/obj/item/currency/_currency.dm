@@ -83,7 +83,7 @@
 			icon_state = "2"
 		if(11 to 50)
 			icon_state = "3"
-		if(51 to amount_max)
+		if(51 to INFINITY)
 			icon_state = "4"
 	return ..()
 

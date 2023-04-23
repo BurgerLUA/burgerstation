@@ -54,7 +54,7 @@
 	switch(age/lifetime)
 		if(0.6 to 0.7)
 			. += span("warning","It looks a little old.")
-		if(0.8 to 0.1)
+		if(0.8 to 1)
 			. += span("warning","It looks old.")
 		if(1 to INFINITY)
 			. += span("warning","It looks very old.")
