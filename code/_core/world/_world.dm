@@ -25,8 +25,6 @@ var/global/world_state = STATE_STARTING
 	maxy = 1
 	maxz = 1
 
-	loop_checks = 1
-
 /world/New()
 
 	sleep_offline = FALSE

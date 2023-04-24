@@ -1,0 +1,119 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"c" = (/turf/simulated/wall/clockwork/indestructable,/area/mission/prefab/misc/clockwork_hall)
+"d" = (/turf/simulated/wall/clockwork/tough,/area/mission/prefab/misc/clockwork_hall)
+"e" = (/mob/living/simple/turret/clockwork,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"f" = (/obj/marker/map_node,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"g" = (/turf/simulated/wall/clockwork,/area/mission/prefab/misc/clockwork_hall)
+"h" = (/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"i" = (/turf/simulated/floor/clockwork/alt1,/area/mission/prefab/misc/clockwork_hall)
+"j" = (/mob/living/advanced/npc/clockwork_cultist,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"k" = (/mob/living/simple/turret/clockwork,/turf/simulated/floor/clockwork/alt2,/area/mission/prefab/misc/clockwork_hall)
+"l" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"m" = (/obj/marker/objective_spawn,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"n" = (/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"o" = (/mob/living/simple/parrot/clockwork,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"p" = (/mob/living/simple/watcher/clockwork,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"q" = (/obj/marker/map_node/x2,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"r" = (/obj/structure/window/clockwork,/turf/simulated/floor/clockwork/alt1,/area/mission/prefab/misc/clockwork_hall)
+"s" = (/obj/structure/window/clockwork,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"t" = (/obj/structure/table/brass,/turf/simulated/floor/clockwork/alt1,/area/mission/prefab/misc/clockwork_hall)
+"u" = (/obj/structure/table/brass,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"v" = (/mob/living/simple/turret/clockwork,/turf/simulated/floor/clockwork/alt1,/area/mission/prefab/misc/clockwork_hall)
+"w" = (/mob/living/simple/watcher/clockwork{dir = 4; icon_state = "warden"},/turf/simulated/floor/clockwork/alt2,/area/mission/prefab/misc/clockwork_hall)
+"x" = (/mob/living/simple/watcher/clockwork{dir = 8; icon_state = "warden"},/turf/simulated/floor/clockwork/alt2,/area/mission/prefab/misc/clockwork_hall)
+"y" = (/obj/structure/table/brass,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"z" = (/obj/structure/window/clockwork,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"A" = (/turf/simulated/floor/clockwork/special,/area/mission/prefab/misc/clockwork_hall)
+"B" = (/mob/living/simple/turret/clockwork,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"C" = (/mob/living/advanced/npc/clockwork_cultist{dir = 8; icon_state = "directional"},/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"D" = (/mob/living/advanced/npc/clockwork_cultist{dir = 4; icon_state = "directional"},/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"E" = (/mob/living/simple/watcher/clockwork_mobile,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"F" = (/obj/marker/map_node,/mob/living/simple/watcher/clockwork,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"G" = (/mob/living/advanced/npc/clockwork_cultist{dir = 1; icon_state = "directional"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"H" = (/mob/living/simple/clockwork_marauder,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"I" = (/obj/structure/interactive/crate/chest/filled,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"J" = (/mob/living/simple/clockwork_marauder{dir = 4; icon_state = "living"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"K" = (/obj/marker/map_node/x2,/mob/living/simple/watcher/clockwork,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"L" = (/obj/marker/map_node,/mob/living/simple/clockwork_marauder{dir = 8; icon_state = "living"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"M" = (/mob/living/simple/watcher/clockwork{dir = 4; icon_state = "warden"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"N" = (/mob/living/simple/watcher/clockwork{dir = 8; icon_state = "warden"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"O" = (/mob/living/advanced/npc/clockwork_cultist{dir = 4; icon_state = "directional"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"P" = (/mob/living/advanced/npc/clockwork_cultist{dir = 8; icon_state = "directional"},/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"Q" = (/obj/marker/map_node,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"R" = (/mob/living/simple/watcher/clockwork_mobile,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"S" = (/mob/living/simple/turret/clockwork,/turf/simulated/floor/clockwork/special,/area/mission/prefab/misc/clockwork_hall)
+"T" = (/mob/living/simple/clockwork_marauder,/turf/simulated/floor/clockwork/alt3,/area/mission/prefab/misc/clockwork_hall)
+"U" = (/mob/living/simple/clockwork_fragment,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"V" = (/obj/marker/map_node/x4,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"W" = (/obj/structure/table/brass,/turf/simulated/floor/clockwork/special,/area/mission/prefab/misc/clockwork_hall)
+"X" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"Y" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"Z" = (/obj/marker/map_node/x3,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaa
+aaaaaaaaaabcccccccccccccccdddddddddcccccccccccccccbaaaaaaaaaaaaa
+aaaaaaaaaabcefghhghihhjhhidkilmlikdihhjhhihghhgfecbaaaaaaaaaaaaa
+aaaaaaaaaabchhgggghnhhhhhndihhohhidnhhhhhnhgggghhcbaaaaaaaaaaaaa
+aaaaaaaaaabchhgplghihhqhhndhhhhhhhdnhhqhhihglpghhcbaaaaaaaaaaaaa
+aaaaaaaaaabchhhfhhhghhhhhndjhhhhhjdnhhhhhghhhfhhhcbaaaaaaaaaaaaa
+aaaaaaaaaabcgggggghghhhhhndrsjjjsrdnhhhhhghggggggcbaaaaaaaaaaaaa
+aaaaaaaaaabchhhhhhhgtuuuuvdwrppprxdvuuuuughhhhhhhcbaaaaaaaaaaaaa
+aaaaaaaaaabcyyyyyyggsssssgddgznzgddgsssssggyyyyyycbaaaaaaaaaaaaa
+aaaaaaaaaabcAnnnnAgkinnnnnnnnnnnnnnnnnnnikgAnnnnAcbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhnshphhhpjhhphjhphhjphhhphsnhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhggyyyyyyyyyyyyyyyyyyyyyyygghhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhBggggggggggsssssggggggggggBhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhCgyylyyjyyyyyyyyyyyjyylyygDhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnEhqhAhhhhhhhhfhhhfhhhfhhhhhhFhAhqhEncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhCgggggggghddhhhddhddddddsgDhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhnsjhhgjhhhddGGGddfhhhhHdfsnhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhIshghghdddddddddddddddddssIhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhnshghghdhhhhhhhfhhhhhhfdhsnhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhngghgJhhhgggppKppgggggghdhggnhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhneshhhggggygsssssgyghhhfhLsenhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhngghdddhhgMyyyyyyyNghhdddhggnhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhqnnghdHhhggOyEhhhEyPggOhHdhgnnqhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhAhhdhdhhhMyhhqhhyNhhhdhdhhAhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhCdddhddddddhhhhhddddddhdddDhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhngihhhhhhhhhhfhhhhhhhhhhignhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcAnnnnAgkinnnnAQAnnnnnAQAnnnnikgAnnnnAcbaaaaaaaaaaaaa
+aaaaaaaaaabcyyyyyyddsssddnhngsssgnhnddsssddyyyyyycbaaaaaaaaaaaaa
+aaaaaaaaaabcARnnRnuuuuuSdnEnsAIAsnEndSuuuuunRnnRAcbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhhhhhhPusnhnsnEnsnhnsuOhhhhhhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhhhhhhhusnhnsnHnsnhnsuhhhhhhhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhqhhhHhfhIsnqnsnhnsnqnsIhfhHhhhqhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhhhhhhhusnhnsnEnsnhnsuhhhhhhhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcnhhhhhhhhhPusnEnsnhnsnEnsuOhhhhhhhhhncbaaaaaaaaaaaaa
+aaaaaaaaaabcSuuuuuuuuuuSdnhnsAnAsnhndSuuuuuuuuuuScbaaaaaaaaaaaaa
+aaaaaaaaaabddssssssssssddnhngsssgnhnddssssssssssddbaaaaaaaaaaaaa
+aaaaaaaaaabgktIuuuuuuuuuTAnATnnnTAnATuuuuuuuuuItkgbaaaaaaaaaaaaa
+aaaaaaaaaabgihhhhhhhhhhhhhqhhhqhhhqhhhhhhhhhhhhhigbaaaaaaaaaaaaa
+aaaaaaaaaabgnhhhhhhhhhhfhhhhhhhhhhhhhfhhhUhhhhhhngbaaaaaaaaaaaaa
+aaaaaaaaaabgnhhhhhhUhhhhhhhggsssgghhhhhhhhhhhhhhngbaaaaaaaaaaaaa
+aaaaaaaaaabgnhhhhVhhHhhhgggguuuuugggghhhhHhVHhhhngbaaaaaaaaaaaaa
+aaaaaaaaaabgnhhhhhhhhhhhgWuuuhphuuuWghhhhhhhhhhhngbaaaaaaaaaaaaa
+aaaaaaaaaabgnhhUhHhhhhhhguhhUhhhhhhughhhhUhhhhUhngbaaaaaaaaaaaaa
+aaaaaaaaaabgnhhhhhhhUhhfhQhhhhqhUhUQhfhhhhhhhhhhngbaaaaaaaaaaaaa
+aaaaaaaaaabgihhhhhhhhhhhgnUhHhhhHhhnghhhhhhhhhhhigbaaaaaaaaaaaaa
+aaaaaaaaaabgkinnnnnnnnnngAnnnnnnnnnAgnnnnnnnnnnikgbaaaaaaaaaaaaa
+aaaaaaaaaabggsssssssssssgghhhhhhhhhggsssssssssssggbaaaaaaaaaaaaa
+aaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaa
+aaaaaaaaaaaaaXbYbbbbbbbbbbbYbbbbbbYbbbbbbbbbbYbXaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaabbbbbbZbbbbZbbbbZbbbbZbbbbZbbbbbbaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaa
+"}

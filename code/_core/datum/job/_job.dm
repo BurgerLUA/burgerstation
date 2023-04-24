@@ -3,7 +3,7 @@
 	var/desc = "Job Description."
 
 	var/passive_income = 0
-	var/passive_income_bonus = 0 //Per rank
+	var/passive_income_bonus = 0 //Per rank after 1
 
 	var/list/bonus_skills = list(
 		SKILL_UNARMED = 0,

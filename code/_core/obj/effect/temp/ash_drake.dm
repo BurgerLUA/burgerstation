@@ -1,6 +1,6 @@
 obj/effect/temp/ash_drake/swoop_up
 	name = "ash drake swoop up effect"
-	icon = 'icons/mob/living/simple/ashdrake.dmi'
+	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "swoop"
 	desc = "FLY, CLIFF RACER FLY"
 	duration = SECONDS_TO_DECISECONDS(3)
@@ -12,7 +12,7 @@ obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
 
 /obj/effect/temp/ash_drake/swoop_down
 	name = "ash drake swoop up effect"
-	icon = 'icons/mob/living/simple/ashdrake.dmi'
+	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "swoop"
 	desc = "FLY, CLIFF RACER FLY"
 	duration = SECONDS_TO_DECISECONDS(1)

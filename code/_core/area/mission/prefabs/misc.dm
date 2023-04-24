@@ -148,6 +148,8 @@
 	default_state_power_machines = ON|AUTO
 	default_state_power_doors = ON|AUTO
 
+	flags_area = FLAG_AREA_NO_HORDE | FLAG_AREA_IMPORTANT
+
 /area/mission/prefab/misc/ai_core/entrance
 	name = "AI Entrance"
 	icon_state = "red"

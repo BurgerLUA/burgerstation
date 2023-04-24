@@ -1,6 +1,6 @@
 /area/mission/prefab/boss
 	icon_state = "red"
-
+	flags_area = FLAG_AREA_NO_HORDE | FLAG_AREA_IMPORTANT
 
 /area/mission/prefab/boss/colossus
 	name = "snow containment biome"

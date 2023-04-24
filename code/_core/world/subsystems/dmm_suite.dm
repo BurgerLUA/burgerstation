@@ -131,6 +131,18 @@ SUBSYSTEM_DEF(dmm_suite)
 
 		var/z = file_to_z_level["maps/_core/mission.dmm"]
 		if(z)
+			//First pass, checking prefabs it can slice.
+			for(var/x=2,x<=499,x++)
+				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+				var/y = pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2)
+				y = FLOOR(y,1)
+				var/turf/T = locate(x,y,z)
+				if(!T)
+					continue
+				var/area/A = T.loc
+				if(A.flags_area & FLAG_AREA_IMPORTANT)
+					A.flags_area |= FLAG_AREA_NO_PVP_CHASM
+
 			for(var/y=2,y<=499,y++)
 				for(var/x=2,x<=499,x++)
 					CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
@@ -139,6 +151,9 @@ SUBSYSTEM_DEF(dmm_suite)
 					if(y > pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) + 3) //Top line
 						continue
 					var/turf/T = locate(x,y,z)
+					var/area/A = T.loc
+					if(A.flags_area & FLAG_AREA_NO_PVP_CHASM)
+						continue //Skip.
 					for(var/k in T.contents)
 						var/atom/movable/M = k
 						qdel(M)
@@ -195,6 +210,8 @@ SUBSYSTEM_DEF(dmm_suite)
 		var/turf/T = get_turf(M)
 		if(!T)
 			continue
+		if(is_pvp_coord(T.x,T.y,T.z))
+			continue
 		var/mob/living/L = pick(possible_rogue_crewmembers)
 		possible_rogue_crewmembers -= L
 		L = new L(T)
@@ -212,8 +229,18 @@ SUBSYSTEM_DEF(dmm_suite)
 	if(!mission_z || z != mission_z)
 		return FALSE
 
-	if(y+distance >= pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2))
-		return TRUE
+	if(y+distance < pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2))
+		return FALSE
+
+	var/turf/T = locate(x,y,z)
+	if(!T)
+		return FALSE
+
+	var/area/A = T.loc
+	if(A.flags_area & FLAG_AREA_NO_PVP_CHASM)
+		return FALSE
+
+	return TRUE
 
 //Here lies dead code.
 //Annoying to work with and I don't have time to spend 6 months on this.
