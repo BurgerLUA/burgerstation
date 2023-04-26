@@ -179,8 +179,8 @@ var/global/list/all_damage_numbers = list()
 	if(!victim)
 		victim = get_step(attacker,attacker.dir)
 	. = max(1,do_attack_animation(attacker,victim,weapon))
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,.proc/do_miss_sound,attacker,victim,weapon)
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,.proc/display_miss_message,attacker,victim,weapon,null,"missed")
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_sound",.*0.125,src,src::do_miss_sound(),attacker,victim,weapon)
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_miss_message",.*0.125,src,src::display_miss_message(),attacker,victim,weapon,null,"missed")
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/V = victim
 		var/mob/living/A = attacker
@@ -259,7 +259,7 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/perform_clash(var/atom/attacker,var/atom/victim,var/atom/weapon_attacker,var/atom/weapon_victim)
 	. = max(1,do_attack_animation(attacker,victim,weapon_attacker))
-	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_clash_sound",.*0.125,src,.proc/do_clash_effect,attacker,victim,weapon_attacker)
+	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_clash_sound",.*0.125,src,src::do_clash_effect(),attacker,victim,weapon_attacker)
 	return .
 
 /damagetype/proc/do_clash_effect(var/atom/attacker,var/atom/victim,var/atom/weapon)
@@ -290,7 +290,7 @@ var/global/list/all_damage_numbers = list()
 
 	play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
 
-	CALLBACK("swing_\ref[weapon]",local_power_attack_delay,src,.proc/swing,attacker,victims,weapon,hit_objects,blamed,damage_multiplier)
+	CALLBACK("swing_\ref[weapon]",local_power_attack_delay,src,src::swing(),attacker,victims,weapon,hit_objects,blamed,damage_multiplier)
 
 
 /damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
@@ -372,7 +372,7 @@ var/global/list/all_damage_numbers = list()
 	if(!length(final_victims))
 		return perform_miss(attacker,get_step(attacker,attacker.dir),weapon)
 
-	CALLBACK("hit_\ref[weapon]",CEILING(.*0.125,1),src,.proc/process_damage_group,attacker,final_victims,weapon,blamed,damage_multiplier)
+	CALLBACK("hit_\ref[weapon]",CEILING(.*0.125,1),src,src::process_damage_group(),attacker,final_victims,weapon,blamed,damage_multiplier)
 
 	return .
 

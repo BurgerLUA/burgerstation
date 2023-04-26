@@ -46,8 +46,8 @@ var/global/list/stored_bookcase_phrases = list(
 
 	if(can_search_case(caller))
 		caller.to_chat(span("notice","You start searching \the [src.name]..."))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/search_case,caller)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_search_case,caller)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::search_case(),caller)
+		PROGRESS_BAR_CONDITIONS(caller,src,src::can_search_case(),caller)
 
 	return TRUE
 

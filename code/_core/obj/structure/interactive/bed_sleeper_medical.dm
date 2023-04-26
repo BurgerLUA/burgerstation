@@ -52,7 +52,7 @@
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_CLOSING
 	update_icon()
-	CALLBACK("on_close_\ref[src]",close_time,src,.proc/on_close,caller)
+	CALLBACK("on_close_\ref[src]",close_time,src,src::on_close(),caller)
 
 /obj/structure/interactive/bed/sleeper/medical/on_open(var/mob/caller)
 	door_state = SLEEPER_OPENED

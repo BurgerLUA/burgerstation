@@ -3,7 +3,7 @@
 	for(var/k in valid_buttons)
 		var/obj/hud/button/exchange/E = new k
 		E.update_owner(src)
-	HOOK_ADD("post_move","remove_sell_buttons_\ref[src]",src,src,.proc/remove_sell_buttons)
+	HOOK_ADD("post_move","remove_sell_buttons_\ref[src]",src,src,src::remove_sell_buttons())
 	return TRUE
 
 /mob/living/advanced/proc/remove_sell_buttons()
@@ -113,7 +113,7 @@
 
 	if(is_item(defer_object)) //Put the item in this inventory slot.
 		set_stored_object(defer_object)
-		HOOK_ADD("post_move","stored_object_post_move_\ref[src]",stored_object,src,.proc/stored_object_post_move)
+		HOOK_ADD("post_move","stored_object_post_move_\ref[src]",stored_object,src,src::stored_object_post_move())
 		return TRUE
 
 	. = ..()
@@ -124,7 +124,7 @@
 
 	if(is_item(defer_object)) //Put the item in this inventory slot.
 		set_stored_object(defer_object)
-		HOOK_ADD("post_move","stored_object_post_move_\ref[src]",stored_object,src,.proc/stored_object_post_move)
+		HOOK_ADD("post_move","stored_object_post_move_\ref[src]",stored_object,src,src::stored_object_post_move())
 		return TRUE
 
 	. = ..()

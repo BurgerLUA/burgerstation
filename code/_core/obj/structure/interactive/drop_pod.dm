@@ -136,23 +136,23 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 					return FALSE
 			icon_state = "none"
 			flick("drop_anim",src)
-			CALLBACK("set_state_\ref[src]",3,src,.proc/set_state,caller,POD_LAUNCHED,desired_loc)
+			CALLBACK("set_state_\ref[src]",3,src,src::set_state(),caller,POD_LAUNCHED,desired_loc)
 			play_sound('sound/machines/blastdoor.ogg',get_turf(src))
 		if(POD_LAUNCHED)
 			icon_state = "none"
-			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,caller,POD_LANDING,desired_loc)
+			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),caller,POD_LANDING,desired_loc)
 		if(POD_LANDING)
 			drop_pod_turfs += get_turf(src)
 			force_move(desired_loc)
 			pixel_z = TILE_SIZE*20
 			icon_state = "pod_air"
 			animate(src,pixel_z = 0,time=20)
-			CALLBACK("set_state_\ref[src]",20,src,.proc/set_state,caller,POD_LANDED,desired_loc)
+			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),caller,POD_LANDED,desired_loc)
 			play_sound('sound/machines/droppod_landing.ogg',get_turf(src))
 		if(POD_LANDED)
 			icon_state = "pod_closed"
 			flick("land_anim",src)
-			CALLBACK("set_state_\ref[src]",50,src,.proc/set_state,caller,POD_OPENING,desired_loc)
+			CALLBACK("set_state_\ref[src]",50,src,src::set_state(),caller,POD_OPENING,desired_loc)
 			explode(desired_loc,3,src,src,"NanoTrasen")
 		if(POD_OPENING)
 			play_sound('sound/machines/droppod_land.ogg',get_turf(src))
@@ -160,7 +160,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			for(var/k in contents)
 				var/atom/movable/M = k
 				M.force_move(src.loc)
-			CALLBACK("set_state_\ref[src]",ttl,src,.proc/set_state,caller,POD_DESTROY,desired_loc)
+			CALLBACK("set_state_\ref[src]",ttl,src,src::set_state(),caller,POD_DESTROY,desired_loc)
 		if(POD_DESTROY)
 			qdel(src)
 	state = desired_state

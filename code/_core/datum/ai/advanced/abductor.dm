@@ -11,7 +11,7 @@
 		if(istype(I) && istype(I.get_top_object(),/obj/item/clothing/hands/gloves/recall))
 			A.do_say("Ayy lmao")
 			A.visible_message(span("warning","\The [A.name] quickly presses a series of buttons on their left arm..."))
-			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,2)),src,.proc/fuckoff)
+			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,2)),src,src::fuckoff())
 
 /ai/advanced/abductor/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
@@ -23,7 +23,7 @@
 		var/obj/hud/inventory/I = A.inventories_by_id[BODY_HAND_LEFT]
 		if(istype(I) && istype(I.get_top_object(),/obj/item/clothing/hands/gloves/recall))
 			A.visible_message(span("warning","\The [A.name] quickly presses a series of buttons on their left arm..."))
-			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,2)),src,.proc/fuckoff)
+			CALLBACK("\ref[src]_fuckoff",SECONDS_TO_DECISECONDS(rand(1,2)),src,src::fuckoff())
 
 
 /ai/advanced/abductor/proc/fuckoff()

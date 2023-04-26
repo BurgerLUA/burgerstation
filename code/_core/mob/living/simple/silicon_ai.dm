@@ -144,7 +144,7 @@
 		var/turf/T = locate(x + ix,y + iy,z)
 		if(!T || A != T.loc)
 			continue
-		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,.proc/create_turf_destruction,T)
+		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,src::create_turf_destruction(),T)
 
 	next_cyborg_spawn_time = max(next_cyborg_spawn_time,world.time + VIEW_RANGE*10)
 

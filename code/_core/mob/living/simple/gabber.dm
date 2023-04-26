@@ -121,11 +121,11 @@ var/global/list/valid_gabber_sound_files = list()
 	animate(src,pixel_z = -16,time=5)
 	animate(pixel_z = initial(pixel_z),time=50)
 
-	CALLBACK("\ref[src]_monologue_1",10,src,.proc/do_voice,"fool",TRUE)
-	CALLBACK("\ref[src]_monologue_2",10+10,src,.proc/do_voice,"you are not a threat",TRUE)
-	CALLBACK("\ref[src]_monologue_3",10+10+40,src,.proc/showoff)
-	CALLBACK("\ref[src]_monologue_4",10+10+40+10,src,.proc/do_voice,"but \[I am\]",TRUE)
-	CALLBACK("\ref[src]_monologue_5",10+10+40+10+40,src,.proc/end_sword_mode)
+	CALLBACK("\ref[src]_monologue_1",10,src,src::do_voice(),"fool",TRUE)
+	CALLBACK("\ref[src]_monologue_2",10+10,src,src::do_voice(),"you are not a threat",TRUE)
+	CALLBACK("\ref[src]_monologue_3",10+10+40,src,src::showoff())
+	CALLBACK("\ref[src]_monologue_4",10+10+40+10,src,src::do_voice(),"but \[I am\]",TRUE)
+	CALLBACK("\ref[src]_monologue_5",10+10+40+10+40,src,src::end_sword_mode())
 
 	return TRUE
 
@@ -256,7 +256,7 @@ var/global/list/gabber_voice_slam = list(
 	for(var/i=1,i<=16,i++)
 		var/math_x = sin( (i/8 * 360 * direction) + offset)*VIEW_RANGE*0.5
 		var/math_y = cos( (i/8 * 360 * direction) + offset)*VIEW_RANGE*0.5
-		CALLBACK("\ref[src]_shoot_trap_[i]",5 + i*2,src,.proc/shoot_trap,target,math_x,math_y)
+		CALLBACK("\ref[src]_shoot_trap_[i]",5 + i*2,src,src::shoot_trap(),target,math_x,math_y)
 
 
 /mob/living/simple/gabber/proc/trap_lines(var/trap_switch = 0)
@@ -287,7 +287,7 @@ var/global/list/gabber_voice_slam = list(
 	for(var/i=1,i<=16,i++)
 		var/math_x = (i - 8)*x_mul
 		var/math_y = (i - 8)*y_mul
-		CALLBACK("\ref[src]_shoot_trap_[i]",i*2,src,.proc/shoot_trap,T,math_x,math_y)
+		CALLBACK("\ref[src]_shoot_trap_[i]",i*2,src,src::shoot_trap(),T,math_x,math_y)
 
 /mob/living/simple/gabber/proc/shoot_trap(var/atom/target,var/math_x,var/math_y)
 
@@ -383,7 +383,7 @@ var/global/list/gabber_voice_multishot = list(
 		var/turf/T = locate(x + ix,y + iy,z)
 		if(!T)
 			continue
-		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,.proc/create_turf_destruction,T)
+		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,src::create_turf_destruction(),T)
 
 
 /mob/living/simple/gabber/proc/create_turf_destruction(var/turf/T)

@@ -43,12 +43,12 @@
 			active_silicons -= L
 
 	if(length(active_silicons) > silicon_limit)
-		CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(5),src,.proc/start_creating) //Try again later.
+		CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(5),src,src::start_creating()) //Try again later.
 		return FALSE
 
 	icon_state = "[initial(icon_state)]_creating"
 
-	CALLBACK("\ref[src]_create_silicon",SECONDS_TO_DECISECONDS(10),src,.proc/create_silicon)
+	CALLBACK("\ref[src]_create_silicon",SECONDS_TO_DECISECONDS(10),src,src::create_silicon())
 
 	return TRUE
 
@@ -77,6 +77,6 @@
 	active_silicons += SM
 	has_stored_cyborg = FALSE
 
-	CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(10),src,.proc/start_creating) //Repeat.
+	CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(10),src,src::start_creating()) //Repeat.
 
 	return TRUE

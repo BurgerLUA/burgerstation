@@ -41,8 +41,8 @@
 		if(can_be_treated(caller,object))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(4),.proc/treat,caller,object) //Takes 4 seconds to get started.
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(4),src::treat(),caller,object) //Takes 4 seconds to get started.
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,object)
 
 		return TRUE
 
@@ -117,8 +117,8 @@
 	else
 		caller.visible_message(span("warning","\The [caller.name] treat \the [A.loc.name]'s [A.name]."),span("notice","You treat \the [A.loc.name]'s [A.name]."))
 
-	PROGRESS_BAR(caller,src,base_delay + max(0,added_delay*(1-medicine_power)),.proc/treat,caller,A)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,A)
+	PROGRESS_BAR(caller,src,base_delay + max(0,added_delay*(1-medicine_power)),src::treat(),caller,A)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,A)
 
 	use_condition(0.1) //About 1000 uses.
 

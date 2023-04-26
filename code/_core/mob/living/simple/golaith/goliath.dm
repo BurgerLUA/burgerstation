@@ -57,7 +57,7 @@
 	add_status_effect(PARALYZE,50,50,stealthy = TRUE)
 	icon_state = "[initial(icon_state)]_attack"
 
-	CALLBACK("\ref[src]_tentacle_attack",30,src,.proc/do_tentacle_attack,desired_target)
+	CALLBACK("\ref[src]_tentacle_attack",30,src,src::do_tentacle_attack(),desired_target)
 
 	return TRUE
 

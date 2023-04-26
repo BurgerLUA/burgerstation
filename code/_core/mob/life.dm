@@ -29,6 +29,6 @@
 
 	if(plane_master_lighting.alpha != desired_lighting_alpha)
 		animate(plane_master_lighting,alpha=desired_lighting_alpha,time=NIGHTVISION_TIME)
-		CALLBACK("\ref[src]_nightvision",NIGHTVISION_TIME,src,.proc/handle_lighting_alpha)
+		CALLBACK("\ref[src]_nightvision",NIGHTVISION_TIME,src,src::handle_lighting_alpha())
 
 	return TRUE

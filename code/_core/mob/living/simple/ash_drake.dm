@@ -123,7 +123,7 @@
 
 	play_sound('sound/mob/ash_drake/land.ogg',T)
 
-	CALLBACK("\ref[src]_ash_drake_land",SECONDS_TO_DECISECONDS(1),src,.proc/finish_land)
+	CALLBACK("\ref[src]_ash_drake_land",SECONDS_TO_DECISECONDS(1),src,src::finish_land())
 
 	if(prob(50))
 		fire_rain()

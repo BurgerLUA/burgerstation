@@ -84,8 +84,8 @@
 		caller.to_chat(span("warning","You're already busy with a task!"))
 		return FALSE
 
-	PROGRESS_BAR(caller,src,20,.proc/pull_chain,caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,	.proc/can_start,caller)
+	PROGRESS_BAR(caller,src,20,src::pull_chain(),caller)
+	PROGRESS_BAR_CONDITIONS(caller,src,	src::can_start(),caller)
 	play_sound('sound/weapons/melee/chainsaw/pull.ogg',get_turf(src),range_max=VIEW_RANGE)
 
 	return TRUE

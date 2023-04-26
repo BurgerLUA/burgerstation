@@ -57,7 +57,7 @@
 	visible_message(span("danger","\The [src.name] flies up in the air, bringing \the [stored_movable.name] with it!"))
 	play_sound('sound/effects/fultext_launch.ogg',get_turf(src))
 	animate(src,pixel_z = TILE_SIZE*VIEW_RANGE,alpha=0,color="#000000",time=SECONDS_TO_DECISECONDS(1),easing=BACK_EASING | EASE_IN)
-	CALLBACK("\ref[src]_sell",SECONDS_TO_DECISECONDS(2),src,.proc/sell_stored)
+	CALLBACK("\ref[src]_sell",SECONDS_TO_DECISECONDS(2),src,src::sell_stored())
 	return TRUE
 
 /obj/structure/interactive/fulton/proc/sell_stored()
@@ -147,9 +147,9 @@
 			var/mob/living/L = M
 			if(!L.dead)
 				L.rejuvenate() //Might as well.
-		CALLBACK("\ref[src]_fly",SECONDS_TO_DECISECONDS(3),src,.proc/fly_away) //CLIFF RACEEEEEEEEEEEER
+		CALLBACK("\ref[src]_fly",SECONDS_TO_DECISECONDS(3),src,src::fly_away()) //CLIFF RACEEEEEEEEEEEER
 	else
-		CALLBACK("\ref[src]_fail",SECONDS_TO_DECISECONDS(3),src,.proc/do_invalid_fulton)
+		CALLBACK("\ref[src]_fail",SECONDS_TO_DECISECONDS(3),src,src::do_invalid_fulton())
 
 	animate(src,pixel_z = TILE_SIZE, time=SECONDS_TO_DECISECONDS(2),easing=BOUNCE_EASING)
 

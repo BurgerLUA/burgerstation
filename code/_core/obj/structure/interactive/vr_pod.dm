@@ -131,8 +131,8 @@
 				return TRUE
 			caller.to_chat(span("warning","\The [src.name] is already occupied!"))
 		else if(can_enter_pod(caller))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/enter_pod,caller)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_pod,caller)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::enter_pod(),caller)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_enter_pod(),caller)
 		return TRUE
 
 	. = ..()

@@ -35,4 +35,4 @@
 	BS.force_move(T)
 	BS.open_inventory(src)
 
-	//HOOK_ADD("post_move","\ref[BS]_bank_post_move",src,src,.proc/close_bank)
+	//HOOK_ADD("post_move","\ref[BS]_bank_post_move",src,src,src::close_bank())

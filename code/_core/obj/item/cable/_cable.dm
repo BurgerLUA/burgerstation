@@ -75,8 +75,8 @@
 		object = object.get_object_to_damage(caller,src,params,TRUE,TRUE)
 
 	if(can_be_treated(caller,object))
-		PROGRESS_BAR(caller,src,self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME,.proc/treat,caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_be_treated,caller,object)
+		PROGRESS_BAR(caller,src,self_treat ? BASE_TREATMENT_TIME_SELF : BASE_TREATMENT_TIME,src::treat(),caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,src::can_be_treated(),caller,object)
 		return TRUE
 
 	return ..()

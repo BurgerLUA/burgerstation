@@ -17,7 +17,7 @@
 	play_sound('sound/effects/wand_teleport.ogg',get_turf(src))
 
 /obj/effect/temp/hazard/hierophant/Initialize()
-	CALLBACK("copy_hazard_\ref[src]",copy_delay,src,.proc/copy_hazard)
+	CALLBACK("copy_hazard_\ref[src]",copy_delay,src,src::copy_hazard())
 	return ..()
 
 /obj/effect/temp/hazard/hierophant/get_params(var/atom/victim)

@@ -149,7 +149,7 @@
 	emoter.set_dir(turn(emoter.dir,90))
 
 	if(spins_remaining > 0)
-		CALLBACK("\ref[emoter]_spin",1,src,.proc/spin,emoter,spins_remaining-1)
+		CALLBACK("\ref[emoter]_spin",1,src,src::spin(),emoter,spins_remaining-1)
 
 /emote/spin/on_emote(var/atom/emoter,var/atom/target)
 	spin(emoter,11)

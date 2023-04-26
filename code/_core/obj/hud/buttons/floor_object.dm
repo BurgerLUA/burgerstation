@@ -40,7 +40,7 @@
 		if(!associated_object)
 			log_error("Warning: [get_debug_name()] didn't have an associated object on initialization!")
 			return FALSE
-		HOOK_ADD("post_move","floor_object_post_move_\ref[src]",associated_object,src,.proc/assoc_object_post_move)
+		HOOK_ADD("post_move","floor_object_post_move_\ref[src]",associated_object,src,src::assoc_object_post_move())
 
 
 /obj/hud/button/floor_object/update_sprite()

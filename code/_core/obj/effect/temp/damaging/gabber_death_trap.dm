@@ -30,11 +30,11 @@
 	pixel_z = TILE_SIZE*2
 	animate(src,pixel_x = pixel_x*0.5, pixel_y = pixel_y*0.5,pixel_z=pixel_z*1.5,time=15,easing=SINE_EASING|EASE_OUT)
 	animate(pixel_x=0,pixel_y=0,pixel_z=0,time=10,easing=SINE_EASING|EASE_IN)
-	CALLBACK("\ref[src]_arm",30,src,.proc/arm)
+	CALLBACK("\ref[src]_arm",30,src,src::arm())
 
 /obj/effect/temp/gabber_death_trap/proc/arm()
 	animate(src,alpha=200,time=30)
-	CALLBACK("\ref[src]_end",30,src,.proc/finish_arming)
+	CALLBACK("\ref[src]_end",30,src,src::finish_arming())
 
 /obj/effect/temp/gabber_death_trap/proc/finish_arming()
 	active = TRUE

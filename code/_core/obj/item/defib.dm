@@ -67,8 +67,8 @@
 	paddle_left.placed_target_ref = null
 	paddle_right.placed_target_ref = null
 
-	PROGRESS_BAR(caller,src,30,.proc/defib_target,caller,target)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_defib_target,caller,target)
+	PROGRESS_BAR(caller,src,30,src::defib_target(),caller,target)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_defib_target(),caller,target)
 
 	return TRUE
 
@@ -234,7 +234,7 @@
 			if(!I.click_flags || !I.owner)
 				src.drop_item(linked_defib)
 			else
-				HOOK_ADD("post_move","\ref[src]_post_move_defib",I.owner,src,.proc/check_distance)
+				HOOK_ADD("post_move","\ref[src]_post_move_defib",I.owner,src,src::check_distance())
 		else if(linked_defib && src.z)
 			src.drop_item(linked_defib)
 

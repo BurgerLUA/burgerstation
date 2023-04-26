@@ -407,7 +407,7 @@
 		play_sound('sound/effects/portal_suck.ogg',T)
 
 	if(sucks_left > 0)
-		CALLBACK("\ref[src]_suck",8,src,.proc/suck,caller,sucks_left-1)
+		CALLBACK("\ref[src]_suck",8,src,src::suck(),caller,sucks_left-1)
 	else
 		if(is_player(caller))
 			var/mob/living/advanced/player/P = caller

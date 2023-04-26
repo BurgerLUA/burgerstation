@@ -53,7 +53,7 @@ mob/living/on_left_down(object,location,control,params)
 				set_mouse_pointer('icons/pointers/harm_switch.dmi')
 
 		var/icon_to_use = intent == INTENT_HELP ? 'icons/pointers/help.dmi' : 'icons/pointers/non_help.dmi'
-		CALLBACK("\ref[src]_intent_switch",10,src,.proc/set_mouse_pointer,icon_to_use)
+		CALLBACK("\ref[src]_intent_switch",10,src,src::set_mouse_pointer(),icon_to_use)
 
 	for(var/k in src.light_sprite_sources)
 		var/obj/light_sprite/LS = k

@@ -721,8 +721,8 @@ var/global/list/rarity_to_mul = list(
 			return TRUE
 
 	if(can_feed(caller,object))
-		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,.proc/feed,caller,object)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_feed,caller,object)
+		PROGRESS_BAR(caller,src,self_feed ? BASE_FEED_TIME_SELF : BASE_FEED_TIME,src::feed(),caller,object)
+		PROGRESS_BAR_CONDITIONS(caller,src,src::can_feed(),caller,object)
 		return TRUE
 
 	if(object.reagents)

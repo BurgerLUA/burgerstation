@@ -69,6 +69,6 @@
 	return TRUE
 
 /objective/defense/start()
-	HOOK_ADD("Destroy","defense_Destroy",defend,src,.proc/defense_Destroy)
+	HOOK_ADD("Destroy","defense_Destroy",defend,src,src::defense_Destroy())
 	tracked_atoms += defend
 	return TRUE

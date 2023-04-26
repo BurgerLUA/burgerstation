@@ -177,7 +177,7 @@
 				var/mob/M = best_target
 				if(M.client)
 					M.to_chat(span("debug","Setting delayed objective target ([reaction_time])."))
-			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,best_target)
+			CALLBACK("set_new_objective_\ref[src]",reaction_time,src,src::set_objective(),best_target)
 			return
 
 		set_objective(best_target) //Forced set objective.
@@ -214,7 +214,7 @@
 				closest_obstacle = A
 		if(closest_obstacle)
 			if(reaction_time)
-				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,.proc/set_objective,closest_obstacle)
+				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,src::set_objective(),closest_obstacle)
 			else
 				set_objective(closest_obstacle)
 
@@ -278,7 +278,7 @@
 		return investigate(desired_target)
 
 	owner.set_dir(get_dir(owner,desired_target)) //Look at the source of noise.
-	CALLBACK("investigate_\ref[src]",reaction_time,src,.proc/investigate,desired_target)
+	CALLBACK("investigate_\ref[src]",reaction_time,src,src::investigate(),desired_target)
 
 	return TRUE
 

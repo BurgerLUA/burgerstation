@@ -86,13 +86,13 @@
 		if(nuke_state == 1) //Arm it!
 			if(can_arm(caller))
 				caller.visible_message(span("danger","\The [caller.name] starts arming \the [src.name]!"),span("warning","You begin to arm \the [src.name]!"))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(8),.proc/arm,caller)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_arm,caller)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(8),src::arm(),caller)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_arm(),caller)
 		else if(nuke_state == 2) //Disarm it!
 			if(can_disarm(caller))
 				caller.visible_message(span("danger","\The [caller.name] starts disarming \the [src.name]!"),span("warning","You begin to disarm \the [src.name]!"))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(8),.proc/disarm,caller)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_disarm,caller)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(8),src::disarm(),caller)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_disarm(),caller)
 
 
 		return TRUE

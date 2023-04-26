@@ -197,7 +197,7 @@
 	. = ..()
 
 	if(owner)
-		HOOK_ADD("post_move","\ref[src]_check_distance",owner,src,.proc/check_distance)
+		HOOK_ADD("post_move","\ref[src]_check_distance",owner,src,src::check_distance())
 
 
 /obj/hud/button/close_ability_choice/proc/check_distance()

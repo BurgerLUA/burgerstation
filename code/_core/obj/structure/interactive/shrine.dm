@@ -95,9 +95,9 @@ var/global/list/possible_ritual_spawns = list(
 		GENERATE(L)
 		FINALIZE(L)
 		tracked_enemies += L
-		HOOK_ADD("post_death","\ref[src]_post_death",L,src,.proc/remove_mob)
-		HOOK_ADD("Destroy","\ref[src]_destroy",L,src,.proc/remove_mob)
-		HOOK_ADD("post_move","\ref[src]_post_move",L,src,.proc/check_valid_mob_position)
+		HOOK_ADD("post_death","\ref[src]_post_death",L,src,src::remove_mob())
+		HOOK_ADD("Destroy","\ref[src]_destroy",L,src,src::remove_mob())
+		HOOK_ADD("post_move","\ref[src]_post_move",L,src,src::check_valid_mob_position())
 		if(L.ai && length(tracked_players))
 			var/mob/living/advanced/player/P = pick(tracked_players)
 			L.ai.set_objective(P)
@@ -111,9 +111,9 @@ var/global/list/possible_ritual_spawns = list(
 		if(P.dead || P.qdeleting)
 			continue
 		tracked_players += P
-		HOOK_ADD("post_death","\ref[src]_post_death",P,src,.proc/remove_player)
-		HOOK_ADD("Destroy","\ref[src]_destroy",P,src,.proc/remove_player)
-		HOOK_ADD("post_move","\ref[src]_post_move",P,src,.proc/check_valid_player_position)
+		HOOK_ADD("post_death","\ref[src]_post_death",P,src,src::remove_player())
+		HOOK_ADD("Destroy","\ref[src]_destroy",P,src,src::remove_player())
+		HOOK_ADD("post_move","\ref[src]_post_move",P,src,src::check_valid_player_position())
 
 	if(!length(tracked_players))
 		log_error("Could not start [src.get_debug_name()], no found players!")

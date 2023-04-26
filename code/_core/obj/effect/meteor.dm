@@ -20,9 +20,9 @@
 	animate(src, alpha=255, time=meteor_time*0.5)
 	animate(src, pixel_z=0, pixel_w=0, time=meteor_time, transform = get_base_transform())
 
-	CALLBACK("meteor_telegraph_\ref[src]",meteor_time-20,src,.proc/create_telegraph)
+	CALLBACK("meteor_telegraph_\ref[src]",meteor_time-20,src,src::create_telegraph())
 
-	CALLBACK("meteor_land_\ref[src]",meteor_time,src,.proc/land)
+	CALLBACK("meteor_land_\ref[src]",meteor_time,src,src::land())
 
 	return ..()
 
@@ -55,7 +55,7 @@
 	animate(src, alpha=255, time=meteor_time*0.5)
 	animate(src, pixel_z=0, pixel_w=0, time=meteor_time*0.95, transform = get_base_transform())
 
-	CALLBACK("fireball_land_\ref[src]",meteor_time,src,.proc/land)
+	CALLBACK("fireball_land_\ref[src]",meteor_time,src,src::land())
 
 	return ..()
 

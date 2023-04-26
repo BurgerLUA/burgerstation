@@ -30,7 +30,7 @@
 	if(expiry_time == -1)
 		expire()
 	else
-		CALLBACK("expire_\ref[src]",expiry_time,src,.proc/expire)
+		CALLBACK("expire_\ref[src]",expiry_time,src,src::expire())
 	return ..()
 
 /obj/item/legion_core/proc/expire()

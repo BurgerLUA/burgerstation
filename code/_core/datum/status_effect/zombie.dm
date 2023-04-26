@@ -55,10 +55,10 @@
 
 	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
 	H.add_blend("zombie", desired_icon = 'icons/mob/living/advanced/hair/human_misc.dmi', desired_icon_state = "zombie", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY)
-	HOOK_ADD("on_damage_received","\ref[H]_zombie_on_damage_received",H,src,.proc/on_headshot)
-	HOOK_ADD("post_death","\ref[owner]_zombie_post_death",owner,src,.proc/post_death)
-	HOOK_ADD("attack","\ref[owner]_zombie_attack",owner,src,.proc/attack)
-	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,.proc/on_damage_received)
+	HOOK_ADD("on_damage_received","\ref[H]_zombie_on_damage_received",H,src,src::on_headshot())
+	HOOK_ADD("post_death","\ref[owner]_zombie_post_death",owner,src,src::post_death())
+	HOOK_ADD("attack","\ref[owner]_zombie_attack",owner,src,src::attack())
+	HOOK_ADD("on_damage_received","\ref[owner]_zombie_on_damage_received",owner,src,src::on_damage_received())
 	H.update_sprite()
 
 	if(istype(source,/obj/item/clothing/head/helmet/full/blob_spore))
@@ -147,7 +147,7 @@
 		)
 		play_sound(pick(valid_sounds),get_turf(L),range_max=VIEW_RANGE)
 
-	CALLBACK("zombie_revive_\ref[L]",SECONDS_TO_DECISECONDS(rand(4,10)),src,.proc/zombie_revive,L)
+	CALLBACK("zombie_revive_\ref[L]",SECONDS_TO_DECISECONDS(rand(4,10)),src,src::zombie_revive(),L)
 	return TRUE
 
 /status_effect/zombie/proc/zombie_revive(var/mob/living/advanced/L) //Stolen from meatmen.

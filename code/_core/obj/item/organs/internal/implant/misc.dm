@@ -30,7 +30,7 @@
 
 /obj/item/organ/internal/implant/torso/death_alarm/on_organ_add(var/mob/living/advanced/new_owner)
 	. = ..()
-	HOOK_ADD("post_death","\ref[src]_implant_post_death",new_owner,src,.proc/trigger_implant)
+	HOOK_ADD("post_death","\ref[src]_implant_post_death",new_owner,src,src::trigger_implant())
 
 /obj/item/organ/internal/implant/torso/death_alarm/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()

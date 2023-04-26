@@ -36,7 +36,7 @@
 
 	icon_state = "fuse_[stage]"
 
-	CALLBACK("\ref[src]_bomb_stage_[stage]",stage_speed,src,.proc/light,stage)
+	CALLBACK("\ref[src]_bomb_stage_[stage]",stage_speed,src,src::light(),stage)
 
 	return TRUE
 

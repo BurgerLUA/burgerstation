@@ -44,7 +44,7 @@
 		time = 5
 	)
 	if(!permanent)
-		CALLBACK("\ref[src]_telegraph_delete",300,src,.proc/telegraph_delete)
+		CALLBACK("\ref[src]_telegraph_delete",300,src,src::telegraph_delete())
 
 /obj/structure/interactive/slime_tile/proc/telegraph_delete()
 	if(src.qdeleting)
@@ -52,7 +52,7 @@
 	var/matrix/M = matrix()
 	M.Scale(0)
 	animate(src,transform=M,alpha=0,time=20)
-	CALLBACK("\ref[src]_timed_destruction",20,src,.proc/do_delete)
+	CALLBACK("\ref[src]_timed_destruction",20,src,src::do_delete())
 
 /obj/structure/interactive/slime_tile/proc/do_delete()
 	if(src.qdeleting)
@@ -84,7 +84,7 @@
 	GENERATE(H)
 	FINALIZE(H)
 
-	CALLBACK("\ref[src]_heal_\ref[L]",10,src,.proc/heal,L)
+	CALLBACK("\ref[src]_heal_\ref[L]",10,src,src::heal(),L)
 
 	return TRUE
 
@@ -93,7 +93,7 @@
 	if(!qdeleting && !CALLBACK_EXISTS("\ref[src]_timed_destruction") && is_living(O))
 		var/mob/living/L = O
 		if(L.loyalty_tag == "Slime")
-			CALLBACK("\ref[src]_heal_\ref[L]",10,src,.proc/heal,L)
+			CALLBACK("\ref[src]_heal_\ref[L]",10,src,src::heal(),L)
 		else
 			L.add_status_effect(SLOW,20,20)
 			play_sound('sound/effects/slimed.ogg',get_turf(src))

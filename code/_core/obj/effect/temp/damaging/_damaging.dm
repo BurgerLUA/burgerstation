@@ -36,7 +36,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	if(hazard_delay <= 0)
 		activate_hazard()
 	else
-		CALLBACK("activate_hazard_\ref[src]",hazard_delay,src,.proc/activate_hazard)
+		CALLBACK("activate_hazard_\ref[src]",hazard_delay,src,src::activate_hazard())
 
 	return ..()
 
@@ -48,7 +48,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 	do_damage(L)
 
-	CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,.proc/do_cross_damage,L)
+	CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,src::do_cross_damage(),L)
 
 /obj/effect/temp/hazard/Crossed(atom/movable/O)
 	if(enabled && cross_hazard && is_living(O))
@@ -144,7 +144,7 @@ obj/effect/temp/hazard/tentacle/
 
 obj/effect/temp/hazard/tentacle/New(var/desired_location,var/desired_time,var/desired_owner)
 	. = ..()
-	CALLBACK("deactivate_hazard_\ref[src]",9,src,.proc/deactivate_hazard)
+	CALLBACK("deactivate_hazard_\ref[src]",9,src,src::deactivate_hazard())
 
 obj/effect/temp/hazard/tentacle/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)
 	if(istype(victim,/mob/living/simple/goliath/)) //This bug is hilarious but we don't want to have it.
@@ -179,7 +179,7 @@ obj/effect/temp/hazard/bubblefist/New(var/desired_location,var/desired_time,var/
 		icon_state = "leftpawgrab"
 		overlay_state = "leftthumbgrab"
 	. = ..()
-	CALLBACK("deactivate_hazard_\ref[src]",7,src,.proc/deactivate_hazard)
+	CALLBACK("deactivate_hazard_\ref[src]",7,src,src::deactivate_hazard())
 	update_sprite()
 
 obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)

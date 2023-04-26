@@ -48,8 +48,8 @@ var/global/list/tracked_rogues = list()
 	var/mob/living/L = get_random_target()
 	tracked_rogues += L //Global list
 	tracked_atoms += L
-	HOOK_ADD("post_death","kill_rogue_post_death",L,src,.proc/kill_boss_post_death)
-	HOOK_ADD("Destroy","kill_rogue_destroy",L,src,.proc/kill_boss_destroy)
+	HOOK_ADD("post_death","kill_rogue_post_death",L,src,src::kill_boss_post_death())
+	HOOK_ADD("Destroy","kill_rogue_destroy",L,src,src::kill_boss_destroy())
 	update()
 	return ..()
 

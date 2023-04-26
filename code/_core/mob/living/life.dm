@@ -227,7 +227,7 @@
 	if(expiration_time == -1)
 		make_unrevivable()
 	else if(expiration_time > 0)
-		CALLBACK("\ref[src]_make_unrevivable",expiration_time,src,.proc/make_unrevivable)
+		CALLBACK("\ref[src]_make_unrevivable",expiration_time,src,src::make_unrevivable())
 
 	if(delete_on_death)
 		qdel(src)

@@ -104,7 +104,7 @@
 
 	add_status_effect(IMMORTAL)
 	set_density(FALSE)
-	CALLBACK("\ref[src]_leaper_teleport",10,src,.proc/teleport,desired_turf)
+	CALLBACK("\ref[src]_leaper_teleport",10,src,src::teleport(),desired_turf)
 
 	return TRUE
 
@@ -126,7 +126,7 @@
 		return FALSE
 
 	for(var/i=1,i<=3,i++)
-		CALLBACK("\ref[src]_shoot_bubble[i]",5+i*6,src,.proc/shoot_bubble,ai.objective_attack)
+		CALLBACK("\ref[src]_shoot_bubble[i]",5+i*6,src,src::shoot_bubble(),ai.objective_attack)
 
 	return TRUE
 

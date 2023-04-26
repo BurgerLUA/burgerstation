@@ -155,8 +155,8 @@ obj/structure/interactive/clicked_on_by_object(var/mob/caller,var/atom/object,lo
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_repair,caller,object)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_repair,caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::do_repair(),caller,object)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_repair(),caller,object)
 			return TRUE
 
 		var/obj/item/I2 = src.check_interactables(caller,src,location,control,params)

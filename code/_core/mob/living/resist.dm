@@ -130,7 +130,7 @@
 		to_chat(span("warning","You're already resting... in peace."))
 		return FALSE
 	if(STATUS_EFFECT_DURATION(src,REST) == -1)
-		PROGRESS_BAR(src,src,3,.proc/remove_status_effect,REST)
+		PROGRESS_BAR(src,src,3,src::remove_status_effect(),REST)
 	else
 		add_status_effect(REST,-1,-2, force = TRUE)
 	return TRUE

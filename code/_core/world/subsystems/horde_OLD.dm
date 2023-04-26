@@ -221,7 +221,7 @@ SUBSYSTEM_DEF(horde)
 		var/chosen_id = pick(valid_boss_ids)
 		valid_boss_ids -= chosen_id
 		var/mob/living/L = SSbosses.tracked_bosses[chosen_id]
-		HOOK_ADD("post_death","objective_death",L,src,.proc/queue_objectives_update)
+		HOOK_ADD("post_death","objective_death",L,src,src::queue_objectives_update())
 		tracked_objectives += L
 		spawned_objectives++
 

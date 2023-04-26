@@ -36,7 +36,7 @@ obj/effect/temp/item_pickup/New(var/atom/desired_location,var/desired_time,var/a
 		if("transfer")
 			animate(src,pixel_x = 0,pixel_y = 0,time = duration,easing=SINE_EASING)
 
-	CALLBACK("fade_\ref[src]",duration,src,.proc/fade,desired_object)
+	CALLBACK("fade_\ref[src]",duration,src,src::fade(),desired_object)
 
 	return TRUE
 

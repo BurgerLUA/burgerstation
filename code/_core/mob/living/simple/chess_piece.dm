@@ -289,7 +289,7 @@ var/global/regex/bad_opinion = regex(@"en *passant *is *n[^f]*forced")
 		return ..()
 
 	if(!src.processing && !CALLBACK_EXISTS("\ref[src]_response") && bad_opinion.Find(text))
-		CALLBACK("\ref[src]_response",rand(10,20),src,.proc/give_response)
+		CALLBACK("\ref[src]_response",rand(10,20),src,src::give_response())
 
 	. = ..()
 

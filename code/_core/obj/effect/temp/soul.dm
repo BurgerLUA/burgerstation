@@ -22,7 +22,7 @@
 
 	animate(src,pixel_z=TILE_SIZE,time=duration)
 
-	CALLBACK("remove_effect_fade_\ref[src]",duration-SECONDS_TO_DECISECONDS(1),src,.proc/remove_effect_fade)
+	CALLBACK("remove_effect_fade_\ref[src]",duration-SECONDS_TO_DECISECONDS(1),src,src::remove_effect_fade())
 
 	color = "#000000"
 

@@ -14,7 +14,7 @@ obj/effect/temp/New(var/desired_location,var/desired_time)
 	if(desired_time)
 		duration = desired_time
 
-	CALLBACK("remove_effect_\ref[src]",duration,src,.proc/remove_effect)
+	CALLBACK("remove_effect_\ref[src]",duration,src,src::remove_effect())
 
 obj/effect/temp/proc/remove_effect()
 	qdel(src)

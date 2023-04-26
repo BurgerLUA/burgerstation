@@ -63,8 +63,8 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/construct_window,caller,object)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_construct_window,caller,object)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::construct_window(),caller,object)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_window(),caller,object)
 			return TRUE
 
 	return ..()

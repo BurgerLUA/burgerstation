@@ -47,8 +47,8 @@
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/click_self(var/mob/caller,location,control,params)
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),.proc/remove_blob,caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_remove_blob,caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::remove_blob(),caller)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_remove_blob(),caller)
 	return TRUE
 
 /obj/item/clothing/head/helmet/full/blob_spore/think()

@@ -94,7 +94,7 @@
 	if(istype(loc,/obj/hud/inventory/organs/groin/pocket/contract))
 		var/obj/hud/inventory/organs/groin/pocket/contract/I = loc
 		if(is_advanced(I.owner))
-			HOOK_ADD("on_kill","on_kill_\ref[src]",I.owner,src,.proc/on_kill)
+			HOOK_ADD("on_kill","on_kill_\ref[src]",I.owner,src,src::on_kill())
 
 /obj/item/contract/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()

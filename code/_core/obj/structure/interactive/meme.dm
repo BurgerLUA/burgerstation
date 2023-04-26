@@ -7,7 +7,7 @@
 
 /obj/structure/interactive/dont_look/Finalize()
 	. = ..()
-	CALLBACK("\ref[src]_look_delete",SECONDS_TO_DECISECONDS(60),src,.proc/callback_delete)
+	CALLBACK("\ref[src]_look_delete",SECONDS_TO_DECISECONDS(60),src,src::callback_delete())
 	if(is_turf(src.loc))
 		START_THINKING(src)
 
@@ -48,7 +48,7 @@
 		found_viewers += 1
 
 	if(found_viewers > 0)
-		CALLBACK("\ref[src]_do_explode",SECONDS_TO_DECISECONDS(1),src,.proc/do_explode)
+		CALLBACK("\ref[src]_do_explode",SECONDS_TO_DECISECONDS(1),src,src::do_explode())
 		return TRUE
 
 	return FALSE

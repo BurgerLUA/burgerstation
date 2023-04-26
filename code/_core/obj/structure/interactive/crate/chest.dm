@@ -56,7 +56,7 @@ var/global/list/lockpick_difficulty_mul = list(
 		L.difficulty *= 1/lockpick_difficulty_mul[P.get_difficulty()] //Reminder that lower difficulty (for Lockpick) means harder.
 		L.difficulty = round(L.difficulty+1,1)
 
-	HOOK_ADD("post_move","\ref[src]_post_move",A,src,.proc/boot_lockpicker)
+	HOOK_ADD("post_move","\ref[src]_post_move",A,src,src::boot_lockpicker())
 	visible_message(span("notice","\The [A.name] starts picking \the [src.name]'s lock..."))
 	return TRUE
 

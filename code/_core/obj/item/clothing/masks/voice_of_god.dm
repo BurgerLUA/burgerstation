@@ -80,7 +80,7 @@
 		var/mob/living/advanced/A = I.owner
 		if(!A.voice_modifiers)
 			A.voice_modifiers = list()
-		A.voice_modifiers[src] = .proc/search_for_voice
+		A.voice_modifiers[src] = src::search_for_voice()
 
 /obj/item/clothing/mask/voice_of_god/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()

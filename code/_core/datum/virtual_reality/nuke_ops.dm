@@ -65,7 +65,7 @@
 /virtual_reality/team/nuke_ops/on_player_join(var/mob/living/L) //What happens when a player joins virtual reality.
 	. = ..()
 	if(is_player(L))
-		HOOK_ADD("on_kill_player","\ref[L]_on_kill_player",L,src,.proc/on_kill_player)
+		HOOK_ADD("on_kill_player","\ref[L]_on_kill_player",L,src,src::on_kill_player())
 
 /virtual_reality/team/nuke_ops/on_player_leave(var/mob/living/L) //What happens when a player leaves virtual reality.
 	. = ..()

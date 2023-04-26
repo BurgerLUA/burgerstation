@@ -43,7 +43,7 @@ obj/structure/interactive/chair/Crossed(atom/movable/O)
 	. = ..()
 
 	if(is_living(O))
-		CALLBACK("sit_down_\ref[src]",SECONDS_TO_DECISECONDS(1),src,.proc/sit_your_ass_down,O)
+		CALLBACK("sit_down_\ref[src]",SECONDS_TO_DECISECONDS(1),src,src::sit_your_ass_down(),O)
 
 
 obj/structure/interactive/chair/proc/sit_your_ass_down(var/mob/living/L)

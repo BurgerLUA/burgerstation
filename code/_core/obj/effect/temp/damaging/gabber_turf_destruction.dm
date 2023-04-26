@@ -10,13 +10,13 @@
 	transform = M
 	alpha=0
 	animate(src,alpha=100,transform = matrix(),time=3)
-	CALLBACK("\ref[src]_destroy_turf",5,src,.proc/destroy_turf,force_turf)
+	CALLBACK("\ref[src]_destroy_turf",5,src,src::destroy_turf(),force_turf)
 
 /obj/effect/gabber_turf_destruction/proc/destroy_turf(var/turf/force_turf=null)
 	animate(src,alpha=255,time=5)
 	animate(alpha=0,time=15)
 	icon_state = "r[rand(1,5)]"
-	CALLBACK("\ref[src]_destroy_self",20,src,.proc/destroy_self)
+	CALLBACK("\ref[src]_destroy_self",20,src,src::destroy_self())
 	if(is_simulated(loc))
 		var/turf/simulated/T = loc
 		if(force_turf)

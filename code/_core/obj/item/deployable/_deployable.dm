@@ -51,8 +51,8 @@
 		if(caller.loc != T)
 			caller.face_atom(T) //Only face the atom if we're not on the tile.
 		caller.visible_message(span("warning","\The [caller.name] starts to deploy \the [src.name]..."),span("notice","You start to deploy \the [src.name]..."))
-		PROGRESS_BAR(caller,src,get_deploy_time(caller),.proc/deploy,caller,T)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_deploy_to,caller,T)
+		PROGRESS_BAR(caller,src,get_deploy_time(caller),src::deploy(),caller,T)
+		PROGRESS_BAR_CONDITIONS(caller,src,src::can_deploy_to(),caller,T)
 		return TRUE
 
 	return ..()

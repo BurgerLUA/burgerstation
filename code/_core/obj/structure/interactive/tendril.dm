@@ -51,7 +51,7 @@ var/global/list/possible_monsters_to_spawn = list(
 
 /obj/structure/interactive/tendril/Finalize()
 	. = ..()
-	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2),src,.proc/spawn_monster)
+	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2),src,src::spawn_monster())
 	for(var/d in DIRECTIONS_ALL + 0x0)
 		var/turf/T = get_step(src,d)
 		if(T && is_simulated(T))
@@ -94,7 +94,7 @@ var/global/list/possible_monsters_to_spawn = list(
 		GENERATE(C)
 		FINALIZE(C)
 		play_sound('sound/effects/tendril_destroyed.ogg',get_turf(src))
-		CALLBACK("\ref[src]_telegraph_delete",SECONDS_TO_DECISECONDS(6),src,.proc/telegraph_delete)
+		CALLBACK("\ref[src]_telegraph_delete",SECONDS_TO_DECISECONDS(6),src,src::telegraph_delete())
 		return TRUE
 
 	if(tracked_mobs_length < spawn_limit && deaths_until_loot > 0)
@@ -125,6 +125,6 @@ var/global/list/possible_monsters_to_spawn = list(
 				L.ai.allow_far_roaming = FALSE
 
 
-	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2+tracked_mobs_length),src,.proc/spawn_monster)
+	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2+tracked_mobs_length),src,src::spawn_monster())
 
 	return TRUE

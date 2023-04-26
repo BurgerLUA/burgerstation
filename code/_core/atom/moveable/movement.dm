@@ -360,7 +360,7 @@
 	next_move = max(next_move,DECISECONDS_TO_TICKS(desired_delay))
 	glide_size = next_move ? CEILING(step_size/next_move,0.01) : 1
 	var/turf/desired_turf = get_step(src,momentum_dir)
-	CALLBACK("momentum_\ref[src]",desired_delay,src,.proc/process_momentum)
+	CALLBACK("momentum_\ref[src]",desired_delay,src,src::process_momentum())
 	if(!no_move && desired_turf)
 		Move(desired_turf)
 

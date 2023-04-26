@@ -39,7 +39,7 @@
 			T.visible_message(span("notice","\The [src.name] chimes as it is ready to be used again."))
 			play_sound('sound/weapons/magic/creation.ogg',T)
 	else
-		CALLBACK("\ref[src]_check_ressurection",SECONDS_TO_DECISECONDS(60),src,.proc/check_resurrection)
+		CALLBACK("\ref[src]_check_ressurection",SECONDS_TO_DECISECONDS(60),src,src::check_resurrection())
 
 /obj/item/hope/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 

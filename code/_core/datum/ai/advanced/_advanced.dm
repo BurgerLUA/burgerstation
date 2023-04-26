@@ -627,7 +627,7 @@
 	if(!O_groin)
 		return FALSE
 
-	var/obj/item/grenade/G = recursive_find_item(O_groin,src,.proc/is_grenade)
+	var/obj/item/grenade/G = recursive_find_item(O_groin,src,src::is_grenade())
 	if(G)
 		if(debug) log_debug("AI debug: Found a grenade!")
 		found_grenade = G

@@ -71,7 +71,7 @@
 		time = 5
 	)
 	if(!permanent)
-		CALLBACK("\ref[src]_telegraph_delete",300,src,.proc/telegraph_delete)
+		CALLBACK("\ref[src]_telegraph_delete",300,src,src::telegraph_delete())
 
 
 /obj/structure/interactive/slime_wall/proc/telegraph_delete()
@@ -80,7 +80,7 @@
 	var/matrix/M = matrix()
 	M.Scale(0)
 	animate(src,transform=M,alpha=0,time=20)
-	CALLBACK("\ref[src]_timed_destruction",20,src,.proc/do_delete)
+	CALLBACK("\ref[src]_timed_destruction",20,src,src::do_delete())
 
 /obj/structure/interactive/slime_wall/proc/do_delete()
 	if(src.qdeleting)

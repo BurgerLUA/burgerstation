@@ -11,8 +11,8 @@
 /mob/living/advanced/proc/try_uncuff(var/mob/caller)
 	if(!can_uncuff(caller))
 		return FALSE
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/uncuff,caller)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_uncuff,caller)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::uncuff(),caller)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_uncuff(),caller)
 	return TRUE
 
 /mob/living/advanced/proc/uncuff(var/mob/caller)

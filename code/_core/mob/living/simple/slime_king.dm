@@ -276,7 +276,7 @@
 							should_break = TRUE
 							break
 
-			CALLBACK("\ref[src]_slime_wave_[i]_[j]",j,src,.proc/create_slime_tile,old_turf,should_break)
+			CALLBACK("\ref[src]_slime_wave_[i]_[j]",j,src,src::create_slime_tile(),old_turf,should_break)
 			if(should_break)
 				if(i==0 && (health.health_current <= health.health_max*0.5))
 					remove_status_effect(PARALYZE)
@@ -354,7 +354,7 @@
 			T = pick(valid_turfs)
 			valid_turfs -= T
 		var/desired_time = (health.health_current <= health.health_max*0.5) ? 1 + i*3 : 3 + i*6
-		CALLBACK("\ref[src]_throw_bomb_[i]",desired_time,src,.proc/throw_bomb,T)
+		CALLBACK("\ref[src]_throw_bomb_[i]",desired_time,src,src::throw_bomb(),T)
 
 	next_slime_bomb = world.time + SECONDS_TO_DECISECONDS(30)
 	next_special_attack = world.time + 10 + 3 + 60
@@ -372,7 +372,7 @@
 	B.pixel_z = 0
 	animate(B,pixel_x = B.pixel_x*0.5,pixel_y=B.pixel_y*0.5,pixel_z=TILE_SIZE*3,time=throw_time*0.5)
 	animate(pixel_x=0,pixel_y=0,pixel_z=0,time=throw_time*0.5)
-	CALLBACK("\ref[B]_arm",throw_time*0.75,src,.proc/arm_bomb,B)
+	CALLBACK("\ref[B]_arm",throw_time*0.75,src,src::arm_bomb(),B)
 	play_sound('sound/effects/splort.ogg',get_turf(src))
 
 /mob/living/simple/slime_king/proc/arm_bomb(var/obj/item/slime_bomb/B)
@@ -400,9 +400,9 @@
 		if(!TA) continue
 		var/delay = (abs(tx) + abs(ty))*3
 		if(build_walls && (abs(tx) == size || abs(ty) == size))
-			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,.proc/create_slime_wall,TA)
+			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,src::create_slime_wall(),TA)
 		else
-			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,.proc/create_slime_tile,TA)
+			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,src::create_slime_tile(),TA)
 
 	next_slime_house = world.time + SECONDS_TO_DECISECONDS(60)
 	next_special_attack = world.time + 10 + size*2*3*2
@@ -465,7 +465,7 @@
 	absorbs_left--
 
 	if(absorbs_left > 0)
-		CALLBACK("\ref[src]_absorb_slimes",2,src,.proc/absorb_slimes,absorbs_left)
+		CALLBACK("\ref[src]_absorb_slimes",2,src,src::absorb_slimes(),absorbs_left)
 
 	return TRUE
 

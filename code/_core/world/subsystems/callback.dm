@@ -50,8 +50,6 @@ SUBSYSTEM_DEF(callback)
 				log_error("ERROR: Callback of id [callback_id] belonging to [stored_object] did not complete try_call() correctly, thus it was removed.")
 			else
 				log_error("ERROR: Callback of id [callback_id] belonging to world did not complete try_call() correctly, thus it was removed.")
-		if(istype(stored_object,/obj/structure/interactive/door))
-			world.log << "[callback_id] returned [result]"
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE

@@ -135,16 +135,16 @@
 			if(!can_insert_item(caller,object))
 				return TRUE
 			caller.visible_message(span("notice","\The [caller.name] starts to insert \the [I.name] into \the [src.name]..."),span("notice","You start to insert \the [I.name] into \the [src.name]..."))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/insert_item,caller,I)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_insert_item,caller,I)
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::insert_item(),caller,I)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_insert_item(),caller,I)
 			return TRUE
 		var/damagetype/desired_damage_type = I.get_damage_type(caller,src)
 		if(desired_damage_type)
 			var/damagetype/DT = all_damage_types[desired_damage_type]
 			if(DT && DT.attack_damage_base[HEAT])
 				caller.visible_message(span("danger","\The [caller.name] starts to light the fuse of \the [src.name] with \the [I.name]!"),span("warning","You start to light the fuse of \the [src.name] with \the [I.name]..."))
-				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/light_fuse,caller,I)
-				PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_light_fuse,caller,I)
+				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::light_fuse(),caller,I)
+				PROGRESS_BAR_CONDITIONS(caller,src,src::can_light_fuse(),caller,I)
 				return TRUE
 
 
@@ -189,7 +189,7 @@
 
 /obj/structure/interactive/cannon/proc/light_fuse(var/mob/living/caller)
 	caller.visible_message(span("danger","\The [caller.name] lights the fuse of \the [src.name]!"),span("danger","You light the fuse of \the [src.name]!"))
-	CALLBACK("\ref[src]_fire_cannon",SECONDS_TO_DECISECONDS(3),src,.proc/fire,caller)
+	CALLBACK("\ref[src]_fire_cannon",SECONDS_TO_DECISECONDS(3),src,src::fire(),caller)
 	update_sprite()
 	particles.spawning = 10
 	play_sound('sound/effects/fuse.ogg',get_turf(src))

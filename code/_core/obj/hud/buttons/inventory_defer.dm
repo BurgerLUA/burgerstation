@@ -140,7 +140,7 @@ var/global/list/redscale = list(
 
 	animate(src,color=desired_color,time=SECONDS_TO_DECISECONDS(1))
 
-	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,.proc/update) //This doesn't need to be removed in another call.
+	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,src::update()) //This doesn't need to be removed in another call.
 
 	return TRUE
 
@@ -161,5 +161,5 @@ var/global/list/redscale = list(
 	if(owner_changed && is_advanced(owner)) //New owner
 		var/mob/living/advanced/A = owner
 		A.inventory_defers += src
-		HOOK_ADD("grab_changed","grab_changed_\ref[src]",A,src,.proc/update)
-		HOOK_ADD("post_move","update_stats_\ref[src]",A,src,.proc/update)
+		HOOK_ADD("grab_changed","grab_changed_\ref[src]",A,src,src::update())
+		HOOK_ADD("post_move","update_stats_\ref[src]",A,src,src::update())

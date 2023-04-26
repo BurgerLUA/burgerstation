@@ -37,7 +37,7 @@
 		C.icon_request_details.Cut()
 
 	C.icon_request_details = list(
-		"proc" = .proc/on_upload_spray,
+		"proc" = src::on_upload_spray(),
 		"proc_src" = src,
 		"width_limit" = TILE_SIZE,
 		"height_limit" = TILE_SIZE

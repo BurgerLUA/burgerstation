@@ -130,7 +130,7 @@ var/global/list/kitchen_gun_slogans = list(
 	. = ..()
 	if(.)
 		caller.do_say("BANG!")
-		CALLBACK("kitchen_gun_slogan_\ref[caller]",SECONDS_TO_DECISECONDS(2),src,.proc/say_slogan,caller)
+		CALLBACK("kitchen_gun_slogan_\ref[caller]",SECONDS_TO_DECISECONDS(2),src,src::say_slogan(),caller)
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/proc/say_slogan(var/mob/caller)
 	var/slogan_to_say = kitchen_gun_slogans[slogan_number]

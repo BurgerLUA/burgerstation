@@ -153,7 +153,7 @@
 		return FALSE
 	charge_dir = dir
 	charge_steps = VIEW_RANGE
-	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(2),src,.proc/finish_charge) //Fallback time.
+	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(2),src,src::finish_charge()) //Fallback time.
 	return TRUE
 
 /mob/living/simple/bubblegum/proc/finish_charge()

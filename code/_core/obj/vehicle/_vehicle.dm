@@ -149,8 +149,8 @@
 	if(is_inventory(object))
 		if(!can_enter_vehicle(caller))
 			return TRUE
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),.proc/enter_vehicle,caller)
-		PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_enter_vehicle,caller)
+		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::enter_vehicle(),caller)
+		PROGRESS_BAR_CONDITIONS(caller,src,src::can_enter_vehicle(),caller)
 		return TRUE
 
 	return ..()

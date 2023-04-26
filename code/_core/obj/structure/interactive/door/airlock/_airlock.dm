@@ -144,47 +144,39 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 
 /obj/structure/interactive/door/airlock/proc/set_door_state(var/mob/caller=null,var/desired_door_state,var/should_lock=FALSE)
 
-	world.log << "Running: set_door_state on [src.get_debug_name()]"
-
 	. = FALSE
 
 	switch(desired_door_state)
 		if(DOOR_STATE_DENY)
-			world.log << "DOOR_STATE_DENY"
-			CALLBACK("door_state_closed_\ref[src]",6,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
+			CALLBACK("door_state_closed_\ref[src]",6,src,src::set_door_state(),caller,DOOR_STATE_CLOSED,should_lock)
 			if(deny_sound)
 				play_sound(deny_sound, src.loc,range_max=VIEW_RANGE)
 				if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 			. = TRUE
 
 		if(DOOR_STATE_START_OPENING)
-			world.log << "DOOR_STATE_START_OPENING"
-			CALLBACK("door_state_opening_01_\ref[src]",open_wait_time,src,.proc/set_door_state,caller,DOOR_STATE_OPENING_01,should_lock)
+			CALLBACK("door_state_opening_01_\ref[src]",open_wait_time,src,src::set_door_state(),caller,DOOR_STATE_OPENING_01,should_lock)
 			if(open_sound)
 				play_sound(open_sound, src.loc,range_max=VIEW_RANGE)
 				if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 			. = TRUE
 
 		if(DOOR_STATE_OPENING_01)
-			world.log << "DOOR_STATE_OPENING_01"
-			CALLBACK("door_state_opening_02_\ref[src]",open_time_01,src,.proc/set_door_state,caller,DOOR_STATE_OPENING_02,should_lock)
+			CALLBACK("door_state_opening_02_\ref[src]",open_time_01,src,src::set_door_state(),caller,DOOR_STATE_OPENING_02,should_lock)
 			. = TRUE
 
 		if(DOOR_STATE_OPENING_02)
-			world.log << "DOOR_STATE_OPENING_02"
-			CALLBACK("door_state_opened_\ref[src]",open_time_02,src,.proc/set_door_state,caller,DOOR_STATE_OPENED,should_lock)
+			CALLBACK("door_state_opened_\ref[src]",open_time_02,src,src::set_door_state(),caller,DOOR_STATE_OPENED,should_lock)
 			. = TRUE
 
 		if(DOOR_STATE_CLOSING_01)
-			world.log << "DOOR_STATE_CLOSING_01"
-			CALLBACK("door_state_closing_02_\ref[src]",close_time_01,src,.proc/set_door_state,caller,DOOR_STATE_CLOSING_02,should_lock)
+			CALLBACK("door_state_closing_02_\ref[src]",close_time_01,src,src::set_door_state(),caller,DOOR_STATE_CLOSING_02,should_lock)
 			if(close_sound)
 				play_sound(close_sound, src.loc,range_max=VIEW_RANGE)
 				if(caller) create_alert(VIEW_RANGE,src.loc,caller,ALERT_LEVEL_NOISE)
 			. = TRUE
 
 		if(DOOR_STATE_CLOSING_02)
-			world.log << "DOOR_STATE_CLOSING_02"
 			var/has_living = FALSE
 			for(var/mob/living/L in loc.contents)
 				if(safeties)
@@ -197,11 +189,10 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			if(has_living)
 				set_door_state(has_living,DOOR_STATE_OPENING_02,FALSE)
 			else
-				CALLBACK("door_state_closed_\ref[src]",close_time_02,src,.proc/set_door_state,caller,DOOR_STATE_CLOSED,should_lock)
+				CALLBACK("door_state_closed_\ref[src]",close_time_02,src,src::set_door_state(),caller,DOOR_STATE_CLOSED,should_lock)
 			. = TRUE
 
 		if(DOOR_STATE_OPENED)
-			world.log << "DOOR_STATE_OPENED"
 			if(should_lock)
 				lock(caller)
 			opened_time = 0
@@ -209,7 +200,6 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 			. = TRUE
 
 		if(DOOR_STATE_CLOSED)
-			world.log << "DOOR_STATE_CLOSED"
 			STOP_THINKING(src)
 			if(should_lock)
 				lock(caller)

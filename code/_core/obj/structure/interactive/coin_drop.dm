@@ -143,7 +143,7 @@
 
 	animate(src,pixel_x = desired_pixel_x, pixel_y = desired_pixel_y,time=desired_time,flags=ANIMATION_PARALLEL)
 
-	CALLBACK("\ref[src]_update_sprite",desired_time,src,.proc/finish_fly)
+	CALLBACK("\ref[src]_update_sprite",desired_time,src,src::finish_fly())
 
 	return TRUE
 

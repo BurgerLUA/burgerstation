@@ -55,6 +55,6 @@
 		if(!was_on_fire && L.send_pain_response(20))
 			L.to_chat(span("danger","<h1>The lava is HOT!</h1>"))
 
-		CALLBACK("lava_\ref[L]",10,src,.proc/lava_idiot,L,TRUE)
+		CALLBACK("lava_\ref[L]",10,src,src::lava_idiot(),L,TRUE)
 
 	return TRUE

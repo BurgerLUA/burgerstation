@@ -72,7 +72,7 @@ var/global/list/atom/movable/possible_abnormalities = list(
 	return TRUE
 
 /objective/abnormality/start()
-	HOOK_ADD("post_move","abnormality_post_move",abnormality,src,.proc/abnormality_post_move)
-	HOOK_ADD("Destroy","abnormality_Destroy",abnormality,src,.proc/abnormality_Destroy)
+	HOOK_ADD("post_move","abnormality_post_move",abnormality,src,src::abnormality_post_move())
+	HOOK_ADD("Destroy","abnormality_Destroy",abnormality,src,src::abnormality_Destroy())
 	tracked_atoms += abnormality
 	return TRUE

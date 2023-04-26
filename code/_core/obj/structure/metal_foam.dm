@@ -36,7 +36,7 @@
 	var/image/I = new/image(icon,"foam-disolve")
 	I.appearance_flags = src.appearance_flags
 	add_overlay(I)
-	CALLBACK("\ref[src]_cut_overlays",SECONDS_TO_DECISECONDS(3),src,.proc/cut_overlays)
+	CALLBACK("\ref[src]_cut_overlays",SECONDS_TO_DECISECONDS(3),src,src::cut_overlays())
 
 
 /obj/structure/metal_foam/on_destruction(var/damage = TRUE)

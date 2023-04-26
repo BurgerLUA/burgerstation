@@ -227,7 +227,7 @@
 
 		if(G.bullet_time > 0)
 			PROGRESS_BAR(caller,G,G.bullet_time,/obj/item/weapon/ranged/bullet/proc/accept_bullet,caller,src)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_load_bullet_into,caller,G)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_load_bullet_into(),caller,G)
 		else
 			G.accept_bullet(caller,src)
 

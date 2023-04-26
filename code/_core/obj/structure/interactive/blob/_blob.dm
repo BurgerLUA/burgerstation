@@ -94,7 +94,7 @@
 			chosen_blob = pick(possible_options_super)
 		else
 			chosen_blob = pick(possible_options)
-		CALLBACK("blob_grow_\ref[src]",1,chosen_blob,.proc/grow_charge,original_blob,src,tolerance,priority_turf)
+		CALLBACK("blob_grow_\ref[src]",1,chosen_blob,src::grow_charge(),original_blob,src,tolerance,priority_turf)
 	else
 		var/list/possible_spawns = list()
 		for(var/d in DIRECTIONS_CARDINAL)

@@ -66,8 +66,8 @@
 					atom_to_butcher = src
 		if(atom_to_butcher && blade_damage > 0 && src.can_be_butchered(L,weapon,atom_to_butcher))
 			L.visible_message(span("danger","\The [L.name] starts to butcher \the [src.name]!"),span("danger","You start to butcher \the [atom_to_butcher.name]!"))
-			PROGRESS_BAR(L,src,max(10,src.health.health_max*0.05),.proc/on_butcher,L,atom_to_butcher)
-			PROGRESS_BAR_CONDITIONS(L,src,.proc/can_be_butchered,L,weapon,atom_to_butcher)
+			PROGRESS_BAR(L,src,max(10,src.health.health_max*0.05),src::on_butcher(),L,atom_to_butcher)
+			PROGRESS_BAR_CONDITIONS(L,src,src::can_be_butchered(),L,weapon,atom_to_butcher)
 
 	if(!dead && has_status_effect(PARRIED))
 		var/stun_duration = STATUS_EFFECT_DURATION(src,PARRIED)*2

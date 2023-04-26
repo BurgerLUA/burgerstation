@@ -115,7 +115,7 @@
 		play_sound(open_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_OPENING
 	flick("opening",src)
-	CALLBACK("on_open_\ref[src]",open_time,src,.proc/on_open,caller)
+	CALLBACK("on_open_\ref[src]",open_time,src,src::on_open(),caller)
 
 /obj/structure/interactive/bed/sleeper/proc/on_open(var/mob/caller)
 	door_state = SLEEPER_OPENED
@@ -144,7 +144,7 @@
 		play_sound(close_sound,src.loc,range_max=VIEW_RANGE)
 	door_state = SLEEPER_CLOSING
 	flick("closing",src)
-	CALLBACK("on_close_\ref[src]",close_time,src,.proc/on_close,caller)
+	CALLBACK("on_close_\ref[src]",close_time,src,src::on_close(),caller)
 	STOP_THINKING(src)
 
 /obj/structure/interactive/bed/sleeper/think()

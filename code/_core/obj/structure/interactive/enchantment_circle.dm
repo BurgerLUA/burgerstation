@@ -41,7 +41,7 @@
 	if(!stored_book && istype(I,/obj/item/paper/book/enchanting/))
 		stored_book = I
 	stored_items += I
-	HOOK_ADD("post_move","enchantment_sanity_\ref[src]",I,src,.proc/unstore_item)
+	HOOK_ADD("post_move","enchantment_sanity_\ref[src]",I,src,src::unstore_item())
 	I.visible_message(span("notice","\The [I.name] glows faintly..."))
 
 /obj/structure/interactive/enchantment_circle/proc/unstore_item(var/obj/item/I)

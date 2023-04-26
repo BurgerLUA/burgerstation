@@ -107,7 +107,7 @@
 		var/obj/item/powercell/B = I.get_battery()
 		if(istype(B))
 			charging_device = I
-			HOOK_ADD("post_move","cell_charger_post_move_\ref[src]",I,src,.proc/check_device_move)
+			HOOK_ADD("post_move","cell_charger_post_move_\ref[src]",I,src,src::check_device_move())
 			visible_message(span("notice","\The [src.name] dings as \the [I.name] is placed on top of it."))
 			START_THINKING(src)
 

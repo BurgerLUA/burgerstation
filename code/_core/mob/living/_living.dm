@@ -373,7 +373,7 @@
 
 	var/area/A = get_area(src)
 	if(A.flags_area & FLAG_AREA_NO_EVENTS)
-		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,src::try_rot())
 		return FALSE
 
 	var/turf/possible_turfs = list()
@@ -387,7 +387,7 @@
 		possible_turfs += T
 
 	if(!length(possible_turfs))
-		CALLBACK("rot_\ref[src]",ROT_DELAY,src,.proc/try_rot)
+		CALLBACK("rot_\ref[src]",ROT_DELAY,src,src::try_rot())
 		return FALSE
 
 	var/turf/chosen_turf = pick(possible_turfs)

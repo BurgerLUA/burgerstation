@@ -54,8 +54,8 @@
 		PROCESS_LIVING(owner)
 		add_to_active_list(T.z)
 		remove_from_inactive_list(T.z)
-		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,.proc/post_move)
-		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,.proc/pre_death)
+		HOOK_ADD("post_move","\ref[src]_post_move",owner,src,src::post_move())
+		HOOK_ADD("pre_death","\ref[src]_pre_death",owner,src,src::pre_death())
 		if(debug) log_debug("Setting to active.")
 	else
 		UNPROCESS_LIVING(owner)

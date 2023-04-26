@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(events)
 	next_event_minor = max(next_event_minor,world.time + 100)
 	next_event_major = max(next_event_major,world.time + 100)
 
-	CALLBACK("trigger_event",50,src,.proc/trigger_event,E)
+	CALLBACK("trigger_event",50,src,src::trigger_event(),E)
 
 	return TRUE
 

@@ -39,7 +39,7 @@
 	. = ..()
 	var/obj/hud/inventory/I = loc
 	if(I.worn && is_advanced(I.owner))
-		HOOK_ADD("post_move","\ref[src]_shield_post_move",I.owner,src,.proc/owner_post_move)
+		HOOK_ADD("post_move","\ref[src]_shield_post_move",I.owner,src,src::owner_post_move())
 
 /obj/item/clothing/belt/damage_deferal_shield/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
@@ -76,7 +76,7 @@
 		caller.to_chat(span("warning","The interface flickers an error as it is still cooling down!."))
 	else
 		caller.to_chat(span("notice","You toggle \the [src.name] on and activate the shield."))
-		CALLBACK("\ref[src]_disable_shield",active_time,src,.proc/disable_shield) //Activate the shield!
+		CALLBACK("\ref[src]_disable_shield",active_time,src,src::disable_shield()) //Activate the shield!
 
 	update_sprite()
 
@@ -96,7 +96,7 @@
 
 /obj/item/clothing/belt/damage_deferal_shield/proc/disable_shield()
 	damage_limit = initial(damage_limit)
-	CALLBACK("\ref[src]_cooldown_end",cooldown_time,src,.proc/cooldown_end)
+	CALLBACK("\ref[src]_cooldown_end",cooldown_time,src,src::cooldown_end())
 	shield_beep()
 	update_sprite()
 	return TRUE
@@ -105,7 +105,7 @@
 	if(!CALLBACK_EXISTS("\ref[src]_cooldown_end")) //Only beep if there is a cooldown.
 		return FALSE
 	play_sound('sound/effects/shield_beep.ogg',get_turf(src))
-	CALLBACK("\ref[src]_shield_beep",SECONDS_TO_DECISECONDS(1),src,.proc/shield_beep)
+	CALLBACK("\ref[src]_shield_beep",SECONDS_TO_DECISECONDS(1),src,src::shield_beep())
 	return TRUE
 
 
@@ -126,7 +126,7 @@
 		return FALSE
 
 	if(!CALLBACK_EXISTS("\ref[src]_disable_shield")) //The shield is not active.
-		CALLBACK("\ref[src]_disable_shield",active_time,src,.proc/disable_shield) //Activate the shield!
+		CALLBACK("\ref[src]_disable_shield",active_time,src,src::disable_shield()) //Activate the shield!
 		return FALSE
 
 	animate(shield_overlay,alpha=clamp(damage_dealt+100,100,255),time=0,flags=ANIMATION_END_NOW )

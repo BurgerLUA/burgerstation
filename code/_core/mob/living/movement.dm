@@ -4,7 +4,7 @@
 		return FALSE
 
 	if(enter)
-		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(next_move)*0.5, src, .proc/do_footstep, T, footsteps_to_use)
+		CALLBACK("enter_footstep_\ref[src]", TICKS_TO_DECISECONDS(next_move)*0.5, src, src::do_footstep(), T, footsteps_to_use)
 		return FALSE
 
 	do_footstep(T,footsteps_to_use,enter)

@@ -10,7 +10,7 @@
 	if(!is_wall(T))
 		qdel(src)
 	if(T.health)
-		HOOK_ADD("change_turf","\ref[src]_change_turf_remove",T,src,.proc/remove_wall_decor)
+		HOOK_ADD("change_turf","\ref[src]_change_turf_remove",T,src,src::remove_wall_decor())
 
 /obj/structure/wall_decor/proc/remove_wall_decor()
 	qdel(src)

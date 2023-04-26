@@ -85,8 +85,8 @@
 	return TRUE
 
 /objective/hostage/start()
-	HOOK_ADD("post_move","hostage_post_move",created_hostage,src,.proc/hostage_post_move)
-	HOOK_ADD("post_death","hostage_post_death",created_hostage,src,.proc/hostage_post_death)
-	HOOK_ADD("Destroy","hostage_Destroy",created_hostage,src,.proc/hostage_Destroy)
+	HOOK_ADD("post_move","hostage_post_move",created_hostage,src,src::hostage_post_move())
+	HOOK_ADD("post_death","hostage_post_death",created_hostage,src,src::hostage_post_death())
+	HOOK_ADD("Destroy","hostage_Destroy",created_hostage,src,src::hostage_Destroy())
 	tracked_atoms += created_hostage
 	return TRUE

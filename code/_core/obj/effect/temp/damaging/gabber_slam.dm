@@ -24,7 +24,7 @@
 	animate(src,alpha=100,time=2)
 	if(animate_caster)
 		animate(owner,pixel_z=20,time=8,easing=BACK_EASING|EASE_OUT)
-	CALLBACK("\ref[src]_slam",8,src,.proc/slam)
+	CALLBACK("\ref[src]_slam",8,src,src::slam())
 
 /obj/effect/gabber_slam/proc/slam()
 	play_sound('sound/weapons/magic/repulse_fast.ogg',get_turf(src))
@@ -45,7 +45,7 @@
 				continue
 			do_damage(M2)
 
-	CALLBACK("\ref[src]_end",5,src,.proc/end)
+	CALLBACK("\ref[src]_end",5,src,src::end())
 
 /obj/effect/gabber_slam/proc/end()
 	animate(src,alpha=0,time=5)

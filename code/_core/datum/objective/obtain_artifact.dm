@@ -59,7 +59,7 @@
 	return TRUE
 
 /objective/artifact/start()
-	HOOK_ADD("post_move","artifact_post_move",created_artifact,src,.proc/artifact_post_move)
-	HOOK_ADD("Destroy","artifact_Destroy",created_artifact,src,.proc/artifact_Destroy)
+	HOOK_ADD("post_move","artifact_post_move",created_artifact,src,src::artifact_post_move())
+	HOOK_ADD("Destroy","artifact_Destroy",created_artifact,src,src::artifact_Destroy())
 	tracked_atoms += created_artifact
 	return TRUE

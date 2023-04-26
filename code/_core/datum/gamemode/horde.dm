@@ -39,7 +39,7 @@
 	INITIALIZE(L)
 	FINALIZE(L)
 	GENERATE(L)
-	HOOK_ADD("post_death","horde_post_death",L,src,.proc/on_killed_enemy)
+	HOOK_ADD("post_death","horde_post_death",L,src,src::on_killed_enemy())
 	return L
 
 /gamemode/horde/New()

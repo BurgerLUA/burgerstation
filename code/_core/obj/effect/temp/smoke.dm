@@ -68,7 +68,7 @@
 /obj/effect/temp/smoke/New(var/desired_location,var/desired_time,var/list/desired_blacklist_turfs,var/reagent_container/desired_container,var/mob/desired_owner,var/desired_volume=20,var/desired_alpha=255,var/original_smoke_volume,var/original_reagent_volume)
 	. = ..()
 
-	CALLBACK("fade_out_\ref[src]",duration-fade_time,src,.proc/fade_out)
+	CALLBACK("fade_out_\ref[src]",duration-fade_time,src,src::fade_out())
 
 	container = desired_container
 	if(isnum(desired_volume))

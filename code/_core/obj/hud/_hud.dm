@@ -144,7 +144,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 /obj/hud/MouseEntered(location,control,params)
 	. = ..()
 	if(tooltip_text && mouse_opacity > 0)
-		CALLBACK("tooltip_\ref[src]",SECONDS_TO_DECISECONDS(1),src,.proc/set_tooltip,usr)
+		CALLBACK("tooltip_\ref[src]",SECONDS_TO_DECISECONDS(1),src,src::set_tooltip(),usr)
 
 /obj/hud/MouseExited(location,control,params)
 	. = ..()

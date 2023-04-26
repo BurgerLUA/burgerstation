@@ -205,8 +205,8 @@
 				injection_time_to_use *= 0.5
 			if(!injecting)
 				injection_time_to_use *= 2
-			PROGRESS_BAR(caller,src,injection_time_to_use,.proc/inject,caller,object,transfer_amount)
-			PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_inject,caller,object)
+			PROGRESS_BAR(caller,src,injection_time_to_use,src::inject(),caller,object,transfer_amount)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_inject(),caller,object)
 		else
 			inject(caller,object,transfer_amount)
 

@@ -40,8 +40,8 @@
 	if(!can_teleport(A))
 		return FALSE
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),.proc/do_teleport,A)
-	PROGRESS_BAR_CONDITIONS(caller,src,.proc/can_teleport,A)
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::do_teleport(),A)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_teleport(),A)
 
 	return TRUE
 
