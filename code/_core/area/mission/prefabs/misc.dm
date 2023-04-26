@@ -12,8 +12,8 @@
 /area/mission/prefab/misc/clockwork_hall
 	name = "clockwork hall"
 	interior = TRUE
-
 	requires_power = FALSE
+	flags_area = FLAG_AREA_NO_HORDE | FLAG_AREA_IMPORTANT
 
 /area/mission/prefab/misc/cult
 	name = "cultist section"

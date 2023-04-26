@@ -45,12 +45,35 @@ SUBSYSTEM_DEF(payday)
 	for(var/k in valid_players)
 		var/mob/living/advanced/player/P = k
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
-		var/bonus_to_give = clamp(FLOOR(stored_payday/length(valid_players), 1),0,5000)
-		P.adjust_currency( BASE_PAY + bonus_to_give )
+		if(!P.job)
+			P.to_chat(span("payday warning","Warning: No job detected! Speak to the Head of Personnel to get one!"))
+			continue
+		var/job/J = JOB(P.job)
+		var/bonus_to_give = clamp(stored_payday/length(valid_players),0,5000)
+		bonus_to_give = FLOOR(bonus_to_give,1)
+		var/base_pay = J.passive_income + J.passive_income_bonus*(P.job_rank - 1)
 		if(bonus_to_give)
-			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits and a [bonus_to_give] credit bonus."))
+			P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits and a [bonus_to_give] credit bonus."))
 		else
-			P.to_chat(span("payday","Hazard Pay! You have earned [BASE_PAY] credits for your efforts."))
+			P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits for your efforts."))
+		P.adjust_currency(bonus_to_give + base_pay)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	next_payday = world.time + SECONDS_TO_DECISECONDS(300)
 

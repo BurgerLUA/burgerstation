@@ -1,8 +1,8 @@
 /mob/living/advanced/npc/unique/head/hos
 	name = "Head of Security"
-	desc = "All access, please."
+	desc = "No clowns allowed."
 	species = "human"
-	dialogue_id = /dialogue/npc/hop/
+	dialogue_id = /dialogue/npc/head_of_security/
 	sex = FEMALE
 	gender = FEMALE
 

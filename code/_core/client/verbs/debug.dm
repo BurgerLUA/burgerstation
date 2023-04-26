@@ -31,7 +31,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/debug_current_chunk,
 	/client/verb/debug_weapon_value,
 	/client/verb/swarm_test,
-	/client/verb/destroy_everything
+	/client/verb/destroy_everything,
+	/client/verb/subsystem_debug
 )
 
 
@@ -713,3 +714,24 @@ var/global/list/destroy_everything_whitelist = list(
 			else
 				M.ai.set_master_ai(master_ai)
 			M.ai.set_active(TRUE)
+
+
+/client/verb/subsystem_debug()
+	set name = "Subsystem Debug"
+	set category = "Debug"
+
+	var/list/valid_choices = list()
+
+	for(var/k in active_subsystems)
+		var/subsystem/S = k
+		valid_choices["[S.priority]: [S.name]"] = S
+
+	valid_choices["Cancel"] = "Cancel"
+
+	var/choice = input("What Subsystem would you like to debug?","Subsystem Debug","Cancel") as null|anything in valid_choices
+
+	if(!choice || choice == "Cancel")
+		return FALSE
+
+	var/subsystem/S = valid_choices[choice]
+	debug_variables(S)

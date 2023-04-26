@@ -57,12 +57,12 @@
 	switch(amount)
 		if(1 to 10)
 			icon_state = "[amount]"
-		if(11 to 100)
+		if(10 to 100)
 			icon_state = "[FLOOR(amount/10, 1)*10]"
-		if(101 to 1000)
+		if(100 to 1000)
 			icon_state = "[FLOOR(amount/100, 1)*100]"
-		if(1001 to 5000)
-			icon_state = "[FLOOR(value/1000, 1)*1000]"
+		if(1000 to 5000)
+			icon_state = "[FLOOR(amount/1000, 1)*1000]"
 	return ..()
 
 /obj/item/currency/prize_ticket

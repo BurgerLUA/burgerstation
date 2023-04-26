@@ -6,7 +6,7 @@
 	. = list()
 
 	.["hello"] = list(
-		"Hello, [P.real_name]. Come for a #1? I could officially certify you as an #2. It's considered dead-end, with no potential for #3, but it can help you get started for other jobs where you can actually get a #3. I also handle #4 if you feel that you've made enough money in this sector.",
+		"Hello, [P.real_name]. Come for a #1? I could officially certify you as an #2. It's considered dead-end, with no potential for #3, but it can help you get started for other jobs where you can actually get a #3. I also handle #4 if you feel that you've made enough credits in this sector.",
 		"job",
 		"assistant",
 		"promotion",
@@ -22,25 +22,34 @@
 
 	.["job"] = list(
 		"While you are recieving some regular income working for NanoTrasen, you could be receiving more by taking on a job. Taking on a job boosts some of your attributes and skills \
-		while you have the job. In this case, I offer the assistant job which boosts all skills a little bit, but has has no chance of a #1. Don't worry, you can change your job any time.",
+		while you have the job. In this case, I offer the #1 job which boosts all skills a little bit, but has has no chance of a #2. Don't worry, you can change your job any time.",
+		"assistant",
 		"promotion"
 	)
 
 	.["promotion"] = list(
-		"After 1 week of working any #1, you can get a promotion. This will increase your pay as well as the skill bonuses you recieve. As an assistant, you cannot be promoted, unfortunately.",
-		"job"
+		"After 1 week of working any #1, you can get a promotion. This will increase your pay as well as the skill bonuses you recieve. As an #2, you cannot be promoted, however all other jobs have promotions..",
+		"job",
+		"assistant"
 	)
 
-	.["assistant"] = list(
-		"I can give you the assistant #1, which provides bonuses to all skills, but has no #2. This will replace your old job. Do you accept?NEWLINE#3NEWLINE#4",
-		"job",
-		"promotion",
-		"*Yes, become an assistant.",
-		"*No, do not become an assitant."
-	)
+	if(P.job == /job/assistant)
+		.["assistant"] = list(
+			"You are currently an assistant. If you wish to change your #1, speak to the other Heads of Staff around the station to get a new #1.",
+			"job"
+		)
+	else
+		.["assistant"] = list(
+			"I can give you the assistant #1, which provides bonuses to all skills, but has no #2. This will replace your old job. Do you accept?NEWLINE#3NEWLINE#4",
+			"job",
+			"promotion",
+			"*Yes, become an assistant.",
+			"*No, do not become an assitant."
+		)
 
 	.["*Yes, become an assistant."] = list(
-		"Wonderful. By the powers invested in me, I now promote you to assistant. You now have some passive skill bonuses and slightly increased pay."
+		"Wonderful. By the powers invested in me, I now promote you to #1. You now have some passive skill bonuses and slightly increased pay.",
+		"assistant"
 	)
 
 	.["*No, do not become an assitant."] = list(
@@ -70,5 +79,5 @@
 
 	. = ..()
 
-	if(topic == "*Yes, become an assistant.")
+	if(topic == "*Yes, become an assistant." && P.job != /job/assistant )
 		P.set_job(/job/assistant)
