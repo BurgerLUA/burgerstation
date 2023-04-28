@@ -667,15 +667,11 @@
 	. = FALSE
 
 	if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && !A.right_item)
-		A.inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(W,FALSE)
-		. = TRUE
-		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && W.can_wield && !W.wielded && !A.left_item)
+		. = A.inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(W)
+		if(. && A.inventories_by_id[BODY_HAND_LEFT_HELD] && W.can_wield && !W.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,W)
-
 	else if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && !A.inventories_by_id[BODY_HAND_LEFT_HELD].parent_inventory && !A.left_item)
-		A.inventories_by_id[BODY_HAND_LEFT_HELD].add_object(W,FALSE)
-		. = TRUE
-
+		. = A.inventories_by_id[BODY_HAND_LEFT_HELD].add_object(W)
 	if(. && istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
 		if(!E.enabled) E.click_self(A)

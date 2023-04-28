@@ -140,6 +140,8 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 		var/desired_screen_loc = "[split_screen_loc[1]]+[x_offset],[split_screen_loc[2]]+[y_offset]"
 		caller?.tooltip?.set_text("[src.name]\n\n[src.tooltip_text]",desired_screen_loc)
 
+	return TRUE
+
 
 /obj/hud/MouseEntered(location,control,params)
 	. = ..()

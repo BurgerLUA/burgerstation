@@ -7,20 +7,20 @@
 
 	.["hello"] = list(
 		"Welcome to the armory. Anyone is welcome to #1 here, and there is a #2 just behind me to test things out. I am also authorized to offer the #3 of #4 as well, if you want it.",
-		"purchase a firearm",
+		"purchase firearms",
 		"firing range",
 		"job",
 		"security officer"
 	)
 
-	.["purchase a firearm"] = list(
+	.["purchase firearms"] = list(
 		"NanoTrasen realized that Cargo Technicians were either pretty lazy, or extremely prone to declaring independence, so they just fired all of them and replaced them with vendors or cyborgs. \
-		If you want to #1, just use a #2 here to vend yourself something good. You can also buy armor and general equipment here, so be sure to check everything out.",
-		"purchase a firearm",
-		"vending machine"
+		If you want to #1, just use the #2 here to vend yourself something good. You can also buy armor and general equipment here, so be sure to check everything out.",
+		"purchase firearms",
+		"vending machines"
 	)
 
-	.["vending machine"] = list(
+	.["vending machines"] = list(
 		"It's simple. Just click on the button of the thing you want to buy, and it will automatically buy it and charge your account for it. No paperwork or licence required. Don't forget to get ammo for it."
 	)
 

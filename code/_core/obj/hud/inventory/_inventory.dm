@@ -337,28 +337,29 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/error_on_fail=FALSE)
+/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/debug=FALSE)
 
 	if(!I)
-		if(error_on_fail) log_error("add_object() fail: Item didn't exist!")
+		if(debug) log_error("add_object() fail: Item didn't exist!")
 		return FALSE
 
 	if(bypass_checks && max_slots <= 0)
-		if(error_on_fail) log_error("add_object() fail: No max slots!")
+		if(debug) log_error("add_object() fail: No max slots!")
 		return FALSE
 
 	if(!bypass_checks && !can_slot_object(I,messages))
-		if(error_on_fail) log_error("add_object() fail: Could not slot object!")
+		if(debug) log_error("add_object() fail: Could not slot object!")
 		return FALSE
 
 	if(I.qdeleting)
-		if(error_on_fail) log_error("add_object() fail: Object was qdeleting!")
+		if(debug) log_error("add_object() fail: Object was qdeleting!")
 		I.drop_item(null)
 		return FALSE
 
 	var/atom/old_location = I.loc
 
 	if(!I.drop_item(src,silent=silent))
+		if(debug) log_error("add_object() fail: Object couldn't be moved!")
 		return FALSE
 
 	I.pre_equip(old_location,src)
@@ -381,6 +382,7 @@
 		else
 			owner.to_chat(span("danger","Inventory glitch detected. Please report this bug on discord. Error Code: 02"))
 		I.drop_item(get_turf(src))
+		if(debug) log_error("add_object() fail: Inventory glitch!")
 		return TRUE
 
 	I.pixel_x = initial(I.pixel_x) + x_offset
@@ -394,6 +396,8 @@
 
 	I.on_equip(old_location,silent)
 	I.update_inventory()
+
+	if(debug) log_error("add_object() success!")
 
 	return TRUE
 

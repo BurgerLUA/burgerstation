@@ -92,7 +92,7 @@
 
 	. = ..()
 
-/obj/hud/inventory/organs/torso_ob/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/error_on_fail=FALSE)
+/obj/hud/inventory/organs/torso_ob/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/debug=FALSE)
 
 	. = ..()
 

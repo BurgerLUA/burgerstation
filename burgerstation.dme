@@ -503,6 +503,7 @@
 #include "code\_core\datum\dialogue\npc\taxman.dm"
 #include "code\_core\datum\dialogue\npc\wizard_ambassador.dm"
 #include "code\_core\datum\dialogue\npc\job_providers\_job_providers.dm"
+#include "code\_core\datum\dialogue\npc\job_providers\chief_engineer.dm"
 #include "code\_core\datum\dialogue\npc\job_providers\head_of_personel.dm"
 #include "code\_core\datum\dialogue\npc\job_providers\head_of_security.dm"
 #include "code\_core\datum\dialogue\tutorial\_tutorial.dm"

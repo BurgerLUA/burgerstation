@@ -154,7 +154,7 @@
 			GENERATE(new_item)
 			FINALIZE(new_item)
 			new_item.update_sprite()
-			I.add_object(new_item,TRUE)
+			I.add_object(new_item)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_burgerbux_cost] burgerbux."))
 			return TRUE
 
@@ -168,8 +168,10 @@
 			GENERATE(new_item)
 			FINALIZE(new_item)
 			new_item.update_sprite()
-			I.add_object(new_item,TRUE)
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))
+			if(P.movement_flags & MOVEMENT_RUNNING && new_item.quick_equip(P))
+				return TRUE
+			P.put_in_hands(I,params)
 			return TRUE
 
 		P.to_chat(span("notice","You don't have enough credits ([stored_item_cost] credits) to buy this!"))

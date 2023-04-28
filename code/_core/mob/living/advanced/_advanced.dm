@@ -233,34 +233,37 @@ mob/living/advanced/Login()
 
 	return ..()
 
-/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/params,var/silent=FALSE)
+/mob/living/advanced/proc/put_in_hands(var/obj/item/I,var/params,var/silent=FALSE,var/debug=FALSE)
 
 	if(client && client.selected_hand)
 		if(client.selected_hand == RIGHT_HAND && inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
-			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent,debug=debug)
 		else if(inventories_by_id[BODY_HAND_LEFT_HELD] && inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
-			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent,debug=debug)
 	else if(length(params))
 		if(params["left"] && inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
-			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent,debug=debug)
 		else if(params["right"] && inventories_by_id[BODY_HAND_LEFT_HELD] && inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
-			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent,debug=debug)
 	else if(inventories_by_id[BODY_HAND_RIGHT_HELD] && inventories_by_id[BODY_HAND_LEFT_HELD])
 		if(inventories_by_id[BODY_HAND_RIGHT_HELD])
 			if(inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
-				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent,debug=debug)
 			else if(inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
-				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent,debug=debug)
 		else
 			if(inventories_by_id[BODY_HAND_RIGHT_HELD].can_slot_object(I,FALSE))
-				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+				return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent,debug=debug)
 			else if(inventories_by_id[BODY_HAND_LEFT_HELD].can_slot_object(I,FALSE))
-				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+				return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent,debug=debug)
 	else
 		if(inventories_by_id[BODY_HAND_LEFT_HELD])
-			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent)
+			return inventories_by_id[BODY_HAND_LEFT_HELD].add_object(I,silent=silent,debug=debug)
 		else if(inventories_by_id[BODY_HAND_RIGHT_HELD])
-			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent)
+			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent,debug=debug)
+
+	if(debug)
+		if(debug) log_error("put_in_hands() failure!")
 
 	return FALSE
 

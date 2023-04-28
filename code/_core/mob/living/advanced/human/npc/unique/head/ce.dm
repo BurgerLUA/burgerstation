@@ -2,7 +2,8 @@
 	name = "Chief Engineer"
 	desc = "Doesn't have to worry about plasmafloods here."
 	species = "human"
-	dialogue_id = /dialogue/npc/hop/
+	dialogue_id = /dialogue/npc/chief_engineer/
+
 	sex = FEMALE
 	gender = FEMALE
 

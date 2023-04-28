@@ -151,19 +151,20 @@
 
 		var/obj/item/I = associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
 
-		if(I && !I.qdeleting && is_item(object)) //Sometimes the item is abstract.
-			if(I.can_transfer_stacks_to(object))
+		if(I && !I.qdeleting && is_item(I)) //Sometimes the item is abstract.
+
+			if(object && is_item(object) && I.can_transfer_stacks_to(object))
 				var/stacks_transfered = I.transfer_amount_to(object)
 				if(stacks_transfered)
 					caller.to_chat(span("notice","You restock \the [object.name] with [stacks_transfered] stacks."))
 				else
 					caller.to_chat(span("warning","You can't restock \the [src.name], it's full!"))
 
-			if(!I.qdeleting && is_advanced(caller))
+			if(is_advanced(caller))
 				var/mob/living/advanced/A = caller
 				if(A.movement_flags & MOVEMENT_RUNNING && I.quick_equip(A))
 					return .
-				A.put_in_hands(I,params)
+				A.put_in_hands(I,params,debug=TRUE)
 
 
 /obj/hud/button/close_vendor
