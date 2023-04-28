@@ -13,7 +13,7 @@
 	var/scale_sprite = TRUE
 	var/typical_volume = 23 //Standard typical volume for the sprite. Apply transform scale if needed.
 
-	var/remove_on_no_reagents = TRUE
+	var/delete_on_no_reagents = TRUE
 
 	drop_sound = 'sound/items/drop/food.ogg'
 
@@ -43,15 +43,18 @@
 	transform = get_base_transform()
 
 /obj/item/container/edible/proc/on_consumed(var/mob/caller,var/mob/living/target) //When there are no reagents left.
-	qdel(src)
+	if(delete_on_no_reagents)
+		qdel(src)
 	return TRUE
 
 /obj/item/container/edible/feed(var/mob/caller,var/mob/living/target)
 
 	. = ..()
 
-	if(reagents.volume_current <= 0)
-		on_consumed(caller,target)
+	if(. && reagents.volume_current <= 0)
+		src.on_consumed(caller,target)
+
+	world.log << "yum2"
 
 
 /obj/item/container/edible/proc/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)

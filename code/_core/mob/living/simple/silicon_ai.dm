@@ -63,8 +63,9 @@
 
 /mob/living/simple/silicon/ai/on_life_slow()
 	. = ..()
-	if(!dead)
+	if(z && !dead && next_cyborg_spawn_time > 0)
 		handle_shield_walls()
+		handle_spawners()
 
 /mob/living/simple/silicon/ai/post_death()
 	. = ..()
@@ -88,7 +89,8 @@
 	if(damage_amount >= 15 && prob(damage_amount) && (icon_state == "living" || icon_state == "stunned"))
 		flick("[icon_state]_damage",src)
 
-
+	if(next_cyborg_spawn_time <= 0)
+		destroy_surrounding_obstacles_in_area() //This sets next_cyborg_spawn_time.
 
 
 
@@ -153,12 +155,9 @@
 	return TRUE
 
 
-/mob/living/simple/silicon/ai/proc/spawn_spawners()
+/mob/living/simple/silicon/ai/proc/handle_spawners()
 
 	if(next_cyborg_spawn_time > world.time)
-		return FALSE
-
-	if(!z)
 		return FALSE
 
 	var/leap_distance = round(VIEW_RANGE,2) //Needs to be even.
