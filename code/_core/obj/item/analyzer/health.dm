@@ -73,11 +73,7 @@
 				if(!R.bypass_small_limit && volume < 1) //Ignore small reagents.
 					continue
 				reagent_printout += "[R.name]: [volume]u<br>"
-		. = "Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
+		. += "<br>Name: [target.name]<br>Species: [species]<br>Blood Type: [blood_type]<br>Blood Volume: [blood_volume]<br>Blood Oxygen: [blood_oxygen]<br>Blood Toxicity: [blood_toxicity]<br>Reagents (Blood):<br>[reagent_printout]"
 		caller.to_chat(.)
-		if(is_living(target))
-			var/mob/living/L = target
-			for(var/k in L.get_damage_description(caller,TRUE))
-				caller.to_chat(k)
 
 	return TRUE

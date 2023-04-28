@@ -124,23 +124,26 @@
 		if(!guard)
 			home_turf = get_turf(owner)
 		set_path_node(null)
-		owner.move_dir = 0
+		owner.move_dir = 0x0
 		return TRUE
 
 	var/obj/marker/map_node/desired_node = node_path_current[node_path_current_step]
 	var/desired_precision = desired_node.precision
-	if(node_path_current_step - 1 >= 1)
+
+	if(node_path_current_step - 1 >= 1) //Get the last node, if there is one.
 		var/obj/marker/map_node/last_node = node_path_current[node_path_current_step-1]
-		desired_precision = min(desired_precision,last_node.precision)
-	var/turf/T = get_turf(owner)
-	var/calc_distance = abs(desired_node.x - T.x) + abs(desired_node.y - T.y)
+		desired_precision = min(desired_precision,last_node.precision) //Set the precision to the smallest amount.
+
+	var/turf/T_owner = get_turf(owner)
+	var/turf/T_node = get_turf(desired_node)
+	var/calc_distance = get_dist(T_owner,T_node)
 	if(calc_distance <= desired_precision) //We've made it to the next node. Wait for next movement.
 		node_path_current_step++
 		owner.move_dir = 0x0
 		if(check_for_obstructions) check_node_path_obstructions()
 		frustration_node_path = 0
 	else
-		owner.move_dir = get_dir(owner,locate(desired_node.x,desired_node.y,desired_node.z))
+		owner.move_dir = get_dir(T_owner,T_node)
 
 	return TRUE
 

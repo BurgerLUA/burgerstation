@@ -18,12 +18,12 @@
 /obj/item/weapon/ranged/energy/hybrid/New(var/desired_loc)
 	. = ..()
 
-	//Set to stun.
-	mode = 0
-	projectile = projectile_stun
-	ranged_damage_type = damage_type_stun
-	shoot_sounds = shoot_sounds_stun
-	bullet_color = bullet_color_stun
+	//Set to kill.
+	mode = 1
+	projectile = projectile_kill
+	ranged_damage_type = damage_type_kill
+	shoot_sounds = shoot_sounds_kill
+	bullet_color = bullet_color_kill
 
 	update_sprite()
 
@@ -46,6 +46,8 @@
 		ranged_damage_type = damage_type_stun
 		shoot_sounds = shoot_sounds_stun
 		bullet_color = bullet_color_stun
+
+	charge_cost = get_charge_cost()
 
 	update_sprite()
 

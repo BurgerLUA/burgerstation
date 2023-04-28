@@ -33,7 +33,18 @@
 	RUN_PARENT_SAFE
 	LOADATOM("battery")
 
+/obj/item/weapon/ranged/energy/proc/get_charge_cost()
+	if(!ranged_damage_type)
+		return 0
+	var/cell_mod = battery && battery.charge_max > 0 ? battery.charge_max : CELL_SIZE_BASIC
+	cell_mod = cell_mod / 200
+	cell_mod = CEILING(cell_mod,1)
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+	. = D.get_damage_per_hit(100)
+	return CEILING(.,cell_mod)
+
 /obj/item/weapon/ranged/energy/Finalize()
+
 	. = ..()
 
 	if(ispath(battery))
@@ -45,6 +56,8 @@
 
 	if(!istype(battery))
 		battery = null
+
+	charge_cost = get_charge_cost()
 
 /obj/item/weapon/ranged/energy/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

@@ -14,7 +14,7 @@
 	. = L.Copy(Start,End)
 	return english_list(.,nothing_text,and_text,comma_text,final_comma_text,quote)
 
-/proc/english_list(var/list/input, var/nothing_text = "nothing", var/and_text = " and ", var/comma_text = ", ", var/final_comma_text = "", var/quote = "")
+/proc/english_list(var/list/input, var/nothing_text = "nothing", var/and_text = ", and ", var/comma_text = ", ", var/final_comma_text = "", var/quote = "")
 	var/total = input.len
 	if (!total)
 		return "[nothing_text]"

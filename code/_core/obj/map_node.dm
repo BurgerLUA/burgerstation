@@ -93,10 +93,15 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 /obj/marker/map_node/proc/initialize_node()
 
 	var/found = FALSE
-	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src))
-		var/direction = dir2text(get_dir(src,M))
-		if(src.adjacent_map_nodes[direction] && get_dist_real(src,M) > get_dist_real(src,src.adjacent_map_nodes[direction]))
+	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src)) //Get nodes in range.
+		var/direction_raw = get_dir(src,M)
+		var/direction = dir2text(direction_raw)
+		if(src.adjacent_map_nodes[direction] && get_dist(src,M) > get_dist(src,src.adjacent_map_nodes[direction])) //If the distance is longer than what we have already for that direction, just ignore it.
 			continue
+		var/direction_raw_reversed = turn(direction_raw,180)
+		var/direction_reversed = dir2text(direction_raw_reversed)
+		if(M.adjacent_map_nodes[direction_reversed])
+			continue //Already exists and has been checked, Don't bother checking.
 		var/list/obstructions = get_obstructions(src,M,ignore_living=TRUE)
 		if(length(obstructions) > 0)
 			continue

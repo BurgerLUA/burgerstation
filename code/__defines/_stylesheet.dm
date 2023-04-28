@@ -12,7 +12,7 @@ body {
 	font-size: 10px;
 }
 .pm_other{
-	color:#498DB6;
+	color: #498DB6;
 	font-weight: bold;
 }
 .ooc{
@@ -48,7 +48,7 @@ body {
 	font-style: italic;
 }
 .subsystem{
-	color:blue;
+	color: blue;
 	font-size: 10px;
 }
 .warning{

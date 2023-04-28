@@ -29,7 +29,7 @@
 			//Magic number: 40.
 			bullet_mod = (found_bullet_value*get_hits_per_second())*40
 	else if(is_ranged_weapon(src))
-		bullet_mod = dps_mod*15
+		bullet_mod = dps_mod*3.5
 
 	if(debug) log_debug("bullet_mod: [bullet_mod].")
 

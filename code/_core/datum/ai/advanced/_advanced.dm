@@ -829,18 +829,21 @@
 	if(length(astar_path_current))
 		return FALSE
 
-	if(get_dist(current_cover,owner) > 1)
-		var/turf/T = get_turf(current_cover)
-		if(!set_path_astar(T))
-			remove_cover()
+	var/turf/T_cover = get_turf(current_cover)
+	var/turf/T_owner = get_turf(owner)
+
+	if(get_dist(T_cover,T_owner) > 1) //More than 1 tile away from cover.
+		if(!set_path_astar(T_cover)) //Set a path to the cover if we're too far away.
+			remove_cover() //If it fails, disregard the cover.
 		return FALSE
 
-	var/mob/living/advanced/A = owner
+	// var/mob/living/advanced/A = owner
 
 	var/should_be_in_cover = FALSE
 	if(!(found_grenade?.stored_trigger?.active)) //A little confusing but it just prevents the below from running if there is a grenade and we should obviously never be in cover with an active grenade.
 		if(next_complex > world.time)
 			should_be_in_cover = TRUE
+		/*
 		else if(A.left_item && istype(A.left_item,/obj/item/weapon/ranged/bullet/))
 			var/obj/item/weapon/ranged/bullet/B = A.left_item
 			if(!B.chambered_bullet)
@@ -849,42 +852,44 @@
 			var/obj/item/weapon/ranged/bullet/B = A.right_item
 			if(!B.chambered_bullet)
 				should_be_in_cover = TRUE
+		*/
 
+	//We should be in cover.
 	if(should_be_in_cover)
-		var/turf/turf_to_step = get_turf(current_cover)
-		if(owner.loc != turf_to_step)
-			owner.move_dir = get_dir(owner,turf_to_step)
+		if(T_owner != T_cover)
+			owner.move_dir = get_dir(T_owner,T_cover)
 			if(debug) log_debug("Moving to cover [dir2text(owner.move_dir)].")
 			owner.movement_flags = MOVEMENT_WALKING
 		else
 			owner.move_dir = 0x0
 			if(debug) log_debug("In cover.")
-	else//Go out of cover.
-		var/turf/turf_to_step
-		if(current_cover.turn_dir == 0) //Both
-			var/turf/T1 = get_step(current_cover,turn(current_cover.dir,90))
-			var/turf/T2 = get_step(current_cover,turn(current_cover.dir,-90))
-			var/T1_dist = get_dist(T1,objective_attack)
-			var/T2_dist = get_dist(T2,objective_attack)
-			if(T1_dist == T2_dist)
-				turf_to_step = pick(T1,T2)
-			else if(T1_dist < T2_dist)
-				turf_to_step = T1
-			else
-				turf_to_step = T2
+		return TRUE
+
+	//We should be out of cover.
+	var/turf/turf_to_step
+	if(current_cover.turn_dir == 0x0) //Dual cover. Consider both sides.
+		var/T_objective = get_turf(objective_attack)
+		var/turf/T1 = get_step(T_cover,turn(current_cover.dir,90))
+		var/turf/T2 = get_step(T_cover,turn(current_cover.dir,-90))
+		var/T1_dist = get_dist(T1,T_objective)
+		var/T2_dist = get_dist(T2,T_objective)
+		if(T1_dist == T2_dist) //Doesn't matter. Pick one.
+			turf_to_step = pick(T1,T2)
+		else if(T1_dist < T2_dist) //Which one is closer to our target?
+			turf_to_step = T1
 		else
-			turf_to_step = get_step(current_cover,turn(current_cover.dir,current_cover.turn_dir))
-		if(owner.loc != turf_to_step)
-			owner.move_dir = get_dir(owner,turf_to_step)
-			owner.movement_flags = MOVEMENT_WALKING
-			if(debug) log_debug("Moving out of cover [dir2text(owner.move_dir)].")
-		else
-			var/turf/forward_turf = get_step(turf_to_step,current_cover.dir)
-			if(forward_turf.has_dense_atom)
-				owner.move_dir = current_cover.dir
-			else
-				owner.move_dir = 0x0
-			if(debug) log_debug("Out of cover.")
+			turf_to_step = T2
+	else
+		turf_to_step = get_step(T_cover,turn(current_cover.dir,current_cover.turn_dir))
+
+	//Are we in the right cover?
+	if(T_owner != turf_to_step)
+		owner.move_dir = get_dir(T_owner,turf_to_step)
+		owner.movement_flags = MOVEMENT_WALKING
+		if(debug) log_debug("Moving out of cover [dir2text(owner.move_dir)].")
+		return TRUE
+
+	owner.move_dir = 0x0 //We are where we should be.
 
 	return TRUE
 

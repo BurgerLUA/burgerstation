@@ -1,61 +1,81 @@
-/mob/living/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
+/mob/living/proc/get_damage_description(var/mob/examiner)
 
-	. = list()
+	if(!health || health.health_max <= 0)
+		return null
 
-	if(health)
+	var/list/damage_description = list()
 
-		var/noun //Custom shit
-		if(examiner == src)
-			noun = "You look"
-		else
-			noun = "They look"
-			switch(gender)
-				if(MALE)
-					noun = "He looks"
-				if(FEMALE)
-					noun = "She looks"
+	var/tox_mod = health.damage[TOX]/health.health_max
+	if(tox_mod > 0.05)
+		var/tox_description
+		switch(tox_mod)
+			if(0.05 to 0.25)
+				tox_description = "<i>off color</i>"
+			if(0.25 to 0.5)
+				tox_description = "sickly"
+			if(0.5 to 0.75)
+				tox_description = "<b>ill</b>"
+			if(0.75 to 1)
+				tox_description = "<b>ailing</b>"
+			if(1 to INFINITY)
+				tox_description = "<u><b>diseased</u></b>"
+		damage_description += "<font color='green'>[tox_description]</font>"
 
+	var/rad_mod = health.damage[RAD]/health.health_max
+	if(rad_mod > 0.25)
+		var/rad_description
+		switch(rad_mod)
+			if(0.25 to 0.5)
+				rad_description = "contaminated"
+			if(0.5 to 0.75)
+				rad_description = "<b>irradiated</b>"
+			if(0.75 to 1)
+				rad_description = "<b>ratioactive</b>"
+			if(1 to INFINITY)
+				rad_description = "<u><b>mutating</u></b>"
+		damage_description += "<font color='greenyellow'>[rad_description]</font>"
 
-		var/wound_stealth = get_mob_value("wound_stealth")
+	if(!length(damage_description))
+		return null
 
-		switch(health.damage[TOX]/(1 + wound_stealth))
-			if(5 to 15)
-				. += div("warning","<i>[noun] off color.</i>")
-			if(15 to 25)
-				. += div("warning","[noun] sickly.")
-			if(25 to 50)
-				. += div("warning","<b>[noun] ailing.</b>")
-			if(50 to INFINITY)
-				. += div("warning","<u><b>[noun] diseased.</u></b>")
+	var/prefix = "They look"
+	if(examiner == src)
+		prefix = "You look"
+	else
+		switch(gender)
+			if(MALE)
+				prefix = "He looks"
+			if(FEMALE)
+				prefix = "She looks"
 
-		switch((health.damage[PAIN] - pain_regen_buffer)/(1 + wound_stealth))
-			if(15 to 25)
-				. += div("warning","[noun] sore.")
-			if(25 to 50)
-				. += div("warning","<b>[noun] pained.</b>")
-			if(50 to INFINITY)
-				. += div("warning","<u><b>[noun] hurting.</u></b>")
+	var/div_class = "notice"
+	switch(health.health_current/health.health_max)
+		if(-INFINITY to 0.25)
+			div_class = "danger"
+		if(0.25 to 0.75)
+			div_class = "warning"
+		if(0.75 to INFINITY)
+			div_class = "notice"
 
-		switch(health.damage[RAD]/(1 + wound_stealth))
-			if(15 to 25)
-				. += div("warning","[noun] contaminated")
-			if(25 to 50)
-				. += div("warning","<b>[noun] irradiated</b>")
-			if(50 to INFINITY)
-				. += div("warning","<u><b>[noun] mutating</b></u>")
-
+	return div(div_class,"[prefix] [english_list(damage_description)].")
 
 
 /mob/living/get_examine_list(var/mob/examiner)
 
 	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
-	. = list(div("examine_title","[object_icon][src.name]"),div("center bold","Level [level] [initial(src.name)]"),div("examine_description_long",src.desc_extended))
+	. = list(
+		div("examine_title","[object_icon][src.name]"),
+		div("center bold","Level [level] [initial(src.name)]"),
+		div("examine_description_long",src.desc_extended)
+	)
 
 	var/activity_text = get_activity_text()
 	if(activity_text)
 		. += activity_text
 
-	. += get_damage_description(examiner,FALSE)
+	var/damage_description = get_damage_description(examiner)
+	if(damage_description)
+		. += damage_description
 
 /mob/living/proc/get_activity_text()
 

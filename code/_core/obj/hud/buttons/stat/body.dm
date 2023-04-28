@@ -50,8 +50,9 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		for(var/k in L.get_damage_description(caller,FALSE))
-			caller.to_chat(k)
+		var/damage_description = L.get_damage_description(caller)
+		if(damage_description)
+			L.to_chat(damage_description)
 
 	return ..()
 

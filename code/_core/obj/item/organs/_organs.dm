@@ -441,69 +441,112 @@ obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)
 		new_owner.queue_organ_health_update[src] = TRUE
 	return TRUE
 
-obj/item/organ/proc/get_damage_description(var/mob/examiner,var/verbose=FALSE)
+obj/item/organ/proc/get_damage_description(var/mob/examiner)
 
-	if(!health)
-		return list()
+	if(!health || health.health_max <= 0)
+		return null
 
-	var/list/damage_desc = list()
+	var/list/damage_description = list()
 
-	var/mob/living/advanced/A = src.loc
+	var/brute_mod = health.damage[BRUTE]/health.health_max
+	if(brute_mod > 0.05)
+		var/brute_description
+		switch(brute_mod)
+			if(0.05 to 0.25)
+				brute_description = "<i>bruised<i/>"
+			if(0.25 to 0.5)
+				brute_description = "battered"
+			if(0.5 to 0.75)
+				brute_description = "<b>crushed</b>"
+			if(0.75 to 1)
+				brute_description = "<b>mangled</b>"
+			if(1 to INFINITY)
+				brute_description = "<u><b>mutilated</b></u>"
+		damage_description += "<font color='red'>[brute_description]</font>"
 
-	switch(health.damage[BRUTE])
-		if(5 to 15)
-			damage_desc += "<i>bruised<i/>"
-		if(15 to 25)
-			damage_desc += "battered"
-		if(25 to 50)
-			damage_desc += "<b>crushed</b>"
-		if(50 to INFINITY)
-			damage_desc += "<u><b>mangled</b></u>"
+	var/burn_mod = health.damage[BURN]/src.health.health_max
+	if(burn_mod > 0.05)
+		var/burn_description
+		switch(burn_mod)
+			if(0.05 to 0.25)
+				burn_description = "<i>singed<i/>"
+			if(0.25 to 0.5)
+				burn_description = "burned"
+			if(0.5 to 0.75)
+				burn_description = "seared"
+			if(0.75 to 1)
+				burn_description = "<b>scorched</b>"
+			if(1 to INFINITY)
+				burn_description = "<u><b>charred</b></u>"
+		damage_description += "<font color='orange'>[burn_description]</font>"
 
-	switch(health.damage[BURN])
-		if(5 to 15)
-			damage_desc += "<i>blistered<i/>"
-		if(15 to 25)
-			damage_desc += "burned"
-		if(25 to 50)
-			damage_desc += "<b>scorched</b>"
-		if(50 to INFINITY)
-			damage_desc += "<u><b>charred</b></u>"
+	if(src.loc && is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
+		var/pain_mod = (health.damage[PAIN] - A.pain_regen_buffer) / src.health.health_max
+		if(pain_mod > 0.05)
+			var/pain_description
+			switch(pain_mod)
+				if(0.05 to 0.25)
+					pain_description = "<i>tender<i/>"
+				if(0.25 to 0.5)
+					pain_description = "sore"
+				if(0.5 to 0.75)
+					pain_description = "<b>stinging</b>"
+				if(0.75 to 1)
+					pain_description = "<u><b>aching</b></u>"
+				if(1 to INFINITY)
+					pain_description = "<u><b>numb from the pain</b></u>"
+			damage_description += "<font color='grey'>[pain_description]</font>"
 
-	switch(health.damage[PAIN] - A.pain_regen_buffer)
-		if(5 to 15)
-			damage_desc += "<i>tender<i/>"
-		if(15 to 25)
-			damage_desc += "sore"
-		if(25 to 50)
-			damage_desc += "<b>stinging</b>"
-		if(50 to 99)
-			damage_desc += "<u><b>hurting</b></u>"
-		if(100 to INFINITY)
-			damage_desc += "<u><b>numb from the pain</b></u>"
-
-	switch(bleeding)
-		if(0.5 to 2)
-			if(health.organic)
-				damage_desc += "trickling blood"
-			else
-				damage_desc += "trickling fluid"
-		if(2 to 4)
-			if(health.organic)
-				damage_desc += "<b>bleeding</b>"
-			else
-				damage_desc += "<b>leaking fluid</b>"
-		if(4 to INFINITY)
-			if(health.organic)
-				damage_desc += "<u><b>gushing blood</b></u>"
-			else
-				damage_desc += "<u><b>gushing fluid</b></u>"
+	if(bleeding > 0.25)
+		var/bleeding_description
+		switch(bleeding)
+			if(0.25 to 1)
+				if(health.organic)
+					bleeding_description = "trickling blood"
+				else
+					bleeding_description = "trickling fluid"
+			if(1 to 3)
+				if(health.organic)
+					bleeding_description = "<b>bleeding</b>"
+				else
+					bleeding_description = "<b>leaking fluid</b>"
+			if(3 to INFINITY)
+				if(health.organic)
+					bleeding_description = "<u><b>gushing blood</b></u>"
+				else
+					bleeding_description = "<u><b>gushing fluid</b></u>"
+		damage_description += "<font color='crimson'>[bleeding_description]</font>"
 
 	if(broken)
-		damage_desc += "<u><b>broken</b></u>"
+		damage_description += "<font color='black'><u><b>broken</b></u></font>"
+
+	if(!length(damage_description))
+		return null
+
+	var/noun = "The"
+	if(src.loc && is_advanced(src.loc))
+		var/mob/living/advanced/A = src.loc
+		if(examiner == A)
+			noun = "Your"
+		else
+			noun = capitalize(get_pronoun_his_her_their(A))
+
+	var/div_class = "notice"
+	switch(health.health_current/health.health_max)
+		if(-INFINITY to 0.25)
+			div_class = "danger"
+		if(0.25 to 0.75)
+			div_class = "warning"
+		if(0.75 to INFINITY)
+			div_class = "notice"
+
+	return div(div_class,"[noun] [src.name] looks [english_list(damage_description)].")
 
 
-	return damage_desc
+
+
+
 
 
 /obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)

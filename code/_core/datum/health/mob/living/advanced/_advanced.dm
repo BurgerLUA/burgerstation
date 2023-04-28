@@ -163,6 +163,11 @@
 	if(mana_regeneration > 0)
 		mana_regeneration = 10 + (A.get_attribute_power(ATTRIBUTE_WILLPOWER,0,1,5)*20)
 
+	for(var/k in A.labeled_organs)
+		var/obj/item/organ/O = A.labeled_organs[k]
+		if(!O.health)
+			continue
+		O.health.update_health_stats()
 
 
 
