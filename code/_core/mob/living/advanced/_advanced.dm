@@ -263,7 +263,7 @@ mob/living/advanced/Login()
 			return inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(I,silent=silent,debug=debug)
 
 	if(debug)
-		if(debug) log_error("put_in_hands() failure!")
+		log_error("put_in_hands() failure!")
 
 	return FALSE
 

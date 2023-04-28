@@ -164,7 +164,7 @@
 				var/mob/living/advanced/A = caller
 				if(A.movement_flags & MOVEMENT_RUNNING && I.quick_equip(A))
 					return .
-				A.put_in_hands(I,params,debug=TRUE)
+				A.put_in_hands(I,params)
 
 
 /obj/hud/button/close_vendor
