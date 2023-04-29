@@ -74,7 +74,7 @@
 	icon_state = "dead"
 	update_sprite()
 
-/mob/living/simple/can_man/get_movement_delay(var/include_stance=TRUE)
+/mob/living/simple/can_man/get_movement_delay()
 
 	if(charge_steps > 0)
 		return 1 //Max

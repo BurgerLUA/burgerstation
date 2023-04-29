@@ -61,13 +61,12 @@ var/global/list/valid_gabber_sound_files = list()
 /mob/living/simple/gabber/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 1
 
-/mob/living/simple/gabber/get_movement_delay(var/include_stance=TRUE)
+/mob/living/simple/gabber/get_movement_delay()
 
 	. = ..()
 
 	if(sword_mode)
 		. *= 0.5
-		. = CEILING(.,AI_TICK_FAST)
 
 /mob/living/simple/gabber/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
 

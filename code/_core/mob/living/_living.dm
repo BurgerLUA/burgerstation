@@ -34,12 +34,12 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/nutrition = 2000
-	var/nutrition_max = 2000
-	var/nutrition_max_hard = 3000
+	var/nutrition = 3000
+	var/nutrition_max = 3000
+	var/nutrition_max_hard = 4000
 	var/nutrition_fast = 0
-	var/hydration = 1000
-	var/hydration_max = 1000
+	var/hydration = 2000
+	var/hydration_max = 2000
 	var/nutrition_quality = 1500 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that. 1000 is average.
 	var/nutrition_quality_max = 2000
 	var/intoxication = 0

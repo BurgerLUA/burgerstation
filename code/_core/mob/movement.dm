@@ -46,12 +46,9 @@
 
 	return 1
 
-/mob/get_movement_delay(var/include_stance=TRUE)
-
+/mob/get_movement_delay()
 	. = ..()
-
-	if(include_stance)
-		. *= get_stance_movement_mul()
+	. *= get_stance_movement_mul()
 
 /mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
 

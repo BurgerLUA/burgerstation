@@ -207,7 +207,7 @@
 
 	. = ..()
 
-/mob/living/get_movement_delay(var/include_stance=TRUE)
+/mob/living/get_movement_delay()
 
 	. = ..()
 
@@ -239,6 +239,9 @@
 
 	if(grabbing_hand) //Being grabbed. You're slower.
 		. *= 1.25
+
+	if(move_dir && !(move_dir & dir)) //Moving backwards.
+		. *= 1.5
 
 	if(ai && ai.objective_move && ai.should_follow_objective_move && ismovable(ai.objective_move) && get_dist(src,ai.objective_move) <= 3) //Synced movement.
 		var/atom/movable/M = ai.objective_move

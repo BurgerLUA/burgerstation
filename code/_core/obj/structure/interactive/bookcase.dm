@@ -18,6 +18,14 @@ var/global/list/stored_bookcase_phrases = list(
 	var/chance_of_scroll = 5
 
 	density = TRUE
+	anchored = TRUE
+
+	collision_flags = FLAG_COLLISION_WALL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
+
+	collision_dir = NORTH | EAST | SOUTH | WEST
+
+	interaction_flags = FLAG_INTERACTION_LIVING
 
 	pixel_y = 6
 
@@ -37,7 +45,9 @@ var/global/list/stored_bookcase_phrases = list(
 
 /obj/structure/interactive/bookcase/update_sprite()
 	. = ..()
-	icon_state = "[initial(icon_state)]-[chance_of_scroll]"
+	icon_state = initial(icon_state)
+	if(chance_of_scroll > 0)
+		icon_state = "[icon_state]-[chance_of_scroll]"
 
 /obj/structure/interactive/bookcase/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -59,7 +69,7 @@ var/global/list/stored_bookcase_phrases = list(
 		caller.to_chat(span("warning","...You don't think you'll find anything of use here."))
 		return FALSE
 
-	if(prob(3))
+	if(prob(2))
 		caller.to_chat(span("notice",pick(stored_bookcase_phrases)))
 
 	return TRUE

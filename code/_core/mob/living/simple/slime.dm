@@ -100,7 +100,7 @@
 	if(stored_slimes > 1)
 		. *= 1/stored_slimes
 
-/mob/living/simple/slime/get_movement_delay(var/include_stance=TRUE)
+/mob/living/simple/slime/get_movement_delay()
 
 	. = ..()
 

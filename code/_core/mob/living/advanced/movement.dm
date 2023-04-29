@@ -32,7 +32,7 @@
 
 	. = ..()
 
-mob/living/advanced/get_movement_delay(var/include_stance=TRUE)
+mob/living/advanced/get_movement_delay()
 
 	. = ..()
 

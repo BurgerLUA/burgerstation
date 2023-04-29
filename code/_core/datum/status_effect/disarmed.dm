@@ -13,8 +13,8 @@
 	if(is_advanced(owner))
 		var/mob/living/advanced/A = owner
 		if(A.loc && is_turf(A.loc))
-			if(A.drop_hands(A.loc,disarm=TRUE))
-				stealthy = FALSE
+			if(!A.drop_hands(A.loc,disarm=TRUE))
+				stealthy = TRUE //Didn't work, don't show.
 			for(var/k in A.inventories_by_id)
 				var/obj/hud/inventory/I = A.inventories_by_id[k]
 				if(I.grabbed_object)
