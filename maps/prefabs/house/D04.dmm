@@ -27,6 +27,10 @@
 "aA" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "aB" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "aC" = (/obj/structure/interactive/power/smes,/obj/structure/interactive/wire/red,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04)
+"aD" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/obj/structure/interactive/bed/sheet,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
+"aE" = (/mob/living/advanced/npc/bandit{dir = 1},/obj/structure/interactive/chair/stool/bar,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/maintbar)
+"aF" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04)
+"aG" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/bedroom)
 "bc" = (/obj/structure/interactive/construction/grille,/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "bD" = (/turf/simulated/wall/metal,/area/mission/prefab/house/house_D04)
 "cq" = (/obj/structure/table/reinforced/steel,/obj/marker/spawning/random/food,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
@@ -36,7 +40,6 @@
 "fg" = (/obj/marker/spawning/window/reinforced,/obj/structure/interactive/construction/grille,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "gn" = (/obj/marker/spawning/window/reinforced,/obj/structure/interactive/construction/grille,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "gy" = (/obj/structure/table/steel,/obj/item/container/simple/alcohol/vodka{pixel_x = -10},/obj/item/container/simple/alcohol/vodka/premium{pixel_y = 5},/obj/item/container/simple/alcohol/wine{pixel_x = 10},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
-"gF" = (/obj/structure/interactive/solar_panel,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04)
 "gS" = (/obj/structure/table/reinforced/steel,/obj/marker/spawning/random/misc,/turf/simulated/floor/tile/grey,/area/mission/prefab/house/house_D04/bedroom)
 "hr" = (/turf/simulated/wall/metal,/area/mission/prefab/house/house_D04/maintbar)
 "ih" = (/mob/living/advanced/npc/bandit,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
@@ -64,10 +67,7 @@
 "zf" = (/obj/structure/interactive/door/airlock/station,/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D04/bathroom)
 "zg" = (/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D04/bathroom)
 "zm" = (/obj/structure/table/steel,/obj/item/container/simple/alcohol/whiskey,/obj/item/container/simple/alcohol/brandy{pixel_x = -10},/obj/item/container/simple/alcohol/cider{pixel_x = 10},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
-"zX" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/bedroom)
-"AT" = (/obj/structure/interactive/chair/stool/bar,/mob/living/advanced/npc/bandit{dir = 1},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/maintbar)
 "BW" = (/obj/structure/table/reinforced/steel,/obj/marker/spawning/random/kitchen,/turf/simulated/floor/tile/grey/ish,/area/mission/prefab/house/house_D04/bedroom)
-"Cn" = (/obj/structure/interactive/bed/sheet,/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "Co" = (/obj/structure/interactive/power/apc_connection_terminal{dir = 1},/obj/structure/interactive/wire/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/maintbar)
 "CN" = (/obj/structure/table/rack/grey,/obj/marker/spawning/random/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "Dk" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
@@ -101,21 +101,21 @@
 "VO" = (/obj/structure/interactive/crate/closet/freezer,/obj/marker/spawning/random/food,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/grey/ish,/area/mission/prefab/house/house_D04/bedroom)
 "VV" = (/obj/structure/interactive/lighting/fixture/bulb,/obj/structure/table/steel,/obj/item/container/simple/alcohol/absinthe,/obj/item/container/simple/alcohol/tequila{pixel_x = -10},/obj/item/container/simple/alcohol/rum{pixel_x = 10},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "Xa" = (/obj/structure/interactive/crate/closet,/obj/marker/spawning/random/valuable,/obj/structure/carpet/blue/royal,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/bedroom)
-"YD" = (/obj/structure/table/steel,/obj/item/container/simple/beaker/glass{pixel_x = -10; pixel_y = 10},/obj/item/container/simple/beaker/glass{pixel_x = 10; pixel_y = 10},/obj/item/container/simple/beaker/glass{pixel_y = 10},/obj/item/container/simple/beaker/shot{pixel_x = -10; pixel_y = 0},/obj/item/container/simple/beaker/shot{pixel_y = 0},/obj/item/container/simple/beaker/shot{pixel_y = 0; pixel_x = 10},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
+"YD" = (/obj/structure/table/steel,/obj/item/container/simple/beaker/glass{pixel_x = -10; pixel_y = 10},/obj/item/container/simple/beaker/glass{pixel_x = 10; pixel_y = 10},/obj/item/container/simple/beaker/glass{pixel_y = 10},/obj/item/container/simple/beaker/shot{pixel_x = -10; pixel_y = 0},/obj/item/container/simple/beaker/shot{pixel_y = 0},/obj/item/container/simple/beaker/shot{pixel_x = 10; pixel_y = 0},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "YY" = (/obj/structure/interactive/crate/closet,/obj/marker/spawning/random/misc,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 
 (1,1,1) = {"
 SoSoSoSoSoSoSoaafghrrchrhrnNhrhr
 SoTETEwgYYYYSoazwghrCogyVVzmYDhr
-SoadSbSbSbaeTbaeCnhrILGsmFQYGshr
+SoadSbSbSbaeTbaeaDhrILGsmFQYGshr
 SoaxSoTFSoSoSoynSohrLVloQycqthhr
-aaafDkmODkDkDkDkafKVnhATSdSdpzgn
+aaafDkmODkDkDkDkafKVnhaESdSdpzgn
 SoawSobDSoSofgihSbhrCNQYagGsEkhr
 SoDkSoahSbSbSbGCaehrhrhravgngnhr
 SoaituajSoSoSoSoaASbSbSbaeGCTESo
 SoSoSoTwSoaybcDOaraeatqqqqqqqqqq
-gFtUjMaCSoSoSoSoynaBSoqqdUzgPPrR
-gFtUabtUTnzXrkJgauakasrRaqzgrErR
+aFjMjMaCSoSoSoSoynaBSoqqdUzgPPrR
+aFtUabtUTnaGrkJgauakasrRaqzgrErR
 OAOAOAOATnKyIwIwIwIwakzfalIYIYrR
 OAOAOAOAacXapAIwxWvDVOdkapTsTsrR
 OAOAOAOAptEWpAIwgSddTkrRrRrRrRrR

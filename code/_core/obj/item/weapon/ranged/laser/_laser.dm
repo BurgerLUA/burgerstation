@@ -40,7 +40,7 @@
 	cell_mod = cell_mod / 200
 	cell_mod = CEILING(cell_mod,1)
 	var/damagetype/D = all_damage_types[ranged_damage_type]
-	. = D.get_damage_per_hit(100)
+	. = D.get_damage_per_hit(100) * 3
 	return CEILING(.,cell_mod)
 
 /obj/item/weapon/ranged/energy/Finalize()
