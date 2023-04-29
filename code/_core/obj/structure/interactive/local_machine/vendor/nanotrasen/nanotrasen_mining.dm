@@ -67,8 +67,8 @@
 
 
 		//3 pistols
-		/obj/item/weapon/ranged/bullet/magazine/pistol/military,
-		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mining,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/military/nanotrasen,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/laton/prototype,
 		/obj/item/weapon/ranged/bullet/revolver/big_game,
 
 		//3 smgs or shotguns

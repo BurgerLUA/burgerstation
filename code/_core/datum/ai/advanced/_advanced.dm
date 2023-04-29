@@ -442,6 +442,12 @@
 				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,15)
 				return TRUE
 
+			if(G.stored_bullets[G.current_chamber].is_spent) //despite opening the chamber, there are still bullets, remove them.
+				if(debug) log_debug("Removing spent bullet.")
+				G.eject_stored_bullet(A,G.stored_bullets[G.current_chamber],get_turf(src))
+				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,5)
+				return TRUE
+
 			var/obj/item/bullet_cartridge/B
 			if(last_found_bullet && !last_found_bullet.qdeleting && !last_found_bullet.is_spent) //Is last_found_bullet even valid?
 				var/obj/hud/inventory/I = last_found_bullet.loc

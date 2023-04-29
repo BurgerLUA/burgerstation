@@ -105,18 +105,3 @@
 	attachment_undermount_offset_y = 17 - 16
 
 	rarity = RARITY_RARE
-
-
-/obj/item/weapon/ranged/bullet/magazine/pistol/laton/mining
-	name = "10mm Laton-H"
-	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
-
-	bullet_length_min = 25
-	bullet_length_best = 32
-	bullet_length_max = 33
-
-	bullet_diameter_min = 10
-	bullet_diameter_best = 10.17
-	bullet_diameter_max = 11
-
-	rarity = RARITY_UNCOMMON
