@@ -111,10 +111,10 @@
 		var/reagent/R = REAGENT(r_id)
 		var/volume = stored_reagents[r_id]
 		if(!(flags_metabolism & R.flags_metabolism)) //Remove reagents that serve no purpose.
-			add_reagent(r_id,-volume,FALSE)
+			add_reagent(r_id,-volume,TNULL,FALSE,FALSE)
 			continue
 		if(!R.bypass_small_limit && volume < 1) //Ignore small reagents and remove them, slowly.
-			add_reagent(r_id,-REAGENT_ROUNDING,FALSE)
+			add_reagent(r_id,-REAGENT_ROUNDING,TNULL,FALSE,FALSE)
 			continue
 		var/amount_to_metabolize = 0
 		switch(src.flags_metabolism)
@@ -149,7 +149,7 @@
 			if(R.overdose_threshold > 0 && volume >= R.overdose_threshold)
 				amount_metabolized += R.on_overdose(living_owner,src,amount_metabolized,volume) //Chem power not considered here.
 			if(amount_metabolized > 0)
-				add_reagent(r_id,-amount_metabolized,FALSE)
+				add_reagent(r_id,-amount_metabolized,TNULL,FALSE,FALSE)
 				if(R.blood_toxicity_multiplier != 0)
 					blood_toxicity_to_add += amount_metabolized*R.blood_toxicity_multiplier
 				actual_metabolism += amount_metabolized
@@ -245,16 +245,16 @@
 				add_reagent(R.cooled_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
 
-	if(.)
-		update_container()
-		return TRUE
-
-	process_recipes(from_temperature_change=TRUE) //Don't worry, this is only called when there was a temperature change and nothing else.
+	update_container()
+	process_recipes(from_temperature_change=TRUE)
 
 	return TRUE
 
 
-/reagent_container/proc/update_container(var/mob/caller,var/update_owner = TRUE)
+/reagent_container/proc/update_container(var/mob/caller,var/update_owner = TRUE,var/force=FALSE)
+
+	if(!force && owner && !owner.finalized)
+		return FALSE
 
 	var/red = 0
 	var/green = 0
@@ -322,7 +322,6 @@
 
 	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
-
 
 	if(volume_current > 0)
 		SSreagent.all_temperature_reagent_containers |= src
@@ -402,38 +401,47 @@
 	if(!found_recipe)
 		return FALSE
 
-	//Okay now we figure out math bullshit.
-
 	var/portions_to_make
 
 	for(var/k in found_recipe.required_reagents)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/required_amount = found_recipe.required_reagents[k]
+		if(required_amount <= 0)
+			continue
 		var/current_volume = c_id_to_volume[k]
 		var/math_to_do = current_volume / required_amount
 		if(!portions_to_make)
 			portions_to_make = math_to_do
-			continue
-		portions_to_make = min(portions_to_make,math_to_do)
+		else
+			portions_to_make = min(portions_to_make,math_to_do)
+
+	if(!portions_to_make)
+		portions_to_make = 1
 
 	var/amount_removed = 0
 
-	var/desired_temperature = average_temperature
-
 	for(var/k in found_recipe.required_reagents)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/required_amount = found_recipe.required_reagents[k]
+		if(required_amount <= 0)
+			continue
 		var/amount_to_remove = portions_to_make * required_amount
-		amount_removed -= add_reagent(k,-amount_to_remove,FALSE,FALSE)
+		amount_removed -= add_reagent(k,-amount_to_remove,TNULL,FALSE,FALSE)
 
-	update_container(caller,FALSE)
+	if(amount_removed > 0)
+		update_container(caller,FALSE)
 
+	var/desired_temperature = average_temperature
 	for(var/k in found_recipe.results)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/v = found_recipe.results[k] * portions_to_make
 		add_reagent(k,v,desired_temperature,FALSE,FALSE,caller)
 
 	found_recipe.on_react(caller,src,portions_to_make)
+
+	if(amount_removed <= 0 && volume_current > 0)
+		for(var/r_id in found_recipe.required_reagents) //Prevents infinite loops.
+			var/v = stored_reagents[r_id]
+			if(v <= 0)
+				continue
+			add_reagent(r_id,-v,TNULL,FALSE,FALSE)
 
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(caller,FALSE)
@@ -445,9 +453,10 @@
 			if(!A.reagents)
 				break
 			transfer_reagents_to(A.reagents,min(A.reagents.volume_max - A.reagents.volume_current,volume_current),caller = caller)
-	else
-		update_container(caller)
-		//play_sound('sound/items/bikehorn.ogg',get_turf(owner),range_max=VIEW_RANGE) //lol
+		return TRUE
+
+	update_container(caller)
+	//play_sound('sound/items/bikehorn.ogg',get_turf(owner),range_max=VIEW_RANGE) TODO: Replace with reaction sound.
 
 	return TRUE
 
@@ -522,11 +531,11 @@
 		if(L)
 			R.on_remove_living(L,src)
 
-	if(check_recipes)
-		process_recipes(caller)
-
 	if(should_update)
 		update_container(caller)
+
+	if(check_recipes)
+		process_recipes(caller)
 
 /reagent_container/proc/remove_reagents(var/amount=volume_current,var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
@@ -539,11 +548,11 @@
 		var/ratio = volume/total_volume
 		. += -add_reagent(-ratio*amount,should_update=FALSE,check_recipes=FALSE,caller=caller)
 
-	if(check_recipes)
-		process_recipes(caller)
-
 	if(should_update)
 		update_container(caller)
+
+	if(check_recipes)
+		process_recipes(caller)
 
 /reagent_container/proc/remove_all_reagents()
 	stored_reagents.Cut()
@@ -599,7 +608,7 @@
 			check_recipes=FALSE,
 			caller = caller
 		)
-		total_amount_transfered += -add_reagent(r_id,-amount_transfered,FALSE,FALSE,caller=caller)
+		total_amount_transfered += -add_reagent(r_id,-amount_transfered,TNULL,FALSE,FALSE,caller=caller)
 
 	if(should_update)
 		src.update_container(caller)
@@ -678,10 +687,11 @@
 	if(splash_amount && source.stored_reagents)
 		for(var/r_id in source.stored_reagents)
 			var/reagent/R = REAGENT(r_id)
-			var/volume_to_splash = -source.add_reagent(R.type,-source.stored_reagents[r_id] * (splash_amount/source.volume_current),FALSE,FALSE)
+			var/volume_to_splash = -source.add_reagent(R.type,-source.stored_reagents[r_id] * (splash_amount/source.volume_current),TNULL,FALSE,FALSE)
 			R.on_splash(source,caller,src,volume_to_splash,strength_mod)
 		if(!silent) caller?.visible_message(span("danger","\The [caller] splashes the contents of \the [source.owner.name] on \the [src.name]!"),span("warning","You splash the contents of \the [source.owner.name] on \the [src.name]!"))
 		source.update_container(caller)
+		source.process_recipes(caller)
 		return TRUE
 
 	return FALSE

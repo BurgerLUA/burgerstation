@@ -274,7 +274,7 @@
 	name = "\improper Solars"
 	icon_state = "solars"
 
-	map_color = COLOR_BLUE
+	map_color = COLOR_YELLOW
 
 /area/burgerstation/engineering/solars/ne
 	name = "\improper Starboard Bow Solars"
@@ -389,7 +389,23 @@
 
 	sound_environment = ENVIRONMENT_CONCERT_HALL
 
-	map_color = COLOR_GREY_DARK
+	map_color = COLOR_BLUE
+
+/area/burgerstation/hanger/blue
+	name = "\improper Blue Hanger Bay"
+	color = COLOR_BLUE
+
+/area/burgerstation/hanger/red
+	name = "\improper Red Hanger Bay"
+	color = COLOR_RED
+
+/area/burgerstation/hanger/green
+	name = "\improper Green Hanger Bay"
+	color = COLOR_GREEN
+
+/area/burgerstation/hanger/drop_pod_bay
+	name = "\improper Drop Pod Bay"
+	color = COLOR_ORANGE
 
 /area/burgerstation/cargo
 	name = "\improper Cargo"
@@ -411,7 +427,7 @@
 		'sound/ambient/maint_2.ogg'
 	)
 
-	map_color = COLOR_ORANGE
+	map_color = COLOR_GREY_DARK
 
 	sound_environment = ENVIRONMENT_BATHROOM
 

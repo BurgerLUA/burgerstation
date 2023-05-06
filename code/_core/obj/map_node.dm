@@ -93,6 +93,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 /obj/marker/map_node/proc/initialize_node()
 
 	var/found = FALSE
+	var/duplicate = FALSE
 	for(var/obj/marker/map_node/M in orange(VIEW_RANGE,src)) //Get nodes in range.
 		var/direction_raw = get_dir(src,M)
 		var/direction = dir2text(direction_raw)
@@ -101,6 +102,10 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		var/direction_raw_reversed = turn(direction_raw,180)
 		var/direction_reversed = dir2text(direction_raw_reversed)
 		if(M.adjacent_map_nodes[direction_reversed])
+			if(M.adjacent_map_nodes[direction_reversed] == src)
+				found = TRUE
+			else
+				duplicate = TRUE
 			continue //Already exists and has been checked, Don't bother checking.
 		var/list/obstructions = get_obstructions(src,M,ignore_living=TRUE)
 		if(length(obstructions) > 0)
@@ -108,8 +113,11 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 		src.adjacent_map_nodes[direction] = M
 		found = TRUE
 
-	if(!found)
-		if(!automatic) log_error("Invalid node! [src.get_debug_name()].")
+	if(!found && !automatic)
+		if(duplicate)
+			log_error("Warning: Duplicate node! [src.get_debug_name()].")
+		else
+			log_error("ERROR: Invalid node! [src.get_debug_name()].")
 
 	return found
 

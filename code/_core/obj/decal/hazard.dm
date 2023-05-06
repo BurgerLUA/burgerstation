@@ -17,6 +17,9 @@
 /obj/decal/hazard/full
 	icon_state = "full"
 
+/obj/decal/hazard/full/faded
+	alpha = 100
+
 
 /obj/decal/hazard/black
 	icon = 'icons/obj/decal/hazard_full.dmi'

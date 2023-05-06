@@ -358,6 +358,7 @@
 /mob/Finalize()
 	. = ..()
 	update_z_position()
+	handle_lighting_alpha()
 
 /mob/New(var/desired_loc,var/client/C)
 

@@ -2,20 +2,20 @@
 
 	var/list/categorized_abilities = list()
 
-	for(var/k in subtypesof(/ability))
-		var/ability/AB = k
-		var/category = initial(AB.category)
-		if(!category)
-			continue
-		if(!categorized_abilities[category])
-			categorized_abilities[category] = list()
-		categorized_abilities[category] += AB
-
-	var/list/abilitiy_buttons = list()
+	for(var/j in machine.ability_types)
+		for(var/k in subtypesof(j))
+			var/ability/AB = k
+			var/category = initial(AB.category)
+			if(!category)
+				continue
+			if(!categorized_abilities[category])
+				categorized_abilities[category] = list()
+			categorized_abilities[category] += AB
 
 	var/obj/hud/button/close_ability_choice/C = new
 	C.linked_machine = machine
 
+	var/list/abilitiy_buttons = list()
 	var/max_x = 0
 	var/y=0
 	for(var/category in categorized_abilities)
@@ -100,10 +100,7 @@
 				continue
 			selected = TRUE
 			break
-		var/obj/structure/interactive/ability_machine/connected_machine = linked_close.linked_machine
-		if(connected_machine.debug)
-			unlocked = TRUE
-		else if(A.ckey)
+		if(A.ckey)
 			var/savedata/client/globals/GD = GLOBALDATA(A.ckey)
 			if("[src.stored_ability]" in GD.loaded_data["unlocked_abilities"])
 				unlocked = TRUE

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/item/clothing/suit/wizard.dmi'
 
 	desc = "EI NATH!!"
-	desc_extended = "Not necessairly required to use magic, but wearing this, or any other clothing with high Magic protection will make your spells stronger."
+	desc_extended = "A cheap mass-produced enchanted set of robes. Not necessairly required to use magic, but wearing this, or any other clothing with magic protection will make your spells stronger."
 
 	armor = /armor/dark/arcane
 
@@ -13,31 +13,61 @@
 
 	dyeable = TRUE
 
-	mob_values_add = list(
-		SKILL_MAGIC = 3,
-		SKILL_SUMMONING = 3
+	dyeable = TRUE
+
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"lightening" = "#FFFFFF",
 	)
 
+	no_initial_blend = TRUE
+
 /obj/item/clothing/overwear/coat/wizard/red
-	color = "#FF0000"
+	polymorphs = list(
+		"base" = COLOR_RED,
+		"lightening" = "#FFFFFF",
+	)
 
 /obj/item/clothing/overwear/coat/wizard/blue
-	color = "#0065FF"
+	polymorphs = list(
+		"base" = COLOR_BLUE,
+		"lightening" = "#FFFFFF",
+	)
 
 /obj/item/clothing/overwear/coat/wizard/real
 	name = "authentic wizard robes"
 	desc = "The real deal."
-	desc_extended = "A real, totally authentic wizard robes with all the protection a wizard needs."
+	desc_extended = "A real, entirely authentic enchanted wizard robes with all the protection a serious wizard needs."
 
 	armor = /armor/cloth/arcane/bonus
 
 	rarity = RARITY_RARE
 
+	mob_values_add = list(
+		SKILL_MAGIC = 5,
+		SKILL_SUMMONING = 5
+	)
+
 /obj/item/clothing/overwear/coat/wizard/real/purple
-	color = "#B05FE2"
+	polymorphs = list(
+		"base" = "#B05FE2",
+		"lightening" = "#FFFFFF",
+	)
 
 /obj/item/clothing/overwear/coat/wizard/real/blue
-	color = "#0751C0"
+	polymorphs = list(
+		"base" = "#0751C0",
+		"lightening" = "#FFFFFF",
+	)
 
 /obj/item/clothing/overwear/coat/wizard/real/red
-	color = "#F62A12"
+	polymorphs = list(
+		"base" = "#F62A12",
+		"lightening" = "#FFFFFF",
+	)
+
+/obj/item/clothing/overwear/coat/wizard/real/syndicate
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"lightening" = "#FFFFFF",
+	)

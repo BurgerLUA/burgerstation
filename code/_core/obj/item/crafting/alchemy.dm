@@ -66,7 +66,7 @@ Old code. Maybe someone else will find a use for it....
 
 		for(var/k in reagents_list)
 			var/v = reagents_list[k]
-			C.reagents.add_reagent(k,v,TNULL,FALSE,caller = caller)
+			C.reagents.add_reagent(k,v,TNULL,FALSE,FALSE,caller = caller)
 
 		if(I.reagents)
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, caller = caller)

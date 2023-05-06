@@ -281,6 +281,7 @@
 		var/obj/item/container/simple/beaker/B = k
 		B.reagents.transfer_reagents_to(src.reagents,B.reagents.volume_current,FALSE,FALSE, caller = caller)
 		B.reagents.update_container(caller)
+		B.reagents.process_recipes(caller)
 
 	spent = TRUE
 

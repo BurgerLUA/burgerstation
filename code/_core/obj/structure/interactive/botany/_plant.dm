@@ -184,10 +184,11 @@
 			var/volume = reagents.stored_reagents[r_id]
 			var/amount_metabolized = R.on_metabolize_plant(src,reagents,max(R.metabolism_stomach,R.metabolism_blood,R.metabolism_skin),volume,1)
 			if(amount_metabolized > 0)
-				total_metabolized -= reagents.add_reagent(r_id,-amount_metabolized,FALSE,FALSE,null)
+				total_metabolized -= reagents.add_reagent(r_id,-amount_metabolized,TNULL,FALSE,FALSE) //Subtraction is intentional.
 
 		if(total_metabolized > 0)
 			reagents.update_container(update_owner=FALSE)
+			//Recipes aren't processed here intentionally.
 
 	update_sprite()
 
@@ -293,8 +294,9 @@
 			for(var/r_id in associated_plant.reagents)
 				var/r_value = associated_plant.reagents[r_id] * potency * health_mod + (skill_power * 10) //10 skill adds 1 extra chemical, up to 10 extra at lv100
 				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
-			P.reagents.update_container(caller,update_owner=FALSE)
 			FINALIZE(P)
+			//Update container is called in Finalize()
+			P.reagents.process_recipes(caller)
 			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
 			harvest_contents += P
 

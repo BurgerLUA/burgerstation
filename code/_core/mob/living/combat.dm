@@ -67,7 +67,7 @@
 
 /mob/living/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
 
-	if(is_living(attacker))
+	if(src != attacker && is_living(attacker))
 		var/mob/living/L = attacker
 		if(!damage_type || !damage_type.allow_friendly_fire)
 			if(!allow_hostile_action(L.loyalty_tag,src))

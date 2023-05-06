@@ -157,41 +157,17 @@
 	desc = "Liquid oxygen reacts very strongly with liquid phoron. Can create fires or explosions depending on temperature."
 
 	required_reagents = list(
-		/reagent/fuel/oxygen = 1,
-		/reagent/fuel/phoron = 1
+		/reagent/fuel/oxygen = 0,
+		/reagent/fuel/phoron = 0
 	)
 	results = list()
 
 /reagent_recipe/explosion/oxygen_phoron_reaction/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
-
-	var/turf/explosion_location = get_turf(container.owner)
-
-	if(is_item(container.owner))
-		var/obj/item/I = container.owner
-		I.drop_item(explosion_location)
-
-	var/tag_to_use
+	var/turf/T = get_turf(container.owner)
+	var/loyalty_tag
 	if(is_living(caller))
 		var/mob/living/L = caller
-		tag_to_use = L.loyalty_tag
-
-	var/explosion_mod = (T0C - container.average_temperature)/T0C
-	explosion_mod = clamp(explosion_mod,0,1)
-	var/fire_mod = 1 - explosion_mod
-
-	if(explosion_mod >= 0.25)
-		var/explosion_power = round( (( (magnitude*explosion_mod) ** 0.3) * 0.5) + magnitude*explosion_mod*0.1, 0.01)
-		explode(explosion_location,explosion_power,caller,container.owner,tag_to_use)
-
-	if(fire_mod >= 0.25)
-		var/fire_power = round( (( (magnitude*fire_mod) ** 0.3) * 0.5) + magnitude*fire_mod*0.1, 0.01)
-		firebomb(explosion_location,fire_power,caller,container.owner,tag_to_use)
-
-	smoke(
-		explosion_location,
-		magnitude*0.4,
-		40,
-		container,
-		caller
-	)
+		loyalty_tag = L.loyalty_tag
+	container.act_explode(caller,container.owner,T,magnitude,loyalty_tag)
+	return TRUE
 

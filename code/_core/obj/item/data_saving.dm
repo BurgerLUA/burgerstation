@@ -213,8 +213,7 @@
 			if(!R_path)
 				log_error("LOAD ERROR: Tried loading an invalid reagent [r_id]!")
 				continue
-			reagents.add_reagent(R_path,volume,TNULL,FALSE)
-		reagents.update_container(P)
+			reagents.add_reagent(R_path,volume)
 	return TRUE
 
 /obj/hud/inventory/proc/load_inventory_data(var/mob/living/advanced/player/P,var/list/inventory_data,var/loadout=FALSE) //Setting the data found.

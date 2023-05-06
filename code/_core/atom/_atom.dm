@@ -132,26 +132,6 @@
 /atom/proc/get_base_transform()
 	return matrix()
 
-/atom/Initialize()
-
-	if(reagents)
-		reagents = new reagents(src)
-
-	if(health)
-		health = new health(src)
-
-	if(listener)
-		all_listeners += src
-
-	. = ..()
-
-/atom/Finalize()
-	. = ..()
-	update_name(name) //Setup labels
-	update_atom_light()
-	if(health)
-		health.Finalize()
-
 /atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
 	return src
 

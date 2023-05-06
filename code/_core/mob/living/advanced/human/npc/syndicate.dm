@@ -70,6 +70,21 @@
 
 	soul_size = SOUL_SIZE_UNCOMMON
 
+
+/mob/living/advanced/npc/syndicate/wizard
+	name = "syndicate wizard"
+
+	possible_outfits = list(
+		/loadout/syndicate_wizard = 1
+	)
+	loadout_to_level = list(
+		/loadout/syndicate_wizard = 1
+	)
+
+	level = 24
+
+	soul_size = SOUL_SIZE_UNCOMMON
+
 /mob/living/advanced/npc/syndicate/ultra
 	name = "\improper ULTRA syndicate operative"
 	level = 100
