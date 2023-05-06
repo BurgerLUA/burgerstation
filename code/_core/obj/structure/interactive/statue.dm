@@ -95,3 +95,12 @@
 	GENERATE(A)
 	FINALIZE(A)
 	set_stored_object(A)
+
+
+/obj/structure/interactive/statue/lumin
+	name = "Tomb of An Unknown Employee"
+	desc = "Here rests an unknown employee, unknown by name or rank, but who's acts will not be forgotten."
+	desc_extended = "Thank you. All of you. For all that you do."
+
+	icon = 'icons/obj/structure/memorial.dmi'
+	icon_state = "memorial"
