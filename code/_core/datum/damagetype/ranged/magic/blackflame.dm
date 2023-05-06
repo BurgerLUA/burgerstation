@@ -29,6 +29,6 @@
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.add_status_effect(FIRE,100,100,stealthy=L.on_fire)
+		L.ignite(50,source=attacker)
 
 	. = ..()

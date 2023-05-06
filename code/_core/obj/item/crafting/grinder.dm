@@ -55,19 +55,18 @@
 			continue
 
 		if(I.reagents)
-			caller.to_chat(span("warning","DEBUG Item contains reagents! [I.reagents]"))
-			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE, caller = caller)
+			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE,FALSE)
 			success = TRUE
 
 		if(I.grinder_reagents)
-			caller.to_chat(span("warning","DEBUG Item contains alchemy reagents! [I.grinder_reagents]"))
-			C.reagents.add_reagent(I.grinder_reagents,I.reagent_count)                                               // instead of static ten-per-item, probably give I....
-			success = TRUE                                                                              // ...something like "reagent_count"...
-                                                                                                        // ... (I.grinder_reagents,I.reagent_count)
+			C.reagents.add_reagent(I.grinder_reagents,I.reagent_count,TNULL,FALSE,FALSE)
+			success = TRUE
+
 		if(!I.allow_reagent_transfer_from)
 			qdel(I)
 		else
 			I.reagents.update_container(caller)
+			I.reagents.process_recipes(caller)
 
 	if(!success)
 		caller.to_chat(span("warning","There are no valid items to process!"))
@@ -78,9 +77,10 @@
 		var/reagent/R = REAGENT(reagent_type)
 		if(R.processed_reagent)
 			var/temperature = C.reagents.average_temperature
-			var/amount_removed = -C.reagents.add_reagent(reagent_type,-reagent_amount,FALSE)
+			var/amount_removed = -C.reagents.add_reagent(reagent_type,-reagent_amount,TNULL,FALSE,FALSE)
 			C.reagents.add_reagent(R.processed_reagent,amount_removed,temperature,FALSE,FALSE,caller = caller)
 
 	C.reagents.update_container(caller)
+	C.reagents.process_recipes(caller)
 
 	return TRUE

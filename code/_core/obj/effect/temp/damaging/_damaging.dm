@@ -48,7 +48,8 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 
 	do_damage(L)
 
-	CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,src::do_cross_damage(),L)
+	if(!CALLBACK_EXISTS("\ref[src]_cross_\ref[L]"))
+		CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,src::do_cross_damage(),L)
 
 /obj/effect/temp/hazard/Crossed(atom/movable/O)
 	if(enabled && cross_hazard && is_living(O))
@@ -66,12 +67,6 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	.[PARAM_ICON_Y] = rand(0,32)
 
 /obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
-
-	if(is_living(victim) && is_living(owner) && owner != victim)
-		var/mob/living/L = victim
-		var/mob/living/L2 = owner
-		if(!allow_hostile_action(L2.loyalty_tag,L))
-			return FALSE
 	var/damagetype/DT = all_damage_types[damage_type]
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(owner,src,params,DT))

@@ -51,11 +51,5 @@
 	desc_extended = "An experimental vendor that vends genetic disks."
 
 	stored_types = list(
-		/obj/item/disk/genetic/dash,
-		/obj/item/disk/genetic/dash/controlled,
-		/obj/item/disk/genetic/dash/targeted,
-		/obj/item/disk/genetic/dash/random,
-		/obj/item/disk/genetic/dash/fleeting,
-		/obj/item/disk/genetic/quick_draw,
-		/obj/item/disk/genetic/quick_draw/plus
+
 	)

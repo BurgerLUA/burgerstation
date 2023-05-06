@@ -79,11 +79,12 @@
 			continue
 		IT.reagents.transfer_reagents_to(T, IT.reagents.volume_current/calculated_bites, FALSE )
 		IT.reagents.update_container(consumer)
+		IT.reagents.process_recipes(consumer)
 
 	if(calculated_bites < 1)
 		calculated_bites = 1
 
-	reagents.transfer_reagents_to(T, reagents.volume_current/calculated_bites)
+	reagents.transfer_reagents_to(T, reagents.volume_current/calculated_bites) //Safe to make it update.
 
 	return T.qdeleting ? null : T
 

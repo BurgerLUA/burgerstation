@@ -40,3 +40,6 @@
 
 /obj/item/clothing/head/hat/wizard/real/red
 	color = "#F62A12"
+
+/obj/item/clothing/head/hat/wizard/real/syndicate
+	color = COLOR_BLACK

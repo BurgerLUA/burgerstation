@@ -12,13 +12,53 @@
 
 	var/multiplier = 1
 
-	var/atom/source
+	var/atom/owner
 
 	collision_flags = FLAG_COLLISION_CRAWLING
 
-/obj/fire_process/New(var/desired_loc)
+	damage_type = /damagetype/fire_turf
+
+	density = TRUE
+
+	hazardous = TRUE
+
+/obj/fire_process/proc/do_damage(var/atom/movable/victim,var/distance_check=0)
+
+	if(!victim || !victim.z || !src.z || victim.z != src.z)
+		return FALSE
+
+	if(CALLBACK_EXISTS("\ref[victim]_do_fire_ground_damage"))
+		return FALSE
+
+	if(distance_check <= 0)
+		if(victim.loc != src.loc)
+			return FALSE
+	else
+		if(get_dist(victim,src) > distance_check)
+			return FALSE
+
+	var/damagetype/DT = all_damage_types[damage_type]
+	var/list/params = get_params()
+	if(!victim.can_be_attacked(owner,src,params,DT))
+		return FALSE
+	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,damage_type,params,TRUE,TRUE)
+	. = DT.process_damage(owner,victim,src,object_to_damage,owner,1)
+	CALLBACK("\ref[victim]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
+
+/obj/fire_process/Crossed(atom/movable/O)
+	. = ..()
+	if(O.health) do_damage(O)
+
+/obj/fire_process/Finalize()
 	. = ..()
 	SSexplosion.active_fires += src
+	if(loc)
+		for(var/k in loc.contents)
+			var/atom/movable/M = k
+			if(M == src)
+				continue
+			if(M.health) do_damage(k)
+
 
 /obj/fire_process/Destroy()
 	SSexplosion.active_fires -= src
@@ -26,21 +66,28 @@
 
 /obj/fire_process/proc/process()
 
-	var/turf/current_turf = get_turf(src)
-
-	if(fire_power <= 0)
+	if(!loc || fire_power <= 0)
 		qdel(src)
 		return FALSE
 
-	fire_power -= DECISECONDS_TO_SECONDS(1)
+	fire_power -= 0.1*0.5 //10% of a tile per explosion process tick.
 
-	if(fire_power <= initial_fire_power*0.5)
+	if(fire_power < 20) //Don't spread if we don't have enough fuel to spread.
 		return FALSE
 
 	if(!momentum)
 		return TRUE
 
-	for(var/d in DIRECTIONS_CARDINAL)
+	var/list/possible_directions = DIRECTIONS_ALL
+	var/list/directions_to_check = list()
+	for(var/i=1,i<=4,i++)
+		var/direction_choice = pick(possible_directions)
+		directions_to_check += direction_choice
+		possible_directions -= direction_choice
+
+	var/turf/current_turf = loc
+
+	for(var/d in directions_to_check)
 
 		if(momentum && !((momentum | turn(momentum,45) | turn(momentum,-45)) & d))
 			continue
@@ -49,18 +96,20 @@
 		if(!T)
 			continue
 
-		if(!T.Enter(src,src.loc))
+		if(T.density && !T.Enter(src,src.loc))
+			if(T.health) do_damage(T,1)
 			momentum &= ~d
 			return TRUE
 
-		for(var/k in T.contents)
-			var/atom/movable/M = k
-			if(is_living(M))
-				var/mob/living/L = M
-				if(allow_hostile_action(src.loyalty_tag,L))
-					L.ignite(fire_power*multiplier,source=source)
-			if(M.density && !M.Cross(src,current_turf))
-				momentum &= ~d
+		if(T.has_dense_atom)
+			var/should_return = FALSE
+			for(var/k in T.contents)
+				var/atom/movable/M = k
+				if(M.density && !M.Cross(src,current_turf))
+					momentum &= ~d
+					should_return = TRUE
+					if(M.health) do_damage(M,1)
+			if(should_return)
 				return TRUE
 
 		var/obj/fire_process/FP = locate() in T.contents
@@ -71,7 +120,9 @@
 			FP.momentum = d
 			FP.multiplier = src.multiplier
 			FP.loyalty_tag = src.loyalty_tag
-			FP.source = src.source
+			FP.owner = src.owner
+			INITIALIZE(FP)
+			FINALIZE(FP)
 		else
 			FP.fire_power = max(FP.fire_power,src.fire_power - 1)
 			FP.momentum = FP.momentum & momentum
@@ -80,3 +131,9 @@
 	momentum = 0x0
 
 	return TRUE
+
+
+/obj/fire_process/proc/get_params(var/atom/victim)
+	. = list()
+	.[PARAM_ICON_X] = rand(0,32)
+	.[PARAM_ICON_Y] = rand(0,8)

@@ -22,6 +22,9 @@
 	//In case of pesky race conditions, it will keep calling if the alpha is not correct.
 	//If it's the same, then no alterations are needed.
 
+	if(!plane_master_lighting)
+		return FALSE
+
 	if(CALLBACK_EXISTS("\ref[src]_nightvision"))
 		return FALSE
 

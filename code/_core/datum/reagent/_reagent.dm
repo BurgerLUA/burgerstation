@@ -144,3 +144,6 @@
 
 /reagent/proc/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 	return TRUE
+
+/reagent/proc/on_temperature_change(var/reagent_container/container,var/atom/owner)
+	return TRUE

@@ -43,9 +43,9 @@ var/global/time_dialation = 0
 		if(10 to 30)
 			log_subsystem(SS.name,"Initialization took <b>[benchmark_time]</b> seconds.")
 		if(30 to 60)
-			log_subsystem(SS.name,"Initialization took <b style=style='color:red'>[benchmark_time]</b> seconds.")
+			log_subsystem(SS.name,"Initialization took <b style='color:red'>[benchmark_time]</b> seconds.")
 		if(60 to INFINITY)
-			log_subsystem(SS.name,"<b style=style='color:red'>Initialization took [benchmark_time] seconds.</b>")
+			log_subsystem(SS.name,"<b style='color:red'>Initialization took [benchmark_time] seconds.</b>")
 	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 /world/proc/life()

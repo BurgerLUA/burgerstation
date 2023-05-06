@@ -132,7 +132,9 @@ SUBSYSTEM_DEF(explosion)
 		FP.loyalty_tag = desired_loyalty_tag
 		FP.multiplier = multiplier
 		FP.momentum = NORTH | EAST | SOUTH | WEST
-		FP.source = desired_owner
+		FP.owner = desired_owner
+		INITIALIZE(FP)
+		FINALIZE(FP)
 	else
 		FP.fire_power += desired_range*2
 

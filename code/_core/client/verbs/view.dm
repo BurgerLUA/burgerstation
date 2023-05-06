@@ -179,20 +179,3 @@
 		M_control = new(mob)
 		M_control.update_owner(mob)
 		src.to_chat(span("notice","You open the map."))
-
-/*
-/client/verb/adjust_nightvision()
-	set name = "Adjust Nightvision"
-	set category = "View"
-
-	if(!mob)
-		return FALSE
-
-	var/desired_nightvision = input("What is your desired lighting alpha? (0 to 255)","Lighting Alpha",mob.lighting_mods["verb"] ? mob.lighting_mods["verb"] : 255) as null|num
-
-	if(isnum(desired_nightvision))
-		desired_nightvision = clamp(desired_nightvision,0,254)
-		mob.add_lighting_mod("verb",desired_nightvision)
-	else
-		mob.remove_lighting_mod("verb")
-*/

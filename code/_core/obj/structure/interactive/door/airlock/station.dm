@@ -247,6 +247,9 @@
 	color = COLOR_WHITE
 	filler = "glass"
 
+/obj/structure/interactive/door/airlock/station/glass/no_access
+	no_access = TRUE
+
 /obj/structure/interactive/door/airlock/station/office
 	name = "office airlock"
 	color = "#DD924E"

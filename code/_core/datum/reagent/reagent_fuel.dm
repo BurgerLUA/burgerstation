@@ -12,22 +12,53 @@
 
 	blood_toxicity_multiplier = 5
 
+	value = 1
+
+	var/ignition_temperature = TNULL
+
+/reagent/fuel/on_temperature_change(var/reagent_container/container)
+
+	. = ..()
+
+	if(!container.owner || ignition_temperature == TNULL || container.average_temperature < ignition_temperature || !is_item(container.owner))
+		return .
+
+	var/turf/T = get_turf(container.owner)
+	if(!T)
+		return .
+
+	var/obj/item/I = container.owner
+
+	var/volume_amount = container.stored_reagents[src.type]
+	container.add_reagent(src.type,-volume_amount,should_update = FALSE, check_recipes = FALSE)
+
+	var/loyalty_tag
+	if(I.last_interacted && is_living(I.last_interacted))
+		var/mob/living/L = I.last_interacted
+		loyalty_tag = L.loyalty_tag
+
+	//Special snowflake code that makes it so that explosives don't trigger.
+	if(fire_strength_per_unit > 0)
+		var/firebomb_power = volume_amount*fire_strength_per_unit
+		if(firebomb_power < 1)
+			return .
+		firebomb(T,firebomb_power,I.last_interacted,container.owner,loyalty_tag,1)
+	else
+		src.act_explode(container,I.last_interacted,container.owner,T,1,loyalty_tag)
+
+
+/reagent/fuel/New(var/desired_loc)
+	//Automatically set value.
+	value = (explosion_strength_per_unit + flash_strength_per_unit*0.1 + bang_strength_per_unit*0.1 + fire_strength_per_unit*0.5)*0.3
+	. = ..()
+	value = CEILING(value,0.01)
+
+
 /reagent/fuel/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 
 	var/turf/T = get_turf(container.owner)
 
 	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
-
-	if(explosion_strength_per_unit > 0)
-		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
-		smoke(
-			epicenter,
-			volume_amount*explosion_strength_per_unit*0.2,
-			SECONDS_TO_DECISECONDS(10*explosion_strength_per_unit),
-			null,
-			owner,
-			alpha=100
-		)
 
 	if(flash_strength_per_unit > 0)
 		var/flash_range = min(VIEW_RANGE*2,volume_amount*flash_strength_per_unit)
@@ -52,6 +83,17 @@
 		if(fire_range >= 2)
 			firebomb(T,fire_range,owner,source,desired_loyalty_tag)
 
+	if(explosion_strength_per_unit > 0)
+		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
+		smoke(
+			epicenter,
+			volume_amount*explosion_strength_per_unit*0.2,
+			SECONDS_TO_DECISECONDS(10*explosion_strength_per_unit),
+			null,
+			owner,
+			alpha=100
+		)
+
 	. = ..()
 
 /reagent/fuel/oxygen //Found in the snow biome as a magic plant
@@ -68,7 +110,7 @@
 	explosion_strength_per_unit = 0.01
 
 	heated_reagent = null //Nothing.
-	heated_reagent_temp = 54.36
+	heated_reagent_temp = 330
 
 /reagent/fuel/oil
 	name = "Processed Oil"
@@ -79,6 +121,8 @@
 
 	explosion_strength_per_unit = 0.03
 	fire_strength_per_unit = 0.03
+
+	ignition_temperature = 450
 
 /reagent/fuel/oil/crude
 	name = "Crude Oil"
@@ -95,6 +139,8 @@
 	explosion_strength_per_unit = 0.02
 	fire_strength_per_unit = 0.02
 
+	ignition_temperature = 500
+
 /reagent/fuel/oil/carbon
 	name = "Carbonized Oil"
 	color = "#000000"
@@ -110,6 +156,8 @@
 	explosion_strength_per_unit = 0.01
 	fire_strength_per_unit = 0.02
 
+	ignition_temperature = 550
+
 /reagent/fuel/welding
 	name = "Welding Fuel"
 	color = "#7F3300"
@@ -119,6 +167,8 @@
 
 	explosion_strength_per_unit = 0.06
 	fire_strength_per_unit = 0.1
+
+	ignition_temperature = 475
 
 /reagent/fuel/hydrogen
 	name = "Liquid Hydrogen"
@@ -132,6 +182,8 @@
 	explosion_strength_per_unit = 0.1
 	fire_strength_per_unit = 0.1
 
+	ignition_temperature = 860
+
 /reagent/fuel/hydrogen_peroxide
 	name = "Hydrogen Peroxide"
 	color = "#FFEFEF"
@@ -144,6 +196,8 @@
 	explosion_strength_per_unit = 0.2
 	fire_strength_per_unit = 0.3
 
+	ignition_temperature = 420
+
 /reagent/fuel/phoron
 	name = "Liquid Phoron"
 	color = "#FF00DC"
@@ -153,6 +207,8 @@
 
 	explosion_strength_per_unit = 0.3
 	fire_strength_per_unit = 0.6
+
+	ignition_temperature = 300
 
 /reagent/fuel/acetone
 	name = "Acetone"
@@ -164,6 +220,8 @@
 	explosion_strength_per_unit = 0.02
 	fire_strength_per_unit = 0.01
 
+	ignition_temperature = 310
+
 /reagent/fuel/diethylamine
 	name = "Diethylamine"
 	alpha = 255
@@ -173,13 +231,15 @@
 	explosion_strength_per_unit = 0.06
 	fire_strength_per_unit = 0.03
 
+	ignition_temperature = 600
+
 /reagent/fuel/tnt
 	name = "Trinitrotoluene"
 	desc = "Also know as TNT, this material is very explosive."
 
 	particle_size = 0.75
 
-	explosion_strength_per_unit = 0.1
+	ignition_temperature = 370
 
 /reagent/fuel/potassium_perchlorate
 	name = "Potassium Perchlorate"
@@ -191,6 +251,8 @@
 	explosion_strength_per_unit = 0.004
 	bang_strength_per_unit = 30/VIEW_RANGE
 
+	ignition_temperature = 370
+
 /reagent/fuel/flash_powder
 	name = "Flash Powder Mixture"
 	desc = "What causes the flash and bang in the flashbang."
@@ -201,3 +263,5 @@
 	explosion_strength_per_unit = 0.002
 	flash_strength_per_unit = 20/VIEW_RANGE
 	bang_strength_per_unit = 40/VIEW_RANGE
+
+	ignition_temperature = 370

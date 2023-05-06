@@ -1,20 +1,25 @@
 /atom/proc/Initialize()
-	if(initialized)
-		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
-		return TRUE
+	if(reagents)
+		reagents = new reagents(src)
+	if(health)
+		health = new health(src)
+	if(listener)
+		all_listeners += src
 	return TRUE
 
 /atom/proc/PostInitialize()
 	return TRUE
 
 /atom/proc/Generate() //Generate the atom, giving it stuff if needed.
-	if(generated)
-		CRASH("WARNING: [src.get_debug_name()] was generated twice!")
-		return TRUE
 	return TRUE
 
 /atom/proc/Finalize() //We're good to go.
-	if(finalized)
-		CRASH("WARNING: [src.get_debug_name()] was finalized twice!")
-		return TRUE
+	update_name(name) //Setup labels
+	update_atom_light()
+	if(health)
+		health.Finalize()
+	if(reagents && length(reagents.stored_reagents) > 0)
+		reagents.update_container(force=TRUE)
+		//Don't check recipes here. If you created an item that needs to process recipes after it was created, then you made shitcode.
 	return TRUE
+

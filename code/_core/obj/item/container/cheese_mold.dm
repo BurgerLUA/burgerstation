@@ -16,23 +16,59 @@
 
 	value = 30
 
-
 /obj/item/container/cheese_mold/block
 	icon_state = "block"
 
-/obj/item/container/cheese_mold/proc/make_cheese()
+/obj/item/container/cheese_mold/think()
+
+	if(process_count < CHEESE_PROCESS_TIME)
+		var/area/A = get_area(src)
+		if(A)
+			process_count++
+			if(cheese_mix[A.cheese_type])
+				cheese_mix[A.cheese_type] += 1
+			else
+				cheese_mix[A.cheese_type] = 1
+			if(process_count >= CHEESE_PROCESS_TIME)
+				src.visible_message(span("notice","The cheese in \the [src.name] finishes curdling!"))
+		. = TRUE
+
+	return ..() || .
+
+/obj/item/container/cheese_mold/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	if(process_count < CHEESE_PROCESS_TIME || !is_inventory(object))
+		return ..()
+
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
 
 	var/turf/T = get_turf(src)
+	if(!T)
+		T = get_turf(caller)
+
+	if(!T)
+		return FALSE //Something terrible went wrong.
+
+	var/obj/item/container/edible/dynamic/cheese/C = new(T)
+	C.icon_state = src.icon_state //Shape the cheese.
+	INITIALIZE(C)
 
 	var/original_temperature = reagents.average_temperature
 
 	var/total_milk_volume = 0
 
-	for(var/reagent_path in reagents.stored_reagents)
-		if(!ispath(reagent_path,/reagent/nutrition/milk/))
+	for(var/r_id in src.reagents.stored_reagents)
+		var/reagent_volume = reagents.stored_reagents[r_id]
+		var/reagent_temperature = reagents.stored_reagents_temperature[r_id]
+		if(ispath(r_id,/reagent/nutrition/milk/))
+			total_milk_volume += reagent_volume
 			continue
-		var/reagent_volume = reagents.stored_reagents[reagent_path]
-		total_milk_volume += reagent_volume
+		if(ispath(r_id,/reagent/enzymes))
+			continue
+		C.reagents.add_reagent(r_id,reagent_volume,reagent_temperature,FALSE,FALSE)
+
+	src.reagents.remove_reagents() //Safe to update.
 
 	var/best_cheese = null
 	var/best_cheese_value = 0
@@ -43,40 +79,16 @@
 			best_cheese = k
 			best_cheese_value = v
 
-	var/obj/item/container/edible/dynamic/cheese/C = new(T)
-	C.icon_state = icon_state
-	INITIALIZE(C)
-	C.reagents.add_reagent(best_cheese,total_milk_volume,original_temperature,FALSE,FALSE)
+	C.reagents.add_reagent(best_cheese,total_milk_volume,original_temperature)
+
 	FINALIZE(C)
 
-	T.visible_message(span("notice","The cheese finishes curdling!"))
+	C.reagents.process_recipes() //Update container is called in FINALIZE(C)
 
-	C.reagents.update_container()
-
-	reagents.remove_all_reagents()
-
-	process_count = 0
-	allow_reagent_transfer_to = TRUE
-	allow_reagent_transfer_from = TRUE
-	cheese_mix.Cut()
-	STOP_THINKING(src)
+	caller.to_chat(span("notice","You take \the [C.name] out of \the [src.name]."))
 
 	return TRUE
 
-/obj/item/container/cheese_mold/think()
-
-	if(src.z)
-		process_count++
-		var/area/A = get_area(src)
-		if(cheese_mix[A.cheese_type])
-			cheese_mix[A.cheese_type] += 1
-		else
-			cheese_mix[A.cheese_type] = 1
-
-	if(process_count >= CHEESE_PROCESS_TIME)
-		make_cheese()
-
-	return TRUE
 
 /obj/item/container/cheese_mold/click_self(var/mob/caller,location,control,params)
 
