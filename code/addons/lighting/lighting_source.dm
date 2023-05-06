@@ -372,7 +372,7 @@
 		return	// No change.
 
 	var/list/lighting_corner/corners = list()
-	var/list/turf/turfs                    = list()
+	var/list/turf/turfs = list()
 	var/thing
 	var/lighting_corner/C
 	var/turf/T
@@ -393,7 +393,7 @@
 
 	FOR_DVIEW(T, actual_range, source_turf, 0)
 
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
+		CHECK_TICK_SAFE(75,FPS_SERVER*10)
 
 		if (light_angle && !facing_opaque)	// Directional lighting coordinate filter.
 			test_x = T.x - test_x_offset

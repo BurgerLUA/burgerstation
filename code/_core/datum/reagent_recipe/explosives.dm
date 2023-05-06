@@ -163,11 +163,7 @@
 	results = list()
 
 /reagent_recipe/explosion/oxygen_phoron_reaction/on_react(var/mob/caller,var/reagent_container/container,var/magnitude)
-	var/turf/T = get_turf(container.owner)
-	var/loyalty_tag
-	if(is_living(caller))
-		var/mob/living/L = caller
-		loyalty_tag = L.loyalty_tag
-	container.act_explode(caller,container.owner,T,magnitude,loyalty_tag)
+	container.average_temperature += 1000 //1000 regardless.
+	container.process_temperature() //Will turn it into a fireball.
 	return TRUE
 

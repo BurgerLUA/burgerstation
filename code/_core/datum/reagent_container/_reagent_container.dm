@@ -176,20 +176,20 @@
 	else
 		. += T0C + 20
 
-
-
-
-/reagent_container/proc/process_temperature()
+/reagent_container/proc/process_temperature(var/debug=FALSE)
 
 	if(!owner)
+		if(debug) log_debug("Temperature Process Failed: No owner.")
 		return FALSE
 
 	if(volume_current <= 0)
+		if(debug) log_debug("Temperature Process Failed: No volume.")
 		return FALSE
 
 	var/desired_temperature = get_desired_temperature()
 
 	if(desired_temperature == average_temperature)
+		if(debug) log_debug("Temperature Process Failed: Current temperature is already the desired temperature.")
 		return TRUE
 
 	var/temperature_mod = 0
@@ -201,26 +201,44 @@
 		var/volume = stored_reagents[r_id]
 		temperature_mod += (volume * R.temperature_mod)
 
-	temperature_mod *= 1/volume_current
+	var/temperature_mod_multiplier = 1/volume_current
+	if(debug) log_debug("Temperature Process: temperature_mod_multiplier = [temperature_mod_multiplier]")
+
+	temperature_mod *= temperature_mod_multiplier
 
 	if(is_inventory(owner.loc))
 		var/obj/hud/inventory/I = owner.loc
 		if(I.inventory_temperature_mod > 0)
 			temperature_mod *= I.inventory_temperature_mod
+			if(debug) log_debug("Temperature Process: inventory_temperature_mod = [I.inventory_temperature_mod]")
 
 	var/temperature_diff = desired_temperature - average_temperature
 
-	var/temperature_change = temperature_change_mul * ((temperature_diff * (1/temperature_mod)) + clamp(temperature_diff,-0.01,0.01)) //The clamp at the end ensures that the temperature will always increase/decrease.
+	if(debug) log_debug("Temperature Process: temperature_diff = [temperature_diff] (old)")
+
+	if(temperature_diff > 0)
+		temperature_diff = max(temperature_diff,1)
+	else
+		temperature_diff = min(temperature_diff,-1)
+
+	if(debug) log_debug("Temperature Process: temperature_diff = [temperature_diff] (new)")
+
+	var/temperature_change = temperature_diff * temperature_mod * temperature_change_mul * 0.1 //The funny max/min setup ensures a temperature change.
+
+	if(debug) log_debug("Temperature Process: temperature_change = [temperature_change]")
 
 	if(temperature_change == 0)
+		if(debug) log_debug("Temperature Process Failed: No temperature change detected.")
 		return TRUE
 
 	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
 		average_temperature = max(desired_temperature,average_temperature + temperature_change)
+		if(debug) log_debug("Temperature Process: Set to [average_temperature] (From hot).")
 		. = FALSE
 	else //If we're colder than we need to be.
 		temperature_change *= 0.5 //This means it's slower to heat up.
 		average_temperature = min(desired_temperature,average_temperature + temperature_change)
+		if(debug) log_debug("Temperature Process: Set to [average_temperature] (From cold).")
 	 . = FALSE
 
 	for(var/r_id in stored_reagents_temperature)
@@ -244,9 +262,13 @@
 			if(R.cooled_reagent && removed_amount > 0)
 				add_reagent(R.cooled_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
+		else
+			R.on_temperature_change(src)
 
 	update_container()
 	process_recipes(from_temperature_change=TRUE)
+
+	if(debug) log_debug("Temperature Process Finished.")
 
 	return TRUE
 
