@@ -77,9 +77,8 @@
 				L.bang(duration)
 			play_sound('sound/effects/flashbang.ogg',T,volume=75,range_min=bang_range*0.5,range_max=bang_range*2,channel=SOUND_CHANNEL_FLASHBANG)
 
-
 	if(fire_strength_per_unit > 0)
-		var/fire_range = min(VIEW_RANGE*2,volume_amount*bang_strength_per_unit)
+		var/fire_range = volume_amount*fire_strength_per_unit
 		if(fire_range >= 2)
 			firebomb(T,fire_range,owner,source,desired_loyalty_tag)
 
@@ -108,6 +107,7 @@
 	liquid = 0.25
 
 	explosion_strength_per_unit = 0.01
+	fire_strength_per_unit = 0.08
 
 	heated_reagent = null //Nothing.
 	heated_reagent_temp = 330
@@ -154,7 +154,7 @@
 	heated_reagent_mul = 0.01
 
 	explosion_strength_per_unit = 0.01
-	fire_strength_per_unit = 0.02
+	fire_strength_per_unit = 0.01
 
 	ignition_temperature = 550
 
@@ -166,7 +166,7 @@
 	particle_size = 0.3
 
 	explosion_strength_per_unit = 0.06
-	fire_strength_per_unit = 0.1
+	fire_strength_per_unit = 0.05
 
 	ignition_temperature = 475
 
@@ -180,7 +180,7 @@
 	particle_size = 0.75
 
 	explosion_strength_per_unit = 0.1
-	fire_strength_per_unit = 0.1
+	fire_strength_per_unit = 0.04
 
 	ignition_temperature = 860
 
@@ -194,7 +194,7 @@
 	particle_size = 0.8
 
 	explosion_strength_per_unit = 0.2
-	fire_strength_per_unit = 0.3
+	fire_strength_per_unit = 0.05
 
 	ignition_temperature = 420
 
@@ -206,7 +206,7 @@
 	particle_size = 1
 
 	explosion_strength_per_unit = 0.3
-	fire_strength_per_unit = 0.6
+	fire_strength_per_unit = 0.3
 
 	ignition_temperature = 300
 
@@ -218,7 +218,7 @@
 	particle_size = 0.1
 
 	explosion_strength_per_unit = 0.02
-	fire_strength_per_unit = 0.01
+	fire_strength_per_unit = 0.005
 
 	ignition_temperature = 310
 
@@ -229,7 +229,7 @@
 	particle_size = 0.75
 
 	explosion_strength_per_unit = 0.06
-	fire_strength_per_unit = 0.03
+	fire_strength_per_unit = 0.015
 
 	ignition_temperature = 600
 

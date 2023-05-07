@@ -59,6 +59,8 @@
 				continue
 			if(M.health) do_damage(k)
 
+	set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
+
 
 /obj/fire_process/Destroy()
 	SSexplosion.active_fires -= src
@@ -71,6 +73,11 @@
 		return FALSE
 
 	fire_power -= 0.1*0.5 //10% of a tile per explosion process tick.
+
+	var/desired_alpha = 100 + (fire_power/20)*(255-100)
+	animate(src,alpha=desired_alpha,time=0.5)
+
+	set_light_sprite( (fire_power/20) * 4, fire_power/20, "#FF8C77",LIGHT_OMNI)
 
 	if(fire_power < 20) //Don't spread if we don't have enough fuel to spread.
 		return FALSE
@@ -116,7 +123,7 @@
 		if(!FP || FP.loyalty_tag != src.loyalty_tag)
 			FP = new(T)
 			FP.initial_fire_power = src.initial_fire_power
-			FP.fire_power = src.fire_power - 1
+			FP.fire_power = src.fire_power - 3
 			FP.momentum = d
 			FP.multiplier = src.multiplier
 			FP.loyalty_tag = src.loyalty_tag
@@ -124,7 +131,7 @@
 			INITIALIZE(FP)
 			FINALIZE(FP)
 		else
-			FP.fire_power = max(FP.fire_power,src.fire_power - 1)
+			FP.fire_power = max(FP.fire_power,src.fire_power - 3)
 			FP.momentum = FP.momentum & momentum
 			FP.multiplier = (FP.multiplier + src.multiplier) / 2
 
