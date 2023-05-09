@@ -14,7 +14,6 @@
 	return TRUE
 
 /ai/advanced/slavic
-	language_to_use = LANGUAGE_SLAVIC
 	enemy_tags = list("NanoTrasen")
 	should_find_weapon = TRUE
 	aggression = 1

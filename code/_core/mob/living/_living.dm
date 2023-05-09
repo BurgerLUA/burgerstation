@@ -289,6 +289,8 @@
 
 	var/next_alert = 0 //Time until this specific mob can create an alert that wakes up AI. Prevents spam and increases preformance.
 
+	var/default_language = LANGUAGE_BASIC //Default language to use for talking.
+
 /mob/living/PreDestroy()
 
 	UNPROCESS_LIVING(src)

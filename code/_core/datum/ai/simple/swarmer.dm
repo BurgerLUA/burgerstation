@@ -3,7 +3,6 @@
 	var/next_shot = 0
 	aggression = 2
 	assistance = 1
-	language_to_use = LANGUAGE_BINARY
 	use_cone_vision = FALSE //they see all around them
 
 	var/mob/living/simple/swarmer/console/parent_console
@@ -161,7 +160,7 @@
 			)
 
 		if(length(responses))
-			owner.do_say(pick(responses),language_to_use = language_to_use)
+			owner.do_say(pick(responses),language_to_use = owner.default_language)
 			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 
 /ai/swarmer/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
@@ -181,6 +180,6 @@
 				"NON CITIZEN DETECTED",
 				"PLEASE, I'M DIFFERENT!"
 			)
-			owner.do_say(pick(responses),language_to_use = language_to_use)
+			owner.do_say(pick(responses),language_to_use = owner.default_language)
 			next_talk = world.time + SECONDS_TO_DECISECONDS(5)
 

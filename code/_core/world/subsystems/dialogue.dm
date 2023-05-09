@@ -19,8 +19,10 @@ SUBSYSTEM_DEF(dialogue)
 		if(!initial(CD.folderpath))
 			continue
 		CD = new A
+		if(!src.setup_combat_dialogue(CD))
+			continue
 		all_combat_dialogue[CD.type] = CD
-		src.setup_combat_dialogue(CD)
+
 
 	log_subsystem(name,"Initialized [length(all_combat_dialogue)] sets of combat dialogue.")
 
@@ -45,8 +47,7 @@ SUBSYSTEM_DEF(dialogue)
 		var/file_data = file2text("[CD.folderpath]/[k]")
 		if(!file_data)
 			continue
-		var/file_name = get_filename(k)
-		file_name = replacetext(file_name,".txt","")
+		var/file_name = replacetext(k,".txt","")
 		var/list/file_data_list = splittext(file_data,"\n")
 		CD.dialogue_data[file_name] = list()
 		categories_of_dialogue++
@@ -58,6 +59,7 @@ SUBSYSTEM_DEF(dialogue)
 
 	log_subsystem(src.name,"Initialized and found [categories_of_dialogue] categories of dialogue with [lines_of_dialogue] total lines for [CD.type].")
 
+	return TRUE
 
 /subsystem/dialogue/proc/get_combat_dialogue(var/combat_dialogue/cd_id,var/desired_category,var/swear_chance=25)
 
@@ -70,6 +72,7 @@ SUBSYSTEM_DEF(dialogue)
 		return FALSE
 
 	if(!CD.dialogue_data[desired_category])
+		log_error("Error: Could not find dialogue response [desired_category] for dialogue type [cd_id].")
 		return FALSE
 
 	if(prob(swear_chance))
@@ -78,6 +81,8 @@ SUBSYSTEM_DEF(dialogue)
 			. += "! [capitalize(pick(CD.dialogue_data[desired_category]))]"
 		else
 			. += ", [pick(CD.dialogue_data[desired_category])]"
+	else
+		. = pick(CD.dialogue_data[desired_category])
 
 	if(swear_chance >= 90)
 		. = uppertext(.)

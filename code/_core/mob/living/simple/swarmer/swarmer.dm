@@ -27,6 +27,8 @@
 	has_footsteps = FALSE
 	collision_flags = FLAG_COLLISION_FLYING
 
+	default_language = LANGUAGE_BINARY
+
 /mob/living/simple/swarmer/death_message()
 	return FALSE
 
