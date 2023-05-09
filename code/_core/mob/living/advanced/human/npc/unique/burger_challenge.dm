@@ -8,10 +8,12 @@
 
 	dialogue_id = /dialogue/npc/burger_challenge
 
+	anchored = 2
 
 
 
-/mob/living/advanced/npc/unique/hooded_figure/Finalize()
+
+/mob/living/advanced/npc/unique/burger_challenge/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)

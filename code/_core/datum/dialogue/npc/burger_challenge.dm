@@ -5,26 +5,32 @@
 
 	. = list()
 
+	if(SSgamemode.active_gamemode && SSgamemode.active_gamemode.round_time_next > 0 && istype(SSgamemode.active_gamemode,/gamemode/mission))
 
-	.["hello"] = list(
-		"Pssst. Hey. Hey you. Want a #1?",
-		"*challenge"
-	)
+		.["hello"] = list(
+			"Pssst. Hey. Hey you. Want a #1?",
+			"*challenge"
+		)
 
-	.["*challenge"] = list(
-		"Yeah. A challenge. The cool kids on the street are calling it the '*1', sounds cool. Huh?",
-		"*burger challenge"
-	)
+		.["*challenge"] = list(
+			"Yeah. A challenge. The cool kids on the street are calling it the '#1', sounds cool. Huh?",
+			"*burger challenge"
+		)
 
-	.["*burger challenge"] = list(
-		"What's the burger challenge, you ask? Well, the challenge is that I STEAL ALL YOUR WORN GEAR, and I TELEPORT you down to the mission area in a COMPLETELY RANDOM loction. Sounds cool, huh? Want to #1?",
-		"take the burger challenge"
-	)
+		.["*burger challenge"] = list(
+			"What's the burger challenge, you ask? Well, the challenge is that I STEAL ALL YOUR WORN GEAR, and I TELEPORT you down to the mission area in a COMPLETELY RANDOM loction. Sounds cool, huh? Want to #1?",
+			"take the burger challenge"
+		)
 
-	.["take the burger challenge"] = list(
-		"Last chance to back out!"
-	)
+		.["take the burger challenge"] = list(
+			"Last chance to back out!"
+		)
 
+	else
+
+		.["hello"] = list(
+			"Pssst. Talk to me again when the mission is announced"
+		)
 
 /dialogue/npc/burger_challenge/set_topic(var/mob/living/advanced/player/P,var/topic)
 
@@ -44,9 +50,11 @@
 			if(!T)
 				P.to_chat(span("warning","Something went wrong..."))
 				return .
-			P.force_move(T)
-			P.strip_and_delete_items()
-			P.to_chat(span("notice","Somehow, you've ended up here, completely naked and without all your items. Good job."))
+			spawn
+				P.force_move(T)
+				P.strip_and_delete_items()
+				P.to_chat(span("notice","Somehow, you've ended up here, completely naked and without all your items. Good job."))
+			return TRUE
 
 
 

@@ -26,8 +26,8 @@
 
 /gamemode/mission/New()
 	. = ..()
-	round_time_next = 30
 	spawn_and_set_enemies()
+	round_time_next = 30
 
 /gamemode/mission/proc/spawn_and_set_enemies()
 
