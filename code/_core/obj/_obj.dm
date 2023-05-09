@@ -14,9 +14,6 @@
 
 	var/has_quick_function = FALSE
 
-/obj/proc/initialize_worn_blends(var/desired_icon_state)
-	return TRUE
-
 /obj/proc/quick(var/mob/living/advanced/caller,var/atom/object,location,params)
 	return FALSE
 

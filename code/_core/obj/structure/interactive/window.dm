@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structure/window/improved.dmi'
 	icon_state = "window"
 
-	alpha = 150
+	alpha = 125
 	color = "#6E9CAD"
 
 	collision_flags = FLAG_COLLISION_WALL

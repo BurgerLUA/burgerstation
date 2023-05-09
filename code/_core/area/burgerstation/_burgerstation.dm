@@ -233,6 +233,16 @@
 
 	sound_environment = ENVIRONMENT_STONEROOM
 
+/area/burgerstation/arrivals/north
+	name = "\improper North Arrivals Dock"
+	map_color = COLOR_YELLOW
+	color = COLOR_YELLOW
+
+/area/burgerstation/arrivals/south
+	name = "\improper South Arrivals Dock"
+	map_color = COLOR_ORANGE
+	color = COLOR_RED
+
 /area/burgerstation/chapel
 	name = "\improper Chapel"
 	icon_state = "chapel"

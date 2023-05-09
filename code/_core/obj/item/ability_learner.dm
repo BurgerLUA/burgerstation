@@ -19,7 +19,7 @@
 		log_error("Warning: Tried creating an empty [src.get_debug_name()]!")
 		qdel(src)
 
-/obj/item/ability_learner/ability_learner/get_base_value()
+/obj/item/ability_learner/get_base_value()
 	if(!stored_ability)
 		return 0
 	. = ..()

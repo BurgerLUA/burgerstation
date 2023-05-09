@@ -23,6 +23,15 @@
 /turf/simulated/floor/tile/shuttle/dark
 	color = "#555A62"
 
+/turf/simulated/floor/tile/shuttle/blue/arrivals
+	color = "#62A4C6"
+
+/turf/simulated/floor/tile/shuttle/grey
+	color = COLOR_GREY
+
+/turf/simulated/floor/tile/shuttle/grey/arrivals
+	color = "#8F8D8F"
+
 /turf/simulated/floor/tile/shuttle/dark/darker
 	color = "#383838"
 

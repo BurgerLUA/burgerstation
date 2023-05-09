@@ -274,7 +274,7 @@ var/global/list/rarity_to_mul = list(
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/initialize_worn_blends(var/desired_icon_state)
+/obj/item/proc/initialize_worn_blends(var/desired_icon_state)
 
 	if(length(polymorphs))
 		var/icon/initial_icon = initial(icon)
@@ -872,11 +872,15 @@ var/global/list/rarity_to_mul = list(
 
 	. = ..()
 
-	for(var/polymorph_name in polymorphs)
-		var/polymorph_color = polymorphs[polymorph_name]
-		var/image/I = new/image(initial(icon),"[icon_state]_[polymorph_name]")
-		I.color = polymorph_color
-		add_overlay(I)
+	if(length(polymorphs))
+		var/initial_icon = initial(icon)
+		var/initial_icon_state = initial(icon_state)
+
+		for(var/polymorph_name in polymorphs)
+			var/polymorph_color = polymorphs[polymorph_name]
+			var/image/I = new/image(initial_icon,"[initial_icon_state]_[polymorph_name]")
+			I.color = polymorph_color
+			add_overlay(I)
 
 	if(enable_blood_stains && blood_stain_intensity > 0 && blood_stain_color)
 		var/image/I = new/image('icons/mob/living/advanced/overlays/blood_overlay.dmi',"[CEILING(blood_stain_intensity,1)]")

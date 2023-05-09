@@ -51,5 +51,11 @@ obj/structure/interactive/door/airlock/external
 		add_underlay(frame)
 
 obj/structure/interactive/door/airlock/external/no_access
-
 	no_access = TRUE
+
+obj/structure/interactive/door/airlock/external/locked
+	locked = TRUE
+
+obj/structure/interactive/door/airlock/external/locked/open
+	locked = TRUE
+	door_state = DOOR_STATE_OPENED

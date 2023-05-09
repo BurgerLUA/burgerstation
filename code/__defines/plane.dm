@@ -12,17 +12,19 @@
 
 #define PLANE_FLOOR_BELOW -50 //For openspace.
 
-#define PLANE_WATER_FLOOR -44
+#define PLANE_WATER_FLOOR -45
 
-#define PLANE_FLOOR -43
+#define PLANE_FLOOR -44
 
-#define PLANE_SHUTTLE -42
+#define PLANE_SHUTTLE -43
 
-#define PLANE_FLOOR_ATTACHMENT -41 //Decals, basically.
+#define PLANE_FLOOR_ATTACHMENT -42 //Decals, basically.
 
-#define PLANE_WIRE -40
+#define PLANE_WIRE -41
 
-#define PLANE_FOOTSTEP -39
+#define PLANE_FOOTSTEP -40
+
+#define PLANE_GRASS -39
 
 #define PLANE_WALL -38
 

@@ -31,3 +31,12 @@
 
 /area/shuttle/minivan
 	name = "\improper NTS Minivan"
+
+/area/shuttle/arrivals
+	name = "\improper NTS Arrivals"
+
+/area/shuttle/escape_pod_one
+	name = "\improper NTS Escape Pod 1"
+
+/area/shuttle/escape_pod_two
+	name = "\improper NTS Escape Pod 2"

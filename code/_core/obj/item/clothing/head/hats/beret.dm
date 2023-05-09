@@ -27,6 +27,9 @@
 /obj/item/clothing/head/hat/beret/armored/syndicate
 	color = COLOR_CRIMSON
 
+/obj/item/clothing/head/hat/beret/armored/nanotrasen
+	color = COLOR_NANOTRASEN
+
 /obj/item/clothing/head/hat/beret/black
 	color = COLOR_BLACK
 

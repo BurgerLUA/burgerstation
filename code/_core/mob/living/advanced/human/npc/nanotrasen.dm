@@ -29,6 +29,19 @@
 
 
 
+/mob/living/advanced/npc/nanotrasen/hanger_guard/immortal
+	name = "\improper NanoTrasen arrivals guard"
+	loadout = /loadout/nanotrasen/hanger_guard/approachable
+	level = 80
+	ai = /ai/advanced/guarding
+	anchored = 2
+
+/mob/living/advanced/npc/nanotrasen/hanger_guard/immortal/Finalize()
+	. = ..()
+	add_status_effect(IMMORTAL)
+
+
+
 /mob/living/advanced/npc/nanotrasen/shaft_miner
 	name = "shaft miner"
 	desc = "Someone didn't do their job."

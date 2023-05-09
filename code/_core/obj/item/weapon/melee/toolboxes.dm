@@ -18,6 +18,18 @@
 /obj/item/weapon/melee/toolbox/red
 	color = "#FF0000"
 
+/obj/item/weapon/melee/toolbox/red/emergency
+	name = "emergency toolbox"
+
+/obj/item/weapon/melee/toolbox/red/emergency/Generate()
+	new /obj/item/weapon/melee/tool/crowbar(src)
+	new /obj/item/weapon/melee/torch/flashlight(src)
+	new /obj/item/flare(src)
+	new /obj/item/weapon/ranged/bullet/magazine/pistol/dip(src)
+	new /obj/item/magazine/dip_22(src)
+	new /obj/item/weapon/melee/energy/grazer(src)
+	. = ..()
+
 /obj/item/weapon/melee/toolbox/green
 	color = "#00FF00"
 

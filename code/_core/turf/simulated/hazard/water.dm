@@ -73,6 +73,11 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	name = "sea water"
 	fishing_rewards = /loot/fishing/sea
 
+/turf/simulated/liquid/water/memorial
+	name = "water"
+	fishing_rewards = null
+	depth = VIEW_RANGE * MAX_DEPTH
+
 /turf/simulated/liquid/water/river
 	name = "forest river water"
 	fishing_rewards = /loot/fishing/river

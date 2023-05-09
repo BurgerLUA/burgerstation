@@ -2,6 +2,10 @@
 	mouse_opacity = 0
 	plane = PLANE_JUNK
 
+obj/structure/scenery/bush/
+	plane = PLANE_GRASS
+	layer = LAYER_FLOOR_SCENERY
+
 obj/structure/scenery/bush/Finalize()
 	. = ..()
 	if(is_simulated(src.loc))
@@ -21,6 +25,7 @@ obj/structure/scenery/flowers
 	name = "flowers"
 	icon = 'icons/obj/structure/flora/ausflora.dmi'
 	icon_state = "ywflowers_1"
+	plane = PLANE_GRASS
 	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/flowers/New()
@@ -41,6 +46,8 @@ obj/structure/scenery/flowers/Finalize()
 
 obj/structure/scenery/grass
 	name = "grass type"
+	plane = PLANE_GRASS
+	layer = LAYER_FLOOR_SCENERY
 
 
 obj/structure/scenery/grass/Finalize()
@@ -80,6 +87,7 @@ obj/structure/scenery/rocks
 	name = "rocks"
 	icon = 'icons/obj/structure/flora/rocks_new.dmi'
 	icon_state = "rock_1"
+	plane = PLANE_GRASS
 	layer = LAYER_FLOOR_SCENERY
 
 obj/structure/scenery/rocks/New()

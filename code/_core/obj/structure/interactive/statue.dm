@@ -97,10 +97,18 @@
 	set_stored_object(A)
 
 
-/obj/structure/interactive/statue/lumin
-	name = "Tomb of An Unknown Employee"
-	desc = "Here rests an unknown employee, unknown by name or rank, but who's acts will not be forgotten."
-	desc_extended = "Thank you. All of you. For all that you do."
+/obj/structure/interactive/lumin
+	name = "Tomb of the Unknown Employee"
+	desc = "Thank you. All of you. For all that you do."
+	desc_extended = "Here rests an unknown employee, unknown by name or rank, but whose acts will not be forgotten."
 
 	icon = 'icons/obj/structure/memorial.dmi'
 	icon_state = "memorial"
+
+	layer = LAYER_WALL - 1
+	plane = PLANE_WALL
+
+	anchored = 2
+	density = TRUE
+
+	pixel_y = 10

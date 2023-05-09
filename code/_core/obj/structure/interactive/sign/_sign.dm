@@ -45,15 +45,19 @@
 	icon_state = "shock"
 	desc_extended = "A sign designating an electrical hazard ahead."
 
-/obj/structure/sign/shock
-	name = "electrical hazard"
-	icon_state = "shock"
-	desc_extended = "A sign designating an electrical hazard ahead."
+/obj/structure/sign/pods
+	name = "escape pods"
+	icon_state = "pods"
+	desc_extended = "A sign indicating that there are escape pods in this direction."
+
+
+
+
+
+#define SIGN_Y_OFFSET 8
 
 /obj/structure/sign/department
 	name = "department sign"
-
-#define SING_Y_OFFSET 8
 
 //Part 1
 /obj/structure/sign/department/a/med
@@ -61,11 +65,11 @@
 	icon_state = "direction_med"
 
 /obj/structure/sign/department/a/engineering
-	pixel_y = SING_Y_OFFSET
+	pixel_y = SIGN_Y_OFFSET
 	icon_state = "direction_eng"
 
 /obj/structure/sign/department/a/supply
-	pixel_y = -SING_Y_OFFSET
+	pixel_y = -SIGN_Y_OFFSET
 	icon_state = "direction_supply"
 
 //Part 2
@@ -74,11 +78,11 @@
 	icon_state = "direction_sci"
 
 /obj/structure/sign/department/b/sec
-	pixel_y = SING_Y_OFFSET
+	pixel_y = SIGN_Y_OFFSET
 	icon_state = "direction_sec"
 
 /obj/structure/sign/department/b/evac
-	pixel_y = -SING_Y_OFFSET
+	pixel_y = -SIGN_Y_OFFSET
 	icon_state = "direction_evac"
 
 //Part 3
@@ -87,11 +91,11 @@
 	icon_state = "direction_bridge"
 
 /obj/structure/sign/department/c/infirm
-	pixel_y = SING_Y_OFFSET
+	pixel_y = SIGN_Y_OFFSET
 	icon_state = "direction_infirm"
 
 /obj/structure/sign/department/c/other
-	pixel_y = -SING_Y_OFFSET
+	pixel_y = -SIGN_Y_OFFSET
 	icon_state = "direction_other"
 
 

@@ -6,30 +6,38 @@
 	desired_light_color = "#FFD175"
 	desired_light_angle = LIGHT_OMNI
 
-/obj/item/clothing/head/light/update_icon()
-
+/obj/item/clothing/head/light/update_overlays()
+	. = ..()
 	if(enabled)
-		icon_state = "[initial(icon_state)]_on"
-		icon_state_held_left = "[initial(icon_state_held_left)]_on"
-		icon_state_held_right = "[initial(icon_state_held_right)]_on"
-		icon_state_worn = "[initial(icon_state_worn)]_on"
-	else
-		icon_state = initial(icon_state)
-		icon_state_held_left = initial(icon_state_held_left)
-		icon_state_held_right = initial(icon_state_held_right)
-		icon_state_worn = initial(icon_state_worn)
+		var/image/I = new/image(initial(icon),"[icon_state]_light_on")
+		I.appearance_flags = src.appearance_flags | RESET_COLOR
+		add_overlay(I)
 
-	update_held_icon()
+
+/obj/item/clothing/head/light/initialize_worn_blends(var/desired_icon_state)
 
 	. = ..()
 
+	add_blend(
+		"light",
+		desired_icon = initial(icon),
+		desired_icon_state = "[desired_icon_state]_light_off",
+		desired_color = desired_light_color,
+		desired_blend = ICON_OVERLAY,
+		desired_type = ICON_BLEND_OVERLAY,
+		desired_should_save = FALSE,
+		desired_layer = worn_layer + 0.1
+	)
 
 /obj/item/clothing/head/light/click_self(var/mob/caller,location,control,params)
 	INTERACT_CHECK
-	INTERACT_DELAY(5)
+	INTERACT_DELAY(10)
 	enabled = !enabled
 	update_sprite()
 	update_atom_light()
+	if(is_inventory(src.loc))
+		var/obj/hud/inventory/I = src.loc
+		if(I.worn) I.initialize_worn_icon(src)
 	return TRUE
 
 /obj/item/clothing/head/light/update_atom_light()
@@ -38,25 +46,3 @@
 	else
 		set_light_sprite(FALSE)
 	return TRUE
-
-
-
-/obj/item/clothing/head/light/hardhat
-	name = "industrial hardhat"
-	icon = 'icons/obj/item/clothing/hats/hardhat.dmi'
-	desc = "THIS IS AN OFFICIAL CONSTRUCTION ZONE! PLEASE REMOVE YOURSELF FROM THE AREA!"
-	desc_extended = "A yellow industrial hardhat. Seems pretty robust against blunt trauma."
-
-
-	armor = /armor/military/light
-
-	size = SIZE_2
-
-	value = 60
-
-	desired_light_range = VIEW_RANGE*0.5
-	desired_light_power = 0.5
-	desired_light_color = "#FFF0C6"
-	desired_light_angle = LIGHT_WIDE
-
-	rarity = RARITY_UNCOMMON
