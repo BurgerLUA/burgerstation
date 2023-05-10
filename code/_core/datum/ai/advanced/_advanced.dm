@@ -40,6 +40,10 @@
 	var/obj/marker/cover_node/current_cover
 	var/checked_cover = TRUE //Set to false when the mob equips a new weapon.
 
+	//For smart targeting
+	var/turf/old_owner_location
+	var/turf/old_objective_attack_location
+
 /ai/advanced/PreDestroy()
 	remove_cover()
 	. = ..()
@@ -768,34 +772,42 @@
 	if(next_complex > world.time)
 		return FALSE
 
+	//Smart targeting. Prevents AI from shooting walls.
 	//This better not be intensive
-	if(objective_attack && owner.z && objective_attack.z && owner.z == objective_attack.z && get_dist(owner,objective_attack) >= 2)
-		if(debug) log_debug("Checking bullet blockers...")
-		var/obj/item/weapon/ranged/R
-		if(is_ranged_weapon(A.right_item))
-			R = A.right_item
-		else if(is_ranged_weapon(A.left_item))
-			R = A.left_item
-		if(R && R.next_shoot_time <= world.time)
-			if(debug) log_debug("Checking bullet blockers: Found weapon.")
-			var/obj/projectile/P
-			if(R.projectile)
-				P = R.projectile
-			else if(istypecache(R,/obj/item/weapon/ranged/bullet))
-				var/obj/item/weapon/ranged/bullet/RB = R
-				if(RB.chambered_bullet)
-					P = RB.chambered_bullet.projectile
-			if(P)
-				var/found_collision_flag = initial(P.collision_bullet_flags)
-				if(debug) log_debug("Checking bullet blockers: Found projectile: [P]. Flag: [found_collision_flag]")
-				if(found_collision_flag)
-					if(debug) log_debug("Checking bullet blockers: Found collision flag.")
-					var/atom/found_atom = get_line_bullet(owner,objective_attack,collision_flag=found_collision_flag,return_list=FALSE)
-					if(found_atom && found_atom.map_spawn && (get_dist(found_atom,objective_attack) >= 3 || get_dist(found_atom,owner) <= 2) ) //Don't bother shooting at nothing (or your own cover).
-						if(debug) log_debug("Checking bullet blockers: Found atom.")
-						if(debug)
-							found_atom.color = "#FF0000"
-						return FALSE
+	if(distance_target_max >= 2 && objective_attack && owner.z && objective_attack.z && owner.z == objective_attack.z && get_dist(owner,objective_attack) >= 2)
+
+		var/turf/current_owner_location = get_turf(owner)
+		var/turf/current_objective_attack_location = get_turf(objective_attack)
+
+		if(old_owner_location != current_owner_location || current_objective_attack_location != old_objective_attack_location)
+			old_owner_location = old_owner_location
+			old_objective_attack_location = current_objective_attack_location
+			if(debug) log_debug("Checking bullet blockers...")
+			var/obj/item/weapon/ranged/R
+			if(is_ranged_weapon(A.right_item))
+				R = A.right_item
+			else if(is_ranged_weapon(A.left_item))
+				R = A.left_item
+			if(R && R.next_shoot_time <= world.time)
+				if(debug) log_debug("Checking bullet blockers: Found weapon.")
+				var/obj/projectile/P
+				if(R.projectile)
+					P = R.projectile
+				else if(istypecache(R,/obj/item/weapon/ranged/bullet))
+					var/obj/item/weapon/ranged/bullet/RB = R
+					if(RB.chambered_bullet)
+						P = RB.chambered_bullet.projectile
+				if(P)
+					var/found_collision_flag = initial(P.collision_bullet_flags)
+					if(debug) log_debug("Checking bullet blockers: Found projectile: [P]. Flag: [found_collision_flag]")
+					if(found_collision_flag)
+						if(debug) log_debug("Checking bullet blockers: Found collision flag.")
+						var/atom/found_atom = get_line_bullet(owner,objective_attack,collision_flag=found_collision_flag,return_list=FALSE)
+						if(found_atom && found_atom.map_spawn && (get_dist(found_atom,objective_attack) >= 3 || get_dist(found_atom,owner) <= 2) ) //Don't bother shooting at nothing (or your own cover).
+							if(debug) log_debug("Checking bullet blockers: Found atom.")
+							if(debug)
+								found_atom.color = "#FF0000"
+							return FALSE
 
 	if(handle_equipment())
 		return FALSE
