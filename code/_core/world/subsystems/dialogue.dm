@@ -75,14 +75,31 @@ SUBSYSTEM_DEF(dialogue)
 		log_error("Error: Could not find dialogue response [desired_category] for dialogue type [cd_id].")
 		return FALSE
 
+	var/dialogue_to_use
+
+	if(CD.used_dialogue && CD.used_dialogue[desired_category])
+		var/list/usable_dialogue = CD.dialogue_data[desired_category].Copy()
+		usable_dialogue -= CD.used_dialogue[desired_category]
+		if(!length(usable_dialogue)) //Empty!
+			CD.used_dialogue[desired_category] = list()
+			usable_dialogue = CD.dialogue_data[desired_category]
+		dialogue_to_use = pick(usable_dialogue)
+		CD.used_dialogue[desired_category] += dialogue_to_use
+	else
+		if(!CD.used_dialogue)
+			CD.used_dialogue = list()
+		dialogue_to_use = pick(CD.dialogue_data[desired_category])
+		CD.used_dialogue[desired_category] = list(dialogue_to_use)
+
+
 	if(prob(swear_chance))
 		. = "[pick(CD.dialogue_data["swearing"])]"
 		if(swear_chance >= 50)
-			. += "! [capitalize(pick(CD.dialogue_data[desired_category]))]"
+			. += "! [capitalize(dialogue_to_use)]"
 		else
-			. += ", [pick(CD.dialogue_data[desired_category])]"
+			. += ", [pick(dialogue_to_use)]"
 	else
-		. = pick(CD.dialogue_data[desired_category])
+		. = pick(dialogue_to_use)
 
 	if(swear_chance >= 90)
 		. = uppertext(.)
