@@ -27,24 +27,28 @@
 	if(!length(all_players))
 		return FALSE
 
+	var/list/player_blacklist = list()
+
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
-		for(var/i=1,i<=5,i++)
+		for(var/i=1,i<=5,i++) //Limit 5 per.
+			if(!length(all_players))
+				break
 			var/mob/living/advanced/player/P = pick(all_players)
+			if(player_blacklist[P])
+				continue
+			player_blacklist[P] = TRUE
 			if(P.dead || !P.ckey)
 				continue
-			var/list/valid_turfs = list()
-			for(var/turf/simulated/floor/F in range(VIEW_RANGE*0.75,P))
-				var/area/A = F.loc
-				if(A.interior)
-					continue
-				if(A.flags_area & FLAG_AREA_NO_EVENTS)
-					continue
-				valid_turfs += F
-			if(!length(valid_turfs))
+			var/turf/T = get_turf(P)
+			if(!T)
 				continue
-			var/turf/T = pick(valid_turfs)
-			new /obj/effect/falling_meteor(T)
-			CHECK_TICK_SAFE(50,FPS_SERVER*10)
+			var/area/A = T.loc
+			if(A.area_identifier != "Mission")
+				continue
+			var/turf/meteor_turf = locate(T.x + rand(-VIEW_RANGE*2,VIEW_RANGE*2),T.y+rand(-VIEW_RANGE*2,VIEW_RANGE*2),T.z)
+			if(meteor_turf)
+				new /obj/effect/falling_meteor(meteor_turf)
+				CHECK_TICK_SAFE(50,FPS_SERVER*10)
 
 	. = ..()
 

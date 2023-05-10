@@ -9,6 +9,9 @@
 	var/pump_delay = 1
 
 
+/obj/item/weapon/ranged/energy/pump/get_charge_cost()
+	return initial(charge_cost)
+
 /obj/item/weapon/ranged/energy/pump/click_self(var/mob/caller,location,control,params)
 
 	if(next_shoot_time > world.time + 1)

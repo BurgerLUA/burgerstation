@@ -23,7 +23,7 @@
 	var/obj/item/bullet_cartridge/last_found_bullet
 	var/desired_shell_reload = 0
 
-	var/grenade_chance = 5 //Percent change to use a grenade each combat tick.
+	var/grenade_chance = 2 //Percent change to use a grenade each combat tick.
 
 	var/should_find_ammo_pile_on_empty = FALSE //Set to true if this AI should find an ammo pile if the NPC has no ammo.
 	var/obj/structure/interactive/storage/ammo_pile/found_ammo_pile
@@ -211,7 +211,7 @@
 
 	var/mob/living/advanced/A = owner
 
-	if(!found_grenade && !checked_grenades && objective_attack && prob(grenade_chance) && get_dist(owner,objective_attack) >= VIEW_RANGE*0.5)
+	if(!found_grenade && !checked_grenades && objective_attack && prob(grenade_chance) && get_dist(owner,objective_attack) >= 6)
 		if(!find_grenade()) //Find a grenade to throw.
 			checked_grenades = TRUE //Stop checking grenades as we can't find anymore.
 		return TRUE
@@ -263,8 +263,8 @@
 	if(G.stored_trigger.active && !suicide_bomber) //Live nade, throw it!
 		var/atom/real_target = objective_attack
 		if(real_target)
-			var/turf/T = get_step(owner,real_target)
-			if(T.density && (T.density_north || T.density_south || T.density_east || T.density_west))
+			var/atom/blocking_atom = get_line_bullet(owner,objective_attack,collision_flag=FLAG_COLLISION_BULLET_SOLID,return_list=FALSE)
+			if(blocking_atom && get_dist(owner,blocking_atom) <= 4)
 				real_target = null
 				if(debug) log_debug("Detected an unsafe grenade throw...")
 		if(!real_target)
@@ -293,6 +293,10 @@
 		return FALSE
 
 	if(objective_attack)
+		var/atom/blocking_atom = get_line_bullet(owner,objective_attack,collision_flag=FLAG_COLLISION_BULLET_SOLID,return_list=FALSE)
+		if(blocking_atom && get_dist(owner,blocking_atom) <= 4) //Unsafe throw
+			next_complex = world.time + 10
+			return FALSE
 		if(A.left_item != G && A.right_item != G) //The nade needs to be in our hands.
 			if(debug) log_debug("The grenade is not in our hands...")
 
@@ -308,7 +312,7 @@
 					return FALSE //Can't even throw a grenade in the first place.
 			next_complex = world.time + rand(5,10)
 			return TRUE
-		else //Time to arm the grenade!
+		else //Time to arm the grenade.
 			if(debug) log_debug("Arming the grenade!")
 			G.click_self(A)
 			next_complex = world.time + rand(5,30)
@@ -763,6 +767,35 @@
 
 	if(next_complex > world.time)
 		return FALSE
+
+	//This better not be intensive
+	if(objective_attack && owner.z && objective_attack.z && owner.z == objective_attack.z && get_dist(owner,objective_attack) >= 2)
+		if(debug) log_debug("Checking bullet blockers...")
+		var/obj/item/weapon/ranged/R
+		if(is_ranged_weapon(A.right_item))
+			R = A.right_item
+		else if(is_ranged_weapon(A.left_item))
+			R = A.left_item
+		if(R && R.next_shoot_time <= world.time)
+			if(debug) log_debug("Checking bullet blockers: Found weapon.")
+			var/obj/projectile/P
+			if(R.projectile)
+				P = R.projectile
+			else if(istypecache(R,/obj/item/weapon/ranged/bullet))
+				var/obj/item/weapon/ranged/bullet/RB = R
+				if(RB.chambered_bullet)
+					P = RB.chambered_bullet.projectile
+			if(P)
+				var/found_collision_flag = initial(P.collision_bullet_flags)
+				if(debug) log_debug("Checking bullet blockers: Found projectile: [P]. Flag: [found_collision_flag]")
+				if(found_collision_flag)
+					if(debug) log_debug("Checking bullet blockers: Found collision flag.")
+					var/atom/found_atom = get_line_bullet(owner,objective_attack,collision_flag=found_collision_flag,return_list=FALSE)
+					if(found_atom && found_atom.map_spawn && (get_dist(found_atom,objective_attack) >= 3 || get_dist(found_atom,owner) <= 2) ) //Don't bother shooting at nothing (or your own cover).
+						if(debug) log_debug("Checking bullet blockers: Found atom.")
+						if(debug)
+							found_atom.color = "#FF0000"
+						return FALSE
 
 	if(handle_equipment())
 		return FALSE

@@ -80,3 +80,5 @@
 	. = max(abs(A1_x - A2_x),abs(A1_y - A2_y))
 	. -= (A1.object_size-1) + (A2.object_size-1)
 	. = max(0,.)
+
+

@@ -203,48 +203,51 @@
 
 	var/list/target_score = list() //The higher the object, the higher priority it is to get hit.
 
-	for(var/k in new_loc.contents)
-		var/atom/movable/A = k
-		if(!A.density || A.mouse_opacity <= 0)
-			continue
-		if(is_living(A))
-			var/mob/living/L = A
-			var/score = L.size //Bigger objects get more priority.
+	if(new_loc.has_dense_atom)
+		for(var/k in new_loc.contents)
+			var/atom/movable/A = k
+			if(!A.density || A.mouse_opacity <= 0)
+				continue
+			if(is_living(A))
+				var/mob/living/L = A
+				var/score = L.size //Bigger objects get more priority.
+				if(L == target_atom)
+					score = 1000
+				else if(L.horizontal)
+					score *= 0.5
+				target_score[L] = score
+				continue
+			else
+				target_score[A] = A.plane*1000 + A.layer
+
+	if(length(new_loc.old_living))
+		for(var/k in new_loc.old_living)
+			var/mob/living/L = k
+			if(!L.density || L.mouse_opacity <= 0)
+				continue
+			if(L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions for living.
+				continue
+			var/score = L.size*0.5
 			if(L == target_atom)
 				score = 1000
 			else if(L.horizontal)
 				score *= 0.5
 			target_score[L] = score
-			continue
-		else
-			target_score[A] = A.plane*1000 + A.layer
 
-	for(var/k in new_loc.old_living)
-		var/mob/living/L = k
-		if(!L.density || L.mouse_opacity <= 0)
-			continue
-		if(L.dead || L.next_move <= 0 || get_dist(L,src) > 1) //Special exceptions for living.
-			continue
-		var/score = L.size*0.5
-		if(L == target_atom)
-			score = 1000
-		else if(L.horizontal)
-			score *= 0.5
-		target_score[L] = score
+	if(length(target_score))
+		sort_tim(target_score,cmp=/proc/cmp_numeric_dsc,associative=TRUE) //Get the highest.
 
-	sort_tim(target_score,cmp=/proc/cmp_numeric_dsc,associative=TRUE) //Get the highest.
+		for(var/k in target_score)
+			var/mob/living/L = k
+			if(L.projectile_should_collide(src,old_loc,new_loc))
+				if(on_projectile_hit(L,old_loc,new_loc))
+					penetrations_left--
+					if(penetrations_left < 0)
+						return FALSE
+				else
+					break
 
-	for(var/k in target_score)
-		var/mob/living/L = k
-		if(L.projectile_should_collide(src,old_loc,new_loc))
-			if(on_projectile_hit(L,old_loc,new_loc))
-				penetrations_left--
-				if(penetrations_left < 0)
-					return FALSE
-			else
-				break
-
-	if(new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
+	if(new_loc.density && new_loc.projectile_should_collide(src,old_loc,new_loc) && on_projectile_hit(new_loc,old_loc,new_loc))
 		penetrations_left--
 		if(penetrations_left < 0)
 			return FALSE

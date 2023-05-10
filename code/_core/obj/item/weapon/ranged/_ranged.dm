@@ -22,7 +22,7 @@
 
 	var/damagetype/ranged_damage_type
 	var/projectile_speed = TILE_SIZE - 1 //Fallback value
-	var/obj/projectile/projectile = /obj/projectile/ //Fallback value
+	var/obj/projectile/projectile //Don't make this a fallback.
 	var/bullet_count = 1 //Fallback value. How many bullets it should shoot.
 
 	var/view_punch_to_add = 0 //Fallback value.

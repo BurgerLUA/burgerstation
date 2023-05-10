@@ -1,13 +1,22 @@
 /obj/item/portal_scroll
 	name = "portal scroll"
 	desc = "Seems stable-ish."
-	desc_extended = "A scroll that when read, creates a portal to the nearest safe place. In this case, it's the station."
+	desc_extended = "A scroll that when read, creates a portal to the nearest safe place."
 	icon = 'icons/obj/item/portal_scroll.dmi'
 	icon_state = "inventory"
 	has_quick_function = TRUE //Allows scrolls to show up in the belt slots.
 	value = 500
 
 	rarity = RARITY_RARE
+
+/obj/item/portal_scroll/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(is_living(examiner))
+		var/mob/living/L = examiner
+		if(L.loyalty_tag && length(portal_markers[L.loyalty_tag]))
+			var/obj/marker/M = portal_markers[L.loyalty_tag][1]
+			var/area/A = get_area(M)
+			if(A) . += span("notice","Using this will teleport you to \the [A.name].")
 
 /obj/item/portal_scroll/quick(var/mob/caller,var/atom/object,location,params)
 	click_self(caller)
