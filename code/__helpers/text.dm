@@ -104,14 +104,15 @@
 		return FALSE
 
 	if(check_name && forbidden_characters_name && forbidden_characters_name.Find(input))
-		if(SSconfig.config["FORBIDDEN_CHARACTERS_NAME_WARNING"])
-			caller?.to_chat(span("warning","[input] is not an acceptable name."))
-			caller?.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_NAME_WARNING"]))
+		var/warning_to_send = CONFIG("FORBIDDEN_CHARACTERS_NAME_WARNING","That is not an acceptable name.")
+		if(warning_to_send)
+			caller?.to_chat(span("warning",warning_to_send))
 		return FALSE
 
 	if(check_characters && forbidden_characters && forbidden_characters.Find(input)) //Буквально 1984
-		if(SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"])
-			caller?.to_chat(span("warning",SSconfig.config["FORBIDDEN_CHARACTERS_WARNING"]))
+		var/warning_to_send = CONFIG("FORBIDDEN_CHARACTERS_WARNING","That is not an acceptable text.")
+		if(warning_to_send)
+			caller?.to_chat(span("warning",warning_to_send))
 		return FALSE
 
 	if(SSbadwords.has_badword(input))

@@ -57,6 +57,6 @@
 			if(length(P.followers) < 2 && !L.following)
 				P.followers |= L
 				L.following = P
-				L.ai.set_move_objective(P,TRUE,TRUE)
+				L.ai.set_move_objective(P,2,astar=TRUE,follow=TRUE)
 
 

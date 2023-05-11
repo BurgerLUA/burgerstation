@@ -19,13 +19,10 @@ SUBSYSTEM_DEF(callback)
 		if(stored_object.qdeleting)
 			log_error("Warning: [stored_object.get_debug_name()] tried being called while qdeleting!")
 			return FALSE
-		var/result = call(stored_object,stored_proc)(arglist(stored_args))
-		if(isnull(result))
-			log_error("Warning: Callback proc [stored_proc] belonging to [stored_object.get_debug_name()] returned null!")
+		call(stored_object,stored_proc)(arglist(stored_args))
 	else
-		var/result = call(stored_proc)(arglist(stored_args))
-		if(isnull(result))
-			log_error("Warning: Callback proc [stored_proc] belonging to GLOBAL returned null!")
+		call(stored_proc)(arglist(stored_args))
+
 	return TRUE
 
 

@@ -349,7 +349,7 @@ var/global/list/destroy_everything_whitelist = list(
 		for(var/k in spawned_mobs)
 			var/mob/living/L = k
 			if(L.ai)
-				L.ai.set_move_objective(src.mob,TRUE)
+				L.ai.set_move_objective(src.mob,astar=TRUE,follow=TRUE)
 
 
 /client/verb/create_vote()

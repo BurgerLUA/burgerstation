@@ -14,6 +14,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/atom/objective_move
 	var/should_follow_objective_move = FALSE
 	var/should_astar_objective_move = FALSE
+	var/objective_move_distance = 1 //The follow distance.
 
 	var/mob/living/objective_attack
 

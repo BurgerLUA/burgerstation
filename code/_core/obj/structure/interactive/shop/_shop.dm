@@ -171,7 +171,7 @@
 			P.to_chat(span("notice","You have successfully purchased \the [new_item] for [stored_item_cost] credits."))
 			if(P.movement_flags & MOVEMENT_RUNNING && new_item.quick_equip(P))
 				return TRUE
-			P.put_in_hands(I,params)
+			P.put_in_hands(new_item,params)
 			return TRUE
 
 		P.to_chat(span("notice","You don't have enough credits ([stored_item_cost] credits) to buy this!"))

@@ -35,7 +35,7 @@
 
 /ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path)
 
-	if(!desired_path || !length(desired_path))
+	if(!desired_path)
 		node_path_current = null
 		node_path_start_turf = null
 		node_path_end_turf = null
@@ -80,28 +80,30 @@
 
 /ai/proc/set_path_astar(var/turf/destination,var/min_distance=0)
 
-	frustration_astar_path = 0
-	frustration_move = 0
+	if(!destination)
+		if(astar_path_current)
+			frustration_astar_path = 0
+			frustration_move = 0
+			astar_path_current.Cut()
+			astar_path_current = null
+		return TRUE
 
 	if(master_ai)
 		return FALSE
 
 	set_active(TRUE)
 
-	if(astar_path_current)
-		astar_path_current.Cut()
-		astar_path_current = null
-
-	if(destination)
-		var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner,min_distance)
-		if(returning_path)
-			astar_path_current = returning_path
-			set_active(TRUE)
-			for(var/k in linked_ais)
-				var/ai/A = k
-				A.astar_path_current = returning_path.Copy()
-				A.set_active(TRUE)
-			return TRUE
-		else
-			if(debug) log_debug("[src.get_debug_name()] tried astar pathing, but couldn't find a valid astar path.")
+	frustration_astar_path = 0
+	frustration_move = 0
+	var/list/returning_path = AStar_Circle(get_turf(owner),destination,owner,min_distance)
+	if(returning_path)
+		astar_path_current = returning_path
+		set_active(TRUE)
+		for(var/k in linked_ais)
+			var/ai/A = k
+			A.astar_path_current = returning_path.Copy()
+			A.set_active(TRUE)
+		return TRUE
+	else
+		if(debug) log_debug("[src.get_debug_name()] tried astar pathing, but couldn't find a valid astar path.")
 

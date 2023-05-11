@@ -594,7 +594,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			return
 
 		if(!L.ai) return
-		L.ai.set_move_objective(src.mob,TRUE)
+		L.ai.set_move_objective(src.mob,astar=TRUE,follow=TRUE)
 		L.following = src
 		to_chat(span("notice","You selected [L.name] to follow you."))
 

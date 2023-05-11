@@ -1,4 +1,4 @@
-/mob/living/advanced/npc/hostage/
+/mob/living/advanced/npc/hostage
 
 	desc = "A very important VIP, also known as a very important Very Important Person. You should escort them back to station."
 
