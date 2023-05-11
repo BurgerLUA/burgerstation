@@ -18,13 +18,11 @@
 
 	move_delay_modifier = 1
 
-	destruction_turf = null
-
 	organic = TRUE
 
 	map_color = COLOR_BROWN
 
-
+//WAY too detailed
 /turf/simulated/floor/desert_rock
 
 	name = "desert rock floor"

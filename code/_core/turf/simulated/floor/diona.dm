@@ -7,6 +7,8 @@
 
 	map_color = COLOR_GREEN
 
+	health_base = 300
+
 /turf/simulated/floor/diona/New()
 	icon_state = "[rand(1,4)]"
 	..()

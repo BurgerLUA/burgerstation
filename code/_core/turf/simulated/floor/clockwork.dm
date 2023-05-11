@@ -5,9 +5,11 @@
 
 	footstep = /footstep/catwalk
 
-	destruction_turf = /turf/simulated/floor/plating
+	destruction_turf = /turf/simulated/floor/clockwork/reebe
 
 	map_color = COLOR_BRONZE
+
+	health_base = 300
 
 /turf/simulated/floor/clockwork/alt1/
 	icon_state = "floor2"
@@ -34,3 +36,5 @@
 	name = "clockwork plating"
 	icon = 'icons/turf/floor/clockwork.dmi'
 	icon_state = "reebe"
+	destruction_turf = null
+	health_base = 0

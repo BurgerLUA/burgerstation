@@ -13,6 +13,8 @@
 
 	material_id = /material/grass/
 
+	health_base = 100
+
 /turf/simulated/floor/colored/grass/moss
 	name = "moss"
 	color = "#5A916E"

@@ -13,6 +13,8 @@
 
 	exposed = FALSE
 
+	health_base = 300
+
 /turf/simulated/floor/wood/brown
 	color = "#6F4533"
 

@@ -10,6 +10,8 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	health_base = 300
+
 
 /turf/simulated/floor/circuit/blue
 	name = "blue circuit"

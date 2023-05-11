@@ -14,6 +14,8 @@
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = LAYER_FLOOR_WEATHER
 
+	health_base = 200
+
 /turf/simulated/floor/disco/Initialize()
 	. = ..()
 	real_icon_state = "disco_light_[1 + ((x+y) % 4)]"

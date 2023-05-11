@@ -12,6 +12,8 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	health_base = 1000
+
 /turf/simulated/wall/brick/red
 	color = "#C66B59"
 	desc = "Like a brick to the head"

@@ -9,6 +9,8 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
+	health_base = 500
+
 /turf/simulated/wall/plastic/office
 	name = "office wall"
 	desc = "Flexible"

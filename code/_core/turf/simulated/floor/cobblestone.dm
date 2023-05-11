@@ -12,6 +12,8 @@
 
 	map_color = COLOR_GREY
 
+	health_base = 200
+
 /turf/simulated/floor/cobblestone/side
 	icon_state = "cobble_side"
 
@@ -29,6 +31,8 @@
 	footstep = /footstep/concrete
 
 	destruction_turf = /turf/simulated/floor/colored/dirt
+
+	health_base = 500
 
 /turf/simulated/floor/brick/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"
@@ -61,6 +65,7 @@
 	icon_state = "floor"
 	color = "#D3B27C"
 	destruction_turf = /turf/simulated/floor/plating/reinforced
+	health_base = 1000
 
 /turf/simulated/floor/temple/jewel
 	icon_state = "floor_jewel"

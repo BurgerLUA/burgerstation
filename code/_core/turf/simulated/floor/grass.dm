@@ -23,6 +23,8 @@
 
 	map_color = "#267F00"
 
+	health_base = 300
+
 /turf/simulated/floor/grass/jungle
 	name = "dense jungle grass"
 	color = "#969696"

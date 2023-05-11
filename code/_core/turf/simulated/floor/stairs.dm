@@ -4,13 +4,16 @@
 	icon_state = "stair"
 	layer = LAYER_FLOOR_TILE
 
-	destruction_turf = null
-
 	safe_fall = TRUE
 
 	map_color = "#FFFFFF"
 
 	exposed = FALSE
+
+	health_base = 300
+
+/turf/simulated/floor/stair/ztravel
+	health_base = 0
 
 /turf/simulated/floor/stair/ztravel/Exit(atom/movable/O, atom/newloc)
 

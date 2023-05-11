@@ -19,6 +19,8 @@
 
 	destruction_turf = /turf/simulated/floor/basalt/
 
+	health_base = 200
+
 /turf/simulated/floor/colored/ash/necro
 	name = "necro ash"
 	color = "#211811"

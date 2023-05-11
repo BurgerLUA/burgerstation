@@ -9,7 +9,7 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-	health_base = 500
+	health_base = 1500
 
 	map_color = "#704326"
 

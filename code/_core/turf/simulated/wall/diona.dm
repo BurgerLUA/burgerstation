@@ -8,3 +8,5 @@
 	destruction_turf = /turf/simulated/floor/cave_dirt
 
 	map_color = "#005108"
+
+	health_base = 1000

@@ -19,6 +19,8 @@
 	var/shore = FALSE
 	var/depth = 0
 
+	health_base = 200
+
 
 /turf/simulated/floor/colored/snow/New(var/desired_loc)
 	. = ..()

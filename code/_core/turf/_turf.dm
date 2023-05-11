@@ -260,14 +260,6 @@
 
 	return best_target ? best_target : src
 
-/turf/simulated/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
-
-	var/list/returning_footsteps = source.get_footsteps(footstep ? list(footstep) : list(),enter)
-	if(length(returning_footsteps))
-		return source.handle_footsteps(src,returning_footsteps,enter)
-
-	return FALSE
-
 /turf/Entered(var/atom/movable/enterer,var/atom/old_loc)
 
 	if(src.loc && (!old_loc || src.loc != old_loc.loc))

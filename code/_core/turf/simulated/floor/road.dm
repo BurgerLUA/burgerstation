@@ -10,6 +10,8 @@
 	plane = PLANE_ROAD
 	layer = -999
 
+	health_base = 500
+
 /turf/simulated/floor/road/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"
 	. = ..()
@@ -25,6 +27,8 @@
 
 	plane = PLANE_ROAD
 	layer = -998
+
+	health_base = 400
 
 /turf/simulated/floor/sidewalk/New(var/desired_loc)
 	icon_state = "[x % 10],[y % 10]"

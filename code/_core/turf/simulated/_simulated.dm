@@ -3,7 +3,7 @@
 	dynamic_lighting = TRUE
 
 	health = null //This value is automatically assigned if there is a destruction_turf.
-	health_base = 100
+	health_base = 0 //Set to 0 for no health.
 
 	var/real_icon
 	var/real_icon_state
@@ -143,14 +143,13 @@
 
 /turf/simulated/Initialize()
 	var/area/A = loc
-	if(!(A.flags_area & FLAG_AREA_NO_CONSTRUCTION))
-		if(!destruction_turf)
-			if(loc && loc.type != src.type && is_floor(loc))
-				destruction_turf = loc.type
-			else if(A.destruction_turf != src.type)
-				destruction_turf = A.destruction_turf
+	if(health_base > 0 && !(A.flags_area & FLAG_AREA_NO_CONSTRUCTION))
+		if(!destruction_turf && A.destruction_turf != src.type)
+			destruction_turf = A.destruction_turf
 		if(destruction_turf)
 			health = /health/turf/
+		else
+			health_base = 0
 	set_exposed(exposed,force=TRUE)
 	return ..()
 
@@ -238,3 +237,10 @@
 
 	return TRUE
 
+/turf/simulated/proc/do_footstep(var/mob/living/source,var/enter=FALSE)
+
+	var/list/returning_footsteps = source.get_footsteps(footstep ? list(footstep) : list(),enter)
+	if(length(returning_footsteps))
+		return source.handle_footsteps(src,returning_footsteps,enter)
+
+	return FALSE

@@ -15,6 +15,8 @@
 
 	destruction_turf = /turf/simulated/floor/colored/dirt //TODO: Change to sandstone.
 
+	health_base = 100
+
 /turf/simulated/floor/colored/sand/beach
 	name = "beach sand"
 	color = "#DED1BD"

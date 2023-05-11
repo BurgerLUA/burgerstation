@@ -10,3 +10,5 @@
 	destruction_turf = /turf/simulated/floor/xeno/
 
 	map_color = "#19252D"
+
+	health_base = 1000

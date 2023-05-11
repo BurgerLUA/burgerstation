@@ -24,7 +24,7 @@
 
 	destruction_turf = /turf/simulated/floor/plating
 
-	health_base = 1000
+	health_base = 2000
 
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"

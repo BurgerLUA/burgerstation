@@ -11,6 +11,8 @@
 
 	map_color = "#600000"
 
+	health_base = 1500
+
 /turf/simulated/wall/cult/New()
 	..()
 	if(prob(5))

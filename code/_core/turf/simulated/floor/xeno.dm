@@ -22,6 +22,8 @@
 
 	map_color = "#937EB5"
 
+	health_base = 300
+
 /turf/simulated/floor/xeno/Initialize()
 	if(prob(5))
 		real_icon = 'icons/turf/floor/resin_4.dmi'

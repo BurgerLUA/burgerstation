@@ -24,3 +24,5 @@
 	corner_category = "snow_plating"
 
 	map_color = COLOR_STEEL
+
+	health_base = 1000

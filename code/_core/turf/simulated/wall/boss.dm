@@ -8,3 +8,5 @@
 	corner_icons = TRUE
 
 	map_color = "#211811"
+
+	health_base = 2000

@@ -17,6 +17,8 @@
 
 	layer = LAYER_WALL_LARGE
 
+	health_base = 500
+
 /*
 /turf/simulated/wall/ash/update_overlays()
 	. = ..()

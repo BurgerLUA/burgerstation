@@ -15,7 +15,6 @@ var/global/list/stored_boss_floor_icons
 
 	footstep = /footstep/concrete
 
-	destruction_turf = null
 	layer = -1000
 
 	desired_light_frequency = 2

@@ -16,6 +16,8 @@
 
 	map_color = null
 
+	health_base = 400
+
 /turf/simulated/floor/tile/chapel/
 	color = COLOR_GREY_DARK
 

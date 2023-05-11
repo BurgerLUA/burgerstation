@@ -16,6 +16,8 @@
 
 	material_id = /material/dirt/
 
+	health_base = 300
+
 /turf/simulated/floor/colored/dirt/path
 	name = "dirt path"
 	color = "#6B5027"

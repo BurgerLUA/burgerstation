@@ -11,6 +11,8 @@
 
 	map_color = COLOR_RED_DARK
 
+	health_base = 500
+
 /turf/simulated/floor/cult/New(var/desired_loc)
 
 	icon_state = "floor[rand(1,4)]"

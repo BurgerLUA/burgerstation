@@ -15,7 +15,7 @@
 
 	material_id = /material/rock
 
-	health_base = 500
+	health_base = 750
 
 	destruction_turf = /turf/simulated/floor/cave_dirt
 

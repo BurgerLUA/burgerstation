@@ -30,7 +30,7 @@ obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
 	. = ..()
 
-	if(.)
+	if(. || force)
 		if(dir == NORTH)
 			plane = PLANE_MOB
 			layer = LAYER_MOB_ABOVE
