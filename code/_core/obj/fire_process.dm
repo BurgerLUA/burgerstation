@@ -72,12 +72,17 @@
 		qdel(src)
 		return FALSE
 
+	fire_power = min(fire_power,300) //Limit of 30 seconds.
+
 	fire_power -= 0.1*0.5 //10% of a tile per explosion process tick.
 
-	var/desired_alpha = 100 + (fire_power/20)*(255-100)
+	var/desired_alpha = min(100 + (fire_power/20)*(255-100),255)
 	animate(src,alpha=desired_alpha,time=0.5)
 
-	set_light_sprite( (fire_power/20) * 4, fire_power/20, "#FF8C77",LIGHT_OMNI)
+
+	var/light_power = min(8,fire_power/20)
+
+	set_light_sprite(light_power,light_power, "#FF8C77",LIGHT_OMNI)
 
 	if(fire_power < 20) //Don't spread if we don't have enough fuel to spread.
 		return FALSE
