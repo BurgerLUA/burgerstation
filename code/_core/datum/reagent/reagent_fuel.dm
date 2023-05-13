@@ -42,7 +42,7 @@
 		var/firebomb_power = volume_amount*fire_strength_per_unit
 		if(firebomb_power < 1)
 			return .
-		firebomb(T,firebomb_power,I.last_interacted,container.owner,loyalty_tag,1)
+		firebomb(T,firebomb_power,I.last_interacted,container.owner,loyalty_tag)
 	else
 		src.act_explode(container,I.last_interacted,container.owner,T,1,loyalty_tag)
 

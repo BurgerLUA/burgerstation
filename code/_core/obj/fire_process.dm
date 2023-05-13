@@ -26,8 +26,8 @@ RIP PLANS.
 
 /obj/fire_process
 
-	icon = 'icons/obj/effects/flamer_fire_effect.dmi'
-	icon_state = "red_1"
+	icon = 'icons/obj/effects/fire_turf.dmi'
+	icon_state = "fire_3"
 
 	var/fire_power = 0
 	var/initial_fire_power = 0
@@ -47,6 +47,11 @@ RIP PLANS.
 	density = TRUE
 
 	hazardous = TRUE
+
+	mouse_opacity = 0
+
+	pixel_x = -8
+	pixel_y = -8
 
 /obj/fire_process/proc/do_damage(var/atom/movable/victim,var/distance_check=0)
 
@@ -114,9 +119,17 @@ RIP PLANS.
 	var/desired_alpha = min(100 + (fire_power/20)*(255-100),255)
 	animate(src,alpha=desired_alpha,time=0.5)
 
+	switch(fire_power)
+		if(0 to 40)
+			icon_state = "fire_1"
+		if(40 to 80)
+			icon_state = "fire_2"
+		if(80 to INFINITY)
+			icon_state = "fire_3"
+
 	var/light_power = min(8,fire_power/20)
 
-	set_light_sprite(light_power,light_power, "#FF8C77",LIGHT_OMNI)
+	set_light_sprite(light_power,light_power, "#A8916A",LIGHT_OMNI)
 
 	if(fire_power < 40) //Don't spread if we don't have enough fuel to spread.
 		return FALSE
@@ -124,18 +137,11 @@ RIP PLANS.
 	if(!momentum)
 		return TRUE
 
-	var/list/possible_directions = DIRECTIONS_ALL
-	var/list/directions_to_check = list()
-	for(var/i=1,i<=4,i++)
-		var/direction_choice = pick(possible_directions)
-		directions_to_check += direction_choice
-		possible_directions -= direction_choice
-
 	var/turf/current_turf = loc
 
-	for(var/d in directions_to_check)
+	for(var/d in DIRECTIONS_INTERCARDINAL)
 
-		if(momentum && !((momentum | turn(momentum,45) | turn(momentum,-45)) & d))
+		if(!(d & momentum))
 			continue
 
 		var/turf/T = get_step(current_turf,d)
@@ -162,7 +168,7 @@ RIP PLANS.
 		if(!FP || FP.loyalty_tag != src.loyalty_tag)
 			FP = new(T)
 			FP.initial_fire_power = src.initial_fire_power
-			FP.fire_power = src.fire_power - 3
+			FP.fire_power = src.fire_power - 10
 			FP.momentum = d
 			FP.multiplier = src.multiplier
 			FP.loyalty_tag = src.loyalty_tag
@@ -172,9 +178,9 @@ RIP PLANS.
 			var/list/directional_offset = direction_to_pixel_offset(d)
 			FP.pixel_x = -directional_offset[1]*TILE_SIZE
 			FP.pixel_y = -directional_offset[2]*TILE_SIZE
-			animate(FP,pixel_x = 0,pixel_y = 0, time = 0.5)
+			animate(FP,pixel_x = initial(pixel_x),pixel_y = initial(pixel_y), time = 0.5)
 		else
-			FP.fire_power = max(FP.fire_power,src.fire_power - 3)
+			FP.fire_power = max(FP.fire_power,src.fire_power - 10)
 			FP.momentum = FP.momentum & momentum
 			FP.multiplier = (FP.multiplier + src.multiplier) / 2
 
