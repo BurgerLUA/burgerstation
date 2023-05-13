@@ -1,5 +1,6 @@
 /*
-TOO LAGGY
+TOO LAGGY FOR PARTICLES.
+RIP PLANS.
 /particles/fire
 	width = TILE_SIZE*2
 	height = TILE_SIZE*2
@@ -52,6 +53,9 @@ TOO LAGGY
 	if(!victim || !victim.z || !src.z || victim.z != src.z)
 		return FALSE
 
+	if(multiplier <= 0)
+		return FALSE
+
 	if(CALLBACK_EXISTS("\ref[victim]_do_fire_ground_damage"))
 		return FALSE
 
@@ -67,7 +71,7 @@ TOO LAGGY
 	if(!victim.can_be_attacked(owner,src,params,DT))
 		return FALSE
 	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,damage_type,params,TRUE,TRUE)
-	. = DT.process_damage(owner,victim,src,object_to_damage,owner,1)
+	. = DT.process_damage(owner,victim,src,object_to_damage,owner,multiplier)
 	CALLBACK("\ref[victim]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
 
 /obj/fire_process/Crossed(atom/movable/O)
@@ -87,13 +91,20 @@ TOO LAGGY
 	set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
 
 /obj/fire_process/Destroy()
-	SSexplosion.active_fires -= src
+
 	. = ..()
+
+/obj/fire_process/proc/do_delete()
+	qdel(src)
+	return TRUE
 
 /obj/fire_process/proc/process()
 
 	if(!loc || fire_power <= 0)
-		qdel(src)
+		multiplier = 0
+		SSexplosion.active_fires -= src
+		animate(src,alpha=0,time=10)
+		CALLBACK("fire_delete_\ref[src]",10,src,src::do_delete())
 		return FALSE
 
 	fire_power = min(fire_power,300) //Limit of 30 seconds.
@@ -103,12 +114,11 @@ TOO LAGGY
 	var/desired_alpha = min(100 + (fire_power/20)*(255-100),255)
 	animate(src,alpha=desired_alpha,time=0.5)
 
-
 	var/light_power = min(8,fire_power/20)
 
 	set_light_sprite(light_power,light_power, "#FF8C77",LIGHT_OMNI)
 
-	if(fire_power < 20) //Don't spread if we don't have enough fuel to spread.
+	if(fire_power < 40) //Don't spread if we don't have enough fuel to spread.
 		return FALSE
 
 	if(!momentum)
@@ -159,6 +169,10 @@ TOO LAGGY
 			FP.owner = src.owner
 			INITIALIZE(FP)
 			FINALIZE(FP)
+			var/list/directional_offset = direction_to_pixel_offset(d)
+			FP.pixel_x = -directional_offset[1]*TILE_SIZE
+			FP.pixel_y = -directional_offset[2]*TILE_SIZE
+			animate(FP,pixel_x = 0,pixel_y = 0, time = 0.5)
 		else
 			FP.fire_power = max(FP.fire_power,src.fire_power - 3)
 			FP.momentum = FP.momentum & momentum

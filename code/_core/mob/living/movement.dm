@@ -250,7 +250,7 @@
 
 /mob/living/proc/toggle_sneak(var/on = TRUE,var/force=FALSE)
 
-	if(!force && dis_sneaking == on)
+	if(!force && is_sneaking == on)
 		return FALSE
 
 	for(var/k in buttons)

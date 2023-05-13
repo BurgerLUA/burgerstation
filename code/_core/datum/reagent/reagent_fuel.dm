@@ -83,15 +83,16 @@
 			firebomb(T,fire_range,owner,source,desired_loyalty_tag)
 
 	if(explosion_strength_per_unit > 0)
-		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
 		smoke(
 			epicenter,
-			volume_amount*explosion_strength_per_unit*0.2,
-			SECONDS_TO_DECISECONDS(10*explosion_strength_per_unit),
+			volume_amount*explosion_strength_per_unit*0.8,
+			SECONDS_TO_DECISECONDS(20*explosion_strength_per_unit),
 			null,
 			owner,
 			alpha=100
 		)
+		explode(epicenter,volume_amount*explosion_strength_per_unit,owner,source,desired_loyalty_tag)
+
 
 	. = ..()
 
@@ -106,8 +107,8 @@
 
 	liquid = 0.25
 
-	explosion_strength_per_unit = 0.01
-	fire_strength_per_unit = 0.08
+	explosion_strength_per_unit = 0.005
+	fire_strength_per_unit = 0.16
 
 	heated_reagent = null //Nothing.
 	heated_reagent_temp = 330
@@ -119,8 +120,8 @@
 
 	particle_size = 0.25
 
-	explosion_strength_per_unit = 0.03
-	fire_strength_per_unit = 0.03
+	explosion_strength_per_unit = 0.015
+	fire_strength_per_unit = 0.06
 
 	ignition_temperature = 450
 
@@ -136,8 +137,8 @@
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
-	explosion_strength_per_unit = 0.02
-	fire_strength_per_unit = 0.02
+	explosion_strength_per_unit = 0.01
+	fire_strength_per_unit = 0.04
 
 	ignition_temperature = 500
 
@@ -153,8 +154,8 @@
 	heated_reagent_amount = 0
 	heated_reagent_mul = 0.01
 
-	explosion_strength_per_unit = 0.01
-	fire_strength_per_unit = 0.01
+	explosion_strength_per_unit = 0.005
+	fire_strength_per_unit = 0.02
 
 	ignition_temperature = 550
 
@@ -165,8 +166,8 @@
 
 	particle_size = 0.3
 
-	explosion_strength_per_unit = 0.06
-	fire_strength_per_unit = 0.05
+	explosion_strength_per_unit = 0.03
+	fire_strength_per_unit = 0.1
 
 	ignition_temperature = 475
 
@@ -179,8 +180,8 @@
 
 	particle_size = 0.75
 
-	explosion_strength_per_unit = 0.1
-	fire_strength_per_unit = 0.04
+	explosion_strength_per_unit = 0.05
+	fire_strength_per_unit = 0.08
 
 	ignition_temperature = 860
 
@@ -193,8 +194,8 @@
 
 	particle_size = 0.8
 
-	explosion_strength_per_unit = 0.2
-	fire_strength_per_unit = 0.05
+	explosion_strength_per_unit = 0.1
+	fire_strength_per_unit = 0.1
 
 	ignition_temperature = 420
 
@@ -205,8 +206,8 @@
 
 	particle_size = 1
 
-	explosion_strength_per_unit = 0.3
-	fire_strength_per_unit = 0.3
+	explosion_strength_per_unit = 0.15
+	fire_strength_per_unit = 0.6
 
 	ignition_temperature = 300
 
@@ -217,8 +218,8 @@
 
 	particle_size = 0.1
 
-	explosion_strength_per_unit = 0.02
-	fire_strength_per_unit = 0.005
+	explosion_strength_per_unit = 0.01
+	fire_strength_per_unit = 0.01
 
 	ignition_temperature = 310
 
@@ -229,7 +230,7 @@
 	particle_size = 0.75
 
 	explosion_strength_per_unit = 0.06
-	fire_strength_per_unit = 0.015
+	fire_strength_per_unit = 0.03
 
 	ignition_temperature = 600
 
@@ -241,6 +242,8 @@
 
 	ignition_temperature = 370
 
+	explosion_strength_per_unit = 0.1
+
 /reagent/fuel/potassium_perchlorate
 	name = "Potassium Perchlorate"
 	desc = "What causes the bang in the flashbang."
@@ -248,7 +251,7 @@
 	liquid = -0.5
 	particle_size = 0.2
 
-	explosion_strength_per_unit = 0.004
+	explosion_strength_per_unit = 0.002
 	bang_strength_per_unit = 30/VIEW_RANGE
 
 	ignition_temperature = 370
@@ -260,7 +263,7 @@
 	liquid = -0.5
 	particle_size = 0.3
 
-	explosion_strength_per_unit = 0.002
+	explosion_strength_per_unit = 0.001
 	flash_strength_per_unit = 20/VIEW_RANGE
 	bang_strength_per_unit = 40/VIEW_RANGE
 
