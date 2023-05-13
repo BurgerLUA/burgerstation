@@ -12,7 +12,11 @@
 
 #define PLANE_FLOOR_BELOW -50 //For openspace.
 
-#define PLANE_WATER_FLOOR -45
+#define PLANE_WATER_FLOOR -47
+
+#define PLANE_MOVABLE_UNDERWATER -46
+
+#define PLANE_WATER -25
 
 #define PLANE_FLOOR -44
 
@@ -39,33 +43,24 @@
 
 #define PLANE_JUNK -32 //Plane used for junk objects that shouldn't have outlines.
 
-#define PLANE_OBJ -31
-
-#define PLANE_MOB_DEAD -30
+#define PLANE_MOVABLE_DEAD -30
 
 #define PLANE_ITEM -29
 
 #define PLANE_CURRENCY -28
 
 //Mob
-#define PLANE_MOB_UNDERWATER -25
 
-#define PLANE_WATER -24
+#define PLANE_MOVABLE_STEALTH -23
 
-#define PLANE_MOB_STEALTH -23
+#define PLANE_MOVABLE -21
 
-#define PLANE_MOB_SMALL -22
-
-#define PLANE_MOB -21
-
-#define PLANE_MOB_WATER_MASK -18
+#define PLANE_MOVABLE_WATER_MASK -18 //The water mask.
 
 //Special Objs
 #define PLANE_SCENERY -15
 
 #define PLANE_LIGHT_FIXTURE -14
-
-#define PLANE_OBJ_LARGE -13
 
 #define PLANE_EFFECT -10
 

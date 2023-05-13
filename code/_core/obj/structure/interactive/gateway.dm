@@ -6,7 +6,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	var/enabled = FALSE
 

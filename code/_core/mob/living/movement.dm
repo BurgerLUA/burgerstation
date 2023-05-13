@@ -248,7 +248,10 @@
 		var/found_movement_delay = M.get_movement_delay()
 		. = clamp(found_movement_delay,.,.*2)
 
-/mob/living/proc/toggle_sneak(var/on = TRUE)
+/mob/living/proc/toggle_sneak(var/on = TRUE,var/force=FALSE)
+
+	if(!force && dis_sneaking == on)
+		return FALSE
 
 	for(var/k in buttons)
 		var/obj/hud/button/B = k
@@ -262,6 +265,8 @@
 		is_sneaking = TRUE
 	else
 		is_sneaking = FALSE
+
+	handle_transform()
 
 	return is_sneaking
 

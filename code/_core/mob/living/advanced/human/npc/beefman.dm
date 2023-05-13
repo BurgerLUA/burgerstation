@@ -51,11 +51,9 @@
 	return ..()
 
 /mob/living/advanced/npc/beefman/get_plane()
-	if(dead)
-		return PLANE_MOB_DEAD
 	if(horizontal)
-		return PLANE_MOB_SMALL
-	return PLANE_MOB_STEALTH //Always stealth.
+		return PLANE_MOVABLE_DEAD
+	return PLANE_MOVABLE_STEALTH //Always stealth.
 /mob/living/advanced/npc/beefman/on_walk()
 	var/turf/T = get_turf(src)
 	for(var/obj/effect/cleanable/B in T.contents)

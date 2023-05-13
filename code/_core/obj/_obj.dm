@@ -4,7 +4,7 @@
 	icon_state = ""
 	desc = "null"
 	layer = LAYER_OBJ
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	var/list/additional_blends
 

@@ -18,7 +18,7 @@
 
 	alpha = 200
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 	layer = LAYER_OBJ_AIRLOCK
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL

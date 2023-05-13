@@ -87,7 +87,7 @@
 	desc_extended = "A general proximity scanner that detects whether or not a person is present in the tile."
 	icon_state = "door"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	desired_light_power = 0
 
@@ -140,7 +140,7 @@
 	desc_extended = "A general proximity scanner that detects whether or not a person is a cop"
 	icon_state = "door"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	desired_light_power = 0
 

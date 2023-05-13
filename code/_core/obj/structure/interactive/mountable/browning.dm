@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/mountable/browning.dmi'
 	icon_state = "unloaded"
 
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 	layer = LAYER_MOB_ABOVE
 
 	density = TRUE

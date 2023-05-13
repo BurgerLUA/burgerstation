@@ -1,7 +1,7 @@
 /obj/structure/interactive/vending/smart_fridge
 	name = "smart fridge"
 	icon_state = "smartfridge"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 	pixel_y = 4
 
 /obj/structure/interactive/vending/smart_fridge/kitchen

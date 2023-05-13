@@ -20,7 +20,7 @@ var/global/list/wishgranter_speak_lines = list(
 	icon_state = "wishgranter_on"
 	//icon_state = "wishgranter_off"
 
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 

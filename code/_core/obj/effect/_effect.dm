@@ -10,4 +10,4 @@
 	anchored = 2
 
 /obj/effect/stealth_test
-	plane = PLANE_MOB_STEALTH
+	plane = PLANE_MOVABLE_STEALTH

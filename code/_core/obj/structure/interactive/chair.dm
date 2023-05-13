@@ -17,7 +17,7 @@ obj/structure/interactive/chair/update_overlays()
 	if(armrest)
 		var/image/I = new/image(icon,"[icon_state]_armrest")
 		I.appearance_flags = src.appearance_flags
-		I.plane = PLANE_MOB
+		I.plane = PLANE_MOVABLE
 		I.layer = LAYER_MOB_ABOVE + 1
 		add_overlay(I)
 
@@ -32,7 +32,7 @@ obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 
 	if(. || force)
 		if(dir == NORTH)
-			plane = PLANE_MOB
+			plane = PLANE_MOVABLE
 			layer = LAYER_MOB_ABOVE
 		else
 			plane = initial(plane)

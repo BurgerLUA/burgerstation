@@ -1,3 +1,28 @@
+/*
+TOO LAGGY
+/particles/fire
+	width = TILE_SIZE*2
+	height = TILE_SIZE*2
+	count = 20
+	spawning = 1
+	bound1 = list(-TILE_SIZE*2,-TILE_SIZE*2,-TILE_SIZE*2)
+	bound2 = list(TILE_SIZE*2,TILE_SIZE*2,TILE_SIZE*2)
+	icon = 'icons/particle/fire_floor.dmi'
+	icon_state = list("1"=1,"2"=1,"3"=1,"4"=1,"5"=1)
+	gravity = list(0,0.5)
+	gradient = list(0,"#FFF6BE",0.2,"#FABA5F",0.3,"#FF9D20",0.4,"#DB680B",0.6,"#DB680B",0.8,"7F7F7F",1,"#777777")
+
+	lifespan = 20
+	fade = 5
+	fadein = 2
+	color = 0
+	color_change = 0.1
+	position = generator("box",list(-TILE_SIZE*0.5,-TILE_SIZE*0.5,0),list(TILE_SIZE*0.5,TILE_SIZE*0.5,0))
+	scale = list(0.5,0.5)
+	grow = list(0.2,0.2)
+	friction = 0.1
+*/
+
 /obj/fire_process
 
 	icon = 'icons/obj/effects/flamer_fire_effect.dmi'
@@ -60,7 +85,6 @@
 			if(M.health) do_damage(k)
 
 	set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
-
 
 /obj/fire_process/Destroy()
 	SSexplosion.active_fires -= src

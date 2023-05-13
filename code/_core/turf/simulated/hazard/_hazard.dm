@@ -43,7 +43,7 @@ var/global/obj/water_ground
 
 /turf/simulated/liquid/Exit(atom/movable/O,atom/newloc)
 
-	if(O.plane <= PLANE_MOB_UNDERWATER && src.layer != newloc.layer && !O.grabbing_hand) //Keep fish and objects in the water, unless its being grabbed.
+	if(O.plane <= PLANE_MOVABLE_UNDERWATER && src.layer != newloc.layer && !O.grabbing_hand) //Keep fish and objects in the water, unless its being grabbed.
 		return FALSE
 	else if(is_living(O) && (O.collision_flags & FLAG_COLLISION_WATER) && newloc.type != src.type)
 		var/mob/living/L = O

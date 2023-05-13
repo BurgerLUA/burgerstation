@@ -32,7 +32,7 @@ var/global/list/possible_monsters_to_spawn = list(
 	desired_light_range = VIEW_RANGE*0.5
 	desired_light_color = "#C67000"
 
-	plane = PLANE_OBJ_LARGE
+	plane = PLANE_MOVABLE
 
 	mouse_opacity = 1
 

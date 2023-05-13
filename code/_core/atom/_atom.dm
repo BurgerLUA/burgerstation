@@ -7,7 +7,7 @@
 
 	var/desc_extended
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	density = FALSE //Should always be set to FALSE! Controls if an object should receive a Cross/Uncross/Crossed/Uncrossed proc calls.
 

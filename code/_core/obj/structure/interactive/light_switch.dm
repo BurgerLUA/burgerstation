@@ -9,7 +9,7 @@
 	anchored = TRUE
 	initialize_type = INITIALIZE_LATE
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	var/on = FALSE
 

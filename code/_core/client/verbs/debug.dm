@@ -214,12 +214,12 @@ var/global/list/destroy_everything_whitelist = list(
 	var/list/turf/possible_SY = list()
 
 	for(var/turf/simulated/floor/F in range(src.view*0.4,N_T))
-		if(F.is_occupied(PLANE_OBJ))
+		if(F.is_occupied(PLANE_MOVABLE))
 			continue
 		possible_NT += F
 
 	for(var/turf/simulated/floor/F in range(src.view*0.4,S_T))
-		if(F.is_occupied(PLANE_OBJ))
+		if(F.is_occupied(PLANE_MOVABLE))
 			continue
 		possible_SY += F
 

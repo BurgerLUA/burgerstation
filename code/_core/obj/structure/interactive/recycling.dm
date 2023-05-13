@@ -9,7 +9,7 @@
 
 	var/list/stored_material = list()
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	bullet_block_chance = 50
 

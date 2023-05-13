@@ -4,7 +4,7 @@
 	stamina_base = 50
 	mana_base = 50
 
-	sight = SEE_BLACKNESS | SEE_SELF//| SEE_PIXELS
+	sight = SEE_BLACKNESS | SEE_SELF
 
 	enable_chunk_clean = TRUE
 	enable_chunk_handling = TRUE
@@ -585,7 +585,7 @@
 	water_mask.icon = 'icons/water_mask.dmi'
 	water_mask.icon_state = "water_mask"
 	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
-	water_mask.plane = PLANE_MOB_WATER_MASK
+	water_mask.plane = PLANE_MOVABLE_WATER_MASK
 	water_mask.layer = LAYER_BASE
 	water_mask.pixel_x = -32
 	water_mask.pixel_y = -32

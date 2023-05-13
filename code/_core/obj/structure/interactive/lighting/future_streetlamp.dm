@@ -10,7 +10,7 @@
 
 	layer = LAYER_MOB_ABOVE
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC

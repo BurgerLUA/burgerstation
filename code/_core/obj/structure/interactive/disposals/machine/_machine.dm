@@ -3,7 +3,7 @@
 
 /obj/structure/interactive/disposals/machine/Finalize()
 	. = ..()
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 /obj/structure/interactive/disposals/machine/get_connections()
 

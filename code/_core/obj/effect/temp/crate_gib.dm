@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structure/supply_crate.dmi'
 	icon_state = "gib"
 	mouse_opacity = 0
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 /obj/effect/temp/crate_gib/New(var/desired_location,var/desired_time)
 	. = ..()

@@ -160,7 +160,7 @@ obj/effect/temp/hazard/bubblefist/
 
 	layer = LAYER_FLOOR_EFFECTS
 
-	plane = PLANE_MOB - 1
+	plane = PLANE_MOVABLE - 1
 
 obj/effect/temp/hazard/bubblefist/update_overlays()
 	. = ..()

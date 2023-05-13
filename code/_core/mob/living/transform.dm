@@ -17,12 +17,10 @@
 
 
 /mob/living/proc/get_plane()
-	if(dead)
-		return PLANE_MOB_DEAD
-	if(is_sneaking)
-		return PLANE_MOB_STEALTH
 	if(horizontal)
-		return PLANE_MOB_SMALL
+		return PLANE_MOVABLE_DEAD
+	if(is_sneaking)
+		return PLANE_MOVABLE_STEALTH
 	return initial(plane)
 
 /mob/living/proc/handle_transform(var/force=FALSE)

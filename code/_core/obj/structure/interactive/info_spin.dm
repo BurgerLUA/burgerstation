@@ -4,7 +4,7 @@ obj/structure/interactive/info_spin
 	icon_state = "info"
 	pixel_y = 10
 
-	plane = PLANE_OBJ_LARGE
+	plane = PLANE_MOVABLE
 	layer = LAYER_LARGE_OBJ
 
 	density = TRUE

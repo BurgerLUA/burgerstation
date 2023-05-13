@@ -5,7 +5,7 @@
 /mob/living/advanced/stand
 	name = "stand"
 	desc = "Boss, that's an enemy stand."
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 	species = "stand"
 
 	collision_flags = FLAG_COLLISION_NONE

@@ -40,7 +40,7 @@ obj/structure/interactive/atmospherics/air_alarm
 	desired_light_power = 1
 	desired_light_color = "#0094FF"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 obj/structure/interactive/atmospherics/air_alarm/Initialize(var/desired_loc)
 	try_attach_to()

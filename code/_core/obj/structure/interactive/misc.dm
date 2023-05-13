@@ -51,14 +51,14 @@ obj/structure/interactive/misc/urinal
 	desc = "*obligatory piss joke*"
 	desc_extended = "A urinal on the wall as decor to liven up the area."
 	icon_state = "urinal"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 obj/structure/interactive/misc/mirror
 	name = "mirror"
 	desc = "Magic mirror on the wall, who is the most robust of them all?"
 	desc_extended = "Stand in front of this to change your appearance."
 	icon_state = "mirror"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	density = TRUE
 
@@ -125,4 +125,4 @@ obj/structure/interactive/misc/sink
 	desc = "Wa'tr. Wa'tr free o' charge."
 	desc_extended = "A standing sink as decor to liven up the area. What? You actually expected this to dispense water free of charge?"
 	icon_state = "sink"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE

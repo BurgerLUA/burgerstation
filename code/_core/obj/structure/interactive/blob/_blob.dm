@@ -8,7 +8,7 @@
 
 	color = "#80CC2A"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	anchored = TRUE
 

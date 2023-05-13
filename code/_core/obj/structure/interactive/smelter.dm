@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/smelter.dmi'
 	icon_state = "furnace"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 	anchored = TRUE
 	pixel_y = 2
 
