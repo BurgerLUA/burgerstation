@@ -40,3 +40,12 @@
 
 
 	value = 120
+
+/obj/item/clothing/head/helmet/tactical/advanced/nanotrasen
+	name = "nanotrasen advanced tactical helmet"
+	icon = 'icons/obj/item/clothing/hats/nanotrasen_tactical.dmi'
+	desc = "A thick helmet for an even thicker skull."
+	desc_extended = "A sturdy tactical helmet. Protects your head from bullets. This one has a regal blue helmet cover with 'NanoTrasen' printed on the front."
+	rarity = RARITY_RARE
+
+	value = 150

@@ -45,3 +45,10 @@
 /obj/item/clothing/head/hat/skimask/medical
 	name = "medical full face mask"
 	color = COLOR_MEDICAL
+
+/obj/item/clothing/head/hat/skimask/tactical
+	icon = 'icons/obj/item/clothing/masks/tacticool.dmi'
+	icon_state = "inventory"
+
+/obj/item/clothing/head/hat/skimask/tactical/black
+	color = COLOR_BLACK

@@ -109,6 +109,7 @@
 		//Helmets and masks
 		/obj/item/clothing/head/helmet/polymorphic/reinforced/ntops,
 		/obj/item/clothing/head/hat/skimask/black,
+		/obj/item/clothing/head/hat/skimask/tactical/black,
 		/obj/item/clothing/mask/gas/poly/nt_ops,
 
 		//Armor
@@ -128,7 +129,8 @@
 
 		//Bonus
 		/obj/item/clothing/overwear/armor/nanotrasen/nt_ops,
-		/obj/item/clothing/head/helmet/full/nanotrasen/nt_ops
+		/obj/item/clothing/head/helmet/full/nanotrasen/nt_ops,
+		/obj/item/storage/nanotrasen_elite
 
 	)
 
