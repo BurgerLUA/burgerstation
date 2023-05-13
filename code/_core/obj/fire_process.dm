@@ -76,7 +76,13 @@ RIP PLANS.
 	if(!victim.can_be_attacked(owner,src,params,DT))
 		return FALSE
 	var/atom/object_to_damage = victim.get_object_to_damage(owner,src,damage_type,params,TRUE,TRUE)
-	. = DT.process_damage(owner,victim,src,object_to_damage,owner,multiplier)
+
+	var/list/returning_damage = DT.process_damage(owner,victim,src,object_to_damage,owner,multiplier)
+
+	if(returning_damage && returning_damage[1] > 0)
+		var/expected_damage = DT.get_damage_per_hit()*multiplier
+		fire_power += min(5,1*(returning_damage[1]/expected_damage))
+
 	CALLBACK("\ref[victim]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
 
 /obj/fire_process/Crossed(atom/movable/O)
@@ -132,6 +138,7 @@ RIP PLANS.
 	set_light_sprite(light_power,light_power, "#A8916A",LIGHT_OMNI)
 
 	if(fire_power < 40) //Don't spread if we don't have enough fuel to spread.
+		momentum = NORTH | EAST | SOUTH | WEST //Reset momentum.
 		return FALSE
 
 	if(!momentum)
@@ -139,7 +146,7 @@ RIP PLANS.
 
 	var/turf/current_turf = loc
 
-	for(var/d in DIRECTIONS_INTERCARDINAL)
+	for(var/d in DIRECTIONS_ALL)
 
 		if(!(d & momentum))
 			continue
