@@ -410,7 +410,7 @@
 	seed_icon_state = "seed"
 	plant_icon_count = 1
 	reagents = list(
-		/reagent/nitrogen = 1, //Todo: Shieldium- gives you an armor buff
+		/reagent/magic/armotol = 1,
 	)
 	typical_volume = 2
 

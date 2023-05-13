@@ -688,6 +688,7 @@
 #include "code\_core\datum\reagent\reagent_dye.dm"
 #include "code\_core\datum\reagent\reagent_enzymes.dm"
 #include "code\_core\datum\reagent\reagent_fuel.dm"
+#include "code\_core\datum\reagent\reagent_magic.dm"
 #include "code\_core\datum\reagent\reagent_medicine.dm"
 #include "code\_core\datum\reagent\reagent_medicine_core.dm"
 #include "code\_core\datum\reagent\reagent_medicine_painkiller.dm"
