@@ -389,6 +389,83 @@
 	)
 
 	typical_volume = 20
+
+/plant_type/forest_berry
+	name = "forest berry bush"
+	desc = "Magical!"
+	plant_icon_state = "forest_berry"
+	harvest_icon_state = "forest_berry"
+	seed_icon_state = "seed"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/medicine/health_potion = 1,
+	)
+	typical_volume = 2
+
+/plant_type/forest_nut
+	name = "forest nut bush"
+	desc = "Magical!"
+	plant_icon_state = "forest_nut"
+	harvest_icon_state = "forest_nut"
+	seed_icon_state = "seed"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nitrogen = 1, //Todo: Shieldium- gives you an armor buff
+	)
+	typical_volume = 2
+
+/plant_type/snow_daisy
+	name = "snow daisy patch"
+	desc = "Livingwood Maker"
+	plant_icon_state = "snow_daisy"
+	harvest_icon_state = "snow_daisy"
+	seed_icon_state = "seed"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/medicine/mana_potion = 1,
+	)
+	typical_volume = 2
+
+/plant_type/space_cotton
+	name = "space cotton"
+	desc = "Something something racism"
+	plant_icon_state = "space_cotton"
+	harvest_icon_state = "space_cotton"
+	seed_icon_state = "seed"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/nitrogen = 0.5,
+		/reagent/carbon = 0.5,
+	)
+	typical_volume = 2
+
+/plant_type/devil_shroom
+	name = "devils mushroom"
+	desc = "From a distant Rimworld"
+	plant_icon_state = "devil_shroom"
+	harvest_icon_state = "devil_shroom"
+	seed_icon_state = "seed"
+	plant_icon_count = 1
+	reagents = list(
+		/reagent/toxin/mercury = 0.5,
+		/reagent/toxin/sulfur_dioxide = 0.5,
+	)
+	typical_volume = 2
+/*
+    //Just incase anyone needs it
+/plant_type/template
+	name = "Change"
+	desc = "Change"
+	plant_icon_state = "Change"
+	harvest_icon_state = "Change"
+	seed_icon_state = "Change"
+    plant_icon_count = 4
+	reagents = list(
+		/reagent/nitrogen = 1,
+	)
+	typical_volume = 10
+*/
+
 /*
 /plant_type/herb_red
 	name = "Red Herb"

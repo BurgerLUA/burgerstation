@@ -174,6 +174,71 @@
 	growth_speed = 0.2
 
 	delete_after_harvest = TRUE
+
+/obj/item/seed/forest_berry
+	plant_type = /plant_type/forest_berry
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 2
+	yield_max = 3
+	growth_speed = 0.3
+
+	delete_after_harvest = FALSE
+
+/obj/item/seed/forest_nut
+	plant_type = /plant_type/forest_nut
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 2
+	yield_max = 3
+	growth_speed = 0.3
+
+	delete_after_harvest = FALSE
+
+/obj/item/seed/snow_daisy
+	plant_type = /plant_type/snow_daisy
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 2
+	yield_max = 3
+	growth_speed = 0.7
+
+	delete_after_harvest = TRUE
+
+/obj/item/seed/space_cotton
+	plant_type = /plant_type/space_cotton
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 2
+	yield_max = 1
+	growth_speed = 0.5
+
+	delete_after_harvest = FALSE
+
+/obj/item/seed/devil_shroom
+	plant_type = /plant_type/devil_shroom
+
+	growth_min = 0
+	growth_max = 50
+	growth_produce_max = 100
+
+	potency = 2
+	yield_max = 1
+	growth_speed = 0.1
+
+	delete_after_harvest = TRUE
 /*
 /obj/item/seed/herb
 	plant_type = /plant_type/herb_red
