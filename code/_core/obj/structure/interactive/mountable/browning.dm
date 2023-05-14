@@ -137,7 +137,7 @@
 
 
 //taken from chairs, sits down if you move onto it, but only once
-/obj/structure/interactive/mountable/browning/Crossed(atom/movable/O)
+/obj/structure/interactive/mountable/browning/Crossed(atom/movable/O,atom/OldLoc)
 
 	. = ..()
 

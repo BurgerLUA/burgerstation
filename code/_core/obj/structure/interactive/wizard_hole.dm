@@ -33,7 +33,7 @@
 	return ..()
 
 
-/obj/structure/interactive/wizard_hole/Crossed(atom/movable/O)
+/obj/structure/interactive/wizard_hole/Crossed(atom/movable/O,atom/OldLoc)
 
 	. = ..()
 

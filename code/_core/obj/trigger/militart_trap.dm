@@ -3,7 +3,7 @@
 	invisibility = 100
 	density = TRUE
 
-/obj/trigger/military_trap/Crossed(atom/movable/O)
+/obj/trigger/military_trap/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	if(!is_player(O))
 		return .

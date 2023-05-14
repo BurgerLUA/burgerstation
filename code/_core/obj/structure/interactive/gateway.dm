@@ -56,7 +56,7 @@
 		icon_state = "[icon_state]_on"
 
 
-/obj/structure/interactive/gateway/Crossed(atom/movable/O)
+/obj/structure/interactive/gateway/Crossed(atom/movable/O,atom/OldLoc)
 
 	. = ..()
 

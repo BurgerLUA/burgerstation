@@ -38,7 +38,7 @@ obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 			plane = initial(plane)
 
 
-obj/structure/interactive/chair/Crossed(atom/movable/O)
+obj/structure/interactive/chair/Crossed(atom/movable/O,atom/OldLoc)
 
 	. = ..()
 

@@ -37,26 +37,23 @@
 		return FALSE
 
 	var/mob/living/L = owner
-	stored_line.pixel_x = FLOOR(L.resist_percent * 27,1)
+	var/resist_percent = L.get_resist_percent()
+	if(resist_percent == -1)
+		resist_percent = 1
 
-	if(L.next_resist > 0 || L.resist_percent > 0)
-		src.alpha = clamp(src.alpha + 80,0,255)
+	var/desired = resist_percent*27
+	var/distance = abs(stored_line.pixel_x - desired)
+	var/mod = CEILING(min(distance,1 + distance*0.25),1)
+
+	if(resist_percent >= 0)
+		stored_line.pixel_x = min(stored_line.pixel_x + mod,desired)
 	else
-		src.alpha = clamp(src.alpha - 40,0,255)
+		stored_line.pixel_x = max(stored_line.pixel_x - mod,desired)
 
-	/*
-	if(L.next_resist < world.time)
-		var/x_mod = 0
-		var/y_mod = 0
-		animate(src)
-		for(var/i=1,i<=5,i++)
-			x_mod = clamp(-x_mod + pick(-1,1),-1,1)*RAND_PRECISE(0.25,1)
-			y_mod = clamp(-y_mod + pick(-1,1),-1,1)*RAND_PRECISE(0.25,1)
-			var/matrix/M = matrix()
-			M.Translate(x_mod*TILE_SIZE,y_mod*TILE_SIZE)
-			animate(src,transform=M,time=0.5)
-		animate(transform=matrix(),time=1)
-	*/
+	if(stored_line.pixel_x == 27)
+		src.alpha = clamp(src.alpha - 40,0,255) //Remove alpha.
+	else
+		src.alpha = clamp(src.alpha + 80,0,255) //Add alpha.
 
 	. = ..()
 

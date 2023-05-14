@@ -105,7 +105,7 @@
 /obj/item/ball/soccer/Cross(atom/movable/O,atom/oldloc)
 	return TRUE
 
-/obj/item/ball/soccer/Crossed(atom/movable/O)
+/obj/item/ball/soccer/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	on_kick(O)
 

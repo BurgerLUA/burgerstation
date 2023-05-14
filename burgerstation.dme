@@ -1980,6 +1980,7 @@
 #include "code\_core\obj\projectile\bullet.dm"
 #include "code\_core\obj\projectile\cleaning_shot.dm"
 #include "code\_core\obj\projectile\collisions.dm"
+#include "code\_core\obj\projectile\fire_breath.dm"
 #include "code\_core\obj\projectile\gabber_ring.dm"
 #include "code\_core\obj\projectile\grenade.dm"
 #include "code\_core\obj\projectile\laser.dm"

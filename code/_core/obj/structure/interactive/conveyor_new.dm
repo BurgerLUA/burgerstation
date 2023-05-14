@@ -55,7 +55,7 @@
 
 
 
-/obj/structure/interactive/conveyor/Crossed(atom/movable/O)
+/obj/structure/interactive/conveyor/Crossed(atom/movable/O,atom/OldLoc)
 
 	if(anchored && active)
 		START_THINKING(src)

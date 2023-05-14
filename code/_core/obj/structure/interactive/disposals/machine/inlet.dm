@@ -24,7 +24,7 @@
 
 
 
-/obj/structure/interactive/disposals/machine/inlet/Crossed(atom/movable/O)
+/obj/structure/interactive/disposals/machine/inlet/Crossed(atom/movable/O,atom/OldLoc)
 
 
 	if(O.collision_flags & FLAG_COLLISION_ETHEREAL)

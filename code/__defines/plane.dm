@@ -45,8 +45,6 @@
 
 #define PLANE_MOVABLE_DEAD -30
 
-#define PLANE_ITEM -29
-
 #define PLANE_CURRENCY -28
 
 //Mob

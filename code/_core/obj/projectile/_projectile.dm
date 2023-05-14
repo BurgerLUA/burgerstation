@@ -68,8 +68,6 @@
 
 	var/hostile = TRUE //Set to true if this is a hostile projectile. Set to false if it isn't.
 
-	var/rotate_projectile = TRUE
-
 	anchored = TRUE
 
 	var/penetrations_left = 0 //Uwu
@@ -84,6 +82,10 @@
 	var/richochet_block_percent_threshold = 0.25 //Percentage of damage blocked required to start a richochet. Note that armor deflection multiplies the block percentage checked.
 
 	var/debug = FALSE
+
+	var/rotate_projectile = TRUE
+
+	var/ignore_living = FALSE //Ignore collisions with living beings.
 
 /obj/projectile/Destroy()
 	SSprojectiles.all_projectiles -= src
@@ -276,10 +278,11 @@
 		return FALSE
 
 	if(!start_time) //First time running.
-		var/matrix/M = get_base_transform()
-		var/new_angle = -ATAN2(vel_x,vel_y) + 90
-		M.Turn(new_angle)
-		transform = M
+		if(rotate_projectile)
+			var/matrix/M = get_base_transform()
+			var/new_angle = -ATAN2(vel_x,vel_y) + 90
+			M.Turn(new_angle)
+			transform = M
 	else
 		pixel_x_float_visual += vel_x
 		pixel_y_float_visual += vel_y
@@ -439,10 +442,11 @@
 									pixel_y_float_visual = pixel_y_float_physical
 									pixel_x = CEILING(pixel_x_float_visual,1)
 									pixel_y = CEILING(pixel_y_float_visual,1)
-									var/matrix/M = get_base_transform()
-									var/new_angle = -ATAN2(vel_x,vel_y) + 90
-									M.Turn(new_angle)
-									transform = M
+									if(rotate_projectile)
+										var/matrix/M = get_base_transform()
+										var/new_angle = -ATAN2(vel_x,vel_y) + 90
+										M.Turn(new_angle)
+										transform = M
 									. = FALSE
 
 									if(length(DT.impact_sounds))

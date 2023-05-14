@@ -15,7 +15,7 @@
 	desired_light_range = 2
 	desired_light_color = "#0000FF"
 
-/obj/structure/interactive/stacker/Crossed(atom/movable/O)
+/obj/structure/interactive/stacker/Crossed(atom/movable/O,atom/OldLoc)
 
 	if(is_item(O))
 		stack(O)

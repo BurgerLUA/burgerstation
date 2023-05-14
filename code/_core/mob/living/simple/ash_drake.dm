@@ -5,7 +5,6 @@
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw
 
-
 	pixel_x = -16
 
 	value = 6000
@@ -65,7 +64,7 @@
 	loyalty_tag = "Ash Drake"
 
 	blood_type = /reagent/blood/ancient
-	blood_volume = 3000
+	blood_volume = 2000
 
 	soul_size = SOUL_SIZE_MYSTIC
 
@@ -77,30 +76,27 @@
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 
+	var/next_special_move = 0
 
 /mob/living/simple/ash_drake/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-
 	if(boss_state)
 		return FALSE
-
 	. = ..()
 
 /mob/living/simple/ash_drake/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
-
 	if(boss_state)
 		return FALSE
-
 	. = ..()
 
-/mob/living/simple/ash_drake/proc/fly()
+/mob/living/simple/ash_drake/proc/start_fly()
 
 	if(boss_state)
 		return
 
-	if(prob(50))
-		fire_rain()
-
 	var/turf/T = get_turf(src)
+
+	for(var/obj/fire_process/FP in orange(2,src))
+		FP.momentum = get_dir(src,FP)
 
 	new/obj/effect/temp/ash_drake/swoop_up(T)
 
@@ -144,15 +140,19 @@
 
 	play_sound('sound/mob/ash_drake/impact.ogg',center_turf)
 
-	for(var/turf/T in range(2,center_turf))
+	for(var/turf/simulated/T in range(3,center_turf)) //7x7
 		new/obj/effect/temp/impact/combat/smash(T)
-		var/is_center = T == center_turf
+		var/is_center = get_dist(center_turf,T) <= 1 //3x3
 		for(var/mob/living/L in T.contents)
 			if(L==src)
 				continue
-			L.add_status_effect(STAGGER,10 + is_center*30,10 + is_center*30,source = src)
-
-	firebomb(center_turf,VIEW_RANGE*0.5,src,src,src.loyalty_tag)
+			L.add_status_effect(is_center ? STUN : STAGGER,20 + is_center*40,10 + is_center*30,source = src)
+		if(T.health)
+			T.health.adjust_loss_smart(brute=500)
+		if(T != center_turf)
+			var/obj/fire_process/FP = locate() in T.contents
+			if(FP)
+				FP.momentum = get_dir(src,FP)
 
 	return TRUE
 
@@ -168,7 +168,7 @@
 
 	var/turf/desired_turf = ai && ai.objective_attack ? get_turf(ai.objective_attack) : get_turf(src)
 
-	for(var/turf/simulated/floor/T in range(4,desired_turf))
+	for(var/turf/simulated/floor/T in range(VIEW_RANGE*0.5,desired_turf))
 		valid_floors += T
 
 	if(length(valid_floors))
@@ -183,23 +183,56 @@
 
 /mob/living/simple/ash_drake/get_movement_delay()
 
+	if(boss_state)
+		return AI_TICK_FAST
+
 	. = ..()
 
-	if(boss_state)
-		. *= 0.25
+/mob/living/simple/ash_drake/post_death()
+	. = ..()
+	if(.)
+		icon_state = "dead"
+		update_sprite()
+		play_sound('sound/mob/ash_drake/death.ogg',get_turf(src))
 
-/mob/living/simple/ash_drake/proc/shoot_fireball(var/atom/desired_target)
+
+/mob/living/simple/ash_drake/proc/start_fire_breath(var/atom/desired_target)
+
+	if(has_status_effect(PARALYZE))
+		return FALSE
+
+	add_status_effect(PARALYZE,duration=40,magnitude=-1,stealthy=TRUE)
+
+	play_sound('sound/mob/ash_drake/inhale.ogg',get_turf(src))
+
+	var/turf/stored_turf = get_turf(desired_target)
+
+	CALLBACK("\ref[src]_do_fire_breath",20,src,src::do_fire_breath(),desired_target,stored_turf)
+
+
+/mob/living/simple/ash_drake/proc/do_fire_breath(var/atom/desired_target,var/turf/fallback_turf)
+
+	var/do_bonus = FALSE
+
+	var/atom/target_to_hit = desired_target
+
+	if(src.dir & get_dir(src,desired_target))
+		do_bonus = prob(20)
+	else
+		target_to_hit = fallback_turf
+		do_bonus = TRUE
+
 	shoot_projectile(
 		src,
-		desired_target,
+		target_to_hit,
 		null,
 		null,
-		/obj/projectile/magic/fireball,
-		/damagetype/ranged/magic/fireball,
+		/obj/projectile/fire_breath,
+		null,
 		16,
 		16,
 		0,
-		TILE_SIZE*0.25,
+		TILE_SIZE*0.4,
 		1,
 		"#FFFFFF",
 		0,
@@ -207,17 +240,14 @@
 		iff_tag,
 		loyalty_tag
 	)
-	play_sound('sound/mob/ash_drake/fireball.ogg',get_turf(src))
 
-/mob/living/simple/ash_drake/post_death()
-	. = ..()
-	icon_state = "dead"
-	update_sprite()
-	play_sound('sound/mob/ash_drake/death.ogg',get_turf(src))
+	play_sound('sound/mob/ash_drake/exhale.ogg',get_turf(src))
 
+	if(do_bonus)
+		add_status_effect(PARALYZE,duration=20,magnitude=-1,stealthy=TRUE)
+		CALLBACK("\ref[src]_do_bonus_dash",21,src,src::do_bonus_dash(),fallback_turf)
 
-
-
-
-
-
+/mob/living/simple/ash_drake/proc/do_bonus_dash(var/atom/desired_dash_target)
+	dash_target = desired_dash_target
+	dash_amount = min(VIEW_RANGE,get_dist(src,dash_target))
+	return TRUE

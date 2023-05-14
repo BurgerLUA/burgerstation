@@ -17,7 +17,7 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_NONE
 
-/obj/structure/interactive/barbed_wire/Crossed(atom/movable/O)
+/obj/structure/interactive/barbed_wire/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	if(is_living(O))
 		var/mob/living/L = O

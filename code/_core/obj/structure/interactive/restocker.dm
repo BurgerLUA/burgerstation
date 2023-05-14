@@ -11,7 +11,7 @@
 
 	pixel_y = 10
 
-/obj/structure/interactive/restocker/Crossed(atom/movable/O)
+/obj/structure/interactive/restocker/Crossed(atom/movable/O,atom/OldLoc)
 	store(O)
 	return ..()
 

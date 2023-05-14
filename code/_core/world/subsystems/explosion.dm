@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(explosion)
 	name = "Explosion Subsystem"
 	desc = "Processes explosions."
 	priority = SS_ORDER_NORMAL
-	tick_rate = DECISECONDS_TO_TICKS(0.5)
+	tick_rate = DECISECONDS_TO_TICKS(1)
 
 	var/list/obj/explosion_process/active_explosions = list()
 	var/list/obj/fire_process/active_fires = list()
@@ -12,6 +12,13 @@ SUBSYSTEM_DEF(explosion)
 	tick_usage_max = 95
 
 	var/explosion_ticks = 0
+
+	var/particles/fire_particles = /particles/fire
+
+/subsystem/explosion/Initialize()
+	. = ..()
+	fire_particles = new fire_particles
+
 
 /subsystem/explosion/proc/add_data(location,owner,source,epicenter,magnitude,loyalty_tag)
 
