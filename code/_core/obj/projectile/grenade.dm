@@ -34,8 +34,7 @@
 /obj/projectile/bullet/grenade/incendiary/on_projectile_hit(atom/hit_atom, turf/old_loc, turf/new_loc)
 	. = ..()
 	if(. && old_loc)
-		explode(old_loc,4,owner,weapon,iff_tag,multiplier = 0.8)
-		firebomb(old_loc,2,owner,weapon,iff_tag,multiplier = 0.8)
+		firebomb(old_loc,25,owner,weapon,iff_tag,multiplier = 0.8)
 
 
 /obj/projectile/bullet/grenade/cleaning
