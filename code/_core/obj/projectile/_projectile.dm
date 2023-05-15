@@ -50,6 +50,7 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 	var/collision_flags_special = FLAG_COLLISION_NONE //If the projectile is actually a throw item.
+	var/collides_with_projectiles = FALSE //Can OTHER projectiles hit this one?
 
 	var/obj/effect/temp/impact/impact_effect_turf
 	var/obj/effect/temp/impact/impact_effect_movable
@@ -201,6 +202,16 @@
 		TE.maptext = "[steps_current]"
 		TE.alpha = 200
 
+	for(var/obj/projectile/other_P in new_loc.contents) //Handles P on P collisions
+		if(projectile_should_collide(other_P,old_loc,new_loc) || other_P.projectile_should_collide(src,old_loc,new_loc))
+			if(other_P.on_projectile_hit(src,old_loc,new_loc)) //Checks if the other projectile should do something to this one.
+				other_P.penetrations_left--
+				//Dont return anything here, it may have more to its life, but note it did hit something.
+			if(on_projectile_hit(other_P,old_loc,new_loc)) //Checks if this projectile should do something to the other one.
+				penetrations_left--
+				if(penetrations_left < 0)
+					return FALSE //This projectile has served its purpose.
+
 	var/list/target_score = list() //The higher the object, the higher priority it is to get hit.
 
 	if(new_loc.has_dense_atom)
@@ -343,6 +354,9 @@
 		return FALSE
 
 	projectile_blacklist[hit_atom] = TRUE //Can't damage the same thing twice.
+
+	if(!collides_with_projectiles && istype(hit_atom, /obj/projectile)) //Dont bother, its a projectile and we dont care.
+		return FALSE
 
 	. = TRUE
 

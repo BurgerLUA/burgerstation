@@ -91,7 +91,7 @@
 	return FALSE
 
 /obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
-	return FALSE
+	return (src.collides_with_projectiles || P.collides_with_projectiles ? TRUE : FALSE)
 
 /obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
 

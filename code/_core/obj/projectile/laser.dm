@@ -29,7 +29,7 @@
 
 /obj/projectile/bullet/laser/opticor
 	icon_state = "sniper"
-	
+
 /obj/projectile/bullet/spit
 	icon = 'icons/obj/projectiles/spit.dmi'
 	icon_state = "spit"
@@ -93,11 +93,7 @@
 			on_projectile_hit(current_loc)
 			return FALSE
 
-/obj/projectile/bullet/flamer/on_enter_tile(var/turf/old_loc,var/turf/new_loc) //stolen from cult.
-
+/obj/projectile/bullet/flamer/on_enter_tile(turf/old_loc, turf/new_loc)
 	. = ..()
-
-	var/obj/effect/temp/hazard/flamethrowerfire = locate() in new_loc
-
-	if(!flamethrowerfire)
-		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,SECONDS_TO_DECISECONDS(30),owner) //time and hazard type not final
+	if(new_loc != get_turf(owner)) // this stops you setting fire to yourself, unless you walk into the flames...
+		firebomb(new_loc,2,owner,weapon,iff_tag,multiplier = 0.5)
