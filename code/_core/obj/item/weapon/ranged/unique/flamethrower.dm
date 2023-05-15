@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/unique/flamethrower/
 	name = "flamethrower"
 	desc = "Mphh Mphh!"
-	desc_extended = "A dated flamethrower. Alt fire while weilding to release a blast of compressed phoron."
+	desc_extended = "A dated flamethrower. Disarm + Fire to release a blast of compressed Phoron."
 	icon = 'icons/obj/item/weapons/ranged/flamethrower.dmi'
 
 	automatic = TRUE
@@ -55,4 +55,14 @@
 	return ..()
 
 /obj/item/weapon/ranged/unique/flamethrower/austrailium/
-	value_burgerbux = 1
+	value_burgerbux = 100
+	bypass_balance_check = TRUE //This is an admeme weapon.
+	name = "austrailium flamethrower"
+	icon = 'icons/obj/item/weapons/ranged/aussieflamethrower.dmi'
+	desc = "Feel the heat!"
+	desc_extended = "Made from a rare golden element from ancient Austrailia,boasts endless reserves of phoron."
+
+/obj/item/weapon/ranged/unique/flamethrower/austrailium/get_ammo_count()
+	return 200 // inf ammo
+/obj/item/weapon/ranged/unique/flamethrower/austrailium/airblast(mob/caller, atom/object, location, params)
+	return shoot(caller,object,location,params,projectile_override = /obj/projectile/airblast) //inf airblast

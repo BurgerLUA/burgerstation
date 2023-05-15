@@ -34,8 +34,8 @@
 			var/oldx = HP.vel_x
 			var/oldy = HP.vel_y
 
-			HP.vel_x = oldx * SIGN(vel_x)
-			HP.vel_y = oldy * SIGN(vel_y) // Makes bullet travel in same direction as the blast, but at the speed it was already going.
+			HP.vel_x = -oldx
+			HP.vel_y = -oldy
 
 			var/matrix/M = get_base_transform()
 			var/new_angle = -ATAN2(HP.vel_x,HP.vel_y) + 90
@@ -45,7 +45,7 @@
 			HP.owner = owner
 			HP.blamed = blamed
 			HP.loyalty_tag = loyalty_tag // It is now the airblasters team.
-			HP.damage_multiplier += 4.5 // CRITICAL
+			HP.damage_multiplier += 4 // CRITICAL
 			//log_debug("RETUUUUUUURNT TO SENDA!")
 		. = TRUE //Reply we hit something
 	return .
