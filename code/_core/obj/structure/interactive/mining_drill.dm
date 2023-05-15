@@ -67,7 +67,7 @@
 
 /obj/structure/interactive/mining_drill/post_move(var/atom/old_loc)
 	. = ..()
-	if(.) deactivate()
+	if(. && CALLBACK_EXISTS("\ref[src]_do_drill")) deactivate()
 
 /obj/structure/interactive/mining_drill/proc/activate(var/mob/caller)
 
@@ -82,7 +82,7 @@
 
 	SShorde.all_drills[src] = world.time + SECONDS_TO_DECISECONDS(15)
 	set_anchored(TRUE)
-	CALLBACK("\ref[src]_do_drill",src,SECONDS_TO_DECISECONDS(10),src,src::do_drill())
+	CALLBACK("\ref[src]_do_drill",SECONDS_TO_DECISECONDS(10),src,src::do_drill())
 	update_sprite()
 
 	return TRUE
@@ -111,7 +111,7 @@
 	attached_braces.Cut()
 
 	for(var/obj/structure/interactive/mining_brace/MB1 in orange(1,src))
-		if(is_valid_brace(MB1))
+		if(!is_valid_brace(MB1))
 			continue
 		var/obj/structure/interactive/mining_brace/MB2 = locate() in get_step(src,MB1.dir).contents
 		if(!is_valid_brace(MB2))
@@ -185,7 +185,7 @@
 
 	play_sound('sound/machines/mining_drill.ogg',current_turf)
 
-	CALLBACK("\ref[src]_do_drill",src,SECONDS_TO_DECISECONDS(2),src,src::do_drill())
+	CALLBACK("\ref[src]_do_drill",SECONDS_TO_DECISECONDS(1.8),src,src::do_drill())
 
 	return TRUE
 

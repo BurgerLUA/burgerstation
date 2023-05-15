@@ -29,7 +29,7 @@ var/global/list/vr_lobby_spawnpoints = list()
 
 /obj/marker/spawnpoint/world_point
 	name = "world point"
-	desc = "This is where you enter the world."
+	desc = "This is where you enter the world (via cryo)."
 
 /obj/marker/spawnpoint/world_point/New(var/desired_loc)
 	world_spawnpoints += get_turf(src)

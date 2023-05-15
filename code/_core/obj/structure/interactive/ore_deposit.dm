@@ -39,7 +39,7 @@
 	TO.amount = min(ore_amount,TO.amount_max)
 	FINALIZE(TO)
 
-	TO.drop_item(drop_location)
+	if(drop_location) TO.drop_item(drop_location)
 
 	ore_amount -= TO.amount
 
