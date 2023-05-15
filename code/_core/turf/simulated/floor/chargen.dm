@@ -6,3 +6,5 @@
 	footstep = /footstep/concrete
 
 	destruction_turf = null
+
+	opacity = 1
