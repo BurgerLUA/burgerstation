@@ -13,12 +13,11 @@ SUBSYSTEM_DEF(explosion)
 
 	var/explosion_ticks = 0
 
-	var/particles/fire_particles = /particles/fire
+	var/particles/fire_particles
 
 /subsystem/explosion/Initialize()
 	. = ..()
-	fire_particles = new fire_particles
-
+	fire_particles = new/particles/fire
 
 /subsystem/explosion/proc/add_data(location,owner,source,epicenter,magnitude,loyalty_tag)
 

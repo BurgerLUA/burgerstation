@@ -73,6 +73,12 @@
 			if(prob(1))
 				new /obj/marker/generation/turf/rock_wall(src)
 
+	if(prob(0.5))
+		if(src.density)
+			new /obj/marker/generation/ore/wall(src)
+		else
+			new /obj/marker/generation/ore/floor(src)
+
 	if(src.loc.type == /area/)
 		new /area/mission/caves(src)
 

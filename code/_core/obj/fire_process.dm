@@ -1,25 +1,25 @@
 
 /particles/fire
-	width = TILE_SIZE
-	height = TILE_SIZE*4
-	count = 15
+	width = TILE_SIZE*2
+	height = TILE_SIZE*2
+	count = 20
 	spawning = 1
-	bound1 = list(-TILE_SIZE,-TILE_SIZE,-TILE_SIZE)
-	bound2 = list(TILE_SIZE*3,TILE_SIZE*3,TILE_SIZE*3)
+	bound1 = list(-TILE_SIZE*2,-TILE_SIZE*2,-TILE_SIZE*2)
+	bound2 = list(TILE_SIZE*2,TILE_SIZE*2,TILE_SIZE*2)
 	icon = 'icons/particle/fire_floor.dmi'
-	icon_state = list("1"=1,"2"=1,"3"=1,"4"=1,"5"=1)
-	gravity = list(0,0.5)
+	icon_state = list("1"=1,"2"=1,"3"=1,"4"=1)
+	gravity = list(0,0.125)
 	gradient = list(0,"#FFF6BE",0.2,"#FABA5F",0.3,"#FF9D20",0.4,"#DB680B",0.6,"#DB680B",0.8,"7F7F7F",1,"#777777")
 
-	lifespan = 15
+	lifespan = 20
 	fade = 5
 	fadein = 2
 	color = 0
-	color_change = 0.1
+	color_change = 0.05
 	position = generator("box",list(-TILE_SIZE*0.5,-TILE_SIZE*0.5,0),list(TILE_SIZE*0.5,TILE_SIZE*0.5,0))
-	scale = list(0.4,0.4)
-	grow = list(0.1,0.1)
-	friction = 0.1
+	scale = list(0.3,0.3)
+	grow = list(0.035,0.035)
+	friction = 0.2
 
 
 /obj/fire_process
@@ -109,8 +109,13 @@
 	if(O.health) do_damage(O)
 
 /obj/fire_process/Finalize()
+
+	particles = SSexplosion.fire_particles
+
 	. = ..()
+
 	SSexplosion.active_fires += src
+
 	if(loc)
 		for(var/k in loc.contents)
 			var/atom/movable/M = k
@@ -120,7 +125,6 @@
 		if(loc.health) do_damage(loc)
 	if(x % 2 && y % 2)
 		set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
-	particles = SSexplosion.fire_particles
 
 /obj/fire_process/Destroy()
 	owner = null

@@ -8,7 +8,7 @@
 	var/icon_state_sheet = "sheet"
 	var/icon_state_rod = "rod"
 	var/icon_state_ingot = "ingot"
-	var/icon_state_ore = "ore"
+	var/icon_state_ore
 	var/icon_state_ore_deposit
 
 	var/weight_per_unit = 0.1
@@ -138,6 +138,15 @@
 	icon_state_ore_deposit = "deposit_gold"
 	wall_health = 50
 	value_per_unit = 40
+
+/material/platinum
+	name = "platinum"
+	color = COLOR_PLATINUM
+	icon_state_ore = "ore_platinum"
+	icon_state_ore_deposit = "deposit_platinum"
+	wall_health = 250
+	value_per_unit = 30
+
 
 /material/diamond
 	name = "diamond"
