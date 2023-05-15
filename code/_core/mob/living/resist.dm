@@ -20,7 +20,7 @@
 		return FALSE
 
 	if(!src.can_resist())
-		next_resist = world.time + 5 //Prevents spam.
+		next_resist = max(next_resist,world.time + 5) //Prevents spam.
 		return FALSE
 
 	if(grabbing_hand && grabbing_hand.owner)
@@ -42,9 +42,9 @@
 				attacker_power *= max(0,O.health.health_current/O.health.health_max)
 				if(O.broken) attacker_power *= 0.25
 
-		var/difficulty = (attacker_power - src_power)*2
+		grab_difficulty = (attacker_power - src_power)*2
 
-		if(resist_counter >= difficulty)
+		if(grab_resist_counter >= grab_difficulty)
 			src.visible_message(
 				span("danger","\The [src.name] resists out of the grip of \the [attacker.name]!"),
 				span("warning","You resist out of the grip of \the [attacker.name]!")
@@ -59,9 +59,6 @@
 				attacker.add_status_effect(STUN,30,30,source=src)
 			if(attacker.health)
 				attacker.health.adjust_stamina(-src_power*4)
-			resist_counter = -1
-			next_resist = 0
-			resist_percent = 0
 		else
 			src.visible_message(
 				span("danger","\The [src.name] tries to resist out of \the [attacker.name]'s grip!"),
@@ -69,20 +66,9 @@
 			)
 			if(attacker.health)
 				attacker.health.adjust_stamina(-src_power) //Attacker needs the strength to resist too.
-			if(resist_counter < 0)
-				resist_counter = 0
-			resist_counter += 1
-			if(difficulty)
-				resist_percent = clamp(resist_counter/difficulty,0,1)
-			else
-				resist_percent = 1
+			grab_resist_counter += 1
 			health.adjust_stamina(-attacker_power)
-			next_resist = world.time + 5
-
-		if(difficulty)
-			resist_percent = clamp(resist_counter/difficulty,0,1)
-		else
-			resist_percent = 1
+			next_resist = max(next_resist,world.time + 5)
 
 		stat_elements_to_update |= stat_elements["resist"]
 
@@ -104,16 +90,8 @@
 			)
 		adjust_fire_stacks(-stacks_to_remove)
 		health.adjust_stamina(-5)
-		if(fire_stacks <= 0)
-			next_resist = 0
-			resist_percent = 0
-		else
-			next_resist = world.time + 15
-
-		if(fire_stacks_max)
-			resist_percent = clamp(fire_stacks/fire_stacks_max,0,1)
-		else
-			resist_percent = 1
+		if(fire_stacks > 0)
+			next_resist = max(next_resist,world.time + 15)
 
 		stat_elements_to_update |= stat_elements["resist"]
 
@@ -124,6 +102,13 @@
 		return FALSE
 
 	return TRUE
+
+/mob/living/proc/get_resist_percent()
+	if(grabbing_hand && grabbing_hand.owner)
+		return clamp(grab_resist_counter/grab_difficulty,0,1)
+	if(on_fire)
+		return clamp(1 - fire_stacks/fire_stacks_max,0,1)
+	return -1
 
 /mob/living/proc/rest()
 	if(dead)

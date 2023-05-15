@@ -15,30 +15,18 @@ SUBSYSTEM_DEF(ore)
 	for(var/turf/simulated/floor/S in block(startturf,endturf))
 		if(!S.organic)
 			continue
-		if(SSdmm_suite.is_pvp_coord(S.x,S.y,S.z))
-			if(prob(99))
-				continue
-			new /obj/marker/ore_deep(S)
-			spawned_ore_chunks_deep++
-		else
-			if(prob(99.75))
-				continue
-			new /obj/marker/ore_deep(S)
-			spawned_ore_chunks_deep++
+		if(prob(99))
+			continue
+		var/obj/structure/O = new /obj/structure/interactive/ore_deposit_ground/random(S)
+		S.attach(O)
+		spawned_ore_chunks_deep++
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	for(var/turf/simulated/wall/rock/S in block(startturf,endturf))
-		if(!S.organic || !S.health)
+		if(prob(97.5))
 			continue
-		if(SSdmm_suite.is_pvp_coord(S.x,S.y,S.z))
-			if(prob(96))
-				continue
-			new /obj/marker/ore(S)
-			spawned_ore_chunks++
-		else
-			if(prob(98))
-				continue
-			new /obj/marker/ore(S)
-			spawned_ore_chunks++
+		var/obj/structure/O = new /obj/structure/interactive/ore_deposit/random(S)
+		S.attach(O)
+		spawned_ore_chunks++
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 	log_subsystem(name,"Spawned [spawned_ore_chunks] ore chunks and [spawned_ore_chunks_deep] deep veins.")
 

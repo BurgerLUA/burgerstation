@@ -19,7 +19,7 @@ obj/structure/interactive/bed
 
 	density = TRUE
 
-/obj/structure/interactive/bed/Crossed(atom/movable/O)
+/obj/structure/interactive/bed/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	if(src.z && is_living(O))
 		var/mob/living/L = O

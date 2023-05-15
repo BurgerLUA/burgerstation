@@ -158,9 +158,6 @@
 	var/override_butcher = FALSE //Set to true for custom butcher contents.
 	var/list/obj/butcher_contents
 
-	var/next_resist = 0
-	var/resist_counter = 0
-
 	size = SIZE_ANIMAL //Size scale when calculating health as well as collision handling for things like crates and doors. See size.dm for values
 
 	var/max_level = 500 //Max level for attributes of the mob.
@@ -173,8 +170,6 @@
 	var/obj/effect/alert_overlay
 	var/obj/effect/fire_overlay
 	var/obj/effect/shield_overlay
-
-	var/resist_percent = 0
 
 	var/enable_medical_hud = TRUE
 	var/enable_security_hud = TRUE
@@ -290,6 +285,11 @@
 	var/next_alert = 0 //Time until this specific mob can create an alert that wakes up AI. Prevents spam and increases preformance.
 
 	var/default_language = LANGUAGE_BASIC //Default language to use for talking.
+
+	var/next_resist = 0 //The next time you're allowed to resist.
+	var/grab_difficulty = 0 //Current difficulty of resisting out of the current grab (if any).
+	var/grab_resist_counter = 0 //Current times resisted in current grab.
+
 
 /mob/living/PreDestroy()
 

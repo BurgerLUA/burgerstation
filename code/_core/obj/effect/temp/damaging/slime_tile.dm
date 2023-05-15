@@ -88,7 +88,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/slime_tile/Crossed(atom/movable/O)
+/obj/structure/interactive/slime_tile/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	if(!qdeleting && !CALLBACK_EXISTS("\ref[src]_timed_destruction") && is_living(O))
 		var/mob/living/L = O

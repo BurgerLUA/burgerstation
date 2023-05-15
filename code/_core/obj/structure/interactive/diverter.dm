@@ -72,7 +72,7 @@
 
 	return think_timer
 
-/obj/structure/interactive/diverter/Crossed(atom/movable/O)
+/obj/structure/interactive/diverter/Crossed(atom/movable/O,atom/OldLoc)
 
 	tracked_movables[O] = world.time + 4
 

@@ -14,7 +14,7 @@
 
 	reagents = /reagent_container/ore
 
-/obj/item/material/ore/Crossed(atom/movable/O)
+/obj/item/material/ore/Crossed(atom/movable/O,atom/OldLoc)
 
 	if(istype(O,/obj/structure/interactive/ore_box))
 		var/obj/structure/interactive/ore_box/OB = O

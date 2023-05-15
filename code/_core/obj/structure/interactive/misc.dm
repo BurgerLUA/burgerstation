@@ -68,7 +68,7 @@ obj/structure/interactive/misc/mirror/chargen
 obj/structure/interactive/misc/mirror/chargen/limited
 	limited = TRUE
 
-obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O)
+obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O,atom/OldLoc)
 	if(is_player(O))
 		var/mob/living/advanced/player/P = O
 		if(P.client)
@@ -97,7 +97,7 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 	desc_extended = "Who could even use this?"
 	icon_state = "mirror_broke"
 
-/obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(atom/movable/O)
+/obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(atom/movable/O,atom/OldLoc)
 	if(istype(O,/mob/living/advanced/player/antagonist/))
 		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()

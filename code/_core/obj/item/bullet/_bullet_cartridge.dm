@@ -137,7 +137,7 @@
 
 	return FALSE
 
-/obj/item/bullet_cartridge/Crossed(atom/movable/O)
+/obj/item/bullet_cartridge/Crossed(atom/movable/O,atom/OldLoc)
 
 	if(istype(O,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = O

@@ -14,7 +14,7 @@
 
 	var/last_marker //The last person to name this item. Used for moderation purposes.
 
-	plane = PLANE_ITEM
+	plane = PLANE_MOVABLE
 	layer = LAYER_OBJ_ITEM
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
@@ -253,7 +253,7 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-/obj/item/Crossed(atom/movable/O)
+/obj/item/Crossed(atom/movable/O,atom/OldLoc)
 	return TRUE
 
 /obj/item/Cross(atom/movable/O,atom/oldloc)

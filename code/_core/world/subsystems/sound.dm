@@ -205,7 +205,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 	return created_sound
 
 
-/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
+/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=SOUND_RANGE*0.25, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)

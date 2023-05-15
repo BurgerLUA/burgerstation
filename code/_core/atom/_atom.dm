@@ -211,7 +211,7 @@
 /atom/Uncross(atom/movable/O,atom/newloc)
 	return TRUE
 
-/atom/Crossed(atom/movable/O) //Override default
+/atom/Crossed(atom/movable/O,atom/OldLoc) //Override default
 	return TRUE
 
 /atom/proc/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency,var/language=LANGUAGE_BASIC,var/talk_range=TALK_RANGE) //Note that this is sanitized.

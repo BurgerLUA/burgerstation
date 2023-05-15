@@ -87,7 +87,7 @@
 
 	. = ..()
 
-/obj/structure/table/Crossed(atom/movable/O)
+/obj/structure/table/Crossed(atom/movable/O,atom/OldLoc)
 
 	if(O && O.loc && is_living(O) && O.collision_flags & FLAG_COLLISION_BARICADE)
 		var/mob/living/L = O

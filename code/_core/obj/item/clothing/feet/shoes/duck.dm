@@ -34,6 +34,6 @@
 
 
 //sqeak when stepped on
-/obj/item/clothing/feet/shoes/duck/Crossed(atom/movable/O)
+/obj/item/clothing/feet/shoes/duck/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 	play_sound(pick('sound/effects/footsteps/quack1.ogg','sound/effects/footsteps/quack2.ogg'),get_turf(src),range_max=VIEW_RANGE)

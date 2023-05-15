@@ -91,9 +91,6 @@
 	var/mob/living/L
 	if(is_living(grabbed_object))
 		L = grabbed_object
-		L.next_resist = 0
-		L.resist_counter = 0
-		L.resist_percent = 0
 	grabbed_object.grabbing_hand = null
 	grabbed_object = null
 	grab_level = 1

@@ -1,28 +1,26 @@
-/*
-TOO LAGGY FOR PARTICLES.
-RIP PLANS.
+
 /particles/fire
-	width = TILE_SIZE*2
-	height = TILE_SIZE*2
-	count = 20
+	width = TILE_SIZE
+	height = TILE_SIZE*4
+	count = 15
 	spawning = 1
-	bound1 = list(-TILE_SIZE*2,-TILE_SIZE*2,-TILE_SIZE*2)
-	bound2 = list(TILE_SIZE*2,TILE_SIZE*2,TILE_SIZE*2)
+	bound1 = list(-TILE_SIZE,-TILE_SIZE,-TILE_SIZE)
+	bound2 = list(TILE_SIZE*3,TILE_SIZE*3,TILE_SIZE*3)
 	icon = 'icons/particle/fire_floor.dmi'
 	icon_state = list("1"=1,"2"=1,"3"=1,"4"=1,"5"=1)
 	gravity = list(0,0.5)
 	gradient = list(0,"#FFF6BE",0.2,"#FABA5F",0.3,"#FF9D20",0.4,"#DB680B",0.6,"#DB680B",0.8,"7F7F7F",1,"#777777")
 
-	lifespan = 20
+	lifespan = 15
 	fade = 5
 	fadein = 2
 	color = 0
 	color_change = 0.1
 	position = generator("box",list(-TILE_SIZE*0.5,-TILE_SIZE*0.5,0),list(TILE_SIZE*0.5,TILE_SIZE*0.5,0))
-	scale = list(0.5,0.5)
-	grow = list(0.2,0.2)
+	scale = list(0.4,0.4)
+	grow = list(0.1,0.1)
 	friction = 0.1
-*/
+
 
 /obj/fire_process
 
@@ -51,7 +49,10 @@ RIP PLANS.
 	mouse_opacity = 0
 
 	pixel_x = -8
-	pixel_y = -8
+	pixel_y = -6
+
+	plane = PLANE_GRASS
+	layer = 1000
 
 /obj/fire_process/proc/do_damage(var/atom/movable/victim,var/distance_check=0)
 
@@ -64,8 +65,13 @@ RIP PLANS.
 	if(CALLBACK_EXISTS("\ref[victim]_do_fire_ground_damage"))
 		return FALSE
 
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.status_immune[FIRE])
+			return FALSE
+
 	if(distance_check <= 0)
-		if(victim.loc != src.loc)
+		if(victim.loc != src.loc && victim != loc)
 			return FALSE
 	else
 		if(get_dist(victim,src) > distance_check)
@@ -79,14 +85,27 @@ RIP PLANS.
 
 	var/list/returning_damage = DT.process_damage(owner,victim,src,object_to_damage,owner,multiplier)
 
-	if(returning_damage && returning_damage[1] > 0)
+	if(!momentum && returning_damage && returning_damage[1] > 0)
 		var/expected_damage = DT.get_damage_per_hit()*multiplier
-		fire_power += min(5,1*(returning_damage[1]/expected_damage))
+		var/fire_power_to_add = min(10,2*(returning_damage[1]/expected_damage))
+		if(object_to_damage.qdeleting)
+			fire_power_to_add += 10
+		fire_power += fire_power_to_add
+		if(fire_power_to_add >= 5 && fire_power >= 40)
+			momentum = NORTH | EAST | SOUTH | WEST
 
 	CALLBACK("\ref[victim]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
 
-/obj/fire_process/Crossed(atom/movable/O)
+/obj/fire_process/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
+	if(. && OldLoc && is_living(O))
+		var/mob/living/L = O
+		if(L.size >= SIZE_BOSS && L.dash_amount > 0 && !L.horizontal)
+			var/throw_direction = get_dir(OldLoc,src)
+			if(throw_direction)
+				momentum |= throw_direction
+
+
 	if(O.health) do_damage(O)
 
 /obj/fire_process/Finalize()
@@ -98,12 +117,21 @@ RIP PLANS.
 			if(M == src)
 				continue
 			if(M.health) do_damage(k)
-
-	set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
+		if(loc.health) do_damage(loc)
+	if(x % 2 && y % 2)
+		set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
+	particles = SSexplosion.fire_particles
 
 /obj/fire_process/Destroy()
-
+	owner = null
 	. = ..()
+
+/obj/fire_process/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+	. = ..()
+	var/found_direction = get_dir(source,src)
+	if(get_dir(source,src) > 0)
+		momentum = found_direction
+		fire_power -= magnitude
 
 /obj/fire_process/proc/do_delete()
 	qdel(src)
@@ -119,8 +147,7 @@ RIP PLANS.
 		return FALSE
 
 	fire_power = min(fire_power,300) //Limit of 30 seconds.
-
-	fire_power -= 0.1*0.5 //10% of a tile per explosion process tick.
+	fire_power -= 0.1
 
 	var/desired_alpha = min(100 + (fire_power/20)*(255-100),255)
 	animate(src,alpha=desired_alpha,time=0.5)
@@ -133,50 +160,51 @@ RIP PLANS.
 		if(80 to INFINITY)
 			icon_state = "fire_3"
 
-	var/light_power = min(8,fire_power/20)
-
-	set_light_sprite(light_power,light_power, "#A8916A",LIGHT_OMNI)
-
-	if(fire_power < 40) //Don't spread if we don't have enough fuel to spread.
-		momentum = NORTH | EAST | SOUTH | WEST //Reset momentum.
+	//Don't spread if there is no momentum
+	if(!momentum)
 		return FALSE
 
-	if(!momentum)
-		return TRUE
+	//Don't spread if we don't have enough fuel to spread.
+
+	if(fire_power <= 40)
+		return FALSE
 
 	var/turf/current_turf = loc
 
 	for(var/d in DIRECTIONS_ALL)
 
-		if(!(d & momentum))
+		if(!momentum) //We have no momentum anymore so there is no point in processing anymore.
+			break
+
+		if((d & momentum) != d)
 			continue
 
-		var/turf/T = get_step(current_turf,d)
+		var/turf/T = get_step(current_turf,d) //Edge of the world!
 		if(!T)
 			continue
 
-		if(T.density && !T.Enter(src,src.loc))
+		if(T.density && !T.Enter(src,current_turf))
 			if(T.health) do_damage(T,1)
-			momentum &= ~d
-			return TRUE
+			continue
 
 		if(T.has_dense_atom)
-			var/should_return = FALSE
+			var/should_continue = FALSE
 			for(var/k in T.contents)
 				var/atom/movable/M = k
+				if(M == src)
+					continue
 				if(M.density && !M.Cross(src,current_turf))
-					momentum &= ~d
-					should_return = TRUE
+					should_continue = TRUE
 					if(M.health) do_damage(M,1)
-			if(should_return)
-				return TRUE
+			if(should_continue)
+				continue
 
 		var/obj/fire_process/FP = locate() in T.contents
-		if(!FP || FP.loyalty_tag != src.loyalty_tag)
+		if(!FP)
 			FP = new(T)
 			FP.initial_fire_power = src.initial_fire_power
-			FP.fire_power = src.fire_power - 10
-			FP.momentum = d
+			FP.fire_power = min(fire_power*0.25,10) + fire_power*0.5
+			FP.momentum = d & momentum //The reason why momentum is not just d is because that will eventually create a circle.
 			FP.multiplier = src.multiplier
 			FP.loyalty_tag = src.loyalty_tag
 			FP.owner = src.owner
@@ -190,6 +218,7 @@ RIP PLANS.
 			FP.fire_power = max(FP.fire_power,src.fire_power - 10)
 			FP.momentum = FP.momentum & momentum
 			FP.multiplier = (FP.multiplier + src.multiplier) / 2
+			FP.loyalty_tag = src.loyalty_tag
 
 	momentum = 0x0
 
@@ -200,3 +229,5 @@ RIP PLANS.
 	. = list()
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,8)
+
+

@@ -17,7 +17,6 @@ SUBSYSTEM_DEF(callback)
 /subsystem/callback/proc/try_call(var/datum/stored_object,var/stored_proc,var/stored_args)
 	if(stored_object)
 		if(stored_object.qdeleting)
-			log_error("Warning: [stored_object.get_debug_name()] tried being called while qdeleting!")
 			return FALSE
 		call(stored_object,stored_proc)(arglist(stored_args))
 	else
@@ -35,11 +34,14 @@ SUBSYSTEM_DEF(callback)
 			log_error("ERROR: [callback_id] had no callback data!")
 			remove_callback(callback_id)
 			continue
+		var/datum/stored_object = callback_value["object"]
+		if(stored_object && stored_object.qdeleting)
+			remove_callback(callback_id)
+			continue
 		if(callback_value["time"] > world.time)
 			continue
 		var/stored_proc = callback_value["proc"]
 		var/list/stored_args = callback_value["args"]
-		var/datum/stored_object = callback_value["object"]
 		remove_callback(callback_id)
 		var/result = try_call(stored_object,stored_proc,stored_args)
 		if(isnull(result))
