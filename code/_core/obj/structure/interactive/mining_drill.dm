@@ -82,7 +82,7 @@
 
 	SShorde.all_drills[src] = world.time + SECONDS_TO_DECISECONDS(15)
 	set_anchored(TRUE)
-	CALLBACK("\ref[src]_do_drill",SECONDS_TO_DECISECONDS(10),src,src::do_drill())
+	CALLBACK("\ref[src]_do_drill",SECONDS_TO_DECISECONDS(1.8),src,src::do_drill())
 	update_sprite()
 
 	return TRUE
@@ -176,7 +176,7 @@
 	if(!fallback_atom)
 		fallback_atom = current_turf
 
-	//Finally, create the core.
+	//Finally, create the ore.
 	found_deposit.create_ore(
 		null,
 		drop_atom ? drop_atom : get_step(src,fallback_atom),
