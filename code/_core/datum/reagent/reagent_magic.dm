@@ -1,6 +1,6 @@
 /reagent/magic
 	name = "magic medicine"
-
+/*
 /reagent/magic/stand_juice
 	name = "Stand Juice"
 	desc = "Gives you a stand."
@@ -24,4 +24,7 @@
 		L.add_stand()
 		if(current_volume) container.remove_reagent(src.type,current_volume,should_update = FALSE, check_recipes = FALSE)
 		return 0
+*/
+
+
 

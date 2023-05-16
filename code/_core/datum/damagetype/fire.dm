@@ -31,6 +31,8 @@
 
 	)
 
+	target_floors = TRUE
+
 /damagetype/on_fire/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 	return FALSE
 
@@ -50,6 +52,8 @@
 	attack_damage_penetration = list(
 		HEAT = 25
 	)
+
+	target_floors = TRUE
 
 /damagetype/fire_turf/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 

@@ -38,6 +38,8 @@
 
 	allow_power_attacks = FALSE
 
+	animate = TRUE
+
 /damagetype/unarmed/get_attack_type()
 	return ATTACK_TYPE_UNARMED
 
