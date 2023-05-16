@@ -753,21 +753,22 @@ var/global/list/all_damage_numbers = list()
 	if(hit_effect)
 		new hit_effect(victim_turf)
 
-	var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
+	if(animate)
+		var/list/offsets = get_directional_offsets(attacker_turf,victim_turf)
 
-	if(offsets[1] || offsets[2])
-		var/multiplier = clamp(TILE_SIZE * (total_damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
-		if(is_living(victim))
-			var/mob/living/M = victim
-			if(M.client)
-				M.client.recoil_pixel_x -= offsets[1]*multiplier
-				M.client.recoil_pixel_y -= offsets[2]*multiplier
+		if(offsets[1] || offsets[2])
+			var/multiplier = clamp(TILE_SIZE * (total_damage_dealt / max(1,victim?.health?.health_max)) * 2,0,TILE_SIZE*0.25)
+			if(is_living(victim))
+				var/mob/living/M = victim
+				if(M.client)
+					M.client.recoil_pixel_x -= offsets[1]*multiplier
+					M.client.recoil_pixel_y -= offsets[2]*multiplier
 
-		if(is_living(attacker))
-			var/mob/living/M = attacker
-			if(M.client)
-				M.client.recoil_pixel_x -= offsets[1]*multiplier*0.5
-				M.client.recoil_pixel_y -= offsets[2]*multiplier*0.5
+			if(is_living(attacker))
+				var/mob/living/M = attacker
+				if(M.client)
+					M.client.recoil_pixel_x -= offsets[1]*multiplier*0.5
+					M.client.recoil_pixel_y -= offsets[2]*multiplier*0.5
 
 /damagetype/proc/do_attack_sound(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0,var/flesh=FALSE)
 

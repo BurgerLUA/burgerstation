@@ -6,8 +6,8 @@
 	spawning = 1
 	bound1 = list(-TILE_SIZE*2,-TILE_SIZE*2,-TILE_SIZE*2)
 	bound2 = list(TILE_SIZE*2,TILE_SIZE*2,TILE_SIZE*2)
-	icon = 'icons/particle/fire_floor.dmi'
-	icon_state = list("1"=1,"2"=1,"3"=1,"4"=1)
+	//icon = 'icons/particle/fire_floor.dmi'
+	//icon_state = list("1"=1,"2"=1,"3"=1,"4"=1)
 	gravity = list(0,0.125)
 	gradient = list(0,"#FFF6BE",0.2,"#FABA5F",0.3,"#FF9D20",0.4,"#DB680B",0.6,"#DB680B",0.8,"7F7F7F",1,"#777777")
 
@@ -17,8 +17,8 @@
 	color = 0
 	color_change = 0.05
 	position = generator("box",list(-TILE_SIZE*0.5,-TILE_SIZE*0.5,0),list(TILE_SIZE*0.5,TILE_SIZE*0.5,0))
-	scale = list(0.3,0.3)
-	grow = list(0.035,0.035)
+	//scale = list(0.3,0.3)
+	//grow = list(0.035,0.035)
 	friction = 0.2
 
 
@@ -92,7 +92,7 @@
 		if(object_to_damage.qdeleting)
 			fire_power_to_add += 10
 		fire_power += fire_power_to_add
-		if(fire_power_to_add >= 5 && fire_power >= 40)
+		if(fire_power >= 40)
 			momentum = NORTH | EAST | SOUTH | WEST
 
 	CALLBACK("\ref[victim]_\ref[src]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
