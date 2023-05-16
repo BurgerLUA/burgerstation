@@ -45,7 +45,8 @@
 			HP.owner = owner
 			HP.blamed = blamed
 			HP.loyalty_tag = loyalty_tag // It is now the airblasters team.
-			HP.damage_multiplier += 4 // CRITICAL
+
+			HP.damage_multiplier += 4 + damage_multiplier// CRITICAL
 			//log_debug("RETUUUUUUURNT TO SENDA!")
 		. = TRUE //Reply we hit something
 	return .

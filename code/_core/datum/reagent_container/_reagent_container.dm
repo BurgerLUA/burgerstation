@@ -568,7 +568,7 @@
 	for(var/r_id in stored_reagents)
 		var/volume = stored_reagents[r_id]
 		var/ratio = volume/total_volume
-		. += -add_reagent(-ratio*amount,should_update=FALSE,check_recipes=FALSE,caller=caller)
+		. += -add_reagent(r_id,-ratio*amount,should_update=FALSE,check_recipes=FALSE,caller=caller)
 
 	if(should_update)
 		update_container(caller)
