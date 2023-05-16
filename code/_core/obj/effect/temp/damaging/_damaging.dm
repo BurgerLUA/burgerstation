@@ -51,7 +51,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	if(!CALLBACK_EXISTS("\ref[src]_cross_\ref[L]"))
 		CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,src::do_cross_damage(),L)
 
-/obj/effect/temp/hazard/Crossed(atom/movable/O)
+/obj/effect/temp/hazard/Crossed(atom/movable/O,atom/OldLoc)
 	if(enabled && cross_hazard && is_living(O))
 		do_cross_damage(O)
 	return ..()
@@ -160,7 +160,7 @@ obj/effect/temp/hazard/bubblefist/
 
 	layer = LAYER_FLOOR_EFFECTS
 
-	plane = PLANE_MOB - 1
+	plane = PLANE_MOVABLE - 1
 
 obj/effect/temp/hazard/bubblefist/update_overlays()
 	. = ..()

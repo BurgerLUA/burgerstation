@@ -16,6 +16,7 @@ var/global/list/possible_monsters_to_spawn = list(
 	var/mob/living/monster_to_spawn
 	var/spawn_limit = 5
 	var/list/mob/living/tracked_mobs = list()
+	var/tracked_mobs_length = 0 //Read only.
 
 	var/mob/living/boss_to_spawn
 
@@ -32,13 +33,13 @@ var/global/list/possible_monsters_to_spawn = list(
 	desired_light_range = VIEW_RANGE*0.5
 	desired_light_color = "#C67000"
 
-	plane = PLANE_OBJ_LARGE
+	plane = PLANE_MOVABLE
 
 	mouse_opacity = 1
 
 /obj/structure/interactive/tendril/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","\The [src.name] has [max(deaths_until_loot,0)] spawns left...")
+	. += div("notice","\The [src.name] has [max(deaths_until_loot,0)] spawns left, with [length(tracked_mobs_length)] monsters protecting it...")
 
 /obj/structure/interactive/tendril/Destroy()
 	. = ..()
@@ -83,7 +84,7 @@ var/global/list/possible_monsters_to_spawn = list(
 		else if(get_dist(L,src) >= VIEW_RANGE*2)
 			tracked_mobs -= L
 
-	var/tracked_mobs_length = length(tracked_mobs)
+	tracked_mobs_length = length(tracked_mobs)
 
 	if(tracked_mobs_length <= 0 && deaths_until_loot <= 0)
 		alpha = 0

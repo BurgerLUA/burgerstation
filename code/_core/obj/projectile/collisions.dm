@@ -6,7 +6,7 @@
 	if((collision_bullet_flags & FLAG_COLLISION_BULLET_SPECIFIC) && P.target_atom == src)
 		return TRUE
 
-	if(P.collision_flags_special && P.collision_flags_special & collision_flags)
+	if(P.collision_flags_special && (P.collision_flags_special & collision_flags))
 		return TRUE
 
 	if(!src.collision_bullet_flags || !P.collision_bullet_flags)
@@ -49,6 +49,9 @@
 
 
 /mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+
+	if(P.ignore_living)
+		return FALSE
 
 	if(P.iff_tag && !check_iff_against(P.iff_tag,src,P.hostile))
 		return FALSE

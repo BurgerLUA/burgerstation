@@ -17,7 +17,7 @@ var/global/list/valid_bedsheets = list(
 	icon_state = "sheet"
 	value = 10
 
-	plane = PLANE_MOB_SMALL
+	plane = PLANE_MOVABLE_DEAD
 	layer = LAYER_MOB_ABOVE
 
 	pixel_y = 4

@@ -1,5 +1,5 @@
 /turf/simulated/floor/colored/ash/
-	name = "ash"
+	name = "ash floor"
 
 	icon = 'icons/turf/floor/icons.dmi'
 	icon_state = "ash"
@@ -28,7 +28,7 @@
 	layer = LAYER_FLOOR_WEATHER + 0.2
 
 /turf/simulated/floor/colored/ash/volcanic
-	name = "volcanic ash"
+	name = "volcanic ash floor"
 	color = "#544842"
 	corner_category = "ash_volcanic"
 	layer = LAYER_FLOOR_WEATHER + 0.3

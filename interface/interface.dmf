@@ -83,18 +83,8 @@ menu "menu"
 		category = "Graphics Settings"
 		saved-params = "is-checked"
 	elem 
-		name = "Toggle Smooth &Shadows"
-		command = "toggle-smooth-shadows"
-		category = "Graphics Settings"
-		saved-params = "is-checked"
-	elem 
 		name = "Toggle &Depth"
 		command = "toggle-depth"
-		category = "Graphics Settings"
-		saved-params = "is-checked"
-	elem 
-		name = "Toggle Currency &Bloom"
-		command = "toggle-currency-bloom"
 		category = "Graphics Settings"
 		saved-params = "is-checked"
 	elem 

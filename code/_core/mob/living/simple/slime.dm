@@ -112,7 +112,7 @@
 
 /mob/living/simple/slime/get_plane()
 	if(slime_traits & SLIME_TRAIT_STEALTH)
-		return PLANE_MOB_STEALTH
+		return PLANE_MOVABLE_STEALTH
 	. = ..()
 
 

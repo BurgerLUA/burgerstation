@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/atm_bank.dmi'
 	icon_state = "atm_map"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 /obj/structure/interactive/atm/Initialize()
 	try_attach_to()

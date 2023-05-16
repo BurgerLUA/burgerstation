@@ -76,7 +76,7 @@
 	. = ..()
 	. += div("notice","This object holds up to [max_load] items that are size [max_size] or lower.")
 
-/obj/item/plate/Crossed(atom/movable/O)
+/obj/item/plate/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
 
 	if(!broken && O.loc == src.loc && is_item(O) && !istype(O,/obj/item/plate) && length(contents) < max_load)

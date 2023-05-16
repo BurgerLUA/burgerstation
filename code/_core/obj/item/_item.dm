@@ -14,7 +14,7 @@
 
 	var/last_marker //The last person to name this item. Used for moderation purposes.
 
-	plane = PLANE_ITEM
+	plane = PLANE_MOVABLE
 	layer = LAYER_OBJ_ITEM
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
@@ -253,7 +253,7 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-/obj/item/Crossed(atom/movable/O)
+/obj/item/Crossed(atom/movable/O,atom/OldLoc)
 	return TRUE
 
 /obj/item/Cross(atom/movable/O,atom/oldloc)
@@ -269,7 +269,7 @@ var/global/list/rarity_to_mul = list(
 		crafting_id = src.type
 
 	if(is_turf(loc))
-		layer = LAYER_BASE + value / 10000
+		layer = initial(layer) + clamp(value / 10000,0,0.999)
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)

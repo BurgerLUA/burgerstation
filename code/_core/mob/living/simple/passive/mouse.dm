@@ -21,7 +21,7 @@
 	blood_type = /reagent/blood/mouse
 	blood_volume = 50
 
-/mob/living/simple/passive/mouse/Crossed(atom/movable/O)
+/mob/living/simple/passive/mouse/Crossed(atom/movable/O,atom/OldLoc)
 	return TRUE
 
 /mob/living/simple/passive/mouse/brown

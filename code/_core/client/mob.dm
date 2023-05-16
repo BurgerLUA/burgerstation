@@ -18,6 +18,9 @@
 
 /client/proc/make_ghost(var/turf/desired_loc)
 
+	if(!desired_loc && mob)
+		desired_loc = get_turf(mob)
+
 	if(!desired_loc)
 		desired_loc = FALLBACK_TURF
 
@@ -110,7 +113,9 @@
 	to_chat(span("notice","Successfully loaded character [U.loaded_data["name"]]."))
 	stop_music_track(src)
 
-	var/mob/living/advanced/player/P = new(FALLBACK_TURF,src)
+	var/turf/T = length(world_spawnpoints) ? pick(world_spawnpoints) : FALLBACK_TURF
+
+	var/mob/living/advanced/player/P = new(T,src)
 	INITIALIZE(P)
 	FINALIZE(P)
 

@@ -13,8 +13,6 @@
 
 	dyeable = TRUE
 
-	dyeable = TRUE
-
 	polymorphs = list(
 		"base" = "#FFFFFF",
 		"lightening" = "#FFFFFF",

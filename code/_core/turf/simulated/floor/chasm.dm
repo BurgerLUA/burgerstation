@@ -21,7 +21,7 @@
 	map_color = COLOR_BLACK
 
 /*
-/turf/simulated/floor/chasm/Crossed(atom/movable/O)
+/turf/simulated/floor/chasm/Crossed(atom/movable/O,atom/OldLoc)
 
 	. = ..()
 

@@ -36,7 +36,15 @@
 	return ..()
 
 /health/proc/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
-	return damage_multiplier
+
+	. = damage_multiplier
+
+	//Reduced damage recieved if you're already fucked.
+	if(src.health_current < -src.health_max)
+		var/new_multiplier = -src.health_max / src.health_current
+		. *= new_multiplier
+
+	return .
 
 /health/New(var/desired_owner)
 	owner = desired_owner

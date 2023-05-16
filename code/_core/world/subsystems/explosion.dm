@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(explosion)
 	name = "Explosion Subsystem"
 	desc = "Processes explosions."
 	priority = SS_ORDER_NORMAL
-	tick_rate = DECISECONDS_TO_TICKS(0.5)
+	tick_rate = DECISECONDS_TO_TICKS(1)
 
 	var/list/obj/explosion_process/active_explosions = list()
 	var/list/obj/fire_process/active_fires = list()
@@ -12,6 +12,12 @@ SUBSYSTEM_DEF(explosion)
 	tick_usage_max = 95
 
 	var/explosion_ticks = 0
+
+	var/particles/fire_particles
+
+/subsystem/explosion/Initialize()
+	. = ..()
+	fire_particles = new/particles/fire
 
 /subsystem/explosion/proc/add_data(location,owner,source,epicenter,magnitude,loyalty_tag)
 
@@ -117,7 +123,7 @@ SUBSYSTEM_DEF(explosion)
 
 
 
-/proc/firebomb(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+/proc/firebomb(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/momentum=NORTH|EAST|SOUTH|WEST,var/multiplier=1)
 
 	if(desired_range <= 0)
 		return FALSE
@@ -131,7 +137,7 @@ SUBSYSTEM_DEF(explosion)
 		FP.initial_fire_power = desired_range*2
 		FP.loyalty_tag = desired_loyalty_tag
 		FP.multiplier = multiplier
-		FP.momentum = NORTH | EAST | SOUTH | WEST
+		FP.momentum = momentum
 		FP.owner = desired_owner
 		INITIALIZE(FP)
 		FINALIZE(FP)

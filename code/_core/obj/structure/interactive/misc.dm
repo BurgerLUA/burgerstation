@@ -51,14 +51,14 @@ obj/structure/interactive/misc/urinal
 	desc = "*obligatory piss joke*"
 	desc_extended = "A urinal on the wall as decor to liven up the area."
 	icon_state = "urinal"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 obj/structure/interactive/misc/mirror
 	name = "mirror"
 	desc = "Magic mirror on the wall, who is the most robust of them all?"
 	desc_extended = "Stand in front of this to change your appearance."
 	icon_state = "mirror"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 
 	density = TRUE
 
@@ -68,7 +68,7 @@ obj/structure/interactive/misc/mirror/chargen
 obj/structure/interactive/misc/mirror/chargen/limited
 	limited = TRUE
 
-obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O)
+obj/structure/interactive/misc/mirror/chargen/Crossed(atom/movable/O,atom/OldLoc)
 	if(is_player(O))
 		var/mob/living/advanced/player/P = O
 		if(P.client)
@@ -97,7 +97,7 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 	desc_extended = "Who could even use this?"
 	icon_state = "mirror_broke"
 
-/obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(atom/movable/O)
+/obj/structure/interactive/misc/mirror/cracked/chargen/Crossed(atom/movable/O,atom/OldLoc)
 	if(istype(O,/mob/living/advanced/player/antagonist/))
 		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()
@@ -125,4 +125,4 @@ obj/structure/interactive/misc/sink
 	desc = "Wa'tr. Wa'tr free o' charge."
 	desc_extended = "A standing sink as decor to liven up the area. What? You actually expected this to dispense water free of charge?"
 	icon_state = "sink"
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE

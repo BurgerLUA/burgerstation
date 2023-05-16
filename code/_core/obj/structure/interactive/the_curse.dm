@@ -13,7 +13,7 @@
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 	layer = LAYER_MOB
 
 	density = TRUE

@@ -108,6 +108,12 @@
 				if(prob(10))
 					new /obj/marker/generation/mob/venus_human_trap(src)
 
+	if(prob(0.5))
+		if(src.density)
+			new /obj/marker/generation/ore/wall(src)
+		else
+			new /obj/marker/generation/ore/floor(src)
+
 	if(src.loc.type == /area/) new /area/mission/jungle(src)
 
 	return ..()

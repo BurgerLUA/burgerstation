@@ -3,7 +3,7 @@
 	icon = 'icons/obj/effects/slime_tile.dmi'
 	icon_state = "block"
 
-	plane = PLANE_OBJ_LARGE
+	plane = PLANE_MOVABLE
 	layer = LAYER_LARGE_OBJ
 
 	density = 1

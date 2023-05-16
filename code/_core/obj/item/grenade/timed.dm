@@ -31,7 +31,7 @@
 		I.color = paint_color
 		add_overlay(I)
 
-	if(!spent && !open)
+	if(!spent && !open && marker_color)
 		var/image/I = new/image(icon,"[initial(icon_state)]_marking")
 		I.appearance_flags = src.appearance_flags | RESET_COLOR
 		I.color = marker_color

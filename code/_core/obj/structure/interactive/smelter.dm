@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structure/smelter.dmi'
 	icon_state = "furnace"
 
-	plane = PLANE_OBJ
+	plane = PLANE_MOVABLE
 	anchored = TRUE
 	pixel_y = 2
 
@@ -59,7 +59,7 @@
 		if(O.qdeleting)
 			break
 
-/obj/structure/interactive/smelter/Crossed(atom/movable/O)
+/obj/structure/interactive/smelter/Crossed(atom/movable/O,atom/OldLoc)
 	if(istype(O,/obj/item/material/ore/))
 		var/obj/item/material/ore/T = O
 		T.drop_item(src)

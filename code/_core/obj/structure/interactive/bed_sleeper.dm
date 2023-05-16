@@ -48,14 +48,14 @@
 /obj/structure/interactive/bed/sleeper/update_underlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"under")
-	I.plane = PLANE_OBJ
-	I.layer = -1000
+	I.plane = PLANE_MOVABLE_DEAD
+	I.layer = LAYER_MOB_BELOW
 	I.color = base_color
 	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_underlay(I)
 	var/image/I2 = new/image(initial(icon),"padding")
-	I2.plane = PLANE_OBJ
-	I2.layer = -999
+	I2.plane = PLANE_MOVABLE_DEAD
+	I2.layer = LAYER_MOB_BELOW
 	I2.color = tertiary_color
 	I2.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_underlay(I2)
@@ -63,7 +63,7 @@
 /obj/structure/interactive/bed/sleeper/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"over")
-	I.plane = PLANE_MOB_SMALL
+	I.plane = PLANE_MOVABLE_DEAD
 	I.layer = LAYER_MOB_ABOVE
 	I.color = base_color
 	I.appearance_flags = appearance_flags | RESET_COLOR | RESET_ALPHA

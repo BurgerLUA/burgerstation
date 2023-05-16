@@ -22,7 +22,22 @@
 		return ..()
 
 	if(is_different)
-		if(density && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
+		if(!density && is_next_to_null_area)
+			if(prob(5))
+				new/turf/simulated/wall/ash/volcanic(src)
+				new/obj/marker/generation/turf/ash_wall(src)
+				if(prob(5))
+					new/obj/marker/generation/ore/wall(src)
+			else if(prob(5))
+				new /turf/simulated/floor/colored/ash/volcanic(src)
+				new/obj/marker/generation/turf/ash_floor(src)
+				if(prob(5))
+					new/obj/marker/generation/ore/floor(src)
+			else
+				new /turf/simulated/floor/basalt(src)
+
+
+		else if(is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 			new /turf/simulated/wall/rock/basalt(src)
 			if(prob(1))
 				new/obj/marker/generation/turf/ash_wall(src)
@@ -51,8 +66,12 @@
 						new /turf/simulated/wall/rock/basalt(src)
 						if(prob(1))
 							new /obj/marker/generation/turf/basalt_wall(src)
+				if(prob(1))
+					new /obj/marker/generation/ore/wall(src)
 			else
 				new /turf/simulated/floor/basalt(src)
+				if(prob(1))
+					new /obj/marker/generation/ore/floor(src)
 		//Basalt floor, with sometimes lava.
 		if(GENERATION_SEGMENT_LOWEST - 0.1 to GENERATION_SEGMENT_LOWEST)
 			if(density)
@@ -70,13 +89,14 @@
 				else
 					if(prob(1))
 						new/turf/simulated/floor/basalt(src)
-						new/obj/marker/generation/turf/basalt/island(src)
-						if(prob(25))
-							new/obj/marker/generation/plant/embershroom_mushroom(src)
-						if(prob(50))
-							new/obj/marker/generation/mob/watcher(src)
-						else
-							new/obj/marker/generation/mob/slime/magma(src)
+						if(prob(5))
+							new/obj/marker/generation/turf/basalt/island(src)
+							if(prob(25))
+								new/obj/marker/generation/plant/embershroom_mushroom(src)
+							if(prob(50))
+								new/obj/marker/generation/mob/watcher(src)
+							else
+								new/obj/marker/generation/mob/slime/magma(src)
 					else
 						new/turf/simulated/liquid/lava(src)
 			else
@@ -96,13 +116,14 @@
 				if(!rand_map(src,15) && rand_map(src,35))
 					if(prob(1))
 						new/turf/simulated/floor/basalt(src)
-						new/obj/marker/generation/turf/basalt/island(src)
-						if(prob(25))
-							new/obj/marker/generation/plant/embershroom_mushroom(src)
-						if(prob(50))
-							new/obj/marker/generation/mob/watcher(src)
-						else
-							new/obj/marker/generation/mob/slime/magma(src)
+						if(prob(5))
+							new/obj/marker/generation/turf/basalt/island(src)
+							if(prob(25))
+								new/obj/marker/generation/plant/embershroom_mushroom(src)
+							if(prob(50))
+								new/obj/marker/generation/mob/watcher(src)
+							else
+								new/obj/marker/generation/mob/slime/magma(src)
 					else
 						new/turf/simulated/liquid/lava(src)
 				else
@@ -112,6 +133,8 @@
 					else
 						new /turf/simulated/wall/rock/basalt(src)
 					if(prob(1))
+						new /obj/marker/generation/ore/wall(src)
+					if(prob(1))
 						new/obj/marker/generation/mob/goliath(src)
 			else
 				new /turf/simulated/floor/basalt(src)
@@ -120,6 +143,8 @@
 				else if(prob(0.5))
 					new /obj/marker/generation/plant/glowcap(src)
 				disallow_generation = TRUE
+				if(prob(1))
+					new /obj/marker/generation/ore/floor(src)
 		//Basalt floor, with a chance to be cave dirt.
 		if(GENERATION_SEGMENT_LOW to GENERATION_SEGMENT_LOW+0.1)
 			if(density)
@@ -194,6 +219,8 @@
 						new/obj/marker/generation/turf/basalt_wall(src)
 					else
 						new/turf/simulated/wall/ash/volcanic(src)
+					if(prob(1))
+						new /obj/marker/generation/ore/wall(src)
 			else
 				if( rand_map(src,50) )
 					new /turf/simulated/floor/colored/ash/volcanic(src)
@@ -230,6 +257,8 @@
 						new/obj/marker/generation/turf/ash_wall(src)
 					if(prob(1))
 						new/obj/marker/generation/mob/goliath(src)
+				if(prob(1))
+					new /obj/marker/generation/ore/wall(src)
 			else
 				if( rand_map(src,50) )
 					new /turf/simulated/floor/colored/ash/volcanic(src)
@@ -245,6 +274,8 @@
 						new/obj/marker/generation/turf/basalt(src)
 				if(prob(0.5))
 					new /obj/marker/generation/plant/glowcap(src)
+				if(prob(1))
+					new /obj/marker/generation/ore/floor(src)
 				disallow_generation = TRUE
 		//Basalt with lava and rock holes.
 		if(GENERATION_SEGMENT_HIGH to GENERATION_SEGMENT_HIGH + 0.1)
@@ -283,13 +314,14 @@
 			if(density)
 				if(prob(1))
 					new/turf/simulated/floor/basalt(src)
-					new/obj/marker/generation/turf/basalt/island(src)
-					if(prob(25))
-						new/obj/marker/generation/plant/embershroom_mushroom(src)
-					if(prob(25))
-						new/obj/marker/generation/mob/watcher(src)
-					else
-						new/obj/marker/generation/mob/slime/basalt(src)
+					if(prob(5))
+						new/obj/marker/generation/turf/basalt/island(src)
+						if(prob(25))
+							new/obj/marker/generation/plant/embershroom_mushroom(src)
+						if(prob(25))
+							new/obj/marker/generation/mob/watcher(src)
+						else
+							new/obj/marker/generation/mob/slime/basalt(src)
 				else
 					new/turf/simulated/liquid/lava(src)
 			else
@@ -304,13 +336,14 @@
 			if(density)
 				if(rand_map(src,10))
 					new/turf/simulated/floor/basalt(src)
-					new/obj/marker/generation/turf/basalt/island(src)
-					if(prob(25))
-						new/obj/marker/generation/plant/embershroom_mushroom(src)
-					if(prob(25))
-						new/obj/marker/generation/mob/slime/basalt(src)
-					else
-						new/obj/marker/generation/mob/watcher(src)
+					if(prob(5))
+						new/obj/marker/generation/turf/basalt/island(src)
+						if(prob(25))
+							new/obj/marker/generation/plant/embershroom_mushroom(src)
+						if(prob(25))
+							new/obj/marker/generation/mob/slime/basalt(src)
+						else
+							new/obj/marker/generation/mob/watcher(src)
 				else
 					new/turf/simulated/liquid/lava(src)
 			else

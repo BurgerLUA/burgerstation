@@ -30,15 +30,6 @@
 /obj/plane_master/proc/apply_post_processing()
 	return TRUE
 
-//FLOORS
-/obj/plane_master/floor
-	plane = PLANE_FLOOR
-	render_target = "plane_floor"
-
-/obj/plane_master/floor/apply_post_processing()
-	. = ..()
-	//filters += filter(type="radial_blur", size=0.02/VIEW_RANGE)
-
 //WALLS
 /obj/plane_master/walls
 	plane = PLANE_WALL
@@ -52,16 +43,6 @@
 
 	//filters += filter(type="radial_blur", size= 0.02/VIEW_RANGE)
 
-
-//WATER SURFACE
-/obj/plane_master/water_surface
-	plane = PLANE_WATER
-
-/obj/plane_master/water_surface/apply_post_processing()
-	. = ..()
-	filters += filter(type="alpha", x=0, y=0, render_source="plane_floor", flags=MASK_INVERSE) //Prevent ugly water textures drawing above floors.
-	filters += filter(type="alpha", x=0, y=0, render_source="plane_wall", flags=MASK_INVERSE) //Prevent ugly water textures drawing above floors.
-
 //WATER FLOOR
 /obj/plane_master/water_floor
 	plane = PLANE_WATER_FLOOR
@@ -74,70 +55,23 @@
 
 //MOBS
 /obj/plane_master/mobs
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 
 /obj/plane_master/mobs/apply_post_processing()
 	. = ..()
 	//Depth
 	if(owner?.client?.settings?.loaded_data["enable_depth"])
-		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
 		filters += filter(type="drop_shadow", x=0, y=-4, size=3, offset=0, color=rgb(0,0,0,200))
 	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
 
-
-
-/obj/plane_master/mobs_small
-	plane = PLANE_MOB_SMALL
-
-/obj/plane_master/mobs_small/apply_post_processing()
-	. = ..()
-	//Depth
-	if(owner?.client?.settings?.loaded_data["enable_depth"])
-		filters += filter(type="drop_shadow", x=0, y=1, size=1, offset=0, color=rgb(200,200,200,120))
-		filters += filter(type="drop_shadow", x=0, y=-1, size=2, offset=0, color=rgb(0,0,0,200))
-	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
-
-
-/obj/plane_master/mobs_dead
-	plane = PLANE_MOB_DEAD
-
 /obj/plane_master/mobs_stealth
-	plane = PLANE_MOB_STEALTH
+	plane = PLANE_MOVABLE_STEALTH
 	render_target = "plane_mob_stealth"
 
 /obj/plane_master/mobs_stealth/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha",render_source="*fov_\ref[owner]")
 	filters += filter(type="alpha", x=0, y=0, render_source="*plane_water_mask", flags=MASK_INVERSE)
-
-//DARKNESS
-/obj/plane_master/darkness
-	plane = 0
-
-/obj/plane_master/darkness/apply_post_processing()
-	. = ..()
-	//Smooth Shadows. Disabled for now.
-	/*
-	if(owner?.client?.settings?.loaded_data["enable_smooth_shadows"])
-		var/darkness_size = 2
-		filters += filter(type="radial_blur", size=0.05)
-		filters += filter(type="drop_shadow", x=darkness_size, y=0, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
-		filters += filter(type="drop_shadow", x=0, y=darkness_size, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
-		filters += filter(type="drop_shadow", x=-darkness_size, y=0, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
-		filters += filter(type="drop_shadow", x=0, y=-darkness_size, size=darkness_size*3, offset=0, color=rgb(0,0,0,255))
-	*/
-
-
-//Objects
-/obj/plane_master/objs
-	plane = PLANE_OBJ
-	mouse_opacity = 1
-
-/obj/plane_master/objs/apply_post_processing()
-	. = ..()
-	//Depth
-	if(owner?.client?.settings?.loaded_data["enable_depth"])
-		filters += filter(type="drop_shadow", x=0, y=-2, size=2, offset=0, color=rgb(0,0,0))
 
 //SHUTTLE
 /obj/plane_master/shuttle
@@ -210,7 +144,7 @@
 /obj/plane_master/area_exterior/apply_post_processing()
 	. = ..()
 	//Depth
-	if(owner?.client?.settings?.loaded_data["enable_depth"])
+	if(owner?.client?.settings?.loaded_data["enable_depth"]) //Exists to add a fade to weather effects.
 		filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=0, color=rgb(0,0,0))
 
 
@@ -223,18 +157,9 @@
 
 
 /obj/plane_master/water_mask
-	plane = PLANE_MOB_WATER_MASK
+	plane = PLANE_MOVABLE_WATER_MASK
 	render_target = "*plane_water_mask"
 
 /obj/plane_master/water_mask/apply_post_processing()
 	. = ..()
 	filters += filter(type="alpha", x=0, y=0, render_source="plane_water_floor") //Masks only draw in water.
-
-
-
-/obj/plane_master/projectiles
-	plane = PLANE_PROJECTILE
-
-/obj/plane_master/projectiles/apply_post_processing()
-	. = ..()
-	filters += filter(type="bloom",threshold="#000000",size=8,offset=1,alpha=200)

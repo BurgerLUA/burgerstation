@@ -13,7 +13,6 @@ SUBSYSTEM_DEF(dialogue)
 
 	log_subsystem(name,"Initialized [length(all_dialogue)] sets of regular dialogue.")
 
-
 	for(var/A in subtypesof(/combat_dialogue/))
 		var/combat_dialogue/CD = A
 		if(!initial(CD.folderpath))
@@ -22,7 +21,6 @@ SUBSYSTEM_DEF(dialogue)
 		if(!src.setup_combat_dialogue(CD))
 			continue
 		all_combat_dialogue[CD.type] = CD
-
 
 	log_subsystem(name,"Initialized [length(all_combat_dialogue)] sets of combat dialogue.")
 

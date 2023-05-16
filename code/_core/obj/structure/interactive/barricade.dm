@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structure/barricade.dmi'
 	icon_state = "metal"
 
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 	density = TRUE

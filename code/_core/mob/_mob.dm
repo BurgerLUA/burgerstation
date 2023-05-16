@@ -3,7 +3,7 @@
 	icon = 'icons/debug/mobs.dmi'
 	icon_state = ""
 	layer = LAYER_MOB
-	plane = PLANE_MOB
+	plane = PLANE_MOVABLE
 
 	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
 
@@ -162,24 +162,17 @@
 
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_water_floor)
-	QDEL_NULL(plane_master_water_surface)
 	QDEL_NULL(plane_master_mob)
-	QDEL_NULL(plane_master_mob_small)
-	QDEL_NULL(plane_master_mob_dead)
 	QDEL_NULL(plane_master_mob_stealth)
-	QDEL_NULL(plane_master_darkness)
-	QDEL_NULL(plane_master_obj)
 	QDEL_NULL(plane_master_shuttle)
 	QDEL_NULL(plane_master_scenery)
 	QDEL_NULL(plane_master_lighting)
-	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_openspace)
 	QDEL_NULL(plane_master_currency)
 	QDEL_NULL(plane_master_hud)
 	QDEL_NULL(plane_master_weather)
 	QDEL_NULL(plane_master_area_exterior)
 	QDEL_NULL(plane_master_water_mask)
-	QDEL_NULL(plane_master_projectiles)
 
 	QDEL_NULL(fov)
 
@@ -230,10 +223,6 @@
 		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
 
-	if(!plane_master_floor)
-		plane_master_floor = new(src)
-	C.screen += plane_master_floor
-
 	if(!plane_master_wall)
 		plane_master_wall = new(src)
 	C.screen += plane_master_wall
@@ -242,33 +231,13 @@
 		plane_master_water_floor = new(src)
 	C.screen += plane_master_water_floor
 
-	if(!plane_master_water_surface)
-		plane_master_water_surface = new(src)
-	C.screen += plane_master_water_surface
-
 	if(!plane_master_mob)
 		plane_master_mob = new(src)
 	C.screen += plane_master_mob
 
-	if(!plane_master_mob_small)
-		plane_master_mob_small = new(src)
-	C.screen += plane_master_mob_small
-
-	if(!plane_master_mob_dead)
-		plane_master_mob_dead = new(src)
-	C.screen += plane_master_mob_dead
-
 	if(!plane_master_mob_stealth)
 		plane_master_mob_stealth = new(src)
 	C.screen += plane_master_mob_stealth
-
-	if(!plane_master_darkness)
-		plane_master_darkness = new(src)
-	C.screen += plane_master_darkness
-
-	if(!plane_master_obj)
-		plane_master_obj = new(src)
-	C.screen += plane_master_obj
 
 	if(!plane_master_shuttle)
 		plane_master_shuttle = new(src)
@@ -305,10 +274,6 @@
 	if(!plane_master_water_mask)
 		plane_master_water_mask = new(src)
 	C.screen += plane_master_water_mask
-
-	if(!plane_master_projectiles)
-		plane_master_projectiles = new(src)
-	C.screen += plane_master_projectiles
 
 	if(!examine_overlay)
 		examine_overlay = new(src)

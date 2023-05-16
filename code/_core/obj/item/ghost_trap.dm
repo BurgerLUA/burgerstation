@@ -31,7 +31,7 @@
 		. += 10000
 
 
-/obj/item/ghost_box/Crossed(atom/movable/O)
+/obj/item/ghost_box/Crossed(atom/movable/O,atom/OldLoc)
 
 	if(stored_ghost)
 		return ..()
