@@ -11,14 +11,16 @@
 	var/allowed_reagents = list(/reagent/fuel/phoron,/reagent/fuel/oil,/reagent/fuel/welding)
 	shoot_delay = 3
 
+	size = SIZE_5
+
 	shoot_sounds = list('sound/weapons/magic/fractal.ogg')
 
 	projectile = /obj/projectile/bullet/flamer
 	projectile_speed = TILE_SIZE*0.3
 
 	reagents = /reagent_container/weapon/flamethrower
-	var/fuel_per_shot = 1
-	var/fuel_per_airblast = 20
+	var/fuel_per_shot = 2
+	var/fuel_per_airblast = 10
 	uses_until_condition_fall = 100
 	use_loyalty_tag = TRUE
 	use_iff_tag = FALSE
@@ -57,7 +59,7 @@
 /obj/item/weapon/ranged/unique/flamethrower/proc/airblast(mob/caller,atom/object,location,params)
 
 	if(get_ammo_count() >= fuel_per_airblast)
-		reagents.remove_reagents(fuel_per_airblast,check_recipes = FALSE,caller = caller)
+		reagents.remove_reagents(fuel_per_airblast-fuel_per_shot,check_recipes = FALSE,caller = caller) //We remove -fuel per shot because the SHOOT proc eats it.
 		return shoot(caller,object,location,params,projectile_override = /obj/projectile/airblast)
 	return FALSE
 
