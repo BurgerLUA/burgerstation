@@ -142,8 +142,6 @@
 	if(prob(60))
 		dead = TRUE
 
-
-
 /obj/structure/interactive/plant/cannabis
 	plant_type = /plant_type/cannabis
 	icon_state = "cannabis"
@@ -211,3 +209,47 @@
 	potency = 10
 	yield_max = 5
 	growth_speed = 0.4
+
+
+/obj/structure/interactive/plant/forest_berry
+	plant_type = /plant_type/forest_berry
+	icon_state = "forest_berry"
+
+	potency = 2
+	yield_max = 3
+	growth_speed = 0.3
+	delete_after_harvest = FALSE
+
+/obj/structure/interactive/plant/forest_nut
+	plant_type = /plant_type/forest_nut
+	icon_state = "forest_nut"
+
+	potency = 2
+	yield_max = 3
+	growth_speed = 0.3
+	delete_after_harvest = FALSE
+
+/obj/structure/interactive/plant/snow_daisy
+	plant_type = /plant_type/snow_daisy
+	icon_state = "snow_daisy"
+
+	potency = 2
+	yield_max = 3
+	growth_speed = 0.7
+
+/obj/structure/interactive/plant/space_cotton
+	plant_type = /plant_type/space_cotton
+	icon_state = "space_cotton"
+
+	potency = 2
+	yield_max = 1
+	growth_speed = 0.5
+	delete_after_harvest = FALSE
+
+/obj/structure/interactive/plant/devil_shroom
+	plant_type = /plant_type/devil_shroom
+	icon_state = "devil_shroom"
+
+	potency = 2
+	yield_max = 1
+	growth_speed = 0.1
