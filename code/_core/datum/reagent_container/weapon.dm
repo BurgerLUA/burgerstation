@@ -5,12 +5,15 @@
 /reagent_container/weapon/flamethrower
 	volume_max = 200
 	allow_recipe_processing = FALSE
-	var/allowed_reagents = list(/reagent/fuel/phoron,/reagent/fuel/oil,/reagent/fuel/welding)
 
 /reagent_container/weapon/flamethrower/add_reagent(reagent_type, amount, temperature, should_update, check_recipes, mob/living/caller)
 
-	if(!(reagent_type in allowed_reagents) && amount > 0)
-		caller.to_chat(span("warning","That would ruin the flamethrower!I bet phoron,oil or welding fuel would work however..."))
+	if(!(ispath(reagent_type,/reagent/fuel)) && amount > 0)
+		caller.to_chat(span("warning","That would ruin the Flamethrower! I think a fuel might work better..."))
+		return 0
+	var/reagent/fuel/R = REAGENT(reagent_type)
+	if(R.fire_strength_per_unit <= 0 && amount > 0)
+		caller.to_chat(span("warning","That would ruin the Flamethrower! I bet something more Flammable would work well though..."))
 		return 0
 	. = ..()
 

@@ -8,7 +8,7 @@
 
 	allow_reagent_transfer_from = TRUE
 	allow_reagent_transfer_to = TRUE
-	var/allowed_reagents = list(/reagent/fuel/phoron,/reagent/fuel/oil,/reagent/fuel/welding)
+
 	shoot_delay = 3
 
 	size = SIZE_5
