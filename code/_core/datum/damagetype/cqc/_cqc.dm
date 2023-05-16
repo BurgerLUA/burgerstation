@@ -16,6 +16,8 @@
 
 	sneak_attack_multiplier = 4
 
+	animate = TRUE
+
 
 /damagetype/cqc/get_attack_type()
 	return ATTACK_TYPE_UNARMED

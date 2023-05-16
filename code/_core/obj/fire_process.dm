@@ -62,7 +62,7 @@
 	if(multiplier <= 0)
 		return FALSE
 
-	if(CALLBACK_EXISTS("\ref[victim]_do_fire_ground_damage"))
+	if(CALLBACK_EXISTS("\ref[victim]_\ref[src]_do_fire_ground_damage"))
 		return FALSE
 
 	if(is_living(victim))
@@ -70,12 +70,13 @@
 		if(L.status_immune[FIRE])
 			return FALSE
 
-	if(distance_check <= 0)
-		if(victim.loc != src.loc && victim != loc)
-			return FALSE
-	else
-		if(get_dist(victim,src) > distance_check)
-			return FALSE
+	if(victim != src.loc) //Victim is not the turf we're on.
+		if(distance_check <= 0)
+			if(victim.loc != src.loc)
+				return FALSE
+		else
+			if(get_dist(victim,src) > distance_check)
+				return FALSE
 
 	var/damagetype/DT = all_damage_types[damage_type]
 	var/list/params = get_params()
@@ -94,7 +95,7 @@
 		if(fire_power_to_add >= 5 && fire_power >= 40)
 			momentum = NORTH | EAST | SOUTH | WEST
 
-	CALLBACK("\ref[victim]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
+	CALLBACK("\ref[victim]_\ref[src]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
 
 /obj/fire_process/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
@@ -123,6 +124,7 @@
 				continue
 			if(M.health) do_damage(k)
 		if(loc.health) do_damage(loc)
+
 	if(x % 2 && y % 2)
 		set_light(3, 0.5, "#FF8C77",LIGHT_OMNI)
 
@@ -220,7 +222,7 @@
 			animate(FP,pixel_x = initial(pixel_x),pixel_y = initial(pixel_y), time = 0.5)
 		else
 			FP.fire_power = max(FP.fire_power,src.fire_power - 10)
-			FP.momentum = FP.momentum & momentum
+			FP.momentum |= momentum
 			FP.multiplier = (FP.multiplier + src.multiplier) / 2
 			FP.loyalty_tag = src.loyalty_tag
 

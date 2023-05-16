@@ -142,6 +142,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/allow_power_attacks = TRUE
 
+	var/animate = FALSE
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -277,16 +279,17 @@ var/global/list/all_damage_numbers = list()
 	if(attacker != weapon)
 		weapon.attack_next = local_power_attack_delay
 
-	var/list/pixel_offset = get_directional_offsets(attacker,victims[1])
+	if(animate)
+		var/list/pixel_offset = get_directional_offsets(attacker,victims[1])
 
-	animate(attacker, pixel_x = -pixel_offset[1]*attack_animation_distance*0.5, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(local_power_attack_delay*0.75,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
-	animate(pixel_x = pixel_offset[1]*attack_animation_distance*0.5, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(local_power_attack_delay*1.1,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
+		animate(attacker, pixel_x = -pixel_offset[1]*attack_animation_distance*0.5, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(local_power_attack_delay*0.75,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
+		animate(pixel_x = pixel_offset[1]*attack_animation_distance*0.5, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(local_power_attack_delay*1.1,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
 
-	if(is_living(attacker))
-		var/mob/living/M = attacker
-		if(M.client)
-			M.client.recoil_pixel_x += pixel_offset[1]
-			M.client.recoil_pixel_y += pixel_offset[2]
+		if(is_living(attacker))
+			var/mob/living/M = attacker
+			if(M.client)
+				M.client.recoil_pixel_x += pixel_offset[1]
+				M.client.recoil_pixel_y += pixel_offset[2]
 
 	play_sound('sound/effects/power_attack.ogg',get_turf(attacker))
 
@@ -799,16 +802,17 @@ var/global/list/all_damage_numbers = list()
 
 	var/attack_delay = get_attack_delay(attacker)
 
-	var/list/pixel_offset = get_directional_offsets(attacker,victim)
+	if(animate)
+		var/list/pixel_offset = get_directional_offsets(attacker,victim)
 
-	animate(attacker, pixel_x = pixel_offset[1]*attack_animation_distance, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
-	animate(pixel_x = -pixel_offset[1]*attack_animation_distance, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
+		animate(attacker, pixel_x = pixel_offset[1]*attack_animation_distance, pixel_y = pixel_offset[2]*attack_animation_distance, time = CEILING(attack_delay*0.125,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE, easing = BACK_EASING) // This does the attack
+		animate(pixel_x = -pixel_offset[1]*attack_animation_distance, pixel_y = -pixel_offset[2]*attack_animation_distance, time = FLOOR(attack_delay*0.5*0.99,1), flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE) //This does the reset.
 
-	if(is_living(attacker))
-		var/mob/living/M = attacker
-		if(M.client)
-			M.client.recoil_pixel_x -= pixel_offset[1]
-			M.client.recoil_pixel_y -= pixel_offset[2]
+		if(is_living(attacker))
+			var/mob/living/M = attacker
+			if(M.client)
+				M.client.recoil_pixel_x -= pixel_offset[1]
+				M.client.recoil_pixel_y -= pixel_offset[2]
 
 	. = CEILING(attack_delay,1)
 
