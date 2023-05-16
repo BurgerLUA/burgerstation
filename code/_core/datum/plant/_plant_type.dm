@@ -410,7 +410,7 @@
 	seed_icon_state = "seed"
 	plant_icon_count = 1
 	reagents = list(
-		/reagent/magic/armotol = 1,
+		/reagent/drug/armotol = 1,
 	)
 	typical_volume = 2
 
