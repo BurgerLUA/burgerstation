@@ -31,11 +31,10 @@
 
 #define LAYER_OBJ              (LAYER_BASE + 3)
 #define LAYER_OBJ_DOOR_OPEN    (LAYER_OBJ - 0.2)
-#define LAYER_OBJ_CRATE        (LAYER_OBJ - 0.1)
 #define LAYER_OBJ_GRILLE 	   (LAYER_OBJ + 0.1)
 #define LAYER_OBJ_WINDOW 	   (LAYER_OBJ + 0.2)
 #define LAYER_OBJ_DOOR_CLOSED  (LAYER_OBJ + 0.3)
-#define LAYER_OBJ_CONTAINER    (LAYER_OBJ + 0.4)
+#define LAYER_OBJ_CRATE        (LAYER_OBJ + 0.4)
 
 #define LAYER_OBJ_ITEM         (LAYER_BASE+4)
 

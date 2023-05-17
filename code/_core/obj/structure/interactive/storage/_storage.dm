@@ -145,7 +145,7 @@ var/global/list/possible_trash_enemies = list(
 	stored_loot_per_instance = /loot/random/high
 
 	plane = PLANE_FLOOR_ATTACHMENT
-	layer = LAYER_OBJ_CONTAINER
+	layer = LAYER_FLOOR_VENT
 
 	var/chance_none = 70
 
@@ -193,7 +193,5 @@ var/global/list/possible_trash_enemies = list(
 
 	stored_loot = /loot/currency/cash_register
 	stored_loot_per_instance = /loot/currency/pocket_change
-
-	layer = LAYER_OBJ_CONTAINER
 
 	pixel_y = 10

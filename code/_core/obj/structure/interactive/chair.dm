@@ -25,6 +25,7 @@ obj/structure/interactive/chair/Finalize()
 	. = ..()
 	if(armrest)
 		update_sprite()
+	set_dir(dir,TRUE)
 
 obj/structure/interactive/chair/set_dir(var/desired_dir,var/force = FALSE)
 

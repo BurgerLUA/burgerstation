@@ -1,4 +1,5 @@
 /damagetype/item
+	animate = TRUE
 
 
 /damagetype/item/trivial

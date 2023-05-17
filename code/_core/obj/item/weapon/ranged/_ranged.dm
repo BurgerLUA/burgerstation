@@ -627,10 +627,13 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!(params["left"] && P.attack_flags & CONTROL_MOD_LEFT || params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) && !max_bursts_to_use) //No trigger.
 		return FALSE
 
-	if(!is_inventory(loc))
-		return FALSE
-	var/obj/hud/inventory/I = loc
-	if(!I.click_flags)
+	var/obj/hud/inventory/I
+	if(is_inventory(I))
+		I = loc
+	if(!I && loc && loc.loc && is_item(loc) && is_inventory(loc.loc))
+		I = loc.loc
+
+	if(!I || !I.click_flags)
 		return FALSE
 
 	var/list/screen_loc_parsed = parse_screen_loc(P.client.last_params["screen-loc"])

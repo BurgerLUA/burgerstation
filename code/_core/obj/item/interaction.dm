@@ -242,10 +242,7 @@
 		var/obj/hud/inventory/I = src.loc
 		if(!new_location)
 			new_location = get_turf(I.owner)
-		if(I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset,silent))
-			return TRUE
-		else
-			return FALSE
+		return I.remove_object(src,new_location,pixel_x_offset,pixel_y_offset,silent)
 
 	force_move(new_location)
 
