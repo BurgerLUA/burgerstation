@@ -394,7 +394,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/quality_bonus = get_quality_bonus(0.5,2)
 	var/quality_penalty = max(1,1/get_quality_bonus(0.25,2))
 
-	var/obj/projectile/projectile_to_use = (projectile_override != null && ispath(projectile_override, /obj/projectile) ? projectile_override : projectile)
+	var/obj/projectile/projectile_to_use = (projectile_override != null ? projectile_override : projectile)
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
