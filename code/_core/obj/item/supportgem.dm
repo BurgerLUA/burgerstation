@@ -184,7 +184,7 @@
 		"mana_cost_multiplier" = manamult + 2.5,
 		"shoot_delay" = 2
 	)
-	support_desc = "Increases damage by <b>[damagemult] Times</b>.\nIncreases mana cost by <b>[(manamult + 2.5)/100]%</b>.\nIncreases Inaccuracy and Projectile Speed by 25%.\nIncreases shoot delay by 100%."
+	support_desc = "Increases damage by <b>[damagemult] Times</b>.\nIncreases mana cost by <b>[(manamult + 1.5)*100]%</b>.\nIncreases Inaccuracy and Projectile Speed by 25%.\nIncreases shoot delay by 100%."
 
 
 /obj/item/supportgem/speed
@@ -203,7 +203,7 @@
 		"projectile_speed" = 1 + projectile_speed,
 		"mana_cost_multiplier" = 1.5
 	)
-	support_desc = "Increases speed count by <b>[projectile_speed*100]%</b>.\nIncreases mana cost by 50%.\nNote: Projectile speed is capped to a certain amount."
+	support_desc = "Increases projectile speed by <b>[projectile_speed*100]%</b>.\nIncreases mana cost by 50%.\nNote: Projectile speed is capped to a certain amount."
 
 
 /obj/item/supportgem/precision

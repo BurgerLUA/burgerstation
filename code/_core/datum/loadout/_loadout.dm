@@ -75,7 +75,7 @@
 				for(var/obj/item/weapon/ranged/spellgem/S in added_items)
 					if(is_wand(S.loc))
 						continue
-					S.force_move(S)
+					S.drop_item(S)
 					W2.socketed_spellgem = S
 			if(length(W2.socketed_supportgems) < W2.sockets)
 				for(var/obj/item/supportgem/S in added_items)
@@ -83,7 +83,7 @@
 						continue
 					if(length(W2.socketed_supportgems) >= W2.sockets)
 						break
-					S.force_move(S)
+					S.drop_item(S)
 					W2.socketed_supportgems += S
 			W2.update_sprite()
 			W2.update_attachment_stats()

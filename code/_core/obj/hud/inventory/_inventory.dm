@@ -392,12 +392,12 @@
 
 	I.layer = LAYER_BASE + length(vis_contents)
 
-	update_stats()
-
 	I.on_equip(old_location,silent)
 	I.update_inventory()
 
 	if(debug) log_error("add_object() success!")
+
+	update_stats()
 
 	return TRUE
 
@@ -462,17 +462,17 @@
 				else
 					A.held_objects -= I
 				A.queue_update_items = TRUE
-
 		I.set_dir(owner.dir)
 
 	vis_contents -= I
 
-	I.layer = LAYER_BASE + I.value / 10000
-
-	update_stats()
-
 	I.on_unequip(src,silent)
 	I.update_inventory()
+
+	if(is_turf(drop_loc))
+		I.layer = initial(I.layer) + clamp(I.value / 10000,0,0.999)
+
+	update_stats()
 
 	return I
 

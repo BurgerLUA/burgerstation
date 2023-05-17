@@ -233,6 +233,12 @@
 
 /obj/fire_process/proc/get_params(var/atom/victim)
 	. = list()
+	if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.horizontal)
+			.[PARAM_ICON_X] = rand(0,32)
+			.[PARAM_ICON_Y] = rand(0,32)
+			return .
 	.[PARAM_ICON_X] = rand(0,32)
 	.[PARAM_ICON_Y] = rand(0,8)
 
