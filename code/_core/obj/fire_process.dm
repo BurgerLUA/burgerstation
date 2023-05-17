@@ -88,7 +88,7 @@
 
 	if(!momentum && returning_damage && returning_damage[1] > 0)
 		var/expected_damage = DT.get_damage_per_hit()*multiplier
-		var/fire_power_to_add = min(10,2*(returning_damage[1]/expected_damage))
+		var/fire_power_to_add = min(10,3*(returning_damage[1]/expected_damage))
 		if(object_to_damage.qdeleting)
 			fire_power_to_add += 10
 		fire_power += fire_power_to_add
