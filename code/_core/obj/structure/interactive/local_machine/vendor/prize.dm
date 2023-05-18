@@ -14,7 +14,6 @@
 		/obj/item/clothing/mask/gas/mime,
 		/obj/item/broom/magic,
 		/obj/item/grenade/timed/lube_smoke,
-		/obj/item/weapon/ranged/spellgem/metronome,
 		/obj/item/clothing/overwear/armor/burger_coat,
 		/obj/item/clothing/overwear/armor/burger_coat/courier,
 		/obj/item/clothing/overwear/armor/burger_coat/courier/ncr,

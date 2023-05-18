@@ -110,20 +110,6 @@ obj/effect/temp/hazard/falling_fireball/New(var/desired_location,var/desired_tim
 
 	return ..()
 
-
-
-obj/effect/temp/hazard/fire
-	name = "hellfire"
-	icon = 'icons/obj/effects/fire.dmi'
-	icon_state = "3"
-	duration = SECONDS_TO_DECISECONDS(6)
-	hazard_range = 1
-	hazard_delay = SECONDS_TO_DECISECONDS(1)
-	damage_type = /damagetype/ranged/magic/magefire
-
-	cross_hazard = TRUE
-
-
 obj/effect/temp/hazard/tentacle/
 	name = "goliath tentacle"
 	icon = 'icons/mob/living/simple/lavaland/goliath.dmi'

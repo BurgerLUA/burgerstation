@@ -1,4 +1,4 @@
-/damagetype/ranged/magic/flame
+/damagetype/ranged/magic/shock
 	attack_damage_base = list(
 		SHOCK = 30,
 		ARCANE = 10
