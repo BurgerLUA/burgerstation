@@ -191,24 +191,28 @@
 	return TRUE
 
 /ai/advanced/proc/find_nearby_weapon()
+
 	var/list/possible_weapons = list()
-	for(var/obj/item/weapon/W in view(VIEW_RANGE/2,owner))
+
+	for(var/obj/item/weapon/W in view(VIEW_RANGE*0.4,owner))
 		if(!W.z)
 			continue
 		var/weight_multiplier = 1
-		if(istype(W,/obj/item/weapon/ranged/))
-			var/obj/item/weapon/ranged/R = W
-			if(!R.can_gun_shoot(owner,check_time=FALSE,messages=FALSE))
-				continue
-			weight_multiplier = 2
-		if(istype(W,/obj/item/weapon/ranged/bullet/))
+		if(is_ranged_bullet_weapon(W))
 			var/obj/item/weapon/ranged/bullet/B = W
 			if(!B.chambered_bullet)
 				continue
 			weight_multiplier = 3
+		if(is_ranged_weapon(W))
+			var/obj/item/weapon/ranged/R = W
+			if(!R.can_gun_shoot(owner,check_time=FALSE,messages=FALSE))
+				continue
+			weight_multiplier = 3
 		possible_weapons[W] = (max(1,(VIEW_RANGE + 1) - get_dist(owner,W.loc)))*weight_multiplier
+
 	if(!length(possible_weapons))
 		return null
+
 	return pickweight(possible_weapons)
 
 /ai/advanced/proc/handle_equipment() //Return true to avoid regular attack.
@@ -228,11 +232,12 @@
 	if(found_ammo_pile) //Likely fleeing to an ammo pile. Probably. Hopefully.
 		return TRUE
 
-	if(should_find_weapon_on_ground && !A.left_item && !A.right_item && !objective_weapon)
+	if(should_find_weapon_on_ground && !checked_weapons_on_ground && !A.left_item && !A.right_item && !objective_weapon)
 		objective_weapon = find_nearby_weapon()
 		if(!objective_weapon) checked_weapons_on_ground = TRUE
 
 	if(A.left_item)
+		checked_weapons_on_ground = FALSE
 		if(is_ranged_bullet_weapon(A.left_item) && handle_gun(A.left_item))
 			return TRUE
 		if(is_bow(A.left_item) && handle_bow(A.left_item))
@@ -242,6 +247,7 @@
 			next_complex = max(next_complex,world.time) + rand(2,6)
 
 	if(A.right_item)
+		checked_weapons_on_ground = FALSE
 		if(is_ranged_bullet_weapon(A.right_item) && handle_gun(A.right_item))
 			return TRUE
 		if(is_bow(A.right_item) && handle_bow(A.right_item))

@@ -1,34 +1,47 @@
 /damagetype/ranged/magic/blackflame/
 	attack_damage_base = list(
-		HEAT = 60*0.25,
-		ARCANE = 60*0.125,
-		DARK = 60*0.125
+		HEAT = 30,
+		ARCANE = 10,
+		DARK = 10
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 60*0.2
+		ATTRIBUTE_INTELLIGENCE = 20,
+		ATTRIBUTE_VITALITY = 30
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = DARK
+		ATTRIBUTE_INTELLIGENCE = list(ARCANE,HEAT),
+		ATTRIBUTE_VITALITY = DARK
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 60*0.5,
+		SKILL_MAGIC = 20,
+		SKILL_PRAYER = 30,
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(HEAT,DARK)
+		SKILL_MAGIC = list(HEAT,ARCANE),
+		SKILL_PRAYER = DARK
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
+		SKILL_MAGIC = 25,
+		SKILL_PRAYER = 25
 	)
 
 /damagetype/ranged/magic/blackflame/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
-		L.ignite(50,source=attacker)
+		if(L.on_fire)
+			var/loyalty_tag_to_use
+			if(is_living(attacker))
+				var/mob/living/L2 = attacker
+				loyalty_tag_to_use = L2.loyalty_tag
+			explode(victim_turf,2,attacker,weapon,loyalty_tag_to_use)
+			L.extinguish()
+		else
+			L.ignite(50,source=attacker)
 
 	. = ..()

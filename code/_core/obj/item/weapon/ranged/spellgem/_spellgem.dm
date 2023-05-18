@@ -124,7 +124,7 @@
 
 	. = ..()
 
-	if(caller.health)
+	if(. && caller.health)
 		var/final_mana_cost = base_mana_cost
 		if(length(attachment_stats) && attachment_stats["mana_cost_multiplier"])
 			final_mana_cost *= attachment_stats["mana_cost_multiplier"]

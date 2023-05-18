@@ -628,7 +628,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		return FALSE
 
 	var/obj/hud/inventory/I
-	if(is_inventory(I))
+	if(is_inventory(loc))
 		I = loc
 	if(!I && loc && loc.loc && is_item(loc) && is_inventory(loc.loc))
 		I = loc.loc

@@ -141,6 +141,7 @@
 
 	if(complete_multiplier >= 1)
 		frozen = TRUE
+		play_sound('sound/effects/lockpicking/lock_unlock.ogg',get_turf(owner))
 		if(associated_chest)
 			CALLBACK("picked_delay_\ref[src]",SECONDS_TO_DECISECONDS(2),associated_chest,/obj/structure/interactive/crate/chest/proc/picked,owner)
 		return FALSE
