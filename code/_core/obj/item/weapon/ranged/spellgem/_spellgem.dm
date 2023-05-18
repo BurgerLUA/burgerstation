@@ -30,7 +30,8 @@
 
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
-	. *= 1 - (spread_per_shot/360)
+	. *= 1 - min(0.5,spread_per_shot/180)
+	. = CEILING(.,1)
 
 /obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
 	if(mana_cost_override)

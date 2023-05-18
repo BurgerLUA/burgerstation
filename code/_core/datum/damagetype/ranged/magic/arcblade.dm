@@ -1,19 +1,19 @@
 /damagetype/ranged/magic/arcblade
 	attack_damage_base = list(
-		BLADE = 40*0.4,
-		ARCANE = 40*0.1
+		BLADE = 50,
+		ARCANE = 20
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 40*0.2
+		ATTRIBUTE_INTELLIGENCE = 20
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(BLADE,ARCANE)
+		ATTRIBUTE_INTELLIGENCE = ARCANE
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 40*0.3,
+		SKILL_MAGIC = 20,
 	)
 
 	skill_damage = list(

@@ -1,10 +1,10 @@
 /damagetype/ranged/magic/chaos
 	attack_damage_base = list(
-		DARK = 45*0.5
+		DARK = 20
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 45*0.25
+		ATTRIBUTE_VITALITY = 20
 	)
 
 	attribute_damage = list(
@@ -12,15 +12,15 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 45*0.25
+		SKILL_PRAYER = 20
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = DARK
+		SKILL_PRAYER = DARK
 	)
 
 	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
+		SKILL_PRAYER = 75 //75%
 	)
 
 /damagetype/ranged/magic/chaos/canine //Lazy way to stop the cursed canine from leveling magic stats, but still uses them for damage.
