@@ -270,6 +270,7 @@
 #include "code\_core\datum\ai\simple\carp.dm"
 #include "code\_core\datum\ai\simple\cat.dm"
 #include "code\_core\datum\ai\simple\cult.dm"
+#include "code\_core\datum\ai\simple\cyborg_ai.dm"
 #include "code\_core\datum\ai\simple\dick_kickem.dm"
 #include "code\_core\datum\ai\simple\doorman.dm"
 #include "code\_core\datum\ai\simple\glockroach.dm"

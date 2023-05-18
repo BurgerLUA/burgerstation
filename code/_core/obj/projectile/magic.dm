@@ -152,7 +152,7 @@
 						transform = M
 
 	//Start to degrade velocity over time.
-	if((!homing || homing_speed <= 0) && start_time + extra_lifetime <= lifetime)
+	if(velocity_degrade > 0 && (!homing || homing_speed <= 0) && start_time + extra_lifetime <= lifetime)
 		vel_x *= velocity_degrade
 		vel_y *= velocity_degrade
 		alpha -= 10
@@ -309,7 +309,7 @@
 /obj/projectile/magic/lightning
 	name = "lightning"
 	icon_state = "lightning_01"
-	velocity_degrade = 0.5
+	velocity_degrade = 0.8
 
 /obj/projectile/magic/lightning/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
 	icon_state = pick("lightning_01","lightning_02","lightning_03","lightning_04","lightning_05")
@@ -355,7 +355,8 @@
 
 	penetrations_left = 1
 
-	velocity_degrade = 0.6
+	velocity_degrade = 0.7
+	extra_lifetime = 1
 
 /obj/projectile/magic/crystal/fire
 	name = "magic fire crystal"

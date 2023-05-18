@@ -4,6 +4,8 @@
 	icon = 'icons/mob/living/simple/cyborg.dmi'
 	icon_state = "robot"
 
+	ai = /ai/cyborg
+
 	var/module = null
 
 	var/obj/item/weapon/stored_melee_weapon
@@ -17,9 +19,9 @@
 	blood_type = /reagent/blood/robot
 	blood_volume = 500
 
-	health_base = 500
+	health_base = 200
 	mana_base = 100
-	stamina_base = 500
+	stamina_base = 200
 
 	armor = /armor/borg
 
