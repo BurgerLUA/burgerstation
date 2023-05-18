@@ -1,7 +1,7 @@
 /obj/item/weapon/ranged/spellgem/inferno
 	name = "inferno spell gem"
 	desc = "The source of all magic."
-	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a wad of fire that ignites all targets in a small area."
+	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a wad of fire that spreads on hit."
 	icon_state = "damage"
 
 	shoot_delay = 20

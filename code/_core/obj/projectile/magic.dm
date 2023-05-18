@@ -5,7 +5,7 @@
 	//Goes boom on destroy if not 0
 	var/explode_power = 0
 	//Velocity multiplied by this every update if not 0
-	var/magic_vel_degrade = 0
+	var/velocity_degrade = 0
 
 
 
@@ -25,7 +25,7 @@
 	var/turret_projectile_sound
 
 	var/last_angle
-	var/extra_lifetime =  2 //How long should we persist before starting to decay by magic_vel_degrade?
+	var/extra_lifetime = 0 //How long should we persist before starting to decay by velocity_degrade? (In deciseconds)
 
 
 /obj/projectile/magic/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
@@ -152,9 +152,9 @@
 						transform = M
 
 	//Start to degrade velocity over time.
-	if((!homing || homing_speed <= 0) && start_time + SECONDS_TO_DECISECONDS(extra_lifetime) > lifetime)
-		vel_x *= magic_vel_degrade
-		vel_y *= magic_vel_degrade
+	if(velocity_degrade > 0 && (!homing || homing_speed <= 0) && start_time + extra_lifetime <= lifetime)
+		vel_x *= velocity_degrade
+		vel_y *= velocity_degrade
 		alpha -= 10
 		if(alpha <= 40)
 			on_projectile_hit(current_loc)
@@ -172,7 +172,7 @@
 /obj/projectile/magic/fireball/explosive
 	hit_target_turf = TRUE
 
-	explode_power = 4
+	explode_power = 3
 
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
@@ -191,6 +191,33 @@
 /obj/projectile/magic/chaos
 	name = "chaos ball"
 	icon_state = "chaos"
+	var/angle_to_add = 0
+
+/obj/projectile/magic/chaos/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+	. = ..()
+	angle_to_add = pick(-1,1)
+
+
+/obj/projectile/magic/chaos/update_projectile(var/tick_rate=1)
+
+	. = ..()
+
+	if(!. || !current_loc || !angle_to_add)
+		return .
+
+	var/current_angle = -ATAN2(vel_x,vel_y) + 90
+	var/current_max = max(abs(vel_x),abs(vel_y))
+
+	var/new_angle = current_angle + angle_to_add
+	var/new_vel_x = sin(new_angle)*current_max
+	var/new_vel_y = cos(new_angle)*current_max
+
+	vel_x = new_vel_x
+	vel_y = new_vel_y
+
+	var/matrix/M = get_base_transform()
+	M.Turn(new_angle)
+	transform = M
 
 /obj/projectile/magic/magic_missile
 	name = "magic missile"
@@ -198,13 +225,21 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
+	homing = TRUE //Do we home in on a target?
+	homing_distance_max = VIEW_RANGE //Allowed maximum distance to home.
+	homing_distance_min = 0 //If non-zero, speed up if above this range and slow down if below this range.
+	homing_speed = 0 //How fast are we allowed to go without slowing down? Set to 0 to disable.
+	homing_maximum_acceleration = 0.05 //Per tick. Also deceleration. limited between 0.01 and 0.25.
+	homing_angle_limit = 60 //Maximum angle that it can change when homing.
+	homing_mod = 0.5 //What percentage of velocity (as a value 0-1) should the projectile try to turn to.
+
 /obj/projectile/magic/blade
 	name = "magic blade"
 	icon_state = "blade"
 
 	penetrations_left = 1
 
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
@@ -260,6 +295,8 @@
 	turret_projectile_speed = TILE_SIZE*0.5 - 1
 	turret_projectile_sound = 'sound/effects/tesla.ogg'
 
+	ignore_living = TRUE
+
 
 /obj/projectile/magic/tesla_bolt
 	name = "tesla bolt"
@@ -272,7 +309,7 @@
 /obj/projectile/magic/lightning
 	name = "lightning"
 	icon_state = "lightning_01"
-	magic_vel_degrade = 0.85
+	velocity_degrade = 0.8
 
 /obj/projectile/magic/lightning/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
 	icon_state = pick("lightning_01","lightning_02","lightning_03","lightning_04","lightning_05")
@@ -281,17 +318,34 @@
 /obj/projectile/magic/frost
 	name = "frost"
 	icon_state = "frost"
-	magic_vel_degrade = 0.9
+	velocity_degrade = 0.75
 
 /obj/projectile/magic/lesser_fire
 	name = "lesser fire"
 	icon_state = "fire_lesser"
 
-	magic_vel_degrade = 0.9
+	velocity_degrade = 0.6
 
 /obj/projectile/magic/lightning_bolt
 	name = "holy lightning bolt"
 	icon_state = "lightning"
+	var/has_cleaved = FALSE
+
+/obj/projectile/magic/lightning_bolt/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+
+	. = ..()
+
+	if(. && !has_cleaved && is_living(hit_atom))
+		has_cleaved = TRUE
+		for(var/mob/living/L in orange(2,hit_atom))
+			if(L == hit_atom)
+				continue //Just in case.
+			if(L.loyalty_tag == src.loyalty_tag)
+				continue
+			src.on_projectile_hit(L,old_loc,new_loc)
+
+
+
 
 /obj/projectile/magic/crystal
 	name = "magic crystal"
@@ -299,27 +353,32 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
+	penetrations_left = 1
+
+	velocity_degrade = 0.7
+	extra_lifetime = 1
+
 /obj/projectile/magic/crystal/fire
 	name = "magic fire crystal"
 	icon_state = "crystal_fire"
 
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 	penetrations_left = 1
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
-
-/obj/projectile/magic/shadow
-	name = "shadow ball"
-	icon_state = "shadow"
 
 /obj/projectile/magic/crystal/ice
 	name = "ice bolt"
 	icon_state = "crystal_ice"
 
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 	penetrations_left = 2
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+/obj/projectile/magic/shadow
+	name = "shadow ball"
+	icon_state = "shadow"
 
 /obj/projectile/bullet/summon
 	name = "summon"
@@ -334,8 +393,6 @@
 	name = "blackflame"
 	icon_state = "blackflame"
 
-	explode_power = 3
-
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
 
@@ -344,6 +401,8 @@
 	icon_state = "cultist"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+	velocity_degrade = 0.7
 
 
 /obj/projectile/magic/cultist/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
@@ -361,9 +420,15 @@
 	name = "arcblade"
 	icon_state = "cool"
 
-	penetrations_left = 1
+	penetrations_left = 3
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+	rotate_projectile = FALSE
+
+	richochet_block_percent_threshold = 0
+	ricochet_angle = 0
+	velocity_degrade = 0.95
 
 /obj/projectile/magic/fractal
 	name = "fractal"
@@ -372,6 +437,9 @@
 	penetrations_left = 1
 	homing = TRUE
 	homing_speed = TILE_SIZE*0.75
+	homing_mod = 0.1
+	ricochet_angle = 90
+	homing_angle_limit = 80
 
 /*
 /obj/projectile/magic/fractal/on_projectile_hit(atom/hit_atom)
@@ -405,7 +473,7 @@
 
 	homing = TRUE
 	homing_speed = TILE_SIZE * 0.5
-	explode_power = 1.5
+	explode_power = 2
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
@@ -413,20 +481,14 @@
 	name = "inferno"
 	icon_state = "inferno"
 
-	explode_power = 1.5
-
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
+	hit_target_turf = TRUE
+
 /obj/projectile/magic/inferno/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
-
 	. = ..()
+	firebomb(old_loc,6,owner,weapon,src.loyalty_tag)
 
-	if(. && hit_atom && old_loc)
-		var/turf/turf_to_hit = is_floor(hit_atom) ? hit_atom : old_loc
-		var/obj/effect/temp/hazard/fire/L = new(turf_to_hit,SECONDS_TO_DECISECONDS(5),owner)
-		INITIALIZE(L)
-		GENERATE(L)
-		FINALIZE(L)
 
 /obj/projectile/magic/buff
 	name = "buff"

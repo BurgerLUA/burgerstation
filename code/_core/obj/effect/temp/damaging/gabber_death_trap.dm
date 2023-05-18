@@ -4,7 +4,6 @@
 	icon = 'icons/obj/effects/gabber_death_trap.dmi'
 	icon_state = "active"
 	duration = SECONDS_TO_DECISECONDS(30)
-	damage_type = /damagetype/ranged/magic/magefire
 
 	hazardous = TRUE
 

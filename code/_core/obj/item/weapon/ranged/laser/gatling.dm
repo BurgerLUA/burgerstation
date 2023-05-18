@@ -79,10 +79,3 @@
 	update_held_icon()
 
 	return ..()
-
-/obj/item/weapon/ranged/energy/gatling/ai_core
-	value_burgerbux = 1
-	contraband = TRUE
-	value = 0
-	battery = /obj/item/powercell/recharging
-	bullet_count = 1

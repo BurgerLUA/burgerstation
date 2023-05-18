@@ -1,50 +1,22 @@
 /damagetype/ranged/magic/crystal
 	attack_damage_base = list(
-		ARCANE = 45*0.1,
-		DARK = 45*0.2
+		ARCANE = 30,
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 45*0.3
+		ATTRIBUTE_INTELLIGENCE = 30
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(ARCANE,DARK)
+		ATTRIBUTE_INTELLIGENCE = ARCANE
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 45*0.4
+		SKILL_MAGIC = 30
 	)
 
 	skill_damage = list(
-		SKILL_MAGIC = list(ARCANE,DARK)
-	)
-
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
-	)
-
-
-/damagetype/ranged/magic/crystal/true
-	attack_damage_base = list(
-		ARCANE = 60*0.1,
-		DARK = 60*0.2
-	)
-
-	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 60*0.3
-	)
-
-	attribute_damage = list(
-		ATTRIBUTE_INTELLIGENCE = list(ARCANE,DARK)
-	)
-
-	skill_stats = list(
-		SKILL_MAGIC = 60*0.4
-	)
-
-	skill_damage = list(
-		SKILL_MAGIC = list(ARCANE,DARK)
+		SKILL_MAGIC = ARCANE
 	)
 
 	bonus_experience_skill = list(

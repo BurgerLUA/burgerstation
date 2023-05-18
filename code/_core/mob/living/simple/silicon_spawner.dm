@@ -6,13 +6,16 @@
 	anchored = TRUE
 	ai = /ai/silicon_spawner
 
-	health_base = 500
+	health_base = 300
 
 	var/list/active_silicons = list()
 
-	var/silicon_limit = 5
+	var/silicon_limit = 3
 
 	pixel_y = 10
+
+	stun_angle = 0
+	stun_elevation = 0
 
 	var/has_stored_cyborg = FALSE
 
@@ -39,16 +42,16 @@
 
 	for(var/k in active_silicons)
 		var/mob/living/L = k
-		if(L.dead || L.qdeleting || get_dist(src,L) >= VIEW_RANGE*2)
+		if(L.dead || L.qdeleting)
 			active_silicons -= L
 
 	if(length(active_silicons) > silicon_limit)
-		CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(5),src,src::start_creating()) //Try again later.
+		CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(10),src,src::start_creating()) //Try again later.
 		return FALSE
 
 	icon_state = "[initial(icon_state)]_creating"
 
-	CALLBACK("\ref[src]_create_silicon",SECONDS_TO_DECISECONDS(10),src,src::create_silicon())
+	CALLBACK("\ref[src]_create_silicon",SECONDS_TO_DECISECONDS(20),src,src::create_silicon())
 
 	return TRUE
 
@@ -77,6 +80,6 @@
 	active_silicons += SM
 	has_stored_cyborg = FALSE
 
-	CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(10),src,src::start_creating()) //Repeat.
+	CALLBACK("\ref[src]_start_creating",SECONDS_TO_DECISECONDS(20),src,src::start_creating()) //Repeat.
 
 	return TRUE

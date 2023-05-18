@@ -1,11 +1,11 @@
 /damagetype/ranged/magic/fireball
 	attack_damage_base = list(
-		HEAT = 60*0.4,
-		ARCANE = 60*0.3
+		HEAT = 60,
+		ARCANE = 30
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 60*0.2
+		ATTRIBUTE_INTELLIGENCE = 30
 	)
 
 	attribute_damage = list(
@@ -13,7 +13,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_MAGIC = 60*0.3,
+		SKILL_MAGIC = 30,
 	)
 
 	skill_damage = list(
