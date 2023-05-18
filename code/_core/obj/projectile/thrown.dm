@@ -66,10 +66,10 @@
 					. = FALSE
 					if(impact_face_x)
 						vel_x *= -1
-						pixel_x_float_physical = (hit_atom.x - src.x)*TILE_SIZE + impact_face_x*TILE_SIZE*0.25
+						//pixel_x_float_physical = (hit_atom.x - src.x)*TILE_SIZE + impact_face_x*TILE_SIZE*0.25
 					if(impact_face_y)
 						vel_y *= -1
-						pixel_y_float_physical = (hit_atom.y - src.y)*TILE_SIZE + impact_face_y*TILE_SIZE*0.25
+						//pixel_y_float_physical = (hit_atom.y - src.y)*TILE_SIZE + impact_face_y*TILE_SIZE*0.25
 					vel_x *= velocity_mod
 					vel_y *= velocity_mod
 					steps_allowed *= velocity_mod
