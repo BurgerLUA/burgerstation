@@ -2,11 +2,11 @@
 	attack_damage_base = list()
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 45*0.25
+		ATTRIBUTE_INTELLIGENCE = 50
 	)
 
 	skill_stats = list(
-		SKILL_PRAYER = 60*0.75,
+		SKILL_PRAYER = 50,
 	)
 
 	bonus_experience_skill = list(

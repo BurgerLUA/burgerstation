@@ -5,7 +5,7 @@
 	//Goes boom on destroy if not 0
 	var/explode_power = 0
 	//Velocity multiplied by this every update if not 0
-	var/magic_vel_degrade = 0
+	var/velocity_degrade = 0
 
 
 
@@ -25,7 +25,7 @@
 	var/turret_projectile_sound
 
 	var/last_angle
-	var/extra_lifetime = 0 //How long should we persist before starting to decay by magic_vel_degrade? (In deciseconds)
+	var/extra_lifetime = 0 //How long should we persist before starting to decay by velocity_degrade? (In deciseconds)
 
 
 /obj/projectile/magic/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
@@ -152,9 +152,9 @@
 						transform = M
 
 	//Start to degrade velocity over time.
-	if((!homing || homing_speed <= 0) && start_time + extra_lifetime > lifetime)
-		vel_x *= magic_vel_degrade
-		vel_y *= magic_vel_degrade
+	if((!homing || homing_speed <= 0) && start_time + extra_lifetime <= lifetime)
+		vel_x *= velocity_degrade
+		vel_y *= velocity_degrade
 		alpha -= 10
 		if(alpha <= 40)
 			on_projectile_hit(current_loc)
@@ -231,7 +231,7 @@
 	homing_speed = 0 //How fast are we allowed to go without slowing down? Set to 0 to disable.
 	homing_maximum_acceleration = 0.05 //Per tick. Also deceleration. limited between 0.01 and 0.25.
 	homing_angle_limit = 60 //Maximum angle that it can change when homing.
-	homing_mod = 0.1 //What percentage of velocity (as a value 0-1) should the projectile try to turn to.
+	homing_mod = 0.5 //What percentage of velocity (as a value 0-1) should the projectile try to turn to.
 
 /obj/projectile/magic/blade
 	name = "magic blade"
@@ -239,7 +239,7 @@
 
 	penetrations_left = 1
 
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
@@ -309,7 +309,7 @@
 /obj/projectile/magic/lightning
 	name = "lightning"
 	icon_state = "lightning_01"
-	magic_vel_degrade = 0.5
+	velocity_degrade = 0.5
 
 /obj/projectile/magic/lightning/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
 	icon_state = pick("lightning_01","lightning_02","lightning_03","lightning_04","lightning_05")
@@ -318,13 +318,13 @@
 /obj/projectile/magic/frost
 	name = "frost"
 	icon_state = "frost"
-	magic_vel_degrade = 0.75
+	velocity_degrade = 0.75
 
 /obj/projectile/magic/lesser_fire
 	name = "lesser fire"
 	icon_state = "fire_lesser"
 
-	magic_vel_degrade = 0.6
+	velocity_degrade = 0.6
 
 /obj/projectile/magic/lightning_bolt
 	name = "holy lightning bolt"
@@ -337,7 +337,7 @@
 
 	if(. && !has_cleaved && is_living(hit_atom))
 		has_cleaved = TRUE
-		for(var/mob/living/L in orange(4,hit_atom))
+		for(var/mob/living/L in orange(2,hit_atom))
 			if(L == hit_atom)
 				continue //Just in case.
 			if(L.loyalty_tag == src.loyalty_tag)
@@ -355,13 +355,13 @@
 
 	penetrations_left = 1
 
-	magic_vel_degrade = 0.6
+	velocity_degrade = 0.6
 
 /obj/projectile/magic/crystal/fire
 	name = "magic fire crystal"
 	icon_state = "crystal_fire"
 
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 	penetrations_left = 1
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -370,7 +370,7 @@
 	name = "ice bolt"
 	icon_state = "crystal_ice"
 
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 	penetrations_left = 2
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
@@ -401,7 +401,7 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-	magic_vel_degrade = 0.7
+	velocity_degrade = 0.7
 
 
 /obj/projectile/magic/cultist/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
@@ -427,7 +427,7 @@
 
 	richochet_block_percent_threshold = 0
 	ricochet_angle = 0
-	magic_vel_degrade = 0.95
+	velocity_degrade = 0.95
 
 /obj/projectile/magic/fractal
 	name = "fractal"
