@@ -3,6 +3,9 @@
 
 /mob/living/proc/adjust_fire_stacks(var/added_fire_stacks = 10)
 
+	if(qdeleting)
+		return FALSE
+
 	if(!added_fire_stacks)
 		return FALSE
 
@@ -21,6 +24,10 @@
 	return TRUE
 
 /mob/living/proc/ignite(var/added_fire_stacks = 0,var/atom/source)
+
+	if(qdeleting)
+		return FALSE
+
 
 	if(on_fire)
 		if(added_fire_stacks) adjust_fire_stacks(added_fire_stacks)
@@ -43,6 +50,9 @@
 	return TRUE
 
 /mob/living/proc/extinguish()
+
+	if(qdeleting)
+		return FALSE
 
 	if(!on_fire)
 		return FALSE

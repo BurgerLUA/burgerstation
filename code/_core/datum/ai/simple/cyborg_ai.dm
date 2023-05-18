@@ -4,13 +4,13 @@
 
 /ai/cyborg/do_attack(var/atom/target,var/left_click=FALSE)
 
+	if(!owner || !target)
+		return FALSE
+
 	var/mob/living/simple/silicon/cyborg/C = owner
 
 	if(!C.stored_melee_weapon || !C.stored_ranged_weapon)
 		return ..()
-
-	if(!owner || !target)
-		return FALSE
 
 	owner.move_dir = 0x0
 
@@ -28,8 +28,8 @@
 	params["left"] = TRUE //Always a left click.
 
 	if(get_dist(C,target) <= 1)
-		C.stored_melee_weapon.attack(C,target,params,C)
+		C.stored_melee_weapon.click_on_object(C,target,null,null,params)
 	else
-		C.stored_ranged_weapon.attack(C,target,params,C)
+		C.stored_ranged_weapon.click_on_object(C,target,null,null,params)
 
 	return TRUE

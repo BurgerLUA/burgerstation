@@ -54,7 +54,18 @@
 /mob/living/simple/silicon/cyborg/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,"[icon_state]_e")
+	I.plane = PLANE_LIGHTING_EFFECT
+	I.layer = 1
 	add_overlay(I)
+	var/turf/simulated/T = get_turf(src)
+	if(T && is_simulated(T) && T.lightness <= 0.5)
+		var/image/I2 = new/image(icon,"[icon_state]_l")
+		I2.plane = PLANE_LIGHTING_EFFECT
+		I2.layer = 2
+		add_overlay(I2)
+		set_light_sprite(5, 0.5, "#FDFFD0",LIGHT_OMNI)
+	else
+		set_light_sprite(FALSE)
 
 /mob/living/simple/silicon/cyborg/proc/do_transform()
 	module = pick("sec","medical","engineer")
@@ -66,8 +77,6 @@
 
 	if(qdeleting || dead || !module)
 		return FALSE
-
-	update_sprite()
 
 	switch(module)
 		if("sec")
@@ -89,6 +98,8 @@
 		INITIALIZE(stored_ranged_weapon)
 		GENERATE(stored_ranged_weapon)
 		FINALIZE(stored_ranged_weapon)
+
+	update_sprite()
 
 
 /mob/living/simple/silicon/cyborg/death(var/silent=FALSE)
