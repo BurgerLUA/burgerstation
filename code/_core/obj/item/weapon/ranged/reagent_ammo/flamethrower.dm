@@ -20,7 +20,7 @@
 
 	reagents = /reagent_container/weapon/flamethrower
 	fuel_per_shot = 2
-	var/fuel_per_airblast = 10
+	var/fuel_per_airblast = 20
 	uses_until_condition_fall = 100
 	use_loyalty_tag = TRUE
 	use_iff_tag = FALSE
@@ -46,8 +46,23 @@
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/proc/airblast(mob/caller,atom/object,location,params)
 
 	if(get_ammo_count() >= fuel_per_airblast)
-		reagents.remove_reagents(fuel_per_airblast-fuel_per_shot,check_recipes = FALSE,caller = caller) //We remove -fuel per shot because the SHOOT proc eats it.
-		return shoot(caller,object,location,params,projectile_override = /obj/projectile/airblast)
+		if(!is_living(caller))
+			log_error("Non-living mob [caller.get_debug_name()] called airblast of [src.get_debug_name()]! Bad!")
+			return FALSE
+		var/mob/living/C = caller
+		if (fuel_per_airblast > 0)
+			reagents.remove_reagents(fuel_per_airblast,check_recipes = FALSE,caller = C)
+		var/list/screen_loc_parsed = parse_screen_loc(C.client.last_params["screen-loc"])
+		var/target_x = C.x * TILE_SIZE + screen_loc_parsed[1] - (C.client.view * TILE_SIZE)
+		var/target_y = C.y * TILE_SIZE + screen_loc_parsed[2] - (C.client.view * TILE_SIZE)
+		C.face_atom(object)
+		var/desired_loc = get_step(C,C.dir)
+		var/obj/structure/reflector/R = new /obj/structure/reflector(desired_loc,C,C.loyalty_tag,target_x,target_y)
+		INITIALIZE(R)
+		GENERATE(R) //I dont THINK this is nessissary but JIC
+		FINALIZE(R)
+		play_shoot_sounds(C,shoot_sounds)
+		return TRUE
 	return FALSE
 
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/Generate()
@@ -61,14 +76,11 @@
 	icon = 'icons/obj/item/weapons/ranged/aussieflamethrower.dmi'
 	desc = "Feel the heat!"
 	desc_extended = "Made from a rare golden element from ancient Austrailia,boasts endless reserves of fuel."
+	fuel_per_airblast = 0
+	fuel_per_shot = 0
 
 
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/austrailium/Generate()
+	. = ..()
+	reagents.remove_all_reagents()
 	reagents.add_reagent(/reagent/fuel/phoron,reagents.volume_max)
-	return ..()
-
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/austrailium/handle_ammo(mob/caller)
-	return null //Inf ammo.
-
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/austrailium/airblast(mob/caller, atom/object, location, params)
-	return shoot(caller,object,location,params,projectile_override = /obj/projectile/airblast) //inf airblast
