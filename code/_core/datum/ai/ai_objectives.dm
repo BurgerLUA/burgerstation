@@ -198,7 +198,7 @@
 		var/view_range = get_view_range()
 		for(var/k in obstacles)
 			var/atom/A = k
-			if(A.qdeleting)
+			if(!A || A.qdeleting)
 				obstacles -= k
 				continue
 			if(is_turf(A))

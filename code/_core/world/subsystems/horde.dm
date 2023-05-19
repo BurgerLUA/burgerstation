@@ -31,6 +31,11 @@ SUBSYSTEM_DEF(horde)
 	var/list/all_horde_data_types = list()
 	var/list/all_drills = list() //list of all drills to send hordes to. Assoc.
 
+
+/subsystem/horde/unclog(var/mob/caller)
+	enable = FALSE
+	. = ..()
+
 /subsystem/horde/Initialize()
 
 	for(var/k in subtypesof(/horde_data/))

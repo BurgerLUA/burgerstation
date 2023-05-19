@@ -12,10 +12,25 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 	log_subsystem(src.name,"Found [length(all_shuttle_controlers)] shuttle controllers.")
 	return ..()
 
+
+/subsystem/shuttle/unclog(var/mob/caller)
+
+	for(var/k in all_shuttle_controlers)
+		var/obj/shuttle_controller/SC = k
+		if(!SC || SC.qdeleting)
+			all_shuttle_controlers -= k
+			continue
+		qdel(SC)
+
+	. = ..()
+
 /subsystem/shuttle/on_life()
 
 	for(var/k in all_shuttle_controlers)
 		var/obj/shuttle_controller/SC = k
+		if(!SC || SC.qdeleting)
+			all_shuttle_controlers -= k
+			continue
 		SC.time++
 		if(SC.on_shuttle_think() == null)
 			log_error("Shutting down controller for [SC]([SC.x])([SC.y])([SC.z]) as on_shuttle_think returned NULL!")
@@ -26,6 +41,9 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 	if(next_pod_respawn_time <= world.time)
 		for(var/k in drop_pod_turfs)
 			var/turf/T = k
+			if(!T)
+				drop_pod_turfs -= k
+				continue
 			CREATE(/obj/structure/interactive/drop_pod,T)
 			drop_pod_turfs -= k
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)

@@ -14,14 +14,21 @@ SUBSYSTEM_DEF(progressbars)
 /subsystem/progressbars/unclog(var/mob/caller)
 
 	for(var/k in all_progress_bars)
+		if(!k)
+			all_progress_bars -= k
+			continue
 		var/list/progress_list = all_progress_bars[k]
+		if(!progress_list || !length(progress_list))
+			all_progress_bars -= k
+			continue
 		var/obj/hud/progress_bar/P = progress_list["progress_bar"]
-		qdel(P)
+		if(!P || P.qdeleting)
+			all_progress_bars -= k
+			continue
 		all_progress_bars -= k
+		qdel(P)
 
-	broadcast_to_clients(span("danger","Removed all progress bars."))
-
-	return ..()
+	. = ..()
 
 /subsystem/progressbars/proc/process_progress_bar(var/k)
 	var/atom/A = k

@@ -10,12 +10,15 @@ SUBSYSTEM_DEF(botany)
 	var/list/plant_type/all_plant_types = list()
 
 /subsystem/botany/unclog(var/mob/caller)
+
 	for(var/k in all_plants)
 		var/obj/structure/interactive/plant/P = k
+		all_plants -= k
+		if(!P || P.qdeleting)
+			continue
 		qdel(P)
-	broadcast_to_clients(span("danger","Deleted all plants."))
 
-	return ..()
+	. = ..()
 
 /subsystem/botany/on_life()
 
@@ -25,7 +28,8 @@ SUBSYSTEM_DEF(botany)
 		desired_delay = TICKS_TO_DECISECONDS(desired_delay)
 		for(var/k in plants_to_check)
 			var/obj/structure/interactive/plant/P = k
-			if(P.qdeleting)
+			if(!P || P.qdeleting)
+				all_plants -= k
 				continue
 			if(P.on_life(tick_rate) == null)
 				log_error("Warning! Plant [P.get_debug_name()] did not complete on_life() properly and thus was deleted.")

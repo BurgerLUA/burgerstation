@@ -85,7 +85,7 @@ var/global/list/lockpick_difficulty_mul = list(
 		INTERACT_CHECK
 		INTERACT_DELAY(10)
 		if(current_user)
-			if(current_user.dead || current_user.qdeleting || current_user.horizontal)
+			if(current_user.dead || current_user.qdeleting || current_user.horizontal || !current_user.ckey)
 				boot_lockpicker()
 			else
 				caller.to_chat(span("notice","\The [current_user.name] is currently lockpicking this!"))

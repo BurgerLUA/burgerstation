@@ -6,6 +6,19 @@ SUBSYSTEM_DEF(squad)
 
 	tick_usage_max = 50
 
+	var/list/squad/all_squads = list()
+
+/subsystem/squad/unclog(var/mob/caller)
+
+	for(var/k in all_squads)
+		var/squad/S = k
+		all_squads -= k
+		if(!S || S.qdeleting)
+			continue
+		qdel(S)
+
+	. = ..()
+
 /subsystem/squad/Initialize()
 
 	var/squad/red_team = new
@@ -28,9 +41,14 @@ SUBSYSTEM_DEF(squad)
 
 /subsystem/squad/on_life()
 
-	for(var/squad/S in all_squads)
-		for(var/k in S.members)
-			var/mob/living/advanced/player/M = k
+	for(var/k in all_squads)
+		var/squad/S = k
+		if(!S || S.qdeleting)
+			continue
+		for(var/j in S.members)
+			var/mob/living/advanced/player/M = j
+			if(!M || M.qdeleting)
+				continue
 			M.update_squad_buttons()
 			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 

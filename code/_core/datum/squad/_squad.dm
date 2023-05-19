@@ -4,9 +4,6 @@
 
 #define SQUAD_MEMBERS_MAX 4
 
-
-var/global/list/squad/all_squads = list()
-
 /squad/
 	var/name = "Squad Name"
 	var/desc = "Squad description."
@@ -20,7 +17,7 @@ var/global/list/squad/all_squads = list()
 
 /squad/New(var/desired_loc)
 
-	all_squads += src
+	SSsquad.all_squads += src
 
 	return ..()
 
@@ -35,10 +32,7 @@ var/global/list/squad/all_squads = list()
 	. = ..()
 
 /squad/Destroy()
-
-	all_squads -= src
-
-
+	SSsquad.all_squads -= src
 	return ..()
 
 /squad/proc/add_member(var/mob/living/advanced/player/P)

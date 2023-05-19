@@ -159,6 +159,9 @@
 	var/directions_to_avoid = 0x0
 	for(var/k in avoidance_list)
 		var/atom/movable/M = k
+		if(!M)
+			avoidance_list -= k
+			continue
 		if(M.qdeleting)
 			log_error("Warning: Qdeleting object [M.get_debug_name()] was found in tracked ai avoidances.")
 			avoidance_list -= k

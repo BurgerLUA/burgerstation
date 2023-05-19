@@ -148,7 +148,7 @@
 	if(dead)
 		return FALSE
 
-	if(!desired_target || desired_target.qdeleting || desired_target.z != src.z)
+	if(desired_target.qdeleting || desired_target.z != src.z)
 		return FALSE
 
 	flick("shoot",src)

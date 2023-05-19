@@ -14,13 +14,8 @@ SUBSYSTEM_DEF(turf)
 	var/saved_icons = 0
 
 /subsystem/turf/unclog(var/mob/caller)
-
-	for(var/k in wet_turfs)
-		wet_turfs -= k
-
-	broadcast_to_clients(span("danger","Removed all wet turfs and queued edges."))
-
-	return ..()
+	wet_turfs.Cut()
+	. = ..()
 
 /subsystem/turf/Initialize()
 
@@ -153,6 +148,8 @@ SUBSYSTEM_DEF(turf)
 
 	for(var/k in wet_turfs)
 		var/turf/simulated/T = k
+		if(!T)
+			continue
 		T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
 		if(T.wet_level <= 0)
 			wet_turfs -= T

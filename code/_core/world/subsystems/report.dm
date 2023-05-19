@@ -4,8 +4,6 @@ SUBSYSTEM_DEF(report)
 	tick_rate = 1
 	priority = SS_ORDER_REPORT
 
-	var/list/stored_tick_reports = list()
-
 	var/average_cpu = 0
 	var/min_cpu = INFINITY
 	var/max_cpu = -INFINITY
@@ -16,6 +14,10 @@ SUBSYSTEM_DEF(report)
 
 
 	var/next_report = 0
+
+/subsystem/report/unclog(var/mob/caller)
+	tick_rate = -1
+	. = ..()
 
 /subsystem/report/Initialize()
 	next_report = world.time + SECONDS_TO_DECISECONDS(300)

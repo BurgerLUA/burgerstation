@@ -12,11 +12,18 @@ SUBSYSTEM_DEF(ghost)
 /subsystem/ghost/unclog(var/mob/caller)
 
 	for(var/k in all_emfs)
-		var/datum/D = k
+		var/obj/emf/E = k
 		all_emfs -= k
-		qdel(D)
+		if(!E || E.qdeleting)
+			continue
+		qdel(E)
 
-	broadcast_to_clients(span("danger","Removed all active EMFs."))
+	for(var/k in all_emf_trackers)
+		var/obj/item/emf/E = k
+		all_emf_trackers -= k
+		if(!E || E.qdeleting)
+			continue
+		qdel(E)
 
 	return ..()
 
@@ -24,11 +31,17 @@ SUBSYSTEM_DEF(ghost)
 
 	for(var/k in all_emf_trackers)
 		var/obj/item/emf/E = k
+		if(!E || E.qdeleting)
+			all_emfs -= k
+			continue
 		E.on_emf_think()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in all_emfs)
 		var/obj/emf/E = k
+		if(!E || E.qdeleting)
+			all_emfs -= k
+			continue
 		if(E.time_to_delete <= world.time)
 			qdel(E)
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)

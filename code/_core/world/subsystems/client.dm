@@ -14,6 +14,14 @@ SUBSYSTEM_DEF(client)
 
 	preloop = TRUE
 
+/subsystem/client/unclog(var/mob/caller)
+	for(var/ckey in all_clients) //This should never be tick checked.
+		var/client/C = all_clients[ckey]
+		if(!C)
+			all_clients -= ckey
+			continue
+	. = ..()
+
 /subsystem/client/on_life()
 
 	advanced_ticks += 1
@@ -40,6 +48,9 @@ SUBSYSTEM_DEF(client)
 	for(var/k in queued_automatics)
 		var/obj/item/weapon/ranged/R = k
 		var/list/data = queued_automatics[k]
+		if(!data || !length(data))
+			queued_automatics -= k
+			continue
 		var/mob/caller = data[1]
 		var/list/params = data[2]
 		var/damage_multiplier = data[3]

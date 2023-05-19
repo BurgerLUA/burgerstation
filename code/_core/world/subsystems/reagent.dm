@@ -15,11 +15,24 @@ SUBSYSTEM_DEF(reagent)
 
 	var/list/valid_random_reagents = list()
 
+/subsystem/reagent/unclog(var/mob/caller)
+	tick_rate = -1
+	. = ..()
+
 /subsystem/reagent/on_life()
 
 	for(var/k in all_temperature_reagent_containers)
 		var/reagent_container/R = k
-		R.process_temperature()
+		if(!R || R.qdeleting)
+			all_temperature_reagent_containers -= k
+			continue
+		if(R.process_temperature() == null) //Failed to process.
+			if(R.owner)
+				if(!is_living(R.owner) && !is_organ(R.owner))
+					qdel(R.owner)
+			else
+				qdel(R)
+			continue
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	return TRUE

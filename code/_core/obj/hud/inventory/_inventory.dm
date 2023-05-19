@@ -343,17 +343,17 @@
 		if(debug) log_error("add_object() fail: Item didn't exist!")
 		return FALSE
 
+	if(I.qdeleting)
+		if(debug) log_error("add_object() fail: Item was qdeleting!")
+		I.drop_item(null)
+		return FALSE
+
 	if(bypass_checks && max_slots <= 0)
 		if(debug) log_error("add_object() fail: No max slots!")
 		return FALSE
 
 	if(!bypass_checks && !can_slot_object(I,messages))
 		if(debug) log_error("add_object() fail: Could not slot object!")
-		return FALSE
-
-	if(I.qdeleting)
-		if(debug) log_error("add_object() fail: Object was qdeleting!")
-		I.drop_item(null)
 		return FALSE
 
 	var/atom/old_location = I.loc
@@ -452,16 +452,15 @@
 	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
 	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
-	if(owner)
+	if(owner && !owner.qdeleting)
 		if(is_advanced(owner))
 			var/mob/living/advanced/A = owner
 			I.handle_overlays(A,remove=TRUE)
-			if(!A.qdeleting)
-				if(worn)
-					A.worn_objects -= I
-				else
-					A.held_objects -= I
-				A.queue_update_items = TRUE
+			if(worn)
+				A.worn_objects -= I
+			else
+				A.held_objects -= I
+			A.queue_update_items = TRUE
 		I.set_dir(owner.dir)
 
 	vis_contents -= I

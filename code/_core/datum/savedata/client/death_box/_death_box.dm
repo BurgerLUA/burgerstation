@@ -11,12 +11,14 @@ var/global/list/ckey_to_death_box_data = list()
 
 	var/total_items_saved = 0
 	for(var/k in dead_player_mobs)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		var/mob/living/advanced/player/P = k
-		if(!P.allow_save)
+		if(!P)
+			log_error("Could not save a player as they didn't exist!")
 			continue
 		if(P.qdeleting)
-			log_debug("Could not save [P.name](Ckey: [P.death_ckey ? P.death_ckey : "NULL"]) as it was deleting.")
+			log_error("Could not save [P.name](Ckey: [P.death_ckey ? P.death_ckey : "NULL"]) as it was deleting.")
+			continue
+		if(!P.allow_save)
 			continue
 		if(!P.death_ckey)
 			if(P.dead)
@@ -44,17 +46,18 @@ var/global/list/ckey_to_death_box_data = list()
 		data_list["inventory"] = list()
 		data_list["value"] = 0
 		for(var/j in dropped_items)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			var/obj/item/I = j
-			if(I.queue_delete_immune || I.qdeleting)
+			if(!I || I.queue_delete_immune || I.qdeleting)
 				continue //This is mostly used for the secure universal storage.
 			data_list["inventory"] += list(I.save_item_data(P))
 			data_list["value"] += CEILING(I.get_value(),1)
 			total_items_saved++
+			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		if(length(data_list["inventory"]))
 			DB.loaded_data += list(data_list)
 			data_list["value"] = CEILING(data_list["value"]*0.25,1) + 1000
 			db_data_to_save |= DB
+		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	log_debug("Saving [length(db_data_to_save)] death box instances with [total_items_saved] items saved.")
 

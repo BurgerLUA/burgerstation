@@ -31,7 +31,7 @@
 		spectate(null)
 	else if(is_datum(eye))
 		var/datum/D = eye
-		if(D.qdeleting)
+		if(!D || D.qdeleting)
 			spectate(null)
 		else if(is_atom(D))
 			var/atom/A = D

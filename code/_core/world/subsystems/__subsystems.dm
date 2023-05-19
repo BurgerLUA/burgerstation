@@ -27,6 +27,8 @@
 
 	var/preloop = FALSE
 
+	var/run_failures = 0
+
 /subsystem/proc/Initialize()
 	if(initialized)
 		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
@@ -51,7 +53,10 @@
 
 
 /subsystem/proc/unclog(var/mob/caller)
-	broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [caller.ckey].")
+	if(caller.ckey)
+		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted by [caller.ckey].")
+	else
+		broadcast_to_clients("SHITTERS CLOGGED: Subsystem [name] has been restarted automatically by the server's failsafe.")
 	return TRUE
 
 /subsystem/New(var/desired_loc)

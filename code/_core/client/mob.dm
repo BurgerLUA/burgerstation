@@ -7,7 +7,7 @@
 
 	for(var/k in all_mobs)
 		var/mob/M = k
-		if(M.qdeleting)
+		if(!M || M.qdeleting)
 			continue
 		if(M.ckey_last == ckey)
 			. = M

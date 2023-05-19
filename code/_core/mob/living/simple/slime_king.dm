@@ -118,7 +118,7 @@
 
 		for(var/k in linked_active_slimes)
 			var/mob/living/simple/slime/S = k
-			if(S.dead || S.qdeleting || get_dist(src,S) >= VIEW_RANGE*2)
+			if(!S || S.dead || S.qdeleting || get_dist(src,S) >= VIEW_RANGE*2)
 				linked_active_slimes -= k
 
 		if(length(linked_active_slimes) < 5)

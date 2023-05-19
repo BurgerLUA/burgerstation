@@ -18,6 +18,10 @@ SUBSYSTEM_DEF(logging)
 
 	preloop = TRUE
 
+//Logging shouldn't be unclogged.
+/subsystem/logging/unclog(var/mob/caller)
+	. = ..()
+
 /subsystem/logging/Initialize()
 	if(fexists(ROUND_ID_DIR))
 		var/file_text = rustg_file_read(ROUND_ID_DIR)

@@ -92,7 +92,7 @@ var/global/world_state = STATE_STARTING
 
 	for(var/k in all_runtimes)
 		var/mob/living/simple/cat/runtime/R = k
-		if(R.qdeleting)
+		if(!R || R.qdeleting)
 			all_runtimes -= k
 			continue
 		R.reproduce()
@@ -128,7 +128,7 @@ var/global/world_state = STATE_STARTING
 	for(var/k in all_clients)
 		var/client/C = all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
-	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+	sleep(30)
 	Reboot(0)
 	return TRUE
 
@@ -159,6 +159,9 @@ var/global/world_state = STATE_STARTING
 /world/proc/save_all_characters()
 	for(var/k in all_players) ///Players only.
 		var/mob/living/advanced/player/P = k
+		if(!P)
+			log_error("Warning: Tried saving a null player!")
+			continue
 		if(P.qdeleting)
 			log_error("Warning: Tried saving [P.get_debug_name()], which was qdeleting!")
 			continue

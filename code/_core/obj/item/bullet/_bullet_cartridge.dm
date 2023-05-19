@@ -139,9 +139,9 @@
 
 /obj/item/bullet_cartridge/Crossed(atom/movable/O,atom/OldLoc)
 
-	if(istype(O,/obj/item/bullet_cartridge/))
+	if(!O.qdeleting && istype(O,/obj/item/bullet_cartridge/))
 		var/obj/item/bullet_cartridge/B = O
-		if(!B.qdeleting && B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
+		if(B.damage_type_bullet == src.damage_type_bullet && B.is_spent && src.is_spent)
 			B.transfer_amount_to(src)
 
 	return ..()

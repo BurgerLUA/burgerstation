@@ -32,8 +32,6 @@
 	. = ..()
 
 	for(var/k in .)
-		if(src.qdeleting)
-			break
 		var/obj/projectile/P = k
 		var/obj/item/weapon/ranged/thrown/I = new src.type(P)
 		I.amount = 1
@@ -44,6 +42,8 @@
 		P.plane = initial(P.plane)
 		P.layer = initial(P.layer)
 		add_item_count(-1)
+		if(src.qdeleting)
+			break
 
 /obj/item/weapon/ranged/thrown/kunai
 	name = "kunai"

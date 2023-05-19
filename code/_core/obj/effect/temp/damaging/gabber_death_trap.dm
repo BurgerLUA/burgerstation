@@ -42,7 +42,7 @@
 
 /obj/effect/temp/gabber_death_trap/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
-	if(active && !triggered && !qdeleting)
+	if(active && !triggered && !src.qdeleting)
 		CALLBACK("remove_effect_\ref[src]",SECONDS_TO_DECISECONDS(5),src,/obj/effect/temp/proc/remove_effect)
 		triggered = TRUE
 		icon_state = "triggered"

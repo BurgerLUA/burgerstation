@@ -12,7 +12,6 @@ SUBSYSTEM_DEF(advanced_thinking)
 /subsystem/advanced_thinking/unclog(var/mob/caller)
 	for(var/k in src.all_thinkers)
 		all_thinkers -= k
-	broadcast_to_clients(span("danger","Stopped all thinkers."))
 	return ..()
 
 /subsystem/advanced_thinking/on_life()

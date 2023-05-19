@@ -52,12 +52,18 @@
 				O.add_item_count(-3)
 	return
 /obj/structure/interactive/smelter/proc/stack(var/obj/item/material/ore/O)
+
 	for(var/obj/item/material/ore/C in contents)
+		if(!C || C.qdeleting)
+			continue
+		if(O || O.qdeleting)
+			break
 		if(!O.can_transfer_stacks_to(C))
 			continue
 		O.transfer_amount_to(C)
 		if(O.qdeleting)
 			break
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 /obj/structure/interactive/smelter/Crossed(atom/movable/O,atom/OldLoc)
 	if(istype(O,/obj/item/material/ore/))

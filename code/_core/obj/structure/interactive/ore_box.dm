@@ -38,6 +38,10 @@
 /obj/structure/interactive/ore_box/proc/stack(var/obj/item/material/ore/O)
 	O.drop_item(src)
 	for(var/obj/item/material/ore/C in contents)
+		if(!O || O.qdeleting)
+			break
+		if(!C || C.qdeleting)
+			continue
 		if(O == C)
 			continue
 		if(!O.can_transfer_stacks_to(C))
@@ -45,6 +49,7 @@
 		O.transfer_amount_to(C)
 		if(O.qdeleting)
 			break
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 /obj/structure/interactive/ore_box/get_examine_list(var/mob/examiner)
 

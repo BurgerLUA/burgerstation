@@ -38,10 +38,12 @@
 
 	. = ..()
 
-	if(!qdeleting && (next_sell >= world.time || item_contents >= 40))
+	if(next_sell >= world.time || item_contents >= 40)
 
 		var/total_value = 0
 		for(var/obj/item/I in src.contents)
+			if(!I || I.qdeleting)
+				continue
 			if(I.loc != src)
 				continue
 			if(owner_ckey)

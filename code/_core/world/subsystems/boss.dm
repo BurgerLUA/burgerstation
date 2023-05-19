@@ -8,13 +8,28 @@ SUBSYSTEM_DEF(bosses)
 
 	var/list/tracked_rogue_crewmembers = list()
 
+/subsystem/bosses/unclog(var/mob/caller)
+
+	. = ..()
+
+	for(var/k in tracked_bosses)
+		var/mob/living/L = k
+		tracked_bosses -= k
+		if(!L || L.qdeleting)
+			continue
+		L.gib()
+
+
 /subsystem/bosses/proc/check_boss(var/mob/living/L)
 
 	if(L.dead || L.qdeleting)
 		for(var/v in L.players_fighting_boss)
 			var/mob/living/advanced/P = v
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
+			if(!P || P.qdeleting)
+				L.players_fighting_boss -= v
+				continue
 			L.remove_player_from_boss(P)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
 		return FALSE
 
 	if(L.ai)
@@ -36,6 +51,9 @@ SUBSYSTEM_DEF(bosses)
 
 	for(var/k in tracked_bosses)
 		var/mob/living/L = k
+		if(!L)
+			tracked_bosses -= k
+			continue
 		if(check_boss(L) == null)
 			tracked_bosses -= L
 			qdel(L)

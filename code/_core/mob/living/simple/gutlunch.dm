@@ -60,10 +60,12 @@
 	var/eat_limit = 5 //Look, I don't want to know what would happen if someone places 500 items on a single tile.
 
 	for(var/mob/living/L in T.contents) //First pass.
+		if(src.qdeleting || src.dead)
+			continue
+		if(!L || L.qdeleting)
+			continue
 		if(eat_limit <= 0)
 			break
-		if(L.qdeleting)
-			continue
 		if(!L.dead)
 			continue
 		if(L.is_player_controlled())
@@ -73,18 +75,22 @@
 		L.on_butcher(src)
 		. = TRUE
 		eat_limit--
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(eat_limit > 0)
 		for(var/obj/item/I in T.contents) //Second pass.
+			if(src.qdeleting || src.dead)
+				continue
+			if(!I || I.qdeleting)
+				continue
 			if(eat_limit <= 0)
 				break
-			if(I.qdeleting)
-				continue
 			if(I.get_value() < 100)
 				qdel(I)
 			else
 				I.force_move(src)
 			. = TRUE
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(.)
 		play_sound(T,'sound/effects/gutlunch_eat.ogg')

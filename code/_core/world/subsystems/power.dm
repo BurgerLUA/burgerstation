@@ -10,10 +10,17 @@ SUBSYSTEM_DEF(power)
 	var/list/power_network/all_power_networks = list()
 	var/list/area/all_apc_areas = list()
 
+
+/subsystem/power/unclog(var/mob/caller)
+	tick_rate = -1
+	. = ..()
+
 /subsystem/power/Initialize()
 	. = ..()
 	for(var/k in SSarea.all_areas)
 		var/area/A = SSarea.all_areas[k]
+		if(!A || A.qdeleting)
+			continue
 		if(!A.requires_power)
 			continue
 		if(!A.linked_apc && A.link_to_parent_apc)
@@ -46,11 +53,17 @@ SUBSYSTEM_DEF(power)
 
 	for(var/k in all_apc_areas)
 		var/area/A = k
+		if(!A || A.qdeleting)
+			all_apc_areas -= k
+			continue
 		A.apc_process()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in all_power_networks)
 		var/power_network/PN = k
+		if(!PN || PN.qdeleting)
+			all_power_networks -= k
+			continue
 		PN.power_process()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 

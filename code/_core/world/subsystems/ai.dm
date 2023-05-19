@@ -23,13 +23,15 @@ SUBSYSTEM_DEF(ai)
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])
 			var/ai/AI = k
+			active_ai_by_z[z] -= k
+			if(!AI || AI.qdeleting)
+				continue
 			if(AI.owner)
-				qdel(AI.owner)
+				AI.owner.gib() //Makes items drop.
 			else
 				qdel(AI)
-	broadcast_to_clients(span("danger","Deleted all non-boss mobs and AIs."))
 
-	return ..()
+	. = ..()
 
 /subsystem/ai/on_life()
 

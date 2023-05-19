@@ -42,7 +42,7 @@
 
 	for(var/k in active_silicons)
 		var/mob/living/L = k
-		if(L.dead || L.qdeleting)
+		if(!L || L.dead || L.qdeleting)
 			active_silicons -= L
 
 	if(length(active_silicons) > silicon_limit)

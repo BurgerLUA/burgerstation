@@ -19,13 +19,13 @@ SUBSYSTEM_DEF(events)
 /subsystem/events/unclog(var/mob/caller)
 
 	for(var/k in all_events_active)
-		var/datum/D = k
+		var/event/E = k
 		all_events_active -= k
-		qdel(D)
+		if(!E || E.qdeleting)
+			continue
+		qdel(E)
 
-	broadcast_to_clients(span("danger","Force ended all active events and shutdown the event subsystem."))
-
-	return ..()
+	. = ..()
 
 /subsystem/events/Initialize()
 
@@ -60,6 +60,9 @@ SUBSYSTEM_DEF(events)
 
 	for(var/k in all_events_active)
 		var/event/E = k
+		if(!E || E.qdeleting)
+			all_events_active -= k
+			continue
 		if(process_event(E) == null)
 			all_events_active -= E
 			qdel(E)

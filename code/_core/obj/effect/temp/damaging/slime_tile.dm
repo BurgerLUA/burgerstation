@@ -90,7 +90,7 @@
 
 /obj/structure/interactive/slime_tile/Crossed(atom/movable/O,atom/OldLoc)
 	. = ..()
-	if(!qdeleting && !CALLBACK_EXISTS("\ref[src]_timed_destruction") && is_living(O))
+	if(!src.qdeleting && !CALLBACK_EXISTS("\ref[src]_timed_destruction") && is_living(O))
 		var/mob/living/L = O
 		if(L.loyalty_tag == "Slime")
 			CALLBACK("\ref[src]_heal_\ref[L]",10,src,src::heal(),L)

@@ -169,9 +169,12 @@
 //pack 'em up, from turret
 /obj/structure/interactive/mountable/browning/proc/can_pack_up(var/mob/caller)
 
+	if(qdeleting)
+		return FALSE
+
 	INTERACT_CHECK_NO_DELAY(src)
 
-	if(qdeleting || !src.z)
+	if(!src.z)
 		caller.to_chat(span("warning","You can't pack up \the [src.name] here!"))
 		return FALSE
 

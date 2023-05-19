@@ -36,6 +36,10 @@
 	I.drop_item(src)
 
 	for(var/obj/item/E in contents) //E for existing
+		if(!I || I.qdeleting)
+			break
+		if(!E || E.qdeleting)
+			continue
 		if(E == I)
 			continue
 		if(I.can_transfer_stacks_to(E))
@@ -44,6 +48,7 @@
 				E.drop_item(src.loc)
 			if(I.qdeleting)
 				break
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	return TRUE
 
