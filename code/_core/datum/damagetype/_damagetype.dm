@@ -144,6 +144,12 @@ var/global/list/all_damage_numbers = list()
 
 	var/animate = FALSE
 
+	// 0 = no logs
+	// 1 = victim recieves logs only
+	// 2 = victim and attacks recieves logs
+	// 3 = everyone recieves logs (hit logging must be enabled in config)
+	var/enable_logs = 3
+
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
 	. = "<table>"
@@ -631,11 +637,11 @@ var/global/list/all_damage_numbers = list()
 	do_attack_visuals(attacker,attacker_turf,victim,victim_turf,total_damage_dealt)
 	do_attack_sound(attacker,attacker_turf,victim,victim_turf,total_damage_dealt,victim.health && victim.health.organic && is_living(victim))
 
-	if(is_living(victim) && victim.health)
+	if(enable_logs >= 1 && is_living(victim) && victim.health)
 		var/mob/living/L = victim
 		L.to_chat(span("warning","Took <b>[round(total_damage_dealt,0.1)]</b> damage to [hit_object == victim ? "yourself" : "your [hit_object.name]"] by \the [attacker == weapon ? "[attacker.name]'s attack" : "[attacker.name]'s [weapon.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
-	if(is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.
+	if(enable_logs >= 2 && is_living(blamed) && victim.health && blamed != victim) //TODO: Seperate log for blamed.
 		var/mob/living/L = blamed
 		L.to_chat(span("notice","Dealt <b>[round(total_damage_dealt,0.1)]</b> damage with your [weapon.name] to \the [victim == hit_object ? victim.name : "[victim.name]\'s [hit_object.name]"] (<b>[max(0,victim.health.health_current - total_damage_dealt)]/[victim.health.health_max]</b>)."),CHAT_TYPE_COMBAT)
 
@@ -889,6 +895,9 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	if(enable_logs < 3)
+		return FALSE
+
 	if(!CONFIG("ENABLE_HIT_MESSAGES",FALSE))
 		return FALSE
 
@@ -901,6 +910,9 @@ var/global/list/all_damage_numbers = list()
 
 /damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
 
+	if(enable_logs < 3)
+		return FALSE
+
 	if(!CONFIG("ENABLE_HIT_MESSAGES",FALSE))
 		return FALSE
 
@@ -912,6 +924,9 @@ var/global/list/all_damage_numbers = list()
 	return TRUE
 
 /damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+
+	if(enable_logs < 3)
+		return FALSE
 
 	if(!CONFIG("ENABLE_HIT_MESSAGES",FALSE))
 		return FALSE

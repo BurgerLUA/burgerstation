@@ -21,6 +21,7 @@
 
 	target_floors = TRUE
 
+	enable_logs = 1
 
 /damagetype/explosion/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
 
