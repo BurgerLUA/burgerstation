@@ -99,8 +99,11 @@
 	if(src.linked_field_gen_walls["[d]"])
 		for(var/k in src.linked_field_gen_walls["[d]"])
 			var/obj/field_generator_wall/W = k
+			if(W)
+				continue
 			if(!W.qdeleting)
 				qdel(W)
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	//Clear their stuff.
 	FG.linked_field_gens -= "[rd]"

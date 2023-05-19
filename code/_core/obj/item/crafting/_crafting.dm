@@ -117,6 +117,8 @@
 					break
 				for(var/j in product_slot.contents)
 					var/obj/item/I2 = j
+					if(!I2 || I2.qdeleting)
+						continue
 					if(I.can_transfer_stacks_to(I2))
 						I.transfer_amount_to(I2)
 						if(I.qdeleting)

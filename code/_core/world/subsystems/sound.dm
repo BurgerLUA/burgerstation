@@ -17,12 +17,13 @@ SUBSYSTEM_DEF(sound)
 	preloop = TRUE
 
 /subsystem/sound/unclog(var/mob/caller)
-	for(var/k in src.active_sounds)
+	for(var/k in active_sounds)
 		var/sound/S = k
-		qdel(S)
 		active_sounds -= k
-	broadcast_to_clients(span("danger","Removed all active sounds."))
-	return ..()
+		if(!S || S.qdeleting)
+			continue
+		qdel(S)
+	. = ..()
 
 /subsystem/sound/Initialize()
 	var/found_files = flist(ROUND_END_DIRECTORY)
@@ -48,6 +49,8 @@ SUBSYSTEM_DEF(sound)
 
 	for(var/F in active_sounds)
 		var/sound/S = F
+		if(!S || S.qdeleting)
+			continue
 		if(!process_sound(S))
 			log_error("Warning! Could not properly process an active sound!")
 			active_sounds -= F

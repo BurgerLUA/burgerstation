@@ -108,12 +108,13 @@ var/global/list/possible_ritual_spawns = list(
 /obj/structure/interactive/ritual/proc/start_ritual(var/mob/caller)
 
 	for(var/mob/living/advanced/player/P in range(src,ritual_size))
-		if(P.dead || P.qdeleting)
+		if(!P || P.dead || P.qdeleting)
 			continue
 		tracked_players += P
 		HOOK_ADD("post_death","\ref[src]_post_death",P,src,src::remove_player())
 		HOOK_ADD("Destroy","\ref[src]_destroy",P,src,src::remove_player())
 		HOOK_ADD("post_move","\ref[src]_post_move",P,src,src::check_valid_player_position())
+		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(!length(tracked_players))
 		log_error("Could not start [src.get_debug_name()], no found players!")

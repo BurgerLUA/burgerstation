@@ -422,7 +422,7 @@ var/global/list/rarity_to_mul = list(
 				did_add = TRUE
 
 	if(did_add)
-		if(object.qdeleting)
+		if(object.qdeleting) //Means that the stacks were likely transfered to another object.
 			if(caller && enable_messages)
 				caller.to_chat(span("notice","You stuff \the [object.name] in \the [src.name]."))
 			return TRUE

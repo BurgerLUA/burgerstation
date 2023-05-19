@@ -65,6 +65,7 @@ var/global/list/all_telecomms = list()
 		CHECK_TICK_SAFE(75,FPS_SERVER)
 		var/obj/item/device/radio/R = k
 		if(!R || R.qdeleting)
+			SSradio.all_radios -= k
 			continue
 		if(R.frequency != data_to_process["frequency"] && !R.listening_frequencies["[data_to_process["frequency"]]"])
 			continue
@@ -99,6 +100,7 @@ var/global/list/all_telecomms = list()
 	add_telecomm("Fallback")
 	. = ..()
 
+/*
 /obj/structure/interactive/telecomms/process_data(var/list/data_to_process = list()) //Meme shitcode.
 
 	. = ..()
@@ -107,7 +109,7 @@ var/global/list/all_telecomms = list()
 		SStelecomm_trigger.stored_trigger.trigger()
 		qdel(SStelecomm_trigger.stored_trigger)
 		SStelecomm_trigger.stored_trigger = null
-
+*/
 
 /obj/structure/interactive/telecomms/vr
 

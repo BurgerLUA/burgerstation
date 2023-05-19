@@ -36,6 +36,9 @@
 
 		for(var/atom/movable/M in C.contents)
 
+			if(!M)
+				continue
+
 			if(M.qdeleting)
 				log_error("Warning: [M.get_debug_name()] was qdeleting in disposals.")
 				M.force_move(null)
@@ -59,6 +62,7 @@
 			M.force_move(get_step(src,dir))
 			var/obj/projectile/thrown/P = M.throw_self(src,null,null,null,diff_x*throw_velocity,diff_y*throw_velocity)
 			P.steps_allowed = rand(throw_range_min,throw_range_max)
+			CHECK_TICK_SAFE(50,FPS_SERVER)
 
 		qdel(C)
 

@@ -277,9 +277,12 @@ var/global/list/all_shuttle_controlers = list()
 			var/turf/simulated/S = T_to_replace
 			for(var/k in S.linked_attachments)
 				var/obj/structure/O = k
+				if(!O || O.qdeleting)
+					continue
 				O.on_crush()
 				if(!O.qdeleting)
 					log_error("Warning: [O.get_debug_name()] was a crushed attached object, but it's not deleting!")
+				CHECK_TICK_SAFE(75,FPS_SERVER)
 
 		for(var/k in T_to_replace.contents) //Crush everything in the destination turf. First pass.
 			var/atom/movable/M = k
@@ -289,14 +292,15 @@ var/global/list/all_shuttle_controlers = list()
 
 		for(var/k in T_to_replace.contents)
 			var/atom/movable/M = k
-			if(!M.density)
+			if(!src || src.qdeleting)
+				break
+			if(!M || M.qdeleting)
 				continue
-			if(M.anchored >= 2)
-				continue
-			if(M.qdeleting)
+			if(!M.density || M.anchored >= 2)
 				continue
 			T_to_replace.stored_shuttle_items += M
 			M.force_move(src) //Stored in the shuttle controller, for now.
+			CHECK_TICK_SAFE(75,FPS_SERVER)
 
 		var/turf/old_turf_type = T_to_replace.type
 		var/area/old_area_type = T_to_replace.loc.type

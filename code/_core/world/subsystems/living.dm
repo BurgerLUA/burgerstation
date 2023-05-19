@@ -19,6 +19,20 @@ SUBSYSTEM_DEF(living)
 
 	var/next_report = SECONDS_TO_DECISECONDS(300)
 
+/subsystem/living/unclog(var/mob/caller)
+
+	for(var/k in processing_mobs)
+		var/mob/living/L = k
+		processing_mobs -= k
+		if(!L || L.qdeleting)
+			continue
+		if(is_player(L))
+			UNPROCESS_LIVING(L)
+		else
+			qdel(L)
+
+	. = ..()
+
 /subsystem/living/Initialize()
 
 	for(var/k in subtypesof(/dna/))

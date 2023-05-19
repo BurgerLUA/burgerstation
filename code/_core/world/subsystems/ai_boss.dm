@@ -14,13 +14,15 @@ SUBSYSTEM_DEF(bossai)
 	for(var/z in active_ai_by_z)
 		for(var/k in active_ai_by_z[z])
 			var/ai/AI = k
+			active_ai_by_z[z] -= k
+			if(!AI || AI.qdeleting)
+				continue
 			if(AI.owner)
-				qdel(AI.owner)
+				AI.owner.gib()
 			else
 				qdel(AI)
-	broadcast_to_clients(span("danger","Deleted all boss mobs and AIs."))
 
-	return ..()
+	. = ..()
 
 /subsystem/bossai/on_life()
 
@@ -28,6 +30,7 @@ SUBSYSTEM_DEF(bossai)
 		for(var/k in active_ai_by_z[z])
 			var/ai/AI = k
 			if(!AI)
+				active_ai_by_z[z] -= k
 				continue
 			if(AI.qdeleting)
 				log_error("WARNING: AI of type [AI.type] was qdeleting before it was removed from active_ai_by_z!")

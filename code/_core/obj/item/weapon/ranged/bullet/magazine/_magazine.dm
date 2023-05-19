@@ -111,8 +111,10 @@
 		var/obj/item/magazine/M = stored_magazine
 		var/obj/hud/inventory/I = object
 		eject_magazine(caller)
-		if(M && !M.qdeleting)
-			I.add_object(M)
+		if(!M || M.qdeleting)
+			stored_magazine = null //Something went terribly wrong.
+			return TRUE
+		I.add_object(M)
 		return TRUE
 
 	return ..()

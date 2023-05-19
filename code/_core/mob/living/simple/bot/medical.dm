@@ -122,7 +122,7 @@
 
 /mob/living/simple/bot/medibot/proc/can_treat(var/mob/living/target)
 
-	if(!target || target.qdeleting)
+	if(target.qdeleting)
 		return FALSE
 
 	if(target == src)

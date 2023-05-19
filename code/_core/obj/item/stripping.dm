@@ -10,11 +10,14 @@
 	var/atom/old_loc = src.loc
 
 	if(caller && src.loc && is_advanced(src.loc.loc))
-		caller.visible_message(span("notice","\The [caller.name] strips \the [src.name] off of [src.loc.loc]."),span("notice","You strip \the [src.name]."))
+		caller.visible_message(
+			span("notice","\The [caller.name] strips \the [src.name] off of [src.loc.loc]."),
+			span("notice","You strip \the [src.name].")
+		)
 
 	drop_item(get_turf(src))
 
-	if(!src.qdeleting && is_advanced(caller))
+	if(!src.qdeleting && caller && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		A.put_in_hands(src)
 		A.on_strip(src,old_loc)

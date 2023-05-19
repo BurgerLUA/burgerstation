@@ -11,6 +11,11 @@ SUBSYSTEM_DEF(smoothing)
 
 	var/list/seeds = list() //id = value
 
+/subsystem/smoothing/unclog(var/mob/caller)
+	queued_smoothing_objs.Cut()
+	queued_smoothing_turfs.Cut()
+	. = ..()
+
 /subsystem/smoothing/Initialize()
 	if(CONFIG("ENABLE_INSTALOAD",FALSE))
 		return TRUE
@@ -26,19 +31,22 @@ SUBSYSTEM_DEF(smoothing)
 
 	for(var/k in queued_smoothing_objs)
 		var/obj/structure/S = k
+		queued_smoothing_objs -= k
+		if(!S || S.qdeleting)
+			continue
 		S.queued_smoothing = FALSE
 		S.update_smooth_code()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
-
-	queued_smoothing_objs.Cut()
 
 	for(var/k in queued_smoothing_turfs)
 		var/turf/simulated/S = k
+		queued_smoothing_turfs -= k
+		if(!S || S.qdeleting)
+			continue
 		S.queued_smoothing = FALSE
 		S.update_smooth_code()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
-	queued_smoothing_turfs.Cut()
 
 	return TRUE
 

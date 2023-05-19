@@ -17,6 +17,11 @@ SUBSYSTEM_DEF(chunk)
 	var/list/failed_chunk_count = list()
 	var/list/unclean_chunks = list()
 
+/subsystem/chunk/unclog(var/mob/caller)
+	//Honestly there is literally 0 reason as to why this would fail 3 times in as row.
+	//I can't wait to be proven wrong.
+	. = ..()
+
 /subsystem/chunk/Initialize()
 
 	chunk_count_x = CEILING(world.maxx/CHUNK_SIZE,1)
@@ -133,6 +138,8 @@ SUBSYSTEM_DEF(chunk)
 
 	for(var/k in chunks_to_process)
 		var/chunk/C = k
+		if(!C)
+			continue
 		if(length(C.players))
 			if(length(C.cleanables) >= (CHUNK_SIZE*CHUNK_SIZE)*0.2) //20% concetration
 				failed_chunk_count[C] += 1
@@ -148,6 +155,8 @@ SUBSYSTEM_DEF(chunk)
 
 	for(var/k in chunks_to_process)
 		var/chunk/C = k
+		if(!C)
+			continue
 		if(length(C.players))
 			continue
 		for(var/j in C.cleanables)
@@ -169,6 +178,8 @@ SUBSYSTEM_DEF(chunk)
 
 	for(var/k in unclean_chunks)
 		var/chunk/C = k
+		if(!C)
+			continue
 
 		if(!length(C.nodes))
 			continue

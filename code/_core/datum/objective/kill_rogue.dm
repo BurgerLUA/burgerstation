@@ -68,7 +68,7 @@ var/global/list/tracked_rogues = list()
 
 	for(var/k in tracked_atoms)
 		var/mob/living/L = k
-		if(!(L.dead || L.qdeleting))
+		if(L && !L.dead && !L.qdeleting)
 			return ACTIVE
 
 	return COMPLETED

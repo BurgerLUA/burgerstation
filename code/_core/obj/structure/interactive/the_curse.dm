@@ -100,9 +100,8 @@
 			var/list/best_path
 			var/best_path_was_interupted = FALSE
 			for(var/k in tracked_targets)
-				CHECK_TICK_SAFE(75,FPS_SERVER)
 				var/mob/living/L = k
-				if(L.qdeleting || L.dead)
+				if(!L || L.qdeleting || L.dead)
 					tracked_targets -= k
 					continue
 				if(L.z != src.z)

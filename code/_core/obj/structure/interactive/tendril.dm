@@ -78,7 +78,7 @@ var/global/list/possible_monsters_to_spawn = list(
 
 	for(var/k in tracked_mobs)
 		var/mob/living/L = k
-		if(L.qdeleting || L.dead)
+		if(!L || L.qdeleting || L.dead)
 			tracked_mobs -= L
 			deaths_until_loot -= 1
 		else if(get_dist(L,src) >= VIEW_RANGE*2)

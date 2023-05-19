@@ -131,7 +131,8 @@
 		if(existing_list[k])
 			continue
 		var/obj/structure/interactive/wire/W = k
-		if(W.qdeleting)
+		if(!W || W.qdeleting)
+			connections -= k
 			continue
 		existing_list |= W.get_new_connections(existing_list)
 
@@ -221,7 +222,7 @@
 	var/power_network/best_network
 	for(var/k in possible_power_networks)
 		var/power_network/PN = k
-		if(PN.qdeleting)
+		if(!PN || PN.qdeleting)
 			continue
 		if(!best_network || PN.id < best_network.id)
 			best_network = PN

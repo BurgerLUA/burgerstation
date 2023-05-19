@@ -13,12 +13,18 @@ var/global/time_dialation = 0
 		var/result = SS.on_life()
 		if(result == null)
 			log_error("[SS.name] failed to run properly!")
+			SS.run_failures++
+			if(SS.run_failures >= 3)
+				log_error("[SS.name] failed to run properly for the third time in a row, unclogging...")
+				SS.run_failures = 0
+				SS.unclog()
 			sleep(10)
 			continue
 		else if(result == FALSE || SS.tick_rate <= 0)
 			SS.tick_rate = 0
 			log_subsystem(SS.name,"Shutting down.")
 			break
+		SS.run_failures = 0
 		SS.last_run_duration = FLOOR(true_time() - start_time,0.01)
 		if(world_state >= STATE_RUNNING)
 			SS.total_run_duration += SS.last_run_duration
@@ -88,6 +94,14 @@ var/global/time_dialation = 0
 
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k
+		if(!SS)
+			active_subsystems -= k
+			log_error("FATAL ERROR: There was a subsystem in the active_substyems list that was null!")
+			continue
+		if(SS.qdeleting)
+			active_subsystems -= k
+			log_error("FATAL ERROR: Subsystem [SS.get_debug_name()] was qdeleting!")
+			continue
 		if(SS.preloop)
 			continue
 		sleep(3)

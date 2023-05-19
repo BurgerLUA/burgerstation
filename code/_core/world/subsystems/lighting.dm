@@ -29,11 +29,11 @@ SUBSYSTEM_DEF(lighting)
 	for(var/k in lighting_corners)
 		var/datum/D = k
 		lighting_corners -= k
+		if(!D || D.qdeleting)
+			continue
 		qdel(D)
 
-	broadcast_to_clients(span("danger","Removed all lighting corners."))
-
-	return ..()
+	. = ..()
 
 
 /subsystem/lighting/Initialize()

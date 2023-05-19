@@ -16,9 +16,10 @@ SUBSYSTEM_DEF(projectiles)
 
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k
-		qdel(P) //Remove is called inside the projectile
-
-	broadcast_to_clients(span("danger","Removed all projectiles."))
+		all_projectiles -= k
+		if(!P || P.qdeleting)
+			continue
+		qdel(P)
 
 	return ..()
 

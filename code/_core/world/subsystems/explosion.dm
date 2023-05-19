@@ -15,6 +15,26 @@ SUBSYSTEM_DEF(explosion)
 
 	var/particles/fire_particles
 
+/subsystem/explosion/unclog(var/mob/caller)
+
+	damage_to_process.Cut()
+
+	for(var/k in active_explosions)
+		var/obj/explosion_process/E = k
+		active_explosions -= k
+		if(!E || E.qdeleting)
+			continue
+		qdel(E)
+
+	for(var/k in active_fires)
+		var/obj/fire_process/F = k
+		active_fires -= k
+		if(!F || F.qdeleting)
+			continue
+		qdel(F)
+
+	. = ..()
+
 /subsystem/explosion/Initialize()
 	. = ..()
 	fire_particles = new/particles/fire
@@ -62,11 +82,17 @@ SUBSYSTEM_DEF(explosion)
 
 	for(var/k in active_explosions)
 		var/obj/explosion_process/EP = k
+		if(!EP || EP.qdeleting)
+			active_explosions -= k
+			continue
 		EP.process()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
 	for(var/k in active_fires)
 		var/obj/fire_process/FP = k
+		if(!FP || FP.qdeleting)
+			active_fires -= k
+			continue
 		FP.process()
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 

@@ -13,9 +13,22 @@ SUBSYSTEM_DEF(obj)
 
 	tick_rate = 1
 
+/subsystem/obj/unclog(var/mob/caller)
+
+	for(var/k in initialize_superlate)
+		var/obj/O = k
+		initialize_superlate -= k
+		if(!O || O.qdeleting)
+			continue
+		qdel(O)
+
+	. = ..()
+
 /subsystem/obj/Initialize()
 
 	for(var/obj/O in world)
+		if(!O || O.qdeleting)
+			continue
 		if(O.initialize_type == INITIALIZE_EARLY)
 			initialize_early += O
 		else if(O.initialize_type == INITIALIZE_NORMAL)
@@ -28,46 +41,73 @@ SUBSYSTEM_DEF(obj)
 
 	for(var/k in initialize_early)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_early -= k
+			continue
 		INITIALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_early)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_early -= k
+			continue
 		GENERATE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_early)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_early -= k
+			continue
 		FINALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_normal -= k
+			continue
 		INITIALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_normal -= k
+			continue
 		GENERATE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_normal -= k
+			continue
 		FINALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_late)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_late -= k
+			continue
 		INITIALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_late)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_late -= k
+			continue
 		GENERATE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	for(var/k in initialize_late)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_late -= k
+			continue
 		FINALIZE(O)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
@@ -81,14 +121,23 @@ SUBSYSTEM_DEF(obj)
 
 	for(var/k in initialize_superlate)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_superlate -= k
+			continue
 		INITIALIZE(O)
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_superlate -= k
+			continue
 		GENERATE(O)
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
+		if(!O || O.qdeleting)
+			initialize_superlate -= k
+			continue
 		FINALIZE(O)
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 

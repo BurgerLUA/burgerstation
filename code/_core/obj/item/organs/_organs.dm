@@ -228,7 +228,8 @@
 	var/list/valid_organs = list()
 	for(var/k in src.attached_organs)
 		var/obj/item/organ/AO = k
-		if(AO.qdeleting)
+		if(!AO || AO.qdeleting)
+			attached_organs -= k
 			continue
 		if(!AO.can_be_targeted) //Internal organ.
 			continue

@@ -176,7 +176,8 @@
 					QDEL_NULL(fishing_bob)
 					QDEL_NULL(fishing_alert)
 					bait.add_item_count(-1)
-					if(bait.qdeleting) bait = null
+					if(bait.qdeleting)
+						bait = null
 					return FALSE
 
 				last_caller?.to_chat(span("warning","Too slow... the fish got away..."))
@@ -236,7 +237,8 @@
 				caller.to_chat(span("notice","You catch \a [reward.name]!"))
 				if(!bait.nice_bait)
 					bait.add_item_count(-1)
-					if(bait.qdeleting) bait = null
+					if(bait.qdeleting)
+						bait = null
 			else
 				caller.to_chat(span("notice","You fail to catch anything. At least your bait is saved..."))
 

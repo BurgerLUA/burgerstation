@@ -19,6 +19,11 @@ SUBSYSTEM_DEF(area)
 
 	var/list/areas_by_identifier = list()
 
+/subsystem/area/unclog(var/mob/caller)
+	src.tick_rate = 0
+	log_subsystem(src.name,"Shutting down.")
+	. = ..()
+
 /subsystem/area/Initialize()
 
 	var/area/null_area
@@ -133,6 +138,9 @@ SUBSYSTEM_DEF(area)
 
 	for(var/k in areas_ambient)
 		var/area/A = k
+		if(!A)
+			areas_ambient -= k
+			continue
 		CHECK_TICK_SAFE(tick_usage_max,0)
 		var/sound_to_play = pick(A.random_sounds)
 		var/list/valid_players = list()
@@ -140,14 +148,18 @@ SUBSYSTEM_DEF(area)
 			if(!P.client || P.dead)
 				continue
 			valid_players += P
-		if(length(valid_players))
-			play_random_ambient_sound(sound_to_play,valid_players)
+		if(!length(valid_players))
+			continue
+		play_random_ambient_sound(sound_to_play,valid_players)
 
 	return TRUE
 
 /subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/affected_areas)
 	for(var/k in affected_areas)
 		var/area/A = k
+		if(!A)
+			affected_areas -= k
+			continue
 		CHECK_TICK_SAFE(tick_usage_max,0)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'

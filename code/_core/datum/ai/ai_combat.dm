@@ -176,7 +176,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 		if(1)
 			return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)
 		if(2)
-			if(target.is_player_controlled())
+			if((target.ai && target.ai.objective_attack) || target.is_player_controlled())
 				return allow_hostile_action(owner.loyalty_tag,target)
 			else
 				return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)

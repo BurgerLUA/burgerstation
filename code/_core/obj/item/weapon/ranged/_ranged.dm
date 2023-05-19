@@ -621,7 +621,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 /obj/item/weapon/ranged/proc/handle_automatic(var/mob/caller,params,var/damage_multiplier=1,var/max_bursts_to_use=0,var/shoot_delay_to_use=1)
 
 	var/mob/living/advanced/player/P = caller
-	if(!P || !P.client || P.qdeleting) //Not even active.
+	if(!P || !P.ckey || P.qdeleting) //Not even active.
 		return FALSE
 
 	if(!(params["left"] && P.attack_flags & CONTROL_MOD_LEFT || params["right"] && P.attack_flags & CONTROL_MOD_RIGHT) && !max_bursts_to_use) //No trigger.

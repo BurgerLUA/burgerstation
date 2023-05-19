@@ -27,7 +27,7 @@
 
 	for(var/k in caller.inventories_by_id)
 		var/obj/hud/inventory/I = caller.inventories_by_id[k]
-		if(I.qdeleting || I.loc.qdeleting)
+		if(!I || I.qdeleting || !I.loc || I.loc.qdeleting)
 			continue
 		if(I.click_flags && ignore_hands)
 			continue

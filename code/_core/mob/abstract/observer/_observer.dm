@@ -58,8 +58,9 @@
 
 /mob/abstract/observer/Logout()
 	. = ..()
-	if(!src.qdeleting)
-		qdel(src)
+	if(src.qdeleting)
+		return .
+	qdel(src)
 
 /mob/abstract/observer/Initialize()
 

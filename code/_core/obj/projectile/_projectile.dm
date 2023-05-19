@@ -464,6 +464,8 @@
 	return .
 
 /obj/projectile/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1)
+	if(!source || !target || source.qdeleting || target.qdeleting)
+		return 100
 	if(inaccuracy_modifier <= 0)
 		return 0
 	if(is_living(source))
