@@ -4,6 +4,8 @@
 	desc_extended = "A pair of pants worn by officers of NanoTrasen."
 	icon = 'icons/obj/item/clothing/pants/nanotrasen_officer.dmi'
 
+	armor = /armor/cloth/hard
+
 	value = 150
 
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
