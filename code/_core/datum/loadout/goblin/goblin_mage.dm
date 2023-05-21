@@ -6,6 +6,6 @@
 		/obj/item/clothing/overwear/coat/sorcerer,
 
 		/obj/item/weapon/ranged/wand/branch,
-
-		/obj/item/weapon/ranged/spellgem/lightning
+		/obj/item/weapon/ranged/spellgem/lightning,
+		/loot/random/support_gem
 	)

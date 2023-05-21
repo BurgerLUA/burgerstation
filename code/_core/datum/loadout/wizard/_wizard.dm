@@ -21,7 +21,7 @@
 		/obj/item/weapon/melee/torch,
 
 		/obj/item/weapon/ranged/wand/twisted,
-		/obj/item/weapon/ranged/spellgem/fireball
+		/obj/item/weapon/ranged/spellgem/fireball,
 	)
 
 //Hostile generic wizard.
@@ -42,7 +42,8 @@
 		/obj/item/clothing/feet/shoes/sandal/left,
 
 		/loot/random/gun/wand,
-		/loot/random/gun/spellgem
+		/loot/random/gun/spellgem,
+		/loot/random/support_gem
 	)
 
 /loadout/wizard_ambassador

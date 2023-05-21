@@ -25,6 +25,13 @@
 
 	rarity = RARITY_UNCOMMON
 
+/obj/item/supportgem/get_base_value()
+
+	if(!length(support_stats))
+		return 0
+
+	. = ..()
+
 
 /obj/item/supportgem/proc/update_support_stats()
 	return TRUE

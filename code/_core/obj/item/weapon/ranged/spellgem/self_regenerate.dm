@@ -2,7 +2,7 @@
 	name = "self-mending spell gem"
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one gives a light regeneration effect."
-	icon_state = "damage"
+	icon_state = "heal"
 	color = "#ff0080"
 
 	use_loyalty_tag = FALSE

@@ -2,7 +2,7 @@
 	name = "mend other spell gem"
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots a regeneration inducing blast. ."
-	icon_state = "damage"
+	icon_state = "heal"
 	color = "#ff0080"
 	color_2 = "#500028"
 	shoot_delay = 10

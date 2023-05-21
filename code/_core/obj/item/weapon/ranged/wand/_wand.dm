@@ -33,6 +33,9 @@
 
 	tier_type = "wand"
 
+	size = SIZE_2
+	weight = 8
+
 /obj/item/weapon/ranged/wand/MouseEntered(location,control,params)
 
 	. = ..()

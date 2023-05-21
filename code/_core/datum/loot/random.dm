@@ -9,6 +9,8 @@
 	var/rarity_min = RARITY_BROKEN
 	var/rarity_max = RARITY_LEGENDARY
 
+	var/size_max = SIZE_X
+
 	var/base_type = /obj/item
 
 	use_value = TRUE
@@ -34,6 +36,8 @@
 		if(initial(I.contraband))
 			continue
 		if(!initial(I.can_save))
+			continue
+		if(initial(I.size) > size_max)
 			continue
 		loot_table[I] = 1 //Correct multipliers added later.
 
@@ -100,3 +104,20 @@
 	chance_none = 20
 	rarity_min = RARITY_COMMON
 	rarity_max = RARITY_UNCOMMON
+	size_max = SIZE_2
+
+/loot/random/ashwalker
+	value_min = 1
+	value_max = 1000
+	loot_count = 3
+	chance_none = 10
+	rarity_min = RARITY_UNCOMMON
+	rarity_max = RARITY_RARE
+	size_max = SIZE_2
+
+/loot/random/ashwalker/high
+	value_min = 1000
+	value_max = 2000
+	loot_count = 1
+	chance_none = 0
+	size_max = SIZE_3

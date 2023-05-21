@@ -110,6 +110,8 @@
 
 	dan_mode = FALSE
 
+	can_wield = TRUE
+
 /obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
 

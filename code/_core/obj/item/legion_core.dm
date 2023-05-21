@@ -11,7 +11,7 @@
 
 	value = 500
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 
 /obj/item/legion_core/get_base_value()
 	. = initial(value)

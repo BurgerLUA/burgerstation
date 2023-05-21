@@ -2,7 +2,7 @@
 	name = "reinforce other spell gem"
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one shoots an armor creating blast. ."
-	icon_state = "damage"
+	icon_state = "protection"
 	color = "#a7007d"
 	color_2 = "#500028"
 	shoot_delay = 10

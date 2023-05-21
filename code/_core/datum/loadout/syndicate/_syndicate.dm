@@ -205,4 +205,5 @@
 
 		/loot/random/gun/wand,
 		/loot/random/gun/spellgem,
+		/loot/random/support_gem
 	)

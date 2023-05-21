@@ -4,9 +4,11 @@
 		/obj/item/clothing/overwear/armor/lizard_shaman,
 		/obj/item/clothing/head/helmet/lizard_shaman,
 		/obj/item/clothing/neck/blood_talisman,
-
 		/obj/item/weapon/ranged/wand/profane,
-		/obj/item/weapon/ranged/spellgem/unholy_skull
+		/loot/random/gun/spellgem/ashwalker,
+		/loot/random/support_gem,
+		/loot/random/ashwalker,
+		/loot/random/ashwalker/high
 
 	)
 
@@ -14,10 +16,12 @@
 	spawning_items = list(
 		/obj/item/clothing/undertop/underwear/bra/strapless/brown,
 		/obj/item/clothing/underbottom/underwear/panty/brown,
+		/obj/item/clothing/overwear/armor/lizard_shaman,
 		/obj/item/clothing/head/helmet/lizard_shaman,
 		/obj/item/clothing/neck/blood_talisman,
-
 		/obj/item/weapon/ranged/wand/profane,
-		/obj/item/weapon/ranged/spellgem/unholy_skull
-
+		/loot/random/gun/spellgem/ashwalker,
+		/loot/random/support_gem,
+		/loot/random/ashwalker,
+		/loot/random/ashwalker/high
 	)
