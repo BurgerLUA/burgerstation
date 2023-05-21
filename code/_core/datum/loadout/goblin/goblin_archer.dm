@@ -9,7 +9,9 @@
 
 		/obj/item/clothing/neck/mantle/brown,
 
-		/obj/item/clothing/back/storage/satchel/poly/brown
+		/obj/item/clothing/back/storage/satchel/poly/brown,
+
+		/obj/item/weapon/ranged/bow/wood
 
 
 	)
