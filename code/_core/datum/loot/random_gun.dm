@@ -105,8 +105,18 @@
 /loot/random/gun/nanotrasen
 	company_type = "NanoTrasen"
 
+/loot/random/gun/nanotrasen/bandit
+	value_max = 1000
+	rarity_min = RARITY_COMMON
+	rarity_max = RARITY_COMMON
+
 /loot/random/gun/syndicate
 	company_type = "Syndicate"
+
+/loot/random/gun/syndicate/bandit
+	value_max = 1000
+	rarity_min = RARITY_COMMON
+	rarity_max = RARITY_COMMON
 
 /loot/random/gun/syndicate/ultra
 	value_min = 1000
@@ -118,9 +128,12 @@
 	value_max = 1000
 	rarity_min = RARITY_COMMON
 	rarity_max = RARITY_COMMON
-	debug = TRUE
 
 /loot/random/gun/slavic
 	company_type = "Slavic"
 
+/loot/random/gun/slavic/bandit
+	value_max = 1000
+	rarity_min = RARITY_COMMON
+	rarity_max = RARITY_COMMON
 

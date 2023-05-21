@@ -36,3 +36,20 @@ var/global/list/rogue_crewmember_markers = list()
 /obj/marker/rogue_crewmember_marker/Destroy()
 	. = ..()
 	rogue_crewmember_markers -= src
+
+
+var/global/list/turf/corpse_markers = list()
+
+/obj/marker/mission_corpse
+	name = "mission corpse marker"
+	icon = 'icons/obj/markers/markers.dmi'
+	icon_state = "corpse"
+
+/obj/marker/mission_corpse/New(var/desired_loc)
+	. = ..()
+	corpse_markers += src
+
+
+/obj/marker/mission_corpse/Destroy()
+	. = ..()
+	corpse_markers -= src

@@ -1,7 +1,6 @@
 "aa" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01)
-"ab" = (/obj/structure/interactive/chair/stool,/obj/structure/interactive/wire/red,/obj/structure/interactive/wire/red,/obj/marker/map_node,/mob/living/advanced/npc/bandit,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D01)
-"ac" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 8},/obj/marker/map_node,/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D01/bathroom)
-"ad" = (/obj/marker/map_node,/mob/living/advanced/npc/bandit,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/main_hallway)
+"ab" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/kitchen)
+"ad" = (/mob/living/advanced/npc/bandit,/obj/structure/interactive/chair/stool,/obj/structure/interactive/wire/red,/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D01)
 "ae" = (/obj/structure/interactive/crate/closet,/obj/marker/spawning/random/misc,/turf/simulated/floor/tile/grey/ish,/area/dmm_suite/clear_area)
 "af" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "ag" = (/obj/structure/interactive/chair/comfy{icon_state = "comfychair"; dir = 1},/obj/structure/carpet/blue,/obj/marker/hostage_spawn,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/main_hallway)
@@ -30,9 +29,10 @@
 "aD" = (/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D01/bathroom)
 "aE" = (/obj/structure/interactive/door/airlock/wood,/obj/marker/map_node,/obj/marker/cover_node/left,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/kitchen)
 "aF" = (/obj/structure/interactive/power/smes{dir = 8},/obj/structure/interactive/wire/red,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D01)
+"aH" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D01/bathroom)
+"aI" = (/mob/living/advanced/npc/bandit,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/main_hallway)
 "cr" = (/obj/structure/table/wood,/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/kitchen)
 "cF" = (/turf/simulated/wall/wood/brown,/area/mission/prefab/house/house_D01)
-"cK" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/kitchen)
 "cP" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01)
 "dK" = (/obj/structure/carpet/brown,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/bedroom02)
 "es" = (/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/main_hallway)
@@ -113,14 +113,14 @@
 (1,1,1) = {"
 ppppppIhIhppppcFOqOqanaFEBpppppp
 ppoioiajYroioicFcFcFvGvGEBEBEBEB
-ppoieEETSiFLkHcKUxeyzxesVpGlZvIM
+ppoieEETSiFLkHabUxeyzxesVpGlZvIM
 ppoiLJoUCKoUHWtveyUxzxrvYOYOuXak
 ppoiXgCKoULAHWHWBGaacParYOWDagIM
 oioizCDWtSoUaucFcFAEvGEBayrvrvIM
-oiNavgvgvgqCaxRDpKasabEBrvrvaCEB
+oiNavgvgvgqCaxRDpKasadEBrvrvaCEB
 oioilBRdHWauRpuARpHtpKEBrvrvHpEB
-IhIhajCeHWqCawaDacRppKuVrvrvrvEB
-IhIhYrcraoHWRpIexMRptRaqrvadaBEB
+IhIhajCeHWqCawaDaHRppKuVrvrvrvEB
+IhIhYrcraoHWRpIexMRptRaqrvaIaBEB
 AaAavtAaAaMGMyMymoMyMyEBrvrvrvIM
 AajeYBKAAaatMygIOAKQMyRTQgzvOQak
 AaahdKrbaEHWavnOPSaiMyJzzvaAaeEB

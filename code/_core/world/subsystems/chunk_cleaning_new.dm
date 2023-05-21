@@ -138,7 +138,8 @@ SUBSYSTEM_DEF(chunk)
 
 	for(var/k in chunks_to_process)
 		var/chunk/C = k
-		if(!C)
+		if(!C || !C.visited_by_player)
+			chunks_to_process -= C
 			continue
 		if(length(C.players))
 			if(length(C.cleanables) >= (CHUNK_SIZE*CHUNK_SIZE)*0.2) //20% concetration
@@ -151,7 +152,7 @@ SUBSYSTEM_DEF(chunk)
 			failed_chunk_count -= C
 			unclean_chunks -= C
 
-	log_subsystem(src.name,"Filtered out [old_chunks - length(chunks_to_process)] chunks due to player presence...")
+	log_subsystem(src.name,"Filtered out [old_chunks - length(chunks_to_process)] chunks due to player presence or lack of interaction...")
 
 	for(var/k in chunks_to_process)
 		var/chunk/C = k

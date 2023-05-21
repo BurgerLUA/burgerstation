@@ -24,10 +24,17 @@
 
 	gamemode_horde_data = /horde_data/syndicate
 
+	var/mob/living/interior_corpse_type
+	var/mob/living/exterior_corpse_type
+
 /gamemode/mission/New()
+	var/local_benchmark = true_time()
+	log_debug("Spawning missions mobs...")
 	. = ..()
 	spawn_and_set_enemies()
 	round_time_next = 30
+	var/benchmark_time = DECISECONDS_TO_SECONDS((true_time() - local_benchmark))
+	log_debug("Mission mobs took <b>[benchmark_time]</b> seconds to spawn.")
 
 /gamemode/mission/proc/spawn_and_set_enemies()
 
@@ -36,8 +43,7 @@
 
 	var/horde_data/HD = SShorde.all_horde_data_types[gamemode_horde_data]
 
-	var/amount_created = 0
-
+	var/mission_mobs_created = 0
 	for(var/k in mission_mob_markers)
 
 		var/obj/marker/M = k
@@ -55,12 +61,41 @@
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
-		amount_created += 1
+		mission_mobs_created++
 		qdel(M)
 		CHECK_TICK_SAFE(90,FPS_SERVER*10)
 
+	log_debug("Created [mission_mobs_created] mission mobs.")
 
-	log_debug("Created [amount_created] mission mobs.")
+	var/corpses_created = 0
+	if(interior_corpse_type || exterior_corpse_type)
+		for(var/k in corpse_markers)
+			var/obj/marker/M = k
+			if(!M.loc || !is_turf(M.loc))
+				qdel(M)
+				CHECK_TICK_SAFE(25,FPS_SERVER*10)
+				continue
+			var/turf/T = M.loc
+			var/area/A = T.loc
+			var/mob/living/advanced/L
+			if(A.interior && interior_corpse_type)
+				L = new interior_corpse_type(T)
+			else
+				L = new exterior_corpse_type(T)
+			INITIALIZE(L)
+			GENERATE(L)
+			FINALIZE(L)
+			if(!L.has_status_effect(ZOMBIE))
+				L.death(silent=TRUE)
+				L.enable_chunk_clean = FALSE
+				L.make_convincing_corpse()
+			L.set_dir(pick(NORTH,EAST,SOUTH,WEST))
+			corpses_created++
+			qdel(M)
+			CHECK_TICK_SAFE(90,FPS_SERVER*10)
+
+	log_debug("Created [corpses_created] mission mobs.")
+
 
 
 

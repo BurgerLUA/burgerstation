@@ -185,7 +185,7 @@
 	return TRUE
 
 /ai/proc/on_movement_fail()
-
+	return TRUE
 
 /ai/proc/get_objective_delay() //In ticks.
 

@@ -105,7 +105,7 @@
 "ca" = (/obj/marker/cover_node/right,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/entrance)
 "cb" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
 "cc" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
-"cd" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
+"cd" = (/mob/living/advanced/npc/bandit,/obj/structure/carpet/red,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
 "ce" = (/obj/marker/cover_node/left,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
 "cf" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
 "cg" = (/obj/structure/carpet/blue,/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
@@ -119,23 +119,25 @@
 "co" = (/mob/living/advanced/npc/bandit,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
 "cp" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/mid)
 "cq" = (/mob/living/advanced/npc/bandit,/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
-"cr" = (/obj/structure/carpet/red,/mob/living/advanced/npc/bandit,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/bedroom)
-"cs" = (/obj/structure/interactive/wire/green,/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12)
+"cr" = (/obj/marker/mission_corpse,/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
+"cs" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/house/house_12/kitchen)
+"ct" = (/obj/marker/mission_corpse,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12/entrance)
+"cu" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/green,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_12)
 
 (1,1,1) = {"
 aaacacbUacacacaaaaaaaaaaaaaaaaaa
 aaacadaeafafacaGaMaMaMaMaNaVaWaG
-aaagahaicrajacaXakamamamamakanak
+aaagahaicdajacaXakamamamamakanak
 aaaoaibZaiapacacakaqarasataubvak
-aaagcbawawcbaxbWayavcqazazazcdam
+aaagcbawawcbaxbWayavcqazcrazcsam
 aLbVccaCaDcecbaEaHaJaJaOaJaJaQaR
 aSaSaYaZaSbabbacbdbebfbgbhbiaQam
 aSbjbkblaSabcfalaAcgaBaBbtbucmak
 aSbwbxbybSaFalcfaAaIaAaKakakakak
 aSaSaSaSaSbRalalaAaIcpaPambmaaaa
 bDbnbEbEbFaAaAcoaAaIaAabbGaaaaaa
-bGbrcnbrbrbHbHbHbHbIaTaUbcaTaTaa
-bJbrchbrcabYbHcibHcjbqcsbzbAaTaa
+bGbrcnbrctbHbHbHbHbIaTaUbcaTaTaa
+bJbrchbrcabYbHcibHcjbqcubzbAaTaa
 bGbHbKbHbDbLbGbMbGbDaTbAbsbBbCaa
 bDbTbNbObDaabobpboaabPbQbXckaTaa
 bDbGbJbGbDaaaaclaaaaaTaTaTaTaTaa

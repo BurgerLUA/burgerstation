@@ -1,640 +1,93 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/interactive/fence/end{
-	icon_state = "end";
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"ab" = (
-/turf/simulated/wall/wood/rich,
-/area/dmm_suite/clear_area)
-"ac" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/city/chess)
-"ad" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/city/chess/bathroom)
-"ae" = (
-/obj/structure/interactive/crate/closet,
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"af" = (
-/obj/structure/interactive/crate/closet,
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"ag" = (
-/obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 8
-	},
-/obj/marker/cover_node/left{
-	icon_state = "left";
-	dir = 8
-	},
-/turf/simulated/floor/tile/tint,
-/area/mission/prefab/city/chess/bathroom)
-"ah" = (
-/turf/simulated/floor/tile/tint,
-/area/mission/prefab/city/chess/bathroom)
-"ai" = (
-/obj/structure/interactive/misc/toilet,
-/turf/simulated/floor/tile/tint,
-/area/mission/prefab/city/chess/bathroom)
-"aj" = (
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"ak" = (
-/obj/structure/interactive/door/airlock,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/tint,
-/area/mission/prefab/city/chess/bathroom)
-"al" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/tile/tint,
-/area/mission/prefab/city/chess/bathroom)
-"am" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 1
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/city/chess/bathroom)
-"an" = (
-/obj/structure/interactive/power/apc,
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/city/chess/bathroom)
-"ao" = (
-/obj/structure/interactive/fence/door,
-/obj/marker/smart_clear_turf,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"ap" = (
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
-"aq" = (
-/obj/structure/interactive/lighting/fixture/tube/station,
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
-"ar" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
-"as" = (
-/obj/structure/interactive/wire/green,
-/obj/structure/interactive/lighting/fixture/tube/station,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 1
-	},
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
-"at" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"au" = (
-/mob/living/simple/chess_piece/rook/black,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"av" = (
-/mob/living/simple/chess_piece/knight/black,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aw" = (
-/mob/living/simple/chess_piece/bishop/black,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"ax" = (
-/mob/living/simple/chess_piece/queen/black,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"ay" = (
-/mob/living/simple/chess_piece/king/black,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"az" = (
-/mob/living/simple/chess_piece/bishop/black,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aA" = (
-/mob/living/simple/chess_piece/knight/black,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"aB" = (
-/obj/structure/interactive/fence{
-	icon_state = "straight";
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aC" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"aD" = (
-/obj/structure/interactive/fence/corner{
-	icon_state = "corner";
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aE" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aF" = (
-/obj/structure/interactive/fence,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aG" = (
-/obj/structure/interactive/fence/end,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aH" = (
-/obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aI" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aJ" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aK" = (
-/mob/living/simple/chess_piece/rook/black,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aL" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
-	},
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"aM" = (
-/mob/living/simple/chess_piece/pawn/black,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aN" = (
-/mob/living/simple/chess_piece/pawn/black,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"aO" = (
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"aP" = (
-/obj/structure/scenery/flowers,
-/turf/simulated/floor/colored/grass,
-/area/dmm_suite/clear_area)
-"aQ" = (
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aR" = (
-/turf/simulated/floor/tile/red,
-/area/mission/prefab/city/chess)
-"aS" = (
-/mob/living/simple/chess_piece/pawn,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"aT" = (
-/mob/living/simple/chess_piece/pawn,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aU" = (
-/mob/living/simple/chess_piece/rook,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aV" = (
-/mob/living/simple/chess_piece/knight,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"aW" = (
-/mob/living/simple/chess_piece/bishop,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aX" = (
-/mob/living/simple/chess_piece/queen,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"aY" = (
-/mob/living/simple/chess_piece/king,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"aZ" = (
-/mob/living/simple/chess_piece/bishop,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"ba" = (
-/mob/living/simple/chess_piece/knight,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/chess)
-"bb" = (
-/mob/living/simple/chess_piece/rook,
-/turf/simulated/floor/tile/tan,
-/area/mission/prefab/city/chess)
-"bc" = (
-/obj/structure/table/wood,
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"bd" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 1
-	},
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile/red,
-/area/mission/prefab/city/chess)
-"be" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/city/chess)
-"bf" = (
-/obj/structure/interactive/storage/safe,
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"bg" = (
-/obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 1
-	},
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"bh" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/storage/cash_register{
-	icon_state = "register";
-	dir = 8
-	},
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"bi" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/chess)
-"bj" = (
-/obj/structure/interactive/bar_sign/chess,
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/city/chess)
-"bk" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/obj/structure/interactive/door/airlock/station/maintenance,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/chess)
-"bl" = (
-/obj/structure/scenery/flowers,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/colored/grass,
-/area/dmm_suite/clear_area)
-"bm" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
-"bn" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
-"bo" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/red,
-/area/mission/prefab/city/chess)
-"bp" = (
-/obj/structure/interactive/door/airlock/glass,
-/obj/marker/smart_clear_turf,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/tan/ish,
-/area/mission/prefab/city/chess)
-"bq" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/tint,
-/area/mission/prefab/city/chess/bathroom)
-"br" = (
-/obj/marker/map_node,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/red,
-/area/mission/prefab/city/chess)
-"bs" = (
-/obj/structure/interactive/lighting/fixture/tube/station{
-	icon_state = "preview";
-	dir = 1
-	},
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/red,
-/area/mission/prefab/city/chess)
-"bt" = (
-/obj/marker/map_node,
-/obj/marker/cover_node/left{
-	icon_state = "left";
-	dir = 1
-	},
-/turf/simulated/floor/tile/blue,
-/area/mission/prefab/city/chess)
+"aa" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/wood/rich,/area/dmm_suite/clear_area)
+"ac" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/city/chess)
+"ad" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/city/chess/bathroom)
+"ae" = (/obj/structure/interactive/crate/closet,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"af" = (/obj/structure/interactive/crate/closet,/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"ag" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/chess/bathroom)
+"ah" = (/turf/simulated/floor/tile/tint,/area/mission/prefab/city/chess/bathroom)
+"ai" = (/obj/structure/interactive/misc/toilet,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/chess/bathroom)
+"aj" = (/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"ak" = (/obj/structure/interactive/door/airlock,/obj/marker/cover_node/right,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/chess/bathroom)
+"al" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/tint,/area/mission/prefab/city/chess/bathroom)
+"am" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/chess/bathroom)
+"an" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/wood/rich,/area/mission/prefab/city/chess/bathroom)
+"ao" = (/obj/structure/interactive/fence/door,/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"ap" = (/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"aq" = (/obj/structure/interactive/lighting/fixture/tube/station,/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"ar" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"as" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/lighting/fixture/tube/station,/obj/marker/cover_node/right{icon_state = "right"; dir = 1},/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"at" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"au" = (/mob/living/simple/chess_piece/rook/black,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"av" = (/mob/living/simple/chess_piece/knight/black,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aw" = (/mob/living/simple/chess_piece/bishop/black,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"ax" = (/mob/living/simple/chess_piece/queen/black,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"ay" = (/mob/living/simple/chess_piece/king/black,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"az" = (/mob/living/simple/chess_piece/bishop/black,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aA" = (/mob/living/simple/chess_piece/knight/black,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"aB" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aC" = (/obj/marker/map_node,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"aD" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aE" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aF" = (/obj/structure/interactive/fence,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aG" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aH" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aI" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aJ" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aK" = (/mob/living/simple/chess_piece/rook/black,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aL" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"aM" = (/mob/living/simple/chess_piece/pawn/black,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aN" = (/mob/living/simple/chess_piece/pawn/black,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"aO" = (/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"aP" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
+"aQ" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aR" = (/turf/simulated/floor/tile/red,/area/mission/prefab/city/chess)
+"aS" = (/mob/living/simple/chess_piece/pawn,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"aT" = (/mob/living/simple/chess_piece/pawn,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aU" = (/mob/living/simple/chess_piece/rook,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aV" = (/mob/living/simple/chess_piece/knight,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"aW" = (/mob/living/simple/chess_piece/bishop,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aX" = (/mob/living/simple/chess_piece/queen,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"aY" = (/mob/living/simple/chess_piece/king,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"aZ" = (/mob/living/simple/chess_piece/bishop,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"ba" = (/mob/living/simple/chess_piece/knight,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/chess)
+"bb" = (/mob/living/simple/chess_piece/rook,/turf/simulated/floor/tile/tan,/area/mission/prefab/city/chess)
+"bc" = (/obj/structure/table/wood,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"bd" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/obj/marker/cover_node/left,/turf/simulated/floor/tile/red,/area/mission/prefab/city/chess)
+"be" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/wood/rich,/area/mission/prefab/city/chess)
+"bf" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"bg" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 1},/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"bh" = (/obj/structure/table/wood,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 8},/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"bi" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/chess)
+"bj" = (/obj/structure/interactive/bar_sign/chess,/turf/simulated/wall/wood/rich,/area/mission/prefab/city/chess)
+"bk" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/city/chess)
+"bl" = (/obj/structure/scenery/flowers,/obj/marker/smart_clear_turf,/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
+"bm" = (/obj/marker/map_node,/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"bn" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"bo" = (/obj/marker/map_node,/turf/simulated/floor/tile/red,/area/mission/prefab/city/chess)
+"bp" = (/obj/structure/interactive/door/airlock/glass,/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"bq" = (/obj/marker/map_node,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/chess/bathroom)
+"br" = (/obj/marker/map_node,/obj/marker/cover_node/right,/turf/simulated/floor/tile/red,/area/mission/prefab/city/chess)
+"bs" = (/obj/structure/interactive/lighting/fixture/tube/station{icon_state = "preview"; dir = 1},/obj/marker/cover_node/right,/turf/simulated/floor/tile/red,/area/mission/prefab/city/chess)
+"bt" = (/obj/marker/map_node,/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/tile/blue,/area/mission/prefab/city/chess)
+"bu" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/obj/marker/mission_corpse,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
+"bv" = (/obj/marker/mission_corpse,/turf/simulated/floor/tile/tan/ish,/area/mission/prefab/city/chess)
 
 (1,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-be
-ac
-"}
-(2,1,1) = {"
-ac
-ae
-aj
-aj
-aj
-at
-aL
-aL
-aL
-aL
-aL
-aL
-at
-aj
-bf
-bj
-"}
-(3,1,1) = {"
-ac
-ae
-aj
-aj
-aj
-aj
-aL
-aL
-aL
-aL
-aL
-aL
-aj
-bc
-bg
-ac
-"}
-(4,1,1) = {"
-ac
-af
-aC
-aj
-aC
-aj
-aL
-aL
-aL
-aL
-aL
-aL
-aj
-bc
-bh
-ac
-"}
-(5,1,1) = {"
-ac
-ae
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aC
-aj
-bp
-"}
-(6,1,1) = {"
-ac
-ae
-aC
-aj
-bm
-ap
-ap
-ap
-bm
-aR
-aR
-aR
-aR
-br
-ac
-ac
-"}
-(7,1,1) = {"
-ad
-ad
-ak
-ad
-ap
-au
-aM
-aO
-aQ
-aO
-aQ
-aS
-aU
-aR
-ac
-aP
-"}
-(8,1,1) = {"
-ad
-ag
-bq
-am
-aq
-av
-aN
-aQ
-aO
-aQ
-aO
-aT
-aV
-bd
-ac
-bl
-"}
-(9,1,1) = {"
-ad
-ah
-al
-ad
-ap
-aw
-aM
-aO
-aQ
-aO
-aQ
-aS
-aW
-aR
-bi
-aP
-"}
-(10,1,1) = {"
-ad
-ai
-ah
-ad
-bm
-ax
-aN
-aQ
-aO
-aQ
-aO
-aT
-aX
-aR
-bi
-aP
-"}
-(11,1,1) = {"
-ad
-ad
-ad
-an
-ar
-ay
-aM
-aO
-aQ
-aO
-aQ
-aS
-aY
-bo
-bi
-aP
-"}
-(12,1,1) = {"
-aa
-aI
-aI
-ac
-ar
-az
-aN
-aQ
-aO
-aQ
-aO
-aT
-aZ
-aR
-bi
-aP
-"}
-(13,1,1) = {"
-aB
-aI
-aI
-ac
-as
-aA
-aM
-aO
-aQ
-aO
-aQ
-aS
-ba
-bs
-ac
-aP
-"}
-(14,1,1) = {"
-ao
-aJ
-aE
-bk
-bn
-aK
-aN
-aQ
-aO
-aQ
-aO
-aT
-bb
-aR
-ac
-bl
-"}
-(15,1,1) = {"
-aB
-aJ
-aH
-ac
-bt
-ap
-ap
-ap
-ap
-aR
-aR
-aR
-aR
-bo
-ac
-aP
-"}
-(16,1,1) = {"
-aD
-aF
-aG
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ab
+acacacacacacadadadadadaaaBaoaBaD
+acaeaeafaeaeadagahaiadaIaIaJaJaF
+acajajaCajaCakbqalahadaIaIaEaHaG
+acajajajajajadamadadanacacbkacac
+acajajaCajbmapaqapbmararasbnbtac
+acatajajajapauavawaxayazaAaKapac
+acaLbuaLajapaMaNaMaNaMaNaMaNapac
+acaLaLaLajapaOaQaOaQaOaQaOaQapac
+acaLaLaLajbmaQaOaQaOaQaOaQaOapac
+acaLaLbuajaRaOaQaOaQaOaQaOaQaRac
+acbuaLaLajaRaQaOaQaOaQaOaQaOaRac
+acaLaLaLajaRaSaTaSaTaSaTaSaTaRac
+acatajajajaRaUaVaWaXaYaZbabbaRac
+acbvbcbcaCbraRbdaRaRboaRbsaRboac
+bebfbgbhajacacacbibibibiacacacac
+acbjacacbpacaPblaPaPaPaPaPblaPab
 "}

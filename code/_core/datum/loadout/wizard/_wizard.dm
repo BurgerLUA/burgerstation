@@ -18,3 +18,23 @@
 		/obj/item/storage/pouch/double/black,
 		/obj/item/weapon/melee/torch
 	)
+
+
+/loadout/hostile_wizard
+
+	spawning_items = list(
+
+		/obj/item/clothing/underbottom/underwear/boxers/heart,
+		/obj/item/clothing/undertop/underwear/shirt/random,
+
+		/obj/item/clothing/overwear/coat/wizard/real/purple,
+		/obj/item/clothing/head/hat/wizard/real/purple,
+
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/feet/socks/knee,
+
+		/obj/item/clothing/feet/shoes/sandal,
+		/obj/item/clothing/feet/shoes/sandal/left,
+
+		/obj/item/weapon/ranged/spellgem/fireball
+	)

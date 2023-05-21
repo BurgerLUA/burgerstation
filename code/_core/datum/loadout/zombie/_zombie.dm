@@ -5,12 +5,6 @@
 	var/extra_weapon_chance = 0
 	var/extra_clothing_chance = 0
 
-/loadout/zombie/pre_add(var/mob/living/advanced/A,var/obj/item/I)
-	. = ..()
-	if(.)
-		I.adjust_quality(rand(-50,-90))
-		I.set_bloodstain(rand(2,5),"#880000")
-
 /loadout/zombie/get_spawning_items()
 
 	. = ..()

@@ -48,19 +48,20 @@ SUBSYSTEM_DEF(payday)
 		valid_players += P
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 
-	var/bonus_to_give = clamp(stored_payday/length(valid_players),0,5000)
-	bonus_to_give = FLOOR(bonus_to_give,1)
+	if(length(valid_players))
+		var/bonus_to_give = clamp(stored_payday/length(valid_players),0,5000)
+		bonus_to_give = FLOOR(bonus_to_give,1)
 
-	for(var/k in valid_players)
-		var/mob/living/advanced/player/P = k
-		var/job/J = JOB(P.job)
-		if(!J)
-			P.to_chat(span("payday","No job detected! Speak to the Head of Personnel on the Station to get a job!"))
-			continue
-		var/base_pay = J.passive_income + J.passive_income_bonus*(P.job_rank - 1)
-		if(bonus_to_give)
-			P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits and a [bonus_to_give] credit bonus."))
-		else
-			P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits for your efforts."))
-		P.adjust_currency(bonus_to_give + base_pay)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		for(var/k in valid_players)
+			var/mob/living/advanced/player/P = k
+			var/job/J = JOB(P.job)
+			if(!J)
+				P.to_chat(span("payday","No job detected! Speak to the Head of Personnel on the Station to get a job!"))
+				continue
+			var/base_pay = J.passive_income + J.passive_income_bonus*(P.job_rank - 1)
+			if(bonus_to_give)
+				P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits and a [bonus_to_give] credit bonus."))
+			else
+				P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits for your efforts."))
+			P.adjust_currency(bonus_to_give + base_pay)
+			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)

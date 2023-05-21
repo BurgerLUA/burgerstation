@@ -1,817 +1,121 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"ab" = (
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes)
-"ac" = (
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes)
-"ad" = (
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes/vault)
-"ae" = (
-/obj/structure/interactive/potted_plant/office,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"af" = (
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"ag" = (
-/obj/structure/table/reinforced/steel/dark,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"ah" = (
-/mob/living/simple/turret/syndicate{
-	icon_state = "active";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"ai" = (
-/obj/structure/interactive/atmospherics/vent,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"aj" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"ak" = (
-/obj/structure/interactive/atmospherics/scrubber,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"al" = (
-/obj/structure/carpet/red,
-/mob/living/advanced/npc/syndicate/triple{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"am" = (
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"an" = (
-/obj/structure/interactive/door/airlock/dark,
-/obj/structure/interactive/wire/red,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"ao" = (
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"ap" = (
-/obj/structure/interactive/potted_plant/office,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aq" = (
-/obj/structure/carpet/red,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"ar" = (
-/obj/structure/interactive/door/vault/syndicate,
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"as" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 8
-	},
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes)
-"at" = (
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"au" = (
-/obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 4
-	},
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes)
-"av" = (
-/obj/structure/carpet/red,
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"aw" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 8
-	},
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes/vault)
-"ax" = (
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"ay" = (
-/obj/structure/interactive/atmospherics/vent,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"az" = (
-/turf/simulated/floor/tile/dark/er,
-/area/mission/prefab/city/traitor_joes)
-"aA" = (
-/turf/simulated/floor/tile,
-/area/mission/prefab/city/traitor_joes)
-"aB" = (
-/obj/structure/interactive/door/airlock/dark,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aC" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes/vault)
-"aD" = (
-/obj/structure/interactive/bed,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aE" = (
-/obj/structure/interactive/crate/closet/anchored,
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aF" = (
-/obj/structure/interactive/vending/syndicate/prize,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aG" = (
-/obj/structure/interactive/vending/syndicate/medicine,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aH" = (
-/obj/structure/interactive/vending/syndicate/guns,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aI" = (
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"aJ" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"aK" = (
-/obj/structure/interactive/vending/syndicate/attachment,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"aL" = (
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"aM" = (
-/obj/structure/interactive/light_switch,
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes/vault)
-"aN" = (
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aO" = (
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aP" = (
-/obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"aQ" = (
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aR" = (
-/obj/structure/interactive/atmospherics/scrubber,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"aS" = (
-/obj/structure/interactive/wire/red,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"aT" = (
-/obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"aU" = (
-/obj/structure/interactive/crate/closet/anchored,
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aV" = (
-/obj/structure/interactive/atmospherics/vent,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aW" = (
-/obj/structure/table/steel/dark,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aX" = (
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aY" = (
-/obj/structure/interactive/chair/office/dark,
-/mob/living/advanced/npc/syndicate/double,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"aZ" = (
-/obj/structure/interactive/potted_plant/office,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"ba" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 8
-	},
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bb" = (
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bc" = (
-/obj/structure/table/steel/dark,
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bd" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
-	},
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes/entrance)
-"be" = (
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bf" = (
-/obj/structure/interactive/atmospherics/scrubber,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bg" = (
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bh" = (
-/obj/structure/interactive/door/airlock/dark,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bi" = (
-/obj/structure/interactive/power/smes/industrial{
-	icon_state = "smes_map";
-	dir = 4
-	},
-/obj/structure/interactive/wire/red,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"bj" = (
-/obj/structure/sign/secure,
-/turf/simulated/wall/metal/syndicate/reinforced,
-/area/mission/prefab/city/traitor_joes)
-"bk" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bl" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark/er,
-/area/mission/prefab/city/traitor_joes)
-"bm" = (
-/obj/structure/sign/secure,
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bn" = (
-/obj/structure/sign/closed,
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bo" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bp" = (
-/obj/structure/interactive/chair,
-/obj/marker/hostage_spawn,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bq" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/vault_loot,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"br" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bs" = (
-/obj/structure/interactive/crate/closet/anchored,
-/obj/marker/spawning/random/vault_loot/secure,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bt" = (
-/obj/structure/table/steel/dark,
-/obj/marker/spawning/random/food,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bu" = (
-/obj/structure/interactive/wire/red,
-/obj/marker/map_node,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"bv" = (
-/obj/marker/map_node,
-/mob/living/advanced/npc/syndicate/quadruple{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bw" = (
-/obj/structure/carpet/red,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bx" = (
-/obj/structure/carpet/red,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"by" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bz" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bA" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile,
-/area/mission/prefab/city/traitor_joes)
-"bB" = (
-/obj/structure/carpet/grey,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bC" = (
-/obj/structure/carpet/grey,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bD" = (
-/obj/structure/carpet/grey,
-/obj/marker/map_node,
-/mob/living/advanced/npc/syndicate{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bE" = (
-/obj/structure/interactive/door/airlock/dark,
-/obj/marker/map_node,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bF" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"bG" = (
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/plating/syndicate,
-/area/dmm_suite/clear_area)
-"bH" = (
-/obj/structure/interactive/barricade{
-	icon_state = "metal";
-	dir = 8
-	},
-/mob/living/advanced/npc/syndicate/double{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/traitor_joes)
-"bI" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
-	},
-/mob/living/advanced/npc/syndicate/double{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark/er,
-/area/mission/prefab/city/traitor_joes)
-"bJ" = (
-/mob/living/advanced/npc/syndicate/quadruple,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bK" = (
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark/er,
-/area/mission/prefab/city/traitor_joes)
-"bL" = (
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark/er,
-/area/mission/prefab/city/traitor_joes)
-"bM" = (
-/obj/structure/interactive/lighting/fixture/tube/syndicate,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bN" = (
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bO" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bP" = (
-/obj/structure/interactive/bed,
-/obj/structure/interactive/lighting/fixture/tube/syndicate,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bQ" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/obj/structure/interactive/lighting/fixture/tube/syndicate{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bR" = (
-/obj/structure/interactive/bar_sign/traitor_joes,
-/turf/simulated/wall/metal/syndicate,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bS" = (
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bT" = (
-/obj/marker/cover_node/left{
-	icon_state = "left";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/vault)
-"bU" = (
-/obj/structure/interactive/potted_plant/office,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bV" = (
-/obj/marker/cover_node/left{
-	icon_state = "left";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes)
-"bW" = (
-/obj/structure/carpet/grey,
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
-"bX" = (
-/obj/structure/carpet/grey,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/morphing/red/dark,
-/area/mission/prefab/city/traitor_joes/entrance)
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes)
+"ac" = (/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes)
+"ad" = (/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes/vault)
+"ae" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"af" = (/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"ag" = (/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"ah" = (/mob/living/simple/turret/syndicate{icon_state = "active"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"ai" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"aj" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"ak" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"al" = (/mob/living/advanced/npc/syndicate/triple{icon_state = "directional"; dir = 4},/obj/structure/carpet/red,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"am" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"an" = (/obj/structure/interactive/door/airlock/dark,/obj/structure/interactive/wire/red,/obj/marker/cover_node/right,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"ao" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"ap" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aq" = (/obj/structure/carpet/red,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"ar" = (/obj/structure/interactive/door/vault/syndicate,/obj/marker/cover_node/left,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"as" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes)
+"at" = (/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"au" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 4},/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes)
+"av" = (/obj/structure/carpet/red,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"aw" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes/vault)
+"ax" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/vault)
+"ay" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"az" = (/turf/simulated/floor/tile/dark/er,/area/mission/prefab/city/traitor_joes)
+"aA" = (/turf/simulated/floor/tile,/area/mission/prefab/city/traitor_joes)
+"aB" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aC" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes/vault)
+"aD" = (/obj/structure/interactive/bed,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aE" = (/obj/structure/interactive/crate/closet/anchored,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aF" = (/obj/structure/interactive/vending/syndicate/prize,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aG" = (/obj/structure/interactive/vending/syndicate/medicine,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aH" = (/obj/structure/interactive/vending/syndicate/guns,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aI" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"aJ" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"aK" = (/obj/structure/interactive/vending/syndicate/attachment,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aL" = (/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"aM" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes/vault)
+"aN" = (/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
+"aO" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"aP" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"aQ" = (/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"aR" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"aS" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"aT" = (/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"aU" = (/obj/structure/interactive/crate/closet/anchored,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"aV" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"aW" = (/obj/structure/table/steel/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"aX" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"aY" = (/mob/living/advanced/npc/syndicate/quadruple{icon_state = "directional"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"aZ" = (/obj/structure/interactive/potted_plant/office,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"ba" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
+"bb" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bc" = (/obj/structure/table/steel/dark,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bd" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
+"be" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bf" = (/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bg" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bh" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bi" = (/obj/structure/interactive/power/smes/industrial{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"bj" = (/obj/structure/sign/secure,/turf/simulated/wall/metal/syndicate/reinforced,/area/mission/prefab/city/traitor_joes)
+"bk" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bl" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/city/traitor_joes)
+"bm" = (/obj/structure/sign/secure,/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
+"bn" = (/obj/structure/sign/closed,/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
+"bo" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bp" = (/obj/structure/interactive/chair,/obj/marker/hostage_spawn,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bq" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/vault_loot,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"br" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bs" = (/obj/structure/interactive/crate/closet/anchored,/obj/marker/spawning/random/vault_loot/secure,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bt" = (/obj/structure/table/steel/dark,/obj/marker/spawning/random/food,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bu" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"bv" = (/mob/living/advanced/npc/syndicate/double{icon_state = "directional"; dir = 4},/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/city/traitor_joes)
+"bw" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bx" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"by" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bz" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bA" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/traitor_joes)
+"bB" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bC" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bD" = (/mob/living/advanced/npc/syndicate/double,/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bE" = (/obj/structure/interactive/door/airlock/dark,/obj/marker/map_node,/obj/marker/smart_clear_turf,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bF" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"bG" = (/obj/marker/smart_clear_turf,/turf/simulated/floor/plating/syndicate,/area/dmm_suite/clear_area)
+"bH" = (/mob/living/advanced/npc/syndicate{icon_state = "directional"; dir = 8},/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bI" = (/mob/living/advanced/npc/syndicate/double{icon_state = "directional"; dir = 8},/obj/structure/interactive/barricade{icon_state = "metal"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/traitor_joes)
+"bJ" = (/mob/living/advanced/npc/syndicate/quadruple,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bK" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/city/traitor_joes)
+"bL" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/dark/er,/area/mission/prefab/city/traitor_joes)
+"bM" = (/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bN" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bO" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bP" = (/obj/structure/interactive/bed,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bQ" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bR" = (/obj/structure/interactive/bar_sign/traitor_joes,/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
+"bS" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bT" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bU" = (/obj/structure/interactive/potted_plant/office,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bV" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 8},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
+"bW" = (/obj/structure/carpet/grey,/obj/marker/cover_node/left,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
+"bX" = (/obj/structure/carpet/grey,/obj/marker/cover_node/right,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/entrance)
 
 (1,1,1) = {"
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(2,1,1) = {"
-ad
-bq
-bq
-bO
-br
-bq
-br
-br
-ag
-ad
-aN
-aN
-aN
-aN
-aN
-aN
-"}
-(3,1,1) = {"
-ad
-ap
-ax
-ax
-ax
-ax
-ax
-ax
-bq
-ad
-aO
-aQ
-bb
-aQ
-aZ
-aN
-"}
-(4,1,1) = {"
-ad
-bS
-bv
-bT
-at
-at
-bz
-ax
-bQ
-ad
-aQ
-aV
-aX
-aX
-aQ
-aN
-"}
-(5,1,1) = {"
-ad
-aw
-aB
-aC
-ad
-bJ
-ax
-ax
-aF
-ad
-aQ
-aW
-aW
-be
-bW
-bn
-"}
-(6,1,1) = {"
-ab
-ah
-bw
-ah
-ad
-aD
-ax
-ax
-aG
-aM
-aQ
-aX
-bt
-bB
-bg
-bE
-"}
-(7,1,1) = {"
-ab
-ai
-aq
-ak
-ad
-aE
-ax
-ax
-aH
-ad
-aQ
-aY
-aW
-be
-bX
-bR
-"}
-(8,1,1) = {"
-ab
-bM
-aq
-af
-ad
-bP
-bz
-ax
-aK
-ad
-aQ
-aX
-aW
-bf
-aQ
-aN
-"}
-(9,1,1) = {"
-ab
-ak
-bx
-ai
-ad
-bs
-at
-ap
-bq
-ad
-aU
-aZ
-bc
-bC
-aZ
-aN
-"}
-(10,1,1) = {"
-ab
-bj
-ar
-au
-ad
-ad
-ad
-ad
-ad
-ad
-aN
-ba
-bd
-bh
-bm
-aN
-"}
-(11,1,1) = {"
-ac
-al
-bw
-av
-bN
-af
-bk
-bl
-bI
-bl
-az
-bK
-bV
-bD
-bU
-ac
-"}
-(12,1,1) = {"
-ac
-aS
-am
-am
-af
-by
-ao
-aA
-aA
-aA
-az
-bA
-ao
-aR
-af
-ac
-"}
-(13,1,1) = {"
-ac
-an
-as
-ac
-ac
-bp
-ao
-aA
-az
-aA
-az
-aA
-aP
-bH
-aT
-ac
-"}
-(14,1,1) = {"
-aj
-bu
-aI
-bi
-ac
-af
-ay
-aA
-az
-aA
-aA
-aA
-ao
-ao
-af
-ac
-"}
-(15,1,1) = {"
-bF
-aJ
-aJ
-aJ
-ac
-ae
-af
-az
-az
-az
-az
-bL
-bo
-af
-ae
-ac
-"}
-(16,1,1) = {"
-aj
-aL
-bG
-aL
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+adadadadadabababababacacacajbFaj
+adbqapbSawahaibMakbjalaSanbuaJaL
+adbqaxaYaBbwaqaqbxarbwamasaIaJbG
+adbOaxbTaCahakafaiauavamacbiaJaL
+adbraxatadadadadadadbNafacacacac
+adbqaxatbJaDaEbPbsadafbybpafaeac
+adbraxbzaxaxaxbzatadbkaoaoayafac
+adbraxaxaxaxaxaxapadblaAaAaAazac
+adagbqbQaFaGaHaKbqadbvaAazazazac
+adadadadadaMadadadadblaAaAaAazac
+aaaNaOaQaQaQaQaQaUaNazazazaAazac
+aaaNaQaVaWaXbDaXaZbabKbAaAaAbLac
+aaaNbbaXaWbtaWaWbcbdbVaoaPaoboac
+aaaNaQaXbebBbebfbCbhbHaRbIaoafac
+aaaNaZaQbWbgbXaQaZbmbUafaTafaeac
+aaaNaNaNbnbEbRaNaNaNacacacacacac
 "}

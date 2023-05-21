@@ -1,635 +1,83 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"ab" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/the_net)
-"ac" = (
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"ad" = (
-/obj/decal/poster/nanotrasen,
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"ae" = (
-/obj/structure/interactive/door/airlock/dark,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"af" = (
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_net)
-"ag" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"ah" = (
-/obj/structure/interactive/crate/trash,
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"ai" = (
-/obj/structure/interactive/chair/office/dark,
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"aj" = (
-/obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"ak" = (
-/obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"al" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"am" = (
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"an" = (
-/obj/structure/table/steel/dark,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"ao" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"ap" = (
-/obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 4
-	},
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"aq" = (
-/obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"ar" = (
-/obj/structure/interactive/chair/office/dark,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"as" = (
-/obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"at" = (
-/obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 8
-	},
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"au" = (
-/obj/structure/interactive/bar_sign/the_net,
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"av" = (
-/obj/structure/interactive/lighting/fixture/bulb/green{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_net)
-"aw" = (
-/obj/structure/interactive/lighting/fixture/bulb/green,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_net)
-"ax" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 4
-	},
-/obj/structure/interactive/lighting/fixture/tube/fluorescent{
-	icon_state = "preview";
-	dir = 4
-	},
-/obj/marker/cover_node{
-	icon_state = "both";
-	dir = 8
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"ay" = (
-/obj/structure/interactive/chair{
-	icon_state = "chair";
-	dir = 8
-	},
-/obj/structure/interactive/lighting/fixture/tube/fluorescent{
-	icon_state = "preview";
-	dir = 8
-	},
-/obj/marker/cover_node{
-	icon_state = "both";
-	dir = 4
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"az" = (
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aA" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aB" = (
-/obj/structure/interactive/fence/corner{
-	icon_state = "corner";
-	dir = 9
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aC" = (
-/obj/structure/interactive/fence/door,
-/obj/structure/interactive/wire/green,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aD" = (
-/obj/structure/interactive/fence{
-	icon_state = "straight";
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aE" = (
-/obj/structure/interactive/fence/corner{
-	icon_state = "corner";
-	dir = 5
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aF" = (
-/obj/structure/interactive/fence/end,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aG" = (
-/obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 4
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aH" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aI" = (
-/obj/structure/interactive/door/airlock/dark,
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aJ" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"aK" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aL" = (
-/obj/structure/interactive/power/apc{
-	dir = 1
-	},
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"aM" = (
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"aN" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aO" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aP" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node/x2,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aQ" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 1
-	},
-/turf/simulated/wall/metal/circuit,
-/area/mission/prefab/city/the_net)
-"aR" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"aS" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aT" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"aU" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aV" = (
-/obj/marker/map_node,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"aW" = (
-/obj/marker/smart_clear_turf,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"aX" = (
-/obj/structure/table/steel/dark,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aY" = (
-/obj/structure/table/steel/dark,
-/obj/marker/spawning/random/valuable,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"aZ" = (
-/obj/structure/table/steel/dark,
-/obj/marker/spawning/random/trash,
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"ba" = (
-/obj/structure/interactive/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 8
-	},
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"bb" = (
-/obj/structure/interactive/chair/office/dark,
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"bc" = (
-/obj/structure/table/steel/dark,
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"bd" = (
-/obj/structure/table/steel/dark,
-/obj/structure/interactive/storage/cash_register{
-	icon_state = "register";
-	dir = 1
-	},
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"be" = (
-/obj/marker/mission_mob,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"bf" = (
-/obj/marker/spawning/window,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/the_net)
-"bg" = (
-/obj/marker/map_node,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/dark/single,
-/area/mission/prefab/city/the_net)
-"bh" = (
-/obj/structure/interactive/potted_plant/nanotrasen,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 1
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"bi" = (
-/obj/structure/interactive/chair/office/dark,
-/obj/marker/cover_node/left{
-	icon_state = "left";
-	dir = 1
-	},
-/turf/simulated/floor/tile/morphing/green,
-/area/mission/prefab/city/the_net)
-"bj" = (
-/obj/marker/cover_node/left,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/the_net)
+"ac" = (/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"ad" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"ae" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"af" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_net)
+"ag" = (/obj/structure/interactive/potted_plant/nanotrasen,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"ah" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"ai" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"aj" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"ak" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"al" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"am" = (/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"an" = (/obj/structure/table/steel/dark,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"ao" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"ap" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 4},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"aq" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"ar" = (/obj/structure/interactive/chair/office/dark,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"as" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"at" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 8},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"au" = (/obj/structure/interactive/bar_sign/the_net,/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"av" = (/obj/structure/interactive/lighting/fixture/bulb/green{icon_state = "preview"; dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_net)
+"aw" = (/obj/structure/interactive/lighting/fixture/bulb/green,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_net)
+"ax" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/obj/marker/cover_node{icon_state = "both"; dir = 8},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"ay" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/obj/marker/cover_node{icon_state = "both"; dir = 4},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"az" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aA" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aB" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 9},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aC" = (/obj/structure/interactive/fence/door,/obj/structure/interactive/wire/green,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aD" = (/obj/structure/interactive/fence{icon_state = "straight"; dir = 4},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aE" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 5},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aF" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aG" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 4},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aH" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aI" = (/obj/structure/interactive/door/airlock/dark,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aJ" = (/obj/structure/interactive/wire/green,/obj/marker/cover_node/left,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"aK" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aL" = (/obj/structure/interactive/power/apc{dir = 1},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"aM" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"aN" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aO" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aP" = (/obj/structure/interactive/wire/green,/obj/marker/map_node/x2,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aQ" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/metal/circuit,/area/mission/prefab/city/the_net)
+"aR" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"aS" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aT" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"aU" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aV" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"aW" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"aX" = (/obj/structure/table/steel/dark,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aY" = (/obj/structure/table/steel/dark,/obj/marker/spawning/random/valuable,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"aZ" = (/obj/structure/table/steel/dark,/obj/marker/spawning/random/trash,/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"ba" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bb" = (/obj/structure/interactive/chair/office/dark,/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bc" = (/obj/structure/table/steel/dark,/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bd" = (/obj/structure/table/steel/dark,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"be" = (/obj/marker/mission_mob,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bf" = (/obj/marker/spawning/window,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/mission/prefab/city/the_net)
+"bg" = (/obj/marker/map_node,/obj/marker/cover_node/right,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bh" = (/obj/structure/interactive/potted_plant/nanotrasen,/obj/marker/cover_node/right{icon_state = "right"; dir = 1},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"bi" = (/obj/structure/interactive/chair/office/dark,/obj/marker/cover_node/left{icon_state = "left"; dir = 1},/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
+"bj" = (/obj/marker/cover_node/left,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bk" = (/obj/marker/mission_corpse,/turf/simulated/floor/tile/dark/single,/area/mission/prefab/city/the_net)
+"bl" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 8},/obj/marker/mission_corpse,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/the_net)
 
 (1,1,1) = {"
-aa
-aa
-ab
-ab
-bf
-ab
-ab
-ab
-bf
-ab
-ab
-ab
-bf
-ab
-ab
-aM
-"}
-(2,1,1) = {"
-aa
-aa
-ab
-af
-av
-ac
-aw
-av
-ac
-aw
-av
-ac
-aw
-af
-ab
-aM
-"}
-(3,1,1) = {"
-aM
-aM
-ac
-ab
-ab
-ap
-ab
-ab
-ap
-ab
-ab
-ap
-ab
-ab
-au
-aM
-"}
-(4,1,1) = {"
-aM
-bj
-ad
-bh
-al
-ax
-al
-al
-ax
-al
-al
-ax
-al
-ag
-ac
-aM
-"}
-(5,1,1) = {"
-aA
-aS
-aI
-aT
-aK
-aO
-aK
-aO
-aK
-aO
-aK
-aK
-aP
-aJ
-aL
-aM
-"}
-(6,1,1) = {"
-aB
-aF
-ad
-bi
-aX
-aq
-an
-as
-aX
-be
-am
-am
-am
-aR
-ab
-aW
-"}
-(7,1,1) = {"
-aC
-aA
-ad
-aj
-an
-ar
-aX
-ar
-an
-am
-az
-aZ
-bc
-am
-ab
-aM
-"}
-(8,1,1) = {"
-aD
-aG
-ad
-ak
-an
-aq
-an
-as
-an
-be
-az
-ba
-bd
-aN
-ae
-aV
-"}
-(9,1,1) = {"
-aD
-aU
-ad
-ak
-aY
-as
-an
-ar
-an
-am
-az
-bb
-bc
-aN
-ae
-aV
-"}
-(10,1,1) = {"
-aD
-aH
-ad
-ai
-an
-aq
-aX
-aq
-aX
-am
-az
-bc
-bc
-am
-ab
-aM
-"}
-(11,1,1) = {"
-aD
-aH
-ad
-aj
-an
-ar
-an
-aq
-an
-am
-be
-am
-aN
-aR
-ab
-aW
-"}
-(12,1,1) = {"
-aD
-aH
-ad
-aR
-be
-aN
-am
-aN
-am
-aN
-am
-am
-bg
-ah
-aQ
-aM
-"}
-(13,1,1) = {"
-aD
-aH
-ad
-ag
-ao
-ay
-ao
-ao
-ay
-ao
-ao
-ay
-ao
-ag
-au
-aM
-"}
-(14,1,1) = {"
-aE
-aF
-ac
-ab
-ab
-at
-ab
-ab
-at
-ab
-ab
-at
-ab
-ab
-ac
-aM
-"}
-(15,1,1) = {"
-aa
-aa
-ab
-af
-av
-ac
-aw
-av
-ac
-aw
-av
-ac
-aw
-af
-ab
-aM
-"}
-(16,1,1) = {"
-aa
-aa
-ab
-ab
-bf
-ab
-ab
-ab
-bf
-ab
-ab
-ab
-bf
-ab
-ab
-aM
+aaaaaMaMaAaBaCaDaDaDaDaDaDaEaaaa
+aaaaaMbjaSaFaAaGaUaHaHaHaHaFaaaa
+ababacadaIadadadadadadadadacabab
+abafabbhaTbiblakakaiajaRagabafab
+bfavabalaKaXananaYananbeaoabavbf
+abacapaxaOaqaraqasaqaraNayatacab
+abawabalaKanaXananaXanamaoabawab
+abavabalaOasarasaraqaqaNaoabavab
+bfacapaxaKaXanananaXanamayatacbf
+abawabalaObeambeambkamaNaoabawab
+abavabalaKamazazazazbeamaoabavab
+abacapaxaKamaZbabbbcamamayatacab
+bfawabalaPambcbdbcbcaNbgaoabawbf
+abafabagaJaRbkaNaNamaRahagabafab
+ababauacaLababaeaeababaQauacabab
+aMaMaMaMaMaWaMaVaVaMaWaMaMaMaMaM
 "}

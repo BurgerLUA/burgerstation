@@ -1,750 +1,111 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"ab" = (
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton)
-"ac" = (
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"ad" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/the_harmbaton)
-"ae" = (
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"af" = (
-/obj/decal/poster/nanotrasen,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"ag" = (
-/obj/marker/map_node,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"ah" = (
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"ai" = (
-/obj/structure/interactive/lighting/fixture/tube,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aj" = (
-/obj/structure/table/reinforced/steel/dark,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"ak" = (
-/obj/marker/spawning/window/reinforced,
-/turf/simulated/floor/plating,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"al" = (
-/obj/structure/interactive/door/airlock/dark,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"am" = (
-/obj/structure/interactive/door/airlock/dark,
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"an" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"ao" = (
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"ap" = (
-/obj/structure/interactive/fence/end,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aq" = (
-/obj/structure/interactive/fence/end{
-	icon_state = "end";
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"ar" = (
-/obj/structure/interactive/fence,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"as" = (
-/obj/structure/interactive/fence/corner{
-	icon_state = "corner";
-	dir = 9
-	},
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"at" = (
-/obj/structure/carpet/grey,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"au" = (
-/obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"av" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aw" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"ax" = (
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"ay" = (
-/obj/structure/interactive/door/vault,
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/armory)
-"az" = (
-/obj/structure/interactive/power/apc,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aA" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aB" = (
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aC" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aD" = (
-/obj/structure/interactive/bar_sign/the_harmbaton,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aE" = (
-/obj/structure/interactive/light_switch,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aF" = (
-/obj/structure/interactive/lighting/fixture/tube,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"aG" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 4
-	},
-/obj/structure/interactive/storage/cash_register{
-	icon_state = "register";
-	dir = 1
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"aH" = (
-/obj/structure/carpet/grey,
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aI" = (
-/obj/structure/table/simple,
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical,
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aJ" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aK" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 8
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aL" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aM" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"aN" = (
-/obj/structure/table/simple,
-/obj/item/magazine/pistol_45,
-/obj/item/magazine/pistol_45,
-/obj/item/magazine/pistol_45,
-/obj/item/magazine/pistol_45,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aO" = (
-/obj/structure/interactive/chair/office/dark,
-/obj/marker/mission_mob,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"aP" = (
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"aQ" = (
-/obj/decal/poster/nanotrasen,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton)
-"aR" = (
-/obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 4
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aS" = (
-/obj/decal/poster/nanotrasen{
-	icon_state = "";
-	dir = 8
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton)
-"aT" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/vault_loot/secure,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"aU" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"aV" = (
-/obj/structure/interactive/restocker/ammo,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aW" = (
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"aX" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/item/magazine/pistol_45,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aY" = (
-/obj/structure/carpet/grey,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"aZ" = (
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"ba" = (
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bb" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 4
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton)
-"bc" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 8
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton)
-"bd" = (
-/obj/structure/table/reinforced/steel/dark,
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"be" = (
-/obj/structure/interactive/lighting/fixture/tube{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bf" = (
-/obj/structure/interactive/chair/stool,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bg" = (
-/obj/structure/interactive/power/apc,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bh" = (
-/obj/structure/interactive/door/airlock/dark,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bi" = (
-/obj/structure/interactive/fire_closet{
-	icon_state = "extinguisher";
-	dir = 1
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bj" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 1
-	},
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bk" = (
-/obj/structure/interactive/storage/safe,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bl" = (
-/obj/structure/interactive/storage/safe,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"bm" = (
-/obj/structure/sign/no_smoking,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bn" = (
-/obj/structure/sign/secure,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"bo" = (
-/obj/structure/sign/no_smoking,
-/turf/simulated/wall/metal/reinforced,
-/area/mission/prefab/city/the_harmbaton)
-"bp" = (
-/obj/marker/mission_mob{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"bq" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/mission_mob{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"br" = (
-/obj/marker/mission_mob{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bs" = (
-/obj/marker/mission_mob{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bt" = (
-/obj/marker/mission_mob{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bu" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bv" = (
-/obj/structure/interactive/fence/door{
-	icon_state = "door_opened";
-	dir = 8
-	},
-/obj/marker/smart_clear_turf,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"bw" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"bx" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"by" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bz" = (
-/obj/structure/interactive/wire/green,
-/obj/marker/map_node,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"bA" = (
-/obj/structure/carpet/grey,
-/obj/marker/map_node,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bB" = (
-/obj/marker/smart_clear_turf,
-/obj/marker/map_node,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"bC" = (
-/obj/marker/map_node,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/armory)
-"bD" = (
-/obj/marker/map_node,
-/obj/marker/mission_mob,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bE" = (
-/obj/marker/map_node,
-/obj/marker/mission_mob,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bF" = (
-/obj/marker/mission_mob,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bG" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
-	},
-/obj/marker/hostage_spawn,
-/turf/simulated/floor/plating/reinforced,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bH" = (
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bI" = (
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
-"bJ" = (
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bK" = (
-/obj/marker/cover_node/right,
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton/firing_range)
-"bL" = (
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 8
-	},
-/turf/simulated/floor/tile/dark,
-/area/mission/prefab/city/the_harmbaton)
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"ac" = (/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"ad" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/mission/prefab/city/the_harmbaton)
+"ae" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"af" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"ag" = (/obj/marker/map_node,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"ah" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"ai" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aj" = (/obj/structure/table/reinforced/steel/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"ak" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/mission/prefab/city/the_harmbaton/firing_range)
+"al" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"am" = (/obj/structure/interactive/door/airlock/dark,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"an" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"ao" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"ap" = (/obj/structure/interactive/fence/end,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aq" = (/obj/structure/interactive/fence/end{icon_state = "end"; dir = 8},/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"ar" = (/obj/structure/interactive/fence,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"as" = (/obj/structure/interactive/fence/corner{icon_state = "corner"; dir = 9},/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"at" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"au" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"av" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aw" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"ax" = (/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"ay" = (/obj/structure/interactive/door/vault,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/armory)
+"az" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aA" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aB" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aC" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aD" = (/obj/structure/interactive/bar_sign/the_harmbaton,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aE" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aF" = (/obj/structure/interactive/lighting/fixture/tube,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aG" = (/obj/structure/table/reinforced/steel/dark,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 1},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aH" = (/obj/structure/carpet/grey,/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aI" = (/obj/structure/table/simple,/obj/item/weapon/ranged/bullet/magazine/pistol/tactical,/obj/item/weapon/ranged/bullet/magazine/pistol/tactical,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aJ" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aK" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 8},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aL" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aM" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aN" = (/obj/structure/table/simple,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_45,/obj/item/magazine/pistol_45,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aO" = (/obj/structure/interactive/chair/office/dark,/obj/marker/mission_mob,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aP" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"aQ" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"aR" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 4},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aS" = (/obj/decal/poster/nanotrasen{icon_state = ""; dir = 8},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"aT" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/vault_loot/secure,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"aU" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aV" = (/obj/structure/interactive/restocker/ammo,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aW" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"aX" = (/obj/structure/table/reinforced/steel/dark,/obj/item/magazine/pistol_45,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aY" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"aZ" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"ba" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bb" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"bc" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"bd" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"be" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 1},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bf" = (/obj/structure/interactive/chair/stool,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bg" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bh" = (/obj/structure/interactive/door/airlock/dark,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bi" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bj" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bk" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bl" = (/obj/structure/interactive/storage/safe,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"bm" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bn" = (/obj/structure/sign/secure,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"bo" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal/reinforced,/area/mission/prefab/city/the_harmbaton)
+"bp" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 4},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"bq" = (/obj/structure/interactive/wire/green,/obj/marker/mission_mob{icon_state = "directional"; dir = 8},/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"br" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bs" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bt" = (/obj/marker/mission_mob{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bu" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bv" = (/obj/structure/interactive/fence/door{icon_state = "door_opened"; dir = 8},/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bw" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bx" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"by" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bz" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"bA" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bB" = (/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bC" = (/obj/marker/map_node,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/armory)
+"bD" = (/obj/marker/map_node,/obj/marker/mission_mob,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bE" = (/obj/marker/map_node,/obj/marker/mission_mob,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bF" = (/obj/marker/mission_mob,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bG" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/marker/hostage_spawn,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bH" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bI" = (/obj/marker/cover_node/right,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bJ" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bK" = (/obj/marker/cover_node/right,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
+"bL" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bM" = (/obj/marker/mission_corpse,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton)
+"bN" = (/obj/marker/mission_corpse,/turf/simulated/floor/tile/dark,/area/mission/prefab/city/the_harmbaton/firing_range)
 
 (1,1,1) = {"
-aP
-as
-ar
-ar
-ar
-ar
-bv
-ap
-ax
-ax
-ax
-ax
-ax
-ax
-ax
-aa
-"}
-(2,1,1) = {"
-aP
-aq
-av
-av
-aw
-au
-bw
-ao
-ax
-aA
-aA
-aJ
-aA
-aT
-ax
-aa
-"}
-(3,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-am
-bb
-ax
-bp
-aB
-aB
-aB
-aB
-ax
-aa
-"}
-(4,1,1) = {"
-ac
-ah
-ah
-ah
-ah
-ac
-bx
-bL
-aE
-aB
-aB
-aB
-aB
-bl
-ax
-aa
-"}
-(5,1,1) = {"
-ac
-ah
-ah
-bG
-ah
-ac
-an
-bx
-ay
-bz
-aB
-aB
-bC
-aL
-ax
-aa
-"}
-(6,1,1) = {"
-ac
-ah
-ag
-ah
-ah
-ac
-an
-aM
-bn
-aC
-aB
-aB
-aB
-aB
-ax
-aa
-"}
-(7,1,1) = {"
-ac
-ah
-ah
-ah
-ah
-ac
-an
-ae
-az
-bq
-aB
-aB
-aB
-aB
-ax
-aa
-"}
-(8,1,1) = {"
-ac
-ah
-ah
-ah
-ah
-ac
-an
-ae
-ax
-aA
-aA
-aK
-aA
-aT
-aD
-aa
-"}
-(9,1,1) = {"
-ac
-ai
-ah
-bF
-be
-ac
-an
-by
-ax
-aR
-aR
-ax
-ax
-ax
-ax
-ao
-"}
-(10,1,1) = {"
-ac
-ak
-aX
-bd
-ak
-bg
-an
-ae
-aQ
-bk
-ae
-aG
-ae
-bt
-ad
-ao
-"}
-(11,1,1) = {"
-af
-aH
-at
-aY
-aY
-bm
-aF
-ae
-aQ
-ae
-aO
-aj
-ae
-ae
-ad
-ao
-"}
-(12,1,1) = {"
-af
-aI
-ba
-br
-bJ
-bj
-ae
-bH
-ab
-aF
-aU
-aj
-aW
-aW
-ad
-ao
-"}
-(13,1,1) = {"
-af
-aI
-bu
-ba
-bD
-bh
-by
-bE
-al
-by
-ae
-ae
-aW
-bA
-al
-bB
-"}
-(14,1,1) = {"
-af
-aN
-br
-ba
-bK
-bi
-ae
-bI
-ab
-ae
-bs
-ae
-aW
-aW
-ad
-ao
-"}
-(15,1,1) = {"
-af
-aV
-ba
-ba
-bf
-ac
-aZ
-ae
-ab
-ab
-aS
-bc
-aS
-bo
-ab
-ao
-"}
-(16,1,1) = {"
-ac
-ac
-ac
-ac
-ac
-ac
-ab
-ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aPaPacacacacacacacacafafafafafac
+asaqacahahahahahaiakaHaIaIaNaVac
+aravacahahagahahahaXatbabubrbaac
+aravacahbGahahahbFbdaYbrbababNac
+arawacahahahahahbeakaYbJbDbKbfac
+arauacacacacacacacbgbmbjbhbiacac
+bvbwambxananananananaFaebyaeaZab
+apaobbbLbxaMaeaebyaeaebHbEbIaeab
+axaxaxaEaybnazaxaxaQaQabalababab
+axaAbpaBbzaCbqaAaRbkaeaFbyaeabaa
+axaAaBaBaBaBaBaAaRbMaOaUaebsaSaa
+axaJaBaBaBaBaBaKaxaGajajaeaebcaa
+axaAaBaBbCaBaBaAaxaeaeaWaWaWaSaa
+axaTaBblaLaBaBaTaxbtaeaWbAaWboaa
+axaxaxaxaxaxaxaDaxadadadaladabaa
+aaaaaaaaaaaaaaaaaoaoaoaobBaoaoaa
 "}

@@ -1,830 +1,116 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/dmm_suite/clear_turf,
-/area/dmm_suite/clear_area)
-"ab" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ac" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ad" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/bathroom_01)
-"ae" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"af" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/bed/sheet,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 1
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ag" = (
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ah" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/crate/closet,
-/obj/marker/spawning/random/dangerous,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ai" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/chair/comfy,
-/obj/marker/hostage_spawn,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"aj" = (
-/obj/structure/interactive/misc/curtain_open,
-/obj/structure/interactive/shower{
-	icon_state = "shower";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"ak" = (
-/obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"al" = (
-/obj/structure/carpet/red,
-/obj/structure/interactive/bed/double/sheet,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"am" = (
-/obj/structure/carpet/red,
-/obj/structure/table/wood,
-/obj/marker/spawning/random/valuable,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"an" = (
-/obj/structure/carpet/red,
-/obj/structure/interactive/bookcase,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"ao" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/potted_plant/bin,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ap" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"aq" = (
-/obj/structure/carpet/blue,
-/obj/marker/map_node,
-/mob/living/advanced/npc/bandit{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ar" = (
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"as" = (
-/obj/structure/carpet/red,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"at" = (
-/obj/structure/carpet/red,
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
-	},
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 4
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"au" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/bookcase,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"av" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"aw" = (
-/obj/structure/carpet/blue,
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
-	},
-/obj/marker/cover_node/left,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ax" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"ay" = (
-/obj/structure/interactive/misc/toilet{
-	icon_state = "toilet";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"az" = (
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"aA" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/bathroom_01)
-"aB" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aC" = (
-/obj/structure/interactive/door/airlock/wood,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 4
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"aD" = (
-/obj/structure/carpet/red,
-/obj/structure/table/wood,
-/obj/marker/spawning/random/misc,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aE" = (
-/obj/structure/carpet/red,
-/obj/structure/interactive/chair/office{
-	icon_state = "officechair_white";
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aF" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aG" = (
-/obj/structure/interactive/misc/sink{
-	icon_state = "sink";
-	dir = 8
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aH" = (
-/obj/structure/interactive/lighting/fixture/bulb,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aI" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 8
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aJ" = (
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"aK" = (
-/obj/structure/interactive/potted_plant/bin,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"aL" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 4
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aM" = (
-/obj/structure/interactive/misc/toilet{
-	icon_state = "toilet";
-	dir = 1
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aN" = (
-/obj/marker/map_node,
-/mob/living/advanced/npc/bandit{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"aO" = (
-/obj/structure/interactive/door/airlock,
-/obj/marker/cover_node/left,
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aP" = (
-/obj/structure/carpet/brown,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"aQ" = (
-/obj/structure/interactive/door/airlock/wood,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aR" = (
-/obj/structure/carpet/red,
-/obj/structure/table/wood,
-/obj/structure/interactive/storage/ammo_pile,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aS" = (
-/obj/structure/interactive/solar_panel,
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aT" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 1
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aU" = (
-/obj/structure/interactive/wire/yellow,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aV" = (
-/obj/structure/interactive/power/smes{
-	icon_state = "smes_map";
-	dir = 1
-	},
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aW" = (
-/obj/structure/interactive/crate/trash,
-/obj/marker/spawning/random/trash,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"aX" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/plating,
-/area/dmm_suite/clear_area)
-"aY" = (
-/obj/structure/interactive/shower{
-	icon_state = "shower";
-	dir = 4
-	},
-/obj/structure/interactive/misc/curtain_open,
-/obj/structure/interactive/shower{
-	icon_state = "shower";
-	dir = 4
-	},
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_02)
-"aZ" = (
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"ba" = (
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"bb" = (
-/obj/structure/interactive/power/apc{
-	icon_state = "apc";
-	dir = 4
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/bathroom_02)
-"bc" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bd" = (
-/obj/structure/table/reinforced/steel,
-/obj/marker/spawning/random/kitchen,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"be" = (
-/obj/structure/table/cooking/grill,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bf" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bg" = (
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06)
-"bh" = (
-/obj/structure/interactive/lighting/fixture/bulb,
-/obj/structure/interactive/wire/green,
-/obj/structure/carpet/blue,
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 1
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bi" = (
-/obj/structure/interactive/misc/tv,
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bj" = (
-/obj/structure/interactive/wire/green,
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bk" = (
-/obj/structure/interactive/chair/comfy{
-	icon_state = "comfychair";
-	dir = 8
-	},
-/obj/marker/hostage_spawn,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bl" = (
-/obj/structure/interactive/chair/wood,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bm" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bn" = (
-/obj/structure/interactive/chair/wood{
-	icon_state = "wooden_chair";
-	dir = 4
-	},
-/obj/marker/hostage_spawn,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bo" = (
-/obj/structure/table/wood,
-/obj/marker/spawning/random/food,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bp" = (
-/obj/structure/interactive/door/airlock,
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_01)
-"bq" = (
-/obj/structure/interactive/wire/green,
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06)
-"br" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bs" = (
-/obj/structure/interactive/door/airlock,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bt" = (
-/obj/marker/spawning/window,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bu" = (
-/obj/structure/interactive/lighting/fixture/bulb,
-/obj/structure/table/wood,
-/obj/marker/spawning/random/kitchen,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bv" = (
-/obj/structure/interactive/lighting/fixture/bulb{
-	icon_state = "preview";
-	dir = 8
-	},
-/obj/marker/cover_node/right{
-	icon_state = "right";
-	dir = 4
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bw" = (
-/obj/structure/interactive/light_switch{
-	icon_state = "setup";
-	dir = 1
-	},
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06)
-"bx" = (
-/obj/structure/interactive/light_switch,
-/turf/simulated/wall/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"by" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/storage/ammo_pile,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bz" = (
-/mob/living/advanced/npc/bandit{
-	icon_state = "directional";
-	dir = 4
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bA" = (
-/obj/marker/cover_node/right,
-/mob/living/advanced/npc/bandit{
-	icon_state = "directional";
-	dir = 8
-	},
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bB" = (
-/obj/structure/carpet/red,
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"bC" = (
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"bD" = (
-/obj/structure/table/wood,
-/obj/structure/interactive/storage/ammo_pile,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bE" = (
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bF" = (
-/obj/marker/map_node,
-/turf/dmm_suite/no_wall,
-/area/dmm_suite/clear_area)
-"bG" = (
-/obj/marker/map_node,
-/turf/simulated/floor/tile,
-/area/mission/prefab/house/house_06/bathroom_02)
-"bH" = (
-/obj/structure/carpet/brown,
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bI" = (
-/obj/marker/map_node,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bJ" = (
-/obj/structure/carpet/red,
-/obj/structure/interactive/potted_plant/bin,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"bK" = (
-/obj/structure/interactive/potted_plant/bin,
-/obj/structure/carpet/blue,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bL" = (
-/obj/marker/spawning/window,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/master_bedroom)
-"bM" = (
-/obj/marker/spawning/window,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/guest_bedroom)
-"bN" = (
-/obj/marker/spawning/window,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bO" = (
-/obj/marker/spawning/window,
-/obj/marker/smart_clear_turf,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06/kitchen)
-"bP" = (
-/obj/structure/interactive/wire/green,
-/obj/structure/carpet/blue,
-/obj/marker/cover_node/left,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
-"bQ" = (
-/obj/structure/interactive/potted_plant/bin,
-/obj/marker/cover_node/right,
-/turf/simulated/floor/wood/rich,
-/area/mission/prefab/house/house_06)
+"aa" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"ab" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ac" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ad" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/bathroom_01)
+"ae" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"af" = (/obj/structure/carpet/blue,/obj/structure/interactive/bed/sheet,/obj/marker/cover_node/right{icon_state = "right"; dir = 1},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ag" = (/obj/structure/carpet/blue,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ah" = (/obj/structure/carpet/blue,/obj/structure/interactive/crate/closet,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ai" = (/obj/structure/carpet/blue,/obj/structure/interactive/chair/comfy,/obj/marker/hostage_spawn,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"aj" = (/obj/structure/interactive/misc/curtain_open,/obj/structure/interactive/shower{icon_state = "shower"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"ak" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"al" = (/obj/structure/carpet/red,/obj/structure/interactive/bed/double/sheet,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"am" = (/obj/structure/carpet/red,/obj/structure/table/wood,/obj/marker/spawning/random/valuable,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"an" = (/obj/structure/carpet/red,/obj/structure/interactive/bookcase,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"ao" = (/obj/structure/carpet/blue,/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ap" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"aq" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/obj/structure/carpet/blue,/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ar" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"as" = (/obj/structure/carpet/red,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"at" = (/obj/structure/carpet/red,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"au" = (/obj/structure/carpet/blue,/obj/structure/interactive/bookcase,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"av" = (/obj/structure/carpet/blue,/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/marker/cover_node/right{icon_state = "right"; dir = 8},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"aw" = (/obj/structure/carpet/blue,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/obj/marker/cover_node/left,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ax" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"ay" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"az" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/obj/structure/carpet/blue,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"aA" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/bathroom_01)
+"aB" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aC" = (/obj/structure/interactive/door/airlock/wood,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"aD" = (/obj/structure/carpet/red,/obj/structure/table/wood,/obj/marker/spawning/random/misc,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aE" = (/obj/structure/carpet/red,/obj/structure/interactive/chair/office{icon_state = "officechair_white"; dir = 8},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aF" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/bathroom_02)
+"aG" = (/obj/structure/interactive/misc/sink{icon_state = "sink"; dir = 8},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_02)
+"aH" = (/obj/structure/interactive/lighting/fixture/bulb,/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_02)
+"aI" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 8},/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/bathroom_02)
+"aJ" = (/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"aK" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"aL" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 4},/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aM" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 1},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_02)
+"aN" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"aO" = (/obj/structure/interactive/door/airlock,/obj/marker/cover_node/left,/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_02)
+"aP" = (/obj/structure/carpet/brown,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"aQ" = (/obj/structure/interactive/door/airlock/wood,/obj/marker/cover_node/right,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aR" = (/obj/structure/carpet/red,/obj/structure/table/wood,/obj/structure/interactive/storage/ammo_pile,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aS" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aT" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 1},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aU" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aV" = (/obj/structure/interactive/power/smes{icon_state = "smes_map"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aW" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"aX" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"aY" = (/obj/structure/interactive/shower{icon_state = "shower"; dir = 4},/obj/structure/interactive/misc/curtain_open,/obj/structure/interactive/shower{icon_state = "shower"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_02)
+"aZ" = (/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"ba" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bb" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 4},/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/bathroom_02)
+"bc" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bd" = (/obj/structure/table/reinforced/steel,/obj/marker/spawning/random/kitchen,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"be" = (/obj/structure/table/cooking/grill,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bf" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bg" = (/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06)
+"bh" = (/obj/structure/interactive/lighting/fixture/bulb,/obj/structure/interactive/wire/green,/obj/structure/carpet/blue,/obj/marker/cover_node/right{icon_state = "right"; dir = 1},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bi" = (/obj/structure/interactive/misc/tv,/obj/structure/carpet/blue,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bj" = (/obj/structure/interactive/wire/green,/obj/structure/carpet/blue,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bk" = (/obj/structure/interactive/chair/comfy{icon_state = "comfychair"; dir = 8},/obj/marker/hostage_spawn,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bl" = (/obj/structure/interactive/chair/wood,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bm" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bn" = (/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/obj/marker/hostage_spawn,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bo" = (/obj/structure/table/wood,/obj/marker/spawning/random/food,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bp" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_01)
+"bq" = (/obj/structure/interactive/wire/green,/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06)
+"br" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bs" = (/obj/structure/interactive/door/airlock,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bt" = (/obj/marker/spawning/window,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bu" = (/obj/structure/interactive/lighting/fixture/bulb,/obj/structure/table/wood,/obj/marker/spawning/random/kitchen,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bv" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bw" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06)
+"bx" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"by" = (/obj/structure/table/wood,/obj/structure/interactive/storage/ammo_pile,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bz" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bA" = (/obj/structure/carpet/brown,/obj/marker/mission_corpse,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bB" = (/obj/structure/carpet/red,/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"bC" = (/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"bD" = (/obj/structure/table/wood,/obj/structure/interactive/storage/ammo_pile,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bE" = (/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bF" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
+"bG" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/house/house_06/bathroom_02)
+"bH" = (/obj/structure/carpet/brown,/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bI" = (/obj/marker/map_node,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bJ" = (/obj/structure/carpet/red,/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"bK" = (/obj/structure/interactive/potted_plant/bin,/obj/structure/carpet/blue,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bL" = (/obj/marker/spawning/window,/obj/marker/smart_clear_turf,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/master_bedroom)
+"bM" = (/obj/marker/spawning/window,/obj/marker/smart_clear_turf,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/guest_bedroom)
+"bN" = (/obj/marker/spawning/window,/obj/marker/smart_clear_turf,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bO" = (/obj/marker/spawning/window,/obj/marker/smart_clear_turf,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bP" = (/obj/structure/interactive/wire/green,/obj/structure/carpet/blue,/obj/marker/cover_node/left,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bQ" = (/obj/structure/interactive/potted_plant/bin,/obj/marker/cover_node/right,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06)
+"bR" = (/obj/marker/mission_corpse,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
+"bS" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 8},/obj/marker/cover_node/right,/turf/simulated/floor/wood/rich,/area/mission/prefab/house/house_06/kitchen)
 
 (1,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-"}
-(2,1,1) = {"
-aa
-aa
-ab
-ab
-bM
-ab
-ab
-aF
-aF
-aF
-aS
-aS
-aS
-aU
-aV
-aX
-"}
-(3,1,1) = {"
-aa
-ba
-ab
-af
-ao
-au
-ab
-aG
-aM
-aF
-aF
-bg
-bN
-bg
-bg
-aX
-"}
-(4,1,1) = {"
-ba
-ba
-bM
-ag
-ag
-av
-ab
-aH
-bG
-aY
-aF
-az
-bi
-bK
-bg
-aX
-"}
-(5,1,1) = {"
-ba
-ba
-ac
-ah
-ag
-aw
-ab
-aI
-aO
-aF
-bb
-bh
-bj
-bP
-bq
-aX
-"}
-(6,1,1) = {"
-aa
-ba
-ab
-ai
-aq
-ag
-aC
-bE
-bE
-bz
-bc
-bc
-bk
-aJ
-bN
-ba
-"}
-(7,1,1) = {"
-aa
-aa
-ab
-ab
-ab
-ax
-ab
-bu
-bH
-aP
-aP
-aP
-aP
-bE
-bs
-bF
-"}
-(8,1,1) = {"
-aa
-aa
-ad
-aj
-ap
-ay
-ad
-by
-aP
-aP
-aP
-aP
-aP
-aJ
-br
-ba
-"}
-(9,1,1) = {"
-aa
-aa
-ad
-ak
-ar
-aN
-ad
-aK
-bE
-bm
-aK
-aJ
-aJ
-bQ
-bw
-aa
-"}
-(10,1,1) = {"
-aa
-aa
-ad
-ad
-aA
-bp
-ad
-aL
-aQ
-bx
-bd
-aZ
-aZ
-bn
-bf
-ba
-"}
-(11,1,1) = {"
-aa
-ba
-ba
-ae
-al
-as
-aD
-aR
-bC
-ae
-bd
-bI
-bl
-bD
-bO
-ba
-"}
-(12,1,1) = {"
-ba
-ba
-ba
-bL
-am
-bB
-aE
-as
-aT
-ae
-be
-aZ
-bl
-bo
-bt
-ba
-"}
-(13,1,1) = {"
-aa
-ba
-ba
-ae
-an
-at
-as
-bJ
-aW
-ae
-bd
-bv
-bA
-bf
-bf
-ba
-"}
-(14,1,1) = {"
-aa
-aa
-ba
-ae
-ae
-ae
-aB
-bL
-ae
-ae
-bf
-bf
-bO
-bf
-aa
-aa
-"}
-(15,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ba
-ba
-ba
-ba
-aa
-aa
-ba
-ba
-ba
-aa
-aa
-"}
-(16,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-ba
-ba
-aa
-aa
-aa
-aa
-ba
-aa
-aa
-aa
+aaaaaababaaaaaaaaaaaaabaaaaaaaaa
+aaaababababaaaaaaaaabababaaaaaaa
+aaababbMacababadadadbabababaaaaa
+aaabafagahaiabajakadaebLaeaeaaaa
+aabMaoagagaqabaparaAalamanaeaaaa
+aaabauavawagaxayaNbpasbBataebaaa
+aaababababaCabadadadaDaEasaBbaba
+aaaFaGaHaIbEbubyaKaLaRasbJbLbaba
+aaaFaMbGaObEbHaPbEaQbCaTaWaebaaa
+baaFaFaYaFbzbAaPbmbxaeaeaeaeaaaa
+baaSaFaFbbbcaPaPaKbdbdbebdbfaaaa
+baaSbgazbhbcaPaPaJbRbIaZbvbfbaaa
+baaSbNbibjbkaPaPaJaZblblbSbObaba
+baaUbgbKbPaJbEaJbQbnbDbobfbfbaaa
+baaVbgbgbqbNbsbrbwbfbObtbfaaaaaa
+baaXaXaXaXbabFbaaababababaaaaaaa
 "}

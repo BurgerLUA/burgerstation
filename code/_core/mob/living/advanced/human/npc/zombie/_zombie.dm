@@ -39,16 +39,9 @@
 				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
 				if(O) O.broken = TRUE
 
-	var/total_loss_limit = (src.health.health_max*0.5)/length(organs)
-	for(var/k in organs)
-		var/obj/item/organ/O = k
-		var/total_loss = RAND_PRECISE(0.25,0.5) * min(total_loss_limit,O.health.health_max) * (1/max(1,O.damage_coefficient))
-		var/brute_loss = total_loss * RAND_PRECISE(0.25,0.75)
-		var/burn_loss = (total_loss - brute_loss) * RAND_PRECISE(0.75,1)
-		var/tox_loss = total_loss - (burn_loss + brute_loss)
-		O.health.adjust_loss_smart(brute = brute_loss, burn = burn_loss, tox = tox_loss)
-
 	. = ..()
+
+	make_convincing_corpse(place_blood=FALSE)
 
 	add_status_effect(ZOMBIE,100,-1, force = TRUE)
 	if(prob(rest_chance))

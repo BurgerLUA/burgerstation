@@ -1,4 +1,9 @@
-/loadout/bandit
+/loadout/bandit/get_spawning_items()
+	. = ..()
+	if(prob(20))
+		. += pick(/loot/random/gun/slavic/bandit,/loot/random/gun/syndicate/bandit,/loot/random/gun/nanotrasen/bandit)
+	else
+		. += /loot/random/gun/solarian/bandit
 
 /loadout/bandit/male
 	spawning_items = list(
@@ -12,8 +17,9 @@
 		/loot/bandit/coat,
 		/loot/bandit/head,
 		/loot/bandit/melee/small,
-		/loot/random/gun/solarian/bandit
 	)
+
+
 
 /loadout/bandit/female
 	spawning_items = list(
@@ -27,5 +33,4 @@
 		/loot/bandit/coat,
 		/loot/bandit/head,
 		/loot/bandit/melee/small,
-		/loot/random/gun/solarian/bandit
 	)

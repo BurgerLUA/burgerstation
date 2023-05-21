@@ -38,3 +38,4 @@ var/global/list/turf/horde_test_survivor_spawn_turfs = list()
 /obj/marker/horde_test_survivor/Finalize()
 	. = ..()
 	qdel(src)
+

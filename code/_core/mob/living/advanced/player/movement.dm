@@ -39,6 +39,7 @@
 
 	if(new_chunk)
 		new_chunk.players += src
+		new_chunk.visited_by_player = TRUE
 		QUEUE_CHUNK_AI_UPDATE(new_chunk)
 
 

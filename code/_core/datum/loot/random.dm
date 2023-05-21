@@ -92,3 +92,11 @@
 	chance_none = 0
 	rarity_min = RARITY_UNCOMMON
 	rarity_max = RARITY_RARE
+
+/loot/random/citizen
+	value_min = 100
+	value_max = 1000
+	loot_count = 2
+	chance_none = 20
+	rarity_min = RARITY_COMMON
+	rarity_max = RARITY_UNCOMMON
