@@ -18,7 +18,7 @@
 
 	blood_type = /reagent/blood/goblin
 
-	level = 5
+	level = 6
 
 /mob/living/advanced/npc/goblin/warrior
 	name = "goblin warrior"
@@ -27,7 +27,7 @@
 	stamina_base = 200
 	mana_base = 100
 
-	level = 12
+	level = 16
 
 /mob/living/advanced/npc/goblin/mage
 	name = "goblin mage"
@@ -35,5 +35,14 @@
 	health_base = 200
 	stamina_base = 100
 	mana_base = 300
+
+	level = 17
+
+/mob/living/advanced/npc/goblin/archer
+	name = "goblin archer"
+	loadout = /loadout/goblin/archer
+	health_base = 200
+	stamina_base = 300
+	mana_base = 100
 
 	level = 14
