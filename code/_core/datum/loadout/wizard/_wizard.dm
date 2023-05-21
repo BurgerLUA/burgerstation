@@ -1,4 +1,6 @@
-/loadout/wizard_federation //Wizard federation antag
+
+//Wizard Federation antagonist.
+/loadout/wizard_federation
 	spawning_items = list(
 		/obj/item/clothing/underbottom/underwear/boxers/random,
 		/obj/item/clothing/undertop/underwear/shirt/random,
@@ -16,10 +18,13 @@
 		/obj/item/clothing/back/storage/dufflebag/poly/wizard,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/double/black,
-		/obj/item/weapon/melee/torch
+		/obj/item/weapon/melee/torch,
+
+		/obj/item/weapon/ranged/wand/twisted,
+		/obj/item/weapon/ranged/spellgem/fireball
 	)
 
-
+//Hostile generic wizard.
 /loadout/hostile_wizard
 
 	spawning_items = list(
@@ -36,5 +41,56 @@
 		/obj/item/clothing/feet/shoes/sandal,
 		/obj/item/clothing/feet/shoes/sandal/left,
 
-		/obj/item/weapon/ranged/spellgem/fireball
+		/loot/random/gun/wand,
+		/loot/random/gun/spellgem
 	)
+
+/loadout/wizard_ambassador
+	spawning_items = list(
+		/obj/item/clothing/underbottom/underwear/boxers/heart,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/feet/socks/knee,
+
+		/obj/item/clothing/feet/shoes/sandal,
+		/obj/item/clothing/feet/shoes/sandal/left,
+
+
+		/obj/item/clothing/pants/normal/wizard,
+		/obj/item/clothing/shirt/normal/tee,
+
+		/obj/item/clothing/overwear/coat/wizard/real/purple,
+
+		/obj/item/clothing/neck/tie/red,
+		/obj/item/clothing/head/hat/wizard/real/purple,
+
+		/obj/item/weapon/ranged/wand/quartz,
+		/obj/item/weapon/ranged/spellgem/fireball
+
+	)
+
+
+/loadout/wizard_guard
+
+	spawning_items = list(
+
+		/obj/item/clothing/underbottom/underwear/boxers/heart,
+		/obj/item/clothing/feet/socks/knee,
+		/obj/item/clothing/feet/socks/knee,
+
+		/obj/item/clothing/feet/shoes/sandal,
+		/obj/item/clothing/feet/shoes/sandal/left,
+
+		/obj/item/clothing/pants/normal/wizard,
+		/obj/item/clothing/shirt/normal/tee,
+
+		/obj/item/clothing/overwear/coat/wizard/real/blue,
+		/obj/item/clothing/overwear/armor/bulletproof,
+
+		/obj/item/clothing/neck/tie/black,
+		/obj/item/clothing/head/hat/wizard/real/blue,
+
+		/obj/item/weapon/ranged/wand/quartz,
+		/obj/item/weapon/ranged/spellgem/fireball
+
+	)
+

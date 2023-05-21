@@ -91,6 +91,25 @@
 
 	rarity = RARITY_RARE
 
+/obj/item/weapon/melee/spear/bone
+	name = "goliath bone spear"
+	desc = "Pointy end towards invaders."
+	desc_extended = "A sharp spear made out of goliath hides, sinew, and bones."
+	icon = 'icons/obj/item/weapons/melee/polearms/bone_spear.dmi'
+	damage_type = /damagetype/melee/spear/ratvar/
+
+	size = SIZE_4
+
+	value = 400
+
+	attack_range = 2
+
+	weight = 10
+
+	rarity = RARITY_RARE
+
+	dan_mode = FALSE
+
 /obj/item/weapon/melee/sword/zweihander
 	name = "zweihander"
 

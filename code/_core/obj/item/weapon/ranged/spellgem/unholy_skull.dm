@@ -9,6 +9,8 @@
 	bullet_count = 1
 	projectile_speed = TILE_SIZE - 1
 
+	company_type = "Ashwalkers"
+
 	projectile = /obj/projectile/magic/unholy_skull
 	ranged_damage_type = /damagetype/ranged/magic/unholy_skull
 

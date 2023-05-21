@@ -100,7 +100,7 @@
 			/mob/living/simple/goliath/ancient = 20
 		),
 		"ashwalker" = list(
-			/mob/living/advanced/npc/ashwalker/assassin = 40,
+			/mob/living/advanced/npc/ashwalker/shaman = 5,
 			/mob/living/advanced/npc/ashwalker/hunter = 20,
 			/mob/living/advanced/npc/ashwalker/warrior = 20
 		)

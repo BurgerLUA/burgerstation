@@ -10,6 +10,8 @@
 	bullet_count = 2
 	projectile_speed = TILE_SIZE*0.3 - 1
 
+	company_type = "Blood Cultists"
+
 	projectile = /obj/projectile/magic/cultist
 	ranged_damage_type = /damagetype/ranged/magic/cult
 

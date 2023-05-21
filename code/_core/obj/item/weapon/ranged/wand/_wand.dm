@@ -4,6 +4,8 @@
 	desc_extended = "A magic imbued wand that can fit any type of spell gem to amplify and improve its powers."
 	icon_state = "inventory"
 
+	company_type = "Wizard Federation"
+
 	value = 0
 
 	var/obj/item/weapon/ranged/spellgem/socketed_spellgem

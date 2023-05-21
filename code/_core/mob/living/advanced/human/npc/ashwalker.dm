@@ -31,13 +31,13 @@
 
 	level = 16
 
-/mob/living/advanced/npc/ashwalker/assassin
-	name = "ashwalker assassin"
+/mob/living/advanced/npc/ashwalker/shaman
+	name = "ashwalker shaman"
 
-	loadout_to_use_male = /loadout/ashwalker/assassin
-	loadout_to_use_female = /loadout/ashwalker/assassin/female
+	loadout_to_use_male = /loadout/ashwalker/shaman
+	loadout_to_use_female = /loadout/ashwalker/shaman/female
 
-	level = 18
+	level = 40
 
 /mob/living/advanced/npc/ashwalker/warrior
 	name = "ashwalker warrior"

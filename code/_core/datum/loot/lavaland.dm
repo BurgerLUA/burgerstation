@@ -49,8 +49,8 @@
 
 /loot/lavaland/leaper
 	loot_table = list(
-		/obj/item/corrupting_frog = 3,
-		/obj/item/clothing/neck/blood_talisman = 1
+		/obj/item/corrupting_frog = 3
+		//TODO: Something interesting.
 	)
 
 

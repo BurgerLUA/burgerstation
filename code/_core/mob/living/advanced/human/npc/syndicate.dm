@@ -75,10 +75,10 @@
 	name = "syndicate wizard"
 
 	possible_outfits = list(
-		/loadout/syndicate_wizard = 1
+		/loadout/syndicate/wizard = 1
 	)
 	loadout_to_level = list(
-		/loadout/syndicate_wizard = 1
+		/loadout/syndicate/wizard = 1
 	)
 
 	level = 24

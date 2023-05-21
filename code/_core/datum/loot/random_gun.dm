@@ -136,4 +136,3 @@
 	value_max = 1000
 	rarity_min = RARITY_COMMON
 	rarity_max = RARITY_COMMON
-
