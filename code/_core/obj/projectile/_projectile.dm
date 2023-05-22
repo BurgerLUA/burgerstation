@@ -459,6 +459,7 @@
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
 
 	weapon.on_projectile_hit(src,hit_atom,old_loc,new_loc)
+	hit_atom.on_projectile_hit(src,old_loc,new_loc) //todo-Test performance impact.
 
 	return .
 

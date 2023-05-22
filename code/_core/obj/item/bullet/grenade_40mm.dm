@@ -71,3 +71,13 @@
 	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/rubber_grenade
 
 	rarity = RARITY_UNCOMMON
+
+/obj/item/bullet_cartridge/grenade_40mm/incendiary
+	name = "40mm incendiary round"
+	desc = "For when you need that specific area over there on fire."
+	desc_extended = "A 40mm grenade designed to set fire to a small area on impact."
+	icon = 'icons/obj/item/bullet/40mm_incendiary.dmi'
+
+	projectile = /obj/projectile/bullet/grenade/incendiary
+
+	rarity = RARITY_UNCOMMON

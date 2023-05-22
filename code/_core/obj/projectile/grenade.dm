@@ -28,6 +28,13 @@
 	if(. && old_loc)
 		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 1.5)
 
+/obj/projectile/bullet/grenade/incendiary
+	icon_state = "INCEN"
+
+/obj/projectile/bullet/grenade/incendiary/on_projectile_hit(atom/hit_atom, turf/old_loc, turf/new_loc)
+	. = ..()
+	if(. && old_loc)
+		firebomb(old_loc,25,owner,weapon,iff_tag,multiplier = 0.8)
 
 
 /obj/projectile/bullet/grenade/cleaning

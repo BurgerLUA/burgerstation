@@ -386,7 +386,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 
 	return TRUE
 
-obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
+obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE,var/projectile_override = null)
 
 	if(!pre_shoot(caller,object,location,params,damage_multiplier))
 		return FALSE
@@ -394,7 +394,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	var/quality_bonus = get_quality_bonus(0.5,2)
 	var/quality_penalty = max(1,1/get_quality_bonus(0.25,2))
 
-	var/obj/projectile/projectile_to_use = projectile
+	var/obj/projectile/projectile_to_use = (projectile_override != null ? projectile_override : projectile)
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count

@@ -111,6 +111,7 @@
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,3,owner,weapon,iff_tag,multiplier = 2)
+		firebomb(old_loc,22,owner,weapon,iff_tag,multiplier = 1.5)
 
 /obj/projectile/bullet/rocket_wp/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
 	. = ..()
