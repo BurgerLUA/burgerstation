@@ -58,34 +58,41 @@
 
 
 	stored_types = list(
-		// 3 melee
+		//4 melee
+		/obj/item/weapon/unarmed/powerfist,
 		/obj/item/weapon/melee/energy/grazer,
 		/obj/item/weapon/melee/energy/stunbaton,
 		/obj/item/weapon/melee/sword/sabre,
 
-		//3 pistols
+		//4 pistols
 		/obj/item/weapon/ranged/bullet/magazine/pistol/laton,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/high_power,
 		/obj/item/weapon/ranged/bullet/revolver/defender,
+		/obj/item/weapon/ranged/energy/hybrid/carbine/small,
 
-		//3 smgs or shotguns.
+		//4 smgs or shotguns.
+		/obj/item/weapon/ranged/energy/hybrid/carbine,
 		/obj/item/weapon/ranged/bullet/magazine/smg/tactical,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/weapon/ranged/bullet/magazine/smg/pdw,
 
-
-		// 3 assault rifles
-		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
+		//4 assault rifles
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/standard,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst,
+		/obj/item/weapon/ranged/energy/rifle,
 
-		//3 heavy weapons (lmgs, sniper rifles, rocket launchers)
-		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
+		//4 heavy weapons (lmgs, sniper rifles, rocket launchers)
+		/obj/item/weapon/ranged/energy/freezegun,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg_nt_light,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
-		// 3 grenades or equipment
+		//4 grenades or equipment
 		/obj/item/grenade/timed/explosive,
 		/obj/item/grenade/landmine/proximity/explosive,
+		/obj/item/grenade/timed/incendiary,
+		/obj/item/grenade/timed/emp
 
 	)
 
@@ -104,6 +111,9 @@
 		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/bulletbox/small/shotgun_12/flechette,
 		/obj/item/bulletbox/small/shotgun_12/slug,
+		/obj/item/magazine/smg_pdw,
+		/obj/item/magazine/smg_pdw/ap,
+		/obj/item/magazine/smg_pdw/incendiary,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556/ap,
 		/obj/item/magazine/lmg_556,

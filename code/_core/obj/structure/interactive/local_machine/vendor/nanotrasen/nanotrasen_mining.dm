@@ -72,7 +72,7 @@
 		/obj/item/weapon/ranged/bullet/revolver/big_game,
 
 		//3 smgs or shotguns
-		/obj/item/weapon/ranged/bullet/pump/shotgun/nt,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/tech,
 		/obj/item/weapon/ranged/energy/pump/kinetic_accelerator,
 		/obj/item/weapon/ranged/energy/fed/plasma_cutter,
 
@@ -117,6 +117,7 @@
 		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/bulletbox/small/shotgun_12/flechette,
 		/obj/item/bulletbox/small/shotgun_12/slug,
+		/obj/item/bulletbox/small/shotgun_12/techshot,
 
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/rifle_556/ap,
