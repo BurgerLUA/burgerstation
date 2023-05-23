@@ -8,7 +8,11 @@
 
 		/obj/item/clothing/overwear/coat/vest/webbing,
 
-		/obj/item/clothing/back/storage/satchel/poly/brown
+		/obj/item/clothing/back/storage/satchel/poly/brown{loot_to_generate = /loot/random/goblin},
+
+		/obj/item/weapon/melee/toolbox/red,
+
+		/loot/random/goblin
 	)
 
 

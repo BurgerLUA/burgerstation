@@ -659,6 +659,7 @@
 #include "code\_core\datum\loot\potions.dm"
 #include "code\_core\datum\loot\random.dm"
 #include "code\_core\datum\loot\random_bullet.dm"
+#include "code\_core\datum\loot\random_goblin.dm"
 #include "code\_core\datum\loot\random_gun.dm"
 #include "code\_core\datum\loot\random_wand.dm"
 #include "code\_core\datum\loot\rewards.dm"

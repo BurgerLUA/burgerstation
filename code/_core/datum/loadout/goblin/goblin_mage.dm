@@ -5,7 +5,11 @@
 
 		/obj/item/clothing/overwear/coat/sorcerer,
 
+		/obj/item/clothing/back/storage/satchel/poly/brown{loot_to_generate = /loot/random/goblin},
+
 		/obj/item/weapon/ranged/wand/branch,
 		/obj/item/weapon/ranged/spellgem/lightning,
-		/loot/random/support_gem
+		/loot/random/support_gem,
+
+		/loot/random/goblin
 	)

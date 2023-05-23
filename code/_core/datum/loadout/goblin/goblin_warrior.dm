@@ -8,5 +8,9 @@
 		/obj/item/clothing/overwear/armor/knight/goblin,
 		/obj/item/clothing/head/helmet/polymorphic/goblin,
 
-		/obj/item/weapon/melee/sword/claymore
+		/obj/item/clothing/back/storage/satchel/poly/brown{loot_to_generate = /loot/random/goblin},
+
+		/obj/item/weapon/melee/sword/claymore,
+
+		/loot/random/goblin
 	)

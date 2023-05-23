@@ -6,7 +6,6 @@
 "af" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "ag" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/maintbar)
 "ah" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04)
-"ai" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "aj" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04)
 "ak" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/bedroom)
 "al" = (/obj/marker/map_node,/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D04/bathroom)
@@ -112,7 +111,7 @@ SoaxSoTFSoSoSoynSohrLVloQycqthhr
 aaafDkmODkDkDkDkafKVnhaESdSdpzgn
 SoawSobDSoSofgihSbhrCNQYagGsEkhr
 SoDkSoahSbSbSbGCaehrhrhravgngnhr
-SoaituajSoSoSoSoaASbSbSbaeGCTESo
+SoaftuajSoSoSoSoaASbSbSbaeGCTESo
 SoSoSoTwSoaybcDOaraeatqqqqqqqqqq
 aFjMjMaCSoSoSoSoynaBSoqqdUzgPPrR
 aFtUabtUTnaGrkJgauakasrRaqzgrErR

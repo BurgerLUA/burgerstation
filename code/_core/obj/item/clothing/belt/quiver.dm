@@ -11,6 +11,8 @@
 
 	var/max_arrows = 200
 
+	size = SIZE_4
+
 /obj/item/clothing/belt/belt_quiver/get_base_value()
 	return max_arrows*3
 
@@ -122,7 +124,9 @@
 	return TRUE
 
 
-
+/obj/item/clothing/belt/belt_quiver/normal/Generate()
+	stored_arrows[/obj/item/bullet_cartridge/arrow] = rand(15,30)
+	. = ..()
 
 
 /obj/item/clothing/belt/belt_quiver/ashen/Generate()
