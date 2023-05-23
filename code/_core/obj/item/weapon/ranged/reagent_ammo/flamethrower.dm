@@ -32,6 +32,9 @@
 
 	inaccuracy_modifier = 0.15
 
+/obj/item/weapon/ranged/reagent_ammo/flamethrower/get_base_value()
+	return 4000
+
 /obj/item/weapon/ranged/reagent_ammo/flamethrower/click_on_object(mob/caller, atom/object, location, control, params)
 	if((caller.attack_flags & CONTROL_MOD_DISARM) && wielded)
 		return airblast(caller,object,location,params)
