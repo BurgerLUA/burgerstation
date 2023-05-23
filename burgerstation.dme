@@ -662,6 +662,7 @@
 #include "code\_core\datum\loot\random_goblin.dm"
 #include "code\_core\datum\loot\random_gun.dm"
 #include "code\_core\datum\loot\random_wand.dm"
+#include "code\_core\datum\loot\rev.dm"
 #include "code\_core\datum\loot\rewards.dm"
 #include "code\_core\datum\loot\rings.dm"
 #include "code\_core\datum\loot\scroll.dm"

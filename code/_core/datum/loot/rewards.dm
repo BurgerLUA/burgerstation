@@ -26,31 +26,3 @@
 	)
 	chance_none = 80
 	loot_count = 8
-
-
-//Thiongs that revs have when you loot them
-/loot/reward/slavic
-	loot_table_guaranteed = list(
-		/loot/random/trash,
-		/loot/random/low,
-		/loot/random/low,
-	)
-	loot_table = list(
-		/obj/item/supply_crate/slavic = 1,
-		/loot/random/medium = 1
-
-	)
-	chance_none = 80
-
-
-/loot/slavic/back_storage
-	loot_table = list(
-		/obj/item/clothing/back/storage/backpack/rucksack,
-		/obj/item/clothing/back/storage/backpack/explorer/black,
-	)
-
-/loot/slavic/back_storage/pre_spawn(var/atom/movable/M)
-	. = ..()
-	if(is_item(M))
-		var/obj/item/I = M
-		I.loot_to_generate = /loot/reward/slavic

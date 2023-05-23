@@ -1,4 +1,4 @@
-#define SLAVIC_DEFAULT /obj/item/clothing/pants/gorka, /obj/item/clothing/shirt/gorka, /obj/item/clothing/head/hat/skimask/black, /obj/item/clothing/hands/gloves/colored/padded/black, /obj/item/clothing/hands/gloves/colored/padded/black/left, /obj/item/clothing/feet/shoes/black_boots, /obj/item/clothing/feet/shoes/black_boots/left, /obj/item/clothing/belt/storage/colored/black, /obj/item/storage/pouch/double/brown, /obj/item/storage/pouch/single/brown, /loot/slavic/back_storage
+#define SLAVIC_DEFAULT /obj/item/clothing/pants/gorka, /obj/item/clothing/shirt/gorka, /obj/item/clothing/head/hat/skimask/black, /obj/item/clothing/hands/gloves/colored/padded/black, /obj/item/clothing/hands/gloves/colored/padded/black/left, /obj/item/clothing/feet/shoes/black_boots, /obj/item/clothing/feet/shoes/black_boots/left, /obj/item/clothing/belt/storage/colored/black, /obj/item/storage/pouch/double/brown, /obj/item/storage/pouch/single/brown, /loot/revolutionary/back_storage
 
 /loadout/slavic
 	spawning_items = list(
