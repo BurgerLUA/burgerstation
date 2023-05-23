@@ -10,6 +10,8 @@
 
 	weight = 1
 
+	size = SIZE_1
+
 /obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(ismob(object))

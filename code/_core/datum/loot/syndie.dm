@@ -1,35 +1,14 @@
-/loot/syndie
-	loot_table = list(
-		/obj/item/container/simple/beaker/flask/engraved = 50,
-		/obj/item/tempering/quality/ranged = 70,
-		/loot/misc/food = 40,
-		/loot/misc/drink = 40,
-		/loot/misc/baking = 20,
-		/obj/item/container/healing/trauma_kit/advanced = 20,
-		/obj/item/container/healing/burn_kit/advanced = 20,
-		/obj/item/storage/pillbottle/dylovene_small = 20,
-		/obj/item/storage/pillbottle/iron_small = 20,
-		/obj/item/storage/kit/small/advanced/filled = 20,
-		/obj/item/grenade/fuse/fragmentation = 40,
-		/loot/scroll/lesser = 10,
-		/obj/item/data_laptop = 5
-	)
-	loot_count = 4
-
-/loot/syndie/vault
+/loot/syndicate/vault
 	loot_table = list(
 		/obj/item/clothing/back/storage/backpack/bluespace = 1,
 		/obj/item/clothing/back/storage/satchel/bluespace = 1,
 		/obj/item/powercell/bluespace = 1,
 		/loot/currency/telecrystals = 9,
 		/obj/item/storage/kit/syndicate/filled = 1,
-
-
-
 	)
 	loot_count = 6
 
-/loot/syndie/vault/sniper_20
+/loot/syndicate/vault/sniper_20
 
 	loot_table_guaranteed = list(
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20
@@ -40,3 +19,64 @@
 	)
 	loot_count = 4
 	chance_none = 20
+
+
+/loot/syndicate/lunch
+	loot_table = list(
+		/loot/misc/food = 1,
+		/loot/misc/drink = 1,
+		/obj/item/container/edible/package/junkfood/syndicate = 1,
+		/obj/item/container/edible/package/junkfood/halloween/malf_way = 1,
+		/obj/item/container/simple/can/dr_gibb = 1
+	)
+	loot_count = 2
+	chance_none = 20
+	allow_duplicates = FALSE
+
+/loot/syndicate/medicine
+	loot_table = list(
+		/obj/item/container/simple/beaker/bottle/medium/brute_mix = 1,
+		/obj/item/container/simple/beaker/bottle/medium/burn_mix = 1,
+		/obj/item/container/simple/beaker/bottle/medium/toxin_mix = 1,
+		/obj/item/container/simple/beaker/bottle/medium/death_mix = 1,
+		/obj/item/container/simple/beaker/bottle/medium/rad_mix = 1,
+		/obj/item/container/simple/beaker/bottle/medium/combat_mix = 1
+	)
+	loot_table_guaranteed = list(
+		/obj/item/analyzer/health/syndicate,
+		/loot/medicine/misc_medicine
+	)
+	loot_count = 3
+	chance_none = 20
+	allow_duplicates = FALSE
+
+/loot/syndicate/bag
+	loot_table = list(
+		/obj/item/clothing/head/helmet/full/paperbag/syndicate{loot_to_generate=/loot/syndicate/lunch} = 1,
+		/obj/item/clothing/mask/gas/poly/syndicate = 1,
+		/obj/item/storage/cigarettes/syndicate = 1,
+		/obj/item/storage/kit/syndicate{loot_to_generate=/loot/syndicate/medicine} = 1,
+		/obj/item/supply_crate/syndicate = 1,
+		/obj/item/attachment/barrel/suppressor = 1,
+		/obj/item/cassette_tape = 1,
+		/obj/item/cassette_player = 1,
+		/loot/currency/telecrystals/small = 1,
+		/obj/item/data_laptop = 1,
+		/obj/item/deployable/barricade = 1,
+		/obj/item/deployable/bodybag = 1,
+		/obj/item/deployable/barricade = 1,
+		/obj/item/dice/d6/black = 1,
+		/obj/item/doctor_bag = 1,
+		/obj/item/handcuffs = 1,
+		/obj/item/tempering/luck = 1,
+		/obj/item/tempering/quality/greater = 1,
+		/obj/item/tempering/quality/ranged/lesser = 1,
+		/obj/item/container/simple/beaker/flask/engraved = 1
+	)
+	loot_table_guaranteed = list(
+		/loot/currency/dosh/survivor,
+		/obj/item/lighter
+	)
+	loot_count = 6
+	chance_none = 20
+	allow_duplicates = FALSE

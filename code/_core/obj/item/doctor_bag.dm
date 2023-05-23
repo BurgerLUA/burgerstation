@@ -21,6 +21,8 @@
 
 	rarity = RARITY_RARE
 
+	size = SIZE_3
+
 /obj/item/doctor_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 

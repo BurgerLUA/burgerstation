@@ -6,6 +6,7 @@
 		/obj/item/clothing/pants/syndicate,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
@@ -31,6 +32,7 @@
 		/obj/item/clothing/head/helmet/tactical/advanced,
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/overwear/armor/molded_armor/black,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/carbine,
 		/obj/item/weapon/melee/sword/combat_knife,
@@ -58,6 +60,7 @@
 		/obj/item/clothing/head/hat/skimask/black,
 		/obj/item/clothing/mask/gas/syndicate,
 		/obj/item/clothing/overwear/armor/bulletproof,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/bulldog,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/syndie,
@@ -81,6 +84,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/hardsuit/syndie,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/weapon/ranged/bullet/magazine/smg/bullpup,
@@ -104,6 +108,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/hardsuit/syndie/advanced,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman,
 		/obj/item/weapon/melee/sword/combat_knife,
@@ -127,6 +132,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/hardsuit/syndie/elite,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/storage/pouch/single/black,
 		/obj/item/storage/pouch/single/black,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/lmg,
@@ -149,6 +155,7 @@
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
 		/obj/item/clothing/overwear/hardsuit/syndie/ultra,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black/,
 		/loot/random/gun/syndicate/ultra,
@@ -169,6 +176,7 @@
 		/obj/item/clothing/hands/gloves/colored/insulated/left,
 		/obj/item/clothing/feet/shoes/black_boots,
 		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/mask/gas/poly/syndicate,
 		/obj/item/clothing/neck/tie/black,
@@ -188,20 +196,24 @@
 /loadout/syndicate/wizard
 
 	spawning_items = list(
-		/obj/item/clothing/head/hat/wizard/real/syndicate,
 
+		/obj/item/clothing/underbottom/underwear/boxers/heart,
 		/obj/item/clothing/undertop/underwear/shirt/random,
-		/obj/item/clothing/pants/syndicate,
-
-		/obj/item/clothing/overwear/coat/wizard/real/syndicate,
-
-		/obj/item/clothing/overwear/armor/molded_armor/black,
-
 		/obj/item/clothing/feet/socks/knee,
 		/obj/item/clothing/feet/socks/knee,
 
 		/obj/item/clothing/feet/shoes/sandal,
 		/obj/item/clothing/feet/shoes/sandal/left,
+
+		/obj/item/clothing/pants/syndicate,
+
+		/obj/item/clothing/overwear/coat/wizard/real/syndicate,
+
+		/obj/item/clothing/head/hat/wizard/real/syndicate,
+
+		/obj/item/clothing/overwear/armor/molded_armor/black,
+
+		/obj/item/clothing/back/storage/satchel/poly/syndicate{loot_to_generate=/loot/syndicate/bag},
 
 		/loot/random/gun/wand,
 		/loot/random/gun/spellgem,
