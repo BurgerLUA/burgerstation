@@ -16,6 +16,9 @@
 
 	var/ignition_temperature = TNULL
 
+/reagent/fuel/get_flammability()
+	return fire_strength_per_unit
+
 /reagent/fuel/on_temperature_change(var/reagent_container/container)
 
 	. = ..()

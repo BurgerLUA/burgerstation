@@ -59,6 +59,10 @@
 
 	var/bypass_small_limit = FALSE //Set to true if this reagent ignores the metabolism cap of 1u minimum.
 
+/reagent/proc/get_flammability()
+	return 0
+
+
 /reagent/New(var/desired_loc)
 
 	if(metabolism_stomach > 0 && metabolism_stomach < REAGENT_ROUNDING)

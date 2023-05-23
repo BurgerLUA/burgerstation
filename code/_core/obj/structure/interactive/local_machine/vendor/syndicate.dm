@@ -45,7 +45,7 @@
 		/obj/item/magazine/sniper_50/ion,
 		/obj/item/powercell/advanced,
 		/obj/item/cell_charger,
-		/obj/item/clothing/back/flamethrower,
+		/obj/item/weapon/ranged/reagent_ammo/flamethrower,
 		/obj/item/crafting/ingredient/part/p_tank,
 		/obj/item/weapon/melee/sword/combat_knife,
 		/obj/item/weapon/melee/energy/sword/red,

@@ -39,7 +39,7 @@
 		/obj/item/weapon/melee/sword/fork,
 		/obj/item/weapon/melee/sword/chef_knife,
 		/obj/item/weapon/melee/sword/butcher_cleaver,
-		/obj/item/clothing/back/flamethrower,
+		/obj/item/weapon/ranged/reagent_ammo/flamethrower/,
 		/obj/item/container/cheese_mold,
 		/obj/item/container/cheese_mold/block,
 		/obj/item/fishing/rod,

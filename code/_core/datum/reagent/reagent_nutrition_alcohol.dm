@@ -24,7 +24,7 @@
 	blood_toxicity_multiplier = 3
 
 /reagent/nutrition/ethanol/New(var/desired_loc)
-	var/power_mod = power/100
+	var/power_mod = power*0.01
 	nutrition_amount = power_mod*10
 	hydration_amount = max(0,(1-power_mod)*5)
 	nutrition_quality_amount = -nutrition_amount*0.5
@@ -32,6 +32,8 @@
 	liquid = 1 - min(power_mod,1)*0.5
 	. = ..()
 
+/reagent/nutrition/ethanol/get_flammability()
+	return power*0.001 //100 means it would be 0.1
 
 /reagent/nutrition/ethanol/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 

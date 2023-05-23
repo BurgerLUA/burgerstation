@@ -13,6 +13,6 @@
 		/obj/item/clothing/belt/storage,
 
 		/obj/item/clothing/overwear/coat/firefighter,
-		/obj/item/clothing/back/flamethrower
+		/obj/item/weapon/ranged/reagent_ammo/flamethrower
 
 	)

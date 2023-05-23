@@ -53,7 +53,7 @@
 	//misc loot you'd find from dangerous and/or well-equipped citizens
 	loot_table = list(
 		/obj/item/attachment/barrel/suppressor = 5,
-		/obj/item/clothing/back/flamethrower = 5,
+		/obj/item/weapon/ranged/reagent_ammo/flamethrower/ = 5,
 		/obj/item/clothing/belt/storage/medical/filled = 5,
 		/obj/item/clothing/belt/storage/tool/filled = 5,
 		/obj/item/clothing/glasses/blindfold = 1,

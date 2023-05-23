@@ -87,7 +87,7 @@
 			stored_ranged_weapon = new/obj/item/weapon/ranged/energy/freezegun(src)
 		if("engineer")
 			stored_melee_weapon = new/obj/item/weapon/melee/axe/fireaxe(src)
-			stored_ranged_weapon = new/obj/item/weapon/ranged/energy/flamethrower(src)
+			stored_ranged_weapon = new/obj/item/weapon/ranged/reagent_ammo/flamethrower(src)
 
 	if(stored_melee_weapon)
 		INITIALIZE(stored_melee_weapon)

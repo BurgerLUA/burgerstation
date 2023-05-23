@@ -453,13 +453,13 @@
 										play_sound(pick(DT.impact_sounds),T,range_max=VIEW_RANGE,volume=50)
 
 	if(impact_effect_turf && is_turf(hit_atom))
-		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*3,-20,20),clamp((shoot_y-16)*3,-20,20),bullet_color)
+		new impact_effect_turf(hit_atom,SECONDS_TO_DECISECONDS(60),clamp((shoot_x-16)*2,-20,20),clamp((shoot_y-16)*2,-20,20),bullet_color)
 
 	else if(impact_effect_movable && ismovable(hit_atom))
 		new impact_effect_movable(get_turf(hit_atom),SECONDS_TO_DECISECONDS(5),0,0,bullet_color)
 
 	weapon.on_projectile_hit(src,hit_atom,old_loc,new_loc)
-	hit_atom.on_projectile_hit(src,old_loc,new_loc) //todo-Test performance impact.
+	hit_atom.on_projectile_hit(src,old_loc,new_loc)
 
 	return .
 
