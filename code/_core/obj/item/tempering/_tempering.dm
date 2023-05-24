@@ -25,6 +25,7 @@
 
 /obj/item/tempering/get_examine_list(var/mob/examiner)
 	. = ..()
+	. += span("notice","Use alt+click to bypass confirmation prompts and to use on objects that hold inventory.")
 	if(uses_left == -1)
 		. += span("notice","There are <b>unlimited</b> uses left.")
 	else if(uses_left <= 0)
@@ -50,7 +51,7 @@
 					on_temper(caller,object)
 					return TRUE
 
-	return ..()
+	. = ..()
 
 /obj/item/tempering/proc/can_temper(var/mob/caller,var/obj/item/I)
 
