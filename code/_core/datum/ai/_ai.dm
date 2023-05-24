@@ -35,7 +35,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/objective_ticks = 0
 
 	//Measured in ticks.
-	var/objective_delay = DECISECONDS_TO_TICKS(10)
+	var/objective_delay = SECONDS_TO_TICKS(4) //Base objective delay. Gets smaller with alertness.
 
 	var/list/target_distribution_x = list(12,16,20)
 	var/list/target_distribution_y = list(4.8,12,16,20,24)

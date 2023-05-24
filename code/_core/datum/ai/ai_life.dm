@@ -191,8 +191,19 @@
 
 	. = objective_delay
 
+	if(use_alerts)
+		switch(alert_level)
+			if(ALERT_LEVEL_NOISE)
+				. *= 0.75
+			if(ALERT_LEVEL_CAUTION)
+				. *= 0.5
+			if(ALERT_LEVEL_COMBAT)
+				. *= 0.25
+
 	if(objective_attack)
 		. = max(.,SECONDS_TO_TICKS(4))
+	else
+		. = max(.,SECONDS_TO_DECISECONDS(1))
 
 /ai/proc/on_death()
 	set_objective(null)

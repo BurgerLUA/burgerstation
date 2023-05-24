@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(sound)
 	priority = SS_ORDER_FIRST
 	var/channel_hack = 100
 
-	tick_usage_max = 75
+	tick_usage_max = 90
 
 	var/list/round_end_sounds = list()
 

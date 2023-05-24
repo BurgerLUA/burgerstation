@@ -45,8 +45,7 @@
 	var/color_eyes = "#FFFFFF"
 	var/color_iris = "#FFFFFF"
 
-/mob/living/simple/spacecarp/Generate()
-	. = ..()
+/mob/living/simple/spacecarp/proc/generate_colors()
 	var/r = rand(0,1) ? 1 : RAND_PRECISE(0,1) //This is fucky, but it werks.
 	var/g = r == 1 ? rand(0,1) : RAND_PRECISE(0,1)
 	var/b = r == 1 || g == 1 ? rand(0,1) : RAND_PRECISE(0,1)
@@ -54,6 +53,11 @@
 	color_body = rgb(r*255,g*255,b*255)
 	color_iris = rgb(255,rand(100,255),0)
 	color_eyes = rgb(black,black,black)
+	return TRUE
+
+/mob/living/simple/spacecarp/Generate()
+	. = ..()
+	generate_colors()
 
 /mob/living/simple/spacecarp/Finalize()
 	. = ..()
@@ -88,5 +92,18 @@
 /mob/living/simple/spacecarp/leader
 	name = "alpha giant carp"
 
+	level = 28
+
+/mob/living/simple/spacecarp/jungle
+	name = "giant jungle carp"
 	level = 14
 
+/mob/living/simple/spacecarp/jungle/generate_colors()
+	var/r = RAND_PRECISE(0,0.5)
+	var/g = RAND_PRECISE(0.1,0.25)
+	var/b = 0
+	var/black = rand(0,50)
+	color_body = rgb(r*255,g*255,b*255)
+	color_iris = rgb(255,rand(100,255),0)
+	color_eyes = rgb(black,black,black)
+	return TRUE

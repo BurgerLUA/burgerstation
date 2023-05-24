@@ -113,8 +113,6 @@
 
 	A.revive()
 
-	A.ai.set_active(TRUE)
-
 /status_effect/zombie/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()
 	if(. && !owner.dead && owner.ai && owner.ai.active && !owner.has_status_effect(REST) && prob(1))

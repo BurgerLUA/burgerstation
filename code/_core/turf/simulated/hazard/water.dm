@@ -92,7 +92,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 
 /turf/simulated/liquid/water/river/jungle/Finalize()
 	. = ..()
-	if(depth <= 2 && ( (shore && prob(90)) || prob(40)) )
+	if(depth <= 2 && ( (shore && prob(30)) || prob(10)) )
 		for(var/j=1,j<=rand(2,3),j++)
 			var/obj/structure/scenery/reeds/R = new(src)
 			R.pixel_x = rand(-8,8)

@@ -189,8 +189,6 @@ var/global/list/difficulty_to_ai_modifier = list(
 
 /ai/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 
-	set_active(TRUE)
-
 	if(is_living(attacker) && !stealthy && attacker != objective_attack)
 		if(should_attack_mob(attacker,FALSE))
 			if(!attackers[attacker])
@@ -205,5 +203,6 @@ var/global/list/difficulty_to_ai_modifier = list(
 		else if(prob(20+damage_amount))
 			do_dialogue("self_hit",damage_amount)
 
+	if(!active) set_active(TRUE)
 
 	return TRUE

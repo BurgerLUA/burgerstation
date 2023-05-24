@@ -69,7 +69,7 @@
 
 /obj/marker/generation/mob/venus_human_trap
 	object_to_place = /mob/living/simple/venus_human_trap
-	objects_max = 1
+	objects_max = 3
 	turf_whitelist = /turf/simulated/floor/grass/jungle
 
 
@@ -123,6 +123,9 @@
 	object_to_place = /mob/living/simple/spacecarp/
 	objects_max = 1
 	turf_whitelist = /turf/simulated/liquid/water
+
+/obj/marker/generation/mob/carp/jungle
+	object_to_place = /mob/living/simple/spacecarp/jungle
 
 /obj/marker/generation/mob/lobster
 	object_to_place = /mob/living/simple/lobster

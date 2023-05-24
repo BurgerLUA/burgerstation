@@ -12,8 +12,12 @@
 	if(alert_source && alert_source == owner)
 		return FALSE
 
-	if(alert_level <= alert_level && is_living(alert_source))
+	if(alert_level <= desired_alert_level && is_living(alert_source))
 		var/mob/living/L = alert_source
+
+		//Ignore alert changes (upwards) if it's by a non-player and we're not even active.
+		if(!active && !is_player(L))
+			return FALSE
 
 		//Ignore sounds and stuff made by teammates, as well as people we generally do not give a fuck about if the sound is small.
 		if(desired_alert_level <= ALERT_LEVEL_NOISE)

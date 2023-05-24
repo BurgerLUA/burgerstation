@@ -107,7 +107,7 @@
 
 	color = COLOR_GREEN
 
-	turf_whitelist = /turf/simulated/floor/colored/dirt
+	turf_whitelist = /turf/simulated/floor/grass
 
 //TREES
 /obj/marker/generation/foliage/tree

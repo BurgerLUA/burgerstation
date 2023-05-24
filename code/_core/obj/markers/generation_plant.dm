@@ -42,7 +42,7 @@
 //Misc shrooms..
 /obj/marker/generation/plant/glowcap
 	object_to_place = /obj/structure/interactive/plant/glowcap
-	turf_whitelist = /turf/simulated/floor
+	turf_whitelist = /turf/simulated/floor/basalt
 	objects_max = 3
 
 /obj/marker/generation/plant/cabbage
