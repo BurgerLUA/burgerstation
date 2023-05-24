@@ -555,6 +555,7 @@
 #include "code\_core\datum\health\turf\_turf.dm"
 #include "code\_core\datum\holiday\_holiday.dm"
 #include "code\_core\datum\horde_data\_horde_data.dm"
+#include "code\_core\datum\horde_data\horde_data_gamemodes.dm"
 #include "code\_core\datum\job\_job.dm"
 #include "code\_core\datum\job\assistant.dm"
 #include "code\_core\datum\job\chaplain.dm"

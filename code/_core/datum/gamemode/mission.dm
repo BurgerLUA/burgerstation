@@ -43,20 +43,32 @@
 
 	var/horde_data/HD = SShorde.all_horde_data_types[gamemode_horde_data]
 
+	var/list/area_to_mob_type_whitelist = list()
+
 	var/mission_mobs_created = 0
 	for(var/k in mission_mob_markers)
 
 		var/obj/marker/M = k
 		if(!M.loc)
 			qdel(M)
-			CHECK_TICK_SAFE(25,FPS_SERVER*10)
+			CHECK_TICK_SAFE(90,FPS_SERVER*10)
 			continue
+		var/turf/T = M.loc
+		var/area/A = T.loc
 
-		var/chosen_data = pickweight(HD.horde_weights)
+		var/chosen_data
+		if(area_to_mob_type_whitelist[A.type])
+			chosen_data = area_to_mob_type_whitelist[A.type]
+		else if(area_to_mob_type_whitelist[A.parent_type])
+			chosen_data = area_to_mob_type_whitelist[A.parent_type]
+		else
+			chosen_data = pickweight(HD.horde_weights)
+			area_to_mob_type_whitelist[A.type] = chosen_data
+
 		if(istext(chosen_data))
-			chosen_data = HD.horde_squads[chosen_data]
+			chosen_data = pick(HD.horde_squads[chosen_data])
 
-		var/mob/living/L = new chosen_data(M.loc)
+		var/mob/living/L = new chosen_data(T)
 		L.dir = pick(DIRECTIONS_CARDINAL)
 		INITIALIZE(L)
 		GENERATE(L)

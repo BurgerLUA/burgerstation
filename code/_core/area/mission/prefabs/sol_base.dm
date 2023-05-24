@@ -1,8 +1,4 @@
 /area/mission/prefab/sol_base
-	//horde_data = /horde_data/sol
-
-
-/area/mission/prefab/sol_base
 	name = "solarian base"
 	icon_state = "yellow"
 	requires_power = TRUE
@@ -11,6 +7,7 @@
 	default_state_power_lights = ON|AUTO
 	default_state_power_machines = ON|AUTO
 	default_state_power_doors = ON|AUTO
+	horde_data = /horde_data/soldiers
 
 /area/mission/prefab/sol_base/lobby
 	icon_state = "blue"

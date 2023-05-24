@@ -7,14 +7,14 @@
 
 /gamemode/mission/zombie
 	name = "Mission - Zombies"
-	gamemode_horde_data = /horde_data/zombie
+	gamemode_horde_data = /horde_data/zombies
 
 	interior_corpse_type = /mob/living/advanced/npc/zombie/normal
 	exterior_corpse_type = /mob/living/advanced/npc/zombie/normal
 
 /gamemode/mission/xeno
-	name = "Mission - Xenomorphs"
-	gamemode_horde_data = /horde_data/xeno
+	name = "Mission - Xenomorphs + Soldiers"
+	gamemode_horde_data = /horde_data/xeno_plus_soliders
 
 	interior_corpse_type = /mob/living/advanced/citizen
 	exterior_corpse_type = /mob/living/advanced/npc/space_soldier

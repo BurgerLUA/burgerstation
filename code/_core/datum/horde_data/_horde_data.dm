@@ -145,6 +145,12 @@
 	ignore_gamemode = TRUE
 
 
+/horde_data/soldiers
+
+	horde_weights = list(
+		/mob/living/advanced/npc/space_soldier = 100
+	)
+
 /horde_data/tax
 
 	horde_weights = list(
@@ -153,34 +159,5 @@
 
 	ignore_gamemode = TRUE
 
-/horde_data/zombie
-
-	horde_weights = list(
-		/mob/living/advanced/npc/zombie/normal = 200,
-		/mob/living/advanced/npc/zombie/security = 50,
-		/mob/living/advanced/npc/zombie/worker = 50,
-		/mob/living/advanced/npc/zombie/roided = 10,
-		/mob/living/advanced/npc/zombie/bloated = 20,
-		/mob/living/advanced/npc/zombie/armored = 10,
-		/mob/living/advanced/npc/zombie/clown = 5
-	)
-
-	ignore_gamemode = TRUE
-
-/horde_data/syndicate
-
-	horde_weights = list(
-		/mob/living/advanced/npc/syndicate = 100,
-		/mob/living/simple/silicon/syndieborg = 10
-	)
-
-	ignore_gamemode = TRUE
 
 
-/horde_data/revolutionary
-
-	horde_weights = list(
-		/mob/living/advanced/npc/rev = 100,
-		/mob/living/advanced/npc/rev/elite = 20,
-		/mob/living/simple/bear/armored/revolutionary = 10
-	)
