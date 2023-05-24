@@ -72,10 +72,10 @@
 	value = 750
 
 /obj/item/tempering/quality/ranged/projectile
-	name = "solder's spare brass parts"
+	name = "soldier's spare brass parts"
 	desc = "Stay ahead of the curve!"
 	desc_extended = "A collection of spare brass parts stolen from Clockwork Cultists that can improve the quality of ranged weapons."
-	icon_state = "durathread"
+	icon_state = "brass_box"
 
 	increase = 5
 	minimum = 100
