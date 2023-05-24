@@ -82,7 +82,7 @@ var/global/list/stored_bookcase_phrases = list(
 			var/mob/living/advanced/player/P = caller
 			rarity = P.get_rarity()
 		var/turf/T = get_turf(src)
-		SPAWN_LOOT(/loot/skill_scroll,T,rarity)
+		SPAWN_LOOT(/loot/random/scroll,T,rarity)
 		caller.to_chat(span("notice","Huh. You found a scroll!"))
 	else
 		caller.to_chat(span("warning","...You didn't find anything."))

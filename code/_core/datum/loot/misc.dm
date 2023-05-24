@@ -261,7 +261,8 @@
 /loot/misc/ashwalker //Stuff found in ashwalker camps
 	loot_table = list(
 		/loot/currency/gold_coin = 100,
-		/loot/scroll/lesser = 5,
+		/loot/random/scroll = 5,
+		/loot/random/tempering = 5,
 		/loot/soulgem = 50,
 		/loot/soulgem/filled = 10,
 		/loot/supply_crate/all = 5,

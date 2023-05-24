@@ -69,8 +69,7 @@
 		/obj/item/doctor_bag = 1,
 		/obj/item/handcuffs = 1,
 		/obj/item/tempering/luck = 1,
-		/obj/item/tempering/quality/greater = 1,
-		/obj/item/tempering/quality/ranged/lesser = 1,
+		/obj/item/tempering/quality/general = 1,
 		/obj/item/container/simple/beaker/flask/engraved = 1
 	)
 	loot_table_guaranteed = list(

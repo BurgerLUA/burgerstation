@@ -9,10 +9,6 @@
 
 	value = 0
 
-/obj/item/ability_learner/PreDestroy()
-	stored_ability = null //Just in case.
-	. = ..()
-
 /obj/item/ability_learner/Finalize()
 	. = ..()
 	if(!stored_ability)
@@ -32,7 +28,7 @@
 	PROGRESS_BAR(caller,src,30,src::learn(),caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_learn(),caller)
 
-	caller.to_chat(span("notice","You look into \the [src.name] and begin learning about [initial(stored_ability.name)]."))
+	caller.to_chat(span("notice","You look into \the [src.name] and begin learning about [initial(stored_ability.name)]..."))
 
 	return TRUE
 

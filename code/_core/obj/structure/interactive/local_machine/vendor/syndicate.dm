@@ -50,8 +50,7 @@
 		/obj/item/weapon/melee/sword/combat_knife,
 		/obj/item/weapon/melee/energy/sword/red,
 		/obj/item/weapon/melee/energy/shield,
-		/obj/item/tempering/quality/ranged/lesser,
-		/obj/item/tempering/quality/greater,
+		/obj/item/tempering/quality/general,
 		/obj/item/grenade/fuse/fragmentation
 	)
 
@@ -239,8 +238,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/pkm,
 		/obj/item/magazine/lmg_762_r,
 
-		/obj/item/tempering/quality/ranged/lesser,
-		/obj/item/tempering/quality/greater,
+		/obj/item/tempering/quality/general,
 
 		/obj/item/grenade/fuse/he
 	)

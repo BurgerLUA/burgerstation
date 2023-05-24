@@ -1,9 +1,9 @@
 /loot/boss
 	loot_table = list(
 		/loot/potion = 5,
-		/loot/scroll/lesser = 1,
+		/loot/random/scroll = 1,
 		/loot/soulgem/assorted = 10,
-		/loot/tempering_items = 10
+		/loot/random/tempering = 10
 	)
 	chance_none = 25
 	loot_count = 10

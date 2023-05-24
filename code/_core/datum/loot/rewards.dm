@@ -3,8 +3,8 @@
 
 /loot/reward/standard
 	loot_table = list(
-		/loot/scroll/lesser = 1,
-		/loot/tempering_items = 1,
+		/loot/random/scroll = 1,
+		/loot/random/tempering = 1,
 		/obj/item/portal_scroll = 1,
 		/loot/potion = 1,
 		/loot/soulgem/assorted = 1,

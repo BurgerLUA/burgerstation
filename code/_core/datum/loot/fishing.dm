@@ -31,8 +31,7 @@
 		/obj/item/supply_crate/nanotrasen = CHANCE_CRATE,
 		/obj/item/supply_crate/slavic = CHANCE_CRATE,
 		/obj/item/supply_crate/syndicate = CHANCE_CRATE,
-		/obj/item/tempering/quality/clothing = CHANCE_GOD,
-		/obj/item/tempering/quality/energy = CHANCE_GOD,
+		/loot/random/tempering = CHANCE_GOD,
 		/obj/item/fishing/lure/t3 = CHANCE_GOOD,
 		/obj/item/fishing/lure/t3_clown = CHANCE_GOOD,
 		/obj/item/fishing/bait/sea/infinite = CHANCE_GOD,
@@ -88,8 +87,7 @@
 		/obj/item/fishing/rod/telescopic = CHANCE_GOD,
 		/obj/item/dice/d20/cursed = CHANCE_GOD,
 		/obj/item/coin/cursed = CHANCE_GOD,
-		/obj/item/tempering/quality/magic = CHANCE_GOD,
-		/obj/item/tempering/quality/ranged = CHANCE_GOD,
+		/loot/random/tempering = CHANCE_GOD,
 		/obj/item/powercell/bluespace = CHANCE_GOD
 
 	)

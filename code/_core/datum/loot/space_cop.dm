@@ -14,7 +14,7 @@
 		/obj/item/supply_remote/barbecue = 1,
 		/obj/item/supply_remote/ammo = 1,
 		/obj/item/tempering/luck = 1,
-		/obj/item/tempering/quality/greater = 1,
+		/obj/item/tempering/quality/general = 1,
 		/obj/item/container/simple/alcohol/whiskey = 1,
 		/obj/item/container/simple/alcohol/beer = 1,
 		/obj/item/container/simple/can/cola = 1,

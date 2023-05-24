@@ -8,64 +8,95 @@
 	value = 0
 
 	var/increase = 5
-	var/limit = 125
 	var/minimum = 100
+	var/maximum = 125
 
-	value_burgerbux = 1 //Prevents being sold in vendors.
-
-	var/unlimited = FALSE
-	var/left = 5 //How much qual can this item improve before breaking?
+	var/uses_left = 1 //How many times can this object be used to improve something? Set to -1 for infinity.
 
 	rarity = RARITY_UNCOMMON
 
+/obj/item/tempering/save_item_data(var/mob/living/advanced/player/P, var/save_inventory=TRUE, var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	SAVEVAR("uses_left")
+
+/obj/item/tempering/load_item_data_post(var/mob/living/advanced/player/P, var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	LOADVAR("uses_left")
+
+/obj/item/tempering/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(uses_left == -1)
+		. += span("notice","There are <b>unlimited</b> uses left.")
+	else if(uses_left <= 0)
+		. += span("warning","There are no uses left.")
+	else
+		. += span("notice","There are <b>[uses_left]</b> uses left.")
+
 /obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(is_item(object) && can_temper(caller,object))
+	if(is_item(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			on_temper(caller,object)
-			return TRUE
-		else
-			var/choice = input("Do you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
-			if(choice == "Yes")
-				INTERACT_CHECK
-				INTERACT_CHECK_OBJECT
+			if(can_temper(caller,object))
 				on_temper(caller,object)
-				return TRUE
+			return TRUE
+		else if(!is_inventory(object))
+			if(can_temper(caller,object))
+				var/choice = input("Are you sure you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
+				if(choice == "Yes")
+					INTERACT_CHECK
+					INTERACT_CHECK_OBJECT
+					on_temper(caller,object)
+					return TRUE
 
 	return ..()
 
 /obj/item/tempering/proc/can_temper(var/mob/caller,var/obj/item/I)
 
-	if(!istype(I,temper_whitelist))
-		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]!"))
+	//Check if there are uses.
+	if(uses_left != -1 && uses_left <= 0)
+		caller.to_chat(span("warning","The [src.name] has no uses left!"))
 		return FALSE
 
+	//Check if the object can save.
 	if(!I.can_save)
 		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]! Try tempering the main part of this clothing set."))
+		return FALSE
+
+	//Check the type.
+	var/is_valid_object = FALSE
+	if(islist(temper_whitelist))
+		for(var/k in temper_whitelist)
+			if(!istype(I,k))
+				continue
+			is_valid_object = TRUE
+			break
+	else if(istype(I,temper_whitelist))
+		is_valid_object = TRUE
+
+	if(!is_valid_object)
+		caller.to_chat(span("warning","You can't temper \the [I.name] with \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
 /obj/item/tempering/proc/on_temper(var/mob/caller,var/obj/item/I)
-	visible_message("\The [caller.name] improves \the [I.name] with \the [src.name].")
+
+	caller.visible_message(
+		span("notice","\The [caller.name] improves \the [I.name] with \the [src.name]."),
+		span("notice","You improve \the [I.name] with \the [src.name].")
+	)
+
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I
 		C.sync_additional_clothing()
-	if(unlimited)
-		left = increase
-		return TRUE
-	if(left <= 0)
-		qdel(src)
+
+	if(uses_left > 0)
+		uses_left--
+		if(uses_left <= 0)
+			qdel(src)
+
 	return TRUE
-
-/obj/item/tempering/save_item_data(var/mob/living/advanced/player/P, var/save_inventory=TRUE, var/died=FALSE,var/loadout=FALSE)
-	RUN_PARENT_SAFE
-	SAVEVAR("left")
-
-/obj/item/tempering/load_item_data_post(var/mob/living/advanced/player/P, var/list/object_data,var/loadout=FALSE)
-	RUN_PARENT_SAFE
-	LOADVAR("left")
 
 

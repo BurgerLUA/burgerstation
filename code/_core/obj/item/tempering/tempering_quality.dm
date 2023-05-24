@@ -3,6 +3,7 @@
 	desc = "You shouldn't be seeing this..."
 	desc_extended = "Report this to burger."
 	has_quick_function = TRUE
+	var/item_type_name = "items"
 
 /obj/item/tempering/quality/quick(var/mob/caller,var/atom/object,location,params)
 
@@ -15,166 +16,96 @@
 
 /obj/item/tempering/quality/can_temper(var/mob/caller,var/obj/item/I)
 
-	if(I.quality >= limit)
+	if(I.quality >= maximum)
 		caller.to_chat(span("warning","\The [I.name] cannot be improved any further!"))
 		return FALSE
 
 	return ..()
 
+/obj/item/tempering/quality/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","Increases the quality of [item_type_name] by [increase]%, up to [maximum]%, with a minimum of [minimum]%.")
+
 /obj/item/tempering/quality/on_temper(var/mob/caller,var/obj/item/I)
-
-	if(I.quality + increase > limit)
-		var/to_consume = limit - I.quality
-		left -= to_consume
-		I.quality = limit
-	else if(I.quality + increase < minimum)
-		I.quality = minimum
-		left -= increase
-	else
-		I.quality += increase
-		left -= increase
-	return ..()
-
-/obj/item/tempering/quality/examine()
-	if(!unlimited)
-		desc_extended += "\nCan add <b>[left]</b> more quality."
+	I.quality = clamp(I.luck + increase,minimum,maximum)
 	. = ..()
 
-/obj/item/tempering/quality/melee
-	name = "warrior's whetstone"
+/obj/item/tempering/quality/general
+	name = "advanced repair kit"
 	desc = "Stay sharp!"
-	desc_extended = "A special whetstone that improves the quality of a melee weapon by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%.  Even works on non-sharp objects, somehow."
-	icon_state = "quality_melee"
+	desc_extended = "A collection of scrap, tools, and generally useful materials that can help you maintain the condition any sort of item."
+	icon_state = "repair_kit"
 
-	temper_whitelist = /obj/item/weapon/melee
+	increase = 25
+	minimum = 50
+	maximum = 100
+
+	temper_whitelist = /obj/item
+
+	value = 400
+
+/obj/item/tempering/quality/melee
+	name = "chef's whetstone"
+	desc = "Stay sharp!"
+	desc_extended = "A special whetstone that can improve the quality of melee, unarmed, and thrown weapons. Even works on non-sharp objects!"
+	icon_state = "whetstone"
+
+	increase = 5
+	minimum = 100
+	maximum = 125
+
+	temper_whitelist = list(/obj/item/weapon/melee,/obj/item/weapon/unarmed,/obj/item/weapon/ranged/thrown)
 
 	value = 500
 
 /obj/item/tempering/quality/clothing
-	name = "durathread"
-	desc = "Stay classy!"
-	desc_extended = "A large patch of durathread that improves the quality of clothing by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
-	icon_state = "quality_clothing"
-
-	temper_whitelist = /obj/item/clothing
-
-	value = 500
-
-/obj/item/tempering/quality/clothing/repair
-	name = "sewing kit"
-	desc = "Stay classy!"
-	desc_extended = "A simple thread and needle, capable of repairing clothes back up to 100%"
-	icon_state = "quality_clothing_repair"
-
-	temper_whitelist = /obj/item/clothing
-
-	increase = 100
-	limit = 100
-	minimum = 0
-
-	left = 1
-
-/obj/item/tempering/quality/ranged
-	name = "brass tinker's box"
-	desc = "Stay on top of things."
-	desc_extended = "A special kit of special screws, platings, and mechanical parts that improves the quality of guns by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
-	icon_state = "quality_ranged"
-
-	temper_whitelist = /obj/item/weapon/ranged/bullet
-
-	value = 500
-
-/obj/item/tempering/quality/ranged_bow
-	name = "bow limb reinforcements"
-	desc = "Stay on top of things."
-	desc_extended = "A special kit of special screws, platings, and mechanical parts that improves the quality of bows by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
-	icon_state = "quality_ranged_bow"
-
-	temper_whitelist = /obj/item/weapon/ranged/bow
-
-	value = 500
-
-
-/obj/item/tempering/quality/lesser_consumable
-	name = "gun repair kit"
-	desc = "Help my gun needs cleaning."
-	desc_extended = "A kit of some spare parts, bits and bobs, and mechanicl parts that improve the quality of any weapon back up to 100%"
-	icon_state = "gun_cleaning"
-
-	temper_whitelist = /obj/item/weapon/
-
-	increase = 100
-	limit = 100
-	minimum = 0
-
-	left = 1
-
-	value = 100
-
-	value_burgerbux = 0
-
-/obj/item/tempering/quality/ranged/lesser
-	name = "gun cleaning kit"
-	desc = "Help my gun needs cleaning."
-	desc_extended = "A special kit of cleaning rods, lube, sharpening tools, and grease (not the country) to help maintain ranged weapons. This increases the quality of guns by 5%, up to 75%. Has unlimited uses."
-	icon_state = "gun_cleaning"
-
-	temper_whitelist = /obj/item/weapon/ranged
+	name = "armorer's durathread"
+	desc = "Stay protected!"
+	desc_extended = "A patch of rare durathread that can improve the quality of a piece of clothing."
+	icon_state = "durathread"
 
 	increase = 5
-	limit = 75
-	minimum = 0
+	minimum = 100
+	maximum = 125
 
-	unlimited = TRUE
+	temper_whitelist = /obj/item/clothing
+	value = 750
 
-	value = 100
+/obj/item/tempering/quality/ranged/projectile
+	name = "solder's spare brass parts"
+	desc = "Stay ahead of the curve!"
+	desc_extended = "A collection of spare brass parts stolen from Clockwork Cultists that can improve the quality of ranged weapons."
+	icon_state = "durathread"
 
-	value_burgerbux = 0
+	increase = 5
+	minimum = 100
+	maximum = 125
 
-/obj/item/tempering/quality/magic
-	name = "magician's gem"
-	desc = "Stay on top of things."
-	desc_extended = "A fragile, yet magical gem that improves the quality of spellgems by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
-	icon_state = "quality_magic"
+	temper_whitelist = list(/obj/item/weapon/ranged/bullet,/obj/item/weapon/ranged/energy, /obj/item/weapon/ranged/reagent_ammo/,/obj/item/weapon/ranged/bow)
+	value = 1000
 
-	temper_whitelist = /obj/item/weapon/ranged/spellgem
+/obj/item/tempering/quality/ranged/energy
+	name = "alien focusing mechanism"
+	desc = "Stay ahead of the curve!"
+	desc_extended = "A rare, exotic, and expensive focusing crystal made out of diamonds and alien alloy that improves the quality of ranged energy-based weapons."
+	icon_state = "focusing_crystal"
 
-	value = 500
-
-/obj/item/tempering/quality/energy
-	name = "focusing crystal"
-	desc = "Stay on top of things."
-	desc_extended = "A rare focusing crystal that can improve the quality of energy weapons by 5%, up to 125%. If the improvement results in a quality value less than 100%, it will set the quality to 100%."
-	icon_state = "quality_energy"
+	increase = 25
+	minimum = 100
+	maximum = 200
 
 	temper_whitelist = /obj/item/weapon/ranged/energy
+	value = 3000
 
-	value = 500
+/obj/item/tempering/quality/ranged/magic
+	name = "wizard's gemstone crystal"
+	desc = "Stay ahead of the curve!"
+	desc_extended = "A magical phoron composite crystal that improves the quality of spell gems, support gems, and wands."
+	icon_state = "gem_fuel"
 
-/obj/item/tempering/quality/greater
-	name = "repair kit"
-	desc = "Help my equipment needs repairs."
-	desc_extended = "A special kit of pieces of cloth, spare parts, pieces of plastics, and glue to help repair armor, weapons and virtually anything else. This increases the quality of equipment to 100%."
-	icon_state = "repair_kit"
+	increase = 5
+	minimum = 100
+	maximum = 125
 
-	temper_whitelist = /obj/item/
-
-	increase = 100
-	limit = 100
-	minimum = 0
-
-	size = SIZE_7
-	weight = WEIGHT_5
-
-	value = 2000
-
-	value_burgerbux = 0
-
-/obj/item/tempering/quality/greater/click_on_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(is_item(object) && can_temper(caller,object))
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		on_temper(caller,object)
-		return TRUE
-	return ..()
+	temper_whitelist = list(/obj/item/weapon/ranged/spellgem,/obj/item/weapon/ranged/wand,/obj/item/supportgem)
+	value = 1250
