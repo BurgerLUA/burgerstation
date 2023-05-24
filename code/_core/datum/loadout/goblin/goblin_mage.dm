@@ -9,7 +9,5 @@
 
 		/obj/item/weapon/ranged/wand/branch,
 		/obj/item/weapon/ranged/spellgem/lightning,
-		/loot/random/support_gem,
-
-		/loot/random/goblin
+		/loot/random/support_gem
 	)
