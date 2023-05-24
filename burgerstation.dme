@@ -667,6 +667,7 @@
 #include "code\_core\datum\loot\rings.dm"
 #include "code\_core\datum\loot\scroll.dm"
 #include "code\_core\datum\loot\soulgems.dm"
+#include "code\_core\datum\loot\space_cop.dm"
 #include "code\_core\datum\loot\supply_crate.dm"
 #include "code\_core\datum\loot\syndie.dm"
 #include "code\_core\datum\loot\tempering.dm"

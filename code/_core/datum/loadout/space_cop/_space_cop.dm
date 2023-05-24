@@ -31,7 +31,7 @@
 		/obj/item/clothing/head/helmet/full/space_military,
 
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/back/storage/satchel/poly/grey,
+		/obj/item/clothing/back/storage/satchel/poly/grey{loot_to_generate=/loot/space_cop/bag},
 	)
 
 /loadout/space_soldier/assault_rifle
@@ -46,7 +46,7 @@
 		/obj/item/clothing/head/helmet/full/space_military,
 
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/back/storage/satchel/poly/grey,
+		/obj/item/clothing/back/storage/satchel/poly/grey{loot_to_generate=/loot/space_cop/bag},
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/moar,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
@@ -75,7 +75,7 @@
 		/obj/item/clothing/head/helmet/full/space_military,
 
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/back/storage/satchel/poly/grey,
+		/obj/item/clothing/back/storage/satchel/poly/grey{loot_to_generate=/loot/space_cop/bag},
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
@@ -103,7 +103,7 @@
 		/obj/item/clothing/head/helmet/full/space_military,
 
 		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/clothing/back/storage/satchel/poly/grey,
+		/obj/item/clothing/back/storage/satchel/poly/grey{loot_to_generate=/loot/space_cop/bag},
 
 		/obj/item/weapon/ranged/bullet/magazine/rifle/dmca,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/brown,
