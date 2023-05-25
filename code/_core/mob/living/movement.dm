@@ -112,11 +112,6 @@
 				add_status_effect(SLIP,slip_strength*5,slip_strength*5)
 
 
-
-
-
-
-
 /mob/living/Bump(atom/Obstacle)
 	if(ai) ai.Bump(Obstacle)
 	. = ..()

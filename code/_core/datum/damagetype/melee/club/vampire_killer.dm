@@ -1,8 +1,8 @@
 /damagetype/melee/club/vampire_killer
 
 	attack_damage_base = list(
-		BLUNT = 10,
-		BLADE = 10,
+		BLUNT = 30,
+		BLADE = 20,
 		HOLY = 0
 	)
 
@@ -23,7 +23,7 @@
 
 	skill_stats = list(
 		SKILL_MELEE = 20,
-		SKILL_PRAYER = 20
+		SKILL_PRAYER = 40
 	)
 
 	skill_damage = list(
@@ -41,7 +41,7 @@
 
 /damagetype/melee/club/vampire_killer/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
-	if(is_living(victim) && prob(total_damage_dealt))
+	if(is_living(victim) && prob(total_damage_dealt*0.5))
 		var/mob/living/L = victim
 		L.add_status_effect(DISARM,10,10)
 

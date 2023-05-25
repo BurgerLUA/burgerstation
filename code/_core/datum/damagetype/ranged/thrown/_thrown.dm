@@ -4,9 +4,9 @@
 
 /damagetype/ranged/thrown/kunai
 	attack_damage_base = list(
-		PIERCE = 100,
+		PIERCE = 75,
 		BLADE = 40,
-		BLUNT = 30
+		BLUNT = 10
 	)
 
 	attack_damage_penetration = list(

@@ -2,13 +2,13 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLADE = 25,
-		BLUNT = 5,
-		PIERCE = 5
+		BLADE = 40,
+		BLUNT = 10,
+		PIERCE = 10
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 30
+		ATTRIBUTE_STRENGTH = 60
 	)
 
 	attribute_damage = list(
@@ -16,12 +16,12 @@
 	)
 
 	skill_stats = list(
-		SKILL_MELEE = 10
+		SKILL_MELEE = 40
 	)
 
 	skill_damage = list(
 		SKILL_MELEE = BLADE
 	)
 
-	attack_delay = 20
+	attack_delay = 15
 	attack_delay_max = 20

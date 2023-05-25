@@ -41,8 +41,6 @@
 
 /obj/item/cell_charger/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-
-
 	if(battery && is_inventory(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
@@ -123,7 +121,7 @@
 			visible_message(span("notice","\The [src.name] gives a high double beep."))
 			return FALSE
 		if(B.charge_current > 0)
-			var/charge_to_add = min(100,B.charge_current,B2.charge_max - B2.charge_current)
+			var/charge_to_add = min(200,B.charge_current,B2.charge_max - B2.charge_current)
 			B2.charge_current += charge_to_add
 			B.charge_current -= charge_to_add
 			sprite_update_delay--

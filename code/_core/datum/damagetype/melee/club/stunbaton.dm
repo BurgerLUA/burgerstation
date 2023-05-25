@@ -2,7 +2,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 20
+		BLUNT = 35
 	)
 
 	attribute_stats = list(
@@ -30,7 +30,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 25,
+		FATIGUE = 50,
 		ION = 10
 	)
 
@@ -56,7 +56,7 @@
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
 		BLUNT = 20,
-		FATIGUE = 10,
+		FATIGUE = 30,
 		ION = 10
 	)
 

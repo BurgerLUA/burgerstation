@@ -1,8 +1,8 @@
 /damagetype/ranged/thrown/shuriken
 	attack_damage_base = list(
-		PIERCE = 50,
-		BLADE = 100,
-		BLUNT = 25
+		PIERCE = 40,
+		BLADE = 75,
+		BLUNT = 10
 	)
 
 	attack_damage_penetration = list(

@@ -29,4 +29,4 @@
 	)
 
 	attack_delay = 10
-	attack_delay_max = 25
+	attack_delay_max = 20

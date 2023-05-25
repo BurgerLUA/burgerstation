@@ -1,7 +1,7 @@
 /damagetype/melee/sword/grazer
 
 	attack_damage_base = list(
-		BLADE = 15,
+		BLADE = 20,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -33,8 +33,8 @@
 /damagetype/melee/sword/grazer/on
 
 	attack_damage_base = list(
-		LASER = 20,
-		HEAT = 10,
+		LASER = 25,
+		HEAT = 15,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
