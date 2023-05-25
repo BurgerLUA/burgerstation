@@ -78,8 +78,8 @@
 
 /obj/item/weapon/ranged/reagent_sprayer/fire_extinguisher
 	name = "fire extinguisher"
-	reagents = /reagent_container/beaker/large
-	reagent_per_shot = 3
+	desc = "For use in emergencies only."
+	desc_extended = "A lackluster red extinguisher (allegedly) containing enough water to put out small fires."
 	icon = 'icons/obj/item/extinguisher.dmi'
 
 	projectile = /obj/projectile/extinguisher_spray
@@ -91,13 +91,15 @@
 
 	dan_mode = TRUE
 
+	reagent_per_shot = 3
+
 	projectile_speed = 15
 
 	automatic = TRUE
 
-	shoot_delay = 2
+	shoot_delay = 3
 
-	bullet_count = 3
+	bullet_count = 2
 
 	reagents = /reagent_container/beaker/bucket
 

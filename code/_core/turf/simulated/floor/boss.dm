@@ -24,6 +24,8 @@ var/global/list/stored_boss_floor_icons
 
 	map_color = "#30251C"
 
+	wet_floor_icon_state = "tile"
+
 /turf/simulated/floor/boss/New()
 	..()
 	if(!stored_boss_floor_icons)

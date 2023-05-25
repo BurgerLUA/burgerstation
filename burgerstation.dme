@@ -1067,6 +1067,7 @@
 #include "code\_core\obj\effect\footprints.dm"
 #include "code\_core\obj\effect\meteor.dm"
 #include "code\_core\obj\effect\shrine_smoke.dm"
+#include "code\_core\obj\effect\wetness.dm"
 #include "code\_core\obj\effect\cleanable\_cleanable.dm"
 #include "code\_core\obj\effect\cleanable\blood.dm"
 #include "code\_core\obj\effect\cleanable\rust.dm"

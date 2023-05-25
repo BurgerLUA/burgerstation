@@ -56,6 +56,14 @@
 
 	var/list/linked_attachments //For things like APCs, lights, etc.
 
+	var/obj/effect/tile_wetness/wet_floor_effect
+	var/wet_floor_icon_state = "full"
+
+/turf/simulated/pre_change()
+	. = ..()
+	if(wet_level > 0)
+		add_wet(-wet_level)
+
 /turf/simulated/proc/destroy_attachments(var/delete=TRUE)
 	if(!length(linked_attachments))
 		return FALSE
@@ -103,16 +111,28 @@
 	return ..()
 
 /turf/simulated/proc/get_slip_strength(var/mob/living/L)
-	return (wet_level ? 1 : 0) + (wet_level/100)*slip_factor
+	return (wet_level > 0 ? 1 : 0) + (wet_level/100)*slip_factor
 
 /turf/simulated/proc/add_wet(var/wet_to_add)
 	var/old_wet = wet_level
-	wet_level += wet_to_add
+	wet_level = clamp(wet_to_add + wet_level,0,100)
 	if(old_wet <= 0)
-		SSturf.wet_turfs += src
-	if(wet_level <= 0)
-		overlays.Cut()
-		update_overlays()
+		if(wet_level > 0)
+			SSturf.wet_turfs += src
+			if(!wet_floor_effect)
+				wet_floor_effect = new(src)
+				wet_floor_effect.icon_state = wet_floor_icon_state
+	else
+		if(wet_level <= 0)
+			SSturf.wet_turfs -= src
+			if(wet_floor_effect)
+				QDEL_NULL(wet_floor_effect)
+
+	if(wet_floor_effect)
+		wet_floor_effect.alpha = clamp(100 + (wet_level/100)*155,0,255)
+
+
+
 	return TRUE
 
 /turf/simulated/proc/add_blood_level(var/amount_to_add,var/minimus=0,var/desired_color)
@@ -231,7 +251,7 @@
 		if(!O.under_tile)
 			continue
 		if(desired_exposed)
-			O.invisibility = 0
+			O.invisibility = initial(O.invisibility)
 		else
 			O.invisibility = 101
 

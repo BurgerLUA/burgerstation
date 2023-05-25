@@ -17,6 +17,8 @@
 
 	health_base = 1000
 
+	wet_floor_icon_state = "tile"
+
 /turf/simulated/floor/plating/reinforced
 	name = "reinforced plating"
 	icon_state = "filled3"

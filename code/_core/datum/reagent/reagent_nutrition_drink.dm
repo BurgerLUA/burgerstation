@@ -33,6 +33,8 @@
 					break
 				qdel(C)
 				cleaning_power -= 10
+			for(var/obj/fire_process/FP in T.contents)
+				FP.fire_power -= volume_to_splash*strength_mod*10
 			if(is_simulated(target))
 				var/turf/simulated/S = target
 				S.add_wet(volume_to_splash*10*strength_mod)

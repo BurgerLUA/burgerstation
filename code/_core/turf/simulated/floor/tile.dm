@@ -18,6 +18,8 @@
 
 	health_base = 400
 
+	wet_floor_icon_state = "tile"
+
 /turf/simulated/floor/tile/chapel/
 	color = COLOR_GREY_DARK
 

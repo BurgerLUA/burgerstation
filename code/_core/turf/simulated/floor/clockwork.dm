@@ -11,6 +11,8 @@
 
 	health_base = 300
 
+	wet_floor_icon_state = "tile"
+
 /turf/simulated/floor/clockwork/alt1/
 	icon_state = "floor2"
 

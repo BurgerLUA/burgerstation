@@ -150,11 +150,8 @@ SUBSYSTEM_DEF(turf)
 		var/turf/simulated/T = k
 		if(!T)
 			continue
-		T.wet_level = max(0, T.wet_level - T.wet_level*T.drying_mul - T.drying_add)
-		if(T.wet_level <= 0)
-			wet_turfs -= T
-			T.overlays.Cut()
-			T.update_overlays()
+		var/wet_level_to_remove = T.wet_level*T.drying_mul + T.drying_add
+		T.add_wet(-wet_level_to_remove)
 		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*3)
 
 	return TRUE

@@ -109,7 +109,7 @@
 		if(slip_strength >= 4 - move_mod)
 			var/obj/item/wet_floor_sign/WFS = locate() in range(2,S)
 			if(!WFS || move_mod > 2)
-				add_status_effect(SLIP,slip_strength*10,slip_strength*10)
+				add_status_effect(SLIP,slip_strength*5,slip_strength*5)
 
 
 
