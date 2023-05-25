@@ -56,9 +56,23 @@
 		var/turf/T = get_step(src,d)
 		if(!T) continue
 		if(blacklist[T]) continue
-		if(!T.Enter(src,src.loc))
+
+		if(T.density && !T.Enter(src,src.loc))
 			SSexplosion.add_data(T,owner,source,epicenter,(power*0.9 + original_power*0.1)*multiplier,loyalty_tag)
 			continue
+
+		if(T.has_dense_atom)
+			var/should_continue = FALSE
+			for(var/k in T.contents)
+				var/atom/movable/M = k
+				if(M == src)
+					continue
+				if(M.density && !M.Cross(src,src.loc))
+					should_continue = TRUE
+					SSexplosion.add_data(M,owner,source,epicenter,(power*0.9 + original_power*0.1)*multiplier,loyalty_tag)
+			if(should_continue)
+				continue
+
 		var/obj/explosion_process/existing = locate() in T.contents
 		var/direction_mod = 1
 		if(existing)

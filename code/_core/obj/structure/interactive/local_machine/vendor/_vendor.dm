@@ -158,11 +158,11 @@ var/global/list/equipped_antags = list()
 		return null
 
 	var/obj/item/new_item = new associated_item.type(get_turf(caller))
+	modify_item(new_item,associated_item)
 	INITIALIZE(new_item)
 	GENERATE(new_item)
 	FINALIZE(new_item)
 	new_item.amount = associated_item.amount
-	modify_item(new_item,associated_item)
 
 	caller.to_chat(span("notice","You vend \the [new_item.name]."))
 

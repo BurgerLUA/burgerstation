@@ -130,10 +130,10 @@
 			continue
 		var/mob/living/L = M
 		if(harmful)
-			if(allow_hostile_action(caller,L.loyalty_tag))
+			if(allow_hostile_action(caller.loyalty_tag,L))
 				call(src,proc_effect)(caller,L)
 		else
-			if(!allow_hostile_action(caller,L.loyalty_tag))
+			if(!allow_hostile_action(caller.loyalty_tag,L))
 				call(src,proc_effect)(caller,L)
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_stop(var/mob/living/advanced/caller,var/mob/living/victim)
