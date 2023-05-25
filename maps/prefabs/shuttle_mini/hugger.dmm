@@ -7,25 +7,28 @@
 "g" = (/obj/structure/shuttle_engine/heater{icon_state = "heater"; dir = 1},/obj/structure/window/directional/anchored{icon_state = "single"; dir = 6},/turf/simulated/floor/plating/shuttle,/area/shuttle/hugger)
 "h" = (/obj/structure/interactive/chair/shuttle,/turf/simulated/floor/tile/shuttle/dark/darker,/area/shuttle/hugger)
 "i" = (/obj/structure/shuttle_engine/heater{icon_state = "heater"; dir = 1},/obj/structure/window/directional/anchored{icon_state = "single"; dir = 10},/turf/simulated/floor/plating/shuttle,/area/shuttle/hugger)
-"j" = (/turf/simulated/wall/metal/shuttle,/area/shuttle/hugger)
+"j" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/shuttle/dark/darker,/area/shuttle/hugger)
 "k" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/shuttle,/area/shuttle/hugger)
 "l" = (/turf/simulated/floor/tile/shuttle,/area/shuttle/hugger)
 "m" = (/obj/structure/interactive/door/airlock/external,/turf/simulated/floor/tile/shuttle,/area/shuttle/hugger)
 "n" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/shuttle/hugger)
-"o" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle/dark/darker,/area/shuttle/hugger)
+"o" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/hugger)
 "p" = (/turf/simulated/floor/tile/shuttle/dark/darker,/area/shuttle/hugger)
 "q" = (/mob/living/simple/turret/nanotrasen,/turf/simulated/floor/plating/shuttle,/area/shuttle/hugger)
 "r" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/shuttle,/area/shuttle/hugger)
 "s" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle,/area/shuttle/hugger)
+"t" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/shuttle/dark/darker,/area/shuttle/hugger)
+"u" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle,/area/shuttle/hugger)
+"v" = (/turf/simulated/wall/metal/shuttle,/area/shuttle/hugger)
 
 (1,1,1) = {"
 aaaaaaaaa
 abcdedfba
 abeghieba
-aajklrjaa
+aaejpteaa
 aamlslmaa
-abjklrjba
-abnoponba
-abnnennba
+abuklruba
+abnolonba
+abnnvnnba
 abqbabqba
 "}

@@ -15,15 +15,16 @@
 "o" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/sidewinder)
 "p" = (/turf/simulated/wall/metal/shuttle/dark,/area/shuttle/sidewinder)
 "q" = (/mob/living/simple/turret/nanotrasen,/turf/simulated/floor/plating/shuttle,/area/shuttle/sidewinder)
+"r" = (/obj/structure/interactive/status_display/local_display,/turf/simulated/wall/metal/shuttle,/area/shuttle/sidewinder)
 
 (1,1,1) = {"
+aaaaaaaaa
 aaabbbaaa
-aaccdccaa
+aacrdrcaa
 aacefecaa
 aghifihga
 ajklmnkja
 aahofohaa
 apphhhppa
 abqbabqba
-aaaaaaaaa
 "}
