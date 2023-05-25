@@ -25,8 +25,8 @@
 		"heal" = .proc/power_word_heal,
 		"cure" = .proc/power_word_heal,
 
-		"kill" = .proc/power_word_harm,
-		"slay" = .proc/power_word_harm,
+		"harm" = .proc/power_word_harm,
+		"hinder" = .proc/power_word_harm,
 		"wilt" = .proc/power_word_harm,
 
 		"gore" = .proc/power_word_bleed,
@@ -36,6 +36,10 @@
 		"burn" = .proc/power_word_burn,
 		"fire" = .proc/power_word_burn,
 		"heat" = .proc/power_word_burn,
+
+		"kill" = .proc/power_word_kill,
+		"die" = .proc/power_word_kill,
+		"perish" = .proc/power_word_kill
 
 		/*
 		"begone"
@@ -52,26 +56,28 @@
 		.proc/power_word_heal = FALSE,
 		.proc/power_word_harm = TRUE,
 		.proc/power_word_bleed = TRUE,
-		.proc/power_word_burn = TRUE
+		.proc/power_word_burn = TRUE,
+		.proc/power_word_kill = TRUE
 	)
 
 	var/next_voice = 0
 
 /obj/item/clothing/mask/voice_of_god/get_base_value()
 	. = ..()
-	. += 9000
+	. += 18000
 
 
 /obj/item/clothing/mask/voice_of_god/get_examine_details_list(var/mob/caller)
 	. = ..()
 	. += div("notice bold underline","Available commands:")
-	. += div("notice","<b>Stop, Halt, Hold</b>: Paralyzes all enemies in range for 6 seconds.")
+	. += div("notice","<b>Stop, Halt, Hold</b>: Paralyzes all enemies in range for 2 seconds.")
 	. += div("notice","<b>Drop, Down, Fall</b>: Stuns all enemies in range for 4 seconds.")
 	. += div("notice","<b>Mend, Heal, Cure</b>: Grants 50 health to all allies in range over 10 seconds.")
-	. += div("notice","<b>Kill, Slay, Wilt</b>: Deals 50 dark damage to all enemies in range.")
+	. += div("notice","<b>Harm, Hinder, Wilt</b>: Deals 50 dark damage to all enemies in range.")
+	. += div("notice","<b>Kill, Die, Perish</b>: Deals 250 dark damage to all enemies in critical condition in range.")
 	. += div("notice","<b>Gore, Leak, Loss</b>: Drains 50 units of blood from all enemies in range.")
 	. += div("notice","<b>Burn, Fire, Heat</b>: Ignites all enemies in range for 6 seconds.")
-	. += div("notice","All commands share a cooldown of 5 seconds, and require 50 mana and stamina to cast.")
+	. += div("notice","All commands share a cooldown of 8 seconds, and require 50 mana and stamina to cast.")
 
 /obj/item/clothing/mask/voice_of_god/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
@@ -112,7 +118,7 @@
 		do_voice_effect(speaker,text_to_proc[word],proc_to_harmful[text_to_proc[word]])
 		text_to_say = "<font color='#DD1C1F' size='4'>[text_to_say]</font>"
 		play_sound('sound/effects/invoke_general.ogg',get_turf(speaker), range_max = SOUND_RANGE * 3)
-		next_voice = world.time + SECONDS_TO_DECISECONDS(5)
+		next_voice = world.time + SECONDS_TO_DECISECONDS(8)
 		if(speaker.health)
 			speaker.health.adjust_stamina(-50)
 			speaker.health.adjust_mana(-50)
@@ -137,7 +143,7 @@
 				call(src,proc_effect)(caller,L)
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_stop(var/mob/living/advanced/caller,var/mob/living/victim)
-	return victim.add_status_effect(PARALYZE,60,60,source=caller)
+	return victim.add_status_effect(PARALYZE,20,20,source=caller)
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_drop(var/mob/living/advanced/caller,var/mob/living/victim)
 	return victim.add_status_effect(STUN,40,40,source=caller)
@@ -147,6 +153,13 @@
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_harm(var/mob/living/advanced/caller,var/mob/living/victim)
 	var/damagetype/DT = all_damage_types[/damagetype/voice_of_god/harm]
+	var/atom/object_to_damage = victim.get_object_to_damage(caller,src,damage_type,null,TRUE,TRUE)
+	return DT.process_damage(caller,victim,src,object_to_damage,caller,1)
+
+/obj/item/clothing/mask/voice_of_god/proc/power_word_kill(var/mob/living/advanced/caller,var/mob/living/victim)
+	if(victim.dead || !victim.has_status_effect(CRIT))
+		return FALSE
+	var/damagetype/DT = all_damage_types[/damagetype/voice_of_god/kill]
 	var/atom/object_to_damage = victim.get_object_to_damage(caller,src,damage_type,null,TRUE,TRUE)
 	return DT.process_damage(caller,victim,src,object_to_damage,caller,1)
 
