@@ -40,3 +40,12 @@
 
 /area/shuttle/escape_pod_two
 	name = "\improper NTS Escape Pod 2"
+
+/area/shuttle/teal_bullet
+	name = "\improper NTS Teal"
+
+/area/shuttle/hugger
+	name = "\improper NTS Hugger"
+
+/area/shuttle/sidewinder
+	name = "\improper NTS Sidwinder"

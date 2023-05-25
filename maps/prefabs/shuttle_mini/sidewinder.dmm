@@ -1,0 +1,29 @@
+"a" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/plating/shuttle,/area/shuttle/sidewinder)
+"c" = (/turf/simulated/wall/metal/shuttle,/area/shuttle/sidewinder)
+"d" = (/obj/structure/interactive/door/airlock/external,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/sidewinder)
+"e" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb,/turf/simulated/floor/tile/shuttle,/area/shuttle/sidewinder)
+"f" = (/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/sidewinder)
+"g" = (/obj/structure/shuttle_engine/burst{icon_state = "burst_s"; dir = 1},/turf/simulated/floor/plating/shuttle,/area/shuttle/sidewinder)
+"h" = (/obj/marker/spawning/window/shuttle,/turf/simulated/floor/plating/shuttle,/area/shuttle/sidewinder)
+"i" = (/obj/structure/interactive/chair/shuttle,/turf/simulated/floor/tile/shuttle,/area/shuttle/sidewinder)
+"j" = (/obj/structure/shuttle_engine/heater{icon_state = "heater"; dir = 1},/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/sidewinder)
+"k" = (/obj/structure/sign/no_smoking,/turf/simulated/wall/metal/shuttle/off_white,/area/shuttle/sidewinder)
+"l" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/shuttle,/area/shuttle/sidewinder)
+"m" = (/obj/shuttle_controller,/turf/simulated/floor/tile/shuttle/nanotrasen,/area/shuttle/sidewinder)
+"n" = (/obj/structure/interactive/chair/shuttle,/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/shuttle,/area/shuttle/sidewinder)
+"o" = (/obj/structure/interactive/computer/console/flight_control{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/shuttle,/area/shuttle/sidewinder)
+"p" = (/turf/simulated/wall/metal/shuttle/dark,/area/shuttle/sidewinder)
+"q" = (/mob/living/simple/turret/nanotrasen,/turf/simulated/floor/plating/shuttle,/area/shuttle/sidewinder)
+
+(1,1,1) = {"
+aaabbbaaa
+aaccdccaa
+aacefecaa
+aghifihga
+ajklmnkja
+aahofohaa
+apphhhppa
+abqbabqba
+aaaaaaaaa
+"}
