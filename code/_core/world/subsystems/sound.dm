@@ -210,6 +210,15 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 /proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=SOUND_RANGE*0.25, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
+	if(!M)
+		CRASH("Error: Tried playing sound '[sound_path]' without a mob target!")
+
+	if(!is_mob(M))
+		if(is_datum(M))
+			CRASH("Error: Tried playing sound '[sound_path]' to [M.get_debug_name()], a non-mob!")
+		else
+			CRASH("Error: Tried playing sound '[sound_path]' to with the mob arg to '[M]'!")
+
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
 		return FALSE
@@ -330,6 +339,15 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 	if(volume <= 0 || range_max <= 0)
 		return FALSE
+
+	if(!source_turf)
+		CRASH("Error: Tried playing sound '[sound_path]' without a source_turf target!")
+
+	if(!is_turf(source_turf))
+		if(is_datum(source_turf))
+			CRASH("Error: Tried playing sound '[sound_path]' to [source_turf.get_debug_name()], a non-turf!")
+		else
+			CRASH("Error: Tried playing sound '[sound_path]' to with the source_turf arg to '[source_turf]'!")
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound)

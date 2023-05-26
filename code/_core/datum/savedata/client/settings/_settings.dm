@@ -13,7 +13,9 @@
 		"enable_smooth_shadows" = 1,
 		"enable_currency_bloom" = 1,
 		"enable_old_right_click" = 1,
-		"compact_mode" = 0
+		"compact_mode" = 0,
+		"show_admin_messages" = 1,
+		"show_debug_messages" = 1
 	)
 
 /savedata/client/settings/get_file(var/file_id)

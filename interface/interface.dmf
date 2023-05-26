@@ -122,23 +122,33 @@ menu "menu"
 		category = "Volume"
 		saved-params = "is-checked"
 	elem "dev"
-		name = "Dev"
+		name = "Developer"
 		command = ""
 		saved-params = "is-checked"
-	elem "reboot"
-		name = "&Shutdown"
-		command = "trigger_shutdown"
-		category = "Dev"
+	elem 
+		name = "Toggle &Debug Messages"
+		command = "toggle-debug-messages"
+		category = "Developer"
+		saved-params = "is-checked"
+	elem 
+		name = "Toggle &Admin Messages"
+		command = "toggle-admin-messages"
+		category = "Developer"
 		saved-params = "is-checked"
 	elem "profile"
 		name = "&Profile Server"
 		command = ".profile"
-		category = "Dev"
+		category = "Developer"
 		saved-params = "is-checked"
 	elem 
 		name = "&Host Options..."
 		command = ".host"
-		category = "Dev"
+		category = "Developer"
+		saved-params = "is-checked"
+	elem "reboot"
+		name = "Shutdown Server"
+		command = "trigger_shutdown"
+		category = "Developer"
 		saved-params = "is-checked"
 
 
@@ -375,16 +385,20 @@ window "edit"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		border = sunken
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Edit"
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "exit"
 		type = BUTTON
 		pos = 540,460
 		size = 100x20
 		anchor1 = 100,100
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "is-checked"
 		text = "Save and Exit"
 		command = ""

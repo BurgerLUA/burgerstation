@@ -508,3 +508,18 @@
 		var/mob/living/L = hit_atom
 		if(!L.dead)
 			L.add_status_effect(TEMP_ARMOR,damage_multiplier * 10,SECONDS_TO_DECISECONDS(damage_multiplier * 30))
+
+
+/obj/projectile/magic/leaper
+	name = "leaper homing orb"
+	icon = 'icons/obj/projectiles/leaper.dmi'
+	icon_state = "dark_orb"
+
+	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
+
+	lifetime = SECONDS_TO_DECISECONDS(10)
+	extra_lifetime = SECONDS_TO_DECISECONDS(8)
+
+	homing = TRUE
+	homing_speed = TILE_SIZE * 0.5
+	explode_power = 2

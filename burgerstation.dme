@@ -2007,7 +2007,6 @@
 #include "code\_core\obj\projectile\gabber_ring.dm"
 #include "code\_core\obj\projectile\grenade.dm"
 #include "code\_core\obj\projectile\laser.dm"
-#include "code\_core\obj\projectile\leaper.dm"
 #include "code\_core\obj\projectile\magic.dm"
 #include "code\_core\obj\projectile\slime_ball.dm"
 #include "code\_core\obj\projectile\spray.dm"

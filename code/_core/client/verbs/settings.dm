@@ -119,3 +119,25 @@
 	mob?.plane_master_mob?.refresh_post_processing()
 	mob?.plane_master_shuttle?.refresh_post_processing()
 	mob?.plane_master_openspace?.refresh_post_processing()
+
+/client/verb/toggle_debug_messages()
+	set hidden = TRUE
+	if(world.port == 0)
+		to_chat(span("notice","Admin messages cannot be toggled on localserver."))
+		return
+	settings.change_setting("show_debug_messages",!settings.loaded_data["show_debug_messages"])
+	if(settings.loaded_data["show_debug_messages"])
+		to_chat(span("notice","You will now see all debug messages."))
+	else
+		to_chat(span("notice","You will no longer see debug messages."))
+
+/client/verb/toggle_admin_messages()
+	set hidden = TRUE
+	if(world.port == 0)
+		to_chat(span("notice","Admin messages cannot be toggled on localserver."))
+		return
+	settings.change_setting("show_admin_messages",!settings.loaded_data["show_admin_messages"])
+	if(settings.loaded_data["show_admin_messages"])
+		to_chat(span("notice","You will now see all admin logging messages."))
+	else
+		to_chat(span("notice","You will no longer see admin logging messages."))

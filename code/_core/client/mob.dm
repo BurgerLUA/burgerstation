@@ -67,7 +67,7 @@
 	all_mobs_with_clients += M
 	if(!all_mobs_with_clients_by_z["[M.last_z]"])
 		all_mobs_with_clients_by_z["[M.last_z]"] = list()
-	all_mobs_with_clients_by_z["[M.last_z]"] += src
+	all_mobs_with_clients_by_z["[M.last_z]"] += M
 
 	view = M.view
 

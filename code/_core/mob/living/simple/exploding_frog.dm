@@ -11,8 +11,8 @@
 
 	stun_angle = 0
 
-	loyalty_tag = "Lizard"
-	iff_tag = "Lizard"
+	iff_tag = "Jungle"
+	loyalty_tag = "Jungle"
 
 	size = SIZE_CRITTER
 
@@ -27,11 +27,26 @@
 
 	level = 1
 
-/mob/living/simple/exploding_frog/death()
+	movement_delay = DECISECONDS_TO_TICKS(3)
 
-	if(!exploded)
-		explode(get_turf(src),2,master ? master : src,src,loyalty_tag)
-		exploded = TRUE
+/mob/living/simple/exploding_frog/death()
 
 	. = ..()
 
+	if(. && !exploded)
+		exploded = TRUE
+		var/turf/T = get_turf(src)
+		if(T)
+			play_sound('sound/effects/frog_explode.ogg',T)
+			var/damagetype/DT = all_damage_types[/damagetype/voice_of_god/harm]
+			for(var/d in DIRECTIONS_ALL_CENTER)
+				var/turf/T2 = get_step(T,d)
+				for(var/k in T2.contents)
+					var/atom/movable/M = k
+					if(M.health)
+						var/atom/object_to_damage = M.get_object_to_damage(src,src,DT.type,null,TRUE,TRUE)
+						DT.process_damage(src,M,src,object_to_damage,src,1)
+				if(T2.health)
+					var/atom/object_to_damage = T2.get_object_to_damage(src,src,DT.type,null,TRUE,TRUE)
+					DT.process_damage(src,T2,src,object_to_damage,src,1)
+			gib(src)

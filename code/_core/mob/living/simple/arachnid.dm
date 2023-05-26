@@ -6,7 +6,6 @@
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/claw/
 
-
 	pixel_x = -16
 
 	value = 1000
@@ -69,10 +68,10 @@
 
 	if(dead)
 		icon_state = "dead"
+	else if(has_status_effect(REST))
+		icon_state = "inactive"
 	else if(horizontal)
 		icon_state = "stun"
-	else if(ai && !ai.active)
-		icon_state = "inactive"
 	else
 		icon_state = "living"
 
