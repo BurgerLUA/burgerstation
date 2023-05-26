@@ -97,7 +97,7 @@
 		if(!length(A.voice_modifiers))
 			A.voice_modifiers = null
 
-/obj/item/clothing/mask/voice_of_god/proc/search_for_voice(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/obj/item/clothing/mask/voice_of_god/proc/search_for_voice(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	if(next_voice > world.time)
 		return text_to_say
@@ -108,7 +108,7 @@
 	if(speaker.health && (speaker.health.stamina_current < 50 || speaker.health.mana_current < 50))
 		return text_to_say
 
-	var/text_to_search = remove_non_letters(lowertext(text_to_say))
+	var/text_to_search = remove_non_letters(lowertext(raw_text_to_say))
 
 	var/list/words = splittext(text_to_search," ")
 

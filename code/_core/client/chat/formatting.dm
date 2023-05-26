@@ -4,11 +4,12 @@ var/global/icon/chat_language = new('icons/hud/language.dmi')
 var/global/icon/chat_toolbox = new('icons/hud/chat_toolbox_old.dmi')
 var/global/icon/chat_admin = new('icons/hud/chat_admin.dmi')
 
-
+/*
 /proc/format_language(var/speaker,var/text,var/language = LANGUAGE_BASIC) //Here lies a failed experiment
 	var/language/LA = SSlanguage.all_languages[language]
 	var/language_text = LA.process_text(speaker,text)
 	return tooltip(text,language_text)
+*/
 
 proc/format_speech(var/speaker,var/datum/source,var/text,var/talk_type,var/frequency,var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/knows_language=TRUE)
 

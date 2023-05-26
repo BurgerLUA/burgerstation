@@ -146,16 +146,16 @@
 
 	)
 
-/species/proc/mod_speech(var/mob/living/M,var/text,var/intensity=50)
+/species/proc/process_accent(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	if(!accent || !length(accent))
-		return text
+		return text_to_say
 
 	for(var/k in accent)
 		var/v = accent[k]
-		text = replacetextEx(text,k,v)
+		text_to_say = replacetextEx(text_to_say,k,v)
 
-	return text
+	return text_to_say
 
 
 /species/proc/generate_blood_type()

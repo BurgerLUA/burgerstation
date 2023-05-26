@@ -281,14 +281,15 @@ var/global/regex/bad_opinion = regex(@"en *passant *is *n[^f]*forced")
 	PROCESS_LIVING(src)
 	return TRUE
 
-/mob/living/simple/chess_piece/king/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/mob/living/simple/chess_piece/king/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals. This prevents spam.
 		return ..()
+
 	if(get_dist(source,src) > VIEW_RANGE)
 		return ..()
 
-	if(!src.processing && !CALLBACK_EXISTS("\ref[src]_response") && bad_opinion.Find(text))
+	if(!src.processing && !CALLBACK_EXISTS("\ref[src]_response") && length(raw_text) && bad_opinion.Find(raw_text))
 		CALLBACK("\ref[src]_response",rand(10,20),src,src::give_response())
 
 	. = ..()

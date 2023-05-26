@@ -154,10 +154,13 @@ var/regex/vowels = new("\[aeiou\]", "i")
 	if(frequency_to_use && talk_type_to_use == TEXT_TALK)
 		talk_type_to_use = TEXT_RADIO
 
-	text_to_say = trim(mod_speech(text_to_say))
-
 	if(should_sanitize && src.client)
 		text_to_say = police_text(src.client,text_to_say,check_characters=TRUE)
+
+	text_to_say = trim(text_to_say)
+
+	if(!text_to_say)
+		return null
 
 	talk(src,src,text_to_say,talk_type_to_use,frequency_to_use,language_to_use,talk_range)
 
@@ -198,7 +201,7 @@ var/regex/vowels = new("\[aeiou\]", "i")
 	return ..()
 
 
-/mob/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/mob/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	if(client)
 		var/knows_language = length(known_languages) && known_languages[language]

@@ -79,6 +79,7 @@ var/global/list/all_telecomms = list()
 			data_to_process["speaker"],
 			R,
 			data_to_process["text_to_say"],
+			data_to_process["raw_text_to_say"],
 			data_to_process["language_text_to_say"],
 			data_to_process["text_type"],
 			data_to_process["frequency"],

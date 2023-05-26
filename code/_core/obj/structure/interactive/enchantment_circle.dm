@@ -42,14 +42,18 @@
 		stored_book = I
 	stored_items += I
 	HOOK_ADD("post_move","enchantment_sanity_\ref[src]",I,src,src::unstore_item())
-	I.visible_message(span("notice","\The [I.name] glows faintly..."))
+	if(active)
+		I.visible_message(span("notice","\The [I.name] glows faintly..."))
+	return TRUE
 
 /obj/structure/interactive/enchantment_circle/proc/unstore_item(var/obj/item/I)
 	if(I == stored_book)
 		stored_book = null
 	stored_items -= I
 	HOOK_REMOVE("post_move","enchantment_sanity_\ref[src]",I)
-	I.visible_message(span("warning","\The [I.name] stops glowing..."))
+	if(active)
+		src.set_active(FALSE)
+		I.visible_message(span("warning","\The [I.name] stops glowing..."))
 	return TRUE
 
 /obj/structure/interactive/enchantment_circle/proc/set_active(var/desired_active=TRUE)
@@ -67,7 +71,7 @@
 			return FALSE
 		for(var/k in found_contents)
 			store_item(k)
-		src.visible_message(span("warning","\The [src.name] brightens up and indicates it's ready for enchanting."))
+		src.visible_message(span("notice","\The [src.name] brightens up and indicates it's ready for enchanting..."))
 	else
 		for(var/k in stored_items)
 			unstore_item(k)
@@ -138,28 +142,17 @@
 
 
 
-/obj/structure/interactive/enchantment_circle/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/obj/structure/interactive/enchantment_circle/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
-	if(is_living(speaker) && active && stored_book && text)
-		var/text_to_compare = sanitize(lowertext(stored_book.enchanting_phrase))
+	if(is_living(speaker) && active && stored_book && raw_text)
+
 		var/language/L = SSlanguage.all_languages[LANGUAGE_LIZARD]
 
-		//Removal of moff accent
-		var/antimoth = list(
-			"ø" = "o",
-			"æ" = "ae",
-			"å" = "a"
-		)
-		//stupid but effective removal of lizard accent
-		var/antilizard = list(
-			"sss" = "s"
-		)
-		var/moffnoaccent = sanitize(lowertext(replace_characters(text,antimoth)))
-		var/lizardnoaccent = sanitize(lowertext(replace_characters(text,antilizard)))
+		var/converted_text = lowertext(raw_text)
+		var/converted_enchanting_phrase = lowertext(stored_book.enchanting_phrase)
+		var/converted_enchanting_translated = lowertext(L.process_text(speaker,converted_enchanting_phrase))
 
-		var/converted_text = sanitize(L.process_text(speaker,lowertext(stored_book.enchanting_phrase)))
-
-		if(text_to_compare == lowertext(text) || text_to_compare == lowertext(language_text) || converted_text == lizardnoaccent || converted_text == lowertext(lizardnoaccent) || converted_text == moffnoaccent || converted_text == lowertext(moffnoaccent))
+		if(converted_text == converted_enchanting_phrase || converted_text == converted_enchanting_translated)
 			try_enchant(speaker)
 
 	return ..()

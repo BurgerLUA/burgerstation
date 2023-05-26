@@ -3,12 +3,13 @@
 		var/client/C = all_clients[k]
 		C.to_chat(text_to_say,chat_type)
 
-/proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 
 	var/list/radio_data = list(
 		"speaker" = speaker,
 		"source" = source,
 		"text_to_say" = text_to_say,
+		"raw_text_to_say" = raw_text_to_say,
 		"language_text_to_say" = language_text_to_say,
 		"text_type" = TEXT_RADIO,
 		"frequency" = frequency,
@@ -20,13 +21,13 @@
 	if(all_telecomms[A.area_identifier])
 		for(var/k in all_telecomms[A.area_identifier])
 			var/obj/structure/interactive/telecomms/TC = k
-			TC.add_data(md5("\ref[speaker],\ref[source],[text_to_say]"),radio_data)
+			TC.add_data(md5("\ref[speaker]_[text_to_say]"),radio_data)
 
 	play_sound('sound/items/radio.ogg',get_turf(source),range_max=VIEW_RANGE)
 
 	return TRUE
 
-/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/talk_range_override)
+/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/talk_range_override)
 
 	var/turf/T1 = get_turf(source)
 
@@ -50,21 +51,23 @@
 			continue
 		if(get_dist(T1,T2) > talk_range_override)
 			continue
-		A.on_listen(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
+		A.on_listen(speaker,source,text_to_say,raw_text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 
 
 	return TRUE
 
 
-/proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE) //Range only applies to TALK and RADIO
+/proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type=TEXT_TALK, var/frequency=-1, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE) //Range only applies to TALK and RADIO
 
 	if(!text_to_say)
 		return FALSE
 
+	var/raw_text_to_say = text_to_say //Before changes.
+
 	if(is_atom(speaker) && length(speaker.voice_modifiers))
 		for(var/k in speaker.voice_modifiers)
 			var/atom/A = k
-			text_to_say = call(A,speaker.voice_modifiers[A])(speaker,source,text_to_say,text_type,frequency,language,talk_range)
+			text_to_say = call(A,speaker.voice_modifiers[A])(speaker,source,text_to_say,raw_text_to_say,text_type,frequency,language,talk_range)
 			if(!text_to_say)
 				return FALSE
 
@@ -84,10 +87,10 @@
 						var/obj/item/device/radio/R = H.stored_radio
 						if(frequency == -1)
 							frequency = R.frequency
-						R.on_listen(speaker,source,text_to_say,language_text_to_say,TEXT_TALK,frequency,language,talk_range)
+						R.on_listen(speaker,source,text_to_say,raw_text_to_say,language_text_to_say,TEXT_TALK,frequency,language,talk_range)
 						if(speaker.is_player_controlled()) log_chat("RADIO [frequency_to_name(frequency)]: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_TALK)
-			use_ears(speaker,source,text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
+			use_ears(speaker,source,text_to_say,raw_text_to_say,language_text_to_say,text_type,frequency,language,talk_range)
 			if(speaker.is_player_controlled()) log_chat("TALK: [speaker.get_log_name()]: [text_to_say]")
 			var/area/A = source_turf.loc
 			if(A && !(A.flags_area & FLAG_AREA_SINGLEPLAYER))

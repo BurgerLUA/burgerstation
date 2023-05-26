@@ -159,7 +159,7 @@ list(
 			loc.trigger(caller,src,signal_freq,signal_code)
 			return TRUE
 
-/obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals. This prevents spam.
 		return FALSE
 	if(listen_range > 0 && get_dist(source,src) > listen_range)
@@ -168,7 +168,7 @@ list(
 		return FALSE
 	if(frequency > 0 && (frequency < frequency_min || frequency > frequency_max))
 		return FALSE
-	use_radio(speaker,src,text,language_text,talk_type,src.frequency,language,talk_range)
+	use_radio(speaker,src,text,raw_text,language_text,talk_type,src.frequency,language,talk_range)
 	. = ..()
 
 /obj/item/device/radio/nanotrasen

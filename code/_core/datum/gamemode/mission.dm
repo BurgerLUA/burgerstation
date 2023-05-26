@@ -123,9 +123,9 @@
 	add_objective(/objective/hostage)
 	add_objective(/objective/hostage)
 	add_objective(/objective/kill_boss)
-	add_objective(/objective/kill_rogue)
 
 	if(player_count >= 10)
+		add_objective(/objective/kill_rogue)
 		add_objective(/objective/hostage)
 		log_debug("Adding player count 10 objectives.")
 
@@ -156,6 +156,10 @@
 
 	return ..()
 
+/gamemode/mission/proc/announce_lore()
+
+	return TRUE
+
 /gamemode/mission/on_life()
 
 	. = ..()
@@ -173,6 +177,7 @@
 					"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle functionality: 6 minutes.",
 					sound_to_play = 'sound/voice/announcement/landfall_crew_6_minutes_shuttle.ogg'
 				)
+				CALLBACK("\ref[src]_announce_lore",rand(100,600),src,src::announce_lore()) //10 to 60 seconds.
 			if(2)
 				status_display_text = "PREP"
 				round_time_next = 1*60
@@ -195,7 +200,7 @@
 					sound_to_play = 'sound/voice/announcement/landfall_crew_0_minutes_shuttle.ogg'
 				)
 			if(4)
-				status_display_text = "BTTLE"
+				status_display_text = "WAR"
 				round_time_next = 60*60
 				add_objectives()
 			if(5)

@@ -202,6 +202,12 @@ mob/living/advanced/Login()
 	if(loadout) equip_loadout(loadout)
 	update_items(force=TRUE)
 
+	if(species)
+		var/species/S = SPECIES(species)
+		if(!src.voice_modifiers)
+			src.voice_modifiers = list()
+		src.voice_modifiers[S] = S::process_accent()
+
 /mob/living/advanced/setup_name()
 
 	if(name == DEFAULT_NAME) //Give a human name
@@ -272,13 +278,6 @@ mob/living/advanced/Login()
 
 /mob/living/advanced/proc/get_held_right()
 	return inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
-
-/mob/living/advanced/mod_speech(var/text)
-	var/species/S = SPECIES(species)
-	if(!S)
-		return text
-	text = S.mod_speech(src,text)
-	return ..()
 
 /mob/living/advanced/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 	for(var/i=1,i<=5,i++)

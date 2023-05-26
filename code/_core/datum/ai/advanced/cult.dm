@@ -62,5 +62,5 @@
 			)
 
 		if(length(responses))
-			owner.do_say(pick(responses),,language_to_use = LANGUAGE_CULT)
+			owner.do_say(pick(responses),language_to_use = LANGUAGE_CULT)
 

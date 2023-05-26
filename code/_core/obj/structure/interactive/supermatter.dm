@@ -116,13 +116,11 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 		health.adjust_loss(BURN,health.health_max*0.1)
 		charge_amount = charge_max*0.9
 		visible_message(span("danger","\The [src.name] flashes  violently!"))
-		use_radio(src,src,"WARNING: Supermatter overcharge detected! Dumping excess energy!",LANGUAGE_BASIC,TEXT_RADIO,RADIO_FREQ_COMMON,LANGUAGE_BASIC,TALK_RANGE)
 		explode(T,VIEW_RANGE,src,src,"Supermatter")
 	else if(charge < 0)
 		var/turf/T = get_turf(src)
 		health.adjust_loss(BRUTE,health.health_max*0.1)
 		charge_amount = charge_max*0.1
-		use_radio(src,src,"WARNING: Supermatter negative charge detected! Implosion detected!",LANGUAGE_BASIC,TEXT_RADIO,RADIO_FREQ_COMMON,LANGUAGE_BASIC,TALK_RANGE)
 		visible_message(span("danger","\The [src.name] creaks violently!"))
 		explode(T,VIEW_RANGE,src,src,"Supermatter")
 
@@ -179,11 +177,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 /obj/structure/interactive/supermatter/proc/trigger_warning()
 	var/health_percent = health.health_current/health.health_max
 	if(health_percent <= 0.9)
-		var/message = "Warning: Supermatter Crystal at [FLOOR(health_percent*100,1)]% integrity."
-		last_warning_percent = health_percent
-		if(health_percent <= 0.2)
-			message = "[message] DELAMINATION IMMINENT!!"
-		use_radio(src,src,message,LANGUAGE_BASIC,TEXT_RADIO,RADIO_FREQ_COMMON,LANGUAGE_BASIC,TALK_RANGE)
 		last_warning_percent = health_percent
 		last_warning_time = world.time
 	return TRUE
