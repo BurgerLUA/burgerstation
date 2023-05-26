@@ -298,7 +298,7 @@
 
 /obj/item/weapon/ranged/wand/quartz
 	name = "crafted wand"
-	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
+	icon = 'icons/obj/item/weapons/ranged/magic/wand/quartz.dmi'
 
 	wand_damage_multiplier = 1.2
 	wand_mana_multiplier = 0.90

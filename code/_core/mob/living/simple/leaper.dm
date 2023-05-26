@@ -18,7 +18,7 @@
 
 	stun_angle = 0
 
-	health_base = 17500
+	health_base = 10000
 	stamina_base = 1000
 	mana_base = 2000
 
@@ -89,13 +89,16 @@
 
 	var/list/valid_turfs = list()
 
-	for(var/turf/simulated/floor/T in orange(2 + VIEW_RANGE*0.25,ai && ai.objective_attack ? ai.objective_attack : src))
+	var/turf/center_turf = ai && ai.objective_attack ? get_turf(ai.objective_attack) : get_turf(src)
+	var/turf/simulated/floor/T
+	FOR_DVIEW(T,2 + VIEW_RANGE*0.25,center_turf,0)
 		CHECK_TICK_SAFE(50,FPS_SERVER)
 		if(get_dist(T,src) <= 2)
 			continue
 		if(!T.can_move_to() || !T.is_safe())
 			continue
 		valid_turfs += T
+	END_FOR_DVIEW
 
 	if(!length(valid_turfs))
 		return FALSE
