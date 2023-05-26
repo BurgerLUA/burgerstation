@@ -51,6 +51,7 @@
 
 /mob/living/simple/arachnid/Finalize()
 	. = ..()
+	add_status_effect(REST,-1,-2, force = TRUE)
 	update_sprite()
 
 /mob/living/simple/arachnid/post_death()

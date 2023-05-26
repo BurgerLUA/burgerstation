@@ -18,7 +18,7 @@
 	var/homing_mod = 0.05 //What percentage of velocity (as a value 0-1) should the projectile try to turn to.
 
 	var/obj/projectile/turret_projectile // The projectile for this projectile to shoot when near valid targets.
-	var/damage_type/turret_projectile_damage_type
+	var/damagetype/turret_projectile_damage_type
 	var/turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
 	var/turret_projectie_max_range = 4
 	var/turret_projectile_next = 0 //Read only.

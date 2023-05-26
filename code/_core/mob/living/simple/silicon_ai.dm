@@ -22,6 +22,8 @@
 	boss = TRUE
 	boss_loot = /loot/lavaland/ai_core
 
+	boss_music = /track/dead
+
 	var/next_cyborg_spawn_time = -1
 
 	var/list/hit_directions = list()

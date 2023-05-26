@@ -24,6 +24,8 @@
 
 	boss_loot = /loot/lavaland/leaper
 
+	boss_music = /track/frogged
+
 	force_spawn = TRUE
 	boss = TRUE
 
