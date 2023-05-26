@@ -18,6 +18,7 @@
 	var/homing_mod = 0.05 //What percentage of velocity (as a value 0-1) should the projectile try to turn to.
 
 	var/obj/projectile/turret_projectile // The projectile for this projectile to shoot when near valid targets.
+	var/damage_type/turret_projectile_damage_type
 	var/turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
 	var/turret_projectie_max_range = 4
 	var/turret_projectile_next = 0 //Read only.
@@ -89,7 +90,7 @@
 				null,
 				null,
 				turret_projectile,
-				damage_type,
+				turret_projectile_damage_type,
 				16,
 				16,
 				0,
@@ -110,10 +111,11 @@
 
 		var/current_speed = ROOT(vel_x**2 + vel_y**2,2) //Current speed.
 
+		if(current_speed <= 0)
+			on_projectile_hit(current_loc)
+			return FALSE
+
 		if(homing_speed > 0)
-			if(current_speed <= 0)
-				on_projectile_hit(current_loc)
-				return FALSE
 			var/found_max = max(abs(vel_x),abs(vel_y))
 			var/norm_x = vel_x/found_max
 			var/norm_y = vel_y/found_max
@@ -124,7 +126,7 @@
 					max_increase = max(max_increase,1-homing_maximum_acceleration)
 				else if(max_increase > 1) //Lets speed up.
 					max_increase = min(max_increase,1+homing_maximum_acceleration)
-				current_speed = current_speed * max_increase
+				current_speed *= max_increase
 				vel_x = norm_x * current_speed
 				vel_y = norm_y * current_speed
 
@@ -133,14 +135,14 @@
 		if(homing_distance_max > 0 && real_distance_to_target > homing_distance_max) //Too far away.
 			return .
 
-		if(real_distance_to_target <= 0) //Too close!
+		if(homing_distance_min >= 0 && real_distance_to_target <= homing_distance_min) //Too close!
 			return .
 
 		if(vel_x && vel_y)
 			var/list/offsets = get_directional_offsets(current_loc,target_atom)
 			if(offsets[1] || offsets[2])
-				var/current_angle = -ATAN2(vel_x,vel_y) + 90
-				var/new_angle = -ATAN2(offsets[1],offsets[2]) + 90
+				var/current_angle = ATAN2(vel_x,vel_y) - 90
+				var/new_angle = ATAN2(offsets[1],offsets[2]) - 90
 
 				if(current_angle != new_angle)
 					if(!homing_angle_limit || abs(current_angle - new_angle) < homing_angle_limit)
@@ -281,18 +283,11 @@
 	name = "tesla ball"
 	icon_state = "tesla"
 
-	homing = TRUE //Do we home in on a target?
-	homing_distance_max = VIEW_RANGE //Allowed maximum distance to home.
-	homing_distance_min = 4 //If non-zero, speed up if above this range and slow down if below this range.
-	homing_speed = TILE_SIZE * 0.25
-	homing_maximum_acceleration = 0.05 //Per tick. Also deceleration. limited between 0.01 and 0.25.
-	homing_angle_limit = 360
-	homing_mod = 0.2
-
 	turret_projectile = /obj/projectile/magic/tesla_bolt // The projectile for this projectile to shoot when near valid targets.
+	turret_projectile_damage_type = /damagetype/ranged/magic/tesla_shock
 	turret_projectile_delay = SECONDS_TO_DECISECONDS(1) //The delay in which the projectile can shoot.
-	turret_projectie_max_range = 5
-	turret_projectile_speed = TILE_SIZE*0.5 - 1
+	turret_projectie_max_range = 4
+	turret_projectile_speed = TILE_SIZE*0.3 - 1
 	turret_projectile_sound = 'sound/effects/tesla.ogg'
 
 	ignore_living = TRUE

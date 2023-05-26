@@ -2299,6 +2299,7 @@
 #include "code\_core\turf\unsimulated\generation\river.dm"
 #include "code\_core\world\_world.dm"
 #include "code\_core\world\announcement.dm"
+#include "code\_core\world\error.dm"
 #include "code\_core\world\life.dm"
 #include "code\_core\world\subsystems\__subsystems.dm"
 #include "code\_core\world\subsystems\admin.dm"

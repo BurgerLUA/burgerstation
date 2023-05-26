@@ -19,3 +19,13 @@
 	color_3 = "#8B969E"
 
 	value = 800
+
+	rarity = RARITY_MYTHICAL
+
+/obj/item/weapon/ranged/spellgem/tesla/get_base_value()
+	. = ..()
+	. *= 8
+
+/obj/item/weapon/ranged/spellgem/tesla/get_base_mana_cost()
+	. = ..()
+	. *= 8
