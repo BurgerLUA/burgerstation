@@ -59,15 +59,6 @@
 	if(icon_state == initial(icon_state))
 		icon_state = "wallmed_nomap"
 
-/obj/structure/interactive/vending/medical/chemistry
-	name = "chemical vendor"
-	icon_state = "smartfridge2"
-	stored_types = list(
-
-	)
-
-
-
 /obj/structure/interactive/vending/medical/wardrobe
 	name = "medical wardrobe vendor"
 	icon_state = "medidrobe"

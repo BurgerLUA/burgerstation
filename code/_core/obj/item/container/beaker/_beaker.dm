@@ -55,6 +55,9 @@
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
 	return ..()
 
+/obj/item/container/simple/beaker/potassium
+	name = "beaker of potassium"
+
 /obj/item/container/simple/beaker/potassium/Generate()
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()

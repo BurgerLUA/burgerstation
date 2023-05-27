@@ -8,12 +8,14 @@
 
 	ignore_economy = TRUE
 
+	accepts_item = /obj/item/currency/dosh
+
 /obj/structure/interactive/vending/random/Finalize()
 
-	markup = rand(4,8)
+	markup = rand(2,4)
 
-	for(var/i=1,i<=6,i++)
-		switch(rand(1,4))
+	for(var/i=1,i<=rand(3,6),i++)
+		switch(rand(1,3))
 			if(1)
 				SPAWN_LOOT(/loot/random/trash,src.loc)
 			if(2)

@@ -13,3 +13,6 @@
 	color = COLOR_STEEL
 
 	pixel_y = 0
+
+/obj/structure/table/window/light
+	color = COLOR_STEEL_LIGHT

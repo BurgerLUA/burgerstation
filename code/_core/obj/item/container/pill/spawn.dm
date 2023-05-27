@@ -92,3 +92,19 @@
 /obj/item/container/edible/pill/space_prussian_blue/Generate()
 	reagents.add_reagent(/reagent/medicine/space_prussian_blue,10)
 	return ..()
+
+/obj/item/container/edible/pill/chlorine
+	name = "chlorine tablet (10u)"
+	icon_state = "circle"
+
+/obj/item/container/edible/pill/chlorine/Generate()
+	reagents.add_reagent(/reagent/chlorine,5)
+	return ..()
+
+/obj/item/container/edible/pill/carbon
+	name = "carbon tablet (10u)"
+	icon_state = "circle"
+
+/obj/item/container/edible/pill/carbon/Generate()
+	reagents.add_reagent(/reagent/carbon,5)
+	return ..()

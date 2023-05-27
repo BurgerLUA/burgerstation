@@ -34,6 +34,13 @@
 		reagents.temperature_change_mul = 1
 		SSreagent.all_temperature_reagent_containers += reagents
 
+/obj/item/container/simple/beaker/fuel_cell/click_self(var/mob/caller)
+
+	if(!(allow_reagent_transfer_to || allow_reagent_transfer_from))
+		caller.to_chat(span("notice","You'll need a wrench in order to open \the [src.name]!"))
+		return TRUE
+
+	. = ..()
 
 /obj/item/container/simple/beaker/fuel_cell/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -82,3 +89,11 @@
 /obj/item/container/simple/beaker/fuel_cell/phoron/Generate()
 	. = ..()
 	reagents.add_reagent(/reagent/fuel/phoron,reagents.volume_max,T0C - 200)
+
+/obj/item/container/simple/beaker/fuel_cell/nitrogen
+	name = "liquid nitrogen fuel cell"
+	stripe_color = COLOR_WHITE
+
+/obj/item/container/simple/beaker/fuel_cell/nitrogen/Generate()
+	. = ..()
+	reagents.add_reagent(/reagent/nitrogen,reagents.volume_max,T0C - 200)

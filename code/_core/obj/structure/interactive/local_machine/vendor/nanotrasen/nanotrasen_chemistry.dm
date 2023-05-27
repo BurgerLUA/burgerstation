@@ -1,7 +1,21 @@
-#define LAZY_BEAKER(x) /obj/item/container/simple/beaker/vendor{reagent=x}
-
 /obj/structure/interactive/vending/nanotrasen/chemistry
 	icon = 'icons/obj/structure/vending_new.dmi'
+
+/obj/structure/interactive/vending/nanotrasen/chemistry/wardrobe
+	name = "chemist wardrobe vendor"
+	icon_state = "chemistry_clothing"
+
+	stored_types = list(
+		/obj/item/clothing/back/storage/satchel/poly/chemistry,
+		/obj/item/clothing/belt/storage/colored/chemistry,
+		/obj/item/clothing/mask/gas/poly/chemistry,
+		/obj/item/clothing/shirt/normal/uniform/chemistry,
+		/obj/item/clothing/pants/normal/chemistry,
+		/obj/item/clothing/overwear/coat/labcoat/chemist,
+		/obj/item/storage/shoebox/colored/,
+		/obj/item/storage/glovebox/white
+	)
+
 
 /obj/structure/interactive/vending/nanotrasen/chemistry/equipment
 	name = "chemistry equipment vendor"
@@ -30,6 +44,8 @@
 		/obj/item/device/timer,
 		/obj/item/device/signaller,
 		/obj/item/device/proximity,
+		/obj/item/weapon/melee/tool/wrench,
+		/obj/item/weapon/melee/tool/screwdriver
 	)
 
 
@@ -37,33 +53,37 @@
 	name = "smart chemical vendor"
 	icon_state = "chemistry_smartfridge"
 	stored_types = list(
-		LAZY_BEAKER(/reagent/nutrition/water),
-		LAZY_BEAKER(/reagent/carbon),
-		LAZY_BEAKER(/reagent/iron),
-		LAZY_BEAKER(/reagent/copper),
-		LAZY_BEAKER(/reagent/silver),
-		LAZY_BEAKER(/reagent/aluminium),
-		LAZY_BEAKER(/reagent/nitrogen),
-		LAZY_BEAKER(/reagent/silicon),
-		LAZY_BEAKER(/reagent/potassium),
-		LAZY_BEAKER(/reagent/salt/sodium_chloride),
-		LAZY_BEAKER(/reagent/ammonia),
-		LAZY_BEAKER(/reagent/sulfur),
-		LAZY_BEAKER(/reagent/chlorine),
-		LAZY_BEAKER(/reagent/phenol),
-		LAZY_BEAKER(/reagent/sodium),
-		LAZY_BEAKER(/reagent/phosphorous),
-		LAZY_BEAKER(/reagent/fuel/oxygen),
-		LAZY_BEAKER(/reagent/fuel/oil/carbon),
-		LAZY_BEAKER(/reagent/fuel/hydrogen),
-		LAZY_BEAKER(/reagent/fuel/phoron),
-		LAZY_BEAKER(/reagent/fuel/acetone),
-		LAZY_BEAKER(/reagent/nutrition/ethanol),
-		LAZY_BEAKER(/reagent/toxin/mercury)
+		/obj/item/container/simple/chemistry/ammonia,
+		/obj/item/container/simple/chemistry/sodium_chloride,
+		/obj/item/container/simple/chemistry/sulfur,
+		/obj/item/storage/pillbottle/consumer/chlorine,
+		/obj/item/storage/pillbottle/consumer/carbon,
+		/obj/item/container/simple/beaker/fuel_cell/oxygen,
+		/obj/item/container/simple/baking/sugar,
+		/obj/item/container/simple/beaker/fuel_cell/nitrogen,
+		/obj/item/container/simple/beaker/potassium,
+		/obj/item/container/simple/chemistry/silicon,
+		/obj/item/container/simple/chemistry/acetone,
+		/obj/item/container/simple/beaker/fuel_cell/phoron,
+		/obj/item/container/simple/chemistry/phenol,
+		/obj/item/container/simple/alcohol/ethanol
 	)
+
+	//Missing
+	/*
+		/reagent/fuel/welding
+		/reagent/ash
+		/reagent/silver
+		/reagent/aluminium
+		/reagent/acid/sulphuric
+		/reagent/fuel/diethylamine
+		/reagent/medicine/charcoal
+		/reagent/copper
+		/reagent/iron
+		/reagent/sodium
+	*/
 
 /obj/structure/interactive/vending/nanotrasen/chemistry/reagents/Finalize()
 	. = ..()
-	sort_tim(stored_objects,/proc/cmp_name_asc)
-
-#undef LAZY_BEAKER
+	if(length(stored_objects))
+		sort_tim(stored_objects,/proc/cmp_name_asc)

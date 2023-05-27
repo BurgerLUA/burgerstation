@@ -149,3 +149,8 @@
 	name = "Grandpa's Grappa"
 	icon_state = "grappa"
 	initial_reagent = /reagent/nutrition/ethanol/grappa
+
+/obj/item/container/simple/alcohol/ethanol
+	name = "Discount Dan's Pure Ethanol"
+	icon_state = "ethanol"
+	initial_reagent = /reagent/nutrition/ethanol
