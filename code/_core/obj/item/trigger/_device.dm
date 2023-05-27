@@ -11,7 +11,7 @@
 	weight = 0.75
 
 
-/obj/item/device/proximity/Destroy()
+/obj/item/device/Destroy()
 	active = FALSE
 	interactable = FALSE
 	return ..()

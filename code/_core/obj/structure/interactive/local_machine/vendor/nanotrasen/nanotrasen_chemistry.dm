@@ -20,11 +20,16 @@
 		/obj/item/container/simple/beaker/vial,
 		/obj/item/container/simple/beaker,
 		/obj/item/container/simple/beaker/large,
+		/obj/item/container/simple/beaker/bucket,
+		/obj/item/container/simple/beaker/bluespace,
 		/obj/item/container/spray,
 		/obj/item/container/syringe/hypodermic,
 		/obj/item/container/syringe/medipen,
-		/obj/item/grenade,
-		/obj/item/device/timer
+		/obj/item/grenade/device,
+		/obj/item/grenade/device/large,
+		/obj/item/device/timer,
+		/obj/item/device/signaller,
+		/obj/item/device/proximity,
 	)
 
 

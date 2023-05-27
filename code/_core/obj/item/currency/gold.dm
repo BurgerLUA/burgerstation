@@ -5,10 +5,10 @@
 	icon_state = "1"
 	value = 0 //Value is based on current economy, see get_base_value()
 
-	amount_max = 1000
+	amount_max = GOLD_AMOUNT_MAX
 
-	size = SIZE_4/1000
-	weight = 50/1000
+	size = SIZE_4/GOLD_AMOUNT_MAX
+	weight = 50/GOLD_AMOUNT_MAX
 
 	currency_class = "gold coin"
 
@@ -38,7 +38,7 @@
 		if(40 to 500) //40 to 100, 10
 			// 40 + (i*(60/100))/5
 			icon_state = "[40 + FLOOR((amount*(60/100))/5,10)]"
-		if(500 to 1000) //100 to 200, 20
+		if(500 to GOLD_AMOUNT_MAX) //100 to 200, 20
 			icon_state = "[FLOOR(amount/5,20)]"
 
 /obj/item/currency/gold_coin/update_overlays()
@@ -71,8 +71,8 @@
 
 	amount_max = 5
 
-	size = (SIZE_4/1000) * (1000/5)
-	weight = (50/1000) * (1000/5)
+	size = (SIZE_4/GOLD_AMOUNT_MAX) * (GOLD_AMOUNT_MAX/5)
+	weight = (50/GOLD_AMOUNT_MAX) * (GOLD_AMOUNT_MAX/5)
 
 	currency_class = "gold bar"
 
@@ -99,7 +99,7 @@
 	add_overlay(I)
 
 /obj/item/currency/gold_bar/get_base_value()
-	return CEILING(SSeconomy.credits_per_gold * amount * (1000/5),1)
+	return CEILING(SSeconomy.credits_per_gold * amount * (GOLD_AMOUNT_MAX/5),1)
 
 
 /obj/item/currency/gold_bar/update_icon()

@@ -88,12 +88,20 @@
 
 	var/list/returning_damage = DT.process_damage(owner,victim,src,object_to_damage,owner,multiplier)
 
-	if(!momentum && returning_damage && returning_damage[1] > 0)
+	if(!victim.health || victim.health.health_current <= 0)
+		returning_damage = null
+	else if(is_living(victim))
+		var/mob/living/L = victim
+		if(L.has_status_effect(IMMORTAL))
+			returning_damage = null
+
+	if(returning_damage && returning_damage[1] > 0)
 		var/expected_damage = DT.get_damage_per_hit()*multiplier
-		var/fire_power_to_add = min(10,3*(returning_damage[1]/expected_damage))
-		fire_power += fire_power_to_add
-		if(fire_power >= 40)
-			momentum = NORTH | EAST | SOUTH | WEST
+		var/fire_power_to_add = min(10,3*(returning_damage[1]/expected_damage - 1))
+		if(fire_power_to_add > 0)
+			fire_power += fire_power_to_add
+			if(fire_power >= 40)
+				momentum = NORTH | EAST | SOUTH | WEST
 
 	CALLBACK("\ref[victim]_\ref[src]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
 
@@ -177,6 +185,8 @@
 
 	var/turf/current_turf = loc
 
+	var/fire_power_to_add = min(fire_power*0.5,min(fire_power,40) + fire_power*0.25)
+
 	for(var/d in DIRECTIONS_ALL)
 
 		if(!momentum) //We have no momentum anymore so there is no point in processing anymore.
@@ -209,8 +219,8 @@
 		if(!FP)
 			FP = new(T)
 			FP.initial_fire_power = src.initial_fire_power
-			FP.fire_power = min(fire_power*0.25,10) + fire_power*0.5
-			FP.momentum = d & momentum //The reason why momentum is not just d is because that will eventually create a circle.
+			FP.fire_power = fire_power_to_add
+			FP.momentum = d & momentum //The reason why momentum is not just d is because that will eventually create a loop.
 			FP.multiplier = src.multiplier
 			FP.loyalty_tag = src.loyalty_tag
 			FP.owner = src.owner
@@ -221,7 +231,7 @@
 			FP.pixel_y = -directional_offset[2]*TILE_SIZE
 			animate(FP,pixel_x = initial(pixel_x),pixel_y = initial(pixel_y), time = 0.5)
 		else
-			FP.fire_power = max(FP.fire_power,src.fire_power - 10)
+			FP.fire_power = max(FP.fire_power,min(FP.fire_power*1.25,FP.fire_power+fire_power_to_add))
 			FP.momentum |= momentum
 			FP.multiplier = (FP.multiplier + src.multiplier) / 2
 			FP.loyalty_tag = src.loyalty_tag

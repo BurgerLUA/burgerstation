@@ -27,7 +27,7 @@
 	. += span("notice","Increases the quality of [item_type_name] by [increase]%, up to [maximum]%, with a minimum of [minimum]%.")
 
 /obj/item/tempering/quality/on_temper(var/mob/caller,var/obj/item/I)
-	I.quality = clamp(I.luck + increase,minimum,maximum)
+	I.quality = clamp(I.quality + increase,minimum,maximum)
 	. = ..()
 
 /obj/item/tempering/quality/general

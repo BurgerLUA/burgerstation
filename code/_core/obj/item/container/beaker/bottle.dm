@@ -10,6 +10,8 @@
 
 	value = 3
 
+	size = SIZE_1
+
 
 /obj/item/container/simple/beaker/bottle/bicaridine
 	name = "bottle of bicaridine"

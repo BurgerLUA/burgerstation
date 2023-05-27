@@ -13,7 +13,7 @@
 		/obj/item/dice/d20,
 		/obj/item/clothing/mask/gas/mime,
 		/obj/item/broom/magic,
-		/obj/item/grenade/timed/lube_smoke,
+		/obj/item/grenade/device/large/timed/lube_smoke,
 		/obj/item/clothing/overwear/armor/burger_coat,
 		/obj/item/clothing/overwear/armor/burger_coat/courier,
 		/obj/item/clothing/overwear/armor/burger_coat/courier/ncr,

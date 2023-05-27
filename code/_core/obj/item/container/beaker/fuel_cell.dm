@@ -16,6 +16,8 @@
 
 	reagents = /reagent_container/fuel_cell
 
+	size = SIZE_1
+
 /obj/item/container/simple/beaker/fuel_cell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("allow_reagent_transfer_to")

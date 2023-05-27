@@ -254,8 +254,8 @@
 		if(penetrations_left < 0)
 			return FALSE
 
-	if(hit_target_turf && target_turf == new_loc)
-		on_projectile_hit(new_loc,old_loc,new_loc)
+	if(hit_target_turf && target_turf == old_loc)
+		on_projectile_hit(old_loc,old_loc,new_loc)
 		return FALSE
 
 	if(steps_allowed && steps_allowed <= steps_current)

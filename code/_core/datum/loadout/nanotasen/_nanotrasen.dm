@@ -24,8 +24,8 @@
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/magazine/pistol_9mm,
 		/obj/item/weapon/melee/energy/stunbaton,
-		/obj/item/grenade/timed/explosive,
-		/obj/item/grenade/timed/explosive
+		/obj/item/grenade/device/timed/explosive,
+		/obj/item/grenade/device/timed/explosive
 	)
 
 /loadout/nanotrasen/hanger_guard
@@ -75,9 +75,9 @@
 		/obj/item/magazine/pistol_12mm/ap,
 		/obj/item/magazine/pistol_12mm/ap,
 
-		/obj/item/grenade/timed/explosive_large,
-		/obj/item/grenade/timed/explosive_large,
-		/obj/item/grenade/timed/explosive_large
+		/obj/item/grenade/device/large/timed/explosive_large,
+		/obj/item/grenade/device/large/timed/explosive_large,
+		/obj/item/grenade/device/large/timed/explosive_large
 
 	)
 
@@ -178,8 +178,8 @@
 		/obj/item/magazine/pistol_12mm/ap,
 		/obj/item/magazine/pistol_12mm/ap,
 
-		/obj/item/grenade/timed/explosive_large,
-		/obj/item/grenade/timed/explosive_large,
-		/obj/item/grenade/timed/explosive_large
+		/obj/item/grenade/device/large/timed/explosive_large,
+		/obj/item/grenade/device/large/timed/explosive_large,
+		/obj/item/grenade/device/large/timed/explosive_large
 
 	)

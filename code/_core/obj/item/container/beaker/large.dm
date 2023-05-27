@@ -13,6 +13,9 @@
 
 	value = 10
 
+	size = SIZE_2
+	rarity = RARITY_UNCOMMON
+
 /obj/item/container/simple/beaker/large/lube_smoke_01/Generate()
 	reagents.add_reagent(/reagent/nutrition/sugar,20)
 	reagents.add_reagent(/reagent/potassium,40)

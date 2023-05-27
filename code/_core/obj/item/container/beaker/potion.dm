@@ -8,6 +8,7 @@
 
 	reagents = /reagent_container/beaker/bottle/large
 
+	size = SIZE_2
 
 /obj/item/container/simple/beaker/bottle/large/water
 	name = "flask of water"

@@ -1,7 +1,7 @@
 /obj/item/container/simple/beaker/bucket
 	name = "bucket"
-	desc = "A big bucket"
-	desc_extended = "A very large bucket that can hold up to 250u of reagents."
+	desc = "Yup. This is a bucket."
+	desc_extended = "A cheap and bulky steel bucket."
 	icon = 'icons/obj/item/container/bucket.dmi'
 	icon_state = "bucket"
 	icon_count = 9
@@ -11,6 +11,8 @@
 	size = SIZE_3
 
 	color = COLOR_GREY
+
+	rarity = RARITY_COMMON
 
 /obj/item/container/simple/beaker/bucket/update_overlays()
 

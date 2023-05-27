@@ -5,9 +5,6 @@
 
 	can_rename = TRUE
 
-	icon = 'icons/obj/item/grenade.dmi'
-	icon_state = "chem"
-
 	var/list/obj/item/container/simple/beaker/stored_containers = list()
 	var/obj/item/device/stored_trigger
 
@@ -17,7 +14,7 @@
 
 	var/open = TRUE
 
-	value = 0
+	value = 100
 
 	queue_delete_immune = TRUE
 
@@ -30,6 +27,22 @@
 	rarity = RARITY_UNCOMMON
 
 	thrown_bounce_modifier = 1
+
+	size = SIZE_1
+
+/obj/item/grenade/get_base_value()
+	. = max_containers*75
+	. *= 0.5 + (size/SIZE_2)*0.5
+	if(spent)
+		. *= 0.1
+
+/obj/item/grenade/get_value()
+	. = ..()
+	for(var/k in stored_containers)
+		var/obj/item/container/simple/beaker/B = k
+		. += B.get_value()
+	if(stored_trigger)
+		. += stored_trigger.get_value()
 
 /obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
@@ -196,6 +209,9 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
+			if(max_containers <= 0)
+				caller.to_chat(span("warning","There is nothing to unscrew on \the [src.name]!"))
+				return TRUE
 			open = !open
 			caller.to_chat(span("notice","You [open ? "unscrew" : "screw"] the screws on \the [src.name], [open ? "unsecuring" : "securing"] it."))
 			return TRUE
@@ -204,12 +220,16 @@
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
 			if(!open)
-				caller.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you add containers!"))
+				if(max_containers > 0)
+					caller.to_chat(span("warning","\The [src.name] needs to be unscrewed with a screwdriver before you add containers!"))
 				return TRUE
 			if(length(stored_containers) >= max_containers)
 				caller.to_chat(span("warning","You can't fit any more contains in \the [src.name]!"))
 				return TRUE
 			var/obj/item/container/simple/B = object
+			if(B.size > src.size)
+				caller.to_chat(span("warning","\The [B.name] is too large to be put into \the [src.name]!"))
+				return TRUE
 			B.drop_item(src)
 			stored_containers += B
 			caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))
@@ -226,6 +246,9 @@
 				caller.to_chat(span("warning","There is already a [stored_trigger.name] inside \the [src.name]!"))
 				return TRUE
 			var/obj/item/device/T = object
+			if(T.size > src.size)
+				caller.to_chat(span("warning","\The [T.name] is too large to be put into \the [src.name]!"))
+				return TRUE
 			T.drop_item(src)
 			stored_trigger = T
 			caller.visible_message(span("notice","\The [caller.name] fits \the [object.name] into \the [src.name]."),span("notice","You fit \the [object.name] inside \the [src.name]."))

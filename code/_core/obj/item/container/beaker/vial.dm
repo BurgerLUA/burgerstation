@@ -12,6 +12,8 @@
 
 	drop_sound = 'sound/items/drop/glass.ogg'
 
+	size = SIZE_1
+
 /obj/item/container/simple/beaker/vial/enzymes
 	name = "vial of enzymes"
 

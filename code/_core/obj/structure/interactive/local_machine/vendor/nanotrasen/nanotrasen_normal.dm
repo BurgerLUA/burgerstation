@@ -89,10 +89,10 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		//4 grenades or equipment
-		/obj/item/grenade/timed/explosive,
-		/obj/item/grenade/landmine/proximity/explosive,
-		/obj/item/grenade/timed/incendiary,
-		/obj/item/grenade/timed/emp
+		/obj/item/grenade/device/timed/explosive,
+		/obj/item/grenade/device/landmine/proximity/explosive,
+		/obj/item/grenade/device/timed/incendiary,
+		/obj/item/grenade/device/timed/emp
 
 	)
 

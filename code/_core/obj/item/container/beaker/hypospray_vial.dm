@@ -10,6 +10,8 @@
 
 	var/spent = FALSE
 
+	size = SIZE_1
+
 /obj/item/container/simple/beaker/bottle/hypospray/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("spent")

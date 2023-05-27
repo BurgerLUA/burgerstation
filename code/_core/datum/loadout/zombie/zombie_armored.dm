@@ -15,7 +15,7 @@
 		/obj/item/clothing/head/helmet/full/eod_helm,
 		/obj/item/clothing/overwear/armor/eod,
 
-		/obj/item/grenade/timed/explosive_large
+		/obj/item/grenade/device/large/timed/explosive_large
 
 
 

@@ -188,7 +188,7 @@
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,
 		/obj/item/magazine/syringe_gun,
-		/obj/item/grenade/timed/lube_smoke
+		/obj/item/grenade/device/large/timed/lube_smoke
 
 	)
 

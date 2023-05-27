@@ -18,7 +18,7 @@
 		/obj/item/weapon/ranged/reagent_sprayer/spray_bottle/space_cleaner,
 		/obj/item/storage/lighting/bulb,
 		/obj/item/storage/lighting/tube,
-		/obj/item/grenade/timed/cleaning_smoke
+		/obj/item/grenade/device/large/timed/cleaning_smoke
 	)
 
 /obj/structure/interactive/vending/nanotrasen/janitor/clothing
@@ -106,8 +106,8 @@
 		/obj/item/weapon/ranged/reagent_sprayer/mega_sprayer,
 
 		//3 grenades or equipment
-		/obj/item/grenade/timed/cleaning_smoke,
-		/obj/item/grenade/timed/blackhole,
+		/obj/item/grenade/device/large/timed/cleaning_smoke,
+		/obj/item/grenade/device/special/timed/blackhole,
 		/obj/item/deployable/mob/cleaning_bot
 
 

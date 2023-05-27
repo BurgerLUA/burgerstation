@@ -22,7 +22,17 @@
 
 	has_quick_function = TRUE
 
-	size = SIZE_2
+	size = SIZE_1
+
+	rarity = RARITY_UNCOMMON
+
+/obj/item/container/simple/beaker/get_base_value()
+	. = 1
+	// https://www.desmos.com/calculator/okb8vlsrmu
+	if(reagents)
+		. += ((reagents.volume_max * 0.25) + (reagents.volume_max**1.5)) * 0.075 * (SIZE_2/size)
+		. += size*10
+	. = CEILING(.,1)
 
 /obj/item/container/simple/beaker/Finalize()
 	. = ..()
@@ -36,7 +46,10 @@
 		I.color = reagents.color
 		add_underlay(I)
 
-
+/obj/item/container/simple/beaker/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(reagents)
+		. += div("notice","This can hold up to [reagents.volume_max]u of reagents.")
 
 /obj/item/container/simple/beaker/water/Generate()
 	reagents.add_reagent(/reagent/nutrition/water,reagents.volume_max)
@@ -100,3 +113,4 @@
 	if(reagent && reagent_amount > 0)
 		var/reagent/R = REAGENT(src.reagent)
 		name = "[initial(name)] ([R.name] [reagent_amount]u)"
+		reagents.add_reagent(src.reagent,reagent_amount)

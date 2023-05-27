@@ -29,7 +29,7 @@
 
 	damage_type = /damagetype/melee/club/lighter
 
-	size = SIZE_1
+	size = SIZE_0
 
 /obj/item/container/cigarette/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	if(!lit)

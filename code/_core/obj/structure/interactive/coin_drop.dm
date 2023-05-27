@@ -33,18 +33,6 @@
 		cached_sparkle = null
 	. = ..()
 
-/obj/structure/interactive/coin_drop/proc/get_pickup_amount(var/mob/caller,var/loop_turf=TRUE)
-	. = amount
-	if(loop_turf)
-		for(var/obj/structure/interactive/coin_drop/CD in loc.contents)
-			if(CD == src)
-				continue
-			if(!(caller.client.ckey in CD.valid_ckeys))
-				continue
-			. += CD.get_pickup_amount(caller,FALSE)
-			if(. >= 100) //100 at a time only.
-				break
-
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
@@ -57,27 +45,46 @@
 		INTERACT_DELAY(3)
 		return TRUE
 
-	if(!istype(object,/obj/item/currency/gold_coin/) && !is_inventory(object))
-		INTERACT_DELAY(3)
+	var/obj/item/currency/gold_coin/GC = object
+
+	if(!istype(GC))
+		GC = null
+		if(!is_inventory(object))
+			INTERACT_DELAY(3) //Don't bother.
+			return TRUE
+
+	var/turf/T = get_turf(src)
+
+	var/pickup_limit = GOLD_AMOUNT_MAX*0.1 //100
+	if(GC)
+		pickup_limit = min(pickup_limit,GC.amount_max - GC.amount)
+
+	if(pickup_limit <= 0)
+		INTERACT_DELAY(3) //Don't bother.
+		caller.to_chat(span("warning","You can't carry any more gold!"))
+		return FALSE
+
+	var/pickup_amount = 0
+	for(var/obj/structure/interactive/coin_drop/CD in T.contents)
+		if(!CD.valid_ckeys[caller.client.ckey])
+			continue
+		if(pickup_amount + CD.amount >= pickup_limit)
+			break
+		pickup_amount += CD.amount
+		CD.valid_ckeys -= caller.client.ckey
+		caller.client.images -= CD.cached_coin
+		caller.client.images -= CD.cached_sparkle
+		if(length(CD.valid_ckeys) <= 0)
+			qdel(CD)
+	if(pickup_amount <= 0) //This shouldn't happen, but this is just in case.
 		return TRUE
 
-	var/pickup_amount =	get_pickup_amount(caller,TRUE)
-	pickup_amount = min(pickup_amount,100)
-	if(pickup_amount <= 0)
-		return TRUE
-	var/obj/item/currency/gold_coin/G = new(get_turf(src))
+	var/obj/item/currency/gold_coin/G = new(T)
 	INITIALIZE(G)
 	G.amount = pickup_amount
 	SSeconomy.gold_in_circulation += pickup_amount
 	FINALIZE(G)
-	G.pixel_x = src.pixel_x
-	G.pixel_y = src.pixel_y
-	object.click_on_object(caller,G,location,control,params)
-	valid_ckeys -= caller.client.ckey
-	caller.client.images -= cached_coin
-	caller.client.images -= cached_sparkle
-	if(length(valid_ckeys) <= 0)
-		qdel(src)
+	object.click_on_object(caller,G,location,control,params) //Either an inventory or a gold coin.
 	return TRUE
 
 /obj/structure/interactive/coin_drop/update_sprite()
@@ -155,17 +162,15 @@
 
 /proc/create_gold_drop(var/turf/T,var/amount=5,var/list/valid_ckeys)
 
-	amount = min(amount,100) //Enforce a limit, just in case.
+	amount = min(amount,GOLD_AMOUNT_MAX) //Enforce a limit, just in case.
 
 	if(!length(valid_ckeys))
 		valid_ckeys = list()
 		for(var/k in all_players)
 			var/mob/living/advanced/player/P = k
-			if(!P.client) //Inactive players don't get anything.
-				continue
 			if(get_dist(P,T) > BOSS_RANGE)
 				continue
-			valid_ckeys += P.client.ckey
+			valid_ckeys[P.client.ckey] = TRUE
 
 	var/list/valid_turfs = list()
 
@@ -184,10 +189,7 @@
 		var/obj/structure/interactive/coin_drop/G = new(pick(valid_turfs))
 		G.pixel_x = rand(-4,4)
 		G.pixel_y = rand(-4,4)
-		var/desired_value = rand(CEILING(amount/20,1),CEILING(amount/10,1))
-		desired_value = max(desired_value,rand(3,5))
-		desired_value = min(desired_value,amount)
-		G.amount = desired_value
+		G.amount = min(amount,rand(1,5))
 		amount -= G.amount
 		G.valid_ckeys = valid_ckeys.Copy()
 		INITIALIZE(G)

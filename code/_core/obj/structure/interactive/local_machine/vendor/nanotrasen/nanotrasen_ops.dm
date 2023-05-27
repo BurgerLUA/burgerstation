@@ -40,8 +40,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127,
 
 		//3 grenades or equipment
-		/obj/item/grenade/timed/explosive_large,
-		/obj/item/grenade/landmine/proximity/explosive,
+		/obj/item/grenade/device/large/timed/explosive_large,
+		/obj/item/grenade/device/landmine/proximity/explosive,
 		/obj/item/weapon/ranged/thrown/kunai
 
 	)

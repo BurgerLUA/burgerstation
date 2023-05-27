@@ -188,8 +188,8 @@
 		/obj/item/clothing/overwear/armor/bulletproof/vr,
 		/obj/item/clothing/head/helmet/polymorphic/vr,
 		/obj/item/weapon/melee/torch/flashlight/maglight,
-		/obj/item/grenade/timed/explosive,
-		/obj/item/grenade/timed/smoke,
+		/obj/item/grenade/device/timed/explosive,
+		/obj/item/grenade/device/timed/smoke,
 		/obj/item/container/healing/gauze,
 		/obj/item/deployable/barricade
 	)
