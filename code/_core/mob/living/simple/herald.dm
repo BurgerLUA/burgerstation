@@ -1,14 +1,16 @@
 /mob/living/simple/herald
-	name = "herald of Sleeping Carp"
+	name = "\improper Herald of Sleeping Carp"
 	boss_icon_state = "herald"
 	icon = 'icons/mob/living/simple/lavaland/herald.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/cqc/sleeping_carp/gnashing_teeth
+	damage_type = /damagetype/unarmed/cqc/sleeping_carp/gnashing_teeth
 
 	ai = /ai/boss/herald/
 	value = 3000
 
 	boss_loot = /loot/lavaland/herald
+
+	boss_music = /track/herald
 
 	health_base = 4500
 	stamina_base = 2000
@@ -22,19 +24,6 @@
 	boss = TRUE
 
 	armor = /armor/colossus
-
-	status_immune = list(
-		STUN = TRUE,
-		SLEEP = TRUE,
-		PARALYZE = TRUE,
-		STAMCRIT = TRUE,
-		STAGGER = TRUE,
-		CONFUSED = TRUE,
-		DISARM = TRUE,
-		FIRE = TRUE,
-		GRAB = TRUE,
-		PAINCRIT = TRUE
-	)
 
 	iff_tag = "Herald"
 	loyalty_tag = "Herald"
@@ -72,10 +61,10 @@
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 
 	if( (next_teleport - world.time) >= SECONDS_TO_DECISECONDS(2) )
-		return /damagetype/cqc/sleeping_carp/crashing_wave_kick
+		return /damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick
 
 	if(attacker && victim && !is_facing(victim,attacker))
-		return /damagetype/cqc/sleeping_carp/keelhaul
+		return /damagetype/unarmed/cqc/sleeping_carp/keelhaul
 
 	return ..()
 

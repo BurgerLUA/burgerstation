@@ -83,7 +83,7 @@
 
 	cqc_tag = "1"
 
-	attack_delay = 8*0.5
+	attack_delay = 4
 	attack_delay_max = 8
 
 	draw_blood = FALSE

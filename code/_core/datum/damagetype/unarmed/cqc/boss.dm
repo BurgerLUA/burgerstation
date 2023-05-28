@@ -1,11 +1,11 @@
-/damagetype/cqc/boss/fast_grab
+/damagetype/unarmed/cqc/boss/fast_grab
 	attack_verbs = list("fast grab")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 0
+		FATIGUE = 25
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -14,8 +14,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 15*0.25,
-		ATTRIBUTE_DEXTERITY = 15*0.25
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
@@ -24,17 +24,17 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 15*0.25
+		SKILL_UNARMED = 25
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = 8*0.5
-	attack_delay_max = 8*0.5
+	attack_delay = 7.5
+	attack_delay_max = 15
 
-/damagetype/cqc/boss/fast_grab/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/fast_grab/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && ismovable(victim) && is_turf(victim.loc))
 		var/mob/living/advanced/A = attacker
@@ -52,14 +52,14 @@
 	return ..()
 
 
-/damagetype/cqc/boss/grab_slam
+/damagetype/unarmed/cqc/boss/grab_slam
 	attack_verbs = list("grab slam")
 
 	hit_effect = /obj/effect/temp/impact/combat/disarm
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 0
+		FATIGUE = 50
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -68,8 +68,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 15*0.25,
-		ATTRIBUTE_DEXTERITY = 15*0.25
+		ATTRIBUTE_STRENGTH = 50,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
@@ -78,17 +78,17 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 15*0.25
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = FATIGUE
 	)
 
-	attack_delay = 14
-	attack_delay_max = 14
+	attack_delay = 40
+	attack_delay_max = 60
 
-/damagetype/cqc/boss/grab_slam/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/grab_slam/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
@@ -102,7 +102,7 @@
 	return ..()
 
 
-/damagetype/cqc/boss/staggering_punch
+/damagetype/unarmed/cqc/boss/staggering_punch
 	attack_verbs = list("staggering punch")
 
 	impact_sounds = list(
@@ -118,7 +118,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 45*0.1,
+		FATIGUE = 20,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -127,8 +127,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 45*0.3,
-		ATTRIBUTE_DEXTERITY = 45*0.2
+		ATTRIBUTE_STRENGTH = 50,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -137,18 +137,17 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 45*0.4
+		SKILL_UNARMED = 30
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = list(FATIGUE)
 	)
 
-	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = 8*0.5
-	attack_delay_max = 8
+	attack_delay = 10
+	attack_delay_max = 15
 
-/damagetype/cqc/boss/staggering_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/boss/staggering_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -157,7 +156,7 @@
 
 	return ..()
 
-/damagetype/cqc/boss/stunning_punch
+/damagetype/unarmed/cqc/boss/stunning_punch
 	attack_verbs = list("stunning punch")
 
 	impact_sounds = list(
@@ -172,7 +171,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 60*0.1,
+		FATIGUE = 40,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -181,8 +180,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 60*0.3,
-		ATTRIBUTE_DEXTERITY = 60*0.2
+		ATTRIBUTE_STRENGTH = 100,
+		ATTRIBUTE_DEXTERITY = 40
 	)
 
 	attribute_damage = list(
@@ -191,37 +190,35 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 60*0.4
+		SKILL_UNARMED = 60
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = list(FATIGUE)
 	)
 
-	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = 8*0.5
-	attack_delay_max = 8
 
-/damagetype/cqc/boss/stunning_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+	attack_delay = 30
+	attack_delay_max = 45
+
+/damagetype/unarmed/cqc/boss/stunning_punch/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
-		var/mob/living/A = attacker
 		if(!L.horizontal)
-			L.add_status_effect(STUN,30,30,source=A)
-			A.add_status_effect(STUN,20,20,stealthy=TRUE)
+			L.add_status_effect(STUN,30,30,source=attacker)
 
 	return ..()
 
 
-/damagetype/cqc/boss/disarm_theft
-	attack_verbs = list("stunning punch")
+/damagetype/unarmed/cqc/boss/disarm_theft
+	attack_verbs = list("tactical disarm")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 60*0.1,
+		FATIGUE = 30,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -230,8 +227,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 60*0.3,
-		ATTRIBUTE_DEXTERITY = 60*0.2
+		ATTRIBUTE_STRENGTH = 10,
+		ATTRIBUTE_DEXTERITY = 40
 	)
 
 	attribute_damage = list(
@@ -240,18 +237,18 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 60*0.4
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = list(FATIGUE)
 	)
 
-	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = 8
-	attack_delay_max = 8
 
-/damagetype/cqc/boss/disarm_theft/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+	attack_delay = 8
+	attack_delay_max = 16
+
+/damagetype/unarmed/cqc/boss/disarm_theft/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && is_advanced(victim))
 		var/mob/living/advanced/A = attacker
@@ -273,14 +270,14 @@
 	return ..()
 
 
-/damagetype/cqc/boss/tactical_hug
+/damagetype/unarmed/cqc/boss/tactical_hug
 	attack_verbs = list("tactical hug")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 60*0.1,
+		FATIGUE = 50,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -289,8 +286,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 60*0.3,
-		ATTRIBUTE_DEXTERITY = 60*0.2
+		ATTRIBUTE_STRENGTH = 150,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
@@ -299,26 +296,25 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 60*0.4
+		SKILL_UNARMED = 20
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = list(FATIGUE)
 	)
 
-	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = 8
-	attack_delay_max = 8
 
-/damagetype/cqc/boss/tactical_hug/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+	attack_delay = 40
+	attack_delay_max = 60
+
+/damagetype/unarmed/cqc/boss/tactical_hug/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_advanced(attacker) && is_advanced(victim))
-		var/mob/living/advanced/A = attacker
 		var/mob/living/advanced/V = victim
+		var/mob/living/advanced/A = attacker
 		if(!A.horizontal && !V.horizontal)
 			V.add_status_effect(DISARM,10,10)
 			V.add_status_effect(PARALYZE,40,40,stealthy=TRUE)
-			A.add_status_effect(PARALYZE,40,40,stealthy=TRUE)
 
 
 	return ..()

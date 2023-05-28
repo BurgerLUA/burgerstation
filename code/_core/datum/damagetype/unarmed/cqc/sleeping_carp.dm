@@ -1,4 +1,13 @@
-/damagetype/cqc/sleeping_carp/crashing_wave_kick
+/damagetype/unarmed/cqc/sleeping_carp/damagetype/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(is_living(attacker))
+		var/mob/living/L = attacker
+		if(L.boss)
+			return TRUE
+
+	. = ..()
+
+/damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick
 	attack_verbs = list("crashing wave kick")
 
 	impact_sounds = list(
@@ -9,7 +18,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 60*0.2,
+		BLUNT = 40,
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -18,25 +27,27 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 60*0.4
+		ATTRIBUTE_STRENGTH = 20,
+		ATTRIBUTE_DEXTERITY = 40
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = BLUNT
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLUNT
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 60*0.2
+		SKILL_UNARMED = 40
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT
 	)
 
-	attack_delay = 14*0.5
-	attack_delay_max = 14
+	attack_delay = 20
+	attack_delay_max = 30
 
-/damagetype/cqc/sleeping_carp/crashing_wave_kick/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/list/offsets = get_directional_offsets(attacker,victim)
@@ -53,7 +64,7 @@
 	return ..()
 
 
-/damagetype/cqc/sleeping_carp/keelhaul
+/damagetype/unarmed/cqc/sleeping_carp/keelhaul
 
 	impact_sounds = list(
 		'sound/weapons/unarmed/cqc/keelhaul_01.ogg',
@@ -61,7 +72,7 @@
 	)
 
 	attack_damage_base = list(
-		BLUNT = 45*0.2
+		BLUNT = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
@@ -70,8 +81,8 @@
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 45*0.2,
-		ATTRIBUTE_DEXTERITY = 45*0.2
+		ATTRIBUTE_STRENGTH = 30,
+		ATTRIBUTE_DEXTERITY = 20
 	)
 
 	attribute_damage = list(
@@ -80,18 +91,18 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 45*0.4
+		SKILL_UNARMED = 30
 	)
 
 	skill_damage = list(
 		SKILL_UNARMED = BLUNT
 	)
 
-	attack_delay = 12*0.5
-	attack_delay_max = 12
+	attack_delay = 10
+	attack_delay_max = 15
 
 
-/damagetype/cqc/sleeping_carp/keelhaul/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/cqc/sleeping_carp/keelhaul/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -105,7 +116,7 @@
 
 
 
-/damagetype/cqc/sleeping_carp/gnashing_teeth
+/damagetype/unarmed/cqc/sleeping_carp/gnashing_teeth
 	attack_verbs = list("gnashing teeth punch")
 
 	impact_sounds = list(
@@ -117,34 +128,35 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		BLUNT = 60*0.1,
-		FATIGUE = 0
+		BLUNT = 10,
+		BLADE = 10
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.
 	attack_damage_penetration = list(
 		BLUNT = 0,
-		FATIGUE = 0,
+		BLADE = 0
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_STRENGTH = 60*0.3,
-		ATTRIBUTE_DEXTERITY = 60*0.2
+		ATTRIBUTE_STRENGTH = 25,
+		ATTRIBUTE_DEXTERITY = 25
 	)
 
 	attribute_damage = list(
-		ATTRIBUTE_STRENGTH = list(BLUNT,FATIGUE),
-		ATTRIBUTE_DEXTERITY = list(BLUNT,FATIGUE)
+		ATTRIBUTE_STRENGTH = BLUNT,
+		ATTRIBUTE_DEXTERITY = BLADE
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 60*0.4
+		SKILL_UNARMED = 50
 	)
 
 	skill_damage = list(
-		SKILL_UNARMED = list(BLUNT,FATIGUE)
+		SKILL_UNARMED = list(BLUNT,BLADE)
 	)
 
-	//BALANCE CHANGE. FASTER SPEED.
-	attack_delay = 8*0.5
+	cqc_tag = "4"
+
+	attack_delay = 4
 	attack_delay_max = 8
