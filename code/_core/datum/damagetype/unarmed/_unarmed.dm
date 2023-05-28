@@ -34,8 +34,6 @@
 
 	sneak_attack_multiplier = 4
 
-	alert_on_impact = ALERT_LEVEL_NOISE
-
 	allow_power_attacks = FALSE
 
 	animate = TRUE

@@ -200,10 +200,13 @@
 			if(ALERT_LEVEL_COMBAT)
 				. *= 0.25
 
+	if(owner.next_move > 0) //We moved recently.
+		. = 0
+
 	if(objective_attack)
 		. = max(.,SECONDS_TO_TICKS(4))
 	else
-		. = max(.,SECONDS_TO_DECISECONDS(1))
+		. = max(.,SECONDS_TO_TICKS(1))
 
 /ai/proc/on_death()
 	set_objective(null)

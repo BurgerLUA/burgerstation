@@ -15,6 +15,8 @@
 
 	use_value = TRUE
 
+	var/ignore_burgerbux = FALSE
+
 /loot/random/proc/generate_loot_table()
 
 	for(var/k in subtypesof(base_type))
@@ -31,7 +33,7 @@
 			continue
 		if(rarity_to_number[initial_rarity] > rarity_to_number[rarity_max])
 			continue
-		if(initial(I.value_burgerbux) > 0)
+		if(!ignore_burgerbux && initial(I.value_burgerbux) > 0)
 			continue
 		if(initial(I.contraband))
 			continue

@@ -10,7 +10,8 @@
 
 		/obj/item/clothing/back/storage/satchel/poly/brown{loot_to_generate = /loot/random/goblin},
 
-		/obj/item/weapon/melee/toolbox/red
+		/obj/item/weapon/melee/sword/spoon,
+		/obj/item/weapon/melee/sword/fork
 	)
 
 

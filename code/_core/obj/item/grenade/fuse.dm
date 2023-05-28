@@ -30,6 +30,7 @@
 	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "he"
 	desc_extended = "A primitive yet effective high-explosive yield handheld grenade designed to take out large groups of infantry. Pull the pin and throw."
+	value = 1
 
 /obj/item/grenade/fuse/he/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/tnt(src)
@@ -52,7 +53,7 @@
 	desc = "Not a globus cruciger."
 	desc_extended = "And the Lord spake, saying, 'First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it."
 	value_burgerbux = 1
-
+	value = 1
 	fuse_type = /obj/item/device/fuse/holy
 
 /obj/item/grenade/fuse/holy/Generate()
@@ -66,6 +67,7 @@
 	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "fragmentation"
 	desc_extended = "A primitive yet effective low-explosive yield handheld grenade designed to take out large groups of infantry with fragments. Pull the pin and throw."
+	value = 1
 
 /obj/item/grenade/fuse/fragmentation/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/tnt_fragments(src)
@@ -77,6 +79,8 @@
 	icon = 'icons/obj/item/grenade.dmi'
 	icon_state = "flashbang"
 	desc_extended = "A primitive yet effective very low-explosive yield handheld grenade designed to less than lethally stun or disarm enemy combatants. Pull the pin and throw."
+	value = 1
+
 
 /obj/item/grenade/fuse/flashbang/Generate()
 	stored_containers += new /obj/item/container/simple/beaker/flashbang(src)

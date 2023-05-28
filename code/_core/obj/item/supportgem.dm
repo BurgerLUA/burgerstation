@@ -166,7 +166,7 @@
 /obj/item/supportgem/penetrations/update_support_stats()
 	var/penetration_count = power_base + (quality-100)*power_per_quality
 	support_stats = list(
-		"bullet_count" = penetration_count,
+		"penetrations" = penetration_count,
 		"mana_cost_multiplier" = 1.5
 	)
 	support_desc = "Increases penetrations count by <b>[penetration_count]</b>.\nIncreases mana cost by 50%."

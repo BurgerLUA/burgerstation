@@ -315,7 +315,7 @@
 			if(objective_attack && can_attack)
 				spawn do_attack(obstacle,prob(left_click_chance))
 			else
-				set_alert_level(ALERT_LEVEL_CAUTION,FALSE,L,L)
+				set_alert_level(ALERT_LEVEL_CAUTION,L)
 		else
 			move_from_ally = rand(0,3) //Excuse me, Dr. Freeman.
 			move_from_ally_dir = L.move_dir ? turn(L.move_dir,pick(-45,0,45)) : 0x0

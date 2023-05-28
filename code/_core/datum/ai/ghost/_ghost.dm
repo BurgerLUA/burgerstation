@@ -415,7 +415,7 @@
 	anger += amount
 	return TRUE
 
-/ai/ghost/set_alert_level(var/desired_alert_level,var/atom/alert_epicenter = null,var/atom/alert_source = null,var/can_lower=FALSE)
+/ai/ghost/set_alert_level(var/desired_alert_level,var/atom/alert_source,var/atom/alert_epicenter,var/can_lower=FALSE)
 	//Trying to alert it just pisses it off.
 
 	if(!stat_hates_noise)

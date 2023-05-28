@@ -108,6 +108,11 @@
 	if(speaker.health && (speaker.health.stamina_current < 50 || speaker.health.mana_current < 50))
 		return text_to_say
 
+	var/turf/T = get_turf(speaker)
+
+	if(!T)
+		return text_to_say
+
 	var/text_to_search = remove_non_letters(lowertext(raw_text_to_say))
 
 	var/list/words = splittext(text_to_search," ")
@@ -117,8 +122,9 @@
 			continue
 		do_voice_effect(speaker,text_to_proc[word],proc_to_harmful[text_to_proc[word]])
 		text_to_say = "<font color='#DD1C1F' size='4'>[text_to_say]</font>"
-		play_sound('sound/effects/invoke_general.ogg',get_turf(speaker), range_max = SOUND_RANGE * 3)
+		play_sound('sound/effects/invoke_general.ogg',T, range_max = SOUND_RANGE * 3)
 		next_voice = world.time + SECONDS_TO_DECISECONDS(8)
+		create_alert(SOUND_RANGE * 3,T,speaker,ALERT_LEVEL_COMBAT)
 		if(speaker.health)
 			speaker.health.adjust_stamina(-50)
 			speaker.health.adjust_mana(-50)

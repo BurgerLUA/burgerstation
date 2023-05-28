@@ -196,7 +196,7 @@ var/global/list/difficulty_to_ai_modifier = list(
 			if(!objective_attack || (get_dist(owner,objective_attack) >= get_dist(owner,attacker)*1.25))
 				set_objective(attacker)
 		else if(alert_level != ALERT_LEVEL_COMBAT)
-			set_alert_level(ALERT_LEVEL_COMBAT,attacker,attacker)
+			set_alert_level(ALERT_LEVEL_COMBAT,attacker)
 	if(owner.combat_dialogue && next_talk <= world.time && !stealthy && damage_amount >= 30)
 		if(owner.health && owner.health.health_current <= owner.health.health_max*0.25 && prob(20+damage_amount))
 			do_dialogue("combat_losing",damage_amount)

@@ -9,9 +9,10 @@
 
 	for(var/k in list_to_use)
 		var/ai/AI = k
-		if(!AI || AI.qdeleting || !AI.owner || AI.owner.qdeleting || AI.owner.dead || AI.objective_attack)
+		if(!AI || AI.qdeleting || !AI.owner || AI.owner.qdeleting || AI.owner.dead || AI.objective_attack || AI.alert_level > alert_level)
 			continue
-		if(CALLBACK_EXISTS("alert_level_change_\ref[AI]")) //Already reacting.
+		var/list/callback_data = CALLBACK_EXISTS("alert_level_change_\ref[AI]")
+		if(callback_data && callback_data["args"][2] != alert_source) //Already reacting to something else.
 			continue
 		if(!within_range(AI.owner,epicenter,range)) //Too far away.
 			continue
@@ -20,7 +21,11 @@
 		if(alert_source && !AI.is_enemy(alert_source,FALSE))
 			continue
 		. += 1
-		CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time,1),AI,AI::set_alert_level(),alert_level,FALSE,epicenter,alert_source)
+		if(callback_data || AI.reaction_time <= 0) //Force a reaction instantly.
+			CALLBACK_REMOVE("alert_level_change_\ref[AI]")
+			AI.set_alert_level(alert_level,alert_source,epicenter,FALSE)
+		else
+			CALLBACK("alert_level_change_\ref[AI]",CEILING(AI.reaction_time,1),AI,AI::set_alert_level(),alert_level,alert_source,epicenter,FALSE)
 
 
 

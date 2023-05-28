@@ -1,4 +1,4 @@
-/ai/proc/set_alert_level(var/desired_alert_level,var/atom/alert_epicenter = null,var/atom/alert_source = null,var/can_lower=FALSE)
+/ai/proc/set_alert_level(var/desired_alert_level,var/atom/alert_source = null,var/atom/alert_epicenter = null,var/can_lower=FALSE)
 
 	if(!use_alerts)
 		return FALSE
@@ -25,10 +25,14 @@
 				return FALSE
 
 		//Force the new epicenter to be the shitter that's causing it, as long as we're in a caution stage and the alert noise is high.
-		if(alert_level >= ALERT_LEVEL_CAUTION && desired_alert_level >= ALERT_LEVEL_CAUTION)
+		if(!alert_epicenter || (alert_level >= ALERT_LEVEL_CAUTION && desired_alert_level >= ALERT_LEVEL_CAUTION))
 			var/turf/T = get_turf(alert_source)
 			if(T)
 				alert_epicenter = T
+	else if(!alert_epicenter)
+		var/turf/T = get_turf(alert_source)
+		if(T)
+			alert_epicenter = T
 
 	var/old_alert_level = alert_level
 

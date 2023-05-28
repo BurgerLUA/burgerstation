@@ -5,6 +5,8 @@
 	var/marker_color = "#FFFFFF"
 	var/paint_color
 
+	value = 1
+
 /obj/item/grenade/device/update_icon()
 
 	icon = initial(icon)

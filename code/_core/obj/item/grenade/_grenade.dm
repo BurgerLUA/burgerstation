@@ -14,8 +14,6 @@
 
 	var/open = TRUE
 
-	value = 100
-
 	queue_delete_immune = TRUE
 
 	weight = 1

@@ -38,7 +38,7 @@
 	active = TRUE
 	var/turf/T = get_turf(src)
 	play_sound('sound/items/timer/arm.ogg',T,range_max=VIEW_RANGE)
-	create_alert(VIEW_RANGE,T,src,ALERT_LEVEL_NOISE)
+	create_alert(VIEW_RANGE,T,caller,ALERT_LEVEL_NOISE)
 	return ..()
 
 /obj/item/device/timer/think()

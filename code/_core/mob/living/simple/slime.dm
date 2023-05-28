@@ -243,9 +243,9 @@
 				S.name = initial(src.name)
 			INITIALIZE(S)
 			FINALIZE(S)
-			if(S.health)
-				S.health.damage = src.health.damage.Copy()
-			S.health.update_health()
+			if(S.ai)
+				S.ai.set_active(TRUE)
+				S.ai.find_new_objectives(AI_TICK,TRUE)
 			var/turf/T = get_step(src,pick(DIRECTIONS_ALL))
 			if(T) S.Move(T)
 		var/turf/T = get_step(src,pick(DIRECTIONS_ALL))
@@ -254,7 +254,6 @@
 		src.health.update_health()
 		src.update_sprite()
 		src.add_status_effect(STUN,20,20)
-		create_alert(VIEW_RANGE,T,null,ALERT_LEVEL_CAUTION) //Wake the new slimes.
 		return FALSE
 
 
