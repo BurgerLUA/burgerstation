@@ -38,10 +38,14 @@
 
 /loot/supply_crate/magic
 	loot_table = list(
-		/loot/soulgem/assorted = 9,
-		/loot/potion = 6,
-		/obj/item/powergem = 3,
-		/obj/item/weapon/ranged/spellgem/self_regenerate = 1,
-		/obj/item/weapon/ranged/spellgem/mending_other= 1
+		/loot/currency/magic_token,
+		/loot/random/gun/spellgem,
+		/loot/random/support_gem,
+		/obj/item/tempering/quality/ranged/magic,
+		/obj/item/tempering/luck,
+		/loot/random/scroll,
+		/loot/potion,
+		/obj/item/portal_scroll,
+		/loot/soulgem/assorted
 	)
 	loot_count = 3

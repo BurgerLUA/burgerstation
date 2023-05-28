@@ -41,6 +41,8 @@
 		/obj/item/clothing/feet/shoes/sandal,
 		/obj/item/clothing/feet/shoes/sandal/left,
 
+		/obj/item/clothing/back/storage/backpack/poly/wizard{loot_to_generate = /loot/wizard/bag},
+
 		/loot/random/gun/wand,
 		/loot/random/gun/spellgem,
 		/loot/random/support_gem

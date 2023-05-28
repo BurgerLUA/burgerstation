@@ -63,8 +63,6 @@
 		'sound/ambient/cave_2.ogg',
 	)
 
-
-
 /area/mission/forest
 	name = "Rael Forest"
 	icon_state = "forest"
@@ -208,20 +206,6 @@
 	sound_environment = ENVIRONMENT_PLAIN
 
 	horde_data = /horde_data/beach
-
-/area/mission/river
-	name = "\improper Riverways"
-	icon_state = "river"
-
-	weather = null
-	ambient_temperature = T0C + 20
-	cheese_type = /reagent/nutrition/cheese/cheddar
-
-	sunlight_freq = 8
-	sunlight_color = "#93B08C"
-
-	sound_environment = ENVIRONMENT_PLAIN
-
 
 /area/mission/out_of_bounds
 	name = "Out of Bounds"

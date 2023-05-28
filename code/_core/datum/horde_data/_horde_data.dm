@@ -11,7 +11,8 @@
 		"syndicate" = 50,
 		/mob/living/simple/slime/forest = 10,
 		/mob/living/simple/slime/water = 5,
-		"goblin" = 30
+		"goblin" = 30,
+		"wizard" = 20
 
 	)
 
@@ -24,6 +25,9 @@
 			/mob/living/advanced/npc/goblin/mage = 20,
 			/mob/living/advanced/npc/goblin/warrior = 40,
 			/mob/living/advanced/npc/goblin = 80
+		),
+		"wizard" = list(
+			/mob/living/advanced/npc/hostile_wizard = 1
 		)
 	)
 

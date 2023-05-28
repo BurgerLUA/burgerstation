@@ -5,7 +5,7 @@
 
 		/obj/item/clothing/overwear/coat/sorcerer,
 
-		/obj/item/clothing/back/storage/satchel/poly/brown{loot_to_generate = /loot/random/goblin},
+		/obj/item/clothing/back/storage/satchel/poly/brown{loot_to_generate = /loot/wizard/bag},
 
 		/obj/item/weapon/ranged/wand/branch,
 		/obj/item/weapon/ranged/spellgem/lightning,

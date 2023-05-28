@@ -63,3 +63,10 @@
 		"straps" = COLOR_BLACK,
 		"buckles" = COLOR_GOLD
 	)
+
+/obj/item/clothing/back/storage/backpack/poly/wizard
+	polymorphs = list(
+		"body" = COLOR_PURPLE,
+		"straps" = COLOR_BLUE,
+		"buckles" = COLOR_GOLD
+	)

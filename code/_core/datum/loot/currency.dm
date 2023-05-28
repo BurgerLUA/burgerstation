@@ -56,3 +56,7 @@
 
 /loot/currency/telecrystals/small
 	desired_value = 100
+
+/loot/currency/magic_token
+	desired_value = 1000
+	loot_table_guaranteed = list(/obj/item/currency/magic_token)

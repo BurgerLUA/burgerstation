@@ -18,7 +18,11 @@
 
 	blood_type = /reagent/blood/goblin
 
-	level = 6
+	level = 4
+
+/mob/living/advanced/npc/goblin/Initialize()
+	. = ..()
+	drops_gold = RAND_PRECISE(0.5,1.25) * level * (1/SSeconomy.credits_per_gold)
 
 /mob/living/advanced/npc/goblin/warrior
 	name = "goblin warrior"
