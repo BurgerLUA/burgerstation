@@ -704,6 +704,11 @@ var/global/list/rarity_to_mul = list(
 	var/reagent_container/R = get_reagents_to_consume(target)
 	if(!R)
 		return FALSE
+	if(target != caller && R.contains_lethal && is_living(caller))
+		var/mob/living/L = caller
+		if(!allow_hostile_action(L.loyalty_tag,target))
+			caller.to_chat(span("warning","You'd feel it would be unsafe to feed your fellow man with the dangerous [src.name]..."))
+			return FALSE
 	R.consume(caller,target)
 	return TRUE
 

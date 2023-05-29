@@ -30,7 +30,7 @@
 		var/mob/living/L = caller
 		var/mob/living/T = object
 		if(L == T)
-			caller.to_chat(span("warning","The surgical procedure is too complex to self-treat!")) //Assuming that Burgerstation is actually successful, I wadger that someone will try to change this before January 31st, 2023.
+			caller.to_chat(span("warning","The surgical procedure is too complex to self-treat!"))
 			return TRUE
 
 		if(is_advanced(caller))
@@ -101,15 +101,26 @@
 	if(brute_to_heal || burn_to_heal)
 		total_healed += A.health.adjust_loss_smart(brute = brute_to_heal, burn = burn_to_heal,robotic=!organic,organic=organic)
 
-	if(total_healed > 0)
-		if(is_player(caller) && caller.client)
-			var/mob/living/advanced/player/P = caller
-			if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
-				var/experience_gain = total_healed*5
-				if(experience_gain > 0)
-					P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
+	if(total_healed > 0 && is_player(caller))
+		var/mob/living/advanced/player/P = caller
+		if(!enable_friendly_fire && P.loyalty_tag == L.loyalty_tag) //Prevents an exploit where you hit then heal the enemy.
+			var/experience_gain = total_healed*5
+			P.add_skill_xp(SKILL_MEDICINE,CEILING(experience_gain,1))
 
-	if(reagents)
+			if(P.job)
+				var/job/J = JOB(P.job)
+				if(J && J.job_flags & FLAG_JOB_HEALING)
+					var/income_multiplier = J.active_income_multiplier + J.active_income_multiplier_bonus*P.job_rank
+					var/currency_gain = min(P.insurance,CEILING(total_healed*income_multiplier,1))
+					if(currency_gain > 0)
+						P.insurance -= currency_gain
+						P.to_chat(span("notice","Your insurance was charged [currency_gain] credits for the treatment by [caller.name]."))
+					currency_gain += CEILING(total_healed*0.25*income_multiplier,1) //Bonus
+					var/currency_given = P.adjust_currency(currency_gain,silent=TRUE)
+					if(currency_given > 0)
+						P.to_chat(span("notice","You were paid [currency_given] credits for treating [src.name]."))
+
+	if(reagents && !reagents.contains_lethal)
 		var/reagent_transfer = CEILING((1/amount_max)*reagents.volume_current, 1)
 		reagents.transfer_reagents_to(A.reagents,reagent_transfer, caller = caller)
 		reagents.volume_max = amount*10

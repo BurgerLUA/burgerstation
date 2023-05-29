@@ -2,7 +2,7 @@
 	name = "Chief Medical Officer"
 	desc = "Turn your head and cough."
 	species = "human"
-	// dialogue_id = /dialogue/npc/cmo/
+	dialogue_id = /dialogue/npc/chief_medical_officer
 	sex = MALE
 	gender = MALE
 

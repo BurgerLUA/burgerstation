@@ -290,6 +290,8 @@
 	var/grab_difficulty = 0 //Current difficulty of resisting out of the current grab (if any).
 	var/grab_resist_counter = 0 //Current times resisted in current grab.
 
+	var/was_killed = FALSE //This is set to true if the mob died at least once.
+
 
 /mob/living/PreDestroy()
 

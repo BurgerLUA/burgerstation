@@ -5,6 +5,9 @@
 	var/passive_income = 0
 	var/passive_income_bonus = 0 //Per rank after 1
 
+	var/active_income_multiplier = 1
+	var/active_income_multiplier_bonus = 0 //Per rank after 1.
+
 	var/list/bonus_skills = list(
 		SKILL_UNARMED = 0,
 		SKILL_MELEE = 0,

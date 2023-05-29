@@ -54,6 +54,11 @@
 		INTERACT_DELAY(2)
 		var/mob/living/advanced/victim = object
 		var/mob/living/advanced/attacker = caller
+
+		if(victim != attacker && reagents.contains_lethal && !allow_hostile_action(attacker.loyalty_tag,victim))
+			attacker.to_chat(span("warning","Your loyalty tag prevents you from harming \the [victim.name]!"))
+			return FALSE
+
 		var/list/new_x_y = attacker.get_current_target_cords(params)
 
 		params[PARAM_ICON_X] = new_x_y[1]

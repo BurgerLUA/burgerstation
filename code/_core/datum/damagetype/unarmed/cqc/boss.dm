@@ -316,5 +316,4 @@
 			V.add_status_effect(DISARM,10,10)
 			V.add_status_effect(PARALYZE,40,40,stealthy=TRUE)
 
-
 	return ..()
