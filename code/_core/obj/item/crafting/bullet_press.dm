@@ -14,6 +14,6 @@
 
 	crafting_type = "bullet_press"
 
-	value = 25
+	value = 0
 
 	size = SIZE_4

@@ -147,7 +147,6 @@
 	wall_health = 250
 	value_per_unit = 30
 
-
 /material/diamond
 	name = "diamond"
 	color = COLOR_DIAMOND

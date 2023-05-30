@@ -39,9 +39,10 @@
 		/obj/item/weapon/ranged/bullet/revolver/rocket,
 
 		//3 grenades or equipment
-		/obj/item/deployable/barbed_wire,
-		/obj/item/deployable/barricade,
-		/obj/item/deployable/mob/sentry
+		/obj/item/grenade/device/landmine/proximity/explosive,
+		/obj/item/grenade/device/special/timed/barrier,
+		/obj/item/grenade/device/special/timed/shell
+
 	)
 
 /obj/structure/interactive/vending/nanotrasen/engineering/ammo
@@ -128,8 +129,6 @@
 	icon_state = "engineering_equipment"
 
 	stored_types = list(
-		/obj/item/material/sheet/iron{amount=50},
-		/obj/item/material/sheet/glass{amount=50},
 		/obj/item/powercell,
 		/obj/item/powercell/industrial,
 		/obj/item/weapon/melee/toolbox/red,
@@ -140,7 +139,14 @@
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/multitool,
 		/obj/item/weapon/melee/tool/welder,
-		/obj/item/weapon/melee/tool/wrench
+		/obj/item/weapon/melee/tool/wrench,
+		/obj/item/supply_remote/ammo,
+		/obj/item/deployable/barbed_wire,
+		/obj/item/deployable/barricade,
+		/obj/item/deployable/mob/sentry,
+		/obj/item/material/sheet/steel{amount=50},
+		/obj/item/material/sheet/glass{amount=50},
+		/obj/item/material/sheet/iron{amount=50}
 	)
 
 /obj/structure/interactive/vending/nanotrasen/engineering/rcd

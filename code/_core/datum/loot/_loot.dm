@@ -7,6 +7,7 @@
 	var/loot_multiplier = 1 //How much of the loot to duplicate.
 	var/use_value = FALSE //Use the actual value of a weapon as a weight instead of the predefined value in the list.
 	var/average_value = 0
+	var/use_random_item_amounts = FALSE //Set to true to enable random quanity amounts for items spawned.
 
 /loot/proc/check_value()
 	average_value = 0
@@ -17,7 +18,11 @@
 				var/loot/L = SSloot.all_loot[k]
 				highest = max(highest,L.average_value)
 			else
-				highest = max(highest,SSbalance.stored_value[k])
+				var/obj/item/I = k
+				var/found_value = SSbalance.stored_value[I]
+				if(use_random_item_amounts)
+					found_value *= CEILING(initial(I.amount_max)*0.5,1)
+				highest = max(highest,found_value)
 		if(!highest)
 			log_error("Warning: [src.type] did not have a highest value for loot. Something went wrong.")
 		for(var/k in loot_table) //Second pass.
@@ -26,7 +31,10 @@
 				var/loot/L = SSloot.all_loot[k]
 				value = L.average_value
 			else
-				value = SSbalance.stored_value[k]
+				var/obj/item/I = k
+				value = SSbalance.stored_value[I]
+				if(use_random_item_amounts)
+					value *= CEILING(initial(I.amount_max)*0.5,1)
 			var/actual_weight = highest ? (1 - value/highest)*highest : 1
 			actual_weight = 1 + FLOOR(actual_weight,1)
 			loot_table[k] = actual_weight
@@ -38,34 +46,48 @@
 				var/loot/L = SSloot.all_loot[k]
 				average_value += L.average_value
 			else
-				average_value += SSbalance.stored_value[k]
-
-	if(length(loot_table))
-		average_value *= 1/length(loot_table)
-		average_value *= loot_count * loot_multiplier * clamp((100 - chance_none)/100,0,1)
+				var/obj/item/I = k
+				var/value = SSbalance.stored_value[I]
+				if(use_random_item_amounts)
+					value *= CEILING(initial(I.amount_max)*0.5,1)
+				average_value += value
 
 	for(var/k in loot_table_guaranteed)
 		if(ispathcache(k,/loot/))
 			var/loot/L = SSloot.all_loot[k]
 			average_value += L.average_value
 		else
-			average_value += SSbalance.stored_value[k]
+			var/obj/item/I = k
+			var/found_value = SSbalance.stored_value[I]
+			if(use_random_item_amounts)
+				found_value *= CEILING(initial(I.amount_max)*0.5,1)
+			average_value += found_value
+
+	average_value *= 1/max(1,length(loot_table) + length(loot_table_guaranteed))
+	average_value *= loot_count * loot_multiplier * clamp((100 - chance_none)/100,0,1)
+
+
 
 /loot/proc/do_spawn(var/atom/spawn_loc,var/rarity) //Use this to spawn the loot. rarity is optional.
+
 	if(!spawn_loc) CRASH("Invalid spawn_loc!")
+
 	. = create_loot_table(spawn_loc,use_value ? rarity : null)
+
 	for(var/k in .)
-		var/atom/movable/M = k
+		var/obj/item/I = k
 		var/list/loot_data = .[k]
 		for(var/j in loot_data)
 			var/loot/L = j
-			L.pre_spawn(M)
-		INITIALIZE(M)
-		GENERATE(M)
-		FINALIZE(M)
+			L.pre_spawn(I)
+		INITIALIZE(I)
+		GENERATE(I)
+		if(use_random_item_amounts && I.amount_max > 1)
+			I.amount = rand(1,I.amount_max)
+		FINALIZE(I)
 		for(var/j in loot_data)
 			var/loot/L = j
-			L.post_spawn(M)
+			L.post_spawn(I)
 
 
 /loot/proc/create_loot_single(var/type_to_spawn,var/spawn_loc,var/rarity) //Don't use this. Use do_spawn to spawn loot. Not providing a spawn_loc will just return the types.

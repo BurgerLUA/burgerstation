@@ -37,7 +37,8 @@
 		/obj/item/cell_charger,
 		/obj/item/storage/kit/small/filled,
 		/obj/item/weapon/melee/energy/grazer,
-		/obj/item/tempering/quality/general
+		/obj/item/tempering/quality/general,
+		/obj/item/fulton_pack
 	)
 
 

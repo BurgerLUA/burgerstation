@@ -25,7 +25,7 @@
 	INITIALIZE(G)
 	FINALIZE(G)
 
-	create_destruction(src,list(/obj/item/material/wood/ = 1),material_id)
+	create_destruction(src,list(/obj/item/material/plank = 1),material_id)
 
 	. = ..()
 

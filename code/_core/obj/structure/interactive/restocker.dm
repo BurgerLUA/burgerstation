@@ -3,27 +3,12 @@
 	desc = "Restocks goods, as long as you have the materials to make them."
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "gear2"
-	var/list/stored_material = list()
 
 	bullet_block_chance = 50
 
 	density = TRUE
 
 	pixel_y = 10
-
-/obj/structure/interactive/restocker/Crossed(atom/movable/O,atom/OldLoc)
-	store(O)
-	return ..()
-
-/obj/structure/interactive/restocker/proc/store(var/atom/movable/O)
-
-	if(istype(O,/obj/item/material/))
-		var/obj/item/material/I = O
-		for(var/material_type in I.material)
-			stored_material[material_type] += I.material[material_type]
-		return TRUE
-
-	return FALSE
 
 /obj/structure/interactive/restocker/ammo
 	name = "portable magazine restocker"

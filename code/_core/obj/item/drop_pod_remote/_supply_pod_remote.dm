@@ -62,25 +62,30 @@
 	return TRUE
 
 /obj/item/supply_remote/drill
-	name = "drop pod remote - Drill Kit"
+	name = "drop pod remote - mining drill"
 	desc_extended = "A special remote designed to drop things into the battlefield. This one contains a large mining drill and two mining braces."
 	stored_object_types = list(
 		/obj/structure/interactive/mining_drill,
 		/obj/structure/interactive/mining_brace,
-		/obj/structure/interactive/mining_brace,
-		/obj/structure/interactive/ore_box,
-		/obj/item/storage/bags/mining
+		/obj/structure/interactive/mining_brace
 	)
-	value = 1000
+	value = 1500
+
+/obj/item/supply_remote/ore_box
+	name = "drop pod remote - ore box"
+	desc_extended = "A special remote designed to drop things into the battlefield. This one contains a wooden box specially designed to hold ore."
+	stored_object_types = list(
+		/obj/structure/interactive/ore_box
+	)
+	value = 500
 
 /obj/item/supply_remote/ammo
-	name = "drop pod remote - Ammo Restocker"
+	name = "drop pod remote - ammo restocker"
 	desc_extended = "A special remote designed to drop things into the battlefield. This one drops an ammo restocker."
 	stored_object_types = list(
 		/obj/structure/interactive/restocker/ammo
 	)
 	value = 3000
-	value_burgerbux = 1
 
 /*
 /obj/item/supply_remote/mech/

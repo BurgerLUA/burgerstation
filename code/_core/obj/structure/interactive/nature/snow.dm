@@ -33,9 +33,6 @@ obj/structure/scenery/bush/snow/New()
 	mouse_opacity = 1
 	density = TRUE
 
-/obj/structure/interactive/tree/on_destruction(var/damage = TRUE)
-	CREATE(/obj/item/material/wood/oak,get_turf(src))
-	. = ..()
 /obj/structure/interactive/tree/Finalize()
 	. = ..()
 	if(is_simulated(src.loc))

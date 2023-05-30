@@ -17,9 +17,14 @@
 
 	var/ignore_burgerbux = FALSE
 
+	use_random_item_amounts = TRUE
+
+/loot/random/proc/get_base_types()
+	return subtypesof(base_type)
+
 /loot/random/proc/generate_loot_table()
 
-	for(var/k in subtypesof(base_type))
+	for(var/k in get_base_types())
 		var/obj/item/I = k
 		var/value = SSbalance.stored_value[k]
 		if(value <= 0)
@@ -47,9 +52,7 @@
 
 
 /loot/random/New()
-
 	generate_loot_table()
-
 	. = ..()
 
 
@@ -58,6 +61,9 @@
 	value_max = 100
 	rarity_min = RARITY_BROKEN
 	rarity_max = RARITY_COMMON
+
+/loot/random/trash/get_base_types()
+	return subtypesof(base_type) - subtypesof(/obj/item/bullet_cartridge/)
 
 /loot/random/trash/lots
 	loot_count = 20

@@ -10,6 +10,19 @@
 
 	material_multiplier = 1
 
+/obj/item/material/sheet/update_icon()
+	var/material/M = SSmaterials.all_materials[material_id]
+	if(!M)
+		name = "ERROR sheet"
+		log_error("Warning! [src.get_debug_name()] had incorrect material type \"[material_id]\"!")
+	else
+		name = "[deunderscore(M.name)] sheet"
+		desc = "If you build it..."
+		desc_extended = "A sheet made of [deunderscore(M.name)]. Useful for building and crafting."
+		icon_state = "[M.icon_state_sheet]_[min(CEILING(amount/10,1),amount_max_icon)]"
+		color = M.color
+	return ..()
+
 /obj/item/material/sheet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(is_item(object))
@@ -43,99 +56,3 @@
 				R.Move(get_turf(I))
 			return TRUE
 	return ..()
-
-/obj/item/material/sheet/steel
-	name = "steel sheet"
-	material_id = /material/steel
-	desc = "Builders best friend"
-
-/obj/item/material/sheet/brass
-	name = "brass sheet"
-	material_id = /material/brass
-	desc = "Rat-var?"
-
-/obj/item/material/sheet/glass
-	name = "glass sheet"
-	material_id = /material/glass
-	drop_sound = 'sound/items/drop/glass.ogg'
-
-/obj/item/material/sheet/iron
-	name = "iron sheet"
-	material_id = /material/iron
-	desc = "Cheap, but rusts."
-
-/obj/item/material/sheet/cobalt
-	name = "cobalt sheet"
-	material_id = /material/cobalt
-	desc = "Doesn't give momentum."
-
-/obj/item/material/sheet/gold
-	name = "gold sheet"
-	material_id = /material/gold
-	desc = "Shiny"
-
-/obj/item/material/sheet/phoron
-	name = "plasma sheet"
-	material_id = /material/phoron
-	desc = "Today I want my building to be EXTRA flammable."
-
-/obj/item/material/sheet/silver
-	name = "silver sheet"
-	material_id = /material/silver
-	desc = "Almost a mirror."
-
-/obj/item/material/sheet/diamond
-	name = "diamond sheet"
-	material_id = /material/diamond
-	desc = "I dont even question it anymore."
-
-/obj/item/material/sheet/uranium
-	name = "uranium sheet"
-	material_id = /material/uranium
-	desc = "Enrichment required."
-
-/obj/item/material/sheet/titanium
-	name = "titanium sheet"
-	material_id = /material/titanium
-	desc = "Lightweight and strong."
-
-/obj/item/material/sheet/zinc
-	name = "zinc sheet"
-	material_id = /material/zinc
-	desc = "Aren't you supposed to plate other things in zinc?"
-
-/obj/item/material/sheet/magnesium
-	name = "magnesium sheet"
-	material_id = /material/magnesium
-	desc = "Burns pretty."
-
-/obj/item/material/sheet/electrum
-	name = "electrum sheet"
-	material_id = /material/electrum
-	desc = "VERY Conductive!"
-
-/obj/item/material/sheet/plasteel
-	name = "plasteel sheet"
-	material_id = /material/plasteel
-	desc = "Space-grade plating."
-
-/obj/item/material/sheet/aluminium
-	name = "aluminium sheet"
-	material_id = /material/aluminium
-	desc = "Lighter than a feather."
-
-/obj/item/material/sheet/nickel
-	name = "nickel sheet"
-	material_id = /material/nickel
-	desc = "Could probably use this for something..."
-
-/obj/item/material/sheet/uranium_235
-	name = "uranium 235 sheet"
-	material_id = /material/uranium_235
-	desc = "Its fissile, not fizzle."
-
-/obj/item/material/sheet/copper
-	name = "copper sheet"
-	material_id = /material/copper
-	desc = "Also still modded."
-

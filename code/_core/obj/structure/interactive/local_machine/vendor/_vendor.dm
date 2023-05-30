@@ -19,7 +19,7 @@ var/global/list/equipped_antags = list()
 	var/list/obj/item/stored_objects = list()
 	var/list/obj/item/stored_types = list()
 	var/list/obj/item/stored_cost = list()
-	var/list/item_multiplier = list() //list of items to multiply the value of by thier assigned value in stored types.
+	var/list/item_multiplier = list() //list of items to multiply the value of by their assigned value in stored types.
 
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
@@ -161,8 +161,8 @@ var/global/list/equipped_antags = list()
 	modify_item(new_item,associated_item)
 	INITIALIZE(new_item)
 	GENERATE(new_item)
-	FINALIZE(new_item)
 	new_item.amount = associated_item.amount
+	FINALIZE(new_item)
 
 	caller.to_chat(span("notice","You vend \the [new_item.name]."))
 
@@ -194,7 +194,7 @@ var/global/list/equipped_antags = list()
 
 	. = ..()
 
-/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn) //Create item for the vendor.
+/obj/structure/interactive/vending/proc/create_item(var/obj/item/item_path,var/turf/turf_spawn) //Create item for the vendor (in initialization only).
 	var/obj/item/I = new item_path(turf_spawn)
 	INITIALIZE(I)
 	GENERATE(I)

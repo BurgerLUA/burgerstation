@@ -78,4 +78,5 @@ var/global/list/all_typecaches = list()
 
 #define is_wand(A) istypecache(A,/obj/item/weapon/ranged/wand)
 
+#define is_material(A) istypecache(A,/obj/item/material)
 

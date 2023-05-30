@@ -1,32 +1,28 @@
 /obj/item/material/ore
 
 	name = "ore"
-	desc = "This should be smelted."
-	desc_extended = "A piece of ore containing minerals. Put this in a smelter to get it's precious contents."
-	icon = 'icons/obj/item/ore.dmi'
-	icon_state = "vein_small"
+	desc = "This should be sold or smelted."
+	desc_extended = "A piece of ore containing minerals. Sell this to NanoTrasen for credits, or put this in a smelter to turn it into an ingot."
+	icon = 'icons/obj/item/ore_new.dmi'
+	icon_state = null
 
-	amount_max = 1
+	amount_max = 50
+	amount_max_icon = 6
 
 	material_multiplier = 1
 
-	value = 0.25
+	size = SIZE_2
 
-/obj/item/material/ore/update_sprite()
-	var/material/M = MATERIAL(material_id)
-	if(M.icon_state_ore) icon_state = M.icon_state_ore
-	if(M.name) name = "[M.name] ore"
-	. = ..()
-
-/obj/item/material/ore/update_underlays()
-
-	. = ..()
-
-	if(icon_state == "vein_small")
-		var/image/I = icon(icon,"rock_small")
-		I.appearance_flags = src.appearance_flags | RESET_COLOR
-		add_underlay(I)
-
+/obj/item/material/ore/update_icon()
+	var/material/M = SSmaterials.all_materials[material_id]
+	if(!M || !M.icon_state_ore)
+		name = "ERROR ore"
+		log_error("Warning! [src.get_debug_name()] had incorrect material type \"[material_id]\"!")
+	else
+		name = "[deunderscore(M.name)] ore"
+		color = "#FFFFFF"
+		icon_state = "[M.icon_state_ore]"
+	return ..()
 
 /*
 /obj/item/material/ore/iron

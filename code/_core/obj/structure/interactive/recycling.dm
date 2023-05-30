@@ -41,25 +41,29 @@
 
 /obj/structure/interactive/recycler/Crossed(atom/movable/O,atom/OldLoc)
 	recycle(O)
-	return ..()
+	. = ..()
 
 /obj/structure/interactive/recycler/proc/recycle(var/atom/movable/O,var/process = TRUE)
 
 	if(is_item(O))
 		var/obj/item/I = O
-		for(var/material_type in I.material)
-			stored_material[material_type] += I.material[material_type]
-
-		for(var/obj/item/I2 in I.contents) //Non-items will be deleted anyways.
-			recycle(I2,FALSE)
-
-		if(process)
-			process_material()
-
+		for(var/k in I.contents)
+			recycle(k,FALSE)
+		if(is_material(I))
+			var/obj/item/material/M = I
+			stored_material[M.material_id] += M.amount*M.material_multiplier
 		qdel(O)
+		if(process) process_material()
+		return TRUE
 
-	else
-		O.force_move(placing_turf)
+	if(is_living(O))
+		var/mob/living/L = O
+		if(!L.dead || L.loyalty_tag == "NanoTrasen")
+			return FALSE
+		L.on_butcher(null,null,override_turf = placing_turf)
+		return TRUE
+
+	O.force_move(placing_turf)
 
 	return TRUE
 
@@ -68,12 +72,11 @@
 
 	for(var/material_type in stored_material)
 		var/material_value = stored_material[material_type]
-		var/material_to_make = FLOOR(material_value/1000, 1)
-		if(material_to_make < 1)
+		if(material_value < 1)
 			continue
-		stored_material[material_type] -= material_to_make*1000
+		stored_material[material_type] -= FLOOR(material_value,1)
 		var/obj/item/material/trash_cube/S = new(placing_turf)
-		S.amount = material_to_make
+		S.amount = material_value
 		S.material_id = material_type
 		INITIALIZE(S)
 		FINALIZE(S)

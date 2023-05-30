@@ -26,8 +26,6 @@
 	var/tier = -1 //-1 means not set.
 	var/tier_type
 
-	var/list/material = list() //Stored materials
-
 	damage_type = null
 
 	var/delete_on_drop = FALSE

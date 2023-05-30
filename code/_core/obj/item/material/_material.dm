@@ -10,12 +10,11 @@
 	amount_max = 50
 	amount_max_icon = 3
 
-
-	value = 1
-
 	drop_sound = 'sound/items/drop/gascan.ogg'
 
 	weight = 0.1
+
+	value = 0 //Auto generated.
 
 /obj/item/material/can_transfer_stacks_to(var/obj/item/target)
 
@@ -49,9 +48,8 @@
 	LOADPATH("material_id")
 
 /obj/item/material/get_base_value()
-	. = ..()
 	var/material/M = SSmaterials.all_materials[material_id]
-	. *= M.value_per_unit * material_multiplier
+	return M.value_per_unit * material_multiplier
 
 /obj/item/material/Finalize()
 
@@ -62,4 +60,5 @@
 		qdel(src)
 		return TRUE
 
+	update_value()
 	update_sprite()

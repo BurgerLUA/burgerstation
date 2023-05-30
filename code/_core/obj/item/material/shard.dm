@@ -14,9 +14,3 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[rand(1,3)]"
 	return ..()
-
-/obj/item/material/shard/glass
-	name = "glass shard"
-	desc = "A shard of glass."
-	desc_extended = "Careful to not step on this barefoot."
-	material_id = /material/glass

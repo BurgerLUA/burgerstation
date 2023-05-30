@@ -88,7 +88,7 @@
 
 	return TRUE
 
-/mob/living/proc/on_butcher(var/mob/caller,var/atom/movable/atom_to_butcher)
+/mob/living/proc/on_butcher(var/mob/caller,var/atom/movable/atom_to_butcher,var/turf/override_turf)
 
 	if(src.qdeleting || atom_to_butcher.qdeleting)
 		return FALSE
@@ -98,7 +98,7 @@
 
 	. = list()
 
-	var/turf/T = get_turf(src)
+	var/turf/T = override_turf ? override_turf : get_turf(src)
 
 	if(src.override_butcher)
 		src.create_override_contents(caller,atom_to_butcher)

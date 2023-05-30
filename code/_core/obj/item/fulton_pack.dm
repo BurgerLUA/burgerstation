@@ -1,15 +1,30 @@
 /obj/item/fulton_pack
 	name = "fulton pack"
 	desc = "Makes people fly."
-	desc_extended = "Fultons objects up to be sold."
-	icon = 'icons/obj/item/clothing/back/fulton.dmi'
+	desc_extended = "A pack containing a bluespace parachute that sends the attached object up to be sold for credits. Works on any object or living being not anchored to the floor."
+	icon = 'icons/obj/item/fulton.dmi'
 	icon_state = "inventory"
 
-	amount_max = 20
+	amount_max = 3
 
 	value = 200
 
 	rarity = RARITY_UNCOMMON
+
+	size = SIZE_3
+	weight = 20
+
+/obj/item/fulton_pack/Generate()
+	amount = 3
+	. = ..()
+
+/obj/item/fulton_pack/Finalize()
+	. = ..()
+	update_sprite()
+
+/obj/item/fulton_pack/update_icon()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[min(amount,3)]"
 
 /obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE,var/turf_check=FALSE)
 
@@ -56,7 +71,7 @@
 		if(istype(object,/obj/structure/interactive/crate/secure))
 			var/obj/structure/interactive/crate/secure/S = object
 			if(S.locked)
-				caller.to_chat(span("warning","\The [S.name] needs to be unlocked in order to be sold!"))
+				caller.to_chat(span("warning","\The [S.name] needs to be unlocked in order to be fultoned!"))
 				return FALSE
 		for(var/k in C.contents)
 			var/atom/movable/M = k

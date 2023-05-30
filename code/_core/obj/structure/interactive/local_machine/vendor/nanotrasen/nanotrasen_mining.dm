@@ -155,7 +155,7 @@
 		/obj/item/weapon/melee/tool/screwdriver,
 		/obj/item/weapon/melee/tool/wrench,
 		/obj/item/supply_remote/drill,
-		/obj/item/supply_remote/ammo,
+		/obj/item/supply_remote/ore_box,
 		/obj/item/flare,
 		/obj/item/fulton_pack,
 		/obj/item/container/syringe/medipen/mining,
