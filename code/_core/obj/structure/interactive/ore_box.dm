@@ -41,7 +41,7 @@
 		var/obj/item/material/ore/O = new(T)
 		O.material_id = ore_id
 		INITIALIZE(O)
-		O.amount = min(ore_amount,3)
+		O.amount = min(contained_ore[ore_id],3)
 		FINALIZE(O)
 		contained_ore[ore_id] -= O.amount
 
