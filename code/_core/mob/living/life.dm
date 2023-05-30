@@ -369,7 +369,7 @@ mob/living/proc/on_life_slow()
 
 	if(blood_type && blood_volume_max > 0)
 		if(blood_volume < blood_volume_max)
-			var/blood_volume_to_add = -(add_hydration(-0.05) + add_nutrition(-0.3))*0.5
+			var/blood_volume_to_add = -(add_hydration(-0.15) + add_nutrition(-1.2))*0.125
 			blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 			QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)

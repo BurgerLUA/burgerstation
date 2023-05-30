@@ -358,17 +358,6 @@
 
 	particle_size = 0.4
 
-/reagent/medicine/nicotine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	. = ..()
-
-	//Regenerate 5 sanity per second while nicotine is in your system, as long as the metabolism exceeds metabolism_blood
-	//You also get hungrier and thirstier.
-	if(. >= metabolism_blood)
-		var/true_multiplier = TICKS_TO_SECONDS(LIFE_TICK_SLOW) * (. / metabolism_blood) * multiplier
-		owner.sanity_regen_buffer += 5*true_multiplier
-		owner.add_hydration(-0.04*true_multiplier)
-		owner.add_nutrition(-0.01*true_multiplier)
-
 /reagent/medicine/synthblood
 	name = "synthblood"
 	desc = "A special synthetic blood that replicates the blood type of any organic being when injected. Usually more expensive than just using real blood, however it has some chemical applications."

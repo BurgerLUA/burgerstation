@@ -1,5 +1,5 @@
 /mob/living/proc/add_nutrition(var/nutrition_amount)
-	if(nutrition_amount< 0 && (nutrition + nutrition_amount*3) > nutrition_max)
+	if(nutrition_amount < 0 && (nutrition + nutrition_amount*3) > nutrition_max)
 		nutrition_amount *= 3 //Easier to remove nutrition when fat. I know this isn't realistic but...
 	nutrition = clamp(nutrition + nutrition_amount,0,nutrition_max_hard)
 	return nutrition_amount
