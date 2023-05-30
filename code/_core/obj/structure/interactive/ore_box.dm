@@ -14,8 +14,44 @@
 
 	density = TRUE
 
-
 	var/list/contained_ore = list() //Assoc list.
+
+
+/obj/structure/interactive/ore_box/proc/can_dump_some_ore(var/mob/caller)
+
+	if(get_dist(caller,src) > 1)
+		return FALSE
+
+	if(!length(contained_ore))
+		return FALSE
+
+	return TRUE
+
+
+
+/obj/structure/interactive/ore_box/proc/dump_some_ore(var/mob/caller)
+
+	var/turf/T = get_turf(caller)
+	if(!T)
+		return FALSE
+	var/ore_id = contained_ore[1]
+	for(var/i=1,i<=min(CEILING(contained_ore[ore_id]/3,1),30),i++)
+		if(contained_ore[ore_id] <= 0) //Possible race condition of two or more people dumping ore.
+			break
+		var/obj/item/material/ore/O = new(T)
+		O.material_id = ore_id
+		INITIALIZE(O)
+		O.amount = min(ore_amount,3)
+		FINALIZE(O)
+		contained_ore[ore_id] -= O.amount
+
+	if(contained_ore[ore_id] <= 0)
+		contained_ore -= ore_id
+
+	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::can_dump_some_ore(),caller)
+	PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
+
+	return TRUE
 
 /obj/structure/interactive/ore_box/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -25,10 +61,8 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			for(var/k in contents)
-				var/obj/item/I = k
-				I.drop_item(get_turf(C))
-			C.to_chat(span("notice","You dump everything in \the [src.name] at your feet."))
+			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::can_dump_some_ore(),caller)
+			PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
 
 	if(istype(object,/obj/item/material/ore))
 		INTERACT_CHECK
@@ -62,6 +96,13 @@
 
 /obj/structure/interactive/ore_box/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += div("notice","The counter shows [length(contents)] objects inside.")
-	. += div("notice","The estimated value of contained contents is [] credits.")
+	var/total_value = 0
+	var/total_objects = 0
+	for(var/k in contained_ore)
+		var/amount = contained_ore[k]
+		var/material/M = MATERIAL(k)
+		total_value += amount*1*M.value_per_unit
+		total_objects += amount
+	. += div("notice","The counter shows [total_objects] objects inside.")
+	. += div("notice","The estimated value of contained contents is [total_value] credits.")
 
