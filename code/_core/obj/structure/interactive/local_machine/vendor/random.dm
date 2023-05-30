@@ -10,6 +10,8 @@
 
 	accepts_item = /obj/item/currency/dosh
 
+	health = null
+
 /obj/structure/interactive/vending/random/Finalize()
 
 	markup = rand(2,4)

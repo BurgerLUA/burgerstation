@@ -142,7 +142,7 @@
 	sockets = min(sockets,sockets_max)
 	. = ..()
 	update_sprite()
-	update_attachment_stats()
+	socketed_spellgem?.update_attachment_stats()
 
 /obj/item/weapon/ranged/wand/Initialize()
 	. = ..()
@@ -177,9 +177,19 @@
 	. = ..()
 	. += div("notice","Has <b>1</b> slot(s) for spell gems.")
 	. += div("notice","Has <b>[sockets]</b> slot(s) for support gems.")
-	. += div("notice","This wand type increases the power of support gems by [(wand_damage_multiplier-1)*100]%.")
+	. += div("notice","This wand type increases the damage of spell gems by [(wand_damage_multiplier-1)*100]%.")
 	if(socketed_spellgem)
-		. += div("notice","Currently casts \the [socketed_spellgem.name]")
+		. += div("notice","Currently socketed with [socketed_spellgem.name]")
+	if(length(socketed_supportgems))
+		var/list/support_gem_names = list()
+		for(var/k in socketed_supportgems)
+			var/obj/item/I = k
+			support_gem_names += I.name
+		if(socketed_spellgem)
+			. += div("notice","Additionally socketed with <b>[english_list(support_gem_names)]</b>.")
+		else
+			. += div("notice","Socketed with <b>[english_list(support_gem_names)]</b>.")
+
 
 /obj/item/weapon/ranged/wand/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

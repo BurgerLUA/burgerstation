@@ -107,6 +107,8 @@
 			var/obj/marker/shuttle_landing/SL = k
 			if(SL.z != current_z)
 				continue
+			if(SL.owning_shuttle && SL.owning_shuttle != connected_background.linked_shuttle_controller)
+				continue
 			var/distance = get_dist(T,SL)
 			if(distance > best_distance)
 				continue
@@ -269,7 +271,9 @@
 	var/obj/hud/map/M = connected_background?.connected_map
 
 	if(!M || close || launch)
+
 		. = ..()
+
 		if(connected_background.linked_shuttle_controller)
 			if(launch && close) //Return to base.
 				if(connected_background.linked_shuttle_controller.try_launch(caller,connected_background.linked_shuttle_controller.transit_marker_base))

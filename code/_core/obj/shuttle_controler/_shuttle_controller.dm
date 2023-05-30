@@ -58,9 +58,9 @@ var/global/list/all_shuttle_controlers = list()
 
 	transit_marker_base = new(T)
 	transit_marker_base.owning_shuttle = src
+
 	transit_marker_bluespace = new(T2)
 	transit_marker_bluespace.owning_shuttle = src
-
 	transit_marker_base.reserved = TRUE
 
 	return ..()
@@ -419,7 +419,7 @@ var/global/list/all_shuttle_controlers = list()
 		caller?.to_chat(span("warning","Error: Invalid shuttle destination!"))
 		return FALSE
 
-	if(desired_marker.reserved)
+	if(desired_marker.reserved || (desired_marker.owning_shuttle && desired_marker.owning_shuttle != src))
 		caller?.to_chat(span("warning","Error: Shuttle destination already is reserved or occupied!"))
 		return FALSE
 

@@ -28,8 +28,7 @@ SUBSYSTEM_DEF(callback)
 
 	for(var/callback_id in all_callbacks)
 		var/callback_value = all_callbacks[callback_id]
-		if(!length(callback_value))
-			log_error("ERROR: [callback_id] had no callback data!")
+		if(!length(callback_value)) //Sometimes we get a race condition.
 			remove_callback(callback_id)
 			continue
 		var/datum/stored_object = callback_value["object"]

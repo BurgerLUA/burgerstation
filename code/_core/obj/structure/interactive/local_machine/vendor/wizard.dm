@@ -29,6 +29,7 @@
 	)
 
 	accepts_item = /obj/item/currency/magic_token
+	health = null
 
 /obj/structure/interactive/vending/wizard/prank
 	name = "magic prank vendor"
