@@ -179,7 +179,7 @@
 	. += div("notice","Has <b>[sockets]</b> slot(s) for support gems.")
 	. += div("notice","This wand type increases the damage of spell gems by [(wand_damage_multiplier-1)*100]%.")
 	if(socketed_spellgem)
-		. += div("notice","Currently socketed with [socketed_spellgem.name]")
+		. += div("notice","Currently socketed with <b>[socketed_spellgem.name]</b>.")
 	if(length(socketed_supportgems))
 		var/list/support_gem_names = list()
 		for(var/k in socketed_supportgems)

@@ -12,6 +12,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/semi = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/m4 = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/m4_soap = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/sol_burst = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/moar = TRUE,

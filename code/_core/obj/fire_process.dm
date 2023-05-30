@@ -100,8 +100,7 @@
 		var/fire_power_to_add = min(10,3*(returning_damage[1]/expected_damage - 1))
 		if(fire_power_to_add > 0)
 			fire_power += fire_power_to_add
-			if(fire_power >= 40)
-				momentum = NORTH | EAST | SOUTH | WEST
+		momentum = NORTH | EAST | SOUTH | WEST
 
 	CALLBACK("\ref[victim]_\ref[src]_do_fire_ground_damage",10,src,src::do_damage(),victim) //Check again in 10 seconds.
 

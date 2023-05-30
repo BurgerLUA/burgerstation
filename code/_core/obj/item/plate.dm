@@ -5,7 +5,7 @@
 	icon = 'icons/obj/item/plate.dmi'
 	icon_state = "plate_medium"
 	mouse_opacity = 1
-	layer = -1000
+	layer = LAYER_OBJ_ITEM - 1
 	size = SIZE_4
 	weight = 1
 	value = 10

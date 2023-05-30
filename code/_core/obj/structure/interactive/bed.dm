@@ -8,7 +8,9 @@ obj/structure/interactive/bed
 	var/pixel_offset_x = 0
 	var/pixel_offset_y = 0
 
-	plane = PLANE_MOVABLE
+	plane = PLANE_MOVABLE_DEAD
+	layer = LAYER_MOB_BELOW
+
 	var/opened_time = 0
 
 	bullet_block_chance = 50
