@@ -80,7 +80,7 @@
 		/obj/item/container/simple/beaker/bottle/charcoal,
 		/obj/item/container/simple/beaker/bottle/calomel,
 		/obj/item/container/simple/beaker/bottle/antihol,
-		/obj/item/storage/pillbottle/assprin,
+		/obj/item/storage/pillbottle/consumer/painkillers,
 		/obj/item/storage/pillbottle/bicaridine,
 		/obj/item/storage/pillbottle/kelotane,
 		/obj/item/storage/pillbottle/dylovene,

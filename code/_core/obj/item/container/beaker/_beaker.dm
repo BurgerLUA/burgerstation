@@ -27,12 +27,13 @@
 	rarity = RARITY_UNCOMMON
 
 /obj/item/container/simple/beaker/get_base_value()
-	. = 1
-	// https://www.desmos.com/calculator/okb8vlsrmu
-	if(reagents)
-		. += ((reagents.volume_max * 0.25) + (reagents.volume_max**1.5)) * 0.075 * (SIZE_2/size)
-		. += size*10
-	. = CEILING(.,1)
+	. = ..()
+	. *= 2
+
+/obj/item/container/simple/beaker/can_feed(var/mob/caller,var/mob/living/target)
+	if(!allow_reagent_transfer_from)
+		return FALSE
+	. = ..()
 
 /obj/item/container/simple/beaker/Finalize()
 	. = ..()

@@ -16,9 +16,10 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 	. = ..()
 	smart_clear_turfs -= src
 
-/obj/marker/smart_clear_turf/Finalize()
 
-	. = ..()
+/obj/marker/smart_clear_turf/proc/process()
+
+	. = 0
 
 	var/turf/current_turf = get_turf(src)
 	if(!current_turf)
@@ -27,7 +28,6 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 	var/list/turfs_to_check = list(current_turf)
 	var/list/turf_blacklist = list(current_turf=TRUE,null=TRUE)
 
-	var/first = TRUE
 	while(length(turfs_to_check) && checks_allowed > 0)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 		checks_allowed--
@@ -35,12 +35,12 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 			turfs_to_check -= k
 			var/turf/simulated/T = k
-			var/turf/dt = T.destruction_turf
-			if(!T.map_spawn && T.density && dt && !initial(dt.density))
-				T.change_turf(dt)
-			else if(!first)
+			var/turf/DT = T.destruction_turf
+			if(!T.map_spawn && T.density && T.health && DT && !initial(DT.density))
+				T.change_turf(DT)
+				. += 1
+			else if(current_turf != T)
 				continue
-			first = FALSE
 			for(var/d in DIRECTIONS_CARDINAL)
 				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 				var/turf/simulated/T2 = get_step(T,d)

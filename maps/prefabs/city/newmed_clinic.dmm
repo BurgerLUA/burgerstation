@@ -78,7 +78,7 @@
 "bz" = (/obj/structure/carpet/grey,/turf/simulated/floor/tile/morphing/medical,/area/mission/prefab/city/newmed_clinic/lobby)
 "bA" = (/obj/marker/spawning/window,/turf/simulated/floor/plating,/area/mission/prefab/city/newmed_clinic/lobby)
 "bB" = (/obj/structure/interactive/bar_sign/newmed_clinic,/turf/simulated/wall/metal,/area/mission/prefab/city/newmed_clinic/lobby)
-"bC" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"bC" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "bD" = (/obj/marker/map_node,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
 "bE" = (/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/green,/area/mission/prefab/city/newmed_clinic)
 "bF" = (/obj/marker/map_node,/turf/simulated/floor/tile/tint,/area/mission/prefab/city/newmed_clinic)

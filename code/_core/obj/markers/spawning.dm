@@ -173,7 +173,12 @@
 		/obj/structure/interactive/crate = 30,
 		/obj/structure/interactive/crate/closet = 20,
 		/obj/structure/interactive/crate/engineering = 10,
+		/obj/structure/interactive/crate/closet/emergency = 10,
+		/obj/structure/interactive/crate/closet/emergency/filled = 5,
+		/obj/structure/interactive/crate/closet/fire = 10,
+		/obj/structure/interactive/crate/closet/fire/filled = 5,
 		/obj/structure/interactive/crate/coffin = 5,
+		/obj/structure/interactive/crate/bodybag = 5,
 		//Reagents
 		/obj/structure/interactive/reagent_tank/rolly/water = 50,
 		/obj/structure/interactive/reagent_tank/rolly/ethanol = 50,

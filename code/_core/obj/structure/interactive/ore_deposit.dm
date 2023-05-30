@@ -25,6 +25,13 @@
 	else if(M.color)
 		color = M.color
 
+/obj/structure/interactive/ore_deposit/update_sprite()
+	. = ..()
+	if(prob(75))
+		var/matrix/M = get_base_transform()
+		M.Turn(pick(90,180,270))
+		transform = M
+
 /obj/structure/interactive/ore_deposit/proc/create_ore(var/atom/caller,var/atom/drop_location,var/ore_to_create = 1)
 
 	ore_to_create = CEILING(ore_to_create,1) //Round up.

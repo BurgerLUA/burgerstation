@@ -245,7 +245,7 @@
 			return TRUE
 		if(is_bow(A.left_item) && handle_bow(A.left_item))
 			return TRUE
-		if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item.can_wield && !A.left_item.wielded && !A.right_item)
+		if(A.left_item && A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item.can_wield && !A.left_item.wielded && !A.right_item)
 			A.inventories_by_id[BODY_HAND_RIGHT_HELD].wield(A,A.left_item)
 			next_complex = max(next_complex,world.time) + rand(2,6)
 
@@ -255,8 +255,7 @@
 			return TRUE
 		if(is_bow(A.right_item) && handle_bow(A.right_item))
 			return TRUE
-
-		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item.can_wield && !A.right_item.wielded && !A.left_item)
+		if(A.right_item && A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item.can_wield && !A.right_item.wielded && !A.left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,A.right_item)
 			next_complex = max(next_complex,world.time) + rand(2,6)
 

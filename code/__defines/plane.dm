@@ -45,13 +45,11 @@
 
 #define PLANE_MOVABLE_DEAD -30
 
-//Mob
-
 #define PLANE_MOVABLE_STEALTH -23
 
-#define PLANE_CURRENCY -22
-
 #define PLANE_MOVABLE -21
+
+#define PLANE_CURRENCY -19
 
 #define PLANE_MOVABLE_WATER_MASK -18 //The water mask.
 

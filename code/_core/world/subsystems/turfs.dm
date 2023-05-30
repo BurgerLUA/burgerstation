@@ -131,16 +131,15 @@ SUBSYSTEM_DEF(turf)
 
 	log_subsystem(src.name,"Processing [length(smart_clear_turfs)] smart clear turf markers...")
 	var/benchmark = true_time()
+	var/total_turfs_processed = 0
 	for(var/k in smart_clear_turfs)
 		var/obj/marker/smart_clear_turf/M = k
-		INITIALIZE(M)
-		GENERATE(M)
-		FINALIZE(M)
+		total_turfs_processed += M.process()
 		qdel(M)
 		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
 
 	benchmark = true_time() - benchmark
-	log_subsystem(src.name,"Clear turf markers took [DECISECONDS_TO_SECONDS(benchmark)] seconds.")
+	log_subsystem(src.name,"Smart cleared [total_turfs_processed] turfs which took [DECISECONDS_TO_SECONDS(benchmark)] seconds.")
 
 	. = ..()
 

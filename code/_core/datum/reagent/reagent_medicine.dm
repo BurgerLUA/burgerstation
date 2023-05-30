@@ -261,7 +261,7 @@
 /reagent/medicine/charcoal
 	name = "charcoal"
 	desc = "Purges poisons from the system while healing a slight amount of toxins. Works just as well when consumed."
-	color = "#315F77"
+	color = "#404040"
 	alpha = 255
 	flavor = "old shoes"
 

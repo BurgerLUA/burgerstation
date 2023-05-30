@@ -9,7 +9,7 @@
 /obj/item/container/simple/chemistry/Generate()
 	. = ..()
 	if(reagents && reagent_to_add)
-		reagents.add_reagent(reagent_to_add,reagents.volume_current)
+		reagents.add_reagent(reagent_to_add,reagents.volume_max)
 
 /obj/item/container/simple/chemistry/ammonia
 	name = "ammonia jug"
@@ -26,7 +26,7 @@
 	name = "sulfur bottle"
 	icon_state = "sulfur"
 	reagents = /reagent_container/beaker/bottle
-	reagent_to_add = /reagent/salt/sodium_chloride
+	reagent_to_add = /reagent/sulfur
 
 /obj/item/container/simple/chemistry/silicon
 	name = "silicon bottle"

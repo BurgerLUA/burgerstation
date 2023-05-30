@@ -18,15 +18,15 @@
 "ar" = (/obj/structure/interactive/door/airlock/station/engineering/glass/supermatter,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/engine)
 "as" = (/obj/structure/interactive/door/vault,/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
 "at" = (/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/maint/left)
-"au" = (/obj/structure/interactive/lighting/fixture/bulb/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 6},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"au" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "av" = (/obj/structure/interactive/light_switch,/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/foyer)
 "aw" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"ax" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
+"ax" = (/obj/structure/interactive/wire/yellow,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/engine)
 "ay" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "az" = (/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/engine)
 "aA" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/engine)
 "aB" = (/obj/marker/spawning/window/extra,/obj/structure/interactive/wire/red,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/engine)
-"aC" = (/obj/structure/interactive/lighting/fixture/bulb/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"aC" = (/obj/structure/interactive/lighting/fixture/bulb/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 6},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "aD" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "aE" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "aF" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
@@ -38,11 +38,11 @@
 "aL" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/emitter/active{icon_state = "emitter"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "aM" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "aN" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/emitter/active,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
-"aO" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"aO" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "aP" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/engine)
-"aQ" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"aQ" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "aR" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"aS" = (/obj/decal/hazard/box,/mob/living/simple/turret/ai_core,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
+"aS" = (/obj/structure/interactive/lighting/fixture/bulb/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "aT" = (/obj/marker/spawning/window/reinforced/grilled,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/foyer)
 "aU" = (/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/core)
 "aV" = (/obj/decal/hazard/black{icon_state = "line"; dir = 4},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
@@ -53,7 +53,7 @@
 "ba" = (/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/engine)
 "bb" = (/obj/decal/hazard/black{icon_state = "line"; dir = 8},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "bc" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"bd" = (/obj/structure/interactive/lighting/fixture/bulb/red,/obj/decal/hazard/box,/mob/living/simple/turret/ai_core,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bd" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "be" = (/mob/living/simple/silicon/spawner,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "bf" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
 "bg" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
@@ -68,55 +68,56 @@
 "bp" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "bq" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/field_generator/active,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/engine)
 "br" = (/turf/simulated/wall/metal/circuit,/area/mission/prefab/misc/ai_core/core)
-"bs" = (/obj/structure/interactive/disposals/pipe/junction/flipped,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bs" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "bt" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "bu" = (/obj/marker/generation/turf/rock_wall,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"bv" = (/obj/structure/interactive/wire/green,/mob/living/simple/silicon/spawner,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
-"bw" = (/obj/decal/hazard/box,/mob/living/simple/turret/ai_core/immortalish,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/core)
+"bv" = (/mob/living/simple/turret/ai_core,/obj/structure/interactive/lighting/fixture/bulb/red,/obj/decal/hazard/box,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bw" = (/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "bx" = (/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"by" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"by" = (/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "bz" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 1},/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/foyer)
 "bA" = (/mob/living/simple/silicon/ai,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "bB" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "bC" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "bD" = (/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/atmospherics/scrubber,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "bE" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/obj/structure/interactive/atmospherics/vent,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
-"bF" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 6},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bF" = (/obj/decal/hazard/black{icon_state = "line"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "bG" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"bH" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bH" = (/mob/living/simple/turret/ai_core/immortalish,/obj/decal/hazard/box,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/core)
 "bI" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
 "bJ" = (/obj/structure/interactive/field_generator/active,/obj/decal/hazard/black{icon_state = "line"; dir = 4},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "bK" = (/obj/structure/interactive/field_generator/active,/obj/decal/hazard/black{icon_state = "line"; dir = 8},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
-"bL" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"bL" = (/obj/decal/hazard/black{icon_state = "line"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
 "bM" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "bN" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bO" = (/obj/structure/interactive/disposals/pipe/junction/flipped,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "bP" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/machine/chute,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
 "bQ" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
-"bR" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
+"bR" = (/mob/living/simple/silicon/spawner,/obj/structure/interactive/wire/green,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
 "bS" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "bT" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
 "bU" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/foyer)
 "bV" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"bW" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bW" = (/obj/structure/interactive/disposals/pipe/junction,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "bX" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"bY" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"bY" = (/obj/marker/map_node,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/core)
 "bZ" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "ca" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 6},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"cb" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"cc" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"cb" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 6},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"cc" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "cd" = (/obj/marker/spawning/random/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"ce" = (/obj/structure/interactive/disposals/pipe,/mob/living/simple/turret/ai_core,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"cf" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/mob/living/simple/turret/ai_core,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"ce" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"cf" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "cg" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "ch" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"ci" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"ci" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/core)
 "cj" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "ck" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"cl" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"cl" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "cm" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "cn" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
-"co" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
-"cp" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"co" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"cp" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "cq" = (/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/entrance)
 "cr" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/entrance)
 "cs" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/foyer)
@@ -125,17 +126,17 @@
 "cv" = (/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/entrance)
 "cw" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "cx" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 4},/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/entrance)
-"cy" = (/obj/decal/hazard/box,/mob/living/simple/turret/ai_core,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"cy" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "cz" = (/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "cA" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/entrance)
 "cB" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/entrance)
-"cC" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"cC" = (/mob/living/simple/turret/ai_core,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "cD" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/maint/right)
-"cE" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe/junction/flipped{icon_state = "pipe-j2"; dir = 4},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"cE" = (/mob/living/simple/turret/ai_core,/obj/decal/hazard/box,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
 "cF" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "cG" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe/x,/obj/structure/interactive/statue/director,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "cH" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/maint/left)
-"cI" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"cI" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/foyer)
 "cJ" = (/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
 "cK" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/entrance)
 "cL" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 8},/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/maint/left)
@@ -144,12 +145,13 @@
 "cO" = (/obj/decal/poster/nanotrasen,/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/entrance)
 "cP" = (/obj/structure/interactive/disposals/machine/outlet,/obj/structure/interactive/disposals/pipe/ending{icon_state = "pipe-t"; dir = 4},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
 "cQ" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
-"cR" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/mob/living/simple/silicon/spawner,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
+"cR" = (/mob/living/simple/turret/ai_core,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "cS" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
-"cT" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
+"cT" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "cU" = (/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
 "cV" = (/mob/living/simple/silicon/spawner,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
 "cW" = (/obj/structure/interactive/lighting/fixture/tube/fluorescent,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
+"cX" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "cY" = (/obj/structure/interactive/light_switch{icon_state = "setup"; dir = 1},/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/foyer)
 "cZ" = (/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/engine)
 "da" = (/obj/decal/hazard/black{icon_state = "line"; dir = 8},/obj/structure/interactive/lighting/fixture/tube/fluorescent{icon_state = "preview"; dir = 8},/turf/simulated/floor/circuit/blue,/area/mission/prefab/misc/ai_core/core)
@@ -166,17 +168,30 @@
 "dl" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/lighting/fixture/tube/fluorescent,/obj/structure/interactive/crate/engineering,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "dm" = (/obj/structure/interactive/crate/engineering,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "dn" = (/obj/structure/interactive/crate/engineering,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"do" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "dp" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 4},/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/maint/right)
 "dq" = (/obj/structure/interactive/fire_closet{icon_state = "extinguisher"; dir = 8},/turf/simulated/wall/metal/circuit/reinforced,/area/mission/prefab/misc/ai_core/maint/left)
 "dr" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/marker/spawning/random/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "ds" = (/obj/marker/spawning/random/maintenance,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "dt" = (/obj/structure/interactive/crate/engineering,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
 "du" = (/obj/structure/interactive/wire/yellow,/obj/structure/interactive/field_generator/active,/turf/simulated/floor/plating/reinforced,/area/mission/prefab/misc/ai_core/engine)
-"dv" = (/obj/structure/interactive/disposals/pipe/junction,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"dv" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 1},/obj/structure/interactive/wire/green,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "dw" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/disposals/pipe,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "dx" = (/obj/structure/interactive/door/airlock/station/maintenance/no_access,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
 "dy" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
 "dz" = (/obj/structure/interactive/wire/red,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 10},/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/engine)
+"dA" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"dB" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 1},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"dC" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"dD" = (/mob/living/simple/turret/ai_core,/obj/decal/hazard/box,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"dE" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 4},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 5},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/right)
+"dF" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe/junction/flipped{icon_state = "pipe-j2"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"dG" = (/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"dH" = (/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/structure/interactive/wire/green,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/maint/left)
+"dI" = (/obj/structure/interactive/disposals/pipe,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/mission/prefab/misc/ai_core/entrance)
+"dJ" = (/mob/living/simple/silicon/spawner,/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 8},/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
+"dK" = (/obj/structure/interactive/disposals/pipe{icon_state = "pipe"; dir = 9},/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
+"dL" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/misc/ai_core/entrance)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -201,46 +216,46 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuaaaaaaaabuaaaaaaaabuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaddldkdkanbqandkdkaeadabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabahdgahahcZcZcZahahdhahabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaudgahahcZaxcZahahdhauabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuajagakalamdjcZdjaoaldzahabbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapapahaqadababaAababadaqahatatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapauawaxayaJaHazduazaHaLdyaldxaCataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapaCawaOayaJaHazduazaHaLdyaQdxaSataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapaDapaEagahababarababahagaFatbBataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapaDdpahdhahaHbaaAboaHahdgahdqbBataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapaDapaIagaJaHbaaKboaHaLagaMatbBataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapaOapdjaNagaHbaazboaHagaNdjataQataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapbdapdjaNagaHbaazboaHagaNdjatbsatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapaRapabaHaBababaPababaBaHabatdwapapaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbdaDbeaUaVaWaYbgbnbgaYaWbbaUbkbBbdapaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbvbwbeaUaVaWaYbgbnbgaYaWbbaUbkbybvapaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbmaDbmaUaVbjbnbpbpbpbnbjbbaUaGbBaGataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbmaDbmaUaVbwbnbrbrbrbnbwbbaUaGbBaGataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbmaDbmaUbFbHbnbrbrbrbnbHbLaUaGbBaGataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbmaDcdaUaVaXbnbrbAbrbnaXbbaUdnbBdsataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcdbsbtaUaVaXbvdeaZdebvaXbbaUbxdvaGatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapcdaDaUaUdbbwbnaXaXaXbnbwdaaUaUbBaGatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapdtbmaDaUaZaVaXddaXaXaXdfaXbbaZaUbBaGdsataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbFbGbHaUaZbJaXbnaXaXaXbnaXbKaZaUbLbMbyataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcdbObtaUaVaXbRdeaZdebRaXbbaUbxbWaGatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapcdaDaUaUdbbHbnaXaXaXbnbHdaaUaUbBaGatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapdtbmaDaUaZbFaXddaXbYaXdfaXbLaZaUbBaGdsataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcbbGccaUaZbJaXbnaXaXaXbnaXbKaZaUcebMcfataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapbNapapbhapapblbnaXaXaXbnblatatbiatatbBatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbNapbebScdapbzbPbQbRbnbnacatdsbVbkatbBataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbWbXbGbYbZapacacafasavacacatcacbbMbcccataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapapdrbSceapaSaTbfbIbTaTaSatcfbVcgatatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapbNapbebScdapbzbPbQcibnbnacatdsbVbkatbBataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapclbXbGcobZapacacafasavacacatcacpbMbccyataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapapdrbScCapcEaTbfcIbTaTcEatcRbVcgatatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcdbSaDapbUaTbTbEbTaTcsatchbVdsatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcdcicjapctaTbTbIbTaTctatckcldmataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcdcTcXapctaTbTbIbTaTctatdodvdmataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapapcmapctaTbTbIbTaTctatcnatatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcoapbUaTbTdcbTaTcsatcpatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcjapaSaTbTbIbTaTaSatckataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapdAapbUaTbTdcbTaTcsatdBatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcjapcEaTbTcIbTaTcEatckataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcjapacaccYasavacacatckataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcjapcucvcvcwcvcvcvatckataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcjapcxcyczbCczcycAatckatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcjapcucvcvdCcvcvcvatckataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabuapcjapcxdDczbCczdDcAatckatbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcjapcBczczcwczczcvatckataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapcCcDcEcFcFcGcFcFcFcHcIataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapdEcDdFcFcFcGcFcFdGcHdHataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapapdpcvczczcJczczcKcLatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabucqcMcyczbDczcycAcqbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacqcvcvcvcJcvcvcvcqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabucqcMdDczbDczdDcAcqbuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacqcvcvcvdIcvcvcvcqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacqcqcqcrcNcOcqcqcqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacPcQcRcScTdicVcWcUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacUcycUcUcUcUcUcycUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacUcUcUcUcUcUcUcUcUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacPcQdJcSdKdicVcWcUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacUdDcUcUcUcUcUdDcUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadLcUcUcUdLcUcUcUdLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiaaaaaaaaaaaaaaaaaaaiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

@@ -122,6 +122,8 @@
 
 	turf_whitelist = /turf/simulated/floor/colored
 
+	bypass_disallow_generation = FALSE
+
 
 /obj/marker/generation/foliage/tree/snow
 	object_to_place = /obj/structure/interactive/tree/pine

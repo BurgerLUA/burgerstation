@@ -7,6 +7,7 @@
 	var/active = TRUE
 	var/reversed = FALSE
 
+	plane = PLANE_MOVABLE_DEAD
 	layer = LAYER_FLOOR_CONVEYOR
 
 	var/turf/start_turf

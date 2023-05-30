@@ -21,6 +21,7 @@
 	name = "chemistry equipment vendor"
 	icon_state = "chemistry_equipment"
 	stored_types = list(
+		/obj/item/paper/book/chemistry,
 		/obj/item/storage/bags/chemistry,
 		/obj/item/crafting_bench/alchemy,
 		/obj/item/crafting_bench/filter,

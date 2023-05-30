@@ -4,10 +4,13 @@
 	icon = 'icons/obj/structure/ore_box.dmi'
 	icon_state = "ore_box"
 
+	plane = PLANE_MOVABLE
+	layer = LAYER_LARGE_OBJ
+
 	anchored = FALSE
 	collision_flags = FLAG_COLLISION_WALL
 
-	bullet_block_chance = 75
+	bullet_block_chance = 90
 
 	density = TRUE
 

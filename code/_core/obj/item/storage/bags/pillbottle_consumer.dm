@@ -1,4 +1,5 @@
 /obj/item/storage/pillbottle/consumer
+	icon = 'icons/obj/item/storage/consumer_pillbottle.dmi'
 	fill_icon_count = 0
 	color_lid = COLOR_RED
 	color_label = COLOR_YELLOW
@@ -29,4 +30,13 @@
 /obj/item/storage/pillbottle/consumer/carbon/fill_inventory()
 	for(var/i=1,i<=20,i++)
 		new /obj/item/container/edible/pill/carbon(src)
+	. = ..()
+
+/obj/item/storage/pillbottle/consumer/painkillers
+	name = "assprin pill bottle"
+	desc = "Contains 20 10u assprin painkiller pills. To remove that pain in your ass!"
+
+/obj/item/storage/pillbottle/consumer/painkillers/fill_inventory()
+	for(var/i=1,i<=20,i++)
+		new /obj/item/container/edible/pill/assprin(src)
 	. = ..()

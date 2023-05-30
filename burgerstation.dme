@@ -2017,7 +2017,6 @@
 #include "code\_core\obj\structure\_structure.dm"
 #include "code\_core\obj\structure\curb.dm"
 #include "code\_core\obj\structure\metal_foam.dm"
-#include "code\_core\obj\structure\render_target_test.dm"
 #include "code\_core\obj\structure\smoothing.dm"
 #include "code\_core\obj\structure\totem.dm"
 #include "code\_core\obj\structure\WIP.dm"

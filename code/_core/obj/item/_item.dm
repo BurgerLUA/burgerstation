@@ -702,11 +702,6 @@ var/global/list/rarity_to_mul = list(
 	var/reagent_container/R = get_reagents_to_consume(target)
 	if(!R)
 		return FALSE
-	if(target != caller && R.contains_lethal && is_living(caller))
-		var/mob/living/L = caller
-		if(!allow_hostile_action(L.loyalty_tag,target))
-			caller.to_chat(span("warning","You'd feel it would be unsafe to feed your fellow man with the dangerous [src.name]..."))
-			return FALSE
 	R.consume(caller,target)
 	return TRUE
 
@@ -769,18 +764,21 @@ var/global/list/rarity_to_mul = list(
 
 	var/mob/living/L = target
 
+	if(L.dead)
+		caller.to_chat(span("warning","\The [L.name] is dead!"))
+		return FALSE
+
+	if(!reagents.volume_current)
+		caller.to_chat(span("notice","\The [src.name] is empty!"))
+		return FALSE
+
 	if(is_living(caller))
 		var/mob/living/C = caller
 		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
 			return FALSE
-		if(reagents.contains_lethal && L != C)
-			if(!allow_hostile_action(C.loyalty_tag,L))
-				C.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
-				return FALSE
-
-	if(L.dead)
-		caller.to_chat(span("warning","\The [L.name] is dead!"))
-		return FALSE
+		if(reagents.contains_lethal && L != C && !allow_hostile_action(C.loyalty_tag,L))
+			C.to_chat(span("warning","Your loyalties prevent you from feeding dangerous reagents to your allies!"))
+			return FALSE
 
 	return TRUE
 
@@ -926,8 +924,6 @@ var/global/list/rarity_to_mul = list(
 
 	return TRUE
 
-
-
 /obj/item/dust(var/atom/source)
 	qdel(src)
 	return TRUE
@@ -935,7 +931,6 @@ var/global/list/rarity_to_mul = list(
 
 /obj/item/proc/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
 	return FALSE
-
 
 /obj/item/Generate()
 	fill_inventory()

@@ -197,7 +197,7 @@
 	map_color = COLOR_MEDICAL
 
 /area/burgerstation/science
-	name = "\improper Science"
+	name = "\improper Mining Science"
 	icon_state = "science"
 	flags_area = FLAG_AREA_NO_TELEPORT | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_EVENTS
 
@@ -370,6 +370,16 @@
 	icon_state = "mining"
 
 	map_color = COLOR_BROWN
+
+/area/burgerstation/mining/lobby
+	name = "\improper Mining Lobby"
+	icon_state = "lobby"
+
+/area/burgerstation/mining/foreman
+	name = "\improper Mining Foreman's Office"
+	icon_state = "cmd"
+
+	map_color = COLOR_COMMAND
 
 /area/burgerstation/tax
 	name = "\improper Tax Room"

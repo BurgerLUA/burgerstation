@@ -22,6 +22,10 @@
 
 	value = 10
 
+/obj/item/weapon/melee/torch/get_base_value()
+	. = ..()
+	. += (desired_light_range*desired_light_power*desired_light_angle*0.1)
+
 /obj/item/weapon/melee/torch/click_self(var/mob/caller,location,control,params)
 
 	INTERACT_CHECK
@@ -69,8 +73,8 @@
 	override_icon_state = TRUE
 	override_icon_state_held = TRUE
 
-	desired_light_range = VIEW_RANGE*0.5
-	desired_light_power = 0.5
+	desired_light_range = VIEW_RANGE*0.75
+	desired_light_power = 0.75
 	desired_light_color = "#FFD175"
 
 	value = 100
@@ -91,7 +95,7 @@
 	override_icon_state_held = TRUE
 
 	desired_light_range = VIEW_RANGE*0.75
-	desired_light_power = 0.6
+	desired_light_power = 0.7
 	desired_light_color = "#FFF0C6"
 	desired_light_angle = LIGHT_WIDE
 
@@ -123,8 +127,8 @@
 /obj/item/weapon/melee/torch/tinea_luxor
 	name = "tinea_luxor light"
 	desc = "You shouldn't be seeing this."
-	desired_light_range = VIEW_RANGE*0.5
-	desired_light_power = 0.5
+	desired_light_range = VIEW_RANGE
+	desired_light_power = 0.9
 	desired_light_color = "#E3FF9E"
 	desired_light_angle = LIGHT_OMNI
 	value = 0

@@ -1,6 +1,6 @@
 "aa" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01)
 "ab" = (/mob/living/advanced/npc/bandit{icon_state = "directional"; dir = 4},/obj/structure/interactive/chair/wood{icon_state = "wooden_chair"; dir = 4},/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/kitchen)
-"ad" = (/mob/living/advanced/npc/bandit,/obj/structure/interactive/chair/stool,/obj/structure/interactive/wire/red,/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D01)
+"ac" = (/mob/living/advanced/npc/bandit,/obj/structure/interactive/chair/stool,/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D01)
 "ae" = (/obj/structure/interactive/crate/closet,/obj/marker/spawning/random/misc,/turf/simulated/floor/tile/grey/ish,/area/dmm_suite/clear_area)
 "af" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "ag" = (/obj/structure/interactive/chair/comfy{icon_state = "comfychair"; dir = 1},/obj/structure/carpet/blue,/obj/marker/hostage_spawn,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D01/main_hallway)
@@ -117,7 +117,7 @@ ppoieEETSiFLkHabUxeyzxesVpGlZvIM
 ppoiLJoUCKoUHWtveyUxzxrvYOYOuXak
 ppoiXgCKoULAHWHWBGaacParYOWDagIM
 oioizCDWtSoUaucFcFAEvGEBayrvrvIM
-oiNavgvgvgqCaxRDpKasadEBrvrvaCEB
+oiNavgvgvgqCaxRDpKasacEBrvrvaCEB
 oioilBRdHWauRpuARpHtpKEBrvrvHpEB
 IhIhajCeHWqCawaDaHRppKuVrvrvrvEB
 IhIhYrcraoHWRpIexMRptRaqrvaIaBEB

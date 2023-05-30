@@ -9,7 +9,7 @@
 		/obj/item/fulton_pack = 1,
 		/obj/item/storage/cigarettes/red = 1,
 		/obj/item/storage/kit = 1,
-		/obj/item/storage/pillbottle/assprin = 1,
+		/obj/item/storage/pillbottle/consumer/painkillers = 1,
 		/obj/item/supply_crate/solarian = 1,
 		/obj/item/supply_remote/barbecue = 1,
 		/obj/item/supply_remote/ammo = 1,

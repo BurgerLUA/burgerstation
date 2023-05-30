@@ -29,7 +29,7 @@
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/container/healing/ointment(src)
 	new /obj/item/storage/pillbottle/dylovene_small(src)
-	new /obj/item/storage/pillbottle/assprin(src)
+	new /obj/item/storage/pillbottle/consumer/painkillers(src)
 	new /obj/item/container/syringe/medipen/epinephrine(src)
 	. = ..()
 

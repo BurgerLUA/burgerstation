@@ -9,7 +9,7 @@
 		var/atom/movable/M = k
 		. += M.get_value()
 
-	if(reagents && length(reagents.stored_reagents))
+	if(reagents)
 		for(var/reagent_type in reagents.stored_reagents)
 			var/reagent_volume = reagents.stored_reagents[reagent_type]
 			var/reagent/R = REAGENT(reagent_type)

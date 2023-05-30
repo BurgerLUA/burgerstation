@@ -185,16 +185,6 @@
 		new /obj/item/container/edible/pill/antihol(src)
 	. = ..()
 
-/obj/item/storage/pillbottle/assprin
-	name = "assprin pill bottle"
-	desc = "Contains 20 10u assprin painkiller pills. To remove that pain in your ass!"
-
-/obj/item/storage/pillbottle/assprin/fill_inventory()
-	for(var/i=1,i<=20,i++)
-		new /obj/item/container/edible/pill/assprin(src)
-	. = ..()
-
-
 /obj/item/storage/pillbottle/potassium_iodide_small
 	name = "potassium iodide pill bottle"
 	desc = "Contains 10 10u potassium iodide pills."

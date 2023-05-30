@@ -181,6 +181,7 @@
 	name = "titanium"
 	color = COLOR_TITANIUM
 	icon_state_ore = "ore_titanium"
+	icon_state_ore_deposit = "deposit_titanium"
 	wall_health = 1250
 	value_per_unit = 25
 
