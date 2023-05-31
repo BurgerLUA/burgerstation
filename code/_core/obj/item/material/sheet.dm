@@ -31,28 +31,14 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(5)
-			var/material/material_id_path = material_id
-			var/possible_rod_text = text("/obj/item/material/rod/[initial(material_id_path.name)]")
-			var/possible_rod = text2path_safe(possible_rod_text)
-			if(!length(subtypesof(possible_rod))) //If theres a rod coded for the material...
-				var/obj/item/material/rod/R = new possible_rod(get_turf(src))
-				R.material_id = material_id
-				R.amount = 4
-				INITIALIZE(R)
-				GENERATE(R)
-				FINALIZE(R)
-				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
-				add_item_count(-1)
-				R.Move(get_turf(I))
-			else // We cant find a rod for the material...
-				var/obj/item/material/rod/R = new(get_turf(src))
-				R.material_id = material_id
-				R.amount = 4
-				INITIALIZE(R)
-				GENERATE(R)
-				FINALIZE(R)
-				caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
-				add_item_count(-1)
-				R.Move(get_turf(I))
+			var/obj/item/material/rod/R = new(get_turf(src))
+			R.material_id = material_id
+			R.amount = 4
+			INITIALIZE(R)
+			GENERATE(R)
+			FINALIZE(R)
+			caller.visible_message(span("notice","\The [caller.name] cuts some [src.name] into some [R.name]s."),span("notice","You cut \the [src.name] into 4 [R.name]."))
+			add_item_count(-1)
+			R.Move(get_turf(I))
 			return TRUE
 	return ..()

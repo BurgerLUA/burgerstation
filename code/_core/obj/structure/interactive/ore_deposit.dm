@@ -10,8 +10,9 @@
 	initialize_type = INITIALIZE_LATE
 	mouse_opacity = 0
 
-	var/material/ore_material //Type of ore.
 	var/ore_amount = 1 //How much ore is in the vein?
+
+	anchored = 2
 
 /obj/structure/interactive/ore_deposit/Finalize()
 	. = ..()
@@ -19,7 +20,7 @@
 
 /obj/structure/interactive/ore_deposit/update_icon()
 	. = ..()
-	var/material/M = MATERIAL(ore_material)
+	var/material/M = MATERIAL(material_id)
 	if(M.icon_state_ore_deposit)
 		icon_state = M.icon_state_ore_deposit
 	else if(M.color)
@@ -38,22 +39,31 @@
 	ore_to_create = min(ore_to_create,ore_amount) //Don't make more than what is possible.
 
 	if(ore_to_create <= 0)
-		return null
+		return TRUE
 
-	var/obj/item/material/ore/TO = new(get_turf(src))
-	TO.material_id = ore_material
-	INITIALIZE(TO)
-	TO.amount = min(ore_amount,TO.amount_max)
-	FINALIZE(TO)
+	if(!drop_location)
+		return FALSE
 
-	if(drop_location) TO.drop_item(drop_location)
-
-	ore_amount -= TO.amount
+	if(drop_location.type == /obj/structure/interactive/ore_box)
+		var/obj/structure/interactive/ore_box/OB = drop_location
+		OB.contained_ore[src.material_id] += ore_to_create
+	else
+		for(var/i=1,i<=CEILING(ore_to_create/3,1),i++)
+			if(ore_to_create <= 0) //Possible race condition.
+				break
+			var/obj/item/material/ore/TO = new(get_turf(src))
+			TO.material_id = material_id
+			INITIALIZE(TO)
+			TO.amount = min(ore_amount,3)
+			FINALIZE(TO)
+			ore_to_create -= TO.amount
+			if(drop_location) TO.drop_item(drop_location)
+			ore_amount -= TO.amount
 
 	if(ore_amount <= 0)
 		qdel(src) //Empty!
 
-	return TO
+	return TRUE
 
 
 

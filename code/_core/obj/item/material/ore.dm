@@ -21,7 +21,7 @@
 	else
 		name = "[deunderscore(M.name)] ore"
 		color = "#FFFFFF"
-		icon_state = "[M.icon_state_ore]"
+		icon_state = "[M.icon_state_ore]_[min(amount_max_icon,amount)]"
 	return ..()
 
 /*

@@ -20,6 +20,9 @@
 	desired_light_range = 2
 	desired_light_color = "#FFFFFF"
 
+	plane = PLANE_MOVABLE
+	layer = LAYER_LARGE_OBJ
+
 	var/obj/structure/interactive/ore_deposit/floor/found_deposit
 	var/atom/drop_atom
 	var/list/obj/structure/interactive/mining_brace/attached_braces = list()
@@ -96,6 +99,7 @@
 
 	SShorde.all_drills -= src
 	found_deposit = null
+	drop_atom = null
 	attached_braces.Cut()
 	set_anchored(FALSE)
 	CALLBACK_REMOVE("\ref[src]_do_drill")
@@ -161,27 +165,22 @@
 		if(OB)
 			drop_atom = OB
 
-	//Fallback for no drop atoms.
-	var/turf/fallback_atom
+	//Fallback #1
 	if(!drop_atom)
-		var/list/valid_turfs = list()
-		for(var/d in DIRECTIONS_ALL)
+		for(var/d in list(SOUTH,NORTH,EAST,WEST))
 			var/turf/T = get_step(current_turf,d)
 			if(T.density || T.has_dense_atom)
 				continue
-			valid_turfs += T
-		if(length(valid_turfs))
-			fallback_atom = pick(valid_turfs)
+			drop_atom = T
+			break
 
-	if(!fallback_atom)
-		fallback_atom = current_turf
+	//Fallback #2
+	if(!drop_atom)
+		drop_atom = current_turf
 
 	//Finally, create the ore.
-	found_deposit.create_ore(
-		null,
-		drop_atom ? drop_atom : get_step(src,fallback_atom),
-		5 //5 ore every 2 seconds.
-	)
+	if(!found_deposit.create_ore(null,drop_atom,3))
+		return null
 
 	play_sound('sound/machines/mining_drill.ogg',current_turf)
 
@@ -194,6 +193,9 @@
 	icon = 'icons/obj/structure/big_drill.dmi'
 	icon_state = "mining_brace"
 	anchored = FALSE
+
+	plane = PLANE_MOVABLE
+	layer = LAYER_LARGE_OBJ
 
 	collision_flags = FLAG_COLLISION_WALL
 

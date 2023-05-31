@@ -41,13 +41,15 @@ var/global/list/ore_deposit_weights = list(
 	object_to_place = /obj/structure/interactive/ore_deposit/floor
 
 /obj/marker/generation/ore/floor/get_object_to_place(var/turf/T,var/objects_placed=0,var/grow_left=0)
-	var/ore_amount = max(0,40-objects_placed) + 5 + grow_left*5
-	ore_amount *= (ore_deposit_weights[object_to_place]/100)
+	var/ore_amount = (objects_max*2 - objects_placed) + 5 + grow_left*5
+	ore_amount *= (ore_deposit_weights[selected_ore_type]/100)
 	ore_amount = CEILING(ore_amount,1)
-	var/obj/structure/interactive/ore_deposit/OD = new object_to_place(T)
-	OD.ore_material = selected_ore_type
-	OD.ore_amount = ore_amount
-	return OD
+	if(ore_amount > 0)
+		var/obj/structure/interactive/ore_deposit/OD = new object_to_place(T)
+		OD.material_id = selected_ore_type
+		OD.ore_amount = ore_amount
+		return OD
+	return null
 
 
 /obj/marker/generation/ore/wall
@@ -61,6 +63,6 @@ var/global/list/ore_deposit_weights = list(
 
 /obj/marker/generation/ore/wall/get_object_to_place(var/turf/T,var/objects_placed=0,var/grow_left=0)
 	var/obj/structure/interactive/ore_deposit/OD = new object_to_place(T)
-	OD.ore_material = selected_ore_type
+	OD.material_id = selected_ore_type
 	OD.ore_amount = 5
 	return OD

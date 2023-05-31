@@ -17,6 +17,13 @@
 	var/list/contained_ore = list() //Assoc list.
 
 
+/obj/structure/interactive/ore_box/get_value()
+	. = ..()
+	for(var/k in contained_ore)
+		var/amount = contained_ore[k]
+		var/material/M = MATERIAL(k)
+		. += amount*1*M.value_per_unit
+
 /obj/structure/interactive/ore_box/proc/can_dump_some_ore(var/mob/caller)
 
 	if(get_dist(caller,src) > 1)
@@ -71,13 +78,6 @@
 		var/obj/item/material/ore/O = object
 		stack(O)
 		return TRUE
-
-	. = ..()
-
-/obj/structure/interactive/ore_box/Crossed(atom/movable/O,atom/OldLoc)
-
-	if(O.type == /obj/item/material/ore)
-		stack(O)
 
 	. = ..()
 

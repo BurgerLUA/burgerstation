@@ -71,7 +71,9 @@ var/global/list/all_generation_markers = list()
 
 		if(T != src.loc && !T.world_spawn && !prob(hole_chance) && !ispath(object_to_place,T) && (!turf_whitelist || istype(T,turf_whitelist)))
 			if(custom_object_to_place)
-				get_object_to_place(T,objects_placed,desired_grow)
+				var/atom/placed_object = get_object_to_place(T,objects_placed,desired_grow)
+				if(!placed_object)
+					break
 			else
 				new object_to_place(T)
 			objects_placed += 1
