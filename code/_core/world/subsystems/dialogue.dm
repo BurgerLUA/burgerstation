@@ -66,11 +66,9 @@ SUBSYSTEM_DEF(dialogue)
 
 	var/combat_dialogue/CD = src.all_combat_dialogue[cd_id]
 	if(!CD)
-		log_error("Error: Could not find valid combat dialogue id [cd_id]!")
 		return FALSE
 
 	if(!CD.dialogue_data[desired_category])
-		log_error("Error: Could not find dialogue response [desired_category] for dialogue type [cd_id].")
 		return FALSE
 
 	var/dialogue_to_use
