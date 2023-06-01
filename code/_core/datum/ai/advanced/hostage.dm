@@ -14,7 +14,7 @@
 	var/mob/living/L = A
 	return L.ai && L.ai.objective_attack == owner
 
-/ai/advanced/hostage/set_path_node(var/list/Vector3D/desired_path = list())
+/ai/advanced/hostage/set_path_node(var/list/obj/marker/map_node/desired_path)
 
 	. = ..()
 

@@ -35,7 +35,7 @@
 
 /ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path)
 
-	if(!desired_path)
+	if(!desired_path || !length(desired_path))
 		node_path_current = null
 		node_path_start_turf = null
 		node_path_end_turf = null
