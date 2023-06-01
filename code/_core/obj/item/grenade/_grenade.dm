@@ -34,14 +34,6 @@
 	if(spent)
 		. *= 0.1
 
-/obj/item/grenade/get_value()
-	. = ..()
-	for(var/k in stored_containers)
-		var/obj/item/container/simple/beaker/B = k
-		. += B.get_value()
-	if(stored_trigger)
-		. += stored_trigger.get_value()
-
 /obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
 	var/num = bullet_num/bullet_num_max

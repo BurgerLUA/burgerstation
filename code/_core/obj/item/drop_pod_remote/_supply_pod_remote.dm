@@ -25,7 +25,8 @@
 
 /obj/item/supply_remote/get_base_value()
 	. = ..()
-	. *= (1 + charges)
+	. *= charges
+	. += 100
 
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -69,7 +70,7 @@
 		/obj/structure/interactive/mining_brace,
 		/obj/structure/interactive/mining_brace
 	)
-	value = 1500
+	value = 1250
 
 /obj/item/supply_remote/ore_box
 	name = "drop pod remote - ore box"

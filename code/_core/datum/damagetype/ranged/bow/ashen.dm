@@ -1,10 +1,12 @@
 /damagetype/ranged/bow/ashen
 	attack_damage_base = list(
-		PIERCE = 150,
-		BLADE = 50
+		PIERCE = 75,
+		BLADE = 25,
+		BLUNT = 25
 	)
 
 	attack_damage_penetration = list(
-		PIERCE = 200,
-		BLADE = 50
+		PIERCE = 125,
+		BLADE = 50,
+		BLUNT = 0
 	)

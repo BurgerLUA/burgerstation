@@ -26,16 +26,6 @@
 	. = ..()
 	. += div("notice","The counter shows [ore_count] objects inside.")
 
-/obj/item/ore_bag/debug
-	value_burgerbux = 1
-
-/obj/item/ore_bag/debug/Generate()
-	. = ..()
-	contained_ore[/material/iron] = 9
-	contained_ore[/material/phoron] = 10
-	contained_ore[/material/carbon] = 11
-	contained_ore[/material/gold] = 12
-
 /obj/item/ore_bag/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(length(contained_ore))
@@ -183,9 +173,6 @@
 
 	return TRUE
 
-
-
-
 /obj/item/ore_bag/bluespace
 	name = "bluespace mining bag"
 	desc = "The best way to transport ores on your person."
@@ -201,3 +188,13 @@
 	value = 1000
 
 	size = SIZE_3
+
+/obj/item/ore_bag/debug
+	value_burgerbux = 1
+
+/obj/item/ore_bag/debug/Generate()
+	. = ..()
+	contained_ore[/material/iron] = 9
+	contained_ore[/material/phoron] = 10
+	contained_ore[/material/carbon] = 11
+	contained_ore[/material/gold] = 12

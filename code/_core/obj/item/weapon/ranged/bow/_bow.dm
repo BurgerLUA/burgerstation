@@ -149,7 +149,7 @@
 	desc_extended = "A classic wooden bow. Overall, it's reliable and has no gimmick."
 	icon = 'icons/obj/item/weapons/ranged/bow/wood.dmi'
 
-	stage_per_decisecond = 10
+	stage_per_decisecond = 4
 	stage_max = 100
 
 	value = 200
@@ -169,8 +169,8 @@
 	desc_extended = "An upgraded bow that is harder to pull back, but is more accurate and fires more of a punch."
 	icon = 'icons/obj/item/weapons/ranged/bow/steel.dmi'
 
-	stage_per_decisecond = 8
-	stage_max = 150
+	stage_per_decisecond = 3
+	stage_max = 125
 
 	value = 300
 
@@ -227,7 +227,7 @@
 
 	value = 2000
 
-	stage_per_decisecond = 15
+	stage_per_decisecond = 5
 	stage_max = 125
 
 	tier = 4
