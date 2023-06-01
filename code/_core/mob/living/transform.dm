@@ -39,8 +39,10 @@
 		if(horizontal)
 			update_collisions(FLAG_COLLISION_CRAWLING)
 			play_sound(pick('sound/effects/impacts/bodyfall2.ogg','sound/effects/impacts/bodyfall3.ogg','sound/effects/impacts/bodyfall4.ogg'),get_turf(src), volume = 25,range_max=VIEW_RANGE*0.5)
+			can_be_bumped = TRUE
 		else
 			update_collisions(initial(collision_flags))
+			can_be_bumped = initial(can_be_bumped)
 		if(!buckled_object)
 			stun_angle *= pick(-1,1) //Alternate
 		handle_blocking()

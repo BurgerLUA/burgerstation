@@ -245,7 +245,7 @@
 	var/list/traits = list() //Assoc list. This is saved.
 	var/list/traits_by_category = list() //Assoc list. This isn't saved.
 
-	can_be_bumped = FALSE
+	can_be_bumped = FALSE //Only if dead.
 
 	var/delete_on_death = FALSE
 
