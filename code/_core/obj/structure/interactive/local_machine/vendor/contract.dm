@@ -32,6 +32,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_HORIZONTAL | FLAG_INTERACTION_NO_TURF_CHECKING
 
+	markup = 1
 
 /obj/structure/interactive/vending/contract/New(var/desired_loc)
 

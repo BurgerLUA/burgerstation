@@ -30,6 +30,7 @@
 	name = "magic bikehorn"
 	value = 500
 	rarity = RARITY_RARE
+	value_burgerbux = 5
 
 /obj/item/bikehorn/magic/click_self(var/mob/caller,location,control,params)
 

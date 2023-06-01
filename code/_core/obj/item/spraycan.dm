@@ -13,7 +13,7 @@
 	var/obj/effect/cleanable/spray/existing_spray
 
 	value = 3000
-	value_burgerbux = 20
+	value_burgerbux = 10
 
 	rarity = RARITY_RARE
 

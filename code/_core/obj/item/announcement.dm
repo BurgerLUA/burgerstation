@@ -9,7 +9,7 @@ var/global/next_announcement = 0
 	icon_state = "captain"
 
 	value = 3000
-	value_burgerbux = 10
+	value_burgerbux = 5
 
 	var/sound_to_play = 'sound/alert/announcement.ogg'
 

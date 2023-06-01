@@ -109,7 +109,7 @@
 	color = "#B0B5B4"
 
 /turf/simulated/floor/tile/bananium
-	icon_state = "bananium"
+	color = "#FFFF00"
 	desc = "A funny floor"
 	desc_extended = "The floor pattern isn't particularly funny, but makes you laugh anyways"
 

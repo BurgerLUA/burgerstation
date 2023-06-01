@@ -313,7 +313,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 		panel.appearance_flags = src.appearance_flags | RESET_COLOR
 		add_overlay(panel)
 
-	if((!apc_powered || powered) && light_state)
+	if(powered && light_state)
 		var/image/light_fixtures = new /image(icon,light_state)
 		light_fixtures.appearance_flags = src.appearance_flags | RESET_COLOR
 		light_fixtures.color = light_color ? light_color : "#FFFFFF"

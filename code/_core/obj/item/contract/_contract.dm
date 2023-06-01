@@ -108,19 +108,20 @@
 	if(src.value_current < src.value_max)
 		P.to_chat(span("warning","You feel it would be unwise to try to turn in a contract that isn't complete yet!"))
 		return FALSE
+	var/initial_investment = CEILING(get_value(),10)
+	if(burgerbux_reward)
+		P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract, as well as your initial investment of [initial_investment] credits."))
+		P.adjust_burgerbux(burgerbux_reward)
 	else
-		if(burgerbux_reward)
-			P.to_chat(span("notice","You are awarded \the [reward.name] and [burgerbux_reward] burgerbux for completing the contract."))
-			P.adjust_burgerbux(burgerbux_reward)
-		else
-			P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract."))
-		src.drop_item(T)
-		reward.drop_item(T)
-		P.put_in_hands(reward,params)
-		reward = null //Just in case.
-		value_current = 0 //Just in case.
-		qdel(src)
-		return TRUE
+		P.to_chat(span("notice","You are awarded \the [reward.name] for completing the contract. as well as your initial investment of [initial_investment] credits."))
+	src.drop_item(T)
+	reward.drop_item(T)
+	P.put_in_hands(reward,params)
+	reward = null //Just in case.
+	value_current = 0 //Just in case.
+	P.adjust_currency(initial_investment,silent=TRUE)
+	qdel(src)
+	return TRUE
 
 
 

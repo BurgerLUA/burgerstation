@@ -102,7 +102,7 @@ var/global/list/equipped_antags = list()
 
 	if(icon_state_broken && broken)
 		icon_state = icon_state_broken
-	else if(icon_state_off && !powered && apc_powered)
+	else if(icon_state_off && !powered)
 		icon_state = icon_state_off
 
 
@@ -114,7 +114,7 @@ var/global/list/equipped_antags = list()
 		var/image/I = new/image(initial(icon),icon_state_panel)
 		add_overlay(I)
 
-	if(icon_state_mask && (powered || !apc_powered))
+	if(icon_state_mask && powered)
 		var/image/I = new/image(initial(icon),icon_state_mask)
 		I.plane = PLANE_LIGHTING
 		add_overlay(I)
@@ -150,7 +150,7 @@ var/global/list/equipped_antags = list()
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
 
-	if(!powered && apc_powered) //Items can't be purchased if the vendor requires power and its not powered.
+	if(!powered) //Not powered.
 		return null
 
 	if(!spend_currency(caller,item_value))
@@ -260,7 +260,7 @@ var/global/list/equipped_antags = list()
 
 /obj/structure/interactive/vending/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	if(!is_player(caller) && !is_inventory(object) || !caller.client || (apc_powered && !powered))
+	if(!caller.client || !powered || !is_player(caller) && !is_inventory(object))
 		return ..()
 
 	INTERACT_CHECK

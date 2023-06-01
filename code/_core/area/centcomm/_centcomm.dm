@@ -26,6 +26,27 @@
 
 	dynamic_lighting = TRUE
 
+	interior = TRUE
+
+/area/centcomm/clown_planet
+	name = "Clown Planet"
+	trackable = FALSE
+	default_state_power_lights = ON|AUTO
+	default_state_power_machines = ON|AUTO
+	default_state_power_doors = ON|AUTO
+	requires_power = TRUE
+
+/area/centcomm/clown_planet/exterior
+	name = "Clown Planet Exterior"
+	sunlight_freq = 3
+	sunlight_color = "#FFECE4"
+	trackable = FALSE
+	sound_environment = ENVIRONMENT_PLAIN
+	interior = FALSE
+	color = COLOR_GREEN
+	requires_power = FALSE
+
+
 /area/centcomm/chargen
 	name = "Chargen Area"
 	area_identifier = "Character Generation"

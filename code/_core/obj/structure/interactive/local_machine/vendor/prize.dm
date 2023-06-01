@@ -11,7 +11,7 @@
 		/obj/item/ball/soccer,
 		/obj/item/dice/d6,
 		/obj/item/dice/d20,
-		/obj/item/clothing/mask/gas/mime,
+		/obj/item/clothing/mask/mime,
 		/obj/item/broom/magic,
 		/obj/item/grenade/device/large/timed/lube_smoke,
 		/obj/item/clothing/overwear/armor/burger_coat,

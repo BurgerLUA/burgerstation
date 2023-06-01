@@ -22,7 +22,7 @@
 "av" = (/obj/structure/interactive/solar_panel,/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "aw" = (/obj/structure/table/reinforced/yellow,/obj/item/storage/glovebox/white,/obj/item/storage/glovebox/white,/obj/item/storage/glovebox/white,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "ax" = (/obj/decal/poster/off_station,/turf/simulated/wall/brick/banana,/area/mission/prefab/city/honked_and_loaded)
-"ay" = (/obj/structure/table/reinforced/yellow,/obj/item/grenade/timed/lube_smoke,/obj/item/grenade/timed/lube_smoke,/obj/item/grenade/timed/lube_smoke,/obj/item/grenade/timed/lube_smoke,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
+"ay" = (/obj/structure/table/reinforced/yellow,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "az" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/shirt/clown,/obj/item/clothing/shirt/clown,/obj/item/clothing/shirt/clown,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aA" = (/turf/simulated/floor/tile,/area/mission/prefab/city/honked_and_loaded)
 "aB" = (/obj/structure/table/reinforced/yellow,/turf/simulated/floor/tile,/area/mission/prefab/city/honked_and_loaded)

@@ -179,5 +179,10 @@
 	health_base = 3000
 
 /turf/simulated/wall/metal/magic
+	name = "magic metal wall"
 	color = "#8034B2"
 	icon = 'icons/turf/wall/metal/magic.dmi'
+
+/turf/simulated/wall/metal/magic/bananium
+	name = "bananium wall"
+	color = "#FFFF00"

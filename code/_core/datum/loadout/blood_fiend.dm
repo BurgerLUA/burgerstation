@@ -20,8 +20,9 @@
 		/loot/rings/major,
 		/loot/rings/horseman,
 
+		/obj/item/storage/pouch/triple/black,
+
 		/obj/item/weapon/ranged/bullet/revolver/fiendish,
-		/obj/item/bullet_cartridge/pistol_45{amount=6},
 		/obj/item/bullet_cartridge/pistol_45{amount=6},
 		/obj/item/bullet_cartridge/pistol_45{amount=6},
 		/obj/item/bullet_cartridge/pistol_45{amount=6},

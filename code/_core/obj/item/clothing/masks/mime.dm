@@ -1,4 +1,4 @@
-/obj/item/clothing/mask/gas/mime
+/obj/item/clothing/mask/mime
 	name = "mime mask"
 	icon = 'icons/obj/item/clothing/masks/mime.dmi'
 	desc = "Where the mime gets their power."

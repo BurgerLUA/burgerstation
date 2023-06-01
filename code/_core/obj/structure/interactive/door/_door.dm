@@ -33,8 +33,6 @@ obj/structure/interactive/door
 
 	allow_path = TRUE
 
-	powered = FALSE //Set to true if this door is active.
-
 	power_type = POWER_DOOR
 
 	apc_powered = TRUE
