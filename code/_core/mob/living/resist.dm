@@ -42,7 +42,7 @@
 				attacker_power *= max(0,O.health.health_current/O.health.health_max)
 				if(O.broken) attacker_power *= 0.25
 
-		grab_difficulty = (attacker_power - src_power)*2
+		grab_difficulty = max((attacker_power - src_power)*2,1)
 
 		if(grab_resist_counter >= grab_difficulty)
 			src.visible_message(

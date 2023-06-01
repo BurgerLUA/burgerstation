@@ -206,6 +206,10 @@ SUBSYSTEM_DEF(horde)
 					continue
 				valid_nodes += N
 
+	if(!length(valid_nodes))
+		if(debug) log_debug("Could not send squad: Could not find any valid nodes.")
+		return FALSE
+
 	var/list/obj/marker/map_node/found_path
 	var/turf/squad_spawn
 	for(var/i=1,i<=5,i++) //5 attempts.

@@ -170,6 +170,8 @@
 			var/mob/living/advanced/player/P = k
 			if(get_dist(P,T) > BOSS_RANGE)
 				continue
+			if(!P.client)
+				continue
 			valid_ckeys[P.client.ckey] = TRUE
 
 	var/list/valid_turfs = list()

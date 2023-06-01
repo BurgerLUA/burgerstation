@@ -40,10 +40,14 @@
 		update_zoom(zoom_level + change_in_screen)
 		return TRUE
 
-	if(!object)
+	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
+
+	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+		return FALSE
+
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
 
 	. = ..()
@@ -60,6 +64,9 @@
 		return FALSE
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
+
+	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+		return FALSE
 
 	if(examine_mode)
 		mob.display_turf_contents(get_turf(object))
@@ -99,12 +106,15 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags |= CONTROL_MOD_RIGHT
 
+	GLOBAL_CLICK_DELAY
+
 	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
-	GLOBAL_CLICK_DELAY
-
 	object = object.defer_click_on_object(mob,location,control,new_params)
+
+	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+		return FALSE
 
 	if(examine_mode)
 		if(mob) mob.display_turf_contents(get_turf(object))
@@ -161,12 +171,15 @@
 			click_and_drag_icon.stored_inventory = null
 			click_and_drag_icon.alpha = 0
 
+	GLOBAL_CLICK_DELAY
+
 	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
-	GLOBAL_CLICK_DELAY
-
 	object = object.defer_click_on_object(mob,location,control,new_params)
+
+	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+		return FALSE
 
 	if(click_flags & CLICK_LEFT)
 		mob.on_left_up(object,location,control,new_params)
@@ -189,6 +202,9 @@
 	src_object = src_object.defer_click_on_object(mob,src_location,src_control,new_params)
 	over_object = over_object.defer_click_on_object(mob,over_location,over_control,new_params)
 
+	if(!src_object || !over_object || src_object.qdeleting || over_object.qdeleting)
+		return FALSE
+
 	if(src_object == over_object)
 		return FALSE
 
@@ -199,7 +215,7 @@
 	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
 
-	//GLOBAL_CLICK_DELAY
+	//GLOBAL_CLICK_DELAY DOESN'T WORK HERE.
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 

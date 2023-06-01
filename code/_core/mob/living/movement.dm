@@ -84,7 +84,7 @@
 		src.old_turf = T
 		if(!src.z)
 			handle_blocking()
-		if(is_simulated(loc))
+		if(is_simulated(T))
 			var/turf/simulated/S = T
 			S.do_footstep(src,FALSE)
 

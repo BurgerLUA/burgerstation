@@ -35,9 +35,11 @@
 		else
 			object.grabbing_hand.release_object(caller)
 
+	if(!object) //Possible race condition?
+		return FALSE
+
 	caller.set_dir(get_dir(caller,object))
 	grabbed_object = object
-	caller.visible_message(span("warning","\The [caller.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
 	grabbed_object.grabbing_hand = src
 	grab_time = world.time //To prevent instant agressive grab
 	overlays.Cut()
@@ -52,6 +54,8 @@
 				reinforce_grab(caller,force=TRUE)
 
 	HOOK_CALL_ADV("grab_changed",owner,args)
+
+	caller.visible_message(span("warning","\The [caller.name] grabs \the [object.name]."),span("notice","You grab \the [object.name]."))
 
 	return TRUE
 
