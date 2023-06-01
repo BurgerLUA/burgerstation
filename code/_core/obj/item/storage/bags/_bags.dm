@@ -101,23 +101,6 @@
 
 	return TRUE
 
-
-/obj/item/storage/bags/mining
-	name = "mining bag"
-	desc = "What if i put my mining bed next to yours?"
-	desc_extended = "A giant orange bag that is designed to hold all your ores. Holds up to 60 ores and ingots. Holds up to 50 ore per slot."
-	icon_state = "mining"
-
-	value = 400
-
-	container_max_size = SIZE_2
-	dynamic_inventory_count = 8
-	container_max_slots = 10
-	container_whitelist = list(
-		/obj/item/material/ore
-	)
-
-	value = 100
 /obj/item/storage/bags/blacksmithing
 	name = "blacksmithing bag"
 	desc = "Just kidding... Unless?"
@@ -135,15 +118,7 @@
 
 	value = 100
 
-/obj/item/storage/bags/mining/bluespace
-	name = "bluespace mining bag"
-	icon_state = "mining_bluespace"
-	desc = "I got that bluespace fever and I can't sleep!"
-	desc_extended = "A giant orange bag that is designed to hold all your ores and ingots, now in bluespace. Holds up to 90 ores and ingots."
-	dynamic_inventory_count = 8
-	container_max_slots = 30
 
-	value = 6000
 
 
 /obj/item/storage/bags/chemistry

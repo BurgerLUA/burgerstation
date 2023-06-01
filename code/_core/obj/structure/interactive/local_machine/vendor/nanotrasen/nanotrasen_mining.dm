@@ -147,7 +147,7 @@
 		/obj/item/analyzer/gps,
 		/obj/item/analyzer/gps/advanced,
 		/obj/item/weapon/melee/torch/lantern,
-		/obj/item/storage/bags/mining,
+		/obj/item/ore_bag,
 		/obj/item/storage/bags/blacksmithing,
 		/obj/item/crafting_bench/smelter,
 		/obj/item/weapon/melee/tool/pickaxe,

@@ -71,7 +71,7 @@
 			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::can_dump_some_ore(),caller)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_some_ore(),caller)
 
-	if(istype(object,/obj/item/material/ore))
+	if(object.type == /obj/item/material/ore)
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(5)
