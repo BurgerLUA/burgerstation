@@ -45,7 +45,7 @@
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
-	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+	if(!object || object.qdeleting)
 		return FALSE
 
 	mob.on_mouse_wheel(object,delta_x,delta_y,location,control,new_params)
@@ -65,7 +65,7 @@
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
-	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+	if(!object || object.qdeleting)
 		return FALSE
 
 	if(examine_mode)
@@ -113,7 +113,7 @@
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
-	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+	if(!object || object.qdeleting)
 		return FALSE
 
 	if(examine_mode)
@@ -178,7 +178,7 @@
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
-	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
+	if(!object || object.qdeleting)
 		return FALSE
 
 	if(click_flags & CLICK_LEFT)
