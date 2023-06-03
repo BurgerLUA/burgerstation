@@ -59,11 +59,11 @@
 		owner.resist()
 
 	if(found_ammo_pile)
-		var/obj/item/weapon/ranged/bullet/left_hand_weapon = A.left_item
-		var/obj/item/weapon/ranged/bullet/right_hand_weapon = A.right_item
-		if(!istype(left_hand_weapon))
+		var/obj/item/weapon/ranged/bullet/right_hand_weapon = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		var/obj/item/weapon/ranged/bullet/left_hand_weapon = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(!is_ranged_bullet_weapon(left_hand_weapon))
 			left_hand_weapon = null
-		if(!istype(right_hand_weapon))
+		if(!is_ranged_bullet_weapon(right_hand_weapon))
 			right_hand_weapon = null
 		if(!left_hand_weapon && !right_hand_weapon)
 			found_ammo_pile = null //Didn't have a valid weapon.
@@ -235,28 +235,31 @@
 	if(found_ammo_pile) //Likely fleeing to an ammo pile. Probably. Hopefully.
 		return TRUE
 
-	if(should_find_weapon_on_ground && !checked_weapons_on_ground && !A.left_item && !A.right_item && !objective_weapon)
+	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+
+	if(should_find_weapon_on_ground && !checked_weapons_on_ground && !left_item && !right_item && !objective_weapon)
 		objective_weapon = find_nearby_weapon()
 		if(!objective_weapon) checked_weapons_on_ground = TRUE
 
-	if(A.left_item)
+	if(left_item)
 		checked_weapons_on_ground = FALSE
-		if(is_ranged_bullet_weapon(A.left_item) && handle_gun(A.left_item))
+		if(is_ranged_bullet_weapon(left_item) && handle_gun(left_item))
 			return TRUE
-		if(is_bow(A.left_item) && handle_bow(A.left_item))
+		if(is_bow(left_item) && handle_bow(left_item))
 			return TRUE
-		if(A.left_item && A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item.can_wield && !A.left_item.wielded && !A.right_item)
-			A.inventories_by_id[BODY_HAND_RIGHT_HELD].wield(A,A.left_item)
+		if(left_item && A.inventories_by_id[BODY_HAND_RIGHT_HELD] && left_item.can_wield && !left_item.wielded && !right_item)
+			A.inventories_by_id[BODY_HAND_RIGHT_HELD].wield(A,left_item)
 			next_complex = max(next_complex,world.time) + rand(2,6)
 
-	if(A.right_item)
+	if(right_item)
 		checked_weapons_on_ground = FALSE
-		if(is_ranged_bullet_weapon(A.right_item) && handle_gun(A.right_item))
+		if(is_ranged_bullet_weapon(right_item) && handle_gun(right_item))
 			return TRUE
-		if(is_bow(A.right_item) && handle_bow(A.right_item))
+		if(is_bow(right_item) && handle_bow(right_item))
 			return TRUE
-		if(A.right_item && A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item.can_wield && !A.right_item.wielded && !A.left_item)
-			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,A.right_item)
+		if(right_item && A.inventories_by_id[BODY_HAND_LEFT_HELD] && right_item.can_wield && !right_item.wielded && !left_item)
+			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,right_item)
 			next_complex = max(next_complex,world.time) + rand(2,6)
 
 	return FALSE
@@ -309,16 +312,18 @@
 		if(blocking_atom && get_dist(owner,blocking_atom) <= 4) //Unsafe throw
 			next_complex = world.time + 10
 			return FALSE
-		if(A.left_item != G && A.right_item != G) //The nade needs to be in our hands.
+		var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(left_item != G && right_item != G) //The nade needs to be in our hands.
 			if(debug) log_debug("The grenade is not in our hands...")
 
-			if(A.left_item && A.left_item.wielded)
-				A.inventories_by_id[BODY_HAND_RIGHT_HELD].unwield(A,A.left_item)
+			if(left_item && left_item.wielded)
+				A.inventories_by_id[BODY_HAND_RIGHT_HELD].unwield(A,left_item)
 
-			if(A.right_item && A.right_item.wielded)
-				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,A.right_item)
+			if(right_item && right_item.wielded)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].unwield(A,right_item)
 
-			if(!A.left_item || !A.right_item || (A.left_item && src.unequip_weapon(A.left_item)) || (A.right_item && src.unequip_weapon(A.right_item)))
+			if(!left_item || !right_item || (left_item && src.unequip_weapon(left_item)) || (right_item && src.unequip_weapon(right_item)))
 				if(debug) log_debug("Trying to put the grenade in our hands...")
 				if(!A.put_in_hands(G))
 					return FALSE //Can't even throw a grenade in the first place.
@@ -373,6 +378,8 @@
 		return TRUE
 
 	var/mob/living/advanced/A = owner
+	//var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
 	if(istype(R,/obj/item/weapon/ranged/bullet/magazine/))
 		var/obj/item/weapon/ranged/bullet/magazine/G = R
@@ -402,7 +409,7 @@
 				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,10)
 				if(debug) log_debug("Failed to put the magazine in! Something weird went wrong!")
 				return TRUE
-			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+			if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !left_item)
 				if(debug) log_debug("Wielding the weapon again to fire it...")
 				A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 				next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,6)
@@ -518,7 +525,7 @@
 			return TRUE
 
 		desired_shell_reload = 0 //All good.
-		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !left_item)
 			if(debug) log_debug("Wielding the gun so we can fire it...")
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(2,6)
@@ -579,7 +586,7 @@
 			return TRUE
 
 		desired_shell_reload = 0 //All good.
-		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !A.left_item)
+		if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && G.can_wield && !G.wielded && !left_item)
 			if(debug) log_debug("Wielding the gun so we can shoot...")
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,G)
 			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(5,8)
@@ -688,11 +695,14 @@
 
 	. = FALSE
 
-	if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && !A.right_item)
+	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+
+	if(A.inventories_by_id[BODY_HAND_RIGHT_HELD] && !right_item)
 		. = A.inventories_by_id[BODY_HAND_RIGHT_HELD].add_object(W)
-		if(. && A.inventories_by_id[BODY_HAND_LEFT_HELD] && W.can_wield && !W.wielded && !A.left_item)
+		if(. && A.inventories_by_id[BODY_HAND_LEFT_HELD] && W.can_wield && !W.wielded && !left_item)
 			A.inventories_by_id[BODY_HAND_LEFT_HELD].wield(A,W)
-	else if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && !A.inventories_by_id[BODY_HAND_LEFT_HELD].parent_inventory && !A.left_item)
+	else if(A.inventories_by_id[BODY_HAND_LEFT_HELD] && !A.inventories_by_id[BODY_HAND_LEFT_HELD].parent_inventory && !left_item)
 		. = A.inventories_by_id[BODY_HAND_LEFT_HELD].add_object(W)
 	if(. && istype(W,/obj/item/weapon/melee/energy))
 		var/obj/item/weapon/melee/energy/E = W
@@ -722,13 +732,16 @@
 
 	var/mob/living/advanced/A = owner
 
+	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+
 	if(new_alert_level == ALERT_LEVEL_COMBAT || new_alert_level == ALERT_LEVEL_CAUTION)
-		if(!A.left_item && !A.right_item)
+		if(!left_item && !right_item)
 			var/obj/item/weapon/W = find_best_weapon(alert_source)
 			if(W) equip_weapon(W)
 	else if(new_alert_level == ALERT_LEVEL_NONE)
-		if(A.right_item) unequip_weapon(A.right_item)
-		if(A.left_item) unequip_weapon(A.left_item)
+		if(right_item) unequip_weapon(right_item)
+		if(left_item) unequip_weapon(left_item)
 
 	return ..()
 
@@ -741,23 +754,26 @@
 	attack_distance_min = 1
 	attack_distance_max = 1
 
-	if(A.right_item && !A.left_item)
+	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+
+	if(right_item && !left_item)
 		left_click_chance = 100
-		attack_distance_min = A.right_item.combat_range*0.5
-		attack_distance_max = A.right_item.combat_range
-	else if(!A.right_item && A.left_item)
+		attack_distance_min = right_item.combat_range*0.5
+		attack_distance_max = right_item.combat_range
+	else if(!right_item && left_item)
 		left_click_chance = 0
-		attack_distance_min = A.left_item.combat_range*0.5
-		attack_distance_max = A.left_item.combat_range
-	else if(A.left_item && A.right_item)
-		attack_distance_min = min(A.right_item.combat_range,A.left_item.combat_range)*0.5
-		attack_distance_max = max(A.right_item.combat_range,A.left_item.combat_range)
+		attack_distance_min = left_item.combat_range*0.5
+		attack_distance_max = left_item.combat_range
+	else if(left_item && right_item)
+		attack_distance_min = min(right_item.combat_range,left_item.combat_range)*0.5
+		attack_distance_max = max(right_item.combat_range,left_item.combat_range)
 		var/attack_distance_check = get_dist(owner,objective_attack)
-		if(attack_distance_check <= A.right_item.combat_range && attack_distance_check <= A.left_item.combat_range)
+		if(attack_distance_check <= right_item.combat_range && attack_distance_check <= left_item.combat_range)
 			left_click_chance = 50
-		else if(attack_distance_check <= A.right_item.combat_range)
+		else if(attack_distance_check <= right_item.combat_range)
 			left_click_chance = 100
-		else if(attack_distance_check <= A.left_item.combat_range)
+		else if(attack_distance_check <= left_item.combat_range)
 			left_click_chance = 0
 
 	distance_target_max = min(VIEW_RANGE,attack_distance_max)
@@ -770,9 +786,9 @@
 	if(!checked_weapons && objective_attack && abs(get_dist(owner,objective_attack) - attack_distance_max) > VIEW_RANGE*0.5) //Find a new weapon to use if our enemy is close/far.
 		var/obj/item/weapon/W = find_best_weapon(objective_attack)
 		if(W)
-			if(A.right_item != W && A.left_item != W)
-				if(A.right_item) unequip_weapon(A.right_item)
-				if(A.left_item) unequip_weapon(A.left_item)
+			if(right_item != W && left_item != W)
+				if(right_item) unequip_weapon(right_item)
+				if(left_item) unequip_weapon(left_item)
 				equip_weapon(W)
 		else
 			checked_weapons = TRUE // No point in checking for something that doesn't exist.
@@ -792,10 +808,10 @@
 			old_objective_attack_location = current_objective_attack_location
 			if(debug) log_debug("Checking bullet blockers...")
 			var/obj/item/weapon/ranged/R
-			if(is_ranged_weapon(A.right_item))
-				R = A.right_item
-			else if(is_ranged_weapon(A.left_item))
-				R = A.left_item
+			if(is_ranged_weapon(right_item))
+				R = right_item
+			else if(is_ranged_weapon(left_item))
+				R = left_item
 			if(R && R.next_shoot_time <= world.time)
 				if(debug) log_debug("Checking bullet blockers: Found weapon.")
 				var/obj/projectile/P
@@ -903,12 +919,12 @@
 		if(next_complex > world.time)
 			should_be_in_cover = TRUE
 		/*
-		else if(A.left_item && istype(A.left_item,/obj/item/weapon/ranged/bullet/))
-			var/obj/item/weapon/ranged/bullet/B = A.left_item
+		else if(left_item && istype(left_item,/obj/item/weapon/ranged/bullet/))
+			var/obj/item/weapon/ranged/bullet/B = left_item
 			if(!B.chambered_bullet)
 				should_be_in_cover = TRUE
-		else if(A.right_item && istype(A.right_item,/obj/item/weapon/ranged/bullet/))
-			var/obj/item/weapon/ranged/bullet/B = A.right_item
+		else if(right_item && istype(right_item,/obj/item/weapon/ranged/bullet/))
+			var/obj/item/weapon/ranged/bullet/B = right_item
 			if(!B.chambered_bullet)
 				should_be_in_cover = TRUE
 		*/

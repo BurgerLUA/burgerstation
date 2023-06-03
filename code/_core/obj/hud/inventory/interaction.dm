@@ -151,11 +151,13 @@
 	else if(caller.attack_flags & CONTROL_MOD_SELF) //Z click wielding.
 		if(is_advanced(caller))
 			var/mob/living/advanced/A = caller
-			if(src == A.inventories_by_id[BODY_HAND_RIGHT_HELD] && A.left_item)
-				A.inventories_by_id[BODY_HAND_RIGHT_HELD].toggle_wield(caller,A.left_item)
+			var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+			var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+			if(src == A.inventories_by_id[BODY_HAND_RIGHT_HELD] && left_item)
+				A.inventories_by_id[BODY_HAND_RIGHT_HELD].toggle_wield(caller,left_item)
 				return TRUE
-			if(src == A.inventories_by_id[BODY_HAND_LEFT_HELD] && A.right_item)
-				A.inventories_by_id[BODY_HAND_LEFT_HELD].toggle_wield(caller,A.right_item)
+			if(src == A.inventories_by_id[BODY_HAND_LEFT_HELD] && right_item)
+				A.inventories_by_id[BODY_HAND_LEFT_HELD].toggle_wield(caller,right_item)
 				return TRUE
 
 	//Handle moving grabbed objects

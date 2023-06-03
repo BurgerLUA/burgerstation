@@ -185,11 +185,13 @@
 	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
 	var/mob/living/advanced/A = caller
+	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
-	if(istype(A.left_item, /obj/item/browning_handle))
-		A.left_item.drop_item()
-	if(istype(A.right_item, /obj/item/browning_handle))
-		A.right_item.drop_item()
+	if(istype(left_item, /obj/item/browning_handle))
+		left_item.drop_item()
+	if(istype(right_item, /obj/item/browning_handle))
+		right_item.drop_item()
 
 	if(stored_magazine)
 		stored_magazine.drop_item(get_turf(src))
@@ -282,8 +284,10 @@
 /obj/structure/interactive/mountable/browning/Uncrossed(atom/movable/O)
 	if(is_advanced(O))
 		var/mob/living/advanced/A = O
-		if(istype(A.left_item, /obj/item/browning_handle))
-			A.left_item.drop_item(get_turf(src))
-		if(istype(A.right_item, /obj/item/browning_handle))
-			A.right_item.drop_item(get_turf(src))
+		var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(istype(left_item, /obj/item/browning_handle))
+			left_item.drop_item(get_turf(src))
+		if(istype(right_item, /obj/item/browning_handle))
+			right_item.drop_item(get_turf(src))
 		return ..()

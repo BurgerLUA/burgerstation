@@ -91,22 +91,3 @@
 			screen_loc = initial(screen_loc)
 
 	. = ..()
-
-/obj/hud/inventory/organs/torso_ob/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/debug=FALSE)
-
-	. = ..()
-
-	if(. && is_advanced(owner)) //Now this is shitcode
-		var/mob/living/advanced/A = owner
-		A.holster_item = I.defer_click_on_object(null,null,null)
-
-
-/obj/hud/inventory/organs/torso_ob/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
-
-	. = ..()
-
-	if(. && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(A.holster_item == I)
-			A.holster_item = null
-

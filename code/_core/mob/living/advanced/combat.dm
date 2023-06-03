@@ -115,6 +115,9 @@
 
 	var/block_defense_multiplier = 0.5 + src.get_skill_power(SKILL_BLOCK,0,1,2) * 0.5
 
+	var/obj/item/right_item = src.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = src.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+
 	//Left
 	if(left_item)
 		if(left_item.block_defense[attack_type] && left_item.block_defense[attack_type] > best_value && left_item.can_block(attacker,weapon,src,DT))

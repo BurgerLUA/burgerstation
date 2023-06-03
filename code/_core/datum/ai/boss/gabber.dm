@@ -135,7 +135,9 @@
 	//Parrying/Blocking. Sword mode only.
 	if(owner_as_gabber.sword_mode && objective_attack && is_advanced(objective_attack) && !(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK))
 		var/mob/living/advanced/A = objective_attack
-		if(prob(80) && (A.left_item && CALLBACK_EXISTS("hit_\ref[A.left_item]")) || (A.right_item && CALLBACK_EXISTS("hit_\ref[A.right_item]")))
+		var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(prob(80) && (left_item && CALLBACK_EXISTS("hit_\ref[left_item]")) || (right_item && CALLBACK_EXISTS("hit_\ref[right_item]")))
 			start_block()
 
 	//Trap attack.

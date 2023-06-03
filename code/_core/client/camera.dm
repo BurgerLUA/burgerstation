@@ -43,16 +43,18 @@
 	var/zoom_mul = 1
 	if(is_advanced(mob))
 		var/mob/living/advanced/A = mob
-		if(A.right_item && A.right_item.wielded && (A.right_item.wielded || !A.right_item.can_wield))
-			zoom_mul = A.right_item.zoom_mul
-			if(istype(A.right_item,/obj/item/weapon/ranged/))
-				var/obj/item/weapon/ranged/R = A.right_item
+		var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(right_item && right_item.wielded && (right_item.wielded || !right_item.can_wield))
+			zoom_mul = right_item.zoom_mul
+			if(istype(right_item,/obj/item/weapon/ranged/))
+				var/obj/item/weapon/ranged/R = right_item
 				if(R.attachment_stats["zoom_mul"])
 					zoom_mul *= R.attachment_stats["zoom_mul"]
-		else if(A.left_item && A.left_item.wielded && (A.left_item.wielded || !A.left_item.can_wield))
-			zoom_mul = A.left_item.zoom_mul
-			if(istype(A.left_item,/obj/item/weapon/ranged/))
-				var/obj/item/weapon/ranged/R = A.left_item
+		else if(left_item && left_item.wielded && (left_item.wielded || !left_item.can_wield))
+			zoom_mul = left_item.zoom_mul
+			if(istype(left_item,/obj/item/weapon/ranged/))
+				var/obj/item/weapon/ranged/R = left_item
 				if(R.attachment_stats["zoom_mul"])
 					zoom_mul *= R.attachment_stats["zoom_mul"]
 	zoom_pixel_x = desired_x_offset*TILE_SIZE*ZOOM_RANGE*zoom_mul

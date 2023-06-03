@@ -127,10 +127,12 @@ var/global/list/equipped_antags = list()
 /obj/structure/interactive/vending/proc/spend_currency(var/mob/living/advanced/player/P,var/amount=0)
 
 	if(accepts_item)
-		if(P.right_item && istype(P.right_item,accepts_item) && P.right_item.amount >= amount)
-			P.right_item.add_item_count(-amount)
-		else if(P.left_item && istype(P.left_item,accepts_item) && P.left_item.amount >= amount)
-			P.left_item.add_item_count(-amount)
+		var/obj/item/right_item = P.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		var/obj/item/left_item = P.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(right_item && istype(right_item,accepts_item) && right_item.amount >= amount)
+			right_item.add_item_count(-amount)
+		else if(left_item && istype(left_item,accepts_item) && left_item.amount >= amount)
+			left_item.add_item_count(-amount)
 		else
 			P.to_chat(span("warning","You don't have enough [initial(accepts_item.name)]s to purchase this!"))
 			return FALSE

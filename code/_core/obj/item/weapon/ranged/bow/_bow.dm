@@ -125,12 +125,14 @@
 		return FALSE
 
 	var/mob/living/advanced/A = caller
+	var/obj/item/right_item = A.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/left_item = A.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
 	var/obj/item/I
-	if(A.right_item == src)
-		I = A.left_item
-	else if(A.left_item == src)
-		I = A.right_item
+	if(right_item == src)
+		I = left_item
+	else if(left_item == src)
+		I = right_item
 
 	if(!istype(I,/obj/item/bullet_cartridge/arrow))
 		if(I && caller) caller.to_chat(span("warning","You can't fire \the [I.name] with \the [src.name]!"))

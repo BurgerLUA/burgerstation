@@ -156,13 +156,13 @@ var/global/list/spread_icons = list(
 
 	var/desired_spread = -1
 
-	var/obj/item/weapon/ranged/R = right_item
-	var/obj/item/weapon/ranged/L = left_item
+	var/obj/item/weapon/ranged/R = src.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+	var/obj/item/weapon/ranged/L = src.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
-	if(istype(R))
+	if(is_ranged_weapon(R))
 		desired_spread = max(0,desired_spread,R.heat_current)
 
-	if(istype(L))
+	if(is_ranged_weapon(L))
 		desired_spread = max(0,desired_spread,L.heat_current)
 
 	desired_spread *= 75 //Entirely arbitrary.

@@ -78,25 +78,6 @@
 
 	. = ..()
 
-/obj/hud/inventory/organs/left_hand_held/update_overlays()
-	. = ..()
-	if(owner?.client?.selected_hand == click_flags)
-		var/image/I = new/image(initial(icon),"[icon_state]_selected")
-		add_overlay(I)
-
-/obj/hud/inventory/organs/left_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/debug=FALSE)
-	. = ..()
-	if(. && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		A.left_item = I
-
-/obj/hud/inventory/organs/left_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
-	. = ..()
-	if(. && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(A.left_item == I)
-			A.left_item = null
-
 /obj/hud/inventory/organs/right_hand_held
 	name = "right hand slot"
 	id = BODY_HAND_RIGHT_HELD
@@ -148,16 +129,3 @@
 	if(owner?.client?.selected_hand == click_flags)
 		var/image/I = new/image(initial(icon),"[icon_state]_selected")
 		add_overlay(I)
-
-/obj/hud/inventory/organs/right_hand_held/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/debug=FALSE)
-	. = ..()
-	if(. && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		A.right_item = I
-
-/obj/hud/inventory/organs/right_hand_held/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE)
-	. = ..()
-	if(. && is_advanced(owner))
-		var/mob/living/advanced/A = owner
-		if(A.right_item == I)
-			A.right_item = null

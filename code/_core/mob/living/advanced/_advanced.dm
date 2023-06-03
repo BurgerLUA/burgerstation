@@ -24,10 +24,6 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	var/list/obj/item/worn_objects //List of worn items. For use in an easy read-only list.
 	var/list/obj/item/held_objects //List of held items. For use in an easy read-only list.
 
-	var/obj/item/left_item
-	var/obj/item/right_item
-	var/obj/item/holster_item
-
 	var/list/obj/hud/button/ability/ability_buttons = list()
 
 	health_base = 100
@@ -132,11 +128,16 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	. = ..()
 
 	if(.) //Dan updating.
-		if(inventories_by_id[BODY_HAND_LEFT_HELD] && left_item && left_item.dan_mode)
+		var/obj/item/left_item = src.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		if(left_item && left_item.dan_mode)
 			inventories_by_id[BODY_HAND_LEFT_HELD].update_held_icon(left_item)
-		if(inventories_by_id[BODY_HAND_RIGHT_HELD] && right_item && right_item.dan_mode)
+
+		var/obj/item/right_item = src.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+		if(right_item && right_item.dan_mode)
 			inventories_by_id[BODY_HAND_RIGHT_HELD].update_held_icon(right_item)
-		if(inventories_by_id[BODY_TORSO_OB] && holster_item && holster_item.dan_mode)
+
+		var/obj/item/holster_item = src.inventories_by_id[BODY_TORSO_OB]?.get_top_object()
+		if(holster_item && holster_item.dan_mode)
 			inventories_by_id[BODY_TORSO_OB].update_held_icon(holster_item)
 
 /mob/living/advanced/New(loc,desired_client,desired_level_multiplier)

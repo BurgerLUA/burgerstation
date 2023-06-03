@@ -255,10 +255,14 @@
 		var/mob/living/advanced/V = victim
 
 		var/list/possible_thefts = list()
-		if(V.right_item)
-			possible_thefts += V.right_item
-		if(V.left_item)
-			possible_thefts += V.left_item
+
+		var/obj/item/left_item = V.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
+		var/obj/item/right_item = V.inventories_by_id[BODY_HAND_RIGHT_HELD]?.get_top_object()
+
+		if(left_item)
+			possible_thefts += left_item
+		if(right_item)
+			possible_thefts += right_item
 
 		if(length(possible_thefts))
 			var/obj/item/I = pick(possible_thefts)
