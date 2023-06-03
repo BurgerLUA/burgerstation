@@ -276,7 +276,7 @@
 
 		if(connected_background.linked_shuttle_controller)
 			if(launch && close) //Return to base.
-				if(connected_background.linked_shuttle_controller.try_launch(caller,connected_background.linked_shuttle_controller.transit_marker_base))
+				if(connected_background.linked_shuttle_controller.set_destination(caller,connected_background.linked_shuttle_controller.transit_marker_base) && connected_background.linked_shuttle_controller.try_launch(caller))
 					connected_background.update_owner(null)
 				return TRUE
 			else if(launch) //Go to target.

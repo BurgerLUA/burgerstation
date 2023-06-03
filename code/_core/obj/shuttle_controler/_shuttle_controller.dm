@@ -58,6 +58,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	transit_marker_base = new(T)
 	transit_marker_base.owning_shuttle = src
+	transit_marker_base.reserved = TRUE
 
 	transit_marker_bluespace = new(T2)
 	transit_marker_bluespace.owning_shuttle = src
@@ -305,8 +306,8 @@ var/global/list/all_shuttle_controlers = list()
 		var/turf/old_turf_type = T_to_replace.type
 		var/area/old_area_type = T_to_replace.loc.type
 		areas_to_upate[T.loc] = TRUE
-		if(T.plane == PLANE_SHUTTLE) T_to_replace.change_turf(T.type,TRUE,TRUE) //Change to shuttle turf.
 		T_to_replace.change_area(T.loc.type) //Change to shuttle area.
+		if(T.plane == PLANE_SHUTTLE) T_to_replace.change_turf(T.type,TRUE,TRUE) //Change to shuttle turf.
 		T_to_replace.transit_turf = old_turf_type
 		T_to_replace.transit_area = old_area_type
 		areas_to_upate[T_to_replace.loc] = TRUE
@@ -419,7 +420,7 @@ var/global/list/all_shuttle_controlers = list()
 		caller?.to_chat(span("warning","Error: Invalid shuttle destination!"))
 		return FALSE
 
-	if(desired_marker.reserved || (desired_marker.owning_shuttle && desired_marker.owning_shuttle != src))
+	if(desired_marker.reserved && !(desired_marker.owning_shuttle && desired_marker.owning_shuttle == src))
 		caller?.to_chat(span("warning","Error: Shuttle destination already is reserved or occupied!"))
 		return FALSE
 
@@ -427,7 +428,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	return TRUE
 
-/obj/shuttle_controller/proc/try_launch(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
+/obj/shuttle_controller/proc/try_launch(var/mob/caller)
 
 	if(!SSgamemode?.active_gamemode?.allow_launch)
 		caller?.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
@@ -437,11 +438,12 @@ var/global/list/all_shuttle_controlers = list()
 		caller?.to_chat(span("warning","Error: Shuttle is currently [src.state]."))
 		return FALSE
 
-	if(desired_marker)
-		if(!set_destination(caller,desired_marker))
-			return FALSE
-	else if(!src.transit_marker_destination)
+	if(!src.transit_marker_destination)
 		caller?.to_chat(span("warning","Error: No transit destination set!"))
+		return FALSE
+
+	if(src.transit_marker_destination.reserved)
+		caller?.to_chat(span("warning","Error: This destination already has a ship here!"))
 		return FALSE
 
 	src.time = 0

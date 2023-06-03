@@ -12,7 +12,7 @@
 
 /turf/bluespace/Entered(atom/movable/Obj, atom/OldLoc)
 
-	if(!istype(Obj,/mob/abstract/) && Obj.plane != PLANE_SHUTTLE)
+	if(!Obj.qdeleting && !istype(Obj,/mob/abstract/) && Obj.plane != PLANE_SHUTTLE)
 		if(Obj.mouse_opacity) Obj.visible_message(span("danger","\The [Obj.name] flashes violently!"),span("danger","You flash violently!"))
 		if(Obj.is_safe_to_delete())
 			qdel(Obj)
