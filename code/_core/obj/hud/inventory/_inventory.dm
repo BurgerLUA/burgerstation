@@ -370,7 +370,7 @@
 			var/mob/living/advanced/A = owner
 			if(worn)
 				A.worn_objects += I
-				src.initialize_worn_icon(I)
+				src.update_worn_icon(I)
 			else
 				A.held_objects += I
 				src.update_held_icon(I)
@@ -401,7 +401,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/initialize_worn_icon(var/obj/item/item_to_update)
+/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
 
 	var/mob/living/advanced/A = owner
 

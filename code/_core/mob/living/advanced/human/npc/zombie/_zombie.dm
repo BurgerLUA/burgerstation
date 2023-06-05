@@ -22,7 +22,7 @@
 
 	dna = /dna/human
 
-/mob/living/advanced/npc/zombie/Finalize()
+/mob/living/advanced/npc/zombie/PostInitialize()
 
 	if(prob(missing_limb_chance))
 		var/turf/T = get_turf(src)

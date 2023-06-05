@@ -19,7 +19,6 @@
 		var/obj/item/I = k
 		total_weight += I.weight
 
-
 	for(var/k in worn_objects)
 		var/obj/item/I = k
 		total_weight += I.weight
@@ -49,6 +48,7 @@
 	move_delay_multiplier *= 1 + (total_weight/max_weight)
 	move_delay_multiplier = FLOOR(max(0.25,move_delay_multiplier),0.01)
 
+	/*
 	for(var/k in overlays_assoc)
 		var/image/overlay/O = overlays_assoc[k]
 		var/obj/item/I = O.attached_object
@@ -56,12 +56,13 @@
 			continue
 		if(is_organ(I))
 			var/obj/item/organ/OR = I
-			show_overlay(k, !hidden_organs[OR.id] ? TRUE : FALSE)
+			update_overlay_tracked(k, !hidden_organs[OR.id] ? 255 : 0)
 			continue
 		if(!I.loc || !is_organ(I.loc.loc))
 			continue
 		var/obj/item/organ/OR = I.loc.loc
-		show_overlay(k, (blocking_clothing[I] || !hidden_organs[OR.id]) ? TRUE : FALSE)
+		update_overlay_tracked(k, (blocking_clothing[I] || !hidden_organs[OR.id]) ? 255 : 0)
+	*/
 
 	return TRUE
 

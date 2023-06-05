@@ -47,7 +47,7 @@
 	if(is_living(grabbed_object))
 		var/mob/living/L = grabbed_object
 		L.handle_transform()
-		L.stat_elements_to_update |= L.stat_elements["resist"]
+		L.resist() //Forces hud update.
 		if(is_living(caller))
 			var/mob/living/LC = caller
 			if(LC.has_status_effect(BUFF))

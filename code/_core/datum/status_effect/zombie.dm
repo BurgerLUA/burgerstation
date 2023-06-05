@@ -51,7 +51,7 @@
 		A.remove_organ(HL,T,TRUE)
 		A.add_organ(/obj/item/organ/hand/zombie/left) //Left hand.
 
-	A.change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"))
+	A.change_organ_visual("skin", desired_color = pick("#5D7F00","#5D9B00","#527200"), should_update = TRUE)
 
 	var/obj/item/organ/head/H = A.labeled_organs[BODY_HEAD]
 	H.add_blend("zombie", desired_icon = 'icons/mob/living/advanced/hair/human_misc.dmi', desired_icon_state = "zombie", desired_blend = ICON_OVERLAY, desired_type = ICON_BLEND_OVERLAY)
@@ -108,8 +108,6 @@
 	A.ckey_last = null
 
 	A.add_status_effect(ADRENALINE,100,-1,force=TRUE,stealthy=TRUE)
-
-	A.update_all_blends()
 
 	A.revive()
 

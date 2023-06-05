@@ -51,7 +51,7 @@
 		var/obj/marker/M = k
 		if(!M.loc)
 			qdel(M)
-			CHECK_TICK_SAFE(90,FPS_SERVER*10)
+			CHECK_TICK_SAFE(75,FPS_SERVER*10)
 			continue
 		var/turf/T = M.loc
 		var/area/A = T.loc
@@ -75,7 +75,7 @@
 		FINALIZE(L)
 		mission_mobs_created++
 		qdel(M)
-		CHECK_TICK_SAFE(90,FPS_SERVER*10)
+		CHECK_TICK_SAFE(75,FPS_SERVER*10)
 
 	log_debug("Created [mission_mobs_created] mission mobs.")
 
@@ -85,7 +85,7 @@
 			var/obj/marker/M = k
 			if(!M.loc || !is_turf(M.loc))
 				qdel(M)
-				CHECK_TICK_SAFE(25,FPS_SERVER*10)
+				CHECK_TICK_SAFE(75,FPS_SERVER*10)
 				continue
 			var/turf/T = M.loc
 			var/area/A = T.loc
@@ -104,7 +104,7 @@
 			L.set_dir(pick(NORTH,EAST,SOUTH,WEST))
 			corpses_created++
 			qdel(M)
-			CHECK_TICK_SAFE(90,FPS_SERVER*10)
+			CHECK_TICK_SAFE(75,FPS_SERVER*10)
 
 	log_debug("Created [corpses_created] mission mobs.")
 

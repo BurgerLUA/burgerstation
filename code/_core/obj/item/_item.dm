@@ -272,63 +272,6 @@ var/global/list/rarity_to_mul = list(
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/proc/initialize_worn_blends(var/desired_icon_state)
-
-	if(length(polymorphs))
-		var/icon/initial_icon = initial(icon)
-		var/layer_mod = 0
-		for(var/polymorph_name in polymorphs)
-			var/polymorph_color = polymorphs[polymorph_name]
-			add_blend(
-				"polymorph_[polymorph_name]",
-				desired_icon = initial_icon,
-				desired_icon_state = "[desired_icon_state]_[polymorph_name]",
-				desired_color = polymorph_color,
-				desired_blend = ICON_OVERLAY,
-				desired_type = ICON_BLEND_OVERLAY,
-				desired_should_save = TRUE,
-				desired_layer = worn_layer + (layer_mod * 0.001)
-			)
-			layer_mod++
-
-	if(enable_blood_stains)
-		add_blend(
-			"bloodstain",
-			desired_icon = 'icons/mob/living/advanced/overlays/blood_overlay.dmi',
-			desired_icon_state = blood_stain_intensity ? "[CEILING(blood_stain_intensity,1)]" : null,
-			desired_color = blood_stain_color,
-			desired_blend = ICON_ADD,
-			desired_type = ICON_BLEND_MASK,
-			desired_should_save = FALSE,
-			desired_layer = worn_layer + 0.011
-		)
-
-	if(enable_damage_overlay)
-		var/desired_damage_num = get_damage_icon_number()
-		add_blend(
-			"damage_overlay_noise",
-			desired_icon = 'icons/mob/living/advanced/overlays/damage_clothing.dmi',
-			desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null,
-			desired_blend = ICON_MULTIPLY,
-			desired_type = ICON_BLEND_MASK,
-			desired_should_save = FALSE,
-			desired_layer = worn_layer + 0.012
-		)
-
-	if(enable_torn_overlay)
-		var/desired_damage_num = max(0,get_damage_icon_number() - 1)
-		add_blend(
-			"damage_overlay",
-			desired_icon = 'icons/mob/living/advanced/overlays/damage_overlay.dmi',
-			desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null,
-			desired_blend = ICON_OVERLAY,
-			desired_type = ICON_BLEND_CUT,
-			desired_should_save = FALSE,
-			desired_layer = worn_layer + 0.013
-		)
-
-	. = ..()
-
 /obj/item/get_base_value()
 	return initial(value) * amount * price_multiplier * (0.5 + 0.5*clamp(quality/100,0.25,1.5))
 
@@ -946,3 +889,4 @@ var/global/list/rarity_to_mul = list(
 			post_fill_inventory(I)
 			add_object_to_src_inventory(null,I,enable_messages=FALSE,bypass=TRUE,silent=TRUE)
 	. = ..()
+

@@ -19,7 +19,7 @@
 
 	ai = /ai/advanced/stand
 
-
+	dna = /dna/human
 
 	var/display_menacing = FALSE
 
@@ -134,20 +134,3 @@
 		return TRUE
 
 	return ..()
-
-/mob/living/advanced/stand/PostInitialize()
-
-	. = ..()
-
-	var/species/S = SPECIES(species)
-	var/skin_color = random_color()
-	var/hair_color = random_color()
-	change_organ_visual("skin", desired_color = skin_color)
-	change_organ_visual("hair_head", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair]))
-	if(sex == MALE && prob(25))
-		change_organ_visual("hair_face", desired_color = hair_color, desired_icon_state = pick(SSspecies.all_hair_files[S.default_icon_hair_face]))
-	update_all_blends()
-
-
-
-

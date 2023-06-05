@@ -37,7 +37,7 @@
 	update_atom_light()
 	if(is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
-		if(I.worn) I.initialize_worn_icon(src)
+		if(I.worn) I.update_worn_icon(src)
 	return TRUE
 
 /obj/item/clothing/head/light/update_atom_light()

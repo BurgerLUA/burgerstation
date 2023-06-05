@@ -58,11 +58,11 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	var/final_hair_number = clamp(choice_main,1,length(SSspecies.all_hair_files[S.default_icon_hair]))
 	var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair][final_hair_number]
 	if(desired_color)
-		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, desired_color = desired_color, should_update = update_blends)
 	else
-		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon)
+		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, should_update = update_blends)
 
-	if(update_blends) update_all_blends()
+
 
 	return TRUE
 

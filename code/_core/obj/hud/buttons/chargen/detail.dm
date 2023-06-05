@@ -1,11 +1,9 @@
 mob/living/advanced/proc/handle_detail_chargen(var/desired_color,var/update_blends = TRUE) //This needs to be called when the buttons are made visible.
 
-	change_organ_visual("skin_detail", desired_color = desired_color)
+	change_organ_visual("skin_detail", desired_color = desired_color, should_update = update_blends)
 
 	for(var/obj/hud/button/chargen/detail/B in buttons)
 		B.detail_color = desired_color
-
-	if(update_blends) update_all_blends()
 
 	return TRUE
 

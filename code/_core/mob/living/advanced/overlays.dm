@@ -47,6 +47,7 @@ mob/living/advanced/proc/remove_overlay(var/k)
 	qdel(O)
 	return TRUE
 
+/*
 /mob/living/advanced/proc/update_all_blends() //Avoid using this.
 	for(var/k in overlays_assoc)
 		var/image/overlay/O = overlays_assoc[k]
@@ -57,18 +58,20 @@ mob/living/advanced/proc/remove_overlay(var/k)
 		overlays -= O
 		O.update()
 		add_overlay(O) //Is this needed?
-	return TRUE
 
-/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_plane,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform)
+	return TRUE
+*/
+
+/mob/living/advanced/proc/update_overlay_tracked(var/k,var/desired_layer,var/desired_plane,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend,var/desired_no_initial,var/desired_pixel_x,var/desired_pixel_y,var/desired_alpha,var/desired_transform,var/force)
 
 	var/image/overlay/O = overlays_assoc[k]
 
-	if(!istype(O))
-		var/datum/found_ref = locate(k)
-		CRASH("Warning: Tried to update the associated overlay of [k] (Found Ref: [found_ref ? found_ref.get_debug_name() : "NULL"], but it returned [O ? O : "NULL"].")
+	if(!O)
+		return FALSE
 
-	overlays -= O
-	overlays_assoc -= O
+	if(force || finalized)
+		overlays -= O
+		overlays_assoc -= O
 
 	if(isnum(desired_layer))
 		O.layer = desired_layer
@@ -96,12 +99,20 @@ mob/living/advanced/proc/remove_overlay(var/k)
 		O.pixel_y = desired_pixel_y
 	if(isnum(desired_alpha))
 		O.alpha = desired_alpha
-	O.update()
 
-	add_overlay(O)
+	if(force || finalized)
+		O.update()
+		add_overlay(O)
 
 	return TRUE
 
-/mob/living/advanced/proc/show_overlay(var/k,var/show=TRUE)
-	update_overlay_tracked(k,desired_alpha = show ? 255 : 0)
-	return TRUE
+/mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/should_update,var/debug_message)
+	. = FALSE
+	for(var/k in organs)
+		var/obj/item/organ/O = k
+		if(!length(O.additional_blends) || !O.additional_blends[desired_id]) //Only handle existing blends.
+			continue
+		O.add_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
+		if(should_update)
+			O.handle_overlays(src,update=TRUE)
+		. = TRUE

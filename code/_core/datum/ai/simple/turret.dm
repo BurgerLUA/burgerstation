@@ -21,9 +21,6 @@
 	var/scan_key = 1
 	var/scan_mod = 1
 
-	active = TRUE
-
-
 /ai/turret/New(var/desired_loc,var/mob/living/desired_owner)
 
 	. = ..()

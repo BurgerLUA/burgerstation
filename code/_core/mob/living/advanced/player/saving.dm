@@ -181,8 +181,6 @@
 	if(!labeled_organs["implant_head"])
 		add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
-	update_all_blends()
-
 	health?.update_health_stats()
 
 	last_autosave = world.time

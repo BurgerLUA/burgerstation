@@ -15,6 +15,9 @@
 
 	density = FALSE
 
+/mob/abstract/observer/ghost/get_lighting_alpha()
+	return 100
+
 /mob/abstract/observer/ghost/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
 	talk_type_to_use = TEXT_GHOST
 	return ..()

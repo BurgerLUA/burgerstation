@@ -31,43 +31,6 @@
 
 	return O
 
-
-/obj/item/proc/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
-
-	if(remove)
-		A.remove_overlay("\ref[src]")
-
-	if(add)
-		if(worn)
-			var/obj/hud/inventory/I = src.loc
-			var/desired_layer = src.worn_layer
-			if(I.advanced_layering && length(I.contents) > 1)
-				var/key = I.contents.Find(src)
-				if(key != 1)
-					var/obj/item/I2 = I.contents[1]
-					desired_layer = I2.worn_layer + (key)*0.01
-			A.add_overlay_tracked(
-				"\ref[src]",
-				src,
-				desired_layer = desired_layer,
-				desired_icon = initial(src.icon),
-				desired_icon_state = icon_state_override,
-				desired_no_initial = src.no_initial_blend,
-				desired_pixel_x = src.worn_pixel_x,
-				desired_pixel_y = src.worn_pixel_y,
-				desired_color=src.color
-			)
-
-	if(update)
-		A.update_overlay_tracked(
-			"\ref[src]",
-			desired_color=src.color,
-			desired_icon_state = icon_state_override,
-		)
-
-
-	return TRUE
-
 /obj/item/clothing/back/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)

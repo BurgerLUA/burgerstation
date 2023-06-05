@@ -199,7 +199,9 @@ mob/living/advanced/Login()
 	add_overlay_tracked("handcuffs", desired_icon = 'icons/mob/living/advanced/overlays/handcuffs.dmi', desired_icon_state = "none", desired_layer = 100)
 
 /mob/living/advanced/Finalize()
+
 	. = ..()
+
 	if(loadout) equip_loadout(loadout)
 	update_items(force=TRUE)
 
@@ -208,6 +210,9 @@ mob/living/advanced/Login()
 		if(!src.voice_modifiers)
 			src.voice_modifiers = list()
 		src.voice_modifiers[S] = S::process_accent()
+
+	for(var/k in overlays_assoc)
+		update_overlay_tracked(k,force=TRUE)
 
 /mob/living/advanced/setup_name()
 
@@ -219,14 +224,6 @@ mob/living/advanced/Login()
 	real_name = name
 
 	. = ..()
-
-/mob/living/advanced/proc/change_organ_visual(var/desired_id, var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type,var/desired_layer,var/debug_message)
-	for(var/k in organs)
-		var/obj/item/organ/O = k
-		if(!length(O.additional_blends))
-			continue
-		if(O.additional_blends[desired_id])
-			O.add_blend(desired_id, desired_icon, desired_icon_state, desired_color, desired_blend, desired_type, desired_layer, debug_message)
 
 /mob/living/advanced/can_sprint()
 

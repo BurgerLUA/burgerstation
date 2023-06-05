@@ -7,11 +7,7 @@
 
 
 /mob/proc/get_lighting_alpha()
-	return 100
-
-/mob/living/get_lighting_alpha()
-	return max(0,255 - src.get_mob_value("nightvision"))
-
+	return 255
 
 #define NIGHTVISION_TIME SECONDS_TO_DECISECONDS(2)
 

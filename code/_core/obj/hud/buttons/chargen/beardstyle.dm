@@ -58,11 +58,9 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	var/final_hair_number = clamp(choice_main,1,length(SSspecies.all_hair_files[S.default_icon_hair_face]))
 	var/hair_icon = SSspecies.all_hair_files[S.default_icon_hair_face][final_hair_number]
 	if(desired_color)
-		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon, desired_color = desired_color)
+		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon, desired_color = desired_color, should_update = update_blends)
 	else
-		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon)
-
-	if(update_blends) update_all_blends()
+		change_organ_visual("hair_face", desired_icon = S.default_icon_hair_face, desired_icon_state = hair_icon, should_update = update_blends)
 
 	return TRUE
 

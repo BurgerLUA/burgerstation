@@ -120,10 +120,12 @@ var/global/list/possible_monsters_to_spawn = list(
 			animate(L,color=initial(L.color),SECONDS_TO_DECISECONDS(1))
 			flick("spawn",src)
 			if(L.ai)
-				L.ai.set_active(TRUE)
-				L.ai.find_new_objectives(AI_TICK,TRUE)
-				L.ai.roaming_distance = VIEW_RANGE*0.5
-				L.ai.allow_far_roaming = FALSE
+				var/chunk/C = CHUNK(T2)
+				if(C && C.visited_by_player)
+					L.ai.set_active(TRUE)
+					L.ai.find_new_objectives(AI_TICK,TRUE)
+					L.ai.roaming_distance = VIEW_RANGE*0.5
+					L.ai.allow_far_roaming = FALSE
 
 
 	CALLBACK("\ref[src]_spawn",SECONDS_TO_DECISECONDS(2+tracked_mobs_length),src,src::spawn_monster())

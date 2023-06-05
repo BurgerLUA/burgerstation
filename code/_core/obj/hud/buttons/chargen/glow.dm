@@ -1,11 +1,9 @@
 mob/living/advanced/proc/handle_glow_chargen(var/desired_color,var/update_blends = TRUE) //This needs to be called when the buttons are made visible.
 
-	change_organ_visual("skin_glow", desired_color = desired_color)
+	change_organ_visual("skin_glow", desired_color = desired_color, should_update = update_blends)
 
 	for(var/obj/hud/button/chargen/glow/B in buttons)
 		B.glow_color = desired_color
-
-	if(update_blends) update_all_blends()
 
 	return TRUE
 

@@ -11,3 +11,6 @@
 
 	if(dead)
 		vision |= (FLAG_VISION_MEDICAL | FLAG_VISION_SECURITY)
+
+/mob/living/get_lighting_alpha()
+	return max(0,255 - src.get_mob_value("nightvision"))

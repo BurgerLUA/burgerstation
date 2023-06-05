@@ -122,7 +122,12 @@
 	attack_flags = 0x0
 	dead = FALSE
 	remove_status_effect(CRIT)
-	if(ai) ai.set_active(TRUE)
+	if(ai)
+		var/turf/T = get_turf(src)
+		if(T)
+			var/chunk/C = CHUNK(T)
+			if(C && C.visited_by_player)
+				ai.set_active(TRUE)
 	for(var/obj/hud/button/dead_ghost/DG in buttons)
 		DG.update_owner(null)
 	handle_transform()
