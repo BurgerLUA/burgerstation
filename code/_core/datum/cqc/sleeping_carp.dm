@@ -1,5 +1,6 @@
 /cqc/sleeping_carp
 	combo_breaker = TRUE
+	category = "Sleeping Carp"
 
 /cqc/sleeping_carp/crashing_wave_kick //Launch people brutally across rooms, and away from you. Deals 15 brute.
 	name = "Crashing Wave Kick"

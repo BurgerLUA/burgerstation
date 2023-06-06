@@ -77,12 +77,6 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	value = 0
 
-	known_cqc = list(
-		/cqc/sleeping_carp/crashing_wave_kick,
-		/cqc/sleeping_carp/keelhaul,
-		/cqc/sleeping_carp/gnashing_teeth
-	)
-
 	var/allow_save = TRUE
 
 	var/list/mob/living/followers = list()

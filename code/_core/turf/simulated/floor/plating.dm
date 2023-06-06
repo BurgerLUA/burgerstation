@@ -28,6 +28,9 @@
 
 	health_base = 2000
 
+/turf/simulated/floor/plating/reinforced/dark
+	color = COLOR_STEEL_DARK
+
 /turf/simulated/floor/plating/snow
 	name = "snowed plating"
 	icon = 'icons/turf/floor/plating.dmi'

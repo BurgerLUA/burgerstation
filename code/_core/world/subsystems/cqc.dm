@@ -5,6 +5,8 @@ SUBSYSTEM_DEF(cqc)
 
 	var/list/all_cqc = list()
 
+	var/list/cqc_category = list()
+
 /subsystem/cqc/Initialize()
 
 	for(var/k in subtypesof(/cqc/))
@@ -13,6 +15,11 @@ SUBSYSTEM_DEF(cqc)
 			continue
 		C = new k
 		all_cqc[C.type] = C
+		if(C.category)
+			if(!cqc_category[C.category])
+				cqc_category[C.category] = list()
+			cqc_category[C.category] += C
+
 
 	sort_tim(all_cqc, /proc/cmp_cqc_priority, associative = TRUE)
 

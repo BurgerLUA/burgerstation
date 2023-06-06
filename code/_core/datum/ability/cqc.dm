@@ -1,34 +1,37 @@
 /ability/cqc
-	name = "CQC Ability"
+	name = "CQC: Big Boss"
 	desc = "A cqc ability."
+	category = "CQC"
+	icon_state = "big_boss"
 
-	var/damagetype/damage_type
+	var/cqc_category_to_learn = "Big Boss"
 
-/ability/cqc/on_cast_pre(var/mob/caller,var/atom/target)
-	if(get_dist_advanced(caller,target) > 1)
-		return FALSE
-	. = ..()
+	toggle = TRUE
 
-/ability/cqc/on_cast(var/mob/caller,var/atom/target)
-	caller.attack(caller,target,damage_type_override=damage_type)
-	. = ..()
+	resource_type = STAMINA
+	cost = 10
+	cooldown = SECONDS_TO_DECISECONDS(4)
 
+/ability/cqc/on_cast(var/mob/caller,var/atom/target,location,params)
 
-//Sleeping Carp
-/ability/cqc/carp/crashing_wave_kick
-	name = "Crashing Wave Kick"
-	icon_state = "crashing_wave"
-	damage_type = /damagetype/cqc/sleeping_carp/crashing_wave_kick
-	cooldown = SECONDS_TO_DECISECONDS(10)
+	if(is_advanced(caller))
+		var/mob/living/advanced/L = caller
+		if(L.cqc_category == cqc_category_to_learn)
+			L.cqc_category = null
+		else
+			L.cqc_category = cqc_category_to_learn
 
-/ability/cqc/carp/keelhaul
-	name = "Keelhaul"
-	icon_state = "keelhaul"
-	damage_type = /damagetype/cqc/sleeping_carp/keelhaul
-	cooldown = SECONDS_TO_DECISECONDS(10)
+	return TRUE
 
-/ability/cqc/carp/gnashing_teeth
-	name = "Gnashing Teeth"
-	icon_state = "gnashing_teeth"
-	damage_type = /damagetype/cqc/sleeping_carp/gnashing_teeth
-	cooldown = SECONDS_TO_DECISECONDS(10)
+/ability/cqc/is_active(var/mob/caller)
+
+	if(is_advanced(caller))
+		var/mob/living/advanced/L = caller
+		return L.cqc_category == cqc_category_to_learn
+
+	return FALSE
+
+/ability/cqc/sleeping_carp
+	name = "CQC: Sleeping Carp"
+	cqc_category_to_learn = "Sleeping Carp"
+	icon_state = "sleeping_carp"

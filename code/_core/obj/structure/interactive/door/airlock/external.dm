@@ -59,3 +59,10 @@ obj/structure/interactive/door/airlock/external/locked
 obj/structure/interactive/door/airlock/external/locked/open
 	locked = TRUE
 	door_state = DOOR_STATE_OPENED
+
+obj/structure/interactive/door/airlock/external/syndicate
+	color = "#545454"
+	frame_detail_color = "#C50004"
+
+obj/structure/interactive/door/airlock/external/syndicate/locked
+	locked = TRUE

@@ -56,6 +56,7 @@
 "bd" = (/mob/living/advanced/npc/clockwork_cultist{icon_state = "directional"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
 "be" = (/mob/living/simple/watcher/clockwork{icon_state = "warden"; dir = 4},/obj/marker/map_node,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
 "bf" = (/mob/living/simple/watcher/clockwork{icon_state = "warden"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
+"bg" = (/obj/marker/lobby,/turf/simulated/floor/clockwork/reebe,/area/mission/prefab/misc/clockwork_hall)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -101,7 +102,7 @@ aaaaaaaaaaaaaaaaaaaaabacayayayayayayadadasasasadadanahanagasasasaganahanadadasas
 aaaaaaaaaaaaaaaaaaaaabacaAaRaQanaRanauauauauauaSadanaEanasaAaIaAasanaEanadaSauauauauauanaRanaQaRaAacabaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaabacanahahahahahahahahahaPauasanahanasanaEanasanahanasauaOahahahahahahahahahanacabaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaabacanahahahahahahahahahahauasanahanasanaHanasanahanasauahahahahahahahahahahanacabaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaabacanahahaqahahahaHahafahaIasanaqanasanahanasanaqanasaIahafahaHahahahaqahahanacabaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaabacanahahaqahahahaHahafahaIasanaqanasanbganasanaqanasaIahafahaHahahahaqahahanacabaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaabacanahahahahahahahahahahauasanahanasanaEanasanahanasauahahahahahahahahahahanacabaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaabacanahahahahahahahahahaPauasanaEanasanahanasanaEanasauaOahahahahahahahahahanacabaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaabacaSauauauauauauauauauauaSadanahanasaAanaAasanahanadaSauauauauauauauauauauaSacabaaaaaaaaaaaaaaaaaaaaaaaaaa

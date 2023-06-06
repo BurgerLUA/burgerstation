@@ -6,10 +6,6 @@
 
 	allow_area_expansion = FALSE
 
-
-
-
-
 /area/mission/prefab/vault
 	name = "\improper Vault"
 	icon_state = "yellow"

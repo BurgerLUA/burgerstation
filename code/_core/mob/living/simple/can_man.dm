@@ -3,8 +3,7 @@
 	boss_icon_state = "can_man"
 	icon = 'icons/mob/living/simple/canman.dmi'
 	icon_state = "living"
-	damage_type = /damagetype/unarmed/claw
-
+	damage_type = /damagetype/unarmed/powerfist
 
 	value = 20000
 
@@ -14,9 +13,11 @@
 
 	boss_loot = /loot/lavaland/can_man
 
+	boss_music = /track/canman
+
 	stun_angle = 0
 
-	health_base = 12500
+	health_base = 15000
 	stamina_base = 4000
 	mana_base = 100
 
@@ -44,8 +45,6 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	//boss_music = "cursed_as_love"
-
 	loyalty_tag = "Syndicate"
 	iff_tag = "Syndicate"
 
@@ -53,7 +52,7 @@
 	var/charge_dir = 0
 
 	blood_type = /reagent/blood/robot
-	blood_volume = 3000
+	blood_volume = 5000
 
 	change_dir_on_move = FALSE
 
@@ -65,14 +64,22 @@
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
-	level = 50
+	level = 90
+
+	stun_angle = 0
 
 /mob/living/simple/can_man/post_death()
 	. = ..()
 	charge_steps = 0
 	charge_dir = 0
-	icon_state = "dead"
 	update_sprite()
+
+/mob/living/simple/can_man/update_icon()
+	. = ..()
+	icon = initial(icon)
+	icon_state = initial(icon_state)
+	if(dead)
+		icon_state = "dead"
 
 /mob/living/simple/can_man/get_movement_delay()
 

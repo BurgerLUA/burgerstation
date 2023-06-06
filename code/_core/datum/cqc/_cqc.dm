@@ -4,6 +4,7 @@
 	var/damagetype/damage_type //The damage type that is applied on target.
 	var/combo_breaker = FALSE //Should we clear the current combo when this combo is finished?
 	var/priority = 0 //Lower values get more priority. Automatically assigned based on combo length
+	var/category
 
 /cqc/New(var/desired_loc)
 
@@ -19,7 +20,7 @@
 	if(combo_length == 1 && DT.cqc_tag == combo)
 		return TRUE
 
-	var/cqc_string = attacker.cqc
+	var/cqc_string = attacker.cqc_combo
 
 	var/cqc_length = length(cqc_string)
 

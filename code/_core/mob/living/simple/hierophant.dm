@@ -17,6 +17,8 @@
 
 	boss_loot = /loot/lavaland/hierophant
 
+	boss_music = /track/chords
+
 	fatigue_mul = 0
 
 	size = SIZE_BOSS

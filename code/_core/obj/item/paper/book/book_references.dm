@@ -1,7 +1,7 @@
 /obj/item/paper/book/cargo_catalog/
 	name = "reference: Cargo Catalog Vol 1"
 	desc = "FIRE SALE ON TOOTHPASTE? FINALLY"
-	icon_state = "battlemonsters"
+	icon_state = "book3"
 	desc_extended = "A catalog featuring the many items you can buy from cargo."
 
 
@@ -12,7 +12,7 @@
 /obj/item/paper/book/chemistry/
 	name = "reference: Chemistry"
 	desc = "Winners don't drugs! Besides meth."
-	icon_state = "chemistry"
+	icon_state = "chemistrybook"
 	desc_extended = "A catalog featuring all the medical recipes known to man."
 
 /obj/item/paper/book/chemistry/Initialize()

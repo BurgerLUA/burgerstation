@@ -3,7 +3,7 @@
 	var/list/categorized_abilities = list()
 
 	for(var/j in machine.ability_types)
-		for(var/k in subtypesof(j))
+		for(var/k in typesof(j))
 			var/ability/AB = k
 			var/category = initial(AB.category)
 			if(!category)
@@ -26,8 +26,8 @@
 		CB.maptext = "[category]"
 		CB.maptext_width = TILE_SIZE*2
 		CB.update_owner(A)
-		CB.screen_loc = "LEFT+2,TOP-2-[y]"
-		y += 1
+		CB.screen_loc = "LEFT+1.5:8,TOP-1.75-[y]"
+		y += 0.75
 		abilitiy_buttons += CB
 		for(var/ability in list_of_abilities)
 			var/ability/AB = ability
@@ -39,12 +39,14 @@
 			B.linked_close = C
 			B.update_owner(A)
 			abilitiy_buttons += B
-			x += 1.5
+			x += 1.25
 		max_x = max(max_x,x)
-		y += 1
+		y += 0.75
 
-	C.screen_loc = "LEFT+2+[max_x],TOP-2"
+	C.screen_loc = "LEFT+1,TOP-2.75"
 	C.linked_buttons = abilitiy_buttons
+	C.alpha = 0
+	C.invisibility = 101
 	C.update_owner(A)
 
 	return TRUE
@@ -198,7 +200,7 @@
 
 
 /obj/hud/button/close_ability_choice/proc/check_distance()
-	if(get_dist(owner,linked_machine) >= 2)
+	if(get_dist(owner,linked_machine) > 1)
 		update_owner(null)
 
 

@@ -165,8 +165,8 @@
 				dash_amount--
 			return TRUE
 		else //Controlled dash.
-			var/final_direction = move_dir ? move_dir : dir
-			if(!final_direction)
+			var/final_direction = dir
+			if(!final_direction) //wat
 				dash_amount = 0
 				return TRUE
 			glide_size = step_size/adjust_delay

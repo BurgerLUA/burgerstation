@@ -171,6 +171,7 @@
 "do" = (/turf/simulated/wall/metal/solarian/reinforced,/area/mission/prefab/sol_base/armory)
 "dp" = (/obj/structure/interactive/atmospherics/scrubber,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/armory)
 "dq" = (/obj/decal/road_marking/solid_stop{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"dr" = (/obj/marker/lobby,/turf/simulated/floor/brick/grey,/area/mission/prefab/sol_base/lobby)
 "ds" = (/mob/living/advanced/npc/space_soldier,/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/red,/area/mission/prefab/sol_base/security)
 "dt" = (/obj/structure/interactive/crate/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/tile/morphing/command,/area/mission/prefab/sol_base/meeting_room)
 "du" = (/obj/marker/cover_node/left,/turf/simulated/floor/tile/morphing/command,/area/mission/prefab/sol_base/meeting_room)
@@ -401,7 +402,7 @@ aaabajakamarakajbbbrbbfEeKbtbRfFfGbbcAdefHcUcUfvezfwfdeXeXfbeXeXeXeXfbeXeXeYeMfx
 aaabajadamaradajbbbrbbbvbvbvbvbvbvbbdKdffLcAcAfvezfweMeMfMfjeMeQeQeMfkfMeMeMeMfxdLdLfNdLfOfldIfPfQfQfRfQdFfTbcatajadamaradajabaa
 aaabajadamaradajbbbrbbbwbwbwbwbwbwbbbbfUbbexexexezezezezezezfVfVfVfVezezezezezezeGeGeGfWfWfWfWfWfXfWfYfWfWfWfWfWajadamaradajabaa
 aaabajadamaradajbbbrbbbbdPgagadPbbbbgbgcbbgdgegdezgdgegdgfggghgigighgggfgdgegdezgdgegdfWgjgjgjgjgjgkecgmgngofWfWajadamaradajabaa
-aaabajadamaradajbbbrbbgpgbgqgqgbgrgbgbgsbbgdgdgdezgdgdgdgfghghghghghghgfgdgdgdezgdgdgdgtgugvgugwgugwgugxgygofWfWajadamaradajabaa
+aaabajadamaradajbbbrbbgpgbgqgqgbgrgbgbgsbbgdgdgdezgdgdgdgfghghdrghghghgfgdgdgdezgdgdgdgtgugvgugwgugwgugxgygofWfWajadamaradajabaa
 aaabajakamarakajbbbrbbgzgqgqgAgqgqgqgAgBbbgdgdgdezgdgdgdgfghgCghghgCghgfgdgdgdezgdgdgdfWgDfWgDfWgDfWgDfWgEgofWfWajakamarakajabaa
 aaabajadamaradajbbbrbbgpgbgbgbgbgsgsgsgsbbgdgdgdezgdgdgdgfghghghghghghgfgdgdgdezgdgdgdfWgFfWfmfWgFfWgFfWgEgofWfWajadamaradajabaa
 aaabgHgHgHgHgHgHbbbbbbbbbbbbbbbbgIbbbbbbbbgfgfgfezgfgfgfezgJfogigifogJezgfgfgfezgfgfgffWfWfWfWfWfWfWfWfWfWfWfWfWgHgHgHgHgHgHabaa

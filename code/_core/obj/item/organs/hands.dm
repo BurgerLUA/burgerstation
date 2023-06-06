@@ -11,7 +11,7 @@
 		/obj/hud/inventory/organs/ring/sw
 	)
 
-	damage_type = null
+	damage_type = /damagetype/unarmed/fists/
 
 	attach_flag = BODY_ARM_RIGHT
 
@@ -116,6 +116,8 @@
 
 	armor = /armor/reptile
 
+	damage_type = /damagetype/unarmed/claw
+
 /obj/item/organ/hand/reptile/left
 	name = "left reptile hand"
 	id = BODY_HAND_LEFT
@@ -143,6 +145,8 @@
 	icon = 'icons/mob/living/advanced/species/reptile_advanced.dmi'
 
 	armor = /armor/reptile
+
+	damage_type = /damagetype/unarmed/claw
 
 /obj/item/organ/hand/reptile_advanced/left
 	name = "left advanced reptile hand"

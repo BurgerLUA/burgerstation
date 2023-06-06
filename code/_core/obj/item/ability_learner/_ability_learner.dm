@@ -1,9 +1,13 @@
 /obj/item/ability_learner
 
-	name = "ability"
-	desc_extended = "I am error."
+	name = "ability scroll"
+	desc = "I've finally found it."
+	desc_extended = "Error."
 
-	rarity = RARITY_UNCOMMON
+	icon = 'icons/obj/item/books.dmi'
+	icon_state = "scroll"
+
+	rarity = RARITY_RARE
 
 	var/ability/stored_ability
 
@@ -14,11 +18,23 @@
 	if(!stored_ability)
 		log_error("Warning: Tried creating an empty [src.get_debug_name()]!")
 		qdel(src)
+	update_sprite()
 
 /obj/item/ability_learner/get_base_value()
 	if(!stored_ability)
 		return 0
 	. = ..()
+
+/obj/item/ability_learner/update_sprite()
+	. = ..()
+	if(name == "ability scroll")
+		name = "ability scroll: [initial(stored_ability.name)]"
+
+/obj/item/ability_learner/update_overlays()
+	. = ..()
+	if(icon_state == "scroll" && stored_ability)
+		var/image/I = new/image(initial(stored_ability.icon),initial(stored_ability.icon_state))
+		add_overlay(I)
 
 /obj/item/ability_learner/click_self(var/mob/caller)
 
@@ -63,6 +79,7 @@
 
 	GD.loaded_data["unlocked_abilities"] += "[stored_ability]" //stored_ability is a path.
 	A.to_chat(span("notice","You learn everything you can about [initial(stored_ability.name)] from \the [src.name] before it fades to dust.."))
+	stored_ability = null
 	qdel(src)
 
 	return TRUE

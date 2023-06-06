@@ -1,4 +1,4 @@
-/damagetype/unarmed/powerfist/
+/damagetype/unarmed/powerfist
 	attack_verbs = list("punch","hit","strike","pummel","pound")
 
 	hit_effect = /obj/effect/temp/impact/combat/punch

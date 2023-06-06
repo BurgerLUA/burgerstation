@@ -58,6 +58,9 @@
 /turf/simulated/floor/tile/red
 	color = COLOR_RED
 
+/turf/simulated/floor/tile/red/dark
+	color = COLOR_RED_DARK
+
 /turf/simulated/floor/tile/blue
 	color = COLOR_BLUE
 

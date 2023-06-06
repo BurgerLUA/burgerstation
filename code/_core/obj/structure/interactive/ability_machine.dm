@@ -3,7 +3,7 @@
 /obj/structure/interactive/ability_machine
 	name = "ability machine"
 	desc = "It's science, I ain't gotta explain shit."
-	desc_extended = "An almost magical genetic manipulation machine that practically grants the user superpowers. Customize your genetics here."
+	desc_extended = "An almost magical genetic manipulation machine that practically grants the user superpowers. Customize your abilities here."
 
 	icon = 'icons/obj/structure/ability_machine.dmi'
 	icon_state = "ability_machine"
@@ -15,7 +15,9 @@
 	pixel_y = 6
 
 	var/list/ability_types = list(
-
+		/ability/cqc,
+		/ability/dash,
+		/ability/quick_draw
 	)
 
 

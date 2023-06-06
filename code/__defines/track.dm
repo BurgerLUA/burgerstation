@@ -13,5 +13,5 @@
 
 
 //unused: /track/meteor_storm, /track/meteor_recovery, /track/intro, /track/endgame, /track/space_wayfarer
-//unused boss: /track/nervous_journey, /track/night, /track/progression_mk4, /track/chords, /track/industrial_beat, /track/from_evil
+//unused boss: /track/nervous_journey, /track/night, /track/progression_mk4, /track/industrial_beat, /track/from_evil
 //unused menu: /track/slow_fall,/track/boat,/track/two_thirty_six,/track/relaxed_intro, /track/new_year, /track/carrib,/track/movie, /track/slayer, /track/woah

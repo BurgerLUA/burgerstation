@@ -8,6 +8,7 @@
 	var/cost = 100
 	var/cooldown = SECONDS_TO_DECISECONDS(1)
 	var/cooldown_end = 0
+	var/toggle = FALSE //Set to true if this is an ability that toggles.
 
 	var/category
 
@@ -28,6 +29,9 @@
 	if(!src.on_cast_pre(caller,target,location,params))
 		return FALSE
 	return src.on_cast(caller,target,location,params)
+
+/ability/proc/is_active(var/mob/caller)
+	return FALSE
 
 /ability/proc/on_cast_pre(var/mob/caller,var/atom/target,location,params)
 

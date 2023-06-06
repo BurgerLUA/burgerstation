@@ -3,7 +3,7 @@
 	desc = "This button does something, I think."
 
 	icon = 'icons/hud/hud.dmi'
-	icon_state = "slot"
+	icon_state = null
 
 	var/is_static = TRUE //Is the button anchored?
 

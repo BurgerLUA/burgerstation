@@ -54,9 +54,8 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	stun_angle = -90
 
-	var/cqc = ""
-
-	var/list/known_cqc = list()
+	var/cqc_category
+	var/cqc_combo = ""
 
 	size = SIZE_HUMAN
 

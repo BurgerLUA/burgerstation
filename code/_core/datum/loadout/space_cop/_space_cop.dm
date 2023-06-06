@@ -116,3 +116,21 @@
 		/obj/item/magazine/pistol_40,
 		/obj/item/magazine/pistol_40
 	)
+
+
+/loadout/space_soldier/spec_ops
+	spawning_items = list(
+		/obj/item/clothing/undertop/underwear/shirt,
+		/obj/item/clothing/pants/normal/reinforced/space_soldier,
+		/obj/item/clothing/feet/shoes/black_boots,
+		/obj/item/clothing/feet/shoes/black_boots/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+
+
+
+
+
+
+
+	)

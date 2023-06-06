@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(horde)
 		if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
 			continue
 		var/area/A = T.loc
-		if(A.area_identifier != "Mission")
+		if(A.area_identifier != "Mission" || A.flags_area & FLAG_AREA_NO_HORDE)
 			continue
 		if(P.health && rand() > P.health.health_current/P.health.health_max)
 			ckey_to_time_to_horde[P.ckey] = world.time + HORDE_DELAY_RECHECK //Forgiveness.
@@ -176,6 +176,10 @@ SUBSYSTEM_DEF(horde)
 		if(debug) log_debug("Could not send squad: Not on mission map!")
 		return FALSE
 
+	if(!bypass_restrictions && A.flags_area & FLAG_AREA_NO_HORDE)
+		if(debug) log_debug("Could not send squad: Area forbids hordes!")
+		return FALSE
+
 	var/chunk/C = CHUNK(T)
 	if(!C)
 		if(debug) log_debug("Could not send squad: Could not find a valid chunk.")
@@ -202,6 +206,12 @@ SUBSYSTEM_DEF(horde)
 				continue
 			for(var/h in ACC.nodes)
 				var/obj/marker/map_node/N = h
+				var/turf/TN = N.loc
+				if(!TN || !is_simulated(TN))
+					continue
+				var/area/AN = TN.loc
+				if(!AN || AN.flags_area & FLAG_AREA_NO_HORDE)
+					continue
 				if(length(N.adjacent_map_nodes) != 1) //Find ending nodes only.
 					continue
 				valid_nodes += N

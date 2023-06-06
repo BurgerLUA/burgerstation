@@ -37,7 +37,7 @@
 
 /loot/lavaland/can_man
 	loot_table = list(
-		/obj/item/storage/blood_box/minigun = 9,
+		/obj/item/storage/blood_box/minigun = 3,
 		/obj/item/storage/blood_box/sniper_20 = 1
 	)
 
@@ -57,7 +57,7 @@
 /loot/lavaland/herald
 	loot_table = list(
 		/obj/item/herald_mirror = 3,
-		/obj/item/clothing/ring/copper/unarmed_booster = 1
+		/obj/item/ability_learner/cqc/sleeping_carp = 1
 	)
 
 /loot/lavaland/hierophant

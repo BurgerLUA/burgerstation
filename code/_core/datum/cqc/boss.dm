@@ -1,5 +1,6 @@
 /cqc/boss
 	combo_breaker = TRUE
+	category = "Big Boss"
 
 /cqc/boss/fast_grab
 	name = "Fast Grab"

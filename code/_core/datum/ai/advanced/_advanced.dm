@@ -23,7 +23,7 @@
 	var/obj/item/bullet_cartridge/last_found_bullet
 	var/desired_shell_reload = 0
 
-	var/grenade_chance = 2 //Percent change to use a grenade each combat tick.
+	var/grenade_chance = 1 //Percent change to use a grenade each combat tick.
 
 	var/should_find_ammo_pile_on_empty = FALSE //Set to true if this AI should find an ammo pile if the NPC has no ammo.
 	var/obj/structure/interactive/storage/ammo_pile/found_ammo_pile
@@ -33,8 +33,6 @@
 	use_alert_overlays = TRUE
 
 	attack_movement_obstructions = FALSE
-
-	var/list/overall_defense_rating = list()
 
 	var/use_cover_chance = 100
 	var/obj/marker/cover_node/current_cover

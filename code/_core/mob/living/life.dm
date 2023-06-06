@@ -116,6 +116,8 @@
 */
 
 /mob/living/proc/revive()
+	if(!dead)
+		return FALSE
 	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 	hit_logs = list() //Clear logs.
 	movement_flags = 0x0
