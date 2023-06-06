@@ -7,7 +7,8 @@
 
 	loyalty_tag = "Gutlunch"
 
-	ai = /ai/passive
+	ai = /ai/gutlunch
+
 
 	damage_type = /damagetype/npc/cow
 
@@ -22,9 +23,13 @@
 
 	size = SIZE_ANIMAL
 
+	stun_angle = 0
+
 /mob/living/simple/gutlunch/post_move(var/atom/old_loc)
+
 	. = ..()
-	if(!dead && loc && (!ai || !ai.objective_attack) && src.z)
+
+	if(!dead && is_turf(loc) && (ai && !ai.objective_attack) && src.z)
 		consume_turf(loc)
 
 /mob/living/simple/gutlunch/update_icon()
@@ -59,38 +64,20 @@
 
 	var/eat_limit = 5 //Look, I don't want to know what would happen if someone places 500 items on a single tile.
 
-	for(var/mob/living/L in T.contents) //First pass.
+	for(var/obj/item/I in T.contents) //Second pass.
 		if(src.qdeleting || src.dead)
 			continue
-		if(!L || L.qdeleting)
+		if(!I || I.qdeleting)
 			continue
 		if(eat_limit <= 0)
 			break
-		if(!L.dead)
-			continue
-		if(L.is_player_controlled())
-			continue
-		if(!(L.override_butcher || length(L.butcher_contents)) || !L.can_be_butchered())
-			continue
-		L.on_butcher(src)
+		if(I.get_value() < 100)
+			qdel(I)
+		else
+			I.force_move(src)
 		. = TRUE
 		eat_limit--
 		CHECK_TICK_SAFE(50,FPS_SERVER)
-
-	if(eat_limit > 0)
-		for(var/obj/item/I in T.contents) //Second pass.
-			if(src.qdeleting || src.dead)
-				continue
-			if(!I || I.qdeleting)
-				continue
-			if(eat_limit <= 0)
-				break
-			if(I.get_value() < 100)
-				qdel(I)
-			else
-				I.force_move(src)
-			. = TRUE
-			CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(.)
 		play_sound(T,'sound/effects/gutlunch_eat.ogg')

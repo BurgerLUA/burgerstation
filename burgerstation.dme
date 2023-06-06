@@ -275,6 +275,7 @@
 #include "code\_core\datum\ai\simple\dick_kickem.dm"
 #include "code\_core\datum\ai\simple\glockroach.dm"
 #include "code\_core\datum\ai\simple\goliath.dm"
+#include "code\_core\datum\ai\simple\gutlunch.dm"
 #include "code\_core\datum\ai\simple\legion.dm"
 #include "code\_core\datum\ai\simple\legion_head.dm"
 #include "code\_core\datum\ai\simple\ranged.dm"

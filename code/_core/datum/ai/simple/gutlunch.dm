@@ -1,18 +1,15 @@
-/ai/advanced/beef
-	ignore_immortal = TRUE
-	should_find_weapon = FALSE
-	roaming_distance = VIEW_RANGE
-	enable_loc_safety = FALSE
-	attack_movement_obstructions = TRUE
+/ai/gutlunch
+	radius_find_enemy = VIEW_RANGE
+	should_investigate_alert = FALSE
 
-/ai/advanced/beef/check_aggression(var/mob/living/target,var/aggression_override = src.aggression)
+	aggression = 1
+	assistance = 1
 
-	if(target == hunt_target)
-		return target.horizontal || is_facing(target,owner)
+	allow_far_roaming = TRUE
+	roaming_distance = VIEW_RANGE*2
 
-	return ..()
 
-/ai/advanced/beef/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
+/ai/gutlunch/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
 
 	if(!L.dead)
 		return ..()
@@ -25,12 +22,12 @@
 
 	return TRUE
 
-/ai/advanced/beef/handle_attacking()
+/ai/gutlunch/handle_attacking()
 
 	if(is_living(objective_attack) && get_dist(owner,objective_attack) <= 1)
 		var/mob/living/L = objective_attack
 		if(L.dead && (L.override_butcher || length(L.butcher_contents)))
-			var/turf/T = get_turf(owner)
+			var/turf/T = get_turf(src)
 			L.visible_message(span("danger","\The [owner.name] starts to devour \the [L.name]!"),span("danger","You start to butcher \the [L.name]!"))
 			play_sound('sound/effects/demon_consume.ogg',T)
 			PROGRESS_BAR(owner,L,max(10,L.health.health_max*0.05),L::on_butcher(),owner,L)

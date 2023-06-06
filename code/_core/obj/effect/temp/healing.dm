@@ -4,6 +4,7 @@
 	icon = 'icons/obj/effects/healing.dmi'
 	icon_state = "heal"
 	duration = SECONDS_TO_DECISECONDS(3)
+	color = "#FF0000"
 
 /obj/effect/temp/healing/New(var/desired_location,var/desired_time,var/desired_color)
 

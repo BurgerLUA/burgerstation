@@ -54,10 +54,15 @@
 	if(horizontal)
 		return PLANE_MOVABLE_DEAD
 	return PLANE_MOVABLE_STEALTH //Always stealth.
-/mob/living/advanced/npc/beefman/on_walk()
-	var/turf/T = get_turf(src)
-	for(var/obj/effect/cleanable/B in T.contents)
-		qdel(B)
-		src.health.health_max += 5
-		src.health.adjust_loss_smart(-5,-5,-5)
+
+/mob/living/advanced/npc/beefman/post_move(var/atom/old_loc)
 	. = ..()
+	if(is_simulated(old_loc))
+		var/turf/simulated/S = old_loc
+		if(S.blood_level_hard > 0)
+			var/heal_amount = 0
+			for(var/obj/effect/cleanable/blood/B in S.contents)
+				heal_amount += max(1,B.blood_level)
+				qdel(B)
+			if(heal_amount > 0)
+				CREATE(/obj/effect/temp/healing,S)
