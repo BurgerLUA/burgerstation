@@ -11,8 +11,6 @@
 	distance_target_min = 1
 	distance_target_max = VIEW_RANGE*1.5
 
-	see_through_walls = TRUE
-
 	var/mob/living/simple/can_man/owner_as_can_man
 	var/next_minigun_sweep = 0
 	var/strafe_count = 0

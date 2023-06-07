@@ -1,7 +1,7 @@
 /ai/bot/cleaner
 	active = TRUE
 
-	shoot_obstacles = FALSE
+	attack_obstacles = FALSE
 	attack_movement_obstructions = FALSE
 
 	aggression = 0

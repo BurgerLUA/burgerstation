@@ -27,3 +27,5 @@
 	guard = TRUE
 
 	use_blood_sight = FALSE
+
+	attack_movement_obstructions = TRUE

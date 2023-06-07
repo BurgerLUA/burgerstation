@@ -189,7 +189,7 @@
 		return TRUE
 
 	//Find an obstacle to shoot.
-	if(shoot_obstacles && length(obstacles))
+	if(attack_obstacles && length(obstacles))
 		var/atom/closest_obstacle
 		var/best_distance = INFINITY
 		var/view_range = get_view_range()

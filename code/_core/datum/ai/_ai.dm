@@ -42,7 +42,7 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	var/turf/home_turf //Where the mob's home is.
 
-	var/shoot_obstacles = TRUE
+	var/attack_obstacles = TRUE
 
 	var/left_click_chance = 90
 
