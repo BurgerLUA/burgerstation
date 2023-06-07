@@ -191,6 +191,11 @@
 		"shirt_tee" = COLOR_OLIVE_DRAB
 	)
 
+/obj/item/clothing/shirt/normal/reinforced/space_soldier
+	polymorphs = list(
+		"shirt_tee" = COLOR_BLACK
+	)
+
 /obj/item/clothing/shirt/normal/reinforced/merc_alt
 	polymorphs = list(
 		"shirt_tee" = "#626C65"

@@ -3,7 +3,7 @@
 	reaction_time = 3
 
 	aggression = 2
-	assistance = 0
+	assistance = 1
 
 	roaming_distance = 4
 
@@ -12,3 +12,5 @@
 	should_find_weapon_on_ground = TRUE
 
 	use_cone_vision = FALSE
+
+	cowardice = 0.25

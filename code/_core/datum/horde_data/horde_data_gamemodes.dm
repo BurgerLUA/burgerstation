@@ -14,7 +14,7 @@
 
 	horde_weights = list(
 		"xenos" = 100,
-		/mob/living/advanced/npc/space_soldier = 50
+		"soldiers" = 50
 	)
 
 	horde_squads = list(
@@ -23,6 +23,10 @@
 			/mob/living/simple/xeno/hunter = 30,
 			/mob/living/simple/xeno/predatorian = 5,
 			/mob/living/simple/xeno/sentinel = 10
+		),
+		"soldiers" = list(
+			/mob/living/advanced/npc/space_soldier = 100,
+			/mob/living/advanced/npc/space_soldier/special_operative = 5
 		)
 	)
 

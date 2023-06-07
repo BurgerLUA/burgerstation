@@ -74,6 +74,13 @@
 	name = "reinforced protective helmet"
 	armor = /armor/military/medium/hard
 
+/obj/item/clothing/head/helmet/polymorphic/reinforced/black
+	polymorphs = list(
+		"base" = COLOR_BLACK,
+		"ears" = COLOR_GREY_DARK,
+		"stripe" = COLOR_BLACK
+	)
+
 /obj/item/clothing/head/helmet/polymorphic/reinforced/ntops
 	name = "NT ops reinforced protective helmet"
 	polymorphs = list(

@@ -4,7 +4,7 @@
 
 	dna = /dna/human
 
-	ai = /ai/advanced/space_cop
+	ai = /ai/advanced/space_soldier
 
 	dialogue_id = /dialogue/npc/soldier/
 
@@ -26,3 +26,17 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/space_cop)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/space_cop)
+
+
+/mob/living/advanced/npc/space_soldier/special_operative
+	name = "space special operative"
+
+	dialogue_id = null
+
+	ai = /ai/advanced/space_soldier/special
+
+	possible_loadouts = list(
+		/loadout/space_soldier/spec_ops = 1
+	)
+
+	level = 90

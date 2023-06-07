@@ -4,3 +4,4 @@
 	aggression = 1
 	assistance = 1
 	guard = TRUE
+	cowardice = 0.25

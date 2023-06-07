@@ -15,13 +15,11 @@
 
 	worn_layer = LAYER_MOB_CLOTHING_ALL
 
-	var/active = FALSE
-
 	var/obj/item/powercell/stored_cell = /obj/item/powercell/tiny
 
-	var/next_think = 0
-
 	rarity = RARITY_UNCOMMON
+
+	var/active = FALSE
 
 /obj/item/clothing/glasses/nightvision/PreDestroy()
 	QDEL_NULL(stored_cell)
@@ -91,21 +89,6 @@
 /obj/item/clothing/glasses/nightvision/get_battery()
 	return stored_cell
 
-/obj/item/clothing/glasses/nightvision/think()
-	. = ..()
-	if(next_think <= world.time)
-		next_think = world.time + SECONDS_TO_DECISECONDS(1)
-		var/obj/item/powercell/PC = get_battery()
-		if(PC) PC.charge_current = max(0,PC.charge_current-rand(8,12))
-		if(!PC || PC.charge_current <= 0) //NO MORE CHARGE.
-			active = FALSE
-			update_sprite()
-			if(is_inventory(src.loc))
-				var/obj/hud/inventory/I = src.loc
-				disable(I)
-
-	return active
-
 /obj/item/clothing/glasses/nightvision/update_icon()
 	. = ..()
 	icon = initial(icon)
@@ -115,49 +98,70 @@
 		icon_state = "[icon_state]_off"
 		icon_state_worn = "[icon_state_worn]_off"
 
-/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/glasses/nightvision/proc/drain_power(var/mob/caller)
+
+	var/obj/item/powercell/PC = get_battery()
+	if(!PC)
+		set_active(caller,FALSE)
+		return FALSE
+
+	var/drain_amount = CELL_SIZE_TINY * (1/(60*30)) //~30 minutes of nightvision
+	drain_amount = CEILING(drain_amount,1)
+
+	PC.charge_current = max(0,PC.charge_current - 3)
+
+	if(PC.charge_current <= 0)
+		set_active(caller,FALSE)
+		return FALSE
+
+	CALLBACK("\ref[src]_drain_power",SECONDS_TO_DECISECONDS(1),src,src::drain_power(),caller)
+
+	return TRUE
+
+/obj/item/clothing/glasses/nightvision/proc/set_active(var/mob/caller,var/desired_active=TRUE)
+
+	if(active == desired_active)
+		return FALSE
+
+	if(!active)
+		var/obj/item/powercell/PC = get_battery()
+		if(!PC)
+			caller?.to_chat(span("notice","\The [src.name] doesn't have a power cell installed!"))
+			return TRUE
+		PC.charge_current = max(0,PC.charge_current - 10) //Spamming removes power.
+		if(PC.charge_current <= 0)
+			caller?.to_chat(span("notice","\The [src.name] doesn't have enough power!"))
+			return TRUE
+
+	active = !active
 
 	var/obj/hud/inventory/I = src.loc
-	if(istype(I))
-		INTERACT_CHECK
-		INTERACT_DELAY(1)
-		if(!active)
-			var/obj/item/powercell/PC = get_battery()
-			if(!PC)
-				caller.to_chat(span("notice","\The [src.name] doesn't have a power cell installed!"))
-				return TRUE
-			if(PC.charge_current <= 0)
-				caller.to_chat(span("notice","\The [src.name] doesn't have enough power!"))
-				return TRUE
-			PC.charge_current = max(0,PC.charge_current - 10) //Spamming removes power.
-		active = !active
-		if(active)
-			enable(I)
-			START_THINKING(src)
-		else
-			disable(I)
-		caller.to_chat(span("notice","You toggle \the [src.name] [active ? "on" : "off"]."))
-		return TRUE
+	if(is_inventory(I))
+		if(I.worn && I.item_slot & SLOT_FACE && is_living(I.owner))
+			var/mob/living/L = I.owner
+			if(active)
+				L.add_mob_value("\ref[src]","nightvision",150,ADDITION)
+			else
+				L.remove_mob_value("\ref[src]","nightvision",ADDITION)
+			L.handle_lighting_alpha()
+		update_sprite()
+		if(I.worn)
+			I.update_worn_icon(src)
 
-	. = ..()
+	if(active && !drain_power(caller))
+		return FALSE
 
-
-/obj/item/clothing/glasses/nightvision/proc/enable(var/obj/hud/inventory/I)
-
-	if(I && I.worn && I.owner && is_living(I.owner))
-		var/mob/living/L = I.owner
-		L.add_mob_value("\ref[src]","nightvision",150,ADDITION)
-		L.handle_lighting_alpha()
+	caller?.to_chat(span("notice","\The [src.name] flickers [active ? "on" : "off"]."))
 
 	return TRUE
 
 
-/obj/item/clothing/glasses/nightvision/proc/disable(var/obj/hud/inventory/I)
+/obj/item/clothing/glasses/nightvision/click_self(var/mob/caller,location,control,params)
 
-	if(I && I.worn && I.owner && is_living(I.owner))
-		var/mob/living/L = I.owner
-		L.remove_mob_value("\ref[src]","nightvision",ADDITION)
-		L.handle_lighting_alpha()
+	INTERACT_CHECK
+	INTERACT_DELAY(10)
+
+	set_active(caller,!active)
 
 	return TRUE
 
@@ -165,11 +169,19 @@
 /obj/item/clothing/glasses/nightvision/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
 	var/obj/hud/inventory/I = loc
-	if(active && I.worn && I.item_slot & SLOT_FACE)
-		enable(I)
+	if(I.worn && I.item_slot & SLOT_FACE && is_living(I.owner))
+		var/mob/living/L = I.owner
+		if(L.ai && !active)
+			set_active(L,TRUE)
+		if(active)
+			L.add_mob_value("\ref[src]","nightvision",150,ADDITION)
+			L.handle_lighting_alpha()
 
 /obj/item/clothing/glasses/nightvision/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
-	if(active && old_inventory.worn && old_inventory.item_slot & SLOT_FACE)
-		disable(old_inventory)
+	if(active && old_inventory.worn && old_inventory.item_slot & SLOT_FACE && is_living(old_inventory.owner))
+		var/mob/living/L = old_inventory.owner
+		L.remove_mob_value("\ref[src]","nightvision",ADDITION)
+		L.handle_lighting_alpha()
+
 

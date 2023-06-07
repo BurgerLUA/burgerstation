@@ -114,5 +114,13 @@
 		"buckle" = "#625C59"
 	)
 
+/obj/item/clothing/back/storage/satchel/poly/black
+	polymorphs = list(
+		"body" = COLOR_BLACK,
+		"straps" = COLOR_GREY_DARK,
+		"detail" = COLOR_GREY,
+		"buckle" = COLOR_SILVER
+	)
+
 /obj/item/clothing/back/storage/satchel/poly/zombie
 	loot_to_generate = /loot/zombie

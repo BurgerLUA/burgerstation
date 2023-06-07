@@ -18,7 +18,7 @@
 
 	damage_mod = 1.4
 
-	automatic = TRUE
+	automatic = FALSE
 
 	shoot_sounds = list('sound/weapons/ranged/rifle/dmr/shoot.ogg')
 
@@ -94,3 +94,26 @@
 	INITIALIZE(attachment_sight)
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/dmr/specop
+	value_burgerbux = 1
+
+
+/obj/item/weapon/ranged/bullet/magazine/rifle/dmr/specop/Generate()
+
+	. = ..()
+
+	attachment_barrel = new /obj/item/attachment/barrel/suppressor(src)
+	INITIALIZE(attachment_barrel)
+	GENERATE(attachment_barrel)
+	FINALIZE(attachment_barrel)
+
+	attachment_sight = new /obj/item/attachment/sight/laser_sight(src)
+	INITIALIZE(attachment_sight)
+	GENERATE(attachment_sight)
+	FINALIZE(attachment_sight)
+
+	attachment_undermount = new /obj/item/attachment/undermount/angled_grip(src)
+	INITIALIZE(attachment_undermount)
+	GENERATE(attachment_undermount)
+	FINALIZE(attachment_undermount)
