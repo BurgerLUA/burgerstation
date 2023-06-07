@@ -60,7 +60,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	object_size = 2
+	object_size = 1
 
 	respawn_time = SECONDS_TO_DECISECONDS(300)
 
