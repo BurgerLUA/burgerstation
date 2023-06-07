@@ -13,6 +13,8 @@
 
 	editable = FALSE
 
+	rarity = RARITY_RARE
+
 /obj/item/paper/book/enchanting/New(var/desired_loc)
 
 	data = list()
