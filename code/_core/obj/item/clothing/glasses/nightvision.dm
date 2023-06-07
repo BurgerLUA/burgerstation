@@ -22,6 +22,7 @@
 	var/active = FALSE
 
 /obj/item/clothing/glasses/nightvision/PreDestroy()
+	CALLBACK_REMOVE("\ref[src]_drain_power")
 	QDEL_NULL(stored_cell)
 	. = ..()
 
@@ -99,6 +100,9 @@
 		icon_state_worn = "[icon_state_worn]_off"
 
 /obj/item/clothing/glasses/nightvision/proc/drain_power(var/mob/caller)
+
+	if(!active)
+		return FALSE
 
 	var/obj/item/powercell/PC = get_battery()
 	if(!PC)
