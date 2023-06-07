@@ -7,7 +7,9 @@
 	icon_state_worn = "worn"
 
 	worn_layer = LAYER_MOB_CLOTHING_MASK
+
 	item_slot = SLOT_FACE
+	item_slot_layer = 3
 
 	can_wear = TRUE
 	can_rename = TRUE
