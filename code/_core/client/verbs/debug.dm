@@ -32,7 +32,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/debug_weapon_value,
 	/client/verb/swarm_test,
 	/client/verb/destroy_everything,
-	/client/verb/subsystem_debug
+	/client/verb/subsystem_debug,
+	/client/verb/profile_server
 )
 
 
@@ -735,3 +736,36 @@ var/global/list/destroy_everything_whitelist = list(
 
 	var/subsystem/S = valid_choices[choice]
 	debug_variables(S)
+
+
+var/global/list/profiling_ckeys = list()
+
+
+/proc/start_profiling()
+	world.Profile(PROFILE_RESTART)
+	CALLBACK_GLOBAL("end_profling",SECONDS_TO_DECISECONDS(30),.proc/end_profling)
+
+/proc/end_profling()
+
+	var/found_output = world.Profile(PROFILE_STOP,format="json")
+
+	for(var/ckey in profiling_ckeys)
+		var/client/C = CLIENT(ckey)
+		if(!C)
+			continue
+		C << browse(found_output)
+
+	profiling_ckeys.Cut()
+
+/client/verb/profile_server()
+	set name = "Profile Server"
+	set category = "Debug"
+
+	profiling_ckeys[ckey] = TRUE
+
+	if(CALLBACK_EXISTS("end_profiling"))
+		to_chat(span("notice","A server profile is currently in progress. You will be notified when the profile is complete."))
+		return TRUE
+
+	start_profiling()
+

@@ -22,6 +22,10 @@
 	var/list/linked_field_gens = list()
 	var/list/linked_field_gen_walls = list() //dimensional list
 
+/obj/structure/interactive/field_generator/PreDestroy()
+	set_active(FALSE,force=TRUE)
+	. = ..()
+
 /obj/structure/interactive/field_generator/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

@@ -105,6 +105,8 @@
 
 /mob/living/proc/get_resist_percent()
 	if(grabbing_hand && grabbing_hand.owner)
+		if(grab_difficulty <= 0)
+			return -1
 		return clamp(grab_resist_counter/grab_difficulty,0,1)
 	if(on_fire)
 		return clamp(1 - fire_stacks/fire_stacks_max,0,1)
