@@ -66,7 +66,7 @@
 
 	var/obj/effect/temp/portal/start_portal = new(T,SECONDS_TO_DECISECONDS(300))
 	var/obj/effect/temp/portal/end_portal = new(PMT,SECONDS_TO_DECISECONDS(300))
-	if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z))
+	if(SSdmm_suite.is_pvp_coord(T.x,T.y,T.z)) //Effectively one way.
 		end_portal.mouse_opacity = 0
 		end_portal.alpha = 0
 		end_portal.invisibility = 101

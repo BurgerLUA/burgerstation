@@ -7,7 +7,7 @@
 	icon = 'icons/obj/item/books.dmi'
 	icon_state = "scroll"
 
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 
 	var/ability/stored_ability
 

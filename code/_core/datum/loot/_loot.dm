@@ -5,7 +5,7 @@
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
 	var/chance_none = 0 //Applies on a per loot_count basis.
 	var/loot_multiplier = 1 //How much of the loot to duplicate.
-	var/use_value = FALSE //Use the actual value of a weapon as a weight instead of the predefined value in the list.
+	var/use_value = FALSE //Use the actual value of a item as a weight instead of the predefined value in the list.
 	var/average_value = 0
 	var/use_random_item_amounts = FALSE //Set to true to enable random quanity amounts for items spawned.
 

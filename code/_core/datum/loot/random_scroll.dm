@@ -4,3 +4,8 @@
 	value_max = 10000000
 
 	ignore_burgerbux = TRUE
+
+/loot/random/ability
+	base_type = /obj/item/ability_learner
+	value_min = 1
+	value_max = 10000000

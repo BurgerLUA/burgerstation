@@ -19,7 +19,8 @@
 		/obj/item/container/simple/alcohol/beer = 1,
 		/obj/item/container/simple/can/cola = 1,
 		/obj/item/container/simple/can/mountain_wind = 1,
-		/obj/item/fulton_pack = 1
+		/obj/item/fulton_pack = 1,
+		/obj/item/ability_learner/cqc/boss = 1
 	)
 	loot_table_guaranteed = list(
 		/obj/item/flare,

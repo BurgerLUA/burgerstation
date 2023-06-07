@@ -25,11 +25,8 @@
 "y" = (/obj/marker/map_node,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
 "z" = (/obj/marker/map_node,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 "A" = (/obj/marker/smart_clear_turf,/obj/marker/map_node,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
-"B" = (/obj/marker/portal/nanotrasen,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 "C" = (/obj/marker/map_node,/obj/marker/smart_clear_turf,/turf/simulated/floor/colored/dirt/path,/area/dmm_suite/clear_area)
-"D" = (/obj/structure/carpet/red,/obj/marker/portal/nanotrasen,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 "E" = (/obj/marker/smart_clear_turf,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"F" = (/obj/marker/map_node,/obj/marker/portal/nanotrasen,/turf/simulated/floor/brick/grey,/area/mission/prefab/fob/bawse_loot)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
@@ -44,8 +41,8 @@ aadezfgfffgffhia
 aajkflvlwlvlfmja
 aajnflvvvvvlfoja
 aEjpflllllllfqjE
-aajBBDDDDDDDBBja
-aajBFBBBBBFBBBja
-aadBBBBBBBBBBBia
+aajfflllllllffja
+aajfzfffffzfffja
+aadfffffffffffia
 aabbjjjjcfAfrbba
 "}
