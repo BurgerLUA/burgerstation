@@ -563,17 +563,19 @@
 
 	if(length(item_blacklist))
 		for(var/o in item_blacklist)
-			if(istype(I,o))
-				if(messages && src.loc)
-					owner.to_chat(span("warning","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
-				return FALSE
+			if(!istype(I,o))
+				continue
+			if(messages && src.loc)
+				owner.to_chat(span("warning","\The [src.loc.name] doesn't seem suitable to hold \the [I.name]!"))
+			return FALSE
 
 	if(length(item_whitelist))
 		var/whitelist_found = FALSE
 		for(var/o in item_whitelist)
-			if(istype(I,o))
-				whitelist_found = TRUE
-				break
+			if(!istype(I,o))
+				continue
+			whitelist_found = TRUE
+			break
 
 		if(!whitelist_found)
 			if(messages && src.loc)

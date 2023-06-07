@@ -5,6 +5,7 @@
 	cowardice = -1
 	retaliate = TRUE
 	resist_grabs = 2
+	night_vision = 0
 
 	objective_delay = DECISECONDS_TO_TICKS(10)
 

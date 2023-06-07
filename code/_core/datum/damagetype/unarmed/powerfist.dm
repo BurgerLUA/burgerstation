@@ -24,7 +24,7 @@
 	)
 
 	skill_stats = list(
-		SKILL_UNARMED = 40
+		SKILL_UNARMED = 30
 	)
 
 	skill_damage = list(
@@ -35,3 +35,28 @@
 
 	attack_delay = 10
 	attack_delay_max = 15
+
+/damagetype/unarmed/powerfist/can_man
+
+	attack_damage_base = list(
+		BLUNT = 80
+	)
+
+	attack_delay = 10
+	attack_delay_max = 15
+
+	crit_multiplier = 4
+	crit_chance = 0
+	crit_chance_max = 0
+
+/damagetype/unarmed/powerfist/can_man/get_crit_chance(var/mob/living/L)
+	return 0
+
+/damagetype/unarmed/powerfist/can_man/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+
+	if(!ismovable(victim))
+		return TRUE
+
+	var/atom/movable/M = victim
+
+	return M.anchored
