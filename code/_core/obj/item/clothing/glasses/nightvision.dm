@@ -17,9 +17,13 @@
 
 	var/obj/item/powercell/stored_cell = /obj/item/powercell/tiny
 
-	rarity = RARITY_UNCOMMON
+	rarity = RARITY_RARE
 
 	var/active = FALSE
+
+/obj/item/clothing/glasses/nightvision/get_base_value()
+	. = ..()
+	. += 500
 
 /obj/item/clothing/glasses/nightvision/PreDestroy()
 	CALLBACK_REMOVE("\ref[src]_drain_power")
