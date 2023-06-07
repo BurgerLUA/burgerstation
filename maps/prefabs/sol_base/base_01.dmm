@@ -6,7 +6,7 @@
 "af" = (/obj/decal/road_marking/solid_cross,/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "ag" = (/mob/living/advanced/npc/space_soldier{icon_state = "directional"; dir = 8},/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/obj/structure/carpet/grey,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/cafeteria)
 "ah" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
-"ai" = (/mob/living/advanced/npc/space_soldier,/obj/structure/carpet/command,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
+"ai" = (/mob/living/advanced/npc/space_soldier/special_operative,/obj/structure/interactive/barricade,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
 "aj" = (/obj/decal/road_marking/solid_line,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "ak" = (/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "al" = (/obj/decal/road_marking/dotted_line/half,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
@@ -14,7 +14,7 @@
 "an" = (/mob/living/advanced/npc/space_soldier,/obj/structure/interactive/barricade,/turf/simulated/floor/road,/area/mission/prefab/sol_base/garage)
 "ao" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 1},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "ap" = (/mob/living/advanced/npc/space_soldier{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/morphing/dark,/area/mission/prefab/sol_base/loading)
-"aq" = (/mob/living/advanced/npc/space_soldier,/obj/structure/interactive/barricade,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
+"aq" = (/mob/living/advanced/npc/space_soldier/special_operative,/obj/structure/carpet/command,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
 "ar" = (/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "as" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
 "at" = (/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/maintenance)
@@ -34,7 +34,7 @@
 "aH" = (/turf/simulated/floor/plating/solarian,/area/mission/prefab/sol_base/maintenance)
 "aI" = (/obj/structure/carpet/red,/obj/structure/interactive/bookcase,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/captains_quarters)
 "aJ" = (/obj/structure/carpet/red,/obj/structure/interactive/computer/console/medical,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/captains_quarters)
-"aK" = (/obj/structure/interactive/bed/sleeper/medical/solarian,/obj/structure/carpet/red,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/captains_quarters)
+"aK" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 4},/turf/simulated/floor/tile/morphing/dark,/area/mission/prefab/sol_base/loading)
 "aL" = (/obj/structure/carpet/red,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/captains_quarters)
 "aM" = (/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/meeting_room)
 "aN" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/solarian,/area/mission/prefab/sol_base/meeting_room)
@@ -112,7 +112,7 @@
 "ch" = (/mob/living/advanced/npc/space_soldier{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/security)
 "ci" = (/obj/decal/road_marking/hazard/yellow,/obj/marker/cover_node/right,/turf/simulated/floor/road,/area/mission/prefab/sol_base/garage)
 "cj" = (/obj/marker/map_node,/turf/simulated/floor/sidewalk,/area/mission/prefab/sol_base/garage)
-"ck" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/solarian,/area/dmm_suite/clear_area)
+"ck" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/yellow,/turf/simulated/floor/plating/solarian,/area/mission/prefab/sol_base/maintenance)
 "cl" = (/obj/structure/interactive/chair/office/dark{icon_state = "officechair_dark"; dir = 4},/obj/structure/carpet/command,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
 "cm" = (/obj/structure/table/wood/poor,/obj/structure/carpet/command,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
 "cn" = (/obj/structure/table/wood/poor,/obj/structure/carpet/command,/obj/marker/spawning/random/dangerous,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/meeting_room)
@@ -237,9 +237,10 @@
 "eC" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/meeting_room)
 "eD" = (/obj/structure/interactive/door/airlock/solarian,/turf/simulated/floor/tile/morphing/command,/area/mission/prefab/sol_base/meeting_room)
 "eE" = (/obj/structure/interactive/door/airlock/solarian/glass,/turf/simulated/floor/tile/morphing/red,/area/mission/prefab/sol_base/lobby)
-"eF" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/lobby)
+"eF" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/meeting_room)
 "eG" = (/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/security)
 "eH" = (/obj/marker/map_node/x2,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/barracks)
+"eI" = (/obj/structure/interactive/power/apc,/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/garage)
 "eJ" = (/obj/decal/road_marking/solid_cross{icon_state = "1"; dir = 4},/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "eK" = (/obj/decal/road_marking/solid_stop{icon_state = "1"; dir = 8},/turf/simulated/floor/road,/area/mission/prefab/sol_base/garage)
 "eL" = (/obj/structure/table/rack/grey,/obj/marker/spawning/random/supply_crate,/turf/simulated/floor/tile/morphing/dark,/area/mission/prefab/sol_base/loading)
@@ -301,7 +302,7 @@
 "fP" = (/obj/structure/interactive/crate/trash,/turf/simulated/floor/tile/morphing/brown,/area/mission/prefab/sol_base/barracks)
 "fQ" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/morphing/brown,/area/mission/prefab/sol_base/barracks)
 "fR" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/tile/morphing/brown,/area/mission/prefab/sol_base/barracks)
-"fS" = (/turf/simulated/wall/metal/solarian,/area/dmm_suite/clear_area)
+"fS" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/solarian,/area/mission/prefab/sol_base/maintenance)
 "fT" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/wire/red,/turf/simulated/floor/plating/solarian,/area/mission/prefab/sol_base/barracks)
 "fU" = (/obj/structure/interactive/door/airlock/solarian,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/morphing/dark,/area/mission/prefab/sol_base/garage)
 "fV" = (/obj/structure/interactive/door/airlock/solarian/glass,/turf/simulated/floor/brick/grey,/area/mission/prefab/sol_base/lobby)
@@ -341,9 +342,11 @@
 "gD" = (/obj/structure/interactive/door/airlock/station/bathroom/toilet,/turf/simulated/floor/tile,/area/mission/prefab/sol_base/bathrooms)
 "gE" = (/obj/structure/interactive/shower{icon_state = "shower"; dir = 4},/turf/simulated/floor/tile/tint,/area/mission/prefab/sol_base/bathrooms)
 "gF" = (/obj/structure/interactive/lighting/fixture/bulb{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile,/area/mission/prefab/sol_base/bathrooms)
+"gG" = (/mob/living/advanced/npc/space_soldier/special_operative,/turf/simulated/floor/tile/morphing/dark,/area/mission/prefab/sol_base/loading)
 "gH" = (/obj/decal/road_marking/hazard,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "gI" = (/obj/structure/interactive/power/apc{icon_state = "apc"; dir = 1},/turf/simulated/wall/metal/solarian,/area/mission/prefab/sol_base/garage)
 "gJ" = (/obj/structure/interactive/barricade,/turf/simulated/floor/brick/grey,/area/mission/prefab/sol_base/lobby)
+"gK" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 8},/obj/structure/interactive/wire/red,/obj/structure/interactive/lighting/fixture/bulb/red{icon_state = "preview"; dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/solarian,/area/mission/prefab/sol_base/maintenance)
 "gL" = (/obj/decal/road_marking/hazard,/obj/marker/map_node,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "gM" = (/obj/decal/road_marking/hazard,/obj/marker/map_node/x2,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "gN" = (/turf/simulated/floor/colored/grass,/area/dmm_suite/clear_area)
@@ -360,6 +363,10 @@
 "gY" = (/obj/decal/road_marking/dotted_line/half,/obj/decal/road_marking/dotted_line/half{icon_state = "1"; dir = 4},/obj/marker/map_node/x4,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "gZ" = (/obj/decal/road_marking/solid_line{icon_state = "1"; dir = 4},/turf/simulated/floor/road,/area/dmm_suite/clear_area)
 "ha" = (/obj/decal/road_marking/solid_stop,/turf/simulated/floor/road,/area/dmm_suite/clear_area)
+"hb" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 8},/obj/structure/interactive/chair{icon_state = "chair"; dir = 8},/obj/structure/carpet/grey,/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/cafeteria)
+"hc" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 4},/obj/decal/hazard/black{icon_state = "line"; dir = 8},/turf/simulated/floor/tile/morphing/engineering,/area/mission/prefab/sol_base/armory)
+"hd" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 8},/turf/simulated/floor/tile/morphing/red,/area/mission/prefab/sol_base/security)
+"he" = (/mob/living/advanced/npc/space_soldier/special_operative{icon_state = "directional"; dir = 1},/turf/simulated/floor/tile/solarian,/area/mission/prefab/sol_base/barracks)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -367,39 +374,39 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasasasasasasasasasasasasasasasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasasasasasasasasasatatatatatatatataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasawawawawawawawaxayazaAaBaBaAaCataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasawawawawawawawaxayazaAaBckaAaCataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatatatatatatatataGaGaGaGaGaHataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaataPaCavavcTavavavcTavavavavavauataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatckatatatatatatatatataHaHaHatasasasasasasasasasasasasasaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatfScTavavavavavavauavauatatatatatatatatatatatatatatatatatataaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaDaDaDaEaEaEaEaEaEaCaHauaFavavavavavauavavavavauavavavavauataaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaEaEaEaEaIaJaKaLaEaMaMaMaNaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOavataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatatavatatatatatatatatataHaHaHatasasasasasasasasasasasasasaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatatcTavavavavavavauavauatatatatatatatatatatatatatatatatatataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaDaDaDaEaEaEaEaEaEcTaHauaFavavfSavavauavavavavauavavavavauataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaEaEaEaEaIaJaLaLaEeFaMaMaNaOaOaOaOaOaOaOaOaOaOaOaOaOaOaOavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaEaQaRaEaSaLaLaLaEaTaTaUaVaOaWaXaYaWaZaYaWaZaYaWaZaYbaaOavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaEbdbebfaLbgbhbibjaVbkbkblbmaWbnaYaWboagaWbnaYaWbqaYbaaOavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabxbxbxbxbybzbhbAaEbBbCbkbDaObEbFbFbFbFbFbFbFbFbFbFbFbaaOavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaacuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbaTaTbxbxbxbIbxbxbJbCbkbKbLbMbNbObObMbObObMbObObObPbQaOavataaaaaaaaaaaaaaaa
-fZaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbkblblcSblblcSblblbkbkbWaObFbFbFbFbFbFbFbFbFbFbFbFbQaOavataaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaabbbsbtbsbtbsbtbubtbsbvbvbvbwbbbKbCbkbXbYaicacaaibYcbbCbCbJbmaWbnagaWbnaYaWbqagcccccdcecfbcataaaaaaaaaaaaaaaa
+fZaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeIbkblblcSblblcSblblbkbkbWaObFbFbFbFbFbFbFbFbFbFbFbFbQaOavataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabbbsbtbsbtbsbtbubtbsbvbvbvbwbbbKbkbkbXbYaqcacaaqbYcbbCbCbJbmaWbnagaWbnhbaWbqagcccccdcecfbcataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaabbbGbtbsbtbsbtbsbRbsbHbSbHbTbbbJdublbCclcmcmcncmcobCbJcpbDaOaWcqaYaWcraYaWcraYcccscdctaOavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaabbbtbtbtbRbtbtbtbtbtbvbvbvbwbbaMaMblbCclcmbYbYcmcobCbJbxbxcwcwcwcwcwcwcwcxcwcwcyaOczaOaOavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaabbcganbtbtbtancgancgcibvbvcjbbcAaMblbCclcEbYbYcmcobCbJbxcFcGcHcHcHcIcHcHcJcKcLcMcNcOcPcQavataaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaabbbtbtbtbtbtbtbtbtbtbbbbbbcvbbcAaMbUbCclcmbYbYcmcobCbWbxcWcXcXcYcXcXcYcXcZdacLcMdbcZcNcQavataaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaabbbtbtbtbtbtbtbvbvbvbbcAcBcCcDdfdgaVbCclcmcmcmcEcobCbJbxdhdidbcYcXcXcYdjcZdacLcMcXcZdkcQavataaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaabbcRbtbtbRbtbtbvbvbvbbcAcUcVcUdmaMbJcbbYbYdndnbYbYbXbJbxcWcXcXcYcXcXcYcXcZdadocMcXdpcNcQauataaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaabbbtbtbtbtbtbtbvbvbvdcdddefudeapaMdtdudvaqbCbCaqdvcpbJbxdxdydzdzdzdAdzdzdBdCdDdEcObpcNcQavataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabbbtbtbtbtbtbtbvbvbvbbcAcBcCcDdfdgaVbCclcmcmcmcEcobCbJbxdhdidbcYcXcXcYdjcZdacLhccXcZdkcQavataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabbcRbtbtbRbtbtbvbvbvbbaKcUcVcUdmaMbJcbbYbYdndnbYbYbXbJbxcWcXcXcYcXcXcYcXcZdadocMcXdpcNcQauataaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaabbbtbtbtbtbtbtbvbvbvdcdddefudeapaMdtdudvaibCbCaidvcpbJbxdxdydzdzdzdAdzdzdBdCdDdEcObpcNcQavataaaaaaaaaaaaaaaa
 fZaaaaaaaaaaaaaaaaaabbbtbtbtbRbtbtbbbbbbbbdlcUcUcUddaMaMaMbBbCdGdGbCbWaMaMbxdododododododododHdHdHdIdJdIdIdIavataaaaaaaaaaaaaaaa
-aaabajadamaradajbbbbbbbtbtbtbtbtbtbbcAcAcAcAcUcUcUddcAdKaMbJbCbCbCbCbJaMdLdMdLdLdLdLdLdMdLdNdIdObZdQdRdSdTdIavataaaaaaaaaaaaaaaa
+aaabajadamaradajbbbbbbbtbtbtbtbtbtbbcAcAgGcAcUcUcUddcAdKaMbJbCbCbCbCbJaMdLdMdLdLdLdLdLdMdLdNdIdObZdQdRdSdTdIavataaaaaaaaaaaaaaaa
 aaabajadambVadajbbglbbcRbtbtbtbtdUbbdlcUdedededVdedededfdgaVdWbkbkdXaVdgdYdZeaeaebeacheaeddLdIeeefegehegeidIavataaaaaaaaaaaaaaaa
-ababajadamaradajbbbbbbejbtbtbtbtbtbbcAekdfelcAcAemcAdfelaMbJdubKbKcpbJaMeneodLepeqdLdLereadLdIdOefegegegesdIavatabababababababab
-adetadadamaradajeuevewbtbtbtbtbtbtbbexexeyexexezezeAeBezeCaMaMeDeDaMaMaMezeEeAezeFeGdLereadLdIdOefegeHegdTdIauatajadadadadadetdq
+ababajadamaradajbbbbbbejbtbtbtbtbtbbcAekdfelcAcAemcAdfelaMbJdubKbKcpbJaMeneodLepdLdLdLereadLdIdOefegegegesdIavatabababababababab
+adetadadamaradajeuevewbtbtbtbtbtbtbbexexeyexexezezeAeBezeCaMaMeDeDaMaMaMezeEeAezezeGdLereahddIdOefegeHegdTdIauatajadadadadadetdq
 adeJadadamaradajeKevewbtbtbtbtbtbtbbeLcAdfcAeLezeMeMeNeOeOePeMeQeQeMePeMeMeQeMeMezeRdLereadLdIdOefegegegeSdIavatajadadadadadeJdq
-adetadadamarakajeKevewbRbtbtbRbtdUbbeTcUeUcUeVezeWeXeYeXeXeZfaeXfbfceZeXeXfdeXfeezfferereafgdIeeefegegegfhdIavatajakadadadadetdq
+adetadadamarakajeKevewbRbtbtbRbtdUbbeTcUeUcUeVezeWeXeYeXeXeZfaeXfbfceZeXeXfdeXfeezfferereafgdIeeefheegegfhdIavatajakadadadadetdq
 fietadadamaradajbtevewbtbtbtbtbtbtbbeLcAdecAeLezfjeMeXeXeXeZeZeZeZeZeZeXeXeXeMfkezfldLendsepdIdOefegegegdTdIavatajadadadadadetad
 fieJadadamaradajbtevewbtbtbtbtbtbtbbexcAdecAexezezfndwfpeXeXeXfqfqeXeXeXfpdwfnezezfreGeGfseGdIdOefegegegeSdIauatajadadadadadeJad
 fietadadamaradajftevewbtbtbtbtbtbtbbcAcAfucAcAfvezfweXeXeXeXeXeXeXeXeXeXeXeXeMfxdLeqfyeqdYfldIdOefegeHegesdIavatajadadadadadetad
-ababajadamaradajbbbbbbfzbvbvbvbvbvdcdddedecUfAfvezfweXeXeXfBeXeXeXeXfBeXeXeXeMfCfDerererereRdIeeefegegegdTdIavatajadamaradajabab
+ababajadamaradajbbbbbbfzbvbvbvbvbvbbcAdedecUfAfvezfweXeXeXfBeXeXeXeXfBeXeXeXeMfCfDerererereRdIeeefegegegdTdIavatajadamaradajabab
 aaabajakamarakajbbbrbbfEeKbtbRfFfGbbcAdefHcUcUfvezfwfdeXeXfbeXeXeXeXfbeXeXeYeMfxdLerfIerereRdIdOefegfJegfKdIavatajakamarakajabaa
-aaabajadamaradajbbbrbbbvbvbvbvbvbvbbdKdffLcAcAfvezfweMeMfMfjeMeQeQeMfkfMeMeMeMfxdLdLfNdLfOfldIfPfQfQfRfQdFfTbcatajadamaradajabaa
+aaabajadamaradajbbbrbbbvbvbvbvbvbvbbdKdffLcAcAfvezfweMeMfMfjeMeQeQeMfkfMeMeMeMfxdLdLfNdLfOfldIfPfQfQfRfQdFfTgKatajadamaradajabaa
 aaabajadamaradajbbbrbbbwbwbwbwbwbwbbbbfUbbexexexezezezezezezfVfVfVfVezezezezezezeGeGeGfWfWfWfWfWfXfWfYfWfWfWfWfWajadamaradajabaa
 aaabajadamaradajbbbrbbbbdPgagadPbbbbgbgcbbgdgegdezgdgegdgfggghgigighgggfgdgegdezgdgegdfWgjgjgjgjgjgkecgmgngofWfWajadamaradajabaa
 aaabajadamaradajbbbrbbgpgbgqgqgbgrgbgbgsbbgdgdgdezgdgdgdgfghghdrghghghgfgdgdgdezgdgdgdgtgugvgugwgugwgugxgygofWfWajadamaradajabaa

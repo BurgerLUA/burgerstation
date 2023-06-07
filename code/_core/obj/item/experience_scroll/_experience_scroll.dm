@@ -7,7 +7,7 @@
 	icon = 'icons/obj/item/experience_scroll.dmi'
 	icon_state = "scroll"
 
-	amount_max = 10
+	amount_max = 1
 
 	weight = WEIGHT_0
 	size = SIZE_2
@@ -17,7 +17,7 @@
 	var/overlay_icon_state = "gem"
 	var/overlay_color = "#FFFFFF"
 
-	value_burgerbux = 1 //Prevents being sold in vendors.
+	value_burgerbux = 1 //Prevents being sold in vendors or found in random loot.
 
 	rarity = RARITY_MYTHICAL
 

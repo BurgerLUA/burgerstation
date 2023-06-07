@@ -1,0 +1,1520 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"ab" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"ac" = (
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ad" = (
+/obj/structure/shuttle_engine/huge{
+	icon_state = "huge_engine";
+	dir = 1
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ae" = (
+/mob/living/simple/turret/syndicate/ship{
+	icon_state = "active";
+	dir = 9
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"af" = (
+/mob/living/simple/turret/syndicate/ship{
+	icon_state = "active";
+	dir = 5
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ag" = (
+/obj/structure/shuttle_engine/large{
+	icon_state = "large_engine";
+	dir = 1
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ah" = (
+/obj/structure/interactive/door/airlock/external,
+/obj/structure/interactive/atmospherics/fan,
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ai" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aj" = (
+/obj/decal/poster/syndicate,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ak" = (
+/obj/structure/interactive/vending/syndicate/medicine,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"al" = (
+/obj/structure/interactive/vending/syndicate/guns,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"am" = (
+/obj/structure/interactive/vending/syndicate/attachment,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"an" = (
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ao" = (
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ap" = (
+/obj/decal/poster/syndicate{
+	icon_state = "";
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aq" = (
+/obj/structure/interactive/bed/sleeper/medical/syndicate,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ar" = (
+/obj/structure/interactive/vending/syndicate/prize,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"as" = (
+/obj/structure/interactive/atmospherics/air_alarm,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"at" = (
+/obj/structure/table/steel/dark,
+/obj/item/analyzer/health,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"au" = (
+/obj/structure/interactive/solar_panel,
+/obj/structure/interactive/wire/yellow,
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"av" = (
+/obj/structure/interactive/chair/shuttle/dark,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aw" = (
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ax" = (
+/obj/marker/antag/syndicate,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ay" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"az" = (
+/obj/marker/spawning/window/shuttle,
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aA" = (
+/obj/marker/antag/syndicate,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aC" = (
+/mob/living/simple/turret/syndicate/ship{
+	icon_state = "active";
+	dir = 10
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aD" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aE" = (
+/obj/structure/interactive/computer/console{
+	icon_state = "computer";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aF" = (
+/obj/structure/interactive/computer/console{
+	icon_state = "computer";
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aG" = (
+/obj/structure/interactive/computer/console{
+	icon_state = "computer";
+	dir = 1
+	},
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aH" = (
+/obj/structure/interactive/barricade{
+	icon_state = "metal";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aJ" = (
+/obj/structure/interactive/chair/shuttle/dark,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aK" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aL" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aM" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aN" = (
+/obj/structure/interactive/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aO" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/structure/interactive/misc/sink{
+	icon_state = "sink";
+	dir = 8
+	},
+/mob/living/simple/bot/medibot/syndicate,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aP" = (
+/obj/structure/interactive/chair,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aQ" = (
+/mob/living/simple/turret/syndicate/ship{
+	icon_state = "active";
+	dir = 6
+	},
+/turf/simulated/floor/plating/shuttle,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aR" = (
+/obj/structure/interactive/atmospherics/air_alarm{
+	icon_state = "air_alarm";
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aS" = (
+/obj/structure/interactive/atmospherics/air_alarm{
+	icon_state = "air_alarm";
+	dir = 1
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aT" = (
+/obj/structure/interactive/wire/green,
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aU" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aV" = (
+/obj/structure/interactive/barricade{
+	icon_state = "metal";
+	dir = 4
+	},
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aW" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aX" = (
+/obj/structure/interactive/atmospherics/vent,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aY" = (
+/obj/structure/interactive/bed/sheet,
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"aZ" = (
+/obj/structure/interactive/fire_closet{
+	icon_state = "extinguisher";
+	dir = 4
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"ba" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 4
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bb" = (
+/obj/structure/interactive/fire_closet{
+	icon_state = "extinguisher";
+	dir = 1
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bc" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 8
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bd" = (
+/obj/structure/interactive/power/apc,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"be" = (
+/obj/structure/interactive/crate/closet,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bf" = (
+/obj/structure/interactive/crate/trash,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bg" = (
+/obj/structure/interactive/fire_closet{
+	icon_state = "extinguisher";
+	dir = 8
+	},
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bh" = (
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bi" = (
+/obj/structure/interactive/crate/closet,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bj" = (
+/obj/structure/interactive/reagent_tank/rolly/water,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bk" = (
+/obj/structure/interactive/wire/yellow,
+/turf/simulated/wall/metal/shuttle/dark,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bm" = (
+/obj/structure/interactive/power/smes/industrial{
+	icon_state = "smes_map";
+	dir = 1
+	},
+/obj/structure/interactive/wire/yellow,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bo" = (
+/obj/structure/interactive/door/airlock/syndicate,
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bp" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	icon_state = "preview";
+	dir = 4
+	},
+/obj/structure/interactive/wire/green,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"br" = (
+/obj/structure/table/steel/dark,
+/obj/item/deployable/mob/sentry,
+/obj/item/deployable/mob/sentry,
+/obj/item/grenade/landmine/proximity/explosive,
+/obj/item/grenade/landmine/proximity/explosive,
+/obj/item/magazine/minigun_46,
+/obj/item/magazine/minigun_46,
+/obj/item/powercell/advanced,
+/obj/item/powercell/advanced,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bs" = (
+/obj/structure/interactive/crate/closet,
+/obj/item/broom,
+/obj/item/wet_floor_sign,
+/obj/item/wet_floor_sign,
+/obj/item/wet_floor_sign,
+/obj/item/container/simple/beaker/bucket/water,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bt" = (
+/obj/structure/table/steel/dark,
+/obj/item/announcement/syndicate,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bu" = (
+/obj/structure/interactive/crate/closet,
+/obj/item/container/syringe/medipen/epinephrine,
+/obj/item/container/blood_pack/full/o_negative,
+/obj/item/container/blood_pack/full/o_negative,
+/obj/item/container/blood_pack/full/o_negative,
+/obj/item/container/blood_pack/full/reptile,
+/obj/item/container/blood_pack/full/synthblood,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bv" = (
+/obj/structure/table/steel/dark,
+/obj/item/bulletbox/rifle_556,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bw" = (
+/obj/item/defib,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bx" = (
+/obj/structure/table/steel/dark,
+/obj/item/deployable/barricade,
+/obj/item/deployable/barricade,
+/obj/item/deployable/barricade,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"by" = (
+/obj/structure/table/steel/dark,
+/obj/item/analyzer/health,
+/obj/item/dice/d4,
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bz" = (
+/obj/structure/interactive/atmospherics/scrubber,
+/obj/structure/interactive/misc/mirror/cracked/chargen{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tile/shuttle/red/crimson,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bA" = (
+/obj/marker/map_node,
+/turf/simulated/floor/tile/shuttle/dark/darker,
+/area/mission/prefab/misc/syndicate_antag_ship)
+"bB" = (
+/obj/marker/smart_clear_turf,
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"bC" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"bD" = (
+/obj/marker/smart_clear_turf,
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bC
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bB
+aa
+aa
+aa
+aa
+bD
+bC
+bD
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ae
+aw
+ac
+ac
+ah
+ac
+ah
+ac
+ac
+aw
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aw
+ac
+ac
+at
+ai
+ba
+ay
+bs
+ac
+aC
+aw
+bB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ag
+as
+bm
+bh
+ao
+aU
+bj
+ac
+az
+az
+ac
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bB
+aa
+aw
+bk
+bm
+bh
+bh
+aT
+bb
+aR
+aE
+aE
+az
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bk
+bk
+ap
+ap
+ap
+bo
+ac
+be
+aK
+aM
+ac
+ac
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+au
+aj
+aq
+aO
+ac
+aT
+bp
+aW
+bA
+ao
+ba
+az
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ac
+ac
+bk
+aj
+an
+aU
+bb
+ac
+av
+ao
+ao
+ao
+bt
+az
+az
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aw
+ad
+bk
+ak
+bw
+ax
+an
+bd
+av
+ao
+ao
+ao
+aJ
+aG
+az
+bB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bB
+aw
+aw
+bk
+al
+ax
+ao
+aA
+aD
+ay
+ao
+bA
+ao
+aJ
+aG
+az
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aw
+aw
+bk
+am
+an
+ax
+by
+as
+aJ
+ao
+ao
+ao
+aJ
+aG
+az
+bB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ac
+ac
+bk
+as
+bu
+bz
+ac
+ac
+aJ
+ao
+ao
+ao
+bv
+az
+az
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+au
+ac
+ar
+aY
+ac
+ay
+bc
+ao
+bA
+aX
+bc
+az
+aQ
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ac
+ac
+ac
+aZ
+ac
+aD
+ac
+bf
+aL
+aN
+bg
+ac
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bB
+aa
+ag
+ac
+aP
+ao
+ao
+ay
+ac
+ac
+aF
+aF
+az
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(22,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aw
+ac
+aP
+aH
+ao
+aV
+bx
+aS
+az
+az
+ac
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aw
+ac
+ac
+bi
+ai
+bc
+ay
+br
+ac
+aQ
+aw
+bB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+af
+aw
+ac
+ac
+ah
+ac
+ah
+ac
+ac
+aw
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bB
+aa
+aa
+aa
+aa
+bD
+bC
+bD
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bC
+bC
+bC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bC
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

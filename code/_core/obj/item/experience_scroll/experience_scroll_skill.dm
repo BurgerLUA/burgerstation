@@ -3,6 +3,8 @@
 
 	overlay_icon_state = "gem"
 
+	value = 1
+
 /obj/item/experience_scroll/skill/get_base_value()
 	if(!skill)
 		return 0

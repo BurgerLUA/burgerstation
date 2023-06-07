@@ -665,7 +665,7 @@
 	QUEUE_HEALTH_UPDATE(src)
 
 /mob/living/proc/setup_name()
-	name = "[CHECK_NAME(name)] (LVL: [level])"
+	name = "[CHECK_NAME(name)]"
 	return TRUE
 
 /mob/living/proc/set_iff_tag(var/desired_iff_tag,var/force=FALSE)
