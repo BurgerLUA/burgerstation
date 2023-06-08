@@ -14,6 +14,8 @@
 	. = ..()
 
 /obj/hud/button/inventory_defer/Destroy()
+	if(referencing)
+		HOOK_REMOVE("update_stats","update_stats_\ref[src]",referencing)
 	referencing = null
 	. = ..()
 
