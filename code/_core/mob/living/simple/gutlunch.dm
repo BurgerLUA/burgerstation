@@ -80,7 +80,7 @@
 		CHECK_TICK_SAFE(50,FPS_SERVER)
 
 	if(.)
-		play_sound(T,'sound/effects/gutlunch_eat.ogg')
+		play_sound('sound/effects/gutlunch_eat.ogg',T)
 		T.visible_message(span("warning","\The [src.name] eats up everything on \the [T.name]!"))
 		update_sprite()
 
