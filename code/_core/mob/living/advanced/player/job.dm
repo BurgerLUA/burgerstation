@@ -29,6 +29,9 @@
 	if(!J)
 		return FALSE
 
+	if(!job_next_promotion)
+		return FALSE
+
 	if(world.realtime < job_next_promotion)
 		return FALSE
 

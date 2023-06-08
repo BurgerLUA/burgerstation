@@ -36,16 +36,16 @@
 
 /damagetype/ranged/bullet/rifle_223/syndicate_turret/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
-	if(is_living(attacker))
-		var/mob/living/L = attacker
+	if(is_living(victim))
+		var/mob/living/L = victim
 		if(L.ckey_last)
 			return ..()
 		if(L.master && L.master.ckey_last)
 			return ..()
+		if(L.boss)
+			return ..()
 
 	damage_multiplier = 5
-
-
 
 	. = ..()
 

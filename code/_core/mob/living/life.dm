@@ -62,7 +62,6 @@
 	if(ckey_last)
 		var/obj/hud/button/dead_ghost/DG = new
 		DG.update_owner(src)
-		notify_ghosts("[src.name] has died!",T)
 
 	if(master)
 		dust()
@@ -193,10 +192,10 @@
 			else if(attack_log["critical"])
 				people_who_contributed[attack_log["attacker"]] += 1
 		if(!length(people_who_killed))
+			//Fallback.
 			people_who_killed = people_who_contributed
-		if(length(people_who_killed))
-			on_killed(people_who_killed)
 
+		on_killed(people_who_killed) //people_who_killed can be empty.
 
 		if(length(people_who_killed))
 			if(!boss)
@@ -246,6 +245,7 @@
 							I.pixel_x = -pixel_offsets[1]*TILE_SIZE
 							I.pixel_y = -pixel_offsets[2]*TILE_SIZE
 							animate(I,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=5)
+
 
 	HOOK_CALL("post_death")
 

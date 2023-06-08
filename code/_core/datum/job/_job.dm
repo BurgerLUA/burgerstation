@@ -47,4 +47,4 @@
 	var/rank_length = length(ranks)
 	if(!rank_length)
 		return name
-	return ranks[max(rank_level,rank_length)]
+	return ranks[min(rank_level,rank_length)]

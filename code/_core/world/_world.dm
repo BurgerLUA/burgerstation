@@ -152,15 +152,15 @@ var/global/world_state = STATE_STARTING
 		if(!P)
 			log_error("Warning: Tried saving a null player!")
 			continue
+		if(P.dead)
+			continue
 		if(P.qdeleting)
 			log_error("Warning: Tried saving [P.get_debug_name()], which was qdeleting!")
 			continue
 		if(!P.ckey_last)
-			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey!")
+			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey_last assigned!")
 			continue
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
-		if(P.dead)
-			continue
 		if(M.save_character(P))
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else

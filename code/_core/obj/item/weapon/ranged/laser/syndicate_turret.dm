@@ -37,4 +37,4 @@
 
 /obj/item/weapon/ranged/energy/syndicate_turret/ship
 	ranged_damage_type = /damagetype/ranged/bullet/rifle_223/syndicate_turret
-	shoot_delay = 1.5
+	shoot_delay = 2

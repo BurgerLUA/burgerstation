@@ -58,6 +58,7 @@
 		nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
 		job = loaded_data["job"] ? text2path(loaded_data["job"]) : null
 		job_rank = loaded_data["job_rank"] ? loaded_data["job_rank"] : 1
+		job_next_promotion = loaded_data["job_next_promotion"] ? loaded_data["job_next_promotion"] : 0
 
 		if(loaded_data["last_saved_date"] && loaded_data["last_saved_date"] != get_date())
 			to_chat(span("notice","<h2>You are rewarded 1000 credits for logging in with this character today! Make sure to log in tomorrow to receive this reward again.</h2>"))
@@ -219,6 +220,7 @@
 	.["prestige_count"] = prestige_count
 	.["job"] = job
 	.["job_rank"] = job_rank
+	.["job_next_promotion"] = job_next_promotion
 	.["difficulty"] = difficulty
 
 	if(length(quests))

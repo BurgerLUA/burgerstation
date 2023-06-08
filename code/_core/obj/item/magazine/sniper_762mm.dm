@@ -10,6 +10,7 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/service = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/advanced = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/dmr = TRUE,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/dmr/specop = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/marksman/mod = TRUE
 	)

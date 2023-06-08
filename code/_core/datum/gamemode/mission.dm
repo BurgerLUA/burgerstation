@@ -203,7 +203,7 @@
 				status_display_text = "WAR"
 				round_time_next = 60*60
 				add_objectives()
-			if(5)
+			if(5 to INFINITY)
 				status_display_text = "VOTE"
 				round_time_next = -1
 				SSvote.create_vote(/vote/continue_round)

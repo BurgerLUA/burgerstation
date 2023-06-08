@@ -45,7 +45,10 @@
 
 	stored_movable = null
 
-	CREATE(/obj/item/fulton_pack,T)
+	var/obj/item/fulton_pack/F = new(T)
+	INITIALIZE(F)
+	F.amount = 1
+	FINALIZE(F)
 
 	qdel(src)
 
