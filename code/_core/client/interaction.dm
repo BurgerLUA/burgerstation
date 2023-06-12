@@ -63,6 +63,8 @@
 	if(!object || !(object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
+	GLOBAL_CLICK_DELAY
+
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
 	if(!object || object.qdeleting)
@@ -106,10 +108,10 @@
 	if(click_flags & CLICK_RIGHT)
 		mob.attack_flags |= CONTROL_MOD_RIGHT
 
-	GLOBAL_CLICK_DELAY
-
 	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
+
+	GLOBAL_CLICK_DELAY
 
 	object = object.defer_click_on_object(mob,location,control,new_params)
 
@@ -171,8 +173,6 @@
 			click_and_drag_icon.stored_inventory = null
 			click_and_drag_icon.alpha = 0
 
-	GLOBAL_CLICK_DELAY
-
 	if(!object || (object.interaction_flags & FLAG_INTERACTION_CLICK) || object.qdeleting)
 		return FALSE
 
@@ -215,7 +215,7 @@
 	if(!(src_object.interaction_flags & FLAG_INTERACTION_CLICK) && (world.time - drag_last < 5))
 		return FALSE
 
-	//GLOBAL_CLICK_DELAY DOESN'T WORK HERE.
+	GLOBAL_CLICK_DELAY
 
 	var/click_flags = get_click_flags(new_params,TRUE)
 

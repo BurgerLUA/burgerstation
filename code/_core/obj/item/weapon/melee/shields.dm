@@ -40,6 +40,8 @@ var/global/list/shield_price_mul = list(
 
 	. += total_block**1.1
 
+	. = CEILING(.,1)
+
 /obj/item/weapon/melee/shield/get_examine_list(var/mob/examiner)
 	. = ..()
 	for(var/k in block_defense)

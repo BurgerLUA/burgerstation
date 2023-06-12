@@ -74,6 +74,8 @@ var/global/list/difficulty_to_ai_modifier = list(
 			return 99999 //Target those who you are hunting.
 		if(is_living(A))
 			var/mob/living/L = A
+			if(L.dead) //If we're targeting dead people, make them the lowest priority.
+				return -9999
 			if(L.ai)
 				if(L.ai.objective_attack == owner)
 					return 9999 //Prioritize AI wars.
@@ -84,11 +86,11 @@ var/global/list/difficulty_to_ai_modifier = list(
 				if(!difficulty_mod)
 					difficulty_mod = 1
 				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
-					return -9999 //Wow they're being overwhelmed. Very lowest priority.
+					return -9998 //Wow they're being overwhelmed. Very lowest priority.
 				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
 				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health and who are closer. Low health will be spared. Higher difficulty will make you more desirable.
 
-	return -dist
+	return -dist + -500 //Not a living being.
 
 /ai/proc/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
 
