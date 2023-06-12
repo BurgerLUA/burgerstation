@@ -41,6 +41,8 @@
 			var/obj/marker/shuttle_landing/SL = k
 			if(SL.z != current_z)
 				continue
+			if(SL.owning_shuttle)
+				continue
 			var/desired_icon_state = connected_background.linked_shuttle_controller && SL == connected_background.linked_shuttle_controller.transit_marker_destination ? "shuttle_target" : "shuttle_marker"
 			var/image/I = new/image('icons/hud/hud.dmi',desired_icon_state)
 			I.pixel_x = SL.x - 16
@@ -99,7 +101,8 @@
 	var/y_pos = params[PARAM_ICON_Y]
 	var/z_pos = current_z
 
-	if(connected_background?.linked_shuttle_controller) //Find the closet marker.
+	if(connected_background?.linked_shuttle_controller)
+		//Find the closet marker.
 		var/turf/T = locate(x_pos,y_pos,z_pos)
 		var/obj/marker/shuttle_landing/best_marker
 		var/obj/marker/shuttle_landing/best_distance = VIEW_RANGE*2
@@ -276,11 +279,11 @@
 
 		if(connected_background.linked_shuttle_controller)
 			if(launch && close) //Return to base.
-				if(connected_background.linked_shuttle_controller.set_destination(caller,connected_background.linked_shuttle_controller.transit_marker_base) && connected_background.linked_shuttle_controller.try_launch(caller))
+				if(connected_background.linked_shuttle_controller.set_destination(caller,connected_background.linked_shuttle_controller.transit_marker_base) && connected_background.linked_shuttle_controller.start_flight(caller))
 					connected_background.update_owner(null)
 				return TRUE
 			else if(launch) //Go to target.
-				if(connected_background.linked_shuttle_controller.try_launch(caller))
+				if(connected_background.linked_shuttle_controller.start_flight(caller))
 					connected_background.update_owner(null)
 				return TRUE
 			else if(close)

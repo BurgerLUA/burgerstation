@@ -31,7 +31,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 	INTERACT_CHECK
 
-	if(linked_marker.reserved)
+	if(linked_marker.reserved_by_shuttle)
 		L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
 		return TRUE
 
@@ -74,7 +74,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 			caller.to_chat(span("notice","That shuttle is currently [SC.state]."))
 			continue
 
-		if(linked_marker.reserved)
+		if(linked_marker.reserved_by_shuttle)
 			L.to_chat(span("notice","\The [src.name] reports that a shuttle is already inbound or has already landed in this area."))
 			return TRUE
 
@@ -90,7 +90,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 		//Only choice: Yes.
 
-		if(SC.try_launch(caller,linked_marker))
+		if(SC.set_destination(caller,linked_marker) && SC.start_flight(caller))
 			return TRUE
 
 	. = ..()
@@ -174,11 +174,21 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 
 	var/obj/structure/interactive/computer/console/shuttle_landing/linked_computer
 
-	var/reserved = FALSE
+	var/reserved_by_shuttle = FALSE
 
 	var/obj/shuttle_controller/owning_shuttle //Who owns the marker? Applies to bluespace transit areas and base transit areas.
 
 	anchored = 2
+
+/obj/marker/shuttle_landing/proc/set_reserved(var/desired_reserved=TRUE)
+
+	if(reserved_by_shuttle == desired_reserved)
+		CRASH("Tried setting [src.get_debug_name()] reserved var to [desired_reserved], but it was already [desired_reserved]!")
+		return FALSE
+
+	src.reserved_by_shuttle = desired_reserved
+
+	return TRUE
 
 /obj/marker/shuttle_landing/Finalize()
 	. = ..()

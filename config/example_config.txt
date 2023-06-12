@@ -6,7 +6,18 @@
 # Server information.
 SERVER_NAME Unofficial Burgerstation 13 Server
 SERVER_DESCRIPTION An unofficial server for Burgerstation.
-SERVER_DISCORD https://discord.gg/a2wHSqu
+
+# Put your rules page here.
+SERVER_RULES
+
+# Put your discord link here.
+SERVER_DISCORD
+
+#Put your patreon link here.
+SERVER_PATREON
+
+#Put your github link here.
+SERVER_GITHUB
 
 PLAYER_LIMIT 100
 

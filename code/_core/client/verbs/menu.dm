@@ -1,23 +1,32 @@
 /client/verb/open_discord()
 	set name = "Open Discord"
 	set category = "Menu"
-	to_chat(span("notice","Opening discord in your browser."))
-	src << link("https://discord.gg/yEaV92a")
+	var/discord_link = CONFIG("SERVER_DISCORD",null)
+	if(!discord_link)
+		to_chat(span("warning","No Discord URL provided! Yell at the server owner to set one up!"))
+		return TRUE
+	to_chat(span("notice","Opening discord in your browser..."))
+	src << link(discord_link)
 
 /client/verb/open_github()
 	set name = "Open Github"
 	set category = "Menu"
-	to_chat(span("notice","Opening github in your browser."))
-	src << link("https://github.com/BurgerLUA/burgerstation")
-
+	var/github_link = CONFIG("SERVER_GITHUB",null)
+	if(!github_link)
+		to_chat(span("warning","No Github URL provided! Yell at the server owner to set one up!"))
+		return TRUE
+	to_chat(span("notice","Opening Github in your browser..."))
+	src << link(github_link)
 
 /client/verb/open_patreon()
 	set name = "Open Patreon"
 	set category = "Menu"
-	to_chat(span("notice","Opening patreon in your browser."))
-	src << link("https://www.patreon.com/burgerstation")
-
-
+	var/patreon_link = CONFIG("SERVER_PATREON",null)
+	if(!patreon_link)
+		to_chat(span("warning","No Patreon URL provided! Yell at the server owner to set one up!"))
+		return TRUE
+	to_chat(span("notice","Opening Patreon in your browser..."))
+	src << link(patreon_link)
 
 /client/verb/player_who()
 	set name = "Player Who"

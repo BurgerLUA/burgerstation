@@ -74,7 +74,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/update_server_status()
 
 	var/server_name = CONFIG("SERVER_NAME","Unofficial Burgerstation 13 Server")
-	var/server_link = CONFIG("SERVER_DISCORD","https://discord.gg/a2wHSqu")
+	var/server_link = CONFIG("SERVER_DISCORD","")
 	var/github_name = "SS13 <b>FROM SCRATCH</b>"
 	var/duration = get_clock_time(FLOOR(true_time()/10,1),FORMAT_HOUR | FORMAT_MINUTE)
 	var/description = "Gamemode: <b>[SSgamemode.active_gamemode ? SSgamemode.active_gamemode.name : "Lobby" ]</b><br>Map: <b>[SSdmm_suite.map_name ? SSdmm_suite.map_name : "Planet ([world.maxx]x[world.maxy])"]</b><br>Duration: <b>[duration]</b>"

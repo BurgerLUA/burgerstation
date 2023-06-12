@@ -13,6 +13,8 @@
 
 	alpha = 150
 
+	density = FALSE
+
 /obj/marker/cover_node/left
 	icon_state = "left"
 
