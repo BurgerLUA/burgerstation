@@ -99,12 +99,10 @@
 
 	if(objective_attack.qdeleting || !objective_attack.health) //Object destroyed.
 		set_objective(null)
-		return TRUE
+		return FALSE
 
 	if(get_dist(owner,objective_attack) > attack_distance_max) //Too far away.
 		frustration_attack += tick_rate
-	else
-		frustration_attack = 0
 
 	if(is_living(objective_attack))
 		var/mob/living/L = objective_attack
@@ -118,23 +116,25 @@
 			return TRUE
 		else if(detection_level <= 0.25) //Basically out of combat, but not yet
 			frustration_attack += tick_rate
-		else
-			frustration_attack = 0
 		return TRUE
+
+	//Non-living stuff here.
 
 	if(!objective_attack.density) //Object is no longer dense.
 		set_objective(null)
-		return TRUE
+		return FALSE
 
 	if(is_turf(objective_attack))
 		var/turf/T = objective_attack
 		if(!T.has_dense_atom || T.Enter(owner)) //No reason to attack the turf if it's fine now.
 			set_objective(null)
-			return TRUE
+			return FALSE
 	else
 		if(objective_attack.health.health_current <= 0) //Object destroyed.
 			set_objective(null)
-			return TRUE
+			return FALSE
+
+	return TRUE
 
 /ai/proc/find_new_objectives(var/tick_rate,var/bonus_sight=FALSE)
 
@@ -199,21 +199,18 @@
 				obstacles -= k
 				continue
 			if(is_turf(A))
-				if(A.Enter(owner,owner.loc))
+				if(!A.density || A.Enter(owner,owner.loc))
 					obstacles -= k
 					continue
 			if(ismovable(A))
-				if(A.Cross(owner,owner.loc))
+				if(!A.density || A.Cross(owner,owner.loc))
 					obstacles -= k
 					continue
 			var/distance_check = get_dist(owner,A)
 			if(distance_check <= view_range && (!closest_obstacle || distance_check < best_distance))
 				closest_obstacle = A
 		if(closest_obstacle)
-			if(reaction_time)
-				CALLBACK("set_new_objective_\ref[src]",reaction_time,src,src::set_objective(),closest_obstacle)
-			else
-				set_objective(closest_obstacle)
+			set_objective(closest_obstacle)
 
 	return TRUE
 

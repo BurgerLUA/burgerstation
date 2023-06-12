@@ -37,7 +37,8 @@
 			if(objective_ticks >= actual_objective_delay && !CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 				objective_ticks = 0
 				if(objective_attack && frustration_attack < frustration_attack_threshold)
-					handle_current_objectives(actual_objective_delay)
+					if(handle_current_objectives(actual_objective_delay) && !is_living(objective_attack))
+						find_new_objectives(actual_objective_delay) //Try to find new objectives if we're attacking something non-living.
 				else
 					find_new_objectives(actual_objective_delay)
 					frustration_attack = 0
