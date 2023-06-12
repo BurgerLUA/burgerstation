@@ -102,8 +102,8 @@
 		'sound/effects/inventory/rustle5.ogg'
 	)
 
-	var/list/grinder_reagents = list() //Reagents that are created if this is processed in a grinder.
-	var/reagent_count             //"Fake" amount of reagents, used for calculations
+	var/grinder_reagent //The reagent created if this object is grinded in a grinder.
+	var/grinder_reagent_amount //The amount to create.
 
 	var/flags_tool = FLAG_TOOL_NONE
 	var/tool_time = SECONDS_TO_DECISECONDS(5)

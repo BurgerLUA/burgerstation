@@ -60,5 +60,11 @@
 		qdel(src)
 		return TRUE
 
+	var/material/M = SSmaterials.all_materials[material_id]
+
+	if(M.reagent && M.reagent_amount > 0)
+		grinder_reagent = M.reagent
+		grinder_reagent_amount = M.reagent_amount * material_multiplier
+
 	update_value()
 	update_sprite()

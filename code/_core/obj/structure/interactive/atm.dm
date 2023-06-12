@@ -54,6 +54,7 @@
 			P.adjust_currency(C.amount)
 			C.amount = 0
 			qdel(C)
+			return TRUE
 
 
 	. = ..()

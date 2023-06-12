@@ -29,12 +29,12 @@
 
 	if(is_living(objective_attack) && get_dist(owner,objective_attack) <= 1)
 		var/mob/living/L = objective_attack
-		if(L.gib_on_butcher && L.dead && (L.override_butcher || length(L.butcher_contents)))
+		if(L.health && L.gib_on_butcher && L.dead && (L.override_butcher || length(L.butcher_contents)))
 			var/turf/T = get_turf(owner)
-			L.visible_message(span("danger","\The [owner.name] starts to devour \the [L.name]!"),span("danger","You start to butcher \the [L.name]!"))
-			play_sound('sound/effects/demon_consume.ogg',T)
 			PROGRESS_BAR(owner,L,max(10,L.health.health_max*0.05),L::on_butcher(),owner,L)
 			PROGRESS_BAR_CONDITIONS(owner,L,L::can_be_butchered(),owner)
+			L.visible_message(span("danger","\The [owner.name] starts to devour \the [L.name]!"),span("danger","You start to butcher \the [L.name]!"))
+			play_sound('sound/effects/demon_consume.ogg',T)
 			return TRUE
 
 	. = ..()

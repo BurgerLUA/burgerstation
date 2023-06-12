@@ -70,6 +70,9 @@ var/global/ticket_number_counter = 1
 
 	for(var/k in involved_ckeys)
 		var/client/C2 = CLIENT(k)
+		if(!C2)
+			C.to_chat(span("ahelp","Notice: [k] was not able to recieve the message due to being offline."))
+			continue
 		play_sound_target('sound/effects/bwoink.ogg',C2.mob)
 		if(C2 == C) //We're the person that sent the message.
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR) //We're a moderator who sent the message.
@@ -84,7 +87,7 @@ var/global/ticket_number_counter = 1
 	if(attacker == victim && !length(message_log)) //Gotta send the message to all moderators if its the first message from a player who needs help.
 		var/notified_admins = 0
 		for(var/k in all_clients)
-			var/client/C2 = all_clients[k]
+			var/client/C2 = CLIENT(k)
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR)
 				C2.to_chat(span("ahelp","[ICON_TO_HTML(chat_tags.icon,"HELP",32,10)]New ticket (#[ticket_number]) message from <a href='?src=\ref[src];password=[password]'>[victim]</a>: [message]"))
 				play_sound_target('sound/effects/bwoink.ogg',C2.mob)

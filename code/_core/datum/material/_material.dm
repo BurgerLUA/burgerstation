@@ -16,6 +16,9 @@
 
 	var/armor/armor = /armor/structure/steel //This is used for constructables, like turfs or machines.
 
+	var/reagent
+	var/reagent_amount = 10
+
 /material/grass/
 	name = "grass"
 	color = COLOR_GREEN
@@ -59,23 +62,15 @@
 	wall_health = 1000
 	value_per_unit = 9
 
+	reagent = /reagent/steel
+
 /material/copper
 	name = "copper"
 	color = "#E28446"
 	wall_health = 250
 	value_per_unit = 4
 
-/material/tin
-	name = "tin"
-	color = "#E2E2E2"
-	wall_health = 100
-	value_per_unit = 0.5
-
-/material/lead
-	name = "lead"
-	color = "#5E5D77"
-	wall_health = 250
-	value_per_unit = 0.5
+	reagent = /reagent/copper
 
 /material/aluminium
 	name = "aluminium"
@@ -83,17 +78,7 @@
 	value_per_unit = 12
 	wall_health = 100
 
-/material/zinc
-	name = "zinc"
-	color = COLOR_ZINC
-	value_per_unit = 10
-	wall_health = 100
-
-/material/magnesium
-	name = "magnesium"
-	color = COLOR_MAGNESIUM
-	value_per_unit = 14
-	wall_health = 100
+	reagent = /reagent/aluminium
 
 /material/brass
 	name = "brass"
@@ -101,11 +86,7 @@
 	value_per_unit = 15
 	wall_health = 750
 
-/material/nickel
-	name = "nickel"
-	color = COLOR_NICKEL
-	value_per_unit = 13
-	wall_health = 150
+	reagent = /reagent/brass
 
 /material/iron
 	name = "iron"
@@ -115,6 +96,8 @@
 	wall_health = 500
 	value_per_unit = 7
 
+	reagent = /reagent/iron
+
 /material/phoron
 	name = "phoron"
 	color = COLOR_PHORON
@@ -122,6 +105,8 @@
 	icon_state_ore_deposit = "deposit_phoron"
 	wall_health = 10
 	value_per_unit = 20
+
+	reagent = /reagent/fuel/phoron
 
 /material/carbon
 	name = "carbon"
@@ -131,6 +116,8 @@
 	wall_health = 10
 	value_per_unit = 5
 
+	reagent = /reagent/carbon
+
 /material/gold
 	name = "gold"
 	color = COLOR_GOLD
@@ -138,6 +125,8 @@
 	icon_state_ore_deposit = "deposit_gold"
 	wall_health = 50
 	value_per_unit = 40
+
+	reagent = /reagent/gold
 
 /material/platinum
 	name = "platinum"
@@ -147,6 +136,8 @@
 	wall_health = 250
 	value_per_unit = 30
 
+	reagent = /reagent/platinum
+
 /material/diamond
 	name = "diamond"
 	color = COLOR_DIAMOND
@@ -154,6 +145,8 @@
 	icon_state_ore_deposit = "deposit_diamond"
 	wall_health = 1500
 	value_per_unit = 100
+
+	reagent = /reagent/diamond
 
 /material/silver
 	name = "silver"
@@ -163,6 +156,8 @@
 	wall_health = 250
 	value_per_unit = 30
 
+	reagent = /reagent/silver
+
 /material/uranium
 	name = "uranium"
 	color = COLOR_URANIUM
@@ -171,11 +166,7 @@
 	wall_health = 100
 	value_per_unit = 35
 
-/material/uranium_235
-	name = "uranium_235"
-	color = "#5bf116"
-	wall_health = 200
-	value_per_unit = 75
+	reagent = /reagent/radioactive/uranium
 
 /material/titanium
 	name = "titanium"
@@ -185,12 +176,15 @@
 	wall_health = 1250
 	value_per_unit = 25
 
+	reagent = /reagent/titanium
+
 /material/plasteel
 	name = "plasteel"
 	color = COLOR_PLASTEEL
 	wall_health = 2000
 	value_per_unit = 25
 
+	reagent = /reagent/plasteel
 
 /material/wood
 	name = "wood"
@@ -198,14 +192,10 @@
 	value_per_unit = 5
 	wall_health = 50
 
+	reagent = /reagent/wood
+
 /material/adamantium_carbon
 	name = "adamantium-carbon"
 	color = COLOR_ADAMANITUM_CARBON
 	value_per_unit = 2000
 	wall_health = INFINITY
-
-/material/electrum
-	name = "electrum"
-	color = COLOR_ELECTRUM
-	value_per_unit = 70
-	wall_health = 600

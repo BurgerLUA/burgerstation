@@ -21,9 +21,6 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	desired_light_range = 8
 	desired_light_color = "#158996"
 
-	water_reagent = /reagent/nutrition/water
-	reagents = /reagent_container/turf/
-
 	var/map_color_max_depth = "#031A44"
 	var/map_color_min_depth = "#3DAEE1"
 

@@ -28,6 +28,8 @@
 
 	for(var/obj/hud/inventory/crafting/result/R in src.inventories)
 		var/obj/item/top_object = R.get_top_object()
+		if(!top_object)
+			continue
 		if(top_object.reagents && top_object.allow_reagent_transfer_to)
 			C = top_object
 			break
@@ -35,6 +37,8 @@
 	if(!C) //Try one more time.
 		for(var/obj/hud/inventory/crafting/R in src.inventories)
 			var/obj/item/top_object = R.get_top_object()
+			if(!top_object)
+				continue
 			if(top_object.reagents && top_object.allow_reagent_transfer_to)
 				C = top_object
 				break
@@ -51,18 +55,23 @@
 
 		var/obj/item/I = item_table["b[i]"]
 
-		if(!I || !I.reagents || !I.grinder_reagents)
+		if(!I)
 			continue
+
+		var/should_delete = FALSE
 
 		if(I.reagents)
 			I.reagents.transfer_reagents_to(C.reagents,I.reagents.volume_current,FALSE,FALSE)
 			success = TRUE
+			if(!I.allow_reagent_transfer_from)
+				should_delete = TRUE
 
-		if(I.grinder_reagents)
-			C.reagents.add_reagent(I.grinder_reagents,I.reagent_count,TNULL,FALSE,FALSE)
+		if(I.grinder_reagent && I.grinder_reagent_amount > 0)
+			C.reagents.add_reagent(I.grinder_reagent,I.grinder_reagent_amount * I.amount,TNULL,FALSE,FALSE)
+			should_delete = TRUE
 			success = TRUE
 
-		if(!I.allow_reagent_transfer_from)
+		if(should_delete)
 			qdel(I)
 		else
 			I.reagents.update_container(caller)
