@@ -19,6 +19,10 @@
 
 /obj/shuttle_controller/proc/is_safe_to_land(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
 
+	if(!SSgamemode?.active_gamemode?.allow_launch)
+		caller?.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))
+		return FALSE
+
 	if(src.state != SHUTTLE_STATE_LANDED)
 		caller?.to_chat(span("notice","The shuttle is already in transit!"))
 		return FALSE
