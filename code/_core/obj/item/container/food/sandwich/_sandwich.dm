@@ -49,10 +49,9 @@
 			continue
 		var/image/IM = new/image(IT.icon,IT.icon_state)
 		IM.appearance = IT.appearance
-		IM.appearance_flags = IT.appearance_flags | RESET_COLOR
+		IM.plane = FLOAT_PLANE
+		IM.layer = FLOAT_LAYER + i*0.01
 		IM.pixel_y = offset_y + IT.pixel_height_offset
-		IM.plane = PLANE_EFFECT
-		IM.layer = FLOAT_LAYER
 		add_overlay(IM)
 		offset_y += IT.pixel_height
 

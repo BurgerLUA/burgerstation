@@ -21,7 +21,7 @@
 	return TRUE
 
 
-/obj/item/proc/update_inventory() //When this object's inventory was updated. Basically the same as calling on_equip or on_unequip.
+/obj/item/proc/update_inventory() //When this object's inventory (contents) was updated.
 	return TRUE
 
 /obj/item/proc/fill_inventory()

@@ -17,7 +17,7 @@
 
 /obj/item/weapon/melee/crystal/Finalize()
 	. = ..()
-	update_inventory()
+	update_sprite()
 
 /obj/item/weapon/melee/crystal/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

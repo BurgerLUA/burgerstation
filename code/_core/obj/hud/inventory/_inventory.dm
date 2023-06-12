@@ -394,7 +394,10 @@
 	I.layer = LAYER_BASE + length(vis_contents)
 
 	I.on_equip(old_location,silent)
-	I.update_inventory()
+
+	if(is_item(src.loc))
+		var/obj/item/IL = src.loc
+		IL.update_inventory()
 
 	if(debug) log_error("add_object() success!")
 
@@ -467,7 +470,10 @@
 	vis_contents -= I
 
 	I.on_unequip(src,silent)
-	I.update_inventory()
+
+	if(is_item(src.loc))
+		var/obj/item/IL = src.loc
+		IL.update_inventory()
 
 	if(is_turf(drop_loc))
 		I.layer = initial(I.layer) + clamp(I.value / 10000,0,0.999)

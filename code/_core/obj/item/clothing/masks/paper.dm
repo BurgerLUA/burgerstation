@@ -18,7 +18,7 @@
 
 /obj/item/clothing/mask/paper/Finalize()
 	. = ..()
-	update_inventory()
+	update_sprite()
 
 /obj/item/clothing/mask/paper/click_self(var/mob/caller,location,control,params)
 	var/mob/C = caller
