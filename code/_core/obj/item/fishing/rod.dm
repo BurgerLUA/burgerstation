@@ -211,34 +211,27 @@
 
 	if(fishing_turf)
 		if(snagged_fish) //Caught something!
-			var/mob/living/C = caller // here comes the luck calc
-			var/luckmod
-			if(luck(list(C,src),25))
-				luckmod = (rand(1,5)*0.1)
+			var/mob/living/C = caller
+			var/turf/T = get_step(C,C.dir)
+			if(!is_floor(T))
+				T = get_turf(C)
 			var/score_add = (20/snagged_fish)
-			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish) + luckmod
-			var/loot/L = LOOT(fishing_turf.fishing_rewards)
-			var/list/loot_table = L.loot_table.Copy()
-			for(var/k in loot_table)
-				var/v = loot_table[k]
-				if(k == null)
-					loot_table[k] = max(0,v - ((score_add + lure.rarity_bonus)*score_mul))
-				else
-					loot_table[k] = max(0,(v + score_add + lure.rarity_bonus)*score_mul)
+			var/score_mul = 1.5 - ((world.time - catch_time)/snagged_fish)
+			var/score_total = (score_add + lure.rarity_bonus)*score_mul
 
-			caller.visible_message(span("notice","\The [caller] reels their [src.name] in."),span("notice","You reel your [src.name] in."))
+			var/list/spawned_loot = SPAWN_LOOT(fishing_turf.fishing_rewards,T,score_total)
 
-			var/desired_reward = pickweight(loot_table)
-			if(ispath(desired_reward))
-				var/atom/movable/reward = new desired_reward(get_step(caller,caller.dir))
-				INITIALIZE(reward)
-				GENERATE(reward)
-				FINALIZE(reward)
-				caller.to_chat(span("notice","You catch \a [reward.name]!"))
-				if(!bait.nice_bait)
-					bait.add_item_count(-1)
-					if(bait.qdeleting)
-						bait = null
+			caller.visible_message(
+				span("notice","\The [caller.name] reels their [src.name] in!"),
+				span("notice","You reel your [src.name] in!")
+			)
+
+			if(length(spawned_loot))
+				var/list/object_names = list()
+				for(var/k in spawned_loot)
+					var/atom/movable/M = k
+					object_names += M.name
+				caller.to_chat(span("notice","You caught [english_list(spawned_loot)]!"))
 			else
 				caller.to_chat(span("notice","You fail to catch anything. At least your bait is saved..."))
 
