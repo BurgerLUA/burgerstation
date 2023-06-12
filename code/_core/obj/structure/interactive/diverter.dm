@@ -1,3 +1,4 @@
+#define MODE_NONE "none"
 #define MODE_VALUE "value"
 #define MODE_DENSITY "density"
 #define MODE_MATERIAL "material"
@@ -22,7 +23,7 @@
 
 	var/list/atom/movable/tracked_movables = list()
 
-	var/mode = MODE_VALUE
+	var/mode = MODE_NONE
 	var/value_threshold = 50
 
 	density = TRUE
@@ -47,7 +48,7 @@
 			caller.to_chat(span("notice","You set the threshold to [value_threshold]."))
 	else
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			var/modes = list(MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE)
+			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE)
 			mode = input(caller, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
 			name = "[initial(name)] ([mode])"
 		else
@@ -78,6 +79,8 @@
 	if(!anchored)
 		return FALSE
 	switch(mode)
+		if(MODE_NONE)
+			return TRUE
 		if(MODE_VALUE)
 			if(is_item(M)) // Can't put this in the "if" right above it...
 				var/obj/item/I = M
@@ -163,6 +166,7 @@
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks if it's a crate."
 	mode = MODE_CRATE
 
+#undef MODE_NONE
 #undef MODE_VALUE
 #undef MODE_DENSITY
 #undef MODE_MATERIAL
