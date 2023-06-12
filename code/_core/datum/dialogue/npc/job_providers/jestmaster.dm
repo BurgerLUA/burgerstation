@@ -29,7 +29,7 @@
 
 	else
 		.["clown"] = list(
-			"Anyone can be a #1. All is forgiven under #2 eyes, but you must abandon your past self.NEWLINE#3NEWLINE#4",
+			"Anyone can be a #1. All is forgiven under #2 eyes, but you must abandon your past self. I must warn you, however. If you become one of us without being strong enough, you might find you're too weak to do anything.NEWLINE#3NEWLINE#4",
 			"clown",
 			"Her",
 			"*Yes, become a clown.",
