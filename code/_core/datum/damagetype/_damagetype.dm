@@ -489,7 +489,8 @@ var/global/list/all_damage_numbers = list()
 		SANITY = 0
 	)
 	var/critical_hit_multiplier = get_critical_hit_condition(attacker,victim,weapon,hit_object) ? do_critical_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
-	critical_hit_multiplier *= get_sneak_hit_condition(attacker,victim,weapon,hit_object) ? do_sneak_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
+	var/stealth_multiplier = get_sneak_hit_condition(attacker,victim,weapon,hit_object) ? do_sneak_hit(attacker,victim,weapon,hit_object,damage_to_deal) : 1
+
 	var/fatigue_damage = 0
 	var/pain_damage = 0
 
@@ -521,7 +522,7 @@ var/global/list/all_damage_numbers = list()
 		if(!damage_type)
 			continue
 		if(debug) log_debug("Calculating [damage_type]...")
-		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier
+		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier
 		if(!ignore_armor_bonus_damage && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			if(length(defense_rating_attacker) && defense_rating_attacker[damage_type] && IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, dark).
 				damage_to_deal[damage_type] = 0
@@ -685,6 +686,12 @@ var/global/list/all_damage_numbers = list()
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 						experience_gained[SKILL_PRECISION] += xp_to_give
+
+				if(stealth_multiplier > 1)
+					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/stealth_multiplier,1)
+					if(xp_to_give > 0)
+						A.add_skill_xp(SKILL_SURVIVAL,xp_to_give)
+						experience_gained[SKILL_SURVIVAL] += xp_to_give
 
 				for(var/skill in skill_stats)
 					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
