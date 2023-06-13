@@ -48,9 +48,9 @@
 			caller.to_chat(span("notice","You set the threshold to [value_threshold]."))
 	else
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE,"Cancel")
+			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE,"CANCEL")
 			var/whatmode = input(caller, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
-			if(whatmode == null || whatmode == "Cancel")
+			if(whatmode == null || whatmode == "CANCEL")
 				return
 			mode = whatmode
 			name = "[initial(name)] ([mode])"
