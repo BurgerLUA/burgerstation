@@ -7,10 +7,24 @@
 
 	plane = PLANE_MOVABLE
 
+	desired_light_range = 0.5
+	desired_light_power = 1
+	desired_light_color = "#0000FF"
+
 /obj/structure/interactive/atm/Initialize()
 	try_attach_to()
 	setup_dir_offsets()
 	return ..()
+
+/obj/structure/interactive/atm/Finalize()
+	. = ..()
+	update_sprite()
+
+/obj/structure/interactive/atm/update_overlays()
+	. = ..()
+	var/image/I = new/image(initial(icon),"atm_light")
+	I.plane = PLANE_LIGHTING_EFFECT
+	add_overlay(I)
 
 /obj/structure/interactive/atm/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
