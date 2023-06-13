@@ -3,15 +3,13 @@
 	desc = "Bank on a wall."
 	desc_extended = "An automatic bank teller machine that allows you to deposit or withdraw money into your connected bank account."
 	icon = 'icons/obj/structure/atm_bank.dmi'
-	icon_state = "atm_map"
+	icon_state = "atm"
 
 	plane = PLANE_MOVABLE
 
 /obj/structure/interactive/atm/Initialize()
 	try_attach_to()
 	setup_dir_offsets()
-	dir = SOUTH
-	icon_state = "atm"
 	return ..()
 
 /obj/structure/interactive/atm/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

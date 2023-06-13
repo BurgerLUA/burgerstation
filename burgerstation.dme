@@ -497,6 +497,7 @@
 #include "code\_core\datum\dialogue\_dialogue.dm"
 #include "code\_core\datum\dialogue\hostage\_hostage.dm"
 #include "code\_core\datum\dialogue\npc\burger_challenge.dm"
+#include "code\_core\datum\dialogue\npc\cargo_computer.dm"
 #include "code\_core\datum\dialogue\npc\contractor.dm"
 #include "code\_core\datum\dialogue\npc\master.dm"
 #include "code\_core\datum\dialogue\npc\mech_fabricator.dm"

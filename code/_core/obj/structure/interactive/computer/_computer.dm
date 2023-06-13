@@ -51,8 +51,8 @@ obj/structure/interactive/computer/console/laptop
 
 obj/structure/interactive/computer/console/old
 	name = "old computer"
-	desc = "An old, non-functional computer."
-	desc_extended = "It doesn't even work. What gives?!"
+	desc = "It doesn't even work. What gives?!"
+	desc_extended = "An old, non-functional computer."
 	pixel_y = 10
 
 	icon_state = "oldcomp"
@@ -60,38 +60,12 @@ obj/structure/interactive/computer/console/old
 	keyboard_type = "no_keyboard"
 
 
-obj/structure/interactive/computer/console/old/chargen
-	name = "\improper IMB piece of shit"
+obj/structure/interactive/computer/console/old/cargo/
+	name = "old cargo computer"
+	desc = "At least it works."
+	desc_extended = "An old computer meant to handle cargo orders."
 
-obj/structure/interactive/computer/console/old/chargen/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
-
-	if(!is_player(caller) || !caller.client)
-		return ..()
-
-	INTERACT_CHECK
-	INTERACT_CHECK_OBJECT
-	INTERACT_DELAY(5)
-
-	var/mob/living/advanced/player/P = caller
-	P.dialogue_target_id = "chargen_computer"
-	open_menu(P,/menu/dialogue/)
-
-	return TRUE
-
-
-obj/structure/interactive/computer/console/medical
-	name = "medical console"
-	computer_type = "medcomp"
-	keyboard_type = "med_key"
-
-obj/structure/interactive/computer/console/old/station_job
-	name = "job selection computer"
-	computer_type = "library"
-	keyboard_type = ""
-	var/door_code = 0
-	var/unit_number = 0
-
-obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+obj/structure/interactive/computer/console/old/cargo/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	if(!is_player(caller) || !caller.client)
 		return ..()
@@ -103,10 +77,32 @@ obj/structure/interactive/computer/console/old/station_job/clicked_on_by_object(
 	var/mob/living/advanced/player/P = caller
 
 	P.dialogue_target = src
-	P.dialogue_target_id = "job_computer"
+	P.dialogue_target_id = /dialogue/npc/cargo_computer/
 	open_menu(P,/menu/dialogue/)
 
 	return TRUE
+
+
+
+
+obj/structure/interactive/computer/console/medical
+	name = "medical console"
+	computer_type = "medcomp"
+	keyboard_type = "med_key"
+
+obj/structure/interactive/computer/console/old/cargo
+	name = "cargo computer"
+	computer_type = "library"
+	keyboard_type = ""
+
+
+
+
+
+
+
+
+
 
 
 obj/structure/interactive/computer/console/engineering

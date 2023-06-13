@@ -292,7 +292,7 @@
 "fF" = (/obj/structure/interactive/intercom{icon_state = "intercom"; dir = 8},/turf/simulated/wall/metal,/area/burgerstation/cargo/lobby)
 "fG" = (/obj/structure/interactive/lighting/fixture/bulb{dir = 8},/obj/structure/interactive/wire/yellow,/obj/marker/map_node,/turf/simulated/floor/plating/reinforced,/area/burgerstation/engineering/supermatter)
 "fH" = (/obj/structure/lattice,/obj/structure/lattice,/turf/space,/area/space/light)
-"fI" = (/obj/structure/table/reinforced/steel,/turf/simulated/floor/tile/dark,/area/burgerstation/cargo/lobby)
+"fI" = (/obj/structure/table/reinforced/steel,/obj/structure/interactive/computer/console/old/cargo,/turf/simulated/floor/tile/dark,/area/burgerstation/cargo/lobby)
 "fJ" = (/obj/structure/interactive/lighting/mounted_torch{icon_state = "torch"; dir = 8},/turf/simulated/wall/metal/magic,/area/burgerstation/library)
 "fK" = (/obj/structure/interactive/vending/medical/basic{icon_state = "wallmed"; dir = 4},/turf/simulated/wall/metal,/area/burgerstation/medical/lobby)
 "fL" = (/obj/structure/interactive/disposals/pipe/junction/flipped,/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/dark,/area/burgerstation/armory)
