@@ -31,18 +31,18 @@
 
 	.["*Yes, enter the prestige program"] = list("...")
 
-	dialogue_options["*Reward Redemption"] = list(
+	.["*Reward Redemption"] = list(
 		"Please whisper the secret phrase to redeem your reward."
 	)
-	dialogue_options["*Experience Redemption"] = list(
+	.["*Experience Redemption"] = list(
 		"Select what experience you wish to redeem."
 	)
 
-	dialogue_options["*rewardfail"] = list(
+	.["*rewardfail"] = list(
 		"It appears you did not enter a valid reward code.",
 	)
 
-	dialogue_options["*rewardsuccess"] = list(
+	.["*rewardsuccess"] = list(
 		"Enjoy your reward!",
 	)
 

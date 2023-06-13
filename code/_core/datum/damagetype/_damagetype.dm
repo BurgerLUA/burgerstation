@@ -609,6 +609,12 @@ var/global/list/all_damage_numbers = list()
 			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
 				total_damage_dealt = 0
 
+	var/victim_was_dead = FALSE
+	if(is_living(victim))
+		var/mob/living/LV = victim
+		if(LV.dead)
+			victim_was_dead = TRUE
+
 	if(total_damage_dealt > 0 && hit_object.health)
 		total_damage_dealt = hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
@@ -654,7 +660,7 @@ var/global/list/all_damage_numbers = list()
 		if(is_living(blamed) && is_living(victim))
 			var/mob/living/A = blamed
 			var/mob/living/V = victim
-			if(!V.dead)
+			if(!victim_was_dead)
 				var/list/hit_log_format = list()
 				hit_log_format["attacker"] = A
 				hit_log_format["attacker_ckey"] = A.ckey
@@ -671,7 +677,7 @@ var/global/list/all_damage_numbers = list()
 					if(damage_blocked_with_shield > 0)
 						V.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
 
-			if(attacker != victim && total_damage_dealt && !V.dead && A.is_player_controlled())
+			if(attacker != victim && total_damage_dealt && !victim_was_dead && A.is_player_controlled())
 				var/list/experience_gained = list()
 				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
