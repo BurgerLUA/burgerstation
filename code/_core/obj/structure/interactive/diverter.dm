@@ -1,3 +1,12 @@
+#define MODE_NONE "none"
+#define MODE_VALUE "value"
+#define MODE_DENSITY "density"
+#define MODE_MATERIAL "material"
+#define MODE_LIVING "living"
+#define MODE_WEAPON "weapon"
+#define MODE_BUTCHERABLE "butcherable"
+#define MODE_CRATE "crate"
+
 /obj/structure/interactive/diverter/
 	name = "airjet diverter"
 	desc = "Pssssh."
@@ -13,6 +22,9 @@
 	var/think_timer = 0
 
 	var/list/atom/movable/tracked_movables = list()
+
+	var/mode = MODE_NONE
+	var/value_threshold = 50
 
 	density = TRUE
 
@@ -31,11 +43,22 @@
 			else
 				caller.to_chat(span("notice","You anchor the diverter."))
 				anchored = TRUE
+		else if(T.flags_tool & FLAG_TOOL_MULTITOOL && mode == MODE_VALUE) // Should I REALLY make it need a multitool?
+			value_threshold = clamp(input(caller, "What do you want to set the threshold to?","[src]",value_threshold),-1,50000)
+			caller.to_chat(span("notice","You set the threshold to [value_threshold]."))
 	else
-		caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
-		set_dir(turn(dir,90))
+		if(caller.attack_flags & CONTROL_MOD_DISARM)
+			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE,"CANCEL")
+			var/whatmode = input(caller, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
+			if(whatmode == null || whatmode == "CANCEL")
+				return
+			mode = whatmode
+			name = "[initial(name)] ([mode])"
+		else
+			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
+			set_dir(turn(dir,90))
 
-		update_sprite()
+			update_sprite()
 
 	return TRUE
 
@@ -48,6 +71,7 @@
 
 /obj/structure/interactive/diverter/PostInitialize()
 	. = ..()
+	name = "[initial(name)] ([mode])"
 	update_sprite()
 
 /obj/structure/interactive/diverter/update_icon()
@@ -55,7 +79,34 @@
 	icon_state = "diverter_on"
 
 /obj/structure/interactive/diverter/proc/should_push(var/atom/movable/M)
-	return anchored
+	if(!anchored)
+		return FALSE
+	switch(mode)
+		if(MODE_NONE)
+			return TRUE
+		if(MODE_VALUE)
+			if(is_item(M)) // Can't put this in the "if" right above it...
+				var/obj/item/I = M
+				return I.get_value() >= value_threshold
+		if(MODE_DENSITY)
+			return M.density && M.collision_flags != FLAG_COLLISION_NONE
+		if(MODE_MATERIAL)
+			return istype(M,/obj/item/material) && !istype(M,/obj/item/material/shard)
+		if(MODE_LIVING)
+			if(is_living(M))
+				var/mob/living/L = M
+				if(!L.dead || L.ckey_last)
+					return TRUE
+		if(MODE_WEAPON)
+			return istype(M,/obj/item/weapon)
+		if(MODE_BUTCHERABLE)
+			if(is_living(M))
+				var/mob/living/L = M
+				if(L.override_butcher || length(L.butcher_contents))
+					return TRUE
+		if(MODE_CRATE)
+			return istype(M,/obj/structure/interactive/crate)
+
 
 /obj/structure/interactive/diverter/think()
 
@@ -83,73 +134,44 @@
 
 	return ..()
 
+/obj/structure/interactive/diverter/get_examine_list(mob/examiner)
+	. = ..()
+	if(mode == MODE_VALUE)
+		. += div("notice","It's set to divert anything with a value equal or higher to [value_threshold].")
 
 /obj/structure/interactive/diverter/high_value
-	name = "airjet diverter (high value)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one scans the value of the object and pushes it if it exceeds a certain amount."
-	var/value_threshold = 50
-
-/obj/structure/interactive/diverter/high_value/should_push(var/atom/movable/M)
-	if(is_item(M))
-		var/obj/item/I = M
-		return I.get_value() >= value_threshold
-
-	return FALSE
-
+	mode = MODE_VALUE
 
 /obj/structure/interactive/diverter/density
-	name = "airjet diverter (density)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one measures the density of the object."
-
-/obj/structure/interactive/diverter/density/should_push(var/atom/movable/M)
-	return M.density && M.collision_flags != FLAG_COLLISION_NONE
+	mode = MODE_DENSITY
 
 /obj/structure/interactive/diverter/material
-	name = "airjet diverter (material)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object is a raw material."
-
-/obj/structure/interactive/diverter/material/should_push(var/atom/movable/M)
-	return istype(M,/obj/item/material/) && !istype(M,/obj/item/material/shard)
-
+	mode = MODE_MATERIAL
 
 /obj/structure/interactive/diverter/living
-	name = "airjet diverter (living)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object is a living person or a creature, or is able to be revived."
-
-/obj/structure/interactive/diverter/living/should_push(var/atom/movable/M)
-
-	if(is_living(M))
-		var/mob/living/L = M
-		if(!L.dead || L.ckey_last)
-			return TRUE
-
-	return FALSE
-
-
+	mode = MODE_LIVING
 
 /obj/structure/interactive/diverter/weapon
-	name = "airjet diverter (weapon)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks if it's a weapon."
-
-/obj/structure/interactive/diverter/weapon/should_push(var/atom/movable/M)
-	return istype(M,/obj/item/weapon)
+	mode = MODE_WEAPON
 
 /obj/structure/interactive/diverter/butcherable
-	name = "airjet diverter (butcherable)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks whether or not the object can be butchered for food."
-
-/obj/structure/interactive/diverter/butcherable/should_push(var/atom/movable/M)
-
-	if(is_living(M))
-		var/mob/living/L = M
-		if(L.override_butcher || length(L.butcher_contents))
-			return TRUE
-
-	return FALSE
+	mode = MODE_BUTCHERABLE
 
 /obj/structure/interactive/diverter/crate
-	name = "airjet diverter (crate)"
 	desc_extended = "A special conveyor diverter that uses powerful jets of air to push objects off the conveyor belt based on the conditions. This one checks if it's a crate."
+	mode = MODE_CRATE
 
-/obj/structure/interactive/diverter/crate/should_push(var/atom/movable/M)
-	return istype(M,/obj/structure/interactive/crate)
+#undef MODE_NONE
+#undef MODE_VALUE
+#undef MODE_DENSITY
+#undef MODE_MATERIAL
+#undef MODE_LIVING
+#undef MODE_WEAPON
+#undef MODE_BUTCHERABLE
+#undef MODE_CRATE
