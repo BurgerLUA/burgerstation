@@ -48,7 +48,7 @@
 "aV" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/tile/red,/area/centcomm/clown_planet)
 "aW" = (/obj/structure/table/reinforced/yellow,/obj/structure/interactive/shop,/obj/item/bikehorn/magic,/turf/simulated/floor/tile/morphing,/area/centcomm/clown_planet)
 "aX" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/blue,/area/centcomm/clown_planet)
-"aY" = (/obj/structure/interactive/atm{icon_state = "atm_map"; dir = 1},/turf/simulated/wall/metal/magic/bananium,/area/centcomm/clown_planet)
+"aY" = (/obj/structure/interactive/atm{icon_state = "atm"; dir = 1},/turf/simulated/wall/metal/magic/bananium,/area/centcomm/clown_planet)
 "aZ" = (/obj/structure/interactive/door/airlock/magic,/turf/simulated/floor/tile/bananium,/area/centcomm/clown_planet)
 "ba" = (/obj/structure/scenery/peppermint,/turf/simulated/floor/tile/bananium,/area/centcomm/clown_planet)
 "bb" = (/obj/structure/scenery/peppermint/green,/turf/simulated/floor/tile/bananium,/area/centcomm/clown_planet)

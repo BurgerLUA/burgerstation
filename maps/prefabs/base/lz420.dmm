@@ -309,7 +309,7 @@
 "bi" = (
 /obj/structure/interactive/atm{
 	dir = 8;
-	icon_state = "atm_map"
+	icon_state = "atm"
 	},
 /turf/simulated/wall/metal,
 /area/dmm_suite/clear_area)
