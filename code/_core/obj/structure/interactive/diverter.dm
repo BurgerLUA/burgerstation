@@ -48,8 +48,11 @@
 			caller.to_chat(span("notice","You set the threshold to [value_threshold]."))
 	else
 		if(caller.attack_flags & CONTROL_MOD_DISARM)
-			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE)
-			mode = input(caller, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
+			var/modes = list(MODE_NONE,MODE_VALUE,MODE_DENSITY,MODE_MATERIAL,MODE_LIVING,MODE_WEAPON,MODE_CRATE,MODE_BUTCHERABLE,"Cancel")
+			var/whatmode = input(caller, "What do you want to set the mode to?","[src]",mode) as null|anything in modes
+			if(whatmode == null || whatmode == "Cancel")
+				return
+			mode = whatmode
 			name = "[initial(name)] ([mode])"
 		else
 			caller.visible_message(span("notice","\The [caller.name] rotates \the [src.name]."),span("notice","You rotate \the [src.name]."))
@@ -103,8 +106,6 @@
 					return TRUE
 		if(MODE_CRATE)
 			return istype(M,/obj/structure/interactive/crate)
-		else
-			return FALSE
 
 
 /obj/structure/interactive/diverter/think()
