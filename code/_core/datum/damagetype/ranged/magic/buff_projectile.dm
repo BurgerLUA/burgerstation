@@ -8,7 +8,3 @@
 	skill_stats = list(
 		SKILL_PRAYER = 50,
 	)
-
-	bonus_experience_skill = list(
-		SKILL_PRAYER = 75 //75%
-	)

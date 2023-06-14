@@ -96,6 +96,7 @@ var/global/list/all_damage_numbers = list()
 	var/list/skill_damage = list()
 
 	var/list/bonus_experience_skill = list()
+
 	var/list/bonus_experience_attribute = list()
 
 	var/use_blamed_stats = FALSE
@@ -694,25 +695,33 @@ var/global/list/all_damage_numbers = list()
 						experience_gained[SKILL_SURVIVAL] += xp_to_give
 
 				for(var/skill in skill_stats)
+					//var/experience/skill/E = SSexperience.all_skills[skill]
 					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained[skill] += xp_to_give
 
 				for(var/attribute in attribute_stats)
+					var/experience/attribute/E = SSexperience.all_attributes[attribute]
+					if(!(E.flags & ATTRIBUTE_DAMAGE))
+						continue
 					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give
 
 				for(var/skill in bonus_experience_skill)
-					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * total_damage_dealt * experience_multiplier,1)
+					//var/experience/skill/E = SSexperience.all_skills[skill]
+					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained[skill] += xp_to_give
 
 				for(var/attribute in bonus_experience_attribute)
-					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * total_damage_dealt * experience_multiplier,1)
+					var/experience/attribute/E = SSexperience.all_attributes[attribute]
+					if(!(E.flags & ATTRIBUTE_DAMAGE))
+						continue
+					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give

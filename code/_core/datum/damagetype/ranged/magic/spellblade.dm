@@ -24,10 +24,5 @@
 		SKILL_MAGIC = ARCANE
 	)
 
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 25, //25%
-		SKILL_MELEE = 25
-	)
-
 	attack_delay = 16*0.5
 	attack_delay_max = 16

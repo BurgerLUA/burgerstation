@@ -21,15 +21,6 @@
 
 	experience_mod = 2
 
-	bonus_experience_skill = list(
-		SKILL_UNARMED = 50 //50%
-	)
-
-	bonus_experience_attribute = list(
-		ATTRIBUTE_DEXTERITY = 25, //25%
-		ATTRIBUTE_STRENGTH = 25, //25%
-	)
-
 	savage_hit_threshold = 0.2
 
 	sneak_attack_multiplier = 4

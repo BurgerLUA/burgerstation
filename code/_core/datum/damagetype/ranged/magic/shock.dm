@@ -19,7 +19,3 @@
 	skill_damage = list(
 		SKILL_MAGIC = ARCANE
 	)
-
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
-	)

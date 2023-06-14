@@ -16,8 +16,6 @@
 
 	skill_damage = list()
 
-	bonus_experience_skill = list()
-
 	attack_delay = 8
 	attack_delay_max = 8
 

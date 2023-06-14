@@ -63,11 +63,6 @@
 		SKILL_MAGIC = HEAT
 	)
 
-	bonus_experience_skill = list(
-		SKILL_MELEE = 25, //25%
-		SKILL_MAGIC = 25
-	)
-
 	attack_delay = 20
 	attack_delay_max = 20
 

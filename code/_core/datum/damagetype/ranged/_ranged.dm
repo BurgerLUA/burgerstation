@@ -35,10 +35,6 @@
 
 	can_be_parried = FALSE
 
-	bonus_experience_attribute = list(
-		ATTRIBUTE_DEXTERITY = 10 //10%
-	)
-
 	attack_delay = 0
 
 	var/allow_glancing_blows = FALSE

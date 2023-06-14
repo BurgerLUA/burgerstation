@@ -34,9 +34,5 @@
 		SKILL_PRAYER = HOLY
 	)
 
-	bonus_experience_skill = list(
-		SKILL_PRAYER = 25
-	)
-
 	attack_delay = 15
 	attack_delay_max = 25

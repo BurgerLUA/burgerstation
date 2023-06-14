@@ -19,10 +19,6 @@
 		SKILL_MAGIC = SHOCK
 	)
 
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
-	)
-
 /damagetype/ranged/magic/tesla_shock
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -44,8 +40,4 @@
 
 	skill_damage = list(
 		SKILL_MAGIC = SHOCK
-	)
-
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
 	)

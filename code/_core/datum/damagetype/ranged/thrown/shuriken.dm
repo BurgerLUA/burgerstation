@@ -27,15 +27,6 @@
 
 	)
 
-	bonus_experience_skill = list(
-		SKILL_RANGED = 25
-	)
-
-	bonus_experience_attribute = list(
-		ATTRIBUTE_STRENGTH = 10,
-		ATTRIBUTE_DEXTERITY = 10
-	)
-
 	sneak_attack_multiplier = 4
 
 /damagetype/ranged/thrown/kitchen_shuriken
@@ -65,15 +56,6 @@
 
 	skill_damage = list(
 
-	)
-
-	bonus_experience_skill = list(
-		SKILL_RANGED = 25
-	)
-
-	bonus_experience_attribute = list(
-		ATTRIBUTE_STRENGTH = 10,
-		ATTRIBUTE_DEXTERITY = 10
 	)
 
 	sneak_attack_multiplier = 4

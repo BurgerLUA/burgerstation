@@ -15,7 +15,3 @@
 	skill_damage = list(
 		SKILL_PRAYER = list(BLUNT,HOLY)
 	)
-
-	bonus_experience_skill = list(
-		SKILL_PRAYER = 75 //75%
-	)

@@ -69,10 +69,5 @@
 		SKILL_PRAYER = DARK
 	)
 
-	bonus_experience_skill = list(
-		SKILL_MELEE = 25, //25%
-		SKILL_PRAYER = 25
-	)
-
 	attack_delay = 10
 	attack_delay_max = 20

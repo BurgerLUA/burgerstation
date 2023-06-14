@@ -42,9 +42,6 @@
 	skill_damage = list(
 		SKILL_PRAYER = list(HOLY)
 	)
-	bonus_experience_skill = list(
-		SKILL_PRAYER = 1
-	)
 
 /damagetype/ranged/bullet/holybullet/surplus
 	damage_mod = SURPLUS_MUL

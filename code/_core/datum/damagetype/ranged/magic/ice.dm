@@ -20,10 +20,6 @@
 		SKILL_MAGIC = COLD
 	)
 
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
-	)
-
 
 /damagetype/ranged/magic/fire
 	attack_damage_base = list(
@@ -45,8 +41,4 @@
 
 	skill_damage = list(
 		SKILL_MAGIC = HEAT
-	)
-
-	bonus_experience_skill = list(
-		SKILL_MAGIC = 75 //75%
 	)

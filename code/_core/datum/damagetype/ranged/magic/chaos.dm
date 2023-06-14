@@ -19,10 +19,6 @@
 		SKILL_PRAYER = DARK
 	)
 
-	bonus_experience_skill = list(
-		SKILL_PRAYER = 75 //75%
-	)
-
 /damagetype/ranged/magic/chaos/canine //Lazy way to stop the cursed canine from leveling magic stats, but still uses them for damage.
 
 	attribute_stats = list(
