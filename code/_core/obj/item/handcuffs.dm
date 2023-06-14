@@ -54,4 +54,10 @@
 		caller.to_chat(span("warning","You need to be holding \the [src.name] in order to cuff \the [target.name]!"))
 		return FALSE
 
+	if(is_living(caller))
+		var/mob/living/L = caller
+		if(!allow_hostile_action(L.loyalty_tag,target))
+			caller.to_chat(span("warning","You can't handcuff allies!"))
+			return FALSE
+
 	return TRUE
