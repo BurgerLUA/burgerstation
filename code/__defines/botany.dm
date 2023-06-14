@@ -1,0 +1,1 @@
+#define QUEUE_CHUNK_BOTANY_UPDATE(chunk) SSbotany.queued_plant_update_chunks[chunk] = TRUE

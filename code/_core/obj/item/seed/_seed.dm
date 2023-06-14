@@ -15,7 +15,7 @@
 	var/potency = 20
 	var/yield_max = 1
 	var/yield_percent = 100
-	var/growth_speed = 0.5
+	var/growth_speed = 0.05 //Per decisecond.
 
 	var/delete_after_harvest = TRUE
 
@@ -39,14 +39,14 @@
 
 /obj/item/seed/get_base_value()
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
-	. = P.value
-	. *= (0.1 + (potency/100)*0.4) + (0.1 + ((yield_max/10)*(yield_percent/100))*0.4)
-	. *= (0.1 + growth_speed/10)
+	. = (P.value * potency) * yield_max * (yield_percent/100)
+	. *= (0.1 + growth_speed)
 	if(!delete_after_harvest)
 		. *= 3
 	. += growth_min
 	. += max(0,100-growth_max)*0.25
 	. += max(0,200-growth_produce_max)*0.25
+	. = CEILING(.,5)
 
 /obj/item/seed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
@@ -109,6 +109,8 @@
 		PL.delete_after_harvest = delete_after_harvest
 		INITIALIZE(PL)
 		FINALIZE(PL)
+		if(!PL.dead && !PL.qdeleting)
+			PL.set_active(TRUE)
 		caller.visible_message(span("notice","\The [caller.name] plants \the [src.name] in \the [T.name], creating a [PL.name]."),span("notice","You plant \the [src.name] in \the [T.name], creating \a [PL.name]."))
 		qdel(src)
 		return TRUE

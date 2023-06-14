@@ -7,7 +7,7 @@
 
 	potency = 20
 	yield_max = 1
-	growth_speed = 0.5
+	growth_speed = 0.075
 
 	delete_after_harvest = TRUE
 
@@ -21,7 +21,7 @@
 
 	potency = 30
 	yield_max = 1
-	growth_speed = 0.5
+	growth_speed = 0.075
 
 	delete_after_harvest = TRUE
 
@@ -34,7 +34,7 @@
 
 	potency = 30
 	yield_max = 1
-	growth_speed = 0.3
+	growth_speed = 0.045
 
 	delete_after_harvest = TRUE
 
@@ -47,7 +47,7 @@
 
 	potency = 15
 	yield_max = 3
-	growth_speed = 0.5
+	growth_speed = 0.075
 
 	delete_after_harvest = FALSE
 
@@ -60,7 +60,7 @@
 
 	potency = 15
 	yield_max = 2
-	growth_speed = 0.4
+	growth_speed = 0.06
 
 	delete_after_harvest = TRUE
 
@@ -73,7 +73,7 @@
 
 	potency = 20
 	yield_max = 4
-	growth_speed = 0.4
+	growth_speed = 0.06
 
 	delete_after_harvest = TRUE
 
@@ -87,7 +87,7 @@
 
 	potency = 10
 	yield_max = 8
-	growth_speed = 0.2
+	growth_speed = 0.03
 
 	delete_after_harvest = TRUE
 
@@ -100,7 +100,7 @@
 
 	potency = 10
 	yield_max = 3
-	growth_speed = 0.3
+	growth_speed = 0.04
 
 	delete_after_harvest = TRUE
 
@@ -119,7 +119,7 @@
 
 	potency = 8
 	yield_max = 8
-	growth_speed = 0.5
+	growth_speed = 0.065
 
 	delete_after_harvest = FALSE
 
@@ -132,7 +132,7 @@
 
 	potency = 5
 	yield_max = 4
-	growth_speed = 0.45
+	growth_speed = 0.055
 
 	delete_after_harvest = TRUE
 
@@ -145,7 +145,7 @@
 
 	potency = 9
 	yield_max = 6
-	growth_speed = 0.5
+	growth_speed = 0.075
 
 	delete_after_harvest = TRUE
 
@@ -158,7 +158,7 @@
 
 	potency = 3
 	yield_max = 4
-	growth_speed = 0.4
+	growth_speed = 0.05
 
 	delete_after_harvest = FALSE
 
@@ -171,7 +171,7 @@
 
 	potency = 10
 	yield_max = 2
-	growth_speed = 0.2
+	growth_speed = 0.03
 
 	delete_after_harvest = TRUE
 
@@ -184,7 +184,7 @@
 
 	potency = 2
 	yield_max = 3
-	growth_speed = 0.3
+	growth_speed = 0.04
 
 	delete_after_harvest = FALSE
 
@@ -197,7 +197,7 @@
 
 	potency = 2
 	yield_max = 3
-	growth_speed = 0.3
+	growth_speed = 0.04
 
 	delete_after_harvest = FALSE
 
@@ -210,7 +210,7 @@
 
 	potency = 2
 	yield_max = 3
-	growth_speed = 0.7
+	growth_speed = 0.09
 
 	delete_after_harvest = TRUE
 
@@ -223,7 +223,7 @@
 
 	potency = 2
 	yield_max = 1
-	growth_speed = 0.5
+	growth_speed = 0.075
 
 	delete_after_harvest = FALSE
 
@@ -236,7 +236,7 @@
 
 	potency = 2
 	yield_max = 1
-	growth_speed = 0.1
+	growth_speed = 0.02
 
 	delete_after_harvest = TRUE
 /*
@@ -249,7 +249,7 @@
 
 	potency = 5
 	yield_max = 2
-	growth_speed = 0.45
+	growth_speed = 0.045
 
 	delete_after_harvest = TRUE
 
@@ -262,7 +262,7 @@
 
 	potency = 5
 	yield_max = 2
-	growth_speed = 0.45
+	growth_speed = 0.045
 
 	delete_after_harvest = TRUE
 
@@ -275,7 +275,7 @@
 
 	potency = 5
 	yield_max = 2
-	growth_speed = 0.45
+	growth_speed = 0.045
 
 	delete_after_harvest = TRUE
 */
@@ -288,6 +288,6 @@
 
 	potency = 5
 	yield_max = 2
-	growth_speed = 0.4
+	growth_speed = 0.055
 
 	delete_after_harvest = TRUE

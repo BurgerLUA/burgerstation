@@ -8,14 +8,14 @@
 
 	var/plant_type/plant_type
 
-	//NOTES TO ANY FUTURE BOTANY CODERs:
+	//NOTES TO ANY FUTURE BOTANY CODERS:
 	//The numbers involved on making plants grow is a fairly complicated, interwoven feedback cycle.desc_extended =
 	//You cannot simply change 1 number and expect everything to work as you hoped it would.
 	//Its mostly the metabolism part that screws up what is otherwise a straightforward setup, but health changes and tick speed can also
 	//cause bigger swings in results than expected. With the current set of numbers, you should mostly be able to change any individual plant values
 	//in seed_types.dm to handle any individual plant that needs brought into line.
 
-	var/growth = 0 //Increases by growth_speed every second.
+	var/growth = 0 //Increases by growth_speed every decisecond.
 	var/growth_min = 0 //This is set AFTER harvesting.
 	var/growth_max = 50 //The growth value when this plant is considered grown, but has no produce grown on it.
 	var/growth_produce_max = 200 //The growth value when this plant is considered grown, and has produce on it.
@@ -29,12 +29,12 @@
 	var/yield_max = 1 //Maximium yield this plant can give.
 	var/potency = 20 //How much chemicals?
 	var/yield_percent = 100 //Base harvest chance per yield.
-	var/growth_speed = 1 //How much to add to growth every second. A good starting value would be between 0.25 and 0.5
+	var/growth_speed = 1 //How much to add to growth every decisecond. A good starting value would be between 0.025 and 0.05
 
-	var/hydration = 35 //Out of 100
-	var/nutrition = 35 //Out of 100
-	var/age = 0 //In seconds. Once it gets old (15 minutes) it starts to take damage.
-	var/lifetime = 900 //The age in which this plant starts dying. 15 minutes @ 900
+	var/hydration = 50 //Out of 100
+	var/nutrition = 50 //Out of 100
+	var/age = 0 //In deciseconds. Once it gets old (15 minutes) it starts to take damage.
+	var/lifetime = 9000 //The age in which this plant starts dying. 15 minutes = 9000 deciseconds.
 
 	var/delete_after_harvest = TRUE
 
@@ -48,8 +48,40 @@
 
 	var/natural = FALSE
 
+	var/active = FALSE
+
+/obj/structure/interactive/plant/proc/set_active(var/desired_active=TRUE)
+	if(active == desired_active)
+		return FALSE
+	active = desired_active
+	if(active)
+		SSbotany.all_plants += src
+		alpha = 255
+	else
+		SSbotany.all_plants -= src
+		alpha = 50
+	return TRUE
+
 /obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
 	. = ..()
+
+	if(dead)
+		. += span("danger","It's dead, and shriveled...")
+	else
+		if(growth >= growth_produce_max)
+			. += span("notice bold","It is ready for harvest.")
+		/*
+		if(health)
+			switch(health.health_current/health.health_max)
+				if(-INFINITY to 0.2)
+					. += span("danger","It's starting to shrivel!")
+				if(0.2 to 0.3)
+					. += span("danger","It looks very unhealthy!")
+				if(0.3 to 0.5)
+					. += span("warning","It looks unhealthy.")
+				if(0.5 to 0.75)
+					. += span("notice","It looks like it could use some care.")
+		*/
 
 	switch(age/lifetime)
 		if(0.6 to 0.7)
@@ -57,45 +89,42 @@
 		if(0.8 to 1)
 			. += span("warning","It looks old.")
 		if(1 to INFINITY)
-			. += span("warning","It looks very old.")
+			. += span("danger","It looks very old.")
 
 	switch(hydration)
-		if(0 to 10)
+		if(-INFINITY to 10)
 			. += span("danger","It looks severely underwatered!")
-		if(10 to 30)
-			. += span("warning","It looks underwatered.")
-		if(30 to 50)
+		if(10 to 50)
+			. += span("warning","It looks underwatered, and will not grow.")
+		if(50 to 75)
 			. += span("notice","It looks like it could use some water.")
-		if(50 to 90)
+		if(75 to 100)
 			. += span("notice","It looks properly watered.")
-		if(90 to 125)
+		if(100 to 125)
 			. += span("warning","It looks overwatered.")
-		if(125 to 200)
-			. += span("warning","It looks severely overwatered!")
+		if(125 to INFINITY)
+			. += span("danger","It looks severely overwatered!")
 
 	switch(nutrition)
-		if(0 to 10)
+		if(-INFINITY to 10)
 			. += span("danger","It looks severely underfertilized!")
-		if(10 to 30)
-			. += span("warning","It looks underfertilized.")
-		if(30 to 50)
+		if(10 to 50)
+			. += span("warning","It looks underfertilized, and will not grow.")
+		if(50 to 75)
 			. += span("notice","It looks like it could use some fertilizer.")
-		if(50 to 90)
+		if(75 to 100)
 			. += span("notice","It looks properly fertilized.")
-		if(90 to 125)
+		if(100 to 125)
 			. += span("warning","It looks overfertilized.")
-		if(125 to 200)
-			. += span("warning","It looks severely overfertilized!")
-
-	. += span("notice","AGE: [age] GROWTH [growth] ")
-
+		if(125 to INFINITY)
+			. += span("danger","It looks severely overfertilized!")
 
 
 /obj/structure/interactive/plant/on_destruction(var/damage = TRUE)
 
 	var/should_delete = dead || !damage
 	if(damage && !dead)
-		SSbotany.all_plants -= src //The dead don't think anymore.
+		set_active(FALSE)
 		dead = TRUE
 		health.restore()
 		update_sprite()
@@ -107,19 +136,17 @@
 		qdel(src)
 
 /obj/structure/interactive/plant/proc/add_nutrition(var/nutrition_amount)
-	nutrition += nutrition_amount
-	nutrition = clamp(nutrition,0,200)
+	nutrition = clamp(nutrition + nutrition_amount,0,200)
 	return TRUE
 
 /obj/structure/interactive/plant/proc/add_hydration(var/hydration_amount)
-	hydration += hydration_amount
-	hydration = clamp(hydration,0,200)
+	hydration = clamp(hydration + hydration_amount,0,200)
 	return TRUE
 
 /obj/structure/interactive/plant/Generate()
 	. = ..()
 	growth = growth_produce_max
-	lifetime = 60*60*24*7*4*rand(1,5)
+	lifetime = 60*60*24*7*4*10*rand(1,5)
 	hydration = rand(50,75)
 	nutrition = rand(50,75)
 	age = lifetime * RAND_PRECISE(0.25,0.75)
@@ -127,17 +154,32 @@
 	natural = TRUE
 
 /obj/structure/interactive/plant/Finalize()
+	alpha = 50
 	. = ..()
-	if(!dead && !qdeleting)
-		SSbotany.all_plants += src
+	var/plant_type/P = SSbotany.all_plant_types[plant_type]
+	if(P && P.allowed_turfs[src.loc.type])
+		nutrition *= P.allowed_turfs[src.loc.type]
+		hydration *= 0.5 + P.allowed_turfs[src.loc.type]*0.5
+	else
+		nutrition *= 0.5
+		hydration *= 0.5
 
-/obj/structure/interactive/plant/Finalize()
-	. = ..()
 	update_sprite()
 
+
 /obj/structure/interactive/plant/PreDestroy()
-	SSbotany.all_plants -= src
+	set_active(FALSE)
 	. = ..()
+
+/obj/structure/interactive/plant/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+
+	. = ..()
+
+	if(old_chunk)
+		old_chunk.plants -= src
+
+	if(new_chunk)
+		new_chunk.plants += src
 
 /obj/structure/interactive/plant/proc/on_life(var/tick_rate=1) //Measured in game ticks.
 
@@ -145,50 +187,49 @@
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	var/real_growth_speed = growth_speed * rate * (P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
 
-	if(nutrition >= 10 && hydration >= 10)
+	if(nutrition >= 50 && hydration >= 50)
 		growth += real_growth_speed
 
-	if(!natural)
-		//plants need 1 water for every 2 seconds they're alive, and 1 nutrition for every 8.
-		//Plants gain between 3-8 growth every second (varies by crop) and they need 100 to harvest.
-		//nutrition/hyrdation get added during metabolize_plant, but it's hard to tell how fast added water goes into the plant.
-		add_nutrition(-0.125) //-real_growth_speed*0.25)
-		add_hydration(-0.5) //-real_growth_speed)
+	var/consumption_mod = (1 + growth/100) * real_growth_speed * rate * 1/(P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
+	add_nutrition(-0.005*consumption_mod)
+	add_hydration(-0.005*consumption_mod)
 
-	age += rate / 10
+	age += rate
 
 	var/brute_to_add = 0
+	var/burn_to_add = 0
 	var/tox_to_add = 0
+
+	//Damage due to age.
 	if(age >= lifetime && !prob(80)) //Old.
-		brute_to_add += 1
+		brute_to_add += 0.1*rate
+
+	//Damage due to nutrition.
 	if(nutrition <= 10) //Underfertilized.
-		brute_to_add += 3*(1 - nutrition/25)
+		brute_to_add += 0.3*(1 - nutrition/25)*rate
 	else if(nutrition > 110) //Overfertilized.
-		tox_to_add += 1
+		tox_to_add += 0.05*rate
+		burn_to_add += 0.025*rate
 	else if (nutrition >= 50 && nutrition <= 90) //healthy
-		brute_to_add -= 1
+		brute_to_add -= 0.1*rate
+
+	//Damage due to hydration.
 	if(hydration <= 10) //Underwatered
-		brute_to_add += 5*(1 - hydration/25)
+		burn_to_add += 0.5*(1 - hydration/25)*rate
 	else if(hydration > 110) //Overwaterd
-		tox_to_add += 1
+		tox_to_add += 0.05*rate
 	else if (hydration >= 50 && hydration <= 90) //healthy
-		tox_to_add -= 1
-	if(brute_to_add || tox_to_add)
-		src.health.adjust_loss_smart(brute=brute_to_add,tox=tox_to_add)
+		burn_to_add -= 0.05*rate
 
-	if(reagents)
-		//Fake metabolism.
-		var/total_metabolized = 0
-		for(var/r_id in reagents.stored_reagents)
-			var/reagent/R = REAGENT(r_id)
-			var/volume = reagents.stored_reagents[r_id]
-			var/amount_metabolized = R.on_metabolize_plant(src,reagents,max(R.metabolism_stomach,R.metabolism_blood,R.metabolism_skin),volume,1)
-			if(amount_metabolized > 0)
-				total_metabolized -= reagents.add_reagent(r_id,-amount_metabolized,TNULL,FALSE,FALSE) //Subtraction is intentional.
+	if(brute_to_add || burn_to_add || tox_to_add)
+		src.health.adjust_loss_smart(
+			brute=brute_to_add,
+			burn=burn_to_add,
+			tox=tox_to_add
+		)
 
-		if(total_metabolized > 0)
-			reagents.update_container(update_owner=FALSE)
-			//Recipes aren't processed here intentionally.
+	if(reagents && length(reagents.stored_reagents))
+		reagents.metabolize(src,rate*0.1) //Assumed that it is metabolism per second.
 
 	update_sprite()
 
@@ -263,57 +304,52 @@
 		if(move_direction & WEST)
 			animation_offset_x += 32
 
-		var/skill_power = caller.get_skill_power(SKILL_SURVIVAL,0,1,2)
-		var/health_mod  = health.health_current/health.health_max
+		var/health_mod  = min(health.health_current/health.health_max,1)
 
-		var/child_yield = CEILING(yield_max*(0.5 + min(skill_power,1)*0.5),1)
-		var/child_potency = CEILING(potency*(0.5 + min(skill_power,1)*0.5),1)
+		var/child_yield = CEILING(yield_max,1)
+		var/child_potency = CEILING(potency,1)
 
-		var/local_potency = (potency  + (skill_power * 10)) * health_mod //10 skill gives +1 potency, up to 10 extra at lv.100
-		var/local_yield = (yield_max  + (skill_power * 2)) * health_mod  //50 skill gives +1 yield, up to 2 extra at lv100
+		var/local_potency = potency * health_mod
+		var/local_yield = yield_max * health_mod
 
-		//Guarentee at least 1 for each.
-		local_potency = CEILING(local_potency,1)
-		local_yield = CEILING(local_yield,1)
+		var/total_harvests = 0
+		if(local_potency > 0 && yield_percent > 0)
+			for(var/i=1,i<=local_yield,i++)
+				var/local_yield_percent = yield_percent - yield_percent*(total_harvests/local_yield)
+				if(!prob(local_yield_percent))
+					continue
+				var/obj/item/container/edible/plant/P = new(caller_turf)
+				P.plant_type = associated_plant.type
+				P.pixel_x = animation_offset_x
+				P.pixel_y = animation_offset_y
+				P.potency =  child_potency
+				P.yield_max = child_yield
+				P.yield_percent = CEILING(yield_percent,1)
+				P.growth_speed = growth_speed
+				INITIALIZE(P)
+				GENERATE(P)
+				for(var/r_id in associated_plant.reagents)
+					var/r_value = associated_plant.reagents[r_id] * potency * health_mod
+					P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
+				FINALIZE(P)
+				//Update container is called in Finalize()
+				P.reagents.process_recipes(caller)
+				animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
+				total_harvests += 1
 
-		var/list/harvest_contents = list()
-		for(var/i=1,i<=local_yield,i++)
-			var/local_yield_percent = yield_percent - yield_percent*((i-1)/local_yield)
-			if(!prob(local_yield_percent))
-				continue
-			var/obj/item/container/edible/plant/P = new(caller_turf)
-			P.plant_type = associated_plant.type
-			P.pixel_x = animation_offset_x
-			P.pixel_y = animation_offset_y
-			P.potency =  child_potency
-			P.yield_max = child_yield
-			P.yield_percent = CEILING(yield_percent,1)
-			P.growth_speed = growth_speed
-			INITIALIZE(P)
-			GENERATE(P)
-			for(var/r_id in associated_plant.reagents)
-				var/r_value = associated_plant.reagents[r_id] * potency * health_mod + (skill_power * 10) //10 skill adds 1 extra chemical, up to 10 extra at lv100
-				P.reagents.add_reagent(r_id,r_value,TNULL,FALSE,FALSE)
-			FINALIZE(P)
-			//Update container is called in Finalize()
-			P.reagents.process_recipes(caller)
-			animate(P,pixel_x = rand(-16,16),pixel_y = rand(-16,16),time=5)
-			harvest_contents += P
-
-		var/total_harvests = length(harvest_contents)
 		if(total_harvests <= 0)
 			caller.visible_message(span("warning","\The [caller.name] fails to harvest anything from \the [src.name]!"),span("warning","You fail to harvest anything from \the [src.name]!"))
 		else
 			caller.visible_message(span("notice","\The [caller.name] harvests from \the [src.name]."),span("notice","You harvest [total_harvests] [associated_plant.name]\s from \the [src.name]."))
-			var/experience_to_add = total_harvests*potency*0.0125
-			caller.add_skill_xp(SKILL_SURVIVAL,CEILING(experience_to_add,1))
 
 	if(delete_after_harvest)
 		growth = 0 //just in case
 		qdel(src)
 	else
 		growth = growth_min
+		yield_percent = CEILING(max(0,yield_percent*0.9) - 5,1)
 		update_sprite()
+
 
 	return TRUE
 

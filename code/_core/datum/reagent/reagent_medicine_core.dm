@@ -16,6 +16,8 @@
 
 	particle_size = 0.3
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/bicaridine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 10*.*multiplier
@@ -36,6 +38,8 @@
 	value = 1.25
 
 	particle_size = 0.4
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/bicaridine_plus/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -63,6 +67,8 @@
 
 	particle_size = 0.3
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/caridone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += rand(10,20)*.*multiplier
@@ -88,6 +94,8 @@
 	liquid = 0.5
 
 	particle_size = 0.2
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/percardone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -117,6 +125,8 @@
 
 	particle_size = 0.2
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/dicarditane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 12*.*multiplier
@@ -144,6 +154,8 @@
 
 	particle_size = 0.4
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/kelotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.burn_regen_buffer += 5*.*multiplier
@@ -170,6 +182,8 @@
 
 	particle_size = 0.3
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/arentane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.burn_regen_buffer += rand(5,10)*.*multiplier
@@ -195,6 +209,8 @@
 	liquid = 0.75
 
 	particle_size = 0.3
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/kenotone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -227,6 +243,8 @@
 
 	particle_size = 0.1
 
+	flags_metabolism = REAGENT_METABOLISM_SKIN
+
 /reagent/medicine/extinatane/on_metabolize_skin(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(container.owner.health && container.owner.health.organic)
@@ -251,6 +269,8 @@
 	liquid = 0.25
 
 	particle_size = 0.5
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/carotane/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -280,6 +300,8 @@
 
 	particle_size = 0.2
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/dylovene/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.tox_regen_buffer += ((owner.health ? owner.health.damage[TOX]*0.05 : 0) + 5)*.*multiplier
@@ -302,6 +324,8 @@
 	value = 0.5
 
 	particle_size = 0.2
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/dexalin/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 	. = ..()
@@ -328,6 +352,8 @@
 	value = 0.75
 
 	particle_size = 0.5
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/tricordrazine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -357,6 +383,8 @@
 	value = 1
 
 	particle_size = 0.75
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/omnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -388,6 +416,8 @@
 	value = 500
 
 	particle_size = 0
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/adminomnizine/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -421,6 +451,8 @@
 	experience_per_unit = 5
 
 	particle_size = 0.5
+
+	flags_metabolism = REAGENT_METABOLISM_SKIN
 
 /reagent/medicine/silver_sulfadiazine/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
@@ -461,6 +493,8 @@
 
 	particle_size = 0.5
 
+	flags_metabolism = REAGENT_METABOLISM_SKIN
+
 /reagent/medicine/styptic_powder/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
 	. = ..()
 	if(. && is_living(target))
@@ -494,6 +528,8 @@
 	experience_per_unit = 5
 
 	particle_size = 0.75
+
+	flags_metabolism = REAGENT_METABOLISM_SKIN
 
 
 /reagent/medicine/synthflesh/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
@@ -549,6 +585,8 @@
 	addiction_threshold = 15
 	addiction = /addiction/health
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/vitamins/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	//Injecting these vitamins is pretty bad and does nothing for you.
@@ -576,6 +614,8 @@
 	overdose_threshold = 50
 
 	var/strength = 200
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/inaprovaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 

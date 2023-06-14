@@ -12,6 +12,9 @@
 
 	rarity = RARITY_UNCOMMON
 
+/obj/item/fertilizer/get_base_value()
+	return 20 + initial(value) * uses_left
+
 /obj/item/fertilizer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("uses_left")

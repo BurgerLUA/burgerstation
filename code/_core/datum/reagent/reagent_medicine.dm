@@ -42,6 +42,8 @@
 
 	overdose_threshold = 20
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/adrenaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
 	. = ..()
@@ -68,6 +70,8 @@
 	value = 0.75
 
 	particle_size = 0.25
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/adrenaline/epinephrine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
 
@@ -97,6 +101,8 @@
 	value = 1.25
 
 	particle_size = 0.4
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/health_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -128,6 +134,8 @@
 
 	particle_size = 0.5
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/stamina_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 
@@ -157,6 +165,8 @@
 	value = 1
 
 	particle_size = 0.3
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/mana_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -188,6 +198,8 @@
 	value = 1.25
 
 	particle_size = 0.6
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/antihol/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
@@ -234,6 +246,8 @@
 
 	particle_size = 0.8
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/purge/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -272,6 +286,8 @@
 	value = 1.5
 
 	particle_size = 1
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/charcoal/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
@@ -318,6 +334,8 @@
 
 	particle_size = 0.6
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/mitogen/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
 	. = ..()
@@ -345,6 +363,7 @@
 
 	metabolism_stomach = 2/60 // Lasts a minute per 2u
 	metabolism_blood = 2/60 // Lasts a minute per 2u
+	metabolism_skin = 2/60 // Lasts a minute per 2u
 
 	experience_per_unit = 0
 
@@ -357,6 +376,8 @@
 	lethal = TRUE //For now...
 
 	particle_size = 0.4
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN
 
 /reagent/medicine/synthblood
 	name = "synthblood"
@@ -371,6 +392,8 @@
 	liquid = 0.25
 
 	particle_size = 0.1
+
+	flags_metabolism = REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/synthblood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -391,6 +414,8 @@
 	particle_size = 0.2
 
 	overdose_threshold = 150
+
+	flags_metabolism = REAGENT_METABOLISM_BLOOD
 
 /reagent/medicine/rad_b_gone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
@@ -413,6 +438,8 @@
 	liquid = -0.5
 	particle_size = 0.4
 
+	flags_metabolism = REAGENT_METABOLISM_BLOOD
+
 /reagent/medicine/potassium_iodide/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	if(owner.rad_regen_buffer < 0)
@@ -433,6 +460,8 @@
 
 	liquid = -0.2
 	particle_size = 0.5
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH
 
 
 /reagent/medicine/space_prussian_blue/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)

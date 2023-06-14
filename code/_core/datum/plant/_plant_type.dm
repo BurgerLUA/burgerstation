@@ -18,11 +18,12 @@
 	var/list/reagents = list()
 
 	var/list/allowed_turfs = list(
-		/turf/simulated/floor/colored/dirt/soil = 0.25,
-		/turf/simulated/floor/colored/dirt/soil/rich = 0.6
+		/turf/simulated/floor/colored/dirt = 0.75,
+		/turf/simulated/floor/colored/dirt/soil = 1,
+		/turf/simulated/floor/colored/dirt/soil/rich = 1.5
 	)
 
-	var/value = 100
+	var/value = 1 //Automatically calculated in SSBotany.
 
 	var/can_slice = FALSE
 
@@ -267,7 +268,7 @@
 	plant_icon_state = "corn"
 	harvest_icon_state = "corn"
 	seed_icon_state = "corn"
-	plant_icon_count = 1
+	plant_icon_count = 3
 	reagents = list(
 		/reagent/nutrition/corn = 1,
 	)

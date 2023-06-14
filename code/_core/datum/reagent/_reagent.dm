@@ -1,7 +1,3 @@
-#define FLAG_REAGENT_RAW 0x1
-#define FLAG_REAGENT_COOKED 0x2
-#define FLAG_REAGENT_FAT 0x4
-
 /reagent/
 	var/name = "Reagent"
 	var/desc = "The basic description of the reagent."
@@ -17,15 +13,19 @@
 	var/metabolism_stomach = 1 //How many units of the reagent to metabolize per second.
 	var/metabolism_blood = 1 //How many units of the reagent to metabolize per second.
 	var/metabolism_skin = 1 //How many units of the reagent to metabolize per second.
+	var/metabolism_plant = 1 //How many units of the reagent to metabolize per second.
 	var/overdose_threshold = 0 //More than this is considered an overdose. Set to 0 to ignore overdose.
-
-	var/flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN
 
 	var/liquid = 0 //What percentage of this reagent is a liquid? Accepts values -1 to 1, where -1 is dry as fuck and 1 is wet as fuck.
 
+	var/flags_reagent = FLAG_REAGENT_NONE
+
+	var/flags_metabolism = REAGENT_METABOLISM_NONE
+
+	var/flags_flavor = FLAG_FLAVOR_NONE
 	var/flavor = "nothing"
 	var/flavor_strength = 1
-	var/flags_flavor = FLAG_FLAVOR_NONE
+
 
 	var/processed_reagent
 
@@ -43,8 +43,6 @@
 	var/cooled_reagent_mul //Percentage (0-1) of the total volume to add in reagents per tick.
 
 	var/lethal = FALSE //Used by loyalty and charcoal checks if this reagent is lethal or not.
-
-	var/flags_reagent
 
 	var/addiction/addiction
 	var/addiction_strength = 1 //Percent chance to become addicted per maximium amount taken.
@@ -108,30 +106,11 @@
 /reagent/proc/on_remove_living(var/mob/living/L,var/reagent_container/container)
 	return TRUE
 
-/reagent/proc/metabolize(var/mob/living/living_owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-
-	. = 0
-
-	if(starting_volume <= 0)
-		return .
-
-	switch(container.flags_metabolism)
-		if(REAGENT_METABOLISM_BLOOD)
-			. += on_metabolize_blood(living_owner,container,metabolism_blood,starting_volume,multiplier)
-		if(REAGENT_METABOLISM_STOMACH)
-			. += on_metabolize_stomach(living_owner,container,metabolism_stomach,starting_volume,multiplier)
-		if(REAGENT_METABOLISM_SKIN)
-			. += on_metabolize_skin(living_owner,container,metabolism_skin,starting_volume,multiplier)
-
-	if(overdose_threshold && starting_volume >= overdose_threshold)
-		. += on_overdose(living_owner,container,.,starting_volume,multiplier)
-
-	return .
-
 /reagent/proc/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	return amount_to_metabolize
 
 /reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+	world.log << "amount_to_metabolize: [amount_to_metabolize]"
 	return amount_to_metabolize
 
 /reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)

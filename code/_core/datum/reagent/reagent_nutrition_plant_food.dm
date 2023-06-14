@@ -15,4 +15,6 @@
 
 	flags_flavor = FLAG_FLAVOR_GROSS
 
+	flags_reagent = FLAG_REAGENT_PLANT_FOOD
+
 	particle_size = 1

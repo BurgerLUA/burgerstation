@@ -24,6 +24,8 @@
 
 	blood_toxicity_multiplier = 0
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
+
 /reagent/blood/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
 	owner.add_nutrition(2*.) //Blood is actually nutritious.

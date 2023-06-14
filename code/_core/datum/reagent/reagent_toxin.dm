@@ -12,6 +12,8 @@
 
 	particle_size = 0.6
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_PLANT
+
 /reagent/toxin/New(var/desired_loc)
 	blood_toxicity_multiplier = damage_per_unit*5
 	value *= 1+(damage_per_unit*3)

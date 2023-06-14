@@ -74,22 +74,12 @@
 	experience_multiplier = 28
 
 /experience/skill/survival //ATTRIBUTE_RESILIENCE
-	//Each time you avoid a trap = 1xp
-	//Must avoid 1000 times.
 	name = "Survival"
 	id = SKILL_SURVIVAL
-	desc = "Wait this skill doesn't work yet."
+	desc = "Doesn't make you immortal."
 	desc_extended = "Your skill in analyzing people, objects, or situations. Affects the chance of detecting traps and illusions, and how robust descriptions are when you examine things."
-	experience_power = 1.5
-	experience_multiplier = 1
-
-
-
-
-
-
-
-
+	experience_power = 1.6
+	experience_multiplier = 28
 
 
 //Mage

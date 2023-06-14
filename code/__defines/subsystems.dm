@@ -14,6 +14,7 @@
 #define SS_ORDER_FIRST 10
 #define SS_ORDER_PRELOAD 11
 #define SS_ORDER_POSTLOAD 12
+#define SS_ORDER_LOOT 13
 
 #define SS_ORDER_DMM 20
 #define SS_ORDER_TURFS 21

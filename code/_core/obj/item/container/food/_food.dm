@@ -19,6 +19,12 @@
 
 	has_quick_function = TRUE
 
+/obj/item/container/edible/get_base_value()
+	return 0
+
+/obj/item/container/edible/get_display_value()
+	return get_value()
+
 /obj/item/container/edible/quick(var/mob/caller,var/atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 

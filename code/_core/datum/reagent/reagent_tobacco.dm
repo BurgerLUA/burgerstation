@@ -14,9 +14,10 @@
 
 	metabolism_blood = 0.5
 	metabolism_stomach = 0.5
-	metabolism_skin = 10
 
 	blood_toxicity_multiplier = 3
+
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
 /reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 

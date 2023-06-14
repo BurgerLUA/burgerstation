@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(loot)
 	name = "Loot Subsystem"
 	desc = "Yes."
-	priority = SS_ORDER_POSTLOAD
+	priority = SS_ORDER_LOOT
 	var/list/all_loot = list()
 	var/list/recursive_loot = list()
 

@@ -488,12 +488,15 @@ var/global/list/rarity_to_mul = list(
 	else if(luck > 50)
 		. += div("rarity good","<b>Luck</b>: +[luck-50]")
 
-	. += div("rarity","Base Value: [get_base_value()]cr.")
+	. += div("rarity","Base Value: [get_display_value()]cr.")
 	. += div("weightsize","Size: [size], Weight: [weight]")
 
 	if(amount > 1) . += div("weightsize","Quantity: [amount].")
 	. += div("examine_description","\"[src.desc]\"")
 	. += div("examine_description_long",src.desc_extended)
+
+/obj/item/proc/get_display_value()
+	return get_base_value()
 
 /obj/item/get_examine_details_list(var/mob/examiner)
 	. = ..()

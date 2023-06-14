@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(balance)
 	name = "Balance and Value Subsystem"
 	desc = "Makes a balance report of weapons."
 
-	priority = SS_ORDER_PRELOAD
+	priority = SS_ORDER_POSTLOAD
 
 	var/list/stored_dps = list()
 	var/list/stored_dph = list()

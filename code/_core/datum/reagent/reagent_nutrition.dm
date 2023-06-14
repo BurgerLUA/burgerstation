@@ -28,6 +28,8 @@
 
 	blood_toxicity_multiplier = 0
 
+	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_PLANT
+
 /reagent/nutrition/get_flammability()
 	return max(0,((nutrition_amount+abs(nutrition_quality_amount))/40)*0.1 - (hydration_amount/10)*0.1)
 
@@ -66,10 +68,10 @@
 	. = ..()
 
 	if(nutrition_amount)
-		plant.add_nutrition(.*(nutrition_amount/14)*multiplier) //plant food has 14 nutrition, so we want 1u plant food = 1 nutrition point.
+		plant.add_nutrition(.*(nutrition_amount/14)*multiplier*2) //plant food has 14 nutrition, so we want 10u plant food = 20 nutrition point.
 
 	if(hydration_amount)
-		plant.add_hydration(.*(hydration_amount/25)*multiplier) //water has 25 hydration, and we want 1u water = 1 hydration point
+		plant.add_hydration(.*(hydration_amount/25)*multiplier*3) //water has 25 hydration, and we want 10u water = 30 hydration point
 
 /reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 
