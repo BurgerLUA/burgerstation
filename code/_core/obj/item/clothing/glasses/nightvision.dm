@@ -21,9 +21,12 @@
 
 	var/active = FALSE
 
+	var/nightvision_power = 100 //Alpha to remove.
+
 /obj/item/clothing/glasses/nightvision/get_base_value()
 	. = ..()
-	. += 500
+	// https://www.desmos.com/calculator/hjwomvwuwm
+	. += 250 + ((nightvision_power**1.5)/255)*2500*0.062
 
 /obj/item/clothing/glasses/nightvision/PreDestroy()
 	CALLBACK_REMOVE("\ref[src]_drain_power")
@@ -148,7 +151,7 @@
 		if(I.worn && I.item_slot & SLOT_FACE && is_living(I.owner))
 			var/mob/living/L = I.owner
 			if(active)
-				L.add_mob_value("\ref[src]","nightvision",150,ADDITION)
+				L.add_mob_value("\ref[src]","nightvision",nightvision_power,ADDITION)
 			else
 				L.remove_mob_value("\ref[src]","nightvision",ADDITION)
 			L.handle_lighting_alpha()
@@ -179,11 +182,11 @@
 	var/obj/hud/inventory/I = loc
 	if(I.worn && I.item_slot & SLOT_FACE && is_living(I.owner))
 		var/mob/living/L = I.owner
-		if(L.ai && !active)
-			set_active(L,TRUE)
 		if(active)
-			L.add_mob_value("\ref[src]","nightvision",150,ADDITION)
+			L.add_mob_value("\ref[src]","nightvision",nightvision_power,ADDITION)
 			L.handle_lighting_alpha()
+		else if(L.ai)
+			set_active(L,TRUE)
 
 /obj/item/clothing/glasses/nightvision/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
@@ -193,3 +196,12 @@
 		L.handle_lighting_alpha()
 
 
+
+
+/obj/item/clothing/glasses/nightvision/syndicate
+	name = "syndicate nightvision goggles"
+	desc_extended = "A pair of tactical nightvision goggles. Keep away from light. Better than most nightvision goggles on the market."
+
+	nightvision_power = 200
+
+	rarity = RARITY_MYTHICAL

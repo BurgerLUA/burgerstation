@@ -57,13 +57,16 @@
 		if(L.loyalty_tag == CL.loyalty_tag) //Prevents joining as NanoTrasen and giving yourself stuff as antag.
 			return FALSE
 	else
-		if(CL.ckey_owner == "NanoTrasen")
+		if(CL.loyalty_tag == "NanoTrasen")
 			if(!allow_hostile_action(CL.loyalty_tag,L)) //NanoTrasen can only strip enemies.
+				if(messages) caller.to_chat(span("warning","You can't strip allies!"))
 				return FALSE
 		else
 			if(!L.dead) //Others can only strip when dead.
+				if(messages) caller.to_chat(span("warning","You can't strip people who aren't dead!"))
 				return FALSE
-			if(allow_hostile_action(CL.loyalty_tag,L)) //Others can only strip their friends.
+			if(L.loyalty_tag == "NanoTrasen")
+				if(messages) caller.to_chat(span("warning","You refuse to subject yourself to poor-quality NanoTrasen goods!"))
 				return FALSE
 
 	if(L.horizontal) //Can strip someone if they're horizontal.
@@ -76,5 +79,7 @@
 
 	if(!I.worn && L.dir & get_dir(CL,I)) //Allow removing of non-worn items from behind (pickpocketing).
 		return TRUE
+
+	if(messages) caller.to_chat(span("warning","\The [L.name] is not in a position to be stripped!"))
 
 	return FALSE

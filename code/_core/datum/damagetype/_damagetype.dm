@@ -667,8 +667,8 @@ var/global/list/all_damage_numbers = list()
 				hit_log_format["attacker_ckey"] = A.ckey
 				hit_log_format["time"] = world.time
 				hit_log_format["damage"] = total_damage_dealt
-				hit_log_format["critical"] = V.health.health_current - total_damage_dealt < 0
-				hit_log_format["lethal"] = (V.health.health_current - total_damage_dealt) <= min(-50,V.health.health_max*-0.25)
+				hit_log_format["critical"] = V.health ? V.health.health_current - total_damage_dealt < 0 : TRUE
+				hit_log_format["lethal"] = V.health ? (V.health.health_current - total_damage_dealt) <= min(-50,V.health.health_max*-0.25) : TRUE
 				V.hit_logs += list(hit_log_format)
 				if(attacker != victim && V.is_player_controlled())
 					if(total_damage_dealt > 0)

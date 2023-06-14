@@ -5,8 +5,6 @@
 	desc_extended = "A pair of eyeballs that let you see how the gods see things. You may lose your sanity."
 	icon = 'icons/obj/item/clothing/glasses/eyes_of_god.dmi'
 
-	vision_mod = FLAG_VISION_SECURITY
-
 	value = 5000
 
 	vision_mod = FLAG_VISION_ALL

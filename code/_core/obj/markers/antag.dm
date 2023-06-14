@@ -20,15 +20,13 @@ var/global/list/all_antag_markers = list()
 	name = "Syndicate Operative"
 	spawn_type = /mob/living/advanced/player/antagonist/syndicate
 
-/*
 /obj/marker/antag/revolutionary
 	name = "Revolutionary Soldier"
-	spawn_type = /mob/living/advanced/player/antagonist/revolutionary
-*/
+	//spawn_type = /mob/living/advanced/player/antagonist/revolutionary
 
 /obj/marker/antag/wizard
 	name = "Wizard Federation Wizard"
-	spawn_type = /mob/living/advanced/player/antagonist/wizard
+	//spawn_type = /mob/living/advanced/player/antagonist/wizard
 
 /obj/marker/antag/merc
 	name = "Mercenary"
