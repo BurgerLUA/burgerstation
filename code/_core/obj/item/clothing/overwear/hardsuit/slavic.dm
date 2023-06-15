@@ -63,13 +63,15 @@
 
 	var/cooldown_effect = 0
 
-/*
-/obj/item/clothing/overwear/hardsuit/skat/antag/post_move(atom/old_loc)
+/obj/item/clothing/overwear/hardsuit/skat/antag/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()
-	if(istype(loc, /obj/hud/inventory/organs/torso))
+	var/obj/hud/inventory/I = loc
+	if(I.worn)
 		START_THINKING(src)
-	else
-		STOP_THINKING(src)
+
+/obj/item/clothing/overwear/hardsuit/skat/antag/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+	. = ..()
+	STOP_THINKING(src)
 
 /obj/item/clothing/overwear/hardsuit/skat/antag/think()
 	if(cooldown_effect > world.time)
@@ -79,10 +81,15 @@
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)
 			continue
-		affectLiving.brute_regen_buffer += 1
-		affectLiving.burn_regen_buffer += 1
-		affectLiving.tox_regen_buffer += 1
-		affectLiving.rad_regen_buffer += 1
+		if(affectLiving.health.health_current >= affectLiving.health.health_max)
+			continue
+		if(affectLiving.health.damage[BRUTE])
+			affectLiving.brute_regen_buffer += 2
+		if(affectLiving.health.damage[BURN])
+			affectLiving.burn_regen_buffer += 2
+		if(affectLiving.health.damage[PAIN])
+			affectLiving.pain_regen_buffer += 2
+		if(affectLiving.blood_volume >= affectLiving.blood_volume_max)
+			affectLiving.blood_volume += min(affectLiving.blood_volume_max - affectLiving.blood_volume,5)
 		CREATE(/obj/effect/temp/healing,affectLiving.loc)
 	return TRUE
-*/
