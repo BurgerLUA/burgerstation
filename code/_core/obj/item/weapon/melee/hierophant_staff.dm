@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/hierophant_staff
-	name = "staff of the heirophant"
+	name = "staff of the hierophant"
 	desc = "No longer living, I think."
-	desc_extended = "A magical staff belonging to the late heirophant. Allows for teleportation."
+	desc_extended = "A magical staff belonging to the late Hierophant. Allows for teleportation."
 
 	icon = 'icons/obj/item/heirophant_staff.dmi'
 

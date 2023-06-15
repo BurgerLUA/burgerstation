@@ -124,9 +124,8 @@
 
 
 /obj/item/weapon/ranged/magic/staff/basic
-
 	name = "Staff of the Magic Missile"
-	desc = "ARCANE MISSILE!."
+	desc = "ARCANE MISSILE!"
 	desc_extended = "Point the orb end at the enemy for best result."
 	cost_charge = SOUL_SIZE_COMMON/20
 	total_charge = SOUL_SIZE_COMMON

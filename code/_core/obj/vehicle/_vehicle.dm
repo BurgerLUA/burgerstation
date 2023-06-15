@@ -112,7 +112,7 @@
 		caller?.to_chat(span("warning","You can't add this while it's in use!"))
 		return FALSE
 	if(length(equipment) >= 2)
-		caller?.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!."))
+		caller?.to_chat(span("warning","You can't fit any more weapons on \the [src.name]!"))
 		return FALSE
 
 	return TRUE

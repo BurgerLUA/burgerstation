@@ -1,6 +1,6 @@
 /job/security
 	name = "Security Officer"
-	desc = "A security enforcer is someone who protects NanoTrasen as well as its assets and its people. They have bonuses in offensive skills as well as bonuses in offenssive and defensive attributes."
+	desc = "A security enforcer is someone who protects NanoTrasen as well as its assets and its people. They have bonuses in offensive skills as well as bonuses in offensive and defensive attributes."
 	passive_income = 400
 	passive_income_bonus = 100
 

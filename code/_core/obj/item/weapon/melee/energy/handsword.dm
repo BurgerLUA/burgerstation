@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/energy/handsword
 	name = "energy handsword"
 	desc = "A strangely made handsword."
-	desc_extended = "A strangely made handsword meant to be welded in hand-to-hand combat. Uses a hybrid of the user's melee and unarmed skill."
+	desc_extended = "A strangely made handsword meant to be wielded in hand-to-hand combat. Uses a hybrid of the user's melee and unarmed skill."
 	icon = 'icons/obj/item/weapons/melee/laser/handsword.dmi'
 	damage_type = /damagetype/unarmed/fists
 	damage_type_on = /damagetype/melee/sword/handsword

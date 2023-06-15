@@ -77,7 +77,7 @@
 			A.to_chat(span("notice","It seems you cannot go back to your previous location... perhaps the portal can help you get back."))
 			return TRUE
 		A.force_move(T)
-		A.visible_message(span("danger","\The [A.name] appears out of nowhere!."),span("notice","\The [src.name] whisks you away back to where you were."))
+		A.visible_message(span("danger","\The [A.name] appears out of nowhere!"),span("notice","\The [src.name] whisks you away back to where you were."))
 		return TRUE
 
 	if(linked_returning)

@@ -1,6 +1,6 @@
 /obj/item/weapon/ranged/energy/dynamic
-	name = "\improper dynamic energy psitol"
-	desc = "Technically a revolver!."
+	name = "\improper dynamic energy pistol"
+	desc = "Technically a revolver!"
 	desc_extended = "A strangly designed energy pistol. For a gunslinger who wants a little more laser in their life."
 	icon = 'icons/obj/item/weapons/ranged/pistol/dynamic_revolver.dmi'
 	icon_state = "inventory"
