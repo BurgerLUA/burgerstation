@@ -1,5 +1,5 @@
 /obj/item/weapon/melee/energy/energy_wrench
-	name = " energy wrench"
+	name = "energy wrench"
 	desc = "You done fucked up now, boy..."
 	desc_extended = "An energy wrench that can fit any bolt in the known universe. For your angry engineer needs."
 	icon = 'icons/obj/item/weapons/melee/laser/wrench.dmi'

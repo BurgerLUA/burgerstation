@@ -73,7 +73,7 @@
 /obj/item/clothing/overwear/coat/vest/webbing
 	name = "webbing"
 	icon = 'icons/obj/item/clothing/suit/webbing.dmi'
-	desc = " For a big guy."
+	desc = "For a big guy."
 	desc_extended = "A minimalistic set of webbing harness meant to hold the basics. Holds less than storage vests, but can fit larger items."
 
 	size = SIZE_2*3
