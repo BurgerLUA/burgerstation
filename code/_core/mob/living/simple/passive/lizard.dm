@@ -1,7 +1,7 @@
 /mob/living/simple/passive/lizard
 	name = "lizard"
 	desc = "*Lizard Sounds*"
-	desc_extended = "A harmles lizard."
+	desc_extended = "A harmless lizard."
 	icon = 'icons/mob/living/simple/lizard.dmi'
 	icon_state = "living"
 	damage_type = /damagetype/unarmed/bite/

@@ -1,7 +1,7 @@
 /obj/item/weapon/melee/energy/sword/
 	name = "energy sword"
 	desc = "A blade made out of ENERGY. Please do not sue."
-	desc_extended = "A lightweight energy blade that has become the standard issue melee pretty much everywhere. It's main issue is that it's not usable as a bayonet due to it's lack of weight and it's complex mechanisms."
+	desc_extended = "A lightweight energy blade that has become the standard issue melee pretty much everywhere. Its main issue is that it's not usable as a bayonet due to its lack of weight and its complex mechanisms."
 	icon = 'icons/obj/item/weapons/melee/laser/sword.dmi'
 
 	value = 400

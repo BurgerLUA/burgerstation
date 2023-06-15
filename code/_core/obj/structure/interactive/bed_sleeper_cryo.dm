@@ -4,8 +4,8 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 /obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
-	desc = "Ah shit, i gotta cryo."
-	desc_extended = "Move inside here in order to save your character and log out."
+	desc = "Ah shit, I gotta cryo."
+	desc_extended = "Buckle yourself into this <u>and press the \"LOG OUT\" button</u> to safely exit the game."
 	secondary_color = "#00FF00"
 	tertiary_color = "#008800"
 	var/spawnpoint = TRUE

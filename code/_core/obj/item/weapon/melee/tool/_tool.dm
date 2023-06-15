@@ -23,7 +23,7 @@
 /obj/item/weapon/melee/tool/hammer
 	name = "hammer"
 	desc = "Anythings one of these if you need it to be."
-	desc_extended = "A study hammer with which to bash things with. Not very good for combat, sadly."
+	desc_extended = "A sturdy hammer with which to bash things with. Not very good for combat, sadly."
 	icon = 'icons/obj/item/weapons/melee/tools/hammer.dmi'
 
 

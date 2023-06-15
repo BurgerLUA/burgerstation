@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/spellgem/clown_mending
-	name = " self-unmending spell gem"
+	name = "self-unmending spell gem"
 	desc = "The source of all magic."
 	desc_extended = "A magical gem filled with pure arcane energy that gives the user the ability to cast spells. Can be augmented onto wands. This one gives a light regeneration? effect. Honk!"
 	icon_state = "damage"

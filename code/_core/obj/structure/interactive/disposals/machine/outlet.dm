@@ -1,7 +1,7 @@
 /obj/structure/interactive/disposals/machine/outlet
 	name = "disposals outlet"
 	desc = "Express delivery!"
-	desc_extended = "Stuff going trough disposals comes out here."
+	desc_extended = "Stuff going through disposals comes out here."
 	icon_state = "outlet"
 
 	collision_flags = FLAG_COLLISION_WALKING

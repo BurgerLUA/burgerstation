@@ -18,7 +18,7 @@
 
 /obj/item/weapon/melee/sword/butcher_cleaver
 	name = "butcher's cleaver"
-	desc = "What every burcher needs."
+	desc = "What every butcher needs."
 	desc_extended = "A sharp and heavy cleaver designed to cut through flesh and bone."
 
 	icon = 'icons/obj/item/weapons/melee/swords/kitchen_cleaver.dmi'
