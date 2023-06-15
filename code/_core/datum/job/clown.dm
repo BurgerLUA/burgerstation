@@ -6,14 +6,14 @@
 	passive_income_bonus = 1 //Per rank
 
 	bonus_skills = list(
-		SKILL_EVASION = 5
+		SKILL_EVASION = 7
 	)
 
 	bonus_attributes = list(
-		ATTRIBUTE_AGILITY = 5,
+		ATTRIBUTE_AGILITY = 7,
 		ATTRIBUTE_LUCK = 10,
-		ATTRIBUTE_CONSTITUTION = 5,
-		ATTRIBUTE_VITALITY = 5
+		ATTRIBUTE_CONSTITUTION = 7,
+		ATTRIBUTE_VITALITY = 7
 	)
 
 	ranks = list(
