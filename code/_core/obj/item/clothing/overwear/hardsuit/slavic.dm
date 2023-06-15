@@ -61,6 +61,8 @@
 
 	rarity = RARITY_MYTHICAL
 
+	speed_bonus = -0.3
+
 	var/cooldown_effect = 0
 
 /obj/item/clothing/overwear/hardsuit/skat/antag/on_equip(var/atom/old_location,var/silent=FALSE)
