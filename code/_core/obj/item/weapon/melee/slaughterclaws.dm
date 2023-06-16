@@ -34,7 +34,7 @@
 		if(!T.can_move_to()) //Alright, that's it. No more water-walking!
 			L.to_chat(span("danger","You can't bloodcrawl there!"))
 			return TRUE
-		if(A.flags_area & FLAG_AREA_NO_BLOODCRAWL) // No bloodcrawling into vaults for you!
+		if(A.flags_area & FLAG_AREA_NO_TELEPORT) // No bloodcrawling into vaults for you!
 			L.to_chat(span("danger","Some sort of forcefield stops you!"))
 			return TRUE
 		if (target_distance > VIEW_RANGE)
