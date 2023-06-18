@@ -63,6 +63,13 @@
 	reagents.add_reagent(/reagent/potassium,reagents.volume_max)
 	return ..()
 
+/obj/item/container/simple/beaker/phosphorous
+	name = "beaker of phosphorous"
+
+/obj/item/container/simple/beaker/phosphorous/Generate()
+	reagents.add_reagent(/reagent/phosphorous,reagents.volume_max)
+	return ..()
+
 /obj/item/container/simple/beaker/tnt/Generate()
 	reagents.add_reagent(/reagent/fuel/tnt,reagents.volume_max)
 	return ..()
