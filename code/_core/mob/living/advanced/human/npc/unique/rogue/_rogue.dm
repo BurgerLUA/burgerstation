@@ -28,6 +28,6 @@
 	. = ..()
 	SSbosses.tracked_rogue_crewmembers += src
 
-/mob/living/advanced/npc/unique/rogue/Destroy()
+/mob/living/advanced/npc/unique/rogue/PreDestroy()
 	. = ..()
 	SSbosses.tracked_rogue_crewmembers -= src

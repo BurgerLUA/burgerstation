@@ -13,7 +13,7 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list() 
 	all_IFFs += src
 	return ..()
 
-/obj/item/organ/internal/implant/hand/left/iff/Destroy()
+/obj/item/organ/internal/implant/hand/left/iff/PreDestroy()
 	all_IFFs -= src
 	return ..()
 

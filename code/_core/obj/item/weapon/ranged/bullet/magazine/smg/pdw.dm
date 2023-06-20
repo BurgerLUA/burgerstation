@@ -86,7 +86,7 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/pdw/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[initial(icon_state)]_[CEILING((length(M.stored_bullets)/M.bullet_count_max)*5,1)]"
+		icon_state = "[initial(icon_state)]_[CEILING((M.get_ammo_count()/M.bullet_count_max)*5,1)]"
 	else
 		icon_state = "[initial(icon_state)]_open"
 	..()

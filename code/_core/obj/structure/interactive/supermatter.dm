@@ -202,7 +202,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	known_supermatters += src
 	. = ..()
 
-/obj/structure/interactive/supermatter/defense/Destroy()
+/obj/structure/interactive/supermatter/defense/PreDestroy()
 	known_supermatters -= src
 	. = ..()
 

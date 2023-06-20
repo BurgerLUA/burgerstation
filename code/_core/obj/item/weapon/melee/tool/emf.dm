@@ -77,7 +77,7 @@
 	SSghost.all_emf_trackers += src
 	return
 
-/obj/item/emf/Destroy()
+/obj/item/emf/PreDestroy()
 	SSghost.all_emf_trackers -= src
 	return ..()
 

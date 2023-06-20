@@ -130,7 +130,7 @@
 	. = ..()
 	SSradio.all_radios += src
 
-/obj/item/device/radio/Destroy()
+/obj/item/device/radio/PreDestroy()
 	SSradio.all_radios -= src
 	. = ..()
 

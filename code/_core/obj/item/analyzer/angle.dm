@@ -41,7 +41,7 @@ var/global/list/gps_list = list()
 	if(assigned_passkey)
 		. += div("notice", "The assigned_passkey is: [assigned_passkey]")
 
-/obj/item/analyzer/gps/Destroy()
+/obj/item/analyzer/gps/PreDestroy()
 	gps_list -= src
 	. = ..()
 

@@ -21,7 +21,7 @@
 	. = ..()
 	if(amount > 1) . += div("weightsize","Quantity: [amount].")
 
-/obj/structure/interactive/coin_drop/Destroy()
+/obj/structure/interactive/coin_drop/PreDestroy()
 	if(cached_coin || cached_sparkle)
 		for(var/k in valid_ckeys)
 			var/client/C = CLIENT(k)

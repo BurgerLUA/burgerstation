@@ -16,7 +16,7 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	all_objective_buttons += src
 	return ..()
 
-/obj/hud/button/objectives/Destroy()
+/obj/hud/button/objectives/PreDestroy()
 	all_objective_buttons -= src
 	return ..()
 

@@ -133,7 +133,7 @@
 		. += div("warning","It is missing a battery.")
 
 	if(stored_magazine)
-		. += div("notice","It has a magazine installed. It has [length(stored_magazine.stored_bullets)]/[stored_magazine.bullet_count_max] bullets.")
+		. += div("notice","It has a magazine installed. It has [stored_magazine.get_ammo_count()]/[stored_magazine.bullet_count_max] bullets.")
 	else
 		. += div("warning","It is missing a magazine.")
 

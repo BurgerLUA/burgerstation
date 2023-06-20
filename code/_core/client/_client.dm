@@ -126,6 +126,7 @@ var/global/list/all_clients = list() //Assoc list
 
 	last_location = null
 	last_object = null
+	last_params = null
 
 	world.update_server_status()
 

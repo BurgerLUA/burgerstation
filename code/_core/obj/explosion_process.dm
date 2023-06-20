@@ -33,11 +33,14 @@
 		blacklist[T] = TRUE
 	return ..()
 
+/obj/explosion_process/PreDestroy()
+	SSexplosion.active_explosions -= src
+	. = ..()
+
 /obj/explosion_process/Destroy()
 	owner = null
 	source = null
 	epicenter = null
-	SSexplosion.active_explosions -= src
 	. = ..()
 
 /obj/explosion_process/proc/process()

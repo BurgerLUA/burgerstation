@@ -72,6 +72,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 			var/obj/item/bullet_cartridge/B2 = new B.type(src)
 			B2.is_spent = B.is_spent
 			INITIALIZE(B2)
+			B2.amount = 1
 			FINALIZE(B2)
 			src.chambered_bullet += B2
 			B.add_item_count(-1)
@@ -88,20 +89,22 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 				var/obj/item/bullet_cartridge/B2 = new B.type(src)
 				B2.is_spent = B.is_spent
 				INITIALIZE(B2)
+				B2.amount = 1
 				FINALIZE(B2)
 				src.stored_bullets[i] = B2
 				B.add_item_count(-1)
 			. = TRUE
 			break
 
-	if(.)
-		var/turf/T = get_turf(src)
-		play_sound(B.bullet_insert_sound,T,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
-		if(istype(src,/obj/item/weapon/ranged/bullet/magazine/))
-			var/obj/item/weapon/ranged/bullet/magazine/M = src
-			play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
-	else
-		caller.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
+	if(!silent)
+		if(.)
+			var/turf/T = get_turf(src)
+			play_sound(B.bullet_insert_sound,T,range_max=VIEW_RANGE*0.25,pitch=sound_pitch)
+			if(istype(src,/obj/item/weapon/ranged/bullet/magazine/))
+				var/obj/item/weapon/ranged/bullet/magazine/M = src
+				play_sound(M.get_cock_sound("forward"),T,range_max=VIEW_RANGE*0.5,pitch=sound_pitch)
+		else
+			caller?.to_chat(span("warning","You can't load \the [B.name] into \the [src.name]!"))
 
 	return .
 
@@ -282,33 +285,36 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 /obj/item/weapon/ranged/bullet/get_ammo_count()
 	return chambered_bullet ? 1 : 0
 
-/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/weapon/ranged/bullet/proc/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B) //B can be a type or a path.
 
 	if(chambered_bullet)
 		caller?.to_chat(span("warning","There is already a chambered bullet inside \the [src.name]!"))
 		return FALSE
 
 	if(!can_fit_bullet(B))
-		caller?.to_chat(span("warning","\The [B.name] can't fit inside \the [src.name]!"))
+		caller?.to_chat(span("warning","\The [initial(B.name)] can't fit inside \the [src.name]!"))
 		return FALSE
 
 	return TRUE
 
-/obj/item/weapon/ranged/bullet/proc/can_fit_bullet(var/obj/item/bullet_cartridge/B)
+/obj/item/weapon/ranged/bullet/proc/can_fit_bullet(var/obj/item/bullet_cartridge/B) //B can be a type or a path
 
-	if(!istype(B))
+	if(!B)
 		return FALSE
 
-	if(B.bullet_length < bullet_length_min)
+	if(istype(B) && B.is_spent)
 		return FALSE
 
-	if(B.bullet_length > bullet_length_max)
+	if(initial(B.bullet_length) < bullet_length_min)
 		return FALSE
 
-	if(B.bullet_diameter < bullet_diameter_min)
+	if(initial(B.bullet_length) > bullet_length_max)
 		return FALSE
 
-	if(B.bullet_diameter > bullet_diameter_max)
+	if(initial(B.bullet_diameter) < bullet_diameter_min)
+		return FALSE
+
+	if(initial(B.bullet_diameter) > bullet_diameter_max)
 		return FALSE
 
 	return TRUE
@@ -320,7 +326,7 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 		return FALSE
 
 	if(!can_fit_bullet(B))
-		caller?.to_chat(span("warning","\The [B.name] cannot fit inside \the [src.name]!"))
+		caller?.to_chat(span("warning","\The [initial(B.name)] cannot fit inside \the [src.name]!"))
 		return FALSE
 
 	if(!open)

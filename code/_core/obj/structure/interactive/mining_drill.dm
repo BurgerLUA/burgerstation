@@ -27,14 +27,18 @@
 	var/atom/drop_atom
 	var/list/obj/structure/interactive/mining_brace/attached_braces = list()
 
+/obj/structure/interactive/mining_drill/PreDestroy()
+	CALLBACK_REMOVE("\ref[src]_do_drill")
+	SShorde.all_drills -= src
+	. = ..()
+
 /obj/structure/interactive/mining_drill/Destroy()
 	. = ..()
-	SShorde.all_drills -= src
 	found_deposit = null
 	drop_atom = null
 	attached_braces.Cut()
 	attached_braces = null
-	CALLBACK_REMOVE("\ref[src]_do_drill")
+
 
 
 /obj/structure/interactive/mining_drill/on_destruction(var/damage = TRUE)

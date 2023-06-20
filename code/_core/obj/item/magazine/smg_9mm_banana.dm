@@ -29,5 +29,5 @@
 
 
 /obj/item/magazine/smg_9mm/update_icon()
-	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"
+	icon_state = "[initial(icon_state)]_[get_ammo_count() ? 1 : 0]"
 	return ..()

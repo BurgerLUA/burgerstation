@@ -86,7 +86,7 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 	all_map_nodes += src
 	automatic = desired_automatic
 
-/obj/marker/map_node/Destroy()
+/obj/marker/map_node/PreDestroy()
 	. = ..()
 	all_map_nodes -= src
 

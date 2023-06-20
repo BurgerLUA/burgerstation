@@ -11,9 +11,10 @@ var/global/list/mission_mob_markers = list()
 	mission_mob_markers += src
 
 
-/obj/marker/mission_mob/Destroy()
-	. = ..()
+/obj/marker/mission_mob/PreDestroy()
 	mission_mob_markers -= src
+	. = ..()
+
 
 
 
@@ -33,9 +34,10 @@ var/global/list/rogue_crewmember_markers = list()
 	rogue_crewmember_markers += src
 
 
-/obj/marker/rogue_crewmember_marker/Destroy()
-	. = ..()
+/obj/marker/rogue_crewmember_marker/PreDestroy()
 	rogue_crewmember_markers -= src
+	. = ..()
+
 
 
 var/global/list/turf/corpse_markers = list()
@@ -50,6 +52,6 @@ var/global/list/turf/corpse_markers = list()
 	corpse_markers += src
 
 
-/obj/marker/mission_corpse/Destroy()
-	. = ..()
+/obj/marker/mission_corpse/PreDestroy()
 	corpse_markers -= src
+	. = ..()

@@ -125,13 +125,22 @@
 
 	if(!M) return FALSE
 
-	var/bullet_length = length(M.stored_bullets)
+	var/bullet_length = length(M.stored_bullets) //The number of different types of bullets.
 
 	if(bullet_length && !chambered_bullet)
-		var/obj/item/bullet_cartridge/B = M.stored_bullets[bullet_length]
+		var/obj/item/bullet_cartridge/B
+		if(length(M.stored_bullets) == 1)
+			B = M.stored_bullets[1]
+		else
+			B = pickweight(M.stored_bullets)
 		if(can_load_chamber(null,B))
-			M.stored_bullets -= B
-			B.drop_item(src,silent=TRUE)
+			M.stored_bullets[B] -= 1
+			if(M.stored_bullets[B] <= 0)
+				M.stored_bullets -= B
+			B = new B(src)
+			INITIALIZE(B)
+			B.amount = 1
+			FINALIZE(B)
 			chambered_bullet = B
 			return TRUE
 
@@ -167,16 +176,8 @@
 		var/sound_strength = 1
 
 		if(stored_magazine)
-			var/capacity = length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max
+			var/capacity = stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max
 			sound_strength = 1 - clamp(capacity/empty_warning_percent,0,1)
 
 		if(sound_strength > 0)
 			play_sound('sound/effects/gun_empty_sound.ogg',get_turf(src), pitch = sound_pitch + sound_strength*0.5, volume = 100 * sound_strength,range_max=VIEW_RANGE)
-
-
-/obj/item/weapon/ranged/bullet/magazine/get_examine_list(var/mob/caller)
-
-	. = ..()
-
-	if(stored_magazine)
-		. += div("notice","[length(stored_magazine.stored_bullets)] bullet\s remaining in the magazine.")

@@ -20,13 +20,11 @@
 
 /obj/structure/interactive/gateway/PreDestroy()
 	set_active(FALSE)
-	. = ..()
-
-/obj/structure/interactive/gateway/Destroy()
 	if(linked_gateway)
 		linked_gateway.linked_gateway = null
 		linked_gateway = null
 	. = ..()
+
 
 /obj/structure/interactive/gateway/Initialize()
 	. = ..()

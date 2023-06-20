@@ -50,11 +50,9 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 	for(var/k in contents)
 		var/atom/movable/M = k
 		M.force_move(src.loc)
+	all_drop_pods -= src
 	. = ..()
 
-/obj/structure/interactive/drop_pod/Destroy()
-	all_drop_pods -= src
-	return ..()
 
 /obj/structure/interactive/drop_pod/Finalize()
 	all_drop_pods += src

@@ -47,7 +47,7 @@
 /mob/living/simple/legionare_head/death_message()
 	return FALSE
 
-/mob/living/simple/legionare_head/Destroy()
+/mob/living/simple/legionare_head/PreDestroy()
 	. = ..()
 	if(parent_legion)
 		parent_legion.tracked_heads -= src

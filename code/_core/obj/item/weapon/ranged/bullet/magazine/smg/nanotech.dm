@@ -73,7 +73,7 @@
 
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		var/bullet_num = FLOOR((length(M.stored_bullets)/M.bullet_count_max)*9,1)
+		var/bullet_num = FLOOR(length(M.get_ammo_count()/M.bullet_count_max)*9,1)
 		icon_state = "[icon_state]_[bullet_num]"
 	else
 		icon_state = "[icon_state]_open"

@@ -29,11 +29,11 @@
 
 	remove_leader()
 
+	SSsquad.all_squads -= src
+
 	. = ..()
 
-/squad/Destroy()
-	SSsquad.all_squads -= src
-	return ..()
+
 
 /squad/proc/add_member(var/mob/living/advanced/player/P)
 

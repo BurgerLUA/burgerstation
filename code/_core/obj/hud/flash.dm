@@ -19,10 +19,8 @@
 	screen_loc = "LEFT,BOTTOM:12"
 	. = ..()
 
-/obj/hud/flash/Destroy()
+/obj/hud/flash/PreDestroy()
+
+	if(owner) owner.client?.screen -= src
 
 	. = ..()
-
-	if(owner)
-		owner.client?.screen -= src
-		owner = null

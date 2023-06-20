@@ -41,9 +41,10 @@ var/global/list/all_generation_markers = list()
 	. = ..()
 	all_generation_markers += src
 
-/obj/marker/generation/Destroy()
-	. = ..()
+/obj/marker/generation/PreDestroy()
 	all_generation_markers -= src
+	. = ..()
+
 
 /obj/marker/generation/proc/get_object_to_place(var/turf/T,var/objects_placed=0,var/grow_left=0)
 	CRASH("[src.type] was improperly setup with var custom_object_to_place!")

@@ -45,7 +45,7 @@
 
 	if(!qdeleting) SSdmm_suite.prefab_markers += src
 
-/obj/marker/prefab/Destroy()
+/obj/marker/prefab/PreDestroy()
 	SSdmm_suite.prefab_markers -= src
 	. = ..()
 

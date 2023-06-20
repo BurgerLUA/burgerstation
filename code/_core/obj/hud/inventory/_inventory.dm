@@ -107,9 +107,9 @@
 
 	show(FALSE,0)
 
-	update_owner(null) //This proc is custom to /obj/hud/inventory so it won't cause issues.
-
 	. = ..()
+
+	update_owner(null) //This proc is custom to /obj/hud/inventory so it won't cause issues.
 
 /obj/hud/inventory/Destroy()
 	parent_inventory = null

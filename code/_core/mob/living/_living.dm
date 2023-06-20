@@ -300,10 +300,6 @@
 	if(ai && istype(ai))
 		ai.set_active(FALSE)
 
-	. = ..()
-
-/mob/living/Destroy()
-
 	QDEL_NULL(ai)
 	QDEL_NULL(stand)
 
@@ -327,8 +323,6 @@
 
 	QDEL_NULL(flash_overlay)
 
-	buckled_object = null
-
 	if(minion)
 		minion.master = null
 		minion = null
@@ -346,13 +340,19 @@
 		attributes = null
 		skills = null
 
-	hit_logs?.Cut()
-
 	SSliving.all_living -= src
 
 	if(boss)
 		SSbosses.tracked_bosses -= src
 		SSbosses.living_bosses -= src
+
+	. = ..()
+
+/mob/living/Destroy()
+
+	buckled_object = null
+
+	hit_logs?.Cut()
 
 	players_fighting_boss?.Cut()
 

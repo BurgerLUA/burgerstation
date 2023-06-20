@@ -82,7 +82,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		var/stored_bullets = length(M.stored_bullets)
+		var/stored_bullets = M.get_ammo_count()
 		if(stored_bullets == 1)
 			icon_state = "[initial(icon_state)]_[round(stored_bullets,1)]"
 		else

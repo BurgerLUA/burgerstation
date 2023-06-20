@@ -12,9 +12,10 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 	smart_clear_turfs += src
 	. = ..()
 
-/obj/marker/smart_clear_turf/Destroy()
-	. = ..()
+/obj/marker/smart_clear_turf/PreDestroy()
 	smart_clear_turfs -= src
+
+	. = ..()
 
 
 /obj/marker/smart_clear_turf/proc/process()

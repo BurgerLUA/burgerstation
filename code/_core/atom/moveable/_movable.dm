@@ -87,7 +87,9 @@
 /atom/movable/PostDestroy()
 	. = ..()
 	src.force_move(null)
-	src.loc = null
+	if(src.loc)
+		log_error("Warning: force_move(null) failed on [src.get_debug_name()] while qdeleting!")
+		src.loc = null
 
 /atom/movable/proc/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 

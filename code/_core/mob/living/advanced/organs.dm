@@ -198,3 +198,9 @@
 
 	if(do_delete)
 		qdel(O)
+
+	queue_organ_health_update -= O
+
+	if(!O.qdeleting && O.health)
+		O.health.update_health()
+

@@ -156,7 +156,7 @@
 
 /obj/structure/interactive/mountable/browning/proc/mag_check(var/structure/interactive/mountable/browning/M)
 	if(stored_magazine)
-		if(length(stored_magazine.stored_bullets) < 1)
+		if(length(stored_magazine.get_ammo_count()) < 1)
 			icon_state = "empty"
 		else
 			icon_state = "loaded"
@@ -225,7 +225,7 @@
 /obj/structure/interactive/mountable/browning/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(stored_magazine)
-		. += div("notice","It has a magazine latched on, with [length(stored_magazine.stored_bullets)]/[stored_magazine.bullet_count_max] bullets left.")
+		. += div("notice","It has a magazine latched on, with [stored_magazine.get_ammo_count()]/[stored_magazine.bullet_count_max] bullets left.")
 	else
 		. += div("warning","It is missing a magazine.")
 

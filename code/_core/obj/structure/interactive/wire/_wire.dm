@@ -82,9 +82,11 @@
 		W.generate_4way()
 		W.refresh_network()
 
-	connections.Cut()
-
 	. = ..()
+
+/obj/structure/interactive/wire/Destroy()
+	. = ..()
+	connections.Cut()
 
 /obj/structure/interactive/wire/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

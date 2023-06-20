@@ -8,7 +8,7 @@
 
 	mouse_opacity = 0
 
-/obj/effect/chat_text/Destroy()
+/obj/effect/chat_text/PreDestroy()
 
 	if(owner)
 		owner.stored_chat_text -= src

@@ -414,7 +414,7 @@
 				return TRUE
 			return TRUE
 
-		if(G.stored_magazine && !length(G.stored_magazine.stored_bullets) && !G.chambered_bullet)
+		if(G.stored_magazine && !G.stored_magazine.get_ammo_count() && !G.chambered_bullet)
 			if(debug) log_debug("Ejecting the magazine as it contains no bullets...")
 			G.eject_magazine(A)
 			next_complex = max(next_complex,world.time,G.next_shoot_time) + rand(10,20)

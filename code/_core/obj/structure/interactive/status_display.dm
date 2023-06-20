@@ -76,7 +76,7 @@ var/global/list/status_displays = list()
 		status_displays[status_id] += src
 	return ..()
 
-/obj/structure/interactive/status_display/global_display/Destroy()
+/obj/structure/interactive/status_display/global_display/PreDestroy()
 	if(status_displays[status_id])
 		status_displays[status_id] -= src
 	. = ..()

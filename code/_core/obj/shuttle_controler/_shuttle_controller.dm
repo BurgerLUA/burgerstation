@@ -41,7 +41,7 @@ var/global/list/all_shuttle_controlers = list()
 
 	var/icon/stored_icon
 
-/obj/shuttle_controller/Destroy()
+/obj/shuttle_controller/PreDestroy()
 	all_shuttle_controlers -= src
 	return ..()
 

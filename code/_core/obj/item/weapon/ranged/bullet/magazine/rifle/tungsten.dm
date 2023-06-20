@@ -82,7 +82,7 @@
 	icon_state = initial(icon_state)
 
 	if(stored_magazine)
-		icon_state = "[icon_state]_[CEILING((length(stored_magazine.stored_bullets)/stored_magazine.bullet_count_max)*8, 1)]"
+		icon_state = "[icon_state]_[CEILING((stored_magazine.get_ammo_count()/stored_magazine.bullet_count_max)*8, 1)]"
 	else
 		icon_state = "[icon_state]_open"
 

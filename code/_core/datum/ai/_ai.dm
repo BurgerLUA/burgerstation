@@ -203,12 +203,13 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	set_active(FALSE,deleting=TRUE)
 
+	if(owner) owner.ai = null
+	owner = null
+
 	. = ..()
 
 /ai/Destroy()
 
-	if(owner) owner.ai = null
-	owner = null
 	objective_move = null
 	objective_attack = null
 	home_turf = null

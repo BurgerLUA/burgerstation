@@ -35,12 +35,8 @@
 	if(T && is_turf(T))
 		T.lighting_overlay = null
 		T.luminosity = 1
-	. = ..()
-
-/atom/movable/lighting_overlay/Destroy()
-	. = ..()
 	SSlighting.total_lighting_overlays -= 1
-
+	. = ..()
 
 // This is a macro PURELY so that the if below is actually readable.
 #define ALL_EQUAL ((rr == ar && gr == ar && br == ar) && (rg == ag && gg == ag && bg == ag) && (rb == ab && gb == ab && bb == ab))

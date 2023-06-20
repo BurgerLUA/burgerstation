@@ -22,7 +22,7 @@
 
 	var/turf/T = get_turf(src)
 	if(T)
-		play_sound('sound/effects/disposals/hiss.ogg',T)
+		play_sound('sound/effects/disposals/hiss.ogg',T) //Dogshit usage of destroy but w/e
 
 	. = ..()
 

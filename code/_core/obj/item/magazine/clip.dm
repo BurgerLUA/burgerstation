@@ -5,7 +5,7 @@
 
 /obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/weapon/ranged/bullet/))
+	if(is_ranged_bullet_weapon(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
@@ -14,7 +14,7 @@
 			caller.to_chat(span("warning","You need to open \the [G.name] before inserting \the [src.name] into it!"))
 			return FALSE
 		var/insert_count = 0
-		for(var/k in stored_bullets)
+		for(var/k in src.stored_bullets)
 			if(!k) continue
 			var/obj/item/bullet_cartridge/B = k
 			if(!G.can_load_stored(caller,B))
@@ -23,10 +23,11 @@
 			var/target_point = get_first_missing_value(G.stored_bullets)
 			if(target_point == 0)
 				break
-			B.force_move(G)
 			G.stored_bullets[target_point] = B
 			insert_count += 1
-			stored_bullets -= B
+			src.stored_bullets[B] -= 1
+			if(src.stored_bullets[B] <= 0)
+				src.stored_bullets -= B
 		if(insert_count)
 			caller.to_chat(span("notice","You load [insert_count] bullet\s into \the [object.name]."))
 			G.update_sprite()

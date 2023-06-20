@@ -29,7 +29,7 @@
 
 	var/obj/hud/button/research/board/linked_board
 
-/obj/hud/button/research/piece/Destroy()
+/obj/hud/button/research/piece/PreDestroy()
 
 	if(linked_board)
 		linked_board.pieces[x_p][y_p] = null

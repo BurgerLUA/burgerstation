@@ -52,8 +52,8 @@
 	return ..()
 
 /mob/living/advanced/stand/Destroy()
+	. = ..()
 	owner = null
-	return ..()
 
 /mob/living/advanced/stand/handle_alpha()
 	return enabled ? 255 : 0

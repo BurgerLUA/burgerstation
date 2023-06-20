@@ -80,10 +80,12 @@
 /area/proc/is_space()
 	return FALSE
 
-/area/Destroy()
-
+/area/PreDestroy()
+	. = ..()
 	SSarea.all_areas -= src.type
 	SSarea.areas_by_identifier[area_identifier] -= src
+
+/area/Destroy()
 
 	powered_doors.Cut()
 	powered_machines.Cut()

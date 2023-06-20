@@ -20,7 +20,7 @@
 
 	maptext = "Bug"
 
-/obj/effect/damage_number/Destroy()
+/obj/effect/damage_number/PreDestroy()
 	all_damage_numbers -= id
 	. = ..()
 

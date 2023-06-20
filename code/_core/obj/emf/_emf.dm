@@ -23,7 +23,7 @@
 		emf_range = desired_range
 
 
-/obj/emf/Destroy()
+/obj/emf/PreDestroy()
 	SSghost.all_emfs -= src
 	return ..()
 

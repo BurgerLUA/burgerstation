@@ -37,7 +37,7 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 	all_hud_messages += src
 	return ..()
 
-/obj/hud/button/message/Destroy()
+/obj/hud/button/message/PreDestroy()
 	all_hud_messages -= src
 	return ..()
 

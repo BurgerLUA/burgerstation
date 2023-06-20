@@ -8,7 +8,7 @@
 	var/bullet_count = 0
 	var/bullet_max = 0 //Updated when a new bullet is added.
 
-	var/obj/item/bullet_cartridge/stored_bullet
+	var/obj/item/bullet_cartridge/stored_bullet //A path.
 
 	size = SIZE_3
 	weight = 30
@@ -50,12 +50,12 @@
 /obj/item/bulletbox/get_value()
 	. = ..()
 	if(stored_bullet)
-		. += bullet_count*stored_bullet.get_value()
+		. += bullet_count * SSbalance.stored_value[stored_bullet]
 
 /obj/item/bulletbox/get_examine_list(var/mob/caller)
 	. = ..()
 	if(stored_bullet)
-		. += div("notice","It stores [stored_bullet.name] ([bullet_count]/[bullet_max] capacity).")
+		. += div("notice","It stores [initial(stored_bullet.name)] ([bullet_count]/[bullet_max] capacity).")
 
 /obj/item/bulletbox/click_self(var/mob/caller,location,control,params)
 
@@ -124,21 +124,17 @@
 		update_sprite()
 		return TRUE
 
-	if(istype(object,/obj/item/magazine/))
+	if(is_magazine(object))
 		INTERACT_CHECK
 		INTERACT_DELAY(5)
 		var/obj/item/magazine/M = object
-		if(!M.can_load_magazine(caller,stored_bullet))
+		if(!M.can_load_magazine(caller,src.stored_bullet))
 			return TRUE
-		var/bullets_to_take = min(bullet_count,M.bullet_count_max-length(M.stored_bullets))
+		var/bullets_to_take = min(bullet_count,M.bullet_count_max-M.get_ammo_count())
 		if(bullets_to_take <= 0)
 			return TRUE
-		for(var/i=1,i<=bullets_to_take,i++)
-			var/obj/item/bullet_cartridge/BC = new stored_bullet.type(M)
-			INITIALIZE(BC)
-			FINALIZE(BC)
-			M.stored_bullets += BC
-		bullet_count -= bullets_to_take
+		M.stored_bullets[stored_bullet] += bullets_to_take
+		src.bullet_count -= bullets_to_take
 		M.update_sprite()
 		caller.to_chat(span("notice","You fill up \the [M.name] with [bullets_to_take] bullets from \the [src.name]."))
 		update_sprite()

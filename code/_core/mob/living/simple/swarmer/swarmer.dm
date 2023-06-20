@@ -32,7 +32,7 @@
 /mob/living/simple/swarmer/death_message()
 	return FALSE
 
-/mob/living/simple/swarmer/Destroy()
+/mob/living/simple/swarmer/PreDestroy()
 	. = ..()
 	if(parent_console)
 		parent_console.swarmercount -= src

@@ -87,8 +87,11 @@
 
 	var/ignore_living = FALSE //Ignore collisions with living beings.
 
-/obj/projectile/Destroy()
+/obj/projectile/PreDestroy()
 	SSprojectiles.all_projectiles -= src
+	. = ..()
+
+/obj/projectile/Destroy()
 	color = "#000000"
 	owner = null
 	weapon = null

@@ -18,14 +18,14 @@ var/global/power_id = 1
 	for(var/k in connected_wires)
 		src.remove_wire(k)
 
+	SSpower.all_power_networks -= src
+
 	. = ..()
 
 /power_network/Destroy()
 
 	power_supply = null
 	power_draw = null
-
-	SSpower.all_power_networks -= src
 
 	. = ..()
 

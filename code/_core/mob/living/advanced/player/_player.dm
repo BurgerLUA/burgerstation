@@ -203,22 +203,19 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	QDEL_NULL(click_and_drag_icon)
 
-	. = ..()
-
-/mob/living/advanced/player/Destroy()
-
-	dialogue_target = null
-
 	equipped_antags -= src
 
 	all_players -= src
 
 	ai_attacking_players -= src
 
+	. = ..()
+
+/mob/living/advanced/player/Destroy()
+	dialogue_target = null
 	active_device = null
 	active_structure = null
 	active_paper = null
-
 	return ..()
 
 /mob/living/advanced/player/proc/clear_portals()

@@ -180,6 +180,21 @@
 
 	QDEL_CUT_ASSOC(parallax)
 
+	all_mobs -= src
+	all_mobs_with_clients -= src
+
+	if(observing)
+		observing.observers -= src
+		observing = null
+
+	if(fallback_mob)
+		fallback_mob.linked_mobs -= src
+	fallback_mob = null
+
+	for(var/k in linked_mobs)
+		var/mob/M = k
+		M.fallback_mob = null
+	linked_mobs?.Cut()
 
 	. = ..()
 
@@ -193,25 +208,9 @@
 
 	stored_chat_text?.Cut()
 
-	all_mobs -= src
-	all_mobs_with_clients -= src
-
-	if(observing)
-		observing.observers -= src
-		observing = null
-
 	color_mods?.Cut()
 
 	lighting_mods?.Cut()
-
-	if(fallback_mob)
-		fallback_mob.linked_mobs -= src
-	fallback_mob = null
-
-	for(var/k in linked_mobs)
-		var/mob/M = k
-		M.fallback_mob = null
-	linked_mobs?.Cut()
 
 /mob/Login()
 

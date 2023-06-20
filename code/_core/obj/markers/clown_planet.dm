@@ -8,6 +8,6 @@ var/global/list/clown_planet_markers = list()
 	clown_planet_markers += src
 	. = ..()
 
-/obj/marker/clown_planet/Destroy()
+/obj/marker/clown_planet/PreDestroy()
 	clown_planet_markers -= src
 	. = ..()

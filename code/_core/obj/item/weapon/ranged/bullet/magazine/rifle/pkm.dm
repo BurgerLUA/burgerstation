@@ -82,7 +82,7 @@
 
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
-		icon_state = "[icon_state]_[min(6,length(M.stored_bullets))]"
+		icon_state = "[icon_state]_[min(6,M.get_ammo_count())]"
 	else
 		icon_state = "[icon_state]_open"
 

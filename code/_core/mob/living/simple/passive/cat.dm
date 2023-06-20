@@ -106,6 +106,6 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	all_runtimes += src
 	return ..()
 
-/mob/living/simple/cat/runtime/Destroy()
+/mob/living/simple/cat/runtime/PreDestroy()
 	all_runtimes -= src
 	return ..()

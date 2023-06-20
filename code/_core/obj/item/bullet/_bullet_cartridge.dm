@@ -165,7 +165,7 @@
 
 	return TRUE
 
-/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/talk = TRUE)
+/obj/item/bullet_cartridge/proc/transfer_src_to_magazine(var/mob/caller as mob,var/obj/item/magazine/transfer_target,location,control,params,var/messages = TRUE)
 
 	if(!transfer_target.can_load_magazine(caller,src))
 		return FALSE
@@ -174,49 +174,28 @@
 	if(bullets_to_add <= 0)
 		return FALSE
 
-	var/should_transfer_self = bullets_to_add == amount
+	if(bullets_to_add > 0)
+		src.add_item_count(-bullets_to_add,TRUE)
+		transfer_target.stored_bullets[src.type] += bullets_to_add
+		transfer_target.update_sprite()
 
-	if(should_transfer_self)
-		bullets_to_add--
-
-	if(bullets_to_add)
-		add_item_count(-bullets_to_add,TRUE)
-		for(var/i=1,i<=bullets_to_add,i++)
-			var/obj/item/bullet_cartridge/B = new src.type(transfer_target)
-			B.is_spent = is_spent
-			INITIALIZE(B)
-			FINALIZE(B)
-			transfer_target.stored_bullets += B
-	if(should_transfer_self)
-		src.drop_item(transfer_target)
-		transfer_target.stored_bullets += src
-	if(talk)
-		if(should_transfer_self) bullets_to_add++
+	if(messages)
 		caller.to_chat(span("notice","You insert [bullets_to_add] bullet\s into \the [transfer_target.name]."))
-	transfer_target.update_sprite()
 
 	return TRUE
 
 /obj/item/bullet_cartridge/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(istype(object,/obj/item/bullet_cartridge/))
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		INTERACT_DELAY(1)
-		var/obj/item/bullet_cartridge/B = object
-		B.transfer_src_to_bullet(caller,src,location,control,params)
-		return TRUE
-
-	if(istype(object,/obj/item/magazine/))
+	if(is_magazine(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)
 		var/obj/item/magazine/M = object
 		if(transfer_src_to_magazine(caller,M,location,control,params))
-			play_sound(bullet_insert_sound,get_turf(src),range_max=VIEW_RANGE*0.25)
+			play_sound(bullet_insert_sound,get_turf(object),range_max=VIEW_RANGE*0.25)
 		return TRUE
 
-	if(istype(object,/obj/item/weapon/ranged/bullet/))
+	if(is_ranged_bullet_weapon(object))
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(1)

@@ -55,7 +55,7 @@
 
 	return ..()
 
-/obj/hud/progress_bar/Destroy()
+/obj/hud/progress_bar/PreDestroy()
 
 	if(ismob(loc))
 		var/mob/M = loc

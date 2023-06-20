@@ -25,10 +25,10 @@
 
 	var/temperature_change_mul = 1 //The multiplier for temperature change.
 
-/reagent_container/Destroy()
+/reagent_container/PreDestroy()
 	owner = null
 	SSreagent.all_temperature_reagent_containers -= src
-	return ..()
+	. = ..()
 
 /reagent_container/proc/get_contents_english()
 

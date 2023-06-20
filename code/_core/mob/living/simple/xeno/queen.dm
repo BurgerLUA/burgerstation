@@ -77,7 +77,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	return ..()
 
 
-/mob/living/simple/xeno/queen/Destroy()
+/mob/living/simple/xeno/queen/PreDestroy()
 
 	if(tracked_xeno_queen && tracked_xeno_queen == src)
 		tracked_xeno_queen = null

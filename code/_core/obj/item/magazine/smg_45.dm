@@ -29,7 +29,7 @@
 
 /obj/item/magazine/smg_45/update_icon()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[length(stored_bullets) ? 1 : 0]"
+	icon_state = "[initial(icon_state)]_[get_ammo_count() ? 1 : 0]"
 
 /obj/item/magazine/smg_45/ap
 	name = "\improper .45 AP banana magazine"

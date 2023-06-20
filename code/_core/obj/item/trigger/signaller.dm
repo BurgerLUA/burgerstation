@@ -38,7 +38,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 	all_signalers += src
 	return ..()
 
-/obj/item/device/signaller/Destroy()
+/obj/item/device/signaller/PreDestroy()
 	all_signalers -= src
 	return ..()
 
