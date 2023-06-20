@@ -67,7 +67,8 @@
 		/obj/item/container/simple/chemistry/acetone,
 		/obj/item/container/simple/beaker/fuel_cell/phoron,
 		/obj/item/container/simple/chemistry/phenol,
-		/obj/item/container/simple/alcohol/ethanol
+		/obj/item/container/simple/alcohol/ethanol,
+		/obj/item/container/simple/beaker/phosphorous
 	)
 
 	//Missing

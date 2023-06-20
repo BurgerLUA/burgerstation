@@ -1,6 +1,6 @@
 /obj/structure/interactive/conveyor
 	name = "conveyor belt"
-	desc = "A metal conveyor belt, used to move crates and large objects"
+	desc = "A metal conveyor belt, used to move crates and large objects."
 	icon = 'icons/obj/structure/conveyor_new.dmi'
 	icon_state = "conveyor"
 

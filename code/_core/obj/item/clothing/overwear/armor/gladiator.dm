@@ -1,6 +1,6 @@
 /obj/item/clothing/overwear/armor/gladiator
 	name = "gladiator armor"
-	desc = "Look mom, i'm a real gladiator!"
+	desc = "Look mom, I'm a real gladiator!"
 	desc_extended = "A replica Gladiator Armor. Won't protect you from anything, but it looks cool."
 	icon = 'icons/obj/item/clothing/suit/gladiator.dmi'
 

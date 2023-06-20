@@ -19,7 +19,7 @@ var/global/price_multiplier = 1
 	announce(
 		"Central Command Economy Division",
 		"Economy Crash",
-		"Cemtral Command Economy Division regrets to inform you that the market has suffered an economic crash. All items are [price_increase]% more expensive.",
+		"Central Command Economy Division regrets to inform you that the market has suffered an economic crash. All items are [price_increase]% more expensive.",
 		sound_to_play = 'sound/round_end/dump_it.ogg'
 	)
 

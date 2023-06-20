@@ -1,7 +1,7 @@
 /mob/living/simple/passive/mouse
 	name = "mouse"
 	desc = "Squeak!"
-	desc_extended = "A harmles mouse."
+	desc_extended = "A harmless mouse."
 	icon = 'icons/mob/living/simple/mouse.dmi'
 	icon_state = "mouse_brown"
 	damage_type = /damagetype/unarmed/bite/

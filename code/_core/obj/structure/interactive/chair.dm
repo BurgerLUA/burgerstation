@@ -1,7 +1,7 @@
 obj/structure/interactive/chair
 	name = "chair"
 	desc = "You will sit in this. By will or by force."
-	desc_extended = "A chair is a peice of furniture with a raised surface supported by legs, commonly used to seat a single person. Buckling is automatic and will be attempted upon walking over something you can buckle into."
+	desc_extended = "A chair is a piece of furniture with a raised surface supported by legs, commonly used to seat a single person. Buckling is automatic and will be attempted upon walking over something you can buckle into."
 	icon = 'icons/obj/structure/chairs.dmi'
 	icon_state = "chair"
 
@@ -82,7 +82,7 @@ obj/structure/interactive/chair/stool/bar
 obj/structure/interactive/chair/wood
 	name = "wooden chair"
 	desc = "You will sit in this. By will or by force."
-	desc_extended = "A chair is a peice of furniture with a raised surface supported by legs, commonly used to seat a single person."
+	desc_extended = "A chair is a piece of furniture with a raised surface supported by legs, commonly used to seat a single person."
 	icon_state = "wooden_chair"
 
 	bullet_block_chance = 10

@@ -1,7 +1,7 @@
 /mob/living/simple/bear
 	name = "brown bear"
 	desc = "She will devour you, blyat!"
-	desc_extended = "A harmfull critter."
+	desc_extended = "A harmful critter."
 	icon = 'icons/mob/living/simple/bears.dmi'
 	icon_state = "brown"
 	damage_type = /damagetype/unarmed/claw/

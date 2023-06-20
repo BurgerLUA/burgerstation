@@ -85,7 +85,7 @@
 	if(caller)
 		visible_message(span("notice","\The [caller.name] activates \the [src.name]."),span("notice","You activate \the [src.name]."))
 	else
-		visible_message(span("warning","\The [src.name] powers up!."))
+		visible_message(span("warning","\The [src.name] powers up!"))
 
 	SShorde.all_drills[src] = world.time + SECONDS_TO_DECISECONDS(15)
 	set_anchored(TRUE)

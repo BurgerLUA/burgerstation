@@ -68,7 +68,7 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 /mob/living/simple/cat/runtime
 	name = "Runtime"
 	desc = "Oh no, it's multiplying!"
-	desc_extended = "The CMO's favorite cat. It reproduces asexually every time the world experiences a runtime phenomenome."
+	desc_extended = "The CMO's favorite cat. It reproduces asexually every time the world experiences a runtime phenomenon."
 	icon = 'icons/mob/living/simple/cat_black.dmi'
 
 	loyalty_tag = "NanoTrasen"

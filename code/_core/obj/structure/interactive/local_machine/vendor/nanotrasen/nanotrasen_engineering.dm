@@ -73,7 +73,9 @@
 		/obj/item/bullet_cartridge/shotgun_12,
 		/obj/item/bullet_cartridge/shotgun_12/flechette,
 		/obj/item/bullet_cartridge/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/frag
+		/obj/item/bullet_cartridge/shotgun_12/frag,
+
+		/obj/item/magazine/minigun_46
 
 	)
 

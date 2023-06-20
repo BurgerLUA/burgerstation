@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(air)
 
 	log_subsystem(src.name, "Updated the air of [update_count] air turfs.")
 	if(bad_count)
-		log_subsystem(src.name, "WARNING: [bad_count] TURFS STILL NEEDED AN ATMOS UPDATE!.")
+		log_subsystem(src.name, "WARNING: [bad_count] TURFS STILL NEEDED AN ATMOS UPDATE!")
 
 	return ..()
 
