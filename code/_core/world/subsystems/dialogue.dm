@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(dialogue)
 	for(var/k in files)
 		if(!has_suffix(k,".txt"))
 			continue
-		var/file_data = file2text("[CD.folderpath]/[k]")
+		var/file_data = rustg_file_read("[CD.folderpath]/[k]")
 		if(!file_data)
 			continue
 		var/file_name = replacetext(k,".txt","")

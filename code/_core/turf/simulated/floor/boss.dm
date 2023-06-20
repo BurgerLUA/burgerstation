@@ -31,7 +31,7 @@ var/global/list/stored_boss_floor_icons
 	if(!stored_boss_floor_icons)
 		stored_boss_floor_icons = list()
 		for(var/i=1,i<=30,i++)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 			var/icon/I = ICON_INVISIBLE
 			if(prob(60))
 				if(prob(80))

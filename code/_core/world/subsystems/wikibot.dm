@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(wikibot)
 		var/current_score = 0
 
 		for(var/key in question_keys)
-			CHECK_TICK_SAFE(75,FPS_SERVER*3)
+			CHECK_TICK(75,FPS_SERVER*3)
 			if(!findtextEx(lowertext(string_to_process),key))
 				continue
 			current_score += 1

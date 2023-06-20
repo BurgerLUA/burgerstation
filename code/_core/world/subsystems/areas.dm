@@ -35,14 +35,14 @@ SUBSYSTEM_DEF(area)
 		INITIALIZE(A)
 		if(A.type == /area/)
 			null_area = A
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Generating areas...")
 
 	for(var/k in all_areas)
 		var/area/A = all_areas[k]
 		GENERATE(A)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Finalizing areas...")
 
@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(area)
 		var/area/A = all_areas[k]
 		FINALIZE(A)
 		area_count++
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Finalized [area_count] total areas.")
 
@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(area)
 					changed_areas++
 					found_turf = TRUE
 					break
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 		if(!found_turf)
 			break
 
@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(area)
 					changed_areas++
 					found_turf = TRUE
 					break
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 		if(!found_turf)
 			break
 
@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(area)
 		if(!A)
 			areas_ambient -= k
 			continue
-		CHECK_TICK_SAFE(tick_usage_max,0)
+		CHECK_TICK(tick_usage_max,0)
 		var/sound_to_play = pick(A.random_sounds)
 		var/list/valid_players = list()
 		for(var/mob/living/advanced/player/P in A.contents)
@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(area)
 		if(!A)
 			affected_areas -= k
 			continue
-		CHECK_TICK_SAFE(tick_usage_max,0)
+		CHECK_TICK(tick_usage_max,0)
 		if(enabled)
 			A.icon = 'icons/area/weather.dmi'
 			A.icon_state = weather_type

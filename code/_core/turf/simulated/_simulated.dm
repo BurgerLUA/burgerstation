@@ -150,6 +150,12 @@
 
 /turf/simulated/on_destruction(var/damage = TRUE)
 
+	if(destruction_turf == /turf/simulated/openspace)
+		var/turf/T = locate(x,y,z-1)
+		if(!T)
+			QDEL_NULL(health)
+			return FALSE
+
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0
 
@@ -160,12 +166,14 @@
 
 	change_turf(destruction_turf)
 
-
 /turf/simulated/Initialize()
 	var/area/A = loc
 	if(health_base > 0 && !(A.flags_area & FLAG_AREA_NO_CONSTRUCTION))
-		if(!destruction_turf && A.destruction_turf != src.type)
-			destruction_turf = A.destruction_turf
+		if(!destruction_turf)
+			if(A.destruction_turf && A.destruction_turf != src.type)
+				destruction_turf = A.destruction_turf
+			else if(SSdmm_suite.map_to_final_destruction_turf[SSdmm_suite.z_level_to_file[z]] && SSdmm_suite.map_to_final_destruction_turf[SSdmm_suite.z_level_to_file[z]] != src.type)
+				destruction_turf = SSdmm_suite.map_to_final_destruction_turf[SSdmm_suite.z_level_to_file[z]]
 		if(destruction_turf)
 			health = /health/turf/
 		else

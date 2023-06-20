@@ -1,0 +1,22 @@
+"a" = (/turf/simulated/wall/metal,/area/dmm_suite/clear_area)
+"b" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"d" = (/turf/simulated/floor/stair/ztravel,/area/dmm_suite/clear_area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaa
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+bbbbbbbbbbbbbbba
+dbbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+abbbbbbbbbbbbbba
+aaaaaaaaaaaaaaaa
+"}

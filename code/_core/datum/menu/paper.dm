@@ -1,5 +1,5 @@
 /menu/paper/
-	file = 'html/paper.html'
+	file = "html/paper.html"
 	resources = list(
 		"markdown.js" = 'html/markdown.js'
 	)

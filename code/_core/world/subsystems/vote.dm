@@ -8,8 +8,6 @@ SUBSYSTEM_DEF(vote)
 
 	var/list/active_votes = list()
 
-	preloop = TRUE
-
 /subsystem/vote/unclog(var/mob/caller)
 
 	for(var/k in active_votes)
@@ -37,7 +35,7 @@ SUBSYSTEM_DEF(vote)
 		if(proces_vote(V) == null)
 			qdel(V)
 			active_votes -= k
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

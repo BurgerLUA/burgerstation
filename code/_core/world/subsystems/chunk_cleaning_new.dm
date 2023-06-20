@@ -171,11 +171,11 @@ SUBSYSTEM_DEF(chunk)
 				continue //It was moved.
 			if(!A.safe_storage && M.on_chunk_clean())
 				. += 1
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
 		for(var/j in C.spawning_markers)
 			var/obj/marker/mob_spawn/MS = j
 			MS.process()
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*10)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*10)
 
 	for(var/k in unclean_chunks)
 		var/chunk/C = k

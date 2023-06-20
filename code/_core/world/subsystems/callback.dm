@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(callback)
 	name = "Callback Subsystem"
 	desc = "Controls callbacks."
 	tick_rate = DECISECONDS_TO_TICKS(1)
-	priority = SS_ORDER_IMPORTANT //Doesn't really matter.
+	priority = SS_ORDER_CALLBACK
 	var/list/all_callbacks = list()
 
 	tick_usage_max = 100
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(callback)
 				log_error("ERROR: Callback of id [callback_id] belonging to [stored_object] did not complete try_call() correctly, thus it was removed.")
 			else
 				log_error("ERROR: Callback of id [callback_id] belonging to world did not complete try_call() correctly, thus it was removed.")
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

@@ -30,7 +30,7 @@ dmm_suite
 			var/modelsStart = findtextEx(modelLine, "/") // Skip key and first three characters: "aa" = (
 			var/modelContents = copytext(modelLine, modelsStart, length(modelLine)) // Skip last character: )
 			grid_models[modelKey] = modelContents //We have now stored the key representing the turf.
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 		if(!coordX) coordX = 1
 		if(!coordY) coordY = 1
 		if(!coordZ) coordZ = world.maxz+1
@@ -62,7 +62,7 @@ dmm_suite
 				)
 			)
 			maxZFound = max(maxZFound, grid.group[3]+1)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 
 		if(maxZFound+(coordZ-1) > world.maxz)
 			world.maxz = maxZFound+(coordZ-1)
@@ -144,7 +144,7 @@ dmm_suite
 						break
 					else
 						. += result
-					CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+					CHECK_TICK_HARD
 
 		return .
 
@@ -177,7 +177,7 @@ dmm_suite
 					var/match = copytext(noStrings.match, 2, -1) // Strip quotes
 					models = noStrings.Replace(models, indexText, found)
 					originalStrings[indexText] = (match)
-				CHECK_TICK_SAFE(50,FPS_SERVER)
+				CHECK_TICK_HARD
 			while(found)
 			// Identify each object's data, instantiate it, & reconstitues its fields.
 			for(var/atomModel in splittext(models, comma_delim))
@@ -192,7 +192,7 @@ dmm_suite
 						key_value_regex.Find(paddedAttribute)
 						attributes[key_value_regex.group[1]] = key_value_regex.group[2]
 				. += loadModel(atomPath, attributes, originalStrings, location, angleOffset, debug)
-				CHECK_TICK_SAFE(50,FPS_SERVER)
+				CHECK_TICK_HARD
 
 		loadModel(atomPath, list/attributes, list/strings, var/turf/location, angleOffset, debug)
 			if(!atomPath) //Sometimes dmm_suite can have invalid models.

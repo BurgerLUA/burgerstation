@@ -22,7 +22,10 @@
 
 	map_color = COLOR_BROWN
 
-//WAY too detailed
+	destruction_turf = /turf/simulated/openspace
+
+
+//WAY too detailed. Don't use.
 /turf/simulated/floor/desert_rock
 
 	name = "desert rock floor"

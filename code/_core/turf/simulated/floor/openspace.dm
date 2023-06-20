@@ -17,7 +17,7 @@
 
 	plane = PLANE_FLOOR_BELOW
 
-/turf/simulated/openspace/Initialize()
+/turf/simulated/openspace/Finalize()
 	. = ..()
 	var/turf/T = locate(x,y,z-1)
 	if(T) vis_contents += T

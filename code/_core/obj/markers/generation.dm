@@ -64,12 +64,12 @@ var/global/list/all_generation_markers = list()
 		var/turf/T = valid_turfs[1]
 		valid_turfs -= T
 		desired_grow--
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 		if(forbidden_turfs[T])
 			continue
 		forbidden_turfs[T] = TRUE //Already processed
 
-		if(T != src.loc && !T.world_spawn && !prob(hole_chance) && !ispath(object_to_place,T) && (!turf_whitelist || istype(T,turf_whitelist)))
+		if(T != src.loc && !prob(hole_chance) && !ispath(object_to_place,T) && (!turf_whitelist || istype(T,turf_whitelist)))
 			if(custom_object_to_place)
 				var/atom/placed_object = get_object_to_place(T,objects_placed,desired_grow)
 				if(!placed_object)
@@ -79,7 +79,7 @@ var/global/list/all_generation_markers = list()
 			objects_placed += 1
 
 		for(var/v in DIRECTIONS_CARDINAL)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 			var/turf/T2 = get_step(T,v)
 			if(!T2)
 				continue

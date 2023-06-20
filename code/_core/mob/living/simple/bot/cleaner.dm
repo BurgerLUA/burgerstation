@@ -49,7 +49,7 @@
 			if(owner_ckey)
 				total_value += I.get_value()
 			qdel(I)
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+			CHECK_TICK(50,FPS_SERVER)
 
 		if(total_value > 0 && owner_ckey)
 			total_value *= 0.25

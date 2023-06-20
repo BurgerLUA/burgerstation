@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(balance)
 			continue
 		stored_value[I.type] = I.get_value()
 		qdel(I)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 
 /subsystem/balance/proc/process_bullets(var/turf/T,var/list/bullet_subtypes)
@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(balance)
 		stored_value[B.type] = B.get_recommended_value()
 		stored_value[B.type] = CEILING(stored_value[B.type],0.01)
 		. += B
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 /subsystem/balance/proc/process_magazines(var/turf/T,var/list/magazine_subtypes)
 	. = list()
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(balance)
 		stored_value[M.type] = CEILING(stored_value[M.type],1)
 		if(M.ammo) stored_value[M.type] += stored_value[M.ammo] * M.bullet_count_max
 		. += M
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 /subsystem/balance/proc/process_weapons(var/turf/T,var/list/weapon_subtypes)
 	. = list()
@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(balance)
 		var/found_value = W.get_recommended_value()
 		stored_value[W.type] = found_value
 
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 /subsystem/balance/Initialize()
 
@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(balance)
 			if(length(similarities) >= similarity_limt)
 				final_balance_output += "[I1.type] feels too similiar to [I2.type]. Reason: [english_list(similarities)].\n"
 				reported_weapons[I1.type] = TRUE
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 
 	stuff_to_delete += weapons_as_items
 

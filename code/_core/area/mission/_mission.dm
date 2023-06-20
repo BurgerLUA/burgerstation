@@ -9,6 +9,29 @@
 
 	horde_data = "mission"
 
+/area/mission/below
+	name = "\improper Underground"
+	icon_state = "cave"
+
+	weather = null
+	ambient_temperature = T0C + 10
+	cheese_type = /reagent/nutrition/cheese/gruyere
+
+	sunlight_freq = null
+	sunlight_color = null
+
+	interior = TRUE
+	sound_environment = ENVIRONMENT_QUARRY
+	tracks = TRACKS_CAVE
+	random_sounds = list(
+		'sound/ambient/cave_1.ogg',
+		'sound/ambient/cave_2.ogg',
+	)
+
+	horde_data = /horde_data/cave
+
+	allow_climbing = TRUE
+
 /area/mission/desert
 	name = "\improper Cliffside Sea Desert"
 	icon_state = "desert"
@@ -23,6 +46,8 @@
 	sound_environment = ENVIRONMENT_PLAIN
 
 	horde_data = /horde_data/desert
+
+	dynamic_rock_gen_turf = /turf/simulated/wall/rock/desert
 
 /area/mission/snow
 	name = "\improper Snow Line"
@@ -42,6 +67,8 @@
 	horde_data = /horde_data/snow
 
 	interior = FALSE
+
+	dynamic_rock_gen_turf = /turf/simulated/wall/rock
 
 /area/mission/desert/interior
 	name = "\improper Cliffside Sea Desert Caves"
@@ -81,6 +108,7 @@
 
 	horde_data = /horde_data/forest
 
+	dynamic_rock_gen_turf = /turf/simulated/wall/rock/brown
 
 /area/mission/caves
 	name = "\improper Unexplored Caves"
@@ -131,6 +159,8 @@
 
 	horde_data = /horde_data/jungle
 
+	dynamic_rock_gen_turf = /turf/simulated/wall/rock/moss
+
 /area/mission/jungle/interior
 	name = "\improper Deep Vinetangle Jungle"
 	icon_state = "jungle_interior"
@@ -177,6 +207,8 @@
 
 	horde_data = /horde_data/lava
 
+	dynamic_rock_gen_turf = /turf/simulated/wall/rock/basalt
+
 /area/mission/beach
 	name = "Beach"
 	icon_state = "beach"
@@ -212,3 +244,5 @@
 	icon_state = "error"
 
 	interior = TRUE
+
+	dynamic_rock_gen_turf = /turf/simulated/wall/rock/indestructable

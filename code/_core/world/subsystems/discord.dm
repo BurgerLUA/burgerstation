@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(discord)
 		log_subsystem(name,"Could not find a webhook file in [WEBHOOK_FILE].")
 		return TRUE
 
-	discord_webhook_key = file2text(WEBHOOK_FILE)
+	discord_webhook_key = rustg_file_read(WEBHOOK_FILE)
 
 	return TRUE
 

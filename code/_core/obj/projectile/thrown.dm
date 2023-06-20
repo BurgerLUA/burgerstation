@@ -81,7 +81,7 @@
 			A.Move(new_loc)
 			A.on_thrown(owner,hit_atom)
 			animate_hit(A)
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 
 
@@ -91,7 +91,7 @@
 /obj/projectile/thrown/PreDestroy()
 
 	for(var/k in src.contents)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 		var/atom/movable/A = k
 		if(previous_loc)
 			A.force_move(previous_loc)

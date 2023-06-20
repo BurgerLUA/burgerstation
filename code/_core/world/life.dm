@@ -4,7 +4,7 @@ var/global/time_dialation = 0
 	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
-			if((!SS.preloop || world_state >= STATE_RUNNING) && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
+			if(world_state >= STATE_RUNNING && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 				SS.overtime_count++
 				sleep(TICK_LAG)
 				continue
@@ -36,6 +36,8 @@ var/global/time_dialation = 0
 			sleep(desired_delay)
 		else
 			sleep(-1)
+		while(world_state <= STATE_INITIALIZING)
+			sleep(10)
 
 /world/proc/subsystem_initialize(var/subsystem/SS)
 	//No background processing. Everything needs to run in order.
@@ -52,9 +54,11 @@ var/global/time_dialation = 0
 			log_subsystem(SS.name,"Initialization took <b style='color:red'>[benchmark_time]</b> seconds.")
 		if(60 to INFINITY)
 			log_subsystem(SS.name,"<b style='color:red'>Initialization took [benchmark_time] seconds.</b>")
-	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+	CHECK_TICK_HARD
 
 /world/proc/life()
+
+	var/benchmark = true_time()
 
 	world_log("Starting world...")
 
@@ -75,22 +79,7 @@ var/global/time_dialation = 0
 
 	log_subsystem("Subsystem Controller","Created and sorted [length(active_subsystems)] subsystems sorted.")
 
-	var/benchmark = true_time()
-
-	for(var/k in active_subsystems)
-		var/subsystem/SS = k
-		subsystem_initialize(SS)
-		if(!SS.preloop)
-			continue
-		sleep(3)
-		subsystem_life_loop(SS)
-
-	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
-	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
-	log_subsystem("Subsystem Controller",final_time_text)
-	log_debug(final_time_text)
-
-	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+	CHECK_TICK_HARD
 
 	for(var/k in active_subsystems)
 		var/subsystem/SS = k
@@ -102,12 +91,15 @@ var/global/time_dialation = 0
 			active_subsystems -= k
 			log_error("FATAL ERROR: Subsystem [SS.get_debug_name()] was qdeleting!")
 			continue
-		if(SS.preloop)
-			continue
-		sleep(3)
+		subsystem_initialize(SS)
 		subsystem_life_loop(SS)
 
-	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+	var/final_time_text = "All initializations took <b>[DECISECONDS_TO_SECONDS((true_time() - benchmark))]</b> seconds."
+	log_subsystem("Subsystem Controller","[length(active_subsystems)] subsystems initialized.")
+	log_subsystem("Subsystem Controller",final_time_text)
+	log_debug(final_time_text)
+
+	CHECK_TICK_HARD
 
 	world_state = STATE_RUNNING
 

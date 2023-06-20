@@ -114,7 +114,6 @@
 /obj/hud/inventory/Destroy()
 	parent_inventory = null
 	child_inventory = null
-	grabbed_object = null
 	. = ..()
 
 

@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(species)
 				hair_files_to_generate += S.default_icon_hair_face
 			var/file_to_check = "text/species/[s_id].txt"
 			if(fexists(file_to_check))
-				S.desc = file2text(file_to_check)
+				S.desc = rustg_file_read(file_to_check)
 
 	for(var/k in hair_files_to_generate)
 		if(all_hair_files[k])

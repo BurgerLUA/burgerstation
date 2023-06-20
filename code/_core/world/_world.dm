@@ -94,7 +94,7 @@ var/global/world_state = STATE_STARTING
 	return ..()
 
 /world/proc/play_round_end_sound()
-	CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+	CHECK_TICK_HARD
 	var/chosen_sound = pick(SSsound.round_end_sounds)
 	play_sound_global(chosen_sound,all_mobs_with_clients)
 	sleep(30)
@@ -166,7 +166,7 @@ var/global/world_state = STATE_STARTING
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
 		sleep(1)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 /world/proc/end(var/reason,var/shutdown=FALSE)
 

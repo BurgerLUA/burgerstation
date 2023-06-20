@@ -46,10 +46,6 @@
 
 /light_source/PreDestroy()
 	remove_lum()
-	. = ..()
-
-/light_source/Destroy()
-
 	SSlighting.light_queue -= src
 	SSlighting.total_lighting_sources--
 
@@ -58,6 +54,9 @@
 
 	if(top_atom)
 		LAZYREMOVE(top_atom.light_sources, src)
+	. = ..()
+
+/light_source/Destroy()
 
 	top_atom = null
 	source_atom = null
@@ -393,7 +392,7 @@
 
 	FOR_DVIEW(T, actual_range, source_turf, 0)
 
-		CHECK_TICK_SAFE(75,FPS_SERVER*10)
+		CHECK_TICK(75,FPS_SERVER*10)
 
 		if (light_angle && !facing_opaque)	// Directional lighting coordinate filter.
 			test_x = T.x - test_x_offset
@@ -433,21 +432,21 @@
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
 	for(thing in L)
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*10)
 		T = thing
 		LAZYADD(T.affecting_lights, src)
 
 	L = affecting_turfs - turfs // Now-gone turfs, remove us from the affecting lights.
 	affecting_turfs -= L
 	for (thing in L)
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*10)
 		T = thing
 		LAZYREMOVE(T.affecting_lights, src)
 
 	LAZYINITLIST(effect_str)
 	if (needs_update == LIGHTING_VIS_UPDATE)
 		for (thing in corners - effect_str)
-			CHECK_TICK_SAFE(50,FPS_SERVER*10)
+			CHECK_TICK(50,FPS_SERVER*10)
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
@@ -458,7 +457,7 @@
 	else
 		L = corners - effect_str
 		for (thing in L)
-			CHECK_TICK_SAFE(50,FPS_SERVER*10)
+			CHECK_TICK(50,FPS_SERVER*10)
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
@@ -468,7 +467,7 @@
 			APPLY_CORNER_BY_HEIGHT(now)
 
 		for (thing in corners - L)
-			CHECK_TICK_SAFE(50,FPS_SERVER*10)
+			CHECK_TICK(50,FPS_SERVER*10)
 			C = thing
 			if (!C.active)
 				effect_str[C] = 0
@@ -478,7 +477,7 @@
 
 	L = effect_str - corners
 	for (thing in L)
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*10)
 		C = thing
 		REMOVE_CORNER(C, now)
 		LAZYREMOVE(C.affecting, src)

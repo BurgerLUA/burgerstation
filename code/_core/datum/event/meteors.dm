@@ -48,7 +48,7 @@
 			var/turf/meteor_turf = locate(T.x + rand(-VIEW_RANGE*2,VIEW_RANGE*2),T.y+rand(-VIEW_RANGE*2,VIEW_RANGE*2),T.z)
 			if(meteor_turf)
 				new /obj/effect/falling_meteor(meteor_turf)
-				CHECK_TICK_SAFE(50,FPS_SERVER*10)
+				CHECK_TICK(50,FPS_SERVER*10)
 
 	. = ..()
 

@@ -390,7 +390,7 @@
 	var/reagent_recipe/found_recipe = null
 	for(var/k in recipes_to_check)
 
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 
 		var/reagent_recipe/recipe = k
 
@@ -402,7 +402,7 @@
 		var/good_recipe = TRUE
 
 		for(var/reagent_type in recipe.required_reagents)
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+			CHECK_TICK(50,FPS_SERVER)
 			if(recipe.required_container && !istype(owner,recipe.required_container))
 				if(debug) log_debug("Recipe [recipe.name] invalid because of wrong container type.")
 				good_recipe = FALSE
@@ -477,7 +477,7 @@
 	if(found_recipe.result && owner && !istype(owner,found_recipe.result))
 		update_container(caller,FALSE)
 		while(volume_current > 0)
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 			var/obj/item/A = new found_recipe.result(get_turf(owner))
 			INITIALIZE(A)
 			FINALIZE(A)

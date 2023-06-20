@@ -13,7 +13,7 @@
 		var/turf/T2 = locate(shuttle.x + local_x,shuttle.y + local_y,shuttle.z)
 		if(T2)
 			new/obj/effect/temp/shuttle_landing(T2)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 
 	return TRUE
 

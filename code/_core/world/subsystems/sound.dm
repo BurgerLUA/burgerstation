@@ -14,8 +14,6 @@ SUBSYSTEM_DEF(sound)
 
 	var/list/sound_cache = list()
 
-	preloop = TRUE
-
 /subsystem/sound/unclog(var/mob/caller)
 	for(var/k in active_sounds)
 		var/sound/S = k
@@ -54,13 +52,13 @@ SUBSYSTEM_DEF(sound)
 		if(!process_sound(S))
 			log_error("Warning! Could not properly process an active sound!")
 			active_sounds -= F
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 
 /proc/stop_sound(var/sound_path,var/list/mob/hearers)
 	for(var/F in SSsound.active_sounds)
-		CHECK_TICK_SAFE(SSsound.tick_usage_max,FPS_SERVER)
+		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER)
 		var/sound/S = F
 		if(S.file != sound_path)
 			continue
@@ -109,7 +107,7 @@ proc/play_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=50,var/p
 
 	for(var/k in hearers)
 		var/mob/M = k
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*10)
 		if(M.client)
 			if(M.client.current_ambient_sound == sound_path)
 				continue
@@ -135,7 +133,7 @@ proc/play_random_ambient_sound(var/sound_path,var/list/atom/hearers,var/volume=5
 
 	for(var/k in hearers)
 		var/mob/M = k
-		CHECK_TICK_SAFE(50,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*10)
 		if(!M.client)
 			continue
 		created_sound.volume = M.client.settings.loaded_data["volume_ambient"]
@@ -297,7 +295,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 	for(var/k in hearers)
 		var/mob/M = k
 
-		CHECK_TICK_SAFE(SSsound.tick_usage_max,FPS_SERVER*2)
+		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
 
 		if(invisibility_check && M.see_invisible < invisibility_check) continue
 
@@ -376,7 +374,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 	for(var/k in hearers)
 
-		CHECK_TICK_SAFE(SSsound.tick_usage_max,FPS_SERVER*2)
+		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER*2)
 
 		var/mob/M = k
 

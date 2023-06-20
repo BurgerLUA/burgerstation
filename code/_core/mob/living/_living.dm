@@ -297,7 +297,12 @@
 
 	UNPROCESS_LIVING(src)
 
-	if(ai && istype(ai)) ai.set_active(FALSE)
+	if(ai && istype(ai))
+		ai.set_active(FALSE)
+
+	. = ..()
+
+/mob/living/Destroy()
 
 	QDEL_NULL(ai)
 	QDEL_NULL(stand)
@@ -322,10 +327,6 @@
 
 	QDEL_NULL(flash_overlay)
 
-	. = ..()
-
-/mob/living/Destroy()
-
 	buckled_object = null
 
 	if(minion)
@@ -349,10 +350,6 @@
 
 	SSliving.all_living -= src
 
-	if(old_turf && old_turf.old_living)
-		old_turf.old_living -= src
-	old_turf = null
-
 	if(boss)
 		SSbosses.tracked_bosses -= src
 		SSbosses.living_bosses -= src
@@ -366,8 +363,11 @@
 
 	stat_elements_to_update?.Cut()
 
-	return ..()
+	. = ..()
 
+	if(old_turf && old_turf.old_living)
+		old_turf.old_living -= src
+	old_turf = null
 
 /*
 /mob/living/proc/try_rot()

@@ -16,16 +16,29 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	var/list/valid_prefabs = list()
 
+	var/list/linked_prefabs_below = list()
+	var/list/linked_prefabs_above = list()
+
 	var/list/maps_to_load = list(
+		list(
+			"size"=1000,
+			"turf"=/turf/unsimulated/dynamic_rock_gen,
+			"area"=/area/mission/below
+		),
 		"maps/_core/mission.dmm",
 		"maps/_core/bluespace.dmm",
 		"maps/_core/station.dmm"
 	)
 
 	var/list/map_to_parallax = list(
-		"maps/_core/mission.dmm" = 'icons/obj/effects/parallax.dmi',
 		"maps/_core/bluespace.dmm" = 'icons/obj/effects/parallax_bluespace.dmi',
 		"maps/_core/station.dmm" = 'icons/obj/effects/parallax.dmi'
+	)
+
+	var/list/map_to_final_destruction_turf = list(
+		"maps/_core/mission.dmm" = /turf/simulated/openspace,
+		"maps/_core/bluespace.dmm" = /turf/bluespace,
+		"maps/_core/station.dmm" =  null
 	)
 
 	var/pvp_y
@@ -43,13 +56,50 @@ SUBSYSTEM_DEF(dmm_suite)
 	//Load all the maps.
 	var/maps_loaded = 0
 	for(var/i=1,i<=length(maps_to_load),i++)
+		var/benchmark = true_time()
 		var/k = maps_to_load[i]
-		var/map_file = rustg_file_read(k)
-		dmm_suite.read_map(map_file,1,1,i,tag="[k]")
-		z_level_to_file += k
-		file_to_z_level["[k]"] = i
-		maps_loaded++
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		if(islist(k))
+			if(!k["size"])
+				log_error("WARNING: MISSING SIZE VARIABLE FOR MAP [i]!")
+				continue
+			if(!k["turf"])
+				log_error("WARNING: MISSING TURF VARIABLE FOR MAP [i]!")
+				continue
+			if(!k["area"])
+				log_error("WARNING: MISSING AREA VARIABLE FOR MAP [i]!")
+				continue
+			if(world.maxx < k["size"])
+				world.maxx = k["size"]
+				log_debug("X level increased to [world.maxx].")
+			if(world.maxy < k["size"])
+				world.maxy = k["size"]
+				log_debug("Y level increased to [world.maxy].")
+			var/list/block_turfs = block(locate(1,1,i),locate(k["size"],k["size"],i))
+			for(var/j in block_turfs)
+				var/turf/T = j
+				var/area/NA = k["area"]
+				if(T.x == 1 || T.y == k["size"] || T.y == 1 || T.y == k["size"])
+					var/turf/NT = /turf/simulated/wall/rock/indestructable
+					new NT(T)
+					new NA(T)
+				else
+					var/turf/NT = k["turf"]
+					new NT(T)
+					new NA(T)
+			z_level_to_file += "\ref[k]"
+			file_to_z_level["\ref[k]"] = i
+			maps_loaded++
+			benchmark = true_time() - benchmark
+			log_subsystem(src.name,"Loading generated z-level with [length(block_turfs)] turfs took [DECISECONDS_TO_SECONDS(benchmark)] seconds.")
+		else
+			var/map_file = rustg_file_read(k)
+			dmm_suite.read_map(map_file,1,1,i,tag="[k]")
+			z_level_to_file += k
+			file_to_z_level["[k]"] = i
+			maps_loaded++
+			benchmark = true_time() - benchmark
+			log_subsystem(src.name,"Loading [k] took [DECISECONDS_TO_SECONDS(benchmark)] seconds.")
+			CHECK_TICK_HARD
 
 	log_subsystem(src.name,"Loaded [maps_loaded] z-levels.")
 
@@ -59,9 +109,16 @@ SUBSYSTEM_DEF(dmm_suite)
 		for(var/file in flist("[PREFABS_DIR][category]/"))
 			if(!has_suffix(file,".dmm"))
 				continue
-			if(!valid_prefabs[category])
-				valid_prefabs[category] = list()
-			valid_prefabs[category] += "[PREFABS_DIR][category]/[file]"
+			if(has_suffix(file,"_below.dmm"))
+				var/linked_file = replacetextEx(file,"_below.dmm",".dmm")
+				linked_prefabs_below["[PREFABS_DIR][category]/[linked_file]"] = "[PREFABS_DIR][category]/[file]"
+			else if(has_suffix(file,"_above.dmm"))
+				var/linked_file = replacetextEx(file,"_above.dmm",".dmm")
+				linked_prefabs_above["[PREFABS_DIR][category]/[linked_file]"] = "[PREFABS_DIR][category]/[file]"
+			else
+				if(!valid_prefabs[category])
+					valid_prefabs[category] = list()
+				valid_prefabs[category] += "[PREFABS_DIR][category]/[file]"
 
 	log_subsystem(name,"Found [length(valid_prefabs)] valid prefab sets.")
 	var/loaded_prefabs = 0
@@ -90,9 +147,9 @@ SUBSYSTEM_DEF(dmm_suite)
 				not_enough[M.category] += 1
 			continue
 
-		var/chosen_file = pick(local_prefabs)
-		if(M.unique) valid_prefabs[M.category] -= chosen_file
-		var/map_contents = file2text(chosen_file)
+		M.chosen_file = pick(local_prefabs)
+		if(M.unique) valid_prefabs[M.category] -= M.chosen_file
+		var/map_contents = rustg_file_read(M.chosen_file)
 		var/desired_angle = 0
 		switch(M.dir)
 			if(SOUTH)
@@ -108,11 +165,35 @@ SUBSYSTEM_DEF(dmm_suite)
 			M.x + M.offset_x,
 			M.y + M.offset_y,
 			M.z,
-			tag="[chosen_file]",
+			tag="[M.chosen_file]",
 			angleOffset = SIMPLIFY_DEGREES(desired_angle)
 		)
+		if(linked_prefabs_below[M.chosen_file])
+			M.chosen_file_below = linked_prefabs_below[M.chosen_file]
+			var/chosen_map_contents = rustg_file_read(M.chosen_file_below)
+			dmm_suite.read_map(
+				chosen_map_contents,
+				M.x + M.offset_x,
+				M.y + M.offset_y,
+				M.z-1,
+				tag="[M.chosen_file_below]",
+				angleOffset = SIMPLIFY_DEGREES(desired_angle)
+			)
+		if(linked_prefabs_above[M.chosen_file])
+			M.chosen_file_above = linked_prefabs_above[M.chosen_file]
+			var/chosen_map_contents = rustg_file_read(M.chosen_file_above)
+			dmm_suite.read_map(
+				chosen_map_contents,
+				M.x + M.offset_x,
+				M.y + M.offset_y,
+				M.z+1,
+				tag="[M.chosen_file_above]",
+				angleOffset = SIMPLIFY_DEGREES(desired_angle)
+			)
 		loaded_prefabs++
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+
+
+		CHECK_TICK_HARD
 
 	if(length(not_enough))
 		log_error("Warning: Not enough prefabs to satisfy all prefab markers.")
@@ -133,7 +214,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		if(z)
 			//First pass, checking prefabs it can slice.
 			for(var/x=2,x<=499,x++)
-				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+				CHECK_TICK_HARD
 				var/y = pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2)
 				y = FLOOR(y,1)
 				var/turf/T = locate(x,y,z)
@@ -145,7 +226,7 @@ SUBSYSTEM_DEF(dmm_suite)
 
 			for(var/y=2,y<=499,y++)
 				for(var/x=2,x<=499,x++)
-					CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+					CHECK_TICK_HARD
 					if(y < pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) - 3) //Bottom line
 						continue
 					if(y > pvp_y - (x * 0.05 + sin(x*3))**(pvp_coef*2) + 3) //Top line
@@ -160,13 +241,13 @@ SUBSYSTEM_DEF(dmm_suite)
 					new /turf/simulated/floor/chasm(T)
 					new /area(T)
 
-			var/bridge_prefab = file2text("maps/prefabs/pvp_bridge/bridge.dmm")
+			var/bridge_prefab = rustg_file_read("maps/prefabs/pvp_bridge/bridge.dmm")
 
 			var/desired_bridges = 3
 			var/marker_attempts_left = 30
 
 			while(marker_attempts_left > 0 && desired_bridges > 0)
-				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+				CHECK_TICK_HARD
 				marker_attempts_left--
 				var/marker_x = rand(50,450)
 				var/marker_y = pvp_y - (marker_x * 0.05 + sin(marker_x*3))**(pvp_coef*2)

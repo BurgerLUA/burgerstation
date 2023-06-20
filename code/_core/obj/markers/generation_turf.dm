@@ -29,10 +29,10 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 	var/list/turf_blacklist = list(current_turf=TRUE,null=TRUE)
 
 	while(length(turfs_to_check) && checks_allowed > 0)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 		checks_allowed--
 		for(var/k in turfs_to_check)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 			turfs_to_check -= k
 			var/turf/simulated/T = k
 			var/turf/DT = T.destruction_turf
@@ -42,7 +42,7 @@ var/global/list/obj/marker/smart_clear_turf/smart_clear_turfs = list()
 			else if(current_turf != T)
 				continue
 			for(var/d in DIRECTIONS_CARDINAL)
-				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+				CHECK_TICK_HARD
 				var/turf/simulated/T2 = get_step(T,d)
 				if(turf_blacklist[T2])
 					continue

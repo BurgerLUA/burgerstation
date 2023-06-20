@@ -21,7 +21,6 @@ SUBSYSTEM_DEF(smoothing)
 		return TRUE
 	log_subsystem(src.name,"Processing [length(queued_smoothing_turfs)] turf edges...")
 	log_subsystem(src.name,"Processing [length(queued_smoothing_objs)] obj edges...")
-	on_life()
 	return TRUE
 
 /subsystem/smoothing/on_life()
@@ -36,7 +35,7 @@ SUBSYSTEM_DEF(smoothing)
 			continue
 		S.queued_smoothing = FALSE
 		S.update_smooth_code()
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	for(var/k in queued_smoothing_turfs)
 		var/turf/simulated/S = k
@@ -45,7 +44,7 @@ SUBSYSTEM_DEF(smoothing)
 			continue
 		S.queued_smoothing = FALSE
 		S.update_smooth_code()
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 
 	return TRUE
@@ -58,14 +57,14 @@ SUBSYSTEM_DEF(smoothing)
 		valid_directions |= 0x0
 
 	for(var/direction in valid_directions)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 		var/turf/simulated/T2 = direction == 0x0 ? T : get_step(T,direction)
 		if(!T2 || !is_simulated(T2))
 			continue
 		if(T2.corner_icons)
 			queue_smoothing_turf(T2)
 		for(var/obj/structure/O in T2.contents)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 			if(O.corner_icons)
 				queue_smoothing_obj(O)
 

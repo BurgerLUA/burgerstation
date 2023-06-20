@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(progressbars)
 			log_error("Warning! A progress bar belonging to [A.get_debug_name()] didn't run properly, and thus was deleted.")
 			qdel(P)
 			all_progress_bars -= A
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	for(var/k in progress_bars_to_delete)
 		var/obj/hud/progress_bar/PB = k
@@ -83,7 +83,7 @@ SUBSYSTEM_DEF(progressbars)
 		if(time <= world.time)
 			qdel(PB)
 			progress_bars_to_delete -= k
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

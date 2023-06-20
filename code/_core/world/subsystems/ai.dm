@@ -75,6 +75,6 @@ SUBSYSTEM_DEF(ai)
 				if(AI.owner)
 					qdel(AI.owner)
 				continue
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE

@@ -26,7 +26,7 @@
 		INTERACT_DELAY(10)
 		var/broom_limit = 10
 		for(var/obj/item/I in oview(T,broom_range))
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+			CHECK_TICK(50,FPS_SERVER)
 			broom_limit--
 			if(I.anchored)
 				continue

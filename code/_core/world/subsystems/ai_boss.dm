@@ -51,6 +51,6 @@ SUBSYSTEM_DEF(bossai)
 				log_error("WARNING: AI of type [AI.type] in [AI.owner.get_debug_name()] likely hit a runtime and was deleted, along with its owner.")
 				qdel(AI.owner)
 				continue
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE

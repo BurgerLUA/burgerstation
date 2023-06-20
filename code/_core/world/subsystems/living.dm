@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(living)
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Initialized [length(all_living)] living beings.")
 
@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(living)
 			L.on_life()
 		if(do_slow)
 			L.on_life_slow()
-		CHECK_TICK_SAFE(tick_usage_max,DECISECONDS_TO_TICKS(1))
+		CHECK_TICK(tick_usage_max,DECISECONDS_TO_TICKS(1))
 
 	if(do_slow)
 		slow_ticks = 0

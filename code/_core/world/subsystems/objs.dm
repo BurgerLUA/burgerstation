@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_late += O
 		else if(O.initialize_type == INITIALIZE_SUPERLATE)
 			initialize_superlate += O
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_early)
 		var/obj/O = k
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_early -= k
 			continue
 		INITIALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_early)
 		var/obj/O = k
@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_early -= k
 			continue
 		GENERATE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_early)
 		var/obj/O = k
@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_early -= k
 			continue
 		FINALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_normal -= k
 			continue
 		INITIALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_normal -= k
 			continue
 		GENERATE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_normal)
 		var/obj/O = k
@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_normal -= k
 			continue
 		FINALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_late)
 		var/obj/O = k
@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_late -= k
 			continue
 		INITIALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_late)
 		var/obj/O = k
@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_late -= k
 			continue
 		GENERATE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	for(var/k in initialize_late)
 		var/obj/O = k
@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(obj)
 			initialize_late -= k
 			continue
 		FINALIZE(O)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	initialize_early.Cut()
 	initialize_normal.Cut()
@@ -125,21 +125,21 @@ SUBSYSTEM_DEF(obj)
 			initialize_superlate -= k
 			continue
 		INITIALIZE(O)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		if(!O || O.qdeleting)
 			initialize_superlate -= k
 			continue
 		GENERATE(O)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 	for(var/k in initialize_superlate)
 		var/obj/O = k
 		if(!O || O.qdeleting)
 			initialize_superlate -= k
 			continue
 		FINALIZE(O)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	initialize_superlate.Cut()
 

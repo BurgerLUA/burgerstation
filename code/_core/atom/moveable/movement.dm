@@ -251,7 +251,7 @@
 		//Try: Uncross the Contents
 		if(OldLoc && (!old_loc_as_turf || old_loc_as_turf.has_dense_atom))
 			for(var/k in OldLoc.contents)
-				CHECK_TICK_SAFE(100,FPS_SERVER)
+				CHECK_TICK(100,FPS_SERVER)
 				var/atom/movable/M = k
 				if(M == src)
 					continue
@@ -261,7 +261,7 @@
 		//Try: Cross the Contents
 		if((!new_loc_as_turf || new_loc_as_turf.has_dense_atom))
 			for(var/k in NewLoc.contents)
-				CHECK_TICK_SAFE(100,FPS_SERVER)
+				CHECK_TICK(100,FPS_SERVER)
 				var/atom/movable/M = k
 				if(M == src)
 					continue
@@ -284,7 +284,7 @@
 		//Do: Uncrossed the contents
 		if(OldLoc && (!old_loc_as_turf || old_loc_as_turf.has_dense_atom))
 			for(var/k in OldLoc.contents)
-				CHECK_TICK_SAFE(100,FPS_SERVER)
+				CHECK_TICK(100,FPS_SERVER)
 				var/atom/movable/M = k
 				if(M == src)
 					continue
@@ -295,7 +295,7 @@
 		//Do: Crossed the contents
 		if(!new_loc_as_turf || new_loc_as_turf.has_dense_atom)
 			for(var/k in NewLoc.contents)
-				CHECK_TICK_SAFE(100,FPS_SERVER)
+				CHECK_TICK(100,FPS_SERVER)
 				var/atom/movable/M = k
 				if(M == src)
 					continue

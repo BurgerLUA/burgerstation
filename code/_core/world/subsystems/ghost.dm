@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(ghost)
 			all_emfs -= k
 			continue
 		E.on_emf_think()
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	for(var/k in all_emfs)
 		var/obj/emf/E = k
@@ -44,6 +44,6 @@ SUBSYSTEM_DEF(ghost)
 			continue
 		if(E.time_to_delete <= world.time)
 			qdel(E)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE

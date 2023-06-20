@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(reward)
 		stored_rewards[R.type] = R
 
 	if(fexists(REWARD_DIR))
-		var/loaded = file2text(REWARD_DIR)
+		var/loaded = rustg_file_read(REWARD_DIR)
 		var/list/loaded_list = splittext(loaded,"\n")
 		var/current_line = 0
 		for(var/line in loaded_list)

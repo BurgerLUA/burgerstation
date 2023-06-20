@@ -14,6 +14,11 @@
 
 	var/rotational_offset = 0 //For when the prefab gets rotated by dmm_suite.
 
+	var/chosen_file //For debug only.
+	var/chosen_file_above //For debug only.
+	var/chosen_file_below //For debug only.
+
+
 /obj/marker/prefab/on_dmm_suite_rotate(var/angle_offset=0)
 	. = ..()
 	switch(angle_offset)

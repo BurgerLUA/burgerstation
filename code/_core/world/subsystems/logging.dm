@@ -16,8 +16,6 @@ SUBSYSTEM_DEF(logging)
 	var/list/buffered_log_debug = list()
 	var/list/buffered_log_subsystem = list()
 
-	preloop = TRUE
-
 //Logging shouldn't be unclogged.
 /subsystem/logging/unclog(var/mob/caller)
 	. = ..()

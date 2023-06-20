@@ -77,7 +77,7 @@
 			I.force_move(src)
 		. = TRUE
 		eat_limit--
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 	if(.)
 		play_sound('sound/effects/gutlunch_eat.ogg',T)

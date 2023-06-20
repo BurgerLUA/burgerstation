@@ -38,35 +38,37 @@ SUBSYSTEM_DEF(lighting)
 
 /subsystem/lighting/Initialize()
 
+	set background = TRUE
+
 	if(!CONFIG("ENABLE_LIGHTING",TRUE))
 		active_subsystems -= src
 		return TRUE
 
-	log_debug("Initializing lighting... this may take a while...")
+	log_subsystem(name,"Initializing lighting... this may take a while...")
 
-	var/overlay_count = 0
+	for(var/turf/simulated/S in world)
+		if(!S.dynamic_lighting)
+			continue
+		var/area/A = S.loc
+		if(!A.dynamic_lighting)
+			continue
+		new /atom/movable/lighting_overlay(S)
+		CHECK_TICK_HARD
 
-	for(var/zlevel = 1 to world.maxz)
-		overlay_count += CreateLobjForZ(zlevel)
-
-	on_life()
+	var/first = TRUE
+	while(first || (length(light_queue) && length(corner_queue) && length(overlay_queue)))
+		on_life() //Run on_life() until all lights are setup.
+		first = FALSE
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Initialized [processed_lights] lights.")
 	log_subsystem(name,"Initialized [processed_corners] corners.")
 	log_subsystem(name,"Initialized [processed_overlays] overlays.")
 
-	initialized = TRUE
-
 	return TRUE
 
-/subsystem/lighting/proc/CreateLobjForZ(zlevel)
-	. = 0
-	for(var/thing in Z_ALL_TURFS(zlevel))
-		var/turf/T = thing
-		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
-			new /atom/movable/lighting_overlay(T)
-			. += 1
-		CHECK_TICK_HARD(tick_usage_max)
+
+
 
 /subsystem/lighting/on_life()
 
@@ -78,7 +80,6 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: lq_idex is at [lq_idex].")
 
 	while (length(curr_lights) && lq_idex <= length(curr_lights))
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/light_source/L = curr_lights[lq_idex]
 		if(L.needs_update != LIGHTING_NO_UPDATE)
 			total_ss_updates += 1
@@ -86,6 +87,7 @@ SUBSYSTEM_DEF(lighting)
 			L.needs_update = LIGHTING_NO_UPDATE
 			processed_lights++
 		lq_idex++
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	if (lq_idex > 1)
 		if(length(curr_lights))
@@ -96,13 +98,13 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: cq_idex is at [cq_idex].")
 
 	while (length(curr_corners) && cq_idex <= length(curr_corners))
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		var/lighting_corner/C = curr_corners[cq_idex]
 		if(C.needs_update != LIGHTING_NO_UPDATE)
 			C.update_lighting_overlays()
 			C.needs_update = LIGHTING_NO_UPDATE
 			processed_corners++
 		cq_idex++
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	if (cq_idex > 1)
 		if(length(curr_corners))
@@ -113,7 +115,6 @@ SUBSYSTEM_DEF(lighting)
 		log_error("Lighting Error: oq_idex is at [oq_idex].")
 
 	while (length(curr_overlays) && oq_idex <= length(curr_overlays))
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
 		if(oq_idex < 0 || oq_idex > length(curr_overlays))
 			log_error("Lighting Error: List index out of bounds! Data: [length(curr_overlays)], [oq_idex].")
 			break
@@ -123,6 +124,7 @@ SUBSYSTEM_DEF(lighting)
 			O.needs_update = FALSE
 			processed_overlays++
 		oq_idex++
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	if (oq_idex > 1)
 		if(length(curr_overlays))

@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(payday)
 				P.to_chat(span("notice","You were taxed your insurance premium of <b>[charged_amount] credits</b>. Your insurance pool is now <b>[P.insurance] credits</b>."))
 				P.update_premiums()
 		valid_players += P
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	if(length(valid_players))
 		var/bonus_to_give = clamp(stored_payday/length(valid_players),0,5000)
@@ -64,4 +64,4 @@ SUBSYSTEM_DEF(payday)
 			else
 				P.to_chat(span("payday","Hazard Pay! You have earned [base_pay] credits for your efforts."))
 			P.adjust_currency(bonus_to_give + base_pay)
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			CHECK_TICK(tick_usage_max,FPS_SERVER)

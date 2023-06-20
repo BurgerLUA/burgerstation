@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(explosion)
 					explosion_subdata["loyalty_tag"]
 				)
 				explosion_data -= j
-				CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+				CHECK_TICK(tick_usage_max,FPS_SERVER)
 			if(!length(explosion_data))
 				damage_to_process -= k
 		explosion_ticks = 1
@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(explosion)
 			active_explosions -= k
 			continue
 		EP.process()
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	for(var/k in active_fires)
 		var/obj/fire_process/FP = k
@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(explosion)
 			active_fires -= k
 			continue
 		FP.process()
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 
@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(explosion)
 		var/magnitude = (desired_range - get_dist(desired_turf,T))*multiplier
 		if(T.act_emp(desired_owner,desired_source,desired_turf,magnitude,desired_loyalty_tag))
 			new /obj/effect/temp/emp_sparkle(T)
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 
 

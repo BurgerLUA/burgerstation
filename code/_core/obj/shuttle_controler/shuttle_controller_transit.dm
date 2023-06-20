@@ -32,7 +32,7 @@
 
 	for(var/turf/simulated/T in starting_area) //This is needed or else thing will be buggy.
 		valid_turfs += T
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 
 	var/original_src_x = src.x
 	var/original_src_y = src.y
@@ -42,8 +42,8 @@
 		for(var/k in T.contents)
 			var/atom/movable/M = k
 			M.next_move = max(M.next_move,SECONDS_TO_TICKS(4))
-			CHECK_TICK_SAFE(75,FPS_SERVER)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 
 	//First pass. Crush everything and add new turfs.
 	for(var/j in valid_turfs) //Valid turfs are all the turfs in the shuttle area.
@@ -68,14 +68,14 @@
 				O.on_crush()
 				if(!O.qdeleting)
 					log_error("Warning: [O.get_debug_name()] was a crushed attached object, but it's not deleting!")
-				CHECK_TICK_SAFE(75,FPS_SERVER)
+				CHECK_TICK(75,FPS_SERVER)
 
 		for(var/k in T_to_replace.contents) //Crush everything in the destination turf. First pass.
 			var/atom/movable/M = k
 			if(!M.density)
 				continue
 			M.on_crush()
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 		for(var/k in T_to_replace.contents)
 			var/atom/movable/M = k
@@ -85,7 +85,7 @@
 				continue
 			T_to_replace.stored_shuttle_items += M
 			M.force_move(src) //Stored in the shuttle controller, for now.
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 		var/turf/old_turf_type = T_to_replace.type
 		var/area/old_area_type = T_to_replace.loc.type
@@ -127,7 +127,7 @@
 				S.unattach(O)
 				O.force_move(T_to_move_to)
 				S_to_replace.attach(O)
-				CHECK_TICK_SAFE(75,FPS_SERVER)
+				CHECK_TICK(75,FPS_SERVER)
 
 		//Move contents.
 		for(var/k in T.contents)
@@ -139,7 +139,7 @@
 			M.force_move(T_to_replace)
 			if(enable_shuttle_throwing)
 				objects_to_throw += M
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 		//Move stored shuttle items.
 		for(var/k in T.stored_shuttle_items)
@@ -150,7 +150,7 @@
 			else
 				M.force_move(T)
 			T.stored_shuttle_items -= M
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 		areas_to_upate[T.loc] = TRUE
 		T.change_area(T.transit_area) //From shuttle area to old turf that existed under.
@@ -160,7 +160,7 @@
 		if(T.plane == PLANE_SHUTTLE)
 			T.change_turf(T.transit_turf) //From shuttle turf to old turf that existed under.
 
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 
 	for(var/k in areas_to_upate)
 		var/area/A = k
@@ -176,7 +176,7 @@
 			if(is_living(M) && locate(/obj/structure/interactive/chair) in M.loc.contents)
 				continue
 			M.throw_self(M,vel_x=transit_throw_x*8,vel_y=transit_throw_y*8)
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 	starting_landing_marker.set_reserved(FALSE)
 

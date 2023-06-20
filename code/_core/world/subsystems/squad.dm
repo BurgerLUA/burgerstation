@@ -50,6 +50,6 @@ SUBSYSTEM_DEF(squad)
 			if(!M || M.qdeleting)
 				continue
 			M.update_squad_buttons()
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE

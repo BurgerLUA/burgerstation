@@ -24,13 +24,11 @@
 
 	var/list/mob/living/old_living //List of mobs that used to be on this turf.
 
-	var/world_spawn = FALSE
-
 	var/list/stored_shuttle_items //List of movables
 
 	var/safe_fall = FALSE //Set to true if it's safe to fall on this tile.
 
-	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_LAYER | VIS_INHERIT_ID
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_UNDERLAY
 
 	var/disallow_generation = FALSE
 
@@ -266,7 +264,7 @@
 
 	. = ..()
 
-	if(!density_down)
+	if(!density_down && !(enterer.collision_flags & (FLAG_COLLISION_ETHEREAL | FLAG_COLLISION_FLYING)))
 		var/turf/T = locate(x,y,z-1)
 		if(T && !T.density_up && enterer.Move(T) && !T.safe_fall)
 			enterer.on_fall(src)

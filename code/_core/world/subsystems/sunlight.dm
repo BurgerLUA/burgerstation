@@ -10,6 +10,6 @@ SUBSYSTEM_DEF(sunlight)
 		if(A.sunlight_freq > 0 && A.sunlight_color)
 			for(var/turf/T in A.contents)
 				A.setup_sunlight(T)
-				CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+				CHECK_TICK_HARD
 
 	return ..()

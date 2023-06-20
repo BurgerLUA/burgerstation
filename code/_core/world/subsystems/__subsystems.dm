@@ -25,9 +25,9 @@
 	var/generated = FALSE
 	var/finalized = FALSE
 
-	var/preloop = FALSE
-
 	var/run_failures = 0
+
+	var/bypass_single_life_limit = FALSE
 
 /subsystem/proc/Initialize()
 	if(initialized)

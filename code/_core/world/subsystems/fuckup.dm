@@ -26,16 +26,16 @@ SUBSYSTEM_DEF(fuckup)
 		if(P.client)
 			P.client.to_chat(span("danger","As part of a savefile cleaning initiative, you were forced to save your character. All progress has been saved."))
 		P.force_logout()
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	var/save_dir = "data/users/"
 
 	var/save_files_applied_to = 0
 
 	for(var/ckey in flist(save_dir))
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 		for(var/local_file_dir in flist("[save_dir][ckey]characters/"))
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 			var/full_file_dir = "[save_dir][ckey]characters/[local_file_dir]"
 			var/file_contents = rustg_file_read(full_file_dir)
 			file_contents = json_decode(file_contents)

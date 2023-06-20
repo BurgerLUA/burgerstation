@@ -122,7 +122,7 @@ var/global/list/possible_ritual_spawns = list(
 		HOOK_ADD("post_death","\ref[src]_post_death",P,src,src::remove_player())
 		HOOK_ADD("Destroy","\ref[src]_destroy",P,src,src::remove_player())
 		HOOK_ADD("post_move","\ref[src]_post_move",P,src,src::check_valid_player_position())
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 	if(!length(tracked_players))
 		log_error("Could not start [src.get_debug_name()], no found players!")

@@ -39,7 +39,7 @@
 		talk_range_override = talk_range
 
 	for(var/k in all_listeners)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 		var/atom/A = k
 		if(!A)
 			all_listeners -= k
@@ -99,7 +99,7 @@
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_mobs_with_clients)
 				var/mob/M  = k
-				CHECK_TICK_SAFE(75,FPS_SERVER)
+				CHECK_TICK(75,FPS_SERVER)
 				if(within_range(M,source,YELL_RANGE))
 					M.to_chat(formatted_speech,CHAT_TYPE_LOOC)
 			if(speaker.is_player_controlled()) log_chat("LOOC: [speaker.get_log_name()]: [text_to_say]")
@@ -111,7 +111,7 @@
 					return FALSE
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_clients)
-				CHECK_TICK_SAFE(90,FPS_SERVER)
+				CHECK_TICK(90,FPS_SERVER)
 				var/client/C = all_clients[k]
 				if(!C || !C.mob)
 					continue
@@ -122,7 +122,7 @@
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
 			for(var/k in all_clients)
-				CHECK_TICK_SAFE(75,FPS_SERVER)
+				CHECK_TICK(75,FPS_SERVER)
 				var/client/C = all_clients[k]
 				if(!C.mob)
 					continue
@@ -152,7 +152,7 @@
 	for(var/k in all_mobs_with_clients)
 		var/mob/M = k
 
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 		if(!M.client) //Just in case.
 			continue

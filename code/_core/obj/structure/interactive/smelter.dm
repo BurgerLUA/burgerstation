@@ -63,7 +63,7 @@
 		O.transfer_amount_to(C)
 		if(O.qdeleting)
 			break
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 /obj/structure/interactive/smelter/Crossed(atom/movable/O,atom/OldLoc)
 	if(istype(O,/obj/item/material/ore/))

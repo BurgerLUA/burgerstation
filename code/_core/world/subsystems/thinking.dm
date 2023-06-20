@@ -7,8 +7,6 @@ SUBSYSTEM_DEF(thinking)
 
 	tick_usage_max = 99
 
-	//preloop = TRUE
-
 /subsystem/thinking/unclog(var/mob/caller)
 
 	for(var/k in src.all_thinkers)
@@ -25,6 +23,6 @@ SUBSYSTEM_DEF(thinking)
 			continue
 		if(!A.think())
 			STOP_THINKING(A)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE

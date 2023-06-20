@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(radio)
 				all_telecomms[area_id] -= k
 				continue
 			TC.process_all_data()
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+			CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

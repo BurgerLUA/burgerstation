@@ -150,7 +150,7 @@
 
 	for(var/key in organs_to_use)
 		add_organ(S.spawning_organs_male[key])
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 	if(client)
 		if(B)

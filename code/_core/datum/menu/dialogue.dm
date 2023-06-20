@@ -1,12 +1,12 @@
 /menu/dialogue/
-	file = 'html/dialogue.html'
+	file = "html/dialogue.html"
 	resources = list()
 
 /menu/dialogue/open(var/mob/user)
 	cache_resources(user)
 	winset(user, "map.dialogue","is-visible=true")
 
-	var/file_text = file2text(file)
+	var/file_text = rustg_file_read(file)
 
 	var/list/color_scheme = DEFAULT_COLORS
 

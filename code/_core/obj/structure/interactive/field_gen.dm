@@ -107,7 +107,7 @@
 				continue
 			if(!W.qdeleting)
 				qdel(W)
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+			CHECK_TICK(50,FPS_SERVER)
 
 	//Clear their stuff.
 	FG.linked_field_gens -= "[rd]"

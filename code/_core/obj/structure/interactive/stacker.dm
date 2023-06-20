@@ -48,7 +48,7 @@
 				E.drop_item(src.loc)
 			if(I.qdeleting)
 				break
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 	return TRUE
 

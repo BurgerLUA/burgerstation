@@ -29,19 +29,19 @@ SUBSYSTEM_DEF(bosses)
 				L.players_fighting_boss -= v
 				continue
 			L.remove_player_from_boss(P)
-			CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
+			CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		return FALSE
 
 	if(L.ai)
 		var/ai/AI = L.ai
 		if(AI.objective_attack)
 			for(var/mob/living/advanced/player/P in viewers(L.boss_range,L))
-				CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
+				CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 				L.add_player_to_boss(P)
 
 	for(var/v in L.players_fighting_boss)
 		var/mob/living/advanced/player/P = v
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER*5)
+		CHECK_TICK(tick_usage_max,FPS_SERVER*5)
 		if(get_dist(P,L) >= L.boss_range*2)
 			L.remove_player_from_boss(P)
 
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(bosses)
 			tracked_bosses -= L
 			qdel(L)
 			log_error("WARNING! Boss [L.get_debug_name()] didn't complete tracked_bosses() and thus was deleted.")
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

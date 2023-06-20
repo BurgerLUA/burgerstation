@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(horde)
 
 	for(var/k in all_players)
 		var/mob/living/advanced/player/P = k
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(P.dead || !P.ckey || P.loyalty_tag != "NanoTrasen")
 			continue
 		var/area/A = get_area(P)
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(horde)
 		queued_players -= queued_players[1]
 
 	for(var/ckey in queued_overdue_players)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		queued_overdue_players -= ckey
 		var/client/C = CLIENT(ckey)
 		if(!C || !is_player(C.mob)) //They are likely a ghost now.
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(horde)
 		log_subsystem(src.name,"Sending horde to [P.get_debug_name()]")
 
 	for(var/drill in all_drills)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		var/obj/structure/interactive/mining_drill/D = drill
 		if(all_drills[D] && all_drills[D] > world.time)
 			continue

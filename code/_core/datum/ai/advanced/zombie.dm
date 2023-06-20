@@ -48,7 +48,7 @@
 			next_teleport = world.time + SECONDS_TO_DECISECONDS(6)
 			var/list/turf/possible_turfs = list()
 			for(var/turf/simulated/floor/F in view(VIEW_RANGE,owner))
-				CHECK_TICK_SAFE(50,FPS_SERVER)
+				CHECK_TICK(50,FPS_SERVER)
 				if(F.lightness > 0.25)
 					continue
 				if(!F.can_teleport_to())

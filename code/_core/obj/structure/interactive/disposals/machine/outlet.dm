@@ -62,7 +62,7 @@
 			M.force_move(get_step(src,dir))
 			var/obj/projectile/thrown/P = M.throw_self(src,null,null,null,diff_x*throw_velocity,diff_y*throw_velocity)
 			P.steps_allowed = rand(throw_range_min,throw_range_max)
-			CHECK_TICK_SAFE(50,FPS_SERVER)
+			CHECK_TICK(50,FPS_SERVER)
 
 		qdel(C)
 

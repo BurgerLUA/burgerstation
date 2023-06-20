@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(cargo)
 			continue
 		var/md5_hash = copytext(md5("[P.type]"),1,6)
 		cargo_id_to_type[md5_hash] = P
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	sort_tim(cargo_id_to_type,/proc/cmp_path_dsc,associative=TRUE)
 
@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(cargo)
 			catalog_data += cached_text
 			cached_text = ""
 			item_count = 1
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	if(item_count < 5) //In case you have less than 5 items for some reason.
 		catalog_data += cached_text

@@ -29,7 +29,7 @@
 				AL.open(null,lock,force)
 			else
 				AL.close(null,lock,force)
-			CHECK_TICK_SAFE(75,FPS_SERVER)
+			CHECK_TICK(75,FPS_SERVER)
 
 		if(.)
 			if(open && !exposed_to_space)

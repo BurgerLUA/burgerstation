@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(ball) //Finally. A subsystem dedicated to BALLS.
 	for(var/k in all_balls)
 		var/obj/item/ball/B = k
 		B.ball_think(tick_rate)
-		CHECK_TICK_SAFE(tick_usage_max,FPS_SERVER)
+		CHECK_TICK(tick_usage_max,FPS_SERVER)
 
 	return TRUE
 

@@ -73,6 +73,10 @@
 
 	var/allow_area_expansion = FALSE //Allow this area to be automatically expanded in area generation.
 
+	var/allow_climbing = FALSE
+
+	var/turf/dynamic_rock_gen_turf = /turf/simulated/wall/rock
+
 /area/proc/is_space()
 	return FALSE
 
@@ -203,7 +207,7 @@
 
 /area/proc/smash_all_lights()
 	for(var/obj/structure/interactive/lighting/T in src.contents)
-		CHECK_TICK_SAFE(75,FPS_SERVER)
+		CHECK_TICK(75,FPS_SERVER)
 		if(!T.desired_light_color)
 			continue
 		T.on_destruction()

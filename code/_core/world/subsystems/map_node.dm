@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(map_node)
 			adjacent_map_nodes += length(M.adjacent_map_nodes)
 		else
 			qdel(M)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Initialized [map_nodes] manual map nodes with [adjacent_map_nodes] links.")
 
@@ -30,11 +30,11 @@ SUBSYSTEM_DEF(map_node)
 			continue
 		var/obj/marker/map_node/M = locate() in range(5,T)
 		if(M)
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 			continue
 		M = new(T,TRUE)
 		auto_nodes += M
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	var/auto_map_nodes = 0
 	var/adjacent_auto_map_nodes = 0
@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(map_node)
 			adjacent_auto_map_nodes += length(M.adjacent_map_nodes)
 		else
 			qdel(M)
-		CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+		CHECK_TICK_HARD
 
 	log_subsystem(name,"Initialized [auto_map_nodes] automatic map nodes with [adjacent_auto_map_nodes] links.")
 

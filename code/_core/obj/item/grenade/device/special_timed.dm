@@ -68,7 +68,7 @@
 			continue
 		I.force_move(get_step(I,get_dir(I,T)))
 		limit--
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 
 	if(sucked)
 		play_sound('sound/effects/portal_suck.ogg',T)

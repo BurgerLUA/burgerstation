@@ -6,7 +6,7 @@ var/global/list/qdel_refs_to_type = list()
 	}																																				\
 	else if (object.qdeleting) {																													\
 		if (!object.qdel_warning) {																													\
-			var/warning_message = "[object.get_debug_name()] was queued for delete more than once! in [__FILE__]:[__LINE__]";						\
+			var/warning_message = "[object.get_debug_name()] was queued for delete more than once! in [__FILE__]:[__LINE__], Original: [object.qdeleting].";						\
 			log_error(warning_message);																												\
 			rustg_log_write(GARBAGE_LOGS_PATH,warning_message,"true");																				\
 		}																																			\
@@ -14,7 +14,7 @@ var/global/list/qdel_refs_to_type = list()
 	}																																				\
 	else {																																			\
 		var/datum/_qdel_stored_object = object;																										\
-		_qdel_stored_object.qdeleting = TRUE;																										\
+		_qdel_stored_object.qdeleting = "[__FILE__]:[__LINE__]";																										\
 		HOOK_CALL_ADV("Destroy",_qdel_stored_object,null);																							\
 		qdel_refs_to_type["\ref[_qdel_stored_object]"] = _qdel_stored_object.type;																	\
 		if(!_qdel_stored_object.PreDestroy()) {																										\

@@ -193,7 +193,7 @@ var/global/list/destroy_everything_whitelist = list(
 			else
 				error_tiles++
 
-			CHECK_TICK_HARD(DESIRED_TICK_LIMIT)
+			CHECK_TICK_HARD
 
 	to_chat("Found [found_tiles] tiles, with [error_tiles] errored tiles.")
 	to_chat("Icon: [new/image(I)].")
@@ -339,7 +339,7 @@ var/global/list/destroy_everything_whitelist = list(
 	var/list/spawned_mobs = list()
 
 	for(var/i=1,i<=50,i++)
-		CHECK_TICK_SAFE(50,FPS_SERVER)
+		CHECK_TICK(50,FPS_SERVER)
 		var/mob/living/advanced/npc/nanotrasen/ST = new(pick(valid_turfs))
 		INITIALIZE(ST)
 		GENERATE(ST)
@@ -742,20 +742,24 @@ var/global/list/profiling_ckeys = list()
 
 
 /proc/start_profiling()
+	log_debug("Profling started.")
 	world.Profile(PROFILE_RESTART)
-	CALLBACK_GLOBAL("end_profling",SECONDS_TO_DECISECONDS(30),.proc/end_profling)
+	CALLBACK_GLOBAL("end_profling",SECONDS_TO_DECISECONDS(10),.proc/end_profling)
 
 /proc/end_profling()
 
-	var/found_output = world.Profile(PROFILE_STOP,format="json")
+	var/found_output = world.Profile(PROFILE_STOP,"json")
 
 	for(var/ckey in profiling_ckeys)
 		var/client/C = CLIENT(ckey)
 		if(!C)
 			continue
-		C << browse(found_output)
+		C << browse(found_output,"window=Profiling;display=1;size=400x800;border=0;can_close=1;can_resize=1;can_minimize=1;titlebar=1")
+		C.to_chat(span("notice","Profiling data sent."))
 
 	profiling_ckeys.Cut()
+
+	log_debug("Profling ended.")
 
 /client/verb/profile_server()
 	set name = "Profile Server"
@@ -769,3 +773,4 @@ var/global/list/profiling_ckeys = list()
 
 	start_profiling()
 
+	to_chat(span("notice","Profiling started. You will be sent profiling data in 10 seconds."))

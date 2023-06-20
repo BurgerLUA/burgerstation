@@ -70,12 +70,12 @@
 	var/abstract = FALSE
 
 /atom/movable/PreDestroy()
-	QDEL_NULL(light_sprite)
 	if(enable_chunk_handling && SSchunk.initialized)
 		var/turf/T = is_turf(loc) ? loc : null
 		if(T)
 			var/chunk/C = CHUNK(T)
 			src.on_chunk_cross(C,null)
+	QDEL_NULL(light_sprite)
 	. = ..()
 
 /atom/movable/Destroy()

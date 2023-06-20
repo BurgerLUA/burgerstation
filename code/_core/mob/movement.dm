@@ -116,11 +116,15 @@
 			else
 				var/parallax_file = SSdmm_suite.map_to_parallax[map_file]
 				if(!parallax_file)
-					log_error("Error: Could not find valid parallax file for map file [map_file]!")
+					for(var/k in src.parallax)
+						var/obj/parallax/P = src.parallax[k]
+						P.alpha = 0
+						//P.screen_loc = "CENTER,CENTER"
 				else
 					for(var/k in src.parallax)
 						var/obj/parallax/P = src.parallax[k]
 						P.icon = parallax_file
+						P.alpha = initial(P.alpha)
 						var/desired_x = FLOOR(-(src.x - (WORLD_SIZE*0.5)) * P.ratio,1)
 						var/desired_y = FLOOR(-(src.y - (WORLD_SIZE*0.5)) * P.ratio,1)
 						P.screen_loc = "CENTER-7:[desired_x],CENTER-7:[desired_y]"
