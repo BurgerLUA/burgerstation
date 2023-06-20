@@ -155,6 +155,8 @@
 		if(!T)
 			QDEL_NULL(health)
 			return FALSE
+		if(T.density || !is_simulated(T)) //Don't break yet!
+			return TRUE
 
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0

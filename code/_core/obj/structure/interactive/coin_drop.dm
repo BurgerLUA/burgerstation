@@ -162,7 +162,7 @@
 
 /proc/create_gold_drop(var/turf/T,var/amount=5,var/list/valid_ckeys)
 
-	amount = min(amount,GOLD_AMOUNT_MAX) //Enforce a limit, just in case.
+	amount = min(amount,GOLD_DROP_AMOUNT_MAX) //Enforce a limit, just in case.
 
 	if(!length(valid_ckeys))
 		valid_ckeys = list()
@@ -191,7 +191,16 @@
 		var/obj/structure/interactive/coin_drop/G = new(pick(valid_turfs))
 		G.pixel_x = rand(-4,4)
 		G.pixel_y = rand(-4,4)
-		G.amount = min(amount,rand(1,5))
+		G.amount = min(
+			amount,
+			rand(
+				min(
+					CEILING( (amount/GOLD_DROP_AMOUNT_MAX) * 2,1),
+					5
+				),
+				5
+			)
+		)
 		amount -= G.amount
 		G.valid_ckeys = valid_ckeys.Copy()
 		INITIALIZE(G)

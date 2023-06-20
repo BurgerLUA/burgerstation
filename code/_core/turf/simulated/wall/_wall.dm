@@ -50,7 +50,7 @@
 	if(L.loc != actual_turf)
 		return FALSE
 
-	if(actual_turf.density_up)
+	if(actual_turf.density_up) //Our turf.
 		L.to_chat(span("warning","You can't climb above, \the [actual_turf.name] is in the way!"))
 		return FALSE
 	var/area/A = actual_turf.loc
