@@ -16,6 +16,10 @@
 
 /obj/item/tempering/quality/can_temper(var/mob/caller,var/obj/item/I)
 
+	if(I.quality <= -1)
+		caller.to_chat(span("warning","\The [I.name] cannot be improved!"))
+		return FALSE
+
 	if(I.quality >= maximum)
 		caller.to_chat(span("warning","\The [I.name] cannot be improved any further!"))
 		return FALSE

@@ -4,7 +4,6 @@
 
 	var/wield_only = FALSE //Set to true if you can only attack with this while wielded.
 
-
 	var/open = FALSE //Mainly used for ranged weapons, can be used for melee I guess
 	var/open_icon = TRUE //Does the weapon have an icon for it being open?
 
@@ -40,6 +39,8 @@
 	thrown_bounce_modifier = 0.25
 
 	var/upgrade_count = 0 //The amount of times this weapon has been upgraded. Maximum 6 times.
+
+	quality = 100
 
 /obj/item/weapon/Finalize()
 	. = ..()

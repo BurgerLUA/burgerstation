@@ -21,7 +21,7 @@
 
 	size = SIZE_0
 	var/weight = 0 //DEPRICATED
-	var/quality = 100
+	var/quality = -1 //-1 means quality isn't used.
 	var/rarity = RARITY_COMMON //Arbitrary Value
 	var/tier = -1 //-1 means not set.
 	var/tier_type
@@ -215,27 +215,6 @@
 
 	. = ..()
 
-var/global/list/rarity_to_prob = list(
-	RARITY_COMMON = 80,
-	RARITY_UNCOMMON = 20,
-	RARITY_RARE = 4,
-	RARITY_MYTHICAL = 1
-)
-
-var/global/list/rarity_to_mul = list(
-	RARITY_COMMON = 1,
-	RARITY_UNCOMMON = 2,
-	RARITY_RARE = 3,
-	RARITY_MYTHICAL = 4
-)
-
-/*
-/obj/item/proc/generate_rarity() //Only called when loot is spawned. Not in shops or other means.
-	if(rarity == RARITY_COMMON) rarity = pickweight(rarity_to_prob)
-	if(uses_until_condition_fall > 0) quality += (rarity_to_mul[rarity]-1)*10
-	return TRUE
-*/
-
 /obj/item/proc/use_condition(var/amount_to_use=1)
 
 	if(!uses_until_condition_fall)
@@ -270,10 +249,14 @@ var/global/list/rarity_to_mul = list(
 		layer = initial(layer) + clamp(value / 10000,0,0.999)
 
 /obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
+	if(quality == -1)
+		return 0
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
 /obj/item/get_base_value()
-	return initial(value) * amount * price_multiplier * (0.5 + 0.5*clamp(quality/100,0.25,1.5))
+	. = initial(value) * amount * price_multiplier
+	if(quality != -1)
+		. *= (0.5 + 0.5*clamp(quality/100,0.25,1.5))
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)
@@ -472,16 +455,17 @@ var/global/list/rarity_to_mul = list(
 	if(contraband)
 		. += div("bad bold center","CONTRABAND")
 
-	if(quality <= 0)
-		. += div("rarity bad","<b>Quality</b>: BROKEN")
-	else if(quality >= 200)
-		. += div("rarity legendary","<b>Quality</b>: [FLOOR(quality,1)]%")
-	else if(quality > 100)
-		. += div("rarity good","<b>Quality</b>: [FLOOR(quality,1)]%")
-	else if(quality <= 60)
-		. += div("rarity bad","<b>Quality</b>: [FLOOR(quality,1)]%")
-	else
-		. += div("rarity common","<b>Quality</b>: [FLOOR(quality,1)]%")
+	if(quality != -1)
+		if(quality <= 0)
+			. += div("rarity bad","<b>Quality</b>: BROKEN")
+		else if(quality >= 200)
+			. += div("rarity legendary","<b>Quality</b>: [FLOOR(quality,1)]%")
+		else if(quality > 100)
+			. += div("rarity good","<b>Quality</b>: [FLOOR(quality,1)]%")
+		else if(quality <= 60)
+			. += div("rarity bad","<b>Quality</b>: [FLOOR(quality,1)]%")
+		else
+			. += div("rarity common","<b>Quality</b>: [FLOOR(quality,1)]%")
 
 	if(luck < 50)
 		. += div("rarity bad","<b>Luck</b>: -[50 - luck]")
@@ -758,7 +742,7 @@ var/global/list/rarity_to_mul = list(
 	return TRUE
 
 /obj/item/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
-	if(quality <= 0)
+	if(quality != -1 && quality <= 0)
 		if(ismob(attacker))
 			var/mob/M = attacker
 			M.to_chat(span("danger","\The [src.name] is broken!"))
@@ -838,21 +822,25 @@ var/global/list/rarity_to_mul = list(
 
 
 /obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2,var/threshold=60)
-	var/quality_mod_to_use
-	if(quality < 100)
-		quality_mod_to_use = min(1,quality/threshold) //Start failing only below the threshold.
-	else
-		quality_mod_to_use = quality/100
-	quality_mod_to_use = FLOOR(quality_mod_to_use,0.01)
+	var/quality_mod_to_use = 1
+	if(quality != -1)
+		if(quality < 100)
+			quality_mod_to_use = min(1,quality/threshold) //Start failing only below the threshold.
+		else
+			quality_mod_to_use = quality/100
+		quality_mod_to_use = FLOOR(quality_mod_to_use,0.01)
 	return min(minimum + quality_mod_to_use*(1-minimum),maximum)
 
 /obj/item/proc/adjust_quality(var/quality_to_add=0)
 
+	if(quality == -1)
+		return FALSE
+
+	if(quality >= 200) //Cannot add or remove quality.
+		return TRUE
+
 	var/original_quality = quality
 	var/original_damage_num = get_damage_icon_number()
-
-	if (quality >= 200)
-		return TRUE
 
 	quality = FLOOR(quality + quality_to_add,0.01)
 

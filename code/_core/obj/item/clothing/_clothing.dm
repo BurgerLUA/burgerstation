@@ -42,6 +42,8 @@
 	var/list/mob_values_add
 	var/list/mob_values_mul
 
+	quality = 100
+
 
 /obj/item/clothing/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()

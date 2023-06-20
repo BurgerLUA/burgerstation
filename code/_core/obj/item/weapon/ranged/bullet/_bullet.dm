@@ -165,8 +165,6 @@ obj/item/weapon/ranged/bullet/handle_empty(var/mob/caller)
 
 	var/obj/item/bullet_cartridge/B = chambered_bullet
 	var/jam_chance = B.jam_chance
-	if(quality <= 60)
-		jam_chance += 10
 	if(B.bullet_length != bullet_length_best)
 		jam_chance += 10
 	if(B.bullet_diameter != bullet_diameter_best)

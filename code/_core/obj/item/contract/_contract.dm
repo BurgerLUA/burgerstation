@@ -38,8 +38,8 @@
 		log_error("Warning: Tried generating [src.get_debug_name()], but it had a null reward!")
 		reward = /obj/item/coin/adamantium
 	reward = new reward(src)
-	if(!istype(reward,/obj/item/currency))
-		reward.quality = 200
+	if(reward.quality != -1)
+		reward.quality = rand(100,200)
 	INITIALIZE(reward)
 	GENERATE(reward)
 	FINALIZE(reward)

@@ -23,6 +23,8 @@
 
 	size = SIZE_3
 
+	quality = 100
+
 /obj/item/doctor_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
 
 

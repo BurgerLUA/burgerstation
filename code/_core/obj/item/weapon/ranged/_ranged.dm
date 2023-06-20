@@ -5,9 +5,6 @@
 
 	var/damage_mod = 1 //Inherit damage multiplier for the gun. Should be increased if the gun has a longer barrel length.
 
-	var/manufacturing_quality = 1 //The general quality of the weapon. Higher values mean that the weapon is more accurate and handles heat/recoil/whatever better.
-	//NanoTrasen quality should be 1.
-
 	var/automatic = FALSE
 	var/max_bursts = 0 //Inherint maximum amount of bursts.
 	var/current_maxmium_bursts = 0 //Read only. Controlled by firemode changing.

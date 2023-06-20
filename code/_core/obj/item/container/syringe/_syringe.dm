@@ -27,6 +27,8 @@
 	var/stealthy = FALSE //Set to true if the injection doesn't alert the victim, other than the "tiny prick".
 	var/quality_reduction_on_use = 15 //How much quality (out of 100) to take away per use.
 
+	quality = 100
+
 /obj/item/container/syringe/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(adjustable)

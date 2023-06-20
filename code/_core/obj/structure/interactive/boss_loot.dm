@@ -61,7 +61,8 @@ var/global/list/wishgranter_speak_lines = list(
 			return TRUE
 		for(var/obj/item/I in created_loot)
 			// https://www.desmos.com/calculator/78f8zulsjq
-			if(prob(10)) I.quality = 100 + min(round(5 + ((rand(1,1000)*0.0025)**4),5),40)
+			if(I.quality != -1)
+				I.quality = 100 + min(round(5 + ((rand(1,1000)*0.0025)**4),5),40)
 
 		caller.to_chat(span("warning","\The [src.name] grants you a [created_loot[1].name]!"))
 		play_sound('sound/effects/wishgranter.ogg', T, range_max = VIEW_RANGE)

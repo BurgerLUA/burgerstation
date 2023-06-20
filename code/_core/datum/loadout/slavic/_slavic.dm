@@ -13,7 +13,7 @@
 
 	. = ..()
 
-	if(is_weapon(I) || is_clothing(I))
+	if(I.quality != -1)
 		I.quality = rand(quality_min,quality_max)
 
 	else if(is_magazine(I)) //Force surplus ammo.
