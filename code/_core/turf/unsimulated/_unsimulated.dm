@@ -62,7 +62,7 @@
 					var/area/A = above_turf.loc
 					desired_change_turf = A.dynamic_rock_gen_turf
 		T.change_turf(desired_change_turf)
-		if(spawn_ore <= 0.2 && is_wall(T) && T.density && T.health) //20% of the non-bedrock turf contains ores.
+		if(spawn_ore <= 0.2 && is_wall(T) && T.density && T.health && T.health.organic) //20% of the non-bedrock turf contains ores.
 			var/obj/structure/interactive/ore_deposit/wall/OD = new(T)
 			OD.material_id = pickweight(ore_deposit_weights)
 			OD.ore_amount = CEILING( (spawn_ore/0.2)*5 , 1)
