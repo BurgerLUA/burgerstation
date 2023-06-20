@@ -21,3 +21,7 @@
 	. = ..()
 	var/turf/T = locate(x,y,z-1)
 	if(T) vis_contents += T
+
+/turf/simulated/openspace/pre_change()
+	. = ..()
+	vis_contents.Cut()

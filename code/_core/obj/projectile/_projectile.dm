@@ -208,6 +208,7 @@
 
 	var/list/target_score = list() //The higher the object, the higher priority it is to get hit.
 
+
 	if(new_loc.has_dense_atom)
 		for(var/k in new_loc.contents)
 			var/atom/movable/A = k

@@ -573,6 +573,7 @@
 	//This is initialized somewhere else.
 
 	shield_overlay = new(src)
+	shield_overlay.appearance_flags = RESET_COLOR | RESET_ALPHA
 	shield_overlay.layer = LAYER_EFFECT
 	shield_overlay.icon = 'icons/obj/effects/combat.dmi'
 	shield_overlay.icon_state = "block"

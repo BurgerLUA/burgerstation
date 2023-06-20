@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(smoothing)
 		return TRUE
 	log_subsystem(src.name,"Processing [length(queued_smoothing_turfs)] turf edges...")
 	log_subsystem(src.name,"Processing [length(queued_smoothing_objs)] obj edges...")
+	on_life()
 	return TRUE
 
 /subsystem/smoothing/on_life()

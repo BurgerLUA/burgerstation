@@ -38,6 +38,8 @@
 
 /gamemode/mission/proc/spawn_and_set_enemies()
 
+	set background = TRUE
+
 	if(!gamemode_horde_data)
 		return FALSE
 
@@ -47,11 +49,10 @@
 
 	var/mission_mobs_created = 0
 	for(var/k in mission_mob_markers)
-
 		var/obj/marker/M = k
 		if(!M.loc)
 			qdel(M)
-			CHECK_TICK(75,FPS_SERVER*10)
+			CHECK_TICK(50,FPS_SERVER*10)
 			continue
 		var/turf/T = M.loc
 		var/area/A = T.loc
@@ -75,7 +76,7 @@
 		FINALIZE(L)
 		mission_mobs_created++
 		qdel(M)
-		CHECK_TICK(75,FPS_SERVER*10)
+		CHECK_TICK(50,FPS_SERVER*10)
 
 	log_debug("Created [mission_mobs_created] mission mobs.")
 
@@ -85,7 +86,7 @@
 			var/obj/marker/M = k
 			if(!M.loc || !is_turf(M.loc))
 				qdel(M)
-				CHECK_TICK(75,FPS_SERVER*10)
+				CHECK_TICK(50,FPS_SERVER*10)
 				continue
 			var/turf/T = M.loc
 			var/area/A = T.loc
@@ -104,7 +105,7 @@
 			L.set_dir(pick(NORTH,EAST,SOUTH,WEST))
 			corpses_created++
 			qdel(M)
-			CHECK_TICK(75,FPS_SERVER*10)
+			CHECK_TICK(50,FPS_SERVER*10)
 
 	log_debug("Created [corpses_created] mission mobs.")
 

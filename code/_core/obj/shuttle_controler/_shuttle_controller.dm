@@ -58,11 +58,11 @@ var/global/list/all_shuttle_controlers = list()
 
 	transit_marker_base = new(T)
 	transit_marker_base.owning_shuttle = src
-	transit_marker_base.reserved_by_shuttle = TRUE
+	transit_marker_base.set_reserved(TRUE)
 
 	transit_marker_bluespace = new(T2)
 	transit_marker_bluespace.owning_shuttle = src
-	transit_marker_base.reserved_by_shuttle = TRUE
+	transit_marker_bluespace.set_reserved(TRUE)
 
 	return ..()
 

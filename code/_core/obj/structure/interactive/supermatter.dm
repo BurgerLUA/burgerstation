@@ -23,7 +23,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	var/last_warning_time = 0
 
 	health = /health/construction/
-	health_base = 2000
+	health_base = 5000
 
 	var/charge = 0
 	var/charge_max = SECONDS_TO_DECISECONDS(60)
@@ -129,7 +129,7 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 /obj/structure/interactive/supermatter/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
-	if(damage_amount > 0) add_charge(FLOOR(damage_amount*0.5,1))
+	if(damage_amount > 0) add_charge(damage_amount)
 
 	if(health)
 		var/health_percent = health.health_current/health.health_max

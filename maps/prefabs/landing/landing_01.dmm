@@ -1,35 +1,36 @@
 "a" = (/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "b" = (/turf/simulated/floor/landing,/area/dmm_suite/clear_area)
-"c" = (/obj/decal/hazard/box,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
-"d" = (/obj/marker/landing_decal_right,/obj/marker/shuttle_landing,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"c" = (/obj/decal/hazard/box,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
+"d" = (/obj/decal/hazard{icon_state = "line"; dir = 1},/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
 "e" = (/obj/structure/interactive/computer/console/shuttle_landing,/obj/marker/smart_clear_turf,/turf/simulated/floor/landing,/area/dmm_suite/clear_area)
 "f" = (/obj/marker/mission_mob,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
 "g" = (/turf/simulated/openspace,/area/dmm_suite/clear_area)
 "h" = (/turf/simulated/floor/stair,/area/dmm_suite/clear_area)
+"i" = (/obj/decal/hazard{icon_state = "line"; dir = 8},/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
+"j" = (/obj/marker/landing_decal_left,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"k" = (/obj/marker/landing_decal_right,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
+"l" = (/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
+"m" = (/obj/decal/hazard{icon_state = "line"; dir = 4},/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
+"n" = (/obj/marker/shuttle_landing,/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
+"o" = (/obj/decal/hazard,/turf/simulated/floor/catwalk,/area/dmm_suite/clear_area)
 "p" = (/obj/marker/map_node,/turf/dmm_suite/no_wall,/area/dmm_suite/clear_area)
-"C" = (/obj/decal/hazard{icon_state = "line"; dir = 1},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
-"D" = (/obj/decal/hazard{icon_state = "line"; dir = 8},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
-"E" = (/obj/decal/hazard{icon_state = "line"; dir = 4},/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
-"F" = (/obj/decal/hazard,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
-"G" = (/obj/marker/landing_decal_left,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
-"H" = (/obj/marker/landing_decal_right,/turf/simulated/floor/landing/dark,/area/dmm_suite/clear_area)
 "I" = (/obj/marker/map_node,/turf/simulated/floor/landing,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 paapaapaapfapaap
-fcCCCCCCCCCCCCca
-aDGHbbbbbbbbGHEp
-pDbbbbbbbbbbbbEf
-aDbbbbbbbbbbbbEp
-acbbbbbbbbbbbbca
-IDbbbbbbbbbbbbEb
-gDbbbbbGdbbbbbEe
-hDbbbbbGHbbbbbEI
-IDbbbbbbbbbbbbEb
-fcbbbbbbbbbbbbcp
-aDbbbbbbbbbbbbEf
-pDbbbbbbbbbbbbEp
-aDGHbbbbbbbbGHEa
-acFFFFFFFFFFFFca
+fcddddddddddddca
+aijklllllllljkmp
+pillllllllllllmf
+aillllllllllllmp
+acllllllllllllca
+Iillllllllllllmb
+gillllllnlllllme
+hillllllllllllmI
+Iillllllllllllmb
+fcllllllllllllcp
+aillllllllllllmf
+pillllllllllllmp
+aijklllllllljkma
+acooooooooooooca
 pafpaapaapaapaap
 "}

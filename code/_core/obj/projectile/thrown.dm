@@ -15,7 +15,9 @@
 
 	plane = PLANE_PROJECTILE_NO_EFFECTS
 
-	ricochets_left =  0 //Uses custom system.
+	ricochets_left =  0 //Uses custom system.\
+
+	var/ignore_shuttles = FALSE
 
 /obj/projectile/thrown/Initialize()
 
@@ -26,7 +28,10 @@
 	pixel_z = steps_allowed
 
 
-/obj/projectile/thrown/on_enter_tile(previous_loc,current_loc)
+/obj/projectile/thrown/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+
+	if(new_loc && ignore_shuttles && new_loc.plane != PLANE_SHUTTLE) //Feels like shitcode, but it works.
+		return TRUE
 
 	. = ..()
 

@@ -67,9 +67,6 @@ SUBSYSTEM_DEF(lighting)
 
 	return TRUE
 
-
-
-
 /subsystem/lighting/on_life()
 
 	var/list/curr_lights = light_queue

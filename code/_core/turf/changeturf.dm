@@ -53,6 +53,13 @@
 
 	W.post_change_turf(old_turf_type)
 
+	if(W.density)
+		for(var/k in W.contents)
+			var/atom/movable/M = k
+			if(M.density && W.Enter(M,W))
+				W.Enter(M,W)
+				W.Entered(M,W)
+
 	HOOK_CALL("change_turf")
 
 

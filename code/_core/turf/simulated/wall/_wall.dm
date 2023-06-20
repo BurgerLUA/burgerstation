@@ -55,7 +55,7 @@
 		return FALSE
 	var/area/A = actual_turf.loc
 	if(!A.allow_climbing)
-		L.to_chat(span("warning","You can't climb above, the ceiling is in the way!"))
+		L.to_chat(span("warning","There is nothing to climb to!"))
 		return FALSE
 	if(above_turf.density_down)
 		L.to_chat(span("warning","You can't climb above, \the [above_turf.name] above is in the way!"))

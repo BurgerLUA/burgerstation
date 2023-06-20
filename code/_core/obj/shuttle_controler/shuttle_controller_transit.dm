@@ -74,7 +74,16 @@
 			var/atom/movable/M = k
 			if(!M.density)
 				continue
-			M.on_crush()
+			if(is_living(M))
+				var/mob/living/L = M
+				if(T_to_replace.density_down && T_to_replace.health)
+					T_to_replace.on_destruction(TRUE)
+				L.Move(T_to_replace) //Update
+				if(L.loc == T_to_replace) //Still on the same location.
+					var/obj/projectile/thrown/P = M.throw_self(M,vel_x=-transit_throw_x*16,vel_y=-transit_throw_y*16)
+					if(P) P.ignore_shuttles = TRUE
+			else
+				M.on_crush()
 			CHECK_TICK(75,FPS_SERVER)
 
 		for(var/k in T_to_replace.contents)
