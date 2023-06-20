@@ -28,7 +28,7 @@
 	name = "Slime King's throne"
 	interior = FALSE
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#CCB06A"
 
 

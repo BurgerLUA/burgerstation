@@ -5,7 +5,7 @@
 
 	ambient_sound = 'sound/ambient/cave_2.ogg'
 
-	sunlight_freq = 4
+	sunlight_freq = 10
 	sunlight_color = "#F8FFFF"
 
 	area_identifier = null
@@ -37,4 +37,4 @@
 
 /area/space/light
 	icon_state = "spess_light"
-	sunlight_freq = 1
+	sunlight_freq = 3

@@ -38,7 +38,7 @@
 
 /area/centcomm/clown_planet/exterior
 	name = "Clown Planet Exterior"
-	sunlight_freq = 3
+	sunlight_freq = 8
 	sunlight_color = "#FFECE4"
 	trackable = FALSE
 	sound_environment = ENVIRONMENT_PLAIN
@@ -52,7 +52,7 @@
 	area_identifier = "Character Generation"
 	flags_area = FLAG_AREA_NO_DAMAGE | FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_ROUND_INFORMATION | FLAG_AREA_TUTORIAL | FLAG_AREA_NO_EVENTS | FLAG_AREA_SAVEZONE | FLAG_AREA_SINGLEPLAYER
 
-	sunlight_freq = 2
+	sunlight_freq = 6
 	sunlight_color = "#FFFFFF"
 
 	dynamic_lighting = FALSE
@@ -80,5 +80,5 @@
 	name = "?Generation"
 	icon_state = "cmd"
 	flags_area = FLAG_AREA_NO_CONSTRUCTION | FLAG_AREA_NO_ROUND_INFORMATION | FLAG_AREA_TUTORIAL | FLAG_AREA_NO_EVENTS | FLAG_AREA_SAVEZONE
-	sunlight_freq = 4
+	sunlight_freq = 8
 	sunlight_color = "#2C4D59"

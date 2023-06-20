@@ -40,7 +40,7 @@
 	ambient_temperature = T0C + 80
 	cheese_type = /reagent/nutrition/cheese/kadchgall
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#724C2B"
 
 	sound_environment = ENVIRONMENT_PLAIN
@@ -55,7 +55,7 @@
 	weather = WEATHER_SNOW
 	ambient_temperature = T0C - 20
 	hazard = "cold"
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#898989"
 
 	cheese_type = /reagent/nutrition/cheese/raclette
@@ -98,7 +98,7 @@
 	ambient_temperature = T0C + 15
 	cheese_type = /reagent/nutrition/cheese/cheddar
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#CCB06A"
 
 	interior = FALSE
@@ -140,7 +140,7 @@
 	ambient_temperature = T0C + 40
 	cheese_type = /reagent/nutrition/cheese/brabander
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#29332C"
 
 	interior = FALSE
@@ -194,7 +194,7 @@
 	ambient_temperature = T0C + 90
 	cheese_type = /reagent/nutrition/cheese/guava
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color ="#7F3B11"
 
 	interior = TRUE
@@ -217,7 +217,7 @@
 	ambient_temperature = T0C + 30
 	cheese_type = /reagent/nutrition/cheese/cheddar
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#BCA04B"
 
 	sound_environment = ENVIRONMENT_PLAIN
@@ -232,7 +232,7 @@
 	ambient_temperature = T0C + 40
 	cheese_type = /reagent/nutrition/cheese/cheddar
 
-	sunlight_freq = 8
+	sunlight_freq = 16
 	sunlight_color = "#6B99C4"
 
 	sound_environment = ENVIRONMENT_PLAIN

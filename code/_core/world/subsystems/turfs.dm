@@ -26,6 +26,7 @@ SUBSYSTEM_DEF(turf)
 	log_subsystem(src.name,"Generating seeds...")
 	for(var/i=1,i<=50,i++) //Generate 50 seeds.
 		seeds += rand(1,99999)
+		CHECK_TICK_HARD
 
 	//First generation pass.
 	log_subsystem(src.name,"Pregenerating turfs...")
@@ -62,6 +63,7 @@ SUBSYSTEM_DEF(turf)
 				generations_second += G
 			else if(G.priority == 1)
 				generations_first += G
+			CHECK_TICK_HARD
 
 		log_subsystem(src.name,"Generating [length(generations_first)] first markers...")
 		for(var/k in generations_first)
@@ -105,6 +107,7 @@ SUBSYSTEM_DEF(turf)
 				if(!T.opacity || !T.density || T.destruction_turf)
 					rockgens_to_replace += S
 					break
+				CHECK_TICK_HARD
 			rockgens_checked++
 			CHECK_TICK_HARD
 
@@ -144,11 +147,11 @@ SUBSYSTEM_DEF(turf)
 	var/turf_length = length(type_to_time)
 	if(turf_length >= 1)
 		var/num_turfs = min(turf_length,10)
-		type_to_time.Cut(num_turfs)
 		log_debug("[num_turfs] Most Expensive Types:")
-		for(var/k in type_to_time)
+		for(var/i=1,i<=num_turfs,i++)
+			var/k = type_to_time[i]
 			var/v = type_to_time[k]
-			log_debug("[k]: [DECISECONDS_TO_SECONDS(v)] seconds")
+			log_debug("#[i]: [k], [DECISECONDS_TO_SECONDS(v)] seconds")
 
 	log_subsystem(src.name,"Processing [length(smart_clear_turfs)] smart clear turf markers...")
 	var/benchmark = true_time()
