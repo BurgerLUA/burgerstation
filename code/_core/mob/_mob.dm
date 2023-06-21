@@ -57,27 +57,18 @@
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_NONE
 
+	var/obj/plane_master/floors/plane_master_floor
 	var/obj/plane_master/walls/plane_master_wall
 	var/obj/plane_master/water_floor/plane_master_water_floor
-	var/obj/plane_master/water_surface/plane_master_water_surface
 	var/obj/plane_master/mobs/plane_master_mob
-	var/obj/plane_master/mobs_small/plane_master_mob_small
-	var/obj/plane_master/mobs_dead/plane_master_mob_dead
 	var/obj/plane_master/mobs_stealth/plane_master_mob_stealth
-	var/obj/plane_master/darkness/plane_master_darkness
-	var/obj/plane_master/objs/plane_master_obj
-	var/obj/plane_master/shuttle/plane_master_shuttle
 	var/obj/plane_master/scenery/plane_master_scenery
 	var/obj/plane_master/lighting/plane_master_lighting
-	var/obj/plane_master/floor/plane_master_floor
-	var/obj/plane_master/openspace/plane_master_openspace
-	var/obj/plane_master/currency/plane_master_currency
 	var/obj/plane_master/hud/plane_master_hud
 	var/obj/plane_master/weather/plane_master_weather
 	var/obj/plane_master/area_exterior/plane_master_area_exterior
 	var/obj/plane_master/water_mask/plane_master_water_mask
-	var/obj/plane_master/projectiles/plane_master_projectiles
-	var/obj/plane_master/ambient_lighting/plane_master_ambient_lighting
+	var/obj/plane_master/water/plane_master_water
 
 	var/obj/hud/button/examine_bar/examine_bar
 	var/obj/hud/button/tooltip/tooltip
@@ -160,19 +151,18 @@
 			M.observing = null
 		observers.Cut()
 
+	QDEL_NULL(plane_master_floor)
 	QDEL_NULL(plane_master_wall)
 	QDEL_NULL(plane_master_water_floor)
 	QDEL_NULL(plane_master_mob)
 	QDEL_NULL(plane_master_mob_stealth)
-	QDEL_NULL(plane_master_shuttle)
 	QDEL_NULL(plane_master_scenery)
 	QDEL_NULL(plane_master_lighting)
-	QDEL_NULL(plane_master_openspace)
-	QDEL_NULL(plane_master_currency)
 	QDEL_NULL(plane_master_hud)
 	QDEL_NULL(plane_master_weather)
 	QDEL_NULL(plane_master_area_exterior)
 	QDEL_NULL(plane_master_water_mask)
+	QDEL_NULL(plane_master_water)
 
 	QDEL_NULL(fov)
 
@@ -222,6 +212,10 @@
 		var/obj/structure/interactive/localmachine/L = k
 		L.update_for_mob(src)
 
+	if(!plane_master_floor)
+		plane_master_floor = new(src)
+	C.screen += plane_master_floor
+
 	if(!plane_master_wall)
 		plane_master_wall = new(src)
 	C.screen += plane_master_wall
@@ -238,10 +232,6 @@
 		plane_master_mob_stealth = new(src)
 	C.screen += plane_master_mob_stealth
 
-	if(!plane_master_shuttle)
-		plane_master_shuttle = new(src)
-	C.screen += plane_master_shuttle
-
 	if(!plane_master_scenery)
 		plane_master_scenery = new(src)
 	C.screen += plane_master_scenery
@@ -249,14 +239,6 @@
 	if(!plane_master_lighting)
 		plane_master_lighting = new(src)
 	C.screen += plane_master_lighting
-
-	if(!plane_master_openspace)
-		plane_master_openspace = new(src)
-	C.screen += plane_master_openspace
-
-	if(!plane_master_currency)
-		plane_master_currency = new(src)
-	C.screen += plane_master_currency
 
 	if(!plane_master_hud)
 		plane_master_hud = new(src)
@@ -273,6 +255,10 @@
 	if(!plane_master_water_mask)
 		plane_master_water_mask = new(src)
 	C.screen += plane_master_water_mask
+
+	if(!plane_master_water)
+		plane_master_water = new(src)
+	C.screen += plane_master_water
 
 	if(!examine_overlay)
 		examine_overlay = new(src)

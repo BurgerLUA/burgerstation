@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(dmm_suite)
 
 	var/list/maps_to_load = list(
 		list(
-			"size"=1000,
+			"size"=500,
 			"turf"=/turf/unsimulated/dynamic_rock_gen,
 			"area"=/area/mission/below
 		),
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(dmm_suite)
 			for(var/j in block_turfs)
 				var/turf/T = j
 				var/area/NA = k["area"]
-				if(T.x == 1 || T.y == k["size"] || T.y == 1 || T.y == k["size"])
+				if(T.x == 1 || T.x == k["size"] || T.y == 1 || T.y == k["size"])
 					var/turf/NT = /turf/simulated/wall/rock/indestructable
 					new NT(T)
 					new NA(T)

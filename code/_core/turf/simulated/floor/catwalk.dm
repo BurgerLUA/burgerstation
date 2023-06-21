@@ -15,6 +15,8 @@
 	corner_icons = TRUE
 	corner_category = "catwalk"
 
+	color = COLOR_GREY
+
 /turf/simulated/floor/catwalk/Finalize()
 	. = ..()
 	var/turf/T = locate(x,y,z-1)
@@ -33,7 +35,7 @@
 /turf/simulated/floor/catwalk/update_overlays()
 	. = ..()
 	var/image/I = new/image(icon,icon_state)
-	I.appearance_flags = src.appearance_flags | KEEP_APART
+	I.appearance_flags = src.appearance_flags | KEEP_APART | RESET_COLOR
 	I.layer = LAYER_FLOOR
 	I.plane = PLANE_FLOOR
 	add_overlay(I)

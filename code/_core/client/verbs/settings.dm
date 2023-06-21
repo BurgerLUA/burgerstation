@@ -116,9 +116,9 @@
 	set hidden = TRUE
 	settings.change_setting("enable_depth",!settings.loaded_data["enable_depth"])
 	mob?.plane_master_wall?.refresh_post_processing()
+	mob?.plane_master_floor?.refresh_post_processing()
 	mob?.plane_master_mob?.refresh_post_processing()
-	mob?.plane_master_shuttle?.refresh_post_processing()
-	mob?.plane_master_openspace?.refresh_post_processing()
+	mob?.plane_master_scenery?.refresh_post_processing()
 
 /client/verb/toggle_debug_messages()
 	set hidden = TRUE

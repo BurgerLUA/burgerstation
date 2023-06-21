@@ -17,6 +17,8 @@
 
 	plane = PLANE_FLOOR_BELOW
 
+	color = COLOR_GREY
+
 /turf/simulated/openspace/Finalize()
 	. = ..()
 	var/turf/T = locate(x,y,z-1)

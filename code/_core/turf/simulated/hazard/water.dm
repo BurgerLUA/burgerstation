@@ -32,7 +32,7 @@ var/global/list/turf/simulated/floor/water_shores = list()
 	var/alpha_min = 75
 	var/alpha_max = 150
 
-	mouse_opacity = 0
+	mouse_opacity = 1
 
 	var/shore = FALSE
 
