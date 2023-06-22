@@ -45,7 +45,6 @@
 
 		/obj/item/supportgem/cost,
 		/obj/item/supportgem/damage,
-		/obj/item/supportgem/projectiles,
 		/obj/item/supportgem/spread,
 		/obj/item/supportgem/overkill,
 		/obj/item/supportgem/speed,

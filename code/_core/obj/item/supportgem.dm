@@ -13,7 +13,7 @@
 
 	quality = 100
 
-	value = 1 //Dummy value.
+	value = 0
 
 	color = "#FFFFFF"
 	var/color_2 = "#FFFFFF"
@@ -113,6 +113,7 @@
 	)
 	support_desc = "Decreases mana cost by <b>[mana_mul*100]</b>%.\nDecreases projectile speed by 25%.\nDecreases projectile accuracy by 25%."
 
+/*
 /obj/item/supportgem/projectiles
 	name = "spliting shots support gem"
 	power_base = 1 //1 extra projectile
@@ -131,6 +132,7 @@
 		"bullet_spread" = 3
 	)
 	support_desc = "Increases projectile count by <b>[projectile_count]</b>.\nIncreases mana cost by 200%.\nIncreases projectile spread by 200%."
+*/
 
 
 /obj/item/supportgem/spread
@@ -147,7 +149,7 @@
 	var/bullet_spread = min(0.75,power_base + (quality-100)*power_per_quality)
 	support_stats = list(
 		"bullet_spread" = 1 - bullet_spread,
-		"inaccuracy_modifier" = 1.25,
+		"inaccuracy_modifier" = 0.75,
 		"projectile_speed" = 1.25,
 		"shoot_delay" = 2
 	)
@@ -166,10 +168,10 @@
 /obj/item/supportgem/penetrations/update_support_stats()
 	var/penetration_count = power_base + (quality-100)*power_per_quality
 	support_stats = list(
-		"penetrations" = penetration_count,
+		"penetrations" = 1 + penetration_count,
 		"mana_cost_multiplier" = 1.5
 	)
-	support_desc = "Increases penetrations count by <b>[penetration_count]</b>.\nIncreases mana cost by 50%."
+	support_desc = "Increases penetration multiplier by <b>[penetration_count*100]%</b>.\nIncreases mana cost by 50%."
 
 /obj/item/supportgem/overkill
 	name = "overkill support gem"
@@ -182,16 +184,16 @@
 	color_3 = COLOR_WHITE
 
 /obj/item/supportgem/overkill/update_support_stats()
-	var/damagemult = 1 + power_base + (quality-100)*power_per_quality
+	var/damagemult = power_base + (quality-100)*power_per_quality
 	var/manamult = power_base + (quality-100)*power_per_quality
 	support_stats = list(
-		"damage_multiplier" = damagemult,
+		"damage_multiplier" = 1 + damagemult,
 		"inaccuracy_modifier" = 1.25,
 		"projectile_speed" = 1.25,
 		"mana_cost_multiplier" = manamult + 2.5,
 		"shoot_delay" = 2
 	)
-	support_desc = "Increases damage by <b>[damagemult] Times</b>.\nIncreases mana cost by <b>[(manamult + 1.5)*100]%</b>.\nIncreases Inaccuracy and Projectile Speed by 25%.\nIncreases shoot delay by 100%."
+	support_desc = "Increases damage by <b>[damagemult*100]%</b>.\nIncreases mana cost by <b>[(manamult + 1.5)*100]%</b>.\nIncreases projectile speed by 25%.\nIncreases shoot delay by 100%."
 
 
 /obj/item/supportgem/speed

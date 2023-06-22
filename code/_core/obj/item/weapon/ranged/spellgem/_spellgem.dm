@@ -52,31 +52,15 @@
 
 	var/obj/item/weapon/ranged/wand/W = src.loc
 
-	var/list/modifier_count = list()
-
 	for(var/g in W.socketed_supportgems)
 		var/obj/item/supportgem/G = g
 		for(var/support_type in G.support_stats)
 			var/support_value = G.support_stats[support_type]
-			if(isnum(support_value))
-				attachment_stats[support_type] += support_value
-				modifier_count[support_type] += 1
-			else
+			if(!attachment_stats[support_type] || !isnum(support_value))
 				attachment_stats[support_type] = support_value
+			else
+				attachment_stats[support_type] += support_value
 
-	for(var/support_type in modifier_count)
-		var/support_value = modifier_count[support_type]
-		if(!support_value)
-			log_error("Warning: Support value of [support_type] was [isnum(support_value) ? 0 : "NULL"] for [src.get_debug_name()].")
-			continue
-		if(!isnum(support_value))
-			continue
-		if(modifier_count[support_type] > 1)
-			attachment_stats[support_type] *= (1/(modifier_count[support_type]-((1/3) * modifier_count[support_type])))
-		else
-			attachment_stats[support_type] *= (1/support_value)
-		if(support_type == "bullet_count")
-			attachment_stats[support_type] += modifier_count[support_type]
 
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
