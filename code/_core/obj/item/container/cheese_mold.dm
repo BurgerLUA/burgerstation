@@ -16,24 +16,56 @@
 
 	value = 30
 
+	size = SIZE_3
+
+/obj/item/container/cheese_mold/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	SAVEVAR("allow_reagent_transfer_from")
+	SAVEVAR("process_count")
+	if(length(cheese_mix))
+		.["cheese_mix"] = list()
+		for(var/k in cheese_mix)
+			.["cheese_mix"]["[k]"] = cheese_mix[k]
+
+/obj/item/container/cheese_mold/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+	RUN_PARENT_SAFE
+	LOADVAR("allow_reagent_transfer_from")
+	SAVEVAR("process_count")
+	if(object_data["cheese_mix"])
+		for(var/k in object_data["cheese_mix"])
+			var/reagent/R = text2path(k)
+			if(R)
+				cheese_mix[R] = object_data["cheese_mix"][k]
+
+/obj/item/container/cheese_mold/get_examine_list(var/mob/caller)
+	. = ..()
+	if(process_count >= CHEESE_PROCESS_TIME)
+		. += div("notice","The cheese is ready to be removed!")
+	else if(process_count)
+		. += div("notice","It is currently curdling cheese...")
+	else
+		. += div("notice","Add at least 40 units milk and 10 units enzymes to start the cheesemaking process.")
+
 /obj/item/container/cheese_mold/block
 	icon_state = "block"
 
-/obj/item/container/cheese_mold/think()
+/obj/item/container/cheese_mold/proc/process()
 
-	if(process_count < CHEESE_PROCESS_TIME)
-		var/area/A = get_area(src)
-		if(A)
-			process_count++
-			if(cheese_mix[A.cheese_type])
-				cheese_mix[A.cheese_type] += 1
-			else
-				cheese_mix[A.cheese_type] = 1
-			if(process_count >= CHEESE_PROCESS_TIME)
-				src.visible_message(span("notice","The cheese in \the [src.name] finishes curdling!"))
-		. = TRUE
+	. = TRUE
 
-	return ..() || .
+	var/area/A = get_area(src)
+	if(A)
+		process_count++
+		if(cheese_mix[A.cheese_type])
+			cheese_mix[A.cheese_type] += 1
+		else
+			cheese_mix[A.cheese_type] = 1
+		update_sprite()
+		if(process_count >= CHEESE_PROCESS_TIME)
+			src.visible_message(span("notice","The cheese in \the [src.name] finishes curdling, and is ready to be removed!"))
+			return TRUE
+
+	CALLBACK("\ref[src]_process_cheese",SECONDS_TO_DECISECONDS(1),src,src::process())
 
 /obj/item/container/cheese_mold/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -87,6 +119,11 @@
 
 	caller.to_chat(span("notice","You take \the [C.name] out of \the [src.name]."))
 
+	process_count = 0
+	cheese_mix.Cut()
+
+	update_sprite()
+
 	return TRUE
 
 
@@ -104,7 +141,7 @@
 
 /obj/item/container/cheese_mold/update_icon()
 
-	if(allow_reagent_transfer_to && allow_reagent_transfer_from)
+	if(allow_reagent_transfer_from)
 
 		var/milk_count = 0
 		var/enzyme_count = 0
@@ -118,11 +155,10 @@
 				enzyme_count += reagent_volume
 
 		if(milk_count >= 40 && enzyme_count >= 10)
-			allow_reagent_transfer_to = FALSE
 			allow_reagent_transfer_from = FALSE
 			var/turf/T = get_turf(src)
 			T.visible_message(span("notice","The milk starts to curdle!"))
-			START_THINKING(src)
+			src.process()
 
 	return ..()
 
@@ -132,7 +168,23 @@
 	. = ..()
 
 	if(reagents.volume_current)
-		var/image/I = new/image(icon,"[icon_state]_fill")
-		I.color = reagents.color
-		add_overlay(I)
+		var/image/I1 = new/image(icon,"[icon_state]_fill")
+		I1.color = reagents.color
+		add_overlay(I1)
 
+	var/best_cheese = null
+	var/best_cheese_value = 0
+
+	if(length(cheese_mix))
+		for(var/k in cheese_mix)
+			var/v = cheese_mix[k]
+			if(!best_cheese || v > best_cheese_value)
+				best_cheese = k
+				best_cheese_value = v
+
+		if(best_cheese)
+			var/reagent/R = REAGENT(best_cheese)
+			var/image/I2 = new/image(icon,"[icon_state]_fill")
+			I2.color = R.color
+			I2.alpha = CEILING((process_count/CHEESE_PROCESS_TIME)*255,1)
+			add_overlay(I2)

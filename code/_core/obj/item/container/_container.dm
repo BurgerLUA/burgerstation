@@ -12,6 +12,6 @@
 	// https://www.desmos.com/calculator/okb8vlsrmu
 	if(reagents)
 		. += ((reagents.volume_max * 0.25) + (reagents.volume_max**1.5)) * 0.075 * (SIZE_2/size)
-		. += size*10
-		. *= 0.5
+		. += size*5
+		. *= 0.1
 	. = CEILING(.,1)
