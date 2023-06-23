@@ -31,7 +31,7 @@
 
 	icon = 'icons/obj/item/clothing/back/satchel/bluespace.dmi'
 
-	dynamic_inventory_count = 6*4
+	dynamic_inventory_count = 7*4
 	container_max_size = SIZE_4*3
 
 	size = MAX_INVENTORY_X*4*SIZE_4
