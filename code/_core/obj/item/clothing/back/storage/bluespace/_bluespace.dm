@@ -18,9 +18,11 @@
 		/obj/item/clothing/belt/holding
 	)
 
-	value = 3000
+	value = 5000
 
-	value_burgerbux = 1
+	value_burgerbux = 2
+
+	rarity = RARITY_RARE
 
 /obj/item/clothing/back/storage/satchel/bluespace
 	name = "satchel of holding"
@@ -29,7 +31,7 @@
 
 	icon = 'icons/obj/item/clothing/back/satchel/bluespace.dmi'
 
-	dynamic_inventory_count = MAX_INVENTORY_X*4
+	dynamic_inventory_count = 6*4
 	container_max_size = SIZE_4*3
 
 	size = MAX_INVENTORY_X*4*SIZE_4
@@ -45,7 +47,7 @@
 
 	value_burgerbux = 1
 
-	rarity = RARITY_RARE
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/back/storage/satchel/bluespace/prank
 	name = "satchel of hold"
@@ -56,3 +58,7 @@
 	container_max_size = SIZE_9
 
 	size = SIZE_10
+
+	value = 500
+
+	rarity = RARITY_COMMON
