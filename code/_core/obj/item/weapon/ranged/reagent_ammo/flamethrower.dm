@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/
+/obj/item/weapon/ranged/reagent_ammo/flamethrower
 	name = "flamethrower"
 	desc = "Mphh Mphh!"
 	desc_extended = "A dated flamethrower. Disarm + Fire to release a blast of compressed Fuel"

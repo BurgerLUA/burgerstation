@@ -54,6 +54,10 @@
 	desired_value = 2500
 	loot_table_guaranteed = list(/obj/item/currency/telecrystals)
 
+/loot/currency/gold_bar
+	desired_value = 5000
+	loot_table_guaranteed = list(/obj/item/currency/gold_bar)
+
 /loot/currency/telecrystals/small
 	desired_value = 100
 

@@ -31,14 +31,6 @@
 	value_max = 1
 	burgerbux_reward = 5
 
-/obj/item/contract/goblin_king
-	name = "Kill the Goblin King"
-	desc = "Kill the Goblin King."
-	type_to_check = /mob/living/simple/goblin_king
-	objective_text = "Goblin Kings killed"
-	value_max = 1
-	burgerbux_reward = 5
-
 /obj/item/contract/herald
 	name = "Kill the Herald"
 	desc = "Kill the Herald."

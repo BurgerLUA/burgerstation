@@ -1,25 +1,28 @@
 /loot/syndicate/vault
 	loot_table = list(
+		/obj/item/supply_crate/syndicate = 1,
+		/loot/currency/telecrystals = 1,
+		/obj/item/storage/kit/syndicate/filled = 1,
+		/obj/item/attachment/barrel/charger/advanced = 1,
+		/obj/item/attachment/barrel/laser_charger/advanced = 1,
+		/obj/item/clothing/glasses/sun/gar = 1,
+		/obj/item/clothing/glasses/sun/gar/giga = 1,
+		/loot/currency/gold_bar = 1
+	)
+	loot_count = 1
+	use_value = TRUE
+
+/loot/syndicate/vault/secure
+	loot_table = list(
 		/obj/item/clothing/back/storage/backpack/bluespace = 1,
 		/obj/item/clothing/back/storage/satchel/bluespace = 1,
 		/obj/item/powercell/bluespace = 1,
-		/loot/currency/telecrystals = 9,
-		/obj/item/storage/kit/syndicate/filled = 1,
+		/obj/item/clothing/head/hat/pete = 1,
+		/obj/item/clothing/overwear/armor/seva/syndie = 1,
+		/obj/item/weapon/ranged/bow/hardlight = 1,
+		/obj/item/storage/bagofhoarding = 1
 	)
-	loot_count = 6
-
-/loot/syndicate/vault/sniper_20
-
-	loot_table_guaranteed = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20
-	)
-
-	loot_table = list(
-		/obj/item/magazine/sniper_20mm = 100
-	)
-	loot_count = 4
-	chance_none = 20
-
+	loot_count = 1
 
 /loot/syndicate/lunch
 	loot_table = list(

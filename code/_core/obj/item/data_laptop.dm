@@ -16,7 +16,7 @@ var/global/list/all_vault_doors = list()
 
 	rarity = RARITY_RARE
 
-	value = 500
+	value = 5000
 
 /obj/item/data_laptop/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
@@ -27,7 +27,8 @@ var/global/list/all_vault_doors = list()
 	LOADVAR("used")
 
 /obj/item/data_laptop/get_base_value()
-	return used ? 100 : 1000
+	. = initial(value)
+	. *= used ? 0.01 : 1
 
 /obj/item/data_laptop/update_icon()
 

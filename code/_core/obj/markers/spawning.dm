@@ -223,11 +223,7 @@
 	name = "random vault loot"
 	icon_state = "vault"
 	possible_objects = list(
-		/loot/syndicate/vault = 250,
-		/obj/item/supply_crate/syndicate{amount=3} = 100,
-		/obj/item/storage/kit/syndicate/filled = 50,
-		/obj/item/clothing/overwear/hardsuit/syndie/advanced = 75,
-		/obj/item/clothing/overwear/hardsuit/syndie/elite = 50
+		/loot/syndicate/vault = 1,
 	)
 
 /obj/marker/spawning/random/misc
@@ -293,14 +289,5 @@
 	name = "random secure vault loot"
 	icon_state = "vault_secure"
 	possible_objects = list(
-		/obj/item/currency/telecrystals{amount=50} = 100,
-		/obj/item/currency/gold_bar{amount=5} = 50,
-		/obj/item/currency/gold_coin{amount=500} = 50,
-		/obj/item/currency/dosh{amount=100} = 25,
-		/obj/item/coin/cursed{amount=5} = 25,
-		/obj/item/soulgem/mystic{amount=4} = 20,
-		/obj/item/clothing/back/storage/backpack/bluespace = 10,
-		/obj/item/clothing/belt/damage_deferal_shield = 10,
-		/obj/item/powercell/bluespace = 10,
-		/obj/item/tempering/luck/double = 5
+		/loot/syndicate/vault/secure = 1,
 	)

@@ -12,6 +12,8 @@ obj/item/clothing/back/storage/backpack/explorer
 
 	value = 160
 
+	rarity = RARITY_UNCOMMON
+
 /obj/item/clothing/back/storage/backpack/explorer/medical
 	name = "medical explorer's pack"
 	icon = 'icons/obj/item/clothing/back/backpack/explorer_pack_medical.dmi'
