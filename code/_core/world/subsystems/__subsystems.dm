@@ -16,9 +16,6 @@
 	var/overtime_count = 0
 	var/overtime_max = 10
 
-	var/last_run_duration = 0
-	var/total_run_duration = 0
-
 	var/use_time_dialation = TRUE
 
 	var/initialized = FALSE

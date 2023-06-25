@@ -223,7 +223,7 @@
 		else
 			var/turf/T = get_turf(owner)
 			if(linked_pod || linked_shuttle_controller)
-				map_z = 1
+				map_z = SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"]
 			else
 				map_z = T.z
 

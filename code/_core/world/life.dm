@@ -9,7 +9,6 @@ var/global/time_dialation = 0
 				sleep(TICK_LAG)
 				continue
 		SS.overtime_count = 0
-		var/start_time = true_time()
 		var/result = SS.on_life()
 		if(result == null)
 			log_error("[SS.name] failed to run properly!")
@@ -25,9 +24,6 @@ var/global/time_dialation = 0
 			log_subsystem(SS.name,"Shutting down.")
 			break
 		SS.run_failures = 0
-		SS.last_run_duration = FLOOR(true_time() - start_time,0.01)
-		if(world_state >= STATE_RUNNING)
-			SS.total_run_duration += SS.last_run_duration
 
 		var/desired_delay = TICKS_TO_DECISECONDS(SS.tick_rate)
 		if(time_dialation > 1 && SS.use_time_dialation)

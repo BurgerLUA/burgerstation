@@ -2,7 +2,6 @@ var/global/list/debug_verbs = list(
 	/client/verb/make_war,
 	/client/verb/stealth_test,
 	/client/verb/check_lights,
-	/client/verb/subsystem_report,
 	/client/verb/reload_badwords,
 	/client/verb/force_save_all,
 	/client/verb/stress_test,
@@ -32,8 +31,7 @@ var/global/list/debug_verbs = list(
 	/client/verb/debug_weapon_value,
 	/client/verb/swarm_test,
 	/client/verb/destroy_everything,
-	/client/verb/subsystem_debug,
-	/client/verb/profile_server
+	/client/verb/subsystem_debug
 )
 
 
@@ -278,24 +276,6 @@ var/global/list/destroy_everything_whitelist = list(
 	src << browse("<head><style>[STYLESHEET]</style></head><body>[final_text]</body>","window=garbage")
 
 	qdel(dummy_datum)
-
-/client/verb/subsystem_report()
-
-	set name = "Subsystem Report"
-	set category = "Debug"
-
-	var/report_string = "<h2>Subsystem Report</h2>"
-
-	for(var/k in active_subsystems)
-		var/subsystem/S = k
-		if(S.last_run_duration || S.total_run_duration)
-			report_string += "<b>[S.name]</b>: <pre>LAST: [S.last_run_duration], TOTAL: [S.total_run_duration].</pre><br>"
-
-	report_string += "Subsystems that aren't listed have no registered overtime."
-
-	to_chat(report_string)
-
-	SSreport.make_report()
 
 /client/verb/reload_badwords()
 	set name = "Reload Badwords"
@@ -736,41 +716,3 @@ var/global/list/destroy_everything_whitelist = list(
 
 	var/subsystem/S = valid_choices[choice]
 	debug_variables(S)
-
-
-var/global/list/profiling_ckeys = list()
-
-
-/proc/start_profiling()
-	log_debug("Profling started.")
-	world.Profile(PROFILE_RESTART)
-	CALLBACK_GLOBAL("end_profling",SECONDS_TO_DECISECONDS(10),.proc/end_profling)
-
-/proc/end_profling()
-
-	var/found_output = world.Profile(PROFILE_STOP,"json")
-
-	for(var/ckey in profiling_ckeys)
-		var/client/C = CLIENT(ckey)
-		if(!C)
-			continue
-		C << browse(found_output,"window=Profiling;display=1;size=400x800;border=0;can_close=1;can_resize=1;can_minimize=1;titlebar=1")
-		C.to_chat(span("notice","Profiling data sent."))
-
-	profiling_ckeys.Cut()
-
-	log_debug("Profling ended.")
-
-/client/verb/profile_server()
-	set name = "Profile Server"
-	set category = "Debug"
-
-	profiling_ckeys[ckey] = TRUE
-
-	if(CALLBACK_EXISTS("end_profiling"))
-		to_chat(span("notice","A server profile is currently in progress. You will be notified when the profile is complete."))
-		return TRUE
-
-	start_profiling()
-
-	to_chat(span("notice","Profiling started. You will be sent profiling data in 10 seconds."))
