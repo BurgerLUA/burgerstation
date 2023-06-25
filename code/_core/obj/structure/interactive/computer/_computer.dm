@@ -29,20 +29,21 @@ obj/structure/interactive/computer/console/Finalize()
 	. = ..()
 	update_sprite()
 
-obj/structure/interactive/computer/console/update_icon()
+obj/structure/interactive/computer/console/update_overlays()
 
 	. = ..()
 
 	if(computer_type && on)
-		var/image/I2 = new/image(initial(icon),computer_type)
-		I2.plane = PLANE_LIGHTING
-		add_overlay(I2)
-
+		var/image/I = new/image(initial(icon),computer_type)
+		I.appearance_flags = src.appearance_flags | KEEP_APART | RESET_COLOR
+		I.plane = PLANE_LIGHTING_EFFECT
+		add_overlay(I)
 
 	if(keyboard_type)
-		var/image/I3 = new/image(initial(icon),keyboard_type)
-		I3.plane = PLANE_LIGHTING
-		add_overlay(I3)
+		var/image/I = new/image(initial(icon),keyboard_type)
+		I.appearance_flags = src.appearance_flags | KEEP_APART | RESET_COLOR
+		I.plane = PLANE_LIGHTING_EFFECT
+		add_overlay(I)
 
 obj/structure/interactive/computer/console/laptop
 	name = "personal laptop"
@@ -95,24 +96,12 @@ obj/structure/interactive/computer/console/old/cargo
 	computer_type = "library"
 	keyboard_type = ""
 
-
-
-
-
-
-
-
-
-
-
 obj/structure/interactive/computer/console/engineering
 	name = "engineering console"
-
 
 obj/structure/interactive/computer/console/engineering/Generate()
 	computer_type = pick("power","solar","tank","area_atmos","alert:1")
 	keyboard_type = "[computer_type]_key"
-
 
 	var/list/type_to_light = list(
 		"power" = "#C6B227",
