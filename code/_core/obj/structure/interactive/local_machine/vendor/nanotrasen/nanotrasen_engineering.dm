@@ -70,10 +70,13 @@
 		/obj/item/bullet_cartridge/grenade_40mm,
 		/obj/item/bullet_cartridge/grenade_40mm/hv,
 
-		/obj/item/bullet_cartridge/shotgun_12,
-		/obj/item/bullet_cartridge/shotgun_12/flechette,
-		/obj/item/bullet_cartridge/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/frag,
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12/flechette,
+		/obj/item/bulletbox/small/shotgun_12/slug,
+
+		/obj/item/bulletbox/shotgun_12,
+		/obj/item/bulletbox/shotgun_12/flechette,
+		/obj/item/bulletbox/shotgun_12/slug,
 
 		/obj/item/magazine/minigun_46
 

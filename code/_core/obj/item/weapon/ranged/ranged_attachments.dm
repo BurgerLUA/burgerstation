@@ -63,7 +63,6 @@
 		choice_list[A.name] = k
 
 	if(!length(choice_list))
-		caller.to_chat(span("notice","There is nothing to remove from \the [src.name]!"))
 		return FALSE
 
 	choice_list["Cancel"] = "Cancel"

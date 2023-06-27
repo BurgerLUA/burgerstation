@@ -4,31 +4,6 @@
 	icon_state = "mining"
 	value = 0
 
-/obj/item/storage/bags/click_on_object(var/mob/caller as mob, var/atom/object, location, contmrol, params)
-
-	if(object.plane >= PLANE_HUD)
-		return ..()
-
-	var/turf/T = get_turf(object)
-
-	if(length(container_whitelist) && get_dist(src,T) <= 1)
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		INTERACT_DELAY(10)
-		var/pickup = 0
-		for(var/obj/item/I in T.contents)
-			if(I.type in container_whitelist)
-				if(src.add_object_to_src_inventory(caller,I,enable_messages = FALSE,silent=TRUE))
-					pickup++
-		if(pickup)
-			caller?.to_chat(span("notice","You add [pickup] objects to \the [src.name]."))
-			//TODO: Pickup sounds.
-		else
-			caller?.to_chat(span("warning","You fail to pickup anything!"))
-		return TRUE
-
-	return ..()
-
 /obj/item/storage/bags/botany
 	name = "botany bag"
 	desc = "Green bag for a green thumb."

@@ -129,10 +129,11 @@
 		if(result && owner.move_dir)
 			if(owner.has_status_effect(REST))
 				owner.remove_status_effect(REST)
-			var/threshold_to_use = use_astar_on_frustration_move ? frustration_move_threshold*0.5 : frustration_move_threshold
-			if(frustration_move_threshold > 0 && frustration_move > threshold_to_use) //Bad movement.
-				owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
-				should_remove_frustration = FALSE
+			if(sidestep_on_frustration_move)
+				var/threshold_to_use = use_astar_on_frustration_move ? frustration_move_threshold*0.5 : frustration_move_threshold
+				if(frustration_move_threshold > 0 && frustration_move > threshold_to_use) //Bad movement.
+					owner.move_dir = turn(owner.move_dir,pick(-90,90,180))
+					should_remove_frustration = FALSE
 		else
 			owner.next_move = max(owner.next_move,SECONDS_TO_TICKS(1)) //Wait a bit.
 			owner.move_dir = 0x0 //Prevents frustration from running.

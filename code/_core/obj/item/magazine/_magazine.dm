@@ -47,17 +47,12 @@
 
 /obj/item/magazine/update_icon()
 
-	var/icon_num = 1
-
-	if(icon_states)
-		var/bullet_num = length(stored_bullets)
-		var/bullet_count_max_fake = 1
-		if(bullet_count_max != 0) //I dont know how, I dont know why, but somewhere in crafting, you divide by 0 here.
-			bullet_count_max_fake = bullet_count_max // This is the stupidest bandaid I could find.
-		icon_num = min(bullet_num/bullet_count_max_fake,1)*icon_states
+	if(icon_states && bullet_count_max)
+		var/bullet_num = src.get_ammo_count()
+		var/icon_num = min(bullet_num/bullet_count_max,1)*icon_states
 		icon_num = FLOOR(icon_num,1)
 		if(!icon_num && bullet_num)
-			icon_num = 1
+			icon_num = 1 //This is needed to show there is at least 1 bullet in the magazine.
 		icon_state = "[initial(icon_state)]_[icon_num]"
 	else
 		icon_state = initial(icon_state)
@@ -97,8 +92,8 @@
 /obj/item/magazine/proc/get_ammo_count()
 	. = 0
 	for(var/k in stored_bullets)
-		var/v = stored_bullets[k]
-		. += v
+		var/amount = stored_bullets[k]
+		. += amount
 
 /obj/item/magazine/proc/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
 

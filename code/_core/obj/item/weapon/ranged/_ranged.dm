@@ -175,16 +175,7 @@
 
 /obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
 
-	if(is_inventory(object) && (caller.attack_flags & CONTROL_MOD_DISARM))
-		var/obj/hud/inventory/INV = object
-		INTERACT_CHECK
-		INTERACT_CHECK_OBJECT
-		INTERACT_DELAY(5)
-		var/obj/item/I = remove_attachment(caller)
-		if(I) INV.add_object(I)
-		return TRUE
-
-	else if(is_item(object))
+	if(is_item(object))
 		var/obj/item/I = object
 		if(istype(I,/obj/item/attachment))
 			INTERACT_CHECK
@@ -198,6 +189,10 @@
 				INTERACT_CHECK
 				INTERACT_CHECK_OBJECT
 				INTERACT_DELAY(5)
+
+				if(remove_attachment(caller))
+					return TRUE
+
 				if(istype(firing_pin))
 					firing_pin.drop_item(get_turf(src))
 					caller.visible_message(span("notice","\The [caller.name] removes a firing pin from \the [src.name]."),span("notice","You remove \the [firing_pin.name] from \the [src.name]."))
@@ -819,7 +814,6 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /obj/item/weapon/ranged/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
 
-	if(attachment_undermount)
-		return attachment_undermount.click_on_object_alt(caller,object,location,control,params)
+	if(attachment_undermount) return attachment_undermount.click_on_object_alt(caller,object,location,control,params)
 
 	return FALSE

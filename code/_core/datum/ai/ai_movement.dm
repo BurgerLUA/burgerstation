@@ -341,6 +341,8 @@
 	if(!node_path_current[node_path_current_step])
 		return FALSE
 
+	obstacles.Cut() //Remove previous obstructions
+
 	var/obj/marker/map_node/desired_node = node_path_current[node_path_current_step]
 	var/turf/T1 = get_turf(owner)
 	var/list/obstructions = get_obstructions(T1,desired_node,ignore_living=TRUE)
@@ -350,15 +352,19 @@
 
 	var/turf/T2 = locate(desired_node.x,desired_node.y,desired_node.z)
 
-	if(set_path_astar(T2)) //Okay we found obstructions, but can we path through it?
+	if(set_path_astar(T2)) //Okay we found obstructions, but we can path through it.
 		return TRUE
 
 	for(var/k in obstructions) //Can't path though it, so we destroy it.
 		var/atom/A = k
 		if(!A.can_be_attacked(owner)) //Can't even destroy it. Just give up.
-			obstacles.Cut()
 			set_path_node(null)
 			break //Give up.
 		obstacles[A] = TRUE
 
-	return TRUE
+	//DEBUG STUFF
+	if(objective_attack && is_player(objective_attack))
+		objective_attack << "Obstacles: [obstacles]."
+
+
+	return length(obstacles)

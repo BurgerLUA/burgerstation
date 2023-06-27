@@ -148,7 +148,13 @@
 	stored_types = list(
 		/obj/item/weapon/ranged/bullet/pump/shotgun/combat/mod,
 		/obj/item/weapon/ranged/bullet/pump/shotgun/semi,
-		/obj/item/bullet_cartridge/shotgun_12{amount=5}
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12/flechette,
+		/obj/item/bulletbox/small/shotgun_12/slug,
+
+		/obj/item/bulletbox/shotgun_12,
+		/obj/item/bulletbox/shotgun_12/flechette,
+		/obj/item/bulletbox/shotgun_12/slug,
 	)
 
 /obj/structure/interactive/vending/virtual_reality/weapons/rifles

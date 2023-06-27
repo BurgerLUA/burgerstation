@@ -15,19 +15,23 @@
 			return FALSE
 		var/insert_count = 0
 		for(var/k in src.stored_bullets)
-			if(!k) continue
-			var/obj/item/bullet_cartridge/B = k
-			if(!G.can_load_stored(caller,B))
-				caller.to_chat(span("warning","You can't load \the [B.name] into \the [object.name] with \the [src.name]!"))
-				break
-			var/target_point = get_first_missing_value(G.stored_bullets)
-			if(target_point == 0)
-				break
-			G.stored_bullets[target_point] = B
-			insert_count += 1
-			src.stored_bullets[B] -= 1
-			if(src.stored_bullets[B] <= 0)
-				src.stored_bullets -= B
+			var/bullet_count = src.stored_bullets[k]
+			for(var/i=1,i<=bullet_count,i++)
+				var/obj/item/bullet_cartridge/B = k
+				if(!G.can_load_stored(caller,B))
+					return TRUE
+				var/target_point = get_first_missing_value(G.stored_bullets)
+				if(target_point == 0)
+					return TRUE
+				src.stored_bullets[B] -= 1
+				if(src.stored_bullets[B] <= 0)
+					src.stored_bullets -= B
+				B = new B
+				INITIALIZE(B)
+				B.amount = 1
+				FINALIZE(B)
+				G.stored_bullets[target_point] = B
+				insert_count += 1
 		if(insert_count)
 			caller.to_chat(span("notice","You load [insert_count] bullet\s into \the [object.name]."))
 			G.update_sprite()

@@ -392,8 +392,6 @@
 
 	FOR_DVIEW(T, actual_range, source_turf, 0)
 
-		CHECK_TICK(75,FPS_SERVER*10)
-
 		if (light_angle && !facing_opaque)	// Directional lighting coordinate filter.
 			test_x = T.x - test_x_offset
 			test_y = T.y - test_y_offset
@@ -424,6 +422,8 @@
 						corners[val] = 0
 
 		turfs += T
+
+		CHECK_TICK(75,FPS_SERVER*10)
 
 	END_FOR_DVIEW
 

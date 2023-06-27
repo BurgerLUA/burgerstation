@@ -36,11 +36,13 @@
 /ai/proc/set_path_node(var/list/obj/marker/map_node/desired_path)
 
 	if(!desired_path || !length(desired_path))
-		node_path_current = null
-		node_path_start_turf = null
-		node_path_end_turf = null
-		node_path_current_step = null
-		frustration_node_path = 0
+		if(node_path_current)
+			node_path_current = null
+			node_path_start_turf = null
+			node_path_end_turf = null
+			node_path_current_step = null
+			frustration_node_path = 0
+			obstacles.Cut()
 		return TRUE
 
 	if(master_ai)
@@ -86,6 +88,7 @@
 			frustration_move = 0
 			astar_path_current.Cut()
 			astar_path_current = null
+			obstacles.Cut()
 		return TRUE
 
 	if(master_ai)

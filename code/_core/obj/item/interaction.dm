@@ -11,6 +11,7 @@
 			found_turf = object.loc
 		if(found_turf)
 			INTERACT_CHECK
+			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
 			var/result = FALSE
 			var/found_object = FALSE

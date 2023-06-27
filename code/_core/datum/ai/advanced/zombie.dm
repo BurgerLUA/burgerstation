@@ -27,15 +27,9 @@
 	target_distribution_y = list(25)
 
 
-
-
-
-
 /ai/advanced/zombie/clown
 	var/next_teleport = 0
 	var/next_breathe = 0
-
-
 
 /ai/advanced/zombie/clown/on_life()
 

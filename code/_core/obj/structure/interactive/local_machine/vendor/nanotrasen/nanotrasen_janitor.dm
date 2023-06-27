@@ -135,7 +135,6 @@
 		/obj/item/bulletbox/shotgun_12/flechette,
 		/obj/item/bulletbox/small/shotgun_12/slug,
 		/obj/item/bulletbox/shotgun_12/slug,
-		/obj/item/bullet_cartridge/shotgun_12/slug/cleaning{amount=5},
 		/obj/item/bulletbox/shotgun_12/slug/cleaning,
 		/obj/item/magazine/rifle_556,
 		/obj/item/magazine/lmg_556,
