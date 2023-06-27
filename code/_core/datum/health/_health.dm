@@ -39,9 +39,11 @@
 
 	. = damage_multiplier
 
+	var/health_to_consider = src.health_max - (damage[BRUTE] + damage[BURN] + damage[TOX] + damage[RAD])
+
 	//Reduced damage recieved if you're already fucked.
-	if(src.health_current < -src.health_max)
-		var/new_multiplier = -src.health_max / src.health_current
+	if(health_to_consider < -src.health_max)
+		var/new_multiplier = -src.health_max / (health_to_consider)
 		. *= new_multiplier
 
 	return .
