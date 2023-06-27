@@ -40,6 +40,11 @@
 
 /proc/find_safe_turf_for_event(var/desired_z=0,var/attempts=10)
 
+	if(attempts <= 0)
+		return null
+
+	var/offset_to_add = CEILING( (1/max_attempts)*min(world.maxx,world.maxy)*0.4 , 1)
+
 	var/offset = 0
 
 	if(!desired_z)
@@ -62,9 +67,9 @@
 				continue
 			return T2
 
-		offset += min(world.maxx,world.maxy)/(1 + attempts*4)
-		offset = FLOOR(offset,1)
+		offset += offset_to_add
 
+	return null
 
 
 
