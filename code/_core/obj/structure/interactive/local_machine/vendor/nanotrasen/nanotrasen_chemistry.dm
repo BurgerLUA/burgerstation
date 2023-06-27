@@ -57,18 +57,22 @@
 		/obj/item/container/simple/chemistry/ammonia,
 		/obj/item/container/simple/chemistry/sodium_chloride,
 		/obj/item/container/simple/chemistry/sulfur,
-		/obj/item/storage/pillbottle/consumer/chlorine,
-		/obj/item/storage/pillbottle/consumer/carbon,
-		/obj/item/container/simple/beaker/fuel_cell/oxygen,
-		/obj/item/container/simple/baking/sugar,
-		/obj/item/container/simple/beaker/fuel_cell/nitrogen,
-		/obj/item/container/simple/beaker/potassium,
 		/obj/item/container/simple/chemistry/silicon,
 		/obj/item/container/simple/chemistry/acetone,
-		/obj/item/container/simple/beaker/fuel_cell/phoron,
 		/obj/item/container/simple/chemistry/phenol,
+		/obj/item/storage/pillbottle/consumer/chlorine,
+		/obj/item/storage/pillbottle/consumer/carbon,
+		/obj/item/storage/pillbottle/consumer/charcoal,
+		/obj/item/storage/pillbottle/iron,
+		/obj/item/container/simple/baking/sugar,
 		/obj/item/container/simple/alcohol/ethanol,
-		/obj/item/container/simple/beaker/phosphorous
+		/obj/item/container/simple/beaker/fuel_cell/oxygen,
+		/obj/item/container/simple/beaker/fuel_cell/nitrogen,
+		/obj/item/container/simple/beaker/fuel_cell/phoron,
+		/obj/item/container/simple/beaker/fuel_cell/hydrogen,
+		/obj/item/container/simple/beaker/potassium,
+		/obj/item/container/simple/beaker/phosphorous,
+		/obj/item/container/simple/beaker/vial/enzymes
 	)
 
 	//Missing
@@ -79,9 +83,7 @@
 		/reagent/aluminium
 		/reagent/acid/sulphuric
 		/reagent/fuel/diethylamine
-		/reagent/medicine/charcoal
 		/reagent/copper
-		/reagent/iron
 		/reagent/sodium
 	*/
 
