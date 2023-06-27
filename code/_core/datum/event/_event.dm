@@ -59,13 +59,14 @@
 
 		var/turf/T = locate(rand_x,rand_y,desired_z)
 
-		for(var/turf/T2 in range(VIEW_RANGE,T))
-			if(T2.density || !T2.is_safe() || !T2.can_move_to())
-				continue
-			var/area/A = T2.loc
-			if(A.flags_area & FLAG_AREA_NO_EVENTS)
-				continue
-			return T2
+		if(T)
+			for(var/turf/T2 in range(VIEW_RANGE,T))
+				if(T2.density || T2.has_dense_atom || !T2.is_safe())
+					continue
+				var/area/A = T2.loc
+				if(A.flags_area & FLAG_AREA_NO_EVENTS)
+					continue
+				return T2
 
 		offset += offset_to_add
 
