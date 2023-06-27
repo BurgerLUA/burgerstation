@@ -43,7 +43,7 @@
 	if(attempts <= 0)
 		return null
 
-	var/offset_to_add = CEILING( (1/max_attempts)*min(world.maxx,world.maxy)*0.4 , 1)
+	var/offset_to_add = CEILING( (1/attempts)*min(world.maxx,world.maxy)*0.4 , 1)
 
 	var/offset = 0
 
