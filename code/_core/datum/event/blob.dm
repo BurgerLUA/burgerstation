@@ -7,9 +7,7 @@
 
 /event/blob/on_start()
 
-	var/z = SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"]
-
-	var/turf/T = find_safe_turf_for_event(z,attempts=10)
+	var/turf/T = find_safe_turf_for_event(attempts=10)
 
 	if(!T)
 		return FALSE

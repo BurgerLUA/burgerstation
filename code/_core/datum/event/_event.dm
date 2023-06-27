@@ -38,11 +38,15 @@
 
 
 
-/proc/find_safe_turf_for_event(var/desired_z=1,var/attempts=10)
+/proc/find_safe_turf_for_event(var/desired_z=0,var/attempts=10)
 
 	var/offset = 0
 
-	while(attempts > 0)
+	if(!desired_z)
+		desired_z = SSdmm_suite.file_to_z_level["maps/_core/mission.dmm"]
+
+	while(attempts > 1)
+
 		attempts--
 
 		var/turf/T = locate(rand(1+offset,world.maxx-offset),rand(1+offset,world.maxy-offset),desired_z)
@@ -62,6 +66,8 @@
 
 		offset += min(world.maxx,world.maxy)/(attempts*4)
 		offset = FLOOR(offset,1)
+
+
 
 
 

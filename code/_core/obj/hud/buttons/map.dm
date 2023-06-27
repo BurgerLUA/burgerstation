@@ -179,7 +179,7 @@
 	//Shuttle stuff.
 	var/obj/shuttle_controller/linked_shuttle_controller
 
-	var/map_z = 1
+	var/map_z = 2
 
 /obj/hud/button/map_background/clicked_on_by_object(var/mob/caller,var/atom/caller,location,control,params)
 	return TRUE

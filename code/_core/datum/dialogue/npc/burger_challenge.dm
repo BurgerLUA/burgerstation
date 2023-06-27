@@ -46,7 +46,7 @@
 			"Cancel",
 		) as null|anything in list("Jesus take the wheel!","NO WAY LOL","Cancel")
 		if(choice == "Jesus take the wheel!" && P.dialogue_target && P.dialogue_target.type == /mob/living/advanced/npc/unique/burger_challenge && get_dist(P,P.dialogue_target) <= 2)
-			var/turf/T = find_safe_turf_for_event()
+			var/turf/T = find_safe_turf_for_event(attempts = 10)
 			if(!T)
 				P.to_chat(span("warning","Something went wrong..."))
 				return .
