@@ -89,7 +89,7 @@
 		var/node_length = length(node_path_current)
 		if(node_length && get_dist(node_path_current[node_length],objective_move) < VIEW_RANGE*0.5)
 			should_path = FALSE
-		if(should_path && !set_path_fallback(T))
+		if(should_path && !set_path_fallback(T,pathing_object=objective_move))
 			set_move_objective(null) //Failure. Can't get there.
 			return FALSE
 
@@ -107,6 +107,19 @@
 		return FALSE
 
 	var/turf/current_turf = get_turf(owner)
+
+	if(astar_path_current_object)
+		var/turf/object_turf = get_turf(astar_path_current_object)
+		if(object_turf)
+			var/current_distance = get_dist(current_turf,object_turf)
+			if(current_distance <= astar_path_current_object_sensitivity_min)
+				set_path_astar(null)
+				return FALSE
+			else if(current_distance >= astar_path_current_object_sensitivity_max)
+				set_path_astar(object_turf,pathing_object=astar_path_current_object)
+				if(!length(astar_path_current))
+					return FALSE
+
 	var/turf/desired_turf = astar_path_current[1]
 	if(current_turf == desired_turf)
 		astar_path_current.Cut(1,2)

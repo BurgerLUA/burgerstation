@@ -93,32 +93,32 @@
 	return TRUE
 
 
-/obj/structure/interactive/field_generator/proc/clear_linkage(var/d)
+/obj/structure/interactive/field_generator/proc/clear_linkage(var/d) //d is a num.
 
 	var/rd = turn(d,180)
 	var/obj/structure/interactive/field_generator/FG = src.linked_field_gens["[d]"]
-
-	//Delete our stuff.
-	src.linked_field_gens -= "[d]"
-	if(src.linked_field_gen_walls["[d]"])
-		for(var/k in src.linked_field_gen_walls["[d]"])
-			var/obj/field_generator_wall/W = k
-			if(W)
-				continue
-			if(!W.qdeleting)
-				qdel(W)
-			CHECK_TICK(50,FPS_SERVER)
 
 	//Clear their stuff.
 	FG.linked_field_gens -= "[rd]"
 	if(FG.linked_field_gen_walls["[rd]"])
 		FG.linked_field_gen_walls["[rd]"].Cut()
 
+	//Delete our stuff.
+	src.linked_field_gens -= "[d]"
+	if(src.linked_field_gen_walls["[d]"])
+		for(var/k in src.linked_field_gen_walls["[d]"])
+			var/obj/field_generator_wall/W = k
+			if(!W || !W.qdeleting)
+				qdel(W)
+			CHECK_TICK(50,FPS_SERVER)
+		src.linked_field_gen_walls["[d]"].Cut()
+
+
 /obj/structure/interactive/field_generator/proc/update_barrier_chains()
 
 	. = FALSE
 
-	for(var/d in src.linked_field_gens)
+	for(var/d in src.linked_field_gens) //d is a string
 		var/obj/structure/interactive/field_generator/FG = src.linked_field_gens[d]
 		var/is_stable_connection = FG.active && src.active && (FG.stored_field_energy > 0 || src.stored_field_energy > 0)
 		if(is_stable_connection)
@@ -216,16 +216,6 @@
 
 	if( (old_field_state > 0 && stored_field_energy <= 0) || (old_field_state <= 0 && stored_field_energy > 0) ) //Stable field made unstable field, or vice vesa.
 		update_barrier_chains()
-
-
-
-
-		/*
-		for(var/d in linked_field_gens)
-			var/obj/structure/interactive/field_generator/FG = linked_field_gens[d]
-			if(FG.stored_field_energy <= 0)
-				clear_linkage(text2num(d))
-		*/
 
 	return TRUE
 

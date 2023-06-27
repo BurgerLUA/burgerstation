@@ -73,11 +73,15 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/attack_movement_obstructions = TRUE //Should attack ALL obstructions if blocked.
 
 	var/list/astar_path_current = list()
+	var/atom/astar_path_current_object
+	var/astar_path_current_object_sensitivity_max = 4 //Distance from the target to repath. If the distance is more than this, repath the path.
+	var/astar_path_current_object_sensitivity_min = 2 //Distance from the target to not repath. If the distance is less than this, remove the path.
 
 	var/node_path_current_step = 1
 	var/list/obj/marker/map_node/node_path_current = list()
 	var/turf/node_path_start_turf
 	var/turf/node_path_end_turf
+	var/node_path_current_object
 
 	var/turf/last_combat_location //last location where there was an objective_attack
 

@@ -1,19 +1,13 @@
 #define CHECK_TICK(limit,max_delays) \
-	if(world_state < STATE_RUNNING) {\
-		while(world.tick_usage > limit) {\
-			sleep(TICK_LAG * (world.tick_usage/limit)) \
-		}\
+	if(limit <= 0 || world_state < STATE_RUNNING) { \
+		CHECK_TICK_HARD\
 	}\
 	else if(world.tick_usage > limit) { \
 		var/safety_count=0; \
 		while(world.tick_usage > limit && (max_delays >= safety_count)) {\
-			safety_count++; \
-			if(limit <= 0) { \
-				sleep(1) \
-			} \
-			else{ \
-				sleep(TICK_LAG * (1 + min(FPS_SERVER,world.tick_usage/limit)*3)); \
-			} \
+			var/time_to_sleep = CEILING(1 + (world.tick_usage - limit)/5,1); \
+			safety_count += time_to_sleep; \
+			sleep(TICK_LAG * time_to_sleep) \
 		}\
 	}
 
