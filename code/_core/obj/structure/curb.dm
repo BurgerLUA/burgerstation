@@ -1,7 +1,7 @@
 /obj/structure/sidewalk_curb
 	name = "sidewalk curb"
 	icon = 'icons/obj/structure/table/curb.dmi'
-	icon_state = "curb"
+	icon_state = "base"
 	mouse_opacity = 0
 	alpha = 255
 

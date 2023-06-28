@@ -1,47 +1,38 @@
 /turf/simulated/floor/road
 	name = "road"
 	icon = 'icons/turf/floor/road.dmi'
-	icon_state = "0,0"
+	icon_state = "road"
 
 	footstep = /footstep/concrete
 
 	map_color = COLOR_GREY_DARK
 
-	plane = PLANE_ROAD
-	layer = -999
-
 	health_base = 500
 
-/turf/simulated/floor/road/New(var/desired_loc)
-	icon_state = "[x % 10],[y % 10]"
-	. = ..()
+	layer = LAYER_FLOOR_ROAD
 
 /turf/simulated/floor/sidewalk
 	name = "sidewalk"
-	icon = 'icons/turf/floor/sidewalk.dmi'
-	icon_state = "0,0"
+
+	icon = 'icons/turf/floor/icons.dmi'
+	icon_state = "sidewalk"
+
+	real_icon = 'icons/turf/floor/sidewalk_new.dmi'
+	real_icon_state = "sidewalk"
+
+	corner_icons = TRUE
+	corner_category = "curb"
 
 	footstep = /footstep/concrete
 
 	map_color = COLOR_GREY
 
-	plane = PLANE_ROAD
-	layer = -998
+	layer = LAYER_FLOOR_SIDEWALK
 
 	health_base = 400
 
-/turf/simulated/floor/sidewalk/New(var/desired_loc)
-	icon_state = "[x % 10],[y % 10]"
-	. = ..()
-
-/turf/simulated/floor/sidewalk/Finalize()
-	. = ..()
-	update_sprite()
-	var/obj/structure/sidewalk_curb/SC = new(src)
-	if(SSobj.initialized)
-		INITIALIZE(SC)
-		GENERATE(SC)
-		FINALIZE(SC)
+/turf/simulated/floor/sidewalk/should_smooth_with(var/turf/simulated/T)
+	return T.type != /turf/simulated/floor/road
 
 /turf/simulated/floor/sidewalk/update_overlays()
 
@@ -56,13 +47,19 @@
 		desired_shade_direction |= k
 
 	if((desired_shade_direction & NORTH) && (desired_shade_direction & SOUTH))
-		desired_shade_direction &= ~NORTH
+		if(x % 2)
+			desired_shade_direction &= ~NORTH
+		else
+			desired_shade_direction &= ~SOUTH
 
 	if((desired_shade_direction & EAST) && (desired_shade_direction & WEST))
-		desired_shade_direction &= ~EAST
+		if(y % 2)
+			desired_shade_direction &= ~EAST
+		else
+			desired_shade_direction &= ~WEST
 
 	if(desired_shade_direction)
-		var/image/I = new/image(initial(icon),"shading")
+		var/image/I = new/image(initial(real_icon),"shading")
 		add_overlay(I)
 
 	src.dir = desired_shade_direction

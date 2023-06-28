@@ -8,8 +8,6 @@
 
 //Turfs
 
-#define PLANE_ROAD -60
-
 #define PLANE_FLOOR_BELOW -50 //For openspace.
 
 #define PLANE_WATER_FLOOR -47
