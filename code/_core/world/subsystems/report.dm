@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(report)
 	var/min_tick = INFINITY
 	var/max_tick = -INFINITY
 
+	var/runtime_count = 0
+
 	var/next_report = 0
 	var/profiling = 0
 
@@ -70,7 +72,8 @@ SUBSYSTEM_DEF(report)
 	Tick Usage: (\
 	MIN:<div class='[min_tick >= 50 ? "red bold" : "blue bold"]'>[min_tick]%</div>, \
 	MAX:<div class='[max_tick >= 90 ? "red bold" : "blue bold"]'>[max_tick]%</div>, \
-	AVG:<div class='[average_tick >= 75 ? "red bold" : "blue bold"]'>[average_tick]%</div>)<br>"
+	AVG:<div class='[average_tick >= 75 ? "red bold" : "blue bold"]'>[average_tick]%</div>)<br>\
+	Runtime Count:<div class='[runtime_count > 0 ? "red bold" : "blue bold"]'>[runtime_count]</div><br>"
 
 	if(length(sorted_profile_output_self))
 		string_to_send += "<u>Most Expensive Procs (self CPU%):</u><br>"
@@ -88,9 +91,7 @@ SUBSYSTEM_DEF(report)
 			var/value = sorted_profile_output_real[name]
 			string_to_send += "[name]: <div class='[value >= PROFILING_DELAY_SECONDS*0.5 ? "red bold" : "blue bold"]'>[CEILING(value,0.01)]</div> seconds.<br>"
 
-
-
-	broadcast_to_clients(span("debug",string_to_send))
+	broadcast_to_clients(span("debug",string_to_send),CHAT_TYPE_DEBUG)
 
 	average_cpu = initial(average_cpu)
 	min_cpu = initial(min_cpu)
@@ -98,6 +99,7 @@ SUBSYSTEM_DEF(report)
 	average_tick = initial(average_tick)
 	min_tick = initial(min_tick)
 	max_tick = initial(max_tick)
+	runtime_count = initial(runtime_count)
 
 	profiling = FALSE
 

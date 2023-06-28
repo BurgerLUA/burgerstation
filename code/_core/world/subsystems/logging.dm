@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(logging)
 				list(
 					list(
 						"text" = span(identifier,log_string),
-						"output_target_list" = list("chat_all.output")
+						"output_target_list" = (identifier_to_rank[identifier] & FLAG_PERMISSION_DEVELOPER) ? list("chat_debug.output") : list("chat_all.output")
 					)
 				)
 			)

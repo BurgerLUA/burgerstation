@@ -15,6 +15,7 @@
 		winset(src,"chat_combat.output","style='body{background-color:[white];}[STYLESHEET]'")
 		winset(src,"chat_looc.output","style='body{background-color:[white];}[STYLESHEET]'")
 		winset(src,"chat_ooc.output","style='body{background-color:[white];}[STYLESHEET]'")
+		winset(src,"chat_debug.output","style='body{background-color:[white];}[STYLESHEET]'")
 		winset(src,"chat_say.output","style='body{background-color:[white];}[STYLESHEET]'")
 
 		winset(src,"control.input","text-color=[white]")

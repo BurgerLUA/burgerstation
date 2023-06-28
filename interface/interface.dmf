@@ -159,6 +159,7 @@ window "chat"
 		size = 800x800
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Chat Tabs"
 		titlebar = false
@@ -167,6 +168,8 @@ window "chat"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 814x814
+		inner-size = 800x800
 	elem "tab"
 		type = TAB
 		pos = 0,0
@@ -175,8 +178,9 @@ window "chat"
 		anchor2 = 100,100
 		font-family = "Arial Narrow"
 		font-size = 10
+		background-color = none
 		saved-params = ""
-		tabs = "chat_all,chat_say,chat_looc,chat_ooc,chat_combat"
+		tabs = "chat_all,chat_say,chat_looc,chat_ooc,chat_combat,chat_debug"
 		current-tab = "chat_all"
 
 window "chat_all"
@@ -222,6 +226,25 @@ window "chat_combat"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+	elem "output"
+		type = OUTPUT
+		pos = 0,0
+		size = 800x800
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "max-lines"
+
+window "chat_debug"
+	elem "chat_debug"
+		type = MAIN
+		pos = 281,0
+		size = 800x800
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Debug"
+		is-pane = true
+		can-scroll = vertical
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
@@ -385,20 +408,16 @@ window "edit"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-visible = false
 		border = sunken
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Edit"
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "exit"
 		type = BUTTON
 		pos = 540,460
 		size = 100x20
 		anchor1 = 100,100
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "is-checked"
 		text = "Save and Exit"
 		command = ""

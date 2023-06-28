@@ -6,6 +6,9 @@ var/global/list/tracker_errors_spam = list()
 
 /world/Error(var/exception/e)
 
+	if(SSreport)
+		SSreport.runtime_count += 1
+
 	var/error_title = "[e.name] in [e.file]:[e.line]"
 	var/error_details = "[e.desc]"
 
