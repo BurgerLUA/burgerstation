@@ -72,6 +72,10 @@
 /area/mission/prefab/house/house_02/hallway
 	icon_state = "orange"
 
+/area/mission/prefab/house/house_02/basement
+	requires_power = FALSE
+	icon_state = "red"
+
 //House 03
 /area/mission/prefab/house/house_03
 	name = "house 03"
@@ -95,6 +99,9 @@
 /area/mission/prefab/house/house_03/closet
 	icon_state = "blue"
 
+/area/mission/prefab/house/house_03/basement
+	requires_power = FALSE
+	icon_state = "red"
 //House 04
 /area/mission/prefab/house/house_04
 	name = "house 04"
@@ -208,6 +215,10 @@
 
 /area/mission/prefab/house/house_08/closet
 	icon_state = "blue"
+
+/area/mission/prefab/house/house_08/basement
+	requires_power = FALSE
+	icon_state = "red"
 
 
 //House 09

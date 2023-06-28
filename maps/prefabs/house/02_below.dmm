@@ -1,0 +1,673 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aU" = (
+/obj/structure/interactive/lighting/fixture/tube/syndicate{
+	dir = 1;
+	icon_state = "preview"
+	},
+/obj/structure/table/wood,
+/obj/item/container/edible/pill/space_dust{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/container/edible/pill/space_drugs{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/container/edible/pill/omnizine{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/container/simple/beaker/bottle/medium,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"bT" = (
+/obj/effect/cleanable/tile_rot,
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"cs" = (
+/obj/structure/interactive/crate/coffin,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"db" = (
+/obj/effect/cleanable/blood/splatter,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"dl" = (
+/obj/marker/spawning/random/food,
+/obj/structure/table/wood,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"dI" = (
+/obj/structure/interactive/construction/reinf_girder,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"eg" = (
+/obj/effect/cleanable/blood/line{
+	dir = 1
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"gr" = (
+/obj/structure/interactive/misc/curtain_open,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"gJ" = (
+/turf/simulated/floor/chasm,
+/area/dmm_suite/clear_area)
+"hV" = (
+/obj/structure/interactive/fire_closet{
+	dir = 4
+	},
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"ik" = (
+/obj/structure/interactive/light_switch{
+	dir = 8;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"iI" = (
+/obj/structure/interactive/construction/reinf_girder,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"jb" = (
+/obj/structure/interactive/bed,
+/obj/structure/interactive/misc/curtain_open,
+/obj/item/supply_crate/medicine,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"jE" = (
+/obj/effect/cleanable/blood/line{
+	dir = 8
+	},
+/obj/item/weapon/melee/tool/pickaxe,
+/obj/effect/cleanable/scorch,
+/obj/effect/cleanable/blood/line{
+	dir = 6
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"jS" = (
+/obj/marker/cover_node/right{
+	dir = 8;
+	icon_state = "right"
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"jV" = (
+/obj/structure/short_wall/sand,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"kK" = (
+/obj/marker/cover_node/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"lS" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent{
+	dir = 4
+	},
+/obj/structure/interactive/construction/reinf_girder,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"oh" = (
+/obj/effect/cleanable/tile_rot,
+/obj/structure/interactive/storage/ammo_pile{
+	pixel_y = -7
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"oA" = (
+/obj/item/crafting_bench/pill_press{
+	pixel_y = 12
+	},
+/obj/structure/table/wood,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"oT" = (
+/obj/structure/interactive/plant/glowcap,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"pf" = (
+/obj/structure/interactive/construction/reinf_girder,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"pF" = (
+/obj/item/container/healing/cable,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"pH" = (
+/obj/structure/interactive/bed,
+/obj/effect/cleanable/cobweb,
+/obj/structure/interactive/misc/curtain_open,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"qp" = (
+/obj/decal/poster/painting,
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"qJ" = (
+/turf/simulated/wall/rock/indestructable,
+/area/dmm_suite/clear_area)
+"uu" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"uL" = (
+/obj/effect/cleanable/blood/line,
+/obj/effect/cleanable/scorch,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"uU" = (
+/obj/structure/interactive/light_switch{
+	dir = 1;
+	icon_state = "setup"
+	},
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"vb" = (
+/obj/item/container/edible/pill/space_drugs,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"vg" = (
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"vt" = (
+/mob/living/advanced/npc/bandit{
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"vJ" = (
+/mob/living/advanced/npc/bandit,
+/obj/marker/cover_node/right{
+	dir = 4;
+	icon_state = "right"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"wc" = (
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"xW" = (
+/obj/marker/map_node,
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"yV" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"AZ" = (
+/obj/effect/cleanable/blood/line{
+	dir = 9
+	},
+/obj/effect/cleanable/scorch,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"CH" = (
+/obj/structure/interactive/bookcase,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Dw" = (
+/obj/item/paper/book{
+	color = "#00FF00";
+	name = "Greentext"
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"DJ" = (
+/obj/structure/short_wall/sand,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"Ez" = (
+/obj/effect/cleanable/tile_rot,
+/obj/structure/interactive/bed/sheet,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"EG" = (
+/obj/effect/cleanable/blood/line{
+	dir = 8
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"FR" = (
+/obj/marker/cover_node/right{
+	dir = 1;
+	icon_state = "right"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"GH" = (
+/obj/structure/interactive/bed,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"GS" = (
+/obj/structure/interactive/bed,
+/obj/item/container/syringe/hypodermic/opium,
+/obj/effect/cleanable/tile_rot,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Hu" = (
+/mob/living/advanced/npc/bandit,
+/turf/simulated/floor/plating,
+/area/mission/prefab/house/house_02/basement)
+"IP" = (
+/obj/structure/interactive/lighting/fixture/tube/fluorescent,
+/mob/living/advanced/npc/bandit,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Je" = (
+/obj/structure/table/wood,
+/obj/item/storage/pillbottle{
+	pixel_y = 6
+	},
+/obj/item/clothing/back/storage/dufflebag/poly/nanotrasen{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"JE" = (
+/obj/structure/interactive/crate/trash,
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Ka" = (
+/obj/item/material/sheet/iron,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"MC" = (
+/obj/marker/cover_node{
+	dir = 8
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"MU" = (
+/obj/structure/interactive/construction/machine_frame,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Nu" = (
+/obj/effect/cleanable/tile_rot,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"NC" = (
+/obj/structure/interactive/construction/reinf_girder,
+/turf/simulated/floor/plating,
+/area/dmm_suite/clear_area)
+"OR" = (
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"PQ" = (
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Rb" = (
+/turf/simulated/floor/stair/ztravel/wood,
+/area/mission/prefab/house/house_02/basement)
+"Rd" = (
+/obj/structure/interactive/ore_box,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Rm" = (
+/obj/structure/interactive/lighting/fixture/bulb/green,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"TX" = (
+/obj/effect/cleanable/tile_rot,
+/obj/structure/interactive/bookcase,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"UP" = (
+/mob/living/advanced/npc/bandit{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"UR" = (
+/obj/effect/cleanable/blood/splatter/grease,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Vr" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/chair/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Vu" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/effect/cleanable/tile_rot,
+/obj/structure/interactive/bed/sheet,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"VZ" = (
+/obj/structure/interactive/power/apc{
+	dir = 8;
+	icon_state = "apc"
+	},
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"WC" = (
+/obj/structure/interactive/reagent_tank/barrel/water,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Xu" = (
+/obj/effect/cleanable/tile_rot,
+/obj/structure/interactive/fax_machine,
+/obj/structure/table/wood,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Yr" = (
+/obj/structure/interactive/bed,
+/obj/item/container/edible/pill/space_drugs,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+"Yw" = (
+/obj/structure/scenery/rocks{
+	icon_state = "rock_6"
+	},
+/turf/dmm_suite/no_wall,
+/area/dmm_suite/clear_area)
+"YE" = (
+/obj/structure/interactive/lighting/fixture/tube{
+	dir = 1;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_02/basement)
+
+(1,1,1) = {"
+yV
+yV
+yV
+yV
+yV
+yV
+yV
+qJ
+qJ
+qJ
+qJ
+qJ
+yV
+yV
+yV
+yV
+"}
+(2,1,1) = {"
+yV
+PQ
+PQ
+qp
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+qJ
+yV
+yV
+yV
+yV
+"}
+(3,1,1) = {"
+yV
+PQ
+pH
+Vu
+GS
+GH
+lS
+hV
+Xu
+Vr
+PQ
+qJ
+yV
+yV
+yV
+yV
+"}
+(4,1,1) = {"
+OR
+PQ
+vg
+Nu
+Nu
+vg
+vg
+vg
+vg
+vg
+PQ
+qJ
+gJ
+gJ
+gJ
+yV
+"}
+(5,1,1) = {"
+OR
+PQ
+jb
+Yr
+Ez
+GS
+iI
+vg
+vg
+dl
+uU
+qJ
+gJ
+Dw
+gJ
+yV
+"}
+(6,1,1) = {"
+oT
+PQ
+iI
+iI
+vg
+vg
+vg
+vg
+uu
+dl
+PQ
+qJ
+gJ
+gJ
+gJ
+yV
+"}
+(7,1,1) = {"
+Yw
+PQ
+IP
+UR
+vg
+vJ
+vg
+vg
+vg
+JE
+PQ
+qJ
+qJ
+qJ
+yV
+yV
+"}
+(8,1,1) = {"
+OR
+PQ
+TX
+ik
+jV
+jV
+vg
+jV
+kK
+YE
+PQ
+PQ
+PQ
+qJ
+yV
+yV
+"}
+(9,1,1) = {"
+OR
+PQ
+VZ
+PQ
+vg
+vg
+vg
+jV
+vt
+vg
+CH
+CH
+PQ
+qJ
+qJ
+qJ
+"}
+(10,1,1) = {"
+OR
+OR
+UP
+PQ
+vg
+Rb
+bT
+jV
+uu
+vg
+vg
+oh
+PQ
+qp
+PQ
+PQ
+"}
+(11,1,1) = {"
+UP
+OR
+PQ
+PQ
+Rm
+vg
+vg
+jV
+vt
+Nu
+vg
+vg
+gr
+vg
+oA
+PQ
+"}
+(12,1,1) = {"
+OR
+OR
+PQ
+Hu
+wc
+vg
+vg
+jV
+FR
+vg
+vg
+vg
+gr
+vg
+aU
+PQ
+"}
+(13,1,1) = {"
+oT
+OR
+PQ
+dI
+DJ
+jV
+vg
+MC
+vg
+vg
+vg
+vg
+gr
+vg
+Je
+PQ
+"}
+(14,1,1) = {"
+xW
+OR
+OR
+yV
+AZ
+uL
+db
+pF
+vg
+vb
+uu
+vg
+gr
+vg
+Rd
+PQ
+"}
+(15,1,1) = {"
+cs
+eg
+eg
+eg
+jE
+NC
+DJ
+WC
+MU
+pF
+MU
+Ka
+gr
+WC
+Rd
+PQ
+"}
+(16,1,1) = {"
+OR
+oT
+OR
+pf
+EG
+jS
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+PQ
+"}

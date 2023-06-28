@@ -1,0 +1,400 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"b" = (
+/obj/structure/table/cult,
+/obj/item/weapon/melee/sword/cult_dagger,
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"c" = (
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"j" = (
+/mob/living/simple/cult/construct/behemoth{
+	dir = 1
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"n" = (
+/mob/living/advanced/npc/cultist/old{
+	dir = 4
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"s" = (
+/obj/structure/interactive/lighting/cult_pylon,
+/obj/marker/cover_node/left{
+	dir = 4;
+	icon_state = "left"
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"t" = (
+/turf/simulated/wall/cult,
+/area/mission/prefab/house/house_03/basement)
+"u" = (
+/obj/structure/table/cult,
+/obj/item/clothing/overwear/armor/cult/old,
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"v" = (
+/obj/structure/interactive/chair/wood{
+	dir = 8;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"w" = (
+/obj/structure/interactive/chair/wood{
+	dir = 8;
+	icon_state = "wooden_chair"
+	},
+/obj/marker/cover_node/right{
+	dir = 1;
+	icon_state = "right"
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"x" = (
+/obj/marker/cover_node/right{
+	dir = 8;
+	icon_state = "right"
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"z" = (
+/obj/structure/interactive/lighting/cult_pylon,
+/obj/marker/cover_node/right{
+	dir = 4;
+	icon_state = "right"
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"B" = (
+/obj/structure/table/cooking/bonfire,
+/obj/item/paper/book/controls,
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"F" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"M" = (
+/turf/simulated/floor/stair/ztravel/wood,
+/area/mission/prefab/house/house_03/basement)
+"Q" = (
+/obj/marker/map_node,
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"S" = (
+/mob/living/advanced/npc/cultist{
+	dir = 8
+	},
+/obj/structure/interactive/chair/wood{
+	dir = 8;
+	icon_state = "wooden_chair"
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"T" = (
+/mob/living/simple/cult/construct/behemoth{
+	dir = 4
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+"Y" = (
+/obj/marker/cover_node/left{
+	dir = 1
+	},
+/turf/simulated/floor/cult,
+/area/mission/prefab/house/house_03/basement)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+t
+t
+t
+t
+t
+t
+t
+a
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+t
+F
+u
+b
+u
+F
+t
+a
+a
+a
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+t
+z
+c
+n
+T
+s
+t
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+t
+t
+t
+t
+v
+c
+v
+t
+t
+a
+a
+a
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+t
+c
+M
+t
+S
+Q
+S
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+t
+Q
+t
+t
+w
+c
+v
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+t
+c
+x
+j
+c
+c
+c
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+t
+c
+c
+c
+c
+Q
+c
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+t
+t
+t
+t
+Y
+B
+c
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+t
+t
+t
+t
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}

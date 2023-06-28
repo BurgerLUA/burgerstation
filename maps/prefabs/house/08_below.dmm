@@ -1,0 +1,512 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"c" = (
+/turf/simulated/floor/stair/ztravel/wood{
+	dir = 8
+	},
+/area/mission/prefab/house/house_08/basement)
+"e" = (
+/obj/structure/interactive/lighting/fixture/bulb,
+/obj/structure/interactive/bookcase,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"i" = (
+/obj/structure/interactive/crate/closet/anchored{
+	pixel_x = -9
+	},
+/obj/marker/spawning/random/trash,
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"k" = (
+/obj/structure/interactive/chair/comfy{
+	dir = 8;
+	icon_state = "comfychair"
+	},
+/mob/living/advanced/npc/bandit{
+	dir = 8;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"l" = (
+/obj/structure/interactive/potted_plant/bin,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"o" = (
+/obj/structure/interactive/storage/trash_pile,
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"p" = (
+/obj/structure/interactive/chair/comfy{
+	dir = 8;
+	icon_state = "comfychair"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"s" = (
+/obj/structure/interactive/chair/comfy{
+	dir = 4
+	},
+/mob/living/advanced/npc/bandit{
+	dir = 4;
+	icon_state = "directional"
+	},
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"u" = (
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"v" = (
+/obj/structure/interactive/bookcase,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"w" = (
+/obj/structure/interactive/storage/trash_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"x" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/storage/safe,
+/obj/structure/interactive/storage/trash_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"y" = (
+/obj/marker/cover_node/right{
+	dir = 1;
+	icon_state = "right"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"z" = (
+/obj/structure/interactive/chair/comfy{
+	dir = 4
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"A" = (
+/obj/structure/interactive/crate/closet/anchored{
+	pixel_x = -9
+	},
+/obj/marker/spawning/random/trash,
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"B" = (
+/obj/structure/interactive/crate/chest/filled,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"C" = (
+/obj/structure/table/wood,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"D" = (
+/turf/dmm_suite/clear_turf,
+/area/dmm_suite/clear_area)
+"F" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/marker/cover_node/left{
+	dir = 8;
+	icon_state = "left"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"H" = (
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"I" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/marker/cover_node/right{
+	dir = 8;
+	icon_state = "right"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"J" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 8;
+	icon_state = "preview"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"K" = (
+/obj/marker/cover_node/right,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"L" = (
+/obj/marker/cover_node/left{
+	dir = 1;
+	icon_state = "left"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"M" = (
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"N" = (
+/obj/structure/interactive/chair/comfy{
+	dir = 4
+	},
+/mob/living/advanced/npc/bandit{
+	dir = 4;
+	icon_state = "directional"
+	},
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"R" = (
+/obj/structure/interactive/door/airlock/wood,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"T" = (
+/obj/structure/table/wood,
+/obj/marker/spawning/random/dangerous,
+/obj/structure/carpet/red,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"U" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 4;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/storage/trash_pile,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"V" = (
+/obj/marker/cover_node/left,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"W" = (
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"X" = (
+/mob/living/advanced/npc/bandit{
+	dir = 8;
+	icon_state = "directional"
+	},
+/obj/marker/map_node,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"Y" = (
+/obj/structure/interactive/lighting/fixture/bulb{
+	dir = 1;
+	icon_state = "preview"
+	},
+/obj/structure/interactive/bookcase,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+"Z" = (
+/obj/structure/interactive/crate/closet/anchored{
+	pixel_x = -9
+	},
+/obj/marker/spawning/random/trash,
+/turf/simulated/floor/wood/brown,
+/area/mission/prefab/house/house_08/basement)
+
+(1,1,1) = {"
+D
+D
+D
+a
+a
+a
+D
+D
+D
+D
+D
+D
+D
+a
+a
+a
+"}
+(2,1,1) = {"
+D
+D
+D
+a
+x
+a
+a
+a
+a
+a
+a
+a
+a
+a
+U
+a
+"}
+(3,1,1) = {"
+D
+D
+D
+a
+H
+a
+H
+B
+w
+W
+H
+B
+H
+a
+H
+a
+"}
+(4,1,1) = {"
+D
+D
+D
+a
+H
+a
+a
+a
+a
+a
+a
+a
+a
+a
+w
+a
+"}
+(5,1,1) = {"
+D
+D
+D
+a
+w
+a
+H
+H
+H
+a
+H
+H
+H
+a
+w
+a
+"}
+(6,1,1) = {"
+D
+D
+D
+a
+o
+a
+K
+a
+H
+c
+H
+a
+L
+a
+M
+a
+"}
+(7,1,1) = {"
+D
+D
+D
+a
+H
+a
+H
+F
+H
+H
+H
+I
+H
+a
+H
+a
+"}
+(8,1,1) = {"
+D
+D
+D
+a
+H
+a
+H
+H
+H
+X
+H
+H
+H
+a
+H
+a
+"}
+(9,1,1) = {"
+D
+D
+D
+a
+V
+a
+a
+R
+a
+R
+a
+R
+a
+a
+y
+a
+"}
+(10,1,1) = {"
+D
+D
+D
+a
+H
+H
+i
+H
+A
+H
+i
+H
+Z
+H
+H
+a
+"}
+(11,1,1) = {"
+D
+D
+D
+a
+v
+M
+H
+N
+z
+s
+N
+z
+H
+M
+v
+a
+"}
+(12,1,1) = {"
+D
+D
+D
+a
+e
+H
+u
+C
+T
+C
+C
+C
+u
+H
+Y
+a
+"}
+(13,1,1) = {"
+D
+D
+D
+a
+v
+H
+u
+C
+C
+C
+C
+T
+u
+H
+v
+a
+"}
+(14,1,1) = {"
+D
+D
+D
+a
+v
+H
+H
+k
+p
+p
+k
+k
+H
+H
+v
+a
+"}
+(15,1,1) = {"
+D
+D
+D
+a
+H
+l
+H
+H
+H
+J
+H
+H
+H
+l
+H
+a
+"}
+(16,1,1) = {"
+D
+D
+D
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
