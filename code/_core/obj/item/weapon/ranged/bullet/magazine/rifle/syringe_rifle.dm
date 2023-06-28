@@ -79,6 +79,10 @@
 
 	rarity = RARITY_UNCOMMON
 
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_base_value()
+	. = ..()
+	. += 1000
+
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/update_icon()
 	if(stored_magazine)
 		var/obj/item/magazine/M = stored_magazine
@@ -96,14 +100,14 @@
 
 	. = ..()
 
-	if(stored_magazine && stored_magazine.reagents)
+	if(. && stored_magazine && stored_magazine.reagents)
 		for(var/k in .)
 			var/obj/projectile/P = k
 			if(P.reagents)
 				stored_magazine.reagents.transfer_reagents_to(P.reagents,reagent_per_shot, caller = caller)
-
-
-
+				if(P.reagents && P.reagents.volume_current > 0 && !P.reagents.contains_lethal) //I love race conditions!
+					P.hostile = FALSE
+					P.damage_type = null
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_static_spread()
 	return 0

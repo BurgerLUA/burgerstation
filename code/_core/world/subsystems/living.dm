@@ -52,6 +52,37 @@ SUBSYSTEM_DEF(living)
 		var/addiction/A = new k
 		stored_addictions[k] = A
 
+	var/total_spawnpoints = 0
+	for(var/k in src.all_living) //Setup spawnpoints for respawning mobs.
+		var/mob/living/L = k
+		if(!is_turf(L.loc))
+			continue
+		var/turf/T = L.loc
+		var/area/A = T.loc
+
+
+		var/chunk/CH = CHUNK(T)
+
+		if(L.ai)
+			CH.ai += L.ai
+
+		if(A.safe_storage)
+			continue
+
+		if(!L.respawn)
+			continue
+
+		if(!is_simulated(T))
+			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
+			continue
+
+		var/obj/marker/mob_spawn/M = new(T,L)
+		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
+		CH.spawning_markers += M
+		total_spawnpoints++
+
+	log_subsystem(src.name,"Created [total_spawnpoints] mob spawnpoints.")
+
 	next_report = world.time + initial(next_report)
 
 	. = ..()

@@ -202,6 +202,8 @@
 	name = "syndicate nightvision goggles"
 	desc_extended = "A pair of tactical nightvision goggles. Keep away from light. Better than most nightvision goggles on the market."
 
+	icon = 'icons/obj/item/clothing/glasses/nightvision_syndicate.dmi'
+
 	nightvision_power = 200
 
 	rarity = RARITY_MYTHICAL

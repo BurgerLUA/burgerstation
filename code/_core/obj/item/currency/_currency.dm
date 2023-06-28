@@ -47,7 +47,9 @@
 	desc_extended = "Currency primarily used by syndicate operatives."
 	icon = 'icons/obj/item/currency/telecrystals.dmi'
 	icon_state = "1"
-	value = 200
+	value = 100
+
+	amount_max = 5000
 
 	currency_class = "telecrystal"
 
@@ -72,6 +74,8 @@
 	icon = 'icons/obj/item/currency/ticket.dmi'
 	icon_state = "1"
 	value = 0.25
+
+	amount_max = 10000
 
 	currency_class = "prize ticket"
 

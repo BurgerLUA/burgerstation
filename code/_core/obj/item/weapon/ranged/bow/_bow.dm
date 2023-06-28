@@ -217,6 +217,15 @@
 	. = ..()
 	if(!.) return stored_arrow
 
+/obj/item/weapon/ranged/bow/hardlight/syndicate
+	name = "syndicate laser bow"
+	icon = 'icons/obj/item/weapons/ranged/bow/laser_bow.dmi'
+	icon_state_count = 3
+	stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight/syndicate
+	ranged_damage_type = /damagetype/ranged/bow/hardlight/syndicate
+	stage_per_decisecond = 8
+	stage_max = 75
+
 /obj/item/weapon/ranged/bow/ashen
 	name = "ashen bow"
 	desc = "So sacred, not even ashwalkers use it."

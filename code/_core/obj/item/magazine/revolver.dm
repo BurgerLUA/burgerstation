@@ -86,3 +86,8 @@
 	icon_states = 6
 
 	value = 15
+
+/obj/item/magazine/clip/revolver/bullet_357/heap
+	name = "\improper .357 HEAP speedloader"
+	ammo = /obj/item/bullet_cartridge/revolver_357/heap
+	ammo_surplus = /obj/item/bullet_cartridge/revolver_357/surplus

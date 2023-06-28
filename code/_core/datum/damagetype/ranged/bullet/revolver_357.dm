@@ -15,6 +15,18 @@
 	damage_mod = ARMOR_DAM_MUL
 	penetration_mod = ARMOR_AP_MUL
 
+/damagetype/ranged/bullet/revolver_357/heap
+	attack_damage_base = list(
+		BLUNT = 40,
+		BOMB = 30
+	)
+	attack_damage_penetration = list(
+		BLUNT = 25,
+		BOMB = 25
+	)
+	damage_mod = ARMOR_DAM_MUL
+	penetration_mod = ARMOR_AP_MUL
+
 /damagetype/ranged/bullet/revolver_38
 	attack_damage_base = list(
 		BLUNT = 40,

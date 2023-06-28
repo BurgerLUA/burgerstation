@@ -32,6 +32,11 @@
 	icon = 'icons/obj/projectiles/arrow.dmi'
 	icon_state = "hardlight"
 
+/obj/projectile/bullet/arrow/hardlight/syndicate
+	name = "arrow"
+	icon = 'icons/obj/projectiles/arrow.dmi'
+	icon_state = "hardlight_syndicate"
+
 /obj/projectile/bullet/tungsten
 	name = "tungsten bolt"
 	icon = 'icons/obj/projectiles/bolt.dmi'
@@ -41,23 +46,20 @@
 	name = "launched syringe"
 	icon = 'icons/obj/projectiles/bolt.dmi'
 	icon_state = "syringe"
-	var/reagent_to_add = /reagent/medicine/omnizine
-	var/volume_to_add = 15
-
-/obj/projectile/bullet/syringe/Initialize()
-	. = ..()
-	var/reagent/R = REAGENT(reagent_to_add)
-	hostile = R.lethal
+	reagents = /reagent_container/syringe_gun_syringe
 
 /obj/projectile/bullet/syringe/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
 
 	. = ..()
 
-	if(. && is_living(hit_atom))
-		var/mob/living/L = hit_atom
-		if(L.reagents)
-			L.reagents.add_reagent(reagent_to_add,volume_to_add,caller=owner)
-		return TRUE
+	if(. &&  src.reagents && hit_atom.reagents && owner && !owner.qdeleting && is_living(hit_atom))
+		if(hostile) //Has bad reagents.
+			if(!allow_hostile_action(loyalty_tag,hit_atom))
+				return .
+		else //Has good reagents.
+			if(!allow_helpful_action(loyalty_tag,hit_atom))
+				return .
+		src.reagents.transfer_reagents_to(hit_atom.reagents)
 
 /obj/projectile/bullet/rocket_he
 

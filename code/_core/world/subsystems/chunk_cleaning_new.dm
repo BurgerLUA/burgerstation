@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(chunk)
 	name = "Chunk Subsystem"
 	desc = "Handles chunk cleaning."
 	tick_rate = SECONDS_TO_TICKS(300) //JUST LIKE MINECRAFT
-	priority = SS_ORDER_DELETE
+	priority = SS_ORDER_CHUNK
 
 	tick_usage_max = 25
 
@@ -70,37 +70,6 @@ SUBSYSTEM_DEF(chunk)
 	tick_rate = initial(tick_rate) //Set the tick rate based on the amount of z-levels.
 	if(world.maxz >= 1)
 		tick_rate = CEILING(tick_rate/world.maxz,1)
-
-	var/total_spawnpoints = 0
-	for(var/k in SSliving.all_living) //Setup spawnpoints for respawning mobs.
-		var/mob/living/L = k
-		if(!is_turf(L.loc))
-			continue
-		var/turf/T = L.loc
-		var/area/A = T.loc
-
-
-		var/chunk/CH = CHUNK(T)
-
-		if(L.ai)
-			CH.ai += L.ai
-
-		if(A.safe_storage)
-			continue
-
-		if(!L.respawn)
-			continue
-
-		if(!is_simulated(T))
-			log_error("Warning: [T] at ([T.x],[T.y],[T.z]) is not a simulated turf and had a mob spawnpoint on it.")
-			continue
-
-		var/obj/marker/mob_spawn/M = new(T,L)
-		M.set_dir(L.random_spawn_dir ? pick(NORTH,EAST,SOUTH,WEST) : L.dir)
-		CH.spawning_markers += M
-		total_spawnpoints++
-
-	log_subsystem(src.name,"Created [total_spawnpoints] mob spawnpoints.")
 
 	return TRUE
 

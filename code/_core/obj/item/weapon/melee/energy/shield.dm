@@ -28,3 +28,10 @@
 	dan_mode = TRUE
 
 	rarity = RARITY_RARE
+
+/obj/item/weapon/melee/energy/shield/syndicate
+	polymorphs = list(
+		"base" = "#FFFFFF",
+		"core" = "#FFFFFF",
+		"shield" = "#DD352B"
+	)

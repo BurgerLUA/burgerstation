@@ -56,10 +56,8 @@
 	active = desired_active
 	if(active)
 		SSbotany.all_plants += src
-		alpha = 255
 	else
 		SSbotany.all_plants -= src
-		alpha = 50
 	return TRUE
 
 /obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
@@ -154,7 +152,6 @@
 	natural = TRUE
 
 /obj/structure/interactive/plant/Finalize()
-	alpha = 50
 	. = ..()
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	if(P && P.allowed_turfs[src.loc.type])
@@ -163,12 +160,21 @@
 	else
 		nutrition *= 0.5
 		hydration *= 0.5
-
 	update_sprite()
+	var/turf/T = get_turf(src)
+	if(T)
+		var/chunk/C = CHUNK(T)
+		if(C)
+			C.plants += src
 
 
 /obj/structure/interactive/plant/PreDestroy()
 	set_active(FALSE)
+	var/turf/T = get_turf(src)
+	if(T)
+		var/chunk/C = CHUNK(T)
+		if(C)
+			C.plants -= src
 	. = ..()
 
 /obj/structure/interactive/plant/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)

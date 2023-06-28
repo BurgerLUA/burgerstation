@@ -51,6 +51,13 @@
 	amount_max_icon = 1
 
 	value = 0
+	value_burgerbux = 1
 
 /obj/item/bullet_cartridge/arrow/hardlight/spend_bullet(var/mob/caller,var/bonus_misfire_chance=0)
 	return src
+
+
+/obj/item/bullet_cartridge/arrow/hardlight/syndicate
+	icon = 'icons/obj/item/bullet/arrow_hardlight_syndicate.dmi'
+	projectile = /obj/projectile/bullet/arrow/hardlight/syndicate
+	damage_type = /damagetype/ranged/bow/hardlight/syndicate

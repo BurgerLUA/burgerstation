@@ -2203,6 +2203,7 @@
 #include "code\_core\obj\structure\interactive\local_machine\vendor\smart_fridge.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\soda.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\syndicate.dm"
+#include "code\_core\obj\structure\interactive\local_machine\vendor\syndicate_rev.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\vendor_vr.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\wizard.dm"
 #include "code\_core\obj\structure\interactive\local_machine\vendor\nanotrasen\_nanotrasen.dm"

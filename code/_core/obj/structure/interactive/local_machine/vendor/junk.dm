@@ -28,3 +28,18 @@
 		/obj/item/container/edible/package/junkfood/halloween/twink_bar,
 	)
 	accepts_item = /obj/item/currency/dosh
+
+/obj/structure/interactive/vending/junk/syndicate
+	name = "hacked snack vendor"
+	stored_types = list(
+		/obj/item/container/simple/can/dr_gibb,
+		/obj/item/container/simple/can/grey_bull,
+		/obj/item/container/simple/alcohol/vodka/premium,
+		/obj/item/container/simple/alcohol/absinthe/premium,
+		/obj/item/container/edible/package/junkfood/syndicate,
+		/obj/item/container/edible/package/junkfood/halloween/malf_way,
+		/obj/item/storage/cigarettes/red,
+		/obj/item/storage/cigarettes/syndicate,
+		/obj/item/lighter
+	)
+	accepts_item = /obj/item/currency/telecrystals

@@ -31,4 +31,7 @@ var/global/list/limbs_to_value = list(
 	if(is_container && dynamic_inventory_count > 0)
 		. += ((dynamic_inventory_count*container_max_size)**1.4)*0.35
 
+	if(speed_bonus > 0) // 3000 per 0.1 (10%)
+		. += speed_bonus*(3000/0.1)
+
 	. = CEILING(.,1)

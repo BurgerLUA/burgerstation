@@ -48,6 +48,11 @@
 	size = 0.03
 	value = 1 //Dummy value.
 
+/obj/item/bullet_cartridge/revolver_357/heap
+	name = "\improper .357 HEAP revolver cartridge"
+	damage_type_bullet = /damagetype/ranged/bullet/revolver_357/heap
+
+
 /obj/item/bullet_cartridge/revolver_357/surplus
 	name = "\improper surplus .357 revolver cartridge"
 	damage_type_bullet = /damagetype/ranged/bullet/revolver_357/surplus
