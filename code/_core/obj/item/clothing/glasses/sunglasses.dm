@@ -57,6 +57,19 @@
 
 	rarity = RARITY_MYTHICAL
 
+/obj/item/clothing/glasses/sun/dicklickem
+	name = "douchebag shades"
+
+	desc = "ITS TIME TO CHEW ASS AND KICK BUBBLEGUM."
+	desc_extended = "I guess you have to compensate for it somehow."
+
+	icon = 'icons/obj/item/clothing/glasses/dicklickem.dmi'
+
+	value = 69
+
+	rarity = RARITY_MYTHICAL
+
+
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"
 	desc = "Your vision is augmented."
