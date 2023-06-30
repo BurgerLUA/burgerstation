@@ -33,6 +33,6 @@
 	attack_delay = 10
 	attack_delay_max = 15
 
-	swing_sounds = list(
+	impact_sounds = list(
 		'sound/weapons/unarmed/slap.ogg'
 	)
