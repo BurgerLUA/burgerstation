@@ -13,7 +13,10 @@
 
 	butcher_contents = list(
 		/obj/item/weapon/melee/oddhammer/,
-		/obj/item/clothing/glasses/sun/dicklickem
+		/obj/item/clothing/glasses/sun/dicklickem,
+		/obj/item/container/edible/dynamic/meat/raw/,
+		/obj/item/container/edible/dynamic/meat/raw/,
+		/obj/item/container/edible/dynamic/meat/raw/
 	)
 
 
