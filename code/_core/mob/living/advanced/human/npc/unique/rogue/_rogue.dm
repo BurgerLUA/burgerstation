@@ -24,6 +24,9 @@
 		PAINCRIT = TRUE
 	)
 
+	boss_icon_state = "rogue"
+	boss = TRUE
+
 /mob/living/advanced/npc/unique/rogue/Finalize()
 	. = ..()
 	SSbosses.tracked_rogue_crewmembers += src

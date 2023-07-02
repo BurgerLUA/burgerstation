@@ -33,6 +33,8 @@
 
 	var/horde_data/gamemode_horde_data
 
+	var/allow_continue = TRUE
+
 /gamemode/proc/Initialize()
 	if(initialized)
 		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")

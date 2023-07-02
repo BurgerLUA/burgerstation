@@ -9,11 +9,13 @@
 	health_states = 1
 
 	var/next_grow = 0
+	var/fast_grows_left = 100
 	var/heal_amount = 10 //How much to heal as well the starting HP of new blob walls.
 
 	var/list/lost_turfs = list()
 
 	var/blob_limit = 700
+
 
 /obj/structure/interactive/blob/core/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
 	color = random_color()
@@ -59,7 +61,7 @@
 
 /obj/structure/interactive/blob/core/think()
 
-	if(next_grow <= world.time)
+	if(next_grow <= world.time || fast_grows_left > 0)
 		var/node_count = length(linked_nodes)
 		if(node_count)
 			if(health.health_current > 0)
@@ -73,8 +75,15 @@
 			N.grow_charge(src,src,1,priority_turf)
 			next_grow = world.time + CEILING(SECONDS_TO_DECISECONDS(5)/max(1,node_count),1)
 			current_node++
+			if(fast_grows_left > 0)
+				fast_grows_left--
 
 	. = ..()
+
+/obj/structure/interactive/blob/core/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+	. = ..()
+	if(.)
+		fast_grows_left += damage_table[BRUTE] + damage_table[BURN]
 
 /obj/structure/interactive/blob/core/update_overlays()
 	. = ..()

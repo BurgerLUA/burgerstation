@@ -32,7 +32,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/swarm_test,
 	/client/verb/destroy_everything,
 	/client/verb/subsystem_debug,
-	/client/verb/debug_lighting
+	/client/verb/debug_lighting,
+	/client/verb/complete_all_objectives
 )
 
 
@@ -723,3 +724,21 @@ var/global/list/destroy_everything_whitelist = list(
 	set name = "Debug Lighting"
 	set category = "Debug"
 	SSlighting.start_debug()
+
+
+/client/verb/complete_all_objectives()
+	set name = "Complete All Objectives"
+	set category = "Debug"
+
+	var/desired_input = input("Are you sure you want to complete all objectives?","Complete All Objectives","Cancel") as null|anything in list("Yes","No","Cancel")
+
+	if(desired_input != "Yes")
+		return TRUE
+
+	var/gamemode/G = SSgamemode.active_gamemode
+	for(var/k in G.crew_active_objectives)
+		var/objective/O = k
+		O.completion_state = COMPLETED
+		O.update(FALSE)
+
+	G.next_objective_update = world.time + 50

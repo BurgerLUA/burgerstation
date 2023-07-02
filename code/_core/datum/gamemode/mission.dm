@@ -19,13 +19,13 @@
 	var/status_display_text
 	var/status_display_time
 
-	var/pvp_start_time = -1
-	var/boredom_warning = FALSE
-
 	gamemode_horde_data = /horde_data/syndicate
 
 	var/mob/living/interior_corpse_type
 	var/mob/living/exterior_corpse_type
+
+	var/list/objectives_left = list()
+	var/objectives_max = 2
 
 /gamemode/mission/New()
 	var/local_benchmark = true_time()
@@ -107,7 +107,7 @@
 			qdel(M)
 			CHECK_TICK(50,FPS_SERVER*10)
 
-	log_debug("Created [corpses_created] mission mobs.")
+	log_debug("Created [corpses_created] corpses.")
 
 
 
@@ -120,26 +120,23 @@
 	log_debug("Current player count: [player_count].")
 
 	//Base Objectives.
-	add_objective(/objective/artifact)
-	add_objective(/objective/hostage)
-	add_objective(/objective/hostage)
-	add_objective(/objective/kill_boss)
+	objectives_left += /objective/kill_boss
 
 	if(player_count >= 10)
-		add_objective(/objective/kill_rogue)
-		add_objective(/objective/hostage)
+		objectives_left += /objective/kill_rogue
+		objectives_left += /objective/hostage
 		log_debug("Adding player count 10 objectives.")
 
 	if(player_count >= 30)
-		add_objective(/objective/kill_boss)
+		objectives_left += /objective/kill_boss
 		log_debug("Adding player count 30 objectives.")
 
 	if(player_count >= 50)
-		add_objective(/objective/kill_boss)
+		objectives_left += /objective/kill_boss
 		log_debug("Adding player count 50 objectives.")
 
 	if(player_count >= 70)
-		add_objective(/objective/kill_boss)
+		objectives_left += /objective/kill_boss
 		log_debug("Adding player count 70 objectives.")
 
 	next_objective_update = world.time + 100
@@ -148,8 +145,14 @@
 
 /gamemode/mission/on_continue()
 
-	add_objective(/objective/artifact)
-	add_objective(/objective/kill_boss)
+
+	if(!add_objective(/objective/kill_boss))
+		add_objective(/objective/artifact)
+		allow_continue = FALSE
+	else
+		objectives_left += /objective/kill_boss
+
+	objectives_max = 1
 
 	round_time = 0
 	round_time_next = 60*30
@@ -206,7 +209,10 @@
 			if(5 to INFINITY)
 				status_display_text = "VOTE"
 				round_time_next = -1
-				SSvote.create_vote(/vote/continue_round)
+				if(allow_continue)
+					world.end(WORLD_END_NANOTRASEN_VICTORY)
+				else
+					SSvote.create_vote(/vote/continue_round)
 
 	var/time_left = round_time_next - round_time
 	if(time_left >= 0)
@@ -214,6 +220,12 @@
 	else
 		status_display_time = null
 
-
 	if(status_display_text && status_display_time)
 		set_status_display("mission","[status_display_text ? status_display_text : "HI"]\n[status_display_time ? status_display_time : "THERE"]")
+
+	if(stage == 4 && length(crew_active_objectives) <= objectives_max)
+		if(length(objectives_left))
+			add_objective(objectives_left[1])
+			objectives_left.Cut(1,2)
+		else
+			stage = 5 //No objectives left!

@@ -7,20 +7,19 @@
 
 /event/blob/on_start()
 
-	var/turf/T = find_safe_turf_for_event(attempts=10)
+	var/gamemode/G = SSgamemode.active_gamemode
 
-	if(!T)
+	if(!G)
+		return FALSE
+
+	if(!G.add_objective(/objective/kill_blob))
 		return FALSE
 
 	announce(
 		"Central Command Xenoviral Division",
 		"Blob Alert",
-		"A level 5 \"blob\" biohazard growth has been detected near the area of operations. Predicted location: [T.x],[T.y].",
+		"A level 5 \"blob\" biohazard growth has been detected near the area of operations.",
 		sound_to_play = 'sound/voice/announcement/blob.ogg'
 	)
 
-	CREATE(/obj/structure/interactive/blob/core,T)
-
-	notify_ghosts("A blob is being created!",T)
-
-	return ..()
+	. = ..()

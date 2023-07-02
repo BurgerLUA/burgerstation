@@ -19,6 +19,8 @@
 	var/obj/marker/M = pick(possible_blob_locations)
 	possible_blob_locations -= M
 	var/obj/structure/interactive/blob/core/B = new(get_turf(M))
+	B.blob_limit *= 5
+	B.fast_grows_left *= 2
 	INITIALIZE(B)
 	FINALIZE(B)
 	tracked_atoms += B
