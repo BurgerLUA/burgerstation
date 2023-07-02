@@ -84,9 +84,9 @@
 	name = "drop pod remote - ammo restocker"
 	desc_extended = "A special remote designed to drop things into the battlefield. This one drops an ammo restocker."
 	stored_object_types = list(
-		/obj/structure/interactive/restocker/ammo
+		/obj/structure/interactive/restocker/ammo/premium
 	)
-	value = 3000
+	value = 2000
 
 /*
 /obj/item/supply_remote/mech/
