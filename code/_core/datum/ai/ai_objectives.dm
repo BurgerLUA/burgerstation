@@ -234,8 +234,6 @@
 
 /ai/proc/get_possible_targets(var/bonus_sight=FALSE)
 
-	. = list()
-
 	if(aggression <= 0)
 		return .
 
@@ -245,6 +243,8 @@
 
 	for(var/k in hearers(range_to_use,owner))
 		var/mob/living/L = k
+		if(L == owner)
+			continue
 		if(!is_living(L))
 			continue
 		if(!should_attack_mob(L))
@@ -252,6 +252,8 @@
 		var/detection_level = get_detection_level(L,view_check=FALSE,bonus_sight=bonus_sight)
 		if(detection_level <= 0)
 			continue
+		if(!.)
+			. = list()
 		.[L] = detection_level
 
 /ai/proc/try_investigate(var/atom/desired_target,var/cooldown=reaction_time,var/force_if_on_cooldown=FALSE)
