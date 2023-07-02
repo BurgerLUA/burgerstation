@@ -98,6 +98,9 @@
 		return TRUE
 	return FALSE
 
+/atom/proc/can_do_destruction(var/damage=TRUE)
+	return TRUE
+
 /atom/proc/on_destruction(var/damage = TRUE)
 	HOOK_CALL("on_destruction")
 	return TRUE

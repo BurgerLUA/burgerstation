@@ -89,7 +89,8 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(FALSE)
+			if(src.can_do_destruction(FALSE))
+				src.on_destruction(FALSE)
 			return TRUE
 		if(istype(I,/obj/item/material/rod/))
 			INTERACT_CHECK

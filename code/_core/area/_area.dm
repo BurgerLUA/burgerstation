@@ -212,7 +212,8 @@
 		CHECK_TICK(75,FPS_SERVER)
 		if(!T.desired_light_color)
 			continue
-		T.on_destruction()
+		if(T.can_do_destruction())
+			T.on_destruction()
 	return TRUE
 
 /area/proc/apc_process()

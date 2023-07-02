@@ -6,11 +6,21 @@
 	exterior_corpse_type = /mob/living/advanced/npc/nanotrasen
 
 /gamemode/mission/zombie
-	name = "Mission - Zombies"
+	name = "Mission - Zombies + Blob"
 	gamemode_horde_data = /horde_data/zombies
 
 	interior_corpse_type = /mob/living/advanced/npc/zombie/normal/decapitated
 	exterior_corpse_type = /mob/living/advanced/npc/zombie/worker/decapitated
+
+/gamemode/mission/zombie/add_objectives()
+	. = ..()
+	var/player_count = length(all_clients)
+
+	var/blobs_to_spawn = min(2+(player_count/10),length(possible_blob_locations))
+
+	for(var/i=1,i<=blobs_to_spawn,i++)
+		if(!add_objective(/objective/kill_blob))
+			break
 
 /gamemode/mission/xeno
 	name = "Mission - Xenomorphs + Soldiers"

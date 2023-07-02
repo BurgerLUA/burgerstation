@@ -45,7 +45,8 @@ var/global/list/image/turf_damage_icons = new/list(5,4)
 		return .
 
 	if(health_current <= 0)
-		owner.on_destruction()
+		if(owner.can_do_destruction())
+			owner.on_destruction()
 		return .
 
 	var/desired_damage_icon = (1 - health_current/health_max)*(length(turf_damage_icons)+1)

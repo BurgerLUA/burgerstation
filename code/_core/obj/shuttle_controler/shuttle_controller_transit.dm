@@ -77,7 +77,7 @@
 			if(is_living(M))
 				var/mob/living/L = M
 				if(T_to_replace.density_down && T_to_replace.health)
-					T_to_replace.on_destruction(TRUE)
+					T_to_replace.on_destruction(TRUE) //No checking for can we do destruction because it's kind of forced.
 				L.Move(T_to_replace) //Update
 				if(L.loc == T_to_replace) //Still on the same location.
 					var/obj/projectile/thrown/P = M.throw_self(M,vel_x=-transit_throw_x*16,vel_y=-transit_throw_y*16)

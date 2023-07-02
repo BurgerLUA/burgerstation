@@ -51,11 +51,12 @@
 	if(is_item(object))
 		var/obj/item/I = object
 		if(I.flags_tool & FLAG_TOOL_WIRECUTTER)
-			caller.to_chat(span("notice","You dissasemble the [src.name]"))
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			INTERACT_DELAY(10)
-			src.on_destruction(FALSE)
+			if(src.can_do_destruction(FALSE))
+				caller.to_chat(span("notice","You dissasemble the [src.name]"))
+				src.on_destruction(FALSE)
 			return TRUE
 	if(istype(object,/obj/item/material/sheet))
 		var/obj/item/material/sheet/S = object

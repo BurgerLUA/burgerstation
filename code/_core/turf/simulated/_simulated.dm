@@ -148,7 +148,7 @@
 	blood_level_hard = max(0,minimus,blood_level_hard+amount_to_add)
 	return TRUE
 
-/turf/simulated/on_destruction(var/damage = TRUE)
+/turf/simulated/can_do_destruction(var/damage=TRUE)
 
 	if(destruction_turf == /turf/simulated/openspace)
 		var/turf/T = locate(x,y,z-1)
@@ -156,7 +156,10 @@
 			QDEL_NULL(health)
 			return FALSE
 		if(T.density || !is_simulated(T)) //Don't break yet!
-			return TRUE
+			return FALSE
+	. = ..()
+
+/turf/simulated/on_destruction(var/damage = TRUE)
 
 	for(var/obj/effect/temp/impact/I in src.contents)
 		I.alpha = 0

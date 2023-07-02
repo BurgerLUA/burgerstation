@@ -52,12 +52,10 @@
 
 	tolerance += 0.1
 
-	var/prefered_dir = last_blob ? get_dir_advanced(last_blob,src) : null //Keep the momentum.
-	var/prefered_dir_2 = original_blob ? get_dir_advanced(original_blob,src) : null //Move away from the core to expand.
+	var/prefered_dir = last_blob ? get_dir(last_blob,src) : null //Keep the momentum.
+	var/prefered_dir_2 = original_blob ? get_dir(original_blob,src) : null //Move away from the core to expand.
 	if(linked_core)
 		health.adjust_loss_smart(brute = -linked_core.heal_amount)
-	if(update_health_state())
-		update_sprite()
 
 	if(src.super) //Supers can't make anything.
 		return TRUE
@@ -66,11 +64,11 @@
 	var/list/possible_options_super = list()
 	for(var/k in adjacent_blobs)
 		var/obj/structure/interactive/blob/B = k
-		var/d = get_dir_advanced(src,B)
+		var/d = get_dir(src,B)
 		if(B.color != color)
 			continue
 		if(priority_turf) //Prioritize blobs getting attacked.
-			if(d & get_dir_advanced(src,priority_turf))
+			if(d & get_dir(src,priority_turf))
 				possible_options += B
 				if(B.super)
 					possible_options_super += B
@@ -115,7 +113,7 @@
 			else //Turf is clear. Add it to a possible spawn.
 				possible_spawns += T
 
-		if(length(possible_spawns)) //Supers can't make walls.
+		if(length(possible_spawns))
 
 			var/make_super = length(linked_core.linked_walls) > linked_core.blob_limit
 
@@ -133,9 +131,9 @@
 			B.color = color
 			INITIALIZE(B)
 			FINALIZE(B)
-			if(!make_super)
-				B.health.adjust_loss_smart(brute = B.health.health_current - linked_core.heal_amount)
-			B.update_sprite()
+			if(!B.super)
+				B.health.update_health_stats()
+				B.health.damage[BRUTE] = B.health.health_max*0.5
 
 			var/list/direction_offsets = get_directional_offsets(T,src)
 			var/matrix/M = B.get_base_transform()
@@ -193,7 +191,7 @@
 /obj/structure/interactive/blob/proc/update_health_state()
 	. = 0
 	var/current_state = health && health_states ? FLOOR( (health.health_current / health.health_max) * health_states,1) : 0
-	if(last_state != current_state)
+	if(!last_state || last_state != current_state)
 		if(last_state > current_state)
 			. = -1 //Decreasing
 		else

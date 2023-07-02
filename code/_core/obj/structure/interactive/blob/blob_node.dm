@@ -10,6 +10,11 @@
 
 	var/next_spawn = 0
 
+/obj/structure/interactive/blob/node/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+	. = ..()
+	if(.)
+		check_jugs()
+
 /obj/structure/interactive/blob/node/proc/check_jugs()
 
 	if(!finalized || qdeleting)
@@ -22,7 +27,7 @@
 			GENERATE(linked_blobbernaught)
 			FINALIZE(linked_blobbernaught)
 			return TRUE
-	else if(linked_blobbernaught.dead)
+	else if(linked_blobbernaught.dead || linked_blobbernaught.qdeleting)
 		linked_blobbernaught = null
 		next_spawn = world.time + SECONDS_TO_DECISECONDS(60)
 
