@@ -73,7 +73,9 @@
 	if(stage_current > 0 )
 		shoot(caller,object,location,params,max(stage_current/100,0.25))
 		stage_current = 0
-		next_shoot_time = world.time + 2
+		if(is_living(caller))
+			var/mob/living/L = caller
+			next_shoot_time = world.time + (10 - L.get_attribute_power(ATTRIBUTE_DEXTERITY,0,1,2)*4)
 		update_sprite()
 	return TRUE
 
@@ -83,6 +85,8 @@
 	if(object.loc && object.loc.plane >= PLANE_HUD)
 		return ..()
 	if(!is_advanced(caller))
+		return ..()
+	if(!can_gun_shoot(caller,object,location,params))
 		return ..()
 	current_shooter = caller
 	START_THINKING(src)
@@ -145,6 +149,13 @@
 /obj/item/weapon/ranged/bow/handle_empty(var/mob/caller)
 	return FALSE
 
+/obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
+	var/damagetype/D = all_damage_types[ranged_damage_type]
+	return D.get_damage_per_hit(armor_to_use) * (stage_max/100)
+
+/obj/item/weapon/ranged/bow/get_hits_per_second()
+	return (stage_per_decisecond/stage_max)*10
+
 /obj/item/weapon/ranged/bow/wood
 	name = "wood bow"
 	desc = "For ranged ungas."
@@ -197,7 +208,7 @@
 	ranged_damage_type = /damagetype/ranged/bow/hardlight
 
 	stage_per_decisecond = 10
-	stage_max = 50
+	stage_max = 100
 
 	icon_state_count = 4
 
@@ -224,7 +235,7 @@
 	stored_arrow = /obj/item/bullet_cartridge/arrow/hardlight/syndicate
 	ranged_damage_type = /damagetype/ranged/bow/hardlight/syndicate
 	stage_per_decisecond = 8
-	stage_max = 75
+	stage_max = 125
 
 /obj/item/weapon/ranged/bow/ashen
 	name = "ashen bow"
@@ -246,13 +257,6 @@
 	icon_state_count = 4
 
 	rarity = RARITY_UNCOMMON
-
-/obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
-	var/damagetype/D = all_damage_types[ranged_damage_type]
-	return D.get_damage_per_hit(armor_to_use) * (stage_max/100)
-
-/obj/item/weapon/ranged/bow/get_hits_per_second()
-	return (stage_per_decisecond/stage_max)*10
 
 
 

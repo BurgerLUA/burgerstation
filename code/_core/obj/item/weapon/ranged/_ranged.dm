@@ -603,7 +603,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		SSclient.queued_automatics[src] = list(
 			caller,
 			params,
-			damage_multiplier,
+			damage_multiplier, //Don't use damage_multiplier_to_use xd
 			max_bursts_to_use,
 			shoot_delay_to_use
 		)

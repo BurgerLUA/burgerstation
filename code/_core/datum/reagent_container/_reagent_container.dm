@@ -335,8 +335,9 @@
 		temperature_math_02[r_id] = stored_reagents[r_id] * R.temperature_mod
 		math_02_total += temperature_math_02[r_id]
 
-	for(var/r_id in temperature_math_01)
-		average_temperature += temperature_math_01[r_id] * (temperature_math_02[r_id] / math_02_total)
+	if(math_02_total > 0)
+		for(var/r_id in temperature_math_01)
+			average_temperature += temperature_math_01[r_id] * (temperature_math_02[r_id] / math_02_total)
 
 	if(volume_current > 0)
 		SSreagent.all_temperature_reagent_containers |= src
