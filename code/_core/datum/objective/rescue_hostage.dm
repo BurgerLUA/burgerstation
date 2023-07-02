@@ -64,14 +64,7 @@
 			completed = TRUE
 			if(H.ai)
 				var/turf/T = get_turf(pick(possible_hostage_rest_markers))
-				var/obj/marker/map_node/N_start = find_closest_node(H)
-				if(N_start)
-					var/obj/marker/map_node/N_end = find_closest_node(T)
-					if(N_end)
-						var/list/obj/marker/map_node/found_path = AStar_Circle_node(N_start,N_end)
-						if(found_path)
-							H.ai.set_path_node(found_path)
-
+				H.ai.set_path_fallback(T)
 			update()
 
 	return TRUE
