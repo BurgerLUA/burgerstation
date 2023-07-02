@@ -17,6 +17,7 @@
 	cooled_reagent_temp = T0C - 1
 	cooled_reagent_amount = 1
 	cooled_reagent_mul = 0.25
+	cooled_reagent = /reagent/nutrition/ice
 
 	value = 0.75
 
@@ -59,10 +60,6 @@
 	hydration_amount = 25
 	nutrition_quality_amount = 3
 	heal_factor = 2
-
-	cooled_reagent_temp = T0C - 1
-	cooled_reagent_amount = 1
-	cooled_reagent_mul = 0.25
 
 	value = 3
 

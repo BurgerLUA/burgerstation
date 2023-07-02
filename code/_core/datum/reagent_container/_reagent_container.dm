@@ -187,6 +187,8 @@
 
 /reagent_container/proc/process_temperature(var/debug=FALSE)
 
+	. = FALSE
+
 	if(!owner)
 		if(debug) log_debug("Temperature Process Failed: No owner.")
 		return FALSE
@@ -197,58 +199,52 @@
 
 	var/desired_temperature = get_desired_temperature()
 
-	if(desired_temperature == average_temperature)
-		if(debug) log_debug("Temperature Process Failed: Current temperature is already the desired temperature.")
-		return TRUE
+	if(desired_temperature != average_temperature)
 
-	var/temperature_mod = 0
+		var/temperature_mod = 0
 
-	for(var/r_id in stored_reagents)
-		var/reagent/R = REAGENT(r_id)
-		if(R.abstract)
-			continue
-		var/volume = stored_reagents[r_id]
-		temperature_mod += (volume * R.temperature_mod)
+		for(var/r_id in stored_reagents)
+			var/reagent/R = REAGENT(r_id)
+			if(R.abstract)
+				continue
+			var/volume = stored_reagents[r_id]
+			temperature_mod += (volume * R.temperature_mod)
 
-	var/temperature_mod_multiplier = 1/volume_current
-	if(debug) log_debug("Temperature Process: temperature_mod_multiplier = [temperature_mod_multiplier]")
+		var/temperature_mod_multiplier = 1/volume_current
+		if(debug) log_debug("Temperature Process: temperature_mod_multiplier = [temperature_mod_multiplier]")
 
-	temperature_mod *= temperature_mod_multiplier
+		temperature_mod *= temperature_mod_multiplier
 
-	if(is_inventory(owner.loc))
-		var/obj/hud/inventory/I = owner.loc
-		if(I.inventory_temperature_mod > 0)
-			temperature_mod *= I.inventory_temperature_mod
-			if(debug) log_debug("Temperature Process: inventory_temperature_mod = [I.inventory_temperature_mod]")
+		if(is_inventory(owner.loc))
+			var/obj/hud/inventory/I = owner.loc
+			if(I.inventory_temperature_mod > 0)
+				temperature_mod *= I.inventory_temperature_mod
+				if(debug) log_debug("Temperature Process: inventory_temperature_mod = [I.inventory_temperature_mod]")
 
-	var/temperature_diff = desired_temperature - average_temperature
+		var/temperature_diff = desired_temperature - average_temperature
 
-	if(debug) log_debug("Temperature Process: temperature_diff = [temperature_diff] (old)")
+		if(debug) log_debug("Temperature Process: temperature_diff = [temperature_diff] (old)")
 
-	if(temperature_diff > 0)
-		temperature_diff = max(temperature_diff,1)
-	else
-		temperature_diff = min(temperature_diff,-1)
+		if(temperature_diff > 0)
+			temperature_diff = max(temperature_diff,1)
+		else
+			temperature_diff = min(temperature_diff,-1)
 
-	if(debug) log_debug("Temperature Process: temperature_diff = [temperature_diff] (new)")
+		if(debug) log_debug("Temperature Process: temperature_diff = [temperature_diff] (new)")
 
-	var/temperature_change = temperature_diff * temperature_mod * temperature_change_mul * 0.1 //The funny max/min setup ensures a temperature change.
+		var/temperature_change = temperature_diff * temperature_mod * temperature_change_mul * 0.1 //The funny max/min setup ensures a temperature change.
 
-	if(debug) log_debug("Temperature Process: temperature_change = [temperature_change]")
+		if(debug) log_debug("Temperature Process: temperature_change = [temperature_change]")
 
-	if(temperature_change == 0)
-		if(debug) log_debug("Temperature Process Failed: No temperature change detected.")
-		return TRUE
-
-	if(average_temperature > desired_temperature) //If we're hotter than we want to be.
-		average_temperature = max(desired_temperature,average_temperature + temperature_change)
-		if(debug) log_debug("Temperature Process: Set to [average_temperature] (From hot).")
-		. = FALSE
-	else //If we're colder than we need to be.
-		temperature_change *= 0.5 //This means it's slower to heat up.
-		average_temperature = min(desired_temperature,average_temperature + temperature_change)
-		if(debug) log_debug("Temperature Process: Set to [average_temperature] (From cold).")
-	 . = FALSE
+		if(temperature_change != 0)
+			if(average_temperature > desired_temperature) //If we're hotter than we want to be.
+				average_temperature = max(desired_temperature,average_temperature + temperature_change)
+				if(debug) log_debug("Temperature Process: Set to [average_temperature] (From hot).")
+			else //If we're colder than we need to be.
+				temperature_change *= 0.5 //This means it's slower to heat up.
+				average_temperature = min(desired_temperature,average_temperature + temperature_change)
+				if(debug) log_debug("Temperature Process: Set to [average_temperature] (From cold).")
+			. = TRUE
 
 	for(var/r_id in stored_reagents_temperature)
 		var/reagent/R = REAGENT(r_id)
@@ -260,7 +256,7 @@
 			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
 			var/amount_to_remove = min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume)
 			var/removed_amount = -add_reagent(r_id,-amount_to_remove,should_update = FALSE, check_recipes = FALSE)
-			if(R.heated_reagent)
+			if(R.heated_reagent && removed_amount > 0)
 				add_reagent(R.heated_reagent,removed_amount,should_update = FALSE, check_recipes = FALSE)
 			. = TRUE
 
@@ -274,8 +270,9 @@
 		else
 			R.on_temperature_change(src)
 
-	update_container()
-	process_recipes(from_temperature_change=TRUE)
+	if(.)
+		update_container()
+		process_recipes(from_temperature_change=TRUE)
 
 	if(debug) log_debug("Temperature Process Finished.")
 
@@ -284,7 +281,10 @@
 
 /reagent_container/proc/update_container(var/mob/caller,var/update_owner = TRUE,var/force=FALSE)
 
-	if(!force && owner && !owner.finalized)
+	if(!owner)
+		return FALSE
+
+	if(!force && !owner.finalized)
 		return FALSE
 
 	var/red = 0
@@ -308,9 +308,15 @@
 		stored_reagents[r_id] = FLOOR(stored_reagents[r_id],REAGENT_ROUNDING)
 
 		if(stored_reagents[r_id] <= 0)
+			R.on_remove(src)
+			var/mob/living/L
+			if(is_living(src.owner))
+				L = src.owner
+			else if(is_living(src.owner.loc))
+				L = src.owner.loc
+			if(L)
+				R.on_remove_living(L,src)
 			stored_reagents -= r_id
-			stored_reagents_temperature -= r_id
-			continue
 
 		if(R.lethal) contains_lethal = TRUE
 
@@ -331,6 +337,11 @@
 
 	for(var/r_id in temperature_math_01)
 		average_temperature += temperature_math_01[r_id] * (temperature_math_02[r_id] / math_02_total)
+
+	if(volume_current > 0)
+		SSreagent.all_temperature_reagent_containers |= src
+	else
+		SSreagent.all_temperature_reagent_containers -= src
 
 	if(volume_current > volume_max && volume_max > 0)
 		var/difference = volume_current - volume_max
@@ -353,11 +364,6 @@
 
 	if(owner && should_update_owner && update_owner && owner.finalized)
 		owner.update_sprite()
-
-	if(volume_current > 0)
-		SSreagent.all_temperature_reagent_containers |= src
-	else
-		SSreagent.all_temperature_reagent_containers -= src
 
 	return TRUE
 
@@ -491,7 +497,7 @@
 
 	return TRUE
 
-/reagent_container/proc/add_reagent(var/reagent_type,var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
+/reagent_container/proc/add_reagent(var/reagent_type, var/amount=0, var/temperature = TNULL, var/should_update = TRUE,var/check_recipes = TRUE,var/mob/living/caller)
 
 	if(abs(amount) < REAGENT_ROUNDING)
 		if(amount > 0)
@@ -499,10 +505,11 @@
 		else
 			amount = -REAGENT_ROUNDING
 
-	if(volume_current + amount > volume_max)
-		amount = volume_max - volume_current
-	else if(amount < -volume_current)
-		amount = -volume_current
+	if(should_update) //Bypass amount checks.
+		if(volume_current + amount > volume_max)
+			amount = volume_max - volume_current
+		else if(-amount > volume_current)
+			amount = -volume_current
 
 	var/reagent/R = REAGENT(reagent_type)
 
@@ -515,7 +522,7 @@
 	if(temperature == TNULL || R.abstract)
 		if(owner)
 			var/area/A = get_area(owner)
-			if(A)
+			if(A && A.ambient_temperature)
 				temperature = A.ambient_temperature
 			else
 				temperature = T0C + 20
@@ -523,7 +530,7 @@
 			temperature = T0C + 20
 
 	var/previous_amount = stored_reagents[reagent_type]
-	var/previous_temp = stored_reagents_temperature[reagent_type]
+	var/previous_temp = isnum(stored_reagents_temperature[reagent_type]) ? stored_reagents_temperature[reagent_type] : TNULL
 
 	if(!amount)
 		return 0
@@ -543,24 +550,13 @@
 
 	if(amount)
 		stored_reagents[reagent_type] += amount
-
-	if(amount > 0) //Temperature stuff.
-		if(!previous_amount || !previous_temp || previous_temp == TNULL) //Fallback nonsense.
-			stored_reagents_temperature[reagent_type] = temperature
-		else if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
-			stored_reagents_temperature[reagent_type] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_type])
-		else
-			stored_reagents_temperature[reagent_type] = temperature
-
-	if(stored_reagents[reagent_type] <= 0)
-		R.on_remove(src)
-		var/mob/living/L
-		if(is_living(src.owner))
-			L = src.owner
-		else if(is_living(src.owner.loc))
-			L = src.owner.loc
-		if(L)
-			R.on_remove_living(L,src)
+		if(amount > 0) //Temperature stuff. Adding re-calculates temperature.
+			if(!previous_amount || previous_temp == TNULL) //Fallback nonsense.
+				stored_reagents_temperature[reagent_type] = temperature
+			else if(stored_reagents_temperature[reagent_type] && stored_reagents[reagent_type])
+				stored_reagents_temperature[reagent_type] = ( (previous_amount*previous_temp) + (amount*temperature) ) / (stored_reagents[reagent_type])
+			else
+				stored_reagents_temperature[reagent_type] = temperature
 
 	if(should_update)
 		update_container(caller)
