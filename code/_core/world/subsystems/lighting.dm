@@ -24,6 +24,35 @@ SUBSYSTEM_DEF(lighting)
 
 	tick_usage_max = 75
 
+	var/debug_light_sources = FALSE
+	var/list/light_source_atom_count
+
+
+/subsystem/lighting/proc/start_debug()
+	if(CALLBACK_EXISTS("lighting_debug_end"))
+		return FALSE
+	debug_light_sources = TRUE
+	light_source_atom_count = list()
+	CALLBACK("lighting_debug_end",SECONDS_TO_DECISECONDS(30),src,src::end_debug())
+	log_debug("Debugging lighting... please wait 30 seconds.")
+	return TRUE
+
+/subsystem/lighting/proc/end_debug()
+
+	sort_tim(light_source_atom_count,/proc/cmp_numeric_dsc,associative=TRUE)
+
+	log_debug("<b><u>Top 5 most frequent light sources (by type)</u></b>")
+
+	for(var/i=1,i<=min(5,length(light_source_atom_count)),i++)
+		log_debug("#[i]: [light_source_atom_count[i]] ([light_source_atom_count[light_source_atom_count[i]]])")
+
+	debug_light_sources = FALSE
+	light_source_atom_count.Cut()
+
+	return TRUE
+
+
+
 /subsystem/lighting/unclog(var/mob/caller)
 
 	for(var/k in lighting_corners)
@@ -34,7 +63,6 @@ SUBSYSTEM_DEF(lighting)
 		qdel(D)
 
 	. = ..()
-
 
 /subsystem/lighting/Initialize()
 
@@ -57,7 +85,9 @@ SUBSYSTEM_DEF(lighting)
 
 	var/first = TRUE
 	while(first || (length(light_queue) && length(corner_queue) && length(overlay_queue)))
-		on_life() //Run on_life() until all lights are setup.
+		update_lights()
+		update_corners()
+		update_overlays()
 		first = FALSE
 		CHECK_TICK_HARD
 
@@ -67,11 +97,10 @@ SUBSYSTEM_DEF(lighting)
 
 	return TRUE
 
-/subsystem/lighting/on_life()
+
+/subsystem/lighting/proc/update_lights()
 
 	var/list/curr_lights = light_queue
-	var/list/curr_corners = corner_queue
-	var/list/curr_overlays = overlay_queue
 
 	if(lq_idex <= 0)
 		log_error("Lighting Error: lq_idex is at [lq_idex].")
@@ -82,6 +111,11 @@ SUBSYSTEM_DEF(lighting)
 			total_ss_updates += 1
 			L.update_corners()
 			L.needs_update = LIGHTING_NO_UPDATE
+			if(debug_light_sources && L.source_atom && L.source_atom.type)
+				if(!light_source_atom_count[L.source_atom.type])
+					light_source_atom_count[L.source_atom.type] = 1
+				else
+					light_source_atom_count[L.source_atom.type] += 1
 			processed_lights++
 		lq_idex++
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
@@ -93,6 +127,11 @@ SUBSYSTEM_DEF(lighting)
 
 	if(cq_idex <= 0)
 		log_error("Lighting Error: cq_idex is at [cq_idex].")
+
+
+/subsystem/lighting/proc/update_corners()
+
+	var/list/curr_corners = corner_queue
 
 	while (length(curr_corners) && cq_idex <= length(curr_corners))
 		var/lighting_corner/C = curr_corners[cq_idex]
@@ -107,6 +146,11 @@ SUBSYSTEM_DEF(lighting)
 		if(length(curr_corners))
 			curr_corners.Cut(1, cq_idex)
 		cq_idex = 1
+
+
+/subsystem/lighting/proc/update_overlays()
+
+	var/list/curr_overlays = overlay_queue
 
 	if(oq_idex <= 0)
 		log_error("Lighting Error: oq_idex is at [oq_idex].")
@@ -127,5 +171,15 @@ SUBSYSTEM_DEF(lighting)
 		if(length(curr_overlays))
 			curr_overlays.Cut(1, oq_idex)
 		oq_idex = 1
+
+
+
+
+
+/subsystem/lighting/on_life()
+
+	update_lights()
+	update_corners()
+	update_overlays()
 
 	return TRUE

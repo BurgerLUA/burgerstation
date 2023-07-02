@@ -31,7 +31,8 @@ var/global/list/debug_verbs = list(
 	/client/verb/debug_weapon_value,
 	/client/verb/swarm_test,
 	/client/verb/destroy_everything,
-	/client/verb/subsystem_debug
+	/client/verb/subsystem_debug,
+	/client/verb/debug_lighting
 )
 
 
@@ -716,3 +717,9 @@ var/global/list/destroy_everything_whitelist = list(
 
 	var/subsystem/S = valid_choices[choice]
 	debug_variables(S)
+
+
+/client/verb/debug_lighting()
+	set name = "Debug Lighting"
+	set category = "Debug"
+	SSlighting.start_debug()

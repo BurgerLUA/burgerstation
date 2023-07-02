@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(sound)
 	priority = SS_ORDER_FIRST
 	var/channel_hack = 100
 
-	tick_usage_max = 90
+	tick_usage_max = 80
 
 	var/list/round_end_sounds = list()
 
@@ -345,13 +345,10 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 		if(is_datum(source_turf))
 			CRASH("Error: Tried playing sound '[sound_path]' to [source_turf.get_debug_name()], a non-turf!")
 		else
-			CRASH("Error: Tried playing sound '[sound_path]' to with the source_turf arg to '[source_turf]'!")
+			CRASH("Error: Tried playing sound '[sound_path]' to with the source_turf arg to '[source_turf ? source_turf : "NULL"]'!")
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound)
-		return FALSE
-	if(!source_turf)
-		log_error("Warning: play_sound passed source_turf as null for sound [sound_path]!")
 		return FALSE
 
 	created_sound.frequency = pitch
@@ -395,7 +392,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 		if(channel != SOUND_CHANNEL_MUSIC && channel != SOUND_CHANNEL_AMBIENT)
 			var/distance = max(0,get_dist(mob_turf,source_turf)-(VIEW_RANGE*0.5)) - range_min
 			if(sound_setting == SOUND_SETTING_FOOTSTEPS && distance <= 0)
-				distance = 4
+				distance = 4 //Self footsteps should be quieter.
 			local_volume = (local_volume - distance*0.25)*max(0,range_max - distance)/range_max
 			if(local_volume <= 0)
 				continue

@@ -57,12 +57,12 @@ SUBSYSTEM_DEF(report)
 	var/list/profile_output = world.Profile(PROFILE_STOP)
 
 	var/list/sorted_profile_output_self = list()
-	var/list/sorted_profile_output_real = list()
+	var/list/sorted_profile_output_over = list()
 	for(var/i=7,i<=length(profile_output),i+=6) //It just werks
 		if(profile_output[i+1] > 0)
-			sorted_profile_output_self[profile_output[i]] = profile_output[i+1]
-		if(profile_output[i+3] > 0)
-			sorted_profile_output_real[profile_output[i]] = profile_output[i+3]
+			sorted_profile_output_over[profile_output[i]] = profile_output[i+1]
+		if(profile_output[i+4] > 0)
+			sorted_profile_output_over[profile_output[i]] = profile_output[i+4]
 
 	var/string_to_send = "<br><u>[CEILING(PROFILING_DELAY_SECONDS/60,1)] Minute Server Performance Report:</u><br>\
 	CPU Usage: (\
@@ -83,12 +83,12 @@ SUBSYSTEM_DEF(report)
 			var/value = sorted_profile_output_self[name]
 			string_to_send += "[name]: <div class='[value/PROFILING_DELAY_SECONDS >= 0.05 ? "red bold" : "blue bold"]'>[CEILING((value/PROFILING_DELAY_SECONDS)*100,0.1)]%</div>.<br>"
 
-	if(length(sorted_profile_output_real))
-		string_to_send += "<u>Most Expensive Procs (real time):</u><br>"
-		sort_tim(sorted_profile_output_real,/proc/cmp_numeric_dsc,associative=TRUE)
-		for(var/i=1,i<=min(length(sorted_profile_output_real),5),i++)
-			var/name = sorted_profile_output_real[i]
-			var/value = sorted_profile_output_real[name]
+	if(length(sorted_profile_output_over))
+		string_to_send += "<u>Most Expensive Procs (overtime):</u><br>"
+		sort_tim(sorted_profile_output_over,/proc/cmp_numeric_dsc,associative=TRUE)
+		for(var/i=1,i<=min(length(sorted_profile_output_over),5),i++)
+			var/name = sorted_profile_output_over[i]
+			var/value = sorted_profile_output_over[name]
 			string_to_send += "[name]: <div class='[value >= PROFILING_DELAY_SECONDS*0.5 ? "red bold" : "blue bold"]'>[CEILING(value,0.01)]</div> seconds.<br>"
 
 	broadcast_to_clients(span("debug",string_to_send),CHAT_TYPE_DEBUG)

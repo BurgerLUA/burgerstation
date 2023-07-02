@@ -556,11 +556,11 @@
 
 /obj/item/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
-	update_lighting_for_owner()
+	if(.) update_lighting_for_owner()
 
 /obj/item/set_light_sprite(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE,debug = FALSE)
 	. = ..()
-	update_lighting_for_owner()
+	if(.) update_lighting_for_owner()
 
 
 /obj/item/proc/inventory_to_list()
