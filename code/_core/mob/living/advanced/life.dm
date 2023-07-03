@@ -144,7 +144,7 @@ var/global/list/spread_icons = list(
 	'icons/pointers/accuracy/10.dmi'
 )
 
-#define SPREAD_CHANGE 2
+#define SPREAD_CHANGE 3
 
 /mob/living/advanced/handle_mouse_pointer()
 
@@ -160,19 +160,19 @@ var/global/list/spread_icons = list(
 	var/obj/item/weapon/ranged/L = src.inventories_by_id[BODY_HAND_LEFT_HELD]?.get_top_object()
 
 	if(is_ranged_weapon(R))
-		desired_spread = max(0,desired_spread,R.heat_current)
+		desired_spread = max(0,desired_spread,R.get_static_spread() + R.get_heat_spread())
 
 	if(is_ranged_weapon(L))
-		desired_spread = max(0,desired_spread,L.heat_current)
+		desired_spread = max(0,desired_spread,L.get_static_spread() + L.get_heat_spread())
 
-	desired_spread *= 75 //Entirely arbitrary.
+	desired_spread *= 10/0.2 //A spread of 0.2 will mean a crosshair of 10.
 	var/difference = abs(desired_spread - current_mouse_spread)
 
 	if(difference <= SPREAD_CHANGE)
 		current_mouse_spread = desired_spread
 	else
 		if(desired_spread > current_mouse_spread)
-			current_mouse_spread += SPREAD_CHANGE
+			current_mouse_spread += SPREAD_CHANGE*2
 		else if(desired_spread < current_mouse_spread)
 			current_mouse_spread -= SPREAD_CHANGE
 

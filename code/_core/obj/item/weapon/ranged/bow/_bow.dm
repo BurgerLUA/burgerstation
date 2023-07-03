@@ -43,6 +43,15 @@
 
 	var/icon_state_count = 3
 
+/obj/item/weapon/ranged/bow/get_heat_spread()
+
+	if(src.next_shoot_time > world.time)
+		return min(1,(src.next_shoot_time - world.time)/30)
+
+	return max(0,0.5 - (stage_current/stage_max))*0.2
+
+
+
 /obj/item/weapon/ranged/bow/Finalize()
 	. = ..()
 	update_sprite()
@@ -62,11 +71,13 @@
 		stage_max *= strength_mod
 		stage_max = CEILING(stage_max,1)
 
+/obj/item/weapon/ranged/bow/get_base_spread() //Per additional bullet.
+	return 0.1
+
 /obj/item/weapon/ranged/bow/get_static_spread()
 	return 0
 
 /obj/item/weapon/ranged/bow/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bow/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params) //Release. This fires the bow.
@@ -118,10 +129,6 @@
 		. = FALSE
 
 	. = ..() || . //weirdest statement I ever wrote.
-
-
-/obj/item/weapon/ranged/bow/get_base_spread()
-	return 0.1
 
 /obj/item/weapon/ranged/bow/handle_ammo(var/mob/caller)
 

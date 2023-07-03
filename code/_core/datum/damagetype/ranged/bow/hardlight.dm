@@ -1,6 +1,6 @@
 /damagetype/ranged/bow/hardlight
 	attack_damage_base = list(
-		LASER = 90
+		LASER = 120
 	)
 
 	attack_damage_penetration = list(

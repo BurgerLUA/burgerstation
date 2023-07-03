@@ -36,33 +36,29 @@
 /obj/structure/interactive/coin_drop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	INTERACT_CHECK
+	INTERACT_DELAY(3)
 
 	if(!caller || !caller.client)
-		INTERACT_DELAY(3)
 		return TRUE
 
 	if(!(caller.client.ckey in valid_ckeys))
-		INTERACT_DELAY(3)
 		return TRUE
 
-	var/obj/item/currency/gold_coin/GC = object
+	var/pickup_limit = CEILING(GOLD_AMOUNT_MAX*0.1,1)
 
-	if(!istype(GC))
-		GC = null
-		if(!is_inventory(object))
-			INTERACT_DELAY(3) //Don't bother.
+	if(is_currency(object))
+		var/obj/item/currency/C = object
+		if(C.currency_class != "gold coin")
 			return TRUE
+		pickup_limit = min(pickup_limit,C.amount_max - C.amount)
+	else if(!is_inventory(object))
+		return TRUE
 
 	var/turf/T = get_turf(src)
 
-	var/pickup_limit = GOLD_AMOUNT_MAX*0.1 //100
-	if(GC)
-		pickup_limit = min(pickup_limit,GC.amount_max - GC.amount)
-
 	if(pickup_limit <= 0)
-		INTERACT_DELAY(3) //Don't bother.
 		caller.to_chat(span("warning","You can't carry any more gold!"))
-		return FALSE
+		return TRUE
 
 	var/pickup_amount = 0
 	for(var/obj/structure/interactive/coin_drop/CD in T.contents)
@@ -76,15 +72,27 @@
 		caller.client.images -= CD.cached_sparkle
 		if(length(CD.valid_ckeys) <= 0)
 			qdel(CD)
+
 	if(pickup_amount <= 0) //This shouldn't happen, but this is just in case.
 		return TRUE
 
-	var/obj/item/currency/gold_coin/G = new(T)
-	INITIALIZE(G)
-	G.amount = pickup_amount
 	SSeconomy.gold_in_circulation += pickup_amount
-	FINALIZE(G)
-	object.click_on_object(caller,G,location,control,params) //Either an inventory or a gold coin.
+
+	if(is_inventory(object) || pickup_limit < pickup_amount)
+		var/obj/hud/inventory/I = object
+		var/obj/item/currency/gold_coin/G = new(T)
+		INITIALIZE(G)
+		if(!is_inventory(object))
+			G.amount = pickup_amount - pickup_limit
+		else
+			G.amount = pickup_amount
+		FINALIZE(G)
+		I.add_object(G)
+
+	if(is_currency(object))
+		var/obj/item/currency/C = object
+		C.add_item_count(min(pickup_limit,pickup_amount),TRUE)
+
 	return TRUE
 
 /obj/structure/interactive/coin_drop/update_sprite()

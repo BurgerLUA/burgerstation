@@ -1,6 +1,6 @@
 /damagetype/ranged/bow/
 	attack_damage_base = list(
-		PIERCE = 60,
+		PIERCE = 80,
 		BLADE = 20,
 		BLUNT = 10
 	)
