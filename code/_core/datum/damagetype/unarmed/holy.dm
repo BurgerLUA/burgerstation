@@ -74,11 +74,6 @@
 			offsets[2] = offsets[1] ? rand(-1,1) : pick(-1,1)
 		LV.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12,lifetime=5)
 
-		if(is_living(attacker))
-			var/mob/living/LA = attacker
-			if(LA.ai)
-				LA.ai.find_new_objectives() //Destroyed them so hard. Find a new target.
-
 
 
 

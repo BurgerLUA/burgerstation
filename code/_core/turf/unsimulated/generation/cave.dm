@@ -48,7 +48,7 @@
 				new /obj/marker/generation/mob/carp(src)
 		if(GENERATION_SEGMENT_LOWEST to GENERATION_SEGMENT_LOW)
 			new /turf/simulated/floor/cave_dirt(src)
-			if(prob(1))
+			if(prob(0.5))
 				new /obj/marker/generation/mob/bear/brown(src)
 			else if(prob(1))
 				new /obj/marker/generation/mob/bat(src)

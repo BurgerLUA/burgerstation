@@ -227,7 +227,7 @@
 			if(objective_attack && frustration_attack < frustration_attack_threshold)
 				handle_current_objectives(objective_delay)
 			else
-				find_new_objectives(objective_delay)
+				queue_find_new_objectives = TRUE
 			if(objective_attack)
 				anger -= 10 //Hunts for 200/10 seconds.
 				if(qdeleting || !owner || owner.qdeleting)

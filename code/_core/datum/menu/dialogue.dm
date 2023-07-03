@@ -27,7 +27,7 @@
 	var/mob/living/advanced/player/P = user
 
 	if(!P.dialogue_target_id)
-		log_error("ERROR: [P.get_debug_name()] could not access dialogue as they had an invalid dialogue target id!")
+		log_error("ERROR: [P.get_debug_name()] could not access dialogue as they had a NULL dialogue target id!")
 		return FALSE
 
 	var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]

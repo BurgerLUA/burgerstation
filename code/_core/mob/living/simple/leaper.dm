@@ -306,7 +306,7 @@
 		animate(L,color=initial(L.color),SECONDS_TO_DECISECONDS(1))
 		if(L.ai)
 			L.ai.set_active(TRUE)
-			L.ai.find_new_objectives(AI_TICK,TRUE)
+			L.ai.queue_find_new_objectives = TRUE
 			L.ai.roaming_distance = VIEW_RANGE*0.5
 				L.ai.allow_far_roaming = FALSE
 		tracked_frogs += L

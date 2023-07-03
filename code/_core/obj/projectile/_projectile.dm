@@ -68,7 +68,7 @@
 
 	var/hostile = TRUE //Set to true if this is a hostile projectile. Set to false if it isn't.
 
-	anchored = TRUE
+	anchored = 1
 
 	var/penetrations_left = 0 //Uwu
 	var/list/projectile_blacklist = list()

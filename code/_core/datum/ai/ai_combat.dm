@@ -178,10 +178,10 @@ var/global/list/difficulty_to_ai_modifier = list(
 		if(1)
 			return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)
 		if(2)
-			if((target.ai && target.ai.objective_attack) || target.is_player_controlled())
-				return allow_hostile_action(owner.loyalty_tag,target)
-			else
-				return owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags)
+			if(owner.loyalty_tag && target.loyalty_tag && allow_hostile_action(owner.loyalty_tag,target) && (target.loyalty_tag in enemy_tags))
+				return TRUE
+			if(((target.ai && (target.ai.objective_attack || target.ai.alert_level > ALERT_LEVEL_NONE)) || target.is_player_controlled()) && allow_hostile_action(owner.loyalty_tag,target))
+				return TRUE
 		if(3)
 			return allow_hostile_action(owner.loyalty_tag,target)
 		if(4)

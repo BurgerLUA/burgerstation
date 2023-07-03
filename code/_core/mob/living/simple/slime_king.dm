@@ -95,7 +95,7 @@
 	FINALIZE(S)
 	if(S.ai)
 		S.ai.set_active(TRUE)
-		S.ai.find_new_objectives(AI_TICK,TRUE)
+		S.ai.queue_find_new_objectives = TRUE
 	linked_active_slimes += S
 	animate(
 		S,

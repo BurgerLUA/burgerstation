@@ -972,3 +972,21 @@
 
 	if(. && current_cover && !objective_attack)
 		remove_cover()
+
+
+/ai/advanced/set_alert_level(var/desired_alert_level,var/atom/alert_source = null,var/atom/alert_epicenter = null,var/can_lower=FALSE)
+
+	var/mob/living/advanced/A = owner
+	if(A.handcuffed)
+		return FALSE
+
+
+	. = ..()
+
+/ai/advanced/find_new_objectives()
+
+	var/mob/living/advanced/A = owner
+	if(A.handcuffed)
+		return FALSE
+
+	. = ..()

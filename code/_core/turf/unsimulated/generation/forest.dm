@@ -170,7 +170,7 @@ var/global/snow_num = 0.6+rand()*0.2
 						new /obj/marker/generation/foliage/bushes/grass(src)
 					else if(prob(2))
 						new /obj/marker/generation/foliage/bushes/pointy(src)
-						if(prob(2))
+						if(prob(0.5))
 							new /obj/marker/generation/mob/bear/brown(src)
 					else if(prob(1))
 						new /obj/marker/generation/foliage/bushes/sun(src)
@@ -223,7 +223,7 @@ var/global/snow_num = 0.6+rand()*0.2
 					else
 						if(prob(1))
 							new /obj/marker/generation/plant/fly_amanita(src)
-						if(prob(1))
+						if(prob(0.25))
 							new /obj/marker/generation/mob/bear/black(src)
 					new /turf/simulated/floor/colored/dirt(src)
 				else

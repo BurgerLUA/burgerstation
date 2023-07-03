@@ -3,6 +3,7 @@
 	should_find_weapon = TRUE
 	roaming_distance = 0
 	resist_handcuffs = FALSE
+	resist_grabs = FALSE
 	enable_loc_safety = FALSE
 	cowardice = 0.5
 	aggression = 0

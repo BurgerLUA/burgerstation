@@ -164,6 +164,8 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	var/ai/master_ai
 	var/list/ai/linked_ais
 
+	var/queue_find_new_objectives = FALSE
+
 /ai/proc/set_master_ai(var/ai/target_ai)
 
 	if(target_ai == master_ai)

@@ -245,7 +245,7 @@
 			FINALIZE(S)
 			if(S.ai)
 				S.ai.set_active(TRUE)
-				S.ai.find_new_objectives(AI_TICK,TRUE)
+				S.ai.queue_find_new_objectives = TRUE
 			var/turf/T = get_step(src,pick(DIRECTIONS_ALL))
 			if(T) S.Move(T)
 		var/turf/T = get_step(src,pick(DIRECTIONS_ALL))

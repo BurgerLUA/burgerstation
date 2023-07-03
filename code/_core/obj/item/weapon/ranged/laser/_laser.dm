@@ -153,4 +153,12 @@
 	return TRUE
 
 /obj/item/weapon/ranged/energy/get_examine_list(var/mob/caller)
-	return ..() + div("notice","[get_ammo_count()] shot\s remaining at the current charge level.")
+
+	. = ..()
+
+
+	var/obj/item/powercell/PC = get_battery()
+	if(PC)
+		. += div("notice","[PC.charge_current] / [PC.charge_max] ([get_ammo_count()] shots) remaining.")
+	else
+		. += div("warning","No powercell detected!")

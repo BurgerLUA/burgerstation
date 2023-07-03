@@ -105,7 +105,7 @@
 
 	if(shots_current <= 0)
 		minigun_spread = initial(minigun_spread)
-		if(ai) ai.find_new_objectives(bonus_sight=TRUE)
+		if(ai) ai.queue_find_new_objectives = TRUE
 		add_status_effect(PARALYZE,duration=30,magnitude=-1,stealthy=TRUE)
 		play_sound('sound/mob/can_man/rev_stop.ogg',get_turf(src))
 		return TRUE

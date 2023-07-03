@@ -136,13 +136,13 @@
 
 	return TRUE
 
-/ai/proc/find_new_objectives(var/tick_rate,var/bonus_sight=FALSE)
+/ai/proc/find_new_objectives()
 
 	if(CALLBACK_EXISTS("set_new_objective_\ref[src]"))
 		return FALSE
 
 	//Find a new living mob target.
-	var/list/possible_targets = get_possible_targets(bonus_sight)
+	var/list/possible_targets = get_possible_targets()
 	var/atom/best_target
 	var/best_score = -INFINITY
 	var/best_detection_value = 0
@@ -232,7 +232,7 @@
 	if(owner.has_status_effect(REST)) //Used for sleeping zombies.
 		. *= 0.5
 
-/ai/proc/get_possible_targets(var/bonus_sight=FALSE)
+/ai/proc/get_possible_targets()
 
 	if(aggression <= 0)
 		return .
@@ -244,17 +244,22 @@
 	for(var/k in hearers(range_to_use,owner))
 		var/mob/living/L = k
 		if(L == owner)
+			CHECK_TICK(75,FPS_SERVER)
 			continue
 		if(!is_living(L))
+			CHECK_TICK(75,FPS_SERVER)
 			continue
 		if(!should_attack_mob(L))
+			CHECK_TICK(75,FPS_SERVER)
 			continue
-		var/detection_level = get_detection_level(L,view_check=FALSE,bonus_sight=bonus_sight)
+		var/detection_level = get_detection_level(L,view_check=FALSE)
 		if(detection_level <= 0)
+			CHECK_TICK(75,FPS_SERVER)
 			continue
 		if(!.)
 			. = list()
 		.[L] = detection_level
+		CHECK_TICK(75,FPS_SERVER)
 
 /ai/proc/try_investigate(var/atom/desired_target,var/cooldown=reaction_time,var/force_if_on_cooldown=FALSE)
 

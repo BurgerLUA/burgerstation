@@ -73,7 +73,7 @@
 	FINALIZE(SM)
 	if(SM.ai)
 		SM.ai.set_active(TRUE)
-		SM.ai.find_new_objectives(AI_TICK,TRUE)
+		SM.ai.queue_find_new_objectives = TRUE
 		SM.ai.roaming_distance = VIEW_RANGE*0.5
 		SM.ai.allow_far_roaming = FALSE
 	SM.Move(get_step(SM,SOUTH))
