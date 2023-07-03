@@ -1,13 +1,16 @@
 /menu/paper/
-	file = "html/paper.html"
+	file = 'html/paper.html'
 	resources = list(
 		"markdown.js" = 'html/markdown.js'
 	)
 
 /menu/paper/open(var/mob/user)
+	cache_resources(user)
 	winset(user, "map.paper","is-visible=true")
-	sleep(1)
-	user << output(file, "map.paper")
+
+	var/file_text = rustg_file_read("[file]")
+
+	user << output(file_text, "map.paper")
 
 /menu/paper/on_load(var/mob/user)
 
