@@ -14,6 +14,9 @@
 	mana_cost_override = 60
 
 	value = 800
+
+	value_burgerbux = 1
+
 /obj/item/weapon/ranged/spellgem/buff_armor/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called)
 	if(istype(caller,/mob/living))
 		..()

@@ -432,55 +432,52 @@
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
 	for(thing in L)
-		CHECK_TICK(50,FPS_SERVER*10)
 		T = thing
 		LAZYADD(T.affecting_lights, src)
+		CHECK_TICK(75,FPS_SERVER*10)
 
 	L = affecting_turfs - turfs // Now-gone turfs, remove us from the affecting lights.
 	affecting_turfs -= L
 	for (thing in L)
-		CHECK_TICK(50,FPS_SERVER*10)
 		T = thing
 		LAZYREMOVE(T.affecting_lights, src)
+		CHECK_TICK(75,FPS_SERVER*10)
 
 	LAZYINITLIST(effect_str)
 	if (needs_update == LIGHTING_VIS_UPDATE)
 		for (thing in corners - effect_str)
-			CHECK_TICK(50,FPS_SERVER*10)
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
 				effect_str[C] = 0
 				continue
-
 			APPLY_CORNER_BY_HEIGHT(now)
+			CHECK_TICK(75,FPS_SERVER*10)
 	else
 		L = corners - effect_str
 		for (thing in L)
-			CHECK_TICK(50,FPS_SERVER*10)
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
 				effect_str[C] = 0
 				continue
-
 			APPLY_CORNER_BY_HEIGHT(now)
+			CHECK_TICK(75,FPS_SERVER*10)
 
 		for (thing in corners - L)
-			CHECK_TICK(50,FPS_SERVER*10)
 			C = thing
 			if (!C.active)
 				effect_str[C] = 0
 				continue
-
 			APPLY_CORNER_BY_HEIGHT(now)
+			CHECK_TICK(75,FPS_SERVER*10)
 
 	L = effect_str - corners
 	for (thing in L)
-		CHECK_TICK(50,FPS_SERVER*10)
 		C = thing
 		REMOVE_CORNER(C, now)
 		LAZYREMOVE(C.affecting, src)
+		CHECK_TICK(75,FPS_SERVER*10)
 
 	effect_str -= L
 

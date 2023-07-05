@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(report)
 		for(var/i=1,i<=min(length(sorted_profile_output_over),5),i++)
 			var/name = sorted_profile_output_over[i]
 			var/value = sorted_profile_output_over[name]
-			string_to_send += "[name]: <div class='[value >= PROFILING_DELAY_SECONDS*0.5 ? "red bold" : "blue bold"]'>[CEILING(value,0.01)]</div> seconds.<br>"
+			string_to_send += "[name]: <div class='[value >= PROFILING_DELAY_SECONDS*0.0075 ? "red bold" : "blue bold"]'>[CEILING(value,0.01)]</div> seconds.<br>"
 
 	broadcast_to_clients(span("debug",string_to_send),CHAT_TYPE_DEBUG)
 

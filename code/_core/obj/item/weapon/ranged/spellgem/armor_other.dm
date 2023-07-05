@@ -20,3 +20,5 @@
 
 	shoot_sounds = list('sound/weapons/magic/magic_missile.ogg')
 	value = 800
+
+	value_burgerbux = 1

@@ -78,8 +78,7 @@ SUBSYSTEM_DEF(reagent)
 			log_error("Warning: [RR.get_debug_name()] had no reagent result(s)!")
 			continue
 
-		var/actual_name = RR.name
-		actual_name = replacetextEx(actual_name,"\improper","")
+		var/actual_name = "[RR.name]"
 
 		var/recipe_text = ""
 		for(var/r_id in RR.required_reagents)
