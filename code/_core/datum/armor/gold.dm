@@ -3,7 +3,7 @@
 		BLADE = 10,
 		BLUNT = 10,
 		PIERCE = 10,
-		LASER = 50,
+		LASER = 100,
 		ARCANE = 50,
 		HEAT = -25,
 		SHOCK = -100,

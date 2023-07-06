@@ -4,7 +4,8 @@
 		BLADE = 20,
 		BLUNT = 20,
 		PIERCE = 10,
-		ACID = 25
+		ACID = 25,
+		LASER = 25
 	)
 
 /armor/leather/coat
@@ -14,7 +15,8 @@
 		PIERCE = 10,
 		HEAT = -25,
 		COLD = 75,
-		ACID = 25
+		ACID = 25,
+		LASER = 25
 	)
 
 /armor/leather/coat/military
@@ -25,7 +27,8 @@
 		ARCANE = -75,
 		HEAT = -25,
 		COLD = 75,
-		ACID = 25
+		ACID = 25,
+		LASER = 25
 	)
 
 /armor/leather/protective
@@ -34,7 +37,8 @@
 		BLUNT = 20,
 		PIERCE = 30,
 		HEAT = 25,
-		ACID = 50
+		ACID = 50,
+		LASER = 50
 	)
 
 /armor/leather/hard
@@ -42,7 +46,8 @@
 		BLADE = 40,
 		BLUNT = 30,
 		PIERCE = 20,
-		ACID = 50
+		ACID = 50,
+		LASER = 25
 	)
 	deflection = 0.25
 
@@ -51,14 +56,14 @@
 		BLADE = 50,
 		BLUNT = 25,
 		PIERCE = 50,
-		LASER = -75,
 		ARCANE = 50,
 		HEAT = 50,
 		COLD = -25,
 		ACID = 25,
 		BOMB = 100,
 		HOLY = -25,
-		DARK = 25
+		DARK = 25,
+		LASER = 100
 	)
 
 /armor/leather/xeno
@@ -81,7 +86,7 @@
 		BLADE = 50,
 		BLUNT = 50,
 		PIERCE = 50,
-		LASER = -100,
+		LASER = 100,
 		ARCANE = -25,
 		HEAT = 100,
 		COLD = -50,
@@ -95,7 +100,7 @@
 		BLADE = 40,
 		BLUNT = 40,
 		PIERCE = 40,
-		LASER = -40,
+		LASER = 25,
 		ARCANE = -40,
 		COLD = 30,
 		ACID = 50,
@@ -110,7 +115,7 @@
 		BLADE = 20,
 		BLUNT = 60,
 		PIERCE = 30,
-		LASER = -30,
+		LASER = 25,
 		ARCANE = -50,
 		HEAT = 50,
 		COLD = 25,
@@ -127,7 +132,7 @@
 		BLADE = 20,
 		BLUNT = 50,
 		PIERCE = 20,
-		LASER = -60,
+		LASER = 25,
 		ARCANE = -100,
 		HEAT = 50,
 		COLD = 50,
@@ -144,7 +149,7 @@
 		BLADE = 20,
 		BLUNT = 50,
 		PIERCE = 50,
-		LASER = -75,
+		LASER = 25,
 		ARCANE = -200,
 		HEAT = 75,
 		COLD = 75,
@@ -161,7 +166,7 @@
 		BLADE = 40,
 		BLUNT = 10,
 		PIERCE = 20,
-		LASER = -50,
+		LASER = 25,
 		ARCANE = 40,
 		HEAT = 25,
 		COLD = 25,

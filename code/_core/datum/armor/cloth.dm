@@ -2,7 +2,8 @@
 	defense_rating = list(
 		ARCANE = 50,
 		COLD = 20,
-		ACID = 10
+		ACID = 10,
+		LASER = -20
 	)
 
 /armor/cloth/bio
@@ -10,7 +11,8 @@
 		ARCANE = 50,
 		COLD = 20,
 		ACID = 10,
-		BIO = 25
+		BIO = 25,
+		LASER = 10
 	)
 
 /armor/cloth/protective
@@ -19,6 +21,7 @@
 		PIERCE = 10,
 		ARCANE = 25,
 		HEAT = 25,
+		LASER = 25,
 		ACID = 75,
 		BIO = 25
 	)
@@ -29,6 +32,7 @@
 		PIERCE = 10,
 		COLD = 50,
 		HEAT = 25,
+		LASER = 25,
 		ACID = 200,
 		BIO = 50
 	)
@@ -38,6 +42,7 @@
 		BLADE = 25,
 		PIERCE = 25,
 		HEAT = 75,
+		LASER = 25,
 		ACID = 75,
 		BIO = 50
 	)
@@ -66,14 +71,15 @@
 	defense_rating = list(
 		ARCANE = 50,
 		HEAT = 25,
-		COLD = -10
+		COLD = -10,
+		LASER = -25
 	)
 
 /armor/cloth/hoodie
 	defense_rating = list(
 		BLUNT = 10,
 		PIERCE = 10,
-		LASER = -25,
+		LASER = 10,
 		ARCANE = 50,
 		HEAT = -25,
 		COLD = 75,
@@ -138,6 +144,7 @@
 		ARCANE = 20,
 		COLD = 40,
 		HEAT = -20,
+		LASER = -20,
 		PAIN = 20,
 		ACID = 40
 	)
@@ -147,7 +154,6 @@
 		BLADE = 10,
 		BLUNT = 50,
 		PIERCE = 10,
-		LASER = -25,
 		ARCANE = 75,
 		COLD = 20,
 		ACID = 25,

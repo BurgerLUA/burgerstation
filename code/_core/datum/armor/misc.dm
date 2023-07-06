@@ -3,7 +3,7 @@
 		BLADE = 10,
 		BLUNT = 5,
 		PIERCE = 5,
-		LASER = -10,
+		LASER = 10,
 		ARCANE = -25,
 		SHOCK = -25,
 		ACID = 10,
@@ -27,7 +27,7 @@
 /armor/glasses
 	defense_rating = list(
 		BLUNT = -10,
-		LASER = -20,
+		LASER = -25,
 		ARCANE = 100,
 		ACID = 25
 	)
@@ -43,7 +43,7 @@
 /armor/glasses/sunglasses
 	defense_rating = list(
 		BLUNT = -10,
-		LASER = -20,
+		LASER = 100,
 		ARCANE = 100,
 		ACID = 10
 	)
@@ -53,8 +53,8 @@
 	defense_rating = list(
 		BLADE = 40,
 		PIERCE = 30,
-		LASER = 50,
-		ARCANE = -200,
+		LASER = 100,
+		ARCANE = 100,
 		HEAT = 10,
 		COLD = 10,
 		SHOCK = INFINITY,

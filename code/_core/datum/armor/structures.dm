@@ -3,7 +3,7 @@
 		BLADE = 100,
 		BLUNT = 100,
 		PIERCE = 100,
-		LASER = 100,
+		LASER = 200,
 		ARCANE = 100,
 		HEAT = 100,
 		COLD = 100,
@@ -26,11 +26,11 @@
 		BLADE = 200,
 		BLUNT = 200,
 		PIERCE = 200,
-		LASER = 200,
+		LASER = INFINITY,
 		ARCANE = 100,
-		HEAT = 200,
-		COLD = 200,
-		SHOCK = 200,
+		HEAT = INFINITY,
+		COLD = INFINITY,
+		SHOCK = INFINITY,
 		ACID = 100,
 		BOMB = 0,
 		BIO = INFINITY,
@@ -42,7 +42,7 @@
 		ION = INFINITY,
 		SANITY = INFINITY
 	)
-
+	deflection = 1
 
 
 /armor/structure/barricade
@@ -50,7 +50,7 @@
 		BLADE = 150,
 		BLUNT = 50,
 		PIERCE = 75,
-		LASER = 50,
+		LASER = 100,
 		ARCANE = 50,
 		HEAT = 75,
 		COLD = 100,
@@ -73,7 +73,7 @@
 		BLADE = 150,
 		BLUNT = 50,
 		PIERCE = 75,
-		LASER = 50,
+		LASER = 100,
 		ARCANE = 50,
 		HEAT = 75,
 		COLD = 100,

@@ -1,20 +1,20 @@
 /armor/ring/minor_defense
 	defense_rating = list(
-		BRUTE = 10,
-		BURN = 10,
-		TOX = 10
+		BLADE = 10,
+		BLUNT = 10,
+		PIERCE = 10
 	)
 /armor/ring/defense
 	defense_rating = list(
-		BRUTE = 15,
-		BURN = 15,
-		TOX = 15
+		BLADE = 15,
+		BLUNT = 15,
+		PIERCE = 15
 	)
 /armor/ring/major_defense
 	defense_rating = list(
-		BRUTE = 20,
-		BURN = 20,
-		TOX = 20
+		BLADE = 20,
+		BLUNT = 20,
+		PIERCE = 20
 	)
 /armor/ring/cat_cursed
 	defense_rating = list(

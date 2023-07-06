@@ -1,6 +1,6 @@
 /armor/bio
 	defense_rating = list(
-		LASER = -25,
+		LASER = 25,
 		ARCANE = -25,
 		HEAT = 25,
 		COLD = 25,
@@ -12,7 +12,7 @@
 
 /armor/rad
 	defense_rating = list(
-		LASER = -25,
+		LASER = 25,
 		ARCANE = -50,
 		HEAT = 25,
 		COLD = 25,
