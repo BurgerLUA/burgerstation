@@ -38,7 +38,7 @@
 		return mana_cost_override
 	. = get_damage_per_hit(100)
 	. *= bullet_count
-	. *= projectile_speed/TILE_SIZE
+	. *= 0.5 + (projectile_speed/TILE_SIZE)*0.5
 	. *= 1 - (spread_per_shot/360)
 	. *= 0.25
 	. = CEILING(.,1)
@@ -59,8 +59,7 @@
 			if(!attachment_stats[support_type] || !isnum(support_value))
 				attachment_stats[support_type] = support_value
 			else
-				attachment_stats[support_type] += support_value
-
+				attachment_stats[support_type] *= support_value
 
 	if(attachment_stats["mana_cost_multiplier"])
 		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
