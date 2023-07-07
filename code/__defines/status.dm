@@ -107,3 +107,6 @@
 #define BUFF "buff"
 
 #define RAGE "rage"
+
+#define BLIND "blinded"
+

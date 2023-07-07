@@ -20,11 +20,7 @@
 
 	var/casting_type = SKILL_MAGIC //What skill to use.
 
-	var/utilitygem = FALSE //If utility gem, use a custom shoot function. Make sure to return something!
-	var/projectile_utility = FALSE //Dont use custom shoot function, but DO use utility cost.
-
 	var/base_mana_cost = 0 //The base mana cost for this item. Calculated on Initialize().
-	var/mana_cost_override = 0 //The override value for mana cost for this item. For uitlity spells or stuff that add extra effects.
 
 	requires_bullets = FALSE
 
@@ -34,8 +30,6 @@
 	. = CEILING(.,1)
 
 /obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
-	if(mana_cost_override)
-		return mana_cost_override
 	. = get_damage_per_hit(100)
 	. *= bullet_count
 	. *= 0.5 + (projectile_speed/TILE_SIZE)*0.5
@@ -124,29 +118,6 @@
 			return FALSE //Fail
 
 		caller.health.adjust_mana(-final_mana_cost)
-
-
-
-
-/obj/item/weapon/ranged/spellgem/shoot(mob/caller, atom/object, location, params, damage_multiplier = 1, click_called = FALSE)
-
-	if(!utilitygem)
-		return ..()
-
-	if(!pre_shoot(caller,object,location,params,damage_multiplier))
-		return FALSE
-
-	var/quality_bonus = get_quality_bonus(0.5,2)
-	var/condition_to_use = 1
-	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
-
-	last_shoot_time = world.time
-	next_shoot_time = world.time + shoot_delay_to_use
-
-	condition_to_use = max(0,5 - max(0,quality_bonus*4))
-	condition_to_use += FLOOR(heat_current*5,1)
-
-	use_condition(condition_to_use)
 
 /obj/item/weapon/ranged/spellgem/update_overlays()
 	. = ..()

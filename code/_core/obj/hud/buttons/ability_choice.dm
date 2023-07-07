@@ -8,6 +8,9 @@
 			var/category = initial(AB.category)
 			if(!category)
 				continue
+			var/icon_state = initial(AB.icon_state)
+			if(icon_state == "none" || !icon_state)
+				continue
 			if(!categorized_abilities[category])
 				categorized_abilities[category] = list()
 			categorized_abilities[category] += AB
@@ -140,14 +143,15 @@
 
 	var/src_ability_category = initial(stored_ability.category)
 
-	if(ability_to_replace && ability_to_replace.category == src_ability_category)
-		return TRUE
+	if(src_ability_category != "Magic")
+		if(ability_to_replace && ability_to_replace.category == src_ability_category)
+			return TRUE
 
-	for(var/k in A.ability_buttons)
-		var/obj/hud/button/ability/B = A.ability_buttons[k]
-		if(B.ability && B.ability.category == src_ability_category)
-			caller.to_chat(span("warning","You cannot have more than one ability of the same category in your genetics."))
-			return FALSE
+		for(var/k in A.ability_buttons)
+			var/obj/hud/button/ability/B = A.ability_buttons[k]
+			if(B.ability && B.ability.category == src_ability_category)
+				caller.to_chat(span("warning","You cannot have more than one ability of the same category in your genetics."))
+				return FALSE
 
 	return TRUE
 

@@ -78,7 +78,7 @@
 	name = "deadly impact support gem"
 	power_base = 0.2 //20%
 	power_per_quality = 1/100 //100% more damage per 100 quality
-	value = 350
+	value = 1000
 
 	color = COLOR_RED
 	color_2 = COLOR_ORANGE
@@ -98,7 +98,7 @@
 	name = "cheaper casting support gem"
 	power_base = 0.10 //10%
 	power_per_quality = 0.5/100 //50% reduced mana cost per 100 quality
-	value = 100
+	value = 500
 
 	color = COLOR_BLUE
 	color_2 = COLOR_WHITE
@@ -139,7 +139,7 @@
 	name = "focused shots support gem"
 	power_base = 0.5 //50%
 	power_per_quality = 0.2 / 100 //20% less spread per 100 quality
-	value = 150
+	value = 750
 
 	color = COLOR_GREEN
 	color_2 = COLOR_BLUE
@@ -159,7 +159,7 @@
 	name = "penetrator support gem"
 	power_base = 1 //1 extra penetration
 	power_per_quality = 3/100 //3 extra penetrations per 100 quality
-	value = 400
+	value = 1000
 
 	color = COLOR_PINK
 	color_2 = COLOR_PURPLE
@@ -177,7 +177,7 @@
 	name = "overkill support gem"
 	power_base = 0.4 //1.4x dmg
 	power_per_quality = 1/100 //100% more damage per 100% qual
-	value = 400
+	value = 2500
 
 	color = COLOR_PINK
 	color_2 = COLOR_PURPLE
@@ -200,7 +200,7 @@
 	name = "speed support gem"
 	power_base = 0.2 //20% increased speed.
 	power_per_quality = 0.4/100 //40% increased speed per 100 quality.
-	value = 200
+	value = 750
 
 	color = COLOR_GOLD
 	color_2 = COLOR_RED
@@ -219,7 +219,7 @@
 	name = "precision support gem"
 	power_base = 0.2 //20% increased accuracy.
 	power_per_quality = 0.4/100 //40% increased accuracy per 100 quality.
-	value = 100
+	value = 500
 
 	color = COLOR_GREEN
 	color_2 = COLOR_RED

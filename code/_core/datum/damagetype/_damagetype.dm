@@ -767,7 +767,7 @@ var/global/list/all_damage_numbers = list()
 	if(victim != hit_object)
 		hit_object.on_damage_received(hit_object,attacker,weapon,src,damage_to_deal,total_damage_dealt,critical_hit_multiplier,stealthy)
 
-	post_on_hit(attacker,attacker_turf,victim,victim_turf,weapon,hit_object,total_damage_dealt)
+	src.post_on_hit(attacker,attacker_turf,victim,victim_turf,weapon,hit_object,total_damage_dealt)
 
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 

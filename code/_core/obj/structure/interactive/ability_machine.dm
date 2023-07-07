@@ -3,12 +3,15 @@
 /obj/structure/interactive/ability_machine
 	name = "ability machine"
 	desc = "It's science, I ain't gotta explain shit."
-	desc_extended = "An almost magical genetic manipulation machine that practically grants the user superpowers. Customize your abilities here."
+	desc_extended = "An almost magical genetic manipulation machine that practically grants the user superpowers. Customize your genetic-based abilities here."
 
 	icon = 'icons/obj/structure/ability_machine.dmi'
 	icon_state = "ability_machine"
 
 	density = TRUE
+	anchored = TRUE
+	collision_flags = FLAG_COLLISION_WALL
+	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
 	pixel_x = -16
 
@@ -32,3 +35,14 @@
 		return TRUE
 
 	. = ..()
+
+
+/obj/structure/interactive/ability_machine/tall
+	name = "spell table"
+	desc_extended = "It's magic, I ain't gotta explain shit."
+	desc_extended = "A magical spell manipulation machine that practically grants the user superpowers. Customize your spell-based abilities here."
+	icon = 'icons/obj/structure/ability_machine_tall.dmi'
+	pixel_x = 0
+	ability_types = list(
+		/ability/magic
+	)

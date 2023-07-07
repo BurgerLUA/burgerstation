@@ -435,22 +435,25 @@
 
 /mob/living/proc/flash(var/duration=100,var/desired_color="#FFFFFF")
 
-	if(!client)
-		return FALSE
-
 	if(duration <= 0)
 		return FALSE
 
-	if(flash_overlay)
-		flash_overlay.duration = max(duration,flash_overlay.duration)
-		flash_overlay.color = desired_color
-		return TRUE
+	if(has_status_effect(src,BLIND))
+		return FALSE
 
-	flash_overlay = new
-	flash_overlay.owner = src
-	flash_overlay.duration = duration
-	flash_overlay.color = desired_color
-	client.screen += flash_overlay
+	add_status_effect(BLIND,duration,duration)
+
+	if(client)
+		if(flash_overlay)
+			flash_overlay.duration = max(duration,flash_overlay.duration)
+			flash_overlay.color = desired_color
+			return TRUE
+
+		flash_overlay = new
+		flash_overlay.owner = src
+		flash_overlay.duration = duration
+		flash_overlay.color = desired_color
+		client.screen += flash_overlay
 
 	return TRUE
 
