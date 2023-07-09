@@ -3,6 +3,14 @@
 	resources = list()
 
 /menu/dialogue/open(var/mob/user)
+
+	if(!is_player(user))
+		return FALSE
+
+	var/mob/living/advanced/player/P = user
+
+	P.dialogue_loading = TRUE
+
 	cache_resources(user)
 	winset(user, "map.dialogue","is-visible=true")
 
@@ -28,11 +36,13 @@
 
 	if(!P.dialogue_target_id)
 		log_error("ERROR: [P.get_debug_name()] could not access dialogue as they had a NULL dialogue target id!")
+		P.dialogue_loading = FALSE
 		return FALSE
 
 	var/dialogue/D = SSdialogue.all_dialogue[P.dialogue_target_id]
 	if(!D)
 		log_error("ERROR: [P.get_debug_name()] cannot access dialogue ID [P.dialogue_target_id ? P.dialogue_target_id : "NULL"] for mob [P.dialogue_target.get_debug_name()]!")
+		P.dialogue_loading = FALSE
 		return FALSE
 
 	run_function(P,"set_reference","\"\ref[src]\"")
@@ -40,6 +50,8 @@
 	D.set_topic(P,"hello")
 
 	run_function(P,"set_name","\"[P.dialogue_target.name]\"")
+
+	P.dialogue_loading = FALSE
 
 /menu/dialogue/close(var/mob/user)
 	winset(user, "map.dialogue","is-visible=false")

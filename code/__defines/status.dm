@@ -108,5 +108,5 @@
 
 #define RAGE "rage"
 
-#define BLIND "blinded"
+#define BLINDED "blinded"
 

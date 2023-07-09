@@ -438,10 +438,10 @@
 	if(duration <= 0)
 		return FALSE
 
-	if(has_status_effect(src,BLIND))
+	if(has_status_effect(src,BLINDED))
 		return FALSE
 
-	add_status_effect(BLIND,duration,duration)
+	add_status_effect(BLINDED,duration,duration)
 
 	if(client)
 		if(flash_overlay)

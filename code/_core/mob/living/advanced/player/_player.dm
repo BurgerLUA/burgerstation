@@ -20,6 +20,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	var/dialogue_target_id
 	var/atom/dialogue_target
+	var/dialogue_loading = FALSE
 
 	see_invisible = INVISIBILITY_NO_PLAYERS
 	invisibility = INVISIBILITY_PLAYERS

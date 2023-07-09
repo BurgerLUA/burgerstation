@@ -10,7 +10,7 @@
 
 	if(dead)
 		vision |= (FLAG_VISION_MEDICAL | FLAG_VISION_SECURITY)
-	else if(has_status_effect(src,BLIND))
+	else if(has_status_effect(src,BLINDED))
 		vision |= BLIND
 
 /mob/living/get_lighting_alpha()

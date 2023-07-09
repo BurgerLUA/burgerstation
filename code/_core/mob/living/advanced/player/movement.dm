@@ -16,9 +16,10 @@
 				var/savedata/client/mob/mobdata = MOBDATA(ckey_last)
 				mobdata?.save_character(src)
 
-		if(dialogue_target_id)
-			dialogue_target_id = null
+		if(dialogue_target_id && !dialogue_loading)
 			close_menu(src,/menu/dialogue/)
+			dialogue_target_id = null
+			dialogue_target = null
 
 		if(active_structure && get_dist(src,active_structure) > 1)
 			set_structure_unactive()

@@ -6,9 +6,9 @@
 	icon = 'icons/mob/living/simple/blob.dmi'
 	icon_state = "blobpod"
 
-	health_base = 50
-	stamina_base = 50
-	mana_base = 50
+	health_base = 25
+	stamina_base = 25
+	mana_base = 25
 
 	value = 5
 

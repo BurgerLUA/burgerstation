@@ -9,15 +9,16 @@
 	if(L.following) //If we're following someone
 		if(L.following == P) //If we're following the person we're talking to.
 			.["hello"] = list(
-				"Awaiting orders.",
+				"Awaiting orders.NEWLINE#1",
 				"*stop following me"
 			)
 			.["*stop following me"] = list(
-				"I will wait here."
+				"I will wait here.NEWLINE#1",
+				"*follow me"
 			)
 		else //If we're following someone else.
 			.["hello"] = list(
-				"Awaiting orders.",
+				"Awaiting orders.NEWLINE#1",
 				"*follow me"
 			)
 			.["*follow me"] = list(
@@ -25,12 +26,13 @@
 			)
 	else //We're not following someone.
 		.["hello"] = list(
-			"Awaiting orders.",
+			"Awaiting orders.NEWLINE#1",
 			"*follow me"
 		)
-		if(length(P.followers) < 2) //They have less than 2 followers
+		if(length(P.followers) < 3) //They have less than 3 followers
 			.["*follow me"] = list(
-				"I will follow."
+				"I will follow.NEWLINE#1",
+				"*stop following me"
 			)
 		else
 			.["*follow me"] = list(

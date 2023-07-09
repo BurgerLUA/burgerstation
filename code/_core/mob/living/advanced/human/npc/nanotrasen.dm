@@ -1,7 +1,7 @@
 /mob/living/advanced/npc/nanotrasen
 	name = "\improper NanoTrasen security personnel"
-	desc = "A security team that actually follows orders!"
-	desc_extended = "A low-ranking NanoTrasen soldier tasked with defending the station and assisting with higher ranking NanoTrasen personnel with missions."
+	desc = "A security team that doesn't like following orders."
+	desc_extended = "A low-ranking NanoTrasen soldier tasked with defending the station."
 	ai = /ai/advanced/nanotrasen
 
 	dialogue_id = /dialogue/npc/soldier/
@@ -9,7 +9,20 @@
 
 	dna = /dna/human
 
+	level = 12
+
+/mob/living/advanced/npc/nanotrasen/recruitable
+	name = "\improper NanoTrasen security personnel recruit"
+	desc = "A security team that actually follows orders!"
+	desc_extended = "A low-ranking NanoTrasen soldier tasked with assisting with higher ranking NanoTrasen personnel with missions."
+
+	dialogue_id = /dialogue/npc/soldier/
+	loadout = /loadout/nanotrasen/recruit
+
+	dna = /dna/human
+
 	level = 8
+
 
 /mob/living/advanced/npc/nanotrasen/Finalize()
 	. = ..()
