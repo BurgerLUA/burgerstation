@@ -11,6 +11,8 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
+	vis_flags = 0x0
+
 	initialize_type = 0x0 //This type does not get initialized.
 
 	var/delete_on_no_owner = TRUE

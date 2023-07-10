@@ -6,6 +6,7 @@
 	damage_type = null //Default is /damagetype/error. Sometimes projectiles don't need to do damage.
 
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	var/vel_x = 0 //X velocity, in pixels per decisecond
 	var/vel_y = 0 //Y velocity in pixels per decisecond

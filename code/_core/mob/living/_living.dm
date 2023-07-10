@@ -555,7 +555,7 @@
 	chat_overlay.alpha = 0
 	chat_overlay.pixel_y = 4 + src.pixel_z
 	chat_overlay.mouse_opacity = 0
-	src.vis_contents += chat_overlay
+	add_vis_content(chat_overlay)
 	//This is initialized somewhere else.
 
 	alert_overlay = new(src)
@@ -564,7 +564,7 @@
 	alert_overlay.icon_state = "none"
 	alert_overlay.pixel_y = 20 + src.pixel_z
 	alert_overlay.mouse_opacity = 0
-	src.vis_contents += alert_overlay
+	add_vis_content(alert_overlay)
 	//This is initialized somewhere else.
 
 	fire_overlay = new(src)
@@ -572,7 +572,7 @@
 	fire_overlay.icon = 'icons/mob/living/advanced/overlays/fire.dmi'
 	fire_overlay.icon_state = "0"
 	fire_overlay.mouse_opacity = 0
-	src.vis_contents += fire_overlay
+	add_vis_content(fire_overlay)
 	//This is initialized somewhere else.
 
 	shield_overlay = new(src)
@@ -583,7 +583,7 @@
 	shield_overlay.alpha = 0
 	shield_overlay.pixel_y = src.pixel_z
 	shield_overlay.mouse_opacity = 0
-	src.vis_contents += shield_overlay
+	add_vis_content(shield_overlay)
 	//This is initialized somewhere else.
 
 	//Create the water mask effect.
@@ -591,6 +591,7 @@
 	water_mask.icon = 'icons/water_mask.dmi'
 	water_mask.icon_state = "water_mask"
 	water_mask.appearance_flags = src.appearance_flags | RESET_TRANSFORM | RESET_ALPHA
+	water_mask.vis_flags = VIS_INHERIT_ID
 	water_mask.plane = PLANE_MOVABLE_WATER_MASK
 	water_mask.layer = LAYER_BASE
 	water_mask.pixel_x = -32
@@ -598,7 +599,7 @@
 	water_mask.alpha = 200
 	water_mask.mouse_opacity = 0
 	water_mask.filters += filter(type="alpha",x=0,y=0,render_source="\ref[src]")
-	vis_contents += water_mask
+	add_vis_content(water_mask)
 
 	. = ..()
 

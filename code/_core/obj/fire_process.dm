@@ -56,6 +56,8 @@
 	plane = PLANE_GRASS
 	layer = 1000
 
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+
 /obj/fire_process/proc/do_damage(var/atom/movable/victim,var/distance_check=0)
 
 	if(!victim || !victim.z || !src.z || victim.z != src.z)

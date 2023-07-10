@@ -15,6 +15,8 @@
 
 	var/list/turf/blacklist = list()
 
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+
 /obj/explosion_process/Finalize()
 	SSexplosion.active_explosions += src
 	SSexplosion.add_data(

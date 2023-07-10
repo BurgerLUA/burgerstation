@@ -26,6 +26,8 @@
 	var/vel_x
 	var/vel_y
 
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+
 /obj/reflector/New(var/atom/desired_loc,var/atom/desired_owner,var/desired_loyalty_tag,var/time_to_live=10)
 
 	owner = desired_owner

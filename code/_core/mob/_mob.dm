@@ -7,6 +7,8 @@
 
 	appearance_flags = PIXEL_SCALE | LONG_GLIDE | KEEP_TOGETHER
 
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE
+
 	var/ckey_last //The person controlling this. Can be null if control is given up.
 	var/ckey_owner //The one who spawned it in. Only null if deleting.
 

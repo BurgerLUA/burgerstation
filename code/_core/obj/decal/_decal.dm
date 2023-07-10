@@ -6,6 +6,8 @@
 	plane = PLANE_FLOOR
 	layer = LAYER_FLOOR_DECAL
 
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+
 /*
 /obj/decal/Initialize()
 	try_attach_to()

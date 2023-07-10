@@ -1,22 +1,24 @@
 "a" = (/turf/simulated/wall/metal,/area/dmm_suite/clear_area)
 "b" = (/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
+"c" = (/obj/structure/interactive/lighting/fixture/floor,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 "d" = (/turf/simulated/floor/stair/ztravel,/area/dmm_suite/clear_area)
+"e" = (/obj/structure/interactive/lighting/fixture/bulb/red,/turf/simulated/floor/plating,/area/dmm_suite/clear_area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
 abbbbbbbbbbbbbba
+abcbbbbbbbbbbcba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
-abbbbbbbbbbbbbba
-bbbbbbbbbbbbbbba
+ebbbbbbbbbbbbbba
 dbbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
 abbbbbbbbbbbbbba
-abbbbbbbbbbbbbba
+abcbbbbbbbbbbcba
 abbbbbbbbbbbbbba
 aaaaaaaaaaaaaaaa
 "}

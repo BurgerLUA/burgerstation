@@ -15,6 +15,8 @@
 	var/power = 0
 	size = 1 //Transform multiplier
 
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
+
 /obj/light_sprite/PreDestroy()
 	set_top_atom(null) //kills top_atom
 	. = ..()
