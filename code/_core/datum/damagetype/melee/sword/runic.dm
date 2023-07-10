@@ -32,3 +32,7 @@
 
 	attack_delay = 28
 	attack_delay_max = 28
+
+	impact_sounds = list(
+		'sound/weapons/melee/runic/swing.ogg'
+	)
