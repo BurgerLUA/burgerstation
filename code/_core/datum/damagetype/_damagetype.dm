@@ -230,6 +230,11 @@ var/global/list/all_damage_numbers = list()
 					new_attack_damage[damage_type] += attack_damage
 					if(debug) log_debug("Getting [attack_damage] [damage_type] damage from [skill].")
 
+	if(new_attack_damage[BIO] && is_organ(hit_object))
+		var/obj/item/organ/O = hit_object
+		if(O.bleeding > 1)
+			new_attack_damage[BIO] *= 1 + O.bleeding/20
+
 	var/final_damage_multiplier = (hit_object && hit_object.health ? hit_object.health.get_damage_multiplier(attacker,victim,weapon,hit_object) : 1)*damage_multiplier*damage_mod
 	if(debug) log_debug("Multiplying final damage by [final_damage_multiplier] from bonuses.")
 	for(var/k in new_attack_damage)

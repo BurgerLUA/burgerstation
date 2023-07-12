@@ -83,6 +83,8 @@
 
 		update_sprite()
 
+		play_sound('sound/effects/window_spray.ogg',get_turf(victim))
+
 		return TRUE
 
 

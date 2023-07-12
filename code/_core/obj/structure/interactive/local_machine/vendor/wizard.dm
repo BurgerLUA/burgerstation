@@ -39,7 +39,6 @@
 	stored_types = list(
 		/obj/item/container/simple/can/dr_gibb/explosive,
 		/obj/item/clothing/back/storage/satchel/bluespace/prank,
-		/obj/item/container/healing/bandage/prank,
 		/obj/item/container/spray/ketchup,
 		/obj/item/container/spray/mustard,
 		/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen,

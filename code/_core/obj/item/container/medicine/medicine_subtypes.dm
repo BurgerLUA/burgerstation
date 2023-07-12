@@ -18,15 +18,6 @@
 	amount = 3
 	reagents.volume_max = amount*10
 
-/obj/item/container/healing/bandage/prank
-	name = "badages"
-	desc = "Fucking puns."
-	desc_extended = "A pair of bandages with spikes on them. This will hurt..."
-	heal_brute = -25
-	value = 100
-
-	rarity = RARITY_UNCOMMON
-
 /obj/item/container/healing/bandage/advanced
 	name = "infused bandages (styptic powder)"
 	desc = "Allows wounds to recover further than simple cloth."

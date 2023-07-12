@@ -193,7 +193,7 @@
 				if(!health || !health.organic)
 					total_bleed_damage *= 0.5
 				if(total_bleed_damage > 0)
-					var/bleed_to_add = total_bleed_damage/50
+					var/bleed_to_add = total_bleed_damage/25
 					src.bleeding += bleed_to_add
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
 				src.send_pain_response(damage_amount)
@@ -502,17 +502,17 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner)
 	if(bleeding > 0.25)
 		var/bleeding_description
 		switch(bleeding)
-			if(0.25 to 1)
+			if(1 to 3)
 				if(health.organic)
 					bleeding_description = "trickling blood"
 				else
 					bleeding_description = "trickling fluid"
-			if(1 to 3)
+			if(3 to 6)
 				if(health.organic)
 					bleeding_description = "<b>bleeding</b>"
 				else
 					bleeding_description = "<b>leaking fluid</b>"
-			if(3 to INFINITY)
+			if(6 to INFINITY)
 				if(health.organic)
 					bleeding_description = "<u><b>gushing blood</b></u>"
 				else
