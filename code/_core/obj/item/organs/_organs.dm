@@ -189,7 +189,7 @@
 			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
 				break_bone()
 			if(A.blood_type)
-				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*1.5
+				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*(2 - health.health_current/health.health_max)
 				if(!health || !health.organic)
 					total_bleed_damage *= 0.5
 				if(total_bleed_damage > 0)
