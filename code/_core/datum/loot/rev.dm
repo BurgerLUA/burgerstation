@@ -5,7 +5,6 @@
 		/obj/item/doctor_bag = 1,
 		/obj/item/supply_crate/slavic = 1,
 		/obj/item/tempering/luck = 1,
-		/obj/item/tempering/quality/general = 1,
 		/obj/item/container/healing/bandage = 1,
 		/obj/item/container/healing/ointment = 1,
 		/obj/item/container/simple/alcohol/vodka/premium = 1,

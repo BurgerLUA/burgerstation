@@ -23,7 +23,7 @@
 			T.change_turf(force_turf)
 		else
 			var/turf/simulated/destruction_turf = T.destruction_turf
-			if(destruction_turf)
+			if(destruction_turf && destruction_turf != /turf/simulated/openspace)
 				T.change_turf(destruction_turf)
 		for(var/k in T.contents)
 			var/atom/movable/M = k

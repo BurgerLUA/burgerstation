@@ -9,6 +9,9 @@
 	var/rarity_min = RARITY_BROKEN
 	var/rarity_max = RARITY_LEGENDARY
 
+	var/quality_min = 100
+	var/quality_max = 100
+
 	var/size_max = SIZE_X
 
 	var/base_type = /obj/item
@@ -18,6 +21,15 @@
 	var/ignore_burgerbux = FALSE
 
 	use_random_item_amounts = TRUE
+
+/loot/random/pre_spawn(var/atom/movable/M)
+
+	. = ..()
+
+	if(quality_min != 100 && quality_max != 100 && is_item(M))
+		var/obj/item/I = M
+		if(I.quality == 100)
+			I.adjust_quality(rand(quality_min-100,quality_max-100))
 
 /loot/random/proc/get_base_types()
 	return subtypesof(base_type)
@@ -60,7 +72,9 @@
 	value_min = 1
 	value_max = 100
 	rarity_min = RARITY_BROKEN
-	rarity_max = RARITY_COMMON
+	rarity_max = RARITY_UNCOMMON
+	quality_min = 0
+	quality_max = 25
 
 /loot/random/trash/get_base_types()
 	return subtypesof(base_type) - subtypesof(/obj/item/bullet_cartridge/)

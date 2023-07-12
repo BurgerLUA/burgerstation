@@ -43,7 +43,6 @@
 
 	var/bad_color = "#FF0000"
 	var/bad_color_outline = "#FFFFFF"
-	var/bad_color_text = "#000000"
 
 	if(L && L.client)
 		var/color_scheme = L.client.settings.loaded_data["hud_colors"]
@@ -52,7 +51,6 @@
 		good_color_outline = color_scheme[2]
 		bad_color_outline = color_scheme[5]
 		good_color_text = color_scheme[4]
-		bad_color_text = color_scheme[5]
 
 	var/perceived_health_mod = (L.health.health_current + L.pain_regen_buffer*0.25) - max(0,L.health.damage[PAIN] - L.pain_regen_buffer)
 	perceived_health_mod = clamp(CEILING( perceived_health_mod / L.health.health_max, 0.01),0,1)
@@ -61,7 +59,7 @@
 	var/list/color_mod = list(
 		blend_colors(bad_color,good_color,perceived_health_mod),
 		blend_colors(bad_color_outline,good_color_outline,perceived_health_mod),
-		blend_colors(bad_color_text,good_color_text,perceived_health_mod)
+		good_color_text
 	)
 
 	var/text_to_use
@@ -71,6 +69,9 @@
 		else
 			icon_state = "dead"
 		text_to_use = "<center>DEATH</center>"
+	else if(perceived_health_mod <= 0)
+		icon_state = "revivable"
+		text_to_use = "<center>CRIT</center>"
 	else
 		var/display_mod = (perceived_health_mod + real_health_mod)/2
 		icon_state = "[clamp(CEILING(display_mod*5,1),0,5)]"

@@ -113,10 +113,22 @@
 	desc = "The only thing that keeps you alive during ash storms. Besides mining capsules."
 	desc_extended = "An incredibly beneficial and expensive butterfly pen with a potent mix of chemicals that should keep you standing even in the harshest of environments. It is recommended not to use more than two in a quick succession."
 
+/obj/item/container/syringe/medipen/mining/Generate()
+	reagents.add_reagent(/reagent/medicine/inaprovaline,5)
+	reagents.add_reagent(/reagent/medicine/tricordrazine,5)
+	reagents.add_reagent(/reagent/medicine/adrenaline,5)
+	reagents.add_reagent(/reagent/medicine/painkiller/morphine,5)
+	return ..()
+
+/obj/item/container/syringe/medipen/mining_plus
+	name = "deluxe mining butterfly pen"
+	desc = "The only thing that keeps you alive during ash storms. Besides mining capsules."
+	desc_extended = "An incredibly beneficial and expensive butterfly pen with a potent mix of chemicals that should keep you standing even in the harshest of environments. It is recommended not to use more than two in a quick succession."
+
 	reagents = /reagent_container/syringe/hypospray
 
-/obj/item/container/syringe/medipen/mining/Generate()
-	reagents.add_reagent(/reagent/medicine/inaprovaline,20)
+/obj/item/container/syringe/medipen/mining_plus/Generate()
+	reagents.add_reagent(/reagent/medicine/inaprovaline,10)
 	reagents.add_reagent(/reagent/medicine/omnizine,10)
 	reagents.add_reagent(/reagent/medicine/tricordrazine,10)
 	reagents.add_reagent(/reagent/medicine/adrenaline,10)

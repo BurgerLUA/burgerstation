@@ -4,7 +4,6 @@
 	desc_extended = "A low-ranking NanoTrasen soldier tasked with defending the station."
 	ai = /ai/advanced/nanotrasen
 
-	dialogue_id = /dialogue/npc/soldier/
 	loadout = /loadout/nanotrasen/soldier
 
 	dna = /dna/human
@@ -18,6 +17,7 @@
 
 	dialogue_id = /dialogue/npc/soldier/
 	loadout = /loadout/nanotrasen/recruit
+	ai = /ai/advanced/nanotrasen
 
 	dna = /dna/human
 
@@ -32,7 +32,6 @@
 
 /mob/living/advanced/npc/nanotrasen/hanger_guard //For guarding the station against antags.
 	name = "\improper NanoTrasen hanger guard"
-	dialogue_id = null
 	loadout = /loadout/nanotrasen/hanger_guard
 	level = 40
 	ai = /ai/advanced/guarding

@@ -172,7 +172,7 @@
 		var/maximum_checks = 4 //This probably won't happen but this is really just in case some fuckery happens.
 		while(maximum_checks > 0 && T.density && T.health)
 			maximum_checks--
-			if(maximum_checks > 0 && T.destruction_turf && !initial(T.destruction_turf.density))
+			if(maximum_checks > 0 && T.destruction_turf && !initial(T.destruction_turf.density) && T.destruction_turf != /turf/simulated/openspace)
 				T.change_turf(T.destruction_turf)
 			else
 				T.change_turf(/turf/simulated/floor/plating)

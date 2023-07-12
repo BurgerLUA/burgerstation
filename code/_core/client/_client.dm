@@ -94,6 +94,11 @@ var/global/list/all_clients = list() //Assoc list
 
 	var/next_global_click = 0
 
+	var/last_control = 0 //Prevents race conditions.
+
+
+
+
 /client/proc/is_player_controlled()
 	return TRUE //duh
 
