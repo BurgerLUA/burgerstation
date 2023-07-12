@@ -154,6 +154,9 @@
 
 		CHECK_TICK(50,FPS_SERVER)
 
+		if(M.see_invisible < src.invisibility)
+			continue
+
 		if(!M.client) //Just in case.
 			continue
 
@@ -165,12 +168,9 @@
 		if(mob_turf.z != T.z)
 			continue
 
-		if(!within_range(mob_turf,T,view_range))
-			continue
-
 		var/distance = get_dist(mob_turf,T)
 
-		if(M.see_invisible < src.invisibility)
+		if(distance > view_range)
 			continue
 
 		var/local_first_person_text

@@ -499,7 +499,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner)
 					pain_description = "<u><b>numb from the pain</b></u>"
 			damage_description += "<font color='grey'>[pain_description]</font>"
 
-	if(bleeding > 0.25)
+	if(bleeding > 1)
 		var/bleeding_description
 		switch(bleeding)
 			if(1 to 3)

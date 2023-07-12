@@ -12,7 +12,9 @@
 
 	. = 0x0
 
-	if(selected_hand)
+	if("middle" in params)
+		. |= CLICK_MIDDLE
+	else if(selected_hand)
 		if(selected_hand == LEFT_HAND)
 			. |= CLICK_RIGHT
 		else
@@ -23,9 +25,6 @@
 
 		if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
 			. |= CLICK_LEFT
-
-	if("middle" in params)
-		. |= CLICK_MIDDLE
 
 /client/MouseWheel(var/atom/object,delta_x,delta_y,location,control,params)
 
@@ -74,7 +73,7 @@
 		return FALSE
 
 	if(examine_mode)
-		mob.display_turf_contents(get_turf(object))
+		if(mob) mob.display_turf_contents(get_turf(object))
 		examine(object)
 		return TRUE
 
@@ -106,6 +105,7 @@
 	if(examine_mode && (click_flags & CLICK_RIGHT) && (permissions & FLAG_PERMISSION_MODERATOR))
 		debug_variables(object)
 		return TRUE
+
 	if(click_flags & CLICK_LEFT)
 		mob.attack_flags |= CONTROL_MOD_LEFT
 	if(click_flags & CLICK_RIGHT)
@@ -135,8 +135,9 @@
 		mob.on_right_down(object,location,control,new_params)
 
 	if(click_flags & CLICK_MIDDLE)
-		if(mob && mob.movement_flags & MOVEMENT_RUNNING && (is_turf(object) || is_turf(object.loc)))
+		if(mob.movement_flags & MOVEMENT_RUNNING && (is_turf(object) || is_turf(object.loc)))
 			if(spam_protection_interact <= 10)
+				mob.visible_message("<b>\The [mob.name]</b> points to <b>\the [object.name]</b>.")
 				var/turf/T = get_turf(mob)
 				var/obj/effect/temp/arrow/A = new(get_turf(object))
 				A.pixel_x = (T.x - A.x)*TILE_SIZE
@@ -146,7 +147,6 @@
 				A.invisibility = mob.invisibility
 				INITIALIZE(A)
 				FINALIZE(A)
-				mob.visible_message("<b>\The [mob.name]</b> points to <b>\the [object.name]</b>.")
 				spam_protection_interact += 10
 		else if(is_advanced(mob) && mob.attack_flags & CONTROL_MOD_GRAB && is_advanced(object))
 			var/mob/living/advanced/A = object

@@ -669,6 +669,8 @@
 
 	QUEUE_HEALTH_UPDATE(src)
 
+	update_eyes()
+
 /mob/living/proc/setup_name()
 	name = "[CHECK_NAME(name)]"
 	return TRUE
