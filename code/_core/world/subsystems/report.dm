@@ -58,9 +58,10 @@ SUBSYSTEM_DEF(report)
 
 	var/list/sorted_profile_output_self = list()
 	var/list/sorted_profile_output_over = list()
+
 	for(var/i=7,i<=length(profile_output),i+=6) //It just werks
 		if(profile_output[i+1] > 0)
-			sorted_profile_output_over[profile_output[i]] = profile_output[i+1]
+			sorted_profile_output_self[profile_output[i]] = profile_output[i+1]
 		if(profile_output[i+4] > 0)
 			sorted_profile_output_over[profile_output[i]] = profile_output[i+4]
 

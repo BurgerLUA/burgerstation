@@ -15,8 +15,8 @@
 	heal_factor = 0
 
 	cooled_reagent_temp = T0C - 1
-	cooled_reagent_amount = 1
-	cooled_reagent_mul = 0.25
+	cooled_reagent_amount = 0
+	cooled_reagent_mul = 1
 	cooled_reagent = /reagent/nutrition/ice
 
 	value = 0.75
@@ -79,8 +79,8 @@
 	heal_factor = 0
 
 	heated_reagent_temp = T0C + 1
-	heated_reagent_amount = 0.25
-	heated_reagent_mul = 0.25
+	heated_reagent_amount = REAGENT_ROUNDING
+	heated_reagent_mul = 0.03
 	heated_reagent = /reagent/nutrition/water
 
 	temperature_mod = 50
