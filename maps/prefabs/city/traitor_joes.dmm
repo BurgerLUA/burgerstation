@@ -92,7 +92,7 @@
 "bN" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes)
 "bO" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
 "bP" = (/obj/structure/interactive/bed,/obj/structure/interactive/lighting/fixture/tube/syndicate,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
-"bQ" = (/obj/structure/table/reinforced/steel/dark,/obj/marker/spawning/random/dangerous,/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 1},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
+"bQ" = (/obj/structure/interactive/lighting/fixture/tube/syndicate{icon_state = "preview"; dir = 1},/obj/structure/interactive/vending/syndicate/ammo,/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
 "bR" = (/obj/structure/interactive/bar_sign/traitor_joes,/turf/simulated/wall/metal/syndicate,/area/mission/prefab/city/traitor_joes/entrance)
 "bS" = (/obj/marker/cover_node/right{icon_state = "right"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
 "bT" = (/obj/marker/cover_node/left{icon_state = "left"; dir = 4},/turf/simulated/floor/tile/morphing/red/dark,/area/mission/prefab/city/traitor_joes/vault)
