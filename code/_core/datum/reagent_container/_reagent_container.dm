@@ -255,7 +255,7 @@
 		if(isnum(R.heated_reagent_temp) && R.heated_reagent_temp < average_temperature)
 			var/temperature_heat_mod = (average_temperature/max(0.1,R.heated_reagent_temp)) ** 2
 			var/amount_to_remove = min(R.heated_reagent_amount + (volume * R.heated_reagent_mul * temperature_heat_mod),volume)
-			var/amount_to_remove = CEILING(amount_to_remove,REAGENT_ROUNDING)
+			amount_to_remove = CEILING(amount_to_remove,REAGENT_ROUNDING)
 			if(amount_to_remove > 0)
 				var/removed_amount = -add_reagent(r_id,-amount_to_remove,should_update = FALSE, check_recipes = FALSE)
 				if(R.heated_reagent && removed_amount > 0)
