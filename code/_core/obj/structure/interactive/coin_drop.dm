@@ -25,6 +25,8 @@
 	if(cached_coin || cached_sparkle)
 		for(var/k in valid_ckeys)
 			var/client/C = CLIENT(k)
+			if(!C)
+				continue
 			if(cached_coin)
 				C -= cached_coin
 			if(cached_sparkle)
@@ -41,7 +43,9 @@
 	if(!caller || !caller.client)
 		return TRUE
 
-	if(!(caller.client.ckey in valid_ckeys))
+	if(!valid_ckeys[caller.client.ckey])
+		caller.client -= cached_coin
+		caller.client -= cached_sparkle
 		return TRUE
 
 	var/pickup_limit = CEILING(GOLD_AMOUNT_MAX*0.1,1)
@@ -124,7 +128,9 @@
 
 	cached_sparkle = new_sparkle
 	cached_coin = new_coin
+
 	icon = null
+	icon_state = null
 
 /obj/structure/interactive/coin_drop/update_icon()
 	. = ..()
