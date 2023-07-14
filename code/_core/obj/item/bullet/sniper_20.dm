@@ -24,7 +24,7 @@
 
 /obj/item/bullet_cartridge/sniper_20/surplus
 	name = "\improper surplus 20x117mm sniper round"
-	damage_type_bullet = /damagetype/ranged/bullet/bmg_50/surplus
+	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/surplus
 	jam_chance = 1
 	rarity = RARITY_BROKEN
 
