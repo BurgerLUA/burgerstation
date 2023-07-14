@@ -42,7 +42,7 @@
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/sniper_20 = TRUE,
 
-		/obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/charger = TRUE,
 		/obj/item/attachment/barrel/charger/advanced = TRUE,
 
 		/obj/item/attachment/sight/laser_sight = TRUE,
