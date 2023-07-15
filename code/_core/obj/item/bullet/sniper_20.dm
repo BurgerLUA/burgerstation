@@ -40,7 +40,7 @@
 	desc_extended = "For guns that require 20x117mm ammo. This one is packed with explosives and an incendiary mixture. Its payload makes cycling unreliable, however."
 	rarity = RARITY_RARE
 	damage_type_bullet = /damagetype/ranged/bullet/sniper_20/hei
-	jam_chance = 25
+	jam_chance = 100
 	penetrations = 0
 
 /obj/item/bullet_cartridge/sniper_20/hei/sap
