@@ -143,3 +143,23 @@
 
 	value = 1600
 	rarity = RARITY_MYTHICAL
+
+/obj/item/attachment/barrel/charger/advanced/20
+	name = "20mm advanced barrel charger"
+	desc = "SUPERCHARGE TO THE MAX-ER."
+	desc_extended = "A supermagnetic barrel charger that uses the power of MAGNETS to launch bullets faster and stronger than what could normally occur with gunpowder. Increases damage and projectile speed at the cost of increased recoil and decreased firerate. This one has been modified for use with 20mm Anti-materiel rifles"
+	icon_state = "barrel_charger_advanced"
+
+	attachment_stats = list(
+		damage_multiplier = 1.5,
+		projectile_speed = 1.5,
+		heat_spread = 1.5,
+
+		shoot_delay = 1.5,
+		bullet_color = COLOR_CYAN
+	)
+
+	value = 3000
+	value_burgerbux = 1
+
+	rarity = RARITY_MYTHICAL

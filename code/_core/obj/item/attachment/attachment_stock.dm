@@ -38,7 +38,7 @@
 
 	removable = FALSE
 
-/obj/item/attachment/barrel/sniper_20
+/obj/item/attachment/stock/sniper_20
 	name = "20mm barrel"
 	desc = "Extendong."
 	desc_extended = ""
