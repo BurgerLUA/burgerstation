@@ -22,6 +22,7 @@
 	var/draw_bullet_on_box = TRUE
 
 	var/list/obj/item/bullet_cartridge/bullet_whitelist
+	var/is_surplus = FALSE
 
 /obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
@@ -151,6 +152,7 @@
 		bullet_count = 0
 		bullet_max = 0
 		rarity = RARITY_COMMON
+		is_surplus = FALSE
 		return TRUE
 
 	if(ispath(desired_path))
@@ -159,6 +161,8 @@
 		stored_bullet.amount = 1
 		FINALIZE(stored_bullet)
 		bullet_max = CEILING( 10*(size**3)/stored_bullet.bullet_diameter, 1)
+		if(stored_bullet.rarity == RARITY_BROKEN)
+			is_surplus = TRUE
 		if(!bullet_max)
 			set_stored_bullet(null)
 			update_sprite()

@@ -59,6 +59,26 @@
 		caller.to_chat(span("notice","\The [M.name] has been restocked with [bullets_to_add] [initial(bullet_to_create.name)]."))
 		return TRUE
 
+	if(istype(object,/obj/item/bulletbox))
+		INTERACT_CHECK
+		INTERACT_CHECK_OBJECT
+		INTERACT_DELAY(5)
+		var/obj/item/bulletbox/B = object
+		var/obj/item/bullet_cartridge/bullet_to_create = B.stored_bullet
+		if(B.bullet_max == 0)
+			caller.to_chat(span("warning","The ammo box has no assigned cartridge!"))
+			return TRUE
+		var/bullets_to_add = B.bullet_max - B.bullet_count
+		if(bullets_to_add <=0)
+			caller.to_chat(span("warning","The ammo box is already full!"))
+			return TRUE
+		if(premium == B.is_surplus)
+			caller.to_chat(span("warning","It would be a bad idea to mix bullets up..."))
+			return TRUE
+		B.bullet_count += bullets_to_add
+		caller.to_chat(span("notice","The ammo box has been restocked with [bullets_to_add] [initial(bullet_to_create.name)]."))
+		return TRUE
+
 	return ..()
 
 /obj/structure/interactive/restocker/ammo/premium
