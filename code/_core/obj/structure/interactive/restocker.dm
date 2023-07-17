@@ -69,7 +69,7 @@
 			caller.to_chat(span("warning","The ammo box has no assigned cartridge!"))
 			return TRUE
 		var/bullets_to_add = B.bullet_max - B.bullet_count
-		if(bullets_to_add <=0)
+		if(bullets_to_add <= 0)
 			caller.to_chat(span("warning","The ammo box is already full!"))
 			return TRUE
 		if(premium == B.is_surplus)
