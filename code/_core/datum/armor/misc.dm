@@ -4,7 +4,7 @@
 		BLUNT = -100,
 		PIERCE = -100,
 		LASER = -100,
-		ARCANE = 100,
+		ARCANE = 50,
 		HEAT = -100,
 		COLD = -100,
 		ACID = -100,
