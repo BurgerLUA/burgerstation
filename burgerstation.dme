@@ -1308,6 +1308,7 @@
 #include "code\_core\obj\item\clothing\back\storage\satchel\poly.dm"
 #include "code\_core\obj\item\clothing\back\wings\_wings.dm"
 #include "code\_core\obj\item\clothing\back\wings\angel.dm"
+#include "code\_core\obj\item\clothing\back\wings\fairy.dm"
 #include "code\_core\obj\item\clothing\belt\_belts.dm"
 #include "code\_core\obj\item\clothing\belt\bandolier.dm"
 #include "code\_core\obj\item\clothing\belt\belt_of_holding.dm"

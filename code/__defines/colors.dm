@@ -27,6 +27,7 @@
 #define COLOR_ORANGE "#D38F28"
 
 #define COLOR_CYAN "#449999"
+#define COLOR_LIGHT_CYAN "#1cffff"
 
 
 

@@ -1,3 +1,18 @@
+/armor/fairy
+	defense_rating = list(
+		BLADE = -100,
+		BLUNT = -100,
+		PIERCE = -100,
+		LASER = -100,
+		ARCANE = 100,
+		HEAT = -100,
+		COLD = -100,
+		ACID = -100,
+		BOMB = -100,
+		HOLY = -100,
+		DARK = -100
+	)
+
 /armor/mechanical
 	defense_rating = list(
 		BLADE = 10,
