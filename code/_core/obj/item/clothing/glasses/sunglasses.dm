@@ -61,11 +61,11 @@
 	name = "douchebag shades"
 
 	desc = "ITS TIME TO CHEW ASS AND KICK BUBBLEGUM."
-	desc_extended = "I guess you have to compensate for it somehow."
+	desc_extended = "These glasses smell like if someone mixed every bodily fluid together. What the hell happened to these?"
 
 	icon = 'icons/obj/item/clothing/glasses/dicklickem.dmi'
 
-	value = 69
+	value = 1991
 
 	rarity = RARITY_MYTHICAL
 

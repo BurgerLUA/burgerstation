@@ -12,11 +12,11 @@
 	ai = /ai/dick_kickem/
 
 	butcher_contents = list(
-		/obj/item/weapon/melee/oddhammer/,
+		/obj/item/weapon/melee/needahand,
 		/obj/item/clothing/glasses/sun/dicklickem,
-		/obj/item/container/edible/dynamic/meat/raw/,
-		/obj/item/container/edible/dynamic/meat/raw/,
-		/obj/item/container/edible/dynamic/meat/raw/
+		/obj/item/container/edible/dynamic/meat/raw_bear,
+		/obj/item/container/edible/dynamic/meat/raw_bear,
+		/obj/item/container/edible/dynamic/meat/raw_bear
 	)
 
 
