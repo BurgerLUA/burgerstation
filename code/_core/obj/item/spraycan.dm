@@ -39,8 +39,8 @@
 	C.icon_request_details = list(
 		"proc" = src::on_upload_spray(),
 		"proc_src" = src,
-		"width_limit" = TILE_SIZE,
-		"height_limit" = TILE_SIZE
+		"width_limit" = 16,
+		"height_limit" = 16
 	)
 
 	C.upload_icon()
@@ -58,7 +58,7 @@
 	desired_spray = desired_icon
 	spray_owner = caller.ckey
 
-	caller.to_chat(span("notice","Spray successfully set."))
+	caller.to_chat(span("notice","Spray successfully set!"))
 
 	return TRUE
 

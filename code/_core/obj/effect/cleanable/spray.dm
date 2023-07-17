@@ -6,3 +6,8 @@
 
 	anchored = TRUE
 	density = FALSE
+
+	mouse_opacity = 2
+
+	pixel_x = 8
+	pixel_y = 8
