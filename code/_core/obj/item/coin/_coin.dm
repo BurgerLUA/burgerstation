@@ -89,10 +89,10 @@
 	if(prob(50))
 		caller.to_chat(span("notice","You feel okay."))
 	else if(prob(50))
-		L.add_attribute_xp(ATTRIBUTE_LUCK,1)
+		L.add_attribute_xp(ATTRIBUTE_LUCK,1,FALSE)
 		caller.to_chat(span("notice","You feel luckier!"))
 	else
-		L.add_attribute_xp(ATTRIBUTE_LUCK, L.get_attribute_level(ATTRIBUTE_LUCK) - (L.get_attribute_level(ATTRIBUTE_LUCK) + 1))
+		L.add_attribute_xp(ATTRIBUTE_LUCK,-1,FALSE)
 		caller.to_chat(span("danger","You feel cursed..."))
 	qdel(src)
 

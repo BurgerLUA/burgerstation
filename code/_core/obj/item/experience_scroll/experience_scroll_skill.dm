@@ -21,7 +21,7 @@
 
 	var/experience/E = A.get_skill(skill)
 	var/experience_to_add = E.level_to_xp(level_to_give) - E.level_to_xp(level_to_give-1)
-	A.add_skill_xp(skill,experience_to_add)
+	A.add_skill_xp(skill,experience_to_add,FALSE)
 
 	return ..()
 

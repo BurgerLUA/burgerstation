@@ -76,7 +76,7 @@ var/global/list/difficulty_to_xp_mod = list(
 	DIFFICULTY_NIGHTMARE = 3
 )
 
-/experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE)
+/experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE,var/difficulty_multiplier=TRUE)
 
 	if(!ENABLE_XP)
 		return FALSE
@@ -87,7 +87,7 @@ var/global/list/difficulty_to_xp_mod = list(
 		if(owner.dead)
 			return FALSE
 
-	if(xp_to_add > 0 && !(flags & ATTRIBUTE_NO_DIFFICULTY_XP_MUL) && is_player(owner))
+	if(difficulty_multiplier && xp_to_add > 0 && !(flags & ATTRIBUTE_NO_DIFFICULTY_XP_MUL) && is_player(owner))
 		var/mob/living/advanced/player/P = owner
 		xp_to_add *= difficulty_to_xp_mod[P.get_difficulty()]
 
