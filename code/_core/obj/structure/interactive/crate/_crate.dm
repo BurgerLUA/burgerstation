@@ -10,6 +10,8 @@
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
 
+	interaction_flags = FLAG_INTERACTION_LIVING
+
 	density = TRUE
 	layer = LAYER_OBJ_CRATE
 

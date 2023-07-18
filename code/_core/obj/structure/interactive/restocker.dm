@@ -4,9 +4,15 @@
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "gear2"
 
-	bullet_block_chance = 50
+	bullet_block_chance = 40
+
+	collision_flags = FLAG_COLLISION_BARICADE
+	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
+	layer = LAYER_OBJ_CRATE + 1
 
 	density = TRUE
+	anchored = FALSE
 
 	pixel_y = 10
 
@@ -16,8 +22,6 @@
 	desc_extended = "A machine that automatically fills magazines inserted into the machine with cheap surplus rounds."
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "gear2_ammo"
-	anchored = FALSE
-	collision_flags = FLAG_COLLISION_WALL
 	var/premium = FALSE //Is this a premium ammo restocker?
 	var/currency_left = 0 //For premium ammo restockers
 
@@ -115,7 +119,6 @@
 	desc_extended = "A machine that automatically fills magazines inserted into the machine with regular rounds. Also supports powercells and ammo boxes."
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "gear2_ammo_premium"
-	collision_flags = FLAG_COLLISION_WALL
 	premium = TRUE
 	currency_left = 5000
 

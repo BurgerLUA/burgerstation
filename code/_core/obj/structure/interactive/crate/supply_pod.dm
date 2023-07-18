@@ -5,8 +5,6 @@
 
 	collect_contents_on_initialize = FALSE
 
-	interaction_flags = FLAG_INTERACTION_LIVING
-
 	anchored = TRUE
 
 	var/transit = FALSE
