@@ -123,6 +123,39 @@
 
 	return TRUE
 
+/obj/item/magazine/proc/can_load_magazine_path(var/mob/caller,var/obj/item/bullet_cartridge/B)
+
+	if(initial(B.is_spent))
+		caller?.to_chat(span("warning","The bullet is spent!"))
+		return FALSE
+
+	if(src.bullet_count_max <= src.get_ammo_count())
+		caller?.to_chat(span("warning","The magazine is full."))
+		return FALSE
+
+	if(initial(B.bullet_length) < bullet_length_min)
+		caller?.to_chat(span("warning","\The [B.name] is too short to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(initial(B.bullet_length) > bullet_length_max)
+		caller?.to_chat(span("warning","\The [B.name] is too long to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(initial(B.bullet_diameter) < bullet_diameter_min)
+		caller?.to_chat(span("warning","\The [B.name] is too narrow to be put inside \the [src.name]!"))
+		return FALSE
+
+	if(initial(B.bullet_diameter) > bullet_diameter_max)
+		caller?.to_chat(span("warning","\The [B.name] is too wide to be put inside \the [src.name]!"))
+		return FALSE
+
+	return TRUE
+
+
+
+
+
+
 /obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
 	if(is_inventory(object) && length(stored_bullets))
@@ -227,6 +260,9 @@
 	icon_states = 0
 
 /obj/item/magazine/gold/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+	return TRUE
+
+/obj/item/magazine/gold/can_load_magazine_path(var/mob/caller,var/obj/item/bullet_cartridge/B)
 	return TRUE
 
 /obj/item/magazine/gold/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
