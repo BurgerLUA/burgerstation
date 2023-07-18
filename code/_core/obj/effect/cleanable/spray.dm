@@ -1,4 +1,4 @@
-/obj/effect/cleanable/spray //Blood spray.
+/obj/effect/cleanable/spray //Spraycan Spray
 	name = "spray"
 	layer = LAYER_FLOOR_SCENERY - 1
 	plane = PLANE_BLOOD
@@ -6,3 +6,8 @@
 
 	anchored = TRUE
 	density = FALSE
+
+	mouse_opacity = 2
+
+	pixel_x = 8
+	pixel_y = 8
