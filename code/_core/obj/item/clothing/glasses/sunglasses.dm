@@ -58,10 +58,10 @@
 	rarity = RARITY_MYTHICAL
 
 /obj/item/clothing/glasses/sun/dicklickem
-	name = "douchebag shades"
+	name = "dickhead shades"
 
 	desc = "ITS TIME TO CHEW ASS AND KICK BUBBLEGUM."
-	desc_extended = "These glasses smell like if someone mixed every bodily fluid together. What the hell happened to these?"
+	desc_extended = "These glasses are more like heavily tinted glass with the amount of bodily fluids caked on. Fortunately, this also makes them incredibly durable."
 
 	icon = 'icons/obj/item/clothing/glasses/dicklickem.dmi'
 
