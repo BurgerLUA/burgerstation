@@ -9,7 +9,6 @@
 	dan_mode = TRUE
 
 	damage_type = /damagetype/melee/club/needahand/
-	damage_type_thrown = /damagetype/melee/club/needahand/thrown
 
 	value = 1991
 
