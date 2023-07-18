@@ -7,7 +7,9 @@ SUBSYSTEM_DEF(cargo)
 	var/list/cargo_id_to_type = list()
 	var/list/catalog_data = list() //What the catalog should look like (paper stuff)
 	var/list/possible_orders = list(
-
+		/obj/item/bulletbox/rifle_556/premium,
+		/obj/item/bulletbox/rifle_762/premium,
+		/obj/item/bulletbox/sniper_127/premium,
 	)
 
 /subsystem/cargo/Initialize()
