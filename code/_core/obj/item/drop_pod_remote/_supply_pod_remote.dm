@@ -30,8 +30,8 @@
 
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(object.plane >= PLANE_HUD)
-		return ..()
+	if(!is_turf(object) && !isturf(object.loc))
+		return TRUE
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
