@@ -1,11 +1,12 @@
 /obj/item/clothing/back/wings/fairy
 	name = "fairy wings"
-	desc = "Hey, listen!"
+	desc = "Warning: Does not grant actual flight."
 	desc_extended = "A pair of incredibly light and fragile fairy wings. Wearing these make you feel like you should help people."
 	icon = 'icons/obj/item/clothing/back/wings/fairy_wings.dmi'
 
 	armor = /armor/fairy
-	dyeable = FALSE
+	dyeable = TRUE
+	color = COLOR_LIGHT_BLUER
 
 	value = 3000
 
