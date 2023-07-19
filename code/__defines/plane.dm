@@ -47,8 +47,6 @@
 
 #define PLANE_MOVABLE -21
 
-#define PLANE_CURRENCY -19
-
 #define PLANE_MOVABLE_WATER_MASK -18 //The water mask.
 
 //Special Objs

@@ -14,8 +14,6 @@
 
 	drop_sound = null
 
-	plane = PLANE_CURRENCY
-
 /obj/item/currency/gold_coin/get_base_value()
 	return CEILING(SSeconomy.credits_per_gold * amount,1)
 
@@ -60,6 +58,80 @@
 
 
 
+/obj/item/currency/gold_coin/proc/fly(var/turf/from_turf)
+
+	if(amount > 5)
+		return FALSE
+
+	flick("[clamp(amount,1,5)]_anim",src)
+
+	var/desired_z = rand(16,32)
+
+	var/desired_time = rand(6,8)
+
+	var/list/offsets = direction_to_pixel_offset(get_dir(src,from_turf))
+	pixel_x = offsets[1]*TILE_SIZE
+	pixel_y = offsets[2]*TILE_SIZE
+
+	var/desired_pixel_x = rand(-6,6)
+	var/desired_pixel_y = rand(-6,6)
+
+	animate(src,pixel_z=desired_z,time=desired_time*0.5,easing=QUAD_EASING|EASE_OUT,flags=ANIMATION_PARALLEL)
+	animate(pixel_z=0,time=desired_time*0.5,easing=QUAD_EASING|EASE_IN)
+
+	animate(src,pixel_x = desired_pixel_x, pixel_y = desired_pixel_y,time=desired_time,flags=ANIMATION_PARALLEL)
+
+	CALLBACK("\ref[src]_update_sprite",desired_time,src,src::finish_fly())
+
+	return TRUE
+
+/obj/item/currency/gold_coin/proc/finish_fly()
+	play_sound(pick('sound/effects/coin_01.ogg','sound/effects/coin_02.ogg','sound/effects/coin_03.ogg'),get_turf(src))
+	update_sprite()
+	return TRUE
+
+
+/proc/create_gold_drop(var/turf/T,var/amount=5)
+
+	amount = min(amount,GOLD_DROP_AMOUNT_MAX) //Enforce a limit, just in case.
+
+	var/list/valid_turfs = list()
+
+	for(var/d in DIRECTIONS_ALL)
+		var/turf/T2 = get_step(T,d)
+		if(!T2)
+			continue
+		if(T2.density)
+			continue
+		valid_turfs += T2
+
+	if(!length(valid_turfs))
+		valid_turfs += T
+
+	spawn while(amount>0)
+		var/obj/item/currency/gold_coin/G = new(pick(valid_turfs))
+		G.pixel_x = rand(-4,4)
+		G.pixel_y = rand(-4,4)
+		G.amount = min(
+			amount,
+			rand(
+				min(
+					CEILING( (amount/GOLD_DROP_AMOUNT_MAX) * 2,1),
+					5
+				),
+				5
+			)
+		)
+		amount -= G.amount
+		INITIALIZE(G)
+		FINALIZE(G)
+		G.fly(T)
+		sleep(1)
+
+
+
+
+
 
 
 //Bars
@@ -77,8 +149,6 @@
 	currency_class = "gold bar"
 
 	drop_sound = null
-
-	plane = PLANE_CURRENCY
 
 	rarity = RARITY_RARE
 

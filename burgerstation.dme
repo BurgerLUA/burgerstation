@@ -2074,7 +2074,6 @@
 #include "code\_core\obj\structure\interactive\boss_loot.dm"
 #include "code\_core\obj\structure\interactive\cannon.dm"
 #include "code\_core\obj\structure\interactive\chair.dm"
-#include "code\_core\obj\structure\interactive\coin_drop.dm"
 #include "code\_core\obj\structure\interactive\conveyor_new.dm"
 #include "code\_core\obj\structure\interactive\crate.dm"
 #include "code\_core\obj\structure\interactive\diverter.dm"

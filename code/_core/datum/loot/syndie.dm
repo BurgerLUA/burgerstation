@@ -10,7 +10,6 @@
 		/loot/currency/gold_bar = 1
 	)
 	loot_count = 1
-	use_value = TRUE
 
 /loot/syndicate/vault/secure
 	loot_table = list(
