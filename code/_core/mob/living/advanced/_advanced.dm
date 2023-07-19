@@ -208,7 +208,7 @@ mob/living/advanced/Login()
 		var/species/S = SPECIES(species)
 		if(!src.voice_modifiers)
 			src.voice_modifiers = list()
-		src.voice_modifiers[S] = S::process_accent()
+		src.voice_modifiers[S] = nameof(S::process_accent())
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k,force=TRUE)

@@ -37,7 +37,7 @@
 		C.icon_request_details.Cut()
 
 	C.icon_request_details = list(
-		"proc" = src::on_upload_spray(),
+		"proc" = nameof(src::on_upload_spray()),
 		"proc_src" = src,
 		"width_limit" = 16,
 		"height_limit" = 16
