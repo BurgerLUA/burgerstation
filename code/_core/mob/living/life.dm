@@ -218,19 +218,15 @@
 			else
 				var/rarity = 0
 				var/rarity_count = 0
-				var/list/valid_ckeys = list()
 				for(var/k in people_who_killed)
 					var/mob/living/advanced/player/P = k
 					if(!is_player(P))
 						continue
 					rarity += P.get_rarity()
 					rarity_count++
-					if(P.ckey_last)
-						valid_ckeys += P.ckey_last
 					INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
 				if(T)
-					if(length(valid_ckeys))
-						create_gold_drop(T,CEILING(src.health.health_max/10,1),valid_ckeys)
+					create_gold_drop(T,CEILING(src.health.health_max/10,1))
 					if(rarity_count > 0)
 						rarity *= 1/rarity_count
 						var/list/loot_spawned = SPAWN_LOOT(/loot/boss,T,rarity)
