@@ -45,8 +45,24 @@
 		BLUNT = -10,
 		LASER = 100,
 		ARCANE = 100,
-		ACID = 10
+		ACID = 10,
 	)
+
+/armor/glasses/sunglasses/dicklickem
+	defense_rating = list(
+		BLUNT = 10,
+		PIERCE = 25,
+		BLADE = 30,
+		LASER = 35,
+		ARCANE = -75,
+		DARK = -75,
+		HOLY = -75,
+		ACID = -25,
+		BOMB = -50,
+		PAIN = 50,
+		SANITY = 50
+	)
+
 
 
 /armor/glasses/sunglasses/insulated

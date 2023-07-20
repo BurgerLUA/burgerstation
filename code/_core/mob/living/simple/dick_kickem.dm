@@ -11,6 +11,15 @@
 
 	ai = /ai/dick_kickem/
 
+	butcher_contents = list(
+		/obj/item/weapon/melee/needahand,
+		/obj/item/clothing/glasses/sun/dicklickem,
+		/obj/item/container/edible/dynamic/meat/raw_bear,
+		/obj/item/container/edible/dynamic/meat/raw_bear,
+		/obj/item/container/edible/dynamic/meat/raw_bear
+	)
+
+
 	damage_type = /damagetype/npc/dick_kickem
 
 	iff_tag = "Meme"
