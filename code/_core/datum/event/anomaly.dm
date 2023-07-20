@@ -5,6 +5,7 @@
 
 	var/list/possible_anomalies = list(
 		/mob/living/simple/dick_kickem = 1,
+		/mob/living/simple/fairy = 1,
 		/mob/living/simple/glockroach = 6,
 		/mob/living/simple/bullshark = 4,
 		/mob/living/simple/bot/medibot/rogue = 6,
