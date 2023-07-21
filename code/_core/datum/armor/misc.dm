@@ -1,3 +1,18 @@
+/armor/fairy
+	defense_rating = list(
+		BLADE = -100,
+		BLUNT = -100,
+		PIERCE = -100,
+		LASER = -100,
+		ARCANE = 50,
+		HEAT = -100,
+		COLD = -100,
+		ACID = -100,
+		BOMB = -100,
+		HOLY = -100,
+		DARK = -100
+	)
+
 /armor/mechanical
 	defense_rating = list(
 		BLADE = 10,
@@ -45,8 +60,24 @@
 		BLUNT = -10,
 		LASER = 100,
 		ARCANE = 100,
-		ACID = 10
+		ACID = 10,
 	)
+
+/armor/glasses/sunglasses/dicklickem
+	defense_rating = list(
+		BLUNT = 10,
+		PIERCE = 25,
+		BLADE = 30,
+		LASER = 35,
+		ARCANE = -75,
+		DARK = -75,
+		HOLY = -75,
+		ACID = -25,
+		BOMB = -50,
+		PAIN = 50,
+		SANITY = 50
+	)
+
 
 
 /armor/glasses/sunglasses/insulated
