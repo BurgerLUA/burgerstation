@@ -1,14 +1,10 @@
 /mob/living/advanced/player/nt/halo/odst
 
 
-/mob/living/advanced/player/nt/halo/odst/default_appearance()
+/mob/living/advanced/player/nt/halo/odst/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
-	return.
-
-/mob/living/advanced/player/nt/halo/odst/prepare()
-	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	setup_name()
 	to_chat(span("danger","This guy always dies first!"))

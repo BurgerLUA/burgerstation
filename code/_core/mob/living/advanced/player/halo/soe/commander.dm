@@ -1,7 +1,7 @@
 /mob/living/advanced/player/antagonist/halo/soe/commander
 	loadout_to_use = /loadout/syndicate/halo/soe/commander
 
-/mob/living/advanced/player/antagonist/halo/soe/commander/default_appearance()
+/mob/living/advanced/player/antagonist/halo/soe/commander/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
