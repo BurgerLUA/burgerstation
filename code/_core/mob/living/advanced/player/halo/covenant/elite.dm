@@ -2,14 +2,10 @@
 
 	species = "Elite"
 
-/mob/living/advanced/player/covenant/elite_minor/default_appearance()
+/mob/living/advanced/player/covenant/elite_minor/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/covenant)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/covenant)
-	return.
-
-/mob/living/advanced/player/covenant/elite_minor/prepare()
-	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	sex = MALE
 	setup_name()
@@ -22,14 +18,10 @@
 
 	species = "Elite"
 
-/mob/living/advanced/player/covenant/elite_major/default_appearance()
+/mob/living/advanced/player/covenant/elite_major/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/covenant)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/covenant)
-	return.
-
-/mob/living/advanced/player/covenant/elite_major/prepare()
-	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	sex = MALE
 	setup_name()
@@ -42,14 +34,10 @@
 
 	species = "Elite"
 
-/mob/living/advanced/player/covenant/elite_shipmaster/default_appearance()
+/mob/living/advanced/player/covenant/elite_shipmaster/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/covenant)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/covenant)
-	return.
-
-/mob/living/advanced/player/covenant/elite_shipmaster/prepare()
-	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	sex = MALE
 	setup_name()
@@ -62,14 +50,10 @@
 
 	species = "Elite"
 
-/mob/living/advanced/player/covenant/elite_ultra/default_appearance()
+/mob/living/advanced/player/covenant/elite_ultra/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/covenant)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/covenant)
-	return.
-
-/mob/living/advanced/player/covenant/elite_ultra/prepare()
-	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
 	sex = MALE
 	setup_name()

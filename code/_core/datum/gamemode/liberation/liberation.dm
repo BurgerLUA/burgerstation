@@ -49,7 +49,7 @@
 	state = GAMEMODE_GEARING
 	round_time = 0
 	round_time_next = LIBERATION_DELAY_BOARDING
-	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(30*10 + 10)
+	SSshuttle.next_pod_respawn_time = world.time + SECONDS_TO_DECISECONDS(30*10 + 10)
 	announce(
 		"Central Command Update",
 		"Prepare for Landfall",
@@ -90,7 +90,7 @@
 		F.remove()
 	announce("Central Command Mission Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes_shuttle.ogg')
 	allow_launch = TRUE
-	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(5)
+	SSshuttle.next_pod_respawn_time = world.time + SECONDS_TO_DECISECONDS(5)
 	return TRUE
 
 /gamemode/liberation/proc/on_fighting()

@@ -2,14 +2,10 @@
 
 	species = "Spartan"
 
-/mob/living/advanced/player/nt/halo/spartan/default_appearance()
+/mob/living/advanced/player/nt/halo/spartan/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
-	return.
-
-/mob/living/advanced/player/nt/halo/spartan/prepare()
-	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_SPARTAN : FIRST_NAME_SPARTAN] [LAST_NAME_SPARTAN]"
 	sex = MALE
 	setup_name()

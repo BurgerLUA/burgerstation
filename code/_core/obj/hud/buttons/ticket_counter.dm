@@ -2,7 +2,6 @@ var/global/list/hud_ticket_counters = list()
 /obj/hud/button/ticket_counter
     name = "tickets"
     desc = "Counts the tickets for a certain team."
-    flags = FLAGS_HUD_MOB
     icon = 'icons/halo/hud/fucking.dmi'
     icon_state = "tickets"
     is_static = TRUE
