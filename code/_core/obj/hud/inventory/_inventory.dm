@@ -615,6 +615,13 @@
 						if(C.flags_clothing & FLAG_CLOTHING_NOBEAST_HEAD && O.flags_organ & FLAG_ORGAN_BEAST_HEAD)
 							if(messages) owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your non-humanoid head..."))
 							return FALSE
+						//if(C.flags_clothing & FLAG_CLOTHING_NOHUMAN && O.flags_organ & FLAG_ORGAN_HUMAN)
+							//if(messages)
+								//owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your human body..."))
+						//if(C.flags_clothing & FLAG_CLOTHING_SPARTAN && O.flags_organ & FLAG_ORGAN_HUMAN)
+							//if(messages)
+								owner.to_chat(span("warning","You cannot seem to fit \the [I.name] on your body..."))
+							return FALSE
 
 		if(!(I.item_slot & item_slot))
 			if(messages)

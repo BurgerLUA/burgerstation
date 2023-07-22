@@ -38,6 +38,18 @@
 
 #define RADIO_FREQ_MAX      1899
 
+//COVENANT
+#define RADIO_FREQ_COVENANT 1569
+#define RADIO_FREQ_COVS1    1570
+#define RADIO_FREQ_COVS2    1571
+#define RADIO_FREQ_COVS3    1572
+#define RADIO_FREQ_COVS4    1573
+//URF
+#define RADIO_FREQ_URF      1600
+#define RADIO_FREQ_ANNA     1601
+#define RADIO_FREQ_BORIS    1602
+#define RADIO_FREQ_VASILY   1603
+#define RADIO_FREQ_GREGORY  1604
 
 /proc/frequency_to_name(var/frequency)
 
@@ -54,6 +66,26 @@
 			return "Common"
 		if(RADIO_FREQ_SHIP)
 			return "ShipComm"
+		if(RADIO_FREQ_URF)
+			return "Bearcomm"
+		if(RADIO_FREQ_ANNA)
+			return "Anna"
+		if(RADIO_FREQ_BORIS)
+			return "Boris"
+		if(RADIO_FREQ_VASILY)
+			return "Vasily"
+		if(RADIO_FREQ_GREGORY)
+			return "Gregory"
+		if(RADIO_FREQ_COVENANT)
+			return "Covenant Battlenet"
+		if(RADIO_FREQ_COVS1)
+			return "Combat Lance 1"
+		if(RADIO_FREQ_COVS2)
+			return "Combat Lance 2"
+		if(RADIO_FREQ_COVS3)
+			return "Combat Lance 3"
+		if(RADIO_FREQ_COVS4)
+			return "Combat Lance 4"
 
 	//For some reason switch statements don't accept variables.
 	if(frequency == SSradio.radio_syn)

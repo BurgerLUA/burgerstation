@@ -2,6 +2,8 @@
 #define FLAG_ORGAN_BEAST_FEET 0x1
 #define FLAG_ORGAN_BEAST_HEAD 0x2
 #define FLAG_ORGAN_BEAST_WINGS 0x4
+#define FLAG_ORGAN_COVENANT 0x8
+#define FLAG_ORGAN_SPARTAN 0x10
 
 #define BODY_HEAD "head"
 #define BODY_FACE "face"
