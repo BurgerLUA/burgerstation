@@ -3,7 +3,7 @@
 	desc = "A lightweight metal 'sword'."
 	desc_extended = "A standard issue machete used for hacking things apart. It is very sharp"
 
-	icon = 'icons/obj/item/weapons/melee/swords/machete.dmi'
+	icon = 'icons/obj/item/weapons/melee/swords/halo/machete.dmi'
 
 	item_slot = SLOT_GROIN_O
 

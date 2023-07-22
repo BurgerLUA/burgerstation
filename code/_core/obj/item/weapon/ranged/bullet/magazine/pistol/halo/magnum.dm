@@ -7,9 +7,9 @@
 	icon = 'icons/obj/item/weapons/ranged/pistol/halo/magnum.dmi'
 	shoot_delay = 3
 	shoot_sounds = list(
-	'sound/weapons/unsc/m6c_socom/m6c_fire1.ogg',
-	'sound/weapons/unsc/m6c_socom/m6c_fire2.ogg',
-	'sound/weapons/unsc/m6c_socom/m6c_fire3.ogg'
+	'sound/weapons/halo/unsc/m6c_socom/m6c_fire1.ogg',
+	'sound/weapons/halo/unsc/m6c_socom/m6c_fire2.ogg',
+	'sound/weapons/halo/unsc/m6c_socom/m6c_fire3.ogg'
 	)
 
 	view_punch = 6
@@ -84,10 +84,10 @@
 	automatic = FALSE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/magnum/magnum_stereo1.wav',
-	'sound/weapons/unsc/magnum/magnum_stereo2.wav',
-	'sound/weapons/unsc/magnum/magnum_stereo3.wav',
-	'sound/weapons/unsc/magnum/magnum_stereo4.wav'
+	'sound/weapons/halo/unsc/magnum/magnum_stereo1.wav',
+	'sound/weapons/halo/unsc/magnum/magnum_stereo2.wav',
+	'sound/weapons/halo/unsc/magnum/magnum_stereo3.wav',
+	'sound/weapons/halo/unsc/magnum/magnum_stereo4.wav'
 	)
 
 
@@ -163,10 +163,10 @@
 	automatic = FALSE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/magnum/magnum_stereo1.wav',
-	'sound/weapons/unsc/magnum/magnum_stereo2.wav',
-	'sound/weapons/unsc/magnum/magnum_stereo3.wav',
-	'sound/weapons/unsc/magnum/magnum_stereo4.wav'
+	'sound/weapons/halo/unsc/magnum/magnum_stereo1.wav',
+	'sound/weapons/halo/unsc/magnum/magnum_stereo2.wav',
+	'sound/weapons/halo/unsc/magnum/magnum_stereo3.wav',
+	'sound/weapons/halo/unsc/magnum/magnum_stereo4.wav'
 	)
 
 

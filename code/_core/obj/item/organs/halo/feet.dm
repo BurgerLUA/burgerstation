@@ -4,7 +4,7 @@
 	icon = 'icons/mob/living/advanced/species/halo/covenant/unggoy.dmi'
 
 	damage_coefficient = 0.2
-	defense_rating = UNGGOY_ARMOR
+	//defense_rating = UNGGOY_ARMOR
 
 /obj/item/organ/foot/halo/unggoy/left
 	name = "left foot"

@@ -9,11 +9,11 @@
 	automatic = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/lmg/chaingun_fire_h3_1.wav',
-	'sound/weapons/unsc/lmg/chaingun_fire_h3_2.wav',
-	'sound/weapons/unsc/lmg/chaingun_fire_h3_3.wav',
-	'sound/weapons/unsc/lmg/chaingun_fire_h3_4.wav',
-	'sound/weapons/unsc/lmg/chaingun_fire_h3_5.wav')
+	'sound/weapons/halo/unsc/lmg/chaingun_fire_h3_1.wav',
+	'sound/weapons/halo/unsc/lmg/chaingun_fire_h3_2.wav',
+	'sound/weapons/halo/unsc/lmg/chaingun_fire_h3_3.wav',
+	'sound/weapons/halo/unsc/lmg/chaingun_fire_h3_4.wav',
+	'sound/weapons/halo/unsc/lmg/chaingun_fire_h3_5.wav')
 
 	can_wield = TRUE
 	wield_only = TRUE

@@ -15,9 +15,9 @@
 	slot_icons = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/assault_rifle/19103_b.wav',
-	'sound/weapons/unsc/assault_rifle/19203_b.wav',
-	'sound/weapons/unsc/assault_rifle/19204_b.wav')
+	'sound/weapons/halo/unsc/assault_rifle/19103_b.wav',
+	'sound/weapons/halo/unsc/assault_rifle/19203_b.wav',
+	'sound/weapons/halo/unsc/assault_rifle/19204_b.wav')
 
 	can_wield = TRUE
 

@@ -9,9 +9,9 @@
 	automatic = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/m7/m7_fire1.wav',
-	'sound/weapons/unsc/m7/m7_fire2.wav',
-	'sound/weapons/unsc/m7/m7_fire3.wav'
+	'sound/weapons/halo/unsc/m7/m7_fire1.wav',
+	'sound/weapons/halo/unsc/m7/m7_fire2.wav',
+	'sound/weapons/halo/unsc/m7/m7_fire3.wav'
 	)
 
 	can_wield = FALSE

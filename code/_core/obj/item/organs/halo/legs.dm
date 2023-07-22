@@ -3,7 +3,7 @@
 	icon = 'icons/mob/living/advanced/species/halo/covenant/unggoy.dmi'
 
 	damage_coefficient = 0.20
-	defense_rating = UNGGOY_ARMOR
+	//defense_rating = UNGGOY_ARMOR
 	flags_organ = FLAG_ORGAN_COVENANT
 
 /obj/item/organ/leg/halo/unggoy/left

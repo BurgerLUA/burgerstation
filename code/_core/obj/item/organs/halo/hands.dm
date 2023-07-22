@@ -6,7 +6,7 @@
 	)
 
 	damage_coefficient = 0.2
-	defense_rating = UNGGOY_ARMOR
+	//defense_rating = UNGGOY_ARMOR
 	flags_organ = FLAG_ORGAN_COVENANT
 
 /obj/item/organ/hand/halo/unggoy/left

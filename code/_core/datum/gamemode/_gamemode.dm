@@ -35,6 +35,12 @@
 
 	var/allow_continue = TRUE
 
+	var/list/team_points = list(
+		TEAM_UNSC = 0,
+		TEAM_COVENANT = 0,
+		TEAM_URF = 0,
+	)
+
 /gamemode/proc/Initialize()
 	if(initialized)
 		CRASH("WARNING: [src.get_debug_name()] was initialized twice!")
@@ -223,3 +229,6 @@
 	next_objective_update = -1
 
 	return TRUE
+
+// used by gamemodes that use the team point system, like liberation
+/gamemode/proc/update_points()

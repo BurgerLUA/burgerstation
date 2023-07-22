@@ -14,9 +14,9 @@
 	override_icon_state = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/covenant/flak_fire_h3_1.wav',
-	'sound/weapons/covenant/flak_fire_h3_2.wav',
-	'sound/weapons/covenant/flak_fire_h3_3.wav')
+	'sound/weapons/halo/covenant/flak_fire_h3_1.wav',
+	'sound/weapons/halo/covenant/flak_fire_h3_2.wav',
+	'sound/weapons/halo/covenant/flak_fire_h3_3.wav')
 
 	can_wield = TRUE
 	wield_only = TRUE

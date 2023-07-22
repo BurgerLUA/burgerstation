@@ -12,10 +12,10 @@
 	override_icon_state = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/rpg/rocket_h3_1.wav',
-	'sound/weapons/unsc/rpg/rocket_h3_2.wav',
-	'sound/weapons/unsc/rpg/rocket_h3_3.wav',
-	'sound/weapons/unsc/rpg/rocket_h3_4.wav')
+	'sound/weapons/halo/unsc/rpg/rocket_h3_1.wav',
+	'sound/weapons/halo/unsc/rpg/rocket_h3_2.wav',
+	'sound/weapons/halo/unsc/rpg/rocket_h3_3.wav',
+	'sound/weapons/halo/unsc/rpg/rocket_h3_4.wav')
 
 	can_wield = TRUE
 	wield_only = TRUE

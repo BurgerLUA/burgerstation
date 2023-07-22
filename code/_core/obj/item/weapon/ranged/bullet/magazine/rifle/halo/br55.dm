@@ -11,13 +11,13 @@
 	automatic = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/unsc/br55/battle_rifle_fire2.wav',
-	'sound/weapons/unsc/br55/battle_rifle_fire3.wav',
-	'sound/weapons/unsc/br55/battle_rifle_fire4.wav',
-	'sound/weapons/unsc/br55/battle_rifle_fire5.wav',
-	'sound/weapons/unsc/br55/battle_rifle_fire6.wav',
-	'sound/weapons/unsc/br55/battle_rifle_fire7.wav',
-	'sound/weapons/unsc/br55/battle_rifle_fire8.wav')
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire2.wav',
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire3.wav',
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire4.wav',
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire5.wav',
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire6.wav',
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire7.wav',
+	'sound/weapons/halo/unsc/br55/battle_rifle_fire8.wav')
 
 	can_wield = TRUE
 	wield_only = TRUE

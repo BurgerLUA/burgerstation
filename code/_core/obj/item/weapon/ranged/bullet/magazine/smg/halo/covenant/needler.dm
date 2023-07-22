@@ -9,9 +9,9 @@
 	automatic = TRUE
 
 	shoot_sounds = list(
-	'sound/weapons/covenant/needlefire11.wav',
-	'sound/weapons/covenant/needlefire12.wav',
-	'sound/weapons/covenant/needlefire13.wav')
+	'sound/weapons/halo/covenant/needlefire11.wav',
+	'sound/weapons/halo/covenant/needlefire12.wav',
+	'sound/weapons/halo/covenant/needlefire13.wav')
 
 	can_wield = FALSE
 
