@@ -21,9 +21,9 @@
 	view_punch = 16
 
 	shoot_sounds = list(
-	'sound/weapons/covenant/plasmariflefire1.ogg',
-	'sound/weapons/covenant/plasmariflefire2.ogg',
-	'sound/weapons/covenant/plasmariflefire3.ogg')
+	'sound/weapons/halo/covenant/plasmariflefire1.ogg',
+	'sound/weapons/halo/covenant/plasmariflefire2.ogg',
+	'sound/weapons/halo/covenant/plasmariflefire3.ogg')
 
 	heat_per_shot = 0.01
 	heat_max = 0.08

@@ -62,7 +62,7 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 12 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/covenant
+	//firing_pin = /obj/item/firing_pin/electronic/iff/covenant
 
 /obj/item/weapon/ranged/energy/halo/cov_pistol/get_static_spread()
 	if(wielded) return 0
@@ -72,4 +72,4 @@
 	return max(0,0.005 - (0.02 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/halo/cov_pistol/insurrection
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	//firing_pin = /obj/item/firing_pin/electronic/iff/syndicate

@@ -24,9 +24,9 @@
 	view_punch = 16
 
 	shoot_sounds = list(
-	'sound/weapons/covenant/plasmarepeaterfire1.ogg',
-	'sound/weapons/covenant/plasmarepeaterfire2.ogg',
-	'sound/weapons/covenant/plasmarepeaterfire3.ogg')
+	'sound/weapons/halo/covenant/plasmarepeaterfire1.ogg',
+	'sound/weapons/halo/covenant/plasmarepeaterfire2.ogg',
+	'sound/weapons/halo/covenant/plasmarepeaterfire3.ogg')
 
 	heat_per_shot = 0.01
 	heat_max = 0.06
@@ -69,7 +69,7 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 12 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/covenant
+	//firing_pin = /obj/item/firing_pin/electronic/iff/covenant
 
 /obj/item/weapon/ranged/energy/halo/cov_lmg/get_static_spread()
 	if(wielded) return 0
