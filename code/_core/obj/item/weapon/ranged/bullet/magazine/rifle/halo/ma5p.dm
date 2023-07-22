@@ -13,16 +13,16 @@ It's a shitty HaloStation insert.
 
 	automatic = TRUE
 
-	shoot_sounds = list('sound/weapons/pulse/pulse.ogg')
+
 
 	can_wield = TRUE
 
-	view_punch = 31
+
 
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.05
+
 	heat_max = 0.1
 
 	bullet_length_min = 52
@@ -51,7 +51,7 @@ It's a shitty HaloStation insert.
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

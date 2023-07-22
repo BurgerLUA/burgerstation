@@ -8,7 +8,7 @@
 
 	automatic = FALSE
 
-	view_punch = TILE_SIZE - 1
+
 	override_icon_state = TRUE
 
 	shoot_sounds = list(
@@ -31,14 +31,14 @@
 	bullet_diameter_best = 40
 	bullet_diameter_max = 41
 
-	heat_per_shot = 0.09
+
 	heat_max = 0.18
 
 	value = 1500
 
 	open = TRUE
 
-	inaccuracy_modifer = 1
+
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
@@ -56,7 +56,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

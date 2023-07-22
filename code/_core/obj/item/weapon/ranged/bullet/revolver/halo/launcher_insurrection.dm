@@ -12,7 +12,7 @@
 
 	insert_limit = 1
 
-	view_punch = TILE_SIZE - 1
+
 
 	shoot_sounds = list(
 	'sound/weapons/halo/unsc/rpg/rocket_h3_1.wav',
@@ -34,14 +34,14 @@
 	bullet_diameter_best = 45
 	bullet_diameter_max = 46
 
-	heat_per_shot = 0.09
+
 	heat_max = 0.18
 
 	value = 1500
 
 	open = TRUE
 
-	inaccuracy_modifer = 1
+
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
@@ -59,7 +59,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

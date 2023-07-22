@@ -6,8 +6,8 @@
 
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/rifle/hardlight
-	battery = /obj/item/powercell/recharging/big
-	item_slot = SLOT_TORSO_B
+	battery = /obj/item/powercell/recharging
+
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 
 	bullet_color = "#466ab6"
@@ -21,14 +21,14 @@
 
 	charge_cost = CELL_SIZE_ADVANCED / 130
 
-	view_punch = 16
+
 
 	shoot_sounds = list(
 	'sound/weapons/halo/covenant/plasmarepeaterfire1.ogg',
 	'sound/weapons/halo/covenant/plasmarepeaterfire2.ogg',
 	'sound/weapons/halo/covenant/plasmarepeaterfire3.ogg')
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.06
 
 	size = SIZE_3
@@ -52,7 +52,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

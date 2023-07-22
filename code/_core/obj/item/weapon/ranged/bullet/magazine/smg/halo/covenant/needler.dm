@@ -15,12 +15,12 @@
 
 	can_wield = FALSE
 
-	view_punch = 3
+
 
 	size = SIZE_2
 	weight = 5
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.03
 
 	bullet_length_min = 31
@@ -51,7 +51,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -68,7 +68,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/covenant
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/halo/covenant/needler/get_static_spread()
 	return 0.005

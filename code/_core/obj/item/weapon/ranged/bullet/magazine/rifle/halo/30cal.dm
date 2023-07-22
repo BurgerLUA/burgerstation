@@ -17,10 +17,6 @@
 
 	can_wield = TRUE
 	wield_only = TRUE
-
-	view_punch = 8
-
-	heat_per_shot = 0.03
 	heat_max = 0.15
 
 	bullet_length_min = 40
@@ -54,7 +50,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

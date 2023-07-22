@@ -16,16 +16,16 @@
 
 	can_wield = TRUE
 
-	view_punch = 20
+
 
 	zoom_mul = 1
-	item_slot = SLOT_TORSO_B
+
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.08
 
 	bullet_length_min = 31
@@ -54,7 +54,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -71,7 +71,7 @@
 	attachment_undermount_offset_x = 24 - 16
 	attachment_undermount_offset_y = 14 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/covenant
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/halo/covenant/needlerifle/get_static_spread()
 	if(!wielded) return 0.005

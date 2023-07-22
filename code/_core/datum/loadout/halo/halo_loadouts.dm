@@ -344,3 +344,313 @@
 		/obj/item/clothing/belt/storage/colored/black
 	)
 
+
+/loadout/syndicate/halo/soe
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection,
+		/obj/item/clothing/ears/headset/urf,
+		/obj/item/clothing/hands/gloves/colored/combat,
+		/obj/item/clothing/hands/gloves/colored/combat/left,
+		/obj/item/clothing/feet/shoes/halo/combat/soe,
+		/obj/item/clothing/feet/shoes/halo/combat/soe/left,
+		/obj/item/clothing/belt/storage/colored/black
+	)
+
+/loadout/halo/urf_soldier
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection,
+		/obj/item/clothing/feet/shoes/halo/combat/urf,
+		/obj/item/clothing/feet/shoes/halo/combat/urf/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/halo/insurrection,
+		/obj/item/clothing/overwear/armor/halo/insurrection,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/insurrection,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/weapon/melee/sword/rev_bayonet
+	)
+
+/loadout/halo/urf_pointmen
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection,
+		/obj/item/clothing/feet/shoes/halo/combat/urf,
+		/obj/item/clothing/feet/shoes/halo/combat/urf/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/halo/insurrection,
+		/obj/item/clothing/overwear/armor/halo/insurrection,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/halo/kv32,
+		/obj/item/magazine/halo/kv32,
+		/obj/item/magazine/halo/kv32,
+		/obj/item/magazine/halo/kv32,
+		/obj/item/magazine/halo/kv32,
+		/obj/item/magazine/halo/kv32,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/weapon/melee/sword/rev_bayonet
+	)
+
+/loadout/halo/urf_marksmen
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection,
+		/obj/item/clothing/feet/shoes/halo/combat/urf,
+		/obj/item/clothing/feet/shoes/halo/combat/urf/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/halo/insurrection,
+		/obj/item/clothing/overwear/armor/halo/insurrection,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m395/insurrection,
+		/obj/item/magazine/halo/m395,
+		/obj/item/magazine/halo/m395,
+		/obj/item/magazine/halo/m395,
+		/obj/item/magazine/halo/m395,
+		/obj/item/magazine/halo/m395,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/weapon/melee/sword/rev_bayonet
+	)
+
+/loadout/halo/urf_demolitions
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection,
+		/obj/item/clothing/feet/shoes/halo/combat/urf,
+		/obj/item/clothing/feet/shoes/halo/combat/urf/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/halo/insurrection,
+		/obj/item/clothing/overwear/armor/halo/insurrection,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m41,
+		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/weapon/melee/sword/rev_bayonet
+	)
+
+/loadout/halo/urf_commando
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection/soe,
+		/obj/item/clothing/feet/shoes/halo/combat/soe,
+		/obj/item/clothing/feet/shoes/halo/combat/soe/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe/leader,
+		/obj/item/clothing/overwear/hardsuit/halo/soe/leader,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/commando,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/weapon/ranged/energy/halo/cov_pistol/insurrection,
+		/obj/item/weapon/melee/sword/rev_bayonet
+	)
+
+/loadout/halo/urf_hmg
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection,
+		/obj/item/clothing/feet/shoes/halo/combat/urf,
+		/obj/item/clothing/feet/shoes/halo/combat/urf/left,
+		/obj/item/clothing/hands/gloves/colored/padded/black,
+		/obj/item/clothing/hands/gloves/colored/padded/black/left,
+		/obj/item/clothing/head/helmet/halo/insurrection,
+		/obj/item/clothing/overwear/armor/halo/insurrection,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/storage/pouch/triple/black,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun/insurrection,
+		/obj/item/magazine/minigun_46,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/weapon/melee/sword/rev_bayonet
+	)
+
+/loadout/syndicate/halo/soe/cqb
+	spawning_items = list(
+		/obj/item/clothing/overwear/hardsuit/halo/soe/cqb,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe/cqb,
+		/obj/item/clothing/back/storage/backpack/halo/odst/cqb,
+		/obj/item/weapon/melee/sword/rev_bayonet,
+		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection,
+		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection,
+		/obj/item/weapon/ranged/bullet/revolver/halo/handcannon,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/bullet_cartridge/sniper_50/full,
+		/obj/item/bullet_cartridge/sniper_50/full,
+		/obj/item/bullet_cartridge/sniper_50/full,
+		/obj/item/bullet_cartridge/sniper_50/full,
+		/obj/item/bullet_cartridge/sniper_50/full,
+		/obj/item/container/syringe/medipen/bicaridine,
+		/obj/item/container/syringe/medipen/kelotane
+	)
+
+/loadout/syndicate/halo/soe/medic
+	spawning_items = list(
+		/obj/item/clothing/overwear/hardsuit/halo/soe/medic,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe/medic,
+		/obj/item/clothing/back/storage/backpack/halo/odst/medic,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/halo/m45,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/container/blood_pack/full/o_negative,
+		/obj/item/storage/ammo/buckshot,
+		/obj/item/storage/ammo/buckshot,
+		/obj/item/defib,
+		/obj/item/container/syringe/medipen/epinephrine,
+		/obj/item/container/syringe/medipen/epinephrine,
+		/obj/item/container/syringe/medipen/bicaridine,
+		/obj/item/container/syringe/medipen/kelotane,
+		/obj/item/container/syringe/medipen/iron,
+		/obj/item/storage/kit/advanced/filled,
+		/obj/item/clothing/belt/storage/medical/filled
+	)
+
+/loadout/syndicate/halo/soe/rifleman
+	spawning_items = list(
+		/obj/item/clothing/overwear/hardsuit/halo/soe,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe,
+		/obj/item/clothing/back/storage/backpack/halo/odst,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/insurrection,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/weapon/melee/sword/rev_bayonet,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/grenade/timed/explosive/halo,
+		/obj/item/grenade/timed/explosive/halo,
+		/obj/item/container/syringe/medipen/bicaridine,
+		/obj/item/container/syringe/medipen/kelotane
+	)
+
+/loadout/syndicate/halo/soe/sl
+	spawning_items = list(
+		/obj/item/clothing/overwear/hardsuit/halo/soe/leader,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe/leader,
+		/obj/item/clothing/back/storage/backpack/halo/odst/sl,
+		/obj/item/weapon/ranged/bullet/pump/shotgun/halo/semi,
+		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection,
+		/obj/item/weapon/melee/sword/rev_bayonet,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/magazine/halo/m7,
+		/obj/item/storage/ammo/buckshot,
+		/obj/item/storage/ammo/buckshot,
+		/obj/item/grenade/timed/explosive/halo,
+//		/obj/item/halo/mortar,
+		/obj/item/supply_remote/crates/ammunition,
+		/obj/item/supply_remote/crates/ammunition,
+		/obj/item/supply_remote/crates/ammunition,
+		/obj/item/container/syringe/medipen/bicaridine,
+		/obj/item/container/syringe/medipen/kelotane
+	)
+
+/loadout/syndicate/halo/soe/engineer
+	spawning_items = list(
+		/obj/item/clothing/overwear/hardsuit/halo/soe/engineer,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe/engineer,
+		/obj/item/clothing/back/storage/backpack/halo/odst/engineer,
+		/obj/item/clothing/belt/storage/tool/filled,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/insurrection,
+		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/magnum_police,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma5b,
+		/obj/item/grenade/landmine/proximity/explosive/halo,
+		/obj/item/grenade/landmine/proximity/explosive/halo,
+		/obj/item/magazine/minigun_46,
+		/obj/item/magazine/minigun_46,
+		/obj/item/magazine/minigun_46,
+		/obj/item/magazine/minigun_46,
+		/obj/item/powercell/industrial,
+		/obj/item/powercell/industrial,
+		/obj/item/deployable/mob/sentry,
+		/obj/item/deployable/mob/sentry,
+		/obj/item/deployable/barricade/filled,
+		/obj/item/container/syringe/medipen/bicaridine,
+		/obj/item/container/syringe/medipen/kelotane
+	)
+
+/loadout/syndicate/halo/soe/sharpshooter
+	spawning_items = list(
+		/obj/item/clothing/overwear/hardsuit/halo/soe/sharp,
+		/obj/item/clothing/head/helmet/hardsuit/halo/soe/sharp,
+		/obj/item/clothing/back/storage/backpack/halo/odst/sharp,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/srs/insurrection,
+		/obj/item/weapon/ranged/bullet/revolver/halo/acl55,
+		/obj/item/magazine/halo/srs,
+		/obj/item/magazine/halo/srs/ap,
+		/obj/item/magazine/halo/srs/ap,
+		/obj/item/magazine/halo/srs,
+		/obj/item/magazine/halo/srs,
+		/obj/item/magazine/halo/srs,
+		/obj/item/magazine/halo/srs,
+		/obj/item/bullet_cartridge/halo/m25,
+		/obj/item/bullet_cartridge/halo/m25,
+		/obj/item/container/syringe/medipen/bicaridine,
+		/obj/item/container/syringe/medipen/kelotane
+	)
+
+/loadout/syndicate/halo/soe/commander
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/insurrection/commander,
+		/obj/item/clothing/ears/headset/syndicate,
+		/obj/item/clothing/hands/gloves/colored/combat,
+		/obj/item/clothing/hands/gloves/colored/combat/left,
+		/obj/item/clothing/feet/shoes/miner,
+		/obj/item/clothing/feet/shoes/miner/left,
+		/obj/item/clothing/head/helmet/halo/insurrection/commander,
+		/obj/item/clothing/overwear/hardsuit/halo/soe/commander,
+		/obj/item/clothing/belt/storage/colored/black,
+		/obj/item/weapon/melee/sword/curvedsword,
+		/obj/item/halo/mortar,
+	)

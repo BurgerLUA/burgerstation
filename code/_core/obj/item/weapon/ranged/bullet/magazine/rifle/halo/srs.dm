@@ -19,11 +19,11 @@
 	can_wield = TRUE
 	wield_only = TRUE
 
-	view_punch = TILE_SIZE - 1
 
 
 
-	heat_per_shot = 0.1
+
+
 	heat_max = 0.2
 
 	bullet_length_min = 90
@@ -42,7 +42,7 @@
 
 	ai_heat_sensitivity = 2
 
-	inaccuracy_modifer = 0.1
+
 
 	zoom_mul = 2
 

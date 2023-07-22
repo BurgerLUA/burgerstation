@@ -6,7 +6,7 @@
 
 	projectile = /obj/projectile/bullet/laser/strong
 	ranged_damage_type = /damagetype/ranged/laser/rifle/hardlight
-	battery = /obj/item/powercell/recharging/small
+
 
 	bullet_color = "#00FF00"
 
@@ -17,11 +17,11 @@
 
 	charge_cost = CELL_SIZE_ADVANCED / 60
 
-	view_punch = 16
 
-	shoot_sounds = list('sound/weapons/covenant/haloplasmapistol.ogg')
 
-	heat_per_shot = 0.01
+
+
+
 	heat_max = 0.04
 
 	size = SIZE_2
@@ -45,7 +45,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

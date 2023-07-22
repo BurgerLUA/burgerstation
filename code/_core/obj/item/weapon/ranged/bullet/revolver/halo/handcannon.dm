@@ -12,7 +12,7 @@
 
 	shoot_sounds = list('sound/weapons/halo/unsc/big_game.ogg')
 
-	view_punch = 24
+
 
 	size = SIZE_3
 	weight = 10
@@ -27,7 +27,7 @@
 
 	value = 1000
 
-	heat_per_shot = 0.05
+
 	heat_max = 0.1
 
 	attachment_whitelist = list(
@@ -46,7 +46,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+		//obj/item/attachment/stock/c20r = FALSE,
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

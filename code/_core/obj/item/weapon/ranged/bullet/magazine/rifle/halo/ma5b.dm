@@ -10,7 +10,7 @@
 	automatic = TRUE
 
 	icon_state_worn = "worn"
-	item_slot = SLOT_TORSO_B
+
 	worn_layer = LAYER_MOB_CLOTHING_BACK
 	slot_icons = TRUE
 
@@ -21,12 +21,12 @@
 
 	can_wield = TRUE
 
-	view_punch = 10
+
 
 	size = SIZE_4
 	weight = 20
 
-	heat_per_shot = 0.04
+
 	heat_max = 0.08
 
 	bullet_length_min = 36
@@ -55,7 +55,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

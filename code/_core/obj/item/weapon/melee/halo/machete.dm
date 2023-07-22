@@ -7,7 +7,7 @@
 
 	item_slot = SLOT_GROIN_O
 
-	damage_type = /damagetype/melee/sword/machete
+	damage_type = /damagetype/melee/sword/halo/machete
 
 	size = SIZE_2
 	weight = 3

@@ -12,7 +12,7 @@
 	'sound/weapons/halo/unsc/m6c_socom/m6c_fire3.ogg'
 	)
 
-	view_punch = 6
+
 
 	automatic = FALSE
 
@@ -20,7 +20,7 @@
 	weight = 5
 
 
-	heat_per_shot = 0.03
+
 	heat_max = 0.12
 
 	bullet_length_min = 20
@@ -47,7 +47,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -93,13 +93,13 @@
 
 	can_wield = FALSE
 
-	view_punch = 8
+
 
 	size = SIZE_1
 	weight = 3
 
 
-	heat_per_shot = 0.02
+
 	heat_max = 0.12
 
 	bullet_length_min = 25
@@ -126,7 +126,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -172,13 +172,9 @@
 
 	can_wield = FALSE
 
-	view_punch = 8
-
 	size = SIZE_1
 	weight = 3
 
-
-	heat_per_shot = 0.02
 	heat_max = 0.12
 
 	bullet_length_min = 25
@@ -204,8 +200,6 @@
 		/obj/item/attachment/sight/scope = FALSE,
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
-
-		/obj/item/attachment/stock/c20r = FALSE,
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,

@@ -18,14 +18,14 @@
 
 	charge_cost = CELL_SIZE_ADVANCED / 100
 
-	view_punch = 16
+
 
 	shoot_sounds = list(
 	'sound/weapons/halo/covenant/plasmariflefire1.ogg',
 	'sound/weapons/halo/covenant/plasmariflefire2.ogg',
 	'sound/weapons/halo/covenant/plasmariflefire3.ogg')
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.08
 
 	size = SIZE_3
@@ -49,7 +49,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
@@ -66,7 +66,7 @@
 	attachment_undermount_offset_x = 29 - 16
 	attachment_undermount_offset_y = 12 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/covenant
+
 
 /obj/item/weapon/ranged/energy/halo/cov_rifle/get_static_spread()
 	if(wielded) return 0

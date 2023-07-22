@@ -16,12 +16,12 @@
 
 	can_wield = FALSE
 
-	view_punch = 3
+
 
 	size = SIZE_2
 	weight = 5
 
-	heat_per_shot = 0.01
+
 	heat_max = 0.03
 
 	bullet_length_min = 25
@@ -52,7 +52,7 @@
 		/obj/item/attachment/sight/scope/large = FALSE,
 		/obj/item/attachment/sight/targeting_computer = FALSE,
 
-		/obj/item/attachment/stock/c20r = FALSE,
+
 
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
