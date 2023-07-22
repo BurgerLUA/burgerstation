@@ -4,23 +4,10 @@
 	desc_extended = "Standart model of SOE suit."
 	icon = 'icons/obj/item/clothing/suit/soe.dmi'
 	rarity = RARITY_UNCOMMON
-	loyalty_tag = "Syndicate"
 
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -40,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20,
-		PAIN = 60
-	)
+	armor = /armor/military/medium/hard
 
-	size = SIZE_7
+	size = SIZE_6
 
 	protected_limbs = list(BODY_TORSO,BODY_GROIN,BODY_ARM_LEFT,BODY_ARM_RIGHT,BODY_LEG_LEFT,BODY_LEG_RIGHT)
 

@@ -1,5 +1,5 @@
 /mob/living/advanced/player/covenant/elite_minor
-	loadout_to_use = /loadout/nt/halo/covenant/elite_player
+
 	species = "Elite"
 
 /mob/living/advanced/player/covenant/elite_minor/default_appearance()
@@ -19,7 +19,7 @@
 	return .
 
 /mob/living/advanced/player/covenant/elite_major
-	loadout_to_use = /loadout/nt/halo/covenant/elite_major
+
 	species = "Elite"
 
 /mob/living/advanced/player/covenant/elite_major/default_appearance()
@@ -39,7 +39,7 @@
 	return .
 
 /mob/living/advanced/player/covenant/elite_shipmaster
-	loadout_to_use = /loadout/nt/halo/covenant/elite_shipmaster
+
 	species = "Elite"
 
 /mob/living/advanced/player/covenant/elite_shipmaster/default_appearance()
@@ -59,7 +59,7 @@
 	return .
 
 /mob/living/advanced/player/covenant/elite_ultra
-	loadout_to_use = /loadout/nt/halo/covenant/elite_ultra
+
 	species = "Elite"
 
 /mob/living/advanced/player/covenant/elite_ultra/default_appearance()

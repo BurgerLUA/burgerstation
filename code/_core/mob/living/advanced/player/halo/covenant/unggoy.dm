@@ -1,5 +1,5 @@
 /mob/living/advanced/player/covenant/unggoy_minor
-	loadout_to_use = /loadout/nt/halo/covenant/unggoyminor
+
 	species = "unga"
 
 /mob/living/advanced/player/covenant/unggoy_minor/default_appearance()

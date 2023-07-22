@@ -1,5 +1,5 @@
 /mob/living/advanced/player/covenant/kig_yar
-	loadout_to_use = /loadout/nt/halo/covenant/kigyar_player
+
 	species = "Kigyar"
 
 /mob/living/advanced/player/covenant/kig_yar/default_appearance()

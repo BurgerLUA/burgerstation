@@ -4,19 +4,9 @@
 	desc = "Don't mess with guys in that helmet!"
 	desc_extended = "Head armour, to be used with the MJOLNIR Mark V armor."
 
-	defense_rating = list(
-		BLADE = 60,
-		BLUNT = 40,
-		PIERCE = 90,
-		LASER = 40,
-		ARCANE = -40,
-		HEAT = 50,
-		COLD = 40,
-		BOMB = 60,
-		BIO = 20,
-		RAD = 20,
-		PAIN = 60
-	)
+	armor = /armor/hardsuit/combat/syndicate/ultra
+
+	rarity = RARITY_LEGENDARY
 
 	flags_clothing = FLAG_CLOTHING_SPARTAN
 

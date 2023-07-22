@@ -40,8 +40,8 @@
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/o_negative,
-		/obj/item/storage/ammo/buckshot,
-		/obj/item/storage/ammo/buckshot,
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/defib,
 		/obj/item/container/syringe/medipen/epinephrine,
 		/obj/item/container/syringe/medipen/epinephrine,
@@ -83,8 +83,8 @@
 		/obj/item/clothing/ears/headset,
 		/obj/item/clothing/hands/gloves/colored/combat,
 		/obj/item/clothing/hands/gloves/colored/combat/left,
-		/obj/item/clothing/feet/shoes/carbon_boot,
-		/obj/item/clothing/feet/shoes/carbon_boot/left,
+		/obj/item/clothing/feet/shoes/halo/combat/odst,
+		/obj/item/clothing/feet/shoes/halo/combat/odst/left,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst/commander,
 		/obj/item/clothing/overwear/hardsuit/halo/odst/commander,
 		/obj/item/clothing/belt/storage/colored/black,
@@ -131,9 +131,9 @@
 		/obj/item/magazine/halo/br55,
 		/obj/item/grenade/timed/explosive/halo,
 //		/obj/item/halo/mortar,
-		/obj/item/supply_remote/crates/ammunition,
-		/obj/item/supply_remote/crates/ammunition,
-		/obj/item/supply_remote/crates/ammunition,
+
+
+
 		/obj/item/container/syringe/medipen/bicaridine,
 		/obj/item/container/syringe/medipen/kelotane
 	)
@@ -170,7 +170,7 @@
 		/obj/item/powercell/industrial,
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/mob/sentry,
-		/obj/item/deployable/barricade/filled,
+
 		/obj/item/container/syringe/medipen/bicaridine,
 		/obj/item/container/syringe/medipen/kelotane
 	)
@@ -202,10 +202,10 @@
 		/obj/item/clothing/mask/gas/halo/unggoy,
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/energy/halo/cov_pistol,
-		/obj/item/grenade/timed/explosive/halo/plasma,
-		/obj/item/grenade/timed/explosive/halo/plasma,
-		/obj/item/grenade/timed/explosive/halo/plasma,
-		/obj/item/grenade/timed/explosive/halo/plasma
+		//obj/item/grenade/timed/explosive/halo/plasma,
+		//obj/item/grenade/timed/explosive/halo/plasma,
+		//obj/item/grenade/timed/explosive/halo/plasma,
+		//obj/item/grenade/timed/explosive/halo/plasma
 	)
 
 /loadout/nt/halo/covenant/kigyar
@@ -214,7 +214,7 @@
 		/obj/item/clothing/ears/headset/covenant,
 		/obj/item/clothing/overwear/armor/halo/covenant/kigyar,
 		/obj/item/clothing/mask/gas/halo/kigyar,
-		/obj/item/weapon/melee/sword/bdagger
+
 	)
 
 /loadout/nt/halo/covenant/kigyar_ranged
@@ -245,7 +245,7 @@
 		/obj/item/weapon/melee/energy/halo/edagger,
 		/obj/item/magazine/halo/covenant/needler,
 		/obj/item/magazine/halo/covenant/needler,
-		/obj/item/weapon/melee/energy/shield/blue
+
 	)
 
 /loadout/nt/halo/covenant/elite_player
@@ -313,22 +313,6 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/weapon/ranged/energy/halo/cov_lmg,
 		/obj/item/weapon/melee/energy/halo/esword
-	)
-
-/loadout/nt/survivor
-	spawning_items = list(
-		/obj/item/clothing/uniform/hos,
-		/obj/item/clothing/neck/cloak/black,
-		/obj/item/clothing/overwear/armor/bulletproof,
-		/obj/item/clothing/overwear/coat/brown,
-		/obj/item/clothing/head/hat/warden/drill,
-		/obj/item/clothing/hands/gloves/colored/padded/black,
-		/obj/item/clothing/hands/gloves/colored/padded/black/left,
-		/obj/item/clothing/feet/shoes/black_boots,
-		/obj/item/clothing/feet/shoes/black_boots/left,
-		/obj/item/clothing/belt/storage/colored/black,
-		/obj/item/storage/pouch/single/black,
-		/obj/item/storage/pouch/single/black,
 	)
 
 /loadout/halo/spartan
@@ -485,7 +469,7 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/storage/pouch/triple/black,
 		/obj/item/storage/pouch/triple/black,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun/insurrection,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/minigun,
 		/obj/item/magazine/minigun_46,
 		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
 		/obj/item/magazine/halo/magnum_police,
@@ -511,11 +495,11 @@
 		/obj/item/magazine/halo/m7,
 		/obj/item/magazine/halo/m7,
 		/obj/item/magazine/halo/m7,
-		/obj/item/bullet_cartridge/sniper_50/full,
-		/obj/item/bullet_cartridge/sniper_50/full,
-		/obj/item/bullet_cartridge/sniper_50/full,
-		/obj/item/bullet_cartridge/sniper_50/full,
-		/obj/item/bullet_cartridge/sniper_50/full,
+		/obj/item/bullet_cartridge/sniper_50,
+		/obj/item/bullet_cartridge/sniper_50,
+		/obj/item/bullet_cartridge/sniper_50,
+		/obj/item/bullet_cartridge/sniper_50,
+		/obj/item/bullet_cartridge/sniper_50,
 		/obj/item/container/syringe/medipen/bicaridine,
 		/obj/item/container/syringe/medipen/kelotane
 	)
@@ -533,8 +517,8 @@
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/o_negative,
 		/obj/item/container/blood_pack/full/o_negative,
-		/obj/item/storage/ammo/buckshot,
-		/obj/item/storage/ammo/buckshot,
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/defib,
 		/obj/item/container/syringe/medipen/epinephrine,
 		/obj/item/container/syringe/medipen/epinephrine,
@@ -571,20 +555,20 @@
 		/obj/item/clothing/overwear/hardsuit/halo/soe/leader,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe/leader,
 		/obj/item/clothing/back/storage/backpack/halo/odst/sl,
-		/obj/item/weapon/ranged/bullet/pump/shotgun/halo/semi,
+		/obj/item/weapon/ranged/bullet/magazine/shotgun/halo/kv32,
 		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection,
 		/obj/item/weapon/melee/sword/rev_bayonet,
 		/obj/item/magazine/halo/m7,
 		/obj/item/magazine/halo/m7,
 		/obj/item/magazine/halo/m7,
 		/obj/item/magazine/halo/m7,
-		/obj/item/storage/ammo/buckshot,
-		/obj/item/storage/ammo/buckshot,
+		/obj/item/bulletbox/small/shotgun_12,
+		/obj/item/bulletbox/small/shotgun_12,
 		/obj/item/grenade/timed/explosive/halo,
 //		/obj/item/halo/mortar,
-		/obj/item/supply_remote/crates/ammunition,
-		/obj/item/supply_remote/crates/ammunition,
-		/obj/item/supply_remote/crates/ammunition,
+
+
+
 		/obj/item/container/syringe/medipen/bicaridine,
 		/obj/item/container/syringe/medipen/kelotane
 	)
@@ -615,7 +599,6 @@
 		/obj/item/powercell/industrial,
 		/obj/item/deployable/mob/sentry,
 		/obj/item/deployable/mob/sentry,
-		/obj/item/deployable/barricade/filled,
 		/obj/item/container/syringe/medipen/bicaridine,
 		/obj/item/container/syringe/medipen/kelotane
 	)

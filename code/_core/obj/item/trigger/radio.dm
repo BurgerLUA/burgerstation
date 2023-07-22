@@ -258,3 +258,25 @@ list(
 		"[RADIO_FREQ_COMMON]" = TRUE,
 		"[frequency]" = TRUE
 	)
+
+/obj/item/device/radio/covenant
+	name = "\improper Covenant Radio"
+
+//	frequency_min = RADIO_FREQ_COVENANT
+//	frequency_max = RADIO_FREQ_COVS4
+	frequency = RADIO_FREQ_COVENANT
+	listening_frequencies = list(
+		RADIO_FREQ_COVENANT
+	)
+	value = 100
+
+/obj/item/device/radio/urf
+	name = "\improper URF Radio"
+
+//	frequency_min = RADIO_FREQ_URF
+//	frequency_max = RADIO_FREQ_GREGORY
+	frequency = RADIO_FREQ_URF
+	listening_frequencies = list(
+		RADIO_FREQ_URF
+	)
+	value = 100

@@ -1,5 +1,5 @@
 /mob/living/advanced/player/nt/halo/odst
-	loadout_to_use = /loadout/nt/halo/odst
+
 
 /mob/living/advanced/player/nt/halo/odst/default_appearance()
 	. = ..()

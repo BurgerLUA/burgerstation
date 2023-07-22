@@ -5,13 +5,13 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/m25.dmi'
 
-	item_count_max = 1
-	item_count_max_icon = 1
+
+
 
 	bullet_length = 50
 	bullet_diameter = 45
 
-	projectile = /obj/projectile/bullet/rocket
+	//projectile = /obj/projectile/bullet/rocket
 	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
 
 	misfire_chance = 15

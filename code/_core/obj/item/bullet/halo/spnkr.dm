@@ -6,14 +6,14 @@
 	icon = 'icons/obj/item/bullet/spnkr.dmi'
 	misfire_chance = 5
 
-	item_count_max = 1
-	item_count_max_icon = 1
+
+
 
 	bullet_length = 46
 	bullet_diameter = 40
 
-	projectile = /obj/projectile/bullet/rocket
-	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
+	//projectile = /obj/projectile/bullet/rocket
+	//damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
 
 
 	projectile_speed = TILE_SIZE * 0.9

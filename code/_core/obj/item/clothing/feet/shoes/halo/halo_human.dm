@@ -9,24 +9,12 @@
 
 	icon = 'icons/obj/item/clothing/shoes/ins.dmi'
 
-	item_slot = SLOT_FOOT_RIGHT
-	protected_limbs = list(BODY_FOOT_RIGHT)
-
-	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = -AP_CLUB,
-		ARCANE = -AP_CLUB,
-		PAIN = AP_CLUB
-	)
+	armor = /armor/leather/mining
 
 	size = SIZE_2
 
 
-	value = 150
-
-	speed_bonus = 0
+	value = 80
 
 
 /obj/item/clothing/feet/shoes/halo/combat/left
@@ -34,9 +22,10 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
+
 
 /obj/item/clothing/feet/shoes/halo/combat/urf
 	name = "right URF combat boot"
@@ -52,9 +41,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 /obj/item/clothing/feet/shoes/halo/combat/soe
 	name = "right URFC combat boot"
@@ -70,9 +59,9 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U
 
 /obj/item/clothing/feet/shoes/halo/combat/odst
 	name = "right ODST combat boot"
@@ -88,6 +77,6 @@
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"
 
-	item_slot = SLOT_FOOT_LEFT
+	item_slot = SLOT_FOOT
+	item_slot_mod = SLOT_MOD_LEFT
 	protected_limbs = list(BODY_FOOT_LEFT)
-	blocks_clothing = SLOT_FOOT_LEFT | SLOT_FOOT_LEFT_U

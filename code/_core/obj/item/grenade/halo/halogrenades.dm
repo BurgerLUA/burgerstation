@@ -5,7 +5,7 @@
 	desc_extended = "A prebuilt timed explosive grenade. The labeling indicates that the fuse is set to 3 seconds."
 
 	value = 50
-
+/*
 /obj/item/grenade/timed/explosive/halo/Generate()
 	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)
 	stored_containers += new /obj/item/container/beaker/large/grenade_potassium(src)
@@ -22,3 +22,4 @@
 	stored_containers += new /obj/item/container/beaker/large/grenade_water(src)
 	stored_containers += new /obj/item/container/beaker/large/grenade_potassium(src)
 	return ..()
+*/

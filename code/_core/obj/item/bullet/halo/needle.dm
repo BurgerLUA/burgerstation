@@ -5,14 +5,14 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/needle.dmi'
 
-	item_count_max = 5
-	item_count_max_icon = 5
+
+
 
 	bullet_diameter = 9
 	bullet_length = 33
 
-	projectile = /obj/projectile/bullet/needler
-	damage_type_bullet = /damagetype/ranged/bullet/crossbow_bolt
+	//projectile = /obj/projectile/bullet/needler
+	//damage_type_bullet = /damagetype/ranged/bullet/crossbow_bolt
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 

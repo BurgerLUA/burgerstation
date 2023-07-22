@@ -4,26 +4,8 @@
 	desc_extended = "Standart model of SOE hardsuit helmet."
 	icon = 'icons/obj/item/clothing/hats/soe.dmi'
 	rarity = RARITY_UNCOMMON
-	blocks_clothing = SLOT_FACE_WRAP | SLOT_HEAD
-	loyalty_tag = "Syndicate"
-
-	defense_rating = list(
-		BLADE = 20,
-		BLUNT = 40,
-		PIERCE = 40,
-		LASER = 40,
-		ARCANE = -40,
-		HEAT = 40,
-		COLD = 40,
-		BOMB = 40,
-		BIO = 20,
-		RAD = 20,
-		PAIN = 60
-	)
-
+	armor = /armor/hardsuit/combat/syndicate
 	size = SIZE_4
-
-	value = 200
 
 //	additional_clothing = list(/obj/item/clothing/glasses/nightvision)
 

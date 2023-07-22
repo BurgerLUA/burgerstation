@@ -6,13 +6,7 @@
 	rarity = RARITY_RARE
 	flags_clothing = FLAG_CLOTHING_NOHUMAN
 
-	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		BIO = AP_GREATAXE,
-		RAD = AP_DAGGER
-	)
+	armor = /armor/military/light/hard/bio
 
 	size = SIZE_2
 
@@ -25,14 +19,7 @@
 	desc_extended = "An advanced kig-yar mask."
 	rarity = RARITY_RARE
 	flags_clothing = FLAG_CLOTHING_NOHUMAN
-
-	defense_rating = list(
-		BLADE = AP_CLUB,
-		BLUNT = AP_SWORD,
-		PIERCE = AP_SWORD,
-		BIO = AP_GREATAXE,
-		RAD = AP_DAGGER
-	)
+	armor = /armor/military/light/hard/bio
 
 	size = SIZE_2
 

@@ -6,19 +6,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = -AP_AXE,
-		ARCANE = -AP_AXE,
-		HEAT = AP_SWORD,
-		COLD = AP_SWORD,
-		BOMB = AP_SWORD,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD,
-		PAIN = AP_CLUB
-	)
+	armor = /armor/military/medium/hard
 
 	size = SIZE_5
 

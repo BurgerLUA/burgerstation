@@ -2,14 +2,14 @@
 	name = "UNSC marine"
 	desc = "A fellow soldier"
 	desc_extended = "A low-ranking UNSC soldier tasked with defending the ship and assisting with higher ranking UNSC personnel with missions."
-	enable_AI = TRUE
+
 	ai = /ai/advanced/nanotrasen
-	class = /class/syndicate_soldier
+
 	dialogue_id = /dialogue/npc/soldier/
 	var/loadout_to_use = /loadout/halo/unsc_soldier
 
 /mob/living/advanced/npc/halo/marine/lobby
-	ai = /ai/advanced/nanotrasen/lobby
+
 
 /mob/living/advanced/npc/halo/marine/Initialize()
 
@@ -30,7 +30,7 @@
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
-	update_all_blends()
+
 
 	equip_loadout(loadout_to_use)
 
@@ -40,10 +40,10 @@
 	name = "URF soldier"
 	desc = "A fellow soldier"
 	desc_extended = "A low-ranking URF soldier tasked with defending the ship and assisting with higher ranking URF personnel with missions."
-	enable_AI = TRUE
+
 	ai = /ai/advanced/halo/urf
-	class = /class/syndicate_soldier
-	dialogue_id = /dialogue/npc/soldier/second
+
+
 	var/loadout_to_use = /loadout/halo/urf_soldier
 
 /mob/living/advanced/npc/halo/urf/riflemen
@@ -88,7 +88,7 @@
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
 
-	update_all_blends()
+
 
 	equip_loadout(loadout_to_use)
 
@@ -99,10 +99,10 @@
 	desc = "Funny grunt"
 	desc_extended = "A low-ranking Covenant unit."
 	icon_state = "halo_unggoy"
-	enable_AI = TRUE
+
 	ai = /ai/advanced/halo/unggoy
-	dialogue_id = /dialogue/npc/covenant
-	class = /class/syndicate_soldier
+
+
 
 	species = "unga"
 	loyalty_tag = "Covenant"
@@ -122,7 +122,7 @@
 
 	equip_loadout(loadout_to_use)
 
-	update_all_blends()
+
 
 
 
@@ -133,10 +133,10 @@
 	desc = "Deadly sniper"
 	desc_extended = "A low-ranking but good trained Covenant unit."
 	icon_state = "halo_kigyar1"
-	enable_AI = TRUE
+
 	ai = /ai/advanced/halo/kigyar
-	class = /class/syndicate_soldier
-	dialogue_id = /dialogue/npc/covenant
+
+
 
 	movement_delay = 1
 
@@ -155,7 +155,7 @@
 
 	equip_loadout(loadout_to_use)
 
-	update_all_blends()
+
 
 
 
@@ -173,10 +173,10 @@
 	desc = "Fearless warrior"
 	desc_extended = "A low-ranking Elite."
 	icon_state = "halo_elite"
-	enable_AI = TRUE
+
 	ai = /ai/advanced/halo/elite
-	class = /class/syndicate_soldier
-	dialogue_id = /dialogue/npc/covenant
+
+
 
 	species = "Elite"
 	loyalty_tag = "Covenant"
@@ -193,7 +193,7 @@
 
 	equip_loadout(loadout_to_use)
 
-	update_all_blends()
+
 
 
 

@@ -5,11 +5,6 @@
 
 	icon = 'icons/obj/item/weapons/melee/swords/halo/machete.dmi'
 
-	item_slot = SLOT_GROIN_O
-
-	damage_type = /damagetype/melee/sword/halo/machete
-
-	size = SIZE_2
-	weight = 3
-
-	value = 200
+	damage_type = /damagetype/melee/sword/katana
+	value = 300
+	rarity = RARITY_UNCOMMON

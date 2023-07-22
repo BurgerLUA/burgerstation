@@ -10,7 +10,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/shotgun/halo/kv32 = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/shotgun_12/buckshot
+	ammo = /obj/item/bullet_cartridge/shotgun_12
+	ammo_surplus = /obj/item/bullet_cartridge/shotgun_12/surplus
 
 	bullet_length_min = 18
 	bullet_length_best = 18.5

@@ -8,13 +8,5 @@
 
 	flags_clothing = FLAG_CLOTHING_NOBEAST_FEET
 
-	defense_rating = list(
-		BLADE = 10,
-		BLUNT = 10,
-		PIERCE = 10,
-		HEAT = 10,
-		COLD = 10,
-		ARCANE = -30
-	)
-
+	armor = /armor/military/light
 	value = 50

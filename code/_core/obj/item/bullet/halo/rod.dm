@@ -5,14 +5,14 @@
 	rarity = RARITY_UNCOMMON
 	icon = 'icons/obj/item/bullet/rod.dmi'
 
-	item_count_max = 1
-	item_count_max_icon = 1
+
+
 
 	bullet_diameter = 41
 	bullet_length = 46
 
-	projectile = /obj/projectile/bullet/rocket/rod
-	damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
+	//projectile = /obj/projectile/bullet/rocket/rod
+	//damage_type_bullet = /damagetype/ranged/bullet/gyrojet/
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 

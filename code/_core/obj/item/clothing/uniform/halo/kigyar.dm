@@ -8,14 +8,7 @@
 
 	flags_clothing = FLAG_CLOTHING_NOHUMAN
 
-	defense_rating = list(
-		BLADE = 25,
-		BLUNT = 20,
-		PIERCE = 10,
-		HEAT = 20,
-		COLD = 20,
-		ARCANE = -30
-	)
+	armor = /armor/military/light
 
 	value = 80
 

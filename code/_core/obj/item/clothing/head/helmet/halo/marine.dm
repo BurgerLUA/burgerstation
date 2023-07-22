@@ -3,27 +3,10 @@
 	icon = 'icons/obj/item/clothing/hats/marine.dmi'
 	desc = "Military. In space!"
 	desc_extended = "The standard issue combat helmet worn by the members of the UNSC Marine Corps, UNSC Army, and UNSC Air Force."
-	loyalty_tag = "NanoTrasen"
-
-	defense_rating = list(
-		BLADE = AP_SWORD,
-		BLUNT = AP_CLUB,
-		PIERCE = AP_CLUB,
-		LASER = -AP_AXE,
-		ARCANE = -AP_AXE,
-		HEAT = AP_SWORD,
-		COLD = AP_SWORD,
-		BOMB = AP_SWORD,
-		BIO = AP_SWORD,
-		RAD = AP_SWORD,
-		PAIN = AP_CLUB
-	)
-
-//	additional_clothing = list(/obj/item/clothing/glasses/nightvision)
-
+	armor = /armor/military/medium/hard
 	size = SIZE_3
-
-	value = 100
+	value = 60
+	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/head/helmet/halo/marine/sl
 	name = "CH251 SL Helmet"

@@ -64,7 +64,7 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 
-	damage_type = /damagetype/unarmed/elite/
+
 	flags_organ = FLAG_ORGAN_COVENANT
 
 	health_base = 35
@@ -98,7 +98,7 @@
 		/obj/hud/inventory/organs/right_hand_held
 	)
 
-	damage_type = /damagetype/unarmed/elite/
+
 	flags_organ = FLAG_ORGAN_SPARTAN
 
 	health_base = 35

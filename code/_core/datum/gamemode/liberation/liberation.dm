@@ -53,9 +53,9 @@
 	announce(
 		"Central Command Update",
 		"Prepare for Landfall",
-		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 8 minutes.",
+		"All landfall crew are ordered to gear up for planetside combat. Estimated time until shuttle and drop pod functionality: 6 minutes.",
 		ANNOUNCEMENT_STATION,
-		'sound/voice/announcement/landfall_crew_8_minutes.ogg'
+		'sound/voice/announcement/landfall_crew_6_minutes_shuttle.ogg'
 	)
 	return TRUE
 
@@ -71,9 +71,9 @@
 	announce(
 		"Central Command Update",
 		"Shuttle Boarding",
-		"All landfall crew are ordered to proceed to the hanger bay and prepare for battle. Shuttles will be allowed to launch in 2 minutes.",
+		"All landfall crew are ordered to proceed to the hanger bay and prepare for battle. Shuttles will be allowed to launch in 1 minute.",
 		ANNOUNCEMENT_STATION,
-		'sound/voice/announcement/landfall_crew_2_minutes.ogg'
+		'sound/voice/announcement/landfall_crew_1_minute_shuttle.ogg'
 	)
 	return TRUE
 
@@ -88,7 +88,7 @@
 	for(var/k in all_fog)
 		var/obj/effect/fog_of_war/F = k
 		F.remove()
-	announce("Central Command Mission Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes.ogg')
+	announce("Central Command Mission Update","Mission is a Go","Shuttles are prepped and ready to depart into the Area of Operations. All crew are cleared to launch.",ANNOUNCEMENT_STATION,'sound/voice/announcement/landfall_crew_0_minutes_shuttle.ogg')
 	allow_launch = TRUE
 	SSshuttle.next_pod_launch = world.time + SECONDS_TO_DECISECONDS(5)
 	return TRUE
