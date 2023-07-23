@@ -1,5 +1,5 @@
 /mob/living/advanced/player/nt/halo/spartan
-
+	//loadout_to_use = /loadout/halo/spartan
 	species = "Spartan"
 
 /mob/living/advanced/player/nt/halo/spartan/Finalize()
