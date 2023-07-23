@@ -168,6 +168,18 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	if(real_name == DEFAULT_NAME)
 		real_name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+	if(species == "Elite")//forced here for names because I hate stuff.
+		name = "[gender == MALE ? FIRST_NAME_SANG : FIRST_NAME_SANG] [LAST_NAME_SANG]"
+		real_name = name
+	if(species == "Kigyar")//forced here for names because I hate stuff.
+		name = "[gender == MALE ? JACK : JACK]"
+		real_name = name
+	if(species == "unga")//forced here for names because I hate stuff.
+		name = "[gender == MALE ? UNGG : UNGG]"
+		real_name = name
+	if(species == "Spartan")//forced here for names because I hate stuff.
+		name = "[gender == MALE ? FIRST_NAME_SPARTAN : FIRST_NAME_SPARTAN] [LAST_NAME_SPARTAN]"
+		real_name = name
 
 	name = SStext.check_duplicate_player_name(real_name,ckey_last)
 
