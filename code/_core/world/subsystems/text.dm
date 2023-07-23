@@ -17,6 +17,13 @@ SUBSYSTEM_DEF(text)
 	var/list/player_names = list()
 
 	var/list/wisdoms = list()
+	//halo
+	var/list/first_sangheili = list()
+	var/list/last_sangheili = list()
+	var/list/first_spartan = list()
+	var/list/last_spartan = list()
+	var/list/first_kigyar = list()
+	var/list/first_unggoy = list()
 
 /subsystem/text/Initialize()
 
