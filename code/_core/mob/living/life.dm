@@ -7,15 +7,13 @@
 	if(dead)
 		return FALSE
 
-	is_moving = FALSE
-
-	if(boss)
-		SSbosses.living_bosses -= src
+	pre_death()
 
 	if(!silent) death_message()
 
-	pre_death()
-
+	is_moving = FALSE
+	if(boss)
+		SSbosses.living_bosses -= src
 	dead = TRUE
 	time_of_death = world.time
 
@@ -35,6 +33,7 @@
 			INITIALIZE(BL)
 			GENERATE(BL)
 			FINALIZE(BL)
+			boss_loot = null
 
 		if(!silent) create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
@@ -174,7 +173,6 @@
 	stamina_regen_buffer = max(stamina_regen_buffer,0)
 	if(alert_overlay) alert_overlay.icon_state = "none"
 	if(chat_overlay) chat_overlay.icon_state = "none"
-	HOOK_CALL("pre_death")
 	return TRUE
 
 /mob/living/proc/post_death()
@@ -627,7 +625,7 @@ mob/living/proc/on_life_slow()
 		C.make_ghost(T ? T : locate(FLOOR(world.maxx/2,1),FLOOR(world.maxy/2,1),1))
 		C.to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
 	else
-		ckey_last = null
+		src.ckey_last = null
 
 	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 

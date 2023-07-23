@@ -40,6 +40,7 @@
 		return FALSE
 
 	job_rank++
+	job_next_promotion = world.realtime + 604800*10 //1 week
 
 	src.to_chat(span("notice","You have been promoted from [J.get_rank_title(job_rank-1)] to [J.get_rank_title(job_rank)]! Your skills, attributes, and paycheck have been increased!"))
 
