@@ -63,14 +63,14 @@
 /obj/item/clothing/overwear/armor/halo/spartan/proc/shield_beep()
 	if(!CALLBACK_EXISTS("\ref[src]_cooldown_end")) //Only beep if there is a cooldown.
 		return FALSE
-	play_sound('sound/effects/shield_beep.ogg',get_turf(src))
+	play_sound('sound/effects/halo/shields/spartan/shield_down_spartan.ogg',get_turf(src))
 	CALLBACK("\ref[src]_shield_beep",SECONDS_TO_DECISECONDS(1),src,src::shield_beep())
 	return TRUE
 
 /obj/item/clothing/overwear/armor/halo/spartan/proc/cooldown_end()
 	shield_overlay.alpha = 0
 	shield_overlay.icon_state = "shield_overlay"
-	play_sound('sound/effects/shield_recharge.ogg',get_turf(src))
+	play_sound('sound/effects/halo/shields/spartan/shield_recharge_spartan.ogg',get_turf(src))
 	return TRUE
 
 /obj/item/clothing/overwear/armor/halo/spartan/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
