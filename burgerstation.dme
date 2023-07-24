@@ -1627,6 +1627,7 @@
 #include "code\_core\obj\item\clothing\underbottom\underwear.dm"
 #include "code\_core\obj\item\clothing\undertop\_undertop.dm"
 #include "code\_core\obj\item\clothing\undertop\underwear.dm"
+#include "code\_core\obj\item\clothing\uniform\_uniform.dm"
 #include "code\_core\obj\item\clothing\uniform\halo\crewman.dm"
 #include "code\_core\obj\item\clothing\uniform\halo\elite.dm"
 #include "code\_core\obj\item\clothing\uniform\halo\insurrection.dm"
