@@ -9,7 +9,7 @@
 	icon_state = "stock_reinforcement"
 
 	attachment_stats = list(
-		durability_mod = 0.75
+		condition_use_mod = 0.75
 	)
 
 	value = 250

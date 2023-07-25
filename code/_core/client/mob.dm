@@ -13,6 +13,10 @@
 			. = M
 			return .
 		if(M.ckey_owner == ckey && !M.ckey_last)
+			if(is_living(M))
+				var/mob/living/L = M
+				if(L.dead)
+					continue
 			. = M
 			//No break here as ckey_last needs a priority.
 
@@ -42,7 +46,6 @@
 	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
-	GENERATE(O)
 
 	return TRUE
 

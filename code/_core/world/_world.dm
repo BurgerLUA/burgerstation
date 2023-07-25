@@ -161,7 +161,7 @@ var/global/world_state = STATE_STARTING
 			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey_last assigned!")
 			continue
 		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
-		if(M.save_character(P))
+		if(M.save_character(P,died = P.dead))
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))

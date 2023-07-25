@@ -26,7 +26,6 @@
 "az" = (/obj/structure/carpet/red,/obj/structure/interactive/chair/comfy,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aA" = (/obj/structure/interactive/lighting/fixture/tube{icon_state = "preview"; dir = 4},/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aB" = (/obj/structure/interactive/wire/green,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
-"aC" = (/mob/living/advanced/npc/syndicate/ultra,/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aD" = (/mob/living/advanced/npc/syndicate,/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall/north_office)
 "aE" = (/mob/living/advanced/npc/syndicate,/obj/structure/carpet/red,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
 "aF" = (/mob/living/advanced/npc/syndicate,/obj/structure/interactive/barricade,/turf/simulated/floor/brick/city/clean,/area/mission/prefab/city/city_hall)
@@ -152,7 +151,7 @@
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaadakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakakagaeaeaeaeaeaeaeaeaeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckckckckckckckalalalcEaeafahahaCahahafaecEckanaraUaVckckckckckcHaaaaaaaaaaaaaa
+aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckckckckckckckalalalcEaeafahahahahahafaecEckanaraUaVckckckckckcHaaaaaaaaaaaaaa
 aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckcfckckckcfckalckbCckavamcAahazahcAayavckbDbEbDbDbFckckckckckcHaaaaaaaaaaaaaa
 aabecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckckbGbGbGbGbGbGauawauaeaAahaGaGaGahaHaeauaIauckbDbHckckckckckcHaaaaaaaaaaaaaa
 cHbecdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdckaJaJaJaJaJaJaJaubKbLaeayaDahaLahahbRaebMbNauaNaNaNaNaNaNaNckcHaaaaaaaaaaaaaa

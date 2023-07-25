@@ -217,7 +217,7 @@
 
 /obj/item/proc/use_condition(var/amount_to_use=1)
 
-	if(!uses_until_condition_fall)
+	if(uses_until_condition_fall <= 0)
 		return FALSE
 
 	uses_until_condition_fall -= amount_to_use
@@ -750,7 +750,7 @@
 	return ..()
 
 /obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
-	damage_multiplier *= get_quality_bonus(0.25,2)
+	damage_multiplier *= get_quality_mod()
 	. = ..()
 
 /obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
@@ -821,15 +821,12 @@
 		add_overlay(I)
 
 
-/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2,var/threshold=60)
-	var/quality_mod_to_use = 1
-	if(quality != -1)
-		if(quality < 100)
-			quality_mod_to_use = min(1,quality/threshold) //Start failing only below the threshold.
-		else
-			quality_mod_to_use = quality/100
-		quality_mod_to_use = FLOOR(quality_mod_to_use,0.01)
-	return min(minimum + quality_mod_to_use*(1-minimum),maximum)
+// https://www.desmos.com/calculator/htnhpikjwb
+/obj/item/proc/get_quality_mod()
+	if(quality == -1)
+		return 1
+	var/q_mod = quality/100
+	return max(0.25,min(cos( (q_mod-1) * 90)**min(1,1 - q_mod),2))
 
 /obj/item/proc/adjust_quality(var/quality_to_add=0)
 
