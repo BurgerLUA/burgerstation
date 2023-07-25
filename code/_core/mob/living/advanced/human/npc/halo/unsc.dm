@@ -23,6 +23,12 @@
 		//loadout/slavic/heavy = 1.25
 	)
 
+/mob/living/advanced/npc/unsc/Initialize()
+	loadout = pickweight(possible_outfits)
+	level *= loadout_to_level[loadout]
+	. = ..()
+
+
 /mob/living/advanced/npc/unsc/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)

@@ -23,6 +23,12 @@
 		/loadout/urf/urf_pointmen = 1.25
 	)
 
+/mob/living/advanced/npc/urf/Initialize()
+	loadout = pickweight(possible_outfits)
+	level *= loadout_to_level[loadout]
+	. = ..()
+
+
 /mob/living/advanced/npc/urf/Finalize()
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
