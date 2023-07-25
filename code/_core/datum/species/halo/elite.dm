@@ -14,8 +14,8 @@
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#FFFFFF"
 	default_color_hair = "#FFFFFF"
-	default_color_detail = "#FFFFFF"
-	default_color_glow = "#FFFFFF"
+	//default_color_detail = "#FFFFFF"
+	//default_color_glow = "#FFFFFF"
 
 	emote_sounds_male = list(
 		"pain" = list('sound/voice/elite/elitescream_1.ogg','sound/voice/elite/elitescream_2.ogg','sound/voice/elite/elitescream_3.ogg','sound/voice/elite/elitescream_4.ogg','sound/voice/elite/elitescream_5.ogg'),

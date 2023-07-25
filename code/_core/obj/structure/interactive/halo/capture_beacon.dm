@@ -26,7 +26,7 @@ var/global/list/capture_beacons = list()
 	var/faction
 	if(istype(caller, /mob/living/advanced/player/covenant))
 		faction = TEAM_COVENANT
-	else if(istype(caller, /mob/living/advanced/player/nt))
+	else if(istype(caller, /mob/living/advanced/player/unsc))
 		faction = TEAM_UNSC
 	else if(istype(caller, /mob/living/advanced/player/antagonist))
 		faction = TEAM_URF
@@ -68,7 +68,7 @@ var/global/list/capture_beacons = list()
 	var/faction
 	if(istype(caller, /mob/living/advanced/player/covenant))
 		faction = TEAM_COVENANT
-	else if(istype(caller, /mob/living/advanced/player/nt))
+	else if(istype(caller, /mob/living/advanced/player/unsc/))
 		faction = TEAM_UNSC
 	else if(istype(caller, /mob/living/advanced/player/antagonist))
 		faction = TEAM_URF

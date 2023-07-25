@@ -1,4 +1,4 @@
-/loadout/nt/halo/odst
+/loadout/unsc/odst
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/odst,
 		/obj/item/clothing/ears/headset,
@@ -9,7 +9,21 @@
 		/obj/item/clothing/belt/storage/colored/black
 	)
 
-/loadout/nt/halo/odst/cqb
+/loadout/unsc/spartan
+	spawning_items = list(
+		/obj/item/clothing/uniform/halo/spartan,
+		/obj/item/clothing/ears/headset,
+		/obj/item/clothing/overwear/armor/halo/spartan,
+		/obj/item/clothing/head/helmet/halo/spartan,
+		/obj/item/clothing/hands/gloves/halo/spartan,
+		/obj/item/clothing/hands/gloves/halo/spartan/left,
+		/obj/item/clothing/feet/shoes/halo/spartan,
+		/obj/item/clothing/feet/shoes/halo/spartan/left,
+		/obj/item/clothing/belt/storage/colored/black
+	)
+
+
+/loadout/unsc/odst/cqb
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/odst/cqb,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst/cqb,
@@ -27,7 +41,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/nt/halo/odst/medic
+/loadout/unsc/odst/medic
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/odst/medic,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst/medic,
@@ -52,7 +66,7 @@
 		/obj/item/clothing/belt/storage/medical/filled
 	)
 
-/loadout/halo/unsc_soldier
+/loadout/unsc/marine/marine_rifleman
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/marine,
 		/obj/item/clothing/feet/shoes/halo/combat,
@@ -77,7 +91,7 @@
 		/obj/item/weapon/melee/sword/machete
 	)
 
-/loadout/nt/halo/odst/commander
+/loadout/unsc/odst/commander
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/odst,
 		/obj/item/clothing/ears/headset,
@@ -92,7 +106,7 @@
 		/obj/item/halo/mortar,
 	)
 
-/loadout/nt/halo/odst/rifleman
+/loadout/unsc/odst/rifleman
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/odst,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst,
@@ -113,7 +127,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/nt/halo/odst/sl
+/loadout/unsc/odst/sl
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/odst/leader,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst/leader,
@@ -138,7 +152,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/nt/halo/odst/engineer
+/loadout/unsc/odst/engineer
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/odst/engineer,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst/engineer,
@@ -175,7 +189,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/nt/halo/odst/sharpshooter
+/loadout/unsc/odst/sharpshooter
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/odst/sharp,
 		/obj/item/clothing/head/helmet/hardsuit/halo/odst/sharp,
@@ -194,7 +208,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/nt/halo/covenant/unggoyminor
+/loadout/covenant/unggoy_minor
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/unggoy,
 		/obj/item/clothing/overwear/armor/halo/covenant/unggoy,
@@ -208,7 +222,7 @@
 		//obj/item/grenade/timed/explosive/halo/plasma
 	)
 
-/loadout/nt/halo/covenant/kigyar
+/loadout/covenant/kigyar
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/kigyar/less,
 		/obj/item/clothing/ears/headset/covenant,
@@ -217,7 +231,7 @@
 
 	)
 
-/loadout/nt/halo/covenant/kigyar_ranged
+/loadout/covenant/kigyar_ranged
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/kigyar,
 		/obj/item/clothing/ears/headset/covenant,
@@ -234,7 +248,7 @@
 		/obj/item/magazine/halo/covenant/needler
 	)
 
-/loadout/nt/halo/covenant/kigyar_player
+/loadout/covenant/kigyar_player
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/kigyar,
 		/obj/item/clothing/ears/headset/covenant,
@@ -248,14 +262,14 @@
 
 	)
 
-/loadout/nt/halo/covenant/elite_player
+/loadout/covenant/elite_player
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/elite,
 		/obj/item/clothing/ears/headset/covenant,
 		/obj/item/clothing/belt/storage/colored/black
 	)
 
-/loadout/nt/halo/covenant/elite_minor
+/loadout/covenant/elite_minor
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/elite,
 		/obj/item/clothing/ears/headset/covenant,
@@ -270,7 +284,7 @@
 		/obj/item/weapon/melee/energy/halo/edagger
 	)
 
-/loadout/nt/halo/covenant/elite_major
+/loadout/covenant/elite_major
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/elite,
 		/obj/item/clothing/ears/headset/covenant,
@@ -285,7 +299,7 @@
 		/obj/item/weapon/melee/energy/halo/esword
 	)
 
-/loadout/nt/halo/covenant/elite_shipmaster
+/loadout/covenant/elite_shipmaster
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/elite,
 		/obj/item/clothing/ears/headset/covenant,
@@ -300,7 +314,7 @@
 		/obj/item/weapon/melee/energy/halo/esword
 	)
 
-/loadout/nt/halo/covenant/elite_ultra
+/loadout/covenant/elite_ultra
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/covenant/elite,
 		/obj/item/clothing/ears/headset/covenant,
@@ -315,21 +329,7 @@
 		/obj/item/weapon/melee/energy/halo/esword
 	)
 
-/loadout/halo/spartan
-	spawning_items = list(
-		/obj/item/clothing/uniform/halo/spartan,
-		/obj/item/clothing/ears/headset,
-		/obj/item/clothing/overwear/armor/halo/spartan,
-		/obj/item/clothing/head/helmet/halo/spartan,
-		/obj/item/clothing/hands/gloves/halo/spartan,
-		/obj/item/clothing/hands/gloves/halo/spartan/left,
-		/obj/item/clothing/feet/shoes/halo/spartan,
-		/obj/item/clothing/feet/shoes/halo/spartan/left,
-		/obj/item/clothing/belt/storage/colored/black
-	)
-
-
-/loadout/syndicate/halo/soe
+/loadout/urf/soe
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection,
 		/obj/item/clothing/ears/headset/urf,
@@ -340,7 +340,7 @@
 		/obj/item/clothing/belt/storage/colored/black
 	)
 
-/loadout/halo/urf_soldier
+/loadout/urf/urf_soldier
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection,
 		/obj/item/clothing/feet/shoes/halo/combat/urf,
@@ -365,7 +365,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
-/loadout/halo/urf_pointmen
+/loadout/urf/urf_pointmen
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection,
 		/obj/item/clothing/feet/shoes/halo/combat/urf,
@@ -390,7 +390,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
-/loadout/halo/urf_marksmen
+/loadout/urf/urf_marksmen
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection,
 		/obj/item/clothing/feet/shoes/halo/combat/urf,
@@ -415,7 +415,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
-/loadout/halo/urf_demolitions
+/loadout/urf/urf_demolitions
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection,
 		/obj/item/clothing/feet/shoes/halo/combat/urf,
@@ -435,7 +435,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
-/loadout/halo/urf_commando
+/loadout/urf/urf_commando
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection/soe,
 		/obj/item/clothing/feet/shoes/halo/combat/soe,
@@ -457,7 +457,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
-/loadout/halo/urf_hmg
+/loadout/urf/urf_hmg
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection,
 		/obj/item/clothing/feet/shoes/halo/combat/urf,
@@ -478,7 +478,7 @@
 		/obj/item/weapon/melee/sword/rev_bayonet
 	)
 
-/loadout/syndicate/halo/soe/cqb
+/loadout/urf/soe/cqb
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/soe/cqb,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe/cqb,
@@ -504,7 +504,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/syndicate/halo/soe/medic
+/loadout/urf/soe/medic
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/soe/medic,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe/medic,
@@ -529,7 +529,7 @@
 		/obj/item/clothing/belt/storage/medical/filled
 	)
 
-/loadout/syndicate/halo/soe/rifleman
+/loadout/urf/soe/rifleman
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/soe,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe,
@@ -550,7 +550,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/syndicate/halo/soe/sl
+/loadout/urf/soe/sl
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/soe/leader,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe/leader,
@@ -573,7 +573,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/syndicate/halo/soe/engineer
+/loadout/urf/soe/engineer
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/soe/engineer,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe/engineer,
@@ -603,7 +603,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/syndicate/halo/soe/sharpshooter
+/loadout/urf/soe/sharpshooter
 	spawning_items = list(
 		/obj/item/clothing/overwear/hardsuit/halo/soe/sharp,
 		/obj/item/clothing/head/helmet/hardsuit/halo/soe/sharp,
@@ -623,7 +623,7 @@
 		/obj/item/container/syringe/medipen/kelotane
 	)
 
-/loadout/syndicate/halo/soe/commander
+/loadout/urf/soe/commander
 	spawning_items = list(
 		/obj/item/clothing/uniform/halo/insurrection/commander,
 		/obj/item/clothing/ears/headset/syndicate,

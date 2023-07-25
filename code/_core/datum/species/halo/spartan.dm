@@ -6,16 +6,17 @@
 
 	bite_size = 10
 
-//	flags_chargen = CHARGEN_HAIR | CHARGEN_SEX
+	//flags_chargen = CHARGEN_SKIN | CHARGEN_EYE | CHARGEN_HAIR | CHARGEN_BEARD | CHARGEN_SEX
 
 	flags_flavor_love = FLAG_FLAVOR_COOKED | FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_MEAT | FLAG_FLAVOR_FISH | FLAG_FLAVOR_LOVE | FLAG_FLAVOR_JUNK | FLAG_FLAVOR_FAT | FLAG_FLAVOR_DAIRY
 	flags_flavor_hate = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_RAW | FLAG_FLAVOR_NECRO | FLAG_FLAVOR_MEDICINE
 
+
 	default_color_eye = "#FFFFFF"
 	default_color_skin = "#FFFFFF"
 	default_color_hair = "#FFFFFF"
-	default_color_detail = "#FFFFFF"
-	default_color_glow = "#FFFFFF"
+//	default_color_detail = "#FFFFFF"
+//	default_color_glow = "#FFFFFF"
 
 	emote_sounds_male = list(
 		"pain" = list('sound/voice/spartan/pain/pain1.ogg','sound/voice/spartan/pain/pain2.ogg','sound/voice/spartan/pain/pain3.ogg','sound/voice/spartan/pain/pain4.ogg','sound/voice/spartan/pain/pain5.ogg','sound/voice/spartan/pain/pain6.ogg','sound/voice/spartan/pain/pain7.ogg','sound/voice/spartan/pain/pain8.ogg','sound/voice/spartan/pain/pain9.ogg','sound/voice/spartan/pain/pain10.ogg'),

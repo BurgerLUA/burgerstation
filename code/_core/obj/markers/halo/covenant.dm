@@ -16,25 +16,13 @@ var/global/list/all_covenant_markers = list()
 
 	return ..()
 
-/obj/marker/covenant/elite_m
+/obj/marker/covenant/elite
 	name = "Elite"
-	spawn_type = /mob/living/advanced/player/covenant/elite_minor
-
-/obj/marker/covenant/elite_mj
-	name = "Elite Major"
-	spawn_type = /mob/living/advanced/player/covenant/elite_major
-
-/obj/marker/covenant/elite_ultra
-	name = "Elite Ultra"
-	spawn_type = /mob/living/advanced/player/covenant/elite_ultra
-
-/obj/marker/covenant/elite_shipmaster
-	name = "Elite Shipmaster"
-	spawn_type = /mob/living/advanced/player/covenant/elite_shipmaster
+	spawn_type = /mob/living/advanced/player/covenant/elite
 
 /obj/marker/covenant/grunt_m
-	name = "Grunt Minor"
-	spawn_type = /mob/living/advanced/player/covenant/unggoy_minor
+	name = "Unggoy"
+	spawn_type = /mob/living/advanced/player/covenant/unggoy
 
 /obj/marker/covenant/kig_yar
 	name = "Jackal Marksman"

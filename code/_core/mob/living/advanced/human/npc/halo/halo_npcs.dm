@@ -107,8 +107,7 @@
 	species = "unga"
 	loyalty_tag = "Covenant"
 	iff_tag = "Covenant"
-
-	var/loadout_to_use = /loadout/nt/halo/covenant/unggoyminor
+	loadout = /loadout/nt/halo/covenant/unggoyminor
 
 /mob/living/advanced/npc/halo/unggoy/lobby
 	ai = /ai/advanced/halo/unggoy/lobby
@@ -120,7 +119,7 @@
 	sex = pick(MALE,FEMALE)
 	gender = sex
 
-	equip_loadout(loadout_to_use)
+	equip_loadout(loadout)
 
 
 
