@@ -55,11 +55,6 @@
 			else
 				attachment_stats[support_type] *= support_value
 
-	if(attachment_stats["mana_cost_multiplier"])
-		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
-	else
-		attachment_stats["mana_cost_multiplier"] = W.wand_mana_multiplier
-
 	if(attachment_stats["mana_cost_multiplier"] < 0.25)
 		attachment_stats["mana_cost_multiplier"] = 0.25
 

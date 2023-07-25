@@ -46,7 +46,6 @@
 	var/mob/abstract/observer/menu/O = new(desired_loc,src)
 	INITIALIZE(O)
 	FINALIZE(O)
-	GENERATE(O)
 
 	return TRUE
 
