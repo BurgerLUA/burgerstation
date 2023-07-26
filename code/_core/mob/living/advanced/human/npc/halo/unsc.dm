@@ -11,16 +11,15 @@
 	level = 8
 
 	var/list/possible_outfits = list(
-		/loadout/unsc/marine/marine_rifleman = 70
-		//loadout/slavic/sniper = 20,
-		//loadout/slavic/heavy = 10
-
+		/loadout/unsc/marine/marine_rifleman = 70,
+		/loadout/unsc/marine/marine_marksman = 20,
+		/loadout/unsc/marine/marine_machinegunner = 10,
 	)
 
 	var/loadout_to_level = list(
-		/loadout/unsc/marine/marine_rifleman = 1
-		//loadout/slavic/sniper = 1.25,
-		//loadout/slavic/heavy = 1.25
+		/loadout/unsc/marine/marine_rifleman = 1,
+		/loadout/unsc/marine/marine_marksman = 1.25,
+		/loadout/unsc/marine/marine_machinegunner = 1.25,
 	)
 
 /mob/living/advanced/npc/unsc/Initialize()

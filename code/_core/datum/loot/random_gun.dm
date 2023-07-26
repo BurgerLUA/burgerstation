@@ -136,3 +136,13 @@
 	value_max = 1000
 	rarity_min = RARITY_COMMON
 	rarity_max = RARITY_COMMON
+
+//halo
+/loot/random/gun/unsc
+	company_type = "UNSC"
+
+/loot/random/gun/urf
+	company_type = "United Rebel Front"
+
+/loot/random/gun/covenant
+	company_type = "Covenant"

@@ -4,7 +4,7 @@
 	icon_state = "gundrobe"
 
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m41,
+		/obj/item/weapon/ranged/bullet/magazine/revolver/rocket/halo/m41,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m739,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/srs,
 
@@ -23,20 +23,20 @@
 	icon_state = "gundrobe"
 
 	stored_types = list(
-		/obj/item/weapon/ranged/bullet/revolver/halo/acl55,
+		/obj/item/weapon/ranged/bullet/revolver/rocket/halo/acl55,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/cal30,
 		/obj/item/weapon/ranged/energy/halo/cov_pistol/insurrection,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/srs/insurrection,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/srs,
 
-		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/insurrection,
-		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m395/insurrection,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma3,
+		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m395,
 
 		/obj/item/weapon/ranged/bullet/pump/shotgun/halo/m45,
 		/obj/item/weapon/ranged/bullet/revolver/halo/handcannon,
 
 
 		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2,
-		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection
+		/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7
 	)
 
 /obj/structure/interactive/vending/security/ammo/halo/odst
@@ -83,7 +83,7 @@
 		/obj/item/magazine/halo/magnum_police,
 		/obj/item/magazine/halo/m7,
 
-		/obj/item/magazine/halo/ma5b,
+		/obj/item/magazine/halo/ma3,
 		/obj/item/magazine/halo/m395
 	)
 

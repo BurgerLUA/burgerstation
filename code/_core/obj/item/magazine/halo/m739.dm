@@ -10,7 +10,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m739 = TRUE,
 	)
 
+
 	ammo = /obj/item/bullet_cartridge/rifle_223/nato
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_223/nato/surplus
 
 	bullet_length_min = 40
 	bullet_length_best = 45
@@ -20,8 +22,8 @@
 	bullet_diameter_best = 5.56
 	bullet_diameter_max = 5.6
 
-	size = SIZE_4
+	size = SIZE_3
 
 	icon_states = 1
 
-	value = 80
+	value = 20

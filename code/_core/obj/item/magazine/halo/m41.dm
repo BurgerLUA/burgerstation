@@ -7,7 +7,7 @@
 	bullet_count_max = 2
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m41 = TRUE
+		/obj/item/weapon/ranged/bullet/magazine/revolver/rocket/halo/m41 = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/halo/spnkr

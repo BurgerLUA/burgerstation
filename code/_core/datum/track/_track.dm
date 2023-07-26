@@ -320,3 +320,24 @@
 	name = "Canman"
 	path = 'sound/music/Canman.ogg'
 	length = 2*60 + 55
+
+//halo
+/track/halo //Menu Music
+	name = "Halo 3 Theme"
+	path = 'sound/music/halo/halo3theme.ogg'
+	length = 3*18 + 30
+
+/track/halo2 //Menu Music
+	name = "The Rookie"
+	path = 'sound/music/halo/therookie.ogg'
+	length = 4*49 + 30
+
+/track/halo3 //Menu Music
+	name = "NMPDHQ"
+	path = 'sound/music/halo/NMPDHQ.ogg'
+	length = 1*61 + 30
+
+/track/halo4 //Menu Music
+	name = "Halo 2 Theme"
+	path = 'sound/music/halo/halo2theme.ogg'
+	length = 3*47 + 30

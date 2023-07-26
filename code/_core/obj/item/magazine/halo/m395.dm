@@ -11,7 +11,9 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/m395/insurrection = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/revolver_762
+	ammo = /obj/item/bullet_cartridge/rifle_308/nato
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_308/nato/surplus
+
 
 	bullet_length_min = 36
 	bullet_length_best = 38

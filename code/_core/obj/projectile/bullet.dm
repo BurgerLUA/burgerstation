@@ -162,3 +162,21 @@
 	name = "bullet"
 	icon = 'icons/obj/projectiles/flintlock.dmi'
 	icon_state = "iron"
+
+//halo
+/obj/projectile/bullet/needler
+	name = "bolt"
+	icon = 'icons/obj/projectiles/halo/bolt.dmi'
+	icon_state = "needler"
+
+/obj/projectile/bullet/rocket_fuelrod
+	name = "fuelrod"
+	icon = 'icons/obj/projectiles/halo/fuelrod.dmi'
+	icon_state = "rocket_cov"
+	hit_target_turf = TRUE
+
+/obj/projectile/bullet/rocket_fuelrod/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+	. = ..()
+	if(. && old_loc)
+		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 5)
+

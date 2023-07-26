@@ -1,20 +1,22 @@
 /obj/item/bullet_cartridge/halo/needle
 	name = "needle"
-	desc = "What makes ME a good demoman?"
-	desc_extended = "The M25 antipersonnel rocket is a special warfare munition capable of being fired from the ACL-55."
-	rarity = RARITY_UNCOMMON
+	desc = "Looks sharp"
+	desc_extended = "Mean little energy needle."
 	icon = 'icons/obj/item/bullet/needle.dmi'
 
 
+	bullet_diameter = 13
+	bullet_length = 52
+	bullet_color = COLOR_GREEN
 
+	amount_max = 3
+	amount_max_icon = 3
 
-	bullet_diameter = 9
-	bullet_length = 33
-
-	//projectile = /obj/projectile/bullet/needler
-	//damage_type_bullet = /damagetype/ranged/bullet/crossbow_bolt
+	projectile = /obj/projectile/bullet/needler
+	damage_type_bullet = /damagetype/ranged/laser/pulse
 
 	projectile_speed = BULLET_SPEED_PISTOL_LIGHT
 
-	size = 0.06
-	value = 2
+	size = 0.1
+
+	value = 1 //Dummy value.

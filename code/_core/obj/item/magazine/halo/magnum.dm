@@ -18,7 +18,8 @@
 	bullet_diameter_best = 11.43
 	bullet_diameter_max = 12
 
-	ammo = /obj/item/bullet_cartridge/pistol_45
+	ammo = /obj/item/bullet_cartridge/pistol_10mm
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_10mm/surplus
 
 	size = SIZE_1
 
@@ -38,7 +39,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_2 = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/pistol_10mm/ap
+	ammo = /obj/item/bullet_cartridge/pistol_10mm
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_10mm/surplus
 
 	bullet_length_min = 25
 	bullet_length_best = 32
@@ -66,7 +68,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/pistol/halo/magnum_3 = TRUE
 	)
 
-	ammo = /obj/item/bullet_cartridge/pistol_10mm/ap
+	ammo = /obj/item/bullet_cartridge/pistol_10mm
+	ammo_surplus = /obj/item/bullet_cartridge/pistol_10mm/surplus
 
 	bullet_length_min = 25
 	bullet_length_best = 32

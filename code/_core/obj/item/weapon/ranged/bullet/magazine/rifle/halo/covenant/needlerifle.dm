@@ -3,11 +3,20 @@
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
 	desc_extended = "A unique combination of the Type-33 and Type-51."
 	icon = 'icons/obj/item/weapons/ranged/rifle/halo/needlerifle.dmi'
-	value = 1000
+	icon_state = "inventory"
+	value = 2200
 
-	shoot_delay = 3
+	company_type = "Covenant"
 
-	automatic = TRUE
+	tier_type = "marksman rifle"
+
+	tier = 1
+
+	damage_mod = 1.4
+
+	shoot_delay = 5.5
+
+	automatic = FALSE
 
 	shoot_sounds = list(
 	'sound/weapons/halo/covenant/needle_rifle_fire1.wav',
@@ -16,79 +25,67 @@
 
 	can_wield = TRUE
 
-
-
-	zoom_mul = 1
-
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-
 	size = SIZE_4
-	weight = 20
+	weight = 14
 
+	heat_max = 0.06
 
-	heat_max = 0.08
+	bullet_length_min = 46
+	bullet_length_best = 51
+	bullet_length_max = 52
 
-	bullet_length_min = 31
-	bullet_length_best = 33
-	bullet_length_max = 34
+	bullet_diameter_min = 7.6
+	bullet_diameter_best = 7.62
+	bullet_diameter_max = 7.7
 
-	bullet_diameter_min = 8
-	bullet_diameter_best = 9
-	bullet_diameter_max = 10
-
-	ai_heat_sensitivity = 0.75
+	ai_heat_sensitivity = 1.5
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/charger = FALSE,
-		/obj/item/attachment/barrel/compensator = FALSE,
-		/obj/item/attachment/barrel/extended = FALSE,
-		/obj/item/attachment/barrel/gyro = FALSE,
+		/obj/item/attachment/barrel/charger = TRUE,
+		/obj/item/attachment/barrel/charger/advanced = TRUE,
+		/obj/item/attachment/barrel/compensator = TRUE,
+		/obj/item/attachment/barrel/extended = TRUE,
+		/obj/item/attachment/barrel/gyro = TRUE,
 		/obj/item/attachment/barrel/laser_charger = FALSE,
-		/obj/item/attachment/barrel/laser_charger/advanced = FALSE,
-		/obj/item/attachment/barrel/suppressor = FALSE,
+		/obj/item/attachment/barrel/suppressor = TRUE,
+		/obj/item/attachment/barrel_mod/reinforced_barrel = TRUE,
+		/obj/item/attachment/stock_mod/reinforced_stock = TRUE,
 
-		/obj/item/attachment/sight/laser_sight = FALSE,
-		/obj/item/attachment/sight/quickfire_adapter = FALSE,
-		/obj/item/attachment/sight/red_dot = FALSE,
-		/obj/item/attachment/sight/scope = FALSE,
-		/obj/item/attachment/sight/scope/large = FALSE,
-		/obj/item/attachment/sight/targeting_computer = FALSE,
+		/obj/item/attachment/sight/laser_sight = TRUE,
+		/obj/item/attachment/sight/quickfire_adapter = TRUE,
+		/obj/item/attachment/sight/red_dot = TRUE,
+		/obj/item/attachment/sight/scope = TRUE,
+		/obj/item/attachment/sight/scope/large = TRUE,
+		/obj/item/attachment/sight/targeting_computer = TRUE,
 
 
 
-		/obj/item/attachment/undermount/angled_grip = FALSE,
-		/obj/item/attachment/undermount/bipod = FALSE,
+		/obj/item/attachment/undermount/angled_grip = TRUE,
+		/obj/item/attachment/undermount/bipod = TRUE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = FALSE
+		/obj/item/attachment/undermount/vertical_grip = TRUE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = TRUE
 	)
 
 	attachment_barrel_offset_x = 32 - 16
 	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 22 - 16
-	attachment_sight_offset_y = 22 - 16
+	attachment_sight_offset_x = 16 - 16
+	attachment_sight_offset_y = 20 - 16
 
-	attachment_undermount_offset_x = 24 - 16
-	attachment_undermount_offset_y = 14 - 16
+	attachment_undermount_offset_x = 26 - 16
+	attachment_undermount_offset_y = 17 - 16
 
+	movement_spread_base = 0.02
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 1
 
+	dan_mode = TRUE
+
+	rarity = RARITY_UNCOMMON
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/halo/covenant/needlerifle/get_static_spread()
-	if(!wielded) return 0.005
-	return 0.001
+	return 0.0001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/halo/covenant/needlerifle/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.002 - (0.004 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/halo/covenant/needlerifle/get_bullet_inaccuracy(var/mob/living/L,var/atom/target,var/obj/projectile/P,var/inaccuracy_modifier)
-
-	var/distance = get_dist(L,target)
-
-	if(distance <= 3)
-		return TILE_SIZE*0.5 //No using snipers at close range.
-
-	if(distance <= VIEW_RANGE*0.5)
-		return max(0,1 - L.get_skill_power(SKILL_PRECISION)) * ((VIEW_RANGE*0.5)/get_dist(L,target)) * TILE_SIZE*0.5
-
-	return max(0,1 - L.get_skill_power(SKILL_PRECISION))*(0.1+0.9*(get_dist(L,target) - VIEW_RANGE*0.5)) * (L.client && L.client.is_zoomed ? 0.25 : 1)
+	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))

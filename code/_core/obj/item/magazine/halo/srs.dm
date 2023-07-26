@@ -15,11 +15,11 @@
 	bullet_diameter_max = 13
 
 	weapon_whitelist = list(
-		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/srs/insurrection = TRUE,
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/srs = TRUE
 	)
 
 	ammo = /obj/item/bullet_cartridge/sniper_50
+	ammo_surplus = /obj/item/bullet_cartridge/sniper_50/surplus
 
 	size = SIZE_2
 

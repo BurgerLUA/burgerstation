@@ -3,16 +3,18 @@
 	desc = "Space age technology calls for space age guns. This should easily rip someone a new hole."
 	desc_extended = "Standard-issue service rifle of the UNSC Marines. Has an inbuilt underbarrel flashlight. Takes 7.62mm calibre magazines."
 	icon = 'icons/obj/item/weapons/ranged/rifle/halo/ma5b.dmi'
-	value = 150
+	icon_state = "inventory"
+	value = 1100
 
-	shoot_delay = 1.5
+	company_type = "UNSC"
+
+	tier = 1
+
+	shoot_delay = 1.8
 
 	automatic = TRUE
 
-	icon_state_worn = "worn"
-
-	worn_layer = LAYER_MOB_CLOTHING_BACK
-	slot_icons = TRUE
+	firemodes = list("automatic","semi-automatic")
 
 	shoot_sounds = list(
 	'sound/weapons/halo/unsc/assault_rifle/19103_b.wav',
@@ -21,32 +23,31 @@
 
 	can_wield = TRUE
 
-
-
 	size = SIZE_4
-	weight = 20
+	weight = 13
 
+	heat_max = 0.05
 
-	heat_max = 0.08
+	bullet_length_min = 40
+	bullet_length_best = 45
+	bullet_length_max = 46
 
-	bullet_length_min = 36
-	bullet_length_best = 38
-	bullet_length_max = 40
+	bullet_diameter_min = 5.5
+	bullet_diameter_best = 5.56
+	bullet_diameter_max = 5.6
 
-	bullet_diameter_min = 7.6
-	bullet_diameter_best = 7.62
-	bullet_diameter_max = 7.7
-
-	ai_heat_sensitivity = 0.75
+	ai_heat_sensitivity = 0.5
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
+		/obj/item/attachment/barrel/charger/advanced = FALSE,
 		/obj/item/attachment/barrel/compensator = FALSE,
 		/obj/item/attachment/barrel/extended = FALSE,
 		/obj/item/attachment/barrel/gyro = FALSE,
 		/obj/item/attachment/barrel/laser_charger = FALSE,
-		/obj/item/attachment/barrel/laser_charger/advanced = FALSE,
 		/obj/item/attachment/barrel/suppressor = FALSE,
+		/obj/item/attachment/barrel_mod/reinforced_barrel = FALSE,
+		/obj/item/attachment/stock_mod/reinforced_stock = FALSE,
 
 		/obj/item/attachment/sight/laser_sight = FALSE,
 		/obj/item/attachment/sight/quickfire_adapter = FALSE,
@@ -60,33 +61,30 @@
 		/obj/item/attachment/undermount/angled_grip = FALSE,
 		/obj/item/attachment/undermount/bipod = FALSE,
 		/obj/item/attachment/undermount/burst_adapter = FALSE,
-		/obj/item/attachment/undermount/vertical_grip = FALSE
+		/obj/item/attachment/undermount/vertical_grip = FALSE,
+		/obj/item/attachment/undermount/gun/grenade_launcher = FALSE
 	)
 
-	attachment_barrel_offset_x = 32 - 16
+	attachment_barrel_offset_x = 31 - 16
 	attachment_barrel_offset_y = 19 - 16
 
-	attachment_sight_offset_x = 22 - 16
-	attachment_sight_offset_y = 22 - 16
+	attachment_sight_offset_x = 15 - 16
+	attachment_sight_offset_y = 21 - 16
 
-	attachment_undermount_offset_x = 24 - 16
-	attachment_undermount_offset_y = 14 - 16
+	attachment_undermount_offset_x = 25 - 16
+	attachment_undermount_offset_y = 17 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+	dan_mode = TRUE
+
+	inaccuracy_modifier = 0.25
+	movement_inaccuracy_modifier = 0.75
+	movement_spread_base = 0.02
+
+	rarity = RARITY_COMMON
+
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/get_static_spread()
-	if(!wielded) return 0.2
 	return 0.001
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.02 - (0.06 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/insurrection
-
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
-
-/obj/item/weapon/ranged/bullet/magazine/rifle/halo/ma5b/commando
-	name = "\improper MA5D Assault Rifle"
-	shoot_delay = 0.8
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	return max(0,0.01 - (0.04 * L.get_skill_power(SKILL_RANGED)))

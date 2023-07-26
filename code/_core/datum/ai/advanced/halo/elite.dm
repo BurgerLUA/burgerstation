@@ -1,8 +1,14 @@
 /ai/advanced/halo/elite
 	enemy_tags = list("NanoTrasen","Syndicate")
 	should_find_weapon = TRUE
-	roaming_distance = 8
-	aggression = 2
-	assistance = 1
+	aggression = 1
+	retaliate = TRUE
 
-	var/language_to_use = LANGUAGE_BASIC
+
+
+
+/ai/advanced/halo/elite/stress_test
+
+/ai/advanced/halo/elite/stress_test/handle_movement()
+	owner.move_dir = pick(DIRECTIONS_ALL)
+	return TRUE

@@ -10,7 +10,8 @@
 		/obj/item/weapon/ranged/bullet/magazine/rifle/halo/br55 = TRUE,
 	)
 
-	ammo = /obj/item/bullet_cartridge/revolver_762
+	ammo = /obj/item/bullet_cartridge/rifle_223/nato
+	ammo_surplus = /obj/item/bullet_cartridge/rifle_223/nato/surplus
 
 	bullet_length_min = 36
 	bullet_length_best = 38

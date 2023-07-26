@@ -25,3 +25,4 @@
 	icon_states = 5
 
 	value = 2
+

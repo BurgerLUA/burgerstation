@@ -3,8 +3,14 @@
 	desc = "Precision in the palms of your hands."
 	desc_extended = "The M7/Caseless Submachine Gun is a fully automatic close quarters infantry and special operations weapon. Takes 5mm calibre magazines."
 	icon = 'icons/obj/item/weapons/ranged/smg/halo/m7.dmi'
+	icon_state = "inventory"
+	value = 1600
 
-	shoot_delay = 1.5
+	company_type = "UNSC"
+
+	tier = 2
+
+	shoot_delay = 1.3
 
 	automatic = TRUE
 
@@ -14,25 +20,22 @@
 	'sound/weapons/halo/unsc/m7/m7_fire3.wav'
 	)
 
-	can_wield = FALSE
+	firemodes = list("automatic","burst","semi-automatic")
 
+	can_wield = TRUE
 
+	size = SIZE_3
+	weight = 8
 
-	size = SIZE_2
-	weight = 5
+	heat_max = 0.07
 
+	bullet_length_min = 20
+	bullet_length_best = 23
+	bullet_length_max = 24
 
-	heat_max = 0.03
-
-	bullet_length_min = 25
-	bullet_length_best = 32
-	bullet_length_max = 33
-
-	bullet_diameter_min = 10
-	bullet_diameter_best = 10.17
-	bullet_diameter_max = 11
-
-	value = 100
+	bullet_diameter_min = 11
+	bullet_diameter_best = 11.43
+	bullet_diameter_max = 12
 
 	ai_heat_sensitivity = 0.5
 
@@ -42,8 +45,9 @@
 		/obj/item/attachment/barrel/extended = FALSE,
 		/obj/item/attachment/barrel/gyro = FALSE,
 		/obj/item/attachment/barrel/laser_charger = FALSE,
-		/obj/item/attachment/barrel/laser_charger/advanced = FALSE,
 		/obj/item/attachment/barrel/suppressor = FALSE,
+		/obj/item/attachment/barrel_mod/reinforced_barrel = FALSE,
+		/obj/item/attachment/stock_mod/reinforced_stock = FALSE,
 
 		/obj/item/attachment/sight/laser_sight = FALSE,
 		/obj/item/attachment/sight/quickfire_adapter = FALSE,
@@ -60,23 +64,24 @@
 		/obj/item/attachment/undermount/vertical_grip = FALSE
 	)
 
-	attachment_barrel_offset_x = 29 - 16
-	attachment_barrel_offset_y = 19 - 16
+	attachment_barrel_offset_x = 30 - 16
+	attachment_barrel_offset_y = 18 - 16
 
-	attachment_sight_offset_x = 14 - 16
-	attachment_sight_offset_y = 20 - 16
+	attachment_sight_offset_x = 17 - 16
+	attachment_sight_offset_y = 19 - 16
 
-	attachment_undermount_offset_x = 25 - 16
-	attachment_undermount_offset_y = 17 - 16
+	attachment_undermount_offset_x = 27 - 16
+	attachment_undermount_offset_y = 16 - 16
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/nanotrasen
+	inaccuracy_modifier = 0.5
+	movement_inaccuracy_modifier = 0.25
+	movement_spread_base = 0.015
+
+	rarity = RARITY_UNCOMMON
+
 
 /obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/get_static_spread()
 	return 0.005
 
 /obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/get_skill_spread(var/mob/living/L)
-	if(!heat_current) return 0
-	return max(0,0.04 - (0.06 * L.get_skill_power(SKILL_RANGED)))
-
-/obj/item/weapon/ranged/bullet/magazine/smg/halo/m7/insurrection
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))

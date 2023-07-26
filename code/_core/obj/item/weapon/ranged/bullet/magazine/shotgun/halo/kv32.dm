@@ -1,9 +1,12 @@
 /obj/item/weapon/ranged/bullet/magazine/shotgun/halo/kv32
 	name = "\improper KV-32 automatic shotgun"
 	desc = "A spooky gun produced on backwater colonies."
-	desc_extended = "A very deadful weapon in arms of good soldier. Despite the small magazine and shitty accuracy - this shotgun have a very big firerate, which allows you to shoot 4 times in once."
+	desc_extended = "A very dreadful weapon in arms of a good soldier. Despite the small magazine and shitty accuracy - this shotgun has a very fast firerate."
 	icon = 'icons/obj/item/weapons/ranged/shotgun/kv32.dmi'
-	value = 1000
+	icon_state = "inventory"
+	value = 2900
+
+	company_type = "United Rebel Front"
 
 	shoot_delay = 0.5
 
@@ -63,7 +66,7 @@
 	attachment_undermount_offset_x = 23 - 12
 	attachment_undermount_offset_y = 12 - 13
 
-	firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
+	//firing_pin = /obj/item/firing_pin/electronic/iff/syndicate
 
 /obj/item/weapon/ranged/bullet/magazine/shotgun/halo/kv32/get_base_spread()
 	return 0.3
