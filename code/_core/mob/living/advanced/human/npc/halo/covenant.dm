@@ -2,7 +2,7 @@
 	name = "\improper Grunt"
 	desc = "Little people first!"
 	desc_extended = "Short cowardly little creature..."
-
+	species = "unga"
 	dialogue_id = /dialogue/npc/soldier/
 	//loadout = /loadout/unsc/marine/marine_rifleman
 	ai = /ai/advanced/halo/unggoy
@@ -36,7 +36,7 @@
 	name = "\improper Jackal"
 	desc = "Bird man."
 	desc_extended = "Shoots better than the little ones..."
-
+	species = "Kigyar"
 	dialogue_id = /dialogue/npc/soldier/
 	//loadout = /loadout/unsc/marine/marine_rifleman
 	ai = /ai/advanced/halo/kigyar
