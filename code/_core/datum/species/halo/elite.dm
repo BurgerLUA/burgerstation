@@ -49,3 +49,7 @@
 		BODY_KIDNEYS = /obj/item/organ/internal/kidneys
 
 	)
+
+	valid_blood_types = list(
+		/reagent/blood/sangheili
+	)

@@ -6,7 +6,7 @@
 	dialogue_id = /dialogue/npc/soldier/
 	//loadout = /loadout/unsc/marine/marine_rifleman
 	ai = /ai/advanced/halo/unggoy
-
+	blood_type = /reagent/blood/unggoy
 	level = 8
 
 	var/list/possible_outfits = list(
@@ -40,7 +40,7 @@
 	dialogue_id = /dialogue/npc/soldier/
 	//loadout = /loadout/unsc/marine/marine_rifleman
 	ai = /ai/advanced/halo/kigyar
-
+	blood_type = /reagent/blood/kigyar
 	level = 8
 
 	var/list/possible_outfits = list(

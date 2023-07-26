@@ -372,3 +372,36 @@
 	)
 
 	color = "#932B1C"
+
+/reagent/blood/kigyar
+	name = "Kigyar Blood"
+
+	compatible_blood = list(
+		/reagent/blood/human/o_negative = TRUE,
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
+	)
+
+	color = "#644eff"
+
+/reagent/blood/unggoy
+	name = "Unggoy Blood"
+
+	compatible_blood = list(
+		/reagent/blood/human/o_negative = TRUE,
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
+	)
+
+	color = "#4ee1ff"
+
+/reagent/blood/sangheili
+	name = "Sangheili Blood"
+
+	compatible_blood = list(
+		/reagent/blood/human/o_negative = TRUE,
+		/reagent/blood/human/o_positive = TRUE,
+		/reagent/blood/ancient = TRUE
+	)
+
+	color = "#683fff"
