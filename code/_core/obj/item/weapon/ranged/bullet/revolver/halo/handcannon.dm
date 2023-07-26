@@ -21,7 +21,7 @@
 
 	size = SIZE_3
 	weight = 12
-
+	dan_mode = FALSE
 	bullet_length_min = 66
 	bullet_length_best = 67
 	bullet_length_max = 67

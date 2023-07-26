@@ -23,7 +23,7 @@
 
 	override_icon_state = TRUE
 	override_icon_state_held = FALSE //TODO: FIX THIS
-
+	dan_mode = FALSE
 	charge_cost = CELL_SIZE_BASIC / 60
 
 	shoot_sounds = list(

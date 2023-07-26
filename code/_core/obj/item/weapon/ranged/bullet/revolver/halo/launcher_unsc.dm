@@ -25,7 +25,7 @@
 
 
 	can_wield = TRUE
-
+	dan_mode = FALSE
 	size = SIZE_5
 	weight = 16
 

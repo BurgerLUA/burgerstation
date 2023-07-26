@@ -16,7 +16,7 @@
 	movement_spread_base = 0.003
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.0125
-
+	dan_mode = FALSE
 	shoot_sounds = list(
 	'sound/weapons/halo/unsc/m6c_socom/m6c_fire1.ogg',
 	'sound/weapons/halo/unsc/m6c_socom/m6c_fire2.ogg',
@@ -93,7 +93,7 @@
 	shoot_delay = 2.8
 
 	automatic = FALSE
-
+	dan_mode = FALSE
 	movement_spread_base = 0.003
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.0125
@@ -176,7 +176,7 @@
 	shoot_delay = 2.8
 
 	automatic = FALSE
-
+	dan_mode = FALSE
 	movement_spread_base = 0.003
 	inaccuracy_modifier = 0.5
 	movement_inaccuracy_modifier = 0.0125

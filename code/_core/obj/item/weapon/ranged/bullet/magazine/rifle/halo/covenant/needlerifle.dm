@@ -80,7 +80,7 @@
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 1
 
-	dan_mode = TRUE
+	dan_mode = FALSE
 
 	rarity = RARITY_UNCOMMON
 

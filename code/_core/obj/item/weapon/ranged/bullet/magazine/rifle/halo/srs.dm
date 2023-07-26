@@ -92,7 +92,7 @@
 	attachment_stock_offset_x = 48 - 16
 	attachment_stock_offset_y = 16 - 16
 
-	dan_mode = TRUE
+	dan_mode = FALSE
 
 	rarity = RARITY_RARE
 

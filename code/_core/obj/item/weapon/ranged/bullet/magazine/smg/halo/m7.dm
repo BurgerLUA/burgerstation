@@ -23,7 +23,7 @@
 	firemodes = list("automatic","burst","semi-automatic")
 
 	can_wield = TRUE
-
+	dan_mode = FALSE
 	size = SIZE_3
 	weight = 8
 

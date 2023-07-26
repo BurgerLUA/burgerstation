@@ -43,7 +43,7 @@
 	movement_spread_base = 1
 
 	uses_until_condition_fall = 0
-
+	dan_mode = FALSE
 	rarity = RARITY_RARE
 
 /obj/item/weapon/ranged/bullet/magazine/rocket/halo/m41/update_icon()

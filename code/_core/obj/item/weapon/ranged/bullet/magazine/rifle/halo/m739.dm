@@ -44,7 +44,7 @@
 
 	ai_heat_sensitivity = 0.1
 
-	dan_mode = TRUE
+	dan_mode = FALSE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,

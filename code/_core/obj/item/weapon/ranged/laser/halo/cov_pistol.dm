@@ -18,7 +18,7 @@
 	shoot_delay = 3
 
 	automatic = FALSE
-
+	dan_mode = FALSE
 	shoot_sounds = list('sound/weapons/halo/covenant/haloplasmapistol.ogg')
 
 	charge_cost = CELL_SIZE_BASIC / 80

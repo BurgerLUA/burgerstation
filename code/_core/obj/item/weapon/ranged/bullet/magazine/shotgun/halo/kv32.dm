@@ -15,7 +15,7 @@
 	shoot_sounds = list('sound/weapons/ranged/shotgun/bulldog/shoot.ogg')
 
 	can_wield = TRUE
-
+	dan_mode = FALSE
 
 
 	size = SIZE_3

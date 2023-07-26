@@ -17,7 +17,7 @@
 
 	projectile_speed = TILE_SIZE - 1
 	shoot_delay = 3
-
+	dan_mode = FALSE
 	automatic = TRUE
 
 	override_icon_state = TRUE

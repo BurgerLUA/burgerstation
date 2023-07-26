@@ -74,7 +74,7 @@
 	attachment_undermount_offset_x = 25 - 16
 	attachment_undermount_offset_y = 17 - 16
 
-	dan_mode = TRUE
+	dan_mode = FALSE
 
 	inaccuracy_modifier = 0.25
 	movement_inaccuracy_modifier = 0.75

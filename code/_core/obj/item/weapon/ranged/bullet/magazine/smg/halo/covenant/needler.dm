@@ -21,7 +21,7 @@
 	'sound/weapons/halo/covenant/needlefire13.wav')
 
 	can_wield = FALSE
-
+	dan_mode = FALSE
 	size = SIZE_2
 	weight = 8
 

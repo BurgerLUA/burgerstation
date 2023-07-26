@@ -29,7 +29,7 @@
 	weight = 16
 
 	zoom_mul = 2
-
+	dan_mode = FALSE
 	bullet_length_min = 750
 	bullet_length_best = 800
 	bullet_length_max = 850

@@ -36,7 +36,7 @@
 	bullet_diameter_best = 18.5
 	bullet_diameter_max = 19
 
-	dan_mode = TRUE
+	dan_mode = FALSE
 
 	attachment_whitelist = list(
 		/obj/item/attachment/barrel/charger = FALSE,
