@@ -33,3 +33,6 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/syndicate)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/syndicate)
+
+/mob/living/advanced/npc/urf/lobby
+	var/active = TRUE

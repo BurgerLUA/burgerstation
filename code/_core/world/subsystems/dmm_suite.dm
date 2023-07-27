@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		),
 		"maps/_core/mission.dmm",
 		"maps/_core/bluespace.dmm",
-		"maps/_core/station.dmm"
+		"maps/_core/odst_ship.dmm"
 	)
 
 	var/list/map_to_parallax = list(
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/list/map_to_final_destruction_turf = list(
 		"maps/_core/mission.dmm" = /turf/simulated/openspace,
 		"maps/_core/bluespace.dmm" = /turf/bluespace,
-		"maps/_core/station.dmm" =  null
+		"maps/_core/odst_ship.dmm" =  null
 	)
 
 	var/pvp_y

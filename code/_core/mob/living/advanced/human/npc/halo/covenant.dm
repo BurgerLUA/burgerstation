@@ -65,3 +65,9 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/covenant)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/covenant)
+
+/mob/living/advanced/npc/unggoy/lobby
+	var/active = TRUE
+
+/mob/living/advanced/npc/kigyar/lobby
+	var/active = TRUE

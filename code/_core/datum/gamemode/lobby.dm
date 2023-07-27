@@ -12,7 +12,7 @@
 /gamemode/lobby/on_life()
 
 	if(state == GAMEMODE_WAITING && round_time_next > 0 && round_time >= round_time_next)
-		SSvote.create_vote(/vote/mission)
+		SSvote.create_vote(/vote/gamemode)
 		round_time_next = -1
 
 	. = ..()

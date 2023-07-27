@@ -253,10 +253,10 @@
 		return 0
 	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
 
-/obj/item/get_base_value()
-	. = initial(value) * amount * price_multiplier
-	if(quality != -1)
-		. *= (0.5 + 0.5*clamp(quality/100,0.25,1.5))
+//obj/item/get_base_value()
+//	. = initial(value) * amount * price_multiplier
+//	if(quality != -1)
+//		. *= (0.5 + 0.5*clamp(quality/100,0.25,1.5))
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)

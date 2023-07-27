@@ -32,3 +32,6 @@
 	. = ..()
 	src.add_organ(/obj/item/organ/internal/implant/hand/left/iff/nanotrasen)
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
+
+/mob/living/advanced/npc/unsc/lobby
+	var/active = TRUE

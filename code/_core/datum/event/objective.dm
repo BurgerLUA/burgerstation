@@ -6,8 +6,8 @@
 	occurances_max = 2
 
 	var/list/possible_objectives = list(
-		/objective/artifact = 100,
-		/objective/kill_boss = 25
+		//objective/artifact = 100,
+		//objective/kill_boss = 25
 	)
 
 /event/objective/on_start()

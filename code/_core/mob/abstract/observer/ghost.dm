@@ -4,9 +4,11 @@
 	anchored = FALSE
 
 	spawning_buttons = list(
-		/obj/hud/button/new_character,
-		/obj/hud/button/load_character,
+//		/obj/hud/button/new_character,
+//		/obj/hud/button/load_character,
 		/obj/hud/button/become_antag,
+		/obj/hud/button/become_covenant,
+		/obj/hud/button/become_nt,
 		/obj/hud/button/teleport_to_player
 	)
 

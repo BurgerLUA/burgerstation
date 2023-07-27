@@ -5,10 +5,14 @@
 
 	flags_hud = FLAG_HUD_MOB
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
 /obj/hud/button/menu/title
-	name = "Burgerstation 13"
+	name = "Halo: Winter Contingency"
 	icon_state = "title"
 	screen_loc = "LEFT+1,CENTER+2"
+
+var/global/list/join_buttons = list()
 
 /obj/hud/button/menu/selection
 	var/command_to_run
@@ -20,10 +24,28 @@
 	if(. && caller.client && command_to_run)
 		winset(caller.client,null,"command=[command_to_run]")
 
+	return .
 
 /obj/hud/button/menu/selection/New(var/desired_loc)
+	var/static/list/bigchungus = list("become-unsc" = TEAM_UNSC, "become-insurrection" = TEAM_URF, "become-covenant" = TEAM_COVENANT)
+	var/chungus = command_to_run ? bigchungus[command_to_run] : null
+	var/gamemode/chungusmode = SSgamemode.active_gamemode
+	if(chungus && chungusmode && isnull(chungusmode.team_points[chungus]))
+		qdel(src)
+		return
+	else if(command_to_run)
+		if(!join_buttons[command_to_run])
+			join_buttons[command_to_run] = list()
+		join_buttons[command_to_run] += src
 	color = null
 	return ..()
+
+/obj/hud/button/menu/selection/Destroy()
+	. = ..()
+	if(command_to_run && join_buttons[command_to_run])
+		join_buttons[command_to_run] -= src
+		if(!length(join_buttons[command_to_run]))
+			join_buttons[command_to_run] = null
 
 /obj/hud/button/menu/selection/MouseEntered(location,control,params)
 	color = "#FFB200"
@@ -34,31 +56,25 @@
 	return ..()
 
 /obj/hud/button/menu/selection/character_new
-	name = "Join as New Character"
-	desc_extended = "Click here to create a new character and join the current round."
+	name = "Join as UNSC"
 	icon_state = "new"
 	screen_loc = "LEFT+1,CENTER+1"
-	command_to_run = "new-character"
-
-/obj/hud/button/menu/selection/character_load
-	name = "Join as Existing Character"
-	desc_extended = "Click here to load an existing character and join the current round."
-	icon_state = "load"
-	screen_loc = "LEFT+1,CENTER-0"
-	command_to_run = "load-character"
-
+	command_to_run = "become-unsc"
 
 /obj/hud/button/menu/selection/join_antagonist
-	name = "Join as Antagonist"
-	desc_extended = "Click here to become an antagonist, if possible. Antagonists can spawn near the end of the round after the mission. Requires an antagonist token."
+	name = "Join as Insurrection"
 	icon_state = "antag"
-	screen_loc = "LEFT+1,CENTER-1"
-	command_to_run = "become-antagonist"
+	screen_loc = "LEFT+1,CENTER-0"
+	command_to_run = "become-insurrection"
 
+/obj/hud/button/menu/selection/join_covenant
+	name = "Join as Covenant"
+	icon_state = "cov"
+	screen_loc = "LEFT+1,CENTER-1"
+	command_to_run = "become-covenant"
 
 /obj/hud/button/menu/selection/observe
 	name = "Observe"
-	desc_extended = "Click here to observe the current round as a ghost. You can still rejoin the round as a living character after observing."
 	icon_state = "observe"
 	screen_loc = "LEFT+1,CENTER-2"
 	command_to_run = "observe"
@@ -66,7 +82,6 @@
 
 /obj/hud/button/menu/selection/macros
 	name = "Macros"
-	desc_extended = "Click here to edit your current controls and macros. These controls will be exclusive to this server."
 	icon_state = "macros"
 	screen_loc = "LEFT+1,CENTER-3"
 	command_to_run = "edit-macros"

@@ -1,13 +1,14 @@
-/obj/hud/button/new_character/
+/*/obj/hud/button/new_character/
 	name = "create a new character"
 	desc = ""
-	desc_extended = "Click here to create a new character."
 	icon_state = "new_character"
-	screen_loc = "CENTER-0.5,BOTTOM:12"
+	screen_loc = "CENTER-0.5,BOTTOM"
 
 	flags_hud = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -18,24 +19,26 @@
 			caller.to_chat(span("notice","You cannot create a new character while your character is currently loaded!"))
 			return TRUE
 
-		if(world_state < STATE_RUNNING)
+		if(world_state != STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
 		var/mob/abstract/observer/O = caller
 		O.new_character()
 
+	return .*/
 
-/obj/hud/button/load_character/
+/*/obj/hud/button/load_character/
 	name = "load an existing character"
 	desc = ""
-	desc_extended = "Click here to load an existing character."
 	icon_state = "load_character"
-	screen_loc = "CENTER+0.5,BOTTOM:12"
+	screen_loc = "CENTER+0.5,BOTTOM"
 
 	flags_hud = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -45,27 +48,32 @@
 		if(!is_observer(caller))
 			caller.to_chat(span("notice","You cannot load a new character while your character is currently loaded!"))
 			return TRUE
-		if(world_state < STATE_RUNNING)
+		if(world_state != STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
-			return TRUE
-		if(!allow_loading)
-			caller.to_chat(span("danger","Cannot load your character currently as the server is undergoing a cleaning process."))
 			return TRUE
 
 		var/mob/abstract/observer/O = caller
 		O.load_character()
 
+	return .*/
 
 /obj/hud/button/become_antag/
-	name = "become antagonist"
-	desc = "Help maint."
-	desc_extended = "Become an antagonist, if possible. Antagonists can spawn near the end of the round after the mission. Requires an antagonist token."
+	name = "become insurrection"
+	desc = ""
 	icon_state = "become_antag"
-	screen_loc = "CENTER+1.5,BOTTOM:12"
+	screen_loc = "CENTER-0.5,BOTTOM"
 
 	flags_hud = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
+/obj/hud/button/become_antag/New(desired_loc)
+	. = ..()
+	var/gamemode/chungusmode = SSgamemode.active_gamemode
+	if(chungusmode && isnull(chungusmode.team_points[TEAM_URF]))
+		qdel(src)
 
 /obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -75,22 +83,81 @@
 		var/mob/abstract/observer/O = caller
 		O.become_antagonist()
 
+	return .
 
-/obj/hud/button/teleport_to_player/
-	name = "spectate player"
+/obj/hud/button/become_covenant/
+	name = "become covenant"
 	desc = ""
-	desc_extended = "Click here to spectate a player."
-	icon_state = "square_round_small"
-	screen_loc = "CENTER-1.5,BOTTOM:12"
+	icon_state = "become_cov"
+	screen_loc = "CENTER-0.5,BOTTOM+1"
 
 	flags_hud = FLAG_HUD_MOB
 
 	has_quick_function = FALSE
 
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
+/obj/hud/button/become_covenant/New(desired_loc)
+	. = ..()
+	var/gamemode/chungusmode = SSgamemode.active_gamemode
+	if(chungusmode && isnull(chungusmode.team_points[TEAM_COVENANT]))
+		qdel(src)
+
+/obj/hud/button/become_covenant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	. = ..()
+
+	if(is_observer(caller))
+		var/mob/abstract/observer/O = caller
+		O.become_covenant()
+
+	return .
+
+/obj/hud/button/become_nt/
+	name = "become UNSC"
+	desc = ""
+	icon_state = "become_nt"
+	screen_loc = "CENTER+0.5,BOTTOM"
+
+	flags_hud = FLAG_HUD_MOB
+
+	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
+/obj/hud/button/become_nt/New(desired_loc)
+	. = ..()
+	var/gamemode/chungusmode = SSgamemode.active_gamemode
+	if(chungusmode && isnull(chungusmode.team_points[TEAM_UNSC]))
+		qdel(src)
+
+/obj/hud/button/become_nt/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+
+	. = ..()
+
+	if(is_observer(caller))
+		var/mob/abstract/observer/O = caller
+		O.new_character()
+
+	return .
+
+/obj/hud/button/teleport_to_player/
+	name = "spectate player"
+	desc = ""
+	icon_state = "square_round_small"
+	screen_loc = "CENTER-1.5,BOTTOM"
+
+	flags_hud = FLAG_HUD_MOB
+
+	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
+
 /obj/hud/button/teleport_to_player/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
+	return .
 
 /obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -100,7 +167,7 @@
 		if(!is_observer(caller))
 			caller.to_chat(span("notice","You cannot teleport as a non-observer!"))
 			return TRUE
-		if(world_state < STATE_RUNNING)
+		if(world_state != STATE_RUNNING)
 			caller.to_chat(span("notice","The game has not loaded yet!"))
 			return TRUE
 
@@ -117,59 +184,32 @@
 			caller.to_chat(span("notice","You are now spectating [M.name]."))
 			caller.force_move(M.loc)
 
+	return .
+
 
 /obj/hud/button/dead_ghost/
-	name = "leave corpse"
-	desc = "Goodbye cruel world."
-	desc_extended = "Clicking here will abandon your body and allow you to spectate or rejoin the round as the same character or a different character. Note that you cannot be revived after ghosting!"
+	name = "ghost"
+	desc = ""
 	icon_state = "square_round_small"
-	screen_loc = "CENTER,BOTTOM:12+2"
+	screen_loc = "CENTER,BOTTOM+2"
 
 	flags_hud = FLAG_HUD_DEAD
 
-	plane = PLANE_HUD_OBJ
-
 	has_quick_function = FALSE
+
+	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
 
 /obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
 	. = ..()
 
-	if(!. || !caller.client)
-		return .
+	if(. && caller.client)
+		caller.client.ghost()
 
-	/* VIRUTAL REALITY
-	if(istype(caller,/mob/living/advanced/player/virtual))
-		if(!SSvirtual_reality || !SSvirtual_reality.current_virtual_reality)
-			return .
-
-		var/mob/living/L = caller
-
-		var/virtual_reality/VR = SSvirtual_reality.current_virtual_reality
-
-		var/list/team_list = VR.teams[L.loyalty_tag]
-		if(!length(team_list))
-			return FALSE
-		team_list = team_list.Copy()
-		team_list += "Cancel"
-
-		var/mob/living/desired_spectate = input("Who do you wish to spectate?","Spectate","Cancel") as null|anything in team_list
-		if(!desired_spectate || desired_spectate == "Cancel")
-			return .
-
-		if(!L.dead || desired_spectate.qdeleting)
-			caller.to_chat(span("warning","Failed to spectate."))
-			return .
-
-		L.client.spectate(desired_spectate)
-		return .
-	*/
-
-	caller.client.ghost()
-
+	return .
 
 /obj/hud/button/dead_ghost/update_overlays()
 	. = ..()
 	var/image/I = new/image(initial(icon),"ghost_overlay")
-	I.appearance_flags = src.appearance_flags | RESET_COLOR
 	add_overlay(I)
+	return .

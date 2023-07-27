@@ -14,8 +14,8 @@
 /vote/map/on_result(var/winner,var/list/results)
 
 	if(!winner)
-		broadcast_to_clients(span("danger","Vote failed! Defaulting to Island..."))
-		winner = "Island"
+		broadcast_to_clients(span("danger","Vote failed! Defaulting to Liberation..."))
+		winner = "Liberation - URF vs UNSC"
 
 	rustg_file_write(winner,NEXT_MAP_FILE)
 
