@@ -16,19 +16,19 @@
 		var/game_name = initial(G.name)
 		options += game_name
 		gamemode_name_to_type[game_name] = G
-
+/*
 	//stupid jury rigged shit
 	if(findtext(SSdmm_suite.map_name, "Invasion"))
 		options -= "Liberation"
-		for(var/atom/chungus in join_buttons["become-insurrection"])
+		for(var/atom/chungus in join_buttons["become_urf"])
 			qdel(chungus)
 	else if(findtext(SSdmm_suite.map_name, "Liberation"))
 		options -= "Invasion"
-		for(var/atom/chungus in join_buttons["become-covenant"])
+		for(var/atom/chungus in join_buttons["become_covenant"])
 			qdel(chungus)
 
 	return ..()
-
+*/
 
 /vote/gamemode/on_result(var/winner,var/list/results)
 

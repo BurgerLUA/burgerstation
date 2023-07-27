@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(dmm_suite)
 			"turf"=/turf/unsimulated/dynamic_rock_gen,
 			"area"=/area/mission/below
 		),
-		"maps/_core/mission.dmm",
+		"maps/_core/standard_urf.dmm",
 		"maps/_core/bluespace.dmm",
 		"maps/_core/odst_ship.dmm"
 	)
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	)
 
 	var/list/map_to_final_destruction_turf = list(
-		"maps/_core/mission.dmm" = /turf/simulated/openspace,
+		"maps/_core/standard_urf.dmm" = /turf/simulated/openspace,
 		"maps/_core/bluespace.dmm" = /turf/bluespace,
 		"maps/_core/odst_ship.dmm" =  null
 	)
@@ -210,7 +210,7 @@ SUBSYSTEM_DEF(dmm_suite)
 		pvp_y = 450+rand(0,25)
 		pvp_coef = pvp_y*0.0015
 
-		var/z = file_to_z_level["maps/_core/mission.dmm"]
+		var/z = file_to_z_level["maps/_core/standard_urf.dmm"]
 		if(z)
 			//First pass, checking prefabs it can slice.
 			for(var/x=2,x<=499,x++)
@@ -305,7 +305,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	if(!pvp_y)
 		return FALSE
 
-	var/mission_z = file_to_z_level["maps/_core/mission.dmm"]
+	var/mission_z = file_to_z_level["maps/_core/standard_urf.dmm"]
 
 	if(!mission_z || z != mission_z)
 		return FALSE

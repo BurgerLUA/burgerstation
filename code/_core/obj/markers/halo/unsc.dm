@@ -12,7 +12,7 @@ var/global/list/all_unsc_markers = list()
 
 		all_unsc_markers[name] += src
 	else
-		log_error("Warning! UNSC marker [src.get_debug_name()] is invalid!")
+		log_error("Warning! Covenant marker [src.get_debug_name()] is invalid!")
 
 	return ..()
 

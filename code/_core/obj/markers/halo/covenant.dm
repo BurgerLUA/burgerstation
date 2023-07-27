@@ -6,7 +6,7 @@ var/global/list/all_covenant_markers = list()
 
 /obj/marker/covenant/New(var/desired_loc)
 
-	if(name)
+	if(spawn_type && name)
 		if(!all_covenant_markers[name])
 			all_covenant_markers[name] = list()
 

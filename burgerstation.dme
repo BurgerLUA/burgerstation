@@ -990,6 +990,7 @@
 #include "code\_core\mob\living\advanced\player\antagonist\syndicate.dm"
 #include "code\_core\mob\living\advanced\player\halo\_covenant.dm"
 #include "code\_core\mob\living\advanced\player\halo\_unsc.dm"
+#include "code\_core\mob\living\advanced\player\halo\_urf.dm"
 #include "code\_core\mob\living\advanced\player\halo\covenant\elite.dm"
 #include "code\_core\mob\living\advanced\player\halo\covenant\kigyar.dm"
 #include "code\_core\mob\living\advanced\player\halo\covenant\unggoy.dm"
