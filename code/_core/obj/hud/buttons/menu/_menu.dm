@@ -5,8 +5,6 @@
 
 	flags_hud = FLAG_HUD_MOB
 
-	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_DEAD | FLAG_INTERACTION_NO_DISTANCE
-
 /obj/hud/button/menu/title
 	name = "Halo: Winter Contingency"
 	icon_state = "title"
@@ -24,12 +22,6 @@
 
 
 /obj/hud/button/menu/selection/New(var/desired_loc)
-	var/static/list/bigchungus = list("become-unsc" = TEAM_UNSC, "become-urf" = TEAM_URF, "become-covenant" = TEAM_COVENANT)
-	var/chungus = command_to_run ? bigchungus[command_to_run] : null
-	var/gamemode/chungusmode = SSgamemode.active_gamemode
-	if(chungus && chungusmode && isnull(chungusmode.team_points[chungus]))
-		qdel(src)
-		return
 	color = null
 	return ..()
 
@@ -41,13 +33,13 @@
 	color = null
 	return ..()
 
-/obj/hud/button/menu/selection/character_new
+/obj/hud/button/menu/selection/join_unsc
 	name = "Join as UNSC"
 	icon_state = "new"
 	screen_loc = "LEFT+1,CENTER+1"
 	command_to_run = "become-unsc"
 
-/obj/hud/button/menu/selection/join_antagonist
+/obj/hud/button/menu/selection/join_urf
 	name = "Join as Insurrection"
 	icon_state = "antag"
 	screen_loc = "LEFT+1,CENTER-0"

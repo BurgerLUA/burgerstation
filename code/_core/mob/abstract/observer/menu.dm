@@ -2,9 +2,9 @@
 
 	spawning_buttons = list(
 		/obj/hud/button/menu/title,
-		/obj/hud/button/menu/selection/character_new,
+		/obj/hud/button/menu/selection/join_unsc,
 //		/obj/hud/button/menu/selection/character_load,
-		/obj/hud/button/menu/selection/join_antagonist,
+		/obj/hud/button/menu/selection/join_urf,
 		/obj/hud/button/menu/selection/join_covenant,
 		/obj/hud/button/menu/selection/observe,
 		/obj/hud/button/menu/selection/macros
