@@ -33,17 +33,17 @@
 	color = null
 	return ..()
 
-/obj/hud/button/menu/selection/join_unsc
+/obj/hud/button/menu/selection/character_new
 	name = "Join as UNSC"
 	icon_state = "new"
 	screen_loc = "LEFT+1,CENTER+1"
 	command_to_run = "become-unsc"
 
-/obj/hud/button/menu/selection/join_urf
+/obj/hud/button/menu/selection/join_antagonist
 	name = "Join as Insurrection"
 	icon_state = "antag"
 	screen_loc = "LEFT+1,CENTER-0"
-	command_to_run = "become-urf"
+	command_to_run = "become-insurrection"
 
 /obj/hud/button/menu/selection/join_covenant
 	name = "Join as Covenant"
@@ -53,6 +53,7 @@
 
 /obj/hud/button/menu/selection/observe
 	name = "Observe"
+	desc_extended = "Click here to observe the current round as a ghost. You can still rejoin the round as a living character after observing."
 	icon_state = "observe"
 	screen_loc = "LEFT+1,CENTER-2"
 	command_to_run = "observe"
@@ -60,6 +61,7 @@
 
 /obj/hud/button/menu/selection/macros
 	name = "Macros"
+	desc_extended = "Click here to edit your current controls and macros. These controls will be exclusive to this server."
 	icon_state = "macros"
 	screen_loc = "LEFT+1,CENTER-3"
 	command_to_run = "edit-macros"
