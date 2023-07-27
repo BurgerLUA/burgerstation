@@ -175,7 +175,7 @@ var/global/antag_count = 0
 			continue
 		valid_choices += k_id
 
-	var/urf_choice = input("What role do you wish to be?","urf Selection.") as null|anything in valid_choices
+	var/urf_choice = input("What role do you wish to be?","URF Selection.") as null|anything in valid_choices
 
 	if(!urf_choice)
 		src.to_chat(span("notice","Good choice."))

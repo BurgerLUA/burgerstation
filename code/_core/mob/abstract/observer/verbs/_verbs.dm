@@ -3,6 +3,7 @@
 //	verbs += /mob/abstract/observer/verb/load_character
 //	verbs += /mob/abstract/observer/verb/load_most_recent_character
 	verbs += /mob/abstract/observer/verb/become_urf
+	verbs += /mob/abstract/observer/verb/become_unsc
 	verbs += /mob/abstract/observer/verb/become_covenant
 	verbs += /mob/abstract/observer/verb/observe
 
