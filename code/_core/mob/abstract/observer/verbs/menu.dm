@@ -65,14 +65,11 @@ var/global/antag_count = 0
 	var/file_num = name_to_choice[choice]
 	. = client.load(mobdata,file_num)
 */
+
 /mob/abstract/observer/proc/can_become_unsc()
 
 	if(!is_observer(src))
 		src.to_chat(span("warning","You cannot become an UNSC while your character is currently loaded!"))
-		return FALSE
-
-	if(world_state != STATE_RUNNING)
-		src.to_chat(span("warning","The game has not loaded yet!"))
 		return FALSE
 
 	var/gamemode_state = SSgamemode.active_gamemode.state
@@ -80,6 +77,12 @@ var/global/antag_count = 0
 	if(gamemode_state <= GAMEMODE_WAITING)
 		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an UNSC!"))
 		return FALSE
+
+	if(length(all_unsc_markers) <= 0)
+		src.to_chat(span("warning","There are no available roles!"))
+		return FALSE
+
+	return TRUE
 
 /mob/abstract/observer/verb/become_unsc()
 	set name = "Become UNSC"
