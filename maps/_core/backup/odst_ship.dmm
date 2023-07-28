@@ -1,8 +1,8 @@
 "aa" = (/turf/space,/area)
 "ab" = (/obj/structure/interactive/lighting/fixture/floor,/turf/simulated/floor/plating,/area/burgerstation/hanger)
-"ac" = (/mob/living/advanced/player/urf/soe,/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
+"ac" = (/mob/living/advanced/player/antagonist/halo/soe,/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "ad" = (/mob/living/advanced/player/unsc/odst,/obj/structure/interactive/chair{icon_state = "chair"; dir = 4},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
-"ae" = (/mob/living/advanced/player/urf/soe,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
+"ae" = (/mob/living/advanced/player/antagonist/halo/soe,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
 "af" = (/mob/living/advanced/player/unsc/spartan,/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
 "ag" = (/turf/simulated/floor/plating,/area/burgerstation/briefing)
 "ah" = (/obj/structure/interactive/door/airlock/station/maintenance,/turf/simulated/floor/plating,/area/burgerstation/briefing)
@@ -12,7 +12,7 @@
 "al" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger,/turf/simulated/floor/tile/dark/single,/area/burgerstation/hanger)
 "am" = (/obj/structure/interactive/shop,/obj/item/grenade/timed/explosive/halo,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "an" = (/obj/structure/interactive/fax_machine,/turf/simulated/floor/tile/nanotrasen,/area/burgerstation/briefing)
-"ao" = (/turf/simulated/liquid/lava,/area/mission/forest)
+"ao" = (/mob/living/advanced/player/antagonist/halo/soe/commander,/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "ap" = (/obj/structure/interactive/crate,/turf/simulated/floor/tile/shuttle/red,/area/dmm_suite/clear_area)
 "aq" = (/obj/structure/interactive/shop,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "ar" = (/mob/living/advanced/player/unsc/spartan,/obj/structure/interactive/chair{dir = 8},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
@@ -27,13 +27,13 @@
 "aA" = (/obj/decal/hazard,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "aB" = (/obj/decal/hazard,/obj/marker/map_node,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "aC" = (/obj/decal/hazard/corner{dir = 1},/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating,/area/burgerstation/hanger)
-"aD" = (/turf/simulated/floor/basalt,/area/mission/forest)
-"aE" = (/turf/simulated/floor/chasm,/area/mission/forest)
+"aD" = (/mob/living/advanced/npc/kigyar/lobby,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
+"aE" = (/mob/living/advanced/npc/unggoy/lobby,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "aF" = (/obj/structure/interactive/vending/security/ammo/halo/odst,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
-"aG" = (/turf/simulated/floor/cave_dirt,/area/mission/forest)
-"aH" = (/obj/marker/map_node,/turf/simulated/floor/cave_dirt,/area/mission/forest)
+"aG" = (/mob/living/advanced/npc/unsc/lobby,/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
+"aH" = (/mob/living/advanced/npc/unsc/lobby,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "aI" = (/turf/simulated/floor/tile/dark/single,/area/burgerstation/hanger)
-"aJ" = (/turf/simulated/wall/rock/indestructable,/area/mission/forest)
+"aJ" = (/mob/living/advanced/npc/unsc/lobby,/obj/structure/interactive/barricade,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "aK" = (/obj/structure/interactive/misc/mirror/chargen{pixel_x = 0; pixel_y = -32},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "aL" = (/obj/structure/interactive/telecomms/station,/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "aM" = (/mob/living/advanced/player/covenant/elite,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
@@ -49,62 +49,36 @@
 "aW" = (/obj/item/cell_charger,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "aX" = (/obj/structure/interactive/vending/clothes/accessories,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "aY" = (/mob/living/advanced/npc/unggoy,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
-"aZ" = (/mob/living/advanced/npc/kigyar/lobby,/turf/simulated/floor/cave_dirt,/area/mission/forest)
 "ba" = (/obj/decal/hazard{dir = 8},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "bb" = (/obj/structure/interactive/status_display/global_display/alpha,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
-"bc" = (/obj/structure/interactive/vending/security/gundrobe/halo/cov/empty,/turf/simulated/floor/cave_dirt,/area/mission/forest)
-"bd" = (/obj/marker/map_node,/turf/simulated/floor/basalt,/area/mission/forest)
-"be" = (/obj/structure/interactive/crate/covenant/tall,/turf/simulated/floor/cave_dirt,/area/mission/forest)
-"bf" = (/obj/structure/interactive/barricade{dir = 1},/obj/structure/interactive/barricade{dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
-"bg" = (/obj/structure/interactive/barricade{dir = 1},/turf/simulated/floor/plating/shuttle,/area/mission/forest)
-"bh" = (/mob/living/advanced/npc/unggoy/lobby,/turf/simulated/floor/cave_dirt,/area/mission/forest)
-"bi" = (/obj/structure/interactive/crate/covenant,/turf/simulated/floor/cave_dirt,/area/mission/forest)
 "bj" = (/turf/simulated/wall/metal/reinforced,/area/burgerstation/briefing)
-"bk" = (/mob/living/advanced/npc/unsc/lobby,/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bl" = (/obj/decal/hazard{dir = 4},/turf/simulated/floor/plating,/area/burgerstation/hanger)
-"bm" = (/obj/structure/interactive/vending/security/ammo/halo/cov/empty,/turf/simulated/floor/cave_dirt,/area/mission/forest)
 "bn" = (/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
-"bo" = (/obj/structure/interactive/barricade{dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bp" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "bq" = (/obj/structure/interactive/misc/halo/signs/armory{icon_state = "armory"; dir = 1},/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "br" = (/obj/structure/interactive/chair{dir = 8},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "bs" = (/obj/structure/scenery/fake_door/blast_door,/turf/simulated/wall/metal/reinforced,/area/burgerstation/briefing)
-"bt" = (/obj/structure/interactive/barricade{dir = 1},/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bu" = (/obj/item/container/blood_pack/full/o_negative,/obj/structure/interactive/shop,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
-"bv" = (/turf/simulated/floor/plating/shuttle,/area/mission/forest)
-"bw" = (/mob/living/advanced/npc/unsc/lobby,/turf/simulated/floor/cave_dirt,/area/mission/forest)
 "bx" = (/obj/structure/interactive/chair{dir = 1},/turf/simulated/floor/tile/shuttle/red,/area/dmm_suite/clear_area)
-"by" = (/obj/structure/interactive/misc/halo/decor/machinery/tower,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bz" = (/obj/structure/interactive/bed/sleeper/medical,/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "bA" = (/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
-"bB" = (/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bC" = (/obj/structure/interactive/chair{dir = 8},/obj/structure/interactive/lighting/fixture/tube/station{dir = 8},/turf/simulated/floor/tile/shuttle/red,/area/dmm_suite/clear_area)
 "bD" = (/obj/marker/spawning/window/reinforced,/turf/simulated/floor/plating,/area/burgerstation/briefing)
 "bE" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
-"bF" = (/obj/structure/interactive/misc/halo/decor/vehicles/spirit{icon_state = "base_destroyed"},/turf/simulated/liquid/lava,/area/mission/forest)
 "bG" = (/obj/marker/map_node,/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 8},/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
 "bH" = (/obj/structure/interactive/misc/halo/signs/hangar{icon_state = "hangar"; dir = 8},/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
-"bI" = (/obj/marker/lobby,/turf/simulated/floor/cave_dirt,/area/mission/forest)
-"bJ" = (/obj/structure/interactive/barricade{dir = 8},/obj/structure/interactive/barricade,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bK" = (/obj/structure/interactive/computer/console,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
 "bL" = (/obj/structure/interactive/telecomms/station,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
-"bM" = (/obj/structure/interactive/barricade,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bN" = (/obj/item/clothing/back/storage/backpack/halo/odst,/obj/structure/interactive/shop,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
-"bO" = (/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bP" = (/obj/marker/map_node,/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 4},/turf/simulated/floor/tile/dark,/area/burgerstation/hanger)
 "bQ" = (/obj/decal/hazard{dir = 1},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "bR" = (/obj/structure/interactive/vending/clothes/dye,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
-"bS" = (/obj/structure/interactive/barricade,/obj/structure/interactive/barricade{dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "bT" = (/obj/structure/interactive/computer/console/laptop,/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
 "bU" = (/obj/item/defib,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "bV" = (/obj/item/cell_charger,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "bW" = (/turf/simulated/floor/stair,/area/burgerstation/briefing)
 "bX" = (/obj/marker/map_node,/obj/structure/interactive/lighting/fixture/tube/station/stronger,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "bY" = (/obj/structure/interactive/chair{icon_state = "chair"; dir = 1},/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
-"bZ" = (/mob/living/advanced/npc/unsc/lobby,/obj/structure/interactive/barricade,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
-"ca" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/floor/cave_dirt,/area/mission/forest)
-"cb" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/floor/basalt,/area/mission/forest)
-"cc" = (/obj/structure/interactive/lighting/mounted_torch,/turf/simulated/floor/plating/shuttle,/area/mission/forest)
 "cd" = (/obj/structure/interactive/status_display/global_display/drop_pod,/turf/simulated/wall/metal/reinforced,/area/burgerstation/hanger)
 "ce" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 4},/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "cg" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger,/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
@@ -116,6 +90,7 @@
 "cw" = (/obj/decal/hazard{dir = 8},/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "cx" = (/turf/simulated/floor/tile/nanotrasen,/area/burgerstation/briefing)
 "cA" = (/obj/structure/interactive/door/airlock/glass,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
+"cD" = (/obj/structure/interactive/barricade,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "cO" = (/turf/simulated/floor/tile/blue,/area/burgerstation/hanger)
 "cQ" = (/obj/structure/interactive/misc/halo/decor/machinery/table,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "cR" = (/obj/structure/interactive/chair{dir = 4},/turf/simulated/floor/tile/shuttle/red,/area/dmm_suite/clear_area)
@@ -135,6 +110,7 @@
 "dJ" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/obj/marker/map_node,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "dN" = (/obj/marker/map_node,/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
 "dO" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
+"el" = (/obj/structure/interactive/barricade{dir = 1},/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "em" = (/obj/item/organ/groin/halo/unggoy,/turf/space,/area)
 "eq" = (/turf/simulated/wall/rock/indestructable,/area)
 "ez" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
@@ -145,6 +121,7 @@
 "gz" = (/obj/structure/interactive/restocker/ammo,/obj/structure/interactive/chair/covenant{icon_state = "null"; dir = 8},/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
 "gD" = (/obj/structure/interactive/chair/stool/covies/bar,/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
 "gL" = (/obj/item/defib,/obj/structure/interactive/shop,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
+"hw" = (/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "hJ" = (/obj/item/organ/arm/halo/unggoy/left,/obj/effect/temp/crate_gib,/turf/space,/area)
 "hK" = (/obj/structure/shuttle_engine/burst,/obj/marker/landmark{name = "Bravo Shuttle"},/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
 "ic" = (/obj/item/storage/kit/syndicate/filled,/obj/structure/interactive/shop,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
@@ -154,10 +131,16 @@
 "iv" = (/obj/structure/interactive/lighting/fixture/floor,/obj/decal/hazard/corner{dir = 8},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "iG" = (/obj/marker/map_node,/turf/simulated/floor/tile/red,/area/burgerstation/hanger)
 "iU" = (/obj/decal/poster/urfreno,/turf/simulated/wall/metal/reinforced,/area/burgerstation/briefing)
+"jj" = (/obj/marker/map_node,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
+"jL" = (/obj/structure/interactive/misc/halo/decor/machinery/tower,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "ka" = (/obj/structure/interactive/misc/mirror/chargen{pixel_x = 0; pixel_y = 24},/turf/simulated/floor/tile/dark/single,/area/burgerstation/briefing)
 "ln" = (/obj/decal/hazard/corner{dir = 4},/turf/simulated/floor/plating,/area/burgerstation/hanger)
+"lE" = (/obj/structure/interactive/barricade{dir = 1},/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
+"lF" = (/obj/structure/interactive/crate/covenant/tall,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "me" = (/obj/structure/interactive/misc/halo/signs/armory,/turf/simulated/floor/tile/dark,/area/burgerstation/briefing)
+"mC" = (/obj/structure/interactive/barricade{dir = 8},/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "ow" = (/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
+"oG" = (/obj/structure/interactive/misc/halo/decor/vehicles/spirit{icon_state = "base_destroyed"},/turf/dmm_suite/clear_turf,/area/burgerstation/tax)
 "oY" = (/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
 "pn" = (/obj/structure/interactive/computer/console{icon_state = "computer"; dir = 1},/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
 "pV" = (/turf/simulated/floor/tile/red,/area/burgerstation/hanger)
@@ -169,7 +152,9 @@
 "sn" = (/obj/structure/interactive/bed/sleeper/medical,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "sp" = (/obj/structure/shuttle_engine/burst/right{dir = 1},/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
 "sJ" = (/obj/structure/interactive/barricade/covenant,/obj/structure/interactive/barricade/covenant{dir = 8},/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
+"sS" = (/obj/structure/interactive/vending/security/gundrobe/halo/cov/empty,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "ti" = (/obj/marker/map_node,/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
+"tv" = (/obj/structure/interactive/vending/security/ammo/halo/cov/empty,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "um" = (/obj/structure/interactive/chair/covenant{dir = 8},/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
 "uB" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger,/turf/simulated/floor/tile/red,/area/burgerstation/hanger)
 "uJ" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 8},/obj/structure/interactive/vending/security/wardrobe/halo/soe,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
@@ -179,6 +164,7 @@
 "wj" = (/obj/decal/hazard/corner{dir = 1},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "wH" = (/obj/structure/interactive/status_display/global_display/bravo,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "wZ" = (/obj/structure/interactive/chair/stool/covies/bar,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
+"xj" = (/obj/structure/interactive/crate/covenant,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
 "xz" = (/obj/decal/hazard{dir = 5},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "xR" = (/turf/simulated/floor/stair/cult{dir = 1},/area/burgerstation/science)
 "yl" = (/obj/structure/interactive/vending/security/ammo/halo/cov,/turf/simulated/floor/covenant,/area/burgerstation/science)
@@ -187,23 +173,30 @@
 "yB" = (/obj/marker/landmark{name = "Alpha Shuttle"},/turf/simulated/floor/tile/shuttle/red,/area/dmm_suite/clear_area)
 "yV" = (/obj/structure/interactive/chair{dir = 4},/obj/structure/interactive/lighting/fixture/tube/station{dir = 4},/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
 "zk" = (/obj/structure/shuttle_engine/burst,/turf/simulated/floor/tile/shuttle/red,/area/dmm_suite/clear_area)
+"zw" = (/turf/simulated/floor/basalt,/area/burgerstation/tax)
 "zI" = (/obj/decal/hazard/corner{dir = 4},/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating,/area/burgerstation/hanger)
+"zL" = (/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "Al" = (/obj/decal/poster/urfpat,/turf/simulated/wall/metal/reinforced,/area/burgerstation/briefing)
 "An" = (/obj/structure/interactive/chair{dir = 8},/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
 "Av" = (/obj/structure/interactive/vending/security/ammo/halo/soe,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
 "AA" = (/obj/decal/poster/urfcat,/turf/simulated/wall/metal/reinforced,/area/burgerstation/hanger)
+"AN" = (/obj/marker/map_node,/turf/simulated/floor/basalt,/area/burgerstation/tax)
 "AX" = (/obj/item/weapon/ranged/energy/halo/cov_pistol,/turf/space,/area)
 "Ba" = (/obj/structure/interactive/status_display/global_display/delta,/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"Bj" = (/obj/structure/interactive/barricade{dir = 1},/obj/structure/interactive/barricade{dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "BE" = (/obj/decal/hazard/corner{dir = 8},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "Ce" = (/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Cl" = (/obj/structure/interactive/crate/covenant,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "CY" = (/obj/marker/landmark{name = "Delta Shuttle"},/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
 "Di" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 4},/obj/structure/interactive/vending/security/wardrobe/halo/soe,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
+"Ds" = (/obj/marker/lobby,/turf/simulated/floor/cave_dirt,/area/burgerstation/tax)
+"DO" = (/obj/structure/interactive/barricade{dir = 8},/obj/structure/interactive/barricade,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "EG" = (/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating/covenant,/area/burgerstation/science)
 "EP" = (/obj/marker/map_node,/turf/simulated/floor/tile/blue,/area/burgerstation/hanger)
 "EQ" = (/obj/structure/interactive/chair,/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
 "EU" = (/obj/structure/shuttle_engine/burst/left{dir = 1},/turf/simulated/floor/plating/shuttle,/area/dmm_suite/clear_area)
 "Fp" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/obj/structure/interactive/lighting/fixture/tube/station/stronger,/turf/simulated/floor/tile/dark/single,/area/burgerstation/hanger)
+"FE" = (/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "FJ" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/turf/simulated/floor/tile/dark/single,/area/burgerstation/hanger)
 "FP" = (/obj/structure/interactive/door/airlock/covenant,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Ge" = (/obj/structure/interactive/vending/security/gundrobe/halo/soe,/turf/simulated/floor/tile/command,/area/burgerstation/briefing)
@@ -213,6 +206,7 @@
 "Hh" = (/obj/structure/interactive/crate/covenant/tall,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Hm" = (/obj/structure/interactive/shop,/obj/item/clothing/belt/storage/medical,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Hu" = (/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
+"HA" = (/turf/simulated/wall/rock/indestructable,/area/burgerstation/tax)
 "HG" = (/obj/item/organ/torso/halo/unggoy,/turf/space,/area)
 "JC" = (/obj/structure/interactive/chair{dir = 4},/turf/simulated/floor/tile/shuttle,/area/dmm_suite/clear_area)
 "Kt" = (/turf/simulated/floor/covenant/blue,/area/burgerstation/hanger)
@@ -225,6 +219,7 @@
 "ND" = (/obj/structure/interactive/vending/medical/medicine,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "NU" = (/obj/structure/interactive/lighting/fixture/floor,/obj/decal/hazard/corner{dir = 1},/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "Oi" = (/turf/simulated/floor/plating,/area/burgerstation/hanger)
+"OI" = (/obj/structure/interactive/barricade{dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "Pf" = (/turf/simulated/wall/metal,/area/burgerstation/hanger)
 "PL" = (/obj/structure/interactive/status_display/global_display/bravo,/turf/simulated/wall/covenant,/area/burgerstation/hanger)
 "Qd" = (/obj/structure/interactive/chair{dir = 8},/obj/structure/interactive/lighting/fixture/tube/station{dir = 8},/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
@@ -233,12 +228,14 @@
 "RO" = (/obj/structure/interactive/shop,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Sk" = (/obj/structure/interactive/status_display/global_display/drop_pod,/turf/simulated/wall/covenant/hull,/area/burgerstation/science)
 "Sl" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/turf/simulated/floor/tile/orange,/area/burgerstation/hanger)
+"ST" = (/turf/dmm_suite/clear_turf,/area/burgerstation/tax)
 "Te" = (/obj/structure/interactive/vending/security/gundrobe/halo/cov,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Tk" = (/obj/structure/interactive/chair{dir = 4},/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
 "Tm" = (/obj/item/storage/bags/chemistry,/obj/structure/interactive/shop,/turf/simulated/floor/covenant/blue,/area/burgerstation/science)
 "Tx" = (/obj/structure/interactive/chair/covenant{icon_state = "null"; dir = 4},/turf/simulated/floor/tile/shuttle/purple,/area/dmm_suite/clear_area)
 "TG" = (/obj/decal/hazard/corner{dir = 8},/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "TL" = (/obj/structure/interactive/door/airlock/shuttle,/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
+"TO" = (/turf/simulated/floor/chasm,/area/burgerstation/tax)
 "Uh" = (/obj/decal/hazard/corner,/turf/simulated/floor/plating,/area/burgerstation/hanger)
 "Ut" = (/obj/structure/interactive/chair{dir = 8},/turf/simulated/floor/tile/shuttle/blue,/area/dmm_suite/clear_area)
 "Uy" = (/obj/decal/poster/urfcat,/turf/simulated/wall/metal/reinforced,/area/burgerstation/briefing)
@@ -252,6 +249,7 @@
 "Xm" = (/obj/marker/map_node,/obj/structure/interactive/lighting/fixture/floor/stronger,/turf/simulated/floor/covenant/blue,/area/burgerstation/hanger)
 "Xo" = (/obj/structure/interactive/lighting/fixture/tube/station/stronger{dir = 1},/turf/simulated/floor/tile/red,/area/burgerstation/hanger)
 "Xp" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
+"YI" = (/obj/structure/interactive/barricade,/obj/structure/interactive/barricade{dir = 8},/obj/marker/map_node,/turf/simulated/floor/plating/shuttle,/area/burgerstation/tax)
 "Zg" = (/obj/decal/poster/urfpat,/turf/simulated/wall/metal/reinforced,/area/burgerstation/hanger)
 "ZX" = (/obj/item/organ/head/halo/unggoy,/turf/space,/area)
 
@@ -380,7 +378,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrblXpUWXpUWUWUWXpUWXpbacr
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakdablXpapbbowowowbbapXpbadaakakdAdaaIaIaIaIaIaIaIaIdacraObpbAbqbAbAbpaObAbAbAbAbjbsbsbsbjbjbjbjbjbjbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrOiblXpTkHuHuHuUtXpbaOicrbEcrcraIakddddddddddddakaIbGaibjbjAlbjbjbjbjbjbjcebAacacacacacacbAbAbAdBbjbjbjchchbKchbLaibjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrblXpdcowigbxigowbCXpbacrakdAdAaIakddddddddddddakaIcraObAbAbAdBbAbAaObAbHbAdBbpbAbAbAbpbAbAdBbjbjbjbjbjbjbDbDbDbjbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrOiblXpyVowHuowQdXpbaOicrakbPcrdaaIaIaIaIaIaIaIaIdacrbjbRbAaRbUbVaRbAaXaibAbAacacacacacacbAbAaibWbjbjbXbAbAbYbAbAbXbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrblUWcRowcvowcRowcvUWbacrbEcrcraIakddddddddddddakaIbGaibjbjbjbjbjbjbjbjbjcebAadadadadadadbAbAbAdBbjbjbjchchbKchbLaibjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakaIOiblUWTkowHuowUtUWbaOiaIcdcrcraIakddddddddddddakaIcraObAbAbAbAbAbAbAbAaObAdBbAbAbAbAbAbAdBbAanbAcgbjbAbAchchaecibAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrblXpcRowcvowcRowcvXpbacrakbPcrdaaIaIaIaIaIaIaIaIdacrbjbRbAaRbUbVaRbAaXaibAbAadadadadadadbAbAaibWbjbjbXbAbAafbAbAbXbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakbnabblXpTkowHuowUtXpbaabcrakcrcraIakddddddddddddakaIcraObAbAbAbAbAbAbAbAaObAbAacacacacacacbAbAcxbrbAcAbAcQcVaychchbAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrblXpcRowcvowcRowcvXpbacrakbPcrdaaIaIaIaIaIaIaIaIdacrbjbRbAaRbUbVaRbAaXaibAbAadadadadadadbAbAaibWbjbjbXbAbAafbAbAbXbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakbnabblXpTkowHuowUtXpbaabcrakcrcraIakddddddddddddakaIcraObAbAbAbAbAbAbAbAaObAbAacacacacacacbAbAcxbrbAcAbAcQcVaochchbAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakaIblXpcRowcvowcRowcvXpbaaIcdcrcraIakddddddddddddakaIcraObAbAbAbAbAbAbAbAaObAdBbAbAbAbAbAbAdBbAanbAcgbjbAbAchchchcibAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrOiblXpTkowHuowUtXpbaOibnZgcrcrdaaIaIaIaIaIaIaIaIdacrbjeWaQdheWaQdjeWbAbjbAbAacacacacacacbAbAcxbrbAcAbAdldpaQdwchbAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakbncuXpcRowcvowcRowcvXpcwcrakcrcraIakddddddddddddakaIcraObAbAbAbAbAbAbAbAaObAbAadadadadadadbAbAcxarbAcAbAcQcVaQchasbAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakaIOiblUWTkowHuowUtUWbaOiaIcdcrcraIakddddddddddddakaIbGaibjbjbjVhbjbjbjbjaicedBbAbAbAbAbAbAdBbAcxbAdJbjbAbAchaechcibAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrblXpcRowcvowcRowcvXpbabnakcrcrdaaIaIaIaIaIaIaIaIdacrbjbzaQdhbzaQdjbzbAbjbAbAadadadadadadbAbAcxarbAcAbAdldpaydwchbAbDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakcrOiblXpyVowHuowQdXpbaOicrakbPcraIakddddddddddddakaIcraObAbAbAdBbAbAaObAbAbAbAacacacacacacbAbAaibWbjbjdNdObAchbAdOdNbjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -439,21 +437,21 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaoaDaEaEaDaDaDaGaGaGaGaGaGaGaHaGaGaGaDaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaoaDaEaEaDaDaDaGcaaGaGaGaGaGaGaGaGaDaDaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaoaoaDaEaDaDaDaZaGaHbcaGaGaGaGaGaGaDbdaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaoaoaDaDaDaDaDaGbeaGaGcabfbgaGaGaGaGaDcbaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaoaoaoaDaDaGaGaGbhaGaGbibkaGaHaGaGaGaGaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaoaDaDaGaGbmaGaGaGaGboaGaGaGaHaGaGaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaoaDaDaGaGbhaGaGaGaGaGaGaGaGbtbgbvaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaoaoaDaDaGaGaGaHcaaGaGaGaHbwccbybBaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaobFaDaDaGaGaGaGbIaGaGaGaGaGbJbMbvaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaoaoaDaDaGbhaGaGaGaGboaGaGaGaHaGaGaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaoaoaDaDaGaGaGaGaGaGbOaGaHaGaGaGaDaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaoaoaoaDaDaZaGaGaGaGcabSbZaGaGaGaGaDcbaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaDaoaoaDaDaGaGaGaHaGaGaGaGaGaGaGaGaHaDaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaDaoaoaoaDaGaGcaaGaGaGaGaGaGaGaGaGaGaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaDaDaoaoaDaDaGaGaGaGaGaGaGaGaGaGaGaGaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqaDaDaDaoaoaDaDaGaGaGaGaGaGaGaHaGaGaGaGaGaJaoaoaoaoaoeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqeqeqeqeqeqeqeqeqaJaJaJeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqSTzwTOTOzwzwzwhwhwhwhwhwhwhwjjhwhwhwzwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqSTzwTOTOzwzwzwhwhwhwhwhwhwhwhwhwhwzwzwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqSTSTzwTOzwzwzwaDhwjjsShwhwhwhwhwhwzwANzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqSTSTzwzwzwzwzwhwlFhwhwhwBjlEhwhwhwhwzwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqSTSTSTzwzwhwhwhwaEhwhwxjaGhwjjhwhwhwhwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSTzwzwhwhwtvhwhwhwhwOIhwhwhwjjhwhwhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSTzwzwhwhwaEhwhwhwhwhwhwhwhwellEzLhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSTSTzwzwhwhwhwjjhwhwhwhwjjaHzLjLFEhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSToGzwzwhwhwhwhwDshwhwhwhwhwDOcDzLhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSTSTzwzwhwaEhwhwhwhwOIhwhwhwjjhwhwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSTSTzwzwhwhwhwhwhwhwmChwjjhwhwhwzwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwSTSTSTzwzwaDhwhwhwhwhwYIaJhwhwhwhwzwzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwzwSTSTzwzwhwhwhwjjhwhwhwhwhwhwhwhwjjzwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwzwSTSTSTzwhwhwhwhwhwhwhwhwhwhwhwhwhwhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwzwzwSTSTzwzwhwhwhwhwhwhwhwhwhwhwhwhwhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqzwzwzwSTSTzwzwhwhwhwhwhwhwhwjjhwhwhwhwhwHASTSTSTSTSTeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqeqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}

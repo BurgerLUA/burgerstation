@@ -1,5 +1,5 @@
 var/global/antag_count = 0
-
+/*
 /mob/abstract/observer/verb/load_most_recent_character()
 	set name = "Quickload Character"
 	set category = "Menu"
@@ -64,7 +64,7 @@ var/global/antag_count = 0
 
 	var/file_num = name_to_choice[choice]
 	. = client.load(mobdata,file_num)
-
+*/
 /mob/abstract/observer/proc/can_become_unsc()
 
 	if(!is_observer(src))
@@ -81,7 +81,7 @@ var/global/antag_count = 0
 		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an UNSC!"))
 		return FALSE
 
-/mob/abstract/observer/verb/new_character()
+/mob/abstract/observer/verb/become_unsc()
 	set name = "Become UNSC"
 	set category = "Menu"
 
@@ -130,7 +130,11 @@ var/global/antag_count = 0
 	mobdata.reset_data()
 
 	var/mob/living/advanced/player/unsc/P = new chosen_marker.spawn_type(get_turf(chosen_marker),C)
-	P.prepare()
+	INITIALIZE(P)
+	FINALIZE(P)
+	P.equip_loadout(P.loadout_to_use,TRUE)
+	P.setup_iff()
+	stop_music_track(P.client)
 
 /mob/abstract/observer/proc/can_become_urf()
 
@@ -144,7 +148,7 @@ var/global/antag_count = 0
 		src.to_chat(span("warning","The game has not started yet! Wait until objectives are announced before becoming an Insurrectionist!"))
 		return FALSE
 
-	if(length(all_antag_markers) <= 0)
+	if(length(all_urf_markers) <= 0)
 		src.to_chat(span("warning","There are no available roles!"))
 		return FALSE
 
@@ -169,8 +173,8 @@ var/global/antag_count = 0
 
 	var/list/valid_choices = list()
 
-	for(var/k_id in all_antag_markers)
-		var/list/list_of_markers = list(all_antag_markers[k_id])
+	for(var/k_id in all_urf_markers)
+		var/list/list_of_markers = list(all_urf_markers[k_id])
 		if(!length(list_of_markers))
 			continue
 		valid_choices += k_id
@@ -181,11 +185,11 @@ var/global/antag_count = 0
 		src.to_chat(span("notice","Good choice."))
 		return FALSE
 
-	if(!length(all_antag_markers))
+	if(!length(all_urf_markers))
 		src.to_chat(span("warning","Someone stole your slot! There are no Insurrection slots left!"))
 		return ..()
 
-	if(!urf_choice || !length(all_antag_markers[urf_choice]))
+	if(!urf_choice || !length(all_urf_markers[urf_choice]))
 		src.to_chat(span("warning","Someone stole your slot! Pick another role!"))
 		return ..()
 
@@ -193,15 +197,19 @@ var/global/antag_count = 0
 		return ..()
 
 	var/obj/marker/antag/chosen_marker = pick(all_urf_markers[urf_choice])
-	all_antag_markers[urf_choice] -= chosen_marker
+	all_urf_markers[urf_choice] -= chosen_marker
 	if(!length(all_urf_markers[urf_choice]))
-		all_antag_markers -= urf_choice
+		all_urf_markers -= urf_choice
 
 	var/savedata/client/mob/mobdata = MOBDATA(C.ckey)
 	mobdata.reset_data()
 
 	var/mob/living/advanced/player/urf/P = new chosen_marker.spawn_type(get_turf(chosen_marker),C)
-	P.prepare()
+	INITIALIZE(P)
+	FINALIZE(P)
+	P.equip_loadout(P.loadout_to_use,TRUE)
+	P.setup_iff()
+	stop_music_track(P.client)
 
 /mob/abstract/observer/proc/can_become_covenant()
 
@@ -272,4 +280,8 @@ var/global/antag_count = 0
 	mobdata.reset_data()
 
 	var/mob/living/advanced/player/covenant/P = new chosen_marker.spawn_type(get_turf(chosen_marker),C)
-	P.prepare()
+	INITIALIZE(P)
+	FINALIZE(P)
+	P.equip_loadout(P.loadout_to_use,TRUE)
+	P.setup_iff()
+	stop_music_track(P.client)

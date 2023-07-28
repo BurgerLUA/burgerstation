@@ -33,13 +33,13 @@
 	color = null
 	return ..()
 
-/obj/hud/button/menu/selection/character_new
+/obj/hud/button/menu/selection/join_unsc
 	name = "Join as UNSC"
 	icon_state = "new"
 	screen_loc = "LEFT+1,CENTER+1"
 	command_to_run = "become-unsc"
 
-/obj/hud/button/menu/selection/join_antagonist
+/obj/hud/button/menu/selection/join_urf
 	name = "Join as Insurrection"
 	icon_state = "antag"
 	screen_loc = "LEFT+1,CENTER-0"
