@@ -223,7 +223,10 @@
 
 	var/armor_multiplier = 1 + A.get_skill_power(SKILL_ARMOR,0,1,2)
 	.["items"] = list()
-	for(var/obj/item/clothing/C in A.worn_objects)
+	for(var/k in A.worn_objects)
+		var/obj/item/clothing/C = k
+		if(!is_clothing(C))
+			continue
 		if(!(O.id in C.protected_limbs))
 			continue
 		var/armor/ARM_C = ARMOR(C.armor)

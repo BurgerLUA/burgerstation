@@ -121,6 +121,8 @@ var/global/list/all_damage_numbers = list()
 
 	var/ignore_armor_bonus_damage = FALSE
 
+	var/force_attacker_armor_calculations_with
+
 	var/attack_delay = 10 //Time, in deciseconds. Attack delay with dex is 100
 	var/attack_delay_max = 20 //Time, in deciseconds. Attack delay with dex is 0
 
@@ -528,22 +530,25 @@ var/global/list/all_damage_numbers = list()
 		if(!damage_type)
 			continue
 		if(debug) log_debug("Calculating [damage_type]...")
-		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier
-		if(!ignore_armor_bonus_damage && (damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
-			if(length(defense_rating_attacker) && defense_rating_attacker[damage_type] && IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, dark).
+		if(debug) log_debug("Initial [damage_type] damage: [damage_to_deal[damage_type]].")
+		if(!ignore_armor_bonus_damage && (force_attacker_armor_calculations_with || damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
+			var/armor_damage_type_to_use = force_attacker_armor_calculations_with ? force_attacker_armor_calculations_with : damage_type
+			if(defense_rating_attacker[armor_damage_type_to_use] && IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, and dark only).
 				damage_to_deal[damage_type] = 0
 				continue
-			if(is_advanced(attacker) && attacker.health)
+			if(attacker.health && is_advanced(attacker))
 				var/mob/living/advanced/A = attacker
-				damage_to_deal[damage_type] *= clamp(1 + A.overall_clothing_defense_rating[damage_type]*0.02,0,1) //Deal 2% more damage per 100 magic resist of attacker, max of 100% more damage.
-				if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [damage_type]: [damage_to_deal[damage_type]].")
+				if(A.overall_clothing_defense_rating[armor_damage_type_to_use])
+					damage_to_deal[damage_type] *= clamp(A.overall_clothing_defense_rating[armor_damage_type_to_use]*0.01,0.15,2) //Deal 1% more damage per 100 resist of attacker, max of 100% more damage, with a minimum of 85% less damage.
+					if(debug) log_debug("Victim's new [damage_type] damage taken due to attacker's [armor_damage_type_to_use] armor rating: [damage_to_deal[damage_type]].")
 		if(damage_type != FATIGUE && block_multiplier > 0)
 			if(debug) log_debug("Calculating [damage_type] with blocking...")
-			var/blocked_damage = block_multiplier * old_damage_amount
-			old_damage_amount -= blocked_damage
+			var/blocked_damage = block_multiplier * damage_to_deal[damage_type]
+			damage_to_deal[damage_type] -= blocked_damage
 			fatigue_damage += blocked_damage*0.5
 			damage_blocked_with_shield += blocked_damage
-		if(debug) log_debug("Initial [damage_type] damage: [old_damage_amount].")
+		var/old_damage_amount = damage_to_deal[damage_type] * critical_hit_multiplier * stealth_multiplier
+		if(debug) log_debug("Post-bonus [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
 		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
@@ -611,10 +616,9 @@ var/global/list/all_damage_numbers = list()
 	if(defense_rating_victim && defense_rating_victim["items"])
 		for(var/k in defense_rating_victim["items"])
 			var/obj/item/I = k
-			if(I.uses_until_condition_fall > 0)
-				I.use_condition(total_damage_dealt)
-			if(total_damage_dealt > 0 && I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed,total_damage_dealt))
+			if(I.can_negate_damage && I.negate_damage(attacker,victim,weapon,hit_object,blamed))
 				total_damage_dealt = 0
+				break
 
 	var/victim_was_dead = FALSE
 	if(is_living(victim))
@@ -622,8 +626,16 @@ var/global/list/all_damage_numbers = list()
 		if(LV.dead)
 			victim_was_dead = TRUE
 
+
+	var/physical_damage_dealt = damage_to_deal_main[BRUTE] + damage_to_deal_main[BURN]
+	var/chemical_damage_dealt = damage_to_deal_main[TOX] + damage_to_deal_main[OXY] + damage_to_deal_main[RAD]
+	var/real_damage_dealt = physical_damage_dealt + chemical_damage_dealt
+	//var/mental_damage_dealt = damage_to_deal_main[SANITY] + damage_to_deal_main[MENTAL]
+	//var/misc_damage_dealt = damage_to_deal_main[FATIGUE] + damage_to_deal_main[PAIN]
+
+	var/actual_damage_dealt = 0
 	if(total_damage_dealt > 0 && hit_object.health)
-		total_damage_dealt = hit_object.health.adjust_loss_smart(
+		actual_damage_dealt = hit_object.health.adjust_loss_smart(
 			brute = damage_to_deal_main[BRUTE],
 			burn = damage_to_deal_main[BURN],
 			tox = damage_to_deal_main[TOX],
@@ -647,6 +659,12 @@ var/global/list/all_damage_numbers = list()
 		else
 			hit_object.health.update_health()
 
+	if(physical_damage_dealt > 0 && defense_rating_victim && defense_rating_victim["items"])
+		for(var/k in defense_rating_victim["items"])
+			var/obj/item/I = k
+			if(I.uses_until_condition_fall > 0)
+				I.use_condition(physical_damage_dealt)
+
 	if(debug) log_debug("Dealt [total_damage_dealt] total damage.")
 
 	do_attack_visuals(attacker,attacker_turf,victim,victim_turf,total_damage_dealt)
@@ -667,16 +685,16 @@ var/global/list/all_damage_numbers = list()
 		if(is_living(blamed) && is_living(victim))
 			var/mob/living/A = blamed
 			var/mob/living/V = victim
-			if(!victim_was_dead)
+			if(actual_damage_dealt > 0 && !victim_was_dead)
 				var/list/hit_log_format = list()
 				hit_log_format["attacker"] = A
 				hit_log_format["attacker_ckey"] = A.ckey
 				hit_log_format["time"] = world.time
 				hit_log_format["damage"] = total_damage_dealt
-				hit_log_format["critical"] = V.health ? V.health.health_current - total_damage_dealt < 0 : TRUE
-				hit_log_format["lethal"] = V.health ? (V.health.health_current - total_damage_dealt) <= min(-50,V.health.health_max*-0.25) : TRUE
+				hit_log_format["critical"] = V.health ? V.health.health_current - real_damage_dealt < 0 : TRUE
+				hit_log_format["lethal"] = V.health ? (V.health.health_current - real_damage_dealt) <= min(-50,V.health.health_max*-0.25) : TRUE
 				V.hit_logs += list(hit_log_format)
-				if(attacker != victim && V.is_player_controlled())
+				if(A != V && A.loyalty_tag != V.loyalty_tag && V.is_player_controlled() && !A.is_player_controlled())
 					if(total_damage_dealt > 0)
 						V.add_attribute_xp(ATTRIBUTE_CONSTITUTION,total_damage_dealt*0.1)
 					if(damage_blocked_with_armor > 0)
@@ -684,24 +702,24 @@ var/global/list/all_damage_numbers = list()
 					if(damage_blocked_with_shield > 0)
 						V.add_skill_xp(SKILL_BLOCK,damage_blocked_with_shield*0.1)
 
-			if(attacker != victim && total_damage_dealt && !victim_was_dead && A.is_player_controlled())
+			if(real_damage_dealt > 0 && A != V && A.loyalty_tag != V.loyalty_tag && !victim_was_dead && A.is_player_controlled())
 				var/list/experience_gained = list()
 				var/experience_multiplier = victim.get_xp_multiplier() * experience_mod
 				if(critical_hit_multiplier > 1)
-					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
+					var/xp_to_give = CEILING((real_damage_dealt*experience_multiplier)/critical_hit_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_PRECISION,xp_to_give)
 						experience_gained[SKILL_PRECISION] += xp_to_give
 
 				if(stealth_multiplier > 1)
-					var/xp_to_give = CEILING((total_damage_dealt*experience_multiplier)/stealth_multiplier,1)
+					var/xp_to_give = CEILING((real_damage_dealt*experience_multiplier)/stealth_multiplier,1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(SKILL_SURVIVAL,xp_to_give)
 						experience_gained[SKILL_SURVIVAL] += xp_to_give
 
 				for(var/skill in skill_stats)
 					//var/experience/skill/E = SSexperience.all_skills[skill]
-					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(skill_stats[skill] * 0.01 * real_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained[skill] += xp_to_give
@@ -710,14 +728,14 @@ var/global/list/all_damage_numbers = list()
 					var/experience/attribute/E = SSexperience.all_attributes[attribute]
 					if(!(E.flags & ATTRIBUTE_DAMAGE))
 						continue
-					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(attribute_stats[attribute] * 0.01 * real_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give
 
 				for(var/skill in bonus_experience_skill)
 					//var/experience/skill/E = SSexperience.all_skills[skill]
-					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(bonus_experience_skill[skill] * 0.01 * real_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_skill_xp(skill,xp_to_give)
 						experience_gained[skill] += xp_to_give
@@ -726,7 +744,7 @@ var/global/list/all_damage_numbers = list()
 					var/experience/attribute/E = SSexperience.all_attributes[attribute]
 					if(!(E.flags & ATTRIBUTE_DAMAGE))
 						continue
-					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * total_damage_dealt * experience_multiplier, 1)
+					var/xp_to_give = CEILING(bonus_experience_attribute[attribute] * 0.01 * real_damage_dealt * experience_multiplier, 1)
 					if(xp_to_give > 0)
 						A.add_attribute_xp(attribute,xp_to_give)
 						experience_gained[attribute] += xp_to_give
@@ -745,14 +763,19 @@ var/global/list/all_damage_numbers = list()
 		else
 			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
 
-	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE) && !stealthy && (damage_blocked_with_armor + damage_blocked_with_shield + total_damage_dealt) > 0)
-		var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]"
+	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE))
+		var/reported_damage_dealt = 0
+		if(real_damage_dealt > 0)
+			reported_damage_dealt = real_damage_dealt
+		else
+			reported_damage_dealt = total_damage_dealt
+		var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]_[real_damage_dealt > 0]"
 		var/obj/effect/damage_number/DN
 		if(length(all_damage_numbers) && all_damage_numbers[desired_id])
 			DN = all_damage_numbers[desired_id]
-			DN.add_value(total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
+			DN.add_value(reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
 		else
-			DN = new(victim_turf,total_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,desired_id)
+			DN = new(victim_turf,reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,real_damage_dealt > 0,desired_id)
 
 	if(is_weapon(weapon))
 		var/obj/item/weapon/W = weapon

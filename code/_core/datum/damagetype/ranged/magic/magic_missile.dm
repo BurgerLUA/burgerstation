@@ -1,10 +1,10 @@
 /damagetype/ranged/magic/magic_missile
 	attack_damage_base = list(
-		ARCANE = 35
+		ARCANE = 25
 	)
 
 	attribute_stats = list(
-		ATTRIBUTE_INTELLIGENCE = 50
+		ATTRIBUTE_INTELLIGENCE = 25
 	)
 
 	attribute_damage = list(
@@ -18,3 +18,5 @@
 	skill_damage = list(
 		SKILL_MAGIC = ARCANE
 	)
+
+	force_attacker_armor_calculations_with = ARCANE

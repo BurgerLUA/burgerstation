@@ -15,3 +15,5 @@
 	skill_damage = list(
 		SKILL_PRAYER = HOLY
 	)
+
+	force_attacker_armor_calculations_with = HOLY

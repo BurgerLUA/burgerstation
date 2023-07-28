@@ -41,7 +41,7 @@
 	if(!ranged_damage_type)
 		return 0
 	var/damagetype/D = all_damage_types[ranged_damage_type]
-	. = (D.get_damage_per_hit(50) / 100) * (CELL_SIZE_BASIC / 40)
+	. = (D.get_damage_per_hit(50,200) / 100) * (CELL_SIZE_BASIC / 40)
 	return CEILING(.,10)
 
 /obj/item/weapon/ranged/energy/Finalize()

@@ -16,3 +16,5 @@
 	skill_damage = list(
 		SKILL_PRAYER = DARK
 	)
+
+	force_attacker_armor_calculations_with = DARK
