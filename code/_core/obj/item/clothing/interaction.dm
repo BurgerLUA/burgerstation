@@ -76,7 +76,8 @@
 				if(IS_INFINITY(damage_rating))
 					armor_list += "[capitalize(damagetype)]: IMMUNITY"
 				else if(damage_rating)
-					damage_rating = FLOOR(damage_rating*get_quality_mod(),1)
+					if(damage_rating > 0)
+						damage_rating = FLOOR(damage_rating*get_quality_mod(),1)
 					armor_list += "[capitalize(damagetype)]: [damage_rating]"
 			. += div("notice","<b>Armor:</b> [capitalize(english_list(armor_list))].")
 			. += div("notice","<b>Protected Zones:</b> [capitalize(english_list(protected_limbs))].")
