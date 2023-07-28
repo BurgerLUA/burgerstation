@@ -83,7 +83,7 @@
 
 
 //Mage
-/experience/skill/magic/ //ATTRIBUTE_WILLPOWER
+/experience/skill/magic/ //ATTRIBUTE_INTELLIGENCE
 	name = "Magic"
 	id = SKILL_MAGIC
 	desc = "Not to be confused with sorcery."
@@ -99,7 +99,7 @@
 	experience_power = 1.6
 	experience_multiplier = 43
 
-/experience/skill/medicine/ //ATTRIBUTE_INTELLIGENCE
+/experience/skill/medicine/ //ATTRIBUTE_WILLPOWER
 	name = "Medicine"
 	id = SKILL_MEDICINE
 	desc = "Surgery isn't in, yet!"
@@ -107,7 +107,7 @@
 	experience_power = 1.6
 	experience_multiplier = 28
 
-/experience/skill/precision/ //ATTRIBUTE_INTELLIGENCE
+/experience/skill/precision/ //ATTRIBUTE_WILLPOWER
 	//Each point of extra damage in a critical hit = 1xp
 	//Level 100 is 1 million xp.
 	name = "Precision"
