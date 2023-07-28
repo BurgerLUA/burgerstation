@@ -90,15 +90,23 @@
 
 
 //Wizard
-/experience/attribute/willpower/ //100% complete
-	name = "Willpower"
-	desc = "A measure of how well you can control your mind."
-	desc_extended = "Affects the damage of most magical spells, powers, and abilities. Can be increased by dealing damage with dexterity-based weapons."
-	id = ATTRIBUTE_WILLPOWER
+/experience/attribute/intelligence/ //100% complete
+	name = "Intelligence"
+	desc = "A measure of how quickly and accurately you can apply knowledge."
+	desc_extended = "Affects the damage of most magical spells, powers, and abilities. Can be increased by dealing damage with spell-based weapons."
+	id = ATTRIBUTE_INTELLIGENCE
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
+/experience/attribute/willpower/ //100% complete
+	name = "Willpower"
+	desc = "A measure of how well you can control your mind."
+	desc_extended = "Affects your natural mana regeneration rate. Can be increased by regenerating your mana naturally."
+	id = ATTRIBUTE_WILLPOWER
+	flags = ATTRIBUTE_REGEN
+	experience_power = 1.9
+	experience_multiplier = 10.4
 
 /experience/attribute/soul //100% complete
 	name = "Soul"
@@ -106,15 +114,6 @@
 	desc_extended = "Affects your natural resistances to the arcane."
 	id = ATTRIBUTE_SOUL
 	flags = ATTRIBUTE_RESISTANCE
-	experience_power = 1.9
-	experience_multiplier = 10.4
-
-/experience/attribute/intelligence/ //100% complete
-	name = "Intelligence"
-	desc = "A measure of how quickly and accurately you can apply knowledge."
-	desc_extended = "Affects your natural mana regeneration rate. Can be increased by regenerating your mana naturally."
-	id = ATTRIBUTE_INTELLIGENCE
-	flags = ATTRIBUTE_REGEN
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
