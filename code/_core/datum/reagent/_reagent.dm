@@ -57,6 +57,8 @@
 
 	var/bypass_small_limit = FALSE //Set to true if this reagent ignores the metabolism cap of 1u minimum.
 
+	var/reagent/disguised_reagent //What this reagent is disguised as when reading the contents. Will find the nearest type.
+
 /reagent/proc/get_flammability()
 	return 0
 

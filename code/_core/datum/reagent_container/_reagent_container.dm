@@ -32,16 +32,34 @@
 
 /reagent_container/proc/get_contents_english()
 
-	var/returning_text = list()
+	var/list/name_to_amount = list()
 
 	for(var/r_id in stored_reagents)
 		var/reagent/R = REAGENT(r_id)
 		if(R.abstract)
 			continue
 		var/volume = stored_reagents[r_id]
-		returning_text += "[volume] units of [R.name]"
+		var/found_reagent_name
+		if(!R.disguised_reagent)
+			found_reagent_name = R.name
+		else
+			for(var/r_id_02 in stored_reagents)
+				if(r_id_02 == r_id)
+					continue
+				if(!ispath(R.disguised_reagent,r_id_02))
+					continue
+				var/reagent/R_02 = REAGENT(r_id_02)
+				found_reagent_name = R_02.name
+				break
+		if(!found_reagent_name)
+			found_reagent_name = "????"
+		name_to_amount[found_reagent_name] += volume
 
-	return "It contains [english_list(returning_text)]. The temperature reads [average_temperature] kelvin."
+	var/list/formatted_list = list()
+	for(var/r_name in name_to_amount)
+		formatted_list += "[name_to_amount[r_name]] units of [r_name]"
+
+	return "It contains [english_list(formatted_list)]. The temperature reads [average_temperature] kelvin."
 
 /reagent_container/New(var/atom/desired_owner,var/desired_volume_max)
 
@@ -802,4 +820,3 @@
 		. = transfer_reagents_to(S.reagents,volume_current, caller = caller,include_abstract=TRUE)
 	else
 		. = transfer_reagents_to(consumer.reagents,volume_current, caller = caller,include_abstract=TRUE)
-

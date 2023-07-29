@@ -82,7 +82,8 @@
 	return TRUE
 
 /obj/item/container/edible/dynamic/chicken/raw/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/chicken,15)
+	reagents.add_reagent(/reagent/nutrition/meat/chicken,10)
+	reagents.add_reagent(/reagent/nutrition/bad_meat/chicken,5)
 	reagents.add_reagent(/reagent/nutrition/fat/chicken,5)
 	return ..()
 
@@ -91,6 +92,7 @@
 	return ..()
 
 /obj/item/container/edible/dynamic/chicken/raw_penguin/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/penguin,15)
+	reagents.add_reagent(/reagent/nutrition/meat/penguin,10)
+	reagents.add_reagent(/reagent/nutrition/bad_meat/chicken,5)
 	reagents.add_reagent(/reagent/nutrition/fat/penguin,5)
 	return ..()

@@ -106,7 +106,7 @@
 				var/mob/living/advanced/A = owner
 				var/species/S = SPECIES(A.species)
 				if(S.flags_flavor_love & FLAG_FLAVOR_RAW)
-					amount_to_heal = -amount_to_heal*0.5 //Make amount to heal positive.
+					amount_to_heal = 0 //Not affected.
 			if(amount_to_heal > 0)
 				owner.brute_regen_buffer += amount_to_heal
 				owner.burn_regen_buffer += amount_to_heal

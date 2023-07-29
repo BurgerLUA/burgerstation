@@ -1,4 +1,4 @@
-/reagent/nutrition/flavor/ //TODO: Give buffs.
+/reagent/nutrition/flavor //TODO: Give buffs.
 	name = "flavor"
 	desc = "Pure flavor."
 	color = "#EAD5A4"
@@ -165,7 +165,7 @@
 	color = "#EA4147"
 
 	nutrition_amount = 15
-	heal_factor = -5
+	heal_factor = 5
 
 	flavor = "raw meat"
 
@@ -183,6 +183,22 @@
 		ATTRIBUTE_STRENGTH = 0.5
 	)
 
+/reagent/nutrition/meat/cooked
+	name = "cooked mystery meat"
+	desc = "Nutrition and flavor from cooked meat."
+	color = "#6B3731"
+
+	nutrition_amount = 10
+
+	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED
+
+	flavor = "meat"
+
+	flags_reagent = FLAG_REAGENT_COOKED
+	heated_reagent = /reagent/carbon
+	heated_reagent_mul = 0.01
+	heated_reagent_amount = 0
+
 /reagent/nutrition/meat/New(var/desired_loc)
 	nutrition_quality_amount = nutrition_amount*0.1
 	return ..()
@@ -193,7 +209,7 @@
 	color = "#BF0000"
 
 	nutrition_amount = 15
-	heal_factor = -1
+	heal_factor = 5
 
 	flavor = "raw meat"
 
@@ -205,7 +221,6 @@
 	color = "#6B3731"
 
 	nutrition_amount = 13
-	heal_factor = 5
 
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED
 
@@ -223,7 +238,7 @@
 	color = "#BF0000"
 
 	nutrition_amount = 12
-	heal_factor = -4
+	heal_factor = 5
 
 	flavor = "raw tangy meat"
 
@@ -235,7 +250,6 @@
 	color = "#6B3731"
 
 	nutrition_amount = 10
-	heal_factor = 5
 
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED
 
@@ -254,7 +268,7 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW
 
 	nutrition_amount = 15
-	heal_factor = -2
+	heal_factor = 2
 
 	flavor = "raw chicken"
 
@@ -268,7 +282,6 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
 
 	nutrition_amount = 13
-	heal_factor = 5
 
 	flavor = "chicken"
 
@@ -285,7 +298,7 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
 
 	nutrition_amount = 20
-	heal_factor = -5
+	heal_factor = 5
 
 	flavor = "mistakes"
 
@@ -297,7 +310,6 @@
 	color = "#293D2E"
 
 	nutrition_amount = 18
-	heal_factor = 5
 
 	flavor = "space aliens"
 
@@ -318,7 +330,7 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
 
 	nutrition_amount = 10
-	heal_factor = -20
+	heal_factor = 10
 
 	flavor = "sour dirt"
 
@@ -332,7 +344,6 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
 
 	nutrition_amount = 8
-	heal_factor = 10
 
 	flavor = "chicken"
 
@@ -353,7 +364,7 @@
 	heated_reagent_amount = 1
 
 	nutrition_amount = 10
-	heal_factor = -10
+	heal_factor = 10
 
 	flavor = "sour dirt"
 
@@ -367,7 +378,6 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GROSS | FLAG_FLAVOR_NECRO
 
 	nutrition_amount = 8
-	heal_factor = -10
 
 	flavor = "chicken"
 
@@ -390,7 +400,7 @@
 	heated_reagent_amount = 1
 
 	nutrition_amount = 30
-	heal_factor = -10
+	heal_factor = 10
 
 	flavor = "brains"
 
@@ -403,8 +413,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GROSS
 
-	nutrition_amount = 40
-	heal_factor = -10
+	nutrition_amount = 30
 
 	flavor = "cooked brains"
 
@@ -426,7 +435,7 @@
 	heated_reagent_amount = 1
 
 	nutrition_amount = 20
-	heal_factor = -5
+	heal_factor = 5
 
 	flavor = "tough raw jerky"
 
@@ -439,8 +448,7 @@
 
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED
 
-	nutrition_amount = 20
-	heal_factor = 0
+	nutrition_amount = 15
 
 	flavor = "tough jerky"
 
@@ -501,7 +509,7 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_RAW | FLAG_FLAVOR_GROSS
 
 	nutrition_amount = 15
-	heal_factor = -5
+	heal_factor = 5
 
 	flavor = "hair"
 
@@ -515,7 +523,6 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_GROSS
 
 	nutrition_amount = 13
-	heal_factor = 5
 
 	flavor = "web"
 
@@ -532,7 +539,7 @@
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_RAW
 
 	nutrition_amount = 15
-	heal_factor = -3
+	heal_factor = 20
 
 	flavor = "bearable"
 
@@ -546,7 +553,6 @@
 	flags_flavor = FLAG_FLAVOR_MEAT | FLAG_FLAVOR_COOKED | FLAG_FLAVOR_LOVE
 
 	nutrition_amount = 13
-	heal_factor = 20
 
 	flavor = "slavic cooking"
 
@@ -563,7 +569,7 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
 	nutrition_amount = 10
-	heal_factor = -3
+	heal_factor = 5
 
 	flavor = "ice"
 
@@ -577,7 +583,6 @@
 	flags_flavor = FLAG_FLAVOR_CHICKEN | FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
 	nutrition_amount = 8
-	heal_factor = 5
 
 	flavor = "igloos"
 
@@ -594,7 +599,7 @@
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
 	nutrition_amount = 15
-	heal_factor = 0
+	heal_factor = 5
 
 	flags_reagent = FLAG_REAGENT_COOKED
 	heated_reagent = /reagent/carbon
@@ -613,7 +618,6 @@
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
 	nutrition_amount = 12
-	heal_factor = 5
 
 	flavor = "FISH"
 
@@ -631,7 +635,7 @@
 
 	nutrition_amount = 15
 	nutrition_quality_amount = 5
-	heal_factor = 1
+	heal_factor = 10
 
 	flags_reagent = FLAG_REAGENT_COOKED
 	heated_reagent = /reagent/carbon
@@ -651,7 +655,6 @@
 
 	nutrition_amount = 12
 	nutrition_quality_amount = 5
-	heal_factor = 7
 
 	flavor = "FISH"
 
@@ -668,7 +671,7 @@
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
 	nutrition_amount = 15
-	heal_factor = 0
+	heal_factor = 5
 
 	flavor = "seashells"
 
@@ -682,7 +685,6 @@
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
 	nutrition_amount = 12
-	heal_factor = 5
 
 	flavor = "the ocean"
 
@@ -700,7 +702,7 @@
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_RAW
 
 	nutrition_amount = 20
-	heal_factor = 0
+	heal_factor = 5
 
 	flavor = "seashells"
 
@@ -714,7 +716,6 @@
 	flags_flavor = FLAG_FLAVOR_FISH | FLAG_FLAVOR_COOKED
 
 	nutrition_amount = 18
-	heal_factor = 5
 
 	flavor = "the ocean"
 
@@ -739,6 +740,6 @@
 	color = "#FFFFE4"
 
 	nutrition_amount = 30
-	heal_factor = 3
+	heal_factor = 10
 
 	flavor = "egg yolk"
