@@ -123,7 +123,7 @@
 		O.become_unsc()
 
 /obj/hud/button/become_covenant/
-	name = "become UNSC"
+	name = "become Covenant"
 	desc = "The Covenant."
 	desc_extended = "Become a Covenant Soldier, if possible."
 	icon_state = "become_cov"

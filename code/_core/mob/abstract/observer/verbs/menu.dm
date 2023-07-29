@@ -137,6 +137,7 @@ var/global/antag_count = 0
 	FINALIZE(P)
 	P.equip_loadout(P.loadout_to_use,TRUE)
 	P.setup_iff()
+	P.hook_faction()
 	stop_music_track(P.client)
 
 /mob/abstract/observer/proc/can_become_urf()
@@ -212,6 +213,7 @@ var/global/antag_count = 0
 	FINALIZE(P)
 	P.equip_loadout(P.loadout_to_use,TRUE)
 	P.setup_iff()
+	P.hook_faction()
 	stop_music_track(P.client)
 
 /mob/abstract/observer/proc/can_become_covenant()
@@ -287,4 +289,5 @@ var/global/antag_count = 0
 	FINALIZE(P)
 	P.equip_loadout(P.loadout_to_use,TRUE)
 	P.setup_iff()
+	P.hook_faction()
 	stop_music_track(P.client)

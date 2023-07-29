@@ -108,6 +108,11 @@
 		/obj/hud/button/thirst,
 		/obj/hud/button/mood,
 
+		//halo ticket counter hud element
+		/obj/hud/button/ticket_counter/unsc,
+		/obj/hud/button/ticket_counter/urf,
+		/obj/hud/button/ticket_counter/covenant,
+
 		/obj/hud/button/boss_health
 
 	)
