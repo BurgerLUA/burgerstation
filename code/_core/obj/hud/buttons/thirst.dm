@@ -27,8 +27,21 @@
 
 	if(is_living(caller))
 		var/mob/living/L = caller
-		var/hyd_mod = L.get_hydration_mod()
-		. += "Your hydration level is [FLOOR(hyd_mod*100,1)]%."
+		var/hydration_mod = L.get_hydration_mod()
+
+		switch(hydration_mod)
+			if(-INFINITY to 0.2)
+				. += div("danger","You're dehydrated!")
+			if(0.2 to 0.3)
+				. += div("warning","You're very thirsty!")
+			if(0.3 to 0.5)
+				. += div("warning","You're thirsty.")
+			if(0.5 to 0.7)
+				. += div("notice","You could use something to drink.")
+			if(0.7 to INFINITY)
+				. += div("notice","You're not thirsty.")
+
+		. += "Your hydration level is [FLOOR(hydration_mod*100,1)]%."
 
 
 

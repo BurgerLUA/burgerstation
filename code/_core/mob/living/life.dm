@@ -137,10 +137,11 @@
 /mob/living/proc/rejuvenate()
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
-	nutrition = max(nutrition,initial(nutrition))
-	nutrition_fast = max(nutrition_fast,initial(nutrition_fast))
+	nutrition_normal = initial(nutrition_normal)
+	nutrition_fast = initial(nutrition_fast)
+	nutrition_quality = initial(nutrition_quality)
+	handle_nutrition_max()
 	hydration = max(hydration,initial(hydration))
-	nutrition_quality = max(nutrition_quality,initial(nutrition_quality))
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
@@ -370,7 +371,7 @@ mob/living/proc/on_life_slow()
 
 	if(blood_type && blood_volume_max > 0)
 		if(blood_volume < blood_volume_max)
-			var/blood_volume_to_add = -(add_hydration(-0.15) + add_nutrition(-1.2))*0.125
+			var/blood_volume_to_add = -(add_hydration(-0.15) + remove_nutrition_mix(1.2))*0.125
 			blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
 			QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)
@@ -393,8 +394,7 @@ mob/living/proc/on_life_slow()
 	var/thirst_mod = 1 //Should this be based on something?
 
 	if(hunger_mod > 0)
-		add_nutrition(-0.04*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
-		add_nutrition_fast(-0.08*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
+		remove_nutrition_mix(0.04*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 		add_hydration(-0.13*thirst_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	if(client) //TODO: FIX THIS SHITCODE.
@@ -585,6 +585,7 @@ mob/living/proc/on_life_slow()
 			var/total_adjust = max(0,brute_to_adjust) + max(0,burn_regen_buffer) + max(0,pain_regen_buffer)
 			if(total_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,total_adjust)
+		remove_nutrition_mix( (brute_to_adjust + burn_to_adjust) * 0.5)
 
 	if(health.stamina_regen_cooef > 0 && stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
 		var/stamina_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.stamina_regeneration*nutrition_hydration_mod
@@ -593,6 +594,8 @@ mob/living/proc/on_life_slow()
 			stamina_regen_buffer += stamina_adjust
 			if(stamina_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust)
+		remove_nutrition_mix( stamina_adjust * 0.1 )
+		add_hydration( stamina_adjust * -0.2 )
 
 	if(health.mana_regen_cooef > 0 && mana_regen_delay <= 0 && health.mana_regeneration > 0)
 		var/mana_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.mana_regeneration*nutrition_hydration_mod*(1+(health.mana_current/health.mana_max)*3)

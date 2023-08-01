@@ -3,7 +3,9 @@
 	desc = "Nutrition and flavor from junk food."
 	color = "#AAAAAA"
 
-	nutrition_amount = 4
+	nutrition_fast_amount = 4
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -4
 
 	flavor = "grease"
 
@@ -13,16 +15,14 @@
 
 	particle_size = 0.8
 
-/reagent/nutrition/junk/New(var/desired_loc)
-	nutrition_quality_amount = -nutrition_amount*0.4 //Automation!
-	return ..()
-
 /reagent/nutrition/junk/chips
 	name = "chips"
 	desc = "Nutrition and flavor from chips."
 	color = "#FFDE7C"
 
-	nutrition_amount = 8
+	nutrition_fast_amount = 8
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -8
 
 	flavor = "chips"
 
@@ -33,7 +33,9 @@
 	desc = "Nutrition and flavor from low quality chocolate."
 	color = "#68452A"
 
-	nutrition_amount = 12
+	nutrition_fast_amount = 12
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -12
 
 	flavor = "bland chocolate"
 
@@ -42,7 +44,9 @@
 	desc = "Nutrition and flavor from low quality nougat."
 	color = "#C4A06D"
 
-	nutrition_amount = 8
+	nutrition_fast_amount = 8
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -8
 
 	flavor = "bitter nougat"
 
@@ -51,7 +55,9 @@
 	desc = "Nutrition and flavor from crispy rice."
 	color = "#EAEAC7"
 
-	nutrition_amount = 4
+	nutrition_fast_amount = 4
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -4
 
 	flavor = "stale crispy rice"
 
@@ -60,7 +66,9 @@
 	desc = "Nutrition and flavor from wafers."
 	color = "#FFD897"
 
-	nutrition_amount = 6
+	nutrition_fast_amount = 6
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -6
 
 	flavor = "stale wafer"
 
@@ -69,7 +77,9 @@
 	desc = "Nutrition and flavor from cookies."
 	color = "#B77100"
 
-	nutrition_amount = 10
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -10
 
 	flavor = "cookie"
 
@@ -78,7 +88,9 @@
 	desc = "Nutrition and flavor from soy jerky."
 	color = "#683013"
 
-	nutrition_amount = 14
+	nutrition_fast_amount = 14
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -14
 
 	flavor = "soy meat"
 
@@ -89,7 +101,9 @@
 	desc = "Nutrition and flavor from dried sweet raisins."
 	color = "#470068"
 
-	nutrition_amount = 10
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -10
 
 	flavor = "sour raisins"
 
@@ -98,7 +112,9 @@
 	desc = "Nutrition and flavor from yellow cake."
 	color = "#FFE97C"
 
-	nutrition_amount = 10
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -10
 
 	flavor = "bland overmoist cake"
 
@@ -110,7 +126,9 @@
 	desc = "Nutrition and flavor from cream filling cake."
 	color = "#E1FFFF"
 
-	nutrition_amount = 12
+	nutrition_fast_amount = 12
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -12
 
 	flavor = "sugary cream filling"
 
@@ -119,7 +137,9 @@
 	desc = "Nutrition and flavor from cheese powder."
 	color = "#FF6A00"
 
-	nutrition_amount = 12
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = -10
 
 	flavor = "cheese powder"
 

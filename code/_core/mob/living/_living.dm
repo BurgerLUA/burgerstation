@@ -34,14 +34,15 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/nutrition = 3000
-	var/nutrition_max = 3000
-	var/nutrition_max_hard = 4000
-	var/nutrition_fast = 0
+	var/nutrition_normal = 3000 //Basic stuff. Not junk, not healthy.
+	var/nutrition_fast = 0 //Junkfood.
+	var/nutrition_quality = 0 //Good, healthy food.
+	var/nutrition_max = 3000 //Anything over this makes you fat.
+
+	var/nutrition_max_hard = 4000 //Absolute maximum value. Can't have any more than this.
+
 	var/hydration = 2000
 	var/hydration_max = 2000
-	var/nutrition_quality = 1500 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that. 1000 is average.
-	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
 
@@ -666,6 +667,8 @@
 		death(silent=TRUE)
 
 	update_level(TRUE)
+
+	handle_nutrition_max()
 
 	QUEUE_HEALTH_UPDATE(src)
 

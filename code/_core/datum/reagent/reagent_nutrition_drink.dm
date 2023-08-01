@@ -11,7 +11,6 @@
 	liquid = 1
 
 	hydration_amount = 25
-	nutrition_quality_amount = 3
 	heal_factor = 0
 
 	cooled_reagent_temp = T0C - 1
@@ -58,7 +57,7 @@
 	liquid = 1
 
 	hydration_amount = 25
-	nutrition_quality_amount = 3
+
 	heal_factor = 2
 
 	value = 3
@@ -75,12 +74,11 @@
 	liquid = -0.5
 
 	hydration_amount = 25
-	nutrition_quality_amount = 3
 	heal_factor = 0
 
 	heated_reagent_temp = T0C + 1
 	heated_reagent_amount = REAGENT_ROUNDING
-	heated_reagent_mul = 0.03
+	heated_reagent_mul = 0
 	heated_reagent = /reagent/nutrition/water
 
 	temperature_mod = 50
@@ -92,9 +90,7 @@
 	color = "#DDFFFF"
 	alpha = 225
 
-	nutrition_amount = 5
 	hydration_amount = 15
-	nutrition_quality_amount = -3
 
 	flavor = "white noise"
 
@@ -110,12 +106,20 @@
 
 	flavor = "cola"
 
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
+
 /reagent/nutrition/soda/grape
 	name = "\improper Starkist Grape Soda"
 	desc = "Head for the stars!"
 	color = "#57007F"
 
 	flavor = "grape soda"
+
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
 
 /reagent/nutrition/soda/orange
 	name = "\improper Starkist Orange Soda"
@@ -124,14 +128,18 @@
 
 	flavor = "orange soda"
 
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
+
 /reagent/nutrition/soda/iced_tea
 	name = "\improper Disk! Iced Tea"
 	desc = "Secure that refreshing flavor!"
 	color = "#A55C2B"
 
-	nutrition_amount = 2
-	hydration_amount = 15
-	nutrition_quality_amount = -2
+	nutrition_fast_amount = 5
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
 
 	flavor = "iced tea"
 
@@ -142,6 +150,10 @@
 
 	flavor = "citrus soda"
 
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
+
 
 /reagent/nutrition/soda/dr_gibb
 	name = "\improper Dr. Gibb"
@@ -150,9 +162,17 @@
 
 	flavor = "cherry cola"
 
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
+
 /reagent/nutrition/soda/space_up
 	name = "\improper Space Up!"
 	desc = "Space up with Space Up!"
 	color = "#590000"
 
 	flavor = "lemon lime soda"
+
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0

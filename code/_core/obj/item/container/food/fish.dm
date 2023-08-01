@@ -34,7 +34,7 @@
 	icon_state = "fish"
 
 /obj/item/container/edible/fishing/generic/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,10)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
 
@@ -43,7 +43,7 @@
 	icon_state = "salmon"
 
 /obj/item/container/edible/fishing/salmon/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,15)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
 
@@ -52,7 +52,7 @@
 	icon_state = "catfish"
 
 /obj/item/container/edible/fishing/catfish/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,20)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,20)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,10)
 	return ..()
 
@@ -80,7 +80,7 @@
 	icon_state = "electric_eel"
 
 /obj/item/container/edible/fishing/eel/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,10)
 	reagents.add_reagent(/reagent/medicine/stamina_potion,5)
 	reagents.add_reagent(/reagent/radioactive/radium,5)
 	return ..()
@@ -90,7 +90,7 @@
 	icon_state = "glofish"
 
 /obj/item/container/edible/fishing/glofish/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,10)
 	reagents.add_reagent(/reagent/medicine/mana_potion,5)
 	reagents.add_reagent(/reagent/radioactive/,5)
 	return ..()
@@ -100,7 +100,7 @@
 	icon_state = "goldfish"
 
 /obj/item/container/edible/fishing/goldfish/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,10)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,10)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,5)
 	return ..()
 
@@ -110,6 +110,6 @@
 	icon_state = "shark"
 
 /obj/item/container/edible/fishing/shark/Generate()
-	reagents.add_reagent(/reagent/nutrition/meat/qualityfish,15)
+	reagents.add_reagent(/reagent/nutrition/meat/fish/quality,15)
 	reagents.add_reagent(/reagent/nutrition/fat/fish,10)
 	return ..()

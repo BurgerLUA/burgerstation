@@ -116,110 +116,21 @@
 
 	if(qdeleting) return
 
-	switch(chosen_number)
-		if(1)
-			L.to_chat(span("danger","You don't feel so good..."))
-			var/mob/living/advanced/player/found_player
-			for(var/mob/living/advanced/player/P in viewers(VIEW_RANGE*0.5,L))
-				if(P == L || P.dead)
-					continue
-				found_player = P
-				break
-			if(found_player)
-				var/list/split_name = splittext(found_player.name," ")
-				var/last_name = split_name[length(split_name)]
-				L.do_say("[found_player.gender == MALE ? "Mr." : "Mrs."] [last_name], I don't feel so good...")
-			L.death(TRUE)
-			L.dust()
-		if(2)
-			L.to_chat(span("danger","Oh shi-"))
-			L.smite()
-		if(3)
-			if(L.blood_type)
-				var/reagent/R = REAGENT(L.blood_type)
-				for(var/i=1,i<=4,i++)
-					create_blood(/obj/effect/cleanable/blood/splatter,get_turf(src),R.color,rand(-TILE_SIZE,TILE_SIZE),rand(-TILE_SIZE,TILE_SIZE))
-				L.to_chat(span("danger","Wait, where did all my blood go?!"))
-				L.blood_volume = 0
-			else
-				if(L.health.organic)
-					L.to_chat(span("danger","Woe, plague be upon me!"))
-					var/turf/T = get_turf(L)
-					for(var/i=1,i<=5,i++)
-						CREATE(/mob/living/simple/passive/mouse/grey,T)
-					L.health.adjust_loss_smart(tox=L.health.health_max)
-				else
-					L.to_chat(span("danger","My sensors indicate I am overheating!"))
-					L.health.adjust_loss_smart(burn=L.health.health_max)
-		if(4)
-			if(L.health.organic)
-				L.to_chat(span("danger","Woe, plague be upon me!"))
-				var/turf/T = get_turf(L)
-				for(var/i=1,i<=5,i++)
-					CREATE(/mob/living/simple/passive/mouse/grey,T)
-				L.health.adjust_loss_smart(tox=L.health.health_max)
+	used = TRUE
 
-			else
-				L.to_chat(span("danger","My sensors indicate I am overheating!"))
-				L.health.adjust_loss_smart(burn=L.health.health_max)
-		if(5)
-			L.to_chat(span("danger","Oh no I hope I don't-"))
-			L.death(TRUE)
-		if(6)
-			L.to_chat(span("danger","I'M ON FIRE!"))
-			L.ignite(60)
-		if(7)
-			if(L.health.organic)
-				L.to_chat(span("warning","Wait why does it feel like I'm-"))
-				L.intoxication = 3000
-			else
-				L.to_chat(span("warning","My sensors indicate I am overheating!"))
-				L.health.adjust_loss_smart(burn=L.health.health_max)
-		if(8)
-			L.to_chat(span("warning","I feel like I put on some weight..."))
-			L.nutrition_fast += L.nutrition
-			L.nutrition = 0
-			L.nutrition_quality = 0
-		if(9)
-			L.to_chat(span("notice","Wow, literally nothing happened. How lame."))
-		if(10)
-			L.to_chat(span("notice","Wow, my luck feels... average."))
-			L.add_attribute_xp(ATTRIBUTE_LUCK,50 - L.get_attribute_level(ATTRIBUTE_LUCK),FALSE)
-		if(11)
-			L.to_chat(span("notice","Egg."))
-			CREATE(/obj/item/container/edible/egg/chicken,get_turf(src))
-		if(12)
-			L.to_chat(span("notice","Hey, magic!"))
-			CREATE(/obj/item/supply_crate/magic,get_turf(src))
-		if(13)
-			L.to_chat(span("notice","Wait... is 13 lucky or unlucky? Guess I'll find out with another roll..."))
-			return TRUE //Don't delete.
-		if(14)
-			L.to_chat(span("notice","Hey, some gems! Wait..."))
-			CREATE(/obj/item/currency/telecrystals{amount=10},get_turf(src))
-		if(15)
-			L.to_chat(span("notice","Hey, more magic!"))
-			var/turf/T = get_turf(src)
-			for(var/i=1,i<=5,i++)
-				CREATE(/obj/item/supply_crate/magic,T)
-		if(16)
-			L.to_chat(span("notice","Hey, 16, that's pretty good. Nothing happened, but I do feel luckier..."))
-			L.add_attribute_xp(ATTRIBUTE_LUCK,5,FALSE)
-		if(17)
-			L.to_chat(span("notice","17? Such luck should be rewarded... with even more luck."))
-			CREATE(/obj/item/tempering/luck/double,get_turf(src))
-		if(18)
-			L.to_chat(span("notice","Wait, did god drop their epi-pen?"))
-			CREATE(/obj/item/container/syringe/medipen/adminomnizine,get_turf(src))
-		if(19)
-			L.to_chat(span("notice","Just shy of 20...wait, where'd this ring come from?"))
-			CREATE(/obj/item/clothing/ring/gold/ring_of_god,get_turf(src))
-		if(20)
-			L.to_chat(span("notice","NAT 20! I AM A GOD!"))
-			CREATE(/obj/item/clothing/mask/godlike,get_turf(src))
+	// https://www.desmos.com/calculator/vivxdlctyz
+	var/luck_to_add = ((chosen_number - 10)/10)*50
 
-	used = chosen_number
+	if(luck_to_add)
+		if(luck_to_add < 0)
+			L.to_chat(span("warning","Uh oh."))
+		else
+			L.to_chat(span("notice","Yipee!"))
+		L.add_attribute_xp(ATTRIBUTE_LUCK,luck_to_add)
+	else
+		L.to_chat(span("notice","Huh."))
 
+	visible_message(span(luck_to_add >= 0 ? "notice" : "warning","\The [src.name] glows faintly..."))
 
 /obj/item/dice/d2
 	name = "d2"

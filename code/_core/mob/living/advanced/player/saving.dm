@@ -52,7 +52,7 @@
 		last_tax_payment = loaded_data["last_tax_payment"] > 0 ? loaded_data["last_tax_payment"] : world.realtime
 		insurance = isnum(loaded_data["insurance"]) ? loaded_data["insurance"] : INSURANCE_PAYOUT * 4
 		insurance_premiums = isnum(loaded_data["insurance_premiums"]) ? loaded_data["insurance_premiums"] : 5
-		nutrition = isnum(loaded_data["nutrition"]) ? loaded_data["nutrition"] : initial(nutrition)*0.5
+		nutrition_normal = isnum(loaded_data["nutrition_normal"]) ? loaded_data["nutrition_normal"] : initial(nutrition_normal)*0.5
 		hydration = isnum(loaded_data["hydration"]) ? loaded_data["hydration"] : initial(hydration)*0.5
 		nutrition_fast = isnum(loaded_data["nutrition_fast"]) ? loaded_data["nutrition_fast"] : 0
 		nutrition_quality = isnum(loaded_data["nutrition_quality"]) ? loaded_data["nutrition_quality"] : initial(nutrition_quality)
@@ -68,10 +68,10 @@
 			prestige_count =  loaded_data["prestige_count"]
 
 		if(loaded_data["dead"]) //New body!
-			nutrition = initial(nutrition)*0.25
-			nutrition_fast = nutrition
+			nutrition_fast = initial(nutrition_fast)
+			nutrition_normal = initial(nutrition_normal)*0.25
+			nutrition_quality = initial(nutrition_quality)*0.75
 			hydration = initial(hydration)*0.5
-			nutrition_quality = nutrition_quality_max*0.5
 			var/currency_to_give = 0
 			if(isnum(insurance))
 				var/insurance_to_pay = clamp(insurance,0,INSURANCE_PAYOUT)
@@ -204,8 +204,8 @@
 	.["species"] = species
 	.["gender"] = gender
 	.["sex"] = sex
-	.["nutrition"] = nutrition
 	.["hydration"] = hydration
+	.["nutrition_normal"] = nutrition_normal
 	.["nutrition_quality"] = nutrition_quality
 	.["nutrition_fast"] = nutrition_fast
 	.["known_languages"] = known_languages

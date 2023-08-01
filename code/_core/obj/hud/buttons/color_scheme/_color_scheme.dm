@@ -5,6 +5,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	/obj/hud/button/color_scheme/color_04,
 	/obj/hud/button/color_scheme/color_05,
 	/obj/hud/button/color_scheme/color_06,
+	/obj/hud/button/color_scheme/color_07,
 	/obj/hud/button/close_color_scheme,
 	/obj/hud/button/default_color_scheme
 )
@@ -30,7 +31,7 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 	name = "default color scheme"
 	desc_extended = "Clicking here will reset the color scheme to the original burgerstation blue color scheme."
 	icon_state = "default"
-	screen_loc = "CENTER-3.5,CENTER+2"
+	screen_loc = "CENTER-4.5,CENTER+2"
 
 	has_quick_function = FALSE
 
@@ -123,24 +124,28 @@ var/global/list/obj/hud/button/color_scheme_buttons = list(
 
 /obj/hud/button/color_scheme/color_01
 	color_id = 1
-	screen_loc = "CENTER-2.5,CENTER+2"
+	screen_loc = "CENTER-3.5,CENTER+2"
 
 /obj/hud/button/color_scheme/color_02
 	color_id = 2
-	screen_loc = "CENTER-1.5,CENTER+2"
+	screen_loc = "CENTER-2.5,CENTER+2"
 
 /obj/hud/button/color_scheme/color_03
 	color_id = 3
-	screen_loc = "CENTER-0.5,CENTER+2"
+	screen_loc = "CENTER-1.5,CENTER+2"
 
 /obj/hud/button/color_scheme/color_04
 	color_id = 4
-	screen_loc = "CENTER+0.5,CENTER+2"
+	screen_loc = "CENTER-0.5,CENTER+2"
 
 /obj/hud/button/color_scheme/color_05
 	color_id = 5
-	screen_loc = "CENTER+1.5,CENTER+2"
+	screen_loc = "CENTER+0.5,CENTER+2"
 
 /obj/hud/button/color_scheme/color_06
 	color_id = 6
+	screen_loc = "CENTER+1.5,CENTER+2"
+
+/obj/hud/button/color_scheme/color_07
+	color_id = 7
 	screen_loc = "CENTER+2.5,CENTER+2"

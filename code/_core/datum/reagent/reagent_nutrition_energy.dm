@@ -1,7 +1,9 @@
 /reagent/nutrition/energy/
-	nutrition_amount = 0
-	hydration_amount = 0
+
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 0
 	nutrition_quality_amount = 0
+	hydration_amount = 0
 
 	metabolism_stomach = 20/60 // Lasts a minute per 20u
 	metabolism_blood = 10/60 // Lasts a minute per 10u
@@ -49,9 +51,10 @@
 
 	flavor = "electricity"
 
-	nutrition_amount = 3
+	nutrition_fast_amount = 15
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
 	hydration_amount = 10
-	nutrition_quality_amount = -10
 
 	adrenaline_strength = 200
 	stamina_strength = 10
@@ -65,9 +68,10 @@
 
 	flavor = "coffee"
 
-	nutrition_amount = 3
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 5
 	hydration_amount = 10
-	nutrition_quality_amount = -2
 
 	adrenaline_strength = 50
 	stamina_strength = 5
@@ -84,9 +88,10 @@
 
 	flavor = "expresso"
 
-	nutrition_amount = 3
-	hydration_amount = 6
-	nutrition_quality_amount = -4
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 10
+	hydration_amount = 5
 
 	adrenaline_strength = 100
 	stamina_strength = 10

@@ -18,6 +18,10 @@
 	heated_reagent_mul = 0.05
 	heated_reagent_amount = 5
 
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
+
 	heated_reagent = /reagent/nutrition/flavor //Lazy, but it werks.
 	disguised_reagent = /reagent/nutrition/meat
 
