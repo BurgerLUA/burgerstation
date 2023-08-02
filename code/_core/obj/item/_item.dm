@@ -702,6 +702,13 @@
 		caller.to_chat(span("notice","\The [src.name] is empty!"))
 		return FALSE
 
+	if(L.is_stuffed())
+		if(caller == L)
+			caller.to_chat(span("warning","You can't eat anymore! You're stuffed!"))
+		else
+			caller.to_chat(span("warning","You can't forcefeed [L.name] anymore! They're stuffed!"))
+		return FALSE
+
 	if(is_living(caller))
 		var/mob/living/C = caller
 		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash

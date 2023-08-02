@@ -42,17 +42,14 @@
 
 /mob/living/proc/add_nutrition_normal(var/nutrition_amount)
 	nutrition_normal = clamp(nutrition_normal + nutrition_amount,0,nutrition_max_hard)
-	handle_nutrition_max()
 	return nutrition_normal
 
 /mob/living/proc/add_nutrition_quality(var/amount)
 	nutrition_quality = clamp(nutrition_quality + amount,0,nutrition_max_hard)
-	handle_nutrition_max()
 	return nutrition_quality
 
 /mob/living/proc/add_nutrition_fast(var/amount)
 	nutrition_fast = clamp(nutrition_fast + amount,0,nutrition_max_hard)
-	handle_nutrition_max()
 	return nutrition_fast
 
 /mob/living/proc/get_nutrition_mod()
@@ -68,13 +65,6 @@
 		return 0
 	return ( (nutrition_quality*2 + nutrition_normal*0.5) / (nutrition_normal*0.5 + nutrition_fast*1.5 + nutrition_quality)) * min( (nutrition_quality+nutrition_normal*0.5)/nutrition_max,1)
 
-/mob/living/proc/handle_nutrition_max()
-	var/nutrition_over = (nutrition_fast + nutrition_quality + nutrition_normal) - nutrition_max_hard
-	if(nutrition_over > 0)
-		var/nutrition_normal_to_remove = min(nutrition_normal,nutrition_over*0.5)
-		nutrition_normal -= nutrition_normal_to_remove
-		if(nutrition_normal_to_remove)
-			nutrition_quality -= min(nutrition_normal_to_remove,nutrition_quality)
-	return TRUE
-
+/mob/living/proc/is_stuffed()
+	return (nutrition_fast + nutrition_quality + nutrition_normal) > nutrition_max_hard
 

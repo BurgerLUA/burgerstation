@@ -75,7 +75,7 @@
 	var/hunger_mod_real = L.get_nutrition_mod()
 	var/hunger_icon = CEILING(clamp(hunger_mod_visual * 24,0,24),1)
 
-	var/fatass_mod = (total_nutrition - L.nutrition_max) / (L.nutrition_max_hard - L.nutrition_max)
+	var/fatass_mod = (total_nutrition - L.nutrition_max) / max(1,L.nutrition_max_hard - L.nutrition_max)
 	var/fatass_icon = CEILING(clamp(fatass_mod * 4,0,4),1)
 
 	var/quality_mod_real = L.get_nutrition_quality_mod()

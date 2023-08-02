@@ -140,7 +140,6 @@
 	nutrition_normal = initial(nutrition_normal)
 	nutrition_fast = initial(nutrition_fast)
 	nutrition_quality = initial(nutrition_quality)
-	handle_nutrition_max()
 	hydration = max(hydration,initial(hydration))
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)

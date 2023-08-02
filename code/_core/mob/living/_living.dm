@@ -668,8 +668,6 @@
 
 	update_level(TRUE)
 
-	handle_nutrition_max()
-
 	QUEUE_HEALTH_UPDATE(src)
 
 	update_eyes()
