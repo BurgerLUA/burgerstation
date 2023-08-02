@@ -16,7 +16,8 @@
 
 /mob/living/advanced/player/covenant/elite/setup_name()
 	. = ..()
-	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+	name = "[gender == MALE ? FIRST_NAME_SANG : FIRST_NAME_SANG] [LAST_NAME_SANG]"
+	real_name = name
 	return TRUE
 
 /mob/living/advanced/player/covenant/elite_shipmaster
@@ -37,5 +38,6 @@
 
 /mob/living/advanced/player/covenant/elite_shipmaster/setup_name()
 	. = ..()
-	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+	name = "[gender == MALE ? FIRST_NAME_SANG : FIRST_NAME_SANG] [LAST_NAME_SANG]"
+	real_name = name
 	return TRUE

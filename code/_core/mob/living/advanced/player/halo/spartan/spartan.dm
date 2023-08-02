@@ -16,6 +16,7 @@
 /mob/living/advanced/player/unsc/spartan/setup_name()
 	. = ..()
 	name = "[gender == MALE ? FIRST_NAME_SPARTAN : FIRST_NAME_SPARTAN] [LAST_NAME_SPARTAN]"
+	real_name = name
 	return TRUE
 
 

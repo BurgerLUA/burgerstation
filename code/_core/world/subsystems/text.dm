@@ -30,6 +30,13 @@ SUBSYSTEM_DEF(text)
 	first_names_male = splittext(rustg_file_read("text/names/first_male.txt"),"\n")
 	first_names_female = splittext(rustg_file_read("text/names/first_female.txt"),"\n")
 	last_names = splittext(rustg_file_read("text/names/last.txt"),"\n")
+	//halo
+	first_sangheili = splittext(rustg_file_read("text/names/first_sangheili.txt"),"\n")
+	last_sangheili = splittext(rustg_file_read("text/names/last_sangheili.txt"),"\n")
+	first_kigyar = splittext(rustg_file_read("text/names/first_kigyar.txt"),"\n")
+	first_unggoy = splittext(rustg_file_read("text/names/first_unggoy.txt"),"\n")
+	first_spartan = splittext(rustg_file_read("text/names/first_spartan.txt"),"\n")
+	last_spartan = splittext(rustg_file_read("text/names/last_spartan.txt"),"\n")
 
 	adjectives = splittext(rustg_file_read("text/names/adjectives.txt"),"\n")
 	verbs = splittext(rustg_file_read("text/names/verbs.txt"),"\n")

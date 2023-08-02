@@ -16,5 +16,6 @@
 
 /mob/living/advanced/player/covenant/kig_yar/setup_name()
 	. = ..()
-	name = "[gender == MALE ? FIRST_NAME_MALE : FIRST_NAME_FEMALE] [LAST_NAME]"
+	name = "[gender == MALE ? JACK : JACK]"
+	real_name = name
 	return TRUE
