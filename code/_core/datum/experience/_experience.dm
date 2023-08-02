@@ -91,7 +91,7 @@ var/global/list/difficulty_to_xp_mod = list(
 		var/mob/living/advanced/player/P = owner
 		xp_to_add *= difficulty_to_xp_mod[P.get_difficulty()]
 
-	experience += xp_to_add
+	experience = max(0,experience+xp_to_add)
 	experience = CEILING(experience,1)
 
 	var/current_level = get_current_level()
