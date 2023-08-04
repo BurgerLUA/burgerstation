@@ -1,4 +1,4 @@
-var/global/price_multiplier = 1
+
 
 /event/economy_dump
 	name = "Economy Dump"
@@ -7,14 +7,13 @@ var/global/price_multiplier = 1
 
 	occurances_max = 0 //Disabled.
 
-	var/price_increase = 100
+
 
 /event/economy_dump/on_start()
 
-
 	log_debug("Starting Economy Dump Event")
 
-	price_increase = rand(5,25) //Percent.
+	var/price_increase = rand(5,25) //Percent.
 
 	announce(
 		"Central Command Economy Division",
@@ -23,7 +22,7 @@ var/global/price_multiplier = 1
 		sound_to_play = 'sound/round_end/dump_it.ogg'
 	)
 
-	price_multiplier += (price_increase/100)
+	SSeconomy.crash_buy_multiplier += (price_increase/100)
 
 	return ..()
 

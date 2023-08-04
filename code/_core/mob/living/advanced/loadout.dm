@@ -1,6 +1,6 @@
 /mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
 
-	var/loadout/spawning_outfit = all_loadouts[loadout_id]
+	var/loadout/spawning_outfit = SSloadouts.all_loadouts[loadout_id]
 	if(!spawning_outfit)
 		CRASH("Tried adding an invalid spawnoutfit ([loadout_id]) to [src.get_debug_name()]!")
 

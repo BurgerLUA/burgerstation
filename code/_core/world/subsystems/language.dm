@@ -4,6 +4,8 @@ SUBSYSTEM_DEF(language)
 	priority = SS_ORDER_FIRST
 	var/list/all_languages = list()
 
+	var/language_seed = 1337
+
 /subsystem/language/Initialize()
 
 	for(var/k in subtypesof(/language/))

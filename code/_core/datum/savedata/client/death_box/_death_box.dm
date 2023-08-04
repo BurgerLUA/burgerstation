@@ -1,4 +1,3 @@
-var/global/list/ckey_to_death_box_data = list()
 
 #define DEATH_BOX_LIMIT 5
 
@@ -10,7 +9,7 @@ var/global/list/ckey_to_death_box_data = list()
 	var/list/saved_player_count = list()
 
 	var/total_items_saved = 0
-	for(var/k in dead_player_mobs)
+	for(var/k in SSliving.dead_player_mobs)
 		var/mob/living/advanced/player/P = k
 		if(!P)
 			log_error("Could not save a player as they didn't exist!")
@@ -26,7 +25,7 @@ var/global/list/ckey_to_death_box_data = list()
 			else
 				log_error("ERROR: Did not save [P.get_debug_name()] as it wasn't dead despite being in global list dead_player_mobs.")
 			continue
-		var/savedata/client/death_box/DB = ckey_to_death_box_data[P.death_ckey]
+		var/savedata/client/death_box/DB = SSclient.ckey_to_death_box_data[P.death_ckey]
 		if(!DB)
 			log_error("ERROR: Could not save [P.name](Ckey: [P.death_ckey ? P.death_ckey : "NULL"]) as there was no death box data assigned to it!")
 			continue
@@ -76,7 +75,7 @@ var/global/list/ckey_to_death_box_data = list()
 		P.to_chat(span("warning","You're too far away!"))
 		return null
 
-	var/savedata/client/death_box/DB = ckey_to_death_box_data[P.ckey_last]
+	var/savedata/client/death_box/DB = SSclient.ckey_to_death_box_data[P.ckey_last]
 
 	if(!DB)
 		P.to_chat(span("danger","Deathbox Data error detected. Report this bug on discord."))
@@ -165,7 +164,7 @@ var/global/list/ckey_to_death_box_data = list()
 
 	var/client/owner = CLIENT(ckey)
 	if(owner)
-		ckey_to_death_box_data[ckey] = src
+		SSclient.ckey_to_death_box_data[ckey] = src
 
 /savedata/client/death_box/proc/save()
 	var/client/owner = CLIENT(ckey)

@@ -1,10 +1,3 @@
-var/global/list/ability_colors = list(
-	HEALTH = "red",
-	MANA = "blue",
-	STAMINA = "green"
-)
-
-
 /obj/hud/button/ability
 	name = "ERROR"
 	var/id = null
@@ -32,6 +25,12 @@ var/global/list/ability_colors = list(
 	var/image/ability_icon
 	maptext_y = -5
 	maptext_x = 0
+
+	var/static/list/ability_colors = list(
+		HEALTH = "red",
+		MANA = "blue",
+		STAMINA = "green"
+	)
 
 /obj/hud/button/ability/New(var/desired_loc)
 	. = ..()

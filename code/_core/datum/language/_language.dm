@@ -1,4 +1,4 @@
-var/global/language_seed = 1337
+
 
 
 /language/

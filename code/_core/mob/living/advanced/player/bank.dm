@@ -1,5 +1,5 @@
 /mob/living/advanced/player/proc/close_bank()
-	var/obj/item/bank_storage/BS = ckey_to_bank_storage[ckey_last]
+	var/obj/item/bank_storage/BS = SSclient.ckey_to_bank_storage[ckey_last]
 	BS.close_inventory(src)
 
 /mob/living/advanced/player/proc/access_bank()
@@ -14,10 +14,10 @@
 
 	var/obj/item/bank_storage/BS
 
-	if(!ckey_to_bank_storage[ckey_last])
+	if(!SSclient.ckey_to_bank_storage[ckey_last])
 		var/list/object_data
-		if(ckey_to_bank_data[ckey_last])
-			var/savedata/client/bank/BD = ckey_to_bank_data[ckey_last]
+		if(SSclient.ckey_to_bank_data[ckey_last])
+			var/savedata/client/bank/BD = SSclient.ckey_to_bank_data[ckey_last]
 			object_data = BD.loaded_data
 
 		BS = new(T)
@@ -28,9 +28,9 @@
 		FINALIZE(BS)
 		if(!object_data)
 			GENERATE(BS)
-		ckey_to_bank_storage[ckey_last] = BS
+		SSclient.ckey_to_bank_storage[ckey_last] = BS
 	else
-		BS = ckey_to_bank_storage[ckey_last]
+		BS = SSclient.ckey_to_bank_storage[ckey_last]
 
 	BS.force_move(T)
 	BS.open_inventory(src)

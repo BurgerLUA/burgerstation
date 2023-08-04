@@ -1,9 +1,11 @@
-SUBSYSTEM_DEF(map_node)
+SUBSYSTEM_DEF(nodes)
 	name = "Map Node Subsystem"
 	desc = "Generates Map Nodes."
 	priority = SS_ORDER_LAST
 
-/subsystem/map_node/Initialize()
+	var/list/obj/marker/map_node/all_map_nodes = list()
+
+/subsystem/nodes/Initialize()
 
 	log_subsystem(name,"Node graph out of date. Rebuilding...")
 

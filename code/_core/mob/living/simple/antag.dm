@@ -1,17 +1,4 @@
-var/global/list/valid_antag_colors = list(
-	"#C51111",
-	"#71491E",
-	"#EF7D0D",
-	"#F6F658",
-	"#ED54BA",
-	"#6B2FBB",
-	"#132ED1",
-	"#38FEDB",
-	"#117F2D",
-	"#50EF39",
-	"#D6E0F0",
-	"#3F474E"
-)
+
 
 /mob/living/simple/antag
 	name = "crewmember"
@@ -47,6 +34,21 @@ var/global/list/valid_antag_colors = list(
 	soul_size = SOUL_SIZE_COMMON
 
 	level = 4
+
+	var/static/list/valid_antag_colors = list(
+		"#C51111",
+		"#71491E",
+		"#EF7D0D",
+		"#F6F658",
+		"#ED54BA",
+		"#6B2FBB",
+		"#132ED1",
+		"#38FEDB",
+		"#117F2D",
+		"#50EF39",
+		"#D6E0F0",
+		"#3F474E"
+	)
 
 /mob/living/simple/antag/Initialize()
 	var/image/I = new/image(icon,"shadow")

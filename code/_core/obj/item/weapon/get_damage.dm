@@ -4,7 +4,7 @@
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
@@ -17,7 +17,7 @@
 		log_error("Warning: [src.type] did not have a valid damage_type_on.")
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type_on]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type_on]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
@@ -31,7 +31,7 @@
 	if(!damage_type_to_use)
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type_to_use]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type_to_use]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
 		return 0
@@ -52,7 +52,7 @@
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0
 
-	var/damagetype/D = all_damage_types[initial_damage_type]
+	var/damagetype/D = SSdamagetype.all_damage_types[initial_damage_type]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0

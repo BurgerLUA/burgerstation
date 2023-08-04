@@ -52,7 +52,7 @@
 
 	if(noise >= GENERATION_SEGMENT_LOW && noise <= GENERATION_SEGMENT_HIGH && src.loc.type == /area/ && prob(5))
 		var/valid_placement = TRUE
-		for(var/k in all_rituals)
+		for(var/k in SSobj.all_rituals)
 			var/obj/structure/interactive/ritual/R = k
 			if(get_dist(src,R) <= VIEW_RANGE*4)
 				valid_placement = FALSE

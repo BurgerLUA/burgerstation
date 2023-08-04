@@ -1,4 +1,4 @@
-var/global/list/obj/hud/button/chargen_buttons = list(
+var/global/static/list/obj/hud/button/chargen_buttons = list(
 
 	/obj/hud/button/chargen/change_name,
 
@@ -31,6 +31,7 @@ var/global/list/obj/hud/button/chargen_buttons = list(
 
 	/obj/hud/button/chargen/difficulty
 )
+
 
 /obj/hud/button/chargen
 	name = "chargen button"

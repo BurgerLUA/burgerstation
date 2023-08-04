@@ -16,7 +16,9 @@ SUBSYSTEM_DEF(economy)
 
 	var/goblin_economy = 75000 //How much gold goblins have.
 	var/sell_multiplier = 1
+
 	var/crash_sell_multiplier = 1
+	var/crash_buy_multiplier = 1
 
 /subsystem/economy/proc/update_stats()
 	if(gold_in_circulation < 0)
@@ -93,7 +95,7 @@ SUBSYSTEM_DEF(economy)
 
 /subsystem/economy/proc/save()
 
-	var/client_length = length(all_clients)
+	var/client_length = length(SSclient.all_clients)
 
 	gold_in_circulation -= CEILING(world.time/100,1)*client_length*0.5
 

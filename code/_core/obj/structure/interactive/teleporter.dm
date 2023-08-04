@@ -18,14 +18,14 @@
 	if(teleport_cooldown > world.time)
 		caller.to_chat(span("warning","The teleporter is still on cooldown, wait some time before using it again!"))
 		return FALSE
-	if(!length(gps_list))
+	if(!length(SSobj.gps_list))
 		caller.to_chat(span("warning","There are no active GPS currently, try again later!"))
 		return FALSE
 	var/choice1 = input("Send or Receive?", "Teleport Direction") in list("Send", "Receive", "Cancel")|null
 	if(choice1 == "Cancel")
 		caller.to_chat(span("notice","You decided against using the teleporter."))
 		return FALSE
-	var/obj/item/analyzer/gps/choice2 = input("Select the GPS for coordinates.", "GPS Selection") as null|anything in gps_list
+	var/obj/item/analyzer/gps/choice2 = input("Select the GPS for coordinates.", "GPS Selection") as null|anything in SSobj.gps_list
 	if(!choice2)
 		return
 	if(choice2.assigned_passkey && choice2.secure)

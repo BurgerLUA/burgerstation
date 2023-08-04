@@ -1,4 +1,4 @@
-var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
+
 
 /obj/item/currency/credits
 	name = "credits"
@@ -12,6 +12,8 @@ var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 	amount_max = 5000
 
 	value = 1
+
+	var/static/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 
 /obj/item/currency/credits/update_overlays()
 
@@ -35,6 +37,8 @@ var/global/list/credit_amounts = list(1,5,10,20,50,100,500,1000)
 		add_overlay(I)
 		total_count++
 		local_value -= chosen_value
+		if(total_count >= 10)
+			break
 
 	pixel_w = -total_count*0.5
 	pixel_z = total_count*0.5

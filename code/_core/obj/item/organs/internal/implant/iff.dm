@@ -1,4 +1,4 @@
-var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list() //For future use in tracking.
+// var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list() //For future use in tracking.
 
 /obj/item/organ/internal/implant/hand/left/iff
 	name = "\improper NanoTrasen IFF implant"
@@ -8,14 +8,6 @@ var/global/list/obj/item/organ/internal/implant/hand/left/iff/all_IFFs = list() 
 	var/registered_id = "none"
 	var/registered_squad = "none"
 	var/iff_tag = "none"
-
-/obj/item/organ/internal/implant/hand/left/iff/New(var/desired_loc)
-	all_IFFs += src
-	return ..()
-
-/obj/item/organ/internal/implant/hand/left/iff/PreDestroy()
-	all_IFFs -= src
-	return ..()
 
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_add(var/mob/living/advanced/new_owner)
 	new_owner.set_iff_tag(iff_tag)

@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(chunk)
 			C.adjacent_chunks += CHUNK_XYZ(x+x2,y+y2,z)
 
 	//Add existing map nodes to chunks.
-	for(var/k in all_map_nodes)
+	for(var/k in SSnodes.all_map_nodes)
 		var/obj/marker/map_node/N = k
 		if(!is_turf(N.loc))
 			continue

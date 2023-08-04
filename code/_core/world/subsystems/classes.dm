@@ -1,11 +1,11 @@
-var/global/list/all_classes = list()
-
-SUBSYSTEM_DEF(classes)
+SUBSYSTEM_DEF(class)
 	name = "Class Subsystem"
 	desc = "Stores all the known classes in a list."
 	priority = SS_ORDER_FIRST
 
-/subsystem/classes/Initialize()
+	var/list/all_classes = list()
+
+/subsystem/class/Initialize()
 
 	for(var/A in subtypesof(/class/))
 		var/class/C = new A

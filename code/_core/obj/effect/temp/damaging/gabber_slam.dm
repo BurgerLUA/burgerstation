@@ -67,7 +67,7 @@
 		if(!allow_hostile_action(L2.loyalty_tag,L))
 			return FALSE
 
-	var/damagetype/DT = all_damage_types[damage_type]
+	var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(owner,src,params,DT))
 		return FALSE

@@ -71,9 +71,9 @@
 
 /mob/living/proc/initialize_attributes()
 
-	var/class/C = all_classes[class]
+	var/class/C = SSclass.all_classes[class]
 
-	if(!C) C = all_classes[/class/]
+	if(!C) C = SSclass.all_classes[/class/]
 
 	var/attribute_amount = length(SSexperience.all_attributes)*0.5
 	for(var/k in SSexperience.all_attributes) //k is the id
@@ -88,9 +88,9 @@
 
 /mob/living/proc/initialize_skills()
 
-	var/class/C = all_classes[class]
+	var/class/C = SSclass.all_classes[class]
 
-	if(!C) C = all_classes[/class/]
+	if(!C) C = SSclass.all_classes[/class/]
 
 	var/skills_amount = length(SSexperience.all_skills)*0.5
 	for(var/k in SSexperience.all_skills) //k is the id

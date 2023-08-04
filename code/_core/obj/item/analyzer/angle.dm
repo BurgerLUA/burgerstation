@@ -1,5 +1,3 @@
-var/global/list/gps_list = list()
-
 /obj/item/analyzer/gps
 	name = "gps"
 	desc = "Where are you?"
@@ -25,7 +23,7 @@ var/global/list/gps_list = list()
 
 /obj/item/analyzer/gps/Finalize()
 	. = ..()
-	gps_list += src
+	SSobj.gps_list += src
 	if(!assigned_name)
 		assigned_name = "\ref[src]"
 	if(advanced && !assigned_passkey)
@@ -42,7 +40,7 @@ var/global/list/gps_list = list()
 		. += div("notice", "The assigned_passkey is: [assigned_passkey]")
 
 /obj/item/analyzer/gps/PreDestroy()
-	gps_list -= src
+	SSobj.gps_list -= src
 	. = ..()
 
 /obj/item/analyzer/gps/can_be_scanned(var/mob/caller,var/atom/target)

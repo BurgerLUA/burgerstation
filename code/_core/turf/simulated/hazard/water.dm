@@ -1,4 +1,4 @@
-var/global/list/turf/simulated/floor/water_shores = list()
+
 
 #define MAX_DEPTH (VIEW_RANGE)
 

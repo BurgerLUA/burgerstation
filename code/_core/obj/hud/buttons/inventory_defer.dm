@@ -112,7 +112,6 @@ var/global/list/redscale = list(
 	0,0,0,1
 )
 
-
 /obj/hud/button/inventory_defer/proc/clone(var/obj/hud/inventory/I)
 
 	referencing = I

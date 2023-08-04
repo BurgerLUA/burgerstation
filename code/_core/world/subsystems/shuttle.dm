@@ -8,6 +8,17 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 
 	var/next_pod_respawn_time = 0
 
+	var/global_shuttle_number = 0
+
+	var/list/obj/structure/interactive/computer/console/shuttle_landing/all_shuttle_landing_consoles = list()
+
+	var/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
+
+	var/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
+	var/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
+
+	var/list/all_shuttle_controlers = list()
+
 /subsystem/shuttle/Initialize()
 	log_subsystem(src.name,"Found [length(all_shuttle_controlers)] shuttle controllers.")
 	return ..()

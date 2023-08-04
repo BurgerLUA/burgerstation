@@ -23,13 +23,13 @@
 /mob/living/advanced/player/post_death()
 	. = ..()
 	if(. && ckey_last)
-		dead_player_mobs += src
+		SSliving.dead_player_mobs += src
 		death_ckey = ckey_last
 
 /mob/living/advanced/player/revive()
 	. = ..()
 	if(.)
-		dead_player_mobs -= src
+		SSliving.dead_player_mobs -= src
 		death_ckey = null
 
 

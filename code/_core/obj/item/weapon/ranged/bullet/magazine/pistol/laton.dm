@@ -101,13 +101,6 @@
 
 	rarity = RARITY_RARE
 
-var/global/list/kitchen_gun_slogans = list(
-	"And it sparkles like new!",
-	"GOODBYE DIRT!",
-	"I LOVE YOU, KITCHEN GUN!",
-	"HAHAHAHAHA!",
-	"There! All clean again!"
-)
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen
 	name = "9mm Laton Kitchen Gun"
@@ -120,11 +113,23 @@ var/global/list/kitchen_gun_slogans = list(
 	weight = 7
 	heat_max = 0.03
 	value = 800
+
+	var/static/list/kitchen_gun_slogans = list(
+		"And it sparkles like new!",
+		"GOODBYE DIRT!",
+		"I LOVE YOU, KITCHEN GUN!",
+		"HAHAHAHAHA!",
+		"There! All clean again!"
+	)
+
+
+
 	var/slogan_number = 1
 
 	value_burgerbux = 1
 
 	rarity = RARITY_UNCOMMON
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()

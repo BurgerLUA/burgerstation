@@ -20,11 +20,12 @@ var/global/list/tracker_errors_spam = list()
 
 	log_error("[error_title]\n[error_details]")
 
-	for(var/k in all_runtimes)
-		var/mob/living/simple/cat/runtime/R = k
-		if(!R || R.qdeleting)
-			all_runtimes -= k
-			continue
-		R.reproduce()
+	if(SSliving && SSliving.finalized)
+		for(var/k in SSliving.all_runtimes)
+			var/mob/living/simple/cat/runtime/R = k
+			if(!R || R.qdeleting)
+				SSliving.all_runtimes -= k
+				continue
+			R.reproduce()
 
 	return TRUE

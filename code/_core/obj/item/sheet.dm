@@ -1,16 +1,3 @@
-var/global/list/valid_bedsheets = list(
-	"grey",
-	"red",
-	"orange",
-	"yellow",
-	"green",
-	"blue",
-	"purple",
-	"brown",
-	"black",
-	"white"
-)
-
 /obj/item/bedsheet
 	name = "bedsheet"
 	icon = 'icons/obj/structure/bed.dmi'
@@ -21,6 +8,19 @@ var/global/list/valid_bedsheets = list(
 	layer = LAYER_MOB_ABOVE
 
 	pixel_y = 4
+
+	var/static/list/valid_bedsheets = list(
+		"grey",
+		"red",
+		"orange",
+		"yellow",
+		"green",
+		"blue",
+		"purple",
+		"brown",
+		"black",
+		"white"
+	)
 
 /obj/item/bedsheet/Finalize()
 	. = ..()

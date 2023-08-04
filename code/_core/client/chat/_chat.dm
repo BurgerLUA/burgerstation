@@ -1,6 +1,6 @@
 /proc/broadcast_to_clients(var/text_to_say as text, var/chat_type = CHAT_TYPE_OOC)
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		C.to_chat(text_to_say,chat_type)
 
 /proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
@@ -18,8 +18,8 @@
 	)
 
 	var/area/A = get_area(source)
-	if(all_telecomms[A.area_identifier])
-		for(var/k in all_telecomms[A.area_identifier])
+	if(SSradio.all_telecomms[A.area_identifier])
+		for(var/k in SSradio.all_telecomms[A.area_identifier])
 			var/obj/structure/interactive/telecomms/TC = k
 			TC.add_data(md5("\ref[speaker]_[text_to_say]"),radio_data)
 
@@ -110,9 +110,9 @@
 					L.to_chat(span("warning","You cannot use OOC when dead."))
 					return FALSE
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
-			for(var/k in all_clients)
+			for(var/k in SSclient.all_clients)
 				CHECK_TICK(90,FPS_SERVER)
-				var/client/C = all_clients[k]
+				var/client/C = SSclient.all_clients[k]
 				if(!C || !C.mob)
 					continue
 				C.to_chat(formatted_speech,CHAT_TYPE_OOC)
@@ -121,9 +121,9 @@
 			if(speaker.is_player_controlled()) log_chat("OOC: [speaker.get_log_name()]: [text_to_say]")
 		if(TEXT_GHOST)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
-			for(var/k in all_clients)
+			for(var/k in SSclient.all_clients)
 				CHECK_TICK(75,FPS_SERVER)
-				var/client/C = all_clients[k]
+				var/client/C = SSclient.all_clients[k]
 				if(!C.mob)
 					continue
 				if(is_living(C.mob))

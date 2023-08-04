@@ -9,6 +9,10 @@ SUBSYSTEM_DEF(gamemode)
 	var/list/all_gamemodes = list()
 	var/gamemode/active_gamemode
 
+	var/list/tracked_rogues = list()
+
+	var/list/tracked_bosses = list()
+
 /subsystem/gamemode/unclog(var/mob/caller)
 
 	if(active_gamemode)

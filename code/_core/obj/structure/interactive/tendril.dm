@@ -1,10 +1,3 @@
-var/global/list/possible_monsters_to_spawn = list(
-	/mob/living/simple/legionare_head,
-	/mob/living/simple/goliath,
-	/mob/living/simple/hivelord,
-	/mob/living/simple/watcher
-)
-
 /obj/structure/interactive/tendril
 	name = "necropolis tendril"
 	desc = "The source of all life in lavaland."
@@ -36,6 +29,13 @@ var/global/list/possible_monsters_to_spawn = list(
 	plane = PLANE_MOVABLE
 
 	mouse_opacity = 1
+
+	var/static/list/possible_monsters_to_spawn = list(
+		/mob/living/simple/legionare_head,
+		/mob/living/simple/goliath,
+		/mob/living/simple/hivelord,
+		/mob/living/simple/watcher
+	)
 
 /obj/structure/interactive/tendril/get_examine_list(var/mob/examiner)
 	. = ..()

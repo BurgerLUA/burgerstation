@@ -53,8 +53,8 @@ SUBSYSTEM_DEF(logging)
 	)
 
 	if(world.port != 0 && identifier_to_rank[identifier])
-		for(var/k in all_clients)
-			var/client/C = all_clients[k]
+		for(var/k in SSclient.all_clients)
+			var/client/C = SSclient.all_clients[k]
 			if(!(C.permissions & identifier_to_rank[identifier]))
 				continue
 			if(C.settings)

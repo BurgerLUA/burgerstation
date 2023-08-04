@@ -1,5 +1,3 @@
-var/global/list/all_clients = list() //Assoc list
-
 #define string2params(str) list2params(list(str))
 
 //Credit to Kaiochao for the button tracker and Anymacro framework
@@ -122,7 +120,7 @@ var/global/list/all_clients = list() //Assoc list
 	QDEL_NULL(settings)
 	QDEL_NULL(controls)
 
-	all_clients -= src.ckey
+	SSclient.all_clients -= src.ckey
 
 	known_inventory?.Cut()
 	known_buttons?.Cut()
@@ -149,7 +147,7 @@ var/global/list/all_clients = list() //Assoc list
 
 /client/New()
 
-	all_clients[src.ckey] = src
+	SSclient.all_clients[src.ckey] = src
 
 	CLEAR_VERBS(src)
 
@@ -168,19 +166,19 @@ var/global/list/all_clients = list() //Assoc list
 	if(!connection_data)
 		connection_data = new(ckey)
 
-	var/savedata/client/globals/GD = ckey_to_globaldata[ckey]
+	var/savedata/client/globals/GD = SSclient.ckey_to_globaldata[ckey]
 	if(!GD)
 		new/savedata/client/globals(ckey)
 
-	var/savedata/client/death_box/deathbox_data = ckey_to_death_box_data[ckey]
+	var/savedata/client/death_box/deathbox_data = SSclient.ckey_to_death_box_data[ckey]
 	if(!deathbox_data)
 		new/savedata/client/death_box(ckey)
 
-	var/savedata/client/bank/bankdata = ckey_to_bank_data[ckey]
+	var/savedata/client/bank/bankdata = SSclient.ckey_to_bank_data[ckey]
 	if(!bankdata)
 		new/savedata/client/bank(ckey)
 
-	var/savedata/client/loadout/loadoutdata = ckey_to_loadout_data[ckey]
+	var/savedata/client/loadout/loadoutdata = SSclient.ckey_to_loadout_data[ckey]
 	if(!loadoutdata)
 		new/savedata/client/loadout(ckey)
 
@@ -202,7 +200,7 @@ var/global/list/all_clients = list() //Assoc list
 		control_mob(found_mob)
 	else
 		var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
-		if(player_limit_config > 0 && length(all_clients) > player_limit_config)
+		if(player_limit_config > 0 && length(SSclient.all_clients) > player_limit_config)
 			//Too many cooks!
 			var/rank_value = get_ranks()
 			if(!rank_value && !byond_member)

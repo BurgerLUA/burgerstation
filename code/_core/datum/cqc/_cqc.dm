@@ -27,7 +27,7 @@
 	if(cqc_length < combo_length)
 		return FALSE
 
-	var/damagetype/new_DT = all_damage_types[damage_type]
+	var/damagetype/new_DT = SSdamagetype.all_damage_types[damage_type]
 
 	if(!new_DT.allow_friendly_fire && is_living(victim))
 		var/mob/living/L = victim

@@ -1,5 +1,3 @@
-var/global/list/obj/marker/map_node/all_map_nodes = list()
-
 /mob/abstract/node_checker
 	name = "node checker"
 	collision_flags = FLAG_COLLISION_WALKING
@@ -83,14 +81,14 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 
 /obj/marker/map_node/New(var/desired_loc,var/desired_automatic=FALSE)
 	. = ..()
-	all_map_nodes += src
+	SSnodes.all_map_nodes += src
 	automatic = desired_automatic
 
 /obj/marker/map_node/PreDestroy()
 	. = ..()
 	var/chunk/CH = CHUNK(src.loc)
 	CH.nodes -= src
-	all_map_nodes -= src
+	SSnodes.all_map_nodes -= src
 
 /obj/marker/map_node/proc/initialize_node()
 

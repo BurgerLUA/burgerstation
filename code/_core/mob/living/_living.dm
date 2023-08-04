@@ -745,7 +745,7 @@
 	var/list/params = list()
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
-	var/damagetype/D = all_damage_types[/damagetype/explosion]
+	var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 	var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE

@@ -1,6 +1,3 @@
-var/global/list/obj/structure/interactive/drop_pod/all_drop_pods = list()
-var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
-
 /obj/structure/interactive/drop_pod
 	name = "orbital drop pod"
 	desc = "YEHAAAAAAAAAAAAAW."
@@ -50,12 +47,12 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 	for(var/k in contents)
 		var/atom/movable/M = k
 		M.force_move(src.loc)
-	all_drop_pods -= src
+	SSshuttle.all_drop_pods -= src
 	. = ..()
 
 
 /obj/structure/interactive/drop_pod/Finalize()
-	all_drop_pods += src
+	SSshuttle.all_drop_pods += src
 	return ..()
 
 /obj/structure/interactive/drop_pod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -140,7 +137,7 @@ var/global/list/turf/drop_pod_turfs = list() //Drop pods that need to respawn.
 			icon_state = "none"
 			CALLBACK("set_state_\ref[src]",20,src,src::set_state(),caller,POD_LANDING,desired_loc)
 		if(POD_LANDING)
-			drop_pod_turfs += get_turf(src)
+			SSshuttle.drop_pod_turfs += get_turf(src)
 			force_move(desired_loc)
 			pixel_z = TILE_SIZE*20
 			icon_state = "pod_air"

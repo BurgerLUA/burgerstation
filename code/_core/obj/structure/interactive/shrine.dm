@@ -1,14 +1,3 @@
-var/global/list/all_rituals = list()
-
-var/global/list/possible_ritual_spawns = list(
-	/mob/living/advanced/npc/beefman = 20,
-	/mob/living/simple/devil = 15,
-	/mob/living/simple/bear/space = 20,
-	/mob/living/simple/clockwork_marauder = 20,
-	/mob/living/simple/halloween_spirit = 40,
-	/mob/living/simple/spider/twilight = 15
-)
-
 /obj/structure/interactive/ritual
 	name = "ritual shrine"
 	desc = "Pray at the shrine, if you dare."
@@ -37,10 +26,18 @@ var/global/list/possible_ritual_spawns = list(
 	enable_chunk_handling = TRUE
 	enable_chunk_clean = TRUE
 
+	var/static/list/possible_ritual_spawns = list(
+		/mob/living/advanced/npc/beefman = 20,
+		/mob/living/simple/devil = 15,
+		/mob/living/simple/bear/space = 20,
+		/mob/living/simple/clockwork_marauder = 20,
+		/mob/living/simple/halloween_spirit = 40,
+		/mob/living/simple/spider/twilight = 15
+	)
 
 /obj/structure/interactive/ritual/New(var/desired_loc)
-	all_rituals += src
 	. = ..()
+	SSobj.all_rituals += src
 
 /obj/structure/interactive/ritual/on_chunk_clean()
 	if(complete)
@@ -51,7 +48,7 @@ var/global/list/possible_ritual_spawns = list(
 	return FALSE
 
 /obj/structure/interactive/ritual/PreDestroy()
-	all_rituals -= src
+	SSobj.all_rituals -= src
 	end_ritual()
 	. = ..()
 

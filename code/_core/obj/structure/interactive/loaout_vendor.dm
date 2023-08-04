@@ -27,11 +27,11 @@
 	if(!caller.ckey || !is_player(caller))
 		return FALSE
 
-	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[caller.ckey] > world.time)
-		caller.to_chat(span("warning","\The [src.name] is busy! Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[caller.ckey] - world.time),1)] more seconds before using this machine again!"))
+	if(length(SSclient.ckey_to_loadout_cooldown) && SSclient.ckey_to_loadout_cooldown[caller.ckey] > world.time)
+		caller.to_chat(span("warning","\The [src.name] is busy! Please wait [CEILING(DECISECONDS_TO_SECONDS(SSclient.ckey_to_loadout_cooldown[caller.ckey] - world.time),1)] more seconds before using this machine again!"))
 		return TRUE
 
-	var/list/LOADDATA = ckey_to_loadout_data[caller.ckey].loaded_data
+	var/list/LOADDATA = SSclient.ckey_to_loadout_data[caller.ckey].loaded_data
 
 	var/desired_setting = input("What would you like to do?", "Loadout Vendor", "Cancel") as null|anything in list("Save current loadout","Load existing loadout","Delete existing loadout","Cancel")
 	INTERACT_CHECK_NO_DELAY(caller)

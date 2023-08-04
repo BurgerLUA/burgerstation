@@ -647,7 +647,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "This can only be done to instances of type /mob/living/advanced"))
 			return
 
-		var/loadout = input("Please choose a loadout.","Loadout",null) as null|anything in all_loadouts
+		var/loadout = input("Please choose a loadout.","Loadout",null) as null|anything in SSloadouts.all_loadouts
 
 		if(!loadout) return
 
@@ -1711,7 +1711,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			if("client")
 				var/list/keys = list()
-				for(var/mob/M in all_players)
+				for(var/mob/M in SSliving.all_players)
 					keys += M.client
 				lst[i] = input("Please, select a player!", "Selection", null, null) as null|anything in keys
 

@@ -1,4 +1,4 @@
-var/global/list/ckey_to_globaldata = list()
+
 
 /savedata/client/globals
 	loaded_data = list(
@@ -23,7 +23,7 @@ var/global/list/ckey_to_globaldata = list()
 
 	var/client/owner = CLIENT(ckey)
 	if(owner)
-		ckey_to_globaldata[ckey] = src
+		SSclient.ckey_to_globaldata[ckey] = src
 
 /savedata/client/globals/proc/save()
 	var/client/owner = CLIENT(ckey)

@@ -120,7 +120,7 @@
 		for(var/mob/living/L2 in view(VIEW_RANGE,src.mob))
 			valid_targets += L2
 
-		for(var/k in all_players)
+		for(var/k in SSliving.all_players)
 			valid_targets |= k
 
 		L1 = input("What do you wish to crush?","Crush Target") as null|anything in valid_targets
@@ -154,7 +154,7 @@
 		for(var/mob/living/advanced/A2 in view(VIEW_RANGE,src.mob))
 			valid_targets += A2
 
-		for(var/k in all_players)
+		for(var/k in SSliving.all_players)
 			valid_targets |= k
 
 		A1 = input("Who do you wish to break?","Break Target") as null|anything in valid_targets
@@ -181,7 +181,7 @@
 	set name = "Give Credits"
 	set category = "Cheat"
 
-	var/mob/living/advanced/player/P = input("Who do you want to give money to?") as null|mob in all_players
+	var/mob/living/advanced/player/P = input("Who do you want to give money to?") as null|mob in SSliving.all_players
 
 	if(!P)
 		return FALSE
@@ -293,7 +293,7 @@
 	set name = "Add Language"
 	set category = "Cheat"
 
-	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") as null|mob in all_players
+	var/mob/living/advanced/player/P = input("Who do you want to add a language to?","Add Language") as null|mob in SSliving.all_players
 
 	if(!P)
 		return FALSE
@@ -320,7 +320,7 @@
 	set name = "Remove Language"
 	set category = "Cheat"
 
-	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") as null|mob in all_players
+	var/mob/living/advanced/player/P = input("Who do you want to remove a language from?","Remove Language") as null|mob in SSliving.all_players
 
 	if(!P)
 		return FALSE
@@ -391,7 +391,7 @@
 		src.to_chat(span("warning","This body already has a soul!"))
 		return FALSE
 
-	var/C_ckey = input("Who do you want to take over the body?","Control Body") as null|anything in all_clients
+	var/C_ckey = input("Who do you want to take over the body?","Control Body") as null|anything in SSclient.all_clients
 	if(!C_ckey)
 		src.to_chat(span("notice","You decide not to take control of anyone."))
 		return FALSE
@@ -426,7 +426,7 @@
 	set name = "Send Squad"
 	set category = "Fun"
 
-	var/desired_victim = input("Who would you like to send the squad towards?","Send Squad") as null|anything in all_players
+	var/desired_victim = input("Who would you like to send the squad towards?","Send Squad") as null|anything in SSliving.all_players
 
 	if(!desired_victim)
 		return TRUE

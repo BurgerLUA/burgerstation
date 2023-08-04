@@ -1,4 +1,4 @@
-var/global/obj/water_ground
+
 
 /turf/simulated/liquid/
 	density = TRUE
@@ -26,17 +26,7 @@ var/global/obj/water_ground
 	if(alpha < 255)
 		plane = PLANE_WATER
 		mouse_opacity = 0
-		if(!water_ground)
-			water_ground = new(null)
-			water_ground.name = "water"
-			water_ground.appearance_flags = appearance_flags | RESET_ALPHA | RESET_COLOR
-			water_ground.vis_flags = VIS_INHERIT_ID
-			water_ground.icon = 'icons/turf/floor/icons.dmi'
-			water_ground.icon_state = "dirt"
-			water_ground.plane = PLANE_WATER_FLOOR
-			water_ground.layer = -1000
-			water_ground.mouse_opacity = 1
-		vis_contents += water_ground
+		vis_contents += SSturf.water_ground
 	else
 		plane = PLANE_FLOOR
 		mouse_opacity = 1

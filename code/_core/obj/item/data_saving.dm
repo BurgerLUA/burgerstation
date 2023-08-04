@@ -245,7 +245,7 @@
 				if(!I.qdeleting) I.drop_item(get_step(P,P.dir),silent=TRUE)
 
 	if(ultra_persistant)
-		for(var/k in all_players)
+		for(var/k in SSliving.all_players)
 			var/mob/living/advanced/player/P2 = k
 			if(P2.death_ckey != P.ckey_last) //Different ckey.
 				continue

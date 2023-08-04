@@ -29,8 +29,8 @@
 
 /vote/New()
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		if(!C)
 			continue
 		C.to_chat(div("vote","A new vote has been started. Voting will end in [time_limit] seconds."))
@@ -124,8 +124,8 @@
 		else
 			message_to_send += div("vote","Winner: [winner].")
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		if(!C)
 			continue
 		for(var/m in message_to_send)

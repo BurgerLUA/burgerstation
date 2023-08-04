@@ -1,4 +1,4 @@
-var/global/list/ckey_to_mobdata = list()
+
 
 /savedata/client/mob
 
@@ -29,7 +29,7 @@ var/global/list/ckey_to_mobdata = list()
 	reset_data()
 	var/client/owner = CLIENT(ckey)
 	if(owner)
-		ckey_to_mobdata[ckey] = src
+		SSclient.ckey_to_mobdata[ckey] = src
 
 /savedata/client/mob/PreDestroy()
 	log_error("SERIOUS ERROR: Mobdata for [ckey] was destroyed!")

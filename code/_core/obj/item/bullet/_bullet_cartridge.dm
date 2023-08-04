@@ -250,7 +250,7 @@
 	if(!damage_type_bullet)
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type_bullet]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type_bullet]
 	if(!D) return 0
 
 	//https://www.desmos.com/calculator/qgzesfmsl1

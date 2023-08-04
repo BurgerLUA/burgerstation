@@ -1,6 +1,6 @@
 #define DEFAULT_NAME "Your name here."
 
-var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
+var/global/static/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
 
 /mob/living/advanced
 
@@ -184,13 +184,7 @@ mob/living/advanced/Login()
 	restore_buttons()
 	restore_inventory()
 	restore_stat_elements()
-	restore_local_machines()
 	QUEUE_HEALTH_UPDATE(src)
-
-/mob/living/advanced/proc/restore_local_machines()
-	for(var/k in local_machines)
-		var/obj/structure/interactive/localmachine/L = k
-		L.update_for_mob(src)
 
 /mob/living/advanced/Initialize()
 	. = ..()
@@ -281,7 +275,7 @@ mob/living/advanced/Login()
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/damagetype/D = all_damage_types[/damagetype/explosion]
+		var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 		var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE

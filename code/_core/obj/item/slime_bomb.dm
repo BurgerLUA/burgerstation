@@ -18,7 +18,7 @@
 
 /obj/item/slime_bomb/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 	if(!lit)
-		var/damagetype/DT = all_damage_types[object.get_damage_type(caller,src)]
+		var/damagetype/DT = SSdamagetype.all_damage_types[object.get_damage_type(caller,src)]
 		if(DT.attack_damage_base[HEAT] || DT.attack_damage_base[LASER])
 			light()
 			return TRUE

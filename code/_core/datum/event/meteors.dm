@@ -8,7 +8,7 @@
 
 /event/meteors/on_start()
 
-	if(!length(all_players))
+	if(!length(SSliving.all_players))
 		return FALSE
 
 	log_debug("Starting Meteor Event")
@@ -24,16 +24,16 @@
 
 /event/meteors/on_life()
 
-	if(!length(all_players))
+	if(!length(SSliving.all_players))
 		return FALSE
 
 	var/list/player_blacklist = list()
 
 	if(lifetime >= SECONDS_TO_DECISECONDS(10))
 		for(var/i=1,i<=5,i++) //Limit 5 per.
-			if(!length(all_players))
+			if(!length(SSliving.all_players))
 				break
-			var/mob/living/advanced/player/P = pick(all_players)
+			var/mob/living/advanced/player/P = pick(SSliving.all_players)
 			if(player_blacklist[P])
 				continue
 			player_blacklist[P] = TRUE

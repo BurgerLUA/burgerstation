@@ -1,13 +1,3 @@
-var/global/list/stored_bookcase_phrases = list(
-	"...So that's what happened to Woody...",
-	"...Those Xenomorphs sure are lusty...",
-	"...It really is all porn...",
-	"...So that's why they use the shotgun...",
-	"...Well, that's one of the symptoms of having a literal dent in your skull...",
-	"...It's just... endless anime...",
-	"...Oh a mime book... it's blank..."
-)
-
 /obj/structure/interactive/bookcase
 	name = "dusty bookcase"
 	desc = "What possible knowledge could be in here?"
@@ -28,6 +18,16 @@ var/global/list/stored_bookcase_phrases = list(
 	interaction_flags = FLAG_INTERACTION_LIVING
 
 	pixel_y = 6
+
+	var/static/list/stored_bookcase_phrases = list(
+		"...So that's what happened to Woody...",
+		"...Those Xenomorphs sure are lusty...",
+		"...It really is all porn...",
+		"...So that's why they use the shotgun...",
+		"...Well, that's one of the symptoms of having a literal dent in your skull...",
+		"...It's just... endless anime...",
+		"...Oh a mime book... it's blank..."
+	)
 
 /obj/structure/interactive/bookcase/no_scrolls
 	chance_of_scroll = 0

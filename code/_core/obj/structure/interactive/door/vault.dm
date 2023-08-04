@@ -13,6 +13,7 @@
 	var/obj/item/device/keypad/stored_keypad
 
 /obj/structure/interactive/door/vault/syndicate/PreDestroy()
+	SSobj.all_vault_doors -= src
 	QDEL_NULL(stored_keypad)
 	. = ..()
 
@@ -35,7 +36,7 @@
 
 /obj/structure/interactive/door/vault/syndicate/Finalize()
 	. = ..()
-	all_vault_doors += src
+	SSobj.all_vault_doors += src
 
 
 /obj/structure/interactive/door/vault/syndicate/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)

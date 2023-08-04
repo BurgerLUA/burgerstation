@@ -1,4 +1,4 @@
-var/global/list/all_vault_doors = list()
+
 
 //5 to 10 random syndicate vaults are placed on the map.
 //The laptop can give you access to it by giving you the coords of the vault as well as the keyphrase.
@@ -55,11 +55,11 @@ var/global/list/all_vault_doors = list()
 
 	var/obj/structure/interactive/door/vault/syndicate/D
 	while(TRUE)
-		if(!length(all_vault_doors))
+		if(!length(SSobj.all_vault_doors))
 			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it in another shift?"))
 			return TRUE
-		D = pick(all_vault_doors)
-		all_vault_doors -= D
+		D = pick(SSobj.all_vault_doors)
+		SSobj.all_vault_doors -= D
 		if(!D.z || !D.stored_keypad || !D.stored_keypad.code)
 			continue //Bad one.
 		break //Found a good one.

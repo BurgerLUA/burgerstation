@@ -37,7 +37,7 @@
 /objective/proc/on_completion()
 
 	if(credit_reward)
-		for(var/k in all_players)
+		for(var/k in SSliving.all_players)
 			var/mob/living/advanced/player/P = k
 			if(!P.client || P.loyalty_tag != "NanoTrasen")
 				continue
@@ -47,7 +47,7 @@
 		credit_reward = 0
 
 	if(burgerbux_reward)
-		for(var/k in all_players)
+		for(var/k in SSliving.all_players)
 			var/mob/living/advanced/player/P = k
 			if(!P.client || P.loyalty_tag != "NanoTrasen")
 				continue

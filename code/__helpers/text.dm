@@ -103,13 +103,13 @@
 		caller?.to_chat(span("danger","Your text was too short!"))
 		return FALSE
 
-	if(check_name && forbidden_characters_name && forbidden_characters_name.Find(input))
+	if(check_name && SSconfig && SSconfig.forbidden_characters_name && SSconfig.forbidden_characters_name.Find(input))
 		var/warning_to_send = CONFIG("FORBIDDEN_CHARACTERS_NAME_WARNING","That is not an acceptable name.")
 		if(warning_to_send)
 			caller?.to_chat(span("warning",warning_to_send))
 		return FALSE
 
-	if(check_characters && forbidden_characters && forbidden_characters.Find(input)) //Буквально 1984
+	if(check_characters && SSconfig && SSconfig.forbidden_characters && SSconfig.forbidden_characters.Find(input)) //Буквально 1984
 		var/warning_to_send = CONFIG("FORBIDDEN_CHARACTERS_WARNING","That is not an acceptable text.")
 		if(warning_to_send)
 			caller?.to_chat(span("warning",warning_to_send))

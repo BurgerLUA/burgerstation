@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(sound)
 	if(active_sounds[S] > 0)
 		return FALSE
 	S.status = SOUND_MUTE | SOUND_UPDATE
-	for(var/k in all_clients)
+	for(var/k in SSclient.all_clients)
 		var/client/C = k
 		C << S
 	active_sounds -= S

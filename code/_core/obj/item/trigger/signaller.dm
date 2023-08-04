@@ -1,4 +1,4 @@
-var/global/obj/item/device/signaller/all_signalers = list()
+
 
 /obj/item/device/signaller
 	name = "signaller"
@@ -35,11 +35,11 @@ var/global/obj/item/device/signaller/all_signalers = list()
 	signal_current = 1
 
 /obj/item/device/signaller/New(var/desired_loc)
-	all_signalers += src
+	SSradio.all_signalers += src
 	return ..()
 
 /obj/item/device/signaller/PreDestroy()
-	all_signalers -= src
+	SSradio.all_signalers -= src
 	return ..()
 
 /obj/item/device/signaller/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
@@ -49,7 +49,7 @@ var/global/obj/item/device/signaller/all_signalers = list()
 /obj/item/device/signaller/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
 
 	if(signal_freq == -1 && signal_code == -1)
-		for(var/k in all_signalers)
+		for(var/k in SSradio.all_signalers)
 			var/obj/item/device/signaller/S = k
 			if(S == src)
 				continue

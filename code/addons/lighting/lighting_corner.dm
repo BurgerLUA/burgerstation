@@ -1,14 +1,3 @@
-/var/lighting_corner/dummy/dummy_lighting_corner = new
-// Because we can control each corner of every lighting overlay.
-// And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).
-// For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
-
-// This list is what the code that assigns corners listens to, the order in this list is the order in which corners are added to the /turf/corners list.
-/var/list/LIGHTING_CORNER_DIAGONAL = list(NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST)
-
-// This is the reverse of the above - the position in the array is a dir. Update this if the above changes.
-var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 2, 1)
-
 /lighting_corner
 	// t1 through t4 are our masters, in no particular order.
 	// They are split into vars like this in the interest of reducing memory usage.
@@ -72,7 +61,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		if (!T.corners)
 			T.corners = new(4)
 		t2 = T
-		i = REVERSE_LIGHTING_CORNER_DIAGONAL[diagonal]
+		i = SSlighting.REVERSE_LIGHTING_CORNER_DIAGONAL[diagonal]
 		t2i = i
 		T.corners[i] = src
 
@@ -82,7 +71,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		if (!T.corners)
 			T.corners = new(4)
 		t3 = T
-		i = REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
+		i = SSlighting.REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
 		t3i = i
 		T.corners[i] = src
 
@@ -92,7 +81,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		if (!T.corners)
 			T.corners = new(4)
 		t4 = T
-		i = REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
+		i = SSlighting.REVERSE_LIGHTING_CORNER_DIAGONAL[((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH)] // Get the dir based on coordinates.
 		t4i = i
 		T.corners[i] = src
 

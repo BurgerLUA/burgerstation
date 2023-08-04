@@ -289,7 +289,7 @@ var/global/list/destroy_everything_whitelist = list(
 	set name = "Force Save Everyone (DANGER)"
 	set category = "Debug"
 
-	for(var/k in all_players)
+	for(var/k in SSliving.all_players)
 		var/mob/living/advanced/player/P = k
 		if(!P.ckey_last || !P.allow_save)
 			continue
@@ -421,7 +421,7 @@ var/global/list/destroy_everything_whitelist = list(
 		to_chat(span("notice","You decide not to give a mob a loadout."))
 		return FALSE
 
-	var/loadouts_with_cancel = all_loadouts.Copy()
+	var/loadouts_with_cancel = SSloadouts.all_loadouts.Copy()
 	loadouts_with_cancel["Cancel"] = "Cancel"
 
 	var/desired_loadout = input("What loadout would you like to add to [desired_mob.name]?","Loadout Mob","Cancel") as null|anything in loadouts_with_cancel

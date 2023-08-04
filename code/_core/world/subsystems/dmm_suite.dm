@@ -1,4 +1,4 @@
-var/global/dmm_suite/dmm_suite
+
 
 #define PREFABS_DIR "maps/prefabs/"
 
@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	name = ".dmm Suite Subsystem"
 	desc = "Map loading and saving."
 	priority = SS_ORDER_DMM
+
+	var/dmm_suite/dmm_suite
 
 	var/map_name
 	var/map_path
@@ -45,6 +47,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/pvp_coef
 
 	var/list/possible_rogue_crewmembers = list()
+
 
 /subsystem/dmm_suite/Initialize()
 

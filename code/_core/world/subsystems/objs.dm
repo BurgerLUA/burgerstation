@@ -13,6 +13,20 @@ SUBSYSTEM_DEF(obj)
 
 	tick_rate = 1
 
+	var/list/status_displays = list()
+
+	var/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = list()
+
+	var/list/obj/structure/interactive/ritual/all_rituals = list()
+
+	var/list/gps_list = list()
+
+	var/list/all_vault_doors = list()
+
+	var/list/obj/hud/button/objectives/all_objective_buttons = list()
+
+	var/list/obj/hud/button/message/all_hud_messages = list()
+
 /subsystem/obj/unclog(var/mob/caller)
 
 	for(var/k in initialize_superlate)

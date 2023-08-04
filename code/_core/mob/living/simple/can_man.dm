@@ -160,7 +160,7 @@
 		var/turf/simulated/S = get_turf(src)
 		if(is_simulated(S))
 			play_sound('sound/effects/impacts/meteor_impact.ogg',S)
-			var/damagetype/DT = all_damage_types[damage_type]
+			var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 			var/list/params = list(
 				PARAM_ICON_X = rand(0,32),
 				PARAM_ICON_Y = rand(0,32),

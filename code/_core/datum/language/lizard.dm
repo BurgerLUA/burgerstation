@@ -28,7 +28,7 @@
 		var/consonants_position = consonants.Find(letter)
 
 		if(vowels_position)
-			var/desired_index = vowels_position + language_seed
+			var/desired_index = vowels_position + SSlanguage.language_seed
 			var/this_character = vowels[1 + (desired_index % length(vowels))]
 			if(was_upper)
 				this_character = uppertext(this_character)
@@ -36,7 +36,7 @@
 			new_sentence += this_character
 
 		else if(consonants_position)
-			var/desired_index = consonants_position + language_seed
+			var/desired_index = consonants_position + SSlanguage.language_seed
 			var/previous_character = lowertext(getCharacter(new_sentence,length(new_sentence)))
 			var/this_character = consonants[1 + (desired_index % length(consonants))]
 			if(previous_character == this_character)

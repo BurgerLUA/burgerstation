@@ -1,5 +1,3 @@
-var/global/time_dialation = 0
-
 /world/proc/subsystem_life_loop(var/subsystem/SS)
 	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
@@ -25,13 +23,8 @@ var/global/time_dialation = 0
 			break
 		SS.run_failures = 0
 
-		var/desired_delay = TICKS_TO_DECISECONDS(SS.tick_rate)
-		if(time_dialation > 1 && SS.use_time_dialation)
-			desired_delay *= time_dialation
-		if(desired_delay > 0)
-			sleep(desired_delay)
-		else
-			sleep(-1)
+		sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+
 		while(world_state <= STATE_INITIALIZING)
 			sleep(10)
 

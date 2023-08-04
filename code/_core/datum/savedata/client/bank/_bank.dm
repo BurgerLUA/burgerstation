@@ -1,5 +1,4 @@
-var/global/list/ckey_to_bank_data = list()
-var/global/list/ckey_to_bank_storage = list()
+
 
 /savedata/client/bank
 	loaded_data = list()
@@ -15,7 +14,7 @@ var/global/list/ckey_to_bank_storage = list()
 
 	var/client/owner = CLIENT(ckey)
 	if(owner)
-		ckey_to_bank_data[ckey] = src
+		SSclient.ckey_to_bank_data[ckey] = src
 
 /savedata/client/bank/proc/save()
 	var/client/owner = CLIENT(ckey)
@@ -36,10 +35,10 @@ var/global/list/ckey_to_bank_storage = list()
 
 	var/banks_saved = 0
 
-	for(var/k in ckey_to_bank_data)
+	for(var/k in SSclient.ckey_to_bank_data)
 		CHECK_TICK_HARD
-		var/savedata/client/bank/D = ckey_to_bank_data[k]
-		var/obj/item/bank_storage/BS = ckey_to_bank_storage[k]
+		var/savedata/client/bank/D = SSclient.ckey_to_bank_data[k]
+		var/obj/item/bank_storage/BS = SSclient.ckey_to_bank_storage[k]
 		if(!BS)
 			//No need to save since it's been unchanged.
 			continue

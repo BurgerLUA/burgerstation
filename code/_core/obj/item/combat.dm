@@ -4,10 +4,10 @@
 
 	var/damagetype_id = get_damage_type()
 
-	if(!damagetype_id || !all_damage_types[damagetype_id])
+	if(!damagetype_id || !SSdamagetype.all_damage_types[damagetype_id])
 		return ""
 
-	var/damagetype/DT = all_damage_types[damagetype_id]
+	var/damagetype/DT = SSdamagetype.all_damage_types[damagetype_id]
 
 	var/list/damage_type_list = list()
 	var/list/affected_list = list()

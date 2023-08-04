@@ -137,7 +137,7 @@
 /mob/living/simple/bubblegum/Bump(atom/Obstacle)
 
 	if(Obstacle.health && charge_steps > 0)
-		var/damagetype/DT = all_damage_types[/damagetype/npc/bubblegum]
+		var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/npc/bubblegum]
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)

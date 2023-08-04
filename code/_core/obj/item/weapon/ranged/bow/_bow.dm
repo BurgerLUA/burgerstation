@@ -157,7 +157,7 @@
 	return FALSE
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
-	var/damagetype/D = all_damage_types[ranged_damage_type]
+	var/damagetype/D = SSdamagetype.all_damage_types[ranged_damage_type]
 	return D.get_damage_per_hit(armor_to_use,200) * (stage_max/100)
 
 /obj/item/weapon/ranged/bow/get_hits_per_second()

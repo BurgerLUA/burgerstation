@@ -1,16 +1,3 @@
-var/global/list/wishgranter_speak_lines = list(
-	"Come... I know what you want.",
-	"Come to me. You seek riches. Power.",
-	"Are you worthy? Come...",
-	"I see you. Come to the light...",
-	"It is your fate to see me. Do you not believe in fate?",
-	"You get what you deserve!",
-	"Money? Fame? Power? It can be yours...",
-	"Just reach out and grab it...",
-	"Simply sign the dotted line... Just kidding!",
-
-)
-
 /obj/structure/interactive/boss_loot
 	name = "wishgranter"
 	desc = "Do you dare touch it?"
@@ -33,6 +20,19 @@ var/global/list/wishgranter_speak_lines = list(
 
 	enable_chunk_clean = TRUE
 	enable_chunk_handling = TRUE
+
+	var/static/list/wishgranter_speak_lines = list(
+		"Come... I know what you want.",
+		"Come to me. You seek riches. Power.",
+		"Are you worthy? Come...",
+		"I see you. Come to the light...",
+		"It is your fate to see me. Do you not believe in fate?",
+		"You get what you deserve!",
+		"Money? Fame? Power? It can be yours...",
+		"Just reach out and grab it...",
+		"Simply sign the dotted line... Just kidding!",
+
+	)
 
 /obj/structure/interactive/boss_loot/Destroy()
 	allowed_users?.Cut()

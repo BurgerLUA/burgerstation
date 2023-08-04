@@ -1,6 +1,3 @@
-var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = list()
-
-
 /obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
@@ -11,7 +8,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 	var/spawnpoint = TRUE
 
 /obj/structure/interactive/bed/sleeper/cryo/New(var/desired_loc)
-	if(spawnpoint) cryo_spawnpoints += src
+	if(spawnpoint) SSobj.cryo_spawnpoints += src
 	return ..()
 
 /obj/structure/interactive/bed/sleeper/can_buckle(var/mob/living/advanced/A,var/mob/caller)
@@ -26,7 +23,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 	. = ..()
 
 	if(.)
-		cryo_spawnpoints -= src //Occupied!
+		SSobj.cryo_spawnpoints -= src //Occupied!
 
 
 /obj/structure/interactive/bed/sleeper/cryo/think()
@@ -45,7 +42,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 
 	if(.)
 		if(!buckled)
-			cryo_spawnpoints |= src //Unoccupied!
+			SSobj.cryo_spawnpoints |= src //Unoccupied!
 
 
 /obj/structure/interactive/bed/sleeper/cryo/no_spawn

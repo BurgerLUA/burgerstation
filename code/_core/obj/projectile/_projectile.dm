@@ -354,9 +354,9 @@
 
 	. = TRUE
 
-	if(damage_type && all_damage_types[damage_type])
+	if(damage_type && SSdamagetype.all_damage_types[damage_type])
 
-		var/damagetype/DT = all_damage_types[damage_type]
+		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 
 		var/precise = FALSE
 		if(is_living(hit_atom))

@@ -1,5 +1,3 @@
-var/global/list/equipped_antags = list()
-
 /obj/structure/interactive/vending/
 	name = "vending machine"
 	desc = "Vends things!"

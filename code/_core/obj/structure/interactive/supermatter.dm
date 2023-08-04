@@ -1,5 +1,3 @@
-var/global/list/obj/structure/interactive/supermatter/known_supermatters = list()
-
 /obj/structure/interactive/supermatter
 	name = "supermatter crystal"
 	desc = "Looks valuable!"
@@ -197,14 +195,6 @@ var/global/list/obj/structure/interactive/supermatter/known_supermatters = list(
 	desc_extended = "An extremely important and extremely unstable shard of supermatter. You should protect this at all costs if you're NanoTrasen."
 	health_base = 5000
 	charge_max = SECONDS_TO_DECISECONDS(900) //15 minutes
-
-/obj/structure/interactive/supermatter/defense/Finalize()
-	known_supermatters += src
-	. = ..()
-
-/obj/structure/interactive/supermatter/defense/PreDestroy()
-	known_supermatters -= src
-	. = ..()
 
 /obj/structure/interactive/supermatter/defense/add_charge(var/charge_amount=0)
 	. = ..()

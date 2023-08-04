@@ -1,4 +1,4 @@
-var/global/list/obj/hud/button/color_scheme_buttons = list(
+var/global/static/list/obj/hud/button/color_scheme_buttons = list(
 	/obj/hud/button/color_scheme/color_01,
 	/obj/hud/button/color_scheme/color_02,
 	/obj/hud/button/color_scheme/color_03,

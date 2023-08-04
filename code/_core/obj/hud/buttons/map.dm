@@ -37,7 +37,7 @@
 			I.pixel_y = connected_background.y_drop - 16
 			add_overlay(I)
 
-		for(var/k in all_shuttle_landing_markers)
+		for(var/k in SSshuttle.all_shuttle_landing_markers)
 			var/obj/marker/shuttle_landing/SL = k
 			if(SL.z != current_z)
 				continue
@@ -51,7 +51,7 @@
 				I.maptext = "<center><font color='white' style='-dm-text-outline: 1 black'>Landing Zone [SL.linked_computer.shuttle_number]</center>"
 			add_overlay(I)
 
-		for(var/k in all_shuttle_controlers)
+		for(var/k in SSshuttle.all_shuttle_controlers)
 			var/obj/shuttle_controller/SC = k
 			if(SC.z != current_z)
 				continue
@@ -106,7 +106,7 @@
 		var/turf/T = locate(x_pos,y_pos,z_pos)
 		var/obj/marker/shuttle_landing/best_marker
 		var/obj/marker/shuttle_landing/best_distance = VIEW_RANGE*2
-		for(var/k in all_shuttle_landing_markers)
+		for(var/k in SSshuttle.all_shuttle_landing_markers)
 			var/obj/marker/shuttle_landing/SL = k
 			if(SL.z != current_z)
 				continue

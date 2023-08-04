@@ -1,5 +1,3 @@
-var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
-
 /mob/living/simple/cat
 	name = "cat"
 	desc = "A cat!"
@@ -103,9 +101,9 @@ var/global/list/mob/living/simple/cat/runtime/all_runtimes = list()
 	return TRUE
 
 /mob/living/simple/cat/runtime/Finalize()
-	all_runtimes += src
+	SSliving.all_runtimes += src
 	return ..()
 
 /mob/living/simple/cat/runtime/PreDestroy()
-	all_runtimes -= src
+	SSliving.all_runtimes -= src
 	return ..()

@@ -212,10 +212,6 @@
 
 	var/client/C = src.client
 
-	for(var/k in local_machines)
-		var/obj/structure/interactive/localmachine/L = k
-		L.update_for_mob(src)
-
 	if(!plane_master_floor)
 		plane_master_floor = new(src)
 	C.screen += plane_master_floor

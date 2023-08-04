@@ -67,15 +67,6 @@
 /experience/proc/get_xp()
 	return experience
 
-
-var/global/list/difficulty_to_xp_mod = list(
-	DIFFICULTY_EASY = 1,
-	DIFFICULTY_NORMAL = 1.25,
-	DIFFICULTY_HARD = 1.5,
-	DIFFICULTY_EXTREME = 2,
-	DIFFICULTY_NIGHTMARE = 3
-)
-
 /experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE,var/difficulty_multiplier=TRUE)
 
 	if(!ENABLE_XP)
@@ -89,7 +80,7 @@ var/global/list/difficulty_to_xp_mod = list(
 
 	if(difficulty_multiplier && xp_to_add > 0 && !(flags & ATTRIBUTE_NO_DIFFICULTY_XP_MUL) && is_player(owner))
 		var/mob/living/advanced/player/P = owner
-		xp_to_add *= difficulty_to_xp_mod[P.get_difficulty()]
+		xp_to_add *= SSbalance.difficulty_to_xp_mod[P.get_difficulty()]
 
 	experience = max(0,experience+xp_to_add)
 	experience = CEILING(experience,1)

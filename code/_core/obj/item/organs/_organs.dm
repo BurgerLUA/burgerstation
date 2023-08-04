@@ -92,7 +92,7 @@
 /obj/item/organ/proc/check_hit_chance(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(projectile_dodge_chance > 0 && !accurate && !find_closest && get_dist(src,attacker) > 1)
-		var/damagetype/DT = all_damage_types[damage_type]
+		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 		if(DT && DT.get_attack_type() == ATTACK_TYPE_RANGED)
 			return !prob(projectile_dodge_chance)
 

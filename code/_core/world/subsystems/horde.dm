@@ -12,8 +12,6 @@ SUBSYSTEM_DEF(horde)
 	var/list/queued_players = list() //Assoc list.
 	var/list/queued_overdue_players = list() //Assoc list.
 
-	//var/list/ckey_to_current_squads = list() //Assoc list
-
 	var/list/ckey_to_time_to_horde = list() //Assoc list
 
 	tick_usage_max = 25
@@ -53,7 +51,7 @@ SUBSYSTEM_DEF(horde)
 	if(!enable)
 		return TRUE
 
-	for(var/k in all_players)
+	for(var/k in SSliving.all_players)
 		var/mob/living/advanced/player/P = k
 		CHECK_TICK(tick_usage_max,FPS_SERVER)
 		if(P.dead || !P.ckey || P.loyalty_tag != "NanoTrasen")

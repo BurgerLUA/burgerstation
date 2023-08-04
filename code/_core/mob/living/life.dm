@@ -285,7 +285,7 @@
 	if(fire_stacks)
 		adjust_fire_stacks(-min(fire_stacks,TICKS_TO_DECISECONDS(LIFE_TICK)))
 		if(on_fire && health)
-			var/damagetype/DT = all_damage_types[/damagetype/on_fire]
+			var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/on_fire]
 			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(TICKS_TO_DECISECONDS(LIFE_TICK/8))*5
 			for(var/i=1,i<=3,i++)
 				var/list/params = list()

@@ -1,6 +1,6 @@
 /atom/proc/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
-	var/damagetype/D = all_damage_types[/damagetype/explosion]
+	var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 
 	if(!health || !src.can_be_attacked(owner,source,null,D))
 		return FALSE
@@ -16,7 +16,7 @@
 
 /atom/proc/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
 
-	var/damagetype/D = all_damage_types[/damagetype/explosion]
+	var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 
 	if(!health || !src.can_be_attacked(source,source,null,D))
 		return FALSE

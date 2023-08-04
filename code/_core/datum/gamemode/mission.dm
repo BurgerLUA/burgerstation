@@ -115,7 +115,7 @@
 
 /gamemode/mission/proc/add_objectives()
 
-	var/player_count = length(all_clients)
+	var/player_count = length(SSclient.all_clients)
 
 	log_debug("Current player count: [player_count].")
 

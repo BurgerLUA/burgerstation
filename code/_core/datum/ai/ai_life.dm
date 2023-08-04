@@ -59,7 +59,7 @@
 				idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Idle for more than 3 minutes means you're just wasting processing power.
 			else if(idle_time <= world.time)
 				var/found_player = FALSE
-				for(var/k in all_players)
+				for(var/k in SSliving.all_players)
 					var/mob/living/advanced/player/P = k
 					if(P.z != owner.z)
 						continue

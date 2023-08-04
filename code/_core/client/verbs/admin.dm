@@ -10,13 +10,13 @@
 	if(!text_to_say)
 		return FALSE
 
-	var/tickets_open = length(ckey_to_tickets[ckey])
+	var/tickets_open = length(SSclient.ckey_to_tickets[ckey])
 
 	if(tickets_open)
 		var/desired_input = input("You already have [tickets_open] ticket(s) open. Do you wish to create a new ticket or respond to an existing ticket?","Multiple Tickets","Cancel") as null|anything in list("Create New Ticket","Respond to Existing Ticket","Cancel")
 		if(desired_input == "Respond to Existing Ticket")
 			src.to_chat(span("ahelp","Click on an active ticket below to respond to it."))
-			for(var/k in ckey_to_tickets[ckey])
+			for(var/k in SSclient.ckey_to_tickets[ckey])
 				var/ticket/T = k
 				src.to_chat(span("ahelp","<a href='?src=\ref[T];password=[T.password]'>ticket (#[T.ticket_number])</a>"))
 			return TRUE
@@ -32,7 +32,7 @@
 
 	if(!ckey_to_bwoink)
 		var/list/valid_ckeys = list()
-		for(var/k in all_clients)
+		for(var/k in SSclient.all_clients)
 			valid_ckeys += k
 		ckey_to_bwoink = input("Who do you want to bwoink?","Bwoink Player") as null|anything in valid_ckeys
 
@@ -136,8 +136,8 @@
 	set name = "Get Clients"
 	set category = "Admin"
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		src.to_chat(C.get_debug_name())
 
 	return TRUE
