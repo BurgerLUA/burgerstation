@@ -1,4 +1,5 @@
 var/global/list/active_subsystems = list()
+var/global/list/all_subsystems = list()
 var/global/rollovers = 0
 var/global/world_state = STATE_STARTING
 

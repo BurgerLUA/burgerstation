@@ -297,6 +297,8 @@
 	return TRUE
 */
 
+/*
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
       to_chat("[v] = [object.vars[v]]")
+*/

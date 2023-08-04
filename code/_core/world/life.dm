@@ -33,6 +33,7 @@
 	var/local_benchmark = true_time()
 	log_subsystem(SS.name,"Initializing...")
 	INITIALIZE(SS)
+	FINALIZE(SS)
 	var/benchmark_time = DECISECONDS_TO_SECONDS((true_time() - local_benchmark))
 	switch(benchmark_time)
 		if(1 to 10)

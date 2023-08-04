@@ -45,9 +45,8 @@
 	if(finalized)
 		CRASH("WARNING: [src.get_debug_name()] was finalized twice!")
 		return TRUE
+	all_subsystems += src
 	return TRUE
-
-
 
 /subsystem/proc/unclog(var/mob/caller)
 	if(caller.ckey)
