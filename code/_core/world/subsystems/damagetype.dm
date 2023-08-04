@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(damagetype)
 
 	var/list/all_damage_types = list()
 
+	var/list/all_damage_numbers = list()
+
 	//tick_rate = DECISECONDS_TO_TICKS(1)
 
 	//var/list/damage_to_process = list()

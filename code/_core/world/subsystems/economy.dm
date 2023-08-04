@@ -17,8 +17,7 @@ SUBSYSTEM_DEF(economy)
 	var/goblin_economy = 75000 //How much gold goblins have.
 	var/sell_multiplier = 1
 
-	var/crash_sell_multiplier = 1
-	var/crash_buy_multiplier = 1
+	var/crash_sell_multiplier = 1 //From selling to cargo and goblins.
 
 /subsystem/economy/proc/update_stats()
 	if(gold_in_circulation < 0)

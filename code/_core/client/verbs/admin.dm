@@ -63,7 +63,7 @@
 	possible_ckeys["Custom..."] = null
 	possible_ckeys["Cancel"] = null
 
-	for(var/k in all_mobs_with_clients)
+	for(var/k in SSliving.all_mobs_with_clients)
 		var/mob/M = k
 		if(!M.ckey_last)
 			continue
@@ -212,9 +212,9 @@
 	set name = "Bring Player"
 	set category = "Admin"
 
-	sort_tim(all_mobs_with_clients,/proc/cmp_path_asc)
+	sort_tim(SSliving.all_mobs_with_clients,/proc/cmp_path_asc)
 
-	var/mob/choice = input("Who would you like to bring","Bring Mob") as null|mob in all_mobs_with_clients
+	var/mob/choice = input("Who would you like to bring","Bring Mob") as null|mob in SSliving.all_mobs_with_clients
 	if(!choice)
 		to_chat(span("warning","Invalid mob."))
 		return FALSE

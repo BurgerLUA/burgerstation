@@ -22,14 +22,14 @@
 	maptext = "Bug"
 
 /obj/effect/damage_number/PreDestroy()
-	all_damage_numbers -= id
+	SSdamagetype.all_damage_numbers -= id
 	. = ..()
 
 /obj/effect/damage_number/New(var/desired_location,var/desired_damage,var/desired_block,var/desired_is_real,var/desirwed_id)
 	. = ..()
 	if(desirwed_id)
 		id = desirwed_id
-		all_damage_numbers[id] = src
+		SSdamagetype.all_damage_numbers[id] = src
 	current_is_real = desired_is_real
 	if(desired_damage || desired_block) add_value(desired_damage,desired_block)
 

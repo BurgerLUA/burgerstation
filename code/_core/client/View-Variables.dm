@@ -871,7 +871,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			var_value = input("Select reference:","Reference") as null|mob|obj|turf|area in world
 
 		if("mob reference")
-			var_value = input("Select reference:","Reference") as null|mob in all_mobs
+			var_value = input("Select reference:","Reference") as null|mob in SSliving.all_mobs
 
 		if("file")
 			var_value = input("Pick file:","File") as null|file
@@ -910,7 +910,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			var_value = input("Select reference:","Reference") as mob|obj|turf|area in world
 
 		if("mob reference")
-			var_value = input("Select reference:","Reference") as mob in all_mobs
+			var_value = input("Select reference:","Reference") as mob in SSliving.all_mobs
 
 		if("file")
 			var_value = input("Pick file:","File") as file
@@ -1047,7 +1047,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			L[L.Find(variable)] = input("Select reference:","Reference") as mob|obj|turf|area in world
 
 		if("mob reference")
-			L[L.Find(variable)] = input("Select reference:","Reference") as mob in all_mobs
+			L[L.Find(variable)] = input("Select reference:","Reference") as mob in SSliving.all_mobs
 
 		if("file")
 			L[L.Find(variable)] = input("Pick file:","File") as file
@@ -1248,7 +1248,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = var_new
 
 		if("mob reference")
-			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in all_mobs
+			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in SSliving.all_mobs
 			if(var_new==null) return
 			O.vars[variable] = var_new
 
@@ -1380,7 +1380,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = initial(O.vars[variable])
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1396,7 +1396,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1420,7 +1420,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1435,7 +1435,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1461,7 +1461,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							/*if(variable=="luminosity")
 								M.SetLuminosity(new_value)
@@ -1486,7 +1486,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							/*if(variable=="luminosity")
 								M.SetLuminosity(new_value)
@@ -1516,7 +1516,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = new_value
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1531,7 +1531,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1552,7 +1552,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1567,7 +1567,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1587,7 +1587,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = new_value
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1603,7 +1603,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1653,7 +1653,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					if("Obj")
 						target = input("Enter target:","Target",usr) as obj in world
 					if("Mob")
-						target = input("Enter target:","Target",usr) as mob in all_mobs
+						target = input("Enter target:","Target",usr) as mob in SSliving.all_mobs
 					if("Area or Turf")
 						target = input("Enter target:","Target",usr.loc) as area|turf in world
 					if("Client")
@@ -1701,7 +1701,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				lst[i] = input("Select reference:","Reference",src) as mob|obj|turf|area in world
 
 			if("mob reference")
-				lst[i] = input("Select reference:","Reference",usr) as mob in all_mobs
+				lst[i] = input("Select reference:","Reference",usr) as mob in SSliving.all_mobs
 
 			if("file")
 				lst[i] = input("Pick file:","File") as file
@@ -1716,7 +1716,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				lst[i] = input("Please, select a player!", "Selection", null, null) as null|anything in keys
 
 			if("mob's area")
-				var/mob/temp = input("Select mob", "Selection", usr) as mob in all_mobs
+				var/mob/temp = input("Select mob", "Selection", usr) as mob in SSliving.all_mobs
 				lst[i] = temp.loc
 
 	if(targetselected)

@@ -456,7 +456,7 @@
 	INTERACT_DELAY(1)
 
 	var/list/mobs = list()
-	for(a in all_mobs)
+	for(a in SSliving.all_mobs)
 		if(!can_track(a))
 			continue
 		var/signal_num = text2num("\ref[a]",16)

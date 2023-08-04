@@ -215,7 +215,7 @@
 		objective_text,
 		sound_to_play = 'sound/alert/airplane.ogg')
 
-	for(var/k in all_mobs_with_clients)
+	for(var/k in SSliving.all_mobs_with_clients)
 		var/mob/M = k
 		M.client.update_statpanel = TRUE
 

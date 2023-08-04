@@ -145,7 +145,7 @@
 	click_and_drag_icon	= new(src)
 	last_autosave = world.time
 	SSliving.all_players += src
-	ai_attacking_players[src] = list()
+	SSai.ai_attacking_players[src] = list()
 	. = ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -197,7 +197,7 @@
 
 	SSliving.all_players -= src
 
-	ai_attacking_players -= src
+	SSai.ai_attacking_players -= src
 
 	SSliving.dead_player_mobs -= src
 

@@ -96,7 +96,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/play_round_end_sound()
 	CHECK_TICK_HARD
 	var/chosen_sound = pick(SSsound.round_end_sounds)
-	play_sound_global(chosen_sound,all_mobs_with_clients)
+	play_sound_global(chosen_sound,SSliving.all_mobs_with_clients)
 	sleep(30)
 	return TRUE
 
@@ -190,7 +190,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
 
-	play_sound_global('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
+	play_sound_global('sound/meme/apcdestroyed.ogg',SSliving.all_mobs_with_clients)
 
 	//SSvote.create_vote(/vote/map)
 

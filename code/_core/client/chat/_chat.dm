@@ -38,11 +38,11 @@
 	if(!talk_range_override)
 		talk_range_override = talk_range
 
-	for(var/k in all_listeners)
+	for(var/k in SSradio.all_listeners)
 		CHECK_TICK(75,FPS_SERVER)
 		var/atom/A = k
 		if(!A)
-			all_listeners -= k
+			SSradio.all_listeners -= k
 			continue
 		var/turf/T2 = get_turf(A)
 		if(!T2)
@@ -97,7 +97,7 @@
 				new/obj/effect/chat_text(source,language_text_to_say)
 		if(TEXT_LOOC)
 			var/formatted_speech = format_speech(speaker,source,text_to_say,text_type,talk_range)
-			for(var/k in all_mobs_with_clients)
+			for(var/k in SSliving.all_mobs_with_clients)
 				var/mob/M  = k
 				CHECK_TICK(75,FPS_SERVER)
 				if(within_range(M,source,YELL_RANGE))
@@ -149,7 +149,7 @@
 	if(!blind_text)
 		blind_text = third_person_text
 
-	for(var/k in all_mobs_with_clients)
+	for(var/k in SSliving.all_mobs_with_clients)
 		var/mob/M = k
 
 		CHECK_TICK(50,FPS_SERVER)

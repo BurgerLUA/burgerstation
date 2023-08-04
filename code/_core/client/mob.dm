@@ -5,7 +5,7 @@
 
 	. = null
 
-	for(var/k in all_mobs)
+	for(var/k in SSliving.all_mobs)
 		var/mob/M = k
 		if(!M || M.qdeleting)
 			continue
@@ -67,10 +67,10 @@
 	mob = M
 	eye = M
 
-	all_mobs_with_clients += M
-	if(!all_mobs_with_clients_by_z["[M.last_z]"])
-		all_mobs_with_clients_by_z["[M.last_z]"] = list()
-	all_mobs_with_clients_by_z["[M.last_z]"] += M
+	SSliving.all_mobs_with_clients += M
+	if(!SSliving.all_mobs_with_clients_by_z["[M.last_z]"])
+		SSliving.all_mobs_with_clients_by_z["[M.last_z]"] = list()
+	SSliving.all_mobs_with_clients_by_z["[M.last_z]"] += M
 
 	view = M.view
 
@@ -79,7 +79,7 @@
 
 	if(!M.listener)
 		M.listener = TRUE
-		all_listeners += src
+		SSradio.all_listeners += src
 
 	update_statpanel = TRUE
 
@@ -94,9 +94,9 @@
 	if(!M)
 		return FALSE
 
-	all_mobs_with_clients -= M
-	if(all_mobs_with_clients_by_z["[M.last_z]"])
-		all_mobs_with_clients_by_z["[M.last_z]"] -= src
+	SSliving.all_mobs_with_clients -= M
+	if(SSliving.all_mobs_with_clients_by_z["[M.last_z]"])
+		SSliving.all_mobs_with_clients_by_z["[M.last_z]"] -= src
 
 	M.client = null
 	if(hard)

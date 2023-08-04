@@ -80,6 +80,37 @@ SUBSYSTEM_DEF(balance)
 		DIFFICULTY_NIGHTMARE = 3
 	)
 
+	// https://www.desmos.com/calculator/lor9o5vzic
+	var/static/list/defense_rating_to_value = list( //Lower values are more expensive.
+		BLADE = 8.1,
+		BLUNT = 8.1,
+		PIERCE = 8.1,
+		LASER = 12.2,
+		ARCANE = 7,
+		HEAT = 16.2,
+		COLD = 16.2,
+		SHOCK = 16.2,
+		ACID = 16.2,
+		BOMB = 16.2,
+		BIO = 17.9,
+		RAD = 16.2,
+		HOLY = 7,
+		DARK = 7,
+		FATIGUE = 50,
+		ION = 50,
+		PAIN = 50,
+		BRUTE = 2.5,
+		BURN = 2.5,
+		TOX = 2.5
+	)
+
+	var/static/list/difficulty_to_ai_modifier = list(
+		DIFFICULTY_EASY = 1,
+		DIFFICULTY_NORMAL = 2,
+		DIFFICULTY_HARD = 4,
+		DIFFICULTY_EXTREME = 6,
+		DIFFICULTY_NIGHTMARE = 6
+	)
 
 /subsystem/balance/proc/process_loadout_contents(var/obj/O)
 	//This allows gloves and medicine to be stored. It's shitcode, but it works.

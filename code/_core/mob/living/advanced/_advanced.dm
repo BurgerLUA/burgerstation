@@ -1,7 +1,5 @@
 #define DEFAULT_NAME "Your name here."
 
-var/global/static/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
-
 /mob/living/advanced
 
 	name = DEFAULT_NAME
@@ -43,6 +41,8 @@ var/global/static/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BOD
 	var/move_delay_multiplier = 1 //Read only.
 
 	var/list/overlays_assoc
+
+	var/static/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
 
 	var/list/protection_heat = TARGETABLE_LIMBS_KV
 	var/list/protection_cold = TARGETABLE_LIMBS_KV

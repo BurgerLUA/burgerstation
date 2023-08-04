@@ -144,7 +144,7 @@ var/global/antag_count = 0
 		src.to_chat(span("warning","The round is currently ending!"))
 		return FALSE
 
-	var/antag_limit = 2 + length(all_mobs_with_clients)*0.2
+	var/antag_limit = 2 + length(SSliving.all_mobs_with_clients)*0.2
 
 	if(antag_count > antag_limit)
 		src.to_chat(span("warning","There are no available antag types!"))

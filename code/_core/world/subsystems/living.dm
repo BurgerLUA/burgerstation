@@ -24,6 +24,10 @@ SUBSYSTEM_DEF(living)
 	var/list/mob/living/advanced/player/all_players = list()
 	var/list/mob/living/advanced/player/dead_player_mobs = list()
 
+	var/list/all_mobs = list()
+	var/list/all_mobs_with_clients = list()
+	var/list/all_mobs_with_clients_by_z = list()
+
 /subsystem/living/unclog(var/mob/caller)
 
 	for(var/k in processing_mobs)

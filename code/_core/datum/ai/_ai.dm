@@ -1,6 +1,3 @@
-var/global/list/ai_attacking_players = list() //Assoc list. key is AI, value is list of players
-var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is list of AI
-
 /ai/
 
 	var/can_attack = TRUE

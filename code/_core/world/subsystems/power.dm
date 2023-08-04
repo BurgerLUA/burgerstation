@@ -10,6 +10,8 @@ SUBSYSTEM_DEF(power)
 	var/list/power_network/all_power_networks = list()
 	var/list/area/all_apc_areas = list()
 
+	var/power_id = 1
+
 
 /subsystem/power/unclog(var/mob/caller)
 	tick_rate = -1

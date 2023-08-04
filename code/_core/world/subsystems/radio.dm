@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(radio)
 
 	var/list/obj/item/device/radio/all_radios = list()
 	var/list/obj/structure/interactive/telecomms/all_telecomms = list()
-
+	var/list/all_listeners = list()
 	var/list/obj/item/device/signaller/all_signalers = list()
 
 //Radios should never be unclogged.

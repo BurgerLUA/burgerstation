@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(horde)
 	var/list/queued_players = list() //Assoc list.
 	var/list/queued_overdue_players = list() //Assoc list.
 
+	var/list/ckeys_being_hunt_by = list()
 	var/list/ckey_to_time_to_horde = list() //Assoc list
 
 	tick_usage_max = 25
@@ -28,6 +29,8 @@ SUBSYSTEM_DEF(horde)
 
 	var/list/all_horde_data_types = list()
 	var/list/all_drills = list() //list of all drills to send hordes to. Assoc.
+
+
 
 
 /subsystem/horde/unclog(var/mob/caller)

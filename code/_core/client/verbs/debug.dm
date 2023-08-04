@@ -1,4 +1,4 @@
-var/global/list/debug_verbs = list(
+var/global/static/list/debug_verbs = list(
 	/client/verb/make_war,
 	/client/verb/stealth_test,
 	/client/verb/check_lights,
@@ -37,7 +37,7 @@ var/global/list/debug_verbs = list(
 )
 
 
-var/global/list/destroy_everything_whitelist = list(
+var/global/static/list/destroy_everything_whitelist = list(
 	/obj/item/,
 	/obj/decal/,
 	/obj/effect/,
@@ -411,7 +411,7 @@ var/global/list/destroy_everything_whitelist = list(
 	for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
 		possible_mobs += A
 
-	for(var/mob/living/advanced/A in all_mobs_with_clients)
+	for(var/mob/living/advanced/A in SSliving.all_mobs_with_clients)
 		possible_mobs |= A
 
 	possible_mobs += "Cancel"

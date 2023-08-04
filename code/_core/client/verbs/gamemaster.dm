@@ -197,7 +197,7 @@
 
 	var/list/valid_players = list()
 
-	for(var/mob/living/L in all_mobs_with_clients)
+	for(var/mob/living/L in SSliving.all_mobs_with_clients)
 		if(!L.ckey)
 			continue
 		var/final_name = "[L.name][L.dead ? "(DEAD)" : ""]"

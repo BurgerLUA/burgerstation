@@ -1,5 +1,7 @@
 /dialogue/npc/contractor/
 
+	var/static/list/valid_contract_locations = list("contract",BODY_HAND_LEFT_HELD,BODY_HAND_RIGHT_HELD)
+
 /dialogue/npc/contractor/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
 
 	. = list()
@@ -36,9 +38,6 @@
 	.["*failure"] = list(
 		"You have no contracts in your hand that are completed. Please do not waste my time."
 	)
-
-
-var/global/list/valid_contract_locations = list("contract",BODY_HAND_LEFT_HELD,BODY_HAND_RIGHT_HELD)
 
 /dialogue/npc/contractor/set_topic(var/mob/living/advanced/player/P,var/topic)
 

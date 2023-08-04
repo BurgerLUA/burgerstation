@@ -93,7 +93,7 @@
 	world_state = STATE_RUNNING
 
 	if(length(lobby_positions))
-		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
+		for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
 			var/list/possible_music = TRACKS_LOBBY
 			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
 			O.force_move(get_turf(pick(lobby_positions)))

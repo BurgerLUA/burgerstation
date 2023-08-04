@@ -1,5 +1,3 @@
-var/global/list/all_damage_numbers = list()
-
 /damagetype/
 	var/list/attack_verbs = list("strike","hit","pummel") //Verbs to use
 	var/list/miss_verbs = list("swing")
@@ -771,8 +769,8 @@ var/global/list/all_damage_numbers = list()
 			reported_damage_dealt = total_damage_dealt
 		var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]_[real_damage_dealt > 0]"
 		var/obj/effect/damage_number/DN
-		if(length(all_damage_numbers) && all_damage_numbers[desired_id])
-			DN = all_damage_numbers[desired_id]
+		if(length(SSdamagetype.all_damage_numbers) && SSdamagetype.all_damage_numbers[desired_id])
+			DN = SSdamagetype.all_damage_numbers[desired_id]
 			DN.add_value(reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
 		else
 			DN = new(victim_turf,reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,real_damage_dealt > 0,desired_id)

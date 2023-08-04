@@ -172,10 +172,10 @@
 
 	QDEL_CUT_ASSOC(parallax)
 
-	all_mobs -= src
-	all_mobs_with_clients -= src
-	if(all_mobs_with_clients_by_z["[src.last_z]"])
-		all_mobs_with_clients_by_z["[src.last_z]"] -= src
+	SSliving.all_mobs -= src
+	SSliving.all_mobs_with_clients -= src
+	if(SSliving.all_mobs_with_clients_by_z["[src.last_z]"])
+		SSliving.all_mobs_with_clients_by_z["[src.last_z]"] -= src
 
 	if(observing)
 		observing.observers -= src
@@ -320,7 +320,7 @@
 	if(C)
 		C.control_mob(src,FALSE)
 
-	all_mobs += src
+	SSliving.all_mobs += src
 
 	. = ..()
 

@@ -54,15 +54,6 @@
 	spawn do_attack(objective_to_attack,prob(left_click_chance)) //The spawn here is important as attacking has its own sleeps and whatnot.
 	return TRUE
 
-
-var/global/list/difficulty_to_ai_modifier = list(
-	DIFFICULTY_EASY = 1,
-	DIFFICULTY_NORMAL = 2,
-	DIFFICULTY_HARD = 4,
-	DIFFICULTY_EXTREME = 6,
-	DIFFICULTY_NIGHTMARE = 6
-)
-
 /ai/proc/get_attack_score(var/atom/A) //Higher the score, the better.
 
 	var/dist = get_dist(A.loc,owner.loc)
@@ -82,10 +73,10 @@ var/global/list/difficulty_to_ai_modifier = list(
 				return -dist*0.25 //Prioritize attacking other AI.
 			if(is_player(A))
 				var/mob/living/advanced/player/P = L
-				var/difficulty_mod = difficulty_to_ai_modifier[P.get_difficulty()]
+				var/difficulty_mod = SSbalance.difficulty_to_ai_modifier[P.get_difficulty()]
 				if(!difficulty_mod)
 					difficulty_mod = 1
-				if(attack_distance_max > 2 && length(ai_attacking_players[A]) > 1*difficulty_mod && !ai_attacking_players[A][owner])
+				if(attack_distance_max > 2 && length(SSai.ai_attacking_players[A]) > 1*difficulty_mod && !SSai.ai_attacking_players[A][owner])
 					return -9998 //Wow they're being overwhelmed. Very lowest priority.
 				var/health_mod = 0.5 + 1-(A.health ? max(0,A.health.health_current/A.health.health_max) : 0.5)
 				return -dist*health_mod*(1/difficulty_mod) //Attack those with high health and who are closer. Low health will be spared. Higher difficulty will make you more desirable.

@@ -4,7 +4,7 @@
 	if(health)
 		health = new health(src)
 	if(listener)
-		all_listeners += src
+		SSradio.all_listeners += src
 	return TRUE
 
 /atom/proc/PostInitialize()

@@ -11,8 +11,8 @@
 
 	if(ismob(hunt_target))
 		var/mob/M = hunt_target
-		if(M?.ckey && ckeys_being_hunt_by[M.ckey_last])
-			ckeys_being_hunt_by[M.ckey_last] -= src
+		if(M?.ckey && SShorde.ckeys_being_hunt_by[M.ckey_last])
+			SShorde.ckeys_being_hunt_by[M.ckey_last] -= src
 
 	hunt_target = A
 
@@ -20,9 +20,9 @@
 		if(ismob(hunt_target))
 			var/mob/M = hunt_target
 			if(M.ckey_last)
-				if(!ckeys_being_hunt_by[M.ckey_last])
-					ckeys_being_hunt_by[M.ckey_last] = list()
-				ckeys_being_hunt_by[M.ckey_last] += src
+				if(!SShorde.ckeys_being_hunt_by[M.ckey_last])
+					SShorde.ckeys_being_hunt_by[M.ckey_last] = list()
+				SShorde.ckeys_being_hunt_by[M.ckey_last] += src
 		set_active(TRUE)
 
 	return TRUE
@@ -47,8 +47,8 @@
 		set_alert_level(ALERT_LEVEL_COMBAT,A)
 		return FALSE
 
-	if(is_player(old_attack) && ai_attacking_players[old_attack])
-		ai_attacking_players[old_attack] -= owner
+	if(is_player(old_attack) && SSai.ai_attacking_players[old_attack])
+		SSai.ai_attacking_players[old_attack] -= owner
 
 	attackers -= old_attack
 
@@ -68,7 +68,7 @@
 		owner.selected_intent = INTENT_HARM
 		owner.update_intent()
 		if(is_player(A))
-			ai_attacking_players[A][owner] = TRUE
+			SSai.ai_attacking_players[A][owner] = TRUE
 		for(var/k in linked_ais)
 			var/ai/LAI = k
 			LAI.set_objective(A)

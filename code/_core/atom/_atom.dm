@@ -129,7 +129,7 @@
 	icon = null
 	icon_state = null
 	tag = null
-	all_listeners -= src
+	SSradio.all_listeners -= src
 	. = ..()
 
 /atom/proc/get_base_transform()

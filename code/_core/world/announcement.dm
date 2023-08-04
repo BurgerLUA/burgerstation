@@ -11,13 +11,13 @@
 	if(!valid_mobs)
 		valid_mobs = list()
 		if(announcement_type & ANNOUNCEMENT_STATION)
-			for(var/k in all_mobs_with_clients)
+			for(var/k in SSliving.all_mobs_with_clients)
 				var/mob/M = k
 				var/area/A = get_area(M)
 				if(!is_living(M) || !(A.flags_area & FLAG_AREA_NO_ROUND_INFORMATION))
 					valid_mobs += M
 		else
-			valid_mobs = all_mobs_with_clients
+			valid_mobs = SSliving.all_mobs_with_clients
 
 	if(!length(valid_mobs))
 		return FALSE

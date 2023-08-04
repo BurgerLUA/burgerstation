@@ -2,9 +2,9 @@
 	set name = "Jump to Player"
 	set category = "View"
 
-	//sortTim(all_mobs_with_clients,/proc/cmp_path_asc)
+	//sortTim(SSliving.all_mobs_with_clients,/proc/cmp_path_asc)
 
-	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in all_mobs_with_clients
+	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in SSliving.all_mobs_with_clients
 	if(!choice || choice == mob)
 		to_chat(span("warning","Invalid mob."))
 		return FALSE
@@ -24,9 +24,9 @@
 	set name = "Jump to Mob"
 	set category = "View"
 
-	//sortTim(all_mobs,/proc/cmp_path_asc)
+	//sortTim(SSliving.all_mobs,/proc/cmp_path_asc)
 
-	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in all_mobs
+	var/mob/choice = input("Who would you like to jump to?","Jump to Mob") as null|mob in SSliving.all_mobs
 	if(!choice || choice == mob)
 		to_chat(span("warning","Invalid mob."))
 		return FALSE
@@ -48,7 +48,7 @@
 	set category = "View"
 
 	var/valid_choices = list()
-	for(var/k in all_mobs_with_clients)
+	for(var/k in SSliving.all_mobs_with_clients)
 		var/mob/M = k
 		if(!M.client)
 			continue
@@ -83,7 +83,7 @@
 	set name = "Orbit Player"
 	set category = "View"
 
-	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in all_mobs_with_clients
+	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in SSliving.all_mobs_with_clients
 	if(!choice || choice == mob)
 		to_chat(span("warning","Invalid mob."))
 		return FALSE
@@ -111,9 +111,9 @@
 	set name = "Orbit Mob"
 	set category = "View"
 
-	//sortTim(all_mobs,/proc/cmp_path_asc)
+	//sortTim(SSliving.all_mobs,/proc/cmp_path_asc)
 
-	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in all_mobs
+	var/mob/choice = input("Who would you like to orbit?","Orbit Mob") as null|mob in SSliving.all_mobs
 	if(!choice || choice == mob)
 		to_chat(span("warning","Invalid mob."))
 		return FALSE
