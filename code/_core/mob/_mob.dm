@@ -174,6 +174,8 @@
 
 	all_mobs -= src
 	all_mobs_with_clients -= src
+	if(all_mobs_with_clients_by_z["[src.last_z]"])
+		all_mobs_with_clients_by_z["[src.last_z]"] -= src
 
 	if(observing)
 		observing.observers -= src

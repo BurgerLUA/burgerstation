@@ -88,6 +88,8 @@ var/global/list/obj/marker/map_node/all_map_nodes = list()
 
 /obj/marker/map_node/PreDestroy()
 	. = ..()
+	var/chunk/CH = CHUNK(src.loc)
+	CH.nodes -= src
 	all_map_nodes -= src
 
 /obj/marker/map_node/proc/initialize_node()

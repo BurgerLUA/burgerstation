@@ -9,8 +9,6 @@
 
 	enable_wounds = FALSE
 
-	inventories = list()
-
 	can_be_broken = FALSE
 
 /obj/item/organ/ear/left

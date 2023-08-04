@@ -135,7 +135,8 @@
 		I.mouse_opacity = initial_mouse ? initial_mouse : 1
 		animate(I,alpha=255,time=4)
 
-	play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
+	if(length(inventory_sounds))
+		play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
 	inventory_user = A
 	inventory_user.using_inventories += src
 

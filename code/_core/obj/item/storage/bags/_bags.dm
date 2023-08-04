@@ -211,7 +211,8 @@
 			INTERACT_CHECK
 			INTERACT_CHECK_OBJECT
 			hoard += I.amount
-			play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
+			if(length(inventory_sounds))
+				play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 			qdel(I)
 			return TRUE
 
@@ -242,7 +243,8 @@
 					goods = I
 					hoard = I.amount
 					I.amount = 1
-					play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
+					if(length(inventory_sounds))
+						play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.2)
 					caller.to_chat(span("notice","The [src.name] now accepts [I.name]\s."))
 					qdel(I)
 					return TRUE

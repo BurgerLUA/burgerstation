@@ -44,6 +44,14 @@
 
 	quality = 100
 
+	inventory_sounds = list(
+		'sound/effects/inventory/rustle1.ogg',
+		'sound/effects/inventory/rustle2.ogg',
+		'sound/effects/inventory/rustle3.ogg',
+		'sound/effects/inventory/rustle4.ogg',
+		'sound/effects/inventory/rustle5.ogg'
+	)
+
 
 /obj/item/clothing/on_equip(var/atom/old_location,var/silent=FALSE)
 	. = ..()

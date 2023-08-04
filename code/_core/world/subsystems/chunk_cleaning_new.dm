@@ -47,7 +47,6 @@ SUBSYSTEM_DEF(chunk)
 
 	log_subsystem(src.name,"Added [added_chunks] chunks.")
 
-
 	//Link adjacent chunks to eachother.
 	for(var/z=1,z<=chunk_count_z,z++) for(var/x=1,x<=chunk_count_x,x++) for(var/y=1,y<=chunk_count_y,y++)
 		var/chunk/C = CHUNK_XYZ(x,y,z)

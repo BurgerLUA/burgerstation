@@ -301,29 +301,6 @@
 	if(ai && istype(ai))
 		ai.set_active(FALSE)
 
-	QDEL_NULL(ai)
-	QDEL_NULL(stand)
-
-	QDEL_NULL(totem)
-
-	QDEL_CUT(linked_mobs)
-
-	if(!fallback_mob)
-		QDEL_CUT_ASSOC(attributes)
-		QDEL_CUT_ASSOC(skills)
-
-	QDEL_NULL(alert_overlay)
-	QDEL_NULL(chat_overlay)
-	QDEL_NULL(fire_overlay)
-	QDEL_NULL(shield_overlay)
-
-	QDEL_NULL(medical_hud_image)
-	QDEL_NULL(security_hud_image)
-	QDEL_NULL(medical_hud_image_advanced)
-	QDEL_NULL(water_mask)
-
-	QDEL_NULL(flash_overlay)
-
 	if(minion)
 		minion.master = null
 		minion = null
@@ -351,6 +328,29 @@
 
 /mob/living/Destroy()
 
+	QDEL_NULL(ai)
+	QDEL_NULL(stand)
+
+	QDEL_NULL(totem)
+
+	QDEL_CUT(linked_mobs)
+
+	if(!fallback_mob)
+		QDEL_CUT_ASSOC(attributes)
+		QDEL_CUT_ASSOC(skills)
+
+	QDEL_NULL(alert_overlay)
+	QDEL_NULL(chat_overlay)
+	QDEL_NULL(fire_overlay)
+	QDEL_NULL(shield_overlay)
+
+	QDEL_NULL(medical_hud_image)
+	QDEL_NULL(security_hud_image)
+	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(water_mask)
+
+	QDEL_NULL(flash_overlay)
+
 	buckled_object = null
 
 	hit_logs?.Cut()
@@ -366,6 +366,8 @@
 
 	. = ..()
 
+/mob/living/PostDestroy()
+	. = ..()
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
 	old_turf = null

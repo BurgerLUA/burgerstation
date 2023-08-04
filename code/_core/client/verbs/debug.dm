@@ -250,7 +250,7 @@ var/global/list/destroy_everything_whitelist = list(
 	set name = "Print Garbage Collection"
 
 	if(!length(qdel_refs_to_type))
-		src.to_chat("Nothing has been found in the garbage collection system.")
+		src.to_chat("Nothing has been found in the garbage collection system. Yay!")
 		return TRUE
 
 	var/final_text = ""
@@ -270,7 +270,7 @@ var/global/list/destroy_everything_whitelist = list(
 		if(newest_ref_number < current_ref_number)
 			continue
 		var/var_edit_text = "<a href=?var_edit_ref=[ref_id]>[ref_id]</a>"
-		final_text += "<br>[var_edit_text]([o_type])"
+		final_text += "<br>[var_edit_text]([o_type], found in [refcount(D)] objects.)"
 		bad_qdels++
 
 	final_text = "<h1>Found [bad_qdels] objects that refused to be deleted.</h1>[final_text]"

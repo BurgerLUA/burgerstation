@@ -48,6 +48,13 @@
 
 /ai/advanced/Destroy()
 	objective_weapon = null
+	found_ammo_pile = null
+	current_cover = null
+	old_owner_location = null
+	old_objective_attack_location = null
+	last_found_bullet = null
+	objective_weapon = null
+	found_grenade = null
 	return ..()
 
 /ai/advanced/on_life()
@@ -611,8 +618,6 @@
 	. = ..()
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
-
-
 
 	if(!target)
 		return FALSE

@@ -28,7 +28,7 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/remove_all_inventory()
+/mob/living/advanced/proc/remove_all_inventories()
 
 	for(var/k in inventories_by_id)
 		var/obj/hud/inventory/I = inventories_by_id[k]

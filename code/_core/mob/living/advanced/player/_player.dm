@@ -210,6 +210,8 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	ai_attacking_players -= src
 
+	dead_player_mobs -= src
+
 	. = ..()
 
 /mob/living/advanced/player/Destroy()

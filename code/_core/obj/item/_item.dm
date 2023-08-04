@@ -19,6 +19,8 @@
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
 
+	var/atom/last_interacted
+
 	size = SIZE_0
 	var/weight = 0 //DEPRICATED
 	var/quality = -1 //-1 means quality isn't used.
@@ -39,11 +41,11 @@
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count
-	var/obj/hud/inventory/dynamic/dynamic_inventory_type = /obj/hud/inventory/dynamic
+	var/obj/hud/inventory/dynamic/dynamic_inventory_type
 	var/container_max_size //This item has a container, how much should it be able to hold in each slot?
 	var/container_max_slots //How much each inventory slot can hold.
-	var/container_blacklist = list()
-	var/container_whitelist = list()
+	var/container_blacklist
+	var/container_whitelist
 	var/max_inventory_x = MAX_INVENTORY_X
 	var/inventory_category = "dynamic"
 	var/starting_inventory_y = "BOTTOM:12+1.25"
@@ -56,7 +58,7 @@
 	var/container_temperature //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
 
-	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
+	var/list/obj/hud/inventory/inventories //The inventory holders this object has
 
 	icon_state = "inventory"
 	var/icon_state_held_left = "held_left"
@@ -87,21 +89,14 @@
 
 	var/soul_bound = null
 
-	var/list/inventory_bypass = list()
+	var/list/inventory_bypass
 
 	var/crafting_id = null //Can be a string or a path. Defaults to its path if no value is set.
 
 	var/inventory_sound = 'sound/items/drop/food.ogg' //Sound when moved to an inventory.
 	var/drop_sound = 'sound/items/drop/accessory.ogg' //Sound when moved elsewhere
 
-	var/list/inventory_sounds = list(
-		'sound/effects/inventory/rustle1.ogg',
-		'sound/effects/inventory/rustle2.ogg',
-		'sound/effects/inventory/rustle3.ogg',
-		'sound/effects/inventory/rustle4.ogg',
-		'sound/effects/inventory/rustle5.ogg'
-	)
-
+	var/list/inventory_sounds
 	var/grinder_reagent //The reagent created if this object is grinded in a grinder.
 	var/grinder_reagent_amount //The amount to create.
 
@@ -114,7 +109,7 @@
 	var/held_pixel_x = 0
 	var/held_pixel_y = 0
 
-	var/atom/last_interacted
+	//var/atom/last_interacted
 
 	var/dyeable = FALSE
 
@@ -129,7 +124,7 @@
 
 	var/block_power = 0.5 //Higher values means it blocks more. Normal weapons should have 1, while stronger items should have between 2-5
 
-	var/list/polymorphs = list()
+	var/list/polymorphs
 
 	var/consume_verb = "drink out of"
 	var/transfer_amount = 10
@@ -396,7 +391,11 @@
 			inventories[i].inventory_temperature_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
-		var/obj/hud/inventory/dynamic/D = new dynamic_inventory_type(src)
+		var/obj/hud/inventory/dynamic/D
+		if(dynamic_inventory_type)
+			D = new dynamic_inventory_type(src)
+		else
+			D = new(src)
 		//Doesn't need to be initialized as it's done later.
 		D.id = "\ref[src]_dynamic_[i]"
 		D.slot_num = i
@@ -415,6 +414,8 @@
 			D.inventory_temperature_mod = container_temperature_mod
 		if(isnum(container_priority))
 			D.priority = container_priority
+		if(!inventories)
+			inventories = list()
 		inventories += D
 
 	. = ..()
