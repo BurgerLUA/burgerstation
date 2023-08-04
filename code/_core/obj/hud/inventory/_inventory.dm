@@ -297,7 +297,7 @@
 
 	if(!A.overlays_assoc["\ref[item_to_update]"])
 		A.add_overlay_tracked(
-			"\ref[item_to_update]",
+			"\ref[item_to_update]_[item_to_update.type]",
 			item_to_update,
 			desired_icon = desired_icon,
 			desired_icon_state = desired_icon_state,

@@ -317,8 +317,7 @@
 	health_elements = list()
 	examine_butons = list()
 
-	if(C)
-		C.control_mob(src,FALSE)
+	if(C) C.control_mob(src,FALSE)
 
 	SSliving.all_mobs += src
 

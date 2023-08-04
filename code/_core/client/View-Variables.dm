@@ -497,32 +497,6 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		M.drop_all_items(get_turf(src))
 		href_list["datumrefresh"] = href_list["drop_everything"]
 
-	else if(href_list["direct_control"])
-
-		var/mob/M = locate(href_list["direct_control"])
-		var/client/NO = src
-		if(!istype(M))
-			to_chat(span("notice", "This can only be used on instances of type /mob"))
-			return
-
-		var/ghosts = list()
-		for(var/mob/abstract/observer/ghost/G in range(usr,5))
-			if(!G.client) continue
-			ghosts += G.client
-		if(length(ghosts))
-			NO = input("Please choose a new client to obtain [M.name].","Control mob",src) as anything in ghosts
-			if(!NO) return FALSE
-
-
-		var/mob/living/advanced/player/P = M
-
-		if(P.client) P.client.make_ghost(P.loc)
-
-		NO.control_mob(P)
-		P.add_species_buttons()
-		QUEUE_HEALTH_UPDATE(P)
-		href_list["datumrefresh"] = href_list["direct_control"]
-
 	else if(href_list["delall"])
 
 		var/obj/O = locate(href_list["delall"])

@@ -71,11 +71,11 @@
 /obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)
-		A.remove_overlay("\ref[src]")
+		A.remove_overlay("\ref[src]_[src.type]")
 
 	if(add)
 		A.add_overlay_tracked(
-			"\ref[src]",
+			"\ref[src]_[src.type]",
 			src,
 			desired_layer = src.worn_layer,
 			desired_icon_state = icon_state_override,

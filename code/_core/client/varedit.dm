@@ -48,8 +48,10 @@ var/global/static/list/variable_names_to_ignore = list(
 
 	var/list/checked_refs = list()
 
+	var/recursion_limit = 20
+
 	usr.to_chat(span("notice","Checking garbage in self..."))
-	var/self_result = check_garbage_datum(needle,needle,checked_refs)
+	var/self_result = check_garbage_datum(needle,needle,checked_refs,recursion_limit)
 	if(self_result) usr.to_chat(span("notice","Found garbage! self -> [self_result]"))
 
 	usr.to_chat(span("notice","Checking garbage in subsystems... ([length(checked_refs)] checked refs so far)"))
@@ -57,7 +59,7 @@ var/global/static/list/variable_names_to_ignore = list(
 		var/subsystem/S = k
 		if(checked_refs["\ref[S]"])
 			continue
-		var/subsystem_result = check_garbage_datum(S,needle,checked_refs)
+		var/subsystem_result = check_garbage_datum(S,needle,checked_refs,recursion_limit)
 		if(subsystem_result)
 			usr.to_chat(span("notice","Found garbage! Subsystems -> [subsystem_result]"))
 		sleep(-1)
@@ -66,20 +68,26 @@ var/global/static/list/variable_names_to_ignore = list(
 	for(var/datum/D in world)
 		if(checked_refs["\ref[D]"])
 			continue
-		var/world_result = check_garbage_datum(D,needle,checked_refs)
+		var/world_result = check_garbage_datum(D,needle,checked_refs,recursion_limit)
 		if(world_result)
 			usr.to_chat(span("notice","Found garbage! world -> [world_result]"))
 		sleep(-1)
 
 	usr.to_chat(span("notice","Checked [length(checked_refs)] refs."))
 
-/proc/check_garbage_list(var/list/haystack,var/datum/needle,var/list/checked_refs)
+/proc/check_garbage_list(var/list/haystack,var/datum/needle,var/list/checked_refs,var/recursion_limit)
+
+	if(recursion_limit <= 0)
+		return null
 
 	checked_refs["\ref[haystack]"] = TRUE
+	recursion_limit -= 1
 
+	/*
 	var/checked_ref_length = length(checked_refs)
-	if(!(checked_ref_length % 1000))
+	if(!(checked_ref_length % 10000))
 		usr.to_chat(span("notice","...[checked_ref_length]..."))
+	*/
 
 	var/is_assoc = is_assoc_list(haystack)
 
@@ -120,13 +128,19 @@ var/global/static/list/variable_names_to_ignore = list(
 	return null
 
 
-/proc/check_garbage_datum(var/datum/haystack,var/datum/needle,var/list/checked_refs)
+/proc/check_garbage_datum(var/datum/haystack,var/datum/needle,var/list/checked_refs,var/recursion_limit)
+
+	if(recursion_limit <= 0)
+		return null
 
 	checked_refs["\ref[haystack]"] = TRUE
+	recursion_limit -= 1
 
+	/*
 	var/checked_ref_length = length(checked_refs)
-	if(!(checked_ref_length % 1000))
-		log_debug(span("notice","...[checked_ref_length]..."))
+	if(!(checked_ref_length % 100000))
+		usr.to_chat(span("notice","...[checked_ref_length]..."))
+	*/
 
 	for(var/k in haystack.vars)
 		var/v = haystack.vars[k]
@@ -137,13 +151,13 @@ var/global/static/list/variable_names_to_ignore = list(
 		if(islist(v))
 			if(checked_refs["\ref[v]"])
 				continue
-			var/result = check_garbage_list(v,needle,checked_refs)
+			var/result = check_garbage_list(v,needle,checked_refs,recursion_limit)
 			if(result)
 				return "[haystack.type].[k] -> [result]"
 		else if(is_datum(v))
 			if(checked_refs["\ref[v]"])
 				continue
-			var/result = check_garbage_datum(v,needle,checked_refs)
+			var/result = check_garbage_datum(v,needle,checked_refs,recursion_limit)
 			if(result)
 				return "[haystack.type].[k] -> [result]"
 		sleep(-1)
