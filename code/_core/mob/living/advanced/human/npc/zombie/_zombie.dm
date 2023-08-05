@@ -29,12 +29,12 @@
 		switch(rand(1,3))
 			if(1)
 				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
-				if(O) O.unattach_from_parent(T,TRUE)
+				src.remove_organ(O,T,TRUE)
 			if(2)
 				var/obj/item/organ/O1 = labeled_organs[BODY_LEG_RIGHT]
 				var/obj/item/organ/O2 = labeled_organs[BODY_LEG_LEFT]
-				if(O1) O1.unattach_from_parent(T,TRUE)
-				if(O2) O2.unattach_from_parent(T,TRUE)
+				src.remove_organ(O1,T,TRUE)
+				src.remove_organ(O2,T,TRUE)
 			if(3)
 				var/obj/item/organ/O = labeled_organs[pick(BODY_ARM_RIGHT,BODY_ARM_LEFT)]
 				if(O) O.broken = TRUE

@@ -296,6 +296,9 @@
 
 /mob/living/PreDestroy()
 
+	if(buckled_object)
+		buckled_object.unbuckle(silent=TRUE,force=TRUE)
+
 	UNPROCESS_LIVING(src)
 
 	if(ai && istype(ai))
@@ -350,8 +353,6 @@
 	QDEL_NULL(water_mask)
 
 	QDEL_NULL(flash_overlay)
-
-	buckled_object = null
 
 	hit_logs?.Cut()
 

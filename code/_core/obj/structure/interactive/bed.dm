@@ -46,13 +46,13 @@ obj/structure/interactive/bed
 		victim.pixel_x = pixel_offset_x
 		victim.pixel_y = pixel_offset_y
 
-/obj/structure/interactive/bed/unbuckle(var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
 
 	var/mob/living/L = buckled
 
 	. = ..()
 
-	if(.)
+	if(. && !L.qdeleting)
 		L.remove_status_effect(REST)
 		animate(L,pixel_x = initial(L.pixel_x), pixel_y = initial(L.pixel_y),time = 5)
 

@@ -14,7 +14,7 @@
 	return ..()
 
 /obj/item/organ/internal/implant/hand/left/iff/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.set_iff_tag(initial(old_owner.loyalty_tag))
+	old_owner.set_iff_tag(initial(old_owner.iff_tag))
 	return ..()
 
 /obj/item/organ/internal/implant/hand/left/iff/nanotrasen

@@ -29,14 +29,12 @@
 
 
 
-/obj/item/organ/internal/brain/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
-	var/atom/old_loc = src.loc
+/obj/item/organ/internal/brain/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
-	if(is_advanced(old_loc))
-		var/mob/living/advanced/A = old_loc
-		if(A.client)
-			A.client.make_ghost(T)
-		A.death()
+	if(!old_owner.qdeleting)
+		if(old_owner.client)
+			old_owner.client.make_ghost()
+		old_owner.death()
 
 
 /obj/item/organ/internal/brain/robotic

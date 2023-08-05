@@ -249,6 +249,11 @@
 		return FALSE
 
 	var/turf/T = get_turf(src)
+
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
+		O.gib(gib_direction,hard)
+
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		if(!A.has_status_effect(ZOMBIE))
@@ -283,12 +288,12 @@
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = IB.color
 					BG.update_sprite()
+		A.remove_organ(src,T,hard)
 
-	for(var/k in attached_organs)
-		var/obj/item/organ/O = k
-		O.gib(gib_direction,hard)
 
-	unattach_from_parent(T,hard)
+
+
+
 
 	return TRUE
 
@@ -369,45 +374,6 @@
 	update_sprite()
 */
 
-/obj/item/organ/proc/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
-
-	unattach_children(T,do_delete)
-
-	if(T)
-		for(var/k in inventories)
-			var/obj/hud/inventory/I = k
-			var/list/dropped_objects = I.drop_objects(T)
-			for(var/j in dropped_objects)
-				var/obj/item/O = j
-				if(I.ultra_persistant)
-					qdel(O)
-				else
-					animate(O,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
-
-	if(attached_organ)
-		attached_organ.attached_organs -= src
-		attached_organ = null
-
-
-	if(is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		A.remove_organ(src,T,do_delete)
-	else if(do_delete || !T)
-		qdel(src)
-		return TRUE
-	else
-		src.drop_item(T)
-
-	update_sprite()
-
-	return TRUE
-
-/obj/item/organ/proc/unattach_children(var/turf/T,var/do_delete=FALSE)
-	for(var/k in attached_organs)
-		var/obj/item/organ/O = k
-		O.unattach_from_parent(T,do_delete)
-	return TRUE
-
 /obj/item/organ/proc/on_life()
 
 	if(reagents)
@@ -427,7 +393,8 @@
 	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.handle_transform()
+	if(!old_owner.qdeleting)
+		old_owner.handle_transform()
 	return TRUE
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)

@@ -28,11 +28,15 @@
 
 /obj/structure/interactive/bed/sleeper/cryo/think()
 	. = ..()
-	if(is_player(buckled) && !buckled.client && !buckled.dead)
+	if(is_player(buckled) && !buckled.client && !buckled.dead && !buckled.qdeleting)
 		var/mob/living/advanced/player/P = buckled
 		var/area/A = get_area(P)
 		if(P.can_save(A))
-			P.try_logout()
+			if(world_state >= STATE_ROUND_END)
+				return FALSE
+			if(world_state != STATE_RUNNING)
+				return FALSE
+			P.force_logout()
 	if(buckled)
 		return TRUE
 

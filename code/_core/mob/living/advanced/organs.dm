@@ -2,6 +2,12 @@
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
+		//Prevents redundency.
+		if(O.attached_organ)
+			O.attached_organ.attached_organs -= O
+			O.attached_organ = null
+		if(O.attached_organs)
+			O.attached_organs.Cut()
 		remove_organ(O,T,do_delete)
 
 	return TRUE
@@ -185,22 +191,38 @@
 		if(do_delete || !T)
 			I.delete_objects()
 		else
-			I.drop_objects(T)
+			var/list/dropped_objects = I.drop_objects(T)
+			for(var/j in dropped_objects)
+				var/obj/item/I2 = j
+				if(I.ultra_persistant)
+					qdel(I2)
+				else
+					animate(I2,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
+
+	if(O.attached_organ)
+		O.attached_organ.attached_organs -= O
+		O.attached_organ = null
+
+	for(var/k in O.attached_organs)
+		var/obj/item/organ/O2 = k
+		src.remove_organ(O2,T,do_delete)
+
+	organs -= O
+	labeled_organs -= O.id
+	queue_organ_health_update -= O
 
 	O.update_owner(null)
 
 	if(O.enable_overlay) O.handle_overlays(src,remove=TRUE)
 
-	organs -= O
-	labeled_organs -= O.id
+	if(do_delete)
+		qdel(O)
+	else
+		O.drop_item(T)
+		if(O.health)
+			O.health.update_health()
+		update_sprite()
 
 	O.on_organ_remove(src)
 
-	if(do_delete)
-		qdel(O)
-
-	queue_organ_health_update -= O
-
-	if(!O.qdeleting && O.health)
-		O.health.update_health()
-
+	QUEUE_HEALTH_UPDATE(src)

@@ -80,6 +80,8 @@
 
 /atom/movable/Destroy()
 	light_sprite_sources?.Cut()
+	for(var/k in vis_locs)
+		k:vis_contents -= src
 	vis_contents?.Cut()
 	grabbing_hand = null
 	. = ..()

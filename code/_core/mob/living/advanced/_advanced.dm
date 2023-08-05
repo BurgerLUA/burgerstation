@@ -102,7 +102,12 @@
 
 	inventory_defers?.Cut()
 
+	for(var/k in overlays_assoc)
+		var/image/I = overlays_assoc[k]
+		qdel(I)
+
 	overlays_assoc?.Cut()
+
 	ability_buttons?.Cut()
 
 	active_inventory = null

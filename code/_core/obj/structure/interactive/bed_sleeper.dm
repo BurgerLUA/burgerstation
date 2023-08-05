@@ -100,7 +100,10 @@
 
 	return ..()
 
-/obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/sleeper/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
+
+	if(force)
+		return ..()
 
 	if(door_state == SLEEPER_CLOSED)
 		open(caller)

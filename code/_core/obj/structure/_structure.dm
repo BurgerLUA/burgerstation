@@ -142,12 +142,12 @@
 
 	return TRUE
 
-/obj/structure/proc/unbuckle(var/mob/caller,var/silent=FALSE)
+/obj/structure/proc/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
 
 	if(!buckled)
 		return FALSE
 
-	if(!buckled.set_anchored(FALSE))
+	if(!buckled.set_anchored(FALSE) && !force)
 		return FALSE
 
 	if(!silent)

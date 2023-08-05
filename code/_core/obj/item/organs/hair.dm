@@ -26,9 +26,10 @@
 		desired_layer = FLOAT_LAYER
 	)
 
-/obj/item/organ/hair/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
-	do_delete = TRUE
+/obj/item/organ/hair/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
+	if(!qdeleting)
+		qdel(src)
 
 /obj/item/organ/beard
 	name = "facial hair"
@@ -59,6 +60,7 @@
 	)
 
 
-/obj/item/organ/beard/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
-	do_delete = TRUE
+/obj/item/organ/beard/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
+	if(!qdeleting)
+		qdel(src)
