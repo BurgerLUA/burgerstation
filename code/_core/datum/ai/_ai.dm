@@ -207,7 +207,12 @@
 
 	set_active(FALSE,deleting=TRUE)
 
-	if(owner) owner.ai = null
+	if(owner)
+		var/turf/T = get_turf(owner)
+		if(T)
+			var/chunk/C = CHUNK(T)
+			C.ai -= src
+		owner.ai = null
 	owner = null
 
 	. = ..()

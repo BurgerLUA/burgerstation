@@ -221,7 +221,7 @@
 		O.drop_item(T)
 		if(O.health)
 			O.health.update_health()
-		update_sprite()
+		O.update_sprite()
 
 	O.on_organ_remove(src)
 

@@ -271,7 +271,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 			continue
 		var/var_edit_text = "<a href=?var_edit_ref=[ref_id]>[ref_id]</a>"
 		var/garbage_checker_text = "<a href=?check_garbage=[ref_id]>FIND</a>"
-		final_text += "<br>[var_edit_text]([o_type], found in [refcount(D)] objects.) ([garbage_checker_text])"
+		final_text += "<br>[var_edit_text]([o_type], found in [max(refcount(D) - 2,1)] objects.) ([garbage_checker_text])"
 		bad_qdels++
 
 	final_text = "<h1>Found [bad_qdels] objects that refused to be deleted.</h1>[final_text]"

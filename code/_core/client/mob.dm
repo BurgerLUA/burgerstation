@@ -68,9 +68,10 @@
 	eye = M
 
 	SSliving.all_mobs_with_clients += M
-	if(!SSliving.all_mobs_with_clients_by_z["[M.last_z]"])
-		SSliving.all_mobs_with_clients_by_z["[M.last_z]"] = list()
-	SSliving.all_mobs_with_clients_by_z["[M.last_z]"] += M
+	if(M.last_z) //The mob could still be in null space.
+		if(!SSliving.all_mobs_with_clients_by_z["[M.last_z]"])
+			SSliving.all_mobs_with_clients_by_z["[M.last_z]"] = list()
+		SSliving.all_mobs_with_clients_by_z["[M.last_z]"] += M
 
 	view = M.view
 

@@ -38,10 +38,10 @@
 var/global/static/list/variable_names_to_ignore = list(
 	"vars" = TRUE,
 	"verbs" = TRUE,
-	"loc" = TRUE,
-	"vis_contents" = TRUE,
-	"vis_locs" = TRUE,
-	"contents" = TRUE
+	//"loc" = TRUE,
+	//"vis_contents" = TRUE,
+	//"vis_locs" = TRUE,
+	//"contents" = TRUE
 )
 
 /proc/check_garbage(var/datum/needle)
@@ -54,11 +54,15 @@ var/global/static/list/variable_names_to_ignore = list(
 
 	usr.to_chat(span("notice","Checking garbage in self..."))
 	var/self_result = check_garbage_datum(needle,needle,checked_refs,recursion_limit)
-	if(self_result) usr.to_chat(span("notice","Found garbage! self -> [self_result]"))
+	if(self_result)
+		usr.to_chat(span("notice","Found garbage! self -> [self_result]"))
+		return TRUE
 
 	usr.to_chat(span("notice","Checking garbage in global lists... ([length(checked_refs)] checked refs so far)"))
 	var/global_result = check_garbage_list(global.vars,needle,checked_refs,recursion_limit)
-	if(global_result) usr.to_chat(span("notice","Found garbage! global list -> [self_result]"))
+	if(global_result)
+		usr.to_chat(span("notice","Found garbage! global list -> [global_result]"))
+		return TRUE
 
 	usr.to_chat(span("notice","Checking garbage in subsystems... ([length(checked_refs)] checked refs so far)"))
 	for(var/k in all_subsystems)
@@ -66,11 +70,14 @@ var/global/static/list/variable_names_to_ignore = list(
 		if(checked_refs["\ref[S]"])
 			sleep(-1)
 			continue
+		//usr.to_chat(span("notice","Checking: [S.name]."))
 		var/subsystem_result = check_garbage_datum(S,needle,checked_refs,recursion_limit)
 		if(subsystem_result)
 			usr.to_chat(span("notice","Found garbage! Subsystems -> [subsystem_result]"))
+			return TRUE
 		sleep(-1)
 
+	/*
 	usr.to_chat(span("notice","Checking garbage in nullspace... ([length(checked_refs)] checked refs so far)"))
 	for(var/datum/D in world)
 		if(is_atom(D))
@@ -85,6 +92,7 @@ var/global/static/list/variable_names_to_ignore = list(
 		if(world_result)
 			usr.to_chat(span("notice","Found garbage! world nullspace movables -> [world_result]"))
 		sleep(-1)
+	*/
 
 	/*
 	usr.to_chat(span("notice","Checking garbage in world turfs... ([length(checked_refs)] checked refs so far)"))
@@ -108,46 +116,43 @@ var/global/static/list/variable_names_to_ignore = list(
 	checked_refs["\ref[haystack]"] = TRUE
 	recursion_limit -= 1
 
-	/*
-	var/checked_ref_length = length(checked_refs)
-	if(!(checked_ref_length % 10000))
-		usr.to_chat(span("notice","...[checked_ref_length]..."))
-	*/
+	var/ref_length = length(checked_refs)
+	if(!(ref_length % 1000))
+		usr.to_chat(span("notice","...[ref_length]..."))
 
 	var/is_assoc = is_assoc_list(haystack)
 
-	for(var/j in haystack)
-		if(j == needle)
+	for(var/k in haystack)
+		if(k == needle)
 			return TRUE
-		if(islist(j))
-			if(checked_refs["\ref[j]"])
+		if(islist(k)) //Is the key itself a list?
+			var/result = check_garbage_list(k,needle,checked_refs,recursion_limit)
+			if(checked_refs["\ref[k]"])
 				continue
-			var/result = check_garbage_list(j,needle,checked_refs)
 			if(result)
 				return "[haystack.type] -> [result]"
-		else if(is_datum(j))
-			if(checked_refs["\ref[j]"])
+		else if(is_datum(k)) //Is the key itself a datum?
+			if(checked_refs["\ref[k]"])
 				continue
-			var/result = check_garbage_datum(j,needle,checked_refs)
+			var/result = check_garbage_datum(k,needle,checked_refs,recursion_limit)
 			if(result)
 				return "[haystack.type] -> [result]"
 		if(is_assoc)
-			var/c = haystack[j]
-			if(c == needle)
+			var/v = haystack[k]
+			if(v == needle)
 				return TRUE
-			if(islist(c))
-				if(checked_refs["\ref[c]"])
+			if(islist(v)) //Is the value itself a list?
+				if(checked_refs["\ref[v]"])
 					continue
-				var/result = check_garbage_list(c,needle,checked_refs)
+				var/result = check_garbage_list(v,needle,checked_refs,recursion_limit)
 				if(result)
-					return "[haystack.type].[j] -> [result]"
-			else if(is_datum(c))
-				if(checked_refs["\ref[c]"])
+					return "[haystack.type].[k] -> [result]"
+			else if(is_datum(v)) //Is the value itself a datum?
+				if(checked_refs["\ref[v]"])
 					continue
-				var/result = check_garbage_datum(c,needle,checked_refs)
+				var/result = check_garbage_datum(v,needle,checked_refs,recursion_limit)
 				if(result)
-					return "[haystack.type].[j] -> [result]"
-
+					return "[haystack.type].[k] -> [result]"
 		sleep(-1)
 
 	return null
@@ -161,8 +166,12 @@ var/global/static/list/variable_names_to_ignore = list(
 	checked_refs["\ref[haystack]"] = TRUE
 	recursion_limit -= 1
 
-	for(var/k in haystack.vars)
-		var/v = haystack.vars[k]
+	var/ref_length = length(checked_refs)
+	if(!(ref_length % 1000))
+		usr.to_chat(span("notice","...[ref_length]..."))
+
+	for(var/k in haystack.vars) //k is the var name itself.
+		var/v = haystack.vars[k] //v is the var value.
 		if(v == needle)
 			return "[haystack.type].[k]"
 		if(variable_names_to_ignore[k])
