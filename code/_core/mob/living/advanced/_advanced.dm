@@ -79,6 +79,8 @@
 
 	var/list/overall_clothing_defense_rating = list()
 
+	var/changing = FALSE //Currently changing around organs. used in post_perform_change and pre_perform_change
+
 
 /mob/living/advanced/PreDestroy()
 

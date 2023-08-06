@@ -1,5 +1,8 @@
 /mob/living/advanced/proc/perform_specieschange(var/desired_species,var/keep_clothes,var/chargen)
 
+	if(changing)
+		return FALSE
+
 	if(!desired_species)
 		return FALSE
 
@@ -16,6 +19,9 @@
 
 /mob/living/advanced/proc/perform_sexchange(var/desired_sex,var/keep_clothes,var/chargen)
 
+	if(changing)
+		return FALSE
+
 	if(sex == desired_sex)
 		return FALSE
 
@@ -28,6 +34,8 @@
 	return TRUE
 
 /mob/living/advanced/proc/pre_perform_change(var/keep_items)
+
+	changing = TRUE
 
 	var/turf/T = get_turf(src)
 
@@ -64,4 +72,5 @@
 
 	QUEUE_HEALTH_UPDATE(src)
 
+	changing = FALSE
 

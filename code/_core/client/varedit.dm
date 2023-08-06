@@ -64,6 +64,7 @@ var/global/static/list/variable_names_to_ignore = list(
 		usr.to_chat(span("notice","Found garbage! global list -> [global_result]"))
 		return TRUE
 
+	/*
 	usr.to_chat(span("notice","Checking garbage in subsystems... ([length(checked_refs)] checked refs so far)"))
 	for(var/k in all_subsystems)
 		var/subsystem/S = k
@@ -76,6 +77,7 @@ var/global/static/list/variable_names_to_ignore = list(
 			usr.to_chat(span("notice","Found garbage! Subsystems -> [subsystem_result]"))
 			return TRUE
 		sleep(-1)
+	*/
 
 	/*
 	usr.to_chat(span("notice","Checking garbage in nullspace... ([length(checked_refs)] checked refs so far)"))

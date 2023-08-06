@@ -28,7 +28,7 @@
 
 /obj/item/organ/hair/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
-	if(!qdeleting)
+	if(!old_owner.qdeleting && !old_owner.changing)
 		qdel(src)
 
 /obj/item/organ/beard
@@ -62,5 +62,5 @@
 
 /obj/item/organ/beard/on_organ_remove(var/mob/living/advanced/old_owner)
 	. = ..()
-	if(!qdeleting)
+	if(!old_owner.qdeleting && !old_owner.changing)
 		qdel(src)
