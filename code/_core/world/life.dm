@@ -93,13 +93,20 @@
 
 	world_state = STATE_RUNNING
 
+	var/list/possible_music = TRACKS_LOBBY
+	var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
+
+	var/turf/move_turf
 	if(length(lobby_positions))
-		for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
-			var/list/possible_music = TRACKS_LOBBY
-			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
-			O.force_move(get_turf(pick(lobby_positions)))
-			play_music_track(possible_music[lobby_track], O.client)
-			O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+		move_turf = get_turf(pick(lobby_positions))
+	else
+		move_turf = locate(1,1,1)
+
+	for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
+		O.force_move(move_turf)
+		play_music_track(possible_music[lobby_track], O.client)
+		O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+		CHECK_TICK_HARD
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")
 

@@ -320,7 +320,7 @@
 
 	if(C) C.control_mob(src,FALSE)
 
-	SSliving.all_mobs += src
+	SSliving?.all_mobs += src
 
 	. = ..()
 

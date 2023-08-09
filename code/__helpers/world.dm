@@ -26,6 +26,12 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	else if(D.initialized) {																													\
 		log_error("ERROR: [D.get_debug_name()] was initialized more than once! in [__FILE__]:[__LINE__]");										\
 	}																																			\
+	else if(D.finalized) {																														\
+		log_error("ERROR: [D.get_debug_name()] tried to initialize AFTER it was finalized! in [__FILE__]:[__LINE__]");							\
+	}																																			\
+	else if(D.generated) {																														\
+		log_error("ERROR: [D.get_debug_name()] tried to initialize AFTER it was generated! in [__FILE__]:[__LINE__]");							\
+	}																																			\
 	else {																																		\
 		if(!D.Initialize()) {log_error("ERROR: [D.get_debug_name()] did not run Initialize() properly! in [__FILE__]:[__LINE__]")};				\
 		if(!D.PostInitialize()) {log_error("ERROR: [D.get_debug_name()] did not run PostInitialize() properly! in [__FILE__]:[__LINE__]")};		\
@@ -36,8 +42,14 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	if(D.qdeleting) {																															\
 		log_error("ERROR: [D.get_debug_name()] tried to generate while qdeleting! in [__FILE__]:[__LINE__]");									\
 	}																																			\
-	if(D.generated)	{																															\
+	else if(D.generated)	{																													\
 		log_error("ERROR: [D.get_debug_name()] was generated more than once! in [__FILE__]:[__LINE__]");										\
+	}																																			\
+	else if(!D.initialized) {																													\
+		log_error("ERROR: [D.get_debug_name()] tried to generate BEFORE it was initialized! in [__FILE__]:[__LINE__]");							\
+	}																																			\
+	else if(D.finalized) {																														\
+		log_error("ERROR: [D.get_debug_name()] tried to generate AFTER it was finalized! in [__FILE__]:[__LINE__]");							\
 	}																																			\
 	else {																																		\
 		if(!D.Generate()) {log_error("ERROR: [D.get_debug_name()] did not run Generate() properly! in [__FILE__]:[__LINE__]")};					\
@@ -48,8 +60,11 @@ proc/get_true_offset_y(var/atom/atom_a,var/atom/atom_b)
 	if(D.qdeleting) {																															\
 		log_error("ERROR: [D.get_debug_name()] tried to finalize while qdeleting! in [__FILE__]:[__LINE__]");									\
 	}																																			\
-	if(D.finalized) {																															\
+	else if(D.finalized) {																														\
 		log_error("ERROR: [D.get_debug_name()] was finalized more than once! in [__FILE__]:[__LINE__]");										\
+	}																																			\
+	else if(!D.initialized) {																													\
+		log_error("ERROR: [D.get_debug_name()] tried to finalize BEFORE it was initialized! in [__FILE__]:[__LINE__]");							\
 	}																																			\
 	else {																																		\
 		if(!D.Finalize()) {log_error("ERROR: [D.get_debug_name()] did not run Finalize() properly! in [__FILE__]:[__LINE__]")};					\

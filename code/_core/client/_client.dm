@@ -205,6 +205,10 @@
 	if(found_mob)
 		control_mob(found_mob)
 	else
+		if(world_state == STATE_RUNNING)
+			make_observer(locate(1,1,1))
+		else
+			make_observer(null)
 		var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
 		if(player_limit_config > 0 && length(SSclient.all_clients) > player_limit_config)
 			//Too many cooks!
@@ -212,32 +216,24 @@
 			if(!rank_value && !byond_member)
 				restricted = "The server is currently experiencing a massive influx of players, and is currently restricted to [player_limit_config] players. Come back another time when the population is reduced!"
 				src << "<h1>[restricted]</h1>"
-		if(world_state == STATE_RUNNING)
-			make_observer(locate(1,1,1))
-		else
-			make_observer(null)
-		if(!restricted)
-			welcome()
-			mob.show_hud(FALSE,speed = 0)
-			if(world_state >= STATE_RUNNING)
-				var/list/possible_music = TRACKS_LOBBY
-				var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
-				play_music_track(possible_music[lobby_track], src)
-				mob.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
-				mob.force_move(get_turf(lobby_positions[1]))
-			else
+				return mob
+		mob.show_hud(FALSE,speed = 0)
+		if(world_state >= STATE_RUNNING)
+			var/list/possible_music = TRACKS_LOBBY
+			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
+			play_music_track(possible_music[lobby_track], src)
+			mob.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+			mob.force_move(get_turf(lobby_positions[1]))
 
-
-	if(!restricted)
-		broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
-		update_window()
-		world.update_server_status()
-		if(SSvote && SSvote.initialized)
-			for(var/k in SSvote.active_votes)
-				var/vote/V = k
-				V.show(src)
-		if(SSmenu && SSmenu.initialized)
-			SSmenu.preload_assets(src)
+	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
+	update_window()
+	world.update_server_status()
+	if(SSvote && SSvote.initialized)
+		for(var/k in SSvote.active_votes)
+			var/vote/V = k
+			V.show(src)
+	if(SSmenu && SSmenu.initialized)
+		SSmenu.preload_assets(src)
 
 	if(settings && settings.loaded_data["enable_old_right_click"])
 		selected_hand = null
@@ -248,6 +244,8 @@
 		show_popup_menus = FALSE
 
 	winset(src,"map.tooltip","size=50x50")
+
+	welcome()
 
 	return mob
 
