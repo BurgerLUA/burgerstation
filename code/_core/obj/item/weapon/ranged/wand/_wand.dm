@@ -35,6 +35,12 @@
 	size = SIZE_2
 	weight = 8
 
+/obj/item/weapon/ranged/wand/PreDestroy()
+	QDEL_NULL(socketed_spellgem)
+	QDEL_CUT(socketed_supportgems)
+	QDEL_CUT(stored_socket_overlays)
+	. = ..()
+
 /obj/item/weapon/ranged/wand/MouseEntered(location,control,params)
 
 	. = ..()
@@ -157,11 +163,6 @@
 		var/magic_number = (500/6)**1.25
 		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
-
-/obj/item/weapon/ranged/wand/PreDestroy()
-	QDEL_NULL(socketed_spellgem)
-	QDEL_CUT(socketed_supportgems)
-	. = ..()
 
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = initial(value)

@@ -502,10 +502,13 @@
 
 /mob/living/get_debug_name()
 	var/turf/T = get_turf(src)
-	var/shown_x = T ? T.x : 0
-	var/shown_y = T ? T.y : 0
-	var/shown_z = T ? T.z : 0
-	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
+	var/location_info
+	if(T)
+		location_info = "<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>"
+	else
+		location_info = src.loc ? src.loc.type : "NULLSPACE"
+
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])[location_info]"
 
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"

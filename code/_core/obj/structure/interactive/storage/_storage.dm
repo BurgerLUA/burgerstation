@@ -9,6 +9,10 @@
 
 	anchored = TRUE
 
+/obj/structure/interactive/storage/Destroy()
+	. = ..()
+	QDEL_NULL(storage)
+
 /obj/structure/interactive/storage/Initialize()
 	. = ..()
 	storage = new(src)

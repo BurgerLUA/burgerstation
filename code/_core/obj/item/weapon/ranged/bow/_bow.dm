@@ -223,6 +223,10 @@
 
 	rarity = RARITY_RARE
 
+/obj/item/weapon/ranged/bow/hardlight/Destroy()
+	. = ..()
+	QDEL_NULL(stored_arrow)
+
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()
 	stored_arrow = new stored_arrow(src)

@@ -199,18 +199,14 @@
 
 /atom/movable/get_debug_name()
 
-	var/shown_x = src.x
-	var/shown_y = src.y
-	var/shown_z = src.z
+	var/turf/T = get_turf(src)
+	var/location_info
+	if(T)
+		location_info = "<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>"
+	else
+		location_info = src.loc ? src.loc.type : "NULLSPACE"
 
-	if(!src.z)
-		var/turf/T = get_turf(src)
-		if(T)
-			shown_x = T.x
-			shown_y = T.y
-			shown_z = T.z
-
-	return "[src.name]([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
+	return "[src.name]([src.type])[location_info]"
 
 
 /atom/movable/proc/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)

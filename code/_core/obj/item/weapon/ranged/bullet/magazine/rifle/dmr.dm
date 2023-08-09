@@ -108,11 +108,6 @@
 	GENERATE(attachment_barrel)
 	FINALIZE(attachment_barrel)
 
-	attachment_sight = new /obj/item/attachment/sight/laser_sight(src)
-	INITIALIZE(attachment_sight)
-	GENERATE(attachment_sight)
-	FINALIZE(attachment_sight)
-
 	attachment_undermount = new /obj/item/attachment/undermount/angled_grip(src)
 	INITIALIZE(attachment_undermount)
 	GENERATE(attachment_undermount)

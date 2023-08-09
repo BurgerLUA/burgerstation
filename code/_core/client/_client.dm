@@ -101,9 +101,15 @@
 	return TRUE //duh
 
 /client/proc/get_debug_name()
-	var/turf/T
-	if(mob) T = get_turf(mob)
-	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>" : "NONE"])"
+	if(mob)
+		var/turf/T = get_turf(mob)
+		var/location_info
+		if(T)
+			location_info = "<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>"
+		else
+			location_info = mob.loc ? mob.loc.type : "NULLSPACE"
+		return "CLIENT:[src](MOB:[mob.name][location_info])"
+	return "CLIENT:[src](NO MOB))"
 
 /client/proc/get_log_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
