@@ -107,8 +107,6 @@
 
 	var/falloff = 0 //How many tiles it takes for the weapon to start loosing damage. Set to 0 to disable. Applys to projectile weapons only.
 
-	var/allow_friendly_fire = FALSE
-
 	var/cqc_tag
 
 	var/can_be_parried = TRUE //Can this damage be parried?
@@ -150,6 +148,8 @@
 	// 2 = victim and attacks recieves logs
 	// 3 = everyone recieves logs (hit logging must be enabled in config)
 	var/enable_logs = 3
+
+	var/allow_friendly_fire = FALSE
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -204,10 +204,17 @@
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
+	if(allow_friendly_fire < 2 && is_living(attacker) && is_living(victim))
+		var/mob/living/A = attacker
+		var/mob/living/V = victim
+		if(!allow_hostile_action(A.loyalty_tag,V))
+			return list()
+
 	var/list/new_attack_damage = attack_damage_base.Copy()
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
+
 		for(var/attribute in attribute_stats)
 			if(!islist(attribute_damage[attribute]))
 				var/attack_damage = L.get_attribute_power(attribute,0,1,2) * attribute_stats[attribute]
@@ -762,18 +769,15 @@
 			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
 
 	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE))
-		var/reported_damage_dealt = 0
-		if(real_damage_dealt > 0)
-			reported_damage_dealt = real_damage_dealt
-		else
-			reported_damage_dealt = total_damage_dealt
-		var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]_[real_damage_dealt > 0]"
-		var/obj/effect/damage_number/DN
-		if(length(SSdamagetype.all_damage_numbers) && SSdamagetype.all_damage_numbers[desired_id])
-			DN = SSdamagetype.all_damage_numbers[desired_id]
-			DN.add_value(reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
-		else
-			DN = new(victim_turf,reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,real_damage_dealt > 0,desired_id)
+		var/reported_damage_dealt = real_damage_dealt > 0 ? real_damage_dealt : total_damage_dealt
+		if(reported_damage_dealt > 0 || damage_blocked_with_armor+damage_blocked_with_shield > 0)
+			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]_[real_damage_dealt > 0]"
+			var/obj/effect/damage_number/DN
+			if(length(SSdamagetype.all_damage_numbers) && SSdamagetype.all_damage_numbers[desired_id])
+				DN = SSdamagetype.all_damage_numbers[desired_id]
+				DN.add_value(reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield)
+			else
+				DN = new(victim_turf,reported_damage_dealt,damage_blocked_with_armor+damage_blocked_with_shield,real_damage_dealt > 0,desired_id)
 
 	if(is_weapon(weapon))
 		var/obj/item/weapon/W = weapon

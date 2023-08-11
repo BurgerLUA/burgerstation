@@ -101,6 +101,7 @@ var/global/antag_count = 0
 				P.tutorial = TRUE
 				P.update_premiums()
 				P.force_move(T)
+				stop_music_track(P.client)
 				return TRUE
 
 		to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this."))

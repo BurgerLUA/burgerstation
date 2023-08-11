@@ -70,6 +70,9 @@
 	for(var/obj/hud/button/hide_show_inventory/B in buttons)
 		B.update_sprite()
 
+	for(var/k in overlays_assoc)
+		update_overlay_tracked(k,force=TRUE)
+
 	QUEUE_HEALTH_UPDATE(src)
 
 	changing = FALSE

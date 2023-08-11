@@ -29,12 +29,13 @@
 		var/src_power = src.get_attribute_power(ATTRIBUTE_STRENGTH,0.25,1,2)*5
 		var/attacker_power = !attacker.dead ? attacker.get_attribute_power(ATTRIBUTE_STRENGTH,0,1)*10*grabbing_hand.grab_level : 0
 
-		if(!allow_hostile_action(src.loyalty_tag,attacker))
+		if(src.client && !allow_hostile_action(src.loyalty_tag,attacker))
 			attacker_power = 0
+			src_power = 100
 		else if(attacker.horizontal && !src.horizontal)
-			attacker_power *= 0.5
+			attacker_power *= 0.25
 		else if(!attacker.horizontal && src.horizontal)
-			src_power *= 0.5
+			src_power *= 0.25
 
 		if(is_organ(grabbing_hand.loc))
 			var/obj/item/organ/O = grabbing_hand.loc
