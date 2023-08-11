@@ -15,27 +15,25 @@
 	nutrition_quality -= nutrition_quality_to_remove
 	amount_to_remove -= nutrition_quality_to_remove
 	total_removed += nutrition_quality_to_remove
+
 	//Normal Nutrition
 	var/nutrition_normal_to_remove = min(amount_to_remove*0.5,nutrition_normal)
 	nutrition_normal -= nutrition_normal_to_remove
 	amount_to_remove -= nutrition_normal_to_remove
 	total_removed += nutrition_quality_to_remove
+
 	//Fast Nutrition
 	var/nutrition_fast_to_remove = min(amount_to_remove,nutrition_fast)
-	nutrition_fast -= nutrition_fast_to_remove
 	amount_to_remove -= nutrition_fast_to_remove
 	total_removed += nutrition_fast_to_remove
 
-	if(amount_to_remove > 0)
-		nutrition_quality_to_remove = min(amount_to_remove/2,nutrition_quality)
-		nutrition_quality = nutrition_quality_to_remove
-		nutrition_normal_to_remove = min(amount_to_remove/2,nutrition_normal)
-		nutrition_normal -= nutrition_normal_to_remove
-		total_removed += nutrition_quality_to_remove + nutrition_normal_to_remove
+	nutrition_quality -= nutrition_quality_to_remove
+	nutrition_normal -= nutrition_normal_to_remove
+	nutrition_fast -= nutrition_fast_to_remove
 
+	nutrition_quality = max(0,nutrition_quality)
 	nutrition_normal = max(0,nutrition_normal)
 	nutrition_fast = max(0,nutrition_fast)
-	nutrition_quality = max(0,nutrition_quality)
 
 	return total_removed
 

@@ -112,7 +112,6 @@
 	return amount_to_metabolize
 
 /reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	world.log << "amount_to_metabolize: [amount_to_metabolize]"
 	return amount_to_metabolize
 
 /reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
