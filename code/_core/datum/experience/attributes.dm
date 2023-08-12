@@ -14,7 +14,7 @@
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
-/experience/attribute/constitution/ //0% complete
+/experience/attribute/constitution/ //100% complete
 	name = "Constitution"
 	desc = "A measure of your physical well-being."
 	desc_extended = "Affects your natural resistance to the physical elements. Can be increased by taking damage from attacks."
@@ -59,7 +59,7 @@
 /experience/attribute/agility //0% complete
 	name = "Agility"
 	desc = "A measure of how fast your body can move."
-	desc_extended = "Affects the maximum speed at which you can move. Can be increased by sprinting."
+	desc_extended = "Affects the maximum speed at which you can move, as well as the strength of slowdown negation. Can be increased by sprinting."
 	id = ATTRIBUTE_AGILITY
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9

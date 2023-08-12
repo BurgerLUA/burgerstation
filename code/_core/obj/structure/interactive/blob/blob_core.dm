@@ -49,8 +49,8 @@
 		var/obj/structure/interactive/blob/node/N = new(T,src)
 		N.color = color
 		INITIALIZE(N)
-		FINALIZE(N)
 		GENERATE(N)
+		FINALIZE(N)
 		linked_nodes += N
 
 	return ..()

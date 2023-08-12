@@ -20,9 +20,9 @@
 
 	if(is_living(examiner))
 		var/mob/living/L = examiner
-		var/nutrition_mod = (L.nutrition_normal + L.nutrition_quality + L.nutrition_fast)/(L.nutrition_max)
+		var/nutrition_percent = (L.nutrition_normal + L.nutrition_quality + L.nutrition_fast)/(L.nutrition_max)
 
-		switch(nutrition_mod)
+		switch(nutrition_percent)
 			if(-INFINITY to 0.2)
 				. += div("danger","You're starving!")
 			if(0.2 to 0.3)
@@ -38,8 +38,8 @@
 			if(1 to INFINITY)
 				. += div("warning","You're overfed!")
 
-		. += "Total Nutrition: [FLOOR(nutrition_mod*100,1)]%."
-		. += "Nutritional Health: [FLOOR(L.get_nutrition_quality_mod()*100,1)]%."
+		. += "Total Nutrition: [FLOOR(nutrition_percent*100,1)]%."
+		. += "Nutritional Health: [FLOOR(L.get_nutrition_quality_mod()*L.get_nutrition_mod()*100,1)]%."
 
 
 /obj/hud/button/hunger/update_owner()
@@ -69,22 +69,11 @@
 
 	var/mob/living/L = owner
 
-	var/total_nutrition =  L.nutrition_quality+L.nutrition_fast+L.nutrition_normal
-
-	var/hunger_mod_visual = min( total_nutrition/L.nutrition_max, 1)
-	var/hunger_mod_real = L.get_nutrition_mod()
-	var/hunger_icon = CEILING(clamp(hunger_mod_visual * 24,0,24),1)
-
-	var/fatass_mod = (total_nutrition - L.nutrition_max) / max(1,L.nutrition_max_hard - L.nutrition_max)
-	var/fatass_icon = CEILING(clamp(fatass_mod * 4,0,4),1)
-
-	var/quality_mod_real = L.get_nutrition_quality_mod()
-
 	//Color bullshit.
 	var/good_color = "#00FF00"
 	var/bad_color = "#FF0000"
 	var/fat_color = "#EAEAEA"
-	var;quality_color = "#FFFF00"
+	var/quality_color = "#FFFF00"
 	if(owner && owner.client)
 		var/color_scheme = owner.client.settings.loaded_data["hud_colors"]
 		good_color = color_scheme[4]
@@ -93,10 +82,18 @@
 		quality_color = color_scheme[7]
 
 	icon = initial(icon)
+
+	var/total_nutrition =  L.nutrition_quality+L.nutrition_fast+L.nutrition_normal
+	var/fatass_mod = (total_nutrition - L.nutrition_max) / max(1,L.nutrition_max_hard - L.nutrition_max)
 	if(fatass_mod > 0)
+		var/fatass_icon = CEILING(clamp(fatass_mod * 4,0,4),1)
 		icon_state = "bar_fat_[fatass_icon]"
 		color = fat_color
 	else
+		var/hunger_icon = CEILING(clamp( (total_nutrition/L.nutrition_max) * 24,0,24),1)
 		icon_state = "bar_[hunger_icon]"
-		color = blend_colors(blend_colors(bad_color,good_color,hunger_mod_real),quality_color,clamp(quality_mod_real - 0.5,0,1))
-
+		var/desired_color = blend_colors(bad_color, good_color, L.get_nutrition_mod())
+		var/gold_number = L.get_nutrition_quality_mod() - 0.5
+		if(gold_number > 0)
+			desired_color = blend_colors(desired_color,quality_color,gold_number)
+		color = desired_color

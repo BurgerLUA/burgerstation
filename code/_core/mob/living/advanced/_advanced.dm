@@ -38,7 +38,7 @@
 
 	has_footprints = TRUE
 
-	var/move_delay_multiplier = 1 //Read only.
+	var/worn_move_delay_multiplier = 1 //Read only.
 
 	var/list/overlays_assoc
 
