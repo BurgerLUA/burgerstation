@@ -111,11 +111,14 @@
 	if(L.medical_hud_image)
 		var/health_icon_state
 		if(L.dead)
-			var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
-			if(time_left > 0)
-				health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
-			else
+			if(L.suicide || !L.is_player_controlled())
 				health_icon_state = "dead"
+			else
+				var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
+				if(time_left > 0)
+					health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
+				else
+					health_icon_state = "dead"
 		else if (L.has_status_effect(CRIT))
 			health_icon_state = "crit"
 		else
