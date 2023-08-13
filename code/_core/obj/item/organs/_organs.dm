@@ -79,6 +79,9 @@
 
 	var/armor/armor = /armor/default_organic
 
+	can_hold = FALSE
+	can_wear = FALSE
+
 /obj/item/organ/New(var/desired_loc)
 	. = ..()
 	attached_organs = list()
