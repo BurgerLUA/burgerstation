@@ -370,9 +370,12 @@ mob/living/proc/on_life_slow()
 
 	if(blood_type && blood_volume_max > 0)
 		if(blood_volume < blood_volume_max)
-			var/blood_volume_to_add = -(add_hydration(-0.15) + remove_nutrition_mix(1.2))*0.125
-			blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
-			QUEUE_HEALTH_UPDATE(src)
+			add_hydration(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.5)
+			remove_nutrition_mix(TICKS_TO_SECONDS(LIFE_TICK_SLOW)*2)
+			var/blood_volume_to_add = TICKS_TO_SECONDS(LIFE_TICK_SLOW)*(0.5 + get_nutrition_mod()*get_nutrition_quality_mod()*0.5)*(blood_volume_max/600)
+			if(blood_volume_to_add > 0)
+				blood_volume = min(blood_volume + blood_volume_to_add,blood_volume_max)
+				QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)
 			blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
 			if(blood_volume >= blood_volume_max*1.1)

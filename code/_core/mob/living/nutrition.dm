@@ -24,7 +24,7 @@
 /mob/living/proc/add_hydration(var/amount)
 	var/amount_to_add = clamp(amount,-hydration,hydration_max-hydration)
 	hydration += amount_to_add
-	return hydration
+	return amount_to_add
 
 /mob/living/proc/add_nutrition_normal(var/amount)
 	var/amount_to_add = clamp(amount,-nutrition_normal,nutrition_max_hard-nutrition_normal)

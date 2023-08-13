@@ -190,12 +190,10 @@
 			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
 				break_bone()
 			if(A.blood_type)
-				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*(2 - health.health_current/health.health_max)
-				if(!health || !health.organic)
-					total_bleed_damage *= 0.5
+				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*(2 - health.health_current/health.health_max)*(health.health_max/A.health.health_max)
 				if(total_bleed_damage > 0)
 					var/bleed_to_add = total_bleed_damage/25
-					src.bleeding += bleed_to_add
+					src.bleeding = min(src.bleeding + bleed_to_add,src.health_base/5)
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
 				src.send_pain_response(damage_amount)
 			if(!A.boss && health.health_current <= damage_amount && !is_player(A))
@@ -386,10 +384,11 @@
 		var/mob/living/advanced/A = src.loc
 		if(A.blood_type && A.health && A.blood_volume && prob(25))
 			var/bleed_amount = bleeding*TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+			bleed_amount *= 0.25 + (A.blood_volume/A.blood_volume_max)*0.75
 			var/reagent/R = REAGENT(A.blood_type)
 			var/turf/T = get_turf(A)
 			if(T) create_blood(/obj/effect/cleanable/blood/drip,T,R.color,A.pixel_x + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1),A.pixel_y + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1))
-			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
+			A.blood_volume = max(A.blood_volume - bleed_amount,0)
 			bleeding = CEILING(max(0,bleeding - (0.02 + bleed_amount*0.075)),0.01)
 			QUEUE_HEALTH_UPDATE(A)
 
