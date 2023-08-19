@@ -67,9 +67,14 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/simulated/liquid/water)
 	createtypecache(/turf/unsimulated)
 	createtypecache(/reagent/nutrition)
+
 	. = ..()
 
+	src.TgsNew(new /datum/tgs_event_handler, TGS_SECURITY_TRUSTED)
+
 	life()
+	TgsInitializationComplete()
+
 	sleep_offline = initial(sleep_offline)
 
 /world/proc/update_server_status()
@@ -122,6 +127,11 @@ var/global/world_state = STATE_STARTING
 	sleep(30)
 	Reboot(0)
 	return TRUE
+
+/world/Reboot()
+	. = ..()
+	TgsReboot()
+
 
 /proc/save_all_globals()
 	for(var/k in SSclient.all_clients)

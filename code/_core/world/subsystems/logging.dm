@@ -16,6 +16,9 @@ SUBSYSTEM_DEF(logging)
 	var/list/buffered_log_debug = list()
 	var/list/buffered_log_subsystem = list()
 
+	var/commit = "NOT FOUND"
+	var/origin_commit = "NOT FOUND"
+
 //Logging shouldn't be unclogged.
 /subsystem/logging/unclog(var/mob/caller)
 	. = ..()
@@ -27,6 +30,13 @@ SUBSYSTEM_DEF(logging)
 	round_id++
 	rustg_file_write("[round_id]",ROUND_ID_DIR)
 	start_date = lowertext(time2text(world.realtime,"YYYY-MMM-DD"))
+
+
+	var/datum/tgs_revision_information/tgs_revision = world.TgsRevision()
+	if(tgs_revision)
+		if(tgs_revision.commit) commit = tgs_revision.commit
+		if(tgs_revision.origin_commit) origin_commit = tgs_revision.origin_commit
+
 	return ..()
 
 /subsystem/logging/proc/get_logging_dir(var/type)

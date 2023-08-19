@@ -116,6 +116,8 @@
 
 /client/Del() //Called when the client disconnects. Basically Destroy()
 
+	total_clients--
+
 	clear_mob(mob)
 
 	QDEL_NULL(button_tracker)
@@ -151,7 +153,11 @@
 
 	return TRUE
 
+var/global/total_clients = 0
+
 /client/New()
+
+	total_clients++
 
 	SSclient.all_clients[src.ckey] = src
 
