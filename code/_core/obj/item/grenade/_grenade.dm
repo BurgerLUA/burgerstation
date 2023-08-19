@@ -283,8 +283,7 @@
 
 	if(istype(loc,/obj/projectile/))
 		var/obj/projectile/P = loc
-		var/turf/T = get_turf(src)
-		P.on_projectile_hit(T)
+		P.on_projectile_hit(P.current_loc,P.previous_loc,P.current_loc)
 		qdel(P)
 
 	if(src.loc && is_turf(src.loc) && SSai.tracked_avoidance_by_z["[src.loc.z]"])

@@ -57,6 +57,11 @@
 
 /obj/reflector/on_projectile_hit(var/obj/projectile/P,var/turf/old_loc,var/turf/new_loc)
 
+	. = ..()
+
+	if(!.)
+		return .
+
 	P.start_turf = new_loc
 	P.previous_loc = new_loc
 	P.current_loc = new_loc

@@ -451,12 +451,14 @@
 		if(flash_overlay)
 			flash_overlay.duration = max(duration,flash_overlay.duration)
 			flash_overlay.color = desired_color
+			flash_overlay.alpha = 255
 			return TRUE
 
 		flash_overlay = new
 		flash_overlay.owner = src
 		flash_overlay.duration = duration
 		flash_overlay.color = desired_color
+		flash_overlay.alpha = 255
 		client.screen += flash_overlay
 
 	return TRUE
