@@ -59,7 +59,7 @@
 
 /obj/item/attachment/barrel/suppressor
 	name = "suppressor"
-	desc = "Shhh."
+	desc = "For killing without waking the neighbors, which would be super rude."
 	desc_extended = "A special noise-damping tube designed to trap gas and slow the speed of the bullet to sub-sonic levels to prevent the sonic crack from bullets and noise from releasing gas. Makes shooting quieter at the cost of reduced damage and projectile speed."
 	icon_state = "suppressor"
 
@@ -78,7 +78,7 @@
 
 /obj/item/attachment/barrel/extended
 	name = "extended barrel"
-	desc = "Extendong."
+	desc = "Extendo POWA!"
 	desc_extended = "A silly barrel attachment that increases the barrel length of a gun. Increases projectile speed, bullet accuracy, precision, and weapon accuracy at the cost of higher recoil, movement spread, recoil spread, and spread from inexperience."
 	icon_state = "extended_barrel"
 

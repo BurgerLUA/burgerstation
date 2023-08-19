@@ -1,6 +1,7 @@
 //Coins
 /obj/item/currency/gold_coin
 	name = "gold coin"
+	desc_extended = "Shiny gold coin, a currency often used by goblins. Its value is determined by the gold market."
 	icon = 'icons/obj/item/currency/gold.dmi'
 	icon_state = "1"
 	value = 0 //Value is based on current economy, see get_base_value()
@@ -137,6 +138,8 @@
 //Bars
 /obj/item/currency/gold_bar
 	name = "gold bar"
+	desc = "We're rich!"
+	desc_extended = "A bar of solid gold, likely valuable."
 	icon = 'icons/obj/item/currency/gold_bar.dmi'
 	icon_state = "1"
 	value = 0 //Value is based on current economy, see get_base_value()

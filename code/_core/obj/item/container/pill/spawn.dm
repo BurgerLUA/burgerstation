@@ -95,6 +95,7 @@
 
 /obj/item/container/edible/pill/chlorine
 	name = "chlorine tablet (10u)"
+	desc_extended = "Chlorine in tablet form, meant to be dissolved in beakers or other reagent containers. Maybe don't eat this."
 	icon_state = "circle"
 
 /obj/item/container/edible/pill/chlorine/Generate()
@@ -103,6 +104,7 @@
 
 /obj/item/container/edible/pill/carbon
 	name = "carbon tablet (10u)"
+	desc_extended = "Carbon in tablet form, meant to be dissolved in beakers or other reagent containers. Maybe don't eat this."
 	icon_state = "circle"
 
 /obj/item/container/edible/pill/carbon/Generate()

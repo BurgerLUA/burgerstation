@@ -36,7 +36,7 @@
 
 /obj/item/tempering/quality/general
 	name = "advanced repair kit"
-	desc = "Stay sharp!"
+	desc = "Your gear is your life. Take care of it!"
 	desc_extended = "A collection of scrap, tools, and generally useful materials that can help you maintain the condition any sort of item."
 	icon_state = "repair_kit"
 

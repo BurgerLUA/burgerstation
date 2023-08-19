@@ -1,7 +1,7 @@
 /obj/item/coin/
 	name = "coin"
 	desc = "Shiny!"
-	desc_extended = "A special coin that does something special."
+	desc_extended = "A shiny coin. Its value is dependant on the material."
 	icon = 'icons/obj/item/coin.dmi'
 	icon_state = "coin"
 

@@ -1,5 +1,7 @@
 /obj/item/bedsheet
 	name = "bedsheet"
+	desc = "a mirmir."
+	desc_extended = "A comfy linen bedsheet, for covering yourself in bed."
 	icon = 'icons/obj/structure/bed.dmi'
 	icon_state = "sheet"
 	value = 10

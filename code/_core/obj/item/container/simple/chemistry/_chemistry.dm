@@ -1,4 +1,6 @@
 /obj/item/container/simple/chemistry
+	desc = "Today we're gonna be doing some cool science. DRUG SCIENCE!"
+	desc_extended = "Reagent container most likely containing chemicals for chemistry."
 	icon = 'icons/obj/item/container/chemistry.dmi'
 	icon_state = null
 	reagents = /reagent_container/beaker/bottle/large

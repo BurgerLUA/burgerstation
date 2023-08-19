@@ -1,6 +1,7 @@
 /obj/item/
 	name = "item"
-	desc = "Oh my god it's an item."
+	desc = "It's a... thing."
+	desc_extended = "This item has no description available."
 
 	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_DIR | VIS_INHERIT_ID
 
