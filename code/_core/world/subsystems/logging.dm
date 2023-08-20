@@ -31,11 +31,12 @@ SUBSYSTEM_DEF(logging)
 	rustg_file_write("[round_id]",ROUND_ID_DIR)
 	start_date = lowertext(time2text(world.realtime,"YYYY-MMM-DD"))
 
-
 	var/datum/tgs_revision_information/tgs_revision = world.TgsRevision()
 	if(tgs_revision)
-		if(tgs_revision.commit) commit = tgs_revision.commit
-		if(tgs_revision.origin_commit) origin_commit = tgs_revision.origin_commit
+		if(tgs_revision.commit)
+			commit = copytext(tgs_revision.commit,4)
+		if(tgs_revision.origin_commit)
+			origin_commit = copytext(tgs_revision.origin_commit,4)
 
 	return ..()
 

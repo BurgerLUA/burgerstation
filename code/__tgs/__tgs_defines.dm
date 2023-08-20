@@ -10,4 +10,4 @@
 #define TGS_ERROR_LOG(message) log_error("TGS Error: [##message]")
 #define TGS_NOTIFY_ADMINS(event) log_admin( "TGS Admin Message: [##event]")
 #define TGS_CLIENT_COUNT global.total_clients
-//#define TGS_PROTECT_DATUM(Path) // Leave blank if your codebase doesn't give administrators code reflection capabilities
+#define TGS_PROTECT_DATUM(Path) // Leave blank if your codebase doesn't give administrators code reflection capabilities
