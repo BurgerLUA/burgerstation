@@ -1,7 +1,7 @@
 /obj/structure/interactive/fulton
 	name = "fulton"
 	desc = "oh no"
-	desc_extended = "Better save them quick."
+	desc_extended = "A deployed fulton pack. Better save them quick!"
 
 	icon = 'icons/obj/effects/fulton.dmi'
 	icon_state = "none"

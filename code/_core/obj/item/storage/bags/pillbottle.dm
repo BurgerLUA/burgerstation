@@ -1,7 +1,7 @@
 /obj/item/storage/pillbottle
 	name = "pill bottle"
-	desc = "Be sure to read the label before eating the contents."
-	desc_extended = "A pill bottle that can hold up to 30 pills."
+	desc = "Pills here!"
+	desc_extended = "An unlabelled pill bottle that can hold up to 30 pills."
 	icon = 'icons/obj/item/storage/prescription_pillbottle.dmi'
 	icon_state = "base"
 

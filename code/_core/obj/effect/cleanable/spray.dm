@@ -1,5 +1,7 @@
 /obj/effect/cleanable/spray //Spraycan Spray
-	name = "spray"
+	name = "spray decal"
+	desc = "gang shit"
+	desc_extended = "A spray decal, created with a spray can. Can be cleaned using standard janitorial methods if it contains something untasteful."
 	layer = LAYER_FLOOR_SCENERY - 1
 	plane = PLANE_BLOOD
 	alpha = 250

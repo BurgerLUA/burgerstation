@@ -1,6 +1,7 @@
 /obj/structure/interactive/power/smes
-	name = "super-magnetic power conductor"
-
+	name = "superconducting magnetic energy storage"
+	desc = "POOOOWWWEEERRRRRRRRRRR"
+	desc_extended = "Regulates power output and stores the excess. Commonly abbreviated to SMES."
 	icon = 'icons/obj/structure/power.dmi'
 	icon_state = "smes_map"
 
@@ -104,6 +105,8 @@
 
 /obj/structure/interactive/power/apc_connection_terminal
 	name = "SMES connection terminal"
+	desc = "POOOOWWWEEERRRRRRRRRRR"
+	desc_extended = "Regulates power output and stores the excess. Commonly abbreviated to SMES."
 	icon = 'icons/obj/structure/power.dmi'
 	icon_state = "terminal"
 	var/obj/structure/interactive/power/smes/connected_smes

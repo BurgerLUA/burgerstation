@@ -56,6 +56,8 @@
 /obj/item/clothing/pants/runic
 	name = "runic pants"
 	icon = 'icons/obj/item/clothing/pants/runic.dmi'
+	desc = "No you took all my gold that is unforgivable"
+	desc_extended = "A set of protective runite pants. These look pretty heavy."
 
 	layer = LAYER_MOB_CLOTHING_UNIFORM
 

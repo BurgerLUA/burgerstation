@@ -1,8 +1,7 @@
 /obj/item/clothing/feet/shoes/runic
 	name = "right runic boot"
-	desc = "For when you want to turn up the heat a little."
-	desc_extended = "A black combat boot. Shields your feet from shrapnel."
-
+	desc = "Free armour trimming U can trust me with ur adamant"
+	desc_extended = "A runite boot that will protect your foot. Or feet if you have both."
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 	worn_layer = LAYER_MOB_CLOTHING_BELT

@@ -1,8 +1,8 @@
 /obj/item/clothing/hands/gloves/runic
 	name = "right runic glove"
 	icon = 'icons/obj/item/clothing/gloves/runic.dmi'
-	desc_extended = "Fancy one-of-a-kind glove, issued to the station Captain. Don't lose the other one!"
-
+	desc = "Doubling money"
+	desc_extended = "A very nice glove. Don't lose the other one!"
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
