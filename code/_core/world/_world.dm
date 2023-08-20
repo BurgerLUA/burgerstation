@@ -78,8 +78,6 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = initial(sleep_offline)
 
 /world/Topic(T,Addr,Master,Keys)
-	if(!Master)
-		return
 	TGS_TOPIC
 	. = ..()
 
