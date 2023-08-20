@@ -77,6 +77,12 @@ var/global/world_state = STATE_STARTING
 
 	sleep_offline = initial(sleep_offline)
 
+/world/Topic(T,Addr,Master,Keys)
+	if(!Master)
+		return
+	TGS_TOPIC
+	. = ..()
+
 /world/proc/update_server_status()
 
 	var/server_name = CONFIG("SERVER_NAME","Unofficial Burgerstation 13 Server")
