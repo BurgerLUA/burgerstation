@@ -1,5 +1,7 @@
 /obj/structure/interactive/blob/
 	name = "blob piece"
+	desc = "Confirmed outbreak of level 5 biohazard aboard the station. All personnel must contain the outbreak."
+
 	icon = 'icons/obj/structure/blob.dmi'
 	var/has_damaged_state = FALSE
 
