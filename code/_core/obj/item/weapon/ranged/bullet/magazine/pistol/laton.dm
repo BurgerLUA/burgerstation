@@ -73,6 +73,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/prototype
 	name = "10mm Laton-H Prototype"
+	desc = "An extra milimetre to seal the deal."
+	desc_extended = "A prototype of NT's standard pistol, modified to fire 10mm all while retaining a matching appearance and ease of use. Claims to be superior to the Pneumbra model."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
 
 	bullet_length_min = 25
@@ -93,6 +95,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"
+	desc_extended = "NT's standard pistol, chambered in a 9mm cartridge. This one has been fitted with improved parts and a sleek, tactical paintjob, but remains just as easy to use."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_dark.dmi'
 	shoot_delay = 1.25
 	weight = 4

@@ -1,7 +1,7 @@
 /obj/structure/interactive/dont_look
 	name = "made you look"
-	desc = "Nice."
-	desc_extended = "Uh oh."
+	desc = "HA, GOTTEEM!"
+	desc_extended = "A special structure that does something bad when you look-- You looked, too late."
 	icon = 'icons/obj/item/meme.dmi'
 	icon_state = "lol"
 

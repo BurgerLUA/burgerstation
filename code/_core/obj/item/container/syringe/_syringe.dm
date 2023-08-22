@@ -1,7 +1,7 @@
 /obj/item/container/syringe
 	name = "syringe"
 	desc = "For when you want to poke holes into people and get away with it."
-	desc_extended = "Holds reagents. Can be toggled to inject or draw."
+	desc_extended = "Injects reagent directly into people's bloodstream for higher effectiveness, but will lose durability when administering. Can be toggled to inject or draw."
 	crafting_id = "syringe"
 
 	reagents = /reagent_container/syringe/

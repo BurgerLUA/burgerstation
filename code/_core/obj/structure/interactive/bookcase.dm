@@ -1,7 +1,7 @@
 /obj/structure/interactive/bookcase
 	name = "dusty bookcase"
 	desc = "What possible knowledge could be in here?"
-	desc_extended = "An ancient, dusty bookcase. Long abandoned since the days of the gigaplex multimedia home entertainment system."
+	desc_extended = "An ancient, dusty bookcase. Long abandoned since the days of the gigaplex multimedia home entertainment system, but perhaps there's still some knowledge worth salvaging?"
 	icon = 'icons/obj/structure/bookcase.dmi'
 	icon_state = "book"
 
@@ -90,7 +90,7 @@
 				P.put_in_hands(I)
 		caller.to_chat(span("notice","Huh. You found something in \the [src.name]!"))
 	else
-		caller.to_chat(span("warning","You didn't find anything in \the [src.name]...."))
+		caller.to_chat(span("warning","You didn't find anything of use in \the [src.name]...."))
 
 	chance_of_scroll--
 	update_sprite()

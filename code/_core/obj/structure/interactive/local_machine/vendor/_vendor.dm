@@ -1,6 +1,7 @@
 /obj/structure/interactive/vending/
 	name = "vending machine"
 	desc = "Vends things!"
+	desc_extended = "A self-serve vending machine. Sells items that are always in stock."
 	icon = 'icons/obj/structure/vending.dmi'
 	icon_state = "generic"
 
@@ -11,8 +12,6 @@
 	var/icon_state_off = "gen"
 	var/icon_state_mask = "gen"
 	var/icon_state_panel = "gen"
-
-	desc_extended = "You can use this to purchase things that are always in stock."
 
 	var/list/obj/item/stored_objects = list()
 	var/list/obj/item/stored_types = list()
@@ -327,3 +326,7 @@
 
 /obj/structure/interactive/vending/get_power_draw()
 	return 180
+
+/obj/structure/interactive/vending/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","To buy from a vendor, simply left or right click any of the available items in the vendor menu.<br>Credits will be automatically deducted from your account, but special currencies such as dosh or gold coins must be held in one of your hands to use.")
