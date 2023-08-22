@@ -34,7 +34,7 @@
 	if(!text)
 		return text
 
-	var/regex/R = regex("\[!,.?\]+$")
+	var/regex/R = regex("\[!,.?\]+$","g")
 	text = R.Replace(text,"")
 
 	return text
@@ -44,7 +44,7 @@
 	if(!text)
 		return text
 
-	var/regex/R = keep_spaces ? regex(@{"[^A-z\s]"}) : regex(@{"[^A-z]"})
+	var/regex/R = keep_spaces ? regex(@{"[^A-z\s]"},"g") : regex(@{"[^A-z]"},"g")
 	text = R.Replace(text,"")
 
 	return text

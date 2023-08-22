@@ -4,7 +4,7 @@
 
 /language/binary/process_text(var/speaker,var/text)
 
-	var/regex/R = regex("\[!,.?\]")
+	var/regex/R = regex("\[!,.?\]","g")
 	text = R.Replace(text,"")
 
 	var/returning = ""
