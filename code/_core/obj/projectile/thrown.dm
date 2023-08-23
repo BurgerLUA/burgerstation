@@ -19,8 +19,6 @@
 
 	var/ignore_shuttles = FALSE
 
-	debug = TRUE
-
 /obj/projectile/thrown/Initialize()
 
 	. = ..()

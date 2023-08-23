@@ -146,10 +146,12 @@
 	// 0 = no logs
 	// 1 = victim recieves logs only
 	// 2 = victim and attacks recieves logs
-	// 3 = everyone recieves logs (hit logging must be enabled in config)
+	// 3 = everyone (in range) recieves logs (hit logging must be enabled in config)
 	var/enable_logs = 3
 
 	var/allow_friendly_fire = FALSE
+
+	var/allow_self_damage = TRUE
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -204,7 +206,10 @@
 
 /damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
 
-	if(allow_friendly_fire < 2 && is_living(attacker) && is_living(victim))
+	if(attacker == victim)
+		if(!allow_self_damage)
+			return FALSE
+	else if(allow_friendly_fire < 2 && is_living(attacker) && is_living(victim))
 		var/mob/living/A = attacker
 		var/mob/living/V = victim
 		if(!allow_hostile_action(A.loyalty_tag,V))
@@ -457,7 +462,6 @@
 	var/turf/victim_turf = get_turf(victim)
 	if(!victim_turf)
 		return FALSE
-
 
 	if(debug)
 		log_debug("**************************************")

@@ -39,6 +39,13 @@
 
 /reagent/nutrition/New(var/desired_loc)
 	//Automatically set value.
+
+	if(nutrition_normal_amount + nutrition_fast_amount + nutrition_quality_amount < 0)
+		log_error("Warning: [src.type] had a negative total nutritional value!")
+
+
+
+
 	value *= 0.1 + max(0.1,(abs(nutrition_normal_amount)+abs(nutrition_quality_amount)*4+abs(nutrition_fast_amount)*0.25)*0.035) + max(0,hydration_amount*0.015) + max(0,heal_factor) + max(0,0.05*flavor_strength)
 	. = ..()
 	value = CEILING(value,0.01)
