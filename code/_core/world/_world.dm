@@ -132,9 +132,10 @@ var/global/world_state = STATE_STARTING
 	Reboot(0)
 	return TRUE
 
-/world/Reboot()
-	. = ..()
+/world/Reboot(reason)
 	TgsReboot()
+	. = ..()
+
 
 
 /proc/save_all_globals()
