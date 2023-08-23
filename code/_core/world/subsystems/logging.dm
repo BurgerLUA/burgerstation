@@ -18,6 +18,7 @@ SUBSYSTEM_DEF(logging)
 
 	var/commit = "NOT FOUND"
 	var/origin_commit = "NOT FOUND"
+	var/version = "NOT FOUND"
 
 //Logging shouldn't be unclogged.
 /subsystem/logging/unclog(var/mob/caller)
@@ -34,9 +35,10 @@ SUBSYSTEM_DEF(logging)
 	var/datum/tgs_revision_information/tgs_revision = world.TgsRevision()
 	if(tgs_revision)
 		if(tgs_revision.commit)
-			commit = copytext(tgs_revision.commit,4)
+			commit = copytext(tgs_revision.commit,1,4)
 		if(tgs_revision.origin_commit)
-			origin_commit = copytext(tgs_revision.origin_commit,4)
+			origin_commit = copytext(tgs_revision.origin_commit,1.4)
+	version = "[DM_VERSION].[DM_BUILD]"
 
 	return ..()
 

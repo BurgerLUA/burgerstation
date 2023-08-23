@@ -18,8 +18,7 @@
 		/obj/item/powercell/bluespace = 1,
 		/obj/item/clothing/head/hat/pete = 1,
 		/obj/item/clothing/overwear/armor/seva/syndie = 1,
-		/obj/item/weapon/ranged/bow/hardlight = 1,
-		/obj/item/storage/bagofhoarding = 1
+		/obj/item/weapon/ranged/bow/hardlight = 1
 	)
 	loot_count = 1
 
