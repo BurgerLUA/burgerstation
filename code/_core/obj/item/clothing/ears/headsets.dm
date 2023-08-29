@@ -1,10 +1,14 @@
 /obj/item/clothing/ears/headset
 	name = "nanotrasen headset"
 	desc = "; HELP MAINT!"
-	desc_extended = "A headset for communicating with your fellows. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
+	desc_extended = "A headset for communicating with your fellows."
 	icon = 'icons/obj/item/clothing/ears/headset.dmi'
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset/nanotrasen
+
+/obj/item/clothing/ears/headset/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","Use the ';' prefix while speaking to talk into it.<br>Use the mouse wheel to change frequencies.<br>Click/Use in hands to toggle the signal reciever.<br>ALT+Click to change broadcast mode.")
 
 /obj/item/clothing/ears/headset/Finalize()
 	if(ispath(stored_radio))
@@ -40,6 +44,7 @@
 
 /obj/item/clothing/ears/headset/syndicate
 	name = "syndicate headset"
+	desc = "; WHO HAS THE DISK?!"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/syndicate
 
@@ -47,6 +52,7 @@
 
 /obj/item/clothing/ears/headset/mercenary
 	name = "mercenary headset"
+	desc = "; Kept you waiting, huh?"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/mercenary
 
@@ -54,6 +60,7 @@
 
 /obj/item/clothing/ears/headset/revolutionary
 	name = "revolutionary headset"
+	desc = "; FOR THE REVOLUTION!"
 	icon = 'icons/obj/item/clothing/ears/antag_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/revolutionary
 
@@ -61,6 +68,7 @@
 
 /obj/item/clothing/ears/headset/nanotrasen/medical
 	name = "nanotrasen medical headset"
+	desc = "; TURN ON SUIT SENSORS!"
 	icon = 'icons/obj/item/clothing/ears/medical_headset.dmi'
 	stored_radio = /obj/item/device/radio/headset/nanotrasen/medical
 
@@ -68,7 +76,7 @@
 	name = "\improper cat ear headset"
 	icon = 'icons/obj/item/clothing/hats/cat.dmi'
 	desc = "; HELPIES!"
-	desc_extended = "This may have been a mistake. Use the mouse wheel to change frequencies, and use the ';' prefix while speaking to talk into it."
+	desc_extended = "A pair of authentic-looking cat ears and a tail, embedded with a nanotrasen headset. This may have been a mistake."
 	stored_radio = /obj/item/device/radio/headset/nanotrasen
 
 	no_initial_blend = TRUE

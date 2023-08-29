@@ -1,6 +1,6 @@
 /obj/structure/sign/
 	name = "sign"
-	desc = "What does it say?"
+	desc = "This sign can't stop me because i can't read!"
 	mouse_over_pointer = MOUSE_ACTIVE_POINTER
 	icon = 'icons/obj/sign/signs.dmi'
 	icon_state = ""
@@ -18,7 +18,7 @@
 /obj/structure/sign/secure
 	name = "secure area"
 	icon_state = "secure"
-	desc_extended = "A sign designating the area as secure."
+	desc_extended = "A sign designating."
 
 /obj/structure/sign/space
 	name = "space warning"
@@ -102,9 +102,12 @@
 
 /obj/structure/sign/restroom/male
 	icon_state = "male"
+	desc_extended = "A sign designating the area as a male only bathroom."
 
 /obj/structure/sign/restroom/female
 	icon_state = "female"
+	desc_extended = "A sign designating the area as a female only bathroom."
 
 /obj/structure/sign/restroom/unisex
 	icon_state = "unisex"
+	desc_extended = "A sign designating the area as an unisex bathroom."

@@ -1,7 +1,7 @@
 /obj/structure/short_wall
 	name = "short wall"
-	desc = "A torso high wall. Low enough to see over."
-	desc = "Can be used as basic cover."
+	desc = "Low enough to see over."
+	desc = "A torso high wall. Can be used as basic cover."
 	icon = 'icons/obj/structure/wall.dmi'
 	icon_state = "wall"
 

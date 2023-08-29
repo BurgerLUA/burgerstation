@@ -10,6 +10,7 @@
 
 /obj/structure/interactive/door/vault/syndicate
 	icon = 'icons/obj/structure/airlock/vault_door_dark.dmi'
+	desc_extended = "A absolute behemoth of a steel door installed with every single anti-bypass feature known to man. There is no way to get through this without the right code."
 	var/obj/item/device/keypad/stored_keypad
 
 /obj/structure/interactive/door/vault/syndicate/PreDestroy()

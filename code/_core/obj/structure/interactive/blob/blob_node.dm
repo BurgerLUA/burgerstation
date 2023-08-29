@@ -1,6 +1,7 @@
 /obj/structure/interactive/blob/node
 	name = "blob node"
 	icon_state = "node"
+	desc_extended = "A segment of the ever-expanding blob. This one creates and deploys blobbernaughts if the blob's expanse is hindered by the living."
 	has_damaged_state = TRUE
 	health_base = 250
 

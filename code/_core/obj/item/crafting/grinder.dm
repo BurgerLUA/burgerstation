@@ -2,8 +2,8 @@
 	name = "portable grinder"
 	icon = 'icons/obj/item/ore.dmi'
 	icon_state = "grinder"
-	desc = "grinds items into reagents"
-	desc_extended = "if I put you into a meat grinder..."
+	desc = "If I chopped you up into a meat grinder..."
+	desc_extended = "Grinds reagent-holding items, such as pills or food into reagents. Requires a reagent container for collecting said reagents."
 
 	inventories = list(
 		/obj/hud/inventory/crafting/slotB1,

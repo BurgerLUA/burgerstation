@@ -1,7 +1,7 @@
 /obj/item/bulletbox
 	name = "ammo box"
-	desc = "Boxy!"
-	desc_extended = "A non-descript green box that contains bullets for a weapon."
+	desc = "Here, take some ammo!"
+	desc_extended = "A non-descript green box that contains a large quantity of a single ammo type."
 	icon = 'icons/obj/item/bulletbox.dmi'
 	icon_state = "ammo"
 
@@ -24,6 +24,10 @@
 
 	var/next_regen = 0 //For ammo box restocking.
 
+/obj/item/bulletbox/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(small == FALSE)
+		. += span("notice","Use to open and deploy, ALT+Click to pack up.")
 
 /obj/item/bulletbox/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
@@ -252,11 +256,18 @@
 
 
 /obj/item/bulletbox/small
+	name = "small ammo box"
+	desc = "Here, take some ammo!"
+	desc_extended = "A small cardboard box specialized for storing a couple handfuls of a single ammo type. Smaller capacity, but doesn't need to be deployed."
 	size = SIZE_2
 	small = TRUE
 	ignore_custom_sprites = TRUE
 	draw_bullet_on_box = FALSE
 	value = 10
+
+//obj/item/bulletbox/small/get_examine_list(var/mob/examiner)
+//	. = ..()
+//	. += span("notice","Use to open and deploy, ALT+Click to pack up.")
 
 /obj/item/bulletbox/small/shotgun_12
 	stored_bullet = /obj/item/bullet_cartridge/shotgun_12

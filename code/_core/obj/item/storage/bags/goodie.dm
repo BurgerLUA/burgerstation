@@ -14,6 +14,8 @@
 
 /obj/item/storage/bags/goodie/halloween
 	name = "halloween goodie bag"
+	desc = "Trick or treat!"
+	desc_extended = "A small bag. Contains halloween goodies!"
 	icon_state = "halloween"
 
 	loot_to_generate = /loot/halloween

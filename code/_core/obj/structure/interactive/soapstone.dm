@@ -1,6 +1,7 @@
 obj/structure/interactive/soapstone_message
 	name = "soapstone message"
-	desc = "A message left by a traveler."
+	desc = "shortcut ahead"
+	desc_extended = "A message left by a traveler."
 	icon = 'icons/obj/structure/soapstone.dmi'
 	icon_state = "message"
 	anchored = TRUE

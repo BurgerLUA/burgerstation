@@ -1,5 +1,7 @@
 obj/structure/interactive/fence
 	name = "fence"
+	desc = "Keep out."
+	desc_extended = "A flimsy chainlink fence. Keeps moving things in or out as long as it stands, but bullets will pass through."
 	icon = 'icons/obj/structure/fence.dmi'
 	icon_state = "straight"
 

@@ -1,7 +1,7 @@
 /obj/item/container/edible/sandwich
 	name = "sandwich"
-	desc = "A clusterfuck of food."
-	desc_extended = "SANDWICH MAKES ME STRONG!"
+	desc = "SANDWICH MAKES ME STRONG!"
+	desc_extended = "A clusterfuck of food. ALT+Click to open and add ingredients, preferably edible ones."
 
 	size = SIZE_2
 
@@ -62,6 +62,7 @@
 
 /obj/item/container/edible/sandwich/burger
 	name = "burger"
+	desc = "The meal of champions."
 	icon_state = "bun_bottom"
 
 

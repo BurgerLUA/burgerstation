@@ -1,5 +1,7 @@
 /obj/structure/interactive/crate/chest
 	name = "treasure chest"
+	desc = "THERE BE TREASURE!"
+	desc_extended = "An old-fashioned, but tough wooden chest. Fitted with an equally old-fashioned keylock."
 	icon_state = "chest"
 
 	var/locked = TRUE
@@ -23,6 +25,13 @@
 		DIFFICULTY_EXTREME = 1.5,
 		DIFFICULTY_NIGHTMARE = 2
 	)
+
+/obj/structure/interactive/crate/chest/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(locked == TRUE)
+		. += span("notice","It's locked, but you could try your hand at picking the lock...")
+	else
+		. += span("notice","It's unlocked!")
 
 /obj/structure/interactive/crate/chest/on_chunk_clean()
 	if(locked || current_user)

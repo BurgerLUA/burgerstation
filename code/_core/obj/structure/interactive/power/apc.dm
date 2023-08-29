@@ -1,5 +1,7 @@
 /obj/structure/interactive/power/apc
 	name = "area power converter"
+	desc = "Power to the people!"
+	desc_extended = "Recieves power and wirelessly powers machinery in the room. Commonly abbreviated to APC."
 	icon = 'icons/obj/structure/power.dmi'
 	icon_state = "apc"
 

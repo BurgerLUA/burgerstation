@@ -1,5 +1,7 @@
 /obj/structure/interactive/crate/closet/supply_pod
 	name = "supply pod"
+	desc = "Special delivery!"
+	desc_extended = "A supply pod sent from space. Could carry either troops or supplies."
 	icon = 'icons/obj/structure/supply_pods.dmi'
 	icon_state = "supplypod"
 

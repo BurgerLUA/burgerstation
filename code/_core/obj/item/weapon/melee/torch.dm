@@ -103,6 +103,10 @@
 
 	size = SIZE_2
 
+/obj/item/weapon/melee/torch/flashlight/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","Flashlights shine light only in the direction you are facing.<br>You can adjust where your character is looking by holding V, or automatically by having harm intent selected.")
+
 /obj/item/weapon/melee/torch/flashlight/maglight
 	name = "maglight"
 	desc = "A robust flashlight."

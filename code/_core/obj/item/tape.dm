@@ -1,6 +1,6 @@
 /obj/item/cassette_player
 	name = "cassette player"
-	desc = "Finally, some good fucking music."
+	desc = "Begin audio prompt in three..."
 	desc_extended = "Old cassette player that can play pre-recorded songs. Use it in hand to start playing it for yourself to hear, or turn the currently playing song off."
 	icon = 'icons/obj/item/tape.dmi'
 	icon_state = "taperecorder_empty"
@@ -131,6 +131,8 @@
 
 /obj/item/cassette_tape
 	name = "cassette tape"
+	desc = "Finally, some good fucking music."
+	desc_extended = "Old cassette tape that contains pre-recorded music. Requires a cassette tape player to play."
 	var/track/stored_track
 	icon = 'icons/obj/item/tape.dmi'
 	icon_state = "tape_white"

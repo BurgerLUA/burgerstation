@@ -1,5 +1,7 @@
 /obj/item/spraycan
 	name = "spray can"
+	desc = "gang shit"
+	desc_extended = "For delinquent vandals, artists and gang takeovers alike. Make sure the nozzle is pointed the right way before use."
 	icon_state = "spraycan"
 	icon = 'icons/obj/item/spraycan.dmi'
 
@@ -16,6 +18,13 @@
 	value_burgerbux = 10
 
 	rarity = RARITY_RARE
+
+/obj/item/spraycan/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(cap_on == TRUE)
+		. += span("notice","Use to select a decal to spray.<br>Click with an empty hand to take off the cap.")
+	else
+		. += span("notice","Use to select a decal to spray.<br>Click with an empty hand to put the cap back on.")
 
 /obj/item/spraycan/PreDestroy()
 	QDEL_NULL(desired_spray)

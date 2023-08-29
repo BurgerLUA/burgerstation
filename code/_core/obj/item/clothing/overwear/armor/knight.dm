@@ -162,8 +162,8 @@
 
 /obj/item/clothing/overwear/armor/knight/runic
 	name = "runic platebody"
-	desc = "Where's the pants?"
-	desc_extended = "A kinght suit without the pants. Good for short goblins."
+	desc = "Free armour trimming U can trust me with ur adamant"
+	desc_extended = "A platebody made out of runite. Provides excellent protection."
 	icon = 'icons/obj/item/clothing/suit/runic.dmi'
 
 	worn_layer = LAYER_MOB_CLOTHING_ARMOR

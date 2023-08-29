@@ -1,5 +1,7 @@
 /obj/item/crafting_bench/
 	name = "crafting table"
+	desc = "this is just like that one game wher you uhhhhhhh uuuuummmmm"
+	desc_extended = "This is a crafting bench item path. You shouldn't be seeing this."
 	inventories = list(
 		/obj/hud/inventory/crafting/slotA1,
 		/obj/hud/inventory/crafting/slotA2,

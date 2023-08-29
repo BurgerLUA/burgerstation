@@ -1,5 +1,7 @@
 obj/structure/interactive/info_spin
 	name = "info display"
+	desc = "hello how do i switch hands?"
+	desc_extended = "A large, holographic sign designating an information desk. Perhaps you could get some help here?"
 	icon = 'icons/obj/structure/info_static.dmi'
 	icon_state = "info"
 	pixel_y = 10

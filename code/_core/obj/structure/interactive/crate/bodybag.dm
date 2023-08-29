@@ -1,7 +1,7 @@
 /obj/structure/interactive/crate/bodybag
 	name = "body bag"
 	desc = "You were loud and ugly and now your dead!"
-	desc_extended = "A plastic bag to transport corpse."
+	desc_extended = "A plastic bag to transport corpses."
 	icon = 'icons/obj/structure/crates.dmi'
 	icon_state = "bodybag"
 
@@ -15,6 +15,10 @@
 	pixel_y = 2
 
 	density = TRUE
+
+/obj/structure/interactive/crate/bodybag/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","ALT+Click this with an empty hand to pack up and retrieve.")
 
 /obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
@@ -58,7 +62,7 @@
 /obj/item/deployable/bodybag
     name = "bodybag"
     desc = "Why would you carry these, not like you can bag yourself. Unless...."
-    desc_extended = "A plastic bag meant to transport corpses."
+    desc_extended = "A plastic bag meant to transport corpses. Use to deploy."
     structure_to_deploy = /obj/structure/interactive/crate/bodybag
     icon = 'icons/obj/item/deployable/bodybag.dmi'
     value = 100

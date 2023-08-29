@@ -4,7 +4,7 @@
 	icon_state = "inventory_right"
 	icon_state_worn = "worn_right"
 
-	desc = "Data-mine the code with theese."
+	desc = "Data-mine the code with these."
 	desc_extended = "You probably shouldn't have this."
 
 	icon = 'icons/obj/item/clothing/gloves/tutorial_gloves.dmi'
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/hands/gloves/tutorial/left
 	name = "left antimagic armwrap"
-	desc = "Data-mine the code with theese."
+	desc = "Data-mine the code with these."
 	desc_extended = "You probably shouldn't have this."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"

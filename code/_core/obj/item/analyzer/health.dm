@@ -13,6 +13,7 @@
 
 /obj/item/analyzer/health/syndicate
 	name = "syndicate health analyzer"
+	desc = "Hold still if you want to live."
 	desc_extended = "A handheld portable health analyzer that prints the target's total received damage in an arbitary measurement. This syndicate variant is more silent and works at a short range."
 	stealth = TRUE
 	scan_range = VIEW_RANGE*0.75

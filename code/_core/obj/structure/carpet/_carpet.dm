@@ -1,5 +1,7 @@
 /obj/structure/carpet
 	name = "carpet"
+	desc = "The raiders be hating on my new carpet."
+	desc_extended = "Welcoming, cozy and beautiful. Fragile, and can be destroyed."
 	icon = 'icons/obj/structure/carpet.dmi'
 	icon_state = "preview"
 

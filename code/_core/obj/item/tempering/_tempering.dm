@@ -25,7 +25,7 @@
 
 /obj/item/tempering/get_examine_list(var/mob/examiner)
 	. = ..()
-	. += span("notice","Use alt+click to bypass confirmation prompts and to use on objects that hold inventory.")
+	. += span("notice","Use ALT+Click to bypass confirmation prompts and to use on objects that hold inventory.")
 	if(uses_left == -1)
 		. += span("notice","There are <b>unlimited</b> uses left.")
 	else if(uses_left <= 0)
@@ -44,7 +44,7 @@
 			return TRUE
 		else if(!is_inventory(object))
 			if(can_temper(caller,object))
-				var/choice = input("Are you sure you want to temper \the [object.name]?","Alt+Click to skip this next time") as null|anything in list("Yes","No")
+				var/choice = input("Are you sure you want to temper \the [object.name]?","ALT+Click to skip this next time") as null|anything in list("Yes","No")
 				if(choice == "Yes")
 					INTERACT_CHECK
 					INTERACT_CHECK_OBJECT

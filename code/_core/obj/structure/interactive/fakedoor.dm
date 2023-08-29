@@ -1,5 +1,7 @@
 /obj/structure/scenery/fake_door
 	name = "airlock"
+	desc = "AI DOOR"
+	desc_extended = "It opens and closes. Usually."
 	icon = 'icons/obj/structure/airlock/fake.dmi'
 
 	collision_flags = FLAG_COLLISION_WALL
