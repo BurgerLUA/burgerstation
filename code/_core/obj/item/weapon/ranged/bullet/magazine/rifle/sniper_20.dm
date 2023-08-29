@@ -40,7 +40,9 @@
 	dan_mode = TRUE
 
 	attachment_whitelist = list(
-		/obj/item/attachment/barrel/sniper_20 = TRUE,
+		/obj/item/attachment/stock/sniper_20 = TRUE,
+
+		/obj/item/attachment/barrel/charger/advanced/20 = TRUE,
 
 		/obj/item/attachment/sight/laser_sight = TRUE,
 		/obj/item/attachment/sight/quickfire_adapter = TRUE,
@@ -94,10 +96,10 @@
 	GENERATE(attachment_sight)
 	FINALIZE(attachment_sight)
 
-	attachment_barrel = new /obj/item/attachment/barrel/sniper_20(src)
-	INITIALIZE(attachment_barrel)
-	GENERATE(attachment_barrel)
-	FINALIZE(attachment_barrel)
+	attachment_stock = new /obj/item/attachment/stock/sniper_20(src)
+	INITIALIZE(attachment_stock)
+	GENERATE(attachment_stock)
+	FINALIZE(attachment_stock)
 
 	. = ..()
 
