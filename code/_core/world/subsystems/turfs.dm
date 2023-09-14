@@ -165,6 +165,7 @@ SUBSYSTEM_DEF(turf)
 				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD
 
+		/*
 		//ROCKGEN
 		var/rockgen_benchmark = true_time()
 		var/rockgens_checked = 0
@@ -189,6 +190,7 @@ SUBSYSTEM_DEF(turf)
 
 		rockgen_benchmark = true_time() - rockgen_benchmark
 		log_subsystem(src.name,"Checked [rockgens_checked] dynamic rock generation turfs and placed [length(rockgens_to_replace)] rock turfs in [DECISECONDS_TO_SECONDS(rockgen_benchmark)] seconds.")
+		*/
 
 	log_subsystem(src.name,"Initializing turfs...")
 	for(var/turf/simulated/S in world)

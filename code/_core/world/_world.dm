@@ -33,6 +33,11 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = FALSE
 	__detect_rust_g()
 
+	if(!rustg_get_version())
+		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Restarting!"
+		Reboot(0)
+		return
+
 	//TODO: Unfuck this.
 	createtypecache(/loot)
 	createtypecache(/area)

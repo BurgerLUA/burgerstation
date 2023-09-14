@@ -47,7 +47,7 @@
 "aU" = (/obj/structure/interactive/door/airlock/station/maintenance,/obj/structure/interactive/wire/green,/turf/simulated/floor/plating,/area/mission/prefab/city/the_chem_lab)
 "aV" = (/obj/marker/map_node,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
 "aW" = (/obj/structure/carpet/grey,/obj/marker/map_node,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
-"aX" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/assprin,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
+"aX" = (/obj/structure/table/rack/grey,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)
 "aY" = (/obj/structure/table/rack/grey,/obj/item/container/healing/bandage,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
 "aZ" = (/obj/structure/table/rack/grey,/obj/item/storage/pillbottle/bicaridine,/turf/simulated/floor/tile,/area/mission/prefab/city/the_chem_lab)
 "ba" = (/obj/structure/table/reinforced/steel,/obj/structure/interactive/storage/cash_register{icon_state = "register"; dir = 4},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/the_chem_lab)

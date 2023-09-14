@@ -32,7 +32,7 @@
 "aF" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/back/storage/satchel/bluespace/prank,/obj/item/clothing/back/storage/satchel/bluespace/prank,/obj/item/clothing/back/storage/satchel/bluespace/prank,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aG" = (/obj/structure/table/reinforced/yellow,/obj/item/clothing/mask/clown,/obj/item/clothing/mask/clown,/obj/item/clothing/mask/clown,/obj/structure/interactive/lighting/fixture/tube/color/random{icon_state = "preview"; dir = 4},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aH" = (/obj/marker/mission_corpse,/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
-"aI" = (/obj/structure/table/reinforced/yellow,/obj/item/container/healing/bandage/prank,/obj/item/container/healing/bandage/prank,/obj/item/container/healing/bandage/prank,/obj/structure/interactive/lighting/fixture/tube/color/random{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
+"aI" = (/obj/structure/table/reinforced/yellow,/obj/structure/interactive/lighting/fixture/tube/color/random{icon_state = "preview"; dir = 8},/turf/simulated/floor/tile/orange,/area/mission/prefab/city/honked_and_loaded)
 "aJ" = (/obj/structure/interactive/potted_plant/bin,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)
 "aK" = (/obj/structure/scenery/flowers,/turf/simulated/floor/colored/grass,/area/mission/prefab/city/honked_and_loaded)
 "aL" = (/obj/structure/table/reinforced/yellow,/turf/simulated/floor/tile/yellow,/area/mission/prefab/city/honked_and_loaded)

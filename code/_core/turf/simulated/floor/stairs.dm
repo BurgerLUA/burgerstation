@@ -12,6 +12,7 @@
 
 	health_base = 300
 
+/*
 /turf/simulated/floor/stair/ztravel
 	health_base = 0
 
@@ -29,6 +30,7 @@
 			if(T2)
 				O.Move(T2)
 			return FALSE //Don't do regular movement.
+*/
 
 
 /turf/simulated/floor/stair/ztravel/wood
