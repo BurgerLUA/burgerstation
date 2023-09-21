@@ -67,8 +67,8 @@
 /obj/structure/interactive/lighting/fixture/tube/station
 	color = COLOR_LIGHT
 	color_frame = COLOR_GREY
-	desired_light_power = 0.75
-	desired_light_range = VIEW_RANGE*0.75
+	desired_light_power = 0.55
+	desired_light_range = VIEW_RANGE*0.7
 
 /obj/structure/interactive/lighting/fixture/tube/station/rcd/Finalize()
 	. = ..()
