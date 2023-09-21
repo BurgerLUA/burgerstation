@@ -11,3 +11,8 @@
 		/obj/item/clothing/hands/gloves/colored/insulated/left,
 		/obj/item/weapon/melee/spear/clockwork
 	)
+
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 100
+	quality_mod_min = 0.75

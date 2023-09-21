@@ -27,6 +27,7 @@
 	. = ..()
 	// https://www.desmos.com/calculator/hjwomvwuwm
 	. += 250 + ((nightvision_power**1.5)/255)*2500*0.062
+	. = CEILING(.,1)
 
 /obj/item/clothing/glasses/nightvision/PreDestroy()
 	CALLBACK_REMOVE("\ref[src]_drain_power")

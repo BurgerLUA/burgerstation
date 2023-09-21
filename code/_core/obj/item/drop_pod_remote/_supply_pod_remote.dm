@@ -49,6 +49,8 @@
 
 	charges--
 
+	value = get_base_value()
+
 	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)
 	for(var/k in stored_object_types)
 		var/atom/movable/M = new k(T)

@@ -25,6 +25,7 @@
 	size = SIZE_0
 	var/weight = 0 //DEPRICATED
 	var/quality = -1 //-1 means quality isn't used.
+	var/quality_max = 100 //Maximum possible quality for this item.
 	var/rarity = RARITY_COMMON //Arbitrary Value
 	var/tier = -1 //-1 means not set.
 	var/tier_type
@@ -179,7 +180,7 @@
 
 	var/can_negate_damage = FALSE
 
-	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this.
+	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this to purchase in vendors.
 
 /obj/item/proc/can_unlock(var/mob/caller)
 	return TRUE
@@ -226,6 +227,7 @@
 
 	return TRUE
 
+
 /obj/item/Crossed(atom/movable/O,atom/OldLoc)
 	return TRUE
 
@@ -236,23 +238,21 @@
 
 	. = ..()
 
-	if(length(polymorphs) || color != initial(color))
+	if(length(polymorphs) || color != initial(color) || get_damage_icon_number() != 0)
 		update_sprite()
+
 	if(!crafting_id)
 		crafting_id = src.type
 
 	if(is_turf(loc))
 		layer = initial(layer) + clamp(value / 10000,0,0.999)
 
-/obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
-	if(quality == -1)
-		return 0
-	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
-
 /obj/item/get_base_value()
 	. = initial(value) * amount
 	if(quality != -1)
-		. *= (0.5 + 0.5*clamp(quality/100,0.25,1.5))
+		. *= (0.5 + 0.5*clamp(quality/100,0.25,2))
+		. *= (0.75 + 0.25*clamp(quality_max/100,0.25,2))
+		. = CEILING(.,1)
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)
@@ -280,7 +280,7 @@
 		qdel(src)
 	else
 		update_sprite()
-		update_value()
+		value = get_base_value()
 
 	return amount_to_add
 
@@ -437,7 +437,7 @@
 
 	. = ..()
 
-	if(is_inventory(src.loc))
+	if(. && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		I.overlays.Cut()
 		I.update_overlays()
@@ -448,7 +448,6 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-
 	if(tier >= 1)
 		. += div("rarity center","Tier \Roman[tier][tier_type ? " [tier_type]" : ""].")
 	else if(tier == 0)
@@ -458,16 +457,34 @@
 		. += div("bad bold center","CONTRABAND")
 
 	if(quality != -1)
-		if(quality <= 0)
-			. += div("rarity bad","<b>Quality</b>: BROKEN")
-		else if(quality >= 200)
-			. += div("rarity legendary","<b>Quality</b>: [FLOOR(quality,1)]%")
-		else if(quality > 100)
-			. += div("rarity good","<b>Quality</b>: [FLOOR(quality,1)]%")
-		else if(quality <= 60)
-			. += div("rarity bad","<b>Quality</b>: [FLOOR(quality,1)]%")
+
+		//Maximum Quality
+		if(quality_max >= 200)
+			. += div("rarity legendary","<b>Masterwork</b>")
+		else if(quality_max > 120)
+			. += div("rarity good","<b>Superior</b>")
+		else if(quality_max > 100)
+			. += div("rarity good","<b>Crafted</b>")
+		else if(quality_max == 100)
+			. += div("rarity common","<b>Factory New</b>")
+		else if(quality_max > 60)
+			. += div("rarity bad","<b>Used</b>")
+		else if(quality_max > 0)
+			. += div("rarity bad","<b>Surplus</b>")
 		else
-			. += div("rarity common","<b>Quality</b>: [FLOOR(quality,1)]%")
+			. += div("rarity bad","<b>Unsalvagable</b>")
+
+		//Current Quality
+		if(quality >= 200)
+			. += div("rarity legendary","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else if(quality > 100)
+			. += div("rarity good","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else if(quality > 60)
+			. += div("rarity common","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else if(quality > 0)
+			. += div("rarity bad","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else
+			. += div("rarity bad","<b>Condition</b>: BROKEN")
 
 	if(luck < 50)
 		. += div("rarity bad","<b>Luck</b>: -[50 - luck]")
@@ -482,7 +499,7 @@
 	. += div("examine_description_long",src.desc_extended)
 
 /obj/item/proc/get_display_value()
-	return get_base_value()
+	return value
 
 /obj/item/get_examine_details_list(var/mob/examiner)
 	. = ..()
@@ -828,41 +845,6 @@
 		I.blend_mode = BLEND_INSET_OVERLAY
 		I.color = blood_stain_color
 		add_overlay(I)
-
-
-// https://www.desmos.com/calculator/htnhpikjwb
-/obj/item/proc/get_quality_mod()
-	if(quality == -1)
-		return 1
-	var/q_mod = quality/100
-	return max(0.25,min(cos( (q_mod-1) * 90)**min(1,1 - q_mod),2))
-
-/obj/item/proc/adjust_quality(var/quality_to_add=0)
-
-	if(quality == -1)
-		return FALSE
-
-	if(quality >= 200) //Cannot add or remove quality.
-		return TRUE
-
-	var/original_quality = quality
-	var/original_damage_num = get_damage_icon_number()
-
-	quality = FLOOR(quality + quality_to_add,0.01)
-
-	if(original_quality > 0 && quality <= 0)
-		visible_message(span("danger","\The [src.name] breaks!"))
-
-	if(enable_torn_overlay || enable_damage_overlay)
-		var/desired_damage_num = get_damage_icon_number()
-		if(original_damage_num != desired_damage_num)
-			update_sprite()
-			add_blend("damage_overlay_noise", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
-			add_blend("damage_overlay", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
-
-	update_value()
-
-	return TRUE
 
 /obj/item/dust(var/atom/source)
 	qdel(src)

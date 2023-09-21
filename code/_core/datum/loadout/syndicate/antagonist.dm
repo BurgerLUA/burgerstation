@@ -36,3 +36,4 @@
 		/obj/item/pinpointer/crew/syndicate,
 
 	)
+	use_random_quality_amounts = FALSE

@@ -55,3 +55,5 @@
 
 	. += (see_in_dark/VIEW_RANGE)*500
 
+	. = CEILING(.,1)
+

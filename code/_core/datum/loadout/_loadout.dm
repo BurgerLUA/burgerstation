@@ -3,6 +3,11 @@
 
 	var/obj/item/spawn_on_loot_fail //Put a backpack path here or something so failed loot goes in it if it can.
 
+	var/use_random_quality_amounts = FALSE //Set to TRUE to enable random quality (maximum and current) for items spawned. Has no effect on items that already have a quality value set.
+	var/quality_min = 20
+	var/quality_max = 100
+	var/quality_mod_min = 0.75 //0.75 means the actual quality will be between 100% and 75% of what the maximum quality role is.
+
 /loadout/proc/get_spawning_items()
 	return spawning_items.Copy() //Copy is needed.
 
@@ -12,6 +17,10 @@
 /loadout/proc/on_add(var/mob/living/advanced/A,var/obj/item/I) //added after initialize and spawn
 
 	. = TRUE
+
+	if(use_random_quality_amounts && I.quality != -1 && I.quality == initial(I.quality) && I.quality_max == initial(I.quality_max))
+		I.quality_max = rand(src.quality_min,src.quality_max)
+		I.quality = I.quality_max*RAND_PRECISE(quality_mod_min,1)
 
 	if(!I.quick_equip(A,silent=TRUE))
 		. = FALSE
@@ -26,6 +35,9 @@
 				var/obj/item/IF = new spawn_on_loot_fail(get_turf(A))
 				INITIALIZE(IF)
 				GENERATE(IF)
+				if(use_random_quality_amounts && IF.quality != -1 && IF.quality == initial(IF.quality) && IF.quality_max == initial(IF.quality_max))
+					IF.quality_max = rand(src.quality_min,src.quality_max)
+					IF.quality = IF.quality_max*RAND_PRECISE(quality_mod_min,1)
 				FINALIZE(IF)
 				INV.add_object(IF,messages=FALSE)
 				if(IF.add_object_to_src_inventory(A,I,enable_messages=FALSE))

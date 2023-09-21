@@ -253,6 +253,8 @@
 
 	was_killed = TRUE
 
+	value = get_base_value()
+
 	return TRUE
 
 /mob/living/proc/on_kill(var/mob/living/victim)

@@ -1,3 +1,6 @@
+/loot/lavaland/
+	use_random_item_amounts = FALSE
+	use_random_quality_amounts = FALSE
 
 /loot/lavaland/chest //Necro chests after defeating tendril spawnwers.
 	loot_table = list(

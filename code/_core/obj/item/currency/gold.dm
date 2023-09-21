@@ -18,10 +18,6 @@
 /obj/item/currency/gold_coin/get_base_value()
 	return CEILING(SSeconomy.credits_per_gold * amount,1)
 
-/obj/item/currency/gold_coin/Finalize()
-	. = ..()
-	update_value()
-
 /obj/item/currency/gold_coin/update_sprite()
 	. = ..()
 	if(amount == 1)
@@ -154,10 +150,6 @@
 	drop_sound = null
 
 	rarity = RARITY_RARE
-
-/obj/item/currency/gold_bar/Finalize()
-	. = ..()
-	update_value()
 
 /obj/item/currency/gold_bar/update_sprite()
 	. = ..()

@@ -5,6 +5,10 @@
 	rarity_max = RARITY_RARE
 	value_min = 1
 	value_max = 100000
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 125
+	quality_mod_min = 0.5
 
 /loot/random/gun/spellgem
 	company_type = "Wizard Federation"
@@ -13,6 +17,9 @@
 	rarity_max = RARITY_RARE
 	value_min = 1
 	value_max = 100000
+	quality_min = 75
+	quality_max = 125
+	quality_mod_min = 0.5
 
 /loot/random/gun/spellgem/ashwalker
 	company_type = "Ashwalkers"
@@ -23,3 +30,6 @@
 	rarity_max = RARITY_RARE
 	value_min = 1
 	value_max = 100000
+	quality_min = 75
+	quality_max = 125
+	quality_mod_min = 0.5

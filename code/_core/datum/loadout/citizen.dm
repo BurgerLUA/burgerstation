@@ -41,6 +41,11 @@
 
 	spawn_on_loot_fail = /obj/item/clothing/back/storage/satchel/poly
 
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 100
+	quality_mod_min = 0.75
+
 /loadout/citizen/pre_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
 	. = ..()
 	if(is_clothing(I) && length(I.polymorphs) && !(I.item_slot_mod & (SLOT_MOD_LEFT | SLOT_MOD_RIGHT)))

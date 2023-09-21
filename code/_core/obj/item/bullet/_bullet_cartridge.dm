@@ -70,6 +70,7 @@
 		. *= 0.05
 
 	. = max(0.01,.)
+	. = CEILING(.,0.01)
 
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return amount
@@ -133,6 +134,8 @@
 		amount_max = max(amount_max,100000) //Some absurd value.
 		if(caseless)
 			qdel(src)
+		else
+			value = get_base_value()
 		return src
 
 	return FALSE

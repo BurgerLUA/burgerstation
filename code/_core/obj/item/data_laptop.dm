@@ -27,8 +27,9 @@
 	LOADVAR("used")
 
 /obj/item/data_laptop/get_base_value()
-	. = initial(value)
+	. = ..()
 	. *= used ? 0.01 : 1
+	. = CEILING(.,1)
 
 /obj/item/data_laptop/update_icon()
 
@@ -65,9 +66,10 @@
 		break //Found a good one.
 
 	used = TRUE
-	update_value()
 	update_sprite()
 	flick("open",src)
+
+	value = get_base_value()
 
 	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[D.x],[D.y],[D.z]</b>\" and \"<b>[D.stored_keypad.code]</b>\" before flickering to dark..."))
 

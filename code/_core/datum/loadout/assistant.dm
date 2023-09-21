@@ -12,3 +12,8 @@
 		/obj/item/clothing/ears/headset,
 		/obj/item/weapon/melee/toolbox/blue
 	)
+
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 100
+	quality_mod_min = 0.75

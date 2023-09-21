@@ -25,6 +25,7 @@
 /obj/item/weapon/melee/torch/get_base_value()
 	. = ..()
 	. += (desired_light_range*desired_light_power*desired_light_angle*0.1)
+	. = CEILING(.,1)
 
 /obj/item/weapon/melee/torch/click_self(var/mob/caller,location,control,params)
 

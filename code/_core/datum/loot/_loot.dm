@@ -1,13 +1,26 @@
 /loot/
+
 	var/list/loot_table = list()
 	var/list/loot_table_guaranteed = list()
+
 	var/loot_count = 1 //How much of this loot to spawn. Doesn't affect loot_table_guaranteed.
 	var/allow_duplicates = TRUE //Set to false so it never spawns a duplicate item again.
+	var/loot_multiplier = 1 //How much of the final loot to duplicate.
+
+
 	var/chance_none = 0 //Applies on a per loot_count basis.
-	var/loot_multiplier = 1 //How much of the loot to duplicate.
+
 	var/use_value = FALSE //Use the actual value of a item as a weight instead of the predefined value in the list.
-	var/average_value = 0
-	var/use_random_item_amounts = FALSE //Set to true to enable random quanity amounts for items spawned.
+	var/average_value = 0 //Read only. Automatically generated.
+
+	var/use_random_item_amounts = FALSE //Set to TRUE to enable random quantity amounts for items spawned.
+	var/amount_mod_min = 0 //As a percentage of the item's amount_max., minimum random value.
+	var/amount_mod_max = 0.5 //As a percentage of the item's amount_max, maximum value.
+
+	var/use_random_quality_amounts = FALSE //Set to TRUE to enable random quality (maximum and current) for items spawned.
+	var/quality_min = 20
+	var/quality_max = 100
+	var/quality_mod_min = 0.75 //0.75 means the actual quality will be between 100% and 75% of what the maximum quality role is.
 
 /loot/proc/check_value()
 	average_value = 0
@@ -20,8 +33,8 @@
 			else
 				var/obj/item/I = k
 				var/found_value = SSbalance.stored_value[I]
-				if(use_random_item_amounts)
-					found_value *= CEILING(initial(I.amount_max)*0.5,1)
+				if(use_random_item_amounts && initial(I.amount_max) > 1)
+					found_value *= CEILING(initial(I.amount_max)*(src.amount_mod_min+src.amount_mod_max)*0.5,1)
 				highest = max(highest,found_value)
 		if(!highest)
 			log_error("Warning: [src.type] did not have a highest value for loot. Something went wrong.")
@@ -33,8 +46,8 @@
 			else
 				var/obj/item/I = k
 				value = SSbalance.stored_value[I]
-				if(use_random_item_amounts)
-					value *= CEILING(initial(I.amount_max)*0.5,1)
+				if(use_random_item_amounts && initial(I.amount_max) > 1)
+					value *= CEILING(initial(I.amount_max)*(src.amount_mod_min+src.amount_mod_max)*0.5,1)
 			var/actual_weight = highest ? (1 - value/highest)*highest : 1
 			actual_weight = 1 + FLOOR(actual_weight,1)
 			loot_table[k] = actual_weight
@@ -48,8 +61,8 @@
 			else
 				var/obj/item/I = k
 				var/value = SSbalance.stored_value[I]
-				if(use_random_item_amounts)
-					value *= CEILING(initial(I.amount_max)*0.5,1)
+				if(use_random_item_amounts && initial(I.amount_max) > 1)
+					value *= CEILING(initial(I.amount_max)*(src.amount_mod_min+src.amount_mod_max)*0.5,1)
 				average_value += value
 
 	for(var/k in loot_table_guaranteed)
@@ -59,8 +72,8 @@
 		else
 			var/obj/item/I = k
 			var/found_value = SSbalance.stored_value[I]
-			if(use_random_item_amounts)
-				found_value *= CEILING(initial(I.amount_max)*0.5,1)
+			if(use_random_item_amounts && initial(I.amount_max) > 1)
+				found_value *= CEILING(initial(I.amount_max)*(src.amount_mod_min+src.amount_mod_max)*0.5,1)
 			average_value += found_value
 
 	average_value *= 1/max(1,length(loot_table) + length(loot_table_guaranteed))
@@ -83,7 +96,17 @@
 		INITIALIZE(I)
 		GENERATE(I)
 		if(use_random_item_amounts && I.amount_max > 1)
-			I.amount = rand(1,I.amount_max)
+			I.amount = clamp(
+				rand(
+					FLOOR(I.amount_max*src.amount_mod_min,1),
+					FLOOR(I.amount_max*src.amount_mod_max,1)
+				),
+				1,
+				I.amount_max
+			)
+		if(use_random_quality_amounts && I.quality != -1)
+			I.quality_max = rand(src.quality_min,src.quality_max)
+			I.quality = I.quality_max*RAND_PRECISE(quality_mod_min,1)
 		FINALIZE(I)
 		for(var/j in loot_data)
 			var/loot/L = j

@@ -50,6 +50,12 @@
 		else
 			tier = SSbalance.stored_tier[type]
 
+/obj/item/weapon/proc/upgrade()
+	if(upgrade_count < 5)
+		upgrade_count++
+	value = get_base_value()
+	return TRUE
+
 /obj/item/weapon/get_examine_list(var/mob/examiner)
 	. = ..()
 	if(upgrade_count >= 1)
@@ -83,6 +89,8 @@
 
 	if(upgrade_count >= 1)
 		. *= 1 + upgrade_count * (upgrade_count-1) * 0.5
+
+	. = CEILING(.,1)
 
 /obj/item/weapon/can_feed(var/mob/caller,var/atom/target)
 	return FALSE

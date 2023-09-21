@@ -1,4 +1,9 @@
 /loadout/pirate/
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 100
+	quality_mod_min = 0.75
+
 
 /loadout/pirate/captain
 	spawning_items = list(

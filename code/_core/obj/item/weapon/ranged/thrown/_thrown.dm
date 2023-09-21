@@ -20,6 +20,7 @@
 /obj/item/weapon/ranged/thrown/get_base_value()
 	. = ..()
 	. *= 0.05
+	. = CEILING(.,1)
 
 /obj/item/weapon/ranged/thrown/update_icon()
 	. = ..()

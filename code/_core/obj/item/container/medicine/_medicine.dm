@@ -33,7 +33,8 @@
 	size = SIZE_1
 
 /obj/item/container/healing/get_base_value()
-	return abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3 + (heal_bleeding ? 20 : 0)
+	. = abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3 + (heal_bleeding ? 20 : 0)
+	. = CEILING(.,1)
 
 /obj/item/container/healing/Generate(var/desired_loc)
 	. = ..()

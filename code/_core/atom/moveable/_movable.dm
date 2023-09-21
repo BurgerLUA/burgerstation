@@ -179,11 +179,7 @@
 			if(density && !abstract)
 				T.has_dense_atom = "/atom/movable/Finalize() [src.type]"
 
-	update_value()
-
-/atom/movable/proc/update_value()
 	value = get_base_value()
-	return TRUE
 
 /proc/is_valid_dir(var/direction)
 

@@ -1,4 +1,22 @@
-/loot/revolutionary/bag
+/loot/revolutionary
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 100
+	quality_mod_min = 0.5
+
+/loot/revolutionary/back_storage
+	loot_table = list(
+		/obj/item/clothing/back/storage/backpack/rucksack,
+		/obj/item/clothing/back/storage/backpack/explorer/black,
+	)
+
+/loot/revolutionary/back_storage/pre_spawn(var/atom/movable/M)
+	. = ..()
+	if(is_item(M))
+		var/obj/item/I = M
+		I.loot_to_generate = /loot/revolutionary/reward
+
+/loot/revolutionary/reward
 	loot_table = list(
 		/obj/item/deployable/barbed_wire = 1,
 		/obj/item/deployable/barricade = 1,
@@ -23,15 +41,3 @@
 	loot_count = 4
 	chance_none = 20
 	allow_duplicates = FALSE
-
-/loot/revolutionary/back_storage
-	loot_table = list(
-		/obj/item/clothing/back/storage/backpack/rucksack,
-		/obj/item/clothing/back/storage/backpack/explorer/black,
-	)
-
-/loot/revolutionary/back_storage/pre_spawn(var/atom/movable/M)
-	. = ..()
-	if(is_item(M))
-		var/obj/item/I = M
-		I.loot_to_generate = /loot/revolutionary/bag

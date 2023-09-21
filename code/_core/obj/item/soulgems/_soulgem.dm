@@ -38,8 +38,13 @@
 
 /obj/item/soulgem/get_base_value()
 	. = ..()
-	. += (total_charge/16)**1.5
 	. += (total_capacity/32)**1.5
+	. = CEILING(.,1)
+
+/obj/item/soulgem/get_value()
+	. = ..()
+	. += (total_charge/16)**1.5
+	. = CEILING(.,1)
 
 /obj/item/soulgem/get_examine_list(var/mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")

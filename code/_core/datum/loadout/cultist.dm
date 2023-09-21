@@ -23,6 +23,11 @@
 		/obj/item/weapon/ranged/spellgem/cult = 2
 	)
 
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 100
+	quality_mod_min = 0.75
+
 /loadout/cultist/get_spawning_items()
 	. = ..()
 	. += pickweight(random_weapon)
