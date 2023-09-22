@@ -1,6 +1,4 @@
 /loot/supply_crate
-	rarity_min = RARITY_COMMON
-	rarity_max = RARITY_UNCOMMON
 	use_random_quality_amounts = TRUE
 	quality_min = 60
 	quality_max = 100
