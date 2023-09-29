@@ -13,7 +13,7 @@
 		FATIGUE = 15
 	)
 	attack_damage_penetration = list(
-		FATIGUE = 20
+		FATIGUE = 0
 	)
 
 /damagetype/ranged/laser/carbine/captain
@@ -22,6 +22,6 @@
 		LASER = 30
 	)
 	attack_damage_penetration = list(
-		HEAT = 25,
-		LASER = 25
+		HEAT = 0,
+		LASER = 0
 	)

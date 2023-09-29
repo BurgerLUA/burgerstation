@@ -106,7 +106,7 @@
 	data = list(
 		"name" = "tube_light.obj",
 		"effect" = /obj/effect/temp/sparkles,
-		"object" = /obj/structure/interactive/lighting/fixture/tube/station/rcd,
+		"object" = /obj/structure/interactive/lighting/fixture/tube/station,
 		"cost" = 100
 	)
 

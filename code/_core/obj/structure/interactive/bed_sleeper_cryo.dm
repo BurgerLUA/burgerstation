@@ -11,6 +11,11 @@
 	if(spawnpoint) SSobj.cryo_spawnpoints += src
 	return ..()
 
+/obj/structure/interactive/bed/sleeper/cryo/PreDestroy()
+	. = ..()
+	if(spawnpoint)
+		SSobj.cryo_spawnpoints -= src
+
 /obj/structure/interactive/bed/sleeper/can_buckle(var/mob/living/advanced/A,var/mob/caller)
 
 	if(!is_player(A))

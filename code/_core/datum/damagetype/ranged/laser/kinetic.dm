@@ -3,7 +3,7 @@
 		BOMB = 100,
 	)
 	attack_damage_penetration = list(
-		BOMB = 75,
+		BOMB = 0,
 	)
 
 

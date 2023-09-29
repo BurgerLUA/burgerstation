@@ -4,8 +4,8 @@
 		HEAT = 10
 	)
 	attack_damage_penetration = list(
-		LASER = 25,
-		HEAT = 25
+		LASER = 0,
+		HEAT = 0
 	)
 
 /damagetype/ranged/laser/rifle/hardlight
@@ -16,10 +16,10 @@
 		COLD = 10
 	)
 	attack_damage_penetration = list(
-		BLUNT = 50,
-		PIERCE = 50,
-		LASER = 50,
-		COLD = 50
+		BLUNT = 0,
+		PIERCE = 0,
+		LASER = 0,
+		COLD = 0
 	)
 
 /damagetype/ranged/laser/rifle/xray
@@ -29,9 +29,9 @@
 		RAD = 30
 	)
 	attack_damage_penetration = list(
-		LASER = 200,
-		HEAT = 200,
-		RAD = 200
+		LASER = INFINITY,
+		HEAT = INFINITY,
+		RAD = INFINITY
 	)
 
 /damagetype/ranged/laser/rifle/sniper
@@ -41,9 +41,9 @@
 		RAD = 10
 	)
 	attack_damage_penetration = list(
-		LASER = 250,
-		HEAT = 50,
-		RAD = 10
+		LASER = 0,
+		HEAT = 0,
+		RAD = 0
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE*5
 
@@ -54,9 +54,9 @@
 		RAD = 10
 	)
 	attack_damage_penetration = list(
-		LASER = 200,
-		HEAT = 80,
-		RAD = 10
+		LASER = 0,
+		HEAT = 0,
+		RAD = 0
 	)
 	falloff = VIEW_RANGE + ZOOM_RANGE*5
 	allow_glancing_blows = TRUE

@@ -11,6 +11,10 @@
 
 	var/next_spawn = 0
 
+/obj/structure/interactive/blob/node/Destroy()
+	. = ..()
+	linked_blobbernaught = null
+
 /obj/structure/interactive/blob/node/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 	if(.)

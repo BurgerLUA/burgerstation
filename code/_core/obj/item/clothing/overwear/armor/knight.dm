@@ -110,7 +110,7 @@
 	desc_extended = "A bronze plate of protective armor."
 	icon = 'icons/obj/item/clothing/suit/clockwork.dmi'
 
-	armor = /armor/brass/armor
+	armor = /armor/brass
 
 	size = SIZE_6
 

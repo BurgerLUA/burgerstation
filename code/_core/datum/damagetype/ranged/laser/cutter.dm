@@ -1,11 +1,11 @@
 /damagetype/ranged/laser/plasma_cutter
 	attack_damage_base = list(
-		PIERCE = 60,
-		HEAT = 20
+		PIERCE = 30,
+		HEAT = 10
 	)
 	attack_damage_penetration = list(
-		PIERCE = 75,
-		HEAT = 40
+		PIERCE = 100,
+		HEAT = 100
 	)
 
 
