@@ -2,7 +2,7 @@
 	name = "sterile medical mask"
 	icon = 'icons/obj/item/clothing/masks/sterile.dmi'
 	flags_clothing = FLAG_CLOTHING_NOBEAST_HEAD
-	desc = "Protect others!"
+	desc = "There is no reason for panic."
 	desc_extended = "A face mask designed to prevent the spread of airborne viruses."
 
 	armor = /armor/cloth/bio

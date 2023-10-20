@@ -16,7 +16,7 @@
 /mob/proc/mod_speech(var/text)
 	return text
 
-var/regex/vowels = new("\[aeiou\]", "i")
+var/regex/vowels = new("\[aeiou\]", "ig")
 
 /mob/living/mod_speech(var/text)
 

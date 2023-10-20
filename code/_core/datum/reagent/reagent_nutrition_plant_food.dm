@@ -4,8 +4,9 @@
 	color = "#5B7F00"
 	alpha = 255
 
-	nutrition_amount = 14
-	nutrition_quality_amount = -14
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 15
+	nutrition_quality_amount = 0
 
 	flavor = "dirt"
 

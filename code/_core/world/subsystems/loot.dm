@@ -33,8 +33,11 @@ SUBSYSTEM_DEF(loot)
 				else
 					I = new k(T)
 					I.initialize_type = INITIALIZE_NONE
+					INITIALIZE(I)
+					GENERATE(I)
+					FINALIZE(I)
 					created_items[k] = I
-				if(isnull(I.get_base_value()))
+				if(isnull(I.value))
 					isolated = FALSE
 					break
 				continue
@@ -53,8 +56,12 @@ SUBSYSTEM_DEF(loot)
 					I = created_items[I]
 				else
 					I = new k
+					I.initialize_type = INITIALIZE_NONE
+					INITIALIZE(I)
+					GENERATE(I)
+					FINALIZE(I)
 					created_items[k] = I
-				if(isnull(I.get_base_value()))
+				if(isnull(I.value))
 					isolated = FALSE
 					break
 				continue

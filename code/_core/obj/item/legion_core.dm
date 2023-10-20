@@ -14,11 +14,15 @@
 	rarity = RARITY_RARE
 
 /obj/item/legion_core/get_base_value()
-	. = initial(value)
+
+	. = ..()
+
 	if(stabilized)
-		. *= 2
+		. *= 1.25
 	else if(expiry_time < 0)
 		. *= 0.1
+
+	. = CEILING(.,1)
 
 /obj/item/legion_core/Generate()
 	expiry_time = SECONDS_TO_DECISECONDS(600)
@@ -26,9 +30,10 @@
 
 /obj/item/legion_core/Finalize()
 	if(stabilized == TRUE)
-		return
+		return ..()
 	if(expiry_time == -1)
-		expire()
+		expiry_time = -1
+		update_sprite()
 	else
 		CALLBACK("expire_\ref[src]",expiry_time,src,src::expire())
 	return ..()
@@ -38,6 +43,7 @@
 		return
 	expiry_time = -1
 	update_sprite()
+	value = get_base_value()
 	return TRUE
 
 /obj/item/legion_core/get_examine_list(var/mob/examiner)

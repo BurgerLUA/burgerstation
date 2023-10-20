@@ -1,4 +1,4 @@
-var/global/list/tracked_bosses = list()
+
 
 /objective/kill_boss
 	name = "Kill Boss"
@@ -16,7 +16,7 @@ var/global/list/tracked_bosses = list()
 
 /objective/kill_boss/proc/get_valid_targets()
 
-	var/list/possible_bosses = SSbosses.living_bosses - tracked_bosses
+	var/list/possible_bosses = SSbosses.living_bosses - SSgamemode.tracked_bosses
 
 	for(var/k in possible_bosses)
 		var/mob/living/L = k
@@ -46,7 +46,7 @@ var/global/list/tracked_bosses = list()
 
 /objective/kill_boss/start()
 	var/mob/living/L = get_random_target()
-	tracked_bosses += L //Global list
+	SSgamemode.tracked_bosses += L //Global list
 	tracked_atoms += L
 	HOOK_ADD("post_death","kill_boss_post_death",L,src,src::kill_boss_post_death())
 	HOOK_ADD("Destroy","kill_boss_destroy",L,src,src::kill_boss_destroy())

@@ -223,7 +223,10 @@
 
 	var/armor_multiplier = 1 + A.get_skill_power(SKILL_ARMOR,0,1,2)
 	.["items"] = list()
-	for(var/obj/item/clothing/C in A.worn_objects)
+	for(var/k in A.worn_objects)
+		var/obj/item/clothing/C = k
+		if(!is_clothing(C))
+			continue
 		if(!(O.id in C.protected_limbs))
 			continue
 		var/armor/ARM_C = ARMOR(C.armor)
@@ -233,14 +236,16 @@
 		for(var/damage_type in ARM_C.defense_rating)
 			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
 				continue
-			if(IS_INFINITY(ARM_C.defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+			if(IS_INFINITY(ARM_C.defense_rating[damage_type])) //If the clothing's defense is infinity, set it to infinity.
 				.[damage_type] = ARM_C.defense_rating[damage_type]
 				continue
 			var/clothing_defense = ARM_C.defense_rating[damage_type] * armor_multiplier
-			if(!ignore_luck)
-				if(C.luck > 50 && prob(C.luck-50))
-					clothing_defense *= 2
-				else if(C.luck < 50 && prob(50-C.luck))
-					clothing_defense *= 0.5
+			if(clothing_defense > 0)
+				clothing_defense *= C.get_quality_mod()
+				if(!ignore_luck)
+					if(C.luck > 50 && prob(C.luck-50))
+						clothing_defense *= 2
+					else if(C.luck < 50 && prob(50-C.luck))
+						clothing_defense *= 0.5
 			.[damage_type] += FLOOR(clothing_defense,1)
 		.["items"] += C

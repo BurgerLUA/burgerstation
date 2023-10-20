@@ -16,7 +16,7 @@
 
 */
 
-var/global/list/turf_check_directions = DIRECTIONS_ALL
+
 
 /turf/unsimulated/generation
 	icon = 'icons/turf/generation.dmi'
@@ -51,7 +51,7 @@ var/global/list/turf_check_directions = DIRECTIONS_ALL
 	noise *= 1/max_instances
 	noise = (noise + maximum_value + minimum_value + 0.5) / 4
 
-	for(var/k in turf_check_directions)
+	for(var/k in SSturf.turf_check_directions)
 		var/turf/T = get_step(src,k)
 		if(!T)
 			continue

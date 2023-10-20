@@ -1,5 +1,7 @@
 /obj/structure/interactive/crate/chest
 	name = "treasure chest"
+	desc = "THERE BE TREASURE!"
+	desc_extended = "An old-fashioned, but tough wooden chest. Fitted with an equally old-fashioned keylock."
 	icon_state = "chest"
 
 	var/locked = TRUE
@@ -15,6 +17,21 @@
 
 	enable_chunk_handling = TRUE
 	enable_chunk_clean = TRUE
+
+	var/static/list/lockpick_difficulty_mul = list(
+		DIFFICULTY_EASY = 0.5,
+		DIFFICULTY_NORMAL = 1,
+		DIFFICULTY_HARD = 1.25,
+		DIFFICULTY_EXTREME = 1.5,
+		DIFFICULTY_NIGHTMARE = 2
+	)
+
+/obj/structure/interactive/crate/chest/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(locked == TRUE)
+		. += span("notice","It's locked, but you could try your hand at picking the lock...")
+	else
+		. += span("notice","It's unlocked!")
 
 /obj/structure/interactive/crate/chest/on_chunk_clean()
 	if(locked || current_user)
@@ -34,15 +51,6 @@
 	if(gold_count > 0)
 		create_gold_drop(get_turf(src),gold_count)
 	return TRUE
-
-
-var/global/list/lockpick_difficulty_mul = list(
-	DIFFICULTY_EASY = 0.5,
-	DIFFICULTY_NORMAL = 1,
-	DIFFICULTY_HARD = 1.25,
-	DIFFICULTY_EXTREME = 1.5,
-	DIFFICULTY_NIGHTMARE = 2
-)
 
 /obj/structure/interactive/crate/chest/proc/create_lockpicker(var/mob/living/advanced/A)
 	current_user = A

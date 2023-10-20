@@ -11,8 +11,6 @@
 	density_east = TRUE
 	density_south = TRUE
 	density_west = TRUE
-	density_up = TRUE
-	density_down = TRUE
 
 	collision_flags = FLAG_COLLISION_WALL
 

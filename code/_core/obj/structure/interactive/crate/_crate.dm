@@ -1,6 +1,6 @@
 /obj/structure/interactive/crate
 	name = "crate"
-	desc = "Freight for hauling."
+	desc = "Freight for moving."
 	desc_extended = "A storage container for storing goodies. Also acts as decent cover in a gunfight."
 	icon = 'icons/obj/structure/crates.dmi'
 	icon_state = "crate"
@@ -9,6 +9,8 @@
 
 	collision_flags = FLAG_COLLISION_BARICADE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_ORGANIC
+
+	interaction_flags = FLAG_INTERACTION_LIVING
 
 	density = TRUE
 	layer = LAYER_OBJ_CRATE

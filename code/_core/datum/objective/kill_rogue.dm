@@ -1,4 +1,4 @@
-var/global/list/tracked_rogues = list()
+
 
 /objective/kill_rogue
 	name = "Kill Rogue Crewmember"
@@ -16,7 +16,7 @@ var/global/list/tracked_rogues = list()
 
 /objective/kill_rogue/proc/get_valid_targets()
 
-	var/list/possible_rogue_crewmembers = SSbosses.tracked_rogue_crewmembers - tracked_rogues
+	var/list/possible_rogue_crewmembers = SSbosses.tracked_rogue_crewmembers - SSgamemode.tracked_rogues
 
 	for(var/k in possible_rogue_crewmembers)
 		var/mob/living/L = k
@@ -46,7 +46,7 @@ var/global/list/tracked_rogues = list()
 
 /objective/kill_rogue/start()
 	var/mob/living/L = get_random_target()
-	tracked_rogues += L //Global list
+	SSgamemode.tracked_rogues += L //Global list
 	tracked_atoms += L
 	HOOK_ADD("post_death","kill_rogue_post_death",L,src,src::kill_boss_post_death())
 	HOOK_ADD("Destroy","kill_rogue_destroy",L,src,src::kill_boss_destroy())

@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(fuckup)
 
 	allow_loading = FALSE
 
-	for(var/mob/living/advanced/player/P in all_mobs_with_clients)
+	for(var/mob/living/advanced/player/P in SSliving.all_mobs_with_clients)
 		if(P.loyalty_tag != "NanoTrasen") //Antag?
 			continue
 		if(P.client)

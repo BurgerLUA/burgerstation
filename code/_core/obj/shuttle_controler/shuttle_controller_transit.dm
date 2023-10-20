@@ -43,7 +43,6 @@
 			var/atom/movable/M = k
 			M.next_move = max(M.next_move,SECONDS_TO_TICKS(4))
 			CHECK_TICK(75,FPS_SERVER)
-		CHECK_TICK(75,FPS_SERVER)
 
 	//First pass. Crush everything and add new turfs.
 	for(var/j in valid_turfs) //Valid turfs are all the turfs in the shuttle area.
@@ -70,18 +69,13 @@
 					log_error("Warning: [O.get_debug_name()] was a crushed attached object, but it's not deleting!")
 				CHECK_TICK(75,FPS_SERVER)
 
-		for(var/k in T_to_replace.contents) //Crush everything in the destination turf. First pass.
+		for(var/k in T_to_replace.contents) //"CRUSH" everything in the destination turf. First pass.
 			var/atom/movable/M = k
 			if(!M.density)
 				continue
 			if(is_living(M))
-				var/mob/living/L = M
-				if(T_to_replace.density_down && T_to_replace.health)
-					T_to_replace.on_destruction(TRUE) //No checking for can we do destruction because it's kind of forced.
-				L.Move(T_to_replace) //Update
-				if(L.loc == T_to_replace) //Still on the same location.
-					var/obj/projectile/thrown/P = M.throw_self(M,vel_x=-transit_throw_x*16,vel_y=-transit_throw_y*16)
-					if(P) P.ignore_shuttles = TRUE
+				var/obj/projectile/thrown/P = M.throw_self(M,vel_x=-transit_throw_x*16,vel_y=-transit_throw_y*16)
+				if(P) P.ignore_shuttles = TRUE
 			else
 				M.on_crush()
 			CHECK_TICK(75,FPS_SERVER)

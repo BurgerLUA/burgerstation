@@ -6,7 +6,7 @@
 	species = "skeleton"
 	sex = MALE
 	gender = MALE
-	loadout = /loadout/skeleton_miner/skeleton
+	loadout = /loadout/skeleton_miner
 
 
 	loyalty_tag = "Syndicate"
@@ -16,10 +16,10 @@
 	level = 12
 
 /mob/living/advanced/npc/skeleton_miner/shovel
-	loadout = /loadout/skeleton_miner/skeleton/shovel
+	loadout = /loadout/skeleton_miner/shovel
 
 /mob/living/advanced/npc/skeleton_miner/pickaxe
-	loadout = /loadout/skeleton_miner/skeleton/pickaxe
+	loadout = /loadout/skeleton_miner/pickaxe
 
 /mob/living/advanced/npc/skeleton_miner/torch
-	loadout = /loadout/skeleton_miner/skeleton/torch
+	loadout = /loadout/skeleton_miner/torch

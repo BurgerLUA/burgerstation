@@ -1,19 +1,3 @@
-
-
-var/global/list/limbs_to_value = list(
-	BODY_HEAD = 1.25,
-	BODY_TORSO = 1,
-	BODY_GROIN = 0.75,
-	BODY_ARM_LEFT = 0.25,
-	BODY_ARM_RIGHT = 0.25,
-	BODY_HAND_LEFT = 0.125,
-	BODY_HAND_RIGHT = 0.125,
-	BODY_LEG_LEFT = 0.25,
-	BODY_LEG_RIGHT = 0.25,
-	BODY_FOOT_LEFT = 0.25,
-	BODY_FOOT_RIGHT = 0.25
-)
-
 /obj/item/clothing/get_base_value()
 
 	var/armor/A = ARMOR(armor)
@@ -21,9 +5,9 @@ var/global/list/limbs_to_value = list(
 
 	var/total_value_mul = 0
 	for(var/limb_zone in protected_limbs)
-		if(limbs_to_value[limb_zone] <= 0)
+		if(SSbalance.limbs_to_value[limb_zone] <= 0)
 			continue
-		total_value_mul += limbs_to_value[limb_zone]
+		total_value_mul += SSbalance.limbs_to_value[limb_zone]
 	if(total_value_mul > 0)
 		. *= total_value_mul
 

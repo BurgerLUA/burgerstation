@@ -1,8 +1,7 @@
 /obj/item/container/edible/pill
 	name = "pill"
 	desc = "FLOORPILL"
-	desc_extended = "Hope you remember what the pill is."
-
+	desc_extended = "A reagent carrier for quick oral ingestion, be it medicine, poison or something else entirely."
 	icon = 'icons/obj/item/container/pills.dmi'
 	icon_state = "rectangle"
 

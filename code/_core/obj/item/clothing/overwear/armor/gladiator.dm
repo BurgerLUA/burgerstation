@@ -15,7 +15,7 @@
 	desc_extended = "A set of real bronze Gladiator Armor. Weaker than modern armor, but much cooler."
 	color = "#B7A33E"
 
-	armor = /armor/brass/armor
+	armor = /armor/brass
 
 	size = SIZE_5
 

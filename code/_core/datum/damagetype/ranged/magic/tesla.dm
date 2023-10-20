@@ -19,6 +19,8 @@
 		SKILL_MAGIC = SHOCK
 	)
 
+	force_attacker_armor_calculations_with = ARCANE
+
 /damagetype/ranged/magic/tesla_shock
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
@@ -41,3 +43,5 @@
 	skill_damage = list(
 		SKILL_MAGIC = SHOCK
 	)
+
+	force_attacker_armor_calculations_with = ARCANE

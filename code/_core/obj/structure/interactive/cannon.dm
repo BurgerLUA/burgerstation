@@ -140,7 +140,7 @@
 			return TRUE
 		var/damagetype/desired_damage_type = I.get_damage_type(caller,src)
 		if(desired_damage_type)
-			var/damagetype/DT = all_damage_types[desired_damage_type]
+			var/damagetype/DT = SSdamagetype.all_damage_types[desired_damage_type]
 			if(DT && DT.attack_damage_base[HEAT])
 				caller.visible_message(span("danger","\The [caller.name] starts to light the fuse of \the [src.name] with \the [I.name]!"),span("warning","You start to light the fuse of \the [src.name] with \the [I.name]..."))
 				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::light_fuse(),caller,I)

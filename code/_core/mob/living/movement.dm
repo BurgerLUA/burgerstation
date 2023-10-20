@@ -202,12 +202,9 @@
 
 	. = ..()
 
-/mob/living/get_movement_delay()
+/mob/living/proc/get_slowdown_penalty() //Higher is worse.
 
-	. = ..()
-
-	if(is_sneaking)
-		. *= max(2 - stealth_mod*0.5,1)
+	. = 0
 
 	if(ckey_last)
 		var/hydration_nutrition_mod = get_nutrition_mod() * get_hydration_mod()
@@ -215,28 +212,38 @@
 		if(has_status_effect(DRUGGY))
 			nutritional_quality = max(1,nutritional_quality)
 		hydration_nutrition_mod = clamp(hydration_nutrition_mod*nutritional_quality,0,1)
-		. *= 2 - hydration_nutrition_mod
+		. += max(1 - hydration_nutrition_mod,0)
 
 	if(intoxication)
-		. *= 1 + intoxication*0.003
-
-	if(has_status_effect(SLOW))
-		. *= 2
-
-	if(!horizontal) //You're standing up.
-		. *= max(1.25 - get_attribute_power(ATTRIBUTE_AGILITY)*0.25,0.75)
+		. += intoxication*0.003
 
 	if(health)
 		var/modded_health = (src.health.health_current + src.pain_regen_buffer*0.25) - max(0,src.health.damage[PAIN] - src.pain_regen_buffer)
-		. *= 2 - clamp(modded_health/src.health.health_max + 0.25,0,1)
-		if(!has_status_effect(ADRENALINE))
-			. *= 2 - clamp( (src.health.stamina_current/src.health.stamina_max) + 0.75,0,1)
+		. += clamp(0.5 - (modded_health/src.health.health_max),0,1)
+		. += clamp(0.5 - (src.health.stamina_current/src.health.stamina_max),0,1)
 
-	if(grabbing_hand) //Being grabbed. You're slower.
-		. *= 1.25
+/mob/living/get_movement_delay()
+
+	. = ..()
+
+	var/slowdown_penalty = has_status_effect(ADRENALINE) ? 0 : get_slowdown_penalty()
+
+	if(has_status_effect(SLOW))
+		slowdown_penalty += 1 + slowdown_penalty*0.25
+	else
+		var/agility_power = !horizontal ? get_attribute_power(ATTRIBUTE_AGILITY) : 0
+		slowdown_penalty *= max(1 - agility_power*0.5,0.25)
+
+	. *= 1 + max(0,slowdown_penalty)
 
 	if(move_dir && !(move_dir & dir)) //Moving backwards.
 		. *= 1.5
+
+	if(grabbing_hand) //Being grabbed.
+		. *= 1.25
+
+	if(is_sneaking) //Sneaking.
+		. *= max(2 - stealth_mod*0.5,1)
 
 	if(ai && ai.objective_move && ai.should_follow_objective_move && ismovable(ai.objective_move) && get_dist(src,ai.objective_move) <= 3) //Synced movement.
 		var/atom/movable/M = ai.objective_move

@@ -14,7 +14,7 @@
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
-/experience/attribute/constitution/ //0% complete
+/experience/attribute/constitution/ //100% complete
 	name = "Constitution"
 	desc = "A measure of your physical well-being."
 	desc_extended = "Affects your natural resistance to the physical elements. Can be increased by taking damage from attacks."
@@ -59,7 +59,7 @@
 /experience/attribute/agility //0% complete
 	name = "Agility"
 	desc = "A measure of how fast your body can move."
-	desc_extended = "Affects the maximum speed at which you can move. Can be increased by sprinting."
+	desc_extended = "Affects the maximum speed at which you can move, as well as the strength of slowdown negation. Can be increased by sprinting."
 	id = ATTRIBUTE_AGILITY
 	flags = ATTRIBUTE_RESISTANCE
 	experience_power = 1.9
@@ -90,15 +90,23 @@
 
 
 //Wizard
-/experience/attribute/willpower/ //100% complete
-	name = "Willpower"
-	desc = "A measure of how well you can control your mind."
-	desc_extended = "Affects the damage of most magical spells, powers, and abilities. Can be increased by dealing damage with dexterity-based weapons."
-	id = ATTRIBUTE_WILLPOWER
+/experience/attribute/intelligence/ //100% complete
+	name = "Intelligence"
+	desc = "A measure of how quickly and accurately you can apply knowledge."
+	desc_extended = "Affects the damage of most magical spells, powers, and abilities. Can be increased by dealing damage with spell-based weapons."
+	id = ATTRIBUTE_INTELLIGENCE
 	flags = ATTRIBUTE_DAMAGE
 	experience_power = 1.9
 	experience_multiplier = 10.4
 
+/experience/attribute/willpower/ //100% complete
+	name = "Willpower"
+	desc = "A measure of how well you can control your mind."
+	desc_extended = "Affects your natural mana regeneration rate. Can be increased by regenerating your mana naturally."
+	id = ATTRIBUTE_WILLPOWER
+	flags = ATTRIBUTE_REGEN
+	experience_power = 1.9
+	experience_multiplier = 10.4
 
 /experience/attribute/soul //100% complete
 	name = "Soul"
@@ -106,15 +114,6 @@
 	desc_extended = "Affects your natural resistances to the arcane."
 	id = ATTRIBUTE_SOUL
 	flags = ATTRIBUTE_RESISTANCE
-	experience_power = 1.9
-	experience_multiplier = 10.4
-
-/experience/attribute/intelligence/ //100% complete
-	name = "Intelligence"
-	desc = "A measure of how quickly and accurately you can apply knowledge."
-	desc_extended = "Affects your natural mana regeneration rate. Can be increased by regenerating your mana naturally."
-	id = ATTRIBUTE_INTELLIGENCE
-	flags = ATTRIBUTE_REGEN
 	experience_power = 1.9
 	experience_multiplier = 10.4
 

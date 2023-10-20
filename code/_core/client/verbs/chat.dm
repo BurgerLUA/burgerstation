@@ -1,9 +1,9 @@
-/client/verb/pm(var/k as null|anything in all_clients, var/text_to_say as text)
+/client/verb/pm(var/k as null|anything in SSclient.all_clients, var/text_to_say as text)
 
 	set name = "PM"
 	set category = "Communication"
 
-	var/client/C = all_clients[k]
+	var/client/C = SSclient.all_clients[k]
 
 	if(!text_to_say || !C)
 		return FALSE

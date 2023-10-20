@@ -1,6 +1,7 @@
 obj/structure/interactive/door
 	name = "door"
-	desc = "What's on the other side?"
+	desc = "AI DOOR"
+	desc_extended = "It opens and closes."
 	collision_flags = FLAG_COLLISION_WALL
 	collision_bullet_flags = FLAG_COLLISION_BULLET_INORGANIC
 
@@ -57,28 +58,28 @@ obj/structure/interactive/door/update_icon()
 	switch(door_state)
 		if(DOOR_STATE_OPENING_01)
 			icon_state = "[initial(icon_state)]opening"
-			desc = "The door is opening."
+			desc_extended = "The door is opening."
 			update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC)
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSING_01)
 			icon_state = "[initial(icon_state)]closing"
-			desc = "The door is closing."
+			desc_extended = "The door is closing."
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(0)
 
 		if(DOOR_STATE_OPENED)
 			icon_state = "[initial(icon_state)]open"
-			desc = "The door is open."
+			desc_extended = "The door is open."
 			update_collisions(FLAG_COLLISION_NONE,FLAG_COLLISION_BULLET_NONE)
 			layer = LAYER_OBJ_DOOR_OPEN
 			set_opacity(0)
 
 		if(DOOR_STATE_CLOSED)
 			icon_state = initial(icon_state)
-			desc = "The door is closed."
+			desc_extended = "The door is closed."
 			update_collisions(FLAG_COLLISION_WALL,FLAG_COLLISION_BULLET_INORGANIC)
 			layer = LAYER_OBJ_DOOR_CLOSED
 			set_opacity(initial(opacity))

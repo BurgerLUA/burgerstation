@@ -157,8 +157,8 @@
 	return FALSE
 
 /obj/item/weapon/ranged/bow/get_damage_per_hit(armor_to_use)
-	var/damagetype/D = all_damage_types[ranged_damage_type]
-	return D.get_damage_per_hit(armor_to_use) * (stage_max/100)
+	var/damagetype/D = SSdamagetype.all_damage_types[ranged_damage_type]
+	return D.get_damage_per_hit(armor_to_use,200) * (stage_max/100)
 
 /obj/item/weapon/ranged/bow/get_hits_per_second()
 	return (stage_per_decisecond/stage_max)*10
@@ -222,6 +222,10 @@
 	tier = 3
 
 	rarity = RARITY_RARE
+
+/obj/item/weapon/ranged/bow/hardlight/Destroy()
+	. = ..()
+	QDEL_NULL(stored_arrow)
 
 /obj/item/weapon/ranged/bow/hardlight/Initialize()
 	. = ..()

@@ -1,7 +1,7 @@
 /obj/item/currency/
 	name = "currency"
-	desc = "DOSH"
-	desc_extended = "Grab it while it's hot!"
+	desc = "Grab it while it's hot!"
+	desc_extended = "For use in vendors or other currency-related purposes. Said to be the root of all evil."
 
 	amount_max = 10000
 

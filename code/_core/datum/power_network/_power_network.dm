@@ -1,4 +1,4 @@
-var/global/power_id = 1
+
 
 /power_network/
 	var/list/obj/structure/interactive/wire/connected_wires = list()
@@ -10,8 +10,8 @@ var/global/power_id = 1
 /power_network/New(var/desired_loc)
 	. = ..()
 	SSpower.all_power_networks += src
-	id = power_id
-	power_id++
+	id = SSpower.power_id
+	SSpower.power_id++
 
 /power_network/PreDestroy()
 

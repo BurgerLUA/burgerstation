@@ -1,14 +1,17 @@
 var/global/list/active_subsystems = list()
+var/global/list/all_subsystems = list()
 var/global/rollovers = 0
 var/global/world_state = STATE_STARTING
 
 #define REBOOT_TIME 60 //In seconds
 
 /world/
+
 	fps = FPS_SERVER
 	icon_size = TILE_SIZE
 	view = VIEW_RANGE
 	map_format = TOPDOWN_MAP
+	movement_mode = TILE_MOVEMENT_MODE
 
 	sleep_offline = FALSE
 
@@ -30,7 +33,10 @@ var/global/world_state = STATE_STARTING
 	sleep_offline = FALSE
 	__detect_rust_g()
 
-	setup_turf_damage_icons()
+	if(!rustg_get_version())
+		world.log << "FATAL ERROR: Failed to properly load and initalize rust-g. Restarting!"
+		Reboot(0)
+		return
 
 	//TODO: Unfuck this.
 	createtypecache(/loot)
@@ -66,10 +72,19 @@ var/global/world_state = STATE_STARTING
 	createtypecache(/turf/simulated/liquid/water)
 	createtypecache(/turf/unsimulated)
 	createtypecache(/reagent/nutrition)
+
 	. = ..()
 
+	src.TgsNew(new /datum/tgs_event_handler, TGS_SECURITY_TRUSTED)
+
 	life()
+	TgsInitializationComplete()
+
 	sleep_offline = initial(sleep_offline)
+
+/world/Topic(T,Addr,Master,Keys)
+	TGS_TOPIC
+	. = ..()
 
 /world/proc/update_server_status()
 
@@ -83,7 +98,7 @@ var/global/world_state = STATE_STARTING
 	status = "<b><a href='[server_link]'>[server_name]</a>\]</b> ([github_name])<br>[description]"
 
 	var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
-	var/connected_players = length(all_clients)
+	var/connected_players = length(SSclient.all_clients)
 	if(player_limit_config > 0 && connected_players + 10 >= player_limit_config)
 		status = "[status]<br>[connected_players]/[player_limit_config] players."
 
@@ -96,7 +111,7 @@ var/global/world_state = STATE_STARTING
 /world/proc/play_round_end_sound()
 	CHECK_TICK_HARD
 	var/chosen_sound = pick(SSsound.round_end_sounds)
-	play_sound_global(chosen_sound,all_mobs_with_clients)
+	play_sound_global(chosen_sound,SSliving.all_mobs_with_clients)
 	sleep(30)
 	return TRUE
 
@@ -104,8 +119,8 @@ var/global/world_state = STATE_STARTING
 	save()
 	play_round_end_sound()
 	world_state = STATE_SHUTDOWN
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		C << "Shutting down world..."
 	sleep(30)
 	shutdown()
@@ -115,15 +130,21 @@ var/global/world_state = STATE_STARTING
 	save()
 	play_round_end_sound()
 	world_state = STATE_SHUTDOWN
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		C << "Rebooting world. Stick around to automatically rejoin."
 	sleep(30)
 	Reboot(0)
 	return TRUE
 
+/world/Reboot(reason)
+	TgsReboot()
+	. = ..()
+
+
+
 /proc/save_all_globals()
-	for(var/k in all_clients)
+	for(var/k in SSclient.all_clients)
 		var/client/C = CLIENT(k)
 		if(!C)
 			log_error("FATAL ERROR: COULD NOT SAVE THE GLOBALS OF CKEY [k] AS THEY HAD A CKEY ISSUE.")
@@ -147,7 +168,7 @@ var/global/world_state = STATE_STARTING
 	return TRUE
 
 /world/proc/save_all_characters()
-	for(var/k in all_players) ///Players only.
+	for(var/k in SSliving.all_players) ///Players only.
 		var/mob/living/advanced/player/P = k
 		if(!P)
 			log_error("Warning: Tried saving a null player!")
@@ -160,8 +181,8 @@ var/global/world_state = STATE_STARTING
 		if(!P.ckey_last)
 			if(!P.ai) log_error("Warning: Tried saving [P.get_debug_name()] without a ckey_last assigned!")
 			continue
-		var/savedata/client/mob/M = ckey_to_mobdata[P.ckey_last]
-		if(M.save_character(P))
+		var/savedata/client/mob/M = SSclient.ckey_to_mobdata[P.ckey_last]
+		if(M.save_character(P,died = P.dead))
 			P.to_chat(span("notice","Your character was automatically saved."))
 		else
 			P.to_chat(span("danger","Save error! Your character could not be saved!"))
@@ -190,7 +211,7 @@ var/global/world_state = STATE_STARTING
 			nice_reason = "Syndicate Victory"
 			announce("Central Command Mission Update","Fission Mailed","Mission failed, we'll get them next time.")
 
-	play_sound_global('sound/meme/apcdestroyed.ogg',all_mobs_with_clients)
+	play_sound_global('sound/meme/apcdestroyed.ogg',SSliving.all_mobs_with_clients)
 
 	//SSvote.create_vote(/vote/map)
 
@@ -201,6 +222,6 @@ var/global/world_state = STATE_STARTING
 		broadcast_to_clients(span("notice","Rebooting world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server reboots."))
 		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,src::reboot_server())
 
-	SSdiscord.send_message("Round ended with [length(all_clients)] players due to [nice_reason].")
+	SSdiscord.send_message("Round ended with [length(SSclient.all_clients)] players due to [nice_reason].")
 
 	return TRUE

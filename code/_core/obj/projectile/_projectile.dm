@@ -133,12 +133,11 @@
 	shoot_y = desired_shoot_y
 
 	start_turf = loc //Used for damage falloff calculations.
+	current_loc = loc
+	previous_loc = loc
 
 	vel_x = desired_vel_x
 	vel_y = desired_vel_y
-
-	current_loc = loc
-	previous_loc = loc
 
 	last_loc_x = x
 	last_loc_y = y
@@ -151,6 +150,19 @@
 
 	. = ..()
 
+/obj/projectile/proc/reset_projectile()
+	current_loc = loc
+	previous_loc = loc
+	start_turf = loc
+	pixel_x = 0
+	pixel_y = 0
+	pixel_x_float_physical = 0
+	pixel_y_float_physical = 0
+	pixel_x_float_visual = 0
+	pixel_y_float_visual = 0
+	last_loc_x = x
+	last_loc_y = y
+	return TRUE
 
 /obj/projectile/Initialize()
 
@@ -208,8 +220,6 @@
 		TE.alpha = 200
 
 	var/list/target_score = list() //The higher the object, the higher priority it is to get hit.
-
-
 	if(new_loc.has_dense_atom)
 		for(var/k in new_loc.contents)
 			var/atom/movable/A = k
@@ -273,13 +283,15 @@
 
 /obj/projectile/proc/update_projectile(var/tick_rate=1)
 
+	//Return FALSE here to make it delete.
+
 	if(qdeleting)
 		log_error("Warning: [src.get_debug_name()] called update_projectile() while qdeleting!")
 		SSprojectiles.all_projectiles -= src //Safety.
 		return TRUE
 
 	if(!src.z || (!vel_x && !vel_y) || lifetime && start_time >= lifetime)
-		on_projectile_hit(current_loc)
+		on_projectile_hit(current_loc,previous_loc,current_loc)
 		return FALSE
 
 	if(!start_time) //First time running.
@@ -326,7 +338,7 @@
 		//There is probably a legitimately better way to handle this.
 		//I remember coding another method accidentally before but I don't remember it.
 		//If you have any legitimate ideas, hit me up.
-		if((last_loc_x != current_loc_x) && (last_loc_y != current_loc_y)) //If both changed at the same time, that's a problem as it is moving in a diaganol.
+		if((last_loc_x != current_loc_x) && (last_loc_y != current_loc_y)) //If both changed at the same time, that's a problem as it is moving in a diagonal.
 			if(intercaridnal_fix_switch) //There is really no real way to do this.
 				pixel_x_float_physical -= vel_x
 				current_loc_x = x + FLOOR(((TILE_SIZE/2) + pixel_x_float_physical + x_normal*TILE_SIZE) / TILE_SIZE, 1) //Copy of above.
@@ -354,9 +366,9 @@
 
 	. = TRUE
 
-	if(damage_type && all_damage_types[damage_type])
+	if(damage_type && SSdamagetype.all_damage_types[damage_type])
 
-		var/damagetype/DT = all_damage_types[damage_type]
+		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 
 		var/precise = FALSE
 		if(is_living(hit_atom))
@@ -408,7 +420,7 @@
 						if(face_of_impact[1] || face_of_impact[2])
 							var/angle_of_incidence = abs(closer_angle_difference(ATAN2(vel_x,vel_y),ATAN2(face_of_impact[1],face_of_impact[2])))
 							if(angle_of_incidence >= local_required_angle)
-								var/turf/T = get_turf(hit_atom)
+								var/turf/T = previous_loc ? previous_loc : current_loc
 								if(T)
 
 									ricochets_left--
@@ -432,8 +444,8 @@
 									current_loc = T
 
 									//Move one step forward.
-									pixel_x_float_physical += vel_x
-									pixel_y_float_physical += vel_y
+									//pixel_x_float_physical += vel_x
+									//pixel_y_float_physical += vel_y
 									//Reflect the velocity
 									vel_x *= 1 - abs(face_of_impact[1])*2
 									vel_y *= 1 - abs(face_of_impact[2])*2

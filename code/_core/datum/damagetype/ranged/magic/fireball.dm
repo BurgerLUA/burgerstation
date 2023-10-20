@@ -20,6 +20,8 @@
 		SKILL_MAGIC = ARCANE
 	)
 
+	force_attacker_armor_calculations_with = ARCANE
+
 /damagetype/ranged/magic/fireball/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim))

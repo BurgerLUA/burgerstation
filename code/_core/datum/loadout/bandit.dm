@@ -1,3 +1,10 @@
+/loadout/bandit
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 75
+	quality_mod_min = 0.75
+
+
 /loadout/bandit/get_spawning_items()
 	. = ..()
 	if(prob(20))

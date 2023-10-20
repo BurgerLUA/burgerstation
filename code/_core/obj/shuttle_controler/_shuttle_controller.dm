@@ -1,5 +1,3 @@
-var/global/list/all_shuttle_controlers = list()
-
 /obj/shuttle_controller
 	name = "shuttle controller"
 	desc = "Controls what happens when the shuttle moves."
@@ -42,12 +40,12 @@ var/global/list/all_shuttle_controlers = list()
 	var/icon/stored_icon
 
 /obj/shuttle_controller/PreDestroy()
-	all_shuttle_controlers -= src
+	SSshuttle.all_shuttle_controlers -= src
 	return ..()
 
 /obj/shuttle_controller/New(var/desired_loc)
 
-	all_shuttle_controlers += src
+	SSshuttle.all_shuttle_controlers += src
 
 	var/turf/T = get_turf(src) //Not needed but whatever.
 	var/turf/T2 = locate(T.x,T.y,SSdmm_suite.file_to_z_level["maps/_core/bluespace.dmm"])

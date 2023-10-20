@@ -34,14 +34,15 @@
 
 	var/death_threshold = 0 //If you're below this health, then you're dead.
 
-	var/nutrition = 3000
-	var/nutrition_max = 3000
-	var/nutrition_max_hard = 4000
-	var/nutrition_fast = 0
+	var/nutrition_normal = 3000 //Basic stuff. Not junk, not healthy.
+	var/nutrition_fast = 0 //Junkfood.
+	var/nutrition_quality = 0 //Good, healthy food.
+	var/nutrition_max = 3000 //Anything over this makes you fat.
+
+	var/nutrition_max_hard = 4000 //Absolute maximum value. Can't have any more than this.
+
 	var/hydration = 2000
 	var/hydration_max = 2000
-	var/nutrition_quality = 1500 //0 to 2000. 2000 means super healthy, 0 means absolutely fucking obese unfit and all that. 1000 is average.
-	var/nutrition_quality_max = 2000
 	var/intoxication = 0
 	var/last_intoxication_message = 0
 
@@ -295,33 +296,13 @@
 
 /mob/living/PreDestroy()
 
+	if(buckled_object)
+		buckled_object.unbuckle(silent=TRUE,force=TRUE)
+
 	UNPROCESS_LIVING(src)
 
 	if(ai && istype(ai))
 		ai.set_active(FALSE)
-
-	QDEL_NULL(ai)
-	QDEL_NULL(stand)
-
-	QDEL_NULL(totem)
-
-	QDEL_CUT(linked_mobs)
-
-	if(!fallback_mob)
-		QDEL_CUT_ASSOC(attributes)
-		QDEL_CUT_ASSOC(skills)
-
-	QDEL_NULL(alert_overlay)
-	QDEL_NULL(chat_overlay)
-	QDEL_NULL(fire_overlay)
-	QDEL_NULL(shield_overlay)
-
-	QDEL_NULL(medical_hud_image)
-	QDEL_NULL(security_hud_image)
-	QDEL_NULL(medical_hud_image_advanced)
-	QDEL_NULL(water_mask)
-
-	QDEL_NULL(flash_overlay)
 
 	if(minion)
 		minion.master = null
@@ -350,7 +331,28 @@
 
 /mob/living/Destroy()
 
-	buckled_object = null
+	QDEL_NULL(ai)
+	QDEL_NULL(stand)
+
+	QDEL_NULL(totem)
+
+	QDEL_CUT(linked_mobs)
+
+	if(!fallback_mob)
+		QDEL_CUT_ASSOC(attributes)
+		QDEL_CUT_ASSOC(skills)
+
+	QDEL_NULL(alert_overlay)
+	QDEL_NULL(chat_overlay)
+	QDEL_NULL(fire_overlay)
+	QDEL_NULL(shield_overlay)
+
+	QDEL_NULL(medical_hud_image)
+	QDEL_NULL(security_hud_image)
+	QDEL_NULL(medical_hud_image_advanced)
+	QDEL_NULL(water_mask)
+
+	QDEL_NULL(flash_overlay)
 
 	hit_logs?.Cut()
 
@@ -365,6 +367,8 @@
 
 	. = ..()
 
+/mob/living/PostDestroy()
+	. = ..()
 	if(old_turf && old_turf.old_living)
 		old_turf.old_living -= src
 	old_turf = null
@@ -447,12 +451,14 @@
 		if(flash_overlay)
 			flash_overlay.duration = max(duration,flash_overlay.duration)
 			flash_overlay.color = desired_color
+			flash_overlay.alpha = 255
 			return TRUE
 
 		flash_overlay = new
 		flash_overlay.owner = src
 		flash_overlay.duration = duration
 		flash_overlay.color = desired_color
+		flash_overlay.alpha = 255
 		client.screen += flash_overlay
 
 	return TRUE
@@ -498,10 +504,13 @@
 
 /mob/living/get_debug_name()
 	var/turf/T = get_turf(src)
-	var/shown_x = T ? T.x : 0
-	var/shown_y = T ? T.y : 0
-	var/shown_z = T ? T.z : 0
-	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])<a href='?spectate=1;x=[shown_x];y=[shown_y];z=[shown_z]'>([shown_x],[shown_y],[shown_z])</a>"
+	var/location_info
+	if(T)
+		location_info = "<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>"
+	else
+		location_info = src.loc ? src.loc.type : "NULLSPACE"
+
+	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])[location_info]"
 
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
@@ -742,7 +751,7 @@
 	var/list/params = list()
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
-	var/damagetype/D = all_damage_types[/damagetype/explosion]
+	var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 	var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE

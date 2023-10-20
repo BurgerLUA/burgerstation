@@ -2,7 +2,7 @@
 	name = "defibrillator"
 	icon = 'icons/obj/item/defib.dmi'
 	desc = "A spaceman's last hope."
-	desc_extended = "A heavy-duty auto-charging defibrillator designed to restart a patient's heart. Put it on your back to be able to take out the paddles, and then apply them to a recently dead person. Alt-click to remove the paddles."
+	desc_extended = "A heavy-duty auto-charging defibrillator designed to restart a patient's heart."
 
 	var/obj/item/defib_paddle/paddle_left
 	var/obj/item/defib_paddle/paddle_right
@@ -19,10 +19,17 @@
 
 	rarity = RARITY_UNCOMMON
 
+/obj/item/defib/get_examine_list(var/mob/examiner)
+	. = ..()
+	if(item_slot == SLOT_TORSO_BACK) //shitcode is my passion
+		. += span("notice","Put it on your back to be able to take out the paddles, or ALT+Click it if it's on the ground.<br>Requires both empty hands to pick up and use.")
+	else
+		. += span("notice","Put it on your belt slot to be able to take out the paddles, or ALT+Click it if it's on the ground.<br>Requires both empty hands to pick up and use.")
+
 /obj/item/defib/belt
 	name = "compact defibrillator"
 	icon = 'icons/obj/item/clothing/belts/compact_defib.dmi'
-	desc_extended = "A auto-charging defibrillator designed to restart a patient's heart. Put it on your belt slot to be able to take out the paddles, and then apply them to a recently dead person. Now in a smaller size! Alt-click to remove the paddles."
+	desc_extended = "An auto-charging defibrillator designed to restart a patient's heart. Now in a smaller size!"
 
 	size = SIZE_2
 	item_slot = SLOT_GROIN_BELT
@@ -165,6 +172,8 @@
 
 /obj/item/defib_paddle
 	name = "defibrillator paddle"
+	desc = "Clear!"
+	desc_extended = "A singular defibrillator paddle. Apply both to a recently deceased patient and pray."
 	icon = 'icons/obj/item/defib_paddle.dmi'
 	var/obj/item/defib/linked_defib
 	var/placed_target_ref //While refs can be replaced by other objects, placing the last paddle with check if it's a valid ref.

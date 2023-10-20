@@ -1,8 +1,5 @@
 #define LOADOUT_LIMIT 5
 
-var/global/list/ckey_to_loadout_data = list()
-var/global/list/ckey_to_loadout_cooldown = list()
-
 /savedata/client/loadout
 	loaded_data = list()
 
@@ -18,7 +15,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 
 	var/client/owner = CLIENT(ckey)
 	if(owner)
-		ckey_to_loadout_data[ckey] = src
+		SSclient.ckey_to_loadout_data[ckey] = src
 
 
 /savedata/client/loadout/proc/save()
@@ -41,28 +38,28 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	if(!P.ckey || !name)
 		return FALSE
 
-	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
+	var/savedata/client/loadout/L = SSclient.ckey_to_loadout_data[P.ckey]
 
 	if(!length(L.loaded_data))
 		P.to_chat(span("warning","You have no loadouts to delete!"))
 		return FALSE
 
-	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
-		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before deleting another loadout!"))
+	if(length(SSclient.ckey_to_loadout_cooldown) && SSclient.ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(SSclient.ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before deleting another loadout!"))
 		return FALSE
 
 	L.loaded_data -= name
 
 	L.save()
-	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
+	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 /proc/save_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
 
 	if(!P.ckey || !name)
 		return FALSE
 
-	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
-		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before saving another loadout!"))
+	if(length(SSclient.ckey_to_loadout_cooldown) && SSclient.ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(SSclient.ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before saving another loadout!"))
 		return FALSE
 
 	var/list/objects_to_check = P.worn_objects.Copy()
@@ -83,7 +80,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 		final_data_list += list(generated_list)
 		final_cost += I.get_value()
 
-	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
+	var/savedata/client/loadout/L = SSclient.ckey_to_loadout_data[P.ckey]
 
 	if(length(L.loaded_data) && L.loaded_data[name])
 		if(usr != P)
@@ -101,7 +98,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	)
 
 	L.save()
-	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
+	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE
 
@@ -111,11 +108,11 @@ var/global/list/ckey_to_loadout_cooldown = list()
 	if(!P || !P.ckey || !name)
 		return FALSE
 
-	if(length(ckey_to_loadout_cooldown) && ckey_to_loadout_cooldown[P.ckey] > world.time)
-		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before purchasing another loadout!"))
+	if(length(SSclient.ckey_to_loadout_cooldown) && SSclient.ckey_to_loadout_cooldown[P.ckey] > world.time)
+		P.to_chat(span("warning","Please wait [CEILING(DECISECONDS_TO_SECONDS(SSclient.ckey_to_loadout_cooldown[P.ckey] - world.time),1)] more seconds before purchasing another loadout!"))
 		return FALSE
 
-	var/savedata/client/loadout/L = ckey_to_loadout_data[P.ckey]
+	var/savedata/client/loadout/L = SSclient.ckey_to_loadout_data[P.ckey]
 	var/list/found_data = L.loaded_data[name]
 
 	if(!found_data)
@@ -140,7 +137,7 @@ var/global/list/ckey_to_loadout_cooldown = list()
 			qdel(I)
 
 	P.to_chat(span("notice","You were charged [-P.adjust_currency(-total_value)] credits for this loadout."))
-	ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
+	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + SECONDS_TO_DECISECONDS(10)
 
 	return TRUE
 

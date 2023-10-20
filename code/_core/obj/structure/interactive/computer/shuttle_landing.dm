@@ -1,6 +1,3 @@
-var/global/global_shuttle_number = 0
-
-var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_shuttle_landing_consoles = list()
 
 
 /obj/structure/interactive/computer/console/shuttle_landing
@@ -17,9 +14,9 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 
 /obj/structure/interactive/computer/console/shuttle_landing/Initialize()
-	global_shuttle_number++
-	shuttle_number = global_shuttle_number //Assign the shuttle landing number.
-	all_shuttle_landing_consoles += src
+	SSshuttle.global_shuttle_number++
+	shuttle_number = SSshuttle.global_shuttle_number //Assign the shuttle landing number.
+	SSshuttle.all_shuttle_landing_consoles += src
 	. = ..()
 
 /obj/structure/interactive/computer/console/shuttle_landing/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -50,7 +47,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 			var/shuttle_text = "[A.name]: [SC.state]"
 			choices[shuttle_text] = SC
 		else
-			for(var/k in all_shuttle_controlers)
+			for(var/k in SSshuttle.all_shuttle_controlers)
 				var/obj/shuttle_controller/SC = k
 				if(SC.loyalty_owner != L.loyalty_tag)
 					continue
@@ -112,7 +109,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 	var/obj/structure/interactive/computer/console/shuttle_landing/best_computer
 	var/best_distance = INFINITY
-	for(var/k in all_shuttle_landing_consoles)
+	for(var/k in SSshuttle.all_shuttle_landing_consoles)
 		var/obj/structure/interactive/computer/console/shuttle_landing/SL = k
 		if(!best_computer)
 			best_computer = SL
@@ -144,7 +141,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 	var/obj/structure/interactive/computer/console/shuttle_landing/best_computer
 	var/best_distance = INFINITY
-	for(var/k in all_shuttle_landing_consoles)
+	for(var/k in SSshuttle.all_shuttle_landing_consoles)
 		var/obj/structure/interactive/computer/console/shuttle_landing/SL = k
 		if(!best_computer)
 			best_computer = SL
@@ -164,7 +161,7 @@ var/global/list/obj/structure/interactive/computer/console/shuttle_landing/all_s
 
 
 
-var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
+
 
 /obj/marker/shuttle_landing
 	name = "landing zone"
@@ -195,7 +192,7 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 	if(!SSdmm_suite.is_pvp_coord(loc.x,loc.y,loc.z,32))
 		var/obj/structure/interactive/computer/console/shuttle_landing/best_computer
 		var/best_distance = 1 + VIEW_RANGE*2
-		for(var/k in all_shuttle_landing_consoles)
+		for(var/k in SSshuttle.all_shuttle_landing_consoles)
 			var/obj/structure/interactive/computer/console/shuttle_landing/SL = k
 			if(SL.z != src.z)
 				continue
@@ -214,4 +211,4 @@ var/global/list/obj/marker/shuttle_landing/all_shuttle_landing_markers = list()
 			src.linked_computer = best_computer
 
 		if(!owning_shuttle)
-			all_shuttle_landing_markers += src
+			SSshuttle.all_shuttle_landing_markers += src

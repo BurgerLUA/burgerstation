@@ -3,6 +3,7 @@
 	desc = "Put the MONEY in the BAG! PUT IT IN!"
 	desc_extended = "Holds items but preferably food. Can be dyed. Can change the design by Alt-clicking it in your hand. Also a fashion statement when worn (must be empty)."
 	icon = 'icons/obj/item/clothing/hats/paperbag.dmi'
+	icon_state = "inventory"
 	var/logo = 0
 	var/logobg = 0
 	dynamic_inventory_count = MAX_INVENTORY_X
@@ -93,37 +94,36 @@
 
 /obj/item/clothing/head/helmet/full/paperbag/update_inventory()
 	. = ..()
-	var/filled_slots = 1
-	for(var/k in src.inventories)
-		var/obj/hud/inventory/I3 = k
-		filled_slots += length(I3.contents)
-
-	if(filled_slots == 1)
-		item_slot = SLOT_HEAD
-		icon_state = "[initial(icon_state)]1"
-	else
-		item_slot = SLOT_NONE
-		icon_state = "[initial(icon_state)]2"
-
 	update_sprite()
+
+/obj/item/clothing/head/helmet/full/paperbag/update_icon()
+	. = ..()
+	icon = null
+	icon_state = null
 
 /obj/item/clothing/head/helmet/full/paperbag/update_overlays()
 
-	var/content_count = 1
+	. = ..()
+
+	var/content_count = FALSE
 
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/I3 = k
-		content_count += length(I3.contents)
+		if(length(I3.contents) > 0)
+			content_count = TRUE
+			break
 
-	var/image/I = new/image(initial(icon),"logobg[clamp(content_count,1,2)][logobg]")
-	I.color = polymorphs["logobg"]
-	add_overlay(I)
+	var/image/I1 = new/image(initial(icon),content_count ? "inventory1_base" : "inventory2_base")
+	I1.color = polymorphs["base"]
+	add_overlay(I1)
 
-	var/image/I2 = new/image(initial(icon),"logo[clamp(content_count,1,2)][logo]")
-	I2.color = polymorphs["logo"]
+	var/image/I2 = new/image(initial(icon),"logobg[content_count ? 2 : 1][logobg]")
+	I2.color = polymorphs["logobg"]
 	add_overlay(I2)
 
-	return ..()
+	var/image/I3 = new/image(initial(icon),"logo[content_count ? 2 : 1][logo]")
+	I3.color = polymorphs["logo"]
+	add_overlay(I3)
 
 /obj/item/clothing/head/helmet/full/paperbag/nanotrasen
 	logo = 1
@@ -144,6 +144,11 @@
 	)
 
 /obj/item/clothing/head/helmet/full/paperbag/random/Generate()
-	logo = rand(0,5)
+	. = ..()
+	logo = pick(0,2,4,5)
 	logobg = rand(0,2)
-	return ..()
+	polymorphs = list(
+		"base" = rgb(204,rand(112,184),rand(112,184)),
+		"logo" = random_color(),
+		"logobg" = random_color()
+	)

@@ -22,6 +22,96 @@ SUBSYSTEM_DEF(balance)
 
 	var/list/can_save_loadout = list()
 
+	//Price multiplier
+	var/static/list/limbs_to_value = list(
+		BODY_HEAD = 1.25,
+		BODY_TORSO = 1,
+		BODY_GROIN = 0.75,
+		BODY_ARM_LEFT = 0.25,
+		BODY_ARM_RIGHT = 0.25,
+		BODY_HAND_LEFT = 0.125,
+		BODY_HAND_RIGHT = 0.125,
+		BODY_LEG_LEFT = 0.25,
+		BODY_LEG_RIGHT = 0.25,
+		BODY_FOOT_LEFT = 0.25,
+		BODY_FOOT_RIGHT = 0.25
+	)
+
+	//Values are percent. Example: A value of 0.01 means 0.01% slowdown per point.
+	var/static/list/armor_slowdown_values = list(
+		BLADE = 0.02,
+		BLUNT = 0.02,
+		PIERCE = 0.02,
+		LASER = 0.02,
+		ARCANE = 0,
+		HEAT = 0.01,
+		COLD = 0.01,
+		BOMB = 0.01,
+		BIO = 0.01,
+		RAD = 0.01,
+		HOLY = 0.01,
+		DARK = 0.01,
+		FATIGUE = 0.02,
+		ION = 0.02,
+		PAIN = 0.02
+	)
+
+	var/static/list/difficulty_to_rarity = list(
+		DIFFICULTY_EASY = 0,
+		DIFFICULTY_NORMAL = 5,
+		DIFFICULTY_HARD = 15,
+		DIFFICULTY_EXTREME = 20,
+		DIFFICULTY_NIGHTMARE = 40
+	)
+
+	var/static/list/difficulty_to_damage_mul = list(
+		DIFFICULTY_EASY = 0.25,
+		DIFFICULTY_NORMAL = 0.5,
+		DIFFICULTY_HARD = 0.75,
+		DIFFICULTY_EXTREME = 1,
+		DIFFICULTY_NIGHTMARE = 1
+	)
+
+	var/static/list/difficulty_to_xp_mod = list(
+		DIFFICULTY_EASY = 1,
+		DIFFICULTY_NORMAL = 1.25,
+		DIFFICULTY_HARD = 1.5,
+		DIFFICULTY_EXTREME = 2,
+		DIFFICULTY_NIGHTMARE = 3
+	)
+
+	// https://www.desmos.com/calculator/lor9o5vzic
+	var/static/list/defense_rating_to_value = list( //Lower values are more expensive.
+		BLADE = 8.1,
+		BLUNT = 8.1,
+		PIERCE = 8.1,
+		LASER = 12.2,
+		ARCANE = 7,
+		HEAT = 16.2,
+		COLD = 16.2,
+		SHOCK = 16.2,
+		ACID = 16.2,
+		BOMB = 16.2,
+		BIO = 17.9,
+		RAD = 16.2,
+		HOLY = 7,
+		DARK = 7,
+		FATIGUE = 50,
+		ION = 50,
+		PAIN = 50,
+		BRUTE = 2.5,
+		BURN = 2.5,
+		TOX = 2.5
+	)
+
+	var/static/list/difficulty_to_ai_modifier = list(
+		DIFFICULTY_EASY = 1,
+		DIFFICULTY_NORMAL = 2,
+		DIFFICULTY_HARD = 4,
+		DIFFICULTY_EXTREME = 6,
+		DIFFICULTY_NIGHTMARE = 6
+	)
+
 /subsystem/balance/proc/process_loadout_contents(var/obj/O)
 	//This allows gloves and medicine to be stored. It's shitcode, but it works.
 	//Don't need to create any more items from here because it's all already created.

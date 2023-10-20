@@ -4,19 +4,16 @@
 	spawning_items = list(
 		SLAVIC_DEFAULT
 	)
-
-	var/quality_min = 30
-	var/quality_max = 60
-
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 75
+	quality_mod_min = 0.5
 
 /loadout/slavic/pre_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
 
 	. = ..()
 
-	if(I.quality != -1)
-		I.quality = rand(quality_min,quality_max)
-
-	else if(is_magazine(I)) //Force surplus ammo.
+	if(is_magazine(I)) //Force surplus ammo.
 		var/obj/item/magazine/M = I
 		if(M.ammo_surplus)
 			M.ammo = M.ammo_surplus

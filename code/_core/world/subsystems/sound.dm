@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(sound)
 	if(active_sounds[S] > 0)
 		return FALSE
 	S.status = SOUND_MUTE | SOUND_UPDATE
-	for(var/k in all_clients)
+	for(var/k in SSclient.all_clients)
 		var/client/C = k
 		C << S
 	active_sounds -= S
@@ -182,7 +182,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 /proc/get_clients_in_range(var/range,var/atom/epicenter=usr)
 
 	. = list()
-	for(var/k in all_mobs_with_clients)
+	for(var/k in SSliving.all_mobs_with_clients)
 		var/mob/M = k
 		if(get_dist(epicenter,M) > range)
 			continue
@@ -271,7 +271,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 	return C
 
-/proc/play_sound_global(var/sound_path,var/list/hearers=all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
+/proc/play_sound_global(var/sound_path,var/list/hearers=SSliving.all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -367,7 +367,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 		SSsound.active_sounds[created_sound] = -1
 
 	if(!hearers)
-		hearers = all_mobs_with_clients_by_z["[source_turf.z]"]
+		hearers = SSliving.all_mobs_with_clients_by_z["[source_turf.z]"]
 
 	for(var/k in hearers)
 

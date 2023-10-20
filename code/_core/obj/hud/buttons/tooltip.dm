@@ -29,3 +29,14 @@
 
 	return TRUE
 
+/obj/hud/button/tooltip/update_owner(var/mob/desired_owner)
+
+	var/mob/old_owner = owner
+
+	. = ..()
+
+	if(.)
+		if(old_owner)
+			old_owner.tooltip = null
+		if(owner)
+			owner.tooltip = src

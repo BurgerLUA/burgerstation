@@ -20,7 +20,7 @@
 
 /gamemode/mission/zombie/add_objectives()
 	. = ..()
-	var/player_count = length(all_clients)
+	var/player_count = length(SSclient.all_clients)
 
 	var/blobs_to_spawn = min(3+(player_count/10),length(possible_blob_locations))
 

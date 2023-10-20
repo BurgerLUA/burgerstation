@@ -18,8 +18,6 @@
 	var/density_south = FALSE
 	var/density_east  = FALSE
 	var/density_west  = FALSE
-	var/density_up    = FALSE
-	var/density_down  = TRUE
 	var/allow_bullet_pass = FALSE
 
 	var/list/mob/living/old_living //List of mobs that used to be on this turf.
@@ -264,10 +262,12 @@
 
 	. = ..()
 
+	/*
 	if(!density_down && !(enterer.collision_flags & (FLAG_COLLISION_ETHEREAL | FLAG_COLLISION_FLYING)))
 		var/turf/T = locate(x,y,z-1)
 		if(T && !T.density_up && enterer.Move(T) && !T.safe_fall)
 			enterer.on_fall(src)
+	*/
 
 	if(enterer.density && !enterer.abstract)
 		has_dense_atom = "/turf/Entered() [enterer.type]."

@@ -46,6 +46,7 @@
 
 /obj/item/clothing/head/hat/skimask/medical
 	name = "medical full face mask"
+	desc = "I'm here! And I brought drugs!"
 	color = COLOR_MEDICAL
 
 /obj/item/clothing/head/hat/skimask/tactical

@@ -67,7 +67,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	.[PARAM_ICON_Y] = rand(0,32)
 
 /obj/effect/temp/hazard/proc/do_damage(var/atom/victim)
-	var/damagetype/DT = all_damage_types[damage_type]
+	var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 	var/list/params = get_params()
 	if(!victim.can_be_attacked(owner,src,params,DT))
 		return FALSE

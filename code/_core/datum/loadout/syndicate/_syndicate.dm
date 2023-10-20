@@ -18,6 +18,10 @@
 		/obj/item/magazine/pistol_10mm,
 		/obj/item/magazine/pistol_10mm
 	)
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 100
+	quality_mod_min = 0.75
 
 /loadout/syndicate/soldier
 	spawning_items = list(

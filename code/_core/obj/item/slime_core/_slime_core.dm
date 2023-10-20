@@ -32,6 +32,7 @@
 /obj/item/slime_core/get_base_value()
 	. = ..()
 	. *= (1 + (alpha/255)) ** 2
+	. = CEILING(.,1)
 
 /obj/item/slime_core/proc/generate_name()
 

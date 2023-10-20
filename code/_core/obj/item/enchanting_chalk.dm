@@ -18,7 +18,8 @@
 
 /obj/item/enchanting_chalk/get_base_value()
 	. = ..()
-	. *= uses_left/initial(uses_left)
+	. *= uses_left / initial(uses_left)
+	. = CEILING(.,1)
 
 /obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
@@ -62,6 +63,7 @@
 			qdel(src)
 		else
 			update_sprite()
+			value = get_base_value()
 
 		return TRUE
 

@@ -1,7 +1,6 @@
 "aa" = (/obj/marker/spawning/window/reinforced,/obj/structure/interactive/construction/grille,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "ab" = (/obj/structure/interactive/wire/yellow,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04)
 "ac" = (/obj/marker/spawning/window/reinforced,/obj/structure/interactive/construction/grille,/obj/marker/smart_clear_turf,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/bedroom)
-"ad" = (/obj/item/material/shard/glass,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "ae" = (/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "af" = (/obj/structure/interactive/wire/red,/obj/marker/map_node,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "ag" = (/obj/marker/map_node,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/maintbar)
@@ -71,7 +70,6 @@
 "CN" = (/obj/structure/table/rack/grey,/obj/marker/spawning/random/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "Dk" = (/obj/structure/interactive/wire/red,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "DO" = (/obj/structure/table/rack/grey,/obj/marker/spawning/random/trash,/obj/marker/spawning/random/trash,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
-"Ek" = (/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "EW" = (/obj/structure/table/wood,/obj/marker/spawning/random/misc,/obj/structure/carpet/blue/royal,/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/bedroom)
 "Gs" = (/turf/simulated/floor/wood/brown,/area/mission/prefab/house/house_D04/maintbar)
 "GC" = (/obj/item/container/healing/cable,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
@@ -86,7 +84,7 @@
 "OA" = (/turf/dmm_suite/clear_turf,/area/dmm_suite/clear_area)
 "PP" = (/obj/structure/interactive/misc/toilet{icon_state = "toilet"; dir = 8},/turf/simulated/floor/tile/coldroom,/area/mission/prefab/house/house_D04/bathroom)
 "Qy" = (/obj/structure/table/reinforced/steel,/obj/item/container/simple/alcohol/beer,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
-"QY" = (/obj/item/material/shard/glass,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
+"QY" = (/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "Sb" = (/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintmain)
 "Sd" = (/obj/structure/interactive/chair/stool/bar,/turf/simulated/floor/plating,/area/mission/prefab/house/house_D04/maintbar)
 "So" = (/turf/simulated/wall/metal,/area/mission/prefab/house/house_D04/maintmain)
@@ -106,10 +104,10 @@
 (1,1,1) = {"
 SoSoSoSoSoSoSoaafghrrchrhrnNhrhr
 SoTETEwgYYYYSoazwghrCogyVVzmYDhr
-SoadSbSbSbaeTbaeaDhrILGsmFQYGshr
+SoaeSbSbSbaeTbaeaDhrILGsmFQYGshr
 SoaxSoTFSoSoSoynSohrLVloQycqthhr
 aaafDkmODkDkDkDkafKVnhaESdSdpzgn
-SoawSobDSoSofgihSbhrCNQYagGsEkhr
+SoawSobDSoSofgihSbhrCNQYagGsQYhr
 SoDkSoahSbSbSbGCaehrhrhravgngnhr
 SoaftuajSoSoSoSoaASbSbSbaeGCTESo
 SoSoSoTwSoaybcDOaraeatqqqqqqqqqq

@@ -57,6 +57,19 @@
 
 	rarity = RARITY_MYTHICAL
 
+/obj/item/clothing/glasses/sun/dicklickem
+	name = "dickhead shades"
+
+	desc = "ITS TIME TO CHEW ASS AND KICK BUBBLEGUM."
+	desc_extended = "These glasses are more like heavily tinted glass with the amount of bodily fluids caked on. Fortunately, this also makes them incredibly durable."
+
+	icon = 'icons/obj/item/clothing/glasses/dicklickem.dmi'
+
+	value = 1991
+
+	rarity = RARITY_MYTHICAL
+
+
 /obj/item/clothing/glasses/sun/augmented
 	name = "augmented shades"
 	desc = "Your vision is augmented."

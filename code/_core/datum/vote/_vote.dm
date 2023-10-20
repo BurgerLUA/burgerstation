@@ -29,8 +29,8 @@
 
 /vote/New()
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		if(!C)
 			continue
 		C.to_chat(div("vote","A new vote has been started. Voting will end in [time_limit] seconds."))
@@ -41,7 +41,7 @@
 			C.to_chat(div("vote","[i]. [option]"))
 		C.to_chat(div("vote","<a href='?vote=\ref[src]'>Click here to vote.</a>"))
 
-	play_sound_global('sound/ui/start_vote.ogg',all_mobs_with_clients)
+	play_sound_global('sound/ui/start_vote.ogg',SSliving.all_mobs_with_clients)
 
 	return ..()
 
@@ -124,14 +124,14 @@
 		else
 			message_to_send += div("vote","Winner: [winner].")
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		if(!C)
 			continue
 		for(var/m in message_to_send)
 			C.to_chat(m)
 
-	play_sound_global('sound/ui/end_vote.ogg',all_mobs_with_clients)
+	play_sound_global('sound/ui/end_vote.ogg',SSliving.all_mobs_with_clients)
 	on_result(winner,results)
 
 	return ..()

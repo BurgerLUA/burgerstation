@@ -126,14 +126,15 @@
 
 /mob/PreDestroy()
 
+	SSliving.all_mobs -= src
+	SSliving.all_mobs_with_clients -= src
+	if(SSliving.all_mobs_with_clients_by_z["[src.last_z]"])
+		SSliving.all_mobs_with_clients_by_z["[src.last_z]"] -= src
+
 	if(client)
 		log_error("[src.get_debug_name()] deleted itself while there was still a client ([client]) attached!")
 		var/turf/T = get_turf(src)
 		client.make_ghost(T ? T : FALLBACK_TURF)
-
-	for(var/k in buttons)
-		var/obj/hud/button/B = k
-		B.update_owner(null)
 
 	for(var/k in health_elements)
 		var/obj/hud/button/B = health_elements[k]
@@ -141,11 +142,13 @@
 
 	if(examine_bar)
 		examine_bar.update_owner(null)
-		examine_bar = null
 
 	if(tooltip)
 		tooltip.update_owner(null)
-		tooltip = null
+
+	for(var/k in buttons)
+		var/obj/hud/button/B = k
+		B.update_owner(null)
 
 	if(observers)
 		for(var/k in observers)
@@ -166,14 +169,13 @@
 	QDEL_NULL(plane_master_water_mask)
 	QDEL_NULL(plane_master_water)
 
-	QDEL_NULL(fov)
+	if(fov)
+		overlays -= fov
+		QDEL_NULL(fov)
 
 	QDEL_NULL(examine_overlay)
 
 	QDEL_CUT_ASSOC(parallax)
-
-	all_mobs -= src
-	all_mobs_with_clients -= src
 
 	if(observing)
 		observing.observers -= src
@@ -188,6 +190,10 @@
 		M.fallback_mob = null
 	linked_mobs?.Cut()
 
+	stored_chat_text?.Cut()
+	color_mods?.Cut()
+	lighting_mods?.Cut()
+
 	. = ..()
 
 /mob/Destroy()
@@ -198,21 +204,14 @@
 	ckey_last = null
 	key = null // required to GC
 
-	stored_chat_text?.Cut()
-
-	color_mods?.Cut()
-
-	lighting_mods?.Cut()
+	overlays.Cut()
+	underlays.Cut()
 
 /mob/Login()
 
 	. = ..()
 
 	var/client/C = src.client
-
-	for(var/k in local_machines)
-		var/obj/structure/interactive/localmachine/L = k
-		L.update_for_mob(src)
 
 	if(!plane_master_floor)
 		plane_master_floor = new(src)
@@ -319,10 +318,9 @@
 	health_elements = list()
 	examine_butons = list()
 
-	if(C)
-		C.control_mob(src,FALSE)
+	if(C) C.control_mob(src,FALSE)
 
-	all_mobs += src
+	SSliving?.all_mobs += src
 
 	. = ..()
 

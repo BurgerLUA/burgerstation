@@ -37,6 +37,15 @@
 	if(loaded_data["fps_client"])
 		owner.fps = loaded_data["fps_client"]
 
+	var/list/default_colors = DEFAULT_COLORS
+
+	var/current_colors_length = length(loaded_data["hud_colors"])
+	var/default_colors_length = length(default_colors)
+
+	if(current_colors_length < default_colors_length)
+		for(var/i=1,i<=default_colors_length-current_colors_length,i++)
+			loaded_data["hud_colors"] += default_colors[default_colors_length-(i-1)]
+
 	if(owner.mob)
 		for(var/k in owner.mob.buttons)
 			var/obj/hud/button/B = k

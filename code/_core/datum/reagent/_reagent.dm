@@ -57,6 +57,8 @@
 
 	var/bypass_small_limit = FALSE //Set to true if this reagent ignores the metabolism cap of 1u minimum.
 
+	var/reagent/disguised_reagent //What this reagent is disguised as when reading the contents. Will find the nearest type.
+
 /reagent/proc/get_flammability()
 	return 0
 
@@ -110,7 +112,6 @@
 	return amount_to_metabolize
 
 /reagent/proc/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
-	world.log << "amount_to_metabolize: [amount_to_metabolize]"
 	return amount_to_metabolize
 
 /reagent/proc/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)

@@ -48,6 +48,13 @@
 
 /ai/advanced/Destroy()
 	objective_weapon = null
+	found_ammo_pile = null
+	current_cover = null
+	old_owner_location = null
+	old_objective_attack_location = null
+	last_found_bullet = null
+	objective_weapon = null
+	found_grenade = null
 	return ..()
 
 /ai/advanced/on_life()
@@ -612,8 +619,6 @@
 
 /ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
 
-
-
 	if(!target)
 		return FALSE
 
@@ -654,7 +659,7 @@
 	if(!O_groin)
 		return FALSE
 
-	var/obj/item/grenade/G = recursive_find_item(O_groin,src,src::is_grenade())
+	var/obj/item/grenade/G = recursive_find_item(O_groin,src,nameof(src::is_grenade()))
 	if(G)
 		if(debug) log_debug("AI debug: Found a grenade!")
 		found_grenade = G

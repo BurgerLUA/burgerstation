@@ -7,7 +7,7 @@ var/global/enable_friendly_fire = FALSE
 
 	enable_friendly_fire = desired_friendly_fire
 
-	for(var/k in all_players)
+	for(var/k in SSliving.all_players)
 		var/mob/living/advanced/player/P = k
 		P.setup_difficulty()
 

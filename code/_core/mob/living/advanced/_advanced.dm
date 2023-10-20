@@ -1,7 +1,5 @@
 #define DEFAULT_NAME "Your name here."
 
-var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
-
 /mob/living/advanced
 
 	name = DEFAULT_NAME
@@ -40,9 +38,11 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	has_footprints = TRUE
 
-	var/move_delay_multiplier = 1 //Read only.
+	var/worn_move_delay_multiplier = 1 //Read only.
 
 	var/list/overlays_assoc
+
+	var/static/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_RIGHT,BODY_LEG_LEFT)
 
 	var/list/protection_heat = TARGETABLE_LIMBS_KV
 	var/list/protection_cold = TARGETABLE_LIMBS_KV
@@ -79,6 +79,8 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 
 	var/list/overall_clothing_defense_rating = list()
 
+	var/changing = FALSE //Currently changing around organs. used in post_perform_change and pre_perform_change
+
 
 /mob/living/advanced/PreDestroy()
 
@@ -86,8 +88,11 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 		var/obj/item/I = k
 		I.close_inventory(src)
 
+	queue_organ_health_update.Cut()
+
 	QDEL_NULL(stored_handcuffs)
 
+	remove_all_inventories()
 	remove_all_organs()
 	remove_all_buttons()
 
@@ -98,13 +103,15 @@ var/global/list/movement_organs = list(BODY_FOOT_RIGHT,BODY_FOOT_LEFT,BODY_LEG_R
 	using_inventories?.Cut()
 
 	inventory_defers?.Cut()
-	inventories_by_id?.Cut()
+
+	for(var/k in overlays_assoc)
+		var/image/I = overlays_assoc[k]
+		qdel(I)
 
 	overlays_assoc?.Cut()
+
 	ability_buttons?.Cut()
 
-	held_objects = null
-	worn_objects = null
 	active_inventory = null
 	driving = null
 
@@ -184,13 +191,7 @@ mob/living/advanced/Login()
 	restore_buttons()
 	restore_inventory()
 	restore_stat_elements()
-	restore_local_machines()
 	QUEUE_HEALTH_UPDATE(src)
-
-/mob/living/advanced/proc/restore_local_machines()
-	for(var/k in local_machines)
-		var/obj/structure/interactive/localmachine/L = k
-		L.update_for_mob(src)
 
 /mob/living/advanced/Initialize()
 	. = ..()
@@ -208,7 +209,7 @@ mob/living/advanced/Login()
 		var/species/S = SPECIES(species)
 		if(!src.voice_modifiers)
 			src.voice_modifiers = list()
-		src.voice_modifiers[S] = S::process_accent()
+		src.voice_modifiers[S] = nameof(S::process_accent())
 
 	for(var/k in overlays_assoc)
 		update_overlay_tracked(k,force=TRUE)
@@ -281,7 +282,7 @@ mob/living/advanced/Login()
 		var/list/params = list()
 		params[PARAM_ICON_X] = rand(0,32)
 		params[PARAM_ICON_Y] = rand(0,32)
-		var/damagetype/D = all_damage_types[/damagetype/explosion]
+		var/damagetype/D = SSdamagetype.all_damage_types[/damagetype/explosion]
 		var/atom/object_to_damage = src.get_object_to_damage(owner,source,D,params,TRUE,TRUE)
 		D.process_damage(source,src,source,object_to_damage,owner,magnitude*(1/5))
 	return TRUE

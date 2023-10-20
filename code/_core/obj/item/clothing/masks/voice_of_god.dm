@@ -86,7 +86,7 @@
 		var/mob/living/advanced/A = I.owner
 		if(!A.voice_modifiers)
 			A.voice_modifiers = list()
-		A.voice_modifiers[src] = src::search_for_voice()
+		A.voice_modifiers[src] = nameof(src::search_for_voice())
 
 /obj/item/clothing/mask/voice_of_god/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
 	. = ..()
@@ -158,14 +158,14 @@
 	return victim.add_status_effect(TEMP_REGEN,5,100,source=caller) //5 health per second for 10 seconds.
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_harm(var/mob/living/advanced/caller,var/mob/living/victim)
-	var/damagetype/DT = all_damage_types[/damagetype/voice_of_god/harm]
+	var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/voice_of_god/harm]
 	var/atom/object_to_damage = victim.get_object_to_damage(caller,src,damage_type,null,TRUE,TRUE)
 	return DT.process_damage(caller,victim,src,object_to_damage,caller,1)
 
 /obj/item/clothing/mask/voice_of_god/proc/power_word_kill(var/mob/living/advanced/caller,var/mob/living/victim)
 	if(victim.dead || !victim.has_status_effect(CRIT))
 		return FALSE
-	var/damagetype/DT = all_damage_types[/damagetype/voice_of_god/kill]
+	var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/voice_of_god/kill]
 	var/atom/object_to_damage = victim.get_object_to_damage(caller,src,damage_type,null,TRUE,TRUE)
 	return DT.process_damage(caller,victim,src,object_to_damage,caller,1)
 

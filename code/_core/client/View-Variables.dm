@@ -174,19 +174,20 @@ client/proc/debug_variables(datum/D in world)
 				body += "<br><font size='1'><a href='?_src_=vars;rotatedatum=\ref[D];rotatedir=left'><<</a> <a href='?_src_=vars;datumedit=\ref[D];varnameedit=dir'>[dir2text(A.dir)]</a> <a href='?_src_=vars;rotatedatum=\ref[D];rotatedir=right'>>></a></font>"
 			var/mob/living/M = A
 			body += "<br><font size='1'><a href='?_src_=vars;datumedit=\ref[D];varnameedit=ckey'>[M.ckey ? M.ckey : "No ckey"]</a> / <a href='?_src_=vars;datumedit=\ref[D];varnameedit=real_name'>[M.name ? M.name : "No real name"]</a></font>"
-			body += {"
-			<br><font size='1'>
-			BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brute'>[M.health.damage[BRUTE]]</a>
-			FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fire'>[M.health.damage[BURN]]</a>
-			TOXIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=toxin'>[M.health.damage[TOX]]</a>
-			OXY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=oxygen'>[M.health.damage[OXY]]</a>
-			FATIGUE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fatigue'>[M.health.damage[FATIGUE]]</a>
-			SANITY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=sanity'>[M.health.damage[SANITY]]</a>
-			MENTAL:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mental'>[M.health.damage[MENTAL]]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.health.stamina_max - M.health.stamina_current]</a>
-			MANA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mana'>[M.health.mana_max - M.health.mana_current]</a>
-			</font>
-			"}
+			if(A.health)
+				body += {"
+				<br><font size='1'>
+				BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brute'>[M.health.damage[BRUTE]]</a>
+				FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fire'>[M.health.damage[BURN]]</a>
+				TOXIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=toxin'>[M.health.damage[TOX]]</a>
+				OXY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=oxygen'>[M.health.damage[OXY]]</a>
+				FATIGUE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=fatigue'>[M.health.damage[FATIGUE]]</a>
+				SANITY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=sanity'>[M.health.damage[SANITY]]</a>
+				MENTAL:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mental'>[M.health.damage[MENTAL]]</a>
+				STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.health.stamina_max - M.health.stamina_current]</a>
+				MANA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=mana'>[M.health.mana_max - M.health.mana_current]</a>
+				</font>
+				"}
 		else
 			body += "<a href='?_src_=vars;datumedit=\ref[D];varnameedit=name'><b>[D]</b></a>"
 			if(A.dir)
@@ -497,32 +498,6 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		M.drop_all_items(get_turf(src))
 		href_list["datumrefresh"] = href_list["drop_everything"]
 
-	else if(href_list["direct_control"])
-
-		var/mob/M = locate(href_list["direct_control"])
-		var/client/NO = src
-		if(!istype(M))
-			to_chat(span("notice", "This can only be used on instances of type /mob"))
-			return
-
-		var/ghosts = list()
-		for(var/mob/abstract/observer/ghost/G in range(usr,5))
-			if(!G.client) continue
-			ghosts += G.client
-		if(length(ghosts))
-			NO = input("Please choose a new client to obtain [M.name].","Control mob",src) as anything in ghosts
-			if(!NO) return FALSE
-
-
-		var/mob/living/advanced/player/P = M
-
-		if(P.client) P.client.make_ghost(P.loc)
-
-		NO.control_mob(P)
-		P.add_species_buttons()
-		QUEUE_HEALTH_UPDATE(P)
-		href_list["datumrefresh"] = href_list["direct_control"]
-
 	else if(href_list["delall"])
 
 		var/obj/O = locate(href_list["delall"])
@@ -647,7 +622,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "This can only be done to instances of type /mob/living/advanced"))
 			return
 
-		var/loadout = input("Please choose a loadout.","Loadout",null) as null|anything in all_loadouts
+		var/loadout = input("Please choose a loadout.","Loadout",null) as null|anything in SSloadouts.all_loadouts
 
 		if(!loadout) return
 
@@ -790,9 +765,9 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			to_chat(span("notice",  "Mob does not have that organ."))
 			return
 		var/obj/item/organ/O = rem_organ
+		M.remove_organ(O,get_turf(M))
 		to_chat(span("notice","Removed [rem_organ] from [M]."))
-		O.unattach_from_parent(M.loc)
-		QUEUE_HEALTH_UPDATE(M)
+
 
 	else if(href_list["regenerateicons"])
 
@@ -871,7 +846,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			var_value = input("Select reference:","Reference") as null|mob|obj|turf|area in world
 
 		if("mob reference")
-			var_value = input("Select reference:","Reference") as null|mob in all_mobs
+			var_value = input("Select reference:","Reference") as null|mob in SSliving.all_mobs
 
 		if("file")
 			var_value = input("Pick file:","File") as null|file
@@ -910,7 +885,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			var_value = input("Select reference:","Reference") as mob|obj|turf|area in world
 
 		if("mob reference")
-			var_value = input("Select reference:","Reference") as mob in all_mobs
+			var_value = input("Select reference:","Reference") as mob in SSliving.all_mobs
 
 		if("file")
 			var_value = input("Pick file:","File") as file
@@ -1047,7 +1022,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			L[L.Find(variable)] = input("Select reference:","Reference") as mob|obj|turf|area in world
 
 		if("mob reference")
-			L[L.Find(variable)] = input("Select reference:","Reference") as mob in all_mobs
+			L[L.Find(variable)] = input("Select reference:","Reference") as mob in SSliving.all_mobs
 
 		if("file")
 			L[L.Find(variable)] = input("Pick file:","File") as file
@@ -1248,7 +1223,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = var_new
 
 		if("mob reference")
-			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in all_mobs
+			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in SSliving.all_mobs
 			if(var_new==null) return
 			O.vars[variable] = var_new
 
@@ -1380,7 +1355,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = initial(O.vars[variable])
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1396,7 +1371,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1420,7 +1395,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1435,7 +1410,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1461,7 +1436,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							/*if(variable=="luminosity")
 								M.SetLuminosity(new_value)
@@ -1486,7 +1461,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							/*if(variable=="luminosity")
 								M.SetLuminosity(new_value)
@@ -1516,7 +1491,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = new_value
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1531,7 +1506,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1552,7 +1527,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1567,7 +1542,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1587,7 +1562,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			O.vars[variable] = new_value
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -1603,7 +1578,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in all_mobs)
+					for(var/mob/M in SSliving.all_mobs)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -1653,7 +1628,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					if("Obj")
 						target = input("Enter target:","Target",usr) as obj in world
 					if("Mob")
-						target = input("Enter target:","Target",usr) as mob in all_mobs
+						target = input("Enter target:","Target",usr) as mob in SSliving.all_mobs
 					if("Area or Turf")
 						target = input("Enter target:","Target",usr.loc) as area|turf in world
 					if("Client")
@@ -1701,7 +1676,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				lst[i] = input("Select reference:","Reference",src) as mob|obj|turf|area in world
 
 			if("mob reference")
-				lst[i] = input("Select reference:","Reference",usr) as mob in all_mobs
+				lst[i] = input("Select reference:","Reference",usr) as mob in SSliving.all_mobs
 
 			if("file")
 				lst[i] = input("Pick file:","File") as file
@@ -1711,12 +1686,12 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			if("client")
 				var/list/keys = list()
-				for(var/mob/M in all_players)
+				for(var/mob/M in SSliving.all_players)
 					keys += M.client
 				lst[i] = input("Please, select a player!", "Selection", null, null) as null|anything in keys
 
 			if("mob's area")
-				var/mob/temp = input("Select mob", "Selection", usr) as mob in all_mobs
+				var/mob/temp = input("Select mob", "Selection", usr) as mob in SSliving.all_mobs
 				lst[i] = temp.loc
 
 	if(targetselected)

@@ -12,11 +12,29 @@ SUBSYSTEM_DEF(client)
 
 	var/list/queued_automatics = list()
 
+	var/ticket_number_counter = 1
+
+	var/list/ckey_to_mobdata = list()
+
+	var/list/ckey_to_loadout_data = list()
+	var/list/ckey_to_loadout_cooldown = list()
+
+	var/list/ckey_to_globaldata = list()
+
+	var/list/ckey_to_death_box_data = list()
+
+	var/list/ckey_to_bank_data = list()
+	var/list/ckey_to_bank_storage = list()
+
+	var/list/ckey_to_tickets = list()
+
+	var/list/all_clients = list() //Assoc list
+
 /subsystem/client/unclog(var/mob/caller)
-	for(var/ckey in all_clients) //This should never be tick checked.
-		var/client/C = all_clients[ckey]
+	for(var/ckey in SSclient.all_clients) //This should never be tick checked.
+		var/client/C = SSclient.all_clients[ckey]
 		if(!C)
-			all_clients -= ckey
+			SSclient.all_clients -= ckey
 			continue
 	. = ..()
 
@@ -31,11 +49,11 @@ SUBSYSTEM_DEF(client)
 		advanced_ticks = 0
 
 	//This handles life ticks for all players.
-	for(var/ckey in all_clients) //This should never be tick checked.
-		var/client/C = all_clients[ckey]
+	for(var/ckey in SSclient.all_clients) //This should never be tick checked.
+		var/client/C = SSclient.all_clients[ckey]
 		if(!C)
 			log_error("Tried getting the client of [ckey] but it didn't exist!")
-			all_clients -= ckey
+			SSclient.all_clients -= ckey
 			continue
 		C.on_life()
 		if(do_slow)

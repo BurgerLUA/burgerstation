@@ -40,6 +40,10 @@
 
 	var/next_star = 0
 
+/ai/ghost/Destroy()
+	. = ..()
+	owner_as_ghost = null
+
 /ai/ghost/New(var/desired_loc,var/mob/living/desired_owner)
 
 	. = ..()

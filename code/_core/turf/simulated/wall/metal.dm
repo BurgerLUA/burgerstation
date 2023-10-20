@@ -125,7 +125,7 @@
 	name = "shuttle-grade steel wall"
 	desc = "Brace for landing"
 	desc_extended = "The wall of a shuttle."
-	icon = 'icons/turf/wall/metal/shuttle.dmi'
+	icon = 'icons/turf/wall/metal/shuttle_new.dmi'
 	icon_state = "wall"
 
 	plane = PLANE_SHUTTLE

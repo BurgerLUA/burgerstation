@@ -73,6 +73,8 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/prototype
 	name = "10mm Laton-H Prototype"
+	desc = "An extra milimetre to seal the deal."
+	desc_extended = "A prototype of NT's standard pistol, modified to fire 10mm all while retaining a matching appearance and ease of use. Claims to be superior to the Pneumbra model."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_mining.dmi' //Actually 10mm
 
 	bullet_length_min = 25
@@ -93,6 +95,7 @@
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/mod
 	name = "9mm Laton MOD"
+	desc_extended = "NT's standard pistol, chambered in a 9mm cartridge. This one has been fitted with improved parts and a sleek, tactical paintjob, but remains just as easy to use."
 	icon = 'icons/obj/item/weapons/ranged/pistol/9mm_laton_dark.dmi'
 	shoot_delay = 1.25
 	weight = 4
@@ -101,13 +104,6 @@
 
 	rarity = RARITY_RARE
 
-var/global/list/kitchen_gun_slogans = list(
-	"And it sparkles like new!",
-	"GOODBYE DIRT!",
-	"I LOVE YOU, KITCHEN GUN!",
-	"HAHAHAHAHA!",
-	"There! All clean again!"
-)
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen
 	name = "9mm Laton Kitchen Gun"
@@ -120,11 +116,23 @@ var/global/list/kitchen_gun_slogans = list(
 	weight = 7
 	heat_max = 0.03
 	value = 800
+
+	var/static/list/kitchen_gun_slogans = list(
+		"And it sparkles like new!",
+		"GOODBYE DIRT!",
+		"I LOVE YOU, KITCHEN GUN!",
+		"HAHAHAHAHA!",
+		"There! All clean again!"
+	)
+
+
+
 	var/slogan_number = 1
 
 	value_burgerbux = 1
 
 	rarity = RARITY_UNCOMMON
+
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/laton/kitchen/play_shoot_sounds(var/mob/caller,var/list/shoot_sounds_to_use = list(),var/shoot_alert_to_use = ALERT_LEVEL_NONE)
 	. = ..()

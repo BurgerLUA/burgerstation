@@ -1,4 +1,4 @@
-var/global/list/all_vault_doors = list()
+
 
 //5 to 10 random syndicate vaults are placed on the map.
 //The laptop can give you access to it by giving you the coords of the vault as well as the keyphrase.
@@ -27,8 +27,9 @@ var/global/list/all_vault_doors = list()
 	LOADVAR("used")
 
 /obj/item/data_laptop/get_base_value()
-	. = initial(value)
+	. = ..()
 	. *= used ? 0.01 : 1
+	. = CEILING(.,1)
 
 /obj/item/data_laptop/update_icon()
 
@@ -55,19 +56,20 @@ var/global/list/all_vault_doors = list()
 
 	var/obj/structure/interactive/door/vault/syndicate/D
 	while(TRUE)
-		if(!length(all_vault_doors))
+		if(!length(SSobj.all_vault_doors))
 			caller.to_chat(span("notice","\The [src.name] doesn't seem to want to turn on... maybe use it in another shift?"))
 			return TRUE
-		D = pick(all_vault_doors)
-		all_vault_doors -= D
+		D = pick(SSobj.all_vault_doors)
+		SSobj.all_vault_doors -= D
 		if(!D.z || !D.stored_keypad || !D.stored_keypad.code)
 			continue //Bad one.
 		break //Found a good one.
 
 	used = TRUE
-	update_value()
 	update_sprite()
 	flick("open",src)
+
+	value = get_base_value()
 
 	caller.to_chat(span("notice","\The [src.name] flashes the coordinates \"<b>[D.x],[D.y],[D.z]</b>\" and \"<b>[D.stored_keypad.code]</b>\" before flickering to dark..."))
 

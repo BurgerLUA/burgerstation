@@ -1,4 +1,4 @@
-var/global/dmm_suite/dmm_suite
+
 
 #define PREFABS_DIR "maps/prefabs/"
 
@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(dmm_suite)
 	name = ".dmm Suite Subsystem"
 	desc = "Map loading and saving."
 	priority = SS_ORDER_DMM
+
+	var/dmm_suite/dmm_suite
 
 	var/map_name
 	var/map_path
@@ -20,11 +22,6 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/list/linked_prefabs_above = list()
 
 	var/list/maps_to_load = list(
-		list(
-			"size"=500,
-			"turf"=/turf/unsimulated/dynamic_rock_gen,
-			"area"=/area/mission/below
-		),
 		"maps/_core/mission.dmm",
 		"maps/_core/bluespace.dmm",
 		"maps/_core/station.dmm"
@@ -36,7 +33,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	)
 
 	var/list/map_to_final_destruction_turf = list(
-		"maps/_core/mission.dmm" = /turf/simulated/openspace,
+		"maps/_core/mission.dmm" = /turf/simulated/floor/cave_dirt,
 		"maps/_core/bluespace.dmm" = /turf/bluespace,
 		"maps/_core/station.dmm" =  null
 	)
@@ -45,6 +42,7 @@ SUBSYSTEM_DEF(dmm_suite)
 	var/pvp_coef
 
 	var/list/possible_rogue_crewmembers = list()
+
 
 /subsystem/dmm_suite/Initialize()
 
@@ -168,6 +166,7 @@ SUBSYSTEM_DEF(dmm_suite)
 			tag="[M.chosen_file]",
 			angleOffset = SIMPLIFY_DEGREES(desired_angle)
 		)
+		/*
 		if(linked_prefabs_below[M.chosen_file])
 			M.chosen_file_below = linked_prefabs_below[M.chosen_file]
 			var/chosen_map_contents = rustg_file_read(M.chosen_file_below)
@@ -190,6 +189,7 @@ SUBSYSTEM_DEF(dmm_suite)
 				tag="[M.chosen_file_above]",
 				angleOffset = SIMPLIFY_DEGREES(desired_angle)
 			)
+		*/
 		loaded_prefabs++
 
 

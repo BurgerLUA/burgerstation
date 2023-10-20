@@ -4,6 +4,6 @@
 		FATIGUE = 10
 	)
 	attack_damage_penetration = list(
-		PAIN = 75,
-		FATIGUE = 75
+		PAIN = 0,
+		FATIGUE = 0
 	)

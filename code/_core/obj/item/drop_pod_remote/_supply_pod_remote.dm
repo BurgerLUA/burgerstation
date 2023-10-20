@@ -30,8 +30,8 @@
 
 /obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
 
-	if(object.plane >= PLANE_HUD)
-		return ..()
+	if(!is_turf(object) && !isturf(object.loc))
+		return TRUE
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -48,6 +48,8 @@
 		return TRUE
 
 	charges--
+
+	value = get_base_value()
 
 	var/obj/structure/interactive/crate/closet/supply_pod/SP = new supply_pod_type(T)
 	for(var/k in stored_object_types)
@@ -81,8 +83,8 @@
 	value = 500
 
 /obj/item/supply_remote/ammo
-	name = "drop pod remote - ammo restocker"
-	desc_extended = "A special remote designed to drop things into the battlefield. This one drops an ammo restocker."
+	name = "drop pod remote - premium ammo restocker"
+	desc_extended = "A special remote designed to drop things into the battlefield. This one drops a premium ammo restocker."
 	stored_object_types = list(
 		/obj/structure/interactive/restocker/ammo/premium
 	)

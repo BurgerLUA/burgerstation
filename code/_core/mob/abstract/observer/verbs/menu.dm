@@ -101,6 +101,7 @@ var/global/antag_count = 0
 				P.tutorial = TRUE
 				P.update_premiums()
 				P.force_move(T)
+				stop_music_track(P.client)
 				return TRUE
 
 		to_chat(span("danger","You were unable to create a new character! Please inform BurgerBB of this issue with your ckey so they can investigate what happened with the following code: 02. Rejoining may fix this."))
@@ -144,7 +145,7 @@ var/global/antag_count = 0
 		src.to_chat(span("warning","The round is currently ending!"))
 		return FALSE
 
-	var/antag_limit = 2 + length(all_mobs_with_clients)*0.2
+	var/antag_limit = 2 + length(SSliving.all_mobs_with_clients)*0.2
 
 	if(antag_count > antag_limit)
 		src.to_chat(span("warning","There are no available antag types!"))

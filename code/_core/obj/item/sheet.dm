@@ -1,18 +1,7 @@
-var/global/list/valid_bedsheets = list(
-	"grey",
-	"red",
-	"orange",
-	"yellow",
-	"green",
-	"blue",
-	"purple",
-	"brown",
-	"black",
-	"white"
-)
-
 /obj/item/bedsheet
 	name = "bedsheet"
+	desc = "a mirmir."
+	desc_extended = "A comfy linen bedsheet, for covering yourself in bed."
 	icon = 'icons/obj/structure/bed.dmi'
 	icon_state = "sheet"
 	value = 10
@@ -21,6 +10,19 @@ var/global/list/valid_bedsheets = list(
 	layer = LAYER_MOB_ABOVE
 
 	pixel_y = 4
+
+	var/static/list/valid_bedsheets = list(
+		"grey",
+		"red",
+		"orange",
+		"yellow",
+		"green",
+		"blue",
+		"purple",
+		"brown",
+		"black",
+		"white"
+	)
 
 /obj/item/bedsheet/Finalize()
 	. = ..()

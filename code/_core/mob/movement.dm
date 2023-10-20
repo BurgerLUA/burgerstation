@@ -82,19 +82,20 @@
 /mob/proc/update_z_position()
 
 	if(!ckey_last)
-		if(last_z) all_mobs_with_clients_by_z["[last_z]"] -= src
+		if(last_z) SSliving.all_mobs_with_clients_by_z["[last_z]"] -= src
 		return FALSE
 
 	var/turf/T = get_turf(src)
 
-	if((!T || last_z != T.z))
-		if(last_z && all_mobs_with_clients_by_z["[last_z]"])
-			all_mobs_with_clients_by_z["[last_z]"] -= src
+	if(!T || last_z != T.z)
+		if(last_z && SSliving.all_mobs_with_clients_by_z["[last_z]"])
+			SSliving.all_mobs_with_clients_by_z["[last_z]"] -= src
 		if(T && T.z)
 			last_z = T.z
-			if(!all_mobs_with_clients_by_z["[last_z]"])
-				all_mobs_with_clients_by_z["[last_z]"] = list()
-			all_mobs_with_clients_by_z["[last_z]"] += src
+			if(last_z)
+				if(!SSliving.all_mobs_with_clients_by_z["[last_z]"])
+					SSliving.all_mobs_with_clients_by_z["[last_z]"] = list()
+				SSliving.all_mobs_with_clients_by_z["[last_z]"] += src
 		else
 			last_z = 0
 

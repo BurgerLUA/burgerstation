@@ -1,5 +1,3 @@
-var/global/list/all_clients = list() //Assoc list
-
 #define string2params(str) list2params(list(str))
 
 //Credit to Kaiochao for the button tracker and Anymacro framework
@@ -103,14 +101,22 @@ var/global/list/all_clients = list() //Assoc list
 	return TRUE //duh
 
 /client/proc/get_debug_name()
-	var/turf/T
-	if(mob) T = get_turf(mob)
-	return "CLIENT:[src](MOB: [mob ? "[mob.name]<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>" : "NONE"])"
+	if(mob)
+		var/turf/T = get_turf(mob)
+		var/location_info
+		if(T)
+			location_info = "<a href='?spectate=1;x=[T.x];y=[T.y];z=[T.z]'>([T.x],[T.y],[T.z])</a>"
+		else
+			location_info = mob.loc ? mob.loc.type : "NULLSPACE"
+		return "CLIENT:[src](MOB:[mob.name][location_info])"
+	return "CLIENT:[src](NO MOB))"
 
 /client/proc/get_log_name()
 	return "CLIENT:[src](MOB: [mob ? "[mob.name]([mob.x],[mob.y],[mob.z])" : "NONE"])"
 
 /client/Del() //Called when the client disconnects. Basically Destroy()
+
+	total_clients--
 
 	clear_mob(mob)
 
@@ -122,7 +128,7 @@ var/global/list/all_clients = list() //Assoc list
 	QDEL_NULL(settings)
 	QDEL_NULL(controls)
 
-	all_clients -= src.ckey
+	SSclient.all_clients -= src.ckey
 
 	known_inventory?.Cut()
 	known_buttons?.Cut()
@@ -147,9 +153,13 @@ var/global/list/all_clients = list() //Assoc list
 
 	return TRUE
 
+var/global/total_clients = 0
+
 /client/New()
 
-	all_clients[src.ckey] = src
+	total_clients++
+
+	SSclient.all_clients[src.ckey] = src
 
 	CLEAR_VERBS(src)
 
@@ -168,19 +178,19 @@ var/global/list/all_clients = list() //Assoc list
 	if(!connection_data)
 		connection_data = new(ckey)
 
-	var/savedata/client/globals/GD = ckey_to_globaldata[ckey]
+	var/savedata/client/globals/GD = SSclient.ckey_to_globaldata[ckey]
 	if(!GD)
 		new/savedata/client/globals(ckey)
 
-	var/savedata/client/death_box/deathbox_data = ckey_to_death_box_data[ckey]
+	var/savedata/client/death_box/deathbox_data = SSclient.ckey_to_death_box_data[ckey]
 	if(!deathbox_data)
 		new/savedata/client/death_box(ckey)
 
-	var/savedata/client/bank/bankdata = ckey_to_bank_data[ckey]
+	var/savedata/client/bank/bankdata = SSclient.ckey_to_bank_data[ckey]
 	if(!bankdata)
 		new/savedata/client/bank(ckey)
 
-	var/savedata/client/loadout/loadoutdata = ckey_to_loadout_data[ckey]
+	var/savedata/client/loadout/loadoutdata = SSclient.ckey_to_loadout_data[ckey]
 	if(!loadoutdata)
 		new/savedata/client/loadout(ckey)
 
@@ -201,39 +211,35 @@ var/global/list/all_clients = list() //Assoc list
 	if(found_mob)
 		control_mob(found_mob)
 	else
+		if(world_state == STATE_RUNNING)
+			make_observer(locate(1,1,1))
+		else
+			make_observer(null)
 		var/player_limit_config = CONFIG("PLAYER_LIMIT",0)
-		if(player_limit_config > 0 && length(all_clients) > player_limit_config)
+		if(player_limit_config > 0 && length(SSclient.all_clients) > player_limit_config)
 			//Too many cooks!
 			var/rank_value = get_ranks()
 			if(!rank_value && !byond_member)
 				restricted = "The server is currently experiencing a massive influx of players, and is currently restricted to [player_limit_config] players. Come back another time when the population is reduced!"
 				src << "<h1>[restricted]</h1>"
-		if(world_state == STATE_RUNNING)
-			make_observer(locate(1,1,1))
-		else
-			make_observer(null)
-		if(!restricted)
-			welcome()
-			mob.show_hud(FALSE,speed = 0)
-			if(world_state >= STATE_RUNNING)
-				var/list/possible_music = TRACKS_LOBBY
-				var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
-				play_music_track(possible_music[lobby_track], src)
-				mob.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
-				mob.force_move(get_turf(lobby_positions[1]))
-			else
+				return mob
+		mob.show_hud(FALSE,speed = 0)
+		if(world_state >= STATE_RUNNING)
+			var/list/possible_music = TRACKS_LOBBY
+			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
+			play_music_track(possible_music[lobby_track], src)
+			mob.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+			mob.force_move(get_turf(lobby_positions[1]))
 
-
-	if(!restricted)
-		broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
-		update_window()
-		world.update_server_status()
-		if(SSvote && SSvote.initialized)
-			for(var/k in SSvote.active_votes)
-				var/vote/V = k
-				V.show(src)
-		if(SSmenu && SSmenu.initialized)
-			SSmenu.preload_assets(src)
+	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
+	update_window()
+	world.update_server_status()
+	if(SSvote && SSvote.initialized)
+		for(var/k in SSvote.active_votes)
+			var/vote/V = k
+			V.show(src)
+	if(SSmenu && SSmenu.initialized)
+		SSmenu.preload_assets(src)
 
 	if(settings && settings.loaded_data["enable_old_right_click"])
 		selected_hand = null
@@ -244,6 +250,8 @@ var/global/list/all_clients = list() //Assoc list
 		show_popup_menus = FALSE
 
 	winset(src,"map.tooltip","size=50x50")
+
+	welcome()
 
 	return mob
 
@@ -299,6 +307,8 @@ var/global/list/all_clients = list() //Assoc list
 	return TRUE
 */
 
+/*
 /client/proc/get_variables(var/datum/object)
    for(var/v in object.vars)
       to_chat("[v] = [object.vars[v]]")
+*/

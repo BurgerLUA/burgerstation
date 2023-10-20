@@ -6,7 +6,10 @@ SUBSYSTEM_DEF(badwords)
 	priority = SS_ORDER_FIRST
 	var/list/regex/bad_word_regex = list()
 
+	var/regex/space_regex
+
 /subsystem/badwords/Initialize()
+	space_regex = regex(@{"[^A-z]"},"ig")
 	load_badwords()
 	return ..()
 
@@ -17,7 +20,7 @@ SUBSYSTEM_DEF(badwords)
 		if(r_file)
 			for(var/r_text in splittext(r_file,"\n"))
 				try
-					bad_word_regex += regex(r_text,"i")
+					bad_word_regex += regex(r_text,"i") //Does not need global here because we only need to find it once.
 				catch
 					log_error("Failed to parse regex string \"[r_text]\"!")
 			log_subsystem(name,"Found bad words file and created a regex list of [length(bad_word_regex)] bad words.")
@@ -30,7 +33,13 @@ SUBSYSTEM_DEF(badwords)
 
 /subsystem/badwords/proc/has_badword(var/text_to_check)
 
-	if(!text_to_check || !length(bad_word_regex))
+
+	if(!space_regex || !text_to_check || !length(bad_word_regex))
+		return FALSE
+
+	text_to_check = space_regex.Replace(text_to_check,"")
+
+	if(!text_to_check)
 		return FALSE
 
 	. = null

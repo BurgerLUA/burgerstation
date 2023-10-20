@@ -1,3 +1,16 @@
+/armor/brass
+	defense_rating = list(
+		BLADE = 60,
+		PIERCE = 30,
+		LASER = 50,
+		HEAT = -30,
+		SHOCK = -20,
+		ACID = 20
+	)
+
+	deflection = 0.25
+
+
 /armor/brass/belt
 	defense_rating = list(
 		BLADE = 20,
@@ -7,8 +20,6 @@
 		SHOCK = -20,
 		ACID = 20
 	)
-
-	deflection = 0.25
 
 /armor/brass/gloves
 	defense_rating = list(
@@ -20,13 +31,3 @@
 		ACID = 20
 	)
 
-
-/armor/brass/armor
-	defense_rating = list(
-		BLADE = 60,
-		PIERCE = 30,
-		LASER = 50,
-		HEAT = -30,
-		SHOCK = -20,
-		ACID = 20
-	)

@@ -14,7 +14,6 @@
 	automatic = TRUE
 
 	var/wand_damage_multiplier = 1
-	var/wand_mana_multiplier = 1
 
 	dan_mode = TRUE
 
@@ -35,6 +34,12 @@
 
 	size = SIZE_2
 	weight = 8
+
+/obj/item/weapon/ranged/wand/PreDestroy()
+	QDEL_NULL(socketed_spellgem)
+	QDEL_CUT(socketed_supportgems)
+	QDEL_CUT(stored_socket_overlays)
+	. = ..()
 
 /obj/item/weapon/ranged/wand/MouseEntered(location,control,params)
 
@@ -159,11 +164,6 @@
 		sockets = 1 + (diceroll/magic_number)**1.3
 		sockets = FLOOR(sockets,1)
 
-/obj/item/weapon/ranged/wand/PreDestroy()
-	QDEL_NULL(socketed_spellgem)
-	QDEL_CUT(socketed_supportgems)
-	. = ..()
-
 /obj/item/weapon/ranged/wand/get_base_value()
 	. = initial(value)
 	// https://www.desmos.com/calculator/bofczfvcar
@@ -205,6 +205,7 @@
 /obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
+	damage_multiplier *= get_quality_mod()
 	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier,click_called)
 
 /obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
@@ -288,7 +289,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/branch.dmi'
 
 	wand_damage_multiplier = 1
-	wand_mana_multiplier = 0.95
 
 	tier = 0
 
@@ -299,7 +299,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/crafted.dmi'
 
 	wand_damage_multiplier = 1.1
-	wand_mana_multiplier = 0.90
 
 	tier = 1
 
@@ -310,7 +309,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/quartz.dmi'
 
 	wand_damage_multiplier = 1.2
-	wand_mana_multiplier = 0.90
 
 	tier = 1
 
@@ -321,7 +319,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/twisted.dmi'
 
 	wand_damage_multiplier = 1.3
-	wand_mana_multiplier = 0.85
 
 	tier = 2
 
@@ -333,7 +330,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/profane.dmi'
 
 	wand_damage_multiplier = 1.4
-	wand_mana_multiplier = 0.80
 
 	tier = 3
 
@@ -344,7 +340,6 @@
 	icon = 'icons/obj/item/weapons/ranged/magic/wand/sage.dmi'
 
 	wand_damage_multiplier = 1.5
-	wand_mana_multiplier = 0.75
 
 	tier = 3
 

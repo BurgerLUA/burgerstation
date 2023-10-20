@@ -33,6 +33,7 @@
 	. *= 0.5 + (size/SIZE_2)*0.5
 	if(spent)
 		. *= 0.1
+	. = CEILING(.,1)
 
 /obj/item/grenade/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
 
@@ -283,8 +284,7 @@
 
 	if(istype(loc,/obj/projectile/))
 		var/obj/projectile/P = loc
-		var/turf/T = get_turf(src)
-		P.on_projectile_hit(T)
+		P.on_projectile_hit(P.current_loc,P.previous_loc,P.current_loc)
 		qdel(P)
 
 	if(src.loc && is_turf(src.loc) && SSai.tracked_avoidance_by_z["[src.loc.z]"])
@@ -297,6 +297,8 @@
 		B.reagents.process_recipes(caller)
 
 	spent = TRUE
+
+	value = get_base_value()
 
 	if(src.reagents)
 		src.reagents.update_container(caller)

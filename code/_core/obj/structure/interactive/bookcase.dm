@@ -1,17 +1,7 @@
-var/global/list/stored_bookcase_phrases = list(
-	"...So that's what happened to Woody...",
-	"...Those Xenomorphs sure are lusty...",
-	"...It really is all porn...",
-	"...So that's why they use the shotgun...",
-	"...Well, that's one of the symptoms of having a literal dent in your skull...",
-	"...It's just... endless anime...",
-	"...Oh a mime book... it's blank..."
-)
-
 /obj/structure/interactive/bookcase
 	name = "dusty bookcase"
 	desc = "What possible knowledge could be in here?"
-	desc_extended = "An ancient, dusty bookcase. Long abandoned since the days of the gigaplex multimedia home entertainment system."
+	desc_extended = "An ancient, dusty bookcase. Long abandoned since the days of the gigaplex multimedia home entertainment system, but perhaps there's still some knowledge worth salvaging?"
 	icon = 'icons/obj/structure/bookcase.dmi'
 	icon_state = "book"
 
@@ -28,6 +18,16 @@ var/global/list/stored_bookcase_phrases = list(
 	interaction_flags = FLAG_INTERACTION_LIVING
 
 	pixel_y = 6
+
+	var/static/list/stored_bookcase_phrases = list(
+		"...So that's what happened to Woody...",
+		"...Those Xenomorphs sure are lusty...",
+		"...It really is all porn...",
+		"...So that's why they use the shotgun...",
+		"...Well, that's one of the symptoms of having a literal dent in your skull...",
+		"...It's just... endless anime...",
+		"...Oh a mime book... it's blank..."
+	)
 
 /obj/structure/interactive/bookcase/no_scrolls
 	chance_of_scroll = 0
@@ -90,7 +90,7 @@ var/global/list/stored_bookcase_phrases = list(
 				P.put_in_hands(I)
 		caller.to_chat(span("notice","Huh. You found something in \the [src.name]!"))
 	else
-		caller.to_chat(span("warning","You didn't find anything in \the [src.name]...."))
+		caller.to_chat(span("warning","You didn't find anything of use in \the [src.name]...."))
 
 	chance_of_scroll--
 	update_sprite()

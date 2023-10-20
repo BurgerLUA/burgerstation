@@ -13,6 +13,20 @@ SUBSYSTEM_DEF(turf)
 	var/list/icon_cache = list()
 	var/saved_icons = 0
 
+	//https://www.desmos.com/calculator/u1xlukfjrf
+	var/snow_line
+	var/snow_num
+
+	var/list/turf_check_directions = DIRECTIONS_ALL
+
+	var/list/turf/simulated/floor/water_shores = list()
+
+	var/obj/water_ground
+
+	var/list/stored_boss_floor_icons
+
+	var/list/image/turf_damage_icons = new/list(5,4)
+
 /subsystem/turf/unclog(var/mob/caller)
 	wet_turfs.Cut()
 	. = ..()
@@ -20,6 +34,62 @@ SUBSYSTEM_DEF(turf)
 /subsystem/turf/Initialize()
 
 	set background = TRUE
+
+	for(var/i=1,i<=5,i++) for(var/d=1,d<=4,d++)
+		var/icon/I = new('icons/turf/damage.dmi',"[i]")
+		var/turn_direction = (d-1)*90
+		if(turn_direction > 0)
+			I.Turn(turn_direction)
+		turf_damage_icons[i][d] = I
+
+	water_ground = new(null)
+	water_ground.name = "water"
+	water_ground.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_ALPHA | RESET_COLOR
+	water_ground.vis_flags = VIS_INHERIT_ID
+	water_ground.icon = 'icons/turf/floor/icons.dmi'
+	water_ground.icon_state = "dirt"
+	water_ground.plane = PLANE_WATER_FLOOR
+	water_ground.layer = -1000
+	water_ground.mouse_opacity = 1
+
+
+	stored_boss_floor_icons = list()
+	var/icon/boss_icon = 'icons/turf/special/boss.dmi'
+	for(var/i=1,i<=30,i++)
+		CHECK_TICK_HARD
+		var/icon/I = ICON_INVISIBLE
+		if(prob(60))
+			if(prob(80))
+				var/icon/N = new /icon(boss_icon,get_quad_icon_state(),NORTH)
+				I.Blend(N,ICON_OVERLAY)
+			if(prob(80))
+				var/icon/E = new /icon(boss_icon,get_quad_icon_state(),EAST)
+				I.Blend(E,ICON_OVERLAY)
+			if(prob(80))
+				var/icon/W = new /icon(boss_icon,get_quad_icon_state(),WEST)
+				I.Blend(W,ICON_OVERLAY)
+			if(prob(80))
+				var/icon/S = new /icon(boss_icon,get_quad_icon_state(),SOUTH)
+				I.Blend(S,ICON_OVERLAY)
+		else
+			if(prob(60))
+				var/dir_to_use = prob(10) ? DIRECTIONS_INTERCARDINAL : SOUTH
+				dir_to_use = pick(dir_to_use)
+				var/icon/S = new /icon(boss_icon,get_solid_icon_state(),dir_to_use)
+				I.Blend(S,ICON_OVERLAY)
+			else
+				var/dir_to_use = prob(10) ? DIRECTIONS_INTERCARDINAL : DIRECTIONS_CARDINAL
+				dir_to_use = pick(dir_to_use)
+				var/icon/D = new /icon(boss_icon,get_donut_icon_state(),dir_to_use)
+				I.Blend(D,ICON_OVERLAY)
+				if(prob(80))
+					var/icon/T = new /icon(boss_icon,get_timbit_icon_state())
+					I.Blend(T,ICON_OVERLAY)
+		stored_boss_floor_icons += I
+
+
+	snow_line = rand(380,440)
+	snow_num = 0.6+rand()*0.2
 
 	var/list/type_to_time = list()
 
@@ -95,6 +165,7 @@ SUBSYSTEM_DEF(turf)
 				type_to_time[G.type] += benchmark
 			CHECK_TICK_HARD
 
+		/*
 		//ROCKGEN
 		var/rockgen_benchmark = true_time()
 		var/rockgens_checked = 0
@@ -119,6 +190,7 @@ SUBSYSTEM_DEF(turf)
 
 		rockgen_benchmark = true_time() - rockgen_benchmark
 		log_subsystem(src.name,"Checked [rockgens_checked] dynamic rock generation turfs and placed [length(rockgens_to_replace)] rock turfs in [DECISECONDS_TO_SECONDS(rockgen_benchmark)] seconds.")
+		*/
 
 	log_subsystem(src.name,"Initializing turfs...")
 	for(var/turf/simulated/S in world)
@@ -178,3 +250,67 @@ SUBSYSTEM_DEF(turf)
 		CHECK_TICK(tick_usage_max,FPS_SERVER*3)
 
 	return TRUE
+
+
+
+/subsystem/turf/proc/get_donut_icon_state()
+
+	var/returning = ""
+
+	switch(rand(1,6))
+		if(1 to 4)
+			returning = "pristine"
+		if(5)
+			returning = "burnt"
+		if(6)
+			returning = "cracked"
+
+	return "[returning]_surrounding[rand(1,4)]"
+
+
+/subsystem/turf/proc/get_timbit_icon_state()
+
+	var/returning = ""
+
+	switch(rand(1,6))
+		if(1 to 4)
+			returning = "pristine"
+		if(5)
+			returning = "burnt"
+		if(6)
+			returning = "cracked"
+
+	return "[returning]_center[rand(1,4)]"
+
+/subsystem/turf/proc/get_solid_icon_state()
+
+	var/returning = ""
+
+	switch(rand(1,6))
+		if(1 to 4)
+			returning = "pristine"
+		if(5)
+			returning = "burnt"
+		if(6)
+			returning = "cracked"
+
+	return "[returning]_slab[rand(1,4)]"
+
+/subsystem/turf/proc/get_quad_icon_state()
+
+	var/returning = ""
+
+	switch(rand(1,6))
+		if(1 to 4)
+			returning = "pristine"
+		if(5)
+			returning = "burnt"
+		if(6)
+			returning = "cracked"
+
+	if(prob(25))
+		returning = "[returning]_surrounding_tile[rand(1,2)]"
+	else
+		returning = "[returning]_tile[rand(1,24)]"
+
+	return returning

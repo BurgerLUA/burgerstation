@@ -3,22 +3,32 @@ SUBSYSTEM_DEF(dirty)
 	desc = "Filthy."
 	priority = SS_ORDER_LAST
 
-var/global/list/possible_dirty_floor = list(
-	/obj/effect/cleanable/tile_rot = 100,
-	/obj/effect/cleanable/blood/dried_random = 20,
-	/obj/effect/cleanable/blood/splatter/grease = 10,
-	/obj/effect/cleanable/scorch = 5,
-	/obj/effect/cleanable/cobweb = 10,
-	/mob/living/simple/passive/mouse/grey = 1
-)
+	var/list/possible_dirty_floor = list(
+		/obj/effect/cleanable/tile_rot = 100,
+		/obj/effect/cleanable/blood/dried_random = 20,
+		/obj/effect/cleanable/blood/splatter/grease = 10,
+		/obj/effect/cleanable/scorch = 5,
+		/obj/effect/cleanable/cobweb = 10,
+		/mob/living/simple/passive/mouse/grey = 1
+	)
 
-var/global/list/possible_dirty_wall = list(
-	/obj/effect/cleanable/rust = 100
-)
+	var/list/possible_dirty_wall = list(
+		/obj/effect/cleanable/rust = 100
+	)
 
-var/global/list/possible_trash = list(
-	/obj/item/trash/random = 100
-)
+	var/list/possible_trash = list(
+		/obj/item/trash/random = 100
+	)
+
+	var/list/possible_trash_enemies = list(
+		/mob/living/simple/passive/mouse/grey = 200,
+		/mob/living/simple/bat/space = 50,
+		/mob/living/advanced/npc/rogue_assistant = 25,
+		/mob/living/simple/gutlunch = 25,
+		/mob/living/simple/xeno/hunter = 5,
+		/mob/living/simple/glockroach = 1,
+	)
+
 
 /subsystem/dirty/Initialize()
 

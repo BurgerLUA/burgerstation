@@ -17,6 +17,10 @@
 		/obj/item/magazine/pistol_40,
 		/obj/item/magazine/pistol_40
 	)
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 100
+	quality_mod_min = 0.75
 
 
 /loadout/space_soldier
@@ -33,6 +37,10 @@
 		/obj/item/clothing/belt/storage/colored/black,
 		/obj/item/clothing/back/storage/satchel/poly/grey{loot_to_generate=/loot/space_cop/bag},
 	)
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 100
+	quality_mod_min = 0.75
 
 /loadout/space_soldier/assault_rifle
 	spawning_items = list(

@@ -36,6 +36,19 @@
 	world_log("<span class='error'>[log_text]</span>")
 	SSlogging.buffered_log_error += log_text
 
+var/global/list/all_error_ids = list()
+
+/proc/log_error_once(var/log_id,var/log_text)
+	if(SSconfig?.initialized && !CONFIG("ENABLE_LOGGING",TRUE))
+		return FALSE
+	if(!log_text)
+		log_text = log_id
+	if(all_error_ids[log_id])
+		return FALSE
+	all_error_ids[log_id] = TRUE
+	world_log("<span class='error'>[log_text]</span>")
+	SSlogging.buffered_log_error += log_text
+
 /proc/log_debug(var/log_text)
 	if(SSconfig?.initialized && !CONFIG("ENABLE_LOGGING",TRUE))
 		return FALSE

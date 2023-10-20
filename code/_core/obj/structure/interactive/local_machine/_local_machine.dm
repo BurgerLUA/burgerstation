@@ -1,4 +1,4 @@
-var/global/list/local_machines = list()
+
 
 /obj/structure/interactive/localmachine
 	name = "local machine"
@@ -20,11 +20,12 @@ var/global/list/local_machines = list()
 
 /obj/structure/interactive/localmachine/Destroy()
 	. = ..()
+	SSclient.local_machines -= src
 	disallowed_mobs?.Cut()
 
 /obj/structure/interactive/localmachine/New()
 	. = ..()
-	local_machines += src
+	SSclient.local_machines += src
 	update_sprite()
 
 /obj/structure/interactive/localmachine/proc/update_for_mob(var/mob/M)

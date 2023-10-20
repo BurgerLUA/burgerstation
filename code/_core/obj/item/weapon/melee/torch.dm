@@ -25,6 +25,7 @@
 /obj/item/weapon/melee/torch/get_base_value()
 	. = ..()
 	. += (desired_light_range*desired_light_power*desired_light_angle*0.1)
+	. = CEILING(.,1)
 
 /obj/item/weapon/melee/torch/click_self(var/mob/caller,location,control,params)
 
@@ -102,6 +103,10 @@
 	value = 20
 
 	size = SIZE_2
+
+/obj/item/weapon/melee/torch/flashlight/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","Flashlights shine light only in the direction you are facing.<br>You can adjust where your character is looking by holding V, or automatically by having harm intent selected.")
 
 /obj/item/weapon/melee/torch/flashlight/maglight
 	name = "maglight"

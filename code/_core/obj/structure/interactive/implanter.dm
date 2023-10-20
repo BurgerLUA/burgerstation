@@ -41,7 +41,7 @@
 			if(O.type == stored_implant)
 				caller.to_chat(span("warning","You already have an implant of that type!"))
 				return TRUE
-			O.unattach_from_parent(A.loc,do_delete=TRUE)
+			A.remove_organ(O,get_turf(A),TRUE)
 		else
 			caller.to_chat(span("warning","You already have an implant of that type!"))
 			return TRUE

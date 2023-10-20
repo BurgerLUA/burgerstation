@@ -54,7 +54,7 @@
 	name = "clockwork helmet"
 	icon = 'icons/obj/item/clothing/hats/clockwork.dmi'
 
-	armor = /armor/brass/armor
+	armor = /armor/brass
 
 	value = 500
 
@@ -63,7 +63,9 @@
 	rarity = RARITY_UNCOMMON
 
 /obj/item/clothing/head/helmet/full/knight/runic
-	name = "runic helmet"
+	name = "runic full helmet"
+	desc = "Watch out!!! Someone is rushing you."
+	desc_extended = "A full face helmet made out of runite."
 	icon = 'icons/obj/item/clothing/hats/runic.dmi'
 
 	armor = /armor/steel/runic

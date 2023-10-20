@@ -128,8 +128,6 @@
 
 	draw_blood = FALSE
 
-	allow_friendly_fire = TRUE
-
 /damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
@@ -150,7 +148,7 @@
 
 	//The base attack damage of the weapon. It's a flat value, unaffected by any skills or attributes.
 	attack_damage_base = list(
-		FATIGUE = 0
+		FATIGUE = 20
 	)
 
 	//How much armor to penetrate. It basically removes the percentage of the armor using these values.

@@ -1,7 +1,11 @@
 /loot/bandit
 	var/chance_blood = 0
-	var/chance_quality = 0
 	var/apply_poly = FALSE
+
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 75
+	quality_mod_min = 0.75
 
 /loot/bandit/pre_spawn(var/atom/movable/M)
 
@@ -20,8 +24,6 @@
 							C.polymorphs[k] = rgb(PSUEDO_RAND(pseudo_rand_num + T.x*pseudo_rand_num,75,150),PSUEDO_RAND(pseudo_rand_num + T.y*pseudo_rand_num,75,150),PSUEDO_RAND(pseudo_rand_num + (T.x + T.y)*pseudo_rand_num,75,150))
 						if(3) //Coat
 							C.polymorphs[k] = rgb(PSUEDO_RAND(pseudo_rand_num + T.x*pseudo_rand_num,50,75),PSUEDO_RAND(pseudo_rand_num + T.y*pseudo_rand_num,50,75),PSUEDO_RAND(pseudo_rand_num + (T.x + T.y)*pseudo_rand_num,50,75))
-		if(prob(chance_quality))
-			C.adjust_quality(rand(0,-50))
 		if(prob(chance_blood))
 			C.set_bloodstain(rand(2,5),"#880000")
 
@@ -45,7 +47,6 @@
 	chance_none = 20
 	apply_poly = TRUE
 	chance_blood = 50
-	chance_quality = 50
 
 /loot/bandit/armor
 	loot_table = list(
@@ -58,7 +59,6 @@
 	chance_none = 0
 	apply_poly = FALSE
 	chance_blood = 50
-	chance_quality = 50
 
 /loot/bandit/coat
 	loot_table = list(
@@ -80,7 +80,6 @@
 	chance_none = 20
 	apply_poly = FALSE
 	chance_blood = 50
-	chance_quality = 50
 
 /loot/bandit/pants/male
 	loot_table_guaranteed = list(
@@ -94,7 +93,6 @@
 	chance_none = 0
 	apply_poly = TRUE
 	chance_blood = 50
-	chance_quality = 50
 
 /loot/bandit/pants/female
 	loot_table_guaranteed = list(
@@ -109,7 +107,6 @@
 	chance_none = 0
 	apply_poly = TRUE
 	chance_blood = 50
-	chance_quality = 50
 
 /loot/bandit/shirt/male
 	loot_table_guaranteed = list(
@@ -124,7 +121,6 @@
 	chance_none = 20
 	apply_poly = TRUE
 	chance_blood = 50
-	chance_quality = 50
 
 /loot/bandit/shirt/female
 	loot_table_guaranteed = list(
@@ -142,7 +138,6 @@
 	chance_none = 0
 	apply_poly = FALSE
 	chance_blood = 50
-	chance_quality = 50
 
 
 /loot/bandit/socks/male
@@ -154,7 +149,6 @@
 	chance_none = 5
 	apply_poly = FALSE
 	chance_blood = 0
-	chance_quality = 50
 
 /loot/bandit/socks/female
 	loot_table = list(
@@ -166,7 +160,6 @@
 	chance_none = 5
 	apply_poly = TRUE
 	chance_blood = 0
-	chance_quality = 50
 
 /loot/bandit/shoes
 	loot_table = list(
@@ -177,7 +170,6 @@
 	chance_none = 0
 	apply_poly = FALSE
 	chance_blood = 100
-	chance_quality = 50
 
 /loot/bandit/back_storage
 	loot_table = list(
@@ -189,13 +181,12 @@
 	chance_none = 0
 	apply_poly = TRUE
 	chance_blood = 0
-	chance_quality = 0
 
 /loot/bandit/back_storage/pre_spawn(var/atom/movable/M)
 	. = ..()
 	if(is_item(M))
 		var/obj/item/I = M
-		I.loot_to_generate = /loot/reward/bandit
+		I.loot_to_generate = /loot/bandit/reward
 
 /loot/bandit/belt_storage
 	loot_table = list(
@@ -207,7 +198,6 @@
 	chance_none = 0
 	apply_poly = FALSE
 	chance_blood = 0
-	chance_quality = 0
 
 
 /loot/bandit/melee
@@ -220,7 +210,6 @@
 	chance_none = 0
 	apply_poly = FALSE
 	chance_blood = 100
-	chance_quality = 0
 
 
 /loot/bandit/melee/small
@@ -230,3 +219,17 @@
 		/obj/item/weapon/melee/sword/chef_knife = 75,
 		/obj/item/weapon/melee/null_rod/dagger = 25,
 	)
+
+/loot/bandit/reward
+	loot_table_guaranteed = list(
+		/loot/currency/dosh/survivor,
+		/loot/random/low,
+		/loot/random/medium,
+		/loot/reward/standard
+	)
+	loot_table = list(
+		/loot/random/trash,
+		/loot/random/medium,
+	)
+	chance_none = 80
+	loot_count = 8

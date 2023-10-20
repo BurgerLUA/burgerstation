@@ -38,7 +38,7 @@
 		var/turf/T = get_turf(src)
 		if(T)
 			play_sound('sound/effects/frog_explode.ogg',T)
-			var/damagetype/DT = all_damage_types[/damagetype/voice_of_god/harm]
+			var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/voice_of_god/harm]
 			for(var/d in DIRECTIONS_ALL_CENTER)
 				var/turf/T2 = get_step(T,d)
 				for(var/k in T2.contents)

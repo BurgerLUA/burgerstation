@@ -61,7 +61,6 @@
 		qdel(src)
 		return FALSE
 
-	update_value()
 	update_sprite()
 
 /obj/item/contract/get_base_value()

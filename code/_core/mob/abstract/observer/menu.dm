@@ -48,3 +48,7 @@
 /mob/abstract/observer/menu/PostInitialize()
 	. = ..()
 	START_THINKING(src)
+
+/mob/abstract/observer/menu/PreDestroy()
+	. = ..()
+	STOP_THINKING(src)

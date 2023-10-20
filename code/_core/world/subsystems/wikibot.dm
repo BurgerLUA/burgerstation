@@ -1,13 +1,13 @@
 #define WIKIBOT "text/wikibot.txt"
 
-var/global/list/wikibot_list = list()
-
 SUBSYSTEM_DEF(wikibot)
 	name = "Wikibot Subsystem"
 	desc = "A 'bot' that answers questions."
 	priority = SS_ORDER_CONFIG
 
 	tick_usage_max = 50
+
+	var/list/wikibot_list = list()
 
 /subsystem/wikibot/Initialize()
 

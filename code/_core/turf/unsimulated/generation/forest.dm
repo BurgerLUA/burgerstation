@@ -8,14 +8,9 @@
 	icon_state = "forest_path"
 	density = FALSE
 
-
-//https://www.desmos.com/calculator/u1xlukfjrf
-var/global/snow_line = rand(380,440)
-var/global/snow_num = 0.6+rand()*0.2
-
 /turf/unsimulated/generation/forest/generate(var/size = WORLD_SIZE)
 
-	var/is_snow = y >= snow_line - (x*0.05)**(snow_num*2) + sin(x)*10
+	var/is_snow = y >= SSturf.snow_line - (x*0.05)**(SSturf.snow_num*2) + sin(x)*10
 
 	if(is_snow)
 

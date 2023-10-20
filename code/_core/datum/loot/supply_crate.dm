@@ -1,4 +1,9 @@
 /loot/supply_crate
+	use_random_quality_amounts = TRUE
+	quality_min = 60
+	quality_max = 100
+	quality_mod_min = 1
+
 
 /loot/supply_crate/medicine
 	loot_table_guaranteed = list(

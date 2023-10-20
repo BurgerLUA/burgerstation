@@ -1,5 +1,6 @@
 /obj/item/storage/pillbottle/consumer
 	icon = 'icons/obj/item/storage/consumer_pillbottle.dmi'
+	desc_extended = "An unlabelled consumer pill bottle that can hold up to 30 pills."
 	fill_icon_count = 0
 	color_lid = COLOR_WHITE
 	color_label = COLOR_WHITE
@@ -7,7 +8,8 @@
 
 /obj/item/storage/pillbottle/consumer/chlorine
 	name = "chlorine tablet bottle"
-	desc_extended = "Contains 20 5u chlorine tablets, not for human consumption."
+	desc = "A favorite of pool owners, war criminals and unsupervised children alike."
+	desc_extended = "Labelled to contain 20 5u chlorine tablets, for use in chemistry. Not fit for human consumption."
 	color_lid = COLOR_WHITE
 	color_label = COLOR_CYAN
 	color_canister = COLOR_WHITE
@@ -20,7 +22,8 @@
 
 /obj/item/storage/pillbottle/consumer/carbon
 	name = "carbon tablet bottle"
-	desc_extended = "Contains 20 5u carbon tablets, not for human consumption."
+	desc = "Forget water, this is actually the stuff of life."
+	desc_extended = "Labelled to contain 20 5u carbon tablets, for use in chemistry. Not fit for human consumption."
 	color_lid = COLOR_GREY
 	color_label = COLOR_GREY_LIGHT
 	color_canister = COLOR_GREY_DARK
@@ -33,7 +36,8 @@
 
 /obj/item/storage/pillbottle/consumer/painkillers
 	name = "assprin pill bottle"
-	desc = "Contains 20 10u assprin painkiller pills. To remove that pain in your ass!"
+	desc = "To remove that pain in your ass!"
+	desc_extended = "Labelled to contain 20 10u assprin pills, a basic painkiller and for treating feelings of tenderness. Can hold up to 30 pills."
 	color_lid = COLOR_RED
 	color_label = COLOR_YELLOW
 	color_canister = COLOR_BLUE
@@ -46,7 +50,8 @@
 
 /obj/item/storage/pillbottle/consumer/charcoal
 	name = "charcoal tablet bottle"
-	desc_extended = "Contains 20 5u charcoal tablets."
+	desc = "Bad and naughty Chemists get their meth flushed out of their system!"
+	desc_extended = "Labelled to contain contain 20 5u charcoal tablets, a basic reagent to flush the bloodstream. Can hold up to 30 tablets."
 	color_lid = COLOR_YELLOW
 	color_label = COLOR_GREY_LIGHT
 	color_canister = COLOR_BLACK

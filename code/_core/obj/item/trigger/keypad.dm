@@ -1,10 +1,3 @@
-var/global/list/obj/hud/button/keypad_buttons = list(
-	/obj/hud/button/keypad/bottom,
-	/obj/hud/button/keypad/top,
-	/obj/hud/button/keypad/close
-)
-
-
 /obj/item/device/keypad
 	name = "keypad"
 	desc = "One, One, One...uh....One!"
@@ -15,6 +8,12 @@ var/global/list/obj/hud/button/keypad_buttons = list(
 	var/code = 1337
 
 	value = 10
+
+	var/static/list/obj/hud/button/keypad_buttons = list(
+		/obj/hud/button/keypad/bottom,
+		/obj/hud/button/keypad/top,
+		/obj/hud/button/keypad/close
+	)
 
 /obj/item/device/keypad/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

@@ -36,7 +36,7 @@
 
 /obj/item/tempering/quality/general
 	name = "advanced repair kit"
-	desc = "Stay sharp!"
+	desc = "Your gear is your life. Take care of it!"
 	desc_extended = "A collection of scrap, tools, and generally useful materials that can help you maintain the condition any sort of item."
 	icon_state = "repair_kit"
 
@@ -56,7 +56,7 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 125
+	maximum = 175
 
 	temper_whitelist = list(/obj/item/weapon/melee,/obj/item/weapon/unarmed,/obj/item/weapon/ranged/thrown)
 
@@ -70,7 +70,7 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 125
+	maximum = 175
 
 	temper_whitelist = /obj/item/clothing
 	value = 750
@@ -83,7 +83,7 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 125
+	maximum = 175
 
 	temper_whitelist = list(/obj/item/weapon/ranged/bullet,/obj/item/weapon/ranged/energy, /obj/item/weapon/ranged/reagent_ammo/,/obj/item/weapon/ranged/bow)
 	value = 1000
@@ -94,9 +94,9 @@
 	desc_extended = "A rare, exotic, and expensive focusing crystal made out of diamonds and alien alloy that improves the quality of ranged energy-based weapons."
 	icon_state = "focusing_crystal"
 
-	increase = 25
+	increase = 10
 	minimum = 100
-	maximum = 200
+	maximum = 175
 
 	temper_whitelist = /obj/item/weapon/ranged/energy
 	value = 3000
@@ -109,7 +109,7 @@
 
 	increase = 5
 	minimum = 100
-	maximum = 125
+	maximum = 175
 
 	temper_whitelist = list(/obj/item/weapon/ranged/spellgem,/obj/item/weapon/ranged/wand,/obj/item/supportgem)
 	value = 1250

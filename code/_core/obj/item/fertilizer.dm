@@ -13,7 +13,8 @@
 	rarity = RARITY_UNCOMMON
 
 /obj/item/fertilizer/get_base_value()
-	return 20 + initial(value) * uses_left
+	. = ..()
+	return 20 + . * uses_left
 
 /obj/item/fertilizer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE
@@ -62,6 +63,8 @@
 	T.destruction_turf = old_type
 
 	uses_left--
+
+	value = get_base_value()
 
 	update_sprite()
 

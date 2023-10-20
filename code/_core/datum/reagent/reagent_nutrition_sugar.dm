@@ -4,8 +4,9 @@
 	color = "#F4FFF8"
 	alpha = 225
 
-	nutrition_amount = 16
-	nutrition_quality_amount = -8
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 0
 
 	flavor = "sweetness"
 
@@ -20,8 +21,10 @@
 /reagent/nutrition/sugar/glucose
 	name = "glucose"
 	desc = "sugar broken down into its purest form: glucose"
-	nutrition_amount = 20
-	nutrition_quality_amount = -10
+
+	nutrition_fast_amount = 15
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 0
 
 	coma_rating = 10
 
@@ -36,8 +39,10 @@
 	desc = "Unprocessed sugarcane sugar."
 	color = "#CEA171"
 
-	nutrition_amount = 16
+	nutrition_fast_amount = 5
+	nutrition_normal_amount = 10
 	nutrition_quality_amount = 0
+
 	coma_rating = 4
 
 	flavor = "sweetness"
@@ -49,8 +54,10 @@
 	desc = "White and fluffy icing sugar."
 	color = "#F4FFF8"
 
-	nutrition_amount = 14
-	nutrition_quality_amount = -3
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 0
+
 	coma_rating = 3
 
 	flavor = "icing sugar"
@@ -62,9 +69,9 @@
 	desc = "White icing."
 	color = "#FFFFFF"
 
-	nutrition_amount = 16
-	nutrition_quality_amount = -4
-
+	nutrition_fast_amount = 10
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 0
 	flavor = "icing"
 
 	particle_size = 0.3
@@ -76,8 +83,9 @@
 	color = "#AD6904"
 	alpha = 200
 
-	nutrition_amount = 12
-	nutrition_quality_amount = -3
+	nutrition_fast_amount = 5
+	nutrition_normal_amount = 2
+	nutrition_quality_amount = 3
 
 	flavor = "caramel"
 

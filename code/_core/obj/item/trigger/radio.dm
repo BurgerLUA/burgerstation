@@ -1,7 +1,7 @@
 /obj/item/device/radio/
 	name = "radio"
 	desc = "Long distance communication. What could possibly go wrong?"
-	desc_extended = "A handheld radio."
+	desc_extended = "The salvaged electronic innards of a radio, somehow removed from its casing but still perfectly functional."
 	icon = 'icons/obj/item/radio_transmitter.dmi'
 	icon_state = "inventory"
 
@@ -24,6 +24,10 @@
 	listener = TRUE //This should always be true.
 
 	value = 20
+
+/obj/item/device/radio/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","ALT+Click to start broadcasting nearby speech.<br>Use the mouse wheel to change frequencies.<br>Use in hands to toggle the signal reciever.")
 
 /obj/item/device/radio/Generate()
 	. = ..()

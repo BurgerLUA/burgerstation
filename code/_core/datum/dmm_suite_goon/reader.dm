@@ -225,7 +225,7 @@ dmm_suite
 					if(is_simulated(location))
 						var/turf/simulated/S = location
 						if(S.density)
-							if(S.destruction_turf && S.destruction_turf != /turf/simulated/openspace)
+							if(S.destruction_turf)
 								instance = new S.destruction_turf(location)
 							else
 								instance = new /turf/simulated/floor/cave_dirt(location)

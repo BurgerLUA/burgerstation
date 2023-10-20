@@ -20,6 +20,8 @@
 		SKILL_MAGIC = COLD
 	)
 
+	force_attacker_armor_calculations_with = ARCANE
+
 
 /damagetype/ranged/magic/fire
 	attack_damage_base = list(
@@ -42,3 +44,5 @@
 	skill_damage = list(
 		SKILL_MAGIC = HEAT
 	)
+
+	force_attacker_armor_calculations_with = ARCANE

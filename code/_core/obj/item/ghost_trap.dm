@@ -44,6 +44,7 @@
 			var/ai/ghost/GAI = G.ai
 			if(GAI.objective_attack)
 				stored_ghost = TRUE
+				value = get_base_value()
 				update_sprite()
 				qdel(G)
 

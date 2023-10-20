@@ -4,7 +4,9 @@
 	color = "#AD9300"
 	alpha = 255
 
-	nutrition_amount = 7
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 4
+	nutrition_quality_amount = 1
 
 	flavor = "gross oats"
 
@@ -23,7 +25,9 @@
 	desc = "Processed wheat grains for use in baking. Process this some more to get white flour."
 	color = "#A5771C"
 
-	nutrition_amount = 8
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 2
+	nutrition_quality_amount = 3
 
 	flavor = "gross dry oat flour"
 
@@ -33,7 +37,7 @@
 
 	flavor_strength = 3
 
-	flags_flavor = FLAG_FLAVOR_GRAIN
+	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_GRAIN
 
 	particle_size = 0.6
 
@@ -42,7 +46,9 @@
 	desc = "Finely processed white flour for use in baking."
 	color = "#FFF8ED"
 
-	nutrition_amount = 9
+	nutrition_fast_amount = 4
+	nutrition_normal_amount = 1
+	nutrition_quality_amount = 0
 
 	flavor = "gross dry flour"
 
@@ -50,17 +56,20 @@
 
 	flavor_strength = 2
 
-	flags_flavor = FLAG_FLAVOR_GRAIN
+	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_GRAIN
 
 	particle_size = 0.3
 
 /reagent/nutrition/corn
-	name = "corn"
+	name = "raw corn"
 	desc = "De-cobbed corn. Process this to get corn flour."
 	color = "#FCFC00"
 	alpha = 255
 
-	nutrition_amount = 4
+	nutrition_fast_amount = 2
+	nutrition_normal_amount = 3
+	nutrition_quality_amount = 2
+
 
 	flavor = "tough maize"
 
@@ -70,7 +79,7 @@
 
 	flavor_strength = 4
 
-	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_GRAIN
+	flags_flavor = FLAG_FLAVOR_GRAIN
 
 	particle_size = 0.9
 
@@ -80,7 +89,9 @@
 	desc = "Also called corn starch. One of the by-products of processing corn."
 	color = "#E0AC33"
 
-	nutrition_amount = 5
+	nutrition_fast_amount = 5
+	nutrition_normal_amount = 1
+	nutrition_quality_amount = 0
 
 	flavor = "corn starch"
 
@@ -88,6 +99,6 @@
 
 	flavor_strength = 4
 
-	flags_flavor = FLAG_FLAVOR_GRAIN
+	flags_flavor = FLAG_FLAVOR_GROSS | FLAG_FLAVOR_GRAIN
 
 	particle_size = 0.25

@@ -10,8 +10,6 @@
 
 	boss_loot = /loot/lavaland/herald
 
-	boss_music = /track/herald
-
 	health_base = 4500
 	stamina_base = 2000
 	mana_base = 100

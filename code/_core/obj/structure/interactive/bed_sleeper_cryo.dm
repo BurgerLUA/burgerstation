@@ -1,6 +1,3 @@
-var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = list()
-
-
 /obj/structure/interactive/bed/sleeper/cryo
 	name = "hypersleep chamber"
 	base_color = "#AAAAAA"
@@ -11,8 +8,13 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 	var/spawnpoint = TRUE
 
 /obj/structure/interactive/bed/sleeper/cryo/New(var/desired_loc)
-	if(spawnpoint) cryo_spawnpoints += src
+	if(spawnpoint) SSobj.cryo_spawnpoints += src
 	return ..()
+
+/obj/structure/interactive/bed/sleeper/cryo/PreDestroy()
+	. = ..()
+	if(spawnpoint)
+		SSobj.cryo_spawnpoints -= src
 
 /obj/structure/interactive/bed/sleeper/can_buckle(var/mob/living/advanced/A,var/mob/caller)
 
@@ -26,16 +28,20 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 	. = ..()
 
 	if(.)
-		cryo_spawnpoints -= src //Occupied!
+		SSobj.cryo_spawnpoints -= src //Occupied!
 
 
 /obj/structure/interactive/bed/sleeper/cryo/think()
 	. = ..()
-	if(is_player(buckled) && !buckled.client && !buckled.dead)
+	if(is_player(buckled) && !buckled.client && !buckled.dead && !buckled.qdeleting)
 		var/mob/living/advanced/player/P = buckled
 		var/area/A = get_area(P)
 		if(P.can_save(A))
-			P.try_logout()
+			if(world_state >= STATE_ROUND_END)
+				return FALSE
+			if(world_state != STATE_RUNNING)
+				return FALSE
+			P.force_logout()
 	if(buckled)
 		return TRUE
 
@@ -45,7 +51,7 @@ var/global/list/obj/structure/interactive/bed/sleeper/cryo/cryo_spawnpoints = li
 
 	if(.)
 		if(!buckled)
-			cryo_spawnpoints |= src //Unoccupied!
+			SSobj.cryo_spawnpoints |= src //Unoccupied!
 
 
 /obj/structure/interactive/bed/sleeper/cryo/no_spawn

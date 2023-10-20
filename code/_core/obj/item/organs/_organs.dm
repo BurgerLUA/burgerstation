@@ -79,20 +79,21 @@
 
 	var/armor/armor = /armor/default_organic
 
+	can_hold = FALSE
+	can_wear = FALSE
+
 /obj/item/organ/New(var/desired_loc)
 	. = ..()
 	attached_organs = list()
 
 /obj/item/organ/PreDestroy()
 	color = "#C284FF" //Absurd color. This makes it easier to identify issues.
-	attached_organ = null
-	attached_organs?.Cut()
 	. = ..()
 
 /obj/item/organ/proc/check_hit_chance(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
 
 	if(projectile_dodge_chance > 0 && !accurate && !find_closest && get_dist(src,attacker) > 1)
-		var/damagetype/DT = all_damage_types[damage_type]
+		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 		if(DT && DT.get_attack_type() == ATTACK_TYPE_RANGED)
 			return !prob(projectile_dodge_chance)
 
@@ -189,15 +190,13 @@
 			else if(can_be_broken && SAFENUM(damage_table[BLUNT]) >= health.health_max*0.15 && health.health_max - health.damage[BRUTE] <= SAFENUM(damage_table[BLUNT]))
 				break_bone()
 			if(A.blood_type)
-				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*(2 - health.health_current/health.health_max)
-				if(!health || !health.organic)
-					total_bleed_damage *= 0.5
+				var/total_bleed_damage = SAFENUM(damage_table[BLADE])*2.5 + SAFENUM(damage_table[BLUNT])*0.75 + SAFENUM(damage_table[PIERCE])*(2 - health.health_current/health.health_max)*(health.health_max/A.health.health_max)
 				if(total_bleed_damage > 0)
 					var/bleed_to_add = total_bleed_damage/25
-					src.bleeding += bleed_to_add
+					src.bleeding = min(src.bleeding + bleed_to_add,src.health_base/5)
 			if(!A.dead && has_pain && atom_damaged == src && (broken || src.health.health_current <= 0 || critical_hit_multiplier > 1))
 				src.send_pain_response(damage_amount)
-			if(!A.boss && health.health_current <= damage_amount && (!A.ckey_last || A.health.health_current <= 0))
+			if(!A.boss && health.health_current <= damage_amount && !is_player(A))
 				var/gib_chance = 0
 				if(length(attached_organs) == 1 && A.has_status_effect(ZOMBIE))
 					gib_chance = 100
@@ -251,6 +250,11 @@
 		return FALSE
 
 	var/turf/T = get_turf(src)
+
+	for(var/k in attached_organs)
+		var/obj/item/organ/O = k
+		O.gib(gib_direction,hard)
+
 	if(is_advanced(src.loc))
 		var/mob/living/advanced/A = src.loc
 		if(!A.has_status_effect(ZOMBIE))
@@ -285,12 +289,12 @@
 					BG.icon_state = gib_icon_state
 					BG.flesh_color = IB.color
 					BG.update_sprite()
+		A.remove_organ(src,T,hard)
 
-	for(var/k in attached_organs)
-		var/obj/item/organ/O = k
-		O.gib(gib_direction,hard)
 
-	unattach_from_parent(T,hard)
+
+
+
 
 	return TRUE
 
@@ -371,45 +375,6 @@
 	update_sprite()
 */
 
-/obj/item/organ/proc/unattach_from_parent(var/turf/T,var/do_delete=FALSE)
-
-	unattach_children(T,do_delete)
-
-	if(T)
-		for(var/k in inventories)
-			var/obj/hud/inventory/I = k
-			var/list/dropped_objects = I.drop_objects(T)
-			for(var/j in dropped_objects)
-				var/obj/item/O = j
-				if(I.ultra_persistant)
-					qdel(O)
-				else
-					animate(O,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
-
-	if(attached_organ)
-		attached_organ.attached_organs -= src
-		attached_organ = null
-
-
-	if(is_advanced(src.loc))
-		var/mob/living/advanced/A = src.loc
-		A.remove_organ(src,T,do_delete)
-	else if(do_delete || !T)
-		qdel(src)
-		return TRUE
-	else
-		src.drop_item(T)
-
-	update_sprite()
-
-	return TRUE
-
-/obj/item/organ/proc/unattach_children(var/turf/T,var/do_delete=FALSE)
-	for(var/k in attached_organs)
-		var/obj/item/organ/O = k
-		O.unattach_from_parent(T,do_delete)
-	return TRUE
-
 /obj/item/organ/proc/on_life()
 
 	if(reagents)
@@ -419,17 +384,19 @@
 		var/mob/living/advanced/A = src.loc
 		if(A.blood_type && A.health && A.blood_volume && prob(25))
 			var/bleed_amount = bleeding*TICKS_TO_SECONDS(LIFE_TICK_SLOW)
+			bleed_amount *= 0.25 + (A.blood_volume/A.blood_volume_max)*0.75
 			var/reagent/R = REAGENT(A.blood_type)
 			var/turf/T = get_turf(A)
 			if(T) create_blood(/obj/effect/cleanable/blood/drip,T,R.color,A.pixel_x + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1),A.pixel_y + rand(-TILE_SIZE*0.1,TILE_SIZE*0.1))
-			A.blood_volume = clamp(A.blood_volume - bleed_amount,0,A.blood_volume_max)
+			A.blood_volume = max(A.blood_volume - bleed_amount,0)
 			bleeding = CEILING(max(0,bleeding - (0.02 + bleed_amount*0.075)),0.01)
 			QUEUE_HEALTH_UPDATE(A)
 
 	return TRUE
 
 obj/item/organ/proc/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.handle_transform()
+	if(!old_owner.qdeleting && !old_owner.changing)
+		old_owner.handle_transform()
 	return TRUE
 
 obj/item/organ/proc/on_organ_add(var/mob/living/advanced/new_owner)

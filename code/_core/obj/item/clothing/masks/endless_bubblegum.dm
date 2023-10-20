@@ -38,12 +38,8 @@
 		return FALSE
 	var/mob/living/advanced/A = I.owner
 
-	var/nurition_to_add = clamp(A.nutrition_max - A.nutrition,-A.nutrition_max*0.01,A.nutrition_max*0.01)
+	var/nurition_to_add = clamp(A.nutrition_max - A.nutrition_normal,-A.nutrition_max*0.01,A.nutrition_max*0.01)
 	var/hydration_to_add = clamp(A.hydration_max - A.hydration,-A.hydration_max,A.hydration_max)
-	var/nutrition_quality_to_add = clamp(A.nutrition_quality_max*0.5 - A.nutrition_quality,-A.nutrition_quality_max,A.nutrition_quality_max)
-	var/nutrition_fast_to_add = clamp(-A.nutrition_fast,-A.nutrition_max*0.01,A.nutrition_max*0.01)
-
-	A.add_nutrition(nurition_to_add)
+	A.add_nutrition_normal(nurition_to_add)
 	A.add_hydration(hydration_to_add)
-	A.add_nutrition_quality(nutrition_quality_to_add)
-	A.add_nutrition_fast(nutrition_fast_to_add)
+

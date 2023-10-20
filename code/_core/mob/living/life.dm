@@ -7,15 +7,13 @@
 	if(dead)
 		return FALSE
 
-	is_moving = FALSE
-
-	if(boss)
-		SSbosses.living_bosses -= src
+	pre_death()
 
 	if(!silent) death_message()
 
-	pre_death()
-
+	is_moving = FALSE
+	if(boss)
+		SSbosses.living_bosses -= src
 	dead = TRUE
 	time_of_death = world.time
 
@@ -35,6 +33,7 @@
 			INITIALIZE(BL)
 			GENERATE(BL)
 			FINALIZE(BL)
+			boss_loot = null
 
 		if(!silent) create_alert(VIEW_RANGE*0.5,T, alert_level = ALERT_LEVEL_CAUTION, visual = TRUE)
 
@@ -138,10 +137,10 @@
 /mob/living/proc/rejuvenate()
 	blood_volume = blood_volume_max
 	if(reagents) reagents.remove_all_reagents()
-	nutrition = max(nutrition,initial(nutrition))
-	nutrition_fast = max(nutrition_fast,initial(nutrition_fast))
+	nutrition_normal = initial(nutrition_normal)
+	nutrition_fast = initial(nutrition_fast)
+	nutrition_quality = initial(nutrition_quality)
 	hydration = max(hydration,initial(hydration))
-	nutrition_quality = max(nutrition_quality,initial(nutrition_quality))
 	intoxication = initial(intoxication)
 	on_fire = initial(on_fire)
 	fire_stacks = initial(fire_stacks)
@@ -174,7 +173,6 @@
 	stamina_regen_buffer = max(stamina_regen_buffer,0)
 	if(alert_overlay) alert_overlay.icon_state = "none"
 	if(chat_overlay) chat_overlay.icon_state = "none"
-	HOOK_CALL("pre_death")
 	return TRUE
 
 /mob/living/proc/post_death()
@@ -218,19 +216,15 @@
 			else
 				var/rarity = 0
 				var/rarity_count = 0
-				var/list/valid_ckeys = list()
 				for(var/k in people_who_killed)
 					var/mob/living/advanced/player/P = k
 					if(!is_player(P))
 						continue
 					rarity += P.get_rarity()
 					rarity_count++
-					if(P.ckey_last)
-						valid_ckeys += P.ckey_last
 					INCREASE_ACHIEVEMENT(P,"bosses_killed",1)
 				if(T)
-					if(length(valid_ckeys))
-						create_gold_drop(T,CEILING(src.health.health_max/10,1),valid_ckeys)
+					create_gold_drop(T,CEILING(src.health.health_max/10,1))
 					if(rarity_count > 0)
 						rarity *= 1/rarity_count
 						var/list/loot_spawned = SPAWN_LOOT(/loot/boss,T,rarity)
@@ -258,6 +252,8 @@
 		qdel(src)
 
 	was_killed = TRUE
+
+	value = get_base_value()
 
 	return TRUE
 
@@ -291,7 +287,7 @@
 	if(fire_stacks)
 		adjust_fire_stacks(-min(fire_stacks,TICKS_TO_DECISECONDS(LIFE_TICK)))
 		if(on_fire && health)
-			var/damagetype/DT = all_damage_types[/damagetype/on_fire]
+			var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/on_fire]
 			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(TICKS_TO_DECISECONDS(LIFE_TICK/8))*5
 			for(var/i=1,i<=3,i++)
 				var/list/params = list()
@@ -376,9 +372,12 @@ mob/living/proc/on_life_slow()
 
 	if(blood_type && blood_volume_max > 0)
 		if(blood_volume < blood_volume_max)
-			var/blood_volume_to_add = -(add_hydration(-0.15) + add_nutrition(-1.2))*0.125
-			blood_volume = clamp(blood_volume + blood_volume_to_add,0,blood_volume_max)
-			QUEUE_HEALTH_UPDATE(src)
+			add_hydration(-TICKS_TO_SECONDS(LIFE_TICK_SLOW)*0.5)
+			remove_nutrition_mix(TICKS_TO_SECONDS(LIFE_TICK_SLOW)*2)
+			var/blood_volume_to_add = TICKS_TO_SECONDS(LIFE_TICK_SLOW)*(0.5 + get_nutrition_mod()*get_nutrition_quality_mod()*0.5)*(blood_volume_max/600)
+			if(blood_volume_to_add > 0)
+				blood_volume = min(blood_volume + blood_volume_to_add,blood_volume_max)
+				QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)
 			blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
 			if(blood_volume >= blood_volume_max*1.1)
@@ -399,8 +398,7 @@ mob/living/proc/on_life_slow()
 	var/thirst_mod = 1 //Should this be based on something?
 
 	if(hunger_mod > 0)
-		add_nutrition(-0.04*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
-		add_nutrition_fast(-0.08*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
+		remove_nutrition_mix(0.04*hunger_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 		add_hydration(-0.13*thirst_mod*TICKS_TO_SECONDS(LIFE_TICK_SLOW))
 
 	if(client) //TODO: FIX THIS SHITCODE.
@@ -591,6 +589,7 @@ mob/living/proc/on_life_slow()
 			var/total_adjust = max(0,brute_to_adjust) + max(0,burn_regen_buffer) + max(0,pain_regen_buffer)
 			if(total_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_FORTITUDE,total_adjust)
+		remove_nutrition_mix( (brute_to_adjust + burn_to_adjust) * 0.5)
 
 	if(health.stamina_regen_cooef > 0 && stamina_regen_delay <= 0 && health.stamina_regeneration > 0)
 		var/stamina_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.stamina_regeneration*nutrition_hydration_mod
@@ -599,6 +598,8 @@ mob/living/proc/on_life_slow()
 			stamina_regen_buffer += stamina_adjust
 			if(stamina_adjust > 0 && player_controlled)
 				add_attribute_xp(ATTRIBUTE_RESILIENCE,stamina_adjust)
+		remove_nutrition_mix( stamina_adjust * 0.1 )
+		add_hydration( stamina_adjust * -0.2 )
 
 	if(health.mana_regen_cooef > 0 && mana_regen_delay <= 0 && health.mana_regeneration > 0)
 		var/mana_to_regen = DECISECONDS_TO_SECONDS(delay_mod)*health.mana_regeneration*nutrition_hydration_mod*(1+(health.mana_current/health.mana_max)*3)
@@ -631,7 +632,7 @@ mob/living/proc/on_life_slow()
 		C.make_ghost(T ? T : locate(FLOOR(world.maxx/2,1),FLOOR(world.maxy/2,1),1))
 		C.to_chat(span("danger","You have suffered brain death and can no longer be revived..."))
 	else
-		ckey_last = null
+		src.ckey_last = null
 
 	CALLBACK_REMOVE("\ref[src]_make_unrevivable")
 

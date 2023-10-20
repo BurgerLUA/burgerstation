@@ -115,10 +115,6 @@
 
 	. = ..()
 
-	for(var/k in contents)
-		var/atom/movable/A = k
-		qdel(A)
-
 	QDEL_NULL(reagents)
 	QDEL_NULL(health)
 
@@ -129,8 +125,17 @@
 	icon = null
 	icon_state = null
 	tag = null
-	all_listeners -= src
+	SSradio.all_listeners -= src
 	. = ..()
+
+/atom/PostDestroy()
+	. = ..()
+	for(var/k in contents)
+		var/atom/movable/M = k
+		if(M.qdeleting)
+			continue
+		log_error_once("qdelcontents_[src.type]_[M.type]","Warning: [M.type] was not properly deleted in [src.type].")
+		qdel(M)
 
 /atom/proc/get_base_transform()
 	return matrix()

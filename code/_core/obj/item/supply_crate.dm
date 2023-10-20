@@ -1,6 +1,6 @@
 /obj/item/supply_crate
 	name = "supply crate"
-	desc = "I wonder what is inside?"
+	desc = "Hey down there! Supplies!"
 	desc_extended = "An old, ancient military supply crate used by various corporations to send shipments across colonies."
 	icon = 'icons/obj/structure/supply_crate.dmi'
 	icon_state = "supply"
@@ -22,6 +22,10 @@
 
 	rarity = RARITY_RARE
 
+/obj/item/supply_crate/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","Attack or throw to open.")
+
 
 /obj/item/supply_crate/get_base_value()
 	if(!loot)
@@ -32,9 +36,7 @@
 	return CEILING(L.average_value * 1.5,100)
 
 /obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
-
 	. = ..()
-
 	if(hit_atom)
 		on_destruction()
 

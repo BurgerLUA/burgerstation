@@ -3,6 +3,8 @@
 
 /obj/structure/interactive/crate/closet
 	name = "closet"
+	desc = "Storage for safekeeping."
+	desc_extended = "A storage closet for storing items, and sometimes people."
 	icon = 'icons/obj/structure/closet.dmi'
 	icon_state = "closet"
 

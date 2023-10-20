@@ -192,8 +192,8 @@
 
 /obj/item/container/healing/cable
 	name = "cable"
-	desc = "I prefer satellite"
-	desc_extended = "Cable for construction purposes and fixing robotic limbs."
+	desc = "I prefer satellite."
+	desc_extended = "Cable for fixing robotic limbs. Use to replace burnt wiring on prosthetics."
 	icon_state = "cable"
 	treatment_time_mul = 1.25
 	heal_burn = 70

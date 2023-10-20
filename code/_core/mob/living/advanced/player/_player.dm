@@ -1,6 +1,3 @@
-var/global/list/mob/living/advanced/player/all_players = list()
-var/global/list/mob/living/advanced/player/dead_player_mobs = list()
-
 /mob/living/advanced/player/
 
 	var/unique_pid //Snowflake system that generates a md5 hash of the player on character creation.
@@ -109,13 +106,7 @@ var/global/list/mob/living/advanced/player/dead_player_mobs = list()
 
 	expiration_time = SECONDS_TO_DECISECONDS(180)
 
-var/global/list/difficulty_to_damage_mul = list(
-	DIFFICULTY_EASY = 0.25,
-	DIFFICULTY_NORMAL = 0.5,
-	DIFFICULTY_HARD = 0.75,
-	DIFFICULTY_EXTREME = 1,
-	DIFFICULTY_NIGHTMARE = 1
-)
+
 
 /mob/living/advanced/player/Finalize()
 	. = ..()
@@ -123,8 +114,8 @@ var/global/list/difficulty_to_damage_mul = list(
 
 /mob/living/advanced/player/proc/default_nanotrasen_move()
 
-	if(length(cryo_spawnpoints))
-		var/obj/structure/interactive/bed/sleeper/C = pick(cryo_spawnpoints)
+	if(length(SSobj.cryo_spawnpoints))
+		var/obj/structure/interactive/bed/sleeper/C = pick(SSobj.cryo_spawnpoints)
 		force_move(get_turf(C))
 		C.door_state = SLEEPER_OPENED
 		C.buckle(src,silent=TRUE)
@@ -148,13 +139,13 @@ var/global/list/difficulty_to_damage_mul = list(
 	if(attacker.is_player_controlled()) //PvP is always 0.5.
 		return 0.5
 
-	return difficulty_to_damage_mul[src.get_difficulty()]
+	return SSbalance.difficulty_to_damage_mul[src.get_difficulty()]
 
 /mob/living/advanced/player/New(loc,desired_client,desired_level_multiplier)
 	click_and_drag_icon	= new(src)
 	last_autosave = world.time
-	all_players += src
-	ai_attacking_players[src] = list()
+	SSliving.all_players += src
+	SSai.ai_attacking_players[src] = list()
 	. = ..()
 
 /mob/living/advanced/player/restore_inventory()
@@ -204,11 +195,11 @@ var/global/list/difficulty_to_damage_mul = list(
 
 	QDEL_NULL(click_and_drag_icon)
 
-	equipped_antags -= src
+	SSliving.all_players -= src
 
-	all_players -= src
+	SSai.ai_attacking_players -= src
 
-	ai_attacking_players -= src
+	SSliving.dead_player_mobs -= src
 
 	. = ..()
 
@@ -245,20 +236,12 @@ var/global/list/difficulty_to_damage_mul = list(
 /mob/living/advanced/player/proc/get_difficulty()
 	return enable_friendly_fire ? DIFFICULTY_NORMAL : src.difficulty
 
-var/global/list/difficulty_to_rarity = list(
-	DIFFICULTY_EASY = 0,
-	DIFFICULTY_NORMAL = 5,
-	DIFFICULTY_HARD = 15,
-	DIFFICULTY_EXTREME = 20,
-	DIFFICULTY_NIGHTMARE = 40
-)
-
 // https://www.desmos.com/calculator/eh8dy1z0ga
 
 /mob/living/advanced/player/proc/get_rarity()
 	. = 10
 	. += level*0.3
 	. += src.get_attribute_power(ATTRIBUTE_LUCK,0,1,1) * 0.3
-	. += difficulty_to_rarity[src.get_difficulty()] * 0.4
+	. += SSbalance.difficulty_to_rarity[src.get_difficulty()] * 0.4
 	// . *= 1 + (increased_rarity/100)
 	return .

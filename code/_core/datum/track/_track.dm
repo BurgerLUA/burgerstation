@@ -311,11 +311,6 @@
 	path = 'sound/music/Frogged.ogg'
 	length = 1*60 + 40
 
-/track/herald //Boss music
-	name = "Herald"
-	path = 'sound/music/Herald.ogg'
-	length = 2*60 + 35
-
 /track/canman //Boss music
 	name = "Canman"
 	path = 'sound/music/Canman.ogg'

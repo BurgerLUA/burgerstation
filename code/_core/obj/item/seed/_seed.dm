@@ -46,7 +46,7 @@
 	. += growth_min
 	. += max(0,100-growth_max)*0.25
 	. += max(0,200-growth_produce_max)*0.25
-	. = CEILING(.,5)
+	. = CEILING(.,1)
 
 /obj/item/seed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

@@ -25,9 +25,8 @@
 
 /reagent/nutrition/ethanol/New(var/desired_loc)
 	var/power_mod = power*0.01
-	nutrition_amount = power_mod*10
 	hydration_amount = max(0,(1-power_mod)*5)
-	nutrition_quality_amount = -nutrition_amount*0.5
+	nutrition_fast_amount = power_mod*10
 	particle_size = 0.1 + min(power_mod,1)*0.2
 	liquid = 1 - min(power_mod,1)*0.5
 	. = ..()

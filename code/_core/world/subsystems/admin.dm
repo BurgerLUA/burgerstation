@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(admin)
 	var/list/stored_ranks = list()
 	var/list/stored_user_ranks = list()
 
+	var/list/ckey_to_tickets = list()
+
 /subsystem/admin/proc/load_permissions_from_file()
 
 	var/file_text = rustg_file_read(RANK_DIR)
@@ -52,8 +54,8 @@ SUBSYSTEM_DEF(admin)
 	. = ..()
 
 /subsystem/admin/proc/sync_permissions()
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		C.sync_permissions()
 	return TRUE
 

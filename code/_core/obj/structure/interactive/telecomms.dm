@@ -1,4 +1,4 @@
-var/global/list/all_telecomms = list()
+
 
 /obj/structure/interactive/telecomms
 	name = "telecommunications system"
@@ -23,21 +23,21 @@ var/global/list/all_telecomms = list()
 
 /obj/structure/interactive/telecomms/proc/add_telecomm(var/area_identifier)
 
-	if(!all_telecomms[area_identifier])
-		all_telecomms[area_identifier] = list()
+	if(!SSradio.all_telecomms[area_identifier])
+		SSradio.all_telecomms[area_identifier] = list()
 
-	all_telecomms[area_identifier] += src
+	SSradio.all_telecomms[area_identifier] += src
 	broadcasting_areas[area_identifier] = TRUE
 
 	return TRUE
 
 /obj/structure/interactive/telecomms/proc/remove_telecomm(var/area_identifier)
 
-	if(!all_telecomms[area_identifier])
-		all_telecomms[area_identifier] = list()
+	if(!SSradio.all_telecomms[area_identifier])
+		SSradio.all_telecomms[area_identifier] = list()
 		return TRUE
 
-	all_telecomms[area_identifier] -= src
+	SSradio.all_telecomms[area_identifier] -= src
 	broadcasting_areas -= area_identifier
 
 	return TRUE

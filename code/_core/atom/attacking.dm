@@ -90,7 +90,7 @@
 			last_turf = next_turf
 			step_check--
 
-	var/damagetype/DT = all_damage_types[desired_damage_type]
+	var/damagetype/DT = SSdamagetype.all_damage_types[desired_damage_type]
 	if(!DT)
 		log_error("Warning! [attacker.get_debug_name()] tried attacking with [src.get_debug_name()], but it had no damage type!")
 		return FALSE

@@ -70,6 +70,7 @@
 		. *= 0.05
 
 	. = max(0.01,.)
+	. = CEILING(.,0.01)
 
 /obj/item/bullet_cartridge/proc/get_ammo_count()
 	return amount
@@ -133,6 +134,8 @@
 		amount_max = max(amount_max,100000) //Some absurd value.
 		if(caseless)
 			qdel(src)
+		else
+			value = get_base_value()
 		return src
 
 	return FALSE
@@ -250,11 +253,11 @@
 	if(!damage_type_bullet)
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type_bullet]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type_bullet]
 	if(!D) return 0
 
 	//https://www.desmos.com/calculator/qgzesfmsl1
-	. = (D.get_damage_per_hit(0)*0.1 + D.get_damage_per_hit(100)*0.2 + D.get_damage_per_hit(200)*0.7) * projectile_count
+	. = (D.get_damage_per_hit(0)*0.1 + D.get_damage_per_hit(100,200)*0.2 + D.get_damage_per_hit(200,200)*0.7) * projectile_count
 	. *= 0.5 + (D.falloff/VIEW_RANGE)*0.5 //Falloff.
 	. *= 0.75 + (projectile_speed/TILE_SIZE)*0.25 //Speed
 	. *= 0.75 + 0.25*(1- (base_spread/0.1)) //Spread

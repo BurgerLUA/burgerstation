@@ -383,27 +383,23 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 	if(!pre_shoot(caller,object,location,params,damage_multiplier))
 		return FALSE
 
-	var/quality_bonus = get_quality_bonus(0.5,2)
-	var/quality_penalty = max(1,1/get_quality_bonus(0.25,2))
+	var/quality_mod = get_quality_mod()
 
 	var/obj/projectile/projectile_to_use = projectile_override ? projectile_override : projectile
 	var/list/shoot_sounds_to_use = shoot_sounds
 	var/damage_type_to_use = get_ranged_damage_type()
 	var/bullet_count_to_use = bullet_count
 	var/bullet_spread_to_use = 0
-	var/projectile_speed_to_use = projectile_speed*quality_penalty*damage_mod
+	var/projectile_speed_to_use = projectile_speed * quality_mod
 	var/bullet_color_to_use = bullet_color
 	var/inaccuracy_modifier_to_use = get_bullet_inaccuracy(caller,object)
-	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params)
+	var/shoot_delay_to_use = get_shoot_delay(caller,object,location,params) * 0.5 + max(1,2 - quality_mod)*0.5
 	var/max_bursts_to_use = current_maxmium_bursts
 	var/shoot_alert_to_use = shoot_alert
-	var/damage_multiplier_to_use = damage_multiplier * damage_mod
+	var/damage_multiplier_to_use = damage_multiplier * damage_mod * quality_mod
 	var/penetrations_left = 0
 	var/condition_to_use = 1
 	var/bullet_view_punch = 1
-	var/durability_mod = src.attachment_stats["durability_mod"]
-	if(ranged_damage_type) damage_multiplier_to_use *= quality_bonus
-
 	var/power_to_use = 1
 
 	var/obj/item/bullet_cartridge/spent_bullet = handle_ammo(caller)
@@ -420,11 +416,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			MUL(inaccuracy_modifier_to_use,spent_bullet.inaccuracy_modifier)
 			MUL(bullet_view_punch,spent_bullet.view_punch_mod)
 			ADD(penetrations_left,spent_bullet.penetrations)
-			power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2)
-			damage_multiplier_to_use *= quality_bonus
-			var/condition_to_use_pre = max(0,1 - max(0,quality_bonus*4))
-			condition_to_use_pre += FLOOR(heat_current*2,1)
-			condition_to_use = condition_to_use_pre * durability_mod
+			power_to_use = max(power_to_use,spent_bullet.bullet_length*spent_bullet.bullet_diameter*0.2) //For heat calculations.
 		else
 			handle_empty(caller)
 			return FALSE
@@ -456,8 +448,8 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		var/icon_pos_y = params[PARAM_ICON_Y]
 
 		var/prone = FALSE
-		var/static_spread = get_static_spread() * quality_penalty
-		var/heat_spread = get_heat_spread() * quality_penalty
+		var/static_spread = get_static_spread() * (2 - quality_mod)
+		var/heat_spread = get_heat_spread() * (2 - quality_mod)
 		var/skill_spread = 0
 		var/movement_spread = 0
 		var/iff_tag = null
@@ -492,6 +484,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			MUL(movement_spread,attachment_stats["movement_spread"])
 			MUL(view_punch_to_use,attachment_stats["view_punch"])
 			MUL(shoot_delay_to_use,attachment_stats["shoot_delay"])
+			MUL(condition_to_use,attachment_stats["condition_use_mod"])
 			ADD(penetrations_left,attachment_stats["penetrations"])
 			if(max_bursts_to_use > 1)
 				ADD(max_bursts_to_use,attachment_stats["bursts_to_use"])
@@ -654,7 +647,11 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 /atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
 
-	if(!target) CRASH("There is no valid target defined!")
+	if(!target)
+		if(location)
+			target = location
+		else
+			CRASH("There is no valid target defined!")
 
 	//icon_pos_x and icon_pos_y are basically where the bullet is supposed to travel relative to the tile, NOT where it's going to hit on someone's body
 

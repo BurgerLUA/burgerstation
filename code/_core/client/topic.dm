@@ -100,11 +100,17 @@
 				var/datum/actual_reference = locate(href_list["var_edit_ref"])
 				if(actual_reference)
 					var_edit(actual_reference)
-
 			else if(href_list["var_edit_other"] && href_list["var_edit_other_ref"])
 				var/datum/actual_reference = locate(href_list["var_edit_other_ref"])
 				var/actual_key = href_list["var_edit_other"]
 				change_variable(actual_reference,actual_key,null)
+			else if(href_list["check_garbage"])
+				var/confirm = input("Are you sure you to check the garbage of this ref? This process is very expensive.","Garbage Checker","Cancel") in list("Yes","No","Cancel")
+				if(confirm == "Yes")
+					var/datum/actual_reference = locate(href_list["check_garbage"])
+					if(actual_reference)
+						check_garbage(actual_reference)
+
 
 		if(href_list["done_loading"])
 			var/decoded = url_decode(href_list["done_loading"])

@@ -1,6 +1,7 @@
 /obj/structure/interactive/blob/node
 	name = "blob node"
 	icon_state = "node"
+	desc_extended = "A segment of the ever-expanding blob. This one creates and deploys blobbernaughts if the blob's expanse is hindered by the living."
 	has_damaged_state = TRUE
 	health_base = 250
 
@@ -9,6 +10,10 @@
 	var/mob/living/simple/blobbernaught/linked_blobbernaught
 
 	var/next_spawn = 0
+
+/obj/structure/interactive/blob/node/Destroy()
+	. = ..()
+	linked_blobbernaught = null
 
 /obj/structure/interactive/blob/node/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()

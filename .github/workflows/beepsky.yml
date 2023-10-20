@@ -12,12 +12,13 @@ on:
 jobs:
   compile:
     name: Compile
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Cache BYOND
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: $HOME/BYOND
           key: ${{ runner.os }}-byond

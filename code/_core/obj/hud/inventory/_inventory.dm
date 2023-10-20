@@ -107,6 +107,8 @@
 
 	show(FALSE,0)
 
+	delete_objects()
+
 	. = ..()
 
 	update_owner(null) //This proc is custom to /obj/hud/inventory so it won't cause issues.
@@ -295,7 +297,7 @@
 
 	if(!A.overlays_assoc["\ref[item_to_update]"])
 		A.add_overlay_tracked(
-			"\ref[item_to_update]",
+			"\ref[item_to_update]_[item_to_update.type]",
 			item_to_update,
 			desired_icon = desired_icon,
 			desired_icon_state = desired_icon_state,
@@ -439,11 +441,10 @@
 			. += I
 
 /obj/hud/inventory/proc/delete_objects()
-	var/turf/T = get_turf(src)
 	for(var/k in contents)
 		var/obj/item/I = k
 		I.delete_on_drop = TRUE
-		remove_object(I,T)
+		remove_object(I,null)
 
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
@@ -455,16 +456,16 @@
 	I.pixel_x = initial(I.pixel_x) + pixel_x_offset
 	I.pixel_y = initial(I.pixel_y) + pixel_y_offset
 
-	if(owner && !owner.qdeleting)
-		if(is_advanced(owner))
-			var/mob/living/advanced/A = owner
+	if(owner && is_advanced(owner))
+		var/mob/living/advanced/A = owner
+		I.set_dir(A.dir)
+		if(worn)
+			A.worn_objects -= I
+		else
+			A.held_objects -= I
+		if(!A.qdeleting)
 			I.handle_overlays(A,remove=TRUE)
-			if(worn)
-				A.worn_objects -= I
-			else
-				A.held_objects -= I
 			A.queue_update_items = TRUE
-		I.set_dir(owner.dir)
 
 	vis_contents -= I
 
@@ -629,7 +630,7 @@
 					owner.to_chat(span("notice","\The [I.name] doesn't fit on \the [src.loc.name]!"))
 				return FALSE
 
-	if(max_size >= 0 && I.size > max_size && !(I.type in item_bypass) && !(src.type in I.inventory_bypass))
+	if(max_size >= 0 && I.size > max_size && !(item_bypass && I.type in item_bypass) && !(I.inventory_bypass && src.type in I.inventory_bypass))
 		if(messages && src.loc)
 			owner.to_chat(span("warning","\The [I] is too large to be put in \the [src.loc.name]."))
 		return FALSE

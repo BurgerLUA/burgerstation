@@ -79,8 +79,8 @@ SUBSYSTEM_DEF(ban)
 
 	initialized = TRUE
 
-	for(var/k in all_clients)
-		var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		var/client/C = SSclient.all_clients[k]
 		if(src.is_banned(C.key,C.address,C.computer_id,C.connection))
 			del(C)
 
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(ban)
 	bans_keys[desired_ckey] = list("admin" = admin_ckey, "reason" = reason, "expires" = expires)
 	rustg_file_write(json_encode(bans_keys),BANLIST_KEYS_DIR)
 
-	var/client/C = all_clients[desired_ckey]
+	var/client/C = SSclient.all_clients[desired_ckey]
 	if(C)
 		C << span("danger","You have been banned from the server.\n\
 		Banning Admin: [admin_ckey]\n\

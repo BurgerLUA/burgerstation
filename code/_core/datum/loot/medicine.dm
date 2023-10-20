@@ -1,5 +1,9 @@
 /loot/medicine/
 
+	use_random_item_amounts = TRUE
+	amount_mod_min = 0.5
+	amount_mod_max = 1
+
 /loot/medicine/pack
 	loot_table = list(
 		/obj/item/defib = 1,

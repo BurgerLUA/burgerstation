@@ -13,3 +13,14 @@
 
 	layer = -1000
 
+/obj/hud/button/examine_bar/update_owner(var/mob/desired_owner)
+
+	var/mob/old_owner = owner
+
+	. = ..()
+
+	if(.)
+		if(old_owner)
+			old_owner.examine_bar = null
+		if(owner)
+			owner.examine_bar = src

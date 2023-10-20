@@ -29,8 +29,11 @@
 
 /obj/item/powercell/get_base_value()
 	. = ..()
-	. += CEILING(charge_current*0.001,1)
 	. += CEILING(charge_max*0.0003,1)
+
+/obj/item/powercell/get_value()
+	. = ..()
+	. += CEILING(charge_current*0.001,1)
 
 /obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
 	RUN_PARENT_SAFE

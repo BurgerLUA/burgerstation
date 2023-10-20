@@ -1,5 +1,3 @@
-var/global/time_dialation = 0
-
 /world/proc/subsystem_life_loop(var/subsystem/SS)
 	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
@@ -25,13 +23,8 @@ var/global/time_dialation = 0
 			break
 		SS.run_failures = 0
 
-		var/desired_delay = TICKS_TO_DECISECONDS(SS.tick_rate)
-		if(time_dialation > 1 && SS.use_time_dialation)
-			desired_delay *= time_dialation
-		if(desired_delay > 0)
-			sleep(desired_delay)
-		else
-			sleep(-1)
+		sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+
 		while(world_state <= STATE_INITIALIZING)
 			sleep(10)
 
@@ -40,6 +33,7 @@ var/global/time_dialation = 0
 	var/local_benchmark = true_time()
 	log_subsystem(SS.name,"Initializing...")
 	INITIALIZE(SS)
+	FINALIZE(SS)
 	var/benchmark_time = DECISECONDS_TO_SECONDS((true_time() - local_benchmark))
 	switch(benchmark_time)
 		if(1 to 10)
@@ -99,13 +93,20 @@ var/global/time_dialation = 0
 
 	world_state = STATE_RUNNING
 
+	var/list/possible_music = TRACKS_LOBBY
+	var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
+
+	var/turf/move_turf
 	if(length(lobby_positions))
-		for(var/mob/abstract/observer/menu/O in all_mobs_with_clients)
-			var/list/possible_music = TRACKS_LOBBY
-			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
-			O.force_move(get_turf(pick(lobby_positions)))
-			play_music_track(possible_music[lobby_track], O.client)
-			O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+		move_turf = get_turf(pick(lobby_positions))
+	else
+		move_turf = locate(1,1,1)
+
+	for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
+		O.force_move(move_turf)
+		play_music_track(possible_music[lobby_track], O.client)
+		O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+		CHECK_TICK_HARD
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")
 

@@ -1,7 +1,7 @@
 /obj/item/storage/pillbottle
 	name = "pill bottle"
-	desc = "Be sure to read the label before eating the contents."
-	desc_extended = "A pill bottle that can hold up to 30 pills."
+	desc = "Pills here!"
+	desc_extended = "An unlabelled medical pill bottle that can hold up to 30 pills."
 	icon = 'icons/obj/item/storage/prescription_pillbottle.dmi'
 	icon_state = "base"
 
@@ -87,7 +87,8 @@
 
 /obj/item/storage/pillbottle/bicaridine
 	name = "bicaridine pill bottle"
-	desc = "Contains 20 5u bicaridine pills."
+	desc = "Red for brute."
+	desc_extended = "Labelled to contain 20 5u bicaridine pills, a basic brute injury medication. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/bicaridine/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -96,7 +97,8 @@
 
 /obj/item/storage/pillbottle/bicaridine_small
 	name = "bicaridine pill bottle"
-	desc = "Contains 10 5u bicaridine pills."
+	desc = "Red for brute."
+	desc_extended = "Labelled to contain 10 5u bicaridine pills, a basic brute injury medication. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/bicaridine_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -105,7 +107,8 @@
 
 /obj/item/storage/pillbottle/kelotane
 	name = "kelotane pill bottle"
-	desc = "Contains 20 5u kelotane pills."
+	desc = "Yellow for burn."
+	desc_extended = "Labelled to contain 20 5u kelotane pills, a basic burn injury medication. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/kelotane/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -114,7 +117,8 @@
 
 /obj/item/storage/pillbottle/kelotane_small
 	name = "kelotane pill bottle"
-	desc = "Contains 10 5u kelotane pills."
+	desc = "Yellow for burn."
+	desc_extended = "Labelled to contain 10 5u kelotane pills, a basic burn injury medication. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/kelotane_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -123,7 +127,8 @@
 
 /obj/item/storage/pillbottle/dylovene
 	name = "dylovene pill bottle"
-	desc = "Contains 20 5u dylovene pills."
+	desc = "Green for toxins."
+	desc_extended = "Labelled to contain 20 5u dylovene pills, a basic anti-toxin. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/dylovene/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -132,7 +137,8 @@
 
 /obj/item/storage/pillbottle/dylovene_small
 	name = "dylovene pill bottle"
-	desc = "Contains 10 5u dylovene pills."
+	desc = "Green for toxins."
+	desc_extended = "Labelled to contain 10 5u dylovene pills, a basic anti-toxin. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/dylovene_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -142,7 +148,8 @@
 
 /obj/item/storage/pillbottle/iron
 	name = "iron pill bottle"
-	desc = "Contains 20 10u iron pills."
+	desc = "No blood, no problem!"
+	desc_extended = "Labelled to contain 20 10u iron pills, as supplements for treating blood loss. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/iron/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -151,7 +158,8 @@
 
 /obj/item/storage/pillbottle/iron_small
 	name = "iron pill bottle"
-	desc = "Contains 10 10u iron pills."
+	desc = "No blood, no problem!"
+	desc_extended = "Labelled to contain 10 10u iron pills, as supplements for treating blood loss. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/iron_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -160,7 +168,8 @@
 
 /obj/item/storage/pillbottle/omnizine
 	name = "omnizine pill bottle"
-	desc = "Contains 20 10u omnizine pills."
+	desc = "Heals everything! Or your money back!*"
+	desc_extended = "Labelled to contain 20 10u omnizine pills, an universal healing reagent. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/omnizine/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -169,7 +178,8 @@
 
 /obj/item/storage/pillbottle/charcoal
 	name = "charcoal pill bottle"
-	desc = "Contains 20 10u charcoal pills."
+	desc = "Bad and naughty Chemists get their meth flushed out of their system!"
+	desc_extended = "Labelled to contain 20 10u charcoal pills, a basic reagent to flush the bloodstream. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/charcoal/fill_inventory()
 	for(var/i=1,i<=20,i++)
@@ -178,7 +188,8 @@
 
 /obj/item/storage/pillbottle/antihol_small
 	name = "antihol bottle"
-	desc = "Contains 10 10u antihol pills."
+	desc = "Kills your buzz faster than a pay cut."
+	desc_extended = "Labelled to contain 10 10u antihol pills, an anti-toxin that breaks down and flushes alcohol from the body. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/antihol_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -187,7 +198,8 @@
 
 /obj/item/storage/pillbottle/potassium_iodide_small
 	name = "potassium iodide pill bottle"
-	desc = "Contains 10 10u potassium iodide pills."
+	desc = "No dude, you said--"
+	desc_extended = "Labelled to contain 10 10u potassium iodide pills, a basic anti-rad medication. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/potassium_iodide_small/fill_inventory()
 	for(var/i=1,i<=10,i++)
@@ -196,7 +208,8 @@
 
 /obj/item/storage/pillbottle/space_prussian_blue_small
 	name = "space prussian blue pill bottle"
-	desc = "Contains 10 20u space prussian blue pills."
+	desc = "Comes from the bones of old horses, apparently."
+	desc_extended = "Labelled to contain 10 20u space prussian blue pills, an effective anti-rad substance. Can hold up to 30 pills."
 
 /obj/item/storage/pillbottle/space_prussian_blue_small/fill_inventory()
 	for(var/i=1,i<=10,i++)

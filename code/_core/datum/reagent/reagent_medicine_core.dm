@@ -134,8 +134,8 @@
 
 /reagent/medicine/dicarditane/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
 	. = ..()
-	owner.brute_regen_buffer += 8*.*(owner.nutrition/1000)*multiplier
-	owner.burn_regen_buffer += 4*.*(owner.nutrition/1000)*multiplier
+	owner.brute_regen_buffer += 8*.
+	owner.burn_regen_buffer += 4*.
 
 
 /reagent/medicine/kelotane

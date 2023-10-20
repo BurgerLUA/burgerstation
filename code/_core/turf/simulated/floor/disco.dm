@@ -30,8 +30,8 @@
 	src.set_light(1,0.5,"#FFFFFF")
 
 
-var/global/list/disco_images = list()
 
+/*
 /turf/simulated/floor/disco/update_overlays()
 
 	. = ..()
@@ -47,4 +47,5 @@ var/global/list/disco_images = list()
 		disco_images[desired_icon_state] = I
 
 	add_overlay(disco_images[desired_icon_state])
+*/
 

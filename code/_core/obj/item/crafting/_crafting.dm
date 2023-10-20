@@ -1,5 +1,7 @@
 /obj/item/crafting_bench/
 	name = "crafting table"
+	desc = "this is just like that one game wher you uhhhhhhh uuuuummmmm"
+	desc_extended = "This is a crafting bench item path. You shouldn't be seeing this."
 	inventories = list(
 		/obj/hud/inventory/crafting/slotA1,
 		/obj/hud/inventory/crafting/slotA2,
@@ -72,7 +74,7 @@
 			I.mouse_opacity = 0
 			opening = FALSE
 
-	if(opening)
+	if(opening && length(inventory_sounds))
 		play_sound(pick(inventory_sounds),get_turf(src),range_max=VIEW_RANGE*0.25)
 
 	for(var/obj/hud/button/crafting/B in A.buttons)

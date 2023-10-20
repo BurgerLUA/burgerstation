@@ -32,14 +32,18 @@
 
 	. = ..()
 
-mob/living/advanced/get_movement_delay()
+mob/living/advanced/get_slowdown_penalty()
 
 	. = ..()
 
 	for(var/k in movement_organs)
 		var/obj/item/organ/O = labeled_organs[k]
 		if(O && O.broken)
-			. *= 1.25
+			. += 0.25
+
+mob/living/advanced/get_movement_delay()
+
+	. = ..()
 
 	if(inventories_by_id[BODY_HAND_LEFT_HELD])
 		var/obj/hud/inventory/I = inventories_by_id[BODY_HAND_LEFT_HELD]
@@ -51,7 +55,7 @@ mob/living/advanced/get_movement_delay()
 		if(I.grabbed_object)
 			. *= 1.5*I.grab_level
 
-	. *= move_delay_multiplier
+	. *= worn_move_delay_multiplier
 
 /mob/living/advanced/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
 

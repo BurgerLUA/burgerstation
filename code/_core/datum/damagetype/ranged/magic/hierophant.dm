@@ -18,3 +18,5 @@
 	skill_damage = list(
 		SKILL_MAGIC = ARCANE
 	)
+
+	force_attacker_armor_calculations_with = ARCANE

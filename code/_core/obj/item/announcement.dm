@@ -1,6 +1,5 @@
 var/global/next_announcement = 0
 
-
 /obj/item/announcement/
 	name = "broadcast announcement device"
 	desc = "One day while..."

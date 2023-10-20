@@ -9,6 +9,10 @@
 
 	anchored = TRUE
 
+/obj/structure/interactive/storage/Destroy()
+	. = ..()
+	QDEL_NULL(storage)
+
 /obj/structure/interactive/storage/Initialize()
 	. = ..()
 	storage = new(src)
@@ -93,15 +97,6 @@
 /obj/structure/interactive/storage/trash_pile/low_chance
 	chance_none = 50
 
-var/global/list/possible_trash_enemies = list(
-	/mob/living/simple/passive/mouse/grey = 200,
-	/mob/living/simple/bat/space = 50,
-	/mob/living/advanced/npc/rogue_assistant = 25,
-	/mob/living/simple/gutlunch = 25,
-	/mob/living/simple/xeno/hunter = 5,
-	/mob/living/simple/glockroach = 1,
-)
-
 /obj/structure/interactive/storage/trash_pile/station
 	stored_loot = /loot/random/trash/lots
 	stored_loot_per_instance = /loot/random/low
@@ -121,7 +116,7 @@ var/global/list/possible_trash_enemies = list(
 		var/turf/T = get_turf(src)
 		stored_threat = FALSE
 		if(T)
-			var/mob/living/L = pickweight(possible_trash_enemies)
+			var/mob/living/L = pickweight(SSdirty.possible_trash_enemies)
 			L = new L(src)
 			INITIALIZE(L)
 			GENERATE(L)

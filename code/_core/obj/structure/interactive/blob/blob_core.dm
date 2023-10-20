@@ -1,5 +1,7 @@
 /obj/structure/interactive/blob/core
 	name = "blob core"
+	desc = "SHIT TYRONE HACK THE FUCKING AUTOLATHES."
+	desc_extended = "The most important segment of the blob, acting as the brains. Destroying this will disable the blob and prevent it from spreading!"
 	icon_state = "core"
 	health_base = 500
 	var/list/obj/structure/interactive/blob/linked_walls = list()
@@ -49,8 +51,8 @@
 		var/obj/structure/interactive/blob/node/N = new(T,src)
 		N.color = color
 		INITIALIZE(N)
-		FINALIZE(N)
 		GENERATE(N)
+		FINALIZE(N)
 		linked_nodes += N
 
 	return ..()

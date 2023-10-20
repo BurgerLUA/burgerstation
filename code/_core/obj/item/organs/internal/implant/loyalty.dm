@@ -9,7 +9,7 @@
 	return ..()
 
 /obj/item/organ/internal/implant/head/loyalty/on_organ_remove(var/mob/living/advanced/old_owner)
-	old_owner.set_loyalty_tag(null)
+	old_owner.set_loyalty_tag(initial(old_owner.loyalty_tag))
 	return ..()
 
 /obj/item/organ/internal/implant/head/loyalty/nanotrasen

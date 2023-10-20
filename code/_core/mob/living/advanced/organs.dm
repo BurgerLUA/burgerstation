@@ -2,6 +2,12 @@
 
 	for(var/k in organs)
 		var/obj/item/organ/O = k
+		//Prevents redundency.
+		if(O.attached_organ)
+			O.attached_organ.attached_organs -= O
+			O.attached_organ = null
+		if(O.attached_organs)
+			O.attached_organs.Cut()
 		remove_organ(O,T,do_delete)
 
 	return TRUE
@@ -71,11 +77,11 @@
 /obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)
-		A.remove_overlay("\ref[src]")
+		A.remove_overlay("\ref[src]_[src.type]")
 
 	if(add)
 		A.add_overlay_tracked(
-			"\ref[src]",
+			"\ref[src]_[src.type]",
 			src,
 			desired_layer = src.worn_layer,
 			desired_icon_state = icon_state_override,
@@ -185,22 +191,38 @@
 		if(do_delete || !T)
 			I.delete_objects()
 		else
-			I.drop_objects(T)
+			var/list/dropped_objects = I.drop_objects(T)
+			for(var/j in dropped_objects)
+				var/obj/item/I2 = j
+				if(I.ultra_persistant)
+					qdel(I2)
+				else
+					animate(I2,pixel_x=rand(-8,8),pixel_y=rand(-8,8),time=3)
+
+	if(O.attached_organ)
+		O.attached_organ.attached_organs -= O
+		O.attached_organ = null
+
+	for(var/k in O.attached_organs)
+		var/obj/item/organ/O2 = k
+		src.remove_organ(O2,T,do_delete)
+
+	organs -= O
+	labeled_organs -= O.id
+	queue_organ_health_update -= O
 
 	O.update_owner(null)
 
 	if(O.enable_overlay) O.handle_overlays(src,remove=TRUE)
 
-	organs -= O
-	labeled_organs -= O.id
+	if(do_delete)
+		qdel(O)
+	else
+		O.drop_item(T)
+		if(O.health)
+			O.health.update_health()
+		O.update_sprite()
 
 	O.on_organ_remove(src)
 
-	if(do_delete)
-		qdel(O)
-
-	queue_organ_health_update -= O
-
-	if(!O.qdeleting && O.health)
-		O.health.update_health()
-
+	QUEUE_HEALTH_UPDATE(src)

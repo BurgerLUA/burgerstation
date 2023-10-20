@@ -45,7 +45,7 @@
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(4)
 		caller.set_dir(get_dir(caller,T))
-		var/damagetype/DT = all_damage_types[damage_type]
+		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
 		DT.do_attack_visuals(caller,get_turf(caller),T,T,0)
 		if(src.reagents.volume_current <= 0)
 			caller.to_chat(span("warning","\The [src.name] is dry!"))

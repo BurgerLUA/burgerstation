@@ -13,5 +13,5 @@
 		if(C.should_apply(src,victim,weapon,hit_object,blamed,DT))
 			if(C.combo_breaker && length(C.combo) > 1)
 				src.cqc_combo = ""
-			return all_damage_types[C.damage_type]
+			return SSdamagetype.all_damage_types[C.damage_type]
 	return null

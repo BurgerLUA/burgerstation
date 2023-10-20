@@ -1,11 +1,13 @@
 /damagetype/ranged/laser/pulse
 	attack_damage_base = list(
-		LASER = 70,
-		HEAT = 20
+		LASER = 60,
+		HEAT = 10,
+		BOMB = 20,
 	)
 	attack_damage_penetration = list(
-		LASER = 50,
-		HEAT = 25
+		LASER = 0,
+		HEAT = 0,
+		BOMB = 0
 	)
 
 /damagetype/ranged/laser/pulse/surplus

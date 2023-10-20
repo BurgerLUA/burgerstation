@@ -5,6 +5,11 @@
 	var/extra_weapon_chance = 0
 	var/extra_clothing_chance = 0
 
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 75
+	quality_mod_min = 0.5
+
 /loadout/zombie/get_spawning_items()
 
 	. = ..()

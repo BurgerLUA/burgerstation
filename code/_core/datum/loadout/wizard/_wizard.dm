@@ -23,6 +23,10 @@
 		/obj/item/weapon/ranged/wand/twisted,
 		/obj/item/weapon/ranged/spellgem/fireball,
 	)
+	use_random_quality_amounts = TRUE
+	quality_min = 75
+	quality_max = 100
+	quality_mod_min = 0.75
 
 //Hostile generic wizard.
 /loadout/hostile_wizard

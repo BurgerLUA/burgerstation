@@ -7,8 +7,6 @@
 	density_south = TRUE
 	density_east  = TRUE
 	density_west  = TRUE
-	density_up    = TRUE
-	density_down  = TRUE
 	allow_bullet_pass = FALSE
 
 	collision_flags = FLAG_COLLISION_UNSIMULATED
@@ -38,6 +36,7 @@
 	opacity = 1
 
 
+/*
 /turf/proc/do_rock_gen()
 	. = FALSE
 	for(var/d in DIRECTIONS_ALL)
@@ -75,3 +74,4 @@
 	name = "dynamic rock gen"
 	density = 1
 	opacity = 1
+*/

@@ -1,6 +1,3 @@
-var/global/list/ai_attacking_players = list() //Assoc list. key is AI, value is list of players
-var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is list of AI
-
 /ai/
 
 	var/can_attack = TRUE
@@ -210,7 +207,12 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 
 	set_active(FALSE,deleting=TRUE)
 
-	if(owner) owner.ai = null
+	if(owner)
+		var/turf/T = get_turf(owner)
+		if(T)
+			var/chunk/C = CHUNK(T)
+			C.ai -= src
+		owner.ai = null
 	owner = null
 
 	. = ..()
@@ -250,8 +252,3 @@ var/global/list/ckeys_being_hunt_by = list() //Assoc list. key is ckey, value is
 	if(!stored_sneak_power && is_living(owner))
 		var/mob/living/L = owner
 		stored_sneak_power = L.get_skill_power(SKILL_SURVIVAL,0,1,2)
-
-/ai/proc/pre_death(var/mob/living/L,args)
-	set_active(FALSE)
-	return TRUE
-

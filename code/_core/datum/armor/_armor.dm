@@ -1,28 +1,3 @@
-// https://www.desmos.com/calculator/lor9o5vzic
-var/global/list/defense_rating_to_value = list( //Lower values are more expensive.
-	BLADE = 8.1,
-	BLUNT = 8.1,
-	PIERCE = 8.1,
-	LASER = 12.2,
-	ARCANE = 7,
-	HEAT = 16.2,
-	COLD = 16.2,
-	SHOCK = 16.2,
-	ACID = 16.2,
-	BOMB = 16.2,
-	BIO = 17.9,
-	RAD = 16.2,
-	HOLY = 7,
-	DARK = 7,
-	FATIGUE = 50,
-	ION = 50,
-	PAIN = 50,
-	BRUTE = 2.5,
-	BURN = 2.5,
-	TOX = 2.5
-)
-
-
 /armor/
 
 	var/name
@@ -40,11 +15,10 @@ var/global/list/defense_rating_to_value = list( //Lower values are more expensiv
 	value = 0
 	var/total_armor = 0
 	for(var/defense_type in defense_rating)
-		if(defense_rating_to_value[defense_type])
-			total_armor += clamp(defense_rating[defense_type],-300,300)/defense_rating_to_value[defense_type]
-		if(defense_rating[defense_type] <= 0 || defense_rating_to_value[defense_type] <= 0)
+		if(SSbalance.defense_rating_to_value[defense_type] <= 0 || defense_rating[defense_type] <= 0)
 			continue
-		value += ((min(300,defense_rating[defense_type])**1.75)/defense_rating_to_value[defense_type])*0.5
+		total_armor += min(defense_rating[defense_type],300)/SSbalance.defense_rating_to_value[defense_type]
+		value += ((min(300,defense_rating[defense_type])**1.75)/SSbalance.defense_rating_to_value[defense_type])*0.5
 
 	value *= 1 + (deflection*2)**1.5
 

@@ -1,9 +1,13 @@
-var/global/list/all_damage_types = list()
+
 
 SUBSYSTEM_DEF(damagetype)
 	name = "Damage Type Subsystem"
 	desc = "Stores all the known damage types in a list."
 	priority = SS_ORDER_CONFIG
+
+	var/list/all_damage_types = list()
+
+	var/list/all_damage_numbers = list()
 
 	//tick_rate = DECISECONDS_TO_TICKS(1)
 
@@ -29,9 +33,9 @@ SUBSYSTEM_DEF(damagetype)
 
 	for(var/A in subtypesof(/damagetype/))
 		var/damagetype/D = new A
-		all_damage_types[D.type] = D
+		SSdamagetype.all_damage_types[D.type] = D
 
-	log_subsystem(name,"Initialized [length(all_damage_types)] damage types.")
+	log_subsystem(name,"Initialized [length(SSdamagetype.all_damage_types)] damage types.")
 
 	CREATE(/mob/abstract/melee_checker,locate(1,1,1))
 

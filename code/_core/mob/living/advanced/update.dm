@@ -9,7 +9,7 @@
 	var/total_weight = 0
 	var/max_weight = 50 + get_attribute_power(ATTRIBUTE_ENDURANCE)*450
 
-	move_delay_multiplier = 1 //The lower the value, the faster you are.
+	worn_move_delay_multiplier = 1 //The lower the value, the faster you are.
 	var/list/blocking_clothing = list()
 	var/list/hidden_organs = list()
 
@@ -28,7 +28,8 @@
 		var/obj/hud/inventory/INV = C.loc
 		if(!INV || !INV.worn)
 			continue
-		move_delay_multiplier -= C.speed_bonus
+		var/quality_mod = I.get_quality_mod()
+		worn_move_delay_multiplier -= C.speed_bonus*max(1,quality_mod)
 		if(C.hidden_organs && !(C.enable_torn_overlay && C.get_damage_icon_number() > 0))
 			hidden_organs |= C.hidden_organs
 			blocking_clothing[C] = TRUE
@@ -43,10 +44,10 @@
 				continue
 			if(IS_INFINITY(overall_clothing_defense_rating[d_type]))
 				continue
-			overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]
+			overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]*quality_mod
 
-	move_delay_multiplier *= 1 + (total_weight/max_weight)
-	move_delay_multiplier = FLOOR(max(0.25,move_delay_multiplier),0.01)
+	worn_move_delay_multiplier *= 1 + (total_weight/max_weight)
+	worn_move_delay_multiplier = FLOOR(max(0.25,worn_move_delay_multiplier),0.01)
 
 	/*
 	for(var/k in overlays_assoc)

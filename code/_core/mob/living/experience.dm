@@ -27,9 +27,9 @@
 	var/experience/skill/S = get_skill(id)
 	return S.set_xp(desired_xp)
 
-/mob/living/proc/add_skill_xp(var/id,var/xp_to_add)
+/mob/living/proc/add_skill_xp(var/id,var/xp_to_add,var/difficulty_multiplier=TRUE)
 	var/experience/skill/S = get_skill(id)
-	return S.add_xp(xp_to_add)
+	return S.add_xp(xp_to_add,difficulty_multiplier=difficulty_multiplier)
 
 //Attributes
 /mob/living/proc/get_attribute(var/id,var/error_on_null = TRUE) //TODO: Find out if error_on_null is needed.
@@ -60,9 +60,9 @@
 	var/experience/attribute/A = get_attribute(id)
 	return A.set_xp(desired_xp)
 
-/mob/living/proc/add_attribute_xp(var/id,var/xp_to_add)
+/mob/living/proc/add_attribute_xp(var/id,var/xp_to_add,var/difficulty_multiplier=TRUE)
 	var/experience/attribute/A = get_attribute(id)
-	return A.add_xp(xp_to_add)
+	return A.add_xp(xp_to_add,difficulty_multiplier=difficulty_multiplier)
 
 /mob/living/get_xp_multiplier()
 	if(master)
@@ -71,9 +71,9 @@
 
 /mob/living/proc/initialize_attributes()
 
-	var/class/C = all_classes[class]
+	var/class/C = SSclass.all_classes[class]
 
-	if(!C) C = all_classes[/class/]
+	if(!C) C = SSclass.all_classes[/class/]
 
 	var/attribute_amount = length(SSexperience.all_attributes)*0.5
 	for(var/k in SSexperience.all_attributes) //k is the id
@@ -88,9 +88,9 @@
 
 /mob/living/proc/initialize_skills()
 
-	var/class/C = all_classes[class]
+	var/class/C = SSclass.all_classes[class]
 
-	if(!C) C = all_classes[/class/]
+	if(!C) C = SSclass.all_classes[/class/]
 
 	var/skills_amount = length(SSexperience.all_skills)*0.5
 	for(var/k in SSexperience.all_skills) //k is the id
@@ -158,11 +158,11 @@
 	if(new_level > old_level) //Only care if it's an increase.
 		switch(E.id)
 			if(ATTRIBUTE_STRENGTH,ATTRIBUTE_FORTITUDE,ATTRIBUTE_CONSTITUTION)
-				add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level)
+				add_attribute_xp(ATTRIBUTE_VITALITY,new_level-old_level,FALSE)
 			if(ATTRIBUTE_DEXTERITY,ATTRIBUTE_RESILIENCE,ATTRIBUTE_AGILITY)
-				add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level)
+				add_attribute_xp(ATTRIBUTE_ENDURANCE,new_level-old_level,FALSE)
 			if(ATTRIBUTE_INTELLIGENCE,ATTRIBUTE_WILLPOWER,ATTRIBUTE_SOUL)
-				add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level)
+				add_attribute_xp(ATTRIBUTE_WISDOM,new_level-old_level,FALSE)
 
 	update_level()
 

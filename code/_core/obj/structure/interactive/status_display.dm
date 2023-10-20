@@ -1,14 +1,14 @@
-var/global/list/status_displays = list()
+
 
 /proc/set_status_display(var/status_id,var/message)
 
-	if(!length(status_displays))
+	if(!length(SSobj.status_displays))
 		return FALSE
 
-	if(!length(status_displays[status_id]))
+	if(!length(SSobj.status_displays[status_id]))
 		return FALSE
 
-	for(var/k in status_displays[status_id])
+	for(var/k in SSobj.status_displays[status_id])
 		var/obj/structure/interactive/status_display/S = k
 		S.set_text(message)
 
@@ -71,14 +71,14 @@ var/global/list/status_displays = list()
 
 /obj/structure/interactive/status_display/global_display/Initialize()
 	if(status_id)
-		if(!status_displays[status_id])
-			status_displays[status_id] = list()
-		status_displays[status_id] += src
+		if(!SSobj.status_displays[status_id])
+			SSobj.status_displays[status_id] = list()
+		SSobj.status_displays[status_id] += src
 	return ..()
 
 /obj/structure/interactive/status_display/global_display/PreDestroy()
-	if(status_displays[status_id])
-		status_displays[status_id] -= src
+	if(SSobj.status_displays[status_id])
+		SSobj.status_displays[status_id] -= src
 	. = ..()
 
 /obj/structure/interactive/status_display/global_display/arrivals_01

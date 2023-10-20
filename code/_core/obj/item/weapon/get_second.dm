@@ -4,7 +4,7 @@
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0

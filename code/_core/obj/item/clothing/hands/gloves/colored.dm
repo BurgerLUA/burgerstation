@@ -29,7 +29,7 @@
 
 /obj/item/clothing/hands/gloves/colored/combat
 	name = "right combat glove"
-	desc = "Shoot guns with theese."
+	desc = "Shoot guns with these."
 	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your slavic bias."
 	color = "#404040"
 
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/hands/gloves/colored/combat/left
 	name = "left combat glove"
-	desc = "Shoot guns with theese."
+	desc = "Shoot guns with these."
 	desc_extended = "A combat glove. Sadly cannot be used for catching bullets to fuel your slavic bias."
 	color = "#404040"
 	icon_state = "inventory_left"
@@ -79,7 +79,7 @@
 
 /obj/item/clothing/hands/gloves/colored/insulated/left
 	name = "left insulated glove"
-	desc = "Hack airlocks with theese."
+	desc = "Hack airlocks with these."
 	desc_extended = "Someday, someone declared that the insulated gloves looked like shit. They turned into insulted gloves, but they got over it now. Also has infinite fatigue resist, hell if i know why."
 	color = "#FFFF00"
 
@@ -96,7 +96,7 @@
 
 /obj/item/clothing/hands/gloves/colored/padded
 	name = "right padded tactical glove"
-	desc = "Be tactical with theese."
+	desc = "Be tactical with these."
 	desc_extended = "A padded glove. Equipped with a fancier icon for extra tactical-ness."
 	icon = 'icons/obj/item/clothing/gloves/padded.dmi'
 
@@ -113,7 +113,7 @@
 
 /obj/item/clothing/hands/gloves/colored/padded/left
 	name = "left padded tactical glove"
-	desc = "Be tactical with theese."
+	desc = "Be tactical with these."
 	desc_extended = "A padded glove. Equipped with a fancier texture for extra tactical-ness."
 	icon_state = "inventory_left"
 	icon_state_worn = "worn_left"

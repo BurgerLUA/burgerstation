@@ -58,6 +58,24 @@ var/global/list/valid_gabber_sound_files = list()
 
 	can_attack_while_moving = TRUE
 
+	var/static/list/gabber_voice_slam = list(
+		"death",
+		"die",
+		"down"
+	)
+
+	var/static/list/gabber_voice_multishot = list(
+		"away",
+		"escape",
+		"run"
+	)
+
+	var/static/list/gabber_voice_parry = list(
+		"blocked",
+		"denied",
+		"failure"
+	)
+
 /mob/living/simple/gabber/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
 	return 1
 
@@ -184,12 +202,6 @@ var/global/list/valid_gabber_sound_files = list()
 	I.layer = 1000
 	add_overlay(I)
 
-var/global/list/gabber_voice_slam = list(
-	"death",
-	"die",
-	"down"
-)
-
 /mob/living/simple/gabber/proc/slam(var/turf/target)
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -315,11 +327,7 @@ var/global/list/gabber_voice_slam = list(
 	return TRUE
 
 
-var/global/list/gabber_voice_multishot = list(
-	"away",
-	"escape",
-	"run"
-)
+
 
 /mob/living/simple/gabber/proc/shoot_bouncy_projectiles(var/atom/desired_target,var/amount=3)
 
@@ -388,12 +396,6 @@ var/global/list/gabber_voice_multishot = list(
 /mob/living/simple/gabber/proc/create_turf_destruction(var/turf/T)
 	new /obj/effect/gabber_turf_destruction(T)
 	return TRUE
-
-var/global/list/gabber_voice_parry = list(
-	"blocked",
-	"denied",
-	"failure"
-)
 
 /mob/living/simple/gabber/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
 	. = ..()

@@ -34,7 +34,7 @@
 
 	var/list/active_players = list()
 
-	for(var/k in all_clients)
+	for(var/k in SSclient.all_clients)
 		active_players += k
 
 	to_chat("<b>[length(active_players)] Online Players</b><br>[english_list(active_players)]")
@@ -45,8 +45,8 @@
 
 	var/list/active_staff = list()
 
-	for(var/k in all_clients)
-		//var/client/C = all_clients[k]
+	for(var/k in SSclient.all_clients)
+		//var/client/C = SSclient.all_clients[k]
 		if(SSadmin.stored_user_ranks[k])
 			var/list/ranks = SSadmin.stored_user_ranks[k]
 			active_staff += "[k] ([english_list(ranks)])"

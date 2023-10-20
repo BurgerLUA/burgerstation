@@ -1,4 +1,4 @@
-var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
+
 
 /obj/hud/button/objectives
 	name = "objectives"
@@ -13,11 +13,11 @@ var/global/list/obj/hud/button/objectives/all_objective_buttons = list()
 	mouse_opacity = 2
 
 /obj/hud/button/objectives/New(var/desired_loc)
-	all_objective_buttons += src
+	SSobj.all_objective_buttons += src
 	return ..()
 
 /obj/hud/button/objectives/PreDestroy()
-	all_objective_buttons -= src
+	SSobj.all_objective_buttons -= src
 	return ..()
 
 /obj/hud/button/objectives/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)

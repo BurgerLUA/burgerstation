@@ -182,7 +182,7 @@
 			caller.to_chat(span("warning","All the information seems to be displayed in code you don't understand..."))
 			return FALSE
 
-	for(var/mob/living/advanced/player/P in all_players)
+	for(var/mob/living/advanced/player/P in SSliving.all_players)
 		if(P.loyalty_tag != desired_loyalty_tag)
 			continue
 		if(!can_track(P))
@@ -411,7 +411,7 @@
 		caller.to_chat(span("notice","This doesn't seem to be working for some reason..."))
 		return FALSE
 
-	for(var/mob/living/advanced/player/P in all_players)
+	for(var/mob/living/advanced/player/P in SSliving.all_players)
 		if(!can_track(P))
 			continue
 		var/signal_num = text2num("\ref[P]",16)
@@ -456,7 +456,7 @@
 	INTERACT_DELAY(1)
 
 	var/list/mobs = list()
-	for(a in all_mobs)
+	for(a in SSliving.all_mobs)
 		if(!can_track(a))
 			continue
 		var/signal_num = text2num("\ref[a]",16)

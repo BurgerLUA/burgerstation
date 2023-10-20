@@ -1,8 +1,8 @@
-var/global/list/obj/hud/button/message/all_hud_messages = list()
+
 
 /proc/set_message(var/desired_text,var/instant = FALSE)
 
-	for(var/k in all_hud_messages)
+	for(var/k in SSobj.all_hud_messages)
 		var/obj/hud/button/message/M = k
 		if(desired_text && M.owner)
 			var/area/A = get_area(M.owner)
@@ -34,11 +34,11 @@ var/global/list/obj/hud/button/message/all_hud_messages = list()
 
 /obj/hud/button/message/New(var/desired_loc)
 	alpha = 0
-	all_hud_messages += src
+	SSobj.all_hud_messages += src
 	return ..()
 
 /obj/hud/button/message/PreDestroy()
-	all_hud_messages -= src
+	SSobj.all_hud_messages -= src
 	return ..()
 
 /obj/hud/button/message/proc/set_text(var/desired_text,var/instant = FALSE)

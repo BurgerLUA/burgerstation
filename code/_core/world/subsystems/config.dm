@@ -1,14 +1,12 @@
-var/global/regex/forbidden_characters
-var/global/regex/forbidden_characters_name
-
-
-
 SUBSYSTEM_DEF(config)
 	name = "Config Subsystem"
 	desc = "Controls config options."
 	priority = SS_ORDER_CONFIG
 
 	var/list/config = list()
+
+	var/regex/forbidden_characters
+	var/regex/forbidden_characters_name
 
 /subsystem/config/Initialize()
 

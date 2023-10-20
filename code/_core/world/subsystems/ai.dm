@@ -18,6 +18,8 @@ SUBSYSTEM_DEF(ai)
 
 	var/next_chunk_update = 0
 
+	var/list/ai_attacking_players = list() //Assoc list. key is AI, value is list of players
+
 /subsystem/ai/unclog(var/mob/caller)
 
 	for(var/z in active_ai_by_z)

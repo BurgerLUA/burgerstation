@@ -3,8 +3,9 @@
 	desc = "Nutrition and flavor from a chanterelle mushroom."
 	color = "#FFDD8F"
 
-	nutrition_amount = 7
-	nutrition_quality_amount = 2
+	nutrition_fast_amount = 1
+	nutrition_normal_amount = 4
+	nutrition_quality_amount = 5
 
 	flavor = "mushroom"
 
@@ -17,7 +18,8 @@
 	desc = "Nutrition and flavor from a porcini mushroom."
 	color = "#68593E"
 
-	nutrition_amount = 7
+	nutrition_fast_amount = 1
+	nutrition_normal_amount = 3
 	nutrition_quality_amount = 6
 
 	flavor = "roasted mushroom"
@@ -31,8 +33,9 @@
 	desc = "Nutrition and flavor from a tomato."
 	color = "#C90000"
 
-	nutrition_amount = 6
-	nutrition_quality_amount = 2
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 5
 
 	flavor = "tomato"
 
@@ -45,8 +48,9 @@
 	desc = "Nutrition and flavor from mustard seeds."
 	color = "#EAC300"
 
-	nutrition_amount = 6
-	nutrition_quality_amount = 2
+	nutrition_fast_amount = 1
+	nutrition_normal_amount = 3
+	nutrition_quality_amount = 6
 
 	flavor = "mustard"
 
@@ -59,8 +63,9 @@
 	desc = "Nutrition and flavor from a pineapple."
 	color = "#C90000"
 
-	nutrition_amount = 8
-	nutrition_quality_amount = 1
+	nutrition_fast_amount = 2
+	nutrition_normal_amount = 5
+	nutrition_quality_amount = 3
 
 	flavor = "pineapple"
 
@@ -73,8 +78,9 @@
 	desc = "Nutrition and flavor from a cabbage."
 	color = "#658268"
 
-	nutrition_amount = 8
-	nutrition_quality_amount = 8
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 3
+	nutrition_quality_amount = 7
 
 	flavor = "cabbage"
 
@@ -87,8 +93,9 @@
 	desc = "Nutrition and flavor from lettuce."
 	color = "#5AAF36"
 
-	nutrition_amount = 6
-	nutrition_quality_amount = 5
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 4
+	nutrition_quality_amount = 6
 
 	flavor = "lettuce"
 
@@ -101,8 +108,9 @@
 	desc = "Nutrition and flavor from a coconut."
 	color = "#658268"
 
-	nutrition_amount = 15
-	nutrition_quality_amount = 2
+	nutrition_fast_amount = 3
+	nutrition_normal_amount = 4
+	nutrition_quality_amount = 3
 
 	flavor = "coconut"
 
@@ -112,12 +120,13 @@
 
 
 /reagent/nutrition/nut
-	name = "nut"
-	desc = "Nutrition and flavor from a nut."
+	name = "treenut"
+	desc = "Nutrition and flavor from a treenut."
 	color = "#658268"
 
-	nutrition_amount = 12
-	nutrition_quality_amount = 2
+	nutrition_fast_amount = 4
+	nutrition_normal_amount = 3
+	nutrition_quality_amount = 3
 
 	flavor = "nut"
 
@@ -130,8 +139,9 @@
 	desc = "Nutrition and flavor from nut butter."
 	color = "#658268"
 
-	nutrition_amount = 20
-	nutrition_quality_amount = 0
+	nutrition_fast_amount = 7
+	nutrition_normal_amount = 0
+	nutrition_quality_amount = 3
 
 	flavor = "nut butter"
 
@@ -145,10 +155,13 @@
 	desc = "Nutrition and flavor from a flower petal."
 	color = "#965A33"
 
-	nutrition_amount = 4
-	nutrition_quality_amount = 4
+	nutrition_fast_amount = 1
+	nutrition_normal_amount = 1
+	nutrition_quality_amount = 1
 
-	flavor = "flower petal"
+	flags_flavor = FLAG_FLAVOR_GROSS
+
+	flavor = "dirt"
 
 	liquid = 0
 
@@ -159,8 +172,9 @@
 	desc = "Opium-free washed poppy seeds."
 	color = "#511500"
 
-	nutrition_amount = 8
-	nutrition_quality_amount = 8
+	nutrition_fast_amount = 2
+	nutrition_normal_amount = 2
+	nutrition_quality_amount = 5
 
 	flavor = "poppy seeds"
 
@@ -200,8 +214,9 @@
 	desc = "Plant-based nutrition-eating germs."
 	color = "#511500"
 
-	nutrition_amount = -5
-	nutrition_quality_amount = 0
+	nutrition_fast_amount = -5
+	nutrition_normal_amount = -10
+	nutrition_quality_amount = -15
 
 	flavor = "hunger"
 
@@ -214,8 +229,9 @@
 	desc = "Nutrition and flavor from potatoes."
 	color = "#FFFFEA"
 
-	nutrition_amount = 6
-	nutrition_quality_amount = 3
+	nutrition_fast_amount = 3
+	nutrition_normal_amount = 6
+	nutrition_quality_amount = 1
 
 	flavor = "ground apples"
 
@@ -229,8 +245,9 @@
 	desc = "Nutrition and flavor from cacti."
 	color = "#5AFF36"
 
-	nutrition_amount = 2
-	nutrition_quality_amount = 5
+	nutrition_fast_amount = 0
+	nutrition_normal_amount = 4
+	nutrition_quality_amount = 1
 	hydration_amount = 10
 
 	flavor = "crunchy water"
@@ -245,9 +262,10 @@
 	desc = "The pain juice."
 	color = "#EF3232"
 
-	nutrition_amount = 1
-	nutrition_quality_amount = 1
-	hydration_amount = -4
+	nutrition_fast_amount = 1
+	nutrition_normal_amount = 6
+	nutrition_quality_amount = 3
+	hydration_amount = -5
 
 	flavor = "hurting"
 

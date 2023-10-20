@@ -97,9 +97,13 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 	I.SwapColor(rgb(0,255,0),color_scheme[2])
 	I.SwapColor(rgb(0,0,255),color_scheme[3])
 
-	I.SwapColor(rgb(255,255,0),color_scheme[4])
+	I.SwapColor(rgb(255,255,255),color_scheme[4])
 	I.SwapColor(rgb(255,0,255),color_scheme[5])
 	I.SwapColor(rgb(0,255,255),color_scheme[6])
+
+	I.SwapColor(rgb(255,255,0),color_scheme[7])
+
+
 
 	return TRUE
 

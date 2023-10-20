@@ -1,5 +1,7 @@
 /obj/item/trash
 	name = "trash"
+	desc = "Useless."
+	desc_extended = "Wrappers, cigarette butts and any remains that have no use other than to be recycled. Dispose responsibly."
 	icon = 'icons/obj/item/trash.dmi'
 	icon_state = "candy"
 	value = 1

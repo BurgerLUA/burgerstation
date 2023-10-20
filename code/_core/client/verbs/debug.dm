@@ -1,4 +1,4 @@
-var/global/list/debug_verbs = list(
+var/global/static/list/debug_verbs = list(
 	/client/verb/make_war,
 	/client/verb/stealth_test,
 	/client/verb/check_lights,
@@ -37,7 +37,7 @@ var/global/list/debug_verbs = list(
 )
 
 
-var/global/list/destroy_everything_whitelist = list(
+var/global/static/list/destroy_everything_whitelist = list(
 	/obj/item/,
 	/obj/decal/,
 	/obj/effect/,
@@ -250,7 +250,7 @@ var/global/list/destroy_everything_whitelist = list(
 	set name = "Print Garbage Collection"
 
 	if(!length(qdel_refs_to_type))
-		src.to_chat("Nothing has been found in the garbage collection system.")
+		src.to_chat("Nothing has been found in the garbage collection system. Yay!")
 		return TRUE
 
 	var/final_text = ""
@@ -270,7 +270,8 @@ var/global/list/destroy_everything_whitelist = list(
 		if(newest_ref_number < current_ref_number)
 			continue
 		var/var_edit_text = "<a href=?var_edit_ref=[ref_id]>[ref_id]</a>"
-		final_text += "<br>[var_edit_text]([o_type])"
+		var/garbage_checker_text = "<a href=?check_garbage=[ref_id]>FIND</a>"
+		final_text += "<br>[var_edit_text]([o_type], found in [max(refcount(D) - 2,1)] objects.) ([garbage_checker_text])"
 		bad_qdels++
 
 	final_text = "<h1>Found [bad_qdels] objects that refused to be deleted.</h1>[final_text]"
@@ -289,7 +290,7 @@ var/global/list/destroy_everything_whitelist = list(
 	set name = "Force Save Everyone (DANGER)"
 	set category = "Debug"
 
-	for(var/k in all_players)
+	for(var/k in SSliving.all_players)
 		var/mob/living/advanced/player/P = k
 		if(!P.ckey_last || !P.allow_save)
 			continue
@@ -411,7 +412,7 @@ var/global/list/destroy_everything_whitelist = list(
 	for(var/mob/living/advanced/A in view(VIEW_RANGE,src))
 		possible_mobs += A
 
-	for(var/mob/living/advanced/A in all_mobs_with_clients)
+	for(var/mob/living/advanced/A in SSliving.all_mobs_with_clients)
 		possible_mobs |= A
 
 	possible_mobs += "Cancel"
@@ -421,7 +422,7 @@ var/global/list/destroy_everything_whitelist = list(
 		to_chat(span("notice","You decide not to give a mob a loadout."))
 		return FALSE
 
-	var/loadouts_with_cancel = all_loadouts.Copy()
+	var/loadouts_with_cancel = SSloadouts.all_loadouts.Copy()
 	loadouts_with_cancel["Cancel"] = "Cancel"
 
 	var/desired_loadout = input("What loadout would you like to add to [desired_mob.name]?","Loadout Mob","Cancel") as null|anything in loadouts_with_cancel

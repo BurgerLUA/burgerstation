@@ -1,3 +1,9 @@
+/loadout/heretic/
+	use_random_quality_amounts = TRUE
+	quality_min = 50
+	quality_max = 100
+	quality_mod_min = 0.75
+
 /loadout/heretic/basic
 	spawning_items = list(
 		/obj/item/clothing/shirt/normal,
@@ -15,6 +21,8 @@
 		/obj/item/bullet_cartridge/shotgun_12{amount=5},
 		/obj/item/bullet_cartridge/shotgun_12{amount=5}
 	)
+
+
 
 /loadout/heretic/black
 	spawning_items = list(

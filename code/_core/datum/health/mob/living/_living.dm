@@ -26,29 +26,43 @@
 
 	var/mob/living/L = owner
 
-	var/armor_bonus = FLOOR(L.intoxication*0.025 + max(0,L.nutrition - 1000)*0.05,5)
-	var/physical_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5)
+	if(L.ckey_last)
+		var/intoxication_bonus = FLOOR(L.intoxication*0.025,1)
+		var/quality_bonus = FLOOR(max(L.get_nutrition_quality_mod() - 1,0)*50,1)
+		var/fat_bonus = FLOOR(max(0,L.nutrition_normal + L.nutrition_fast + L.nutrition_quality - L.nutrition_max)*0.05,1)
 
-	physical_bonus += max(0,STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR))
+		var/constitution_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_CONSTITUTION,0,1,2)*50,5) //Physical
+		var/soul_bonus = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,2)*50,1) //Magical
 
-	var/list/bonus_armor = list(
-		BLADE = armor_bonus + physical_bonus,
-		BLUNT = armor_bonus + physical_bonus,
-		PIERCE = armor_bonus + physical_bonus,
-		ARCANE = -armor_bonus,
-		COLD = armor_bonus*2,
-		PAIN = armor_bonus*2,
-		FATIGUE = FLOOR(L.get_attribute_power(ATTRIBUTE_RESILIENCE,0,1,2)*100,1),
-		SANITY = FLOOR(L.get_attribute_power(ATTRIBUTE_WISDOM,0,1,2)*100,1)
-	)
+		var/status_bonus =  STATUS_EFFECT_MAGNITUDE(L,TEMP_ARMOR)
 
-	for(var/damage_type in bonus_armor)
-		if(.[damage_type])
-			if(IS_INFINITY(.[damage_type]))
-				continue
-			.[damage_type] += bonus_armor[damage_type]
-		else
-			.[damage_type] = bonus_armor[damage_type]
+		var/list/bonus_armor = list(
+			BLADE = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
+			BLUNT = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
+			PIERCE = quality_bonus + constitution_bonus + intoxication_bonus + status_bonus,
+			LASER = quality_bonus - fat_bonus,
+			ARCANE = quality_bonus + soul_bonus - intoxication_bonus - status_bonus,
+			HEAT = quality_bonus - fat_bonus,
+			COLD = intoxication_bonus + fat_bonus,
+			SHOCK = quality_bonus,
+			ACID = quality_bonus,
+			BOMB = quality_bonus,
+			BIO = quality_bonus,
+			RAD = quality_bonus,
+			HOLY = quality_bonus + soul_bonus - status_bonus,
+			DARK = quality_bonus + soul_bonus - status_bonus,
+			FATIGUE = quality_bonus + constitution_bonus - intoxication_bonus,
+			PAIN = quality_bonus + constitution_bonus + intoxication_bonus,
+			SANITY = quality_bonus + soul_bonus + intoxication_bonus
+		)
+
+		for(var/damage_type in bonus_armor)
+			if(.[damage_type])
+				if(IS_INFINITY(.[damage_type]))
+					continue
+				.[damage_type] += bonus_armor[damage_type]
+			else
+				.[damage_type] = bonus_armor[damage_type]
 
 	for(var/list/bonus in L.defense_bonuses) //Superpowers and whatnot.
 		for(var/damage_type in bonus)
@@ -97,11 +111,14 @@
 	if(L.medical_hud_image)
 		var/health_icon_state
 		if(L.dead)
-			var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
-			if(time_left > 0)
-				health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
-			else
+			if(L.suicide || !L.is_player_controlled())
 				health_icon_state = "dead"
+			else
+				var/time_left = SScallback.all_callbacks["\ref[L]_make_unrevivable"] ? SScallback.all_callbacks["\ref[L]_make_unrevivable"]["time"] - world.time : 0
+				if(time_left > 0)
+					health_icon_state = "revive_[FLOOR((time_left/L.expiration_time)*3,1)]"
+				else
+					health_icon_state = "dead"
 		else if (L.has_status_effect(CRIT))
 			health_icon_state = "crit"
 		else

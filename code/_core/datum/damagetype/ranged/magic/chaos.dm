@@ -19,6 +19,8 @@
 		SKILL_PRAYER = DARK
 	)
 
+	force_attacker_armor_calculations_with = DARK
+
 /damagetype/ranged/magic/chaos/canine //Lazy way to stop the cursed canine from leveling magic stats, but still uses them for damage.
 
 	attribute_stats = list(

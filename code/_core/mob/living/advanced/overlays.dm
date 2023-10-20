@@ -1,7 +1,7 @@
 /mob/living/advanced/proc/add_overlay_tracked(var/k,var/atom/object,var/desired_plane,var/desired_layer,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_additional_blends,var/desired_never_blend = FALSE, var/desired_no_initial = FALSE, var/desired_pixel_x = 0, var/desired_pixel_y = 0, var/desired_transform)
 
 	if(!k)
-		k = "\ref[object]"
+		k = "\ref[object]_[src.type]"
 
 	if(overlays_assoc[k])
 		remove_overlay(k)

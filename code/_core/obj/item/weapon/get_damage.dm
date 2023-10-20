@@ -4,12 +4,12 @@
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
 
-	return D.get_damage_per_hit(armor_to_use)
+	return D.get_damage_per_hit(armor_to_use,200)
 
 /obj/item/weapon/melee/energy/get_damage_per_hit(var/armor_to_use=0)
 
@@ -17,12 +17,12 @@
 		log_error("Warning: [src.type] did not have a valid damage_type_on.")
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type_on]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type_on]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid damage_type.")
 		return 0
 
-	return D.get_damage_per_hit(armor_to_use)
+	return D.get_damage_per_hit(armor_to_use,200)
 
 /obj/item/weapon/ranged/get_damage_per_hit(var/armor_to_use=0)
 
@@ -31,12 +31,12 @@
 	if(!damage_type_to_use)
 		return 0
 
-	var/damagetype/D = all_damage_types[damage_type_to_use]
+	var/damagetype/D = SSdamagetype.all_damage_types[damage_type_to_use]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid ranged_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit(armor_to_use) * bullet_count * damage_mod
+	return D.get_damage_per_hit(armor_to_use,200) * bullet_count * damage_mod
 
 /obj/item/weapon/ranged/bullet/get_damage_per_hit(var/armor_to_use=0)
 
@@ -52,9 +52,9 @@
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0
 
-	var/damagetype/D = all_damage_types[initial_damage_type]
+	var/damagetype/D = SSdamagetype.all_damage_types[initial_damage_type]
 	if(!D)
 		log_error("Warning: [src.type] did not have a valid initial_damage_type.")
 		return 0
 
-	return D.get_damage_per_hit(armor_to_use) * initial(BC.projectile_count) * damage_mod
+	return D.get_damage_per_hit(armor_to_use,200) * initial(BC.projectile_count) * damage_mod

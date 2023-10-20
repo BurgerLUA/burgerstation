@@ -130,7 +130,7 @@ mob/living/advanced/revive()
 
 	return TRUE
 
-var/global/list/spread_icons = list(
+var/global/static/list/spread_icons = list(
 	'icons/pointers/accuracy/0.dmi',
 	'icons/pointers/accuracy/1.dmi',
 	'icons/pointers/accuracy/2.dmi',

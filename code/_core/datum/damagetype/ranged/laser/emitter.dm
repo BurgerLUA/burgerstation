@@ -3,7 +3,7 @@
 		LASER = 100,
 	)
 	attack_damage_penetration = list(
-		LASER = 200
+		LASER = 0
 	)
 
 /damagetype/ranged/laser/emitter/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)

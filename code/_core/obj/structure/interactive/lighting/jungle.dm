@@ -1,11 +1,3 @@
-var/global/list/valid_jungle_colors = list(
-	"#FFD319",
-	"#FF901F",
-	"#FF2975",
-	"#F222FF",
-	"#F222FF"
-)
-
 /obj/structure/interactive/lighting/jungle
 	name = "jungle light"
 	icon = 'icons/obj/structure/flora/jungle_lights.dmi'
@@ -19,6 +11,14 @@ var/global/list/valid_jungle_colors = list(
 	desired_light_color = "#FFFFFF"
 
 	var/max_types = 0
+
+	var/static/list/valid_jungle_colors = list(
+		"#FFD319",
+		"#FF901F",
+		"#FF2975",
+		"#F222FF",
+		"#F222FF"
+	)
 
 /obj/structure/interactive/lighting/jungle/update_atom_light()
 	if(powered)

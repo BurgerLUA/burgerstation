@@ -1,5 +1,3 @@
-var/global/list/ckey_to_tickets = list() //For use in printing active tickets when logging in after a disconnect.
-var/global/ticket_number_counter = 1
 
 
 /ticket/
@@ -25,8 +23,8 @@ var/global/ticket_number_counter = 1
 	. = ..()
 
 /ticket/New(var/desired_loc)
-	ticket_number = ticket_number_counter
-	ticket_number_counter++
+	ticket_number = SSclient.ticket_number_counter
+	SSclient.ticket_number_counter++
 	password = rand(1,1000000)
 	. = ..()
 
@@ -86,7 +84,7 @@ var/global/ticket_number_counter = 1
 
 	if(attacker == victim && !length(message_log)) //Gotta send the message to all moderators if its the first message from a player who needs help.
 		var/notified_admins = 0
-		for(var/k in all_clients)
+		for(var/k in SSclient.all_clients)
 			var/client/C2 = CLIENT(k)
 			if(C2.permissions & FLAG_PERMISSION_MODERATOR)
 				C2.to_chat(span("ahelp","[ICON_TO_HTML(chat_tags.icon,"HELP",32,10)]New ticket (#[ticket_number]) message from <a href='?src=\ref[src];password=[password]'>[victim]</a>: [message]"))
@@ -113,9 +111,9 @@ var/global/ticket_number_counter = 1
 
 	involved_ckeys[C.ckey] = TRUE
 
-	if(!ckey_to_tickets[C.ckey])
-		ckey_to_tickets[C.ckey] = list()
-	ckey_to_tickets[C.ckey] += src
+	if(!SSclient.ckey_to_tickets[C.ckey])
+		SSclient.ckey_to_tickets[C.ckey] = list()
+	SSclient.ckey_to_tickets[C.ckey] += src
 
 	var/client/VC = CLIENT(victim)
 	if(victim == attacker) //Victim called for the ahelp and someone has joined the ticket.

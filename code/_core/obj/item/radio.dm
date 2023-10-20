@@ -1,6 +1,7 @@
 /obj/item/radio
 	name = "radio"
-	desc = "It's a radio"
+	desc = "; COMMS DOWN"
+	desc_extended = "A compact station bounced radio, for when standard headset-based communication methods fail."
 	icon = 'icons/obj/item/radio.dmi'
 	icon_state = "inventory"
 
@@ -9,6 +10,10 @@
 	value = 20
 
 	weight = 1
+
+/obj/item/radio/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += span("notice","ALT+Click to start broadcasting nearby speech.<br>Use the mouse wheel to change frequencies.<br>Use in hands to toggle the signal reciever.")
 
 /obj/item/radio/PreDestroy()
 	QDEL_NULL(stored_radio)

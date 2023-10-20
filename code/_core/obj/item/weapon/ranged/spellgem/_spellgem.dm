@@ -24,17 +24,20 @@
 
 	requires_bullets = FALSE
 
+/obj/item/weapon/ranged/spellgem/get_examine_list(var/mob/examiner)
+	. = ..()
+	. += div("notice","Base mana cost: [get_base_mana_cost()]")
+
 /obj/item/weapon/ranged/spellgem/get_base_value()
 	. = ..()
 	. *= 1 - min(0.5,spread_per_shot/180)
 	. = CEILING(.,1)
 
 /obj/item/weapon/ranged/spellgem/proc/get_base_mana_cost()
-	. = get_damage_per_hit(100)
-	. *= bullet_count
-	. *= 0.5 + (projectile_speed/TILE_SIZE)*0.5
-	. *= 1 - (spread_per_shot/360)
-	. *= 0.25
+	. = get_damage_per_hit(0)
+	. *= 1 + bullet_count*0.75
+	. *= max(0.125,1 - (spread_per_shot/180))
+	. *= 0.125
 	. = CEILING(.,1)
 
 /obj/item/weapon/ranged/spellgem/update_attachment_stats()
@@ -54,11 +57,6 @@
 				attachment_stats[support_type] = support_value
 			else
 				attachment_stats[support_type] *= support_value
-
-	if(attachment_stats["mana_cost_multiplier"])
-		attachment_stats["mana_cost_multiplier"] *= W.wand_mana_multiplier
-	else
-		attachment_stats["mana_cost_multiplier"] = W.wand_mana_multiplier
 
 	if(attachment_stats["mana_cost_multiplier"] < 0.25)
 		attachment_stats["mana_cost_multiplier"] = 0.25

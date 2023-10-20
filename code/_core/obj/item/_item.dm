@@ -1,6 +1,7 @@
 /obj/item/
 	name = "item"
-	desc = "Oh my god it's an item."
+	desc = "It's a... thing."
+	desc_extended = "This item has no description available."
 
 	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_DIR | VIS_INHERIT_ID
 
@@ -19,9 +20,12 @@
 
 	var/vendor_name = null //Name for the vender. Set to null for it to just use the initial name var.
 
+	var/atom/last_interacted
+
 	size = SIZE_0
 	var/weight = 0 //DEPRICATED
 	var/quality = -1 //-1 means quality isn't used.
+	var/quality_max = 100 //Maximum possible quality for this item.
 	var/rarity = RARITY_COMMON //Arbitrary Value
 	var/tier = -1 //-1 means not set.
 	var/tier_type
@@ -39,11 +43,11 @@
 
 	var/is_container = FALSE //Setting this to true will open the below inventories on use.
 	var/dynamic_inventory_count
-	var/obj/hud/inventory/dynamic/dynamic_inventory_type = /obj/hud/inventory/dynamic
+	var/obj/hud/inventory/dynamic/dynamic_inventory_type
 	var/container_max_size //This item has a container, how much should it be able to hold in each slot?
 	var/container_max_slots //How much each inventory slot can hold.
-	var/container_blacklist = list()
-	var/container_whitelist = list()
+	var/container_blacklist
+	var/container_whitelist
 	var/max_inventory_x = MAX_INVENTORY_X
 	var/inventory_category = "dynamic"
 	var/starting_inventory_y = "BOTTOM:12+1.25"
@@ -56,7 +60,7 @@
 	var/container_temperature //How much to add or remove from the ambient temperature for calculating reagent temperature. Use for coolers.
 	var/container_temperature_mod //The temperature mod of the inventory object. Higher values means faster temperature transition. Lower means slower.
 
-	var/list/obj/hud/inventory/inventories = list() //The inventory holders this object has
+	var/list/obj/hud/inventory/inventories //The inventory holders this object has
 
 	icon_state = "inventory"
 	var/icon_state_held_left = "held_left"
@@ -87,21 +91,14 @@
 
 	var/soul_bound = null
 
-	var/list/inventory_bypass = list()
+	var/list/inventory_bypass
 
 	var/crafting_id = null //Can be a string or a path. Defaults to its path if no value is set.
 
 	var/inventory_sound = 'sound/items/drop/food.ogg' //Sound when moved to an inventory.
 	var/drop_sound = 'sound/items/drop/accessory.ogg' //Sound when moved elsewhere
 
-	var/list/inventory_sounds = list(
-		'sound/effects/inventory/rustle1.ogg',
-		'sound/effects/inventory/rustle2.ogg',
-		'sound/effects/inventory/rustle3.ogg',
-		'sound/effects/inventory/rustle4.ogg',
-		'sound/effects/inventory/rustle5.ogg'
-	)
-
+	var/list/inventory_sounds
 	var/grinder_reagent //The reagent created if this object is grinded in a grinder.
 	var/grinder_reagent_amount //The amount to create.
 
@@ -114,7 +111,7 @@
 	var/held_pixel_x = 0
 	var/held_pixel_y = 0
 
-	var/atom/last_interacted
+	//var/atom/last_interacted
 
 	var/dyeable = FALSE
 
@@ -129,7 +126,7 @@
 
 	var/block_power = 0.5 //Higher values means it blocks more. Normal weapons should have 1, while stronger items should have between 2-5
 
-	var/list/polymorphs = list()
+	var/list/polymorphs
 
 	var/consume_verb = "drink out of"
 	var/transfer_amount = 10
@@ -183,7 +180,7 @@
 
 	var/can_negate_damage = FALSE
 
-	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this.
+	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this to purchase in vendors.
 
 /obj/item/proc/can_unlock(var/mob/caller)
 	return TRUE
@@ -217,7 +214,7 @@
 
 /obj/item/proc/use_condition(var/amount_to_use=1)
 
-	if(!uses_until_condition_fall)
+	if(uses_until_condition_fall <= 0)
 		return FALSE
 
 	uses_until_condition_fall -= amount_to_use
@@ -230,6 +227,7 @@
 
 	return TRUE
 
+
 /obj/item/Crossed(atom/movable/O,atom/OldLoc)
 	return TRUE
 
@@ -240,23 +238,21 @@
 
 	. = ..()
 
-	if(length(polymorphs) || color != initial(color))
+	if(length(polymorphs) || color != initial(color) || get_damage_icon_number() != 0)
 		update_sprite()
+
 	if(!crafting_id)
 		crafting_id = src.type
 
 	if(is_turf(loc))
 		layer = initial(layer) + clamp(value / 10000,0,0.999)
 
-/obj/item/proc/get_damage_icon_number(var/desired_quality = quality)
-	if(quality == -1)
-		return 0
-	return FLOOR(clamp( (100 - quality) / (100/5),0,5 ),1)
-
 /obj/item/get_base_value()
-	. = initial(value) * amount * price_multiplier
+	. = initial(value) * amount
 	if(quality != -1)
-		. *= (0.5 + 0.5*clamp(quality/100,0.25,1.5))
+		. *= (0.5 + 0.5*clamp(quality/100,0.25,2))
+		. *= (0.75 + 0.25*clamp(quality_max/100,0.25,2))
+		. = CEILING(.,1)
 
 /obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
 	if(inaccuracy_modifier <= 0)
@@ -284,7 +280,7 @@
 		qdel(src)
 	else
 		update_sprite()
-		update_value()
+		value = get_base_value()
 
 	return amount_to_add
 
@@ -396,7 +392,11 @@
 			inventories[i].inventory_temperature_mod = container_temperature_mod
 
 	for(var/i=1, i <= dynamic_inventory_count, i++)
-		var/obj/hud/inventory/dynamic/D = new dynamic_inventory_type(src)
+		var/obj/hud/inventory/dynamic/D
+		if(dynamic_inventory_type)
+			D = new dynamic_inventory_type(src)
+		else
+			D = new(src)
 		//Doesn't need to be initialized as it's done later.
 		D.id = "\ref[src]_dynamic_[i]"
 		D.slot_num = i
@@ -415,6 +415,8 @@
 			D.inventory_temperature_mod = container_temperature_mod
 		if(isnum(container_priority))
 			D.priority = container_priority
+		if(!inventories)
+			inventories = list()
 		inventories += D
 
 	. = ..()
@@ -435,7 +437,7 @@
 
 	. = ..()
 
-	if(is_inventory(src.loc))
+	if(. && is_inventory(src.loc))
 		var/obj/hud/inventory/I = src.loc
 		I.overlays.Cut()
 		I.update_overlays()
@@ -446,7 +448,6 @@
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
 	. += div("rarity [rarity]",capitalize(rarity))
-
 	if(tier >= 1)
 		. += div("rarity center","Tier \Roman[tier][tier_type ? " [tier_type]" : ""].")
 	else if(tier == 0)
@@ -456,16 +457,34 @@
 		. += div("bad bold center","CONTRABAND")
 
 	if(quality != -1)
-		if(quality <= 0)
-			. += div("rarity bad","<b>Quality</b>: BROKEN")
-		else if(quality >= 200)
-			. += div("rarity legendary","<b>Quality</b>: [FLOOR(quality,1)]%")
-		else if(quality > 100)
-			. += div("rarity good","<b>Quality</b>: [FLOOR(quality,1)]%")
-		else if(quality <= 60)
-			. += div("rarity bad","<b>Quality</b>: [FLOOR(quality,1)]%")
+
+		//Maximum Quality
+		if(quality_max >= 200)
+			. += div("rarity legendary","<b>Masterwork</b>")
+		else if(quality_max > 120)
+			. += div("rarity good","<b>Superior</b>")
+		else if(quality_max > 100)
+			. += div("rarity good","<b>Crafted</b>")
+		else if(quality_max == 100)
+			. += div("rarity common","<b>Factory New</b>")
+		else if(quality_max > 60)
+			. += div("rarity bad","<b>Used</b>")
+		else if(quality_max > 0)
+			. += div("rarity bad","<b>Surplus</b>")
 		else
-			. += div("rarity common","<b>Quality</b>: [FLOOR(quality,1)]%")
+			. += div("rarity bad","<b>Unsalvagable</b>")
+
+		//Current Quality
+		if(quality >= 200)
+			. += div("rarity legendary","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else if(quality > 100)
+			. += div("rarity good","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else if(quality > 60)
+			. += div("rarity common","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else if(quality > 0)
+			. += div("rarity bad","<b>Condition</b>: [FLOOR(quality,1)]%")
+		else
+			. += div("rarity bad","<b>Condition</b>: BROKEN")
 
 	if(luck < 50)
 		. += div("rarity bad","<b>Luck</b>: -[50 - luck]")
@@ -480,7 +499,7 @@
 	. += div("examine_description_long",src.desc_extended)
 
 /obj/item/proc/get_display_value()
-	return get_base_value()
+	return value
 
 /obj/item/get_examine_details_list(var/mob/examiner)
 	. = ..()
@@ -702,6 +721,13 @@
 		caller.to_chat(span("notice","\The [src.name] is empty!"))
 		return FALSE
 
+	if(L.is_stuffed())
+		if(caller == L)
+			caller.to_chat(span("warning","You can't eat anymore! You're stuffed!"))
+		else
+			caller.to_chat(span("warning","You can't forcefeed [L.name] anymore! They're stuffed!"))
+		return FALSE
+
 	if(is_living(caller))
 		var/mob/living/C = caller
 		if(C.attack_flags & CONTROL_MOD_DISARM) //Splash
@@ -750,7 +776,7 @@
 	return ..()
 
 /obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
-	damage_multiplier *= get_quality_bonus(0.25,2)
+	damage_multiplier *= get_quality_mod()
 	. = ..()
 
 /obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
@@ -819,44 +845,6 @@
 		I.blend_mode = BLEND_INSET_OVERLAY
 		I.color = blood_stain_color
 		add_overlay(I)
-
-
-/obj/item/proc/get_quality_bonus(var/minimum=0.5,var/maximum=2,var/threshold=60)
-	var/quality_mod_to_use = 1
-	if(quality != -1)
-		if(quality < 100)
-			quality_mod_to_use = min(1,quality/threshold) //Start failing only below the threshold.
-		else
-			quality_mod_to_use = quality/100
-		quality_mod_to_use = FLOOR(quality_mod_to_use,0.01)
-	return min(minimum + quality_mod_to_use*(1-minimum),maximum)
-
-/obj/item/proc/adjust_quality(var/quality_to_add=0)
-
-	if(quality == -1)
-		return FALSE
-
-	if(quality >= 200) //Cannot add or remove quality.
-		return TRUE
-
-	var/original_quality = quality
-	var/original_damage_num = get_damage_icon_number()
-
-	quality = FLOOR(quality + quality_to_add,0.01)
-
-	if(original_quality > 0 && quality <= 0)
-		visible_message(span("danger","\The [src.name] breaks!"))
-
-	if(enable_torn_overlay || enable_damage_overlay)
-		var/desired_damage_num = get_damage_icon_number()
-		if(original_damage_num != desired_damage_num)
-			update_sprite()
-			add_blend("damage_overlay_noise", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
-			add_blend("damage_overlay", desired_icon_state = desired_damage_num ? "[desired_damage_num]" : null)
-
-	update_value()
-
-	return TRUE
 
 /obj/item/dust(var/atom/source)
 	qdel(src)
