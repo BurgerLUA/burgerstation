@@ -136,6 +136,8 @@
 
 /obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
+	CHECK_SPAM(5)
+
 	if(!associated_item)
 		log_error("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
 		update_owner(null)
@@ -151,19 +153,19 @@
 
 		var/obj/item/I = associated_vendor.purchase_item(caller,params,associated_item,associated_cost)
 
-		if(I && !I.qdeleting && is_item(I)) //Sometimes the item is abstract.
+		if(!I || I.qdeleting && !is_item(I)) //Sometimes the item is abstract.
+			return TRUE
 
-			if(object && is_item(object) && I.can_transfer_stacks_to(object))
-				var/stacks_transfered = I.transfer_amount_to(object)
-				if(stacks_transfered)
-					caller.to_chat(span("notice","You restock \the [object.name] with [stacks_transfered] stacks."))
-				else
-					caller.to_chat(span("warning","You can't restock \the [src.name], it's full!"))
+		if(object && is_item(object) && I.can_transfer_stacks_to(object))
+			var/stacks_transfered = I.transfer_amount_to(object)
+			if(stacks_transfered)
+				caller.to_chat(span("notice","You restock \the [object.name] with [stacks_transfered] stacks."))
+			else
+				caller.to_chat(span("warning","You can't restock \the [src.name], it's full!"))
 
-			if(is_advanced(caller))
-				var/mob/living/advanced/A = caller
-				if(A.movement_flags & MOVEMENT_RUNNING && I.quick_equip(A))
-					return .
+		if(is_advanced(caller))
+			var/mob/living/advanced/A = caller
+			if(!(A.movement_flags & MOVEMENT_RUNNING && I.quick_equip(A)))
 				A.put_in_hands(I,params)
 
 

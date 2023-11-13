@@ -150,7 +150,7 @@
 	INTERACT_CHECK
 	INTERACT_DELAY(3)
 
-	if(!powered) //Not powered.
+	if((apc_powered || wire_powered) && !powered) //Not powered.
 		return null
 
 	if(!spend_currency(caller,item_value))

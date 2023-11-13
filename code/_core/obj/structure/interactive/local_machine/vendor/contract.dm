@@ -27,6 +27,7 @@
 	health = null
 
 	apc_powered = FALSE //Does not require power.
+	apc_powered = FALSE //Does not require power.
 
 	interact_distance = VIEW_RANGE
 
