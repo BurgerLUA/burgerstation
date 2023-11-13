@@ -1,6 +1,5 @@
 /obj/item/contract/ashwalker
 	name = "contract: Kill Ashwalkers"
-	desc = "Kill Ashwalkers."
 	type_to_check = /mob/living/advanced/npc/ashwalker
 	objective_text = "Ashwalkers killed"
 

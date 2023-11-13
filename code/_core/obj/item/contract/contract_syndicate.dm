@@ -1,6 +1,5 @@
 /obj/item/contract/syndicate
 	name = "contract: Kill Syndicate"
-	desc = "Kill Syndicate."
 	type_to_check = /mob/living/advanced/npc/syndicate
 	objective_text = "Syndicate killed"
 

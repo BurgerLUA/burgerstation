@@ -1,7 +1,6 @@
 //Arachnids
 /obj/item/contract/arachnids
-	name = "Kill Arachnids"
-	desc = "Kill Arachnids."
+	name = "contract: Kill Arachnids"
 	type_to_check = /mob/living/simple/arachnid
 	objective_text = "Arachnids killed"
 
