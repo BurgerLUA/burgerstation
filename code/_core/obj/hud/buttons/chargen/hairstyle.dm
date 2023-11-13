@@ -62,8 +62,6 @@ mob/living/advanced/proc/handle_hairstyle_chargen(var/hair_num=-1,var/desired_co
 	else
 		change_organ_visual("hair_head", desired_icon = S.default_icon_hair, desired_icon_state = hair_icon, should_update = update_blends)
 
-
-
 	return TRUE
 
 /obj/hud/button/chargen/change_hairstyle

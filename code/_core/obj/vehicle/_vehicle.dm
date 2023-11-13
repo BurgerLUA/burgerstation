@@ -233,7 +233,7 @@
 	L.show_hud(TRUE,FLAG_HUD_VEHICLE,speed=SECONDS_TO_DECISECONDS(1))
 	update_sprite()
 
-	return ..()
+	return TRUE
 
 /mob/living/vehicle/post_move()
 
@@ -247,7 +247,7 @@
 /mob/living/vehicle/proc/exit_vehicle(atom/movable/Obj, atom/newloc)
 
 	if(!is_advanced(Obj))
-		return ..()
+		return FALSE
 
 	var/mob/living/advanced/L = Obj
 	L.driving = null
@@ -261,7 +261,7 @@
 	L.show_hud(FALSE,FLAG_HUD_VEHICLE,speed=0)
 	update_sprite()
 
-	return ..()
+	return TRUE
 
 /mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
 

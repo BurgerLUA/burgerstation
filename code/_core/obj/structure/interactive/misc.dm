@@ -100,8 +100,8 @@ obj/structure/interactive/misc/mirror/chargen/Uncrossed(atom/movable/O)
 	if(istype(O,/mob/living/advanced/player/antagonist/))
 		var/mob/living/advanced/player/P = O
 		P.add_chargen_buttons()
-		P.handle_hairstyle_chargen(-1)
-		P.handle_beardstyle_chargen(-1)
+		P.handle_hairstyle_chargen(-1,update_blends=FALSE)
+		P.handle_beardstyle_chargen(-1,update_blends=FALSE)
 		P.show_hud(TRUE,FLAG_HUD_CHARGEN,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
 
 /obj/structure/interactive/misc/mirror/cracked/chargen/Uncrossed(atom/movable/O)
