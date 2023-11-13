@@ -136,7 +136,7 @@
 
 /obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 
-	CHECK_SPAM(5)
+	SPAM_CHECK(5)
 
 	if(!associated_item)
 		log_error("Warning: Vendor button [src.get_debug_name()] did not have an associated_item!")
