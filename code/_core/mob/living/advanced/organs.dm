@@ -40,13 +40,13 @@
 /obj/item/clothing/back/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)
-		A.remove_overlay("\ref[src]_wings_behind")
-		A.remove_overlay("\ref[src]_wings_front")
+		A.remove_overlay("\ref[src]_behind")
+		A.remove_overlay("\ref[src]_front")
 
 	if(add)
 		if(worn)
 			A.add_overlay_tracked(
-				"\ref[src]_wings_behind",
+				"\ref[src]_behind",
 				src,
 				desired_layer = LAYER_MOB_WINGS_BEHIND,
 				desired_icon = initial(src.icon),
@@ -57,7 +57,7 @@
 				desired_color = src.color
 			)
 			A.add_overlay_tracked(
-				"\ref[src]_wings_front",
+				"\ref[src]_front",
 				src,
 				desired_layer = LAYER_MOB_WINGS_FRONT,
 				desired_icon=initial(src.icon),
@@ -70,8 +70,8 @@
 
 	if(update)
 		if(worn)
-			A.update_overlay_tracked("\ref[src]_wings_behind",desired_color=src.color)
-			A.update_overlay_tracked("\ref[src]_wings_front",desired_color=src.color)
+			A.update_overlay_tracked("\ref[src]_behind",desired_color=src.color)
+			A.update_overlay_tracked("\ref[src]_front",desired_color=src.color)
 
 
 /obj/item/organ/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
@@ -99,12 +99,12 @@
 /obj/item/organ/antennae/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)
-		A.remove_overlay("\ref[src]_antennae_behind")
-		A.remove_overlay("\ref[src]_antennae_front")
+		A.remove_overlay("\ref[src]_behind")
+		A.remove_overlay("\ref[src]_front")
 
 	if(add)
 		A.add_overlay_tracked(
-			"\ref[src]_antennae_behind",
+			"\ref[src]_behind",
 			src,
 			desired_layer = LAYER_MOB_ANTENNAE_BEHIND,
 			desired_icon_state = "[src.icon_state]_BEHIND",
@@ -112,7 +112,7 @@
 			desired_pixel_y =src.worn_pixel_y
 		)
 		A.add_overlay_tracked(
-			"\ref[src]_antennae_front",
+			"\ref[src]_front",
 			src,
 			desired_layer = LAYER_MOB_ANTENNAE_FRONT,
 			desired_icon_state = "[src.icon_state]_FRONT",
@@ -121,20 +121,20 @@
 		)
 
 	if(update)
-		A.update_overlay_tracked("\ref[src]_antennae_behind")
-		A.update_overlay_tracked("\ref[src]_antennae_front")
+		A.update_overlay_tracked("\ref[src]_behind")
+		A.update_overlay_tracked("\ref[src]_front")
 
 	return TRUE
 
 /obj/item/organ/wings/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)
-		A.remove_overlay("\ref[src]_wings_behind")
-		A.remove_overlay("\ref[src]_wings_front")
+		A.remove_overlay("\ref[src]_behind")
+		A.remove_overlay("\ref[src]_front")
 
 	if(add)
 		A.add_overlay_tracked(
-			"\ref[src]_wings_behind",
+			"\ref[src]_behind",
 			src,
 			desired_layer = LAYER_MOB_WINGS_BEHIND,
 			desired_icon_state = "[src.icon_state]_BEHIND",
@@ -142,7 +142,7 @@
 			desired_pixel_y = src.worn_pixel_y
 		)
 		A.add_overlay_tracked(
-			"\ref[src]_wings_front",
+			"\ref[src]_front",
 			src,
 			desired_layer = LAYER_MOB_WINGS_FRONT,
 			desired_icon_state = "[src.icon_state]_FRONT",
@@ -151,8 +151,8 @@
 		)
 
 	if(update)
-		A.update_overlay_tracked("\ref[src]_wings_behind")
-		A.update_overlay_tracked("\ref[src]_wings_front")
+		A.update_overlay_tracked("\ref[src]_behind")
+		A.update_overlay_tracked("\ref[src]_front")
 
 
 	return TRUE
@@ -160,26 +160,26 @@
 /obj/item/organ/tail/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
 
 	if(remove)
-		A.remove_overlay("\ref[src]_tail_behind")
-		A.remove_overlay("\ref[src]_tail_front")
+		A.remove_overlay("\ref[src]_behind")
+		A.remove_overlay("\ref[src]_front")
 
 	if(add)
 		A.add_overlay_tracked(
-			"\ref[src]_tail_behind",
+			"\ref[src]_behind",
 			src,
 			desired_layer = LAYER_MOB_TAIL_BEHIND,
 			desired_icon_state = "tail_behind"
 		)
 		A.add_overlay_tracked(
-			"\ref[src]_tail_front",
+			"\ref[src]_front",
 			src,
 			desired_layer = LAYER_MOB_TAIL_FRONT,
 			desired_icon_state = "tail_front"
 		)
 
 	if(update)
-		A.update_overlay_tracked("\ref[src]_tail_behind")
-		A.update_overlay_tracked("\ref[src]_tail_front")
+		A.update_overlay_tracked("\ref[src]_behind")
+		A.update_overlay_tracked("\ref[src]_front")
 
 
 	return TRUE

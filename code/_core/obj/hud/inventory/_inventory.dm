@@ -180,6 +180,22 @@
 			I.pixel_x = x_offset
 			add_overlay(I)
 
+/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
+
+	var/mob/living/advanced/A = owner
+
+	var/desired_icon_state = item_to_update.slot_icons ? "[item_to_update.icon_state_worn]_[src.id]" : item_to_update.icon_state_worn
+
+	item_to_update.initialize_worn_blends(desired_icon_state)
+
+	item_to_update.handle_overlays(
+		A,
+		add=TRUE,
+		worn=TRUE,
+		icon_state_override=desired_icon_state
+	)
+
+	return TRUE
 
 /obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
 
@@ -297,7 +313,7 @@
 
 	if(!A.overlays_assoc["\ref[item_to_update]"])
 		A.add_overlay_tracked(
-			"\ref[item_to_update]_[item_to_update.type]",
+			"\ref[item_to_update]",
 			item_to_update,
 			desired_icon = desired_icon,
 			desired_icon_state = desired_icon_state,
@@ -406,29 +422,6 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
-
-	var/mob/living/advanced/A = owner
-
-	var/desired_icon_state
-
-	if(item_to_update.slot_icons)
-		desired_icon_state = "[item_to_update.icon_state_worn]_[src.id]"
-	else
-		desired_icon_state = item_to_update.icon_state_worn
-
-	item_to_update.initialize_worn_blends(desired_icon_state)
-
-	item_to_update.handle_overlays(
-		A,
-		add=TRUE,
-		worn=TRUE,
-		icon_state_override=desired_icon_state
-	)
-
-	return TRUE
-
-
 /obj/hud/inventory/proc/drop_objects(var/turf/T,var/disarm=FALSE)
 
 	. = list()
@@ -441,10 +434,11 @@
 			. += I
 
 /obj/hud/inventory/proc/delete_objects()
+	var/turf/T = get_turf(src)
 	for(var/k in contents)
 		var/obj/item/I = k
 		I.delete_on_drop = TRUE
-		remove_object(I,null)
+		remove_object(I,T)
 
 /obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
