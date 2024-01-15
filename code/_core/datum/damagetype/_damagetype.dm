@@ -109,7 +109,7 @@
 
 	var/cqc_tag
 
-	var/can_be_parried = TRUE //Can this damage be parried?
+	var/can_be_parried = FALSE //Can this damage be parried?
 
 	var/debug = FALSE
 
@@ -145,13 +145,15 @@
 
 	// 0 = no logs
 	// 1 = victim recieves logs only
-	// 2 = victim and attacks recieves logs
+	// 2 = victim and attacker recieves logs
 	// 3 = everyone (in range) recieves logs (hit logging must be enabled in config)
 	var/enable_logs = 3
 
 	var/allow_friendly_fire = FALSE
 
 	var/allow_self_damage = TRUE
+
+	var/allow_damage_numbers = TRUE
 
 /damagetype/proc/get_examine_text(var/mob/caller)
 	/*
@@ -772,7 +774,7 @@
 		else
 			L.on_unblocked_hit(attacker,weapon,hit_object,blamed,src,total_damage_dealt)
 
-	if(CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE))
+	if(allow_damage_numbers && CONFIG("ENABLE_DAMAGE_NUMBERS",FALSE))
 		var/reported_damage_dealt = real_damage_dealt > 0 ? real_damage_dealt : total_damage_dealt
 		if(reported_damage_dealt > 0 || damage_blocked_with_armor+damage_blocked_with_shield > 0)
 			var/desired_id = "\ref[weapon]_\ref[victim]_[world.time]_[real_damage_dealt > 0]"

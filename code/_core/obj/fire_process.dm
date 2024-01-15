@@ -32,6 +32,8 @@
 	var/fire_power = 0
 	var/initial_fire_power = 0
 
+	var/turf/initial_turf
+
 	var/momentum = 0x0
 
 	var/loyalty_tag
@@ -139,6 +141,7 @@
 
 /obj/fire_process/Destroy()
 	owner = null
+	initial_turf = null
 	. = ..()
 
 /obj/fire_process/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
@@ -180,8 +183,11 @@
 		return FALSE
 
 	//Don't spread if we don't have enough fuel to spread.
-
 	if(fire_power <= 40)
+		return FALSE
+
+	//Don't spread if we're too far from the "source"
+	if(get_dist(src,initial_turf) > VIEW_RANGE*2)
 		return FALSE
 
 	var/turf/current_turf = loc
@@ -220,6 +226,7 @@
 		if(!FP)
 			FP = new(T)
 			FP.initial_fire_power = src.initial_fire_power
+			FP.initial_turf = src.initial_turf
 			FP.fire_power = fire_power_to_add
 			FP.momentum = d & momentum //The reason why momentum is not just d is because that will eventually create a loop.
 			FP.multiplier = src.multiplier

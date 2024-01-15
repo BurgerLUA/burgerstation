@@ -161,6 +161,7 @@ SUBSYSTEM_DEF(explosion)
 		FP = new(desired_turf)
 		FP.fire_power = desired_range*2
 		FP.initial_fire_power = desired_range*2
+		FP.initial_turf = desired_turf
 		FP.loyalty_tag = desired_loyalty_tag
 		FP.multiplier = multiplier
 		FP.momentum = momentum

@@ -17,6 +17,8 @@
 
 	alert_on_impact = ALERT_LEVEL_NOISE
 
+	can_be_parried = TRUE
+
 /damagetype/melee/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
 	. = ..()
 	if(condition_on_hit && is_item(weapon))
