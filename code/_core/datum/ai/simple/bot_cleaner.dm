@@ -6,6 +6,7 @@
 
 	aggression = 0
 	assistance = 0
+	use_alerts = FALSE
 
 	cowardice = 1
 

@@ -196,8 +196,8 @@
 
 /obj/item/deployable/mob/cleaning_bot
 	name = "deployable cleaning bot"
-	desc = "Clean things and earn money for it too!"
-	desc_extended = "A very robust little cleaning bot designed to clean rooms and collect items to be automatically sold off."
+	desc = "Clean things!"
+	desc_extended = "A very robust little cleaning bot designed to clean rooms (literally, not with a shotgun or anything)."
 
 	icon = 'icons/mob/living/simple/cleaner.dmi'
 	icon_state = "off"
