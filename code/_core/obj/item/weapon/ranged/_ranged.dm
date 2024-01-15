@@ -543,7 +543,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 			heat_current = min(heat_max, heat_current + heat_per_shot_to_use)
 		START_THINKING(src)
 
-	if(is_advanced(caller))
+	if(view_punch_to_use > 0 && is_advanced(caller))
 		var/mob/living/advanced/A = caller
 		if(is_inventory(src.loc))
 			var/obj/hud/inventory/I = src.loc

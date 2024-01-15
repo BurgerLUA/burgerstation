@@ -1,5 +1,5 @@
 /obj/item/weapon/ranged/bullet/revolver/rocket
-	name = "70mm NT-AAWS"
+	name = "70mm Recoilless NT-AAWS"
 	desc = "I'm a Rocket Man."
 	desc_extended = "NT's answer to the Syndicate Mechs and Borgs: NT Anti Armor Weapon System. Single-shot portable anti-tank weapon, though if you're brave enough you can try to use it more than once."
 	icon = 'icons/obj/item/weapons/ranged/misc/rocket.dmi'
@@ -25,6 +25,8 @@
 	weight = 16
 
 	zoom_mul = 2
+
+	view_punch_mod = 0
 
 	bullet_length_min = 750
 	bullet_length_best = 800
