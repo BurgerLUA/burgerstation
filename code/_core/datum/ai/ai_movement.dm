@@ -375,9 +375,4 @@
 			break //Give up.
 		obstacles[A] = TRUE
 
-	//DEBUG STUFF
-	if(objective_attack && is_player(objective_attack))
-		objective_attack << "Obstacles: [obstacles]."
-
-
 	return length(obstacles)

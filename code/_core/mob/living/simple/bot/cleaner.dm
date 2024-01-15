@@ -37,4 +37,3 @@
 
 		if(sucked)
 			play_sound('sound/effects/portal_suck.ogg',T)
-			next_sell = max(next_sell,world.time + SECONDS_TO_DECISECONDS(10))

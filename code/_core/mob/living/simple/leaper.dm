@@ -122,16 +122,16 @@
 	return TRUE
 
 //Bubble Creation
-/mob/living/simple/leaper/proc/volley_bubbles()
+/mob/living/simple/leaper/proc/volley_bubbles(var/bubble_count=3)
 
 	if(!ai || !ai.objective_attack)
 		return FALSE
 
-	if(CALLBACK_EXISTS("\ref[src]_shoot_bubble5"))
+	if(CALLBACK_EXISTS("\ref[src]_shoot_bubble_[bubble_count]"))
 		return FALSE
 
-	for(var/i=1,i<=3,i++)
-		CALLBACK("\ref[src]_shoot_bubble[i]",5+i*6,src,src::shoot_bubble(),ai.objective_attack)
+	for(var/i=1,i<=bubble_count,i++)
+		CALLBACK("\ref[src]_shoot_bubble_[i]",5+i*6,src,src::shoot_bubble(),ai.objective_attack)
 
 	return TRUE
 
@@ -156,7 +156,7 @@
 	if(desired_target.qdeleting || desired_target.z != src.z)
 		return FALSE
 
-	if(get_dist(src,desired_target) <= 2)
+	if(get_dist(src,desired_target) <= 3)
 		return FALSE //TOO CLOSE.
 
 	shoot_projectile(
@@ -169,7 +169,7 @@
 		16,
 		16,
 		0,
-		TILE_SIZE*0.2,
+		TILE_SIZE*0.5,
 		1,
 		"#FFFFFF",
 		0,
@@ -194,25 +194,25 @@
 
 	flick("shoot",src)
 
-	var/list/block_turfs = block(
-		x-VIEW_RANGE,
-		y-VIEW_RANGE,
-		z,
-		x+VIEW_RANGE,
-		y+VIEW_RANGE,
-		z
-	)
-
+	var/list/exploding_turfs = list()
+	var/turfs_to_check = 20
 	var/blood_to_explode = 8
-	while(length(block_turfs) && blood_to_explode > 0)
-		var/turf/simulated/T = pick(block_turfs)
-		block_turfs -= T
-		if(!is_simulated(T))
+
+	while(blood_to_explode > 0 && turfs_to_check > 0)
+		turfs_to_check--
+		var/turf/simulated/T = locate(
+			src.x + rand(-VIEW_RANGE,VIEW_RANGE),
+			src.y + rand(-VIEW_RANGE,VIEW_RANGE),
+			src.z
+		)
+		if(!T || !is_simulated(T))
 			continue
 		if(T.blood_level_hard <= 0)
 			continue
+		if(exploding_turfs[T])
+			continue
+		exploding_turfs[T] = TRUE
 		blood_to_explode -= 1
-		play_sound('sound/weapons/magic/bloody_impact.ogg',T)
 		var/obj/effect/E = new(T)
 		E.icon = 'icons/obj/projectiles/leaper.dmi'
 		E.icon_state = "leaper"
@@ -237,6 +237,7 @@
 					time=SECONDS_TO_DECISECONDS(3)
 				)
 				qdel(B)
+		play_sound('sound/weapons/magic/bloody_impact.ogg',T)
 
 /mob/living/simple/leaper/proc/blood_attack_do_explode(var/obj/effect/E)
 	if(!E || !E.loc)
@@ -282,7 +283,7 @@
 	if(length(valid_turfs) <= 3)
 		for(var/k in block_turfs)
 			var/turf/simulated/T = k
-			if(!T || !is_simulated(T) || istypecache(T,/turf/simulated/liquid/water) || !T.health )
+			if(!T || !is_simulated(T) || !T.health || istypecache(T,/turf/simulated/liquid/water) )
 				continue
 			T.change_turf(/turf/simulated/liquid/water/river/jungle)
 			valid_turfs += T
@@ -306,11 +307,15 @@
 		animate(L,color=initial(L.color),SECONDS_TO_DECISECONDS(1))
 		if(L.ai)
 			L.ai.set_active(TRUE)
-			L.ai.queue_find_new_objectives = TRUE
+			if(L.ai.objective_attack && prob(80))
+				L.ai.set_objective(L.ai.objective_attack)
+			else
+				L.ai.queue_find_new_objectives = TRUE
 			L.ai.roaming_distance = VIEW_RANGE*0.5
 				L.ai.allow_far_roaming = FALSE
 		tracked_frogs += L
 		. = TRUE
+		CHECK_TICK(50,FPS_SERVER)
 
 	if(.)
 		play_sound('sound/weapons/magic/creation.ogg',get_turf(src))

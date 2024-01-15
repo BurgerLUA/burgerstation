@@ -511,15 +511,12 @@
 
 
 /obj/projectile/magic/leaper
-	name = "leaper homing orb"
+	name = "leaper blood orb"
 	icon = 'icons/obj/projectiles/leaper.dmi'
 	icon_state = "dark_orb"
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-	lifetime = SECONDS_TO_DECISECONDS(10)
-	extra_lifetime = SECONDS_TO_DECISECONDS(8)
-
-	homing = TRUE
-	homing_speed = TILE_SIZE * 0.5
-	explode_power = 2
+	lifetime = SECONDS_TO_DECISECONDS(5)
+	extra_lifetime = SECONDS_TO_DECISECONDS(4)
+	velocity_degrade = 0.95
