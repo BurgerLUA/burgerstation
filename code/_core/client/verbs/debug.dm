@@ -249,8 +249,12 @@ var/global/static/list/destroy_everything_whitelist = list(
 	set category = "Debug"
 	set name = "Print Garbage Collection"
 
+	if(!CONFIG("TRACK_GARBAGE",null))
+		src.to_chat("Garbage tracking has been disabled in config. Enable it in config to allow this.")
+		return TRUE
+
 	if(!length(qdel_refs_to_type))
-		src.to_chat("Nothing has been found in the garbage collection system. Yay!")
+		src.to_chat("Nothing has been found in the garbage collection system. Perhaps you are using this too early.")
 		return TRUE
 
 	var/final_text = ""

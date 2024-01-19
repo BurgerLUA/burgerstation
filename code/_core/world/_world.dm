@@ -138,6 +138,7 @@ var/global/world_state = STATE_STARTING
 	return TRUE
 
 /world/Reboot(reason)
+	rustg_log_close_all()
 	TgsReboot()
 	. = ..()
 

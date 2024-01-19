@@ -23,6 +23,13 @@
 
 /ai/proc/on_life(var/tick_rate=1)
 
+	//Safeties.
+	if(objective_attack && !objective_attack.z)
+		set_objective(null)
+
+	if(objective_move && !objective_move.z)
+		set_move_objective(null)
+
 	if(owner.is_busy())
 		return FALSE
 

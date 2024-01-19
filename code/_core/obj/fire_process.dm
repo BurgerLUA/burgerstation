@@ -187,7 +187,8 @@
 		return FALSE
 
 	//Don't spread if we're too far from the "source"
-	if(get_dist(src,initial_turf) > VIEW_RANGE*2)
+	if(get_dist(src,initial_turf) > VIEW_RANGE)
+		momentum = 0x0
 		return FALSE
 
 	var/turf/current_turf = loc

@@ -195,8 +195,8 @@
 	flick("shoot",src)
 
 	var/list/exploding_turfs = list()
-	var/turfs_to_check = 20
-	var/blood_to_explode = 8
+	var/turfs_to_check = 10
+	var/blood_to_explode = 5
 
 	while(blood_to_explode > 0 && turfs_to_check > 0)
 		turfs_to_check--
