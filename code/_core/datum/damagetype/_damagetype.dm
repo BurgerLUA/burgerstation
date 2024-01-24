@@ -544,7 +544,7 @@
 		if(debug) log_debug("Initial [damage_type] damage: [damage_to_deal[damage_type]].")
 		if(!ignore_armor_bonus_damage && (force_attacker_armor_calculations_with || damage_type == ARCANE || damage_type == HOLY || damage_type == DARK)) //Deal bonus damage.
 			var/armor_damage_type_to_use = force_attacker_armor_calculations_with ? force_attacker_armor_calculations_with : damage_type
-			if(defense_rating_attacker[armor_damage_type_to_use] && IS_INFINITY(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, and dark only).
+			if(defense_rating_attacker[armor_damage_type_to_use] && IS_INF(defense_rating_attacker[damage_type])) //Don't do any damage if we are immune that type (arcane, holy, and dark only).
 				damage_to_deal[damage_type] = 0
 				continue
 			if(attacker.health && is_advanced(attacker))
@@ -562,13 +562,13 @@
 		if(debug) log_debug("Post-bonus [damage_type] damage: [old_damage_amount].")
 		var/victim_defense = defense_rating_victim[damage_type]
 		if(debug) log_debug("Inital victim's defense against [damage_type]: [victim_defense].")
-		if(IS_INFINITY(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
+		if(IS_INF(victim_defense)) //Defense is infinite. No point in calculating further damage or armor.
 			damage_to_deal[damage_type] = 0
 			if(debug) log_debug("Victim has infinite [damage_type] defense. No damage can be dealt.")
 			continue
 		if(debug) log_debug("Victim's [damage_type] defense before penetration calculations: [victim_defense].")
 		var/local_penetration = attack_damage_penetration[damage_type] * penetration_mod
-		if(IS_INFINITY(local_penetration))
+		if(IS_INF(local_penetration))
 			victim_defense = 0
 		else
 			if(local_penetration < 0)
@@ -599,11 +599,11 @@
 			if(debug) log_debug("Adding [damage_type] damage into [pain_damage_to_add] pain damage.")
 			pain_damage += pain_damage_to_add
 
-	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[FATIGUE]))
+	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INF(defense_rating_victim[FATIGUE]))
 		damage_to_deal[FATIGUE] += CEILING(fatigue_damage,1)
 		if(debug) log_debug("Dealing [fatigue_damage] extra fatigue damage due to blocked damage.")
 
-	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INFINITY(defense_rating_victim[PAIN]))
+	if(!length(defense_rating_victim) || !defense_rating_victim[FATIGUE] || !IS_INF(defense_rating_victim[PAIN]))
 		damage_to_deal[PAIN] += CEILING(pain_damage,1)
 		if(debug) log_debug("Dealing [pain_damage] extra pain damage due to converted damage.")
 

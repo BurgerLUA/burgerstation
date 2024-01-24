@@ -73,7 +73,7 @@
 			var/list/armor_list = list()
 			for(var/damagetype in defense_rating_to_print)
 				var/damage_rating = defense_rating_to_print[damagetype]
-				if(IS_INFINITY(damage_rating))
+				if(IS_INF(damage_rating))
 					armor_list += "[capitalize(damagetype)]: IMMUNITY"
 				else if(damage_rating)
 					if(damage_rating > 0)
