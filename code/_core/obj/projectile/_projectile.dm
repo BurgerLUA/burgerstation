@@ -306,7 +306,7 @@
 		pixel_x_float_physical += vel_x
 		pixel_y_float_physical += vel_y
 
-	start_time += TICKS_TO_DECISECONDS(tick_rate)
+	start_time += TICKS2DS(tick_rate)
 
 	//Visual changes here only.
 	var/rounded_x = CEILING(pixel_x_float_visual,1)

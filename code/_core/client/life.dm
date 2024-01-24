@@ -17,7 +17,7 @@
 
 /client/proc/on_life_slow()
 
-	if(restricted && inactivity <= TICKS_TO_DECISECONDS(CLIENT_TICK)*3)
+	if(restricted && inactivity <= TICKS2DS(CLIENT_TICK)*3)
 		del(src)
 		return TRUE
 
@@ -39,10 +39,10 @@
 				spectate(null)
 
 	if(spam_protection_chat > 0)
-		spam_protection_chat = max(0,spam_protection_chat - TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
+		spam_protection_chat = max(0,spam_protection_chat - TICKS2DS(CLIENT_TICK_SLOW))
 
 	if(spam_protection_interact > 0)
-		spam_protection_interact = max(0,spam_protection_interact - TICKS_TO_DECISECONDS(CLIENT_TICK_SLOW))
+		spam_protection_interact = max(0,spam_protection_interact - TICKS2DS(CLIENT_TICK_SLOW))
 
 	for(var/k in stored_hud_images)
 		var/image/I = k

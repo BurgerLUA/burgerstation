@@ -1,5 +1,3 @@
-#define TICKS_TO_DECISECONDS(x) (((x) / FPS_SERVER) * 10)
-
 #define SECONDS_TO_TICKS(x) (FPS_SERVER * x)
 #define TICKS_TO_SECONDS(x) ((x)/FPS_SERVER)
 

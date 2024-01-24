@@ -23,7 +23,7 @@
 			break
 		SS.run_failures = 0
 
-		sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+		sleep(TICKS2DS(SS.tick_rate))
 
 		while(world_state <= STATE_INITIALIZING)
 			sleep(10)

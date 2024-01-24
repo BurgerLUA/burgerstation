@@ -276,19 +276,19 @@
 	handle_health_buffer()
 
 	if(flash_overlay && flash_overlay.duration > 0)
-		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
+		flash_overlay.duration -= TICKS2DS(LIFE_TICK)
 		if(flash_overlay.duration <= 0)
 			animate(flash_overlay,alpha=0,time=5 SECONDS)
 
 	if(deafened_duration && deafened_duration > 0)
-		deafened_duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
+		deafened_duration -= TICKS2DS(LIFE_TICK)
 
 	//Fire stacks.
 	if(fire_stacks)
-		adjust_fire_stacks(-min(fire_stacks,TICKS_TO_DECISECONDS(LIFE_TICK)))
+		adjust_fire_stacks(-min(fire_stacks,TICKS2DS(LIFE_TICK)))
 		if(on_fire && health)
 			var/damagetype/DT = SSdamagetype.all_damage_types[/damagetype/on_fire]
-			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(TICKS_TO_DECISECONDS(LIFE_TICK/8))*5
+			var/damage_multiplier = 3 + (fire_stacks/MAX_FIRE_STACKS)*(TICKS2DS(LIFE_TICK/8))*5
 			for(var/i=1,i<=3,i++)
 				var/list/params = list()
 				params[PARAM_ICON_X] = rand(0,32)
@@ -306,12 +306,12 @@
 			stat_elements_to_update -= k
 
 	if(stun_immunity > 0)
-		stun_immunity = max(stun_immunity - TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
+		stun_immunity = max(stun_immunity - TICKS2DS(LIFE_TICK_FAST),0)
 	else if(stun_immunity < 0)
-		stun_immunity = min(stun_immunity + TICKS_TO_DECISECONDS(LIFE_TICK_FAST),0)
+		stun_immunity = min(stun_immunity + TICKS2DS(LIFE_TICK_FAST),0)
 
 	if(length(status_effects))
-		handle_status_effects(TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
+		handle_status_effects(TICKS2DS(LIFE_TICK_FAST))
 
 	/* TODO: Make this less shit.
 	if(client && !dead && health && next_heartbeat <= world.time)
@@ -357,14 +357,14 @@ mob/living/proc/on_life_slow()
 
 	//Talking.
 	if(talk_duration)
-		talk_duration = max(0,talk_duration-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
+		talk_duration = max(0,talk_duration-TICKS2DS(LIFE_TICK_SLOW))
 		if(talk_duration <= 0 && !is_typing)
 			animate(chat_overlay,alpha = 0,time=1 SECONDS)
 
 	if(dead)
 		return FALSE
 
-	blood_toxicity = max(blood_toxicity - TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.1,0)
+	blood_toxicity = max(blood_toxicity - TICKS2DS(LIFE_TICK_SLOW)*0.1,0)
 	if(blood_toxicity > 20)
 		chem_power = max(0,1 - (blood_toxicity-20)*0.01)
 	else
@@ -379,9 +379,9 @@ mob/living/proc/on_life_slow()
 				blood_volume = min(blood_volume + blood_volume_to_add,blood_volume_max)
 				QUEUE_HEALTH_UPDATE(src)
 		else if(blood_volume > blood_volume_max)
-			blood_volume -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25
+			blood_volume -= TICKS2DS(LIFE_TICK_SLOW)*0.25
 			if(blood_volume >= blood_volume_max*1.1)
-				tox_regen_buffer -= TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)*0.25*0.25
+				tox_regen_buffer -= TICKS2DS(LIFE_TICK_SLOW)*0.25*0.25
 
 	if(reagents)
 		reagents.metabolize(src,TICKS_TO_SECONDS(LIFE_TICK_SLOW))
@@ -413,7 +413,7 @@ mob/living/proc/on_life_slow()
 		return TRUE
 
 	var/threshold_multiplier = 1
-	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*TICKS_TO_DECISECONDS(LIFE_TICK_SLOW)
+	var/intoxication_to_remove = (0.025 + intoxication*0.0025)*TICKS2DS(LIFE_TICK_SLOW)
 
 	intoxication = max(0,intoxication-intoxication_to_remove)
 
@@ -568,7 +568,7 @@ mob/living/proc/on_life_slow()
 	if(health.health_regen_cooef <= 0 && health.stamina_regen_cooef <= 0 && health.mana_regen_cooef <= 0)
 		return FALSE
 
-	var/delay_mod = TICKS_TO_DECISECONDS(LIFE_TICK)
+	var/delay_mod = TICKS2DS(LIFE_TICK)
 
 	health_regen_delay = max(0,health_regen_delay - delay_mod)
 	stamina_regen_delay = max(0,stamina_regen_delay - delay_mod)

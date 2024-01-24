@@ -63,7 +63,7 @@
 			desired_alpha = 0
 		if(mana_percent < 1)
 			M.Translate(-16,0)
-		animate(src,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
+		animate(src,color=color_mod,time=TICKS2DS(LIFE_TICK_FAST))
 		animate(src,alpha=desired_alpha,transform=M,time=1 SECONDS)
 
 	icon_state = "stamina_[clamp(CEILING(stamina_percent*19,1),0,19)]"

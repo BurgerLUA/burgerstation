@@ -94,7 +94,7 @@
 		if(I.color == "#000000")
 			I.color = color_mod
 		else
-			animate(I,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
+			animate(I,color=color_mod,time=TICKS2DS(LIFE_TICK_FAST))
 
 		labeled_overlays[o_id] = I
 
