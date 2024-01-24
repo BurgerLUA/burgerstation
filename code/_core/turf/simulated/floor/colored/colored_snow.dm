@@ -49,3 +49,5 @@
 
 	color = blend_colors(initial(G.color),initial(src.color),blend_mod)
 	map_color = color
+
+#undef MAX_DEPTH

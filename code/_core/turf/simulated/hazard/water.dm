@@ -36,7 +36,7 @@
 
 	var/shore = FALSE
 
-/turf/simulated/liquid/water/New(var/desired_loc)
+/turf/simulated/liquid/water/New(desired_loc)
 	. = ..()
 	if(depth == 0)
 		depth = MAX_DEPTH
@@ -103,3 +103,5 @@
 
 /turf/simulated/liquid/water/desert
 	name = "oasis water"
+
+#undef MAX_DEPTH
