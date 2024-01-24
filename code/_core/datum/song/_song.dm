@@ -99,7 +99,7 @@
 
 /song/proc/sanitize_tempo(var/desired_tempo)
 	desired_tempo = abs(desired_tempo)
-	return max(round(desired_tempo, TICK_LAG), TICK_LAG)
+	return max(round(desired_tempo, 1 TICKS), 1 TICKS)
 
 /song/proc/play_song(var/mob/caller)
 

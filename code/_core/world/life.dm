@@ -4,7 +4,7 @@
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
 			if(world_state >= STATE_RUNNING && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 				SS.overtime_count++
-				sleep(TICK_LAG)
+				sleep(1 TICKS)
 				continue
 		SS.overtime_count = 0
 		var/result = SS.on_life()

@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(choices)
 	C = new C(M)
 
 	while(!C.choice_made)
-		sleep(TICK_LAG)
+		sleep(1 TICKS)
 
 	var/decision_made = C.on_decision()
 
