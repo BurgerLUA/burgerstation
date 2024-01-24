@@ -27,7 +27,7 @@
 
 	size = SIZE_GIANT
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DS2TICKS(2)
 
 	loyalty_tag = "Spider"
 	iff_tag = "Spider"

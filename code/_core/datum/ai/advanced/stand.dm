@@ -32,7 +32,7 @@
 	if(L.dead)
 		return FALSE
 
-	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
+	if(timeout_threshold && L.client && L.client.inactivity >= DS2TICKS(timeout_threshold))
 		return FALSE
 
 	if(!L.can_be_attacked(owner))

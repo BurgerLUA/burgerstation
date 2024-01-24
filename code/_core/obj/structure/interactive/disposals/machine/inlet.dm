@@ -40,6 +40,6 @@
 		GENERATE(disposals_container)
 		FINALIZE(disposals_container)
 	O.force_move(disposals_container)
-	O.glide_size = TILE_SIZE / DECISECONDS_TO_TICKS(1)
+	O.glide_size = TILE_SIZE / DS2TICKS(1)
 
 	. = ..()

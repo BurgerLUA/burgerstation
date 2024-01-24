@@ -16,4 +16,4 @@
 
 /status_effect/staggered/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
 	. = ..()
-	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
+	owner.next_move = max(owner.next_move,DS2TICKS(duration))

@@ -22,7 +22,7 @@
 
 	var/obj/structure/interactive/blob/node/linked_node
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DS2TICKS(6)
 
 	iff_tag = "Blob"
 	loyalty_tag = "Blob"

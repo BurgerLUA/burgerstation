@@ -7,7 +7,7 @@
 
 	dna = /dna/human
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DS2TICKS(1)
 
 	health_base = 200
 	stamina_base = 100

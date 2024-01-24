@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(explosion)
 	name = "Explosion Subsystem"
 	desc = "Processes explosions."
 	priority = SS_ORDER_NORMAL
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DS2TICKS(1)
 
 	var/list/obj/explosion_process/active_explosions = list()
 	var/list/obj/fire_process/active_fires = list()

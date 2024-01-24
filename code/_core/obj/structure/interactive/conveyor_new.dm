@@ -149,7 +149,7 @@
 				if(!L2.horizontal && M.next_move > 0)
 					moved = TRUE
 					continue
-			M.glide_size = M.step_size / DECISECONDS_TO_TICKS(16)
+			M.glide_size = M.step_size / DS2TICKS(16)
 			M.Move(end_turf)
 			M.next_conveyor = world.time + 16
 			conveyor_limit--

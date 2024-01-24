@@ -74,7 +74,7 @@
 
 	level = 28
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DS2TICKS(4)
 
 	var/next_special_move = 0
 

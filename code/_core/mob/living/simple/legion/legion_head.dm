@@ -11,7 +11,7 @@
 
 	var/mob/living/simple/legionare/parent_legion
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 	health_base = 10
 	stamina_base = 50

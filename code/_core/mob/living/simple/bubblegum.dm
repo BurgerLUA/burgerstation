@@ -22,7 +22,7 @@
 	stamina_base = 5000
 	mana_base = 1000
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 	stun_angle = 0
 

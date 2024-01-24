@@ -15,7 +15,7 @@
 	stamina_base = 4000
 	mana_base = 1000
 
-	movement_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DS2TICKS(5)
 
 	stun_angle = 0
 
@@ -60,7 +60,7 @@
 
 	level = 28
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DS2TICKS(6)
 
 /mob/living/simple/goblin_king/post_death()
 	. = ..()

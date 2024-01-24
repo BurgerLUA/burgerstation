@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(thinking)
 	name = "Think Subsystem"
 	desc = "Any and all objects that think when it is active are handled here."
 	priority = SS_ORDER_THINK
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DS2TICKS(1)
 	var/list/all_thinkers = list() //associative list
 
 	tick_usage_max = 99

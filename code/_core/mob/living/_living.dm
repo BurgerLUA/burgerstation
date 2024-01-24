@@ -14,7 +14,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DS2TICKS(1)
 
 	icon_state = "directional"
 

@@ -19,7 +19,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DS2TICKS(1)
 
 	iff_tag = "Blob"
 	loyalty_tag = "Blob"

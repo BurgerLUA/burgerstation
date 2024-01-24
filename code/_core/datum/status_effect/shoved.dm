@@ -23,7 +23,7 @@
 	var/old_dir = owner.dir
 	var/result = owner.Move(get_step(owner,desired_move_dir))
 	owner.dir = old_dir
-	owner.next_move = max(owner.next_move,DECISECONDS_TO_TICKS(duration))
+	owner.next_move = max(owner.next_move,DS2TICKS(duration))
 	if(!result) //We can't move.
 		var/list/movement = direction_to_pixel_offset(desired_move_dir)
 		animate(owner,pixel_x = movement[1] * TILE_SIZE, pixel_y = movement[2] * TILE_SIZE,time = 1)

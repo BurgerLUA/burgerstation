@@ -56,7 +56,7 @@
 
 	change_dir_on_move = FALSE
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DS2TICKS(4)
 
 	soul_size = SOUL_SIZE_RARE
 

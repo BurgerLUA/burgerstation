@@ -4,7 +4,7 @@ var/global/list/question_button_id_to_button = list()
 SUBSYSTEM_DEF(choices)
 	name = "Choice Subsystem"
 	desc = "Controls the choices people make."
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DS2TICKS(1)
 	priority = SS_ORDER_IMPORTANT
 
 /subsystem/choices/Initialize()

@@ -34,7 +34,7 @@ var/mob/living/simple/xeno/queen/tracked_xeno_queen
 	boss = TRUE
 	force_spawn = TRUE
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DS2TICKS(4)
 
 	butcher_contents = list(
 		/obj/item/soapstone/orange,

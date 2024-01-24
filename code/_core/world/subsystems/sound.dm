@@ -2,7 +2,7 @@
 
 SUBSYSTEM_DEF(sound)
 	name = "Sound Subsystem"
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DS2TICKS(1)
 	priority = SS_ORDER_FIRST
 	var/channel_hack = 100
 

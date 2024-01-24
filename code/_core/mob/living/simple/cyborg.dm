@@ -72,7 +72,7 @@
 	ai = /ai/syndicate_cyborg
 
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DS2TICKS(4)
 
 	health_base = 400
 	stamina_base = 200

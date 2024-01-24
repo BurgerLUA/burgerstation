@@ -39,7 +39,7 @@
 
 	level = 12
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DS2TICKS(2)
 
 /mob/living/simple/goliath/post_death()
 	..()

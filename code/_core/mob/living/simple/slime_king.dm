@@ -52,7 +52,7 @@
 
 	respawn_time = 300 SECONDS
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DS2TICKS(6)
 
 	level = 40
 

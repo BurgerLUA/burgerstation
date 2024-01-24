@@ -20,7 +20,7 @@
 	iff_tag = "Jungle"
 	loyalty_tag = "Jungle"
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DS2TICKS(2)
 
 	size = SIZE_GIANT
 

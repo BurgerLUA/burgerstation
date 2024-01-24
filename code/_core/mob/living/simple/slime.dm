@@ -31,7 +31,7 @@
 
 	damage_type = /damagetype/npc/slime
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DS2TICKS(1)
 
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE

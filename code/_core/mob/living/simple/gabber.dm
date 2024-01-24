@@ -48,7 +48,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	level = 50
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 	var/sword_mode = FALSE
 

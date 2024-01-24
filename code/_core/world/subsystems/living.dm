@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(living)
 			L.on_life()
 		if(do_slow)
 			L.on_life_slow()
-		CHECK_TICK(tick_usage_max,DECISECONDS_TO_TICKS(1))
+		CHECK_TICK(tick_usage_max,DS2TICKS(1))
 
 	if(do_slow)
 		slow_ticks = 0
