@@ -112,7 +112,7 @@
 	return TRUE
 
 //Teleportation
-/mob/living/simple/leaper/proc/teleport(var/turf/desired_turf)
+/mob/living/simple/leaper/proc/teleport(turf/desired_turf)
 
 	if(desired_turf) src.force_move(desired_turf)
 	remove_status_effect(IMMORTAL)
@@ -122,7 +122,7 @@
 	return TRUE
 
 //Bubble Creation
-/mob/living/simple/leaper/proc/volley_bubbles(var/bubble_count=3)
+/mob/living/simple/leaper/proc/volley_bubbles(bubble_count = 3)
 
 	if(!ai || !ai.objective_attack)
 		return FALSE
@@ -148,7 +148,7 @@
 
 	return TRUE
 
-/mob/living/simple/leaper/proc/shoot_bubble(var/atom/desired_target,var/play_sound=TRUE)
+/mob/living/simple/leaper/proc/shoot_bubble(atom/desired_target, play_sound = TRUE)
 
 	if(dead)
 		return FALSE
@@ -239,7 +239,7 @@
 				qdel(B)
 		play_sound('sound/weapons/magic/bloody_impact.ogg',T)
 
-/mob/living/simple/leaper/proc/blood_attack_do_explode(var/obj/effect/E)
+/mob/living/simple/leaper/proc/blood_attack_do_explode(obj/effect/E)
 	if(!E || !E.loc)
 		return FALSE
 	for(var/i=1,i<=4,i++)
@@ -311,8 +311,8 @@
 				L.ai.set_objective(L.ai.objective_attack)
 			else
 				L.ai.queue_find_new_objectives = TRUE
-			L.ai.roaming_distance = VIEW_RANGE*0.5
-				L.ai.allow_far_roaming = FALSE
+			L.ai.roaming_distance = VIEW_RANGE * 0.5
+			L.ai.allow_far_roaming = FALSE
 		tracked_frogs += L
 		. = TRUE
 		CHECK_TICK(50,FPS_SERVER)
