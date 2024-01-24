@@ -167,13 +167,13 @@ SUBSYSTEM_DEF(area)
 			A.color = "#000000"
 			switch(weather_type)
 				if(WEATHER_RAIN)
-					animate(A,alpha=100,color="#429FCE",time=SECONDS_TO_DECISECONDS(10))
+					animate(A,alpha=100,color="#429FCE",time=10 SECONDS)
 				if(WEATHER_SNOW)
-					animate(A,alpha=255,color="#FFFFFF",time=SECONDS_TO_DECISECONDS(10))
+					animate(A,alpha=255,color="#FFFFFF",time=10 SECONDS)
 				if(WEATHER_SANDSTORM)
-					animate(A,alpha=255,color="#E5CDA7",time=SECONDS_TO_DECISECONDS(5))
+					animate(A,alpha=255,color="#E5CDA7",time=5 SECONDS)
 				if(WEATHER_VOLCANIC)
-					animate(A,alpha=105, color="#C2C2C2",time=SECONDS_TO_DECISECONDS(10))
+					animate(A,alpha=105, color="#C2C2C2",time=10 SECONDS)
 
 		else
-			animate(A,alpha=0,time=SECONDS_TO_DECISECONDS(10))
+			animate(A,alpha=0,time=10 SECONDS)

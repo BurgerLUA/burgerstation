@@ -10,7 +10,7 @@
 	injection_sound = 'sound/effects/stimpack.ogg'
 
 	quality_reduction_on_use = 0
-	injection_time = SECONDS_TO_DECISECONDS(0.25)
+	injection_time = 0.25 SECONDS
 	inject_amount_max = 15
 	reagents = /reagent_container/syringe/hypospray // holds 60u
 	adjustable = TRUE

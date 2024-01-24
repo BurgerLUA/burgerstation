@@ -64,13 +64,13 @@
 	var/boss_changed = update_current_boss()
 
 	if(!current_boss)
-		animate(src,alpha=0,time=SECONDS_TO_DECISECONDS(4))
+		animate(src,alpha=0,time=4 SECONDS)
 		if(current_boss_music && owner)
 			var/client/C = owner.client
 			if(C) stop_music_track(C)
 		return FALSE
 	else
-		animate(src,alpha=255,time=SECONDS_TO_DECISECONDS(2))
+		animate(src,alpha=255,time=2 SECONDS)
 		if(current_boss.boss_music && owner)
 			var/client/C = owner.client
 			if(C && C.current_music_track != current_boss.boss_music)

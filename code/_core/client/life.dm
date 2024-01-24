@@ -78,8 +78,8 @@
 	/*
 	if(desired_zoom)
 		var/list/dir_to_pixel = direction_to_pixel_offset(mob.dir)
-		animate(src,pixel_x = dir_to_pixel[1]*TILE_SIZE*VIEW_RANGE, pixel_y = dir_to_pixel[2]*TILE_SIZE*VIEW_RANGE, time = SECONDS_TO_DECISECONDS(1), flags = ANIMATION_LINEAR_TRANSFORM )
+		animate(src,pixel_x = dir_to_pixel[1]*TILE_SIZE*VIEW_RANGE, pixel_y = dir_to_pixel[2]*TILE_SIZE*VIEW_RANGE, time = 1 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM )
 	else
-		animate(src,pixel_x = 0, pixel_y = 0, time = SECONDS_TO_DECISECONDS(0.5), flags = ANIMATION_LINEAR_TRANSFORM )
+		animate(src,pixel_x = 0, pixel_y = 0, time = 0.5 SECONDS, flags = ANIMATION_LINEAR_TRANSFORM )
 	*/
 	return TRUE

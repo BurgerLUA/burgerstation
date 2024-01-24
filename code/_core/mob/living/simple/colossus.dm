@@ -66,7 +66,7 @@
 
 	object_size = 2
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 28
 

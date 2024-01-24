@@ -189,4 +189,4 @@
 		FINALIZE(S)
 		linked_spawners += S
 
-	next_cyborg_spawn_time = world.time + SECONDS_TO_DECISECONDS(30)
+	next_cyborg_spawn_time = world.time + 30 SECONDS

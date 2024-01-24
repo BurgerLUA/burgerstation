@@ -75,7 +75,7 @@
 				priority_turf = pick(lost_turfs)
 			var/obj/structure/interactive/blob/node/N = linked_nodes[current_node]
 			N.grow_charge(src,src,1,priority_turf)
-			next_grow = world.time + CEILING(SECONDS_TO_DECISECONDS(5)/max(1,node_count),1)
+			next_grow = world.time + CEILING(5 SECONDS/max(1,node_count),1)
 			current_node++
 			if(fast_grows_left > 0)
 				fast_grows_left--

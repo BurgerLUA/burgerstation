@@ -67,7 +67,7 @@
 
 	soul_size = SOUL_SIZE_RARE
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	movement_delay = DECISECONDS_TO_TICKS(4)
 

@@ -123,7 +123,7 @@
 
 	caller.visible_message(span("warning","\The [caller.name] begins to attach \the [src.name] to \the [target.name]..."),span("notice","You begin to attach \the [src.name] to \the [target.name]..."))
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::attach(),caller,target)
+	PROGRESS_BAR(caller,src,3 SECONDS,src::attach(),caller,target)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_attach_to(),caller,target)
 
 	return TRUE

@@ -53,12 +53,12 @@ SUBSYSTEM_DEF(weather)
 		)
 	count = WEATHER_SPACING*TILE_SIZE*4
 	spawning = 12
-	lifespan = SECONDS_TO_DECISECONDS(4)
-	fade = SECONDS_TO_DECISECONDS(2)
+	lifespan = 4 SECONDS
+	fade = 2 SECONDS
 
 
 /particles/weather/snow
-	fadein = SECONDS_TO_DECISECONDS(1)
+	fadein = 1 SECONDS
 	velocity = list(0,-3)
 	gravity = list(0,-3)
 	drift = generator("sphere", 0, 2)

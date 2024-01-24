@@ -3,9 +3,9 @@
 	desc = "You've been blighted!"
 	id = BLIGHTED
 
-	minimum = SECONDS_TO_DECISECONDS(10)
-	maximum = SECONDS_TO_DECISECONDS(300)
-	default_duration = SECONDS_TO_DECISECONDS(60)
+	minimum = 10 SECONDS
+	maximum = 300 SECONDS
+	default_duration = 60 SECONDS
 
 /status_effect/blighted/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
 	. = ..()

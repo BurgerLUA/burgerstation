@@ -482,8 +482,8 @@ var/global/static/list/destroy_everything_whitelist = list(
 		return FALSE
 
 	var/mob/living/L = mob
-	L.flash(SECONDS_TO_DECISECONDS(10))
-	L.bang(SECONDS_TO_DECISECONDS(10))
+	L.flash(10 SECONDS)
+	L.bang(10 SECONDS)
 
 
 /client/verb/test_astar()
@@ -600,7 +600,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 	if(confirmation != "CONFIRM")
 		return
 
-	var/time_to_stop = world.time + SECONDS_TO_DECISECONDS(240)
+	var/time_to_stop = world.time + 240 SECONDS
 
 	var/turf/target_turf = pick(horde_test_target_turfs)
 
@@ -624,7 +624,7 @@ var/global/static/list/destroy_everything_whitelist = list(
 		for(var/k in tracked_zombies)
 			var/mob/living/advanced/npc/zombie/normal/Z = k
 			if(Z.dead) tracked_zombies -= Z
-		sleep(SECONDS_TO_DECISECONDS(5))
+		sleep(5 SECONDS)
 		if(length(tracked_zombies) >= 8)
 			continue
 		var/turf/T = pick(horde_test_turfs)

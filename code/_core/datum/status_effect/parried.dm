@@ -2,9 +2,9 @@
 	name = "Parried"
 	desc = "You're parried!"
 	id = PARRIED
-	minimum = SECONDS_TO_DECISECONDS(1)
-	maximum = SECONDS_TO_DECISECONDS(4)
-	default_duration = SECONDS_TO_DECISECONDS(1)
+	minimum = 1 SECONDS
+	maximum = 4 SECONDS
+	default_duration = 1 SECONDS
 
 	affects_dead = FALSE
 

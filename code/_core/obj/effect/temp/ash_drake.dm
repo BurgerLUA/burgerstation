@@ -3,7 +3,7 @@ obj/effect/temp/ash_drake/swoop_up
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "swoop"
 	desc = "FLY, CLIFF RACER FLY"
-	duration = SECONDS_TO_DECISECONDS(3)
+	duration = 3 SECONDS
 	mouse_opacity = 0
 
 obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
@@ -15,7 +15,7 @@ obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
 	icon = 'icons/mob/living/simple/lavaland/ashdrake.dmi'
 	icon_state = "swoop"
 	desc = "FLY, CLIFF RACER FLY"
-	duration = SECONDS_TO_DECISECONDS(1)
+	duration = 1 SECONDS
 	mouse_opacity = 0
 
 /obj/effect/temp/ash_drake/swoop_down/New(var/desired_loc)
@@ -30,6 +30,6 @@ obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
 	name = "target"
 	icon = 'icons/obj/effects/targets.dmi'
 	icon_state = "basic"
-	duration = SECONDS_TO_DECISECONDS(2)
+	duration = 2 SECONDS
 	mouse_opacity = 0
 	color = "#FF0000"

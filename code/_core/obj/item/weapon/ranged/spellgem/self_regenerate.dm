@@ -29,7 +29,7 @@
 		if(livingcaller.status_effects[TEMP_REGEN])
 			livingcaller.visible_message(span("warning","\The [livingcaller.name] looks dissapointedly at \the [src]."),span("warning","The Spell Fizzles!"))
 		else
-			livingcaller.add_status_effect(TEMP_REGEN,damage_multiplier_to_use,SECONDS_TO_DECISECONDS(damage_multiplier_to_use * 15))
+			livingcaller.add_status_effect(TEMP_REGEN,damage_multiplier_to_use,(damage_multiplier_to_use * 15) SECONDS)
 		return TRUE
 	else
 		CRASH("Nonliving atom [caller] is somehow using a [object], which shouldn't be possible!")

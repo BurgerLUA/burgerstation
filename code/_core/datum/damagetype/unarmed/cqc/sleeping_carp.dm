@@ -55,7 +55,7 @@
 		if(get_dist(attacker,victim) <= 0 || !(offsets[1] || offsets[2]))
 			L.add_status_effect(STUN,20,20,source = attacker)
 		else
-			L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12,lifetime=SECONDS_TO_DECISECONDS(1))
+			L.throw_self(attacker,null,16,16,offsets[1]*12,offsets[2]*12,lifetime=1 SECONDS)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

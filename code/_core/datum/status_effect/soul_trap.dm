@@ -2,9 +2,9 @@
 	name = "Soul Trap"
 	desc = "You've been soul trapped!"
 	id = SOULTRAP
-	minimum = SECONDS_TO_DECISECONDS(4)
-	maximum = SECONDS_TO_DECISECONDS(60)
-	default_duration = SECONDS_TO_DECISECONDS(30)
+	minimum = 4 SECONDS
+	maximum = 60 SECONDS
+	default_duration = 30 SECONDS
 
 	affects_dead = FALSE
 

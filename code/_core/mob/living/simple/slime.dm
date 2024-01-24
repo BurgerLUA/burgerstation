@@ -340,7 +340,7 @@
 	var/new_a = (src.alpha * stored_ratio_inverse) + (desired_slime.alpha * stored_ratio)
 
 	var/new_color = rgb(new_r,new_g,new_b)
-	animate(src,alpha=new_a,color=new_color,time=SECONDS_TO_DECISECONDS(2))
+	animate(src,alpha=new_a,color=new_color,time=2 SECONDS)
 	src.alpha = new_a
 	src.color = new_color
 	src.slime_traits |= desired_slime.slime_traits

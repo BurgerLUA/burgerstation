@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(lighting)
 		return FALSE
 	debug_light_sources = TRUE
 	light_source_atom_count = list()
-	CALLBACK("lighting_debug_end",SECONDS_TO_DECISECONDS(30),src,src::end_debug())
+	CALLBACK("lighting_debug_end",30 SECONDS,src,src::end_debug())
 	log_debug("Debugging lighting... please wait 30 seconds.")
 	return TRUE
 

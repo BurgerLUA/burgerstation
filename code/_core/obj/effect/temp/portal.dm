@@ -87,7 +87,7 @@
 
 	update_atom_light()
 
-	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(300),src,.datum/proc/delete)
+	CALLBACK("delete_\ref[src]",300 SECONDS,src,.datum/proc/delete)
 
 /obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

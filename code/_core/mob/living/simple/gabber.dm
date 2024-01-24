@@ -44,7 +44,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	object_size = 2
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 50
 
@@ -183,7 +183,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	src.do_say("[uppertext(text_to_say)].")
 
-	next_special_attack = world.time + SECONDS_TO_DECISECONDS(1)
+	next_special_attack = world.time + 1 SECONDS
 
 	return TRUE
 

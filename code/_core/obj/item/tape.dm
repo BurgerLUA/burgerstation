@@ -60,7 +60,7 @@
 		play_music_track(stored_tape.stored_track,current_hearer.client)
 		if(!playing) current_hearer.to_chat(span("notice","\The [src.name] turns on."))
 		HOOK_ADD("post_move","loc_check_\ref[src]",current_hearer,src,src::check_valid())
-		CALLBACK("tape_stop_\ref[src]",SECONDS_TO_DECISECONDS(T.length),src,src::disable())
+		CALLBACK("tape_stop_\ref[src]",(T.length) SECONDS,src,src::disable())
 	playing = TRUE
 	update_sprite()
 

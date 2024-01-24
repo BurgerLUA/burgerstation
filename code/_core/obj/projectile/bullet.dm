@@ -120,7 +120,7 @@
 	var/obj/effect/temp/hazard/flamethrowerfire = locate() in new_loc
 
 	if(!flamethrowerfire)
-		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,SECONDS_TO_DECISECONDS(30),owner)
+		new /obj/effect/temp/hazard/flamethrowerfire(new_loc,30 SECONDS,owner)
 
 /obj/projectile/bullet/gyrojet
 	name = "gyrojet"

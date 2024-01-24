@@ -52,7 +52,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		reagents.add_reagent(/reagent/toxin/blob_spore,50)
-		smoke(T,5,SECONDS_TO_DECISECONDS(3),reagents,src,255)
+		smoke(T,5,3 SECONDS,reagents,src,255)
 		var/reagent/R = REAGENT(blood_type)
 		create_blood(
 			/obj/effect/cleanable/blood/splatter,

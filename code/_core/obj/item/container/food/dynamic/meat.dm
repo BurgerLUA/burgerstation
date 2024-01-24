@@ -129,8 +129,8 @@
 				INITIALIZE(M)
 				reagents.transfer_reagents_to(M.reagents,original_volume/pieces)
 				FINALIZE(M)
-				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=SECONDS_TO_DECISECONDS(1))
-			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=SECONDS_TO_DECISECONDS(1))
+				animate(M,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=1 SECONDS)
+			animate(src,pixel_x = pixel_x + rand(-4,4),pixel_y= pixel_y + rand(-4,4),time=1 SECONDS)
 
 			if(is_living(attacker))
 				var/mob/living/L = attacker

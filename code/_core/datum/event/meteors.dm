@@ -2,7 +2,7 @@
 	name = "Meteor Shower"
 
 	probability = 10 //relative
-	duration = SECONDS_TO_DECISECONDS(60)
+	duration = 60 SECONDS
 
 	occurances_max = 5
 
@@ -29,7 +29,7 @@
 
 	var/list/player_blacklist = list()
 
-	if(lifetime >= SECONDS_TO_DECISECONDS(10))
+	if(lifetime >= 10 SECONDS)
 		for(var/i=1,i<=5,i++) //Limit 5 per.
 			if(!length(SSliving.all_players))
 				break

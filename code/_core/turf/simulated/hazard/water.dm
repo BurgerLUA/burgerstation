@@ -103,3 +103,5 @@
 
 /turf/simulated/liquid/water/desert
 	name = "oasis water"
+
+#undef MAX_DEPTH

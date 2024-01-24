@@ -2,10 +2,10 @@
 	name = "Stoneskin"
 	desc = "Your skin feels strong!"
 	id = TEMP_ARMOR
-	maximum = SECONDS_TO_DECISECONDS(300)
-	minimum = SECONDS_TO_DECISECONDS(1)
+	maximum = 300 SECONDS
+	minimum = 1 SECONDS
 
-	default_duration = SECONDS_TO_DECISECONDS(30)
+	default_duration = 30 SECONDS
 	default_magnitude = 10
 
 	affects_dead = FALSE

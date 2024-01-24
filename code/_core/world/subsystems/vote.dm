@@ -42,5 +42,5 @@ SUBSYSTEM_DEF(vote)
 /subsystem/vote/proc/create_vote(var/vote/desired_vote_type)
 	var/vote/V = new desired_vote_type
 	active_votes += V
-	V.time_to_end = world.time + SECONDS_TO_DECISECONDS(V.time_limit)
+	V.time_to_end = world.time + (V.time_limit) SECONDS
 	return V

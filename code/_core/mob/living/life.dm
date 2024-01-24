@@ -65,7 +65,7 @@
 	if(master)
 		dust()
 	else if(soul_size && has_status_effect(SOULTRAP) && !is_player_controlled())
-		var/obj/effect/temp/soul/S = new(T,SECONDS_TO_DECISECONDS(20))
+		var/obj/effect/temp/soul/S = new(T,20 SECONDS)
 		S.appearance = src.appearance
 		S.transform = get_base_transform()
 		S.color = "#000000"
@@ -278,7 +278,7 @@
 	if(flash_overlay && flash_overlay.duration > 0)
 		flash_overlay.duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
 		if(flash_overlay.duration <= 0)
-			animate(flash_overlay,alpha=0,time=SECONDS_TO_DECISECONDS(5))
+			animate(flash_overlay,alpha=0,time=5 SECONDS)
 
 	if(deafened_duration && deafened_duration > 0)
 		deafened_duration -= TICKS_TO_DECISECONDS(LIFE_TICK)
@@ -359,7 +359,7 @@ mob/living/proc/on_life_slow()
 	if(talk_duration)
 		talk_duration = max(0,talk_duration-TICKS_TO_DECISECONDS(LIFE_TICK_SLOW))
 		if(talk_duration <= 0 && !is_typing)
-			animate(chat_overlay,alpha = 0,time=SECONDS_TO_DECISECONDS(1))
+			animate(chat_overlay,alpha = 0,time=1 SECONDS)
 
 	if(dead)
 		return FALSE

@@ -1,12 +1,12 @@
 obj/effect/temp/hazard
 	name = "hazard"
 	desc = "Avoid this."
-	duration = SECONDS_TO_DECISECONDS(3)
+	duration = 3 SECONDS
 
 	var/atom/owner
 
 	var/hazard_range = 0
-	var/hazard_delay = SECONDS_TO_DECISECONDS(1)
+	var/hazard_delay = 1 SECONDS
 
 	var/cross_hazard = TRUE
 
@@ -49,7 +49,7 @@ obj/effect/temp/hazard/New(var/desired_location,var/desired_time,var/desired_own
 	do_damage(L)
 
 	if(!CALLBACK_EXISTS("\ref[src]_cross_\ref[L]"))
-		CALLBACK("\ref[src]_cross_\ref[L]",SECONDS_TO_DECISECONDS(1),src,src::do_cross_damage(),L)
+		CALLBACK("\ref[src]_cross_\ref[L]",1 SECONDS,src,src::do_cross_damage(),L)
 
 /obj/effect/temp/hazard/Crossed(atom/movable/O,atom/OldLoc)
 	if(enabled && cross_hazard && is_living(O))
@@ -93,9 +93,9 @@ obj/effect/temp/hazard/falling_fireball
 	name = "falling fireball"
 	icon = 'icons/obj/projectiles/magic.dmi'
 	icon_state = "firebolt"
-	duration = SECONDS_TO_DECISECONDS(2.1)
+	duration = 2.1 SECONDS
 	hazard_range = 0
-	hazard_delay = SECONDS_TO_DECISECONDS(2)
+	hazard_delay = 2 SECONDS
 	damage_type = /damagetype/ranged/magic/fireball
 
 obj/effect/temp/hazard/falling_fireball/New(var/desired_location,var/desired_time,var/desired_owner)
@@ -174,7 +174,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	name = "lava"
 	icon = 'icons/obj/effects/lava.dmi'
 	icon_state = "lavastaff_warn"
-	duration = SECONDS_TO_DECISECONDS(30)
+	duration = 30 SECONDS
 	hazard_range = 1
 	damage_type = /damagetype/ranged/magic/fireball
 	cross_hazard = TRUE
@@ -197,7 +197,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	name = "lava"
 	icon = 'icons/obj/structure/cult/effects.dmi'
 	icon_state = "floorglow_strong"
-	duration = SECONDS_TO_DECISECONDS(10)
+	duration = 10 SECONDS
 	hazard_range = 1
 	damage_type = /damagetype/ranged/magic/cult
 	cross_hazard = TRUE
@@ -226,7 +226,7 @@ obj/effect/temp/hazard/bubblefist/attack(var/atom/attacker,var/atom/victim,var/l
 	name = "fire"
 	icon = 'icons/obj/effects/flamer_fire_effect.dmi' //FIRE
 	icon_state = "red_1" //brain out, soup in
-	duration = SECONDS_TO_DECISECONDS(30)
+	duration = 30 SECONDS
 	hazard_range = 1
 	damage_type = /damagetype/ranged/laser/flamethrower
 	cross_hazard = TRUE

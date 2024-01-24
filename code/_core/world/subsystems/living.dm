@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(living)
 
 	var/list/mob/living/processing_mobs = list()
 
-	var/next_report = SECONDS_TO_DECISECONDS(300)
+	var/next_report = 300 SECONDS
 
 	var/list/mob/living/simple/cat/runtime/all_runtimes = list()
 

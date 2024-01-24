@@ -126,7 +126,7 @@
 		set_active(caller,FALSE)
 		return FALSE
 
-	CALLBACK("\ref[src]_drain_power",SECONDS_TO_DECISECONDS(1),src,src::drain_power(),caller)
+	CALLBACK("\ref[src]_drain_power",1 SECONDS,src,src::drain_power(),caller)
 
 	return TRUE
 

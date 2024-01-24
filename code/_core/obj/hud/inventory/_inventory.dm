@@ -140,7 +140,7 @@
 
 	return FALSE
 
-/obj/hud/inventory/proc/show(var/should_show,var/speed=SECONDS_TO_DECISECONDS(1))
+/obj/hud/inventory/proc/show(var/should_show,var/speed=1 SECONDS)
 	if(should_show)
 		animate(src,alpha=initial(alpha),time=speed)
 		mouse_opacity = initial(mouse_opacity)

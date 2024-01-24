@@ -36,7 +36,7 @@
 
 /obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target,location,control,params)
 
-	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
+	next_scan = world.time + 4 SECONDS
 
 	. = "<b>Scan:</b> <font color='red'>[CEILING(target.health.damage[BRUTE],1)]</font>|<font color='yellow'>[CEILING(target.health.damage[BURN],1)]</font>|<font color='green'>[CEILING(target.health.damage[TOX],1)]</font>|<font color='blue'>[CEILING(target.health.damage[OXY],1)]</font>"
 

@@ -65,7 +65,7 @@
 		if(stamina_percent < 1)
 			M.Translate(16,0)
 		animate(src,color=color_mod,time=TICKS_TO_DECISECONDS(LIFE_TICK_FAST))
-		animate(src,alpha=desired_alpha,transform=M,time=SECONDS_TO_DECISECONDS(1))
+		animate(src,alpha=desired_alpha,transform=M,time=1 SECONDS)
 
 	icon_state = "mana_[clamp(CEILING(mana_percent*19,1),0,19)]"
 

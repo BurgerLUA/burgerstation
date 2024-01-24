@@ -106,7 +106,7 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 	var/list/callback_list = list()
 	callback_list["start_turf"] = get_turf(P)
 	callback_list["end_turf"] = desired_turf
-	if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(3),callback_list))
+	if(add_progress_bar(P,"teleport",3 SECONDS,callback_list))
 		P.to_chat(span("notice","You begin walking into the light..."))
 		P.show_hud(FALSE,FLAGS_HUD_TELEPORT,FLAGS_HUD_SPECIAL|FLAGS_HUD_WIDGET,speed=1)
 
@@ -136,7 +136,7 @@ obj/structure/interactive/wishgranter/normal/Crossed(var/atom/crosser)
 			var/list/callback_list = list()
 			callback_list["start_turf"] = get_turf(P)
 			callback_list["end_turf"] = all_wishgranters[choice]
-			if(add_progress_bar(P,"teleport",SECONDS_TO_DECISECONDS(10),callback_list))
+			if(add_progress_bar(P,"teleport",10 SECONDS,callback_list))
 				P.to_chat(span("notice","Now teleporting..."))
 
 	return ..()

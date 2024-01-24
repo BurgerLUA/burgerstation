@@ -5,7 +5,7 @@
 
 	plane = PLANE_ALWAYS_VISIBLE
 
-	var/meteor_time = SECONDS_TO_DECISECONDS(3)
+	var/meteor_time = 3 SECONDS
 
 /obj/effect/falling_meteor/New(var/desired_location)
 
@@ -32,7 +32,7 @@
 /obj/effect/falling_meteor/proc/land()
 	explode(get_turf(src),2,src,src,multiplier = 5)
 	src.alpha = 0
-	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
+	CALLBACK("delete_\ref[src]",3 SECONDS,src,.datum/proc/delete)
 	return TRUE
 
 /obj/effect/falling_fireball
@@ -40,7 +40,7 @@
 	icon = 'icons/obj/projectiles/magic.dmi'
 	icon_state = "firebolt_flipped"
 
-	var/meteor_time = SECONDS_TO_DECISECONDS(2)
+	var/meteor_time = 2 SECONDS
 	var/stored_loyalty_tag = "Ash Drake"
 
 /obj/effect/falling_fireball/New(var/desired_location)
@@ -62,5 +62,5 @@
 /obj/effect/falling_fireball/proc/land()
 	explode(get_turf(src),2,src,src,desired_loyalty_tag=stored_loyalty_tag)
 	src.alpha = 0
-	CALLBACK("delete_\ref[src]",SECONDS_TO_DECISECONDS(3),src,.datum/proc/delete)
+	CALLBACK("delete_\ref[src]",3 SECONDS,src,.datum/proc/delete)
 	return TRUE

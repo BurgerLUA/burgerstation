@@ -3,7 +3,7 @@
 	desc = "Quickly draws the item in your equipment slot into your dominant hand."
 	icon_state = "quick_draw"
 	cost = 5
-	cooldown = SECONDS_TO_DECISECONDS(1)
+	cooldown = 1 SECONDS
 	var/attack_too = FALSE
 
 	category = "Quick Draw"

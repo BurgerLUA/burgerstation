@@ -34,7 +34,7 @@
 			return TRUE
 	else if(linked_blobbernaught.dead || linked_blobbernaught.qdeleting)
 		linked_blobbernaught = null
-		next_spawn = world.time + SECONDS_TO_DECISECONDS(60)
+		next_spawn = world.time + 60 SECONDS
 
 	return FALSE
 

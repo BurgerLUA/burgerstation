@@ -4,7 +4,7 @@
 
 	resource_type = MANA
 	cost = 25
-	cooldown = SECONDS_TO_DECISECONDS(1)
+	cooldown = 1 SECONDS
 
 	var/obj/projectile/projectile_to_shoot
 	var/damagetype/damage_type

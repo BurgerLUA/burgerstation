@@ -218,10 +218,10 @@ var/global/world_state = STATE_STARTING
 
 	if(shutdown)
 		broadcast_to_clients(span("notice","Shutting down world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server shuts down."))
-		CALLBACK("shutdown_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,src::shutdown_server())
+		CALLBACK("shutdown_world",REBOOT_TIME SECONDS,src,src::shutdown_server())
 	else
 		broadcast_to_clients(span("notice","Rebooting world in [REBOOT_TIME] seconds due to [nice_reason]. Characters will be saved when the server reboots."))
-		CALLBACK("reboot_world",SECONDS_TO_DECISECONDS(REBOOT_TIME),src,src::reboot_server())
+		CALLBACK("reboot_world",REBOOT_TIME SECONDS,src,src::reboot_server())
 
 	SSdiscord.send_message("Round ended with [length(SSclient.all_clients)] players due to [nice_reason].")
 

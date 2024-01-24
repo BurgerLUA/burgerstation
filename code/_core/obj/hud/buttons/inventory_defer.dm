@@ -136,7 +136,7 @@ var/global/list/redscale = list(
 			else
 				desired_color = "#FFFFFF"
 
-	animate(src,color=desired_color,time=SECONDS_TO_DECISECONDS(1))
+	animate(src,color=desired_color,time=1 SECONDS)
 
 	HOOK_ADD("update_stats","update_stats_\ref[src]",I,src,src::update()) //This doesn't need to be removed in another call.
 

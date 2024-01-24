@@ -56,7 +56,7 @@
 	for(var/mob/M in range(SOUND_RANGE,get_turf(instrument_atom)))
 		temp_hearers += M
 
-	next_hear_check = world.time + SECONDS_TO_DECISECONDS(3)
+	next_hear_check = world.time + 3 SECONDS
 
 	return
 

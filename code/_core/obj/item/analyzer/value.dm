@@ -14,5 +14,5 @@
 	var/atom/movable/M = target
 	var/calculated_value = M.get_value()
 	caller.to_chat(span("notice","\The [target.name]'s total value and its contents is worth [nice_number(CEILING(calculated_value,1))] credits(s)."))
-	next_scan = world.time + SECONDS_TO_DECISECONDS(4)
+	next_scan = world.time + 4 SECONDS
 	return TRUE

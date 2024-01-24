@@ -52,7 +52,7 @@
 		sleep(20)
 
 
-		show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
+		show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=3 SECONDS)
 		client.screen -= S
 		qdel(S)
 

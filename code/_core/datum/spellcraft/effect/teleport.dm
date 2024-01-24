@@ -30,7 +30,7 @@
 	var/list/callback_list = list()
 	callback_list["start_turf"] = get_turf(A)
 	callback_list["end_turf"] = selected_turf
-	add_progress_bar(A,"teleport",SECONDS_TO_DECISECONDS(10),callback_list)
+	add_progress_bar(A,"teleport",10 SECONDS,callback_list)
 
 	return ..()
 

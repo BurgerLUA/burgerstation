@@ -31,6 +31,6 @@
 			livingcaller.visible_message(span("warning","\The [livingcaller.name] looks dissapointedly at \the [src]."),span("warning","The Spell Fizzles!"))
 		else
 			livingcaller.visible_message(span("warning","\The [livingcaller.name]'s wounds begin to close? You think?"),span("warning","You feel your wounds closing? You think?"))
-			livingcaller.add_status_effect(TEMP_REGEN,-damage_multiplier_to_use,SECONDS_TO_DECISECONDS(damage_multiplier_to_use * 5))
+			livingcaller.add_status_effect(TEMP_REGEN,-damage_multiplier_to_use,(damage_multiplier_to_use * 5) SECONDS)
 	else
 		CRASH("Nonliving atom [caller] is somehow using a [object], which shouldn't be possible!")

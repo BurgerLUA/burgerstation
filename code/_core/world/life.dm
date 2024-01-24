@@ -105,7 +105,7 @@
 	for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
 		O.force_move(move_turf)
 		play_music_track(possible_music[lobby_track], O.client)
-		O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+		O.show_hud(TRUE,speed = 2 SECONDS)
 		CHECK_TICK_HARD
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")

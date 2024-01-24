@@ -5,7 +5,7 @@
 
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SOLID
 
-	lifetime = SECONDS_TO_DECISECONDS(4)
+	lifetime = 4 SECONDS
 
 /*
 /obj/projectile/slime_ball/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)

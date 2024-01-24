@@ -65,7 +65,7 @@
 
 	object_size = 2
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 30
 
@@ -219,8 +219,8 @@
 		E.pixel_z = -16
 		E.alpha = 0
 		flick("leaper_bubble_form",E)
-		animate(E,pixel_z = 0,alpha=255,time=SECONDS_TO_DECISECONDS(3))
-		CALLBACK("\ref[E]_telegraph_explode",SECONDS_TO_DECISECONDS(6),src,src::blood_attack_do_explode(),E)
+		animate(E,pixel_z = 0,alpha=255,time=3 SECONDS)
+		CALLBACK("\ref[E]_telegraph_explode",6 SECONDS,src,src::blood_attack_do_explode(),E)
 		for(var/k in DIRECTIONS_ALL_CENTER)
 			var/turf/T2 = get_step(T,k)
 			for(var/obj/effect/cleanable/blood/B in T2.contents)
@@ -234,7 +234,7 @@
 					alpha=0,
 					pixel_x=offsets[1]*TILE_SIZE,
 					pixel_y=offsets[2]*TILE_SIZE,
-					time=SECONDS_TO_DECISECONDS(3)
+					time=3 SECONDS
 				)
 				qdel(B)
 		play_sound('sound/weapons/magic/bloody_impact.ogg',T)
@@ -300,19 +300,19 @@
 		INITIALIZE(L)
 		GENERATE(L)
 		FINALIZE(L)
-		var/obj/effect/temp/E = new(T,SECONDS_TO_DECISECONDS(1))
+		var/obj/effect/temp/E = new(T,1 SECONDS)
 		E.icon = 'icons/obj/effects/tendril_spawn.dmi'
 		E.icon_state = "spawning"
 		L.color = "#000000"
-		animate(L,color=initial(L.color),SECONDS_TO_DECISECONDS(1))
+		animate(L,color=initial(L.color),1 SECONDS)
 		if(L.ai)
 			L.ai.set_active(TRUE)
 			if(L.ai.objective_attack && prob(80))
 				L.ai.set_objective(L.ai.objective_attack)
 			else
 				L.ai.queue_find_new_objectives = TRUE
-			L.ai.roaming_distance = VIEW_RANGE*0.5
-				L.ai.allow_far_roaming = FALSE
+			L.ai.roaming_distance = VIEW_RANGE * 0.5
+			L.ai.allow_far_roaming = FALSE
 		tracked_frogs += L
 		. = TRUE
 		CHECK_TICK(50,FPS_SERVER)

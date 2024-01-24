@@ -22,12 +22,12 @@
 			if(1)
 				if(last_goblin_spawn <= world.time)
 					owner_as_goblin_king.summon_goblins(is_angry)
-					last_goblin_spawn = world.time + SECONDS_TO_DECISECONDS(cooldown)
+					last_goblin_spawn = world.time + cooldown SECONDS
 			if(2)
 				if(last_totem_spawn <= world.time)
 					owner_as_goblin_king.summon_totems(is_angry)
-					last_totem_spawn = world.time + SECONDS_TO_DECISECONDS(cooldown)
+					last_totem_spawn = world.time + cooldown SECONDS
 			if(3)
 				if(last_screech <= world.time)
 					owner_as_goblin_king.screech(is_angry)
-					last_screech = world.time + SECONDS_TO_DECISECONDS(cooldown*2)
+					last_screech = world.time + (cooldown * 2) SECONDS

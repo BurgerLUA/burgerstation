@@ -28,6 +28,6 @@
 	for(var/k in planet_list)
 		caller.to_chat(span("debug",k))
 
-	next_scan = world.time + SECONDS_TO_DECISECONDS(1)
+	next_scan = world.time + 1 SECONDS
 
 	return TRUE

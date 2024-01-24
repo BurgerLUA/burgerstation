@@ -143,7 +143,7 @@
 
 	spawn
 		if(length(linked_object.crossed_objects))
-			animate(linked_object,alpha = 100, time = SECONDS_TO_DECISECONDS(0.7))
+			animate(linked_object,alpha = 100, time = 0.7 SECONDS)
 
 /obj/trigger/transparency_trigger/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
 	..()
@@ -152,6 +152,6 @@
 
 	spawn
 		if(!length(linked_object.crossed_objects))
-			animate(linked_object,alpha = 255, time = SECONDS_TO_DECISECONDS(0.7))
+			animate(linked_object,alpha = 255, time = 0.7 SECONDS)
 */
 

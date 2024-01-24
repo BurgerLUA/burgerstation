@@ -9,7 +9,7 @@
 
 	collision_dir = NORTH | EAST | SOUTH | WEST
 
-	var/disposals_countdown = SECONDS_TO_DECISECONDS(5)
+	var/disposals_countdown = 5 SECONDS
 
 	bullet_block_chance = 50
 

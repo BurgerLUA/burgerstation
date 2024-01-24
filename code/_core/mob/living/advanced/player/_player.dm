@@ -104,7 +104,7 @@
 	var/job_rank = 1
 	var/job_next_promotion
 
-	expiration_time = SECONDS_TO_DECISECONDS(180)
+	expiration_time = 180 SECONDS
 
 
 

@@ -96,7 +96,7 @@
 			if(CODE_BLUE)
 				CALLBACK_GLOBAL(\
 					"gamemode_announce_code",\
-					SECONDS_TO_DECISECONDS(10),\
+					10 SECONDS,\
 					.proc/announce,\
 					"Station Alert System",\
 					"Alert Level Increased",\
@@ -107,7 +107,7 @@
 			if(CODE_AMBER)
 				CALLBACK_GLOBAL(
 					"gamemode_announce_code",\
-					SECONDS_TO_DECISECONDS(10),\
+					10 SECONDS,\
 					.proc/announce,\
 					"Station Alert System",\
 					"Alert Level Increased",\
@@ -118,7 +118,7 @@
 			if(CODE_RED)
 				CALLBACK_GLOBAL(\
 					"gamemode_announce_code",\
-					SECONDS_TO_DECISECONDS(10),\
+					10 SECONDS,\
 					.proc/announce,\
 					"Station Alert System",\
 					"Alert Level Increased",\
@@ -129,7 +129,7 @@
 			if(CODE_DELTA)
 				CALLBACK_GLOBAL(\
 					"gamemode_announce_code",\
-					SECONDS_TO_DECISECONDS(10),\
+					10 SECONDS,\
 					.proc/announce,\
 					"Station Alert System",\
 					"Alert Level Increased",\

@@ -45,14 +45,14 @@
 		L.force_move(T)
 		new/obj/effect/temp/impact/blood(T,desired_color = COLOR_BLOOD)
 		play_sound(pick('sound/weapons/magic/bloody_impact.ogg'),get_turf(src),range_max=VIEW_RANGE*0.5)
-		next_teleport_command = world.time + SECONDS_TO_DECISECONDS(2)
+		next_teleport_command = world.time + 2 SECONDS
 		return TRUE
 
 	if(L.intent == INTENT_DISARM && next_blood_attack <= world.time && target_distance <= 10) //hacky solution to the range problem
 		new/obj/effect/temp/hazard/bubblefist(T,desired_owner = L)
 		L.blood_volume = max(0,L.blood_volume - 20) //10% HP. I sure hope the blood cost disincentivises spam.
 		QUEUE_HEALTH_UPDATE(L)
-		next_blood_attack = world.time + SECONDS_TO_DECISECONDS(2)
+		next_blood_attack = world.time + 2 SECONDS
 		. = TRUE
 
 	else return FALSE

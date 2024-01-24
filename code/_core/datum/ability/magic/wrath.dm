@@ -3,7 +3,7 @@
 	desc = "Call down a lightning bolt that causes an explosion, an EMP, a fire, and smoke in a target area."
 	icon_state = "lightning"
 	cost = 100
-	cooldown = SECONDS_TO_DECISECONDS(30)
+	cooldown = 30 SECONDS
 
 
 

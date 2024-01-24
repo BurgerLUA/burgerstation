@@ -25,7 +25,7 @@
 	. = CEILING(.,1)
 
 /obj/item/legion_core/Generate()
-	expiry_time = SECONDS_TO_DECISECONDS(600)
+	expiry_time = 600 SECONDS
 	return ..()
 
 /obj/item/legion_core/Finalize()

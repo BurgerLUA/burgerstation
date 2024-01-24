@@ -2,9 +2,9 @@
 	name = "Staggered"
 	desc = "You're staggered!"
 	id = STAGGER
-	minimum = SECONDS_TO_DECISECONDS(0.25)
-	maximum = SECONDS_TO_DECISECONDS(1)
-	default_duration = SECONDS_TO_DECISECONDS(1)
+	minimum = 0.25 SECONDS
+	maximum = 1 SECONDS
+	default_duration = 1 SECONDS
 	affects_dead = FALSE
 
 /status_effect/staggered/can_add_status_effect(var/atom/attacker,var/mob/living/victim)

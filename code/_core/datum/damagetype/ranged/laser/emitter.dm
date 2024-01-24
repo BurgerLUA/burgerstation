@@ -10,7 +10,7 @@
 
 	if(istype(hit_object,/obj/structure/interactive/supermatter))
 		var/obj/structure/interactive/supermatter/S = hit_object
-		S.add_charge(SECONDS_TO_DECISECONDS(6)/3)
+		S.add_charge(6 SECONDS/3)
 		return TRUE
 
 	. = ..()

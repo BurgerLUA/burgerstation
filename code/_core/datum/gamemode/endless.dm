@@ -4,7 +4,7 @@
 	hidden = FALSE
 
 	var/last_vote = 0
-	var/vote_delay = SECONDS_TO_DECISECONDS(60*60)
+	var/vote_delay = (60*60) SECONDS
 
 	round_time_next = 0
 

@@ -12,7 +12,7 @@
 	if(. && is_organ(owner) && is_advanced(owner.loc))
 		var/mob/living/advanced/A = owner.loc
 		if(. > 0) //Increase damage
-			A.health_regen_delay = max(A.health_regen_delay,SECONDS_TO_DECISECONDS(60))
+			A.health_regen_delay = max(A.health_regen_delay,60 SECONDS)
 		QUEUE_HEALTH_UPDATE(A)
 
 /health/obj/item/organ/update_health_stats()

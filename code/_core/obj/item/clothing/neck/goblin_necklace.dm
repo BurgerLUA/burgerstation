@@ -36,7 +36,7 @@
 /obj/item/clothing/neck/goblin_necklace/think()
 	if(cooldown_effect > world.time)
 		return TRUE
-	cooldown_effect = world.time + SECONDS_TO_DECISECONDS(1)
+	cooldown_effect = world.time + 1 SECONDS
 	var/turf/T = get_turf(src)
 	for(var/mob/living/affectLiving in T)
 		if(affectLiving.dead)

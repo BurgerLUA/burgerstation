@@ -51,14 +51,14 @@
 
 	soul_size = SOUL_SIZE_MYSTIC
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 35
 
 
 /mob/living/simple/herald/get_damage_type(var/atom/attacker,var/atom/victim)
 
-	if( (next_teleport - world.time) >= SECONDS_TO_DECISECONDS(2) )
+	if( (next_teleport - world.time) >= 2 SECONDS )
 		return /damagetype/unarmed/cqc/sleeping_carp/crashing_wave_kick
 
 	if(attacker && victim && !is_facing(victim,attacker))
@@ -91,7 +91,7 @@
 	force_move(T)
 	new /obj/effect/temp/sparkles(src.loc)
 
-	src.next_teleport = world.time + SECONDS_TO_DECISECONDS(3)
+	src.next_teleport = world.time + 3 SECONDS
 
 	return TRUE
 
@@ -109,7 +109,7 @@
 	force_move(T)
 	new /obj/effect/temp/sparkles(src.loc)
 
-	src.next_teleport = world.time + SECONDS_TO_DECISECONDS(3)
+	src.next_teleport = world.time + 3 SECONDS
 
 	return TRUE
 

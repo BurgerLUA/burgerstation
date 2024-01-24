@@ -65,7 +65,7 @@ obj/structure/interactive/construction/reinf_girder/clicked_on_by_object(var/mob
 		INTERACT_CHECK
 		INTERACT_CHECK_OBJECT
 		INTERACT_DELAY(10)
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::construct_reinf_wall(),caller,object)
+		PROGRESS_BAR(caller,src,1 SECONDS,src::construct_reinf_wall(),caller,object)
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_construct_reinf_wall(),caller,object)
 		return TRUE
 	return ..()
