@@ -153,7 +153,7 @@
 /obj/item/fishing/rod/think()
 
 	if(next_tick <= world.time)
-		next_tick = world.time + SECONDS_TO_DECISECONDS(1)
+		next_tick = world.time + 1 SECONDS
 		if(snagged_fish)
 			var/time_since_snag = world.time - catch_time
 			if(!is_inventory(src.loc) || time_since_snag >= snagged_fish) //Too slow...
@@ -275,7 +275,7 @@
 		fishing_bob = new(fishing_turf)
 		fishing_bob.icon_state = "[lure.bob_icon_state]_out"
 		animate(fishing_bob,pixel_x=rand(-10,10),pixel_y=rand(-10,10),time=50)
-		nospam = world.time + SECONDS_TO_DECISECONDS(1)
+		nospam = world.time + 1 SECONDS
 		START_THINKING(src)
 		return TRUE
 

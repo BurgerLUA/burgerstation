@@ -8,7 +8,7 @@
 	amount_max_icon = 3
 
 /obj/item/deployable/proc/get_deploy_time(var/mob/caller)
-	return SECONDS_TO_DECISECONDS(3)
+	return 3 SECONDS
 
 /obj/item/deployable/proc/pre_deploy(var/mob/caller,var/turf/T,var/obj/structure/S)
 	S.dir = caller.dir
@@ -87,7 +87,7 @@
 	size = SIZE_9
 
 /obj/item/deployable/mountable/browning/get_deploy_time(var/mob/caller)
-	return SECONDS_TO_DECISECONDS(10)
+	return 10 SECONDS
 
 /obj/item/deployable/mob
 	var/mob/living/mob_to_deploy

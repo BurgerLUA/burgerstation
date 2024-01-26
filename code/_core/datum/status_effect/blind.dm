@@ -2,9 +2,9 @@
 	name = "Blinded"
 	desc = "You're blinded!"
 	id = BLINDED
-	minimum = SECONDS_TO_DECISECONDS(1)
-	maximum = SECONDS_TO_DECISECONDS(10)
-	default_duration = SECONDS_TO_DECISECONDS(5)
+	minimum = 1 SECONDS
+	maximum = 10 SECONDS
+	default_duration = 5 SECONDS
 
 	affects_dead = FALSE
 

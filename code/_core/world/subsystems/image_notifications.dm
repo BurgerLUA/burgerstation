@@ -3,15 +3,15 @@ var/global/list/all_notifications = list()
 SUBSYSTEM_DEF(image_notifications)
 	name = "Image Notifications"
 	desc = "Handles animations of pop-up image notifications."
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DS2TICKS(1)
 	priority = SS_ORDER_PRELOAD
 
 /subsystem/image_notifications/on_life()
 	for(var/k in all_notifications)
 		var/obj/hud/screen/S = k
-		if(S.time <= SECONDS_TO_DECISECONDS(2) && !S.is_fading && S.fade_out)
+		if(S.time <= 2 SECONDS && !S.is_fading && S.fade_out)
 			S.is_fading = TRUE
-			animate(S,time=SECONDS_TO_DECISECONDS(2),alpha = 0,easing=LINEAR_EASING)
+			animate(S,time=2 SECONDS,alpha = 0,easing=LINEAR_EASING)
 		if(S.time <= 0)
 			remove_notification(S.client,S)
 		S.time -= 1
@@ -47,10 +47,10 @@ SUBSYSTEM_DEF(image_notifications)
 		return
 
 	if(fade_in)
-		duration += SECONDS_TO_DECISECONDS(2)
+		duration += 2 SECONDS
 
 	if(fade_out)
-		duration += SECONDS_TO_DECISECONDS(2)
+		duration += 2 SECONDS
 
 	var/obj/hud/screen/S = new()
 	S.alpha = fade_in ? 0 : 255
@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(image_notifications)
 	S.fade_out = fade_out
 
 	if(fade_in)
-		animate(S,time=SECONDS_TO_DECISECONDS(2),alpha = 255,easing=LINEAR_EASING)
+		animate(S,time=2 SECONDS,alpha = 255,easing=LINEAR_EASING)
 
 	if(C && C.screen)
 		C.screen += S

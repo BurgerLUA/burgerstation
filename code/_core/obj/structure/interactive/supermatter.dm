@@ -24,7 +24,7 @@
 	health_base = 5000
 
 	var/charge = 0
-	var/charge_max = SECONDS_TO_DECISECONDS(60)
+	var/charge_max = 60 SECONDS
 
 	var/sound_spam = 0
 	var/display_spam = 0
@@ -132,7 +132,7 @@
 	if(health)
 		var/health_percent = health.health_current/health.health_max
 		var/threshold = max(0.01,health_percent*0.2)
-		if((last_warning_percent - health_percent) >= threshold && last_warning_time + SECONDS_TO_DECISECONDS(3) <= world.time)
+		if((last_warning_percent - health_percent) >= threshold && last_warning_time + 3 SECONDS <= world.time)
 			trigger_warning()
 		//update_map_text()
 
@@ -183,7 +183,7 @@
 /obj/structure/interactive/supermatter/station
 	name = "stable supermatter crystal"
 	health_base = 10000
-	charge_max = SECONDS_TO_DECISECONDS(60) //60 seconds of power.
+	charge_max = 60 SECONDS //60 seconds of power.
 
 /obj/structure/interactive/supermatter/ai_core
 
@@ -194,7 +194,7 @@
 	name = "unstable supermatter crystal"
 	desc_extended = "An extremely important and extremely unstable shard of supermatter. You should protect this at all costs if you're NanoTrasen."
 	health_base = 5000
-	charge_max = SECONDS_TO_DECISECONDS(900) //15 minutes
+	charge_max = 900 SECONDS //15 minutes
 
 /obj/structure/interactive/supermatter/defense/add_charge(var/charge_amount=0)
 	. = ..()

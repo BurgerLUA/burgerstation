@@ -2,7 +2,7 @@ obj/effect/temp/impact/bullet
 	name = "bullet impact"
 	icon = 'icons/obj/effects/bullet_impact.dmi'
 	icon_state = "bullet"
-	duration = SECONDS_TO_DECISECONDS(30)
+	duration = 30 SECONDS
 	layer = LAYER_PROJECTILE
 
 obj/effect/temp/impact/bullet/New(var/desired_location,var/desired_time,var/desired_pixel_x,var/desired_pixel_y,var/desired_color)

@@ -2,7 +2,7 @@
 	attack_distance_min = 4
 	attack_distance_max = 8
 
-	var/projectile_delay = SECONDS_TO_DECISECONDS(5)
+	var/projectile_delay = 5 SECONDS
 	var/projectile_count = 2
 
 	night_vision = 0
@@ -55,7 +55,7 @@
 
 /ai/watcher/clockwork
 	projectile_count = 3
-	projectile_delay = SECONDS_TO_DECISECONDS(2)
+	projectile_delay = 2 SECONDS
 
 /ai/watcher/clockwork/handle_projectiles()
 

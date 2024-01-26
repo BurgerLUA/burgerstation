@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(delete)
 			continue
 
 		if(!should_delete(object_to_delete))
-			objects_to_delete_safe[k] = world.time + SECONDS_TO_DECISECONDS(60) //Check in another minute.
+			objects_to_delete_safe[k] = world.time + 60 SECONDS //Check in another minute.
 			continue
 
 		objects_to_delete_safe -= k
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(delete)
 		if(is_movable(k))
 			var/atom/movable/M = k
 			if(!M.is_safe_to_delete())
-				objects_to_delete[k] = world.time + SECONDS_TO_DECISECONDS(60) //Check in another minute.
+				objects_to_delete[k] = world.time + 60 SECONDS //Check in another minute.
 				continue
 
 		objects_to_delete -= k

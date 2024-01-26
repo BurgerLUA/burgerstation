@@ -152,7 +152,7 @@
 	if(. && is_living(owner))
 		var/mob/living/L = owner
 		if(. > 0) //Increase damage
-			L.health_regen_delay = max(L.health_regen_delay,SECONDS_TO_DECISECONDS(60))
+			L.health_regen_delay = max(L.health_regen_delay,60 SECONDS)
 		QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_mana(var/adjust_value)
@@ -160,7 +160,7 @@
 	if(.)
 		var/mob/living/L = owner
 		if(. < 0) //Reduce mana.
-			L.mana_regen_delay = max(L.mana_regen_delay,SECONDS_TO_DECISECONDS(4))
+			L.mana_regen_delay = max(L.mana_regen_delay,4 SECONDS)
 		QUEUE_HEALTH_UPDATE(L)
 
 /health/mob/living/adjust_stamina(var/adjust_value)
@@ -169,7 +169,7 @@
 		var/mob/living/L = owner
 		if(stamina_current >= stamina_max*0.25 && L.has_status_effect(STAMCRIT)) L.remove_status_effect(STAMCRIT)
 		if(. < 0) //Reduce stamina.
-			L.stamina_regen_delay = max(L.stamina_regen_delay,SECONDS_TO_DECISECONDS(4))
+			L.stamina_regen_delay = max(L.stamina_regen_delay,4 SECONDS)
 		QUEUE_HEALTH_UPDATE(L)
 
 

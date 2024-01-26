@@ -10,7 +10,7 @@
 		var/area/new_area = new_turf ? new_turf.loc : null
 		var/area/old_area = old_turf ? old_turf.loc : null
 
-		if(!dead && ckey_last && last_autosave + SECONDS_TO_DECISECONDS(600) <= world.time)
+		if(!dead && ckey_last && last_autosave + 600 SECONDS <= world.time)
 			if(istype(new_area,/area/burgerstation) && !istype(old_area,/area/burgerstation))
 				last_autosave = world.time //Safety
 				var/savedata/client/mob/mobdata = MOBDATA(ckey_last)

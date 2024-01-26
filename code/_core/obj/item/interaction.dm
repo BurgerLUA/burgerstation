@@ -172,7 +172,7 @@
 		var/turf/T = get_turf(object)
 		if(is_container && can_dump_contents(caller,T))
 			INTERACT_DELAY(10)
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::dump_contents(),caller,T)
+			PROGRESS_BAR(caller,src,3 SECONDS,src::dump_contents(),caller,T)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_dump_contents(),caller,T)
 			caller.visible_message(span("notice","\The [caller.name] starts to empty the contents of \the [src.name]..."),span("notice","You start to empty the contents of \the [src.name] onto \the [object.name]..."))
 		else

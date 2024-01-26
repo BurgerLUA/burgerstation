@@ -3,8 +3,8 @@
 	desc = "You're under the influence of painkillers!"
 	id = PAINKILLER
 
-	minimum = SECONDS_TO_DECISECONDS(10)
-	maximum = SECONDS_TO_DECISECONDS(300)
-	default_duration = SECONDS_TO_DECISECONDS(60)
+	minimum = 10 SECONDS
+	maximum = 300 SECONDS
+	default_duration = 60 SECONDS
 
 	affects_dead = TRUE

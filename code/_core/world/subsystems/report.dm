@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(report)
 	. = ..()
 
 /subsystem/report/Initialize()
-	next_report = world.time + SECONDS_TO_DECISECONDS(PROFILING_DELAY_SECONDS)
+	next_report = world.time + PROFILING_DELAY_SECONDS SECONDS
 	. = ..()
 
 /subsystem/report/on_life()
@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(report)
 
 		if(world.time >= next_report)
 			end_profling()
-			next_report = world.time + SECONDS_TO_DECISECONDS(PROFILING_DELAY_SECONDS)
+			next_report = world.time + PROFILING_DELAY_SECONDS SECONDS
 			profiling = FALSE
 
 	return TRUE

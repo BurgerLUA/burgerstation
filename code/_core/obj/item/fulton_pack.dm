@@ -117,7 +117,7 @@
 
 	caller.visible_message(span("warning","\The [caller.name] begins to attach \the [src.name] to \the [object.name]!"),span("warning","You begin to attach \the [src.name] to \the [object.name]."))
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(2),src::attach_fulton(),caller,object)
+	PROGRESS_BAR(caller,src,2 SECONDS,src::attach_fulton(),caller,object)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_attach_fulton(),caller,object)
 
 	return TRUE

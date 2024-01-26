@@ -108,7 +108,7 @@
 
 			var/list/target_cords = L.get_current_target_cords(params)
 			//Throwing it
-			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,target_cords[1],target_cords[2],vel_x,vel_y,lifetime=SECONDS_TO_DECISECONDS(1),desired_loyalty_tag = L.loyalty_tag)
+			object_to_throw.throw_self((grabbed_object ? grabbed_object : caller),object,target_cords[1],target_cords[2],vel_x,vel_y,lifetime=1 SECONDS,desired_loyalty_tag = L.loyalty_tag)
 
 		else if(top_object)
 			caller.to_chat(span("warning","You can't throw \the [top_object.name]!"))

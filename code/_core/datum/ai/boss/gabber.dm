@@ -36,9 +36,9 @@
 	var/had_previous_objective = objective_attack
 	. = ..()
 	if(. && objective_attack && !had_previous_objective)
-		next_trap = max(next_trap,world.time + SECONDS_TO_DECISECONDS(30))
-		next_slam = max(next_slam,world.time + SECONDS_TO_DECISECONDS(10))
-		next_shoot = max(next_shoot,world.time + SECONDS_TO_DECISECONDS(1))
+		next_trap = max(next_trap,world.time + 30 SECONDS)
+		next_slam = max(next_slam,world.time + 10 SECONDS)
+		next_shoot = max(next_shoot,world.time + 1 SECONDS)
 		if(objective_attack && objective_attack.health)
 			last_objective_attack_health = objective_attack.health.health_current
 		frustration_health = 0
@@ -53,7 +53,7 @@
 			last_movement_proc = "horizontal grief"
 			return TRUE
 
-	if(next_slam > 0 && next_slam <= world.time + SECONDS_TO_DECISECONDS(1)) //Doing slam.
+	if(next_slam > 0 && next_slam <= world.time + 1 SECONDS) //Doing slam.
 		owner.move_dir = 0x0
 		last_movement_proc = "slam override"
 		return TRUE
@@ -65,7 +65,7 @@
 		return TRUE
 	*/
 
-	if(!owner_as_gabber.sword_mode && next_trap > world.time + SECONDS_TO_DECISECONDS(5) && next_slam > world.time + SECONDS_TO_DECISECONDS(5))
+	if(!owner_as_gabber.sword_mode && next_trap > world.time + 5 SECONDS && next_slam > world.time + 5 SECONDS)
 		if(get_dist(owner,objective_attack) <= 4)
 			owner.move_dir = get_dir(owner,objective_attack)
 			last_movement_proc = "projectiles distance"
@@ -73,7 +73,7 @@
 
 	. = ..()
 
-/ai/boss/gabber/proc/start_block(var/duration = SECONDS_TO_DECISECONDS(3))
+/ai/boss/gabber/proc/start_block(var/duration = 3 SECONDS)
 	owner_as_gabber.attack_flags |= CONTROL_MOD_BLOCK
 	next_unblock = world.time + duration
 	owner_as_gabber.handle_blocking()
@@ -95,7 +95,7 @@
 		return ..()
 
 	//Slam attack. This should always take first priority as it affects movement above.
-	if(objective_attack && next_slam > 0 && next_slam <= world.time + SECONDS_TO_DECISECONDS(1))
+	if(objective_attack && next_slam > 0 && next_slam <= world.time + 1 SECONDS)
 
 		if(owner_as_gabber.attack_flags & CONTROL_MOD_BLOCK)
 			owner_as_gabber.attack_flags &= ~CONTROL_MOD_BLOCK
@@ -113,14 +113,14 @@
 				owner.dash_direction = get_dir(owner,T)
 				owner.dash_amount = checked_distance - 1
 				play_sound('sound/effects/dodge.ogg',get_turf(owner))
-				next_slam = world.time + SECONDS_TO_DECISECONDS(1)
+				next_slam = world.time + 1 SECONDS
 				return TRUE
 
 			if(owner_as_gabber.sword_mode)
 				var/do_super_slam = super_slams_left <= 0
 				if(do_super_slam)
 					owner_as_gabber.super_slam_jam(T)
-					next_slam = world.time + SECONDS_TO_DECISECONDS(15)
+					next_slam = world.time + 15 SECONDS
 					super_slams_left = initial(super_slams_left)
 				else
 					owner_as_gabber.slam(T)
@@ -128,7 +128,7 @@
 					super_slams_left--
 			else
 				owner_as_gabber.slam(T)
-				next_slam = world.time + (prob(25) ? SECONDS_TO_DECISECONDS(20) : SECONDS_TO_DECISECONDS(5))
+				next_slam = world.time + (prob(25) ? 20 SECONDS : 5 SECONDS)
 
 			return TRUE
 
@@ -141,7 +141,7 @@
 			start_block()
 
 	//Trap attack.
-	if(objective_attack && next_trap > 0 && next_trap <= world.time + SECONDS_TO_DECISECONDS(1))
+	if(objective_attack && next_trap > 0 && next_trap <= world.time + 1 SECONDS)
 
 		if(next_trap > world.time)
 			return TRUE
@@ -150,13 +150,13 @@
 			owner_as_gabber.trap_lines(super_traps_left)
 			super_traps_left--
 			if(super_traps_left > 0)
-				next_trap = world.time + SECONDS_TO_DECISECONDS(5)
+				next_trap = world.time + 5 SECONDS
 			else
-				next_trap = world.time + SECONDS_TO_DECISECONDS(30)
+				next_trap = world.time + 30 SECONDS
 				super_traps_left = initial(super_traps_left)
 		else
 			owner_as_gabber.trap_spam(objective_attack)
-			next_trap = world.time + SECONDS_TO_DECISECONDS(60)
+			next_trap = world.time + 60 SECONDS
 
 		return TRUE
 
@@ -176,9 +176,9 @@
 				for(var/k in players_to_shoot_at)
 					var/mob/living/L = k
 					owner_as_gabber.shoot_bouncy_projectiles(L,1)
-			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.75)*projectiles_to_fire
+			next_shoot = world.time + 0.75 SECONDS * projectiles_to_fire
 		else
-			next_shoot = world.time + SECONDS_TO_DECISECONDS(0.25)*projectiles_to_fire
+			next_shoot = world.time + 0.25 SECONDS * projectiles_to_fire
 
 		return TRUE
 
@@ -204,19 +204,19 @@
 				start_block() //Taking a lot of damage means they should block.
 
 			last_self_health = current_health
-			next_self_health_update = world.time + SECONDS_TO_DECISECONDS(1)
+			next_self_health_update = world.time + 1 SECONDS
 
 		else if(next_destroy_area <= world.time)
 
 			if(objective_attack && objective_attack.health && next_objective_attack_health_update <= world.time)
 
-				next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(3)
+				next_objective_attack_health_update = world.time + 3 SECONDS
 
 				if(last_objective_attack_health && objective_attack.health.health_current >= last_objective_attack_health)
 					frustration_health++
 					if(frustration_health >= 4)
 						owner_as_gabber.destroy_surrounding_obstacles()
-						next_objective_attack_health_update = world.time + SECONDS_TO_DECISECONDS(30)
+						next_objective_attack_health_update = world.time + 30 SECONDS
 						frustration_health = 0
 				else
 					frustration_health = 0

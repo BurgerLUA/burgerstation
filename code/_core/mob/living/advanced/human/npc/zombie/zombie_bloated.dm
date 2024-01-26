@@ -10,7 +10,7 @@
 	stamina_base = 50
 	mana_base = 100
 
-	movement_delay = DECISECONDS_TO_TICKS(8)
+	movement_delay = DS2TICKS(8)
 
 	sex = MALE
 	gender = MALE

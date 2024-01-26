@@ -90,9 +90,9 @@
 	if(complete)
 		return FALSE //Something went wrong.
 
-	if(next_enemy_spawn > 0 && next_enemy_spawn <= world.time && spawns_left > 0 && (next_enemy_spawn + SECONDS_TO_DECISECONDS(20) <= world.time || length(tracked_enemies) < CEILING(possible_ritual_spawns[enemy_type_to_spawn]*0.2,1)))
+	if(next_enemy_spawn > 0 && next_enemy_spawn <= world.time && spawns_left > 0 && (next_enemy_spawn + 20 SECONDS <= world.time || length(tracked_enemies) < CEILING(possible_ritual_spawns[enemy_type_to_spawn]*0.2,1)))
 		spawns_left--
-		next_enemy_spawn = world.time + SECONDS_TO_DECISECONDS(2)
+		next_enemy_spawn = world.time + 2 SECONDS
 		var/turf/simulated/T = pick(valid_turfs)
 		var/mob/living/L = new enemy_type_to_spawn(T)
 		L.delete_on_death = TRUE
@@ -140,7 +140,7 @@
 	spawns_left = possible_ritual_spawns[enemy_type_to_spawn]
 	create_smoke()
 	START_THINKING(src)
-	next_enemy_spawn = world.time + SECONDS_TO_DECISECONDS(6)
+	next_enemy_spawn = world.time + 6 SECONDS
 	return TRUE
 
 /obj/structure/interactive/ritual/proc/end_ritual(var/success = FALSE)

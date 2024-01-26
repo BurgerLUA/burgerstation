@@ -7,7 +7,7 @@
 	resist_grabs = 2
 	night_vision = 0
 
-	objective_delay = DECISECONDS_TO_TICKS(10)
+	objective_delay = DS2TICKS(10)
 
 	true_sight = TRUE
 

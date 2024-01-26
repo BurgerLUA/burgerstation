@@ -65,7 +65,7 @@
 			src.visible_message(span("notice","The cheese in \the [src.name] finishes curdling, and is ready to be removed!"))
 			return TRUE
 
-	CALLBACK("\ref[src]_process_cheese",SECONDS_TO_DECISECONDS(1),src,src::process())
+	CALLBACK("\ref[src]_process_cheese",1 SECONDS,src,src::process())
 
 /obj/item/container/cheese_mold/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
 

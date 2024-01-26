@@ -7,7 +7,7 @@
 		while(world.tick_usage > limit && (max_delays >= safety_count)) {\
 			var/time_to_sleep = CEILING(1 + (world.tick_usage - limit)/5,1); \
 			safety_count += time_to_sleep; \
-			sleep(TICK_LAG * time_to_sleep) \
+			sleep(1 TICKS * time_to_sleep) \
 		}\
 	}
 

@@ -26,7 +26,7 @@
 	//var/animation_pixel_x = 0
 	//var/animation_pixel_y = 0
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DS2TICKS(4)
 
 	var/sprint_delay_mul = 1
 	var/jog_delay_mul = 1.25

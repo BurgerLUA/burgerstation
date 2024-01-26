@@ -20,7 +20,7 @@
 	stamina_base = 500
 	mana_base = 2000
 
-	movement_delay = DECISECONDS_TO_TICKS(5)
+	movement_delay = DS2TICKS(5)
 
 	force_spawn = TRUE
 	boss = TRUE
@@ -66,7 +66,7 @@
 
 	object_size = 2
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 28
 

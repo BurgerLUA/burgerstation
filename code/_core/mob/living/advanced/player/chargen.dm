@@ -45,14 +45,14 @@
 			for(var/char in splittext(line,""))
 				cached_text += char
 				S.maptext = "[cached_text]"
-				sleep(world.tick_lag*2)
+				sleep(1 TICKS * 2)
 			sleep(30)
 		sleep(50)
 		animate(S,alpha = 0,time = 20)
 		sleep(20)
 
 
-		show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=SECONDS_TO_DECISECONDS(3))
+		show_hud(TRUE,FLAG_HUD_ALL,FLAG_HUD_SPECIAL,speed=3 SECONDS)
 		client.screen -= S
 		qdel(S)
 

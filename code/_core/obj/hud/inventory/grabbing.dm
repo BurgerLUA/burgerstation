@@ -123,7 +123,7 @@
 	if(!grabbed_object)
 		CRASH("Tried calling reinforce_grab without a grabbed object!")
 
-	if(!force && world.time <= grab_time+SECONDS_TO_DECISECONDS(2)) //Prevents insta agressive-grab
+	if(!force && world.time <= grab_time+2 SECONDS) //Prevents insta agressive-grab
 		return FALSE
 
 	if(grab_level > 1)

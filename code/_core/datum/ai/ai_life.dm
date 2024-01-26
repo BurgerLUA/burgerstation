@@ -63,7 +63,7 @@
 			idle_time = 0 //Reset idle.
 		else
 			if(idle_time <= 0)
-				idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Idle for more than 3 minutes means you're just wasting processing power.
+				idle_time = world.time + 180 SECONDS //Idle for more than 3 minutes means you're just wasting processing power.
 			else if(idle_time <= world.time)
 				var/found_player = FALSE
 				for(var/k in SSliving.all_players)
@@ -74,7 +74,7 @@
 						found_player = TRUE
 						break
 				if(found_player)
-					idle_time = world.time + SECONDS_TO_DECISECONDS(180) //Try again later.
+					idle_time = world.time + 180 SECONDS //Try again later.
 				else
 					set_active(FALSE) //Deactivate if idle for more than 3 minutes.
 
@@ -105,7 +105,7 @@
 
 			//Update the hunt target destination.
 			if(!objective_attack && hunt_target && next_node_check_time <= world.time)
-				next_node_check_time = world.time + SECONDS_TO_DECISECONDS(4)
+				next_node_check_time = world.time + 4 SECONDS
 				var/turf/possible_turf_01 = get_turf(hunt_target)
 				var/turf/possible_turf_02 = get_step(possible_turf_01,turn(hunt_target.dir,180))
 				var/turf/desired_target_turf = possible_turf_02 && !possible_turf_02.has_dense_atom ? possible_turf_02 : possible_turf_01

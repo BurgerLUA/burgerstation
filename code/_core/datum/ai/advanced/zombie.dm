@@ -37,9 +37,9 @@
 
 	if(objective_attack && next_breathe <= world.time)
 		var/turf/T = get_turf(owner)
-		next_breathe = world.time + SECONDS_TO_DECISECONDS(3.1)
+		next_breathe = world.time + 3.1 SECONDS
 		if(next_teleport < 0)
-			next_teleport = world.time + SECONDS_TO_DECISECONDS(6)
+			next_teleport = world.time + 6 SECONDS
 			var/list/turf/possible_turfs = list()
 			for(var/turf/simulated/floor/F in view(VIEW_RANGE,owner))
 				CHECK_TICK(50,FPS_SERVER)

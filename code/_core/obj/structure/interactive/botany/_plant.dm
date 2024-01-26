@@ -189,7 +189,7 @@
 
 /obj/structure/interactive/plant/proc/on_life(var/tick_rate=1) //Measured in game ticks.
 
-	var/rate = TICKS_TO_DECISECONDS(tick_rate)
+	var/rate = TICKS2DS(tick_rate)
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
 	var/real_growth_speed = growth_speed * rate * (P.allowed_turfs[src.loc.type] ? P.allowed_turfs[src.loc.type] : 0.1)
 

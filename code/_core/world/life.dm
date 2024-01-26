@@ -4,7 +4,7 @@
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
 			if(world_state >= STATE_RUNNING && SS.tick_usage_max > 0 && world.tick_usage > SS.tick_usage_max)
 				SS.overtime_count++
-				sleep(TICK_LAG)
+				sleep(1 TICKS)
 				continue
 		SS.overtime_count = 0
 		var/result = SS.on_life()
@@ -23,7 +23,7 @@
 			break
 		SS.run_failures = 0
 
-		sleep(TICKS_TO_DECISECONDS(SS.tick_rate))
+		sleep(TICKS2DS(SS.tick_rate))
 
 		while(world_state <= STATE_INITIALIZING)
 			sleep(10)
@@ -105,7 +105,7 @@
 	for(var/mob/abstract/observer/menu/O in SSliving.all_mobs_with_clients)
 		O.force_move(move_turf)
 		play_music_track(possible_music[lobby_track], O.client)
-		O.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+		O.show_hud(TRUE,speed = 2 SECONDS)
 		CHECK_TICK_HARD
 
 	log_subsystem("Subsystem Controller","Life initializations complete.")

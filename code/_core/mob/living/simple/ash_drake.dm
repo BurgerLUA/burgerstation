@@ -70,11 +70,11 @@
 
 	object_size = 2
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 28
 
-	movement_delay = DECISECONDS_TO_TICKS(4)
+	movement_delay = DS2TICKS(4)
 
 	var/next_special_move = 0
 
@@ -119,7 +119,7 @@
 
 	play_sound('sound/mob/ash_drake/land.ogg',T)
 
-	CALLBACK("\ref[src]_ash_drake_land",SECONDS_TO_DECISECONDS(1),src,src::finish_land())
+	CALLBACK("\ref[src]_ash_drake_land",1 SECONDS,src,src::finish_land())
 
 	if(prob(50))
 		fire_rain()

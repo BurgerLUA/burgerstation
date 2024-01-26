@@ -151,7 +151,7 @@
 /mob/living/simple/bot/medibot/proc/try_treat(var/mob/living/target)
 
 	if(get_inject_amount(target))
-		PROGRESS_BAR(src,src,SECONDS_TO_DECISECONDS(5),src::treat(),target)
+		PROGRESS_BAR(src,src,5 SECONDS,src::treat(),target)
 		PROGRESS_BAR_CONDITIONS(src,src,src::can_treat(),target)
 		target.visible_message(span("warning","\The [src.name] is trying to inject [target.name]!"),span("danger","\The [src.name] is trying to inject you!"))
 		if(target.dead || target.has_status_effect(CRIT))

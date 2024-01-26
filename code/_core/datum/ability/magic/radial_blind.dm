@@ -3,7 +3,7 @@
 	desc = "Blind all enemies around you in a small radius."
 	icon_state = "blind"
 	cost = 80
-	cooldown = SECONDS_TO_DECISECONDS(30)
+	cooldown = 30 SECONDS
 
 /ability/magic/radial_blind/on_cast(var/mob/caller,var/atom/target,location,params)
 

@@ -22,6 +22,6 @@
 		)
 		owner.do_say(pick(message_to_say),FALSE)
 
-		next_talk = world.time + SECONDS_TO_DECISECONDS(6)
+		next_talk = world.time + 6 SECONDS
 
 	return ..()

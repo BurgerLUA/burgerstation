@@ -97,7 +97,7 @@
 		caller.to_chat(span("warning","There was nothing to pick up on \the [T.name]!"))
 
 	if(still_some_left)
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::scoop_up_ore(),caller,T)
+		PROGRESS_BAR(caller,src,1 SECONDS,src::scoop_up_ore(),caller,T)
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T)
 
 
@@ -138,7 +138,7 @@
 			caller.to_chat(span("warning","There is no ore to dump!"))
 			return TRUE
 		caller.to_chat(span("notice","You start dumping some ore..."))
-		PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::dump_some_ore(),caller,T)
+		PROGRESS_BAR(caller,src,3 SECONDS,src::dump_some_ore(),caller,T)
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T) //Not a typo.
 	else
 		scoop_up_ore(caller,T)
@@ -168,7 +168,7 @@
 		caller.to_chat(span("notice","You finish dumping all the ore."))
 		return TRUE
 
-	PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(1),src::dump_some_ore(),caller,T)
+	PROGRESS_BAR(caller,src,1 SECONDS,src::dump_some_ore(),caller,T)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T) //can_scoop_up_ore is not a typo. Pretty much the same thing.
 
 	return TRUE

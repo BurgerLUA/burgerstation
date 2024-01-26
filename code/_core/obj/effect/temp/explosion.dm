@@ -3,7 +3,7 @@
 	mouse_opacity = 0
 	icon = 'icons/obj/effects/explosion_large.dmi'
 	icon_state = "explosion"
-	duration = SECONDS_TO_DECISECONDS(3)
+	duration = 3 SECONDS
 	layer = LAYER_EFFECT + 0.1
 	pixel_x = -32
 	pixel_y = -32

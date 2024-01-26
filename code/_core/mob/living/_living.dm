@@ -14,7 +14,7 @@
 	var/list/experience/attribute/attributes
 	var/list/experience/skill/skills
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DS2TICKS(1)
 
 	icon_state = "directional"
 
@@ -97,7 +97,7 @@
 	//var/list/mob/living/advanced/player/linked_players
 
 	var/respawn = TRUE
-	var/respawn_time = SECONDS_TO_DECISECONDS(180) //In deciseconds
+	var/respawn_time = 180 SECONDS //In deciseconds
 	var/random_spawn_dir = TRUE
 
 	var/has_footprints = FALSE

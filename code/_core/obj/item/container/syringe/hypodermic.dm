@@ -1,7 +1,7 @@
 /obj/item/container/syringe/hypodermic/
 	name = "hypodermic syringe"
 	value = 5
-	injection_time = SECONDS_TO_DECISECONDS(2)
+	injection_time = 2 SECONDS
 
 	inject_amount_desired = 5
 	inject_amount_precision = 5
@@ -87,7 +87,7 @@
 	icon = 'icons/obj/item/container/syringe_advanced.dmi'
 	rarity = RARITY_RARE
 	quality_reduction_on_use = 5
-	injection_time = SECONDS_TO_DECISECONDS(1.5)
+	injection_time = 1.5 SECONDS
 	icon_count = 11
 	inject_amount_desired = INFINITY
 	injection_sound = 'sound/effects/epi.ogg'

@@ -19,7 +19,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(1)
+	movement_delay = DS2TICKS(1)
 
 	iff_tag = "Blob"
 	loyalty_tag = "Blob"
@@ -52,7 +52,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		reagents.add_reagent(/reagent/toxin/blob_spore,50)
-		smoke(T,5,SECONDS_TO_DECISECONDS(3),reagents,src,255)
+		smoke(T,5,3 SECONDS,reagents,src,255)
 		var/reagent/R = REAGENT(blood_type)
 		create_blood(
 			/obj/effect/cleanable/blood/splatter,

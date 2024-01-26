@@ -22,7 +22,7 @@
 	stamina_base = 5000
 	mana_base = 1000
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 	stun_angle = 0
 
@@ -78,7 +78,7 @@
 
 	object_size = 2
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
 	level = 35
 
@@ -109,7 +109,7 @@
 		new/obj/effect/temp/hazard/bubblefist(T,null,src)
 		. = TRUE
 
-	next_blood_attack = world.time + SECONDS_TO_DECISECONDS(1)
+	next_blood_attack = world.time + 1 SECONDS
 
 /mob/living/simple/bubblegum/get_movement_delay()
 
@@ -153,7 +153,7 @@
 		return FALSE
 	charge_dir = dir
 	charge_steps = VIEW_RANGE
-	CALLBACK("stop_charge_\ref[src]",SECONDS_TO_DECISECONDS(2),src,src::finish_charge()) //Fallback time.
+	CALLBACK("stop_charge_\ref[src]",2 SECONDS,src,src::finish_charge()) //Fallback time.
 	return TRUE
 
 /mob/living/simple/bubblegum/proc/finish_charge()

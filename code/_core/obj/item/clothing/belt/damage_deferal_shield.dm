@@ -16,8 +16,8 @@
 	can_negate_damage = TRUE
 
 	var/damage_limit = 200
-	var/active_time = SECONDS_TO_DECISECONDS(8) //How long the shield stays active for.
-	var/cooldown_time = SECONDS_TO_DECISECONDS(10) //How long it takes for the shield to reactivate.
+	var/active_time = 8 SECONDS //How long the shield stays active for.
+	var/cooldown_time = 10 SECONDS //How long it takes for the shield to reactivate.
 
 	var/obj/effect/shield_overlay
 
@@ -105,7 +105,7 @@
 	if(!CALLBACK_EXISTS("\ref[src]_cooldown_end")) //Only beep if there is a cooldown.
 		return FALSE
 	play_sound('sound/effects/shield_beep.ogg',get_turf(src))
-	CALLBACK("\ref[src]_shield_beep",SECONDS_TO_DECISECONDS(1),src,src::shield_beep())
+	CALLBACK("\ref[src]_shield_beep",1 SECONDS,src,src::shield_beep())
 	return TRUE
 
 

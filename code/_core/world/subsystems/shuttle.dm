@@ -58,6 +58,6 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 			CREATE(/obj/structure/interactive/drop_pod,T)
 			drop_pod_turfs -= k
 			CHECK_TICK(tick_usage_max,FPS_SERVER)
-		next_pod_respawn_time = world.time + SECONDS_TO_DECISECONDS(120)
+		next_pod_respawn_time = world.time + 120 SECONDS
 
 	return TRUE

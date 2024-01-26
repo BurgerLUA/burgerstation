@@ -14,7 +14,7 @@
 	opacity = TRUE
 
 	var/state = POD_IDLE
-	var/ttl = SECONDS_TO_DECISECONDS(30)
+	var/ttl = 30 SECONDS
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_TURF_CHECKING
 
 	density = TRUE

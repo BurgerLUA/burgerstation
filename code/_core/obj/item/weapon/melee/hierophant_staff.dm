@@ -38,7 +38,7 @@
 			H.dir = caller.dir
 			H.target = T
 			H.should_teleport = TRUE
-			next_teleport_command = world.time + SECONDS_TO_DECISECONDS(5)
+			next_teleport_command = world.time + 5 SECONDS
 			INITIALIZE(H)
 			return TRUE
 

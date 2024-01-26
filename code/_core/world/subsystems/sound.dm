@@ -2,7 +2,7 @@
 
 SUBSYSTEM_DEF(sound)
 	name = "Sound Subsystem"
-	tick_rate = DECISECONDS_TO_TICKS(1)
+	tick_rate = DS2TICKS(1)
 	priority = SS_ORDER_FIRST
 	var/channel_hack = 100
 
@@ -166,7 +166,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 	hearer << created_sound
 	hearer.current_music_track = music_track_id
-	hearer.next_music_track = world.time + SECONDS_TO_DECISECONDS(T.length)
+	hearer.next_music_track = world.time + (T.length) SECONDS
 
 	return created_sound
 

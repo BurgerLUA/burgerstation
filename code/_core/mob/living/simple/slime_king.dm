@@ -50,9 +50,9 @@
 
 	soul_size = SOUL_SIZE_MYSTIC
 
-	respawn_time = SECONDS_TO_DECISECONDS(300)
+	respawn_time = 300 SECONDS
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DS2TICKS(6)
 
 	level = 40
 
@@ -287,8 +287,8 @@
 			else if((health.health_current <= health.health_max*0.5) && !(j % 3))
 				throw_bomb(old_turf,20)
 
-	next_slime_wave = world.time + SECONDS_TO_DECISECONDS(10)
-	next_special_attack = world.time + SECONDS_TO_DECISECONDS(10)
+	next_slime_wave = world.time + 10 SECONDS
+	next_special_attack = world.time + 10 SECONDS
 
 /mob/living/simple/slime_king/proc/create_slime_tile(var/turf/T,var/should_create_slime=FALSE)
 	var/obj/structure/interactive/slime_wall/SW = locate() in T.contents
@@ -356,7 +356,7 @@
 		var/desired_time = (health.health_current <= health.health_max*0.5) ? 1 + i*3 : 3 + i*6
 		CALLBACK("\ref[src]_throw_bomb_[i]",desired_time,src,src::throw_bomb(),T)
 
-	next_slime_bomb = world.time + SECONDS_TO_DECISECONDS(30)
+	next_slime_bomb = world.time + 30 SECONDS
 	next_special_attack = world.time + 10 + 3 + 60
 
 /mob/living/simple/slime_king/proc/throw_bomb(var/turf/T,var/throw_time=40)
@@ -404,7 +404,7 @@
 		else
 			CALLBACK("\ref[src]_build_wall_[tx]_[ty]",delay,src,src::create_slime_tile(),TA)
 
-	next_slime_house = world.time + SECONDS_TO_DECISECONDS(60)
+	next_slime_house = world.time + 60 SECONDS
 	next_special_attack = world.time + 10 + size*2*3*2
 
 /mob/living/simple/slime_king/proc/absorb_slimes(var/absorbs_left=20)
@@ -481,7 +481,7 @@
 
 	build_a_house(2)
 	add_status_effect(PARALYZE,duration=20*2,magnitude=-1,stealthy=TRUE,bypass_limits=TRUE)
-	next_slime_absorb_spam = world.time + SECONDS_TO_DECISECONDS(60)
+	next_slime_absorb_spam = world.time + 60 SECONDS
 	next_special_attack = world.time + 20*2 + 10
 	next_slime_ball = world.time + 20*2 + 10
 	absorb_slimes(20)

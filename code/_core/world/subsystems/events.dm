@@ -37,8 +37,8 @@ SUBSYSTEM_DEF(events)
 		else
 			all_events_major_prob[E.type] = E.probability
 
-	next_event_minor = world.time + SECONDS_TO_DECISECONDS(300)
-	next_event_major = world.time + SECONDS_TO_DECISECONDS(600)
+	next_event_minor = world.time + 300 SECONDS
+	next_event_major = world.time + 600 SECONDS
 
 	return ..()
 
@@ -54,8 +54,8 @@ SUBSYSTEM_DEF(events)
 /subsystem/events/on_life()
 
 	if(!enable)
-		next_event_minor = world.time + SECONDS_TO_DECISECONDS(300)
-		next_event_major = world.time + SECONDS_TO_DECISECONDS(600)
+		next_event_minor = world.time + 300 SECONDS
+		next_event_major = world.time + 600 SECONDS
 		return TRUE
 
 	for(var/k in all_events_active)
@@ -125,8 +125,8 @@ SUBSYSTEM_DEF(events)
 	else
 		E.on_end()
 
-	next_event_minor = E.minor_event ? world.time + SECONDS_TO_DECISECONDS(rand(120,300)) : max(next_event_minor,world.time + SECONDS_TO_DECISECONDS(60))
-	next_event_major = !E.minor_event ? world.time + SECONDS_TO_DECISECONDS(rand(600,900)) : max(next_event_major,world.time + SECONDS_TO_DECISECONDS(60))
+	next_event_minor = E.minor_event ? world.time + (rand(120,300)) SECONDS : max(next_event_minor,world.time + 60 SECONDS)
+	next_event_major = !E.minor_event ? world.time + (rand(600,900)) SECONDS : max(next_event_major,world.time + 60 SECONDS)
 
 	E.occurances_current++
 

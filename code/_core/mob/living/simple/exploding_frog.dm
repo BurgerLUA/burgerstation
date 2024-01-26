@@ -27,7 +27,7 @@
 
 	level = 1
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 /mob/living/simple/exploding_frog/death()
 

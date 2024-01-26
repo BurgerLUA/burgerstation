@@ -212,7 +212,7 @@
 		update_sprite()
 
 	if(stored_emitter_energy > 0 || stored_field_energy > 0)
-		CALLBACK("\ref[src]_process_field_gen",SECONDS_TO_DECISECONDS(8),src,src::process_field_gen())
+		CALLBACK("\ref[src]_process_field_gen",8 SECONDS,src,src::process_field_gen())
 
 	if( (old_field_state > 0 && stored_field_energy <= 0) || (old_field_state <= 0 && stored_field_energy > 0) ) //Stable field made unstable field, or vice vesa.
 		update_barrier_chains()

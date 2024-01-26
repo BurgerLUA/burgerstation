@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(living)
 
 	var/list/mob/living/processing_mobs = list()
 
-	var/next_report = SECONDS_TO_DECISECONDS(300)
+	var/next_report = 300 SECONDS
 
 	var/list/mob/living/simple/cat/runtime/all_runtimes = list()
 
@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(living)
 			L.on_life()
 		if(do_slow)
 			L.on_life_slow()
-		CHECK_TICK(tick_usage_max,DECISECONDS_TO_TICKS(1))
+		CHECK_TICK(tick_usage_max,DS2TICKS(1))
 
 	if(do_slow)
 		slow_ticks = 0

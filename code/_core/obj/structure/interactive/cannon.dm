@@ -88,7 +88,7 @@
 		var/desired_angle = main_angle + rand(-10,10)
 		var/offset_x = sin(desired_angle)
 		var/offset_y = cos(desired_angle)
-		M.throw_self(caller,null,16,16,offset_x*(TILE_SIZE-1),offset_y*(TILE_SIZE-1),SECONDS_TO_DECISECONDS(4),VIEW_RANGE*3,loyalty_tag_to_use,10)
+		M.throw_self(caller,null,16,16,offset_x*(TILE_SIZE-1),offset_y*(TILE_SIZE-1),4 SECONDS,VIEW_RANGE*3,loyalty_tag_to_use,10)
 
 	total_size = 0
 
@@ -96,7 +96,7 @@
 
 	//Explosion effects.
 	explode(T,4,caller,src,loyalty_tag_to_use,src.dir,3)
-	smoke(T,3,SECONDS_TO_DECISECONDS(3),null,caller,100)
+	smoke(T,3,3 SECONDS,null,caller,100)
 
 	has_fuse = FALSE
 	particles.spawning = 0
@@ -135,7 +135,7 @@
 			if(!can_insert_item(caller,object))
 				return TRUE
 			caller.visible_message(span("notice","\The [caller.name] starts to insert \the [I.name] into \the [src.name]..."),span("notice","You start to insert \the [I.name] into \the [src.name]..."))
-			PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(5),src::insert_item(),caller,I)
+			PROGRESS_BAR(caller,src,5 SECONDS,src::insert_item(),caller,I)
 			PROGRESS_BAR_CONDITIONS(caller,src,src::can_insert_item(),caller,I)
 			return TRUE
 		var/damagetype/desired_damage_type = I.get_damage_type(caller,src)
@@ -143,7 +143,7 @@
 			var/damagetype/DT = SSdamagetype.all_damage_types[desired_damage_type]
 			if(DT && DT.attack_damage_base[HEAT])
 				caller.visible_message(span("danger","\The [caller.name] starts to light the fuse of \the [src.name] with \the [I.name]!"),span("warning","You start to light the fuse of \the [src.name] with \the [I.name]..."))
-				PROGRESS_BAR(caller,src,SECONDS_TO_DECISECONDS(3),src::light_fuse(),caller,I)
+				PROGRESS_BAR(caller,src,3 SECONDS,src::light_fuse(),caller,I)
 				PROGRESS_BAR_CONDITIONS(caller,src,src::can_light_fuse(),caller,I)
 				return TRUE
 
@@ -189,7 +189,7 @@
 
 /obj/structure/interactive/cannon/proc/light_fuse(var/mob/living/caller)
 	caller.visible_message(span("danger","\The [caller.name] lights the fuse of \the [src.name]!"),span("danger","You light the fuse of \the [src.name]!"))
-	CALLBACK("\ref[src]_fire_cannon",SECONDS_TO_DECISECONDS(3),src,src::fire(),caller)
+	CALLBACK("\ref[src]_fire_cannon",3 SECONDS,src,src::fire(),caller)
 	update_sprite()
 	particles.spawning = 10
 	play_sound('sound/effects/fuse.ogg',get_turf(src))

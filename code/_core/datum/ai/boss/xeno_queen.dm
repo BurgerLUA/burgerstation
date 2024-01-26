@@ -41,13 +41,13 @@
 				owner_as_queen.iff_tag,
 				owner_as_queen.loyalty_tag
 			)
-			next_spit = world.time + SECONDS_TO_DECISECONDS(4)
+			next_spit = world.time + 4 SECONDS
 			return TRUE
 
 /ai/boss/xeno_queen/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
 	. = ..()
 
 	if(!owner_as_queen.dead && owner_as_queen.health && owner_as_queen.health.health_current <= owner_as_queen.health.health_max*0.5 && owner_as_queen.next_screech <= world.time)
-		owner_as_queen.next_screech = world.time + SECONDS_TO_DECISECONDS(60)
+		owner_as_queen.next_screech = world.time + 60 SECONDS
 		owner_as_queen.inhale()
 

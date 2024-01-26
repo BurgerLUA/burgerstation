@@ -84,7 +84,7 @@ obj/structure/interactive/shower/PreDestroy()
 
 		play_sound(pick('sound/effects/shower/shower_mid1.ogg','sound/effects/shower/shower_mid2.ogg','sound/effects/shower/shower_mid3.ogg'),T)
 
-		CALLBACK("\ref[src]_shower",SECONDS_TO_DECISECONDS(1.5),src,src::shower())
+		CALLBACK("\ref[src]_shower",1.5 SECONDS,src,src::shower())
 	else
 		update_sprite()
 

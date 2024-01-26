@@ -97,7 +97,7 @@
 	if(!L.health && !ignore_immortal)
 		return FALSE
 
-	if(timeout_threshold && L.client && L.client.inactivity >= DECISECONDS_TO_TICKS(timeout_threshold))
+	if(timeout_threshold && L.client && L.client.inactivity >= DS2TICKS(timeout_threshold))
 		return FALSE
 
 	if(!is_enemy(L,FALSE,aggression_check))

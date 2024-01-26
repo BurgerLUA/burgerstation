@@ -21,7 +21,7 @@
 
 	log_debug("Starting Space Cop Event")
 
-	next_recall = world.time + SECONDS_TO_DECISECONDS(rand(300,600))
+	next_recall = world.time + (rand(300,600)) SECONDS
 
 	associated_shuttle_controller = locate() in world
 
@@ -77,7 +77,7 @@
 			force_end()
 			return TRUE
 
-		if(next_recall + SECONDS_TO_DECISECONDS(300) <= world.time)
+		if(next_recall + 300 SECONDS <= world.time)
 			force_end()
 			return TRUE
 	else

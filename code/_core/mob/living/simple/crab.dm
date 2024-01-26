@@ -26,7 +26,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(6)
+	movement_delay = DS2TICKS(6)
 
 	loyalty_tag = "Crab"
 	iff_tag = "Crab"
@@ -108,7 +108,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 	soul_size = SOUL_SIZE_RARE
 

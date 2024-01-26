@@ -7,7 +7,7 @@
 	health_base = 200
 
 	var/next_fire = 0
-	var/cooldown_fire = SECONDS_TO_DECISECONDS(1)
+	var/cooldown_fire = 1 SECONDS
 
 	var/mob/living/owner //the object's owner
 	var/totem_remove_time = 0
@@ -189,7 +189,7 @@
 			continue
 		if(!istype(L.health))
 			continue
-		L.ignite(SECONDS_TO_DECISECONDS(1.5),src)
+		L.ignite(1.5 SECONDS,src)
 		L.health.adjust_loss_smart(burn = 5 * leveled_effect)
 		CREATE(/obj/effect/temp/electricity,L.loc)
 

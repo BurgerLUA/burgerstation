@@ -9,7 +9,7 @@
 	bullet_count = 1
 	projectile_speed = TILE_SIZE - 1
 
-	burst_delay = SECONDS_TO_DECISECONDS(1)
+	burst_delay = 1 SECONDS
 	max_bursts = 2
 
 	projectile = /obj/projectile/magic/fractal

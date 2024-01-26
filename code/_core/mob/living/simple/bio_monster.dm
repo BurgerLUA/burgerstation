@@ -19,7 +19,7 @@
 
 	size = SIZE_GIANT
 
-	movement_delay = DECISECONDS_TO_TICKS(3)
+	movement_delay = DS2TICKS(3)
 
 	iff_tag = "Experiment"
 	loyalty_tag = "Experiment"

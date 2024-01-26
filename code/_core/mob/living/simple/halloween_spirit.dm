@@ -21,7 +21,7 @@
 
 	size = SIZE_ANIMAL
 
-	movement_delay = DECISECONDS_TO_TICKS(2)
+	movement_delay = DS2TICKS(2)
 
 	loyalty_tag = "Ghost"
 	iff_tag = "Ghost"

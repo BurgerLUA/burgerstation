@@ -228,7 +228,7 @@ var/global/total_clients = 0
 			var/list/possible_music = TRACKS_LOBBY
 			var/lobby_track = 1 + (SSlogging.round_id % length(possible_music))
 			play_music_track(possible_music[lobby_track], src)
-			mob.show_hud(TRUE,speed = SECONDS_TO_DECISECONDS(2))
+			mob.show_hud(TRUE,speed = 2 SECONDS)
 			mob.force_move(get_turf(lobby_positions[1]))
 
 	broadcast_to_clients(span("ooc","<b>[ckey]</b> has joined the game."))
