@@ -11,10 +11,13 @@
 
 	var/display
 
-	var/obj/marker/shuttle_landing/transit_marker_base //The shuttle's base location. Created at new. Doesn't change past load.
-	var/obj/marker/shuttle_landing/transit_marker_bluespace //The shuttle's bluespace location. Doesn't change past load.
+	///The shuttle's base location. Created at new. Doesn't change past load.
+	var/obj/marker/shuttle_landing/transit_marker_base
+	///The shuttle's bluespace location. Doesn't change past load.
+	var/obj/marker/shuttle_landing/transit_marker_bluespace
 
-	var/obj/marker/shuttle_landing/transit_marker_destination //The shuttle's desired location to transit to.
+	///The shuttle's desired location to transit to.
+	var/obj/marker/shuttle_landing/transit_marker_destination
 
 	var/default_transit_time = SHUTTLE_DEFAULT_TRANSIT_TIME //In seconds
 	var/default_waiting_time = SHUTTLE_DEFAULT_WAITING_TIME //In seconds.
@@ -25,7 +28,8 @@
 
 	initialize_type = INITIALIZE_LATE
 
-	var/mob/last_caller = null //The last caller who interacted with this shuttle's launch, if any.
+	///The last caller who interacted with this shuttle's launch, if any.
+	var/mob/last_caller = null
 
 	var/start_sound = 'sound/effects/shuttle/hyperspace_begin.ogg'
 	var/progress_sound = 'sound/effects/shuttle/hyperspace_progress.ogg'
@@ -43,7 +47,7 @@
 	SSshuttle.all_shuttle_controlers -= src
 	return ..()
 
-/obj/shuttle_controller/New(var/desired_loc)
+/obj/shuttle_controller/New(desired_loc)
 
 	SSshuttle.all_shuttle_controlers += src
 
@@ -65,7 +69,6 @@
 	return ..()
 
 /obj/shuttle_controller/Finalize()
-
 	. = ..()
 
 	var/min_x = INFINITY
@@ -110,7 +113,7 @@
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
-/obj/shuttle_controller/proc/set_destination(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
+/obj/shuttle_controller/proc/set_destination(mob/caller, obj/marker/shuttle_landing/desired_marker)
 
 	if(!is_safe_to_land(caller,desired_marker))
 		return FALSE
