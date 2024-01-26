@@ -1,6 +1,6 @@
 /damagetype/proc/get_damage_per_hit(var/armor_to_use=0,var/self_armor_to_use=0)
 
-	if(IS_INFINITY(armor_to_use))
+	if(IS_INF(armor_to_use))
 		return 0
 
 	var/list/total_damages = list()
@@ -26,7 +26,7 @@
 		var/damage = total_damages[damage_type]
 		var/penetration = attack_damage_penetration[damage_type]
 		var/final_armor_to_use = armor_to_use
-		if(IS_INFINITY(penetration))
+		if(IS_INF(penetration))
 			final_armor_to_use = 0
 		else
 			penetration *= penetration_mod

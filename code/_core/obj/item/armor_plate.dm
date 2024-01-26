@@ -23,7 +23,7 @@
 	. = 1
 
 	for(var/k in armor_base)
-		if(IS_INFINITY(armor_base[k]))
+		if(IS_INF(armor_base[k]))
 			continue
 		. += armor_base[k] * armor_slowdown_values[k]
 

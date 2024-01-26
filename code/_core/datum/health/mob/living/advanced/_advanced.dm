@@ -214,9 +214,9 @@
 	if(ARM_O)
 		.["deflection"] = max(.["deflection"],ARM_O.deflection)
 		for(var/damage_type in ARM_O.defense_rating)
-			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
+			if(IS_INF(.[damage_type])) //If our defense is already infinity, then forget about it.
 				continue
-			if(IS_INFINITY(ARM_O.defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
+			if(IS_INF(ARM_O.defense_rating[damage_type])) //If the organ's defense is infinity, set it to infinity.
 				.[damage_type] = ARM_O.defense_rating[damage_type]
 				continue
 			.[damage_type] += ARM_O.defense_rating[damage_type]
@@ -234,9 +234,9 @@
 			continue
 		.["deflection"] = max(.["deflection"],ARM_C.deflection)
 		for(var/damage_type in ARM_C.defense_rating)
-			if(IS_INFINITY(.[damage_type])) //If our defense is already infinity, then forget about it.
+			if(IS_INF(.[damage_type])) //If our defense is already infinity, then forget about it.
 				continue
-			if(IS_INFINITY(ARM_C.defense_rating[damage_type])) //If the clothing's defense is infinity, set it to infinity.
+			if(IS_INF(ARM_C.defense_rating[damage_type])) //If the clothing's defense is infinity, set it to infinity.
 				.[damage_type] = ARM_C.defense_rating[damage_type]
 				continue
 			var/clothing_defense = ARM_C.defense_rating[damage_type] * armor_multiplier

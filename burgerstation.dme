@@ -68,7 +68,7 @@
 #include "code\__defines\lighting.dm"
 #include "code\__defines\loot.dm"
 #include "code\__defines\material.dm"
-#include "code\__defines\math.dm"
+#include "code\__defines\maths.dm"
 #include "code\__defines\memory_address.dm"
 #include "code\__defines\mob.dm"
 #include "code\__defines\organ.dm"

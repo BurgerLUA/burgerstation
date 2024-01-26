@@ -39,10 +39,10 @@
 		if(!A)
 			continue
 		for(var/d_type in A.defense_rating)
-			if(IS_INFINITY(A.defense_rating[d_type]))
+			if(IS_INF(A.defense_rating[d_type]))
 				overall_clothing_defense_rating[d_type] = INFINITY
 				continue
-			if(IS_INFINITY(overall_clothing_defense_rating[d_type]))
+			if(IS_INF(overall_clothing_defense_rating[d_type]))
 				continue
 			overall_clothing_defense_rating[d_type] += A.defense_rating[d_type]*quality_mod
 
