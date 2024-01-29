@@ -8,7 +8,7 @@
 	icon_state = "ocean_path"
 	density = FALSE
 
-/turf/unsimulated/generation/ocean/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/ocean/generate(size = WORLD_SIZE)
 
 	if(!density)
 		new /turf/simulated/floor/colored/sand/beach(src)

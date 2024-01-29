@@ -20,7 +20,7 @@ mob/living/advanced/proc/handle_detail_chargen(var/desired_color,var/update_blen
 
 	chargen_flags = CHARGEN_DETAIL
 
-/obj/hud/button/chargen/detail/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/detail/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

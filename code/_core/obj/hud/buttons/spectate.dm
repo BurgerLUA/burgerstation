@@ -2,7 +2,7 @@
 	name = "spectate"
 
 
-/obj/hud/button/vr_spectate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vr_spectate/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	. = ..()
 
 	if(!SSvirtual_reality || !SSvirtual_reality.current_virtual_reality)

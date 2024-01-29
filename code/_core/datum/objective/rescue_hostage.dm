@@ -56,7 +56,7 @@
 	return ACTIVE
 
 
-/objective/hostage/proc/hostage_post_move(var/mob/living/advanced/npc/hostage/H,args)
+/objective/hostage/proc/hostage_post_move(mob/living/advanced/npc/hostage/H,args)
 
 	if(!completed && !H.dead)
 		var/area/A = get_area(H)
@@ -69,11 +69,11 @@
 
 	return TRUE
 
-/objective/hostage/proc/hostage_Destroy(var/mob/living/advanced/npc/hostage/H,args)
+/objective/hostage/proc/hostage_Destroy(mob/living/advanced/npc/hostage/H,args)
 	update()
 	return TRUE
 
-/objective/hostage/proc/hostage_post_death(var/mob/living/advanced/npc/hostage/H,args)
+/objective/hostage/proc/hostage_post_death(mob/living/advanced/npc/hostage/H,args)
 	update()
 	return TRUE
 

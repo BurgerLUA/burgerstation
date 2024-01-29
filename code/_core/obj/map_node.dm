@@ -23,7 +23,7 @@
 	var/automatic = FALSE
 
 /* RIP failed code.
-/obj/marker/map_node/proc/get_dir_to_this(var/atom/M,var/obj/marker/map_node/source_node)
+/obj/marker/map_node/proc/get_dir_to_this(atom/M,obj/marker/map_node/source_node)
 
 	var/lowest_precision = src.precision - 1
 	if(source_node)
@@ -50,7 +50,7 @@
 	return angle2dir_cardinal(found_angle)
 
 
-/obj/marker/map_node/proc/get_dist_to(var/atom/M)
+/obj/marker/map_node/proc/get_dist_to(atom/M)
 
 	var/lowest_precision = src.precision - 1
 
@@ -71,7 +71,7 @@
 */
 
 
-/obj/marker/map_node/get_examine_list(var/mob/examiner)
+/obj/marker/map_node/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -79,7 +79,7 @@
 		var/obj/marker/map_node/MN = adjacent_map_nodes[k]
 		. += div("notice",MN.get_debug_name())
 
-/obj/marker/map_node/New(var/desired_loc,var/desired_automatic=FALSE)
+/obj/marker/map_node/New(desired_loc,desired_automatic=FALSE)
 	. = ..()
 	SSnodes.all_map_nodes += src
 	automatic = desired_automatic
@@ -122,7 +122,7 @@
 	return found
 
 
-/proc/get_obstructions(var/atom/point_A,var/atom/point_B,var/check_contents=TRUE,var/ignore_living=FALSE) //Supports point_B being a node
+/proc/get_obstructions(atom/point_A,atom/point_B,check_contents=TRUE,ignore_living=FALSE) //Supports point_B being a node
 
 	. = list()
 
@@ -212,7 +212,7 @@
 
 
 
-/proc/find_closest_node(var/atom/A,var/distance = VIEW_RANGE*2,var/check_view=FALSE)
+/proc/find_closest_node(atom/A,distance = VIEW_RANGE*2,check_view=FALSE)
 
 	var/obj/marker/map_node/best_node = null
 	var/best_distance = INFINITY

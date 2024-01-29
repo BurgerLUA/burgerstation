@@ -14,14 +14,14 @@
 
 	value_burgerbux = 1 //Not in rotation, yet.
 
-/obj/item/powergem/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/powergem/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("rarity")
 	SAVEVAR("icon_state")
 	SAVEVAR("damage_type_to_add")
 	SAVEVAR("damage_to_add")
 
-/obj/item/powergem/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/powergem/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("rarity")
 	LOADVAR("icon_state")
@@ -59,7 +59,7 @@
 
 	return ..()
 
-/obj/item/powergem/get_examine_list(var/mob/examiner)
+/obj/item/powergem/get_examine_list(mob/examiner)
 
 	. = ..()
 

@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(shuttle) //Also controls drop pods.
 	return ..()
 
 
-/subsystem/shuttle/unclog(var/mob/caller)
+/subsystem/shuttle/unclog(mob/caller)
 
 	for(var/k in all_shuttle_controlers)
 		var/obj/shuttle_controller/SC = k

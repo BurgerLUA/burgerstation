@@ -31,7 +31,7 @@
 
 	has_life = TRUE
 
-/obj/item/organ/foot/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+/obj/item/organ/foot/proc/get_footsteps(list/original_footsteps,enter=TRUE)
 	return original_footsteps
 
 /obj/item/organ/foot/on_pain()
@@ -45,7 +45,7 @@
 			return TRUE
 
 
-/obj/item/organ/foot/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+/obj/item/organ/foot/get_footsteps(list/original_footsteps,enter=TRUE)
 
 	for(var/k in src.inventories)
 		var/obj/hud/inventory/H = k

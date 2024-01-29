@@ -7,7 +7,7 @@
 	icon_state = "inventory"
 	value = 300
 
-/obj/item/analyzer/genetic/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/genetic/can_be_scanned(mob/caller,atom/target)
 
 	if(get_dist(caller,target) > 1)
 		caller.to_chat(span("warning","You're too far away!"))
@@ -16,7 +16,7 @@
 	return is_living(target)
 
 
-/obj/item/analyzer/genetic/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/genetic/on_scan(mob/caller,atom/target,location,control,params)
 
 	caller.to_chat(span("notice bold underline","[target.name]'s Traits:"))
 

@@ -5,14 +5,14 @@
 	enable_loc_safety = FALSE
 	attack_movement_obstructions = TRUE
 
-/ai/advanced/beef/check_aggression(var/mob/living/target,var/aggression_override = src.aggression)
+/ai/advanced/beef/check_aggression(mob/living/target,aggression_override = src.aggression)
 
 	if(target == hunt_target)
 		return target.horizontal || is_facing(target,owner)
 
 	return ..()
 
-/ai/advanced/beef/should_attack_mob(var/mob/living/L,var/aggression_check=TRUE)
+/ai/advanced/beef/should_attack_mob(mob/living/L,aggression_check=TRUE)
 
 	if(!L.dead)
 		return ..()

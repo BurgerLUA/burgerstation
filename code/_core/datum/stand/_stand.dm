@@ -22,7 +22,7 @@
 
 	var/mob/living/advanced/stand/linked_stand
 
-/stand/proc/on_move(var/success,var/new_loc,var/new_dir)
+/stand/proc/on_move(success,new_loc,new_dir)
 
 	if(success && (!linked_stand.ai || !linked_stand.ai.objective_attack))
 		linked_stand.glide_size = stand_user.glide_size
@@ -34,7 +34,7 @@
 
 	return TRUE
 
-/stand/New(var/desired_owner)
+/stand/New(desired_owner)
 
 	if(desired_owner)
 		stand_user = desired_owner
@@ -119,7 +119,7 @@
 	INITIALIZE(linked_stand)
 	FINALIZE(linked_stand)
 
-/stand/proc/display_stand(var/mob/caller)
+/stand/proc/display_stand(mob/caller)
 	caller.to_chat("Stand Name: <b>[name]</b>")
 	caller.to_chat("Stand User: [stand_user.name]")
 	caller.to_chat("Stand Cry: <b>\"[stand_cry]\"</b>")

@@ -2,7 +2,7 @@
 	src.visible_message("<b>\The [src.name]</b> seizes up and falls limp, their eyes dead and lifeless...")
 	return TRUE
 
-/mob/living/proc/death(var/silent=FALSE)
+/mob/living/proc/death(silent=FALSE)
 
 	if(dead)
 		return FALSE
@@ -91,7 +91,7 @@
 
 
 /*
-/mob/living/proc/do_loot_drop(var/atom/desired_loc)
+/mob/living/proc/do_loot_drop(atom/desired_loc)
 
 	if(desired_loc && loot_drop && health)
 		var/loot/L = all_loot[loot_drop]
@@ -257,11 +257,11 @@
 
 	return TRUE
 
-/mob/living/proc/on_kill(var/mob/living/victim)
+/mob/living/proc/on_kill(mob/living/victim)
 	HOOK_CALL("on_kill")
 	return TRUE
 
-/mob/living/proc/on_killed(var/list/attackers)
+/mob/living/proc/on_killed(list/attackers)
 	for(var/k in attackers)
 		var/mob/living/L = k
 		L.on_kill(src)

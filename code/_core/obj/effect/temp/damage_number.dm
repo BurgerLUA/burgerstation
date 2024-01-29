@@ -25,7 +25,7 @@
 	SSdamagetype.all_damage_numbers -= id
 	. = ..()
 
-/obj/effect/damage_number/New(var/desired_location,var/desired_damage,var/desired_block,var/desired_is_real,var/desirwed_id)
+/obj/effect/damage_number/New(desired_location,desired_damage,desired_block,desired_is_real,desirwed_id)
 	. = ..()
 	if(desirwed_id)
 		id = desirwed_id
@@ -42,7 +42,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/effect/damage_number/proc/add_value(var/desired_damage,var/desired_block)
+/obj/effect/damage_number/proc/add_value(desired_damage,desired_block)
 
 	if(desired_damage) desired_damage = CEILING(desired_damage,1)
 	if(desired_block) desired_block = CEILING(desired_block,1)
@@ -92,7 +92,7 @@
 	maptext_width = TILE_SIZE*3
 
 
-/obj/effect/temp/status_effect/New(var/desired_location,var/desired_time,var/desired_value)
+/obj/effect/temp/status_effect/New(desired_location,desired_time,desired_value)
 	. = ..()
 	maptext = "<div style='font-size:0.25;color:#FFFFFF;text-align:center;text-shadow:0px 0px 2px #000000;'>[desired_value]</div>"
 	animate(src,pixel_x = initial(pixel_x) + rand(-TILE_SIZE,TILE_SIZE),pixel_y=initial(pixel_y)+rand(0,TILE_SIZE),time=duration*0.5,easing = CIRCULAR_EASING | EASE_OUT)

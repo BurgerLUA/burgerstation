@@ -27,7 +27,7 @@
 	. += (desired_light_range*desired_light_power*desired_light_angle*0.1)
 	. = CEILING(.,1)
 
-/obj/item/weapon/melee/torch/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/torch/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -104,7 +104,7 @@
 
 	size = SIZE_2
 
-/obj/item/weapon/melee/torch/flashlight/get_examine_list(var/mob/examiner)
+/obj/item/weapon/melee/torch/flashlight/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","Flashlights shine light only in the direction you are facing.<br>You can adjust where your character is looking by holding V, or automatically by having harm intent selected.")
 

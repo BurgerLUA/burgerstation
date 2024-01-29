@@ -19,7 +19,7 @@
 	var/blob_limit = 700
 
 
-/obj/structure/interactive/blob/core/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
+/obj/structure/interactive/blob/core/New(desired_loc,obj/structure/interactive/blob/core/desired_owner)
 	color = random_color()
 	if(!color)
 		color = "#00FF00"
@@ -82,7 +82,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/blob/core/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/blob/core/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 	if(.)
 		fast_grows_left += damage_table[BRUTE] + damage_table[BURN]

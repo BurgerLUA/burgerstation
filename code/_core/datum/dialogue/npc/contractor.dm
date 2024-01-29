@@ -2,7 +2,7 @@
 
 	var/static/list/valid_contract_locations = list("contract",BODY_HAND_LEFT_HELD,BODY_HAND_RIGHT_HELD)
 
-/dialogue/npc/contractor/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/contractor/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -39,7 +39,7 @@
 		"You have no contracts in your hand that are completed. Please do not waste my time."
 	)
 
-/dialogue/npc/contractor/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/contractor/set_topic(mob/living/advanced/player/P,topic)
 
 	if(topic == "purchase a blood contract")
 		if(istype(P.dialogue_target,/mob/living/advanced/npc/unique/contractor))

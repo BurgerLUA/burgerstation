@@ -3,11 +3,11 @@
 /savedata/client/loadout
 	loaded_data = list()
 
-/savedata/client/loadout/get_file(var/file_id)
+/savedata/client/loadout/get_file(file_id)
 	return "loadout.json"
 
 
-/savedata/client/loadout/New(var/desired_ckey)
+/savedata/client/loadout/New(desired_ckey)
 
 	. = ..()
 
@@ -33,7 +33,7 @@
 		loaded_data = json_decode(rustg_file_read(full_path))
 	return TRUE
 
-/proc/delete_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
+/proc/delete_loadout_of_mob(mob/living/advanced/player/P,name="Default")
 
 	if(!P.ckey || !name)
 		return FALSE
@@ -53,7 +53,7 @@
 	L.save()
 	SSclient.ckey_to_loadout_cooldown[P.ckey] = world.time + 10 SECONDS
 
-/proc/save_loadout_of_mob(var/mob/living/advanced/player/P,var/name="Default")
+/proc/save_loadout_of_mob(mob/living/advanced/player/P,name="Default")
 
 	if(!P.ckey || !name)
 		return FALSE
@@ -103,7 +103,7 @@
 	return TRUE
 
 
-/proc/apply_loadout_to_mob(var/mob/living/advanced/player/P,var/name="Default")
+/proc/apply_loadout_to_mob(mob/living/advanced/player/P,name="Default")
 
 	if(!P || !P.ckey || !name)
 		return FALSE

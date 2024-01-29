@@ -1,4 +1,4 @@
-/atom/proc/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/atom/proc/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(P.owner == src && P.target_atom != P.owner)
 		return FALSE
@@ -18,7 +18,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/scanner/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/obj/structure/interactive/scanner/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	. = ..()
 
@@ -32,10 +32,10 @@
 
 	return FALSE
 
-/atom/movable/lighting_overlay/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/atom/movable/lighting_overlay/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 	return null
 
-/mob/living/vehicle/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/mob/living/vehicle/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(is_advanced(P.owner))
 		var/mob/living/advanced/A = P.owner
@@ -44,11 +44,11 @@
 
 	. = ..()
 
-/obj/effect/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/obj/effect/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 	return FALSE
 
 
-/mob/living/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/mob/living/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(P.ignore_living)
 		return FALSE
@@ -64,7 +64,7 @@
 
 	. = ..()
 
-/turf/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/turf/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(src.allow_bullet_pass)
 		return FALSE
@@ -93,10 +93,10 @@
 
 	return FALSE
 
-/obj/projectile/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/obj/projectile/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 	return FALSE
 
-/obj/structure/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/obj/structure/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(P.target_atom != src && bullet_block_chance <= 0)
 		return FALSE

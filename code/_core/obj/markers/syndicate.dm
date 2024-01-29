@@ -6,6 +6,6 @@ var/global/list/turf/all_syndicate_spawns = list()
 	icon = 'icons/obj/markers/markers.dmi'
 	icon_state = "syndie"
 
-/obj/marker/syndicate/New(var/desired_loc)
+/obj/marker/syndicate/New(desired_loc)
 	all_syndicate_spawns += get_turf(src)
 	return ..()

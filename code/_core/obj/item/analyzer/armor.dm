@@ -9,10 +9,10 @@
 
 	var/scan_all = FALSE
 
-/obj/item/analyzer/armor/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/armor/can_be_scanned(mob/caller,atom/target)
 	return is_living(target)
 
-/obj/item/analyzer/armor/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/armor/on_scan(mob/caller,atom/target,location,control,params)
 
 	if(!target || !target.health)
 		caller.to_chat(span("warning","No valid target detected!"))

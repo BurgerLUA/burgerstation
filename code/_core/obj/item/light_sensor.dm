@@ -21,7 +21,7 @@
 	var/image/I = new/image(initial(icon),initial(icon_state))
 	add_underlay(I)
 
-/obj/item/light_sensor/click_self(var/mob/caller,location,control,params)
+/obj/item/light_sensor/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

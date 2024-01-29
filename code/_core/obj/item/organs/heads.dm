@@ -37,7 +37,7 @@
 
 	has_life = TRUE
 
-/obj/item/organ/head/get_damage_type(var/atom/attacker,var/atom/victim)
+/obj/item/organ/head/get_damage_type(atom/attacker,atom/victim)
 	if(attached_organ)
 		return /damagetype/unarmed/bite/
 	. = ..()

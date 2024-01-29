@@ -8,7 +8,7 @@
 	last_control = world.time;
 
 
-/client/proc/get_click_flags(var/list/params,var/check_swap = FALSE)
+/client/proc/get_click_flags(list/params,check_swap = FALSE)
 
 	. = 0x0
 
@@ -26,7 +26,7 @@
 		if((settings.loaded_data["swap_mouse"] && check_swap) ? ("right" in params) : ("left" in params))
 			. |= CLICK_LEFT
 
-/client/MouseWheel(var/atom/object,delta_x,delta_y,location,control,params)
+/client/MouseWheel(atom/object,delta_x,delta_y,location,control,params)
 
 	GLOBAL_CLICK_DELAY
 
@@ -54,7 +54,7 @@
 
 	. = ..()
 
-/client/Click(var/atom/object,location,control,params)
+/client/Click(atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
 	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
@@ -88,7 +88,7 @@
 
 	. = ..()
 
-/client/MouseDown(var/atom/object,location,control,params)
+/client/MouseDown(atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
 	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
@@ -157,7 +157,7 @@
 	. = ..()
 
 
-/client/MouseUp(var/atom/object,location,control,params)
+/client/MouseUp(atom/object,location,control,params)
 
 	var/list/new_params = params2list(params)
 	new_params[PARAM_ICON_X] = text2num(new_params[PARAM_ICON_X])
@@ -193,7 +193,7 @@
 
 	. = ..()
 
-/client/MouseDrop(var/atom/src_object,var/atom/over_object,src_location,over_location,src_control,over_control,params)
+/client/MouseDrop(atom/src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
 
 	var/list/new_params = params2list(params)
 
@@ -235,7 +235,7 @@
 	. = ..()
 
 
-/client/MouseDrag(var/atom/src_object,var/atom/over_object,var/atom/src_location,var/atom/over_location,src_control,over_control,params)
+/client/MouseDrag(atom/src_object,atom/over_object,atom/src_location,atom/over_location,src_control,over_control,params)
 
 	if(!src_object || !over_object || src_object.qdeleting || over_object.qdeleting)
 		return FALSE

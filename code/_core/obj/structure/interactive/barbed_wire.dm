@@ -26,6 +26,6 @@
 			if(L.health.organic)
 				L.add_status_effect(SLOW,40,40)
 
-/obj/structure/interactive/barbed_wire/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/barbed_wire/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)

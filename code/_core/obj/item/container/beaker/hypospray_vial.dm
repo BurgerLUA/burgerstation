@@ -12,11 +12,11 @@
 
 	size = SIZE_1
 
-/obj/item/container/simple/beaker/bottle/hypospray/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/simple/beaker/bottle/hypospray/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("spent")
 
-/obj/item/container/simple/beaker/bottle/hypospray/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/simple/beaker/bottle/hypospray/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("spent")
 

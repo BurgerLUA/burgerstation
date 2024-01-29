@@ -8,7 +8,7 @@
 	icon_state = "jungle_path"
 	density = FALSE
 
-/turf/unsimulated/generation/jungle/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/jungle/generate(size = WORLD_SIZE)
 
 	if(!density)
 		if(noise >= GENERATION_SEGMENT_HIGH && noise <= GENERATION_SEGMENT_HIGHEST)

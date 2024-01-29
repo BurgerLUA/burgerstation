@@ -14,7 +14,7 @@
 	particle_size = 0.1
 
 
-/reagent/lube/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/lube/on_splash(reagent_container/container,mob/caller,atom/target,volume_to_splash,strength_mod=1)
 
 	. = ..()
 
@@ -67,7 +67,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/iron/act_explode(var/reagent_container/container,var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
+/reagent/iron/act_explode(reagent_container/container,atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag) //What happens when this reagent is hit by an explosive.
 	var/volume_amount = -container.add_reagent(src.type,-container.volume_current,caller = owner) //Can't be bothered to get the exact amount needed to be removed as it is handled in the proc anyways.
 	var/shrapnel_amount = min(20,CEILING(volume_amount/3,1))
 	container.owner.shoot_projectile(
@@ -92,7 +92,7 @@
 	)
 
 
-/reagent/iron/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/iron/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -101,7 +101,7 @@
 		owner.tox_regen_buffer -= . * 0.5
 		QUEUE_HEALTH_UPDATE(owner)
 
-/reagent/iron/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/iron/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -257,7 +257,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH
 
-/reagent/salt/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/salt/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	owner.add_hydration(.*-5*multiplier)
 
@@ -340,19 +340,19 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_SKIN
 
-/reagent/space_cleaner/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/space_cleaner/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
 	owner.tox_regen_buffer -= .*2*multiplier
 
-/reagent/space_cleaner/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/space_cleaner/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
 	owner.tox_regen_buffer -= .*4*multiplier
 
-/reagent/space_cleaner/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/space_cleaner/on_splash(reagent_container/container,mob/caller,atom/target,volume_to_splash,strength_mod=1)
 
 	. = ..()
 

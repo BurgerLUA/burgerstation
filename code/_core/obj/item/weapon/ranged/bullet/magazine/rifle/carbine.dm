@@ -95,10 +95,10 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_static_spread()
 	return 0.007
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_skill_spread(mob/living/L)
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(var/direction="both")
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/get_cock_sound(direction="both")
 	return 'sound/weapons/ranged/generic/smg_rack.ogg'
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod
@@ -119,7 +119,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_static_spread()
 	return 0.03
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/carbine/mod/get_skill_spread(mob/living/L)
 	return max(0,0.04 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 
 

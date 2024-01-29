@@ -14,7 +14,7 @@
 	. = ..()
 	. += div("notice","Reading \the [src.name] will grant [attribute] experience.")
 
-/obj/item/experience_scroll/attribute/gain_knowledge(var/mob/living/advanced/A)
+/obj/item/experience_scroll/attribute/gain_knowledge(mob/living/advanced/A)
 
 	if(!attribute)
 		return FALSE

@@ -26,5 +26,5 @@
 /obj/item/weapon/ranged/bullet/magazine/smg/wasp/get_static_spread() //Base spread
 	return 0.03
 
-/obj/item/weapon/ranged/bullet/magazine/smg/wasp/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/bullet/magazine/smg/wasp/get_skill_spread(mob/living/L) //Base spread
 	return 0.03 - (0.03 * L.get_skill_power(SKILL_RANGED))

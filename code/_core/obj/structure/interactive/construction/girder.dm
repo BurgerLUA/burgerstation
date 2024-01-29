@@ -13,7 +13,7 @@
 	bullet_block_chance = 90
 
 
-/obj/structure/interactive/construction/girder/proc/can_construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/girder/proc/can_construct_wall(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -28,7 +28,7 @@
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
 		return FALSE
 	return TRUE
-/obj/structure/interactive/construction/girder/proc/can_construct_door(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/girder/proc/can_construct_door(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -43,7 +43,7 @@
 		caller.to_chat(span("warning","You don't have the correct material for this!"))
 		return FALSE
 	return TRUE
-/obj/structure/interactive/construction/girder/proc/construct_door(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/girder/proc/construct_door(mob/caller,obj/item/material/sheet/S)
 	var/obj/structure/interactive/door/airlock/glass/W = new(src.loc)
 	//W.material_id = S.material_id NYI
 	//W.color = S.color NYI
@@ -55,7 +55,7 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/girder/proc/construct_wall(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/girder/proc/construct_wall(mob/caller,obj/item/material/sheet/S)
 	var/turf/simulated/T = src.loc
 	T.change_turf(/turf/simulated/wall/metal/)
 	T.material_id = material_id
@@ -65,13 +65,13 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/interactive/construction/girder/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/construction/girder/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 1),material_id)
 	. = ..()
 	qdel(src)
 
 
-/obj/structure/interactive/construction/girder/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/construction/girder/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/material/sheet/))
 		INTERACT_CHECK

@@ -60,7 +60,7 @@
 	bag_contents?.Cut()
 	return ..()
 
-/mob/living/simple/goblin/proc/add_to_bag(var/atom/movable/I,var/silent=FALSE)
+/mob/living/simple/goblin/proc/add_to_bag(atom/movable/I,silent=FALSE)
 	if(isturf(I.loc))
 		I.force_move(src)
 		bag_contents += I

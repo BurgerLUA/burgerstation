@@ -48,7 +48,7 @@
 	. += max(0,200-growth_produce_max)*0.25
 	. = CEILING(.,1)
 
-/obj/item/seed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/seed/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 
 	SAVEVAR("icon_state")
@@ -67,7 +67,7 @@
 	SAVEVAR("delete_after_harvest")
 
 
-/obj/item/seed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/seed/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 
 	LOADVAR("icon_state")
@@ -86,7 +86,7 @@
 	LOADVAR("delete_after_harvest")
 
 
-/obj/item/seed/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/seed/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(is_turf(object))
 		INTERACT_CHECK

@@ -1,7 +1,7 @@
 #define ADDITION "add"
 #define MULTIPLICATION "mul"
 
-/mob/living/proc/add_mob_value(var/id,var/value_type,var/value=0,var/math_type=ADDITION)
+/mob/living/proc/add_mob_value(id,value_type,value=0,math_type=ADDITION)
 
 	. = FALSE
 
@@ -19,7 +19,7 @@
 
 	return .
 
-/mob/living/proc/remove_mob_value(var/id,var/value_type,var/math_type=ADDITION)
+/mob/living/proc/remove_mob_value(id,value_type,math_type=ADDITION)
 
 	. = FALSE
 
@@ -33,7 +33,7 @@
 	return .
 
 
-/mob/living/proc/get_mob_value(var/value_type)
+/mob/living/proc/get_mob_value(value_type)
 
 	var/add = 0
 	var/mul = 1

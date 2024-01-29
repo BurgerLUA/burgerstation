@@ -126,7 +126,7 @@
 	icon_state = "absinthe"
 	initial_reagent = /reagent/nutrition/ethanol/absinthe
 
-/obj/item/container/simple/alcohol/absinthe/New(var/desired_loc)
+/obj/item/container/simple/alcohol/absinthe/New(desired_loc)
 
 	var/list/possible_names = list(
 		"\[CENSORED]-Strong Absinthe",

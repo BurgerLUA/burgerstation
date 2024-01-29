@@ -38,7 +38,7 @@
 	allowed_users?.Cut()
 	return ..()
 
-/obj/structure/interactive/boss_loot/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/boss_loot/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

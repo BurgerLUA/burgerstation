@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(events)
 
 	var/enable = FALSE
 
-/subsystem/events/unclog(var/mob/caller)
+/subsystem/events/unclog(mob/caller)
 
 	for(var/k in all_events_active)
 		var/event/E = k
@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(events)
 
 	return ..()
 
-/subsystem/events/proc/process_event(var/event/E)
+/subsystem/events/proc/process_event(event/E)
 	if(E.end_time != -1 && E.end_time <= world.time)
 		E.on_end()
 		E.active = FALSE
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(events)
 
 	return TRUE
 
-/subsystem/events/proc/trigger_random_event(var/minor)
+/subsystem/events/proc/trigger_random_event(minor)
 
 	if(!SSgamemode?.active_gamemode?.allow_launch)
 		return FALSE
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(events)
 
 	return TRUE
 
-/subsystem/events/proc/trigger_event(var/event/E)
+/subsystem/events/proc/trigger_event(event/E)
 
 	if(E.active)
 		return FALSE

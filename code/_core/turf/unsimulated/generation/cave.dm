@@ -8,7 +8,7 @@
 	icon_state = "caves_path"
 	density = FALSE
 
-/turf/unsimulated/generation/forest_cave/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/forest_cave/generate(size = WORLD_SIZE)
 
 	if(density && (x <= VIEW_RANGE || x >= size - VIEW_RANGE || y <= VIEW_RANGE || y >= size - VIEW_RANGE)) //Handle edges.
 		new /turf/simulated/wall/rock(src)

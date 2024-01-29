@@ -12,11 +12,11 @@
 
 	value = 8000
 
-/obj/item/hope/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/hope/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("next_resurrect")
 
-/obj/item/hope/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/hope/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("next_resurrect")
 
@@ -30,7 +30,7 @@
 	if(next_resurrect > world.realtime)
 		icon_state = "[icon_state]_drained"
 
-/obj/item/hope/proc/check_resurrection(var/make_sound=TRUE)
+/obj/item/hope/proc/check_resurrection(make_sound=TRUE)
 
 	if(next_resurrect <= world.realtime)
 		update_sprite()
@@ -41,7 +41,7 @@
 	else
 		CALLBACK("\ref[src]_check_ressurection",60 SECONDS,src,src::check_resurrection())
 
-/obj/item/hope/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/hope/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(object))
 		return ..()

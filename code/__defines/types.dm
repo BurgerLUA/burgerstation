@@ -3,7 +3,7 @@ var/global/list/all_typecaches = list()
 #define istypecache(needle,haystack) (needle && length(all_typecaches[haystack]) ? (all_typecaches[haystack][needle.type] ? TRUE : FALSE) : FALSE)
 #define ispathcache(needle,haystack) (needle && length(all_typecaches[haystack]) ? (all_typecaches[haystack][needle] ? TRUE : FALSE) : FALSE)
 
-/proc/createtypecache(var/datum/type_to_generate)
+/proc/createtypecache(datum/type_to_generate)
 
 	if(all_typecaches[type_to_generate])
 		CRASH("Tried generating a typecache that already exists!")

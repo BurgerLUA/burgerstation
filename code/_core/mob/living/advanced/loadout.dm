@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/equip_loadout(var/loadout_id,var/soul_bound=FALSE)
+/mob/living/advanced/proc/equip_loadout(loadout_id,soul_bound=FALSE)
 
 	var/loadout/spawning_outfit = SSloadouts.all_loadouts[loadout_id]
 	if(!spawning_outfit)

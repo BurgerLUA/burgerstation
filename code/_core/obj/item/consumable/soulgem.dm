@@ -11,7 +11,7 @@
 /obj/item/consumable/soulgem/on_spawn()
 	total_charge = 1000
 
-/obj/item/consumable/soulgem/get_examine_text(var/mob/caller)
+/obj/item/consumable/soulgem/get_examine_text(mob/caller)
 	return ..() + span("notice","It has [total_charge] total charge.")
 
 /obj/item/consumable/soulgem/update_icon()
@@ -21,7 +21,7 @@
 		icon_state = initial(icon_state)
 	..()
 
-/obj/item/consumable/soulgem/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/consumable/soulgem/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	object = object.defer_click_on_object()
 

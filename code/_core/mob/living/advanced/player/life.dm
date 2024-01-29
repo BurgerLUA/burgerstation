@@ -11,7 +11,7 @@
 				mobdata.save_character(src)
 				allow_save = FALSE //So deathboxes don't save.
 
-/mob/living/advanced/player/on_killed(var/list/attackers)
+/mob/living/advanced/player/on_killed(list/attackers)
 
 	. = ..()
 
@@ -33,7 +33,7 @@
 		death_ckey = null
 
 
-/mob/living/advanced/player/proc/on_kill_player(var/mob/living/advanced/player/P)
+/mob/living/advanced/player/proc/on_kill_player(mob/living/advanced/player/P)
 	HOOK_CALL("on_kill_player")
 	return TRUE
 

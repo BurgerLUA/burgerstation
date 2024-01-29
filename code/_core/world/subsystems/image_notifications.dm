@@ -18,14 +18,14 @@ SUBSYSTEM_DEF(image_notifications)
 
 	return TRUE
 
-/proc/add_notification_colored_easy(var/client/C,var/color,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)
+/proc/add_notification_colored_easy(client/C,color,duration,fade_in=TRUE,fade_out=TRUE)
 	var/obj/hud/screen/S = add_notification_easy(C,'icons/hud/screen.dmi',"blank",duration,fade_in,fade_out)
 	S.color = color
 	S.screen_loc = "LEFT,BOTTOM"
 
 	return S
 
-/proc/add_notification_easy(var/client/C,var/icon,var/icon_state,var/duration,var/fade_in=TRUE,var/fade_out=TRUE,var/desired_text)
+/proc/add_notification_easy(client/C,icon,icon_state,duration,fade_in=TRUE,fade_out=TRUE,desired_text)
 	var/obj/hud/screen/S = add_notification(C,duration,fade_in,fade_out)
 	S.layer = LAYER_AREA
 	S.plane = PLANE_HUD
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(image_notifications)
 		qdel(I)
 	return S
 
-/proc/add_notification(var/client/C,var/duration,var/fade_in=TRUE,var/fade_out=TRUE)
+/proc/add_notification(client/C,duration,fade_in=TRUE,fade_out=TRUE)
 
 	if(!C || !C.mob)
 		return
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(image_notifications)
 
 	return S
 
-/proc/remove_notification(var/client/C,var/obj/hud/screen/S)
+/proc/remove_notification(client/C,obj/hud/screen/S)
 
 	if(C && C.screen)
 		C.screen -= S

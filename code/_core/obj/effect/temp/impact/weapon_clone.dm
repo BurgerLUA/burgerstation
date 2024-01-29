@@ -3,7 +3,7 @@
 	duration = 2
 	alpha = 175
 
-/obj/effect/temp/impact/weapon_clone/New(var/desired_loc,var/desired_time,var/atom/victim,var/atom/attacker,var/atom/weapon)
+/obj/effect/temp/impact/weapon_clone/New(desired_loc,desired_time,atom/victim,atom/attacker,atom/weapon)
 
 	. = ..()
 

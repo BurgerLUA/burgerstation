@@ -90,7 +90,7 @@
 
 
 
-/obj/item/weapon/ranged/proc/change_firemode(var/mob/caller)
+/obj/item/weapon/ranged/proc/change_firemode(mob/caller)
 	if(length(firemodes) <= 1)
 		return FALSE
 	current_firemode++
@@ -99,7 +99,7 @@
 	on_firemode_changed(caller)
 	return TRUE
 
-/obj/item/weapon/ranged/proc/on_firemode_changed(var/mob/caller)
+/obj/item/weapon/ranged/proc/on_firemode_changed(mob/caller)
 	var/selected_firemode = firemodes[current_firemode]
 	switch(selected_firemode)
 		if("automatic")
@@ -113,14 +113,14 @@
 	caller?.to_chat(span("notice","You switch to [selected_firemode] mode."))
 	return TRUE
 
-/obj/item/weapon/ranged/get_examine_list(var/mob/examiner)
+/obj/item/weapon/ranged/get_examine_list(mob/examiner)
 	. = ..()
 
 	if(length(firemodes) > 1)
 		. += div("notice","You can change between [length(firemodes)] firemodes by alt-clicking while holding this weapon. ")
 
 
-/obj/item/weapon/ranged/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("firing_pin")
 	SAVEATOM("attachment_barrel")
@@ -130,7 +130,7 @@
 	SAVEATOM("stock_mod")
 	SAVEATOM("barrel_mod")
 
-/obj/item/weapon/ranged/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("firing_pin")
 	LOADATOM("attachment_barrel")
@@ -173,7 +173,7 @@
 /obj/item/weapon/ranged/proc/get_ranged_damage_type()
 	return ranged_damage_type
 
-/obj/item/weapon/ranged/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src was clicked on by the object
+/obj/item/weapon/ranged/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params) //The src was clicked on by the object
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -220,10 +220,10 @@
 /obj/item/weapon/ranged/proc/get_static_spread()
 	return 0.1
 
-/obj/item/weapon/ranged/proc/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/proc/get_skill_spread(mob/living/L)
 	return 0.01 - (0.02 * L.get_skill_power(SKILL_RANGED))
 
-/obj/item/weapon/ranged/proc/get_movement_spread(var/mob/living/L)
+/obj/item/weapon/ranged/proc/get_movement_spread(mob/living/L)
 
 	if(L.next_move <= 0)
 		return 0
@@ -240,7 +240,7 @@
 /obj/item/weapon/ranged/proc/get_ammo_count() //How much ammo is in the gun.
 	return 1 //Unlimited
 
-/obj/item/weapon/ranged/proc/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/proc/can_owner_shoot(mob/caller,atom/object,location,params)
 
 	if(!caller.can_attack(caller))
 		return FALSE
@@ -252,7 +252,7 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/proc/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/proc/can_gun_shoot(mob/caller,atom/object,location,params,check_time=TRUE,messages=TRUE)
 
 	if(quality <= 0)
 		caller.to_chat(span("warning","\The [src.name] is completely broken!"))
@@ -291,7 +291,7 @@
 
 	return . && (heat_current > 0 || (recoil_delay > 0 && queued_recoil > 0))
 
-/obj/item/weapon/ranged/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/click_self(mob/caller,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
 		change_firemode(caller)
@@ -299,7 +299,7 @@
 
 	. = ..()
 
-/obj/item/weapon/ranged/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(SSclient.queued_automatics[src]) //Already doing something.
 		return TRUE
@@ -354,7 +354,7 @@ obj/item/weapon/ranged/proc/play_shoot_sounds(var/mob/caller,var/list/shoot_soun
 	return FALSE
 
 
-/obj/item/weapon/ranged/proc/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/proc/pre_shoot(mob/caller,atom/object,location,params,damage_multiplier=1)
 
 	if(!object)
 		return FALSE
@@ -603,7 +603,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/obj/item/weapon/ranged/proc/handle_automatic(var/mob/caller,params,var/damage_multiplier=1,var/max_bursts_to_use=0,var/shoot_delay_to_use=1)
+/obj/item/weapon/ranged/proc/handle_automatic(mob/caller,params,damage_multiplier=1,max_bursts_to_use=0,shoot_delay_to_use=1)
 
 	var/mob/living/advanced/player/P = caller
 	if(!P || !P.ckey || P.qdeleting) //Not even active.
@@ -645,7 +645,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 
 	return TRUE
 
-/atom/proc/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/atom/proc/shoot_projectile(atom/caller,atom/target,location,params,obj/projectile/projectile_to_use,damagetype/damage_type_to_use,icon_pos_x=0,icon_pos_y=0,accuracy_loss=0,projectile_speed_to_use=0,bullet_count_to_use=1,bullet_color="#FFFFFF",view_punch=0,damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1,base_spread = get_base_spread(),penetrations_left=0)
 
 	if(!target)
 		if(location)
@@ -751,12 +751,12 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 /atom/proc/get_base_spread() //Random spread for when it shoots more than one projectile.
 	return 0
 
-/atom/proc/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/atom/proc/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 	var/new_angle = ATAN2(initial_offset_x,initial_offset_y)
 	if(bullet_num_max > 1) new_angle += RAND_PRECISE(-accuracy,accuracy)*90
 	return list(cos(new_angle),sin(new_angle))
 
-/obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+/obj/item/weapon/ranged/proc/get_bullet_inaccuracy(mob/living/L,atom/target)
 
 	. = inaccuracy_modifier
 
@@ -809,7 +809,7 @@ obj/item/weapon/ranged/proc/shoot(var/mob/caller,var/atom/object,location,params
 		I.pixel_y = attachment_stock.attachment_offset_y + attachment_stock_offset_y
 		add_overlay(I)
 
-/obj/item/weapon/ranged/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/click_on_object_alt(mob/caller,atom/object,location,control,params)
 
 	if(attachment_undermount) return attachment_undermount.click_on_object_alt(caller,object,location,control,params)
 

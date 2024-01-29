@@ -17,11 +17,11 @@
 
 	health_base = 10
 
-/obj/item/cross/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/cross/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("broken")
 
-/obj/item/cross/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/cross/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("broken")
 
@@ -29,7 +29,7 @@
 	update_sprite()
 	return ..()
 
-/obj/item/cross/on_destruction(var/damage = TRUE)
+/obj/item/cross/on_destruction(damage = TRUE)
 
 	if(!broken)
 		var/turf/T = get_turf(src)

@@ -22,13 +22,13 @@
 
 	. = ..()
 
-/ticket/New(var/desired_loc)
+/ticket/New(desired_loc)
 	ticket_number = SSclient.ticket_number_counter
 	SSclient.ticket_number_counter++
 	password = rand(1,1000000)
 	. = ..()
 
-/ticket/proc/open(var/client/C,var/desired_message,var/is_victim)
+/ticket/proc/open(client/C,desired_message,is_victim)
 
 	for(var/k in involved_ckeys)
 		var/client/C2 = CLIENT(k)
@@ -53,7 +53,7 @@
 	else
 		message_log += "[C.ckey] has reopened the ticket."
 
-/ticket/proc/close(var/client/C)
+/ticket/proc/close(client/C)
 	for(var/k in involved_ckeys)
 		var/client/C2 = CLIENT(k)
 		C2.to_chat(span("ahelp bold","Ticket (#[ticket_number]) has been closed by [C.ckey]."))
@@ -61,7 +61,7 @@
 	message_log += "[C.ckey] has closed the ticket."
 	log_admin("[C.ckey] closed ticket (#[ticket_number]).")
 
-/ticket/proc/send_message(var/client/C,var/message)
+/ticket/proc/send_message(client/C,message)
 
 	if(!involved_ckeys[C.ckey])
 		return FALSE
@@ -96,7 +96,7 @@
 
 	message_log += "[C.ckey]: [message]"
 
-/ticket/proc/join(var/client/C,var/is_victim=FALSE)
+/ticket/proc/join(client/C,is_victim=FALSE)
 
 	if(involved_ckeys[C.ckey])
 		C.to_chat(span("ahelp bold","You are already in this ticket (#[ticket_number])!"))

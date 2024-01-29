@@ -43,7 +43,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/medical/close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/medical/close(mob/caller)
 	if(!buckled)
 		var/mob/living/advanced/A = locate() in get_turf(src)
 		if(A)
@@ -54,7 +54,7 @@
 	update_icon()
 	CALLBACK("on_close_\ref[src]",close_time,src,src::on_close(),caller)
 
-/obj/structure/interactive/bed/sleeper/medical/on_open(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/medical/on_open(mob/caller)
 	door_state = SLEEPER_OPENED
 	opened_time = 0
 	update_icon()
@@ -62,7 +62,7 @@
 	STOP_THINKING(src)
 	return TRUE
 
-/obj/structure/interactive/bed/sleeper/medical/on_close(var/mob/caller)
+/obj/structure/interactive/bed/sleeper/medical/on_close(mob/caller)
 	door_state = SLEEPER_CLOSED
 	opened_time = 0
 	update_icon()

@@ -5,7 +5,7 @@
 	var/obj/item/item_to_harvest
 
 
-/obj/structure/interactive/localmachine/harvestable_flora/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/localmachine/harvestable_flora/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 
@@ -39,7 +39,7 @@
 
 	item_to_harvest = /obj/item/container/food/plant/nitrogen_flower
 
-/obj/structure/interactive/localmachine/harvestable_flora/nitrogen_flower/New(var/desired_loc)
+/obj/structure/interactive/localmachine/harvestable_flora/nitrogen_flower/New(desired_loc)
 	icon_state = "[rand(1,4)]"
 	return ..()
 

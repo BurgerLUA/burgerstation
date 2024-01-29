@@ -1,4 +1,4 @@
-/obj/structure/proc/should_smooth_with(var/turf/simulated/T)
+/obj/structure/proc/should_smooth_with(turf/simulated/T)
 
 	if(!is_simulated(T))
 		return null

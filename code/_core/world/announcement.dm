@@ -1,4 +1,4 @@
-/proc/announce(var/announcement_sender = "Unknown", var/announcement_title = "Untitled",var/annoumcent_text = "NULL",var/announcement_type = ANNOUNCEMENT_STATION, var/language = LANGUAGE_BASIC, var/sound_to_play = null, var/frequency = RADIO_FREQ_SHIP, var/list/valid_mobs)
+/proc/announce(announcement_sender = "Unknown", announcement_title = "Untitled",annoumcent_text = "NULL",announcement_type = ANNOUNCEMENT_STATION, language = LANGUAGE_BASIC, sound_to_play = null, frequency = RADIO_FREQ_SHIP, list/valid_mobs)
 
 	var/language/LA = SSlanguage.all_languages[language]
 

@@ -28,7 +28,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/diverter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/diverter/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -78,7 +78,7 @@
 	. = ..()
 	icon_state = "diverter_on"
 
-/obj/structure/interactive/diverter/proc/should_push(var/atom/movable/M)
+/obj/structure/interactive/diverter/proc/should_push(atom/movable/M)
 	if(!anchored)
 		return FALSE
 	switch(mode)

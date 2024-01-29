@@ -47,7 +47,7 @@
 	crit_multiplier = 3
 	stealthy = TRUE
 
-/damagetype/ranged/bullet/pistol_40/tranq/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/ranged/bullet/pistol_40/tranq/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 	. = ..()
 	if(victim.health && is_living(victim))
 		var/mob/living/L = victim
@@ -57,7 +57,7 @@
 			else
 				L.add_status_effect(SLEEP,600,600) //1 minute of sleep
 
-/damagetype/ranged/bullet/pistol_40/tranq/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/ranged/bullet/pistol_40/tranq/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return istype(hit_object,/obj/item/organ/head)
 
 /damagetype/ranged/bullet/pistol_40/tranq/surplus

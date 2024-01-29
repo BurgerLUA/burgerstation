@@ -1,4 +1,4 @@
-/mob/living/proc/add_status_effect(var/status_type,var/magnitude,var/duration,var/atom/source,var/force=FALSE,var/stealthy=FALSE,var/bypass_limits=FALSE)
+/mob/living/proc/add_status_effect(status_type,magnitude,duration,atom/source,force=FALSE,stealthy=FALSE,bypass_limits=FALSE)
 
 	var/status_effect/S = SSstatus.all_status_effects[status_type]
 	if(!S)
@@ -71,7 +71,7 @@
 		PROCESS_LIVING(src)
 		//handle_blocking is not needed here as it is in handle_transform()
 
-/mob/living/proc/remove_status_effect(var/status_type,var/check_horizontal=TRUE)
+/mob/living/proc/remove_status_effect(status_type,check_horizontal=TRUE)
 	if(!has_status_effect(status_type))
 		return FALSE
 	var/status_effect/S = SSstatus.all_status_effects[status_type]
@@ -88,7 +88,7 @@
 		remove_status_effect(status,FALSE)
 	handle_transform()
 
-/mob/living/proc/handle_status_effects(var/amount_to_remove = 1)
+/mob/living/proc/handle_status_effects(amount_to_remove = 1)
 
 	for(var/status in status_effects)
 		var/status_effect/S = SSstatus.all_status_effects[status]
@@ -105,7 +105,7 @@
 
 	return TRUE
 
-/mob/living/proc/has_status_effect(var/status_type)
+/mob/living/proc/has_status_effect(status_type)
 	if(src.status_effects[status_type])
 		return TRUE
 	return FALSE

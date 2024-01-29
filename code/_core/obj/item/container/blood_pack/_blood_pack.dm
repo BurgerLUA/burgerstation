@@ -18,14 +18,14 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/container/blood_pack/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/feed(mob/caller,mob/living/target)
 	return FALSE
 
-/obj/item/container/blood_pack/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
+/obj/item/container/blood_pack/drop_item(atom/desired_loc,pixel_x_offset = 0,pixel_y_offset = 0,silent=FALSE)
 	. = ..()
 	update_sprite()
 
-/obj/item/container/blood_pack/on_equip(var/atom/old_location,var/silent=FALSE) //When the item is picked up.
+/obj/item/container/blood_pack/on_equip(atom/old_location,silent=FALSE) //When the item is picked up.
 	. = ..()
 	update_sprite()
 
@@ -33,7 +33,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/container/blood_pack/proc/is_safe_to_attach(var/mob/living/caller,var/mob/living/target,var/messages=TRUE,var/desired_inject)
+/obj/item/container/blood_pack/proc/is_safe_to_attach(mob/living/caller,mob/living/target,messages=TRUE,desired_inject)
 
 	if(!isnum(desired_inject))
 		desired_inject = injecting
@@ -52,7 +52,7 @@
 
 	return TRUE
 
-/obj/item/container/blood_pack/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/blood_pack/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_living(object))
 		INTERACT_CHECK
@@ -70,7 +70,7 @@
 
 	return ..()
 
-/obj/item/container/blood_pack/proc/detach(var/mob/caller)
+/obj/item/container/blood_pack/proc/detach(mob/caller)
 	var/turf/T = get_turf(src)
 	if(caller)
 		T.visible_message(span("notice","\The [caller.name] detaches \the [src.name] from [attached_to.name]."))
@@ -81,7 +81,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/container/blood_pack/proc/attach(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/proc/attach(mob/caller,mob/living/target)
 	draw_delay = initial(draw_delay)
 	var/turf/T = get_turf(src)
 	attached_to = target
@@ -90,7 +90,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/item/container/blood_pack/click_self(var/mob/caller,location,control,params)
+/obj/item/container/blood_pack/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
@@ -116,7 +116,7 @@
 
 	return TRUE
 
-/obj/item/container/blood_pack/proc/try_attach(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/proc/try_attach(mob/caller,mob/living/target)
 
 	if(!can_attach_to(caller,target))
 		return FALSE
@@ -128,7 +128,7 @@
 
 	return TRUE
 
-/obj/item/container/blood_pack/proc/can_attach_to(var/mob/caller,var/mob/living/target)
+/obj/item/container/blood_pack/proc/can_attach_to(mob/caller,mob/living/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)

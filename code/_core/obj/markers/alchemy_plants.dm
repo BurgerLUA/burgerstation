@@ -1,7 +1,7 @@
 /obj/marker/alchemy_plant/
 	var/to_spawn = null
 	var/allowed_turfs = list()
-/obj/marker/alchemy_plant/New(var/desired_loc)
+/obj/marker/alchemy_plant/New(desired_loc)
 	new to_spawn(desired_loc)
 
 /obj/marker/alchemy_plant/forest_nut

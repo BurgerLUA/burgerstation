@@ -13,7 +13,7 @@
 
 	layer = -1000
 
-/obj/hud/button/examine_bar/update_owner(var/mob/desired_owner)
+/obj/hud/button/examine_bar/update_owner(mob/desired_owner)
 
 	var/mob/old_owner = owner
 

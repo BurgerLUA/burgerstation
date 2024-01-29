@@ -48,7 +48,7 @@
 	log_admin("[src.get_debug_name()] added [points_to_add] points to current gamemode.")
 
 
-/client/verb/spawn_from_path(var/object as text) //TODO: Make this work.
+/client/verb/spawn_from_path(object as text) //TODO: Make this work.
 	set name = "Spawn Object"
 	set desc = "Spawn an object."
 	set category = "Fun"
@@ -107,7 +107,7 @@
 
 
 
-/client/verb/smite_living(var/mob/living/target)
+/client/verb/smite_living(mob/living/target)
 
 	set name = "Smite Living"
 	set category = "Fun"
@@ -141,7 +141,7 @@
 	log_admin("[L1.get_debug_name()] was smited by [src.get_debug_name()].")
 
 
-/client/verb/break_bones(var/mob/living/advanced/target)
+/client/verb/break_bones(mob/living/advanced/target)
 
 	set name = "Break Bones"
 	set category = "Fun"
@@ -177,7 +177,7 @@
 
 	log_admin("[A1.get_debug_name()] bones were broken by [src.get_debug_name()].")
 
-/client/verb/give_credits(var/dosh_amount as num)
+/client/verb/give_credits(dosh_amount as num)
 	set name = "Give Credits"
 	set category = "Cheat"
 

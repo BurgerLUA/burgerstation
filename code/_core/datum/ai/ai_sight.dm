@@ -1,4 +1,4 @@
-/ai/proc/get_detection_level(var/atom/A,var/view_check=FALSE) //Returns a value 0 to 1.
+/ai/proc/get_detection_level(atom/A,view_check=FALSE) //Returns a value 0 to 1.
 
 	var/turf/T_owner = get_turf(owner)
 	var/turf/T_atom = get_turf(A)

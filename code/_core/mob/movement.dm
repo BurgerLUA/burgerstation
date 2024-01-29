@@ -16,7 +16,7 @@
 /mob/proc/on_walk()
 	return TRUE
 
-/mob/handle_movement(var/adjust_delay = 1)
+/mob/handle_movement(adjust_delay = 1)
 
 	if(!can_walk())
 		return FALSE
@@ -101,7 +101,7 @@
 
 	return TRUE
 
-/mob/post_move(var/atom/old_loc)
+/mob/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -161,7 +161,7 @@
 			if(CONFIG("ENABLE_AREA_TRACKS",FALSE) && length(new_area.tracks) && (!client.next_music_track || client.next_music_track <= world.time))
 				play_music_track(pick(new_area.tracks),client)
 
-/mob/set_dir(var/desired_dir,var/force=FALSE)
+/mob/set_dir(desired_dir,force=FALSE)
 
 	if(!force && client && client.is_zoomed)
 		desired_dir = client.is_zoomed

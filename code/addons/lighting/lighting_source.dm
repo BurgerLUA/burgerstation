@@ -260,7 +260,7 @@
 
 	effect_str = null
 
-/light_source/proc/recalc_corner(var/lighting_corner/C, now = FALSE)
+/light_source/proc/recalc_corner(lighting_corner/C, now = FALSE)
 	LAZYINITLIST(effect_str)
 	if (effect_str[C]) // Already have one.
 		REMOVE_CORNER(C,now)
@@ -277,7 +277,7 @@
 
 	UNSETEMPTY(effect_str)
 
-/light_source/proc/update_corners(var/now = FALSE)
+/light_source/proc/update_corners(now = FALSE)
 
 	var/update = FALSE
 	var/atom/source_atom = src.source_atom //From /tg/. Prevents it from being cleared mid update.

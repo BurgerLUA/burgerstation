@@ -1,4 +1,4 @@
-/proc/get_luck_calc(var/atom/positive,var/positive_luck_mul,var/atom/negative,var/negative_luck_mul)
+/proc/get_luck_calc(atom/positive,positive_luck_mul,atom/negative,negative_luck_mul)
 
 	var/base_prob = 0
 
@@ -16,7 +16,7 @@
 
 	return base_prob
 
-/proc/luck(var/input,var/base_value=50,var/positive=TRUE)
+/proc/luck(input,base_value=50,positive=TRUE)
 
 	if(base_value >= 100)
 		return TRUE

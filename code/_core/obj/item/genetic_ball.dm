@@ -36,12 +36,12 @@ var/global/list/genetic_upgrade_table = list(
 	value = 0
 	value_burgerbux = 1 //Not in normal loot rotation.
 
-/obj/item/genetic_ball/save_item_data(var/save_inventory = TRUE)
+/obj/item/genetic_ball/save_item_data(save_inventory = TRUE)
 	. = ..()
 	SAVEVAR("action_type")
 	SAVEVAR("rarity")
 
-/obj/item/genetic_ball/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/genetic_ball/load_item_data_pre(mob/living/advanced/player/P,list/object_data)
 	. = ..()
 	LOADVAR("action_type")
 	LOADVAR("rarity")
@@ -55,7 +55,7 @@ var/global/list/rarity_to_number = list(
 	RARITY_LEGENDARY = 5
 )
 
-/obj/item/genetic_ball/click_self(var/mob/caller)
+/obj/item/genetic_ball/click_self(mob/caller)
 
 	if(is_living(caller))
 		var/mob/living/L = caller
@@ -63,7 +63,7 @@ var/global/list/rarity_to_number = list(
 
 	return TRUE
 
-/obj/item/genetic_ball/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/genetic_ball/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(caller == object)
 		click_self(caller)
@@ -72,7 +72,7 @@ var/global/list/rarity_to_number = list(
 
 	. = ..()
 
-/obj/item/genetic_ball/proc/do_upgrade(var/mob/living/caller)
+/obj/item/genetic_ball/proc/do_upgrade(mob/living/caller)
 
 	if(action_type == GENETIC_INERT)
 		if(length(caller.traits))

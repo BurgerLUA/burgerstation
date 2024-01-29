@@ -5,5 +5,5 @@
 	var/name //Name of Language
 	var/id //ID of language
 
-/language/proc/process_text(var/mob/speaker,var/text)
+/language/proc/process_text(mob/speaker,text)
 	return text

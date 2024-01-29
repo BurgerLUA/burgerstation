@@ -27,8 +27,8 @@
 /obj/item/proc/fill_inventory()
 	return TRUE
 
-/obj/item/proc/pre_fill_inventory(var/obj/item/item_added)
+/obj/item/proc/pre_fill_inventory(obj/item/item_added)
 	return TRUE
 
-/obj/item/proc/post_fill_inventory(var/obj/item/item_added)
+/obj/item/proc/post_fill_inventory(obj/item/item_added)
 	return TRUE

@@ -6,7 +6,7 @@
 	maximum = 0
 	default_duration = 0
 
-/status_effect/disarm/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/disarm/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 
 	stealthy = TRUE
 

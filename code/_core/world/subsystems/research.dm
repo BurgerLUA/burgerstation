@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(research)
 
 	return ..()
 
-/subsystem/research/proc/add_quadrants_score(var/mob/living/advanced/player/P ,var/score)
+/subsystem/research/proc/add_quadrants_score(mob/living/advanced/player/P ,score)
 	quadrant_high_scores.Add(list(list(P.real_name,score)))
 	sort_tim(quadrant_high_scores,/proc/cmp_highscore)
 	quadrant_high_scores = quadrant_high_scores.Copy(1,min(length(quadrant_high_scores),5))
@@ -43,5 +43,5 @@ SUBSYSTEM_DEF(research)
 
 	return FALSE
 
-/proc/cmp_highscore(var/list/a,var/list/b)
+/proc/cmp_highscore(list/a,list/b)
 	return b[2] - a[2]

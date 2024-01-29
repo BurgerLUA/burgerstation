@@ -77,7 +77,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 
 	chargen_flags = CHARGEN_BEARD
 
-/obj/hud/button/chargen/change_beardstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/change_beardstyle/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -130,7 +130,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 			add_overlay(I_head)
 			add_overlay(I_hair)
 
-/obj/hud/button/chargen/beardstyle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/beardstyle/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	. = ..()
 	if(. && is_advanced(caller))
 		var/mob/living/advanced/A = caller
@@ -142,7 +142,7 @@ mob/living/advanced/proc/handle_beardstyle_chargen(var/hair_num=-1,var/desired_c
 	icon_state = "square_round"
 	screen_loc = "CENTER,CENTER+3"
 
-/obj/hud/button/chargen/beardstyle/main/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/beardstyle/main/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

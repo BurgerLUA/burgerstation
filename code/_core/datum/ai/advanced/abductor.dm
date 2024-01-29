@@ -13,7 +13,7 @@
 			A.visible_message(span("warning","\The [A.name] quickly presses a series of buttons on their left arm..."))
 			CALLBACK("\ref[src]_fuckoff",(rand(1,2)) SECONDS,src,src::fuckoff())
 
-/ai/advanced/abductor/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/advanced/abductor/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 

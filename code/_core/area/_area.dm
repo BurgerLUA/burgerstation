@@ -93,7 +93,7 @@
 
 	return ..()
 
-/area/proc/update_lighting_overlay_color(var/desired_color)
+/area/proc/update_lighting_overlay_color(desired_color)
 
 	for(var/turf/T in contents)
 		if(T.lighting_overlay)
@@ -101,7 +101,7 @@
 
 	return TRUE
 
-/area/New(var/desired_loc)
+/area/New(desired_loc)
 
 	if(requires_power)
 		powered_doors = list()
@@ -179,7 +179,7 @@
 
 	return TRUE
 
-/area/proc/setup_sunlight(var/turf/T)
+/area/proc/setup_sunlight(turf/T)
 
 	if(sunlight_freq <= 0)
 		return FALSE
@@ -201,10 +201,10 @@
 
 	return TRUE
 
-/area/Entered(var/atom/movable/enterer,var/atom/old_loc)
+/area/Entered(atom/movable/enterer,atom/old_loc)
 	return TRUE
 
-/area/Exited(var/atom/movable/exiter,var/atom/old_loc)
+/area/Exited(atom/movable/exiter,atom/old_loc)
 	return TRUE
 
 /area/proc/smash_all_lights()
@@ -269,7 +269,7 @@
 	return TRUE
 
 
-/area/proc/toggle_power_doors(var/enable=ON|AUTO,var/force=FALSE)
+/area/proc/toggle_power_doors(enable=ON|AUTO,force=FALSE)
 
 	if(!requires_power)
 		CRASH("Called toggle_power_doors on an [src.type] that doesn't require power.")
@@ -296,7 +296,7 @@
 	return TRUE
 
 
-/area/proc/toggle_power_machines(var/enable=ON|AUTO,var/force=FALSE)
+/area/proc/toggle_power_machines(enable=ON|AUTO,force=FALSE)
 
 	if(!requires_power)
 		CRASH("Called toggle_power_machines on an [src.type] that doesn't require power.")
@@ -322,7 +322,7 @@
 
 	return TRUE
 
-/area/proc/toggle_power_lights(var/enable=ON|AUTO,var/force=FALSE)
+/area/proc/toggle_power_lights(enable=ON|AUTO,force=FALSE)
 
 	if(!requires_power)
 		CRASH("Called toggle_power_lights on an [src.type] that doesn't require power.")

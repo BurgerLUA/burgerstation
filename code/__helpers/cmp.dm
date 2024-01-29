@@ -25,10 +25,10 @@
 /proc/cmp_name_dsc(atom/a, atom/b)
 	return sorttext(a.name, b.name)
 
-/proc/cmp_recipe_name_asc(var/reagent_recipe/A,var/reagent_recipe/B)
+/proc/cmp_recipe_name_asc(reagent_recipe/A,reagent_recipe/B)
 	return sorttext(B.name, A.name)
 
-/proc/cmp_recipe_name_dsc(var/reagent_recipe/A,var/reagent_recipe/B)
+/proc/cmp_recipe_name_dsc(reagent_recipe/A,reagent_recipe/B)
 	return sorttext(A.name, B.name)
 
 // Datum cmp with vars is always slower than a specialist cmp proc, use your judgement.
@@ -56,7 +56,7 @@
 /proc/cmp_subsystem_priority(subsystem/a, subsystem/b)
 	return cmp_numeric_asc(a.priority,b.priority)
 
-/proc/cmp_generation_priority(var/obj/marker/generation/a,var/obj/marker/generation/b)
+/proc/cmp_generation_priority(obj/marker/generation/a,obj/marker/generation/b)
 	return cmp_numeric_asc(a.priority,b.priority)
 
 /proc/cmp_cqc_priority(cqc/a, cqc/b)
@@ -83,14 +83,14 @@
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
 
-/proc/cmp_worn_layer_hybrid_asc(var/obj/item/A,var/obj/item/B)
+/proc/cmp_worn_layer_hybrid_asc(obj/item/A,obj/item/B)
 	var/A_score = A.item_slot*10 + A.item_slot_layer
 	var/B_score = B.item_slot*10 + B.item_slot_layer
 	return cmp_numeric_asc(A_score,B_score)
 
-/proc/cmp_loadout_dsc(var/list/A,var/list/B)
+/proc/cmp_loadout_dsc(list/A,list/B)
 	return sorttext("[A["name"]]","[B["name"]]")
 
 
-/proc/cmp_recipe_priority_dsc(var/reagent_recipe/A,var/reagent_recipe/B)
+/proc/cmp_recipe_priority_dsc(reagent_recipe/A,reagent_recipe/B)
 	return cmp_numeric_dsc(A.priority,B.priority)

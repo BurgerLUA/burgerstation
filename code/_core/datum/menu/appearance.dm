@@ -32,7 +32,7 @@
 
 	size = "800x800"
 
-/menu/appearance/cache_resources(var/user)
+/menu/appearance/cache_resources(user)
 	..()
 
 	for(var/k in valid_hair_head_ids)
@@ -54,7 +54,7 @@
 		user << browse_rsc(v,"[k].png")
 	*/
 
-/menu/appearance/open(var/mob/user)
+/menu/appearance/open(mob/user)
 	//Credit to Multiverse7 for providing the code for getting this to work.
 	if(ENABLE_CHARGEN)
 		cache_resources(user)
@@ -68,7 +68,7 @@
 		stop_sound('sounds/music/menu/lobby.ogg',list(user))
 		A.chargen = FALSE
 
-/menu/appearance/on_load(var/mob/user)
+/menu/appearance/on_load(mob/user)
 
 	run_function(usr,"set_reference","'\ref[src]'")
 
@@ -170,7 +170,7 @@
 
 
 
-/proc/apply_javascript_to_mob(var/mob/living/advanced/player/A,var/forged_data)
+/proc/apply_javascript_to_mob(mob/living/advanced/player/A,forged_data)
 	A.real_name = forged_data["name"]
 	A.sex = forged_data["sex"] == "m" ? MALE : FEMALE
 	A.gender = forged_data["sex"] == "m" ? MALE : FEMALE
@@ -183,7 +183,7 @@
 	A.change_organ_visual("lips", desired_color = forged_data["mouth"]["color"], desired_icon = forged_data["mouth"]["icon"], desired_icon_state = forged_data["mouth"]["icon_state"])
 	A.update_all_blends()
 
-/proc/generate_character_icon(var/list/data,direction = SOUTH)
+/proc/generate_character_icon(list/data,direction = SOUTH)
 
 	var/icon/I = new /icon(data["head"]["icon"],data["head"]["icon_state"],direction)
 	I.Blend(data["head"]["color"],ICON_MULTIPLY)

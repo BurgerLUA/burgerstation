@@ -79,7 +79,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_static_spread()
 	return 0.001
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/shotgun/lever/get_skill_spread(mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.02 - (0.04 * L.get_skill_power(SKILL_RANGED)))
 

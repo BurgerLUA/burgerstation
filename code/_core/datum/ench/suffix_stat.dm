@@ -4,13 +4,13 @@
 	magnitude_min = 1
 	magnitude_max = 10
 
-/ench/suffix/stat/on_equipped(var/mob/living/L,var/obj/item/clothing/C)
+/ench/suffix/stat/on_equipped(mob/living/L,obj/item/clothing/C)
 	. = ..()
 	L.add_mob_value("[stat_id]","ench:\ref[src]",magnitude)
 	if(L.health)
 		L.health.update_health_stats()
 
-/ench/suffix/stat/on_unequipped(var/mob/living/L,var/obj/item/clothing/C)
+/ench/suffix/stat/on_unequipped(mob/living/L,obj/item/clothing/C)
 	. = ..()
 	L.remove_mob_value("[stat_id]","ench:\ref[src]")
 	if(L.health)

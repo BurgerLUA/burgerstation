@@ -90,7 +90,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/get_skill_spread(mob/living/L)
 	return max(0,0.005 - (0.005 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_127/Generate()

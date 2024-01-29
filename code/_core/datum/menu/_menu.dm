@@ -10,7 +10,7 @@
 	var/can_minimize = TRUE
 	var/show_titlebar = TRUE
 
-/menu/proc/open(var/mob/user)
+/menu/proc/open(mob/user)
 	//Credit to Multiverse7 for providing the code for getting this to work.
 	cache_resources(user)
 	winclone(user, "window", type)
@@ -18,18 +18,18 @@
 	winset(user, "browser([type])", "parent=[type];type=browser;size=0x0;anchor1=0,0;anchor2=100,100")
 	//Onload is called by the client in another proc.
 
-/menu/proc/close(var/mob/user)
+/menu/proc/close(mob/user)
 	winset(user, "browser([type])","is-visible:false")
 
-/menu/proc/run_function(var/user, var/function_name,var/args)
+/menu/proc/run_function(user, function_name,args)
 	user << output("[function_name]([args]);", "browser([type]):eval")
 
-/menu/proc/on_load(var/mob/user)
+/menu/proc/on_load(mob/user)
 	//When the browser sucessfully loaded.
 	user << output(file, "browser([type])")
 	winset(user, "browser([type])", "parent=[type];size=[size]")
 
-/menu/proc/cache_resources(var/mob/user)
+/menu/proc/cache_resources(mob/user)
 	for(var/k in resources)
 		var/v = resources[k]
 		user << browse_rsc(v,k)

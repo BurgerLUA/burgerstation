@@ -132,7 +132,7 @@
 
 	var/has_blood_toxicity = TRUE
 
-/species/proc/process_accent(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/species/proc/process_accent(atom/speaker, atom/source, text_to_say, raw_text_to_say, text_type, frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	if(!accent || !length(accent))
 		return text_to_say

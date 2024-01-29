@@ -12,7 +12,7 @@ var/global/list/obj/structure/interactive/computer/console/remote_flight/all_rem
 	all_remote_flight_consoles += src
 	return ..()
 
-/obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/computer/console/remote_flight/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

@@ -15,20 +15,20 @@
 
 	heal_factor = 0
 
-/reagent/nutrition/energy/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/energy/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
 		owner.stamina_regen_buffer += .*stamina_strength*multiplier
 
-/reagent/nutrition/energy/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/energy/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
 	if(owner && owner.health)
 		owner.stamina_regen_buffer += .*stamina_strength*0.5*multiplier
 
-/reagent/nutrition/energy/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/nutrition/energy/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0)
 
 	. = ..()
 
@@ -37,7 +37,7 @@
 		if(STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= local_strength)
 			L.add_status_effect(ADRENALINE,local_strength,-1)
 
-/reagent/nutrition/energy/on_remove_living(var/mob/living/L,var/reagent_container/container)
+/reagent/nutrition/energy/on_remove_living(mob/living/L,reagent_container/container)
 
 	. = ..()
 

@@ -20,7 +20,7 @@
 
 	flags_hud = FLAG_HUD_SPECIAL
 
-/obj/hud/button/stat/screen_effect/update_owner(var/mob/desired_owner)
+/obj/hud/button/stat/screen_effect/update_owner(mob/desired_owner)
 	alpha = 0
 	switch(dir)
 		if(NORTHWEST)

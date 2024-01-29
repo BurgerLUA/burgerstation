@@ -86,7 +86,7 @@
 
 	return ..()
 
-/ai/advanced/proc/create_ammo_for_weapon(var/obj/item/weapon/ranged/bullet/W,var/desired_amount=5,var/drop_on_fail=TRUE)
+/ai/advanced/proc/create_ammo_for_weapon(obj/item/weapon/ranged/bullet/W,desired_amount=5,drop_on_fail=TRUE)
 
 	. = FALSE
 
@@ -269,7 +269,7 @@
 
 	return FALSE
 
-/ai/advanced/proc/handle_grenade(var/obj/item/grenade/G)
+/ai/advanced/proc/handle_grenade(obj/item/grenade/G)
 
 	if(!G || !is_inventory(G.loc))
 		return FALSE
@@ -342,7 +342,7 @@
 
 	return FALSE //Well, shit's fucked.
 
-/ai/advanced/proc/handle_bow(var/obj/item/weapon/ranged/bow/R)
+/ai/advanced/proc/handle_bow(obj/item/weapon/ranged/bow/R)
 
 	if(R.next_shoot_time > world.time)
 		return TRUE
@@ -375,7 +375,7 @@
 
 	return FALSE //All good.
 
-/ai/advanced/proc/handle_gun(var/obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
+/ai/advanced/proc/handle_gun(obj/item/weapon/ranged/R) //Handles all the reloading and other stuff.
 
 	//Returning TRUE means don't attack on the same tick. It's good to return true if you want the shooter to wait before firing.
 
@@ -617,7 +617,7 @@
 
 	. = ..()
 
-/ai/advanced/do_attack(var/atom/target,var/left_click=FALSE)
+/ai/advanced/do_attack(atom/target,left_click=FALSE)
 
 	if(!target)
 		return FALSE
@@ -649,7 +649,7 @@
 
 	return TRUE
 
-/ai/advanced/proc/is_grenade(var/atom/A)
+/ai/advanced/proc/is_grenade(atom/A)
 	return istype(A,/obj/item/grenade/)
 
 /ai/advanced/proc/find_grenade()
@@ -668,7 +668,7 @@
 
 	return TRUE
 
-/ai/advanced/proc/find_best_weapon(var/atom/possible_target)
+/ai/advanced/proc/find_best_weapon(atom/possible_target)
 
 	var/mob/living/advanced/A = owner
 
@@ -689,7 +689,7 @@
 
 	return best_weapon
 
-/ai/advanced/proc/equip_weapon(var/obj/item/weapon/W)
+/ai/advanced/proc/equip_weapon(obj/item/weapon/W)
 
 	var/mob/living/advanced/A = owner
 
@@ -714,7 +714,7 @@
 	checked_weapons = FALSE
 	checked_cover = FALSE
 
-/ai/advanced/proc/unequip_weapon(var/obj/item/weapon/W)
+/ai/advanced/proc/unequip_weapon(obj/item/weapon/W)
 	var/mob/living/advanced/A = owner
 	if(A.dead)
 		return FALSE
@@ -731,7 +731,7 @@
 
 
 
-/ai/advanced/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
+/ai/advanced/on_alert_level_changed(old_alert_level,new_alert_level,atom/alert_source)
 
 	var/mob/living/advanced/A = owner
 
@@ -863,7 +863,7 @@
 	return FALSE
 
 
-/ai/advanced/proc/find_and_set_cover(var/atom/enemy)
+/ai/advanced/proc/find_and_set_cover(atom/enemy)
 
 	var/turf/T = get_turf(owner)
 
@@ -971,7 +971,7 @@
 
 	return TRUE
 
-/ai/advanced/set_objective(var/atom/A)
+/ai/advanced/set_objective(atom/A)
 
 	. = ..()
 
@@ -979,7 +979,7 @@
 		remove_cover()
 
 
-/ai/advanced/set_alert_level(var/desired_alert_level,var/atom/alert_source = null,var/atom/alert_epicenter = null,var/can_lower=FALSE)
+/ai/advanced/set_alert_level(desired_alert_level,atom/alert_source = null,atom/alert_epicenter = null,can_lower=FALSE)
 
 	var/mob/living/advanced/A = owner
 	if(A.handcuffed)

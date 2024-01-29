@@ -41,7 +41,7 @@
 		FIRE = TRUE
 	)
 
-/mob/living/advanced/stand/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/advanced/stand/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(attacker && owner && attacker == owner)
 		return FALSE
@@ -58,7 +58,7 @@
 /mob/living/advanced/stand/handle_alpha()
 	return enabled ? 255 : 0
 
-/mob/living/advanced/stand/set_dir(var/desired_dir,var/force = FALSE)
+/mob/living/advanced/stand/set_dir(desired_dir,force = FALSE)
 	. = ..()
 	if(.) update_offsets()
 
@@ -109,7 +109,7 @@
 
 	return TRUE
 
-/mob/living/advanced/stand/proc/set_enabled(var/desired_enable=FALSE)
+/mob/living/advanced/stand/proc/set_enabled(desired_enable=FALSE)
 
 	enabled = desired_enable
 
@@ -128,7 +128,7 @@
 
 	return TRUE
 
-/mob/living/advanced/stand/clicked_on_by_object(var/mob/caller,var/atom/object)
+/mob/living/advanced/stand/clicked_on_by_object(mob/caller,atom/object)
 
 	if(caller == owner)
 		return TRUE

@@ -79,7 +79,7 @@
 	var/image/I = new(overlay_icon,overlay_icon_state)
 	underlays += I
 
-/mob/living/simple/bot/medibot/proc/get_inject_amount(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/get_inject_amount(mob/living/target)
 
 	. = list()
 
@@ -97,7 +97,7 @@
 
 	return length(.) ? . : FALSE
 
-/mob/living/simple/bot/medibot/proc/treat(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/treat(mob/living/target)
 
 	var/inject_amount = get_inject_amount(target)
 
@@ -120,7 +120,7 @@
 
 	return TRUE
 
-/mob/living/simple/bot/medibot/proc/can_treat(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/can_treat(mob/living/target)
 
 	if(target.qdeleting)
 		return FALSE
@@ -148,7 +148,7 @@
 
 	return TRUE
 
-/mob/living/simple/bot/medibot/proc/try_treat(var/mob/living/target)
+/mob/living/simple/bot/medibot/proc/try_treat(mob/living/target)
 
 	if(get_inject_amount(target))
 		PROGRESS_BAR(src,src,5 SECONDS,src::treat(),target)

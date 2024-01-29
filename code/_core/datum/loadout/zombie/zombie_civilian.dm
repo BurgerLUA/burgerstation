@@ -68,7 +68,7 @@
 	if(prob(20))
 		. += /obj/item/clothing/overwear/coat/polymorphic
 
-/loadout/zombie/civilian/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+/loadout/zombie/civilian/pre_add(mob/living/advanced/A,obj/item/I)
 	. = ..()
 	var/p_length = length(I.polymorphs)
 	if(p_length && I.item_slot_layer > SLOT_LAYER_UNDER)

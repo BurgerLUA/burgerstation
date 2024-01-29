@@ -19,7 +19,7 @@
 	return ..()
 
 
-/vote/gamemode/on_result(var/winner,var/list/results)
+/vote/gamemode/on_result(winner,list/results)
 
 	if(winner)
 		SSgamemode.set_active_gamemode(gamemode_name_to_type[winner],"voting on_result")

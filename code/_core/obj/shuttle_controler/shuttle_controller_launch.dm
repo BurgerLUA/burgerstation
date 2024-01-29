@@ -1,4 +1,4 @@
-/obj/shuttle_controller/proc/start_flight(var/mob/caller)
+/obj/shuttle_controller/proc/start_flight(mob/caller)
 
 	if(!is_safe_to_land(caller,src.transit_marker_destination))
 		return FALSE
@@ -9,7 +9,7 @@
 
 	return TRUE
 
-/obj/shuttle_controller/proc/launch(var/mob/caller,var/desired_transit_time) //In deciseconds. This proc will always be called to bluespace.
+/obj/shuttle_controller/proc/launch(mob/caller,desired_transit_time) //In deciseconds. This proc will always be called to bluespace.
 
 	if(!set_doors(FALSE,TRUE,TRUE)) //This will return false if something is blocking the doors.
 		time = time - 5 //Go back 5 seconds.

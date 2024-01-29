@@ -36,19 +36,19 @@
 	. = abs(heal_brute+heal_burn)*0.2 + abs(heal_brute_percent+heal_burn_percent)*0.3 + (heal_bleeding ? 20 : 0)
 	. = CEILING(.,1)
 
-/obj/item/container/healing/Generate(var/desired_loc)
+/obj/item/container/healing/Generate(desired_loc)
 	. = ..()
 	if(reagents) reagents.volume_max = amount*reagent_max_per_amount
 
-/obj/item/container/healing/Finalize(var/desired_loc)
+/obj/item/container/healing/Finalize(desired_loc)
 	. = ..()
 	if(reagents) reagents.volume_max = amount*reagent_max_per_amount //Safety
 
-/obj/item/container/healing/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
+/obj/item/container/healing/add_item_count(amount_to_add,bypass_checks = FALSE)
 	. = ..()
 	if(reagents) reagents.volume_max = max(1,amount)*reagent_max_per_amount
 
-/obj/item/container/healing/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/healing/quick(mob/caller,atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
@@ -69,7 +69,7 @@
 
 	return ..()
 
-/obj/item/container/healing/proc/treat(var/mob/caller,var/atom/A)
+/obj/item/container/healing/proc/treat(mob/caller,atom/A)
 
 	if(heal_bleeding && is_organ(A))
 		var/obj/item/organ/O = A
@@ -114,7 +114,7 @@
 
 	return TRUE
 
-/obj/item/container/healing/proc/can_be_treated(var/mob/caller,var/atom/target)
+/obj/item/container/healing/proc/can_be_treated(mob/caller,atom/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
@@ -158,7 +158,7 @@
 
 
 
-/obj/item/container/healing/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/container/healing/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()

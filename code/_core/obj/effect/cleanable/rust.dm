@@ -8,6 +8,6 @@
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = LAYER_FLOOR_PLATING
 
-/obj/effect/cleanable/rust/New(var/desired_loc)
+/obj/effect/cleanable/rust/New(desired_loc)
 	icon_state = pick("rust1","rust2","rust3","rust4")
 	. = ..()

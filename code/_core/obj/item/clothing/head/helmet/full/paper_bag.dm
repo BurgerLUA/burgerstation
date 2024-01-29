@@ -28,17 +28,17 @@
 	. = ..()
 	update_inventory()
 
-/obj/item/clothing/head/helmet/full/paperbag/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/head/helmet/full/paperbag/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("logo")
 	SAVEVAR("logobg")
 
-/obj/item/clothing/head/helmet/full/paperbag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/head/helmet/full/paperbag/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("logo")
 	LOADVAR("logobg")
 
-/obj/item/clothing/head/helmet/full/paperbag/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/head/helmet/full/paperbag/click_self(mob/caller,location,control,params)
 
 	var/mob/C = caller
 	if(C.attack_flags & CONTROL_MOD_DISARM && istype(src.loc,/obj/hud/inventory/organs/))
@@ -80,7 +80,7 @@
 
 	return ..()
 
-/obj/item/clothing/head/helmet/full/paperbag/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/head/helmet/full/paperbag/pre_equip(atom/old_location,obj/hud/inventory/new_location)
 
 	. = ..()
 

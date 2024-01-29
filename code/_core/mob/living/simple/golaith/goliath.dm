@@ -46,7 +46,7 @@
 	icon_state = "[initial(icon_state)]_dead"
 	update_sprite()
 
-/mob/living/simple/goliath/proc/try_tentacle_attack(var/mob/living/desired_target)
+/mob/living/simple/goliath/proc/try_tentacle_attack(mob/living/desired_target)
 
 	if(dead)
 		return FALSE
@@ -62,7 +62,7 @@
 	return TRUE
 
 
-/mob/living/simple/goliath/proc/do_tentacle_attack(var/mob/living/desired_target)
+/mob/living/simple/goliath/proc/do_tentacle_attack(mob/living/desired_target)
 
 	if(dead)
 		return FALSE

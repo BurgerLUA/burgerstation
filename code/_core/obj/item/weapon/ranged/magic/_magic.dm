@@ -26,7 +26,7 @@
 	. = ..()
 
 
-/obj/item/weapon/ranged/magic/get_examine_list(var/mob/examiner)
+/obj/item/weapon/ranged/magic/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -36,7 +36,7 @@
 		. += div("notice","It has an empty gem slot.")
 
 
-/obj/item/weapon/ranged/magic/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/magic/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -70,18 +70,18 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/magic/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/magic/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_powergem")
 
-/obj/item/weapon/ranged/magic/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/magic/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_powergem")
 
 /obj/item/weapon/ranged/magic/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/magic/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/magic/get_skill_spread(mob/living/L)
 	return 0.05 - (0.1 * L.get_skill_power(SKILL_MAGIC))
 
 /obj/item/weapon/ranged/magic/get_base_spread()

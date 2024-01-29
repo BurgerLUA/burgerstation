@@ -5,7 +5,7 @@
 	cost = 80
 	cooldown = 30 SECONDS
 
-/ability/magic/radial_blind/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/magic/radial_blind/on_cast(mob/caller,atom/target,location,params)
 
 	var/turf/T = get_turf(caller)
 	new/obj/effect/temp/phase(T)

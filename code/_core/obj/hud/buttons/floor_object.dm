@@ -26,7 +26,7 @@
 		update_sprite()
 	return TRUE
 
-/obj/hud/button/floor_object/update_owner(var/mob/desired_owner)
+/obj/hud/button/floor_object/update_owner(mob/desired_owner)
 
 	var/owner_changed = owner != desired_owner
 
@@ -65,7 +65,7 @@
 	vis_contents += associated_object
 
 
-/obj/hud/button/floor_object/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/floor_object/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	if(associated_object)
 		return object.click_on_object(caller,associated_object,location,control,params)
 	return ..()

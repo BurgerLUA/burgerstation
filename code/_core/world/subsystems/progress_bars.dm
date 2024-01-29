@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(progressbars)
 	tick_usage_max = 95
 
 
-/subsystem/progressbars/unclog(var/mob/caller)
+/subsystem/progressbars/unclog(mob/caller)
 
 	for(var/k in all_progress_bars)
 		if(!k)
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(progressbars)
 
 	. = ..()
 
-/subsystem/progressbars/proc/process_progress_bar(var/k)
+/subsystem/progressbars/proc/process_progress_bar(k)
 	var/atom/A = k
 	var/list/progress_list = all_progress_bars[k]
 	var/obj/hud/progress_bar/P = progress_list["progress_bar"]
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(progressbars)
 
 	return TRUE
 
-/subsystem/progressbars/proc/add_progress_bar(var/atom/owner,var/atom/object,var/desired_time,var/desired_proc,...)
+/subsystem/progressbars/proc/add_progress_bar(atom/owner,atom/object,desired_time,desired_proc,...)
 
 	if(all_progress_bars[owner])
 		if(ismob(owner))
@@ -105,7 +105,7 @@ SUBSYSTEM_DEF(progressbars)
 
 	return TRUE
 
-/subsystem/progressbars/proc/add_progress_bar_conditions(var/atom/owner,var/atom/object,var/desired_proc,...)
+/subsystem/progressbars/proc/add_progress_bar_conditions(atom/owner,atom/object,desired_proc,...)
 
 	if(!all_progress_bars[owner])
 		return FALSE

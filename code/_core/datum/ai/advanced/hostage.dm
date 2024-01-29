@@ -9,7 +9,7 @@
 	aggression = 0
 	assistance = 0
 
-/ai/advanced/hostage/is_enemy(var/atom/A,var/safety_check=TRUE)
+/ai/advanced/hostage/is_enemy(atom/A,safety_check=TRUE)
 	if(!is_living(A))
 		return ..()
 	var/mob/living/L = A

@@ -6,7 +6,7 @@
 	screen_loc = "RIGHT-4,BOTTOM"
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/evade/proc/get_charge_level(var/mob/living/caller)
+/obj/hud/button/evade/proc/get_charge_level(mob/living/caller)
 	return 0
 
 /obj/hud/button/evade/update_owner()
@@ -51,7 +51,7 @@
 	desc_extended = "A button that controls whether or not you block when holding down the space bar."
 	icon_state = "block"
 
-/obj/hud/button/evade/block/get_charge_level(var/mob/living/caller)
+/obj/hud/button/evade/block/get_charge_level(mob/living/caller)
 	return caller.charge_block
 
 /obj/hud/button/evade/parry
@@ -60,7 +60,7 @@
 	desc_extended = "A button that controls whether or not you parry when holding down the space bar."
 	icon_state = "parry"
 
-/obj/hud/button/evade/parry/get_charge_level(var/mob/living/caller)
+/obj/hud/button/evade/parry/get_charge_level(mob/living/caller)
 	return caller.charge_parry
 
 /obj/hud/button/evade/dodge
@@ -69,7 +69,7 @@
 	desc_extended = "A button that controls whether or not you dodge when holding down the space bar."
 	icon_state = "dodge"
 
-/obj/hud/button/evade/dodge/get_charge_level(var/mob/living/caller)
+/obj/hud/button/evade/dodge/get_charge_level(mob/living/caller)
 	return caller.charge_dodge
 */
 

@@ -16,7 +16,7 @@ obj/structure/interactive/soapstone_message
 
 	layer = LAYER_FLOOR_DECAL
 
-/obj/structure/interactive/soapstone_message/New(var/desired_loc)
+/obj/structure/interactive/soapstone_message/New(desired_loc)
 	. = ..()
 
 /obj/structure/interactive/soapstone_message/Finalize()

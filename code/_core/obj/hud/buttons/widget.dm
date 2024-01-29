@@ -18,7 +18,7 @@
 	icon_state = "xp_new"
 	screen_loc = "RIGHT-1,TOP"
 
-/obj/hud/button/widget/experience/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/experience/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -94,7 +94,7 @@
 	icon_state = "logout_new"
 	screen_loc = "RIGHT,TOP"
 
-/obj/hud/button/widget/logout/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/logout/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -109,7 +109,7 @@
 	icon_state = "theme_new"
 	screen_loc = "RIGHT-2,TOP"
 
-/obj/hud/button/widget/change_theme/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/change_theme/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_player(caller))
 		return ..()
@@ -130,7 +130,7 @@
 	icon_state = "map_new"
 	screen_loc = "RIGHT-3,TOP"
 
-/obj/hud/button/widget/view_map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/widget/view_map/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

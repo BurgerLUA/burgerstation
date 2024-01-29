@@ -43,10 +43,10 @@
 	SSobj.gps_list -= src
 	. = ..()
 
-/obj/item/analyzer/gps/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/gps/can_be_scanned(mob/caller,atom/target)
 	return is_turf(target) || (target.loc && is_turf(target.loc))
 
-/obj/item/analyzer/gps/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/gps/on_scan(mob/caller,atom/target,location,control,params)
 
 	if(!target)
 		caller.to_chat(span("warning","Invalid target!"))
@@ -84,12 +84,12 @@
 				caller.to_chat(span("notice","Invalid name."))
 	return TRUE
 
-/obj/item/analyzer/gps/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/analyzer/gps/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("assigned_name")
 	SAVEVAR("assigned_passkey")
 
-/obj/item/analyzer/gps/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/analyzer/gps/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("assigned_name")
 	LOADVAR("assigned_passkey")

@@ -20,7 +20,7 @@
 	//var/chosen_file_below //For debug only.
 
 
-/obj/marker/prefab/on_dmm_suite_rotate(var/angle_offset=0)
+/obj/marker/prefab/on_dmm_suite_rotate(angle_offset=0)
 	. = ..()
 	switch(angle_offset)
 		if(90)
@@ -34,7 +34,7 @@
 /obj/marker/prefab/proc/prepare_prefab()
 	return TRUE
 
-/obj/marker/prefab/New(var/desired_loc)
+/obj/marker/prefab/New(desired_loc)
 
 	if(prob(chance_none))
 		qdel(src)
@@ -122,7 +122,7 @@
 	chance_none = 25
 	rotational_offset = 32
 
-/obj/marker/prefab/forest/New(var/desired_loc)
+/obj/marker/prefab/forest/New(desired_loc)
 	. = ..()
 	dir = pick(DIRECTIONS_CARDINAL)
 
@@ -227,7 +227,7 @@
 	category = "city_street_intersection"
 	unique = TRUE
 
-/obj/marker/prefab/city/intersection/New(var/desired_loc)
+/obj/marker/prefab/city/intersection/New(desired_loc)
 	. = ..()
 	dir = pick(NORTH,EAST,SOUTH,WEST)
 

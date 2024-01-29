@@ -6,7 +6,7 @@
 
 	var/obj/item/device/radio/stored_radio = /obj/item/device/radio/headset/nanotrasen
 
-/obj/item/clothing/ears/headset/get_examine_list(var/mob/examiner)
+/obj/item/clothing/ears/headset/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","Use the ';' prefix while speaking to talk into it.<br>Use the mouse wheel to change frequencies.<br>Click/Use in hands to toggle the signal reciever.<br>ALT+Click to change broadcast mode.")
 
@@ -22,23 +22,23 @@
 	QDEL_NULL(stored_radio)
 	. = ..()
 
-/obj/item/clothing/ears/headset/click_self(var/mob/caller,location,control,params)
+/obj/item/clothing/ears/headset/click_self(mob/caller,location,control,params)
 	return stored_radio.click_self(caller,location,control,params)
 
-/obj/item/clothing/ears/headset/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/clothing/ears/headset/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 	return stored_radio.clicked_on_by_object(caller,object,location,control,params)
 
-/obj/item/clothing/ears/headset/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/clothing/ears/headset/mouse_wheel_on_object(mob/caller,delta_x,delta_y,location,control,params)
 	return stored_radio.mouse_wheel_on_object(caller,delta_x,delta_y,location,control,params)
 
-/obj/item/clothing/ears/headset/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/clothing/ears/headset/trigger(mob/caller,atom/source,signal_freq,signal_code)
 	return stored_radio.trigger(caller,source,signal_freq,signal_code)
 
-/obj/item/clothing/ears/headset/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/clothing/ears/headset/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_radio")
 
-/obj/item/clothing/ears/headset/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/clothing/ears/headset/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_radio")
 

@@ -13,7 +13,7 @@
 	use_loyalty_tag = TRUE
 	use_iff_tag = FALSE
 
-/obj/item/weapon/ranged/stamina_use/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/stamina_use/can_gun_shoot(mob/caller,atom/object,location,params,check_time=TRUE,messages=TRUE)
 
 	if(get_ammo_count() < 1)
 		return FALSE
@@ -35,7 +35,7 @@
 
 	return owner && cost_stamina ? FLOOR(owner.health.stamina_current / cost_stamina, 1) : 0
 
-/obj/item/weapon/ranged/stamina_use/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/stamina_use/handle_ammo(mob/caller,bullet_position=1)
 
 	if(!is_advanced(caller))
 		return ..()
@@ -55,14 +55,14 @@
 /obj/item/weapon/ranged/stamina_use/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/stamina_use/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/stamina_use/get_skill_spread(mob/living/L)
 	return 0
 
-/obj/item/weapon/ranged/stamina_use/get_movement_spread(var/mob/living/L)
+/obj/item/weapon/ranged/stamina_use/get_movement_spread(mob/living/L)
 	return 0
 
 
-/obj/item/weapon/ranged/stamina_use/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/obj/item/weapon/ranged/stamina_use/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 
 	if(bullet_num_max <= 1)
 		return list(initial_offset_x,initial_offset_y)

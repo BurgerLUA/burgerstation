@@ -43,7 +43,7 @@
 	SSshuttle.all_shuttle_controlers -= src
 	return ..()
 
-/obj/shuttle_controller/New(var/desired_loc)
+/obj/shuttle_controller/New(desired_loc)
 
 	SSshuttle.all_shuttle_controlers += src
 
@@ -110,7 +110,7 @@
 
 	set_doors(TRUE,TRUE,TRUE) //Open and bolt all the doors!
 
-/obj/shuttle_controller/proc/set_destination(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
+/obj/shuttle_controller/proc/set_destination(mob/caller,obj/marker/shuttle_landing/desired_marker)
 
 	if(!is_safe_to_land(caller,desired_marker))
 		return FALSE

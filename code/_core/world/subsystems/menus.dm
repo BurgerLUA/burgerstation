@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(menu)
 		preload_assets(M)
 
 
-/subsystem/menu/proc/preload_assets(var/mob/M)
+/subsystem/menu/proc/preload_assets(mob/M)
 
 	for(var/k in all_menus)
 		var/menu/E = all_menus[k]
@@ -28,12 +28,12 @@ SUBSYSTEM_DEF(menu)
 
 	return TRUE
 
-/proc/open_menu(var/mob/M,var/menu_id)
+/proc/open_menu(mob/M,menu_id)
 	spawn
 		var/menu/E = SSmenu.all_menus[menu_id]
 		E.open(M)
 
-/proc/close_menu(var/mob/M,var/menu_id)
+/proc/close_menu(mob/M,menu_id)
 	spawn
 		var/menu/E = SSmenu.all_menus[menu_id]
 		E.close(M)
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(menu)
 proc/get_menu(var/menu_id)
 	return SSmenu.all_menus[menu_id]
 
-/proc/send_load(var/mob/M,menu_id) //A common command I use every time I visit your mom.
+/proc/send_load(mob/M,menu_id) //A common command I use every time I visit your mom.
 	var/menu/E = SSmenu.all_menus[menu_id]
 	if(!E)
 		log_error("Warning: Could not load menu [menu_id ? menu_id : "NULL"] for [M.get_debug_name()]!")

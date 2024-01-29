@@ -27,11 +27,11 @@
 /obj/item/cell_charger/get_battery()
 	return battery
 
-/obj/item/cell_charger/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/cell_charger/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("battery")
 
-/obj/item/cell_charger/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/cell_charger/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("battery")
 
@@ -39,7 +39,7 @@
 	update_sprite()
 	return ..()
 
-/obj/item/cell_charger/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/cell_charger/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(battery && is_inventory(object))
 		INTERACT_CHECK
@@ -140,7 +140,7 @@
 		return FALSE
 
 
-/obj/item/cell_charger/get_examine_list(var/mob/caller)
+/obj/item/cell_charger/get_examine_list(mob/caller)
 
 	. = ..()
 

@@ -70,7 +70,7 @@
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
 	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to prevent those WITH IFF implants from accessing the area."
 
-/obj/structure/interactive/scanner/iff_reverse/Cross/(var/atom/movable/M)
+/obj/structure/interactive/scanner/iff_reverse/Cross/(atom/movable/M)
 
 	if(is_advanced(M))
 		var/mob/living/advanced/A = M
@@ -91,7 +91,7 @@
 
 	desired_light_power = 0
 
-/obj/structure/interactive/scanner/living/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/structure/interactive/scanner/living/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	for(var/mob/living/L in loc.contents)
 		source.trigger(L,src,signal_freq,signal_code)
@@ -109,7 +109,7 @@
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
 	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to only allow living silicons and carbons."
 
-/obj/structure/interactive/scanner/anti_dead/Cross/(var/atom/movable/M)
+/obj/structure/interactive/scanner/anti_dead/Cross/(atom/movable/M)
 
 	if(!is_living(M))
 		return FALSE
@@ -125,7 +125,7 @@
 	desc = "YOU. SHALL NOT. PASS. Unless the conditions are met."
 	desc_extended = "A very invasive full body scanner that magically blocks movement based on the conditions coded inside. This one is programmed to only allow secure crates."
 
-/obj/structure/interactive/scanner/crate_only/Cross/(var/atom/movable/M)
+/obj/structure/interactive/scanner/crate_only/Cross/(atom/movable/M)
 
 	if(!istype(M,/obj/structure/interactive/crate/secure))
 		return FALSE
@@ -144,7 +144,7 @@
 
 	desired_light_power = 0
 
-/obj/structure/interactive/scanner/cop/Cross/(var/atom/movable/M)
+/obj/structure/interactive/scanner/cop/Cross/(atom/movable/M)
 
 	if(!is_living(M))
 		return FALSE
@@ -162,7 +162,7 @@
 	desc_extended = "A proximity door scanner that prevents those with less than 20,000 credits from entering. Or leaving..."
 	icon_state = "door"
 
-/obj/structure/interactive/scanner/rich/Cross/(var/atom/movable/M)
+/obj/structure/interactive/scanner/rich/Cross/(atom/movable/M)
 
 	if(!is_player(M))
 		return FALSE

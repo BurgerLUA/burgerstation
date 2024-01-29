@@ -17,7 +17,7 @@
 
 	var/list/area/linked_areas = list()
 
-/obj/structure/interactive/power/apc/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/power/apc/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","Area Power Draw: [src.power_draw]w.")
 	. += div("notice","\The [cell.name] has [cell.charge_current] out of [cell.charge_max] charge remaining.")
@@ -61,7 +61,7 @@
 	else
 		link_area(A)
 
-/obj/structure/interactive/power/apc/proc/link_area(var/area/A)
+/obj/structure/interactive/power/apc/proc/link_area(area/A)
 	if(A.linked_apc)
 		A.linked_apc.unlink_area(A)
 	A.linked_apc = src
@@ -70,7 +70,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/power/apc/proc/unlink_area(var/area/A)
+/obj/structure/interactive/power/apc/proc/unlink_area(area/A)
 	src.linked_areas -= A
 	if(A.linked_apc == src)
 		A.linked_apc = null
@@ -102,7 +102,7 @@
 /obj/structure/interactive/power/apc/get_power_draw()
 	return cell ? min(max(0,cell.charge_max - cell.charge_current),CEILING(cell.charge_max*0.25,1)) : 0
 
-/obj/structure/interactive/power/apc/power_process(var/power_multiplier=1)
+/obj/structure/interactive/power/apc/power_process(power_multiplier=1)
 	. = ..()
 	update_power_draw(get_power_draw())
 	cell.charge_current += FLOOR(power_draw*power_multiplier,1)

@@ -1,4 +1,4 @@
-/obj/hud/inventory/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/hud/inventory/click_on_object(mob/caller as mob,atom/object,location,control,params) //The src is used on the object
 
 	//Dead can't interact.
 	if(is_living(caller))
@@ -241,7 +241,7 @@
 
 	return TRUE //Returning TRUE here as returning false would just run the above.
 
-/obj/hud/inventory/proc/toggle_wield(var/mob/caller,var/obj/item/item_to_wield)
+/obj/hud/inventory/proc/toggle_wield(mob/caller,obj/item/item_to_wield)
 
 	if(parent_inventory)
 		unwield(caller,item_to_wield)
@@ -251,7 +251,7 @@
 	return TRUE
 
 
-/obj/hud/inventory/proc/can_wield(var/mob/caller,var/obj/item/item_to_wield)
+/obj/hud/inventory/proc/can_wield(mob/caller,obj/item/item_to_wield)
 
 	if(src.is_occupied())
 		caller.to_chat(span("warning","Your hand must be unoccupied in order to wield this!"))
@@ -271,7 +271,7 @@
 
 
 
-/obj/hud/inventory/proc/unwield(var/mob/caller,var/obj/item/item_to_wield)
+/obj/hud/inventory/proc/unwield(mob/caller,obj/item/item_to_wield)
 
 	caller.to_chat(span("notice","You unbrace \the [item_to_wield] with your [src.loc.name]."))
 
@@ -289,7 +289,7 @@
 	return TRUE
 
 
-/obj/hud/inventory/proc/wield(var/mob/caller,var/obj/item/item_to_wield)
+/obj/hud/inventory/proc/wield(mob/caller,obj/item/item_to_wield)
 
 	if(!is_item(item_to_wield) || !item_to_wield.can_wield)
 		caller.to_chat(span("warning","You can't wield this!"))
@@ -315,7 +315,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params) //Object dropped on src
+/obj/hud/inventory/dropped_on_by_object(mob/caller,atom/object,location,control,params) //Object dropped on src
 
 	DEFER_OBJECT
 
@@ -329,7 +329,7 @@
 
 	. = ..()
 
-/obj/hud/inventory/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list(),var/accurate=FALSE,var/find_closet=FALSE)
+/obj/hud/inventory/get_object_to_damage_with(atom/attacker,atom/victim,list/params=list(),accurate=FALSE,find_closet=FALSE)
 	return src.loc
 
 obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
@@ -341,7 +341,7 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 	return I.drop_item(new_location,pixel_x_offset,pixel_y_offset)
 
-/obj/hud/inventory/defer_click_on_object(var/mob/caller,location,control,params)
+/obj/hud/inventory/defer_click_on_object(mob/caller,location,control,params)
 
 	if(grabbed_object)
 		return grabbed_object
@@ -351,7 +351,7 @@ obj/hud/inventory/proc/drop_item_from_inventory(var/turf/new_location,var/pixel_
 
 	return src
 
-/obj/hud/inventory/on_mouse_up(var/mob/caller as mob, var/atom/object,location,control,params)
+/obj/hud/inventory/on_mouse_up(mob/caller as mob, atom/object,location,control,params)
 
 	var/atom/top_object = get_top_object()
 

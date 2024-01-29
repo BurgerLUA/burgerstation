@@ -31,7 +31,7 @@
 
 	value = 200
 
-/obj/item/clothing/glasses/meson/night_vision/pre_pickup(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/glasses/meson/night_vision/pre_pickup(atom/old_location,obj/hud/inventory/new_location)
 
 	. = ..()
 

@@ -1,11 +1,11 @@
-/obj/item/proc/try_strip(var/mob/caller)
+/obj/item/proc/try_strip(mob/caller)
 	if(!can_strip(caller,TRUE))
 		return FALSE
 	PROGRESS_BAR(caller,src,5,src::strip(),caller)
 	PROGRESS_BAR_CONDITIONS(caller,src,src::can_strip(),caller,TRUE)
 	return TRUE
 
-/obj/item/proc/strip(var/mob/caller)
+/obj/item/proc/strip(mob/caller)
 
 	var/atom/old_loc = src.loc
 
@@ -24,7 +24,7 @@
 
 	return TRUE
 
-/obj/item/proc/can_strip(var/mob/caller,var/messages=FALSE)
+/obj/item/proc/can_strip(mob/caller,messages=FALSE)
 
 	INTERACT_CHECK_NO_DELAY(src)
 

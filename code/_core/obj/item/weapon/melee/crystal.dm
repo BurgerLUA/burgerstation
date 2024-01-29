@@ -19,15 +19,15 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/weapon/melee/crystal/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/melee/crystal/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("shape")
 
-/obj/item/weapon/melee/crystal/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/melee/crystal/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("shape")
 
-/obj/item/weapon/melee/crystal/click_self(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/item/weapon/melee/crystal/click_self(mob/caller as mob,atom/object,location,control,params) //The src is used on the object
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

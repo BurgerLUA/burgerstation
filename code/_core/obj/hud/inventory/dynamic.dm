@@ -17,7 +17,7 @@
 
 	priority = -100 //Very low priority
 
-/obj/hud/inventory/dynamic/New(var/desired_loc)
+/obj/hud/inventory/dynamic/New(desired_loc)
 	. = ..()
 	if(is_atom(desired_loc))
 		var/atom/A = desired_loc
@@ -27,7 +27,7 @@
 
 /obj/hud/inventory/dynamic/sandwich //Special logic for buns
 
-/obj/hud/inventory/dynamic/sandwich/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
+/obj/hud/inventory/dynamic/sandwich/can_slot_object(obj/item/I,messages = FALSE,bypass=FALSE)
 
 	if(src.loc && istype(src.loc.loc,/obj/hud/inventory/dynamic/sandwich/)) //Our sandwich is in of another sandwich. Do not accept items.
 		//No message needed.

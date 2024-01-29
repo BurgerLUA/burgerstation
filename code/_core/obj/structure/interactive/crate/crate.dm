@@ -15,7 +15,7 @@
 
 	pixel_y = 4
 
-/obj/structure/interactive/crate/closet/can_prevent_close(var/atom/movable/M)
+/obj/structure/interactive/crate/closet/can_prevent_close(atom/movable/M)
 	if(is_living(M))
 		var/mob/living/L = M
 		if(L.size > size)

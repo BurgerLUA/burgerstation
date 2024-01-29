@@ -8,7 +8,7 @@
 
 	density = TRUE
 
-/obj/trigger/leave_chargen/Cross(var/atom/movable/triggerer)
+/obj/trigger/leave_chargen/Cross(atom/movable/triggerer)
 
 	if(is_player(triggerer))
 		var/mob/living/advanced/player/A = triggerer
@@ -41,7 +41,7 @@
 
 	density = TRUE
 
-/obj/trigger/teleport_to_shuttle/Crossed(var/atom/movable/triggerer)
+/obj/trigger/teleport_to_shuttle/Crossed(atom/movable/triggerer)
 
 	. = ..()
 
@@ -66,7 +66,7 @@
 
 /*
 
-/proc/play_the_fucking_tutorial(var/mob/living/advanced/A)
+/proc/play_the_fucking_tutorial(mob/living/advanced/A)
 	spawn(0)
 		A.paralyze_time = -1
 		A.movement_flags = 0x0
@@ -81,7 +81,7 @@
 		for(var/obj/structure/interactive/localmachine/snowflake/airlock/external/tutorial_dock/TD in tutorial_docks)
 			TD.open_for(A)
 
-/proc/play_the_fucking_game(var/mob/living/advanced/A)
+/proc/play_the_fucking_game(mob/living/advanced/A)
 
 	var/client/C = A.client
 

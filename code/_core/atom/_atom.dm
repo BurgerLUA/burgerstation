@@ -60,7 +60,7 @@
 
 	var/map_spawn = FALSE //Set to true to indicate this object was spawned in via dmm_suite
 
-/atom/proc/set_density(var/desired_density=TRUE,var/force=FALSE)
+/atom/proc/set_density(desired_density=TRUE,force=FALSE)
 
 	if(density == desired_density && !force)
 		return FALSE
@@ -69,10 +69,10 @@
 
 	return TRUE
 
-/atom/proc/get_display_name(var/mob/caller)
+/atom/proc/get_display_name(mob/caller)
 	return "[src.name]"
 
-/atom/proc/update_name(var/desired_name)
+/atom/proc/update_name(desired_name)
 	name = desired_name
 	if(label)
 		name = "[name] ([label])"
@@ -98,10 +98,10 @@
 		return TRUE
 	return FALSE
 
-/atom/proc/can_do_destruction(var/damage=TRUE)
+/atom/proc/can_do_destruction(damage=TRUE)
 	return TRUE
 
-/atom/proc/on_destruction(var/damage = TRUE)
+/atom/proc/on_destruction(damage = TRUE)
 	HOOK_CALL("on_destruction")
 	return TRUE
 
@@ -140,14 +140,14 @@
 /atom/proc/get_base_transform()
 	return matrix()
 
-/atom/proc/defer_click_on_object(var/mob/caller,location,control,params)
+/atom/proc/defer_click_on_object(mob/caller,location,control,params)
 	return src
 
 /atom/proc/get_xp_multiplier() //How much XP should this object give for interacting with it.
 	return 0
 
 
-/atom/proc/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/atom/proc/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(!src.finalized)
 		return FALSE
@@ -160,7 +160,7 @@
 /atom/proc/think()
 	return TRUE
 
-/atom/proc/get_touching_space(var/intercardinal = FALSE)
+/atom/proc/get_touching_space(intercardinal = FALSE)
 
 	. = 0x0
 
@@ -171,7 +171,7 @@
 			. |= dir
 
 
-/atom/proc/get_best_touching_space(var/intercardinal = TRUE)
+/atom/proc/get_best_touching_space(intercardinal = TRUE)
 
 	var/turf/T = get_turf(src)
 	for(var/dir in list(NORTH,SOUTH,EAST,WEST))
@@ -196,10 +196,10 @@
 /atom/get_log_name()
 	return "[src.name]([src.type])([x],[y],[z])</a>"
 
-/atom/proc/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_mod=1)
+/atom/proc/get_inaccuracy(atom/source,atom/target,inaccuracy_mod=1)
 	return 0
 
-/atom/proc/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/atom/proc/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	return TRUE
 
 /atom/proc/is_busy()
@@ -222,10 +222,10 @@
 /atom/Crossed(atom/movable/O,atom/OldLoc) //Override default
 	return TRUE
 
-/atom/proc/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency,var/language=LANGUAGE_BASIC,var/talk_range=TALK_RANGE) //Note that this is sanitized.
+/atom/proc/on_listen(atom/speaker,datum/source,text,raw_text,language_text,talk_type,frequency,language=LANGUAGE_BASIC,talk_range=TALK_RANGE) //Note that this is sanitized.
 	return TRUE
 
-/atom/proc/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
+/atom/proc/do_say(text_to_say, should_sanitize = TRUE, talk_type_to_use = TEXT_TALK,talk_range=TALK_RANGE,language_to_use=null)
 
 	if(should_sanitize)
 		text_to_say = sanitize(text_to_say)
@@ -234,7 +234,7 @@
 
 	return TRUE
 
-/atom/proc/on_dmm_suite_rotate(var/angle_offset=0)
+/atom/proc/on_dmm_suite_rotate(angle_offset=0)
 	return TRUE
 
 

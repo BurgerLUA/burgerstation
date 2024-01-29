@@ -12,13 +12,13 @@
 	var/removes_existing = FALSE
 	var/should_save_on_implant = FALSE
 
-/obj/structure/interactive/hand_implanter/New(var/desired_loc)
+/obj/structure/interactive/hand_implanter/New(desired_loc)
 	. = ..()
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 
 
-/obj/structure/interactive/hand_implanter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/hand_implanter/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

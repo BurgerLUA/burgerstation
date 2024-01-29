@@ -34,7 +34,7 @@
 
 /damagetype/ranged/bullet/rifle_223/syndicate_turret
 
-/damagetype/ranged/bullet/rifle_223/syndicate_turret/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
+/damagetype/ranged/bullet/rifle_223/syndicate_turret/get_attack_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,damage_multiplier=1)
 
 	if(is_living(victim))
 		var/mob/living/L = victim

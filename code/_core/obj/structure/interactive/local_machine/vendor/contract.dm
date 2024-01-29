@@ -35,7 +35,7 @@
 
 	markup = 1
 
-/obj/structure/interactive/vending/contract/New(var/desired_loc)
+/obj/structure/interactive/vending/contract/New(desired_loc)
 
 	var/list/possible_contracts = subtypesof(/obj/item/contract)
 	for(var/k in possible_contracts) //First pass
@@ -66,7 +66,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/vending/contract/create_item(var/obj/item/item_path,var/turf/turf_spawn)
+/obj/structure/interactive/vending/contract/create_item(obj/item/item_path,turf/turf_spawn)
 
 	if(!ispath(item_path,/obj/item/contract))
 		return ..()
@@ -83,7 +83,7 @@
 
 	return I
 
-/obj/structure/interactive/vending/contract/modify_item(var/obj/item/I,var/obj/item/base_item)
+/obj/structure/interactive/vending/contract/modify_item(obj/item/I,obj/item/base_item)
 
 	if(istype(I,/obj/item/contract))
 		var/obj/item/contract/C = I
@@ -94,5 +94,5 @@
 
 
 
-/obj/structure/interactive/vending/contract/get_bullshit_price(var/desired_price)
+/obj/structure/interactive/vending/contract/get_bullshit_price(desired_price)
 	return CEILING(desired_price,10)

@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(advanced_thinking)
 
 	tick_usage_max = 75
 
-/subsystem/advanced_thinking/unclog(var/mob/caller)
+/subsystem/advanced_thinking/unclog(mob/caller)
 	for(var/k in src.all_thinkers)
 		all_thinkers -= k
 	return ..()
@@ -24,14 +24,14 @@ SUBSYSTEM_DEF(advanced_thinking)
 
 	return TRUE
 
-/proc/start_advanced_thinking(var/atom/A)
+/proc/start_advanced_thinking(atom/A)
 	SSadvanced_thinking.all_thinkers[A] = TRUE
 	return TRUE
 
-/proc/stop_advanced_thinking(var/atom/A)
+/proc/stop_advanced_thinking(atom/A)
 	if(SSadvanced_thinking.all_thinkers[A])
 		SSadvanced_thinking.all_thinkers -= A
 	return TRUE
 
-/proc/is_advanced_thinking(var/atom/A)
+/proc/is_advanced_thinking(atom/A)
 	return SSadvanced_thinking.all_thinkers[A]

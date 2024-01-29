@@ -15,7 +15,7 @@
 	var/list/shoot_sounds_kill = list()
 	var/list/shoot_sounds_stun = list()
 
-/obj/item/weapon/ranged/energy/hybrid/New(var/desired_loc)
+/obj/item/weapon/ranged/energy/hybrid/New(desired_loc)
 	. = ..()
 
 	//Set to kill.
@@ -28,7 +28,7 @@
 	update_sprite()
 
 
-/obj/item/weapon/ranged/energy/hybrid/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/energy/hybrid/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

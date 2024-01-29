@@ -1,7 +1,7 @@
 /dialogue/npc/chief_medical_officer
 
 
-/dialogue/npc/chief_medical_officer/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/chief_medical_officer/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -39,7 +39,7 @@
 		"job"
 	)
 
-/dialogue/npc/chief_medical_officer/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/chief_medical_officer/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

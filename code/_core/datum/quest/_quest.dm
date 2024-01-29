@@ -25,10 +25,10 @@
 /quest/proc/on_death()
 	return FALSE
 
-/quest/proc/can_change_stage(var/desired_stage)
+/quest/proc/can_change_stage(desired_stage)
 	return TRUE
 
-/quest/proc/set_stage(var/desired_stage,var/force=FALSE)
+/quest/proc/set_stage(desired_stage,force=FALSE)
 	if(!force && !can_change_stage(desired_stage))
 		return FALSE
 	var/old_stage = stage
@@ -47,15 +47,15 @@
 
 	return returning
 
-/quest/proc/set_objective_displayed(var/objective_id)
+/quest/proc/set_objective_displayed(objective_id)
 	objectives_displayed += objective_id
 
-/quest/proc/set_objective_completed(var/objective_id)
+/quest/proc/set_objective_completed(objective_id)
 	objectives_completed += objective_id
 
-/quest/proc/on_stage_changed(var/previous_stage)
+/quest/proc/on_stage_changed(previous_stage)
 	return TRUE
 
-/quest/proc/on_load(var/loaded_stage) //Quest was loaded from a save file and applied to a mob.
+/quest/proc/on_load(loaded_stage) //Quest was loaded from a save file and applied to a mob.
 	set_stage(loaded_stage)
 	return TRUE

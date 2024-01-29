@@ -1,4 +1,4 @@
-/obj/item/proc/initialize_worn_blends(var/desired_icon_state)
+/obj/item/proc/initialize_worn_blends(desired_icon_state)
 
 	if(length(polymorphs))
 		var/icon/initial_icon = initial(icon)
@@ -55,7 +55,7 @@
 
 	return TRUE
 
-/obj/item/proc/remove_blend(var/desired_id)
+/obj/item/proc/remove_blend(desired_id)
 
 	if(!additional_blends || !additional_blends[desired_id])
 		return FALSE
@@ -66,7 +66,7 @@
 
 	return TRUE
 
-/obj/item/proc/add_blend(var/desired_id,var/desired_icon,var/desired_icon_state,var/desired_color,var/desired_blend, var/desired_type, var/desired_should_save,var/desired_layer)
+/obj/item/proc/add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend, desired_type, desired_should_save,desired_layer)
 
 	//Existing blend.
 	if(additional_blends && additional_blends[desired_id])
@@ -102,7 +102,7 @@
 
 	return IB
 
-/obj/item/proc/handle_overlays(var/mob/living/advanced/A,var/add=FALSE,var/remove=FALSE,var/update=FALSE,var/worn=FALSE,var/icon_state_override)
+/obj/item/proc/handle_overlays(mob/living/advanced/A,add=FALSE,remove=FALSE,update=FALSE,worn=FALSE,icon_state_override)
 
 	if(remove)
 		A.remove_overlay("\ref[src]")

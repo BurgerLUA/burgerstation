@@ -26,6 +26,6 @@
 	desc_extended = "Boring office floor; may or may not smell vaguely of urine"
 	icon_state = "1"
 
-/turf/simulated/floor/carpet/office/New(var/desired_loc)
+/turf/simulated/floor/carpet/office/New(desired_loc)
 	. = ..()
 	icon_state = "[rand(1,4)]"

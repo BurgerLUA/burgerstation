@@ -6,7 +6,7 @@
 	icon_state = "jungle_deep_path"
 	density = FALSE
 
-/turf/unsimulated/generation/jungle_deep/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/jungle_deep/generate(size = WORLD_SIZE)
 
 	var/x_seed = x / size
 	var/y_seed = y / size

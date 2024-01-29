@@ -24,7 +24,7 @@
 
 	ignore_hazard_turfs = FALSE
 
-/ai/boss/gabber/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/gabber/New(desired_loc,mob/living/desired_owner)
 	owner_as_gabber = desired_owner
 	return ..()
 
@@ -32,7 +32,7 @@
 	owner_as_gabber = null
 	return ..()
 
-/ai/boss/gabber/set_objective(var/atom/A)
+/ai/boss/gabber/set_objective(atom/A)
 	var/had_previous_objective = objective_attack
 	. = ..()
 	if(. && objective_attack && !had_previous_objective)
@@ -73,7 +73,7 @@
 
 	. = ..()
 
-/ai/boss/gabber/proc/start_block(var/duration = 3 SECONDS)
+/ai/boss/gabber/proc/start_block(duration = 3 SECONDS)
 	owner_as_gabber.attack_flags |= CONTROL_MOD_BLOCK
 	next_unblock = world.time + duration
 	owner_as_gabber.handle_blocking()
@@ -190,7 +190,7 @@
 		if(owner_as_gabber.has_status_effect(IMMORTAL))
 			return FALSE
 
-/ai/boss/gabber/on_life(var/tick_rate=1)
+/ai/boss/gabber/on_life(tick_rate=1)
 
 	. = ..()
 

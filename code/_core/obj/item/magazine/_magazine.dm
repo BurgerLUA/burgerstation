@@ -31,7 +31,7 @@
 
 	value = 0
 
-/obj/item/magazine/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/magazine/quick(mob/caller,atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
@@ -59,12 +59,12 @@
 
 	return ..()
 
-/obj/item/magazine/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/magazine/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 
 	RUN_PARENT_SAFE
 	SAVELIST("stored_bullets")
 
-/obj/item/magazine/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/magazine/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 
 	RUN_PARENT_SAFE
 	for(var/k in object_data["stored_bullets"])
@@ -85,7 +85,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/magazine/get_examine_list(var/mob/examiner)
+/obj/item/magazine/get_examine_list(mob/examiner)
 	var results = div("notice","It contains [get_ammo_count()] bullets.")
 	return ..()  + results
 
@@ -95,7 +95,7 @@
 		var/amount = stored_bullets[k]
 		. += amount
 
-/obj/item/magazine/proc/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/proc/can_load_magazine(mob/caller,obj/item/bullet_cartridge/B)
 
 	if(B.is_spent)
 		caller?.to_chat(span("warning","The bullet is spent!"))
@@ -123,7 +123,7 @@
 
 	return TRUE
 
-/obj/item/magazine/proc/can_load_magazine_path(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/proc/can_load_magazine_path(mob/caller,obj/item/bullet_cartridge/B)
 
 	if(initial(B.is_spent))
 		caller?.to_chat(span("warning","The bullet is spent!"))
@@ -156,7 +156,7 @@
 
 
 
-/obj/item/magazine/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_inventory(object) && length(stored_bullets))
 		INTERACT_CHECK
@@ -181,7 +181,7 @@
 
 	. = ..()
 
-/obj/item/magazine/click_self(var/mob/caller,location,control,params)
+/obj/item/magazine/click_self(mob/caller,location,control,params)
 
 	if(length(stored_bullets) && is_inventory(loc))
 		INTERACT_CHECK
@@ -224,7 +224,7 @@
 		'sound/weapons/ranged/generic/mag_remove5.ogg'\
 	)
 
-/obj/item/magazine/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/) && !istype(src,/obj/item/magazine/clip))
 		INTERACT_CHECK
@@ -259,13 +259,13 @@
 
 	icon_states = 0
 
-/obj/item/magazine/gold/can_load_magazine(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/gold/can_load_magazine(mob/caller,obj/item/bullet_cartridge/B)
 	return TRUE
 
-/obj/item/magazine/gold/can_load_magazine_path(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/magazine/gold/can_load_magazine_path(mob/caller,obj/item/bullet_cartridge/B)
 	return TRUE
 
-/obj/item/magazine/gold/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/gold/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/weapon/ranged/bullet/magazine))
 		INTERACT_CHECK

@@ -20,7 +20,7 @@
 
 	size = SIZE_1
 
-/obj/item/container/simple/can/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/can/click_self(mob/caller,location,control,params)
 
 	if(open) return ..()
 
@@ -108,7 +108,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/container/simple/can/dr_gibb/explosive/get_examine_list(var/mob/examiner)
+/obj/item/container/simple/can/dr_gibb/explosive/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -116,7 +116,7 @@
 		. += div("danger","Wait, what the fuck? There is an explosive charge connected to the tab!")
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/can/dr_gibb/explosive/click_self(mob/caller,location,control,params)
 
 	. = ..()
 
@@ -129,11 +129,11 @@
 			explosive = FALSE
 
 
-/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/simple/can/dr_gibb/explosive/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("explosive")
 
-/obj/item/container/simple/can/dr_gibb/explosive/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/simple/can/dr_gibb/explosive/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("explosive")
 

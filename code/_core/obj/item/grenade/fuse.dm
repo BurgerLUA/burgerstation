@@ -12,7 +12,7 @@
 	stored_trigger = T
 	open = FALSE
 
-/obj/item/grenade/fuse/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/fuse/trigger(mob/caller,atom/source,signal_freq,signal_code)
 	. = ..()
 	if(!src.reagents)
 		return

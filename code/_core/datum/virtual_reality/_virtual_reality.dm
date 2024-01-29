@@ -10,7 +10,7 @@
 
 
 
-/virtual_reality/proc/on_player_join(var/mob/living/L) //What happens when a player joins virtual reality.
+/virtual_reality/proc/on_player_join(mob/living/L) //What happens when a player joins virtual reality.
 	active_players |= L
 	if(base_loadout && is_advanced(L))
 		var/mob/living/advanced/A = L
@@ -20,7 +20,7 @@
 	move_to_team(L,"Lobby")
 	return TRUE
 
-/virtual_reality/proc/on_player_leave(var/mob/living/L) //What happens when a player leaves virtual reality.
+/virtual_reality/proc/on_player_leave(mob/living/L) //What happens when a player leaves virtual reality.
 	active_players -= L
 	move_to_team(L,null)
 	return TRUE
@@ -34,7 +34,7 @@
 /virtual_reality/proc/on_life()
 	return TRUE
 
-/virtual_reality/proc/set_message(var/desired_message)
+/virtual_reality/proc/set_message(desired_message)
 
 	for(var/mob/living/advanced/A in active_players)
 		if(!A.client)
@@ -43,7 +43,7 @@
 			M.set_text(desired_message)
 
 
-/virtual_reality/proc/move_to_team(var/mob/living/L,var/desired_team)
+/virtual_reality/proc/move_to_team(mob/living/L,desired_team)
 
 	if(L.loyalty_tag && teams[L.loyalty_tag])
 		teams[L.loyalty_tag] -= L
@@ -55,5 +55,5 @@
 
 	return TRUE
 
-/virtual_reality/proc/player_post_death(var/mob/living/advanced/player/virtual/P)
+/virtual_reality/proc/player_post_death(mob/living/advanced/player/virtual/P)
 	return TRUE

@@ -18,7 +18,7 @@
 	. = ..()
 
 
-/vote/virtual_reality/on_result(var/winner,var/list/results)
+/vote/virtual_reality/on_result(winner,list/results)
 
 	if(winner)
 		SSvirtual_reality.set_virtual_reality(vr_name_to_type[winner])

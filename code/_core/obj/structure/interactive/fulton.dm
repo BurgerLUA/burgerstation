@@ -115,7 +115,7 @@
 	stored_movable = null
 	qdel(src)
 
-/obj/structure/interactive/fulton/proc/can_be_extracted(var/mob/caller,var/atom/movable/M)
+/obj/structure/interactive/fulton/proc/can_be_extracted(mob/caller,atom/movable/M)
 
 	if(is_player(M))
 		var/mob/living/advanced/player/P = M
@@ -133,7 +133,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/fulton/proc/add_movable(var/mob/caller,var/atom/movable/M)
+/obj/structure/interactive/fulton/proc/add_movable(mob/caller,atom/movable/M)
 
 	if(stored_movable)
 		return FALSE

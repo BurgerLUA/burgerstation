@@ -172,7 +172,7 @@
 	. = CEILING(.,1)
 
 
-/obj/item/weapon/ranged/wand/get_examine_list(var/mob/examiner)
+/obj/item/weapon/ranged/wand/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","Has <b>1</b> slot(s) for spell gems.")
 	. += div("notice","Has <b>[sockets]</b> slot(s) for support gems.")
@@ -190,25 +190,25 @@
 			. += div("notice","Socketed with <b>[english_list(support_gem_names)]</b>.")
 
 
-/obj/item/weapon/ranged/wand/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/wand/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("socketed_spellgem")
 	SAVEVAR("sockets")
 	SAVELISTATOM("socketed_supportgems")
 
-/obj/item/weapon/ranged/wand/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/wand/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("socketed_spellgem")
 	LOADVAR("sockets")
 	LOADLISTATOM("socketed_supportgems")
 
-/obj/item/weapon/ranged/wand/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
+/obj/item/weapon/ranged/wand/shoot(mob/caller,atom/object,location,params,damage_multiplier=1,click_called=FALSE)
 	if(!socketed_spellgem)
 		return FALSE
 	damage_multiplier *= get_quality_mod()
 	return socketed_spellgem.shoot(caller,object,location,params,damage_multiplier,click_called)
 
-/obj/item/weapon/ranged/wand/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/wand/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object) && caller.attack_flags & CONTROL_MOD_DISARM)
 

@@ -19,6 +19,6 @@
 	return TRUE
 
 
-/mob/living/advanced/player/antagonist/syndicate/species_initialize(var/set_default=FALSE)
+/mob/living/advanced/player/antagonist/syndicate/species_initialize(set_default=FALSE)
 	. = ..()
 	known_languages[LANGUAGE_CODESPEAK] = TRUE

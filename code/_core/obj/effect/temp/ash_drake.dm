@@ -18,7 +18,7 @@ obj/effect/temp/ash_drake/swoop_up/New(var/desired_loc)
 	duration = 1 SECONDS
 	mouse_opacity = 0
 
-/obj/effect/temp/ash_drake/swoop_down/New(var/desired_loc)
+/obj/effect/temp/ash_drake/swoop_down/New(desired_loc)
 	..()
 	alpha = 255
 	pixel_x = pick(-32 - 16,32 - 16)

@@ -13,7 +13,7 @@
 
 	maptext_x = -2
 
-/obj/hud/button/cash_money/update_owner(var/mob/desired_owner)
+/obj/hud/button/cash_money/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -36,7 +36,7 @@
 	I.mouse_opacity = 0
 	add_overlay(I)
 
-/obj/hud/button/cash_money/proc/update_stats(var/new_value=0,var/silent=FALSE)
+/obj/hud/button/cash_money/proc/update_stats(new_value=0,silent=FALSE)
 
 	new_value = max(new_value,0)
 
@@ -71,7 +71,7 @@
 	I.mouse_opacity = 0
 	add_overlay(I)
 
-/obj/hud/button/microstransactions/update_owner(var/mob/desired_owner)
+/obj/hud/button/microstransactions/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -84,7 +84,7 @@
 	return TRUE
 
 
-/obj/hud/button/microstransactions/proc/update_stats(var/new_value=0,var/silent=FALSE)
+/obj/hud/button/microstransactions/proc/update_stats(new_value=0,silent=FALSE)
 
 	new_value = max(new_value,0)
 

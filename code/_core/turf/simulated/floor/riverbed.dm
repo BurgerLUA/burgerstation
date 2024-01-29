@@ -5,7 +5,7 @@
 
 	footstep_id = "asteroid"
 
-/turf/simulated/floor/asteroid/New(var/desired_loc)
+/turf/simulated/floor/asteroid/New(desired_loc)
 
 	if(prob(25))
 		icon_state = "asteroid[rand(1,12)]"

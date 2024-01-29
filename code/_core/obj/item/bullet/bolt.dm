@@ -24,5 +24,5 @@
 	item_count_current = 3
 	return ..()
 
-/obj/item/bullet_cartridge/bolt/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
+/obj/item/bullet_cartridge/bolt/can_be_worn(mob/living/advanced/owner,obj/hud/inventory/I,messages=FALSE)
 	return TRUE

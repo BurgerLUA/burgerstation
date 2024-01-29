@@ -13,7 +13,7 @@
 
 	enable_skin = FALSE
 
-/obj/item/organ/hair/initialize_worn_blends(var/desired_icon_state)
+/obj/item/organ/hair/initialize_worn_blends(desired_icon_state)
 	. = ..()
 	add_blend(
 		"hair_head",
@@ -26,7 +26,7 @@
 		desired_layer = FLOAT_LAYER
 	)
 
-/obj/item/organ/hair/on_organ_remove(var/mob/living/advanced/old_owner)
+/obj/item/organ/hair/on_organ_remove(mob/living/advanced/old_owner)
 	. = ..()
 	if(!old_owner.qdeleting && !old_owner.changing)
 		qdel(src)
@@ -46,7 +46,7 @@
 
 	enable_skin = FALSE
 
-/obj/item/organ/beard/initialize_worn_blends(var/desired_icon_state)
+/obj/item/organ/beard/initialize_worn_blends(desired_icon_state)
 	. = ..()
 	add_blend(
 		"hair_face",
@@ -60,7 +60,7 @@
 	)
 
 
-/obj/item/organ/beard/on_organ_remove(var/mob/living/advanced/old_owner)
+/obj/item/organ/beard/on_organ_remove(mob/living/advanced/old_owner)
 	. = ..()
 	if(!old_owner.qdeleting && !old_owner.changing)
 		qdel(src)

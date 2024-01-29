@@ -18,11 +18,11 @@
 
 	value = 5000
 
-/obj/item/data_laptop/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/data_laptop/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("used")
 
-/obj/item/data_laptop/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/data_laptop/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("used")
 
@@ -44,7 +44,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/data_laptop/click_self(var/mob/caller,location,control,params)
+/obj/item/data_laptop/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

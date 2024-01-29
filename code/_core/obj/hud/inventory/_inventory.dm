@@ -119,7 +119,7 @@
 	. = ..()
 
 
-/obj/hud/inventory/proc/is_occupied(var/ignore_contents=FALSE)
+/obj/hud/inventory/proc/is_occupied(ignore_contents=FALSE)
 
 	if(!ignore_contents && length(contents))
 		return TRUE
@@ -140,7 +140,7 @@
 
 	return FALSE
 
-/obj/hud/inventory/proc/show(var/should_show,var/speed=1 SECONDS)
+/obj/hud/inventory/proc/show(should_show,speed=1 SECONDS)
 	if(should_show)
 		animate(src,alpha=initial(alpha),time=speed)
 		mouse_opacity = initial(mouse_opacity)
@@ -152,10 +152,10 @@
 	. = ..()
 	update_sprite()
 
-/obj/hud/inventory/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/hud/inventory/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return FALSE
 
-/obj/hud/inventory/get_examine_list(var/atom/examiner)
+/obj/hud/inventory/get_examine_list(atom/examiner)
 	var/obj/item/I = get_top_object()
 	if(!I)
 		return list()
@@ -180,7 +180,7 @@
 			I.pixel_x = x_offset
 			add_overlay(I)
 
-/obj/hud/inventory/proc/update_worn_icon(var/obj/item/item_to_update)
+/obj/hud/inventory/proc/update_worn_icon(obj/item/item_to_update)
 
 	var/mob/living/advanced/A = owner
 
@@ -197,7 +197,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/update_held_icon(var/obj/item/item_to_update)
+/obj/hud/inventory/proc/update_held_icon(obj/item/item_to_update)
 
 	//OVERLAY BUG, NOT THIS.
 	if(!owner || !is_advanced(owner) || !item_to_update)
@@ -340,7 +340,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/update_owner(var/mob/desired_owner) //Can also be safely used as an updater.
+/obj/hud/inventory/update_owner(mob/desired_owner) //Can also be safely used as an updater.
 
 	if(owner == desired_owner)
 		return FALSE
@@ -356,7 +356,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/add_object(var/obj/item/I,var/messages = TRUE,var/bypass_checks = FALSE,var/silent=FALSE,var/debug=FALSE)
+/obj/hud/inventory/proc/add_object(obj/item/I,messages = TRUE,bypass_checks = FALSE,silent=FALSE,debug=FALSE)
 
 	if(!I)
 		if(debug) log_error("add_object() fail: Item didn't exist!")
@@ -422,7 +422,7 @@
 
 	return TRUE
 
-/obj/hud/inventory/proc/drop_objects(var/turf/T,var/disarm=FALSE)
+/obj/hud/inventory/proc/drop_objects(turf/T,disarm=FALSE)
 
 	. = list()
 
@@ -440,7 +440,7 @@
 		I.delete_on_drop = TRUE
 		remove_object(I,T)
 
-/obj/hud/inventory/proc/remove_object(var/obj/item/I,var/turf/drop_loc,var/pixel_x_offset=0,var/pixel_y_offset=0,var/silent=FALSE) //Removes the object from both worn and held objects, just in case.
+/obj/hud/inventory/proc/remove_object(obj/item/I,turf/drop_loc,pixel_x_offset=0,pixel_y_offset=0,silent=FALSE) //Removes the object from both worn and held objects, just in case.
 
 	if(!I)
 		log_error("Error: Tried to remove null object from an inventory!")
@@ -498,7 +498,7 @@
 
 	HOOK_CALL("update_stats")
 
-/obj/hud/inventory/proc/can_unslot_object(var/obj/item/I,var/messages = FALSE)
+/obj/hud/inventory/proc/can_unslot_object(obj/item/I,messages = FALSE)
 	return TRUE
 
 	/* Slot overhaul, might need this.
@@ -521,7 +521,7 @@
 	return TRUE
 	*/
 
-/obj/hud/inventory/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/obj/hud/inventory/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	. = ..()
 
@@ -530,7 +530,7 @@
 		if(M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
 			. = TRUE
 
-/obj/hud/inventory/proc/can_slot_object(var/obj/item/I,var/messages = FALSE,var/bypass=FALSE)
+/obj/hud/inventory/proc/can_slot_object(obj/item/I,messages = FALSE,bypass=FALSE)
 
 	if(loc && loc == I)
 		return FALSE

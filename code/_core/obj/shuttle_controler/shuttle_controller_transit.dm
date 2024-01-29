@@ -1,4 +1,4 @@
-/obj/shuttle_controller/proc/transit(var/obj/marker/shuttle_landing/desired_marker,var/accelerating=FALSE)
+/obj/shuttle_controller/proc/transit(obj/marker/shuttle_landing/desired_marker,accelerating=FALSE)
 
 	var/list/areas_to_upate = list()
 

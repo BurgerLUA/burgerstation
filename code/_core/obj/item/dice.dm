@@ -20,11 +20,11 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/dice/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown and it hits an object.
+/obj/item/dice/on_thrown(atom/owner,atom/hit_atom) //What happens after the person is thrown and it hits an object.
 	roll_dice(owner)
 	return ..()
 
-/obj/item/dice/proc/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
+/obj/item/dice/proc/on_result(mob/caller,chosen_number,silent=FALSE)
 
 	if(!silent)
 		if(caller)
@@ -34,7 +34,7 @@
 
 	return TRUE
 
-/obj/item/dice/proc/roll_dice(var/mob/caller,var/silent=FALSE)
+/obj/item/dice/proc/roll_dice(mob/caller,silent=FALSE)
 
 	var/chosen_number = rand(1,max_states)
 
@@ -44,7 +44,7 @@
 
 	return TRUE
 
-/obj/item/dice/click_self(var/mob/caller,location,control,params)
+/obj/item/dice/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -89,15 +89,15 @@
 	. = ..()
 	if(!used) icon_state = "blank"
 
-/obj/item/dice/d20/cursed/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/dice/d20/cursed/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("used")
 
-/obj/item/dice/d20/cursed/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/dice/d20/cursed/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("used")
 
-/obj/item/dice/d20/cursed/roll_dice(var/mob/caller,var/silent=FALSE)
+/obj/item/dice/d20/cursed/roll_dice(mob/caller,silent=FALSE)
 
 	if(used)
 		icon_state = "[initial(icon_state)]-[used]"
@@ -105,7 +105,7 @@
 
 	return ..()
 
-/obj/item/dice/d20/cursed/on_result(var/mob/caller,var/chosen_number,var/silent=FALSE)
+/obj/item/dice/d20/cursed/on_result(mob/caller,chosen_number,silent=FALSE)
 
 	if(!caller || silent || !is_living(caller) || !caller.client)
 		return ..()

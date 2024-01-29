@@ -27,11 +27,11 @@
 		return stored_weapon.get_battery()
 	return ..()
 
-/obj/item/mech_part/equipment/weapon/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/mech_part/equipment/weapon/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE)
 	. = ..()
 	SAVEATOM("stored_weapon")
 
-/obj/item/mech_part/equipment/weapon/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/mech_part/equipment/weapon/load_item_data_pre(mob/living/advanced/player/P,list/object_data)
 	. = ..()
 	LOADATOM("stored_weapon")
 	if(stored_weapon) stored_weapon.update_sprite()
@@ -65,13 +65,13 @@
 
 	return ..()
 
-/obj/item/mech_part/equipment/weapon/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/mech_part/equipment/weapon/click_on_object(mob/caller as mob,atom/object,location,control,params)
 	if(stored_weapon && istype(src.loc,/mob/living/vehicle/mech/modular) && !stored_weapon.click_on_object(caller,object,location,control,params))
 		return stored_weapon.attack(src.loc,object,params,caller)
 
 	return ..()
 
-/obj/item/mech_part/equipment/weapon/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/mech_part/equipment/weapon/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	if(stored_weapon && !is_inventory(object))
 		return stored_weapon.clicked_on_by_object(caller,object,location,control,params)
 	return ..()

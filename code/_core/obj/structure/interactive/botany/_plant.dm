@@ -50,7 +50,7 @@
 
 	var/active = FALSE
 
-/obj/structure/interactive/plant/proc/set_active(var/desired_active=TRUE)
+/obj/structure/interactive/plant/proc/set_active(desired_active=TRUE)
 	if(active == desired_active)
 		return FALSE
 	active = desired_active
@@ -60,7 +60,7 @@
 		SSbotany.all_plants -= src
 	return TRUE
 
-/obj/structure/interactive/plant/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/plant/get_examine_list(mob/examiner)
 	. = ..()
 
 	if(dead)
@@ -118,7 +118,7 @@
 			. += span("danger","It looks severely overfertilized!")
 
 
-/obj/structure/interactive/plant/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/plant/on_destruction(damage = TRUE)
 
 	var/should_delete = dead || !damage
 	if(damage && !dead)
@@ -133,11 +133,11 @@
 	if(should_delete)
 		qdel(src)
 
-/obj/structure/interactive/plant/proc/add_nutrition(var/nutrition_amount)
+/obj/structure/interactive/plant/proc/add_nutrition(nutrition_amount)
 	nutrition = clamp(nutrition + nutrition_amount,0,200)
 	return TRUE
 
-/obj/structure/interactive/plant/proc/add_hydration(var/hydration_amount)
+/obj/structure/interactive/plant/proc/add_hydration(hydration_amount)
 	hydration = clamp(hydration + hydration_amount,0,200)
 	return TRUE
 
@@ -177,7 +177,7 @@
 			C.plants -= src
 	. = ..()
 
-/obj/structure/interactive/plant/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+/obj/structure/interactive/plant/on_chunk_cross(chunk/old_chunk,chunk/new_chunk)
 
 	. = ..()
 
@@ -187,7 +187,7 @@
 	if(new_chunk)
 		new_chunk.plants += src
 
-/obj/structure/interactive/plant/proc/on_life(var/tick_rate=1) //Measured in game ticks.
+/obj/structure/interactive/plant/proc/on_life(tick_rate=1) //Measured in game ticks.
 
 	var/rate = TICKS2DS(tick_rate)
 	var/plant_type/P = SSbotany.all_plant_types[plant_type]
@@ -268,7 +268,7 @@
 
 	desc = "Icon state: [icon_state]"
 
-/obj/structure/interactive/plant/proc/harvest(var/mob/living/advanced/caller,var/obj/item/harvest_item)
+/obj/structure/interactive/plant/proc/harvest(mob/living/advanced/caller,obj/item/harvest_item)
 
 	if(dead)
 		caller.to_chat(span("warning","\The [src.name] is dead!"))
@@ -359,7 +359,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/plant/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

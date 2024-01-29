@@ -41,7 +41,7 @@
 	update_sprite()
 	update_atom_light()
 
-/obj/structure/interactive/light_switch/post_move(var/atom/old_loc)
+/obj/structure/interactive/light_switch/post_move(atom/old_loc)
 	. = ..()
 	if(is_turf(old_loc))
 		var/area/A = old_loc.loc
@@ -81,7 +81,7 @@
 	I.plane = initial(plane)
 	add_underlay(I)
 
-/obj/structure/interactive/light_switch/proc/toggle(var/mob/caller)
+/obj/structure/interactive/light_switch/proc/toggle(mob/caller)
 	var/area/A = get_area(src)
 	if(!A || !A.linked_apc || !A.linked_apc.cell || !A.linked_apc.cell.charge_current)
 		caller.to_chat(span("warning","This doesn't seem to be working..."))
@@ -95,7 +95,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/light_switch/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/light_switch/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(next_interact >= world.time)
 		return TRUE

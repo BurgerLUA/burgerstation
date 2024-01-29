@@ -8,7 +8,7 @@
 
 	chargen_flags = CHARGEN_NONE
 
-/obj/hud/button/chargen/species/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/species/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

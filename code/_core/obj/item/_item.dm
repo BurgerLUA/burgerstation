@@ -182,7 +182,7 @@
 
 	var/unlock_requirement //Accepts a string, which is a prerequiste to unlock this to purchase in vendors.
 
-/obj/item/proc/can_unlock(var/mob/caller)
+/obj/item/proc/can_unlock(mob/caller)
 	return TRUE
 
 /obj/item/PreDestroy()
@@ -212,7 +212,7 @@
 
 	. = ..()
 
-/obj/item/proc/use_condition(var/amount_to_use=1)
+/obj/item/proc/use_condition(amount_to_use=1)
 
 	if(uses_until_condition_fall <= 0)
 		return FALSE
@@ -254,7 +254,7 @@
 		. *= (0.75 + 0.25*clamp(quality_max/100,0.25,2))
 		. = CEILING(.,1)
 
-/obj/item/get_inaccuracy(var/atom/source,var/atom/target,var/inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(var/mob/living/L,var/atom/target)
+/obj/item/get_inaccuracy(atom/source,atom/target,inaccuracy_modifier=1) //Only applies to melee and unarmed. For ranged, see /obj/item/weapon/ranged/proc/get_bullet_inaccuracy(mob/living/L,atom/target)
 	if(inaccuracy_modifier <= 0)
 		return 0
 	if(is_living(source))
@@ -264,7 +264,7 @@
 		return (1 - L.get_skill_power(SKILL_PRECISION,0,0.5,1))*inaccuracy_modifier*4
 	return 0
 
-/obj/item/proc/add_item_count(var/amount_to_add,var/bypass_checks = FALSE)
+/obj/item/proc/add_item_count(amount_to_add,bypass_checks = FALSE)
 
 	if(!bypass_checks)
 		if(!amount_to_add)
@@ -284,10 +284,10 @@
 
 	return amount_to_add
 
-/obj/item/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return FALSE
 
-/obj/item/can_be_grabbed(var/atom/grabber,var/messages=TRUE)
+/obj/item/can_be_grabbed(atom/grabber,messages=TRUE)
 
 	if(!src.z)
 		if(messages && is_living(grabber))
@@ -297,7 +297,7 @@
 
 	return ..()
 
-/obj/item/proc/can_add_object_to_src_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE) //Can we add object to src?
+/obj/item/proc/can_add_object_to_src_inventory(mob/caller,obj/item/object,enable_messages = TRUE,bypass = FALSE) //Can we add object to src?
 
 	if(!length(inventories))
 		return null
@@ -317,7 +317,7 @@
 
 	return null
 
-/obj/item/proc/add_object_to_src_inventory(var/mob/caller,var/obj/item/object,var/enable_messages = TRUE,var/bypass = FALSE,var/silent=FALSE) //We add the object to this item's inventory.
+/obj/item/proc/add_object_to_src_inventory(mob/caller,obj/item/object,enable_messages = TRUE,bypass = FALSE,silent=FALSE) //We add the object to this item's inventory.
 
 	if(!length(inventories))
 		return FALSE
@@ -355,7 +355,7 @@
 
 	return FALSE
 
-/obj/item/New(var/desired_loc)
+/obj/item/New(desired_loc)
 
 	if(is_container && size <= container_max_size && !length(container_whitelist))
 		log_error("Warning: [get_debug_name()] had a size ([size]) less than its container max size ([container_max_size]).")
@@ -443,7 +443,7 @@
 		I.update_overlays()
 
 
-/obj/item/get_examine_list(var/mob/examiner)
+/obj/item/get_examine_list(mob/examiner)
 
 	. = list()
 	. += div("examine_title","[ICON_TO_HTML(src.icon,src.icon_state,32,32)][src.name]")
@@ -501,7 +501,7 @@
 /obj/item/proc/get_display_value()
 	return value
 
-/obj/item/get_examine_details_list(var/mob/examiner)
+/obj/item/get_examine_details_list(mob/examiner)
 	. = ..()
 	if(reagents && reagents.volume_current)
 		. += div("notice",reagents.get_contents_english())
@@ -523,7 +523,7 @@
 	return TRUE
 
 
-/obj/item/post_move(var/atom/old_loc)
+/obj/item/post_move(atom/old_loc)
 
 	if(is_container && inventory_user)
 		if(is_inventory(old_loc) && is_inventory(loc))
@@ -538,7 +538,7 @@
 
 	. = ..()
 
-/obj/item/proc/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/proc/on_equip(atom/old_location,silent=FALSE)
 
 	var/obj/hud/inventory/new_location = loc
 
@@ -554,10 +554,10 @@
 
 	return TRUE
 
-/obj/item/proc/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location) //When the item is picked up or worn.
+/obj/item/proc/pre_equip(atom/old_location,obj/hud/inventory/new_location) //When the item is picked up or worn.
 	return TRUE
 
-/obj/item/proc/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+/obj/item/proc/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE) //When the object is dropped from the old_inventory
 
 	if(!is_inventory(src.loc) && delete_on_drop)
 		qdel(src)
@@ -591,7 +591,7 @@
 		var/obj/item/I2 = I.get_top_object()
 		if(I2) . += I2
 
-/obj/item/proc/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/proc/can_be_held(mob/living/advanced/owner,obj/hud/inventory/I)
 	if(delete_on_drop)
 		return FALSE
 	if(anchored)
@@ -604,7 +604,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/proc/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
+/obj/item/proc/can_be_worn(mob/living/advanced/owner,obj/hud/inventory/I,messages=FALSE)
 	if(delete_on_drop)
 		if(messages) owner.to_chat("\The [src.name] cannot be removed this way!")
 		return FALSE
@@ -630,16 +630,16 @@
 
 	return TRUE
 
-/obj/item/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/trigger(mob/caller,atom/source,signal_freq,signal_code)
 	last_interacted = caller
 	. = ..()
 
-/obj/item/proc/get_reagents_to_consume(var/mob/living/consumer)
+/obj/item/proc/get_reagents_to_consume(mob/living/consumer)
 	var/reagent_container/temp/T = new(src,1000)
 	reagents.transfer_reagents_to(T,get_consume_size(consumer))
 	return T.qdeleting ? null : T
 
-/obj/item/proc/get_consume_size(var/mob/living/L)
+/obj/item/proc/get_consume_size(mob/living/L)
 	. = 5
 	if(is_advanced(L))
 		var/mob/living/advanced/A = L
@@ -647,14 +647,14 @@
 			var/species/S = SSspecies.all_species[A.species]
 			. = S.bite_size
 
-/obj/item/proc/feed(var/mob/caller,var/mob/living/target)
+/obj/item/proc/feed(mob/caller,mob/living/target)
 	var/reagent_container/R = get_reagents_to_consume(target)
 	if(!R)
 		return FALSE
 	R.consume(caller,target)
 	return TRUE
 
-/obj/item/proc/try_transfer_reagents(var/mob/caller,var/atom/object,var/location,var/control,var/params)
+/obj/item/proc/try_transfer_reagents(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -700,7 +700,7 @@
 
 	return FALSE
 
-/obj/item/proc/can_feed(var/mob/caller,var/atom/target)
+/obj/item/proc/can_feed(mob/caller,atom/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
@@ -738,7 +738,7 @@
 
 	return TRUE
 
-/obj/item/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/obj/item/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	. = ..()
 
@@ -767,7 +767,7 @@
 /obj/item/proc/can_parry()
 	return TRUE
 
-/obj/item/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 	if(quality != -1 && quality <= 0)
 		if(ismob(attacker))
 			var/mob/M = attacker
@@ -775,11 +775,11 @@
 		return FALSE
 	return ..()
 
-/obj/item/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
+/obj/item/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 	damage_multiplier *= get_quality_mod()
 	. = ..()
 
-/obj/item/proc/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+/obj/item/proc/set_bloodstain(desired_level,desired_color,force=FALSE)
 
 	if(!force && !enable_blood_stains)
 		return FALSE
@@ -815,7 +815,7 @@
 
 	return TRUE
 
-/obj/item/organ/set_bloodstain(var/desired_level,var/desired_color,var/force=FALSE)
+/obj/item/organ/set_bloodstain(desired_level,desired_color,force=FALSE)
 	. = ..()
 	if(. && is_advanced(loc))
 		src.handle_overlays(loc,worn=TRUE,update=TRUE)
@@ -846,12 +846,12 @@
 		I.color = blood_stain_color
 		add_overlay(I)
 
-/obj/item/dust(var/atom/source)
+/obj/item/dust(atom/source)
 	qdel(src)
 	return TRUE
 
 
-/obj/item/proc/negate_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_dealt=0)
+/obj/item/proc/negate_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damage_dealt=0)
 	return FALSE
 
 /obj/item/Generate()

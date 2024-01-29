@@ -22,7 +22,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/supply_crate/get_examine_list(var/mob/examiner)
+/obj/item/supply_crate/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","Attack or throw to open.")
 
@@ -35,7 +35,7 @@
 	var/loot/L = LOOT(loot)
 	return CEILING(L.average_value * 1.5,100)
 
-/obj/item/supply_crate/on_thrown(var/atom/owner,var/atom/hit_atom)
+/obj/item/supply_crate/on_thrown(atom/owner,atom/hit_atom)
 	. = ..()
 	if(hit_atom)
 		on_destruction()
@@ -46,10 +46,10 @@
 	pixel_y = rand(-2,2)
 
 
-/obj/item/supply_crate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/supply_crate/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return TRUE
 
-/obj/item/supply_crate/on_destruction(var/damage = TRUE)
+/obj/item/supply_crate/on_destruction(damage = TRUE)
 
 	var/turf/T = get_turf(src)
 	play_sound('sound/effects/crate_break.ogg',T,range_max=VIEW_RANGE)

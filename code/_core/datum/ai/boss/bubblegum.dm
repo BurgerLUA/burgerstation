@@ -5,7 +5,7 @@
 
 	night_vision = 0
 
-/ai/boss/bubblegum/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/bubblegum/New(desired_loc,mob/living/desired_owner)
 	owner_as_bubblegum = desired_owner
 	return ..()
 

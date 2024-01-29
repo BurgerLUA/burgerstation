@@ -12,7 +12,7 @@
 	var/copy_delay = 3
 	var/should_teleport = FALSE
 
-/obj/effect/temp/hazard/hierophant/New(var/desired_location,var/desired_time,var/desired_owner)
+/obj/effect/temp/hazard/hierophant/New(desired_location,desired_time,desired_owner)
 	. = ..()
 	play_sound('sound/effects/wand_teleport.ogg',get_turf(src))
 
@@ -20,7 +20,7 @@
 	CALLBACK("copy_hazard_\ref[src]",copy_delay,src,src::copy_hazard())
 	return ..()
 
-/obj/effect/temp/hazard/hierophant/get_params(var/atom/victim)
+/obj/effect/temp/hazard/hierophant/get_params(atom/victim)
 
 	if(is_living(victim))
 		var/mob/living/L = victim

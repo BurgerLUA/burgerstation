@@ -9,7 +9,7 @@
 		return .
 	trap(TRUE)
 
-/obj/trigger/military_trap/proc/trap(var/range_check=FALSE)
+/obj/trigger/military_trap/proc/trap(range_check=FALSE)
 
 	if(src.qdeleting)
 		return FALSE

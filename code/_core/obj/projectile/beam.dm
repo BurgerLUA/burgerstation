@@ -12,7 +12,7 @@
 	collision_bullet_flags = FLAG_COLLISION_BULLET_LIGHT
 
 
-/obj/projectile/beam/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/beam/on_enter_tile(turf/old_loc,turf/new_loc)
 
 	. = ..()
 

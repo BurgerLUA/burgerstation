@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(soapstone)
 	save_soapstone.quick_load()
 	return ..()
 
-/subsystem/soapstone/proc/create_new_soapstone(var/turf/desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
+/subsystem/soapstone/proc/create_new_soapstone(turf/desired_loc,desired_dir,desired_color,desired_owner,desired_ckey,desired_text,desired_date,desired_time)
 
 	var/list/data_to_write = list()
 	data_to_write["name"] = desired_owner

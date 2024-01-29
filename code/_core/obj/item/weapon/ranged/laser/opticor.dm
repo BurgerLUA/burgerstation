@@ -76,7 +76,7 @@
 /obj/item/weapon/ranged/energy/opticor/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/energy/opticor/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/energy/opticor/get_skill_spread(mob/living/L)
 	return max(0,0.005 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/energy/opticor/update_icon()
@@ -107,7 +107,7 @@
 	return ..()
 
 
-/obj/item/weapon/ranged/energy/opticor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/energy/opticor/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object

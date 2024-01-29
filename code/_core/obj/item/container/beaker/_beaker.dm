@@ -30,7 +30,7 @@
 	. = ..()
 	. *= 2
 
-/obj/item/container/simple/beaker/can_feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/simple/beaker/can_feed(mob/caller,mob/living/target)
 	if(!allow_reagent_transfer_from)
 		return FALSE
 	. = ..()
@@ -47,7 +47,7 @@
 		I.color = reagents.color
 		add_underlay(I)
 
-/obj/item/container/simple/beaker/get_examine_list(var/mob/examiner)
+/obj/item/container/simple/beaker/get_examine_list(mob/examiner)
 	. = ..()
 	if(reagents)
 		. += div("notice","This can hold up to [reagents.volume_max]u of reagents.")

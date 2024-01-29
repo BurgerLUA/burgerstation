@@ -1,4 +1,4 @@
-/world/proc/subsystem_life_loop(var/subsystem/SS)
+/world/proc/subsystem_life_loop(subsystem/SS)
 	set background = TRUE
 	spawn while(SS.tick_rate > 0 && world_state < STATE_SHUTDOWN)
 		if(SS.tick_rate > 0 && SS.overtime_count < SS.overtime_max)
@@ -28,7 +28,7 @@
 		while(world_state <= STATE_INITIALIZING)
 			sleep(10)
 
-/world/proc/subsystem_initialize(var/subsystem/SS)
+/world/proc/subsystem_initialize(subsystem/SS)
 	//No background processing. Everything needs to run in order.
 	var/local_benchmark = true_time()
 	log_subsystem(SS.name,"Initializing...")

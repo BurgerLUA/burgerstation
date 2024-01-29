@@ -1,16 +1,16 @@
-/mob/proc/add_color_mod(var/id,var/list/color_mod)
+/mob/proc/add_color_mod(id,list/color_mod)
 	color_mods[id] = color_mod
 
-/mob/proc/remove_color_mod(var/id)
+/mob/proc/remove_color_mod(id)
 	color_mods -= id
 
 /mob/proc/clear_color_mods()
 	color_mods = list()
 
-/mob/proc/add_lighting_mod(var/id,var/lighting_mod)
+/mob/proc/add_lighting_mod(id,lighting_mod)
 	lighting_mods[id] = lighting_mod
 
-/mob/proc/remove_lighting_mod(var/id)
+/mob/proc/remove_lighting_mod(id)
 	lighting_mods -= id
 
 /mob/proc/clear_lighting_mods()

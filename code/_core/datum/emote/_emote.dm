@@ -5,14 +5,14 @@
 	var/action = "\The #USER stares as they cannot scream."
 	var/action_target
 
-/emote/proc/can_emote(var/atom/emoter,var/atom/target)
+/emote/proc/can_emote(atom/emoter,atom/target)
 	if(is_living(emoter))
 		var/mob/living/L = emoter
 		if(L.dead)
 			return FALSE
 	return TRUE
 
-/emote/proc/on_emote(var/atom/emoter,var/atom/target)
+/emote/proc/on_emote(atom/emoter,atom/target)
 
 	if(!target || !action_target)
 		if(action) emoter.visible_message(span("emote",replacetextEx(action,"#USER","<b>[emoter.name]</b>")))

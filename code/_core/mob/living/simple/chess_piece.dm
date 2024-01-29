@@ -11,14 +11,14 @@
 
 	pixel_z = 4
 
-/mob/living/simple/chess_piece/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/simple/chess_piece/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(!processing)
 		return FALSE
 
 	. = ..()
 
-/mob/living/simple/chess_piece/post_move(var/atom/old_loc)
+/mob/living/simple/chess_piece/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -37,7 +37,7 @@
 /mob/living/simple/chess_piece/proc/get_valid_move_turfs() //Returns a list.
 	return list()
 
-/mob/living/simple/chess_piece/proc/is_valid_turf(var/turf/T,var/ignore_pieces=FALSE,var/can_attack_enemies=TRUE,var/enemy_only=FALSE)
+/mob/living/simple/chess_piece/proc/is_valid_turf(turf/T,ignore_pieces=FALSE,can_attack_enemies=TRUE,enemy_only=FALSE)
 	//ignore_pieces: knights would ignore some pieces
 	//can_attack_enemies: pawns wouldn't be able to attack straight ahead
 	//enemy_only: pawns can only attack diagonally, but can't move normally that way.
@@ -281,7 +281,7 @@ var/global/regex/bad_opinion = regex(@"en *passant *is *n[^f]*forced")
 	PROCESS_LIVING(src)
 	return TRUE
 
-/mob/living/simple/chess_piece/king/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/mob/living/simple/chess_piece/king/on_listen(atom/speaker,datum/source,text,raw_text,language_text,talk_type,frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals. This prevents spam.
 		return ..()
@@ -337,7 +337,7 @@ var/global/regex/bad_opinion = regex(@"en *passant *is *n[^f]*forced")
 			continue
 		src.link_piece(P)
 
-/mob/living/simple/chess_piece/king/proc/link_piece(var/mob/living/simple/chess_piece/P)
+/mob/living/simple/chess_piece/king/proc/link_piece(mob/living/simple/chess_piece/P)
 
 	if(!P)
 		CRASH("Invalid piece!")
@@ -353,7 +353,7 @@ var/global/regex/bad_opinion = regex(@"en *passant *is *n[^f]*forced")
 
 	return TRUE
 
-/mob/living/simple/chess_piece/king/proc/unlink_piece(var/mob/living/simple/chess_piece/P)
+/mob/living/simple/chess_piece/king/proc/unlink_piece(mob/living/simple/chess_piece/P)
 
 	if(!P)
 		CRASH("Invalid piece!")

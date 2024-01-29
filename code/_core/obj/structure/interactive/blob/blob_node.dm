@@ -15,7 +15,7 @@
 	. = ..()
 	linked_blobbernaught = null
 
-/obj/structure/interactive/blob/node/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/blob/node/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 	if(.)
 		check_jugs()
@@ -38,7 +38,7 @@
 
 	return FALSE
 
-/obj/structure/interactive/blob/node/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
+/obj/structure/interactive/blob/node/New(desired_loc,obj/structure/interactive/blob/core/desired_owner)
 
 	. = ..()
 

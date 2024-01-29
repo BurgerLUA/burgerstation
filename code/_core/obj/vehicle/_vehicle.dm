@@ -36,7 +36,7 @@
 		var/obj/item/I = k
 		. += div("notice","It has \the [I.name] attached.")
 
-/mob/living/vehicle/on_crush(var/message=TRUE)
+/mob/living/vehicle/on_crush(message=TRUE)
 
 	for(var/k in passengers)
 		var/mob/living/advanced/A = k
@@ -66,20 +66,20 @@
 	explode(get_turf(src),2,src,src)
 	return ..()
 
-/mob/living/vehicle/proc/add_buttons(var/mob/living/advanced/A)
+/mob/living/vehicle/proc/add_buttons(mob/living/advanced/A)
 	for(var/v in buttons_to_add)
 		var/obj/hud/button/B = new v(src)
 		B.update_owner(A)
 	return TRUE
 
-/mob/living/vehicle/proc/remove_buttons(var/mob/living/advanced/A)
+/mob/living/vehicle/proc/remove_buttons(mob/living/advanced/A)
 	for(var/k in A.buttons)
 		var/obj/hud/button/B = k
 		if(B.type in buttons_to_add)
 			B.update_owner(null)
 	return TRUE
 
-/mob/living/vehicle/proc/attach_equipment(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/proc/attach_equipment(mob/caller,obj/item/I)
 	if(I in equipment)
 		return FALSE
 	if(I.unremovable)
@@ -90,7 +90,7 @@
 	I.unremovable = TRUE
 	update_sprite()
 
-/mob/living/vehicle/proc/unattach_equipment(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/proc/unattach_equipment(mob/caller,obj/item/I)
 	if(!(I in equipment))
 		return FALSE
 	caller?.visible_message(span("notice","\The [caller.name] detaches \the [I.name] from \the [src.name]."),span("notice","You detach \the [I.name] from \the [src.name]."))
@@ -99,14 +99,14 @@
 	I.unremovable = initial(I.unremovable)
 	update_sprite()
 
-/mob/living/vehicle/New(var/desired_loc)
+/mob/living/vehicle/New(desired_loc)
 	..()
 	passengers = list()
 	equipment = list()
 	update_sprite()
 
 
-/mob/living/vehicle/proc/can_attach_weapon(var/mob/caller,var/obj/item/weapon/W)
+/mob/living/vehicle/proc/can_attach_weapon(mob/caller,obj/item/weapon/W)
 
 	if(ai || length(passengers))
 		caller?.to_chat(span("warning","You can't add this while it's in use!"))
@@ -117,7 +117,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/vehicle/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(caller == src)
 		return ..()
@@ -155,7 +155,7 @@
 
 	return ..()
 
-/mob/living/vehicle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/mob/living/vehicle/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_hud(object))
 		return ..()
@@ -177,7 +177,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/handle_movement(var/adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
+/mob/living/vehicle/handle_movement(adjust_delay = 0) //Runs every tick for players. Runs every decisecond for mobs.
 
 	if(ai)
 		return ..()
@@ -194,7 +194,7 @@
 
 	return FALSE
 
-/mob/living/vehicle/set_dir(var/desired_dir,var/force=FALSE)
+/mob/living/vehicle/set_dir(desired_dir,force=FALSE)
 
 	. = ..()
 
@@ -263,7 +263,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/proc/can_enter_vehicle(var/mob/caller)
+/mob/living/vehicle/proc/can_enter_vehicle(mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 

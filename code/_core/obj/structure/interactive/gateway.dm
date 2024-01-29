@@ -38,7 +38,7 @@
 			G.linked_gateway = src
 			break
 
-/obj/structure/interactive/gateway/proc/set_active(var/active=TRUE,var/recursive=TRUE)
+/obj/structure/interactive/gateway/proc/set_active(active=TRUE,recursive=TRUE)
 	if(!linked_gateway)
 		active = FALSE
 	enabled = active

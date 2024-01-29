@@ -1,4 +1,4 @@
-/obj/shuttle_controller/proc/set_doors(var/open = TRUE,var/lock = FALSE,var/force = FALSE)
+/obj/shuttle_controller/proc/set_doors(open = TRUE,lock = FALSE,force = FALSE)
 
 	. = TRUE //TRUE if nothing went wrong. False if something went wrong.
 

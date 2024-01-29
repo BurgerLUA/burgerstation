@@ -37,14 +37,14 @@
 		lava_idiot(O)
 	return ..()
 
-/turf/simulated/liquid/lava/post_change_turf(var/old_turf_type)
+/turf/simulated/liquid/lava/post_change_turf(old_turf_type)
 
 	. = ..()
 
 	for(var/mob/living/L in contents)
 		lava_idiot(L)
 
-/turf/simulated/liquid/lava/proc/lava_idiot(var/mob/living/L,var/check=FALSE)
+/turf/simulated/liquid/lava/proc/lava_idiot(mob/living/L,check=FALSE)
 
 	if(check && !istype(L.loc,src.type))
 		return FALSE

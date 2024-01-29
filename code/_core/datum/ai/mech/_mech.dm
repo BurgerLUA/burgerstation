@@ -2,7 +2,7 @@
 	distance_target_min = 3
 	distance_target_max = VIEW_RANGE
 
-/ai/mech/do_attack(var/atom/target,var/left_click=FALSE)
+/ai/mech/do_attack(atom/target,left_click=FALSE)
 
 	if(!istype(owner,/mob/living/vehicle/))
 		return ..()

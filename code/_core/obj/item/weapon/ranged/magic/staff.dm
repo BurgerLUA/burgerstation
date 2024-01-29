@@ -8,7 +8,7 @@
 	total_charge = CEILING(total_charge,100)
 	return ..()
 
-/obj/item/weapon/ranged/magic/staff/get_examine_list(var/mob/examiner)
+/obj/item/weapon/ranged/magic/staff/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -16,16 +16,16 @@
 		. += span("warning","Overcharged: Uses twice as many charge as it is above capacity.")
 
 
-/obj/item/weapon/ranged/magic/staff/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/ranged/magic/staff/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("total_charge")
 
-/obj/item/weapon/ranged/magic/staff/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/ranged/magic/staff/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("total_charge")
 
 
-/obj/item/weapon/ranged/magic/staff/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/magic/staff/can_gun_shoot(mob/caller,atom/object,location,params,check_time=TRUE,messages=TRUE)
 
 	if(total_charge < cost_charge)
 		handle_empty(caller)
@@ -33,10 +33,10 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/magic/staff/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/magic/staff/get_examine_list(mob/caller)
 	return ..() + div("notice","It has [get_ammo_count()] charges ([total_charge]) remaining.")
 
-/obj/item/weapon/ranged/magic/staff/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/magic/staff/handle_ammo(mob/caller,bullet_position=1)
 	var/charge_to_remove = cost_charge
 	if(total_charge > initial(total_charge)*2)
 		charge_to_remove *= 2
@@ -107,7 +107,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/weapon/ranged/magic/staff/chaos/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/obj/item/weapon/ranged/magic/staff/chaos/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 
 	var/num = bullet_num/bullet_num_max
 

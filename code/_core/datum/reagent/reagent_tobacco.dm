@@ -19,7 +19,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/tobacco/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/tobacco/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 

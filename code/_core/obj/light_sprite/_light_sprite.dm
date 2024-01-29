@@ -25,7 +25,7 @@
 	owner = null
 	. = ..()
 
-/obj/light_sprite/set_dir(var/desired_dir,var/force = FALSE) //Override default
+/obj/light_sprite/set_dir(desired_dir,force = FALSE) //Override default
 	if(!desired_dir)
 		return null
 	if(icon_state == "cone" && is_living(top_atom))
@@ -35,11 +35,11 @@
 	dir = desired_dir
 	return dir
 
-/obj/light_sprite/force_move(var/atom/new_loc)
+/obj/light_sprite/force_move(atom/new_loc)
 	if(top_atom) glide_size = top_atom.glide_size
 	. = ..()
 
-/obj/light_sprite/proc/set_top_atom(var/atom/movable/new_top_atom)
+/obj/light_sprite/proc/set_top_atom(atom/movable/new_top_atom)
 
 	if(top_atom == new_top_atom)
 		return FALSE //No need. Even if it's null.

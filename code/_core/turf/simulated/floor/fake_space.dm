@@ -6,6 +6,6 @@
 	var/generate = TRUE
 	plane = PLANE_SPACE
 
-/turf/simulated/floor/fake_space/New(var/desired_loc)
+/turf/simulated/floor/fake_space/New(desired_loc)
 	icon_state = "space"
 	return ..()

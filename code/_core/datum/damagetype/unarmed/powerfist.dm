@@ -49,10 +49,10 @@
 	crit_chance = 0
 	crit_chance_max = 0
 
-/damagetype/unarmed/powerfist/can_man/get_crit_chance(var/mob/living/L)
+/damagetype/unarmed/powerfist/can_man/get_crit_chance(mob/living/L)
 	return 0
 
-/damagetype/unarmed/powerfist/can_man/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/unarmed/powerfist/can_man/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(!ismovable(victim))
 		return TRUE

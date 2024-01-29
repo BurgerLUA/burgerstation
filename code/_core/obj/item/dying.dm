@@ -1,4 +1,4 @@
-/obj/item/proc/dye_self(var/mob/caller,var/obj/item/D,var/dye_color,var/dye_strength=0.5)
+/obj/item/proc/dye_self(mob/caller,obj/item/D,dye_color,dye_strength=0.5)
 
 	if(!dye_color)
 		dye_color = "#FFFFFF"

@@ -1,7 +1,7 @@
 /loadout/virtual_reality/
 
 
-/loadout/virtual_reality/on_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
+/loadout/virtual_reality/on_add(mob/living/advanced/A,obj/item/I) //added before initialize and spawn
 	. = ..()
 	if(is_clothing(I))
 		var/obj/item/clothing/C = I

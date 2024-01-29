@@ -15,7 +15,7 @@
 	last_turf = null
 	. = ..()
 
-/obj/parallax/New(var/desired_loc)
+/obj/parallax/New(desired_loc)
 	if(auto_resize)
 		transform *= ((VIEW_RANGE*2 + 1)*TILE_SIZE)/(480)
 	return ..()
@@ -41,7 +41,7 @@
 
 	. = ..()
 
-/obj/parallax/defer_click_on_object(var/mob/caller,location,control,params)
+/obj/parallax/defer_click_on_object(mob/caller,location,control,params)
 
 	if(owner && params && length(params) && params["screen-loc"])
 		var/turf/T = get_turf(owner)

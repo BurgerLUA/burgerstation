@@ -17,10 +17,10 @@
 	item_requirements = make_associative_count(item_requirements)
 	special_item_requirements = make_associative_count(special_item_requirements)
 
-/cooking_recipe/proc/check_item_requirement(var/obj/item/I,var/triggering_id) //Triggering ID being the crafting ID.
+/cooking_recipe/proc/check_item_requirement(obj/item/I,triggering_id) //Triggering ID being the crafting ID.
 	return TRUE
 
-/cooking_recipe/proc/check(var/list/items_to_check,var/reagent_container/container_to_check)
+/cooking_recipe/proc/check(list/items_to_check,reagent_container/container_to_check)
 
 	if(length(reagent_requirements) && (!container_to_check || !length(container_to_check.stored_reagents)))
 		return FALSE

@@ -17,7 +17,7 @@
 		name = associated_vendor.name
 		desc_extended = associated_vendor.desc_extended
 
-/obj/hud/button/vendor_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vendor_defer/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	..()
 	. = associated_vendor.clicked_on_by_object(caller,object,location,control,params)
 	return .
@@ -42,7 +42,7 @@
 
 
 
-/obj/hud/button/vendor_close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vendor_close/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	close()
 

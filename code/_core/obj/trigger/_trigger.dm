@@ -2,11 +2,11 @@
 	name = "trigger"
 	invisibility = 101
 
-/obj/trigger/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/trigger/Crossed(atom/movable/O,atom/new_loc,atom/old_loc)
 	. = ..()
 	on_trigger(O)
 
-/obj/trigger/proc/on_trigger(var/atom/triggerer)
+/obj/trigger/proc/on_trigger(atom/triggerer)
 	return TRUE
 
 /*
@@ -14,7 +14,7 @@
 	name = "new character teleport trigger"
 	desc = "turns the person into a player"
 
-/obj/trigger/new_character/on_trigger(var/atom/triggerer)
+/obj/trigger/new_character/on_trigger(atom/triggerer)
 	if(is_observer(triggerer))
 		var/mob/abstract/observer/O = triggerer
 		var/mob/living/advanced/player/P = new(pick(spawnpoints_new_character),O.client)
@@ -28,7 +28,7 @@
 	name = "move to world"
 	desc = "move to the world"
 
-/obj/trigger/move_to_world/on_trigger(var/atom/triggerer)
+/obj/trigger/move_to_world/on_trigger(atom/triggerer)
 	if(is_advanced(triggerer))
 		var/mob/living/advanced/A = triggerer
 		A.force_move(get_turf(pick(world_spawnpoints)))
@@ -41,7 +41,7 @@
 	name = "no entry"
 	var/message = "You cannot go that way."
 
-/obj/trigger/no_entry/on_trigger(var/mob/triggerer)
+/obj/trigger/no_entry/on_trigger(mob/triggerer)
 	triggerer.to_chat(span("notice",message))
 
 /obj/trigger/jumploc
@@ -50,7 +50,7 @@
 	var/y_move = 0
 	var/dir_restriction = 0
 
-/obj/trigger/jumploc/on_trigger(var/atom/movable/triggerer)
+/obj/trigger/jumploc/on_trigger(atom/movable/triggerer)
 
 	if(!is_living(triggerer))
 		return FALSE
@@ -90,7 +90,7 @@
 	var/desired_map = ""
 	var/dir_restriction = 0
 
-/obj/trigger/jumplevel/on_trigger(var/atom/movable/triggerer)
+/obj/trigger/jumplevel/on_trigger(atom/movable/triggerer)
 
 	if(!ismob(triggerer))
 		return FALSE
@@ -108,7 +108,7 @@
 	var/desired_marker = ""
 	var/dir_restriction = 0
 
-/obj/trigger/jumpmarker/on_trigger(var/atom/movable/triggerer)
+/obj/trigger/jumpmarker/on_trigger(atom/movable/triggerer)
 
 	if(!ismob(triggerer))
 		return FALSE
@@ -132,11 +132,11 @@
 
 	var/obj/structure/scenery/linked_object
 
-/obj/trigger/transparency_trigger/New(var/new_loc,var/atom/new_linked_object)
+/obj/trigger/transparency_trigger/New(new_loc,atom/new_linked_object)
 	..()
 	linked_object = new_linked_object
 
-/obj/trigger/transparency_trigger/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/trigger/transparency_trigger/Crossed(atom/movable/O,atom/new_loc,atom/old_loc)
 	..()
 
 	linked_object.crossed_objects += O
@@ -145,7 +145,7 @@
 		if(length(linked_object.crossed_objects))
 			animate(linked_object,alpha = 100, time = 0.7 SECONDS)
 
-/obj/trigger/transparency_trigger/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/trigger/transparency_trigger/Uncrossed(atom/movable/O,atom/new_loc,atom/old_loc)
 	..()
 
 	linked_object.crossed_objects -= O

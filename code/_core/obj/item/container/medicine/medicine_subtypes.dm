@@ -113,7 +113,7 @@
 	. = ..()
 	amount = 3
 
-/obj/item/container/healing/nanopaste/treat(var/mob/caller,var/atom/A)
+/obj/item/container/healing/nanopaste/treat(mob/caller,atom/A)
 
 	. = ..()
 
@@ -147,7 +147,7 @@
 /obj/item/container/healing/bone_gel/get_base_value()
 	return value
 
-/obj/item/container/healing/bone_gel/treat(var/mob/caller,var/atom/A)
+/obj/item/container/healing/bone_gel/treat(mob/caller,atom/A)
 
 	. = ..()
 

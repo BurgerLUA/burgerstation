@@ -11,11 +11,11 @@
 	if(!stored_poster)
 		stored_poster = pick(SSposter.all_posters)
 
-/obj/item/poster/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/poster/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEPATH("stored_poster")
 
-/obj/item/poster/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/poster/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADPATH("stored_poster")
 
@@ -31,7 +31,7 @@
 	desc = P.desc
 	desc_extended = P.desc_extended
 
-/obj/item/poster/get_examine_list(var/mob/examiner)
+/obj/item/poster/get_examine_list(mob/examiner)
 	. = ..()
 	var/collectable_poster/P = SSposter.all_posters[stored_poster]
 	. += "<center>[ICON_TO_HTML(P.icon,P.icon_state,32,32)]</center>"

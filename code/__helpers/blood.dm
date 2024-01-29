@@ -1,7 +1,7 @@
 #define BLOOD_LIMIT 3
 #define BLOOD_LIMIT_HARD 6 //Maximum of how many blood particles there are on a turf.
 
-/proc/create_blood(var/obj/effect/cleanable/blood/desired_effect, var/turf/simulated/desired_loc,var/desired_color = "#FFFFFF",var/desired_x=0,var/desired_y=0,var/bypass_blood_limit=FALSE)
+/proc/create_blood(obj/effect/cleanable/blood/desired_effect, turf/simulated/desired_loc,desired_color = "#FFFFFF",desired_x=0,desired_y=0,bypass_blood_limit=FALSE)
 
 	if(!desired_loc)
 		CRASH("No desired_loc provided!")

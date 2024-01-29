@@ -76,7 +76,7 @@ var/global/list/valid_gabber_sound_files = list()
 		"failure"
 	)
 
-/mob/living/simple/gabber/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
+/mob/living/simple/gabber/get_block_power(atom/victim,atom/attacker,atom/weapon,atom/object_to_damage,damagetype/DT)
 	return 1
 
 /mob/living/simple/gabber/get_movement_delay()
@@ -86,14 +86,14 @@ var/global/list/valid_gabber_sound_files = list()
 	if(sword_mode)
 		. *= 0.5
 
-/mob/living/simple/gabber/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/simple/gabber/get_damage_received_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 
 	. = ..()
 
 	if(sword_mode)
 		. *= 0.75
 
-/mob/living/simple/gabber/death(var/silent=FALSE)
+/mob/living/simple/gabber/death(silent=FALSE)
 
 	if(!sword_mode) //Prevents exploits.
 		start_sword_mode()
@@ -101,7 +101,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	. = ..()
 
-/mob/living/simple/gabber/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/simple/gabber/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -146,7 +146,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 	return TRUE
 
-/mob/living/simple/gabber/get_damage_type(var/atom/attacker,var/atom/victim)
+/mob/living/simple/gabber/get_damage_type(atom/attacker,atom/victim)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -171,7 +171,7 @@ var/global/list/valid_gabber_sound_files = list()
 	if(ai)
 		ai.set_active(TRUE)
 
-/mob/living/simple/gabber/proc/do_voice(var/text_to_say,var/force=FALSE)
+/mob/living/simple/gabber/proc/do_voice(text_to_say,force=FALSE)
 
 	if(!force && next_special_attack > world.time) //No voice stacking.
 		return TRUE
@@ -202,7 +202,7 @@ var/global/list/valid_gabber_sound_files = list()
 	I.layer = 1000
 	add_overlay(I)
 
-/mob/living/simple/gabber/proc/slam(var/turf/target)
+/mob/living/simple/gabber/proc/slam(turf/target)
 	if(has_status_effect(PARALYZE))
 		return FALSE
 	if(sword_mode)
@@ -216,7 +216,7 @@ var/global/list/valid_gabber_sound_files = list()
 	return TRUE
 
 
-/mob/living/simple/gabber/proc/super_slam_jam(var/turf/target)
+/mob/living/simple/gabber/proc/super_slam_jam(turf/target)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -250,7 +250,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 
 
-/mob/living/simple/gabber/proc/trap_spam(var/atom/target)
+/mob/living/simple/gabber/proc/trap_spam(atom/target)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -270,7 +270,7 @@ var/global/list/valid_gabber_sound_files = list()
 		CALLBACK("\ref[src]_shoot_trap_[i]",5 + i*2,src,src::shoot_trap(),target,math_x,math_y)
 
 
-/mob/living/simple/gabber/proc/trap_lines(var/trap_switch = 0)
+/mob/living/simple/gabber/proc/trap_lines(trap_switch = 0)
 
 	if(has_status_effect(PARALYZE))
 		return FALSE
@@ -300,7 +300,7 @@ var/global/list/valid_gabber_sound_files = list()
 		var/math_y = (i - 8)*y_mul
 		CALLBACK("\ref[src]_shoot_trap_[i]",i*2,src,src::shoot_trap(),T,math_x,math_y)
 
-/mob/living/simple/gabber/proc/shoot_trap(var/atom/target,var/math_x,var/math_y)
+/mob/living/simple/gabber/proc/shoot_trap(atom/target,math_x,math_y)
 
 	if(!target || !target.z || target.z != target.z)
 		return FALSE
@@ -329,7 +329,7 @@ var/global/list/valid_gabber_sound_files = list()
 
 
 
-/mob/living/simple/gabber/proc/shoot_bouncy_projectiles(var/atom/desired_target,var/amount=3)
+/mob/living/simple/gabber/proc/shoot_bouncy_projectiles(atom/desired_target,amount=3)
 
 	play_sound('sound/weapons/magic/holy_shoot.ogg',get_turf(src))
 
@@ -356,7 +356,7 @@ var/global/list/valid_gabber_sound_files = list()
 	return TRUE
 
 
-/mob/living/simple/gabber/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/mob/living/simple/gabber/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 
 	if(bullet_num_max == 1)
 		return ..()
@@ -393,10 +393,10 @@ var/global/list/valid_gabber_sound_files = list()
 		CALLBACK("\ref[src]_create_turf_destruction_[ix]_[iy]",(abs(ix) + abs(iy))*4,src,src::create_turf_destruction(),T)
 
 
-/mob/living/simple/gabber/proc/create_turf_destruction(var/turf/T)
+/mob/living/simple/gabber/proc/create_turf_destruction(turf/T)
 	new /obj/effect/gabber_turf_destruction(T)
 	return TRUE
 
-/mob/living/simple/gabber/on_parried_hit(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT,var/damage_multiplier=1)
+/mob/living/simple/gabber/on_parried_hit(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT,damage_multiplier=1)
 	. = ..()
 	do_voice(pick(gabber_voice_parry))

@@ -16,7 +16,7 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/structure/interactive/conveyor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/conveyor/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -63,7 +63,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/conveyor/set_anchored(var/desired_anchored=TRUE,var/force=FALSE)
+/obj/structure/interactive/conveyor/set_anchored(desired_anchored=TRUE,force=FALSE)
 	. = ..()
 	if(.)
 		if(anchored)

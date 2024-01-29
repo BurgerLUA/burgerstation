@@ -15,7 +15,7 @@
 	weight = 2
 	has_quick_function = TRUE //allows batteries in the belt slots
 
-/obj/item/powercell/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/powercell/quick(mob/caller,atom/object,location,params)
 
 	if(!is_advanced(caller) || !is_inventory(src.loc))
 		return FALSE
@@ -35,11 +35,11 @@
 	. = ..()
 	. += CEILING(charge_current*0.001,1)
 
-/obj/item/powercell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/powercell/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("charge_current")
 
-/obj/item/powercell/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/powercell/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("charge_current")
 
@@ -149,7 +149,7 @@
 
 	value_burgerbux = 1 //Citizens aren't supposed to have recharging power cells.
 
-/obj/item/powercell/recharging/on_equip(var/atom/old_location,var/slient=FALSE)
+/obj/item/powercell/recharging/on_equip(atom/old_location,slient=FALSE)
 	. = ..()
 	var/obj/hud/inventory/new_location = loc
 	if(new_location.click_flags && new_location.owner)
@@ -169,7 +169,7 @@
 	charge_current = min(charge_current + charge_max*0.001,charge_max)
 	return ..()
 
-/obj/item/powercell/get_examine_list(var/mob/caller)
+/obj/item/powercell/get_examine_list(mob/caller)
 	return ..() + div("notice","It has [charge_current] out of [charge_max] charge remaining.")
 
 

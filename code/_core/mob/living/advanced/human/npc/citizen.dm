@@ -17,7 +17,7 @@
 	loyalty_tag = "Solarian"
 	iff_tag = "Solarian"
 
-/mob/living/advanced/citizen/setup_appearance(var/set_default=FALSE)
+/mob/living/advanced/citizen/setup_appearance(set_default=FALSE)
 
 	. = ..()
 

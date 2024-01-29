@@ -1,7 +1,7 @@
 /obj/item/container/simple/
 	var/initial_reagent = null
 
-/obj/item/container/simple/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/container/simple/quick(mob/caller,atom/object,location,params)
 	return try_transfer_reagents(caller,caller,location,null,params)
 
 /obj/item/container/simple/get_consume_verb()
@@ -10,7 +10,7 @@
 /obj/item/container/simple/get_consume_sound()
 	return 'sound/items/consumables/drink.ogg'
 
-/obj/item/container/simple/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/simple/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(allow_reagent_transfer_to && istype(object,/obj/item/weapon/melee))
 		var/obj/item/weapon/melee/M = object
@@ -30,7 +30,7 @@
 
 	. = ..()
 
-/obj/item/container/simple/click_self(var/mob/caller,location,control,params)
+/obj/item/container/simple/click_self(mob/caller,location,control,params)
 
 	if(allow_reagent_transfer_to || allow_reagent_transfer_from)
 		INTERACT_CHECK

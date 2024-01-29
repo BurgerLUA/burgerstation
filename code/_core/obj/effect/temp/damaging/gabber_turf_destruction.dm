@@ -3,7 +3,7 @@
 	icon_state = "b1"
 	blend_mode = BLEND_ADD
 
-/obj/effect/gabber_turf_destruction/New(var/desired_loc,var/turf/force_turf=null)
+/obj/effect/gabber_turf_destruction/New(desired_loc,turf/force_turf=null)
 	. = ..()
 	icon_state = "b[rand(1,5)]"
 	var/matrix/M = matrix()
@@ -12,7 +12,7 @@
 	animate(src,alpha=100,transform = matrix(),time=3)
 	CALLBACK("\ref[src]_destroy_turf",5,src,src::destroy_turf(),force_turf)
 
-/obj/effect/gabber_turf_destruction/proc/destroy_turf(var/turf/force_turf=null)
+/obj/effect/gabber_turf_destruction/proc/destroy_turf(turf/force_turf=null)
 	animate(src,alpha=255,time=5)
 	animate(alpha=0,time=15)
 	icon_state = "r[rand(1,5)]"

@@ -15,7 +15,7 @@
 
 	night_vision = 0.25
 
-/ai/boss/ash_drake/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/ash_drake/New(desired_loc,mob/living/desired_owner)
 	owner_as_ash_drake = desired_owner
 	return ..()
 
@@ -23,7 +23,7 @@
 	owner_as_ash_drake = null
 	return ..()
 
-/ai/boss/ash_drake/set_active(var/desired_active=TRUE,var/deleting=FALSE)
+/ai/boss/ash_drake/set_active(desired_active=TRUE,deleting=FALSE)
 	. = ..()
 	if(. && owner_as_ash_drake.boss_state == 1 && !active)
 		owner_as_ash_drake.start_land()

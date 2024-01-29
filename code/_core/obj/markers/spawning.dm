@@ -13,7 +13,7 @@
 	. = ..()
 	qdel(src)
 
-/obj/marker/spawning/proc/do_spawn(var/turf/T)
+/obj/marker/spawning/proc/do_spawn(turf/T)
 	return TRUE
 
 /obj/marker/spawning/window/
@@ -49,7 +49,7 @@
 /obj/marker/spawning/window/
 	color = "#6E9CAD"
 
-/obj/marker/spawning/window/do_spawn(var/turf/T)
+/obj/marker/spawning/window/do_spawn(turf/T)
 	var/obj/structure/table/window/G = new(T)
 	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
@@ -59,7 +59,7 @@
 /obj/marker/spawning/window/tinted
 	color = "#353535"
 
-/obj/marker/spawning/window/tinted/do_spawn(var/turf/T)
+/obj/marker/spawning/window/tinted/do_spawn(turf/T)
 	var/obj/structure/table/window/G = new(T)
 	var/obj/structure/window/W = new(T)
 	LATE_INIT(G)
@@ -68,7 +68,7 @@
 	W.opacity = 0
 	setup_airlock()
 
-/obj/marker/spawning/window/rcd/do_spawn(var/turf/T)
+/obj/marker/spawning/window/rcd/do_spawn(turf/T)
 	var/obj/structure/interactive/construction/grille/G = new(T)
 	var/obj/structure/window/W = new(T)
 	INITIALIZE(G)
@@ -84,7 +84,7 @@
 	icon_state = "window_grille_reinforced"
 	color = "#345A68"
 
-/obj/marker/spawning/window/reinforced/do_spawn(var/turf/T)
+/obj/marker/spawning/window/reinforced/do_spawn(turf/T)
 	var/obj/structure/table/window/G = new(T)
 	var/obj/structure/window/reinforced/W = new(T)
 	LATE_INIT(G)
@@ -95,7 +95,7 @@
 	icon_state = "window_grille_reinforced"
 	color = "#FFFF00"
 
-/obj/marker/spawning/window/reinforced/grilled/do_spawn(var/turf/T)
+/obj/marker/spawning/window/reinforced/grilled/do_spawn(turf/T)
 	var/obj/structure/table/window/G = new(T)
 	var/obj/structure/interactive/construction/grille/A = new(T)
 	var/obj/structure/window/reinforced/W = new(T)
@@ -108,7 +108,7 @@
 	icon_state = "window_grille_reinforced"
 	color = "#394D5B"
 
-/obj/marker/spawning/window/shuttle/do_spawn(var/turf/T)
+/obj/marker/spawning/window/shuttle/do_spawn(turf/T)
 	var/obj/structure/table/window/G = new(T)
 	G.plane = PLANE_SHUTTLE
 	G.color = "#FFFFFF"
@@ -124,7 +124,7 @@
 	icon_state = "window_grille_extra"
 	color = "#E423C9"
 
-/obj/marker/spawning/window/extra/do_spawn(var/turf/T)
+/obj/marker/spawning/window/extra/do_spawn(turf/T)
 	var/obj/structure/table/window/G = new(T)
 	var/obj/structure/window/reinforced/plasma/W = new(T)
 	LATE_INIT(G)
@@ -136,7 +136,7 @@
 	var/chance_none = 0
 
 
-/obj/marker/spawning/random/do_spawn(var/turf/T)
+/obj/marker/spawning/random/do_spawn(turf/T)
 
 	if(!prob(chance_none))
 		var/datum/D = pickweight(possible_objects)

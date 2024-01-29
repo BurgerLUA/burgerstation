@@ -72,7 +72,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_static_spread()
 	return 0.003
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/get_skill_spread(mob/living/L)
 	return max(0,0.01 - (0.03 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod
@@ -117,5 +117,5 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/tactical/mod/get_skill_spread(mob/living/L)
 	return max(0,0.03 - (0.03 * L.get_skill_power(SKILL_RANGED)))

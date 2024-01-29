@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(chunk)
 	var/list/failed_chunk_count = list()
 	var/list/unclean_chunks = list()
 
-/subsystem/chunk/unclog(var/mob/caller)
+/subsystem/chunk/unclog(mob/caller)
 	//Honestly there is literally 0 reason as to why this would fail 3 times in as row.
 	//I can't wait to be proven wrong.
 	. = ..()
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(chunk)
 
 	return TRUE
 
-/subsystem/chunk/proc/process_entire_z(var/z)
+/subsystem/chunk/proc/process_entire_z(z)
 
 	. = 0
 

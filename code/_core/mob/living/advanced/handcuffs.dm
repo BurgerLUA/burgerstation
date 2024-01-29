@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/set_handcuffs(var/desired_handcuffs = TRUE,var/obj/item/handcuffs/handcuff_item)
+/mob/living/advanced/proc/set_handcuffs(desired_handcuffs = TRUE,obj/item/handcuffs/handcuff_item)
 
 	if(!overlays_assoc["handcuffs"])
 		CRASH("WARNING: [src.get_debug_name()] didn't have a handcuff overlay!")

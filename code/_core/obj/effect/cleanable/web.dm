@@ -7,6 +7,6 @@
 
 	plane = PLANE_SCENERY
 
-/obj/effect/cleanable/cobweb/New(var/desired_loc)
+/obj/effect/cleanable/cobweb/New(desired_loc)
 	. = ..()
 	icon_state = pick("cobweb1","cobweb2")

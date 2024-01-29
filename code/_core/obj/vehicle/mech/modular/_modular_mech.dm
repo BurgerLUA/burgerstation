@@ -40,7 +40,7 @@
 /mob/living/vehicle/mech/modular/proc/get_battery()
 	return battery
 
-/mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 1)
+/mob/living/vehicle/mech/modular/handle_movement(adjust_delay = 1)
 
 	if(!battery || battery.charge_current <= 0)
 		return FALSE
@@ -52,7 +52,7 @@
 	else
 		battery.charge_current -= 1
 
-/mob/living/vehicle/mech/modular/get_examine_list(var/mob/caller)
+/mob/living/vehicle/mech/modular/get_examine_list(mob/caller)
 
 	. = ..()
 
@@ -69,13 +69,13 @@
 
 	if(battery) . += span("notice","It has \the [battery.name] inserted in the chassis. It has a charge rating of ([battery.charge_current]/[battery.charge_max]).")
 
-/mob/living/vehicle/mech/modular/attach_equipment(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/mech/modular/attach_equipment(mob/caller,obj/item/I)
 	return FALSE
 
-/mob/living/vehicle/mech/modular/unattach_equipment(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/mech/modular/unattach_equipment(mob/caller,obj/item/I)
 	return FALSE
 
-/mob/living/vehicle/mech/modular/can_attach_weapon(var/mob/caller,var/obj/item/I)
+/mob/living/vehicle/mech/modular/can_attach_weapon(mob/caller,obj/item/I)
 
 	if(!mech_arms)
 		caller?.to_chat(span("notice","You must add a set of arms to this assembly before attaching weapons!"))
@@ -84,7 +84,7 @@
 	return ..()
 
 
-/mob/living/vehicle/mech/modular/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/mob/living/vehicle/mech/modular/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -106,7 +106,7 @@
 
 	return TRUE
 
-/mob/living/vehicle/mech/modular/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/vehicle/mech/modular/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	DEFER_OBJECT
 
@@ -320,7 +320,7 @@
 		set_dir(SOUTH)
 
 
-/mob/living/vehicle/mech/modular/set_dir(var/desired_dir,var/force=FALSE)
+/mob/living/vehicle/mech/modular/set_dir(desired_dir,force=FALSE)
 
 	if(!mech_body)
 		desired_dir = SOUTH
@@ -328,7 +328,7 @@
 	. = ..()
 
 
-/mob/living/vehicle/mech/modular/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damage_type/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/mob/living/vehicle/mech/modular/get_object_to_damage(atom/attacker,atom/weapon,damage_type/damage_type,list/params = list(),accurate=FALSE,find_closest=FALSE,inaccuracy_modifier=1)
 
 
 	var/x_attack = params[PARAM_ICON_X] ? params[PARAM_ICON_X] : 16
@@ -348,7 +348,7 @@
 
 	return src
 
-/mob/living/vehicle/mech/modular/handle_movement(var/adjust_delay = 0)
+/mob/living/vehicle/mech/modular/handle_movement(adjust_delay = 0)
 
 	if(!mech_legs || (mech_legs.health && mech_legs.health.health_current <= 0))
 		return FALSE

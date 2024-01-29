@@ -1,4 +1,4 @@
-/damagetype/proc/get_damage_per_hit(var/armor_to_use=0,var/self_armor_to_use=0)
+/damagetype/proc/get_damage_per_hit(armor_to_use=0,self_armor_to_use=0)
 
 	if(IS_INF(armor_to_use))
 		return 0

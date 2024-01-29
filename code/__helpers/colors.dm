@@ -9,17 +9,17 @@
 
 
 // Couple of helpers to get the RGB of a hexadecimal colour string.
-/proc/GetRedPart(var/hexadecimal)
+/proc/GetRedPart(hexadecimal)
 	return hex2num(copytext(hexadecimal, 2, 4))
 
-/proc/GetGreenPart(var/hexadecimal)
+/proc/GetGreenPart(hexadecimal)
 	return hex2num(copytext(hexadecimal, 4, 6))
 
-/proc/GetBluePart(var/hexadecimal)
+/proc/GetBluePart(hexadecimal)
 	return hex2num(copytext(hexadecimal, 6))
 
 
-/proc/blend_colors(var/color_01,var/color_02,var/power = 0.5)
+/proc/blend_colors(color_01,color_02,power = 0.5)
 	power = clamp(power,0,1)
 	var/new_red = GetRedPart(color_01)*(1-power) + GetRedPart(color_02)*power
 	var/new_green = GetGreenPart(color_01)*(1-power) + GetGreenPart(color_02)*power
@@ -28,7 +28,7 @@
 
 
 /*
-/proc/blend_colors(var/color_01,var/color_02,var/power = 0.5)
+/proc/blend_colors(color_01,color_02,power = 0.5)
 	power = clamp(power,0,1)
 	var/new_red = GetRedPart(color_01) + GetRedPart(color_02)*power
 	var/new_green = GetGreenPart(color_01) + GetGreenPart(color_02)*power

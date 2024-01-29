@@ -14,7 +14,7 @@
 
 	mouse_opacity = 0
 
-/obj/hud/button/stat/ecg/New(var/desired_loc)
+/obj/hud/button/stat/ecg/New(desired_loc)
 	. = ..()
 	filters += filter(type="drop_shadow",x=0,y=0,size=2,offset=1,color=rgb(0,255,0,100))
 
@@ -25,7 +25,7 @@
 	I.blend_mode = BLEND_INSET_OVERLAY
 	add_overlay(I)
 
-/obj/hud/button/stat/ecg/update_owner(var/mob/desired_owner)
+/obj/hud/button/stat/ecg/update_owner(mob/desired_owner)
 	color = "#000000"
 	. = ..()
 
@@ -90,5 +90,5 @@
 
 	. = ..()
 
-/obj/hud/button/stat/ecg/get_examine_list(var/mob/examiner)
+/obj/hud/button/stat/ecg/get_examine_list(mob/examiner)
 	return examiner.get_examine_list(examiner)

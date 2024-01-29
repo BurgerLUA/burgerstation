@@ -48,7 +48,7 @@
 	icon_state = "syringe"
 	reagents = /reagent_container/syringe_gun_syringe
 
-/obj/projectile/bullet/syringe/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/syringe/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -67,7 +67,7 @@
 	icon_state = "rocket_he"
 	hit_target_turf = TRUE
 
-/obj/projectile/bullet/rocket_he/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/rocket_he/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,6,owner,weapon,iff_tag,multiplier = 5)
@@ -78,7 +78,7 @@
 	icon_state = "rocket_nuke"
 	hit_target_turf = TRUE
 
-/obj/projectile/bullet/rocket_nuclear/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/rocket_nuclear/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,10,owner,weapon,iff_tag)
@@ -88,7 +88,7 @@
 	icon = 'icons/obj/projectiles/rocket.dmi'
 	icon_state = "rocket_ap"
 
-/obj/projectile/bullet/rocket_ap/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/rocket_ap/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,3,owner,weapon,iff_tag)
@@ -98,7 +98,7 @@
 	icon = 'icons/obj/projectiles/rocket.dmi'
 	icon_state = "rocket_wp"
 
-/obj/projectile/bullet/rocket_wp/update_projectile(var/tick_rate=1)
+/obj/projectile/bullet/rocket_wp/update_projectile(tick_rate=1)
 	. = ..()
 	if(.)
 		vel_x *= 0.99
@@ -109,13 +109,13 @@
 			on_projectile_hit(current_loc)
 			return FALSE
 
-/obj/projectile/bullet/rocket_wp/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/rocket_wp/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,3,owner,weapon,iff_tag,multiplier = 2)
 		firebomb(old_loc,22,owner,weapon,iff_tag,multiplier = 1.5)
 
-/obj/projectile/bullet/rocket_wp/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/rocket_wp/on_enter_tile(turf/old_loc,turf/new_loc)
 	. = ..()
 	var/obj/effect/temp/hazard/flamethrowerfire = locate() in new_loc
 
@@ -127,13 +127,13 @@
 	icon = 'icons/obj/projectiles/rocket.dmi'
 	icon_state = "gyrojet"
 
-/obj/projectile/bullet/gyrojet/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/gyrojet/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,3,owner,weapon,iff_tag)
 
 
-/obj/projectile/bullet/gyrojet/update_projectile(var/tick_rate=1)
+/obj/projectile/bullet/gyrojet/update_projectile(tick_rate=1)
 
 	. = ..()
 

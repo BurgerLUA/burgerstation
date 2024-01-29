@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(choices)
 
 	return TRUE
 
-/proc/start_choice(var/mob/M,var/choice/C)
+/proc/start_choice(mob/M,choice/C)
 
 	if(!M.client)
 		return FALSE

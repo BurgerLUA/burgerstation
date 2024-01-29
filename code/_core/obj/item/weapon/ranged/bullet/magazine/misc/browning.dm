@@ -45,11 +45,11 @@
 	QDEL_NULL(linked_gun)
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_empty(var/obj/caller)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_empty(obj/caller)
 	next_shoot_time = max(next_shoot_time,world.time + 20)
 	return ..()
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_ammo(var/obj/caller)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/handle_ammo(obj/caller)
 	if(!chambered_bullet) load_new_bullet_from_magazine(caller)
 	linked_gun.mag_check()
 	return ..()
@@ -67,12 +67,12 @@
 /obj/item/weapon/ranged/bullet/magazine/misc/browning/get_static_spread()
 	return 0.01
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/get_skill_spread(mob/living/L)
 	if(!heat_current) return 0
 	return max(0,0.075 - (0.1 * L.get_skill_power(SKILL_RANGED)))
 
 
-/obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/bullet/magazine/misc/browning/can_owner_shoot(mob/caller,atom/object,location,params)
 	if(angle2dir_cardinal(get_angle(caller,object))==linked_gun.dir)
 		return TRUE
 	else

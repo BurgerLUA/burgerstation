@@ -3,7 +3,7 @@
 	desc = "Leaving these around the field won't get you in trouble with the Sergeant Major."
 	desc_extended = "Contains ammunition for a ranged weapon. Make sure you're trying to use the right caliber."
 
-/obj/item/magazine/clip/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/magazine/clip/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_ranged_bullet_weapon(object))
 		INTERACT_CHECK

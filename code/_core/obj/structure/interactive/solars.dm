@@ -22,7 +22,7 @@
 
 	pixel_z = 6
 
-/obj/structure/interactive/solar_panel/power_process(var/power_multiplier=1)
+/obj/structure/interactive/solar_panel/power_process(power_multiplier=1)
 	update_power_supply(get_power_supply())
 	. = ..()
 

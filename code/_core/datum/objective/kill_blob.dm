@@ -28,7 +28,7 @@
 	update()
 	return ..()
 
-/objective/kill_blob/proc/kill_blob_destroy(var/obj/structure/interactive/blob/core/B,args)
+/objective/kill_blob/proc/kill_blob_destroy(obj/structure/interactive/blob/core/B,args)
 	update()
 	return TRUE
 

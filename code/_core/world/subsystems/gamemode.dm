@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	var/list/tracked_bosses = list()
 
-/subsystem/gamemode/unclog(var/mob/caller)
+/subsystem/gamemode/unclog(mob/caller)
 
 	if(active_gamemode)
 		var/gamemode/G = active_gamemode.type
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(gamemode)
 
 	. = ..()
 
-/subsystem/gamemode/proc/set_active_gamemode(var/gamemode/desired_gamemode,var/source)
+/subsystem/gamemode/proc/set_active_gamemode(gamemode/desired_gamemode,source)
 	QDEL_NULL(active_gamemode)
 	active_gamemode = new desired_gamemode
 	log_debug("Setting gamemode to: [active_gamemode.name]... Source: [source].")

@@ -28,7 +28,7 @@
 	pixel_z = steps_allowed
 
 
-/obj/projectile/thrown/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/thrown/on_enter_tile(turf/old_loc,turf/new_loc)
 
 	if(new_loc && ignore_shuttles && new_loc.plane != PLANE_SHUTTLE) //Feels like shitcode, but it works.
 		return TRUE
@@ -43,7 +43,7 @@
 		vel_x *= 0.9
 		vel_y *= 0.9
 
-/obj/projectile/thrown/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/thrown/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -133,7 +133,7 @@
 
 	. = ..()
 
-/obj/projectile/thrown/proc/animate_hit(var/atom/movable/A)
+/obj/projectile/thrown/proc/animate_hit(atom/movable/A)
 	var/matrix/M = A.get_base_transform()
 	var/new_angle = -ATAN2(vel_x,vel_y) + 90
 	M.Turn(new_angle)

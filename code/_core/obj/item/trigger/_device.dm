@@ -22,7 +22,7 @@
 /obj/item/device/proc/on_inactive()
 	return TRUE
 
-/mob/living/advanced/player/proc/set_device_active(var/obj/item/device/D)
+/mob/living/advanced/player/proc/set_device_active(obj/item/device/D)
 
 	if(D == active_device)
 		return FALSE

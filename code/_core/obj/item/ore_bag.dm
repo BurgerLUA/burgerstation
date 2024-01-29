@@ -22,18 +22,18 @@
 		var/material/M = MATERIAL(k)
 		. += amount*1*M.value_per_unit
 
-/obj/item/ore_bag/get_examine_list(var/mob/examiner)
+/obj/item/ore_bag/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","The counter shows [ore_count] objects inside.")
 
-/obj/item/ore_bag/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/ore_bag/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	if(length(contained_ore))
 		.["contained_ore"] = list()
 		for(var/k in contained_ore)
 			.["contained_ore"]["[k]"] = contained_ore[k]
 
-/obj/item/ore_bag/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/ore_bag/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	for(var/k in object_data["contained_ore"])
 		contained_ore[text2path(k)] = object_data["contained_ore"][k]
@@ -44,7 +44,7 @@
 	for(var/k in contained_ore)
 		ore_count += contained_ore[k]
 
-/obj/item/ore_bag/proc/can_scoop_up_ore(var/mob/caller,var/turf/T)
+/obj/item/ore_bag/proc/can_scoop_up_ore(mob/caller,turf/T)
 
 	if(get_dist(caller,T) > 1)
 		return FALSE
@@ -60,7 +60,7 @@
 
 
 
-/obj/item/ore_bag/proc/scoop_up_ore(var/mob/caller,var/turf/T)
+/obj/item/ore_bag/proc/scoop_up_ore(mob/caller,turf/T)
 
 	var/did_transfer = FALSE
 	var/was_full = FALSE
@@ -101,7 +101,7 @@
 		PROGRESS_BAR_CONDITIONS(caller,src,src::can_scoop_up_ore(),caller,T)
 
 
-/obj/item/ore_bag/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/ore_bag/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -147,7 +147,7 @@
 	return TRUE
 
 
-/obj/item/ore_bag/proc/dump_some_ore(var/mob/caller,var/turf/T)
+/obj/item/ore_bag/proc/dump_some_ore(mob/caller,turf/T)
 
 	var/ore_id = contained_ore[1]
 	for(var/i=1,i<=min(CEILING(contained_ore[ore_id]/3,1),30),i++)

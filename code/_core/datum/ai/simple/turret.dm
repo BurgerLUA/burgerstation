@@ -21,7 +21,7 @@
 	var/scan_key = 1
 	var/scan_mod = 1
 
-/ai/turret/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/turret/New(desired_loc,mob/living/desired_owner)
 
 	. = ..()
 
@@ -66,7 +66,7 @@
 /ai/turret/deployable
 	var/mob/living/simple/turret/deployable/owner_as_turret
 
-/ai/turret/deployable/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/turret/deployable/New(desired_loc,mob/living/desired_owner)
 	. = ..()
 	owner_as_turret = owner
 
@@ -83,7 +83,7 @@
 
 	. = ..()
 
-/ai/turret/deployable/on_life(var/tick_rate=1)
+/ai/turret/deployable/on_life(tick_rate=1)
 	. = ..()
 	var/obj/item/powercell/B = owner_as_turret.get_battery()
 	B?.charge_current -= tick_rate

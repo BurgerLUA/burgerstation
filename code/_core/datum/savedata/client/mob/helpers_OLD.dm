@@ -1,4 +1,4 @@
-/savedata/client/mob/proc/apply_data_to_mob(var/mob/living/advanced/player/A,var/do_teleport = TRUE,var/update_blends=TRUE)
+/savedata/client/mob/proc/apply_data_to_mob(mob/living/advanced/player/A,do_teleport = TRUE,update_blends=TRUE)
 
 	//Name
 	A.real_name = loaded_data["name"]
@@ -64,7 +64,7 @@
 
 	LOG_DEBUG("[owner] is done loading their character [A.get_debug_name()].")
 
-/savedata/client/mob/proc/apply_blend_data(var/obj/O, var/list/blend_data)
+/savedata/client/mob/proc/apply_blend_data(obj/O, list/blend_data)
 	for(var/id in blend_data)
 		var/list/blend_list = blend_data[id]
 		var/desired_id = value_or_null(blend_list,"id")
@@ -78,7 +78,7 @@
 		var/desired_layer = value_or_null(blend_list,"layer")
 		O.add_blend(desired_id,desired_icon,desired_icon_state,desired_color,desired_blend,desired_type,TRUE,desired_layer)
 
-/savedata/client/mob/proc/save_current_character(var/save_inventory = TRUE,var/force=FALSE)
+/savedata/client/mob/proc/save_current_character(save_inventory = TRUE,force=FALSE)
 
 	if(!owner)
 		log_error("FATAL ERROR: Could not save a character because there was no owner attached! Usr: [usr].")

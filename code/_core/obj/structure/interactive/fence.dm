@@ -18,7 +18,7 @@ obj/structure/interactive/fence
 
 	density = TRUE
 
-/obj/structure/interactive/fence/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/fence/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 4),/material/steel)
 	. = ..()
 	qdel(src)

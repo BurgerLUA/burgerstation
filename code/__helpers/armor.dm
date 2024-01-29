@@ -1,6 +1,6 @@
 /* OLD
 //https://www.desmos.com/calculator/uyznrero9w
-/proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
+/proc/calculate_damage_with_armor(damage_dealt,armor_rating)
 	if(damage_dealt < 0)
 		CRASH_SAFE("Damage [damage_dealt] was negative!")
 		return 0
@@ -16,7 +16,7 @@
 
 /* OLD
 //https://www.desmos.com/calculator/vsmeclqdpy
-/proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
+/proc/calculate_damage_with_armor(damage_dealt,armor_rating)
 	if(damage_dealt < 0)
 		CRASH_SAFE("Damage [damage_dealt] was negative!")
 		return 0
@@ -31,7 +31,7 @@
 
 /* OLD
 //https://www.desmos.com/calculator/sf50j6wote
-/proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
+/proc/calculate_damage_with_armor(damage_dealt,armor_rating)
 	if(damage_dealt < 0)
 		CRASH_SAFE("Damage [damage_dealt] was negative!")
 		return 0
@@ -46,7 +46,7 @@
 
 /* OLD
 //https://www.desmos.com/calculator/ihpykmskji
-/proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
+/proc/calculate_damage_with_armor(damage_dealt,armor_rating)
 	if(damage_dealt < 0)
 		CRASH_SAFE("Damage [damage_dealt] was negative!")
 		return 0
@@ -69,7 +69,7 @@
 */
 
 // https://www.desmos.com/calculator/4fggsyju5k
-/proc/calculate_damage_with_armor(var/damage_dealt,var/armor_rating)
+/proc/calculate_damage_with_armor(damage_dealt,armor_rating)
 
 	if(damage_dealt < 0)
 		CRASH("Damage [damage_dealt] was negative!")

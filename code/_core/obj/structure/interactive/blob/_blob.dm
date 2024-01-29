@@ -47,7 +47,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/blob/proc/grow_charge(var/obj/structure/interactive/blob/original_blob,var/obj/structure/interactive/blob/last_blob,var/tolerance=1,var/turf/priority_turf)
+/obj/structure/interactive/blob/proc/grow_charge(obj/structure/interactive/blob/original_blob,obj/structure/interactive/blob/last_blob,tolerance=1,turf/priority_turf)
 
 	if(src.qdeleting || !original_blob || original_blob.qdeleting || !linked_core || linked_core.qdeleting)
 		return FALSE
@@ -146,7 +146,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/blob/New(var/desired_loc,var/obj/structure/interactive/blob/core/desired_owner)
+/obj/structure/interactive/blob/New(desired_loc,obj/structure/interactive/blob/core/desired_owner)
 	adjacent_blobs = list()
 	. = ..()
 	turn_angle = pick(0,90,180,270)
@@ -173,10 +173,10 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[last_state]"
 
-/obj/structure/interactive/blob/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/structure/interactive/blob/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return TRUE
 
-/obj/structure/interactive/blob/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/structure/interactive/blob/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 
 	if(!health || health.health_current <= 0 || !color || color == "#FFFFFF")
 		return FALSE
@@ -200,7 +200,7 @@
 			. = 1 //Increasing
 	last_state = current_state
 
-/obj/structure/interactive/blob/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/blob/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if(!src.z)
 		return ..()
@@ -215,7 +215,7 @@
 			play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),T)
 		update_sprite()
 
-/obj/structure/interactive/blob/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/blob/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)
 

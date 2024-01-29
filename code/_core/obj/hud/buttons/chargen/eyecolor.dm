@@ -24,7 +24,7 @@ mob/living/advanced/proc/handle_eyecolor_chargen(var/desired_color,var/update_bl
 
 	return ..()
 
-/obj/hud/button/chargen/eye_color/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/eye_color/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

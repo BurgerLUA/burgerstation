@@ -152,7 +152,7 @@
 		SLIP = TRUE
 	)
 
-/mob/living/simple/clown/lube/post_move(var/atom/old_loc)
+/mob/living/simple/clown/lube/post_move(atom/old_loc)
 
 	. = ..()
 

@@ -1,6 +1,6 @@
 /dialogue/npc/chargen_computer/
 
-/dialogue/npc/chargen_computer/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/chargen_computer/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	var/list/dialogue_options = list()
 
@@ -123,7 +123,7 @@
 
 	return dialogue_options
 
-/dialogue/npc/chargen_computer/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/chargen_computer/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

@@ -11,7 +11,7 @@
 	var/stored_modifier
 	var/stored_modifier_color
 
-/obj/item/weapon/ranged/magic/rune/New(var/new_loc,var/mob/owner,var/desired_effect,var/desired_modifer,var/desired_buff,var/desired_effect_color,var/desired_modifier_color,var/desired_buff_color)
+/obj/item/weapon/ranged/magic/rune/New(new_loc,mob/owner,desired_effect,desired_modifer,desired_buff,desired_effect_color,desired_modifier_color,desired_buff_color)
 
 	stored_effect = desired_effect
 	stored_effect_color = desired_effect_color
@@ -51,12 +51,12 @@
 
 	icon = new_icon
 
-/obj/item/weapon/ranged/magic/rune/on_drop(var/obj/hud/inventory/old_inventory,var/atom/new_loc)
+/obj/item/weapon/ranged/magic/rune/on_drop(obj/hud/inventory/old_inventory,atom/new_loc)
 	if(!is_inventory(new_loc) || is_dynamic_inventory(new_loc))
 		qdel(src)
 		return
 
-/obj/item/weapon/ranged/magic/rune/shoot(var/mob/caller as mob,var/atom/object,location,params)
+/obj/item/weapon/ranged/magic/rune/shoot(mob/caller as mob,atom/object,location,params)
 
 	var/spellcraft/effect/E = all_effects[stored_effect]
 
@@ -69,14 +69,14 @@
 
 	return TRUE
 
-/obj/item/weapon/ranged/magic/rune/can_be_held(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/weapon/ranged/magic/rune/can_be_held(mob/living/advanced/owner,obj/hud/inventory/I)
 	var/spellcraft/effect/E = all_effects[stored_effect]
 	return E.can_be_held
 
-/obj/item/weapon/ranged/magic/rune/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I)
+/obj/item/weapon/ranged/magic/rune/can_be_worn(mob/living/advanced/owner,obj/hud/inventory/I)
 	return FALSE
 
-/obj/item/weapon/ranged/magic/rune/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/magic/rune/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(!can_be_held(caller,object))
 		var/spellcraft/effect/E = all_effects[stored_effect]

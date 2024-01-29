@@ -5,7 +5,7 @@
 
 	footstep = /footstep/sand
 
-/turf/simulated/floor/sand/New(var/desired_loc)
+/turf/simulated/floor/sand/New(desired_loc)
 	icon_state = "sand[rand(1,4)]"
 	. = ..()
 
@@ -15,6 +15,6 @@
 	icon = 'icons/turf/floor/natural.dmi'
 	icon_state = "ironsand1"
 
-/turf/simulated/floor/red_sand/New(var/desired_loc)
+/turf/simulated/floor/red_sand/New(desired_loc)
 	icon_state = "ironsand[rand(1,15)]"
 	. = ..()

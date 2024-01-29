@@ -1,4 +1,4 @@
-/obj/shuttle_controller/proc/signal_landing(var/obj/marker/shuttle)
+/obj/shuttle_controller/proc/signal_landing(obj/marker/shuttle)
 
 	var/area/A = get_area(src)
 
@@ -17,7 +17,7 @@
 
 	return TRUE
 
-/obj/shuttle_controller/proc/is_safe_to_land(var/mob/caller,var/obj/marker/shuttle_landing/desired_marker)
+/obj/shuttle_controller/proc/is_safe_to_land(mob/caller,obj/marker/shuttle_landing/desired_marker)
 
 	if(!SSgamemode?.active_gamemode?.allow_launch)
 		caller?.to_chat(span("warning","Error: Shuttles are not ready to launch yet."))

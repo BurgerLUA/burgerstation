@@ -12,7 +12,7 @@
 
 	weight = 0.25
 
-/obj/item/bikehorn/click_self(var/mob/caller,location,control,params)
+/obj/item/bikehorn/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(20)
@@ -32,7 +32,7 @@
 	rarity = RARITY_RARE
 	value_burgerbux = 5
 
-/obj/item/bikehorn/magic/click_self(var/mob/caller,location,control,params)
+/obj/item/bikehorn/magic/click_self(mob/caller,location,control,params)
 
 	. = ..()
 

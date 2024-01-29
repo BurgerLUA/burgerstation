@@ -11,7 +11,7 @@
 	icon_state = "1"
 	icon = 'icons/obj/decal/road_dotted_half.dmi'
 
-/obj/decal/road_marking/dotted_line/New(var/desired_loc)
+/obj/decal/road_marking/dotted_line/New(desired_loc)
 	icon_state = "[rand(1,6)]"
 	. = ..()
 
@@ -19,7 +19,7 @@
 	icon_state = "1"
 	icon = 'icons/obj/decal/road_solid_cross.dmi'
 
-/obj/decal/road_marking/solid_cross/New(var/desired_loc)
+/obj/decal/road_marking/solid_cross/New(desired_loc)
 	icon_state = "[rand(1,3)]"
 	. = ..()
 
@@ -27,7 +27,7 @@
 	icon_state = "1"
 	icon = 'icons/obj/decal/road_solid_stop.dmi'
 
-/obj/decal/road_marking/solid_stop/New(var/desired_loc)
+/obj/decal/road_marking/solid_stop/New(desired_loc)
 	icon_state = "[rand(1,3)]"
 	. = ..()
 
@@ -35,7 +35,7 @@
 	icon_state = "1"
 	icon = 'icons/obj/decal/road_solid.dmi'
 
-/obj/decal/road_marking/solid_line/New(var/desired_loc)
+/obj/decal/road_marking/solid_line/New(desired_loc)
 	icon_state = "[rand(1,4)]"
 	. = ..()
 
@@ -52,7 +52,7 @@
 	icon_state = "1"
 	icon = 'icons/obj/decal/road_hazard.dmi'
 
-/obj/decal/road_marking/hazard/New(var/desired_loc)
+/obj/decal/road_marking/hazard/New(desired_loc)
 	icon_state = "[rand(1,4)]"
 	. = ..()
 

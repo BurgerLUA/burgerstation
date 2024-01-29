@@ -25,7 +25,7 @@
 	var/premium = FALSE //Is this a premium ammo restocker?
 	var/currency_left = 0 //For premium ammo restockers
 
-/obj/structure/interactive/restocker/ammo/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/restocker/ammo/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/magazine/))
 		INTERACT_CHECK
@@ -122,7 +122,7 @@
 	premium = TRUE
 	currency_left = 5000
 
-/obj/structure/interactive/restocker/ammo/premium/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/restocker/ammo/premium/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","This restocker has [currency_left] credits worth of ammo left.")
 

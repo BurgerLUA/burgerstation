@@ -82,7 +82,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical/get_static_spread()
 	return 0.008
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/tactical/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/shotgun/tactical/get_skill_spread(mob/living/L)
 	return max(0,0.04 - (0.06 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/tactical/get_base_spread()

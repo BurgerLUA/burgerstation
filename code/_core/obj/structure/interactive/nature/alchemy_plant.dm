@@ -15,7 +15,7 @@
 	SSbotany_alchemy.all_alchemy_plants -= src
 	. = ..()
 
-/obj/structure/interactive/alchemy_plant/proc/harvest(var/mob/living/advanced/caller)
+/obj/structure/interactive/alchemy_plant/proc/harvest(mob/living/advanced/caller)
 
 	if(!grown)
 		caller.to_chat(span("warning","\The [src.name] doesnt look ready to be harvested yet...."))
@@ -43,15 +43,15 @@
 		update_sprite()
 	return TRUE
 
-/obj/structure/interactive/alchemy_plant/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/alchemy_plant/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)
 
-/obj/structure/interactive/alchemy_plant/New(var/desired_loc)
+/obj/structure/interactive/alchemy_plant/New(desired_loc)
 	SSbotany_alchemy.all_alchemy_plants += src
 	. = ..()
 
-/obj/structure/interactive/alchemy_plant/proc/on_life(var/tick_rate = 1)
+/obj/structure/interactive/alchemy_plant/proc/on_life(tick_rate = 1)
 	if(!grown)
 		if(prob(1))
 			grown = TRUE
@@ -65,7 +65,7 @@
 		icon_state = "[initial(icon_state)]_h"
 
 
-/obj/structure/interactive/alchemy_plant/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/alchemy_plant/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()

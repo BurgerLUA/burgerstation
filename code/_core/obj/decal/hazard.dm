@@ -51,7 +51,7 @@
 	icon_state = "0"
 	alpha = 200
 
-/obj/decal/shuttle_number/New(var/desired_loc)
+/obj/decal/shuttle_number/New(desired_loc)
 	. = ..()
 	pixel_x = rand(-1,1)
 	pixel_y = rand(-1,1)

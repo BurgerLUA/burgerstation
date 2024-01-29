@@ -6,7 +6,7 @@
 	icon_state = "inventory"
 	value = 100
 
-/obj/item/map/click_self(var/mob/caller)
+/obj/item/map/click_self(mob/caller)
 
 	var/obj/hud/button/map_background/M_control = locate() in caller.buttons
 

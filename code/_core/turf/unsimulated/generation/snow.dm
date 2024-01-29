@@ -4,7 +4,7 @@
 	name = "snow generation"
 	icon_state = "snow"
 
-/turf/unsimulated/generation/snow/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/snow/generate(size = WORLD_SIZE)
 
 	if(density && is_different && is_next_to_null_areas && is_next_to_dense_turfs && is_next_to_organic_turfs)
 		new /turf/simulated/wall/rock/snow(src)
@@ -105,7 +105,7 @@
 	icon_state = "snow_path"
 
 
-/turf/unsimulated/generation/snow/path/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/snow/path/generate(size = WORLD_SIZE)
 
 	if(!density)
 		new /turf/simulated/floor/colored/snow(src)

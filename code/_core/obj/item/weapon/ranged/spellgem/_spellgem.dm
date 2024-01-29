@@ -24,7 +24,7 @@
 
 	requires_bullets = FALSE
 
-/obj/item/weapon/ranged/spellgem/get_examine_list(var/mob/examiner)
+/obj/item/weapon/ranged/spellgem/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","Base mana cost: [get_base_mana_cost()]")
 
@@ -91,13 +91,13 @@
 /obj/item/weapon/ranged/spellgem/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/spellgem/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/spellgem/get_skill_spread(mob/living/L)
 	return 0
 
-/obj/item/weapon/ranged/spellgem/get_movement_spread(var/mob/living/L)
+/obj/item/weapon/ranged/spellgem/get_movement_spread(mob/living/L)
 	return 0
 
-/obj/item/weapon/ranged/spellgem/pre_shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1)
+/obj/item/weapon/ranged/spellgem/pre_shoot(mob/caller,atom/object,location,params,damage_multiplier=1)
 
 
 	. = ..()
@@ -135,7 +135,7 @@
 		add_overlay(I)
 
 
-/obj/item/weapon/ranged/spellgem/get_projectile_offset(var/initial_offset_x,var/initial_offset_y,var/bullet_num,var/bullet_num_max,var/accuracy)
+/obj/item/weapon/ranged/spellgem/get_projectile_offset(initial_offset_x,initial_offset_y,bullet_num,bullet_num_max,accuracy)
 
 	if(bullet_num_max <= 1)
 		return list(initial_offset_x,initial_offset_y)
@@ -146,5 +146,5 @@
 
 	return list(cos(angle),sin(angle))
 
-/obj/item/weapon/ranged/spellgem/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/spellgem/quick(mob/caller,atom/object,location,params)
 	return shoot(caller,object,location,params)

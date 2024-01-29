@@ -2,7 +2,7 @@
 	distance_target_max = VIEW_RANGE
 
 
-/ai/cyborg/do_attack(var/atom/target,var/left_click=FALSE)
+/ai/cyborg/do_attack(atom/target,left_click=FALSE)
 
 	if(!owner || !target)
 		return FALSE

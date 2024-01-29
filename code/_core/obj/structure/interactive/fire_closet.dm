@@ -11,7 +11,7 @@
 	QDEL_NULL(stored_extinguisher)
 	. = ..()
 
-/obj/structure/interactive/fire_closet/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/fire_closet/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	//Putting the object back in is handled in the weapon itself.
 

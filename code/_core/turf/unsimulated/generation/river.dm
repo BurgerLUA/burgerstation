@@ -8,7 +8,7 @@
 	icon_state = "river_path"
 	density = FALSE
 
-/turf/unsimulated/generation/river/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/river/generate(size = WORLD_SIZE)
 
 	if(!density)
 		new /turf/simulated/floor/colored/dirt(src)

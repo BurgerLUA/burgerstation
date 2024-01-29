@@ -21,40 +21,40 @@
 
 	var/mob/living/owner
 
-/experience/get_examine_list(var/mob/examiner)
+/experience/get_examine_list(mob/examiner)
 	return list(div("examine_title","[name]"),div("examine_description","[desc]"),div("examine_description","[desc]"),div("examine_description_long",src.desc_extended))
 
 /experience/Destroy()
 	owner = null
 	return ..()
 
-/experience/New(var/mob/M)
+/experience/New(mob/M)
 	if(!default_level)
 		default_level = CONFIG("CHARGEN_DEFAULT_LEVEL",1)
 	owner = M
 	return ..()
 
-/experience/proc/update_experience(var/desired_xp)
+/experience/proc/update_experience(desired_xp)
 	desired_xp = max(0,desired_xp)
 	experience = desired_xp
 	last_level = min(xp_to_level(experience),get_max_level())
 	return TRUE
 
-/experience/proc/xp_to_level(var/xp) //Convert xp to level
+/experience/proc/xp_to_level(xp) //Convert xp to level
 	if(xp < 0)
 		owner.to_chat(span("danger","Your [src.name] level is negative! Report this bug on discord!"))
 		log_error("Warning: [src.name] xp was negative for [owner.get_debug_name()].")
 		return 1
 	return FLOOR((xp ** (1/experience_power)) / (experience_multiplier * (1 + src.get_prestige_count()*0.1)), 1)
 
-/experience/proc/level_to_xp(var/level) //Convert level to xp
+/experience/proc/level_to_xp(level) //Convert level to xp
 	if(level < 0)
 		owner.to_chat(span("danger","Your [src.name] level is negative! Report this bug on discord!"))
 		log_error("Warning: [src.name] xp was negative for [owner.get_debug_name()].")
 		return 0
 	return CEILING((level*experience_multiplier*(1 + src.get_prestige_count()*0.1)) ** experience_power,1)
 
-/experience/proc/set_level(var/level)
+/experience/proc/set_level(level)
 	if(!ENABLE_XP)
 		return FALSE
 	experience = level_to_xp(clamp(level,1,get_max_level()))
@@ -67,7 +67,7 @@
 /experience/proc/get_xp()
 	return experience
 
-/experience/proc/add_xp(var/xp_to_add,var/bypass_checks = FALSE,var/difficulty_multiplier=TRUE)
+/experience/proc/add_xp(xp_to_add,bypass_checks = FALSE,difficulty_multiplier=TRUE)
 
 	if(!ENABLE_XP)
 		return FALSE
@@ -95,20 +95,20 @@
 
 	return xp_to_add
 
-/experience/proc/set_xp(var/new_xp)
+/experience/proc/set_xp(new_xp)
 	if(!ENABLE_XP)
 		return FALSE
 	experience = new_xp
 	return experience
 
 // https://www.desmos.com/calculator/bwdfwyg3ae
-/experience/proc/get_power(var/min_power = 0.25,var/max_power = 1,var/absolute_max_power,var/bonus_level=0)
+/experience/proc/get_power(min_power = 0.25,max_power = 1,absolute_max_power,bonus_level=0)
 	if(!absolute_max_power)
 		absolute_max_power = max_power
 	return min(absolute_max_power,(min_power + (bonus_level + get_current_level())*max_power*0.01)*(1-(min_power/max_power)))
 
 
-/experience/proc/on_level_up(var/old_level,var/new_level)
+/experience/proc/on_level_up(old_level,new_level)
 	owner.on_level_up(src,old_level,new_level)
 	return new_level
 

@@ -409,7 +409,7 @@
 	return TRUE
 */
 
-/mob/living/proc/bang(var/duration=100)
+/mob/living/proc/bang(duration=100)
 
 	if(!client)
 		return FALSE
@@ -429,7 +429,7 @@
 
 	. = ..()
 
-/mob/living/get_sound_volume(var/volume=100,var/channel=1)
+/mob/living/get_sound_volume(volume=100,channel=1)
 
 	. = ..()
 
@@ -437,7 +437,7 @@
 		. *= 0.01
 
 
-/mob/living/proc/flash(var/duration=100,var/desired_color="#FFFFFF")
+/mob/living/proc/flash(duration=100,desired_color="#FFFFFF")
 
 	if(duration <= 0)
 		return FALSE
@@ -463,13 +463,13 @@
 
 	return TRUE
 
-/mob/living/on_crush(var/message=TRUE) //What happens when this object is crushed by a larger object.
+/mob/living/on_crush(message=TRUE) //What happens when this object is crushed by a larger object.
 	. = ..()
 	play_sound(pick('sound/effects/impacts/flesh_01.ogg','sound/effects/impacts/flesh_02.ogg','sound/effects/impacts/flesh_03.ogg'),get_turf(src))
 	if(message) visible_message(span("danger","\The [src.name] is violently crushed!"))
 	gib(hard=TRUE)
 
-/mob/living/gib(var/gib_direction=0x0,var/hard=FALSE)
+/mob/living/gib(gib_direction=0x0,hard=FALSE)
 	if(qdeleting)
 		return FALSE
 	if(gibbed)
@@ -493,7 +493,7 @@
 	gibbed = FALSE //Hacky, but it works.
 	return FALSE
 
-/mob/living/on_fall(var/turf/old_loc)
+/mob/living/on_fall(turf/old_loc)
 	. = ..()
 	health?.adjust_loss_smart(brute=100)
 	add_status_effect(STUN,40,40)
@@ -515,7 +515,7 @@
 /mob/living/get_log_name()
 	return "[dead ? "(DEAD)" : ""][src.name]([src.client ? src.client : "NO CKEY"])([src.type])([x],[y],[z])"
 
-/mob/living/dust(var/atom/source)
+/mob/living/dust(atom/source)
 	if(death(TRUE))
 		new /obj/effect/temp/death(src.loc,30)
 		qdel(src)
@@ -684,7 +684,7 @@
 	name = "[CHECK_NAME(name)]"
 	return TRUE
 
-/mob/living/proc/set_iff_tag(var/desired_iff_tag,var/force=FALSE)
+/mob/living/proc/set_iff_tag(desired_iff_tag,force=FALSE)
 
 	if(!force && desired_iff_tag == iff_tag)
 		return FALSE
@@ -694,7 +694,7 @@
 	return TRUE
 
 
-/mob/living/proc/set_loyalty_tag(var/desired_loyalty_tag,var/force=FALSE)
+/mob/living/proc/set_loyalty_tag(desired_loyalty_tag,force=FALSE)
 
 	if(!force && desired_loyalty_tag == loyalty_tag)
 		return FALSE
@@ -710,7 +710,7 @@
 	. = ..()
 	PROCESS_LIVING_FORCE(src)
 
-/mob/living/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	if(owner != src)
 		if(!allow_hostile_action(desired_loyalty_tag,src))
@@ -719,7 +719,7 @@
 	. = ..()
 
 
-/mob/living/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	if(owner != src && !allow_hostile_action(desired_loyalty_tag,src))
 		return TRUE
@@ -747,7 +747,7 @@
 
 	return TRUE
 
-/mob/living/proc/do_explosion_damage(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/mob/living/proc/do_explosion_damage(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	var/list/params = list()
 	params[PARAM_ICON_X] = rand(0,32)
 	params[PARAM_ICON_Y] = rand(0,32)
@@ -756,7 +756,7 @@
 	D.process_damage(source,src,source,object_to_damage,owner,magnitude)
 	return TRUE
 
-/mob/living/proc/draw_blood(var/mob/caller,var/atom/needle,var/amount=0,var/messages = TRUE)
+/mob/living/proc/draw_blood(mob/caller,atom/needle,amount=0,messages = TRUE)
 
 	if(!blood_type || !min(amount,blood_volume))
 		if(messages) caller?.to_chat(span("warning","There is no blood to draw!"))

@@ -1,10 +1,10 @@
 /savedata/client/roles
 	loaded_data = list("role" = FLAG_PERMISSION_NONE)
 
-/savedata/client/roles/get_file(var/file_id)
+/savedata/client/roles/get_file(file_id)
 	return "roles.json"
 
-/savedata/client/roles/New(var/desired_ckey)
+/savedata/client/roles/New(desired_ckey)
 
 	..()
 
@@ -19,13 +19,13 @@
 	loaded_data = json_decode(file_contents)
 	update()
 
-/savedata/client/roles/proc/add_role(var/role_to_add)
+/savedata/client/roles/proc/add_role(role_to_add)
 	loaded_data["role"] |= role_to_add
 	update()
 	save()
 	return TRUE
 
-/savedata/client/roles/proc/remove_role(var/role_to_add)
+/savedata/client/roles/proc/remove_role(role_to_add)
 	loaded_data["role"] &= ~role_to_add
 	update()
 	save()

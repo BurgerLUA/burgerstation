@@ -25,11 +25,11 @@
 //Base code stolen from Fulpstation
 //A lot of it has been reworked. About 50% of this code is new.
 
-/song/New(var/desired_loc)
+/song/New(desired_loc)
 	instrument_atom = desired_loc
 	return ..()
 
-/song/proc/interact(var/mob/caller)
+/song/proc/interact(mob/caller)
 
 	if(!is_playing)
 		var/desired_song = input(caller,"What song would you like to play?","Song Selection") as message|null
@@ -60,7 +60,7 @@
 
 	return
 
-/song/proc/play_note(var/mob/caller,var/note,var/acc,var/oct)
+/song/proc/play_note(mob/caller,note,acc,oct)
 
 	// handle accidental -> B<>C of E<>F
 	if(acc == "b" && (note == 3 || note == 6)) // C or F
@@ -97,11 +97,11 @@
 
 	return TRUE
 
-/song/proc/sanitize_tempo(var/desired_tempo)
+/song/proc/sanitize_tempo(desired_tempo)
 	desired_tempo = abs(desired_tempo)
 	return max(round(desired_tempo, 1 TICKS), 1 TICKS)
 
-/song/proc/play_song(var/mob/caller)
+/song/proc/play_song(mob/caller)
 
 	var/cur_oct[7]
 	var/cur_acc[7]
@@ -142,7 +142,7 @@
 	is_playing = FALSE
 	repeat = 0
 
-/song/proc/parse_song(var/mob/caller,var/text)
+/song/proc/parse_song(mob/caller,text)
 
 	text = lowertext(text)
 	var/list/lines = splittext(text,"\n")

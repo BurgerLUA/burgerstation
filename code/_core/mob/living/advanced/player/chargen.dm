@@ -66,6 +66,6 @@
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
 
-/mob/living/advanced/player/post_perform_change(var/keep_items,var/chargen,var/list/kept_items = list())
+/mob/living/advanced/player/post_perform_change(keep_items,chargen,list/kept_items = list())
 	. = ..()
 	setup_iff()

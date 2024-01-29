@@ -21,7 +21,7 @@
 	can_be_broken = FALSE
 
 
-/obj/item/organ/eye/initialize_worn_blends(var/desired_icon_state)
+/obj/item/organ/eye/initialize_worn_blends(desired_icon_state)
 	. = ..()
 	add_blend(
 		"eye",

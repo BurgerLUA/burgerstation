@@ -8,7 +8,7 @@
 	lifetime = 4 SECONDS
 
 /*
-/obj/projectile/slime_ball/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/slime_ball/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 

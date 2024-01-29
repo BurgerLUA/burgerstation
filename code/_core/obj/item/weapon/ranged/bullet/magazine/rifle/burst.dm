@@ -84,7 +84,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_static_spread()
 	return 0.0075
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/burst/get_skill_spread(mob/living/L)
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod
@@ -124,5 +124,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_static_spread()
 	return 0.002
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/burst/mod/get_skill_spread(mob/living/L)
 	return max(0,0.03 - (0.06 * L.get_skill_power(SKILL_RANGED)))

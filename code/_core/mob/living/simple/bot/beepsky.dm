@@ -19,7 +19,7 @@
 	enable_medical_hud = FALSE
 	enable_security_hud = FALSE
 
-/mob/living/simple/bot/securitron/captain/can_be_grabbed(var/atom/grabber,var/messages=FALSE)
+/mob/living/simple/bot/securitron/captain/can_be_grabbed(atom/grabber,messages=FALSE)
 
 	if(messages && is_living(grabber))
 		var/mob/living/L = grabber

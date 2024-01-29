@@ -25,7 +25,7 @@
 
 	layer = LAYER_WALL_LARGE + 0.1
 
-/turf/simulated/wall/rock/on_destruction(var/damage = TRUE)
+/turf/simulated/wall/rock/on_destruction(damage = TRUE)
 	CREATE(/obj/structure/scenery/rocks,src)
 	. = ..()
 
@@ -154,5 +154,5 @@
 
 	layer = LAYER_WALL_LARGE + 0.17
 
-/turf/simulated/wall/rock/indestructable/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/turf/simulated/wall/rock/indestructable/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return FALSE

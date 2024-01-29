@@ -34,7 +34,7 @@
 
 	health_base = 500
 
-/turf/simulated/floor/brick/New(var/desired_loc)
+/turf/simulated/floor/brick/New(desired_loc)
 	icon_state = "[x % 10],[y % 10]"
 	. = ..()
 

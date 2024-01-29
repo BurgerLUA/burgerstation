@@ -84,7 +84,7 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_skill_spread(mob/living/L)
 	return max(0,0.01 - (0.01 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/Generate()
@@ -101,5 +101,5 @@
 
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_cock_sound(var/direction="both")
+/obj/item/weapon/ranged/bullet/magazine/rifle/sniper_20/get_cock_sound(direction="both")
 	return 'sound/weapons/ranged/rifle/20mm_sniper/bolt.ogg'

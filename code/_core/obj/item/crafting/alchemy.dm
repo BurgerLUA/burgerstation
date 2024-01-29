@@ -21,7 +21,7 @@
 
 /*
 Old code. Maybe someone else will find a use for it....
-/obj/item/crafting/alchemy/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting/alchemy/attempt_to_craft(mob/living/advanced/caller)
 
 	var/obj/item/container/C //Final slot container.
 

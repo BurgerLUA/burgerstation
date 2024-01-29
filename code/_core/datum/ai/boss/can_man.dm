@@ -16,7 +16,7 @@
 	var/strafe_count = 0
 	var/strafe_latch = -1 //-1 or 1
 
-/ai/boss/can_man/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/can_man/New(desired_loc,mob/living/desired_owner)
 	owner_as_can_man = desired_owner
 	return ..()
 
@@ -25,7 +25,7 @@
 	return ..()
 
 
-/ai/boss/can_man/set_objective(var/atom/A)
+/ai/boss/can_man/set_objective(atom/A)
 	var/had_previous_objective = objective_attack
 	. = ..()
 	if(. && objective_attack && !had_previous_objective)

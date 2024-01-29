@@ -37,7 +37,7 @@ var/global/list/all_generation_markers = list()
 
 	var/custom_object_to_place = FALSE
 
-/obj/marker/generation/New(var/desired_loc)
+/obj/marker/generation/New(desired_loc)
 	. = ..()
 	all_generation_markers += src
 
@@ -46,7 +46,7 @@ var/global/list/all_generation_markers = list()
 	. = ..()
 
 
-/obj/marker/generation/proc/get_object_to_place(var/turf/T,var/objects_placed=0,var/grow_left=0)
+/obj/marker/generation/proc/get_object_to_place(turf/T,objects_placed=0,grow_left=0)
 	CRASH("[src.type] was improperly setup with var custom_object_to_place!")
 
 /obj/marker/generation/proc/generate_marker()

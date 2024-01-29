@@ -2,7 +2,7 @@
 	var/desired_value = 1000 //How much (on average) do we want to give to the player (if possible). This is per item.
 	loot_count = 1
 
-/loot/currency/pre_spawn(var/atom/movable/M)
+/loot/currency/pre_spawn(atom/movable/M)
 	. = ..()
 	if(desired_value > 0 && istype(M,/obj/item/))
 		var/obj/item/I = M

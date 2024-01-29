@@ -35,7 +35,7 @@
 /obj/item/weapon/ranged/energy/sentry_turret/get_static_spread()
 	return 0.005
 
-/obj/item/weapon/ranged/energy/sentry_turret/can_owner_shoot(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/energy/sentry_turret/can_owner_shoot(mob/caller,atom/object,location,params)
 	if(caller.is_player_controlled())
 		return FALSE
 	return ..()

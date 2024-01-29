@@ -57,7 +57,7 @@
 
 	return TRUE
 
-/obj/hud/button/research/piece/proc/check_clear(var/no_score = FALSE)
+/obj/hud/button/research/piece/proc/check_clear(no_score = FALSE)
 
 	var/obj/hud/button/research/piece/left = 	x_p-1 >= 1 ? linked_board.pieces[x_p-1][y_p] : null
 	var/obj/hud/button/research/piece/right = 	x_p+1 <= RESEARCH_BOARD_SIZE ? linked_board.pieces[x_p+1][y_p] : null
@@ -99,7 +99,7 @@
 
 	return left_changed + right_changed + down_changed + up_changed
 
-/obj/hud/button/research/piece/proc/clear_piece(var/add_points = FALSE)
+/obj/hud/button/research/piece/proc/clear_piece(add_points = FALSE)
 	color_01 = COLOR_BLACK
 	color_02 = COLOR_BLACK
 	color_03 = COLOR_BLACK
@@ -130,7 +130,7 @@
 	check_clear()
 	return TRUE
 
-/obj/hud/button/research/piece/proc/should_destroy(var/color_A,var/color_B)
+/obj/hud/button/research/piece/proc/should_destroy(color_A,color_B)
 
 	if(!color_A || !color_B)
 		return FALSE
@@ -144,7 +144,7 @@
 	return TRUE
 
 
-/obj/hud/button/research/piece/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/research/piece/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -203,14 +203,14 @@
 	overlays.Cut()
 	return ..()
 
-/obj/hud/button/research/piece/New(var/desired_loc)
+/obj/hud/button/research/piece/New(desired_loc)
 	color_01 = COLOR_BLACK
 	color_02 = COLOR_BLACK
 	color_03 = COLOR_BLACK
 	color_04 = COLOR_BLACK
 	return ..()
 
-/obj/hud/button/research/piece/proc/initialize_colors(var/list/desired_colors = RESEARCH_POSSIBLE_COLORS)
+/obj/hud/button/research/piece/proc/initialize_colors(list/desired_colors = RESEARCH_POSSIBLE_COLORS)
 
 	var/obj/hud/button/research/piece/left = 	x_p-1 >= 1 ? linked_board.pieces[x_p-1][y_p] : null
 	var/obj/hud/button/research/piece/right = 	x_p+1 <= RESEARCH_BOARD_SIZE ? linked_board.pieces[x_p+1][y_p] : null

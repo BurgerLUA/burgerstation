@@ -5,7 +5,7 @@
 	mouse_opacity = 0
 	plane = PLANE_MOVABLE
 
-/obj/effect/temp/crate_gib/New(var/desired_location,var/desired_time)
+/obj/effect/temp/crate_gib/New(desired_location,desired_time)
 	. = ..()
 	icon_state = "[icon_state]_[rand(1,5)]"
 	var/matrix/M = get_base_transform()

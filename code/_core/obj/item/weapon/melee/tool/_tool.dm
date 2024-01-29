@@ -3,7 +3,7 @@
 	drop_sound = 'sound/items/drop/scrap.ogg'
 	has_quick_function = TRUE
 
-/obj/item/weapon/melee/tool/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/melee/tool/quick(mob/caller,atom/object,location,params)
 	if(object) object.clicked_on_by_object(caller,src,location,null,params) //It's important it's called this way as not to call attack() if it fails.
 	return TRUE
 
@@ -77,11 +77,11 @@
 
 	var/active = FALSE
 
-/obj/item/weapon/melee/tool/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/melee/tool/welder/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("fuel_current")
 
-/obj/item/weapon/melee/tool/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/melee/tool/welder/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("fuel_current")
 
@@ -106,7 +106,7 @@
 		return FALSE
 
 
-/obj/item/weapon/melee/tool/welder/proc/add_fuel(var/fuel_amount = 0)
+/obj/item/weapon/melee/tool/welder/proc/add_fuel(fuel_amount = 0)
 
 	if(!fuel_amount)
 		return 0
@@ -117,7 +117,7 @@
 
 
 
-/obj/item/weapon/melee/tool/welder/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/tool/welder/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

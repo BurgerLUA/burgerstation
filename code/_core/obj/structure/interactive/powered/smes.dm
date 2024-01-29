@@ -17,7 +17,7 @@
 		FINALIZE(I)
 		stored_cells |= I
 
-/obj/structure/interactive/powered/smes/get_examine_list(var/mob/caller)
+/obj/structure/interactive/powered/smes/get_examine_list(mob/caller)
 	. = ..()
 
 	for(var/i=1,i<=length(stored_cells),i++)
@@ -28,7 +28,7 @@
 	return max(0,connected_wire.power_network.power_draw - (connected_wire.power_network.power_supply-power_supply))
 
 
-/obj/structure/interactive/powered/smes/power_process(var/power_multiplier=1)
+/obj/structure/interactive/powered/smes/power_process(power_multiplier=1)
 
 	. = ..()
 

@@ -49,7 +49,7 @@
 	return ..()
 
 
-/obj/structure/table/dropped_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/table/dropped_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object) || is_structure(object))
 		INTERACT_CHECK

@@ -16,7 +16,7 @@
 
 	value = 100
 
-/obj/item/slime_bomb/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/slime_bomb/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	if(!lit)
 		var/damagetype/DT = SSdamagetype.all_damage_types[object.get_damage_type(caller,src)]
 		if(DT.attack_damage_base[HEAT] || DT.attack_damage_base[LASER])
@@ -24,7 +24,7 @@
 			return TRUE
 	. = ..()
 
-/obj/item/slime_bomb/proc/light(var/stage=9)
+/obj/item/slime_bomb/proc/light(stage=9)
 
 	stage--
 	lit = TRUE

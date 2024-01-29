@@ -10,14 +10,14 @@
 
 	blood_toxicity_multiplier = 1
 
-/reagent/medicine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0,var/mob/living/caller)
+/reagent/medicine/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0,mob/living/caller)
 
 	. = ..()
 
 	if(!L.dead && experience_per_unit*. > 0 && is_player(caller) && caller.client)
 		caller.add_skill_xp(SKILL_MEDICINE,CEILING(experience_per_unit*.,1))
 
-/reagent/medicine/on_overdose(var/mob/living/owner,var/reagent_container/container,var/metabolism_amount=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/on_overdose(mob/living/owner,reagent_container/container,metabolism_amount=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -44,14 +44,14 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/adrenaline/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/medicine/adrenaline/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0)
 
 	. = ..()
 
 	if((container.flags_metabolism & (REAGENT_METABOLISM_BLOOD | REAGENT_METABOLISM_STOMACH)) && STATUS_EFFECT_MAGNITUDE(L,ADRENALINE) <= strength)
 		L.add_status_effect(ADRENALINE,strength,-1)
 
-/reagent/medicine/adrenaline/on_remove_living(var/mob/living/L,var/reagent_container/container)
+/reagent/medicine/adrenaline/on_remove_living(mob/living/L,reagent_container/container)
 
 	. = ..()
 
@@ -73,7 +73,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/adrenaline/epinephrine/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/medicine/adrenaline/epinephrine/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0)
 
 	. = ..()
 
@@ -104,13 +104,13 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/health_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/health_potion/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 2*.*multiplier
 	owner.burn_regen_buffer += 2*.*multiplier
 	owner.tox_regen_buffer += 2*.*multiplier
 
-/reagent/medicine/health_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/health_potion/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	owner.brute_regen_buffer += 3*.*multiplier
 	owner.burn_regen_buffer += 3*.*multiplier
@@ -136,13 +136,13 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/stamina_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/stamina_potion/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
 		owner.stamina_regen_buffer += .*2*multiplier
 
-/reagent/medicine/stamina_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/stamina_potion/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -168,13 +168,13 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/mana_potion/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/mana_potion/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
 		owner.mana_regen_buffer += .*2*multiplier
 
-/reagent/medicine/mana_potion/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/mana_potion/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 
 	if(owner && owner.health)
@@ -201,7 +201,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/antihol/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/antihol/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -216,7 +216,7 @@
 		if(istype(R,/reagent/nutrition/ethanol))
 			container.add_reagent(reagent_id,-.*3*multiplier)
 
-/reagent/medicine/antihol/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/antihol/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -248,7 +248,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/purge/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/purge/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -260,7 +260,7 @@
 			continue
 		owner.tox_regen_buffer += container.add_reagent(reagent_id,-.*4*multiplier)
 
-/reagent/medicine/purge/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/purge/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -289,7 +289,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/charcoal/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/charcoal/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -302,7 +302,7 @@
 		container.add_reagent(reagent_id,-.)
 		owner.tox_regen_buffer += 3*.*multiplier
 
-/reagent/medicine/charcoal/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/charcoal/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -336,7 +336,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_STOMACH | REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/mitogen/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/mitogen/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -344,7 +344,7 @@
 		owner.brute_regen_buffer += 10*.*clamp(1 - owner.health.health_current/owner.health.health_max,0,1)*multiplier
 		owner.tox_regen_buffer -= 0.1*.*multiplier
 
-/reagent/medicine/mitogen/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/mitogen/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -395,7 +395,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/synthblood/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/synthblood/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	if(owner.blood_type && owner.health.organic)
 		owner.blood_volume += .*0.75*multiplier
@@ -417,7 +417,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/rad_b_gone/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/rad_b_gone/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	owner.rad_regen_buffer += .*2*multiplier
 
@@ -440,7 +440,7 @@
 
 	flags_metabolism = REAGENT_METABOLISM_BLOOD
 
-/reagent/medicine/potassium_iodide/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/potassium_iodide/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	if(owner.rad_regen_buffer < 0)
 		owner.rad_regen_buffer = min(0,owner.rad_regen_buffer + 3*.*multiplier)
@@ -464,7 +464,7 @@
 	flags_metabolism = REAGENT_METABOLISM_STOMACH
 
 
-/reagent/medicine/space_prussian_blue/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/medicine/space_prussian_blue/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 

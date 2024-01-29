@@ -1,4 +1,4 @@
-/client/verb/pm(var/k as null|anything in SSclient.all_clients, var/text_to_say as text)
+/client/verb/pm(k as null|anything in SSclient.all_clients, text_to_say as text)
 
 	set name = "PM"
 	set category = "Communication"
@@ -24,7 +24,7 @@
 
 	return TRUE
 
-/client/verb/ooc(var/text_to_say as text)
+/client/verb/ooc(text_to_say as text)
 	set name = "OOC"
 	set category = "Communication"
 

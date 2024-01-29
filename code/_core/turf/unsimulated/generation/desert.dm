@@ -8,7 +8,7 @@
 	icon_state = "desert_path"
 	density = FALSE
 
-/turf/unsimulated/generation/desert/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/desert/generate(size = WORLD_SIZE)
 
 	if(density && is_different && is_next_to_null_area && is_next_to_dense_turf && !is_next_to_simulated)
 		new /turf/simulated/wall/rock/desert(src)

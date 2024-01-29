@@ -55,7 +55,7 @@
 		else
 			play_sound('sound/voice/zombie/clown/cluwnebreathe.ogg',T)
 
-/ai/advanced/zombie/clown/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/advanced/zombie/clown/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 

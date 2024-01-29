@@ -37,7 +37,7 @@
 	return max(0,((nutrition_normal_amount+nutrition_quality_amount*2+nutrition_fast_amount*4)/40)*0.1 - (hydration_amount/10)*0.1)
 
 
-/reagent/nutrition/New(var/desired_loc)
+/reagent/nutrition/New(desired_loc)
 	//Automatically set value.
 
 	if(nutrition_normal_amount + nutrition_fast_amount + nutrition_quality_amount < 0)
@@ -50,7 +50,7 @@
 	. = ..()
 	value = CEILING(value,0.01)
 
-/reagent/nutrition/on_splash(var/reagent_container/container,var/mob/caller,var/atom/target,var/volume_to_splash,var/strength_mod=1)
+/reagent/nutrition/on_splash(reagent_container/container,mob/caller,atom/target,volume_to_splash,strength_mod=1)
 
 	. = ..()
 
@@ -58,7 +58,7 @@
 		var/mob/living/L = target
 		L.adjust_fire_stacks(-hydration_amount*volume_to_splash*0.01*strength_mod)
 
-/reagent/nutrition/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/nutrition/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0)
 
 	. = ..()
 
@@ -71,7 +71,7 @@
 			L.add_nutrition_normal(nutrition_normal_amount*.*0.5)
 		//Fast nutrition not included here people people stuff their face easier.
 
-/reagent/nutrition/on_metabolize_plant(var/obj/structure/interactive/plant/plant,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/on_metabolize_plant(obj/structure/interactive/plant/plant,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -81,7 +81,7 @@
 	if(hydration_amount)
 		plant.add_hydration(.*(hydration_amount/25)*multiplier*3) //water has 25 hydration, and we want 10u water = 30 hydration point
 
-/reagent/nutrition/on_metabolize_stomach(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/on_metabolize_stomach(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 
 	. = ..()
 
@@ -128,7 +128,7 @@
 		if(owner.health && (nutrition_normal_amount + nutrition_quality_amount + hydration_amount) != 0 && (owner.move_mod < 3 || owner.next_move <= 0)) //Not sprinting
 			owner.stamina_regen_buffer += (nutrition_normal_amount + nutrition_quality_amount + hydration_amount) * . *multiplier
 
-/reagent/nutrition/on_metabolize_blood(var/mob/living/owner,var/reagent_container/container,var/amount_to_metabolize=0,var/starting_volume=0,var/multiplier=1)
+/reagent/nutrition/on_metabolize_blood(mob/living/owner,reagent_container/container,amount_to_metabolize=0,starting_volume=0,multiplier=1)
 	. = ..()
 	owner.blood_toxicity += .
 	on_metabolize_stomach(owner,container,.,starting_volume,multiplier*0.5)

@@ -20,7 +20,7 @@
 	update_vis_contents()
 	return FALSE
 
-/obj/hud/button/health/body/update_owner(var/mob/desired_owner)
+/obj/hud/button/health/body/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -91,5 +91,5 @@
 		labeled_overlays[o_id] = I
 
 
-/obj/hud/button/health/body/get_examine_list(var/mob/examiner)
+/obj/hud/button/health/body/get_examine_list(mob/examiner)
 	return examiner.get_examine_list(examiner)

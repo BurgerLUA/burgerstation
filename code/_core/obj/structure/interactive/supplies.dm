@@ -15,7 +15,7 @@
 
 	var/chance_none = 90
 
-/obj/structure/interactive/supplies/New(var/desired_loc)
+/obj/structure/interactive/supplies/New(desired_loc)
 	if(prob(chance_none))
 		qdel(src)
 	. = ..()
@@ -33,7 +33,7 @@
 
 	return ..()
 
-/obj/structure/interactive/supplies/proc/open(var/mob/caller)
+/obj/structure/interactive/supplies/proc/open(mob/caller)
 
 	opened = TRUE
 	update_sprite()
@@ -50,7 +50,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/supplies/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/supplies/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(5)

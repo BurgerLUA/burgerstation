@@ -9,7 +9,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/new_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/new_character/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -37,7 +37,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/load_character/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/load_character/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -67,7 +67,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/become_antag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/become_antag/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -92,7 +92,7 @@
 	var/image/I = new/image(initial(icon),"ghost_overlay")
 	add_overlay(I)
 
-/obj/hud/button/teleport_to_player/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/teleport_to_player/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -131,7 +131,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/dead_ghost/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/dead_ghost/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

@@ -12,11 +12,11 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/slime_core/New(var/desired_loc)
+/obj/item/slime_core/New(desired_loc)
 	generate_name()
 	return ..()
 
-/obj/item/slime_core/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/slime_core/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
@@ -54,7 +54,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/slime_core/custom/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/slime_core/custom/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/mob/E = caller
@@ -78,7 +78,7 @@
 
 	. = ..()
 
-/obj/item/slime_core/custom/click_self(var/mob/caller,location,control,params)
+/obj/item/slime_core/custom/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
 	var/choice = input("What would you like the color to be?", null, color) as color|null

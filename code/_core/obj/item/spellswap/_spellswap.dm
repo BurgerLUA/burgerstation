@@ -15,7 +15,7 @@
 	rarity = RARITY_RARE
 
 
-/obj/item/spellswap/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/spellswap/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(is_weapon(object))
 

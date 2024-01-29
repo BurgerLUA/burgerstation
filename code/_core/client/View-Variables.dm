@@ -858,7 +858,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 	return var_value
 
-/client/proc/mod_list_add(var/list/L)
+/client/proc/mod_list_add(list/L)
 
 	var/class = "text"
 
@@ -902,7 +902,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 		if("No")
 			L += var_value
 
-/client/proc/mod_list(var/list/L)
+/client/proc/mod_list(list/L)
 
 	if(!istype(L,/list)) to_chat(src, "Not a List.")
 
@@ -1038,7 +1038,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			if(temp_var)
 				L[variable] = temp_var
 
-/client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
+/client/proc/modify_variables(atom/O, param_var_name = null, autodetect_class = 0)
 
 	var/class
 	var/variable
@@ -1237,7 +1237,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 			if(var_new==null) return
 			O.vars[variable] = var_new
 
-/client/proc/cmd_mass_modify_object_variables(atom/A, var/var_name)
+/client/proc/cmd_mass_modify_object_variables(atom/A, var_name)
 	set category = "Debug"
 	set name = "Mass Edit Variables"
 	set desc="(target) Edit all instances of a target item's variables"
@@ -1262,7 +1262,7 @@ client/proc/debug_variable(name, value, level, var/datum/DA = null)
 
 	src.massmodify_variables(A, var_name, method)
 
-/client/proc/massmodify_variables(var/atom/O, var/var_name = "", var/method = 0)
+/client/proc/massmodify_variables(atom/O, var_name = "", method = 0)
 
 	var/list/names = list()
 	for (var/V in O.vars)
@@ -1604,7 +1604,7 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 
-/client/proc/callproc(var/target = null)
+/client/proc/callproc(target = null)
 	set category = "Debug"
 	set name = "Advanced ProcCall"
 	set waitfor = 0

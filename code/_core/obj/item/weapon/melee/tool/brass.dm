@@ -51,11 +51,11 @@ obj/item/weapon/melee/tool/brass/welder
 
 	var/active = FALSE
 
-/obj/item/weapon/melee/tool/brass/welder/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/weapon/melee/tool/brass/welder/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("fuel_current")
 
-/obj/item/weapon/melee/tool/brass/welder/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/weapon/melee/tool/brass/welder/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("fuel_current")
 
@@ -80,7 +80,7 @@ obj/item/weapon/melee/tool/brass/welder
 		return FALSE
 
 
-/obj/item/weapon/melee/tool/brass/welder/proc/add_fuel(var/fuel_amount = 0)
+/obj/item/weapon/melee/tool/brass/welder/proc/add_fuel(fuel_amount = 0)
 
 	if(!fuel_amount)
 		return 0
@@ -91,7 +91,7 @@ obj/item/weapon/melee/tool/brass/welder
 
 
 
-/obj/item/weapon/melee/tool/brass/welder/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/tool/brass/welder/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(1)

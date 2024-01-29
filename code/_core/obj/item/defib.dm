@@ -19,7 +19,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/defib/get_examine_list(var/mob/examiner)
+/obj/item/defib/get_examine_list(mob/examiner)
 	. = ..()
 	if(item_slot == SLOT_TORSO_BACK) //shitcode is my passion
 		. += span("notice","Put it on your back to be able to take out the paddles, or ALT+Click it if it's on the ground.<br>Requires both empty hands to pick up and use.")
@@ -45,17 +45,17 @@
 	QDEL_NULL(paddle_right)
 	. = ..()
 
-/obj/item/defib/can_be_worn(var/mob/living/advanced/owner,var/obj/hud/inventory/I,var/messages=FALSE)
+/obj/item/defib/can_be_worn(mob/living/advanced/owner,obj/hud/inventory/I,messages=FALSE)
 	return TRUE
 
-/obj/item/defib/Initialize(var/desired_loc) //Fill inventory handles the initializations here.
+/obj/item/defib/Initialize(desired_loc) //Fill inventory handles the initializations here.
 	paddle_left = new /obj/item/defib_paddle(src)
 	paddle_left.linked_defib = src
 	paddle_right = new /obj/item/defib_paddle(src)
 	paddle_right.linked_defib = src
 	return ..()
 
-/obj/item/defib/proc/on_paddle(var/mob/caller)
+/obj/item/defib/proc/on_paddle(mob/caller)
 
 	if(!paddle_left.placed_target_ref || !paddle_right.placed_target_ref || paddle_left.placed_target_ref != paddle_right.placed_target_ref)
 		return FALSE
@@ -79,14 +79,14 @@
 
 	return TRUE
 
-/obj/item/defib/proc/can_defib_target(var/mob/caller,var/mob/living/target)
+/obj/item/defib/proc/can_defib_target(mob/caller,mob/living/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)
 
 	return TRUE
 
-/obj/item/defib/proc/defib_target(var/mob/caller,var/mob/living/target)
+/obj/item/defib/proc/defib_target(mob/caller,mob/living/target)
 
 	var/turf/T = get_turf(target)
 
@@ -140,7 +140,7 @@
 
 	return TRUE
 
-/obj/item/defib/click_self(var/mob/caller,location,control,params)
+/obj/item/defib/click_self(mob/caller,location,control,params)
 
 	if(!is_advanced(caller))
 		return FALSE
@@ -163,7 +163,7 @@
 		return ..()
 
 
-/obj/item/defib/post_move(var/atom/old_loc)
+/obj/item/defib/post_move(atom/old_loc)
 	. = ..()
 	if(paddle_left && paddle_left.loc != src)
 		paddle_left.drop_item(src)
@@ -192,7 +192,7 @@
 	linked_defib = null
 	. = ..()
 
-/obj/item/defib_paddle/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/defib_paddle/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_inventory(object))
 		return ..()
@@ -228,7 +228,7 @@
 
 	return ..()
 
-/obj/item/defib_paddle/post_move(var/atom/old_loc)
+/obj/item/defib_paddle/post_move(atom/old_loc)
 
 	. = ..()
 

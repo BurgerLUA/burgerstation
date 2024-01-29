@@ -10,20 +10,20 @@
 
 	var/affects_dead = TRUE
 
-/status_effect/proc/modify_duration(var/atom/attacker,var/mob/living/owner,var/duration)
+/status_effect/proc/modify_duration(atom/attacker,mob/living/owner,duration)
 	return duration
 
-/status_effect/proc/modify_magnitude(var/atom/attacker,var/mob/living/owner,var/magnitude)
+/status_effect/proc/modify_magnitude(atom/attacker,mob/living/owner,magnitude)
 	return magnitude
 
-/status_effect/proc/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/proc/can_add_status_effect(atom/attacker,mob/living/victim)
 
 	if(victim.dead && !affects_dead)
 		return FALSE
 
 	return TRUE
 
-/status_effect/proc/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/proc/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 
 	if(!stealthy)
 		var/turf/T = get_turf(owner)
@@ -31,8 +31,8 @@
 
 	return TRUE
 
-/status_effect/proc/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/proc/on_effect_removed(mob/living/owner,magnitude,duration)
 	return TRUE
 
-/status_effect/proc/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/proc/on_effect_life(mob/living/owner,magnitude,duration)
 	return TRUE

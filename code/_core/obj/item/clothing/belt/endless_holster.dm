@@ -12,7 +12,7 @@
 	size = SIZE_3
 	var/list/created_gun = list() //it's not elegant, but...
 
-/obj/item/clothing/belt/endless_holster/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/belt/endless_holster/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	var/mob/living/self = caller
 	if(istype(object,/obj/hud/inventory))
 		INTERACT_CHECK

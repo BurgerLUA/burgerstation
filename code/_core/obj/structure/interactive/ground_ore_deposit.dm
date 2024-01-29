@@ -12,7 +12,7 @@
 	desired_light_color = "#FFFFFF"
 
 
-/obj/structure/interactive/ground_ore_deposit/New(var/desired_loc)
+/obj/structure/interactive/ground_ore_deposit/New(desired_loc)
 
 	if(!is_floor(loc))
 		qdel(src)
@@ -20,7 +20,7 @@
 	.  = ..()
 
 
-/obj/structure/interactive/ground_ore_deposit/Initialize(var/desired_loc)
+/obj/structure/interactive/ground_ore_deposit/Initialize(desired_loc)
 
 	var/turf/simulated/floor/F = loc
 	F.has_ore = TRUE
@@ -73,7 +73,7 @@
 		update_sprite()
 	return TRUE
 
-/obj/structure/interactive/ground_ore_deposit/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/ground_ore_deposit/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","The meter detects an ore concentration of [ore_score]%.")
 
@@ -107,7 +107,7 @@
 /obj/structure/interactive/ground_ore_deposit/map/carbon
 	material_id = /material/carbon
 
-/obj/structure/interactive/ground_ore_deposit/map/random/New(var/desired_loc)
+/obj/structure/interactive/ground_ore_deposit/map/random/New(desired_loc)
 
 	var/list/possible_materials = list(
 		/material/iron = 100,

@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(discord)
 
 	return TRUE
 
-/subsystem/discord/proc/send_message(var/message_to_send)
+/subsystem/discord/proc/send_message(message_to_send)
 
 	if(world.port == 0) //Don't send to local servers.
 		return FALSE

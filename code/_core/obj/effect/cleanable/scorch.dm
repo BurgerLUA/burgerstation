@@ -8,6 +8,6 @@
 	plane = PLANE_FLOOR_ATTACHMENT
 	layer = LAYER_FLOOR_PLATING
 
-/obj/effect/cleanable/scorch/New(var/desired_loc)
+/obj/effect/cleanable/scorch/New(desired_loc)
 	icon_state = "[rand(1,6)]"
 	. = ..()

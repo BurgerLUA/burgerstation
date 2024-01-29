@@ -19,7 +19,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/drop_pod/post_move(var/atom/old_loc)
+/obj/structure/interactive/drop_pod/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -55,7 +55,7 @@
 	SSshuttle.all_drop_pods += src
 	return ..()
 
-/obj/structure/interactive/drop_pod/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/drop_pod/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -84,7 +84,7 @@
 	return ..()
 
 
-/obj/structure/interactive/drop_pod/proc/set_state(var/mob/caller,var/desired_state,var/turf/desired_loc) //desired_loc is optional, same with caller.
+/obj/structure/interactive/drop_pod/proc/set_state(mob/caller,desired_state,turf/desired_loc) //desired_loc is optional, same with caller.
 
 	if(state == desired_state)
 		return FALSE

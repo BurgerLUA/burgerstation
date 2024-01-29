@@ -12,7 +12,7 @@
 
 	var/last_teleport_health_mod = 0
 
-/ai/boss/leaper/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/leaper/New(desired_loc,mob/living/desired_owner)
 	owner_as_leaper = desired_owner
 	return ..()
 

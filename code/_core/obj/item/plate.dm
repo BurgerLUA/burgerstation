@@ -22,27 +22,27 @@
 
 	var/broken = FALSE
 
-/obj/item/plate/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/plate/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("broken")
 	SAVECONTENTS
 
-/obj/item/plate/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/plate/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("broken")
 	LOADCONTENTS
 
-/obj/item/plate/on_thrown(var/atom/owner,var/atom/hit_atom)
+/obj/item/plate/on_thrown(atom/owner,atom/hit_atom)
 
 	if(hit_atom)
 		on_destruction()
 
 	return ..()
 
-/obj/item/plate/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/plate/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return !broken
 
-/obj/item/plate/on_destruction(var/damage = TRUE)
+/obj/item/plate/on_destruction(damage = TRUE)
 
 	var/turf/T = get_turf(src)
 
@@ -72,7 +72,7 @@
 		icon_state = "[icon_state]_broken"
 
 
-/obj/item/plate/get_examine_list(var/mob/examiner)
+/obj/item/plate/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","This object holds up to [max_load] items that are size [max_size] or lower.")
 
@@ -84,17 +84,17 @@
 		if(I.size <= max_size)
 			I.drop_item(src)
 
-/obj/item/plate/Entered(var/atom/movable/enterer,var/atom/oldloc)
+/obj/item/plate/Entered(atom/movable/enterer,atom/oldloc)
 	. = ..()
 	if(oldloc != src)
 		vis_contents |= enterer
 
-/obj/item/plate/Exited(var/atom/movable/exiter,var/atom/newloc)
+/obj/item/plate/Exited(atom/movable/exiter,atom/newloc)
 	. = ..()
 	if(newloc != src)
 		vis_contents -= exiter
 
-/obj/item/plate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/plate/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM && !broken)
 		INTERACT_CHECK

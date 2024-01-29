@@ -10,13 +10,13 @@
 	)
 	size = "800x800"
 
-/menu/class/open(var/mob/user)
+/menu/class/open(mob/user)
 	cache_resources(user)
 	winclone(user, "window", id)
 	winset(user, "browser([id])", "parent=map;type=browser;size=0x0;anchor1=0,0;anchor2=100,100;is-visible=true")
 	user << output(file, "browser([id])")
 
-/menu/class/on_load(var/mob/user)
+/menu/class/on_load(mob/user)
 
 	if(!is_advanced(user))
 		return FALSE

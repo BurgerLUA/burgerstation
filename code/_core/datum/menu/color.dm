@@ -8,7 +8,7 @@
 	)
 	size = "800x800"
 
-/menu/color/on_load(var/mob/user)
+/menu/color/on_load(mob/user)
 	run_function(usr,"set_reference","'\ref[src]'")
 
 /menu/color/chargen/Topic(href,href_list)

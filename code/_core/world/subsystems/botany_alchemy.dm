@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(botany_alchemy)
 	log_subsystem(name,"Generated [total_alchemy_plants] total alchemy plants in world.")
 	return TRUE
 
-/subsystem/botany_alchemy/unclog(var/mob/caller)
+/subsystem/botany_alchemy/unclog(mob/caller)
 	for(var/k in all_alchemy_plants)
 		var/obj/structure/interactive/alchemy_plant/P = k
 		qdel(P)

@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(air)
 
 	return ..()
 
-/subsystem/air/proc/update_turf_air(var/turf/simulated/source_turf)
+/subsystem/air/proc/update_turf_air(turf/simulated/source_turf)
 
 	if(!ENABLE_ATMOS)
 		return FALSE

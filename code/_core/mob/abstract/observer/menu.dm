@@ -18,11 +18,11 @@
 
 	invisibility = INVISIBILITY_ALWAYS
 
-/mob/abstract/observer/menu/do_say(var/text_to_say, var/should_sanitize = TRUE, var/talk_type_to_use = TEXT_TALK,var/talk_range=TALK_RANGE,var/language_to_use=null)
+/mob/abstract/observer/menu/do_say(text_to_say, should_sanitize = TRUE, talk_type_to_use = TEXT_TALK,talk_range=TALK_RANGE,language_to_use=null)
 	return FALSE
 
 
-/mob/abstract/observer/menu/New(var/desired_loc,var/client/C)
+/mob/abstract/observer/menu/New(desired_loc,client/C)
 
 	. = ..()
 

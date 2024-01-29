@@ -4,7 +4,7 @@
 	icon_state = "crayon"
 	uses = 20
 
-/obj/item/color/crayon/New(var/desired_loc)
+/obj/item/color/crayon/New(desired_loc)
 	..()
 	update_icon()
 
@@ -36,5 +36,5 @@
 	name = "green crayon"
 	selected_color = "#00FF00"
 
-/obj/item/color/crayon/dev/get_selected_color(var/mob/caller)
+/obj/item/color/crayon/dev/get_selected_color(mob/caller)
 	return input(caller,"What would you like the color to be?","Choose a color","#FFFFFF") as color|null

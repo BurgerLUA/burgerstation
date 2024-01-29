@@ -38,7 +38,7 @@
 
 
 
-/proc/find_safe_turf_for_event(var/desired_z=0,var/attempts=10)
+/proc/find_safe_turf_for_event(desired_z=0,attempts=10)
 
 	if(attempts <= 0)
 		return null

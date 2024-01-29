@@ -11,7 +11,7 @@
 
 	var/hostage = TRUE
 
-/mob/living/advanced/npc/hostage/setup_appearance(var/set_default=FALSE)
+/mob/living/advanced/npc/hostage/setup_appearance(set_default=FALSE)
 	. = ..()
 	if(gender == FEMALE && !prob(10))
 		loadout = /loadout/hostage/female
@@ -24,5 +24,5 @@
 	src.add_organ(/obj/item/organ/internal/implant/head/loyalty/nanotrasen)
 
 
-/mob/living/advanced/npc/hostage/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/advanced/npc/hostage/get_damage_received_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 	return 0.5

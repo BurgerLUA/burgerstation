@@ -14,7 +14,7 @@
 	desired_light_power = 0.5
 	desired_light_color = "#FFFFFF"
 
-/obj/structure/interactive/localmachine/snowflake/wishgranter/New(var/desired_loc)
+/obj/structure/interactive/localmachine/snowflake/wishgranter/New(desired_loc)
 
 	if(desired_light_range && desired_light_power && desired_light_color)
 		set_light(desired_light_range,desired_light_power,desired_light_color)
@@ -47,7 +47,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/localmachine/snowflake/wishgranter/Crossed(var/atom/crosser)
+/obj/structure/interactive/localmachine/snowflake/wishgranter/Crossed(atom/crosser)
 
 	if(!is_player(crosser))
 		return FALSE
@@ -74,7 +74,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/localmachine/snowflake/wishgranter/Uncrossed(var/atom/crosser)
+/obj/structure/interactive/localmachine/snowflake/wishgranter/Uncrossed(atom/crosser)
 
 	if(!is_player(crosser))
 		return TRUE

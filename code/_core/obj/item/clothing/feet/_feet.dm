@@ -1,7 +1,7 @@
 /obj/item/clothing/feet
 	worn_layer = LAYER_MOB_CLOTHING_SHOES
 
-/obj/item/clothing/feet/pre_equip(var/atom/old_location,var/obj/hud/inventory/new_location)
+/obj/item/clothing/feet/pre_equip(atom/old_location,obj/hud/inventory/new_location)
 
 	if(new_location && new_location.worn)
 		if(length(protected_limbs))

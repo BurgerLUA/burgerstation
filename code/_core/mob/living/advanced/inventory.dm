@@ -1,4 +1,4 @@
-/mob/living/advanced/proc/add_inventory(var/obj/hud/inventory/I)
+/mob/living/advanced/proc/add_inventory(obj/hud/inventory/I)
 
 	if(!I.id)
 		log_error("[I.get_debug_name()] didn't have an ID!")
@@ -14,7 +14,7 @@
 
 	return TRUE
 
-/mob/living/advanced/proc/remove_inventory(var/obj/hud/inventory/I)
+/mob/living/advanced/proc/remove_inventory(obj/hud/inventory/I)
 
 	if(!I.id)
 		log_error("[I.get_debug_name()] didn't have an ID!")
@@ -49,12 +49,12 @@
 	return TRUE
 
 
-/mob/living/advanced/proc/open_inventory(var/obj/hud/inventory/I)
+/mob/living/advanced/proc/open_inventory(obj/hud/inventory/I)
 	active_inventory = I
 	return TRUE
 
 
-/mob/living/advanced/proc/drop_hands(var/turf/T,var/disarm=FALSE)
+/mob/living/advanced/proc/drop_hands(turf/T,disarm=FALSE)
 	. = list()
 	if(inventories_by_id[BODY_HAND_LEFT_HELD])
 		. += inventories_by_id[BODY_HAND_LEFT_HELD].drop_objects(T,disarm)

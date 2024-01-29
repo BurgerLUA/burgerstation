@@ -45,7 +45,7 @@
 	FINALIZE(reward)
 	value_current = 0
 
-/obj/item/contract/proc/on_kill(var/mob/living/attacker,var/list/data=list())
+/obj/item/contract/proc/on_kill(mob/living/attacker,list/data=list())
 
 	var/mob/living/victim = data[1]
 	if(istype(victim,type_to_check))
@@ -66,7 +66,7 @@
 /obj/item/contract/get_base_value()
 	return CEILING(reward.get_value()*0.25,1)
 
-/obj/item/contract/get_examine_details_list(var/mob/examiner)
+/obj/item/contract/get_examine_details_list(mob/examiner)
 	. = ..()
 	if(burgerbux_reward)
 		. += div("notice","Reward on completion: [reward.name] and [burgerbux_reward] Burgerbux.")
@@ -75,26 +75,26 @@
 	. += div("notice","[value_current] out of [value_max] [objective_text].")
 	. += div("notice bold","Contract progress is only counted if this object is slotted in the top right contract slot.")
 
-/obj/item/contract/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/contract/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("reward")
 	SAVEVAR("value_current")
 	SAVEVAR("burgerbux_reward")
 
-/obj/item/contract/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/contract/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("reward")
 	LOADVAR("value_current")
 	LOADVAR("burgerbux_reward")
 
-/obj/item/contract/on_equip(var/atom/old_location,var/silent=FALSE)
+/obj/item/contract/on_equip(atom/old_location,silent=FALSE)
 	. = ..()
 	if(istype(loc,/obj/hud/inventory/organs/groin/pocket/contract))
 		var/obj/hud/inventory/organs/groin/pocket/contract/I = loc
 		if(is_advanced(I.owner))
 			HOOK_ADD("on_kill","on_kill_\ref[src]",I.owner,src,src::on_kill())
 
-/obj/item/contract/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE) //When the object is dropped from the old_inventory
+/obj/item/contract/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE) //When the object is dropped from the old_inventory
 	. = ..()
 	if(istype(old_inventory,/obj/hud/inventory/organs/groin/pocket/contract))
 		var/obj/hud/inventory/organs/groin/pocket/contract/I = old_inventory
@@ -102,7 +102,7 @@
 			HOOK_REMOVE("on_kill","on_kill_\ref[src]",I.owner)
 
 
-/obj/item/contract/proc/turn_in(var/mob/living/advanced/player/P,var/params)
+/obj/item/contract/proc/turn_in(mob/living/advanced/player/P,params)
 	var/turf/T = get_turf(P)
 	if(src.value_current < src.value_max)
 		P.to_chat(span("warning","You feel it would be unwise to try to turn in a contract that isn't complete yet!"))

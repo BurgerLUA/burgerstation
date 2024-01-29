@@ -13,7 +13,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/disposals/machine/inlet/set_dir(var/desired_dir,var/force = FALSE)
+/obj/structure/interactive/disposals/machine/inlet/set_dir(desired_dir,force = FALSE)
 
 	. = ..()
 

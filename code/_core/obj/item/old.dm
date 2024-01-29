@@ -1,4 +1,4 @@
-/obj/item/proc/get_damage_type_text(var/mob/living/advanced/A)
+/obj/item/proc/get_damage_type_text(mob/living/advanced/A)
 
 	var/returning_text = ""
 

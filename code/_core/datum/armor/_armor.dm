@@ -10,7 +10,7 @@
 
 	var/value = 0 //Mainly used for clothing.
 
-/armor/New(var/desired_loc)
+/armor/New(desired_loc)
 	. = ..()
 	value = 0
 	var/total_armor = 0

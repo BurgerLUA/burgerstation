@@ -49,15 +49,15 @@
 /obj/item/hand_teleporter/get_battery()
 	return battery
 
-/obj/item/hand_teleporter/save_item_data(var/save_inventory = TRUE)
+/obj/item/hand_teleporter/save_item_data(save_inventory = TRUE)
 	. = ..()
 	SAVEATOM("battery")
 	
-/obj/item/hand_teleporter/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/hand_teleporter/load_item_data_pre(mob/living/advanced/player/P,list/object_data)
 	. = ..()
 	LOADATOM("battery")
 	
-/obj/item/hand_teleporter/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/hand_teleporter/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	object = object.defer_click_on_object(location,control,params)
 
@@ -96,7 +96,7 @@
 
 	return ..()
 
-/obj/item/hand_teleporter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params) //The src is used on the object
+/obj/item/hand_teleporter/click_on_object(mob/caller as mob,atom/object,location,control,params) //The src is used on the object
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -134,5 +134,5 @@
 
 	return TRUE
 
-/obj/item/hand_teleporter/get_examine_list(var/mob/caller)
+/obj/item/hand_teleporter/get_examine_list(mob/caller)
 	return ..() + div("notice","Teleports Remaining: [FLOOR(battery.charge_current/30000,1)]")

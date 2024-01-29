@@ -1,9 +1,9 @@
-/proc/broadcast_to_clients(var/text_to_say as text, var/chat_type = CHAT_TYPE_OOC)
+/proc/broadcast_to_clients(text_to_say as text, chat_type = CHAT_TYPE_OOC)
 	for(var/k in SSclient.all_clients)
 		var/client/C = SSclient.all_clients[k]
 		C.to_chat(text_to_say,chat_type)
 
-/proc/use_radio(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/proc/use_radio(atom/speaker, atom/source, text_to_say, raw_text_to_say, language_text_to_say, text_type, frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 
 	var/list/radio_data = list(
 		"speaker" = speaker,
@@ -27,7 +27,7 @@
 
 	return TRUE
 
-/proc/use_ears(var/atom/speaker, var/atom/source, var/text_to_say, var/raw_text_to_say, var/language_text_to_say, var/text_type, var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE,var/talk_range_override)
+/proc/use_ears(atom/speaker, atom/source, text_to_say, raw_text_to_say, language_text_to_say, text_type, frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE,talk_range_override)
 
 	var/turf/T1 = get_turf(source)
 
@@ -57,7 +57,7 @@
 	return TRUE
 
 
-/proc/talk(var/atom/speaker, var/atom/source, var/text_to_say, var/text_type=TEXT_TALK, var/frequency=-1, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE) //Range only applies to TALK and RADIO
+/proc/talk(atom/speaker, atom/source, text_to_say, text_type=TEXT_TALK, frequency=-1, language = LANGUAGE_BASIC,talk_range=TALK_RANGE) //Range only applies to TALK and RADIO
 
 	if(!text_to_say)
 		return FALSE
@@ -136,7 +136,7 @@
 			if(speaker.is_player_controlled()) log_chat("GHOST: [speaker.get_log_name()]: [text_to_say]")
 
 
-/atom/proc/visible_message(var/third_person_text,var/first_person_text,var/blind_text,var/view_range=VIEW_RANGE)
+/atom/proc/visible_message(third_person_text,first_person_text,blind_text,view_range=VIEW_RANGE)
 
 	var/turf/T = get_turf(src)
 

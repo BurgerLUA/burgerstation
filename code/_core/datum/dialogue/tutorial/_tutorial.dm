@@ -1,6 +1,6 @@
 /dialogue/tutorial/front_desk
 
-/dialogue/tutorial/front_desk/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/tutorial/front_desk/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	var/list/dialogue_options = list()
 

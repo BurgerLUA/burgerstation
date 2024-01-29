@@ -15,7 +15,7 @@
 		"connection_time" = get_time()
 	)
 
-/savedata/client/connection_history/New(var/desired_ckey)
+/savedata/client/connection_history/New(desired_ckey)
 
 	. = ..()
 
@@ -34,7 +34,7 @@
 
 	rustg_file_write(new_file_data,new_file_name)
 
-/savedata/client/connection_history/get_folder(var/folder_id)
+/savedata/client/connection_history/get_folder(folder_id)
 	return replacetext(CONNECTION_PATH_FORMAT,"%CKEY",folder_id)
 
 /savedata/client/connection_history/get_files()

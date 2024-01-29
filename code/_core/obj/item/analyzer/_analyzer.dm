@@ -5,7 +5,7 @@
 	has_quick_function = TRUE //use analyzers from the belt slots
 	rarity = RARITY_COMMON
 
-/obj/item/analyzer/quick(var/mob/caller,var/atom/object,location,params)
+/obj/item/analyzer/quick(mob/caller,atom/object,location,params)
 
 	if(!is_living(caller))
 		return FALSE
@@ -13,20 +13,20 @@
 	return click_on_object(caller, object, location, null, params)
 
 
-/obj/item/analyzer/proc/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/proc/on_scan(mob/caller,atom/target,location,control,params)
 	return TRUE
 
 
-/obj/item/analyzer/proc/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/proc/can_be_scanned(mob/caller,atom/target)
 	return TRUE
 
-/obj/item/analyzer/proc/can_scan(var/mob/caller,var/atom/target)
+/obj/item/analyzer/proc/can_scan(mob/caller,atom/target)
 	if(next_scan >= world.time)
 		caller.to_chat(span("warning","\The [src.name] is recharging, please wait!"))
 		return FALSE
 	return TRUE
 
-/obj/item/analyzer/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/analyzer/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane < PLANE_HUD && can_be_scanned(caller,object))
 		INTERACT_CHECK

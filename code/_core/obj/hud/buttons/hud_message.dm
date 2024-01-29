@@ -1,6 +1,6 @@
 
 
-/proc/set_message(var/desired_text,var/instant = FALSE)
+/proc/set_message(desired_text,instant = FALSE)
 
 	for(var/k in SSobj.all_hud_messages)
 		var/obj/hud/button/message/M = k
@@ -32,7 +32,7 @@
 
 	var/current_text
 
-/obj/hud/button/message/New(var/desired_loc)
+/obj/hud/button/message/New(desired_loc)
 	alpha = 0
 	SSobj.all_hud_messages += src
 	return ..()
@@ -41,7 +41,7 @@
 	SSobj.all_hud_messages -= src
 	return ..()
 
-/obj/hud/button/message/proc/set_text(var/desired_text,var/instant = FALSE)
+/obj/hud/button/message/proc/set_text(desired_text,instant = FALSE)
 
 	if(!desired_text)
 		if(instant)

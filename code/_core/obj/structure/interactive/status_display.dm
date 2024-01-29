@@ -1,6 +1,6 @@
 
 
-/proc/set_status_display(var/status_id,var/message)
+/proc/set_status_display(status_id,message)
 
 	if(!length(SSobj.status_displays))
 		return FALSE
@@ -55,12 +55,12 @@
 	add_overlay(I2)
 
 
-/obj/structure/interactive/status_display/New(var/desired_loc)
+/obj/structure/interactive/status_display/New(desired_loc)
 	. = ..()
 	update_sprite()
 	set_text("Hello")
 
-/obj/structure/interactive/status_display/proc/set_text(var/desired_text)
+/obj/structure/interactive/status_display/proc/set_text(desired_text)
 	maptext = "<center valign='middle'>[desired_text]</center>"
 	return TRUE
 

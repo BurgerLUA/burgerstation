@@ -17,5 +17,5 @@
 /obj/item/weapon/ranged/magic/tome/holy_warrior/get_static_spread() //Base spread
 	return 0
 
-/obj/item/weapon/ranged/magic/tome/holy_warrior/get_skill_spread(var/mob/living/L) //Base spread
+/obj/item/weapon/ranged/magic/tome/holy_warrior/get_skill_spread(mob/living/L) //Base spread
 	return 0

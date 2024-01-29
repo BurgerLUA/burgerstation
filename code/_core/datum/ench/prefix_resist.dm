@@ -4,11 +4,11 @@
 	magnitude_min = 1
 	magnitude_max = 5
 
-/ench/prefix/resist/on_equipped(var/mob/living/L,var/obj/item/clothing/C)
+/ench/prefix/resist/on_equipped(mob/living/L,obj/item/clothing/C)
 	. = ..()
 	L.add_mob_value("[damage_id]_resist","ench:\ref[src]",magnitude)
 
-/ench/prefix/resist/on_unequipped(var/mob/living/L,var/obj/item/clothing/C)
+/ench/prefix/resist/on_unequipped(mob/living/L,obj/item/clothing/C)
 	. = ..()
 	L.remove_mob_value("[damage_id]_resist","ench:\ref[src]")
 

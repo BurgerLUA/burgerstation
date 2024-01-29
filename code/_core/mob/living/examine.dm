@@ -1,4 +1,4 @@
-/mob/living/proc/get_damage_description(var/mob/examiner)
+/mob/living/proc/get_damage_description(mob/examiner)
 
 	if(!health || health.health_max <= 0)
 		return null
@@ -60,7 +60,7 @@
 	return div(div_class,"[prefix] [english_list(damage_description)].")
 
 
-/mob/living/get_examine_list(var/mob/examiner)
+/mob/living/get_examine_list(mob/examiner)
 
 	var/object_icon = ICON_TO_HTML(icon,icon_state,32,32)
 	. = list(
@@ -92,7 +92,7 @@
 
 	return null
 
-/mob/living/get_examine_details_list(var/mob/examiner)
+/mob/living/get_examine_details_list(mob/examiner)
 
 	. = ..()
 

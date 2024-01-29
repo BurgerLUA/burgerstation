@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(logging)
 	var/version = "NOT FOUND"
 
 //Logging shouldn't be unclogged.
-/subsystem/logging/unclog(var/mob/caller)
+/subsystem/logging/unclog(mob/caller)
 	. = ..()
 
 /subsystem/logging/Initialize()
@@ -42,17 +42,17 @@ SUBSYSTEM_DEF(logging)
 
 	return ..()
 
-/subsystem/logging/proc/get_logging_dir(var/type)
+/subsystem/logging/proc/get_logging_dir(type)
 	return "data/server/logging/[round_id]-[start_date]/[type].txt"
 
 
-/subsystem/logging/proc/raw_log(var/file_name,var/text_data,var/timestamps=FALSE)
+/subsystem/logging/proc/raw_log(file_name,text_data,timestamps=FALSE)
 	if(!file_name || !text_data)
 		return FALSE
 	rustg_log_write(get_logging_dir(file_name),text_data, timestamps ? "true" : null)
 	return TRUE
 
-/subsystem/logging/proc/log_from_list(var/identifier,var/list/desired_list)
+/subsystem/logging/proc/log_from_list(identifier,list/desired_list)
 	if(!length(desired_list))
 		return FALSE
 	var/log_string = english_list(desired_list,"LIST ERROR","\n","\n")

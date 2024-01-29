@@ -2,7 +2,7 @@ var/mob/abstract/dview/dview = new
 
 
 // Version of view() that ignores luminosity and allows you to set
-/proc/dview(var/range = world.view, var/atom/source, var/see_invisible = 0)
+/proc/dview(range = world.view, atom/source, see_invisible = 0)
 	dview.loc           = source
 	dview.see_invisible = see_invisible
 

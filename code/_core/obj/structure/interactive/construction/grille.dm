@@ -22,7 +22,7 @@
 
 	layer = LAYER_OBJ_WINDOW - 0.1
 
-/obj/structure/interactive/construction/grille/proc/can_construct_window(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/grille/proc/can_construct_window(mob/caller,obj/item/material/sheet/S)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(S)
@@ -35,7 +35,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/interactive/construction/grille/proc/construct_window(var/mob/caller,var/obj/item/material/sheet/S)
+/obj/structure/interactive/construction/grille/proc/construct_window(mob/caller,obj/item/material/sheet/S)
 	var/obj/structure/window/W = new(src.loc)
 	W.material_id = S.material_id
 	W.color = S.color
@@ -46,7 +46,7 @@
 	S.add_item_count(-1)
 	return TRUE
 
-/obj/structure/interactive/construction/grille/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/construction/grille/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object
@@ -75,7 +75,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/interactive/construction/grille/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/construction/grille/on_destruction(damage = TRUE)
 	create_destruction(get_turf(src),list(/obj/item/material/rod/ = 2),material_id)
 	. = ..()
 	qdel(src)

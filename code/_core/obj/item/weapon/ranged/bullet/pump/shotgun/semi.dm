@@ -82,13 +82,13 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_static_spread()
 	return 0.007
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_skill_spread(mob/living/L)
 	return max(0,0.04 - (0.08 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/semi/get_base_spread()
 	return 0.2
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/semi/handle_ammo(var/mob/caller)
+/obj/item/weapon/ranged/bullet/pump/shotgun/semi/handle_ammo(mob/caller)
 	. = ..()
 	pump(silent = TRUE)
 

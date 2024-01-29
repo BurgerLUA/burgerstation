@@ -25,7 +25,7 @@
 
 	return vis_contents[contents_length]
 
-/obj/hud/button/inventory_defer/get_examine_list(var/mob/examiner)
+/obj/hud/button/inventory_defer/get_examine_list(mob/examiner)
 	var/obj/item/I = get_top_vis_object()
 	if(I)
 		return I.get_examine_list(examiner)
@@ -33,7 +33,7 @@
 		return referencing.get_examine_list(examiner)
 	. = ..()
 
-/obj/hud/button/inventory_defer/get_examine_details_list(var/mob/examiner)
+/obj/hud/button/inventory_defer/get_examine_details_list(mob/examiner)
 	var/obj/item/I = get_top_vis_object()
 	if(I)
 		return I.get_examine_details_list(examiner)
@@ -41,7 +41,7 @@
 		return referencing.get_examine_details_list(examiner)
 	. = ..()
 
-/obj/hud/button/inventory_defer/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/inventory_defer/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!referencing) CRASH("Referenced inventory not found!")
 
@@ -112,7 +112,7 @@ var/global/list/redscale = list(
 	0,0,0,1
 )
 
-/obj/hud/button/inventory_defer/proc/clone(var/obj/hud/inventory/I)
+/obj/hud/button/inventory_defer/proc/clone(obj/hud/inventory/I)
 
 	referencing = I
 
@@ -142,7 +142,7 @@ var/global/list/redscale = list(
 
 	return TRUE
 
-/obj/hud/button/inventory_defer/update_owner(var/mob/desired_owner)
+/obj/hud/button/inventory_defer/update_owner(mob/desired_owner)
 
 	assoc_button?.update_owner(desired_owner)
 

@@ -18,7 +18,7 @@
 	return ..()
 
 
-/ai/doorman/should_attack_mob(var/mob/living/L)
+/ai/doorman/should_attack_mob(mob/living/L)
 
 	if(L == owner)
 		return FALSE
@@ -47,7 +47,7 @@
 
 	return TRUE
 
-/ai/doorman/find_new_objectives(var/tick_rate)
+/ai/doorman/find_new_objectives(tick_rate)
 
 	if(length(attackers))
 		var/mob/living/chosen_target = pick(attackers)
@@ -57,7 +57,7 @@
 	return TRUE
 
 
-/ai/doorman/handle_current_objectives(var/tick_rate)
+/ai/doorman/handle_current_objectives(tick_rate)
 
 	if(!(locate(/obj/structure/interactive/scanner/living) in objective_attack.loc.contents))
 		attackers -= objective_attack

@@ -1,4 +1,4 @@
-/obj/hud/inventory/MouseDrag(var/atom/src_object,var/atom/over_object,var/atom/src_location,var/atom/over_location,src_control,over_control,params)
+/obj/hud/inventory/MouseDrag(atom/src_object,atom/over_object,atom/src_location,atom/over_location,src_control,over_control,params)
 
 	if(!is_player(usr) || !is_inventory(over_object))
 		return ..()

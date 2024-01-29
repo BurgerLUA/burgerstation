@@ -68,7 +68,7 @@
 	set_light_sprite(desired_light_range, desired_light_power, desired_light_color,desired_light_angle)
 	return TRUE
 
-/obj/effect/temp/portal/New(var/desired_loc,var/desired_time)
+/obj/effect/temp/portal/New(desired_loc,desired_time)
 	. = ..()
 	transform *= 0.01
 	animate(src,transform=get_base_transform(),time=5,easing=BOUNCE_EASING)
@@ -89,7 +89,7 @@
 
 	CALLBACK("delete_\ref[src]",300 SECONDS,src,.datum/proc/delete)
 
-/obj/effect/temp/portal/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/effect/temp/portal/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object) && linked_portal && src.invisibility < 101)
 		INTERACT_CHECK

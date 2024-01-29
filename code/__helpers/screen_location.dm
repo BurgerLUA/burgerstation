@@ -1,6 +1,6 @@
 var/global/regex/ScreenLocRegex = regex("(\\d+):(\\d+),(\\d+):(\\d+)")
 
-/proc/parse_screen_loc(var/screen_loc)
+/proc/parse_screen_loc(screen_loc)
 
 	if(ScreenLocRegex.Find(screen_loc))
 		var/list/data = ScreenLocRegex.group

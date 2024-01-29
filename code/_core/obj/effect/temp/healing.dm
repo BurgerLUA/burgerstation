@@ -6,7 +6,7 @@
 	duration = 3 SECONDS
 	color = "#FF0000"
 
-/obj/effect/temp/healing/New(var/desired_location,var/desired_time,var/desired_color)
+/obj/effect/temp/healing/New(desired_location,desired_time,desired_color)
 
 	if(desired_color)
 		color = desired_color

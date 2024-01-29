@@ -19,7 +19,7 @@
 
 	screen_loc = "CENTER,CENTER"
 
-/obj/hud/inventory/exchange/proc/on_exchange(var/obj/item/inserted_item)
+/obj/hud/inventory/exchange/proc/on_exchange(obj/item/inserted_item)
 	return FALSE
 
 
@@ -27,7 +27,7 @@
 	name = "gold coins exchange"
 
 
-/obj/hud/inventory/exchange/gold_coins/on_exchange(var/obj/item/inserted_item)
+/obj/hud/inventory/exchange/gold_coins/on_exchange(obj/item/inserted_item)
 
 	if(!istype(inserted_item,/obj/item/currency))
 		return FALSE

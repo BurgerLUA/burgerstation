@@ -16,11 +16,11 @@
 
 	size = SIZE_3
 
-/obj/item/clothing/overwear/armor/plate_carrier/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE)
+/obj/item/clothing/overwear/armor/plate_carrier/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE)
 	. = ..()
 	SAVELISTATOM("installed_plate_carriers")
 
-/obj/item/clothing/overwear/armor/plate_carrier/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data)
+/obj/item/clothing/overwear/armor/plate_carrier/load_item_data_pre(mob/living/advanced/player/P,list/object_data)
 	. = ..()
 	LOADLISTATOM("installed_plate_carriers")
 
@@ -36,7 +36,7 @@
 			.[damagetype] += P.armor_base[damagetype] > 0 ? P.armor_base[damagetype] * power_mul : P.armor_base[damagetype]
 
 
-/obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/clothing/overwear/armor/plate_carrier/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/armor_plate/))
 		INTERACT_CHECK
@@ -57,7 +57,7 @@
 
 	return ..()
 
-/obj/item/clothing/overwear/armor/plate_carrier/click_self(var/mob/caller)
+/obj/item/clothing/overwear/armor/plate_carrier/click_self(mob/caller)
 
 	if(is_advanced(caller) && length(installed_plate_carriers) && caller.attack_flags & CONTROL_MOD_DISARM)
 		INTERACT_CHECK

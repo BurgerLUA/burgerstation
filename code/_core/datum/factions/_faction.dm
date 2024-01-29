@@ -15,13 +15,13 @@
 
 	var/friendly_fire = TRUE //Set to true if people can kill eachother in this faction.
 
-/faction/proc/is_hostile_to(var/faction/F)
+/faction/proc/is_hostile_to(faction/F)
 	if(length(relationships) && relationships[F.id])
 		return relationships[F.id] <= aggressiveness
 	else
 		return FALSE
 
-/faction/proc/is_hostile_to_mob(var/mob/living/L)
+/faction/proc/is_hostile_to_mob(mob/living/L)
 	for(var/id in L.factions)
 		if(relationships[id] && relationships[id] <= aggressiveness)
 			return TRUE

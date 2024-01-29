@@ -18,7 +18,7 @@
 
 	size = SIZE_3
 
-/obj/item/container/cheese_mold/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/cheese_mold/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("allow_reagent_transfer_from")
 	SAVEVAR("process_count")
@@ -27,7 +27,7 @@
 		for(var/k in cheese_mix)
 			.["cheese_mix"]["[k]"] = cheese_mix[k]
 
-/obj/item/container/cheese_mold/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/cheese_mold/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("allow_reagent_transfer_from")
 	SAVEVAR("process_count")
@@ -37,7 +37,7 @@
 			if(R)
 				cheese_mix[R] = object_data["cheese_mix"][k]
 
-/obj/item/container/cheese_mold/get_examine_list(var/mob/caller)
+/obj/item/container/cheese_mold/get_examine_list(mob/caller)
 	. = ..()
 	if(process_count >= CHEESE_PROCESS_TIME)
 		. += div("notice","The cheese is ready to be removed!")
@@ -67,7 +67,7 @@
 
 	CALLBACK("\ref[src]_process_cheese",1 SECONDS,src,src::process())
 
-/obj/item/container/cheese_mold/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/cheese_mold/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(process_count < CHEESE_PROCESS_TIME || !is_inventory(object))
 		return ..()
@@ -127,7 +127,7 @@
 	return TRUE
 
 
-/obj/item/container/cheese_mold/click_self(var/mob/caller,location,control,params)
+/obj/item/container/cheese_mold/click_self(mob/caller,location,control,params)
 
 	var/answer = input("Are you sure you want to empty the contents of \the [src.name]?","Empty Contents","Cancel") in list("Yes","No","Cancel")
 	if(answer == "Yes")

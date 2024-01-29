@@ -1,4 +1,4 @@
-/mob/living/advanced/player/post_move(var/atom/old_loc)
+/mob/living/advanced/player/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -31,7 +31,7 @@
 			src.update_eyes()
 
 
-/mob/living/advanced/player/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+/mob/living/advanced/player/on_chunk_cross(chunk/old_chunk,chunk/new_chunk)
 
 	. = ..()
 

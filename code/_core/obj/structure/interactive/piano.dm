@@ -9,7 +9,7 @@
 
 	return ..()
 
-/obj/structure/interactive/piano/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/piano/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 

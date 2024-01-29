@@ -16,7 +16,7 @@
 
 	value = 0 //Auto generated.
 
-/obj/item/material/can_transfer_stacks_to(var/obj/item/target)
+/obj/item/material/can_transfer_stacks_to(obj/item/target)
 
 	if(target == src)
 		return FALSE
@@ -39,11 +39,11 @@
 
 	return TRUE
 
-/obj/item/material/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/material/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEPATH("material_id")
 
-/obj/item/material/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/material/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADPATH("material_id")
 

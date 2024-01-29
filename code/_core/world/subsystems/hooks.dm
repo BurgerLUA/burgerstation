@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(hook)
 
 //GMOD, anyone? Doesn't need a priority var as people should just add/overwrite the proc it calls.
 //Adds a hook to an event.
-/subsystem/hook/proc/add_hook(var/event_name,var/identifier,var/datum/owner,var/datum/proc_target,var/proc_to_use)
+/subsystem/hook/proc/add_hook(event_name,identifier,datum/owner,datum/proc_target,proc_to_use)
 
 	ASSERT(event_name)
 	ASSERT(identifier)
@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(hook)
 
 	return TRUE
 
-/subsystem/hook/proc/remove_hook(var/event_name,var/identifier,var/datum/datum_to_use)
+/subsystem/hook/proc/remove_hook(event_name,identifier,datum/datum_to_use)
 
 	ASSERT(datum_to_use)
 
@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(hook)
 
 	return TRUE
 
-/subsystem/hook/proc/call_hook(var/event_name,var/datum/datum_to_use,var/args)
+/subsystem/hook/proc/call_hook(event_name,datum/datum_to_use,args)
 
 	ASSERT(event_name)
 

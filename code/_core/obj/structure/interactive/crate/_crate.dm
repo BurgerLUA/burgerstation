@@ -38,7 +38,7 @@
 
 	interaction_flags = FLAG_INTERACTION_LIVING | FLAG_INTERACTION_NO_TURF_CHECKING
 
-/obj/structure/interactive/crate/post_move(var/atom/old_loc)
+/obj/structure/interactive/crate/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -47,7 +47,7 @@
 		M.post_move(old_loc)
 
 
-/obj/structure/interactive/crate/on_crush(var/message=TRUE)
+/obj/structure/interactive/crate/on_crush(message=TRUE)
 
 	for(var/k in contents)
 		var/atom/movable/M = k
@@ -64,7 +64,7 @@
 		return TRUE
 
 
-/obj/structure/interactive/crate/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/crate/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if(!open && damage_amount > 20 & luck(src,20 + damage_amount,FALSE))
 		visible_message(span("warning","\The [src.name] shoots open!"))
@@ -72,7 +72,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/Cross(var/atom/movable/O,atom/oldloc)
+/obj/structure/interactive/crate/Cross(atom/movable/O,atom/oldloc)
 
 	if(istype(O,/obj/structure/interactive/crate))
 		return FALSE
@@ -85,7 +85,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/Uncross(var/atom/movable/O,atom/newloc)
+/obj/structure/interactive/crate/Uncross(atom/movable/O,atom/newloc)
 
 	if(open)
 		return TRUE
@@ -99,7 +99,7 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!(caller.attack_flags & CONTROL_MOD_GRAB))
 		INTERACT_CHECK
@@ -128,10 +128,10 @@
 
 	return ..()
 
-/obj/structure/interactive/crate/proc/toggle(var/mob/caller)
+/obj/structure/interactive/crate/proc/toggle(mob/caller)
 	return open ? close(caller) : open(caller)
 
-/obj/structure/interactive/crate/proc/can_store(var/atom/movable/M)
+/obj/structure/interactive/crate/proc/can_store(atom/movable/M)
 	if(M.anchored)
 		return FALSE
 	if(M.size > src.size)
@@ -145,14 +145,14 @@
 			return FALSE
 	return TRUE
 
-/obj/structure/interactive/crate/proc/can_prevent_close(var/atom/movable/M)
+/obj/structure/interactive/crate/proc/can_prevent_close(atom/movable/M)
 	if(is_living(M))
 		var/mob/living/L = M
 		if(!L.horizontal || L.size > size)
 			return TRUE
 	return FALSE
 
-/obj/structure/interactive/crate/proc/close(var/mob/caller)
+/obj/structure/interactive/crate/proc/close(mob/caller)
 
 	if(qdeleting)
 		return FALSE
@@ -198,7 +198,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/crate/proc/open(var/mob/caller)
+/obj/structure/interactive/crate/proc/open(mob/caller)
 
 	if(!src.z)
 		if(loc) caller?.to_chat(span("warning","\The [loc.name] is preventing \the [src.name] from being opened!"))

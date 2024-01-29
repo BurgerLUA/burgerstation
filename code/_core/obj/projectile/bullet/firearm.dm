@@ -9,7 +9,7 @@
 	name = "sniper bullet"
 	icon_state = "bullet_massive"
 
-/obj/projectile/bullet/firearm/sniper/explosive/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/bullet/firearm/sniper/explosive/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && old_loc)
 		explode(old_loc,3,owner,weapon,iff_tag)
@@ -32,7 +32,7 @@
 	icon_state = "bullet_small"
 	var/smart = FALSE
 
-/obj/projectile/bullet/firearm/pistol/smart/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+/obj/projectile/bullet/firearm/pistol/smart/New(desired_loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1,desired_penetrations_left=0)
 	. = ..()
 
 	if(istype(weapon,/obj/item/weapon/ranged/bullet/magazine/smg/smart))
@@ -57,7 +57,7 @@
 		smart = FALSE
 
 
-/obj/projectile/bullet/firearm/pistol/smart/update_projectile(var/tick_rate=1)
+/obj/projectile/bullet/firearm/pistol/smart/update_projectile(tick_rate=1)
 
 	. = ..()
 
@@ -82,7 +82,7 @@
 	name = "shotgun pellet"
 	icon_state = "pellet"
 
-/obj/projectile/bullet/firearm/shotgun_pellet/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1)
+/obj/projectile/bullet/firearm/shotgun_pellet/New(loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1)
 	icon_state = "pellets_[rand(1,4)]"
 	return ..()
 
@@ -90,7 +90,7 @@
 	name = "shotgun flechette"
 	icon_state = "flechette"
 
-/obj/projectile/bullet/firearm/shotgun_flechette/New(var/loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1)
+/obj/projectile/bullet/firearm/shotgun_flechette/New(loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1)
 	icon_state = "flechettes_[rand(1,4)]"
 	return ..()
 

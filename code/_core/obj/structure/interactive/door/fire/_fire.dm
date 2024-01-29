@@ -12,6 +12,6 @@
 
 	alpha = 100
 
-/obj/structure/interactive/door/fire/New(var/desired_loc)
+/obj/structure/interactive/door/fire/New(desired_loc)
 	alpha = 255
 	return ..()

@@ -27,7 +27,7 @@
 	. = ..()
 
 
-/obj/structure/interactive/vr_shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/vr_shop/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return ..()
@@ -92,10 +92,10 @@
 
 	special = TRUE
 
-/obj/structure/interactive/vending/virtual_reality/get_bullshit_price(var/desired_price)
+/obj/structure/interactive/vending/virtual_reality/get_bullshit_price(desired_price)
 	return CEILING(desired_price,10)
 
-/obj/structure/interactive/vending/virtual_reality/modify_item(var/obj/item/I,var/obj/item/base_item)
+/obj/structure/interactive/vending/virtual_reality/modify_item(obj/item/I,obj/item/base_item)
 
 	. = ..()
 

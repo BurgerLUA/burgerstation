@@ -18,7 +18,7 @@
 
 #define CHAT_TEXT_CHARACTER_LIMIT 288 //maximum displayed for above character text
 
-/obj/effect/chat_text/New(var/atom/desired_loc,var/desired_text,var/bypass_length=FALSE)
+/obj/effect/chat_text/New(atom/desired_loc,desired_text,bypass_length=FALSE)
 
 	if(ismob(desired_loc))
 		owner = desired_loc

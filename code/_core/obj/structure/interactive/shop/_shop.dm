@@ -111,7 +111,7 @@
 		pixel_y = 0
 
 
-/obj/structure/interactive/shop/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/shop/get_examine_list(mob/examiner)
 
 	. = list()
 	. += stored_item.get_examine_list(examiner)
@@ -126,7 +126,7 @@
 		. += div("notice","This item is being sold for [stored_item_cost] credits.")
 
 
-/obj/structure/interactive/shop/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/shop/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_player(caller) || !caller.client)
 		return ..()

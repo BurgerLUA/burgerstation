@@ -38,7 +38,7 @@
 
 	return ..()
 
-/obj/structure/interactive/slime_wall/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/slime_wall/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)
 

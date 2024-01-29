@@ -2,7 +2,7 @@
 
 /savedata/client/mob
 
-/savedata/client/mob/get_folder(var/folder_id)
+/savedata/client/mob/get_folder(folder_id)
 	. = replacetext(CHARACTER_PATH_FORMAT,"%CKEY",folder_id)
 	return
 
@@ -24,7 +24,7 @@
 		"stored_mechs" = list()
 	)
 
-/savedata/client/mob/New(var/desired_ckey)
+/savedata/client/mob/New(desired_ckey)
 	..()
 	reset_data()
 	var/client/owner = CLIENT(ckey)
@@ -35,7 +35,7 @@
 	log_error("SERIOUS ERROR: Mobdata for [ckey] was destroyed!")
 	return FALSE
 
-/savedata/client/mob/get_file(var/file_id)
+/savedata/client/mob/get_file(file_id)
 	var/returning = "[get_folder(ckey)][CHARACTER_FILE_FORMAT]"
 	returning = replacetext(returning,"%CKEY",bot_controlled ? "BOT" : ckey)
 	returning = replacetext(returning,"%CID",file_id)

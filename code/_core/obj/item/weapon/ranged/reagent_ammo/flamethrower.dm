@@ -70,7 +70,7 @@
 		var/obj/projectile/P = k
 		P.damage_multiplier += average_flammability
 
-/obj/item/weapon/ranged/reagent_ammo/flamethrower/proc/airblast(var/mob/caller,var/atom/object,location,params)
+/obj/item/weapon/ranged/reagent_ammo/flamethrower/proc/airblast(mob/caller,atom/object,location,params)
 
 	var/desired_dir = get_dir(caller,object)
 	var/turf/desired_loc = get_step(caller,desired_dir)

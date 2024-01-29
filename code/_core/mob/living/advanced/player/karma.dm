@@ -1,4 +1,4 @@
-/proc/punish_player(var/mob/living/advanced/player/P)
+/proc/punish_player(mob/living/advanced/player/P)
 
 	var/karma_difference = abs(P.karma - initial(P.karma))
 
@@ -18,7 +18,7 @@
 
 	return TRUE
 
-/proc/do_karma_event(var/mob/living/advanced/player/attacker,var/mob/living/advanced/player/victim,var/karma_gain = 0)
+/proc/do_karma_event(mob/living/advanced/player/attacker,mob/living/advanced/player/victim,karma_gain = 0)
 
 	var/old_victim_justice_broken = victim.mobdata.loaded_data["justice_broken"]
 	victim.mobdata.loaded_data["justice_broken"] = 0
@@ -92,7 +92,7 @@
 
 	return FALSE
 
-/proc/calculate_karma_gain_for_attacker(var/mob/living/advanced/player/attacker,var/mob/living/advanced/player/victim)
+/proc/calculate_karma_gain_for_attacker(mob/living/advanced/player/attacker,mob/living/advanced/player/victim)
 
 	if(!attacker.mobdata || !victim.mobdata)
 		return 0

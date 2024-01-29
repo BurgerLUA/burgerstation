@@ -12,7 +12,7 @@
 	icon_state = "close_inventory"
 	screen_loc = "CENTER+3,CENTER+2"
 
-/obj/hud/button/keypad/close/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/keypad/close/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -28,7 +28,7 @@
 	maptext_y = 22
 	maptext_x = -2
 
-/obj/hud/button/keypad/top/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/keypad/top/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -70,7 +70,7 @@
 	icon_state = "keypad_bottom"
 	screen_loc = "CENTER+2,CENTER+1"
 
-/obj/hud/button/keypad/bottom/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/keypad/bottom/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

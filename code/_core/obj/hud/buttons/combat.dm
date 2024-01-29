@@ -7,7 +7,7 @@
 
 	flags = FLAGS_HUD_MOB
 
-/obj/hud/button/resist/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/resist/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -34,7 +34,7 @@
 
 	..()
 
-/obj/hud/button/resist_auto/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/resist_auto/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -95,7 +95,7 @@
 
 	..()
 
-/obj/hud/button/targeting/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/targeting/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_player(caller))
 		return
@@ -174,7 +174,7 @@
 
 	..()
 
-/obj/hud/button/defense/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/defense/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!params[PARAM_ICON_Y])
 		return

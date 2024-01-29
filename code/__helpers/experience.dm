@@ -1,4 +1,4 @@
-/proc/calculate_class(var/mob/living/owner,var/list/skills_and_attributes)
+/proc/calculate_class(mob/living/owner,list/skills_and_attributes)
 
 	var/list/experience/total_list = owner.skills + owner.attributes
 

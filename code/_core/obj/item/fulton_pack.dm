@@ -26,7 +26,7 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[min(amount,3)]"
 
-/obj/item/fulton_pack/proc/can_attach_fulton(var/mob/caller,var/atom/movable/object,var/value_check = FALSE,var/turf_check=FALSE)
+/obj/item/fulton_pack/proc/can_attach_fulton(mob/caller,atom/movable/object,value_check = FALSE,turf_check=FALSE)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(object)
@@ -84,7 +84,7 @@
 
 	return TRUE
 
-/obj/item/fulton_pack/proc/attach_fulton(var/mob/caller,var/atom/movable/M)
+/obj/item/fulton_pack/proc/attach_fulton(mob/caller,atom/movable/M)
 
 	var/obj/structure/interactive/fulton/F = new(get_turf(M))
 	INITIALIZE(F)
@@ -100,7 +100,7 @@
 	return TRUE
 
 
-/obj/item/fulton_pack/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/fulton_pack/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(!ismovable(object))
 		return ..()

@@ -36,7 +36,7 @@
 		var/image/I = new/image(initial(stored_ability.icon),initial(stored_ability.icon_state))
 		add_overlay(I)
 
-/obj/item/ability_learner/click_self(var/mob/caller)
+/obj/item/ability_learner/click_self(mob/caller)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -49,7 +49,7 @@
 	return TRUE
 
 
-/obj/item/ability_learner/proc/can_learn(var/mob/living/advanced/A)
+/obj/item/ability_learner/proc/can_learn(mob/living/advanced/A)
 
 	if(!A.loc || !is_inventory(src.loc))
 		return FALSE
@@ -64,7 +64,7 @@
 	return TRUE
 
 
-/obj/item/ability_learner/proc/learn(var/mob/living/advanced/A)
+/obj/item/ability_learner/proc/learn(mob/living/advanced/A)
 
 	if(!stored_ability || !A.ckey) //Something went wrong.
 		return FALSE

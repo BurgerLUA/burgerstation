@@ -12,10 +12,10 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/firing_pin/proc/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
+/obj/item/firing_pin/proc/can_shoot(mob/caller,obj/item/weapon,messages=TRUE)
 	return TRUE
 
-/obj/item/firing_pin/proc/on_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/proc/on_shoot(mob/caller,obj/item/weapon)
 	return TRUE
 
 /obj/item/firing_pin/electronic
@@ -30,7 +30,7 @@
 	value = 50000
 	value_burgerbux = 1
 
-/obj/item/firing_pin/electronic/iff/can_shoot(var/mob/caller,var/obj/item/weapon,var/messages=TRUE)
+/obj/item/firing_pin/electronic/iff/can_shoot(mob/caller,obj/item/weapon,messages=TRUE)
 
 	if(src.iff_tag)
 		if(!is_living(caller))
@@ -51,7 +51,7 @@
 	iff_tag = "NanoTrasen"
 	icon_state = "nanotrasen"
 
-/obj/item/firing_pin/electronic/iff/nanotrasen/can_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/electronic/iff/nanotrasen/can_shoot(mob/caller,obj/item/weapon)
 
 	. = ..()
 
@@ -71,7 +71,7 @@
 	icon_state = "nanotrasen"
 	value = 200
 
-/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen/on_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/electronic/iff/nanotrasen/nyantrasen/on_shoot(mob/caller,obj/item/weapon)
 	if(caller && weapon)
 		var/turf/T = get_turf(weapon)
 		if(T) play_sound('sound/voice/catgirl/meow.ogg',T)
@@ -84,7 +84,7 @@
 	icon_state = "nanotrasen"
 	value = 666
 
-/obj/item/firing_pin/electronic/iff/nanotrasen/honkmother/on_shoot(var/mob/caller,var/obj/item/weapon)
+/obj/item/firing_pin/electronic/iff/nanotrasen/honkmother/on_shoot(mob/caller,obj/item/weapon)
 	if(caller && weapon)
 		var/turf/T = get_turf(weapon)
 		if(T) play_sound('sound/items/bikehorn.ogg',T)

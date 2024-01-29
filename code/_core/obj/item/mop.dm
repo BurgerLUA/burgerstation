@@ -15,7 +15,7 @@
 	weight = 2
 
 
-/obj/item/mop/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/mop/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_container(object) && object.reagents)
 		var/obj/item/container/C = object

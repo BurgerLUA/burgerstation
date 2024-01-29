@@ -13,7 +13,7 @@
 	var/stored_modifier
 	var/stored_modifier_color
 
-/obj/item/spellpaper/New(var/desired_loc)
+/obj/item/spellpaper/New(desired_loc)
 	if(!stored_buff_color)
 		stored_buff_color = random_color()
 

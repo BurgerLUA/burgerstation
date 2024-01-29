@@ -69,7 +69,7 @@
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_static_spread()
 	return 0.001
 
-/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/pistol/deagle/get_skill_spread(mob/living/L)
 	return max(0,0.02 - (0.03 * L.get_skill_power(SKILL_RANGED)) )
 
 /obj/item/weapon/ranged/bullet/magazine/pistol/deagle/gold

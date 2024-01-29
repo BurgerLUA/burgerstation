@@ -1,4 +1,4 @@
-/ai/proc/set_alert_level(var/desired_alert_level,var/atom/alert_source = null,var/atom/alert_epicenter = null,var/can_lower=FALSE)
+/ai/proc/set_alert_level(desired_alert_level,atom/alert_source = null,atom/alert_epicenter = null,can_lower=FALSE)
 
 	if(!use_alerts)
 		return FALSE
@@ -58,7 +58,7 @@
 
 	return FALSE
 
-/ai/proc/on_alert_level_changed(var/old_alert_level,var/new_alert_level,var/atom/alert_source)
+/ai/proc/on_alert_level_changed(old_alert_level,new_alert_level,atom/alert_source)
 
 	alert_time = initial(alert_time)
 

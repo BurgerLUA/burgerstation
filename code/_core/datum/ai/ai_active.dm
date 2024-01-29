@@ -1,4 +1,4 @@
-/ai/proc/add_to_active_list(var/z)
+/ai/proc/add_to_active_list(z)
 	if(z <= 0)
 		log_error("FATAL ERROR: Tried adding [src.get_debug_name()] to active ai list of z [z]!")
 		return FALSE
@@ -9,13 +9,13 @@
 	active_ai_list["[z]"] += src
 	return FALSE
 
-/ai/proc/remove_from_active_list(var/z)
+/ai/proc/remove_from_active_list(z)
 	if(debug) log_debug("Removing from active list [z].")
 	var/list/active_ai_list = boss ? SSbossai.active_ai_by_z : SSai.active_ai_by_z
 	if(length(active_ai_list) && active_ai_list["[z]"])
 		active_ai_list["[z]"] -= src
 
-/ai/proc/add_to_inactive_list(var/z)
+/ai/proc/add_to_inactive_list(z)
 	if(z <= 0)
 		log_error("FATAL ERROR: Tried adding [src.get_debug_name()] to inactive ai list of z [z]!")
 		return FALSE
@@ -25,13 +25,13 @@
 		inactive_ai_list["[z]"] = list()
 	inactive_ai_list["[z]"] += src
 
-/ai/proc/remove_from_inactive_list(var/z)
+/ai/proc/remove_from_inactive_list(z)
 	if(debug) log_debug("Removing from inactive list [z].")
 	var/list/inactive_ai_list = boss ? SSbossai.inactive_ai_by_z : SSai.inactive_ai_by_z
 	if(length(inactive_ai_list) && inactive_ai_list["[z]"])
 		inactive_ai_list["[z]"] -= src
 
-/ai/proc/set_active(var/desired_active=TRUE,var/deleting=FALSE)
+/ai/proc/set_active(desired_active=TRUE,deleting=FALSE)
 
 	if(desired_active)
 		if(!owner)

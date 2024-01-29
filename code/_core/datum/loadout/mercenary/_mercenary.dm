@@ -16,7 +16,7 @@
 /obj/item/supply_remote/ammo,
 
 
-/loadout/mercenary/pre_add(var/mob/living/advanced/A,var/obj/item/I)
+/loadout/mercenary/pre_add(mob/living/advanced/A,obj/item/I)
 
 	if(!I.value_burgerbux) //Prevents antagonists from selling their own items.
 		I.value_burgerbux = 1

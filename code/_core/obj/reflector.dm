@@ -28,7 +28,7 @@
 
 	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
-/obj/reflector/New(var/atom/desired_loc,var/atom/desired_owner,var/desired_loyalty_tag,var/time_to_live=10)
+/obj/reflector/New(atom/desired_loc,atom/desired_owner,desired_loyalty_tag,time_to_live=10)
 
 	owner = desired_owner
 	loyalty_tag = desired_loyalty_tag
@@ -43,19 +43,19 @@
 	return TRUE
 
 
-/obj/reflector/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/obj/reflector/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(src.loyalty_tag && P.loyalty_tag != src.loyalty_tag)
 		return FALSE
 
 	. = ..()
 
-/obj/reflector/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/reflector/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	//Can still be hit.
 	return FALSE
 
 
-/obj/reflector/on_projectile_hit(var/obj/projectile/P,var/turf/old_loc,var/turf/new_loc)
+/obj/reflector/on_projectile_hit(obj/projectile/P,turf/old_loc,turf/new_loc)
 
 	. = ..()
 

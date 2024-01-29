@@ -25,14 +25,14 @@ SUBSYSTEM_DEF(tax)
 		52
 	)
 
-/subsystem/tax/proc/can_pax_taxes(var/mob/living/advanced/player/P)
+/subsystem/tax/proc/can_pax_taxes(mob/living/advanced/player/P)
 	return world.realtime >= (P.last_tax_payment + 604800*10) //1 week
 
-/subsystem/tax/proc/check_delinquent(var/mob/living/advanced/player/P)
+/subsystem/tax/proc/check_delinquent(mob/living/advanced/player/P)
 	. = world.realtime - (P.last_tax_payment + 604800*10*2) //2 weeks
 	. = max(0,.)
 
-/subsystem/tax/proc/pay_taxes(var/mob/living/advanced/player/P,var/silent=FALSE)
+/subsystem/tax/proc/pay_taxes(mob/living/advanced/player/P,silent=FALSE)
 
 	var/taxes_to_pay = get_tax_amount(P)
 
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(tax)
 
 	return pay_amount
 
-/subsystem/tax/proc/get_bracket_tax(var/profit)
+/subsystem/tax/proc/get_bracket_tax(profit)
 
 	. = 0
 
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(tax)
 	. = CEILING(.,1)
 
 
-/subsystem/tax/proc/get_tax_amount(var/mob/living/advanced/player/P)
+/subsystem/tax/proc/get_tax_amount(mob/living/advanced/player/P)
 	. += CEILING(P.revenue * revenue_tax * 0.01,1) //Taxing revenue
 	. += CEILING(P.expenses * sales_tax * 0.01,1) //Taxing expenses.
 	. += CEILING(P.partial_tax,1) //Taxing taxes you didn't pay last time.
@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(tax)
 	. += get_bracket_tax(profit)
 
 
-/subsystem/tax/proc/get_explaination(var/mob/living/advanced/player/P)
+/subsystem/tax/proc/get_explaination(mob/living/advanced/player/P)
 
 	var/bracket_tax_amount = get_bracket_tax(P.revenue - P.expenses)
 	var/sales_tax_amount = CEILING(P.expenses * sales_tax * 0.01,1)

@@ -31,7 +31,7 @@
 
 	health_base = 400
 
-/turf/simulated/floor/sidewalk/should_smooth_with(var/turf/simulated/T)
+/turf/simulated/floor/sidewalk/should_smooth_with(turf/simulated/T)
 	return T.type != /turf/simulated/floor/road
 
 /turf/simulated/floor/sidewalk/update_overlays()

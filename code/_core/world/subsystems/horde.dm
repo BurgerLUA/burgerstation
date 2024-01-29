@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(horde)
 
 
 
-/subsystem/horde/unclog(var/mob/caller)
+/subsystem/horde/unclog(mob/caller)
 	enable = FALSE
 	. = ..()
 
@@ -126,7 +126,7 @@ SUBSYSTEM_DEF(horde)
 
 	return TRUE
 
-/subsystem/horde/proc/get_squad_to_send(var/atom/target)
+/subsystem/horde/proc/get_squad_to_send(atom/target)
 
 	//Get the hoard to send.
 	var/area/A = get_area(target)
@@ -152,7 +152,7 @@ SUBSYSTEM_DEF(horde)
 	else
 		return chosen_key
 
-/subsystem/horde/proc/send_squad(var/atom/target,var/mob/living/attacker_type,var/bypass_restrictions=FALSE,var/horde_count_override=0,var/debug=FALSE)
+/subsystem/horde/proc/send_squad(atom/target,mob/living/attacker_type,bypass_restrictions=FALSE,horde_count_override=0,debug=FALSE)
 
 	var/enemies_to_send = horde_count_override
 	if(!enemies_to_send && is_player(target))

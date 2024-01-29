@@ -19,7 +19,7 @@
 
 	health_base = 100
 
-/obj/structure/metal_foam/New(var/desired_loc)
+/obj/structure/metal_foam/New(desired_loc)
 	. = ..()
 	icon_state = "[rand(0,7)],[rand(0,7)]"
 
@@ -39,6 +39,6 @@
 	CALLBACK("\ref[src]_cut_overlays",3 SECONDS,src,src::cut_overlays())
 
 
-/obj/structure/metal_foam/on_destruction(var/damage = TRUE)
+/obj/structure/metal_foam/on_destruction(damage = TRUE)
 	. = ..()
 	qdel(src)

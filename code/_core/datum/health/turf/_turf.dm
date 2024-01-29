@@ -11,7 +11,7 @@
 		var/material/M = MATERIAL(T.material_id)
 		health_max += M.wall_health
 
-/health/turf/New(var/desired_owner)
+/health/turf/New(desired_owner)
 
 	. = ..()
 

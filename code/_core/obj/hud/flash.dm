@@ -15,7 +15,7 @@
 
 	var/duration = 0
 
-/obj/hud/flash/New(var/desired_loc)
+/obj/hud/flash/New(desired_loc)
 	screen_loc = "LEFT,BOTTOM:12"
 	. = ..()
 

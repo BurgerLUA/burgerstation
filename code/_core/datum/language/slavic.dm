@@ -19,7 +19,7 @@
 		"suda", "huyar", "odin", "dva", "tri", "holod", "granata", "ne", "re", "ru", "korabl"
 	)
 
-/language/slavic/process_text(var/speaker,var/text)
+/language/slavic/process_text(speaker,text)
 
 	. = ""
 

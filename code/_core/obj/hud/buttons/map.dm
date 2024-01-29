@@ -67,7 +67,7 @@
 			add_overlay(I)
 
 
-/obj/hud/map/proc/update_map(var/desired_z=0)
+/obj/hud/map/proc/update_map(desired_z=0)
 
 	if(desired_z > 0)
 		current_z = desired_z
@@ -90,7 +90,7 @@
 	return TRUE
 
 
-/obj/hud/map/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/map/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(30)
@@ -181,10 +181,10 @@
 
 	var/map_z = 2
 
-/obj/hud/button/map_background/clicked_on_by_object(var/mob/caller,var/atom/caller,location,control,params)
+/obj/hud/button/map_background/clicked_on_by_object(mob/caller,atom/caller,location,control,params)
 	return TRUE
 
-/obj/hud/button/map_background/New(var/desired_loc,var/desired_pod,var/desired_shuttle_controller)
+/obj/hud/button/map_background/New(desired_loc,desired_pod,desired_shuttle_controller)
 
 	connected_map = new(desired_loc)
 	connected_map.connected_background = src
@@ -212,7 +212,7 @@
 
 	. = ..()
 
-/obj/hud/button/map_background/update_owner(var/mob/desired_owner)
+/obj/hud/button/map_background/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -269,7 +269,7 @@
 	. = ..()
 	connected_background = null
 
-/obj/hud/button/map_control/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/map_control/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	var/obj/hud/map/M = connected_background?.connected_map
 

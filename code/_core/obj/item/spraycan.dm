@@ -19,7 +19,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/spraycan/get_examine_list(var/mob/examiner)
+/obj/item/spraycan/get_examine_list(mob/examiner)
 	. = ..()
 	if(cap_on == TRUE)
 		. += span("notice","Use to select a decal to spray.<br>Click with an empty hand to take off the cap.")
@@ -35,7 +35,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/item/spraycan/click_self(var/mob/caller,location,control,params)
+/obj/item/spraycan/click_self(mob/caller,location,control,params)
 
 	if(!caller || !caller.client)
 		return TRUE
@@ -56,7 +56,7 @@
 
 	return TRUE
 
-/obj/item/spraycan/proc/on_upload_spray(var/client/caller,var/icon/desired_icon)
+/obj/item/spraycan/proc/on_upload_spray(client/caller,icon/desired_icon)
 
 	if(!caller || !caller.mob || get_dist(caller.mob,src) > 1)
 		return FALSE
@@ -71,7 +71,7 @@
 
 	return TRUE
 
-/obj/item/spraycan/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/spraycan/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()
@@ -99,7 +99,7 @@
 
 	. = ..()
 
-/obj/item/spraycan/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/spraycan/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_inventory(object))
 		INTERACT_CHECK
@@ -110,7 +110,7 @@
 	. = ..()
 
 
-/obj/item/spraycan/proc/toggle_cap(var/mob/caller)
+/obj/item/spraycan/proc/toggle_cap(mob/caller)
 	cap_on = !cap_on
 	update_sprite()
 	caller.to_chat(span("notice","You [cap_on ? "add" : "remove"] \the [src.name]'s cap."))

@@ -6,7 +6,7 @@ var/global/list/possible_hostage_rest_markers = list()
 	name = "possible hostage spawn"
 	icon_state = "hostage"
 
-/obj/marker/hostage_spawn/New(var/desired_loc)
+/obj/marker/hostage_spawn/New(desired_loc)
 	if(!SSdmm_suite.is_pvp_coord(loc.x,loc.y,loc.z))
 		possible_hostage_spawns += src
 	return ..()
@@ -18,6 +18,6 @@ var/global/list/possible_hostage_rest_markers = list()
 /obj/marker/hostage_rest
 	name = "hostage rest location"
 
-/obj/marker/hostage_rest/New(var/desired_loc)
+/obj/marker/hostage_rest/New(desired_loc)
 	possible_hostage_rest_markers += src
 	return ..()

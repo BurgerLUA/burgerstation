@@ -8,7 +8,7 @@
 	value = 4000
 	value_burgerbux = 1
 
-/obj/item/corrupting_frog/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/corrupting_frog/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_item(object) || !is_turf(object.loc))
 		return ..()

@@ -8,7 +8,7 @@
 
 	layer = LAYER_FLOOR_DECAL
 
-/obj/effect/gibs/New(var/desired_loc,var/desired_blood_color,var/desired_flesh_color)
+/obj/effect/gibs/New(desired_loc,desired_blood_color,desired_flesh_color)
 	..()
 	// force_move(desired_loc) TODO: WHY IS THIS HERE
 	blood_color = desired_blood_color
@@ -32,6 +32,6 @@
 
 	..()
 
-/obj/effect/gibs/random/New(var/desired_loc,var/desired_blood_color,var/desired_flesh_color)
+/obj/effect/gibs/random/New(desired_loc,desired_blood_color,desired_flesh_color)
 	icon_state = "gib[rand(1,5)]"
 	..()

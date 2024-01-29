@@ -25,7 +25,7 @@
 
 	value = 20
 
-/obj/item/device/radio/get_examine_list(var/mob/examiner)
+/obj/item/device/radio/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","ALT+Click to start broadcasting nearby speech.<br>Use the mouse wheel to change frequencies.<br>Use in hands to toggle the signal reciever.")
 
@@ -35,17 +35,17 @@
 		"[frequency]" = TRUE
 	)
 
-/obj/item/device/radio/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/device/radio/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("frequency")
 	SAVELIST("listening_frequencies")
 
-/obj/item/device/radio/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/device/radio/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("frequency")
 	LOADLIST("listening_frequencies")
 
-/obj/item/device/radio/click_self(var/mob/caller,location,control,params)
+/obj/item/device/radio/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 
@@ -100,7 +100,7 @@
 	caller.to_chat(span("notice","You toggle the signal reciever <b>[receiving ? "on" : "off"]</b>."))
 	return TRUE
 
-/obj/item/device/radio/mouse_wheel_on_object(var/mob/caller,delta_x,delta_y,location,control,params)
+/obj/item/device/radio/mouse_wheel_on_object(mob/caller,delta_x,delta_y,location,control,params)
 
 	INTERACT_CHECK
 
@@ -150,7 +150,7 @@ list(
 )
 */
 
-/obj/item/device/radio/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/device/radio/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	if(signal_freq == -1) //Sent
 		for(var/k in SSradio.all_radios)
@@ -163,7 +163,7 @@ list(
 			loc.trigger(caller,src,signal_freq,signal_code)
 			return TRUE
 
-/obj/item/device/radio/on_listen(var/atom/speaker,var/datum/source,var/text,var/raw_text,var/language_text,var/talk_type,var/frequency, var/language = LANGUAGE_BASIC,var/talk_range=TALK_RANGE)
+/obj/item/device/radio/on_listen(atom/speaker,datum/source,text,raw_text,language_text,talk_type,frequency, language = LANGUAGE_BASIC,talk_range=TALK_RANGE)
 	if(talk_type == TEXT_RADIO) //Don't listen to other radio signals. This prevents spam.
 		return FALSE
 	if(listen_range > 0 && get_dist(source,src) > listen_range)

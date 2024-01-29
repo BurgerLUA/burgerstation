@@ -114,7 +114,7 @@
 
 	pixel_y = 4
 
-/obj/item/container/simple/beaker/glass/get_consume_size(var/mob/living/L)
+/obj/item/container/simple/beaker/glass/get_consume_size(mob/living/L)
 	return ..() * 2
 
 /obj/item/container/simple/beaker/shot
@@ -131,7 +131,7 @@
 
 	pixel_y = 4
 
-/obj/item/container/simple/beaker/shot/get_consume_size(var/mob/living/L)
+/obj/item/container/simple/beaker/shot/get_consume_size(mob/living/L)
 	return reagents.volume_max
 
 /obj/item/container/simple/beaker/bowl
@@ -160,7 +160,7 @@
 
 	size = SIZE_2
 
-/obj/item/container/simple/beaker/flask/get_consume_size(var/mob/living/L)
+/obj/item/container/simple/beaker/flask/get_consume_size(mob/living/L)
 	return ..() * 3
 
 /obj/item/container/simple/beaker/flask/Generate()
@@ -177,7 +177,7 @@
 
 	value = 450
 
-/obj/item/container/simple/beaker/flask/russian/get_consume_size(var/mob/living/L)
+/obj/item/container/simple/beaker/flask/russian/get_consume_size(mob/living/L)
 	return ..() * 4
 
 /obj/item/container/simple/beaker/flask/engraved
@@ -190,7 +190,7 @@
 
 	value = 450
 
-/obj/item/container/simple/beaker/flask/engraved/get_consume_size(var/mob/living/L)
+/obj/item/container/simple/beaker/flask/engraved/get_consume_size(mob/living/L)
 	return ..() * 4
 
 /obj/item/container/simple/beaker/flask/onion

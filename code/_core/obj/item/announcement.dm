@@ -22,10 +22,10 @@ var/global/next_announcement = 0
 
 	rarity = RARITY_RARE
 
-/obj/item/announcement/proc/can_use(var/mob/caller)
+/obj/item/announcement/proc/can_use(mob/caller)
 	return TRUE
 
-/obj/item/announcement/click_self(var/mob/caller,location,control,params)
+/obj/item/announcement/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -94,7 +94,7 @@ var/global/next_announcement = 0
 	value = 500
 	sound_to_play = 'sound/alert/warning.ogg'
 
-/obj/item/announcement/syndicate/can_use(var/mob/caller)
+/obj/item/announcement/syndicate/can_use(mob/caller)
 
 	if(!is_living(caller))
 		caller.to_chat(span("warning","You don't seem to know how to use this..."))
@@ -116,7 +116,7 @@ var/global/next_announcement = 0
 	value = 500
 	sound_to_play = 'sound/alert/warning.ogg'
 
-/obj/item/announcement/wizard/can_use(var/mob/caller)
+/obj/item/announcement/wizard/can_use(mob/caller)
 
 	if(!is_living(caller))
 		caller.to_chat(span("warning","You don't seem to know how to use this..."))
@@ -137,7 +137,7 @@ var/global/next_announcement = 0
 	value = 500
 	var/sounds_to_play = list('sound/alert/rev_pda_1.ogg','sound/alert/rev_pda_2.ogg','sound/alert/rev_pda_3.ogg','sound/alert/rev_pda_4.ogg')
 
-/obj/item/announcement/rev/can_use(var/mob/caller)
+/obj/item/announcement/rev/can_use(mob/caller)
 
 	if(!is_living(caller))
 		caller.to_chat(span("warning","You don't seem to know how to use this..."))
@@ -151,7 +151,7 @@ var/global/next_announcement = 0
 	return TRUE
 
 //This is fucking horrible but it works so I don't care
-/obj/item/announcement/rev/click_self(var/mob/caller,location,control,params)
+/obj/item/announcement/rev/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

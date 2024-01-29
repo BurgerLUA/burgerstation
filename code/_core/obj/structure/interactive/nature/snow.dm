@@ -51,14 +51,14 @@ obj/structure/scenery/bush/snow/New()
 	icon_state = "pine_2"
 	pixel_x = -16
 
-/obj/structure/interactive/tree/pine/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/tree/pine/on_destruction(damage = TRUE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "pine_stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-/obj/structure/interactive/tree/pine/New(var/desired_loc)
+/obj/structure/interactive/tree/pine/New(desired_loc)
 	icon_state = "pine_[rand(1,3)]"
 	return ..()
 
@@ -70,14 +70,14 @@ obj/structure/scenery/bush/snow/New()
 	color = "#d4d2ab"
 
 
-/obj/structure/interactive/tree/evergreen/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/tree/evergreen/on_destruction(damage = TRUE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "evergreen_stump"
 	collision_flags = FLAG_COLLISION_NONE
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-/obj/structure/interactive/tree/evergreen/New(var/desired_loc)
+/obj/structure/interactive/tree/evergreen/New(desired_loc)
 	icon_state = "evergreen_[rand(1,3)]"
 	return ..()
 
@@ -88,14 +88,14 @@ obj/structure/scenery/bush/snow/New()
 	pixel_x = -32
 	pixel_y = 0
 
-/obj/structure/interactive/tree/jungle_small/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/tree/jungle_small/on_destruction(damage = TRUE)
 	. = ..()
 	QDEL_NULL(health)
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-/obj/structure/interactive/tree/jungle_small/New(var/desired_loc)
+/obj/structure/interactive/tree/jungle_small/New(desired_loc)
 	icon_state = "tree[rand(1,6)]"
 	return ..()
 
@@ -106,14 +106,14 @@ obj/structure/scenery/bush/snow/New()
 	pixel_x = -48
 	pixel_y = -16
 
-/obj/structure/interactive/tree/jungle_large/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/tree/jungle_large/on_destruction(damage = TRUE)
 	. = ..()
 	QDEL_NULL(health) //Important
 	icon_state = "stump"
 	collision_flags = FLAG_COLLISION_CRAWLING
 	collision_bullet_flags = FLAG_COLLISION_BULLET_SPECIFIC
 
-/obj/structure/interactive/tree/jungle_large/New(var/desired_loc)
+/obj/structure/interactive/tree/jungle_large/New(desired_loc)
 	icon_state = "tree[rand(1,6)]"
 	return ..()
 
@@ -124,6 +124,6 @@ obj/structure/scenery/bush/snow/New()
 	icon = 'icons/obj/structure/flora/palm.dmi'
 	icon_state = "palm1"
 
-/obj/structure/interactive/tree/palm/New(var/desired_loc)
+/obj/structure/interactive/tree/palm/New(desired_loc)
 	icon_state = "palm[rand(1,2)]"
 	return ..()

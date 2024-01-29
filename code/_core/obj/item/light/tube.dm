@@ -6,7 +6,7 @@
 
 	weight = 0.25
 
-/obj/item/light/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/light/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(istype(object,light_type))
 		INTERACT_CHECK

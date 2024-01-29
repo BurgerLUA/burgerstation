@@ -38,7 +38,7 @@
 
 	level = 10
 
-/mob/living/simple/xeno/get_emote_sound(var/emote_id)
+/mob/living/simple/xeno/get_emote_sound(emote_id)
 
 	switch(emote_id)
 		if("pain")
@@ -93,7 +93,7 @@
 
 		next_talk = world.time + (rand(5,12)) SECONDS
 
-/mob/living/simple/xeno/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
+/mob/living/simple/xeno/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 
 	. = ..()
 
@@ -107,7 +107,7 @@
 		play_sound(pick(valid_sounds),get_turf(src),range_max=VIEW_RANGE)
 		next_talk = world.time + (rand(5,12)) SECONDS
 
-/mob/living/simple/xeno/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/simple/xeno/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 
 	if(!stealthy && !dead && damage_amount > 20 && prob(25))
@@ -130,7 +130,7 @@
 
 	update_sprite()
 
-/mob/living/simple/xeno/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag,var/damage_multiplier=1)
+/mob/living/simple/xeno/throw_self(atom/thrower,atom/desired_target,target_x,target_y,vel_x,vel_y,lifetime = -1, steps_allowed = 0,desired_loyalty_tag,damage_multiplier=1)
 
 	if(!can_leap)
 		return ..()
@@ -149,7 +149,7 @@
 	P.rotate_projectile = FALSE
 	P.set_dir(get_dir(thrower,desired_target))
 
-/mob/living/simple/xeno/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown and it hits an object.
+/mob/living/simple/xeno/on_thrown(atom/owner,atom/hit_atom) //What happens after the person is thrown and it hits an object.
 
 	. = ..()
 
@@ -165,7 +165,7 @@
 	leaping = FALSE
 	update_sprite()
 
-/mob/living/simple/xeno/post_move(var/old_loc)
+/mob/living/simple/xeno/post_move(old_loc)
 	. = ..()
 	if(.)
 		update_icon()

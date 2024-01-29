@@ -5,11 +5,11 @@
 	var/mob/living/simple/legionare_head/owner_as_legion_head
 	use_alerts = FALSE
 
-/ai/legion_head/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/legion_head/New(desired_loc,mob/living/desired_owner)
 	owner_as_legion_head = desired_owner
 	return ..()
 
-/ai/legion_head/should_attack_mob(var/mob/living/L) //Only thing different is that it targets handcuffed and dead targets.
+/ai/legion_head/should_attack_mob(mob/living/L) //Only thing different is that it targets handcuffed and dead targets.
 
 	if(L == owner)
 		return FALSE

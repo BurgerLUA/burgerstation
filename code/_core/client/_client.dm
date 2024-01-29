@@ -143,7 +143,7 @@
 
 	return ..()
 
-/client/proc/examine(var/datum/object)
+/client/proc/examine(datum/object)
 
 	for(var/v in object.get_examine_list(src.mob))
 		if(v) src.mob.to_chat(v)
@@ -308,7 +308,7 @@ var/global/total_clients = 0
 */
 
 /*
-/client/proc/get_variables(var/datum/object)
+/client/proc/get_variables(datum/object)
    for(var/v in object.vars)
       to_chat("[v] = [object.vars[v]]")
 */

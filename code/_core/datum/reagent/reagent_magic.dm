@@ -16,7 +16,7 @@
 	liquid = 0.6
 
 
-/reagent/magic/stand_juice/on_add_living(var/mob/living/L,var/reagent_container/container,var/amount_added=0,var/current_volume=0)
+/reagent/magic/stand_juice/on_add_living(mob/living/L,reagent_container/container,amount_added=0,current_volume=0)
 
 	. = ..()
 

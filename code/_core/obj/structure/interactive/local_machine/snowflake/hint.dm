@@ -11,14 +11,14 @@
 
 	plane = PLANE_EFFECT
 
-/obj/structure/interactive/localmachine/snowflake/hint/Crossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/localmachine/snowflake/hint/Crossed(atom/movable/O,atom/new_loc,atom/old_loc)
 
 	if(ismob(O))
 		set_icon_state_mob(O,icon_state_enter)
 
 	return ..()
 
-/obj/structure/interactive/localmachine/snowflake/hint/Uncrossed(var/atom/movable/O,var/atom/new_loc,var/atom/old_loc)
+/obj/structure/interactive/localmachine/snowflake/hint/Uncrossed(atom/movable/O,atom/new_loc,atom/old_loc)
 
 	if(ismob(O))
 		set_icon_state_mob(O,icon_state_exit)

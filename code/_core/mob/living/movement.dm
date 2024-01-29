@@ -1,4 +1,4 @@
-/mob/living/proc/handle_footsteps(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+/mob/living/proc/handle_footsteps(turf/T,list/footsteps_to_use,enter=TRUE)
 
 	if(!T)
 		return FALSE
@@ -11,7 +11,7 @@
 
 	return TRUE
 
-/mob/living/proc/do_footstep(var/turf/T,var/list/footsteps_to_use,var/enter=TRUE)
+/mob/living/proc/do_footstep(turf/T,list/footsteps_to_use,enter=TRUE)
 
 	footstep_counter = (footstep_counter + 1) % footstep_mod
 
@@ -41,7 +41,7 @@
 	return TRUE
 
 
-/mob/living/proc/get_footsteps(var/list/original_footsteps,var/enter=TRUE)
+/mob/living/proc/get_footsteps(list/original_footsteps,enter=TRUE)
 	return original_footsteps
 
 /mob/living/Move(NewLoc,Dir=0,step_x=0,step_y=0)
@@ -51,14 +51,14 @@
 
 	. = ..()
 
-/mob/living/set_dir(var/desired_dir,var/force=FALSE)
+/mob/living/set_dir(desired_dir,force=FALSE)
 
 	. = ..()
 
 	if(.)
 		handle_blocking(TRUE)
 
-/mob/living/on_chunk_cross(var/chunk/old_chunk,var/chunk/new_chunk)
+/mob/living/on_chunk_cross(chunk/old_chunk,chunk/new_chunk)
 
 	. = ..()
 
@@ -66,7 +66,7 @@
 		if(old_chunk) old_chunk.ai -= src.ai
 		if(new_chunk) new_chunk.ai += src.ai
 
-/mob/living/post_move(var/atom/old_loc)
+/mob/living/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -141,7 +141,7 @@
 	add_hydration(-0.1)
 	return ..()
 
-/mob/living/handle_movement(var/adjust_delay = 1)
+/mob/living/handle_movement(adjust_delay = 1)
 
 	//Dashing
 	if(dash_amount > 0 && !horizontal && src.z && can_move())
@@ -250,7 +250,7 @@
 		var/found_movement_delay = M.get_movement_delay()
 		. = clamp(found_movement_delay,.,.*2)
 
-/mob/living/proc/toggle_sneak(var/on = TRUE,var/force=FALSE)
+/mob/living/proc/toggle_sneak(on = TRUE,force=FALSE)
 
 	if(!force && is_sneaking == on)
 		return FALSE
@@ -295,7 +295,7 @@
 
 	. = ..()
 
-/mob/living/on_thrown(var/atom/owner,var/atom/hit_atom) //What happens after the person is thrown.
+/mob/living/on_thrown(atom/owner,atom/hit_atom) //What happens after the person is thrown.
 
 	if(!has_status_effects(STUN,STAGGER,PARALYZE))
 		if(hit_atom)
@@ -305,7 +305,7 @@
 
 	return ..()
 
-/mob/living/throw_self(var/atom/thrower,var/atom/desired_target,var/target_x,var/target_y,var/vel_x,var/vel_y,var/lifetime = -1, var/steps_allowed = 0,var/desired_loyalty_tag,var/damage_multiplier=1)
+/mob/living/throw_self(atom/thrower,atom/desired_target,target_x,target_y,vel_x,vel_y,lifetime = -1, steps_allowed = 0,desired_loyalty_tag,damage_multiplier=1)
 
 	if(buckled_object)
 		return null

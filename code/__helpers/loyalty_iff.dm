@@ -1,6 +1,6 @@
 var/global/enable_friendly_fire = FALSE
 
-/proc/set_friendly_fire(var/desired_friendly_fire=TRUE)
+/proc/set_friendly_fire(desired_friendly_fire=TRUE)
 
 	if(enable_friendly_fire == desired_friendly_fire)
 		return FALSE
@@ -16,7 +16,7 @@ var/global/enable_friendly_fire = FALSE
 #define allow_hostile_action(loyalty_tag,victim) check_loyalty_against(loyalty_tag,victim,TRUE)
 #define allow_helpful_action(loyalty_tag,victim) check_loyalty_against(loyalty_tag,victim,FALSE)
 
-/proc/check_iff_against(var/iff_attacker,var/mob/living/victim,var/hostile=TRUE)
+/proc/check_iff_against(iff_attacker,mob/living/victim,hostile=TRUE)
 
 	if(hostile && iff_attacker == "NanoTrasen")
 		var/turf/T = get_turf(victim)
@@ -36,7 +36,7 @@ var/global/enable_friendly_fire = FALSE
 	else //Friendly
 		return !hostile
 
-/proc/check_loyalty_against(var/loyalty_attacker,var/mob/living/victim,var/hostile=TRUE)
+/proc/check_loyalty_against(loyalty_attacker,mob/living/victim,hostile=TRUE)
 
 	if(hostile && loyalty_attacker == "NanoTrasen")
 		var/turf/T = get_turf(victim)

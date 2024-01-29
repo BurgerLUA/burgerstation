@@ -1,4 +1,4 @@
-/obj/item/clothing/proc/equip_additional_clothing(var/mob/living/advanced/caller)
+/obj/item/clothing/proc/equip_additional_clothing(mob/living/advanced/caller)
 
 	var/should_deploy = FALSE
 

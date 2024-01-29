@@ -41,7 +41,7 @@
 
 	var/total_size = 0
 
-/obj/structure/interactive/cannon/New(var/desired_loc)
+/obj/structure/interactive/cannon/New(desired_loc)
 	. = ..()
 	icon_state = "idle"
 
@@ -58,7 +58,7 @@
 
 	set_dir(dir,TRUE)
 
-/obj/structure/interactive/cannon/set_dir(var/desired_dir,var/force = FALSE)
+/obj/structure/interactive/cannon/set_dir(desired_dir,force = FALSE)
 
 	. = ..()
 
@@ -68,13 +68,13 @@
 		transform = M
 
 
-/obj/structure/interactive/cannon/proc/insert_item(var/mob/living/caller,var/obj/item/I)
+/obj/structure/interactive/cannon/proc/insert_item(mob/living/caller,obj/item/I)
 	I.drop_item(src)
 	total_size += I.size
 	caller?.visible_message(span("notice","\The [caller.name] inserts \the [I.name] into \the [src.name]."),span("notice","You insert \the [I.name] into \the [src.name]."))
 	return TRUE
 
-/obj/structure/interactive/cannon/proc/fire(var/mob/living/caller)
+/obj/structure/interactive/cannon/proc/fire(mob/living/caller)
 
 	var/turf/T = get_step(src,dir)
 	if(!T)
@@ -109,7 +109,7 @@
 		if(BT) src.Move(BT)
 
 
-/obj/structure/interactive/cannon/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/cannon/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -149,7 +149,7 @@
 
 
 
-/obj/structure/interactive/cannon/proc/can_insert_item(var/mob/caller,var/obj/item/I)
+/obj/structure/interactive/cannon/proc/can_insert_item(mob/caller,obj/item/I)
 
 	if(caller)
 		INTERACT_CHECK_NO_DELAY(src)
@@ -187,7 +187,7 @@
 		var/image/I = new/image(icon,"fuse")
 		add_overlay(I)
 
-/obj/structure/interactive/cannon/proc/light_fuse(var/mob/living/caller)
+/obj/structure/interactive/cannon/proc/light_fuse(mob/living/caller)
 	caller.visible_message(span("danger","\The [caller.name] lights the fuse of \the [src.name]!"),span("danger","You light the fuse of \the [src.name]!"))
 	CALLBACK("\ref[src]_fire_cannon",3 SECONDS,src,src::fire(),caller)
 	update_sprite()
@@ -195,7 +195,7 @@
 	play_sound('sound/effects/fuse.ogg',get_turf(src))
 	return TRUE
 
-/obj/structure/interactive/cannon/proc/can_light_fuse(var/mob/caller,var/obj/item/I)
+/obj/structure/interactive/cannon/proc/can_light_fuse(mob/caller,obj/item/I)
 
 	INTERACT_CHECK_NO_DELAY(src)
 

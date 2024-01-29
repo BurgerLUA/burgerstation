@@ -3,7 +3,7 @@
 	id = "effect_teleport"
 	icon_state = "cult_teleport"
 
-/spellcraft/effect/teleport/on_cast(var/turf/cast_loc,var/mob/living/caster,var/atom/target,var/effect_color,var/spell_mod_id,var/spell_buff_id)
+/spellcraft/effect/teleport/on_cast(turf/cast_loc,mob/living/caster,atom/target,effect_color,spell_mod_id,spell_buff_id)
 
 	if(!is_advanced(caster))
 		return FALSE
@@ -34,7 +34,7 @@
 
 	return ..()
 
-/spellcraft/effect/teleport/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params,var/obj/item/weapon/ranged/magic/rune/R)
+/spellcraft/effect/teleport/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params,obj/item/weapon/ranged/magic/rune/R)
 
 	if(caller.loc != R.loc)
 		caller.to_chat(span("notice","\The [R] doesn't seem to react."))

@@ -1,4 +1,4 @@
-/mob/proc/get_sound_volume(var/volume=100,var/channel=1)
+/mob/proc/get_sound_volume(volume=100,channel=1)
 
 	var/local_volume = volume
 	if(client.settings)

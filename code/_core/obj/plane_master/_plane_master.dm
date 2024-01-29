@@ -8,7 +8,7 @@
 	alpha = 255
 	var/mob/owner
 
-/obj/plane_master/New(var/desired_loc)
+/obj/plane_master/New(desired_loc)
 	. = ..()
 	owner = desired_loc
 	apply_post_processing()

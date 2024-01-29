@@ -23,7 +23,7 @@
 	plane = PLANE_HUD
 	layer = LAYER_HUD
 
-/obj/hud/New(var/desired_loc)
+/obj/hud/New(desired_loc)
 	. = ..()
 	if(!tooltip_text)
 		tooltip_text = generate_tooltip_text()
@@ -50,7 +50,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 
 	return copytext(checking_text,1,best_position+1)
 
-/obj/hud/proc/update_owner(var/mob/desired_owner)
+/obj/hud/proc/update_owner(mob/desired_owner)
 
 	if(owner == desired_owner)
 		return FALSE
@@ -83,10 +83,10 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 		swap_colors(I)
 		icon = I
 
-/obj/hud/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)
+/obj/hud/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override)
 	CRASH("[attacker.get_debug_name()] tried to attack [victim] with a HUD object!")
 
-/obj/hud/proc/swap_colors(var/icon/I)
+/obj/hud/proc/swap_colors(icon/I)
 
 	var/list/color_scheme = DEFAULT_COLORS
 
@@ -120,7 +120,7 @@ var/regex/valid_punct = regex(@"[.?!]($|\s)")
 /obj/hud/Generate()
 	CRASH("HUD objects should never be Generated!")
 
-/obj/hud/proc/set_tooltip(var/mob/caller)
+/obj/hud/proc/set_tooltip(mob/caller)
 
 	var/list/split_screen_loc = splittext(src.screen_loc,",")
 

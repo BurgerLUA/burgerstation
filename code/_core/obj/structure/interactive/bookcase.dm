@@ -49,7 +49,7 @@
 	if(chance_of_scroll > 0)
 		icon_state = "[icon_state]-[chance_of_scroll]"
 
-/obj/structure/interactive/bookcase/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/bookcase/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_inventory(object))
 		return ..()
@@ -61,7 +61,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/bookcase/proc/can_search_case(var/mob/caller)
+/obj/structure/interactive/bookcase/proc/can_search_case(mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -74,7 +74,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/bookcase/proc/search_case(var/mob/caller)
+/obj/structure/interactive/bookcase/proc/search_case(mob/caller)
 
 	if(prob(chance_of_scroll*10))
 		var/rarity = 0

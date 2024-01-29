@@ -80,7 +80,7 @@
 /obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_static_spread()
 	return 0.015
 
-/obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_skill_spread(mob/living/L)
 	return max(0,0.01 - (0.05 * L.get_skill_power(SKILL_RANGED)))
 
 /obj/item/weapon/ranged/bullet/pump/shotgun/fortress/get_base_spread()

@@ -14,7 +14,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/whistle/click_self(var/mob/caller,location,control,params)
+/obj/item/whistle/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(30)

@@ -26,7 +26,7 @@
 		DIFFICULTY_NIGHTMARE = 2
 	)
 
-/obj/structure/interactive/crate/chest/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/crate/chest/get_examine_list(mob/examiner)
 	. = ..()
 	if(locked == TRUE)
 		. += span("notice","It's locked, but you could try your hand at picking the lock...")
@@ -44,7 +44,7 @@
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/crate/chest/proc/picked(var/mob/living/advanced/A)
+/obj/structure/interactive/crate/chest/proc/picked(mob/living/advanced/A)
 	boot_lockpicker()
 	locked = FALSE
 	open()
@@ -52,7 +52,7 @@
 		create_gold_drop(get_turf(src),gold_count)
 	return TRUE
 
-/obj/structure/interactive/crate/chest/proc/create_lockpicker(var/mob/living/advanced/A)
+/obj/structure/interactive/crate/chest/proc/create_lockpicker(mob/living/advanced/A)
 	current_user = A
 	var/obj/hud/button/lockpicking/L = new
 	L.update_owner(A)
@@ -84,7 +84,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/crate/chest/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/chest/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_advanced(caller))
 		return TRUE
@@ -108,7 +108,7 @@
 	loot = /loot/treasure
 	var/chance_none = 0
 
-/obj/structure/interactive/crate/chest/filled/New(var/desired_loc)
+/obj/structure/interactive/crate/chest/filled/New(desired_loc)
 
 	if(prob(chance_none))
 		qdel(src)

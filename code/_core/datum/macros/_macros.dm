@@ -33,7 +33,7 @@
 	owner = null
 	. = ..()
 
-/macros/New(var/client/spawning_owner)
+/macros/New(client/spawning_owner)
 	owner = spawning_owner
 	. = ..()
 

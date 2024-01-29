@@ -31,11 +31,11 @@
 
 	return ..()
 
-/obj/item/container/edible/meme_pizza/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/edible/meme_pizza/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("servings_left")
 
-/obj/item/container/edible/meme_pizza/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/edible/meme_pizza/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("servings_left")
 
@@ -44,10 +44,10 @@
 	update_sprite()
 	return ..()
 
-/obj/item/container/edible/meme_pizza/get_calculated_bites(var/mob/living/caller,var/total_reagents = 1)
+/obj/item/container/edible/meme_pizza/get_calculated_bites(mob/living/caller,total_reagents = 1)
 	return servings_left
 
-/obj/item/container/edible/meme_pizza/feed(var/mob/caller,var/mob/living/target)
+/obj/item/container/edible/meme_pizza/feed(mob/caller,mob/living/target)
 	. = ..()
 	if(.)
 		servings_left = 1 //It's always going to be 1 or nothing. If it's nothing, then that might cause issues.

@@ -4,7 +4,7 @@
 	var/last_totem_spawn = 0
 	var/last_screech = 0
 
-/ai/boss/goblin_king/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/goblin_king/New(desired_loc,mob/living/desired_owner)
 	owner_as_goblin_king = desired_owner
 	return ..()
 
@@ -12,7 +12,7 @@
 	owner_as_goblin_king = null
 	return ..()
 
-/ai/boss/goblin_king/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/ai/boss/goblin_king/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 	if(owner && !owner.dead && objective_attack)
 		var/choose_attack = rand(1,3)

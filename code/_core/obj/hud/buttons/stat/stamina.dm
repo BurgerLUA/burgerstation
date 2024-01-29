@@ -22,7 +22,7 @@
 	I.appearance_flags = src.appearance_flags | RESET_COLOR | RESET_ALPHA
 	add_underlay(I)
 
-/obj/hud/button/stat/stamina/update_owner(var/mob/desired_owner)
+/obj/hud/button/stat/stamina/update_owner(mob/desired_owner)
 	color = "#000000"
 	. = ..()
 
@@ -71,5 +71,5 @@
 
 	. = ..()
 
-/obj/hud/button/stat/mana/get_examine_list(var/mob/examiner)
+/obj/hud/button/stat/mana/get_examine_list(mob/examiner)
 	return examiner.get_examine_list(examiner)

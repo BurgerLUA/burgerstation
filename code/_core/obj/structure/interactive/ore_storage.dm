@@ -8,7 +8,7 @@
 
 	density = TRUE
 
-/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ore_storage/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OBJECT
@@ -48,7 +48,7 @@
 	return ..()
 
 
-/obj/structure/interactive/ore_storage/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ore_storage/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 
 
@@ -60,7 +60,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/ore_storage/proc/store_ore(var/atom/movable/M)
+/obj/structure/interactive/ore_storage/proc/store_ore(atom/movable/M)
 
 	if(istype(M,/obj/item/material/ore/))
 		var/obj/item/material/ore/O = M

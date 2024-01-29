@@ -16,13 +16,13 @@
 	maptext_y = -10
 	maptext_width = TILE_SIZE*2
 
-/obj/hud/button/chargen/difficulty/update_owner(var/mob/desired_owner)
+/obj/hud/button/chargen/difficulty/update_owner(mob/desired_owner)
 	if(is_player(desired_owner))
 		var/mob/living/advanced/player/P = desired_owner
 		chosen_difficulty = P.difficulty
 	. = ..()
 
-/obj/hud/button/chargen/difficulty/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/difficulty/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

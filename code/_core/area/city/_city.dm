@@ -16,7 +16,7 @@ var/global/list/vr_possible_nuke_areas = list()
 	sunlight_freq = 0
 	sunlight_color = "FFFFFF"
 
-/area/city/interior/New(var/desired_loc)
+/area/city/interior/New(desired_loc)
 	. = ..()
 	vr_possible_nuke_areas |= src
 

@@ -13,7 +13,7 @@
 	mouse_opacity = 0
 	alpha = 0
 
-/obj/hud/resistbar/New(var/desired_loc)
+/obj/hud/resistbar/New(desired_loc)
 	. = ..()
 
 	stored_line = new

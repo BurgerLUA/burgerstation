@@ -42,7 +42,7 @@
 /obj/structure/interactive/door/airlock/locked
 	locked = TRUE
 
-/obj/structure/interactive/door/airlock/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/door/airlock/on_destruction(damage = TRUE)
 
 	if(door_state != DOOR_STATE_BROKEN)
 		set_door_state(null,DOOR_STATE_BROKEN,TRUE)
@@ -53,7 +53,7 @@
 
 	qdel(src)
 
-/obj/structure/interactive/door/airlock/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/structure/interactive/door/airlock/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	if(door_state == DOOR_STATE_BROKEN)
 		return FALSE
@@ -96,7 +96,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/door/airlock/should_smooth_with(var/turf/T)
+/obj/structure/interactive/door/airlock/should_smooth_with(turf/T)
 
 	. = ..()
 
@@ -144,7 +144,7 @@ obj/structure/interactive/door/airlock/close(var/mob/caller,var/lock = FALSE,var
 	set_door_state(caller,DOOR_STATE_CLOSING_01,lock)
 	return TRUE
 
-/obj/structure/interactive/door/airlock/proc/set_door_state(var/mob/caller=null,var/desired_door_state,var/should_lock=FALSE)
+/obj/structure/interactive/door/airlock/proc/set_door_state(mob/caller=null,desired_door_state,should_lock=FALSE)
 
 	. = FALSE
 

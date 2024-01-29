@@ -82,7 +82,7 @@
 	can_hold = FALSE
 	can_wear = FALSE
 
-/obj/item/organ/New(var/desired_loc)
+/obj/item/organ/New(desired_loc)
 	. = ..()
 	attached_organs = list()
 
@@ -90,7 +90,7 @@
 	color = "#C284FF" //Absurd color. This makes it easier to identify issues.
 	. = ..()
 
-/obj/item/organ/proc/check_hit_chance(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/obj/item/organ/proc/check_hit_chance(atom/attacker,atom/weapon,damagetype/damage_type,list/params = list(),accurate=FALSE,find_closest=FALSE,inaccuracy_modifier=1)
 
 	if(projectile_dodge_chance > 0 && !accurate && !find_closest && get_dist(src,attacker) > 1)
 		var/damagetype/DT = SSdamagetype.all_damage_types[damage_type]
@@ -145,7 +145,7 @@
 		var/image/I = new/image(initial(icon),"[icon_state]_underlay")
 		add_underlay(I)
 
-/obj/item/organ/proc/send_pain_response(var/pain_amount=50)
+/obj/item/organ/proc/send_pain_response(pain_amount=50)
 	if(!has_pain)
 		return FALSE
 	var/mob/living/advanced/A = loc
@@ -157,7 +157,7 @@
 		O.on_pain()
 	return TRUE
 
-/obj/item/organ/post_move(var/atom/old_loc)
+/obj/item/organ/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -165,7 +165,7 @@
 		update_sprite()
 
 
-/obj/item/organ/proc/break_bone(var/play_sound=TRUE,var/display_mesage=TRUE)
+/obj/item/organ/proc/break_bone(play_sound=TRUE,display_mesage=TRUE)
 	if(!health || !can_be_broken || broken)
 		return FALSE
 	if(!broken_name)
@@ -178,7 +178,7 @@
 	src.health.adjust_loss_smart(pain=health.health_max*0.25,organic=TRUE,robotic=FALSE)
 	return TRUE
 
-/obj/item/organ/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/organ/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	. = ..()
 
@@ -222,7 +222,7 @@
 						gib(gib_direction)
 
 
-/obj/item/organ/proc/get_ending_organ(var/limit=10)
+/obj/item/organ/proc/get_ending_organ(limit=10)
 
 	var/list/valid_organs = list()
 	for(var/k in src.attached_organs)
@@ -241,7 +241,7 @@
 	limit--
 	return O.get_ending_organ(limit)
 
-/obj/item/organ/gib(var/gib_direction=0x0,var/hard=FALSE) //Hard gib destroys the limb.
+/obj/item/organ/gib(gib_direction=0x0,hard=FALSE) //Hard gib destroys the limb.
 
 	if(!can_gib)
 		return FALSE
@@ -301,12 +301,12 @@
 /obj/item/organ/proc/on_pain() //What happens if this organ is shot while broken. Other things can cause pain as well.
 	return FALSE
 
-/obj/item/organ/proc/attach_to(var/obj/item/organ/O)
+/obj/item/organ/proc/attach_to(obj/item/organ/O)
 	attached_organ = O
 	O.attached_organs += src
 	return TRUE
 
-/obj/item/organ/initialize_worn_blends(var/desired_icon_state)
+/obj/item/organ/initialize_worn_blends(desired_icon_state)
 
 	if(enable_skin)
 		add_blend(
@@ -517,7 +517,7 @@ obj/item/organ/proc/get_damage_description(var/mob/examiner)
 
 
 
-/obj/item/organ/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/obj/item/organ/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	. = ..()
 	for(var/k in inventories)
 		var/obj/hud/inventory/I = k

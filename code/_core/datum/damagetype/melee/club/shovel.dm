@@ -35,12 +35,12 @@
 
 	target_floors = TRUE
 
-/damagetype/melee/club/shovel/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/melee/club/shovel/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	if(is_floor(hit_object))
 		return TRUE
 	return ..()
 
-/damagetype/melee/club/shovel/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+/damagetype/melee/club/shovel/do_critical_hit(atom/attacker,atom/victim,atom/weapon,atom/hit_object,list/damage_to_deal)
 	if(is_floor(hit_object))
 		return 4
 	return ..()

@@ -9,7 +9,7 @@
 	weight = 4
 
 
-/obj/item/mech_delivery/click_self(var/mob/caller)
+/obj/item/mech_delivery/click_self(mob/caller)
 
 	if(!is_player(caller))
 		return ..()

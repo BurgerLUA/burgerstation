@@ -19,14 +19,14 @@
 	scan_range = VIEW_RANGE*0.75
 	icon_state = "inventory_syndicate"
 
-/obj/item/analyzer/health/click_self(var/mob/caller,location,control,params)
+/obj/item/analyzer/health/click_self(mob/caller,location,control,params)
 	INTERACT_CHECK
 	INTERACT_DELAY(1)
 	advanced = !advanced
 	caller.to_chat(span("notice","Advanced diagnostics is [advanced ? "enabled" : "disabled"]."))
 	return TRUE
 
-/obj/item/analyzer/health/can_be_scanned(var/mob/caller,var/atom/target)
+/obj/item/analyzer/health/can_be_scanned(mob/caller,atom/target)
 
 	if(get_dist(caller,target) > scan_range)
 		caller.to_chat(span("warning","You're too far away!"))
@@ -34,7 +34,7 @@
 
 	return is_living(target)
 
-/obj/item/analyzer/health/on_scan(var/mob/caller,var/atom/target,location,control,params)
+/obj/item/analyzer/health/on_scan(mob/caller,atom/target,location,control,params)
 
 	next_scan = world.time + 4 SECONDS
 

@@ -5,7 +5,7 @@
 
 	affects_dead = TRUE
 
-/status_effect/zombie/can_add_status_effect(var/atom/attacker,var/mob/living/victim)
+/status_effect/zombie/can_add_status_effect(atom/attacker,mob/living/victim)
 	if(!is_advanced(victim))
 		return FALSE
 	var/mob/living/advanced/A = victim
@@ -17,7 +17,7 @@
 		return FALSE
 	. = ..()
 
-/status_effect/zombie/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/zombie/on_effect_removed(mob/living/owner,magnitude,duration)
 
 	. = ..()
 
@@ -33,7 +33,7 @@
 	HOOK_REMOVE("on_damage_received","\ref[owner]_zombie_on_damage_received",owner)
 
 
-/status_effect/zombie/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/zombie/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	stealthy = TRUE
 	. = ..()
 	var/mob/living/advanced/A = owner
@@ -111,7 +111,7 @@
 
 	A.revive()
 
-/status_effect/zombie/on_effect_life(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/zombie/on_effect_life(mob/living/owner,magnitude,duration)
 	. = ..()
 	if(. && !owner.dead && owner.ai && owner.ai.active && !owner.has_status_effect(REST) && prob(1))
 		var/sound_to_play
@@ -135,7 +135,7 @@
 		if(sound_to_play)
 			play_sound(sound_to_play,get_turf(owner),range_max=VIEW_RANGE)
 
-/status_effect/zombie/proc/post_death(var/mob/living/L,args)
+/status_effect/zombie/proc/post_death(mob/living/L,args)
 
 	if(prob(50))
 		var/list/valid_sounds = list(
@@ -146,7 +146,7 @@
 	CALLBACK("zombie_revive_\ref[L]",(rand(4,10)) SECONDS,src,src::zombie_revive(),L)
 	return TRUE
 
-/status_effect/zombie/proc/zombie_revive(var/mob/living/advanced/L) //Stolen from meatmen.
+/status_effect/zombie/proc/zombie_revive(mob/living/advanced/L) //Stolen from meatmen.
 
 	if(L.qdeleting || !L.health)
 		return FALSE
@@ -170,7 +170,7 @@
 	return TRUE
 
 
-/status_effect/zombie/proc/attack(var/mob/living/advanced/L,var/args)
+/status_effect/zombie/proc/attack(mob/living/advanced/L,args)
 
 	if(prob(25))
 		var/list/valid_sounds = list(
@@ -184,7 +184,7 @@
 	return TRUE
 
 
-/status_effect/zombie/proc/on_damage_received(var/mob/living/advanced/L,var/args)
+/status_effect/zombie/proc/on_damage_received(mob/living/advanced/L,args)
 
 	if(length(args) && !args[8] && !L.dead && args[6] > 20 && prob(50))
 		var/list/valid_sounds = list(
@@ -199,7 +199,7 @@
 
 	return TRUE
 
-/status_effect/zombie/proc/on_headshot(var/obj/item/organ/O,var/args) //When the zombie gets shot in the head.
+/status_effect/zombie/proc/on_headshot(obj/item/organ/O,args) //When the zombie gets shot in the head.
 
 	var/mob/living/advanced/A = O.loc
 

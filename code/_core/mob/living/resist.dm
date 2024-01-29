@@ -1,4 +1,4 @@
-/mob/living/proc/can_resist(var/messages = TRUE)
+/mob/living/proc/can_resist(messages = TRUE)
 
 	if(dead)
 		if(messages) to_chat(span("warning","You can't resist while dead!"))

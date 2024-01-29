@@ -30,7 +30,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/crafting_bench/click_self(var/mob/caller,location,control,params)
+/obj/item/crafting_bench/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)
@@ -38,7 +38,7 @@
 	if(is_advanced(caller))
 		toggle_crafting(caller)
 
-/obj/item/crafting_bench/proc/toggle_crafting(var/mob/living/advanced/A)
+/obj/item/crafting_bench/proc/toggle_crafting(mob/living/advanced/A)
 
 	if(!length(inventories))
 		return FALSE
@@ -91,7 +91,7 @@
 
 	return TRUE
 
-/obj/item/crafting_bench/proc/attempt_to_craft(var/mob/living/advanced/caller)
+/obj/item/crafting_bench/proc/attempt_to_craft(mob/living/advanced/caller)
 
 	var/list/item_table = generate_crafting_table(caller,src)
 

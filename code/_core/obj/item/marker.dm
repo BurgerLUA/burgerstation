@@ -13,7 +13,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/marker/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/marker/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(!is_item(object) || object == src)
 		return ..()

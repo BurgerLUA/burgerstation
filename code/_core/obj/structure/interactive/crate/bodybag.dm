@@ -16,11 +16,11 @@
 
 	density = TRUE
 
-/obj/structure/interactive/crate/bodybag/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/crate/bodybag/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","ALT+Click this with an empty hand to pack up and retrieve.")
 
-/obj/structure/interactive/crate/bodybag/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/crate/bodybag/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 
 	if(caller.attack_flags & CONTROL_MOD_DISARM)
@@ -33,7 +33,7 @@
 	return ..()
 
 
-/obj/structure/interactive/crate/bodybag/proc/can_pack_up(var/mob/caller)
+/obj/structure/interactive/crate/bodybag/proc/can_pack_up(mob/caller)
     INTERACT_CHECK_NO_DELAY(src)
 
     if(length(src.contents))
@@ -46,7 +46,7 @@
 
     return TRUE
 
-/obj/structure/interactive/crate/bodybag/proc/pack_up(var/mob/caller)
+/obj/structure/interactive/crate/bodybag/proc/pack_up(mob/caller)
 
 	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
@@ -72,10 +72,10 @@
 
     size = SIZE_3
 
-/obj/item/deployable/bodybag/get_deploy_time(var/mob/caller)
+/obj/item/deployable/bodybag/get_deploy_time(mob/caller)
 	return 1 SECONDS
 
-/obj/item/deployable/bodybag/can_deploy_to(var/mob/caller,var/turf/T)
+/obj/item/deployable/bodybag/can_deploy_to(mob/caller,turf/T)
 
     if(amount <= 0)
         qdel(src)

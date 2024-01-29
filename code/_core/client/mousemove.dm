@@ -1,4 +1,4 @@
-/client/MouseMove(var/atom/object,location,control,params)
+/client/MouseMove(atom/object,location,control,params)
 
 	if(mob && examine_mode)
 		var/list/aug = params2list(params)

@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(botany)
 
 	var/list/queued_plant_update_chunks = list()
 
-/subsystem/botany/unclog(var/mob/caller)
+/subsystem/botany/unclog(mob/caller)
 
 	for(var/k in all_plants)
 		var/obj/structure/interactive/plant/P = k

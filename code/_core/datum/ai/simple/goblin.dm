@@ -21,7 +21,7 @@
 
 	return FALSE
 
-/ai/goblin/on_life(var/tick_rate)
+/ai/goblin/on_life(tick_rate)
 
 	if(!obsessed_item)
 		item_ticks += tick_rate

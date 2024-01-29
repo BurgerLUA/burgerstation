@@ -7,7 +7,7 @@
 
 	collision_flags = FLAG_COLLISION_NONE
 
-/obj/projectile/bullet/laser/penetrating/on_hit(var/atom/hit_atom)
+/obj/projectile/bullet/laser/penetrating/on_hit(atom/hit_atom)
 
 	if(hit_atom != target_atom && is_living(hit_atom))
 		var/mob/living/L = hit_atom

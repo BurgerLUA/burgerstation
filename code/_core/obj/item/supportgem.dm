@@ -63,12 +63,12 @@
 	update_support_stats()
 	update_sprite()
 
-/obj/item/supportgem/adjust_quality(var/quality_to_add=0)
+/obj/item/supportgem/adjust_quality(quality_to_add=0)
 	. = ..()
 	if(.)
 		update_support_stats()
 
-/obj/item/supportgem/get_examine_list(var/mob/examiner)
+/obj/item/supportgem/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice",support_desc)
 	. += div("notice","Bolded values above indicate that value scales with quality.")

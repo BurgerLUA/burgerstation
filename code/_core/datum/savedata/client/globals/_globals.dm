@@ -12,10 +12,10 @@
 		"achievements" = list()
 	)
 
-/savedata/client/globals/get_file(var/file_id)
+/savedata/client/globals/get_file(file_id)
 	return "global_stats.json"
 
-/savedata/client/globals/New(var/desired_ckey)
+/savedata/client/globals/New(desired_ckey)
 
 	. = ..()
 

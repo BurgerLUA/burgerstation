@@ -54,7 +54,7 @@ And the code would look like this:
 
 	var/secret = FALSE //Its a secret to everybody. Won't show up in "recipe" loot items.
 
-/recipe/proc/on_create(var/mob/living/advanced/caller,var/obj/item/crafting/crafting_table,var/obj/item/created_item,var/list/item_table)
+/recipe/proc/on_create(mob/living/advanced/caller,obj/item/crafting/crafting_table,obj/item/created_item,list/item_table)
 
 	//By default, remove all the items.
 
@@ -68,7 +68,7 @@ And the code would look like this:
 
 	return TRUE
 
-/recipe/proc/check_recipe(var/list/item_table,var/obj/item/crafting/crafting_table) //Returns items that were used in creation. Return null if fail.
+/recipe/proc/check_recipe(list/item_table,obj/item/crafting/crafting_table) //Returns items that were used in creation. Return null if fail.
 
 	if(!length(item_table))
 		return null

@@ -38,7 +38,7 @@ obj/structure/interactive/bed
 			if(found)
 				L.add_disease(/disease/hrp)
 
-/obj/structure/interactive/bed/buckle(var/mob/living/victim,var/mob/caller,var/silent=FALSE)
+/obj/structure/interactive/bed/buckle(mob/living/victim,mob/caller,silent=FALSE)
 
 	. = ..()
 
@@ -47,7 +47,7 @@ obj/structure/interactive/bed
 		victim.pixel_x = pixel_offset_x
 		victim.pixel_y = pixel_offset_y
 
-/obj/structure/interactive/bed/unbuckle(var/mob/caller,var/silent=FALSE,var/force=FALSE)
+/obj/structure/interactive/bed/unbuckle(mob/caller,silent=FALSE,force=FALSE)
 
 	var/mob/living/L = buckled
 

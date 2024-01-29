@@ -21,7 +21,7 @@
 	. *= uses_left / initial(uses_left)
 	. = CEILING(.,1)
 
-/obj/item/enchanting_chalk/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/enchanting_chalk/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(object.plane >= PLANE_HUD)
 		return ..()

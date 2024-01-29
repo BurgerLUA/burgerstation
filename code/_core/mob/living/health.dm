@@ -8,7 +8,7 @@
 
 	return TRUE
 
-/mob/living/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	PROCESS_LIVING(src)
 
@@ -75,7 +75,7 @@
 		remove_status_effect(PARRIED)
 		add_status_effect(STUN,stun_magnitude,stun_duration)
 
-/mob/living/proc/can_be_butchered(var/mob/caller,var/obj/item/butchering_item,var/atom/atom_to_butcher)
+/mob/living/proc/can_be_butchered(mob/caller,obj/item/butchering_item,atom/atom_to_butcher)
 
 	if(caller)
 		INTERACT_CHECK_NO_DELAY(src)
@@ -88,7 +88,7 @@
 
 	return TRUE
 
-/mob/living/proc/on_butcher(var/mob/caller,var/atom/movable/atom_to_butcher,var/turf/override_turf)
+/mob/living/proc/on_butcher(mob/caller,atom/movable/atom_to_butcher,turf/override_turf)
 
 	if(src.qdeleting || atom_to_butcher.qdeleting)
 		return FALSE
@@ -136,14 +136,14 @@
 	else
 		update_sprite()
 
-/mob/living/proc/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/proc/get_damage_received_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 	return 1
 
-/mob/living/proc/create_override_contents(var/mob/living/caller)
+/mob/living/proc/create_override_contents(mob/living/caller)
 	return TRUE
 
 
-/mob/living/proc/on_savage_hit(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/mob/living/proc/on_savage_hit(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	var/turf/T = get_turf(src)
 

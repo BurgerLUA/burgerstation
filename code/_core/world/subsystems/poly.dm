@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(poly)
 	return TRUE
 
 
-/subsystem/poly/proc/add_new_text(var/text_to_add)
+/subsystem/poly/proc/add_new_text(text_to_add)
 	if(!text_to_add)
 		return FALSE
 	if(length(text_to_add) > 144)

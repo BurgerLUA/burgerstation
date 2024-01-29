@@ -12,7 +12,7 @@
 	cost = 10
 	cooldown = 4 SECONDS
 
-/ability/cqc/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/cqc/on_cast(mob/caller,atom/target,location,params)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/L = caller
@@ -23,7 +23,7 @@
 
 	return TRUE
 
-/ability/cqc/is_active(var/mob/caller)
+/ability/cqc/is_active(mob/caller)
 
 	if(is_advanced(caller))
 		var/mob/living/advanced/L = caller

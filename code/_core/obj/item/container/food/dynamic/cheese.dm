@@ -22,7 +22,7 @@
 	created_time = get_time()
 	return ..()
 
-/obj/item/container/edible/dynamic/cheese/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/item/container/edible/dynamic/cheese/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 
 	if( (damage_table[BLADE] && !damage_table[BLUNT]) || damage_table[BLADE] > damage_table[BLUNT]) //Cut
 
@@ -91,7 +91,7 @@
 
 	return ..()
 
-/obj/item/container/edible/dynamic/cheese/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/container/edible/dynamic/cheese/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return TRUE
 
 /obj/item/container/edible/dynamic/cheese/update_icon()

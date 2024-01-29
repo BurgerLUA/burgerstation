@@ -12,7 +12,7 @@
 
 	size = SIZE_1
 
-/obj/item/handcuffs/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/handcuffs/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(ismob(object))
 		INTERACT_CHECK
@@ -30,12 +30,12 @@
 
 	return ..()
 
-/obj/item/handcuffs/proc/cuff(var/mob/caller,var/mob/living/advanced/target)
+/obj/item/handcuffs/proc/cuff(mob/caller,mob/living/advanced/target)
 	target.visible_message(span("warning","\The [caller.name] finishes cuffing \the [target.name]."),span("danger","\The [caller.name] cuffs you!"))
 	target.set_handcuffs(TRUE,src)
 	return TRUE
 
-/obj/item/handcuffs/proc/can_cuff(var/mob/caller,var/mob/living/advanced/target)
+/obj/item/handcuffs/proc/can_cuff(mob/caller,mob/living/advanced/target)
 
 	INTERACT_CHECK_NO_DELAY(src)
 	INTERACT_CHECK_NO_DELAY(target)

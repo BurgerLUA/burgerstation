@@ -155,7 +155,7 @@
 
 	var/allow_damage_numbers = TRUE
 
-/damagetype/proc/get_examine_text(var/mob/caller)
+/damagetype/proc/get_examine_text(mob/caller)
 	/*
 	. = "<table>"
 	. += "<tr><th>Damage type</th><th>Damage value</th><th>Skill modifier</th></tr>"
@@ -167,10 +167,10 @@
 
 	return list()
 
-/damagetype/proc/get_crit_chance(var/mob/living/L)
+/damagetype/proc/get_crit_chance(mob/living/L)
 	return crit_chance + (crit_chance_max - crit_chance)*(L.get_skill_power(SKILL_PRECISION,0,1,2)*0.75 + (L.get_attribute_power(ATTRIBUTE_LUCK,0,1) - 0.5)*0.25)
 
-/damagetype/proc/get_combat_rating(var/mob/living/L)
+/damagetype/proc/get_combat_rating(mob/living/L)
 
 	var/combat_rating = 0
 
@@ -188,7 +188,7 @@
 /damagetype/proc/get_attack_type()
 	return ATTACK_TYPE_MELEE
 
-/damagetype/proc/perform_miss(var/atom/attacker,var/atom/victim,var/atom/weapon)
+/damagetype/proc/perform_miss(atom/attacker,atom/victim,atom/weapon)
 	if(!victim)
 		victim = get_step(attacker,attacker.dir)
 	. = max(1,do_attack_animation(attacker,victim,weapon))
@@ -200,13 +200,13 @@
 		if(V.loyalty_tag != A.loyalty_tag && V.is_player_controlled())
 			V.add_skill_xp(SKILL_EVASION,1)
 
-/damagetype/proc/do_critical_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+/damagetype/proc/do_critical_hit(atom/attacker,atom/victim,atom/weapon,atom/hit_object,list/damage_to_deal)
 	return crit_multiplier
 
-/damagetype/proc/do_sneak_hit(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/list/damage_to_deal)
+/damagetype/proc/do_sneak_hit(atom/attacker,atom/victim,atom/weapon,atom/hit_object,list/damage_to_deal)
 	return sneak_attack_multiplier
 
-/damagetype/proc/get_attack_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/damage_multiplier=1)
+/damagetype/proc/get_attack_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,damage_multiplier=1)
 
 	if(attacker == victim)
 		if(!allow_self_damage)
@@ -257,7 +257,7 @@
 
 	return new_attack_damage
 
-/damagetype/proc/get_sneak_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_sneak_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(is_living(victim))
 		var/mob/living/L = victim
@@ -266,7 +266,7 @@
 
 	return FALSE
 
-/damagetype/proc/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(!attacker.is_player_controlled() || victim.is_player_controlled())
 		return FALSE
@@ -285,16 +285,16 @@
 
 	return luck(list(attacker,weapon),crit_chance)
 
-/damagetype/proc/perform_clash(var/atom/attacker,var/atom/victim,var/atom/weapon_attacker,var/atom/weapon_victim)
+/damagetype/proc/perform_clash(atom/attacker,atom/victim,atom/weapon_attacker,atom/weapon_victim)
 	. = max(1,do_attack_animation(attacker,victim,weapon_attacker))
 	CALLBACK("\ref[attacker]_\ref[victim]_[world.time]_clash_sound",.*0.125,src,src::do_clash_effect(),attacker,victim,weapon_attacker)
 	return .
 
-/damagetype/proc/do_clash_effect(var/atom/attacker,var/atom/victim,var/atom/weapon)
+/damagetype/proc/do_clash_effect(atom/attacker,atom/victim,atom/weapon)
 	play_sound('sound/effects/deflect.ogg',get_turf(attacker),range_max=VIEW_RANGE*0.75)
 	return FALSE
 
-/damagetype/proc/windup(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
+/damagetype/proc/windup(atom/attacker,list/atom/victims = list(),atom/weapon,list/atom/hit_objects = list(),atom/blamed,damage_multiplier=1)
 
 	if(!length(victims))
 		return FALSE
@@ -322,7 +322,7 @@
 	CALLBACK("swing_\ref[weapon]",local_power_attack_delay,src,src::swing(),attacker,victims,weapon,hit_objects,blamed,damage_multiplier)
 
 
-/damagetype/proc/swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
+/damagetype/proc/swing(atom/attacker,list/atom/victims = list(),atom/weapon,list/atom/hit_objects = list(),atom/blamed,damage_multiplier=1)
 
 	. = do_swing(attacker,victims,weapon,hit_objects,blamed,damage_multiplier)
 
@@ -332,7 +332,7 @@
 	else
 		attacker.attack_next = world.time + .
 
-/damagetype/proc/do_swing(var/atom/attacker,var/list/atom/victims = list(),var/atom/weapon,var/list/atom/hit_objects = list(),var/atom/blamed,var/damage_multiplier=1)
+/damagetype/proc/do_swing(atom/attacker,list/atom/victims = list(),atom/weapon,list/atom/hit_objects = list(),atom/blamed,damage_multiplier=1)
 
 	if(!length(victims))
 		return perform_miss(attacker,null,weapon)
@@ -407,7 +407,7 @@
 
 	return .
 
-/damagetype/proc/process_damage_group(var/atom/attacker,var/list/atom/victims,var/atom/weapon,var/atom/blamed,var/damage_multiplier=1)
+/damagetype/proc/process_damage_group(atom/attacker,list/atom/victims,atom/weapon,atom/blamed,damage_multiplier=1)
 
 	/* Disabled for now.
 	if(allow_heavy_attack && is_advanced(attacker))
@@ -437,7 +437,7 @@
 	return TRUE
 
 
-/damagetype/proc/process_damage(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damage_multiplier=1)
+/damagetype/proc/process_damage(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damage_multiplier=1)
 
 	if(!is_valid(attacker))
 		return FALSE
@@ -807,14 +807,14 @@
 
 	return list(total_damage_dealt,damage_blocked_with_armor,damage_blocked_with_shield,deflection_rating)
 
-/damagetype/proc/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/proc/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(alert_on_impact != ALERT_LEVEL_NONE && alert_range > 0)
 		create_alert(VIEW_RANGE,victim_turf,attacker,alert_level = alert_on_impact)
 
 	return TRUE
 
-/damagetype/proc/do_attack_visuals(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0)
+/damagetype/proc/do_attack_visuals(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,total_damage_dealt=0)
 
 	if(hit_effect)
 		new hit_effect(victim_turf)
@@ -836,7 +836,7 @@
 					M.client.recoil_pixel_x -= offsets[1]*multiplier*0.5
 					M.client.recoil_pixel_y -= offsets[2]*multiplier*0.5
 
-/damagetype/proc/do_attack_sound(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/total_damage_dealt=0,var/flesh=FALSE)
+/damagetype/proc/do_attack_sound(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,total_damage_dealt=0,flesh=FALSE)
 
 	var/desired_volume = 25 + min(75,total_damage_dealt/2)
 
@@ -848,21 +848,21 @@
 
 	return TRUE
 
-/damagetype/proc/do_swing_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
+/damagetype/proc/do_swing_sound(atom/attacker,atom/victim,atom/weapon)
 	if(length(swing_sounds))
 		var/turf/T = get_turf(victim)
 		play_sound(pick(swing_sounds),T,range_max=VIEW_RANGE*0.5)
 		return TRUE
 	return FALSE
 
-/damagetype/proc/do_miss_sound(var/atom/attacker,var/atom/victim,var/atom/weapon)
+/damagetype/proc/do_miss_sound(atom/attacker,atom/victim,atom/weapon)
 	if(length(miss_sounds))
 		var/turf/T = get_turf(victim)
 		play_sound(pick(miss_sounds),T,range_max=VIEW_RANGE*0.75)
 		return TRUE
 	return FALSE
 
-/damagetype/proc/do_attack_animation(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/do_attack_animation(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(!attacker)
 		return 0
@@ -888,17 +888,17 @@
 	if(draw_weapon && is_item(weapon))
 		new /obj/effect/temp/impact/weapon_clone(get_turf(attacker),. * 0.5,victim,attacker,weapon)
 
-/damagetype/proc/get_block_power_penetration(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_block_power_penetration(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return 0
 
-/damagetype/proc/get_weapon_name(var/atom/backup)
+/damagetype/proc/get_weapon_name(atom/backup)
 	if(weapon_name)
 		return weapon_name
 	if(backup)
 		return backup.name
 	return "weapon"
 
-/damagetype/proc/get_attack_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_attack_message_3rd(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	var/victim_text
 	var/attacker_text
@@ -915,7 +915,7 @@
 
 	return "\The [attacker.name] [pick(attack_verbs)]s [victim_text][attacker_text]"
 
-/damagetype/proc/get_attack_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_attack_message_1st(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	var/victim_text
 	var/attacker_text
@@ -932,28 +932,28 @@
 
 	return "You [pick(attack_verbs)] [victim_text][attacker_text]"
 
-/damagetype/proc/get_attack_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_attack_message_sound(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "You hear a strong [pick(attack_verbs)]."
 
-/damagetype/proc/get_miss_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_miss_message_3rd(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "[copytext(get_attack_message_3rd(attacker,victim,weapon,hit_object),1,-1)], but the attack was #REASON!"
 
-/damagetype/proc/get_miss_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_miss_message_1st(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "[copytext(get_attack_message_1st(attacker,victim,weapon,hit_object),1,-1)], but the attack was #REASON!"
 
-/damagetype/proc/get_miss_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_miss_message_sound(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "You hear a swoosh..."
 
-/damagetype/proc/get_glance_message_sound(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_glance_message_sound(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "You hear a weak [pick(attack_verbs)]."
 
-/damagetype/proc/get_glance_message_3rd(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_glance_message_3rd(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "[copytext(get_attack_message_3rd(attacker,victim,weapon,hit_object),1,-1)]... but it has no effect!"
 
-/damagetype/proc/get_glance_message_1st(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/get_glance_message_1st(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return "[copytext(get_attack_message_1st(attacker,victim,weapon,hit_object),1,-1)]... but it has no effect!"
 
-/damagetype/proc/display_glance_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/display_glance_message(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(enable_logs < 3)
 		return FALSE
@@ -968,7 +968,7 @@
 	)
 	return TRUE
 
-/damagetype/proc/display_hit_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/proc/display_hit_message(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(enable_logs < 3)
 		return FALSE
@@ -983,7 +983,7 @@
 	)
 	return TRUE
 
-/damagetype/proc/display_miss_message(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/miss_text = "misses!")
+/damagetype/proc/display_miss_message(atom/attacker,atom/victim,atom/weapon,atom/hit_object,miss_text = "misses!")
 
 	if(enable_logs < 3)
 		return FALSE
@@ -999,7 +999,7 @@
 	return TRUE
 
 
-/damagetype/proc/get_attack_delay(var/atom/attacker)
+/damagetype/proc/get_attack_delay(atom/attacker)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker

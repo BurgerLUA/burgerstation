@@ -16,7 +16,7 @@
 	QDEL_NULL(stored_paper)
 	. = ..()
 
-/obj/structure/interactive/fax_machine/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/fax_machine/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 
 
@@ -79,15 +79,15 @@
 	return ..()
 
 
-/obj/structure/interactive/fax_machine/proc/process_data(var/mob/caller,var/list/data_to_process = list())
+/obj/structure/interactive/fax_machine/proc/process_data(mob/caller,list/data_to_process = list())
 	return TRUE
 
-/obj/structure/interactive/fax_machine/proc/finish_processing(var/mob/caller)
+/obj/structure/interactive/fax_machine/proc/finish_processing(mob/caller)
 	processing = FALSE
 	update_sprite()
 	return TRUE
 
-/obj/structure/interactive/fax_machine/cargo/process_data(var/mob/caller,var/list/data_to_process = list())
+/obj/structure/interactive/fax_machine/cargo/process_data(mob/caller,list/data_to_process = list())
 
 	var/list/required_data = list(
 		"Requisitioners Name", //Real-name of the player. It's basically a lock saying only this person can open it. Leave blank for anyone to open.

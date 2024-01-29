@@ -25,7 +25,7 @@
 	for(var/obj/item/I in src.contents)
 		. += I.get_value()
 
-/obj/item/grenade/device/special/timed/blackhole/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/blackhole/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	. = ..()
 
@@ -47,7 +47,7 @@
 	suck(A,6)
 
 
-/obj/item/grenade/device/special/timed/blackhole/proc/suck(var/mob/living/advanced/caller,var/sucks_left=0)
+/obj/item/grenade/device/special/timed/blackhole/proc/suck(mob/living/advanced/caller,sucks_left=0)
 
 
 	var/turf/T = get_turf(src)
@@ -92,7 +92,7 @@
 	marker_color = COLOR_GREEN_LIGHT
 	value = 400
 
-/obj/item/grenade/device/special/timed/decoy/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/decoy/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	. = ..()
 
@@ -121,7 +121,7 @@
 	marker_color = COLOR_RED
 	value = 200
 
-/obj/item/grenade/device/special/timed/barrier/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/barrier/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	. = ..()
 
@@ -178,7 +178,7 @@
 	marker_color = COLOR_GOLD
 	value = 300
 
-/obj/item/grenade/device/special/timed/shell/trigger(var/mob/caller,var/atom/source,var/signal_freq,var/signal_code)
+/obj/item/grenade/device/special/timed/shell/trigger(mob/caller,atom/source,signal_freq,signal_code)
 
 	. = ..()
 

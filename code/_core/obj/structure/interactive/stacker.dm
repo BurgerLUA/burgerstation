@@ -23,7 +23,7 @@
 
 	return ..()
 
-/obj/structure/interactive/stacker/proc/stack(var/obj/item/I)
+/obj/structure/interactive/stacker/proc/stack(obj/item/I)
 
 	if(I.amount_max <= 1) //Not stackable.
 		return FALSE

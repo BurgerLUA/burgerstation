@@ -26,7 +26,7 @@
 
 	value_burgerbux = 1
 
-/obj/item/storage/death_box/get_examine_list(var/mob/examiner)
+/obj/item/storage/death_box/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("danger","Death boxes cannot be stored in banks.")
 	. += div("danger","Anyone can open a death box, even if they don't own it.")
@@ -35,7 +35,7 @@
 	. = ..()
 	prune_inventory()
 
-/obj/item/storage/death_box/get_examine_list(var/mob/examiner)
+/obj/item/storage/death_box/get_examine_list(mob/examiner)
 	. = ..()
 	if(owning_mob_name)
 		. += div("notice","This box belongs to [owning_mob_name].")

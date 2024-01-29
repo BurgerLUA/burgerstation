@@ -1,4 +1,4 @@
-/mob/living/advanced/player/on_progress_bar_completed(var/id,var/list/callback_list)
+/mob/living/advanced/player/on_progress_bar_completed(id,list/callback_list)
 
 	switch(id)
 		if("take")
@@ -17,7 +17,7 @@
 
 	..()
 
-/mob/living/advanced/player/on_progress_bar_failed(var/id,var/list/callback_list)
+/mob/living/advanced/player/on_progress_bar_failed(id,list/callback_list)
 
 	switch(id)
 		if("take")

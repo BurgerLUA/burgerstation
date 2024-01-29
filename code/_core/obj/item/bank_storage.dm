@@ -22,10 +22,10 @@
 
 	queue_delete_immune = TRUE
 
-/obj/item/bank_storage/is_safe_to_delete(var/check_loc = TRUE)
+/obj/item/bank_storage/is_safe_to_delete(check_loc = TRUE)
 	return FALSE
 
-/obj/item/bank_storage/on_crush(var/message=TRUE)
+/obj/item/bank_storage/on_crush(message=TRUE)
 	CRASH("ERROR: Tried crushing a bank object; something that should NEVER be crushed!")
 
 /obj/item/bank_storage/PreDestroy()

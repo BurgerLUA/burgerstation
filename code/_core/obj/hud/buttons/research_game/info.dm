@@ -38,7 +38,7 @@
 	layer = LAYER_SCREEN_BLOOD+4
 	mouse_opacity = 1
 
-/obj/hud/button/research/info/quit/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/research/info/quit/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -48,7 +48,7 @@
 
 	return TRUE
 
-/obj/hud/button/research/info/effect/proc/do_effect(var/obj/hud/button/research/piece/P,var/points_given)
+/obj/hud/button/research/info/effect/proc/do_effect(obj/hud/button/research/piece/P,points_given)
 	maptext = "<center><font size=2>+[points_given]</font></center>"
 	screen_loc = P.screen_loc
 	var/direction = pick(-1,1)

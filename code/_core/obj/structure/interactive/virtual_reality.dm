@@ -16,7 +16,7 @@
 	name = "ready up"
 	maptext = "<center>Ready Up!</center>"
 
-/obj/structure/interactive/virtual_reality/join_game/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/virtual_reality/join_game/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(caller,/mob/living/advanced/player/virtual))
 		var/mob/living/advanced/player/virtual/V = caller

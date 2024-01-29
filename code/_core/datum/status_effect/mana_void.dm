@@ -6,8 +6,8 @@
 	maximum = 0
 	default_duration = 0
 
-/status_effect/mana_void/on_effect_added(var/mob/living/owner,var/atom/source,var/magnitude,var/duration,var/stealthy)
+/status_effect/mana_void/on_effect_added(mob/living/owner,atom/source,magnitude,duration,stealthy)
 	owner.mana_regen_buffer = -1000
 
-/status_effect/stressed/on_effect_removed(var/mob/living/owner,var/magnitude,var/duration)
+/status_effect/stressed/on_effect_removed(mob/living/owner,magnitude,duration)
 	owner.mana_regen_buffer = max(0,owner.mana_regen_buffer)

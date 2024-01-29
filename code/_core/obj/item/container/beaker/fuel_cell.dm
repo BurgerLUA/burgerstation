@@ -18,11 +18,11 @@
 
 	size = SIZE_1
 
-/obj/item/container/simple/beaker/fuel_cell/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/container/simple/beaker/fuel_cell/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("allow_reagent_transfer_to")
 
-/obj/item/container/simple/beaker/fuel_cell/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/container/simple/beaker/fuel_cell/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("allow_reagent_transfer_to")
 
@@ -34,7 +34,7 @@
 		reagents.temperature_change_mul = 1
 		SSreagent.all_temperature_reagent_containers += reagents
 
-/obj/item/container/simple/beaker/fuel_cell/click_self(var/mob/caller)
+/obj/item/container/simple/beaker/fuel_cell/click_self(mob/caller)
 
 	if(!(allow_reagent_transfer_to || allow_reagent_transfer_from))
 		caller.to_chat(span("notice","You'll need a wrench in order to open \the [src.name]!"))
@@ -42,7 +42,7 @@
 
 	. = ..()
 
-/obj/item/container/simple/beaker/fuel_cell/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/container/simple/beaker/fuel_cell/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		var/obj/item/I = object

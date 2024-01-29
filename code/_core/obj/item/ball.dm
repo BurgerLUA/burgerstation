@@ -27,7 +27,7 @@
 	var/image/I = new/image(initial(icon),"[initial(icon_state)]_shading")
 	add_overlay(I)
 
-/obj/item/ball/proc/set_balling(var/desired_balling=TRUE)
+/obj/item/ball/proc/set_balling(desired_balling=TRUE)
 
 	if(desired_balling == balling)
 		return FALSE
@@ -51,11 +51,11 @@
 	set_balling(FALSE)
 	. = ..()
 
-/obj/item/ball/post_move(var/atom/old_loc)
+/obj/item/ball/post_move(atom/old_loc)
 	. = ..()
 	set_balling(src.z ? TRUE : FALSE)
 
-/obj/item/ball/proc/ball_think(var/tick_rate=1)
+/obj/item/ball/proc/ball_think(tick_rate=1)
 
 	var/desired_move_dir = 0x0
 
@@ -98,7 +98,7 @@
 	desc_extended = "You kick this. I guess you can throw this too."
 	icon_state = "soccer"
 
-/obj/item/ball/soccer/get_examine_list(var/mob/examiner)
+/obj/item/ball/soccer/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","Hold ALT to move over the ball without kicking it.<br>Hold SPACE to triple your kicking power.<br>Hold SHIFT while running into the ball to double your kicking power.")
 
@@ -113,7 +113,7 @@
 	. = ..()
 	on_kick(O,pull=TRUE)
 
-/obj/item/ball/soccer/proc/on_kick(var/atom/movable/O,var/pull=FALSE)
+/obj/item/ball/soccer/proc/on_kick(atom/movable/O,pull=FALSE)
 	if(is_living(O))
 		var/mob/living/L = O
 		if(L.horizontal)

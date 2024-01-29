@@ -6,7 +6,7 @@ var/global/list/mission_mob_markers = list()
 	icon_state = "mission_spawn"
 
 
-/obj/marker/mission_mob/New(var/desired_loc)
+/obj/marker/mission_mob/New(desired_loc)
 	. = ..()
 	mission_mob_markers += src
 
@@ -29,7 +29,7 @@ var/global/list/rogue_crewmember_markers = list()
 	icon_state = "syndie"
 
 
-/obj/marker/rogue_crewmember_marker/New(var/desired_loc)
+/obj/marker/rogue_crewmember_marker/New(desired_loc)
 	. = ..()
 	rogue_crewmember_markers += src
 
@@ -47,7 +47,7 @@ var/global/list/turf/corpse_markers = list()
 	icon = 'icons/obj/markers/markers.dmi'
 	icon_state = "corpse"
 
-/obj/marker/mission_corpse/New(var/desired_loc)
+/obj/marker/mission_corpse/New(desired_loc)
 	. = ..()
 	corpse_markers += src
 

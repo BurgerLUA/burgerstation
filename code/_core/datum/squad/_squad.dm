@@ -15,7 +15,7 @@
 
 	var/never_delete = FALSE
 
-/squad/New(var/desired_loc)
+/squad/New(desired_loc)
 
 	SSsquad.all_squads += src
 
@@ -35,7 +35,7 @@
 
 
 
-/squad/proc/add_member(var/mob/living/advanced/player/P)
+/squad/proc/add_member(mob/living/advanced/player/P)
 
 	if(members[P])
 		return FALSE
@@ -61,7 +61,7 @@
 
 	return TRUE
 
-/squad/proc/remove_member(var/mob/living/advanced/player/P)
+/squad/proc/remove_member(mob/living/advanced/player/P)
 
 	if(!members[P])
 		return FALSE
@@ -84,7 +84,7 @@
 
 	return TRUE
 
-/squad/proc/set_leader(var/mob/living/advanced/player/P)
+/squad/proc/set_leader(mob/living/advanced/player/P)
 
 	if(!members[P])
 		return FALSE

@@ -111,7 +111,7 @@
 	heal_amount_stamina = 0
 	heal_amount_mana = 0
 
-/obj/item/consumable/food/burger/clown/New(var/desired_loc)
+/obj/item/consumable/food/burger/clown/New(desired_loc)
 	..()
 	heal_amount_health = rand(-10,10) * 10
 	heal_amount_stamina = rand(-10,10) * 10
@@ -135,7 +135,7 @@
 	heal_amount_stamina = 0
 	heal_amount_mana = 0
 
-/obj/item/consumable/food/burger/colored/New(var/desired_loc)
+/obj/item/consumable/food/burger/colored/New(desired_loc)
 	..()
 	heal_amount_health = GetRedPart(color)/2.55
 	heal_amount_stamina = GetGreenPart(color)/2.55

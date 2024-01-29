@@ -7,7 +7,7 @@
 
 	var/atom/movable/king_to_follow
 
-/obj/effect/temp/slime_king_absorb/New(var/desired_loc,var/desired_time)
+/obj/effect/temp/slime_king_absorb/New(desired_loc,desired_time)
 	. = ..()
 	filters += filter(type="ripple",x=0,y=0,size=10,repeat=4,radius=0,falloff=0.5,flags=WAVE_BOUNDED)
 	animate(filters[length(filters)],radius=0,size=10,easing=SINE_EASING,time=2,loop=-1,flags=ANIMATION_PARALLEL)

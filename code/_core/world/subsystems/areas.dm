@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(area)
 
 	var/list/areas_by_identifier = list()
 
-/subsystem/area/unclog(var/mob/caller)
+/subsystem/area/unclog(mob/caller)
 	src.tick_rate = 0
 	log_subsystem(src.name,"Shutting down.")
 	. = ..()
@@ -154,7 +154,7 @@ SUBSYSTEM_DEF(area)
 
 	return TRUE
 
-/subsystem/area/proc/set_weather(var/weather_type,var/enabled=FALSE,var/list/area/affected_areas)
+/subsystem/area/proc/set_weather(weather_type,enabled=FALSE,list/area/affected_areas)
 	for(var/k in affected_areas)
 		var/area/A = k
 		if(!A)

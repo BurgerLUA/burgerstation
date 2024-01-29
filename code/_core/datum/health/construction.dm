@@ -18,7 +18,7 @@
 	)
 	*/
 
-/health/construction/update_health(var/atom/attacker,var/damage_dealt=0,var/update_hud=TRUE,var/check_death=TRUE)
+/health/construction/update_health(atom/attacker,damage_dealt=0,update_hud=TRUE,check_death=TRUE)
 	. = ..()
 	if(!owner)
 		return .
@@ -48,7 +48,7 @@
 
 /health/construction/field_generator/
 
-/health/construction/field_generator/get_damage_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/health/construction/field_generator/get_damage_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(istype(weapon,/obj/structure/interactive/emitter))
 		return 0

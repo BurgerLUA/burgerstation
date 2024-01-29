@@ -19,7 +19,7 @@
 		open = TRUE
 	. = ..()
 
-/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip(var/obj/item/I)
+/obj/item/weapon/ranged/bullet/revolver/proc/can_fit_clip(obj/item/I)
 
 	if(istype(I,/obj/item/magazine/clip/revolver))
 		var/obj/item/magazine/M = I
@@ -28,7 +28,7 @@
 
 	return FALSE
 
-/obj/item/weapon/ranged/bullet/revolver/shoot(var/mob/caller,var/atom/object,location,params,var/damage_multiplier=1,var/click_called=FALSE)
+/obj/item/weapon/ranged/bullet/revolver/shoot(mob/caller,atom/object,location,params,damage_multiplier=1,click_called=FALSE)
 
 	if(!has_quickshot)
 		return ..()
@@ -45,7 +45,7 @@
 		play_sound('sound/weapons/ranged/generic/revolver_timing.ogg',T)
 
 
-/obj/item/weapon/ranged/bullet/revolver/get_shoot_delay(var/mob/caller,var/atom/target,location,params)
+/obj/item/weapon/ranged/bullet/revolver/get_shoot_delay(mob/caller,atom/target,location,params)
 
 	. = ..()
 
@@ -57,17 +57,17 @@
 	if(shot_ago >= 1 && shot_ago <= .) //Can shoot really fast, for a penalty.
 		return shot_ago
 
-/obj/item/weapon/ranged/bullet/revolver/New(var/desired_loc)
+/obj/item/weapon/ranged/bullet/revolver/New(desired_loc)
 	. = ..()
 	stored_bullets = new/list(bullet_count_max)
 
 /obj/item/weapon/ranged/bullet/revolver/get_ranged_damage_type()
 	return stored_bullets[current_chamber] ? stored_bullets[current_chamber].damage_type : null
 
-/obj/item/weapon/ranged/bullet/revolver/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/weapon/ranged/bullet/revolver/can_load_chamber(mob/caller,obj/item/bullet_cartridge/B)
 	return FALSE
 
-/obj/item/weapon/ranged/bullet/revolver/proc/rotate_cylinder(var/rotate_amount=1)
+/obj/item/weapon/ranged/bullet/revolver/proc/rotate_cylinder(rotate_amount=1)
 
 	if(rotate_amount == 0)
 		return FALSE
@@ -77,7 +77,7 @@
 
 	return current_chamber
 
-/obj/item/weapon/ranged/bullet/revolver/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/bullet/revolver/click_self(mob/caller,location,control,params)
 
 	if(can_shoot_while_open)
 		return TRUE
@@ -104,12 +104,12 @@
 /obj/item/weapon/ranged/bullet/revolver/get_ammo_count()
 	return get_real_length(stored_bullets)
 
-/obj/item/weapon/ranged/bullet/revolver/handle_ammo(var/mob/caller,var/bullet_position=1)
+/obj/item/weapon/ranged/bullet/revolver/handle_ammo(mob/caller,bullet_position=1)
 	var/obj/item/bullet_cartridge/B = spend_stored_bullet(caller,current_chamber)
 	rotate_cylinder(1)
 	return B
 
-/obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(var/mob/caller,var/atom/object,location,params,var/check_time=TRUE,var/messages=TRUE)
+/obj/item/weapon/ranged/bullet/revolver/can_gun_shoot(mob/caller,atom/object,location,params,check_time=TRUE,messages=TRUE)
 
 	if(!can_shoot_while_open && open)
 		if(messages) caller.to_chat(span("warning","Close \the [src.name] before firing!"))
@@ -117,7 +117,7 @@
 
 	return ..()
 
-/obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/weapon/ranged/bullet/revolver/clicked_on_by_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(open && is_inventory(object) && src && is_inventory(src.loc)) //The revolver is in an inventory, and you clicked on it with your empty hands.
 

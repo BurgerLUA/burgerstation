@@ -9,7 +9,7 @@
 	quality_max = 75
 	quality_mod_min = 0.5
 
-/loadout/slavic/pre_add(var/mob/living/advanced/A,var/obj/item/I) //added before initialize and spawn
+/loadout/slavic/pre_add(mob/living/advanced/A,obj/item/I) //added before initialize and spawn
 
 	. = ..()
 
@@ -18,7 +18,7 @@
 		if(M.ammo_surplus)
 			M.ammo = M.ammo_surplus
 
-/loadout/slavic/on_add(var/mob/living/advanced/A,var/obj/item/I) //added after initialize and spawn
+/loadout/slavic/on_add(mob/living/advanced/A,obj/item/I) //added after initialize and spawn
 
 	. = ..()
 

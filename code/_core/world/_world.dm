@@ -190,7 +190,7 @@ var/global/world_state = STATE_STARTING
 		sleep(1)
 		CHECK_TICK_HARD
 
-/world/proc/end(var/reason,var/shutdown=FALSE)
+/world/proc/end(reason,shutdown=FALSE)
 
 	if(world_state != STATE_RUNNING)
 		log_error("Can't end now!")

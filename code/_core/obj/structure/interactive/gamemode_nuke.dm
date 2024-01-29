@@ -55,7 +55,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/nukies_nuke/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/nukies_nuke/get_examine_list(mob/examiner)
 	. = ..()
 
 	if(is_living(examiner))
@@ -63,7 +63,7 @@
 		if(L.loyalty_tag == "Syndicate")
 			. += div("notice","\The [src.name] indicates it can only be anchored in <b>\the [nuke_area.name].</b>")
 
-/obj/structure/interactive/nukies_nuke/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/nukies_nuke/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/disk/nuke))
 		INTERACT_CHECK
@@ -97,7 +97,7 @@
 
 		return TRUE
 
-/obj/structure/interactive/nukies_nuke/proc/can_unlock(var/mob/living/caller)
+/obj/structure/interactive/nukies_nuke/proc/can_unlock(mob/living/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -109,7 +109,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/nukies_nuke/proc/can_disarm(var/mob/living/caller)
+/obj/structure/interactive/nukies_nuke/proc/can_disarm(mob/living/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -122,7 +122,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/nukies_nuke/proc/can_arm(var/mob/living/caller)
+/obj/structure/interactive/nukies_nuke/proc/can_arm(mob/living/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -134,13 +134,13 @@
 
 	return TRUE
 
-/obj/structure/interactive/nukies_nuke/proc/unlock(var/mob/living/caller)
+/obj/structure/interactive/nukies_nuke/proc/unlock(mob/living/caller)
 	caller.visible_message(span("danger","\The [caller.name] unlocks \the [src.name]!"),span("warning","You unlock \the [src.name]."))
 	nuke_state = 1
 	anchored = TRUE
 	return TRUE
 
-/obj/structure/interactive/nukies_nuke/proc/arm(var/mob/living/caller)
+/obj/structure/interactive/nukies_nuke/proc/arm(mob/living/caller)
 	caller.visible_message(span("danger","\The [caller.name] arms \the [src.name]!"),span("warning","You arm \the [src.name]."))
 	nuke_state = 2
 	next_explode = world.time + 1200 //Decieconds
@@ -154,7 +154,7 @@
 	START_THINKING(src)
 	return TRUE
 
-/obj/structure/interactive/nukies_nuke/proc/disarm(var/mob/caller)
+/obj/structure/interactive/nukies_nuke/proc/disarm(mob/caller)
 	caller.visible_message(span("danger","\The [caller.name] disarms \the [src.name]!"),span("warning","You disarm \the [src.name]."))
 	nuke_state = 3
 	if(istype(SSgamemode.active_gamemode,/gamemode/nuke_ops/))

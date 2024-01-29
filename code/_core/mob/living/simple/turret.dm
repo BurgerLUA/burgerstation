@@ -41,7 +41,7 @@
 	stun_angle = 0
 	stun_elevation = 0
 
-/mob/living/simple/turret/face_atom(var/atom/A)
+/mob/living/simple/turret/face_atom(atom/A)
 	return set_dir(get_dir(src,A))
 
 /mob/living/simple/turret/Finalize()
@@ -52,7 +52,7 @@
 		GENERATE(stored_weapon)
 		FINALIZE(stored_weapon)
 
-/mob/living/simple/turret/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
+/mob/living/simple/turret/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 
 	if(!stored_weapon)
 		log_error("[src.get_debug_name()] didn't have a stored weapon! Deleting!")
@@ -122,7 +122,7 @@
 
 	level = 3
 
-/mob/living/simple/turret/deployable/get_examine_list(var/mob/examiner)
+/mob/living/simple/turret/deployable/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -140,7 +140,7 @@
 /mob/living/simple/turret/deployable/get_battery()
 	return stored_battery
 
-/mob/living/simple/turret/deployable/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/simple/turret/deployable/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/powercell/))
 		INTERACT_CHECK
@@ -199,7 +199,7 @@
 	icon_state = "dead"
 	return ..()
 
-/mob/living/simple/turret/deployable/proc/can_pack_up(var/mob/caller)
+/mob/living/simple/turret/deployable/proc/can_pack_up(mob/caller)
 
 	INTERACT_CHECK_NO_DELAY(src)
 
@@ -217,7 +217,7 @@
 
 	return TRUE
 
-/mob/living/simple/turret/deployable/proc/pack_up(var/mob/caller)
+/mob/living/simple/turret/deployable/proc/pack_up(mob/caller)
 
 	caller.visible_message(span("warning","\The [caller.name] packs up \the [src.name]."),span("notice","You pack up \the [src.name]."))
 
@@ -237,7 +237,7 @@
 
 	return TRUE
 
-/mob/living/simple/turret/deployable/drop_on_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/simple/turret/deployable/drop_on_object(mob/caller,atom/object,location,control,params)
 
 	if(caller != object)
 		return ..()
@@ -316,7 +316,7 @@
 	src.add_status_effect(PARALYZE,magnitude=100,duration=10,force=TRUE,stealthy=TRUE,bypass_limits=TRUE)
 	return TRUE
 
-/mob/living/simple/turret/ai_core/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
+/mob/living/simple/turret/ai_core/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override)  //The src attacks the victim, with the blamed taking responsibility
 
 	if(icon_state == "closed")
 		open()

@@ -39,7 +39,7 @@
 
 	return ..()
 
-/obj/item/mech_part/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/item/mech_part/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(!src.finalized)
 		return FALSE

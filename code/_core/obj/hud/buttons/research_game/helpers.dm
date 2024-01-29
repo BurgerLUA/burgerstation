@@ -1,4 +1,4 @@
-/mob/living/proc/toggle_research_game(var/allow_disable=TRUE,var/allow_enable = TRUE)
+/mob/living/proc/toggle_research_game(allow_disable=TRUE,allow_enable = TRUE)
 
 	var/obj/hud/button/research/board/B
 

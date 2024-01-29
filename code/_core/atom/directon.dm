@@ -1,4 +1,4 @@
-/atom/proc/set_dir(var/desired_dir,var/force = FALSE)
+/atom/proc/set_dir(desired_dir,force = FALSE)
 
 	if(!desired_dir)
 		return null
@@ -10,10 +10,10 @@
 
 	return dir
 
-/atom/proc/face_atom(var/atom/A)
+/atom/proc/face_atom(atom/A)
 	return set_dir(get_relative_dir(A))
 
-/atom/proc/get_relative_dir(var/atom/A)
+/atom/proc/get_relative_dir(atom/A)
 	if(!A || !x || !y || !A.x || !A.y) return
 	var/dx = A.x - x
 	var/dy = A.y - y

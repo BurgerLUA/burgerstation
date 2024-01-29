@@ -12,7 +12,7 @@
 
 	var/category
 
-/ability/proc/activate(var/mob/caller)
+/ability/proc/activate(mob/caller)
 	var/atom/target
 	var/list/params
 	var/location
@@ -30,10 +30,10 @@
 		return FALSE
 	return src.on_cast(caller,target,location,params)
 
-/ability/proc/is_active(var/mob/caller)
+/ability/proc/is_active(mob/caller)
 	return FALSE
 
-/ability/proc/on_cast_pre(var/mob/caller,var/atom/target,location,params)
+/ability/proc/on_cast_pre(mob/caller,atom/target,location,params)
 
 	if(world.time < cooldown_end)
 		return FALSE
@@ -59,7 +59,7 @@
 
 	return TRUE
 
-/ability/proc/on_cast(var/mob/caller,var/atom/target,location,params)
+/ability/proc/on_cast(mob/caller,atom/target,location,params)
 	return TRUE
 
 

@@ -1,14 +1,14 @@
-/atom/proc/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/atom/proc/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	HOOK_CALL("on_damage_received")
 	return TRUE
 
-/atom/proc/change_victim(var/atom/attacker)
+/atom/proc/change_victim(atom/attacker)
 	return src
 
-/atom/proc/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+/atom/proc/should_cleave(atom/attacker,atom/victim,list/params)
 	return FALSE
 
-/atom/proc/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override) //The src attacks the victim, with the blamed taking responsibility
+/atom/proc/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override) //The src attacks the victim, with the blamed taking responsibility
 
 	if(!attacker)
 		attacker = src
@@ -149,16 +149,16 @@
 
 	return DT.swing(attacker,victims,object_to_damage_with,hit_objects,attacker)
 
-/atom/proc/get_block_power(var/atom/victim,var/atom/attacker,var/atom/weapon,var/atom/object_to_damage,var/damagetype/DT)
+/atom/proc/get_block_power(atom/victim,atom/attacker,atom/weapon,atom/object_to_damage,damagetype/DT)
 	return 0.5
 
-/atom/proc/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/atom/proc/get_object_to_damage(atom/attacker,atom/weapon,damagetype/damage_type,list/params = list(),accurate=FALSE,find_closest=FALSE,inaccuracy_modifier=1)
 	return src
 
-/atom/proc/get_object_to_damage_with(var/atom/attacker,var/atom/victim,var/list/params=list()) //Which object should the attacker damage with?
+/atom/proc/get_object_to_damage_with(atom/attacker,atom/victim,list/params=list()) //Which object should the attacker damage with?
 	return src
 
-/atom/proc/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/atom/proc/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 
 	if(attack_next > world.time)
 		return FALSE
@@ -178,5 +178,5 @@
 
 	return TRUE
 
-/atom/proc/get_damage_type(var/atom/attacker,var/atom/victim)
+/atom/proc/get_damage_type(atom/attacker,atom/victim)
 	return damage_type

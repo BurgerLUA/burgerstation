@@ -1,11 +1,11 @@
-/mob/living/advanced/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/advanced/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(driving)
 		return FALSE
 
 	return ..()
 
-/mob/living/advanced/can_attack(var/atom/attacker,var/atom/victim,var/atom/weapon,var/params,var/damagetype/damage_type)
+/mob/living/advanced/can_attack(atom/attacker,atom/victim,atom/weapon,params,damagetype/damage_type)
 
 	if(driving)
 		return driving.can_attack(attacker,victim,weapon,params,damage_type)
@@ -19,14 +19,14 @@
 	. = ..()
 
 
-/mob/living/advanced/defer_click_on_object(var/mob/caller,location,control,params)
+/mob/living/advanced/defer_click_on_object(mob/caller,location,control,params)
 
 	if(driving)
 		return driving
 
 	. = ..()
 
-/mob/living/advanced/get_object_to_damage(var/atom/attacker,var/atom/weapon,var/damagetype/damage_type,var/list/params = list(),var/accurate=FALSE,var/find_closest=FALSE,var/inaccuracy_modifier=1)
+/mob/living/advanced/get_object_to_damage(atom/attacker,atom/weapon,damagetype/damage_type,list/params = list(),accurate=FALSE,find_closest=FALSE,inaccuracy_modifier=1)
 
 	var/x_attack = params && !isnull(params[PARAM_ICON_X]) ? params[PARAM_ICON_X] : 16
 	var/y_attack = params && !isnull(params[PARAM_ICON_Y]) ? params[PARAM_ICON_Y] : 16
@@ -106,7 +106,7 @@
 
 	return TRUE
 
-/mob/living/advanced/get_block_data(var/atom/attacker,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/advanced/get_block_data(atom/attacker,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 
 	var/attack_type = DT.get_attack_type()
 

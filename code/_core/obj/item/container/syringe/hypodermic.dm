@@ -44,16 +44,16 @@
 	add_overlay(I)
 
 
-/obj/item/container/syringe/hypodermic/adjust_quality(var/quality_to_add=0)
+/obj/item/container/syringe/hypodermic/adjust_quality(quality_to_add=0)
 	. = ..()
 	if(. && finalized) update_sprite()
 
 
-/obj/item/container/syringe/hypodermic/on_equip(var/atom/old_location,var/silent=FALSE) //When the item is picked up.
+/obj/item/container/syringe/hypodermic/on_equip(atom/old_location,silent=FALSE) //When the item is picked up.
 	. = ..()
 	update_sprite()
 
-/obj/item/container/syringe/hypodermic/drop_item(var/atom/desired_loc,var/pixel_x_offset = 0,var/pixel_y_offset = 0,var/silent=FALSE)
+/obj/item/container/syringe/hypodermic/drop_item(atom/desired_loc,pixel_x_offset = 0,pixel_y_offset = 0,silent=FALSE)
 	. = ..()
 	update_sprite()
 

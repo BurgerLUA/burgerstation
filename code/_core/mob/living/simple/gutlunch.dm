@@ -25,7 +25,7 @@
 
 	stun_angle = 0
 
-/mob/living/simple/gutlunch/post_move(var/atom/old_loc)
+/mob/living/simple/gutlunch/post_move(atom/old_loc)
 
 	. = ..()
 
@@ -58,7 +58,7 @@
 				M.force_move(PT)
 	update_sprite()
 
-/mob/living/simple/gutlunch/proc/consume_turf(var/turf/T)
+/mob/living/simple/gutlunch/proc/consume_turf(turf/T)
 
 	. = FALSE
 

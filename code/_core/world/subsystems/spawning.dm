@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(spawning)
 
 	return TRUE
 
-/subsystem/spawning/proc/attempt_spawn(var/obj/marker/mob_spawn/M)
+/subsystem/spawning/proc/attempt_spawn(obj/marker/mob_spawn/M)
 
 	if(!M.mob_type)
 		log_error("Warning: [M] at ([M.x],[M.y],[M.z]) has invalid spawning data.")
@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(spawning)
 
 	return FALSE
 
-/subsystem/spawning/proc/do_spawn(var/obj/marker/mob_spawn/M)
+/subsystem/spawning/proc/do_spawn(obj/marker/mob_spawn/M)
 
 	var/turf/spawning_turf = get_turf(M)
 

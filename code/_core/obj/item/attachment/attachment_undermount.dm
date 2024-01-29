@@ -70,7 +70,7 @@
 	QDEL_NULL(stored_gun)
 	. = ..()
 
-/obj/item/attachment/undermount/gun/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/attachment/undermount/gun/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	return stored_gun?.clicked_on_by_object(caller,object,location,control,params)
 
 /obj/item/attachment/undermount/gun/Generate()
@@ -82,15 +82,15 @@
 		FINALIZE(stored_gun)
 	. = ..()
 
-/obj/item/attachment/undermount/gun/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/attachment/undermount/gun/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEATOM("stored_gun")
 
-/obj/item/attachment/undermount/gun/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/attachment/undermount/gun/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADATOM("stored_gun")
 
-/obj/item/attachment/undermount/gun/click_on_object_alt(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/attachment/undermount/gun/click_on_object_alt(mob/caller,atom/object,location,control,params)
 	return stored_gun.click_on_object(caller,object,location,control,params)
 
 

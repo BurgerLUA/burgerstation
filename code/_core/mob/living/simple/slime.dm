@@ -93,7 +93,7 @@
 
 	return TRUE
 
-/mob/living/simple/slime/get_damage_received_multiplier(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object,var/atom/blamed,var/damagetype/DT)
+/mob/living/simple/slime/get_damage_received_multiplier(atom/attacker,atom/victim,atom/weapon,atom/hit_object,atom/blamed,damagetype/DT)
 	. = ..()
 	if(slime_traits & SLIME_TRAIT_DEFENSIVE)
 		. *= 0.5
@@ -117,7 +117,7 @@
 
 
 
-/mob/living/simple/slime/post_move(var/atom/old_loc)
+/mob/living/simple/slime/post_move(atom/old_loc)
 	. = ..()
 	if(. && loc)
 		if(ai && ai.objective_attack && (slime_traits & SLIME_TRAIT_THORNS))
@@ -165,7 +165,7 @@
 				var/turf/simulated/S = T
 				S.add_wet(100)
 
-/mob/living/simple/slime/create_override_contents(var/mob/living/caller) //What gets created when this mob is butchered.
+/mob/living/simple/slime/create_override_contents(mob/living/caller) //What gets created when this mob is butchered.
 	var/obj/item/slime_core/SC = new(src.loc)
 	SC.color = color
 	SC.alpha = alpha
@@ -209,7 +209,7 @@
 	update_sprite()
 
 
-/mob/living/simple/slime/attack(var/atom/attacker,var/atom/victim,var/list/params=list(),var/atom/blamed,var/ignore_distance = FALSE, var/precise = FALSE,var/damage_multiplier=1,var/damagetype/damage_type_override) //The src attacks the victim, with the blamed taking responsibility
+/mob/living/simple/slime/attack(atom/attacker,atom/victim,list/params=list(),atom/blamed,ignore_distance = FALSE, precise = FALSE,damage_multiplier=1,damagetype/damage_type_override) //The src attacks the victim, with the blamed taking responsibility
 
 	if(slime_traits & SLIME_TRAIT_WEAK)
 		damage_multiplier *= 0.5
@@ -322,7 +322,7 @@
 		I.appearance_flags = src.appearance_flags | RESET_ALPHA | RESET_COLOR
 		add_underlay(I)
 
-/mob/living/simple/slime/proc/absorb_slime(var/mob/living/simple/slime/desired_slime)
+/mob/living/simple/slime/proc/absorb_slime(mob/living/simple/slime/desired_slime)
 
 	if(desired_slime == src) //Can't absorb self.
 		return FALSE
@@ -445,7 +445,7 @@
 
 	slime_traits = SLIME_TRAIT_UNSTABLE
 
-/mob/living/simple/slime/bluespace/New(var/desired_loc)
+/mob/living/simple/slime/bluespace/New(desired_loc)
 	. = ..()
 	if(prob(50))
 		if(prob(50))

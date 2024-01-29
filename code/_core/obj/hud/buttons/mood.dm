@@ -39,7 +39,7 @@
 	. = ..()
 
 
-/obj/hud/button/mood/get_examine_list(var/mob/caller)
+/obj/hud/button/mood/get_examine_list(mob/caller)
 
 	. = ..()
 

@@ -1,4 +1,4 @@
-/obj/item/weapon/ranged/proc/add_attachment(var/mob/caller,var/obj/item/attachment/A)
+/obj/item/weapon/ranged/proc/add_attachment(mob/caller,obj/item/attachment/A)
 
 	if(!length(attachment_whitelist))
 		caller.to_chat(span("warning","This weapon does not accept attachments!"))
@@ -42,7 +42,7 @@
 
 	return FALSE
 
-/obj/item/weapon/ranged/proc/remove_attachment(var/mob/caller)
+/obj/item/weapon/ranged/proc/remove_attachment(mob/caller)
 
 	var/list/attachment_variables = list(
 		"attachment_barrel",
@@ -112,7 +112,7 @@
 	return TRUE
 
 
-/obj/item/weapon/ranged/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/get_examine_list(mob/caller)
 
 	. = ..()
 

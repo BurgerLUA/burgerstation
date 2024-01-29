@@ -163,7 +163,7 @@
 
 	var/queue_find_new_objectives = FALSE
 
-/ai/proc/set_master_ai(var/ai/target_ai)
+/ai/proc/set_master_ai(ai/target_ai)
 
 	if(target_ai == master_ai)
 		return FALSE
@@ -243,7 +243,7 @@
 
 	. = ..()
 
-/ai/New(var/desired_loc,var/mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
+/ai/New(desired_loc,mob/living/desired_owner) //Byond assumes the first variable is always the loc so desired_loc needs to be in there. This makes me cry.
 	owner = desired_owner
 	roaming_counter = roaming_distance*2
 	objective_ticks = rand(0,objective_delay) //So enemies are desynced and don't move as one.

@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(explosion)
 
 	var/particles/fire_particles
 
-/subsystem/explosion/unclog(var/mob/caller)
+/subsystem/explosion/unclog(mob/caller)
 
 	damage_to_process.Cut()
 
@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(explosion)
 
 	return TRUE
 
-/proc/explode(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/velocity_dir=0x0,var/multiplier=1)
+/proc/explode(turf/desired_turf,desired_range,atom/desired_owner,atom/desired_source,desired_loyalty_tag,velocity_dir=0x0,multiplier=1)
 
 	if(desired_range <= 0)
 		return FALSE
@@ -132,7 +132,7 @@ SUBSYSTEM_DEF(explosion)
 
 
 
-/proc/emp(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/multiplier=1)
+/proc/emp(turf/desired_turf,desired_range,atom/desired_owner,atom/desired_source,desired_loyalty_tag,multiplier=1)
 
 	desired_range = min(desired_range,VIEW_RANGE)
 
@@ -149,7 +149,7 @@ SUBSYSTEM_DEF(explosion)
 
 
 
-/proc/firebomb(var/turf/desired_turf,var/desired_range,var/atom/desired_owner,var/atom/desired_source,var/desired_loyalty_tag,var/momentum=NORTH|EAST|SOUTH|WEST,var/multiplier=1)
+/proc/firebomb(turf/desired_turf,desired_range,atom/desired_owner,atom/desired_source,desired_loyalty_tag,momentum=NORTH|EAST|SOUTH|WEST,multiplier=1)
 
 	if(desired_range <= 0)
 		return FALSE

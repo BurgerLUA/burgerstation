@@ -19,5 +19,5 @@
 
 	crit_multiplier = 20
 
-/damagetype/chess/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/chess/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 	return istype(victim,/mob/living/simple/chess_piece)

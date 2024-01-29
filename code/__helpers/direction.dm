@@ -1,4 +1,4 @@
-/proc/reverse_direction(var/dir)
+/proc/reverse_direction(dir)
 	return turn(dir, 180)
 
 proc/direction_to_pixel_offset(var/dir)
@@ -6,21 +6,21 @@ proc/direction_to_pixel_offset(var/dir)
 	var/offset_y = (dir & NORTH ? 1 : 0) - (dir & SOUTH ? 1 : 0)
 	return list(offset_x,offset_y)
 
-/proc/get_angle(var/atom/A1,var/atom/A2)
+/proc/get_angle(atom/A1,atom/A2)
 	if(!A1 || !A1.z || !A2 || !A2.z)
 		return 0
 	return MODULUS(ATAN2(A1.x - A2.x,A2.y - A1.y) - 90,360) //The 90 offset is needed.
 
-/proc/is_behind(var/atom/A,var/atom/B) //Returns the facing direction if A is directly behind B.
+/proc/is_behind(atom/A,atom/B) //Returns the facing direction if A is directly behind B.
 	return A.loc != B.loc && (get_true_4dir(B.dir) & get_dir_advanced(A,B))
 
-/proc/is_facing(var/atom/A,var/atom/B) //Returns the facing direction if A is facing B.
+/proc/is_facing(atom/A,atom/B) //Returns the facing direction if A is facing B.
 	return A.loc != B.loc && (get_true_4dir(A.dir) & get_dir_advanced(A,B))
 
-/proc/is_facing_cheap(var/atom/A,var/atom/B) //Returns the facing direction if A is facing B.
+/proc/is_facing_cheap(atom/A,atom/B) //Returns the facing direction if A is facing B.
 	return A.loc != B.loc && (get_true_4dir(A.dir) & get_dir(A,B))
 
-/proc/get_directional_offsets(var/atom/A,var/atom/B)
+/proc/get_directional_offsets(atom/A,atom/B)
 	var/x_diff = B.x - A.x
 	var/y_diff = B.y - A.y
 	var/maximum = max(abs(x_diff),abs(y_diff))
@@ -75,11 +75,11 @@ proc/get_true_4dir_advanced(var/previous_dir,var/dir) //Converts a possible 8 wa
 
 	return .
 
-/proc/get_dir_advanced(var/atom/A,var/atom/B,var/cardinal_only=FALSE)
+/proc/get_dir_advanced(atom/A,atom/B,cardinal_only=FALSE)
 	var/angle = get_angle(A,B)
 	return cardinal_only ? angle2dir_cardinal(angle) : angle2dir(angle)
 
-/proc/sanitize_direction(var/dir)
+/proc/sanitize_direction(dir)
 	. = 0x0
 
 	var/north = dir & NORTH
@@ -99,5 +99,5 @@ proc/get_true_4dir_advanced(var/previous_dir,var/dir) //Converts a possible 8 wa
 	if(west && !east)
 		. |= WEST
 
-/proc/dir2letter(var/x)
+/proc/dir2letter(x)
 	return "[x & 1 ? "n" : ""][x & 2 ? "s" : ""][x & 4 ? "e" : ""][x & 8 ? "w" : ""]"

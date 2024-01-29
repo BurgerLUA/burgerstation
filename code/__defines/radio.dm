@@ -39,7 +39,7 @@
 #define RADIO_FREQ_MAX      1899
 
 
-/proc/frequency_to_name(var/frequency)
+/proc/frequency_to_name(frequency)
 
 	switch(frequency)
 		if(RADIO_FREQ_ALPHA)

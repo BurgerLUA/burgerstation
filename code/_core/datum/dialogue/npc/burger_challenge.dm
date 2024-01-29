@@ -1,7 +1,7 @@
 /dialogue/npc/burger_challenge
 
 
-/dialogue/npc/burger_challenge/get_dialogue_options(var/mob/living/advanced/player/P,var/list/known_options)
+/dialogue/npc/burger_challenge/get_dialogue_options(mob/living/advanced/player/P,list/known_options)
 
 	. = list()
 
@@ -32,7 +32,7 @@
 			"Pssst. Talk to me again when the mission is announced"
 		)
 
-/dialogue/npc/burger_challenge/set_topic(var/mob/living/advanced/player/P,var/topic)
+/dialogue/npc/burger_challenge/set_topic(mob/living/advanced/player/P,topic)
 
 	. = ..()
 

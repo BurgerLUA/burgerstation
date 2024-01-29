@@ -32,7 +32,7 @@
 
 	level = 22
 
-/mob/living/simple/devil/get_damage_type(var/atom/attacker,var/atom/victim)
+/mob/living/simple/devil/get_damage_type(atom/attacker,atom/victim)
 	if(prob(25))
 		return /damagetype/npc/devil_gore
 	. = ..()

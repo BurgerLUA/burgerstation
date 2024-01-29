@@ -8,7 +8,7 @@
 
 	category = "Quick Draw"
 
-/ability/quick_draw/on_cast_pre(var/mob/caller,var/atom/target,location,params)
+/ability/quick_draw/on_cast_pre(mob/caller,atom/target,location,params)
 
 	if(!is_advanced(caller))
 		return FALSE

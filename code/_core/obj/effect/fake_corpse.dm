@@ -6,7 +6,7 @@
 
 	anchored = TRUE
 
-/obj/effect/fake_corpse/proc/copy_body(var/mob/living/L)
+/obj/effect/fake_corpse/proc/copy_body(mob/living/L)
 
 	appearance = L.appearance
 

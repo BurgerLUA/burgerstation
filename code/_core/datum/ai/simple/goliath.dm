@@ -12,7 +12,7 @@
 	allow_far_roaming = FALSE
 	roaming_distance = VIEW_RANGE
 
-/ai/goliath/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/goliath/New(desired_loc,mob/living/desired_owner)
 	owner_as_goliath = desired_owner
 	return ..()
 

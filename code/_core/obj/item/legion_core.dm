@@ -46,7 +46,7 @@
 	value = get_base_value()
 	return TRUE
 
-/obj/item/legion_core/get_examine_list(var/mob/examiner)
+/obj/item/legion_core/get_examine_list(mob/examiner)
 
 	. = ..()
 
@@ -68,11 +68,11 @@
 
 	return ..()
 
-/obj/item/legion_core/click_self(var/mob/caller,location,control,params)
+/obj/item/legion_core/click_self(mob/caller,location,control,params)
 	click_on_object(caller,caller)
 	return TRUE
 
-/obj/item/legion_core/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/legion_core/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(is_living(object))
 
@@ -112,7 +112,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/legion_core_stabilizer/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/legion_core_stabilizer/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/item/legion_core))
 		INTERACT_CHECK

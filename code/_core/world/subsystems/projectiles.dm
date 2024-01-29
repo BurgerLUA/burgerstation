@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(projectiles)
 
 	var/list/obj/projectile/all_projectiles = list()
 
-/subsystem/projectiles/unclog(var/mob/caller)
+/subsystem/projectiles/unclog(mob/caller)
 
 	for(var/k in all_projectiles)
 		var/obj/projectile/P = k

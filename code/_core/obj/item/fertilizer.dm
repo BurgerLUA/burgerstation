@@ -16,11 +16,11 @@
 	. = ..()
 	return 20 + . * uses_left
 
-/obj/item/fertilizer/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/fertilizer/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("uses_left")
 
-/obj/item/fertilizer/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/fertilizer/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("uses_left")
 
@@ -35,7 +35,7 @@
 		icon_state = "[icon_state]_empty"
 
 
-/obj/item/fertilizer/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/fertilizer/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(istype(object,/obj/structure/interactive/plant))
 		object = object.loc

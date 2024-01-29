@@ -13,7 +13,7 @@
 
 	dynamic_inventory_count = 8
 
-/obj/item/storage/spelltome/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/storage/spelltome/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(!isturf(object))
 		return ..()
@@ -32,7 +32,7 @@
 	return TRUE
 
 
-/obj/item/storage/spelltome/proc/make_spell(var/mob/caller,var/list/inventory_contents,var/turf/chosen_turf)
+/obj/item/storage/spelltome/proc/make_spell(mob/caller,list/inventory_contents,turf/chosen_turf)
 
 	var/list/buff_list = list()
 	var/list/buff_color_list = list()

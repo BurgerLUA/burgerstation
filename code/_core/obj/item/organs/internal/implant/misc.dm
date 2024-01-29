@@ -28,11 +28,11 @@
 	desc = "I died, please restart."
 	desc_extended = "A special implant that detects if the user has died, then broadcasts the message to the medical frequency. Only has enough charge to broadcast one death."
 
-/obj/item/organ/internal/implant/torso/death_alarm/on_organ_add(var/mob/living/advanced/new_owner)
+/obj/item/organ/internal/implant/torso/death_alarm/on_organ_add(mob/living/advanced/new_owner)
 	. = ..()
 	HOOK_ADD("post_death","\ref[src]_implant_post_death",new_owner,src,src::trigger_implant())
 
-/obj/item/organ/internal/implant/torso/death_alarm/on_organ_remove(var/mob/living/advanced/old_owner)
+/obj/item/organ/internal/implant/torso/death_alarm/on_organ_remove(mob/living/advanced/old_owner)
 	. = ..()
 	HOOK_REMOVE("post_death","\ref[src]_implant_post_death",old_owner)
 

@@ -4,7 +4,7 @@
 	var/min_karma //Karma has to be above this amount to trigger.
 	var/max_karma //Karma has to be below this amount to trigger.
 
-/karma_penalty/proc/on_trigger(var/mob/attacker,var/mob/victim)
+/karma_penalty/proc/on_trigger(mob/attacker,mob/victim)
 	//Trigger stuff here.
 
 //Assassins

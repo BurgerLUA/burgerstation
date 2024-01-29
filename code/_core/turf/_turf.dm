@@ -79,7 +79,7 @@
 /turf/proc/pre_change() //When this turf is removed in favor of a new turf.
 	return TRUE
 
-/turf/proc/get_crossable_neighbors(var/atom/movable/crosser=null,var/cardinal=TRUE,var/intercardinal=TRUE,var/pathfinding=FALSE)
+/turf/proc/get_crossable_neighbors(atom/movable/crosser=null,cardinal=TRUE,intercardinal=TRUE,pathfinding=FALSE)
 
 	. = list()
 	if(cardinal)
@@ -175,13 +175,13 @@
 
 	return TRUE
 
-/turf/proc/can_teleport_to(var/check_contents=TRUE)
+/turf/proc/can_teleport_to(check_contents=TRUE)
 	var/area/A = loc
 	if(A && A.flags_area & FLAG_AREA_NO_TELEPORT)
 		return FALSE
 	return can_move_to(check_contents)
 
-/turf/proc/can_move_to(var/check_contents=TRUE)
+/turf/proc/can_move_to(check_contents=TRUE)
 	return !is_space()
 
 /turf/New(loc)
@@ -200,7 +200,7 @@
 	return FALSE
 
 /*
-/turf/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/turf/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 	caller.face_atom(src)
 	return ..()
 */
@@ -208,7 +208,7 @@
 /turf/get_top_object()
 	return src //This should always be the src.
 
-/turf/change_victim(var/atom/attacker)
+/turf/change_victim(atom/attacker)
 
 	if(density && (density_north || density_south || density_east || density_west))
 		return src
@@ -255,7 +255,7 @@
 
 	return best_target ? best_target : src
 
-/turf/Entered(var/atom/movable/enterer,var/atom/old_loc)
+/turf/Entered(atom/movable/enterer,atom/old_loc)
 
 	if(src.loc && (!old_loc || src.loc != old_loc.loc))
 		src.loc.Entered(enterer)
@@ -272,7 +272,7 @@
 	if(enterer.density && !enterer.abstract)
 		has_dense_atom = "/turf/Entered() [enterer.type]."
 
-/turf/Exited(var/atom/movable/exiter,var/atom/new_loc)
+/turf/Exited(atom/movable/exiter,atom/new_loc)
 
 	if(src.loc && (!new_loc || src.loc != new_loc.loc))
 		src.loc.Exited(exiter)
@@ -285,7 +285,7 @@
 	if(exiter.hazardous)
 		recalculate_atom_hazards()
 
-/turf/Enter(var/atom/movable/enterer,var/atom/oldloc)
+/turf/Enter(atom/movable/enterer,atom/oldloc)
 
 	if(enterer && oldloc && length(contents) > TURF_CONTENT_LIMIT && !ismob(enterer))
 		return FALSE
@@ -307,7 +307,7 @@
 	return ..()
 
 
-/turf/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/turf/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	for(var/k in src.contents)
 		var/atom/movable/M = k
@@ -316,7 +316,7 @@
 	. = ..()
 
 
-/turf/act_emp(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/turf/act_emp(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 
 	. = ..()
 
@@ -325,10 +325,10 @@
 		if(M.act_emp(owner,source,epicenter,magnitude,desired_loyalty_tag))
 			. = TRUE
 
-/turf/proc/setup_turf_light(var/sunlight_freq)
+/turf/proc/setup_turf_light(sunlight_freq)
 	return FALSE
 
-/turf/proc/is_occupied(var/plane_min=-INFINITY,var/plane_max=INFINITY,var/check_under_tile=FALSE)
+/turf/proc/is_occupied(plane_min=-INFINITY,plane_max=INFINITY,check_under_tile=FALSE)
 
 	for(var/atom/movable/A in src.contents)
 		if(A.plane < plane_min || A.plane > plane_max)
@@ -346,14 +346,14 @@
 
 	return null
 
-/turf/proc/can_construct_on(var/atom/caller,var/obj/structure/structure_to_make = null)
+/turf/proc/can_construct_on(atom/caller,obj/structure/structure_to_make = null)
 	if(!is_living(caller))
 		return FALSE
 	var/mob/living/C = caller
 	C.to_chat(span("warning","You cannot deploy on this turf!"))
 	return FALSE
 
-/turf/proc/is_straight_path_to(var/turf/target_turf,var/check_vision=FALSE,var/check_density=TRUE)
+/turf/proc/is_straight_path_to(turf/target_turf,check_vision=FALSE,check_density=TRUE)
 
 	if(src == target_turf)
 		return TRUE

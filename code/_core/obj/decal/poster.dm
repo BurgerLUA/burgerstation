@@ -10,7 +10,7 @@
 
 	var/collectable_poster/stored_poster
 
-/obj/decal/poster/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/decal/poster/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(stored_poster && is_inventory(object))
 		INTERACT_CHECK

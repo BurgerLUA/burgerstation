@@ -39,7 +39,7 @@
 
 	var/queue_power_update = FALSE
 
-/obj/structure/interactive/supermatter/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/structure/interactive/supermatter/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 	return health && health.health_max && !qdeleting && loc
 
 /obj/structure/interactive/supermatter/Finalize()
@@ -47,7 +47,7 @@
 	update_sprite()
 	queue_power_update = TRUE
 
-/obj/structure/interactive/supermatter/power_process(var/power_multiplier=1)
+/obj/structure/interactive/supermatter/power_process(power_multiplier=1)
 
 	if(queue_power_update)
 		update_power_supply(get_power_supply())
@@ -102,7 +102,7 @@
 		return FALSE
 
 
-/obj/structure/interactive/supermatter/proc/add_charge(var/charge_amount=0)
+/obj/structure/interactive/supermatter/proc/add_charge(charge_amount=0)
 	if(charge_max <= 0)
 		return FALSE
 	if(!charge_amount)
@@ -124,7 +124,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/supermatter/on_damage_received(var/atom/atom_damaged,var/atom/attacker,var/atom/weapon,var/damagetype/DT,var/list/damage_table,var/damage_amount,var/critical_hit_multiplier,var/stealthy=FALSE)
+/obj/structure/interactive/supermatter/on_damage_received(atom/atom_damaged,atom/attacker,atom/weapon,damagetype/DT,list/damage_table,damage_amount,critical_hit_multiplier,stealthy=FALSE)
 	. = ..()
 
 	if(damage_amount > 0) add_charge(damage_amount)
@@ -152,12 +152,12 @@
 			var/turf/T = get_turf(src)
 			explode(T,4,src,src,"Supermatter")
 
-/obj/structure/interactive/supermatter/act_explode(var/atom/owner,var/atom/source,var/atom/epicenter,var/magnitude,var/desired_loyalty_tag)
+/obj/structure/interactive/supermatter/act_explode(atom/owner,atom/source,atom/epicenter,magnitude,desired_loyalty_tag)
 	if(source == src)
 		return FALSE
 	. = ..()
 
-/obj/structure/interactive/supermatter/on_destruction(var/damage = TRUE)
+/obj/structure/interactive/supermatter/on_destruction(damage = TRUE)
 	charge = 0
 	var/turf/T = get_turf(src)
 	qdel(src)
@@ -196,13 +196,13 @@
 	health_base = 5000
 	charge_max = 900 SECONDS //15 minutes
 
-/obj/structure/interactive/supermatter/defense/add_charge(var/charge_amount=0)
+/obj/structure/interactive/supermatter/defense/add_charge(charge_amount=0)
 	. = ..()
 	if(. && charge >= charge_max)
 		src.visible_message(span("notice","\The [src.name] disappears in a vibrant flash!"))
 		qdel(src)
 
-/obj/structure/interactive/supermatter/defense/can_be_attacked(var/atom/attacker,var/atom/weapon,var/params,var/damagetype/damage_type)
+/obj/structure/interactive/supermatter/defense/can_be_attacked(atom/attacker,atom/weapon,params,damagetype/damage_type)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
@@ -211,7 +211,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/supermatter/defense/projectile_should_collide(var/obj/projectile/P,var/turf/old_turf,var/turf/new_turf)
+/obj/structure/interactive/supermatter/defense/projectile_should_collide(obj/projectile/P,turf/old_turf,turf/new_turf)
 
 	if(is_living(P.owner))
 		var/mob/living/L = P.owner
@@ -220,6 +220,6 @@
 
 	. = ..()
 
-/obj/structure/interactive/supermatter/defense/get_examine_list(var/mob/examiner)
+/obj/structure/interactive/supermatter/defense/get_examine_list(mob/examiner)
 	. = ..()
 	. += div("notice","It is [FLOOR(charge,1)]/[charge_max]([FLOOR(100*(charge/charge_max),1)]%) charged.")

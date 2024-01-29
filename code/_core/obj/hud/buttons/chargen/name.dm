@@ -14,7 +14,7 @@
 
 	user_colors = TRUE
 
-/obj/hud/button/chargen/change_name/update_owner(var/mob/desired_owner)
+/obj/hud/button/chargen/change_name/update_owner(mob/desired_owner)
 
 	if(desired_owner && is_player(desired_owner))
 		var/mob/living/advanced/player/P = desired_owner
@@ -23,7 +23,7 @@
 	return ..()
 
 
-/obj/hud/button/chargen/change_name/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/chargen/change_name/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

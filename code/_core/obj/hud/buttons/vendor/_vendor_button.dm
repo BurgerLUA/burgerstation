@@ -23,12 +23,12 @@
 
 	var/locked //Accepts a string if it's locked.
 
-/obj/hud/button/vendor/get_examine_list(var/mob/caller)
+/obj/hud/button/vendor/get_examine_list(mob/caller)
 	if(!associated_item)
 		return ..()
 	return associated_item.get_examine_list(caller)
 
-/obj/hud/button/vendor/get_examine_details_list(var/mob/caller)
+/obj/hud/button/vendor/get_examine_details_list(mob/caller)
 	if(!associated_item)
 		return ..()
 	return associated_item.get_examine_details_list(caller)
@@ -134,7 +134,7 @@
 	else
 		color = initial(color)
 
-/obj/hud/button/vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/vendor/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	SPAM_CHECK(5)
 
@@ -180,7 +180,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_vendor/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_vendor/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

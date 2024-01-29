@@ -29,13 +29,13 @@
 	if(goods && hoard > 0)
 		. += goods.get_value()*hoard
 
-/obj/item/storage/bagofhoarding/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/storage/bagofhoarding/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("hoard")
 	SAVEPATH("targetitem")
 	SAVEATOM("goods")
 
-/obj/item/storage/bagofhoarding/load_item_data_pre(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/storage/bagofhoarding/load_item_data_pre(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("hoard")
 	LOADPATH("targetitem")
@@ -46,14 +46,14 @@
 		hoard = 0
 
 
-/obj/item/storage/bagofhoarding/get_examine_details_list(var/mob/examiner)
+/obj/item/storage/bagofhoarding/get_examine_details_list(mob/examiner)
 	. = ..()
 	if(goods && hoard > 0)
 		. += span("notice","It currently holds [hoard] [initial(goods.name)]\s.")
 	else
 		. += span("notice","It does not currently hold anything.")
 
-/obj/item/storage/bagofhoarding/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/storage/bagofhoarding/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(hoard)
 		if(istype(object,/obj/hud/inventory))

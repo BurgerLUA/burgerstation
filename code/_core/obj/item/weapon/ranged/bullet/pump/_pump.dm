@@ -12,7 +12,7 @@
 	tier_type = "shotgun"
 
 
-/obj/item/weapon/ranged/bullet/pump/proc/pump(var/mob/caller,var/silent=FALSE)
+/obj/item/weapon/ranged/bullet/pump/proc/pump(mob/caller,silent=FALSE)
 
 	var/turf/T = get_turf(src)
 
@@ -36,7 +36,7 @@
 /obj/item/weapon/ranged/bullet/pump/get_ranged_damage_type()
 	return stored_bullets[1] ? stored_bullets[1].damage_type : null
 
-/obj/item/weapon/ranged/bullet/pump/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/ranged/bullet/pump/click_self(mob/caller,location,control,params)
 
 	if(next_shoot_time > world.time + pump_delay)
 		return TRUE
@@ -57,8 +57,8 @@
 	return get_real_length(stored_bullets)
 
 
-/obj/item/weapon/ranged/bullet/pump/can_load_chamber(var/mob/caller,var/obj/item/bullet_cartridge/B)
+/obj/item/weapon/ranged/bullet/pump/can_load_chamber(mob/caller,obj/item/bullet_cartridge/B)
 	return FALSE
 
-/obj/item/weapon/ranged/bullet/pump/get_examine_list(var/mob/caller)
+/obj/item/weapon/ranged/bullet/pump/get_examine_list(mob/caller)
 	return ..() + div("notice","[get_ammo_count()] shell\s remaining in the tube.")

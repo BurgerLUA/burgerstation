@@ -17,7 +17,7 @@
 	. = ..()
 	assoc_item = null
 
-/obj/hud/button/close_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_inventory/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -35,7 +35,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/hide_show_inventory/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/hide_show_inventory/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 
@@ -71,7 +71,7 @@
 
 	has_quick_function = FALSE
 
-/obj/hud/button/close_inventory_defers/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/close_inventory_defers/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

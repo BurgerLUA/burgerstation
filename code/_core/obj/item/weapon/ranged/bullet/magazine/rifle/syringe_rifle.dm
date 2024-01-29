@@ -96,7 +96,7 @@
 
 	..()
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/shoot_projectile(var/atom/caller,var/atom/target,location,params,var/obj/projectile/projectile_to_use,var/damagetype/damage_type_to_use,var/icon_pos_x=0,var/icon_pos_y=0,var/accuracy_loss=0,var/projectile_speed_to_use=0,var/bullet_count_to_use=1,var/bullet_color="#FFFFFF",var/view_punch=0,var/damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/base_spread = get_base_spread(),var/penetrations_left=0)
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/shoot_projectile(atom/caller,atom/target,location,params,obj/projectile/projectile_to_use,damagetype/damage_type_to_use,icon_pos_x=0,icon_pos_y=0,accuracy_loss=0,projectile_speed_to_use=0,bullet_count_to_use=1,bullet_color="#FFFFFF",view_punch=0,damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1,base_spread = get_base_spread(),penetrations_left=0)
 
 	. = ..()
 
@@ -112,5 +112,5 @@
 /obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_static_spread()
 	return 0
 
-/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_skill_spread(var/mob/living/L)
+/obj/item/weapon/ranged/bullet/magazine/rifle/syringe/get_skill_spread(mob/living/L)
 	return max(0,0.01 - (0.02 * L.get_skill_power(SKILL_RANGED)))

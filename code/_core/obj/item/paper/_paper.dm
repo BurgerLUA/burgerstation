@@ -18,7 +18,7 @@
 
 	weight = 0.01
 
-/obj/item/paper/click_self(var/mob/caller,location,control,params)
+/obj/item/paper/click_self(mob/caller,location,control,params)
 
 	if(!is_player(caller) || !caller.client)
 		return ..()
@@ -40,7 +40,7 @@
 
 	return TRUE
 
-/obj/item/paper/on_unequip(var/obj/hud/inventory/old_inventory,var/silent=FALSE)
+/obj/item/paper/on_unequip(obj/hud/inventory/old_inventory,silent=FALSE)
 
 	if(old_inventory && is_player(old_inventory.owner) && old_inventory.owner.client)
 		var/mob/living/advanced/player/P = old_inventory.owner

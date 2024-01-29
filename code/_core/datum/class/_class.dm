@@ -46,7 +46,7 @@
 	var/total_skill_weight = 0
 	var/total_attribute_weight = 0
 
-/class/New(var/desired_loc)
+/class/New(desired_loc)
 	. = ..()
 	total_skill_weight = 0
 	total_attribute_weight = 0

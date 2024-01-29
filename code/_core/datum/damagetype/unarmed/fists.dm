@@ -37,7 +37,7 @@
 	attack_delay = 5
 	attack_delay_max = 10
 
-/damagetype/unarmed/fists/get_critical_hit_condition(var/atom/attacker,var/atom/victim,var/atom/weapon,var/atom/hit_object)
+/damagetype/unarmed/fists/get_critical_hit_condition(atom/attacker,atom/victim,atom/weapon,atom/hit_object)
 
 	if(is_living(attacker))
 		var/mob/living/L = attacker
@@ -128,7 +128,7 @@
 
 	draw_blood = FALSE
 
-/damagetype/unarmed/fists/disarm/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/fists/disarm/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(is_living(victim) && is_living(attacker))
 		var/mob/living/L = victim
@@ -183,7 +183,7 @@
 
 	inaccuracy_mod = 2
 
-/damagetype/unarmed/fists/grab/post_on_hit(var/atom/attacker,var/turf/attacker_turf,var/atom/victim,var/turf/victim_turf,var/atom/weapon,var/atom/hit_object,var/total_damage_dealt=0)
+/damagetype/unarmed/fists/grab/post_on_hit(atom/attacker,turf/attacker_turf,atom/victim,turf/victim_turf,atom/weapon,atom/hit_object,total_damage_dealt=0)
 
 	if(victim_turf && is_advanced(attacker) && ismovable(victim))
 		var/mob/living/advanced/A = attacker

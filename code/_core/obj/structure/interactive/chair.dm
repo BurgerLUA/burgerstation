@@ -56,7 +56,7 @@ obj/structure/interactive/chair/proc/sit_your_ass_down(var/mob/living/L)
 
 	return TRUE
 
-/obj/structure/interactive/chair/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/chair/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(caller.loc == src.loc)
 		src.buckle(caller)

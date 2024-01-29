@@ -37,11 +37,11 @@
 		if(overlay_color) I.color = overlay_color
 		add_overlay(I)
 
-/obj/item/experience_scroll/proc/gain_knowledge(var/mob/living/advanced/A)
+/obj/item/experience_scroll/proc/gain_knowledge(mob/living/advanced/A)
 	play_sound('sound/ui/friendly.ogg',get_turf(src),range_max=VIEW_RANGE)
 	return TRUE
 
-/obj/item/experience_scroll/click_self(var/mob/caller,location,control,params)
+/obj/item/experience_scroll/click_self(mob/caller,location,control,params)
 
 	INTERACT_CHECK
 	INTERACT_DELAY(10)

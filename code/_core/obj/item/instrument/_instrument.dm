@@ -7,17 +7,17 @@
 
 	value = 1000
 
-/obj/item/instrument/New(var/desired_loc)
+/obj/item/instrument/New(desired_loc)
 	. = ..()
 	current_song = new current_song(src)
 	current_song.instrument_directory = instrument_type
 	
-/obj/item/instrument/click_self(var/mob/caller,location,control,params)
+/obj/item/instrument/click_self(mob/caller,location,control,params)
 	if(caller && current_song)
 		current_song.interact(caller)
 	return TRUE
 
-/obj/item/instrument/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/instrument/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(anchored)
 

@@ -87,7 +87,7 @@
 
 	level = 8
 
-/mob/living/simple/silicon/syndieborg/proc/shoot_gun(var/atom/desired_target)
+/mob/living/simple/silicon/syndieborg/proc/shoot_gun(atom/desired_target)
 	shoot_projectile(
 		src,
 		desired_target,

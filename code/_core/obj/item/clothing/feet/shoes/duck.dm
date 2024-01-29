@@ -19,7 +19,7 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/clothing/feet/shoes/duck/get_footsteps(var/list/original_footsteps,var/enter=FALSE)
+/obj/item/clothing/feet/shoes/duck/get_footsteps(list/original_footsteps,enter=FALSE)
 	original_footsteps += /footstep/quack
 	return original_footsteps
 

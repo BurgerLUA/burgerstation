@@ -42,7 +42,7 @@
 
 	delete_on_death = TRUE
 
-/mob/living/simple/blob_spore/post_move(var/atom/old_loc)
+/mob/living/simple/blob_spore/post_move(atom/old_loc)
 	if(idle)
 		idle = FALSE
 		icon_state = initial(icon_state)

@@ -35,7 +35,7 @@
 		/mob/living/simple/spider/twilight = 15
 	)
 
-/obj/structure/interactive/ritual/New(var/desired_loc)
+/obj/structure/interactive/ritual/New(desired_loc)
 	. = ..()
 	SSobj.all_rituals += src
 
@@ -57,7 +57,7 @@
 	valid_turfs = null
 	. = ..()
 
-/obj/structure/interactive/ritual/proc/remove_mob(var/mob/living/L,args)
+/obj/structure/interactive/ritual/proc/remove_mob(mob/living/L,args)
 	tracked_enemies -= L
 	HOOK_REMOVE("post_death","\ref[src]_post_death",L)
 	HOOK_REMOVE("Destroy","\ref[src]_destroy",L)
@@ -66,7 +66,7 @@
 		end_ritual(TRUE)
 	return TRUE
 
-/obj/structure/interactive/ritual/proc/remove_player(var/mob/living/advanced/player/P,args)
+/obj/structure/interactive/ritual/proc/remove_player(mob/living/advanced/player/P,args)
 	tracked_players -= P
 	HOOK_REMOVE("post_death","\ref[src]_post_death",P)
 	HOOK_REMOVE("Destroy","\ref[src]_destroy",P)
@@ -75,12 +75,12 @@
 		end_ritual()
 	return TRUE
 
-/obj/structure/interactive/ritual/proc/check_valid_mob_position(var/mob/living/L,args)
+/obj/structure/interactive/ritual/proc/check_valid_mob_position(mob/living/L,args)
 	var/turf/T = get_turf(L)
 	if(T.z != src.z || get_dist(T,src) > VIEW_RANGE)
 		remove_mob(L)
 
-/obj/structure/interactive/ritual/proc/check_valid_player_position(var/mob/living/advanced/player/P,args)
+/obj/structure/interactive/ritual/proc/check_valid_player_position(mob/living/advanced/player/P,args)
 	var/turf/T = get_turf(P)
 	if(T.z != src.z || get_dist(T,src) > VIEW_RANGE)
 		remove_player(P)
@@ -110,7 +110,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/ritual/proc/start_ritual(var/mob/caller)
+/obj/structure/interactive/ritual/proc/start_ritual(mob/caller)
 
 	for(var/mob/living/advanced/player/P in range(src,ritual_size))
 		if(!P || P.dead || P.qdeleting)
@@ -143,7 +143,7 @@
 	next_enemy_spawn = world.time + 6 SECONDS
 	return TRUE
 
-/obj/structure/interactive/ritual/proc/end_ritual(var/success = FALSE)
+/obj/structure/interactive/ritual/proc/end_ritual(success = FALSE)
 
 	STOP_THINKING(src)
 
@@ -225,7 +225,7 @@
 					valid_turfs += T
 
 
-/obj/structure/interactive/ritual/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/structure/interactive/ritual/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(!is_living(caller))
 		return ..()

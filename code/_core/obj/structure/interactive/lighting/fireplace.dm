@@ -17,7 +17,7 @@
 	. = ..()
 	update_sprite()
 
-/obj/structure/interactive/lighting/fireplace/set_dir(var/desired_dir,var/force=FALSE)
+/obj/structure/interactive/lighting/fireplace/set_dir(desired_dir,force=FALSE)
 	. = ..()
 	if(.)
 		if(dir == SOUTH)

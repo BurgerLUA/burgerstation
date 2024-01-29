@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(sound)
 
 	var/list/sound_cache = list()
 
-/subsystem/sound/unclog(var/mob/caller)
+/subsystem/sound/unclog(mob/caller)
 	for(var/k in active_sounds)
 		var/sound/S = k
 		active_sounds -= k
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(sound)
 	log_subsystem(name,"Found [length(round_end_sounds)] round end sounds.")
 	return TRUE
 
-/subsystem/sound/proc/process_sound(var/sound/S)
+/subsystem/sound/proc/process_sound(sound/S)
 	if(active_sounds[S] == -1)
 		return FALSE
 	active_sounds[S] -= 1
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(sound)
 
 	return TRUE
 
-/proc/stop_sound(var/sound_path,var/list/mob/hearers)
+/proc/stop_sound(sound_path,list/mob/hearers)
 	for(var/F in SSsound.active_sounds)
 		CHECK_TICK(SSsound.tick_usage_max,FPS_SERVER)
 		var/sound/S = F
@@ -174,12 +174,12 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 	var/area/A = get_area(src)
 	return A.sound_environment
 
-/proc/get_mobs_in_range(var/range,var/atom/epicenter=usr)
+/proc/get_mobs_in_range(range,atom/epicenter=usr)
 	. = list()
 	for(var/mob/M in range(range,epicenter))
 		. += M
 
-/proc/get_clients_in_range(var/range,var/atom/epicenter=usr)
+/proc/get_clients_in_range(range,atom/epicenter=usr)
 
 	. = list()
 	for(var/k in SSliving.all_mobs_with_clients)
@@ -188,7 +188,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 			continue
 		. += M
 
-/proc/setup_sound(var/sound_path)
+/proc/setup_sound(sound_path)
 
 	if(!SSsound || !SSsound.initialized)
 		return FALSE
@@ -206,7 +206,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 	return created_sound
 
 
-/proc/play_sound_target(var/sound_path,var/mob/M,var/range_min=SOUND_RANGE*0.25, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
+/proc/play_sound_target(sound_path,mob/M,range_min=SOUND_RANGE*0.25, range_max = SOUND_RANGE, volume=50, sound_setting = SOUND_SETTING_FX, pitch=1, loop=0, duration=0, pan=0, channel=SOUND_CHANNEL_FX, priority=0, echo = 0, invisibility_check = 0,tracked)
 
 	if(!M)
 		CRASH("Error: Tried playing sound '[sound_path]' without a mob target!")
@@ -271,7 +271,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 	return C
 
-/proc/play_sound_global(var/sound_path,var/list/hearers=SSliving.all_mobs_with_clients, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
+/proc/play_sound_global(sound_path,list/hearers=SSliving.all_mobs_with_clients, volume=50, sound_setting = SOUND_SETTING_FX, pitch=1, loop=0, duration=0, pan=0, channel=SOUND_CHANNEL_FX, priority=0, echo = 0, invisibility_check = 0,tracked)
 
 	var/sound/created_sound = setup_sound(sound_path)
 	if(!created_sound || volume <= 0)
@@ -333,7 +333,7 @@ proc/play_music_track(var/music_track_id,var/client/hearer,var/volume=35,var/loo
 
 
 
-/proc/play_sound(var/sound_path,var/turf/source_turf,var/list/hearers,var/range_min=1, var/range_max = SOUND_RANGE, var/volume=50, var/sound_setting = SOUND_SETTING_FX, var/pitch=1, var/loop=0, var/duration=0, var/pan=0, var/channel=SOUND_CHANNEL_FX, var/priority=0, var/echo = 0, var/invisibility_check = 0,var/tracked)
+/proc/play_sound(sound_path,turf/source_turf,list/hearers,range_min=1, range_max = SOUND_RANGE, volume=50, sound_setting = SOUND_SETTING_FX, pitch=1, loop=0, duration=0, pan=0, channel=SOUND_CHANNEL_FX, priority=0, echo = 0, invisibility_check = 0,tracked)
 
 	if(volume <= 0 || range_max <= 0)
 		return FALSE

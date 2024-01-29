@@ -77,7 +77,7 @@
 
 // Should always be used to change the opacity of an atom.
 // It notifies (potentially) affected light sources so they can update (if needed).
-/atom/proc/set_opacity(var/new_opacity,var/force = FALSE)
+/atom/proc/set_opacity(new_opacity,force = FALSE)
 
 	if(!force && new_opacity == opacity)
 		return FALSE
@@ -86,7 +86,7 @@
 
 	return TRUE
 
-/atom/movable/set_opacity(var/new_opacity,var/force=FALSE)
+/atom/movable/set_opacity(new_opacity,force=FALSE)
 
 	. = ..()
 
@@ -110,7 +110,7 @@
 
 
 
-/atom/set_dir(var/desired_dir,var/force = FALSE)
+/atom/set_dir(desired_dir,force = FALSE)
 
 	. = ..()
 

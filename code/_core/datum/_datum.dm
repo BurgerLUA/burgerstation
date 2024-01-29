@@ -5,10 +5,10 @@
 	var/queue_delete_immune = FALSE
 	var/list/hooks
 
-/datum/proc/get_examine_list(var/mob/examiner)
+/datum/proc/get_examine_list(mob/examiner)
 	return list(div("examine_title","[src]"),div("examine_description","[src.type]"))
 
-/datum/proc/get_examine_details_list(var/mob/examiner)
+/datum/proc/get_examine_details_list(mob/examiner)
 	return list()
 
 /datum/proc/delete()

@@ -5,7 +5,7 @@
 	var/next_big_attack = 0
 
 
-/ai/boss/hierophant/New(var/desired_loc,var/mob/living/desired_owner)
+/ai/boss/hierophant/New(desired_loc,mob/living/desired_owner)
 	owner_as_hierophant = desired_owner
 	return ..()
 
@@ -13,7 +13,7 @@
 	owner_as_hierophant = null
 	return ..()
 
-/ai/boss/hierophant/handle_current_objectives(var/tick_rate)
+/ai/boss/hierophant/handle_current_objectives(tick_rate)
 
 	. = ..()
 

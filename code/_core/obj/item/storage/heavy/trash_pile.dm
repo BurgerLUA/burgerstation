@@ -17,7 +17,7 @@
 	. = ..()
 	prune_inventory()
 
-/obj/item/storage/heavy/trash_pile/New(var/desired_loc)
+/obj/item/storage/heavy/trash_pile/New(desired_loc)
 
 	. = ..()
 
@@ -45,7 +45,7 @@
 	if(filled_slots <= 0)
 		qdel(src)
 
-/obj/item/storage/heavy/trash_pile/click_self(var/mob/caller)
+/obj/item/storage/heavy/trash_pile/click_self(mob/caller)
 
 	. = ..()
 

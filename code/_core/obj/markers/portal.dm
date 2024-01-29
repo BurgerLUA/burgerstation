@@ -4,7 +4,7 @@ var/global/list/portal_markers = list()
 	name = "portal marker"
 	var/loyalty_tag
 
-/obj/marker/portal/New(var/desired_loc)
+/obj/marker/portal/New(desired_loc)
 	if(loyalty_tag)
 		if(!portal_markers[loyalty_tag])
 			portal_markers[loyalty_tag] = list()

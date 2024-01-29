@@ -18,7 +18,7 @@
 	icon_state = "[initial(icon_state)]_[icon_count]"
 	return ..()
 
-/obj/item/cable/proc/treat(var/mob/caller,var/atom/A)
+/obj/item/cable/proc/treat(mob/caller,atom/A)
 
 	if(heal_burn)
 		A.health.adjust_burn_loss(-heal_burn)
@@ -43,7 +43,7 @@
 
 	return TRUE
 
-/obj/item/cable/proc/can_be_treated(var/mob/caller,var/atom/target)
+/obj/item/cable/proc/can_be_treated(mob/caller,atom/target)
 
 	INTERACT_CHECK
 	INTERACT_CHECK_OTHER(target)
@@ -60,7 +60,7 @@
 
 
 
-/obj/item/cable/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/cable/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(is_inventory(object))
 		return ..()

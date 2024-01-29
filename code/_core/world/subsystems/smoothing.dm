@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(smoothing)
 
 	var/list/seeds = list() //id = value
 
-/subsystem/smoothing/unclog(var/mob/caller)
+/subsystem/smoothing/unclog(mob/caller)
 	queued_smoothing_objs.Cut()
 	queued_smoothing_turfs.Cut()
 	. = ..()
@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(smoothing)
 	return TRUE
 
 
-/subsystem/smoothing/proc/queue_update_edges(var/turf/T,var/include_self=TRUE)
+/subsystem/smoothing/proc/queue_update_edges(turf/T,include_self=TRUE)
 
 	var/list/valid_directions = DIRECTIONS_ALL
 	if(include_self)

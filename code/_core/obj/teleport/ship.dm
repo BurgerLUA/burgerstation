@@ -2,7 +2,7 @@
 	desired_marker = "ship_exit"
 
 
-/obj/trigger/jumpmarker/ship_exit/on_trigger(var/atom/movable/triggerer)
+/obj/trigger/jumpmarker/ship_exit/on_trigger(atom/movable/triggerer)
 	if(is_player(triggerer))
 		var/mob/living/advanced/player/P = triggerer
 

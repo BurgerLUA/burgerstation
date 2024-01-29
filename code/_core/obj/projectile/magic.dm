@@ -29,7 +29,7 @@
 	var/extra_lifetime = 0 //How long should we persist before starting to decay by velocity_degrade? (In deciseconds)
 
 
-/obj/projectile/magic/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+/obj/projectile/magic/New(desired_loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1,desired_penetrations_left=0)
 	. = ..()
 	homing_maximum_acceleration = clamp(homing_maximum_acceleration,0.01,0.25)
 
@@ -54,13 +54,13 @@
 
 
 
-/obj/projectile/magic/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 
 	if(. && old_loc && explode_power > 0)
 		explode(old_loc,explode_power,owner,src,loyalty_tag)
 
-/obj/projectile/magic/update_projectile(var/tick_rate=1)
+/obj/projectile/magic/update_projectile(tick_rate=1)
 
 	. = ..()
 
@@ -179,7 +179,7 @@
 /obj/projectile/magic/fireball/lava
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/fireball/lava/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/fireball/lava/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -195,12 +195,12 @@
 	icon_state = "chaos"
 	var/angle_to_add = 0
 
-/obj/projectile/magic/chaos/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1,var/desired_penetrations_left=0)
+/obj/projectile/magic/chaos/New(desired_loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1,desired_penetrations_left=0)
 	. = ..()
 	angle_to_add = pick(-1,1)
 
 
-/obj/projectile/magic/chaos/update_projectile(var/tick_rate=1)
+/obj/projectile/magic/chaos/update_projectile(tick_rate=1)
 
 	. = ..()
 
@@ -255,7 +255,7 @@
 	name = "revival rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/revive/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/rift/revive/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -268,7 +268,7 @@
 	name = "healing rift"
 	hit_laying = TRUE
 
-/obj/projectile/magic/rift/heal/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/rift/heal/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -297,7 +297,7 @@
 	name = "tesla bolt"
 	icon_state = "tesla_01"
 
-/obj/projectile/magic/tesla_bolt/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
+/obj/projectile/magic/tesla_bolt/New(desired_loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1)
 	icon_state = pick("tesla_01","tesla_02","tesla_03")
 	return ..()
 
@@ -306,7 +306,7 @@
 	icon_state = "lightning_01"
 	velocity_degrade = 0.8
 
-/obj/projectile/magic/lightning/New(var/desired_loc,var/atom/desired_owner,var/atom/desired_weapon,var/desired_vel_x,var/desired_vel_y,var/desired_shoot_x = 0,var/desired_shoot_y = 0, var/turf/desired_turf, var/desired_damage_type, var/desired_target, var/desired_color, var/desired_blamed, var/desired_damage_multiplier=1,var/desired_iff_tag,var/desired_loyalty_tag,var/desired_inaccuracy_modifier=1)
+/obj/projectile/magic/lightning/New(desired_loc,atom/desired_owner,atom/desired_weapon,desired_vel_x,desired_vel_y,desired_shoot_x = 0,desired_shoot_y = 0, turf/desired_turf, desired_damage_type, desired_target, desired_color, desired_blamed, desired_damage_multiplier=1,desired_iff_tag,desired_loyalty_tag,desired_inaccuracy_modifier=1)
 	icon_state = pick("lightning_01","lightning_02","lightning_03","lightning_04","lightning_05")
 	return ..()
 
@@ -326,7 +326,7 @@
 	icon_state = "lightning"
 	var/has_cleaved = FALSE
 
-/obj/projectile/magic/lightning_bolt/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/lightning_bolt/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -400,7 +400,7 @@
 	velocity_degrade = 0.7
 
 
-/obj/projectile/magic/cultist/on_enter_tile(var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/cultist/on_enter_tile(turf/old_loc,turf/new_loc)
 
 	. = ..()
 
@@ -480,7 +480,7 @@
 
 	hit_target_turf = TRUE
 
-/obj/projectile/magic/inferno/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/inferno/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	firebomb(old_loc,6,owner,weapon,src.loyalty_tag)
 
@@ -492,7 +492,7 @@
 /obj/projectile/magic/buff/mending
 	name = "mending"
 
-/obj/projectile/magic/buff/mending/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/buff/mending/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom
@@ -502,7 +502,7 @@
 /obj/projectile/magic/buff/armor
 	name = "armor"
 
-/obj/projectile/magic/buff/armor/on_projectile_hit(var/atom/hit_atom,var/turf/old_loc,var/turf/new_loc)
+/obj/projectile/magic/buff/armor/on_projectile_hit(atom/hit_atom,turf/old_loc,turf/new_loc)
 	. = ..()
 	if(. && is_living(hit_atom))
 		var/mob/living/L = hit_atom

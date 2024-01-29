@@ -1,4 +1,4 @@
-/mob/living/advanced/player/proc/update_premiums(var/messages=TRUE)
+/mob/living/advanced/player/proc/update_premiums(messages=TRUE)
 	var/desired_premium_amount
 	switch(insurance/INSURANCE_PAYOUT) //How many payouts left?
 		if(0 to 0.5)
@@ -20,7 +20,7 @@
 		if(messages) to_chat(span("notice","Your insurance premiums have decreased from <b>[insurance_premiums*100]%</b> to <b>[desired_premium_amount*100]%</b>!"))
 		insurance_premiums = desired_premium_amount
 
-/mob/living/advanced/player/proc/set_mob_data(var/list/loaded_data,var/appearance_only=FALSE)
+/mob/living/advanced/player/proc/set_mob_data(list/loaded_data,appearance_only=FALSE)
 
 	//Name
 	real_name = police_text(client,loaded_data["name"],check_name=TRUE,check_characters=TRUE,min_length=2,max_length=40)
@@ -191,7 +191,7 @@
 	if(!appearance_only)
 		default_nanotrasen_move()
 
-/mob/living/advanced/player/proc/get_mob_data(var/save_inventory = TRUE,var/died=FALSE)
+/mob/living/advanced/player/proc/get_mob_data(save_inventory = TRUE,died=FALSE)
 
 	. = list()
 

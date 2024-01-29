@@ -2,7 +2,7 @@
 	name = "Codespeak"
 	id = LANGUAGE_CODESPEAK
 
-/language/codespeak/process_text(var/speaker,var/text)
+/language/codespeak/process_text(speaker,text)
 
 	var/widsom_length = length(SStext.wisdoms)
 

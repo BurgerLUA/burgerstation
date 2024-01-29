@@ -4,10 +4,10 @@ mob/living/on_right_down(object,location,control,params)
 mob/living/on_left_down(object,location,control,params)
 	return src.attack(src,object,params)
 
-/mob/living/on_mouse_wheel(var/atom/object,delta_x,delta_y,location,control,params)
+/mob/living/on_mouse_wheel(atom/object,delta_x,delta_y,location,control,params)
 	return object.mouse_wheel_on_object(src,delta_x,delta_y,location,control,params)
 
-/mob/living/proc/set_mouse_pointer(var/desired_icon)
+/mob/living/proc/set_mouse_pointer(desired_icon)
 	if(!client)
 		return FALSE
 	client.mouse_pointer_icon = desired_icon
@@ -18,7 +18,7 @@ mob/living/on_left_down(object,location,control,params)
 		return FALSE
 	. = ..()
 
-/mob/living/proc/update_intent(var/force)
+/mob/living/proc/update_intent(force)
 
 	var/desired_intent = selected_intent
 	if(attack_flags & CONTROL_MOD_GRAB)
@@ -64,7 +64,7 @@ mob/living/on_left_down(object,location,control,params)
 
 	return TRUE
 
-/mob/living/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/mob/living/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	if(caller == src && (object == src || is_inventory(object)))
 		resist()

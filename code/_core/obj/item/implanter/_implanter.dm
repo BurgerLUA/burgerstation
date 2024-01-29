@@ -28,18 +28,18 @@
 
 	return ..()
 
-/obj/item/implanter/New(var/desired_loc)
+/obj/item/implanter/New(desired_loc)
 	. = ..()
 	if(stored_implant)
 		name = "[initial(name)] ([initial(stored_implant.name)])"
 	update_sprite()
 
 
-/obj/item/implanter/get_examine_details_list(var/mob/examiner)
+/obj/item/implanter/get_examine_details_list(mob/examiner)
 	. = ..()
 	. += div("notice","Details: [initial(stored_implant.desc_extended)]")
 
-/obj/item/implanter/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/implanter/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(caller != object || !is_advanced(caller))
 		return ..()

@@ -2,7 +2,7 @@
 	name = "soda vendor"
 	icon_state = "soda"
 
-/obj/structure/interactive/vending/soda/New(var/desired_loc)
+/obj/structure/interactive/vending/soda/New(desired_loc)
 	icon_state = pick("soda","sodablue","sodablack","sodapurple","sodaorange")
 	return ..()
 

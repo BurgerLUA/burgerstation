@@ -44,7 +44,7 @@
 		return COMPLETED
 	return ..()
 
-/objective/artifact/proc/artifact_post_move(var/obj/structure/interactive/artifact/H,args)
+/objective/artifact/proc/artifact_post_move(obj/structure/interactive/artifact/H,args)
 	if(!completed)
 		var/area/A = get_area(H)
 		if(istype(A,/area/burgerstation))
@@ -53,7 +53,7 @@
 
 	return TRUE
 
-/objective/artifact/proc/artifact_Destroy(var/obj/structure/interactive/artifact/A,args)
+/objective/artifact/proc/artifact_Destroy(obj/structure/interactive/artifact/A,args)
 	completed = TRUE
 	update()
 	return TRUE

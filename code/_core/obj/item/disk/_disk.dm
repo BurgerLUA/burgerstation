@@ -17,7 +17,7 @@
 
 	weight = 0.5
 
-/obj/item/disk/New(var/desired_loc)
+/obj/item/disk/New(desired_loc)
 	. = ..()
 	update_sprite()
 

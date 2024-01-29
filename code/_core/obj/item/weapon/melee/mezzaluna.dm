@@ -18,7 +18,7 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/weapon/melee/mezzaluna/should_cleave(var/atom/attacker,var/atom/victim,var/list/params)
+/obj/item/weapon/melee/mezzaluna/should_cleave(atom/attacker,atom/victim,list/params)
 
 	if(wielded)
 		return TRUE

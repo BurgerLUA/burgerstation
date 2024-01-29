@@ -14,7 +14,7 @@
 	QUEUE_HEALTH_UPDATE(A)
 
 
-/health/mob/living/advanced/adjust_loss_smart(var/brute,var/burn,var/tox,var/oxy,var/fatigue,var/pain,var/rad,var/sanity,var/mental,var/organic=TRUE,var/robotic=TRUE,var/update=TRUE)
+/health/mob/living/advanced/adjust_loss_smart(brute,burn,tox,oxy,fatigue,pain,rad,sanity,mental,organic=TRUE,robotic=TRUE,update=TRUE)
 
 	. = 0
 
@@ -201,7 +201,7 @@
 	if(A.is_player_controlled() && A.has_status_effect(CRITPROTECTION))
 		. = max(0,.)
 
-/health/mob/living/advanced/get_defense(var/atom/attacker,var/atom/hit_object,var/ignore_luck=FALSE)
+/health/mob/living/advanced/get_defense(atom/attacker,atom/hit_object,ignore_luck=FALSE)
 
 	. = ..()
 

@@ -21,7 +21,7 @@
 
 	. = ..()
 
-/obj/structure/interactive/telecomms/proc/add_telecomm(var/area_identifier)
+/obj/structure/interactive/telecomms/proc/add_telecomm(area_identifier)
 
 	if(!SSradio.all_telecomms[area_identifier])
 		SSradio.all_telecomms[area_identifier] = list()
@@ -31,7 +31,7 @@
 
 	return TRUE
 
-/obj/structure/interactive/telecomms/proc/remove_telecomm(var/area_identifier)
+/obj/structure/interactive/telecomms/proc/remove_telecomm(area_identifier)
 
 	if(!SSradio.all_telecomms[area_identifier])
 		SSradio.all_telecomms[area_identifier] = list()
@@ -43,7 +43,7 @@
 	return TRUE
 
 
-/obj/structure/interactive/telecomms/proc/add_data(var/data_identifier,var/list/data_to_add)
+/obj/structure/interactive/telecomms/proc/add_data(data_identifier,list/data_to_add)
 	ASSERT(data_identifier)
 	ASSERT(data_to_add)
 	queued_data[data_identifier] = data_to_add
@@ -59,7 +59,7 @@
 	queued_data.Cut()
 	return TRUE
 
-/obj/structure/interactive/telecomms/proc/process_data(var/list/data_to_process = list())
+/obj/structure/interactive/telecomms/proc/process_data(list/data_to_process = list())
 
 	for(var/k in SSradio.all_radios)
 		CHECK_TICK(75,FPS_SERVER)
@@ -102,7 +102,7 @@
 	. = ..()
 
 /*
-/obj/structure/interactive/telecomms/process_data(var/list/data_to_process = list()) //Meme shitcode.
+/obj/structure/interactive/telecomms/process_data(list/data_to_process = list()) //Meme shitcode.
 
 	. = ..()
 

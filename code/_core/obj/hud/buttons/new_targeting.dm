@@ -25,7 +25,7 @@
 	mouse_opacity = 1
 
 
-/obj/hud/button/targeting_new/update_owner(var/mob/desired_owner)
+/obj/hud/button/targeting_new/update_owner(mob/desired_owner)
 
 	. = ..()
 
@@ -33,7 +33,7 @@
 		update_overlays()
 
 
-/obj/hud/button/targeting_new/clicked_on_by_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/hud/button/targeting_new/clicked_on_by_object(mob/caller,atom/object,location,control,params)
 
 	. = ..()
 

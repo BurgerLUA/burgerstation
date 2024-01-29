@@ -93,7 +93,7 @@
 	id = "inhale"
 	action = "\The #USER inhales."
 
-/emote/inhale/on_emote(var/atom/emoter,var/atom/target)
+/emote/inhale/on_emote(atom/emoter,atom/target)
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
 		if(A.inventories_by_id[BODY_FACE])
@@ -108,7 +108,7 @@
 	id = "drag"
 	action = "\The #USER takes a drag from their smoke."
 
-/emote/drag/can_emote(var/atom/emoter,var/atom/target)
+/emote/drag/can_emote(atom/emoter,atom/target)
 	. = ..()
 	if(!.) return FALSE
 	if(is_advanced(emoter))
@@ -118,7 +118,7 @@
 			if(istype(I,/obj/item/container/cigarette))
 				return TRUE
 
-/emote/drag/on_emote(var/atom/emoter,var/atom/target)
+/emote/drag/on_emote(atom/emoter,atom/target)
 	if(is_advanced(emoter))
 		var/mob/living/advanced/A = emoter
 		if(A.inventories_by_id[BODY_FACE])
@@ -144,14 +144,14 @@
 	action = null
 	action_target = null
 
-/emote/spin/proc/spin(var/atom/emoter,var/spins_remaining=0)
+/emote/spin/proc/spin(atom/emoter,spins_remaining=0)
 
 	emoter.set_dir(turn(emoter.dir,90))
 
 	if(spins_remaining > 0)
 		CALLBACK("\ref[emoter]_spin",1,src,src::spin(),emoter,spins_remaining-1)
 
-/emote/spin/on_emote(var/atom/emoter,var/atom/target)
+/emote/spin/on_emote(atom/emoter,atom/target)
 	spin(emoter,11)
 	return ..()
 
@@ -161,7 +161,7 @@
 	action = null
 	action_target = null
 
-/emote/help/on_emote(var/atom/emoter,var/atom/target)
+/emote/help/on_emote(atom/emoter,atom/target)
 	var/mob/M = emoter
 	M.view_emotes()
 	return ..()

@@ -6,7 +6,7 @@
 	carp_leader = null
 	return ..()
 
-/ai/carp/proc/is_valid_leader(var/mob/living/simple/spacecarp/leader/L)
+/ai/carp/proc/is_valid_leader(mob/living/simple/spacecarp/leader/L)
 	return !(L.dead)
 
 /ai/carp/proc/get_leader()

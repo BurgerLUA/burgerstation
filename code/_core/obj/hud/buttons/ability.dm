@@ -32,7 +32,7 @@
 		STAMINA = "green"
 	)
 
-/obj/hud/button/ability/New(var/desired_loc)
+/obj/hud/button/ability/New(desired_loc)
 	. = ..()
 	if(ability)
 		ability = new ability
@@ -41,7 +41,7 @@
 	QDEL_NULL(ability)
 	. = ..()
 
-/obj/hud/button/ability/proc/activate(var/mob/caller)
+/obj/hud/button/ability/proc/activate(mob/caller)
 
 	if(ability && ability.activate(caller))
 		animate(src,color="#00FF00",time=1,flags=ANIMATION_PARALLEL)
@@ -106,7 +106,7 @@
 
 	src.maptext = "<div align = 'center'>[display_number]</align>"
 
-/obj/hud/button/ability/update_owner(var/mob/desired_owner)
+/obj/hud/button/ability/update_owner(mob/desired_owner)
 
 	vis_contents.Cut()
 

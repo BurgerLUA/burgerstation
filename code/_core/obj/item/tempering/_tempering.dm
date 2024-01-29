@@ -15,15 +15,15 @@
 
 	rarity = RARITY_UNCOMMON
 
-/obj/item/tempering/save_item_data(var/mob/living/advanced/player/P, var/save_inventory=TRUE, var/died=FALSE,var/loadout=FALSE)
+/obj/item/tempering/save_item_data(mob/living/advanced/player/P, save_inventory=TRUE, died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("uses_left")
 
-/obj/item/tempering/load_item_data_post(var/mob/living/advanced/player/P, var/list/object_data,var/loadout=FALSE)
+/obj/item/tempering/load_item_data_post(mob/living/advanced/player/P, list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("uses_left")
 
-/obj/item/tempering/get_examine_list(var/mob/examiner)
+/obj/item/tempering/get_examine_list(mob/examiner)
 	. = ..()
 	. += span("notice","Use ALT+Click to bypass confirmation prompts and to use on objects that hold inventory.")
 	if(uses_left == -1)
@@ -33,7 +33,7 @@
 	else
 		. += span("notice","There are <b>[uses_left]</b> uses left.")
 
-/obj/item/tempering/click_on_object(var/mob/caller,var/atom/object,location,control,params)
+/obj/item/tempering/click_on_object(mob/caller,atom/object,location,control,params)
 
 	if(is_item(object))
 		INTERACT_CHECK
@@ -53,7 +53,7 @@
 
 	. = ..()
 
-/obj/item/tempering/proc/can_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/proc/can_temper(mob/caller,obj/item/I)
 
 	//Check if there are uses.
 	if(uses_left != -1 && uses_left <= 0)
@@ -82,7 +82,7 @@
 
 	return TRUE
 
-/obj/item/tempering/proc/on_temper(var/mob/caller,var/obj/item/I)
+/obj/item/tempering/proc/on_temper(mob/caller,obj/item/I)
 
 	caller.visible_message(
 		span("notice","\The [caller.name] improves \the [I.name] with \the [src.name]."),

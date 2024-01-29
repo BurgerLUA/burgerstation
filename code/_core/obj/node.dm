@@ -26,7 +26,7 @@
 	var/map
 
 
-/pathfinder/New(var/desired_width,var/desired_height,var/desired_map)
+/pathfinder/New(desired_width,desired_height,desired_map)
 
 	level_width = desired_width
 	level_height = desired_height
@@ -38,7 +38,7 @@
 
 	initialize_search_nodes()
 
-/pathfinder/proc/heuristic(var/obj/node/point_a,var/obj/node/point_b)
+/pathfinder/proc/heuristic(obj/node/point_a,obj/node/point_b)
 	return abs(point_a.x - point_b.x) + abs(point_a.y - point_b.y)
 
 /pathfinder/proc/reset_search_nodes()
@@ -72,7 +72,7 @@
 
 	return current_tile
 
-/pathfinder/proc/find_final_path(var/node_search/start_node,var/node_search/end_node)
+/pathfinder/proc/find_final_path(node_search/start_node,node_search/end_node)
 	closed_list.Add(end_node)
 
 	var/node_search/parent_tile = end_node.parent
@@ -89,7 +89,7 @@
 
 	return final_path
 
-/pathfinder/proc/find_path(var/obj/node/start_point,var/obj/node/end_point)
+/pathfinder/proc/find_path(obj/node/start_point,obj/node/end_point)
 
 	if(start_point == end_point)
 		return null
@@ -188,7 +188,7 @@
 
 				NS.neighbors[i] = neighbor
 
-/pathfinder/proc/simplify_vectors(var/list/Vector2D/path)
+/pathfinder/proc/simplify_vectors(list/Vector2D/path)
 
 	world.log << "The simplyify is [length(path)]."
 

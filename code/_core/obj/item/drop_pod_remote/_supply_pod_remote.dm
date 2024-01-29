@@ -15,11 +15,11 @@
 
 	rarity = RARITY_RARE
 
-/obj/item/supply_remote/save_item_data(var/mob/living/advanced/player/P,var/save_inventory = TRUE,var/died=FALSE,var/loadout=FALSE)
+/obj/item/supply_remote/save_item_data(mob/living/advanced/player/P,save_inventory = TRUE,died=FALSE,loadout=FALSE)
 	RUN_PARENT_SAFE
 	SAVEVAR("charges")
 
-/obj/item/supply_remote/load_item_data_post(var/mob/living/advanced/player/P,var/list/object_data,var/loadout=FALSE)
+/obj/item/supply_remote/load_item_data_post(mob/living/advanced/player/P,list/object_data,loadout=FALSE)
 	RUN_PARENT_SAFE
 	LOADVAR("charges")
 
@@ -28,7 +28,7 @@
 	. *= charges
 	. += 100
 
-/obj/item/supply_remote/click_on_object(var/mob/caller as mob,var/atom/object,location,control,params)
+/obj/item/supply_remote/click_on_object(mob/caller as mob,atom/object,location,control,params)
 
 	if(!is_turf(object) && !isturf(object.loc))
 		return TRUE

@@ -8,7 +8,7 @@
 	icon_state = "forest_path"
 	density = FALSE
 
-/turf/unsimulated/generation/forest/generate(var/size = WORLD_SIZE)
+/turf/unsimulated/generation/forest/generate(size = WORLD_SIZE)
 
 	var/is_snow = y >= SSturf.snow_line - (x*0.05)**(SSturf.snow_num*2) + sin(x)*10
 

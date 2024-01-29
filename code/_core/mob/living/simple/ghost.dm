@@ -50,7 +50,7 @@
 
 	var/desired_alpha = 200 //Controlled in AI.
 
-/mob/living/simple/ghost/on_crush(var/message=TRUE)
+/mob/living/simple/ghost/on_crush(message=TRUE)
 	return FALSE
 
 /mob/living/simple/ghost/handle_alpha()

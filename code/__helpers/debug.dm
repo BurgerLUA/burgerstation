@@ -1,4 +1,4 @@
-/proc/type_debug(var/x)
+/proc/type_debug(x)
 
 	if(ispath(x))
 		return "[x] (PATH)"

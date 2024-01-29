@@ -11,7 +11,7 @@
 /objective/sell_ore/get_description()
 	return "Sell [desired_quota]u of ore or material (any type) to cargo."
 
-/objective/sell_ore/on_object_sold(var/atom/movable/object)
+/objective/sell_ore/on_object_sold(atom/movable/object)
 
 	if(istype(object,/obj/item/material/))
 		var/obj/item/material/M = object

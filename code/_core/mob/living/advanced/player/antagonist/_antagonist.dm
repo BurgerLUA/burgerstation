@@ -5,7 +5,7 @@
 
 	level = 40
 
-/mob/living/advanced/player/antagonist/on_add_xp(var/experience/E,var/added_xp)
+/mob/living/advanced/player/antagonist/on_add_xp(experience/E,added_xp)
 
 	. = ..()
 
@@ -16,7 +16,7 @@
 			GD.loaded_data["stored_experience"] = list()
 		GD.loaded_data["stored_experience"][E.id] += added_xp
 
-/mob/living/advanced/player/antagonist/adjust_currency(var/currency_to_add,var/tax=FALSE)
+/mob/living/advanced/player/antagonist/adjust_currency(currency_to_add,tax=FALSE)
 
 	. = ..()
 

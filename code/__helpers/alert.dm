@@ -1,6 +1,6 @@
 #define within_range(point_A,point_B,range) (point_A.z == point_B.z && get_dist(point_A,point_B) <= range)
 
-/proc/create_alert_process(var/list/list_to_use,var/range = VIEW_RANGE,var/atom/epicenter,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
+/proc/create_alert_process(list/list_to_use,range = VIEW_RANGE,atom/epicenter,atom/alert_source,alert_level = ALERT_LEVEL_NOISE,visual=FALSE)
 
 	. = 0
 
@@ -29,7 +29,7 @@
 
 
 
-/proc/create_alert(var/range = VIEW_RANGE,var/turf/epicenter,var/atom/alert_source,var/alert_level = ALERT_LEVEL_NOISE,var/visual=FALSE)
+/proc/create_alert(range = VIEW_RANGE,turf/epicenter,atom/alert_source,alert_level = ALERT_LEVEL_NOISE,visual=FALSE)
 
 	if(!epicenter)
 		CRASH("create_alert() had no epicenter!")

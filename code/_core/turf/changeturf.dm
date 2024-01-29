@@ -1,4 +1,4 @@
-/turf/proc/change_turf(var/turf/N, var/force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
+/turf/proc/change_turf(turf/N, force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
 
 	if(!N)
 		CRASH("change_turf() was provided a null turf!")
@@ -63,7 +63,7 @@
 	HOOK_CALL("change_turf")
 
 
-/turf/simulated/change_turf(var/turf/N, var/force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
+/turf/simulated/change_turf(turf/N, force_lighting_update = FALSE) //Stolen from /vg/. Don't use before INITIALIZE is called.
 
 	var/old_corner_icons = corner_icons
 
@@ -77,7 +77,7 @@
 		else
 			queue_smoothing_turf(src)
 
-/turf/proc/change_area(var/area/N) //Remember to call A.generate_average() when done changing areas.
+/turf/proc/change_area(area/N) //Remember to call A.generate_average() when done changing areas.
 
 	if(!N)
 		CRASH("change_area() was provided a null area!")
@@ -94,5 +94,5 @@
 	return TRUE
 
 
-/turf/proc/post_change_turf(var/old_turf_type)
+/turf/proc/post_change_turf(old_turf_type)
 	return TRUE

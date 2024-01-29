@@ -15,7 +15,7 @@
 
 	var/is_new = TRUE
 
-/objective/proc/on_object_sold(var/atom/movable/object)
+/objective/proc/on_object_sold(atom/movable/object)
 	return TRUE
 
 /objective/New()
@@ -76,7 +76,7 @@
 /objective/proc/get_description()
 	return "[initial(desc)] ([completion_state])"
 
-/objective/proc/update(var/update_gamemode = TRUE)
+/objective/proc/update(update_gamemode = TRUE)
 
 	var/gamemode/G = SSgamemode.active_gamemode
 

@@ -39,7 +39,7 @@
 	var/beard_color_same_as_skin_color = FALSE
 	var/has_seperate_beard_color = FALSE
 
-/dna/proc/generate_eye_color(var/fallback="#FFFFFF")
+/dna/proc/generate_eye_color(fallback="#FFFFFF")
 
 	if(!length(eye_color_rarity))
 		return fallback
@@ -51,7 +51,7 @@
 	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
 	return blend_colors(final_color,tint_mod,0.1)
 
-/dna/proc/generate_skin_color(var/fallback="#FFFFFF")
+/dna/proc/generate_skin_color(fallback="#FFFFFF")
 
 	if(!length(skin_color_rarity))
 		return fallback
@@ -63,7 +63,7 @@
 	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
 	return blend_colors(final_color,tint_mod,0.1)
 
-/dna/proc/generate_hair_color(var/fallback="#FFFFFF")
+/dna/proc/generate_hair_color(fallback="#FFFFFF")
 
 	if(!length(hair_color_rarity))
 		return fallback
@@ -75,7 +75,7 @@
 	var/tint_mod = rgb(brightness+rand(-10,10),brightness+rand(-10,10),brightness+rand(-10,10))
 	return blend_colors(final_color,tint_mod,0.1)
 
-/dna/proc/generate_beard_color(var/fallback="#FFFFFF")
+/dna/proc/generate_beard_color(fallback="#FFFFFF")
 
 	if(!length(beard_color_rarity))
 		return generate_hair_color(fallback)
@@ -88,7 +88,7 @@
 	return blend_colors(final_color,tint_mod,0.1)
 
 
-/dna/proc/generate_hair_style(var/gender=NEUTER,var/fallback="#FFFFFF")
+/dna/proc/generate_hair_style(gender=NEUTER,fallback="#FFFFFF")
 
 	switch(gender)
 		if(MALE)
@@ -104,7 +104,7 @@
 	return "error"
 
 
-/dna/proc/generate_beard_style(var/gender=NEUTER,var/fallback="#FFFFFF")
+/dna/proc/generate_beard_style(gender=NEUTER,fallback="#FFFFFF")
 
 	switch(gender)
 		if(MALE)

@@ -15,7 +15,7 @@
 
 	rarity = RARITY_MYTHICAL
 
-/obj/item/weapon/melee/energy/plightbringer/click_self(var/mob/caller,location,control,params)
+/obj/item/weapon/melee/energy/plightbringer/click_self(mob/caller,location,control,params)
 
 	. = ..()
 
